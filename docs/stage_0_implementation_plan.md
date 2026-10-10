@@ -1,0 +1,345 @@
+# Stage 0 implementation plan: relaxed small-molecule graphs in Mosaic
+
+Date: 2026-10-10. Status: proposed implementation; no model execution or numerical validation has been performed for this plan.
+
+Source of requirements: [project description](../project_desc.pdf), especially Stage 0 (page 2, section 3), the V0 optimizer contract (pages 3-5, section 4), and the minimum outputs (page 7, section 8). The reviewed Mosaic baseline is commit `1eb4af6`. The source PDF SHA-256 is `c9785f45dcd34fbc3feaebcc0bc57905dc606387f76308bb6364eadb40cbeda0`; it is currently an untracked input in this checkout.
+
+## 1. Outcome and scope
+
+Deliver a small-molecule branch that exposes atom and bond probabilities as the optimized variables and differentiates a scalar derived from frozen Protenix-Tiny outputs back to both variable classes. The same branch must support ligand-only and protein-plus-ligand contexts, with ligand reference geometry disabled and protein features kept native.
+
+Stage 0 ends when those two forward/backward paths, projected updates, and reproducible run artifacts work. It establishes engineering behavior. Stable objective improvement, useful molecular design, and chemical feasibility are later-stage questions.
+
+Follow this dependency order, with independent tasks assigned to the parallel tracks in section 6:
+
+1. Audit and pin the native Protenix ligand feature path.
+2. Define the fixed-size relaxed graph and prepared context contracts.
+3. Add differentiable feature injection and explicit ligand geometry masking.
+4. Expose a resident frozen-model trunk/distogram forward path.
+5. Add a strict graph gradient evaluator and projected-probability update loop.
+6. Add raw readouts, checkpoint/resume, and the two-mode validation gates.
+7. Record the result and hand the branch directly to Stage 1.
+
+Excluded from Stage 0: model training, learned feature bridges, affinity heads, molecular priors, valence/connectivity/sparsity constraints, hardening schedules, charge optimization, variable atom count, conformer updates inside optimization, and broad optimizer/model-depth searches. Discrete molecule conversion is allowed during fixture preparation and detached evaluation only.
+
+This plan concerns the Mosaic repository and the supplied Protenix-Tiny protocol. It does not import the AE/VAE/latent pipeline from the separate DBMol exploratory repository.
+
+## 2. What the current code already provides
+
+| Existing code | Reuse | Required change or boundary |
+| --- | --- | --- |
+| [models/protenix.py](../src/mosaic/models/protenix.py): `load_model`, `ProtenixTiny` | Cache-aware resident model loading; Tiny currently selects `protenix_tiny_default_v0.5.0`. | Add a graph-facing wrapper. `target_only_features` currently accepts protein chains only. Verify the selected checkpoint identity rather than assuming all Tiny variants are interchangeable. |
+| [losses/protenix.py](../src/mosaic/losses/protenix.py): `get_trunk_state` | Native input embedding and final differentiable trunk iteration. | Audit feature assumptions and recycling semantics. Existing execution stops gradients through preceding recycles, passes `pair_mask=None`, and still runs one final iteration if given zero recycling steps. |
+| [losses/protenix.py](../src/mosaic/losses/protenix.py): `protenix_forward_from_trunk` | Direct access to `model.distogram_head(trunk_state.z)`. | Split out a lightweight graph result. Existing forwarding always samples coordinates and runs confidence, then builds protein backbone/atom37 views. |
+| [common.py](../src/mosaic/common.py): `LossTerm`, `LinearCombination` | Scalar loss plus auxiliary metrics and composable loss terms. | Graph losses accept graph state and explicit token indices; they do not interpret the state as a 20-amino-acid sequence. |
+| [optimizers.py](../src/mosaic/optimizers.py): `projection_simplex` | Existing row-wise Euclidean probability-simplex projection. | Apply separately to atom rows and upper-triangle bond rows. This function uses host NumPy; projection remains outside the differentiated model forward. |
+| [optimizers.py](../src/mosaic/optimizers.py): gradient/trajectory conventions | Evaluate, differentiate, update, report loop structure. | Add a graph driver. `_eval_loss_and_grad` assumes one array and replaces nonfinite values; it cannot establish raw gradient correctness. `simplex_APGM` also associates a pre-update score with a post-update best state. |
+| [losses/structure_prediction.py](../src/mosaic/losses/structure_prediction.py): `contact_log_probability` | Distogram-to-contact primitive. | Use explicit ligand/protein indices and the required reduction. Existing `BinderTargetContact` uses a different protein-binder reduction and is not the protocol's contact objective. |
+| [cache.py](../src/mosaic/cache.py), [pyproject.toml](../pyproject.toml) | Model cache configuration and JAX/Python environment groups. | Capture resolved Git dependencies and checkpoint hashes; `uv.lock` is ignored and currently absent. |
+
+Keep the protein APIs working. In particular, do not force ligand tokens into `StructurePredictionModel`'s PSSM API or fabricate `full_sequence`, backbone, atom37, PAE, or coordinates to satisfy `StructureModelOutput`.
+
+## 3. V0 representation and module contracts
+
+### 3.1 One shared relaxed graph
+
+Represent the differentiated state as a JAX/Equinox pytree with two floating leaves:
+
+| Field | Shape and meaning | Invariant |
+| --- | --- | --- |
+| `X` | `[N, 6]`, element probabilities in the fixed order `C, N, O, S, F, Cl`. | Every row is nonnegative and sums to one. |
+| `E_upper` | `[N*(N-1)/2, 5]`, bond probabilities in the fixed order `NO_BOND, SINGLE, DOUBLE, TRIPLE, AROMATIC`. | One simplex row per unordered pair, using a deterministic lexicographic `i < j` index list. |
+
+Construct `E[N,N,5]` differentiably from `E_upper`, mirror the off-diagonal rows, and set every diagonal to `[1,0,0,0,0]`. Derive the Protenix-facing bond-existence matrix as `B = 1 - E[..., NO_BOND]`. Differentiate through this construction so each stored pair receives the contribution from both symmetric model entries.
+
+All `N` heavy-atom slots are occupied throughout a trajectory. There is no null element, atom-deletion variable, or optimized padding mask. Formal charge is fixed at zero. Ligand `ref_pos[N,3]` is a fixed zero placeholder. Do not optimize coordinates.
+
+Use probabilities directly, with projection after each update. Do not introduce logits or a softmax parameterization. The proposed Stage 1 size is `N=25`; small hard fixtures can use their own fixed `N` for Stage 0 checks. A shape change is a separate compiled context, not a variable-size trajectory.
+
+**Declared feature loss:** V0 sends total bond existence to Protenix, not bond order. Exchanges among SINGLE/DOUBLE/TRIPLE/AROMATIC at fixed `B` must therefore leave this model objective unchanged. Preserve all five states in the shared graph for later chemistry/prior operators; do not claim Protenix currently supplies bond-order-specific guidance. Ligand stereochemistry, hydrogens, variable charge, and reference geometry are also outside V0.
+
+### 3.2 Prepared context and forward result
+
+Prepare a context once per input/shape outside JIT and outside optimization. It owns native static features, protein inputs, model token/atom mapping, ligand and protein token indices, native masks, geometry-gating metadata, fixed atom names, and source identities. Slot names and entity IDs must be stable and must not encode an initial molecule's mutable atom identity or topology.
+
+Use these conceptual interfaces; names may be adjusted during implementation:
+
+```text
+prepare_context(ligand_spec, protein_chains, geometry_mode) -> PreparedContext
+inject_graph(context, graph) -> native-shaped differentiable features
+forward_trunk(model, context, graph, key) -> MolecularTrunkOutput
+objective(graph, output, key) -> (scalar_loss, auxiliary_metrics)
+projected_step(graph, gradients, eta_X, eta_E) -> updated_graph
+hard_readout(graph) -> raw element/bond assignments and conversion status
+```
+
+`MolecularTrunkOutput` contains distogram logits/bins and explicit token mappings. It may expose native trunk/pair state when needed. Coordinates and confidence belong to a separate optional path and must never be silently filled with zeros or reported as available by a trunk-only forward.
+
+Both modes use the same injection and objective machinery. Protein-plus-ligand mode adds native prepared protein context. Do not assume the ligand is the first block of tokens; consume the recorded indices.
+
+## 4. Ordered implementation work
+
+The work numbers describe technical dependencies, not a requirement for one person to complete every item serially. Graph/update mechanics, model scaffolding, and artifact handling can progress while the upstream feature audit is underway. The adapter's native behavior and final integrated validation still depend on that audit.
+
+### Work 0: resolve the upstream feature contract before coding the adapter
+
+The checkout references the JAX implementation through the `protenix` dependency from `escalante-bio/protenij`, but does not contain its source. Audit an immutable resolved revision and the matching native featurizer before asserting support for relaxed ligands.
+
+Produce a feature-consumer table with actual field names, shapes/dtypes, locations in upstream source, and whether each field is fixed, differentiable, removed, or retained. Trace at least:
+
+- Element encoding and any discrete element lookups: how can `X` reproduce native one-hot features and interpolate them without `argmax`, host conversion, or integer indexing on mutable identity?
+- Bond-existence features and their pair-embedding path: where can fractional `B` enter before a boolean cast, threshold, sparse edge enumeration, or feature cache would disconnect it?
+- Ligand tokenization, token/atom mapping, representative atoms, residue types, atom names, reference-space IDs, entity/chain IDs, masks, charge, and any topology-dependent derived fields.
+- Reference positions, relative vectors/distances, reference-space equality gates, geometric encodings, frames, templates, and every geometry-derived contribution in the input/atom/pair path.
+- MSA/template handling and the legality of an empty protein context; verify an ordinary ligand-only input actually reaches the trunk.
+
+For each identity/topology-derived field, either update it differentiably from the shared graph or justify its fixed neutral/native convention. A hard starting molecule must not leave a hidden fixed bond list or geometry-derived topology in the relaxed forward.
+
+Prefer a native feature override. If upstream casts or combines channels too early, add the smallest explicit, versioned hook at the native embedding boundary, preserving frozen pretrained weights. Record any dependency patch and its hash. Do not silently bypass the bond path or add a trained surrogate. If no faithful differentiable hook exists, record the concrete blocker before advancing.
+
+**Exit evidence:** pinned checkpoint/dependency identities, feature-consumer table, the exact element/bond injection points, and an explicit geometry-gating design for both modes.
+
+### Work 1: implement graph state and preparation
+
+Implement fixed vocabularies, upper-triangle indexing, reconstruction of `E/B`, shape/value assertions, leafwise simplex projection, and a detached hard readout. Keep metadata/static indices out of the differentiated leaves.
+
+Prepare one ordinary neutral fixture, proposed acetanilide (`CC(=O)Nc1ccccc1`), using the native hard-ligand importer. Check it is represented entirely by the supported vocabulary and neutral charge convention. Preserve importer atom order and explicit-hydrogen policy in the fixture manifest. A different compatible fixture can replace it if native tokenization requires this; record the reason.
+
+Store its one-hot graph and construct an interior relaxed version of the same graph by probability mixing. Use the same slot ordering, `N`, static context, and RNG identity throughout the paired checks. Add synthetic mapping fixtures for elements and bond categories absent from the main hard molecule.
+
+Provide the configuration fields needed by Stage 1 without performing its initialization study: carbon-heavy element probabilities, independent probability-space perturbations, expected degree `d0`, and `p0=d0/(N-1)`. Initialize bond noise only on unordered pairs, then project and mirror. Exact baseline values are recorded when Stage 1 starts.
+
+**Exit evidence:** meaningful contract tests for shape, symmetry, self-bond exclusion, simplex membership, and preservation of fixed occupancy.
+
+### Work 2: implement differentiable injection and ligand geometry-off mode
+
+Inject the element distributions through the audited native element representation and `B` through the audited bond-existence pathway. Preserve native shapes and floating dtypes. Prepare static metadata once; the per-step feature update must consist only of differentiable JAX operations.
+
+Define geometry-off as zero contribution from ligand reference geometry, not merely zero coordinates. Mask or disable geometry-derived channels at the audited consumption points, including any nonzero constants or biases generated from a zero displacement/distance. Ligand-ligand and ligand-protein reference-coordinate relations must not invent a shared origin or encode a reference conformer. Retain legitimate metadata unrelated to geometry and the native protein-only reference contributions.
+
+Preserve ligand atom/token occupancy. Do not set a generic `ref_mask` to zero without proving that it gates geometry independently of atom presence. Separate occupancy masks from reference-geometry contribution masks where necessary. Frame validity must remain truthful; do not manufacture valid ligand frames for a later confidence metric.
+
+Test retained native features and protein feature blocks against the prepared native context. Under geometry-off, changing an otherwise unused ligand reference conformer must not change forward output; changing ligand `X` or `B` must change the corresponding injected features. Check the ordinary protein-only path remains native.
+
+**Exit evidence:** one-hot retained-feature parity, explicit geometry ablations, preserved occupancy, and no discrete/host conversions in the graph-to-model differentiated path.
+
+### Work 3: implement the resident frozen Protenix-Tiny path
+
+Load Tiny once before the trajectory, set the resolved model to its supported evaluation/inference mode without disabling differentiation of graph inputs, and keep it warm. In JAX, differentiate only the graph pytree; the model and prepared context are fixed arguments. No model optimizer, parameter update, or `stop_gradient` on injected `X/B` is permitted.
+
+Run native input embedding, the trunk, and the distogram head only. Reuse `get_trunk_state` if the audit confirms compatible masks/features; otherwise factor the smallest shared helper rather than cloning the entire model forward. Leave existing protein prediction behavior intact.
+
+Start with one supported final trunk iteration (`recycling_steps=1`). Record that reused recycling detaches earlier recycle states and gradients flow through the final iteration. Reject unsupported recycle counts explicitly; do not treat zero as a verified zero-work mode. Use a fixed model key for derivative checks and record the RNG policy for trajectories. Avoid carrying stale graph-dependent embeddings between steps.
+
+A selected off-diagonal native distogram output can supply a scalar for engineering derivative tests in ligand-only mode. Label it `diagnostic_only`; it is not a proposed ligand-design score, confidence metric, or Stage 1 objective. Protein-plus-ligand validation can use the exact native contact reduction described in the handoff below.
+
+**Exit evidence:** both modes return finite native trunk/distogram outputs, gradients reach `X` and bond existence, and the cheap path never invokes structure sampling or confidence.
+
+### Work 4: implement one projected-probability graph loop
+
+Use a direct graph value-and-gradient call with auxiliary metrics. Inspect and log raw values/gradients before any transformation. Stop and retain a failure artifact on NaN/Inf; do not use the existing sanitized evaluator to establish correctness.
+
+For the first driver, use projected gradient descent with separate atom and bond step sizes:
+
+```text
+(loss_k, aux_k), gradients_k = value_and_grad(loss)(graph_k, key_k)
+assert raw loss/output/gradients are finite
+X_next = projection_simplex(X_k - eta_X * grad_X)
+E_upper_next = projection_simplex(E_upper_k - eta_E * grad_E_upper)
+graph_next = (X_next, E_upper_next)
+assert graph invariants
+record the evaluated graph_k, its loss/gradients, and the proposed graph_next
+```
+
+Reuse Mosaic's projection leafwise, with unit simplex mass, no hardening scale, and no logspace/momentum initially. If optional gradient centering/clipping is later needed, record both raw and applied gradients and all settings. Do not force a common clip threshold or step size across the six-category atom and five-category bond leaves.
+
+Evaluate/checkpoint states with unambiguous iteration labels. A best-state record must contain the actual evaluated state and its score. Evaluate the final post-update state separately if reporting its score. Projection and detached readout happen between forward calls; differentiating through the entire optimizer trajectory is unnecessary.
+
+**Exit evidence:** a short integration trajectory preserves all invariants, saves complete restart state, and resumes consistently. Objective improvement or chemistry validity is not a Stage 0 pass criterion.
+
+### Work 5: add readouts and reproducible artifacts
+
+At configured readout intervals, take `argmax(X)` and `argmax(E_upper)` and reconstruct the same graph. Save the raw arrays before attempting detached RDKit conversion/sanitization. Keep disconnected graphs and conversion failures, with their reason and step. Do not repair, delete fragments, substitute molecules, or feed these readouts back into the next relaxed forward.
+
+Create a unique run directory with a small schema:
+
+```text
+runs/<run_id>/
+  manifest.json              # source/config/environment/model/input identities
+  config.json                # exact resolved settings and vocabulary orders
+  trace.jsonl                # scores, diagnostics, iteration/RNG/state references
+  checkpoints/step_*.npz     # X, E_upper, optimizer/counter/RNG state
+  readouts/step_*.json        # raw hard assignments and conversion outcome
+  validation.json            # checks, tolerances, commands, passed/failed gates
+  failure.json               # present if the run fails; do not discard the run
+```
+
+Retain raw probabilities, enough information to reconstruct full `E`, optimizer state (step sizes/counters and any later buffers), typed JAX RNG implementation/key data, objective values, separate atom/bond gradient norms, projection residuals, entropy/maximum probabilities, bond mass/expected degree, and readout status. Trace entries must distinguish evaluated from updated states. Save initial/final states and failed states as well as scheduled checkpoints.
+
+Record source contents including uncommitted patches, configuration hash, native hard/protein input identities, atom/token ordering, geometry-gating revision, Tiny checkpoint hash, resolved upstream Git revisions, resolved environment, device/driver, precision, recycle settings, objective formula/sign, and RNG policy. Capture a dependency lock/export in run artifacts even though this repository ignores `uv.lock`.
+
+Add `docs/experiment_ledger.md` when implementation begins. Record each future validation/run, including commands, execution environment, source/config/input identities, artifact paths, outcome, and retained failures. This planning document is not a numerical experiment or a passed test. DTU HPC is the proposed numerical execution location, using a compatible Linux/JAX GPU environment; site configuration and access must be established at implementation time. This planning task includes no job submission.
+
+## 5. Proposed file layout
+
+Keep the new branch narrow rather than introducing a general plugin framework:
+
+| Proposed file | Responsibility |
+| --- | --- |
+| `src/mosaic/small_molecule/__init__.py` | Small public API; optional model imports remain lazy. |
+| `src/mosaic/small_molecule/contracts.py` | Shared context/result/step contracts and contract version; no upstream model loading. Graph constants and graph type are imported from `state.py`. |
+| `src/mosaic/small_molecule/state.py` | Shared graph contract, vocabularies, upper-triangle mapping, initialization, invariants. |
+| `src/mosaic/small_molecule/features.py` | Static native context preparation and pure graph feature injection/geometry gating. |
+| `src/mosaic/small_molecule/protenix.py` | Frozen resident Tiny wrapper and trunk-only result. |
+| `src/mosaic/small_molecule/losses.py` | Explicit-mask molecular objective adapters using `LossTerm`; engineering diagnostics clearly marked. |
+| `src/mosaic/small_molecule/optimizers.py` | Strict graph evaluator and leafwise projected updates, reusing existing simplex projection. |
+| `src/mosaic/small_molecule/io.py` | Detached readout, manifest/trace/checkpoint serialization and resume. |
+| `examples/small_molecule_stage0.py` | One reproducible entry point for both forward modes and validation, separate from a notebook. |
+| `examples/configs/small_molecule_stage0.json` | Explicit model, fixture/context, graph, gradient-check, step-size and artifact settings. |
+| `tests/test_small_molecule_state.py` | Representation invariants and pair/element identity. |
+| `tests/test_small_molecule_optimizers.py` | Raw gradient handling, separate projected updates, and evaluated-state semantics. |
+| `tests/test_small_molecule_features.py` | Native feature mapping, geometry gating, and occupancy/protein preservation. |
+| `tests/test_small_molecule_protenix.py` | Separately marked real-checkpoint forward/backward and finite-difference checks. |
+| `tests/test_small_molecule_losses.py` | Explicit-index objective reduction, distance-bin convention, and loss sign. |
+| `tests/test_small_molecule_io.py` | Raw failed readouts and checkpoint/resume fidelity. |
+| `tests/test_small_molecule_integration.py` | Tests of producer/consumer boundaries and the assembled two-mode pipeline, with real-checkpoint tests explicitly marked. |
+| `tests/data/small_molecule_stage0/` | One shared fixture manifest, hard graph, relaxed graph recipe, atom ordering, and protein-context identities. |
+
+Adjust names as the upstream audit warrants, but keep state, native adaptation, model execution, and detached readout separate. Reuse scalar loss composition and model/projection helpers without rewriting unrelated protein modules.
+
+## 6. Parallel tracks and integration practices
+
+Four implementation tracks can proceed in parallel after a short shared-contract kickoff. The native feature audit is the main technical dependency: it must resolve real ligand injection and geometry gating, but it need not hold up graph mechanics, artifact handling, or a model wrapper developed against native hard inputs. Numerical work remains subject to the execution arrangement in Work 5; this section schedules future implementation, not runs for the present planning task.
+
+### 6.1 Track ownership and dependencies
+
+| Track | Owned implementation and tests | Can start independently | Integration dependency and handoff |
+| --- | --- | --- | --- |
+| **T1: graph state and projected updates** | `state.py`, `optimizers.py`, `test_small_molecule_state.py`, `test_small_molecule_optimizers.py`. Covers graph construction, initialization, strict gradients, and separate atom/bond projection. | After graph leaf names, vocabulary/pair ordering, and loss-callable signature are agreed. Use a small deterministic analytic test loss for update mechanics. | Provide the actual graph pytree, raw gradient/step result, and evaluated/updated-state semantics to T2-T4. Real gradient evidence waits for T2/T3. |
+| **T2: native feature audit and adaptation** | `features.py`, `test_small_molecule_features.py`, and any audited upstream feature hook/patch. Covers Work 0, native hard preparation, graph injection, geometry gating, and preserved protein inputs. | Immediately audit the pinned dependency and prepare the native fixture. Publish findings incrementally rather than waiting for a complete adapter. | Request context fields through the common contract. Deliver the feature-consumer table, native-shaped feature injection, atom/token mappings, and dependency patch identity to T3/T4. Unsupported native assumptions block affected integration. |
+| **T3: resident model and objective wiring** | Small-molecule `protenix.py`, `losses.py`, `test_small_molecule_protenix.py`, `test_small_molecule_losses.py`. Own any necessary factored helper changes to the existing Protenix modules. | Inspect/reuse the native loader and trunk, define the trunk-only result, and test objective indexing/reduction with synthetic logits while T2 audits. | Consume T2's real prepared context/injected features and T1's graph. Deliver the graph loss callable `(graph, key) -> (loss, aux)`, explicit output indices/bins, and real Tiny gradient evidence. Stage 1 confidence selection remains deferred. |
+| **T4: artifacts and integration** | `io.py`, `test_small_molecule_io.py`, `test_small_molecule_integration.py`, shared fixture files, entry point/config, and public exports. T4 is the integration owner. | Implement raw readout serialization, manifest/checkpoint schemas, and restart/error handling from the agreed graph/RNG/step contracts. | Assemble T1-T3 into the entry point early. Own integration tests, matching score/state/checkpoint records, source-release identity, and the combined acceptance report. |
+
+T4 also coordinates edits to `contracts.py`, the new pytest marker in `pyproject.toml`, and shared configuration. T1 reviews graph/step fields, T2 reviews prepared-context fields, and T3 reviews model-result/loss fields. The documentation owner maintains documentation and experiment history; the modularity reviewer remains a separate role from the implementers and integration owner.
+
+With four implementers, assign one track each. With three, combine T1 and T4 initially, then shift integration work after the graph contract is available. With two, combine T1+T4 and T2+T3. Keep the review roles distinct in all cases; these combinations describe workload, not permission to omit independent review.
+
+### 6.2 Agree one contract before parallel implementations diverge
+
+Publish a small `small_molecule_v0` contract in code and document its meaning. It need not be a general registry or plugin system. All tracks import the same types/constants and load the same fixtures; no private copies of vocabularies, pair maps, masks, or native-input recipes.
+
+The kickoff must settle the following shared conventions:
+
+| Boundary | Convention to agree | Producer and consumers |
+| --- | --- | --- |
+| Graph | `X`/`E_upper` leaf names, floating precision, fixed occupancy/charge, vocabulary order, lexicographic unordered-pair order, and symmetry/diagonal construction. | T1 produces; T2-T4 consume. |
+| Prepared context | Atom-slot/token mapping, explicit ligand/protein index arrays, immutable base features, geometry mode, occupancy masks, and input identity. Actual upstream field details remain provisional until T2's audit. | T2 produces; T3/T4 consume. |
+| Model result | Distogram-logit shape, native bin interpretation, token indices, available fields, and truthful absence of coordinates/confidence. | T3 produces; objective adapters and T4 consume. |
+| Loss and gradients | Scalar minimization loss, auxiliary metrics, `diagnostic_only` label, graph-only differentiation with frozen model/prepared context, and separate raw atom/bond gradients. | T3 produces the callable; T1 differentiates; T4 records. |
+| Step/RNG | Which state was evaluated, which state is the next iterate, whether a key has already been consumed, and the exact RNG state needed for the next evaluation. | T1 produces; T4 persists/restores. |
+| Artifacts | Contract/checkpoint schema version, graph/context/model identities, precision/tolerance settings, and incompatible-checkpoint rejection. | T4 produces; every track supplies its identity/settings. |
+
+Use the hard fixture and interior relaxed fixture already specified in Work 1. T2 establishes the native importer ordering; T4 stores the agreed fixtures/manifest, and T1 verifies their graph representation. Include a synthetic token layout with non-leading or interleaved ligand indices to expose accidental first-`N` slicing. Fixtures must not require remote downloads for ordinary contract-test collection.
+
+Keep context preparation, pure injection, model forwarding, graph updates, and detached serialization as separate boundaries. In particular, the optimizer accepts a graph loss callable rather than importing Protenix, and the adapter must not call the optimizer or readout converter. Injection returns updated features without mutating the prepared base context. Model parameters remain resident/frozen while graph-dependent embeddings are recomputed for each new graph.
+
+If the upstream audit requires a contract change, update the shared type/schema, producer, affected consumers, fixture, and boundary tests in one coordinated change. Record the reason and contract revision. Reject incompatible vocabulary/pair ordering, context, geometry mode, checkpoint identity, or schema during resume instead of guessing or silently remapping arrays.
+
+### 6.3 Common development and merge practices
+
+- Use one branch/isolated worktree per active implementation track when working concurrently. Do not have multiple agents edit the same checkout/files without an explicit ownership handoff. Start from a common integration baseline and keep changes small enough to review.
+- Each track owns its table-listed files. T4 serializes shared exports/configuration/marker/contract changes; the documentation owner serializes documentation/ledger changes. Assign a single owner to upstream dependency patches. This avoids independent feature-hook variants and conflicting environment edits.
+- Use the same resolved Python/JAX/dependency/checkpoint baseline and shared fixture manifest. Dependency changes are a coordinated decision with source/environment hashes, not track-local upgrades.
+- Keep imports lazy and model loading explicit. Ordinary contract tests must not download checkpoints or initialize every model stack. Typed signatures, inline shape/mask/gradient comments, scoped Ruff checks, and boundary assertions apply to new code.
+- A track handoff includes its source diff/revision, contract revision, fixture IDs, relevant selected test commands/results, failures, and unresolved native assumptions. A mocked result must be labeled as such; a missing real-model check stays pending.
+- Merge a thin compatible slice early, then expand it. Run the affected boundary tests on the merged source, since passing tests on separate branches do not establish that their combination works. Re-test when an interface, environment, fixture, model path, or relevant implementation changes; avoid unrelated full-model panels.
+- Keep raw failures and evidence in the ledger. The final native acceptance run uses a single immutable combined source release, including uncommitted contents and dependency patches, with a unique run directory. Evidence from an older branch/release cannot validate later merged code.
+
+### 6.4 Tests that make the tracks work together
+
+Module tests establish local behavior. The following integration tests establish compatibility across the boundaries; they supplement the acceptance gates in section 7.
+
+| Test | Tracks joined | What it must catch |
+| --- | --- | --- |
+| Shared graph -> injection | T1 + T2 | One-hot retained-feature parity, upper-triangle pair identity, floating element/bond injection, fixed occupancy, and unchanged native protein blocks. |
+| Explicit indices -> objective | T2 + T3 | Correct contact reduction/sign/bin convention with non-leading/interleaved ligand and protein indices; no assumptions about first-`N` token layout. |
+| Graph -> real Tiny -> raw derivatives | T1 + T2 + T3 | Finite-difference atom/bond-existence tangent derivatives, both symmetric entries contributing to a stored edge, and null bond-order directions at fixed existence. A test double cannot prove this native path. |
+| Graph A -> graph B -> graph A | T1 + T2 + T3 | A changes to B when identity/existence changes, A reproduces on the second call with the same key, and base features/protein blocks remain unchanged. Detects in-place mutation and stale graph-dependent caches. |
+| Geometry-off conformer substitution | T2 + T3 | Changed unused ligand reference coordinates/conformer do not change outputs, occupancy stays present, and native protein reference channels remain active. |
+| Evaluator -> projected step -> trace | T1 + T4 | Separate step sizes, simplex invariants, raw nonfinite rejection with a retained failure record, and loss/gradient records tied to the exact evaluated state. |
+| Readout -> continued relaxed forward | T1 + T3 + T4 | Raw argmax/conversion, including a failed conversion, does not alter the next `X/E_upper` or introduce a repair into the differentiated path. |
+| Checkpoint -> fresh-process resume | T1-T4 | Uninterrupted and resumed continuations match within declared precision tolerances, including the next RNG key, iteration labels, and context/model identities; incompatible schemas/identities fail explicitly. |
+| Full two-mode execution | T1-T4 | Ligand-only and protein-plus-ligand graph -> features -> resident Tiny -> scalar -> raw gradients -> projected update -> checkpoint/reload. Verify one model load and no diffusion/confidence in the cheap path. |
+
+Small deterministic test doubles and analytic losses are useful for interface, projection, and serialization tests. Use deliberately permuted indices and deliberate failure inputs rather than tests that merely repeat an implementation's formulas. The final derivative/forward/restart evidence must exercise the real resolved Tiny checkpoint on the assembled code. A model spy can prove calls were excluded or loading was resident; it cannot establish biological/native gradient fidelity.
+
+The proposed commands below illustrate the selected test split after the files and marker exist. Execute numerical tests in the agreed execution environment, record the exact final commands, and do not treat these examples as results:
+
+```bash
+# Selected unit/boundary tests, with real-checkpoint tests excluded.
+uv run pytest tests/test_small_molecule_*.py -o addopts= --strict-markers -m "not slow and not small_molecule_model"
+
+# Actual Tiny checks; override the repository's default exclusion of slow tests.
+uv run pytest tests/test_small_molecule_*.py -o addopts= --strict-markers -m small_molecule_model
+```
+
+Register `small_molecule_model` centrally before these commands are used. Parameterize the appropriate integration cases over both forward modes. Confirm the selected native tests actually execute: skipped, deselected, or expected-failure cases remain pending acceptance evidence. Set tolerances and RNG policy before judging outcomes; retain test output and source/input identities. No CI service or HPC submission is introduced by this documentation update.
+
+### 6.5 Integration milestones and stopping rule
+
+| Milestone | Parallel progress | Required combined evidence |
+| --- | --- | --- |
+| **M0: shared-contract kickoff** | Agree graph/callable/output/artifact boundaries and file ownership. T2 starts the upstream audit; T1/T3/T4 can build independent mechanics/scaffolding. | One contract/fixture plan and pinned dependency baseline. Native feature details are still visibly pending. |
+| **M1: track contracts usable** | T1 supplies real state/updates; T2 resolves the native feature table/hook; T3 supplies native hard-input trunk output; T4 supplies serialization and shared fixtures. | Producer/consumer contract tests pass on a merged slice, and native audit blockers are resolved for the next milestone. |
+| **M2: early complete pipeline** | T4 assembles T1-T3 before each track is polished; fix integration failures at their owning boundary. | Both modes complete one real graph -> objective -> raw backward -> projected step -> checkpoint/reload using the same source/context contract. |
+| **M3: Stage 0 acceptance** | Add only the remaining derivative, regression, short-trajectory and resume checks. | Gates A-G pass on the same immutable combined release, with ledger/artifact evidence and declared limitations. Then hand off immediately to Stage 1. |
+
+The likely critical path is T2's audited native injection/geometry path -> T3's real graph gradients -> T4's combined validation. T1 and artifact mechanics should be ready by the time that path is available. A track marked complete or a set of independently passing unit suites does not close Stage 0; the combined M3 evidence does.
+
+## 7. Validation gates and acceptance evidence
+
+These are planned checks, not completed results. Use a small fixture first; avoid multi-target or multi-seed scientific panels. Unit/contract checks establish mechanics, while real-checkpoint checks establish the actual gradient path. A mock alone cannot pass Stage 0.
+
+| Gate | Check | Required evidence |
+| --- | --- | --- |
+| A. Representation | Synthetic graph projection/reconstruction, fixed occupancy, deterministic pair indexing. | Simplex rows sum to one within the declared precision tolerance; symmetry and diagonal NO_BOND hold exactly by construction; no variable charge/size. |
+| B. Native hard sanity | Run the ordinary hard fixture using the resolved native Protenix ligand path. | Finite trunk/distogram outputs; explicit atom/token order and input identities. Native conformer input is a reference case, not the relaxed forward's geometry. |
+| C. Geometry-off hard parity | Run the same one-hot graph through the graph adapter with geometry disabled. | Retained element/bond/protein features agree with the corresponding native feature contract. Any output difference from the ordinary conformer case is documented as an intentional geometry ablation. |
+| D. Relaxed forward/backward | Run an interior relaxed version in ligand-only and protein-plus-ligand modes. | Finite raw outputs/loss/gradients, nonzero atom-identity and bond-existence tangent gradients, correct shape/masks, and no model parameter updates. |
+| E. Perturbations and derivatives | Exchange probability mass within selected atom and bond simplex rows. | Bond-existence perturbations change the native model output/objective; representative autodiff directional derivatives agree with finite differences; bond-order exchanges at fixed existence are invariant. |
+| F. Projected trajectory and restart | Run about 5-10 engineering steps, save, then compare uninterrupted with resumed continuation. | Finite raw quantities and graph invariants at each step; complete artifacts and matching replay within declared environment/precision tolerance. No chemical-validity claim. |
+| G. Protein regression and cheap execution | Exercise retained protein API and inspect/model-spy the trunk-only path. | Native protein behavior preserved and no diffusion/confidence call in the default graph path. |
+
+For finite differences, use directions that preserve row sum, such as moving mass from C to N or from NO_BOND to SINGLE in one stored unordered pair. Use an interior relaxed state, the same RNG key, identical context, and no projection/argmax/repair inside the compared forward calls. Check that both perturbations remain nonnegative. Compare
+
+`(L(graph + epsilon*d) - L(graph - epsilon*d)) / (2*epsilon)`
+
+against the dot product of the raw autodiff gradient and `d`. Use a few representative directions and an epsilon sweep (for example `1e-3`, `1e-4`, `1e-5` in float32), recording absolute/relative errors and a sensible stable range. Declare tolerances in configuration before judging a run; do not demand nonzero gradients for bond-order directions the existence-only model cannot observe. Avoid nondifferentiable max ties for contact-objective derivative checks.
+
+Mark real-checkpoint tests explicitly, for example `slow` plus a new `small_molecule_model` marker registered in `pyproject.toml`, and select them directly. Keep imports lazy so unit collection does not load/download every model. Future commands should name the graph test files/markers; a repository-wide model test run is unnecessary for this Stage 0 change. Match Python 3.12 and one JAX runtime group to the execution environment.
+
+## 8. Stage 1 handoff and stopping rule
+
+Stage 0 supplies the context/model hooks and artifacts needed to perform the protocol's one quick objective-selection gate. It does not make PAE validity a requirement for completing the cheap graph interface.
+
+At Stage 1 entry, try native mean intra-ligand PAE exactly once as prescribed: compare the ordinary hard conformer path with geometry-off graph input; require finite values, truthful valid ligand frames, and stable nonzero gradients to `X` and bond existence. This needs an explicit optional native structure/confidence path. Do not inherit the current protein-only backbone extraction; audit the native ligand confidence/frame path and return only real supported fields. If any prerequisite fails, retain the failure and use the specified target-contact fallback without modifying the confidence head or inventing a ligand-only proxy.
+
+The PAE loss is the mean of native `PAE_ij` over off-diagonal ligand-ligand token pairs with valid frames. Include both directed pairs `i -> j` and `j -> i`, since PAE is asymmetric, and minimize this loss. An empty valid-pair set fails the gate; it must not produce a zero or fabricated confidence value. Do not substitute ligand pLDDT for this ligand-only objective.
+
+For that fallback, prepare complete BRD4-BD1 from 3MXF with JQ1 removed; do not define a pocket. With explicit ligand-token set `L` and target-token set `T`, implement:
+
+```text
+c_ij = sum softmax(distogram_logits_ij)[native distance bins < 8 angstrom]
+S_contact = mean over i in L of max over j in T of c_ij
+loss = -S_contact
+```
+
+Audit the resolved native bin convention rather than assuming the local centers exactly reproduce an upstream threshold. Reuse `contact_log_probability` only after that check, exponentiating when probabilities are needed. This is a target-interaction debugging score; it does not establish affinity or binding. The ligand-only Stage 0 diagnostic scalar must not become a replacement scientific objective.
+
+Stop Stage 0 as soon as gates A-G pass for reproducible ligand-only and protein-plus-ligand forward/backward execution. Hand over the source release, configuration, feature/geometry contract, validation evidence, restartable example, representation limitations, and experiment ledger. Move to Stage 1's one canonical unconstrained trajectory; chemical constraints and learned molecular priors remain later stages.
+
+## 9. Review and documentation responsibilities
+
+Keep a separate reviewer for modularity/reuse and a separate documentation owner during implementation, alongside T4's integration owner. The reviewer checks that protein APIs remain intact, shared graph identity is preserved, native helper reuse is justified, and adapter/readout boundaries are explicit. Implementers write inline shape/mask/gradient comments, with the documentation owner reviewing them and maintaining the common contract explanation, native feature-consumer table, example commands, limitations, contract-change history, and experiment ledger. T4 links the combined acceptance evidence rather than independently approving its own implementation.
+
+On completion, replace proposed gate statuses with evidence links and report remaining unsupported modes. Until then, preserve the distinction between design decisions, upstream assumptions requiring an audit, and actual numerical results.
