@@ -31,22 +31,32 @@ def test_graph_only_raw_derivatives_and_separate_analytic_steps():
 
     def loss(g, *, key):
         del key
-        value = jnp.sum((g.X - target.X) ** 2) + 3 * jnp.sum((g.E_upper - target.E_upper) ** 2)
+        value = jnp.sum((g.X - target.X) ** 2) + 3 * jnp.sum(
+            (g.E_upper - target.E_upper) ** 2
+        )
         return value, {"raw_output": g.X @ jnp.arange(6.0), "label": "analytic"}
 
     key = jax.random.key(13)
     step = evaluate_and_project(loss, graph, key, eta_X=0.1, eta_E=0.05)
     validate_graph(step.next_graph)
     np.testing.assert_allclose(step.evaluation.gradients.X, 2 * (graph.X - target.X))
-    np.testing.assert_allclose(step.evaluation.gradients.E_upper, 6 * (graph.E_upper - target.E_upper))
+    np.testing.assert_allclose(
+        step.evaluation.gradients.E_upper, 6 * (graph.E_upper - target.E_upper)
+    )
     # These settings stay interior, so an analytic convex combination specifies
     # the result without reproducing the projection algorithm under test.
-    np.testing.assert_allclose(step.next_graph.X, 0.8 * graph.X + 0.2 * target.X, atol=1e-7)
-    np.testing.assert_allclose(step.next_graph.E_upper, 0.7 * graph.E_upper + 0.3 * target.E_upper, atol=1e-7)
+    np.testing.assert_allclose(
+        step.next_graph.X, 0.8 * graph.X + 0.2 * target.X, atol=1e-7
+    )
+    np.testing.assert_allclose(
+        step.next_graph.E_upper, 0.7 * graph.E_upper + 0.3 * target.E_upper, atol=1e-7
+    )
     assert step.eta_X == 0.1
     assert step.eta_E == 0.05
     assert step.evaluation.graph is graph
-    np.testing.assert_array_equal(jax.random.key_data(step.evaluation.key), jax.random.key_data(key))
+    np.testing.assert_array_equal(
+        jax.random.key_data(step.evaluation.key), jax.random.key_data(key)
+    )
     next_evaluation = evaluate_graph(loss, step.next_graph, key)
     assert float(next_evaluation.value) < float(step.evaluation.value)
     # The old loss stays attached to the old graph, never to next_graph.
@@ -106,7 +116,9 @@ def test_nonfinite_raw_quantities_fail_without_sanitation_and_are_retained(locat
     assert failure.graph is graph
     assert failure.gradients is not None
     assert failure.nonfinite_paths
-    np.testing.assert_array_equal(jax.random.key_data(failure.key), jax.random.key_data(key))
+    np.testing.assert_array_equal(
+        jax.random.key_data(failure.key), jax.random.key_data(key)
+    )
     if location == "value":
         assert np.isinf(failure.value)
     elif location == "aux":
@@ -130,12 +142,18 @@ def test_nonfinite_input_is_preserved_before_forward_is_called():
     assert captured.value.gradients is None
 
 
-@pytest.mark.parametrize("field,value", [("eta_X", -1), ("eta_E", np.inf), ("eta_X", np.nan)])
+@pytest.mark.parametrize(
+    "field,value", [("eta_X", -1), ("eta_E", np.inf), ("eta_X", np.nan)]
+)
 def test_invalid_step_sizes_are_rejected(field, value):
     graph = _interior()
-    evaluation = RawEvaluation(graph, jnp.array(0.0), {},
-                               RelaxedGraph(jnp.zeros_like(graph.X), jnp.zeros_like(graph.E_upper)),
-                               jax.random.key(0))
+    evaluation = RawEvaluation(
+        graph,
+        jnp.array(0.0),
+        {},
+        RelaxedGraph(jnp.zeros_like(graph.X), jnp.zeros_like(graph.E_upper)),
+        jax.random.key(0),
+    )
     settings = {"eta_X": 0.1, "eta_E": 0.1, field: value}
     with pytest.raises(ValueError, match=field):
         projected_step(evaluation, **settings)
@@ -143,9 +161,13 @@ def test_invalid_step_sizes_are_rejected(field, value):
 
 def test_manually_supplied_nonfinite_gradients_cannot_bypass_strict_update():
     graph = _interior()
-    evaluation = RawEvaluation(graph, jnp.array(0.0), {},
-                               RelaxedGraph(jnp.full_like(graph.X, jnp.nan), jnp.zeros_like(graph.E_upper)),
-                               jax.random.key(0))
+    evaluation = RawEvaluation(
+        graph,
+        jnp.array(0.0),
+        {},
+        RelaxedGraph(jnp.full_like(graph.X, jnp.nan), jnp.zeros_like(graph.E_upper)),
+        jax.random.key(0),
+    )
     with pytest.raises(NonfiniteEvaluationError):
         projected_step(evaluation, eta_X=0.1, eta_E=0.1)
 
@@ -154,7 +176,9 @@ def test_manually_supplied_nonfinite_gradients_cannot_bypass_strict_update():
 def test_manually_supplied_non_scalar_or_non_real_score_is_rejected(value):
     graph = _interior()
     evaluation = RawEvaluation(
-        graph, value, {},
+        graph,
+        value,
+        {},
         RelaxedGraph(jnp.zeros_like(graph.X), jnp.zeros_like(graph.E_upper)),
         jax.random.key(0),
     )

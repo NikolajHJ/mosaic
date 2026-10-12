@@ -203,7 +203,8 @@ def initialize_graph(
     atom_key, bond_key = jax.random.split(key)
     graph = RelaxedGraph(
         X=element_row
-        + atom_noise * jax.random.normal(atom_key, (n_atoms, len(ELEMENTS)), dtype=dtype),
+        + atom_noise
+        * jax.random.normal(atom_key, (n_atoms, len(ELEMENTS)), dtype=dtype),
         E_upper=bond_row
         + bond_noise
         * jax.random.normal(bond_key, (pair_count, len(BOND_STATES)), dtype=dtype),

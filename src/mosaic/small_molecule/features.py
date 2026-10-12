@@ -292,6 +292,10 @@ def prepare_context(
         "ligand_token_indices": ligand_tokens.tolist(),
         "hydrogens": "native AddHs followed by heavy-atom removal; no optimized H slots",
     }
+    # Authenticate the actual resident model inputs after dtype normalization,
+    # not only the NumPy importer's pre-cast integer one-hot representation.
+    prepared_native = _jax_features(native)
+    prepared_base = _jax_features(base)
     binding = dict(identities or {})
     protected = {
         "upstream_revision": UPSTREAM_REVISION,
@@ -300,8 +304,9 @@ def prepare_context(
         "input_sha256": hashlib.sha256(
             json.dumps(input_identity, sort_keys=True).encode()
         ).hexdigest(),
-        "native_features_sha256": _feature_hash(native),
-        "base_features_sha256": _feature_hash(base),
+        "native_features_sha256": _feature_hash(prepared_native),
+        "base_features_sha256": _feature_hash(prepared_base),
+        "native_precast_features_sha256": _feature_hash(native),
         "model_alias": MODEL_ALIAS,
     }
     if any(
@@ -315,7 +320,7 @@ def prepare_context(
         json.dumps(paths, sort_keys=True).encode()
     ).hexdigest()
     context = PreparedContext(
-        base_features=_jax_features(base),
+        base_features=prepared_base,
         ligand_atom_indices=tuple(ligand_atoms.tolist()),
         ligand_token_indices=tuple(ligand_tokens.tolist()),
         protein_token_indices=tuple(protein_tokens.tolist()),
@@ -323,7 +328,7 @@ def prepare_context(
         atom_names=names,
         geometry_mode="off",
         identities=binding,
-        native_features=_jax_features(native),
+        native_features=prepared_native,
     )
     validate_context(context)
     return context, graph

@@ -35,7 +35,12 @@ def test_pair_order_preserves_identifiable_unordered_edges_and_diagonal():
     graph = graph_from_hard([0, 1, 2, 3], [0, 1, 2, 3, 4, 1])
     i, j = pair_indices(4)
     assert list(zip(np.asarray(i), np.asarray(j))) == [
-        (0, 1), (0, 2), (0, 3), (1, 2), (1, 3), (2, 3)
+        (0, 1),
+        (0, 2),
+        (0, 3),
+        (1, 2),
+        (1, 3),
+        (2, 3),
     ]
     bonds = np.asarray(full_bonds(graph))
     assignments = bonds.argmax(axis=-1)
@@ -44,8 +49,12 @@ def test_pair_order_preserves_identifiable_unordered_edges_and_diagonal():
         [[0, 0, 1, 2], [0, 0, 3, 4], [1, 3, 0, 1], [2, 4, 1, 0]],
     )
     np.testing.assert_array_equal(bonds, bonds.swapaxes(0, 1))
-    np.testing.assert_array_equal(bonds[np.arange(4), np.arange(4)], [[1, 0, 0, 0, 0]] * 4)
-    np.testing.assert_array_equal(np.diag(np.asarray(bond_existence(graph))), np.zeros(4))
+    np.testing.assert_array_equal(
+        bonds[np.arange(4), np.arange(4)], [[1, 0, 0, 0, 0]] * 4
+    )
+    np.testing.assert_array_equal(
+        np.diag(np.asarray(bond_existence(graph))), np.zeros(4)
+    )
 
 
 def test_reconstruction_is_jittable_and_accumulates_both_directed_gradients():
@@ -97,11 +106,18 @@ def test_invalid_atom_count_is_rejected(n_atoms):
 
 @pytest.mark.parametrize(
     "elements,bonds,error",
-    [([0, 1], [], ValueError), ([0, 6], [1], ValueError),
-     ([0, 1], [5], ValueError), ([0.0, 1.0], [1], TypeError),
-     ([0, 1], [True], TypeError), ([[0, 1]], [0], ValueError)],
+    [
+        ([0, 1], [], ValueError),
+        ([0, 6], [1], ValueError),
+        ([0, 1], [5], ValueError),
+        ([0.0, 1.0], [1], TypeError),
+        ([0, 1], [True], TypeError),
+        ([[0, 1]], [0], ValueError),
+    ],
 )
-def test_hard_assignments_reject_shape_dtype_or_unsupported_categories(elements, bonds, error):
+def test_hard_assignments_reject_shape_dtype_or_unsupported_categories(
+    elements, bonds, error
+):
     with pytest.raises(error):
         graph_from_hard(elements, bonds)
 
@@ -111,11 +127,19 @@ def test_hard_assignments_reject_shape_dtype_or_unsupported_categories(elements,
     [
         (RelaxedGraph(jnp.ones((2, 5)), jnp.ones((1, 5)) / 5), ValueError),
         (RelaxedGraph(jnp.ones((2, 6)) / 6, jnp.ones((2, 5)) / 5), ValueError),
-        (RelaxedGraph(jnp.ones((2, 6), dtype=jnp.int32), jnp.ones((1, 5)) / 5), TypeError),
+        (
+            RelaxedGraph(jnp.ones((2, 6), dtype=jnp.int32), jnp.ones((1, 5)) / 5),
+            TypeError,
+        ),
         (RelaxedGraph(jnp.full((2, 6), jnp.nan), jnp.ones((1, 5)) / 5), ValueError),
         (RelaxedGraph(jnp.ones((2, 6)), jnp.ones((1, 5)) / 5), ValueError),
-        (RelaxedGraph(jnp.array([[-0.1, 0.22, 0.22, 0.22, 0.22, 0.22]] * 2),
-                      jnp.ones((1, 5)) / 5), ValueError),
+        (
+            RelaxedGraph(
+                jnp.array([[-0.1, 0.22, 0.22, 0.22, 0.22, 0.22]] * 2),
+                jnp.ones((1, 5)) / 5,
+            ),
+            ValueError,
+        ),
     ],
 )
 def test_validation_rejects_malformed_graphs(graph, error):
@@ -133,19 +157,28 @@ def test_validation_proposal_mode_checks_finiteness_but_allows_off_simplex():
 
 
 def test_initializer_baseline_has_requested_degree_and_carbon_mass():
-    graph = initialize_graph(5, jax.random.key(3), carbon_probability=0.8,
-                             expected_degree=2.0, atom_noise=0, bond_noise=0)
+    graph = initialize_graph(
+        5,
+        jax.random.key(3),
+        carbon_probability=0.8,
+        expected_degree=2.0,
+        atom_noise=0,
+        bond_noise=0,
+    )
     validate_graph(graph)
     np.testing.assert_allclose(graph.X[:, 0], 0.8, atol=1e-7)
     np.testing.assert_allclose(graph.X[:, 1:], 0.04, atol=1e-7)
     np.testing.assert_allclose(graph.E_upper[:, 0], 0.5, atol=1e-7)
-    np.testing.assert_allclose(np.asarray(bond_existence(graph)).sum(axis=-1), 2, atol=1e-6)
+    np.testing.assert_allclose(
+        np.asarray(bond_existence(graph)).sum(axis=-1), 2, atol=1e-6
+    )
     assert graph_diagnostics(graph)["expected_degree"] == pytest.approx(2)
 
 
 def test_initializer_independent_upper_pair_noise_reproducible_and_projected():
-    settings = dict(carbon_probability=0.8, expected_degree=1.5,
-                    atom_noise=0.15, bond_noise=0.15)
+    settings = dict(
+        carbon_probability=0.8, expected_degree=1.5, atom_noise=0.15, bond_noise=0.15
+    )
     graph = initialize_graph(5, jax.random.key(9), **settings)
     replay = initialize_graph(5, jax.random.key(9), **settings)
     other = initialize_graph(5, jax.random.key(10), **settings)
@@ -154,13 +187,21 @@ def test_initializer_independent_upper_pair_noise_reproducible_and_projected():
     np.testing.assert_array_equal(graph.E_upper, replay.E_upper)
     assert not np.array_equal(graph.E_upper, other.E_upper)
     assert len(np.unique(np.asarray(graph.E_upper), axis=0)) == 10
-    np.testing.assert_array_equal(full_bonds(graph), np.asarray(full_bonds(graph)).swapaxes(0, 1))
+    np.testing.assert_array_equal(
+        full_bonds(graph), np.asarray(full_bonds(graph)).swapaxes(0, 1)
+    )
 
 
 @pytest.mark.parametrize(
-    "settings", [{"carbon_probability": 1.1}, {"expected_degree": 3.1},
-                 {"expected_degree": -1}, {"atom_noise": -1},
-                 {"bond_noise": np.inf}, {"dtype": jnp.int32}],
+    "settings",
+    [
+        {"carbon_probability": 1.1},
+        {"expected_degree": 3.1},
+        {"expected_degree": -1},
+        {"atom_noise": -1},
+        {"bond_noise": np.inf},
+        {"dtype": jnp.int32},
+    ],
 )
 def test_initializer_rejects_invalid_configuration(settings):
     with pytest.raises((ValueError, TypeError)):
@@ -168,8 +209,9 @@ def test_initializer_rejects_invalid_configuration(settings):
 
 
 def test_single_atom_has_no_pairs_no_self_bonds_and_defined_diagnostics():
-    graph = initialize_graph(1, jax.random.key(0), expected_degree=0,
-                             atom_noise=0, bond_noise=0)
+    graph = initialize_graph(
+        1, jax.random.key(0), expected_degree=0, atom_noise=0, bond_noise=0
+    )
     hard = graph_from_hard([5], [])
     validate_graph(hard)
     assert graph.E_upper.shape == (0, 5)

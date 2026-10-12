@@ -202,7 +202,12 @@ def projected_step(
     next_graph = project_graph(proposal, atol=atol)
     projection_residuals = {
         name: float(
-            np.linalg.norm(np.asarray(getattr(next_graph, name) - getattr(proposal, name)))
+            np.linalg.norm(
+                np.asarray(
+                    getattr(next_graph, name) - getattr(proposal, name),
+                    dtype=np.float64,
+                )
+            )
         )
         for name in ("X", "E_upper")
     }

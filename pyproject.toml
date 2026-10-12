@@ -82,7 +82,7 @@ torch = { index = "pytorch" }
 torchvision = { index = "pytorch" }
 torchaudio = { index = "pytorch" }
 joltz = { git = "https://github.com/nboyd/joltz" }
-protenix = { git = "https://github.com/escalante-bio/protenij"}
+protenix = { git = "https://github.com/escalante-bio/protenij", rev = "97cf8172f61829681582f06de7052485bc94eae4" }
 jablang = { git = "https://github.com/escalante-bio/jablang" }
 joltzgen = { git = "https://github.com/escalante-bio/joltzgen.git" }
 jopenfold3 = { git = "https://github.com/escalante-bio/jopenfold3.git" }
@@ -104,6 +104,7 @@ markers = [
     "model_smoke: loads real checkpoints and exercises model featurization",
     "model_forward: runs model output, prediction, and loss forwards",
     "opendde_smoke: exercises OpenDDE weight-free featurization",
+    "small_molecule_model: Stage 0 tests requiring the pinned resident Protenix-Tiny checkpoint",
 ]
 addopts = "-m 'not slow'"
 

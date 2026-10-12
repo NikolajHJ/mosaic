@@ -1,8 +1,8 @@
 # Stage 0 implementation plan: relaxed small-molecule graphs in Mosaic
 
-Date: 2026-10-10. Status: proposed implementation; no model execution or numerical validation has been performed for this plan.
+Plan date: 2026-10-10. Implementation started: 2026-10-12; documentation update: 2026-10-13. Status: all Work 0-5 code and tests authored and merged; independently reviewed. Numerical acceptance gates A-G remain pending. Final combined static-check and immutable-package receipts are recorded separately when finalized.
 
-Source of requirements: [project description](../project_desc.pdf), especially Stage 0 (page 2, section 3), the V0 optimizer contract (pages 3-5, section 4), and the minimum outputs (page 7, section 8). The reviewed Mosaic baseline is commit `1eb4af6`. The source PDF SHA-256 is `c9785f45dcd34fbc3feaebcc0bc57905dc606387f76308bb6364eadb40cbeda0`; it is currently an untracked input in this checkout.
+Source of requirements: [project description](project_desc.pdf), especially Stage 0 (page 2, section 3), the V0 optimizer contract (pages 3-5, section 4), and the minimum outputs (page 7, section 8). The reviewed Mosaic baseline is commit `1eb4af6`. The source PDF SHA-256 is `c9785f45dcd34fbc3feaebcc0bc57905dc606387f76308bb6364eadb40cbeda0`; the user has moved the input to `docs/project_desc.pdf`, and that move is currently uncommitted.
 
 ## 1. Outcome and scope
 
@@ -23,6 +23,29 @@ Follow this dependency order, with independent tasks assigned to the parallel tr
 Excluded from Stage 0: model training, learned feature bridges, affinity heads, molecular priors, valence/connectivity/sparsity constraints, hardening schedules, charge optimization, variable atom count, conformer updates inside optimization, and broad optimizer/model-depth searches. Discrete molecule conversion is allowed during fixture preparation and detached evaluation only.
 
 This plan concerns the Mosaic repository and the supplied Protenix-Tiny protocol. It does not import the AE/VAE/latent pipeline from the separate DBMol exploratory repository.
+
+### Current implementation receipt, 2026-10-12–13
+
+The user authorized implementation of all planned code components and tests, with progress and pivotal decisions documented. HPC is unavailable for this turn: no HPC connections, uploads, submissions, local numerical tests, preprocessing, model execution, or evaluation are performed. Authored tests and source review are implementation evidence, not passed validation gates. The [2026-10-10 native protein smoke](hpc_protenix_tiny.md) remains historical evidence for a different input/path and cannot validate this graph branch.
+
+| Planned work | Code/documentation status | Numerical acceptance |
+| --- | --- | --- |
+| Work 0: native audit | Complete: pinned source/runtime guards and consumer table in [the native contract](stage_0_native_contract.md). | Native hard/relaxed parity and actual model execution pending. |
+| Work 1: graph state | Complete: T1 commit `8cb6f6c`, shared X/E_upper state, mapping, initialization, projection and authored tests; shared acetanilide fixture and native preparation present. | Tests not executed; gate A pending. |
+| Work 2: native injection | Complete: T2 code merged through `4168f0f`/`3470f17`, differentiable float injection, explicit geometry hook and native context checks. | Geometry/protein preservation, occupancy and conformer invariance unmeasured. |
+| Work 3: resident Tiny | Complete: T3 pinned offline loader, native/geometry-off trunk paths, graph LossTerm composition and explicit confidence boundary. | Both forward modes and derivative checks pending. |
+| Work 4: graph loop | Complete: strict raw graph derivatives, separate probability-space projected steps, fixed/split typed RNG and correctly scored final evaluation. | No trajectory or restart run; gate F pending. |
+| Work 5: artifacts/readouts | Complete: context serialization, raw readout/failure retention, immutable checkpoint commit pointers, source/environment bindings, CLI/config, validation suite, tests and future allocation/quota launcher. | Artifact/replay behavior and real validation suite not executed. |
+
+Implementation milestones and validation milestones are separate. M0's shared contract/source audit is complete; M1's code is integrated but its producer/consumer test evidence remains pending; M2/M3 require later actual model execution. Code completion does not close Stage 0 acceptance. [The ledger](experiment_ledger.md) records implementation/static-review evidence without inventing a numerical experiment or submission; [the usage guide](stage_0_usage.md) gives future allocated-HPC commands.
+
+Pivotal decisions: preserve native `ref_mask` rather than remove occupied identity embeddings; gate ligand geometry at its actual encoder consumers; use neutral `Q000` slot names; serialize the native preparation's sampled conformer rather than promise regeneration; inject float element distributions and bond existence while explicitly losing bond order; reuse only one final recycle; return native distograms without fabricating PAE/coordinates. The pinned native 64-class label edges support a conservative whole-bin `<8 Å` contact score, not an exact distance CDF. Details and fidelity exceptions are in the native contract. Stage 1 PAE remains deferred and unsupported by the geometry-off graph result.
+
+The independent reviewer inspected merged implementation slices. Fixes included integer-native element truncation, nested auxiliary metrics under LossTerm composition, raw proposal overflow/failure retention, leaf precision checks, immutable per-step/evaluation checkpoint commit pointers, complete CLI settings, source/environment resume bindings, and strict finite trunk/distogram auxiliary checks. Host NumPy simplex projection is reused outside differentiation; no sequence evaluator sanitizes raw graph values. Numerical correctness of these fixes remains untested in this outage turn.
+
+Final launcher review also separated scheduler evidence from numerical payloads: the parent run may contain LSF stdout/stderr, while an atomic `mkdir RUN/payload` refuses reuse of an existing payload. All numerical outputs and pytest temporary directories stay inside that new payload, preserving earlier runs. The launcher authenticates the source manifest before executing quota helpers and rejects unmanifested execution files. These are authored preservation/authentication boundaries; allocated-HPC behavior remains untested.
+
+Prepared-feature identities hash the actual dtype-normalized resident arrays; the original NumPy importer bytes have a separate pre-cast hash. This avoids naming a pre-cast fingerprint as the identity of the arrays used by the model. Final static checks pass; local release receipts are stored under `results/releases/stage0-20261013/`. Numerical gates A-G remain pending.
 
 ## 2. What the current code already provides
 
@@ -334,7 +357,7 @@ S_contact = mean over i in L of max over j in T of c_ij
 loss = -S_contact
 ```
 
-Audit the resolved native bin convention rather than assuming the local centers exactly reproduce an upstream threshold. Reuse `contact_log_probability` only after that check, exponentiating when probabilities are needed. This is a target-interaction debugging score; it does not establish affinity or binding. The ligand-only Stage 0 diagnostic scalar must not become a replacement scientific objective.
+The resolved bin convention is now statically audited in [the native contract](stage_0_native_contract.md): 64 labels have 63 native thresholds and a final infinite upper edge. The graph loss sums complete bins with upper edges strictly below 8 Å, excluding the straddling class; this is a declared conservative whole-bin approximation rather than an exact continuous-distance CDF. The existing sequence-binder contact helper is not silently substituted. This target-interaction debugging score does not establish affinity/binding; its model/gradient behavior remains pending. The ligand-only Stage 0 diagnostic scalar must not become a replacement scientific objective.
 
 Stop Stage 0 as soon as gates A-G pass for reproducible ligand-only and protein-plus-ligand forward/backward execution. Hand over the source release, configuration, feature/geometry contract, validation evidence, restartable example, representation limitations, and experiment ledger. Move to Stage 1's one canonical unconstrained trajectory; chemical constraints and learned molecular priors remain later stages.
 

@@ -1,0 +1,17 @@
+{
+  "id": "acetanilide_v0",
+  "contract": "small_molecule_v0.1",
+  "smiles": "CC(=O)Nc1ccccc1",
+  "n_heavy_atoms": 10,
+  "element_order": ["C", "C", "O", "N", "C", "C", "C", "C", "C", "C"],
+  "bond_assignments": [[0,1,"SINGLE"],[1,2,"DOUBLE"],[1,3,"SINGLE"],[3,4,"SINGLE"],[4,5,"AROMATIC"],[5,6,"AROMATIC"],[6,7,"AROMATIC"],[7,8,"AROMATIC"],[8,9,"AROMATIC"],[4,9,"AROMATIC"]],
+  "absent_pairs": "NO_BOND; lexicographic i<j",
+  "interior_mixing": 0.15,
+  "protein_sequence": "ACDEFGHIKLMNPQRSTVWY",
+  "protein_role": "engineering fixture; no binding or target claim",
+  "msa": "one query row, no remote search",
+  "template": null,
+  "ordering_status": "declared RDKit SMILES order; checked against native importer during HPC preparation",
+  "synthetic_interleaved_ligand_tokens": [1,3,4,6,8,9,11,12,14,15],
+  "synthetic_interleaved_protein_tokens": [0,2,5,7,10,13]
+}

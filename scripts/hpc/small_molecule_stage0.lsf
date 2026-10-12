@@ -1,0 +1,59 @@
+#!/bin/bash
+#BSUB -J mosaic-stage0
+#BSUB -q gpua10
+#BSUB -n 4
+#BSUB -R "span[hosts=1]"
+#BSUB -R "rusage[mem=8GB]"
+#BSUB -gpu "num=1:mode=exclusive_process"
+#BSUB -W 02:00
+
+# FUTURE ONLY: immutable release, unique run, verified actual storage pool,
+# and SHA256 of source_manifest.json supplied as four explicit arguments.
+# Submit stdout/stderr to absolute pre-created run paths. This script neither
+# installs dependencies nor stages/downloads model assets.
+set -euo pipefail
+release=$1
+run=$2
+pool=$3
+manifest_sha=$4
+if [[ -z "${LSB_JOBID:-}" ]]; then
+  echo "Run this numerical test launcher only inside an LSF allocation." >&2
+  exit 2
+fi
+project=/work3/s234818/mosaic
+python="$project/envs/protenix-tiny/bin/python"
+module load python3/3.12.11 cuda/12.9.1 cudnn/v9.13.0.50-prod-cuda-12.X
+mkdir -p "$run"
+# Parent may already contain scheduler stdout/stderr. Atomically claim a fresh
+# payload: pytest's basetemp cleanup must never erase an older run's evidence.
+mkdir "$run/payload"
+run="$run/payload"
+"$python" "$release/scripts/verify_stage0_release.py" "$release" "$manifest_sha"
+"$python" "$release/scripts/hpc/stage0_quota_preflight.py" --run-dir "$run" --storage-pool "$pool"
+export PYTHONUNBUFFERED=1
+export OMP_NUM_THREADS=4 MKL_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4
+export PYTHONPATH="$release/src:$release/tests"
+export MOSAIC_CACHE_DIR="$project/cache/mosaic"
+export HF_HOME="$project/cache/huggingface"
+export XDG_CACHE_HOME="$project/cache/xdg"
+export TMPDIR="$run/tmp"
+export PYTHONPYCACHEPREFIX="$run/pycache"
+export HF_HUB_OFFLINE=1 HF_HUB_DISABLE_TELEMETRY=1
+export JAX_PLATFORMS=cuda
+export XLA_PYTHON_CLIENT_PREALLOCATE=false
+mkdir -p "$TMPDIR"
+cd "$release"
+hostname > "$run/host.txt"
+module list 2> "$run/modules.txt"
+nvidia-smi --query-gpu=name,driver_version,memory.total --format=csv > "$run/gpu.txt"
+"$python" -c 'import importlib.metadata as m; print("\n".join(sorted("{}=={}".format(d.metadata["Name"], d.version) for d in m.distributions())))' > "$run/environment.freeze.txt"
+export MOSAIC_STAGE0_CACHE="$MOSAIC_CACHE_DIR/protenix"
+export MOSAIC_STAGE0_RESULTS="$run/native-tests"
+"$python" -m pytest tests/test_small_molecule_*.py -o addopts= --strict-markers \
+  -m 'not slow and not small_molecule_model' -o cache_dir="$run/pytest-cache" \
+  --basetemp "$run/pytest-unit-tmp" --junitxml="$run/unit.xml" > "$run/unit.log" 2>&1
+"$python" -m pytest tests/test_small_molecule_*.py -o addopts= --strict-markers \
+  -m small_molecule_model -o cache_dir="$run/pytest-cache" \
+  --basetemp "$run/pytest-native-tmp" --junitxml="$run/native.xml" > "$run/native.log" 2>&1
+"$python" "$release/examples/small_molecule_stage0.py" --cache-dir "$MOSAIC_STAGE0_CACHE" \
+  --output "$run/example" > "$run/example.log" 2>&1
