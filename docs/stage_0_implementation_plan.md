@@ -1,6 +1,6 @@
 # Stage 0 implementation plan: relaxed small-molecule graphs in Mosaic
 
-Plan date: 2026-10-10. Implementation started: 2026-10-12; documentation update: 2026-10-13. Status: all Work 0-5 code and tests authored and merged; independently reviewed. Numerical acceptance gates A-G remain pending. Final combined static-check and immutable-package receipts are recorded separately when finalized.
+Plan date: 2026-10-10. Implementation started: 2026-10-12; documentation update: 2026-10-13. Status: all Work 0-5 code and tests authored and merged; independently reviewed. Static checks and local immutable source packaging completed. Numerical acceptance gates A-G remain pending. [The ledger](experiment_ledger.md) records the final receipts.
 
 Source of requirements: [project description](project_desc.pdf), especially Stage 0 (page 2, section 3), the V0 optimizer contract (pages 3-5, section 4), and the minimum outputs (page 7, section 8). The reviewed Mosaic baseline is commit `1eb4af6`. The source PDF SHA-256 is `c9785f45dcd34fbc3feaebcc0bc57905dc606387f76308bb6364eadb40cbeda0`; the user has moved the input to `docs/project_desc.pdf`, and that move is currently uncommitted.
 
