@@ -8,15 +8,18 @@ from numbers import Integral
 from typing import Any
 
 import equinox as eqx
-import jax
 import jax.numpy as jnp
 
 from mosaic.common import LossTerm
 
 from .contracts import MolecularTrunkOutput, PreparedContext
 from .features import (
-    ASSET_REVISION, ASSET_SHA256, MODEL_ALIAS, bootstrap_native_assets,
-    inject_graph, native_cache_dir,
+    ASSET_REVISION,
+    ASSET_SHA256,
+    MODEL_ALIAS,
+    bootstrap_native_assets,
+    inject_graph,
+    native_cache_dir,
 )
 from .native_hook import HOOK_VERSION, UPSTREAM_REVISION, with_geometry_hook
 from .state import RelaxedGraph
@@ -34,8 +37,14 @@ def native_distogram_bins():
 
 
 def _check_recycling(recycling_steps):
-    if isinstance(recycling_steps, bool) or not isinstance(recycling_steps, Integral) or recycling_steps != 1:
-        raise ValueError("Stage 0 verifies exactly one final native trunk iteration; recycling_steps must be 1")
+    if (
+        isinstance(recycling_steps, bool)
+        or not isinstance(recycling_steps, Integral)
+        or recycling_steps != 1
+    ):
+        raise ValueError(
+            "Stage 0 verifies exactly one final native trunk iteration; recycling_steps must be 1"
+        )
 
 
 def _native_trunk(model, features, key):
@@ -43,9 +52,13 @@ def _native_trunk(model, features, key):
     # recycle state and differentiates the final trunk iteration. With one cycle
     # no previous graph-dependent state or stale input embedding is reused.
     from mosaic.losses.protenix import get_trunk_state
+
     return get_trunk_state(
-        model=model, features=features, initial_recycling_state=None,
-        recycling_steps=1, key=key,
+        model=model,
+        features=features,
+        initial_recycling_state=None,
+        recycling_steps=1,
+        key=key,
     )
 
 
@@ -71,6 +84,7 @@ class FrozenProtenixTiny(eqx.Module):
         """
         bootstrap_native_assets(cache_dir, include_model=True)
         import protenix.backend as backend
+
         native_cache = native_cache_dir(cache_dir)
         backend._CACHE_DIR = str(native_cache)
         model = backend.load_model(str(native_cache / MODEL_ALIAS))
@@ -79,10 +93,13 @@ class FrozenProtenixTiny(eqx.Module):
         # no_grad or stop_gradient on the mutable element/bond channels.
         model = eqx.tree_at(lambda m: m.msa_module.training, model, False)
         return cls(
-            native_model=model, model=with_geometry_hook(model),
+            native_model=model,
+            model=with_geometry_hook(model),
             identities={
-                "model_alias": MODEL_ALIAS, "upstream_revision": UPSTREAM_REVISION,
-                "asset_revision": ASSET_REVISION, "hook_version": HOOK_VERSION,
+                "model_alias": MODEL_ALIAS,
+                "upstream_revision": UPSTREAM_REVISION,
+                "asset_revision": ASSET_REVISION,
+                "hook_version": HOOK_VERSION,
                 "model_eqx_sha256": ASSET_SHA256[MODEL_ALIAS + ".eqx"],
                 "model_skeleton_sha256": ASSET_SHA256[MODEL_ALIAS + ".skeleton.pkl"],
                 "evaluation_mode": "native MSA training=False; frozen pretrained weights",
@@ -90,15 +107,19 @@ class FrozenProtenixTiny(eqx.Module):
         )
 
     @eqx.filter_jit
-    def forward_trunk(self, *, context: PreparedContext, graph: RelaxedGraph, key, recycling_steps=1):
+    def forward_trunk(
+        self, *, context: PreparedContext, graph: RelaxedGraph, key, recycling_steps=1
+    ):
         _check_recycling(recycling_steps)
         features = inject_graph(context, graph)
         _, trunk = _native_trunk(self.model, features, key)
         logits = self.model.distogram_head(trunk.z)
         return MolecularTrunkOutput(
-            distogram_logits=logits, distogram_bins=native_distogram_bins(),
+            distogram_logits=logits,
+            distogram_bins=native_distogram_bins(),
             ligand_token_indices=context.ligand_token_indices,
-            protein_token_indices=context.protein_token_indices, trunk_state=trunk,
+            protein_token_indices=context.protein_token_indices,
+            trunk_state=trunk,
         )
 
     @eqx.filter_jit
@@ -112,7 +133,8 @@ class FrozenProtenixTiny(eqx.Module):
             distogram_logits=self.native_model.distogram_head(trunk.z),
             distogram_bins=native_distogram_bins(),
             ligand_token_indices=context.ligand_token_indices,
-            protein_token_indices=context.protein_token_indices, trunk_state=trunk,
+            protein_token_indices=context.protein_token_indices,
+            trunk_state=trunk,
         )
 
     def build_loss(self, *, context, loss, recycling_steps=1):
@@ -157,7 +179,10 @@ class GraphProtenixLoss(LossTerm):
 def ligand_pae_gate_prerequisites(context: PreparedContext) -> dict[str, Any]:
     """Detached, truthful Stage 1 handoff; this is not a completed PAE test."""
     import numpy as np
-    frames = np.asarray(context.base_features["has_frame"])[list(context.ligand_token_indices)]
+
+    frames = np.asarray(context.base_features["has_frame"])[
+        list(context.ligand_token_indices)
+    ]
     valid_count = int(np.count_nonzero(frames))
     return {
         "supported": False,

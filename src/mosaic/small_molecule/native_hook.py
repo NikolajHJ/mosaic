@@ -80,7 +80,9 @@ class GeometryMaskedAtomInput(eqx.Module):
 
     def __call__(self, input_feature_dict, r_l=None, s=None, z=None):
         if self.native.has_coords or r_l is not None or s is not None or z is not None:
-            raise ValueError("The Stage 0 geometry hook supports native input embedding only")
+            raise ValueError(
+                "The Stage 0 geometry hook supports native input embedding only"
+            )
         if GEOMETRY_FEATURE not in input_feature_dict:
             # Protein-only use of a hooked model remains exactly the native API.
             return self.native(input_feature_dict=input_feature_dict)
@@ -92,12 +94,16 @@ class GeometryMaskedAtomInput(eqx.Module):
         atom_mask = input_feature_dict.get("atom_pad_mask")
         features = mask_atom_features(
             input_feature_dict,
-            (*encoder.input_feature_keys_ordered, "ref_pos", "ref_charge",
-             "ref_mask", "ref_space_uid", "atom_to_token_idx"),
+            (
+                *encoder.input_feature_keys_ordered,
+                "ref_pos",
+                "ref_charge",
+                "ref_mask",
+                "ref_space_uid",
+                "atom_to_token_idx",
+            ),
         )
-        geometry = mask_atom_values(
-            features[GEOMETRY_FEATURE], atom_mask, axis=0
-        )
+        geometry = mask_atom_values(features[GEOMETRY_FEATURE], atom_mask, axis=0)
         atom_count = features["ref_pos"].shape[-2]
         batch_shape = features["ref_pos"].shape[:-2]
 
@@ -108,22 +114,32 @@ class GeometryMaskedAtomInput(eqx.Module):
         c_l += encoder.linear_no_bias_ref_charge(
             jnp.arcsinh(features["ref_charge"]).reshape(*batch_shape, atom_count, 1)
         )
-        c_l += encoder.linear_no_bias_f(jnp.concatenate([
-            features[name].reshape(*batch_shape, atom_count, encoder.input_feature[name])
-            for name in encoder.input_feature_keys_ordered
-        ], axis=-1))
+        c_l += encoder.linear_no_bias_f(
+            jnp.concatenate(
+                [
+                    features[name].reshape(
+                        *batch_shape, atom_count, encoder.input_feature[name]
+                    )
+                    for name in encoder.input_feature_keys_ordered
+                ],
+                axis=-1,
+            )
+        )
         c_l *= features["ref_mask"].reshape(*batch_shape, atom_count, 1)
 
         q, k, padding = rearrange_qk_to_dense_trunk(
             q=[features["ref_pos"], features["ref_space_uid"], geometry],
             k=[features["ref_pos"], features["ref_space_uid"], geometry],
-            dim_q=[-2, -1, -1], dim_k=[-2, -1, -1],
-            n_queries=encoder.n_queries, n_keys=encoder.n_keys,
+            dim_q=[-2, -1, -1],
+            dim_k=[-2, -1, -1],
+            n_queries=encoder.n_queries,
+            n_keys=encoder.n_keys,
             compute_mask=True,
         )
         displacement = q[0][..., None, :] - k[0][..., None, :, :]
-        same_space = (q[1][..., None].astype(jnp.int32)
-                      == k[1][..., None, :].astype(jnp.int32))[..., None]
+        same_space = (
+            q[1][..., None].astype(jnp.int32) == k[1][..., None, :].astype(jnp.int32)
+        )[..., None]
         geometry_pair = (q[2][..., None] * k[2][..., None, :])[..., None]
 
         # Inverse-distance and validity embeddings can be nonzero even at zero
@@ -131,15 +147,22 @@ class GeometryMaskedAtomInput(eqx.Module):
         # and its nonlinear MLP, for EVERY pair involving a ligand atom.
         p_lm = encoder.linear_no_bias_d(displacement) * same_space
         p_lm *= padding["mask_trunked"][..., None]
-        p_lm += encoder.linear_no_bias_invd(
-            1 / (1 + jnp.square(displacement).sum(axis=-1, keepdims=True))
-        ) * same_space
+        p_lm += (
+            encoder.linear_no_bias_invd(
+                1 / (1 + jnp.square(displacement).sum(axis=-1, keepdims=True))
+            )
+            * same_space
+        )
         p_lm += encoder.linear_no_bias_v(same_space)
         p_lm *= geometry_pair
 
         c_q, c_k, _ = rearrange_qk_to_dense_trunk(
-            q=c_l, k=c_l, dim_q=-2, dim_k=-2,
-            n_queries=encoder.n_queries, n_keys=encoder.n_keys,
+            q=c_l,
+            k=c_l,
+            dim_q=-2,
+            dim_k=-2,
+            n_queries=encoder.n_queries,
+            n_keys=encoder.n_keys,
             compute_mask=False,
         )
         p_lm += encoder.linear_no_bias_cl(jax.nn.relu(c_q[..., None, :]))
@@ -149,7 +172,8 @@ class GeometryMaskedAtomInput(eqx.Module):
         a = average_over_atoms(
             x_atom=jax.nn.relu(encoder.linear_no_bias_q(q_l)),
             atom_to_token_idx=features["atom_to_token_idx"],
-            n_res=features["residue_index"].shape[-1], atom_mask=atom_mask,
+            n_res=features["residue_index"].shape[-1],
+            atom_mask=atom_mask,
         )
         return a, q_l, c_l, p_lm
 
@@ -163,5 +187,6 @@ def with_geometry_hook(model):
         raise ValueError("Unexpected native input encoder: noisy coordinates required")
     return eqx.tree_at(
         lambda m: m.input_embedder.atom_attention_encoder,
-        model, GeometryMaskedAtomInput(encoder),
+        model,
+        GeometryMaskedAtomInput(encoder),
     )

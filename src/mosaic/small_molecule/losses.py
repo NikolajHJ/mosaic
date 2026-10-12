@@ -28,7 +28,9 @@ class NativeContactLoss(LossTerm):
 
     def __call__(self, graph: RelaxedGraph, output: MolecularTrunkOutput, *, key):
         if not output.ligand_token_indices or not output.protein_token_indices:
-            raise ValueError("NativeContactLoss requires nonempty explicit ligand and protein token sets")
+            raise ValueError(
+                "NativeContactLoss requires nonempty explicit ligand and protein token sets"
+            )
         ligand = jnp.asarray(output.ligand_token_indices, dtype=jnp.int32)
         protein = jnp.asarray(output.protein_token_indices, dtype=jnp.int32)
         logits = output.distogram_logits[ligand[:, None], protein[None, :], :]
@@ -59,9 +61,18 @@ class DistogramDiagnosticLoss(LossTerm):
     def __post_init__(self):
         if len(self.ligand_pair) != 2 or self.ligand_pair[0] == self.ligand_pair[1]:
             raise ValueError("The diagnostic requires two distinct ligand slots")
-        if any(isinstance(i, bool) or not isinstance(i, int) or i < 0 for i in self.ligand_pair):
-            raise ValueError("Diagnostic ligand slots must be nonnegative integer indices")
-        if isinstance(self.bin_index, bool) or not isinstance(self.bin_index, int) or self.bin_index < 0:
+        if any(
+            isinstance(i, bool) or not isinstance(i, int) or i < 0
+            for i in self.ligand_pair
+        ):
+            raise ValueError(
+                "Diagnostic ligand slots must be nonnegative integer indices"
+            )
+        if (
+            isinstance(self.bin_index, bool)
+            or not isinstance(self.bin_index, int)
+            or self.bin_index < 0
+        ):
             raise ValueError("Diagnostic bin must be a nonnegative integer index")
 
     def __call__(self, graph: RelaxedGraph, output: MolecularTrunkOutput, *, key):
