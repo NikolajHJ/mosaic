@@ -1379,3 +1379,59 @@ external storage changes; home still reports 4.97/30.00 GiB with its stated
 lag. This campaign deleted/moved no existing data and changed no other
 agent's job. New native completion, report rendering, evidence transfer and
 final browser QA remain pending.
+
+### 2026-10-16 — user-requested lower-queue GPU review and A10 replacement
+
+The user asked whether A100 was necessary and whether a GPU with less queue
+could be used. The workload does not require A100: source-02 BRD4 pilot
+29736576 already passed on A10. Current eligible general queues included
+A10/A40/L40S/A100/V100. A10 reported no pending work; queue counts alone
+do not establish start-time ordering or an ETA. Restricted H100/Biosustain
+queues were inspected, not submitted to, and no new access was requested.
+
+Reading the full pilot notice using `bread -i 0 -w 29736576` resolved the
+truncated earlier message: a clocks event due to power violation, with the
+explicit statement **"This GPU can still perform workload."** The earlier
+A100-only allocation choice was too cautious and is superseded. The full
+notice remains at the cancelled original run's `pilot-power-notice-full.txt`.
+No separate hardware-health test is claimed. The passed native A10 pilot
+and unchanged per-run numerical checks support ordinary A10 use.
+
+`bswitch gpua10 29736600` was rejected by DTU's `eswitch` policy; job 29736600
+remained PEND in gpua100. Local receipt `a10-queue-switch.txt` under
+`results/hpc/20261016-brd4-5000/`. No override or repeated switching was tried.
+Normal owner-authorized cancellation/resubmission was then used for the
+already eligible A10 queue. Only this campaign's old pending jobs were touched:
+report **29736612** first, then native **29736600**, each checked PEND before
+cancellation. Both were subsequently confirmed **EXIT**, with no native
+allocation started. Preserve their paths, before/after scheduler receipts
+and `cancellation.txt`. These intentional cancellations are not scientific
+failures or evidence of numerical instability.
+
+The first operator `resubmit-a10-01.sh` requested both cancellations but
+stopped at an immediate EXIT assertion while LSF still acknowledged
+termination asynchronously. It created no replacement jobs or new run path.
+Its nonzero outcome is retained in local `resubmit-a10-01.txt`. The second
+operator `resubmit-a10-02.sh` required both actual EXIT states and preserved
+final cancellation receipts before submitting replacements; it exited 0.
+No duplicate experiment ran concurrently.
+
+Replacement native **29736629 submitted**, gpua10, one exclusive A10, four
+slots/8GB per slot (32GB total), 16-hour bound, dependency `done(29736579)`.
+New run `/zhome/95/e/206121/mosaic-runs/20261016-brd4-5000-03`.
+Source 02/manifest `80bb2413904b955cc4ebc25a0c01e1940fd185b3bddfb6cbd3afed76ad75a4f2`,
+final config `e893ad0416894409cfef7a3fb6ae61f17b53ae141858c3f519f7c5954f542e09`,
+pilot summary `7b4b87ecea730ff9c70e6a3b0f5eec81fe4ac07245aff5026fe16399260989c4`,
+assessment `cfc44f1e6619a0d0e97bdb761c006be76b4bbad0547dd3cd74656a504ac93cbd`
+are unchanged; pilot/assessment SHA checks passed again before submission.
+All three 5000-update requests, initial step 0.03, backtracking, raw-graph,
+frozen identity and numerical gates remain unchanged. No local numerical
+test or new pilot was needed for this return to the already tested A10.
+
+Replacement report **29736630 submitted**, hpc one slot/4GB, 90-minute bound,
+dependency `ended(29736629)`; source 03 and the same complete/passed-study
+and home-quota gates. Run
+`/zhome/95/e/206121/mosaic-runs/20261016-brd4-5000-report-02`.
+Local receipt `resubmit-a10-02.txt`; actual scheduler states are captured in
+`a10-replacement-state.txt`. Submitted does not establish completed updates,
+a rendered report or a downloaded result.
