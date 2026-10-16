@@ -958,3 +958,95 @@ checksum and launcher syntax passed, source is read-only. Exact operator:
 `results/hpc/20261016-known-ligand-1000/submit-assessment-02.sh`.
 The earlier failed assessment remains preserved. Recovery and the unchanged
 resource threshold must pass; no long-run submission is claimed yet.
+
+### Resource recovery passed; 1000-update GPU run actually started
+
+Recovery/assessment **29736114 DONE**, node `n-62-31-24`. Its receipt confirms
+that only the redundant 500-update transfer archive was removed after local
+and remote SHA and preserved raw-summary checks; 2,020,603,152 bytes recovered.
+Exact local receipt `results/hpc/20261016-known-ligand-1000/transfer_recovery.json`.
+The unchanged **5.6760657941922545 GiB** assessment then passed. Allocated
+metadata projection: pilot 347274779 bytes; worst-case new run 582461779;
+report reserve 134217728; archive bound 1082982436. Mean observed step seconds
+by case 4/3/3, projecting 10000 seconds for 3000 updates, excluding new-process
+compilation. Assessment/quota receipts downloaded to `assessment.json` and
+`assessment-quota.json` in the local campaign directory.
+Pilot summary SHA `45fa41a40b6bf2e3a548b819b29aa1ad4d0b4b8e61067f3aed877a989d0cbdfa`;
+frozen model digest `8d6926d5390fe682e193089f790ce53aa4011a6d5509ddb452a55db3d89b0ab2`,
+new real-target context digest
+`04a4c84ab0933b2cd7af81c379127762535322c64f037c55b5b2720fc6192e39`.
+The synthetic context is not reused or mislabeled as the real target.
+
+The allocated pilot report completed and was copied locally to
+`results/hpc/20261016-known-ligand-1000/pilot-report/`. Browser QA showed all
+three 3-update case cards, six occupied slots, the benzene drawing/loss,
+per-case detached similarity, exact real-construct/contact annotations and no
+JavaScript errors. No local scientific plotting/evaluation was performed.
+
+Long run **29736126 submitted, then RUN**, gpua10, one exclusive A10 GPU,
+four slots on one host, 8GB per slot/32GB total, six-hour bound, dependency
+`done(29736114)`; actual node `n-62-18-5`.
+Run `/work3/s234818/mosaic/runs/20261016-known-ligand-1000-01`.
+Source 04/manifest/config `examples/configs/known_ligand_1000.json` and sealed
+fixture above; strict longer-budget replay binds the passed pilot summary SHA,
+every non-step configuration field and the frozen model/context identities.
+All three start at update zero and request **1000 total** updates each.
+Exact operator `results/hpc/20261016-known-ligand-1000/submit-1000-01.sh`.
+This is an actual submission/start, not a completed 1000-update result.
+Presentation/evidence/download completion will have separate receipts.
+
+### 1000 updates per mixture passed; final reporting/evidence queued
+
+Long job **29736126 DONE**: all three starts passed **1000 accepted updates**,
+**3003 saved states** total, initial derivative/null/parity gates, per-update
+AD and independent primal decreases, and unchanged frozen model/context.
+Summary SHA-256 `2a159de33e26f050a8dcb4e8bee8d0059af2a141aa1f3da787cc4219e3ce2fa1`;
+config SHA-256 `b0f05ce6735a094e080734dfae8a4bfec08be6886686f6c9899f87723923c3d0`;
+fixture SHA-256 `6dae87554347d1b14764eeb6a3d10ff3488a145c6db142534a4a3c54a4564d8b`.
+Model/context before/after match the passed pilot values above. Standalone
+primal loss: 15% `1.9935636520385742` → `1.8578355312347412`;
+30% `1.9423514604568481` → `1.8529831171035767`;
+50% `1.9883629083633423` → `1.8166388273239136`.
+The same-context hard benzene reference measured `2.0979597568511963` in this
+allocation (the pilot's tiny float32 execution difference is retained).
+Final 15%/30% hard graphs sanitize as the unchanged `CCCCCC` chain. The 50%
+endpoint is **invalid**: fluorine at zero-based atom 4 has explicit valence 2.
+Its raw graph and conversion error are retained; no chemistry repair was used.
+These trajectories demonstrate contact-gradient optimization, not known-ligand
+recovery, binding or chemical feasibility.
+
+Postprocessing source 05: 216 files, 38,880,357 archive bytes, SHA-256
+`eae3eb9109ba89e42bde1c262340abe536495f987f156bc73dd34150aa4fdecb`,
+manifest `544be74174b9568bb712e866483f4cd054400d80fab3ca880561267d3b23373b`,
+Git reference `0373c0234bfd85c03f5467b6d1e209411938c9dc`.
+Local `results/releases/known-ligand-1000-20261016-05/`; read-only remote
+`/work3/s234818/mosaic/releases/20261016-known-ligand-1000-05/source`.
+Upload SHA/launcher syntax passed. This adds reusable evidence packaging,
+quota/scheduler receipts and one-shot byte-only completion download; the
+native model/gradient driver remains unchanged.
+
+Evidence collector smoke **29736170 DONE**, hpc one slot/2GB, ten-minute
+bound, node `n-62-31-4`. It successfully packaged the retained stopped
+assessment plus its own execution receipts on allocated CPU. Archive
+`/work3/s234818/mosaic/runs/20261016-known-ligand-collection-smoke-01.tar.gz`,
+1,059,474 bytes, SHA-256
+`fccd1b9ab882cfa6bd5d789893b35a902cbfd74e114b1a5d37bfa6cc48220cd5`.
+Downloaded under the local campaign directory; the versioned
+`scripts/verify_hpc_evidence.py` exited zero with **113 files verified**.
+This local check was stdlib file integrity, not numerical evaluation.
+
+Final report **29736412 submitted and RUN**, hpc one slot/4GB, 15-minute
+bound, dependency `ended(29736126)`; run
+`/work3/s234818/mosaic/runs/20261016-known-ligand-1000-report-01`.
+It uses source 05 and validates the saved study before rendering; an ended
+failed model job would be rejected, not treated as successful.
+Evidence **29736472 submitted**, hpc one slot/2GB, 15-minute bound, dependency
+`ended(29736412)`; helper run
+`/work3/s234818/mosaic/runs/20261016-known-ligand-1000-evidence-01`.
+Archive target `/work3/s234818/mosaic/runs/20261016-known-ligand-1000-evidence-01.tar.gz`.
+It retains readiness, pilot, both resource assessments, long native study,
+final report, collector smoke and helper/scheduler/quota receipts, including
+failure evidence. Packaging has its own measured-size-plus-4-GiB quota guard.
+Exact operators: local `submit-collection-smoke-01.sh`, `submit-report-01.sh`
+and `submit-evidence-01.sh` under the campaign directory. Final report,
+packaging and complete evidence download remain pending at submission.

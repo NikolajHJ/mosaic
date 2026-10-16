@@ -4,6 +4,7 @@ tests/data/t4_lysozyme_181l/fixture.json text eol=lf
 examples/configs/*.json text eol=lf
 scripts/*.py text eol=lf
 scripts/hpc/*.lsf text eol=lf
+scripts/hpc/*.py text eol=lf
 scripts/templates/*.html text eol=lf
 src/mosaic/small_molecule/*.py text eol=lf
 tests/test_small_molecule*.py text eol=lf

@@ -85,3 +85,20 @@ summary identities on allocated CPU, then remove **only** that redundant
 evidence and every raw HPC run/source remain preserved. A new assessment run
 must pass the **same** projected resource threshold before submission. The
 new narrow cleanup does not authorize changes to any other agent's files.
+
+Recovery and replacement assessment **29736114 DONE**: remote archive hash
+matched the reverified local copy, the single redundant archive was removed,
+and the same 5.676065794 GiB resource gate passed. The pilot occupies
+347,274,779 bytes; the conservative new-run bound is 582,461,779 bytes, report
+reserve 134,217,728 bytes and combined archive bound 1,082,982,436 bytes.
+Measured 3–4 s/update projects about 10000 s for 3000 updates, excluding the
+fresh process's compilation. The known-ligand pilot report rendered on allocated
+CPU and browser QA confirmed the reference drawing/score, all three cases,
+six slots, real target/contact labels and no JavaScript errors.
+
+Long run **29736126 submitted and RUN**, one exclusive A10 GPU/four CPU slots,
+32GB total host-memory request, six-hour bound. It requests 1000 total updates
+for each mixture from fresh initial graphs, reusing the exact authenticated
+pilot context (`45fa41a40b6bf2e3a548b819b29aa1ad4d0b4b8e61067f3aed877a989d0cbdfa`
+summary SHA). A submitted/running job is not a completed result. Numerical
+outcomes and final report remain pending.

@@ -6,6 +6,7 @@ import io
 import json
 import os
 from pathlib import Path
+import re
 import subprocess
 import tarfile
 
@@ -45,6 +46,27 @@ def main():
         ],
         check=True,
     )
+    for path in receipt_dir.iterdir():
+        if path.is_file():
+            files["packaging-preflight/" + path.name] = path
+    metadata = args.output.parent / (args.output.name + ".metadata")
+    metadata.mkdir(exist_ok=False)
+    job_ids = {os.environ["LSB_JOBID"]}
+    for path in files.values():
+        match = re.fullmatch(r"(?:stdout|stderr)\.(\d+)\.log", path.name)
+        if match:
+            job_ids.add(match.group(1))
+    for job in sorted(job_ids):
+        result = subprocess.run(
+            ["bjobs", "-l", job],
+            capture_output=True,
+            text=True,
+            check=False,
+            timeout=30,
+        )
+        path = metadata / ("job-" + job + ".txt")
+        path.write_text(result.stdout + result.stderr)
+        files["scheduler/" + path.name] = path
     manifest = {"job_id": os.environ["LSB_JOBID"], "files": {}}
     for name, path in files.items():
         with path.open("rb") as reader:
