@@ -241,3 +241,30 @@ def test_renderer_builds_five_case_html_from_synthetic_saved_graphs(
     payload = json.loads(html.split("const DATA=", 1)[1].split(";\n", 1)[0])
     assert len({case["color"] for case in payload["cases"]}) == 5
     assert all(len(case["states"]) == 2 for case in payload["cases"])
+
+
+def test_four_study_comparison_includes_canonical_recipe_without_changing_size(
+    tmp_path,
+):
+    paths = _mixed_inputs(tmp_path)
+    study = json.loads((paths[-1] / "summary.json").read_text())
+    config_path = (
+        Path(__file__).resolve().parents[1]
+        / "examples/configs/brd4_canonical_diffuse_5000.json"
+    )
+    recipe = json.loads(config_path.read_text())["initialization"]
+    study.update(job_id="canonical", config_sha256="canonical-config")
+    study["config"]["initialization"] = recipe
+    study["cases"] = [{"mixing": None, "initialization": recipe}]
+    canonical = tmp_path / "canonical"
+    canonical.mkdir()
+    (canonical / "summary.json").write_text(json.dumps(study))
+    combined, directories, receipts = _renderer()._load_studies(
+        paths + [canonical], allow_initialization_comparison=True
+    )
+    assert len(combined["cases"]) == 6
+    assert len(receipts) == 4
+    assert combined["cases"][-1]["initialization"] == recipe
+    assert combined["cases"][-1]["source_job_id"] == "canonical"
+    assert directories[-1] == canonical / "case-0"
+    assert len(set(_renderer().CASE_COLORS)) == 6

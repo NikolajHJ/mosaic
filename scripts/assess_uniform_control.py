@@ -8,6 +8,7 @@ import argparse
 import hashlib
 import importlib.util
 import json
+import math
 import os
 from pathlib import Path
 import subprocess
@@ -30,11 +31,17 @@ def main():
     parser.add_argument("--config", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--outstanding-study-count", type=int, default=1)
+    parser.add_argument("--extra-artifact-reserve-gib", type=float, default=0)
     args = parser.parse_args()
     if not os.environ.get("LSB_JOBID"):
         raise RuntimeError("Uniform resource assessment requires allocated DTU HPC")
     if args.outstanding_study_count < 0:
         raise ValueError("Outstanding study count cannot be negative")
+    if (
+        not math.isfinite(args.extra_artifact_reserve_gib)
+        or args.extra_artifact_reserve_gib < 0
+    ):
+        raise ValueError("Extra artifact reserve must be finite and nonnegative")
     root = Path(__file__).resolve().parents[1]
     reference = _authenticated(
         args.reference_assessment, args.reference_assessment_sha256
@@ -74,8 +81,9 @@ def main():
     if len(module._case_specs(config)) != 1 or config["initialization"]["kind"] not in (
         "uniform",
         "noisy_uniform",
+        "canonical_diffuse",
     ):
-        raise ValueError("One explicit uniform-start control is required")
+        raise ValueError("One explicit initialization control is required")
     fixture = root / config["fixture"]
     if hashlib.sha256(fixture.read_bytes()).hexdigest() != pilot["fixture_sha256"]:
         raise ValueError("Fixture/graph shape differs from the measured pilot")
@@ -83,7 +91,11 @@ def main():
     # control, plus the same bound for EACH still-outstanding study. This
     # deliberately overbudgets singleton controls using the full three-case run.
     reserved_studies = 1 + args.outstanding_study_count
-    required = 4 + reserved_studies * (reference["required_free_gib"] - 4)
+    required = (
+        4
+        + reserved_studies * (reference["required_free_gib"] - 4)
+        + args.extra_artifact_reserve_gib
+    )
     args.output.mkdir(parents=True, exist_ok=False)
     quota = subprocess.run(
         [
@@ -106,6 +118,7 @@ def main():
         "required_free_gib": required,
         "new_control_cases": 1,
         "reserved_study_count": reserved_studies,
+        "extra_artifact_reserve_gib": args.extra_artifact_reserve_gib,
         "initialization": config["initialization"],
         "scope": "unchanged native library/shape/settings; initialization-only control; full prior three-case artifact bound reserved for each outstanding study and new control; native derivative/null/parity/descent gates pending at GPU entry",
     }

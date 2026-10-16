@@ -1,16 +1,20 @@
 # Combined BRD4 5000-update report
 
-Requested 2026-10-16. Prepare one self-contained interactive report comparing
-all three separately submitted studies, with five trajectories:
+Requested 2026-10-16; expanded after the section 4.2 request. The current
+final report is job **29736989**, report-02, comparing four separately
+submitted studies and six trajectories. The earlier three-study report job
+29736911 was intentionally cancelled while pending; dated receipts below
+remain historical evidence. Current inputs:
 
 - Original carbon-chain mixtures: 15%, 30%, 50%; GPU job 29736629.
 - Exact uniform: one case; GPU job 29736735.
 - Half uniform plus half simplex-projected Gaussian: one case; GPU job 29736761.
+- Section 4.2 carbon-heavy diffuse prior with small additive noise, N=6; GPU 29736988.
 
 Every case retains all 5001 saved states, raw argmax molecules (including
 invalid/disconnected outputs), fixed readable element/slot labels and sizes
-based on saved probabilities. Loss and change plots overlay all five cases
-with five distinct colors; the explorer selects a case and accepted update.
+based on saved probabilities. Loss and change plots overlay all six cases
+with six distinct colors; the explorer selects a case and accepted update.
 Show initial/final readouts and probability heatmaps for each case, as well
 as endpoint and intermediate molecule galleries. This compares starts at
 fixed target/model/loss/seed/rate/budget; it is not replicated chemistry or
@@ -107,3 +111,19 @@ pushes evidence and delivers the report. No GPU experiment changes or local
 numerical work are permitted. Failed native/identity gates remain blockers.
 The follow-up pauses after delivery or an actionable blocker. This scheduling
 receipt is not completed report/download evidence.
+
+
+## Current four-study replacement (2026-10-16)
+
+[The canonical protocol](brd4_canonical_diffuse_5000.md) and ledger record the
+requested six-slot section 4.2 extension. CPU readiness 29736979 passed all
+186 selected checks. Native 29736988 is separate and preserves all prior
+GPU experiments. Combined report/evidence 29736989 waits for all four native
+runs and requires their passed complete trajectories; output is
+`/zhome/95/e/206121/mosaic-runs/20261016-brd4-combined-report-02/payload/report/`.
+The old pending combined job 29736911 was intentionally cancelled after the
+replacement queued, with EXIT confirmed; this is not a scientific failure.
+The existing hourly follow-up now downloads/verifies report-02 and checks
+four input studies, six cases, 5001 states each and fixed N=6. All current
+GPU runs and the replacement report remain pending; no final report exists
+yet. The earlier source/job receipts above are retained without alteration.

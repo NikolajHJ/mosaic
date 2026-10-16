@@ -15,6 +15,39 @@ def _case_specs(config):
         if "mixing_values" in config:
             raise ValueError("Choose initialization or mixing_values, not both")
         kind = initialization.get("kind")
+        if kind == "canonical_diffuse":
+            required = {
+                "kind",
+                "carbon_probability",
+                "expected_degree",
+                "atom_noise",
+                "bond_noise",
+            }
+            if set(initialization) != required or any(
+                isinstance(initialization[name], bool)
+                or not isinstance(initialization[name], (int, float))
+                or not math.isfinite(initialization[name])
+                for name in required - {"kind"}
+            ):
+                raise ValueError(
+                    "Canonical initialization requires explicit finite parameters"
+                )
+            if not (
+                1 / 6 < initialization["carbon_probability"] < 1
+                and 2 <= initialization["expected_degree"] <= 2.5
+                and initialization["atom_noise"] > 0
+                and initialization["bond_noise"] > 0
+            ):
+                raise ValueError(
+                    "Canonical initialization requires a broad carbon-heavy prior, d0 in [2, 2.5] and positive noise"
+                )
+            return [
+                {
+                    "mixing": None,
+                    "initialization": initialization,
+                    "label": f"Canonical diffuse; C={initialization['carbon_probability']:.0%}; d0={initialization['expected_degree']:g}",
+                }
+            ]
         if kind not in ("uniform", "noisy_uniform"):
             raise ValueError("Unsupported initialization kind")
         required = {"kind", "bond_existence_numerator"}
@@ -54,12 +87,12 @@ def _case_specs(config):
 
 
 def _initial_graph(hard, case, key):
-    """Prepare equal rows, optionally mix in projected standard Gaussian noise.
+    """Prepare the declared prior and independent probability-space noise.
 
     Noise is independent per atom/category and unordered pair/category.
-    Project the noise FIRST, then mix, retaining a positive uniform floor for
-    unchanged central derivative/null probes. Projection changes Gaussian
-    moments; the convex mixture may change bond density.
+    The canonical recipe adds small noise to a carbon-heavy/degree-based prior
+    BEFORE projection (section 4.2). The historical noisy-uniform control
+    projects its large noise FIRST, then mixes. These are distinct recipes.
     """
     import jax
 
@@ -74,6 +107,13 @@ def _initial_graph(hard, case, key):
 
     if "initialization" not in case:
         return mix_with_uniform(hard, case["mixing"])
+    if case["initialization"]["kind"] == "canonical_diffuse":
+        settings = {
+            name: value
+            for name, value in case["initialization"].items()
+            if name != "kind"
+        }
+        return initialize_graph(hard.n_atoms, key, dtype=hard.X.dtype, **settings)
     n = hard.n_atoms
     probability = case["initialization"]["bond_existence_numerator"] / n
     if not 0 < probability < 1:

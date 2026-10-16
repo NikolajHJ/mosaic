@@ -7,6 +7,7 @@ manifest_sha=$3
 config=${4:-examples/configs/brd4_uniform_5000.json}
 outstanding_studies=${5:-1}
 early_minimum_free=${6:-11}
+extra_artifact_reserve=${7:-0}
 python=/work3/s234818/mosaic/envs/protenix-tiny/bin/python
 module load python3/3.12.11
 mkdir "$parent/payload"
@@ -31,4 +32,5 @@ root=/zhome/95/e/206121/mosaic-runs
   --reference-source /work3/s234818/mosaic/releases/20261016-brd4-5000-02/source \
   --reference-manifest-sha256 80bb2413904b955cc4ebc25a0c01e1940fd185b3bddfb6cbd3afed76ad75a4f2 \
   --config "$release/$config" --outstanding-study-count "$outstanding_studies" \
+  --extra-artifact-reserve-gib "$extra_artifact_reserve" \
   --output "$run/assessment" > "$run/assessment.log" 2>&1

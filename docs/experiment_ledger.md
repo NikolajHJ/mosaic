@@ -1710,3 +1710,107 @@ pushes evidence and delivers the report. No GPU experiment changes or local
 numerical work are permitted. Failed native/identity gates remain blockers.
 The follow-up pauses after delivery or an actionable blocker. This scheduling
 receipt is not completed report/download evidence.
+
+
+## 2026-10-16 — section 4.2 canonical diffuse start, six slots (preparation)
+
+Read complete PDF section 4.2 across pages 3-4, including visual inspection.
+The user explicitly corrected the initial proposed N=25 scope: keep N=6 and
+change initialization only. No 25-slot fixture/model preparation, numerical
+run or job was created. See [the sealed protocol](brd4_canonical_diffuse_5000.md).
+PDF SHA c9785f45dcd34fbc3feaebcc0bc57905dc606387f76308bb6364eadb40cbeda0.
+
+Pivotal resolved values: atom prior C=.75, others .05; expected degree 2.25;
+pair existence 2.25/(6-1)=.45, NO_BOND=.55, four present states .1125 each;
+independent Gaussian sigmaX=sigmaE=.005 added BEFORE simplex projection.
+Use one case/seed17 and the existing shared initializer. All upper-pair
+variables are initialized independently of hard scaffold topology; fixed
+native slot metadata remains. Prior mass and realized projected mass are
+distinct. The 25-slot .08-.10 range is not copied to N=6. No hard repair,
+chemistry constraint, learned scorer or affinity head is introduced.
+
+Retain exact six-slot fixture, full BRD4 target, frozen weights/context, seed,
+precision, native contact objective, .03 rate, 5000 updates and all checks.
+The shared src/ library is unchanged; explicit config/example/report wiring
+and tests are new. Local work is edits/static review, PDF reading and immutable
+byte packaging only; all numerical tests remain allocated DTU work. New source,
+CPU and aggregate quota gates precede submission, with actual native gates at
+GPU entry. Reserve four full prior three-case artifact budgets plus 3 GiB for
+comparison output (about 20.2966 GiB with 4 GiB reserve); early CPU gate 21 GiB.
+A pending report-only replacement will add this fourth study/sixth trajectory
+to the final comparison. Preserve every existing GPU and individual-report
+job, and record requested/actual report cancellation separately. Preparation
+alone establishes no new submission, native gradient or completed trajectory.
+
+
+Canonical diffuse source 01: 271 files, archive 38,989,767 bytes, SHA
+`f6efb3c2c8889e6f792482cd1d666c38631afe9b2bf78bcda5ba942e81f5e4c9`,
+manifest `421213580f84a038cde5e47bb4048a659bfa4daee46645deccbb2e7568d7ead4`.
+Git reference 48a287cb2743879fa00bff32ab5d339730b46b08 plus manifested dirty
+bytes; remote immutable
+`/work3/s234818/mosaic/releases/20261016-brd4-canonical-diffuse-01/source`.
+Local `results/releases/brd4-canonical-diffuse-20261016-01/`.
+Uploaded archive SHA and native/readiness/combined-report Bash syntax checks
+passed. Local static Ruff and Node `--check` passed. PDF text extraction and
+page-image inspection are document reading, not local numerical validation.
+
+CPU readiness **29736979 submitted**, hpc two slots/4GB per slot (8GB total),
+15-minute bound, run
+`/zhome/95/e/206121/mosaic-runs/20261016-brd4-canonical-diffuse-readiness-01`.
+Exact operator `scripts/hpc/receipts/20261016-brd4-canonical-diffuse/submit-readiness-01.sh`;
+local campaign `results/hpc/20261016-brd4-canonical-diffuse/`.
+It requires the selected small-molecule suite, the unchanged native-library
+byte map, initialization-only config/fixture/reference gates, four study
+budgets and 3 GiB comparison reserve. Early quota asks 21 GiB. Numerical and
+native submission outcomes are pending; this is a submission receipt only.
+
+
+CPU readiness **29736979 DONE**, worker n-62-30-25: **186 passed, three
+native-model items deselected, two existing dtype warnings, 76.67s**. This
+includes all 10 canonical recipe/guard tests, old initialization regressions,
+report rendering and four-study/six-case recipe mapping. Resource/source,
+config/fixture/reference gates passed. Aggregate required free home space
+**20.296628277748823 GiB**, conservative availability **25 GiB**. Config SHA
+`49e01e601f77e21770d19b4a40df365315e4521318245d14ccec6e7cdbe6e359`;
+assessment SHA `4ad7e7f04c740815d248ee405f3979f4ba648f2cdaca872d48d290a387c53821`.
+Local unit/assessment/quota/final scheduler receipts were downloaded to the
+canonical campaign directory. This establishes CPU readiness only; native
+canonical gradient and 5000-update acceptance remain pending.
+
+Canonical native **29736988 submitted**, gpua10, one exclusive A10, four
+slots/8GB per slot (32GB total host memory), 16-hour bound, dependency
+`done(29736979)`. Run
+`/zhome/95/e/206121/mosaic-runs/20261016-brd4-canonical-diffuse-5000-01`.
+Exact tested source 01; source/pilot/assessment/config/quota are authenticated
+again at launch. Reuse the exact previous six-slot frozen context, replacing
+only initialization and the previous three-update pilot budget with 5000.
+No 25-slot context or new model/target/loss was introduced. Actual native
+FD/null/parity/frozen/descent checks run before accepting updates.
+
+Final combined report/evidence **29736989 submitted**, hpc two slots/4GB per
+slot (8GB total), 180-minute bound. Dependencies: CPU readiness done and all
+four native jobs ended (29736629, 29736735, 29736761, 29736988). Run
+`/zhome/95/e/206121/mosaic-runs/20261016-brd4-combined-report-02`;
+final output `payload/report/`; archive is its sibling
+`20261016-brd4-combined-report-02.tar.gz` with `.tar.receipt.json` receipt.
+It requires four complete passed studies, renders all six 5001-state cases
+with six distinct colors, and archives all four native runs plus the report.
+Exact operator
+`scripts/hpc/receipts/20261016-brd4-canonical-diffuse/submit-native-and-comparison-01.sh`.
+
+Superseded combined report **29736911 cancellation requested while PEND**
+after the four-study replacement was successfully submitted. Normal owner
+`bkill` acknowledged termination; polling confirmed actual **EXIT** before
+completion of the operator. No allocation had started and no model work was
+cancelled. This intentional report replacement is not a numerical failure.
+Receipt `superseded-report-29736911.txt` and final compact scheduler snapshot
+are in the canonical local campaign directory. Original three native and
+individual-report pairs remain unchanged and PEND; new native/report are
+also PEND. No accepted canonical updates or final report/download are claimed.
+
+Updated the existing active hourly heartbeat
+`finish-combined-brd4-trajectory-report` (same name/schedule, no duplicate).
+It now checks current native/report IDs, downloads/verifies report-02,
+checks four source studies and six 5001-state six-slot cases, and ignores the
+intentional superseded report cancellation. Browser QA and delivery remain
+future work after actual completion; failed native gates are not waived.

@@ -524,3 +524,26 @@ checks, including synthetic five-case rendering. Combined report/evidence
 report was changed. An hourly completion follow-up will download, verify and
 inspect the actual combined report, then deliver it and stop. All native
 trajectories and actual combined-report completion remain pending.
+
+
+## 2026-10-16 section 4.2 initialization, user-kept six slots
+
+The user requested section 4.2, then explicitly instructed keeping N=6.
+[The canonical diffuse protocol](brd4_canonical_diffuse_5000.md) records the
+pivotal choices: C=0.75 (others 0.05), d0=2.25, p0=d0/(N-1)=0.45, independent
+sigmaX=sigmaE=0.005 noise added BEFORE projection, upper-pair symmetry and
+fixed neutral occupancy/geometry-off context. This exposes the existing shared
+initializer to the actual experiment rather than introducing another graph
+representation. Keep all native settings/rate/5000-update checks unchanged.
+Readiness requires CPU tests, exact frozen/source/config bindings and aggregate
+quota for four studies plus a combined report. Native acceptance/trajectory
+remain pending; a queued job does not close Stage 1 or other acceptance gates.
+
+
+Completed preparation: canonical source 01 sealed; CPU 29736979 passed all
+186 selected tests and source/config/reference/aggregate-quota gates. Native
+29736988 and final four-study/six-case report 29736989 are queued. Superseded
+pending report 29736911 was intentionally cancelled and confirmed EXIT;
+existing GPU runs and individual reports are unchanged. The existing hourly
+completion follow-up now targets report-02. Actual native acceptance, 5000
+updates and final report/download remain pending.

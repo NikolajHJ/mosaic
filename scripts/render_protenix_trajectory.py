@@ -16,7 +16,7 @@ import os
 from pathlib import Path
 
 
-CASE_COLORS = ("#087f8c", "#dc7139", "#7257b4", "#a77800", "#b84b70")
+CASE_COLORS = ("#087f8c", "#dc7139", "#7257b4", "#a77800", "#b84b70", "#2a6496")
 
 
 def _load_studies(paths, *, allow_initialization_comparison=False):
