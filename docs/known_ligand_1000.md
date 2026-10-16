@@ -1,7 +1,8 @@
 # Real-target, known-ligand 1000-update study
 
-Requested 2026-10-16. Status: implementation/readiness in progress; no completed
-1000-update result is claimed here. Actual submissions and outcomes belong in
+Requested and executed 2026-10-16. Status: all three 1000-update trajectories,
+matched hard controls and enriched report completed; downloaded evidence
+verified and final browser QA passed. Actual submissions and outcomes belong in
 [the experiment ledger](experiment_ledger.md).
 
 Use the T4 lysozyme L99A construct from [PDB 181L](https://www.rcsb.org/structure/181L)
@@ -96,12 +97,12 @@ fresh process's compilation. The known-ligand pilot report rendered on allocated
 CPU and browser QA confirmed the reference drawing/score, all three cases,
 six slots, real target/contact labels and no JavaScript errors.
 
-Long run **29736126 submitted and RUN**, one exclusive A10 GPU/four CPU slots,
+Long run **29736126 DONE**, one exclusive A10 GPU/four CPU slots,
 32GB total host-memory request, six-hour bound. It requests 1000 total updates
 for each mixture from fresh initial graphs, reusing the exact authenticated
 pilot context (`45fa41a40b6bf2e3a548b819b29aa1ad4d0b4b8e61067f3aed877a989d0cbdfa`
-summary SHA). A submitted/running job is not a completed result. Numerical
-outcomes and final report remain pending.
+summary SHA). The completed numerical outcomes and final report are recorded
+below; earlier submission receipts remain preserved in the ledger.
 
 Final comparison decision: keep soft trajectory scores explicitly separate
 from hard molecular scores. A separate allocated frozen-model control pass
@@ -113,3 +114,66 @@ The existing `2e-5` primal parity gate applies to replayed hard benzene. Both
 frozen digests must remain unchanged. This performs no extra optimization and
 does not alter the 1000-update evidence. An allocated report addendum copies
 the completed figures/states and adds a matched hard-control table.
+
+## Completed native outputs
+
+The user explicitly confirmed that chemically invalid outputs are acceptable
+for this phase and requested plots of exactly what is produced. The report
+draws the raw categorical argmax from each saved probability state, with
+probability-dependent circle/bond sizes and fixed element/slot labels. It
+also exposes the actual probabilities and scalar losses. Sanitization is an
+annotation only: it does not filter states, select fragments, repair bonds,
+substitute identities or affect optimization/depiction.
+
+All three cases passed 1000 accepted updates, 1001 saved states each, every
+native numerical gate and frozen identity checks. Native job 29736126 ran
+11:57:27–12:42:46 Europe/Paris on one allocated A10.
+
+| Uniform mixture | Initial → final relaxed primal loss | Sanitized readouts | Final raw graph |
+| --- | --- | --- | --- |
+| 15% | 1.993563652 → 1.857835531 | 1001/1001 | `CCCCCC`; hard graph unchanged |
+| 30% | 1.942351460 → 1.852983117 | 1001/1001 | `CCCCCC`; hard graph unchanged |
+| 50% | 1.988362908 → 1.816638827 | 872/1001 | C1–C2–C3–C4–F5–C6; raw F valence 2 |
+
+The 50% raw hard identity switches at **update 872**, with the same chain
+bonds. Its invalid fluorine is drawn as produced. Hard-graph Morgan similarity
+to benzene is 0 for the valid hexane endpoints and unavailable for the invalid
+endpoint. None of these statements asserts biological ligand recovery.
+
+Matched hard-control job **29736511 DONE** passed reference replay/frozen
+identity checks. Hard benzene loss is **2.097959280**; hard hexane and the
+15%/30% endpoints are **2.013308287**; the invalid 50% endpoint is
+**1.870431781**. These are separate one-hot input controls. The trajectory
+curves show the relaxed distributions' losses and must not be interpreted as
+matched hard-molecule improvements. All scores are the same contact proxy,
+not binding affinity or a chemistry constraint.
+
+Base report **29736412 DONE**, hard-control augmentation **29736521 DONE**,
+and full evidence retry **29736523 DONE**. The original numerical arrays and
+base report remain preserved; augmentation copies them and adds the hard
+comparison table. The [enriched offline report](../results/hpc/20261016-known-ligand-1000/download-03/report/report.html)
+contains all 3003 saved states, 0..1000 playback, raw molecules/probabilities,
+loss curves, heatmaps and the known reference.
+
+## Delivery and verification
+
+Evidence job **29736523 DONE** produced a **795,141,544-byte** archive, SHA-256
+`cfe36ec2176432a26b9923cda0526db1cf5a3c657219599e419633995574b96f`.
+Local Windows Python 3.13 stdlib I/O verified the archive and **15,775 declared
+files** at 2026-10-16 11:16:06 UTC. The completion receipt is
+`results/hpc/20261016-known-ligand-1000/download-03/completion.json`.
+No numerical model or chemistry work was run locally.
+
+Enriched report **29736521 DONE** has HTML SHA-256
+`2603881fb382b9a17f85b848d47525d6828321680937a12d28fefa5b7bee78d5`;
+the downloaded copy matches. Browser QA confirmed all three 1000-update
+cases, the known reference and matched hard-control table. Selecting 50%
+and update 1000 displays C1–C2–C3–C4–F5–C6, P(F5)=0.43394 and primal loss
+1.8166388, with the raw graph retained. Element labels remain legible, the
+probability size cues render correctly and no JavaScript errors were logged.
+
+Final captured HPC quota was **94.65/100.00 GiB** and **283,729/20,000,000
+files**, leaving about **5.35 GiB** and preserving the 4 GiB reserve. Every
+raw numerical run, failed gate and immutable source remains retained; the
+only recovery deletion was the separately authenticated redundant older
+500-update transfer archive described above.

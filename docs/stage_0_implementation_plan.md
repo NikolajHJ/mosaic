@@ -443,3 +443,23 @@ Stop Stage 0 as soon as gates A-G pass for reproducible ligand-only and protein-
 Keep a separate reviewer for modularity/reuse and a separate documentation owner during implementation, alongside T4's integration owner. The reviewer checks that protein APIs remain intact, shared graph identity is preserved, native helper reuse is justified, and adapter/readout boundaries are explicit. Implementers write inline shape/mask/gradient comments, with the documentation owner reviewing them and maintaining the common contract explanation, native feature-consumer table, example commands, limitations, contract-change history, and experiment ledger. T4 links the combined acceptance evidence rather than independently approving its own implementation.
 
 On completion, replace proposed gate statuses with evidence links and report remaining unsupported modes. Until then, preserve the distinction between design decisions, upstream assumptions requiring an audit, and actual numerical results.
+
+### 2026-10-16 known-ligand experiment outcome
+
+The scoped [real-target 1000-update study](known_ligand_1000.md) completed on
+allocated DTU HPC: 146 selected unit tests, three native pilots, and 1000
+accepted updates each for 15%, 30% and 50% uniform starts. It uses the full
+T4 lysozyme L99A sequence and a fixed benzene-derived contact pocket, with
+six occupied ligand slots. Separate matched hard-input controls and the
+interactive trajectory report also completed. The ledger retains immutable
+source/input identities, storage-gate failures, bounded recovery and receipts.
+The final evidence archive and 15,775 declared files were downloaded and
+verified locally by byte hashes; final report browser QA passed.
+
+Per the user's explicit instruction, the report depicts the raw categorical
+atom/bond outputs even when chemically invalid. Probability-dependent sizes
+and explicit element/slot labels preserve what the optimizer produced;
+sanitization only adds an annotation. No repair, filtering or alternative
+molecular identity is substituted. This experiment does not close the full
+A–G matrix, both-mode/restart validation or milestone M3; those outstanding
+acceptance requirements remain as specified above.

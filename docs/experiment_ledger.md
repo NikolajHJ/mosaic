@@ -1151,3 +1151,52 @@ Completed augmentation, retry packaging and verified download remain pending.
 ### Known-ligand completion download stopped
 
 Evidence job 29736472; RuntimeError: Evidence job exited; inspect HPC logs, no success claimed. See `C:\Users\nikol\OneDrive\Dokumenter\GitHub\mosaic\results\hpc\20261016-known-ligand-1000\download-02\completion.json`. No successful download or native outcome inferred.
+
+
+### Automatic completion receipt for known-ligand job 29736523
+
+Recorded 2026-10-16T11:16:06.500352+00:00. Evidence job **29736523 DONE**; native study status **passed**, model job **29736126**. Archive SHA-256 `cfe36ec2176432a26b9923cda0526db1cf5a3c657219599e419633995574b96f`, 795141544 bytes; 15775 declared files verified locally using stdlib byte checks only. Local completion receipt `C:\Users\nikol\OneDrive\Dokumenter\GitHub\mosaic\results\hpc\20261016-known-ligand-1000\download-03\completion.json`. Offline report: `C:\Users\nikol\OneDrive\Dokumenter\GitHub\mosaic\results\hpc\20261016-known-ligand-1000\download-03\report\report.html`. No local model/chemistry evaluation was performed; failed native outcomes are retained and do not establish a 1000-update success.
+
+### Final known-ligand report and raw-output delivery
+
+Report augmentation **29736521 DONE** and evidence retry **29736523 DONE**
+were confirmed by the saved scheduler receipt
+`results/hpc/20261016-known-ligand-1000/final-postprocessing-jobs.txt`.
+The archive includes 15,775 regular files, every real pytest temporary file,
+and an inventory of 26 omitted duplicate pytest current-directory aliases;
+no symlink was followed or extracted. The measured packaging gate required
+4.948134486 GiB free, including the unchanged 4 GiB reserve, and passed.
+The final captured quota was **94.65/100.00 GiB**, 283,729/20,000,000 files,
+about **5.35 GiB free** (`post-package-quota.txt`).
+
+The actual local transfer/integrity command was:
+
+```powershell
+py -3.13 scripts/download_hpc_when_complete.py --job 29736523 --archive /work3/s234818/mosaic/runs/20261016-known-ligand-1000-evidence-02.tar.gz --output results/hpc/20261016-known-ligand-1000/download-03 --study-run 20261016-known-ligand-1000-01 --report-run 20261016-known-ligand-controls-report-01 --ledger docs/experiment_ledger.md
+```
+
+It exited 0 on Windows/Python 3.13 after the allocated evidence job was DONE.
+Only SSH/SCP, stdlib extraction, metadata reads, byte hashes and file copying
+ran locally; no model, molecular conversion or numerical evaluation ran.
+Archive SHA and all declared file sizes/hashes passed. The copied enriched
+HTML is 38,875,386 bytes, SHA-256
+`2603881fb382b9a17f85b848d47525d6828321680937a12d28fefa5b7bee78d5`.
+The native summary reports **passed**, with 1000 accepted updates and 1001
+saved states per mixture. Failed storage/download/packaging attempts above
+remain failures; the separate completed native run establishes the result.
+
+Final browser QA at `http://127.0.0.1:8768/report/report.html` confirmed all
+three 1000-update cases, real target and reference, and hard-control scores.
+Selecting the 50% case and update 1000 displayed C1–C2–C3–C4–F5–C6,
+P(F5)=0.43394 and relaxed primal loss 1.8166388. The raw F5 chain and all five
+chain bonds remain visible; fixed readable labels and probability-dependent
+sizes render correctly. The browser logged no JavaScript errors. This is
+visual/interaction QA of HPC-generated artifacts, not local numerical work.
+
+The user explicitly accepts chemically invalid outputs for this phase and
+wants exactly the produced graph plotted. The depiction uses raw argmax
+labels/topology plus saved probabilities; sanitization is annotation only.
+No state filtering, fragment removal, bond repair or identity substitution
+was introduced. All raw arrays, failed gates and source releases remain
+preserved. This scoped result does not close the full Stage 0 A–G,
+both-mode/restart or M3 acceptance requirements.
