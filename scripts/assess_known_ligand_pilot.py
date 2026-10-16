@@ -17,6 +17,8 @@ def main():
     parser.add_argument("--pilot", type=Path, required=True)
     parser.add_argument("--config", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--storage", choices=("work3", "zhome"), default="work3")
+    parser.add_argument("--report-reserve-mib", type=int, default=128)
     args = parser.parse_args()
     if not os.environ.get("LSB_JOBID"):
         raise RuntimeError("Pilot assessment requires allocated DTU HPC")
@@ -66,35 +68,49 @@ def main():
             )
             / 3
         )
-    report_bytes = 128 * 1024**2
+    if args.report_reserve_mib < 128:
+        raise ValueError("Report reserve must be at least 128 MiB")
+    report_bytes = args.report_reserve_mib * 1024**2
     archive_bytes = int(1.01 * (run_bytes + pilot_bytes + report_bytes)) + 8 * 1024**2
     required_gib = 4 + (run_bytes + report_bytes + archive_bytes) / 1024**3
     args.output.mkdir(parents=True, exist_ok=False)
+    quota_arguments = [
+        "/work3/s234818/mosaic/envs/protenix-tiny/bin/python",
+        str(
+            Path(__file__).parent
+            / "hpc"
+            / (
+                "zhome_quota_preflight.py"
+                if args.storage == "zhome"
+                else "stage0_quota_preflight.py"
+            )
+        ),
+        "--run-dir",
+        str(args.output),
+        "--minimum-free-gib",
+        str(required_gib),
+    ]
+    if args.storage == "work3":
+        quota_arguments += ["--storage-pool", "6"]
     quota_result = subprocess.run(
-        [
-            "/work3/s234818/mosaic/envs/protenix-tiny/bin/python",
-            str(Path(__file__).parent / "hpc/stage0_quota_preflight.py"),
-            "--run-dir",
-            str(args.output),
-            "--storage-pool",
-            "6",
-            "--minimum-free-gib",
-            str(required_gib),
-        ],
+        quota_arguments,
         check=False,
     )
     receipt = {
         "status": "ready" if quota_result.returncode == 0 else "stopped_quota_gate",
         "job_id": os.environ["LSB_JOBID"],
         "pilot_summary_sha256": hashlib.sha256(summary.read_bytes()).hexdigest(),
+        "config_sha256": hashlib.sha256(args.config.read_bytes()).hexdigest(),
+        "storage": args.storage,
         "pilot_bytes": pilot_bytes,
         "projected_new_run_bytes_upper_bound": run_bytes,
         "projected_report_bytes": report_bytes,
         "projected_archive_bytes_upper_bound": archive_bytes,
         "required_free_gib": required_gib,
         "observed_mean_step_seconds_by_case": step_seconds,
-        "projected_3000_update_seconds": sum(step_seconds) * config["checks"]["steps"],
-        "scope": "metadata-based conservative storage/runtime projection; not completed 1000-update evidence",
+        "projected_total_update_seconds": sum(step_seconds) * config["checks"]["steps"],
+        "requested_updates_per_case": config["checks"]["steps"],
+        "scope": "metadata-based conservative storage/runtime projection; not completed long-run evidence",
     }
     (args.output / "assessment.json").write_text(json.dumps(receipt, indent=2) + "\n")
     print(json.dumps(receipt))

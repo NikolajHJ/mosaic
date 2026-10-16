@@ -120,7 +120,7 @@ def main(argv=None):
     protein = fixture["protein_sequence"]
     pocket_ordinals = study["config"].get(
         "pocket_protein_ordinals", fixture.get("pocket_protein_ordinals")
-    )
+    ) or ()
     args.output.mkdir(parents=True, exist_ok=False)
     elements = ("C", "N", "O", "S", "F", "Cl")
     analysis = {
@@ -144,6 +144,7 @@ def main(argv=None):
             "pdb_id": fixture.get("pdb_id"),
             "source_url": fixture.get("source_url"),
             "residue_count": len(protein),
+            "contact_partner_scope": fixture.get("contact_partner_scope", "pocket"),
             "pocket": [
                 {"residue": i + 1, "residue_symbol": protein[i], "native_token": token}
                 for i, token in zip(

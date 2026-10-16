@@ -1200,3 +1200,79 @@ No state filtering, fragment removal, bond repair or identity substitution
 was introduced. All raw arrays, failed gates and source releases remain
 preserved. This scoped result does not close the full Stage 0 A–G,
 both-mode/restart or M3 acceptance requirements.
+
+## 2026-10-16 — requested fresh BRD4-BD1, 5000 updates, 3x initial rate
+
+The user requested a new run with three times the learning rate and 5000
+updates, using BRD4-BD from the project description. Exact protocol and
+pivotal decisions are in [brd4_5000.md](brd4_5000.md). Retain six-carbon
+starts and 15%/30%/50% mixtures, seed 17; set initial step 0.03 and 5000
+total accepted updates per case. Backtracking may reduce the accepted step.
+Preserve every derivative/null/parity/descent/frozen check and raw output,
+including invalid categorical molecules. This is a fresh start, not a
+continuation of T4's 1000-update endpoints.
+
+The read-only project PDF extraction established section 4.1.2: whole
+BRD4-BD1 target from 3MXF, JQ1 removed, no selected binding pocket. Use the
+already implemented `NativeContactLoss`, negative mean ligand best-target
+contact probability, rather than the old pocket/anchor NLL. These are
+different objectives and target contexts; their losses are not comparable.
+This scoped experiment does not close the pending PAE/canonical 25-slot
+initialization/Stage 0–1 acceptance gates. JQ1 is excluded rather than
+neutralized or claimed as a supported same-occupancy reference.
+
+Input: authenticated RCSB 3MXF PDB, SHA-256
+`534dcb8ea9fa29956249b5133b22187c3867363b16a6b98dd8219c18c5d3250f`.
+Keep all 127 deposited residues, author 42..168, including deposited M43
+and its SEQADV discrepancy. Sequence-only model context; no MSA, structural
+template, coordinates, JQ1, solvents or ions. Allocated preprocessing alone
+generates the fixture. Local work so far is PDF extraction, byte transfer,
+static Ruff/format review and immutable packaging; no numerical test ran locally.
+
+Source 01: 240 files, archive 38,947,610 bytes, SHA-256
+`b3011e5be4502c383567c1f6253ae3aa774cf05fa841234c09912f428112a14f`,
+manifest `0d020949dc2430c294197bae4fe4a65e53dcde7f8acb1adc387057dfcc73bd89`,
+Git reference `12472e2677d70c100f0ed3eb2d6f66c20f7f65db` (dirty bytes included).
+Local `results/releases/brd4-5000-20261016-01/`; immutable remote
+`/work3/s234818/mosaic/releases/20261016-brd4-5000-01/source`.
+Archive hash and launcher shell syntax passed before submission.
+
+CPU readiness **29736568 DONE**, hpc two slots/4GB per slot, 15-minute bound,
+node n-62-30-25. Run `/work3/s234818/mosaic/runs/20261016-brd4-readiness-01`.
+**150 passed, three model items deselected, two existing warnings, 49.68s**.
+Includes complete/missing BRD4 mapping, whole-target selection and existing
+pocket regression checks, plus prior selected small-molecule unit coverage.
+Exact operator `scripts/hpc/receipts/20261016-brd4-5000/submit-readiness-01.sh`.
+No GPU pilot or 5000-update success is claimed by these CPU results.
+
+Storage decision: work3 reported 94.79/100.00 GiB used while other agents'
+jobs were active. Home reported 4.97/30.00 GiB, with a four-hour quota-report
+lag. Place only the new BRD4 small/medium output artifacts under
+`/zhome/95/e/206121/mosaic-runs/`; large model caches and immutable sources
+stay on work3. A new home gate rounds used GiB up/capacity down and keeps
+4 GiB plus the measured conservative run/report/archive bounds. No existing
+results or other agents' jobs are moved or deleted. Duplicate Python
+bytecode caches are disabled for this campaign. A combined source-02 CPU
+check and native pilot remain required before long-run submission.
+
+Allocated source-01 preparation produced fixture SHA-256
+`a84e0d6d0a0643ec2a85c0daa7a67cb44b6f3a318ffaf749bb75cd0bcc07dfb1`;
+the exact bytes were copied to `tests/data/brd4_3mxf/fixture.json`.
+Source 02 adds this fixture, conservative home-quota gating/tests and generic
+assessment resource accounting; the graph/model/gradient implementation and
+pilot configuration remain identical to source 01. It includes 245 files,
+archive 38,951,709 bytes, SHA-256
+`cd14cc6377e8422a8abb12b639f8c9a34edf989fe097332e958bf60402b5e2c5`,
+manifest `80bb2413904b955cc4ebc25a0c01e1940fd185b3bddfb6cbd3afed76ad75a4f2`.
+Local `results/releases/brd4-5000-20261016-02/`, immutable remote
+`/work3/s234818/mosaic/releases/20261016-brd4-5000-02/source`;
+Git reference remains `12472e2677d70c100f0ed3eb2d6f66c20f7f65db`.
+Upload checksum and both launcher syntax checks passed.
+
+Combined readiness **29736575 submitted**, hpc two slots/4GB per slot,
+15-minute bound, run `/zhome/95/e/206121/mosaic-runs/20261016-brd4-readiness-02`.
+GPU pilot **29736576 submitted**, gpua10 one exclusive A10/four slots/32GB
+total host request, one-hour bound, dependency `done(29736575)`; run
+`/zhome/95/e/206121/mosaic-runs/20261016-brd4-pilot-01`.
+Exact operator `scripts/hpc/receipts/20261016-brd4-5000/submit-readiness-and-pilot-02.sh`.
+Submission is not a passed pilot or a submitted/completed 5000-update run.

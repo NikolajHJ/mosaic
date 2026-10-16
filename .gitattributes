@@ -1,6 +1,8 @@
 # Preserve authenticated scientific input bytes, including PDB column padding.
 tests/data/t4_lysozyme_181l/181L.pdb -text -diff
 tests/data/t4_lysozyme_181l/fixture.json text eol=lf
+tests/data/brd4_3mxf/3MXF.pdb -text -diff
+tests/data/brd4_3mxf/fixture.json text eol=lf
 examples/configs/*.json text eol=lf
 scripts/*.py text eol=lf
 scripts/hpc/*.lsf text eol=lf

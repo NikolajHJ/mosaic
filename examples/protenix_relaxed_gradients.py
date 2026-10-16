@@ -1,10 +1,41 @@
-"""Run a small DBMol-inspired frozen Tiny contact-gradient study on DTU HPC."""
+"""Run an explicit frozen Tiny contact-gradient study on allocated DTU HPC."""
 
 import argparse
 from copy import deepcopy
 import json
 import os
 from pathlib import Path
+
+
+def _contact_objective(config, context, fixture):
+    """Select the declared native reduction without changing graph semantics."""
+    from mosaic.small_molecule.losses import DBMolContactLoss, NativeContactLoss
+
+    name = config.get("objective", "dbmol_pocket")
+    if name == "native_whole_target":
+        if config.get("pocket_protein_ordinals") or fixture.get(
+            "pocket_protein_ordinals"
+        ):
+            raise ValueError("Whole-target contact does not accept a selected pocket")
+        return NativeContactLoss(cutoff_angstrom=config["contact_cutoff_angstrom"]), ()
+    if name != "dbmol_pocket":
+        raise ValueError("Unknown contact objective")
+    ordinals = config.get(
+        "pocket_protein_ordinals", fixture.get("pocket_protein_ordinals")
+    )
+    if not ordinals:
+        raise ValueError("A declared nonempty pocket mapping is required")
+    if len(set(ordinals)) != len(ordinals) or any(
+        type(i) is not int or not 0 <= i < len(context.protein_token_indices)
+        for i in ordinals
+    ):
+        raise ValueError("Invalid fixed engineering pocket ordinals")
+    pocket = tuple(context.protein_token_indices[i] for i in ordinals)
+    return DBMolContactLoss(
+        pocket_token_indices=pocket,
+        cutoff_angstrom=config["contact_cutoff_angstrom"],
+        log_epsilon=config["log_epsilon"],
+    ), pocket
 
 
 def _validate_prepared_config(
@@ -124,7 +155,6 @@ def main(argv=None):
         save_graph,
         write_json,
     )
-    from mosaic.small_molecule.losses import DBMolContactLoss
     from mosaic.small_molecule.protenix import FrozenProtenixTiny
     from mosaic.small_molecule.provenance import environment_identity, source_identity
     from mosaic.small_molecule.state import mix_with_uniform
@@ -215,22 +245,7 @@ def main(argv=None):
         check_fixture(hard, fixture)
         context_files = save_context(args.output / "context", context)
         hard_graph_sha256 = save_graph(args.output / "hard_graph.npz", hard)
-        ordinals = config.get(
-            "pocket_protein_ordinals", fixture.get("pocket_protein_ordinals")
-        )
-        if not ordinals:
-            raise ValueError("A declared nonempty pocket mapping is required")
-        if len(set(ordinals)) != len(ordinals) or any(
-            type(i) is not int or not 0 <= i < len(context.protein_token_indices)
-            for i in ordinals
-        ):
-            raise ValueError("Invalid fixed engineering pocket ordinals")
-        pocket = tuple(context.protein_token_indices[i] for i in ordinals)
-        objective = DBMolContactLoss(
-            pocket_token_indices=pocket,
-            cutoff_angstrom=config["contact_cutoff_angstrom"],
-            log_epsilon=config["log_epsilon"],
-        )
+        objective, pocket = _contact_objective(config, context, fixture)
         loss = model.build_loss(context=context, loss=objective)
         before_model = array_digest(model)
         before_context = array_digest(context)
@@ -247,6 +262,8 @@ def main(argv=None):
             hard_graph_file="hard_graph.npz",
             hard_graph_sha256=hard_graph_sha256,
             pocket_token_indices=pocket,
+            objective_name=config.get("objective", "dbmol_pocket"),
+            protein_token_indices=context.protein_token_indices,
             ligand_token_indices=context.ligand_token_indices,
             model_digest_before=before_model,
             context_digest_before=before_context,

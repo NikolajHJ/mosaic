@@ -463,3 +463,19 @@ sanitization only adds an annotation. No repair, filtering or alternative
 molecular identity is substituted. This experiment does not close the full
 A–G matrix, both-mode/restart validation or milestone M3; those outstanding
 acceptance requirements remain as specified above.
+
+### 2026-10-16 requested BRD4 follow-up
+
+The user requested a fresh run at three times the starting learning rate
+and 5000 updates using BRD4-BD from the project description. The sealed
+[BRD4 protocol](brd4_5000.md) records the pivotal choices: full deposited
+3MXF BRD4-BD1 sequence with all residues eligible, the existing whole-target
+native contact reduction from section 4.1.2, initial step 0.03 with unchanged
+backtracking, and the same six-carbon/three-mixture starts. This is a changed
+target and objective relative to T4's pocket NLL. JQ1 is excluded rather than
+neutralized or scored as a supported reference. New medium-size artifacts
+use the user's separately gated home quota to avoid tight work3 headroom;
+model caches and immutable source remain on work3. No existing evidence is
+removed. CPU/pilot/resource gates precede the long run, and actual outcomes
+belong in the ledger. This scoped follow-up does not close outstanding
+PAE, canonical diffuse-start or Stage 0/1 acceptance gates.
