@@ -1109,6 +1109,44 @@ this host and was not bypassed. Their saved LSF completion logs, prior state
 receipts and quota/native artifacts remain the outcome evidence; no successful
 historical scheduler query is claimed for unavailable entries.
 
+Hard controls **29736511 DONE**. All five declared controls were covered by
+three distinct hard-graph evaluations; both 15%/30% endpoints have exactly the
+hard-chain array digest and reuse its score. Same-context hard losses:
+benzene **2.097959280014038**, initial chain and 15%/30% endpoints
+**2.01330828666687**, invalid 50% endpoint **1.8704317808151245**.
+Replayed benzene passed existing primal parity; model/context digests matched
+the main study before/after. The invalid fluorine graph remained invalid and
+was not repaired. This matched hard comparison itself ranks hexane and the
+invalid graph below benzene; the contact objective is not an affinity ranking
+or chemistry constraint. Control summary SHA-256
+`7dc78247be4be56442ea4569c944d942dab1a8e31daf3b02e7cb36bb085335b9`.
+
+Source 07 preserves the numerical controls and adds only safe inventory of
+bounded pytest current-directory aliases. 229 files, archive 38,889,473 bytes,
+SHA-256 `c179e4839fc80e258b18551a746188ec0f961fdae47b18e4362019b994b5e0c6`,
+manifest `05cd383db826477b59389c38d99870ae55f3a6acd46667bc8c0ee7b9301050c0`,
+Git reference `b3f57ccb413bf03853482762202e2156ba078815`.
+Local `results/releases/known-ligand-1000-20261016-07/`; read-only remote
+`/work3/s234818/mosaic/releases/20261016-known-ligand-1000-07/source`.
+Upload SHA and launcher syntax passed. The model/gradient experiment was not
+changed, and no failed scientific gate was waived.
+
+Report augmentation **29736521 submitted**, hpc one slot/2GB, ten-minute bound,
+dependency `done(29736511) && done(29736412)`; run
+`/work3/s234818/mosaic/runs/20261016-known-ligand-controls-report-01`.
+It authenticates the control summary SHA and matching model/context/native
+summary identities, copies the completed report and adds the hard-score table
+without recomputing trajectory plots/states. New evidence **29736523 submitted**,
+hpc one slot/2GB, 15-minute bound, dependency `ended(29736521)`; helper
+`/work3/s234818/mosaic/runs/20261016-known-ligand-1000-evidence-02`, archive
+`/work3/s234818/mosaic/runs/20261016-known-ligand-1000-evidence-02.tar.gz`.
+It also retains the failed first collector, separate hard controls and enriched
+report. The source-07 packager never follows or extracts symlinks; it records
+pytest current aliases while preserving every real file, and rejects other
+links. Measured archive-size quota plus the 4 GiB reserve remains required.
+Exact local operators `submit-controls-report-01.sh` and `submit-evidence-02.sh`.
+Completed augmentation, retry packaging and verified download remain pending.
+
 
 ### Known-ligand completion download stopped
 
