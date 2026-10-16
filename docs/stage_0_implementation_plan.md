@@ -1,6 +1,6 @@
 # Stage 0 implementation plan: relaxed small-molecule graphs in Mosaic
 
-Plan date: 2026-10-10. Implementation started: 2026-10-12; documentation update: 2026-10-13. Status: all Work 0-5 code and tests authored and merged; independently reviewed. Static checks and local immutable source packaging completed. Numerical acceptance gates A-G remain pending. [The ledger](experiment_ledger.md) records the final receipts.
+Plan date: 2026-10-10. Implementation started: 2026-10-12; documentation update: 2026-10-16. Status: all Work 0-5 code and tests authored and merged; independently reviewed. Static checks and local immutable source packaging completed. Numerical acceptance gates A-G remain pending; the dated follow-up below records allocated-HPC gradient testing and pivotal numerical decisions. [The ledger](experiment_ledger.md) records actual receipts.
 
 Source of requirements: [project description](project_desc.pdf), especially Stage 0 (page 2, section 3), the V0 optimizer contract (pages 3-5, section 4), and the minimum outputs (page 7, section 8). The reviewed Mosaic baseline is commit `1eb4af6`. The source PDF SHA-256 is `c9785f45dcd34fbc3feaebcc0bc57905dc606387f76308bb6364eadb40cbeda0`; the user has moved the input to `docs/project_desc.pdf`, and that move is currently uncommitted.
 
@@ -46,6 +46,83 @@ The independent reviewer inspected merged implementation slices. Fixes included 
 Final launcher review also separated scheduler evidence from numerical payloads: the parent run may contain LSF stdout/stderr, while an atomic `mkdir RUN/payload` refuses reuse of an existing payload. All numerical outputs and pytest temporary directories stay inside that new payload, preserving earlier runs. The launcher authenticates the source manifest before executing quota helpers and rejects unmanifested execution files. These are authored preservation/authentication boundaries; allocated-HPC behavior remains untested.
 
 Prepared-feature identities hash the actual dtype-normalized resident arrays; the original NumPy importer bytes have a separate pre-cast hash. This avoids naming a pre-cast fingerprint as the identity of the arrays used by the model. Final static checks pass; local release receipts are stored under `results/releases/stage0-20261013/`. Numerical gates A-G remain pending.
+
+### Allocated-HPC gradient-test follow-up, 2026-10-16
+
+The user restored DTU HPC access and requested DBMol-inspired real Protenix gradients into a relaxed molecule. The [focused protocol](protenix_relaxed_gradient_tests.md) and [ledger](experiment_ledger.md) record this bounded engineering extension and every actual attempt. T3 adds an explicitly mapped pocket/anchor contact NLL; T1/T3 test atom and edge-existence tangent derivatives and measured projected descent; T2 replaces a sparse element one-hot matrix multiplication with exact indexed scatter after an A10 TF32 boundary failure; T4 binds context/source/runtime identities and retains raw probes, candidate graphs and failures. The existing acetanilide/20-residue engineering fixture, fixed neutral occupancy and existence-only native bonds remain shared. This test's explicit synthetic pocket does not replace Stage 1's separate prescribed target-contact fallback.
+
+Pivotal numerical decisions:
+
+- Preserve the default-precision failed derivative result. A separately sealed `matmul_precision="highest"` profile reuses the exact authenticated earlier prepared context and frozen model, requiring all nonprecision configuration fields and initial model/context digests to match. Both graph leaves then passed all three finite-difference scales in case 0; the entire attempt still failed a later guard. No epsilon or acceptance tolerance was loosened, and no new conformer was substituted.
+- Compare a bond-order-null graph with an unaltered graph through the same standalone primal forward. The previous null guard mixed an autodiff-compiled auxiliary output with a standalone output; retain that failed measurement and record the cross-path difference separately. The null threshold remains `2e-5`, scalar AD/primal parity requires `2e-5`, and a new final standalone-primal decline greater than `1e-7` supplements the three evaluated candidate declines. These controls distinguish a graph perturbation from numerical execution-path differences.
+- Keep unit fresh-process fixtures on CPU within the allocated DTU host to avoid exclusive-GPU parent/child contention, and independently rerun all seven feature checks on the allocated A10. All numerical work remains on allocated HPC.
+
+Final actual state: earlier source 02/03 runs passed 124 selected unit checks and seven GPU feature checks but failed their respective native guards; they remain retained. Immutable source-04 job **`29735139` DONE** passed **126 selected unit checks (59.66 s), seven A10 feature checks (25.55 s), and the real native two-case pytest item (207.07 s)**. Both graph leaves in both cases passed all three epsilons. Same-primal bond-order null differences were exactly zero. Each case completed three declining AD-evaluated projected steps at `eta_X=eta_E=0.01`, plus an independent initial-to-final standalone-primal decrease; intermediate standalone-primal losses were not separately evaluated. Model/context digests matched before/after and the authenticated prior input. Results are downloaded and integrity-verified.
+
+| Final mixing case | Initial standalone-primal loss | Final standalone-primal loss | Focused result |
+| --- | --- | --- | --- |
+| `0.15` | `1.7413299084` | `1.7370867729` | Derivative, null, three-step and final identity checks passed. |
+| `0.30` | `1.6747362614` | `1.6332819462` | Derivative, null, three-step and final identity checks passed. |
+
+This completes the focused user-requested Protenix relaxed-graph gradient study, with no binding/chemical-validity claim. It does not close full Stage 0 gates A-G, both-mode acceptance, restart/protein regression or M3. The ledger carries exact source hashes, jobs, commands, retained failures, numerical profile and downloaded evidence; the focused protocol contains the rerun command. All numerical computation occurred on allocated DTU HPC.
+
+### Carbon-chain trajectory follow-up, 2026-10-16
+
+The user requested 100 updates per initialization and a polished report using
+`render_protenix_trajectory.py`. The [carbon-chain protocol](carbon_chain_100.md)
+records the completed study. Pivotal choices: start fresh from neutral ten-carbon
+decane at the same 15%/30% relaxation strengths; retain the synthetic protein,
+fixed RNG, highest precision and derivative thresholds; independently measure
+the standalone primal at **every** candidate and require both losses to decline
+by more than `1e-7`. Retain all accepted states and rejected trials, with raw
+chemical readouts detached from optimization. No hardening/repair or new
+scientific objective was added to force a discrete molecule change.
+
+Allocated GPU job **29735673 DONE** passed 128 selected unit checks and completed
+100 accepted updates per start. Primal losses: 1.844622612 → 1.773505211 and
+1.609976530 → 1.119375110. Model and prepared-context digests are unchanged.
+Both hard readout trajectories stay connected decane and sanitize at all 101
+states; soft probabilities change. This demonstrates longer measured relaxed
+descent, not a new chemical identity or binding result. Report rendering uses
+separately sealed presentation source and allocated CPU jobs; it never mutates
+the tested GPU source or reruns the model. Full Stage 0 A–G/M3 remains pending.
+
+The subsequent user-requested [500-update study](carbon_chain_500.md) starts
+fresh from both carbon-chain initializations and reuses the authenticated
+100-update context. Its explicit longer-budget replay allows only
+`checks.steps` to change, retaining all other inputs and numerical gates.
+Reserve 8 GiB free at preflight to cover the longer evidence while keeping
+4 GiB headroom. Render on allocated CPU after the GPU job, preserving the
+earlier report. This is a requested longer engineering trajectory, not a new
+scientific objective or a waiver of full Stage 0 acceptance.
+
+Storage follow-up for the added 50% start: its first allocation correctly
+stopped before tests at just below the conservative 8 GiB gate. Recover only
+the two verified redundant upload archives from this new campaign, retaining
+identical local tarballs, manifests, read-only HPC source and all results.
+Recheck the unchanged quota gate and use a new run identity; record the stopped
+attempt and report-job cancellation. This bounded transfer-file cleanup avoids
+changing numerical/space tolerances or deleting experiment evidence.
+
+Completed follow-up: GPU jobs **29735858/29735926 DONE** delivered 500 accepted
+updates for each of 15%, 30% and 50% uniform mixing. Allocated CPU report
+**29735927 DONE** compares all 1503 saved states; evidence packaging
+**29735961 DONE** and local integrity verification passed for all 4619 files.
+The [protocol/result](carbon_chain_500.md) links the downloaded interactive
+report and records losses, molecular changes and receipts. All final hard
+readouts replace C3 with S3; the 15% and 30% starts also fragment, while the
+50% endpoint remains connected. This bounded synthetic-peptide contact study
+does not establish binding or complete full Stage 0 A–G/M3 acceptance.
+
+The next user-requested [real-target 1000-update comparison](known_ligand_1000.md)
+uses the deposited T4 lysozyme L99A construct with benzene as a known reference
+and six carbon slots for a size-matched chain. Crystal coordinates select
+contact residue IDs only; the model remains sequence-only, without a crystal
+template. Record this distinct target/size/selection and compact serialization
+policy rather than comparing its losses directly with the synthetic runs.
+The charged CCD JQ1 is not silently neutralized; the original Stage 1 gates
+remain pending. Readiness units/preparation passed on allocated HPC; a native
+pilot must pass before the 1000-update budget is submitted.
 
 ## 2. What the current code already provides
 
@@ -366,3 +443,107 @@ Stop Stage 0 as soon as gates A-G pass for reproducible ligand-only and protein-
 Keep a separate reviewer for modularity/reuse and a separate documentation owner during implementation, alongside T4's integration owner. The reviewer checks that protein APIs remain intact, shared graph identity is preserved, native helper reuse is justified, and adapter/readout boundaries are explicit. Implementers write inline shape/mask/gradient comments, with the documentation owner reviewing them and maintaining the common contract explanation, native feature-consumer table, example commands, limitations, contract-change history, and experiment ledger. T4 links the combined acceptance evidence rather than independently approving its own implementation.
 
 On completion, replace proposed gate statuses with evidence links and report remaining unsupported modes. Until then, preserve the distinction between design decisions, upstream assumptions requiring an audit, and actual numerical results.
+
+### 2026-10-16 known-ligand experiment outcome
+
+The scoped [real-target 1000-update study](known_ligand_1000.md) completed on
+allocated DTU HPC: 146 selected unit tests, three native pilots, and 1000
+accepted updates each for 15%, 30% and 50% uniform starts. It uses the full
+T4 lysozyme L99A sequence and a fixed benzene-derived contact pocket, with
+six occupied ligand slots. Separate matched hard-input controls and the
+interactive trajectory report also completed. The ledger retains immutable
+source/input identities, storage-gate failures, bounded recovery and receipts.
+The final evidence archive and 15,775 declared files were downloaded and
+verified locally by byte hashes; final report browser QA passed.
+
+Per the user's explicit instruction, the report depicts the raw categorical
+atom/bond outputs even when chemically invalid. Probability-dependent sizes
+and explicit element/slot labels preserve what the optimizer produced;
+sanitization only adds an annotation. No repair, filtering or alternative
+molecular identity is substituted. This experiment does not close the full
+A–G matrix, both-mode/restart validation or milestone M3; those outstanding
+acceptance requirements remain as specified above.
+
+### 2026-10-16 requested BRD4 follow-up
+
+The user requested a fresh run at three times the starting learning rate
+and 5000 updates using BRD4-BD from the project description. The sealed
+[BRD4 protocol](brd4_5000.md) records the pivotal choices: full deposited
+3MXF BRD4-BD1 sequence with all residues eligible, the existing whole-target
+native contact reduction from section 4.1.2, initial step 0.03 with unchanged
+backtracking, and the same six-carbon/three-mixture starts. This is a changed
+target and objective relative to T4's pocket NLL. JQ1 is excluded rather than
+neutralized or scored as a supported reference. New medium-size artifacts
+use the user's separately gated home quota to avoid tight work3 headroom;
+model caches and immutable source remain on work3. No existing evidence is
+removed. CPU/pilot/resource gates precede the long run, and actual outcomes
+belong in the ledger. This scoped follow-up does not close outstanding
+PAE, canonical diffuse-start or Stage 0/1 acceptance gates.
+
+### 2026-10-16 requested completely uniform control
+
+The user requested a separate otherwise identical 0.03/5000 BRD4 run with
+equal atom probabilities and pair existence near `3/N`. The
+[uniform-control protocol](brd4_uniform_5000.md) records six fixed slots,
+each element at 1/6, pair existence 0.5, NO_BOND 0.5 and four bonded
+categories each 0.125, with zero noise. Run one control, since three exact
+copies at the same key would duplicate the computation. Preserve the
+original jobs. Native slot/name metadata remains fixed to the same prepared
+context, so uniform graph probabilities do not assert a permutation-symmetric
+model. Use the existing shared initializer, explicit initialization-replay
+authorization, CPU tests and aggregate quota accounting for both studies.
+Every new uniform graph still passes native derivative/null/parity gates
+at GPU entry before accepting updates. No gate is waived, no jitter added,
+and raw invalid/disconnected readouts remain visible.
+
+## 2026-10-16 noisy-uniform initialization control
+
+The user requested a third BRD4 0.03/5000-update study. See
+[the noisy-uniform protocol](brd4_noisy_uniform_5000.md). The recorded pivotal
+decision is `0.5 * uniform + 0.5 * simplex(N(0,1))` for both atoms and unordered
+bonds. Projecting the random component FIRST preserves the positive uniform
+floor needed by the unchanged central derivative/null probes. This can change
+the baseline bond density and does not imply chemical validity. The two
+earlier immutable studies remain unchanged.
+
+Completed preparation: sealed source 01, allocated CPU readiness 29736756
+(167 passed), unchanged-library/config/reference and aggregate-quota gates.
+Submitted noisy native 29736761 and dependent report 29736762; both pending.
+Actual noisy native gates, 5000 updates and final report/results remain open;
+submission does not close any scientific acceptance gate.
+
+
+## 2026-10-16 combined BRD4 comparison report
+
+User requested one report containing all three studies/five trajectories.
+[The combined-report protocol](brd4_combined_report.md) records the explicit
+initialization-only comparison policy, matched frozen/shared inputs and
+per-study source receipts. Allocated CPU readiness 29736903 passed all 13
+checks, including synthetic five-case rendering. Combined report/evidence
+29736911 is queued behind all three native jobs; no native run or individual
+report was changed. An hourly completion follow-up will download, verify and
+inspect the actual combined report, then deliver it and stop. All native
+trajectories and actual combined-report completion remain pending.
+
+
+## 2026-10-16 section 4.2 initialization, user-kept six slots
+
+The user requested section 4.2, then explicitly instructed keeping N=6.
+[The canonical diffuse protocol](brd4_canonical_diffuse_5000.md) records the
+pivotal choices: C=0.75 (others 0.05), d0=2.25, p0=d0/(N-1)=0.45, independent
+sigmaX=sigmaE=0.005 noise added BEFORE projection, upper-pair symmetry and
+fixed neutral occupancy/geometry-off context. This exposes the existing shared
+initializer to the actual experiment rather than introducing another graph
+representation. Keep all native settings/rate/5000-update checks unchanged.
+Readiness requires CPU tests, exact frozen/source/config bindings and aggregate
+quota for four studies plus a combined report. Native acceptance/trajectory
+remain pending; a queued job does not close Stage 1 or other acceptance gates.
+
+
+Completed preparation: canonical source 01 sealed; CPU 29736979 passed all
+186 selected tests and source/config/reference/aggregate-quota gates. Native
+29736988 and final four-study/six-case report 29736989 are queued. Superseded
+pending report 29736911 was intentionally cancelled and confirmed EXIT;
+existing GPU runs and individual reports are unchanged. The existing hourly
+completion follow-up now targets report-02. Actual native acceptance, 5000
+updates and final report/download remain pending.

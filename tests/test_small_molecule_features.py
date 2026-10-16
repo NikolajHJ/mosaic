@@ -93,6 +93,9 @@ def test_integer_native_element_channel_does_not_truncate_relaxed_values_or_grad
         return jnp.sum(inject_graph(context, state)["ref_element"] * weights)
 
     gradient = jax.grad(scalar)(graph)
+    np.testing.assert_array_equal(
+        gradient.X, np.broadcast_to(NATIVE_ELEMENT_INDICES, graph.X.shape)
+    )
     # C -> N in an interior row must retain a derivative of 6-5 = 1.
     np.testing.assert_allclose(gradient.X[0, 1] - gradient.X[0, 0], 1, rtol=0, atol=0)
 
@@ -111,7 +114,7 @@ def test_injection_preserves_protein_and_static_metadata_without_mutating_contex
     np.testing.assert_array_equal(
         features["ref_pos"][protein_atoms], before["ref_pos"][protein_atoms]
     )
-    proteins = list(context.protein_token_indices)
+    proteins = np.asarray(context.protein_token_indices, dtype=np.int32)
     np.testing.assert_array_equal(
         features["token_bonds"][np.ix_(proteins, proteins)],
         before["token_bonds"][np.ix_(proteins, proteins)],
@@ -246,7 +249,7 @@ def test_geometry_hook_masks_zero_distance_constants_before_identity_attention(
     features = inject_graph(context, graph)
     hook = GeometryMaskedAtomInput(_Encoder())
     _, _, single, pair = hook(features)
-    ligand = list(context.ligand_atom_indices)
+    ligand = np.asarray(context.ligand_atom_indices, dtype=np.int32)
     # Ligand identity survives with ref_mask=1, although all geometry is off.
     np.testing.assert_allclose(single[ligand], 2, rtol=0, atol=0)
     # Ligand-ligand pair conditioning contains cl(2)+cm(2)=18, WITHOUT the

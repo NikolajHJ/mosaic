@@ -1,0 +1,24 @@
+#!/bin/bash
+set -euo pipefail
+[[ -n "${LSB_JOBID:-}" ]] || { echo 'Allocated LSF job required' >&2; exit 2; }
+release=$1
+parent=$2
+manifest_sha=$3
+pilot=$4
+recovery_sha=${5:-}
+python=/work3/s234818/mosaic/envs/protenix-tiny/bin/python
+module load python3/3.12.11
+mkdir "$parent/payload"
+run="$parent/payload"
+"$python" "$release/scripts/verify_stage0_release.py" "$release" "$manifest_sha"
+export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 JAX_PLATFORMS=cpu
+export PYTHONPYCACHEPREFIX="$run/pycache" MPLCONFIGDIR="$run/mplcache"
+if [[ -n "$recovery_sha" ]]; then
+  "$python" "$release/scripts/hpc/recover_verified_500_archive.py" \
+    --output "$run/transfer_recovery.json" --verified-local-sha256 "$recovery_sha"
+fi
+"$python" "$release/scripts/assess_known_ligand_pilot.py" \
+  --pilot "$pilot" --config "$release/examples/configs/known_ligand_1000.json" \
+  --output "$run/assessment" > "$run/assessment.log" 2>&1
+"$python" "$release/scripts/render_protenix_trajectory.py" --study "$pilot" \
+  --output "$run/report" > "$run/render.log" 2>&1

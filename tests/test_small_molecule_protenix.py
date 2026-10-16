@@ -153,9 +153,10 @@ class _MSA(eqx.Module):
 
 class _OriginalEncoder(eqx.Module):
     has_coords: bool = False
+    weight: jax.Array = eqx.field(default_factory=lambda: jnp.array([2.0, 3.0]))
 
     def __call__(self, input_feature_dict):
-        value = input_feature_dict["ref_element"]
+        value = input_feature_dict["ref_element"] * self.weight[0]
         return value, value, value, value
 
 
@@ -174,6 +175,9 @@ def test_loader_is_resident_and_hook_shares_weights_without_mutating_native_mode
 ):
     calls = []
     original = _Loadable(_Input(_OriginalEncoder()), _MSA(), jnp.array([1.0, 2.0]))
+    original_encoder = original.input_embedder.atom_attention_encoder
+    expected_encoder_weight = np.array(original_encoder.weight, copy=True)
+    expected_model_weight = np.array(original.weight, copy=True)
     backend = types.ModuleType("protenix.backend")
     backend.load_model = lambda path: calls.append(path) or original
     parent = types.ModuleType("protenix")
@@ -187,17 +191,25 @@ def test_loader_is_resident_and_hook_shares_weights_without_mutating_native_mode
     assert original.msa_module.training  # eval-mode change is functional
     assert not resident.native_model.msa_module.training
     assert not resident.model.msa_module.training
+    assert original.weight is resident.native_model.weight
     assert resident.native_model.weight is resident.model.weight
+    np.testing.assert_array_equal(original.weight, expected_model_weight)
+    np.testing.assert_array_equal(resident.model.weight, expected_model_weight)
     assert isinstance(
         resident.native_model.input_embedder.atom_attention_encoder, _OriginalEncoder
     )
     assert isinstance(
         resident.model.input_embedder.atom_attention_encoder, GeometryMaskedAtomInput
     )
-    assert (
-        resident.model.input_embedder.atom_attention_encoder.native
-        is resident.native_model.input_embedder.atom_attention_encoder
-    )
+    native_encoder = resident.native_model.input_embedder.atom_attention_encoder
+    hooked_encoder = resident.model.input_embedder.atom_attention_encoder.native
+    # tree_at may rebuild Equinox containers. Sharing concerns pretrained array
+    # leaves, whose identities and values must survive both functional edits.
+    assert original_encoder.weight is native_encoder.weight
+    assert native_encoder.weight is hooked_encoder.weight
+    for encoder in (original_encoder, native_encoder, hooked_encoder):
+        np.testing.assert_array_equal(encoder.weight, expected_encoder_weight)
+        assert not encoder.has_coords
     # Building objectives does not trigger a second loader or weight allocation.
     context, _ = synthetic_context()
     resident.build_loss(context=context, loss=DistogramDiagnosticLoss())

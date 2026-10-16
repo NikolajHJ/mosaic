@@ -61,6 +61,15 @@ def main():
         "docs/experiment_ledger.md",
         "docs/HPC_HELP.tex",
         "docs/hpc_protenix_tiny.md",
+        "docs/protenix_relaxed_gradient_tests.md",
+        "docs/carbon_chain_100.md",
+        "docs/carbon_chain_500.md",
+        "docs/known_ligand_1000.md",
+        "docs/brd4_5000.md",
+        "docs/brd4_uniform_5000.md",
+        "docs/brd4_noisy_uniform_5000.md",
+        "docs/brd4_combined_report.md",
+        "docs/brd4_canonical_diffuse_5000.md",
     ):
         path = root / name
         if path.is_file():

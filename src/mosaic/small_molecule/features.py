@@ -10,7 +10,6 @@ import json
 from pathlib import Path
 import sys
 
-import jax
 import jax.numpy as jnp
 import numpy as np
 
@@ -351,8 +350,14 @@ def inject_graph(context: PreparedContext, graph: RelaxedGraph):
         raise ValueError("Graph shape disagrees with the prepared native slot contract")
     atom_indices = jnp.asarray(context.ligand_atom_indices, dtype=jnp.int32)
     token_indices = jnp.asarray(context.ligand_token_indices, dtype=jnp.int32)
-    basis = jax.nn.one_hot(
-        jnp.asarray(NATIVE_ELEMENT_INDICES), 128, dtype=graph.X.dtype
+    # This is a pure channel copy, not a learned linear projection. A one-hot
+    # matrix product can use reduced-precision GPU matmul (TF32) and round the
+    # graph probabilities even when both arrays are float32. Indexed scatter
+    # preserves the supplied values exactly and has the same linear derivative.
+    ligand_elements = (
+        jnp.zeros((n_atoms, 128), dtype=graph.X.dtype)
+        .at[:, jnp.asarray(NATIVE_ELEMENT_INDICES, dtype=jnp.int32)]
+        .set(graph.X)
     )
     # Native hard one-hot channels may be integer. Scatter into an explicitly
     # floating array: writing a relaxed distribution to integer storage would
@@ -360,7 +365,7 @@ def inject_graph(context: PreparedContext, graph: RelaxedGraph):
     elements = (
         jnp.asarray(context.base_features["ref_element"], dtype=graph.X.dtype)
         .at[atom_indices]
-        .set(graph.X @ basis)
+        .set(ligand_elements)
     )
     # Reconstruct both orientations from the single stored unordered pair. Each
     # pair's reverse-mode gradient therefore includes both native matrix entries.
