@@ -69,7 +69,7 @@ def main():
                     "-o",
                     "ConnectTimeout=15",
                     "dtu-hpc",
-                    f"bjobs -noheader -o stat {args.job}",
+                    f"bash -l -c 'bjobs -noheader -o stat {args.job}'",
                 ]
             )
             states = [
@@ -109,7 +109,7 @@ def main():
                 "-o",
                 "ConnectTimeout=15",
                 "dtu-hpc",
-                f"bjobs -l {args.job}",
+                f"bash -l -c 'bjobs -l {args.job}'",
             ]
         )
         (output / "evidence-job-final.txt").write_text(

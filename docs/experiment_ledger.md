@@ -1050,3 +1050,17 @@ failure evidence. Packaging has its own measured-size-plus-4-GiB quota guard.
 Exact operators: local `submit-collection-smoke-01.sh`, `submit-report-01.sh`
 and `submit-evidence-01.sh` under the campaign directory. Final report,
 packaging and complete evidence download remain pending at submission.
+
+
+### Known-ligand completion download stopped
+
+Evidence job 29736472; CalledProcessError: Command '['ssh', '-o', 'BatchMode=yes', '-o', 'ConnectTimeout=15', 'dtu-hpc', 'bjobs -noheader -o stat 29736472']' returned non-zero exit status 127.. See `C:\Users\nikol\OneDrive\Dokumenter\GitHub\mosaic\results\hpc\20261016-known-ligand-1000\download-01\completion.json`. No successful download or native outcome inferred.
+
+The first local file-transfer helper failed before downloading: its non-login
+SSH shell did not initialize LSF's `bjobs` PATH (exit 127). Corrected both
+scheduler queries to use `bash -l -c`; the read-only query then returned the
+expected unique scheduler state. New output `download-02/` preserves the stopped
+`download-01/` receipt. No native job was rerun or numerical setting changed.
+Exact submitted operator scripts are additionally preserved in versioned
+`scripts/hpc/receipts/20261016-known-ligand-1000/`; the README distinguishes
+historical receipts from reusable launchers.
