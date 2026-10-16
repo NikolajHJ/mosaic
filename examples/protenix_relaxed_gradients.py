@@ -3,8 +3,59 @@
 import argparse
 from copy import deepcopy
 import json
+import math
 import os
 from pathlib import Path
+
+
+def _case_specs(config):
+    """Keep uniform-start controls distinct from mixtures of a hard scaffold."""
+    initialization = config.get("initialization")
+    if initialization is not None:
+        if "mixing_values" in config:
+            raise ValueError("Choose initialization or mixing_values, not both")
+        if initialization.get("kind") != "uniform":
+            raise ValueError("Unsupported initialization kind")
+        numerator = initialization.get("bond_existence_numerator")
+        if (
+            isinstance(numerator, bool)
+            or not isinstance(numerator, (int, float))
+            or not math.isfinite(numerator)
+            or numerator <= 0
+            or set(initialization) != {"kind", "bond_existence_numerator"}
+        ):
+            raise ValueError(
+                "Uniform initialization requires a positive finite numerator"
+            )
+        return [
+            {
+                "mixing": None,
+                "initialization": initialization,
+                "label": f"Uniform atoms; P(bond)={numerator:g}/N",
+            }
+        ]
+    return [{"mixing": mixing} for mixing in config["mixing_values"]]
+
+
+def _initial_graph(hard, case, key):
+    """Prepare exact equal rows using Mosaic's shared graph initializer."""
+    from mosaic.small_molecule.state import ELEMENTS, initialize_graph, mix_with_uniform
+
+    if "initialization" not in case:
+        return mix_with_uniform(hard, case["mixing"])
+    n = hard.n_atoms
+    probability = case["initialization"]["bond_existence_numerator"] / n
+    if not 0 < probability < 1:
+        raise ValueError("Uniform bond-existence probability must be in (0, 1)")
+    return initialize_graph(
+        n,
+        key,
+        carbon_probability=1 / len(ELEMENTS),
+        expected_degree=probability * (n - 1),
+        atom_noise=0,
+        bond_noise=0,
+        dtype=hard.X.dtype,
+    )
 
 
 def _contact_objective(config, context, fixture):
@@ -44,9 +95,20 @@ def _validate_prepared_config(
     *,
     allow_update_count_change=False,
     allow_mixing_values_change=False,
+    allow_initialization_change=False,
 ):
     """Bind a reused context to either precision-only or longer-budget replay."""
     current_shared, previous_shared = deepcopy(config), deepcopy(previous)
+    if allow_initialization_change:
+        if allow_mixing_values_change:
+            raise ValueError(
+                "Initialization replacement and mixture-only policies are exclusive"
+            )
+        _case_specs(config)
+        _case_specs(previous)
+        for shared in (current_shared, previous_shared):
+            shared.pop("initialization", None)
+            shared.pop("mixing_values", None)
     if allow_mixing_values_change:
         if not allow_update_count_change:
             raise ValueError("Mixture replay requires explicit longer-budget policy")
@@ -68,8 +130,9 @@ def _validate_prepared_config(
                 "Update-count replay changed an unapproved configuration field"
             )
     else:
-        current_shared.pop("matmul_precision", None)
-        previous_shared.pop("matmul_precision", None)
+        if not allow_initialization_change:
+            current_shared.pop("matmul_precision", None)
+            previous_shared.pop("matmul_precision", None)
         if current_shared != previous_shared:
             raise ValueError("Matched replay may change only matmul_precision")
 
@@ -117,6 +180,11 @@ def main(argv=None):
         help="Explicitly authorize different relaxation strengths for longer-budget replay",
     )
     parser.add_argument(
+        "--allow-initialization-change",
+        action="store_true",
+        help="Explicitly permit a different graph initialization with identical frozen context",
+    )
+    parser.add_argument(
         "--config",
         type=Path,
         default=Path(__file__).parent / "configs/protenix_relaxed_gradients.json",
@@ -128,6 +196,8 @@ def main(argv=None):
         )
     if args.allow_update_count_change and args.prepared_study is None:
         parser.error("--allow-update-count-change requires --prepared-study")
+    if args.allow_initialization_change and args.prepared_study is None:
+        parser.error("--allow-initialization-change requires --prepared-study")
     if args.allow_mixing_values_change and not args.allow_update_count_change:
         parser.error(
             "--allow-mixing-values-change requires --allow-update-count-change"
@@ -157,7 +227,6 @@ def main(argv=None):
     )
     from mosaic.small_molecule.protenix import FrozenProtenixTiny
     from mosaic.small_molecule.provenance import environment_identity, source_identity
-    from mosaic.small_molecule.state import mix_with_uniform
 
     if not any(device.platform == "gpu" for device in jax.devices()):
         raise RuntimeError("Requires the job's allocated GPU")
@@ -187,7 +256,11 @@ def main(argv=None):
         ),
         "prepared_summary_sha256": args.prepared_summary_sha256,
         "prepared_configuration_policy": (
-            "update_count_and_mixing_only"
+            "initialization_and_update_count_only"
+            if args.allow_initialization_change and args.allow_update_count_change
+            else "initialization_only"
+            if args.allow_initialization_change
+            else "update_count_and_mixing_only"
             if args.allow_mixing_values_change
             else "update_count_only"
             if args.allow_update_count_change
@@ -206,13 +279,16 @@ def main(argv=None):
                 raise ValueError("Previous prepared-study summary identity mismatch")
             # Only trust context file hashes after authenticating the receipt.
             previous = json.loads(summary_path.read_text(encoding="utf-8"))
-            if args.allow_update_count_change and previous["status"] != "passed":
+            if (
+                args.allow_update_count_change or args.allow_initialization_change
+            ) and previous["status"] != "passed":
                 raise ValueError("Prepared study must have passed its checks")
             _validate_prepared_config(
                 config,
                 previous["config"],
                 allow_update_count_change=args.allow_update_count_change,
                 allow_mixing_values_change=args.allow_mixing_values_change,
+                allow_initialization_change=args.allow_initialization_change,
             )
             report["previous_requested_updates"] = previous["config"]["checks"]["steps"]
             if previous["fixture_sha256"] != report["fixture_sha256"]:
@@ -304,15 +380,15 @@ def main(argv=None):
                 "scope": "same frozen geometry-off context, occupancy, RNG and objective; no binding free energy or pose comparison; native model observes bond existence only",
             }
             write_json(args.output / "summary.json", report)
-        for index, mixing in enumerate(config["mixing_values"]):
+        for index, case in enumerate(_case_specs(config)):
             result = check_graph_gradients(
                 loss,
-                mix_with_uniform(hard, mixing),
+                _initial_graph(hard, case, jax.random.key(config["seed"])),
                 key=jax.random.key(config["seed"]),
                 output_directory=args.output / f"case-{index}",
                 **config["checks"],
             )
-            report["cases"].append({"mixing": mixing, **result})
+            report["cases"].append({**case, **result})
             write_json(args.output / "summary.json", report)
         report.update(
             model_digest_after=array_digest(model),

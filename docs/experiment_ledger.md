@@ -1435,3 +1435,110 @@ and home-quota gates. Run
 Local receipt `resubmit-a10-02.txt`; actual scheduler states are captured in
 `a10-replacement-state.txt`. Submitted does not establish completed updates,
 a rendered report or a downloaded result.
+
+## 2026-10-16 — requested exact-uniform BRD4 initialization control
+
+The user requested a separate identical 0.03/5000-update study, changing
+initialization to equal element probabilities and pair existence about
+`3/n_atoms`. See [the exact-uniform protocol](brd4_uniform_5000.md).
+Keep the original native/report jobs **29736629/29736630** unchanged.
+Use one six-slot control with C/N/O/S/F/Cl each 1/6, every unordered pair
+P(exists)=3/6=0.5, NO_BOND=0.5 and the four present-bond categories each
+0.125; no self-bonds, atom/bond noise or hidden jitter. Expected degree is
+2.5. Repeating this same graph/context/key three times would be redundant.
+
+Reuse Mosaic's `initialize_graph` with equal element weights, the resolved
+expected degree and both noise amplitudes zero. Explicit new replay policy
+permits initialization replacement and the already requested longer update
+budget, while rejecting target/fixture/objective/precision/seed/rate changes.
+The original context/model/key is authenticated from passed BRD4 pilot
+summary `7b4b87ecea730ff9c70e6a3b0f5eec81fe4ac07245aff5026fe16399260989c4`.
+The hard chain remains a native preparation scaffold only; all optimized
+X/E entries are replaced. Native fixed slot/name metadata is unchanged,
+so fully uniform probabilities do not assert full model permutation symmetry.
+
+Initial raw argmax selects carbon on equal-element ties and NO_BOND because
+it has the largest categorical probability. Positive bond-order states are
+tied and native Protenix sees existence only. The report must show the
+uniform probabilities, disconnected raw start and subsequent outputs without
+repair/filtering, and must not label this run a 100% hard-chain mixture.
+There is no affinity, chemistry or additional learned loss.
+
+The graph/model `src/` implementation is unchanged from passed source 02.
+CPU readiness must test exact equality/no hidden seed jitter, old-mixture
+regression and explicit replay permissions. Resource assessment authenticates
+the old pilot/assessment/config and unchanged native-library byte hashes,
+then reserves the previous full THREE-case run/report/archive bound for
+this ONE control, plus the same bound again for the outstanding baseline.
+Required free home space is about **10.6483 GiB**, including the same 4 GiB
+reserve; an early CPU gate requests 11 GiB. Actual uniform native gradient,
+null, parity and descent checks run at GPU entry before accepting updates.
+No failed gate is waived or favorable alternative start substituted.
+
+Local work so far: source/docs editing, static Ruff review and byte-only
+packaging. All numerical tests remain allocated DTU work. No new numerical
+result or successful submission is claimed by this preparation entry.
+
+Uniform source 01: 257 files, archive 38,973,485 bytes, SHA-256
+`058c9dd851e33657897ed3f8c442e94cde6f3c4697c38518a98eab4810dd098c`,
+manifest `cefff19ac9b68d4b546427565b1036fc625c0cde42f22a5157116c930d8252fd`,
+Git reference `90f2fa0dd9af7e99afa982657428c93f2ac262ff` with dirty bytes.
+Local `results/releases/brd4-uniform-5000-20261016-01/`; immutable remote
+`/work3/s234818/mosaic/releases/20261016-brd4-uniform-5000-01/source`.
+Uploaded archive SHA and both new/reused launcher shell syntax checks passed.
+Local static Ruff checks passed; bundled Node `--check` on the extracted
+template script passed. These are source/syntax checks, not numerical work.
+
+CPU readiness **29736713 submitted**, hpc two slots/4GB per slot, 15-minute
+bound; run `/zhome/95/e/206121/mosaic-runs/20261016-brd4-uniform-readiness-01`.
+Exact operator `scripts/hpc/receipts/20261016-brd4-uniform-5000/submit-readiness-01.sh`;
+local receipt `results/hpc/20261016-brd4-uniform-5000/submit-readiness-01.txt`.
+It runs the selected small-molecule unit suite and the allocated uniform
+resource/source assessment. Submission alone establishes no passed test,
+native uniform gradient or completed optimization.
+
+Uniform CPU readiness **29736713 DONE**, node n-62-31-16:
+**158 passed, three native model items deselected, two existing warnings,
+48.91s**. Exact float32 equal atom rows and bond rows, identical graphs at
+different preparation seeds with zero noise, old mixture regression, and
+explicit initialization-only/longer-budget restrictions passed. Resource
+assessment also passed, authenticated old pilot/assessment/config and exact
+unchanged `src/` byte map. Required aggregate headroom:
+**10.648314138874412 GiB**; home gate conservatively reported 25 GiB.
+Final uniform config SHA
+`898d4bda519ebe53ce40881a5bf0ff66c53f81788ab1679111f990a201161836`;
+new assessment SHA
+`58aa2f68a88a13fa5d21d6d504808850a51e864651f4bff2e82cea793fca2fa1`.
+Local `readiness-unit.log` and `assessment.json` under
+`results/hpc/20261016-brd4-uniform-5000/`. These are CPU/metadata results;
+native uniform derivative and trajectory outcomes remain pending.
+
+Uniform native **29736735 submitted**, gpua10 one exclusive A10, four slots
+with 8GB per slot (32GB total host request), 16-hour bound, dependency
+`done(29736713)`. Run
+`/zhome/95/e/206121/mosaic-runs/20261016-brd4-uniform-5000-01`.
+Source is the exact tested uniform source 01. Both old pilot and new readiness
+assessment SHA checks passed before submission; the launcher checks all
+identities and aggregate quota again at startup. The explicit
+`--allow-initialization-change` and `--allow-update-count-change` policies
+authorize only the requested initialization replacement and steps 3→5000,
+with every other frozen target/model/objective/seed/precision/rate setting
+unchanged. Native initial checks run before accepting optimization updates.
+
+Uniform report **29736736 submitted**, hpc one slot/4GB, 90-minute bound,
+dependency `ended(29736735)`; run
+`/zhome/95/e/206121/mosaic-runs/20261016-brd4-uniform-5000-report-01`.
+The same immutable release supplies report labels for the single uniform
+control and distinguishes the context scaffold from the true initial graph.
+It retains fixed readable element labels, probability-dependent sizes and
+every raw invalid/disconnected readout. The renderer requires a complete
+passed study and performs no model forward. Full trajectory, report,
+download and final browser QA remain pending.
+
+Exact operator `scripts/hpc/receipts/20261016-brd4-uniform-5000/submit-native-and-report-01.sh`;
+local submission receipt `submit-native-and-report-01.txt` and scheduler
+snapshot `submission-state.txt` under the uniform campaign directory.
+The original native/report **29736629/29736630** were inspected only and
+remain unchanged. No old job was cancelled/resubmitted or source modified
+on HPC for this control. Submission is not a completed result or evidence
+of hard-molecule recovery.

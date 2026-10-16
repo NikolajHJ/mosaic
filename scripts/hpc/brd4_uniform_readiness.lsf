@@ -1,0 +1,30 @@
+#!/bin/bash
+set -euo pipefail
+[[ -n "${LSB_JOBID:-}" ]] || exit 2
+release=$1
+parent=$2
+manifest_sha=$3
+python=/work3/s234818/mosaic/envs/protenix-tiny/bin/python
+module load python3/3.12.11
+mkdir "$parent/payload"
+run="$parent/payload"
+"$python" "$release/scripts/verify_stage0_release.py" "$release" "$manifest_sha"
+"$python" "$release/scripts/hpc/zhome_quota_preflight.py" --run-dir "$run" --minimum-free-gib 11
+export PYTHONPATH="$release/src:$release/tests" JAX_PLATFORMS=cpu
+export OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 MKL_NUM_THREADS=2
+export PYTHONDONTWRITEBYTECODE=1 TMPDIR="$run/tmp"
+mkdir "$TMPDIR"
+cd "$release"
+hostname > "$run/host.txt"
+"$python" -m pytest tests/test_small_molecule_*.py -o addopts= --strict-markers \
+  -m 'not slow and not small_molecule_model' -o cache_dir="$run/pytest-cache" \
+  --basetemp "$run/pytest-unit-tmp" --junitxml="$run/unit.xml" > "$run/unit.log" 2>&1
+root=/zhome/95/e/206121/mosaic-runs
+"$python" scripts/assess_uniform_control.py \
+  --reference-assessment "$root/20261016-brd4-assessment-01/payload/assessment/assessment.json" \
+  --reference-assessment-sha256 cfc44f1e6619a0d0e97bdb761c006be76b4bbad0547dd3cd74656a504ac93cbd \
+  --reference-pilot "$root/20261016-brd4-pilot-01/payload/study/summary.json" \
+  --reference-pilot-sha256 7b4b87ecea730ff9c70e6a3b0f5eec81fe4ac07245aff5026fe16399260989c4 \
+  --reference-source /work3/s234818/mosaic/releases/20261016-brd4-5000-02/source \
+  --reference-manifest-sha256 80bb2413904b955cc4ebc25a0c01e1940fd185b3bddfb6cbd3afed76ad75a4f2 \
+  --config "$release/examples/configs/brd4_uniform_5000.json" --output "$run/assessment" > "$run/assessment.log" 2>&1

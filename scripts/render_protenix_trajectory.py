@@ -24,7 +24,17 @@ def _load_studies(paths):
         study = json.loads(source.read_text())
         if study["status"] != "passed":
             raise ValueError("Render completed authenticated trajectories only")
-        if [c["mixing"] for c in study["cases"]] != study["config"]["mixing_values"]:
+        if "initialization" in study["config"]:
+            if (
+                "mixing_values" in study["config"]
+                or len(study["cases"]) != 1
+                or study["cases"][0].get("initialization")
+                != study["config"]["initialization"]
+            ):
+                raise ValueError(
+                    "Saved initialization differs from the configured control"
+                )
+        elif [c["mixing"] for c in study["cases"]] != study["config"]["mixing_values"]:
             raise ValueError("Saved cases differ from the configured mixtures")
         if studies:
             reference = studies[0]
@@ -41,8 +51,8 @@ def _load_studies(paths):
                 if study[key] != reference[key]:
                     raise ValueError(f"Cannot combine studies with different {key}")
             left, right = deepcopy(study["config"]), deepcopy(reference["config"])
-            left.pop("mixing_values")
-            right.pop("mixing_values")
+            left.pop("mixing_values", None)
+            right.pop("mixing_values", None)
             if left != right:
                 raise ValueError(
                     "Combined study configurations may differ only in mixtures"
@@ -55,7 +65,8 @@ def _load_studies(paths):
                 "summary_sha256": hashlib.sha256(source.read_bytes()).hexdigest(),
                 "job_id": study["job_id"],
                 "config_sha256": study["config_sha256"],
-                "mixing_values": study["config"]["mixing_values"],
+                "mixing_values": study["config"].get("mixing_values"),
+                "initialization": study["config"].get("initialization"),
             }
         )
     combined = deepcopy(studies[0])
@@ -63,7 +74,8 @@ def _load_studies(paths):
     mixtures = [case["mixing"] for case in combined["cases"]]
     if len(set(mixtures)) != len(mixtures):
         raise ValueError("Combined mixtures must be distinct")
-    combined["config"]["mixing_values"] = mixtures
+    if "initialization" not in combined["config"]:
+        combined["config"]["mixing_values"] = mixtures
     combined["job_id"] = "+".join(str(study["job_id"]) for study in studies)
     if len(studies) > 1:
         # The combined display config is derived; native hashes stay per receipt.
@@ -118,16 +130,23 @@ def main(argv=None):
         raise ValueError("Report fixture differs from the completed experiment")
     fixture = json.loads(fixture_path.read_text())
     protein = fixture["protein_sequence"]
-    pocket_ordinals = study["config"].get(
-        "pocket_protein_ordinals", fixture.get("pocket_protein_ordinals")
-    ) or ()
+    pocket_ordinals = (
+        study["config"].get(
+            "pocket_protein_ordinals", fixture.get("pocket_protein_ordinals")
+        )
+        or ()
+    )
     args.output.mkdir(parents=True, exist_ok=False)
     elements = ("C", "N", "O", "S", "F", "Cl")
     analysis = {
         "created_utc": datetime.now(timezone.utc).isoformat(),
         "job_id": os.environ["LSB_JOBID"],
         "cases": [],
-        "initial_smiles": fixture["smiles"],
+        "initial_smiles": None
+        if "initialization" in study["config"]
+        else fixture["smiles"],
+        "scaffold_smiles": fixture["smiles"],
+        "initialization": study["config"].get("initialization"),
         "reference": study.get("reference"),
         "input_studies": input_studies,
         "config_identity_policy": "native configuration SHA per input study; combined display config has no native SHA",
@@ -232,7 +251,7 @@ def main(argv=None):
                     "readout": state["readout"],
                 }
             )
-        label = f"{case['mixing']:.0%} uniform mixture"
+        label = case.get("label") or f"{case['mixing']:.0%} uniform mixture"
         t = [s["step"] for s in states]
         values = np.array([s["primal_loss"] for s in states])
         color = ("#087f8c", "#dc7139", "#7257b4")[case_index % 3]
@@ -402,7 +421,7 @@ def main(argv=None):
     titles = (
         "Soft atom change",
         "Soft bond-existence change",
-        "Hard argmax changes from chain",
+        "Hard argmax changes from initial state",
         "Raw graph sanitization",
     )
     labels = (

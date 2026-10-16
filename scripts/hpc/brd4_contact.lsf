@@ -11,6 +11,7 @@ prepared=${6:-}
 prepared_sha=${7:-}
 assessment=${8:-}
 assessment_sha=${9:-}
+initialization_change=${10:-0}
 project=/work3/s234818/mosaic
 python="$project/envs/protenix-tiny/bin/python"
 module load python3/3.12.11 cuda/12.9.1 cudnn/v9.13.0.50-prod-cuda-12.X
@@ -39,6 +40,9 @@ nvidia-smi --query-gpu=name,driver_version,memory.total --format=csv > "$run/gpu
 arguments=()
 if [[ -n "$prepared" ]]; then
   arguments+=(--prepared-study "$prepared" --prepared-summary-sha256 "$prepared_sha" --allow-update-count-change)
+  if [[ "$initialization_change" == 1 ]]; then
+    arguments+=(--allow-initialization-change)
+  fi
 fi
 "$python" examples/protenix_relaxed_gradients.py --config "$config" \
   --fixture-override "$fixture" "${arguments[@]}" \

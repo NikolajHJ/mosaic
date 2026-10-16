@@ -479,3 +479,19 @@ model caches and immutable source remain on work3. No existing evidence is
 removed. CPU/pilot/resource gates precede the long run, and actual outcomes
 belong in the ledger. This scoped follow-up does not close outstanding
 PAE, canonical diffuse-start or Stage 0/1 acceptance gates.
+
+### 2026-10-16 requested completely uniform control
+
+The user requested a separate otherwise identical 0.03/5000 BRD4 run with
+equal atom probabilities and pair existence near `3/N`. The
+[uniform-control protocol](brd4_uniform_5000.md) records six fixed slots,
+each element at 1/6, pair existence 0.5, NO_BOND 0.5 and four bonded
+categories each 0.125, with zero noise. Run one control, since three exact
+copies at the same key would duplicate the computation. Preserve the
+original jobs. Native slot/name metadata remains fixed to the same prepared
+context, so uniform graph probabilities do not assert a permutation-symmetric
+model. Use the existing shared initializer, explicit initialization-replay
+authorization, CPU tests and aggregate quota accounting for both studies.
+Every new uniform graph still passes native derivative/null/parity gates
+at GPU entry before accepting updates. No gate is waived, no jitter added,
+and raw invalid/disconnected readouts remain visible.
