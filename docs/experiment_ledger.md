@@ -1064,3 +1064,52 @@ expected unique scheduler state. New output `download-02/` preserves the stopped
 Exact submitted operator scripts are additionally preserved in versioned
 `scripts/hpc/receipts/20261016-known-ligand-1000/`; the README distinguishes
 historical receipts from reusable launchers.
+
+### Matched hard-graph comparison and packaging follow-up
+
+Pivotal comparison decision: a relaxed trajectory score and a hard benzene
+score are different input regimes. Add a separate allocated hard-control pass
+for hard benzene, the initial hard chain and every raw argmax endpoint, with
+the same authenticated full-study context, model, key and objective. This
+does not change/repeat the 3000 optimized updates. Labels come directly from
+the authenticated native summary; hard graph construction/readout is detached
+from optimization. Identical graph-array digests reuse their exact score.
+Invalid endpoints remain labelled invalid; a model score does not sanitize them.
+The existing `2e-5` primal parity tolerance applies to hard-reference replay,
+and frozen model/context digests must match before/after.
+
+Hard controls **29736511 submitted and RUN**, gpua10, one exclusive A10 GPU,
+four slots/32GB total host request, 15-minute bound, dependency `done(29736126)`.
+Run `/work3/s234818/mosaic/runs/20261016-known-ligand-hard-controls-01`.
+Input summary SHA `2a159de33e26f050a8dcb4e8bee8d0059af2a141aa1f3da787cc4219e3ce2fa1`.
+Source 06: 229 files, archive 38,888,106 bytes, SHA-256
+`5937111ebd0f63cd3035e916237103af00b21941bed67c599b37cfa543edcc38`,
+manifest `1a9ae1fd0f4437571b2d2ac4fbb37fef0fce424330267f4a1fd6a24621269ef0`,
+Git reference `b3f57ccb413bf03853482762202e2156ba078815`.
+Local release `results/releases/known-ligand-1000-20261016-06/`; read-only remote
+source `/work3/s234818/mosaic/releases/20261016-known-ligand-1000-06/source`.
+Upload hashes and launcher syntax passed. Exact operator
+`results/hpc/20261016-known-ligand-1000/submit-hard-controls-01.sh`.
+No control result is claimed at submission.
+
+Base trajectory report **29736412 DONE**: all 3003 states rendered, ten output
+files including offline HTML, native-derived plots and comparison analysis.
+Full evidence **29736472 EXIT** before archive construction because readiness
+pytest temporary directories contain `*current` symlink aliases. Preserve the
+failed packaging run/logs. The corrected packager records only bounded pytest
+current aliases in the manifest, never follows or extracts them, retains their
+real directories/files, and still rejects any other symlink. This is an I/O
+fix; numerical work and the completed report are unchanged. Local downloader
+`download-02/` correctly stopped on evidence `EXIT`, without claiming success.
+
+Native job final scheduler receipt was saved locally as `native-job-final.txt`:
+started 11:57:27 and completed 12:42:46 Europe/Paris, 3325 CPU seconds. Some
+older jobs had already aged out of `bjobs`; `bhist` is permission-restricted on
+this host and was not bypassed. Their saved LSF completion logs, prior state
+receipts and quota/native artifacts remain the outcome evidence; no successful
+historical scheduler query is claimed for unavailable entries.
+
+
+### Known-ligand completion download stopped
+
+Evidence job 29736472; RuntimeError: Evidence job exited; inspect HPC logs, no success claimed. See `C:\Users\nikol\OneDrive\Dokumenter\GitHub\mosaic\results\hpc\20261016-known-ligand-1000\download-02\completion.json`. No successful download or native outcome inferred.

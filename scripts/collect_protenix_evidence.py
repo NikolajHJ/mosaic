@@ -20,6 +20,7 @@ def main():
         raise RuntimeError("Evidence packaging requires allocated DTU HPC")
     root = Path("/work3/s234818/mosaic/runs").resolve()
     files = {}
+    pytest_aliases = {}
     for directory in args.run:
         directory = directory.resolve()
         if not directory.is_relative_to(root) or directory == root:
@@ -28,7 +29,24 @@ def main():
             )
         for path in sorted(directory.rglob("*")):
             if path.is_symlink():
-                raise ValueError("Symlink evidence is unsupported")
+                relative = path.relative_to(directory)
+                if (
+                    "pytest-unit-tmp" not in relative.parts
+                    or not path.name.endswith("current")
+                    or not path.resolve().is_relative_to(
+                        directory / "payload/pytest-unit-tmp"
+                    )
+                    or not path.resolve().is_dir()
+                ):
+                    raise ValueError(
+                        "Non-pytest symlink evidence is unsupported: " + str(path)
+                    )
+                # Pytest's current aliases duplicate directories already walked
+                # under their real names. Record but never follow/archive links.
+                pytest_aliases[path.relative_to(root).as_posix()] = str(
+                    path.resolve().relative_to(root)
+                )
+                continue
             if path.is_file():
                 files[path.relative_to(root).as_posix()] = path
     total = sum(path.stat().st_size for path in files.values())
@@ -67,7 +85,11 @@ def main():
         path = metadata / ("job-" + job + ".txt")
         path.write_text(result.stdout + result.stderr)
         files["scheduler/" + path.name] = path
-    manifest = {"job_id": os.environ["LSB_JOBID"], "files": {}}
+    manifest = {
+        "job_id": os.environ["LSB_JOBID"],
+        "files": {},
+        "omitted_pytest_current_aliases": pytest_aliases,
+    }
     for name, path in files.items():
         with path.open("rb") as reader:
             digest = hashlib.file_digest(reader, "sha256").hexdigest()

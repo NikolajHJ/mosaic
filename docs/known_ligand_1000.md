@@ -102,3 +102,14 @@ for each mixture from fresh initial graphs, reusing the exact authenticated
 pilot context (`45fa41a40b6bf2e3a548b819b29aa1ad4d0b4b8e61067f3aed877a989d0cbdfa`
 summary SHA). A submitted/running job is not a completed result. Numerical
 outcomes and final report remain pending.
+
+Final comparison decision: keep soft trajectory scores explicitly separate
+from hard molecular scores. A separate allocated frozen-model control pass
+scores the initial hard chain, hard benzene and the raw argmax endpoints using
+the authenticated completed study's exact context/model/key/objective.
+Identical hard graphs reuse a score by logical array digest. Invalid endpoints
+are scored and labelled without repair; this does not confer chemical validity.
+The existing `2e-5` primal parity gate applies to replayed hard benzene. Both
+frozen digests must remain unchanged. This performs no extra optimization and
+does not alter the 1000-update evidence. An allocated report addendum copies
+the completed figures/states and adds a matched hard-control table.
