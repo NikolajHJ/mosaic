@@ -16,14 +16,27 @@ import os
 from pathlib import Path
 
 
-def _load_studies(paths):
-    """Combine saved cases only when their non-mixture experiment inputs match."""
+CASE_COLORS = ("#087f8c", "#dc7139", "#7257b4", "#a77800", "#b84b70")
+
+
+def _load_studies(paths, *, allow_initialization_comparison=False):
+    """Compare declared starts while requiring every other experiment input.
+
+    Initialization replacement is an explicit display policy, never permission
+    to combine different targets, weights, contexts, rates, budgets or seeds.
+    Source configurations and summaries retain their own native hashes.
+    """
+    if not paths:
+        raise ValueError("At least one completed study is required")
     studies, directories, receipts = [], [], []
     for path in paths:
         source = path / "summary.json"
         study = json.loads(source.read_text())
         if study["status"] != "passed":
             raise ValueError("Render completed authenticated trajectories only")
+        for field in ("model_digest", "context_digest"):
+            if study[field + "_before"] != study[field + "_after"]:
+                raise ValueError("Frozen model/context changed within a study")
         if "initialization" in study["config"]:
             if (
                 "mixing_values" in study["config"]
@@ -53,9 +66,12 @@ def _load_studies(paths):
             left, right = deepcopy(study["config"]), deepcopy(reference["config"])
             left.pop("mixing_values", None)
             right.pop("mixing_values", None)
+            if allow_initialization_comparison:
+                left.pop("initialization", None)
+                right.pop("initialization", None)
             if left != right:
                 raise ValueError(
-                    "Combined study configurations may differ only in mixtures"
+                    "Combined study configurations changed an unapproved field"
                 )
         studies.append(study)
         directories.extend(path / f"case-{i}" for i in range(len(study["cases"])))
@@ -70,11 +86,26 @@ def _load_studies(paths):
             }
         )
     combined = deepcopy(studies[0])
-    combined["cases"] = [case for study in studies for case in study["cases"]]
+    combined["cases"] = [
+        {**deepcopy(case), "source_job_id": study["job_id"]}
+        for study in studies
+        for case in study["cases"]
+    ]
     mixtures = [case["mixing"] for case in combined["cases"]]
-    if len(set(mixtures)) != len(mixtures):
-        raise ValueError("Combined mixtures must be distinct")
-    if "initialization" not in combined["config"]:
+    recipes = [
+        case.get("initialization")
+        or {"kind": "hard_scaffold_mixture", "mixing": case["mixing"]}
+        for case in combined["cases"]
+    ]
+    identities = [json.dumps(recipe, sort_keys=True) for recipe in recipes]
+    if len(set(identities)) != len(identities):
+        raise ValueError("Combined initialization recipes must be distinct")
+    if allow_initialization_comparison and len(studies) > 1:
+        combined["config"].pop("mixing_values", None)
+        combined["config"].pop("initialization", None)
+        combined["config"]["initialization_comparison"] = True
+        combined["config"]["case_initializations"] = recipes
+    elif "initialization" not in combined["config"]:
         combined["config"]["mixing_values"] = mixtures
     combined["job_id"] = "+".join(str(study["job_id"]) for study in studies)
     if len(studies) > 1:
@@ -87,6 +118,7 @@ def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--study", type=Path, required=True, action="append")
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--allow-initialization-comparison", action="store_true")
     args = parser.parse_args(argv)
     if not os.environ.get("LSB_JOBID"):
         raise RuntimeError("Trajectory analysis requires an allocated DTU job")
@@ -117,7 +149,9 @@ def main(argv=None):
             "legend.frameon": False,
         }
     )
-    study, case_directories, input_studies = _load_studies(args.study)
+    study, case_directories, input_studies = _load_studies(
+        args.study, allow_initialization_comparison=args.allow_initialization_comparison
+    )
     source = args.study[0] / "summary.json"
     root = Path(__file__).resolve().parents[1]
     fixture_root = args.study[0].resolve() if "fixture_file" in study else root
@@ -144,9 +178,13 @@ def main(argv=None):
         "cases": [],
         "initial_smiles": None
         if "initialization" in study["config"]
+        or study["config"].get("initialization_comparison")
         else fixture["smiles"],
         "scaffold_smiles": fixture["smiles"],
         "initialization": study["config"].get("initialization"),
+        "initialization_comparison": study["config"].get(
+            "initialization_comparison", False
+        ),
         "reference": study.get("reference"),
         "input_studies": input_studies,
         "config_identity_policy": "native configuration SHA per input study; combined display config has no native SHA",
@@ -254,7 +292,7 @@ def main(argv=None):
         label = case.get("label") or f"{case['mixing']:.0%} uniform mixture"
         t = [s["step"] for s in states]
         values = np.array([s["primal_loss"] for s in states])
-        color = ("#087f8c", "#dc7139", "#7257b4")[case_index % 3]
+        color = CASE_COLORS[case_index % len(CASE_COLORS)]
         ax_loss[0].plot(t, values, label=label, color=color)
         ax_loss[1].plot(t, values - values[0], label=label, color=color)
         axes_change[0, 0].plot(t, atom_tv, label=label, color=color)
@@ -334,10 +372,23 @@ def main(argv=None):
         fig.tight_layout()
         fig.savefig(args.output / f"probabilities-{case_index}.png", dpi=150)
         plt.close(fig)
-        browser.append({"label": label, "states": drawings, "selected_steps": selected})
+        browser.append(
+            {
+                "label": label,
+                "color": color,
+                "mixing": case["mixing"],
+                "initialization": case.get("initialization"),
+                "source_job_id": case["source_job_id"],
+                "states": drawings,
+                "selected_steps": selected,
+            }
+        )
         analysis["cases"].append(
             {
                 "mixing": case["mixing"],
+                "label": label,
+                "initialization": case.get("initialization"),
+                "source_job_id": case["source_job_id"],
                 "updates": len(t) - 1,
                 "initial_loss": float(values[0]),
                 "final_loss": float(values[-1]),

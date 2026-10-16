@@ -511,3 +511,16 @@ Completed preparation: sealed source 01, allocated CPU readiness 29736756
 Submitted noisy native 29736761 and dependent report 29736762; both pending.
 Actual noisy native gates, 5000 updates and final report/results remain open;
 submission does not close any scientific acceptance gate.
+
+
+## 2026-10-16 combined BRD4 comparison report
+
+User requested one report containing all three studies/five trajectories.
+[The combined-report protocol](brd4_combined_report.md) records the explicit
+initialization-only comparison policy, matched frozen/shared inputs and
+per-study source receipts. Allocated CPU readiness 29736903 passed all 13
+checks, including synthetic five-case rendering. Combined report/evidence
+29736911 is queued behind all three native jobs; no native run or individual
+report was changed. An hourly completion follow-up will download, verify and
+inspect the actual combined report, then deliver it and stop. All native
+trajectories and actual combined-report completion remain pending.

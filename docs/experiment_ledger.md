@@ -1627,3 +1627,86 @@ Local receipt `submit-native-and-report-01.txt`, final scheduler snapshot
 `submission-state.txt`. Both new jobs and the original/exact-uniform pairs
 were PEND. All four earlier jobs remain unchanged. Native checks, accepted
 updates, final report/download and browser verification remain pending.
+
+
+## 2026-10-16 — combined report for all three BRD4 studies (preparation)
+
+The user requested one report after all three studies complete. See
+[the combined-report protocol](brd4_combined_report.md). Compare five saved
+trajectories: three chain-mixture cases from native 29736629, exact uniform
+29736735 and noisy uniform 29736761. All earlier native and individual-report
+jobs remain unchanged. No model rerun, repaired chemistry or omitted failed
+study is authorized by this report request.
+
+Renderer changes allow explicit initialization-only comparisons and retain
+per-input summary/config hashes, job IDs and five case colors. Target,
+fixture/scaffold, frozen identities, numerical profile, seed, rate, objective
+and update budget must match; each complete study must have passed. Synthetic
+engineering render fixtures do not establish a native/model/chemistry result.
+Numerical/rendering tests run on allocated CPU. Local static Ruff and Node
+syntax/byte checks and immutable packaging are permitted. Readiness requires
+17 GiB free home space to include the existing three-study budgets plus new
+combined report/archive headroom. New report launch and archive packaging
+recheck actual quota; no cleanup or existing-run alteration is performed.
+
+Queue a separate allocated CPU report/evidence job after all three native
+jobs end and new readiness passes. Completion follow-up should stay quiet
+while pending, download and verify the finished evidence archive, inspect the
+self-contained report and deliver it locally, then stop. Any failed native
+or report job remains failed evidence and must be surfaced, not repaired or
+silently substituted. Preparation alone claims no new job or completed report.
+
+
+Combined-report source 01: 266 files, archive 38,981,862 bytes, SHA
+`e5b047d437da7d1bfb9c23d55d5b20be6c12f147289188132aca62daa9b6b45c`,
+manifest `40f9864f21f9c03c811492a15e5a7e2b3dee9e2f6b597ec3909f343dbeaf2075`.
+Git reference fe66025fc6a0a598a2b90688cfd9add372763e71 plus manifested dirty
+bytes. Remote immutable source
+`/work3/s234818/mosaic/releases/20261016-brd4-combined-report-01/source`;
+local `results/releases/brd4-combined-report-20261016-01/`.
+Uploaded archive SHA and both Bash launcher syntax checks passed. Local
+static Ruff and bundled Node `--check` passed; no local numerical work.
+
+CPU report readiness **29736903 submitted**, hpc two CPU slots/4GB per slot,
+15-minute bound, run
+`/zhome/95/e/206121/mosaic-runs/20261016-brd4-comparison-readiness-01`.
+Exact operator `scripts/hpc/receipts/20261016-brd4-combined-report/submit-readiness-01.sh`;
+local receipt `results/hpc/20261016-brd4-combined-report/submit-readiness-01.txt`.
+It checks the sealed source, at least 17 GiB free home space and all 13 report
+loader/guard/synthetic-render tests. Submitted does not establish a passed
+readiness check or actual combined BRD4 report.
+
+
+CPU comparison readiness **29736903 DONE**, worker n-62-30-25: **13 passed
+in 38.87s**. This includes a full five-case synthetic HTML/plot render;
+its fabricated losses/graphs are engineering fixtures, not native outcomes.
+The 17 GiB home gate passed with 25 GiB conservatively available.
+Downloaded logs/quota/final scheduler receipt under
+`results/hpc/20261016-brd4-combined-report/`.
+
+Combined report/evidence **29736911 submitted**, hpc two CPU slots/4GB per
+slot (8GB total), 150-minute bound. Dependency:
+`done(29736903) && ended(29736629) && ended(29736735) && ended(29736761)`.
+Run `/zhome/95/e/206121/mosaic-runs/20261016-brd4-combined-report-01`.
+Uses exactly tested immutable combined-report source 01 and the manifest
+above. Requires all three complete passed studies; overlays five cases and
+retains every saved state without model reruns. Rechecks free home space,
+then archives all three native run directories and the combined report payload
+with per-file hashes and scheduler receipts. Archive:
+`/zhome/95/e/206121/mosaic-runs/20261016-brd4-combined-report-01.tar.gz`;
+receipt has suffix `.tar.receipt.json`. Local exact operator
+`scripts/hpc/receipts/20261016-brd4-combined-report/submit-combined-report-01.sh`.
+Submission receipt and final compact state snapshot are in the local campaign
+directory. All three native jobs and combined report were PEND; earlier
+individual report jobs were not modified. Actual BRD4 comparison rendering,
+archive, download verification and browser QA remain pending.
+
+Created active hourly in-chat completion heartbeat
+`finish-combined-brd4-trajectory-report`, named "Finish combined BRD4 trajectory report".
+It makes a compact scheduler check, stays quiet on unchanged pending/running
+state, downloads and verifies the completed archive locally, checks all three
+source jobs/five 5001-state cases and actual report presentation, records and
+pushes evidence and delivers the report. No GPU experiment changes or local
+numerical work are permitted. Failed native/identity gates remain blockers.
+The follow-up pauses after delivery or an actionable blocker. This scheduling
+receipt is not completed report/download evidence.

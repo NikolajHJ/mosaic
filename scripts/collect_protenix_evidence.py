@@ -15,10 +15,17 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--run", type=Path, action="append", required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--storage", choices=("work3", "zhome"), default="work3")
     args = parser.parse_args()
     if not os.environ.get("LSB_JOBID"):
         raise RuntimeError("Evidence packaging requires allocated DTU HPC")
-    root = Path("/work3/s234818/mosaic/runs").resolve()
+    root = (
+        Path.home() / "mosaic-runs"
+        if args.storage == "zhome"
+        else Path("/work3/s234818/mosaic/runs")
+    ).resolve()
+    if not args.output.resolve().is_relative_to(root):
+        raise ValueError("Archive must use the declared Mosaic storage root")
     files = {}
     pytest_aliases = {}
     for directory in args.run:
@@ -51,17 +58,26 @@ def main():
                 files[path.relative_to(root).as_posix()] = path
     total = sum(path.stat().st_size for path in files.values())
     receipt_dir = args.output.parent / (args.output.name + ".preflight")
+    quota_arguments = [
+        str(Path("/work3/s234818/mosaic/envs/protenix-tiny/bin/python")),
+        str(
+            Path(__file__).parent
+            / "hpc"
+            / (
+                "zhome_quota_preflight.py"
+                if args.storage == "zhome"
+                else "stage0_quota_preflight.py"
+            )
+        ),
+        "--run-dir",
+        str(receipt_dir),
+        "--minimum-free-gib",
+        str(4 + (total * 1.01 + 1024**2) / 1024**3),
+    ]
+    if args.storage == "work3":
+        quota_arguments.extend(["--storage-pool", "6"])
     subprocess.run(
-        [
-            str(Path("/work3/s234818/mosaic/envs/protenix-tiny/bin/python")),
-            str(Path(__file__).parent / "hpc/stage0_quota_preflight.py"),
-            "--run-dir",
-            str(receipt_dir),
-            "--storage-pool",
-            "6",
-            "--minimum-free-gib",
-            str(4 + (total * 1.01 + 1024**2) / 1024**3),
-        ],
+        quota_arguments,
         check=True,
     )
     for path in receipt_dir.iterdir():
