@@ -29,9 +29,12 @@ def main():
     parser.add_argument("--reference-manifest-sha256", required=True)
     parser.add_argument("--config", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--outstanding-study-count", type=int, default=1)
     args = parser.parse_args()
     if not os.environ.get("LSB_JOBID"):
         raise RuntimeError("Uniform resource assessment requires allocated DTU HPC")
+    if args.outstanding_study_count < 0:
+        raise ValueError("Outstanding study count cannot be negative")
     root = Path(__file__).resolve().parents[1]
     reference = _authenticated(
         args.reference_assessment, args.reference_assessment_sha256
@@ -68,17 +71,19 @@ def main():
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
     module._validate_prepared_config(config, previous, allow_initialization_change=True)
-    if (
-        len(module._case_specs(config)) != 1
-        or config["initialization"]["kind"] != "uniform"
+    if len(module._case_specs(config)) != 1 or config["initialization"]["kind"] not in (
+        "uniform",
+        "noisy_uniform",
     ):
         raise ValueError("One explicit uniform-start control is required")
     fixture = root / config["fixture"]
     if hashlib.sha256(fixture.read_bytes()).hexdigest() != pilot["fixture_sha256"]:
         raise ValueError("Fixture/graph shape differs from the measured pilot")
     # Retain the full previous THREE-case run/report/archive bound for this ONE
-    # control, and reserve that bound again for the still-pending baseline.
-    required = 4 + 2 * (reference["required_free_gib"] - 4)
+    # control, plus the same bound for EACH still-outstanding study. This
+    # deliberately overbudgets singleton controls using the full three-case run.
+    reserved_studies = 1 + args.outstanding_study_count
+    required = 4 + reserved_studies * (reference["required_free_gib"] - 4)
     args.output.mkdir(parents=True, exist_ok=False)
     quota = subprocess.run(
         [
@@ -100,7 +105,9 @@ def main():
         "reference_source_manifest_sha256": args.reference_manifest_sha256,
         "required_free_gib": required,
         "new_control_cases": 1,
-        "scope": "unchanged native library/shape/settings; initialization-only control; full prior three-case artifact bound reserved for both baseline and control; native uniform derivative/null/parity/descent gates pending at GPU entry",
+        "reserved_study_count": reserved_studies,
+        "initialization": config["initialization"],
+        "scope": "unchanged native library/shape/settings; initialization-only control; full prior three-case artifact bound reserved for each outstanding study and new control; native derivative/null/parity/descent gates pending at GPU entry",
     }
     (args.output / "assessment.json").write_text(json.dumps(receipt, indent=2) + "\n")
     print(json.dumps(receipt))

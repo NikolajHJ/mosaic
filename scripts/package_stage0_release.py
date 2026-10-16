@@ -67,6 +67,7 @@ def main():
         "docs/known_ligand_1000.md",
         "docs/brd4_5000.md",
         "docs/brd4_uniform_5000.md",
+        "docs/brd4_noisy_uniform_5000.md",
     ):
         path = root / name
         if path.is_file():

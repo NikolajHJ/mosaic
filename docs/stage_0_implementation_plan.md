@@ -495,3 +495,19 @@ authorization, CPU tests and aggregate quota accounting for both studies.
 Every new uniform graph still passes native derivative/null/parity gates
 at GPU entry before accepting updates. No gate is waived, no jitter added,
 and raw invalid/disconnected readouts remain visible.
+
+## 2026-10-16 noisy-uniform initialization control
+
+The user requested a third BRD4 0.03/5000-update study. See
+[the noisy-uniform protocol](brd4_noisy_uniform_5000.md). The recorded pivotal
+decision is `0.5 * uniform + 0.5 * simplex(N(0,1))` for both atoms and unordered
+bonds. Projecting the random component FIRST preserves the positive uniform
+floor needed by the unchanged central derivative/null probes. This can change
+the baseline bond density and does not imply chemical validity. The two
+earlier immutable studies remain unchanged.
+
+Completed preparation: sealed source 01, allocated CPU readiness 29736756
+(167 passed), unchanged-library/config/reference and aggregate-quota gates.
+Submitted noisy native 29736761 and dependent report 29736762; both pending.
+Actual noisy native gates, 5000 updates and final report/results remain open;
+submission does not close any scientific acceptance gate.

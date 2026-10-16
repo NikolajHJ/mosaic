@@ -1542,3 +1542,88 @@ The original native/report **29736629/29736630** were inspected only and
 remain unchanged. No old job was cancelled/resubmitted or source modified
 on HPC for this control. Submission is not a completed result or evidence
 of hard-molecule recovery.
+
+## 2026-10-16 — requested noisy-uniform BRD4 control (preparation)
+
+User requested a third identical 0.03/5000-update study with a half-uniform,
+half-standard-Gaussian start. See [the protocol](brd4_noisy_uniform_5000.md).
+Use `0.5 U + 0.5 simplex(N(0,1))` for X and unordered E, seed 17,
+retaining fixed occupancy/charge and absent self-bonds. Project the random
+component first: static review found that projecting the combined proposal
+can introduce zeros incompatible with unchanged central derivative/null
+probes. No numerical experiment or failed native job used that draft formula.
+Projected distributions need not retain Gaussian moments or baseline degree.
+This probability-space interpretation is a recorded pivotal decision.
+The shared `src/` library, native target/context/objective/rate/precision and
+optimization gates are unchanged. Keep original jobs 29736629/29736630 and
+exact-uniform jobs 29736735/29736736 untouched; all four were PEND in the
+read-only snapshot at the start of this request.
+
+Reuse the authenticated prior passed BRD4 native pilot for frozen shape/model
+context. Require new allocated CPU tests and initialization-only replay/source
+gates, reserving the previous full three-case artifact budget for each of
+three outstanding/new studies (about 13.9725 GiB including 4 GiB reserve).
+Native checks on the noisy graph remain required at GPU entry before updates.
+Local source edits/static review/byte packaging do not establish numerical
+validation. No new submitted or completed experiment is claimed here.
+
+Noisy-uniform source 01: 261 files, archive 38,980,076 bytes, SHA
+`4d36c3d8d0bb945553eca3e9adf5c53fce754bdf832c896c09866030e51cde21`,
+manifest `ea4ceab78cb7605fdd715cb79bebacefc03ec8c8a5947834fa58540d5028c02e`.
+Git reference 43fdcb17e06127ef6b5eec2a4c378d36aeec739a plus manifested dirty
+bytes. Local `results/releases/brd4-noisy-uniform-5000-20261016-01/`;
+remote `/work3/s234818/mosaic/releases/20261016-brd4-noisy-uniform-5000-01/source`.
+Archive upload SHA and launcher Bash syntax checks passed. Static Ruff checks
+passed; extracted report JavaScript passed bundled Node `--check`. A first
+local static-extraction command used Windows' default text encoding and failed
+before extraction; explicit UTF-8 fixed it. No numerical test was run locally.
+
+CPU readiness **29736756 submitted**, hpc two slots/4GB per slot (8GB total),
+15-minute bound. Run
+`/zhome/95/e/206121/mosaic-runs/20261016-brd4-noisy-uniform-readiness-01`.
+Exact operator
+`scripts/hpc/receipts/20261016-brd4-noisy-uniform-5000/submit-readiness-01.sh`;
+local receipt under `results/hpc/20261016-brd4-noisy-uniform-5000/`.
+The selected CPU suite includes exact-uniform/old-mixture regressions and
+new noisy-formula, probability-floor, reproducibility and policy checks.
+New aggregate resource assessment reserves each of three study budgets.
+Latest read-only storage snapshot: home 4.97/30 GiB (four-hour-lag report),
+work3 pool 6 89.58/100 GiB, 287351/20000000 files; no cleanup or alteration
+of earlier jobs/files. Numerical and resource-gate outcomes remain pending.
+
+CPU readiness **29736756 DONE**, node n-62-30-25: **167 passed, three native
+model items deselected, two existing dtype warnings, 50.02s**. All 13 uniform
+and noisy-control tests passed, including the independent formula/floor check.
+Resource/source/config/fixture/reference assessment passed; all shared `src/`
+bytes match passed source BRD4-02. Required headroom for three study budgets
+is **13.972471208311617 GiB**; conservative home availability was 25 GiB.
+Config SHA `c74107f4720b148ac3b19968fa32bd5dd4f093824cae5527345ec24c93625c71`;
+assessment SHA `4e61063a54e64f671a9c4ce97b009b0fa5f22e659401235c3d4eb4d14a441185`.
+Downloaded CPU metadata/log evidence: `unit.log`, `assessment.json`,
+`quota_preflight.json`, `job-final.txt` in the local campaign directory.
+This establishes CPU engineering/resource readiness, not native noisy-model
+derivative acceptance or successful optimization.
+
+Noisy native **29736761 submitted**, gpua10 one exclusive A10, four slots
+with 8GB per slot (32GB total host memory), 16-hour bound, dependency
+`done(29736756)`. Run
+`/zhome/95/e/206121/mosaic-runs/20261016-brd4-noisy-uniform-5000-01`.
+Exact tested source 01/manifest above; native launcher authenticates the
+pilot, assessment, config and aggregate quota again. Explicit policies allow
+only initialization replacement and the already requested 3→5000 update
+budget; context/model/seed/rate/loss/precision/check tolerances remain fixed.
+The noise is projected before the 50/50 mix, keeping initial interior floors
+for the unchanged central probes. The random categorical bond component
+changes realized bond density; it is not a density-matched symmetry ablation.
+
+Noisy report **29736762 submitted**, hpc one slot/4GB, 90-minute bound,
+dependency `ended(29736761)`; run
+`/zhome/95/e/206121/mosaic-runs/20261016-brd4-noisy-uniform-5000-report-01`.
+It labels the exact recipe and retains every raw graph, readable element
+label and probability-dependent size. It requires the completed passed study
+and performs no native model rerun. Exact operator
+`scripts/hpc/receipts/20261016-brd4-noisy-uniform-5000/submit-native-and-report-01.sh`.
+Local receipt `submit-native-and-report-01.txt`, final scheduler snapshot
+`submission-state.txt`. Both new jobs and the original/exact-uniform pairs
+were PEND. All four earlier jobs remain unchanged. Native checks, accepted
+updates, final report/download and browser verification remain pending.

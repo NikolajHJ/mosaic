@@ -4,12 +4,15 @@ set -euo pipefail
 release=$1
 parent=$2
 manifest_sha=$3
+config=${4:-examples/configs/brd4_uniform_5000.json}
+outstanding_studies=${5:-1}
+early_minimum_free=${6:-11}
 python=/work3/s234818/mosaic/envs/protenix-tiny/bin/python
 module load python3/3.12.11
 mkdir "$parent/payload"
 run="$parent/payload"
 "$python" "$release/scripts/verify_stage0_release.py" "$release" "$manifest_sha"
-"$python" "$release/scripts/hpc/zhome_quota_preflight.py" --run-dir "$run" --minimum-free-gib 11
+"$python" "$release/scripts/hpc/zhome_quota_preflight.py" --run-dir "$run" --minimum-free-gib "$early_minimum_free"
 export PYTHONPATH="$release/src:$release/tests" JAX_PLATFORMS=cpu
 export OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 MKL_NUM_THREADS=2
 export PYTHONDONTWRITEBYTECODE=1 TMPDIR="$run/tmp"
@@ -27,4 +30,5 @@ root=/zhome/95/e/206121/mosaic-runs
   --reference-pilot-sha256 7b4b87ecea730ff9c70e6a3b0f5eec81fe4ac07245aff5026fe16399260989c4 \
   --reference-source /work3/s234818/mosaic/releases/20261016-brd4-5000-02/source \
   --reference-manifest-sha256 80bb2413904b955cc4ebc25a0c01e1940fd185b3bddfb6cbd3afed76ad75a4f2 \
-  --config "$release/examples/configs/brd4_uniform_5000.json" --output "$run/assessment" > "$run/assessment.log" 2>&1
+  --config "$release/$config" --outstanding-study-count "$outstanding_studies" \
+  --output "$run/assessment" > "$run/assessment.log" 2>&1

@@ -14,15 +14,27 @@ def _case_specs(config):
     if initialization is not None:
         if "mixing_values" in config:
             raise ValueError("Choose initialization or mixing_values, not both")
-        if initialization.get("kind") != "uniform":
+        kind = initialization.get("kind")
+        if kind not in ("uniform", "noisy_uniform"):
             raise ValueError("Unsupported initialization kind")
+        required = {"kind", "bond_existence_numerator"}
+        if kind == "noisy_uniform":
+            required.add("noise_weight")
+            weight = initialization.get("noise_weight")
+            if (
+                isinstance(weight, bool)
+                or not isinstance(weight, (int, float))
+                or not math.isfinite(weight)
+                or not 0 < weight < 1
+            ):
+                raise ValueError("Noise weight must be finite and strictly in (0, 1)")
         numerator = initialization.get("bond_existence_numerator")
         if (
             isinstance(numerator, bool)
             or not isinstance(numerator, (int, float))
             or not math.isfinite(numerator)
             or numerator <= 0
-            or set(initialization) != {"kind", "bond_existence_numerator"}
+            or set(initialization) != required
         ):
             raise ValueError(
                 "Uniform initialization requires a positive finite numerator"
@@ -31,15 +43,34 @@ def _case_specs(config):
             {
                 "mixing": None,
                 "initialization": initialization,
-                "label": f"Uniform atoms; P(bond)={numerator:g}/N",
+                "label": (
+                    f"{(1 - weight):g} uniform + {weight:g} projected N(0,1)"
+                    if kind == "noisy_uniform"
+                    else f"Uniform atoms; P(bond)={numerator:g}/N"
+                ),
             }
         ]
     return [{"mixing": mixing} for mixing in config["mixing_values"]]
 
 
 def _initial_graph(hard, case, key):
-    """Prepare exact equal rows using Mosaic's shared graph initializer."""
-    from mosaic.small_molecule.state import ELEMENTS, initialize_graph, mix_with_uniform
+    """Prepare equal rows, optionally mix in projected standard Gaussian noise.
+
+    Noise is independent per atom/category and unordered pair/category.
+    Project the noise FIRST, then mix, retaining a positive uniform floor for
+    unchanged central derivative/null probes. Projection changes Gaussian
+    moments; the convex mixture may change bond density.
+    """
+    import jax
+
+    from mosaic.small_molecule.optimizers import project_graph
+    from mosaic.small_molecule.state import (
+        ELEMENTS,
+        RelaxedGraph,
+        initialize_graph,
+        mix_with_uniform,
+        validate_graph,
+    )
 
     if "initialization" not in case:
         return mix_with_uniform(hard, case["mixing"])
@@ -47,7 +78,7 @@ def _initial_graph(hard, case, key):
     probability = case["initialization"]["bond_existence_numerator"] / n
     if not 0 < probability < 1:
         raise ValueError("Uniform bond-existence probability must be in (0, 1)")
-    return initialize_graph(
+    baseline = initialize_graph(
         n,
         key,
         carbon_probability=1 / len(ELEMENTS),
@@ -56,6 +87,24 @@ def _initial_graph(hard, case, key):
         bond_noise=0,
         dtype=hard.X.dtype,
     )
+    if case["initialization"]["kind"] == "uniform":
+        return baseline
+    weight = case["initialization"]["noise_weight"]
+    atom_key, bond_key = jax.random.split(key)
+    noise = project_graph(
+        RelaxedGraph(
+            X=jax.random.normal(atom_key, baseline.X.shape, dtype=hard.X.dtype),
+            E_upper=jax.random.normal(
+                bond_key, baseline.E_upper.shape, dtype=hard.X.dtype
+            ),
+        )
+    )
+    result = RelaxedGraph(
+        X=(1 - weight) * baseline.X + weight * noise.X,
+        E_upper=(1 - weight) * baseline.E_upper + weight * noise.E_upper,
+    )
+    validate_graph(result)
+    return result
 
 
 def _contact_objective(config, context, fixture):

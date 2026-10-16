@@ -1,0 +1,24 @@
+{
+  "fixture": "tests/data/brd4_3mxf/fixture.json",
+  "objective": "native_whole_target",
+  "seed": 17,
+  "matmul_precision": "highest",
+  "initialization": {
+    "kind": "noisy_uniform",
+    "bond_existence_numerator": 3.0,
+    "noise_weight": 0.5
+  },
+  "contact_cutoff_angstrom": 8.0,
+  "checks": {
+    "epsilons": [0.01, 0.003, 0.001],
+    "derivative_atol": 0.002,
+    "derivative_rtol": 0.15,
+    "minimum_tangent": 1e-7,
+    "steps": 5000,
+    "initial_step_size": 0.03,
+    "max_backtracks": 10,
+    "record_readouts": true,
+    "primal_every_step": true,
+    "artifact_policy": "compact"
+  }
+}
