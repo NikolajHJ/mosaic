@@ -345,6 +345,16 @@ def main(argv=None):
 
             reference_smiles = study["reference"]["readout"]["canonical_smiles"]
             reference_mol = Chem.MolFromSmiles(reference_smiles)
+            from rdkit.Chem.Draw import rdMolDraw2D
+
+            if "svg" not in analysis["reference"]:
+                drawer = rdMolDraw2D.MolDraw2DSVG(300, 180)
+                rdMolDraw2D.PrepareAndDrawMolecule(drawer, reference_mol)
+                drawer.FinishDrawing()
+                reference_svg = drawer.GetDrawingText()
+                analysis["reference"]["svg"] = reference_svg[
+                    reference_svg.index("<svg") :
+                ]
             final_readout = states[-1]["readout"]
             final_mol = (
                 Chem.MolFromSmiles(final_readout["canonical_smiles"])

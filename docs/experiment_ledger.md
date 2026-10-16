@@ -879,3 +879,33 @@ Exact operator files are retained under
 `results/hpc/20261016-known-ligand-1000/submit-readiness-01.sh` and
 `submit-pilot-01.sh`. Local checks were Ruff/format, source packaging, shell
 syntax and byte hashes only; no local numerical tests were run.
+
+The reusable experiment/HPC/render/config/test/package/download-integrity tools
+were committed and **pushed to origin/main as `c45b9ba27b997559c85a60697d097add22db2656`**.
+Added scoped Git attributes preserve authenticated PDB bytes (including fixed
+columns/padding) and LF execution/config bytes on Windows and Linux. The
+unrelated local PDF relocation and OneNote export remain outside this commit.
+
+Source 03 adds pilot storage/runtime assessment and known-reference report
+presentation, plus the exact allocated fixture. All `src/` files and the native
+experiment driver match unit-tested source 02 byte-for-byte. Local release:
+`results/releases/known-ligand-1000-20261016-03/`; 213 files, 38,868,328 bytes,
+archive SHA-256
+`6979ab616a55432888bc67237c490f475a245e7a3bc5c4fd3fb31110cf310b68`,
+manifest `83f62cdb6d0265b09b033663f9b30712b8d319c6410a27dae7fe003256ab9507`.
+Git reference `c45b9ba27b997559c85a60697d097add22db2656`; manifests include
+the new helper/presentation bytes. Remote read-only source:
+`/work3/s234818/mosaic/releases/20261016-known-ligand-1000-03/source`.
+Upload checksum and launcher syntax passed.
+
+Assessment/report **29736081 submitted**, hpc, one slot/4GB, 15-minute bound,
+dependency `done(29736017)`; run
+`/work3/s234818/mosaic/runs/20261016-known-ligand-assessment-01`.
+It requires the complete native pilot to pass, checks frozen identities and
+strict longer-budget configuration parity, then estimates the worst declared
+ten-trial output cost plus report/evidence archive and the 4 GiB reserve.
+Only a passed quota assessment can lead to the longer GPU submission. It also
+renders the pilot's actual saved states with the hard benzene loss/reference
+drawing and detached Morgan radius-2/2048-bit similarity; these are engineering
+graph comparisons, not binding or pose measurements. Outcome remains pending.
+Exact operator: `results/hpc/20261016-known-ligand-1000/submit-assessment-01.sh`.
