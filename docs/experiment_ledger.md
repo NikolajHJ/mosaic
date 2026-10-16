@@ -1276,3 +1276,106 @@ total host request, one-hour bound, dependency `done(29736575)`; run
 `/zhome/95/e/206121/mosaic-runs/20261016-brd4-pilot-01`.
 Exact operator `scripts/hpc/receipts/20261016-brd4-5000/submit-readiness-and-pilot-02.sh`.
 Submission is not a passed pilot or a submitted/completed 5000-update run.
+
+Source-02 readiness **29736575 DONE**, node n-62-30-25:
+**154 passed, three model items deselected, two existing warnings, 47.92s**.
+This combined selection includes the new home-quota parser rejection and
+conservative rounding cases. Local evidence `readiness-02-unit.log` and
+`readiness-02-quota.json` under `results/hpc/20261016-brd4-5000/`.
+The home preflight passed with 25 GiB conservatively reported available;
+capacity/usage rounded to 30/5 GiB. The stated quota lag remains a limitation.
+GPU pilot **29736576 RUN** on one A10, n-62-18-5.
+
+Assessment **29736579 submitted**, hpc one slot/2GB, ten-minute bound,
+dependency `done(29736576)`; run
+`/zhome/95/e/206121/mosaic-runs/20261016-brd4-assessment-01`.
+It authenticates source-02 bytes and the passed three-case pilot, permits
+only steps 3→5000 in the matched configuration, and projects all ten trial
+pairs per update, snapshots, JSON, a **512 MiB report reserve**, and a
+conservative evidence archive, plus the unchanged 4 GiB reserve on home.
+Exact operator `scripts/hpc/receipts/20261016-brd4-5000/submit-assessment-01.sh`.
+Actual assessment/pilot outcomes remain pending; no long run is submitted yet.
+
+GPU pilot **29736576 DONE**, 13:26:50–13:32:03 Europe/Paris, n-62-18-5,
+932 CPU seconds, maximum host memory 4 GiB. All three cases passed native
+derivative/null/parity/descent and frozen-identity gates, with four saved
+states each. Raw primal initial→final losses:
+15% -0.3350009322166443→-0.336289644241333;
+30% -0.3623838424682617→-0.3641449809074402;
+50% -0.2778552174568176→-0.2807735800743103.
+Pilot summary SHA-256
+`7b4b87ecea730ff9c70e6a3b0f5eec81fe4ac07245aff5026fe16399260989c4`.
+Frozen model digest before=after
+`8d6926d5390fe682e193089f790ce53aa4011a6d5509ddb452a55db3d89b0ab2`;
+context digest before=after
+`6747ba18833013da02dbf407d9faefb1adbc8314353b4882a34f99557b96d4f6`.
+
+Assessment **29736579 DONE**, node n-62-31-4. It passed the unchanged
+4 GiB reserve plus measured artifact bounds: **7.324157069437206 GiB**
+required, 25 GiB conservatively available. Pilot 209,961,849 bytes; projected
+new run 1,129,216,849; report reserve 536,870,912; archive bound 1,903,198,714.
+Mean pilot timing intervals 3.21897/2.21838/2.25206 seconds per step project
+38,447.02 seconds across 15,000 updates. These intervals include probe work
+between snapshot zero and step three; this is a conservative budget, not an
+ETA. Assessment SHA `cfc44f1e6619a0d0e97bdb761c006be76b4bbad0547dd3cd74656a504ac93cbd`;
+bound final configuration SHA
+`e893ad0416894409cfef7a3fb6ae61f17b53ae141858c3f519f7c5954f542e09`.
+Local `pilot-summary.json`/`assessment.json` under the campaign directory.
+
+LSF attached an external `GPU 1: Detected Power error` message to the passed
+pilot on n-62-18-5; the initial JAX hwloc CPU-affinity warning is also retained.
+This is not treated as a failed numerical gate, nor is the hardware message
+discarded. First long-run submission using quoted `hname` exclusion was
+**rejected before creating a job** (`Error in select section ... missing value`);
+preserve operator `submit-5000-01.sh` and empty run
+`/zhome/95/e/206121/mosaic-runs/20261016-brd4-5000-01`.
+Queue/group inspection established gpua10→ra10→ra10e1→n-62-18-5, so a fresh
+node cannot be requested within that queue. Do not retry on the warning-bearing
+node or change other users' allocations. Use gpua100 for a new Ampere GPU;
+its declared maximum is 72h, above this bounded request. Configuration,
+model and prepared context remain unchanged, and numerical gates rerun on
+the actual allocation rather than assuming cross-GPU parity.
+
+Long run **29736600 submitted**, gpua100, one exclusive GPU, four slots with
+8GB per slot (32GB total host-memory request), **16-hour bound**, dependency
+`done(29736579)`. Run
+`/zhome/95/e/206121/mosaic-runs/20261016-brd4-5000-02`.
+Exact operator `scripts/hpc/receipts/20261016-brd4-5000/submit-5000-02.sh`.
+Both pilot summary and assessment hashes were verified before submission;
+the launcher rechecks immutable source, final config/pilot/assessment bindings
+and actual home quota at start. Source 02 is unchanged. This requests fresh
+5000-update trajectories, not a restart from pilot endpoints. Submitted is
+not running or completed; final numerical results remain pending.
+
+Report source 03: 249 files, archive 38,961,260 bytes, SHA-256
+`13bf30466bc786338c88df4b615f0acf44ebb7a897b8dcece84a610b452c9f6d`,
+manifest `d6d4bbc17545df536e8dcea70f50d863f966b67ec25fb0a3b3f04f86739a9f9a`,
+Git reference `4008e3c52673c1c9787c794cef2c72fe82130273` plus dirty bytes.
+Local `results/releases/brd4-5000-20261016-03/`; immutable remote
+`/work3/s234818/mosaic/releases/20261016-brd4-5000-03/source`.
+Local manifest byte comparison confirmed all `src/`, the native experiment
+driver and both BRD4 configuration files match tested source 02 exactly.
+Only presentation/receipts/docs were added or changed. Template method text
+now takes step size/trial count from the saved config and states the actual
+whole-target objective; the old hardcoded 0.01 caption is removed. Bundled
+Node `--check results/hpc/20261016-brd4-5000/template-script-check.js` passed
+as a local static syntax check only. No local model/rendering/chemistry test.
+Uploaded archive SHA passed before use.
+
+Report **29736612 submitted**, hpc one slot/4GB, 90-minute bound, dependency
+`ended(29736600)`; run
+`/zhome/95/e/206121/mosaic-runs/20261016-brd4-5000-report-01`.
+Exact operator `scripts/hpc/receipts/20261016-brd4-5000/submit-report-01.sh`.
+It rechecks immutable source and at least 5 GiB home headroom, then invokes
+`render_protenix_trajectory.py` without rerunning the model. The renderer
+requires the passed complete study and preserves raw argmax outputs. This
+submission is not a finished report or a verified download.
+
+Final submission snapshot: **29736600 PEND**, waiting for slots/resources;
+**29736612 PEND**, waiting for its model-job dependency. Saved local receipt
+`results/hpc/20261016-brd4-5000/submission-state-and-quota.txt`.
+Work3 now reports **90.25/100.00 GiB**, 286,480/20,000,000 files, reflecting
+external storage changes; home still reports 4.97/30.00 GiB with its stated
+lag. This campaign deleted/moved no existing data and changed no other
+agent's job. New native completion, report rendering, evidence transfer and
+final browser QA remain pending.
