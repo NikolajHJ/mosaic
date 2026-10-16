@@ -71,3 +71,17 @@ checks remained enforced. Allocated preprocessing produced fixture SHA-256
 Selected author residues are 78, 84, 87, 88, 91, 99, 102, 103, 111, 118, 121,
 153. This exact generated fixture is copied into the repository. GPU pilot
 **29736017 submitted**, with numerical outcomes pending.
+
+Pilot **29736017 DONE** passed all three mixtures and all native gates. The
+first assessment **29736081 EXIT** stopped at its storage gate: 5.00 GiB was
+free versus **5.676065794 GiB required**, including 4 GiB reserve, ten-trial
+worst-case trajectory output, report and evidence archive. No long run was
+submitted from that stopped assessment; numerical tolerances are unchanged.
+
+Pivotal recovery: reverify the already downloaded 500-update archive SHA and
+its 4619-file receipt, verify the same remote archive plus preserved raw-run
+summary identities on allocated CPU, then remove **only** that redundant
+2,020,603,152-byte HPC archive. Its exact verified local archive/extracted
+evidence and every raw HPC run/source remain preserved. A new assessment run
+must pass the **same** projected resource threshold before submission. The
+new narrow cleanup does not authorize changes to any other agent's files.

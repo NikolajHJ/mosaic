@@ -70,7 +70,7 @@ def main():
     archive_bytes = int(1.01 * (run_bytes + pilot_bytes + report_bytes)) + 8 * 1024**2
     required_gib = 4 + (run_bytes + report_bytes + archive_bytes) / 1024**3
     args.output.mkdir(parents=True, exist_ok=False)
-    subprocess.run(
+    quota_result = subprocess.run(
         [
             "/work3/s234818/mosaic/envs/protenix-tiny/bin/python",
             str(Path(__file__).parent / "hpc/stage0_quota_preflight.py"),
@@ -81,10 +81,10 @@ def main():
             "--minimum-free-gib",
             str(required_gib),
         ],
-        check=True,
+        check=False,
     )
     receipt = {
-        "status": "ready",
+        "status": "ready" if quota_result.returncode == 0 else "stopped_quota_gate",
         "job_id": os.environ["LSB_JOBID"],
         "pilot_summary_sha256": hashlib.sha256(summary.read_bytes()).hexdigest(),
         "pilot_bytes": pilot_bytes,
@@ -98,6 +98,8 @@ def main():
     }
     (args.output / "assessment.json").write_text(json.dumps(receipt, indent=2) + "\n")
     print(json.dumps(receipt))
+    if quota_result.returncode:
+        raise SystemExit(quota_result.returncode)
 
 
 if __name__ == "__main__":

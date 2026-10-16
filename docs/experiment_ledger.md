@@ -909,3 +909,52 @@ renders the pilot's actual saved states with the hard benzene loss/reference
 drawing and detached Morgan radius-2/2048-bit similarity; these are engineering
 graph comparisons, not binding or pose measurements. Outcome remains pending.
 Exact operator: `results/hpc/20261016-known-ligand-1000/submit-assessment-01.sh`.
+
+### Native pilot passed; first long-run resource assessment declined
+
+Pilot **29736017 DONE** passed three updates for all three starts, every
+initial atom/bond finite-difference gate, order-null checks, AD/primal scalar
+parity, every measured decline, and frozen model/context checks. Standalone
+primal losses: 15% `1.9935636520385742` → `1.9927682876586914`;
+30% `1.942352294921875` → `1.940629005432129`;
+50% `1.9883627891540527` → `1.9863002300262451`.
+Hard benzene's same-context primal loss is `2.0979607105255127`, graph SHA
+`2538e357b1ea386ff2e1cd7fb898fd867c239101e4b4c8eeda02df90f3e9fa64`.
+The chain starts already score lower than the known ligand: this illustrates
+why this contact proxy is not an affinity ranking or a recovery guarantee.
+Pilot summary downloaded to `results/hpc/20261016-known-ligand-1000/pilot-summary.json`.
+
+Assessment **29736081 EXIT** on node `n-62-31-24`, before rendering/submitting
+the long run, because storage was **5.00 GiB free** versus the predeclared
+worst-case projection **5.6760657941922545 GiB required**. Quota receipt status
+`tests_not_run_insufficient_space`, available bytes 5368709120, used files
+271106/20000000. This is a resource stop, not a failed native gate; preserve
+its logs/quota receipt and scheduler outcome.
+
+Bounded recovery selected for the new campaign: rehash the verified local
+2,020,603,152-byte 500-update evidence archive (matched
+`dc1e1d948c99d487f5c06897964037cd2130a983f003ad4fc1643d996bad14ba`)
+and confirm its retained 4619-file verification receipt. A separately sealed
+allocated CPU helper will verify the identical remote archive and retained raw
+500-study summary identities before removing only
+`/work3/s234818/mosaic/runs/20261016-gradient-evidence-carbon-chain-500-01.tar.gz`.
+All raw HPC runs/source and the exact verified local archive/extracted evidence
+remain preserved. No other cleanup or reduced quota/numerical threshold is
+authorized by this choice. Recovery and replacement assessment outcomes remain
+pending, and no 1000-update run has been submitted yet.
+
+Recovery/assessment **29736114 submitted**, hpc, one slot/4GB, 15-minute bound,
+dependency `done(29736017)`, fresh run
+`/work3/s234818/mosaic/runs/20261016-known-ligand-assessment-02`.
+Uses separately sealed source 04, 214 files, 38,872,951 archive bytes;
+archive SHA-256 `9b7aaf4253f9380b694eae353e6ba7fd91aaccf26aea68245a11ecdf96c7c04a`,
+manifest `8df25aaa80a129dd56ef9fdbf8e12a2f7c4f37bd8668d72f172e544d205fb990`,
+Git reference `b18fd876a593d865266a6d5254ffa96f71b08ab4`.
+Local `results/releases/known-ligand-1000-20261016-04/`; remote source
+`/work3/s234818/mosaic/releases/20261016-known-ligand-1000-04/source`.
+It adds only the narrow archive recovery and persistence of declined resource
+projection receipts; numerical model/gradient sources are unchanged. Upload
+checksum and launcher syntax passed, source is read-only. Exact operator:
+`results/hpc/20261016-known-ligand-1000/submit-assessment-02.sh`.
+The earlier failed assessment remains preserved. Recovery and the unchanged
+resource threshold must pass; no long-run submission is claimed yet.
