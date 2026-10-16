@@ -1,8 +1,17 @@
 # Stage 0 usage and future HPC validation
 
-Documentation update: 2026-10-13 (implementation began 2026-10-12). Code, configuration, fixtures, tests and launcher are authored. **None of the numerical commands below has run in this implementation turn.** The user declared an HPC outage; no connection, transfer, job submission, local numerical test or model evaluation is performed. Gates A-G and M1 test evidence/M2/M3 acceptance remain pending.
+Documentation update: 2026-10-16 (implementation began 2026-10-12). The 2026-10-12–13 implementation turn occurred during the declared HPC outage and performed no numerical work, connection, transfer or submission. Access was subsequently restored and the focused gradient study below completed. Full two-mode Stage 0 A-G/M2/M3 acceptance remains pending; the earlier implementation receipt is preserved in the ledger.
 
 See [the plan](stage_0_implementation_plan.md), [native contract](stage_0_native_contract.md) and [ledger](experiment_ledger.md). The 2026-10-10 protein smoke is preserved but does not validate this graph branch.
+
+Completed focused study, 2026-10-16: the user confirmed restored DTU HPC access and authorized allocated-HPC Protenix relaxed-molecule gradient tests. Source-04 job **`29735139` DONE**, with **126 unit checks, seven GPU feature checks and one native pytest item covering two relaxed graphs passed**. The [gradient-test protocol](protenix_relaxed_gradient_tests.md) describes the DBMol-inspired pocket-contact reduction and exact rerun command. Real frozen-Tiny gradients reached both atom and edge-existence probabilities; both graph cases passed all three finite-difference scales and three AD-evaluated projected updates, with an additional standalone-primal initial-to-final decline and unchanged model/context digests. Historical failures and the pivotal precision/control decisions remain in the ledger/plan. This focused result does not retroactively pass the full Stage 0 A-G suite.
+
+| Relaxed graph mixing | Standalone-primal initial loss | Standalone-primal final loss |
+| --- | --- | --- |
+| `0.15` | `1.7413299084` | `1.7370867729` |
+| `0.30` | `1.6747362614` | `1.6332819462` |
+
+To rerun the focused study, use the authenticated source-04 CLI/configuration on an allocated DTU GPU, retain `matmul_precision="highest"`, and choose a fresh output directory. The protocol gives the matched `--prepared-study`/`--prepared-summary-sha256` arguments. Local downloaded results are under `results/hpc/20261016-relaxed-gradients/20261016-gradient-evidence-04/`. These are engineering tests on an arbitrary 20-residue protein context; no binding or chemical-validity claim follows.
 
 ## Implemented entry point and defaults
 
@@ -12,13 +21,15 @@ Resolved defaults: seed 17, float32 graph leaves, geometry off, one final recycl
 
 The resident model loader verifies pinned source and all five native assets offline. It does not install packages or download a model. `--cache-dir` points to the actual `.../mosaic/protenix` asset directory, not its parent. Prepared context serialization preserves native sampled conformer bytes/order/masks; resume loads them instead of preparing the molecule again.
 
-## Future environment preparation
+## Environment preparation and later full-suite validation
 
-The historical dedicated environment is `/work3/s234818/mosaic/envs/protenix-tiny`, Python 3.12.11, pinned native revision `97cf8172f61829681582f06de7052485bc94eae4`, shared CUDA 12.9.1/cuDNN 9.13 modules. It was a reduced 57-package protein-inference environment and lacks pytest. When access returns, prepare the minimum extension on an allocated helper: add locked `pytest==9.0.3`, retain the new requirements lock/export and environment receipt, and verify compatibility. This setup is not performed here. Do not run a full unrelated-model `uv sync` or install dependencies in every GPU job.
+The dedicated environment is `/work3/s234818/mosaic/envs/protenix-tiny`, Python 3.12.11, pinned native revision `97cf8172f61829681582f06de7052485bc94eae4`, shared CUDA 12.9.1/cuDNN 9.13 modules. It began as a reduced 57-package protein-inference environment. Allocated CPU setup job `29735006` completed the hash-locked extension with `pytest==9.0.3`, `iniconfig==2.3.1`, `pluggy==1.7.0`, `pygments==2.21.0`, retaining the original packages and installation/export receipts. No full unrelated-model `uv sync` or per-GPU-job installation is needed. Exact setup and source identities are in the ledger.
 
 The historical Protenix `==3.12` metadata correction is documented in [the native protein receipt](hpc_protenix_tiny.md). Reuse/authenticate that dedicated environment rather than silently applying another patch. Authenticate the current runtime/native file hashes and asset receipt before validation; the package version alone is insufficient.
 
 The old 2026-10-10 quota value `98.43/100 GiB` is historical, not current headroom. The future quota preflight requires the **actual storage pool** of the run/cache and at least 4 GiB/10,000 files free, considering both user quota and filesystem space. A missing/unverified/insufficient quota exits 75 and records `tests_not_run`; it is not a failed/passed model test and does not authorize cleanup. Shared filesystem free space does not override user quota.
+
+The completed focused study used the conservative all-finite-work-pool bound documented in its protocol after a denied fresh path-mapping query; no authentication bypass occurred. Final inspected quota was `89.01/100 GiB` and `250,966/20,000,000` files, with no storage issue. These values are a dated receipt, not a reservation or substitute for a new run's preflight.
 
 ## Future allocated-HPC commands
 
@@ -44,13 +55,15 @@ export TMPDIR="$payload/tmp" PYTHONPYCACHEPREFIX="$payload/pycache"
 mkdir "$TMPDIR"
 
 # Selected unit/boundary tests, still performed on allocated DTU HPC.
-"$python" -m pytest tests/test_small_molecule_*.py -o addopts= --strict-markers -m 'not slow and not small_molecule_model' -o cache_dir="$payload/pytest-cache" --basetemp "$payload/pytest-unit-tmp" --junitxml="$payload/unit.xml" > "$payload/unit.log" 2>&1
+JAX_PLATFORMS=cpu "$python" -m pytest tests/test_small_molecule_*.py -o addopts= --strict-markers -m 'not slow and not small_molecule_model' -o cache_dir="$payload/pytest-cache" --basetemp "$payload/pytest-unit-tmp" --junitxml="$payload/unit.xml" > "$payload/unit.log" 2>&1
 
 # Real native A-G checks in both modes, including fresh-process replay.
 "$python" -m pytest tests/test_small_molecule_*.py -o addopts= --strict-markers -m small_molecule_model -o cache_dir="$payload/pytest-cache" --basetemp "$payload/pytest-native-tmp" --junitxml="$payload/native.xml" > "$payload/native.log" 2>&1
 ```
 
 The real suite fails missing allocation/GPU/assets/source prerequisites instead of skipping them into apparent acceptance. Its child resume process shares the same allocation; it does not submit another job. Both context modes, exact source/environment/device/driver/RNG identities, persisted outputs and failures are part of the acceptance evidence. Do not claim M3 from mock-only or independently passing track tests.
+
+Ordinary unit fixtures run on CPU within the allocated DTU host so synthetic parent/child restart processes do not compete for an exclusive GPU. The focused launcher separately reruns all seven feature checks on the A10 before real-native work; those actual GPU precision checks are part of its completed receipt. The full A-G commands here remain future validation, with their numerical profile and source release to be bound explicitly.
 
 The allocation-guarded [launcher](../scripts/hpc/small_molecule_stage0.lsf) takes four arguments: immutable release, unique parent run directory, verified actual storage-pool number, and independently recorded SHA-256 of the release's `source_manifest.json`. It atomically claims `RUN/payload`, refuses an existing payload, and places numerical outputs, logs and pytest temporary/cache directories beneath it. It authenticates the source manifest before invoking the quota helper and rejects unmanifested execution files in `src`, `tests`, `examples` and `scripts`. Then it runs quota preflight, selected unit tests, real tests, and the example without duplicating `--validate`. It performs no installation or asset download. Its current planned resource directives are one exclusive GPU, four slots on one host, 8 GB memory per slot, and two hours; actual later submission/resources must be recorded, not inferred from this unsubmitted script.
 

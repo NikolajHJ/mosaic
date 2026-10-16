@@ -1,0 +1,9 @@
+{
+  "contract": "small_molecule_v0.1",
+  "smiles": "CCCCCCCCCC",
+  "n_heavy_atoms": 10,
+  "element_order": ["C", "C", "C", "C", "C", "C", "C", "C", "C", "C"],
+  "bond_assignments": [[0,1,"SINGLE"],[1,2,"SINGLE"],[2,3,"SINGLE"],[3,4,"SINGLE"],[4,5,"SINGLE"],[5,6,"SINGLE"],[6,7,"SINGLE"],[7,8,"SINGLE"],[8,9,"SINGLE"]],
+  "protein_sequence": "ACDEFGHIKLMNPQRSTVWY",
+  "interpretation": "10 occupied neutral carbons in a single-bond chain; synthetic protein engineering context"
+}

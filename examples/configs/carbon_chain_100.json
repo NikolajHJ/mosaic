@@ -1,0 +1,20 @@
+{
+  "fixture": "tests/data/carbon_chain_100/fixture.json",
+  "seed": 17,
+  "matmul_precision": "highest",
+  "mixing_values": [0.15, 0.30],
+  "pocket_protein_ordinals": [4,5,6,7,8],
+  "contact_cutoff_angstrom": 8.0,
+  "log_epsilon": 1e-8,
+  "checks": {
+    "epsilons": [0.01,0.003,0.001],
+    "derivative_atol": 0.002,
+    "derivative_rtol": 0.15,
+    "minimum_tangent": 1e-7,
+    "steps": 100,
+    "initial_step_size": 0.01,
+    "max_backtracks": 10,
+    "record_readouts": true,
+    "primal_every_step": true
+  }
+}

@@ -14,6 +14,7 @@ _EXPORTS = {
     "inject_graph": ("features", "inject_graph"),
     "FrozenProtenixTiny": ("protenix", "FrozenProtenixTiny"),
     "NativeContactLoss": ("losses", "NativeContactLoss"),
+    "DBMolContactLoss": ("losses", "DBMolContactLoss"),
     "DistogramDiagnosticLoss": ("losses", "DistogramDiagnosticLoss"),
     "evaluate_graph": ("optimizers", "evaluate_graph"),
     "projected_step": ("optimizers", "projected_step"),

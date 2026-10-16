@@ -87,7 +87,9 @@ def test_projection_can_hit_boundary_without_deleting_an_atom_slot():
         del key
         return -jnp.sum(g.X[:, 0]) - 2 * jnp.sum(g.E_upper[:, 0]), {}
 
-    step = evaluate_and_project(loss, graph, jax.random.key(0), eta_X=1, eta_E=1)
+    # Go strictly beyond the face rather than landing on its float32 threshold:
+    # eta_X=1 can leave tiny positive residuals after the rounded proposal.
+    step = evaluate_and_project(loss, graph, jax.random.key(0), eta_X=2, eta_E=2)
     validate_graph(step.next_graph)
     np.testing.assert_array_equal(step.next_graph.X, [[1, 0, 0, 0, 0, 0]] * 2)
     np.testing.assert_array_equal(step.next_graph.E_upper, [[1, 0, 0, 0, 0]])

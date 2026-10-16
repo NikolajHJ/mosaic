@@ -1,0 +1,1355 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{parskip}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  urlcolor=blue,
+  pdftitle={DTU HPC Runbook for AI Coding Agents},
+  pdfauthor={OpenAI}
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{DTU HPC Runbook}
+\rhead{\thepage}
+
+\titleformat{\section}{\large\bfseries}{\thesection}{0.6em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.6em}{}
+\titleformat{\subsubsection}{\normalsize\bfseries}{\thesubsubsection}{0.6em}{}
+
+\lstdefinestyle{shell}{
+  basicstyle=\ttfamily\small,
+  breaklines=true,
+  columns=fullflexible,
+  frame=single,
+  keepspaces=true,
+  showstringspaces=false
+}
+
+\title{\textbf{DTU HPC Runbook for AI Coding Agents}}
+\author{}
+\date{\today}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Purpose and scope}
+
+This document is an operator-style reference for an AI coding agent working on DTU HPC. It is biased toward practical software engineering and ML/DL workflows rather than classical HPC simulation workflows.
+
+It covers:
+
+\begin{itemize}[leftmargin=1.5em]
+  \item access: VPN, SSH, ThinLinc, and remote-work caveats,
+  \item shell basics and working conventions,
+  \item Git and GitHub authentication on the cluster,
+  \item DTU software environment: modules, Python, virtual environments, \texttt{uv}, and DCC software stacks,
+  \item LSF job scripts, queues, GPUs, monitoring, and failure diagnosis,
+  \item storage, quota, data transfer, and scratch usage,
+  \item common failure modes seen in coding/ML workflows,
+  \item practical best practices for automated agents.
+\end{itemize}
+
+\section{Mental model of DTU HPC}
+
+DTU HPC is not ``a remote Linux box where you just run things''. It is a multi-user, scheduler-managed HPC environment.
+
+The practical model is:
+
+\begin{enumerate}[leftmargin=1.5em]
+  \item connect to DTU network (on campus or via VPN),
+  \item SSH into a login node,
+  \item do light editing, Git, environment setup, and inspection,
+  \item use \texttt{linuxsh} for interactive preparation/tests,
+  \item submit real work as LSF batch jobs with \texttt{bsub},
+  \item monitor jobs and iterate.
+\end{enumerate}
+
+\textbf{Critical rule:} do not run real compute on login nodes.
+
+\section{Access, identity, and remote-work modes}
+
+\subsection{Access modes}
+
+DTU documents two primary access modes:
+
+\begin{itemize}[leftmargin=1.5em]
+  \item \textbf{SSH} for command-line work.
+  \item \textbf{ThinLinc} for graphical remote desktop access.
+\end{itemize}
+
+Useful endpoints:
+
+\begin{itemize}[leftmargin=1.5em]
+  \item \texttt{login1.hpc.dtu.dk}
+  \item \texttt{login2.hpc.dtu.dk}
+  \item \texttt{login1.gbar.dtu.dk}
+  \item \texttt{login2.gbar.dtu.dk}
+  \item \texttt{thinlinc.gbar.dtu.dk}
+  \item \texttt{transfer.gbar.dtu.dk}
+  \item VPN server: \texttt{vpn.dtu.dk}
+\end{itemize}
+
+\subsection{VPN (Cisco Secure Client / AnyConnect)}
+
+From outside DTU, most services require VPN.
+
+\textbf{Practical workflow:}
+\begin{enumerate}[leftmargin=1.5em]
+  \item install Cisco Secure Client / AnyConnect,
+  \item connect to \texttt{vpn.dtu.dk},
+  \item authenticate with DTU username/password,
+  \item complete MFA.
+\end{enumerate}
+
+If you are already on VPN, standard password-based SSH login works. If you are outside DTU \emph{without} VPN, DTU requires SSH-key based access with an SSH key, a key passphrase, and your DTU password.
+
+\subsection{SSH login}
+
+Typical command:
+
+\begin{lstlisting}[style=shell]
+ssh <userid>@login1.hpc.dtu.dk
+\end{lstlisting}
+
+Alternative documented hosts:
+
+\begin{lstlisting}[style=shell]
+ssh <userid>@login2.hpc.dtu.dk
+ssh <userid>@login1.gbar.dtu.dk
+ssh <userid>@login2.gbar.dtu.dk
+\end{lstlisting}
+
+\subsection{Interactive shell after login}
+
+After SSH login, move off the login node:
+
+\begin{lstlisting}[style=shell]
+linuxsh
+\end{lstlisting}
+
+That gives an interactive shell on a shared interactive node where you can:
+
+\begin{itemize}[leftmargin=1.5em]
+  \item inspect files,
+  \item prepare data,
+  \item compile,
+  \item create environments,
+  \item run small tests,
+  \item submit jobs.
+\end{itemize}
+
+\textbf{Do not assume the interactive node is private.}
+
+\subsection{ThinLinc}
+
+ThinLinc is useful if you need GUI applications, file browsing, or GUI-heavy workflows.
+
+On campus or on VPN:
+\begin{itemize}[leftmargin=1.5em]
+  \item Server: \texttt{thinlinc.gbar.dtu.dk}
+  \item Username: DTU userid
+  \item Password: DTU password
+\end{itemize}
+
+Outside DTU without VPN, ThinLinc must be configured to use public-key authentication, and the key must have a passphrase.
+
+\subsection{SSH keys for access without VPN}
+
+If you need direct external access without VPN, generate a local SSH key and follow DTU's outside-access guide.
+
+Practical command on your own machine:
+
+\begin{lstlisting}[style=shell]
+ssh-keygen -t ed25519 -f ~/.ssh/gbar
+\end{lstlisting}
+
+\textbf{Always verify host fingerprints on first connection.}
+
+\subsection{Recommended local SSH config}
+
+On your local machine:
+
+\begin{lstlisting}[style=shell]
+Host dtu-hpc
+  HostName login1.hpc.dtu.dk
+  User <userid>
+  ServerAliveInterval 30
+  ServerAliveCountMax 4
+\end{lstlisting}
+
+Then connect with:
+
+\begin{lstlisting}[style=shell]
+ssh dtu-hpc
+\end{lstlisting}
+
+\section{Working conventions for an AI coding agent}
+
+\subsection{Core rules}
+
+\begin{enumerate}[leftmargin=1.5em]
+  \item Never do heavy compute on login nodes.
+  \item Prefer stable absolute paths for outputs, checkpoints, and databases.
+  \item Install environments once; do not rebuild environments inside every job.
+  \item Submit from repo root unless you know exactly what the job CWD will be.
+  \item Treat quota and filesystem pressure as first-class failure sources.
+  \item Use short smoke tests before expensive runs.
+  \item Log aggressively and unbuffer stdout for debugging.
+\end{enumerate}
+
+\subsection{Suggested repo layout}
+
+A practical project layout:
+
+\begin{lstlisting}[style=shell]
+repo/
+  .venv/
+  logs/
+  submit_scripts/
+  src/
+  data/
+  runs/
+  scripts/
+  pyproject.toml
+  uv.lock
+\end{lstlisting}
+
+\subsection{Recommended shell habits}
+
+\begin{lstlisting}[style=shell]
+pwd
+ls -la
+whoami
+hostname
+git status
+module list
+python --version
+which python
+\end{lstlisting}
+
+\section{Filesystems, quota, and data transfer}
+
+\subsection{Home directory}
+
+Each user gets a default \texttt{zhome} quota of 30 GB. The home directory is backed up.
+
+Check usage:
+
+\begin{lstlisting}[style=shell]
+getquota_zhome.sh
+\end{lstlisting}
+
+\subsection{Scratch / work space}
+
+If you need temporary large space, ask DTU support for scratch. DTU documents scratch under \texttt{/work3/\$USER}. Scratch is not backed up.
+
+Check scratch usage:
+
+\begin{lstlisting}[style=shell]
+getquota_work3.sh
+\end{lstlisting}
+
+\subsection{What to store where}
+
+\begin{longtable}{p{0.27\linewidth} p{0.67\linewidth}}
+\toprule
+Location & Recommended contents \\
+\midrule
+\texttt{zhome} & code, configs, small outputs, important scripts, notebooks, lightweight metadata, anything you need backed up \\
+\texttt{/work3} or scratch & large datasets, caches, checkpoints, temporary feature banks, Optuna databases, model artifacts, Hugging Face cache, W\&B cache \\
+repo-local \texttt{runs/} & fine for small/medium outputs; not ideal for huge artifacts if quota is tight \\
+\bottomrule
+\end{longtable}
+
+\subsection{Large data transfer}
+
+For large transfers, DTU recommends using:
+
+\begin{lstlisting}[style=shell]
+transfer.gbar.dtu.dk
+\end{lstlisting}
+
+Examples:
+
+\begin{lstlisting}[style=shell]
+scp -i ~/.ssh/gbar file1.txt s123456@transfer.gbar.dtu.dk:
+scp -i ~/.ssh/gbar s123456@transfer.gbar.dtu.dk:file1.txt .
+rsync -avP localdir/ s123456@transfer.gbar.dtu.dk:remote-dir/
+\end{lstlisting}
+
+\subsection{Cleaning quota pressure}
+
+Common space hogs on DTU HPC:
+
+\begin{itemize}[leftmargin=1.5em]
+  \item \texttt{\$HOME/.local/share/Trash}
+  \item \texttt{\$HOME/.cache/pip}
+  \item \texttt{\$HOME/.cache/huggingface}
+  \item \texttt{\$HOME/.cache/wandb}
+  \item \texttt{\$HOME/.vscode-server}
+  \item local package caches for pip/conda/uv
+\end{itemize}
+
+Useful commands:
+
+\begin{lstlisting}[style=shell]
+du -h --apparent --max-depth=1 .
+pip cache purge
+uv cache clean
+rm -rvf $HOME/.cache/huggingface/*
+rm -rvf $HOME/.local/share/Trash/*
+\end{lstlisting}
+
+\section{Shell and Bash basics an agent should know}
+
+\subsection{Navigation and file inspection}
+
+\begin{lstlisting}[style=shell]
+pwd
+ls -la
+cd /path/to/dir
+mkdir -p logs
+cp src dst
+mv src dst
+rm -rf path
+find . -name "*.py"
+du -h --apparent --max-depth=1 .
+df -h .
+\end{lstlisting}
+
+\subsection{Permissions and executability}
+
+\begin{lstlisting}[style=shell]
+chmod +x script.sh
+ls -l script.sh
+\end{lstlisting}
+
+\subsection{Line endings}
+
+If a script was edited on Windows and fails on Linux, normalize line endings:
+
+\begin{lstlisting}[style=shell]
+sed -i 's/\r$//' script.sh
+\end{lstlisting}
+
+\subsection{Environment variables}
+
+\begin{lstlisting}[style=shell]
+echo $PATH
+export PYTHONUNBUFFERED=1
+export HF_HOME=/work3/$USER/huggingface
+export WANDB_DIR=/work3/$USER/wandb
+\end{lstlisting}
+
+\section{Git and GitHub on DTU HPC}
+
+\subsection{Clone a repo}
+
+Create a workspace:
+
+\begin{lstlisting}[style=shell]
+mkdir -p ~/projects
+cd ~/projects
+git clone <REPO_URL>
+cd <repo-name>
+\end{lstlisting}
+
+\subsection{Git branch operations}
+
+\begin{lstlisting}[style=shell]
+git branch -a
+git switch <branch>
+git fetch
+git switch -c <branch> --track origin/<branch>
+git pull
+\end{lstlisting}
+
+\subsection{Force-sync to remote and discard local changes}
+
+\begin{lstlisting}[style=shell]
+git fetch origin
+git reset --hard origin/<branch>
+git clean -fd      # remove untracked files
+git clean -fdx     # also remove ignored files
+\end{lstlisting}
+
+\subsection{GitHub authentication: important}
+
+GitHub no longer supports account-password authentication for Git over HTTPS. You must use:
+
+\begin{itemize}[leftmargin=1.5em]
+  \item a Personal Access Token (PAT) over HTTPS, or
+  \item SSH keys.
+\end{itemize}
+
+\subsection{HTTPS with PAT}
+
+\begin{lstlisting}[style=shell]
+export GIT_ASKPASS=
+export SSH_ASKPASS=
+export DISPLAY=
+git clone https://github.com/<user>/<repo>.git
+\end{lstlisting}
+
+When prompted:
+\begin{itemize}[leftmargin=1.5em]
+  \item username = GitHub username
+  \item password = PAT
+\end{itemize}
+
+\subsection{SSH to GitHub (recommended)}
+
+Generate a key on the cluster:
+
+\begin{lstlisting}[style=shell]
+ssh-keygen -t ed25519 -a 64 -f ~/.ssh/id_ed25519
+cat ~/.ssh/id_ed25519.pub
+\end{lstlisting}
+
+Add the public key to GitHub, then:
+
+\begin{lstlisting}[style=shell]
+git clone git@github.com:<user>/<repo>.git
+\end{lstlisting}
+
+\subsection{Existing SSH keys}
+
+\begin{lstlisting}[style=shell]
+ls -al ~/.ssh
+\end{lstlisting}
+
+\section{VS Code Remote-SSH}
+
+DTU explicitly says VS Code Remote is unsupported, though many users use it anyway.
+
+\subsection{What works in practice}
+
+\begin{itemize}[leftmargin=1.5em]
+  \item Remote-SSH into \texttt{login1.hpc.dtu.dk} or \texttt{login2.hpc.dtu.dk}.
+  \item Use VS Code for editing, Git, file browsing, and terminal workflows.
+  \item Use the terminal to run \texttt{linuxsh} and to submit jobs.
+\end{itemize}
+
+\subsection{What to avoid}
+
+\begin{itemize}[leftmargin=1.5em]
+  \item Do not treat a login-node VS Code terminal as a compute node.
+  \item Do not leave large training or preprocessing jobs running directly in a VS Code terminal on a login node.
+\end{itemize}
+
+\subsection{Known incompatibility}
+
+If VS Code Remote breaks with:
+
+\begin{lstlisting}[style=shell]
+The remote host may not meet VS Code Server's prerequisites
+for glibc and libstdc++
+\end{lstlisting}
+
+DTU's note says to downgrade the client to version 1.85.
+
+\section{Modules and software stacks}
+
+\subsection{Why modules exist}
+
+The cluster provides many software versions. Modules let you choose the versions you want without polluting the global environment.
+
+\subsection{Core commands}
+
+\begin{lstlisting}[style=shell]
+module list
+module avail
+module load <name>
+module unload <name>
+module switch <old> <new>
+module whatis <name>
+module show <name>
+\end{lstlisting}
+
+\subsection{Important behavior}
+
+\begin{itemize}[leftmargin=1.5em]
+  \item Your login environment is intentionally minimal.
+  \item Most scientific software is \emph{not} available until you load modules.
+  \item Batch jobs should load all needed modules explicitly.
+\end{itemize}
+
+\subsection{DCC software stack}
+
+DTU also provides a DCC software stack. Enable it with:
+
+\begin{lstlisting}[style=shell]
+source /dtu/sw/dcc/dcc-sw.bash
+\end{lstlisting}
+
+Important caveats:
+
+\begin{itemize}[leftmargin=1.5em]
+  \item enabling the DCC stack disables the regular modules,
+  \item for reproducibility, use a fixed \texttt{dcc-setup/<version>} instead of implicitly taking ``latest''.
+\end{itemize}
+
+Example:
+
+\begin{lstlisting}[style=shell]
+module purge
+module load dcc-setup/2023-aug
+\end{lstlisting}
+
+\section{Python, virtual environments, and \texttt{uv}}
+
+\subsection{Python on DTU HPC}
+
+DTU's Python guidance boils down to:
+
+\begin{itemize}[leftmargin=1.5em]
+  \item choose a Python version via modules,
+  \item do not mix packages built for different Python versions,
+  \item prefer virtual environments,
+  \item use \texttt{python3 -m pip ...} rather than raw \texttt{pip3 install ...},
+  \item do not mix conda and pip unless you really know what you are doing.
+\end{itemize}
+
+\subsection{Find and load Python}
+
+\begin{lstlisting}[style=shell]
+module avail python
+module load python3/3.10.13
+python3 --version
+which python3
+\end{lstlisting}
+
+\subsection{Classic venv workflow}
+
+\begin{lstlisting}[style=shell]
+module load python3/3.10.13
+python3 -m venv .venv
+. .venv/bin/activate
+python3 -m pip install -U pip
+python3 -m pip install -r requirements.txt
+\end{lstlisting}
+
+\subsection{\texttt{uv} workflow}
+
+If you use \texttt{uv}, do it \emph{on the cluster}. Do not reuse a Windows-created \texttt{.venv} on Linux.
+
+Typical pattern:
+
+\begin{lstlisting}[style=shell]
+module load python3/3.10.13
+python3 -m pip install --user -U uv
+export PATH="$HOME/.local/bin:$PATH"
+
+uv venv .venv --python "$(which python3)"
+uv sync --frozen
+\end{lstlisting}
+
+Then in jobs, prefer:
+
+\begin{lstlisting}[style=shell]
+export PATH="$HOME/.local/bin:$PATH"
+uv run --no-sync -m mypackage.entrypoint
+\end{lstlisting}
+
+\subsection{Install once, reuse everywhere}
+
+Because the filesystem is shared across nodes, install the environment once (typically from an interactive node) and reuse it from batch jobs.
+
+\subsection{PyTorch notes}
+
+DTU's PyTorch page says:
+
+\begin{itemize}[leftmargin=1.5em]
+  \item PyTorch is not preinstalled.
+  \item Install it in a virtual environment in home or scratch.
+  \item In batch jobs, \texttt{CUDA\_VISIBLE\_DEVICES} is set automatically by the scheduler.
+\end{itemize}
+
+Useful sanity checks:
+
+\begin{lstlisting}[style=shell]
+nvidia-smi
+python -c "import torch; print(torch.cuda.is_available())"
+python -c "import torch; print(torch.cuda.get_device_name(0))"
+\end{lstlisting}
+
+\section{LSF scheduler: workflow, concepts, and commands}
+
+\subsection{Core lifecycle}
+
+\begin{enumerate}[leftmargin=1.5em]
+  \item write a submit script,
+  \item request resources with \texttt{\#BSUB} lines,
+  \item submit with \texttt{bsub < script.sh},
+  \item monitor with \texttt{bstat}, \texttt{bpeek}, \texttt{showstart}, \texttt{bhist}, \texttt{bacct},
+  \item kill with \texttt{bkill} if needed.
+\end{enumerate}
+
+\subsection{Key command summary}
+
+\begin{longtable}{p{0.24\linewidth} p{0.70\linewidth}}
+\toprule
+Command & Meaning \\
+\midrule
+\texttt{bsub < job.sh} & submit a job \\
+\texttt{bstat} & DTU compact status view \\
+\texttt{bstat -C} & show CPU efficiency \\
+\texttt{bstat -M} & show memory usage/limit \\
+\texttt{bkill <jobid>} & kill job \\
+\texttt{bkill -s SIGTERM <jobid>} & request graceful shutdown \\
+\texttt{classstat <queue>} & queue-level load summary \\
+\texttt{nodestat <queue>} & node-level availability summary \\
+\texttt{nodestat -F <queue>} & show CPU model/features/memory \\
+\texttt{nodestat -G <queue>} & GPU details \\
+\texttt{showstart <jobid>} & estimate start time for pending jobs \\
+\texttt{bpeek <jobid>} & view partial stdout/stderr of running job \\
+\texttt{bhist -l <jobid>} & detailed job history / postmortem \\
+\texttt{bacct <jobid>} & finished-job accounting summary \\
+\bottomrule
+\end{longtable}
+
+\subsection{Status values}
+
+From DTU's \texttt{bstat} page:
+
+\begin{itemize}[leftmargin=1.5em]
+  \item \texttt{PEND}: queued, waiting for scheduling
+  \item \texttt{RUN}: running
+  \item \texttt{DONE}: completed successfully
+  \item \texttt{EXIT}: exited/killed/failed
+  \item \texttt{SSUSP}: suspended
+\end{itemize}
+
+In DTU's compact output, \texttt{NALLOC} is the number shown in the allocation column and in practice corresponds to the allocated slots/cores for the job.
+
+\subsection{General job-script structure}
+
+\begin{lstlisting}[style=shell]
+#!/bin/sh
+#BSUB -q hpc
+#BSUB -J myjob
+#BSUB -n 4
+#BSUB -R "span[hosts=1]"
+#BSUB -R "rusage[mem=4GB]"
+#BSUB -M 5GB
+#BSUB -W 24:00
+#BSUB -o Output_%J.out
+#BSUB -e Output_%J.err
+
+module load <modules>
+my_command_here
+\end{lstlisting}
+
+\subsection{Meaning of common \texttt{\#BSUB} directives}
+
+\begin{longtable}{p{0.24\linewidth} p{0.70\linewidth}}
+\toprule
+Directive & Meaning \\
+\midrule
+\texttt{-q} & queue name \\
+\texttt{-J} & job name \\
+\texttt{-n} & total CPU slots/cores \\
+\texttt{-R "span[hosts=1]"} & keep all requested CPU slots on one host \\
+\texttt{-R "span[ptile=N]"} & spread slots in groups of N per host; useful for MPI-style layouts \\
+\texttt{-R "rusage[mem=5GB]"} & memory request \emph{per core/slot} \\
+\texttt{-M 5GB} & per-process memory limit; exceeding host-enforced limit can kill the job \\
+\texttt{-W 12:00} & walltime limit \\
+\texttt{-B} & mail at start \\
+\texttt{-N} & mail at completion \\
+\texttt{-Ne} & mail on failure only \\
+\texttt{-o} & stdout file \\
+\texttt{-e} & stderr file \\
+\texttt{-gpu "num=1:mode=exclusive\_process"} & request GPUs in exclusive-process mode \\
+\bottomrule
+\end{longtable}
+
+\subsection{CPU and memory reasoning}
+
+Important consequence of DTU's memory model:
+
+\begin{itemize}[leftmargin=1.5em]
+  \item \texttt{rusage[mem=5GB]} with \texttt{-n 4} means about 20 GB total RAM requested.
+  \item memory limits are effectively enforced per host, not globally across arbitrarily many hosts.
+\end{itemize}
+
+\subsection{Queue defaults and limits}
+
+DTU documents for the main CPU queue family:
+
+\begin{itemize}[leftmargin=1.5em]
+  \item default queue: \texttt{hpc}
+  \item max wallclock: 72 hours
+  \item default walltime: 15 minutes
+\end{itemize}
+
+ThinLinc/application nodes differ and are not batch-compute targets in the same way.
+
+\section{GPU queues and hardware}
+
+\subsection{Current public GPU queues}
+
+DTU's public GPU page currently lists:
+
+\begin{longtable}{p{0.20\linewidth} p{0.58\linewidth} p{0.14\linewidth}}
+\toprule
+Queue & Hardware & Notes \\
+\midrule
+\texttt{gpul40s} & 6 nodes, each with 2x Nvidia L40S PCIe 48 GB & public GPU queue \\
+\texttt{gpua100} & 4 nodes with 2x A100 40 GB and 6 nodes with 2x A100 80 GB & A100 queue \\
+\texttt{gpuv100} & 6 nodes with 2x V100 16 GB; 8 nodes with 2x V100 32 GB; 3 nodes with 4x V100 32 GB NVLink & V100 queue \\
+\texttt{gpua10} & 1 node with 2x Tesla A10 24 GB & small queue \\
+\texttt{gpua40} & 1 node with 2x Tesla A40 48 GB NVLink & small queue \\
+\texttt{gpuamd} & AMD MI25 queue & non-Nvidia \\
+\bottomrule
+\end{longtable}
+
+DTU also documents interactive GPU helper commands:
+
+\begin{lstlisting}[style=shell]
+voltash
+sxm2sh
+a100sh
+\end{lstlisting}
+
+\subsection{GPU selectors}
+
+Valid selectors depend on queue.
+
+Examples:
+\begin{itemize}[leftmargin=1.5em]
+  \item \texttt{gpua100} + \texttt{select[gpu40gb]}
+  \item \texttt{gpua100} + \texttt{select[gpu80gb]}
+  \item \texttt{gpuv100} + \texttt{select[gpu32gb]}
+  \item \texttt{gpuv100} + \texttt{select[sxm2]}
+\end{itemize}
+
+\textbf{Do not mismatch queue and selector.} Example: \texttt{gpuv100} with \texttt{select[gpu40gb]} is a bad request.
+
+\subsection{A100 compatibility}
+
+DTU notes that code targeting Nvidia A100 should be built with CUDA 11.0 or newer.
+
+\subsection{Choosing a queue for testing}
+
+Practical guidance:
+
+\begin{itemize}[leftmargin=1.5em]
+  \item shortest queue is dynamic; check with \texttt{classstat} and \texttt{nodestat},
+  \item cheapest/worst GPU is often \texttt{gpua10}, but it has very little capacity,
+  \item \texttt{gpuv100} often starts sooner due to more nodes,
+  \item use short walltimes for smoke tests.
+\end{itemize}
+
+\subsection{Current CPU hardware summary}
+
+DTU's central cluster page currently shows a mixed CPU fleet including, among others:
+
+\begin{itemize}[leftmargin=1.5em]
+  \item 2x AMD EPYC 9554 nodes with 1536 GB RAM and EDR InfiniBand,
+  \item Intel Xeon Gold 6342 nodes with 512 GB RAM,
+  \item Intel Xeon Gold 6226R nodes with 384 or 768 GB RAM,
+  \item Intel Xeon Gold 6126 / 6142 nodes,
+  \item older Xeon E5-2650v4 / E5-2660v3 nodes,
+  \item dedicated AMD queues such as \texttt{epyc}, \texttt{rome}, and \texttt{milan}.
+\end{itemize}
+
+Therefore, identical CPU jobs may run at different speeds on different hosts. If node features matter, use \texttt{nodestat -F <queue>} and explicit \texttt{select[...]} requirements.
+
+\section{Submit-script templates}
+
+\subsection{Minimal CPU batch script}
+
+\begin{lstlisting}[style=shell]
+#!/bin/sh
+#BSUB -J cpu-job
+#BSUB -o logs/%J.out
+#BSUB -e logs/%J.err
+#BSUB -q hpc
+#BSUB -n 4
+#BSUB -R "span[hosts=1]"
+#BSUB -R "rusage[mem=4GB]"
+#BSUB -W 02:00
+#BSUB -B
+#BSUB -N
+
+cd "${LS_SUBCWD:-$PWD}"
+mkdir -p logs
+
+module load python3/3.10.13
+. .venv/bin/activate
+
+export PYTHONUNBUFFERED=1
+export PYTHONPATH="$PWD:$PYTHONPATH"
+
+python -m mypackage.main "$@"
+\end{lstlisting}
+
+\subsection{Minimal single-GPU batch script}
+
+\begin{lstlisting}[style=shell]
+#!/bin/sh
+#BSUB -J gpu-job
+#BSUB -o logs/%J.out
+#BSUB -e logs/%J.err
+#BSUB -q gpua100
+#BSUB -n 4
+#BSUB -gpu "num=1:mode=exclusive_process"
+#BSUB -R "select[gpu40gb]"
+#BSUB -R "rusage[mem=5GB]"
+#BSUB -R "span[hosts=1]"
+#BSUB -W 12:00
+#BSUB -B
+#BSUB -N
+
+cd "${LS_SUBCWD:-$PWD}"
+mkdir -p logs
+
+. .venv/bin/activate
+export PYTHONUNBUFFERED=1
+export PYTHONPATH="$PWD:$PYTHONPATH"
+
+python -m mypackage.train "$@"
+\end{lstlisting}
+
+\subsection{Single-GPU with \texttt{uv}}
+
+\begin{lstlisting}[style=shell]
+#!/bin/sh
+#BSUB -J gpu-uv-job
+#BSUB -o logs/%J.out
+#BSUB -e logs/%J.err
+#BSUB -q gpuv100
+#BSUB -n 4
+#BSUB -gpu "num=1:mode=exclusive_process"
+#BSUB -R "select[gpu32gb]"
+#BSUB -R "rusage[mem=5GB]"
+#BSUB -R "span[hosts=1]"
+#BSUB -W 04:00
+
+cd "${LS_SUBCWD:-$PWD}"
+mkdir -p logs
+
+export PATH="$HOME/.local/bin:$PATH"
+export PYTHONUNBUFFERED=1
+export PYTHONPATH="$PWD:$PYTHONPATH"
+
+uv run --no-sync -m mypackage.entrypoint "$@"
+\end{lstlisting}
+
+\subsection{Run another shell script from the submit script}
+
+This is valid and often cleaner than putting everything directly in the LSF script.
+
+\begin{lstlisting}[style=shell]
+#!/bin/sh
+#BSUB -J pipeline
+#BSUB -o logs/%J.out
+#BSUB -e logs/%J.err
+#BSUB -q gpua100
+#BSUB -n 4
+#BSUB -gpu "num=1:mode=exclusive_process"
+#BSUB -R "select[gpu40gb]"
+#BSUB -R "rusage[mem=5GB]"
+#BSUB -R "span[hosts=1]"
+#BSUB -W 24:00
+
+cd "${LS_SUBCWD:-$PWD}"
+mkdir -p logs
+export PATH="$HOME/.local/bin:$PATH"
+
+bash scripts/run_pipeline.sh "$@"
+\end{lstlisting}
+
+\subsection{PyTorch \texttt{torchrun} single-node pattern}
+
+\begin{lstlisting}[style=shell]
+#!/bin/sh
+#BSUB -J torch-single
+#BSUB -q gpuv100
+#BSUB -n 4
+#BSUB -R "span[hosts=1]"
+#BSUB -gpu "num=1:mode=exclusive_process"
+#BSUB -W 01:00
+#BSUB -R "rusage[mem=5GB]"
+#BSUB -o logs/%J.out
+#BSUB -e logs/%J.err
+
+cd "${LS_SUBCWD:-$PWD}"
+mkdir -p logs
+. .venv/bin/activate
+
+torchrun --standalone --nproc_per_node=1 train.py
+\end{lstlisting}
+
+\subsection{Multi-node / multi-GPU pattern}
+
+Use only if your code is actually distributed-aware.
+
+\begin{lstlisting}[style=shell]
+#!/bin/sh
+#BSUB -J torch-multi
+#BSUB -q gpuv100
+#BSUB -n 8
+#BSUB -R "span[ptile=4]"
+#BSUB -gpu "num=2:mode=exclusive_process"
+#BSUB -W 01:00
+#BSUB -R "rusage[mem=5GB]"
+#BSUB -o logs/%J.out
+#BSUB -e logs/%J.err
+
+cd "${LS_SUBCWD:-$PWD}"
+mkdir -p logs
+. .venv/bin/activate
+
+List=$(echo "$LSB_HOSTS" | tr ' ' '\n' | sort -u | paste -sd,)
+PORT=29500
+blaunch -z "$List" torchrun \
+  --nnodes=2 \
+  --nproc_per_node=2 \
+  --rdzv_id="$LSB_JOBID" \
+  --rdzv_backend=c10d \
+  --rdzv_endpoint="$HOSTNAME:$PORT" \
+  train.py
+\end{lstlisting}
+
+\section{Submission rules that prevent stupid failures}
+
+\subsection{Submit from repo root}
+
+Relative paths in jobs resolve from the job's working directory, not from the location of the script file. Prefer:
+
+\begin{lstlisting}[style=shell]
+cd "${LS_SUBCWD:-$PWD}"
+\end{lstlisting}
+
+and submit while standing in repo root:
+
+\begin{lstlisting}[style=shell]
+cd ~/projects/myrepo
+mkdir -p logs
+bsub < submit_scripts/train.sh
+\end{lstlisting}
+
+\subsection{Create log directories before submission}
+
+Practical note: if your output paths are \texttt{logs/\%J.out} and \texttt{logs/\%J.err}, create \texttt{logs/} before \texttt{bsub}. LSF may open output files before your shell script body runs.
+
+\begin{lstlisting}[style=shell]
+mkdir -p logs
+bsub < submit.sh
+\end{lstlisting}
+
+\subsection{Windows venvs do not work on Linux}
+
+Never copy a Windows-created \texttt{.venv} and expect it to work on DTU HPC. Build the environment on the cluster.
+
+\subsection{Namespace packages and \texttt{src.*}}
+
+If your repo uses a \texttt{src/} layout and you run:
+
+\begin{lstlisting}[style=shell]
+python -m src.something.entrypoint
+\end{lstlisting}
+
+make sure the repo root is on \texttt{PYTHONPATH}:
+
+\begin{lstlisting}[style=shell]
+export PYTHONPATH="$PWD:$PYTHONPATH"
+\end{lstlisting}
+
+Alternative: install the package in editable mode:
+
+\begin{lstlisting}[style=shell]
+uv pip install -e .
+# or
+python -m pip install -e .
+\end{lstlisting}
+
+\section{Monitoring, diagnosis, and error interpretation}
+
+\subsection{Check queue state before submitting}
+
+\begin{lstlisting}[style=shell]
+classstat hpc
+classstat gpuv100
+classstat gpua100
+\end{lstlisting}
+
+\subsection{Check node features and queue fit}
+
+\begin{lstlisting}[style=shell]
+nodestat hpc
+nodestat -F hpc
+nodestat -G gpua100
+\end{lstlisting}
+
+\subsection{See job state}
+
+\begin{lstlisting}[style=shell]
+bstat
+bstat <jobid>
+\end{lstlisting}
+
+\subsection{Estimate start time}
+
+\begin{lstlisting}[style=shell]
+showstart <jobid>
+\end{lstlisting}
+
+\subsection{Check efficiency and memory}
+
+\begin{lstlisting}[style=shell]
+bstat -C <jobid>
+bstat -M <jobid>
+\end{lstlisting}
+
+\subsection{Peek at live output}
+
+\begin{lstlisting}[style=shell]
+bpeek <jobid>
+\end{lstlisting}
+
+\subsection{Postmortem on finished/failed jobs}
+
+\begin{lstlisting}[style=shell]
+bhist -l <jobid>
+bacct <jobid>
+\end{lstlisting}
+
+\subsection{Stop jobs}
+
+\begin{lstlisting}[style=shell]
+bkill <jobid>
+bkill -s SIGTERM <jobid>
+bkill -s SIGKILL <jobid>
+\end{lstlisting}
+
+\subsection{Useful failure patterns}
+
+\subsubsection{Job stuck in \texttt{PEND}}
+
+Most common causes:
+\begin{itemize}[leftmargin=1.5em]
+  \item queue is full,
+  \item selector and queue mismatch,
+  \item over-requested walltime,
+  \item over-requested memory,
+  \item over-requested GPUs,
+  \item special queue access restriction.
+\end{itemize}
+
+Check:
+\begin{lstlisting}[style=shell]
+classstat <queue>
+showstart <jobid>
+nodestat -F <queue>
+\end{lstlisting}
+
+\subsubsection{Job goes to \texttt{EXIT}}
+
+Most common causes:
+\begin{itemize}[leftmargin=1.5em]
+  \item exceeded memory limit,
+  \item bad module path or missing environment,
+  \item import error due to wrong working directory / \texttt{PYTHONPATH},
+  \item bad output path,
+  \item disk/quota failure,
+  \item crashed application.
+\end{itemize}
+
+Check:
+\begin{lstlisting}[style=shell]
+bstat -M <jobid>
+bhist -l <jobid>
+bacct <jobid>
+\end{lstlisting}
+
+\subsubsection{\texttt{No module named ...}}
+
+Usual causes:
+\begin{itemize}[leftmargin=1.5em]
+  \item wrong working directory,
+  \item repo root not on \texttt{PYTHONPATH},
+  \item package not installed editable,
+  \item using a different Python than the one used to build the environment.
+\end{itemize}
+
+Minimal safe fix:
+\begin{lstlisting}[style=shell]
+cd "${LS_SUBCWD:-$PWD}"
+export PYTHONPATH="$PWD:$PYTHONPATH"
+\end{lstlisting}
+
+\subsubsection{SQLite / Optuna \texttt{disk I/O error}}
+
+This is common on HPC if:
+\begin{itemize}[leftmargin=1.5em]
+  \item your home quota is full,
+  \item the filesystem is under trouble,
+  \item the DB is on a bad path,
+  \item multiple jobs are writing to the same SQLite DB at once.
+\end{itemize}
+
+What to do:
+\begin{lstlisting}[style=shell]
+getquota_zhome.sh
+df -h .
+find . -name optuna.db
+sqlite3 /path/to/optuna.db "select max(number), count(*) from trials;"
+\end{lstlisting}
+
+Best practice:
+\begin{itemize}[leftmargin=1.5em]
+  \item use an absolute path for Optuna storage,
+  \item put heavy DB/checkpoint artifacts on scratch if quota is tight,
+  \item avoid concurrent writers to the same SQLite file,
+  \item enable regular application-level checkpointing.
+\end{itemize}
+
+\subsubsection{GitHub auth failure on clone/pull}
+
+If you see auth failures on HTTPS, do not enter your GitHub account password. Use a PAT or SSH key.
+
+\subsubsection{VS Code glibc/libstdc++ error}
+
+Pin VS Code to version 1.85 or stop using VS Code Remote on DTU HPC.
+
+\section{Practical AI / ML best practices on DTU HPC}
+
+\subsection{Environment setup}
+
+\begin{itemize}[leftmargin=1.5em]
+  \item create the environment once on an interactive node,
+  \item do not install packages in the job script,
+  \item keep caches off home when they get large,
+  \item avoid mixing conda and pip unless unavoidable.
+\end{itemize}
+
+\subsection{Data layout}
+
+\begin{itemize}[leftmargin=1.5em]
+  \item use a small number of large files rather than huge directories with countless tiny files,
+  \item do not dump millions of artifacts into a single folder,
+  \item store scratchable data outside backed-up home space when possible.
+\end{itemize}
+
+\subsection{GPU usage}
+
+\begin{itemize}[leftmargin=1.5em]
+  \item verify that the code actually uses the GPU before submitting long runs,
+  \item do not request multiple GPUs unless the code is multi-GPU aware,
+  \item request GPU exclusive mode,
+  \item align \texttt{torchrun} / distributed process counts with requested GPUs.
+\end{itemize}
+
+\subsection{CPU threads}
+
+Many Python libraries choose thread counts badly. Make the job explicit:
+
+\begin{lstlisting}[style=shell]
+export OMP_NUM_THREADS=4
+export MKL_NUM_THREADS=4
+export OPENBLAS_NUM_THREADS=4
+export NUMEXPR_NUM_THREADS=4
+\end{lstlisting}
+
+Set these coherently with \texttt{\#BSUB -n}.
+
+\subsection{Checkpointing}
+
+Long jobs should checkpoint.
+If the queue enforces a 24-hour walltime for GPU jobs, treat every job as preemptible from the application point of view.
+
+\subsection{Absolute paths for persistent state}
+
+For study DBs, checkpoints, and outputs that must survive job restarts, prefer stable absolute paths.
+
+Example:
+\begin{lstlisting}[style=shell]
+/work3/$USER/myproject/checkpoints/
+/work3/$USER/myproject/optuna/bo_final.db
+\end{lstlisting}
+
+\subsection{Unbuffered logs}
+
+Always set:
+
+\begin{lstlisting}[style=shell]
+export PYTHONUNBUFFERED=1
+\end{lstlisting}
+
+Otherwise debugging with \texttt{bpeek} is worse.
+
+\subsection{Smoke tests}
+
+Before submitting a 12--24 hour job, run:
+
+\begin{itemize}[leftmargin=1.5em]
+  \item 1 epoch,
+  \item 1 seed,
+  \item reduced dataset,
+  \item 5--10 minute walltime,
+  \item smallest acceptable GPU queue.
+\end{itemize}
+
+\section{Quick-reference command appendix}
+
+\subsection{Access}
+
+\begin{lstlisting}[style=shell]
+ssh <userid>@login1.hpc.dtu.dk
+linuxsh
+exit
+\end{lstlisting}
+
+\subsection{Modules}
+
+\begin{lstlisting}[style=shell]
+module avail
+module list
+module load python3/3.10.13
+module purge
+\end{lstlisting}
+
+\subsection{Environment}
+
+\begin{lstlisting}[style=shell]
+python3 -m venv .venv
+. .venv/bin/activate
+python3 -m pip install -U pip
+uv sync --frozen
+\end{lstlisting}
+
+\subsection{Git}
+
+\begin{lstlisting}[style=shell]
+git clone <url>
+git switch <branch>
+git fetch
+git reset --hard origin/<branch>
+git clean -fdx
+\end{lstlisting}
+
+\subsection{Submission and monitoring}
+
+\begin{lstlisting}[style=shell]
+mkdir -p logs
+bsub < submit.sh
+bstat
+bstat -M
+bpeek <jobid>
+bhist -l <jobid>
+bacct <jobid>
+bkill <jobid>
+\end{lstlisting}
+
+\subsection{Storage}
+
+\begin{lstlisting}[style=shell]
+getquota_zhome.sh
+getquota_work3.sh
+du -h --apparent --max-depth=1 .
+df -h .
+\end{lstlisting}
+
+\subsection{Transfer}
+
+\begin{lstlisting}[style=shell]
+scp file s123456@transfer.gbar.dtu.dk:
+rsync -avP localdir/ s123456@transfer.gbar.dtu.dk:remote-dir/
+\end{lstlisting}
+
+\section{Agent checklist before launching a long run}
+
+\begin{enumerate}[leftmargin=1.5em]
+  \item Am I on an interactive node or submitting to LSF rather than computing on login?
+  \item Does the repo root contain the intended code branch and files?
+  \item Does \texttt{python --version} match the environment I installed?
+  \item Does the script set \texttt{cd "\$\{LS\_SUBCWD:-\$PWD\}"}?
+  \item Does the script export \texttt{PYTHONPATH="\$PWD:\$PYTHONPATH"} if using \texttt{src.*} imports?
+  \item Did I create \texttt{logs/} before \texttt{bsub}?
+  \item Is the queue-selector combination valid?
+  \item Is the walltime realistic?
+  \item Is memory request realistic?
+  \item Are checkpoints and DBs written to stable paths?
+  \item Is quota sufficient?
+  \item Did I run a short smoke test?
+\end{enumerate}
+
+\section{Support and source list}
+
+\subsection{Support}
+
+\begin{itemize}[leftmargin=1.5em]
+  \item DTU HPC support: \texttt{support@hpc.dtu.dk}
+  \item Pages also list \texttt{support@cc.dtu.dk} in several places
+\end{itemize}
+
+\subsection{Primary DTU references}
+
+\begin{itemize}[leftmargin=1.5em]
+  \item \url{https://www.hpc.dtu.dk/?page_id=2534}
+  \item \url{https://www.hpc.dtu.dk/?page_id=2501}
+  \item \url{https://www.hpc.dtu.dk/?page_id=1416}
+  \item \url{https://www.hpc.dtu.dk/?page_id=1519}
+  \item \url{https://www.hpc.dtu.dk/?page_id=282}
+  \item \url{https://www.hpc.dtu.dk/?page_id=2008}
+  \item \url{https://www.hpc.dtu.dk/?page_id=3098}
+  \item \url{https://www.hpc.dtu.dk/?page_id=2759}
+  \item \url{https://www.hpc.dtu.dk/?page_id=2520}
+  \item \url{https://www.hpc.dtu.dk/?page_id=5685}
+  \item \url{https://www.hpc.dtu.dk/?page_id=4317}
+  \item \url{https://www.hpc.dtu.dk/?page_id=4377}
+  \item \url{https://www.hpc.dtu.dk/?page_id=927}
+  \item \url{https://www.hpc.dtu.dk/?page_id=5556}
+  \item \url{https://www.hpc.dtu.dk/?page_id=3678}
+  \item \url{https://www.hpc.dtu.dk/?page_id=3246}
+  \item \url{https://www.hpc.dtu.dk/?page_id=3270}
+  \item \url{https://www.hpc.dtu.dk/?page_id=4788}
+  \item \url{https://www.hpc.dtu.dk/?page_id=4800}
+  \item \url{https://www.hpc.dtu.dk/?page_id=4204}
+  \item \url{https://www.hpc.dtu.dk/?p=5112}
+\end{itemize}
+
+\subsection{GitHub references}
+
+\begin{itemize}[leftmargin=1.5em]
+  \item \url{https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/about-authentication-to-github}
+  \item \url{https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens}
+  \item \url{https://docs.github.com/en/authentication/connecting-to-github-with-ssh}
+  \item \url{https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent}
+  \item \url{https://docs.github.com/en/repositories/creating-and-managing-repositories/troubleshooting-cloning-errors}
+\end{itemize}
+
+\subsection{Final caution}
+
+DTU's site is extensive but not perfectly uniform; some pages are older than others, and hardware/software details evolve. When behavior matters more than documentation, trust in this order:
+
+\begin{enumerate}[leftmargin=1.5em]
+  \item current queue/node state from \texttt{classstat} / \texttt{nodestat},
+  \item current module availability from \texttt{module avail},
+  \item current filesystem/quota state from \texttt{getquota\_*.sh} and \texttt{df -h},
+  \item current job behavior from \texttt{bstat}, \texttt{bhist}, and \texttt{bacct},
+  \item then the static documentation.
+\end{enumerate}
+
+\end{document}

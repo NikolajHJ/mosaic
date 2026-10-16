@@ -1,0 +1,76 @@
+"""Package named Mosaic run directories on allocated HPC, preserving evidence."""
+
+import argparse
+import hashlib
+import io
+import json
+import os
+from pathlib import Path
+import subprocess
+import tarfile
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--run", type=Path, action="append", required=True)
+    parser.add_argument("--output", type=Path, required=True)
+    args = parser.parse_args()
+    if not os.environ.get("LSB_JOBID"):
+        raise RuntimeError("Evidence packaging requires allocated DTU HPC")
+    root = Path("/work3/s234818/mosaic/runs").resolve()
+    files = {}
+    for directory in args.run:
+        directory = directory.resolve()
+        if not directory.is_relative_to(root) or directory == root:
+            raise ValueError(
+                "Only explicitly named Mosaic run directories are supported"
+            )
+        for path in sorted(directory.rglob("*")):
+            if path.is_symlink():
+                raise ValueError("Symlink evidence is unsupported")
+            if path.is_file():
+                files[path.relative_to(root).as_posix()] = path
+    total = sum(path.stat().st_size for path in files.values())
+    receipt_dir = args.output.parent / (args.output.name + ".preflight")
+    subprocess.run(
+        [
+            str(Path("/work3/s234818/mosaic/envs/protenix-tiny/bin/python")),
+            str(Path(__file__).parent / "hpc/stage0_quota_preflight.py"),
+            "--run-dir",
+            str(receipt_dir),
+            "--storage-pool",
+            "6",
+            "--minimum-free-gib",
+            str(4 + (total * 1.01 + 1024**2) / 1024**3),
+        ],
+        check=True,
+    )
+    manifest = {"job_id": os.environ["LSB_JOBID"], "files": {}}
+    for name, path in files.items():
+        with path.open("rb") as reader:
+            digest = hashlib.file_digest(reader, "sha256").hexdigest()
+        manifest["files"][name] = {"bytes": path.stat().st_size, "sha256": digest}
+    data = (json.dumps(manifest, indent=2) + "\n").encode()
+    with args.output.open("xb") as output:
+        with tarfile.open(fileobj=output, mode="w:gz") as handle:
+            for name, path in files.items():
+                handle.add(path, arcname=name, recursive=False)
+            info = tarfile.TarInfo("evidence_manifest.json")
+            info.size = len(data)
+            handle.addfile(info, io.BytesIO(data))
+    with args.output.open("rb") as reader:
+        digest = hashlib.file_digest(reader, "sha256").hexdigest()
+    receipt = {
+        "path": str(args.output),
+        "bytes": args.output.stat().st_size,
+        "sha256": digest,
+        "files": len(files),
+    }
+    args.output.with_suffix(".receipt.json").write_text(
+        json.dumps(receipt, indent=2) + "\n"
+    )
+    print(json.dumps(receipt))
+
+
+if __name__ == "__main__":
+    main()
