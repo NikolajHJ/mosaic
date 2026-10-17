@@ -2190,3 +2190,45 @@ five current native IDs, report 29745504, canonical/plan/source pins and
 six-input verification requirements. It remains quiet on unchanged states
 and pauses on delivery or an actionable current native blocker. Final native
 outcomes, report download/verification and browser QA remain pending.
+
+## 2026-10-17 — first completed independent continuations
+
+User-requested scheduler/progress check, approximately 21:03 Europe/Paris:
+
+| Current native job | Observed outcome / progress |
+| --- | --- |
+| Chain 15%, 29745501 | LSF DONE; native passed, 5001 states through update 5000 |
+| Chain 30%, 29745502 | RUN; approximately 2520/5000 saved updates |
+| Chain 50%, 29745503 | PEND; no new worker/output |
+| Uniform, 29745473 | Saved LSF successful completion; native passed, 5001 states through update 5000 |
+| Noisy uniform, 29745474 | RUN; approximately 4754/5000 saved updates |
+
+Chain 15% ran on `n-62-18-5` from 20:15:50 to 20:21:10. Its independent
+primal loss changed from the original -0.3350009620 to -0.4594642818; the new
+job restored update 4998 and added the final two updates. Uniform ran on the
+same worker from 17:44:12 to 19:13:53, restoring update 3208 and finishing
+at 5000; original/final independent-primal losses are -0.1398562789 and
+-0.5648135543. Its late log includes expected best-primal fallback steps and
+small increases. Raw chemically invalid outputs remain preserved.
+
+Remote persisted summaries for both completed jobs report passed and match
+the expected frozen model before/after digest
+`8d6926d5390fe682e193089f790ce53aa4011a6d5509ddb452a55db3d89b0ab2`
+and context before/after digest
+`6747ba18833013da02dbf407d9faefb1adbc8314353b4882a34f99557b96d4f6`.
+Chain source index is [0]; both retain plan SHA
+`4837faf4a35e49927c8fe828b65dfb91ee871da9028ade9db27e6bfb9db1ade1`.
+Inputs/source/run directories are unchanged from the submission entries above.
+
+Uniform had aged out of `bjobs -a`; `bhist` execution was denied by the HPC
+installation, so its authenticated saved LSF stdout ("Successfully completed")
+and persisted native report establish this observed outcome. An initial
+remote metadata helper lacked LSF on PATH; rerunning it through a login shell
+resolved that engineering-only inspection issue. Neither issue changed a job.
+This check read saved JSON, file names and logs only, with no numerical work
+on the login node or locally. Full evidence download and per-file snapshot
+verification have not yet been performed for these new completed jobs.
+
+Combined report 29745504 remains PEND; all six trajectories are still required,
+including unchanged completed canonical 29736988. No report archive/HTML is
+claimed yet. The active monitor and all native jobs remain unchanged.

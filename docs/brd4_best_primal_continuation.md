@@ -179,3 +179,20 @@ The active hourly monitor follows these IDs and retains completed canonical
 29736988. Native outcomes and final report delivery remain pending.
 Exact submission operators and local authenticated readiness/scheduler
 receipts are recorded in the experiment ledger.
+
+## Progress check — 2026-10-17, approximately 21:03 Europe/Paris
+
+Chain 15% **29745501** completed successfully: persisted native status passed,
+5001 saved states through update 5000, source index 0, final independent-primal
+loss -0.4594642818. Uniform **29745473** also completed successfully: passed,
+5001 saved states through update 5000, final independent-primal loss
+-0.5648135543. Both persisted summaries retain the expected identical
+before/after frozen model and context digests. LSF completion records confirm
+successful execution; the uniform job has aged out of `bjobs`, so its saved
+LSF stdout completion record was used. Full evidence download and snapshot
+integrity verification remain part of final report delivery.
+
+Chain 30% **29745502** is RUN, approximately 2520/5000 saved updates; noisy
+uniform **29745474** is RUN, approximately 4754/5000. Chain 50% **29745503**
+is PEND and report **29745504** is PEND awaiting its inputs. These live counts
+are snapshots, not completed-case certificates. No experiments were changed.
