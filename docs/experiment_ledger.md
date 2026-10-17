@@ -1814,3 +1814,140 @@ It now checks current native/report IDs, downloads/verifies report-02,
 checks four source studies and six 5001-state six-slot cases, and ignores the
 intentional superseded report cancellation. Browser QA and delivery remain
 future work after actual completion; failed native gates are not waived.
+
+
+## 2026-10-16 15:52 Europe/Paris — report follow-up authentication unavailable
+
+Scheduled combined-report heartbeat made one compact SSH scheduler query for
+native jobs 29736629/29736735/29736761/29736988 and report 29736989. The server
+returned `Permission denied (password)` before a scheduler result. No job
+state, accepted update, native failure, report completion or download can be
+inferred. No jobs/files were modified on HPC and no retry was made in this
+follow-up. Local receipt:
+`results/hpc/20261016-brd4-combined-report/heartbeat-20261016T135224Z.json`.
+The existing hourly follow-up remains active for a later connection attempt;
+repeat alerts for the same unchanged authentication outage are suppressed.
+This is an access failure, not a failed scientific experiment. Documentation
+push is deferred until subsequent report work; no completed report is claimed.
+
+
+## User-requested status retry — 2026-10-16T14:15:11.456899+00:00
+
+One SSH attempt reached the DTU banner, then timed out on port 22 before returning any scheduler status. Native jobs 29736629/29736735/29736761/29736988 and combined report 29736989 remain unverified at this check. No HPC job was altered and no report was downloaded or completion inferred. Local receipt: `results/hpc/20261016-brd4-combined-report/connection-20261016T141511Z.json`. Existing hourly completion follow-up remains active; no repeated connection attempts were made in this turn.
+
+
+## 2026-10-17 00:40 Europe/Paris — SSH restored; native runs still queued
+
+After the user corrected VPN routing, the compact scheduler query succeeded.
+All four native jobs 29736629/29736735/29736761/29736988 and combined report
+29736989 were PEND. None had an execution host assigned. No model jobs or
+report settings were changed and no completed trajectory/report was inferred.
+No report was available to download. Local receipt:
+`results/hpc/20261016-brd4-combined-report/connection-20261016T224007Z.json`.
+The existing hourly completion follow-up remains active.
+
+
+## 2026-10-17 00:41 Europe/Paris — requested GPU/resource submission audit
+
+Read-only LSF audit confirms all four native jobs request one exclusive-process
+GPU in real queue gpua10, four colocated CPU slots, 8GB per slot/32GB total host
+memory and a 960-minute walltime. Queue maximum is 1440 minutes. Host group
+ra10 -> ra10e1 -> n-62-18-5 exists, with two NVIDIA A10 GPUs, 32 CPU slots,
+1007G configured host memory and host status ok. The same A10 supported the
+previous passed native pilot. No impossible GPU/model/mode/slot/memory/walltime
+request was identified in these submissions.
+
+All four native pending reasons explicitly say **The queue is inactivated by
+the administrator**. gpua10 reports **Open:Inact_Adm**, zero running slots;
+gpua100/gpul40s/gpua40/gpuv100 and hpc also report Open:Inact. This is an
+administrator dispatch pause across the inspected queues, not evidence of an
+invalid request or an ordinary resource-contention-only wait. No reopening
+ETA was provided by these scheduler queries. Combined report 29736989 is
+correctly waiting for its native dependencies. Historical completed readiness
+IDs have aged out of current bjobs lookup; their previous DONE/pass receipts
+remain preserved and this does not establish a new failed check.
+
+No job settings, queue, dependency or source were modified. Preserve all four
+GPU studies and reports and wait for administrator reactivation. Local audit:
+`results/hpc/20261016-brd4-combined-report/resource-audit-20261016T224134Z.json`.
+This is scheduler/resource metadata only, not numerical model validation or
+completed optimization evidence.
+
+
+## 2026-10-17 12:44 Europe/Paris — BRD4 native outcomes; combined report blocked
+
+The user requested another connection/status/download attempt. SSH succeeded.
+The first compact scheduler view was stale around job termination; a detailed
+read authenticated canonical job **29736988 DONE**, A10 `n-62-18-5`,
+11:01:10–12:42:08, and combined job **29736989 EXIT, code 1**, CPU
+`n-62-31-15`, 12:42:09–12:42:14. The earlier three native IDs had aged out of
+current `bjobs`; `bhist` execution is denied by the cluster, so their persisted
+LSF completion footers and failed native summary/case reports were inspected
+instead. Do not infer successful completion from an absent active-job entry.
+
+| Native job / study | Saved accepted endpoint | Saved states | LSF/native outcome |
+| --- | ---: | ---: | --- |
+| 29736629 / chain mixtures | 4998 of 5000, 15% case | 4999 | EXIT 1 / failed; 30% and 50% cases not reached |
+| 29736735 / uniform | 3208 of 5000 | 3209 | EXIT 1 / failed |
+| 29736761 / half uniform plus projected noise | 3818 of 5000 | 3819 | EXIT 1 / failed |
+| 29736988 / section 4.2 canonical diffuse | 5000 of 5000 | 5001 | DONE / passed |
+
+Every study retains N=6 and its previously sealed initialization/configuration.
+The first three native errors are exactly
+`AssertionError: No measured loss-decreasing projected step`. Both autodiff
+and standalone primal decrease must exceed 1e-7 within ten halving trials.
+Failure of that requirement is retained as a failed/partial outcome, not
+convergence, permission to relax thresholds or a full-budget certificate.
+No final frozen-model/context digest check was completed for those failed
+studies. Their two unreached chain cases must remain visible in any future
+partial-outcome presentation. Raw invalid graphs remain saved; invalid
+chemistry is not the reported exception and was not filtered or repaired.
+
+Canonical saved autodiff loss is `-0.15956248342990875` initially and
+`-0.5622491240501404` at update 5000. Its initial/final model digest matches
+`8d6926d5390fe682e193089f790ce53aa4011a6d5509ddb452a55db3d89b0ab2`;
+initial/final context matches
+`6747ba18833013da02dbf407d9faefb1adbc8314353b4882a34f99557b96d4f6`.
+All four initial context/model identities match the preserved pilot. Native
+summaries retain fixture, model assets, immutable per-file source maps and
+config hashes. Execution/config SHA-256 pairs are:
+
+| Native job | Execution content SHA-256 | Configuration SHA-256 |
+| --- | --- | --- |
+| 29736629 | `562a83c38c4de54e953262ccf7f0edea6fa313faf72cc4ae3ac63d0ef203589d` | `e893ad0416894409cfef7a3fb6ae61f17b53ae141858c3f519f7c5954f542e09` |
+| 29736735 | `969cc5f20c1f74156f3f793c2529942397adeea92082aeb56fdff592d4658a1e` | `898d4bda519ebe53ce40881a5bf0ff66c53f81788ab1679111f990a201161836` |
+| 29736761 | `65652b971351d5f75ec3349b8a98513de2a7b25dde514f612bdafa655c60409d` | `c74107f4720b148ac3b19968fa32bd5dd4f093824cae5527345ec24c93625c71` |
+| 29736988 | `60ef9132b73499d3736b49166d4148f078c7020eb762051ac378c12f9a2bfec1` | `49e01e601f77e21770d19b4a40df365315e4521318245d14ccec6e7cdbe6e359` |
+
+Combined report 29736989 authenticated its 271-file immutable source and
+passed its 8 GiB home-space check (22 GiB conservatively available), then
+correctly stopped at `ValueError: Render completed authenticated trajectories
+only`. The failed native inputs prevent a complete comparison. Neither
+`20261016-brd4-combined-report-02.tar.gz` nor its receipt exists. This is not
+a report-only engineering failure; no rendering retry, native rerun, threshold
+change, study omission or replacement artifact was submitted. Existing
+individual report jobs and all native artifacts remain unchanged.
+
+Downloaded status evidence:
+`results/hpc/20261016-brd4-combined-report/status-20261017T104405Z/`.
+Initial transfer: 19 stdout/stderr/native/render-log/summary files,
+17,963,200 bytes. `remote-metadata.json` SHA-256:
+`ea613d9a41aa405a81ff053baf7111baefaad188ecfda464e5f73cb0df48c4ab`.
+`verification.json` records matching file sizes and SHA-256 values over the
+authenticated SSH/SFTP transfer. Failed per-case reports are retained alongside
+the study summaries: three further files, 33,296,867 bytes, all SHA-256/size
+verified in `case-reports-verification.json` against
+`case-reports-metadata.json`. Total downloaded evidence is **22 files,
+51,260,067 bytes**. Each failed per-case report retains its saved state prefix
+and all ten rejected final trials; its failed status is not replaced by the
+last accepted endpoint. The original full
+snapshot/trial directories remain on HPC. All local inspection/verification
+used Python 3.13 standard-library JSON, subprocess, filesystem and hashing
+operations; no model, chemistry evaluation, numerical test or rendering ran
+locally. No complete report exists to open or browser-verify.
+
+Paused existing heartbeat `finish-combined-brd4-trajectory-report` via the app
+automation tool after confirming native failure, preserving its prompt/name/
+schedule. The complete-report objective remains blocked by the failed native
+studies; pausing is not delivery or successful comparison. Protocol status
+documentation was updated without changing scientific code or sealed releases.

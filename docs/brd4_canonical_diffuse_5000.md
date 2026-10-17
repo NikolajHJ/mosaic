@@ -147,3 +147,28 @@ It now checks current native/report IDs, downloads/verifies report-02,
 checks four source studies and six 5001-state six-slot cases, and ignores the
 intentional superseded report cancellation. Browser QA and delivery remain
 future work after actual completion; failed native gates are not waived.
+
+## Native outcome — 2026-10-17
+
+User-requested SSH inspection authenticated **29736988 DONE** on A10
+`n-62-18-5`, 11:01:10–12:42:08 Europe/Paris. The saved native summary is
+**passed**, with all **5000 accepted updates**, **5001 saved states** and
+unchanged **six atom slots**. Saved autodiff loss changes from
+`-0.15956248342990875` to `-0.5622491240501404`. This is the declared native
+contact objective, not affinity or evidence of chemical validity/binding.
+
+The initial/final model digest is
+`8d6926d5390fe682e193089f790ce53aa4011a6d5509ddb452a55db3d89b0ab2`;
+the initial/final context digest is
+`6747ba18833013da02dbf407d9faefb1adbc8314353b4882a34f99557b96d4f6`.
+Configuration remains
+`49e01e601f77e21770d19b4a40df365315e4521318245d14ccec6e7cdbe6e359`.
+No recipe, atom-count, model or acceptance setting was changed.
+
+The other three native jobs failed descent acceptance before completing their
+requested budgets, so combined report **29736989 EXIT** at its completeness
+gate. No full comparison/report archive is available. See
+[the combined outcome record](brd4_combined_report.md) and experiment ledger.
+Local downloaded status evidence:
+`results/hpc/20261016-brd4-combined-report/status-20261017T104405Z/`.
+This outcome was read from saved HPC artifacts; no local numerical work ran.

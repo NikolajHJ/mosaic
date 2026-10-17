@@ -127,3 +127,39 @@ The existing hourly follow-up now downloads/verifies report-02 and checks
 four input studies, six cases, 5001 states each and fixed N=6. All current
 GPU runs and the replacement report remain pending; no final report exists
 yet. The earlier source/job receipts above are retained without alteration.
+
+## Authenticated outcomes — 2026-10-17
+
+SSH access was restored for the user-requested check at 12:42 Europe/Paris.
+The four GPU allocations have ended. Saved LSF completion records and native
+reports establish the following outcomes; the earlier pending snapshots above
+are historical.
+
+| Study / native job | Accepted updates | Outcome |
+| --- | ---: | --- |
+| Chain mixtures / 29736629 | 4998 of 5000 for the 15% case | Failed descent acceptance; the 30% and 50% cases were not reached |
+| Uniform / 29736735 | 3208 of 5000 | Failed descent acceptance |
+| Half uniform plus projected noise / 29736761 | 3818 of 5000 | Failed descent acceptance |
+| Section 4.2 canonical diffuse / 29736988 | 5000 of 5000 | Native report passed; 5001 saved states, six atom slots |
+
+The three failed runs record `AssertionError: No measured loss-decreasing
+projected step`. The existing acceptance rule requires both autodiff and
+independent primal loss to decrease by more than 1e-7 within ten halving
+backtracks. Exhausting this rule is a failed run under the sealed protocol,
+not a completed 5000-update study or a convergence certificate. Invalid raw
+graphs are retained; chemical invalidity was not the stopping condition.
+
+Combined report job **29736989 EXIT, code 1**, at 12:42:14. Its input gate
+correctly rejected the failed studies with `Render completed authenticated
+trajectories only`. This is a downstream native-completeness blocker, not a
+report-only engineering defect. No combined HTML, archive or receipt was
+produced, and no successful six-case comparison can be delivered. Do not omit
+the failed/unreached cases or weaken the native gate to create one.
+
+Downloaded and byte-verified status evidence is under
+`results/hpc/20261016-brd4-combined-report/status-20261017T104405Z/`.
+Full raw snapshots and trial evidence remain in the original HPC run
+directories. The canonical study's final model/context digests match their
+initial identities; the failed studies have no completed final digest check.
+No model job or individual report job was changed or resubmitted. The hourly
+completion heartbeat was **paused** on this native failure, as instructed.
