@@ -201,3 +201,11 @@ At the subsequent approximately 21:38 Europe/Paris check, noisy uniform
 **29745474** is DONE with native status passed and 5001 saved states. Chain
 30% is RUN at approximately 4418/5000; chain 50% and the report remain PEND.
 The ledger records provisional runtime estimates separately from outcomes.
+
+At approximately 23:00 Europe/Paris, chain 30% **29745502** is confirmed
+complete: saved LSF successful completion at 21:49:27, native status passed,
+5001 states through update 5000, source index [1], expected frozen before/after
+identities. Chain 50% **29745503** is still PEND with scheduler reason
+`Job slot limit reached: 1 host`; report **29745504** is still PEND. The 50%
+case is the only unfinished native trajectory; no complete combined report
+exists yet. All job settings remain unchanged.

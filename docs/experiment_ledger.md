@@ -2253,3 +2253,25 @@ based on the current fresh chain run and possible extra backtracking; this is
 not a benchmark of the unstarted case. Report **29745504** remains PEND and
 cannot finish before this last native input completes and passes. No job,
 native policy, source or resource request was changed during this check.
+
+## 2026-10-17 — chain 30% completion authenticated
+
+User-requested check at 21:00 UTC / 23:00 Europe/Paris: chain 30%
+**29745502** has completed. It aged out of `bjobs -a`, so its authenticated
+saved LSF stdout was inspected: successfully completed on `n-62-18-5`,
+20:21:12–21:49:27 Europe/Paris (5295 seconds). Persisted native status is
+passed, one passed case, 5001 states, final step 5000, source case indices [1].
+Initial/final independent-primal losses are -0.3623839021 / -0.4677774906.
+Before/after model and context digests equal the pinned identities above;
+plan SHA remains
+`4837faf4a35e49927c8fe828b65dfb91ee871da9028ade9db27e6bfb9db1ade1`.
+Source remains parallel-01 and run directory remains
+`/zhome/95/e/206121/mosaic-runs/20261017-brd4-chain30-best-primal-01`.
+Full snapshot/archive byte verification remains pending final report delivery.
+
+Chain 50% **29745503** remains PEND, with explicit scheduler reason
+`Job slot limit reached: 1 host`. Its readiness dependency is unchanged and
+passed; no allocation or numerical output is claimed. Combined report
+**29745504** remains PEND. This is the only unfinished native case among
+the six required trajectories. No job or source was changed, no numerical
+tests were run, and no combined HTML/archive was downloaded or opened.
