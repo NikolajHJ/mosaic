@@ -19,7 +19,12 @@ from pathlib import Path
 CASE_COLORS = ("#087f8c", "#dc7139", "#7257b4", "#a77800", "#b84b70", "#2a6496")
 
 
-def _load_studies(paths, *, allow_initialization_comparison=False):
+def _load_studies(
+    paths,
+    *,
+    allow_initialization_comparison=False,
+    allow_optimization_policy_comparison=False,
+):
     """Compare declared starts while requiring every other experiment input.
 
     Initialization replacement is an explicit display policy, never permission
@@ -69,6 +74,11 @@ def _load_studies(paths, *, allow_initialization_comparison=False):
             if allow_initialization_comparison:
                 left.pop("initialization", None)
                 right.pop("initialization", None)
+            if allow_optimization_policy_comparison:
+                for config in (left, right):
+                    policy = config["checks"].pop("acceptance_policy", "strict")
+                    if policy not in ("strict", "best_primal"):
+                        raise ValueError("Unsupported optimization policy")
             if left != right:
                 raise ValueError(
                     "Combined study configurations changed an unapproved field"
@@ -77,6 +87,11 @@ def _load_studies(paths, *, allow_initialization_comparison=False):
         directories.extend(path / f"case-{i}" for i in range(len(study["cases"])))
         receipts.append(
             {
+                "continuation_plan_sha256": study.get("continuation_plan_sha256"),
+                "parent_job_id": study.get("parent_job_id"),
+                "acceptance_policy": study["config"]["checks"].get(
+                    "acceptance_policy", "strict"
+                ),
                 "summary_path": str(source.resolve()),
                 "summary_sha256": hashlib.sha256(source.read_bytes()).hexdigest(),
                 "job_id": study["job_id"],
@@ -119,6 +134,7 @@ def main(argv=None):
     parser.add_argument("--study", type=Path, required=True, action="append")
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--allow-initialization-comparison", action="store_true")
+    parser.add_argument("--allow-optimization-policy-comparison", action="store_true")
     args = parser.parse_args(argv)
     if not os.environ.get("LSB_JOBID"):
         raise RuntimeError("Trajectory analysis requires an allocated DTU job")
@@ -150,7 +166,9 @@ def main(argv=None):
         }
     )
     study, case_directories, input_studies = _load_studies(
-        args.study, allow_initialization_comparison=args.allow_initialization_comparison
+        args.study,
+        allow_initialization_comparison=args.allow_initialization_comparison,
+        allow_optimization_policy_comparison=args.allow_optimization_policy_comparison,
     )
     source = args.study[0] / "summary.json"
     root = Path(__file__).resolve().parents[1]
@@ -287,6 +305,18 @@ def main(argv=None):
                     "loss": state["primal_loss"],
                     "autodiff_loss": state["autodiff_loss"],
                     "readout": state["readout"],
+                    "acceptance": {
+                        key: case.get("updates", [{}] * len(states))[
+                            state["step"] - 1
+                        ].get(key)
+                        for key in (
+                            "fallback_used",
+                            "primal_increased",
+                            "accepted_step_size",
+                        )
+                    }
+                    if state["step"] and case.get("updates")
+                    else None,
                 }
             )
         label = case.get("label") or f"{case['mixing']:.0%} uniform mixture"
@@ -295,6 +325,11 @@ def main(argv=None):
         color = CASE_COLORS[case_index % len(CASE_COLORS)]
         ax_loss[0].plot(t, values, label=label, color=color)
         ax_loss[1].plot(t, values - values[0], label=label, color=color)
+        if case.get("continuation"):
+            boundary = case["continuation"]["resumed_from_step"]
+            for ax in ax_loss:
+                ax.axvline(boundary, color=color, linestyle=":", alpha=0.55)
+
         axes_change[0, 0].plot(t, atom_tv, label=label, color=color)
         axes_change[0, 1].plot(t, edge_l1, label=label, color=color)
         axes_change[1, 0].plot(t, atom_changes, label=label + " atoms", color=color)
@@ -379,6 +414,11 @@ def main(argv=None):
                 "mixing": case["mixing"],
                 "initialization": case.get("initialization"),
                 "source_job_id": case["source_job_id"],
+                "policy_segments": case.get(
+                    "policy_segments",
+                    [{"first_update": 1, "last_update": expected, "policy": "strict"}],
+                ),
+                "continuation": case.get("continuation"),
                 "states": drawings,
                 "selected_steps": selected,
             }
@@ -389,6 +429,11 @@ def main(argv=None):
                 "label": label,
                 "initialization": case.get("initialization"),
                 "source_job_id": case["source_job_id"],
+                "policy_segments": case.get(
+                    "policy_segments",
+                    [{"first_update": 1, "last_update": expected, "policy": "strict"}],
+                ),
+                "continuation": case.get("continuation"),
                 "updates": len(t) - 1,
                 "initial_loss": float(values[0]),
                 "final_loss": float(values[-1]),

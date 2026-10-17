@@ -70,6 +70,7 @@ def main():
         "docs/brd4_noisy_uniform_5000.md",
         "docs/brd4_combined_report.md",
         "docs/brd4_canonical_diffuse_5000.md",
+        "docs/brd4_best_primal_continuation.md",
     ):
         path = root / name
         if path.is_file():

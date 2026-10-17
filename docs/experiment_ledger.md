@@ -1951,3 +1951,147 @@ automation tool after confirming native failure, preserving its prompt/name/
 schedule. The complete-report objective remains blocked by the failed native
 studies; pausing is not delivery or successful comparison. Protocol status
 documentation was updated without changing scientific code or sealed releases.
+
+
+## 2026-10-17 — authorized best-primal continuation, first CPU readiness
+
+The user explicitly authorized changing the exhausted-search behavior: after
+ten halving trials fail the original dual-loss threshold, take the candidate
+with lowest independently evaluated primal loss, including a loss increase.
+Resume saved molecules where possible and target 5000 total graph updates per
+case. No pretrained model is trained. Canonical 29736988 already reached 5000
+and is reused unchanged; chain 30%/50% will start fresh. The exact decisions,
+resume tolerances, native evidence inheritance and report policy are recorded
+in `docs/brd4_best_primal_continuation.md`. Historical failures are preserved.
+
+Implemented separate update-selection and authenticated-prefix continuation
+modules, a continuation runner, CPU plan builder, allocated launchers and report
+policy/lineage display. Nonfinite/native-output checks remain mandatory. The
+original strict default and historical sealed releases remain unchanged.
+Local validation was static Ruff/AST/Node syntax inspection and packaging
+only; all numerical tests were submitted to allocated DTU HPC.
+
+Immutable source 01: 283 files, archive 39,017,028 bytes,
+SHA-256 `28606ac1ad01bb6332aa05b7ce50100d4e943c5b041b2ef048c2c6c49b5dbf69`,
+manifest `c47d520f8cf0f7b41c86ced392baaa0a05236a401eeb334026e740fed389396e`.
+Git reference da8aa8c055d3adeb0d8cc70d484a2e9a9707a42c plus manifested current
+bytes. Local `results/releases/brd4-best-primal-20261017-01/`; remote
+`/work3/s234818/mosaic/releases/20261017-brd4-best-primal-01/source`.
+Uploaded archive SHA, 283-file verifier and all three Bash syntax checks passed.
+Exact operator:
+`scripts/hpc/receipts/20261017-brd4-best-primal/submit-readiness-01.sh`.
+
+CPU readiness **29745455 EXIT 1**, hpc two slots/4GB per slot, 15-minute bound,
+worker `n-62-11-50`, run
+`/zhome/95/e/206121/mosaic-runs/20261017-brd4-best-primal-readiness-01`.
+The 20 GiB early quota gate passed. Selected suite: **195 passed, one failed,
+three native items deselected, two existing dtype warnings, 65.42s**.
+The sole failure compared a restored JSON prefix (pair lists) to the
+pre-serialization Python fixture (pair tuples). Its graph replay and appended
+updates executed successfully; the assertion stopped before the uninterrupted
+comparison. The corrected test compares the exact persisted JSON metadata;
+it retains graph-byte equality and the resumed-versus-uninterrupted endpoint
+assertion. No native GPU continuation was submitted from this failed readiness,
+and parent-plan generation did not run. Retain this failed source/job evidence.
+
+The next release also copies its complete authenticated continuation plan into
+each new study and exposes per-state fallback/loss-increase labels in the
+report. These are new engineering bytes requiring a new allocated CPU pass.
+
+Source 02 was sealed locally (284 files; archive SHA
+`bd1f23af24031a46981fe877e0817c00807eea404945465ad8cd3207dffc49af`)
+and never uploaded/submitted. Static review then added explicit actual runtime
+precision/x64/XLA-profile authentication against the parent, so execution uses
+new **source 03**: 284 files, 39,018,163-byte archive,
+SHA `fedfc43426cc40361fcdd9fa36eca10834f314bb4475341e22cd3dd1083e099e`,
+manifest `cb3f850acd5f0810bf6eb318869dc33f5657eb6c22f3f0c37e9c95327c424903`.
+Same Git reference da8aa8c plus manifested current bytes. Local
+`results/releases/brd4-best-primal-20261017-03/`; remote immutable
+`/work3/s234818/mosaic/releases/20261017-brd4-best-primal-03/source`.
+Uploaded archive SHA, 284-file verifier and all Bash syntax checks passed.
+CPU readiness **29745459 submitted**, hpc two slots/4GB per slot, 15 minutes,
+run `/zhome/95/e/206121/mosaic-runs/20261017-brd4-best-primal-readiness-02`.
+Exact operator `scripts/hpc/receipts/20261017-brd4-best-primal/submit-readiness-02.sh`.
+Its required tests, source/parent/prefix/configuration checks and 20 GiB quota
+assessment must actually pass before any new native job is submitted.
+
+CPU **29745459 EXIT 1**, worker `n-62-11-50`: **196 passed, three deselected,
+two existing warnings, 65.10s**. The subsequent parent-plan check rejected
+`context_files` equality with the pilot. Inspection established that all four
+long studies share one stored context container identity, while the pilot's
+equivalent archive uses different internal array numbers. Only `base_features`
+and `native_features` JSON array references differed: the original encoder
+labels arrays in insertion order; decoding sorted JSON and re-saving renumbers
+them. The recorded numerical context digest already matched for all studies.
+No GPU was submitted from this failed plan gate. Seven local downloaded
+readiness files were SHA-256/size verified under
+`results/hpc/20261017-brd4-best-primal/readiness-02/`; source/job evidence remains.
+
+Source 04 corrects this identity comparison without accepting changed inputs:
+each pilot/parent/canonical container must first match its own pinned file
+hashes; decoded JAX tree structure/static metadata, every feature value and
+dtype must then match exactly. The same decoded-context check runs at GPU
+entry in addition to the original frozen digest/model checks. Two added CPU
+regressions cover re-serialization and rejected array/static-metadata changes.
+Archive: 286 files, 39,018,334 bytes,
+SHA `8377d9dc2f5996c2e81e4ef1fd24519e034905a9a7a299cd5e452e9bc326d8c7`,
+manifest `ec278a14e0847939f667dc2a1965f735da627684b3e7f38e0e59e624473e9873`.
+Local `results/releases/brd4-best-primal-20261017-04/`; remote
+`/work3/s234818/mosaic/releases/20261017-brd4-best-primal-04/source`.
+The previous source/plan-gate failure remains preserved rather than overwritten.
+
+Uploaded source 04 SHA and 286-file verifier/Bash syntax checks passed.
+CPU readiness **29745466 DONE**, `n-62-11-50`: **198 passed, three native
+items deselected, two existing dtype warnings, 65.27s**. Parent/source/decoded
+context/strict-prefix gates passed; plan SHA
+`4837faf4a35e49927c8fe828b65dfb91ee871da9028ade9db27e6bfb9db1ade1`.
+Pins 12,075 case files (12,027 snapshots plus report/RNG/probe evidence).
+The 20 GiB aggregate home gate passed with 22 GiB conservatively available.
+Each native entry rechecks 8 GiB free space. Downloaded and byte-verified nine
+readiness files, including unit XML/log, final scheduler receipt, plan and
+quota receipts, under `results/hpc/20261017-brd4-best-primal/readiness-03/`.
+Failed readiness-01/-02 artifacts remain separately preserved. No local
+numerical validation was run; local post-download checks were stdlib hashes
+and saved JSON/scheduler metadata inspection.
+
+After authenticating readiness DONE and the plan hash, submitted at 13:10
+Europe/Paris:
+
+| Study | New native job | Run directory under `/zhome/95/e/206121/mosaic-runs/` |
+| --- | --- | --- |
+| Chain, 15% resume 4998; 30%/50% fresh | **29745472** | `20261017-brd4-chain-best-primal-01` |
+| Uniform resume 3208 | **29745473** | `20261017-brd4-uniform-best-primal-01` |
+| Noisy uniform resume 3818 | **29745474** | `20261017-brd4-noisy-best-primal-01` |
+
+Each uses immutable source 04 and the pinned plan, dependency
+`done(29745466)`, gpua10 one exclusive-process A10, four colocated CPU slots,
+8GB per slot/32GB total host RAM and 16-hour walltime. Baseline LR=0.03,
+ten halving trials and 5000 TOTAL updates per case. Only the authorized
+fallback rule changes; finite/native/entry-replay/frozen identity gates remain.
+Every native job was PEND in the authenticated post-submission receipt.
+New numerical/native replay and completion outcomes remain pending.
+
+Combined report/evidence **29745475 submitted**, hpc two CPU slots/4GB per
+slot (8GB total), three-hour bound. Dependency:
+`done(29745466) && ended(29745472) && ended(29745473) && ended(29745474)`.
+Run `20261017-brd4-best-primal-report-01`, output `payload/report/`, archive
+`/zhome/95/e/206121/mosaic-runs/20261017-brd4-best-primal-report-01.tar.gz`;
+receipt `.tar.receipt.json`. Requires the three complete passed exploratory
+studies and unchanged canonical 29736988, retaining six 5001-state cases,
+explicit mixed policy segments, dotted resume boundaries and raw invalid
+graphs. Archives the three failed original parents as well as all new runs
+and the canonical study. Does not claim the failed parents completed their
+old strict budgets. Report was PEND; no rendered/downloaded report is claimed.
+
+Exact successful operator:
+`scripts/hpc/receipts/20261017-brd4-best-primal/submit-native-and-report-02.sh`;
+the earlier native operator 01 targeted failed readiness and was never run.
+Local detailed scheduler resource/dependency receipt:
+`results/hpc/20261017-brd4-best-primal/submitted-jobs.txt`.
+The existing hourly heartbeat `finish-combined-brd4-trajectory-report` was
+updated/reactivated, preserving its schedule/name/target and using the new
+native/report IDs, canonical/plan pins and permissive acceptance semantics.
+It remains quiet on unchanged/non-actionable states, verifies actual final
+outcomes/artifacts, and pauses after delivery or a current native blocker.
+No historical native or individual-report job was modified, cancelled or
+replaced. Final report delivery remains outstanding.

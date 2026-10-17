@@ -13,7 +13,7 @@ import jax
 import numpy as np
 
 from .io import hard_readout, save_graph, write_json
-from .optimizers import evaluate_graph, projected_step
+from .optimizers import evaluate_graph
 from .state import bond_existence, graph_diagnostics, validate_graph
 
 
@@ -126,6 +126,7 @@ def check_graph_gradients(
     record_readouts=False,
     primal_every_step=False,
     artifact_policy="full",
+    acceptance_policy="strict",
 ):
     """Require separate atom/bond FD agreement and measured projected descent.
 
@@ -148,6 +149,10 @@ def check_graph_gradients(
         if type(record_readouts) is not bool or type(primal_every_step) is not bool:
             raise ValueError("Readout and primal-step options must be boolean")
         report.update(
+            acceptance_policy=acceptance_policy,
+            policy_segments=[
+                {"first_update": 1, "last_update": steps, "policy": acceptance_policy}
+            ],
             requested_updates=steps,
             record_readouts=record_readouts,
             primal_every_step=primal_every_step,
@@ -368,94 +373,33 @@ def check_graph_gradients(
         if order_scalar_error > 2e-5:
             raise AssertionError("Bond-order null perturbation changed scalar loss")
 
-        for step in range(steps):
-            attempts = []
-            record = {
-                "step": step,
-                "before": float(evaluation.value),
-                "attempts": attempts,
-            }
-            report["updates"].append(record)
-            for backtrack in range(max_backtracks):
-                rate = initial_step_size * 0.5**backtrack
-                proposal = projected_step(evaluation, eta_X=rate, eta_E=rate)
-                candidate = evaluate_graph(loss, proposal.next_graph, key)
-                _save_evaluation(
-                    directory / f"step-{step}-trial-{backtrack}.npz",
-                    candidate,
-                    compact=compact,
-                    logits=not compact,
-                )
-                after = float(candidate.value)
-                candidate_primal = None
-                if primal_every_step:
-                    candidate_primal = _value(
-                        loss,
-                        candidate.graph,
-                        key,
-                        directory / f"primal-step-{step}-trial-{backtrack}.npz",
-                        compact=compact,
-                        logits=not compact,
-                    )
-                attempts.append(
-                    {
-                        "step_size": rate,
-                        "loss": after,
-                        "projection_residuals": proposal.projection_residuals,
-                        "primal_loss": candidate_primal,
-                    }
-                )
-                if after < float(evaluation.value) - 1e-7 and (
-                    not primal_every_step or candidate_primal < current_primal - 1e-7
-                ):
-                    record.update(
-                        after=after,
-                        accepted_step_size=rate,
-                        delta_X=float(
-                            np.linalg.norm(
-                                np.asarray(candidate.graph.X - evaluation.graph.X)
-                            )
-                        ),
-                        delta_E_upper=float(
-                            np.linalg.norm(
-                                np.asarray(
-                                    candidate.graph.E_upper - evaluation.graph.E_upper
-                                )
-                            )
-                        ),
-                    )
-                    evaluation = candidate
-                    if primal_every_step:
-                        current_primal = candidate_primal
-                    elif record_readouts:
-                        current_primal = _value(
-                            loss,
-                            candidate.graph,
-                            key,
-                            directory / f"primal-step-{step}-accepted.npz",
-                            compact=compact,
-                            logits=not compact,
-                        )
-                    if record_readouts:
-                        report["states"].append(
-                            _snapshot(directory, step + 1, evaluation, current_primal)
-                        )
-                        write_json(directory / "report.json", report)
-                    print(
-                        f"accepted update {step + 1}/{steps}: loss={after:.9g}",
-                        flush=True,
-                    )
-                    break
-            else:
-                raise AssertionError("No measured loss-decreasing projected step")
+        from .gradient_trajectory import run_updates
+
+        evaluation, current_primal = run_updates(
+            loss,
+            evaluation,
+            key=key,
+            directory=directory,
+            report=report,
+            total_steps=steps,
+            initial_step_size=initial_step_size,
+            max_backtracks=max_backtracks,
+            current_primal=current_primal,
+            compact=compact,
+            record_readouts=record_readouts,
+            primal_every_step=primal_every_step,
+            acceptance_policy=acceptance_policy,
+        )
         save_graph(directory / "final_graph.npz", evaluation.graph)
         _save_evaluation(directory / "final.npz", evaluation, compact=compact)
         final_primal_value = _value(
             loss, evaluation.graph, key, directory / "final_primal.npz", compact=compact
         )
         report["final_primal_loss"] = final_primal_value
-        report["primal_descent_minimum_decrease"] = 1e-7
-        if final_primal_value >= primal_value - 1e-7:
+        report["primal_descent_minimum_decrease"] = (
+            1e-7 if acceptance_policy == "strict" else None
+        )
+        if acceptance_policy == "strict" and final_primal_value >= primal_value - 1e-7:
             raise AssertionError("No measured standalone-primal loss decrease")
         report.update(status="passed", final_loss=float(evaluation.value))
     except Exception as error:

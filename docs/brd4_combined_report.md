@@ -163,3 +163,16 @@ directories. The canonical study's final model/context digests match their
 initial identities; the failed studies have no completed final digest check.
 No model job or individual report job was changed or resubmitted. The hourly
 completion heartbeat was **paused** on this native failure, as instructed.
+
+## Authorized continuation superseding the completion blocker
+
+The user subsequently authorized best-primal fallback after exhausted strict
+search and resumption from the saved molecules. See
+[the continuation protocol](brd4_best_primal_continuation.md). Allocated CPU
+readiness 29745466 passed 198 engineering tests and authenticated the parent
+prefixes/contexts. New native jobs 29745472/29745473/29745474 and dependent
+six-case report 29745475 were submitted, targeting 5000 total updates per case
+and reusing completed canonical 29736988. They are queued, not completed.
+The new report will identify strict prefixes, fallback segments and loss
+increases explicitly. Historical failures above remain unchanged. The hourly
+completion monitor now follows this new campaign; no final report exists yet.

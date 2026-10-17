@@ -1,0 +1,23 @@
+#!/bin/bash
+set -euo pipefail
+[[ -n "${LSB_JOBID:-}" ]] || exit 2
+release=$1
+parent=$2
+manifest_sha=$3
+python=/work3/s234818/mosaic/envs/protenix-tiny/bin/python
+module load python3/3.12.11
+mkdir "$parent/payload"
+run="$parent/payload"
+"$python" "$release/scripts/verify_stage0_release.py" "$release" "$manifest_sha"
+"$python" "$release/scripts/hpc/zhome_quota_preflight.py" --run-dir "$run" --minimum-free-gib 20
+export PYTHONPATH="$release/src:$release/tests" JAX_PLATFORMS=cpu
+export OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 MKL_NUM_THREADS=2 PYTHONDONTWRITEBYTECODE=1
+export MPLCONFIGDIR="$run/mplcache" TMPDIR="$run/tmp"
+mkdir "$TMPDIR"
+cd "$release"
+hostname > "$run/host.txt"
+"$python" -m pytest tests/test_small_molecule_*.py -o addopts= --strict-markers \
+  -m 'not slow and not small_molecule_model' -o cache_dir="$run/pytest-cache" \
+  --basetemp "$run/pytest-tmp" --junitxml="$run/unit.xml" > "$run/unit.log" 2>&1
+"$python" scripts/prepare_brd4_continuation.py \
+  --root /zhome/95/e/206121/mosaic-runs --output "$run/plan" > "$run/plan.log" 2>&1

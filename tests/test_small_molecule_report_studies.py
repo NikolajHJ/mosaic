@@ -74,6 +74,26 @@ def test_combined_report_rejects_unmatched_or_incomplete_studies(tmp_path, chang
         _renderer()._load_studies(_inputs(tmp_path, change))
 
 
+def test_policy_comparison_requires_explicit_display_authorization(tmp_path):
+    paths = _inputs(tmp_path)
+    target = paths[1] / "summary.json"
+    study = json.loads(target.read_text())
+    study["config"]["checks"]["acceptance_policy"] = "best_primal"
+    target.write_text(json.dumps(study))
+    renderer = _renderer()
+    with pytest.raises(ValueError):
+        renderer._load_studies(paths)
+    combined, _, receipts = renderer._load_studies(
+        paths, allow_optimization_policy_comparison=True
+    )
+    assert len(combined["cases"]) == 3
+    assert [r["acceptance_policy"] for r in receipts] == ["strict", "best_primal"]
+    study["config"]["checks"]["steps"] = 999
+    target.write_text(json.dumps(study))
+    with pytest.raises(ValueError):
+        renderer._load_studies(paths, allow_optimization_policy_comparison=True)
+
+
 def _mixed_inputs(tmp_path):
     paths = _inputs(tmp_path)
     primary = json.loads((paths[0] / "summary.json").read_text())
