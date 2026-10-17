@@ -2357,3 +2357,38 @@ The expected archive is the sibling `.tar.gz`, receipt `.tar.receipt.json`.
 Exact operator:
 `scripts/hpc/receipts/20261017-brd4-best-primal/submit-interim-evidence-02.sh`.
 Actual retry completion, download and browser verification remain pending.
+
+### Interim delivery and viewer lifecycle — 2026-10-18
+
+Evidence retry **29747728 DONE**, saved LSF successful completion on
+`n-62-28-33`, 17 October 23:13:09–23:20:00 Europe/Paris (411 seconds).
+The run-root packaging regression passed on allocated CPU (one test, 0.14s).
+Archive receipt: 668,542,256 bytes, 146,396 files, SHA-256
+`1e9d3e8ae228eb5e468e951c7961075be1d67c284f84adddcac21712147620c9`;
+path `/zhome/95/e/206121/mosaic-runs/20261017-brd4-interim-evidence-02.tar.gz`.
+The archive remains on HPC; full local extraction/manifest verification is
+not claimed. Original render/package failure 29747700 remains preserved.
+
+Downloaded the 12 finished report files and allocated CPU
+`rendered_report_receipt.json` by authenticated SCP. All per-file byte counts
+and SHA-256 values verified locally using stdlib only. HTML: 208,057,532 bytes,
+SHA `5b4503b91672724b790cd3e7f9b734349a294fd7e9ed35688001ba3c4c7a65b6`.
+Local directory `results/hpc/20261017-brd4-parallel/interim-report-01/` contains
+the receipt, download/schema checks and `report/`. Saved HTML schema retains
+five included IDs, 5001 contiguous states per case, X with six occupied slots
+and 15 unordered E rows, planned count six and missing job 29745503. This is
+file/metadata verification, not new numerical model or chemistry evaluation.
+
+The user reported ERR_CONNECTION_REFUSED after the original local server
+ended. Replaced its command-session lifetime with a hidden detached Windows
+process using CREATE_BREAKAWAY_FROM_JOB and a separate process group. A fresh
+command after the launcher exited confirmed HTTP 200, exact Content-Length
+208057532 and a live server process. Added `scripts/serve_protenix_report.py`
+to reproduce/reuse this viewer safely on loopback, without startup services.
+Report bytes and every HPC experiment remain unchanged.
+
+Automatic browser inspection/reload was denied by the browser URL policy
+when binding the error tab; no alternate browser/DOM workaround was attempted.
+Visual/playback QA is therefore not certified. The user can reload the existing
+page at `http://127.0.0.1:8770/report.html`. The separate all-six report and
+completion monitor remain active; the last scheduler check still had 50% RUN.

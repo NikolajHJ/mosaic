@@ -224,3 +224,24 @@ Playback SVG now writes the same saved raw categories and probability size
 formulas directly, avoiding a separate plotting figure per frame. PNG overview
 snapshots keep their existing renderer. This affects presentation only; no
 model, probabilities, topology, optimization or sealed native release changes.
+
+### Local interim viewer
+
+The five-case report is downloaded under
+`results/hpc/20261017-brd4-parallel/interim-report-01/report/`.
+All 12 report files match the allocated CPU per-file receipt; HTML SHA-256
+`5b4503b91672724b790cd3e7f9b734349a294fd7e9ed35688001ba3c4c7a65b6`.
+Local JSON/schema checks retain five cases, 5001 contiguous states each and
+six atom slots, with an explicit missing 50% study. Full six-case completion
+is still separate.
+
+Start or reuse a loopback viewer from the repository root:
+
+```powershell
+py -3.13 scripts/serve_protenix_report.py results/hpc/20261017-brd4-parallel/interim-report-01/report
+```
+
+Open `http://127.0.0.1:8770/report.html`. On Windows the helper creates a
+detached process outside the launching job, so ending a chat command does not
+stop the server. It installs no service/startup task and serves saved files
+only. The offline HTML is also self-contained.
