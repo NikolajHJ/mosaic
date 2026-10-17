@@ -196,3 +196,8 @@ Chain 30% **29745502** is RUN, approximately 2520/5000 saved updates; noisy
 uniform **29745474** is RUN, approximately 4754/5000. Chain 50% **29745503**
 is PEND and report **29745504** is PEND awaiting its inputs. These live counts
 are snapshots, not completed-case certificates. No experiments were changed.
+
+At the subsequent approximately 21:38 Europe/Paris check, noisy uniform
+**29745474** is DONE with native status passed and 5001 saved states. Chain
+30% is RUN at approximately 4418/5000; chain 50% and the report remain PEND.
+The ledger records provisional runtime estimates separately from outcomes.

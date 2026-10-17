@@ -2232,3 +2232,24 @@ verification have not yet been performed for these new completed jobs.
 Combined report 29745504 remains PEND; all six trajectories are still required,
 including unchanged completed canonical 29736988. No report archive/HTML is
 claimed yet. The active monitor and all native jobs remain unchanged.
+
+## 2026-10-17 — ETA check and noisy-uniform completion
+
+At the user-requested ETA check (remote Unix time 1792265880, approximately
+21:38 Europe/Paris), noisy uniform **29745474** is LSF DONE with persisted
+native status passed, one passed case and 5001 saved states through update
+5000. Source/plan/run identities remain as previously recorded. Full archive
+integrity verification remains pending final combined report delivery.
+
+Chain 30% **29745502** remains RUN at approximately 4418/5000. The most recent
+120 saved updates took about 139 seconds (roughly 1.16 seconds/update), implying
+about 11 minutes for the remaining 582 at that same rate. A provisional
+10–20 minute estimate allows modest variation; more fallback/backtracking can
+extend it. This is a progress estimate, not an execution guarantee.
+
+Chain 50% **29745503** remains PEND with no allocated worker. Queue wait cannot
+be inferred from these observations. Rough runtime after start is 1.5–3 hours
+based on the current fresh chain run and possible extra backtracking; this is
+not a benchmark of the unstarted case. Report **29745504** remains PEND and
+cannot finish before this last native input completes and passes. No job,
+native policy, source or resource request was changed during this check.
