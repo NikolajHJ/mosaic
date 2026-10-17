@@ -176,3 +176,29 @@ and reusing completed canonical 29736988. They are queued, not completed.
 The new report will identify strict prefixes, fallback segments and loss
 increases explicitly. Historical failures above remain unchanged. The hourly
 completion monitor now follows this new campaign; no final report exists yet.
+
+## Independent chain scheduling — 2026-10-17
+
+The user subsequently requested parallel scheduling of the three chain
+initializations. Sequential chain 29745472 and its dependent report 29745475
+were intentionally cancelled while still PEND; both final EXIT states were
+authenticated. No chain work was lost. Uniform 29745473, noisy 29745474,
+canonical 29736988 and all historical evidence remain unchanged.
+
+Allocated CPU readiness **29745498 DONE**, 205 engineering tests passed,
+with unchanged numerical-library hashes, pinned parents/plan and quota gates.
+New independent A10 jobs are **29745501** (15%, resume at 4998), **29745502**
+(30%, fresh) and **29745503** (50%, fresh). They depend only on passed
+readiness, so can run concurrently as GPUs become available. Every case
+still targets 5000 total updates, LR=0.03 and the declared best-primal policy.
+
+Replacement report/evidence **29745504** consumes six independent native
+studies: these three chain jobs, uniform 29745473, noisy 29745474 and completed
+canonical 29736988. It waits for the five current GPU jobs to end and checks
+that all six cases passed with 5001 saved states and unchanged identities.
+Original chain source indices 0/1/2 are retained in report receipts. Output
+root is `/zhome/95/e/206121/mosaic-runs/20261017-brd4-best-primal-report-02/`;
+the sibling archive is `.tar.gz`, with `.tar.receipt.json`. The existing
+hourly monitor is active with these IDs and verification requirements.
+All five current native jobs and the new report were PEND in the authenticated
+submission snapshot; no final combined report has been produced or downloaded.

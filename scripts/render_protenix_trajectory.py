@@ -89,6 +89,7 @@ def _load_studies(
             {
                 "continuation_plan_sha256": study.get("continuation_plan_sha256"),
                 "parent_job_id": study.get("parent_job_id"),
+                "source_case_indices": study.get("source_case_indices"),
                 "acceptance_policy": study["config"]["checks"].get(
                     "acceptance_policy", "strict"
                 ),

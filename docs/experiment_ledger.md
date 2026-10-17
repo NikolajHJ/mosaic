@@ -2095,3 +2095,98 @@ It remains quiet on unchanged/non-actionable states, verifies actual final
 outcomes/artifacts, and pauses after delivery or a current native blocker.
 No historical native or individual-report job was modified, cancelled or
 replaced. Final report delivery remains outstanding.
+
+
+## 2026-10-17 — user-directed parallel chain scheduling
+
+The user explicitly requested splitting the sequential chain 15%/30%/50%
+allocation into independent GPU jobs. At 13:16:05 Europe/Paris, native
+29745472 and report 29745475 were PEND with no execution host, so no new chain
+progress existed. Temporarily paused the existing completion monitor while
+replacing these IDs. A first stdin-shell cancellation attempt rejected a
+CR-terminated job argument; no cancellation was accepted from that attempt.
+The versioned LF operator
+`scripts/hpc/receipts/20261017-brd4-best-primal/cancel-sequential-01.sh`
+rechecked both PEND states, saved their detailed pre-cancellation records and
+received `bkill` termination acknowledgements for both jobs. This is an
+intentional queued scheduling replacement, not native numerical instability.
+Uniform 29745473 and noisy 29745474 remain untouched, as does canonical 29736988.
+
+Implemented `--case-index` in the continuation runner: preserve the pinned full
+parent plan, select the original mixture/prefix, emit a singleton configuration
+and record its source case index. No numerical library code was changed.
+New allocated CPU readiness must pass case-selection tests, the full engineering
+suite, exact `src/` byte identity with source 04, unchanged pinned parent files
+and the same 20 GiB aggregate quota gate. The replacement report accepts six
+native input studies with unchanged initialization/policy comparison guards.
+Final EXIT states for the intentionally cancelled 29745472/29745475 were
+authenticated before submitting the replacement readiness job. Their saved
+pre/post-cancellation scheduler records remain in the original run directories
+as `job-before-parallel-split.txt` and `job-cancelled-for-parallel.txt`.
+
+Sealed parallel source 01: 293 files, archive 39,020,819 bytes,
+SHA-256 `b0a35eed62c51b53285607d21a0c04c1f541c3b0bd7af888392da43c2ddcc76f`,
+manifest `1cf635c222bf750c298c7b4bcac30ec36eeb47e40f74480466d813cd64041504`.
+Local `results/releases/brd4-parallel-20261017-01/`; remote
+`/work3/s234818/mosaic/releases/20261017-brd4-parallel-01/source`.
+The source records commit 2e9d76d plus manifested current working bytes;
+the entire numerical `src/` map is identical to passed source 04. Upload
+archive/manifest checks, 293-file verification and Bash syntax checks passed.
+
+Allocated CPU readiness **29745498 DONE**, worker `n-62-29-16`, hpc two slots,
+4GB per slot/8GB total, 15-minute bound: **205 passed, three native items
+deselected, two existing dtype warnings, 78.92s**. This includes seven new
+selection cases and the previous 198 checks. Readiness reauthenticated exact
+numerical-library identity, the unchanged plan SHA
+`4837faf4a35e49927c8fe828b65dfb91ee871da9028ade9db27e6bfb9db1ade1`
+and all 12,075 pinned parent case files. Assessment SHA:
+`9a38ff0ea26e9ae3e03dc479696db5e05d1dc49c0377b732f983a8b58c7929b8`.
+20 GiB aggregate storage gate passed with 22 GiB conservatively available;
+home quota can lag four hours, and this does not reserve storage.
+
+Nine readiness files were independently size/SHA-verified after download,
+including final scheduler, assessment, unit XML/log and quota records, under
+`results/hpc/20261017-brd4-parallel/readiness-01/`. Two administrative
+cancellation records were also downloaded by authenticated SFTP. Local
+`verification.json` records checked artifacts and submission IDs; detailed
+new resource/dependency evidence is `results/hpc/20261017-brd4-parallel/submitted-jobs.txt`.
+Local work was editing/static review, immutable packaging and stdlib byte/JSON
+checks only; no local numerical tests, model runs or chemistry evaluation.
+
+After authenticating readiness DONE, assessment and plan hashes, submitted:
+
+| Initialization | New native job | Unique run under `/zhome/95/e/206121/mosaic-runs/` |
+| --- | --- | --- |
+| Chain 15%, resume at 4998 | **29745501** | `20261017-brd4-chain15-best-primal-01` |
+| Chain 30%, fresh | **29745502** | `20261017-brd4-chain30-best-primal-01` |
+| Chain 50%, fresh | **29745503** | `20261017-brd4-chain50-best-primal-01` |
+
+Each requests gpua10 one exclusive-process A10, four colocated CPU slots,
+8GB per slot/32GB total host RAM and dependency `done(29745498)` only.
+There are no inter-chain dependencies. The 15% allocation has a one-hour
+walltime for replay and two remaining updates; fresh 30%/50% retain 16 hours.
+All target 5000 TOTAL updates, LR=0.03, the unchanged best-primal fallback and
+mandatory finite/native/replay/frozen identity gates. Source case indices
+0/1/2 are preserved. Uniform 29745473 and noisy 29745474 remain on source 04,
+their original readiness dependency and their original unique run directories.
+All five current native jobs were PEND in the downloaded scheduler snapshot.
+
+Replacement combined report/evidence **29745504 submitted**, hpc two slots,
+4GB per slot/8GB total host RAM, three-hour bound. Dependency:
+`done(29745498) && ended(29745501) && ended(29745502) && ended(29745503) && ended(29745473) && ended(29745474)`.
+Run `20261017-brd4-best-primal-report-02`, output `payload/report/`, archive
+`/zhome/95/e/206121/mosaic-runs/20261017-brd4-best-primal-report-02.tar.gz`
+and receipt `.tar.receipt.json`. The six singleton inputs include unchanged
+passed canonical 29736988. Complete passed native trajectories, all six
+5001-state curves, fixed N=6 and frozen model/context identities remain
+mandatory. Failed original parents remain archived as evidence. Report was
+PEND; submission is not a rendered report or numerical completion.
+
+Exact successful operators:
+`scripts/hpc/receipts/20261017-brd4-best-primal/submit-parallel-readiness-01.sh`
+and `scripts/hpc/receipts/20261017-brd4-best-primal/submit-parallel-native-01.sh`.
+The existing hourly completion heartbeat was updated/reactivated with all
+five current native IDs, report 29745504, canonical/plan/source pins and
+six-input verification requirements. It remains quiet on unchanged states
+and pauses on delivery or an actionable current native blocker. Final native
+outcomes, report download/verification and browser QA remain pending.

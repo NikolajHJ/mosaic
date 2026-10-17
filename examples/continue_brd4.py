@@ -1,10 +1,34 @@
 """Continue an authenticated BRD4 campaign with explicit best-primal fallback."""
 
 import argparse
+from copy import deepcopy
 import json
 import os
 import shutil
 from pathlib import Path
+
+
+def _select_cases(config, entries, case_index=None):
+    """Project a sealed multi-case plan into one independent run, without mutation.
+
+    Case selection changes scheduling only. Each selected case retains its
+    original mixture, initialization key and optional authenticated prefix.
+    Output directories are numbered locally from zero; source indices remain
+    explicit in the summary.
+    """
+    selected = deepcopy(config)
+    if case_index is None:
+        return selected, list(entries), list(range(len(entries)))
+    mixtures = config.get("mixing_values")
+    if (
+        type(case_index) is not int
+        or mixtures is None
+        or len(mixtures) != len(entries)
+        or not 0 <= case_index < len(entries)
+    ):
+        raise ValueError("Case selection requires an existing mixture index")
+    selected["mixing_values"] = [mixtures[case_index]]
+    return selected, [entries[case_index]], [case_index]
 
 
 def main():
@@ -12,9 +36,14 @@ def main():
     parser.add_argument("--plan", type=Path, required=True)
     parser.add_argument("--plan-sha256", required=True)
     parser.add_argument("--study", choices=("chain", "uniform", "noisy"), required=True)
+    parser.add_argument(
+        "--case-index", type=int, help="Run one original chain case independently"
+    )
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--cache-dir", type=Path, required=True)
     args = parser.parse_args()
+    if args.case_index is not None and args.study != "chain":
+        parser.error("--case-index is supported only for the multi-case chain study")
     if not os.environ.get("LSB_JOBID"):
         raise RuntimeError("Continuation requires an allocated GPU")
     import jax
@@ -67,6 +96,9 @@ def main():
     expected["checks"]["acceptance_policy"] = "best_primal"
     if config != expected:
         raise ValueError("Continuation changed an unapproved setting")
+    config, entries, source_indices = _select_cases(
+        config, item["cases"], args.case_index
+    )
     fixture_path = parent / "fixture.json"
     if file_sha256(fixture_path) != previous["fixture_sha256"]:
         raise ValueError("Fixture changed")
@@ -82,6 +114,7 @@ def main():
         "continuation_plan_sha256": args.plan_sha256,
         "parent_job_id": item["parent_job_id"],
         "parent_summary_sha256": item["parent_summary_sha256"],
+        "source_case_indices": source_indices,
         "completion_scope": "explicit exploratory policy; inherited strict prefixes, recorded increases allowed",
     }
     report.pop("error", None)
@@ -131,7 +164,7 @@ def main():
         loss = model.build_loss(context=context, loss=objective)
         key = jax.random.key(config["seed"])
         for index, (case, entry) in enumerate(
-            zip(_case_specs(config), item["cases"], strict=True)
+            zip(_case_specs(config), entries, strict=True)
         ):
             if entry is None:
                 result = check_graph_gradients(
@@ -149,7 +182,9 @@ def main():
                     output_directory=args.output / f"case-{index}",
                     checks=config["checks"],
                 )
-            report["cases"].append({**case, **result})
+            report["cases"].append(
+                {**case, **result, "source_case_index": source_indices[index]}
+            )
             write_json(args.output / "summary.json", report)
         report.update(
             model_digest_after=array_digest(model),

@@ -7,6 +7,7 @@ manifest_sha=$3
 plan=$4
 plan_sha=$5
 study=$6
+case_index=${7:-}
 project=/work3/s234818/mosaic
 python="$project/envs/protenix-tiny/bin/python"
 module load python3/3.12.11 cuda/12.9.1 cudnn/v9.13.0.50-prod-cuda-12.X
@@ -26,6 +27,10 @@ cd "$release"
 hostname > "$run/host.txt"
 module list 2> "$run/modules.txt"
 nvidia-smi --query-gpu=name,driver_version,memory.total --format=csv > "$run/gpu.txt"
+arguments=()
+if [[ -n "$case_index" ]]; then
+  arguments+=(--case-index "$case_index")
+fi
 "$python" examples/continue_brd4.py --plan "$plan" --plan-sha256 "$plan_sha" \
-  --study "$study" --cache-dir "$MOSAIC_CACHE_DIR/protenix" \
+  --study "$study" "${arguments[@]}" --cache-dir "$MOSAIC_CACHE_DIR/protenix" \
   --output "$run/study" > "$run/native.log" 2>&1

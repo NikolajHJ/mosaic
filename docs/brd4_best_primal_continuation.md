@@ -108,3 +108,74 @@ completion heartbeat is active with the new IDs, acceptance semantics and
 verification instructions. Native/report outcomes, download and browser QA
 remain pending. Exact successful operator:
 `scripts/hpc/receipts/20261017-brd4-best-primal/submit-native-and-report-02.sh`.
+
+## Independent chain jobs — user-directed scheduling update
+
+The user requested separate 15%/30%/50% jobs so they can be scheduled in
+parallel. On the 17 October 13:16 Europe/Paris check, chain 29745472 and report
+29745475 were still PEND, with no allocated worker or new chain updates.
+Both cancellations were accepted and their final EXIT states authenticated;
+this is intentional, not a numerical failure. Uniform 29745473, noisy 29745474,
+completed canonical 29736988 and every historical artifact remain unchanged.
+The completion monitor was paused during replacement and is now active with
+the independent jobs below.
+
+The new `--case-index` runner option projects the authenticated chain plan onto
+one original case and records its original index. Each job has its own context
+verification, output directory and completion/failure record. The 15% job
+retains its 4998-update prefix; 30% and 50% start fresh. There are no dependencies
+between these three GPU jobs. Simultaneous execution depends on scheduler GPU
+availability; independent jobs remove the sequential dependency.
+
+Readiness requires the full allocated CPU engineering suite, exact equality of
+all `src/` hashes with passed source 04, the same pinned continuation plan and
+parent files, and the 20 GiB aggregate quota gate. The existing budget already
+reserved nine cases' worth of native artifacts for the five incomplete cases;
+splitting their allocations does not add another optimization trajectory.
+The replacement report will consume six independent native input studies
+(three chain cases, uniform, noisy and canonical) and retain six selectors and
+the same six 5001-state curves. Original case indices stay in its receipts.
+
+- [x] Implement independent case selection and test its recipe/prefix mapping.
+- [x] Pass allocated CPU source/parent/selection/quota readiness.
+- [x] Submit three independent GPU jobs and the replacement combined report.
+- [x] Update monitor, ledger and versioned scripts with actual job receipts.
+
+Immutable parallel source 01 contains 293 files. Archive SHA-256
+`b0a35eed62c51b53285607d21a0c04c1f541c3b0bd7af888392da43c2ddcc76f`;
+manifest `1cf635c222bf750c298c7b4bcac30ec36eeb47e40f74480466d813cd64041504`.
+Remote source:
+`/work3/s234818/mosaic/releases/20261017-brd4-parallel-01/source`.
+Allocated CPU readiness **29745498 DONE**, worker `n-62-29-16`: **205 passed**,
+three native items deselected, two existing dtype warnings, 78.92 seconds.
+Exact numerical-library identity and all 12,075 pinned parent case files
+passed; the same plan SHA above is retained. The 20 GiB aggregate quota gate
+passed with 22 GiB conservatively available (quota can lag; not a reservation).
+Assessment SHA-256:
+`9a38ff0ea26e9ae3e03dc479696db5e05d1dc49c0377b732f983a8b58c7929b8`.
+
+| Initialization | Independent native job | New run under `/zhome/95/e/206121/mosaic-runs/` |
+| --- | --- | --- |
+| Chain 15%, resume at 4998 | **29745501** | `20261017-brd4-chain15-best-primal-01` |
+| Chain 30%, fresh | **29745502** | `20261017-brd4-chain30-best-primal-01` |
+| Chain 50%, fresh | **29745503** | `20261017-brd4-chain50-best-primal-01` |
+
+All three were PEND at authenticated submission. Each requests one exclusive
+A10 in `gpua10`, four colocated CPU slots/32GB total host RAM and only
+`done(29745498)`. The 15% job has a one-hour bound for model restore, replay
+and its two remaining updates; 30% and 50% retain the 16-hour bound. Each
+targets **5000 total updates**, with unchanged LR=0.03 and fallback/native
+gates. The selected original source indices are respectively 0, 1 and 2.
+Unchanged uniform/noisy jobs 29745473/29745474 still depend on passed readiness
+29745466 and remain independently queued.
+
+Replacement report/evidence **29745504 submitted**, hpc two CPU slots/8GB
+total host RAM, three hours. It waits for readiness 29745498 DONE and all five
+current native jobs to end. It still requires every input to pass complete
+native checks before rendering. Output:
+`20261017-brd4-best-primal-report-02/payload/report/`; archive
+`20261017-brd4-best-primal-report-02.tar.gz` and receipt `.tar.receipt.json`.
+The active hourly monitor follows these IDs and retains completed canonical
+29736988. Native outcomes and final report delivery remain pending.
+Exact submission operators and local authenticated readiness/scheduler
+receipts are recorded in the experiment ledger.
