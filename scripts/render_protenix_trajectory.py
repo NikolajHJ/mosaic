@@ -9,6 +9,7 @@ import base64
 from copy import deepcopy
 from datetime import datetime, timezone
 import hashlib
+from html import escape
 import importlib.metadata
 import io
 import json
@@ -17,6 +18,46 @@ from pathlib import Path
 
 
 CASE_COLORS = ("#087f8c", "#dc7139", "#7257b4", "#a77800", "#b84b70", "#2a6496")
+
+
+def _load_report_scope(path, study, receipts):
+    """Authenticate an explicitly incomplete comparison without relaxing inputs.
+
+    Every included study still passes the usual complete-trajectory gates.
+    Pending studies are metadata only: they never receive fabricated states.
+    """
+    if path is None:
+        return None
+    scope = json.loads(path.read_text())
+    included = [str(item["job_id"]) for item in receipts]
+    pending = [str(item["job_id"]) for item in scope["pending_studies"]]
+    if (
+        scope["kind"] != "interim"
+        or scope["included_native_job_ids"] != included
+        or not pending
+        or len(set(included + pending)) != len(included + pending)
+        or set(scope["planned_native_job_ids"]) != set(included + pending)
+        or len(scope["planned_native_job_ids"]) != len(included + pending)
+        or len(study["cases"]) != len(included)
+        or scope["planned_case_count"] != len(study["cases"]) + len(pending)
+    ):
+        raise ValueError("Interim report scope does not match its native inputs")
+    for field in ("model_digest", "context_digest"):
+        for suffix in ("_before", "_after"):
+            if study[field + suffix] != scope["expected_" + field]:
+                raise ValueError("Interim report frozen identity differs")
+    if set(scope["case_colors"]) != set(included):
+        raise ValueError("Interim colors must identify exactly the included jobs")
+    if len(set(scope["case_colors"].values())) != len(included):
+        raise ValueError("Interim cases require distinct colors")
+    if any(
+        not isinstance(item.get("label"), str)
+        or item.get("status_at_submission") not in ("PEND", "RUN")
+        for item in scope["pending_studies"]
+    ):
+        raise ValueError("Pending studies need honest submission-time labels")
+    scope["manifest_sha256"] = hashlib.sha256(path.read_bytes()).hexdigest()
+    return scope
 
 
 def _load_studies(
@@ -136,6 +177,7 @@ def main(argv=None):
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--allow-initialization-comparison", action="store_true")
     parser.add_argument("--allow-optimization-policy-comparison", action="store_true")
+    parser.add_argument("--scope-manifest", type=Path)
     args = parser.parse_args(argv)
     if not os.environ.get("LSB_JOBID"):
         raise RuntimeError("Trajectory analysis requires an allocated DTU job")
@@ -171,6 +213,7 @@ def main(argv=None):
         allow_initialization_comparison=args.allow_initialization_comparison,
         allow_optimization_policy_comparison=args.allow_optimization_policy_comparison,
     )
+    report_scope = _load_report_scope(args.scope_manifest, study, input_studies)
     source = args.study[0] / "summary.json"
     root = Path(__file__).resolve().parents[1]
     fixture_root = args.study[0].resolve() if "fixture_file" in study else root
@@ -195,6 +238,7 @@ def main(argv=None):
         "created_utc": datetime.now(timezone.utc).isoformat(),
         "job_id": os.environ["LSB_JOBID"],
         "cases": [],
+        "report_scope": report_scope,
         "initial_smiles": None
         if "initialization" in study["config"]
         or study["config"].get("initialization_comparison")
@@ -323,7 +367,11 @@ def main(argv=None):
         label = case.get("label") or f"{case['mixing']:.0%} uniform mixture"
         t = [s["step"] for s in states]
         values = np.array([s["primal_loss"] for s in states])
-        color = CASE_COLORS[case_index % len(CASE_COLORS)]
+        color = (
+            report_scope["case_colors"][str(case["source_job_id"])]
+            if report_scope
+            else CASE_COLORS[case_index % len(CASE_COLORS)]
+        )
         ax_loss[0].plot(t, values, label=label, color=color)
         ax_loss[1].plot(t, values - values[0], label=label, color=color)
         if case.get("continuation"):
@@ -549,6 +597,24 @@ def main(argv=None):
         "<", "\\u003c"
     )
     html = template_path.read_text(encoding="utf-8").replace("__DATA__", data)
+    if report_scope:
+        marker = '<header class="hero">'
+        if html.count(marker) != 1:
+            raise ValueError("Cannot place the required interim scope notice")
+        pending = "; ".join(
+            f"{item['label']} (job {item['job_id']}; {item['status_at_submission']} at submission)"
+            for item in report_scope["pending_studies"]
+        )
+        notice = (
+            '<aside class="note" id="interim-scope" role="note"><strong>'
+            + escape(report_scope["title"])
+            + "</strong><br>"
+            + escape(report_scope["note"])
+            + "<br>Awaiting: "
+            + escape(pending)
+            + "</aside>"
+        )
+        html = html.replace(marker, notice + marker)
     html = html.replace("__UPDATES__", str(study["config"]["checks"]["steps"]))
     for name in ("loss", "changes", "molecules", "molecule_endpoints"):
         encoded = base64.b64encode((args.output / f"{name}.png").read_bytes()).decode()

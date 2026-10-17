@@ -2275,3 +2275,85 @@ passed; no allocation or numerical output is claimed. Combined report
 **29745504** remains PEND. This is the only unfinished native case among
 the six required trajectories. No job or source was changed, no numerical
 tests were run, and no combined HTML/archive was downloaded or opened.
+
+## 2026-10-17 — user-authorized five-case interim report
+
+The user explicitly requested presenting the finished jobs now and adding the
+50% case later. This authorizes a separately labelled five-of-six interim
+comparison; it does not waive completeness or native gates for any included
+trajectory. Chain 50% 29745503 was confirmed RUN while preparing the report.
+Its GPU job and the all-six report 29745504 remain unchanged.
+
+Added an optional authenticated display-scope manifest, identifying the five
+included native IDs 29745501/29745502/29745473/29745474/29736988, planned six
+inputs and pending 50% job 29745503. Pins the expected frozen model/context
+digests and preserves the original six-case color assignment. The HTML notice
+and analysis metadata explicitly disclose the missing case and mixed policy
+exposure. Every included trajectory still requires 5001 contiguous saved
+states and unchanged native configuration/model/context identities. No missing
+probabilities or states are fabricated and raw invalid graphs remain visible.
+
+Presentation-only SVG optimization directly writes the existing raw argmax
+labels/topology, fixed zigzag slot positions, atom radius 0.18+0.16P(element),
+fixed readable labels and bond width 0.8+3.2P(exists). PNG snapshots keep the
+existing plotting renderer. This avoids creating 25,005 plotting figures for
+playback; saved probabilities, all native sources and scientific outputs are
+unchanged. Added interim-scope rejection and SVG topology/size regressions.
+Local Ruff formatting/checks passed; no local numerical tests were run.
+
+Immutable source `20261017-brd4-interim-01`: 300 files, 39,036,540 bytes;
+archive SHA `c153c3ecb412443de0f8a7b4f8a5b0b502b2389b3b871119ce9db06a56c21266`,
+manifest `d01c386aba5121af454a76868d49b840a99ac1cf3fea66ca9a2687e9699ed490`.
+Git reference 5676173 plus manifested working bytes. Entire `src/` map is
+identical to passed parallel-01. Local release:
+`results/releases/brd4-interim-20261017-01/`; remote source:
+`/work3/s234818/mosaic/releases/20261017-brd4-interim-01/source`.
+Uploaded SHA, 300-file source verification and LSF Bash syntax passed; source
+is read-only. Exact operator:
+`scripts/hpc/receipts/20261017-brd4-best-primal/submit-interim-report-01.sh`.
+
+CPU report/evidence **29747700 submitted** at 23:06 Europe/Paris; hpc, two
+colocated slots, 4GB per slot/8GB total, three-hour bound, worker `n-62-28-33`.
+Unique run `/zhome/95/e/206121/mosaic-runs/20261017-brd4-interim-report-01`;
+report `payload/report/`, sibling `.tar.gz` and `.tar.receipt.json` expected.
+The job first verifies source/quota, runs all 207 selected engineering tests
+and pinned-parent readiness, then renders and packages only saved artifacts.
+8 GiB entry quota gate passed with 21 GiB conservatively available (quota can
+lag; not a reservation). Packaging will separately check actual byte reserve.
+At this entry the CPU suite was still RUN; no pass, generated report or
+download is claimed yet. Full six-case report and active monitor are preserved.
+
+Interim source-01 CPU suite completed: **207 passed, three native items
+deselected, two existing dtype warnings, 67.93 seconds**. All 12,075 parent
+case files and the unchanged numerical library were authenticated. Five-case
+rendering completed, including all 25,005 states, plot/heatmap assets and a
+208,057,532-byte standalone HTML. Native and rendering checks passed.
+
+Job **29747700 EXIT** at the later packaging step: the collector correctly
+rejected a pytest `current` directory alias because the wrapper supplied
+`--run <run>/payload`, while its safe pytest boundary expects a run root.
+This is an engineering packaging failure, not a native failure; original
+report, test logs and failed packaging log remain intact. Corrected the caller
+to supply the run root. The collector's symlink rejection policy is unchanged.
+
+Source-02 seals the corrected call, a packaging-only retry and a regression
+that records internal pytest aliases without following or archiving them.
+303 files, 39,039,160 bytes; archive SHA
+`5d3ba07b6f937c3e18ae1a5acdac488a2eae6c62badcfeb5aa5f04587b76f732`,
+manifest `7e1bfe4751758f258749fd2a5a3e07b0167ceb544618160f5c6d022fd9d58246`.
+Local `results/releases/brd4-interim-20261017-02/`; remote source
+`/work3/s234818/mosaic/releases/20261017-brd4-interim-02/source`.
+Uploaded SHA/303-file source/Bash checks passed, source is read-only. Renderer,
+already-rendered files and all numerical library/native experiments stay
+unchanged. No scientific results are re-executed by this retry.
+
+Evidence-only CPU job **29747728 submitted**: hpc two colocated slots, 4GB per
+slot/8GB total, one hour. Unique run
+`/zhome/95/e/206121/mosaic-runs/20261017-brd4-interim-evidence-02`.
+It tests the run-root regression on allocated CPU, checks the existing five
+case analysis/identities and seals per-report-file SHA receipts, then packages
+the unchanged rendered report and all original/native/failed ancestry evidence.
+The expected archive is the sibling `.tar.gz`, receipt `.tar.receipt.json`.
+Exact operator:
+`scripts/hpc/receipts/20261017-brd4-best-primal/submit-interim-evidence-02.sh`.
+Actual retry completion, download and browser verification remain pending.

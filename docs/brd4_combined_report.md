@@ -202,3 +202,25 @@ the sibling archive is `.tar.gz`, with `.tar.receipt.json`. The existing
 hourly monitor is active with these IDs and verification requirements.
 All five current native jobs and the new report were PEND in the authenticated
 submission snapshot; no final combined report has been produced or downloaded.
+
+## User-requested interim comparison — 2026-10-17
+
+The user explicitly requested a report now for the five finished cases, adding
+50% later. This supersedes the all-six requirement for this separate interim
+artifact only. Include passed 15%, 30%, uniform, noisy uniform and canonical
+studies, each with all 5001 saved states; show an explicit five-of-six notice
+and a pending-study record for 50% job 29745503, now RUN. Existing full report
+29745504 and every GPU job remain unchanged. Its all-six gates still apply.
+
+The interim scope manifest pins included/expected job IDs, missing-study
+metadata and fixed model/context digests. Included curves keep their colors
+from the planned six-case comparison. Scientific completeness, configuration,
+native identity and ancestry gates remain mandatory for every included input.
+Raw invalid graphs, fallback increases and strict-prefix boundaries remain
+visible. Source/CPU execution receipts and final delivery will be recorded
+in the ledger; authorization alone is not a generated report.
+
+Playback SVG now writes the same saved raw categories and probability size
+formulas directly, avoiding a separate plotting figure per frame. PNG overview
+snapshots keep their existing renderer. This affects presentation only; no
+model, probabilities, topology, optimization or sealed native release changes.

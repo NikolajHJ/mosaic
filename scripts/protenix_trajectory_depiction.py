@@ -6,7 +6,6 @@ scale controls visual size only; it never changes occupancy or molecular data.
 
 import io
 import os
-import xml.etree.ElementTree as ET
 
 
 DEPICTION_POLICY = {
@@ -25,6 +24,11 @@ def depict_graph(X, E, step, valid, *, svg=False):
     """Draw the same hard graph with subtle probability-dependent node/edge sizes."""
     if not os.environ.get("LSB_JOBID"):
         raise RuntimeError("Trajectory depiction requires an allocated DTU job")
+
+    if svg:
+        from protenix_trajectory_svg import graph_svg
+
+        return graph_svg(X, E, step, valid)
 
     import matplotlib.pyplot as plt
     from matplotlib.patches import Circle
@@ -120,16 +124,6 @@ def depict_graph(X, E, step, valid, *, svg=False):
     # Real SVG text keeps element labels readable in inline HTML. Glyph-path
     # xlink references can lose their namespace when parsed through innerHTML.
     with plt.rc_context({"svg.fonttype": "none"}):
-        fig.savefig(buffer, format="svg" if svg else "png", dpi=100)
+        fig.savefig(buffer, format="png", dpi=100)
     plt.close(fig)
-    if not svg:
-        return buffer.getvalue()
-    namespace = "http://www.w3.org/2000/svg"
-    ET.register_namespace("", namespace)
-    root = ET.fromstring(buffer.getvalue())
-    for group in root.iter(f"{{{namespace}}}g"):
-        if group.get("id") in tooltips:
-            title = ET.Element(f"{{{namespace}}}title")
-            title.text = tooltips[group.get("id")]
-            group.insert(0, title)
-    return ET.tostring(root, encoding="unicode")
+    return buffer.getvalue()
