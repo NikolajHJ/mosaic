@@ -2675,3 +2675,84 @@ the 208-test legacy result belongs to failed overall readiness 29753140 and is
 not chemistry parity or native validation. Stop further attempts during this
 authentication outage. All historical jobs/evidence and unrelated files remain
 unchanged; no local numerical checks were run.
+
+### Restored access; corrected readiness 29753148
+
+The next user-requested retry succeeded. Official work pool 6 quota was
+90.22/100 GiB, with 301,662/20,000,000 files; cached home usage remained
+10.71/30 G. Both `hpc` and `gpua10` were Open:Active. Release-04 was absent,
+and no new chemistry job existed, so the unique base was created without
+overwriting historical evidence. Transferred the already sealed release-04
+archive and reused its separately hash-authenticated bootstrap. Archive SHA
+`3280845270bc0f647d309b5671a2670e0d49a72c5c60f14a334427d479be5983`
+and all 350 extracted files authenticated against manifest
+`368f455800678c7aee020f09c1625fda67e6504e84a355f49b975516453531b6`.
+
+Corrected CPU readiness **29753148** is submitted to `hpc`, four slots,
+4 GiB/slot, one hour, and observed RUN on `n-62-30-25`. Run directory:
+`/zhome/95/e/206121/mosaic-runs/20261019-brd4-chemistry-04-readiness`.
+The complete legacy/oracle/new-JAX/report/reference sequence is pending at
+this entry. The gated native run remains unsubmitted until actual successful
+scheduler termination and its source-bound assessment authenticate. Existing
+DBMol jobs, historical Mosaic jobs and unrelated working files are unchanged.
+
+### Corrected readiness passed; native 29753152 and report 29753153 submitted
+
+Readiness **29753148** reached actual DONE on `n-62-30-25` after 170 scheduler
+seconds; persisted LSF record says Done successfully. Legacy suite: **208
+passed**, three native-model tests deselected, 64.97 s. Chemistry/report suite:
+**45 passed**, 87.76 s. Neither suite has failures/errors/skips. Twelve pinned
+original-source value/VJP fixtures generated; oracle SHA-256
+`149360975e19e01a2145543404b3b790f54b41cb892d5cd377b539327fb0551e`.
+New JAX parity/gradient/directional/identity/report fixtures all passed.
+No native Protenix numerical pass is inferred from these CPU tests.
+
+Empirical reference preprocessing passed on 1,688,539 authenticated TRAIN
+molecules. Source occupied-atom counts total 36,521,162, including 54,376 Br
+excluded when conditioning onto the six supported elements. Excluded P/I
+counts are zero; full source charge/element counts and data identities are
+retained. Reference SHA
+`9135e9985dfd6c6d6afd96726ae1d4c1a5edc6a4966127475a1fec888c849bdc`.
+Assessment SHA
+`dd4afb5f403c664997f8c8f9058c0d46c48ea3870800ea9fba79faa948f41d22`;
+it binds config `42de1ea55cced1d2c0577f65332c26a439d34b61cc620301c439372f88d0ae72`,
+source manifest `368f455800678c7aee020f09c1625fda67e6504e84a355f49b975516453531b6`,
+the XML proofs, original-source oracles and reference bytes. Legacy XML SHA
+`943ad9b77afb50126fd488b9dc86cdebc85e79fb8b69ce1578cea0e55a91a3fe`;
+chemistry XML `927adc72fbe86ae51268a1f2a281b48252c073ab8a24a42eacdd2794cfb92858`.
+
+After authenticating successful CPU termination and its assessment, reverified
+all 350 sealed source files and invoked the unchanged native submitter.
+GPU **29753152** submitted at 01:55:49 Europe/Paris to `gpua10`: one exclusive
+A10, four slots, 8 GiB/slot (32 GiB total), 23 h, `done(29753148)`. Its scheduler
+record confirms the requested GPU/resources and initially reports PEND/New job
+waiting for scheduling. Run directory:
+`/zhome/95/e/206121/mosaic-runs/20261019-brd4-chemistry-04-native`.
+It must pass native contact FD/null/parity, invalid-F positive chemistry/VJP
+and combined FD, frozen identities, ten disposable pilot updates and runtime
+fit before the fresh 5000 updates. Keep six neutral occupied atoms, seed 17,
+50% chain/uniform initialization, LR .03, contact + .5 chemistry + .1 element-JS.
+
+CPU report/evidence **29753153** submitted to `hpc`, two slots, 4 GiB/slot,
+one hour, `ended(29753152)`, initially PEND. Run directory:
+`/zhome/95/e/206121/mosaic-runs/20261019-brd4-chemistry-04-report`.
+It retains raw invalid graphs and partial/failure evidence without weakening
+native identity gates. Submission/queueing is not native validation, an
+optimization start/completion or a rendered report. Previous failed attempts,
+six historical studies and other campaigns remain unchanged.
+
+Readiness proof bundle downloaded to
+`results/hpc/20261019-brd4-chemistry/readiness-04/`: 36,663 bytes, archive SHA
+`7bf1a097f04338ccbc2c11ce4c6c07e28ef2611481a3afadad604efb067f8869`.
+Local Python 3.13 stdlib authenticated exact bytes, 24 unique safe regular
+members, source/configuration/assessment identities, XML test counts with no
+errors/skips, reference/oracle hashes, persisted CPU success and submission
+receipts. Receipt: `verification.json`. This was saved-evidence verification
+only; no local numerical tests, chemistry evaluation or scientific rendering.
+
+Failed readiness 29753140 proof also downloaded to `readiness-03/`: eight
+files, 8,438-byte archive SHA
+`acc04e1b46ea0982078fd8760e2e92ba2aa4d743b2a5c3261bf5279a36fcc0e4`.
+Stdlib checks/safe extraction confirm actual EXIT and the preserved constant-
+output oracle error. Receipt: `readiness-03/verification.json`. Historical
+failure is not retroactively a passed readiness or native scientific failure.

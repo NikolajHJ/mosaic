@@ -71,8 +71,9 @@ and report rendering remain on allocated DTU HPC.
 - [x] Integrate fresh 50% run, recording and interactive report support.
 - [x] Author allocated parity, gradient, identity and trajectory fixtures.
 - [x] Seal current source/configuration locally and prepare unique HPC launchers.
-- [ ] Pass allocated CPU readiness and bounded native GPU pilot.
-- [ ] Submit the gated 5000-update run and record actual job IDs.
+- [x] Pass allocated CPU readiness: 29753148, 253 selected tests passed.
+- [ ] Pass the bounded native GPU pilot within the submitted allocation.
+- [x] Submit the gated 5000-update run: GPU 29753152, report 29753153.
 - [ ] Verify completed evidence and deliver the saved-only report.
 
 Initial access attempt: `ssh -o BatchMode=yes -o ConnectTimeout=15 dtu-hpc`
@@ -107,7 +108,8 @@ twelve value/VJP fixtures in the existing allocated Torch environment. The JAX
 suite covers all six terms, normalization/padding, extreme-logit gradients,
 local risk's absent atom/charge gradient, genuine depth-four coverage, identity
 rejection, native softmax pullback, no-op fallbacks and nonfinite failures.
-FP32 and promoted FP16 math have separate fixtures. None has run for this port.
+FP32 and promoted FP16 math have separate fixtures. Allocated CPU results
+are recorded below; they do not establish native model validation.
 
 The new report entry point is `scripts/render_chemistry_trajectory.py`, with
 `scripts/chemistry_report_template.html`. It reads captured probabilities only,
@@ -144,7 +146,7 @@ validity are distinct from detached valid/partial witnesses.
 Wrappers: `scripts/hpc/brd4_chemistry_readiness.lsf`, `brd4_chemistry.lsf`,
 `brd4_chemistry_report.lsf`. Config: `examples/configs/brd4_chemistry_5000.json`.
 Every retry needs a new immutable release/run, including engineering fixes.
-No new job IDs or numerical outcomes exist yet.
+At initial preparation, no new job IDs or numerical outcomes existed.
 
 Static review passed: 35 Python AST parses, eight extracted-source and eleven
 original-source byte checks, handwritten-code Ruff check/format, JavaScript
@@ -208,7 +210,7 @@ for those terms, retaining normal autodiff for differentiable terms. No
 original-source, JAX implementation, scientific setting or tolerance changes.
 Preserve this failed job and use release/run 04 for complete revalidation.
 
-Current execution blocker: after sealing release 04, one SSH attempt timed
+Access interruption before release-04 validation: one SSH attempt timed
 out and one bounded retry after 30 seconds disconnected with `Connection
 reset`. Both failed in the initial metadata-only SSH stage, before the new
 archive SCP or any submission command. The remote release-04 directory or
@@ -224,10 +226,54 @@ manifest `368f455800678c7aee020f09c1625fda67e6504e84a355f49b975516453531b6`.
 These final receipt notes postdate that immutable local archive. All original
 source snapshots, JAX loss/optimizer and configuration bytes remain unchanged.
 
-Latest user-requested connection retry (19 October): the SSH server responded,
+An earlier user-requested connection retry (19 October): the SSH server responded,
 but authentication failed with `s234818@login1.hpc.dtu.dk: Permission denied
 (password)`. The metadata command did not execute. No fresh quota/scheduler
 observation, release-04 upload, corrected test run or native/report submission
 occurred. Keep the sealed corrected source and passed historical legacy proof;
 chemistry readiness remains pending restored SSH authentication. One connection
 attempt was made for this follow-up, with no repeated authentication attempts.
+
+## Corrected validation passed; study submitted — 19 October
+
+Access is restored. CPU readiness **29753148** completed successfully on
+`n-62-30-25` in 170 scheduler seconds: **208 legacy tests passed** (64.97 s),
+**45 chemistry/report tests passed** (87.76 s), zero failures/errors/skips.
+Three legacy native-model tests were deselected by the existing CPU marker
+selection. All twelve original-source value/VJP fixtures generated, and the
+new JAX suite passed their values, gradients, directional differences,
+normalization, fixed-target identities and report fixtures. This establishes
+allocated CPU port/engineering evidence, not native Protenix validation.
+
+The training-only composition export passed for 1,688,539 authenticated
+training molecules. It records the full source counts and excludes 54,376 Br
+atoms when conditioning onto C/N/O/S/F/Cl; P and I excluded counts are zero.
+Reference SHA-256:
+`9135e9985dfd6c6d6afd96726ae1d4c1a5edc6a4966127475a1fec888c849bdc`.
+CPU assessment SHA-256:
+`dd4afb5f403c664997f8c8f9058c0d46c48ea3870800ea9fba79faa948f41d22`.
+Source/configuration remain the sealed release-04 identities above.
+
+After actual CPU DONE and assessment authentication, submitted **29753152**
+to `gpua10` at 01:55:49 Europe/Paris: one exclusive A10, four CPU slots,
+8 GiB/slot (32 GiB total), 23 hours, dependency `done(29753148)`. Its initial
+state is **PEND**, waiting for scheduling. Native gradient/null/parity and
+invalid-F chemistry checks, frozen model/context identities, the disposable
+ten-update pilot and runtime-fit gate must pass before the fresh 5000 updates.
+N=6, seed 17, 50% chain/uniform law, LR .03 and all loss weights are unchanged.
+Run: `/zhome/95/e/206121/mosaic-runs/20261019-brd4-chemistry-04-native`.
+
+Report/evidence **29753153** is submitted to `hpc`, two CPU slots, one hour,
+with dependency `ended(29753152)`. It preserves failed/partial evidence and
+cannot waive identity gates. Run:
+`/zhome/95/e/206121/mosaic-runs/20261019-brd4-chemistry-04-report`.
+Neither native scientific validation, optimization completion nor a new
+rendered report is claimed from these submissions.
+
+Downloaded CPU proof bundle: `results/hpc/20261019-brd4-chemistry/readiness-04/`.
+Archive 36,663 bytes, SHA-256
+`7bf1a097f04338ccbc2c11ce4c6c07e28ef2611481a3afadad604efb067f8869`.
+Local stdlib byte/schema checks authenticated 24 files, assessment/source/config,
+XML/oracle/reference proofs, CPU success and native/report submission receipts.
+No local numerical execution or scientific rendering occurred. Failed readiness
+03 was also downloaded/verified and remains visible beside failed readiness 01.
