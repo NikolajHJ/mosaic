@@ -223,3 +223,11 @@ Prepared local release 04: `results/releases/brd4-chemistry-20261019-04/`,
 manifest `368f455800678c7aee020f09c1625fda67e6504e84a355f49b975516453531b6`.
 These final receipt notes postdate that immutable local archive. All original
 source snapshots, JAX loss/optimizer and configuration bytes remain unchanged.
+
+Latest user-requested connection retry (19 October): the SSH server responded,
+but authentication failed with `s234818@login1.hpc.dtu.dk: Permission denied
+(password)`. The metadata command did not execute. No fresh quota/scheduler
+observation, release-04 upload, corrected test run or native/report submission
+occurred. Keep the sealed corrected source and passed historical legacy proof;
+chemistry readiness remains pending restored SSH authentication. One connection
+attempt was made for this follow-up, with no repeated authentication attempts.

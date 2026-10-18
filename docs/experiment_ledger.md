@@ -2660,3 +2660,18 @@ and error evidence remains on HPC; its final-record download is pending.
 No claim of chemistry parity, native validation, empirical preprocessing or
 5000-update execution is made. Current blocker is unstable SSH access,
 not storage capacity. These final notes postdate the local sealed archive.
+
+### User-requested connection retry — 19 October
+
+The user requested connecting again, running the corrected tests and submitting
+the 50% chemistry run only after passing validation. One bounded attempt using
+`ssh -o BatchMode=yes -o ConnectTimeout=15 dtu-hpc 'bash -l -s'` reached the DTU
+banner but failed authentication: `s234818@login1.hpc.dtu.dk: Permission denied
+(password)`. No remote metadata command executed, so no fresh quota/scheduler
+state or release-04 directory state is asserted. No upload, corrected numerical
+test, empirical preprocessing or GPU/report job was submitted. The corrected
+sealed local release-04 archive/manifest above and commit ea15497 remain ready;
+the 208-test legacy result belongs to failed overall readiness 29753140 and is
+not chemistry parity or native validation. Stop further attempts during this
+authentication outage. All historical jobs/evidence and unrelated files remain
+unchanged; no local numerical checks were run.
