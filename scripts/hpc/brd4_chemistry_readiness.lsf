@@ -18,8 +18,16 @@ export TMPDIR="$run/tmp" MPLCONFIGDIR="$run/mplcache"
 mkdir "$TMPDIR"
 cd "$release"
 hostname > "$run/host.txt"
-"$python" -m pytest tests/test_small_molecule_*.py \
-  --ignore=tests/test_small_molecule_chemistry.py --ignore=tests/test_small_molecule_chemistry_report.py \
+legacy_tests=()
+for test_file in tests/test_small_molecule_*.py; do
+  case "$test_file" in
+    tests/test_small_molecule_chemistry.py|tests/test_small_molecule_chemistry_report.py) ;;
+    *) legacy_tests+=("$test_file") ;;
+  esac
+done
+# --ignore does not filter explicitly expanded command-line file arguments.
+# Select the legacy files before pytest; chemistry needs the later FP64/oracle phase.
+"$python" -m pytest "${legacy_tests[@]}" \
   -o addopts= -m 'not slow and not small_molecule_model' \
   -o cache_dir="$run/pytest-cache-legacy" --basetemp "$run/pytest-unit-tmp-legacy" \
   --junitxml="$run/legacy-unit.xml" > "$run/legacy-unit.log" 2>&1

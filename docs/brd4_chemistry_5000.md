@@ -166,3 +166,60 @@ operator alongside the archive; authenticate its SHA before executing it,
 because it creates/extracts the source directory. Bootstrap SHA-256:
 `af8be632de5e3383acfe231e33e771f62bbc8bd55e7f8b4389a4a16309d0f4d1`.
 The native submission operator is then available inside the verified source.
+
+## Restored access and allocated validation — 19 October
+
+SSH authentication now succeeds. Official work quota is 89.77/100 GiB;
+cached home quota is 10.71/30 G. The A10 queue is Open:Active and permits
+24 hours, so the declared one-GPU/four-slot/23-hour request is supported.
+The original sealed release authenticated all 350 files remotely, and CPU
+readiness 29753139 started on `n-62-30-25` with a passing 19 GiB available
+home reserve. It has not passed: its legacy-phase file glob explicitly
+included the new chemistry fixtures despite pytest `--ignore` arguments.
+Those fixtures require the later oracle/FP64 phase and produced a failure
+and skips. The native run remains unsubmitted.
+
+Corrected only the readiness wrapper's file selection: build a Bash array
+excluding the two new modules, then execute the unchanged legacy test
+selection. The new modules remain mandatory in their separate FP64 phase
+with authenticated original-source oracles. No gate or tolerance is relaxed.
+Preserve release/run 01 and its actual outcome; use unique release/run 02
+for the corrected launcher. All scientific production/test/config bytes
+remain unchanged. Local Bash syntax and Git whitespace checks passed.
+
+Job 29753139 ended EXIT: 216 passed, one failed, 35 skipped, three deselected
+in 110.23 seconds. The early roundtrip fixture observed absolute FP32 error
+1.1920929e-7, two ULPs near probability .5833, above its decimal 1e-7 bound.
+Use an explicit `2 * finfo(dtype).eps` absolute roundoff bound (2.3841858e-7
+for FP32) in the initialization replay check, with both FP32/FP64 unit
+coverage. This checks log/softmax numerical replay, not exact bitwise
+initialization; native FD/parity and chemistry-oracle tolerances are unchanged.
+Release 02 contains only the launcher fix and was transferred but never
+submitted. Release/run 03 includes this bounded roundoff correction and the
+same scientific configuration, production loss and optimizer. Preserve both
+earlier sealed archives and the failed job. Ruff and whitespace checks passed.
+
+Readiness 29753140 (release 03) passed all 208 legacy tests, then failed in
+the oracle generator before new JAX tests or reference preprocessing. The
+original Torch source returns detached constant zeros for inactive terms;
+`autograd.grad(..., allow_unused=True)` cannot accept a constant output.
+The generator now records an explicit zero VJP and `constant_components`
+for those terms, retaining normal autodiff for differentiable terms. No
+original-source, JAX implementation, scientific setting or tolerance changes.
+Preserve this failed job and use release/run 04 for complete revalidation.
+
+Current execution blocker: after sealing release 04, one SSH attempt timed
+out and one bounded retry after 30 seconds disconnected with `Connection
+reset`. Both failed in the initial metadata-only SSH stage, before the new
+archive SCP or any submission command. The remote release-04 directory or
+bootstrap may have been created; inspect before reuse. No release-04 source
+archive was uploaded and no new test/native/report job was submitted.
+Stop repeated connections during this outage. The completed 208-test legacy
+pass remains evidence for release 03, not a chemistry-parity or native pass.
+
+Prepared local release 04: `results/releases/brd4-chemistry-20261019-04/`,
+350 files, 39,163,735 bytes; archive SHA-256
+`3280845270bc0f647d309b5671a2670e0d49a72c5c60f14a334427d479be5983`,
+manifest `368f455800678c7aee020f09c1625fda67e6504e84a355f49b975516453531b6`.
+These final receipt notes postdate that immutable local archive. All original
+source snapshots, JAX loss/optimizer and configuration bytes remain unchanged.

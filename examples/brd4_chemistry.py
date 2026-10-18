@@ -140,7 +140,12 @@ def main():
         graph = mix_with_uniform(hard, config["mixing"])
         initial = GraphLogits.from_graph(graph)
         if not all(
-            np.allclose(np.asarray(a), np.asarray(b), atol=1e-7, rtol=0)
+            np.allclose(
+                np.asarray(a),
+                np.asarray(b),
+                atol=2 * np.finfo(np.asarray(b).dtype).eps,
+                rtol=0,
+            )
             for a, b in (
                 (graph.X, initial.graph().X),
                 (graph.E_upper, initial.graph().E_upper),

@@ -173,13 +173,21 @@ def main():
         )
         result = failure_aware_repair_loss(output, prepared, spec)
         gradients = {}
+        constant_components = []
         for key in keys:
-            grads = torch.autograd.grad(
-                result[key],
-                (output.atoms, output.charges, output.bonds),
-                retain_graph=True,
-                allow_unused=True,
-            )
+            if result[key].requires_grad:
+                grads = torch.autograd.grad(
+                    result[key],
+                    (output.atoms, output.charges, output.bonds),
+                    retain_graph=True,
+                    allow_unused=True,
+                )
+            else:
+                # The original source returns detached zeros for inactive
+                # routes. allow_unused covers unused inputs, not a constant
+                # output; its mathematical VJP is zero for every input.
+                grads = (None, None, None)
+                constant_components.append(key)
             gradients[key] = [
                 (torch.zeros_like(v) if g is None else g).detach().tolist()
                 for v, g in zip((output.atoms, output.charges, output.bonds), grads)
@@ -201,6 +209,7 @@ def main():
                 "progress_search": progress,
                 "values": {k: float(result[k].detach()) for k in keys},
                 "gradients": gradients,
+                "constant_components": constant_components,
                 "composition": {
                     "elements": stats.elements.detach().tolist(),
                     "charges": stats.charges.detach().tolist(),

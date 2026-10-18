@@ -234,19 +234,26 @@ def test_reference_symbol_bytes_and_full_valence_table_are_pinned():
     )
 
 
-def test_fixed_mosaic_schema_uses_actual_order_and_preserves_positive_initial_probabilities():
+@pytest.mark.parametrize("dtype", [jnp.float32, jnp.float64])
+def test_fixed_mosaic_schema_uses_actual_order_and_preserves_positive_initial_probabilities(
+    dtype,
+):
     assert ELEMENTS == ("C", "N", "O", "S", "F", "Cl")
     spec = mosaic_spec(6)
     assert spec.atomic_numbers == (0, 6, 7, 8, 16, 9, 17)
     assert spec.formal_charges == (0,)
     hard = graph_from_hard(
-        [0] * 6, [1 if j == i + 1 else 0 for i in range(6) for j in range(i + 1, 6)]
+        [0] * 6,
+        [1 if j == i + 1 else 0 for i in range(6) for j in range(i + 1, 6)],
+        dtype=dtype,
     )
     initial = mix_with_uniform(hard, 0.5)
     logits = GraphLogits.from_graph(initial)
-    np.testing.assert_allclose(logits.graph().X, initial.X, rtol=0, atol=1e-7)
+    # log -> softmax is a floating-point roundtrip, not a bitwise identity.
+    tolerance = 2 * np.finfo(np.asarray(initial.X).dtype).eps
+    np.testing.assert_allclose(logits.graph().X, initial.X, rtol=0, atol=tolerance)
     np.testing.assert_allclose(
-        logits.graph().E_upper, initial.E_upper, rtol=0, atol=1e-7
+        logits.graph().E_upper, initial.E_upper, rtol=0, atol=tolerance
     )
     decoded = logits.decoded()
     assert float(jnp.max(jax.nn.softmax(decoded.atoms, -1)[..., 0])) == 0

@@ -2576,3 +2576,87 @@ copy separately with the archive and authenticate before execution. Native
 submission remains gated by actual CPU DONE and its source-bound assessment.
 These receipt notes were added after sealing and are not represented as bytes
 inside that immutable archive. All scientific source bytes remain unchanged.
+
+## 2026-10-19 — restored access; chemistry readiness submitted
+
+The user requested another connection attempt, allocated tests and submission
+of the fresh 50% chain/uniform chemistry run after passing checks. SSH access
+worked. Official quota reports showed work pool 6 at 89.77/100 GiB and home
+at 10.71/30 G (cached about four hours). The A10 queue is Open:Active, has
+real running jobs and permits 1440 minutes; the requested 23 hours is within
+that limit. Existing DBMol jobs were observed but left unchanged.
+
+Transferred the previously sealed 39,159,288-byte archive, manifest and
+separate readiness bootstrap to the planned release base above. Remote
+archive, manifest and bootstrap SHA-256 checks passed; all 350 extracted
+source files authenticated. The source directory is read-only. An initial
+operator invocation failed before submission because it lacked the login
+shell scheduler environment; no job existed from that attempt. The exact
+declared readiness command was then submitted from a login shell, without
+changing the source or scientific settings.
+
+CPU readiness **29753139** was submitted to `hpc` at 01:41:38 Europe/Paris,
+with four slots, 4 GiB/slot and one hour. It started at 01:41:40 on
+`n-62-30-25`. The allocated quota gate passed with 19 GiB conservatively
+available, against an 8 GiB reserve. Run directory:
+`/zhome/95/e/206121/mosaic-runs/20261019-brd4-chemistry-01-readiness`.
+Legacy tests, original Torch oracles, new JAX/report tests, empirical-reference
+preprocessing and assessment are pending at this entry. No numerical pass,
+native GPU submission or optimization start is claimed yet.
+
+Readiness 29753139 exposed a launch-selection defect: the shell expands
+`tests/test_small_molecule_*.py` into explicit pytest arguments, and pytest
+`--ignore` does not remove those explicit files. New chemistry fixtures
+therefore ran prematurely in FP32 without their original-source oracles,
+with a recorded failure and skips. The required later FP64/oracle phase
+is not waived. Corrected the wrapper to select legacy files into a Bash
+array before invoking pytest. Bash syntax and Git whitespace checks passed;
+all scientific source/test/config bytes remain unchanged. Release/run 01
+is preserved; prepare a unique release/run 02 for allocated revalidation.
+
+29753139 reached actual EXIT after 117 scheduler seconds; pytest recorded
+216 passed, one failed, 35 skipped, three deselected in 110.23 seconds. Its
+single failure was the prematurely selected initialization roundtrip fixture:
+FP32 log/softmax error 1.1920929e-7 exceeded decimal atol 1e-7. Changed only
+that replay bound to `2 * finfo(dtype).eps`, with FP32/FP64 test coverage;
+no chemistry value/VJP, native FD/null/parity or identity tolerance changed.
+Release 02 (manifest 6ed656d054902b440fe777b4bd1630ceb52b63bfdb706f842d5d097437aaa763,
+archive 2ad6b888163ff3123da400066a5a053ac90029bcf22dcbe33ef0b93b5902aa55)
+was transferred but never submitted; retain it as superseded packaging.
+Prepare release/run 03 with both engineering fixes. No oracle, composition
+preprocessing, native model or optimization ran in the failed attempt.
+
+Corrected release 03: 350 files, 39,163,306-byte archive SHA
+382d8dbe2f3edb5850cf810d760ac9f62ea77cd035b71cd40e57d90c623e0d79;
+manifest 3a3f4710d3d7a8e61138e3464e18bb0eb29173cf5677432bf3b4dfb2022b2a00.
+All production `src/` and configuration bytes match release 01. Remote
+authentication passed. Readiness **29753140** ran on `n-62-30-25`, then
+ended EXIT after 104 scheduler seconds. Legacy suite: **208 passed, three
+deselected, zero skips/failures**, 93.45 seconds. The next oracle stage
+raised PyTorch's constant-output `does not require grad` error: inactive
+source terms return detached zero tensors. `allow_unused` handles unused
+inputs, not an output lacking a grad function. New JAX tests/reference/native
+optimization did not run.
+
+Fixed only the generator to record mathematical zero VJPs for those constant
+terms, explicitly listing `constant_components`; differentiable terms still
+use original-source autograd. Source snapshot, JAX loss and all native/parity
+gates remain unchanged. Release/run 04 will rerun the complete sequence.
+Failed attempt 01's logs, XML, scheduler and quota proofs are downloaded to
+`results/hpc/20261019-brd4-chemistry/readiness-01/` and retained remotely.
+
+Sealed local release 04: 350 files, 39,163,735-byte archive SHA-256
+`3280845270bc0f647d309b5671a2670e0d49a72c5c60f14a334427d479be5983`,
+manifest `368f455800678c7aee020f09c1625fda67e6504e84a355f49b975516453531b6`.
+Ruff check/format passed for the oracle-generator fix. The initial SSH stage
+of the transfer operator timed out. A single bounded retry after 30 seconds
+reached the banner but disconnected with `client_loop: send disconnect:
+Connection reset`. Stop further attempts during this outage. The traceback
+identifies failure in the initial metadata SSH, before archive transfer or
+the later submission stage; no release-04 test/GPU/report job was submitted.
+Its remote directory/bootstrap and release-03 final-record bundle may have
+been partly created: inspect those paths before reuse. Release-03 scientific
+and error evidence remains on HPC; its final-record download is pending.
+No claim of chemistry parity, native validation, empirical preprocessing or
+5000-update execution is made. Current blocker is unstable SSH access,
+not storage capacity. These final notes postdate the local sealed archive.
