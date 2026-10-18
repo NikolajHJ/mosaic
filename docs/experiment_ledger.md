@@ -2392,3 +2392,97 @@ when binding the error tab; no alternate browser/DOM workaround was attempted.
 Visual/playback QA is therefore not certified. The user can reload the existing
 page at `http://127.0.0.1:8770/report.html`. The separate all-six report and
 completion monitor remain active; the last scheduler check still had 50% RUN.
+
+## 2026-10-18 — final 50% case and six-case report completed
+
+The user requested adding the last case and an updated link. Both jobs have
+aged out of `bjobs -a`; authenticated persisted LSF stdout confirms successful
+completion. Chain 50% **29745503** ran on `n-62-18-5` from 17 October 23:02:29
+to 18 October 01:25:10 Europe/Paris (8561 seconds). Native summary/case status
+is passed, source indices [2], 5001 saved states ending at update 5000.
+Independent-primal loss changed from -0.2778552771 to -0.5394011736.
+Model and context before/after digests match the previously pinned identities.
+Source remains parallel-01; no native experiment was restarted or changed.
+
+Full combined report/evidence **29745504** ran on `n-62-31-15`, 18 October
+01:25:10–02:18:20 Europe/Paris (3190 seconds), successfully completed. All six
+native input IDs are retained in its analysis, including 29745503. Canonical
+summary SHA check passed. Entry quota required 8 GiB and passed with 20 GiB
+conservatively available; packaging's actual-byte-plus-reserve gate required
+5.6151 GiB and passed. Source/manifest remains the original sealed parallel-01;
+the interim report tooling did not alter this job.
+
+Archive `/zhome/95/e/206121/mosaic-runs/20261017-brd4-best-primal-report-02.tar.gz`:
+786,077,737 bytes, 186,506 files, SHA-256
+`4d5540823d5b43c8b2ca60900c52c1c28653f5a43287369d9d533df41c2b9b4d`.
+Remote receipt `.tar.receipt.json` was read and independently downloaded.
+The standalone full report HTML is 417,532,320 bytes, with six probability
+heatmaps and loss/change/molecule snapshots. Download is in progress into a
+fresh local `results/hpc/20261017-brd4-parallel/complete-report-01/` directory.
+Final local archive/manifest/schema checks and viewer delivery are pending
+at this entry. Existing five-case report and server remain preserved.
+
+### Six-case download, identity checks and viewer
+
+The archive and receipt are now downloaded to
+`results/hpc/20261017-brd4-parallel/complete-report-01/`. Exact remote path,
+786,077,737-byte archive length and SHA-256 match the remote receipt above.
+`scripts/verify_hpc_evidence.py` authenticated the archive and safely extracted
+its members. A desktop/tool reset interrupted its final extracted-file hash
+loop; no final archive verification receipt was claimed at that point.
+The retry performs stdlib byte checks only and reauthenticates the manifest
+against the original archive, with no re-extraction or scientific execution:
+
+```powershell
+py -3.13 scripts/hpc/receipts/20261017-brd4-best-primal/verify-complete-report-download.py results/hpc/20261017-brd4-parallel/complete-report-01
+```
+
+Local `study-verification.json` independently records all six native input IDs
+29745501/29745502/29745503/29745473/29745474/29736988, each passed with
+5001 contiguous states, six atom slots and 15 unordered bond rows. Chain
+source indices remain [0]/[1]/[2]. Expected fixed model/context digests,
+seed 17, 5000 total updates, LR=0.03, copied continuation plan identity and
+native-summary identities match. All three original strict parent summaries
+retain failed status. The canonical study did not copy a configuration.json;
+its saved native configuration matches the original source JSON and its SHA
+`49e01e601f77e21770d19b4a40df365315e4521318245d14ccec6e7cdbe6e359`.
+These are saved-file/schema checks, not new numerical model validation.
+
+All 13 rendered report files match the authenticated evidence manifest's
+lengths and SHA-256 values. HTML: 417,532,320 bytes, SHA
+`94e3072394c2f2c48813edaab05bb9c0c0577afb439428a7ab838d6a1b16c9a9`.
+`final-scheduler-records/` contains authenticated successful LSF completion
+stdout for 29745503 and 29745504, with downloaded byte/hash receipts.
+
+Restored the local viewer with the existing detached loopback helper on
+port 8771. A separate command after the launcher exited confirmed HTTP 200
+and Content-Length 417532320 at `http://127.0.0.1:8771/report.html`.
+The prior process had disappeared between tool sessions. Browser inspection
+of the new large report disconnected the automation transport without returning
+page state; visual/playback QA is not certified. No alternate browser-policy
+workaround or local scientific rendering was performed. User received the
+updated six-case link. The completion heartbeat is already PAUSED and remains
+paused. Existing five-case artifact and unrelated working changes are retained.
+
+Inspected the actual saved `loss.png` and `molecule_endpoints.png` locally
+without rendering them again. All six colored curves reach update 5000;
+strict-prefix boundaries appear as dotted vertical lines. Initial/final raw
+graphs retain readable element/slot labels and visible probability-dependent
+atom/bond sizes. All six final hard readouts are explicitly marked INVALID,
+including dense halogen-rich or disconnected output; those graphs are kept
+as produced. This static-image inspection does not certify interactive
+selection, playback or browser behavior.
+
+The versioned post-extraction operator above completed successfully on local
+Windows Python 3.13: **186,506/186,506 files matched**, with no missing files,
+path/size differences or checksum mismatches (463 seconds for the per-file
+pass, eight I/O workers). Archive path/bytes/SHA and the extracted manifest's
+exact bytes were reauthenticated first. Manifest SHA-256:
+`5d070e3b72d41bd8c8cb6ed343d78921c5fb1c76f6d7693f50f9c96e85d423d1`.
+Final receipt:
+`results/hpc/20261017-brd4-parallel/complete-report-01/20261017-brd4-best-primal-report-02-download.json`.
+This completes local evidence integrity verification. Ruff check/format and
+Git whitespace checks passed for the new byte-verification operator/docs;
+these are static engineering checks. No local numerical tests, scientific
+rendering, chemistry evaluation or model execution were performed. Interactive
+browser QA remains explicitly unconfirmed as recorded above.

@@ -55,8 +55,11 @@ in the experiment ledger; this plan is not evidence of submission or a pass.
 - [x] Submit three unique GPU studies with a passed readiness dependency and
   fresh per-job quota/source/parent checks. Leave historical jobs unchanged.
 - [x] Submit the dependent allocated CPU six-case report/evidence job.
-- [ ] Authenticate final native/report outcomes, download/verify and browser-QA
-  the actual report before delivery.
+- [x] Authenticate final native/report outcomes and all six saved study identities.
+- [x] Download the report and verify its 13 files against the evidence manifest.
+- [x] Finish the complete archive's extracted-file integrity pass (186,506 files).
+- [ ] Visually inspect playback in a browser; automated inspection is unavailable
+  after the browser transport disconnected while loading the large HTML.
 
 The aggregate 20 GiB readiness bound conservatively reserves three full prior
 three-case native/report artifact budgets (about 3.324 GiB each), an additional
@@ -209,3 +212,25 @@ identities. Chain 50% **29745503** is still PEND with scheduler reason
 `Job slot limit reached: 1 host`; report **29745504** is still PEND. The 50%
 case is the only unfinished native trajectory; no complete combined report
 exists yet. All job settings remain unchanged.
+
+## Final native and report completion — 2026-10-18
+
+The 50% case **29745503** completed at 01:25:10 Europe/Paris: native checks
+passed, source index [2], 5001 states through update 5000, frozen model/context
+before/after identities unchanged. Final independent-primal loss -0.5394011736.
+All six requested native trajectories have now reached their 5000-update
+budgets. This is exploratory full-budget completion under their recorded
+strict/best-primal policy segments; it does not retroactively complete the
+failed strict parents or establish monotone descent/chemical validity/binding.
+
+Full report/evidence **29745504** successfully completed at 02:18:20
+Europe/Paris. Its archive receipt and local delivery verification are recorded
+in the ledger. The earlier interim report remains a separate saved artifact.
+
+The all-six HTML is downloaded and served at
+`http://127.0.0.1:8771/report.html`. All six input IDs, 5001 contiguous states
+per case, six atom slots, original chain source indices and frozen model/context
+identities passed local stdlib saved-file checks. The report's 13 files and all
+186,506 archived evidence files match the authenticated archive manifest.
+The final verification receipt is recorded in the ledger. The 417,532,320-byte HTML may take time to load;
+HTTP availability is confirmed, while visual/playback QA remains unconfirmed.

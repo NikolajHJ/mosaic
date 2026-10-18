@@ -245,3 +245,45 @@ Open `http://127.0.0.1:8770/report.html`. On Windows the helper creates a
 detached process outside the launching job, so ending a chat command does not
 stop the server. It installs no service/startup task and serves saved files
 only. The offline HTML is also self-contained.
+
+## Completed six-case report — 2026-10-18
+
+The last 50% chain job **29745503** passed its 5000-update budget, and full
+report/evidence **29745504** successfully completed. The final report includes
+15%, 30%, 50%, uniform, noisy uniform and canonical diffuse initialization.
+It retains the original strict prefixes, best-primal continuation boundaries,
+fallback steps, loss increases and raw invalid/disconnected graphs.
+
+Local report directory:
+`results/hpc/20261017-brd4-parallel/complete-report-01/20261017-brd4-best-primal-report-02/20261017-brd4-best-primal-report-02/payload/report/`.
+The updated viewer is `http://127.0.0.1:8771/report.html`. To restart it from
+the repository root:
+
+```powershell
+py -3.13 scripts/serve_protenix_report.py results/hpc/20261017-brd4-parallel/complete-report-01/20261017-brd4-best-primal-report-02/20261017-brd4-best-primal-report-02/payload/report --port 8771
+```
+
+All 13 report files and all 186,506 archived evidence files passed manifest
+size/SHA-256 checks. Saved-study checks
+retain all six expected native IDs, 5001 contiguous states per case, N=6,
+selected chain indices [0]/[1]/[2] and unchanged frozen model/context identities.
+The report is 417,532,320 bytes; loading can take time. The browser tool's
+transport disconnected on opening this large page, so automatic visual/playback
+QA is unconfirmed. HTTP availability is checked separately. The full evidence
+archive's verification receipt and exact outcomes are recorded in the ledger.
+
+| Initialization | Final independent-primal loss |
+| --- | ---: |
+| Chain 15% | -0.4594642818 |
+| Chain 30% | -0.4677774906 |
+| Chain 50% | -0.5394011736 |
+| Uniform | -0.5648135543 |
+| Noisy uniform | -0.5617392659 |
+| Canonical diffuse | -0.5622491241 |
+
+These are saved endpoint values of the contact objective. Different strict
+and fallback exposure makes this an exploratory comparison; these scores do
+not establish chemical validity, binding affinity or convergence. Original
+failed strict parents remain failed historical records. No model execution
+or chemistry evaluation was repeated to deliver this report. The completion
+heartbeat is paused.
