@@ -11,3 +11,10 @@ scripts/hpc/receipts/**/*.sh text eol=lf
 scripts/templates/*.html text eol=lf
 src/mosaic/small_molecule/*.py text eol=lf
 tests/test_small_molecule*.py text eol=lf
+
+# Byte-authenticated upstream snapshots must survive Windows checkouts intact.
+src/mosaic/small_molecule/chemistry/_reference/** -text
+tests/data/chemistry_oracle/** -text
+src/mosaic/small_molecule/chemistry/*.py text eol=lf
+scripts/chemistry_report_template.html text eol=lf
+scripts/hpc/submit_chemistry_*.sh text eol=lf

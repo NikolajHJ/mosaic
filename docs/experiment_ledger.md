@@ -2486,3 +2486,71 @@ Git whitespace checks passed for the new byte-verification operator/docs;
 these are static engineering checks. No local numerical tests, scientific
 rendering, chemistry evaluation or model execution were performed. Interactive
 browser QA remains explicitly unconfirmed as recorded above.
+
+## 2026-10-19 — opt-in BRD4 failure-aware chemistry port; HPC access blocked
+
+The user supplied DBMol instructions and authorized integration into a fresh
+50% chain/uniform initialization. Read the attachment, DBMol docs 63/64 and
+latest ledger, repair/loss/schema/conversion/training-integration sources, and
+Mosaic's existing native/continuation contracts. The attachment ends mid-sentence
+in section 5.C; complete referenced documents supply the remaining terms.
+
+Implemented an isolated opt-in package, fresh driver/configuration, allocated
+CPU/GPU/report launchers and saved-only interactive reporter. Existing six
+trajectories, old report bytes and historical outcomes remain sealed. Decisions
+and completed/pending items are in `docs/brd4_chemistry_5000.md`. Retain six
+occupied neutral slots, actual C/N/O/S/F/Cl ordering, BRD4 whole-target contact,
+fixed Tiny/context/seed, LR .03 and 5000 total updates. Use categorical logits
+for unfloored NLL and contact + .5 chemistry + .1 empirical element-JS. Both
+objective and optimization geometry change; the old 50% comparison is exploratory.
+
+Detached helpers are verbatim source symbols/whole pure modules with original
+and extracted hashes. The live loss is JAX. Full Torch source is isolated as
+test-only oracle data; no Torch/learned model is added to the Tiny runtime.
+The exact versioned rule table is retained; the older expected-valence-excess
+objective is excluded from production. Original depth-three and separate
+depth-six searches use 32 checks/depth, beam 4, regret weight 1 and atom edits
+off. Both search counts/timings are retained, with timing outside scientific
+preparation identity. Complete targets, invalid partial witnesses and actual
+fallback rows stay distinct.
+
+All ten halving trials share one preparation, context, key, weights and empirical
+reference. Unknown search errors, nonfinite native values/gradients and failed
+FD/parity/identity gates remain failures. Native order-null probes apply to
+contact alone; chemistry sees bond order. Record no-op/fallback updates, changing
+refreshed surrogates, within-state deltas, per-term losses and best-observed
+fixed-contact state/identity. Raw invalid graphs are retained; repair targets
+never replace scorer inputs.
+
+One bounded SSH attempt with BatchMode and ConnectTimeout=15 reached DTU but
+returned `s234818@login1.hpc.dtu.dk: Permission denied (password)`. The remote
+metadata command did not execute. No fresh quota/queue observation, upload,
+numerical test, pilot or submission occurred; no new job ID is claimed.
+No repeated attempt was made during this unchanged outage. All new numerical
+validation, empirical preprocessing, model execution and rendering remain
+allocated DTU work. Local checks are static source/JSON/hash/JS/shell checks
+only; final scope and source-package receipts are recorded below.
+
+Local static review used Python 3.13 stdlib `ast.parse`/JSON/SHA-256 only,
+without importing project modules: **35 Python files parsed**, all eight
+production extractions and eleven original oracle-source files matched their
+manifest hashes. Captured reference manifest SHA-256:
+`295c44903fbb7cf27d5c3827b1cc1e2f4159d471c3d55e742d90c6b14203520e`.
+User attachment (9050 bytes) SHA-256:
+`3cfe8ccb137350db037160415579c3d7941174b49a6c5321af1eab92a438c0af`.
+Receipt: `results/static/brd4-chemistry-20261019-01/static_receipt.json`.
+Ruff check/format passed on the handwritten modules, driver/helpers and two
+test files, excluding byte-pinned original/extracted modules. `node --check`
+passed on the main script extracted from `scripts/chemistry_report_template.html`;
+no DOM/browser or trajectory rendering executed. Git for Windows `bash -n`
+passed the three chemistry LSF wrappers and two submission operators. Git
+whitespace checks passed. These checks establish static engineering integrity,
+not numerical correctness, native chemistry coverage, validity or runtime.
+
+Added a required disposable native-input assay with one internal neutral F
+and two single neighbors. It must show positive chemistry loss, finite nonzero
+chemistry gradient in the shared logits and frozen-reference combined FD
+agreement before the requested all-carbon 50% initialization is optimized.
+Its probes/pilot are excluded from the 5000-update budget. All new allocated
+checks, empirical reference counts, pilot timing and native results are pending.
+No new report or molecule result is claimed from this implementation turn.

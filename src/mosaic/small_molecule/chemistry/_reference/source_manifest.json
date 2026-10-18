@@ -1,0 +1,82 @@
+{
+  "source": "DBMol_exploratory/src/latentmol",
+  "method": "verbatim selected AST symbols or whole detached modules; explicit import headers",
+  "files": {
+    "representation.py": {
+      "source_sha256": "edf7dbd1ee054078a111157b11bb40163fe3e518d50ac61646fc2d3aaaa010d1",
+      "extracted_sha256": "450b891019456beca8329d71a39f1e964312a9cf97fa557b2cc7c97c5c428302",
+      "symbols": [
+        "GraphSpec"
+      ]
+    },
+    "quality.py": {
+      "source_sha256": "722953d52b9f5e2c965aba1d86cc20cf3476ae8c585ee07cfc68d90500d3bb5d",
+      "extracted_sha256": "ae2d5a06f38ef7a86c261a813654b1273b032176c816cf4c58e79b18a19d3e29",
+      "symbols": [
+        "VERSION",
+        "_array",
+        "_labels",
+        "graph_identity",
+        "_components",
+        "diagnose_graph"
+      ]
+    },
+    "probability_repair.py": {
+      "source_sha256": "46fec80afa1168833a826972a902c3832644e95711ef5d5e85a7ee7a4e9808da",
+      "extracted_sha256": "51e9ec9ef97e15400c0c8c3d47c90a9dac510a8c77f36343dc944683d350475d",
+      "symbols": [
+        "ProbabilityRepairConfig",
+        "_array",
+        "validate_probabilities",
+        "probability_identity",
+        "measure_probability_edits"
+      ]
+    },
+    "atom_preserving_chemistry.py": {
+      "source_sha256": "83e796d61465d84d393ba0bbe8c8c0f592c6d1492fd392be5b060b4eef9cdb69",
+      "extracted_sha256": "9cd7d072ad8b5edc7ca63dd38550b742d80cbc792690ad6752b7d7c6db2971c5",
+      "symbols": [
+        "VERSION",
+        "repair_policy",
+        "_key",
+        "_bond_edits",
+        "search_atom_preserving_repair"
+      ]
+    },
+    "chemistry_regularization.py": {
+      "source_sha256": "c7fd2468e5b495b3bafc8b09d2acfbe45687be4b5be85886f122ae6d8d56f587",
+      "extracted_sha256": "8e9c8d5b1eaae3c52afef3483c52e4f800a0dc57f08c47ba5a2c40f6872550a0",
+      "symbols": [
+        "RULE_VERSION",
+        "RULE_SOURCES",
+        "ALLOWED_VALENCES"
+      ]
+    },
+    "chemistry.py": {
+      "source_sha256": "173ee26bb429bac433a8b37db660dd5b2b7f08c08edd6cda59123c2c872b7571",
+      "extracted_sha256": "173ee26bb429bac433a8b37db660dd5b2b7f08c08edd6cda59123c2c872b7571",
+      "symbols": [
+        "whole_module"
+      ]
+    },
+    "repair_search.py": {
+      "source_sha256": "03acf32c747e0064a00e85eb0ab7e4d9137cc7799e03bd263640fb48b7ec4c50",
+      "extracted_sha256": "03acf32c747e0064a00e85eb0ab7e4d9137cc7799e03bd263640fb48b7ec4c50",
+      "symbols": [
+        "whole_module"
+      ]
+    },
+    "repair_progress.py": {
+      "source_sha256": "6ea26624d390c5ba0afa312fca55bee8ca740f7d4efed25a5b217ee071cbe15d",
+      "extracted_sha256": "6ea26624d390c5ba0afa312fca55bee8ca740f7d4efed25a5b217ee071cbe15d",
+      "symbols": [
+        "whole_module"
+      ]
+    }
+  },
+  "oracle_source_sha256": {
+    "repair_failure_guidance.py": "fde91e4db74e85375a61a90e83ce338f37f7a6bc5b8ebea1e855a46493fb47de",
+    "sampling.py": "1d766f936918842363c1842f03482f3b907bf29e7c06868ff43433fef72c89a3",
+    "async_repair.py": "eccc0ba3bd11ce779c991ba415deb988853f3f7ae02ba589dd7fbe5e2d5173fc"
+  }
+}

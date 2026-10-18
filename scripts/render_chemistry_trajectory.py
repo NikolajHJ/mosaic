@@ -1,0 +1,260 @@
+"""Allocated CPU saved-only report: raw graphs, contact and repair components.
+
+The viewer draws a selected saved probability frame on demand, keeping HTML
+small instead of embedding thousands of pre-rendered SVGs. It performs no
+model inference, chemistry repair, resampling or missing-probability inference.
+"""
+
+import argparse
+import base64
+import hashlib
+import json
+import os
+from pathlib import Path
+
+
+def sha(path):
+    with path.open("rb") as stream:
+        return hashlib.file_digest(stream, "sha256").hexdigest()
+
+
+def saved_frames(root, states, *, historical=False):
+    import numpy as np
+
+    frames = []
+    if [s["step"] for s in states] != list(range(len(states))):
+        raise ValueError("Saved trajectory has missing/noncontiguous states")
+    for state in states:
+        path = (root / state["snapshot"]).resolve(strict=True)
+        if not path.is_relative_to(root.resolve()) or (
+            "snapshot_sha256" in state and sha(path) != state["snapshot_sha256"]
+        ):
+            raise ValueError("Saved snapshot path/hash differs")
+        with np.load(path, allow_pickle=False) as data:
+            x, e = data["X"], data["E_upper"]
+            if (
+                x.shape != (6, 6)
+                or e.shape != (15, 5)
+                or not np.isfinite(x).all()
+                or not np.isfinite(e).all()
+            ):
+                raise ValueError(
+                    "Saved probabilities have wrong shape or nonfinite values"
+                )
+            if any(
+                np.min(v) < -1e-6
+                or np.max(v) > 1 + 1e-6
+                or not np.allclose(v.sum(-1), 1, atol=1e-6, rtol=0)
+                for v in (x, e)
+            ):
+                raise ValueError("Saved probabilities violate the simplex contract")
+        frames.append(
+            {
+                "step": state["step"],
+                "X": x.tolist(),
+                "E": e.tolist(),
+                "contact": state["primal_loss"]
+                if historical
+                else state["contact_loss"],
+                "readout": state["readout"],
+                "components": state.get("components"),
+                "refreshed_surrogate": state.get("refreshed_surrogate"),
+                "preparation_identity": state.get("preparation_identity"),
+                "chemistry_preparation": state.get("chemistry_preparation"),
+                "snapshot_sha256": sha(path),
+            }
+        )
+    return frames
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--study", type=Path, required=True)
+    parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument(
+        "--config",
+        type=Path,
+        default=Path(__file__).resolve().parents[1]
+        / "examples/configs/brd4_chemistry_5000.json",
+    )
+    parser.add_argument("--allow-partial", action="store_true")
+    args = parser.parse_args()
+    if not os.environ.get("LSB_JOBID"):
+        raise RuntimeError("Scientific report rendering requires allocated DTU CPU")
+    import matplotlib
+
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+
+    summary = json.loads((args.study / "summary.json").read_text())
+    case = json.loads((args.study / "case-0/report.json").read_text())
+    config = summary["config"]
+    if (
+        config != json.loads(args.config.read_text())
+        or sha(args.config) != summary["config_sha256"]
+        or sha(args.study / "configuration.json") != summary["config_sha256"]
+    ):
+        raise ValueError("Native/report configuration identity differs")
+    if summary["status"] == "passed" and (
+        not summary.get("cases")
+        or any(summary["cases"][0].get(k) != v for k, v in case.items())
+    ):
+        raise ValueError("Native terminal summary and saved case differ")
+    complete = (
+        summary["status"] == case["status"] == "passed"
+        and len(case["states"]) == config["steps"] + 1
+    )
+    if not complete and not args.allow_partial:
+        raise ValueError("New study did not complete the full requested budget")
+    # Never weaken frozen identities to obtain a more favorable report.
+    for stem in ("model", "context"):
+        if (
+            summary.get(stem + "_digest_before") != config[stem + "_digest"]
+            or summary.get(stem + "_digest_after") != config[stem + "_digest"]
+        ):
+            raise ValueError("Native frozen identity gate did not pass")
+    args.output.mkdir(parents=True, exist_ok=False)
+    studies = [
+        {
+            "label": "New 50% + chemistry (logit updates)",
+            "color": "#008c95",
+            "job_id": summary["job_id"],
+            "frames": saved_frames(args.study / "case-0", case["states"]),
+        }
+    ]
+    old_root = Path(config["historical_study"])
+    if sha(old_root / "summary.json") != config["historical_summary_sha256"]:
+        raise ValueError("Historical comparison summary identity differs")
+    old = json.loads((old_root / "summary.json").read_text())
+    if (
+        old["status"] != "passed"
+        or old["job_id"] != "29745503"
+        or len(old["cases"]) != 1
+        or old["source_case_indices"] != [2]
+    ):
+        raise ValueError("Wrong/incomplete historical 50% comparison")
+    for stem in ("model", "context"):
+        if (
+            old[stem + "_digest_before"] != config[stem + "_digest"]
+            or old[stem + "_digest_after"] != config[stem + "_digest"]
+        ):
+            raise ValueError("Historical frozen model/context differs")
+    (args.output / "historical_summary.json").write_bytes(
+        (old_root / "summary.json").read_bytes()
+    )
+    old_states = old["cases"][0]["states"]
+    if len(old_states) != 5001 or [s["step"] for s in old_states] != list(range(5001)):
+        raise ValueError("Historical comparison is incomplete")
+    # The authenticated summary binds the old scalar curve. Its probabilities
+    # are not needed or invented; raw old molecules remain in the old report.
+    historical = {
+        "label": "Historical 50% contact-only (projected probabilities)",
+        "color": "#7754bb",
+        "job_id": old["job_id"],
+        "frames": [
+            {"step": s["step"], "contact": s["primal_loss"]} for s in old_states
+        ],
+    }
+    figure, axes = plt.subplots(3, 1, figsize=(12, 11), constrained_layout=True)
+    for study in [*studies, historical]:
+        axes[0].plot(
+            [f["step"] for f in study["frames"]],
+            [f["contact"] for f in study["frames"]],
+            color=study["color"],
+            label=study["label"],
+        )
+    axes[0].set(
+        title="Fixed-context Protenix contact loss (lower is better)",
+        ylabel="Contact loss",
+    )
+    axes[0].legend(fontsize=8)
+    frames = studies[0]["frames"]
+    for name in (
+        "valid_full_nll",
+        "extra_valid_nll",
+        "partial_edited_nll",
+        "local_bond_risk",
+        "component_cut_risk",
+        "nonempty_risk",
+        "element_js",
+    ):
+        axes[1].plot(
+            [f["step"] for f in frames],
+            [f["components"][name] for f in frames],
+            label=name,
+        )
+    axes[1].set(
+        title="Chemistry components with refreshed targets — diagnostics, changing surrogate",
+        ylabel="Unweighted component",
+    )
+    axes[1].legend(fontsize=8, ncol=2)
+    updates = [u for u in case["updates"] if "fixed_after" in u]
+    axes[2].scatter(
+        [u["step"] + 1 for u in updates],
+        [u["fixed_after"] - u["fixed_before"] for u in updates],
+        c=["#c14c65" if u["fallback_used"] else "#008c95" for u in updates],
+        s=5,
+    )
+    axes[2].axhline(0, color="#777", linewidth=0.7)
+    axes[2].set(
+        title="Actual within-state combined-loss change (one fixed preparation per trial set)",
+        ylabel="Accepted minus before",
+        xlabel="Applied graph updates",
+    )
+    for ax in axes:
+        ax.grid(alpha=0.15)
+    figure.savefig(args.output / "loss_components.png", dpi=160)
+    figure.savefig(args.output / "loss_components.svg")
+    plt.close(figure)
+    data = {
+        "version": "mosaic-chemistry-report-v1",
+        "complete": complete,
+        "status": summary["status"],
+        "new_counts": case["counts"],
+        "best_observed_contact": case.get("best_observed_contact"),
+        "model_digest": config["model_digest"],
+        "context_digest": config["context_digest"],
+        "studies": studies,
+        "historical_contact": historical,
+        "limitations": "Objective and optimization geometry both changed. Best-primal selection is declared; realized fallback exposure is recorded independently. Contact is not affinity. Raw invalid graphs retained. Repaired targets are detached supervision, not current molecules. Refreshed surrogate totals are not one comparable objective.",
+    }
+    payload = json.dumps(data, allow_nan=False, separators=(",", ":")).replace(
+        "<", "\\u003c"
+    )
+    template = (
+        Path(__file__)
+        .with_name("chemistry_report_template.html")
+        .read_text(encoding="utf-8")
+    )
+    plot = base64.b64encode((args.output / "loss_components.svg").read_bytes()).decode(
+        "ascii"
+    )
+    (args.output / "report.html").write_text(
+        template.replace("__SAVED_TRAJECTORIES__", payload).replace(
+            "__LOSS_PLOT_BASE64__", plot
+        ),
+        encoding="utf-8",
+    )
+    receipt = {
+        "render_job_id": os.environ["LSB_JOBID"],
+        "source_summary_sha256": sha(args.study / "summary.json"),
+        "historical_summary_sha256": config["historical_summary_sha256"],
+        "complete": complete,
+        "input_jobs": [summary["job_id"], old["job_id"]],
+        "states": [len(s["frames"]) for s in studies],
+        "historical_contact_points": len(old_states),
+        "counts": case["counts"],
+        "files": {
+            p.name: {"bytes": p.stat().st_size, "sha256": sha(p)}
+            for p in sorted(args.output.iterdir())
+            if p.is_file()
+        },
+    }
+    (args.output / "report_receipt.json").write_text(
+        json.dumps(receipt, indent=2) + "\n"
+    )
+    print(json.dumps(receipt))
+
+
+if __name__ == "__main__":
+    main()

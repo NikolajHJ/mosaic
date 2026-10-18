@@ -15,6 +15,7 @@ uv.lock
 # Downloaded HPC run artifacts and immutable transfer bundles
 results/hpc/
 results/releases/
+results/static/
 
 # Downloaded Protenix model and native assets
 cache/protenix/
