@@ -70,7 +70,7 @@ and report rendering remain on allocated DTU HPC.
 - [x] Implement reusable port, detached preparation and logit optimizer.
 - [x] Integrate fresh 50% run, recording and interactive report support.
 - [x] Author allocated parity, gradient, identity and trajectory fixtures.
-- [ ] Seal current source/configuration and prepare unique HPC launchers.
+- [x] Seal current source/configuration locally and prepare unique HPC launchers.
 - [ ] Pass allocated CPU readiness and bounded native GPU pilot.
 - [ ] Submit the gated 5000-update run and record actual job IDs.
 - [ ] Verify completed evidence and deliver the saved-only report.
@@ -151,3 +151,18 @@ original-source byte checks, handwritten-code Ruff check/format, JavaScript
 syntax and five shell syntax checks. No numerical fixture, model or scientific
 renderer ran locally. The test-only oracle snapshot is independent from the
 production JAX implementation; its future pass remains an allocated gate.
+
+Local sealed release: `results/releases/brd4-chemistry-20261019-01/`;
+350 files, archive 39,159,288 bytes. Source commit reference `933d45d`.
+Archive SHA-256 `9d10271ab846d150bee1d47a13ac9892fa699f91a459f593ecd4ec35d08eac3f`;
+manifest `1a8ead22c031b6d525f93072b6752598d6cbc00b0d42fdfb1f2cd92804ffc2cb`.
+Independent stdlib archive/member verification passed. No transfer occurred.
+These post-packaging receipt notes do not modify the sealed source archive.
+
+Planned remote release base:
+`/work3/s234818/mosaic/releases/20261019-brd4-chemistry-01`;
+campaign tag `20261019-brd4-chemistry-01`. Transfer the readiness bootstrap
+operator alongside the archive; authenticate its SHA before executing it,
+because it creates/extracts the source directory. Bootstrap SHA-256:
+`af8be632de5e3383acfe231e33e771f62bbc8bd55e7f8b4389a4a16309d0f4d1`.
+The native submission operator is then available inside the verified source.

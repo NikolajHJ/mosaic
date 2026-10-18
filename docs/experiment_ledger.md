@@ -2554,3 +2554,25 @@ agreement before the requested all-carbon 50% initialization is optimized.
 Its probes/pilot are excluded from the 5000-update budget. All new allocated
 checks, empirical reference counts, pilot timing and native results are pending.
 No new report or molecule result is claimed from this implementation turn.
+
+Sealed local source commit reference **933d45d**, unique directory
+`results/releases/brd4-chemistry-20261019-01/`: **350 files**, archive
+**39,159,288 bytes**, SHA-256
+`9d10271ab846d150bee1d47a13ac9892fa699f91a459f593ecd4ec35d08eac3f`;
+manifest `1a8ead22c031b6d525f93072b6752598d6cbc00b0d42fdfb1f2cd92804ffc2cb`.
+Command: `py -3.13 scripts/package_stage0_release.py --output results/releases/brd4-chemistry-20261019-01`.
+Independent stdlib checks authenticated the archive, manifest, safe regular
+member names and every one of 350 member hashes, without extraction or imports.
+Receipt: `local_archive_verification.json` in that directory. Git-index byte
+checks also authenticated all 19 original/extracted reference files. Scoped
+Git newline rules and Ruff exclusions preserve byte-pinned snapshots; generated
+metadata/initializer files use explicit LF. Source snapshot remains numerically
+unvalidated; no upload or job was submitted.
+
+Planned release base `/work3/s234818/mosaic/releases/20261019-brd4-chemistry-01`,
+campaign tag `20261019-brd4-chemistry-01`. Readiness bootstrap SHA-256
+`af8be632de5e3383acfe231e33e771f62bbc8bd55e7f8b4389a4a16309d0f4d1`;
+copy separately with the archive and authenticate before execution. Native
+submission remains gated by actual CPU DONE and its source-bound assessment.
+These receipt notes were added after sealing and are not represented as bytes
+inside that immutable archive. All scientific source bytes remain unchanged.
