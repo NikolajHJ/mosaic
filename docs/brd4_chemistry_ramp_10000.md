@@ -163,3 +163,13 @@ Random started11:42,3350/10000 saved, about2h41m remaining at current pace;
 its chemistry ramp has not begun, so speed can change. Report29753669 remains
 PEND on both endings. Terminal gates, full budget and report delivery remain
 pending. Exact saved times/statuses and cautious estimates are in the ledger.
+
+
+19October14:21 Europe/Paris: mix50 **29753667 DONE/passed**,10000 updates/
+10001 contiguous saved states, all strict, no fallback/no-op, terminal native
+gates and frozen identities passed. All saved hard outputs remain hexane and
+all repair losses remain zero, despite coefficient50. Summary SHA
+`0236e16f8da2aa333bf469ec5cf07b2fbe962b3a5e4d09a631d90ae60e0dfca8`.
+Random **29753668 RUN**,6009/10000; measured pace projects around16:00 with
+ramp-speed uncertainty. Combined report still PEND. Full per-snapshot/archive
+verification and report delivery remain pending. See ledger for exact receipts.

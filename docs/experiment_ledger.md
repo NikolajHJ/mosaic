@@ -3031,3 +3031,32 @@ without summary errors; raw invalid random graphs/valence diagnostics are
 retained as authorized, not silently repaired for display. Inspection bytes:
 `results/hpc/20261019-brd4-chemistry-ramp/latest-progress-inspection.txt`.
 No scientific job/source/settings changed; no local numerical validation.
+
+
+### 19 October14:21 Europe/Paris — mix50 complete, random60%
+
+**29753667 DONE**, successful LSF/scheduler outcome14:00:15, elapsed
+3h09m41s allocation/11362.206292487s driver. Remote stdlib metadata
+authentication confirms summary/case passed and identical case fields,
+10001 contiguous saved states and10000 contiguous applied updates,
+10000 strict-improving, zero fallback/no-op. All native contact/low/high-
+coefficient derivative/pilot gates passed; model/context before/after match
+the campaign pins. Final repair coefficient50.0. Summary SHA
+`0236e16f8da2aa333bf469ec5cf07b2fbe962b3a5e4d09a631d90ae60e0dfca8`;
+case report SHA `db39013cd0e1667eec8e9894c4ac89e388ad35d8d6eb5dfda46e2d1e2c7f372d`.
+Config/reference SHAs match the passed readiness. Terminal metadata receipt:
+`results/hpc/20261019-brd4-chemistry-ramp/mix50-terminal-metadata.json`.
+Full archive/per-snapshot byte verification remains pending combined report.
+
+Saved-record inspection shows **all10001 repair losses zero**, all saved
+argmax SMILES `CCCCCC`, initial contact -0.2778551579 to final -0.4092489183.
+Even weight50 did not activate a zero repair term. This is the saved trajectory
+result, not a new chemistry reevaluation or affinity claim.
+
+At12:21:19UTC, **29753668 RUN**, **6009/10000** completed updates; last100
+mean1.4364611799s, latest contact -0.4325866699, applied coefficient
+0.008876712352. Remaining3991updates project1h35m33s, around**15:57–16:00
+Europe/Paris**, conditional on future search/backtracking cost during the ramp.
+Native summary still running with no summary error. **29753669 PEND**, awaiting
+random arm ending. No new model run, source/config change or local numerical
+validation. Existing scientific jobs remain unchanged.
