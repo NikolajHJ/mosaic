@@ -19,8 +19,9 @@ run="$parent/payload"
 echo "$assessment_sha  $ready/assessment.json" | sha256sum -c -
 export PYTHONPATH="$release/src:$release/tests" PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
 export JAX_PLATFORMS=cpu JAX_ENABLE_X64=0 OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 MKL_NUM_THREADS=4
-export HF_HUB_OFFLINE=1 HF_HUB_DISABLE_TELEMETRY=1 TMPDIR="$run/tmp"
-mkdir "$TMPDIR"
+export HF_HUB_OFFLINE=1 HF_HUB_DISABLE_TELEMETRY=1
+source "$release/scripts/hpc/boltz_node_tmpdir.sh"
+printf '%s\n' "$TMPDIR" > "$run/tmpdir.txt"
 cd "$release"
 "$python" scripts/check_boltz_cpu_proof.py "$cpu" "$manifest"
 context_sha=$(sha256sum "$ready/prepared/context.pt" | cut -d' ' -f1)

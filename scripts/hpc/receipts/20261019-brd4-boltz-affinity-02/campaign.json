@@ -1,0 +1,140 @@
+{
+  "tag": "20261019-brd4-boltz-affinity-02",
+  "source": "/work3/s234818/mosaic/releases/20261019-brd4-boltz-affinity-02/source",
+  "source_files": 393,
+  "source_manifest_sha256": "5eb6e17ea8d19e52c99a589243228710994dcf137f59a6b9a6659a4fe719a7f4",
+  "archive_bytes": 39241289,
+  "archive_sha256": "11ccbe5563bebb3184183eaab194f791ae717c906d8557a3acd11fc0c8c685dc",
+  "scientific_byte_map_against_source01": "passed: all 180 src/ and examples/ files, including configurations, identical",
+  "receipt_scope": "external post-packaging record, not claimed inside already sealed source02",
+  "remote_source_authentication": "passed: 393 files, exact archive and manifest",
+  "scope": "batch temporary-directory and CPU coverage plumbing fix only; scientific settings and native gates unchanged",
+  "submitted_at": "2026-10-19T19:25:27.988+02:00",
+  "cpu_job": "29759068",
+  "cpu_status": "DONE/passed",
+  "cpu_planned_tests": 299,
+  "cpu_planned_breakdown": {
+    "original": 283,
+    "controller": 8,
+    "tmpdir_socket_cleanup": 8
+  },
+  "cpu_resources": {
+    "queue": "hpc",
+    "cpu_slots": 4,
+    "memory_gib_per_slot": 4,
+    "wall_minutes": 60
+  },
+  "native_readiness_job": "29759069",
+  "native_readiness_status": "PEND: waiting for ended(29758990); CPU success fulfilled",
+  "native_readiness_dependency": "done(29759068)&&ended(29758990)",
+  "native_readiness_resources": {
+    "queue": "gpul40s",
+    "gpu": "NVIDIA L40S 48 GB",
+    "exclusive_gpus": 1,
+    "cpu_slots": 4,
+    "memory_gib_per_slot": 8,
+    "wall_minutes": 120
+  },
+  "submission_controller_job": "29759070",
+  "controller_status": "PEND",
+  "controller_dependency": "done(29759069)&&done(29759003)",
+  "launcher": {
+    "tag": "20261019-brd4-boltz-launch-03",
+    "source": "/work3/s234818/mosaic/releases/20261019-brd4-boltz-launch-03/source",
+    "source_manifest_sha256": "60924c49eb9cbe3c8741afb2f0b152e6ed2525f542f610310bbcaf59a3db5d85",
+    "archive_bytes": 5100,
+    "archive_sha256": "4453763533a0b323c2dc50f3930b3673d20a8b2e66a9fbd285989d66ee65cde5",
+    "scope": "controller, tests and two batch wrappers only; scientific source01 unchanged",
+    "failed_cpu_job": {
+      "job_id": "29758998",
+      "status": "EXIT before tests",
+      "reason": "LSF split inline Python -c command",
+      "native_failure": false
+    },
+    "cpu_job": "29759003",
+    "cpu_status": "DONE/passed",
+    "cpu_tests": 8,
+    "cpu_failures": 0,
+    "cpu_errors": 0,
+    "cpu_skips": 0,
+    "cpu_finished_at": "2026-10-19T19:07:12+02:00",
+    "cpu_assessment_sha256": "f3e6c52ee9c73d6770c8c05179e377cce7f4e2112b0aa5f4ceaf9b40d000c1f9",
+    "cpu_output": "/zhome/95/e/206121/mosaic-runs/20261019-brd4-boltz-affinity-queue-03-cpu/"
+  },
+  "controller_scope": "unchanged passed launcher03 and 8-test proof against source02 scientific code and new CPU02 proof; requires actual native DONE and all persisted native/proof/identity/finite/runtime/quota gates",
+  "runs": "/zhome/95/e/206121/mosaic-runs/20261019-brd4-boltz-affinity-02",
+  "native_readiness_output": "/zhome/95/e/206121/mosaic-runs/20261019-brd4-boltz-affinity-02-ready/payload/",
+  "long_arm_root": "/zhome/95/e/206121/mosaic-runs/20261019-brd4-boltz-affinity-02-native/",
+  "long_arms": "not submitted; long-arm root virgin",
+  "future_arm_resources": {
+    "queue": "gpul40s",
+    "exclusive_gpus": 1,
+    "cpu_slots": 4,
+    "memory_gib_per_slot": 8,
+    "wall_minutes": 1380,
+    "inter_arm_dependency": false
+  },
+  "remote_compact_receipt": "/zhome/95/e/206121/mosaic-runs/20261019-brd4-boltz-affinity-02-campaign.json",
+  "historical_receipt": "scripts/hpc/receipts/20261019-brd4-boltz-affinity-01/campaign.json",
+  "predecessor_readiness": {
+    "job_id": "29758990",
+    "status": "RUN with observed AF_UNIX preparation error; unchanged allocation left untouched",
+    "started_at": "2026-10-19T19:09:51+02:00",
+    "approximate_original_wall_limit_at": "2026-10-19T21:09:51+02:00",
+    "wall_limit_interpretation": "allocation bound, not completion or retry ETA",
+    "native_affinity_checks_reached": false,
+    "evidence_manifest_sha256": "ee6f23873d7f3026caa7504e3ed77c73cb0e33342776815302dad0ac873dea5f",
+    "local_evidence_verification": {
+      "status": "passed",
+      "files": 12,
+      "gates": "all file byte lengths and SHA-256 hashes verified with local stdlib",
+      "verification_file": "results/hpc/20261019-brd4-boltz-affinity/tmpdir-failure-01/verification.json",
+      "manifest_sha256": "ee6f23873d7f3026caa7504e3ed77c73cb0e33342776815302dad0ac873dea5f"
+    }
+  },
+  "retired_controller": {
+    "job_id": "29759027",
+    "pre_cancel_status": "PEND verified unstarted",
+    "final_status": "EXIT, intentional cancellation confirmed"
+  },
+  "historical_cpu_evidence": {
+    "scientific_job": "29758624",
+    "scientific_tests_passed": 283,
+    "launcher_job": "29759003",
+    "launcher_tests_passed": 8
+  },
+  "cpu_tests": 299,
+  "cpu_breakdown": {
+    "launcher_tmpdir_contracts": 16,
+    "legacy_jax_bridge": 220,
+    "native_torch_mapping": 4,
+    "chemistry_oracle": 59
+  },
+  "cpu_failures": 0,
+  "cpu_errors": 0,
+  "cpu_skips": 0,
+  "cpu_deliberately_deselected_slow_model_tests": 3,
+  "cpu_finished_at": "2026-10-19T19:29:12+02:00",
+  "cpu_actual_outcome_authentication": "scheduler DONE and LSF Successfully completed authenticated",
+  "cpu_assessment_sha256": "fadc01aec4cafa54205e5d49ecd764da1aa48ddb841368c0845dac7f0ddb6c6e",
+  "cpu_proof_verification": {
+    "status": "passed",
+    "files": 13,
+    "verification_file": "results/hpc/20261019-brd4-boltz-affinity/retry-02/cpu-final/verification.json",
+    "gates": "safe extraction, exact every-file paths/lengths/SHA, XML counts and unchanged composition reference",
+    "archive_bytes": 12878,
+    "archive_sha256": "1d47c5f7c3f577b583e9acde2ad8819ebeb042e185d53cb9c11c57250076d770",
+    "manifest_sha256": "e570b0e37f98e229fcbe95256646c833dd04fa34b59499d7e7fecccd85532553"
+  },
+  "controls_proof_verification": {
+    "status": "passed",
+    "files": 12,
+    "verification_file": "results/hpc/20261019-brd4-boltz-affinity/retry-02/controls-verification.json",
+    "gates": "exact byte lengths and SHA-256 hashes",
+    "archive_bytes": 4828,
+    "archive_sha256": "36836d2f0b83a2589fbc1c299a7bf48a2f6788f67eec02913bccc4b0fa80ae4f",
+    "manifest_sha256": "fe2cd588caf1a6bbeb851973534a8751ce53a74c08ac0b05f0cf83e46ea57183"
+  },
+  "native_affinity_gates_passed": false,
+  "independent_static_review": "no blocking findings in TMPDIR and launcher changes"
+}

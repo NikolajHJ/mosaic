@@ -10,7 +10,7 @@ def verify(cpu, manifest):
     assessment = json.loads((cpu / "assessment.json").read_text())
     if (
         assessment["status"] != "passed"
-        or assessment["passed"] < 281
+        or assessment["passed"] < 299
         or assessment["source_manifest_sha256"] != manifest
     ):
         raise ValueError("CPU assessment does not certify this immutable release")

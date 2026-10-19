@@ -3348,3 +3348,116 @@ CPU slots reserved on n-62-13-14, waiting for ngpus_physical; controller29759027
 PEND dependency. Recursive host groups confirm six L40S nodes versus one A10
 node. Quiet follow-up now targets the replacement IDs and same-queue launch
 gates; all old jobs/evidence remain preserved.
+
+### 19 October 2026, 19:22 Europe/Paris — native preparation TMPDIR error
+
+Authoritative scheduler evidence records L40S readiness29758990 RUN from
+19:09:51 on n-62-13-19; this supersedes the approximate19:10 PEND annotation
+as current status. All386source files and fresh10GiB home quota passed. Native
+prediction saw its actual GPU and finished preprocessing. Its redirected
+`prepared/prediction.log` then recorded multiprocessing queues/resource_sharer
+`OSError: AF_UNIX path too long`: the batch TMPDIR under the long home-run
+path exceeded Unix socket path limits. Outer prepare.log was empty because
+of child redirection. No prepared context.pt, native affinity finite
+differences, coupled checks or pilot validations had been reached. LSF's
+power/clock warning says the GPU can still perform the workload; that warning
+is not this integration bug.
+
+Failure-stage snapshot captured17:22:08UTC/19:22:08 Europe/Paris at
+`/zhome/95/e/206121/mosaic-runs/20261019-brd4-boltz-tmpdir-failure-01`,
+manifestSHA
+`ee6f23873d7f3026caa7504e3ed77c73cb0e33342776815302dad0ac873dea5f`.
+Readiness29758990 is still RUN, left untouched under the retire-only-unstarted
+constraint and its original two-hour allocation. This is an observed
+preparation error/hung stage, not an authenticated final EXIT or a failed
+native derivative result. Controller29759027 verifiedPEND; cancellation
+requested, final EXIT receipt still to be authenticated. No long arm submitted.
+
+Preparing new immutable source02 with a shared unique node-local/tmp helper
+and safe owned-directory cleanup, used by readiness and long launchers.
+Scientific src/examples/configuration bytes remain unchanged and will be
+byte-map checked against01. Full allocated CPU coverage planned299: original
+283+8controller+8TMPDIR/socket/cleanup contracts. No new pass or source02/job
+identity is yet claimed. Native retry must wait for its new CPU pass and
+ended(29758990), avoiding simultaneous duplicate GPU validation. Preserve
+source01/launcher03, their actual283+8passes, all failures and historical
+experiments; no scientific gate is waived and no local numerical test runs.
+
+Source02 sealed locally,393files/archive39,241,289bytes SHA
+`11ccbe5563bebb3184183eaab194f791ae717c906d8557a3acd11fc0c8c685dc`,
+manifestSHA
+`5eb6e17ea8d19e52c99a589243228710994dcf137f59a6b9a6659a4fe719a7f4`,
+destination `/work3/s234818/mosaic/releases/20261019-brd4-boltz-affinity-02/source`.
+Upload in progress; no completed remote authentication or new job claimed.
+Static byte proof authenticated all180files under src/examples, including
+configurations, exactly equal to source01. Only batch TMPDIR handling and CPU
+coverage plumbing changed. This is an honest external post-packaging receipt,
+not an assertion that later receipts are in the already sealed source02.
+Future unique run directories:
+`/zhome/95/e/206121/mosaic-runs/20261019-brd4-boltz-affinity-02-{cpu,ready,controller,native}`.
+CPU299coverage remains planned/pending, not passed. Preserved failure evidence
+download completed: all12files/lengths/SHA verified using local stdlib at
+`results/hpc/20261019-brd4-boltz-affinity/tmpdir-failure-01/verification.json`;
+its manifest is the recorded ee6f2387...dea5f. No local numerical validation.
+
+### 19 October 2026, 19:25 Europe/Paris — source02 authenticated; gated retry submitted
+
+Remote393source02files, exact archive/manifest and entire180src/examples map
+against source01 authenticated. Actual submissions19:25:27.988 Europe/Paris:
+**29759068 RUN/hpc CPU**,four slots/4GiB per slot/1h,299checks expected,
+not passed yet; **29759069 PEND/gpul40s native**,one exclusiveL40S/four slots/
+8GiB per slot/2h,dependency `done(29759068)&&ended(29758990)`;
+**29759070 PEND/hpc controller**,dependency
+`done(29759069)&&done(29759003)`. Controller reuses authenticated unchanged
+launcher03/eight-test proof with new scientific source02 and its CPU proof.
+All native, proof, identity, finite, runtime and quota gates remain mandatory.
+No native affinity pass is claimed from submissions or earlier CPU success.
+
+Source02 `/work3/s234818/mosaic/releases/20261019-brd4-boltz-affinity-02/source`
+uses recorded manifest5eb6e17e...9a7f4 and archive11ccbe55...685dc. New unique
+run family is `/zhome/95/e/206121/mosaic-runs/20261019-brd4-boltz-affinity-02-`:
+cpu/ready/controller/native. Readiness payload is `...-02-ready/payload/`.
+Remote compact receipt
+`/zhome/95/e/206121/mosaic-runs/20261019-brd4-boltz-affinity-02-campaign.json`;
+new versioned local receipt
+`scripts/hpc/receipts/20261019-brd4-boltz-affinity-02/campaign.json`.
+The02-native long root remains virgin and no long arm is submitted.
+
+Old controller29759027 intentionally cancelled while verifiedPEND, finalEXIT
+now authenticated. Predecessor29758990 stillRUN with known preparation error,
+left unchanged. Original2h allocation from19:09:51 reaches its approximate
+limit21:09:51 Europe/Paris; this is a resource bound, not a completion/retry
+ETA. New retry waits ended(old), so no duplicate concurrent GPU validation.
+Source01, all earlier failures and actual283+8CPU passes remain preserved.
+
+### 19 October 2026, 19:29 Europe/Paris — source02 CPU299 passed; native retry still pending
+
+CPU **29759068 DONE/passed299**, actual schedulerDONE and LSF Successfully
+completed authenticated at19:29:12 Europe/Paris. Breakdown16controller/TMPDIR
+contracts +220legacy/JAXbridge +4nativeTorchmapping +59unchangedchemistry/oracle;
+zero failures/errors/skips, three slow/model legacy tests deliberately
+deselected. AssessmentSHA
+`fadc01aec4cafa54205e5d49ecd764da1aa48ddb841368c0845dac7f0ddb6c6e`.
+This supersedes the earlier CPU RUN/pending note, preserving its history;
+it is not a native affinity validation result.
+
+Downloaded13CPUproof files safely extracted and exact every-file lengths/SHA,
+XML counts and unchanged composition reference verified with local stdlib at
+`results/hpc/20261019-brd4-boltz-affinity/retry-02/cpu-final/verification.json`.
+Archive12,878bytes SHA
+`1d47c5f7c3f577b583e9acde2ad8819ebeb042e185d53cb9c11c57250076d770`,
+manifestSHA
+`e570b0e37f98e229fcbe95256646c833dd04fa34b59499d7e7fecccd85532553`.
+Earlier12control/submission receipts separately byte-verified at
+`results/hpc/20261019-brd4-boltz-affinity/retry-02/controls-verification.json`;
+archive4,828bytes SHA
+`36836d2f0b83a2589fbc1c299a7bf48a2f6788f67eec02913bccc4b0fa80ae4f`,
+manifestSHA
+`fe2cd588caf1a6bbeb851973534a8751ce53a74c08ac0b05f0cf83e46ea57183`.
+Independent static review found no blocking launcher/TMPDIR issue.
+
+Native29759069 stillPEND awaiting ended(predecessor29758990), which remains
+RUN and untouched with known preparation error. Controller29759070 PEND;
+neither long arm submitted and no native finite-difference/parity/pilot gate
+passed. Predecessor21:09:51 allocation bound remains a limit, not an ETA.
+All numerical checks were allocatedHPC; local evidence work used stdlib only.

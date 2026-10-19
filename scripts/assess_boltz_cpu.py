@@ -13,7 +13,7 @@ def main():
     parser.add_argument("--manifest", required=True)
     args = parser.parse_args()
     proofs, total = [], 0
-    for name in ("legacy", "native-mapping", "chemistry"):
+    for name in ("hpc-contract", "legacy", "native-mapping", "chemistry"):
         path = args.run / (name + ".xml")
         cases = ET.parse(path).findall(".//testcase")
         if not cases or any(
@@ -22,6 +22,8 @@ def main():
             for tag in ("failure", "error", "skipped")
         ):
             raise ValueError("Missing/failed/skipped CPU checks: " + name)
+        if name == "hpc-contract" and len(cases) < 16:
+            raise ValueError("HPC launch/temp-directory coverage unexpectedly reduced")
         total += len(cases)
         proofs.append(
             {
@@ -30,7 +32,7 @@ def main():
                 "passed": len(cases),
             }
         )
-    if total < 281:
+    if total < 299:
         raise ValueError("CPU regression coverage unexpectedly reduced")
     result = {
         "status": "passed",

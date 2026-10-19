@@ -11,8 +11,8 @@
   "cpu_status": "DONE/passed",
   "cpu_tests": 283,
   "cpu_assessment_sha256": "4d64197d56a2ba964ad1ae4ecf2b9e62e5e3ed2c4d14c247bae0a139cb79343b",
-  "native_readiness_status": "PEND: physical GPU availability; four CPU slots reserved on n-62-13-14",
-  "controller_status": "PEND: done(29759003)&&done(29758990)",
+  "native_readiness_status": "RUN: preparation child AF_UNIX TMPDIR path error before prepared context/native affinity checks; terminal outcome pending",
+  "controller_status": "EXIT: intentional cancellation while verified PEND/unstarted; actual final outcome confirmed",
   "code_commit": "ecaf328",
   "native_readiness_output": "/zhome/95/e/206121/mosaic-runs/20261019-brd4-boltz-affinity-queue-02-ready/payload/",
   "submission_controller_output": "/zhome/95/e/206121/mosaic-runs/20261019-brd4-boltz-affinity-queue-03-controller/",
@@ -116,6 +116,93 @@
       "n-62-13-19"
     ]
   },
-  "status_observed_at": "2026-10-19T19:08:37+02:00",
-  "last_scheduler_check": "2026-10-19T19:10:00+02:00"
+  "status_observed_at": "2026-10-19T19:22:08+02:00",
+  "last_scheduler_check": "2026-10-19T19:10:00+02:00",
+  "preparation_error": {
+    "readiness_job": "29758990",
+    "scheduler_status": "RUN; unchanged allocation left untouched",
+    "scheduler_started_at": "2026-10-19T19:09:51+02:00",
+    "host": "n-62-13-19",
+    "source_files_verified": 386,
+    "quota_gate_gib": 10,
+    "quota_gate_status": "passed",
+    "native_gpu_detected": true,
+    "preprocessing_status": "completed",
+    "stage": "native prediction multiprocessing queues/resource_sharer",
+    "error": "OSError: AF_UNIX path too long",
+    "cause": "TMPDIR under long home-run path exceeds Unix socket path limit",
+    "diagnostic_log": "prepared/prediction.log",
+    "outer_prepare_log": "empty because child output redirected",
+    "prepared_context_exists": false,
+    "native_affinity_checks_reached": false,
+    "lsf_power_clock_warning": "GPU can still perform workload; not the identified preparation bug",
+    "evidence_captured_at": "2026-10-19T19:22:08+02:00",
+    "evidence_directory": "/zhome/95/e/206121/mosaic-runs/20261019-brd4-boltz-tmpdir-failure-01",
+    "evidence_manifest_sha256": "ee6f23873d7f3026caa7504e3ed77c73cb0e33342776815302dad0ac873dea5f",
+    "controller_retirement": {
+      "job_id": "29759027",
+      "pre_cancel_status": "PEND, verified unstarted",
+      "cancellation": "confirmed actual EXIT after intentional cancellation of verified unstarted PEND job"
+    },
+    "source02_preparation": {
+      "status": "remote source/archive/manifest and scientific byte map authenticated; CPU/native/controller actually submitted",
+      "fix": "shared unique node-local /tmp helper with safe owned-directory cleanup for readiness and long launchers",
+      "scientific_src_examples_config_changed": false,
+      "scientific_byte_map_against_source01": "passed: all 180 src/ and examples/ files, including configurations, identical",
+      "planned_cpu_tests": 299,
+      "planned_cpu_breakdown": {
+        "original": 283,
+        "controller": 8,
+        "tmpdir_socket_cleanup": 8
+      },
+      "cpu_result": "29759068 DONE/passed 299; no native affinity gate passed",
+      "native_retry_dependencies": [
+        "new CPU pass",
+        "ended(29758990)"
+      ],
+      "native_gates_changed": false,
+      "tag": "20261019-brd4-boltz-affinity-02",
+      "source": "/work3/s234818/mosaic/releases/20261019-brd4-boltz-affinity-02/source",
+      "source_files": 393,
+      "archive_bytes": 39241289,
+      "archive_sha256": "11ccbe5563bebb3184183eaab194f791ae717c906d8557a3acd11fc0c8c685dc",
+      "source_manifest_sha256": "5eb6e17ea8d19e52c99a589243228710994dcf137f59a6b9a6659a4fe719a7f4",
+      "receipt_scope": "external post-packaging record, not claimed inside already sealed source02",
+      "future_runs": "/zhome/95/e/206121/mosaic-runs/20261019-brd4-boltz-affinity-02-{cpu,ready,controller,native}",
+      "cpu_job": "29759068",
+      "native_readiness_job": "29759069",
+      "controller_job": "29759070",
+      "current_receipt": "scripts/hpc/receipts/20261019-brd4-boltz-affinity-02/campaign.json",
+      "cpu_tests_passed": 299,
+      "cpu_finished_at": "2026-10-19T19:29:12+02:00",
+      "cpu_assessment_sha256": "fadc01aec4cafa54205e5d49ecd764da1aa48ddb841368c0845dac7f0ddb6c6e",
+      "cpu_proof_verification": {
+        "status": "passed",
+        "files": 13,
+        "verification_file": "results/hpc/20261019-brd4-boltz-affinity/retry-02/cpu-final/verification.json",
+        "gates": "safe extraction, exact every-file paths/lengths/SHA, XML counts and unchanged composition reference",
+        "archive_bytes": 12878,
+        "archive_sha256": "1d47c5f7c3f577b583e9acde2ad8819ebeb042e185d53cb9c11c57250076d770",
+        "manifest_sha256": "e570b0e37f98e229fcbe95256646c833dd04fa34b59499d7e7fecccd85532553"
+      },
+      "controls_proof_verification": {
+        "status": "passed",
+        "files": 12,
+        "verification_file": "results/hpc/20261019-brd4-boltz-affinity/retry-02/controls-verification.json",
+        "gates": "exact byte lengths and SHA-256 hashes",
+        "archive_bytes": 4828,
+        "archive_sha256": "36836d2f0b83a2589fbc1c299a7bf48a2f6788f67eec02913bccc4b0fa80ae4f",
+        "manifest_sha256": "fe2cd588caf1a6bbeb851973534a8751ce53a74c08ac0b05f0cf83e46ea57183"
+      }
+    },
+    "local_evidence_verification": {
+      "status": "passed",
+      "files": 12,
+      "gates": "all file byte lengths and SHA-256 hashes verified with local stdlib",
+      "verification_file": "results/hpc/20261019-brd4-boltz-affinity/tmpdir-failure-01/verification.json",
+      "manifest_sha256": "ee6f23873d7f3026caa7504e3ed77c73cb0e33342776815302dad0ac873dea5f"
+    }
+  },
+  "superseded_for_future_execution_by": "scripts/hpc/receipts/20261019-brd4-boltz-affinity-02/campaign.json",
+  "record_scope": "Historical source01 and queue amendment; source02 is current gated retry; source01 native29758990 remains RUN with known preparation error"
 }

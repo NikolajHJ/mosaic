@@ -15,8 +15,9 @@ run="$parent/payload"
 "$python" "$release/scripts/hpc/zhome_quota_preflight.py" --run-dir "$run" --minimum-free-gib 10
 export PYTHONPATH="$release/src:$release/tests" PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
 export JAX_PLATFORMS=cpu JAX_ENABLE_X64=0 OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 MKL_NUM_THREADS=4
-export HF_HUB_OFFLINE=1 HF_HUB_DISABLE_TELEMETRY=1 TMPDIR="$run/tmp"
-mkdir "$TMPDIR"
+export HF_HUB_OFFLINE=1 HF_HUB_DISABLE_TELEMETRY=1
+source "$release/scripts/hpc/boltz_node_tmpdir.sh"
+printf '%s\n' "$TMPDIR" > "$run/tmpdir.txt"
 cd "$release"
 "$python" scripts/check_boltz_cpu_proof.py "$cpu" "$manifest"
 nvidia-smi --query-gpu=name,driver_version,memory.total --format=csv > "$run/gpu.txt"

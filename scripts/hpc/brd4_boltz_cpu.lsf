@@ -17,6 +17,9 @@ export OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 MKL_NUM_THREADS=2
 export TMPDIR="$run/tmp"
 mkdir "$TMPDIR"
 cd "$release"
+"$python" -m pytest tests/test_boltz_submission_controller.py tests/test_boltz_hpc_tmpdir.py \
+  -o addopts= -o cache_dir="$run/cache-hpc-contract" --basetemp "$run/tmp-hpc-contract" \
+  --junitxml="$run/hpc-contract.xml" > "$run/hpc-contract.log" 2>&1
 legacy=()
 for file in tests/test_small_molecule_*.py; do
   case "$file" in tests/test_small_molecule_chemistry*.py) ;; *) legacy+=("$file");; esac
