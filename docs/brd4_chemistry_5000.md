@@ -72,7 +72,7 @@ and report rendering remain on allocated DTU HPC.
 - [x] Author allocated parity, gradient, identity and trajectory fixtures.
 - [x] Seal current source/configuration locally and prepare unique HPC launchers.
 - [x] Pass allocated CPU readiness: 29753148, 253 selected tests passed.
-- [ ] Pass the bounded native GPU pilot within the submitted allocation.
+- [x] Pass the bounded native GPU pilot within allocation 29753152.
 - [x] Submit the gated 5000-update run: GPU 29753152, report 29753153.
 - [ ] Verify completed evidence and deliver the saved-only report.
 
@@ -277,3 +277,22 @@ Local stdlib byte/schema checks authenticated 24 files, assessment/source/config
 XML/oracle/reference proofs, CPU success and native/report submission receipts.
 No local numerical execution or scientific rendering occurred. Failed readiness
 03 was also downloaded/verified and remains visible beside failed readiness 01.
+
+## Native progress — 19 October, 08:36 Europe/Paris
+
+GPU 29753152 started at 07:12:54 Europe/Paris on `n-62-18-5` and is RUN.
+At 08:36:46, the saved update log contains **4544 contiguous completed
+updates out of 5000**. Native contact checks and the coupled invalid-F
+chemistry/combined-gradient probe passed; its chemistry gradient norm is
+0.0925925821. The disposable ten-update pilot passed with ten strict
+improvements, no fallbacks/no-ops and mean update time 0.95134 seconds.
+The source-bound frozen-identity and runtime-fit checks passed before the
+requested fresh trajectory began; terminal identities remain pending.
+
+Recent saved timings average 0.95874 s/update over 100 updates and 0.99246
+over 500. The remaining 456 updates project to 437–453 seconds, approximately
+08:44 Europe/Paris; quote about 08:45 allowing ordinary overhead. This is
+a pace-based estimate, not completed-budget evidence. Latest saved contact
+loss is -0.3821232319. Report 29753153 remains PEND on the native dependency;
+its CPU scheduling/rendering/packaging time is additional. Neither job was
+changed or restarted by this status inspection.

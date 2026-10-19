@@ -2756,3 +2756,25 @@ files, 8,438-byte archive SHA
 Stdlib checks/safe extraction confirm actual EXIT and the preserved constant-
 output oracle error. Receipt: `readiness-03/verification.json`. Historical
 failure is not retroactively a passed readiness or native scientific failure.
+
+### 19 October, 08:36 Europe/Paris — native started; 4544/5000 updates
+
+User requested start status and ETA. A compact scheduler/log inspection
+confirmed **29753152 RUN**, started 07:12:54 Europe/Paris on `n-62-18-5`;
+**29753153 PEND**, dependency not satisfied. Native entry reserve passed with
+19 GiB available against 8 GiB. Persisted study summary reports native contact
+checks passed and coupled invalid-F chemistry/combined-direction checks passed
+(chemistry gradient norm 0.09259258210659027). The disposable ten-update pilot
+passed, ten strict improvements and zero fallback/no-op updates, mean
+0.9513378069 s/update. Frozen model/context and runtime-fit gates passed
+before entry into the fresh requested trajectory; final identities are pending.
+
+At 06:36:46 UTC (08:36:46 Europe/Paris), saved `case-0/updates.jsonl` had
+4544 contiguous completed updates, 456 remaining. Last contact -0.3821232319.
+Saved timing means: last 100 updates 0.9587433985 s/update; last 500
+0.9924594264. These project 437–453 seconds remaining, approximately
+08:44 Europe/Paris; user-facing ETA about 08:45 with overhead. CPU report
+queueing/rendering/packaging is additional and has no measured ETA yet.
+This is a partial RUN status and timing estimate, not native completion,
+terminal identity verification or a rendered report. Metadata/log inspection
+only; no job/source/settings changed and no new numerical experiment ran.
