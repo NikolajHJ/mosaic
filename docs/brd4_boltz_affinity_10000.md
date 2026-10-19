@@ -5,6 +5,15 @@ only after passing, two independent fresh 10,000-update runs: 50% chain/uniform
 and seeded random probability initialization. Implementation is being validated;
 submission or scheduler success alone does not certify numerical readiness.
 
+**Current status, 19 October 2026, approximately 19:08 Europe/Paris:** the
+283 CPU tests passed. Native validation is now queued as **29758990** in
+**gpul40s**, requesting one exclusive NVIDIA L40S (48 GB). Replacement
+submission controller **29759027** waits for native validation and the passed
+launcher CPU check **29759003**. Neither long optimization arm has been
+submitted. The earlier A10 readiness/controller were intentionally cancelled
+while unstarted; their EXIT outcomes are not native test failures. See the
+resource amendment below for exact identities and preserved failures.
+
 ## Scope and pivotal choices
 
 Mosaic retains its six occupied neutral heavy-atom slots, element order
@@ -73,7 +82,7 @@ Hard/fresh-pose rescoring remains necessary before interpreting molecular utilit
   1.5 times slower pilot mean times10000 +1800s below23h. This is not a worst-case bound.
 - [ ] Authenticate final native readiness, then submit two independent GPU arms.
 
-Initial resources: CPU readiness hpc4slots/4GiB per slot/1h; native readiness
+Historical initial resources: CPU readiness hpc4slots/4GiB per slot/1h; native readiness
 gpua10 one exclusive GPU/four slots/8GiB per slot/2h. The modest BRD4 context is
 tested on that actual GPU before long submissions. Each full arm uses the same
 GPU queue/shape and23h, no inter-arm dependency. Cache assets are reused read-only
@@ -123,3 +132,72 @@ No long native arm has been submitted. Code pushed as ecaf328. A quiet hourly
 follow-up checks actual native readiness/controller outcomes, fixes genuine
 integration bugs with new sealed allocated tests, and records actual long IDs
 once gates pass; it must not reinterpret failed native checks as passes.
+
+## User-requested GPU queue amendment, 19 October 2026
+
+The user asked to use a less congested GPU queue to start native tests. At
+approximately 19:02 Europe/Paris, the scheduler exposed two A10 GPUs and 21
+waiting jobs in `gpua10`, versus twelve L40S GPUs and 59 waiting jobs in
+`gpul40s`. These are job counts, not comparable CPU-slot PEND counts or a
+start-time forecast. L40S has fewer waiting jobs per GPU in that snapshot;
+neither that ratio nor the larger pool guarantees an earlier start. H100
+queues require special groups without established account authorization, so
+no access attempt was made.
+
+DTU `eswitch` rejected an in-place `bswitch` with a permission denial. This
+transport/control outcome is preserved; it is not a scientific failure.
+Scheduler state and absent payload/long submission records established that
+old readiness **29758626** and controller **29758628** were still unstarted
+(PEND/PSUSP). Both were intentionally cancelled and their EXIT outcomes
+confirmed before replacement. No molecular experiment was interrupted.
+
+Replacement native readiness **29758990** is PEND in `gpul40s`: one exclusive
+L40S 48 GB GPU, four CPU slots, 8 GiB per slot, two hours. It uses the identical
+source01 scientific code/configuration and manifest
+`8a621a975cf98800ea3a2a7413f1e07b1f317b988c02d69b593832a7d1fd94af`.
+All preparation, native parity, finite-difference, coupled chemistry, pilot,
+runtime, finite-value, frozen-identity and quota gates remain mandatory.
+New readiness output:
+`/zhome/95/e/206121/mosaic-runs/20261019-brd4-boltz-affinity-queue-02-ready/payload/`.
+
+Only external submission tooling changed. Immutable launcher03 is
+`/work3/s234818/mosaic/releases/20261019-brd4-boltz-launch-03/source`, manifest
+`60924c49eb9cbe3c8741afb2f0b152e6ed2525f542f610310bbcaf59a3db5d85`,
+archive 5,100 bytes, SHA
+`4453763533a0b323c2dc50f3930b3673d20a8b2e66a9fbd285989d66ee65cde5`.
+It contains the controller, launcher tests and two batch wrappers; scientific
+source01 remains unchanged and is still the code executed by native jobs.
+
+Launcher-only CPU **29758998** exited before tests because LSF split an inline
+`Python -c` command. Its failed logs remain preserved; no native test ran.
+The wrapper-based retry **29759003** actually DONE/passed eight unit tests,
+zero failures/errors/skips at 19:07:12 Europe/Paris. Assessment SHA
+`f3e6c52ee9c73d6770c8c05179e377cce7f4e2112b0aa5f4ceaf9b40d000c1f9`.
+The earlier 283-test scientific CPU result remains valid. Launcher output:
+`/zhome/95/e/206121/mosaic-runs/20261019-brd4-boltz-affinity-queue-03-cpu/`.
+
+Replacement controller **29759027** is PEND in `hpc`, waiting on
+`done(29759003)&&done(29758990)`. It uses the authenticated batch wrapper and
+requires actual native DONE, matching queue `gpul40s`, all passed persisted
+proofs and fresh quota before submitting either long arm. Both future arms
+will request the validated L40S queue, one exclusive GPU, four slots, 8 GiB per
+slot and 23 hours, independently. The 23-hour request is an allocation limit,
+not a measured completion estimate. Their unchanged future root is
+`/zhome/95/e/206121/mosaic-runs/20261019-brd4-boltz-affinity-01-native/`.
+Controller output:
+`/zhome/95/e/206121/mosaic-runs/20261019-brd4-boltz-affinity-queue-03-controller/`.
+Compact local resource-change evidence belongs under
+`results/hpc/20261019-brd4-boltz-affinity/queue-change-02/`.
+Its download completed: stdlib verification checked all 23 files, exact byte
+lengths and SHA-256 hashes. Downloaded manifest SHA
+`e1f65ded65a82cbb6c77431a702b305a2d1f24a8bc8e7333f3561671c47d575d`;
+`verification.json` records passed. At 19:08:37 Europe/Paris,
+29758990 remained PEND with `Job's requirements for resource reservation not
+satisfied (Resource: ngpus_physical): 3 hosts`; this is an ordinary GPU
+reservation wait. Controller29759027 remained PEND on its dependency.
+
+Final scheduler check at 19:10 Europe/Paris: native29758990 still PEND, with
+four CPU slots already reserved on n-62-13-14; it is waiting for a physical
+GPU. Recursive host-group inspection confirms six eligible L40S nodes
+(n-62-13-14..19), two GPUs each, versus one A10 node. Controller29759027
+remains PEND on native completion. No start or completion ETA is established.

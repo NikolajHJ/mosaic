@@ -15,17 +15,24 @@ def main():
         parser.add_argument("--" + name, type=Path, required=True)
     parser.add_argument("--ready-job", required=True)
     parser.add_argument("--manifest", required=True)
+    parser.add_argument("--queue", choices=("gpua10", "gpul40s"), default="gpua10")
     args = parser.parse_args()
     if not os.environ.get("LSB_JOBID"):
         raise RuntimeError("Submission controller requires allocated DTU CPU")
-    state = subprocess.run(
-        ["bjobs", "-noheader", "-o", "stat", args.ready_job],
+    scheduler_fields = subprocess.run(
+        ["bjobs", "-noheader", "-o", "stat queue", args.ready_job],
         capture_output=True,
         text=True,
         check=True,
-    ).stdout.strip()
+    ).stdout.split()
+    if len(scheduler_fields) != 2:
+        raise ValueError("Native readiness scheduler response is ambiguous")
+    state, readiness_queue = scheduler_fields
     if state != "DONE":
         raise ValueError("Native readiness scheduler outcome is not DONE")
+    # Pilot timing certifies only the declared hardware queue for these arms.
+    if readiness_queue != args.queue:
+        raise ValueError("Native readiness queue differs from launch queue")
     assessment = args.ready / "assessment.json"
     result = json.loads(assessment.read_text())
     if (
@@ -47,6 +54,10 @@ def main():
         "ready_job": args.ready_job,
         "assessment_sha256": digest,
         "source_manifest_sha256": args.manifest,
+        "launch_queue": args.queue,
+        "controller_script_sha256": hashlib.sha256(
+            Path(__file__).read_bytes()
+        ).hexdigest(),
         "arms": {},
     }
     output = args.root / "submissions.json"
@@ -70,7 +81,7 @@ def main():
             "-J",
             "mosaic-boltz-aff-" + arm,
             "-q",
-            "gpua10",
+            args.queue,
             "-n",
             "4",
             "-R",

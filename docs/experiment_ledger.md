@@ -3280,3 +3280,71 @@ pass. Quiet hourly follow-up reuses the paused, completed report heartbeat to
 finish this new authorized gated-submission scope; pause after actual arm IDs
 are authenticated/delivered, or a blocker requiring human action. It does not
 resume or modify any completed report/experiment.
+
+### 19 October 2026, approximately 19:08 Europe/Paris — requested L40S queue change
+
+User requested a less congested GPU queue for native Boltz validation. Around
+19:02, scheduler queue snapshots showed gpua10 two A10 GPUs/21 waiting jobs
+and gpul40s twelve L40S GPUs/59 waiting jobs. Counts refer to jobs, not CPU-slot
+PEND totals; the lower waiting-jobs/GPU ratio is not a promised start time.
+H100 queues require special group membership without established account
+authorization; no access attempt was made. The L40S has 48 GB GPU memory.
+
+DTU eswitch rejected in-place bswitch with a permission denial, preserved as a
+control failure rather than a native numerical outcome. Historical readiness
+29758626/controller29758628 were authenticated unstarted PEND/PSUSP, with no
+payload or long-arm submission records. Both were intentionally cancelled;
+actual EXIT receipts confirmed before replacement. No molecular experiment
+had started, and these EXIT outcomes do not invalidate the 283 passed CPU tests.
+
+Actual replacement native **29758990 PEND/gpul40s**, one exclusive GPU,
+four CPU slots,8 GiB per slot,two hours. Scientific source/configuration bytes
+remain source01 at
+`/work3/s234818/mosaic/releases/20261019-brd4-boltz-affinity-01/source`, manifest
+`8a621a975cf98800ea3a2a7413f1e07b1f317b988c02d69b593832a7d1fd94af`.
+All native parity/FD, coupled chemistry, finite-value, pilot/runtime, model/
+context identity and quota gates are unchanged. Output:
+`/zhome/95/e/206121/mosaic-runs/20261019-brd4-boltz-affinity-queue-02-ready/payload/`.
+
+External launcher03 at
+`/work3/s234818/mosaic/releases/20261019-brd4-boltz-launch-03/source`
+contains only controller/tests/two batch wrappers, manifest
+`60924c49eb9cbe3c8741afb2f0b152e6ed2525f542f610310bbcaf59a3db5d85`,
+archive5,100 bytes/SHA
+`4453763533a0b323c2dc50f3930b3673d20a8b2e66a9fbd285989d66ee65cde5`.
+No scientific code/configuration changed. First launcher-only CPU29758998
+EXIT before tests from LSF splitting inline Python-c; failed logs preserved,
+not a native failure. Wrapper retry **29759003 DONE**, eight unit tests passed,
+zero failure/error/skip,19:07:12 Europe/Paris; assessment SHA
+`f3e6c52ee9c73d6770c8c05179e377cce7f4e2112b0aa5f4ceaf9b40d000c1f9`.
+Launcher CPU output:
+`/zhome/95/e/206121/mosaic-runs/20261019-brd4-boltz-affinity-queue-03-cpu/`.
+
+Actual controller **29759027 PEND/hpc**, dependency
+`done(29759003)&&done(29758990)`, uses authenticated wrapper/launcher against
+unchanged scientific source01. It requires actual native DONE, matching
+validated gpul40s queue, every passed persisted proof and fresh quota before
+either bsub. Future arms remain independent, each gpul40s/one exclusive GPU/
+four slots/8 GiB per slot/23h;23h is a limit, not an ETA. No long arm has yet
+been submitted. Controller output:
+`/zhome/95/e/206121/mosaic-runs/20261019-brd4-boltz-affinity-queue-03-controller/`.
+Unchanged future native root:
+`/zhome/95/e/206121/mosaic-runs/20261019-brd4-boltz-affinity-01-native/`.
+Compact local resource-change evidence:
+`results/hpc/20261019-brd4-boltz-affinity/queue-change-02/`.
+Download complete and stdlib byte verification passed all23files, exact
+lengths and SHA-256 hashes. Downloaded manifest SHA
+`e1f65ded65a82cbb6c77431a702b305a2d1f24a8bc8e7333f3561671c47d575d`;
+verification.json statuspassed. At19:08:37 Europe/Paris, native29758990 still
+PEND with `Job's requirements for resource reservation not satisfied
+(Resource: ngpus_physical): 3 hosts`, an ordinary GPU reservation wait;
+controller29759027 PEND on dependency. No native pass or long submission inferred.
+All numerical tests were allocated HPC; local work was static editing,
+packaging and byte verification only. Historical experiments and unrelated
+project-description changes remain preserved.
+
+Final 19:10 scheduler authentication: native29758990 PEND/gpul40s, four
+CPU slots reserved on n-62-13-14, waiting for ngpus_physical; controller29759027
+PEND dependency. Recursive host groups confirm six L40S nodes versus one A10
+node. Quiet follow-up now targets the replacement IDs and same-queue launch
+gates; all old jobs/evidence remain preserved.

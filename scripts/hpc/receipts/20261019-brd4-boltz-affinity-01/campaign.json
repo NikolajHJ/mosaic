@@ -4,14 +4,118 @@
   "source_manifest_sha256": "8a621a975cf98800ea3a2a7413f1e07b1f317b988c02d69b593832a7d1fd94af",
   "archive_sha256": "fc24ad5db5afdde7599c0c41e72c1a4790f9ab1db23ca1d35cd4d72fe2a1851c",
   "cpu_job": "29758624",
-  "native_readiness_job": "29758626",
-  "submission_controller_job": "29758628",
-  "long_arms": "not submitted; gated on actual CPU/native readiness success",
+  "native_readiness_job": "29758990",
+  "submission_controller_job": "29759027",
+  "long_arms": "not submitted; gated on actual native readiness, launcher CPU, persisted proofs and quota",
   "runs": "/zhome/95/e/206121/mosaic-runs/20261019-brd4-boltz-affinity-01",
   "cpu_status": "DONE/passed",
   "cpu_tests": 283,
   "cpu_assessment_sha256": "4d64197d56a2ba964ad1ae4ecf2b9e62e5e3ed2c4d14c247bae0a139cb79343b",
-  "native_readiness_status": "PEND: host job-slot limit",
-  "controller_status": "PEND: native readiness dependency",
-  "code_commit": "ecaf328"
+  "native_readiness_status": "PEND: physical GPU availability; four CPU slots reserved on n-62-13-14",
+  "controller_status": "PEND: done(29759003)&&done(29758990)",
+  "code_commit": "ecaf328",
+  "native_readiness_output": "/zhome/95/e/206121/mosaic-runs/20261019-brd4-boltz-affinity-queue-02-ready/payload/",
+  "submission_controller_output": "/zhome/95/e/206121/mosaic-runs/20261019-brd4-boltz-affinity-queue-03-controller/",
+  "long_arm_root": "/zhome/95/e/206121/mosaic-runs/20261019-brd4-boltz-affinity-01-native/",
+  "current_queue": "gpul40s",
+  "current_gpu": "NVIDIA L40S 48 GB",
+  "readiness_resources": {
+    "exclusive_gpus": 1,
+    "cpu_slots": 4,
+    "memory_gib_per_slot": 8,
+    "wall_minutes": 120
+  },
+  "future_arm_resources": {
+    "queue": "gpul40s",
+    "exclusive_gpus": 1,
+    "cpu_slots": 4,
+    "memory_gib_per_slot": 8,
+    "wall_minutes": 1380,
+    "inter_arm_dependency": false
+  },
+  "resource_amendment": {
+    "recorded_at": "2026-10-19T19:08:00+02:00",
+    "timestamp_precision": "approximate",
+    "reason": "User requested an alternative GPU queue with less waiting",
+    "scientific_source_configuration_changed": false,
+    "native_validation_gates_changed": false,
+    "queue_snapshot_at": "2026-10-19T19:02:00+02:00",
+    "queue_snapshot_timestamp_precision": "approximate",
+    "queue_snapshot": {
+      "gpua10": {
+        "gpus": 2,
+        "waiting_jobs": 21
+      },
+      "gpul40s": {
+        "gpus": 12,
+        "waiting_jobs": 59
+      }
+    },
+    "queue_snapshot_interpretation": "Job counts, not CPU-slot PEND counts; jobs per GPU does not guarantee start time",
+    "h100_access": "Special groups required; account authorization not established; no access attempt",
+    "in_place_switch": {
+      "tool": "DTU eswitch/bswitch",
+      "outcome": "rejected: permission denial",
+      "native_failure": false
+    },
+    "previous_jobs": [
+      {
+        "job_id": "29758626",
+        "role": "native_readiness",
+        "queue": "gpua10",
+        "pre_cancel_status": "PEND/PSUSP, verified unstarted",
+        "final_status": "EXIT, intentional cancellation confirmed",
+        "payload_started": false
+      },
+      {
+        "job_id": "29758628",
+        "role": "submission_controller",
+        "queue": "hpc",
+        "pre_cancel_status": "PEND/PSUSP, verified unstarted",
+        "final_status": "EXIT, intentional cancellation confirmed",
+        "long_arms_submitted": false
+      }
+    ],
+    "launcher": {
+      "tag": "20261019-brd4-boltz-launch-03",
+      "source": "/work3/s234818/mosaic/releases/20261019-brd4-boltz-launch-03/source",
+      "source_manifest_sha256": "60924c49eb9cbe3c8741afb2f0b152e6ed2525f542f610310bbcaf59a3db5d85",
+      "archive_bytes": 5100,
+      "archive_sha256": "4453763533a0b323c2dc50f3930b3673d20a8b2e66a9fbd285989d66ee65cde5",
+      "scope": "controller, tests and two batch wrappers only; scientific source01 unchanged",
+      "failed_cpu_job": {
+        "job_id": "29758998",
+        "status": "EXIT before tests",
+        "reason": "LSF split inline Python -c command",
+        "native_failure": false
+      },
+      "cpu_job": "29759003",
+      "cpu_status": "DONE/passed",
+      "cpu_tests": 8,
+      "cpu_failures": 0,
+      "cpu_errors": 0,
+      "cpu_skips": 0,
+      "cpu_finished_at": "2026-10-19T19:07:12+02:00",
+      "cpu_assessment_sha256": "f3e6c52ee9c73d6770c8c05179e377cce7f4e2112b0aa5f4ceaf9b40d000c1f9",
+      "cpu_output": "/zhome/95/e/206121/mosaic-runs/20261019-brd4-boltz-affinity-queue-03-cpu/"
+    },
+    "local_compact_proof": "results/hpc/20261019-brd4-boltz-affinity/queue-change-02/",
+    "compact_proof_verification": {
+      "status": "passed",
+      "files": 23,
+      "gates": "all file byte lengths and SHA-256 hashes verified with local stdlib",
+      "downloaded_manifest_sha256": "e1f65ded65a82cbb6c77431a702b305a2d1f24a8bc8e7333f3561671c47d575d",
+      "verification_file": "results/hpc/20261019-brd4-boltz-affinity/queue-change-02/verification.json"
+    },
+    "verified_l40s_hosts": [
+      "n-62-13-14",
+      "n-62-13-15",
+      "n-62-13-16",
+      "n-62-13-17",
+      "n-62-13-18",
+      "n-62-13-19"
+    ]
+  },
+  "status_observed_at": "2026-10-19T19:08:37+02:00",
+  "last_scheduler_check": "2026-10-19T19:10:00+02:00"
 }
