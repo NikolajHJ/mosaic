@@ -2916,3 +2916,89 @@ and heatmaps were checked as above. Deliverable viewer is open at
 `http://127.0.0.1:8772/report.html`; self-contained offline HTML is in
 `report-view-01/report/report.html`. The native study and report delivery are
 complete. Historical failures and unrelated working changes remain preserved.
+
+
+## 19 October 2026 — two fresh delayed-chemistry 10,000-update arms prepared
+
+User requested 50% uniform mix and random initialization, tiny initial chemistry
+weight growing from about update 5,000 to a large endpoint. Prepared a versioned
+v2 campaign with lambda=.001 through applied update 5,000, geometric ramp to
+50 at update 10,000. Fresh six-slot 50% chain/uniform and independent per-row
+Dirichlet(1), NumPy PCG64 seed 20261019; native key remains 17. LR .03 and original
+repair/data/model/context/internal-loss pins remain. Preserve prior studies.
+
+The schedule is fixed across every state's ten best-primal trials; refresh only
+after acceptance, recomputing chemistry gradients. Retain weights in state,
+trial, snapshot and derivative evidence. Only byte-identical raw native graph/key
+observations can be reused. Compare changing-surrogate deltas only within each
+update; retain best fixed-contact identity, raw invalid outputs and fallback/
+no-op counts. Prior 5k run had zero repair in every state; a larger coefficient
+is not a new gradient when this term is zero. See docs/brd4_chemistry_ramp_10000.md.
+
+Local AST, Ruff check/format, Bash -n and viewer Node --check passed; these are
+static checks only. No local numerical/chemistry/model execution. Prepared
+allocated tests for scheduling/freezing, random schema, high-weight derivatives,
+byte-bound saved-only two-arm reports and tamper failures, plus existing legacy
+and required original-source oracle parity tests. Native driver adds low/high-
+coefficient invalid-F derivative assays and disposable early/high-weight pilots.
+Runtime gate remains empirical, not a guarantee of all future backtracking cost.
+
+SSH access succeeded. gpua10 Open:Active/max1440min; requests 1GPU exclusive,
+4slots/8GiB per slot/23h fit the actual queue. Home cached11.19/30GiB (18GiB
+conservative available), work3 pool6 92.45/100GiB. New source needs about40MB;
+no model downloads. Numerical outputs stay in dedicated home Mosaic directories
+with fresh per-job quota gates. No tests/jobs have passed or been submitted at
+this preparation entry. Immutable release and actual receipts follow.
+
+
+### Ramp source01 authenticated; readiness29753654 running
+
+Source01: 362 files, manifest
+`dc54acf72b906da9f5e2ceb0f6458314064e48408414496d1717a81117a91c80`,
+archive39,187,476bytes SHA
+`d1735e168c5c6396a58aea341107ee09c58b7daee510a79c8d22bba0f6dedd9c`.
+Remote immutable base `/work3/s234818/mosaic/releases/20261019-brd4-chemistry-ramp-01/source`.
+SCP transfer and exact archive/per-file manifest verification passed; source
+made read-only. Actual CPU readiness **29753654** submitted09:35:10 and started
+09:35:12 Europe/Paris on `n-62-30-25`, hpc4slots/4GiB-per-slot/1hour.
+Unique run `/zhome/95/e/206121/mosaic-runs/20261019-brd4-chemistry-ramp-01-readiness`.
+Legacy tests running at inspection. This is a submitted/running allocated test
+job, not a readiness pass or native GPU submission. Local release receipts in
+`results/releases/20261019-brd4-chemistry-ramp-01/`.
+
+
+### Ramp readiness passed; both independent native jobs actually queued
+
+**29753654 DONE**, persisted assessment passed. Actual allocated XML:
+217 legacy +57 chemistry/schedule/report = **274 passed**, no failures/errors/
+skips;3 intentionally deselected slow/model tests. Legacy66.00s, new102.95s.
+Original-source oracle generator retained12 value/VJP fixtures; training-only
+reference export and exact configuration/source/test-proof checks passed.
+Assessment SHA `35dac42a903ee397e77ff06f2b7a35cde5a191a475ebde007f844cc44912a895`.
+Reference SHA `37b34a2ba7be47886936df48faaabdeac20481e5a9cebca9bafab831c07868eb`.
+New config SHAs: mix50 `1b9ea19c4405a2289f111db7dd8fc41f9df17f4ddffdfe1033de2554197c56ed`,
+random `3f3bb1fd0b087417a462f7b4b5743ce1fc72ddbd8d099af0348380912ac0685f`.
+Downloaded scheduler/LSF success, XML/oracle/reference/assessment/quota bytes to
+`results/hpc/20261019-brd4-chemistry-ramp/readiness-01/`; stdlib verification
+passed all receipt hashes, XML counts/no errors/skips and current config hashes.
+No local numerical work. Entry home quota gate ready.
+
+After actual CPU DONE/proof authentication and fresh quota inspection, submitted
+**29753667** fresh50% chain/uniform and **29753668** fresh random Dirichlet at
+09:39:23 Europe/Paris. Both actual bjobs records confirm gpua10, one exclusive
+GPU/four slots/8GiB per slot/23hours, sealed source01 manifest and readiness
+assessment SHA above, distinct correct config arguments. Their sole dependency
+is done(29753654); they can schedule independently. Both initially **PEND**,
+new job waiting for scheduling. No native scientific checks or trajectory
+completion claimed by these submissions. Unique run parents are
+`/zhome/95/e/206121/mosaic-runs/20261019-brd4-chemistry-ramp-01-{mix50,random}`.
+
+Combined report/evidence **29753669 PEND**, submitted09:39:24, hpc2slots/
+4GiB per slot/1hour after `ended(29753667) && ended(29753668)`. It renders saved
+probabilities only, preserves partial/failed outcomes and requires unchanged
+model/context even for partial presentation. Expected report directory
+`.../20261019-brd4-chemistry-ramp-01-report/payload/report/` and sibling tar
+receipt. Report completion, download/verification/browser opening remain
+pending. Tracked campaign receipt in
+`scripts/hpc/receipts/20261019-brd4-chemistry-ramp/campaign.json`. Old studies,
+reports and unrelated working changes remain unchanged.

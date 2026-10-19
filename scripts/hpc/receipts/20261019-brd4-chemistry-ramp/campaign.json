@@ -1,0 +1,60 @@
+{
+  "campaign": "20261019-brd4-chemistry-ramp-01",
+  "source_manifest_sha256": "dc54acf72b906da9f5e2ceb0f6458314064e48408414496d1717a81117a91c80",
+  "source_archive_sha256": "d1735e168c5c6396a58aea341107ee09c58b7daee510a79c8d22bba0f6dedd9c",
+  "source_archive_bytes": 39187476,
+  "source_files": 362,
+  "source": "/work3/s234818/mosaic/releases/20261019-brd4-chemistry-ramp-01/source",
+  "readiness_job": "29753654",
+  "readiness_status": "DONE; persisted assessment passed; XML zero failures/errors/skips",
+  "assessment_sha256": "35dac42a903ee397e77ff06f2b7a35cde5a191a475ebde007f844cc44912a895",
+  "tests": {
+    "legacy-unit.xml": 217,
+    "chemistry-unit.xml": 57
+  },
+  "proof_sha256": {
+    "job-final.txt": "a8876e94752350e3804f2d3315a9b9e178cec3d1925164f3bb2fdafb663a3ede",
+    "submission.txt": "7ace546a19a8e0973ab4a85b9b2a43f74c81a45eefb7739093a63801817a6008",
+    "stdout.29753654.log": "1807d818ceeab0305459110a1e733935c1fa47e6e07d36996a3455c7276f41e0",
+    "stderr.29753654.log": "7d57e9e44355166e210a310a2b90b7d8543b85c5ffbb82276c701f4dd1f23271",
+    "payload/assessment.json": "35dac42a903ee397e77ff06f2b7a35cde5a191a475ebde007f844cc44912a895",
+    "payload/legacy-unit.xml": "88f279e7c78c759fea7df8ce40fc7116d7c9561ed3f5531d7327d3b22c1c13ca",
+    "payload/chemistry-unit.xml": "972d3915a9a0c7912e5cb14e299614d019a9fc9c214d391d07153baafec433b8",
+    "payload/chemistry_oracles.json": "0cce92b5e45d23acedcf3d927c9cfd37b7553de101d19a364dc106769ed4535d",
+    "payload/composition_reference.json": "37b34a2ba7be47886936df48faaabdeac20481e5a9cebca9bafab831c07868eb",
+    "payload/quota_preflight.json": "176364b63c153eb7ffa6e0e054ae5803a2d3f7b76d32cef1be0c9c0c87af85da",
+    "payload/quota_zhome.txt": "ab48f6c4a02cd4eba2fa88e2be1c538ec6c102db5d9c1ea4e0ec2f7bccd8378b"
+  },
+  "config_sha256": {
+    "examples/configs/brd4_chemistry_ramp_mix50_10000.json": "1b9ea19c4405a2289f111db7dd8fc41f9df17f4ddffdfe1033de2554197c56ed",
+    "examples/configs/brd4_chemistry_ramp_random_10000.json": "3f3bb1fd0b087417a462f7b4b5743ce1fc72ddbd8d099af0348380912ac0685f"
+  },
+  "native_jobs": {
+    "mix50": "29753667",
+    "random": "29753668"
+  },
+  "native_status_at_submission_check": "PEND; waiting for scheduling",
+  "report_job": "29753669",
+  "report_status_at_submission_check": "PEND; ended(29753667) && ended(29753668)",
+  "native_resources": {
+    "queue": "gpua10",
+    "gpu": "num=1:mode=exclusive_process",
+    "slots": 4,
+    "memory_gib_per_slot": 8,
+    "walltime": "23:00"
+  },
+  "report_resources": {
+    "queue": "hpc",
+    "slots": 2,
+    "memory_gib_per_slot": 4,
+    "walltime": "01:00"
+  },
+  "run_root": "/zhome/95/e/206121/mosaic-runs",
+  "run_suffixes": [
+    "-readiness",
+    "-mix50",
+    "-random",
+    "-report"
+  ],
+  "limitation": "CPU readiness and actual GPU submissions, not native numerical validation or completed optimization/report"
+}

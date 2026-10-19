@@ -62,6 +62,7 @@ def saved_frames(root, states, *, historical=False):
                 "preparation_identity": state.get("preparation_identity"),
                 "chemistry_preparation": state.get("chemistry_preparation"),
                 "snapshot_sha256": sha(path),
+                "repair_weight": state.get("repair_weight"),
             }
         )
     return frames

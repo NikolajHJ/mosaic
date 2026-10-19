@@ -13,10 +13,43 @@ def sha(path):
         return hashlib.file_digest(stream, "sha256").hexdigest()
 
 
+def validate_ramp_config(config, baseline):
+    """Versioned campaign delta; retain every source/model/data/repair pin."""
+    expected = {
+        **baseline,
+        "version": "brd4-contact-chemistry-ramp-v2",
+        "steps": 10000,
+        "repair_schedule": {
+            "version": "delayed-geometric-v1",
+            "initial": 0.001,
+            "final": 50.0,
+            "hold_updates": 5000,
+            "total_updates": 10000,
+        },
+    }
+    del expected["repair_weight"], expected["mixing"]
+    recipes = (
+        (
+            {"kind": "chain_uniform", "mixing": 0.5},
+            "50% chain/uniform · delayed chemistry",
+        ),
+        (
+            {"kind": "dirichlet", "concentration": 1.0, "seed": 20261019},
+            "Random Dirichlet · delayed chemistry",
+        ),
+    )
+    if not any(
+        config == {**expected, "initialization": recipe, "label": label}
+        for recipe, label in recipes
+    ):
+        raise ValueError("Ramp configuration changed a declared setting or identity")
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--config", type=Path, required=True)
     parser.add_argument("--run", type=Path, required=True)
+    parser.add_argument("--additional-config", type=Path, action="append", default=[])
     args = parser.parse_args()
     if not os.environ.get("LSB_JOBID"):
         raise RuntimeError("Readiness belongs to the allocated CPU job")
@@ -69,6 +102,8 @@ def main():
         "nonempty_weight": 0.1,
     }:
         raise ValueError("Internal repair coefficients changed")
+    for path in args.additional_config:
+        validate_ramp_config(json.loads(path.read_text()), config)
     receipts = {}
     for name in ("legacy-unit.xml", "chemistry-unit.xml"):
         suites = list(ET.parse(args.run / name).getroot().iter("testsuite"))
@@ -99,6 +134,13 @@ def main():
         "status": "passed",
         "job_id": os.environ["LSB_JOBID"],
         "config_sha256": sha(args.config),
+        "configs": {
+            path.relative_to(Path(__file__).resolve().parents[1]).as_posix(): sha(path)
+            for path in [
+                args.config.resolve(),
+                *(p.resolve() for p in args.additional_config),
+            ]
+        },
         "source_manifest_sha256": sha(
             Path(__file__).resolve().parents[1] / "source_manifest.json"
         ),

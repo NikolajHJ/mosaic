@@ -36,6 +36,7 @@ class CombinedEvaluation:
     terms: dict
     gradients: GraphLogits
     preparation_id: str
+    repair_weight: float
 
 
 def _save_trials(path, evaluations):
@@ -55,6 +56,7 @@ def _save_trials(path, evaluations):
             independent_primal=np.asarray([v.primal for v in evaluations]),
             surrogate_autodiff=np.asarray([v.value for v in evaluations]),
             contact_primal=np.asarray([v.native.primal for v in evaluations]),
+            repair_weight=np.asarray([v.repair_weight for v in evaluations]),
             component_names=np.asarray(list(evaluations[0].terms)),
             components=np.asarray(
                 [[v.terms[k] for k in evaluations[0].terms] for v in evaluations]
@@ -134,7 +136,14 @@ def evaluate_combined(
     terms = {k: float(v) for k, v in terms.items()}
     terms.update(contact_loss=native.primal, contact_autodiff_loss=float(raw.value))
     return CombinedEvaluation(
-        logits, native, total, primal, terms, gradients, prepared.identity
+        logits,
+        native,
+        total,
+        primal,
+        terms,
+        gradients,
+        prepared.identity,
+        float(config["repair_weight"]),
     )
 
 
@@ -158,6 +167,7 @@ def _snapshot(directory, step, evaluation, *, prepared, previous_fixed_after=Non
         contact_primal=np.asarray(evaluation.native.primal),
         refreshed_surrogate=np.asarray(evaluation.primal),
         autodiff_surrogate=np.asarray(evaluation.value),
+        repair_weight=np.asarray(evaluation.repair_weight),
     )
     return {
         "step": step,
@@ -168,6 +178,7 @@ def _snapshot(directory, step, evaluation, *, prepared, previous_fixed_after=Non
         "refreshed_surrogate": evaluation.primal,
         "autodiff_surrogate": evaluation.value,
         "components": evaluation.terms,
+        "repair_weight": evaluation.repair_weight,
         "preparation_identity": evaluation.preparation_id,
         "previous_fixed_surrogate_after": previous_fixed_after,
         "chemistry_preparation": [
@@ -199,6 +210,7 @@ def run_chemical_updates(
     step_size,
     max_backtracks,
     config,
+    schedule=None,
 ):
     """Attempt every requested update under the explicitly declared best-primal policy.
 
@@ -215,6 +227,20 @@ def run_chemical_updates(
         or step_size <= 0
     ):
         raise ValueError("Invalid update budget")
+    if schedule is not None and steps > schedule.total_updates:
+        raise ValueError("Update budget exceeds chemistry schedule")
+
+    def state_config(state):
+        # A fresh immutable-by-convention options dict per accepted state.
+        # Every trial and FD comparison at that state receives this same value.
+        return {
+            **config,
+            "repair_weight": config["repair_weight"]
+            if schedule is None
+            else schedule.for_state(state),
+        }
+
+    active_config = state_config(0)
     directory = Path(directory)
     directory.mkdir(parents=True, exist_ok=False)
     (directory / "references").mkdir()
@@ -226,7 +252,8 @@ def run_chemical_updates(
         "acceptance_policy": "best_primal",
         "states": [],
         "updates": [],
-        "objective_scope": "contact fixed across states; repair references refreshed; only within-state surrogate deltas comparable",
+        "objective_scope": "contact fixed across states; repair references and optional coefficient refreshed; only within-state surrogate deltas comparable",
+        "repair_weight_schedule": None if schedule is None else schedule.record(),
         "contact_objective_identity": config.get("objective_identity"),
         "key_data": np.asarray(jax.random.key_data(key)).tolist(),
         "key_dtype": str(key.dtype),
@@ -250,7 +277,13 @@ def run_chemical_updates(
         prepared = prepare(initial, 0)
         write_json(directory / "references/step-0000.json", prepared.record())
         evaluation = evaluate_combined(
-            contact_loss, initial, prepared, spec, reference, key=key, config=config
+            contact_loss,
+            initial,
+            prepared,
+            spec,
+            reference,
+            key=key,
+            config=active_config,
         )
         report["states"].append(_snapshot(directory, 0, evaluation, prepared=prepared))
         _append_record(directory / "states.jsonl", report["states"][-1])
@@ -269,7 +302,7 @@ def run_chemical_updates(
             spec,
             reference,
             key=key,
-            config=config,
+            config=active_config,
             directory=directory / "combined_initial_checks",
         )
         for step in range(steps):
@@ -278,6 +311,7 @@ def run_chemical_updates(
                 "step": step,
                 "preparation_identity": prepared.identity,
                 "fixed_before": evaluation.primal,
+                "repair_weight": evaluation.repair_weight,
                 "attempts": [],
             }
             report["updates"].append(record)
@@ -304,7 +338,7 @@ def run_chemical_updates(
                     spec,
                     reference,
                     key=key,
-                    config=config,
+                    config=active_config,
                 )
                 strict = (
                     candidate.primal < evaluation.primal - 1e-7
@@ -317,6 +351,7 @@ def run_chemical_updates(
                         "autodiff_surrogate": candidate.value,
                         "independent_primal_surrogate": candidate.primal,
                         "components": candidate.terms,
+                        "repair_weight": candidate.repair_weight,
                         "strict": strict,
                     }
                 )
@@ -352,6 +387,7 @@ def run_chemical_updates(
             report["counts"]["forced_fallback"] += int(fallback)
             report["counts"]["no_op"] += int(noop)
             prepared = prepare(candidate.logits, step + 1)
+            active_config = state_config(step + 1)
             write_json(
                 directory / "references" / f"step-{step + 1:04d}.json",
                 prepared.record(),
@@ -363,7 +399,7 @@ def run_chemical_updates(
                 spec,
                 reference,
                 key=key,
-                config=config,
+                config=active_config,
                 native=candidate.native,
             )
             report["states"].append(
@@ -391,7 +427,7 @@ def run_chemical_updates(
             _append_record(directory / "states.jsonl", report["states"][-1])
             _append_record(directory / "updates.jsonl", record)
             print(
-                f"update {step + 1}/{steps}: contact={evaluation.terms['contact_loss']:.8g}, refreshed_surrogate={evaluation.primal:.8g}, fallback={fallback}, no_op={noop}",
+                f"update {step + 1}/{steps}: contact={evaluation.terms['contact_loss']:.8g}, refreshed_surrogate={evaluation.primal:.8g}, next_repair_weight={evaluation.repair_weight:.8g}, fallback={fallback}, no_op={noop}",
                 flush=True,
             )
             if (step + 1) % 25 == 0:

@@ -18,12 +18,15 @@ def check_combined_directions(
     order redistribution that is invisible to Protenix's existence-only map.
     """
     records = []
+    if evaluation.repair_weight != float(config["repair_weight"]):
+        raise ValueError("Derivative baseline and trial chemistry coefficient differ")
     report = {
         "status": "running",
         "directions": records,
         "preparation_identity": prepared.identity,
         "contact_objective_identity": config.get("objective_identity"),
         "schema_sha256": spec.fingerprint(),
+        "repair_weight": evaluation.repair_weight,
     }
     if directory is not None:
         directory.mkdir(parents=True, exist_ok=False)
@@ -94,6 +97,7 @@ def check_combined_directions(
                             "combined_autodiff": value.value,
                             "combined_primal": value.primal,
                             "contact_primal": value.native.primal,
+                            "repair_weight": value.repair_weight,
                             "key_data": jax.random.key_data(key),
                         }
                         saved.update(

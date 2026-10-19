@@ -6,6 +6,7 @@ parent=$2
 manifest=$3
 assessment=$4
 assessment_sha=$5
+config=${6:-examples/configs/brd4_chemistry_5000.json}
 project=/work3/s234818/mosaic
 python="$project/envs/protenix-tiny/bin/python"
 module load python3/3.12.11 cuda/12.9.1 cudnn/v9.13.0.50-prod-cuda-12.X
@@ -24,11 +25,14 @@ cd "$release"
 hostname > "$run/host.txt"
 module list 2> "$run/modules.txt"
 nvidia-smi --query-gpu=name,driver_version,memory.total --format=csv > "$run/gpu.txt"
-"$python" - "$assessment" "$run" "$manifest" <<'PY'
+"$python" - "$assessment" "$run" "$manifest" "$config" <<'PY'
 import hashlib,json,sys
 from pathlib import Path
-a=json.loads(Path(sys.argv[1]).read_text()); cfg=Path('examples/configs/brd4_chemistry_5000.json')
-if a['status']!='passed' or a['source_manifest_sha256']!=sys.argv[3] or hashlib.sha256(cfg.read_bytes()).hexdigest()!=a['config_sha256']:
+a=json.loads(Path(sys.argv[1]).read_text()); cfg=Path(sys.argv[4])
+expected=a.get('configs',{}).get(cfg.as_posix())
+if expected is None and cfg.as_posix()=='examples/configs/brd4_chemistry_5000.json':
+    expected=a['config_sha256']
+if a['status']!='passed' or a['source_manifest_sha256']!=sys.argv[3] or hashlib.sha256(cfg.read_bytes()).hexdigest()!=expected:
     raise ValueError('CPU assessment/config identity differs')
 ready=Path(sys.argv[1]).parent
 for name,entry in a['tests'].items():
@@ -44,6 +48,6 @@ out=Path(sys.argv[2]); (out/'composition_reference.json').write_bytes(source.rea
 (out/'cpu_assessment.json').write_bytes(Path(sys.argv[1]).read_bytes())
 PY
 reference_sha=$(cat "$run/reference_sha256.txt")
-"$python" examples/brd4_chemistry.py --config examples/configs/brd4_chemistry_5000.json \
+"$python" examples/brd4_chemistry.py --config "$config" \
   --reference "$run/composition_reference.json" --reference-sha256 "$reference_sha" \
   --cache-dir "$MOSAIC_CACHE_DIR/protenix" --output "$run/study" > "$run/native.log" 2>&1

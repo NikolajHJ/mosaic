@@ -21,7 +21,7 @@ hostname > "$run/host.txt"
 legacy_tests=()
 for test_file in tests/test_small_molecule_*.py; do
   case "$test_file" in
-    tests/test_small_molecule_chemistry.py|tests/test_small_molecule_chemistry_report.py) ;;
+    tests/test_small_molecule_chemistry*.py) ;;
     *) legacy_tests+=("$test_file") ;;
   esac
 done
@@ -36,10 +36,12 @@ done
   --manifest "$release/src/mosaic/small_molecule/chemistry/_reference/source_manifest.json" \
   --output "$run/chemistry_oracles.json" > "$run/oracles.log" 2>&1
 export JAX_ENABLE_X64=1 MOSAIC_REQUIRE_CHEMISTRY_ORACLES=1 MOSAIC_CHEMISTRY_ORACLES="$run/chemistry_oracles.json"
-"$python" -m pytest tests/test_small_molecule_chemistry.py tests/test_small_molecule_chemistry_report.py \
+"$python" -m pytest tests/test_small_molecule_chemistry*.py \
   -o addopts= --strict-markers -o cache_dir="$run/pytest-cache-new" \
   --basetemp "$run/pytest-unit-tmp-new" --junitxml="$run/chemistry-unit.xml" > "$run/chemistry-unit.log" 2>&1
 "$python" scripts/prepare_chemistry_reference.py --config examples/configs/brd4_chemistry_5000.json \
   --output "$run/composition_reference.json" > "$run/reference.log" 2>&1
 "$python" scripts/validate_chemistry_readiness.py --config examples/configs/brd4_chemistry_5000.json \
+  --additional-config examples/configs/brd4_chemistry_ramp_mix50_10000.json \
+  --additional-config examples/configs/brd4_chemistry_ramp_random_10000.json \
   --run "$run" > "$run/assessment.log" 2>&1

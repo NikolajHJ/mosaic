@@ -1,4 +1,4 @@
-"""Allocated native pilot and fresh 50% BRD4 contact-plus-chemistry trajectory."""
+"""Allocated native pilots and a fresh configured BRD4 chemistry trajectory."""
 
 import argparse
 import json
@@ -42,6 +42,8 @@ def main():
         check_combined_directions,
         run_chemical_updates,
     )
+    from mosaic.small_molecule.chemistry.initialization import initialize_graph
+    from mosaic.small_molecule.chemistry.schedule import RepairWeightSchedule
     from mosaic.small_molecule.gradient_checks import (
         array_digest,
         check_graph_gradients,
@@ -58,9 +60,14 @@ def main():
     from mosaic.small_molecule.state import RelaxedGraph, ELEMENTS, mix_with_uniform
     from protenix_relaxed_gradients import _hard_graph_from_fixture
 
+    scheduled = config["version"] == "brd4-contact-chemistry-ramp-v2"
+    schedule = RepairWeightSchedule(**config["repair_schedule"]) if scheduled else None
+    recipe = config.get("initialization", {"kind": "chain_uniform", "mixing": 0.5})
     if (
-        config["version"] != "brd4-contact-chemistry-logits-v1"
-        or config["mixing"] != 0.5
+        config["version"]
+        not in ("brd4-contact-chemistry-logits-v1", "brd4-contact-chemistry-ramp-v2")
+        or (not scheduled and config["mixing"] != 0.5)
+        or (scheduled and schedule.total_updates != config["steps"])
         or config["n_atoms"] != 6
         or config["progress_search"]["allow_atom_edits"]
     ):
@@ -137,8 +144,22 @@ def main():
             args.reference.read_bytes()
         )
         key = jax.random.key(config["seed"])
-        graph = mix_with_uniform(hard, config["mixing"])
+        graph = initialize_graph(hard, recipe)
         initial = GraphLogits.from_graph(graph)
+        np.savez_compressed(
+            args.output / "initialization.npz",
+            X=np.asarray(graph.X),
+            E_upper=np.asarray(graph.E_upper),
+            atom_logits=np.asarray(initial.atoms),
+            bond_logits=np.asarray(initial.bonds),
+            key_data=np.asarray(jax.random.key_data(key)),
+        )
+        report["initialization"] = {
+            "recipe": recipe,
+            "artifact": "initialization.npz",
+            "sha256": file_sha256(args.output / "initialization.npz"),
+            "native_key_seed": config["seed"],
+        }
         if not all(
             np.allclose(
                 np.asarray(a),
@@ -173,7 +194,7 @@ def main():
         )
         options = {
             "loss": FailureGuidanceConfig(**config["loss"]),
-            "repair_weight": config["repair_weight"],
+            "repair_weight": schedule.initial if scheduled else config["repair_weight"],
             "element_js_weight": config["element_js_weight"],
             "parity_atol": config["parity_atol"],
             "objective_identity": {
@@ -211,9 +232,10 @@ def main():
 
         probe_dir = args.output / "coupled_chemistry_probe"
         probe_dir.mkdir()
-        x = graph.X.at[1, ELEMENTS.index("C")].set(0.5 / len(ELEMENTS))
+        assay_graph = mix_with_uniform(hard, 0.5)
+        x = assay_graph.X.at[1, ELEMENTS.index("C")].set(0.5 / len(ELEMENTS))
         x = x.at[1, ELEMENTS.index("F")].set(0.5 + 0.5 / len(ELEMENTS))
-        probe = GraphLogits.from_graph(RelaxedGraph(x, graph.E_upper))
+        probe = GraphLogits.from_graph(RelaxedGraph(x, assay_graph.E_upper))
         probe_reference = prepare(probe, 0)
         write_json(probe_dir / "preparation.json", probe_reference.record())
         np.savez_compressed(
@@ -284,6 +306,34 @@ def main():
             "directions": probe_checks,
             "scope": "disposable invalid-input derivative assay; not a requested trajectory update",
         }
+        if scheduled:
+            final_options = {**options, "repair_weight": schedule.final}
+            final_probe = evaluate_combined(
+                loss,
+                probe,
+                probe_reference,
+                spec,
+                reference["element_counts"],
+                key=key,
+                config=final_options,
+                native=probe_value.native,
+            )
+            report["high_weight_chemistry_probe"] = {
+                "status": "passed",
+                "repair_weight": schedule.final,
+                "components": final_probe.terms,
+                "preparation_identity": probe_reference.identity,
+                "directions": check_combined_directions(
+                    loss,
+                    final_probe,
+                    probe_reference,
+                    spec,
+                    reference["element_counts"],
+                    key=key,
+                    config=final_options,
+                    directory=probe_dir / "high_weight_checks",
+                ),
+            }
 
         common = dict(
             prepare=prepare,
@@ -302,6 +352,30 @@ def main():
             **common,
         )
         average = float(np.mean([u["elapsed_seconds"] for u in pilot["updates"]]))
+        if scheduled:
+            # Deliberately invalid high-weight assay, not a fictitious late-run
+            # state. Measure active repair and actual line-search exposure too.
+            late_pilot = run_chemical_updates(
+                loss,
+                probe,
+                directory=args.output / "high_weight_pilot",
+                steps=config["pilot_steps"],
+                **{**common, "config": final_options},
+            )
+            late_average = float(
+                np.mean([u["elapsed_seconds"] for u in late_pilot["updates"]])
+            )
+            average = max(average, late_average)
+            report["high_weight_pilot"] = {
+                "status": late_pilot["status"],
+                "repair_weight": schedule.final,
+                "steps": config["pilot_steps"],
+                "counts": late_pilot["counts"],
+                "mean_update_seconds": late_average,
+                "runtime_estimate_seconds_per_update": average,
+                "disposable": True,
+                "limitation": "invalid-input assay; empirical runtime estimate, not a worst-case bound or prediction of late-state chemistry/convergence",
+            }
         projected = 1.5 * average * config["steps"] + 1800
         report["pilot"] = {
             "status": pilot["status"],
@@ -326,10 +400,15 @@ def main():
             initial,
             directory=args.output / "case-0",
             steps=config["steps"],
+            schedule=schedule,
             **common,
         )
         report["cases"] = [
-            {"label": "50% chain/uniform + chemistry", "mixing": 0.5, **result}
+            {
+                "label": config.get("label", "50% chain/uniform + chemistry"),
+                "initialization": recipe,
+                **result,
+            }
         ]
         if len(result["states"]) != config["steps"] + 1 or [
             v["step"] for v in result["states"]
