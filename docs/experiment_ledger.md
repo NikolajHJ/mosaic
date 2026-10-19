@@ -3534,7 +3534,7 @@ Controller29759070 subsequently verified unstarted PEND, intentionally
 cancelled and finalEXIT confirmed. No source02-native arm root exists.
 Full readiness-parent failure archive produced:171files/14,985,443uncompressed
 bytes, including prepared native context, raw initializations/reports,
-20disposable pilot states/probes/worker logs and scheduler/controller records.
+two ten-update pilot trajectories/probes/worker logs and scheduler/controller records.
 Archive506,106bytes SHA
 `a456234c316b5e534508f972bdc1ab47d4ed5d0431988067df673ec36cebf9b4`;
 manifestSHA

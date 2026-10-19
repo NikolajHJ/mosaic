@@ -238,7 +238,7 @@
       "archive_bytes": 506106,
       "archive_sha256": "a456234c316b5e534508f972bdc1ab47d4ed5d0431988067df673ec36cebf9b4",
       "manifest_sha256": "f54279683af6b7641b3c1a8ac6ea4ac957b7490ce8045c43f87cd7446599282a",
-      "scope": "entire source02 readiness parent: prepared context, raw initializations, reports,20pilot states,probes,worker logs,scheduler/controller records",
+      "scope": "entire source02 readiness parent: prepared context, raw initializations, reports,two ten-update pilot trajectories,probes,worker logs,scheduler/controller records",
       "local_directory": "results/hpc/20261019-brd4-boltz-affinity/native-fd-failure-01/",
       "local_verification": {
         "status": "passed",
