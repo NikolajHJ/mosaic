@@ -11,6 +11,11 @@ import subprocess
 import tarfile
 
 
+PYTEST_BASETEMPS = frozenset(
+    ("pytest-unit-tmp", "pytest-unit-tmp-legacy", "pytest-unit-tmp-new")
+)
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--run", type=Path, action="append", required=True)
@@ -37,13 +42,24 @@ def main():
         for path in sorted(directory.rglob("*")):
             if path.is_symlink():
                 relative = path.relative_to(directory)
+                # Only declared pytest basetemps may contain duplicate
+                # ``current`` aliases. Never accept arbitrary prefix matches,
+                # cross-basetemp links, or links out of the named run.
                 if (
-                    "pytest-unit-tmp" not in relative.parts
+                    len(relative.parts) < 3
+                    or relative.parts[0] != "payload"
+                    or relative.parts[1] not in PYTEST_BASETEMPS
                     or not path.name.endswith("current")
-                    or not path.resolve().is_relative_to(
-                        directory / "payload/pytest-unit-tmp"
+                ):
+                    raise ValueError(
+                        "Non-pytest symlink evidence is unsupported: " + str(path)
                     )
-                    or not path.resolve().is_dir()
+                temporary = directory / "payload" / relative.parts[1]
+                target = path.resolve(strict=True)
+                if (
+                    target == temporary
+                    or not target.is_relative_to(temporary)
+                    or not target.is_dir()
                 ):
                     raise ValueError(
                         "Non-pytest symlink evidence is unsupported: " + str(path)
@@ -51,7 +67,7 @@ def main():
                 # Pytest's current aliases duplicate directories already walked
                 # under their real names. Record but never follow/archive links.
                 pytest_aliases[path.relative_to(root).as_posix()] = str(
-                    path.resolve().relative_to(root)
+                    target.relative_to(root)
                 )
                 continue
             if path.is_file():

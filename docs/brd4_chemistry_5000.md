@@ -74,7 +74,9 @@ and report rendering remain on allocated DTU HPC.
 - [x] Pass allocated CPU readiness: 29753148, 253 selected tests passed.
 - [x] Pass the bounded native GPU pilot within allocation 29753152.
 - [x] Submit the gated 5000-update run: GPU 29753152, report 29753153.
-- [ ] Verify completed evidence and deliver the saved-only report.
+- [x] Complete native 5000-update study and verify terminal model/context identities.
+- [x] Download, authenticate and browser-check the saved-only report.
+- [ ] Finish full downloaded evidence-archive verification.
 
 Initial access attempt: `ssh -o BatchMode=yes -o ConnectTimeout=15 dtu-hpc`
 reached the server but authentication returned **Permission denied (password)**.
@@ -296,3 +298,65 @@ a pace-based estimate, not completed-budget evidence. Latest saved contact
 loss is -0.3821232319. Report 29753153 remains PEND on the native dependency;
 its CPU scheduling/rendering/packaging time is additional. Neither job was
 changed or restarted by this status inspection.
+
+## Native complete; report packaging recovery — 19 October
+
+Native **29753152 DONE**, 5000 applied/strict-improving updates, zero fallback
+or no-op updates, 5001 saved states. Persisted native and case statuses are
+passed; frozen model/context before/after digests match their original pins.
+Scheduler runtime is 1:32:04 (driver elapsed 5503.295 s). Final contact loss
+is -0.3851259649 and the saved raw argmax readout is connected sanitized
+`CCCCCC`. Do not interpret this one hard readout as a validity guarantee for
+the relaxed probability law or causal evidence for the chemistry term.
+
+Report **29753153 EXIT** is an engineering packaging failure, not a native
+failure. Rendering completed with exit 0 and a complete 5001-state receipt;
+HTML SHA `01ff604c69b6a80374a3447c68f4976c6da061b69b8aae9ef72f9cc191aec3cf`
+(18,169,151 bytes). Packaging rejected pytest's internal `current` alias under
+the explicitly named `pytest-unit-tmp-legacy` root, because the collector
+recognized only `pytest-unit-tmp`.
+
+Report-only recovery recognizes exactly the old/legacy/new declared pytest
+basetemps, records internal directory aliases without following them, and
+continues rejecting escaping, cross-basetemp, file, unknown-root and other
+symlinks. Add allocated regression tests for those boundaries. A new sealed
+source/run copies the already authenticated report bytes and packages the
+complete native/readiness evidence plus the original failed report attempt.
+No native rerun, new chemistry evaluation, repair or scientific rendering is
+needed. Native summary SHA:
+`c110b4e0bcd716679102022ad51d46590a658f8f3f9471b7b91bfbc1166d85fa`.
+
+## Report-only recovery and presentation
+
+Recovery **29753409 DONE** on `n-62-30-25`, 08:59:42–09:01:13 Europe/Paris.
+All **13 allocated packaging/report tests passed**, no failures/errors/skips
+(5.78 s). Native production/example/config byte maps match source 04 exactly.
+Recovery source 05: 351 files; manifest
+`14e59d968eb9f342a0da68b9fac31b44a2702bcf564780fa7db199123147b069`;
+source archive `8d8e2ebc7b8a34c1b14651763cc25a6725c55fc5375462223f6cad598a9d2d89`.
+The recovery authenticated complete terminal native gates and copied the
+original report bytes; original render job 29753153 remains recorded.
+
+Evidence archive: 249,546,618 bytes, 15,995 files, SHA-256
+`c0309f186da134d48f69bc6fd8594535325934f4904def3aaad377b2452d0c89`.
+Remote path:
+`/zhome/95/e/206121/mosaic-runs/20261019-brd4-chemistry-05-repackage.tar.gz`.
+It retains the original report packaging failure and full native/readiness
+evidence. Official packaging quota gate passed with 19 GiB available versus
+4.4112 GiB required. Final LSF scheduler records and stdout authenticate native
+DONE at 08:44:58, original report EXIT at 08:45:34, and recovery DONE at 09:01:13.
+
+The separately downloaded report's four artifact hashes and input receipt
+passed local stdlib checks. Viewer: `http://127.0.0.1:8772/report.html`, backed
+by `results/hpc/20261019-brd4-chemistry/report-view-01/report/`. Browser inspection
+confirmed the completed-study banner, initial/final/midpoint controls, playback,
+readable C1–C6 labels, probability-dependent sizes and exact-probability heatmaps.
+The tab is retained as a deliverable at update 5000. No scientific rendering or
+chemistry evaluation occurred locally.
+
+Saved evidence shows **zero repair penalty in all 5001 states** and only
+`CCCCCC` among all saved hard readouts; all 5001 saved readouts sanitized.
+Probabilities changed and contact improved from -0.2778552473 to -0.3851259649,
+but repair guidance never activated along this trajectory. This is not an
+active-repair-effect demonstration. The separate invalid-F native probe did
+establish nonzero chemistry gradient and combined directional agreement.

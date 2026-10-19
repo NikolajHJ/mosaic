@@ -2778,3 +2778,100 @@ queueing/rendering/packaging is additional and has no measured ETA yet.
 This is a partial RUN status and timing estimate, not native completion,
 terminal identity verification or a rendered report. Metadata/log inspection
 only; no job/source/settings changed and no new numerical experiment ran.
+
+### 19 October — native complete; report rendered; packaging engineering failure
+
+User asked whether it is done. At 06:55:59 UTC, scheduler confirms native
+**29753152 DONE** (1:32:04 runtime) and report **29753153 EXIT** (34 s).
+Persisted native/case statuses are passed, 5001 states through update 5000,
+5000 applied/strict-improving updates and zero fallback/no-op updates.
+Final model digest remains
+`8d6926d5390fe682e193089f790ce53aa4011a6d5509ddb452a55db3d89b0ab2`;
+context remains
+`6747ba18833013da02dbf407d9faefb1adbc8314353b4882a34f99557b96d4f6`.
+Driver elapsed 5503.295348621 s. Final contact -0.3851259649; saved raw
+argmax is connected sanitized `CCCCCC`. Chemistry penalty is zero at the
+final state; its complete saved history will be inspected without reevaluation.
+Native summary SHA
+`c110b4e0bcd716679102022ad51d46590a658f8f3f9471b7b91bfbc1166d85fa`.
+
+Original rendering passed (render_exit=0). Its receipt retains native 29753152
+and historical 29745503, 5001 saved new states, 5001 historical contact points,
+complete=true. HTML is 18,169,151 bytes, SHA
+`01ff604c69b6a80374a3447c68f4976c6da061b69b8aae9ef72f9cc191aec3cf`.
+The report job's EXIT comes from packaging: the evidence collector recognizes
+only the exact `pytest-unit-tmp` name and rejected the readiness phase's
+`pytest-unit-tmp-legacy/...current` alias before creating an archive.
+
+Prepare unique report-only recovery source/run 05. Collector accepts only
+the three explicitly declared pytest basetemps, records internal current
+aliases without following/archiving links and retains strict rejection for
+escapes, cross-basetemp/file/parent/unknown-root/non-current links. Add focused
+allocated boundary regression tests. Recovery authenticates native terminal
+gates/source/config and the existing rendered report, copies its exact bytes,
+and preserves the failed report attempt in the full evidence package. No
+native experiment, loss, model/context or original report bytes are changed.
+Local Ruff and Bash syntax checks passed; numerical/fixture execution remains
+allocated HPC only.
+
+### Report-only recovery 29753409 passed; saved report opened
+
+Sealed source 05 contains the collector boundary fix, ten packaging tests,
+three existing report tests and `brd4_chemistry_repackage.lsf`, with unchanged
+native `src/`, examples and configurations. Manifest
+`14e59d968eb9f342a0da68b9fac31b44a2702bcf564780fa7db199123147b069`;
+351 files, 39,168,493-byte source archive SHA
+`8d8e2ebc7b8a34c1b14651763cc25a6725c55fc5375462223f6cad598a9d2d89`.
+Source base `/work3/s234818/mosaic/releases/20261019-brd4-chemistry-05/source`.
+Submitted CPU recovery **29753409** to `hpc`, two slots, 4 GiB/slot, one hour,
+after both native/original report ended. Actual run `n-62-30-25`, 08:59:42–
+09:01:13 Europe/Paris, DONE, 91 s. **13 tests passed**, no failures/errors/skips,
+5.78 s. New pytest negative links are removed in fixture cleanup so their
+deliberately invalid aliases do not contaminate the enclosing evidence bundle.
+
+Recovery authenticated the terminal native summary/case, full 5000-update
+budget, frozen model/context and native gradient/pilot gates, unchanged
+scientific source/config and the existing complete report receipt/files.
+It copied rendered bytes without new rendering or numerical model/chemistry
+execution. Original render job remains 29753153. Copied receipt SHA
+`586d007df0d5d193a10462296e76a7720572c0bdd60c19b2f945c914dd78280a`.
+
+Full evidence archive:
+`/zhome/95/e/206121/mosaic-runs/20261019-brd4-chemistry-05-repackage.tar.gz`,
+**249,546,618 bytes**, **15,995 files**, SHA
+`c0309f186da134d48f69bc6fd8594535325934f4904def3aaad377b2452d0c89`.
+Entry 8 GiB and packaging 4.41119754 GiB quota gates passed with 19 GiB
+conservatively available. Original failed report packaging remains in the
+archive; no scientific result was altered or retroactively relabeled.
+
+Native LSF final stdout authenticates successful completion at 08:44:58;
+original report failed at 08:45:34 and recovery succeeded at 09:01:13.
+Final scheduler/LSF files downloaded separately to `complete-report-01/`,
+authenticated by a 3,881-byte metadata archive SHA
+`d5c9260c8dcecb27e50026acf48607031fc87762b6a6eb4e404f184f6b355ee1`.
+Actual stdout success wording is `Successfully completed.`; scheduler entries
+say `Done successfully.`. Receipt: `final-scheduler-verification.json`.
+
+Downloaded the already rendered report independently to
+`results/hpc/20261019-brd4-chemistry/report-view-01/report/`; all four artifact
+hashes/lengths and source/input/state receipt checks passed. Served by the
+existing detached helper on fresh loopback port **8772**, preserving prior
+servers. Browser inspection succeeded: complete banner; updates 0/2500/5000;
+play/pause advances saved states; element/slot labels C1–C6 are readable;
+atom/bond probability sizes and exact probability tables are visible. Viewer
+tab is marked deliverable at update 5000. Presentation only, no local
+scientific rendering, repairs or model execution.
+
+Recovery's saved-record analysis reports zero chemistry penalty in **all
+5001 states**, all saved hard readouts sanitized and only SMILES `CCCCCC`.
+Contact changed -0.2778552473 to -0.3851259649; probabilities changed while
+the hard chain remained hexane. Along this trajectory the repair term was
+inactive; its active native derivative evidence is the separate invalid-F
+probe, not an observed repair-driven optimization effect here.
+
+Full archive copy initially stalled through SCP; its 17,825,792-byte partial
+is preserved with `.stalled` suffix and is not evidence of a complete download.
+Switched to one authenticated SSH byte stream of the same immutable archive;
+the exact expected 249,546,618 bytes arrived. Standard-library archive hash,
+safe extraction and all per-file checks are pending at this entry. Receipt
+path and byte length match the remote receipt. No local numerical validation.
