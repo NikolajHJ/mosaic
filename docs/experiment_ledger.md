@@ -2875,3 +2875,44 @@ Switched to one authenticated SSH byte stream of the same immutable archive;
 the exact expected 249,546,618 bytes arrived. Standard-library archive hash,
 safe extraction and all per-file checks are pending at this entry. Receipt
 path and byte length match the remote receipt. No local numerical validation.
+
+### Final full-archive integrity pass and report delivery
+
+The full SSH-stream download matched the exact receipt archive path, length
+and SHA. `scripts/verify_hpc_evidence.py` authenticated the archive and completed
+safe extraction, then spent several minutes in its serial Windows per-file
+loop. Stopped only that verification process after extraction and adapted the
+previously used bounded post-extraction byte operator to the new pinned archive:
+
+```powershell
+py -3.13 scripts/hpc/receipts/20261019-brd4-chemistry/verify-complete-report-download.py results/hpc/20261019-brd4-chemistry/complete-report-01
+```
+
+It reauthenticated archive path/bytes/SHA, safe unique member names, the exact
+archived/extracted manifest and **15,995/15,995 file paths, lengths and hashes**.
+Eight bounded I/O workers completed the per-file pass in **83 seconds**, no
+missing files or differences. Manifest SHA
+`0ecf15951cb5bf7c61ee6706445f73270a5431700afb9bd510ad61d7537797c1`.
+Final receipt:
+`complete-report-01/20261019-brd4-chemistry-05-repackage-download.json`.
+The stopped serial pass is not claimed complete; the successful replacement
+retains every original archive/manifest/per-file gate. Ruff check/format passed
+for the new stdlib operator; no local scientific/numerical execution occurred.
+
+Additional saved-record checks in `study-verification.json` authenticated the
+native summary/case equality, 5001 contiguous states/5000 contiguous updates,
+all state snapshot SHA receipts against the evidence manifest, fixed six slots,
+mixing .5/LR .03/seed 17, config/composition reference pins, passed native
+contact/active-chemistry/pilot gates and terminal frozen identities. The
+successful 13-test report-only XML and original input IDs remain present.
+Recovered HTML exactly matches the viewer copy SHA
+`01ff604c69b6a80374a3447c68f4976c6da061b69b8aae9ef72f9cc191aec3cf`.
+
+`report-view-01/view-state-verification.json` records all 5001 embedded saved
+frames with X[6,6]/E[15,5], the zero repair-penalty/hexane readout history,
+expected model/context/input identities, verified report hash and HTTP 200
+with exact Content-Length 18169151. Browser playback, controls, labels, sizes
+and heatmaps were checked as above. Deliverable viewer is open at
+`http://127.0.0.1:8772/report.html`; self-contained offline HTML is in
+`report-view-01/report/report.html`. The native study and report delivery are
+complete. Historical failures and unrelated working changes remain preserved.

@@ -76,7 +76,7 @@ and report rendering remain on allocated DTU HPC.
 - [x] Submit the gated 5000-update run: GPU 29753152, report 29753153.
 - [x] Complete native 5000-update study and verify terminal model/context identities.
 - [x] Download, authenticate and browser-check the saved-only report.
-- [ ] Finish full downloaded evidence-archive verification.
+- [x] Finish full downloaded evidence-archive verification: 15,995/15,995 files matched.
 
 Initial access attempt: `ssh -o BatchMode=yes -o ConnectTimeout=15 dtu-hpc`
 reached the server but authentication returned **Permission denied (password)**.
@@ -360,3 +360,27 @@ Probabilities changed and contact improved from -0.2778552473 to -0.3851259649,
 but repair guidance never activated along this trajectory. This is not an
 active-repair-effect demonstration. The separate invalid-F native probe did
 establish nonzero chemistry gradient and combined directional agreement.
+
+## Final local evidence verification
+
+The full archive's exact remote path, byte count and SHA matched its receipt.
+`verify_hpc_evidence.py` authenticated the archive and completed safe extraction;
+its slow serial Windows per-file pass was stopped after extraction. The
+versioned post-extraction operator below reauthenticated the archive, all safe
+member names and the exact manifest bytes, then checked **15,995/15,995 files**
+with eight bounded I/O workers in 83 seconds. No missing files, size/path
+differences or checksum mismatches. No scientific work was executed locally.
+
+```powershell
+py -3.13 scripts/hpc/receipts/20261019-brd4-chemistry/verify-complete-report-download.py results/hpc/20261019-brd4-chemistry/complete-report-01
+```
+
+Manifest SHA-256:
+`0ecf15951cb5bf7c61ee6706445f73270a5431700afb9bd510ad61d7537797c1`.
+Final byte receipt: `complete-report-01/20261019-brd4-chemistry-05-repackage-download.json`.
+`study-verification.json` authenticates all 5001 state/snapshot receipts,
+5000 updates, N=6, native/config/reference identities, original input IDs and
+the successful 13-test recovery proof. The recovered archive's HTML is byte
+identical to the independently verified, browser-checked viewer copy.
+Report delivery is complete at `http://127.0.0.1:8772/report.html`; the same
+self-contained file also lives under `report-view-01/report/report.html`.
