@@ -37,6 +37,7 @@ class CombinedEvaluation:
     gradients: GraphLogits
     preparation_id: str
     repair_weight: float
+    native_name: str = "contact"
 
 
 def _save_trials(path, evaluations):
@@ -55,7 +56,11 @@ def _save_trials(path, evaluations):
             ),
             independent_primal=np.asarray([v.primal for v in evaluations]),
             surrogate_autodiff=np.asarray([v.value for v in evaluations]),
-            contact_primal=np.asarray([v.native.primal for v in evaluations]),
+            **{
+                evaluations[0].native_name + "_primal": np.asarray(
+                    [v.native.primal for v in evaluations]
+                )
+            },
             repair_weight=np.asarray([v.repair_weight for v in evaluations]),
             component_names=np.asarray(list(evaluations[0].terms)),
             components=np.asarray(
@@ -133,8 +138,17 @@ def evaluate_combined(
         raise FloatingPointError("Nonfinite combined loss or unmodified logit gradient")
     if abs(total - primal) > config.get("parity_atol", 2e-5):
         raise AssertionError("Native/combined independent-primal parity failed")
+    name = config.get("native_name", "contact")
+    if name not in ("contact", "affinity"):
+        raise ValueError("Unknown native objective name")
     terms = {k: float(v) for k, v in terms.items()}
-    terms.update(contact_loss=native.primal, contact_autodiff_loss=float(raw.value))
+    terms.update(
+        {name + "_loss": native.primal, name + "_autodiff_loss": float(raw.value)}
+    )
+    if name == "affinity":
+        terms.update(
+            {k: float(v) for k, v in raw.aux.items() if np.asarray(v).ndim == 0}
+        )
     return CombinedEvaluation(
         logits,
         native,
@@ -144,11 +158,13 @@ def evaluate_combined(
         gradients,
         prepared.identity,
         float(config["repair_weight"]),
+        name,
     )
 
 
 def _snapshot(directory, step, evaluation, *, prepared, previous_fixed_after=None):
     graph = evaluation.logits.graph()
+    name = evaluation.native_name
     path = directory / "snapshots" / f"step-{step:04d}.npz"
     path.parent.mkdir(exist_ok=True)
     np.savez_compressed(
@@ -159,12 +175,14 @@ def _snapshot(directory, step, evaluation, *, prepared, previous_fixed_after=Non
         bond_logits=np.asarray(evaluation.logits.bonds),
         gradient_atom_logits=np.asarray(evaluation.gradients.atoms),
         gradient_bond_logits=np.asarray(evaluation.gradients.bonds),
-        contact_gradient_X=np.asarray(evaluation.native.evaluation.gradients.X),
-        contact_gradient_E_upper=np.asarray(
-            evaluation.native.evaluation.gradients.E_upper
-        ),
+        **{
+            name + "_gradient_X": np.asarray(evaluation.native.evaluation.gradients.X),
+            name + "_gradient_E_upper": np.asarray(
+                evaluation.native.evaluation.gradients.E_upper
+            ),
+        },
         key_data=np.asarray(jax.random.key_data(evaluation.native.evaluation.key)),
-        contact_primal=np.asarray(evaluation.native.primal),
+        **{name + "_primal": np.asarray(evaluation.native.primal)},
         refreshed_surrogate=np.asarray(evaluation.primal),
         autodiff_surrogate=np.asarray(evaluation.value),
         repair_weight=np.asarray(evaluation.repair_weight),
@@ -174,7 +192,7 @@ def _snapshot(directory, step, evaluation, *, prepared, previous_fixed_after=Non
         "snapshot": path.relative_to(directory).as_posix(),
         "snapshot_sha256": file_sha256(path),
         "readout": hard_readout(graph),
-        "contact_loss": evaluation.terms["contact_loss"],
+        name + "_loss": evaluation.terms[name + "_loss"],
         "refreshed_surrogate": evaluation.primal,
         "autodiff_surrogate": evaluation.value,
         "components": evaluation.terms,
@@ -240,6 +258,9 @@ def run_chemical_updates(
             else schedule.for_state(state),
         }
 
+    name = config.get("native_name", "contact")
+    loss_key = name + "_loss"
+    best_key = "best_observed_" + name
     active_config = state_config(0)
     directory = Path(directory)
     directory.mkdir(parents=True, exist_ok=False)
@@ -252,9 +273,10 @@ def run_chemical_updates(
         "acceptance_policy": "best_primal",
         "states": [],
         "updates": [],
-        "objective_scope": "contact fixed across states; repair references and optional coefficient refreshed; only within-state surrogate deltas comparable",
+        "objective_scope": name
+        + " fixed across states; repair references and optional coefficient refreshed; only within-state surrogate deltas comparable",
         "repair_weight_schedule": None if schedule is None else schedule.record(),
-        "contact_objective_identity": config.get("objective_identity"),
+        name + "_objective_identity": config.get("objective_identity"),
         "key_data": np.asarray(jax.random.key_data(key)).tolist(),
         "key_dtype": str(key.dtype),
         "counts": {
@@ -287,9 +309,9 @@ def run_chemical_updates(
         )
         report["states"].append(_snapshot(directory, 0, evaluation, prepared=prepared))
         _append_record(directory / "states.jsonl", report["states"][-1])
-        report["best_observed_contact"] = {
+        report[best_key] = {
             "step": 0,
-            "loss": evaluation.terms["contact_loss"],
+            "loss": evaluation.terms[loss_key],
             "snapshot": report["states"][0]["snapshot"],
             "snapshot_sha256": report["states"][0]["snapshot_sha256"],
             "objective_identity": config.get("objective_identity"),
@@ -376,8 +398,10 @@ def run_chemical_updates(
                 fixed_after=candidate.primal,
                 fixed_increased=candidate.primal > evaluation.primal,
                 no_op=noop,
-                contact_before=evaluation.terms["contact_loss"],
-                contact_after=candidate.terms["contact_loss"],
+                **{
+                    name + "_before": evaluation.terms[loss_key],
+                    name + "_after": candidate.terms[loss_key],
+                },
             )
             record["best_observed_surrogate_for_this_preparation"] = min(
                 evaluation.primal, candidate.primal
@@ -411,14 +435,11 @@ def run_chemical_updates(
                     previous_fixed_after=candidate.primal,
                 )
             )
-            if (
-                evaluation.terms["contact_loss"]
-                < report["best_observed_contact"]["loss"]
-            ):
+            if evaluation.terms[loss_key] < report[best_key]["loss"]:
                 snapshot = report["states"][-1]
-                report["best_observed_contact"] = {
+                report[best_key] = {
                     "step": step + 1,
-                    "loss": evaluation.terms["contact_loss"],
+                    "loss": evaluation.terms[loss_key],
                     "snapshot": snapshot["snapshot"],
                     "snapshot_sha256": snapshot["snapshot_sha256"],
                     "objective_identity": config.get("objective_identity"),
@@ -427,7 +448,7 @@ def run_chemical_updates(
             _append_record(directory / "states.jsonl", report["states"][-1])
             _append_record(directory / "updates.jsonl", record)
             print(
-                f"update {step + 1}/{steps}: contact={evaluation.terms['contact_loss']:.8g}, refreshed_surrogate={evaluation.primal:.8g}, next_repair_weight={evaluation.repair_weight:.8g}, fallback={fallback}, no_op={noop}",
+                f"update {step + 1}/{steps}: {name}={evaluation.terms[loss_key]:.8g}, refreshed_surrogate={evaluation.primal:.8g}, next_repair_weight={evaluation.repair_weight:.8g}, fallback={fallback}, no_op={noop}",
                 flush=True,
             )
             if (step + 1) % 25 == 0:

@@ -3233,3 +3233,36 @@ so no report/scientific rerun or weakened verification was needed. Browser tab
 marked deliverable; viewer-complete.png/viewer-overlays.png and publication.json
 record presentation. Follow-up heartbeat PAUSED after verified delivery.
 Unrelated user changes and all native runs remain unchanged.
+
+
+## 19 October 2026 — Mosaic Boltz affinity implementation and gated campaign
+
+User authorized a fixed-atom Mosaic Boltz2 backend, allocated HPC tests and then
+fresh independent10000-update50%chain/uniform and random Dirichlet arms with the
+unchanged delayed chemistry schedule. No VAE/decoder/latent/training/DeFoG was
+imported. New native worker contains only Boltz integration mechanics; JAX owns
+Mosaic's six neutral slots, probability graph, chemistry and best-primal updates.
+Quantitative ensemble affinity is optimized with weight1; binder probability is
+logged separately. No contact/confidence objective. Fixed native predicted pose,
+zero recycles and no MW correction are explicit. See brd4_boltz_affinity_10000.md.
+
+Local static AST/Ruff/bash parsing passed; no local numerical tests/model work.
+Source01 archive39,229,862bytes SHA
+fc24ad5db5afdde7599c0c41e72c1a4790f9ab1db23ca1d35cd4d72fe2a1851c;
+manifest8a621a975cf98800ea3a2a7413f1e07b1f317b988c02d69b593832a7d1fd94af,
+386files authenticated at
+/work3/s234818/mosaic/releases/20261019-brd4-boltz-affinity-01/source.
+Reuse cached pinned native Boltz environment/checkpoints, no installs/downloads.
+Observed home13.79/30GiB, work3pool6 89.07/100GiB, fresh quota gates mandatory.
+Actual CPU29758624, native readiness29758626 and controller29758628 submitted
+PEND. Native waits for CPU DONE; controller waits for native DONE and verifies
+actual persisted gates/proofs before submitting either long arm. No long arm
+is yet submitted, no numerical pass claimed. gpua10 is Open:Active and its
+1440minute maximum admits the planned1380minute native arm requests. Four slots,
+8GiB per slot, one exclusive GPU; same actual GPU type is benchmarked first.
+All original Protenix runs and unrelated working changes are preserved.
+
+CPU29758624 legacy prefix:220passed/3deliberately deselected,185.24s, two existing
+JAX scatter future warnings. All3new bridge/gradient-scaling/affinity-artifact
+fixtures passed. Native mapping and original-source chemistry/oracle phases
+still pending; no full CPU/native approval or long submission is claimed.

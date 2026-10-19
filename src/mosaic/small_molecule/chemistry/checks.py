@@ -17,6 +17,7 @@ def check_combined_directions(
     Native order-null checks remain separate: chemistry deliberately DOES see
     order redistribution that is invisible to Protenix's existence-only map.
     """
+    name = config.get("native_name", "contact")
     records = []
     if evaluation.repair_weight != float(config["repair_weight"]):
         raise ValueError("Derivative baseline and trial chemistry coefficient differ")
@@ -24,7 +25,7 @@ def check_combined_directions(
         "status": "running",
         "directions": records,
         "preparation_identity": prepared.identity,
-        "contact_objective_identity": config.get("objective_identity"),
+        name + "_objective_identity": config.get("objective_identity"),
         "schema_sha256": spec.fingerprint(),
         "repair_weight": evaluation.repair_weight,
     }
@@ -92,11 +93,12 @@ def check_combined_directions(
                             "bond_logits": state.bonds,
                             "gradient_atom_logits": value.gradients.atoms,
                             "gradient_bond_logits": value.gradients.bonds,
-                            "contact_gradient_X": value.native.evaluation.gradients.X,
-                            "contact_gradient_E_upper": value.native.evaluation.gradients.E_upper,
+                            name + "_gradient_X": value.native.evaluation.gradients.X,
+                            name
+                            + "_gradient_E_upper": value.native.evaluation.gradients.E_upper,
                             "combined_autodiff": value.value,
                             "combined_primal": value.primal,
-                            "contact_primal": value.native.primal,
+                            name + "_primal": value.native.primal,
                             "repair_weight": value.repair_weight,
                             "key_data": jax.random.key_data(key),
                         }

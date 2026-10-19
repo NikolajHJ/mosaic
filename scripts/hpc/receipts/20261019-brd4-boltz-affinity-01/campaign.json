@@ -1,0 +1,11 @@
+{
+  "tag": "20261019-brd4-boltz-affinity-01",
+  "source": "/work3/s234818/mosaic/releases/20261019-brd4-boltz-affinity-01/source",
+  "source_manifest_sha256": "8a621a975cf98800ea3a2a7413f1e07b1f317b988c02d69b593832a7d1fd94af",
+  "archive_sha256": "fc24ad5db5afdde7599c0c41e72c1a4790f9ab1db23ca1d35cd4d72fe2a1851c",
+  "cpu_job": "29758624",
+  "native_readiness_job": "29758626",
+  "submission_controller_job": "29758628",
+  "long_arms": "not submitted; gated on actual CPU/native readiness success",
+  "runs": "/zhome/95/e/206121/mosaic-runs/20261019-brd4-boltz-affinity-01"
+}
