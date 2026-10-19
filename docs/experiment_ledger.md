@@ -3688,3 +3688,13 @@ its repeated original native atom/bond FD report passed, case report `running`,
 10,000-update and frozen-after gates remain pending. Random diagnostic29759213
 remained GPU-PEND for `ngpus_physical`; no random long run is submitted.
 Saved query: `results/hpc/20261019-brd4-boltz-affinity/independent-02/latest-status.txt`.
+
+### 2026-10-19 21:39 Europe/Paris — status follow-up inaccessible
+
+One compact SSH scheduler/artifact query through `dtu-hpc` returned exit255:
+`Permission denied (password)` for `s234818@login1.hpc.dtu.dk`. No scheduler
+or new artifact outcome could be authenticated for mix29759212 or diagnostic
+29759213. Their previous RUN/PEND observations remain last-known states only.
+No jobs, scientific settings or gates were changed, and no second connection
+was attempted. Existing quiet follow-up remains active. Local access receipt:
+`results/hpc/20261019-brd4-boltz-affinity/independent-02/followups/20261019T1939Z-access.json`.
