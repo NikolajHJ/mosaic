@@ -3266,3 +3266,17 @@ CPU29758624 legacy prefix:220passed/3deliberately deselected,185.24s, two existi
 JAX scatter future warnings. All3new bridge/gradient-scaling/affinity-artifact
 fixtures passed. Native mapping and original-source chemistry/oracle phases
 still pending; no full CPU/native approval or long submission is claimed.
+
+CPU29758624 now DONE/passed283:220legacy/bridge +4native Torch mapping +59
+source-equivalent chemistry/oracle tests. No failures/errors/skips;3deliberately
+deselected model/slow tests. Actual downloaded XML hashes/counts and composition
+reference verified locally with stdlib bytes/XML, not local numerical execution.
+CPU assessment SHA 4d64197d56a2ba964ad1ae4ecf2b9e62e5e3ed2c4d14c247bae0a139cb79343b.
+Proof results/hpc/20261019-brd4-boltz-affinity/readiness-01/verification.json.
+Implementation pushed ecaf328. Native29758626 PEND on host slot limit;
+controller29758628 PEND. Both10000-update arms remain unsubmitted until native
+readiness and all persisted derivative/parity/chemistry/runtime/identity gates
+pass. Quiet hourly follow-up reuses the paused, completed report heartbeat to
+finish this new authorized gated-submission scope; pause after actual arm IDs
+are authenticated/delivered, or a blocker requiring human action. It does not
+resume or modify any completed report/experiment.

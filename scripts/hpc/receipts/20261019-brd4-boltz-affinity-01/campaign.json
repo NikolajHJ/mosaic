@@ -7,5 +7,11 @@
   "native_readiness_job": "29758626",
   "submission_controller_job": "29758628",
   "long_arms": "not submitted; gated on actual CPU/native readiness success",
-  "runs": "/zhome/95/e/206121/mosaic-runs/20261019-brd4-boltz-affinity-01"
+  "runs": "/zhome/95/e/206121/mosaic-runs/20261019-brd4-boltz-affinity-01",
+  "cpu_status": "DONE/passed",
+  "cpu_tests": 283,
+  "cpu_assessment_sha256": "4d64197d56a2ba964ad1ae4ecf2b9e62e5e3ed2c4d14c247bae0a139cb79343b",
+  "native_readiness_status": "PEND: host job-slot limit",
+  "controller_status": "PEND: native readiness dependency",
+  "code_commit": "ecaf328"
 }

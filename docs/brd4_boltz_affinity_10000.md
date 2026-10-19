@@ -64,7 +64,7 @@ Hard/fresh-pose rescoring remains necessary before interpreting molecular utilit
 - [x] Reuse chemistry optimizer with objective-specific affinity artifact labels;
   historical contact behavior remains its default.
 - [x] Author mapping/gradient/transport/trajectory regression tests and configs.
-- [ ] Allocated CPU regressions, unchanged chemistry oracle parity and Torch mapping tests.
+- [x] Allocated CPU regressions, unchanged chemistry oracle parity and Torch mapping tests:283passed.
 - [ ] Fresh allocated native preparation; hard-seed/native integer forward parity.
 - [ ] Both initializations: independent-primal atom/bond finite differences,
   observed bond-order signal, nonzero invalid-assay chemistry gradients,
@@ -110,3 +110,16 @@ CPU29758624 remains RUN: the complete legacy/JAX bridge phase passed220tests,
 three deliberately deselected model/slow tests, no failures/errors. Two existing
 JAX scatter dtype future warnings were retained. Native Torch mapping and
 source-equivalent chemistry phases follow; this prefix is not full readiness.
+
+
+CPU29758624 DONE/passed283checks:220legacy/bridge(185.24s),4native mapping
+(5.75s),59chemistry/oracle regressions(107.02s). No failures/errors/skips;
+three model/slow tests deliberately deselected in the legacy selection. All
+three XML files and exact composition reference were downloaded and checked by
+local stdlib byte/XML inspection only. CPU assessment SHA 4d64197d56a2ba964ad1ae4ecf2b9e62e5e3ed2c4d14c247bae0a139cb79343b.
+Compact local proof results/hpc/20261019-brd4-boltz-affinity/readiness-01/verification.json.
+Native29758626 remains PEND on a real host slot limit; controller29758628 PEND.
+No long native arm has been submitted. Code pushed as ecaf328. A quiet hourly
+follow-up checks actual native readiness/controller outcomes, fixes genuine
+integration bugs with new sealed allocated tests, and records actual long IDs
+once gates pass; it must not reinterpret failed native checks as passes.
