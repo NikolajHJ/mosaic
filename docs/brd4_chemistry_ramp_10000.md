@@ -155,3 +155,11 @@ Tracked compact receipt: `scripts/hpc/receipts/20261019-brd4-chemistry-ramp/camp
 Full local readiness proof: `results/hpc/20261019-brd4-chemistry-ramp/readiness-01/`.
 Post-release documentation records actual outcomes; it is not retroactively
 claimed part of the immutable executed source01 bytes.
+
+
+19October13:13 Europe/Paris: both native arms **RUN**. Mix50 started10:50,
+7596/10000 updates saved, about41minutes remaining at last100-step timing.
+Random started11:42,3350/10000 saved, about2h41m remaining at current pace;
+its chemistry ramp has not begun, so speed can change. Report29753669 remains
+PEND on both endings. Terminal gates, full budget and report delivery remain
+pending. Exact saved times/statuses and cautious estimates are in the ledger.

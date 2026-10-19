@@ -3002,3 +3002,32 @@ receipt. Report completion, download/verification/browser opening remain
 pending. Tracked campaign receipt in
 `scripts/hpc/receipts/20261019-brd4-chemistry-ramp/campaign.json`. Old studies,
 reports and unrelated working changes remain unchanged.
+
+
+### 19 October13:13 Europe/Paris — both ramp arms running
+
+One read-only scheduler/saved-metadata check at11:13:43UTC confirmed native
+**29753667 RUN**, started10:50:34 Europe/Paris on n-62-18-5 GPU0;
+**29753668 RUN**, started11:42:57 on the same node GPU1. They execute
+independently, with original source/config/resources unchanged. Entry quota
+gates passed with18GiB conservatively available against8GiB reserve each.
+Both disposable early/high-weight pilots passed; full-budget trajectories
+have started. Final frozen identities and terminal outcomes remain pending.
+
+At inspection, mix50 had **7596/10000** saved completed updates, last100 mean
+1.0193857698s/update, latest contact -0.4007746875 and applied repair coefficient
+0.2752359928. Its remaining2404updates project about40.8minutes, roughly
+**13:55 Europe/Paris**, before final checks/report work. Random had
+**3350/10000** saved completed updates, last100 mean1.4496285082s/update,
+latest contact -0.4100923240 and coefficient .001. Remaining6650updates project
+about2h40m40s, roughly **15:55–16:00 Europe/Paris**, if this pace persists.
+Random has not reached its coefficient ramp; later search/backtracking may
+change its speed. These estimates use saved timing fields only and are not
+guaranteed endpoint times or passed terminal checks.
+
+Combined report **29753669 PEND**, waiting for both native jobs to end. Its
+queue/render/package time is additional. Native summary statuses are running
+without summary errors; raw invalid random graphs/valence diagnostics are
+retained as authorized, not silently repaired for display. Inspection bytes:
+`results/hpc/20261019-brd4-chemistry-ramp/latest-progress-inspection.txt`.
+No scientific job/source/settings changed; no local numerical validation.
