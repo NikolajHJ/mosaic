@@ -5,10 +5,11 @@ only after passing, two independent fresh 10,000-update runs: 50% chain/uniform
 and seeded random probability initialization. Implementation is being validated;
 submission or scheduler success alone does not certify numerical readiness.
 
-**Current status, 19 October 2026, 20:42 Europe/Paris:** user-authorized
+**Current status, 20 October 2026, 00:35 Europe/Paris:** user-authorized
 arm-specific adoption passed. Tools02 CPU **29759211 DONE/passed 19** and
 147 original mix50 proofs rehashed; source02 CPU **29759068 passed 299**
-remains valid. **Mix50 long run 29759212 RUN** started at **20:41:13**.
+remains valid. **Mix50 long run 29759212 RUN**, with **3,970/10,000 applied updates**;
+started at **20:41:13 on 19 October**.
 Independent **random diagnostic 29759213 PEND** waits for a physical GPU,
 with no dependency. Both were actually submitted at 20:40:18 in gpul40s.
 The mix50 run retains unchanged source02 science and 10,000 updates; the

@@ -3712,3 +3712,16 @@ recent behavior is the basis of this operational ETA. Repair-search/trial
 cost can change, especially after the weight ramp starts at5000; no completion
 or terminal-native pass is implied. Local stdlib timing/schema receipt:
 `results/hpc/20261019-brd4-boltz-affinity/independent-02/followups/20261019T1941Z-status-eta.json`.
+
+### 2026-10-20 00:35 Europe/Paris — live mix progress and queued diagnostic
+
+One successful compact SSH query at00:35:04 authenticated mix29759212 RUN,
+case status `running` and3,970 applied updates of10,000 (last update step3969).
+Random diagnostic29759213 remains PEND for physical-GPU reservation across
+two hosts; it has not started. No jobs or scientific settings changed. The
+last50 saved update times average 4.480seconds/update, projecting
+about7.5hours remaining and a finish around08:00–08:30 Paris time on20October,
+including a small allowance for terminal checks. This remains an estimate:
+chemistry-ramp/trial/search behavior may change after5000. No completed
+trajectory or terminal pass is inferred. Local operational timing receipt:
+`results/hpc/20261019-brd4-boltz-affinity/independent-02/followups/20261020T0035-status-eta.json`.

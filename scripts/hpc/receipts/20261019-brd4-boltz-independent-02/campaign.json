@@ -74,25 +74,24 @@
       "initial_status_at": "2026-10-19T20:40:18+02:00",
       "latest_actual_scheduler_status": "RUN",
       "started_at": "2026-10-19T20:41:13+02:00",
-      "latest_authenticated_at": "2026-10-19T21:41:46+02:00",
+      "latest_authenticated_at": "2026-10-20T00:35:04+02:00",
       "repeated_native_entry_gradient_status": "passed; not a completed long-run certificate",
-      "saved_partial_updates": 1742,
+      "saved_partial_updates": 3970,
       "scientific_run_status": "running; terminal gates not reached",
       "latest_eta": {
-        "checked_at": "2026-10-19T21:41:46+02:00",
+        "checked_at": "2026-10-20T00:35:04+02:00",
         "mix_job": "29759212",
         "mix_status": "RUN",
-        "applied_updates": 1742,
+        "applied_updates": 3970,
         "requested_updates": 10000,
-        "recent_sample_updates": 30,
-        "recent_mean_seconds_per_update": 4.393740025267471,
-        "recent_pace_remaining_seconds": 36283.50512865878,
-        "recent_pace_finish_estimate": "2026-10-20T07:46:29.505129+02:00",
-        "eta_scope": "operational saved timing extrapolation, not scientific numerical validation; excludes final gates and changing later search/trial costs",
+        "recent_sample_updates": 50,
+        "recent_mean_seconds_per_update": 4.479814045602689,
+        "recent_pace_remaining_seconds": 27013.278694984216,
+        "recent_pace_finish_estimate": "2026-10-20T08:05:17.278695+02:00",
+        "eta_scope": "operational saved-timing extrapolation only; final native checks and later trial/search changes remain pending",
         "random_diagnostic_job": "29759213",
         "random_diagnostic_status": "PEND",
-        "random_pending_reason": "physical GPU reservation unavailable at three hosts",
-        "ssh_access": "restored; one successful compact query"
+        "random_pending_reason": "physical-GPU reservation unavailable at two hosts; no inter-arm dependency"
       },
       "previous_saved_state_observation": {
         "checked_at": "2026-10-19T20:44:01+02:00",
@@ -141,8 +140,8 @@
       "initial_actual_scheduler_status": "PEND",
       "initial_status_at": "2026-10-19T20:40:18+02:00",
       "latest_actual_scheduler_status": "PEND",
-      "latest_authenticated_at": "2026-10-19T21:41:46+02:00",
-      "pending_reason": "ngpus_physical reservation unavailable at three hosts; no dependency"
+      "latest_authenticated_at": "2026-10-20T00:35:04+02:00",
+      "pending_reason": "physical-GPU reservation unavailable at two hosts; no inter-arm dependency"
     }
   ],
   "local_proof_verification": {
