@@ -3060,3 +3060,82 @@ Europe/Paris**, conditional on future search/backtracking cost during the ramp.
 Native summary still running with no summary error. **29753669 PEND**, awaiting
 random arm ending. No new model run, source/config change or local numerical
 validation. Existing scientific jobs remain unchanged.
+
+
+## 19 October — separate completed50% delayed-chemistry report requested
+
+User requested a new report for the completed50% mix, prepared for adding the
+random result later, separate from prior reports. Added explicit completed-arm
+preview mode to the saved-only ramp reporter: one included native input plus
+the byte-bound second configuration/pending job29753668; no partial random
+trajectory loaded or invented. Native gates remain required for the included
+arm, and pending comparison is distinct from a failed/partial included run.
+Default two-input mode remains strict. No changes to src/, examples/, any native
+GPU job or existing pair report29753669.
+
+Prepared a unique allocated CPU report-only job, with source01 native/config
+byte-map parity, terminal mix50 summary/scheduler/readiness authentication,
+19 expected report/collector fixtures, full saved-snapshot validation/rendering
+and compact presentation evidence packaging. Actual counts/outcomes follow;
+preparation is not an execution pass. New family plan:
+`docs/brd4_delayed_chemistry_report.md`. Preserve old report servers and files.
+
+
+### Standalone preview source01 submitted as CPU job29755226
+
+Source manifest `34462df7a3ba5001bced1c6266fa1a2851d77f11022694339f194e6c38a88671`,
+365files;39,195,593byte archive SHA
+`7ced77a30b6613011d538b017eb7b720539a8a64dc14b43e79eacc7e1c3e638c`.
+Remote release `/work3/s234818/mosaic/releases/20261019-brd4-chemistry-preview-01/source`;
+transfer/hash/all365source-file checks passed, source made read-only.
+**29755226 RUN**, hpc2slots/4GiB-per-slot/1hour, after done(29753667).
+Unique run `/zhome/95/e/206121/mosaic-runs/20261019-brd4-chemistry-preview-01`.
+Source wrapper authenticates unchanged src/examples map against native source01
+and the pinned passed mix50 summary before rendering. 19 allocated presentation/
+collector tests selected. Home cached12.41/30GiB; no model downloads.
+Static Ruff/AST/Bash/viewerJS checks passed locally; no numerical execution.
+Test/render/package and download outcomes remain pending at this entry.
+
+
+### Standalone delayed-chemistry first edition verified and opened
+
+Preview **29755226 DONE**,19 report/collector tests passed/no failures/errors/
+skips in72.67s. Original scientific src/examples byte map unchanged, native
+source01 and pinned passed mix50 summary/scheduler/readiness proofs authenticated.
+Saved-only render validated every10001snapshot/coefficient, then generated a
+complete included-arm/pending-comparison report. Pending random metadata has
+no frames; no historical experiment included and no native rerun. Entry8GiB
+and packaging4.123253824GiB quota gates passed with17GiB conservative free.
+
+Archive15,963,546bytes/154files SHA
+`8aba45395a1ce5ad6a67030bc42d89272db95742a4c749555975cfe38a03fb9b`,
+remote `/zhome/95/e/206121/mosaic-runs/20261019-brd4-chemistry-preview-01.tar.gz`.
+Downloaded to `results/hpc/20261019-brd4-delayed-chemistry-report/edition-01/`.
+Authenticated final scheduler/LSF success separately, exact receipt path/byte
+length/SHA, safe extraction and all154per-file hashes via
+`scripts/verify_hpc_evidence.py`; stdlib preview verifier passed job/state/
+coefficient/graph-dimension/frozen/status/XML checks. No local numerical or
+chemistry/model execution or scientific rendering. This compact presentation
+bundle retains saved summary/case/native-check/readiness/source proofs; full
+scientific trial/snapshot data remain in the native run and future pair archive.
+
+Rendered HTML35,486,566bytes SHA
+`981dec0a28d9e7835e9ffdcefae664e3fa0078ae881257d29da87919f55bc014`.
+New independent detached viewer **http://127.0.0.1:8773/report.html**, served from
+`results/hpc/20261019-brd4-delayed-chemistry-report/viewer/`; HEAD200/exact
+length/hash passed. Prior report files/servers untouched. Browser QA passed
+completed50%/pending random semantics, disabled placeholder, playback0to22,
+endpoint10000/weight50, readable C1–C6, probability-dependent radii/widths,
+saved probability heatmaps, contact/repair/coefficient/fixed-delta plots.
+Tab marked deliverable; saved screenshot `.../viewer-final.png`, publication
+receipt `.../publication.json`. Saved findings remain all10001hexane/zero
+repair states; contact initial -.2778551579 to final -.4092489183.
+
+Prepared automatic addition after verified random completion by updating the
+existing paused heartbeat `finish-combined-brd4-trajectory-report` to ACTIVE,
+name Finish new BRD4 chemistry report, hourly. Scope now only new native
+29753668 and pair report29753669, preserving completed29753667, all prior
+reports and edition-01. It verifies actual outcomes/native/frozen/archive gates,
+then publishes the verified two-arm report only to new viewer8773. Quiet on
+unchanged PEND/RUN/outage; pause after delivery or blocker requiring user action.
+No new molecular job or duplicate monitoring automation.

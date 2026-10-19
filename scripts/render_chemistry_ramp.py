@@ -1,4 +1,4 @@
-"""Allocated saved-only comparison of two delayed-chemistry trajectories."""
+"""Allocated saved-only delayed-chemistry report, with explicit pending inputs."""
 
 import argparse
 import base64
@@ -98,11 +98,20 @@ def main():
     parser.add_argument("--config", type=Path, action="append", required=True)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--allow-partial", action="store_true")
+    parser.add_argument(
+        "--pending-job",
+        help="Publish one completed arm; second config identifies the absent future arm",
+    )
     args = parser.parse_args()
     if not os.environ.get("LSB_JOBID"):
         raise RuntimeError("Scientific rendering requires allocated DTU CPU")
-    if len(args.study) != 2 or len(args.config) != 2:
+    expected_inputs = 1 if args.pending_job else 2
+    if len(args.study) != expected_inputs or len(args.config) != 2:
         raise ValueError("Both independent studies must remain represented")
+    if args.pending_job and (not args.pending_job.isdecimal() or args.allow_partial):
+        raise ValueError(
+            "Preview needs a completed included study and native pending ID"
+        )
     import matplotlib
 
     matplotlib.use("Agg")
@@ -112,9 +121,31 @@ def main():
         load_study(root, config, color, args.allow_partial)
         for root, config, color in zip(args.study, args.config, ("#008c95", "#b55e38"))
     ]
-    for field in ("model_digest", "context_digest", "schedule"):
-        if studies[0][field] != studies[1][field]:
-            raise ValueError("Comparison identity or schedule differs")
+    pending = []
+    if args.pending_job:
+        absent = json.loads(args.config[1].read_text())
+        for field, source in (
+            ("model_digest", "model_digest"),
+            ("context_digest", "context_digest"),
+            ("schedule", "repair_schedule"),
+        ):
+            if studies[0][field] != absent[source]:
+                raise ValueError("Pending comparison identity or schedule differs")
+        if args.pending_job == studies[0]["job_id"]:
+            raise ValueError("Pending input duplicates the included native study")
+        pending = [
+            {
+                "job_id": args.pending_job,
+                "label": absent["label"],
+                "config_sha256": sha(args.config[1]),
+                "initialization": absent.get("initialization"),
+                "status": "not yet included; no trajectory data loaded",
+            }
+        ]
+    for study in studies[1:]:
+        for field in ("model_digest", "context_digest", "schedule"):
+            if studies[0][field] != study[field]:
+                raise ValueError("Comparison identity or schedule differs")
     args.output.mkdir(parents=True, exist_ok=False)
     figure, axes = plt.subplots(4, 1, figsize=(12, 14), constrained_layout=True)
     for study in studies:
@@ -192,14 +223,26 @@ def main():
     figure.savefig(args.output / "loss_components.svg")
     figure.savefig(args.output / "loss_components.png", dpi=160)
     plt.close(figure)
-    complete = all(s["complete"] for s in studies)
+    included_complete = all(s["complete"] for s in studies)
+    complete = included_complete and not pending
+    budget = studies[0]["schedule"]["total_updates"]
     data = {
         "version": "mosaic-chemistry-ramp-report-v2",
         "complete": complete,
-        "status_text": "Both 10,000-update studies complete"
+        "included_studies_complete": included_complete,
+        "pending_studies": pending,
+        "title": "BRD4: delayed chemistry · 10,000 updates",
+        "status_text": f"50% mix complete ({budget:,} updates) — random not yet included"
+        if pending
+        else f"Both {budget:,}-update studies complete"
         if complete
         else "PARTIAL / FAILED comparison; reached states only",
-        "intro": "Two fresh independent six-slot neutral BRD4 runs · LR 0.03 · 10,000 requested updates each. Chemistry weight 0.001 through update 5,000, then geometric ramp to 50. Dashed line marks the ramp boundary.",
+        "intro": (
+            "Separate report for the completed 50% chain/uniform run; random will be added after terminal verification. "
+            if pending
+            else "Two fresh independent runs. "
+        )
+        + "Six occupied neutral slots · frozen BRD4/Protenix-Tiny · LR 0.03 · 10,000 requested updates each. Chemistry weight 0.001 through update 5,000, then geometric ramp to 50. Dashed line marks the ramp boundary.",
         "model_digest": studies[0]["model_digest"],
         "context_digest": studies[0]["context_digest"],
         "studies": studies,
@@ -228,6 +271,8 @@ def main():
     receipt = {
         "render_job_id": os.environ["LSB_JOBID"],
         "complete": complete,
+        "included_studies_complete": included_complete,
+        "pending_inputs": pending,
         "input_jobs": [s["job_id"] for s in studies],
         "states": [len(s["frames"]) for s in studies],
         "inputs": [

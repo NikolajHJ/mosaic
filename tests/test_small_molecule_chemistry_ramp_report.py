@@ -120,3 +120,75 @@ def test_pair_report_fails_closed_on_tampered_gates(tmp_path, monkeypatch, tampe
     (other / "case-0/report.json").write_text(json.dumps(case))
     with pytest.raises(ValueError):
         module.main()
+
+
+def test_completed_preview_retains_pending_identity_without_inventing_frames(
+    tmp_path, monkeypatch
+):
+    module, root, other, output = setup_pair(tmp_path, monkeypatch)
+    monkeypatch.setattr(
+        sys,
+        "argv",
+        [
+            "render",
+            "--study",
+            str(root),
+            "--config",
+            str(root / "configuration.json"),
+            "--config",
+            str(other / "configuration.json"),
+            "--pending-job",
+            "29753668",
+            "--output",
+            str(output),
+        ],
+    )
+    module.main()
+    html = (output / "report.html").read_text()
+    data = json.loads(
+        html.split('<script id="saved-data" type="application/json">')[1].split(
+            "</script>"
+        )[0]
+    )
+    assert not data["complete"] and data["included_studies_complete"]
+    assert len(data["studies"]) == 1 and len(data["studies"][0]["frames"]) == 2
+    assert data["pending_studies"][0]["job_id"] == "29753668"
+    assert "frames" not in data["pending_studies"][0]
+    assert data["pending_studies"][0]["config_sha256"] == module.sha(
+        other / "configuration.json"
+    )
+    assert (
+        "not yet included" in data["status_text"]
+        and "FAILED" not in data["status_text"]
+    )
+    receipt = json.loads((output / "report_receipt.json").read_text())
+    assert receipt["input_jobs"] == ["synthetic-cpu-fixture"]
+    assert receipt["states"] == [2] and len(receipt["pending_inputs"]) == 1
+
+
+def test_pending_preview_cannot_hide_a_failed_included_native_gate(
+    tmp_path, monkeypatch
+):
+    module, root, other, output = setup_pair(tmp_path, monkeypatch)
+    summary = json.loads((root / "summary.json").read_text())
+    summary["high_weight_chemistry_probe"]["status"] = "failed"
+    (root / "summary.json").write_text(json.dumps(summary))
+    monkeypatch.setattr(
+        sys,
+        "argv",
+        [
+            "render",
+            "--study",
+            str(root),
+            "--config",
+            str(root / "configuration.json"),
+            "--config",
+            str(other / "configuration.json"),
+            "--pending-job",
+            "29753668",
+            "--output",
+            str(output),
+        ],
+    )
+    with pytest.raises(ValueError, match="gates"):
+        module.main()
