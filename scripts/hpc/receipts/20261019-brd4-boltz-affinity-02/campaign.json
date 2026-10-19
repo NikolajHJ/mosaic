@@ -25,7 +25,7 @@
     "wall_minutes": 60
   },
   "native_readiness_job": "29759069",
-  "native_readiness_status": "RUN/gpul40s; no native affinity gate passed yet",
+  "native_readiness_status": "EXIT1: random native typed-bond finite-difference gate failed; mix50 validation passed; overall blocked",
   "native_readiness_dependency": "done(29759068)&&ended(29758990)",
   "native_readiness_resources": {
     "queue": "gpul40s",
@@ -36,7 +36,7 @@
     "wall_minutes": 120
   },
   "submission_controller_job": "29759070",
-  "controller_status": "PEND",
+  "controller_status": "EXIT: intentional cancellation after verified unstarted PEND; final outcome confirmed",
   "controller_dependency": "done(29759069)&&done(29759003)",
   "launcher": {
     "tag": "20261019-brd4-boltz-launch-03",
@@ -65,7 +65,7 @@
   "runs": "/zhome/95/e/206121/mosaic-runs/20261019-brd4-boltz-affinity-02",
   "native_readiness_output": "/zhome/95/e/206121/mosaic-runs/20261019-brd4-boltz-affinity-02-ready/payload/",
   "long_arm_root": "/zhome/95/e/206121/mosaic-runs/20261019-brd4-boltz-affinity-02-native/",
-  "long_arms": "not submitted; long-arm root virgin",
+  "long_arms": "NOT submitted: overall native readiness blocked; long-arm root does not exist",
   "future_arm_resources": {
     "queue": "gpul40s",
     "exclusive_gpus": 1,
@@ -159,19 +159,100 @@
     "manifest_sha256": "fe2cd588caf1a6bbeb851973534a8751ce53a74c08ac0b05f0cf83e46ea57183"
   },
   "native_affinity_gates_passed": false,
-  "independent_static_review": "no blocking findings in TMPDIR and launcher changes",
+  "independent_static_review": "no concrete mapping, transport or backward implementation bug found",
   "native_readiness_started_at": "2026-10-19T20:03:27+02:00",
   "native_readiness_host": "n-62-13-19",
   "native_predecessor_ended_dependency": "fulfilled; did not wait for old allocation wall limit",
-  "status_observed_at": "2026-10-19T20:03:43.123083+02:00",
+  "status_observed_at": "2026-10-19T20:09:29+02:00",
   "corrected_native_startup": {
     "job_id": "29759069",
-    "status": "RUN",
+    "status": "historical RUN startup; later EXIT1 due random bond FD",
     "node_tmpdir": "/tmp/mosaic-boltz.29759069.szmVwn",
     "gpu_detected": true,
     "preprocessing": "completed",
-    "structure_prediction": "running",
+    "structure_prediction": "completed; context prepared before random FD gate failure",
     "native_affinity_gate_pass": false
   },
-  "quiet_followup": "active; updated confirmed cancellation and corrected native RUN"
+  "quiet_followup": {
+    "automation_id": "finish-combined-brd4-trajectory-report",
+    "status": "PAUSED",
+    "actual_api_status_confirmed": true,
+    "reason": "unresolved random native typed-bond finite-difference gate failure",
+    "duplicate_created": false,
+    "user_permission_request_pending": false
+  },
+  "native_readiness_finished_at": "2026-10-19T20:09:29+02:00",
+  "native_readiness_outcome": {
+    "job_id": "29759069",
+    "scheduler_status": "EXIT",
+    "exit_code": 1,
+    "started_at": "2026-10-19T20:03:27+02:00",
+    "finished_at": "2026-10-19T20:09:29+02:00",
+    "elapsed_seconds": 362,
+    "tmpdir_fix": "worked",
+    "native_structure_affinity_prediction_failed_examples": 0,
+    "context_prepared": true,
+    "mix50": {
+      "status": "passed",
+      "summary_sha256": "9e8121a2c7e3de93ab886244372aadc303928c6ddb2402d797172c1fcd667cee",
+      "gates": "exact three-output hard/native integer parity; raw atom/bond FD all three scales; nonzero chemistry assay; low/high coupled checks; two10-update pilots; runtime fit; frozen identities"
+    },
+    "random": {
+      "status": "failed: native typed-bond finite differences",
+      "summary_sha256": "bc8c12ea3df2a7455da6cadd84b69f8c7b9bf97ed33947c467d8aba867c87ad0",
+      "hard_native_parity": "passed",
+      "atom_fd": "all three scales passed",
+      "bond_fd_analytic": 9.497333526611328,
+      "bond_fd_checks": [
+        {
+          "epsilon": 0.01,
+          "finite_difference": 7.599136233329773,
+          "passed": false
+        },
+        {
+          "epsilon": 0.003,
+          "finite_difference": 12.296060721079508,
+          "passed": false
+        },
+        {
+          "epsilon": 0.001,
+          "finite_difference": 9.71454381942749,
+          "passed": true
+        }
+      ],
+      "requirement": "two adjacent passing scales; only one of three passed",
+      "later_coupled_pilot_gates": "not certified"
+    },
+    "model_digest": "395876da13ab6d5d175e6603db2118a82954c7c06484842fe2314dbd77a31a16",
+    "context_tensor_digest": "495002ffa2a52cc85b58ef34424622763dfc4ca556139a98297e8789ae287aa5",
+    "context_file_sha256": "254d5b7f11605fb41db6f5abf7015f9cc856a19dfe1d4b506ccaea9007200770",
+    "independent_static_review": "no concrete mapping, transport or backward implementation bug found",
+    "overall_native_assessment": "absent",
+    "resolution": "blocked; preserve evidence; no gate weakening, random omission or mix-only submission",
+    "controller_retirement": "29759070 finalEXIT confirmed after intentional cancellation of verified unstarted PEND job",
+    "full_evidence_archive": {
+      "remote_archive": "/zhome/95/e/206121/mosaic-runs/20261019-brd4-boltz-native-fd-failure-01.tar.gz",
+      "remote_receipt": "/zhome/95/e/206121/mosaic-runs/20261019-brd4-boltz-native-fd-failure-01.receipt.json",
+      "files": 171,
+      "uncompressed_bytes": 14985443,
+      "archive_bytes": 506106,
+      "archive_sha256": "a456234c316b5e534508f972bdc1ab47d4ed5d0431988067df673ec36cebf9b4",
+      "manifest_sha256": "f54279683af6b7641b3c1a8ac6ea4ac957b7490ce8045c43f87cd7446599282a",
+      "scope": "entire source02 readiness parent: prepared context, raw initializations, reports,20pilot states,probes,worker logs,scheduler/controller records",
+      "local_directory": "results/hpc/20261019-brd4-boltz-affinity/native-fd-failure-01/",
+      "local_verification": {
+        "status": "passed",
+        "files": 171,
+        "verification_file": "results/hpc/20261019-brd4-boltz-affinity/native-fd-failure-01/verification.json",
+        "gates": "exact archive path/byte length/SHA; safe unique members; exact manifest set; every file length/hash; both summary hashes/statuses; random FD flags false/false/true; passed mix parity/coupled/pilots; same frozen model/context; context.pt SHA",
+        "interpretation": "integrity of failure evidence, not a scientific validation pass"
+      }
+    },
+    "independent_fd_review": "no concrete implementation bug established; coarse FD nonlinearity/FP32 effects unproven; no gate weakening or probe changes"
+  },
+  "retired_source02_controller": {
+    "job_id": "29759070",
+    "pre_cancel_status": "verified PEND/unstarted",
+    "final_status": "EXIT, intentional cancellation confirmed"
+  }
 }

@@ -5,19 +5,20 @@ only after passing, two independent fresh 10,000-update runs: 50% chain/uniform
 and seeded random probability initialization. Implementation is being validated;
 submission or scheduler success alone does not certify numerical readiness.
 
-**Current status, 19 October 2026, 20:03 Europe/Paris:** source02 is remotely
-authenticated. Its full CPU rerun **29759068 DONE/passed 299 checks** at
-19:29:12, with zero failures/errors/skips. Corrected native validation
-**29759069 RUN/gpul40s** started at **20:03:27**, on L40S host n-62-13-19.
-At the user's explicit request, errored predecessor **29758990** was
-intentionally cancelled; final EXIT was confirmed at **20:03:43**. This
-supersedes the earlier leave-running restriction for that job only.
-Controller **29759070 PEND** requires the new native success and the existing
-passed eight-test launcher proof. Previous 283 scientific CPU and eight
-launcher tests passed; no native affinity check has passed yet. Old controller
-29759027 was intentionally cancelled while PEND, with final EXIT confirmed.
-Neither long optimization arm has been submitted. Current receipt:
+**Current status, 19 October 2026, 20:09 Europe/Paris: BLOCKED on the random
+initialization's native typed-bond finite-difference gate.** Source02 native
+readiness **29759069 EXIT1 at 20:09:29**, after 362 seconds. The TMPDIR fix
+worked and fresh native preparation completed; the full mix50 validation arm
+passed. Random atom finite differences and hard/native parity passed, but
+only one of three bond finite-difference scales passed, where two adjacent
+passes are required. This is an unresolved numerical validation failure;
+neither initialization is approved for a long run. CPU **29759068** remains
+DONE/passed **299** checks. Controller **29759070 EXIT** was intentionally
+cancelled after authenticating it unstarted PEND. Neither long optimization
+arm has been submitted; the overall native assessment is absent. Current receipt:
 `scripts/hpc/receipts/20261019-brd4-boltz-affinity-02/campaign.json`.
+All 171 failure-evidence files are locally verified. Follow-up is PAUSED on
+the unresolved numerical gate; no user permission request is pending.
 Historical records below remain preserved.
 
 ## Scope and pivotal choices
@@ -358,3 +359,79 @@ short node-local directory `/tmp/mosaic-boltz.29759069.szmVwn`; native CLI
 detected its GPU, completed preprocessing and is running structure prediction.
 This is preparation progress, not a passed native affinity gate. Quiet
 follow-up is active with the confirmed cancellation and current RUN state.
+
+## Source02 native outcome: random typed-bond derivative gate failed
+
+Readiness **29759069 EXIT1**, actual scheduler outcome **20:09:29
+Europe/Paris**, from start20:03:27, elapsed362 seconds. The short node-local
+TMPDIR fix worked: native structure and affinity prediction reported zero
+failed examples and produced the prepared context. This is a new native
+numerical-gate failure, distinct from the preserved source01 AF_UNIX error.
+
+The **mix50** validation summary passed: exact hard/native integer parity
+for all three outputs; raw atom and typed-bond finite differences at all
+three scales; low/high-weight coupled chemistry checks; nonzero invalid
+chemistry assay; two disposable ten-update pilots; runtime fit and frozen
+identities. Summary SHA
+`9e8121a2c7e3de93ab886244372aadc303928c6ddb2402d797172c1fcd667cee`.
+This one passing validation arm does not certify the paired campaign or
+authorize omitting the random arm.
+
+The **random** validation passed hard/native parity and all three atom
+finite-difference scales. Its typed-bond analytic derivative was
+**9.497333526611328**. Independent central differences were:
+
+| Epsilon | Finite difference | Gate |
+| --- | ---: | --- |
+| 0.01 | 7.599136233329773 | Failed |
+| 0.003 | 12.296060721079508 | Failed |
+| 0.001 | 9.71454381942749 | Passed |
+
+The declared requirement is **two adjacent passing scales**; one of three
+does not pass. Random summary SHA
+`bc8c12ea3df2a7455da6cadd84b69f8c7b9bf97ed33947c467d8aba867c87ad0`.
+Later random coupled/pilot gates are not certified by the passing mix50 arm.
+Independent static review found no concrete mapping, transport or backward
+implementation bug explaining the discrepancy. Do not weaken the gate,
+reinterpret this as a pass, silently change settings or submit mix50 alone.
+
+Prepared native identities:
+
+- Model digest `395876da13ab6d5d175e6603db2118a82954c7c06484842fe2314dbd77a31a16`.
+- Context tensor digest `495002ffa2a52cc85b58ef34424622763dfc4ca556139a98297e8789ae287aa5`.
+- Context file SHA `254d5b7f11605fb41db6f5abf7015f9cc856a19dfe1d4b506ccaea9007200770`.
+
+The 299-test CPU pass remains valid. Overall native assessment is absent,
+source02 long-arm root remains virgin, and both long runs remain unsubmitted.
+Controller29759070 is still PEND and may be retired only after authenticating
+its unstarted state and preserving evidence. Final controller cancellation
+and full failed-readiness archive receipts are pending. Preserve all failed
+and passed evidence; further resolution requires an explicit human-directed
+decision, without waiving any native gate.
+
+Controller29759070's final EXIT is now confirmed after intentional cancellation
+of its verified-unstarted PEND state; the source02 long-arm root does not
+exist. The complete readiness-parent failure archive preserves the prepared
+native context, exact raw initialization, reports, two ten-update pilot trajectories,
+derivative probes, worker logs and scheduler/controller records: **171 files,
+14,985,443 uncompressed bytes**. Archive **506,106 bytes**, SHA
+`a456234c316b5e534508f972bdc1ab47d4ed5d0431988067df673ec36cebf9b4`;
+manifest SHA
+`f54279683af6b7641b3c1a8ac6ea4ac957b7490ce8045c43f87cd7446599282a`.
+Remote archive:
+`/zhome/95/e/206121/mosaic-runs/20261019-brd4-boltz-native-fd-failure-01.tar.gz`,
+with exact receipt
+`/zhome/95/e/206121/mosaic-runs/20261019-brd4-boltz-native-fd-failure-01.receipt.json`.
+Local download and stdlib verification completed at
+`results/hpc/20261019-brd4-boltz-affinity/native-fd-failure-01/verification.json`:
+exact archive path/506,106 bytes/SHA, safe unique members, exact manifest set
+and every file's length/hash passed for all 171 files. Both summary hashes/
+statuses, raw random FD flags `[false, false, true]`, passed mix50 parity/
+coupled/pilot records, unchanged frozen model/context identities and context.pt
+SHA were authenticated. This verifies the failed scientific evidence's bytes;
+it does not turn the failed random gate into a pass. Independent finite-difference review
+established no concrete implementation bug. Coarse-scale nonlinearity and
+FP32 effects are unproven hypotheses, not reasons to waive the gate or alter
+probes until they pass. The automation API confirmed existing heartbeat
+`finish-combined-brd4-trajectory-report` **PAUSED** for this unresolved native
+blocker; no duplicate automation, scientific setting change or experiment.

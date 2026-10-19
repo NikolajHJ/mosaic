@@ -3494,3 +3494,69 @@ uses `/tmp/mosaic-boltz.29759069.szmVwn`; native CLI detected GPU, finished
 preprocessing and is running structure prediction. This is preparation
 progress only; no native gate passed. Quiet follow-up updated with confirmed
 cancellation and actual RUN; no new numerical/model test or setting change.
+
+### 19 October 2026, 20:09 Europe/Paris — source02 native random bond FD blocker
+
+Actual **29759069 EXIT1 at20:09:29**, start20:03:27,362seconds. TMPDIR fix
+worked; native structure/affinity prediction had zero failed examples and
+prepared the context. This numerical validation failure is distinct from
+preserved source01 AF_UNIX preparation failure. CPU299 pass remains valid.
+
+Mix50 summary statuspassed: hard/native integer parity exact for all three
+outputs; rawX/E finite differences all three scales passed; nonzero invalid
+chemistry assay; low/high coupled checks; two disposable ten-update pilots;
+runtime fit and frozen model/context identity checks passed. SummarySHA
+`9e8121a2c7e3de93ab886244372aadc303928c6ddb2402d797172c1fcd667cee`.
+
+Random hard/native parity and all three atom finite differences passed.
+Typed-bond analytic9.497333526611328; centralFD epsilon0.01:
+7.599136233329773 failed;0.003:12.296060721079508 failed;0.001:
+9.71454381942749 passed. Requirement remains two adjacent passing scales;
+only one passed, so native random validation failed. RandomsummarySHA
+`bc8c12ea3df2a7455da6cadd84b69f8c7b9bf97ed33947c467d8aba867c87ad0`.
+Other random coupled/pilot gates are not certified. Independent static review
+found no concrete mapping/transport/backward bug; unresolved numerical gate.
+Do not loosen/ignore it, omit random or submit mix50 alone.
+
+Prepared modeldigest
+`395876da13ab6d5d175e6603db2118a82954c7c06484842fe2314dbd77a31a16`,
+contexttensor digest
+`495002ffa2a52cc85b58ef34424622763dfc4ca556139a98297e8789ae287aa5`,
+contextfileSHA
+`254d5b7f11605fb41db6f5abf7015f9cc856a19dfe1d4b506ccaea9007200770`.
+Overall native assessment absent; both long runs unsubmitted, root virgin.
+Controller29759070 PEND on failed native success; verified-unstarted
+retirement and full evidence archive receipts still pending. Preserve every
+failure/passed arm. Resolution requires human-directed next steps; no native
+gate waiver or new molecular submission is authorized by this partial pass.
+
+Controller29759070 subsequently verified unstarted PEND, intentionally
+cancelled and finalEXIT confirmed. No source02-native arm root exists.
+Full readiness-parent failure archive produced:171files/14,985,443uncompressed
+bytes, including prepared native context, raw initializations/reports,
+20disposable pilot states/probes/worker logs and scheduler/controller records.
+Archive506,106bytes SHA
+`a456234c316b5e534508f972bdc1ab47d4ed5d0431988067df673ec36cebf9b4`;
+manifestSHA
+`f54279683af6b7641b3c1a8ac6ea4ac957b7490ce8045c43f87cd7446599282a`.
+Remote `/zhome/95/e/206121/mosaic-runs/20261019-brd4-boltz-native-fd-failure-01.tar.gz`
+and exact receipt
+`/zhome/95/e/206121/mosaic-runs/20261019-brd4-boltz-native-fd-failure-01.receipt.json`;
+local download/verification was in progress at
+`results/hpc/20261019-brd4-boltz-affinity/native-fd-failure-01/`.
+Independent FD review found no concrete implementation bug. Coarse-scale
+nonlinearity/FP32 explanations remain hypotheses; no probe/gate changes or
+pass inferred. Heartbeat being PAUSED for unresolved native blocker, preserving
+all evidence and stopping before any long molecular submission.
+
+Full failure archive verification subsequently completed: all171files passed
+local stdlib exact archive path/506106byte length/SHA, safe unique member
+paths, exact manifest set and every-file length/hash. Both summary hashes/
+statuses, random rawFDflags[false,false,true], mix50 passed parity/coupled/
+pilot evidence, same frozen model/context and context.pt SHA authenticated.
+Proof `results/hpc/20261019-brd4-boltz-affinity/native-fd-failure-01/verification.json`.
+This establishes integrity of failure evidence, not a scientific pass.
+Automation API confirmed existing finish-combined-brd4-trajectory-report
+actuallyPAUSED, no duplicate. Numerical blocker remains unresolved; no user
+permission request pending, no gate waiver, CPU299passed and both long arms
+NOTsubmitted.
