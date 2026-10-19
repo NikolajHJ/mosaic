@@ -3139,3 +3139,97 @@ reports and edition-01. It verifies actual outcomes/native/frozen/archive gates,
 then publishes the verified two-arm report only to new viewer8773. Quiet on
 unchanged PEND/RUN/outage; pause after delivery or blocker requiring user action.
 No new molecular job or duplicate monitoring automation.
+
+
+### 19 October15:47 Europe/Paris — requested final random addition
+
+User asked whether random finished and requested its addition to the NEW
+report if complete. Scheduler29753668 remainsRUN,29753669PEND on its ending.
+Saved progress9489/10000, last100mean1.009615738s/update, coefficient
+16.5476097393, latest contact -.4009699821, no fallback on latest update.
+Remaining511updates project8m36s, approximately15:56, then report queue/render/
+packaging. Preparing a stdlib saved-record verifier and bounded post-extraction
+byte continuation for the two-arm evidence; no scientific source/model work.
+Do not publish partial random data into the completed first-edition viewer.
+
+
+### 19 October15:57 Europe/Paris — random native complete; pair report running
+
+**29753668 DONE**, actual LSF scheduler success15:57:35, allocation started
+11:42:57, driver15261.500353694s. Persisted summary/case passed,10001states,
+10000applied/strict-improving updates, zero fallback/no-op. Before/after
+frozen model/context pins retained. Summary SHA
+`9a2ebae13049babdeaca670bb13e707927058b8f2cd273a706d12fbf2177bdb2`.
+Saved final raw argmax is connected/sanitized `FCCC(F)F`, six slots with
+elements F/C/F/F/C/C. Initial chemistry1.4735963345 to final0; fixed contact
+-.2969741225 to -.4144608378. These are persisted readouts/scalars, not a
+fresh chemistry evaluation, affinity result or causal validity guarantee.
+All native bytes/records will be checked with the final report archive.
+
+**29753669 RUN**, started15:57:37 Europe/Paris on n-62-30-24, allocated
+hpc2slots. It renders only the two ten-thousand-update arms. No native rerun
+or setting change. The new stdlib pair verifier was Ruff/AST checked and
+its source-map interpretation cross-checked against preserved edition-01
+metadata; this is engineering/saved-byte work, not a numerical model test.
+
+
+### Pair report29753669 complete; authenticated archive download started
+
+Actual report scheduler/LSF success authenticated, render complete=true with
+input IDs29753667/29753668 and10001states each. Rendered HTML71,949,822bytes
+SHA `8575ad053dd80d9b53f6f34594b1b6e25982303f361b51b950b73fc3399467d7`.
+Archive `/zhome/95/e/206121/mosaic-runs/20261019-brd4-chemistry-ramp-01-report.tar.gz`,
+739,279,500bytes/61,267files, SHA
+`fea18fc354e3185dbb3b6b38058cd992a8713ac068bbeb5dfe2e8df4616d41e0`.
+Packaging reserve5.214276031GiB passed against17GiB conservative home free.
+No storage blocker. Local free229.88GiB before download.
+
+Fresh local `results/hpc/20261019-brd4-delayed-chemistry-report/edition-02/`
+retains receipt and actual final scheduler/LSF proofs. Current random/report
+DONE authenticated; older mix50/readiness bjobs have aged out, so preserve and
+use their earlier successful final records and LSF stdout. Not-found archived
+scheduler snapshots are not scientific failures. Download of exact immutable
+archive started through SSH byte stream; verification/publication remain pending.
+New task-specific stdlib verification/publication operators preserve source,
+configuration, initialization, model/context, complete budget, native gates,
+saved frame identity and every-file archive integrity. No local numerical work.
+
+
+### Complete pair evidence verified; random added to new standalone viewer
+
+Report29753669 DONE16:11:22 Europe/Paris. Final scheduler/LSF success
+authenticated,739,279,500byte archive matched exact remote receipt path/length/
+SHA `fea18fc354e3185dbb3b6b38058cd992a8713ac068bbeb5dfe2e8df4616d41e0`.
+Safe archive validation/extraction via scripts/verify_hpc_evidence.py completed.
+Stopped only its slow serial Windows hash loop45s after completed extraction;
+do not call that interrupted pass complete. Task-specific stdlib continuation
+reauthenticated archive and exact archived/extracted manifest, unique safe
+member sets, then all **61,267files** with eight bounded I/O workers in160s.
+All paths/lengths/hashes passed. Metadata/native/source/config/reference/initial
+state/FD-pilot/frozen/budget/snapshot-manifest bindings subsequently passed in
+verify_pair_download.py. No local numerical/model/chemistry or scientific render.
+Proofs: results/hpc/20261019-brd4-delayed-chemistry-report/edition-02/
+20261019-brd4-chemistry-ramp-01-report-download.json and pair-verification.json.
+
+Both native jobs passed10000updates/10001states,10000strict/zero fallback/no-op,
+final weight50. Mix50 all10001saved readouts remain hexane with zero repair;
+contact -.2778551579 to -.4092489183. Random starts repair1.4735963345 and
+ends0, contact -.2969741225 to -.4144608378; final raw connected/sanitized
+`FCCC(F)F`. First saved native/schema-valid state8959;1012such states total
+(including nonmonotone later validity). Full raw invalid graphs, late changing-
+reference repair spikes and fixed-contact increases remain in the report.
+These saved observations do not establish affinity or causal/generic validity.
+
+Published only the verified pair artifacts to the NEW family's viewer, HTML
+last, preserving edition-01 and all prior report families/servers. Existing
+localhost8773server reused; HTTP200/exact71,949,822bytes/full-body SHA
+`8575ad053dd80d9b53f6f34594b1b6e25982303f361b51b950b73fc3399467d7` passed.
+Viewer http://127.0.0.1:8773/report.html now includes only jobs29753667/29753668,
+10001frames each. Browser screenshot/keyboard QA passed both selectors/colors,
+random raw invalid initial graph/playback/final F/C labels, sizes, probability
+heatmaps and all four loss/coefficient/delta panels. Accessibility snapshot
+transport exceeded a frame limit on large HTML; actual page interaction worked,
+so no report/scientific rerun or weakened verification was needed. Browser tab
+marked deliverable; viewer-complete.png/viewer-overlays.png and publication.json
+record presentation. Follow-up heartbeat PAUSED after verified delivery.
+Unrelated user changes and all native runs remain unchanged.

@@ -2,8 +2,8 @@
 
 19 October 2026. User requested one 50% uniform mix and one random
 initialization, with a tiny chemistry weight that starts growing around update
-5,000 and becomes large at the endpoint. Status: implemented, 274 allocated CPU tests passed; both GPU arms submitted
-and queued. Native gates, optimization and final report remain pending.
+5,000 and becomes large at the endpoint. Status: complete. Both native arms passed 10,000 updates; the two-arm report
+was downloaded, fully byte/record verified and opened.
 
 ## Scientific choices
 
@@ -80,8 +80,8 @@ identity. Keep invalid/disconnected graphs and fallback/no-op counts visible.
 - [x] Local static checks passed; no local numerical work.
 - [x] Allocated CPU readiness passed, with actual XML/oracle/reference identities.
 - [x] Two native GPU submissions authenticated; queued/running is not passed.
-- [ ] Both 10,000-update trajectories and terminal native gates authenticated.
-- [ ] Combined report generated on allocated CPU, downloaded, verified and opened.
+- [x] Both 10,000-update trajectories and terminal native gates authenticated.
+- [x] Combined report generated on allocated CPU, downloaded, verified and opened.
 
 `examples/brd4_chemistry.py` is shared by v1 and v2. Configurations are
 `examples/configs/brd4_chemistry_ramp_{mix50,random}_10000.json`. Core schedule
@@ -173,3 +173,15 @@ all repair losses remain zero, despite coefficient50. Summary SHA
 Random **29753668 RUN**,6009/10000; measured pace projects around16:00 with
 ramp-speed uncertainty. Combined report still PEND. Full per-snapshot/archive
 verification and report delivery remain pending. See ledger for exact receipts.
+
+
+Final status19October: random29753668 passed10000updates,10001saved states,
+all strict/no fallback/no-op; final readout `FCCC(F)F`, source schema/sanitization
+passed, repair1.4735963345 to0. Both frozen model/context identities and all
+native contact/low/high-coefficient derivative/pilot gates passed. Report
+29753669DONE16:11:22 Europe/Paris; only the two new native inputs included.
+All61,267archive files and saved-record/source/config/reference/initialization/
+state identity checks passed. Both-arm viewer updated and browser-checked at
+**http://127.0.0.1:8773/report.html**. First edition and older report families
+remain preserved. Full receipts/findings in `docs/brd4_delayed_chemistry_report.md`
+and the ledger. Follow-up monitor PAUSED after verified delivery.

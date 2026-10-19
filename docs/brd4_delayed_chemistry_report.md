@@ -9,7 +9,7 @@ This report family includes only the two fresh ten-thousand-update BRD4 arms:
 | Input | Job | Inclusion |
 | --- | --- | --- |
 | 50% chain/uniform, delayed chemistry | 29753667 | Complete; 10,001 saved states |
-| Random Dirichlet(1), delayed chemistry | 29753668 | Await completed authenticated result |
+| Random Dirichlet(1), delayed chemistry | 29753668 | Complete; 10,001 saved states |
 
 The first edition uses one real study, with explicit pending metadata for the
 second study. There are no fabricated random frames, padded states, hidden
@@ -57,7 +57,7 @@ all tests and scientific plot generation remain allocated HPC.
 - [x] Static checks, immutable packaging and actual CPU submission recorded.
 - [x] Allocated presentation checks/rendering/packaging passed.
 - [x] Download verified and standalone report opened.
-- [ ] Random endpoint and complete pair report authenticated and added as a new edition.
+- [x] Random endpoint and complete pair report authenticated and added as a new edition.
 
 
 Preview source01:365 files, manifest
@@ -128,3 +128,79 @@ queued/running/outage state, authenticates terminal/native/archive gates,
 preserves edition-01 and updates ONLY the new viewer after verification.
 It pauses after successful delivery or a native blocker requiring user action.
 No duplicate monitor or scientific rerun was created.
+
+
+## Second edition verification in progress
+
+Random **29753668 DONE/passed**, completed15:57:35 Europe/Paris,10000applied
+strict improvements/10001states, zero fallback/no-op; final model/context pins
+unchanged. Summary SHA
+`9a2ebae13049babdeaca670bb13e707927058b8f2cd273a706d12fbf2177bdb2`.
+Saved final raw hard readout `FCCC(F)F`, connected/sanitized; saved repair loss
+1.4735963345 to0 and contact -.2969741225 to -.4144608378.
+
+Pair report **29753669 DONE**. Render receipt complete=true, ONLY native
+29753667/29753668,10001frames each. HTML71,949,822bytes SHA
+`8575ad053dd80d9b53f6f34594b1b6e25982303f361b51b950b73fc3399467d7`.
+Full evidence archive739,279,500bytes/61,267files SHA
+`fea18fc354e3185dbb3b6b38058cd992a8713ac068bbeb5dfe2e8df4616d41e0`,
+path `/zhome/95/e/206121/mosaic-runs/20261019-brd4-chemistry-ramp-01-report.tar.gz`.
+Exact receipt and final random/report scheduler + all native/report LSF success
+authenticated before download. Mix50/earlier readiness bjobs entries have aged
+out; preserved native job-final and LSF success records remain authoritative.
+The archive's not-found scheduler snapshots are not failures or waived gates.
+
+Downloading to new `edition-02/`; first edition/viewer retained until safe
+extraction, every-file integrity and native/report saved-record checks pass.
+All checks use stdlib bytes/records; no local chemistry/models/plot generation.
+If the original Windows serial byte loop is slow after safe extraction, retain
+its incomplete status and finish every archive/path/manifest/length/hash gate
+with the bounded eight-I/O-worker continuation in `verify_pair_download.py`.
+
+
+## Second edition delivered
+
+Report29753669 completed16:11:22 Europe/Paris. The739,279,500byte archive
+matched its independently authenticated exact receipt path, size and SHA.
+`scripts/verify_hpc_evidence.py` completed safe member validation/extraction.
+Its slow Windows serial hash pass was intentionally stopped after45seconds
+following completed extraction; this incomplete serial pass is not claimed
+passed. The bounded stdlib continuation reauthenticated archive SHA, exact
+archived/extracted manifest and safe unique member set, then verified
+**61,267/61,267 paths, lengths and file hashes**, eight I/O workers,160seconds.
+The manifest itself is byte-bound to the authenticated archive. No gates lost.
+
+`verify_pair_download.py` passed native summary/case equality, both completed
+budgets,274-test readiness/XML/source/reference/initialization pins, before/
+after frozen model/context identities, all native contact/low/high-coefficient
+derivative/pilot statuses, frame metadata and snapshot-SHA bindings to the
+verified manifest. Both native arms applied10000strict improvements with zero
+fallback/no-op; final coefficients50 and fixed six occupied neutral slots.
+No local numerical, chemistry or model execution/plot generation.
+
+Local proofs in `edition-02/`: `20261019-brd4-chemistry-ramp-01-report-download.json`
+and `pair-verification.json`; actual final scheduler/LSF files retained there.
+The original native/data archives remain unchanged on HPC.
+
+Saved findings: mix50 retains hexane and zero repair in all10001states; contact
+-.2778551579 to -.4092489183. Random repair1.4735963345 to0, contact
+-.2969741225 to -.4144608378; final connected/sanitized hard readout `FCCC(F)F`.
+Its first saved native/schema-valid state is8959;1012states pass this saved
+criterion in total, so validity is not monotone thereafter. Late repair spikes,
+invalid intermediate graphs and contact increases remain visible. Changing
+repair targets/coefficients preclude treating all combined totals as one
+objective. Contact is not affinity; these two exploratory initializations do
+not establish general chemical/binding performance.
+
+`publish_pair.py` copied only verified artifacts to this new family's viewer,
+HTML last, retaining `edition-01/` and its publication receipt. Existing detached
+8773server reused; HTTP200,71,949,822byte length and streamed full-body SHA
+`8575ad053dd80d9b53f6f34594b1b6e25982303f361b51b950b73fc3399467d7` passed.
+Updated link: **http://127.0.0.1:8773/report.html**. Older report families/servers
+untouched. Browser QA passed both selectors/colors, random0/playback/final10000,
+raw invalid and final valid graphs, readable element/slot labels, sizes, exact
+heatmaps and all four comparison panels. The browser's large accessibility
+snapshot transport hit a frame limit; actual page loading/screenshot-and-keyboard
+verification succeeded, so no scientific/report rerun or gate relaxation occurred.
+Tab marked deliverable; `viewer-complete.png` and `viewer-overlays.png` retained.
+Heartbeat `finish-combined-brd4-trajectory-report` explicitly PAUSED after delivery.
