@@ -3698,3 +3698,17 @@ or new artifact outcome could be authenticated for mix29759212 or diagnostic
 No jobs, scientific settings or gates were changed, and no second connection
 was attempted. Existing quiet follow-up remains active. Local access receipt:
 `results/hpc/20261019-brd4-boltz-affinity/independent-02/followups/20261019T1939Z-access.json`.
+
+### 2026-10-19 21:41 Europe/Paris — access restored; mix ETA from saved timings
+
+One compact SSH query at21:41:46 authenticated mix29759212 RUN and its case
+`running`, with1,742 saved applied updates of10,000. Random diagnostic29759213
+is still PEND on physical-GPU reservation across three hosts; it has not
+started and no queue-start ETA is available. No jobs or scientific settings
+changed. The last30 saved update times average 4.394seconds/update,
+projecting about10hours remaining (approximately08:00 on20October Paris time,
+rounded to allow final checks/record I/O). The complete-prefix mean is faster;
+recent behavior is the basis of this operational ETA. Repair-search/trial
+cost can change, especially after the weight ramp starts at5000; no completion
+or terminal-native pass is implied. Local stdlib timing/schema receipt:
+`results/hpc/20261019-brd4-boltz-affinity/independent-02/followups/20261019T1941Z-status-eta.json`.
