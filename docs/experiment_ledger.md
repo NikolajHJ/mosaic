@@ -3461,3 +3461,36 @@ RUN and untouched with known preparation error. Controller29759070 PEND;
 neither long arm submitted and no native finite-difference/parity/pilot gate
 passed. Predecessor21:09:51 allocation bound remains a limit, not an ETA.
 All numerical checks were allocatedHPC; local evidence work used stdlib only.
+
+### 19 October 2026, 20:03 Europe/Paris — explicit predecessor cancellation; corrected native RUN
+
+User explicitly requested cancelling errored original validation29758990 so
+the corrected queued job need not wait for timeout. Root authenticated RUN,
+known AF_UNIX prediction error and absent native assessment, then bkill request
+at20:03:16.509435 Europe/Paris (18:03:16.509435UTC). Scheduler acknowledged
+being terminated; immediateRUN was asynchronous, not a final outcome. Actual
+**29758990 EXIT** confirmed20:03:43.123083 Europe/Paris (18:03:43.123083UTC).
+This user authorization supersedes the earlier leave-running restriction
+for this errored job only; historical preauthorization notes remain preserved.
+
+Corrected **29759069 RUN/gpul40s**, actualstart20:03:27 Europe/Paris,
+n-62-13-19,one exclusiveL40S/four slots/8GiB per slot/two hours. ended(old)
+dependency fulfilled, without waiting for old21:09:51 wall limit.
+Controller29759070 PEND on actual native success. CPU29759068 actual299pass
+unchanged; no native parity/FD/pilot passed and neither long arm submitted.
+Original source/failure evidence and all scientific gates remain preserved.
+
+Remote cancellation evidence
+`/zhome/95/e/206121/mosaic-runs/20261019-brd4-boltz-tmpdir-cancel-01/`,
+before/request/cancel.txt/completion.json, manifestSHA
+`e5104969dc191a6d134a5141917bf51f9c7228b703d10a2cf333ef4c8a6d6f15`.
+Local proof pending download/verification under
+`results/hpc/20261019-brd4-boltz-affinity/tmpdir-cancel-01/`.
+
+Cancellation proof subsequently downloaded and verified: all seven files,
+exact lengths/SHA and recorded e5104969...d6f15 manifest passed local stdlib
+checks at `.../tmpdir-cancel-01/verification.json`. Corrected29759069 startup
+uses `/tmp/mosaic-boltz.29759069.szmVwn`; native CLI detected GPU, finished
+preprocessing and is running structure prediction. This is preparation
+progress only; no native gate passed. Quiet follow-up updated with confirmed
+cancellation and actual RUN; no new numerical/model test or setting change.

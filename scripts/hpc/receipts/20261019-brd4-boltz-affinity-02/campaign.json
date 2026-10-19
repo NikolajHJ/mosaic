@@ -25,7 +25,7 @@
     "wall_minutes": 60
   },
   "native_readiness_job": "29759069",
-  "native_readiness_status": "PEND: waiting for ended(29758990); CPU success fulfilled",
+  "native_readiness_status": "RUN/gpul40s; no native affinity gate passed yet",
   "native_readiness_dependency": "done(29759068)&&ended(29758990)",
   "native_readiness_resources": {
     "queue": "gpul40s",
@@ -78,10 +78,10 @@
   "historical_receipt": "scripts/hpc/receipts/20261019-brd4-boltz-affinity-01/campaign.json",
   "predecessor_readiness": {
     "job_id": "29758990",
-    "status": "RUN with observed AF_UNIX preparation error; unchanged allocation left untouched",
+    "status": "EXIT: intentional user-authorized cancellation after observed AF_UNIX preparation failure",
     "started_at": "2026-10-19T19:09:51+02:00",
     "approximate_original_wall_limit_at": "2026-10-19T21:09:51+02:00",
-    "wall_limit_interpretation": "allocation bound, not completion or retry ETA",
+    "wall_limit_interpretation": "historical allocation bound; predecessor cancelled at explicit user request before this limit",
     "native_affinity_checks_reached": false,
     "evidence_manifest_sha256": "ee6f23873d7f3026caa7504e3ed77c73cb0e33342776815302dad0ac873dea5f",
     "local_evidence_verification": {
@@ -90,6 +90,29 @@
       "gates": "all file byte lengths and SHA-256 hashes verified with local stdlib",
       "verification_file": "results/hpc/20261019-brd4-boltz-affinity/tmpdir-failure-01/verification.json",
       "manifest_sha256": "ee6f23873d7f3026caa7504e3ed77c73cb0e33342776815302dad0ac873dea5f"
+    },
+    "user_authorized_cancellation": {
+      "authorization": "User explicitly requested cancelling errored original validation29758990 to release corrected retry without waiting for timeout",
+      "scope": "supersedes earlier leave-running restriction for29758990 only; historical evidence preserved",
+      "job_id": "29758990",
+      "before_request": "RUN authenticated; known AF_UNIX prediction error and absent native assessment",
+      "requested_at": "2026-10-19T20:03:16.509435+02:00",
+      "requested_at_utc": "2026-10-19T18:03:16.509435Z",
+      "initial_acknowledgment": "being terminated; immediate RUN was asynchronous and not final outcome",
+      "final_status": "EXIT, intentional cancellation confirmed",
+      "final_confirmed_at": "2026-10-19T20:03:43.123083+02:00",
+      "final_confirmed_at_utc": "2026-10-19T18:03:43.123083Z",
+      "remote_evidence_directory": "/zhome/95/e/206121/mosaic-runs/20261019-brd4-boltz-tmpdir-cancel-01/",
+      "remote_completion": "/zhome/95/e/206121/mosaic-runs/20261019-brd4-boltz-tmpdir-cancel-01/completion.json",
+      "evidence_manifest_sha256": "e5104969dc191a6d134a5141917bf51f9c7228b703d10a2cf333ef4c8a6d6f15",
+      "local_evidence_directory": "results/hpc/20261019-brd4-boltz-affinity/tmpdir-cancel-01/",
+      "local_evidence_verification": {
+        "status": "passed",
+        "files": 7,
+        "gates": "all byte lengths and SHA-256 hashes verified with local stdlib",
+        "manifest_sha256": "e5104969dc191a6d134a5141917bf51f9c7228b703d10a2cf333ef4c8a6d6f15",
+        "verification_file": "results/hpc/20261019-brd4-boltz-affinity/tmpdir-cancel-01/verification.json"
+      }
     }
   },
   "retired_controller": {
@@ -136,5 +159,19 @@
     "manifest_sha256": "fe2cd588caf1a6bbeb851973534a8751ce53a74c08ac0b05f0cf83e46ea57183"
   },
   "native_affinity_gates_passed": false,
-  "independent_static_review": "no blocking findings in TMPDIR and launcher changes"
+  "independent_static_review": "no blocking findings in TMPDIR and launcher changes",
+  "native_readiness_started_at": "2026-10-19T20:03:27+02:00",
+  "native_readiness_host": "n-62-13-19",
+  "native_predecessor_ended_dependency": "fulfilled; did not wait for old allocation wall limit",
+  "status_observed_at": "2026-10-19T20:03:43.123083+02:00",
+  "corrected_native_startup": {
+    "job_id": "29759069",
+    "status": "RUN",
+    "node_tmpdir": "/tmp/mosaic-boltz.29759069.szmVwn",
+    "gpu_detected": true,
+    "preprocessing": "completed",
+    "structure_prediction": "running",
+    "native_affinity_gate_pass": false
+  },
+  "quiet_followup": "active; updated confirmed cancellation and corrected native RUN"
 }

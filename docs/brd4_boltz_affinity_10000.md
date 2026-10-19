@@ -5,11 +5,13 @@ only after passing, two independent fresh 10,000-update runs: 50% chain/uniform
 and seeded random probability initialization. Implementation is being validated;
 submission or scheduler success alone does not certify numerical readiness.
 
-**Current status, 19 October 2026, 19:29 Europe/Paris:** source02 is remotely
+**Current status, 19 October 2026, 20:03 Europe/Paris:** source02 is remotely
 authenticated. Its full CPU rerun **29759068 DONE/passed 299 checks** at
-19:29:12, with zero failures/errors/skips. Native retry **29759069 PEND/gpul40s**
-waits for the end of predecessor **29758990**, which remains
-RUN with the observed preparation TMPDIR error and is left untouched.
+19:29:12, with zero failures/errors/skips. Corrected native validation
+**29759069 RUN/gpul40s** started at **20:03:27**, on L40S host n-62-13-19.
+At the user's explicit request, errored predecessor **29758990** was
+intentionally cancelled; final EXIT was confirmed at **20:03:43**. This
+supersedes the earlier leave-running restriction for that job only.
 Controller **29759070 PEND** requires the new native success and the existing
 passed eight-test launcher proof. Previous 283 scientific CPU and eight
 launcher tests passed; no native affinity check has passed yet. Old controller
@@ -322,3 +324,37 @@ remains PEND. Neither long arm is submitted and no native gate is claimed
 passed. The predecessor's unchanged two-hour allocation bound remains
 21:09:51 Europe/Paris, not a completion ETA. Independent static review found
 no blocking issue in the temporary-directory or launcher changes.
+
+## User-authorized cancellation and corrected native start
+
+The user explicitly requested cancelling the errored original validation
+29758990 so corrected29759069 could start without waiting for the old timeout.
+After authenticating its RUN state, known AF_UNIX diagnostic and absent
+assessment, `bkill` was requested at **20:03:16.509435 Europe/Paris**
+(18:03:16.509435 UTC). The scheduler first acknowledged asynchronous
+termination; its immediate RUN response was not falsely called final EXIT.
+Actual **29758990 EXIT** was confirmed at **20:03:43.123083 Europe/Paris**
+(18:03:43.123083 UTC). This explicit authorization applies only to this
+errored predecessor; historical leave-untouched notes describe the policy
+before that instruction and remain preserved.
+
+Corrected **29759069 RUN/gpul40s**, scheduler start **20:03:27 Europe/Paris**,
+on n-62-13-19, one exclusive L40S GPU, four slots, 8 GiB per slot, two hours.
+The `ended(29758990)` dependency was fulfilled; the corrected job did not wait
+for the prior allocation's 21:09:51 limit. Controller29759070 remains PEND
+on actual native success. All original failed-preparation/source evidence and
+the source02 299-test CPU pass remain unchanged. No native parity/FD/pilot
+gate has yet passed, and neither long optimization arm has been submitted.
+
+Remote cancellation evidence:
+`/zhome/95/e/206121/mosaic-runs/20261019-brd4-boltz-tmpdir-cancel-01/`,
+including before/request/cancel records and `completion.json`; manifest SHA
+`e5104969dc191a6d134a5141917bf51f9c7228b703d10a2cf333ef4c8a6d6f15`.
+Local cancellation proof download completed: all **seven files** passed
+stdlib length/SHA verification at
+`results/hpc/20261019-brd4-boltz-affinity/tmpdir-cancel-01/verification.json`,
+with the exact manifest SHA above. Corrected29759069 startup uses the actual
+short node-local directory `/tmp/mosaic-boltz.29759069.szmVwn`; native CLI
+detected its GPU, completed preprocessing and is running structure prediction.
+This is preparation progress, not a passed native affinity gate. Quiet
+follow-up is active with the confirmed cancellation and current RUN state.
