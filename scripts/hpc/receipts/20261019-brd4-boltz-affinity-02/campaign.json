@@ -254,5 +254,14 @@
     "job_id": "29759070",
     "pre_cancel_status": "verified PEND/unstarted",
     "final_status": "EXIT, intentional cancellation confirmed"
+  },
+  "subsequent_user_authorized_resolution": {
+    "request": "Start independently passed mix50; investigate and fix random separately without weakening checks",
+    "scope": "Supersedes original paired-only eligibility; native parent failure remains historical",
+    "campaign": "scripts/hpc/receipts/20261019-brd4-boltz-independent-02/campaign.json",
+    "mix50_long_job": "29759212",
+    "mix50_status": "RUN from20:41:13Paris",
+    "random_diagnostic_job": "29759213",
+    "random_long_arm": "not submitted; original nativeFDfailure unresolved"
   }
 }

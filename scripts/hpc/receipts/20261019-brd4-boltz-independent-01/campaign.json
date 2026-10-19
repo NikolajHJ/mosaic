@@ -1,0 +1,35 @@
+{
+  "tag": "20261019-brd4-boltz-independent-01",
+  "source": "/work3/s234818/mosaic/releases/20261019-brd4-boltz-independent-01/source",
+  "source_files": 7,
+  "source_manifest_sha256": "37d40949589c8d2d5e823fa00443345f24b791fcb6ad5ae501724001c5cc50a1",
+  "archive_sha256": "ddcf71b863750aa92f90ba9ebfcb0871e1b9de5097beac71d3bd850828497ab0",
+  "archive_bytes": 17945,
+  "local_archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\releases\\20261019-brd4-boltz-independent-01\\source.tar.gz",
+  "scientific_manifest_sha256": "5eb6e17ea8d19e52c99a589243228710994dcf137f59a6b9a6659a4fe719a7f4",
+  "scope": "Independent passed mix50 evidence adoption and diagnostic-only random native FD replay; unchanged immutable scientific source02",
+  "status": "remote authenticated; CPU submitted",
+  "cpu_job": "29759210",
+  "cpu_status": "EXIT: packaging omission before adoption",
+  "cpu_output": "/zhome/95/e/206121/mosaic-runs/20261019-brd4-boltz-independent-01-cpu/payload",
+  "cpu_resources": {
+    "queue": "hpc",
+    "slots": 1,
+    "memory_gib_per_slot": 2,
+    "wall_minutes": 15
+  },
+  "scientific_source": "/work3/s234818/mosaic/releases/20261019-brd4-boltz-affinity-02/source",
+  "native_parent_job": "29759069",
+  "mix50_native_status": "passed arm; parent aggregate failed due random",
+  "random_native_status": "failed original typed-bond FD; diagnostic pending",
+  "long_arms": "none from failed tools01",
+  "independent_static_review": "arm adoption and diagnostic scripts: no concrete blocker",
+  "cpu_tests": {
+    "passed": 6,
+    "failed": 13,
+    "errors": 0,
+    "skips": 0,
+    "reason": "13fixture setup FileNotFoundError missing check_boltz_cpu_proof.py"
+  },
+  "superseded_by_tools": "20261019-brd4-boltz-independent-02"
+}

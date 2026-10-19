@@ -1,0 +1,47 @@
+#!/bin/bash
+set -euo pipefail
+[[ -n "${LSB_JOBID:-}" ]]
+tools=$1
+tools_manifest=$2
+release=$3
+manifest=$4
+parent_ready=$5
+tools_cpu=$6
+tools_cpu_assessment=$7
+parent=$8
+module load python3/3.12.11 cuda/12.9.1
+python=/work3/s234818/mosaic/envs/protenix-tiny/bin/python
+native=/work3/s234818/latentmol/env/boltz311/bin/python
+mkdir "$parent/payload"
+run="$parent/payload"
+export PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+"$python" "$tools/scripts/verify_stage0_release.py" "$tools" "$tools_manifest"
+"$python" "$release/scripts/verify_stage0_release.py" "$release" "$manifest"
+"$python" - "$tools_cpu" "$tools_cpu_assessment" "$tools_manifest" "$manifest" <<'PY'
+import hashlib, json, subprocess, sys
+from pathlib import Path
+root, expected, tool_manifest, scientific_manifest = Path(sys.argv[1]), *sys.argv[2:]
+def sha(p): return hashlib.sha256(p.read_bytes()).hexdigest()
+p = root / "assessment.json"
+assert sha(p) == expected
+record = json.loads(p.read_text())
+assert record["status"] == "passed" and record["tests"] == 19
+assert all(record[k] == 0 for k in ("failures", "errors", "skips"))
+assert record["tools_manifest_sha256"] == tool_manifest
+assert record["scientific_manifest_sha256"] == scientific_manifest
+for proof in record["proofs"]:
+    assert sha(Path(proof["path"])) == proof["sha256"]
+scheduler = subprocess.check_output(["bjobs", "-noheader", "-o", "jobid stat queue", record["job_id"]], text=True).split()
+assert scheduler == [record["job_id"], "DONE", "hpc"]
+PY
+"$python" "$release/scripts/hpc/zhome_quota_preflight.py" --run-dir "$run" --minimum-free-gib 6
+export PYTHONPATH="$release/src" JAX_PLATFORMS=cpu JAX_ENABLE_X64=0
+export OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 MKL_NUM_THREADS=4
+export HF_HUB_OFFLINE=1 HF_HUB_DISABLE_TELEMETRY=1
+source "$release/scripts/hpc/boltz_node_tmpdir.sh"
+printf '%s\n' "$TMPDIR" > "$run/tmpdir.txt"
+nvidia-smi --query-gpu=name,driver_version,memory.total --format=csv > "$run/gpu.txt"
+cd "$release"
+"$python" "$tools/scripts/diagnose_boltz_random_gradient.py" replay   --scientific-source "$release"   --initialization "$parent_ready/random/initialization.npz"   --output "$run/replay" > "$run/replay.log" 2>&1
+replay_sha=$(sha256sum "$run/replay/replay.npz" | cut -d' ' -f1)
+"$native" "$tools/scripts/diagnose_boltz_random_gradient.py" diagnose   --scientific-source "$release" --replay "$run/replay" --replay-sha256 "$replay_sha"   --context "$parent_ready/prepared/context.pt"   --checkpoint /work3/s234818/latentmol/cache/boltz2/boltz2_aff.ckpt   --output "$run/diagnostic" > "$run/diagnostic.log" 2>&1

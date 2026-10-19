@@ -3335,7 +3335,7 @@ Compact local resource-change evidence:
 Download complete and stdlib byte verification passed all23files, exact
 lengths and SHA-256 hashes. Downloaded manifest SHA
 `e1f65ded65a82cbb6c77431a702b305a2d1f24a8bc8e7333f3561671c47d575d`;
-verification.json statuspassed. At19:08:37 Europe/Paris, native29758990 still
+verification.json status passed. At19:08:37 Europe/Paris, native29758990 still
 PEND with `Job's requirements for resource reservation not satisfied
 (Resource: ngpus_physical): 3 hosts`, an ordinary GPU reservation wait;
 controller29759027 PEND on dependency. No native pass or long submission inferred.
@@ -3395,7 +3395,7 @@ coverage plumbing changed. This is an honest external post-packaging receipt,
 not an assertion that later receipts are in the already sealed source02.
 Future unique run directories:
 `/zhome/95/e/206121/mosaic-runs/20261019-brd4-boltz-affinity-02-{cpu,ready,controller,native}`.
-CPU299coverage remains planned/pending, not passed. Preserved failure evidence
+CPU 299coverage remains planned/pending, not passed. Preserved failure evidence
 download completed: all12files/lengths/SHA verified using local stdlib at
 `results/hpc/20261019-brd4-boltz-affinity/tmpdir-failure-01/verification.json`;
 its manifest is the recorded ee6f2387...dea5f. No local numerical validation.
@@ -3430,7 +3430,7 @@ limit21:09:51 Europe/Paris; this is a resource bound, not a completion/retry
 ETA. New retry waits ended(old), so no duplicate concurrent GPU validation.
 Source01, all earlier failures and actual283+8CPU passes remain preserved.
 
-### 19 October 2026, 19:29 Europe/Paris — source02 CPU299 passed; native retry still pending
+### 19 October 2026, 19:29 Europe/Paris — source02 CPU 299 passed; native retry still pending
 
 CPU **29759068 DONE/passed299**, actual schedulerDONE and LSF Successfully
 completed authenticated at19:29:12 Europe/Paris. Breakdown16controller/TMPDIR
@@ -3500,9 +3500,9 @@ cancellation and actual RUN; no new numerical/model test or setting change.
 Actual **29759069 EXIT1 at20:09:29**, start20:03:27,362seconds. TMPDIR fix
 worked; native structure/affinity prediction had zero failed examples and
 prepared the context. This numerical validation failure is distinct from
-preserved source01 AF_UNIX preparation failure. CPU299 pass remains valid.
+preserved source01 AF_UNIX preparation failure. CPU 299 pass remains valid.
 
-Mix50 summary statuspassed: hard/native integer parity exact for all three
+Mix50 summary status passed: hard/native integer parity exact for all three
 outputs; rawX/E finite differences all three scales passed; nonzero invalid
 chemistry assay; low/high coupled checks; two disposable ten-update pilots;
 runtime fit and frozen model/context identity checks passed. SummarySHA
@@ -3558,5 +3558,133 @@ Proof `results/hpc/20261019-brd4-boltz-affinity/native-fd-failure-01/verificatio
 This establishes integrity of failure evidence, not a scientific pass.
 Automation API confirmed existing finish-combined-brd4-trajectory-report
 actuallyPAUSED, no duplicate. Numerical blocker remains unresolved; no user
-permission request pending, no gate waiver, CPU299passed and both long arms
+permission request pending, no gate waiver, CPU 299passed and both long arms
 NOTsubmitted.
+
+### 19 October 2026 — user authorizes passed mix50 separately from random diagnostics
+
+After the recorded paired failure, the user explicitly requested starting
+the passed 50% mix and investigating random gradients separately. This
+supersedes the prior paired-submission hold for mix50 only. Eligibility is
+now arm-specific: source02 mix50 passed every native gate, whereas random
+remains blocked. Parent 29759069 stays EXIT1, its original overall assessment
+remains absent, and all 171 verified failure-evidence files are preserved.
+No random gate is ignored or represented as passed.
+
+Preparing an immutable evidence-only tooling release that validates the
+requested mix50 configuration and its existing complete native proof,
+source02 and CPU 299 identity, then creates an arm-scoped assessment accepted
+by the unchanged source02 scientific driver. New tooling tests must pass
+on allocated CPU before adoption. Actual release hashes, test outcomes and
+new jobs are pending; **no mix50 run is submitted yet**.
+
+The authorized mix50 execution retains exactly 10,000 updates, six neutral
+slots, fixed authenticated model/context, original initialization, LR 0.03,
+ten-trial best-primal policy, affinity 1/element-JS 0.1 and chemistry 0.001
+through 5000 followed by the same geometric ramp to 50 at 10000. One exclusive
+L40S, four CPU slots, 8 GiB per slot, 23h; all per-run native/finite/identity/
+runtime/terminal gates remain. This is adoption of independently passed
+arm evidence, not a new paired pass or a changed scientific objective.
+
+Separate allocated random diagnostic will replay exact failed
+GraphLogits(saved_logits).graph bytes, not raw sampled X/E; fixed bond row 2
+aromatic 4-to-NONE 0 contrast; original eps 0.01/0.003/0.001, 15% tolerance,
+two-adjacent-pass gate unchanged. Repeat no-grad/AD/grad-enabled forward
+and checkpoint-disabled diagnostic control. Extra 0.0003/0.0001 scales are
+diagnostic only, not historical certification or production settings.
+No production change selected. See brd4_boltz_random_gradient_diagnostic.md.
+All testing/diagnostics stay allocated HPC; no local numerical execution.
+
+Independent external tooling release01 authenticated all seven files at
+`/work3/s234818/mosaic/releases/20261019-brd4-boltz-independent-01/source`,
+manifest SHA
+`37d40949589c8d2d5e823fa00443345f24b791fcb6ad5ae501724001c5cc50a1`,
+archive 17,945 bytes, SHA
+`ddcf71b863750aa92f90ba9ebfcb0871e1b9de5097beac71d3bd850828497ab0`.
+Source02 scientific code/configuration remains unchanged. Independent static
+reviews of evidence-adoption and random diagnostic tools found no blocker;
+these are review findings, not a CPU/native pass.
+
+Actual allocated CPU **29759210** submitted to hpc, one slot, 2 GiB, 15 minutes;
+output `/zhome/95/e/206121/mosaic-runs/20261019-brd4-boltz-independent-01-cpu/`.
+Planned 19 contracts comprise 13 arm-adoption and six diagnostic contracts.
+No passed test result or new GPU job is yet claimed. Both mix50 long-run
+submission and random diagnostic GPU submission remain pending these checks.
+This receipt follows immutable tooling packaging and is not claimed within it.
+
+CPU29759210 subsequently EXIT from an engineering packaging failure:
+external tools01 omitted scripts/check_boltz_cpu_proof.py. Thirteen
+arm-adoption fixture tests raised FileNotFoundError; six diagnostic contracts
+passed. Arm adoption did not execute and no GPU job was submitted. Preserve
+this actual failed job, logs and sealed tools01 rather than replacing its
+outcome. Preparing external tools02 with only the unchanged verifier added;
+existing tests/tooling and source02 scientific code remain unchanged. New
+tooling hashes, CPU retry and outcomes are pending. Historical CPU 299 and
+mix50 native validation remain valid; random is still unapproved.
+
+Corrected external tools02 remotely authenticated all eight files at
+`/work3/s234818/mosaic/releases/20261019-brd4-boltz-independent-02/source`;
+same seven prior file bytes plus unchanged CPU verifier dependency.
+Manifest SHA
+`848cb213d91be09513439f719ece8e43ec55991bd473f1bc233f3d80eb204c1b`,
+archive 18,486 bytes SHA
+`7d5516aae2fa6bb0a8fee2625258fe86d32049d207f2424698f7f7bba8adaa2d`.
+Actual CPU 29759211 submitted, hpc/one slot/2GiB/15min, output
+`/zhome/95/e/206121/mosaic-runs/20261019-brd4-boltz-independent-02-cpu/`.
+Outcome pending; no new pass/adoption/GPU submission claimed.
+
+### 19 October 2026, 20:40 Europe/Paris — arm adoption passed; mix50 and diagnostic submitted
+
+Actual tools02 CPU 29759211 DONE/passed 19 contracts, zero failures/errors/skips,
+authenticated scheduler/LSF success. Adoption rehashed all 147 original mix50
+proofs. CPU assessment SHA
+`bc76e33927104e88a9e019b706d0ed4c6e1fc8f3bd4460264acad13ca7594448`;
+mix50 arm-scoped adoption SHA
+`ca400a1477471790bcc5c93cd85a55455da77b331caa504f882b2020d954140e`.
+Source02 scientific CPU 299 pass unchanged, original overall parent 29759069
+stays EXIT1, random native failure remains uncertified.
+
+Actual GPU submissions 20:40:18 Europe/Paris, initially verified PEND:
+mix50 long **29759212**, output
+`/zhome/95/e/206121/mosaic-runs/20261019-brd4-boltz-mix50-independent-01/`,
+unchanged source02/original mix50 configuration/10,000 updates, gpul40s one
+exclusive L40S/four CPU slots/8GiB per slot/23h; random diagnostic
+**29759213**, output
+`/zhome/95/e/206121/mosaic-runs/20261019-brd4-boltz-random-diagnostic-01/`,
+same GPU/CPU/memory shape and 1h. Neither has a dependency on the other or
+an initial dependency. Actual records saved locally at
+`results/hpc/20261019-brd4-boltz-affinity/independent-02/gpu-submissions.json`.
+No starts/completed updates/diagnostic success inferred. Random diagnostic
+is not a long optimization; no long random run submitted.
+
+At 20:41:42 Europe/Paris, actual scheduler **mix 29759212 RUN** from 20:41:13;
+diagnostic 29759213 PEND on unavailable physical-GPU reservation,
+ngpus_physical across three hosts, with no dependency on mix50. Random cause
+remains unproven and its original gate remains failed.
+
+Compact 30-file CPU/adoption/submission proof archive downloaded, safely
+extracted and every-file lengths/SHA plus XML counts verified locally using
+stdlib at `results/hpc/20261019-brd4-boltz-affinity/independent-02/proofs-01/verification.json`.
+Archive 126,516 bytes SHA
+`414dfa385545b8f7e3dc751fbbd4bd964f3e7926ad6feb48f23fafa9de164546`,
+manifest SHA
+`8e645c895fb51178ff96e25a732dbe077b52281bff91e4f4528644612f00462b`.
+Proof integrity is not a long-run completion or diagnostic pass.
+
+At 20:42:41 Europe/Paris, actual mix 29759212 RUN; its repeated initial source02
+raw native FD report status passed. No completed trajectory/terminal check
+claimed. Existing heartbeat finish-combined-brd4-trajectory-report updated by
+automation API to actual ACTIVE, no duplicate, following unchanged mix plus
+separate random investigation. Quiet on unchanged status/outages; concrete
+bug fixes require authenticated allocated tests and every original gate.
+Pause for a genuine unresolved curvature blocker; no tolerance/protocol
+change selected. Latest diagnostic observation remains 20:41:42 GPU PEND.
+
+### 2026-10-19 20:44 Europe/Paris — mix50 applied updates authenticated
+
+Compact scheduler/artifact query at20:44:01 confirmed mix50 job29759212 RUN,
+its repeated original native atom/bond FD report passed, case report `running`,
+41 applied updates and42 saved states through state41. Terminal derivative,
+10,000-update and frozen-after gates remain pending. Random diagnostic29759213
+remained GPU-PEND for `ngpus_physical`; no random long run is submitted.
+Saved query: `results/hpc/20261019-brd4-boltz-affinity/independent-02/latest-status.txt`.

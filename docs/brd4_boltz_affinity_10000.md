@@ -5,21 +5,24 @@ only after passing, two independent fresh 10,000-update runs: 50% chain/uniform
 and seeded random probability initialization. Implementation is being validated;
 submission or scheduler success alone does not certify numerical readiness.
 
-**Current status, 19 October 2026, 20:09 Europe/Paris: BLOCKED on the random
-initialization's native typed-bond finite-difference gate.** Source02 native
-readiness **29759069 EXIT1 at 20:09:29**, after 362 seconds. The TMPDIR fix
-worked and fresh native preparation completed; the full mix50 validation arm
-passed. Random atom finite differences and hard/native parity passed, but
-only one of three bond finite-difference scales passed, where two adjacent
-passes are required. This is an unresolved numerical validation failure;
-neither initialization is approved for a long run. CPU **29759068** remains
-DONE/passed **299** checks. Controller **29759070 EXIT** was intentionally
-cancelled after authenticating it unstarted PEND. Neither long optimization
-arm has been submitted; the overall native assessment is absent. Current receipt:
+**Current status, 19 October 2026, 20:42 Europe/Paris:** user-authorized
+arm-specific adoption passed. Tools02 CPU **29759211 DONE/passed 19** and
+147 original mix50 proofs rehashed; source02 CPU **29759068 passed 299**
+remains valid. **Mix50 long run 29759212 RUN** started at **20:41:13**.
+Independent **random diagnostic 29759213 PEND** waits for a physical GPU,
+with no dependency. Both were actually submitted at 20:40:18 in gpul40s.
+The mix50 run retains unchanged source02 science and 10,000 updates; the
+diagnostic is not a random optimization run. They have no dependencies on
+each other. Random remains failed/uncertified, with no long random run
+submitted and no changed tolerance or production setting selected.
+Parent **29759069 EXIT1** and retired controller **29759070 EXIT** remain
+historical failures/retirements; the parent is never relabelled passed.
+Latest sealed scientific campaign receipt:
 `scripts/hpc/receipts/20261019-brd4-boltz-affinity-02/campaign.json`.
-All 171 failure-evidence files are locally verified. Follow-up is PAUSED on
-the unresolved numerical gate; no user permission request is pending.
-Historical records below remain preserved.
+All 171 parent failure-evidence files are locally verified. The earlier
+follow-up pause is historical; actual run/diagnostic outcomes remain pending.
+Historical
+records and their previous combined-submission policy remain preserved below.
 
 ## Scope and pivotal choices
 
@@ -435,3 +438,106 @@ FP32 effects are unproven hypotheses, not reasons to waive the gate or alter
 probes until they pass. The automation API confirmed existing heartbeat
 `finish-combined-brd4-trajectory-report` **PAUSED** for this unresolved native
 blocker; no duplicate automation, scientific setting change or experiment.
+
+## User-authorized arm separation after the paired failure
+
+The user explicitly asked to start the independently passed 50% mix and
+investigate random gradients separately. Submission eligibility is therefore
+arm-specific. This supersedes the earlier hold on mix50 solely because the
+random arm failed; it does not change either scientific result. Parent
+29759069 remains EXIT1, its original overall assessment remains absent,
+and the random initialization remains unapproved for long optimization.
+
+The adopted mix50 evidence includes its complete source02 native parity,
+atom/bond finite differences, chemistry checks, disposable pilots, runtime
+fit and frozen identities, plus source02 CPU 29759068's 299-test pass. The
+unchanged source02 driver consumes a mix50-only assessment. This assessment
+covers the requested passed arm, not the failed paired campaign.
+
+## Authenticated tooling and passed adoption
+
+The first external tooling release omitted the unchanged
+`scripts/check_boltz_cpu_proof.py` dependency. CPU 29759210 EXIT retained
+13 FileNotFoundError arm-fixture failures and six passing diagnostic
+contracts; adoption was not reached. The failed release, job and logs are
+preserved in the ledger and receipts.
+
+Corrected external tools02 added that verifier without changing the existing
+seven files or source02 scientific code/configuration. All eight files were
+authenticated at
+`/work3/s234818/mosaic/releases/20261019-brd4-boltz-independent-02/source`.
+Manifest SHA
+`848cb213d91be09513439f719ece8e43ec55991bd473f1bc233f3d80eb204c1b`;
+archive 18,486 bytes, SHA
+`7d5516aae2fa6bb0a8fee2625258fe86d32049d207f2424698f7f7bba8adaa2d`.
+
+Actual CPU 29759211 DONE/passed 19 contracts: 13 arm-adoption and six
+diagnostic contracts, zero failures/errors/skips. Scheduler/LSF success was
+authenticated, and adoption rehashed all 147 original mix50 proof files.
+CPU assessment SHA
+`bc76e33927104e88a9e019b706d0ed4c6e1fc8f3bd4460264acad13ca7594448`;
+mix50 arm-scoped assessment SHA
+`ca400a1477471790bcc5c93cd85a55455da77b331caa504f882b2020d954140e`.
+Independent static review found no blocking issue in either tool. These
+engineering/adoption checks do not certify the random native gradient.
+
+## Current independent GPU jobs
+
+Both jobs were actually submitted at 20:40:18 Europe/Paris on 19 October 2026,
+without initial dependencies or dependencies on each other. Scheduler
+verification at 20:41:42 established:
+
+- **Mix50 long run 29759212 RUN**, started 20:41:13. One exclusive L40S in
+  gpul40s, four CPU slots, 8 GiB per slot, 23h. Output:
+  `/zhome/95/e/206121/mosaic-runs/20261019-brd4-boltz-mix50-independent-01/`.
+- **Random diagnostic 29759213 PEND**, waiting for an unavailable
+  `ngpus_physical` reservation on three hosts. One exclusive L40S in gpul40s,
+  four CPU slots, 8 GiB per slot, 1h. Output:
+  `/zhome/95/e/206121/mosaic-runs/20261019-brd4-boltz-random-diagnostic-01/`.
+
+Mix50 retains six occupied neutral slots, seed 17, LR 0.03, ten-trial
+best-primal policy, affinity coefficient 1, element-JS 0.1, exactly 10,000
+updates and the same chemistry schedule: 0.001 through 5000, geometric ramp
+to 50 at 10000. Prepared context, model and all native/finite/runtime/identity/
+terminal gates are unchanged. A started job is not a completed trajectory.
+No long random optimization has been submitted.
+
+The diagnostic replays the exact failed `GraphLogits(saved_logits).graph()`
+bytes at bond row 2, aromatic 4 to NONE 0. Original epsilon scales 0.01/0.003/
+0.001, 15% tolerance and two-adjacent-pass requirement remain unchanged.
+Repeated forward/backward modes, a checkpoint-disabled control and smaller
+scales investigate the discrepancy without selecting a production change.
+The smaller scales and control are diagnostic only. See
+[the diagnostic protocol](brd4_boltz_random_gradient_diagnostic.md).
+
+## Verified compact evidence
+
+Actual submission records:
+`results/hpc/20261019-brd4-boltz-affinity/independent-02/gpu-submissions.json`.
+The 30-file CPU/adoption/submission bundle passed safe extraction, every-file
+length/hash and XML checks using local stdlib at
+`results/hpc/20261019-brd4-boltz-affinity/independent-02/proofs-01/verification.json`.
+Archive 126,516 bytes, SHA
+`414dfa385545b8f7e3dc751fbbd4bd964f3e7926ad6feb48f23fafa9de164546`;
+manifest SHA
+`8e645c895fb51178ff96e25a732dbe077b52281bff91e4f4528644612f00462b`.
+This authenticates engineering/adoption/submission evidence, not a completed
+long run or a resolved random derivative failure. Chronological failed and
+intermediate receipts remain in the experiment ledger.
+
+At 20:42:41 Europe/Paris, mix 29759212 remained RUN and its repeated initial
+source02 raw native finite-difference report passed. This is a per-run native
+gate result, not completed updates or terminal validation. The latest observed
+diagnostic state remains its 20:41:42 GPU-resource PEND.
+
+The automation API confirmed the existing heartbeat
+`finish-combined-brd4-trajectory-report` ACTIVE, with no duplicate. It follows
+the unchanged mix run and separate random investigation, stays quiet on
+unchanged state or outages, permits only a concrete bug fix with authenticated
+allocated retesting and all original gates, and pauses on a genuine unresolved
+curvature blocker. No tolerance or production protocol change is authorized.
+
+At **20:44:01 Europe/Paris**, job29759212 retained **41 applied updates and
+42 saved states** (latest state41), with case status `running` and its native
+entry-gradient report passed. This is authenticated partial progress, not a
+completed10,000-update result. Diagnostic29759213 remained GPU-PEND.
