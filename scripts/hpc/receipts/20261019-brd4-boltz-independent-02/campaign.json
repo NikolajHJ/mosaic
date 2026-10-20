@@ -10,7 +10,7 @@
   "scope": "Fix tools-only packaging omission: include unchanged CPU verifier used by fixture tests; mix50 adoption and random diagnostic, science02 unchanged",
   "parent_tools_failure": "EXIT:13fixturesetup failures missingCPUverifier;6diagnosticcontracts passed;adoption not reached",
   "parent_tools_job": "29759210",
-  "status": "tools CPU passed; actual mix50 long and random diagnostic submitted",
+  "status": "mix50 completed/passed; random diagnostic queued and random long arm uncertified",
   "cpu_job": "29759211",
   "cpu_status": "DONE/passed19",
   "cpu_counts": {
@@ -72,13 +72,21 @@
       "tools_cpu_assessment_sha256": "bc76e33927104e88a9e019b706d0ed4c6e1fc8f3bd4460264acad13ca7594448",
       "initial_actual_scheduler_status": "PEND",
       "initial_status_at": "2026-10-19T20:40:18+02:00",
-      "latest_actual_scheduler_status": "RUN",
+      "latest_actual_scheduler_status": "DONE",
       "started_at": "2026-10-19T20:41:13+02:00",
-      "latest_authenticated_at": "2026-10-20T00:35:04+02:00",
+      "latest_authenticated_at": "2026-10-20T08:59:37+02:00",
       "repeated_native_entry_gradient_status": "passed; not a completed long-run certificate",
-      "saved_partial_updates": 3970,
-      "scientific_run_status": "running; terminal gates not reached",
-      "latest_eta": {
+      "scientific_run_status": "passed; terminal gates and frozen identities passed",
+      "previous_saved_state_observation": {
+        "checked_at": "2026-10-19T20:44:01+02:00",
+        "states": 42,
+        "state_step": 41
+      },
+      "last_partial_progress": {
+        "applied_updates": 3970,
+        "checked_at": "2026-10-20T00:35:04+02:00"
+      },
+      "last_operational_eta": {
         "checked_at": "2026-10-20T00:35:04+02:00",
         "mix_job": "29759212",
         "mix_status": "RUN",
@@ -93,11 +101,11 @@
         "random_diagnostic_status": "PEND",
         "random_pending_reason": "physical-GPU reservation unavailable at two hosts; no inter-arm dependency"
       },
-      "previous_saved_state_observation": {
-        "checked_at": "2026-10-19T20:44:01+02:00",
-        "states": 42,
-        "state_step": 41
-      }
+      "finished_at": "2026-10-20T08:35:34+02:00",
+      "completed_updates": 10000,
+      "saved_state_records": 10001,
+      "completion_receipt": "scripts/hpc/receipts/20261020-brd4-boltz-mix50-completion-02/completion.json",
+      "summary_sha256": "7f49087f12efc762a46691581f80bc42c43395c00b0cc4778a9e04a6679aae7c"
     },
     {
       "kind": "random-diagnostic",
@@ -140,8 +148,8 @@
       "initial_actual_scheduler_status": "PEND",
       "initial_status_at": "2026-10-19T20:40:18+02:00",
       "latest_actual_scheduler_status": "PEND",
-      "latest_authenticated_at": "2026-10-20T00:35:04+02:00",
-      "pending_reason": "physical-GPU reservation unavailable at two hosts; no inter-arm dependency"
+      "latest_authenticated_at": "2026-10-20T08:59:37+02:00",
+      "pending_reason": "physical GPU reservation unavailable at one host; no dependency"
     }
   ],
   "local_proof_verification": {
@@ -159,7 +167,7 @@
     "automation_id": "finish-combined-brd4-trajectory-report",
     "status": "ACTIVE",
     "actual_api_status_confirmed": true,
-    "scope": "mix50 unchanged; random diagnostic and concrete bug fix only under original gates; no passing-scale selection",
+    "scope": "completed mix50 preserved; remaining random diagnostic and concrete bug fixes under original gates",
     "duplicate_created": false
   }
 }

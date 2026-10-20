@@ -1,0 +1,78 @@
+{
+  "archive_path": "/zhome/95/e/206121/mosaic-runs/20261020-brd4-boltz-mix50-completion-02.tar.gz",
+  "archive_bytes": 21533349,
+  "archive_sha256": "0b79afbf9f1ecc788d9111b58cb1677bb6a75cb9adc3cf891ec81542c2cd8764",
+  "manifest_sha256": "4d1d19a8a30a9cc485d5f94e84f49b1d1cfe7dd979e924d3ea3cc385857559aa",
+  "files": 21,
+  "completion": {
+    "status": "passed",
+    "job_id": "29759212",
+    "scheduler_status": "DONE",
+    "persisted_status": "passed",
+    "updates": 10000,
+    "states": 10001,
+    "counts": {
+      "applied": 10000,
+      "forced_fallback": 0,
+      "no_op": 0,
+      "strict_improving": 10000
+    },
+    "final_repair_weight": 50.0,
+    "summary_sha256": "7f49087f12efc762a46691581f80bc42c43395c00b0cc4778a9e04a6679aae7c",
+    "case_report_sha256": "13ca896450a8be2e298858226e9f11dac2be9e15f0d1cc092d6e4edf3707dad2",
+    "source_manifest_sha256": "5eb6e17ea8d19e52c99a589243228710994dcf137f59a6b9a6659a4fe719a7f4",
+    "config_sha256": "97faf3b192a7aca566ad86752c2f3efacad69e89b076c88e67e8d14b5435de0e",
+    "model_digest": "395876da13ab6d5d175e6603db2118a82954c7c06484842fe2314dbd77a31a16",
+    "context_digest": "495002ffa2a52cc85b58ef34424622763dfc4ca556139a98297e8789ae287aa5",
+    "selected_snapshot_steps": [
+      0,
+      5000,
+      10000
+    ],
+    "scope": "completion-record/schema/source identity verification and selected snapshot bytes; not every snapshot byte or a new numerical/model evaluation",
+    "packaging_predecessor": "completion01 helper stopped on missing hashlib.file_digest in systemPython; no scientific artifact changed"
+  },
+  "finished_at": "2026-10-20T08:35:34+02:00",
+  "started_at": "2026-10-19T20:41:13+02:00",
+  "run_seconds": 42861,
+  "actual_lsf_outcome": "Successfully completed.",
+  "local_verification": {
+    "status": "passed",
+    "scope": "stdlib byte/schema verification of compact completion records and selected snapshots only; not every snapshot or local scientific evaluation",
+    "files": 21,
+    "archive_bytes": 21533349,
+    "archive_sha256": "0b79afbf9f1ecc788d9111b58cb1677bb6a75cb9adc3cf891ec81542c2cd8764",
+    "manifest_sha256": "4d1d19a8a30a9cc485d5f94e84f49b1d1cfe7dd979e924d3ea3cc385857559aa",
+    "updates": 10000,
+    "states": 10001,
+    "job_id": "29759212",
+    "summary_sha256": "7f49087f12efc762a46691581f80bc42c43395c00b0cc4778a9e04a6679aae7c",
+    "counts": {
+      "applied": 10000,
+      "forced_fallback": 0,
+      "no_op": 0,
+      "strict_improving": 10000
+    },
+    "selected_snapshot_steps": [
+      0,
+      5000,
+      10000
+    ]
+  },
+  "local_directory": "results/hpc/20261019-brd4-boltz-affinity/mix50-completion-02",
+  "local_verification_file": "results/hpc/20261019-brd4-boltz-affinity/mix50-completion-02/verification.json",
+  "random_diagnostic": {
+    "job_id": "29759213",
+    "actual_status": "PEND",
+    "authenticated_at": "2026-10-20T08:59:37+02:00",
+    "reason": "physical GPU reservation unavailable at one host; no run dependency"
+  },
+  "quiet_followup": {
+    "id": "finish-combined-brd4-trajectory-report",
+    "actual_api_status": "ACTIVE",
+    "scope": "remaining random diagnostic and only concrete bug fixes under original gates; preserve completed mix"
+  },
+  "completion_audit_script": "scripts/hpc/receipts/20261020-brd4-boltz-mix50-completion-02/evidence_audit.py",
+  "completion_audit_script_sha256": "794113e4b96273f9dd193ec8330f0e5ec654143d6a1f93a0f9258d27b182ddc9",
+  "audit_script_scope": "archival exact executed stdlib metadata/byte helper, not scientific source02 or a new model validation"
+}

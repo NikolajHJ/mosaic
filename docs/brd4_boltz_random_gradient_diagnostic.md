@@ -1,11 +1,19 @@
 # BRD4 Boltz random-initialization gradient diagnostic
 
-19 October 2026. User authorized investigating random gradients separately
-while starting the independently passed 50% mix. As of 00:35 on 20 October 2026, Europe/Paris,
-**diagnostic 29759213 PEND/gpul40s** waits for a physical GPU. It was submitted
-at 20:40:18 with no dependency on mix50 long run 29759212, which started at
-20:41:13. The random derivative failure remains unresolved; no long random
-optimization is submitted and no production setting has changed.
+The user authorized investigating random gradients separately while starting
+the independently passed 50% mix. At **08:59:37 Europe/Paris on 20 October
+2026**, successful SSH confirmed **diagnostic 29759213 PEND/gpul40s**, waiting
+for a physical GPU on one host. It has not started; its numerical outcome
+remains unavailable. Random's derivative failure remains unresolved, with no
+long random optimization submitted or production-setting change selected.
+
+Independent mix50 run 29759212 is now scheduler DONE with actual LSF successful
+completion at 08:35:34. Completion metadata authenticates 10,000 contiguous
+updates and 10,001 contiguous saved states, matching JSONL/case/summary,
+six slots, passed initial/coupled/terminal gates and frozen identities.
+The 21-file compact evidence bundle, including snapshots 0/5000/10000, is
+locally verified; all snapshot bytes and a full rendered report are outside
+that compact verification scope. This does not certify random.
 
 ## Preserved native failure
 

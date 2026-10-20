@@ -260,8 +260,10 @@
     "scope": "Supersedes original paired-only eligibility; native parent failure remains historical",
     "campaign": "scripts/hpc/receipts/20261019-brd4-boltz-independent-02/campaign.json",
     "mix50_long_job": "29759212",
-    "mix50_status": "RUN from20:41:13Paris",
+    "mix50_status": "DONE/passed; ended20October08:35:34Paris",
     "random_diagnostic_job": "29759213",
-    "random_long_arm": "not submitted; original nativeFDfailure unresolved"
+    "random_long_arm": "not submitted; original nativeFDfailure unresolved",
+    "mix50_completion_receipt": "scripts/hpc/receipts/20261020-brd4-boltz-mix50-completion-02/completion.json",
+    "random_status": "diagnostic29759213 PEND at08:59:37; no long random arm"
   }
 }

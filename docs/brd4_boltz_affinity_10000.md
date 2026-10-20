@@ -5,25 +5,24 @@ only after passing, two independent fresh 10,000-update runs: 50% chain/uniform
 and seeded random probability initialization. Implementation is being validated;
 submission or scheduler success alone does not certify numerical readiness.
 
-**Current status, 20 October 2026, 00:35 Europe/Paris:** user-authorized
-arm-specific adoption passed. Tools02 CPU **29759211 DONE/passed 19** and
-147 original mix50 proofs rehashed; source02 CPU **29759068 passed 299**
-remains valid. **Mix50 long run 29759212 RUN**, with **3,970/10,000 applied updates**;
-started at **20:41:13 on 19 October**.
-Independent **random diagnostic 29759213 PEND** waits for a physical GPU,
-with no dependency. Both were actually submitted at 20:40:18 in gpul40s.
-The mix50 run retains unchanged source02 science and 10,000 updates; the
-diagnostic is not a random optimization run. They have no dependencies on
-each other. Random remains failed/uncertified, with no long random run
-submitted and no changed tolerance or production setting selected.
-Parent **29759069 EXIT1** and retired controller **29759070 EXIT** remain
-historical failures/retirements; the parent is never relabelled passed.
-Latest sealed scientific campaign receipt:
+**Current status, 20 October 2026, 08:59 Europe/Paris:** SSH authentication
+succeeded at 08:59:37. **Mix50 run 29759212 DONE**, with actual LSF successful
+completion from 19 October 20:41:13 to 20 October 08:35:34 (42,861 seconds).
+Completion metadata is now authenticated: **10,000 contiguous updates
+0..9999 and 10,001 contiguous saved states 0..10000**, with matching update
+JSONL, case report and summary case records. Initial/coupled/terminal checks
+passed, final chemistry weight is 50 and original frozen model/context
+digests are retained. Local compact evidence verification passed 21 files,
+including snapshot bytes at 0/5000/10000. This does not verify all 10,001
+snapshot files or a full rendered report.
+
+**Random diagnostic 29759213 PEND**, waiting for a physical GPU on one host;
+it has not started. Random remains failed/uncertified, with no long random
+optimization submitted or tolerance/production-setting change selected.
+Tools02 CPU 29759211's 19-test pass, source02 CPU 29759068's 299-test pass and
+the adopted mix50 proof remain valid. Parent 29759069 stays EXIT1. Historical
+records below remain preserved; latest sealed scientific campaign receipt:
 `scripts/hpc/receipts/20261019-brd4-boltz-affinity-02/campaign.json`.
-All 171 parent failure-evidence files are locally verified. The earlier
-follow-up pause is historical; actual run/diagnostic outcomes remain pending.
-Historical
-records and their previous combined-submission policy remain preserved below.
 
 ## Scope and pivotal choices
 
@@ -542,3 +541,38 @@ At **20:44:01 Europe/Paris**, job29759212 retained **41 applied updates and
 42 saved states** (latest state41), with case status `running` and its native
 entry-gradient report passed. This is authenticated partial progress, not a
 completed10,000-update result. Diagnostic29759213 remained GPU-PEND.
+
+## Mix50 completion metadata and compact local evidence, 20 October 2026
+
+Mix50 29759212's completion records authenticate exactly 10,000 contiguous
+updates 0..9999 and 10,001 contiguous states 0..10000. Update JSONL, case report
+and summary case records agree; all graph records retain six slots. Source02
+file map and manifest match the sealed release exactly. Configuration SHA
+`97faf3b192a7aca566ad86752c2f3efacad69e89b076c88e67e8d14b5435de0e`;
+summary SHA
+`7f49087f12efc762a46691581f80bc42c43395c00b0cc4778a9e04a6679aae7c`.
+Initial native, coupled chemistry and terminal checks passed; frozen model/
+context identities retained their original digests; final coefficient 50.
+All 10,000 applied updates are recorded as strict improving, with zero fallback
+or no-op. These comparisons use each state's fixed surrogate; changing
+repair references/coefficients do not make the entire run one globally
+comparable objective.
+
+Local compact bundle verification passed **21 files**, including only
+selected snapshots 0/5000/10000, at
+`results/hpc/20261019-brd4-boltz-affinity/mix50-completion-02/verification.json`.
+`scripts/verify_hpc_evidence.py` plus exact every-file byte/path/manifest and
+schema checks passed. This authenticates completion metadata and the selected
+snapshot bytes; it does **not** authenticate every one of the 10,001 snapshot
+files or a full rendered report. No model or numerical test was rerun.
+
+Remote archive
+`/zhome/95/e/206121/mosaic-runs/20261020-brd4-boltz-mix50-completion-02.tar.gz`,
+21,533,349 bytes, SHA
+`0b79afbf9f1ecc788d9111b58cb1677bb6a75cb9adc3cf891ec81542c2cd8764`;
+manifest SHA
+`4d1d19a8a30a9cc485d5f94e84f49b1d1cfe7dd979e924d3ea3cc385857559aa`.
+The first completion01 packaging helper failed because system Python lacked
+`hashlib.file_digest`. Its folder remains preserved, no scientific artifact
+changed, and unique completion02 used standard streaming SHA instead.
+The latest random diagnostic observation remains 08:59:37 PEND, unstarted.

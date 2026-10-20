@@ -3041,7 +3041,7 @@ authentication confirms summary/case passed and identical case fields,
 10001 contiguous saved states and10000 contiguous applied updates,
 10000 strict-improving, zero fallback/no-op. All native contact/low/high-
 coefficient derivative/pilot gates passed; model/context before/after match
-the campaign pins. Final repair coefficient50.0. Summary SHA
+the campaign pins. Final repair coefficient 50.0. Summary SHA
 `0236e16f8da2aa333bf469ec5cf07b2fbe962b3a5e4d09a631d90ae60e0dfca8`;
 case report SHA `db39013cd0e1667eec8e9894c4ac89e388ad35d8d6eb5dfda46e2d1e2c7f372d`.
 Config/reference SHAs match the passed readiness. Terminal metadata receipt:
@@ -3725,3 +3725,57 @@ including a small allowance for terminal checks. This remains an estimate:
 chemistry-ramp/trial/search behavior may change after5000. No completed
 trajectory or terminal pass is inferred. Local operational timing receipt:
 `results/hpc/20261019-brd4-boltz-affinity/independent-02/followups/20261020T0035-status-eta.json`.
+
+### 20 October 2026, 08:59 Europe/Paris — mix scheduler completion; diagnostic still queued
+
+One successful SSH status check at 08:59:37 authenticated mix 29759212 DONE
+and actual LSF Successfully completed. Started 19 October 20:41:13, ended
+20 October 08:35:34, elapsed 42,861 seconds. Persisted summary/case status passed,
+10,000 updates indexed 0..9999, final chemistry coefficient 50, terminal raw
+atom and typed-bond finite differences passed all three scales, and original
+frozen model/context digests retained. The 10,001 contiguous saved states
+and compact downloaded proof bundle are still being authenticated; no local
+verification pass is claimed at this stage.
+
+Random diagnostic 29759213 remains PEND for physical-GPU reservation on one
+host and has not started. Its numerical failure remains unresolved; no long
+random optimization submitted or settings/gates changed. Historical source02
+CPU 299 and external tooling CPU 19 passes remain valid. Preserve all earlier
+failed evidence and distinguish this actual remote completion from pending
+saved-state/local proof verification.
+
+### 20 October 2026 — mix50 completion metadata and compact evidence authenticated
+
+Mix 29759212 completed exactly 10,000 contiguous updates 0..9999 and 10,001
+contiguous saved states 0..10000; update JSONL, case report and summary case
+records agree, N=6. Source02 file map/manifest match the sealed release.
+Configuration SHA
+`97faf3b192a7aca566ad86752c2f3efacad69e89b076c88e67e8d14b5435de0e`;
+summary SHA
+`7f49087f12efc762a46691581f80bc42c43395c00b0cc4778a9e04a6679aae7c`.
+Initial/coupled/terminal checks passed; original frozen model/context digests
+retained; final chemistry coefficient 50. All 10,000 applied updates recorded
+strict improving, zero fallback/no-op, evaluated within each state's fixed
+surrogate. Changing repair targets/coefficients preclude treating total loss
+as one globally fixed objective.
+
+Compact 21-file evidence downloaded and locally verified using
+scripts/verify_hpc_evidence.py, safe extraction, every-byte/path/manifest and
+schema checks. Includes snapshot bytes only at 0/5000/10000. Proof
+`results/hpc/20261019-brd4-boltz-affinity/mix50-completion-02/verification.json`.
+This verifies completion metadata and selected snapshot bytes, not all 10,001
+snapshot files or a full rendered report. Remote
+`/zhome/95/e/206121/mosaic-runs/20261020-brd4-boltz-mix50-completion-02.tar.gz`,
+21,533,349 bytes SHA
+`0b79afbf9f1ecc788d9111b58cb1677bb6a75cb9adc3cf891ec81542c2cd8764`,
+manifest SHA
+`4d1d19a8a30a9cc485d5f94e84f49b1d1cfe7dd979e924d3ea3cc385857559aa`.
+First completion01 packaging helper failed on unavailable hashlib.file_digest
+in system Python; preserved its folder and all scientific artifacts unchanged.
+Unique02 helper used standard streaming SHA. No experiment/model/tests rerun.
+Latest random diagnostic remains 08:59:37 PEND, unstarted and uncertified.
+
+Existing quiet heartbeat was updated through the automation API and remains
+ACTIVE for the pending random diagnostic/investigation only; completed mix50
+is preserved. The exact successful stdlib completion-audit helper is archived
+with its hash in `scripts/hpc/receipts/20261020-brd4-boltz-mix50-completion-02/`.
