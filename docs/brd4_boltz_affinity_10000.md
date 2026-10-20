@@ -576,3 +576,40 @@ The first completion01 packaging helper failed because system Python lacked
 `hashlib.file_digest`. Its folder remains preserved, no scientific artifact
 changed, and unique completion02 used standard streaming SHA instead.
 The latest random diagnostic observation remains 08:59:37 PEND, unstarted.
+
+## New standalone report requested, 20 October 2026
+
+The user requested a new interactive report for completed Boltz mix50
+29759212. Preparing a separate saved-only report family containing its
+10,000 updates/10,001 states, with affinity as the primary metric and binder
+probability separate. Shared-viewer contact defaults remain compatible with
+earlier reports. Preserve all old reports/servers, saved invalid graphs and
+exact probabilities; do not add Protenix overlays or a fabricated random
+selector. The saved final raw graph's chlorine valence 2/null canonical SMILES
+must remain visible. Allocated CPU tests/full-input authentication/rendering
+and verified download/browser QA precede delivery. Report tools01 is now
+authenticated, and CPU report 29760530 DONE at 09:16:29 Europe/Paris after
+119 seconds; scheduler/LSF success authenticated. All 35 tests passed and the
+actual renderer authenticated all 10,001 snapshots/147 readiness proofs,
+then produced the complete affinity-primary report for input 29759212 only.
+The 451-file download passed safe extraction/every-file verification and is
+published at **http://127.0.0.1:8774/report.html**, with actual HTTP 200/exact
+length/SHA verified. Full browser QA passed endpoints, raw invalid final
+graph, readable labels/probability sizes, heatmaps, playback and ramp.
+Output is
+`/zhome/95/e/206121/mosaic-runs/20261020-brd4-boltz-mix50-report-01/payload/`.
+See [the report plan](brd4_boltz_affinity_report.md) for scope and gates.
+
+Local report edition:
+`results/hpc/20261020-brd4-boltz-affinity-report/edition-01/`; all 451 archive
+files passed scripts/verify_hpc_evidence.py plus stdlib checks, manifest SHA
+`b32f255b2937f3244d7fe1337fcfee63206e145e4e02fadf1e0e6479712accce`.
+The new family's viewer was published HTML last and served by detached 8774,
+preserving old reports/servers. Full browser QA passed: one correct selector,
+state 0 `CCCCCC`, state 5000 coefficient 0.0010021663/previous applied 0.001,
+state 10000 coefficient 50/raw chlorine-valence-2 invalid/null SMILES, six-row/
+15-pair heatmaps and working playback/pause. Report left paused at 10000 and
+marked deliverable; no other experiment changed.
+
+Browser review also confirmed readable affinity, separate binder-probability
+and raw/weighted repair overlay plots.

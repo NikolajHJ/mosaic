@@ -1,0 +1,216 @@
+{
+  "tag": "20261020-brd4-boltz-report-01",
+  "source": "/work3/s234818/mosaic/releases/20261020-brd4-boltz-report-01/source",
+  "source_files": 12,
+  "source_manifest_sha256": "7cb5b82c04634f3b3b276943d8d7988bc29b698df2e315bf12ea7915ec82bf65",
+  "archive_bytes": 34412,
+  "archive_sha256": "f9b2bca789af2a455863c66b37bfbf1761dea94cf90ee3aeea647dddf35a2537",
+  "local_archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\releases\\20261020-brd4-boltz-report-01\\source.tar.gz",
+  "scope": "standalone saved-only completed Boltz mix50 trajectory report; no molecular/model/repair execution",
+  "scientific_source": "/work3/s234818/mosaic/releases/20261019-brd4-boltz-affinity-02/source",
+  "scientific_manifest_sha256": "5eb6e17ea8d19e52c99a589243228710994dcf137f59a6b9a6659a4fe719a7f4",
+  "native_job_id": "29759212",
+  "native_summary_sha256": "7f49087f12efc762a46691581f80bc42c43395c00b0cc4778a9e04a6679aae7c",
+  "status": "DONE/passed; full evidence verified; report published and browser QA passed",
+  "static_review": "two independent owners reviewed API, fixtures and compatibility; no local tests or rendering",
+  "submission": {
+    "job_id": "29760530",
+    "run": "/zhome/95/e/206121/mosaic-runs/20261020-brd4-boltz-mix50-report-01",
+    "submitted_at": "2026-10-20T09:14:27+02:00",
+    "resources": {
+      "queue": "hpc",
+      "slots": 2,
+      "memory_gib_per_slot": 4,
+      "wall_minutes": 60,
+      "gpus": 0
+    },
+    "args": [
+      "bsub",
+      "-q",
+      "hpc",
+      "-n",
+      "2",
+      "-R",
+      "span[hosts=1]",
+      "-R",
+      "rusage[mem=4GB]",
+      "-W",
+      "60",
+      "-J",
+      "mosaic-boltz-mix50-report",
+      "-o",
+      "/zhome/95/e/206121/mosaic-runs/20261020-brd4-boltz-mix50-report-01/stdout.%J.log",
+      "-e",
+      "/zhome/95/e/206121/mosaic-runs/20261020-brd4-boltz-mix50-report-01/stderr.%J.log",
+      "bash",
+      "-l",
+      "/work3/s234818/mosaic/releases/20261020-brd4-boltz-report-01/source/scripts/hpc/brd4_boltz_report.lsf",
+      "/work3/s234818/mosaic/releases/20261020-brd4-boltz-report-01/source",
+      "/zhome/95/e/206121/mosaic-runs/20261020-brd4-boltz-mix50-report-01",
+      "7cb5b82c04634f3b3b276943d8d7988bc29b698df2e315bf12ea7915ec82bf65"
+    ],
+    "scheduler_at_submission": "\nJob <29760530>, Job Name <mosaic-boltz-mix50-report>, User <s234818>, Project <\n                          default>, Service Class <sc_hpc1>, Status <PEND>, Que\n                          ue <hpc>, Command <bash -l /work3/s234818/mosaic/rele\n                          ases/20261020-brd4-boltz-report-01/source/scripts/hpc\n                          /brd4_boltz_report.lsf /work3/s234818/mosaic/releases\n                          /20261020-brd4-boltz-report-01/source /zhome/95/e/206\n                          121/mosaic-runs/20261020-brd4-boltz-mix50-report-01 7\n                          cb5b82c04634f3b3b276943d8d7988bc29b698df2e315bf12ea79\n                          15ec82bf65>, Esub <dcc>\nTue Oct 20 09:14:27 2026: Submitted from host <hpclogin1>, CWD <$HOME>, Output \n                          File </zhome/95/e/206121/mosaic-runs/20261020-brd4-bo\n                          ltz-mix50-report-01/stdout.29760530.log>, Error File \n                          </zhome/95/e/206121/mosaic-runs/20261020-brd4-boltz-m\n                          ix50-report-01/stderr.29760530.log>, 2 Task(s), Reque\n                          sted Resources <{select[shortparallel_] rusage[mem=40\n                          96.00] span[hosts=1]} || {select[!shortparallel_] rus\n                          age[mem=4096.00] span[hosts=1]}>;\n PENDING REASONS:\n New job is waiting for scheduling;\n\n RUNLIMIT                \n 60.0 min\n\n MEMLIMIT\n      4 G \n\n PENDING TIME DETAILS:\n Eligible pending time (seconds):\t0\n Ineligible pending time (seconds):\t0\n\n SCHEDULING PARAMETERS:\n           r15s   r1m  r15m   ut      pg    io   ls    it    tmp    swp    mem\n loadSched   -     -     -     -       -     -    -     -     -      -      -  \n loadStop    -     -     -     -       -     -    -     -     -      -      -  \n\n RESOURCE REQUIREMENT DETAILS:\n Job-level: {select[shortparallel_] rusage[mem=4096.00] span[hosts=1]} || {sele\n                          ct[!shortparallel_] rusage[mem=4096.00] span[hosts=1]\n                          }\n App-level: -\n Queue-level: same[type:model] affinity[core] cu[type=enclosure:maxcus=1]\n Combined: {select[(shortparallel_) && (type == any)] order[-slots:-maxslots] r\n                          usage[mem=4096.00] span[hosts=1] cu[pref=config:maxcu\n                          s=1:type=enclosure] affinity[core(1)*1]} || {select[(\n                          !shortparallel_) && (type == any)] order[-slots:-maxs\n                          lots] rusage[mem=4096.00] span[hosts=1] cu[pref=confi\n                          g:maxcus=1:type=enclosure] affinity[core(1)*1]}\n Effective: -\n\n",
+    "authenticated_source_files": 12
+  },
+  "outcome": {
+    "job_id": "29760530",
+    "scheduler_status": "DONE",
+    "lsf_success": true,
+    "started_at": "2026-10-20T09:14:30+02:00",
+    "finished_at": "2026-10-20T09:16:29+02:00",
+    "elapsed_seconds": 119,
+    "node": "n-62-30-23",
+    "tests": {
+      "passed": 35,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0
+    },
+    "assessment_sha256": "ff68b20b5264f89e5a9c79fec921c11830cce3104c225cfcdb04c4cf030fb1a1",
+    "archive_receipt": {
+      "path": "/zhome/95/e/206121/mosaic-runs/20261020-brd4-boltz-mix50-report-01.tar.gz",
+      "bytes": 24432529,
+      "sha256": "7bb0849eff0daeaa2296f50b1c7516e751404c1cd5825f3d57ad54f3ed266a48",
+      "files": 451
+    },
+    "verification": {
+      "status": "passed",
+      "scope": "stdlib path/length/hash/XML/schema verification only; scientific rendering/snapshot validation ran in allocated CPU29760530",
+      "archive_path": "/zhome/95/e/206121/mosaic-runs/20261020-brd4-boltz-mix50-report-01.tar.gz",
+      "archive_bytes": 24432529,
+      "archive_sha256": "7bb0849eff0daeaa2296f50b1c7516e751404c1cd5825f3d57ad54f3ed266a48",
+      "manifest_sha256": "b32f255b2937f3244d7fe1337fcfee63206e145e4e02fadf1e0e6479712accce",
+      "verified_files": 451,
+      "tests": 35,
+      "input_jobs": [
+        "29759212"
+      ],
+      "states": [
+        10001
+      ],
+      "primary_metric": "affinity",
+      "final_invalid_graph_retained": true,
+      "report_sha256": "57759bd10fb79a5e142f2757c8d8df86c3dc7522c2f39408d9ed241f89a03974",
+      "report_bytes": 40089420,
+      "report_directory": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261020-brd4-boltz-affinity-report\\edition-01\\20261020-brd4-boltz-mix50-report-01\\20261020-brd4-boltz-mix50-report-01\\payload\\report"
+    },
+    "scheduler_proof_local": "results/hpc/20261020-brd4-boltz-affinity-report/edition-01/scheduler-and-remote-receipts.json",
+    "scheduler_proof_sha256": "f2a84c0422681132feaa73faa81eb5bbb3693911266800bd76d7c10e9a6a3cac",
+    "report_receipt": {
+      "version": "mosaic-boltz-affinity-report-receipt-v1",
+      "render_job_id": "29760530",
+      "complete": true,
+      "primary_metric": "affinity",
+      "input_jobs": [
+        "29759212"
+      ],
+      "states": [
+        10001
+      ],
+      "inputs": [
+        {
+          "job_id": "29759212",
+          "summary_sha256": "7f49087f12efc762a46691581f80bc42c43395c00b0cc4778a9e04a6679aae7c",
+          "config_sha256": "97faf3b192a7aca566ad86752c2f3efacad69e89b076c88e67e8d14b5435de0e",
+          "initialization": {
+            "kind": "chain_uniform",
+            "mixing": 0.5
+          },
+          "initialization_sha256": "30a9f9ff680642ea07b9063df3adfe92421ea5a9faaf4ffede312bcc32eee075",
+          "schedule": {
+            "initial": 0.001,
+            "final": 50.0,
+            "hold_updates": 5000,
+            "total_updates": 10000,
+            "version": "delayed-geometric-v1"
+          },
+          "model_digest": "395876da13ab6d5d175e6603db2118a82954c7c06484842fe2314dbd77a31a16",
+          "context_digest": "495002ffa2a52cc85b58ef34424622763dfc4ca556139a98297e8789ae287aa5",
+          "context_sha256": "254d5b7f11605fb41db6f5abf7015f9cc856a19dfe1d4b506ccaea9007200770",
+          "reference_sha256": "37b34a2ba7be47886936df48faaabdeac20481e5a9cebca9bafab831c07868eb",
+          "source_execution_sha256": "0ee4f1ca668b3255cb103fa92e8c95632e649b3910ebb625f3d94332c9834f77",
+          "native_identity": {
+            "checkpoint_sha256": "dcc5cd3722b1c9eaa34267e4ae32f55cbbf1963f4c19319381ccfa30fdd2ca9e",
+            "context_digest": "495002ffa2a52cc85b58ef34424622763dfc4ca556139a98297e8789ae287aa5",
+            "context_file_sha256": "254d5b7f11605fb41db6f5abf7015f9cc856a19dfe1d4b506ccaea9007200770",
+            "model_digest": "395876da13ab6d5d175e6603db2118a82954c7c06484842fe2314dbd77a31a16",
+            "optimized_output": "affinity_pred_value",
+            "pose_policy": "fixed native predicted pose; no diffusion gradients",
+            "protocol": "mosaic-boltz-affinity-v1",
+            "recycling_steps": 0,
+            "source": "b1ebfc46ecf57f5414e0d1a6f9027bbb122c53bc",
+            "status": "ready"
+          },
+          "readiness": {
+            "path": "/zhome/95/e/206121/mosaic-runs/20261019-brd4-boltz-independent-02-cpu/payload/mix50-ready/assessment.json",
+            "sha256": "ca400a1477471790bcc5c93cd85a55455da77b331caa504f882b2020d954140e",
+            "source_manifest_sha256": "5eb6e17ea8d19e52c99a589243228710994dcf137f59a6b9a6659a4fe719a7f4",
+            "version": "mosaic-boltz-passed-arm-adoption-v1",
+            "certified_arms": [
+              "mix50"
+            ],
+            "scope": "selected passed mix50 evidence only; parent/global readiness remains failed; random is not certified",
+            "proof_count": 147
+          },
+          "counts": {
+            "applied": 10000,
+            "forced_fallback": 0,
+            "no_op": 0,
+            "strict_improving": 10000
+          }
+        }
+      ],
+      "files": {
+        "loss_components.png": {
+          "bytes": 317075,
+          "sha256": "a9c8a8842dd39a48a4abfc6844b5797d7422b2d305e4532cad86485f80fac26a"
+        },
+        "loss_components.svg": {
+          "bytes": 1310809,
+          "sha256": "eb9606006434fcbe6efac9f77a313ab66bc04cc6725374bc76556d34b7a3af58"
+        },
+        "report.html": {
+          "bytes": 40089420,
+          "sha256": "57759bd10fb79a5e142f2757c8d8df86c3dc7522c2f39408d9ed241f89a03974"
+        }
+      }
+    },
+    "publication": {
+      "family": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261020-brd4-boltz-affinity-report",
+      "download_directory": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261020-brd4-boltz-affinity-report\\edition-01",
+      "viewer_directory": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261020-brd4-boltz-affinity-report\\viewer",
+      "chosen_loopback_port": 8774,
+      "native_job": "29759212",
+      "report_job": "29760530",
+      "status": "verified report delivered locally; browser QA passed",
+      "url": "http://127.0.0.1:8774/report.html",
+      "actual_loopback_port": 8774,
+      "http_status": 200,
+      "http_bytes": 40089420,
+      "http_sha256": "57759bd10fb79a5e142f2757c8d8df86c3dc7522c2f39408d9ed241f89a03974",
+      "browser_qa": {
+        "status": "passed",
+        "browser": "in-app browser",
+        "tab": "7",
+        "one_mix50_selector": true,
+        "initial_state": "0: CCCCCC",
+        "midpoint": "5000: next-update repair weight 0.0010021662986986993; previous applied weight 0.001",
+        "endpoint": "10000: weight50; raw Cl-valence2 invalid graph and null SMILES retained",
+        "readable_element_slot_labels": [
+          "Cl1",
+          "C2",
+          "C3",
+          "C4",
+          "C5",
+          "S6"
+        ],
+        "probability_sizes": "visually inspected",
+        "heatmap_atom_rows": 6,
+        "heatmap_unordered_pairs": 15,
+        "playback": "Play advanced state0 to22; Pause worked",
+        "left_at": "paused state10000; tab marked deliverable",
+        "scope": "browser presentation only; no local numerical/model/chemistry/render execution"
+      }
+    }
+  }
+}

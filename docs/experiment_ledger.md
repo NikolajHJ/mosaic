@@ -3779,3 +3779,106 @@ Existing quiet heartbeat was updated through the automation API and remains
 ACTIVE for the pending random diagnostic/investigation only; completed mix50
 is preserved. The exact successful stdlib completion-audit helper is archived
 with its hash in `scripts/hpc/receipts/20261020-brd4-boltz-mix50-completion-02/`.
+
+### 20 October 2026 — new standalone Boltz mix50 report authorized
+
+User requested a new interactive report for completed native 29759212,
+10,000 updates/10,001 states, in a fresh report family. Preparing saved-only
+allocated CPU tests/rendering and full snapshot authentication; no new
+report job submitted or render pass claimed yet. Shared viewer gains an
+affinity primary metric while preserving default contact behavior for old
+callers. Binder probability stays separate. Existing reports/servers and
+native experiments remain unchanged, no Protenix overlay or invented random
+selector. Exact saved probabilities, heatmaps, readable labels/sizes and raw
+invalid final graph (chlorine valence 2, canonical SMILES null) are required.
+Changing repair-target totals are not one fixed objective; fixed native pose
+affinity is a partial-gradient surrogate, not fresh-pose or experimental binding proof.
+See brd4_boltz_affinity_report.md. Source/job/test/artifact/URL identities
+remain pending actual execution and verified browser delivery.
+
+### 20 October 2026, 09:14 Europe/Paris — report tooling authenticated; CPU report submitted
+
+Authenticated all 12 report tools01 files at
+`/work3/s234818/mosaic/releases/20261020-brd4-boltz-report-01/source`,
+manifest SHA
+`7cb5b82c04634f3b3b276943d8d7988bc29b698df2e315bf12ea7915ec82bf65`,
+archive 34,412 bytes SHA
+`f9b2bca789af2a455863c66b37bfbf1761dea94cf90ee3aeea647dddf35a2537`.
+Scientific source02/configuration remains unchanged, 393-file source identity
+required by entry gate. Saved-only tests/rendering remain allocated HPC;
+no inference/chemistry/model execution or native rerun for this report.
+
+Actual report CPU 29760530 submitted 09:14:27 Europe/Paris, hpc/two slots/
+4GiB per slot/60minutes/zero GPU, initial verified PEND. Output
+`/zhome/95/e/206121/mosaic-runs/20261020-brd4-boltz-mix50-report-01/payload/`.
+Expected 35 tests: 26 new fixtures+nine old contact/ramp; actual outcomes/counts,
+render/archive/browser URL pending. Home 14.30/30GiB observed 09:04; 8 GiB
+job reserve gate retained. Submission does not certify tests/render/quota.
+
+### 20 October 2026, 09:15 Europe/Paris — report tests passed; render still running
+
+Actual report 29760530 RUN from 09:14:30. Query 09:15:15 authenticated 35 passed
+in 26.39 seconds: 26 new fixtures+three existing chemistry+six existing ramp
+tests, zero failures/errors/skips. Entry native-proof/source/fresh quota
+gates passed before pytest. Renderer is validating all 10,001 saved snapshots,
+with no report completion receipt or packaging outcome yet. No model
+inference or molecular experiment rerun; all tests/rendering allocated CPU.
+Tools01 twelve-file source/manifest remains unchanged. Preserve distinction
+between passed engineering tests and an uncompleted full report/delivery.
+
+### 20 October 2026, 09:16 Europe/Paris — allocated report DONE; download verification pending
+
+Actual report 29760530 DONE 09:16:29, started 09:14:30, 119 seconds; scheduler DONE
+and LSF Successfully completed authenticated. All 35 tests passed, zero
+failure/error/skip; assessment SHA
+`ff68b20b5264f89e5a9c79fec921c11830cce3104c225cfcdb04c4cf030fb1a1`.
+Actual renderer validated all 10,001 saved snapshots and 147 readiness proof
+hashes. Complete receipt has primary metric affinity, input jobs [29759212]
+and state counts [10001]. Scientific source/config/native artifacts unchanged,
+no inference or model/chemistry experiment rerun.
+
+Remote archive
+`/zhome/95/e/206121/mosaic-runs/20261020-brd4-boltz-mix50-report-01.tar.gz`,
+sibling .tar.receipt.json, 24,432,529 bytes/451 files SHA
+`7bb0849eff0daeaa2296f50b1c7516e751404c1cd5825f3d57ad54f3ed266a48`.
+HTML 40,089,420 bytes SHA
+`57759bd10fb79a5e142f2757c8d8df86c3dc7522c2f39408d9ed241f89a03974`.
+Download/local archive verification in progress; no verified local report,
+browser pass or working URL claimed yet. Existing reports/servers preserved.
+
+### 20 October 2026 — report download verified and viewer published; browser QA partial
+
+Report 29760530 download completed at
+`results/hpc/20261020-brd4-boltz-affinity-report/edition-01/`.
+scripts/verify_hpc_evidence.py plus stdlib checks passed exact archive path/
+24,432,529-byte length/SHA 7bb0849e...66a48, safe extraction and all 451 files.
+Manifest SHA
+`b32f255b2937f3244d7fe1337fcfee63206e145e4e02fadf1e0e6479712accce`.
+HTML 40,089,420 bytes matches SHA 57759bd1...03974. Published verified artifacts
+HTML last into the fresh family's viewer and started detached loopback 8774.
+Actual HTTP 200/exact served length/SHA passed at
+**http://127.0.0.1:8774/report.html**; old report families/servers preserved.
+
+Opened actual report in the in-app browser. States 0/10000 match; raw final
+invalid chlorine-valence-2 graph remains visible with readable Cl1/C2/C3/C4/
+C5/S6 labels and probability-dependent sizes. Heatmap/playback/coefficient-
+ramp browser checks are underway, so complete browser QA is not yet claimed.
+No local numerical/model/chemistry execution or native rerun.
+
+### 20 October 2026 — full browser QA passed; standalone Boltz report delivered
+
+Actual in-app browser report QA passed: exactly one correct mix50 selector;
+state 0 `CCCCCC`; state 5000 coefficient 0.0010021663 with previous applied 0.001;
+state 10000 weight 50/raw chlorine-valence-2 invalid graph/null canonical SMILES;
+saved heatmaps six atom rows/15 unordered pairs; Play advanced 0 to 22 and Pause
+worked. Cl1/C2/C3/C4/C5/S6 labels and probability-dependent sizes visually
+readable. Report left paused at 10000 and marked deliverable.
+
+Verified standalone report **http://127.0.0.1:8774/report.html** is published
+from the new family, backed by authenticated report 29760530/35 tests and the
+verified 451-file archive/HTML hash recorded above. Existing reports/servers,
+native runs and every other experiment remain unchanged. Full browser QA
+supersedes the earlier partial-QA note; no local numerical/model rerun.
+
+Quantitative affinity, separate binder probability and raw/weighted repair
+overlay plots were also visually checked and readable in the actual browser.
