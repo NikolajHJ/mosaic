@@ -2,7 +2,9 @@
 
 **Current status, 20 October 2026, 17:25 Europe/Paris:** replacement diagnostic
 **29763693 PEND** was actually submitted at **17:25:41**, with resource
-arguments and scheduler state authenticated. Launcher05 is authenticated;
+arguments and scheduler state authenticated. At 17:25:43 it reserved four
+CPU slots on n-62-13-18 but still waited for `ngpus_physical` on one host;
+this is not a GPU start. Launcher05 is authenticated;
 CPU 29763691 DONE/passed 20 in 0.95 seconds (14 proof contracts plus six
 unchanged diagnostic contracts), with all 13 downloaded proof files verified.
 
@@ -18,9 +20,11 @@ Independent mix50 run 29759212 is now scheduler DONE with actual LSF successful
 completion at 08:35:34. Completion metadata authenticates 10,000 contiguous
 updates and 10,001 contiguous saved states, matching JSONL/case/summary,
 six slots, passed initial/coupled/terminal gates and frozen identities.
-The 21-file compact evidence bundle, including snapshots 0/5000/10000, is
-locally verified; all snapshot bytes and a full rendered report are outside
-that compact verification scope. This does not certify random.
+The 21-file compact completion bundle verifies selected snapshots 0/5000/10000,
+not every raw snapshot byte. Separately, the complete saved-only report has
+authenticated 10,001 frames, passed local artifact verification and browser
+QA, and is available at **http://127.0.0.1:8774/report.html**. Neither mix50
+completion nor report verification certifies random.
 
 ## Preserved native failure
 
@@ -248,3 +252,12 @@ Output parent:
 Actual local submission record:
 `results/hpc/20261020-brd4-boltz-diagnostic-launch-05/gpu-submission/submission.json`.
 Submission is not a start, result or pass. No long random run is submitted.
+
+Final compact scheduler check: 29763693 remained PEND, with four CPU slots
+reserved on n-62-13-18 at 17:25:43 and `ngpus_physical` unavailable on one
+host. Valid queue/resource arguments are authenticated, but no GPU start or
+ETA is inferred. Current versioned receipt:
+`scripts/hpc/receipts/20261020-brd4-boltz-diagnostic-launch-05/campaign.json`.
+The automation API updated the existing heartbeat
+`finish-combined-brd4-trajectory-report` to actual ACTIVE, monitoring 29763693
+and that receipt. No duplicate automation, gate waiver or new molecular run.

@@ -4128,3 +4128,12 @@ Original 29759213/CPU03 failure/CPU04 pass and original random FD failure
 remain preserved. Science02/init/context/diagnostic bytes/native gates
 unchanged. No new GPU start/result or native pass is inferred. No long
 random optimization submitted; completed mix50 and verified report unchanged.
+
+Final compact scheduler check 29763693 remained PEND, with four CPU slots
+reserved on n-62-13-18 at 17:25:43 and waiting ngpus_physical on one host.
+Valid queue/resources, no actual GPU start or start ETA inferred. Versioned
+receipt `scripts/hpc/receipts/20261020-brd4-boltz-diagnostic-launch-05/campaign.json`.
+Automation API updated existing finish-combined-brd4-trajectory-report to
+actual ACTIVE following 29763693/current05 receipt; no duplicate. Separate
+full mix50 report already verified 10,001 frames and browser QA at 8774 is
+unchanged; no random long run or new native pass.

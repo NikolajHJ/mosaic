@@ -13,13 +13,17 @@ Completion metadata is now authenticated: **10,000 contiguous updates
 JSONL, case report and summary case records. Initial/coupled/terminal checks
 passed, final chemistry weight is 50 and original frozen model/context
 digests are retained. Local compact evidence verification passed 21 files,
-including snapshot bytes at 0/5000/10000. This does not verify all 10,001
-snapshot files or a full rendered report.
+including snapshot bytes at 0/5000/10000; that compact scope does not cover
+every raw snapshot byte. Separately, the full saved-only report validated
+all 10,001 frames, passed local artifact verification/browser QA and is
+available at **http://127.0.0.1:8774/report.html**.
 
 **Replacement random diagnostic 29763693 PEND**, actually submitted at
 17:25:41 with verified gpul40s/one exclusive L40S/four CPU slots/8 GiB per
 slot/60min and no inter-arm dependency. Launcher05 CPU 29763691 passed 20
-contracts and its actual outcome/proof bytes are verified. Original
+contracts and its actual outcome/proof bytes are verified. At 17:25:43 the
+job reserved four CPU slots on n-62-13-18 but remained PEND on one physical
+GPU; no start is claimed. Original
 29759213 remains EXIT1 before model execution from aged-out live CPU
 lookup; earlier failures are preserved. Source02/init/FD gates unchanged.
 No new native diagnostic result; no long random optimization submitted.
@@ -666,3 +670,9 @@ validation, not native derivative success. Replacement diagnostic 29763693
 actually submitted 17:25:41, initial PEND; resource arguments and bjobs verified.
 Output `/zhome/95/e/206121/mosaic-runs/20261020-brd4-boltz-random-diagnostic-02/`.
 Mix50/report unchanged and random long optimization remains unsubmitted.
+
+Final compact check 29763693 PEND: four CPU slots reserved n-62-13-18 at
+17:25:43, waiting `ngpus_physical` on one host. Existing heartbeat actual
+ACTIVE via automation API now follows this replacement and
+`scripts/hpc/receipts/20261020-brd4-boltz-diagnostic-launch-05/campaign.json`.
+No additional query, duplicate automation or native-gate change.
