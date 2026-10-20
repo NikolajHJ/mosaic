@@ -18,3 +18,6 @@ tests/data/chemistry_oracle/** -text
 src/mosaic/small_molecule/chemistry/*.py text eol=lf
 scripts/chemistry_report_template.html text eol=lf
 scripts/hpc/submit_chemistry_*.sh text eol=lf
+
+# Keep this saved-evidence analysis receipt byte-stable on Windows.
+scripts/hpc/receipts/20261020-brd4-boltz-balance-01/* text eol=lf

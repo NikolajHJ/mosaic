@@ -1,0 +1,26 @@
+{
+  "status": "passed",
+  "scope": "stdlib bytes/schema only",
+  "files": {
+    "scheduler-final.txt": {
+      "bytes": 3038,
+      "sha256": "53a5592d6dc8fcf07b96466d75830967a12b3d765ed259c775fe16a2bbf605c0"
+    },
+    "analysis.json": {
+      "bytes": 19127,
+      "sha256": "5e93dabedf857d359492e94d532564dbc4665774f72dd26a1612a6e7c9d2a750"
+    },
+    "submission.json": {
+      "bytes": 1370,
+      "sha256": "61e62c262b1eee8207107f491a691c3e711c03458ec1327a2c15f2344ae751f5"
+    },
+    "stdout.29760613.log": {
+      "bytes": 2101,
+      "sha256": "2c295a67db57014d001004183133ea447820d29539a83723e2da0ad6213973aa"
+    },
+    "stderr.29760613.log": {
+      "bytes": 233,
+      "sha256": "7d57e9e44355166e210a310a2b90b7d8543b85c5ffbb82276c701f4dd1f23271"
+    }
+  }
+}

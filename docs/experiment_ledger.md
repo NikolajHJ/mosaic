@@ -3882,3 +3882,67 @@ supersedes the earlier partial-QA note; no local numerical/model rerun.
 
 Quantitative affinity, separate binder probability and raw/weighted repair
 overlay plots were also visually checked and readable in the actual browser.
+
+### 20 October 2026 — saved-only Boltz balance review authorized and allocated
+
+User requested recommendations on LR 0.1, objective balance, update budget
+and earlier/gentler chemistry. Saved-only analysis 29760613 is allocated in
+hpc, one CPU/2GiB/10minutes/zero GPU, reading source02 run 29759212 metadata and
+selected snapshots. Actual output/outcome/counts/minima are pending; no new
+molecular experiment, model/chemistry rerun, local numerical test or scientific
+configuration/report change is claimed.
+
+Immutable source
+`/work3/s234818/mosaic/releases/20261020-brd4-boltz-balance-01/source`,
+archive SHA
+`d01c08b88c9f7d0abdd2b80069db9c95722ad24a4ed47922fe26ab168c05669b`,
+analyzer SHA
+`3a1edf8959b0bd7cdfa0dd142c1a6c51a55b300c0577feff1e9a7850d22594dc`,
+wrapper SHA
+`95c80c0abab4d3382acf79d380e4c585ef25e5f13079d8ad8cb10a29009226fd`.
+See brd4_boltz_balance_review.md for the pending-evidence review.
+
+Native source review identifies declared route 0 already_valid/skip_without_
+self_target with chemistry loss/gradient zero, complete route 1 atom+bond NLL,
+and local valence-risk guidance only on fallback 3/4. Saved states 9998/9999
+valid then 10000 invalid are consistent with affinity-only accepted movement
+across a hard chlorine-edge boundary; this is not a proven derivative bug.
+Proposals only: retain N6/init/model/context/seeds and 10,000 updates;
+earlier 0.001-to-5 ramp over first 8,000 then hold 2,000; LR 0.1 with matched 0.03
+comparison desirable; prioritize explicitly new margin/hysteresis or
+continuous feasibility guidance requiring allocated tests/native gates.
+No coefficient/tolerance/model/optimizer change or new submission selected.
+
+### 20 October 2026, 09:34 Europe/Paris — saved-only balance analysis completed and verified
+
+Analysis 29760613 DONE/recorded; submitted 09:34:00, start 09:34:02/end 09:34:06
+on n-62-11-61, 4 seconds. LSF Successfully completed authenticated. All five
+proof files passed local stdlib bytes/schema verification at
+`results/hpc/20261020-brd4-boltz-balance-01/verification.json`.
+Analysis JSON SHA
+`5e93dabedf857d359492e94d532564dbc4665774f72dd26a1612a6e7c9d2a750`.
+No inference, chemistry evaluation, optimization or local numerical test.
+
+Best relaxed affinity state 8294 = -0.1035926044, hard invalid. Best saved
+connected/sanitized hard readout by associated relaxed score state 9639,
+`SCCCCCl`, 0.5465328693; not a fresh score of that hard ligand. Late states
+9500..10000 inclusive 501 states/218 valid/280 validity switches. States 9998/
+9999 valid with chemistry 0, then 10000 invalid chlorine valence 2 with raw
+chemistry 0.1123773083/weight 50/weighted 5.6188654155. All 10,000 updates strict
+within-state improving, zero fallback/no-op. Accepted rates 0.03:2431,
+0.015:1439,0.0075:4883,0.00375:1175,0.001875:72. Selected total-minus-native
+logit gradient norm ratio 0.0284 at 5000, 1.1800 at 8294, 3.5324 at 10000 with
+cosine -0.8692; at valid 9999 ratio 0.002499. This residual includes weighted
+chemistry plus composition, not pure chemistry.
+
+Source-reviewed declared zero-on-valid route explains absent chemistry
+guidance at a valid boundary; no derivative bug proven. Recommendations only:
+new declared validity-stability signal with native tests/gates; main schedule
+proposal linear chemistry 0.01-to-5 over applied updates 1..8000, then 5 over
+8001..10000; 0.001-to-5 geometric only an optional conservative comparator.
+The linear candidate is stronger early despite its lower endpoint, and is
+untested. Max LR 0.1/backtracking with matched
+0.03 desirable; retain 10,000 updates/N6/init/model/context/seeds/affinity 1/JS 0.1.
+No scientific config implemented or new optimization submitted. Full exact
+evidence and caveats in brd4_boltz_balance_review.md; official Boltz docs
+separate active-ligand affinity ranking from binder/decoy classification.

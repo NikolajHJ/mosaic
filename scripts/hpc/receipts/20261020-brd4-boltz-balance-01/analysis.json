@@ -1,0 +1,704 @@
+{
+  "status": "recorded",
+  "scope": "saved trajectory analysis only; no inference or chemistry evaluation",
+  "job_id": "29760613",
+  "native_job_id": "29759212",
+  "script_sha256": "3a1edf8959b0bd7cdfa0dd142c1a6c51a55b300c0577feff1e9a7850d22594dc",
+  "case_sha256": "13ca896450a8be2e298858226e9f11dac2be9e15f0d1cc092d6e4edf3707dad2",
+  "points": [
+    {
+      "step": 0,
+      "affinity": 1.1316076517105103,
+      "binder_probability": 0.09038249403238297,
+      "repair_weight": 0.001,
+      "chemistry": 0.0,
+      "weighted_chemistry": 0.0,
+      "weighted_composition": 0.005304940044879913,
+      "valid": true,
+      "smiles": "CCCCCC",
+      "error": null,
+      "route": 0
+    },
+    {
+      "step": 1000,
+      "affinity": 0.8115456104278564,
+      "binder_probability": 0.10436522215604782,
+      "repair_weight": 0.001,
+      "chemistry": 0.0,
+      "weighted_chemistry": 0.0,
+      "weighted_composition": 0.007988296449184418,
+      "valid": true,
+      "smiles": "CCCCCCl",
+      "error": null,
+      "route": 0
+    },
+    {
+      "step": 1500,
+      "affinity": 0.43312692642211914,
+      "binder_probability": 0.10412422567605972,
+      "repair_weight": 0.001,
+      "chemistry": 0.5053901076316833,
+      "weighted_chemistry": 0.0005053901076316834,
+      "weighted_composition": 0.009687961637973787,
+      "valid": false,
+      "smiles": null,
+      "error": "AtomValenceException: Explicit valence for atom # 0 Cl, 3, is greater than permitted",
+      "route": 1
+    },
+    {
+      "step": 2000,
+      "affinity": 0.25481295585632324,
+      "binder_probability": 0.09555671364068985,
+      "repair_weight": 0.001,
+      "chemistry": 0.5118816494941711,
+      "weighted_chemistry": 0.0005118816494941712,
+      "weighted_composition": 0.010202214866876603,
+      "valid": false,
+      "smiles": null,
+      "error": "AtomValenceException: Explicit valence for atom # 0 Cl, 3, is greater than permitted",
+      "route": 1
+    },
+    {
+      "step": 5000,
+      "affinity": 0.00944356620311737,
+      "binder_probability": 0.1083979681134224,
+      "repair_weight": 0.0010021662986986993,
+      "chemistry": 0.5411278605461121,
+      "weighted_chemistry": 0.000542300105126243,
+      "weighted_composition": 0.01444610357284546,
+      "valid": false,
+      "smiles": null,
+      "error": "AtomValenceException: Explicit valence for atom # 0 Cl, 3, is greater than permitted",
+      "route": 1
+    },
+    {
+      "step": 6000,
+      "affinity": -0.03285759687423706,
+      "binder_probability": 0.11130829155445099,
+      "repair_weight": 0.008724364358485448,
+      "chemistry": 0.54691082239151,
+      "weighted_chemistry": 0.004771449286142455,
+      "weighted_composition": 0.015553532540798188,
+      "valid": false,
+      "smiles": null,
+      "error": "AtomValenceException: Explicit valence for atom # 0 Cl, 2, is greater than permitted",
+      "route": 1
+    },
+    {
+      "step": 7000,
+      "affinity": -0.08216051757335663,
+      "binder_probability": 0.11246597021818161,
+      "repair_weight": 0.07595000306680137,
+      "chemistry": 0.5585843324661255,
+      "weighted_chemistry": 0.042424481763869426,
+      "weighted_composition": 0.017248283326625823,
+      "valid": false,
+      "smiles": null,
+      "error": "AtomValenceException: Explicit valence for atom # 0 Cl, 2, is greater than permitted",
+      "route": 1
+    },
+    {
+      "step": 8000,
+      "affinity": -0.10105441510677338,
+      "binder_probability": 0.11404116451740265,
+      "repair_weight": 0.6611831795214624,
+      "chemistry": 0.5555806159973145,
+      "weighted_chemistry": 0.3673405581655971,
+      "weighted_composition": 0.017802777886390685,
+      "valid": false,
+      "smiles": null,
+      "error": "AtomValenceException: Explicit valence for atom # 0 Cl, 2, is greater than permitted",
+      "route": 1
+    },
+    {
+      "step": 8294,
+      "affinity": -0.10359260439872742,
+      "binder_probability": 0.11519958823919296,
+      "repair_weight": 1.2491691001927727,
+      "chemistry": 0.5480832457542419,
+      "weighted_chemistry": 0.6846486549295607,
+      "weighted_composition": 0.017789629101753236,
+      "valid": false,
+      "smiles": null,
+      "error": "AtomValenceException: Explicit valence for atom # 0 Cl, 2, is greater than permitted",
+      "route": 1
+    },
+    {
+      "step": 8500,
+      "affinity": -0.10144071280956268,
+      "binder_probability": 0.11642773449420929,
+      "repair_weight": 1.9508271766049805,
+      "chemistry": 0.5386260151863098,
+      "weighted_chemistry": 1.0507662684519001,
+      "weighted_composition": 0.017624691128730774,
+      "valid": false,
+      "smiles": null,
+      "error": "AtomValenceException: Explicit valence for atom # 0 Cl, 2, is greater than permitted",
+      "route": 1
+    },
+    {
+      "step": 9000,
+      "affinity": -0.0205051451921463,
+      "binder_probability": 0.1198599636554718,
+      "repair_weight": 5.7559338937433155,
+      "chemistry": 0.44940489530563354,
+      "weighted_chemistry": 2.5867448689038626,
+      "weighted_composition": 0.01534528136253357,
+      "valid": false,
+      "smiles": null,
+      "error": "AtomValenceException: Explicit valence for atom # 0 Cl, 4, is greater than permitted",
+      "route": 1
+    },
+    {
+      "step": 9500,
+      "affinity": 0.3390362858772278,
+      "binder_probability": 0.12459850311279297,
+      "repair_weight": 16.982936974868522,
+      "chemistry": 0.2707380950450897,
+      "weighted_chemistry": 4.597928004846723,
+      "weighted_composition": 0.011994252353906632,
+      "valid": false,
+      "smiles": null,
+      "error": "AtomValenceException: Explicit valence for atom # 0 Cl, 3, is greater than permitted",
+      "route": 1
+    },
+    {
+      "step": 9998,
+      "affinity": 0.6389766335487366,
+      "binder_probability": 0.1378062516450882,
+      "repair_weight": 49.89191920036072,
+      "chemistry": 0.0,
+      "weighted_chemistry": 0.0,
+      "weighted_composition": 0.012551142275333405,
+      "valid": true,
+      "smiles": "SCCCCCl",
+      "error": null,
+      "route": 0
+    },
+    {
+      "step": 9999,
+      "affinity": 0.6303359270095825,
+      "binder_probability": 0.1377829909324646,
+      "repair_weight": 50.0,
+      "chemistry": 0.0,
+      "weighted_chemistry": 0.0,
+      "weighted_composition": 0.012551352381706238,
+      "valid": true,
+      "smiles": "SCCCCCl",
+      "error": null,
+      "route": 0
+    },
+    {
+      "step": 10000,
+      "affinity": 0.622721791267395,
+      "binder_probability": 0.13771554827690125,
+      "repair_weight": 50.0,
+      "chemistry": 0.11237730830907822,
+      "weighted_chemistry": 5.618865415453911,
+      "weighted_composition": 0.012551562488079072,
+      "valid": false,
+      "smiles": null,
+      "error": "AtomValenceException: Explicit valence for atom # 0 Cl, 2, is greater than permitted",
+      "route": 1
+    }
+  ],
+  "windows": [
+    {
+      "lo": 0,
+      "hi": 5000,
+      "n_states": 5001,
+      "valid": 1468,
+      "validity_switches": 1,
+      "routes": {
+        "0": 1468,
+        "1": 3533
+      },
+      "selected_trials": {
+        "0": 1567,
+        "1": 755,
+        "2": 2654,
+        "3": 24
+      },
+      "affinity_increase_updates": 0,
+      "mean_update_seconds": 3.7141781538229437
+    },
+    {
+      "lo": 5000,
+      "hi": 8000,
+      "n_states": 3001,
+      "valid": 0,
+      "validity_switches": 0,
+      "routes": {
+        "1": 3001
+      },
+      "selected_trials": {
+        "2": 1191,
+        "1": 347,
+        "3": 1057,
+        "0": 333,
+        "4": 72
+      },
+      "affinity_increase_updates": 61,
+      "mean_update_seconds": 5.070500369676602
+    },
+    {
+      "lo": 8000,
+      "hi": 9000,
+      "n_states": 1001,
+      "valid": 0,
+      "validity_switches": 0,
+      "routes": {
+        "1": 1001
+      },
+      "selected_trials": {
+        "2": 701,
+        "3": 65,
+        "1": 190,
+        "0": 44
+      },
+      "affinity_increase_updates": 549,
+      "mean_update_seconds": 4.623282719951938
+    },
+    {
+      "lo": 9000,
+      "hi": 9500,
+      "n_states": 501,
+      "valid": 0,
+      "validity_switches": 0,
+      "routes": {
+        "1": 501
+      },
+      "selected_trials": {
+        "1": 123,
+        "0": 101,
+        "2": 247,
+        "3": 29
+      },
+      "affinity_increase_updates": 290,
+      "mean_update_seconds": 4.024878256585333
+    },
+    {
+      "lo": 9500,
+      "hi": 10000,
+      "n_states": 501,
+      "valid": 218,
+      "validity_switches": 280,
+      "routes": {
+        "1": 283,
+        "0": 218
+      },
+      "selected_trials": {
+        "2": 90,
+        "1": 24,
+        "0": 386
+      },
+      "affinity_increase_updates": 246,
+      "mean_update_seconds": 2.3882307185821703
+    }
+  ],
+  "best_affinity": {
+    "step": 8294,
+    "affinity": -0.10359260439872742,
+    "binder_probability": 0.11519958823919296,
+    "repair_weight": 1.2491691001927727,
+    "chemistry": 0.5480832457542419,
+    "weighted_chemistry": 0.6846486549295607,
+    "weighted_composition": 0.017789629101753236,
+    "valid": false,
+    "smiles": null,
+    "error": "AtomValenceException: Explicit valence for atom # 0 Cl, 2, is greater than permitted",
+    "route": 1
+  },
+  "best_valid_affinity": {
+    "step": 9639,
+    "affinity": 0.5465328693389893,
+    "binder_probability": 0.12788307666778564,
+    "repair_weight": 22.942680861936825,
+    "chemistry": 0.0,
+    "weighted_chemistry": 0.0,
+    "weighted_composition": 0.011528532207012178,
+    "valid": true,
+    "smiles": "SCCCCCl",
+    "error": null,
+    "route": 0
+  },
+  "last_valid": {
+    "step": 9999,
+    "affinity": 0.6303359270095825,
+    "binder_probability": 0.1377829909324646,
+    "repair_weight": 50.0,
+    "chemistry": 0.0,
+    "weighted_chemistry": 0.0,
+    "weighted_composition": 0.012551352381706238,
+    "valid": true,
+    "smiles": "SCCCCCl",
+    "error": null,
+    "route": 0
+  },
+  "first_invalid": {
+    "step": 1468,
+    "affinity": 0.6701463460922241,
+    "binder_probability": 0.11014240235090256,
+    "repair_weight": 0.001,
+    "chemistry": 0.4936223328113556,
+    "weighted_chemistry": 0.0004936223328113556,
+    "weighted_composition": 0.009647805988788605,
+    "valid": false,
+    "smiles": "CCC.CCCl",
+    "error": null,
+    "route": 1
+  },
+  "valid_states": 1686,
+  "total_states": 10001,
+  "native_counts": {
+    "applied": 10000,
+    "forced_fallback": 0,
+    "no_op": 0,
+    "strict_improving": 10000
+  },
+  "accepted_step_sizes": {
+    "0.03": 2431,
+    "0.015": 1439,
+    "0.0075": 4883,
+    "0.00375": 1175,
+    "0.001875": 72
+  },
+  "selected_trials": {
+    "0": 2431,
+    "1": 1439,
+    "2": 4883,
+    "3": 1175,
+    "4": 72
+  },
+  "snapshots": [
+    {
+      "step": 0,
+      "native_logit_gradient_norm": 0.0935477539896965,
+      "weighted_chemistry_plus_composition_gradient_norm": 0.00246289256028831,
+      "residual_native_ratio": 0.02632765037372866,
+      "residual_native_cosine": -0.14377857744693756,
+      "chlorine_extra_edge_1_3": [
+        0.6000000834465027,
+        0.10000000894069672,
+        0.10000000894069672,
+        0.10000000894069672,
+        0.10000000894069672
+      ]
+    },
+    {
+      "step": 1000,
+      "native_logit_gradient_norm": 0.07762163877487183,
+      "weighted_chemistry_plus_composition_gradient_norm": 0.003233409021049738,
+      "residual_native_ratio": 0.041656026232938514,
+      "residual_native_cosine": -0.38796713948249817,
+      "chlorine_extra_edge_1_3": [
+        0.41210418939590454,
+        0.13307026028633118,
+        0.18303422629833221,
+        0.13087810575962067,
+        0.14091333746910095
+      ]
+    },
+    {
+      "step": 1500,
+      "native_logit_gradient_norm": 0.5505704283714294,
+      "weighted_chemistry_plus_composition_gradient_norm": 0.003649519756436348,
+      "residual_native_ratio": 0.0066286156472869714,
+      "residual_native_cosine": -0.01604546792805195,
+      "chlorine_extra_edge_1_3": [
+        0.254533976316452,
+        0.1587756872177124,
+        0.28697559237480164,
+        0.14252027869224548,
+        0.15719442069530487
+      ]
+    },
+    {
+      "step": 2000,
+      "native_logit_gradient_norm": 0.15308137238025665,
+      "weighted_chemistry_plus_composition_gradient_norm": 0.003820819314569235,
+      "residual_native_ratio": 0.02495940071061198,
+      "residual_native_cosine": -0.2391805648803711,
+      "chlorine_extra_edge_1_3": [
+        0.22400055825710297,
+        0.19596369564533234,
+        0.2955472469329834,
+        0.1452459990978241,
+        0.1392425149679184
+      ]
+    },
+    {
+      "step": 5000,
+      "native_logit_gradient_norm": 0.15828979015350342,
+      "weighted_chemistry_plus_composition_gradient_norm": 0.0044973473995924,
+      "residual_native_ratio": 0.02841211296844252,
+      "residual_native_cosine": -0.18441934883594513,
+      "chlorine_extra_edge_1_3": [
+        0.20370984077453613,
+        0.27662646770477295,
+        0.28316038846969604,
+        0.14242634177207947,
+        0.09407699108123779
+      ]
+    },
+    {
+      "step": 6000,
+      "native_logit_gradient_norm": 0.1807776391506195,
+      "weighted_chemistry_plus_composition_gradient_norm": 0.004915183410048485,
+      "residual_native_ratio": 0.02718911162432691,
+      "residual_native_cosine": -0.1653830111026764,
+      "chlorine_extra_edge_1_3": [
+        0.19970083236694336,
+        0.28905487060546875,
+        0.2827156186103821,
+        0.14204275608062744,
+        0.08648596704006195
+      ]
+    },
+    {
+      "step": 7000,
+      "native_logit_gradient_norm": 0.11839181929826736,
+      "weighted_chemistry_plus_composition_gradient_norm": 0.010117178782820702,
+      "residual_native_ratio": 0.08545504953625427,
+      "residual_native_cosine": -0.003051103325560689,
+      "chlorine_extra_edge_1_3": [
+        0.19526298344135284,
+        0.3028552532196045,
+        0.28128576278686523,
+        0.14194977283477783,
+        0.0786462277173996
+      ]
+    },
+    {
+      "step": 8000,
+      "native_logit_gradient_norm": 0.13535553216934204,
+      "weighted_chemistry_plus_composition_gradient_norm": 0.06645143032073975,
+      "residual_native_ratio": 0.4909398918221014,
+      "residual_native_cosine": -0.06970757991075516,
+      "chlorine_extra_edge_1_3": [
+        0.1936621367931366,
+        0.30678969621658325,
+        0.28302302956581116,
+        0.14151710271835327,
+        0.07500806450843811
+      ]
+    },
+    {
+      "step": 8294,
+      "native_logit_gradient_norm": 0.10416705161333084,
+      "weighted_chemistry_plus_composition_gradient_norm": 0.12292060256004333,
+      "residual_native_ratio": 1.180033423777087,
+      "residual_native_cosine": -0.41360968351364136,
+      "chlorine_extra_edge_1_3": [
+        0.1935231238603592,
+        0.308092325925827,
+        0.2837689518928528,
+        0.1407380849123001,
+        0.07387744635343552
+      ]
+    },
+    {
+      "step": 8500,
+      "native_logit_gradient_norm": 0.46990087628364563,
+      "weighted_chemistry_plus_composition_gradient_norm": 0.18901702761650085,
+      "residual_native_ratio": 0.4022487234146053,
+      "residual_native_cosine": -0.45823514461517334,
+      "chlorine_extra_edge_1_3": [
+        0.19365757703781128,
+        0.30835556983947754,
+        0.28505730628967285,
+        0.13984228670597076,
+        0.07308728247880936
+      ]
+    },
+    {
+      "step": 9000,
+      "native_logit_gradient_norm": 0.6869480013847351,
+      "weighted_chemistry_plus_composition_gradient_norm": 0.4956245720386505,
+      "residual_native_ratio": 0.7214877560449715,
+      "residual_native_cosine": -0.5845701694488525,
+      "chlorine_extra_edge_1_3": [
+        0.19742603600025177,
+        0.31167981028556824,
+        0.2920803129673004,
+        0.13064029812812805,
+        0.06817353516817093
+      ]
+    },
+    {
+      "step": 9500,
+      "native_logit_gradient_norm": 1.7327802181243896,
+      "weighted_chemistry_plus_composition_gradient_norm": 1.0373647212982178,
+      "residual_native_ratio": 0.5986706856690058,
+      "residual_native_cosine": -0.4525613784790039,
+      "chlorine_extra_edge_1_3": [
+        0.24212267994880676,
+        0.29328763484954834,
+        0.29794663190841675,
+        0.1072424054145813,
+        0.05940062552690506
+      ]
+    },
+    {
+      "step": 9998,
+      "native_logit_gradient_norm": 0.5445502400398254,
+      "weighted_chemistry_plus_composition_gradient_norm": 0.0012761334655806422,
+      "residual_native_ratio": 0.0023434632321295327,
+      "residual_native_cosine": -0.012195675633847713,
+      "chlorine_extra_edge_1_3": [
+        0.32312506437301636,
+        0.31401073932647705,
+        0.24808482825756073,
+        0.06867358088493347,
+        0.0461057685315609
+      ]
+    },
+    {
+      "step": 9999,
+      "native_logit_gradient_norm": 0.5105624794960022,
+      "weighted_chemistry_plus_composition_gradient_norm": 0.0012759475503116846,
+      "residual_native_ratio": 0.0024991016801141092,
+      "residual_native_cosine": -0.013088363222777843,
+      "chlorine_extra_edge_1_3": [
+        0.31899213790893555,
+        0.31661832332611084,
+        0.24945242702960968,
+        0.06876736879348755,
+        0.046169720590114594
+      ]
+    },
+    {
+      "step": 10000,
+      "native_logit_gradient_norm": 0.4862169921398163,
+      "weighted_chemistry_plus_composition_gradient_norm": 1.71749746799469,
+      "residual_native_ratio": 3.5323682548322113,
+      "residual_native_cosine": -0.8691563606262207,
+      "chlorine_extra_edge_1_3": [
+        0.31514260172843933,
+        0.3190556466579437,
+        0.25072750449180603,
+        0.06884901225566864,
+        0.046225208789110184
+      ]
+    }
+  ],
+  "final_reference": {
+    "route": [
+      1
+    ],
+    "changed": [
+      [
+        [
+          false,
+          false,
+          true,
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ]
+      ]
+    ],
+    "target_atoms": [
+      [
+        6,
+        1,
+        1,
+        1,
+        1,
+        4
+      ]
+    ],
+    "target_bonds": [
+      [
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+        ]
+      ]
+    ]
+  }
+}

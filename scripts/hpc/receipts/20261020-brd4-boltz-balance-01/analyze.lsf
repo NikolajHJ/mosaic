@@ -1,0 +1,11 @@
+#!/bin/bash
+set -euo pipefail
+[[ -n "${LSB_JOBID:-}" ]] || exit 2
+release=$1
+run=$2
+expected=$3
+cd "$release"
+printf '%s  analyze_boltz_balance.py\n' "$expected" | sha256sum -c -
+module load python3/3.12.11
+export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
+/work3/s234818/mosaic/envs/protenix-tiny/bin/python "$release/analyze_boltz_balance.py" /zhome/95/e/206121/mosaic-runs/20261019-brd4-boltz-mix50-independent-01/payload/study "$run/analysis.json"

@@ -1,0 +1,97 @@
+{
+  "status": "DONE/recorded; download byte verification passed",
+  "scope": "saved-only allocated analysis for recommendations; no molecular optimization or objective changes",
+  "job_id": "29760613",
+  "native_job_id": "29759212",
+  "submitted_at": "2026-10-20T09:34:00+02:00",
+  "started_at": "2026-10-20T09:34:02+02:00",
+  "finished_at": "2026-10-20T09:34:06+02:00",
+  "resources": {
+    "queue": "hpc",
+    "slots": 1,
+    "memory_gib": 2,
+    "wall_minutes": 10,
+    "gpus": 0
+  },
+  "submission": {
+    "release": "/work3/s234818/mosaic/releases/20261020-brd4-boltz-balance-01/source",
+    "archive_sha256": "d01c08b88c9f7d0abdd2b80069db9c95722ad24a4ed47922fe26ab168c05669b",
+    "source_files": {
+      "files": {
+        "analyze.lsf": {
+          "bytes": 468,
+          "sha256": "95c80c0abab4d3382acf79d380e4c585ef25e5f13079d8ad8cb10a29009226fd"
+        },
+        "analyze_boltz_balance.py": {
+          "bytes": 5443,
+          "sha256": "3a1edf8959b0bd7cdfa0dd142c1a6c51a55b300c0577feff1e9a7850d22594dc"
+        }
+      }
+    },
+    "args": [
+      "bsub",
+      "-q",
+      "hpc",
+      "-n",
+      "1",
+      "-R",
+      "rusage[mem=2GB]",
+      "-W",
+      "10",
+      "-J",
+      "mosaic-boltz-saved-analysis",
+      "-o",
+      "/zhome/95/e/206121/mosaic-runs/20261020-brd4-boltz-balance-01/stdout.%J.log",
+      "-e",
+      "/zhome/95/e/206121/mosaic-runs/20261020-brd4-boltz-balance-01/stderr.%J.log",
+      "bash",
+      "/work3/s234818/mosaic/releases/20261020-brd4-boltz-balance-01/source/analyze.lsf",
+      "/work3/s234818/mosaic/releases/20261020-brd4-boltz-balance-01/source",
+      "/zhome/95/e/206121/mosaic-runs/20261020-brd4-boltz-balance-01",
+      "3a1edf8959b0bd7cdfa0dd142c1a6c51a55b300c0577feff1e9a7850d22594dc"
+    ],
+    "stdout": "Job <29760613> is submitted to queue <hpc>.\n",
+    "stderr": "",
+    "returncode": 0,
+    "scope": "saved-only numerical analysis on allocatedCPU; no tests/model/chemistry/rerun"
+  },
+  "downloaded_files": {
+    "scheduler-final.txt": {
+      "bytes": 3038,
+      "sha256": "53a5592d6dc8fcf07b96466d75830967a12b3d765ed259c775fe16a2bbf605c0"
+    },
+    "analysis.json": {
+      "bytes": 19127,
+      "sha256": "5e93dabedf857d359492e94d532564dbc4665774f72dd26a1612a6e7c9d2a750"
+    },
+    "submission.json": {
+      "bytes": 1370,
+      "sha256": "61e62c262b1eee8207107f491a691c3e711c03458ec1327a2c15f2344ae751f5"
+    },
+    "stdout.29760613.log": {
+      "bytes": 2101,
+      "sha256": "2c295a67db57014d001004183133ea447820d29539a83723e2da0ad6213973aa"
+    },
+    "stderr.29760613.log": {
+      "bytes": 233,
+      "sha256": "7d57e9e44355166e210a310a2b90b7d8543b85c5ffbb82276c701f4dd1f23271"
+    }
+  },
+  "local_verification": "results/hpc/20261020-brd4-boltz-balance-01/verification.json",
+  "proposed_settings_are_unimplemented": true,
+  "proposals": {
+    "maximum_learning_rate": 0.1,
+    "steps": 10000,
+    "chemistry_schedule": {
+      "initial": 0.01,
+      "final": 5,
+      "ramp_ends_at": 8000,
+      "final_hold_updates": 2000,
+      "interpolation": "linear",
+      "ramp_start_update": 1,
+      "status": "untested proposal, not implemented or submitted"
+    },
+    "validity_stability": "new continuous or margin-based guidance, subject to allocated validation"
+  },
+  "scheduler_final_text": "\nJob <29760613>, Job Name <mosaic-boltz-saved-analysis>, User <s234818>, Project\n                           <default>, Service Class <sc_hpc1>, Status <DONE>, Q\n                          ueue <hpc>, Command <bash /work3/s234818/mosaic/relea\n                          ses/20261020-brd4-boltz-balance-01/source/analyze.lsf\n                           /work3/s234818/mosaic/releases/20261020-brd4-boltz-b\n                          alance-01/source /zhome/95/e/206121/mosaic-runs/20261\n                          020-brd4-boltz-balance-01 3a1edf8959b0bd7cdfa0dd142c1\n                          a6c51a55b300c0577feff1e9a7850d22594dc>, Share group c\n                          harged </s234818>, Esub <dcc>\nTue Oct 20 09:34:00 2026: Submitted from host <hpclogin1>, CWD <$HOME>, Output \n                          File </zhome/95/e/206121/mosaic-runs/20261020-brd4-bo\n                          ltz-balance-01/stdout.29760613.log>, Error File </zho\n                          me/95/e/206121/mosaic-runs/20261020-brd4-boltz-balanc\n                          e-01/stderr.29760613.log>, Requested Resources <{sele\n                          ct[serial_] rusage[mem=2048.00]} || {select[!serial_]\n                           rusage[mem=2048.00]}>;\nTue Oct 20 09:34:02 2026: Started 1 Task(s) on Host(s) <n-62-11-61>, Allocated \n                          1 Slot(s) on Host(s) <n-62-11-61>, Execution Home </z\n                          home/95/e/206121>, Execution CWD </zhome/95/e/206121>\n                          ;\nTue Oct 20 09:34:06 2026: Done successfully. The CPU time used is 2.1 seconds.\n\n RUNLIMIT                \n 10.0 min\n\n MEMLIMIT\n      2 G \n\n MEMORY USAGE:\n MEM Efficiency: 0.00%\n\n CPU USAGE:\n CPU PEAK: 0.00 ;  CPU PEAK DURATION: 0 second(s)\n CPU AVERAGE EFFICIENCY: 0.00% ;  CPU PEAK EFFICIENCY: 0.00%\n\n PENDING TIME DETAILS:\n Eligible pending time (seconds):\t2\n Ineligible pending time (seconds):\t0\n\n SCHEDULING PARAMETERS:\n           r15s   r1m  r15m   ut      pg    io   ls    it    tmp    swp    mem\n loadSched   -     -     -     -       -     -    -     -     -      -      -  \n loadStop    -     -     -     -       -     -    -     -     -      -      -  \n\n RESOURCE REQUIREMENT DETAILS:\n Job-level: {select[serial_] rusage[mem=2048.00]} || {select[!serial_] rusage[m\n                          em=2048.00]}\n App-level: -\n Queue-level: same[type:model] affinity[core] cu[type=enclosure:maxcus=1]\n Combined: {select[(serial_) && (type == any)] order[-slots:-maxslots] rusage[m\n                          em=2048.00] cu[pref=config:maxcus=1:type=enclosure] a\n                          ffinity[core(1)*1]} || {select[(!serial_) && (type ==\n                           any)] order[-slots:-maxslots] rusage[mem=2048.00] cu\n                          [pref=config:maxcus=1:type=enclosure] affinity[core(1\n                          )*1]}\n Effective: select[((serial_) && (type == any))] order[-slots:-maxslots] rusage\n                          [mem=2048.00] cu[type=enclosure:maxcus=1:pref=config]\n                           affinity[core(1)*1] \n\n"
+}
