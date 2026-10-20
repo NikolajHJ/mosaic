@@ -3997,3 +3997,134 @@ readiness. The proposed separately weighted compatibility signal still
 needs allocated enumeration/FD/invariance tests, saved-state measurements
 and fresh native/coupled checks before any production adoption. Sulfur bias,
 aromatic approximation and lack of connectivity guarantees remain explicit.
+
+### 20 October 2026, 17:15 Europe/Paris — access restored; random diagnostic launcher EXIT1
+
+Successful SSH at 17:15:21 authenticated random diagnostic 29759213's actual
+run 09:52:19–09:52:22 on n-62-13-16, EXIT1 before model execution. A launcher
+assertion queried old CPU 29759211 live after it aged out of the scheduler
+window. Its actual 19-test pass and persisted final/LSF records remain
+preserved. No new random native derivative/control result exists; original
+source02 random FD failure remains unresolved and no long random run is
+submitted. This is a launcher evidence-authentication failure, not a new
+scientific gate outcome.
+
+User explicitly authorized launcher-only repair using hashed persisted
+actual scheduler-final/LSF-success records, not fabricated DONE. Preserving
+the failed release/job/logs and preparing a new immutable tooling retry
+with allocated tests. Source02/init/graph/context/original FD scales,
+tolerances and gates unchanged. Exact downloaded failure hashes, new pins,
+test outcomes and retry IDs remain pending. Separate compatibility-research
+prototype/outage history is preserved; no compatibility numerical result
+or production-loss change is implied by restored access.
+
+### 20 October 2026 — launcher failure evidence verified; launcher03 CPU submitted
+
+Original LSF EXIT1 footer/logs authenticate 29759213's failed launch.
+bhist/bacct commands were permission-denied; no accounting history or DONE
+fabricated. Capture01 stopped on bhist PermissionError and is preserved;
+unique02 records unavailable accounting plus actual LSF outcome. Failure
+archive `/zhome/95/e/206121/mosaic-runs/20261020-brd4-boltz-diagnostic-launch-failure-02.tar.gz`,
+5,604 bytes SHA
+`c4b265ab600840b0b0a754e5ac10a8c8c5f37c647f82821a1523a281045b4323`,
+manifest SHA
+`14f8c555993de01165254d6b9bab2fc5b2f8a2384c5923ffdfa18e2dbf75121b`.
+All 11 files downloaded/safely extracted/byte-verified at
+`results/hpc/20261020-brd4-boltz-diagnostic-launch-failure-02/`.
+
+Authenticated all seven launcher03 files at
+`/work3/s234818/mosaic/releases/20261020-brd4-boltz-diagnostic-launch-03/source`,
+manifest SHA
+`dceadf75e4a0ae84e41cd325c5205c4f4d8d54ee43ba735f660bc4e1ca38f2c2`,
+archive 13,945 bytes SHA
+`8cf264153647df1149f79e6cf5cc05933b2c509c4ae8515dc3947392b9adfe17`.
+Two independent static reviewers found no blocker in proof helper/wrappers;
+original diagnostic code/scientific source02 unchanged. Actual CPU 29763673
+submitted hpc/one slot/2GiB/15min, 19 expected contracts (13 new proof+six
+unchanged diagnostic). Actual outcome pending; no GPU retry submitted.
+Original random derivative failure/gates and compatibility research history
+remain preserved; engineering proof checks are not native numerical passes.
+
+### 20 October 2026, 17:20 Europe/Paris — launcher03 CPU rejected reserve before tests
+
+Actual CPU 29763673 EXIT1 at 17:20:21 before any of the 19 planned tests or
+native diagnostic/model. zhome_quota_preflight rejected requested 1 GiB
+home-storage reserve because minimum 4 GiB is mandatory. This is a wrapper
+configuration failure, not 19 test failures or measured storage exhaustion.
+Preserve sealed launcher03/failed job/logs and the unchanged gate.
+
+Preparing unique launcher04 changing only CPU wrapper reserve to 4 GiB,
+followed by new allocated CPU checks. New hashes/jobs/outcomes pending;
+original diagnosis/science02/native FD requirements unchanged. No pass,
+GPU retry or long random optimization submitted from this failed stage.
+
+### 20 October 2026 — launcher04 authenticated; CPU retry submitted
+
+Authenticated all seven files at
+`/work3/s234818/mosaic/releases/20261020-brd4-boltz-diagnostic-launch-04/source`.
+Six files byte-identical 03; only a single 1-to-4 reserve character changes
+in the unchanged-length 2,925-byte CPU wrapper. Manifest SHA
+`2a35a34f8db8c5682139f341ec08e08da1a049d8da1cf0423ef9e5f3b4ec2754`,
+archive 13,992 bytes SHA
+`90483713ead73297b9481b1aced3978a84b1a20f1c7c78341c02704d13772457`.
+Actual CPU 29763686 submitted hpc/one slot/2GiB/15min, unique output
+`/zhome/95/e/206121/mosaic-runs/20261020-brd4-boltz-diagnostic-launch-04-cpu/`.
+Expected 19 contracts, actual outcome pending. Original CPU 29763673 actual
+scheduler-final EXIT1 captured and preserved. No GPU retry or native result
+from this submission; all diagnostic/scientific bytes and gates unchanged.
+
+### 20 October 2026, 17:23 Europe/Paris — CPU04 passed 19; status-wrap fix prepared
+
+Actual CPU 29763686 DONE 17:23:10, 19 passed in 1.13 seconds; fresh 4 GiB reserve
+and LSF Successfully completed authenticated. Preserve this actual source04
+engineering pass. Before GPU certification, inspection found bjobs wrapped
+its real status as `Status<D\nONE>`; a literal DONE parser would reject it.
+No GPU certification failure/model result is inferred.
+
+Preparing unique source05 with whitespace normalization inside status and
+queue fields, preserving exact canonical DONE/hpc requirements. Add one
+contract, 20 expected tests, not yet executed. New pins/jobs/outcomes pending;
+no GPU retry submitted and no change to science02/diagnostic/native gates.
+
+### 20 October 2026 — launcher05 CPU 20 passed and proof bytes verified
+
+Authenticated all seven source05 files at
+`/work3/s234818/mosaic/releases/20261020-brd4-boltz-diagnostic-launch-05/source`,
+manifest SHA
+`e14c41ada91a0a1750776d57affbb33edb782f6d05cacd3519fa543b338960be`,
+archive 14,124 bytes SHA
+`bd70f72ed4814e2627371b202db5927c5b1034c4b879676f82fa3522bf5c721d`.
+Actual CPU 29763691 DONE/passed 20 in 0.95 seconds, no failures/errors/skips;
+scheduler/LSF/assessment/XML authenticated. Quota 15 GiB conservatively free.
+Assessment SHA
+`36857a6fc0dccef932ffe26aac9b742a5fe1291aec35884a7aa7bb6ca38a8702`.
+
+All 13 CPU05 proof files verified at
+`results/hpc/20261020-brd4-boltz-diagnostic-launch-05/cpu-proofs/verification.json`;
+archive 6,510 bytes SHA
+`e9c03d3200c97de550a89e3f8be97fc3ee0f1eb264d3e2aafd9c32d279088fd7`,
+manifest SHA
+`604c444d05e899296ecc95f7d766e90bbc760c394070150a1f99805369de0530`.
+Earlier actual CPU04 pass also has 13 verified files, archive 6,465 bytes SHA
+`a9296679b4d0fb703a127dfdab2cde3c77d8e1f56e7e838dd4138527b529cb1e`,
+manifest SHA
+`fe27760bafd9b965a0c00eb281bb14a9fe149903fc7caa634a41746e7ecab8f9`.
+Original failures and scientific/diagnostic bytes/gates preserved. GPU02
+preparation underway, not yet submitted; no native derivative pass inferred.
+
+### 20 October 2026, 17:25 Europe/Paris — replacement random diagnostic actually submitted
+
+Actual GPU diagnostic 29763693 submitted 17:25:41, initial bjobs PEND waiting
+for scheduling. Verified resource arguments and scheduler state: gpul40s,
+four CPU slots/8GiB per slot/one exclusive L40S GPU/60min, no inter-arm
+dependency. Fresh quota 15 GiB conservatively free. Launcher05 CPU 29763691
+actual 20-test pass comprises 14 new proof contracts and six unchanged
+diagnostic contracts; independent static review found no blocker.
+
+Output `/zhome/95/e/206121/mosaic-runs/20261020-brd4-boltz-random-diagnostic-02/`.
+Actual submission record
+`results/hpc/20261020-brd4-boltz-diagnostic-launch-05/gpu-submission/submission.json`.
+Original 29759213/CPU03 failure/CPU04 pass and original random FD failure
+remain preserved. Science02/init/context/diagnostic bytes/native gates
+unchanged. No new GPU start/result or native pass is inferred. No long
+random optimization submitted; completed mix50 and verified report unchanged.

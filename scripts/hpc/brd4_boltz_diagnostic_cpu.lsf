@@ -1,0 +1,43 @@
+#!/bin/bash
+# Launcher-only contracts; no numerical model/chemistry or diagnostic execution.
+set -euo pipefail
+[[ -n "${LSB_JOBID:-}" ]]
+launcher=$1
+launcher_manifest=$2
+parent=$3
+science=/work3/s234818/mosaic/releases/20261019-brd4-boltz-affinity-02/source
+old_tools=/work3/s234818/mosaic/releases/20261019-brd4-boltz-independent-02/source
+old_cpu=/zhome/95/e/206121/mosaic-runs/20261019-brd4-boltz-independent-02-cpu/payload
+python=/work3/s234818/mosaic/envs/protenix-tiny/bin/python
+module load python3/3.12.11
+export PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+mkdir "$parent/payload"
+run="$parent/payload"
+"$python" "$science/scripts/verify_stage0_release.py" "$launcher" "$launcher_manifest"
+"$python" "$science/scripts/verify_stage0_release.py" "$old_tools" 848cb213d91be09513439f719ece8e43ec55991bd473f1bc233f3d80eb204c1b
+"$python" "$science/scripts/verify_stage0_release.py" "$science" 5eb6e17ea8d19e52c99a589243228710994dcf137f59a6b9a6659a4fe719a7f4
+cmp "$launcher/scripts/diagnose_boltz_random_gradient.py" "$old_tools/scripts/diagnose_boltz_random_gradient.py"
+"$python" "$science/scripts/hpc/zhome_quota_preflight.py" --run-dir "$run" --minimum-free-gib 4
+cd "$launcher"
+"$python" -m pytest tests/test_boltz_diagnostic_cpu.py tests/test_boltz_gradient_diagnostic_contract.py \
+  -o addopts= -o cache_dir="$run/cache" --basetemp "$run/tests-tmp" \
+  --junitxml="$run/tests.xml" > "$run/tests.log" 2>&1
+"$python" scripts/check_boltz_diagnostic_cpu.py \
+  --root "$old_cpu" --job 29759211 --tests 19 \
+  --assessment-sha256 bc76e33927104e88a9e019b706d0ed4c6e1fc8f3bd4460264acad13ca7594448 \
+  --tools-manifest 848cb213d91be09513439f719ece8e43ec55991bd473f1bc233f3d80eb204c1b \
+  --scientific-manifest 5eb6e17ea8d19e52c99a589243228710994dcf137f59a6b9a6659a4fe719a7f4 \
+  --scheduler-sha256 9ea1c0ea6e5aa539934a61106d44b89c69442e68d96267cd8b40c4e551629516 \
+  --stdout-sha256 eb712ecc4c7d410905fd8a8573260328b85b9ff48b9a4c42fefcd394d0d7a2c3 \
+  --output "$run/original-cpu-verification.json"
+"$python" - "$run" "$launcher_manifest" <<'PY'
+import hashlib,json,os,sys,xml.etree.ElementTree as ET
+from pathlib import Path
+run=Path(sys.argv[1])
+tests=ET.parse(run/'tests.xml').findall('.//testcase')
+assert tests and not any(c.find(t) is not None for c in tests for t in ('failure','error','skipped'))
+paths=[run/'tests.xml',run/'original-cpu-verification.json']
+assessment={'status':'passed','job_id':os.environ['LSB_JOBID'],'tests':len(tests),'failures':0,'errors':0,'skips':0,'tools_manifest_sha256':sys.argv[2],'scientific_manifest_sha256':'5eb6e17ea8d19e52c99a589243228710994dcf137f59a6b9a6659a4fe719a7f4','scope':'launcher-only contracts and authenticated historical CPU success; not native diagnostic/readiness','proofs':[{'path':str(p),'sha256':hashlib.sha256(p.read_bytes()).hexdigest()} for p in paths]}
+(run/'assessment.json').write_text(json.dumps(assessment,indent=2)+'\n')
+print(json.dumps(assessment))
+PY

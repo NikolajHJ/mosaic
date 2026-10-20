@@ -10,7 +10,7 @@
   "scope": "Fix tools-only packaging omission: include unchanged CPU verifier used by fixture tests; mix50 adoption and random diagnostic, science02 unchanged",
   "parent_tools_failure": "EXIT:13fixturesetup failures missingCPUverifier;6diagnosticcontracts passed;adoption not reached",
   "parent_tools_job": "29759210",
-  "status": "mix50 completed/passed; random diagnostic queued and random long arm uncertified",
+  "status": "mix50 completed/passed; original diagnostic failed at launcher; replacement diagnostic29763693 submitted; random long arm uncertified",
   "cpu_job": "29759211",
   "cpu_status": "DONE/passed19",
   "cpu_counts": {
@@ -169,5 +169,12 @@
     "actual_api_status_confirmed": true,
     "scope": "completed mix50 preserved; remaining random diagnostic and concrete bug fixes under original gates",
     "duplicate_created": false
+  },
+  "diagnostic_launcher_retry": {
+    "receipt": "scripts/hpc/receipts/20261020-brd4-boltz-diagnostic-launch-05/campaign.json",
+    "job_id": "29763693",
+    "run": "/zhome/95/e/206121/mosaic-runs/20261020-brd4-boltz-random-diagnostic-02",
+    "historical_original_job": "29759213",
+    "historical_original_status": "EXIT1 before model; failed live CPU lookup; preserved"
   }
 }

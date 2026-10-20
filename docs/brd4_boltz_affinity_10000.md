@@ -5,8 +5,8 @@ only after passing, two independent fresh 10,000-update runs: 50% chain/uniform
 and seeded random probability initialization. Implementation is being validated;
 submission or scheduler success alone does not certify numerical readiness.
 
-**Current status, 20 October 2026, 08:59 Europe/Paris:** SSH authentication
-succeeded at 08:59:37. **Mix50 run 29759212 DONE**, with actual LSF successful
+**Current status, 20 October 2026, 17:25 Europe/Paris:** SSH access restored
+at 17:15:21. **Mix50 run 29759212 DONE**, with actual LSF successful
 completion from 19 October 20:41:13 to 20 October 08:35:34 (42,861 seconds).
 Completion metadata is now authenticated: **10,000 contiguous updates
 0..9999 and 10,001 contiguous saved states 0..10000**, with matching update
@@ -16,9 +16,13 @@ digests are retained. Local compact evidence verification passed 21 files,
 including snapshot bytes at 0/5000/10000. This does not verify all 10,001
 snapshot files or a full rendered report.
 
-**Random diagnostic 29759213 PEND**, waiting for a physical GPU on one host;
-it has not started. Random remains failed/uncertified, with no long random
-optimization submitted or tolerance/production-setting change selected.
+**Replacement random diagnostic 29763693 PEND**, actually submitted at
+17:25:41 with verified gpul40s/one exclusive L40S/four CPU slots/8 GiB per
+slot/60min and no inter-arm dependency. Launcher05 CPU 29763691 passed 20
+contracts and its actual outcome/proof bytes are verified. Original
+29759213 remains EXIT1 before model execution from aged-out live CPU
+lookup; earlier failures are preserved. Source02/init/FD gates unchanged.
+No new native diagnostic result; no long random optimization submitted.
 Tools02 CPU 29759211's 19-test pass, source02 CPU 29759068's 299-test pass and
 the adopted mix50 proof remain valid. Parent 29759069 stays EXIT1. Historical
 records below remain preserved; latest sealed scientific campaign receipt:
@@ -613,3 +617,52 @@ marked deliverable; no other experiment changed.
 
 Browser review also confirmed readable affinity, separate binder-probability
 and raw/weighted repair overlay plots.
+
+## Random diagnostic launcher failure discovered after restored access
+
+At 17:15:21 Europe/Paris on 20 October, preserved LSF/log evidence showed 29759213
+EXIT1 from 09:52:19–09:52:22 before model execution. Its live query for old
+CPU 29759211 no longer returned that completed job, triggering a launcher
+assertion. The actual passed CPU/proof records remain authoritative. The
+explicitly authorized fix is evidence authentication from hashed persisted
+actual final scheduler/LSF success, with allocated tooling tests and a new
+immutable release. Preserve this failure; no fabricated success, scientific
+source02 change, FD-gate waiver or long random submission. Failure hashes
+and the launcher CPU submission are recorded below; actual CPU outcome
+and GPU retry remain pending. See
+[the diagnostic record](brd4_boltz_random_gradient_diagnostic.md).
+
+Failure capture02 downloaded/safely extracted/all 11 file bytes verified;
+bhist/bacct history was permission-denied, so actual EXIT1 comes from the
+original LSF footer/logs. Failed capture01 is preserved. Authenticated
+seven-file launcher03 keeps diagnostic/scientific bytes unchanged and
+requires 19 allocated CPU contracts. Actual CPU 29763673 submitted hpc/one
+slot/2GiB/15min; no result or GPU retry yet. Exact archive/source pins and
+failure download path are in the diagnostic record above.
+
+The subsequent CPU 29763673 outcome was EXIT1 before tests at 17:20:21,
+from requested 1 GiB zhome reserve versus mandatory 4 GiB minimum. This is a
+launcher parameter failure, not measured storage exhaustion or a native
+failure. Source03/job/logs preserved; unique launcher04 will change only
+that CPU wrapper reserve and rerun allocated checks. No retry GPU submitted.
+
+Launcher04 is now authenticated (seven files, six identical 03; only the
+reserve character 1-to-4 changed in the 2,925-byte CPU wrapper). Actual new
+CPU 29763686 submitted hpc/one slot/2GiB/15min, outcome pending. Exact
+source/archive pins are in the diagnostic record; GPU retry remains gated
+and unsubmitted.
+
+CPU04 actual 29763686 DONE 17:23:10/19 passed in 1.13 seconds/fresh 4 GiB reserve/LSF
+success is preserved. Subsequent pre-certification inspection found actual
+bjobs `Status<D\nONE>` wrapping; source05 will normalize whitespace and
+retain exact canonical DONE/hpc checks, adding one planned contract for 20.
+No new failed native run, accepted fabricated status or GPU retry implied.
+
+Launcher05 all seven files authenticated; actual CPU 29763691 DONE/passed 20
+in 0.95 seconds, zero failures/errors/skips, with scheduler/LSF/assessment/XML
+and 13 proof files verified. Conservative quota 15 GiB free. Exact source and
+proof archive pins are in the diagnostic record. This is engineering proof
+validation, not native derivative success. Replacement diagnostic 29763693
+actually submitted 17:25:41, initial PEND; resource arguments and bjobs verified.
+Output `/zhome/95/e/206121/mosaic-runs/20261020-brd4-boltz-random-diagnostic-02/`.
+Mix50/report unchanged and random long optimization remains unsubmitted.
