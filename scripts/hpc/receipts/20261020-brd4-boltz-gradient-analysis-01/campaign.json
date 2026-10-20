@@ -1,0 +1,154 @@
+{
+  "tag": "20261020-brd4-boltz-gradient-analysis-01",
+  "updated_utc": "2026-10-20T17:16:03.250819+00:00",
+  "status": "saved-record audit complete; original random native readiness gate failed; no concrete integration fix identified; random long unsubmitted; automatic followup paused",
+  "source": {
+    "tag": "20261020-brd4-boltz-gradient-analysis-01",
+    "files": 3,
+    "manifest_sha256": "b9306cb3e01ee7ab2d6610da04bb726c5a2da6f42ae2ae5290868158a55e585f",
+    "archive_bytes": 6516,
+    "archive_sha256": "5aeef2a40b623f12e4c354952d790a0034c8add25c23954308d455736b8b410c",
+    "source_files": {
+      "scripts/analyze_boltz_gradient_diagnostic.py": "beb9de1c779c81f043d3e172d5436e236ef5a44e4c0ce3e6781a9ed379de255a",
+      "scripts/verify_stage0_release.py": "d3e5373b84b123fe2388db2e9493a5a76d1cfc7edcc53f73ff5746f935c49c02",
+      "scripts/hpc/brd4_boltz_gradient_analysis_cpu.lsf": "bdba8f9795619f5b7122efa19e41cb56df445645aba83dc1e9ab303be08c05db"
+    },
+    "remote_release": "/work3/s234818/mosaic/releases/20261020-brd4-boltz-gradient-analysis-01/source",
+    "run": "/zhome/95/e/206121/mosaic-runs/20261020-brd4-boltz-gradient-analysis-01",
+    "native_job": "29763949",
+    "native_input": "/zhome/95/e/206121/mosaic-runs/20261020-brd4-boltz-random-diagnostic-03/payload",
+    "report_sha256": "d5434e571adaf9581a8817db5ce88d387e1b31cc49a32dd13343880b98d1fda1",
+    "scope": "allocatedCPU saved native diagnostic records/NPZ audit only; no model inference, gate change, optimization or readiness approval"
+  },
+  "submission": {
+    "args": [
+      "bsub",
+      "-q",
+      "hpc",
+      "-n",
+      "1",
+      "-R",
+      "rusage[mem=2GB]",
+      "-W",
+      "15",
+      "-J",
+      "mosaic-boltz-gradient-audit",
+      "-o",
+      "/zhome/95/e/206121/mosaic-runs/20261020-brd4-boltz-gradient-analysis-01/stdout.%J.log",
+      "-e",
+      "/zhome/95/e/206121/mosaic-runs/20261020-brd4-boltz-gradient-analysis-01/stderr.%J.log",
+      "bash",
+      "-l",
+      "/work3/s234818/mosaic/releases/20261020-brd4-boltz-gradient-analysis-01/source/scripts/hpc/brd4_boltz_gradient_analysis_cpu.lsf",
+      "/work3/s234818/mosaic/releases/20261020-brd4-boltz-gradient-analysis-01/source",
+      "b9306cb3e01ee7ab2d6610da04bb726c5a2da6f42ae2ae5290868158a55e585f",
+      "/zhome/95/e/206121/mosaic-runs/20261020-brd4-boltz-gradient-analysis-01",
+      "/zhome/95/e/206121/mosaic-runs/20261020-brd4-boltz-random-diagnostic-03/payload",
+      "d5434e571adaf9581a8817db5ce88d387e1b31cc49a32dd13343880b98d1fda1"
+    ],
+    "stdout": "Job <29764094> is submitted to queue <hpc>.\n",
+    "stderr": "",
+    "returncode": 0,
+    "source": {
+      "tag": "20261020-brd4-boltz-gradient-analysis-01",
+      "files": 3,
+      "manifest_sha256": "b9306cb3e01ee7ab2d6610da04bb726c5a2da6f42ae2ae5290868158a55e585f",
+      "archive_bytes": 6516,
+      "archive_sha256": "5aeef2a40b623f12e4c354952d790a0034c8add25c23954308d455736b8b410c",
+      "source_files": {
+        "scripts/analyze_boltz_gradient_diagnostic.py": "beb9de1c779c81f043d3e172d5436e236ef5a44e4c0ce3e6781a9ed379de255a",
+        "scripts/verify_stage0_release.py": "d3e5373b84b123fe2388db2e9493a5a76d1cfc7edcc53f73ff5746f935c49c02",
+        "scripts/hpc/brd4_boltz_gradient_analysis_cpu.lsf": "bdba8f9795619f5b7122efa19e41cb56df445645aba83dc1e9ab303be08c05db"
+      },
+      "remote_release": "/work3/s234818/mosaic/releases/20261020-brd4-boltz-gradient-analysis-01/source",
+      "run": "/zhome/95/e/206121/mosaic-runs/20261020-brd4-boltz-gradient-analysis-01",
+      "native_job": "29763949",
+      "native_input": "/zhome/95/e/206121/mosaic-runs/20261020-brd4-boltz-random-diagnostic-03/payload",
+      "report_sha256": "d5434e571adaf9581a8817db5ce88d387e1b31cc49a32dd13343880b98d1fda1",
+      "scope": "allocatedCPU saved native diagnostic records/NPZ audit only; no model inference, gate change, optimization or readiness approval"
+    },
+    "scope": "allocatedCPU saved native diagnostic records/NPZ audit only; no model inference, gate change, optimization or readiness approval"
+  },
+  "native_evidence": {
+    "status": "verified",
+    "receipt": {
+      "path": "/zhome/95/e/206121/mosaic-runs/20261020-brd4-boltz-random-diagnostic-03-evidence-01.tar.gz",
+      "bytes": 68305,
+      "sha256": "9b824dc06142a55e2fdb35a951859e35a5f40a5b2d7158599755cb276cd34a17",
+      "manifest_sha256": "7696329cd526daf51ac05791bfc1d8da741e3c6ae1d2009f89d3fd64042b7fc6",
+      "files": 152,
+      "job_id": "29763949",
+      "report_sha256": "d5434e571adaf9581a8817db5ce88d387e1b31cc49a32dd13343880b98d1fda1",
+      "replay_sha256": "10b0524519380e9483c98a99a257b018c46ce3d08f318774f64dcb4cb1732289",
+      "status": "native diagnostic recorded; original readiness gate reproducibly failed",
+      "scope": "metadata/byte authentication only; numerical saved-record analysis remains allocated CPU"
+    },
+    "scope": "local stdlib safe extraction/path/byte/length/hash/JSON schema only; no numerical calculations"
+  },
+  "analysis_evidence": {
+    "status": "verified",
+    "receipt": {
+      "path": "/zhome/95/e/206121/mosaic-runs/20261020-brd4-boltz-gradient-analysis-01-evidence-01.tar.gz",
+      "bytes": 13308,
+      "sha256": "70c71a2b9750bcbb20117dab87209478f73c35f5390eade2702be187a20c2b81",
+      "manifest_sha256": "9b55f1e4e7b99dbd5c3337139a1ab69a222a404d13b38fa827839f44d822e65c",
+      "files": 9,
+      "analysis_sha256": "2c4b09423aaf53d581c409175bf7155d79ac4742c96cfa18f94ed38760a38fcb",
+      "job_id": "29764094",
+      "native_job_id": "29763949",
+      "classification": "observable_execution_difference",
+      "scope": "allocated CPU saved-record analysis completed; no native readiness or optimization approval"
+    },
+    "scope": "local stdlib path/byte/length/hash/JSON-schema only; numerical comparisons executed on allocated CPU"
+  },
+  "saved_analysis_summary": {
+    "status": "recorded",
+    "readiness_certificate": false,
+    "historical_gate_status": "failed",
+    "diagnostic_job_id": "29763949",
+    "analysis_job_id": "29764094",
+    "report_sha256": "d5434e571adaf9581a8817db5ce88d387e1b31cc49a32dd13343880b98d1fda1",
+    "replay_sha256": "10b0524519380e9483c98a99a257b018c46ce3d08f318774f64dcb4cb1732289",
+    "forwards": 132,
+    "backwards": 44,
+    "exact_value_and_head_agreement": true,
+    "exact_full_gradient_agreement": true,
+    "rng_fixed": false,
+    "maximum_contrast_matches_original": true,
+    "maximum_head_reconciliation_error": 1.4901161193847656e-08,
+    "classification": "observable_execution_difference"
+  },
+  "native_scheduler": {
+    "job_id": "29763949",
+    "status": "DONE",
+    "start_paris": "2026-10-20T18:20:07+02:00",
+    "end_paris": "2026-10-20T18:22:34+02:00",
+    "native_persisted_status": "recorded",
+    "native_readiness": "failed originalFD in all4groups; not readiness approval"
+  },
+  "analysis_scheduler": {
+    "job_id": "29764094",
+    "status": "DONE",
+    "start_paris": "2026-10-20T19:12:53+02:00",
+    "end_paris": "2026-10-20T19:12:55+02:00",
+    "persisted_status": "recorded",
+    "scope": "NumPy saved arrays only; no model inference/optimization"
+  },
+  "interpretation": {
+    "numerical_coverage": "all3native outputs/perhead across execution modes/repeats/checkpoint controls; fullADgradients across its repeats/checkpoint controls only",
+    "numerical_findings": "exact values/per-head/full-gradient agreement on all11points; original F/F/T gate reproduced in all4groups; maxcontrast direction unchanged",
+    "rng_caveat": "RNG fingerprints advanced in both variants; generic observable_execution_difference classification is state-consumption evidence, not observed stochastic predictions or a demonstrated integration defect",
+    "response": "finer diagnostic secants approach centerAD, with strongly changing endpointAD; consistent with nonlinear or FP32 response, not an exclusive proved root cause",
+    "policy": "finer scales remain diagnostic; never promoted to original readiness pass; original eps/tolerance/direction/init/objective unchanged",
+    "blocker": "no concrete implementation fix found under unchanged protocol; any new scientific validation/initialization requires explicit human direction"
+  },
+  "heartbeat": {
+    "id": "finish-combined-brd4-trajectory-report",
+    "actual_api_status": "PAUSED",
+    "reason": "authorized unresolved scientific-blocker endpoint",
+    "duplicate_created": false
+  },
+  "random_long_run": "not submitted",
+  "preserved_mix50": "29759212 completed/pass; scientific output and report untouched",
+  "local_execution_scope": "static editing, packaging, stdlib safe extraction/bytes/path/length/hash/JSON/XML reads only; all numerical analyses allocatedDTUHPC"
+}

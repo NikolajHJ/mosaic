@@ -1,7 +1,7 @@
 {
   "tag": "20261020-brd4-boltz-diagnostic-launch-06",
-  "updated_utc": "2026-10-20T16:19:25.381956+00:00",
-  "status": "strict JUnit producer fixed; allocated21-case CPU and post-DONE exact consumer pass; replacement diagnostic29763949 actually submitted; native random FD unresolved",
+  "updated_utc": "2026-10-20T17:17:24.396451+00:00",
+  "status": "native diagnostic29763949 recorded/DONE; original readinessFD still failed; saved-recordCPUaudit29764094 complete; random long unsubmitted; followup paused",
   "source": {
     "tag": "20261020-brd4-boltz-diagnostic-launch-06",
     "files": 8,
@@ -187,12 +187,40 @@
   "local_execution_scope": "static edits/packaging/stdlib bytes/path/hash/length/XML/JSON only; all tests and certificate consumer allocatedDTUHPC",
   "heartbeat": {
     "id": "finish-combined-brd4-trajectory-report",
-    "status": "ACTIVE",
-    "current_diagnostic": "29763949",
-    "duplicate_created": false,
-    "actual_api_status_confirmed": true
+    "actual_api_status": "PAUSED",
+    "reason": "unresolved scientific blocker under unchanged checks",
+    "duplicate_created": false
   },
-  "latest_scheduler_observation": {
+  "actual_native_outcome": {
+    "job_id": "29763949",
+    "status": "DONE",
+    "start_paris": "2026-10-20T18:20:07+02:00",
+    "end_paris": "2026-10-20T18:22:34+02:00",
+    "native_persisted_status": "recorded",
+    "native_readiness": "failed originalFD in all4groups; not readiness approval"
+  },
+  "native_evidence": {
+    "status": "verified",
+    "receipt": {
+      "path": "/zhome/95/e/206121/mosaic-runs/20261020-brd4-boltz-random-diagnostic-03-evidence-01.tar.gz",
+      "bytes": 68305,
+      "sha256": "9b824dc06142a55e2fdb35a951859e35a5f40a5b2d7158599755cb276cd34a17",
+      "manifest_sha256": "7696329cd526daf51ac05791bfc1d8da741e3c6ae1d2009f89d3fd64042b7fc6",
+      "files": 152,
+      "job_id": "29763949",
+      "report_sha256": "d5434e571adaf9581a8817db5ce88d387e1b31cc49a32dd13343880b98d1fda1",
+      "replay_sha256": "10b0524519380e9483c98a99a257b018c46ce3d08f318774f64dcb4cb1732289",
+      "status": "native diagnostic recorded; original readiness gate reproducibly failed",
+      "scope": "metadata/byte authentication only; numerical saved-record analysis remains allocated CPU"
+    },
+    "scope": "local stdlib safe extraction/path/byte/length/hash/JSON schema only; no numerical calculations"
+  },
+  "saved_record_audit": {
+    "receipt": "scripts/hpc/receipts/20261020-brd4-boltz-gradient-analysis-01/campaign.json",
+    "job_id": "29764094",
+    "status": "recorded/DONE; no concrete integration fix; original readiness failed"
+  },
+  "pre_execution_scheduler_observation": {
     "job_id": "29763949",
     "status": "PEND",
     "reserved_cpu_slots": 4,
@@ -200,5 +228,15 @@
     "reserved_at_paris": "2026-10-20T18:17:35+02:00",
     "reason": "Job slot limit reached:5hosts",
     "scientific_execution_started": false
+  },
+  "latest_scheduler_observation": {
+    "job_id": "29763949",
+    "status": "DONE",
+    "start_paris": "2026-10-20T18:20:07+02:00",
+    "end_paris": "2026-10-20T18:22:34+02:00",
+    "native_persisted_status": "recorded",
+    "native_readiness": "failed originalFD in all4groups; not readiness approval",
+    "scientific_execution_started": true,
+    "scientific_readiness_passed": false
   }
 }

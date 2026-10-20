@@ -4228,3 +4228,100 @@ start/ETA inferred. Existing heartbeat automation API confirmed ACTIVE,
 updated to 29763949/source06 receipt at
 `scripts/hpc/receipts/20261020-brd4-boltz-diagnostic-launch-06/campaign.json`.
 No duplicate automation or additional query in this follow-up.
+
+### 20 October 2026, 18:22 Europe/Paris — GPU03 recorded; original native gate still fails
+
+Diagnostic 29763949 actual DONE 18:22:34, started 18:20:07 n-62-13-18, 147 seconds.
+Persisted status recorded, not readiness pass. Checkpoint/direct-block modes
+with two repeats each all reproduce AD 9.497333526611328, original FD at 0.01
+7.5991362333 failed; 0.003 12.2960607211 failed; 0.001 9.7145438194 passed.
+All four groups fail unchanged two-adjacent-original-scale requirement.
+Frozen model/context before/after match original pins, identity_status passed.
+
+Preserving/downloading full raw NPZ/JSON/outcome evidence and preparing an
+allocated CPU saved-record analysis. Exact archive/byte-verification and
+interpretation pending; no curvature/checkpoint/other cause conclusion yet.
+No long random run, tolerance/protocol/science change or omitted failure.
+Completed mix50/report and all earlier launch evidence remain unchanged.
+
+### 20 October 2026 — native replay evidence authenticated and downloaded
+
+Actual 29763949 scheduler DONE/LSF success, recorded report, frozen digests,
+source and replay bindings authenticated. All 152 files safely extracted/
+every-file bytes verified at
+`results/hpc/20261020-brd4-boltz-random-diagnostic-03/native-evidence-01/verification.json`.
+Archive `/zhome/95/e/206121/mosaic-runs/20261020-brd4-boltz-random-diagnostic-03-evidence-01.tar.gz`,
+68,305 bytes SHA
+`9b824dc06142a55e2fdb35a951859e35a5f40a5b2d7158599755cb276cd34a17`,
+manifest SHA
+`7696329cd526daf51ac05791bfc1d8da741e3c6ae1d2009f89d3fd64042b7fc6`.
+Report SHA
+`d5434e571adaf9581a8817db5ce88d387e1b31cc49a32dd13343880b98d1fda1`,
+replay NPZ SHA
+`10b0524519380e9483c98a99a257b018c46ce3d08f318774f64dcb4cb1732289`.
+This verifies recorded native evidence, not original FD/readiness success.
+
+Preparing a unique three-file allocated CPU saved-record analysis, with
+source/job/outcome pending. No inference, optimization or gate waiver;
+no strong curvature/other causal conclusion before its actual evidence.
+No long random run; scientific data/history and mix50/report unchanged.
+
+### 20 October 2026 — saved-record native gradient audit authenticated and submitted
+
+Authenticated three-file source
+`/work3/s234818/mosaic/releases/20261020-brd4-boltz-gradient-analysis-01/source`,
+manifest SHA
+`b9306cb3e01ee7ab2d6610da04bb726c5a2da6f42ae2ae5290868158a55e585f`,
+archive 6,516 bytes SHA
+`5aeef2a40b623f12e4c354952d790a0034c8add25c23954308d455736b8b410c`.
+Actual audit CPU 29764094 submitted hpc/one slot/2GiB/15min, source report
+pinned to d5434e57...1fda1. Output
+`/zhome/95/e/206121/mosaic-runs/20261020-brd4-boltz-gradient-analysis-01/payload/analysis.json`.
+Static review found no blocker; actual result pending. No inference,
+optimization, native gate waiver or new long random run.
+
+Audit comparisons distinguish values/per-head outputs across three modes/
+repeats/variants from full AD gradients, available only in AD mode and
+compared across its repeats/variants. Do not fabricate other-mode gradients
+or claim cause/coverage before the actual analysis returns.
+
+### 20 October 2026, 19:12 Europe/Paris — saved-record audit recorded; original random gate remains blocked
+
+Actual audit 29764094 DONE 19:12:55, verified 132 forward/44 AD records. Exact
+three outputs/per-head agreement across modes/repeats/variants; full GX/GE
+exactly match only across AD repeats/variants where arrays exist. Original
+selectors row 2/aromatic 4-to-NONE 0 match. Original FD F/F/T in all four groups.
+Head reconciliation max 1.4901161193847656e-8; all probability mass positive,
+max row-sum error 1.1920928955078125e-7.
+
+rng_fixed false with changing RNG fingerprints drives generic classification
+observable_execution_difference, while no recorded numeric output/gradient
+difference occurs. Not a proven stochastic-output bug. Diagnostic FD 0.0003
+9.5221400261/0.0001 9.5006823540 approach AD 9.4973335266; endpoint AD
+at 0.003 is 2.8315377235/32.0355033875. This supports a steep scale-dependent
+nonlinear/FP32 hypothesis, not proven cause. No concrete integration defect
+identified. Original gate/settings remain unchanged, no random long run.
+
+All nine audit files verified at
+`results/hpc/20261020-brd4-boltz-gradient-analysis-01/evidence-01/verification.json`;
+archive 13,308 bytes SHA
+`70c71a2b9750bcbb20117dab87209478f73c35f5390eade2702be187a20c2b81`,
+manifest SHA
+`9b55f1e4e7b99dbd5c3337139a1ab69a222a404d13b38fa827839f44d822e65c`,
+analysis SHA
+`2c4b09423aaf53d581c409175bf7155d79ac4742c96cfa18f94ed38760a38fcb`.
+Follow-up pause planned pending actual API confirmation/human scientific
+direction; no new optimization or native readiness approval. Mix50/report
+and every historical failure remain preserved.
+
+Automation API subsequently confirmed existing heartbeat
+finish-combined-brd4-trajectory-report actually PAUSED, no duplicate, pending
+new human scientific direction. No automatic protocol/init change or new
+long random run. Current result receipt:
+`scripts/hpc/receipts/20261020-brd4-boltz-gradient-analysis-01/campaign.json`.
+Source06 receipt retains actual native outcome/audit pointer/pause and every
+historical failure. Both reviewers found no concrete integration defect;
+RNG-state advancement is not observed numerical nondeterminism in the
+exactly stable tested outputs and AD gradients. Original gate failure and
+scientific scope remain unchanged; this actual pause supersedes the planned
+pause note above.

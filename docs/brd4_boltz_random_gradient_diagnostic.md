@@ -1,25 +1,28 @@
 # BRD4 Boltz random-initialization gradient diagnostic
 
-**Current status, 20 October 2026, 18:17 Europe/Paris:** replacement GPU
-**29763949 PEND** was actually submitted at **18:17:33** after authenticated
-post-DONE proof checks. At 18:17:35 four CPU slots were reserved on
-n-62-13-14, but `Job slot limit reached` affected five hosts; no GPU start.
-The existing heartbeat is confirmed ACTIVE on this replacement/source06.
-Post-DONE CPU 29763946 passed the exact GPU consumer on original 19 and new 21
-proofs. Its 10 evidence files are verified; this was certificate validation,
-not additional unit/model tests. Source06 CPU 29763944's 21-test pass and
-strict 21-case XML remain valid. No new GPU start, replay, FD pass or long
-random optimization is claimed; the original derivative failure remains
-unresolved. Latest resources: gpul40s, one exclusive L40S, four CPU slots,
-8 GiB per slot, 60min, no inter-arm dependency; fresh 15 GiB conservative free.
+**Current status, 20 October 2026, 19:12 Europe/Paris: random remains blocked.**
+Native replay 29763949 actually completed at 18:22:34; saved-record audit
+**29764094 DONE 19:12:55**, with all nine downloaded audit files verified.
+All four original FD groups remain false/false/true. Values/per-head outputs
+match exactly across tested modes/repeats/variants; full AD gradients match
+across AD repeats/variants. No concrete integration defect was identified.
+
+Smaller diagnostic scales approach baseline AD and endpoint derivatives
+vary strongly, consistent with a scale-dependent nonlinear or FP32 response,
+but not proof of the cause. Recorded RNG fingerprints differ; the generic
+classification is not an observed numerical/stochastic-output discrepancy.
+Original gates/settings remain unchanged and no long random run is submitted.
+The existing heartbeat is actually PAUSED by the automation API, awaiting
+new human scientific direction; no automatic new protocol or initialization.
+Completed mix50/report remain unchanged.
 
 Original diagnostic 29759213 remains EXIT1 before model execution because
 its old live CPU lookup aged out. Its failure evidence, source03 reserve
 failure and source04 actual 19-test pass are preserved below. Scientific
 source02, initialization, graph/context and all original FD gates remain
-unchanged. Random's native derivative failure remains unresolved: no new
-GPU diagnostic result and no long random optimization is claimed. Mix50
-and its verified report remain unchanged.
+unchanged. The replacement produced the verified diagnostic evidence above;
+it did not certify random readiness. No long random optimization is submitted.
+Mix50 and its verified report remain unchanged.
 
 Independent mix50 run 29759212 is now scheduler DONE with actual LSF successful
 completion at 08:35:34. Completion metadata authenticates 10,000 contiguous
@@ -338,3 +341,120 @@ No GPU start or queue ETA inferred. Automation API confirmed existing
 `finish-combined-brd4-trajectory-report` ACTIVE, updated to 29763949 and
 `scripts/hpc/receipts/20261020-brd4-boltz-diagnostic-launch-06/campaign.json`.
 No duplicate automation or further query for this follow-up.
+
+## Actual GPU03 completion and reproduced original FD failure
+
+Diagnostic 29763949 actually DONE 18:22:34 Europe/Paris, started 18:20:07 on
+n-62-13-18, 147 seconds. Persisted diagnostic status recorded means the replay
+finished, not that native readiness passed. Checkpointed and direct-block
+modes, each repeated twice, reproduced the same original directional result:
+AD 9.497333526611328; central FD 7.5991362333 at 0.01 failed, 12.2960607211 at
+0.003 failed, 9.7145438194 at 0.001 passed. All four groups therefore fail the
+unchanged two-adjacent-passing-scales criterion.
+
+Model/context before and after match the original frozen identities;
+frozen_identity_status passed. Preserve the full raw NPZ/JSON/scheduler
+records, with exact archive/download identities pending. An allocated CPU
+saved-record analysis is being prepared to interpret the pattern. Do not
+infer curvature, a checkpoint bug or any other cause before that evidence.
+No long random optimization or protocol/tolerance change; earlier launch
+failures and mix50/report remain unchanged.
+
+## Verified native replay evidence; saved-record analysis preparation
+
+Actual scheduler DONE, LSF Successfully completed, recorded diagnostic report,
+frozen digests, source and replay bindings are authenticated. All 152 files
+downloaded, safely extracted and every-file bytes verified at
+`results/hpc/20261020-brd4-boltz-random-diagnostic-03/native-evidence-01/verification.json`.
+Remote archive
+`/zhome/95/e/206121/mosaic-runs/20261020-brd4-boltz-random-diagnostic-03-evidence-01.tar.gz`,
+68,305 bytes SHA
+`9b824dc06142a55e2fdb35a951859e35a5f40a5b2d7158599755cb276cd34a17`;
+manifest SHA
+`7696329cd526daf51ac05791bfc1d8da741e3c6ae1d2009f89d3fd64042b7fc6`.
+Report SHA
+`d5434e571adaf9581a8817db5ce88d387e1b31cc49a32dd13343880b98d1fda1`;
+replay NPZ SHA
+`10b0524519380e9483c98a99a257b018c46ce3d08f318774f64dcb4cb1732289`.
+
+This verifies the actual recorded replay and its unchanged failed original
+FD criterion; it is not a readiness pass. A separate three-file immutable
+CPU analysis of saved records is being prepared, with source/job identities
+and outcome pending. It performs no inference or optimization and cannot
+waive a native gate. Do not conclude curvature or another cause yet.
+
+## Allocated saved-record audit submitted
+
+Authenticated three-file source
+`/work3/s234818/mosaic/releases/20261020-brd4-boltz-gradient-analysis-01/source`,
+manifest SHA
+`b9306cb3e01ee7ab2d6610da04bb726c5a2da6f42ae2ae5290868158a55e585f`;
+archive 6,516 bytes SHA
+`5aeef2a40b623f12e4c354952d790a0034c8add25c23954308d455736b8b410c`.
+Actual CPU 29764094 submitted hpc/one slot/2GiB/15min. Output:
+`/zhome/95/e/206121/mosaic-runs/20261020-brd4-boltz-gradient-analysis-01/payload/analysis.json`.
+Native input is pinned to the recorded report SHA above. Static review found
+no blocker; this is not an audit result or numerical/native pass.
+
+The audit coverage must distinguish saved values/per-head outputs across
+three forward modes, repeats and implementation variants from full AD
+gradients. Full gradient arrays exist only in AD mode and can be compared
+across its repeats/variants; no-grad or forward-only modes do not supply
+missing gradient arrays. Actual findings remain pending; no inference,
+optimization or gate waiver occurs in this saved-record audit.
+
+## Allocated audit completed; conservative interpretation
+
+Actual CPU 29764094 DONE at 19:12:55 Europe/Paris authenticated 132 saved
+forward records and 44 AD records. This was saved-record analysis, without
+new model execution. The audit finds:
+
+- All three output values and per-head values exactly agree across the
+  three forward modes, repeats and checkpoint/direct-block variants.
+- Full atom/bond gradient arrays exactly agree across AD repeats/variants.
+  Those arrays exist only for AD mode; other-mode gradients are not invented.
+- All four original selectors match row 2, aromatic 4-to-NONE 0, and the original
+  three-scale gate remains false/false/true in every group.
+- Ensemble/head reconciliation error is at most 1.4901161193847656e-8.
+  Recorded probabilities remain positive; maximum row-sum error is
+  1.1920928955078125e-7.
+
+`rng_fixed` is false because recorded RNG fingerprints differ. The audit's
+`observable_execution_difference` classification is therefore retained,
+but it is driven by that fingerprint difference while recorded output and
+AD arrays agree exactly. It is not evidence of a numerical mode mismatch
+or a proven stochastic-output bug. No concrete implementation defect has
+been established.
+
+| Epsilon | Central FD | Original gate scale? |
+| --- | ---: | --- |
+| 0.01 | 7.5991362333 | Yes, fails |
+| 0.003 | 12.2960607211 | Yes, fails |
+| 0.001 | 9.7145438194 | Yes, agrees |
+| 0.0003 | 9.5221400261 | No, diagnostic only |
+| 0.0001 | 9.5006823540 | No, diagnostic only |
+
+Baseline AD is 9.4973335266. At epsilon 0.003, endpoint AD values are
+2.8315377235 and 32.0355033875. The finer FD values approaching baseline AD
+and strong endpoint variation support a scale-dependent nonlinear/FP32
+response as a plausible explanation, **not a proven root cause**. Fine-scale
+agreement cannot replace the failed original requirement for two adjacent
+original scales. No tolerance, initial graph, scorer or protocol changed.
+
+All nine audit files downloaded and verified at
+`results/hpc/20261020-brd4-boltz-gradient-analysis-01/evidence-01/verification.json`.
+Proof archive 13,308 bytes, SHA
+`70c71a2b9750bcbb20117dab87209478f73c35f5390eade2702be187a20c2b81`;
+manifest SHA
+`9b55f1e4e7b99dbd5c3337139a1ab69a222a404d13b38fa827839f44d822e65c`.
+Analysis SHA
+`2c4b09423aaf53d581c409175bf7155d79ac4742c96cfa18f94ed38760a38fcb`.
+The original scientific blocker remains unresolved. The automation API
+confirmed existing heartbeat `finish-combined-brd4-trajectory-report`
+actually PAUSED, no duplicate. New human scientific direction is needed;
+no automatic protocol/init change, long random optimization or further
+native run is approved by this audit. Current result receipt:
+`scripts/hpc/receipts/20261020-brd4-boltz-gradient-analysis-01/campaign.json`.
+Both reviewers found no concrete integration defect; advancing RNG state
+is not observed numerical nondeterminism in these exactly stable outputs/
+AD gradients. Preserve the failed original gate and every historical record.
