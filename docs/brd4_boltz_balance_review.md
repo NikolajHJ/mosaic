@@ -1,11 +1,20 @@
 # Boltz mix50 learning-rate and chemistry-balance review
 
-20 October 2026. Saved-only allocated analysis **29760613 DONE** supports
-an earlier, gentler chemistry ramp and a persistent validity-stability
-signal. LR 0.1 is a reasonable maximum to test with existing backtracking,
-but the run does not establish that it is better than 0.03. Retain 10,000
-updates for the next comparison. These are recommendations only: no new
-scientific configuration is implemented or molecular run submitted.
+20 October 2026. **Updated user preference: keep learning rate 0.03 for now**
+and investigate chemistry gradients that remain useful on valid molecules.
+LR 0.01 is only a possible future comparison. The user withdrew the earlier
+LR 0.1 recommendation; it is preserved below as superseded proposal history.
+The saved-only analysis 29760613 remains DONE and verified. Earlier schedule
+and update-budget suggestions remain untested proposals, not new defaults
+or submitted molecular experiments. See
+[the continuous-chemistry design](brd4_continuous_chemistry.md).
+
+The new continuous-chemistry comparison is not executed: one SSH status/
+quota attempt timed out, with no quota result, upload or job submission.
+Local prototype/static preparation does not validate the candidate. The
+tentative soft local-compatibility preference is a design hypothesis pending
+allocated checks, including sulfur-bias scrutiny; the earlier completed
+saved-only analysis below remains valid.
 
 ## Authenticated analysis
 
@@ -116,9 +125,12 @@ Keep the explicitly declared validity-stability term as the priority. A
 schedule change alone still supplies zero repair gradient on the existing
 valid route and therefore may not prevent boundary switching.
 
-Test **maximum LR 0.1 with backtracking**, and preferably compare against
-LR 0.03 under the same new chemistry/feasibility protocol. Changing both
-schedule and rate in one arm cannot isolate the learning-rate effect.
+The earlier proposal was to test **maximum LR 0.1 with backtracking** against
+a matched 0.03 arm. **This rate proposal is superseded by the user's later
+instruction to retain 0.03.** No 0.1 run was implemented or submitted. Current
+work compares candidate validity gradients on saved states, without changing
+the production loss/configuration. A possible 0.01 rate comparison is deferred.
+Changing both schedule and rate would confound their effects.
 Do not extend beyond 10,000 merely to chase the endpoint; the observed issue
 is unstable validity and competing guidance, not evidence that an extra
 budget resolves it. None of these settings is selected, implemented or

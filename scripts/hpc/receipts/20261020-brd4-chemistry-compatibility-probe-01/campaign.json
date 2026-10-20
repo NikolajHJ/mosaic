@@ -1,0 +1,61 @@
+{
+  "tag": "20261020-brd4-chemistry-compatibility-probe-01",
+  "status": "prepared locally; not uploaded, submitted or numerically tested",
+  "recorded_at_utc": "2026-10-20T07:46:33.134418+00:00",
+  "scope": "experimental standalone chemistry loss investigation on saved snapshots; production sources/configs unchanged",
+  "source_files": {
+    "scripts/chemistry_compatibility_probe.py": {
+      "bytes": 5640,
+      "sha256": "4929fbf5f989e0cf5931c4db9ef7830dc4a241bf1018cb3f49b2801880d673f9"
+    },
+    "scripts/run_chemistry_compatibility_probe.py": {
+      "bytes": 8437,
+      "sha256": "b4c546522823b98f790111452dc33321b34e98a2006ebfe95a818ce108a5a2ef"
+    },
+    "scripts/hpc/chemistry_compatibility_probe.lsf": {
+      "bytes": 2528,
+      "sha256": "52bb84cbd86190c42ae9fcb907696c74b33d4b5c11dc18f48920d2f373538cf3"
+    },
+    "tests/test_chemistry_compatibility_probe.py": {
+      "bytes": 6239,
+      "sha256": "f5948d86c03e3ca4235052824319562201d9a441691ef45cd11991cf68039aed"
+    }
+  },
+  "manifest_sha256": "53fb385712f37412f204018e49dfb0f4c6a2a9adde14ff3e5b9e8760d70fea29",
+  "archive_bytes": 8592,
+  "archive_sha256": "edd16a3aafa5092e2decea16f13c9ba3d9575de37edfd6d54db7c4e61f0ff489",
+  "local_archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\releases\\20261020-brd4-chemistry-compatibility-probe-01\\source.tar.gz",
+  "planned_remote_source": "/work3/s234818/mosaic/releases/20261020-brd4-chemistry-compatibility-probe-01/source",
+  "scientific_source": "/work3/s234818/mosaic/releases/20261019-brd4-boltz-affinity-02/source",
+  "scientific_manifest_sha256": "5eb6e17ea8d19e52c99a589243228710994dcf137f59a6b9a6659a4fe719a7f4",
+  "learning_rate": {
+    "current": 0.03,
+    "optional_future_control": 0.01,
+    "previous_0_1_proposal": "withdrawn"
+  },
+  "static_checks": [
+    "Python AST parsed",
+    "Ruff format/check passed",
+    "Git Bash -n launcher passed"
+  ],
+  "planned_cpu_resources": {
+    "queue": "hpc",
+    "slots": 2,
+    "memory_gib_per_slot": 4,
+    "wall_minutes": 10,
+    "gpus": 0
+  },
+  "planned_tests": 11,
+  "tests_executed": false,
+  "native_model_execution": false,
+  "ssh_attempt": {
+    "attempts": 1,
+    "command": "ssh -o BatchMode=yes -o ConnectTimeout=20 dtu-hpc bash -lc date/getquota_zhome.sh",
+    "outcome": "login banner then ssh_dispatch_run_fatal: Connection to 192.38.95.132 port 22: Connection timed out",
+    "quota_result_received": false,
+    "upload_attempted": false,
+    "job_submitted": false
+  },
+  "packaging_metadata_retry": "Initial timestamp generation failed because local Python lacked tzdata; existing source/archive preserved; UTC stdlib timestamp used to finish receipt",
+  "required_next_validation": "allocated CPU enumeration/gradient/invariance tests and saved-state probes; fresh unchanged native/coupled gates before any production optimization"
+}

@@ -3946,3 +3946,54 @@ untested. Max LR 0.1/backtracking with matched
 No scientific config implemented or new optimization submitted. Full exact
 evidence and caveats in brd4_boltz_balance_review.md; official Boltz docs
 separate active-ligand affinity ranking from binder/decoy classification.
+
+### 20 October 2026 — valid-state chemistry investigation prepared; HPC access unavailable
+
+User withdrew the LR 0.1 proposal and requested useful chemistry gradients
+on valid molecules while retaining LR 0.03; 0.01 is only a possible future
+comparison. Draft design compares always-on hard-cap DP, atom-probability-
+weighted local compatibility DP and valid-target bounded margins. No
+production loss/configuration/default or molecular experiment changed.
+
+Exactly one SSH status/quota attempt used BatchMode=yes/ConnectTimeout=20,
+emitted the login banner and then failed Connection timed out to
+192.38.95.132 port 22. No quota result, upload or allocated job occurred;
+no retry. This is an access failure, not a failed scientific test. Local
+work continues as static prototype/test authoring and immutable packaging
+only; numerical comparison remains pending and release hashes are not
+yet recorded. The prior saved analysis 29760613 remains verified.
+
+Working design preference is soft atom-probability-weighted local
+compatibility, tentatively because it supplies both atom/bond gradients
+without a hard argmax-cap switch. No measured superiority or pass claimed;
+allocated checks and sulfur/aromatic/connectivity limitations remain.
+See brd4_continuous_chemistry.md; no new molecular run submitted.
+
+### 20 October 2026 — continuous chemistry research source sealed locally; validation pending
+
+Finished the isolated soft local compatibility prototype, hard-cap and
+bounded valid-target margin comparators, saved-gradient probe driver and
+11 planned engineering tests. Production `src/`, configurations, v1 loss
+and LR 0.03 remain unchanged; optional 0.01 is a future control, not a
+submitted setting. Ruff/AST/Bash syntax and independent static review passed.
+No local numerical tests, new chemistry evaluation, model execution or
+optimization occurred. HPC remains inaccessible after the single recorded
+SSH attempt; no further connection, upload or submission was attempted.
+
+Local four-file release
+`results/releases/20261020-brd4-chemistry-compatibility-probe-01/source.tar.gz`,
+8,592 bytes SHA
+`edd16a3aafa5092e2decea16f13c9ba3d9575de37edfd6d54db7c4e61f0ff489`,
+manifest SHA
+`53fb385712f37412f204018e49dfb0f4c6a2a9adde14ff3e5b9e8760d70fea29`.
+Campaign receipt has exact per-file pins and the access failure. Initial
+local timestamp metadata generation lacked tzdata; the existing source and
+archive were preserved and the receipt was completed with a stdlib UTC
+timestamp. This was packaging metadata, not a scientific failure.
+
+Planned saved-state probes explicitly distinguish unaccepted perturbations
+using stored native gradients from actual reevaluated Boltz scores or native
+readiness. The proposed separately weighted compatibility signal still
+needs allocated enumeration/FD/invariance tests, saved-state measurements
+and fresh native/coupled checks before any production adoption. Sulfur bias,
+aromatic approximation and lack of connectivity guarantees remain explicit.

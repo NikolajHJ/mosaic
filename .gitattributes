@@ -11,6 +11,7 @@ scripts/hpc/receipts/**/*.sh text eol=lf
 scripts/templates/*.html text eol=lf
 src/mosaic/small_molecule/*.py text eol=lf
 tests/test_small_molecule*.py text eol=lf
+tests/test_chemistry_compatibility_probe.py text eol=lf
 
 # Byte-authenticated upstream snapshots must survive Windows checkouts intact.
 src/mosaic/small_molecule/chemistry/_reference/** -text
