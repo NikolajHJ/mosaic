@@ -1,12 +1,17 @@
 # BRD4 Boltz random-initialization gradient diagnostic
 
-**Current status, 20 October 2026, 17:25 Europe/Paris:** replacement diagnostic
-**29763693 PEND** was actually submitted at **17:25:41**, with resource
-arguments and scheduler state authenticated. At 17:25:43 it reserved four
-CPU slots on n-62-13-18 but still waited for `ngpus_physical` on one host;
-this is not a GPU start. Launcher05 is authenticated;
-CPU 29763691 DONE/passed 20 in 0.95 seconds (14 proof contracts plus six
-unchanged diagnostic contracts), with all 13 downloaded proof files verified.
+**Current status, 20 October 2026, 18:17 Europe/Paris:** replacement GPU
+**29763949 PEND** was actually submitted at **18:17:33** after authenticated
+post-DONE proof checks. At 18:17:35 four CPU slots were reserved on
+n-62-13-14, but `Job slot limit reached` affected five hosts; no GPU start.
+The existing heartbeat is confirmed ACTIVE on this replacement/source06.
+Post-DONE CPU 29763946 passed the exact GPU consumer on original 19 and new 21
+proofs. Its 10 evidence files are verified; this was certificate validation,
+not additional unit/model tests. Source06 CPU 29763944's 21-test pass and
+strict 21-case XML remain valid. No new GPU start, replay, FD pass or long
+random optimization is claimed; the original derivative failure remains
+unresolved. Latest resources: gpul40s, one exclusive L40S, four CPU slots,
+8 GiB per slot, 60min, no inter-arm dependency; fresh 15 GiB conservative free.
 
 Original diagnostic 29759213 remains EXIT1 before model execution because
 its old live CPU lookup aged out. Its failure evidence, source03 reserve
@@ -261,3 +266,75 @@ ETA is inferred. Current versioned receipt:
 The automation API updated the existing heartbeat
 `finish-combined-brd4-trajectory-report` to actual ACTIVE, monitoring 29763693
 and that receipt. No duplicate automation, gate waiver or new molecular run.
+
+## Replacement02 XML-count failure and preserved evidence
+
+Actual 29763693 ran 18:05:00–18:05:05 on n-62-13-18, EXIT1 before model,
+replay, checkpoint control or FD. Original persisted CPU19 proof passed;
+source05 CPU XML then failed strict declared-count/test-case checking.
+Its 20 passed cases declared 31 suite tests because 11 successful `unittest.subTest`
+events inflated pytest 9's counter. This is an engineering artifact
+mismatch, not a new random derivative outcome. No original XML was rewritten
+and the strict consumer was not loosened.
+
+All 12 failed-GPU evidence files downloaded and verified at
+`results/hpc/20261020-brd4-boltz-diagnostic-launch-05/gpu-failure-01/verification.json`.
+Remote archive
+`/zhome/95/e/206121/mosaic-runs/20261020-brd4-boltz-diagnostic-launch-05-failure-01.tar.gz`,
+8,437 bytes SHA
+`afe2ab01bfdbdaf8e5d19d813a6b86a88a5bde272bfccdc796df8258ac93fd86`;
+manifest SHA
+`21df0ff070322c2281b901118e149331746f0a743e914679ae9584dd304992d1`.
+
+## Source06 and actual CPU21 pass
+
+Source06 removes three subTest contexts, retaining all 11 variants/assertions,
+and adds a regression requiring inflated counters to fail. The producer
+strictly checks raw XML before assessment. All eight files authenticated at
+`/work3/s234818/mosaic/releases/20261020-brd4-boltz-diagnostic-launch-06/source`.
+Manifest SHA
+`ec45d67b99f8e1645bfca1b228a2ce7b706edb4d9312886a08d74549aa138a4a`;
+archive 14,708 bytes SHA
+`fdbd19455b342aeafff6e5d2b8bca9b9eaa86b7e9533efe0745a0d92a91e53f4`.
+Independent static review found no blocker.
+
+CPU 29763944 actually DONE 18:15:38, 21 passed in 1.68 seconds: 15 proof contracts
+and six unchanged diagnostic contracts. Raw XML suite21/cases21, zero errors.
+Assessment SHA
+`8606e593748b626432498ba9ce7ee0a20b08f4d63092bf6f0ee27eaf76d4b076`.
+All 13 proof files verified at
+`results/hpc/20261020-brd4-boltz-diagnostic-launch-06/cpu-proofs/verification.json`.
+Proof archive 6,598 bytes SHA
+`b83ecdbc92ff116b2bef6d09d79e57ad7ec013b4d11658f7a3bec2bf66cba186`;
+manifest SHA
+`976383f3b2c5cc283ac81ebfb3ec085668bf2ff79d819ab0bfbd11b1cea0d0bc`.
+
+## Exact post-DONE consumer certificate and actual GPU03 submission
+
+CPU 29763946 actually DONE/passed original 19 and new 21 GPU-consumer
+certificates after actual CPU completion, using authenticated scheduler/
+LSF/assessment pins. This ran the exact consumer before another GPU request;
+no additional unit tests or model execution. Assessment SHA
+`664e0ac8e95f67ac7766e46b3e99b0a0e45e512f27695e61ba3e8b000e51d47d`.
+All 10 certificate files verified at
+`results/hpc/20261020-brd4-boltz-diagnostic-launch-06/certificate-proofs/verification.json`.
+Proof archive 5,997 bytes SHA
+`2f5320d7c63999c1b1a5fc2558b568117a54fd042c9259c745e2c85c3664fed3`;
+manifest SHA
+`82779b348d8f6177e8e3c00a3c3dc3d41097cf84341577db862bb10722ac018c`.
+
+Replacement diagnostic **29763949** actually submitted 18:17:33 Europe/Paris,
+initial PEND. Verified arguments: gpul40s, one exclusive L40S, four CPU slots,
+8 GiB per slot, 60min, no inter-arm dependency, fresh 15 GiB conservative free.
+Output `/zhome/95/e/206121/mosaic-runs/20261020-brd4-boltz-random-diagnostic-03/`.
+Actual submission record
+`results/hpc/20261020-brd4-boltz-diagnostic-launch-06/gpu-submission/submission.json`.
+All scientific/diagnostic/init/context/native FD gates unchanged. Submission
+is not a GPU start, diagnostic outcome or native pass; no long random run.
+
+Final compact check 29763949 remained PEND: four CPU slots reserved on
+n-62-13-14 at 18:17:35, reason `Job slot limit reached` on five hosts.
+No GPU start or queue ETA inferred. Automation API confirmed existing
+`finish-combined-brd4-trajectory-report` ACTIVE, updated to 29763949 and
+`scripts/hpc/receipts/20261020-brd4-boltz-diagnostic-launch-06/campaign.json`.
+No duplicate automation or further query for this follow-up.

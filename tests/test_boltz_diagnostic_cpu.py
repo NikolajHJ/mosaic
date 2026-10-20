@@ -109,7 +109,7 @@ class PersistedDiagnosticCpuTests(unittest.TestCase):
             ("scientific_manifest_sha256", "d" * 64),
             ("tests", 3),
         ):
-            with self.subTest(field=field), self.assertRaises(ValueError):
+            with self.assertRaises(ValueError):
                 self.invoke(**{field: value})
 
     def test_passed_label_cannot_hide_raw_xml_failure(self):
@@ -130,6 +130,16 @@ class PersistedDiagnosticCpuTests(unittest.TestCase):
         self.record["proofs"][0]["sha256"] = CPU.sha(self.xml)
         self.persist()
         with self.assertRaisesRegex(ValueError, "testcase count"):
+            self.invoke()
+
+    def test_inflated_suite_counter_is_not_accepted_as_additional_testcases(self):
+        self.xml.write_text(
+            '<testsuites><testsuite tests="13" failures="0" errors="0" skipped="0">'
+            '<testcase name="one"/><testcase name="two"/></testsuite></testsuites>'
+        )
+        self.record["proofs"][0]["sha256"] = CPU.sha(self.xml)
+        self.persist()
+        with self.assertRaisesRegex(ValueError, "declared count differs"):
             self.invoke()
 
     def test_raw_suite_failures_cannot_be_hidden_without_case_children(self):
@@ -163,10 +173,9 @@ class PersistedDiagnosticCpuTests(unittest.TestCase):
             "Job <200>, Status <EXIT>, Queue <hpc> Done successfully.",
             "Job <200>, Status <DONE>, Queue <gpul40s> Done successfully.",
         ):
-            with self.subTest(content=content):
-                self.final.write_text(content)
-                with self.assertRaisesRegex(ValueError, "scheduler did not certify"):
-                    self.invoke()
+            self.final.write_text(content)
+            with self.assertRaisesRegex(ValueError, "scheduler did not certify"):
+                self.invoke()
 
     def test_missing_final_evidence_and_bad_external_final_pin_fail_closed(self):
         with self.assertRaisesRegex(ValueError, "scheduler/LSF hash"):
@@ -183,10 +192,9 @@ class PersistedDiagnosticCpuTests(unittest.TestCase):
             "Subject: Job 200: <fixture> Done\nExited with exit code 1.\nSuccessfully completed.\n",
             "Subject: Job 200: <fixture> Done\n",
         ):
-            with self.subTest(content=content):
-                self.stdout.write_text(content)
-                with self.assertRaisesRegex(ValueError, "LSF output did not certify"):
-                    self.invoke()
+            self.stdout.write_text(content)
+            with self.assertRaisesRegex(ValueError, "LSF output did not certify"):
+                self.invoke()
 
 
 if __name__ == "__main__":

@@ -34,8 +34,13 @@ cd "$launcher"
 import hashlib,json,os,sys,xml.etree.ElementTree as ET
 from pathlib import Path
 run=Path(sys.argv[1])
-tests=ET.parse(run/'tests.xml').findall('.//testcase')
-assert tests and not any(c.find(t) is not None for c in tests for t in ('failure','error','skipped'))
+xml=ET.parse(run/'tests.xml').getroot()
+tests=list(xml.iter('testcase'))
+assert len(tests)==21 and not any(list(c.iter(t)) for c in tests for t in ('failure','error','skipped'))
+suites=list(xml.iter('testsuite'))
+containers=suites+list(xml.iter('testsuites'))
+assert suites and all(int(s.get(k,'0'))==0 for s in containers for k in ('errors','failures','skipped'))
+assert all('tests' not in s.attrib or int(s.attrib['tests'])==len(list(s.iter('testcase'))) for s in containers)
 paths=[run/'tests.xml',run/'original-cpu-verification.json']
 assessment={'status':'passed','job_id':os.environ['LSB_JOBID'],'tests':len(tests),'failures':0,'errors':0,'skips':0,'tools_manifest_sha256':sys.argv[2],'scientific_manifest_sha256':'5eb6e17ea8d19e52c99a589243228710994dcf137f59a6b9a6659a4fe719a7f4','scope':'launcher-only contracts and authenticated historical CPU success; not native diagnostic/readiness','proofs':[{'path':str(p),'sha256':hashlib.sha256(p.read_bytes()).hexdigest()} for p in paths]}
 (run/'assessment.json').write_text(json.dumps(assessment,indent=2)+'\n')

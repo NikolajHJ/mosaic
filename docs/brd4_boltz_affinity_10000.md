@@ -5,7 +5,7 @@ only after passing, two independent fresh 10,000-update runs: 50% chain/uniform
 and seeded random probability initialization. Implementation is being validated;
 submission or scheduler success alone does not certify numerical readiness.
 
-**Current status, 20 October 2026, 17:25 Europe/Paris:** SSH access restored
+**Current status, 20 October 2026, 18:17 Europe/Paris:** SSH access restored
 at 17:15:21. **Mix50 run 29759212 DONE**, with actual LSF successful
 completion from 19 October 20:41:13 to 20 October 08:35:34 (42,861 seconds).
 Completion metadata is now authenticated: **10,000 contiguous updates
@@ -18,15 +18,16 @@ every raw snapshot byte. Separately, the full saved-only report validated
 all 10,001 frames, passed local artifact verification/browser QA and is
 available at **http://127.0.0.1:8774/report.html**.
 
-**Replacement random diagnostic 29763693 PEND**, actually submitted at
-17:25:41 with verified gpul40s/one exclusive L40S/four CPU slots/8 GiB per
-slot/60min and no inter-arm dependency. Launcher05 CPU 29763691 passed 20
-contracts and its actual outcome/proof bytes are verified. At 17:25:43 the
-job reserved four CPU slots on n-62-13-18 but remained PEND on one physical
-GPU; no start is claimed. Original
-29759213 remains EXIT1 before model execution from aged-out live CPU
-lookup; earlier failures are preserved. Source02/init/FD gates unchanged.
-No new native diagnostic result; no long random optimization submitted.
+**Replacement random diagnostic 29763949 PEND**, actually submitted at
+18:17:33; still PEND at 18:17:35 with four CPU slots reserved on n-62-13-14
+and `Job slot limit reached` on five hosts. No GPU start. CPU 29763946
+DONE/passed the exact original 19/new 21 GPU
+proof-consumer certificates. No new unit/model test or gradient pass is
+claimed. Source06 CPU 29763944 actual 21-test pass/strict XML and certificate
+proof bytes are verified. gpul40s/one exclusive L40S/four CPU slots/8 GiB per
+slot/60min/no inter-arm dependency; fresh 15 GiB conservative free. Earlier
+launch failures and original random native FD failure remain preserved,
+science/init/context/gates unchanged, no long random optimization.
 Tools02 CPU 29759211's 19-test pass, source02 CPU 29759068's 299-test pass and
 the adopted mix50 proof remain valid. Parent 29759069 stays EXIT1. Historical
 records below remain preserved; latest sealed scientific campaign receipt:
@@ -101,7 +102,7 @@ Hard/fresh-pose rescoring remains necessary before interpreting molecular utilit
 - [ ] Authenticate final native readiness, then submit two independent GPU arms.
 
 Historical initial resources: CPU readiness hpc4slots/4GiB per slot/1h; native readiness
-gpua10 one exclusive GPU/four slots/8GiB per slot/2h. The modest BRD4 context is
+gpua10 one exclusive GPU/four slots/8 GiB per slot/2h. The modest BRD4 context is
 tested on that actual GPU before long submissions. Each full arm uses the same
 GPU queue/shape and23h, no inter-arm dependency. Cache assets are reused read-only
 from the existing pinned Boltz environment; no reinstall or model download.
@@ -676,3 +677,34 @@ Final compact check 29763693 PEND: four CPU slots reserved n-62-13-18 at
 ACTIVE via automation API now follows this replacement and
 `scripts/hpc/receipts/20261020-brd4-boltz-diagnostic-launch-05/campaign.json`.
 No additional query, duplicate automation or native-gate change.
+
+## Source06 retry after XML-count verification failure
+
+Diagnostic 29763693 ran 18:05:00–18:05:05 and EXIT1 before model/replay/FD.
+Source05 XML contained 20 passed cases but declared 31 suite tests because 11
+successful subTest events were counted under pytest 9. Original XML/failure
+bytes are preserved. Strict verifier unchanged; source06 removed the three
+subTest contexts while retaining every variant/assertion and added an
+inflated-counter rejection regression.
+
+Source06 all eight files authenticated; actual CPU 29763944 DONE 18:15:38,
+21 passed in 1.68 seconds (15 proof+six unchanged diagnostic), raw suite21/cases21
+and 13 verified proof files. Post-DONE CPU 29763946 actually DONE/passed the
+exact GPU consumer on original 19/new 21 certificates, with 10 verified files;
+this was evidence authentication, not additional unit/model tests.
+
+Only after that actual scheduler/LSF/proof authentication, replacement
+**29763949** submitted 18:17:33, initial PEND, gpul40s/one exclusive L40S/
+four slots/8 GiB per slot/60min/no inter-arm dependency, fresh 15 GiB conservative
+free. Output
+`/zhome/95/e/206121/mosaic-runs/20261020-brd4-boltz-random-diagnostic-03/`.
+Exact source/assessment/archive/certificate pins and actual submission record
+are in [the diagnostic record](brd4_boltz_random_gradient_diagnostic.md).
+No GPU start or native result inferred; random FD remains unresolved,
+long random run unsubmitted, science/init/context/gates and mix50/report
+unchanged.
+
+Existing heartbeat API confirmed ACTIVE on 29763949/source06 receipt
+`scripts/hpc/receipts/20261020-brd4-boltz-diagnostic-launch-06/campaign.json`,
+no duplicate. Final PEND reason is job-slot limit on five hosts with four
+CPU slots reserved n-62-13-14 at 18:17:35, not an actual GPU start.

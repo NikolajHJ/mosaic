@@ -1,0 +1,50 @@
+#!/bin/bash
+# Post-DONE CPU execution of the exact GPU certificate consumer; no model imports.
+set -euo pipefail
+[[ -n "${LSB_JOBID:-}" ]]
+launcher=$1
+launcher_manifest=$2
+launcher_cpu=$3
+launcher_assessment=$4
+launcher_job=$5
+launcher_tests=$6
+launcher_scheduler=$7
+launcher_stdout=$8
+parent=$9
+tools=/work3/s234818/mosaic/releases/20261019-brd4-boltz-independent-02/source
+tools_manifest=848cb213d91be09513439f719ece8e43ec55991bd473f1bc233f3d80eb204c1b
+release=/work3/s234818/mosaic/releases/20261019-brd4-boltz-affinity-02/source
+manifest=5eb6e17ea8d19e52c99a589243228710994dcf137f59a6b9a6659a4fe719a7f4
+tools_cpu=/zhome/95/e/206121/mosaic-runs/20261019-brd4-boltz-independent-02-cpu/payload
+module load python3/3.12.11
+python=/work3/s234818/mosaic/envs/protenix-tiny/bin/python
+mkdir "$parent/payload"
+run="$parent/payload"
+export PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+"$python" "$release/scripts/verify_stage0_release.py" "$launcher" "$launcher_manifest"
+"$python" "$tools/scripts/verify_stage0_release.py" "$tools" "$tools_manifest"
+"$python" "$release/scripts/verify_stage0_release.py" "$release" "$manifest"
+cmp "$launcher/scripts/diagnose_boltz_random_gradient.py" "$tools/scripts/diagnose_boltz_random_gradient.py"
+"$python" "$release/scripts/hpc/zhome_quota_preflight.py" --run-dir "$run" --minimum-free-gib 4
+"$python" "$launcher/scripts/check_boltz_diagnostic_cpu.py" \
+  --root "$tools_cpu" --job 29759211 --tests 19 \
+  --assessment-sha256 bc76e33927104e88a9e019b706d0ed4c6e1fc8f3bd4460264acad13ca7594448 \
+  --tools-manifest "$tools_manifest" --scientific-manifest "$manifest" \
+  --scheduler-sha256 9ea1c0ea6e5aa539934a61106d44b89c69442e68d96267cd8b40c4e551629516 \
+  --stdout-sha256 eb712ecc4c7d410905fd8a8573260328b85b9ff48b9a4c42fefcd394d0d7a2c3 \
+  --output "$run/original-cpu-verification.json"
+"$python" "$launcher/scripts/check_boltz_diagnostic_cpu.py" \
+  --root "$launcher_cpu" --job "$launcher_job" --tests "$launcher_tests" \
+  --assessment-sha256 "$launcher_assessment" \
+  --tools-manifest "$launcher_manifest" --scientific-manifest "$manifest" \
+  --scheduler-sha256 "$launcher_scheduler" --stdout-sha256 "$launcher_stdout" \
+  --output "$run/launcher-cpu-verification.json"
+"$python" - "$run" "$launcher_manifest" "$launcher_job" <<'PY'
+import hashlib,json,os,sys
+from pathlib import Path
+run=Path(sys.argv[1])
+paths=[run/'original-cpu-verification.json',run/'launcher-cpu-verification.json',run/'quota_preflight.json']
+assessment={'status':'passed','job_id':os.environ['LSB_JOBID'],'upstream_cpu_job':sys.argv[3],'launcher_manifest_sha256':sys.argv[2],'scientific_manifest_sha256':'5eb6e17ea8d19e52c99a589243228710994dcf137f59a6b9a6659a4fe719a7f4','scope':'allocated post-DONE original and launcher CPU certificates consumed exactly as at GPU entry; no model or gradient execution','proofs':[{'path':str(p),'sha256':hashlib.sha256(p.read_bytes()).hexdigest()} for p in paths]}
+(run/'assessment.json').write_text(json.dumps(assessment,indent=2)+'\n')
+print(json.dumps(assessment))
+PY

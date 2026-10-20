@@ -4137,3 +4137,94 @@ Automation API updated existing finish-combined-brd4-trajectory-report to
 actual ACTIVE following 29763693/current05 receipt; no duplicate. Separate
 full mix50 report already verified 10,001 frames and browser QA at 8774 is
 unchanged; no random long run or new native pass.
+
+### 20 October 2026, 18:05 Europe/Paris — replacement diagnostic verifier EXIT1 before model
+
+Actual 29763693 RUN 18:05:00 on n-62-13-18, EXIT1 at 18:05:05. Original CPU19
+persisted-proof verification passed first. Source05 CPU XML declared-suite-
+count versus test-case-record comparison then rejected the evidence; exact
+format cause is being investigated. CPU 29763691 actual 20-test pass remains
+preserved. No model loading, graph replay, checkpoint control or finite
+differences reached. This is engineering proof verification, not a new
+scientific gradient failure or pass.
+
+Preserve all failure logs/source/job and original random native FD failure.
+Failure archive/fix pins/new tests or retry outcomes pending. Science02/
+initialization/context/native gates unchanged, random long unsubmitted,
+completed mix50 and report unchanged. No new native result inferred.
+
+### 20 October 2026 — subTest XML counter cause confirmed; strict source06 fix prepared
+
+CPU05 raw XML has 20 passed test-case records but suite count 31, inflated by
+11 successful unittest.subTest events under pytest 9. Preserve actual CPU05
+outcome/cases and original inconsistent XML; strict verifier remains unchanged.
+Source06 removes three subTest contexts while retaining all 11 variants/
+assertions, adds inflated-counter rejection regression, 21 tests planned.
+Producer will enforce strict XML counters before assessment. A separate
+allocated post-DONE CPU preflight executes the exact GPU consumer on original
+19/new 21 proofs with actual final scheduler/LSF pins before requesting GPU.
+Pins/jobs/outcomes pending; no science/init/diagnostic/native gate changes.
+
+All 12 failed-GPU evidence files downloaded/verified at
+`results/hpc/20261020-brd4-boltz-diagnostic-launch-05/gpu-failure-01/verification.json`.
+Remote `/zhome/95/e/206121/mosaic-runs/20261020-brd4-boltz-diagnostic-launch-05-failure-01.tar.gz`,
+8,437 bytes SHA
+`afe2ab01bfdbdaf8e5d19d813a6b86a88a5bde272bfccdc796df8258ac93fd86`,
+manifest SHA
+`21df0ff070322c2281b901118e149331746f0a743e914679ae9584dd304992d1`.
+Byte verification authenticates this engineering failure, not a native pass.
+
+### 20 October 2026, 18:16 Europe/Paris — source06 CPU 21 passed; exact-consumer certificate submitted
+
+Authenticated all eight source06 files at
+`/work3/s234818/mosaic/releases/20261020-brd4-boltz-diagnostic-launch-06/source`,
+manifest SHA
+`ec45d67b99f8e1645bfca1b228a2ce7b706edb4d9312886a08d74549aa138a4a`,
+archive 14,708 bytes SHA
+`fdbd19455b342aeafff6e5d2b8bca9b9eaa86b7e9533efe0745a0d92a91e53f4`.
+Actual CPU 29763944 DONE 18:15:38, 21 passed in 1.68 seconds (15 proof+six unchanged
+diagnostic), raw XML suite21/cases21 zero errors. Independent review no blocker.
+Assessment SHA
+`8606e593748b626432498ba9ce7ee0a20b08f4d63092bf6f0ee27eaf76d4b076`.
+All 13 proof files downloaded/verified at
+`results/hpc/20261020-brd4-boltz-diagnostic-launch-06/cpu-proofs/verification.json`,
+archive 6,598 bytes SHA
+`b83ecdbc92ff116b2bef6d09d79e57ad7ec013b4d11658f7a3bec2bf66cba186`,
+manifest SHA
+`976383f3b2c5cc283ac81ebfb3ec085668bf2ff79d819ab0bfbd11b1cea0d0bc`.
+
+Actual post-DONE certificate CPU 29763946 submitted 18:16:27, hpc/one slot/
+2GiB/15min, output source06-certificate-cpu family. Must actually DONE and
+pass exact GPU consumer against original 19/new 21 actual evidence before
+GPU request. Outcome pending, no GPU retry03. Original strict native gates,
+science/diagnostic/init/context unchanged; no new gradient pass inferred.
+
+### 20 October 2026, 18:17 Europe/Paris — exact-consumer CPU passed; diagnostic03 submitted
+
+Post-DONE CPU 29763946 actually DONE/passed original 19+new 21 exact GPU-consumer
+certificates; scheduler/LSF/assessment/proofs authenticated. No additional
+unit/model tests or native FD executed. Assessment SHA
+`664e0ac8e95f67ac7766e46b3e99b0a0e45e512f27695e61ba3e8b000e51d47d`.
+All 10 files verified at
+`results/hpc/20261020-brd4-boltz-diagnostic-launch-06/certificate-proofs/verification.json`;
+archive 5,997 bytes SHA
+`2f5320d7c63999c1b1a5fc2558b568117a54fd042c9259c745e2c85c3664fed3`,
+manifest SHA
+`82779b348d8f6177e8e3c00a3c3dc3d41097cf84341577db862bb10722ac018c`.
+
+After that actual authentication, GPU diagnostic 29763949 submitted 18:17:33,
+initial PEND, gpul40s/one exclusive L40S/four slots/8 GiB per slot/60min/no
+inter-arm dependency, fresh 15 GiB conservative free. Output
+`/zhome/95/e/206121/mosaic-runs/20261020-brd4-boltz-random-diagnostic-03/`.
+Raw submission
+`results/hpc/20261020-brd4-boltz-diagnostic-launch-06/gpu-submission/submission.json`.
+Original source05 GPU failure/CPU03 failure/CPU04 and 06 passes preserved;
+science02/diagnostic/init/gates unchanged. No GPU start/result, native FD
+pass or long random optimization inferred. Mix50/report unchanged.
+
+Final compact 29763949 check remained PEND: four CPU slots reserved on
+n-62-13-14 at 18:17:35; reason Job slot limit reached on five hosts. No GPU
+start/ETA inferred. Existing heartbeat automation API confirmed ACTIVE,
+updated to 29763949/source06 receipt at
+`scripts/hpc/receipts/20261020-brd4-boltz-diagnostic-launch-06/campaign.json`.
+No duplicate automation or additional query in this follow-up.

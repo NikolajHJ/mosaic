@@ -1,7 +1,7 @@
 {
   "tag": "20261020-brd4-boltz-diagnostic-launch-05",
   "updated_utc": "2026-10-20T15:26:16.127926+00:00",
-  "status": "replacement diagnostic submitted; random long optimization remains unsubmitted and uncertified",
+  "status": "diagnostic29763693 EXIT1 before model due incompatible JUnit counts; source05 historical CPU20case pass preserved; replacement source06",
   "scope": "launcher-only correction; original diagnostic, scientific source02, initialization and checks unchanged",
   "source": {
     "tag": "20261020-brd4-boltz-diagnostic-launch-05",
@@ -229,5 +229,30 @@
     "reserved_at_paris": "2026-10-20T17:25:43+02:00",
     "reason": "requirements for reserving ngpus_physical not satisfied on1host",
     "scientific_execution_started": false
+  },
+  "actual_diagnostic_outcome": {
+    "job_id": "29763693",
+    "start_paris": "2026-10-20T18:05:00+02:00",
+    "end_paris": "2026-10-20T18:05:05+02:00",
+    "status": "EXIT1",
+    "cause": "suite declared31 versus20testcases; strict verifier kept",
+    "failure_evidence": {
+      "status": "verified",
+      "receipt": {
+        "path": "/zhome/95/e/206121/mosaic-runs/20261020-brd4-boltz-diagnostic-launch-05-failure-01.tar.gz",
+        "bytes": 8437,
+        "sha256": "afe2ab01bfdbdaf8e5d19d813a6b86a88a5bde272bfccdc796df8258ac93fd86",
+        "manifest_sha256": "21df0ff070322c2281b901118e149331746f0a743e914679ae9584dd304992d1",
+        "files": 12,
+        "job_id": "29763693",
+        "outcome": "EXIT1 before model/replay/FD; strict CPU XML declaration/cardinality mismatch",
+        "scope": "preserved launcher failure; historical20 actual CPU testcases passed but suite counter31 is incompatible; not scientific gate result"
+      },
+      "scope": "local stdlib byte/path/length/hash/XML schema only; no numerical tests or model execution"
+    }
+  },
+  "superseded_by": {
+    "receipt": "scripts/hpc/receipts/20261020-brd4-boltz-diagnostic-launch-06/campaign.json",
+    "job_id": "29763949"
   }
 }
