@@ -1,0 +1,46 @@
+{
+  "tag": "20261021-brd4-jq1-25-fixed-report-01",
+  "status": "Allocated report CPU failed:3 invalid simplex fixture cases;222passed; callback correctly blocked; no collectors/rendering submitted",
+  "scope": "Only saved native probabilities, readouts and scalar records; no new scientific capture/scoring/repair/diffusion",
+  "native_jobs": {
+    "protenix": "29777709",
+    "boltz2": "29778203",
+    "boltz2_chemistry": "29778204"
+  },
+  "source": {
+    "local_archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261021-brd4-jq1-25-fixed-report\\source01\\source.tar.gz",
+    "archive_bytes": 53431,
+    "archive_sha256": "4cdb6d54e17ed92e9f7c9341893b47cb5e71b8827fcb49b410bc734ea409a03f",
+    "manifest_sha256": "727e62ff02090c2e2829ab2be74b0bfcd27fc3db43986c3a89f739e7bd1c28ef",
+    "files": 13,
+    "external_authenticated_sources": {
+      "science02": "1e3a8a21e2fa68e24d1c9229238999c42a4a9b44bcc78344e73e188c87d1ee64",
+      "launcher03": "9ee7bf1d6bf412acdc37fc83415476dbefdf45db89533571d4a646ee16f33772",
+      "launcher04": "75a76dacf8de25f4ebd2d3b3fe114b1af6092064a01edf141650295300670ab3"
+    },
+    "remote_expected": "/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-report-01/source",
+    "git_reference": "f998507e4a98a04700786ede2eb15b282b7a5539",
+    "normalized_new_file_line_endings": []
+  },
+  "root_expected": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-report-01",
+  "milestone_progress": {
+    "protenix": 0,
+    "boltz2": 0,
+    "boltz2_chemistry": 0
+  },
+  "published_fixed_report": null,
+  "historical_viewer_preserved": "http://127.0.0.1:8776/report.html",
+  "new_viewer_expected": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261021-brd4-jq1-25-fixed-report\\viewer",
+  "cpu_validation": {
+    "cpu_job": "29778232",
+    "callback_job": "29778233",
+    "actual_status": "EXIT",
+    "cases": 225,
+    "passed": 222,
+    "failures": 3,
+    "errors": 0,
+    "skips": 0,
+    "evidence": "results/hpc/20261021-brd4-jq1-25-fixed-report/source01-failure/verification.json"
+  },
+  "numerical_rendering": "not_run"
+}

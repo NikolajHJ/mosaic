@@ -1,0 +1,26 @@
+#!/bin/bash
+# Saved-only report CPU jobs. Native scientific jobs and inputs are immutable.
+set -euo pipefail
+[[ -n "${LSB_JOBID:-}" ]]
+release=$1
+root=$2
+manifest=$3
+phase=$4
+arm=$5
+parent=$6
+science=/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-02/source
+launcher03=/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-storage-03/source
+launcher04=/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-storage-04/source
+module load python3/3.12.11
+python=/work3/s234818/mosaic/envs/protenix-tiny/bin/python
+export PYTHONPATH="$release/scripts:$release/tests:$launcher04/scripts:$launcher03/scripts:$science/scripts:$science/src" PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+export CUDA_VISIBLE_DEVICES='' JAX_PLATFORMS=cpu JAX_ENABLE_X64=0
+export OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 MKL_NUM_THREADS=2
+export MPLCONFIGDIR="$parent/mplcache"
+"$python" "$release/scripts/verify_stage0_release.py" "$release" "$manifest"
+"$python" "$release/scripts/verify_stage0_release.py" "$science" 1e3a8a21e2fa68e24d1c9229238999c42a4a9b44bcc78344e73e188c87d1ee64
+"$python" "$release/scripts/verify_stage0_release.py" "$launcher03" 9ee7bf1d6bf412acdc37fc83415476dbefdf45db89533571d4a646ee16f33772
+"$python" "$release/scripts/verify_stage0_release.py" "$launcher04" 75a76dacf8de25f4ebd2d3b3fe114b1af6092064a01edf141650295300670ab3
+source "$science/scripts/hpc/boltz_node_tmpdir.sh"
+cd "$release"
+"$python" scripts/jq1_fixed_report_ops.py --phase "$phase" --root "$root" --source "$release" --manifest "$manifest" --parent "$parent" --arm "$arm"

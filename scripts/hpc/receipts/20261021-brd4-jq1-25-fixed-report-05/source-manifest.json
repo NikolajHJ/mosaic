@@ -1,0 +1,29 @@
+{
+  "tag": "20261021-brd4-jq1-25-fixed-report-05",
+  "scope": "Saved-only fixed-step report; native jobs, science02 and immutable historical reports unchanged",
+  "native_jobs": {
+    "protenix": "29777709",
+    "boltz2": "29778203",
+    "boltz2_chemistry": "29778204"
+  },
+  "external_authenticated_sources": {
+    "science02": "1e3a8a21e2fa68e24d1c9229238999c42a4a9b44bcc78344e73e188c87d1ee64",
+    "launcher03": "9ee7bf1d6bf412acdc37fc83415476dbefdf45db89533571d4a646ee16f33772",
+    "launcher04": "75a76dacf8de25f4ebd2d3b3fe114b1af6092064a01edf141650295300670ab3"
+  },
+  "files": {
+    "scripts/jq1_fixed_report_contract.py": "b287154b3915089759757511d8d40587c7a72bab37d361b7dafa71422b15bf0d",
+    "scripts/render_jq1_fixed_report.py": "9a04218caa7cc2ed771b47d767d74112e44858b6f47032f00327cb5e2351f234",
+    "scripts/render_jq1_fixed_interim.py": "3def1f7b2c49e4280a995e8ed4594b2a0658cb396e796c0ec926761c1324356a",
+    "scripts/capture_jq1_fixed_completion.py": "d2f027f34194689a2fa5b5f7b1a1e54dd918e167b8aa02ab57e57970b0069c9d",
+    "scripts/publish_jq1_fixed_report.py": "ab7993800fde66484f0f8f7407e18442cc00e6b64fc2aa0ebfcc4a8c6378583c",
+    "scripts/jq1_fixed_report_ops.py": "f4dcb0951ff0c384b7115b13eeef821f2978d4b30ecc8d277bd5a079d2903c42",
+    "scripts/templates/jq1_fixed_report.html": "6a3ce2e0cde8cea72379382dc19b5d8437f1489817d98e06dcb6af18150eea16",
+    "scripts/hpc/jq1_fixed_report_stage.lsf": "f6cdb34d5c9a88fb8c3414f39a271c3593d83f1d13de80d3102d3636306d989d",
+    "scripts/verify_stage0_release.py": "d3e5373b84b123fe2388db2e9493a5a76d1cfc7edcc53f73ff5746f935c49c02",
+    "tests/test_jq1_fixed_report_contract.py": "aec492b67ae8a8f67e98ccc592e62c219bff7f1658d4e7773a89dd68ac6cf56b",
+    "tests/test_jq1_fixed_render.py": "83cdbf9a3cf0e9cec03890d9ad246e6161856526f6a95be8a18c865e2aea0303",
+    "tests/test_jq1_fixed_publish.py": "7b41ccd08e992a52451ef3400acb79d6b35ea15bb5daa581c4b8e475c6c343b5",
+    "tests/test_jq1_fixed_ops.py": "9c7068a1d9b523a0bbb71ea01693f6ef48bac7f73f6470c08a8e1f59f51e3cc6"
+  }
+}

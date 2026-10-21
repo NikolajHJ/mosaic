@@ -27,3 +27,15 @@ scripts/hpc/receipts/20261020-brd4-boltz-balance-01/* text eol=lf
 # Keep the sealed recovery fixtures and source receipt stable on Windows.
 tests/test_fixed25_recover_*.py text eol=lf
 scripts/hpc/receipts/20261021-brd4-jq1-25-fixed-storage-04/* -text -eol
+
+# New fixed-step report fixtures and authenticated receipts.
+tests/test_jq1_fixed_*.py text eol=lf
+scripts/hpc/receipts/20261021-brd4-jq1-25-fixed-report-01/* -text -eol
+
+scripts/hpc/receipts/20261021-brd4-jq1-25-fixed-report-02/* -text -eol
+
+scripts/hpc/receipts/20261021-brd4-jq1-25-fixed-report-03/* -text -eol
+
+scripts/hpc/receipts/20261021-brd4-jq1-25-fixed-report-04/* -text -eol
+
+scripts/hpc/receipts/20261021-brd4-jq1-25-fixed-report-05/* -text -eol

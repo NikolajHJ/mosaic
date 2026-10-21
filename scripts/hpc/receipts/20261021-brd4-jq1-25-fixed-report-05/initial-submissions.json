@@ -1,0 +1,41 @@
+{
+  "cpu": {
+    "utc": "2026-10-21T21:05:57.519425+00:00",
+    "phase": "cpu",
+    "args": [
+      "bsub",
+      "-q",
+      "hpc",
+      "-n",
+      "2",
+      "-R",
+      "span[hosts=1]",
+      "-R",
+      "rusage[mem=4GB]",
+      "-W",
+      "00:30",
+      "-J",
+      "mosaic-fixed-report05-cpu",
+      "-oo",
+      "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-report-05/cpu/stdout.%J.log",
+      "-eo",
+      "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-report-05/cpu/stderr.%J.log",
+      "bash",
+      "-l",
+      "/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-report-05/source/scripts/hpc/jq1_fixed_report_stage.lsf",
+      "/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-report-05/source",
+      "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-report-05",
+      "72c3569e49676dc00c448137829fea6ff3abba342b9d512979920314a8845698",
+      "cpu",
+      "none",
+      "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-report-05/cpu"
+    ],
+    "outcome": "submitted",
+    "returncode": 0,
+    "stdout": "Job <29778252> is submitted to queue <hpc>.\n",
+    "stderr": "",
+    "job_id": "29778252"
+  },
+  "report_manifest": "72c3569e49676dc00c448137829fea6ff3abba342b9d512979920314a8845698",
+  "scope": "Publisher-only CPU validation; no certificate dispatcher, collectors, rendering or native submissions"
+}

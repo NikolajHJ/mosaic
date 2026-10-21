@@ -1,0 +1,31 @@
+{
+  "version": "jq1-25-fixed-saved-report-v1",
+  "path": "edition-0001/report.html",
+  "complete": false,
+  "input_jobs": [
+    "29777709",
+    "29778203",
+    "29778204"
+  ],
+  "included_updates": [
+    10000,
+    765,
+    99
+  ],
+  "states": [
+    10001,
+    766,
+    100
+  ],
+  "milestone_progress": {
+    "protenix": 10000,
+    "boltz2": 0,
+    "boltz2_chemistry": 0
+  },
+  "html_sha256": "a5aae7516495443924989e47b666bca6d1b838cec3f5253b32bf64c4c5039f3d",
+  "report_receipt_sha256": "c38ee0cf56db85f3fe0ed212aab13a33809f7889e5e06c03cd87964b21108901",
+  "published_utc": "2026-10-21T21:07:20.278149+00:00",
+  "verified_input": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261021-brd4-jq1-25-fixed-report\\interim-0001-delivery\\archive-01",
+  "verified_archive_sha256": "bc7bf1da47981a4638bb4d06bf7e321d3b101053e26e92737ce0aa187dc61ae5",
+  "verified_files_copied": 226
+}

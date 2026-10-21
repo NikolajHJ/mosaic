@@ -1,0 +1,106 @@
+{
+  "status": "passed",
+  "suite": "jq1-fixed-saved-report-contract-v1",
+  "tests": 225,
+  "module_counts": {
+    "test_jq1_fixed_report_contract": 83,
+    "test_jq1_fixed_render": 44,
+    "test_jq1_fixed_publish": 42,
+    "test_jq1_fixed_ops": 21,
+    "test_boltz_affinity_report": 26,
+    "test_small_molecule_chemistry_report": 3,
+    "test_small_molecule_chemistry_ramp_report": 6
+  },
+  "cpu_certificate_sha256": "2a5bb4b09c3ded76c03e631e9929a36a0d358ff77a8fe2c53b8379d5d22d5992",
+  "files": {
+    "cpu-certificate.json": {
+      "bytes": 1287,
+      "sha256": "2a5bb4b09c3ded76c03e631e9929a36a0d358ff77a8fe2c53b8379d5d22d5992"
+    },
+    "jobs.json": {
+      "bytes": 466,
+      "sha256": "06eb2f613bda13a235260dac5e53f4e75c72dc0652d87b7f21b26ffa030def83"
+    },
+    "initial-submissions.json": {
+      "bytes": 2595,
+      "sha256": "004a00b773363efa3da1045d81d795380916392e817b5df44c0e4575c62b0323"
+    },
+    "certify-cpu/stdout.29778244.log": {
+      "bytes": 2644,
+      "sha256": "a64388a93af7df21b3f24d431434d867d655d2e7daa8ba39a3a76b466bd8d94f"
+    },
+    "certify-cpu/stderr.29778244.log": {
+      "bytes": 233,
+      "sha256": "7d57e9e44355166e210a310a2b90b7d8543b85c5ffbb82276c701f4dd1f23271"
+    },
+    "cpu/scheduler-final-1.txt": {
+      "bytes": 3535,
+      "sha256": "0c9f3d28de93953590bb2c57f73ac6ba7f3646db9f9ce87db18aab21b22f9b74"
+    },
+    "cpu/stdout.29778243.log": {
+      "bytes": 2191,
+      "sha256": "5290af6cfbf3e75f6baf75b54183331a814d8286a2324a4afea5e6028939a667"
+    },
+    "cpu/payload/report-tests.xml": {
+      "bytes": 43253,
+      "sha256": "a637ac7fff01e6a62ccc3bc7e5c7d97515ae1714c3b859be1f43e4f157bc0839"
+    },
+    "cpu/payload/report-tests.log": {
+      "bytes": 1623,
+      "sha256": "cb509e633a4243b0935e07088a8338e32f3f4d5d82c6cae84dd8eac5e9b032ee"
+    },
+    "cpu/payload/test-invocation.json": {
+      "bytes": 1092,
+      "sha256": "1b5d3ffda87abd9aedc37e23b37c0ad2b07bb956ce3a64922e13fc9e833ca3d9"
+    },
+    "complete-protenix/submission.json": {
+      "bytes": 1163,
+      "sha256": "7b9d0bf10ad521c82ef4fc1c80f6457135517d0cc1368dc3788922bea4252ecf"
+    },
+    "complete-protenix/scheduler-at-submission.txt": {
+      "bytes": 2470,
+      "sha256": "ad972832ea41dd0878f8e7eebaeadd70049b906aac0f13886a5225822262efc8"
+    },
+    "complete-boltz2/submission.json": {
+      "bytes": 1184,
+      "sha256": "ef2f56883d12a466f7dfe271868749e31ed3188465bf581133c5dba53d6692c4"
+    },
+    "complete-boltz2/scheduler-at-submission.txt": {
+      "bytes": 2526,
+      "sha256": "3ce59fff6773d96e0e834e7fb1ff57bd4000bac0a463d410026ce4013eb8e641"
+    },
+    "complete-boltz2_chemistry/submission.json": {
+      "bytes": 1244,
+      "sha256": "e99b383fde5a3208f6b1eec156ea9d62851340380661f86dc5c37b5854a6fb19"
+    },
+    "complete-boltz2_chemistry/scheduler-at-submission.txt": {
+      "bytes": 2604,
+      "sha256": "f8bdd3ae1422024a0af6fa833571818127c9ce77c341ef0f3df86dbcdf8310e8"
+    },
+    "interim-0001/submission.json": {
+      "bytes": 1135,
+      "sha256": "bddc42f0f4f031cbeb215c70792c24c3be96bd1f344ec3ba26ef05845851eb50"
+    },
+    "interim-0001/scheduler-at-submission.txt": {
+      "bytes": 2446,
+      "sha256": "4784eb58f8611f614621375ff257fe5e1a3a94c71c8ffadb18d217f8a3934b47"
+    },
+    "combined-report/submission.json": {
+      "bytes": 1211,
+      "sha256": "6e8f6e2e9fcd676829906f4cf9bde15c9f11f6ab7ea2351b5a8d505e957a6dac"
+    },
+    "combined-report/scheduler-at-submission.txt": {
+      "bytes": 2584,
+      "sha256": "eec3f66a0079799bf2ac7270e8ccfb65d0586900799d20c22e6375a8ceb44a0e"
+    },
+    "scheduler-29778243.txt": {
+      "bytes": 3535,
+      "sha256": "0c9f3d28de93953590bb2c57f73ac6ba7f3646db9f9ce87db18aab21b22f9b74"
+    },
+    "scheduler-29778244.txt": {
+      "bytes": 3551,
+      "sha256": "c363ffef4b8769d0c8aa2b4eabbc66ba83535e36fa0fa0c4babcee1829f431e1"
+    }
+  },
+  "scope": "Independent stdlib byte/XML/schema/scheduler/LSF only; numerical report fixtures ran on allocated HPC"
+}

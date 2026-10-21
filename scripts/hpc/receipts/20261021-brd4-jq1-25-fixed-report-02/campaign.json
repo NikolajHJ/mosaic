@@ -1,0 +1,42 @@
+{
+  "tag": "20261021-brd4-jq1-25-fixed-report-02",
+  "status": "CPU29778238 EXIT legacy fixture import collection error; callback29778239 EXIT correctly blocked; no rendering submitted",
+  "scope": "Only saved native probabilities, readouts and scalar records; no new scientific capture/scoring/repair/diffusion",
+  "native_jobs": {
+    "protenix": "29777709",
+    "boltz2": "29778203",
+    "boltz2_chemistry": "29778204"
+  },
+  "source": {
+    "local_archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261021-brd4-jq1-25-fixed-report\\source02\\source.tar.gz",
+    "archive_bytes": 53487,
+    "archive_sha256": "9ed7eb09c942a58f2cb8c9df5880ca7196215abcaf300551a74ee231d5e064e9",
+    "manifest_sha256": "3b78673801b3875fd040dff9d814a869e5f0172fa8dea164ffb85656e6b3ad5e",
+    "files": 13,
+    "external_authenticated_sources": {
+      "science02": "1e3a8a21e2fa68e24d1c9229238999c42a4a9b44bcc78344e73e188c87d1ee64",
+      "launcher03": "9ee7bf1d6bf412acdc37fc83415476dbefdf45db89533571d4a646ee16f33772",
+      "launcher04": "75a76dacf8de25f4ebd2d3b3fe114b1af6092064a01edf141650295300670ab3"
+    },
+    "remote_expected": "/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-report-02/source",
+    "git_reference": "f998507e4a98a04700786ede2eb15b282b7a5539",
+    "normalized_new_file_line_endings": []
+  },
+  "root_expected": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-report-02",
+  "milestone_progress": {
+    "protenix": 0,
+    "boltz2": 0,
+    "boltz2_chemistry": 0
+  },
+  "published_fixed_report": null,
+  "historical_viewer_preserved": "http://127.0.0.1:8776/report.html",
+  "new_viewer_expected": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261021-brd4-jq1-25-fixed-report\\viewer",
+  "cpu_validation": {
+    "cpu_job": "29778238",
+    "callback_job": "29778239",
+    "errors": 1,
+    "failure_evidence": "results\\hpc\\20261021-brd4-jq1-25-fixed-report\\source02-failure\\verification.json"
+  },
+  "numerical_rendering": "not_run",
+  "changes": "Synthetic FP32 fixture uses exactly binary bounded values; explicit PyTest rootdir/importlib prevents empty testcase module identities. No production scientific/frame tolerance changes."
+}

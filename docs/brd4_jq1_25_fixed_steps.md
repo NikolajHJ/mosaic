@@ -462,3 +462,176 @@ outcomes and compact derivative proof hashes were authenticated. GPU entry
 checks and saved Boltz optimization steps remain unverified in this bundle;
 the four large Protenix original trajectory files are remote hash references
 only, not full local original-byte or report-frame verification.
+
+### 21 October, 22:53-22:56 Paris - updateable fixed-report fork implemented; allocated fixture failures preserved
+
+The user's saved-only updateable report is implemented as a separate fixed-step
+contract, full-prefix/strict-final renderers, completion collector, interactive
+template, immutable publisher and allocated CPU orchestration. It pins current
+scientific jobs **29777709 / 29778203 / 29778204**, the independent per-arm output
+roots, original scientific source02/readiness and launcher03/04 adoptions. All
+saved probability frames use bounded 100-frame chunks; exact-update input,
+previous/next, playback with manual pause, per-arm status/counts, empty-arm
+selection and clearing remain explicit. The latest-viewer wrapper checks the
+new pointer every minute. This is implemented behavior, not a published report
+or an allocated validation pass. Historical port 8776/edition-0006 is unchanged.
+
+Report source01's actual CPU **29778232** exited after **222 passes / 3 failed
+synthetic FP32 simplex fixtures**, with zero errors/skips. Callback **29778233**
+also exited and correctly prevented all collector/render submissions. The
+failed gates, raw XML/logs and actual scheduler/LSF bytes remain preserved;
+local standard-library byte/XML verification is
+`results/hpc/20261021-brd4-jq1-25-fixed-report/source01-failure/verification.json`.
+Native gradients and trajectories are unchanged by this report-only failure.
+
+A fresh immutable **report source02** corrected only the synthetic fixture's
+bounded exactly binary FP32 construction and declared PyTest collection identity;
+no production probability tolerance, native gate or scientific setting changed.
+Its **13-file**, **53,487-byte** archive has SHA-256
+`9ed7eb09c942a58f2cb8c9df5880ca7196215abcaf300551a74ee231d5e064e9`,
+manifest SHA-256
+`3b78673801b3875fd040dff9d814a869e5f0172fa8dea164ffb85656e6b3ad5e`.
+Staging reauthenticated all 13 report / 597 scientific / 11 launcher03 / 12
+launcher04 files and passed its fresh report work3 preflight. Actual CPU
+**29778238** and callback **29778239** were submitted at **22:56:42 Paris**,
+with exact arguments in
+`scripts/hpc/receipts/20261021-brd4-jq1-25-fixed-report-02/initial-submissions.json`.
+The allocated repeat then encountered a collection error because importlib mode
+could not import a bare sibling helper used by an unchanged legacy fixture.
+No source02 CPU pass, collector/render success or publication follows. Preserve
+this failed attempt and require a new immutable tooling correction plus full
+allocated checks; do not weaken scientific or delivery gates.
+
+The latest independently observed native update for this report preparation is
+**22:41:32 Paris**: Boltz-2 **29778203 RUN**, entry storage and driver invocation
+authenticated, **44 committed states / 43 updates**; chemistry **29778204 PEND**,
+no study or saved steps. Protenix **29777709** remains the completed unchanged
+10,000-update run with passed observer terminal metadata. No native job was
+restarted, cancelled or modified, and no additional cleanup was performed.
+No new fixed report is published; published fixed milestone progress remains
+**0/0/0** pending actual report CPU/render pass, byte verification and browser QA.
+
+### 21 October - report source04 passed all allocated CPU gates; first saved report is running
+
+Immutable report source03 removed the importlib collection mode while retaining
+all required fixtures and original import behavior. Actual CPU **29778240**
+completed DONE/LSF success with **225 passes**, zero failures/errors/skips.
+Certification **29778241** nevertheless exited because **35 unchanged legacy
+cases had empty XML class identities**; the 190 new cases were attributed.
+That attribution gate correctly prevented collectors and rendering. Preserve
+this rejected certification and its original raw evidence at
+`results/hpc/20261021-brd4-jq1-25-fixed-report/source03-cpu-evidence/verification.json`;
+a raw pass count did not become an authenticated report CPU certificate.
+
+New immutable **report source04** selects the shared releases directory as
+PyTest's common root, so the new and unchanged legacy modules all retain their
+actual XML module identities. This changes collection bookkeeping only, with
+no scientific, renderer, probability tolerance, required-test or gate change.
+Its **13-file / 53,476-byte** archive has SHA-256
+`e1886095f890058ed167f27ab648aca4561a8bf5851fa1bbf33f7ec0eeed53f5`,
+manifest SHA-256
+`7af7f5732842bdee8db930b71a6185039a1b77ec2c5939afccd8b2d9fc91800a`.
+The report source is read-only under
+`/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-report-04/source`;
+its output root is
+`/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-report-04`.
+
+Actual CPU **29778243** and certification **29778244** both completed
+**DONE/LSF success**. All **225 cases in all seven required modules** passed:
+83 fixed contracts + 44 fixed rendering + 42 fixed publication + 21 fixed
+orchestration + 26 Boltz report + 3 chemistry report + 6 chemistry-ramp report.
+There were **zero failures, errors or skips**, and every case has its required
+module attribution. Independent local standard-library byte/XML/schema and
+actual scheduler/LSF verification passed at
+`results/hpc/20261021-brd4-jq1-25-fixed-report/source04-cpu-evidence/verification.json`,
+SHA-256 `22de220c19ca4737c715c29173d62f86197b619ba6bbb84712029289a0035ef1`.
+CPU certificate SHA-256 is
+`2a5bb4b09c3ded76c03e631e9929a36a0d358ff77a8fe2c53b8379d5d22d5992`.
+Numerical fixtures ran only on allocated DTU CPU; local verification checked
+saved bytes/XML/schema and performed no numerical rendering or model work.
+
+Actual report-only downstream submissions are now recorded in the source04
+`jobs.json`: Protenix collector **29778245 RUN**; Boltz collector
+**29778246 PEND**; chemistry collector **29778247 PEND**; first full-prefix
+interim **29778248 RUN**; strict final report **29778249 PEND**. Pending Boltz
+collectors wait on their own scientific job endings, and the strict final waits
+on successful completion collectors. Submission or RUN alone is not a collector
+or rendering pass. No new fixed edition has yet passed rendering assessment,
+archive/byte verification, publication and browser QA; fixed published
+milestone progress remains **0/0/0**. Historical port **8776/edition-0006** and
+all scientific trajectories, jobs, native gates and original failure records
+remain unchanged. No additional cleanup or scientific rerun was performed.
+
+### 21 October, 23:07 Paris - first fixed-step report published with every captured saved frame
+
+The first fixed-step report is available at **http://127.0.0.1:8777/report.html**.
+Its immutable **edition-0001** is published from the separate viewer at
+`results/hpc/20261021-brd4-jq1-25-fixed-report/viewer`; the small stable wrapper
+checks its latest pointer every **60 seconds**. The historical report at port
+**8776** still serves its preserved edition-0006. No historical edition or
+scientific trajectory was rewritten.
+
+Report source04 interim **29778248** actually completed **DONE/LSF success** and
+passed assessment. The allocated Protenix completion collector **29778245** also
+completed DONE, authenticating all **10,001 original saved snapshots** in
+addition to the terminal native checks. The first report captured
+**2026-10-21T21:03:01.148625Z** (23:03 Paris):
+
+| Current arm | Saved updates | Saved states | Authenticated captured status |
+| --- | ---: | ---: | --- |
+| Protenix 29777709, fixed LR 0.3 | 10,000 | 10,001 | Native completed; terminal and every-frame collector passed |
+| Boltz-2 29778203, fixed LR 0.01 | 765 | 766 | RUN; own contiguous committed prefix |
+| Boltz-2 + chemistry 29778204, fixed LR 0.01 | 99 | 100 | RUN; own contiguous committed prefix |
+
+Every captured probability frame and scalar point is retained in bounded
+100-frame chunks. There is no interpolation, new inference, resampling, repair
+or fabricated molecule. Both Boltz runs keep one finite fixed-rate candidate per
+update with no halving. The combined report remains **IN PROGRESS** while
+Protenix is shown individually completed.
+
+The original source04 report archive is **37,187,599 bytes**, SHA-256
+`bc7bf1da47981a4638bb4d06bf7e321d3b101053e26e92737ce0aa187dc61ae5`.
+All **256 archived files** passed safe extraction and exact byte verification.
+The first local publication attempt was correctly blocked before viewer creation
+because its CPU scheduler parser did not accept an actually line-wrapped LSF
+queue field; the original report archive and scientific outcome remain valid.
+A new immutable **publisher-only source05** compacts whitespace for parsing the
+unique exact CPU job/status/queue, retaining original proof bytes/hashes and all
+authentication gates. It uses manifest SHA-256
+`72c3569e49676dc00c448137829fea6ff3abba342b9d512979920314a8845698`,
+archive **53,591 bytes**, SHA-256
+`ab6bc6b2b026818e8b00fb8e6408a741c030e62edb752bacf8c2c56e07de76ca`.
+Its CPU-only validation **29778252** actually completed DONE/LSF success with
+**225 passes across all seven required modules**, no failures, errors or skips;
+independent verification SHA-256 is
+`5fe35da486dcad6d7c8d7b3634c0eeb2de98967193f55bb65cfc30f69370db46`.
+No source05 dispatch, collector, rerender or scientific execution was performed.
+The allocated-passed source05 publisher copied the **unchanged verified source04
+report bytes** into the new immutable edition.
+
+Publication time is **2026-10-21T21:07:20.278149Z** (23:07 Paris).
+Published HTML SHA-256 is
+`a5aae7516495443924989e47b666bca6d1b838cec3f5253b32bf64c4c5039f3d`;
+report receipt SHA-256 is
+`c38ee0cf56db85f3fe0ed212aab13a33809f7889e5e06c03cd87964b21108901`.
+All **230 served files** returned HTTP 200 with exact expected bytes; HTTP
+verification SHA-256 is
+`264e5a01c5249f0f1180660503da5e31fe13cc43df9ca07e4913d033a84796c3`.
+
+Browser presentation QA exercised actual Protenix slider drags to **2397 / 7201**,
+numeric **1500**, next **1501**, middle **5000** and latest **10000**. Boltz
+playback reached **2**, manual numeric **321** paused playback, previous reached
+**320**, and its own latest endpoint was **765**. Chemistry interior **37** and
+latest **99**, all three selectors, exact saved atom/bond heatmaps (**25 atoms /
+300 unordered pairs**), raw graph labels and the visibly invalid Protenix graph
+were checked. No captured arm was empty, so empty-arm clearing is covered by the
+allocated fixtures rather than claimed as an actual empty-arm browser test.
+
+Published fixed milestones are now **10000 / 0 / 0**. The ten-minute monitor
+continues using each arm's latest published milestone, submitting a new saved-only
+allocated CPU edition at **1500, 2500, ..., 9500, 10000** per arm and a strict
+final report after all three successful terminal completions. The viewer updates
+after those verified editions are published. Contact remains distinct from
+affinity; changing repair totals are not one fixed objective, and a valid graph
+or fixed-pose score does not establish binding or activity. No additional cleanup,
+scientific setting change, native rerun or local numerical work occurred.

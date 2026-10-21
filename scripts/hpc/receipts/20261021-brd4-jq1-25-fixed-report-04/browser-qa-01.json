@@ -1,0 +1,40 @@
+{
+  "status": "passed",
+  "utc": "2026-10-21T21:10:39.390566+00:00",
+  "url": "http://127.0.0.1:8777/report.html",
+  "edition": "edition-0001/report.html",
+  "browser": "Codex in-app browser tab2; left deliverable",
+  "actual_controls": {
+    "protenix": {
+      "numeric": [
+        1500
+      ],
+      "next": 1501,
+      "midpoint": 5000,
+      "dragged_interior_steps": [
+        2397,
+        7201
+      ],
+      "latest": 10000,
+      "raw_invalid_disconnected_terminal_visible": true
+    },
+    "boltz2": {
+      "playback_observed_step": 2,
+      "manual_numeric_pause_step": 321,
+      "paused_state_visually_stable": true,
+      "previous": 320,
+      "latest": 765
+    },
+    "boltz2_chemistry": {
+      "numeric": 37,
+      "latest": 99,
+      "repair_weight_displayed": 0.001
+    },
+    "all_three_selectors": true,
+    "heatmaps": "Expanded actual Protenix terminal saved probabilities:25atomrows/300unorderedpairs",
+    "status_and_metric_identity": "ProDONE contact/LR.3 and BolRUN affinity/LR.01; binder separate; fixedonecandidate; nativecounts visible",
+    "empty_arm_view": "Not present in this capturededition; allocated fixtures only",
+    "latest_wrapper": "Actualwrapperdisplayed10000/765/99 and retains immutableedition0001, refreshinterval60sec"
+  },
+  "scope": "Browser presentation QA only; no model scoring, resampling, repair or local array validation"
+}

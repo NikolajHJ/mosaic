@@ -1,0 +1,18 @@
+{
+  "cpu": "29778243",
+  "native_jobs": {
+    "protenix": "29777709",
+    "boltz2": "29778203",
+    "boltz2_chemistry": "29778204"
+  },
+  "report_manifest": "7af7f5732842bdee8db930b71a6185039a1b77ec2c5939afccd8b2d9fc91800a",
+  "collectors": {
+    "protenix": "29778245",
+    "boltz2": "29778246",
+    "boltz2_chemistry": "29778247"
+  },
+  "active_interim": "29778248",
+  "interim_parent": "interim-0001",
+  "final": "29778249",
+  "cpu_certificate_job": "29778244"
+}

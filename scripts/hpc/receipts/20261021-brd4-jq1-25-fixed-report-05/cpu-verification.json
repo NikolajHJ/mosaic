@@ -1,0 +1,57 @@
+{
+  "status": "passed",
+  "suite": "jq1-fixed-saved-report-contract-v1",
+  "job_id": "29778252",
+  "tests": 225,
+  "module_counts": {
+    "test_jq1_fixed_report_contract": 83,
+    "test_jq1_fixed_render": 44,
+    "test_jq1_fixed_publish": 42,
+    "test_jq1_fixed_ops": 21,
+    "test_boltz_affinity_report": 26,
+    "test_small_molecule_chemistry_report": 3,
+    "test_small_molecule_chemistry_ramp_report": 6
+  },
+  "source_manifest_sha256": "72c3569e49676dc00c448137829fea6ff3abba342b9d512979920314a8845698",
+  "changed_files_from_report04": [
+    "scripts/publish_jq1_fixed_report.py",
+    "scripts/jq1_fixed_report_ops.py",
+    "tests/test_jq1_fixed_publish.py"
+  ],
+  "report04_archive_unchanged": "bc7bf1da47981a4638bb4d06bf7e321d3b101053e26e92737ce0aa187dc61ae5",
+  "proofs": {
+    "scheduler-29778252.txt": {
+      "bytes": 3535,
+      "sha256": "17f56b75239923f155b01db863b37f251611f94bde2bfe2d4be52a0ca587467a"
+    },
+    "cpu/payload/report-tests.xml": {
+      "bytes": 43253,
+      "sha256": "7b91063c79ffd034d48601385d1ba6be3afd332d8452966dece053ef5864ccc0"
+    },
+    "cpu/payload/report-tests.log": {
+      "bytes": 1623,
+      "sha256": "b1ce55f60bdd0450a53746a82cf81596f768b3d039dbd5aee61799ff31c462f0"
+    },
+    "cpu/payload/test-invocation.json": {
+      "bytes": 1092,
+      "sha256": "c2a5803c65f042501376b0846fb55042d6ff3ab317af9afc0e8f661a2496390c"
+    },
+    "cpu/stdout.29778252.log": {
+      "bytes": 2191,
+      "sha256": "78f53171371db0d6b3abcc54b312a867160353ec8a8d64176504c915f6fe5aee"
+    },
+    "cpu/stderr.29778252.log": {
+      "bytes": 233,
+      "sha256": "7d57e9e44355166e210a310a2b90b7d8543b85c5ffbb82276c701f4dd1f23271"
+    },
+    "initial-submissions.json": {
+      "bytes": 1365,
+      "sha256": "fa8553393e11ec19148b42cde1280ac7e90df538c7ea975d84d40bc8f02b2d3d"
+    },
+    "jobs.json": {
+      "bytes": 225,
+      "sha256": "7f3cf31d9254e7e0bc41c29467b281e5540ab9f7aaa69bc7a63e635001760f4d"
+    }
+  },
+  "scope": "Publisher-only allocated validation; no new renderer/collectors/nativejobs; stdlib local bytes/XML/schema only"
+}
