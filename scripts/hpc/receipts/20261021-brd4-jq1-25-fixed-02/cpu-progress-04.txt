@@ -1,0 +1,8 @@
+2026-10-21T16:28:02+02:00
+29776103 RUN hpc mosaic-jq1-fixed-cpu
+29776104 PEND hpc mosaic-jq1-fixed-after-cpu
+plugins: anyio-4.15.1, jaxtyping-0.3.11
+collected 59 items
+
+tests/test_small_molecule_chemistry.py ................................. [ 55%]
+....

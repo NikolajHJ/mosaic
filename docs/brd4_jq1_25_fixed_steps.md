@@ -116,3 +116,25 @@ passed8GiBconservativeavailableversus5GiBrequired, with unchanged4GiBreserve and
 100000inodeheadroom. At16:26Paris,150contracts and239legacytests passed; native
 mapping/chemistry regressions remain pending. No fullCPU/native/longpass claimed.
 Source01failureXML/logs downloaded/byte+schema checked in itsfailure-proofs directory.
+
+### Source02 full CPU pass and actual native GPU submissions
+
+CPU29776103 andafterCPU29776104 actuallyDONE/LSFsuccess. All **482 tests passed**:
+150contracts,239legacy/bridge (includingfixeduphill/no-op),34native-mapping,
+59chemistry; nofailures/errors/skips,3deliberatelydeselectedslow/modellegacychecks.
+RawXML,eachproducerproofhash,actualschedulerDONE/hpc/LSFsuccess,source/configuration,
+frozenreference/pocket andcertificate authenticated withstdlibbyte/XML/schema
+checks only. Twelve compact proof files downloaded under
+`results/hpc/20261021-brd4-jq1-25-fixed-02/cpu-proofs/verification.json`.
+AssessmentSHA `0e821878a92575c3a02370fc22c2b66df3307accf9d7d1c17917af806eabbad9`;
+certificateSHA `a595c100b39816d0f87f5d7d44c7a94c35d9138e6f510a0d284a79f20d5317f2`.
+
+Actuallysubmitted16:28:45–47Paris: native Protenix **29776117** /callback29776118,
+Boltz-2 **29776119** /callback29776120, chemistry **29776121** /callback29776122.
+At16:30:34Paris all6PEND. Actualargv andbjobs resource vectors match gpul40s,
+oneexclusiveL40S48GB,4CPU,8GiB/slot,2h; nativejobs have no interarmdependency.
+Callbacks waitonlyontheirownnativeended event. Full10,000-update runs have NOT
+been submitted; controller still requiresall3fullnativepasses andwholeartifact
+projection/freshquota, thenindependent23hlongsubmissions. CPUtests do not certify
+nativeGPUgradients or completion. Existingautomation now tracks this new scope.
+Code andinitialreceipts pushed634a1e5; no scientific or storagegate weakened.

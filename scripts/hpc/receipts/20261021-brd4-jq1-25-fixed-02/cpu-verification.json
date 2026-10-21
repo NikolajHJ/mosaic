@@ -1,0 +1,38 @@
+{
+  "status": "passed byte/XML/schema; actual CPU scheduler/LSF success authenticated",
+  "cpu_job": "29776103",
+  "callback_job": "29776104",
+  "counts": {
+    "hpc-contract": 150,
+    "legacy": 239,
+    "native-mapping": 34,
+    "chemistry": 59
+  },
+  "total": 482,
+  "failures": 0,
+  "errors": 0,
+  "skips": 0,
+  "deliberately_deselected": 3,
+  "manifest_sha256": "1e3a8a21e2fa68e24d1c9229238999c42a4a9b44bcc78344e73e188c87d1ee64",
+  "assessment_sha256": "0e821878a92575c3a02370fc22c2b66df3307accf9d7d1c17917af806eabbad9",
+  "certificate_sha256": "a595c100b39816d0f87f5d7d44c7a94c35d9138e6f510a0d284a79f20d5317f2",
+  "sha256": {
+    "after-cpu-stdout.txt": "1543cbbc4ecd82f7fc9a98012d7615d2cdfddf7bc097846b034416619a4ae575",
+    "assessment.json": "0e821878a92575c3a02370fc22c2b66df3307accf9d7d1c17917af806eabbad9",
+    "chemistry.xml": "ca80c6ae50a5fd7c317bd3c9aea2fb608bf30d108ebe98c5d3ed7d50221e7b30",
+    "composition_reference.json": "37b34a2ba7be47886936df48faaabdeac20481e5a9cebca9bafab831c07868eb",
+    "cpu-certificate.json": "a595c100b39816d0f87f5d7d44c7a94c35d9138e6f510a0d284a79f20d5317f2",
+    "hpc-contract.xml": "b6e68741bcfb6edae6522c4159fe84a574c411d06b7b8ba30af839a527a3b4cc",
+    "legacy.xml": "1fc8066f07fca13c15bf702305eba06ed35a5ea5fd8bd095813f044d4d23c62f",
+    "native-mapping.xml": "bc5e630483c28c09c653e70af86f7529f82362a2ee8b1cfac704d855c35695c4",
+    "native-submissions.json": "fdfcdf4db976156072f3287357f02da02a22a95cbd05df2998bb75f06b4ab129",
+    "pocket_definition.json": "9376c715eaf5b48689fb3e995b00d7820601a7776970df66bd7e7cff3b13ee43",
+    "scheduler-final-0.txt": "81fba6aeeb9eee168030378cbf25bbd3e3cea9726e334515bd85c71105bfac71",
+    "stdout.29776103.log": "9c6e1ee2020aa55c86bb0b78f8722a7852941e6f3b15abcd3df539d414b90319"
+  },
+  "native_ids": {
+    "protenix": "29776117",
+    "boltz2": "29776119",
+    "boltz2_chemistry": "29776121"
+  }
+}

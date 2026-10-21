@@ -5349,3 +5349,14 @@ intentionalunstartedretirement. All historicaldata/reportspreserved.
 zero-bond/constant toys. Newsource02 changes fixtures only and outputrootidentity;
 production fixedrates/nohalving/nativeFD/finite/parity/frozen/runtime/quota unchanged.
 No native orlong job was submitted. All evidence preserved; fullCPUchecks repeat.
+
+### 21October16:30Paris — fixedsource02 fullCPU482pass, three native validations queued
+
+CPU29776103/afterCPU29776104 actualDONE/LSFsuccess authenticated. RawXML482passes
+(150contracts,239legacy,34mapping,59chemistry),0fail/error/skip,3deliberatelydeselected.
+Twelveproofsbyte/schema/XMLverified;assessment0e821878a92575c3a02370fc22c2b66df3307accf9d7d1c17917af806eabbad9,
+certificatea595c100b39816d0f87f5d7d44c7a94c35d9138e6f510a0d284a79f20d5317f2.
+ActualnativeGPUjobs29776117Pro/29776119Bol/29776121chem,callbacks29776118/20/22;
+allPENDat16:30:34,exactargv/resourcesauthenticated. No10000-update longrun submitted
+yet; allnative/gate/quota requirementsremainmandatory. Fixedrates.3/.01/.01,
+nominalrateappliedwithoutsearch; noDiff. See fixed02campaign/plan/proofverification.

@@ -1,0 +1,333 @@
+2026-10-21T16:30:34+02:00
+
+Job <29776117>, Job Name <mosaic-jq1-fixed-validate-protenix>, User <s234818>, 
+                          Project <default>, Status <PEND>, Queue <gpul40s>, Co
+                          mmand <bash -l /work3/s234818/mosaic/releases/2026102
+                          1-brd4-jq1-25-fixed-02/source/scripts/hpc/fixed25_sta
+                          ge.lsf /work3/s234818/mosaic/releases/20261021-brd4-j
+                          q1-25-fixed-02/source /work3/s234818/mosaic/runs/2026
+                          1021-brd4-jq1-25-fixed-02 1e3a8a21e2fa68e24d1c9229238
+                          999c42a4a9b44bcc78344e73e188c87d1ee64 validate proten
+                          ix /work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fi
+                          xed-02/validate-protenix 0>, Share group charged </s2
+                          34818>, Esub <dcc>
+Wed Oct 21 16:28:45 2026: Submitted from host <n-62-31-23>, CWD </work3/s234818
+                          /mosaic/releases/20261021-brd4-jq1-25-fixed-02/source
+                          >, Output File (overwrite) </work3/s234818/mosaic/run
+                          s/20261021-brd4-jq1-25-fixed-02/validate-protenix/std
+                          out.29776117.log>, Error File (overwrite) </work3/s23
+                          4818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/valida
+                          te-protenix/stderr.29776117.log>, 4 Task(s), Requeste
+                          d Resources < rusage[mem=8192.00] span[hosts=1]>, Req
+                          uested GPU <num=1:mode=exclusive_process>;
+Wed Oct 21 16:28:48 2026: Reserved <4> job slots on host(s) <4*n-62-13-15> for 
+                          <4> tasks;
+ PENDING REASONS:
+ Job's requirements for reserving resource (ngpus_physical) not satisfied: 4 
+                          hosts;
+
+ RUNLIMIT                
+ 120.0 min
+
+ MEMLIMIT
+      8 G 
+
+ PENDING TIME DETAILS:
+ Eligible pending time (seconds):	109
+ Ineligible pending time (seconds):	0
+
+ SCHEDULING PARAMETERS:
+           r15s   r1m  r15m   ut      pg    io   ls    it    tmp    swp    mem
+ loadSched   -     -     -     -       -     -    -     -     -      -      -  
+ loadStop    -     -     -     -       -     -    -     -     -      -      -  
+
+ RESOURCE REQUIREMENT DETAILS:
+ Job-level:  rusage[mem=8192.00] span[hosts=1]
+ App-level: -
+ Queue-level: same[type:model] affinity[core] cu[type=enclosure:maxcus=1]
+ Combined: select[(ngpus>0) && (type == local)] order[-slots:-maxslots] rusage[
+                          mem=8192.00:ngpus_physical=1.00] span[hosts=1] same[t
+                          ype:model] cu[pref=config:maxcus=1:type=enclosure] af
+                          finity[core(1)*1]
+ Effective: -
+
+ GPU REQUIREMENT DETAILS:
+ Combined: num=1:mode=exclusive_process:mps=no:j_exclusive=yes:aff=no:gvendor=n
+                          vidia
+ Effective: -
+------------------------------------------------------------------------------
+
+Job <29776118>, Job Name <mosaic-jq1-fixed-after-ready-protenix>, User <s234818
+                          >, Project <default>, Service Class <sc_hpc1>, Status
+                           <PEND>, Queue <hpc>, Command <bash -l /work3/s234818
+                          /mosaic/releases/20261021-brd4-jq1-25-fixed-02/source
+                          /scripts/hpc/fixed25_stage.lsf /work3/s234818/mosaic/
+                          releases/20261021-brd4-jq1-25-fixed-02/source /work3/
+                          s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02 1e3
+                          a8a21e2fa68e24d1c9229238999c42a4a9b44bcc78344e73e188c
+                          87d1ee64 after-ready protenix /work3/s234818/mosaic/r
+                          uns/20261021-brd4-jq1-25-fixed-02/after-ready-proteni
+                          x 29776117>, Esub <dcc>
+Wed Oct 21 16:28:45 2026: Submitted from host <n-62-31-23>, CWD </work3/s234818
+                          /mosaic/releases/20261021-brd4-jq1-25-fixed-02/source
+                          >, Output File (overwrite) </work3/s234818/mosaic/run
+                          s/20261021-brd4-jq1-25-fixed-02/after-ready-protenix/
+                          stdout.29776118.log>, Error File (overwrite) </work3/
+                          s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/aft
+                          er-ready-protenix/stderr.29776118.log>, Requested Res
+                          ources <{select[serial_] rusage[mem=2048.00] span[hos
+                          ts=1]} || {select[!serial_] rusage[mem=2048.00] span[
+                          hosts=1]}>, Dependency Condition <ended(29776117)>;
+ PENDING REASONS:
+ Job dependency condition not satisfied;
+
+ RUNLIMIT                
+ 20.0 min
+
+ MEMLIMIT
+      2 G 
+
+ PENDING TIME DETAILS:
+ Eligible pending time (seconds):	1
+ Ineligible pending time (seconds):	108
+
+ SCHEDULING PARAMETERS:
+           r15s   r1m  r15m   ut      pg    io   ls    it    tmp    swp    mem
+ loadSched   -     -     -     -       -     -    -     -     -      -      -  
+ loadStop    -     -     -     -       -     -    -     -     -      -      -  
+
+ RESOURCE REQUIREMENT DETAILS:
+ Job-level: {select[serial_] rusage[mem=2048.00] span[hosts=1]} || {select[!ser
+                          ial_] rusage[mem=2048.00] span[hosts=1]}
+ App-level: -
+ Queue-level: same[type:model] affinity[core] cu[type=enclosure:maxcus=1]
+ Combined: {select[(serial_) && (type == any)] order[-slots:-maxslots] rusage[m
+                          em=2048.00] span[hosts=1] cu[pref=config:maxcus=1:typ
+                          e=enclosure] affinity[core(1)*1]} || {select[(!serial
+                          _) && (type == any)] order[-slots:-maxslots] rusage[m
+                          em=2048.00] span[hosts=1] cu[pref=config:maxcus=1:typ
+                          e=enclosure] affinity[core(1)*1]}
+ Effective: -
+------------------------------------------------------------------------------
+
+Job <29776119>, Job Name <mosaic-jq1-fixed-validate-boltz2>, User <s234818>, Pr
+                          oject <default>, Status <PEND>, Queue <gpul40s>, Comm
+                          and <bash -l /work3/s234818/mosaic/releases/20261021-
+                          brd4-jq1-25-fixed-02/source/scripts/hpc/fixed25_stage
+                          .lsf /work3/s234818/mosaic/releases/20261021-brd4-jq1
+                          -25-fixed-02/source /work3/s234818/mosaic/runs/202610
+                          21-brd4-jq1-25-fixed-02 1e3a8a21e2fa68e24d1c922923899
+                          9c42a4a9b44bcc78344e73e188c87d1ee64 validate boltz2 /
+                          work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-
+                          02/validate-boltz2 0>, Share group charged </s234818>
+                          , Esub <dcc>
+Wed Oct 21 16:28:46 2026: Submitted from host <n-62-31-23>, CWD </work3/s234818
+                          /mosaic/releases/20261021-brd4-jq1-25-fixed-02/source
+                          >, Output File (overwrite) </work3/s234818/mosaic/run
+                          s/20261021-brd4-jq1-25-fixed-02/validate-boltz2/stdou
+                          t.29776119.log>, Error File (overwrite) </work3/s2348
+                          18/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate
+                          -boltz2/stderr.29776119.log>, 4 Task(s), Requested Re
+                          sources < rusage[mem=8192.00] span[hosts=1]>, Request
+                          ed GPU <num=1:mode=exclusive_process>;
+Wed Oct 21 16:28:48 2026: Reserved <4> job slots on host(s) <4*n-62-13-15> for 
+                          <4> tasks;
+ PENDING REASONS:
+ Job's requirements for reserving resource (ngpus_physical) not satisfied: 4 
+                          hosts;
+
+ RUNLIMIT                
+ 120.0 min
+
+ MEMLIMIT
+      8 G 
+
+ PENDING TIME DETAILS:
+ Eligible pending time (seconds):	108
+ Ineligible pending time (seconds):	0
+
+ SCHEDULING PARAMETERS:
+           r15s   r1m  r15m   ut      pg    io   ls    it    tmp    swp    mem
+ loadSched   -     -     -     -       -     -    -     -     -      -      -  
+ loadStop    -     -     -     -       -     -    -     -     -      -      -  
+
+ RESOURCE REQUIREMENT DETAILS:
+ Job-level:  rusage[mem=8192.00] span[hosts=1]
+ App-level: -
+ Queue-level: same[type:model] affinity[core] cu[type=enclosure:maxcus=1]
+ Combined: select[(ngpus>0) && (type == local)] order[-slots:-maxslots] rusage[
+                          mem=8192.00:ngpus_physical=1.00] span[hosts=1] same[t
+                          ype:model] cu[pref=config:maxcus=1:type=enclosure] af
+                          finity[core(1)*1]
+ Effective: -
+
+ GPU REQUIREMENT DETAILS:
+ Combined: num=1:mode=exclusive_process:mps=no:j_exclusive=yes:aff=no:gvendor=n
+                          vidia
+ Effective: -
+------------------------------------------------------------------------------
+
+Job <29776120>, Job Name <mosaic-jq1-fixed-after-ready-boltz2>, User <s234818>,
+                          Project <default>, Service Class <sc_hpc1>, Status <P
+                          END>, Queue <hpc>, Command <bash -l /work3/s234818/mo
+                          saic/releases/20261021-brd4-jq1-25-fixed-02/source/sc
+                          ripts/hpc/fixed25_stage.lsf /work3/s234818/mosaic/rel
+                          eases/20261021-brd4-jq1-25-fixed-02/source /work3/s23
+                          4818/mosaic/runs/20261021-brd4-jq1-25-fixed-02 1e3a8a
+                          21e2fa68e24d1c9229238999c42a4a9b44bcc78344e73e188c87d
+                          1ee64 after-ready boltz2 /work3/s234818/mosaic/runs/2
+                          0261021-brd4-jq1-25-fixed-02/after-ready-boltz2 29776
+                          119>, Esub <dcc>
+Wed Oct 21 16:28:46 2026: Submitted from host <n-62-31-23>, CWD </work3/s234818
+                          /mosaic/releases/20261021-brd4-jq1-25-fixed-02/source
+                          >, Output File (overwrite) </work3/s234818/mosaic/run
+                          s/20261021-brd4-jq1-25-fixed-02/after-ready-boltz2/st
+                          dout.29776120.log>, Error File (overwrite) </work3/s2
+                          34818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/after
+                          -ready-boltz2/stderr.29776120.log>, Requested Resourc
+                          es <{select[serial_] rusage[mem=2048.00] span[hosts=1
+                          ]} || {select[!serial_] rusage[mem=2048.00] span[host
+                          s=1]}>, Dependency Condition <ended(29776119)>;
+ PENDING REASONS:
+ Job dependency condition not satisfied;
+
+ RUNLIMIT                
+ 20.0 min
+
+ MEMLIMIT
+      2 G 
+
+ PENDING TIME DETAILS:
+ Eligible pending time (seconds):	0
+ Ineligible pending time (seconds):	108
+
+ SCHEDULING PARAMETERS:
+           r15s   r1m  r15m   ut      pg    io   ls    it    tmp    swp    mem
+ loadSched   -     -     -     -       -     -    -     -     -      -      -  
+ loadStop    -     -     -     -       -     -    -     -     -      -      -  
+
+ RESOURCE REQUIREMENT DETAILS:
+ Job-level: {select[serial_] rusage[mem=2048.00] span[hosts=1]} || {select[!ser
+                          ial_] rusage[mem=2048.00] span[hosts=1]}
+ App-level: -
+ Queue-level: same[type:model] affinity[core] cu[type=enclosure:maxcus=1]
+ Combined: {select[(serial_) && (type == any)] order[-slots:-maxslots] rusage[m
+                          em=2048.00] span[hosts=1] cu[pref=config:maxcus=1:typ
+                          e=enclosure] affinity[core(1)*1]} || {select[(!serial
+                          _) && (type == any)] order[-slots:-maxslots] rusage[m
+                          em=2048.00] span[hosts=1] cu[pref=config:maxcus=1:typ
+                          e=enclosure] affinity[core(1)*1]}
+ Effective: -
+------------------------------------------------------------------------------
+
+Job <29776121>, Job Name <mosaic-jq1-fixed-validate-boltz2_chemistry>, User <s2
+                          34818>, Project <default>, Status <PEND>, Queue <gpul
+                          40s>, Command <bash -l /work3/s234818/mosaic/releases
+                          /20261021-brd4-jq1-25-fixed-02/source/scripts/hpc/fix
+                          ed25_stage.lsf /work3/s234818/mosaic/releases/2026102
+                          1-brd4-jq1-25-fixed-02/source /work3/s234818/mosaic/r
+                          uns/20261021-brd4-jq1-25-fixed-02 1e3a8a21e2fa68e24d1
+                          c9229238999c42a4a9b44bcc78344e73e188c87d1ee64 validat
+                          e boltz2_chemistry /work3/s234818/mosaic/runs/2026102
+                          1-brd4-jq1-25-fixed-02/validate-boltz2_chemistry 0>, 
+                          Share group charged </s234818>, Esub <dcc>
+Wed Oct 21 16:28:46 2026: Submitted from host <n-62-31-23>, CWD </work3/s234818
+                          /mosaic/releases/20261021-brd4-jq1-25-fixed-02/source
+                          >, Output File (overwrite) </work3/s234818/mosaic/run
+                          s/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemi
+                          stry/stdout.29776121.log>, Error File (overwrite) </w
+                          ork3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-0
+                          2/validate-boltz2_chemistry/stderr.29776121.log>, 4 T
+                          ask(s), Requested Resources < rusage[mem=8192.00] spa
+                          n[hosts=1]>, Requested GPU <num=1:mode=exclusive_proc
+                          ess>;
+Wed Oct 21 16:28:48 2026: Reserved <4> job slots on host(s) <4*n-62-13-15> for 
+                          <4> tasks;
+ PENDING REASONS:
+ Job's requirements for reserving resource (ngpus_physical) not satisfied: 4 
+                          hosts;
+
+ RUNLIMIT                
+ 120.0 min
+
+ MEMLIMIT
+      8 G 
+
+ PENDING TIME DETAILS:
+ Eligible pending time (seconds):	108
+ Ineligible pending time (seconds):	0
+
+ SCHEDULING PARAMETERS:
+           r15s   r1m  r15m   ut      pg    io   ls    it    tmp    swp    mem
+ loadSched   -     -     -     -       -     -    -     -     -      -      -  
+ loadStop    -     -     -     -       -     -    -     -     -      -      -  
+
+ RESOURCE REQUIREMENT DETAILS:
+ Job-level:  rusage[mem=8192.00] span[hosts=1]
+ App-level: -
+ Queue-level: same[type:model] affinity[core] cu[type=enclosure:maxcus=1]
+ Combined: select[(ngpus>0) && (type == local)] order[-slots:-maxslots] rusage[
+                          mem=8192.00:ngpus_physical=1.00] span[hosts=1] same[t
+                          ype:model] cu[pref=config:maxcus=1:type=enclosure] af
+                          finity[core(1)*1]
+ Effective: -
+
+ GPU REQUIREMENT DETAILS:
+ Combined: num=1:mode=exclusive_process:mps=no:j_exclusive=yes:aff=no:gvendor=n
+                          vidia
+ Effective: -
+------------------------------------------------------------------------------
+
+Job <29776122>, Job Name <mosaic-jq1-fixed-after-ready-boltz2_chemistry>, User 
+                          <s234818>, Project <default>, Service Class <sc_hpc1>
+                          , Status <PEND>, Queue <hpc>, Command <bash -l /work3
+                          /s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-0
+                          2/source/scripts/hpc/fixed25_stage.lsf /work3/s234818
+                          /mosaic/releases/20261021-brd4-jq1-25-fixed-02/source
+                           /work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixe
+                          d-02 1e3a8a21e2fa68e24d1c9229238999c42a4a9b44bcc78344
+                          e73e188c87d1ee64 after-ready boltz2_chemistry /work3/
+                          s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/aft
+                          er-ready-boltz2_chemistry 29776121>, Esub <dcc>
+Wed Oct 21 16:28:46 2026: Submitted from host <n-62-31-23>, CWD </work3/s234818
+                          /mosaic/releases/20261021-brd4-jq1-25-fixed-02/source
+                          >, Output File (overwrite) </work3/s234818/mosaic/run
+                          s/20261021-brd4-jq1-25-fixed-02/after-ready-boltz2_ch
+                          emistry/stdout.29776122.log>, Error File (overwrite) 
+                          </work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixe
+                          d-02/after-ready-boltz2_chemistry/stderr.29776122.log
+                          >, Requested Resources <{select[serial_] rusage[mem=2
+                          048.00] span[hosts=1]} || {select[!serial_] rusage[me
+                          m=2048.00] span[hosts=1]}>, Dependency Condition <end
+                          ed(29776121)>;
+ PENDING REASONS:
+ Job dependency condition not satisfied;
+
+ RUNLIMIT                
+ 20.0 min
+
+ MEMLIMIT
+      2 G 
+
+ PENDING TIME DETAILS:
+ Eligible pending time (seconds):	2
+ Ineligible pending time (seconds):	106
+
+ SCHEDULING PARAMETERS:
+           r15s   r1m  r15m   ut      pg    io   ls    it    tmp    swp    mem
+ loadSched   -     -     -     -       -     -    -     -     -      -      -  
+ loadStop    -     -     -     -       -     -    -     -     -      -      -  
+
+ RESOURCE REQUIREMENT DETAILS:
+ Job-level: {select[serial_] rusage[mem=2048.00] span[hosts=1]} || {select[!ser
+                          ial_] rusage[mem=2048.00] span[hosts=1]}
+ App-level: -
+ Queue-level: same[type:model] affinity[core] cu[type=enclosure:maxcus=1]
+ Combined: {select[(serial_) && (type == any)] order[-slots:-maxslots] rusage[m
+                          em=2048.00] span[hosts=1] cu[pref=config:maxcus=1:typ
+                          e=enclosure] affinity[core(1)*1]} || {select[(!serial
+                          _) && (type == any)] order[-slots:-maxslots] rusage[m
+                          em=2048.00] span[hosts=1] cu[pref=config:maxcus=1:typ
+                          e=enclosure] affinity[core(1)*1]}
+ Effective: -
+
