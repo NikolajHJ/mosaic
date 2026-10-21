@@ -25,12 +25,13 @@
     "combined-report": "29770709",
     "interim-0001": "29770710",
     "interim-0002": "29770891",
-    "interim-0003": "29771001"
+    "interim-0003": "29771001",
+    "interim-0004": "29771969"
   },
-  "status": "Source04 CPU71passed; interim29770891 actuallyDONE/LSFsuccess/passed,208files byte/schema verified,8626 exact frames published as edition0003; HTTP and browser QA passed",
+  "status": "Source04 CPU71passed; interim29771001 actuallyDONE/LSFsuccess/passed,236files byte/schema verified,10187 exact frames published as edition0004; HTTP and browser QA passed",
   "source_authenticated_files": 518,
   "cpu_assessment_sha256": "a2654b958374b19cb9f42113032ad3a3a4776c38a88fb387d6409da37ce872d0",
-  "report_assessment_sha256": "933716fc8f6f40dcc61eecfd0b0ea6ba2381d7a00968c07c80ee9e2315e6d697",
+  "report_assessment_sha256": "eff9ea20cb86ceaebd643dd40907a444aeec8f1a8d498de70c3e455789417964",
   "interim_editions": [
     {
       "remote_parent": "interim-0001",
@@ -77,43 +78,43 @@
         "boltz2_chemistry": 0
       },
       "verification": "results/hpc/20261021-brd4-jq1-25-report/edition-0003/verification.json"
+    },
+    {
+      "remote_parent": "interim-0003",
+      "local_edition": "edition-0004",
+      "job_id": "29771001",
+      "archive_bytes": 39386991,
+      "archive_sha256": "dd54d783a35a52e571edd731abea859af19f66075393f2b6985bcd3664a8973c",
+      "states": [
+        7176,
+        1571,
+        1440
+      ],
+      "included_updates": [
+        7175,
+        1570,
+        1439
+      ],
+      "milestone_progress": {
+        "protenix": 6500,
+        "boltz2": 1500,
+        "boltz2_chemistry": 0
+      },
+      "verification": "results/hpc/20261021-brd4-jq1-25-report/edition-0004/verification.json"
     }
   ],
   "stable_url": "http://127.0.0.1:8776/report.html",
   "native_jobs_unchanged": true,
-  "next_interim_parent": "interim-0003",
-  "next_local_edition": "edition-0004",
+  "next_interim_parent": "interim-0004",
+  "next_local_edition": "edition-0005",
   "saved_gradient_audit": "scripts/hpc/receipts/20261021-brd4-jq1-gradient-audit-01/campaign.json",
   "pending_interim": {
-    "remote_parent": "interim-0003",
-    "local_edition": "edition-0004",
-    "job_id": "29771001",
-    "status": "Actual DONE/LSFsuccess and remote passed assessment authenticated; archive SCP in progress, full local byte/schema verification/publication pending",
-    "trigger": "Latest checked7140/1557/1420; new per-arm milestones6500/1500/0 exceed published5500/0/0",
-    "submission_receipt": "results/hpc/20261021-brd4-jq1-25-report/edition-0004/submission.json",
-    "scheduler_at_submission_sha256": "4e30a59afa3931b233c8806e33e740be12ace4a639cf17c21b0e1b054a004400",
-    "archive_receipt": {
-      "path": "/zhome/95/e/206121/mosaic-runs/20261021-brd4-jq1-25-report-04/interim-0003.tar.gz",
-      "bytes": 39386991,
-      "sha256": "dd54d783a35a52e571edd731abea859af19f66075393f2b6985bcd3664a8973c",
-      "files": 236
-    },
-    "included_updates": [
-      7175,
-      1570,
-      1439
-    ],
-    "states": [
-      7176,
-      1571,
-      1440
-    ],
-    "report_assessment_sha256": "eff9ea20cb86ceaebd643dd40907a444aeec8f1a8d498de70c3e455789417964",
-    "report_receipt_sha256": "72f9340ebf057f62419e86047489b1d44015e59913c798f37b920b575deefed4",
-    "html_sha256": "b10515189de4a5a17ee99595ee8803216cde6c184b30102f42818e26c3a4879a",
-    "captured_utc": "2026-10-21T12:21:34.531808+00:00",
-    "download_exec_session_id": 24976,
-    "final_scheduler_sha256": "b9fffb7350d09dfd6d92cddfa18ea21279dc082a4439136d909973b27db832b5",
-    "lsf_stdout_sha256": "fbd4bad39632876641848d1b4b7c90c32a65af6ac8eeb73be2f03a4266e99091"
+    "remote_parent": "interim-0004",
+    "local_edition": "edition-0005",
+    "job_id": "29771969",
+    "status": "submitted; completion/assessment/download/publication pending",
+    "trigger": "Latest checked8300/1700/1571; new milestones7500/1500/1500 exceed published6500/1500/0",
+    "submission_receipt": "results/hpc/20261021-brd4-jq1-25-report/edition-0005/submission.json",
+    "scheduler_at_submission_sha256": "6ba1c1093ee6c4972af97dca6ca7d48001a85ec08e21ebf70b2b44f4a481ce7c"
   }
 }

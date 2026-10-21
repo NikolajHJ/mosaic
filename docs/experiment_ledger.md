@@ -5124,3 +5124,36 @@ session24976, followed automatically by path/length/SHA/safe extraction checks).
 No full local byte/schema verification, publication or browserQA is established
 yet. Do not duplicate transfer/submission while this active delivery is pending;
 current immutable edition0003 remains published. Native jobs are unchanged.
+
+### 21 October 2026 — Edition0004 delivered after transfer and browser QA
+
+The existing archive transfer session24976 finished successfully; no duplicate
+transfer/submission was made. Interim **29771001** actually DONE/LSFsuccess/passed,
+captured14:21:34Paris, updates7175/1570/1439 and states7176/1571/1440. All10,187
+exact frames retained. Archive39386991bytes SHA
+`dd54d783a35a52e571edd731abea859af19f66075393f2b6985bcd3664a8973c`,
+236files safely extracted and byte verified. Reportassessment SHA
+`eff9ea20cb86ceaebd643dd40907a444aeec8f1a8d498de70c3e455789417964`.
+RawCPU71-pass XML/proofs, native/source/config/frozen/readiness pins and exact
+every-frame metadata/chunk bytes authenticated separately. All numerical work
+and scientific rendering remained allocatedHPC; local stdlib byte/XML/schema only.
+
+Published immutable edition0004 at http://127.0.0.1:8776/report.html, preserving
+all earlier editions/servers. All215served files HTTP200/exactbytes. BrowserQA
+all3selectors/latest endpoints, drag3673then1299, exact1500/next1501, playback
+777to780/manualpause500, heatmaps/labels/probabilitysizes/rawgraph passed.
+Screenshot/verification under localedition0004. Still INPROGRESS with original
+terminal checks/full budgets pending. One compact statusquery earlier14:38Paris
+showed all3nativejobsRUN at8300/1700/1571, no terminal summaries, finalcollectors
+and finalreportPEND. Those newer states are not included in edition0004 and no
+terminal completion is inferred. Published milestones6500/1500/0. Jobs unchanged.
+
+After verified edition0004 delivery, the already checked newer native states
+8300/1700/1571 crossed additional per-arm milestones7500/1500/1500. Inspected
+root/jobs and verified the next unique parent absent, then submitted report-only
+**29771969** at14:59:03Paris, remote interim-0004 / localedition0005. Exact actual
+arguments hpc/2slots/4GiBslot/30min and standard source04 wrapper are saved;
+no native dependency or mutation. Downloaded submission/scheduler receipts,
+schedulerSHA `6ba1c1093ee6c4972af97dca6ca7d48001a85ec08e21ebf70b2b44f4a481ce7c`.
+This next submission is not a passed or delivered report. Edition0004 remains
+published until another fully authenticated/verified edition passes browserQA.

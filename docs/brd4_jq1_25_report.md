@@ -316,3 +316,28 @@ heatmaps, readable element/slot labels, probability sizes and the raw graph.
 Screenshot and verification are under the local edition0003 directory.
 Next unique capture is remote interim-0003 / local edition0004, only on a new
 per-arm milestone. No native job or scientific setting changed.
+
+### Edition0004 verified and published
+
+Report-only interim **29771001** actually DONE/LSF success/passed. Captured
+21 October 14:21:34 Paris at **7175 / 1570 / 1439 updates**, with all
+**7176 / 1571 / 1440 states (10,187 frames)** retained. All 236 evidence files
+were safely extracted and byte verified locally. Archive39,386,991bytes SHA
+`dd54d783a35a52e571edd731abea859af19f66075393f2b6985bcd3664a8973c`.
+AssessmentSHA `eff9ea20cb86ceaebd643dd40907a444aeec8f1a8d498de70c3e455789417964`.
+Actual final scheduler/LSF, raw CPU71-pass XML/proofs, source/config/model/context
+and readiness pins, N25, contiguous frame metadata and exact chunk lengths/hashes
+passed separate authentication. No local numerical/model/chemistry work occurred.
+
+Published immutable edition0004 at the stable8776link, preserving all older
+editions/servers. All215served files returned HTTP200 with exact bytes/hash.
+Actual browser QA covered all3selectors/endpoints, mouse drags to3673then1299,
+numeric1500/next1501, playback777to780 and manualscrubpause500, probability
+heatmaps, readable labels/sizes and the raw graph. Verification/screenshot:
+`results/hpc/20261021-brd4-jq1-25-report/edition-0004/`.
+Saved endpoint contact loss is-0.0867367, Boltz affinity scalar0.278051 and
+chemistry-arm affinity scalar0.325720; contact and affinity remain distinct.
+All checked raw endpoint graphs still show the25-carbon chain; chemistry loss0
+at captured1439 with coefficient0.001. This is IN PROGRESS, not full-budget or
+terminal native certification. Published milestones6500/1500/0; next unused
+capture parent interim-0004 / local edition0005. Native jobs remain unchanged.
