@@ -27,16 +27,16 @@
   "recovery_long_runs_submitted": false,
   "next_steps": "After restored access, inspect exact current receipts and any remaining read-only inventory process before recovery. Authenticate source04 bytes, pass allocated CPU contracts and unchanged adoption pins, capture actual existing Protenix terminal evidence when available, and require fresh complete per-filesystem storage gates before at most two independent new Boltz submissions. Never retry source03 dispatch or modify its failed records.",
   "source": {
-    "local_archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261021-brd4-jq1-25-fixed-storage-04\\source02\\source.tar.gz",
-    "archive_bytes": 25618,
-    "archive_sha256": "6fc50a4be658b7ed8631f1d013bf95a96cf3f0260bdb2fb21ac39e213d54562b",
-    "manifest_sha256": "bfb047786fd7dd1dafbd0a709e34ba1856d30ab4f156e4e084bb4a6c5226286a",
+    "local_archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261021-brd4-jq1-25-fixed-storage-04\\source03\\source.tar.gz",
+    "archive_bytes": 25613,
+    "archive_sha256": "0ae3e8359f5ec7e6b25684746fca90aecc080c1fb2e86c59b71822981fd784a0",
+    "manifest_sha256": "75a76dacf8de25f4ebd2d3b3fe114b1af6092064a01edf141650295300670ab3",
     "files": 12,
     "file_hashes": {
       "scripts/fixed25_recover_ops.py": "98f5649b7f2f6dac0b804977cd8322a95ceaea40dbd18b9540601dbf2dacd71e",
       "scripts/fixed25_recover_storage.py": "52c627d1865231d7c7e2a61b182640cf38f492d84a8a1f44aeec1b865c40d861",
       "tests/test_fixed25_recover_ops.py": "6ba8dbbbd6b9fe8672f53acbff19c38577062f8097cd0185e930c62862567b65",
-      "tests/test_fixed25_recover_storage.py": "73bc249dc9e0bec11eb7029ecd6718d9cba3e9fc2513accedeecf8201b2add78",
+      "tests/test_fixed25_recover_storage.py": "d155360b9bd1ffa77681db462501a57bd542b4a019624a7bcbfa763774414282",
       "scripts/hpc/fixed25_recover_cpu.lsf": "379c95a24640f31e5945ab77264d6aa04f09c11eece982db52776d2f2758e5ff",
       "scripts/hpc/fixed25_recover_after_cpu.lsf": "e40dc9e11c938cfeeffe719618c595c9d63e48c6e9bc4bcdc6fdb7840e13f7b7",
       "scripts/hpc/fixed25_recover_stage.lsf": "11ab6a2d843d3786ddafee258542562b19acd61223fc7b4c7e57a36826a47dbf",
@@ -50,7 +50,7 @@
     "hpc_verification": "not_run",
     "numerical_validation": "not_run",
     "tracked_manifest": "scripts/hpc/receipts/20261021-brd4-jq1-25-fixed-storage-04/source-manifest.json",
-    "local_package": "source02"
+    "local_package": "source03"
   },
   "observer_submitted": false,
   "latest_verified_scientific_status": {
@@ -76,7 +76,12 @@
     }
   },
   "superseded_local_packages": [
-    "scripts/hpc/receipts/20261021-brd4-jq1-25-fixed-storage-04/superseded-source01-receipt.json"
+    "scripts/hpc/receipts/20261021-brd4-jq1-25-fixed-storage-04/superseded-source01-receipt.json",
+    "scripts/hpc/receipts/20261021-brd4-jq1-25-fixed-storage-04/superseded-source02-receipt.json"
   ],
-  "local_static_check": "All Python ASTs parsed; line-ending normalization of storage helper leaves AST unchanged; source02 archive/manifest/current file hashes agree. No tests or numerical work performed."
+  "local_static_check": "Passed AST/stdlib byte verification: active source03 archive, manifest, current files and staged Git bytes agree for all12sourcefiles; no numerical tests or HPC actions.",
+  "local_static_verification": {
+    "path": "scripts/hpc/receipts/20261021-brd4-jq1-25-fixed-storage-04/local-static-verification.json",
+    "sha256": "878eff11054dda59ed65d87c275adf7d2bf46fe6cf55a39ca7e40db59ed16b29"
+  }
 }

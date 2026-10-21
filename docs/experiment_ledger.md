@@ -5549,43 +5549,37 @@ established. The home quota snapshot was 18.62 / 30 GiB, last updated at
 yet established. No gate waiver or Protenix restart follows. This documentation
 update performed no SSH, numerical work or job actions.
 
-### 21 October, 22:18 Paris - local recovery candidate only; access and capacity unresolved
+### 21 October - local split-storage recovery candidate; access and capacity unresolved
 
-A new launcher-only candidate, `20261021-brd4-jq1-25-fixed-storage-04`, is
-packaged locally: **12 files**, archive **26,245 bytes**, SHA-256
-`b7f897ba92a21559cc706c527c897b2c0cac56f1f9233f269be9823e58993388`,
+The active source04 recovery candidate is packaged locally under
+`20261021-brd4-jq1-25-fixed-storage-04`, package **source03**: **12 files**,
+archive **25,613 bytes**, SHA-256
+`0ae3e8359f5ec7e6b25684746fca90aecc080c1fb2e86c59b71822981fd784a0`,
 manifest SHA-256
-`ca4d27b6f887fbe02bced7b81c7bb8a3425357434b440beb808a8908f0e2fa3c`.
-The source manifest and campaign are saved in
+`75a76dacf8de25f4ebd2d3b3fe114b1af6092064a01edf141650295300670ab3`.
+The campaign, source manifest and `local-static-verification.json` are saved in
 `scripts/hpc/receipts/20261021-brd4-jq1-25-fixed-storage-04/`.
-Only local standard-library AST/byte checks have run: **no remote staging,
-allocated CPU pass, observer or replacement Boltz job is established**.
+AST and standard-library byte checks passed for all 12 files against the archive,
+manifest, working files and Git staging bytes. Two earlier local packages are
+preserved with separate receipts; only mixed line endings in the storage helper
+and fixture were normalized, with identical Python ASTs. **No remote staging,
+allocated CPU pass, observer or replacement Boltz job is established.**
 
 The declared placement keeps existing Protenix 29777709 unchanged on work3,
 places only a new Boltz-2 output on work3, and a new chemistry output in a
 separate dedicated home Mosaic directory. Scientific source02, configurations,
 readiness and fixed-step settings stay pinned. Each filesystem must independently
 fit its combined full remaining assigned projections plus the unchanged 4 GiB
-and 100,000-file headroom; no failed gate is relabelled or reduced. The candidate
-also includes a CPU observer for actual existing-Protenix terminal evidence,
-gated by allocated contracts and unchanged adoption identities.
+and 100,000-file headroom. The candidate includes a CPU observer for actual
+existing-Protenix terminal evidence, gated by allocated contracts and unchanged
+adoption identities. All failed storage decisions remain failed.
 
 Home capacity remains **unproven**. The 55-second metadata walk and subsequent
 bounded read-only `find` attempt did not complete; partial inventory is not a
-resource pass. The saved positive home filesystem inode counters do not establish
+resource pass. Saved positive home filesystem inode counters do not establish
 byte capacity or a user inode quota. Later SSH attempts failed authentication,
 including the bounded 22:15 Paris terminal-evidence attempt (return 255), so no
 later Protenix outcome was observed. Its latest verified state remains RUN at
 1,575 updates / 1,576 states at 20:39:34 Paris; elapsed time is not completion.
 All failed attempts and logs are preserved. No further storage deletion,
 scientific execution, local numerical test or report publication occurred.
-
-Local source04 package `source01` above remains preserved. Before committing,
-the storage helper's mixed line endings were normalized to the repository's
-required LF format; its Python AST is unchanged. The active local candidate is
-now `source02`: 25,618 archive bytes, SHA-256
-`6fc50a4be658b7ed8631f1d013bf95a96cf3f0260bdb2fb21ac39e213d54562b`, manifest SHA-256
-`bfb047786fd7dd1dafbd0a709e34ba1856d30ab4f156e4e084bb4a6c5226286a`. All 12 member hashes match
-the working files. This is a byte-format correction only, with no remote staging,
-allocated tests, observer or scientific job. The superseded local package receipt
-is retained beside the active campaign.

@@ -1,0 +1,29 @@
+{
+  "status": "Preserved local unvalidated package. Superseded after staged Git byte check found mixed line endings in one storage test fixture. Normalization leaves Python AST unchanged. No HPC validation, job or scientific change.",
+  "source": {
+    "local_archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261021-brd4-jq1-25-fixed-storage-04\\source02\\source.tar.gz",
+    "archive_bytes": 25618,
+    "archive_sha256": "6fc50a4be658b7ed8631f1d013bf95a96cf3f0260bdb2fb21ac39e213d54562b",
+    "manifest_sha256": "bfb047786fd7dd1dafbd0a709e34ba1856d30ab4f156e4e084bb4a6c5226286a",
+    "files": 12,
+    "file_hashes": {
+      "scripts/fixed25_recover_ops.py": "98f5649b7f2f6dac0b804977cd8322a95ceaea40dbd18b9540601dbf2dacd71e",
+      "scripts/fixed25_recover_storage.py": "52c627d1865231d7c7e2a61b182640cf38f492d84a8a1f44aeec1b865c40d861",
+      "tests/test_fixed25_recover_ops.py": "6ba8dbbbd6b9fe8672f53acbff19c38577062f8097cd0185e930c62862567b65",
+      "tests/test_fixed25_recover_storage.py": "73bc249dc9e0bec11eb7029ecd6718d9cba3e9fc2513accedeecf8201b2add78",
+      "scripts/hpc/fixed25_recover_cpu.lsf": "379c95a24640f31e5945ab77264d6aa04f09c11eece982db52776d2f2758e5ff",
+      "scripts/hpc/fixed25_recover_after_cpu.lsf": "e40dc9e11c938cfeeffe719618c595c9d63e48c6e9bc4bcdc6fdb7840e13f7b7",
+      "scripts/hpc/fixed25_recover_stage.lsf": "11ab6a2d843d3786ddafee258542562b19acd61223fc7b4c7e57a36826a47dbf",
+      "scripts/hpc/fixed25_recover_observe_pro.lsf": "3092f6ad43f449934a1040ce020bed95d0deb59b5b45def69ab9b400027bebd8",
+      "scripts/verify_stage0_release.py": "d3e5373b84b123fe2388db2e9493a5a76d1cfc7edcc53f73ff5746f935c49c02",
+      "examples/configs/brd4_jq1_25_fixed_protenix_10000.json": "69257fd9700d8ca0f42e13ae95ec4c3a15ca623064f657acf4fb8c85b65f1d00",
+      "examples/configs/brd4_jq1_25_fixed_boltz2_10000.json": "b6217159b0180b8c2f4b3e57764b2101b79e20e1e8cd021b357ae6563e5b161b",
+      "examples/configs/brd4_jq1_25_fixed_boltz2_chemistry_10000.json": "dd6347a0756320bc79dea5fbbf7da9aeca8e8bf93dc38f30cd141fd240059049"
+    },
+    "remote_expected": "/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-storage-04/source",
+    "hpc_verification": "not_run",
+    "numerical_validation": "not_run",
+    "tracked_manifest": "scripts/hpc/receipts/20261021-brd4-jq1-25-fixed-storage-04/source-manifest.json",
+    "local_package": "source02"
+  }
+}

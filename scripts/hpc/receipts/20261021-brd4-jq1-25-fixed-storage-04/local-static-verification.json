@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "utc": "2026-10-21T20:25:39.491724+00:00",
+  "scope": "Standard-library AST and byte comparison only; no local tests, numerical calculations or HPC actions",
+  "source_archive_bytes": 25613,
+  "source_archive_sha256": "0ae3e8359f5ec7e6b25684746fca90aecc080c1fb2e86c59b71822981fd784a0",
+  "source_manifest_sha256": "75a76dacf8de25f4ebd2d3b3fe114b1af6092064a01edf141650295300670ab3",
+  "source_file_count": 12,
+  "archive_manifest_current_and_git_staged_bytes_equal": true,
+  "all_python_ast_parse": true,
+  "line_ending_normalizations_preserve_python_ast": true,
+  "hpc_validation": "not_run",
+  "recovery_jobs_submitted": false
+}
