@@ -1,0 +1,363 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.11, pytest-9.0.3, pluggy-1.7.0
+cachedir: /work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-01/cpu/payload/cache-legacy
+rootdir: /work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-01/source
+configfile: pyproject.toml
+plugins: anyio-4.15.1, jaxtyping-0.3.11
+collected 242 items / 3 deselected / 239 selected
+
+tests/test_small_molecule_boltz_bridge.py ...                            [  1%]
+tests/test_small_molecule_brd4_fixture.py ....                           [  2%]
+tests/test_small_molecule_campaign25.py .....                            [  5%]
+tests/test_small_molecule_case_selection.py .......                      [  7%]
+tests/test_small_molecule_compact_artifacts.py ..                        [  8%]
+tests/test_small_molecule_continuation.py ...........                    [ 13%]
+tests/test_small_molecule_contracts.py ..............                    [ 19%]
+tests/test_small_molecule_diffuse_control.py ..........                  [ 23%]
+tests/test_small_molecule_evidence_root.py ..........                    [ 27%]
+tests/test_small_molecule_features.py ........                           [ 30%]
+tests/test_small_molecule_fixed_step.py FF...                            [ 33%]
+tests/test_small_molecule_gradient_checks.py .....                       [ 35%]
+tests/test_small_molecule_home_quota.py ....                             [ 36%]
+tests/test_small_molecule_io.py .............                            [ 42%]
+tests/test_small_molecule_jq1_pocket.py .......                          [ 45%]
+tests/test_small_molecule_known_ligand_fixture.py ...                    [ 46%]
+tests/test_small_molecule_losses.py .....................                [ 55%]
+tests/test_small_molecule_optimizers.py .................                [ 62%]
+tests/test_small_molecule_prepared_study.py ........                     [ 65%]
+tests/test_small_molecule_protenix.py ............                       [ 70%]
+tests/test_small_molecule_report_scope.py .                              [ 71%]
+tests/test_small_molecule_report_studies.py ...............              [ 77%]
+tests/test_small_molecule_report_svg.py .                                [ 77%]
+tests/test_small_molecule_state.py ...................................   [ 92%]
+tests/test_small_molecule_uniform_control.py .............               [ 97%]
+tests/test_small_molecule_validation.py .....                            [100%]
+
+=================================== FAILURES ===================================
+_______ test_full_fixed_step_is_applied_even_when_actual_loss_increases ________
+
+tmp_path = PosixPath('/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-01/cpu/payload/tmp-legacy/test_full_fixed_step_is_applie0')
+
+    def test_full_fixed_step_is_applied_even_when_actual_loss_increases(tmp_path):
+        def loss(graph,*,key): return 1e4*(graph.X[0,0]-.6)**2,{}
+>       initial,spec,options,r=run(tmp_path,loss)
+                               ^^^^^^^^^^^^^^^^^^
+
+tests/test_small_molecule_fixed_step.py:30: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/test_small_molecule_fixed_step.py:22: in run
+    result=run_chemical_updates(loss,initial,prepare=lambda z,u: NativeOnlyPreparation(spec.fingerprint(),u),
+src/mosaic/small_molecule/chemistry/trajectory.py:344: in run_chemical_updates
+    report["initial_checks"] = check_combined_directions(
+src/mosaic/small_molecule/chemistry/trajectory.py:496: in check_combined_directions
+    return check(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+contact_loss = <function test_full_fixed_step_is_applied_even_when_actual_loss_increases.<locals>.loss at 0x7f581d8adb20>
+evaluation = CombinedEvaluation(logits=GraphLogits(atoms=f32[25,6], bonds=f32[300,5]), native=NativeObservation(evaluation=RawEvalu...ration_id='51221365c2c35749fde3441e532b2f14907183cbac8ab2f9a99369d9f574f542', repair_weight=0.0, native_name='contact')
+prepared = NativeOnlyPreparation(schema_sha256='1f1c30ff69aa4fd34cabfb52f1470a6589034549657268bbf5a4d2ebd8bade6e', update=0)
+spec = GraphSpec(max_nodes=25, atomic_numbers=(0, 6, 7, 8, 16, 9, 17), formal_charges=(0,), bond_names=('NONE', 'SINGLE', 'DOUBLE', 'TRIPLE', 'AROMATIC'), version=1)
+reference = Array([1., 1., 1., 1., 1., 1.], dtype=float32)
+
+    def check_combined_directions(
+        contact_loss, evaluation, prepared, spec, reference, *, key, config, directory=None
+    ):
+        """Two adjacent finite-difference scales per live logit field, fixed target.
+    
+        Native order-null checks remain separate: chemistry deliberately DOES see
+        order redistribution that is invisible to Protenix's existence-only map.
+        """
+        name = config.get("native_name", "contact")
+        records = []
+        if evaluation.repair_weight != float(config["repair_weight"]):
+            raise ValueError("Derivative baseline and trial chemistry coefficient differ")
+        report = {
+            "status": "running",
+            "directions": records,
+            "preparation_identity": prepared.identity,
+            name + "_objective_identity": config.get("objective_identity"),
+            "schema_sha256": spec.fingerprint(),
+            "repair_weight": evaluation.repair_weight,
+        }
+        if directory is not None:
+            directory.mkdir(parents=True, exist_ok=False)
+        try:
+            for field in ("atoms", "bonds"):
+                gradient = np.asarray(getattr(evaluation.gradients, field))
+                contrasts = gradient.max(-1) - gradient.min(-1)
+                row = int(contrasts.argmax())
+                source, destination = (
+                    int(gradient[row].argmin()),
+                    int(gradient[row].argmax()),
+                )
+                direction = (
+                    jnp.zeros_like(getattr(evaluation.logits, field))
+                    .at[row, source]
+                    .set(-1)
+                    .at[row, destination]
+                    .set(1)
+                )
+                analytic = float(jnp.sum(getattr(evaluation.gradients, field) * direction))
+                probes, agreements = [], []
+                records.append(
+                    {
+                        "field": field,
+                        "row": row,
+                        "source": source,
+                        "destination": destination,
+                        "analytic": analytic,
+                        "probes": probes,
+                    }
+                )
+                for epsilon in config.get("epsilons", (0.01, 0.003, 0.001)):
+                    values = []
+                    for sign in (-1, 1):
+                        state = eqx.tree_at(
+                            lambda v: getattr(v, field),
+                            evaluation.logits,
+                            getattr(evaluation.logits, field) + sign * epsilon * direction,
+                        )
+                        if directory is not None:
+                            np.savez_compressed(
+                                directory / "current_probe.npz",
+                                atom_logits=np.asarray(state.atoms),
+                                bond_logits=np.asarray(state.bonds),
+                                key_data=np.asarray(jax.random.key_data(key)),
+                            )
+                        value = evaluate_combined(
+                            contact_loss,
+                            state,
+                            prepared,
+                            spec,
+                            reference,
+                            key=key,
+                            config=config,
+                        )
+                        values.append(value.primal)
+                        if directory is not None:
+                            graph = state.graph()
+                            saved = {
+                                "X": graph.X,
+                                "E_upper": graph.E_upper,
+                                "atom_logits": state.atoms,
+                                "bond_logits": state.bonds,
+                                "gradient_atom_logits": value.gradients.atoms,
+                                "gradient_bond_logits": value.gradients.bonds,
+                                name + "_gradient_X": value.native.evaluation.gradients.X,
+                                name
+                                + "_gradient_E_upper": value.native.evaluation.gradients.E_upper,
+                                "combined_autodiff": value.value,
+                                "combined_primal": value.primal,
+                                name + "_primal": value.native.primal,
+                                "repair_weight": value.repair_weight,
+                                "key_data": jax.random.key_data(key),
+                            }
+                            saved.update(
+                                {
+                                    k: v
+                                    for k, v in value.native.evaluation.aux.items()
+                                    if eqx.is_array(v)
+                                    and (v.ndim == 0 or k == "distogram_logits")
+                                }
+                            )
+                            np.savez_compressed(
+                                directory / f"{field}-{epsilon:g}-{sign:+d}.npz",
+                                **{k: np.asarray(v) for k, v in saved.items()},
+                            )
+                    fd = (values[1] - values[0]) / (2 * epsilon)
+                    scale = max(abs(fd), abs(analytic))
+                    agreement = (
+                        abs(analytic) > 1e-7
+                        and fd * analytic > 0
+                        and abs(fd - analytic) <= 0.002 + 0.15 * scale
+                        and abs(fd - analytic) <= 0.15 * scale
+                    )
+                    probes.append(
+                        {
+                            "epsilon": epsilon,
+                            "finite_difference": fd,
+                            "analytic": analytic,
+                            "agrees": agreement,
+                            "preparation_identity": prepared.identity,
+                        }
+                    )
+                    agreements.append(agreement)
+                    if directory is not None:
+                        write_json(directory / "report.json", report)
+                if not any(a and b for a, b in zip(agreements, agreements[1:])):
+>                   raise AssertionError(
+                        f"Combined frozen-reference {field} derivative check failed"
+                    )
+E                   AssertionError: Combined frozen-reference bonds derivative check failed
+
+src/mosaic/small_molecule/chemistry/checks.py:138: AssertionError
+_____________ test_equal_noop_is_logged_without_a_search_fallback ______________
+
+tmp_path = PosixPath('/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-01/cpu/payload/tmp-legacy/test_equal_noop_is_logged_with0')
+
+    def test_equal_noop_is_logged_without_a_search_fallback(tmp_path):
+>       _,_,_,r=run(tmp_path,lambda graph,*,key:(jnp.sum(graph.X)*0,{}))
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_small_molecule_fixed_step.py:42: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/test_small_molecule_fixed_step.py:22: in run
+    result=run_chemical_updates(loss,initial,prepare=lambda z,u: NativeOnlyPreparation(spec.fingerprint(),u),
+src/mosaic/small_molecule/chemistry/trajectory.py:344: in run_chemical_updates
+    report["initial_checks"] = check_combined_directions(
+src/mosaic/small_molecule/chemistry/trajectory.py:496: in check_combined_directions
+    return check(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+contact_loss = <function test_equal_noop_is_logged_without_a_search_fallback.<locals>.<lambda> at 0x7f581d944a40>
+evaluation = CombinedEvaluation(logits=GraphLogits(atoms=f32[25,6], bonds=f32[300,5]), native=NativeObservation(evaluation=RawEvalu...ration_id='51221365c2c35749fde3441e532b2f14907183cbac8ab2f9a99369d9f574f542', repair_weight=0.0, native_name='contact')
+prepared = NativeOnlyPreparation(schema_sha256='1f1c30ff69aa4fd34cabfb52f1470a6589034549657268bbf5a4d2ebd8bade6e', update=0)
+spec = GraphSpec(max_nodes=25, atomic_numbers=(0, 6, 7, 8, 16, 9, 17), formal_charges=(0,), bond_names=('NONE', 'SINGLE', 'DOUBLE', 'TRIPLE', 'AROMATIC'), version=1)
+reference = Array([1., 1., 1., 1., 1., 1.], dtype=float32)
+
+    def check_combined_directions(
+        contact_loss, evaluation, prepared, spec, reference, *, key, config, directory=None
+    ):
+        """Two adjacent finite-difference scales per live logit field, fixed target.
+    
+        Native order-null checks remain separate: chemistry deliberately DOES see
+        order redistribution that is invisible to Protenix's existence-only map.
+        """
+        name = config.get("native_name", "contact")
+        records = []
+        if evaluation.repair_weight != float(config["repair_weight"]):
+            raise ValueError("Derivative baseline and trial chemistry coefficient differ")
+        report = {
+            "status": "running",
+            "directions": records,
+            "preparation_identity": prepared.identity,
+            name + "_objective_identity": config.get("objective_identity"),
+            "schema_sha256": spec.fingerprint(),
+            "repair_weight": evaluation.repair_weight,
+        }
+        if directory is not None:
+            directory.mkdir(parents=True, exist_ok=False)
+        try:
+            for field in ("atoms", "bonds"):
+                gradient = np.asarray(getattr(evaluation.gradients, field))
+                contrasts = gradient.max(-1) - gradient.min(-1)
+                row = int(contrasts.argmax())
+                source, destination = (
+                    int(gradient[row].argmin()),
+                    int(gradient[row].argmax()),
+                )
+                direction = (
+                    jnp.zeros_like(getattr(evaluation.logits, field))
+                    .at[row, source]
+                    .set(-1)
+                    .at[row, destination]
+                    .set(1)
+                )
+                analytic = float(jnp.sum(getattr(evaluation.gradients, field) * direction))
+                probes, agreements = [], []
+                records.append(
+                    {
+                        "field": field,
+                        "row": row,
+                        "source": source,
+                        "destination": destination,
+                        "analytic": analytic,
+                        "probes": probes,
+                    }
+                )
+                for epsilon in config.get("epsilons", (0.01, 0.003, 0.001)):
+                    values = []
+                    for sign in (-1, 1):
+                        state = eqx.tree_at(
+                            lambda v: getattr(v, field),
+                            evaluation.logits,
+                            getattr(evaluation.logits, field) + sign * epsilon * direction,
+                        )
+                        if directory is not None:
+                            np.savez_compressed(
+                                directory / "current_probe.npz",
+                                atom_logits=np.asarray(state.atoms),
+                                bond_logits=np.asarray(state.bonds),
+                                key_data=np.asarray(jax.random.key_data(key)),
+                            )
+                        value = evaluate_combined(
+                            contact_loss,
+                            state,
+                            prepared,
+                            spec,
+                            reference,
+                            key=key,
+                            config=config,
+                        )
+                        values.append(value.primal)
+                        if directory is not None:
+                            graph = state.graph()
+                            saved = {
+                                "X": graph.X,
+                                "E_upper": graph.E_upper,
+                                "atom_logits": state.atoms,
+                                "bond_logits": state.bonds,
+                                "gradient_atom_logits": value.gradients.atoms,
+                                "gradient_bond_logits": value.gradients.bonds,
+                                name + "_gradient_X": value.native.evaluation.gradients.X,
+                                name
+                                + "_gradient_E_upper": value.native.evaluation.gradients.E_upper,
+                                "combined_autodiff": value.value,
+                                "combined_primal": value.primal,
+                                name + "_primal": value.native.primal,
+                                "repair_weight": value.repair_weight,
+                                "key_data": jax.random.key_data(key),
+                            }
+                            saved.update(
+                                {
+                                    k: v
+                                    for k, v in value.native.evaluation.aux.items()
+                                    if eqx.is_array(v)
+                                    and (v.ndim == 0 or k == "distogram_logits")
+                                }
+                            )
+                            np.savez_compressed(
+                                directory / f"{field}-{epsilon:g}-{sign:+d}.npz",
+                                **{k: np.asarray(v) for k, v in saved.items()},
+                            )
+                    fd = (values[1] - values[0]) / (2 * epsilon)
+                    scale = max(abs(fd), abs(analytic))
+                    agreement = (
+                        abs(analytic) > 1e-7
+                        and fd * analytic > 0
+                        and abs(fd - analytic) <= 0.002 + 0.15 * scale
+                        and abs(fd - analytic) <= 0.15 * scale
+                    )
+                    probes.append(
+                        {
+                            "epsilon": epsilon,
+                            "finite_difference": fd,
+                            "analytic": analytic,
+                            "agrees": agreement,
+                            "preparation_identity": prepared.identity,
+                        }
+                    )
+                    agreements.append(agreement)
+                    if directory is not None:
+                        write_json(directory / "report.json", report)
+                if not any(a and b for a, b in zip(agreements, agreements[1:])):
+>                   raise AssertionError(
+                        f"Combined frozen-reference {field} derivative check failed"
+                    )
+E                   AssertionError: Combined frozen-reference atoms derivative check failed
+
+src/mosaic/small_molecule/chemistry/checks.py:138: AssertionError
+=============================== warnings summary ===============================
+tests/test_small_molecule_contracts.py::test_ligand_occupancy_and_charge_are_guards_independent_of_producer[atom_pad_mask]
+tests/test_small_molecule_contracts.py::test_ligand_occupancy_and_charge_are_guards_independent_of_producer[token_pad_mask]
+  /work3/s234818/mosaic/envs/protenix-tiny/lib/python3.12/site-packages/jax/_src/ops/scatter.py:105: FutureWarning: scatter inputs have incompatible types: cannot safely cast value from dtype=int32 to dtype=bool with jax_numpy_dtype_promotion=standard. In future JAX releases this will result in an error.
+    warnings.warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+- generated xml file: /work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-01/cpu/payload/legacy.xml -
+=========================== short test summary info ============================
+FAILED tests/test_small_molecule_fixed_step.py::test_full_fixed_step_is_applied_even_when_actual_loss_increases
+FAILED tests/test_small_molecule_fixed_step.py::test_equal_noop_is_logged_without_a_search_fallback
+====== 2 failed, 237 passed, 3 deselected, 2 warnings in 98.26s (0:01:38) ======

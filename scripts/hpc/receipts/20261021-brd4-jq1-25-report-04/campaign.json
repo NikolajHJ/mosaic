@@ -29,7 +29,7 @@
     "interim-0004": "29771969",
     "interim-0005": "29772558"
   },
-  "status": "Source04 CPU71passed; interim29772558 actuallyDONE/LSFsuccess/passed,310files byte/schema verified,13775 exact frames published as edition0006; all289servedfiles and browser QA passed",
+  "status": "Historicaledition0006preserved; originalBoltzarmsintentionallyuser-stoppedbeforefullbudget; oldfinal29770709intentionallyretired; reportingtransitionsonlytonewfixedrunidentitiesafterchecks",
   "source_authenticated_files": 518,
   "cpu_assessment_sha256": "a2654b958374b19cb9f42113032ad3a3a4776c38a88fb387d6409da37ce872d0",
   "report_assessment_sha256": "ca440b1dc46f87dad88fee291605f9dfe3fba50cfe0a5c642ba4d9bf8562c486",
@@ -208,5 +208,11 @@
     },
     "remaining_collectors_and_final": "PEND",
     "new_milestone_beyond_published": false
-  }
+  },
+  "superseded_scientific_scope": "20261021-brd4-jq1-25-fixed-01",
+  "intentional_original_stops": {
+    "29770093": 2407,
+    "29770124": 2208
+  },
+  "old_final_actual_status": "EXIT"
 }

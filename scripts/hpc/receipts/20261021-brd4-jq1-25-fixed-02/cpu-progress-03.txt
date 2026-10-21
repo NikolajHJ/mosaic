@@ -1,0 +1,17 @@
+2026-10-21T16:27:26+02:00
+29776103 RUN hpc mosaic-jq1-fixed-cpu
+29776104 PEND hpc mosaic-jq1-fixed-after-cpu
+native-mapping
+tests/test_campaign25_native.py .......                                  [ 32%]
+tests/test_campaign25_contract.py ....................                   [ 91%]
+tests/test_pocket_boltz.py ...                                           [100%]
+
+- generated xml file: /work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/cpu/payload/native-mapping.xml -
+============================== 34 passed in 6.81s ==============================
+chemistry
+configfile: pyproject.toml
+plugins: anyio-4.15.1, jaxtyping-0.3.11
+collected 59 items
+
+tests/test_small_molecule_chemistry.py ................................. [ 55%]
+..

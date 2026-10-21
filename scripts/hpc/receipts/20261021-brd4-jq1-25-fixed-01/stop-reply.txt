@@ -1,0 +1,55 @@
+Job <29770093> is being terminated
+Job <29770124> is being terminated
+/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-protenix-lr03-01/cpu/stderr.29776049.log
+Loaded dependency [python3/3.12.11]: sqlite3/3.50.1
+Loaded dependency [python3/3.12.11]: gcc/14.3.0-binutils-2.44
+Loaded module: python3/3.12.11
+
+Loading python3/3.12.11
+  Loading requirement: sqlite3/3.50.1 gcc/14.3.0-binutils-2.44
+/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-protenix-lr03-01/cpu/payload/hpc-contract.log
+============================= test session starts ==============================
+platform linux -- Python 3.12.11, pytest-9.0.3, pluggy-1.7.0
+cachedir: /work3/s234818/mosaic/runs/20261021-brd4-jq1-25-protenix-lr03-01/cpu/payload/cache-contract
+rootdir: /work3/s234818/mosaic/releases/20261021-brd4-jq1-25-protenix-lr03-01/source
+configfile: pyproject.toml
+plugins: anyio-4.15.1, jaxtyping-0.3.11
+collected 135 items
+
+tests/test_boltz_submission_controller.py ........                       [  5%]
+tests/test_boltz_hpc_tmpdir.py ........                                  [ 11%]
+tests/test_campaign25_ops.py ..................                          [ 25%]
+tests/test_campaign25_release.py ........................                [ 42%]
+tests/test_campaign25_pocket_ops.py ................................     [ 66%]
+tests/test_pocket_definition.py ..........                               [ 74%]
+tests/test_protenix_lr03_ops.py .......................                  [ 91%]
+tests/test_protenix_lr03_storage.py ...........F                         [100%]
+
+=================================== FAILURES ===================================
+__________ test_output_scope_rejects_existing_home_or_other_projects ___________
+
+tmp_path = PosixPath('/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-protenix-lr03-01/cpu/payload/tmp-contract/test_output_scope_rejects_exis0')
+
+    def test_output_scope_rejects_existing_home_or_other_projects(tmp_path):
+>       with pytest.raises(ValueError, match='scope'): storage.check_storage(tmp_path, 0)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'ValueError'>
+
+tests/test_protenix_lr03_storage.py:53: Failed
+- generated xml file: /work3/s234818/mosaic/runs/20261021-brd4-jq1-25-protenix-lr03-01/cpu/payload/hpc-contract.xml -
+=========================== short test summary info ============================
+FAILED tests/test_protenix_lr03_storage.py::test_output_scope_rejects_existing_home_or_other_projects
+======================== 1 failed, 134 passed in 4.38s =========================
+/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-protenix-lr03-01/after-cpu/stderr.29776050.log
+Loaded dependency [python3/3.12.11]: sqlite3/3.50.1
+Loaded dependency [python3/3.12.11]: gcc/14.3.0-binutils-2.44
+Loaded module: python3/3.12.11
+
+Loading python3/3.12.11
+  Loading requirement: sqlite3/3.50.1 gcc/14.3.0-binutils-2.44
+Traceback (most recent call last):
+  File "/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-protenix-lr03-01/source/scripts/protenix_lr03_ops.py", line 108, in <module>
+    main()
+  File "/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-protenix-lr03-01/source/scripts/protenix_lr03_ops.py", line 74, in main
+    raise ValueError('Actual prerequisite scheduler/queue failed')
+ValueError: Actual prerequisite scheduler/queue failed

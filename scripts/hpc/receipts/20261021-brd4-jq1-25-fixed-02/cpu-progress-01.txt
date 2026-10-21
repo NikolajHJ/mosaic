@@ -1,0 +1,15 @@
+2026-10-21T16:25:33+02:00
+29776103 RUN hpc mosaic-jq1-fixed-cpu
+29776104 PEND hpc mosaic-jq1-fixed-after-cpu
+hpc-contract
+tests/test_fixed25_ops.py .............                                  [ 98%]
+tests/test_fixed25_storage.py ..                                         [100%]
+
+- generated xml file: /work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/cpu/payload/hpc-contract.xml -
+============================= 150 passed in 4.13s ==============================
+legacy
+tests/test_small_molecule_contracts.py ..............                    [ 19%]
+tests/test_small_molecule_diffuse_control.py ..........                  [ 23%]
+tests/test_small_molecule_evidence_root.py ..........                    [ 27%]
+tests/test_small_molecule_features.py ........                           [ 30%]
+tests/test_small_molecule_fixed_step.py 

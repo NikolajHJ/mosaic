@@ -1,0 +1,285 @@
+2026-10-21T16:12:59+02:00
+
+Job <29770093>, Job Name <mosaic-jq1-25-run-boltz2>, User <s234818>, Project <d
+                          efault>, Status <RUN>, Queue <gpul40s>, Command <bash
+                           -l /work3/s234818/mosaic/releases/20261021-brd4-jq1-
+                          25-01/source/scripts/hpc/campaign25_pocket_stage.lsf 
+                          /work3/s234818/mosaic/releases/20261021-brd4-jq1-25-0
+                          1/source /zhome/95/e/206121/mosaic-runs/20261021-brd4
+                          -jq1-25-01 2503c2382b429ec6b79d7a256b2a2fccd09f7739a6
+                          09e97a876d604d00dc063c run boltz2 /zhome/95/e/206121/
+                          mosaic-runs/20261021-brd4-jq1-25-01/run-boltz2 0>, Sh
+                          are group charged </s234818>, Esub <dcc>
+Wed Oct 21 12:35:37 2026: Submitted from host <n-62-31-11>, CWD </work3/s234818
+                          /mosaic/releases/20261021-brd4-jq1-25-01/source>, Out
+                          put File (overwrite) </zhome/95/e/206121/mosaic-runs/
+                          20261021-brd4-jq1-25-01/run-boltz2/stdout.29770093.lo
+                          g>, Error File (overwrite) </zhome/95/e/206121/mosaic
+                          -runs/20261021-brd4-jq1-25-01/run-boltz2/stderr.29770
+                          093.log>, 4 Task(s), Requested Resources < rusage[mem
+                          =8192.00] span[hosts=1]>, Requested GPU <num=1:mode=e
+                          xclusive_process>;
+Wed Oct 21 12:37:48 2026: Started 4 Task(s) on Host(s) <4*n-62-13-17>, Allocate
+                          d 4 Slot(s) on Host(s) <4*n-62-13-17>, Execution Home
+                           </zhome/95/e/206121>, Execution CWD </work3/s234818/
+                          mosaic/releases/20261021-brd4-jq1-25-01/source>;
+Wed Oct 21 16:09:37 2026: Resource usage collected.
+                          The CPU time used is 12658 seconds.
+                          MEM: 6.1 Gbytes;  SWAP: 0 Mbytes;  NTHREAD: 40
+                          PGID: 576288;  PIDs: 576288 576297 576299 576678 
+                          576699 
+
+ RUNLIMIT                
+ 1380.0 min
+
+ MEMLIMIT
+      8 G 
+
+ MEMORY USAGE:
+ MAX MEM: 6.1 Gbytes;  AVG MEM: 5.8 Gbytes; MEM Efficiency: 19.25%
+
+ CPU USAGE:
+ CPU PEAK: 1.00 ;  CPU PEAK DURATION: 11990 second(s)
+ CPU AVERAGE EFFICIENCY: 24.90% ;  CPU PEAK EFFICIENCY: 25.00%
+
+ PENDING TIME DETAILS:
+ Eligible pending time (seconds):	131
+ Ineligible pending time (seconds):	0
+
+ SCHEDULING PARAMETERS:
+           r15s   r1m  r15m   ut      pg    io   ls    it    tmp    swp    mem
+ loadSched   -     -     -     -       -     -    -     -     -      -      -  
+ loadStop    -     -     -     -       -     -    -     -     -      -      -  
+
+ EXTERNAL MESSAGES:
+ MSG_ID FROM       POST_TIME      MESSAGE                             ATTACHMENT 
+ 0      s234818    Oct 21 12:40   GPU 0: Detected Power error: Detect     N     
+
+ RESOURCE REQUIREMENT DETAILS:
+ Job-level:  rusage[mem=8192.00] span[hosts=1]
+ App-level: -
+ Queue-level: same[type:model] affinity[core] cu[type=enclosure:maxcus=1]
+ Combined: select[(ngpus>0) && (type == local)] order[-slots:-maxslots] rusage[
+                          mem=8192.00:ngpus_physical=1.00] span[hosts=1] same[t
+                          ype:model] cu[pref=config:maxcus=1:type=enclosure] af
+                          finity[core(1)*1]
+ Effective: select[((ngpus>0)) && (type == local)] order[-slots:-maxslots] rusa
+                          ge[mem=8192.00,ngpus_physical=1.00] span[hosts=1] sam
+                          e[type:model] cu[type=enclosure:maxcus=1:pref=config]
+                           affinity[core(1)*1] 
+
+ GPU REQUIREMENT DETAILS:
+ Combined: num=1:mode=exclusive_process:mps=no:j_exclusive=yes:aff=no:gvendor=n
+                          vidia
+ Effective: num=1:mode=exclusive_process:mps=no:j_exclusive=yes:aff=no:gvendor=
+                          nvidia
+------------------------------------------------------------------------------
+
+Job <29770124>, Job Name <mosaic-jq1-25-run-boltz2_chemistry>, User <s234818>, 
+                          Project <default>, Status <RUN>, Queue <gpul40s>, Com
+                          mand <bash -l /work3/s234818/mosaic/releases/20261021
+                          -brd4-jq1-25-01/source/scripts/hpc/campaign25_pocket_
+                          stage.lsf /work3/s234818/mosaic/releases/20261021-brd
+                          4-jq1-25-01/source /zhome/95/e/206121/mosaic-runs/202
+                          61021-brd4-jq1-25-01 2503c2382b429ec6b79d7a256b2a2fcc
+                          d09f7739a609e97a876d604d00dc063c run boltz2_chemistry
+                           /zhome/95/e/206121/mosaic-runs/20261021-brd4-jq1-25-
+                          01/run-boltz2_chemistry 0>, Share group charged </s23
+                          4818>, Esub <dcc>
+Wed Oct 21 12:40:06 2026: Submitted from host <n-62-11-60>, CWD </work3/s234818
+                          /mosaic/releases/20261021-brd4-jq1-25-01/source>, Out
+                          put File (overwrite) </zhome/95/e/206121/mosaic-runs/
+                          20261021-brd4-jq1-25-01/run-boltz2_chemistry/stdout.2
+                          9770124.log>, Error File (overwrite) </zhome/95/e/206
+                          121/mosaic-runs/20261021-brd4-jq1-25-01/run-boltz2_ch
+                          emistry/stderr.29770124.log>, 4 Task(s), Requested Re
+                          sources < rusage[mem=8192.00] span[hosts=1]>, Request
+                          ed GPU <num=1:mode=exclusive_process>;
+Wed Oct 21 12:43:26 2026: Started 4 Task(s) on Host(s) <4*n-62-13-18>, Allocate
+                          d 4 Slot(s) on Host(s) <4*n-62-13-18>, Execution Home
+                           </zhome/95/e/206121>, Execution CWD </work3/s234818/
+                          mosaic/releases/20261021-brd4-jq1-25-01/source>;
+Wed Oct 21 16:09:37 2026: Resource usage collected.
+                          The CPU time used is 12418 seconds.
+                          MEM: 6.2 Gbytes;  SWAP: 0 Mbytes;  NTHREAD: 48
+                          PGID: 1421484;  PIDs: 1421484 1421493 1421495 
+                          1421908 1421928 
+
+ RUNLIMIT                
+ 1380.0 min
+
+ MEMLIMIT
+      8 G 
+
+ MEMORY USAGE:
+ MAX MEM: 6.2 Gbytes;  AVG MEM: 6 Gbytes; MEM Efficiency: 19.47%
+
+ CPU USAGE:
+ CPU PEAK: 1.15 ;  CPU PEAK DURATION: 188 second(s)
+ CPU AVERAGE EFFICIENCY: 25.09% ;  CPU PEAK EFFICIENCY: 28.72%
+
+ PENDING TIME DETAILS:
+ Eligible pending time (seconds):	200
+ Ineligible pending time (seconds):	0
+
+ SCHEDULING PARAMETERS:
+           r15s   r1m  r15m   ut      pg    io   ls    it    tmp    swp    mem
+ loadSched   -     -     -     -       -     -    -     -     -      -      -  
+ loadStop    -     -     -     -       -     -    -     -     -      -      -  
+
+ EXTERNAL MESSAGES:
+ MSG_ID FROM       POST_TIME      MESSAGE                             ATTACHMENT 
+ 0      s234818    Oct 21 12:43   GPU 0: Detected Power error: Detect     N     
+
+ RESOURCE REQUIREMENT DETAILS:
+ Job-level:  rusage[mem=8192.00] span[hosts=1]
+ App-level: -
+ Queue-level: same[type:model] affinity[core] cu[type=enclosure:maxcus=1]
+ Combined: select[(ngpus>0) && (type == local)] order[-slots:-maxslots] rusage[
+                          mem=8192.00:ngpus_physical=1.00] span[hosts=1] same[t
+                          ype:model] cu[pref=config:maxcus=1:type=enclosure] af
+                          finity[core(1)*1]
+ Effective: select[((ngpus>0)) && (type == local)] order[-slots:-maxslots] rusa
+                          ge[mem=8192.00,ngpus_physical=1.00] span[hosts=1] sam
+                          e[type:model] cu[type=enclosure:maxcus=1:pref=config]
+                           affinity[core(1)*1] 
+
+ GPU REQUIREMENT DETAILS:
+ Combined: num=1:mode=exclusive_process:mps=no:j_exclusive=yes:aff=no:gvendor=n
+                          vidia
+ Effective: num=1:mode=exclusive_process:mps=no:j_exclusive=yes:aff=no:gvendor=
+                          nvidia
+------------------------------------------------------------------------------
+
+Job <29776049>, Job Name <mosaic-protenix-lr03-cpu>, User <s234818>, Project <d
+                          efault>, Service Class <sc_hpc1>, Status <EXIT>, Queu
+                          e <hpc>, Command <bash -l /work3/s234818/mosaic/relea
+                          ses/20261021-brd4-jq1-25-protenix-lr03-01/source/scri
+                          pts/hpc/protenix_lr03_cpu.lsf /work3/s234818/mosaic/r
+                          eleases/20261021-brd4-jq1-25-protenix-lr03-01/source 
+                          /work3/s234818/mosaic/runs/20261021-brd4-jq1-25-prote
+                          nix-lr03-01/cpu d5c1bf07868a6ef8f3c1a96a24afee11b76c8
+                          fb2affe334fb924d0a38b7849a0>, Share group charged </s
+                          234818>, Esub <dcc>
+Wed Oct 21 16:10:56 2026: Submitted from host <hpclogin1>, CWD <$HOME>, Output 
+                          File (overwrite) </work3/s234818/mosaic/runs/20261021
+                          -brd4-jq1-25-protenix-lr03-01/cpu/stdout.29776049.log
+                          >, Error File (overwrite) </work3/s234818/mosaic/runs
+                          /20261021-brd4-jq1-25-protenix-lr03-01/cpu/stderr.297
+                          76049.log>, 4 Task(s), Requested Resources <{select[s
+                          hortparallel_] rusage[mem=4096.00] span[hosts=1]} || 
+                          {select[!shortparallel_] rusage[mem=4096.00] span[hos
+                          ts=1]}>;
+Wed Oct 21 16:10:57 2026: Started 4 Task(s) on Host(s) <4*n-62-30-24>, Allocate
+                          d 4 Slot(s) on Host(s) <4*n-62-30-24>, Execution Home
+                           </zhome/95/e/206121>, Execution CWD </zhome/95/e/206
+                          121>;
+Wed Oct 21 16:11:06 2026: Exited with exit code 1. The CPU time used is 5.4 sec
+                          onds.
+Wed Oct 21 16:11:06 2026: Completed <exit>.
+
+ RUNLIMIT                
+ 60.0 min
+
+ MEMLIMIT
+      4 G 
+
+ MEMORY USAGE:
+ MEM Efficiency: 0.00%
+
+ CPU USAGE:
+ CPU PEAK: 0.00 ;  CPU PEAK DURATION: 0 second(s)
+ CPU AVERAGE EFFICIENCY: 0.00% ;  CPU PEAK EFFICIENCY: 0.00%
+
+ PENDING TIME DETAILS:
+ Eligible pending time (seconds):	1
+ Ineligible pending time (seconds):	0
+
+ SCHEDULING PARAMETERS:
+           r15s   r1m  r15m   ut      pg    io   ls    it    tmp    swp    mem
+ loadSched   -     -     -     -       -     -    -     -     -      -      -  
+ loadStop    -     -     -     -       -     -    -     -     -      -      -  
+
+ RESOURCE REQUIREMENT DETAILS:
+ Job-level: {select[shortparallel_] rusage[mem=4096.00] span[hosts=1]} || {sele
+                          ct[!shortparallel_] rusage[mem=4096.00] span[hosts=1]
+                          }
+ App-level: -
+ Queue-level: same[type:model] affinity[core] cu[type=enclosure:maxcus=1]
+ Combined: {select[(shortparallel_) && (type == any)] order[-slots:-maxslots] r
+                          usage[mem=4096.00] span[hosts=1] cu[pref=config:maxcu
+                          s=1:type=enclosure] affinity[core(1)*1]} || {select[(
+                          !shortparallel_) && (type == any)] order[-slots:-maxs
+                          lots] rusage[mem=4096.00] span[hosts=1] cu[pref=confi
+                          g:maxcus=1:type=enclosure] affinity[core(1)*1]}
+ Effective: select[((shortparallel_) && (type == any))] order[-slots:-maxslots]
+                           rusage[mem=4096.00] span[hosts=1] cu[type=enclosure:
+                          maxcus=1:pref=config] affinity[core(1)*1] 
+------------------------------------------------------------------------------
+
+Job <29776050>, Job Name <mosaic-protenix-lr03-after-cpu>, User <s234818>, Proj
+                          ect <default>, Service Class <sc_hpc1>, Status <EXIT>
+                          , Queue <hpc>, Command <bash -l /work3/s234818/mosaic
+                          /releases/20261021-brd4-jq1-25-protenix-lr03-01/sourc
+                          e/scripts/hpc/protenix_lr03_stage.lsf /work3/s234818/
+                          mosaic/releases/20261021-brd4-jq1-25-protenix-lr03-01
+                          /source /work3/s234818/mosaic/runs/20261021-brd4-jq1-
+                          25-protenix-lr03-01 d5c1bf07868a6ef8f3c1a96a24afee11b
+                          76c8fb2affe334fb924d0a38b7849a0 after-cpu /work3/s234
+                          818/mosaic/runs/20261021-brd4-jq1-25-protenix-lr03-01
+                          /after-cpu 29776049>, Share group charged </s234818>,
+                           Esub <dcc>
+Wed Oct 21 16:10:56 2026: Submitted from host <hpclogin1>, CWD <$HOME>, Output 
+                          File (overwrite) </work3/s234818/mosaic/runs/20261021
+                          -brd4-jq1-25-protenix-lr03-01/after-cpu/stdout.297760
+                          50.log>, Error File (overwrite) </work3/s234818/mosai
+                          c/runs/20261021-brd4-jq1-25-protenix-lr03-01/after-cp
+                          u/stderr.29776050.log>, Requested Resources <{select[
+                          serial_] rusage[mem=2048.00] span[hosts=1]} || {selec
+                          t[!serial_] rusage[mem=2048.00] span[hosts=1]}>, Depe
+                          ndency Condition <ended(29776049)>;
+Wed Oct 21 16:11:08 2026: Started 1 Task(s) on Host(s) <n-62-31-21>, Allocated 
+                          1 Slot(s) on Host(s) <n-62-31-21>, Execution Home </z
+                          home/95/e/206121>, Execution CWD </zhome/95/e/206121>
+                          ;
+Wed Oct 21 16:11:21 2026: Exited with exit code 1. The CPU time used is 1.9 sec
+                          onds.
+Wed Oct 21 16:11:21 2026: Completed <exit>.
+
+ RUNLIMIT                
+ 20.0 min
+
+ MEMLIMIT
+      2 G 
+
+ MEMORY USAGE:
+ MAX MEM: 17 Mbytes;  AVG MEM: 17 Mbytes; MEM Efficiency: 0.83%
+
+ CPU USAGE:
+ CPU PEAK: 0.08 ;  CPU PEAK DURATION: 13 second(s)
+ CPU AVERAGE EFFICIENCY: 7.69% ;  CPU PEAK EFFICIENCY: 7.69%
+
+ PENDING TIME DETAILS:
+ Eligible pending time (seconds):	1
+ Ineligible pending time (seconds):	11
+
+ SCHEDULING PARAMETERS:
+           r15s   r1m  r15m   ut      pg    io   ls    it    tmp    swp    mem
+ loadSched   -     -     -     -       -     -    -     -     -      -      -  
+ loadStop    -     -     -     -       -     -    -     -     -      -      -  
+
+ RESOURCE REQUIREMENT DETAILS:
+ Job-level: {select[serial_] rusage[mem=2048.00] span[hosts=1]} || {select[!ser
+                          ial_] rusage[mem=2048.00] span[hosts=1]}
+ App-level: -
+ Queue-level: same[type:model] affinity[core] cu[type=enclosure:maxcus=1]
+ Combined: {select[(serial_) && (type == any)] order[-slots:-maxslots] rusage[m
+                          em=2048.00] span[hosts=1] cu[pref=config:maxcus=1:typ
+                          e=enclosure] affinity[core(1)*1]} || {select[(!serial
+                          _) && (type == any)] order[-slots:-maxslots] rusage[m
+                          em=2048.00] span[hosts=1] cu[pref=config:maxcus=1:typ
+                          e=enclosure] affinity[core(1)*1]}
+ Effective: select[((serial_) && (type == any))] order[-slots:-maxslots] rusage
+                          [mem=2048.00] span[hosts=1] cu[type=enclosure:maxcus=
+                          1:pref=config] affinity[core(1)*1] 
+

@@ -1,0 +1,45 @@
+Authenticated 585 immutable source files
+{"status": "passed", "utc": "2026-10-21T14:20:14.016438+00:00", "run_dir": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-01/cpu/payload", "projected_bytes": 1073741824, "reserve_bytes": 4294967296, "required_bytes": 5368709120, "available_bytes_conservative": 8589922862, "experiment_bytes_subtracted": 11730, "file_reserve": 100000, "quota": {"finite_pools": [{"used_bytes_upper": 98784247808, "hard_bytes_lower": 107374182400, "remaining_bytes": 8589934592, "remaining_files": 19686413}], "available_bytes_lower": 8589934592, "available_files_lower": 19686413}, "raw_quota": "HPE-Storage-Servers (disks, storagepool 1): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nHPE-Storage-Servers (NVME, storagepool 2): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (disks, storagepool 3): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks, storagepool 4): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks added in 2024, storagepool 5): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (NVMEs added in 2024, storagepool 6): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||   91.23 GiB|  100.00 GiB||   313587| 20000000\n\n", "scope": "Separate work3 artifacts; all historical home results preserved", "limitation": "Conservative rounded finite quota, all finite pools; fresh checks are not reservations"}
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@hpc.dtu.dk>
+Subject: Job 29776083: <mosaic-jq1-fixed-cpu> in cluster <dcc> Exited
+
+Job <mosaic-jq1-fixed-cpu> was submitted from host <hpclogin1> by user <s234818> in cluster <dcc> at Wed Oct 21 16:20:08 2026
+Job was executed on host(s) <4*n-62-31-13>, in queue <hpc>, as user <s234818> in cluster <dcc> at Wed Oct 21 16:20:10 2026
+</zhome/95/e/206121> was used as the home directory.
+</zhome/95/e/206121> was used as the working directory.
+Started at Wed Oct 21 16:20:10 2026
+Terminated at Wed Oct 21 16:22:01 2026
+Results reported at Wed Oct 21 16:22:01 2026
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+bash -l /work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-01/source/scripts/hpc/fixed25_cpu.lsf /work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-01/source /work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-01/cpu dc4ac68d1818038ba177241311aecf62072a065ef147356186f1f49eba2d20f3
+------------------------------------------------------------
+
+Exited with exit code 1.
+
+Resource usage summary:
+
+    CPU time :                                   103.75 sec.
+    Max Memory :                                 663 MB
+    Average Memory :                             456.67 MB
+    Total Requested Memory :                     16384.00 MB
+    Delta Memory :                               15721.00 MB
+    Max Swap :                                   -
+    Max Processes :                              5
+    Max Threads :                                30
+    Run time :                                   111 sec.
+    Turnaround time :                            113 sec.
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file </work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-01/cpu/stderr.29776083.log> for stderr output of this job.
+

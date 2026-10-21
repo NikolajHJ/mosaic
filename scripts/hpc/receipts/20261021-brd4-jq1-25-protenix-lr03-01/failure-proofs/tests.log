@@ -1,0 +1,32 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.11, pytest-9.0.3, pluggy-1.7.0
+cachedir: /work3/s234818/mosaic/runs/20261021-brd4-jq1-25-protenix-lr03-01/cpu/payload/cache-contract
+rootdir: /work3/s234818/mosaic/releases/20261021-brd4-jq1-25-protenix-lr03-01/source
+configfile: pyproject.toml
+plugins: anyio-4.15.1, jaxtyping-0.3.11
+collected 135 items
+
+tests/test_boltz_submission_controller.py ........                       [  5%]
+tests/test_boltz_hpc_tmpdir.py ........                                  [ 11%]
+tests/test_campaign25_ops.py ..................                          [ 25%]
+tests/test_campaign25_release.py ........................                [ 42%]
+tests/test_campaign25_pocket_ops.py ................................     [ 66%]
+tests/test_pocket_definition.py ..........                               [ 74%]
+tests/test_protenix_lr03_ops.py .......................                  [ 91%]
+tests/test_protenix_lr03_storage.py ...........F                         [100%]
+
+=================================== FAILURES ===================================
+__________ test_output_scope_rejects_existing_home_or_other_projects ___________
+
+tmp_path = PosixPath('/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-protenix-lr03-01/cpu/payload/tmp-contract/test_output_scope_rejects_exis0')
+
+    def test_output_scope_rejects_existing_home_or_other_projects(tmp_path):
+>       with pytest.raises(ValueError, match='scope'): storage.check_storage(tmp_path, 0)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'ValueError'>
+
+tests/test_protenix_lr03_storage.py:53: Failed
+- generated xml file: /work3/s234818/mosaic/runs/20261021-brd4-jq1-25-protenix-lr03-01/cpu/payload/hpc-contract.xml -
+=========================== short test summary info ============================
+FAILED tests/test_protenix_lr03_storage.py::test_output_scope_rejects_existing_home_or_other_projects
+======================== 1 failed, 134 passed in 4.38s =========================

@@ -1,0 +1,15 @@
+{
+  "status": "byte/XML schema verified",
+  "cases": 135,
+  "passed": 134,
+  "failed": 1,
+  "errors": 0,
+  "skips": 0,
+  "hashes": {
+    "callback-lsf.txt": "1dd1a63f94d10e01234eda09087ec78740feeb463c67da6723d200c54b808fc2",
+    "callback-stderr.txt": "2d93bc452f407158e5c055444c5690f1c94ae09e8faf89ca9e9327a24832c2e2",
+    "cpu-lsf.txt": "0f5e23b087b1e2c3986afdb0647eedbb5e5af62331fd1af68e108b38dc810ca5",
+    "tests.log": "1116c11022db947fa186c7e3fc6b7c463e76f7d8873c67749ff4fc5f1f0c11dc",
+    "tests.xml": "ec1c44542ba9ebdacfecf81e642f10c59d65786e6912fa260bc698db58d3dc99"
+  }
+}

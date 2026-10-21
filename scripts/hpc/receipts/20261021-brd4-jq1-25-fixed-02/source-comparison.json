@@ -1,0 +1,12 @@
+{
+  "original_fixed_manifest": "dc4ac68d1818038ba177241311aecf62072a065ef147356186f1f49eba2d20f3",
+  "retry_manifest": "1e3a8a21e2fa68e24d1c9229238999c42a4a9b44bcc78344e73e188c87d1ee64",
+  "changed_existing_execution_files": [
+    "scripts/fixed25_storage.py",
+    "scripts/hpc/receipts/20261021-brd4-jq1-25-fixed-01/campaign.json",
+    "scripts/hpc/receipts/20261021-brd4-jq1-25-report-04/campaign.json",
+    "tests/test_small_molecule_fixed_step.py"
+  ],
+  "core_trajectory_and_driver_unchanged": true,
+  "fixed_configuration_bytes_unchanged": true
+}

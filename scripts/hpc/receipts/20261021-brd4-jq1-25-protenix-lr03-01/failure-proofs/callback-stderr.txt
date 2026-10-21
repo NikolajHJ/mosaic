@@ -1,0 +1,12 @@
+Loaded dependency [python3/3.12.11]: sqlite3/3.50.1
+Loaded dependency [python3/3.12.11]: gcc/14.3.0-binutils-2.44
+Loaded module: python3/3.12.11
+
+Loading python3/3.12.11
+  Loading requirement: sqlite3/3.50.1 gcc/14.3.0-binutils-2.44
+Traceback (most recent call last):
+  File "/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-protenix-lr03-01/source/scripts/protenix_lr03_ops.py", line 108, in <module>
+    main()
+  File "/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-protenix-lr03-01/source/scripts/protenix_lr03_ops.py", line 74, in main
+    raise ValueError('Actual prerequisite scheduler/queue failed')
+ValueError: Actual prerequisite scheduler/queue failed

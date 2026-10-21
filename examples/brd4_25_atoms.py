@@ -8,7 +8,7 @@ import sys
 import time
 
 
-def check_protenix_raw_gradients(loss, graph, *, key, directory):
+def check_protenix_raw_gradients(loss, graph, *, key, directory, fixed_rate=None):
     """Use independent forwards for every best-primal validation candidate.
 
     The general checker defaults to the historical strict policy. This driver
@@ -19,7 +19,8 @@ def check_protenix_raw_gradients(loss, graph, *, key, directory):
 
     return check_graph_gradients(
         loss, graph, key=key, output_directory=directory, steps=1,
-        initial_step_size=0.03, max_backtracks=10, primal_every_step=True,
+        initial_step_size=0.03 if fixed_rate is None else fixed_rate,
+        max_backtracks=10 if fixed_rate is None else 1, primal_every_step=True,
         artifact_policy="compact", acceptance_policy="best_primal",
     )
 
@@ -45,7 +46,7 @@ def main():
     if not os.environ.get("LSB_JOBID"):
         raise RuntimeError("All numerical work requires allocated DTU HPC")
     sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
-    from campaign25_contract import config25, sha, verify_cpu_certificate, verify_readiness, verify_frozen_response, MODEL_DIGESTS, REFERENCE_SHA
+    from campaign25_contract import config25, sha, verify_cpu_certificate, verify_readiness, verify_frozen_response, update_parameters, verify_attempt_rates, MODEL_DIGESTS, REFERENCE_SHA, PROTENIX_LR03_VERSION, FIXED25_VERSION
 
     config = config25(json.loads(args.config.read_text()))
     verify_cpu_certificate(args.cpu_certificate, args.cpu_certificate_sha256, args.manifest)
@@ -181,6 +182,17 @@ def main():
         initial = GraphLogits.from_graph(initialize_graph(hard, config["initialization"]))
         np.savez_compressed(args.output / "initialization.npz", X=np.asarray(initial.graph().X), E_upper=np.asarray(initial.graph().E_upper), atom_logits=np.asarray(initial.atoms), bond_logits=np.asarray(initial.bonds), key_data=np.asarray(jax.random.key_data(key)))
         report["initialization_sha256"] = sha(args.output / "initialization.npz")
+        if arm == 'protenix' and config["version"] in (PROTENIX_LR03_VERSION, FIXED25_VERSION):
+            previous_path = Path('/zhome/95/e/206121/mosaic-runs/20261021-brd4-jq1-25-protenix-02/run-protenix/payload/study/initialization.npz')
+            if sha(previous_path) != '351789aa62d3ff111a4d2050a062cf844a1f29a87a7e352af465ff4299fd1bbf':
+                raise ValueError('Original LR0.03 initialization evidence changed')
+            with np.load(previous_path) as previous, np.load(args.output / 'initialization.npz') as current:
+                if set(previous.files) != set(current.files):
+                    raise ValueError('Fresh initialization fields differ from original run')
+                for field in previous.files:
+                    np.testing.assert_array_equal(previous[field], current[field])
+            report['baseline_initialization_match'] = {'status': 'passed', 'job': '29770179',
+                'sha256': sha(previous_path), 'scope': 'Exact saved atom/bond probabilities, logits and key arrays'}
         if certified and report["initialization_sha256"] != certified["initialization_sha256"]:
             # NPZ containers may include archive timestamps; bind exact arrays too
             # rather than silently use this as an equality acceptance substitute.
@@ -191,7 +203,8 @@ def main():
 
         def raw_check(graph, directory):
             if arm == "protenix":
-                return check_protenix_raw_gradients(loss, graph, key=key, directory=directory)
+                return check_protenix_raw_gradients(loss, graph, key=key, directory=directory,
+                    fixed_rate=config['initial_step_size'] if config['version'] == FIXED25_VERSION else None)
             from mosaic.small_molecule.boltz2.checks import check_affinity_gradients
             return check_affinity_gradients(loss, graph, key, directory)
 
@@ -213,7 +226,8 @@ def main():
             options["objective_identity"].update(pocket_definition_sha256=args.pocket_sha256,
                 diffusion_gradient=False, scope="JQ1 pocket-restricted contact, geometry-off" if arm == "protenix" else "JQ1-constrained frozen native pose, zero recycles, no MW correction")
         reference = json.loads(args.reference.read_text())["element_counts"]
-        common = dict(prepare=prepare, spec=spec, reference=reference, key=key, step_size=0.03, max_backtracks=10)
+        report["optimization_parameters"] = update_parameters(config)
+        common = dict(prepare=prepare, spec=spec, reference=reference, key=key, **report["optimization_parameters"])
         if args.mode == "validate":
             pilots = [("early", initial, options)]
             if chemistry:
@@ -239,6 +253,7 @@ def main():
                 result = run_chemical_updates(loss, state, directory=args.output / (label + "_pilot"), steps=10, config=opts, **common)
                 if result["status"] != "passed" or len(result["updates"]) != 10:
                     raise AssertionError("Disposable native pilot incomplete")
+                verify_attempt_rates(result, config)
                 means.append(float(np.mean([u["elapsed_seconds"] for u in result["updates"]])))
                 for i in range(1, 11):
                     pilot_root = args.output / (label + "_pilot")
@@ -250,6 +265,7 @@ def main():
                 raise RuntimeError("10,000-update allocation-fit gate failed")
         else:
             result = run_chemical_updates(loss, initial, directory=args.output / "case-0", steps=10000, config=options, schedule=schedule, **common)
+            verify_attempt_rates(result, config)
             if result["status"] != "passed" or len(result["updates"]) != 10000 or [r["step"] for r in result["states"]] != list(range(10001)):
                 raise ValueError("Incomplete declared 10,000-update budget")
             report["cases"] = [{"label": config["label"], "initialization": config["initialization"], **result}]

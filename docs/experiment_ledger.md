@@ -5294,3 +5294,58 @@ RUN at1970; their collectors/finalreport remainPEND. Native runs/settings unchan
 Published milestones10000/1500/1500; no new milestone beyond this edition, so no
 new interim submitted. Next unused remoteinterim-0006/localedition0007. Older
 editions/servers and unrelated PDF/OneNote changes preserved.
+
+### 21 October 2026 — independent Protenix LR0.3 authorized and prepared
+
+User requested a fresh10000-update Protenix comparison with nominalLR0.3,
+leaving liveBoltz29770093/29770124 unchanged. New version/config/controller
+preserve all original scientific settings/gates and no diffusion gradients.
+Static review corrected configuration routing: old driver hard-coded0.03; new
+pilot/production arguments and actualattempt-rate verification use declared0.3.
+Original sealed experiments remain unchanged. Separate work3 output/quota gates
+avoid consuming liveBoltz home storage. Local AST/JSON/static checks only; no
+new source/job/pass yet. See docs/brd4_jq1_25_protenix_lr03.md and its campaign.
+
+### 21 October 2026,16:10 Paris — Protenix LR0.3 CPU pipeline submitted
+
+Source01 authenticated552files,manifest
+`d5c1bf07868a6ef8f3c1a96a24afee11b76c8fb2affe334fb924d0a38b7849a0`,
+archive39555775bytes SHA
+`8c50ef45cf1d60d90b380f21e39aa41cebd95fa6aefd01c0fe5e107fde68ba5c`.
+All145 originalsrc/ files unchanged; onlynew nominalLR/routing/scope/storage
+contracts added. Dedicatedwork3 finitequota passed9GiBavailable/5GiBrequired
+plus100000inodeheadroom; repeatedstagegates remain mandatory. ActualCPU29776049
+and afterCPU29776050 submitted; native/long not yet submitted or certified.
+Both liveBoltz29770093/29770124 remain unchanged. Fullplan/receipts in
+docs/brd4_jq1_25_protenix_lr03.md and correspondingcampaign.
+
+### 21 October 2026 — fixed-step three-arm restart authorized; originalBoltz intentionally stopped
+
+User explicitly selected bothBoltz arms for fresh10000-update restarts atfixedLR.01,
+and Protenix atfixedLR.3 withnohalving. This supersedes earlier leave-running
+instruction for29770093/29770124 only. Both were RUN atstoprequest; actualEXIT/
+TERM_OWNER authenticated16:14Paris afterbkill. Preserve all savedpartialresults;
+no scientific instability/fullcompletion claimed. Source01ProtenixCPU29776049
+EXIT134contractpasses/one fixture-path failure; callback29776050EXIT; noGPU/long
+was submitted. New fixed-step source corrects fixtureisolation and retains every
+scientific/finite/native/parity/identity/runtime/quota gate. No newfixedsource/job/
+pass yet. See docs/brd4_jq1_25_fixed_steps.md and newcampaign.
+
+### 21October16:20Paris — fixed-step source01 CPU pipeline actually submitted
+
+585members authenticated,manifestdc4ac68d1818038ba177241311aecf62072a065ef147356186f1f49eba2d20f3,
+archive39583098bytesSHAad7492baed5193abaa632810694c86e2ed29455cb5c6bd136b276cd59eb63e68.
+CPU29776083RUN with150contractpasses, broadregressionspending; callback29776084
+PEND. Native/longnotyetsubmitted/certified. FixedratesPro.3/Bol.01/chem.01,
+onecandidate,nostepsearch. Work3freshquota9GiBavailable/5GiBrequiredpassed;
+fullnative/pilot/runtime/sumofthreeartifactprojectiongatesremainhardrequirements.
+OldBoltz2407/2208committedprefixeshash-preserved; oldfinal29770709EXITafter
+intentionalunstartedretirement. All historicaldata/reportspreserved.
+
+### Fixedsource01 CPU stops before native; source02 fixture correction
+
+29776083/29776084EXIT:150contracts passed;legacy237passed/two toyfixturefailures,
+3deliberatelydeselected. Nonzero coupled derivative guard correctly rejected
+zero-bond/constant toys. Newsource02 changes fixtures only and outputrootidentity;
+production fixedrates/nohalving/nativeFD/finite/parity/frozen/runtime/quota unchanged.
+No native orlong job was submitted. All evidence preserved; fullCPUchecks repeat.

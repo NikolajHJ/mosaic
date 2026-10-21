@@ -1,0 +1,7 @@
+{
+  "original_scientific_manifest_sha256": "40ab2d4532c477b5074d6631587ae15188941d5167016b7421f993257a064438",
+  "unchanged_original_src_files": 145,
+  "changed_original_src_files": [],
+  "new_config_sha256": "cb5421162dd9a96ea2c453da1d5286b73428cc7d8a82a139a8ea2e44cad7e7f5",
+  "scientific_change": "Nominal optimization rate0.03 ->0.3 only; exact initialization arrays and original context/model/pocket required"
+}

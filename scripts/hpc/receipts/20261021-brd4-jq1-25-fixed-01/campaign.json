@@ -1,0 +1,193 @@
+{
+  "tag": "20261021-brd4-jq1-25-fixed-01",
+  "status": "CPU29776083EXIT:150contractpasses;237legacypasses/2fixturefailures; nativeTorch/chemistry/GPU/longnotreached. Correctednewsource02pending",
+  "rates": {
+    "protenix": 0.3,
+    "boltz2": 0.01,
+    "boltz2_chemistry": 0.01
+  },
+  "acceptance_policy": "fixed_step",
+  "updates": 10000,
+  "diffusion_gradient": false,
+  "output_root": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-01",
+  "intentional_stops": {
+    "29770093": {
+      "actual_status": "EXIT",
+      "last_committed_state": 2407
+    },
+    "29770124": {
+      "actual_status": "EXIT",
+      "last_committed_state": 2208
+    }
+  },
+  "superseded_protenix_pipeline": {
+    "cpu": "29776049",
+    "callback": "29776050",
+    "actual_status": "EXIT",
+    "passes": 134,
+    "failures": 1,
+    "reason": "fixture path assumption; native/long never submitted"
+  },
+  "historical_report": "http://127.0.0.1:8776/report.html edition-0006 remains immutable; oldfinal29770709 intentionally retired while verifiedPEND",
+  "source": {
+    "source_archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261021-brd4-jq1-25-fixed-01\\source01\\source.tar.gz",
+    "archive_bytes": 39583098,
+    "archive_sha256": "ad7492baed5193abaa632810694c86e2ed29455cb5c6bd136b276cd59eb63e68",
+    "manifest_sha256": "dc4ac68d1818038ba177241311aecf62072a065ef147356186f1f49eba2d20f3",
+    "files": 585,
+    "git_revision_reference": "0ac46b793f3402eb02df29e0ac694d18e35a6f8f",
+    "hpc_transfer": "Authenticated585files; remote immutable source",
+    "numerical_validation": "pending DTU HPC",
+    "remote": "/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-01/source"
+  },
+  "initial_submissions": {
+    "cpu": {
+      "submitted_at": "2026-10-21T14:20:08.565265+00:00",
+      "args": [
+        "bsub",
+        "-q",
+        "hpc",
+        "-n",
+        "4",
+        "-R",
+        "span[hosts=1]",
+        "-R",
+        "rusage[mem=4GB]",
+        "-W",
+        "01:00",
+        "-J",
+        "mosaic-jq1-fixed-cpu",
+        "-oo",
+        "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-01/cpu/stdout.%J.log",
+        "-eo",
+        "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-01/cpu/stderr.%J.log",
+        "bash",
+        "-l",
+        "/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-01/source/scripts/hpc/fixed25_cpu.lsf",
+        "/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-01/source",
+        "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-01/cpu",
+        "dc4ac68d1818038ba177241311aecf62072a065ef147356186f1f49eba2d20f3"
+      ],
+      "returncode": 0,
+      "stdout": "Job <29776083> is submitted to queue <hpc>.\n",
+      "stderr": "",
+      "phase": "cpu",
+      "job_id": "29776083"
+    },
+    "callback": {
+      "submitted_at": "2026-10-21T14:20:08.953795+00:00",
+      "args": [
+        "bsub",
+        "-q",
+        "hpc",
+        "-n",
+        "1",
+        "-R",
+        "span[hosts=1]",
+        "-R",
+        "rusage[mem=2GB]",
+        "-W",
+        "00:20",
+        "-J",
+        "mosaic-jq1-fixed-after-cpu",
+        "-oo",
+        "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-01/after-cpu/stdout.%J.log",
+        "-eo",
+        "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-01/after-cpu/stderr.%J.log",
+        "-w",
+        "ended(29776083)",
+        "bash",
+        "-l",
+        "/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-01/source/scripts/hpc/fixed25_stage.lsf",
+        "/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-01/source",
+        "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-01",
+        "dc4ac68d1818038ba177241311aecf62072a065ef147356186f1f49eba2d20f3",
+        "after-cpu",
+        "none",
+        "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-01/after-cpu",
+        "29776083"
+      ],
+      "returncode": 0,
+      "stdout": "Job <29776084> is submitted to queue <hpc>.\n",
+      "stderr": "",
+      "phase": "after-cpu",
+      "job_id": "29776084"
+    },
+    "long_run_submitted": false,
+    "native_submitted": false
+  },
+  "launch_quota": {
+    "status": "passed",
+    "available_bytes_conservative": 9663676416,
+    "required_bytes": 5368709120,
+    "reserve_bytes": 4294967296,
+    "file_reserve": 100000
+  },
+  "obsolete_report_final": {
+    "job": "29770709",
+    "before": "verifiedPEND/unstarted",
+    "action": "bkill",
+    "actual_final_status": "EXIT",
+    "reason": "OriginalBoltzstudiesintentionallyinterrupted; nofullhistoricalcomparisonpossible"
+  },
+  "preserved_original_prefixes": {
+    "boltz2": {
+      "case-0/states.jsonl": {
+        "bytes": 11722853,
+        "sha256": "afe046370d8181bc6b9bc0307d53f337a81883037ab945d90d92c34346204097"
+      },
+      "case-0/updates.jsonl": {
+        "bytes": 4417197,
+        "sha256": "34ef8b05cb79ac78d6f9f398768faa177c8099221287b70a627e4144b9338cb1"
+      },
+      "case-0/report.json": {
+        "bytes": 59971612,
+        "sha256": "e3f052072d8bd45f1d68273b37003d699ca59151a5b3bdd61a5f43bfae5e55e7"
+      },
+      "summary.json": {
+        "bytes": 69181,
+        "sha256": "4f28bbe5cd2b1569dcfc844bd8025b86bec4840968aed62d38d41b0cdbfc98b9"
+      },
+      "initialization.npz": {
+        "bytes": 1197,
+        "sha256": "90553f0e28762fe81fa0c40f840e1c2e4884a0f79a1bbf48553132e3c0e27391"
+      },
+      "last_newline_committed_states": 2407,
+      "last_newline_committed_updates": 2406
+    },
+    "boltz2_chemistry": {
+      "case-0/states.jsonl": {
+        "bytes": 11480641,
+        "sha256": "9de8f639d97cc180b23f4ae87e9a47ef2e158651a03f94a68cf82f9448a79cee"
+      },
+      "case-0/updates.jsonl": {
+        "bytes": 5094697,
+        "sha256": "24b42e05eed9dafa141fdc7a845875faa0ddf89115e09fb1fde70e7143f7856c"
+      },
+      "case-0/report.json": {
+        "bytes": 57589920,
+        "sha256": "19bcf32cb1d884aeda8dc0ec402e0d03d8099a3870ba816d98341eebc0e53321"
+      },
+      "summary.json": {
+        "bytes": 70410,
+        "sha256": "e7ee8b77f4eb658f3298bb1627bc3571c626ccd6868bbc0a815604ccc7a3e54b"
+      },
+      "initialization.npz": {
+        "bytes": 1197,
+        "sha256": "90553f0e28762fe81fa0c40f840e1c2e4884a0f79a1bbf48553132e3c0e27391"
+      },
+      "last_newline_committed_states": 2208,
+      "last_newline_committed_updates": 2207
+    }
+  },
+  "cpu": {
+    "job": "29776083",
+    "callback": "29776084",
+    "actual_status": "EXIT",
+    "contract_passes": 150,
+    "legacy_passes": 237,
+    "legacy_failures": 2,
+    "cause": "New test toys lacked mandatory nonzero atom/bond signals; corrected toy coverage only, production gates unchanged"
+  },
+  "retry_campaign": "scripts/hpc/receipts/20261021-brd4-jq1-25-fixed-02/campaign.json"
+}

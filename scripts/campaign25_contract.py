@@ -19,6 +19,9 @@ POCKET_POLICY = {
     "minimum_ligand_fraction_within_pocket": 0.5, "diffusion_gradient": False,
 }
 
+PROTENIX_LR03_VERSION = "mosaic-brd4-jq1-25-protenix-lr0p3-v1"
+FIXED25_VERSION = "mosaic-brd4-jq1-25-fixed-step-v1"
+
 
 def verify_frozen_response(response, model_digest, context_digest):
     """Require exact frozen digests and a passed worker response.
@@ -43,15 +46,22 @@ def sha(path):
 
 def config25(config):
     version = config.get("version")
-    pocket = version == "mosaic-brd4-jq1-25-three-arm-v1"
-    if version not in ("mosaic-brd4-25-three-arm-v1", "mosaic-brd4-jq1-25-three-arm-v1"):
+    lr03 = version == PROTENIX_LR03_VERSION
+    fixed = version == FIXED25_VERSION
+    pocket = version in ("mosaic-brd4-jq1-25-three-arm-v1", PROTENIX_LR03_VERSION, FIXED25_VERSION)
+    if version not in ("mosaic-brd4-25-three-arm-v1", "mosaic-brd4-jq1-25-three-arm-v1", PROTENIX_LR03_VERSION, FIXED25_VERSION):
         raise ValueError("Unknown declared campaign version")
+    if lr03 and config.get("arm") != "protenix":
+        raise ValueError("LR0.3 authorization covers Protenix only")
     if config.get("pocket") != (POCKET_POLICY if pocket else None):
         raise ValueError("Changed declared pocket protocol")
+    if config.get('acceptance_policy') != ('fixed_step' if fixed else None):
+        raise ValueError('Changed declared step acceptance policy')
+    nominal = (0.3 if config.get('arm') == 'protenix' else 0.01) if fixed else (0.3 if lr03 else 0.03)
     expected = {
         "version": version, "n_atoms": 25,
-        "steps": 10000, "seed": 17, "initial_step_size": 0.03,
-        "max_backtracks": 10, "pilot_steps": 10,
+        "steps": 10000, "seed": 17, "initial_step_size": nominal,
+        "max_backtracks": 1 if fixed else 10, "pilot_steps": 10,
         "allocation_seconds": 82800, "element_js_weight": 0.0,
         "initialization": {"kind": "chain_uniform", "mixing": 0.5},
     }
@@ -67,6 +77,35 @@ def config25(config):
     if config.get("repair_schedule") != (schedule if active else None):
         raise ValueError("Changed declared repair schedule")
     return config
+
+
+def update_parameters(config):
+    """Route the authenticated nominal rate to pilots and production alike."""
+    config25(config)
+    result = {"step_size": config["initial_step_size"], "max_backtracks": config["max_backtracks"]}
+    if config['version'] == FIXED25_VERSION:
+        result['acceptance_policy'] = 'fixed_step'
+    return result
+
+
+def verify_attempt_rates(result, config):
+    """Check executed trial rates, including honest fallback/no-op updates."""
+    policy = update_parameters(config)
+    if config['version'] == FIXED25_VERSION and result.get('acceptance_policy') != 'fixed_step':
+        raise ValueError('Actual optimization used an unexpected acceptance policy')
+    for update in result["updates"]:
+        attempts = update["attempts"]
+        if not 1 <= len(attempts) <= policy["max_backtracks"] or any(
+            a["trial"] != i or a["rate"] != policy["step_size"] * 0.5**i
+            for i, a in enumerate(attempts)
+        ):
+            raise ValueError("Actual attempted rates differ from declared update policy")
+        selected = update["selected_trial"]
+        if not 0 <= selected < len(attempts) or update["accepted_step_size"] != attempts[selected]["rate"]:
+            raise ValueError("Actual selected rate differs from attempted trial")
+        if config['version'] == FIXED25_VERSION and (update.get('fallback_used') is not False or selected != 0):
+            raise ValueError('Fixed steps cannot be relabelled as a search/fallback')
+    return policy
 
 
 def verify_cpu_certificate(path, expected_sha, manifest):
@@ -112,4 +151,19 @@ def verify_readiness(path, expected_sha, config_path, manifest):
     for proof in assessment["proofs"]:
         if sha(proof["path"]) != proof["sha256"]:
             raise ValueError("Native proof changed")
+    if config["version"] in (PROTENIX_LR03_VERSION, FIXED25_VERSION):
+        summary = json.loads(path.with_name("summary.json").read_text())
+        pilot = json.loads((path.parent / "early_pilot/report.json").read_text())
+        if summary.get("optimization_parameters") != update_parameters(config) or pilot["status"] != "passed" or len(pilot["updates"]) != 10:
+            raise ValueError("Missing executed declared-rate disposable pilot")
+        if config['arm'] == 'protenix':
+            initial_match = summary.get('baseline_initialization_match', {})
+            if initial_match.get('status') != 'passed' or initial_match.get('job') != '29770179' or initial_match.get('sha256') != '351789aa62d3ff111a4d2050a062cf844a1f29a87a7e352af465ff4299fd1bbf':
+                raise ValueError('Fresh LR0.3 initialization differs from original run')
+        verify_attempt_rates(pilot, config)
+        if config['arm'] == 'boltz2_chemistry':
+            high = json.loads((path.parent / 'high_pilot/report.json').read_text())
+            if high['status'] != 'passed' or len(high['updates']) != 10:
+                raise ValueError('Missing fixed-step high-weight chemistry pilot')
+            verify_attempt_rates(high, config)
     return assessment

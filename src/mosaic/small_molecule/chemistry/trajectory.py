@@ -249,8 +249,9 @@ def run_chemical_updates(
     max_backtracks,
     config,
     schedule=None,
+    acceptance_policy="best_primal",
 ):
-    """Attempt every requested update under the explicitly declared best-primal policy.
+    """Attempt every update under explicit best-primal or fixed-step policy.
 
     This is a new logit-coordinate study, never a resume or rewrite of the
     historical projected-probability run. Every trial uses the same preparation.
@@ -267,6 +268,8 @@ def run_chemical_updates(
         raise ValueError("Invalid update budget")
     if schedule is not None and steps > schedule.total_updates:
         raise ValueError("Update budget exceeds chemistry schedule")
+    if acceptance_policy not in ("best_primal", "fixed_step") or (acceptance_policy == "fixed_step" and max_backtracks != 1):
+        raise ValueError("Fixed-step updates require exactly one trial and no backtracking")
 
     def state_config(state):
         # A fresh immutable-by-convention options dict per accepted state.
@@ -290,7 +293,8 @@ def run_chemical_updates(
         "status": "running",
         "requested_updates": steps,
         "parameterization": "categorical_logits_v1",
-        "acceptance_policy": "best_primal",
+        "acceptance_policy": acceptance_policy,
+        "nominal_step_size": step_size,
         "states": [],
         "updates": [],
         "objective_scope": name
@@ -402,7 +406,7 @@ def run_chemical_updates(
                 choice = (candidate, rate, trial)
                 if best is None or candidate.primal < best[0].primal:
                     best = choice
-                if strict:
+                if strict or acceptance_policy == "fixed_step":
                     selected = choice
                     break
             fallback = selected is None
@@ -412,6 +416,7 @@ def run_chemical_updates(
                 np.asarray(old.X), np.asarray(new.X)
             ) and np.array_equal(np.asarray(old.E_upper), np.asarray(new.E_upper))
             record.update(
+                selection_policy=acceptance_policy,
                 selected_trial=trial,
                 accepted_step_size=rate,
                 fallback_used=fallback,
@@ -427,7 +432,9 @@ def run_chemical_updates(
                 evaluation.primal, candidate.primal
             )
             report["counts"]["applied"] += 1
-            report["counts"]["strict_improving"] += int(not fallback)
+            report["counts"]["strict_improving"] += int(
+                record["attempts"][trial]["strict"] if acceptance_policy == "fixed_step" else not fallback
+            )
             report["counts"]["forced_fallback"] += int(fallback)
             report["counts"]["no_op"] += int(noop)
             prepared = prepare(candidate.logits, step + 1)

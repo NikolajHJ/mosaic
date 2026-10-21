@@ -1,0 +1,24 @@
+{
+  "status": "byte/XML schema verified; historical failed CPU",
+  "counts": {
+    "contracts": {
+      "passed": 150,
+      "failed": 0,
+      "errors": 0,
+      "skips": 0
+    },
+    "legacy": {
+      "passed": 237,
+      "failed": 2,
+      "errors": 0,
+      "skips": 0
+    }
+  },
+  "sha256": {
+    "callback-lsf.txt": "eb30963e247683048f9d23036625196eba732cd3987484fda4eb1cd38e499658",
+    "contracts.xml": "df4e7ec79b39e6e9045c238254d35f6721aebc763b52cd8889cca4587b796e97",
+    "cpu-lsf.txt": "6a82712a404fe212e0b9eca9ad92396e4b09e41458b9cf1f007679bd360c44e4",
+    "legacy.log": "a9d434e4f4ec5daea1eb973163b422450af9fcfacf6314403e6b06787177555e",
+    "legacy.xml": "bfc14d79f47cc6aee591dff37b9543df74b7a8780a5802337be9383b1d0b0385"
+  }
+}

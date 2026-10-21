@@ -1,0 +1,45 @@
+Authenticated 552 immutable source files
+{"status": "passed", "utc": "2026-10-21T14:11:00.807940+00:00", "run_dir": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-protenix-lr03-01/cpu/payload", "projected_bytes": 1073741824, "reserve_bytes": 4294967296, "required_bytes": 5368709120, "available_bytes_conservative": 8589922468, "experiment_bytes_subtracted": 12124, "file_reserve": 100000, "quota": {"finite_pools": [{"used_bytes_upper": 98784247808, "hard_bytes_lower": 107374182400, "remaining_bytes": 8589934592, "remaining_files": 19687227}], "available_bytes_lower": 8589934592, "available_files_lower": 19687227}, "raw_quota": "HPE-Storage-Servers (disks, storagepool 1): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nHPE-Storage-Servers (NVME, storagepool 2): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (disks, storagepool 3): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks, storagepool 4): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks added in 2024, storagepool 5): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (NVMEs added in 2024, storagepool 6): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||   91.14 GiB|  100.00 GiB||   312773| 20000000\n\n", "scope": "Separate work3 artifacts; no new outputs consume the live Boltz home budget", "limitation": "Conservative rounded finite quota, all finite pools; fresh checks are not reservations"}
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@hpc.dtu.dk>
+Subject: Job 29776049: <mosaic-protenix-lr03-cpu> in cluster <dcc> Exited
+
+Job <mosaic-protenix-lr03-cpu> was submitted from host <hpclogin1> by user <s234818> in cluster <dcc> at Wed Oct 21 16:10:56 2026
+Job was executed on host(s) <4*n-62-30-24>, in queue <hpc>, as user <s234818> in cluster <dcc> at Wed Oct 21 16:10:57 2026
+</zhome/95/e/206121> was used as the home directory.
+</zhome/95/e/206121> was used as the working directory.
+Started at Wed Oct 21 16:10:57 2026
+Terminated at Wed Oct 21 16:11:06 2026
+Results reported at Wed Oct 21 16:11:06 2026
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+bash -l /work3/s234818/mosaic/releases/20261021-brd4-jq1-25-protenix-lr03-01/source/scripts/hpc/protenix_lr03_cpu.lsf /work3/s234818/mosaic/releases/20261021-brd4-jq1-25-protenix-lr03-01/source /work3/s234818/mosaic/runs/20261021-brd4-jq1-25-protenix-lr03-01/cpu d5c1bf07868a6ef8f3c1a96a24afee11b76c8fb2affe334fb924d0a38b7849a0
+------------------------------------------------------------
+
+Exited with exit code 1.
+
+Resource usage summary:
+
+    CPU time :                                   5.34 sec.
+    Max Memory :                                 -
+    Average Memory :                             -
+    Total Requested Memory :                     16384.00 MB
+    Delta Memory :                               -
+    Max Swap :                                   -
+    Max Processes :                              -
+    Max Threads :                                -
+    Run time :                                   9 sec.
+    Turnaround time :                            10 sec.
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file </work3/s234818/mosaic/runs/20261021-brd4-jq1-25-protenix-lr03-01/cpu/stderr.29776049.log> for stderr output of this job.
+

@@ -1,0 +1,26 @@
+2026-10-21T16:22:43+02:00
+29776083 EXIT hpc mosaic-jq1-fixed-cpu
+29776084 EXIT hpc mosaic-jq1-fixed-after-cpu
+legacy
+=============================== warnings summary ===============================
+tests/test_small_molecule_contracts.py::test_ligand_occupancy_and_charge_are_guards_independent_of_producer[atom_pad_mask]
+tests/test_small_molecule_contracts.py::test_ligand_occupancy_and_charge_are_guards_independent_of_producer[token_pad_mask]
+  /work3/s234818/mosaic/envs/protenix-tiny/lib/python3.12/site-packages/jax/_src/ops/scatter.py:105: FutureWarning: scatter inputs have incompatible types: cannot safely cast value from dtype=int32 to dtype=bool with jax_numpy_dtype_promotion=standard. In future JAX releases this will result in an error.
+    warnings.warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+- generated xml file: /work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-01/cpu/payload/legacy.xml -
+=========================== short test summary info ============================
+FAILED tests/test_small_molecule_fixed_step.py::test_full_fixed_step_is_applied_even_when_actual_loss_increases
+FAILED tests/test_small_molecule_fixed_step.py::test_equal_noop_is_logged_without_a_search_fallback
+====== 2 failed, 237 passed, 3 deselected, 2 warnings in 98.26s (0:01:38) ======
+Loaded module: python3/3.12.11
+
+Loading python3/3.12.11
+  Loading requirement: sqlite3/3.50.1 gcc/14.3.0-binutils-2.44
+Traceback (most recent call last):
+  File "/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-01/source/scripts/fixed25_ops.py", line 144, in <module>
+    main()
+  File "/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-01/source/scripts/fixed25_ops.py", line 109, in main
+    raise ValueError('Actual fixed-step prerequisite scheduler/queue failed')
+ValueError: Actual fixed-step prerequisite scheduler/queue failed

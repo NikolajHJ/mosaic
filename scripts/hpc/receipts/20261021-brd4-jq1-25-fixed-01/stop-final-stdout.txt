@@ -1,0 +1,155 @@
+2026-10-21T16:14:10+02:00
+29770093 EXIT gpul40s mosaic-jq1-25-run-boltz2
+29770124 EXIT gpul40s mosaic-jq1-25-run-boltz2_chemistry
+29770707 EXIT hpc mosaic-jq1-report-complete-boltz2
+29770708 EXIT hpc mosaic-jq1-report-complete-boltz2_chemistry
+29770709 PEND hpc mosaic-jq1-report-combined-report
+
+Job <29770124>, Job Name <mosaic-jq1-25-run-boltz2_chemistry>, User <s234818>, 
+                          Project <default>, Status <EXIT>, Queue <gpul40s>, Co
+                          mmand <bash -l /work3/s234818/mosaic/releases/2026102
+                          1-brd4-jq1-25-01/source/scripts/hpc/campaign25_pocket
+                          _stage.lsf /work3/s234818/mosaic/releases/20261021-br
+                          d4-jq1-25-01/source /zhome/95/e/206121/mosaic-runs/20
+                          261021-brd4-jq1-25-01 2503c2382b429ec6b79d7a256b2a2fc
+                          cd09f7739a609e97a876d604d00dc063c run boltz2_chemistr
+                          y /zhome/95/e/206121/mosaic-runs/20261021-brd4-jq1-25
+                          -01/run-boltz2_chemistry 0>, Share group charged </s2
+                          34818>, Esub <dcc>
+Wed Oct 21 12:40:06 2026: Submitted from host <n-62-11-60>, CWD </work3/s234818
+                          /mosaic/releases/20261021-brd4-jq1-25-01/source>, Out
+                          put File (overwrite) </zhome/95/e/206121/mosaic-runs/
+                          20261021-brd4-jq1-25-01/run-boltz2_chemistry/stdout.2
+                          9770124.log>, Error File (overwrite) </zhome/95/e/206
+                          121/mosaic-runs/20261021-brd4-jq1-25-01/run-boltz2_ch
+                          emistry/stderr.29770124.log>, 4 Task(s), Requested Re
+                          sources < rusage[mem=8192.00] span[hosts=1]>, Request
+                          ed GPU <num=1:mode=exclusive_process>;
+Wed Oct 21 12:43:26 2026: Started 4 Task(s) on Host(s) <4*n-62-13-18>, Allocate
+                          d 4 Slot(s) on Host(s) <4*n-62-13-18>, Execution Home
+                           </zhome/95/e/206121>, Execution CWD </work3/s234818/
+                          mosaic/releases/20261021-brd4-jq1-25-01/source>;
+Wed Oct 21 16:13:25 2026: Exited with exit code 1. The CPU time used is 13286.0
+                           seconds.
+                          HOST: n-62-13-18; CPU_TIME: 13286 seconds
+Wed Oct 21 16:13:25 2026: Completed <exit>; TERM_OWNER: job killed by owner.
+
+ RUNLIMIT                
+ 1380.0 min
+
+ MEMLIMIT
+      8 G 
+
+ MEMORY USAGE:
+ MAX MEM: 6.2 Gbytes;  AVG MEM: 6 Gbytes; MEM Efficiency: 19.48%
+
+ CPU USAGE:
+ CPU PEAK: 1.15 ;  CPU PEAK DURATION: 188 second(s)
+ CPU AVERAGE EFFICIENCY: 25.09% ;  CPU PEAK EFFICIENCY: 28.72%
+
+ PENDING TIME DETAILS:
+ Eligible pending time (seconds):	200
+ Ineligible pending time (seconds):	0
+
+ SCHEDULING PARAMETERS:
+           r15s   r1m  r15m   ut      pg    io   ls    it    tmp    swp    mem
+ loadSched   -     -     -     -       -     -    -     -     -      -      -  
+ loadStop    -     -     -     -       -     -    -     -     -      -      -  
+
+ EXTERNAL MESSAGES:
+ MSG_ID FROM       POST_TIME      MESSAGE                             ATTACHMENT 
+ 0      s234818    Oct 21 12:43   GPU 0: Detected Power error: Detect     N     
+
+ RESOURCE REQUIREMENT DETAILS:
+ Job-level:  rusage[mem=8192.00] span[hosts=1]
+ App-level: -
+ Queue-level: same[type:model] affinity[core] cu[type=enclosure:maxcus=1]
+ Combined: select[(ngpus>0) && (type == local)] order[-slots:-maxslots] rusage[
+                          mem=8192.00:ngpus_physical=1.00] span[hosts=1] same[t
+                          ype:model] cu[pref=config:maxcus=1:type=enclosure] af
+                          finity[core(1)*1]
+ Effective: select[((ngpus>0)) && (type == local)] order[-slots:-maxslots] rusa
+                          ge[mem=8192.00,ngpus_physical=1.00] span[hosts=1] sam
+                          e[type:model] cu[type=enclosure:maxcus=1:pref=config]
+                           affinity[core(1)*1] 
+
+ GPU REQUIREMENT DETAILS:
+ Combined: num=1:mode=exclusive_process:mps=no:j_exclusive=yes:aff=no:gvendor=n
+                          vidia
+ Effective: num=1:mode=exclusive_process:mps=no:j_exclusive=yes:aff=no:gvendor=
+                          nvidia
+------------------------------------------------------------------------------
+
+Job <29770093>, Job Name <mosaic-jq1-25-run-boltz2>, User <s234818>, Project <d
+                          efault>, Status <EXIT>, Queue <gpul40s>, Command <bas
+                          h -l /work3/s234818/mosaic/releases/20261021-brd4-jq1
+                          -25-01/source/scripts/hpc/campaign25_pocket_stage.lsf
+                           /work3/s234818/mosaic/releases/20261021-brd4-jq1-25-
+                          01/source /zhome/95/e/206121/mosaic-runs/20261021-brd
+                          4-jq1-25-01 2503c2382b429ec6b79d7a256b2a2fccd09f7739a
+                          609e97a876d604d00dc063c run boltz2 /zhome/95/e/206121
+                          /mosaic-runs/20261021-brd4-jq1-25-01/run-boltz2 0>, S
+                          hare group charged </s234818>, Esub <dcc>
+Wed Oct 21 12:35:37 2026: Submitted from host <n-62-31-11>, CWD </work3/s234818
+                          /mosaic/releases/20261021-brd4-jq1-25-01/source>, Out
+                          put File (overwrite) </zhome/95/e/206121/mosaic-runs/
+                          20261021-brd4-jq1-25-01/run-boltz2/stdout.29770093.lo
+                          g>, Error File (overwrite) </zhome/95/e/206121/mosaic
+                          -runs/20261021-brd4-jq1-25-01/run-boltz2/stderr.29770
+                          093.log>, 4 Task(s), Requested Resources < rusage[mem
+                          =8192.00] span[hosts=1]>, Requested GPU <num=1:mode=e
+                          xclusive_process>;
+Wed Oct 21 12:37:48 2026: Started 4 Task(s) on Host(s) <4*n-62-13-17>, Allocate
+                          d 4 Slot(s) on Host(s) <4*n-62-13-17>, Execution Home
+                           </zhome/95/e/206121>, Execution CWD </work3/s234818/
+                          mosaic/releases/20261021-brd4-jq1-25-01/source>;
+Wed Oct 21 16:13:26 2026: Exited with exit code 143. The CPU time used is 12888
+                          .0 seconds.
+                          HOST: n-62-13-17; CPU_TIME: 12888 seconds
+Wed Oct 21 16:13:26 2026: Completed <exit>; TERM_OWNER: job killed by owner.
+
+ RUNLIMIT                
+ 1380.0 min
+
+ MEMLIMIT
+      8 G 
+
+ MEMORY USAGE:
+ MAX MEM: 6.1 Gbytes;  AVG MEM: 5.8 Gbytes; MEM Efficiency: 19.26%
+
+ CPU USAGE:
+ CPU PEAK: 1.01 ;  CPU PEAK DURATION: 12303 second(s)
+ CPU AVERAGE EFFICIENCY: 24.90% ;  CPU PEAK EFFICIENCY: 25.23%
+
+ PENDING TIME DETAILS:
+ Eligible pending time (seconds):	131
+ Ineligible pending time (seconds):	0
+
+ SCHEDULING PARAMETERS:
+           r15s   r1m  r15m   ut      pg    io   ls    it    tmp    swp    mem
+ loadSched   -     -     -     -       -     -    -     -     -      -      -  
+ loadStop    -     -     -     -       -     -    -     -     -      -      -  
+
+ EXTERNAL MESSAGES:
+ MSG_ID FROM       POST_TIME      MESSAGE                             ATTACHMENT 
+ 0      s234818    Oct 21 12:40   GPU 0: Detected Power error: Detect     N     
+
+ RESOURCE REQUIREMENT DETAILS:
+ Job-level:  rusage[mem=8192.00] span[hosts=1]
+ App-level: -
+ Queue-level: same[type:model] affinity[core] cu[type=enclosure:maxcus=1]
+ Combined: select[(ngpus>0) && (type == local)] order[-slots:-maxslots] rusage[
+                          mem=8192.00:ngpus_physical=1.00] span[hosts=1] same[t
+                          ype:model] cu[pref=config:maxcus=1:type=enclosure] af
+                          finity[core(1)*1]
+ Effective: select[((ngpus>0)) && (type == local)] order[-slots:-maxslots] rusa
+                          ge[mem=8192.00,ngpus_physical=1.00] span[hosts=1] sam
+                          e[type:model] cu[type=enclosure:maxcus=1:pref=config]
+                           affinity[core(1)*1] 
+
+ GPU REQUIREMENT DETAILS:
+ Combined: num=1:mode=exclusive_process:mps=no:j_exclusive=yes:aff=no:gvendor=n
+                          vidia
+ Effective: num=1:mode=exclusive_process:mps=no:j_exclusive=yes:aff=no:gvendor=
+                          nvidia
+
