@@ -5018,3 +5018,72 @@ Actual mouse drags selected1860then658, numeric1500 worked, Boltz600 and chemist
 hard molecule still a carbonchain at checked points. Screenshot andverification
 are under results/hpc/20261021-brd4-jq1-25-report/edition-0002/. Monitor continues
 same milestone publication cadence with every committed frame in each edition.
+
+
+### 21 October 2026, 13:59 Paris — Next progress capture submitted
+
+Compact status authenticated all3nativejobsRUN and finalcollectors/reportPEND;
+latest committed states5850/1395/1300. Protenix crossed4500 and5500 since the
+published3500 milestone, so report-only interim-0002 **29770891** was actually
+submitted at13:59:44Paris on unchanged report source04. Exact queue hpc,2CPUslots,
+4GiB/slot,30min, no native dependency/mutation; actual receipt/resources saved.
+GPU jobs29770179/29770093/29770124 unchanged. This submission is not a completed
+report. Current root/jobs.json and campaign receipt record the actual new ID.
+New local edition0003 reserved; publish only after final scheduler/LSFsuccess,
+passed saved-data report assessment, safe every-file byte/schema verification
+and browserQA. Preserve edition0002 until verified promotion.
+
+### 21 October 2026, 14:08 Paris — Saved-gradient audit answers apparent stasis
+
+User asked whether the three JQ1 runs receive gradients and whether effective LR
+is small. Read-only allocatedCPU **29770931** actually DONE/LSFsuccess; script
+SHA `b595c73acde2ef448111c4564b64a0536190d4ab7841e36c04446477701e9c7a`,
+7410bytes, hpc/2slots/4GiBslot/20min. Fixed report capture5900/1409/1314 was
+authenticated against original jobs/source/config/model/context and saved
+JSONL-prefix/snapshot hashes. No model, repair, new gradients or molecular
+updates were executed by this audit. All numerical analysis ran on allocatedCPU.
+
+Nonzero atom/bond gradients and actual probability changes exist in all3arms.
+Last100 median accepted rates0.03/0.001875/0.0009375, combined logit-gradient
+L2 norms0.006517/0.302833/0.389493, zero fallbacks/noops. Maximum since-initial
+atom probability shifts0.03075/0.20975/0.20948 and bond shifts0.05823/0.25488
+/0.25473 coexist with zero changed hard argmax labels. Saved-step replay residual
+about1.2e-7 supports actual FP32 logit updates. This is descriptive evidence, not
+a new native pass. Contact/affinity metrics remain distinct. Audited chemistry
+loss0 at0/1000/1314, weight0.001; ramp is still future. No LR/objective change.
+
+Archive11347bytes SHA
+`f84014400a1c3f380a891d2c69068f81d73cf6fc9c5fffe701792c6c6e72cf3c`,
+all11files safely extracted/byte verified. Audit JSON SHA
+`c09198bde08ddba6b8b23a64ecb675b58ccf9de9a00a66d0bf6e53a5119e9708`.
+Actual final scheduler SHA
+`dfda43683ee8ad46079b94f235d90273175b001a4806df1a25e885bfc6d363f9`
+and LSF stdoutSHA
+`3b713648173804998c9496ff1db2aa21b489114d69eebb8220311776e11ff390`
+authenticated separately from in-job packaging. Proofs/verification are at
+`results/hpc/20261021-brd4-jq1-gradient-audit-01/`; campaign/script receipt in
+`scripts/hpc/receipts/20261021-brd4-jq1-gradient-audit-01/`.
+All3native GPU jobs remain unchanged and no completed trajectory is claimed.
+
+### 21 October 2026 — Edition0003 delivered from saved prefixes
+
+Interim **29770891** actually DONE/LSFsuccess/passed, captured14:02:25Paris:
+updates5900/1409/1314, states5901/1410/1315, all8626frames retained. Source04 and
+all native inputs/gates unchanged. Exact receipt archive33764779bytes SHA
+`4e744970c5b095b9a2dfdf4c606abf266328b98535e78c546138744f2dbffd07`;
+208files safely extracted/byte verified. Report assessment SHA
+`933716fc8f6f40dcc61eecfd0b0ea6ba2381d7a00968c07c80ee9e2315e6d697`.
+CPU71-pass rawXML/proofs, source/input pins, every-frame metadata/chunk bytes and
+actual final scheduler/LSF success authenticated separately. No local numerical
+work; all scientific rendering was allocatedHPC.
+
+Published immutable edition0003 at http://127.0.0.1:8776/report.html, preserving
+earlier editions. All187served files HTTP200/exactbytes. Actual browserQA:
+all3selectors/latest endpoints, mouse drag3020, numeric1500, chemistry777 plus
+next/playback to781, manualscrubpause500, heatmaps/labels/probabilitysizes/rawgraph.
+Screenshot and verification at
+`results/hpc/20261021-brd4-jq1-25-report/edition-0003/`.
+Milestone progression5500/0/0; nextremoteinterim-0003/localedition0004. Report is
+still INPROGRESS with terminal/native full-budget checks pending. GPU jobs remain
+29770179/29770093/29770124 without mutation. Monitoring continues quietly until
+new milestones or actual authenticated final completion/failure.

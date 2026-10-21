@@ -1,0 +1,23 @@
+{
+  "script_sha256": "b595c73acde2ef448111c4564b64a0536190d4ab7841e36c04446477701e9c7a",
+  "script_bytes": 7410,
+  "status": "Allocated CPU29770931 actually DONE/LSF success; saved-gradient audit recorded and all11 files byte verified; no molecular run changes",
+  "inputs": "Report interim-0002 captured prefixes5900/1409/1314; exact native/job/source/config pins unchanged",
+  "scope": "Local stdlib byte/schema checks only; all numerical analysis ran on allocated HPC CPU29770931",
+  "job_id": "29770931",
+  "actual_scheduler": "DONE",
+  "lsf_success": true,
+  "verified_files": 11,
+  "archive": {
+    "path": "/zhome/95/e/206121/mosaic-runs/20261021-brd4-jq1-gradient-audit-01.tar.gz",
+    "bytes": 11347,
+    "sha256": "f84014400a1c3f380a891d2c69068f81d73cf6fc9c5fffe701792c6c6e72cf3c",
+    "files": 11
+  },
+  "audit_sha256": "c09198bde08ddba6b8b23a64ecb675b58ccf9de9a00a66d0bf6e53a5119e9708",
+  "audit_json": "results\\hpc\\20261021-brd4-jq1-gradient-audit-01\\20261021-brd4-jq1-gradient-audit-01\\20261021-brd4-jq1-gradient-audit-01\\payload\\audit.json",
+  "scheduler_stdout_hashes": {
+    "final-scheduler.txt": "dfda43683ee8ad46079b94f235d90273175b001a4806df1a25e885bfc6d363f9",
+    "stdout.29770931.log": "3b713648173804998c9496ff1db2aa21b489114d69eebb8220311776e11ff390"
+  }
+}

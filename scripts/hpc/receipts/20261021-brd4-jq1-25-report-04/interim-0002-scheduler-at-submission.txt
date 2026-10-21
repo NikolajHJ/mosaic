@@ -1,0 +1,47 @@
+
+Job <29770891>, Job Name <mosaic-jq1-report-interim-0002>, User <s234818>, Proj
+                          ect <default>, Status <PEND>, Queue <hpc>, Command <b
+                          ash -l /work3/s234818/mosaic/releases/20261021-brd4-j
+                          q1-25-report-04/source/scripts/hpc/jq1_25_interim_sta
+                          ge.lsf /work3/s234818/mosaic/releases/20261021-brd4-j
+                          q1-25-report-04/source /zhome/95/e/206121/mosaic-runs
+                          /20261021-brd4-jq1-25-report-04 5c3f123748f573dcb5e3d
+                          4532659441fc6f5666a1768461a459c94cf208ba31a /zhome/95
+                          /e/206121/mosaic-runs/20261021-brd4-jq1-25-report-04/
+                          interim-0002>, Esub <dcc>
+Wed Oct 21 13:59:44 2026: Submitted from host <hpclogin1>, CWD <$HOME>, Output 
+                          File (overwrite) </zhome/95/e/206121/mosaic-runs/2026
+                          1021-brd4-jq1-25-report-04/interim-0002/stdout.297708
+                          91.log>, Error File (overwrite) </zhome/95/e/206121/m
+                          osaic-runs/20261021-brd4-jq1-25-report-04/interim-000
+                          2/stderr.29770891.log>, 2 Task(s), Requested Resource
+                          s <{select[shortparallel_] rusage[mem=4096.00] span[h
+                          osts=1]} || {select[!shortparallel_] rusage[mem=4096.
+                          00] span[hosts=1]}>;
+ PENDING REASONS:
+ New job is waiting for scheduling;
+
+ RUNLIMIT                
+ 30.0 min of hpclogin1
+
+ MEMLIMIT
+      4 G 
+
+ PENDING TIME DETAILS:
+ Eligible pending time (seconds):	0
+ Ineligible pending time (seconds):	0
+
+ SCHEDULING PARAMETERS:
+           r15s   r1m  r15m   ut      pg    io   ls    it    tmp    swp    mem
+ loadSched   -     -     -     -       -     -    -     -     -      -      -  
+ loadStop    -     -     -     -       -     -    -     -     -      -      -  
+
+ RESOURCE REQUIREMENT DETAILS:
+ Job-level: {select[shortparallel_] rusage[mem=4096.00] span[hosts=1]} || {sele
+                          ct[!shortparallel_] rusage[mem=4096.00] span[hosts=1]
+                          }
+ App-level: -
+ Queue-level: same[type:model] affinity[core] cu[type=enclosure:maxcus=1]
+ Combined: -
+ Effective: -
+

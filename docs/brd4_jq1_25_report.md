@@ -248,3 +248,71 @@ preserves visible controls. Native hard argmax can remain a carbon chain while
 its probabilities and score change. The ten-minute milestone monitor now uses
 source04/every-frame progress captures, preserving earlier editions and final
 full-budget/native/identity gates.
+
+### Saved-gradient and effective-step audit, 21 October
+
+The user asked whether the apparently static molecules were receiving gradients
+and changing. Read-only allocated CPU **29770931** actually DONE with LSF success
+at14:08:05Paris. It analyzed the fixed interim-0002 prefixes, not later live data:
+Protenix5900, Boltz1409 and Boltz+chemistry1314 updates. No inference, new gradient
+calculation, repair, optimization or native setting changed. The script and
+campaign are in `scripts/hpc/receipts/20261021-brd4-jq1-gradient-audit-01/`.
+
+All three retained nonzero saved atom/bond gradients and probability changes.
+For the last100 updates the median accepted logit step was **0.03 /0.001875
+/0.0009375**: Protenix always accepted the nominal rate, while Boltz and chemistry
+were typically16x/32x below it through ordinary backtracking. Last100 median
+combined logit-gradient L2 norms were0.006517/0.302833/0.389493. Mean absolute
+probability changes per update were about0.8e-6 to1.7e-6 across the atom and bond
+arrays. Saved logit updates replayed with maximum residual about1.2e-7, consistent
+with FP32 rounding. All100 recent steps per arm were strict improving, with zero
+fallbacks/no-ops. This descriptive audit is not a new native readiness result.
+
+From initialization, the largest atom probability shifts were0.03075/0.20975
+/0.20948, and the largest bond shifts0.05823/0.25488/0.25473. Nevertheless no hard
+atom or bond argmax label changed at these captured endpoints; all still display
+the same25-carbon chain. Thus visible identity is hiding real soft changes.
+Protenix pocket-contact loss moved-0.077953 to-0.085375; Boltz affinity scalar
+moved1.103662 to0.332911, and chemistry arm1.103662 to0.339293. Contact and affinity
+are distinct objectives, and none is experimental binding evidence. Chemistry
+loss at audited0/1000/1314 points was zero with weight0.001; its ramp has not begun.
+
+The optimizer is unnormalized gradient descent on categorical logits, not Adam:
+the probability gradient is pulled back through softmax, then logits change by
+the accepted rate times that pulled-back gradient. Therefore0.03 is not a direct
+0.03 change in probabilities. Increasing nominal Boltz LR alone need not increase
+the accepted rate; decreasing Protenix LR would likely slow its already small
+steps. These are interpretations of saved evidence, not authorized run changes.
+
+Audit archive11,347bytes SHA
+`f84014400a1c3f380a891d2c69068f81d73cf6fc9c5fffe701792c6c6e72cf3c`;
+all11files safely extracted and byte-verified locally. Audit JSON SHA
+`c09198bde08ddba6b8b23a64ecb675b58ccf9de9a00a66d0bf6e53a5119e9708`.
+Verification: `results/hpc/20261021-brd4-jq1-gradient-audit-01/verification.json`.
+Local work was stdlib byte/schema verification only; numerical analysis ran on
+allocated HPC. Native GPU jobs and original scientific/terminal gates are intact.
+
+### Edition0003 verified and published
+
+Report-only interim **29770891** actually DONE with LSF success and a passed
+assessment. Captured at 14:02:25 Paris on 21 October: **5900 / 1409 / 1314**
+updates and **5901 / 1410 / 1315** saved states, retaining all **8626 frames**.
+Milestone progress is Protenix5500, Boltz0, chemistry0. This is IN PROGRESS;
+terminal completion checks remain pending for each arm.
+
+The 33,764,779-byte archive SHA is
+`4e744970c5b095b9a2dfdf4c606abf266328b98535e78c546138744f2dbffd07`.
+All208files passed safe extraction and byte checks; actual final scheduler and
+LSF success, CPU71-pass rawXML/proofs, native/source/config/frozen identities,
+per-frame metadata contiguity and chunk lengths were checked separately.
+Report assessment SHA:
+`933716fc8f6f40dcc61eecfd0b0ea6ba2381d7a00968c07c80ee9e2315e6d697`.
+
+Immutable edition0003 is published at the stable8776link; older editions intact.
+All187served files returned HTTP200 with exact length/hash. Actual browser QA
+covered all three selectors and latest endpoints, mouse drag to3020, exact1500,
+next/playback at chemistry777 and manual-scrub pause at500, expanded probability
+heatmaps, readable element/slot labels, probability sizes and the raw graph.
+Screenshot and verification are under the local edition0003 directory.
+Next unique capture is remote interim-0003 / local edition0004, only on a new
+per-arm milestone. No native job or scientific setting changed.

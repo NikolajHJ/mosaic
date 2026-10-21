@@ -1,0 +1,96 @@
+#!/bin/bash
+# Saved-artifact analysis only: no inference, repair, new gradients or GPU edits.
+set -euo pipefail
+[[ -n "${LSB_JOBID:-}" ]]
+expected=$1
+parent=$2
+printf '%s  %s\n' "$expected" "$0" | sha256sum -c -
+module load python3/3.12.11
+python=/work3/s234818/mosaic/envs/protenix-tiny/bin/python
+source=/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-report-04/source
+export CUDA_VISIBLE_DEVICES='' PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
+export PYTHONPATH="$source/scripts"
+mkdir "$parent/payload"
+"$python" "$source/scripts/hpc/zhome_quota_preflight.py" --run-dir "$parent/payload" --minimum-free-gib 4
+"$python" - "$parent/payload" <<'PY'
+from collections import Counter
+from datetime import datetime,timezone
+import json,os
+from pathlib import Path
+import numpy as np
+from jq1_report_contract import ARMS,read,require,sha,study_path
+
+output=Path(__import__('sys').argv[1])
+capture=Path('/zhome/95/e/206121/mosaic-runs/20261021-brd4-jq1-25-report-04/interim-0002/payload/native-prefix-proofs/capture.json')
+report_receipt=capture.parent.parent/'report/report_receipt.json'
+require(read(report_receipt)['included_updates']==[5900,1409,1314],'Wrong fixed audit progress capture')
+record={'status':'recorded','job_id':os.environ['LSB_JOBID'],'created_utc':datetime.now(timezone.utc).isoformat(),
+ 'capture_sha256':sha(capture),'report_receipt_sha256':sha(report_receipt),'arms':[],
+ 'scope':'Descriptive analysis of saved FP32 gradients/steps/probabilities only; no new native pass, model execution, optimization or scientific settings change'}
+
+def stats(values):
+    a=np.asarray(values,dtype=np.float64)
+    return {'minimum':float(a.min()),'median':float(np.median(a)),'mean':float(a.mean()),'maximum':float(a.max())}
+
+for entry in read(capture):
+    arm=entry['arm'];pin=ARMS[arm];latest=entry['latest_update'];root=study_path(arm)/'case-0'
+    require(entry['job_id']==pin['job'] and entry['model_digest']==pin['model'] and entry['context_digest']==pin['context'] and entry['source_manifest_sha256']==pin['manifest'] and entry['config_sha256']==pin['config'],'Audit input identities differ')
+    rows={}
+    for proof in entry['progress_evidence']['jsonl_prefixes']:
+        path=Path(proof['path']);raw=path.read_bytes()[:proof['bytes']]
+        require(__import__('hashlib').sha256(raw).hexdigest()==proof['sha256'],'Captured JSONL prefix changed')
+        rows[path.stem]=[json.loads(line)for line in raw.splitlines()]
+    states,updates=rows['states'][:latest+1],rows['updates'][:latest]
+    require([s['step']for s in states]==list(range(latest+1)) and [u['step']for u in updates]==list(range(latest)),'Captured prefix is not contiguous')
+    require(read(root.parent/'native_gradient_checks/report.json')['status']=='passed' and read(root/'combined_initial_checks/report.json')['status']=='passed','Original entry derivative checks failed')
+    snapshots={}
+    def snapshot(step):
+        if step not in snapshots:
+            state=states[step];path=(root/state['snapshot']).resolve()
+            require(path.is_relative_to(root.resolve()) and sha(path)==state['snapshot_sha256'],'Audit snapshot path/hash differs')
+            with np.load(path,allow_pickle=False)as f:snapshots[step]={k:f[k].copy()for k in f.files}
+            require(all(np.isfinite(a).all()for a in snapshots[step].values()),'Nonfinite saved audit array')
+        return snapshots[step]
+    initial,terminal=snapshot(0),snapshot(latest)
+    first=max(0,latest-100);recent=updates[first:latest]
+    points=[];deltas={'X_mean_abs':[],'X_max_abs':[],'E_mean_abs':[],'E_max_abs':[],'logit_gradient_l2':[],'atom_gradient_l2':[],'bond_gradient_l2':[],'update_replay_max_abs_residual':[]}
+    for step in range(first,latest):
+        a,b=snapshot(step),snapshot(step+1);rate=updates[step]['accepted_step_size']
+        ga,gb=a['gradient_atom_logits'],a['gradient_bond_logits']
+        deltas['atom_gradient_l2'].append(float(np.linalg.norm(ga.astype(np.float64))))
+        deltas['bond_gradient_l2'].append(float(np.linalg.norm(gb.astype(np.float64))))
+        deltas['logit_gradient_l2'].append(float(np.linalg.norm(np.concatenate([ga.ravel(),gb.ravel()]).astype(np.float64))))
+        residual=[]
+        for logits,g in [('atom_logits',ga),('bond_logits',gb)]:
+            residual.append(float(np.max(np.abs(b[logits].astype(np.float64)-(a[logits].astype(np.float64)-rate*g.astype(np.float64))))))
+        deltas['update_replay_max_abs_residual'].append(max(residual))
+        for field,label in [('X','X'),('E_upper','E')]:
+            delta=np.abs(b[field].astype(np.float64)-a[field].astype(np.float64))
+            deltas[label+'_mean_abs'].append(float(delta.mean()));deltas[label+'_max_abs'].append(float(delta.max()))
+    for step in sorted({0, min(1000,latest), latest}):
+        a=snapshot(step);metric=pin['metric']
+        points.append({'step':step,'native_loss':states[step][metric+'_loss'],'repair_weight':states[step]['repair_weight'],
+          'chemistry_loss':states[step]['components'].get('chemistry_loss'),
+          'native_raw_atom_gradient_l2':float(np.linalg.norm(a[metric+'_gradient_X'].astype(np.float64))),
+          'native_raw_bond_gradient_l2':float(np.linalg.norm(a[metric+'_gradient_E_upper'].astype(np.float64))),
+          'atom_logit_gradient_l2':float(np.linalg.norm(a['gradient_atom_logits'].astype(np.float64))),
+          'bond_logit_gradient_l2':float(np.linalg.norm(a['gradient_bond_logits'].astype(np.float64))),
+          'winning_atom_probability':stats(a['X'].max(-1)),
+          'winning_bond_probability':stats(a['E_upper'].max(-1)),
+          'raw_argmax_smiles':states[step]['readout'].get('canonical_smiles'),
+          'snapshot_sha256':states[step]['snapshot_sha256']})
+    item={'arm':arm,'native_job':pin['job'],'through_update':latest,'nominal_step':0.03,'parameterization':'Unnormalized gradient descent in categorical logits; softmax pullback, no Adam',
+       'all_accepted_steps':dict(Counter(str(u['accepted_step_size'])for u in updates)),
+       'recent_window':{'first_update_index':first,'count':len(recent),'accepted_step':stats([u['accepted_step_size']for u in recent]),
+        'accepted_steps':dict(Counter(str(u['accepted_step_size'])for u in recent)),
+        'fallbacks':sum(bool(u['fallback_used'])for u in recent),'no_ops':sum(bool(u['no_op'])for u in recent),
+        'strict_improving':sum(not u['fallback_used']for u in recent),'observed':{k:stats(v)for k,v in deltas.items()}},
+       'since_initial':{field:{'mean_absolute_probability_change':float(np.abs(terminal[field].astype(np.float64)-initial[field].astype(np.float64)).mean()),
+          'maximum_absolute_probability_change':float(np.abs(terminal[field].astype(np.float64)-initial[field].astype(np.float64)).max()),
+          'argmax_labels_changed':int(np.count_nonzero(terminal[field].argmax(-1)!=initial[field].argmax(-1)))}for field in ('X','E_upper')},
+       'points':points,'source_manifest_sha256':pin['manifest'],'config_sha256':pin['config'],'model_digest':pin['model'],'context_digest':pin['context']}
+    record['arms'].append(item)
+(output/'audit.json').write_text(json.dumps(record,indent=2,allow_nan=False)+'\n')
+print(json.dumps(record,indent=2,allow_nan=False))
+PY
+"$python" "$source/scripts/collect_protenix_evidence.py" --storage zhome --run "$parent" --output "${parent}.tar.gz" > "$parent/payload/packaging.log" 2>&1

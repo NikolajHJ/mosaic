@@ -23,12 +23,13 @@
     "complete-boltz2": "29770707",
     "complete-boltz2_chemistry": "29770708",
     "combined-report": "29770709",
-    "interim-0001": "29770710"
+    "interim-0001": "29770710",
+    "interim-0002": "29770891"
   },
-  "status": "71 allocated report fixtures passed; interim29770710 actually DONE/passed,154files byte verified,6012 exact frames published; real browser drag/numeric/step/playback QA passed",
+  "status": "Source04 CPU71passed; interim29770891 actuallyDONE/LSFsuccess/passed,208files byte/schema verified,8626 exact frames published as edition0003; HTTP and browser QA passed",
   "source_authenticated_files": 518,
   "cpu_assessment_sha256": "a2654b958374b19cb9f42113032ad3a3a4776c38a88fb387d6409da37ce872d0",
-  "report_assessment_sha256": "f33a28fdfc86966262791fc7b5be4803c38ab2dddf223be87ee8fb1f47dc3d33",
+  "report_assessment_sha256": "933716fc8f6f40dcc61eecfd0b0ea6ba2381d7a00968c07c80ee9e2315e6d697",
   "interim_editions": [
     {
       "remote_parent": "interim-0001",
@@ -52,8 +53,34 @@
         "boltz2_chemistry": 0
       },
       "verification": "results/hpc/20261021-brd4-jq1-25-report/edition-0002/verification.json"
+    },
+    {
+      "remote_parent": "interim-0002",
+      "local_edition": "edition-0003",
+      "job_id": "29770891",
+      "archive_bytes": 33764779,
+      "archive_sha256": "4e744970c5b095b9a2dfdf4c606abf266328b98535e78c546138744f2dbffd07",
+      "states": [
+        5901,
+        1410,
+        1315
+      ],
+      "included_updates": [
+        5900,
+        1409,
+        1314
+      ],
+      "milestone_progress": {
+        "protenix": 5500,
+        "boltz2": 0,
+        "boltz2_chemistry": 0
+      },
+      "verification": "results/hpc/20261021-brd4-jq1-25-report/edition-0003/verification.json"
     }
   ],
   "stable_url": "http://127.0.0.1:8776/report.html",
-  "native_jobs_unchanged": true
+  "native_jobs_unchanged": true,
+  "next_interim_parent": "interim-0003",
+  "next_local_edition": "edition-0004",
+  "saved_gradient_audit": "scripts/hpc/receipts/20261021-brd4-jq1-gradient-audit-01/campaign.json"
 }
