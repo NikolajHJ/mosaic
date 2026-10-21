@@ -215,3 +215,27 @@ Firstcapture stopped on aged-out liveCPU records; partialfolder preserved.
 Correctedcapture authenticates exact pinned prior actualscheduler/LSF bytes and
 labels persisted outcomes, retaining live-not-found responses; no fakeDONE or
 forbiddenaccounting query. Historicalnativefailures remain failed.
+
+
+## 21 October 2026 — both Boltz pocket native arms passed and submitted
+
+Chemistry native29770009/callback29770010 actuallyDONE; all native/typedFD/
+parity/pocket/finite/frozen plus nonzero invalidassay, low/highcoupledchecks
+and both10steppilots passed. Assessment17ce0869f0a9888292e9017e03d407bf80d979a9cbfbed1367ae0785eb532394,
+128nativeproofs rehashed. Pilot means2.048396136/2.270196313s/update, original
+conservative projection35852.944692s<82800; projected artifacts5187761824bytes.
+Independent10000-update chemistry long29770124 actuallysubmitted andPEND;
+receipt and actualbjobs matchgpul40s/1exclusiveL40S/4CPU/8GiBslot/23h/nointerarm
+dependency. Boltz-only29770093 nowRUN. CorrectedProtenix native29770090RUN;
+its callback29770091 remains intentionallyPSUSP pendingfullnative andsharedquota.
+
+All313proof files safely downloaded/byte/schema-verified under
+results/hpc/20261021-brd4-jq1-25/boltz-both03/verification.json; archive2176935bytes
+SHAb5d176a1f5396982309e5c7a11bdb352134e18a8190a20dc8e4d66a4aacc896a,
+manifest1fe0710926a33b5b9d7d8e3c0c2bc1fc1f53bd12cd810eb512861c642dc51533.
+Fresh stdlib-only shared-quota auditor authenticates all3actualnative/scheduler/
+LSF/source/config/CPU/proofs, adds all3projections+4GiB and subtracts BOTH root
+byte totals. It does not resumejobs. SHA
+f84e64b64869fe4979cdb5f0e1c31de2a97eb265f12f6f0f1ee169fdc8f529e1;
+preparedfor later execution only after ProtenixactuallyDONE/passed. LocalAST
+review only; no local numericaltests or scientific execution.

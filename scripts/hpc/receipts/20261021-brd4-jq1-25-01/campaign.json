@@ -73,22 +73,29 @@
     {
       "job_id": "29770009",
       "phase": "validate-boltz2_chemistry",
-      "last_observed_status": "RUN"
+      "last_observed_status": "DONE"
     },
     {
       "job_id": "29770010",
       "phase": "after-ready-boltz2_chemistry",
-      "last_observed_status": "PEND"
+      "last_observed_status": "DONE"
     },
     {
       "job_id": "29770093",
       "phase": "run-boltz2",
+      "last_observed_status": "RUN",
+      "submitted": true,
+      "no_inter_arm_dependency": true
+    },
+    {
+      "job_id": "29770124",
+      "phase": "run-boltz2_chemistry",
       "last_observed_status": "PEND",
       "submitted": true,
       "no_inter_arm_dependency": true
     }
   ],
-  "scope": "Boltz2 native passed and independent10000-update long29770093 actually queued; chemistry validating; independent correctedProtenix native queued. No completed pocket trajectory claimed.",
+  "scope": "Both Boltz arms fully native-passed and actual independent longIDs authenticated; Boltz-only running, chemistryqueued. Corrected Protenix native running. No pocket trajectory completion claimed.",
   "stop_evidence": {
     "local": "results/hpc/20261021-brd4-jq1-25/stop01/20261021-brd4-jq1-25-stop-01",
     "files": 31,
@@ -157,5 +164,71 @@
       "policy": "twice largest saved pilot update plus 1 GiB for metadata/context; fresh campaign-wide quota gate before submission",
       "projected_bytes": 1804441824
     }
+  },
+  "boltz_arms_readiness": {
+    "boltz2": {
+      "native_job": "29770007",
+      "long_job": "29770093",
+      "status": "passed_native_and_actual_long_submission",
+      "assessment_sha256": "41901b3ad903c5d14b0344a1876564ee2481ace6a3adc8be5a33245214b4f387",
+      "native_proof_files": 52,
+      "runtime_gate": {
+        "allocation_seconds": 82800,
+        "conservative_projected_seconds": 28220.83890017238,
+        "mean_update_seconds": [
+          1.7613892600114922
+        ],
+        "scope": "empirical pilots, not a worst-case guarantee",
+        "status": "passed"
+      },
+      "storage_projection": {
+        "maximum_pilot_update_bytes": 36535,
+        "policy": "twice largest saved pilot update plus 1 GiB for metadata/context; fresh campaign-wide quota gate before submission",
+        "projected_bytes": 1804441824
+      },
+      "chemistry_assay": {
+        "reason": "chemical guidance is absent from this arm, not a passed chemical gate",
+        "status": "not_applicable",
+        "version": "scorer-only-v1"
+      },
+      "model_digest": "395876da13ab6d5d175e6603db2118a82954c7c06484842fe2314dbd77a31a16",
+      "context_digest": "fd04211da8e22eccd97ecedd96dd59cf4fb2d80aab6a397fa662af8eb92bbad4"
+    },
+    "boltz2_chemistry": {
+      "native_job": "29770009",
+      "long_job": "29770124",
+      "status": "passed_native_and_actual_long_submission",
+      "assessment_sha256": "17ce0869f0a9888292e9017e03d407bf80d979a9cbfbed1367ae0785eb532394",
+      "native_proof_files": 128,
+      "runtime_gate": {
+        "allocation_seconds": 82800,
+        "conservative_projected_seconds": 35852.944691997254,
+        "mean_update_seconds": [
+          2.0483961360994725,
+          2.270196312799817
+        ],
+        "scope": "empirical pilots, not a worst-case guarantee",
+        "status": "passed"
+      },
+      "storage_projection": {
+        "maximum_pilot_update_bytes": 205701,
+        "policy": "twice largest saved pilot update plus 1 GiB for metadata/context; fresh campaign-wide quota gate before submission",
+        "projected_bytes": 5187761824
+      },
+      "chemistry_assay": {
+        "gradient_norm": 0.023423049598932266,
+        "loss": 0.4865887463092804,
+        "status": "passed"
+      },
+      "model_digest": "395876da13ab6d5d175e6603db2118a82954c7c06484842fe2314dbd77a31a16",
+      "context_digest": "fd04211da8e22eccd97ecedd96dd59cf4fb2d80aab6a397fa662af8eb92bbad4"
+    }
+  },
+  "both_boltz_evidence": {
+    "verification": "results\\hpc\\20261021-brd4-jq1-25\\boltz-both03\\verification.json",
+    "files": 313,
+    "archive_bytes": 2176935,
+    "archive_sha256": "b5d176a1f5396982309e5c7a11bdb352134e18a8190a20dc8e4d66a4aacc896a",
+    "manifest_sha256": "1fe0710926a33b5b9d7d8e3c0c2bc1fc1f53bd12cd810eb512861c642dc51533"
   }
 }
