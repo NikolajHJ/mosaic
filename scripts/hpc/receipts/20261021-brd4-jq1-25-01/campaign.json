@@ -43,25 +43,52 @@
     {
       "job_id": "29769668",
       "phase": "validate-protenix",
-      "last_observed_status": "PEND"
+      "last_observed_status": "EXIT"
     },
     {
       "job_id": "29769669",
       "phase": "after-ready-protenix",
-      "last_observed_status": "PEND"
+      "last_observed_status": "DONE"
     },
     {
       "job_id": "29769670",
       "phase": "prepare-boltz-pocket",
-      "last_observed_status": "PEND"
+      "last_observed_status": "DONE"
     },
     {
       "job_id": "29769671",
       "phase": "after-prepare",
+      "last_observed_status": "DONE"
+    },
+    {
+      "job_id": "29770007",
+      "phase": "validate-boltz2",
+      "last_observed_status": "DONE"
+    },
+    {
+      "job_id": "29770008",
+      "phase": "after-ready-boltz2",
+      "last_observed_status": "DONE"
+    },
+    {
+      "job_id": "29770009",
+      "phase": "validate-boltz2_chemistry",
+      "last_observed_status": "RUN"
+    },
+    {
+      "job_id": "29770010",
+      "phase": "after-ready-boltz2_chemistry",
       "last_observed_status": "PEND"
+    },
+    {
+      "job_id": "29770093",
+      "phase": "run-boltz2",
+      "last_observed_status": "PEND",
+      "submitted": true,
+      "no_inter_arm_dependency": true
     }
   ],
-  "scope": "CPU419 and actual scheduler/LSF/proofs authenticated; native validation/preparation submitted, no passed native or long submission yet.",
+  "scope": "Boltz2 native passed and independent10000-update long29770093 actually queued; chemistry validating; independent correctedProtenix native queued. No completed pocket trajectory claimed.",
   "stop_evidence": {
     "local": "results/hpc/20261021-brd4-jq1-25/stop01/20261021-brd4-jq1-25-stop-01",
     "files": 31,
@@ -91,5 +118,44 @@
     "files": 43,
     "manifest_sha256": "fcf7c200dac45be1915e82e8b47cc06d8cea7e5cb11cf722cdd87334ab1c1ace"
   },
-  "pocket_definition_sha256": "9376c715eaf5b48689fb3e995b00d7820601a7776970df66bd7e7cff3b13ee43"
+  "pocket_definition_sha256": "9376c715eaf5b48689fb3e995b00d7820601a7776970df66bd7e7cff3b13ee43",
+  "protenix_retry_receipt": "scripts/hpc/receipts/20261021-brd4-jq1-25-protenix-02/campaign.json",
+  "prepared_context_sha256": "a18a331269170aac3281b0a2ecad313aab81756c9b77e048d7e2cbaa4d8f1093",
+  "pose_audit": {
+    "status": "passed",
+    "anchor_distances_angstrom": [
+      3.707716941833496,
+      3.4676430225372314
+    ],
+    "ligand_fraction_within_6A_of_pocket": 0.92,
+    "coordinates_detached": true
+  },
+  "boltz2_readiness": {
+    "status": "passed",
+    "scope": "stdlib schema/byte checks only; authenticated actual HPC native/scheduler/LSF records",
+    "native_job": "29770007",
+    "callback": "29770008",
+    "long_job": "29770093",
+    "long_last_observed_status": "PEND",
+    "completed_trajectory": false,
+    "assessment_sha256": "41901b3ad903c5d14b0344a1876564ee2481ace6a3adc8be5a33245214b4f387",
+    "native_proofs_verified": 52,
+    "model_digest": "395876da13ab6d5d175e6603db2118a82954c7c06484842fe2314dbd77a31a16",
+    "context_digest": "fd04211da8e22eccd97ecedd96dd59cf4fb2d80aab6a397fa662af8eb92bbad4",
+    "context_file_sha256": "a18a331269170aac3281b0a2ecad313aab81756c9b77e048d7e2cbaa4d8f1093",
+    "runtime_gate": {
+      "allocation_seconds": 82800,
+      "conservative_projected_seconds": 28220.83890017238,
+      "mean_update_seconds": [
+        1.7613892600114922
+      ],
+      "scope": "empirical pilots, not a worst-case guarantee",
+      "status": "passed"
+    },
+    "storage_projection": {
+      "maximum_pilot_update_bytes": 36535,
+      "policy": "twice largest saved pilot update plus 1 GiB for metadata/context; fresh campaign-wide quota gate before submission",
+      "projected_bytes": 1804441824
+    }
+  }
 }

@@ -171,3 +171,44 @@ def test_done_still_requires_actual_lsf_success(tmp_path, monkeypatch):
 
 def test_line_wrapped_field_name_is_parsed_without_changing_identity():
     assert module.parse_final("Job <29700001>, Sta\n tus <DONE>, Que\nue <gpu\nl40s>", "29700001") == ("DONE", "gpul40s")
+
+
+@pytest.mark.parametrize("protenix_only", [False, True])
+def test_retry_scope_does_not_duplicate_live_boltz_preparation(tmp_path, monkeypatch, protenix_only):
+    arms = ["protenix"] if protenix_only else list(module.ARMS)
+    module.write(tmp_path / "dispatch-started.json", {"arms": arms})
+    calls = []
+    def submit(source, root, manifest, phase, **kwargs):
+        calls.append((phase, kwargs.get("arm", "none")))
+        return {"job_id": str(29700000 + len(calls))}
+    monkeypatch.setattr(module, "submit", submit)
+    module.start_validations(tmp_path / "source", tmp_path, "a" * 64)
+    expected = [("validate", "protenix"), ("after-ready", "protenix")]
+    if not protenix_only:
+        expected += [("prepare", "none"), ("after-prepare", "none")]
+    assert calls == expected
+    assert module.read(tmp_path / "initial-submissions.json")["arms"] == arms
+
+
+@pytest.mark.parametrize("arms", [[], ["boltz2"], ["protenix", "protenix"], ["unknown"]])
+def test_invalid_retry_scope_fails_before_any_scheduler_call(tmp_path, monkeypatch, arms):
+    module.write(tmp_path / "dispatch-started.json", {"arms": arms})
+    def forbidden(*args, **kwargs):
+        raise AssertionError("No submission from an invalid scope")
+    monkeypatch.setattr(module, "submit", forbidden)
+    with pytest.raises(ValueError, match="scope"):
+        module.start_validations(tmp_path / "source", tmp_path, "a" * 64)
+
+
+def test_protenix_retry_dispatch_never_promotes_or_waits_for_other_arms(tmp_path, monkeypatch):
+    module.write(tmp_path / "dispatch-started.json", {"arms": ["protenix"]})
+    module.write(tmp_path / "decision-protenix.json", {"arm": "protenix", "status": "failed"})
+    module.write(tmp_path / "decision-boltz2.json", {"arm": "boltz2", "status": "passed", "projected_bytes": 1})
+    def forbidden(*args, **kwargs):
+        raise AssertionError("Out-of-scope Boltz decision cannot dispatch")
+    monkeypatch.setattr(module, "submit", forbidden)
+    monkeypatch.setattr(module.subprocess, "run", forbidden)
+    module.dispatch_finished(tmp_path / "source", tmp_path, "a" * 64)
+    result = module.read(tmp_path / "long-submissions.json")
+    assert result["jobs"] == [] and result["pending_readiness_arms"] == []
+    assert [d["arm"] for d in result["failed_arms"]] == ["protenix"]

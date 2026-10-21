@@ -151,3 +151,27 @@ def test_primal_step_guard_rejects_unconfirmed_ad_improvement(monkeypatch, tmp_p
     assert report["status"] == "failed"
     assert len(report["states"]) == 1
     assert len(report["updates"][0]["attempts"]) == 2
+
+
+def test_25_slot_driver_native_check_measures_candidate_primal_and_retains_gates(tmp_path):
+    import importlib.util
+    from pathlib import Path
+
+    path = Path(__file__).resolve().parents[1] / "examples/brd4_25_atoms.py"
+    spec = importlib.util.spec_from_file_location("driver25_primal_contract", path)
+    driver = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(driver)
+    graph = mix_with_uniform(graph_from_hard([0] * 25, [int(j == i + 1) for i in range(25) for j in range(i + 1, 25)]), .5)
+    directory = tmp_path / "driver-native"
+    report = driver.check_protenix_raw_gradients(_loss(), graph, key=jax.random.key(17), directory=directory)
+    assert report["status"] == "passed"
+    assert report["primal_every_step"] and report["acceptance_policy"] == "best_primal"
+    assert {d["field"] for d in report["directions"]} == {"X", "E_upper"}
+    assert all(all(p["agrees"] for p in d["sweep"]) for d in report["directions"])
+    assert report["bond_order_null_max_output_difference"] == 0
+    update = report["updates"][0]
+    assert update["primal_after"] < update["primal_before"]
+    assert all(t["primal_loss"] is not None for t in update["attempts"])
+    assert (directory / "primal-step-0-trial-0.npz").is_file()
+    with np.load(directory / "primal-step-0-trial-0.npz") as saved:
+        assert float(saved["loss"]) == update["attempts"][0]["primal_loss"]

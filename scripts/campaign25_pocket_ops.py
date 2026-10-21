@@ -40,6 +40,15 @@ def write(path, record):
     temporary.replace(path)
 
 
+def campaign_arms(root):
+    """A fresh retry may cover Protenix alone, leaving live Boltz work intact."""
+    marker = root / "dispatch-started.json"
+    arms = read(marker).get("arms", list(ARMS)) if marker.exists() else list(ARMS)
+    if arms not in (list(ARMS), ["protenix"]):
+        raise ValueError("Unknown independent campaign arm scope")
+    return arms
+
+
 def parse_final(text, job):
     # LSF wraps inside field names and values; retain raw text separately.
     fields = re.sub(r"\s+", "", text)
@@ -108,9 +117,25 @@ def submit(source, root, manifest, phase, *, arm="none", dependency=None, cpu_jo
     return record
 
 
+def start_validations(source, root, manifest):
+    """Submit only the arm scope authenticated by the CPU dispatch marker."""
+    arms = campaign_arms(root)
+    jobs = []
+    protenix = submit(source, root, manifest, "validate", arm="protenix")
+    jobs.append(protenix)
+    jobs.append(submit(source, root, manifest, "after-ready", arm="protenix", dependency=f"ended({protenix['job_id']})", cpu_job=protenix["job_id"]))
+    if arms == list(ARMS):
+        prep = submit(source, root, manifest, "prepare")
+        jobs.append(prep)
+        jobs.append(submit(source, root, manifest, "after-prepare", dependency=f"ended({prep['job_id']})", cpu_job=prep["job_id"]))
+    write(root / "initial-submissions.json", {"jobs": jobs, "long_runs_submitted": False, "arms": arms})
+    return jobs
+
+
 def dispatch_finished(source, root, manifest):
     """Submit each passing independent arm under one lock and fresh shared quota."""
-    decisions = [read(root / ("decision-" + a + ".json")) for a in ARMS if (root / ("decision-" + a + ".json")).exists()]
+    arms = campaign_arms(root)
+    decisions = [read(root / ("decision-" + a + ".json")) for a in arms if (root / ("decision-" + a + ".json")).exists()]
     write(root / "chemistry-launch-hold.json", CAMPAIGN_AUTHORIZATION)
     chemistry = next((d for d in decisions if d["arm"] == "boltz2_chemistry"), None)
     if chemistry:
@@ -124,14 +149,14 @@ def dispatch_finished(source, root, manifest):
                                 scope="Saved disposable pilot measurement; not completed 10000-update runtime")
         write(root / "chemistry-runtime-estimate.json", estimate)
     jobs = []
-    for arm in LONG_ARMS:
+    for arm in arms:
         marker = root / ("long-dispatch-started-" + arm + ".json")
         if marker.exists():
             receipt = root / ("run-" + arm) / "submission.json"
             if not receipt.exists() or "job_id" not in read(receipt) or read(receipt)["returncode"] != 0:
                 raise RuntimeError("Previous long submission unknown/failed; no duplicate attempt")
             jobs.append(read(receipt))
-    pending = [a for a in ARMS if not any(d["arm"] == a for d in decisions)]
+    pending = [a for a in arms if not any(d["arm"] == a for d in decisions)]
     def record():
         write(root / "long-submissions.json", {"jobs": jobs, "failed_arms": [d for d in decisions if d["status"] != "passed"],
               "pending_readiness_arms": pending, "held_arms": [], "chemistry_authorization": CAMPAIGN_AUTHORIZATION,
@@ -167,7 +192,10 @@ def main():
     parser.add_argument("--manifest", required=True)
     parser.add_argument("--job", required=True)
     parser.add_argument("--arm", choices=ARMS)
+    parser.add_argument("--only-protenix", action="store_true", help="Fresh after-CPU retry only; never rerun existing Boltz preparation")
     args = parser.parse_args()
+    if args.only_protenix and args.phase != "after-cpu":
+        raise ValueError("Independent retry scope is established only after CPU validation")
     source, root = args.source.resolve(), args.root.resolve()
     if not root.is_relative_to(Path.home() / "mosaic-runs") or not source.is_relative_to(Path("/work3/s234818/mosaic/releases")):
         raise ValueError("Unexpected campaign/source root")
@@ -187,16 +215,11 @@ def main():
         proofs.append({"path": str(pocket_path), "sha256": sha(pocket_path)})
         write(cpu_certificate, {"status": "passed", "source_manifest_sha256": args.manifest, "producer_job_id": args.job, "tests": assessment["passed"], "proofs": proofs})
         with (root / "dispatch-started.json").open("x") as f:
-            json.dump({"source_manifest_sha256": args.manifest, "cpu_certificate_sha256": sha(cpu_certificate)}, f)
-        jobs = []
-        protenix = submit(source, root, args.manifest, "validate", arm="protenix")
-        jobs.append(protenix)
-        jobs.append(submit(source, root, args.manifest, "after-ready", arm="protenix", dependency=f"ended({protenix['job_id']})", cpu_job=protenix["job_id"]))
-        prep = submit(source, root, args.manifest, "prepare")
-        jobs.append(prep)
-        jobs.append(submit(source, root, args.manifest, "after-prepare", dependency=f"ended({prep['job_id']})", cpu_job=prep["job_id"]))
-        write(root / "initial-submissions.json", {"jobs": jobs, "long_runs_submitted": False})
+            json.dump({"source_manifest_sha256": args.manifest, "cpu_certificate_sha256": sha(cpu_certificate), "arms": ["protenix"] if args.only_protenix else list(ARMS)}, f)
+        start_validations(source, root, args.manifest)
     elif args.phase == "after-prepare":
+        if campaign_arms(root) != list(ARMS):
+            raise ValueError("Independent Protenix retry cannot prepare or submit Boltz work")
         status, queue, proofs = final_job(args.job, root / "prepare")
         if status != "DONE":
             with (root / "dispatch.lock").open("a") as lock:
@@ -228,6 +251,8 @@ def main():
         if args.arm is None:
             raise ValueError("Readiness callback requires an arm")
         arm = args.arm
+        if arm not in campaign_arms(root):
+            raise ValueError("Readiness callback is outside this campaign's arm scope")
         parent = root / ("validate-" + arm)
         status, queue, proofs = final_job(args.job, parent)
         decision = {"arm": arm, "producer_job_id": args.job, "actual_scheduler_status": status, "status": "failed", "scheduler_proofs": proofs}

@@ -8,6 +8,22 @@ import sys
 import time
 
 
+def check_protenix_raw_gradients(loss, graph, *, key, directory):
+    """Use independent forwards for every best-primal validation candidate.
+
+    The general checker defaults to the historical strict policy. This driver
+    explicitly uses best_primal, which requires separate candidate forwards;
+    its finite-difference, parity and null-direction gates remain unchanged.
+    """
+    from mosaic.small_molecule.gradient_checks import check_graph_gradients
+
+    return check_graph_gradients(
+        loss, graph, key=key, output_directory=directory, steps=1,
+        initial_step_size=0.03, max_backtracks=10, primal_every_step=True,
+        artifact_policy="compact", acceptance_policy="best_primal",
+    )
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--mode", choices=("validate", "run"), required=True)
@@ -62,7 +78,7 @@ def main():
     from mosaic.small_molecule.chemistry._reference.probability_repair import ProbabilityRepairConfig
     from mosaic.small_molecule.chemistry._reference.repair_progress import ProgressSearchConfig
     from mosaic.small_molecule.io import write_json, save_context, load_context
-    from mosaic.small_molecule.gradient_checks import array_digest, check_graph_gradients
+    from mosaic.small_molecule.gradient_checks import array_digest
     from mosaic.small_molecule.state import graph_from_hard, RelaxedGraph
     from mosaic.small_molecule.provenance import source_identity, environment_identity
 
@@ -175,7 +191,7 @@ def main():
 
         def raw_check(graph, directory):
             if arm == "protenix":
-                return check_graph_gradients(loss, graph, key=key, output_directory=directory, steps=1, initial_step_size=0.03, max_backtracks=10, artifact_policy="compact", acceptance_policy="best_primal")
+                return check_protenix_raw_gradients(loss, graph, key=key, directory=directory)
             from mosaic.small_molecule.boltz2.checks import check_affinity_gradients
             return check_affinity_gradients(loss, graph, key, directory)
 

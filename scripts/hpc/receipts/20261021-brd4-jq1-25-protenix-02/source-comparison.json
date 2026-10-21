@@ -1,0 +1,21 @@
+{
+  "status": "byte-identical",
+  "scope": "All src/ scientific files and all three JQ1 scientific configuration bytes unchanged; driver independent-primal call corrected",
+  "src_files": 145,
+  "configuration_sha256": {
+    "examples/configs/brd4_jq1_25_boltz2_10000.json": "cf8d582b79da2c6c65e032a938e9acabcc69a83ef2f490306deb060e7a03c851",
+    "examples/configs/brd4_jq1_25_boltz2_chemistry_10000.json": "d6408d2512a6db8cff802369de019f6e878d2c12cbc3421996dff7eb7f3aeee3",
+    "examples/configs/brd4_jq1_25_protenix_10000.json": "4faaa44f4ee4adca2c3f1e0f7bdc33b0e3d939a9be312afe9b2f1c736f18252e"
+  },
+  "changed_files": [
+    "docs/brd4_25_chemistry_release.md",
+    "docs/brd4_jq1_25_atom_comparison.md",
+    "docs/experiment_ledger.md",
+    "examples/brd4_25_atoms.py",
+    "scripts/campaign25_pocket_ops.py",
+    "scripts/hpc/campaign25_pocket_stage.lsf",
+    "scripts/hpc/receipts/20261021-brd4-jq1-25-01/campaign.json",
+    "tests/test_campaign25_pocket_ops.py",
+    "tests/test_small_molecule_gradient_checks.py"
+  ]
+}

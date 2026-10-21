@@ -1,0 +1,30 @@
+{
+  "command": "ssh -tt -o BatchMode=yes -o ConnectTimeout=15 -o ConnectionAttempts=1 dtu-hpc 'bash -l -c a100sh'",
+  "job_id": "29770026",
+  "node": "n-62-12-19",
+  "queue": "gpua100i",
+  "actual_final_status": "DONE",
+  "observed_gpu_snapshot": {
+    "scope": "copied from tool output during allocated interactive session",
+    "gpu0": {
+      "name": "NVIDIA A100-PCIE-40GB",
+      "total_MiB": 40960,
+      "used_MiB": 1295,
+      "utilization_percent": 0
+    },
+    "gpu1": {
+      "name": "NVIDIA A100-PCIE-40GB",
+      "total_MiB": 40960,
+      "used_MiB": 33463,
+      "utilization_percent": 100
+    }
+  },
+  "work": "shell/GPU inventory only; no model or numerical test",
+  "session": "closed",
+  "rejected_direct_probe": {
+    "submitted": false,
+    "job_id": null,
+    "reason": "site esub rejected20min walltime; official helper used instead"
+  },
+  "decision": "retain batch L40S validations; reserve interactive nodes for bounded debugging when GPU load/memory suitable"
+}

@@ -4755,3 +4755,90 @@ No native pass or actual10000-update submission inferred from CPU/controller.
 Independent conditional long submission remains authorized after original plus
 pocket gates. New plan/receipt updated; old intentional stops and all failures
 preserved, no local numerical work.
+
+
+## 21 October 2026 — JQ1 Protenix checker plumbing failure; Boltz placement passed
+
+Source01 Protenix native29769668 EXIT12:24:37Paris after hard native2e-5 parity,
+pocket mapping and unchanged frozen identities. Missing primal_every_step flag
+correctly triggered the existing independent-primal best_primal guard before
+its one-step update. Preserve failed readiness/fullrawFD/null/context artifacts;
+no full native pass or longProtenix submission. New Protenix-only retry supplies
+explicit independent candidate forwards; no scientific threshold/feature/loss/
+configuration change. All model and test work still allocatedHPC.
+
+Boltz pocket preparation29769670 DONE12:26:24Paris with passed placement audit;
+callback29769671 DONE and submitted two independent validators/callbacks. Exact
+IDs and outcomes to be authenticated in subsequent entries. No long run inferred.
+
+Interactive investigation: directgpua100i bsub20min rejected by site hook before
+submission; officiala100sh job29770026 dispatched immediately n-62-12-19. Both
+40GiBA100GPUs had existing processes (1295/33463MiB; latter100%utilization).
+No numerical work ran; closed session. Interactive shell availability is not
+freeGPU capacity. Preserve shared-node rules and runningL40S work.
+
+
+## 21 October 2026 — independent Protenix source02 CPU validation submitted
+
+Source20261021-brd4-jq1-25-protenix-02 authenticated492files, manifest
+40ab2d4532c477b5074d6631587ae15188941d5167016b7421f993257a064438;
+archive39465640bytesSHA52caceb014e66749d55ad85950e8cacdddd76e2ebeb5feaac6b975dec5f54b8a.
+Actual CPU29770038 and after-CPU29770039 submitted. Contract100, legacy234
+(with3deliberate slow/model deselections), native mapping34 observed passed;
+remaining chemistry59 running. No finalCPU/native pass inferred.
+
+Source01 failed Protenix evidence105files safely downloaded/verified under
+results/hpc/20261021-brd4-jq1-25/protenix-failure01/. Archive80289400bytesSHA
+bd9f8235d0c9fe4acb2fe80890d1906857db88695a45b0247a144d531a01af25;
+manifestf136cf65ebbf5e1d036fa60bd908377ef52b69524b386fcbff958bad9cf798e7.
+All3predeclared atom/bond FD scales agreed, null output/scalar differences0,
+primal/AD scalar difference2.98e-8; full readiness still failed at omitted
+independent-primal flag and is not relabeled passed. Exactrawrecords retained.
+
+Source01 Boltz preparation29769670 DONE12:26:24 and callback29769671DONE;
+actual native validators29770007Boltz/29770009chemistry and callbacks
+29770008/29770010 queued. PreparedcontextSHA
+a18a331269170aac3281b0a2ecad313aab81756c9b77e048d7e2cbaa4d8f1093,
+pocket9376c715eaf5b48689fb3e995b00d7820601a7776970df66bd7e7cff3b13ee43.
+Saved audit: anchor distances3.70771694/3.46764302A,23of25atoms(92%) within6A.
+Detachedpose true, not a binding/activity or ligandRMSD claim. No longpocket
+submission yet. Interactive29770026 confirmedDONE after shell-only inspection.
+
+
+## 21 October 2026 — corrected CPU427 passed; first pocket long job actually queued
+
+Source02 CPU29770038/afterCPU29770039 actuallyDONE/passed427:100controller,
+234legacy/JAX,34native mapping/no-diffusion,59unchanged chemistry; zero failures,
+errors or skips,3deliberate legacy slow/model deselections. Actualscheduler/LSF,
+rawXML and all38proof files locally byte/schema-verified under
+results/hpc/20261021-brd4-jq1-25/cpu02/verification.json. Assessment
+0bcf6532e8642f51e871f57ff537efaf0ba3504b94f5fcc42ffeaf70dbca9573;
+archive28572bytesSHAbfd3762940b5eb3a1522a3a65df7b885ad4da988444155db26ee761a6584a407.
+Protenix-only native29770090 and callback29770091 actually submitted.
+Callback alone verifiedunstarted and bstop applied; actualPSUSP confirmed.
+This reversible submission hold permits fresh whole-three-arm storage review
+across BOTH source01/source02 roots before bresume; native remains unchanged.
+Include all passed current projections, already-submitted arms and4GiB reserve,
+subtract both roots' actual bytes conservatively. This is neither scientific
+failure nor a user-requested pause. The existing monitor tracks release after
+actual fullnative/identity/runtime/proof and aggregatequota gates.
+
+Source01 Boltz native29770007 and callback29770008 actuallyDONE/passed.
+Hard parity/rawatom+typedbondFD/primalAD/finite/frozen/pocket gates and10-update
+pilot authenticated; mean1.761389260s/update, conservative28220.838900s<82800,
+storageprojection1804441824bytes. Model395876da13ab6d5d175e6603db2118a82954c7c06484842fe2314dbd77a31a16;
+contexttensorfd04211da8e22eccd97ecedd96dd59cf4fb2d80aab6a397fa662af8eb92bbad4.
+Assessment41901b3ad903c5d14b0344a1876564ee2481ace6a3adc8be5a33245214b4f387,
+52nativeproofs rehashed. Actual independent10000-update long29770093 submitted
+12:35:37Paris, lastPENDgpul40s; bjobs and receipt match1exclusiveL40S48GB,
+4slots,8GiB/slot,23h,nointerarmdependency. Submission is not trajectory completion.
+Chemistry native29770009 nowRUN, callback29770010PEND; no chemistry long yet.
+
+All168compactproof files downloaded/byte-verified under
+results/hpc/20261021-brd4-jq1-25/boltz-ready02/verification.json; archive736630bytes
+SHA18e1d6dcede92b79b43ccfc0a828ce1ec480d819f5eb976a2fb4955a470db072,
+manifest70c1b16ef5515bfd1cc16aae7105e3ac839c1bb7e689f54588672080538f7e63.
+Firstcapture stopped on aged-out liveCPU records; partialfolder preserved.
+Correctedcapture authenticates exact pinned prior actualscheduler/LSF bytes and
+labels persisted outcomes, retaining live-not-found responses; no fakeDONE or
+forbiddenaccounting query. Historicalnativefailures remain failed.

@@ -1,0 +1,61 @@
+{
+  "tag": "20261021-brd4-jq1-25-protenix-02",
+  "source": {
+    "source_archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261021-brd4-jq1-25\\source02\\source.tar.gz",
+    "archive_bytes": 39465640,
+    "archive_sha256": "52caceb014e66749d55ad85950e8cacdddd76e2ebeb5feaac6b975dec5f54b8a",
+    "manifest_sha256": "40ab2d4532c477b5074d6631587ae15188941d5167016b7421f993257a064438",
+    "files": 492,
+    "git_revision_reference": "f18e3669b42a626e4238fc2d3c6d2499850fcc93",
+    "hpc_transfer": "authenticated492files",
+    "numerical_validation": "pending DTU HPC",
+    "remote": "/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-protenix-02/source"
+  },
+  "scope": "Protenix-only correction; source01 Boltz work remains independent and unchanged",
+  "historical_failed_native": "29769668",
+  "correction": "Explicit independent candidate primal forwards; all native gates unchanged",
+  "jobs": [
+    {
+      "job_id": "29770038",
+      "phase": "cpu",
+      "last_observed_status": "DONE"
+    },
+    {
+      "job_id": "29770039",
+      "phase": "after-cpu-protenix",
+      "last_observed_status": "DONE"
+    },
+    {
+      "job_id": "29770090",
+      "phase": "validate-protenix",
+      "last_observed_status": "PEND"
+    },
+    {
+      "job_id": "29770091",
+      "phase": "after-ready-protenix",
+      "last_observed_status": "PSUSP",
+      "intentional_reversible_hold": "Review whole-three-arm quota across source01/source02 roots before bresume; native job unchanged"
+    }
+  ],
+  "failure_evidence": {
+    "path": "results/hpc/20261021-brd4-jq1-25/protenix-failure01/20261021-brd4-jq1-25-protenix-failure-01",
+    "files": 105,
+    "archive_bytes": 80289400,
+    "archive_sha256": "bd9f8235d0c9fe4acb2fe80890d1906857db88695a45b0247a144d531a01af25",
+    "manifest_sha256": "f136cf65ebbf5e1d036fa60bd908377ef52b69524b386fcbff958bad9cf798e7"
+  },
+  "cpu": {
+    "status": "passed",
+    "actual_scheduler_status": "DONE",
+    "tests": 427,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "deliberately_deselected": 3,
+    "assessment_sha256": "0bcf6532e8642f51e871f57ff537efaf0ba3504b94f5fcc42ffeaf70dbca9573",
+    "verified_files": 38,
+    "archive_sha256": "bfd3762940b5eb3a1522a3a65df7b885ad4da988444155db26ee761a6584a407",
+    "manifest_sha256": "0aeb9a89311ebb66011a0d3a62f0b5ec548ea2260082275b4132bd466b2f5020",
+    "verification": "results/hpc/20261021-brd4-jq1-25/cpu02/verification.json"
+  }
+}
