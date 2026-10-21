@@ -5102,3 +5102,25 @@ local edition0004 and copied to the source04 campaign receipts. Scheduler SHA
 Remote parent is source04root/interim-0003. Submission is not a passed report;
 completion authentication, full download/verification and browserQA remain
 pending. Published edition0003 remains intact at the stable8776link.
+
+### 21 October 2026, 14:28 Paris — Next interim completed; download in progress
+
+One compact scheduler/artifact query showed native jobs29770179/29770093/29770124
+still RUN at committed states7725/1623/1511; no terminal summaries, final
+collectors/report still PEND. Interim **29771001** is actually DONE/LSFsuccess
+with a passed remote assessment, captured14:21:34Paris at7175/1570/1439 updates
+and7176/1571/1440states. AssessmentSHA
+`eff9ea20cb86ceaebd643dd40907a444aeec8f1a8d498de70c3e455789417964`.
+Actual final scheduler SHA
+`b9fffb7350d09dfd6d92cddfa18ea21279dc082a4439136d909973b27db832b5`,
+LSFstdout SHA
+`fbd4bad39632876641848d1b4b7c90c32a65af6ac8eeb73be2f03a4266e99091`
+were downloaded and locally byte/status authenticated.
+
+Exact archive receipt39386991bytes SHA
+`dd54d783a35a52e571edd731abea859af19f66075393f2b6985bcd3664a8973c`,
+236files. Archive transfer is in progress into reserved edition0004 (exec
+session24976, followed automatically by path/length/SHA/safe extraction checks).
+No full local byte/schema verification, publication or browserQA is established
+yet. Do not duplicate transfer/submission while this active delivery is pending;
+current immutable edition0003 remains published. Native jobs are unchanged.
