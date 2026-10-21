@@ -5259,3 +5259,38 @@ edition0006, followed automatically by receipt/path/length/SHA/safe extraction.
 Do not duplicate active transfers or submit another capture before this edition
 is verified/published. Current edition0005 stays immutable/published. No edition6
 local full byte/schema pass, publication or browserQA is established yet.
+
+### 21 October 2026 — Edition0006 verified and published
+
+Report-only interim **29772558** actually DONE/LSF success/passed, captured
+21 October 15:15:42 Paris through **10000 / 1960 / 1812 updates** and
+**10001 / 1961 / 1813 states**. All **13,775 saved probability frames** retained.
+Exact archive52,544,644bytes SHA
+`f283da0ffb883987fa5385b16a215abca4d4c0918b8dfbee99f7e3ab0cc30518`;
+all310files safely extracted/byte verified. Transfer8126 completed successfully.
+Actual final scheduler/LSF success, report assessment
+`ca440b1dc46f87dad88fee291605f9dfe3fba50cfe0a5c642ba4d9bf8562c486`,
+rawCPU71-pass XML/proofs, native/source/config/frozen/readiness identities and
+all contiguous frame/chunk metadata, lengths and hashes authenticated.
+All scientific rendering remained allocated HPC; local stdlib byte/XML/schema only.
+
+Published immutable edition0006 at http://127.0.0.1:8776/report.html; all289served
+files HTTP200/exactbytes. Actual browserQA covered all3selectors/endpoints,
+mouse drags5119then1811, numeric1500/next1501, playback777to779/manualpause500,
+exact atom/bond probability tables, overlays and readable raw graph labels/sizes.
+Screenshot and verification under
+`results/hpc/20261021-brd4-jq1-25-report/edition-0006/`.
+Captured endpoint contact loss-0.08846936, Boltz affinity scalars0.22692089 and
+0.23105149; these remain different metrics. Checked endpoint argmax graphs remain
+C25 chains. Chemistry loss0 at1812, coefficient0.001; delayed ramp not yet begun.
+
+The combined report remains IN PROGRESS. Separately, native Protenix29770179
+and terminal collector29770706 are actuallyDONE, with persisted passed collector
+assessment/full native gates established on allocated HPC. Local full-summary/
+compact-proof transfer51862 remains active into protenix-completion-01; full local
+native proof verification is still pending, not inferred from schedulerDONE alone.
+The15:39Paris compact query showed Boltz29770093 RUN at2152 and chemistry29770124
+RUN at1970; their collectors/finalreport remainPEND. Native runs/settings unchanged.
+Published milestones10000/1500/1500; no new milestone beyond this edition, so no
+new interim submitted. Next unused remoteinterim-0006/localedition0007. Older
+editions/servers and unrelated PDF/OneNote changes preserved.

@@ -29,10 +29,10 @@
     "interim-0004": "29771969",
     "interim-0005": "29772558"
   },
-  "status": "Source04 CPU71passed; interim29771969 actuallyDONE/LSFsuccess/passed,294files byte/schema verified,13013 exact frames published as edition0005; HTTP and browser QA passed",
+  "status": "Source04 CPU71passed; interim29772558 actuallyDONE/LSFsuccess/passed,310files byte/schema verified,13775 exact frames published as edition0006; all289servedfiles and browser QA passed",
   "source_authenticated_files": 518,
   "cpu_assessment_sha256": "a2654b958374b19cb9f42113032ad3a3a4776c38a88fb387d6409da37ce872d0",
-  "report_assessment_sha256": "4e9886989e697b1ae66e0b1c08f97f254170fb2d1c054206a973211c741e3632",
+  "report_assessment_sha256": "ca440b1dc46f87dad88fee291605f9dfe3fba50cfe0a5c642ba4d9bf8562c486",
   "interim_editions": [
     {
       "remote_parent": "interim-0001",
@@ -125,46 +125,46 @@
         "boltz2_chemistry": 1500
       },
       "verification": "results/hpc/20261021-brd4-jq1-25-report/edition-0005/verification.json"
+    },
+    {
+      "remote_parent": "interim-0005",
+      "local_edition": "edition-0006",
+      "job_id": "29772558",
+      "included_updates": [
+        10000,
+        1960,
+        1812
+      ],
+      "states": [
+        10001,
+        1961,
+        1813
+      ],
+      "report_assessment_sha256": "ca440b1dc46f87dad88fee291605f9dfe3fba50cfe0a5c642ba4d9bf8562c486",
+      "report_receipt_sha256": "664469bddc4b0c7e93c04ba97d08bacc7bf4cad6e69eaf2f93bae6bda2052ed8",
+      "html_sha256": "8184bba69866bea8092e486a1d34788cb0e1d972a2d4a90793548581e44ba2ad",
+      "html_bytes": 53414,
+      "captured_utc": "2026-10-21T13:15:42.628400+00:00",
+      "final_scheduler_sha256": "ebae16f5f4923a4812fc3b0b8f24edac9d1a24c745bfb91325bd5ed1cb96928b",
+      "lsf_stdout_sha256": "855fe998d336f6741262a60635ab1f2b69be650fef278f2a9702567291028769",
+      "archive_bytes": 52544644,
+      "archive_sha256": "f283da0ffb883987fa5385b16a215abca4d4c0918b8dfbee99f7e3ab0cc30518",
+      "milestone_progress": {
+        "protenix": 10000,
+        "boltz2": 1500,
+        "boltz2_chemistry": 1500
+      },
+      "verification": "results/hpc/20261021-brd4-jq1-25-report/edition-0006/verification.json",
+      "http_verified_files": 289,
+      "browser_qa": "passed",
+      "verified_files": 310
     }
   ],
   "stable_url": "http://127.0.0.1:8776/report.html",
   "native_jobs_unchanged": true,
-  "next_interim_parent": "interim-0005",
-  "next_local_edition": "edition-0006",
+  "next_interim_parent": "interim-0006",
+  "next_local_edition": "edition-0007",
   "saved_gradient_audit": "scripts/hpc/receipts/20261021-brd4-jq1-gradient-audit-03/campaign.json",
-  "pending_interim": {
-    "remote_parent": "interim-0005",
-    "local_edition": "edition-0006",
-    "job_id": "29772558",
-    "status": "Actual DONE/LSFsuccess and remote passed assessment; binary SSH download in progress, full local byte/schema verification/publication pending",
-    "trigger": "Latest checked9946/1918/1776; new Protenix9500 milestone exceeds published8500; Protenix not certified complete",
-    "submission_receipt": "results/hpc/20261021-brd4-jq1-25-report/edition-0006/submission.json",
-    "scheduler_at_submission_sha256": "095f9f847c54393f8f0804ca6437f30d5cbd2bc4f76469b83a272c462294ac43",
-    "archive_receipt": {
-      "path": "/zhome/95/e/206121/mosaic-runs/20261021-brd4-jq1-25-report-04/interim-0005.tar.gz",
-      "bytes": 52544644,
-      "sha256": "f283da0ffb883987fa5385b16a215abca4d4c0918b8dfbee99f7e3ab0cc30518",
-      "files": 310
-    },
-    "included_updates": [
-      10000,
-      1960,
-      1812
-    ],
-    "states": [
-      10001,
-      1961,
-      1813
-    ],
-    "report_assessment_sha256": "ca440b1dc46f87dad88fee291605f9dfe3fba50cfe0a5c642ba4d9bf8562c486",
-    "report_receipt_sha256": "664469bddc4b0c7e93c04ba97d08bacc7bf4cad6e69eaf2f93bae6bda2052ed8",
-    "html_sha256": "8184bba69866bea8092e486a1d34788cb0e1d972a2d4a90793548581e44ba2ad",
-    "html_bytes": 53414,
-    "captured_utc": "2026-10-21T13:15:42.628400+00:00",
-    "download_exec_session_id": 8126,
-    "final_scheduler_sha256": "ebae16f5f4923a4812fc3b0b8f24edac9d1a24c745bfb91325bd5ed1cb96928b",
-    "lsf_stdout_sha256": "855fe998d336f6741262a60635ab1f2b69be650fef278f2a9702567291028769"
-  },
   "native_completion_progress": {
     "protenix": {
       "native_job": "29770179",
@@ -177,7 +177,36 @@
       "summary_sha256": "942b260ea5b1b60271c818e67dc4169c646cb1216d10baeab0d76c20bb3ee0ee",
       "local_proof_download_exec_session_id": 51862,
       "local_proof_download_directory": "results/hpc/20261021-brd4-jq1-25-report/protenix-completion-01",
-      "local_full_verification": "pending completed transfers and schema checks"
+      "local_full_verification": "Pending active byte-only transfer51862 of full summary and compact native proofs; allocated collector passed, not inferred from DONE alone"
     }
+  },
+  "latest_published_edition": "edition-0006",
+  "milestone_progress": {
+    "protenix": 10000,
+    "boltz2": 1500,
+    "boltz2_chemistry": 1500
+  },
+  "latest_compact_observation": {
+    "observed_local": "2026-10-21 15:39 Europe/Paris",
+    "protenix": {
+      "job_id": "29770179",
+      "scheduler": "DONE",
+      "committed": 10000,
+      "case": "passed",
+      "collector": "29770706",
+      "collector_scheduler": "DONE"
+    },
+    "boltz2": {
+      "job_id": "29770093",
+      "scheduler": "RUN",
+      "committed": 2152
+    },
+    "boltz2_chemistry": {
+      "job_id": "29770124",
+      "scheduler": "RUN",
+      "committed": 1970
+    },
+    "remaining_collectors_and_final": "PEND",
+    "new_milestone_beyond_published": false
   }
 }
