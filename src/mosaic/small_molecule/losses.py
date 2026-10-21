@@ -16,15 +16,24 @@ class NativeContactLoss(LossTerm):
     """Negative mean ligand best-target contact probability (debugging score).
 
     ``S = mean_i_in_ligand max_j_in_protein sum_bins<cutoff softmax(logits_ij)``.
+    Optional fixed native ``pocket_token_indices`` restrict only the partner
+    set; no requirement to touch every pocket residue and no new coverage term.
     The native-bin upper-edge convention excludes the cutoff-straddling class.
     This is not an affinity, binding or chemical-validity prediction.
     """
 
     cutoff_angstrom: float = eqx.field(static=True, default=8.0)
+    pocket_token_indices: tuple[int, ...] | None = eqx.field(static=True, default=None)
 
     def __post_init__(self):
         if not math.isfinite(self.cutoff_angstrom) or self.cutoff_angstrom <= 0:
             raise ValueError("Contact cutoff must be positive and finite")
+        if self.pocket_token_indices is not None and (
+            not isinstance(self.pocket_token_indices, tuple) or not self.pocket_token_indices
+            or any(isinstance(i, bool) or not isinstance(i, int) or i < 0 for i in self.pocket_token_indices)
+            or len(set(self.pocket_token_indices)) != len(self.pocket_token_indices)
+        ):
+            raise ValueError("Pocket IDs must be distinct nonnegative native token integers")
 
     def __call__(self, graph: RelaxedGraph, output: MolecularTrunkOutput, *, key):
         if not output.ligand_token_indices or not output.protein_token_indices:
@@ -32,7 +41,10 @@ class NativeContactLoss(LossTerm):
                 "NativeContactLoss requires nonempty explicit ligand and protein token sets"
             )
         ligand = jnp.asarray(output.ligand_token_indices, dtype=jnp.int32)
-        protein = jnp.asarray(output.protein_token_indices, dtype=jnp.int32)
+        partners = output.protein_token_indices if self.pocket_token_indices is None else self.pocket_token_indices
+        if not set(partners).issubset(output.protein_token_indices) or set(partners) & set(output.ligand_token_indices):
+            raise ValueError("Pocket IDs must belong only to the native protein map")
+        protein = jnp.asarray(partners, dtype=jnp.int32)
         logits = output.distogram_logits[ligand[:, None], protein[None, :], :]
         probabilities = jax.nn.softmax(logits, axis=-1)
         contacts = jnp.sum(
@@ -44,6 +56,8 @@ class NativeContactLoss(LossTerm):
             "contact_cutoff_angstrom": jnp.asarray(self.cutoff_angstrom),
             "conservative_upper_edge_bins": jnp.asarray(True),
             "diagnostic_only": jnp.asarray(False),
+            "pocket_restricted": jnp.asarray(self.pocket_token_indices is not None),
+            "contact_partner_count": jnp.asarray(len(partners)),
         }
 
 

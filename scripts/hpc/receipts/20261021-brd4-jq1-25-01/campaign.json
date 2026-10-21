@@ -1,0 +1,95 @@
+{
+  "tag": "20261021-brd4-jq1-25-01",
+  "authorization": "User explicitly requested stop current25-slot arms, implement JQ1 pocket, test on HPC and submit all three new independent10000-update arms after gates",
+  "diffusion_gradient": false,
+  "queue": "gpul40s",
+  "queue_basis": "Least pending-slot backlog among account-eligible long GPU queues at captured21October2026 snapshot; H100 restricted",
+  "old_runs": {
+    "29769525": {
+      "actual_status": "EXIT",
+      "intentional_stop": true,
+      "ended_paris": "2026-10-21 11:15:33"
+    },
+    "29769540": {
+      "actual_status": "EXIT",
+      "intentional_stop": true,
+      "ended_paris": "2026-10-21 11:15:34"
+    }
+  },
+  "source": {
+    "source_archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261021-brd4-jq1-25\\source01\\source.tar.gz",
+    "archive_bytes": 39462299,
+    "archive_sha256": "5e4bf8601f1b09e244a7763dc6c6d8af5ddc76bfd3490830993d7cfd0b2c0906",
+    "manifest_sha256": "2503c2382b429ec6b79d7a256b2a2fccd09f7739a609e97a876d604d00dc063c",
+    "files": 488,
+    "git_revision_reference": "8a19075a31715593ae29248173d199da38815582",
+    "hpc_transfer": "authenticated488files",
+    "numerical_validation": "pending DTU HPC",
+    "remote": "/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-01/source"
+  },
+  "jobs": [
+    {
+      "job_id": "29769654",
+      "phase": "cpu",
+      "submitted": true,
+      "last_observed_status": "DONE"
+    },
+    {
+      "job_id": "29769655",
+      "phase": "after-cpu",
+      "submitted": true,
+      "last_observed_status": "DONE"
+    },
+    {
+      "job_id": "29769668",
+      "phase": "validate-protenix",
+      "last_observed_status": "PEND"
+    },
+    {
+      "job_id": "29769669",
+      "phase": "after-ready-protenix",
+      "last_observed_status": "PEND"
+    },
+    {
+      "job_id": "29769670",
+      "phase": "prepare-boltz-pocket",
+      "last_observed_status": "PEND"
+    },
+    {
+      "job_id": "29769671",
+      "phase": "after-prepare",
+      "last_observed_status": "PEND"
+    }
+  ],
+  "scope": "CPU419 and actual scheduler/LSF/proofs authenticated; native validation/preparation submitted, no passed native or long submission yet.",
+  "stop_evidence": {
+    "local": "results/hpc/20261021-brd4-jq1-25/stop01/20261021-brd4-jq1-25-stop-01",
+    "files": 31,
+    "archive_sha256": "b50c8ac52abbd5322b9b72902ded3e62ad3bd126e009073826e2212d70ca9a29",
+    "manifest_sha256": "009c73f1cc32e7975ed49c45a34eede10770171757fa7d9ddee9d5977c4dff91"
+  },
+  "cpu": {
+    "job_id": "29769654",
+    "actual_status": "DONE",
+    "passed": 419,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "deliberately_deselected": 3,
+    "ended_paris": "2026-10-21 11:30:22",
+    "assessment_sha256": "e342bda2bd510fff0aba33192f10dfe4d81ccca53e1b83562c83089ab54095e1",
+    "groups": {
+      "hpc-contract.xml": 93,
+      "legacy.xml": 233,
+      "native-mapping.xml": 34,
+      "chemistry.xml": 59
+    }
+  },
+  "cpu_evidence": {
+    "local": "results/hpc/20261021-brd4-jq1-25/cpu01/20261021-brd4-jq1-25-01-cpu-evidence-01",
+    "archive_sha256": "12ffe963f2f5e68989bd80eac6f90aee2e08f77746246d5b6a4631fca2c5a18a",
+    "files": 43,
+    "manifest_sha256": "fcf7c200dac45be1915e82e8b47cc06d8cea7e5cb11cf722cdd87334ab1c1ace"
+  },
+  "pocket_definition_sha256": "9376c715eaf5b48689fb3e995b00d7820601a7776970df66bd7e7cff3b13ee43"
+}

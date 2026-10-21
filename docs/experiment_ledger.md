@@ -4692,3 +4692,66 @@ pocket-specific implementation/job was made and current runs were not changed.
 No diffusion gradient, temperature change or AE/VAE/latent pipeline introduced.
 Recommendation and versioning/validation requirements recorded in
  docs/brd4_25_chemistry_release.md. No binding/activity claim for generated graphs.
+
+
+## 21 October 2026 — explicit stop and new JQ1-pocket 25-slot comparison
+
+User authorized stop current25-slot runs, implement JQ1-pocket targeting for
+fresh Protenix/Boltz2/Boltz2+chemistry10000-update arms, allocatedHPC testing and
+conditional submission. No diffusion gradient back to molecule. Current old
+jobs29769525/29769540 were actually cancelled; finalEXIT11:15:33/11:15:34Paris.
+Preserve original readiness passes, partial artifacts and cancellation evidence;
+these intentionally interrupted long runs are not completed trajectories or
+spontaneous scientific failures.31stop/queue/raw-log files safely downloaded and
+byte-verified under results/hpc/20261021-brd4-jq1-25/stop01/; archive462541bytes
+SHAb50c8ac52abbd5322b9b72902ded3e62ad3bd126e009073826e2212d70ca9a29,
+manifest009c73f1cc32e7975ed49c45a34eede10770171757fa7d9ddee9d5977c4dff91.
+
+User requested lowest waiting GPU queue. Actual eligible queues and GPU host
+state inspected; H100 is restricted/absent from user-eligible list. L40S had
+smallest captured pending-slot backlog of eligible long queues. All3new arms
+usegpul40s/one exclusive48GBL40S/4CPUslots/8GiBper slot;2hvalidation/prep and23hlong.
+Snapshot is not an exact wait-time promise; public interactive queues are not
+suitable for the10000-update allocation. Raw selection evidence preserved.
+
+Implementation: docs/brd4_jq1_25_atom_comparison.md. Allocated extraction from
+pinned3MXF defines6A heavy-atom JQ1 neighborhood with explicit author/sequence/
+native mappings. Protenix contact partner set restricted; independent native
+hard geometry-off reference compiled in matching full-trunk/head scope, all
+input fields checked exactly, original2e-5 parity gate unchanged. Historical
+source04 eager-vs-JIT parity failure retained, not declared passed. Boltz fresh
+native pose constrained to sequence40/99(authorW81/N140), native potentials only
+during pose preparation; actual anchor<=6A and>=50%ligand-near-pocket placement
+gate precedes fixed detached coordinates. No AD through diffusion. Same25slots,
+50%chain/uniform,LR.03,key17,T1,10000updates,ten-trialbest_primal,composition0,
+chemistry.001through5000 thengeometricto50at10000. Full original native/FD/finite/
+identity/pilot/runtime/quota gates retained; independent passed-arm submissions.
+
+New source20261021-brd4-jq1-25-01 authenticated488files, manifest
+2503c2382b429ec6b79d7a256b2a2fccd09f7739a609e97a876d604d00dc063c;
+archive39462299bytesSHA5e4bf8601f1b09e244a7763dc6c6d8af5ddc76bfd3490830993d7cfd0b2c0906.
+Actual CPU29769654 andafter-CPU29769655 submitted, CPUstarted11:26:36Paris;
+initial93allocatedcontroller/pocketcontracts passed, remaining regression suite
+still running at that snapshot. No CPU final pass, native result or long job
+inferred. No numerical tests/model/chemistry executed locally; AST/JSON/LF and
+byte/schema checks only. Source and receipts under scripts/hpc/receipts/
+20261021-brd4-jq1-25-01/. Old studies/reports/userPDF/OneNote changes preserved.
+
+
+## 21 October 2026 — JQ1 source01 full CPU419 authenticated; native stages queued
+
+Actual CPU29769654 DONE11:30:22Paris and callback29769655 DONE11:30:38.
+419passed/no failures/errors/skips,3deliberate legacy slow/model deselections:
+93contracts,233legacyJAX,34Torch mapping/config/no-diffusion,59unchangedchemistry.
+AssessmentSHAe342bda2bd510fff0aba33192f10dfe4d81ccca53e1b83562c83089ab54095e1.
+RawXML/scheduler/LSF/all43proof files safely downloaded and byte/schema-verified
+under results/hpc/20261021-brd4-jq1-25/cpu01/; archive29621bytesSHA
+12ffe963f2f5e68989bd80eac6f90aee2e08f77746246d5b6a4631fca2c5a18a.
+Allocated crystallographic extraction produced19pocket residues; exact definition
+SHA9376c715eaf5b48689fb3e995b00d7820601a7776970df66bd7e7cff3b13ee43.
+Actual Protenix validation29769668/callback29769669 and Boltz pocket preparation
+29769670/callback29769671 submitted, initiallyPENDgpul40s/hpc as applicable.
+No native pass or actual10000-update submission inferred from CPU/controller.
+Independent conditional long submission remains authorized after original plus
+pocket gates. New plan/receipt updated; old intentional stops and all failures
+preserved, no local numerical work.

@@ -1,5 +1,10 @@
 # Approved 25-atom Boltz-2 plus repair submission
 
+**Superseded for the live runs on21October2026:** the user subsequently explicitly
+requested stopping29769525/29769540 and testing/submitting three fresh JQ1-pocket
+arms. Both old jobs are confirmed intentionally EXIT; retain the historical
+results below. Current work is in `brd4_jq1_25_atom_comparison.md`.
+
 21 October 2026. The user accepted the measured repair overhead and explicitly
 requested submission. This releases the earlier runtime-review hold. All original
 native, derivative, parity, finite-value, frozen-identity, runtime and quota gates

@@ -23,6 +23,8 @@ def main():
     parser.add_argument("--worker-python", default="/work3/s234818/latentmol/env/boltz311/bin/python")
     parser.add_argument("--cache", type=Path, default=Path("/work3/s234818/mosaic/cache/mosaic/protenix"))
     parser.add_argument("--reference", type=Path, required=True)
+    parser.add_argument("--pocket", type=Path)
+    parser.add_argument("--pocket-sha256")
     args = parser.parse_args()
     if not os.environ.get("LSB_JOBID"):
         raise RuntimeError("All numerical work requires allocated DTU HPC")
@@ -35,6 +37,14 @@ def main():
         raise ValueError("Frozen empirical reference changed")
     arm = config["arm"]
     chemistry = config["chemistry_enabled"]
+    pocket = None
+    if config.get("pocket") is not None:
+        from mosaic.small_molecule.pocket import validate_definition
+        if args.pocket is None or sha(args.pocket) != args.pocket_sha256:
+            raise ValueError("Exact allocated JQ1 pocket definition required")
+        pocket = validate_definition(json.loads(args.pocket.read_text()), json.loads(Path(config["fixture"]).read_text()))
+    elif args.pocket is not None or args.pocket_sha256 is not None:
+        raise ValueError("Historical campaign cannot silently acquire a pocket")
     certified = None
     if args.mode == "run":
         if args.ready is None or args.ready_sha256 is None:
@@ -68,6 +78,12 @@ def main():
         "environment": environment_identity(), "chemistry_enabled": chemistry,
         "composition_guidance": "disabled in all three arms; coefficient zero",
     }
+    if pocket is not None:
+        import shutil
+        shutil.copyfile(args.pocket, args.output / "pocket_definition.json")
+        report.update(pocket_definition_sha256=args.pocket_sha256, diffusion_gradient=False)
+        if certified and certified.get("pocket_definition_sha256") != args.pocket_sha256:
+            raise ValueError("Pocket differs from passed readiness")
     worker = model = context = None
     started = time.perf_counter()
     try:
@@ -81,7 +97,8 @@ def main():
             model = FrozenProtenixTiny.load(cache_dir=args.cache)
             if args.mode == "validate":
                 fixture = json.loads(Path(config["fixture"]).read_text())
-                context, paired = prepare_context(fixture["smiles"], protein_chains=(fixture["protein_sequence"],), cache_dir=args.cache, input_name="brd4-25")
+                identities = None if pocket is None else {"pocket_definition_sha256": args.pocket_sha256, "protein_sequence": fixture["protein_sequence"]}
+                context, paired = prepare_context(fixture["smiles"], protein_chains=(fixture["protein_sequence"],), cache_dir=args.cache, input_name="brd4-25", identities=identities)
                 np.testing.assert_array_equal(paired.X, hard.X)
                 np.testing.assert_array_equal(paired.E_upper, hard.E_upper)
             else:
@@ -96,16 +113,34 @@ def main():
             features = inject_graph(context, hard)
             for field in ("ref_element", "token_bonds"):
                 np.testing.assert_array_equal(features[field], context.base_features[field])
-            _, trunk = _native_trunk(model.model, geometry_off_native_features(context), key)
-            native = np.asarray(model.model.distogram_head(trunk.z))
+            if pocket is None:
+                _, trunk = _native_trunk(model.model, geometry_off_native_features(context), key)
+                native = np.asarray(model.model.distogram_head(trunk.z))
+            else:
+                reference_features = geometry_off_native_features(context)
+                if set(reference_features) != set(features):
+                    raise ValueError("Hard/reference native input fields differ")
+                for name in reference_features:
+                    np.testing.assert_array_equal(features[name], reference_features[name])
+                native = np.asarray(model.forward_hard_geometry_off(context=context, key=key).distogram_logits)
             attached = np.asarray(model.forward_trunk(context=context, graph=hard, key=key).distogram_logits)
             np.testing.assert_allclose(attached, native, atol=2e-5, rtol=0)
-            loss = model.build_loss(context=context, loss=NativeContactLoss(8.0))
+            pocket_tokens = None
+            if pocket is not None:
+                from mosaic.small_molecule.pocket import map_protenix_pocket
+                pocket_tokens = map_protenix_pocket(context, pocket)
+                report.update(pocket_validation_status="passed", native_pocket_token_indices=list(pocket_tokens))
+            loss = model.build_loss(context=context, loss=NativeContactLoss(8.0, pocket_tokens))
             native_name = "contact"
         else:
             from mosaic.small_molecule.boltz2.bridge import AffinityWorker, affinity_loss
             if args.prepared is None or sha(args.prepared / "context.pt") != args.context_sha256:
                 raise ValueError("Fresh 25-slot Boltz context bytes differ")
+            if pocket is not None:
+                prepared = json.loads((args.prepared / "preparation.json").read_text())
+                if prepared.get("pocket_definition_sha256") != args.pocket_sha256 or prepared.get("pocket_pose_audit", {}).get("status") != "passed":
+                    raise ValueError("Boltz prepared pose lacks matching passed JQ1 pocket audit")
+                report.update(pocket_validation_status="passed", pocket_pose_audit=prepared["pocket_pose_audit"])
             worker = AffinityWorker([
                 args.worker_python, "-u", "-m", "mosaic.small_molecule.boltz2.worker",
                 "--context", str(args.prepared / "context.pt"), "--context-sha256", args.context_sha256,
@@ -113,6 +148,8 @@ def main():
             ], stderr=args.output / "worker.log")
             if worker.identity.get("n_atoms") != 25:
                 raise ValueError("Native worker does not expose 25 occupied slots")
+            if pocket is not None and (worker.identity.get("pocket_definition_sha256") != args.pocket_sha256 or worker.identity.get("diffusion_gradient") is not False):
+                raise ValueError("Worker lost pocket or detached pose binding")
             report.update(native_identity=worker.identity, model_digest=worker.identity["model_digest"], context_digest=worker.identity["context_digest"], context_file_sha256=args.context_sha256)
             loss, native_name = affinity_loss(worker), "affinity"
             native = worker.request("native_reference")["values"]
@@ -156,6 +193,9 @@ def main():
             "objective_mode": "native_plus_chemistry" if chemistry else "native_only",
             "objective_identity": {"model_digest": report["model_digest"], "context_digest": report["context_digest"], "native_name": native_name, "coefficient": 1.0, "n_atoms": 25, "scope": "whole-target contact, geometry-off" if arm == "protenix" else "fixed predicted pose, zero recycles, no MW correction"},
         }
+        if pocket is not None:
+            options["objective_identity"].update(pocket_definition_sha256=args.pocket_sha256,
+                diffusion_gradient=False, scope="JQ1 pocket-restricted contact, geometry-off" if arm == "protenix" else "JQ1-constrained frozen native pose, zero recycles, no MW correction")
         reference = json.loads(args.reference.read_text())["element_counts"]
         common = dict(prepare=prepare, spec=spec, reference=reference, key=key, step_size=0.03, max_backtracks=10)
         if args.mode == "validate":
@@ -226,6 +266,9 @@ def main():
         proofs = [{"path": str(p.resolve()), "sha256": sha(p)} for p in sorted(args.output.rglob("*")) if p.is_file() and p.suffix in (".json", ".npz", ".pt", ".eqx")]
         assessment = {k: report[k] for k in ("status", "config_sha256", "source_manifest_sha256", "model_digest", "context_digest", "initialization_sha256", "runtime_gate", "storage_projection")}
         assessment.update(arm=arm, n_atoms=25, proofs=proofs)
+        if pocket is not None:
+            assessment.update(pocket_definition_sha256=args.pocket_sha256,
+                pocket_validation_status=report["pocket_validation_status"], diffusion_gradient=False)
         if "context_files" in report:
             assessment["context_files"] = report["context_files"]
         write_json(args.output / "assessment.json", assessment)

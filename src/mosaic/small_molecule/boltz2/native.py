@@ -137,6 +137,12 @@ def validate_context(context):
     if context.get("version") != "mosaic-boltz-fixed-pose-v1":
         raise ValueError("Unknown prepared Boltz context")
     f, ai, ti = context["features"], context["atom_indices"], context["token_indices"]
+    if "pocket" in context and (
+        context["pocket"].get("pocket_pose_audit", {}).get("status") != "passed"
+        or context["pocket"].get("diffusion_gradient") is not False
+        or len(context["pocket"].get("pocket_definition_sha256", "")) != 64
+    ):
+        raise ValueError("Context lacks passed pocket/detached-pose identity")
     n = ai.numel()
     if (
         n not in (6, 25)

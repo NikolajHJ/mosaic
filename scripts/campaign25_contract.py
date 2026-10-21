@@ -12,6 +12,13 @@ MODEL_DIGESTS = {
     "boltz2": "395876da13ab6d5d175e6603db2118a82954c7c06484842fe2314dbd77a31a16",
 }
 
+POCKET_POLICY = {
+    "version": "brd4-jq1-heavy-neighborhood-v1", "pdb_id": "3MXF",
+    "radius_angstrom": 6.0, "anchor_author_residues": [81, 140],
+    "protenix_contact_cutoff_angstrom": 8.0, "boltz_anchor_max_distance_angstrom": 6.0,
+    "minimum_ligand_fraction_within_pocket": 0.5, "diffusion_gradient": False,
+}
+
 
 def verify_frozen_response(response, model_digest, context_digest):
     """Require exact frozen digests and a passed worker response.
@@ -35,8 +42,14 @@ def sha(path):
 
 
 def config25(config):
+    version = config.get("version")
+    pocket = version == "mosaic-brd4-jq1-25-three-arm-v1"
+    if version not in ("mosaic-brd4-25-three-arm-v1", "mosaic-brd4-jq1-25-three-arm-v1"):
+        raise ValueError("Unknown declared campaign version")
+    if config.get("pocket") != (POCKET_POLICY if pocket else None):
+        raise ValueError("Changed declared pocket protocol")
     expected = {
-        "version": "mosaic-brd4-25-three-arm-v1", "n_atoms": 25,
+        "version": version, "n_atoms": 25,
         "steps": 10000, "seed": 17, "initial_step_size": 0.03,
         "max_backtracks": 10, "pilot_steps": 10,
         "allocation_seconds": 82800, "element_js_weight": 0.0,
@@ -84,6 +97,18 @@ def verify_readiness(path, expected_sha, config_path, manifest):
         or assessment["model_digest"] != MODEL_DIGESTS["protenix" if config["arm"] == "protenix" else "boltz2"]
     ):
         raise ValueError("Native readiness does not certify this exact arm/configuration")
+    if config.get("pocket") is not None and (
+        len(assessment.get("pocket_definition_sha256", "")) != 64
+        or assessment.get("pocket_validation_status") != "passed"
+        or assessment.get("diffusion_gradient") is not False
+    ):
+        raise ValueError("Missing passed pocket/no-diffusion readiness binding")
+    if config.get("pocket") is not None and not any(
+        Path(p["path"]).name == "pocket_definition.json"
+        and p["sha256"] == assessment["pocket_definition_sha256"]
+        for p in assessment["proofs"]
+    ):
+        raise ValueError("Pocket definition bytes missing from native proofs")
     for proof in assessment["proofs"]:
         if sha(proof["path"]) != proof["sha256"]:
             raise ValueError("Native proof changed")

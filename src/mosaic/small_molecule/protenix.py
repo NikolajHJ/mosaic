@@ -19,6 +19,7 @@ from .features import (
     MODEL_ALIAS,
     bootstrap_native_assets,
     inject_graph,
+    geometry_off_native_features,
     native_cache_dir,
 )
 from .native_hook import HOOK_VERSION, UPSTREAM_REVISION, with_geometry_hook
@@ -116,6 +117,25 @@ class FrozenProtenixTiny(eqx.Module):
         logits = self.model.distogram_head(trunk.z)
         return MolecularTrunkOutput(
             distogram_logits=logits,
+            distogram_bins=native_distogram_bins(),
+            ligand_token_indices=context.ligand_token_indices,
+            protein_token_indices=context.protein_token_indices,
+            trunk_state=trunk,
+        )
+
+    @eqx.filter_jit
+    def forward_hard_geometry_off(self, *, context: PreparedContext, key):
+        """Independent hard native features with the same compiled trunk scope.
+
+        Comparing an eager FP32 trunk to a fused JIT trunk tests compilation
+        roundoff as well as the input bridge. This reference uses original hard
+        element/bond features and the explicit geometry-off mask, with no graph
+        injection, and compiles the full trunk/head like ``forward_trunk``.
+        The original forward parity tolerance remains unchanged.
+        """
+        _, trunk = _native_trunk(self.model, geometry_off_native_features(context), key)
+        return MolecularTrunkOutput(
+            distogram_logits=self.model.distogram_head(trunk.z),
             distogram_bins=native_distogram_bins(),
             ligand_token_indices=context.ligand_token_indices,
             protein_token_indices=context.protein_token_indices,

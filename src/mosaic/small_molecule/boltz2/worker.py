@@ -59,6 +59,8 @@ def main():
                 "optimized_output": "affinity_pred_value",
                 "recycling_steps": 0,
                 "n_atoms": int(context["atom_indices"].numel()),
+                **({"pocket_definition_sha256": context["pocket"]["pocket_definition_sha256"],
+                    "diffusion_gradient": False} if "pocket" in context else {}),
             }
         ),
         flush=True,

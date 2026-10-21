@@ -13,7 +13,7 @@ import subprocess
 import sys
 
 
-def snapshot(prediction, cache, fixture, output, n_atoms=6):
+def snapshot(prediction, cache, fixture, output, n_atoms=6, pocket_path=None):
     import numpy as np
     import torch
     from rdkit import Chem
@@ -120,6 +120,18 @@ def snapshot(prediction, cache, fixture, output, n_atoms=6):
         "seed_E": edges,
     }
     validate_context(context)
+    pocket_metadata = {}
+    if pocket_path is not None:
+        from ..pocket import audit_boltz_pose, validate_definition
+        pocket = validate_definition(json.loads(pocket_path.read_text()), json.loads(fixture.read_text()))
+        audit = audit_boltz_pose(tokenized, batch, pocket, ai.tolist())
+        (output.parent / "pocket_pose_audit.json").write_text(json.dumps(audit, indent=2) + "\n")
+        pocket_metadata = {"pocket_definition_sha256": file_digest(pocket_path), "pocket_pose_audit": audit,
+                           "diffusion_gradient": False}
+        context["pocket"] = pocket_metadata
+        if audit["status"] != "passed":
+            torch.save(context, output.with_name("context.failed.pt"))
+            raise ValueError("Native predicted pose failed the declared JQ1 pocket placement gate")
     torch.save(context, output)
     return {
         "status": "prepared",
@@ -139,6 +151,7 @@ def snapshot(prediction, cache, fixture, output, n_atoms=6):
         "frozen_fields": "coordinates, ref_pos, charge=0, atom names, crop, MSA, masks and all auxiliary fields",
         "prediction": str(prediction),
         "preparation_seed": 42,
+        **pocket_metadata,
     }
 
 
@@ -148,6 +161,7 @@ def main():
     parser.add_argument("--cache", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--n-atoms", type=int, choices=(6, 25), default=6)
+    parser.add_argument("--pocket", type=Path)
     args = parser.parse_args()
     if not os.environ.get("LSB_JOBID"):
         raise RuntimeError("Native preparation requires allocated DTU GPU")
@@ -176,6 +190,12 @@ def main():
         ],
         "properties": [{"affinity": {"binder": "L"}}],
     }
+    if args.pocket is not None:
+        from ..pocket import boltz_constraints, validate_definition
+        if args.n_atoms != 25:
+            raise ValueError("New JQ1 pocket protocol is scoped to fresh 25-slot runs")
+        pocket = validate_definition(json.loads(args.pocket.read_text()), fixture)
+        specification["constraints"] = boltz_constraints(pocket)
     source = args.output / "input.yaml"
     source.write_text(json.dumps(specification, indent=2) + "\n")  # JSON is valid YAML.
     command = [
@@ -206,11 +226,15 @@ def main():
         "--output_format",
         "mmcif",
     ]
+    if args.pocket is not None:
+        # Native inference-time pocket/physical potentials are used only while
+        # preparing this new pose. This process is outside molecular AD entirely.
+        command.append("--use_potentials")
     (args.output / "command.json").write_text(json.dumps(command))
     with (args.output / "prediction.log").open("w") as log:
         subprocess.run(command, check=True, stdout=log, stderr=subprocess.STDOUT)
     prediction = args.output / "native/boltz_results_input"
-    report = snapshot(prediction, args.cache, args.fixture, args.output / "context.pt", args.n_atoms)
+    report = snapshot(prediction, args.cache, args.fixture, args.output / "context.pt", args.n_atoms, args.pocket)
     (args.output / "preparation.json").write_text(json.dumps(report, indent=2) + "\n")
 
 

@@ -59,3 +59,14 @@ def test_chemistry_schedule_not_stretched_or_substituted():
     changed["repair_schedule"]["final"] = 5
     with pytest.raises(ValueError):
         contract.config25(changed)
+
+
+@pytest.mark.parametrize("arm", contract.ARMS)
+def test_new_pocket_configs_keep_the_same_budget_and_explicit_no_diffusion(arm):
+    c = json.loads((ROOT / f"examples/configs/brd4_jq1_25_{arm}_10000.json").read_text())
+    assert contract.config25(c) == c
+    assert c["pocket"] == contract.POCKET_POLICY and c["pocket"]["diffusion_gradient"] is False
+    changed = deepcopy(c)
+    changed["pocket"]["diffusion_gradient"] = True
+    with pytest.raises(ValueError, match="pocket"):
+        contract.config25(changed)
