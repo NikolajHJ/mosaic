@@ -1,0 +1,33 @@
+
+When connecting from _outside_ of DTU (and not using DTU-VPN) one is 
+required to authenticate with a ssh-key + ssh-key-keyphrase + DTU-password.
+
+From inside of DTU (or connecting via DTU-VPN) one can also connect 
+with password or ssh-key.
+
+Info page on SSH: https://www.hpc.dtu.dk/?page_id=4317
+
+---
+For ThinLinc users: 
+Please make sure that your TL client is at least version 4.16 - else you 
+cannot connect to this system!
+
+This is not an error-message, it's just a way to give you some information. 
+Click 'Close' to continue ...
+---
+
+Info page on the system update 08/2024: https://www.hpc.dtu.dk/?page_id=5209
+
+---
+
+Loaded dependency [python3/3.12.11]: sqlite3/3.50.1
+Loaded dependency [python3/3.12.11]: gcc/14.3.0-binutils-2.44
+Loaded module: python3/3.12.11
+
+Loading python3/3.12.11
+  Loading requirement: sqlite3/3.50.1 gcc/14.3.0-binutils-2.44
+Traceback (most recent call last):
+  File "<stdin>", line 4, in <module>
+  File "/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-storage-02/source/scripts/fixed25_split_storage.py", line 102, in check_cpu_storage
+    raise ValueError('Storage-adoption CPU allowance plus reserve exceeds fresh work3 budget')
+ValueError: Storage-adoption CPU allowance plus reserve exceeds fresh work3 budget

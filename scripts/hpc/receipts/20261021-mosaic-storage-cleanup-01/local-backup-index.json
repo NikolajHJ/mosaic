@@ -1,0 +1,640 @@
+{
+  "created_utc": "2026-10-21T17:54:43.636653+00:00",
+  "scope": "Local standard-library byte/hash/metadata inventory only; no remote deletion authorization from this index, remote exact hash and dependency exclusion remain required",
+  "entries": [
+    {
+      "kind": "source_upload_archive",
+      "remote_path": "/work3/s234818/mosaic/20261021-brd4-25-01.tar.gz",
+      "local_archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\releases\\20261021-brd4-25-01\\source.tar.gz",
+      "bytes": 39413811,
+      "sha256": "c625c367e34d2d589edc11629d1bf65aac2642da37b54ad2d4bee53622864d44",
+      "receipt": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\releases\\20261021-brd4-25-01\\release_receipt.json",
+      "source_manifest": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\releases\\20261021-brd4-25-01\\source_manifest.json",
+      "source_manifest_sha256": "4016584825436c9c597307ac51eddb242ac50885352e9c06841da2e1e201ee9c",
+      "local_receipt_archive_and_manifest_match": true,
+      "mapping_basis": "remote inventory basename/size; local original receipt and fresh hash; remote exact hash still required",
+      "protected_current_source": false
+    },
+    {
+      "kind": "source_upload_archive",
+      "remote_path": "/work3/s234818/mosaic/20261021-brd4-25-02.tar.gz",
+      "local_archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\releases\\20261021-brd4-25-02\\source.tar.gz",
+      "bytes": 39417267,
+      "sha256": "1f9786dff5a78af8f751d50d475d9f980f91ce75fa168b3936c94acaa7570be1",
+      "receipt": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\releases\\20261021-brd4-25-02\\release_receipt.json",
+      "source_manifest": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\releases\\20261021-brd4-25-02\\source_manifest.json",
+      "source_manifest_sha256": "68c5ad0d2ee4ab9f95c30dbbee0cec489000a70aafea179ad7711744aecc3625",
+      "local_receipt_archive_and_manifest_match": true,
+      "mapping_basis": "remote inventory basename/size; local original receipt and fresh hash; remote exact hash still required",
+      "protected_current_source": false
+    },
+    {
+      "kind": "source_upload_archive",
+      "remote_path": "/work3/s234818/mosaic/20261021-brd4-25-03.tar.gz",
+      "local_archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\releases\\20261021-brd4-25-03\\source.tar.gz",
+      "bytes": 39420362,
+      "sha256": "bfc6ad6f0af3268551258de55ca1bd196bb7ff35f6f690a305bf64a0d34fcff7",
+      "receipt": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\releases\\20261021-brd4-25-03\\release_receipt.json",
+      "source_manifest": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\releases\\20261021-brd4-25-03\\source_manifest.json",
+      "source_manifest_sha256": "1b60f14134c607b2a55cd93dbb289ca41c45281380984694d53aaa690772056b",
+      "local_receipt_archive_and_manifest_match": true,
+      "mapping_basis": "remote inventory basename/size; local original receipt and fresh hash; remote exact hash still required",
+      "protected_current_source": false
+    },
+    {
+      "kind": "source_upload_archive",
+      "remote_path": "/work3/s234818/mosaic/20261021-brd4-25-04.tar.gz",
+      "local_archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\releases\\20261021-brd4-25-04\\source.tar.gz",
+      "bytes": 39425961,
+      "sha256": "b62ef75f6ede08fbed8854ff4efe167571be6eb050c1b222278e19e15b3dc879",
+      "receipt": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\releases\\20261021-brd4-25-04\\release_receipt.json",
+      "source_manifest": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\releases\\20261021-brd4-25-04\\source_manifest.json",
+      "source_manifest_sha256": "e22aa03b95e630aae7695b0908a5d20eb26ff7f5ee9b79987c098ae86efb3e79",
+      "local_receipt_archive_and_manifest_match": true,
+      "mapping_basis": "remote inventory basename/size; local original receipt and fresh hash; remote exact hash still required",
+      "protected_current_source": false
+    },
+    {
+      "kind": "source_upload_archive",
+      "remote_path": "/work3/s234818/mosaic/20261021-brd4-25-release-05.tar.gz",
+      "local_archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\releases\\20261021-brd4-25-release-05\\source.tar.gz",
+      "bytes": 10122,
+      "sha256": "df08c32b63923ccdca3b3a3b48e5f8f3d948234863b7491230f25dd6bb181900",
+      "receipt": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\releases\\20261021-brd4-25-release-05\\release_receipt.json",
+      "source_manifest": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\releases\\20261021-brd4-25-release-05\\source_manifest.json",
+      "source_manifest_sha256": "56478fa775306bb9e65070805bf3fe9b4cc21298ba9ae7e03078b15fbd4fa156",
+      "local_receipt_archive_and_manifest_match": true,
+      "mapping_basis": "remote inventory basename/size; local original receipt and fresh hash; remote exact hash still required",
+      "protected_current_source": false
+    },
+    {
+      "kind": "source_upload_archive",
+      "remote_path": "/work3/s234818/mosaic/20261021-brd4-25-release-06.tar.gz",
+      "local_archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\releases\\20261021-brd4-25-release-06\\source.tar.gz",
+      "bytes": 10164,
+      "sha256": "fe4c25379dce26b7803712a6e41eb260a061347a2db103dd4be5488fc339cdae",
+      "receipt": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\releases\\20261021-brd4-25-release-06\\release_receipt.json",
+      "source_manifest": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\releases\\20261021-brd4-25-release-06\\source_manifest.json",
+      "source_manifest_sha256": "396bcec01579aabe50646d4a78b50e20cd344c273a44aa275f11e75a8f79ff04",
+      "local_receipt_archive_and_manifest_match": true,
+      "mapping_basis": "remote inventory basename/size; local original receipt and fresh hash; remote exact hash still required",
+      "protected_current_source": false
+    },
+    {
+      "kind": "source_upload_archive",
+      "remote_path": "/work3/s234818/mosaic/20261021-brd4-25-release-07.tar.gz",
+      "local_archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\releases\\20261021-brd4-25-release-07\\source.tar.gz",
+      "bytes": 10105,
+      "sha256": "61d23c4d5f6c7e34b59cdfec60947c1a001c838994fd175d5dc07a5a44c8127b",
+      "receipt": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\releases\\20261021-brd4-25-release-07\\release_receipt.json",
+      "source_manifest": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\releases\\20261021-brd4-25-release-07\\source_manifest.json",
+      "source_manifest_sha256": "80274d8d5f066af3e364f0356182ab0aa124302613800aa8b68fe3ed3cdec964",
+      "local_receipt_archive_and_manifest_match": true,
+      "mapping_basis": "remote inventory basename/size; local original receipt and fresh hash; remote exact hash still required",
+      "protected_current_source": false
+    },
+    {
+      "kind": "source_upload_archive",
+      "remote_path": "/work3/s234818/mosaic/20261021-brd4-25-repair-timing-01.tar.gz",
+      "local_archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\releases\\20261021-brd4-25-repair-timing-01\\source.tar.gz",
+      "bytes": 3852,
+      "sha256": "1776307af4e202d8b805c8c8c272902863ecb7abee30f61132288ba10af313f6",
+      "receipt": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\releases\\20261021-brd4-25-repair-timing-01\\release_receipt.json",
+      "source_manifest": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\releases\\20261021-brd4-25-repair-timing-01\\source_manifest.json",
+      "source_manifest_sha256": "04d4fd4eaaa8e07c02c58a04b9f15c02e0a47fba9a9ec5dbb1e182084c641100",
+      "local_receipt_archive_and_manifest_match": true,
+      "mapping_basis": "remote inventory basename/size; local original receipt and fresh hash; remote exact hash still required",
+      "protected_current_source": false
+    },
+    {
+      "kind": "source_upload_archive",
+      "remote_path": "/work3/s234818/mosaic/brd4-5000-20261016-01.tar.gz",
+      "local_archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\releases\\brd4-5000-20261016-01\\source.tar.gz",
+      "bytes": 38947610,
+      "sha256": "b3011e5be4502c383567c1f6253ae3aa774cf05fa841234c09912f428112a14f",
+      "receipt": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\releases\\brd4-5000-20261016-01\\release_receipt.json",
+      "source_manifest": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\releases\\brd4-5000-20261016-01\\source_manifest.json",
+      "source_manifest_sha256": "0d020949dc2430c294197bae4fe4a65e53dcde7f8acb1adc387057dfcc73bd89",
+      "local_receipt_archive_and_manifest_match": true,
+      "mapping_basis": "remote inventory basename/size; local original receipt and fresh hash; remote exact hash still required",
+      "protected_current_source": false
+    },
+    {
+      "kind": "source_upload_archive",
+      "remote_path": "/work3/s234818/mosaic/brd4-5000-20261016-02.tar.gz",
+      "local_archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\releases\\brd4-5000-20261016-02\\source.tar.gz",
+      "bytes": 38951709,
+      "sha256": "cd14cc6377e8422a8abb12b639f8c9a34edf989fe097332e958bf60402b5e2c5",
+      "receipt": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\releases\\brd4-5000-20261016-02\\release_receipt.json",
+      "source_manifest": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\releases\\brd4-5000-20261016-02\\source_manifest.json",
+      "source_manifest_sha256": "80bb2413904b955cc4ebc25a0c01e1940fd185b3bddfb6cbd3afed76ad75a4f2",
+      "local_receipt_archive_and_manifest_match": true,
+      "mapping_basis": "remote inventory basename/size; local original receipt and fresh hash; remote exact hash still required",
+      "protected_current_source": false
+    },
+    {
+      "kind": "source_upload_archive",
+      "remote_path": "/work3/s234818/mosaic/brd4-5000-20261016-03.tar.gz",
+      "local_archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\releases\\brd4-5000-20261016-03\\source.tar.gz",
+      "bytes": 38961260,
+      "sha256": "13bf30466bc786338c88df4b615f0acf44ebb7a897b8dcece84a610b452c9f6d",
+      "receipt": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\releases\\brd4-5000-20261016-03\\release_receipt.json",
+      "source_manifest": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\releases\\brd4-5000-20261016-03\\source_manifest.json",
+      "source_manifest_sha256": "d6d4bbc17545df536e8dcea70f50d863f966b67ec25fb0a3b3f04f86739a9f9a",
+      "local_receipt_archive_and_manifest_match": true,
+      "mapping_basis": "remote inventory basename/size; local original receipt and fresh hash; remote exact hash still required",
+      "protected_current_source": false
+    },
+    {
+      "kind": "source_upload_archive",
+      "remote_path": "/work3/s234818/mosaic/brd4-canonical-diffuse-20261016-01.tar.gz",
+      "local_archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\releases\\brd4-canonical-diffuse-20261016-01\\source.tar.gz",
+      "bytes": 38989767,
+      "sha256": "f6efb3c2c8889e6f792482cd1d666c38631afe9b2bf78bcda5ba942e81f5e4c9",
+      "receipt": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\releases\\brd4-canonical-diffuse-20261016-01\\release_receipt.json",
+      "source_manifest": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\releases\\brd4-canonical-diffuse-20261016-01\\source_manifest.json",
+      "source_manifest_sha256": "421213580f84a038cde5e47bb4048a659bfa4daee46645deccbb2e7568d7ead4",
+      "local_receipt_archive_and_manifest_match": true,
+      "mapping_basis": "remote inventory basename/size; local original receipt and fresh hash; remote exact hash still required",
+      "protected_current_source": false
+    },
+    {
+      "kind": "source_upload_archive",
+      "remote_path": "/work3/s234818/mosaic/brd4-combined-report-20261016-01.tar.gz",
+      "local_archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\releases\\brd4-combined-report-20261016-01\\source.tar.gz",
+      "bytes": 38981862,
+      "sha256": "e5b047d437da7d1bfb9c23d55d5b20be6c12f147289188132aca62daa9b6b45c",
+      "receipt": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\releases\\brd4-combined-report-20261016-01\\release_receipt.json",
+      "source_manifest": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\releases\\brd4-combined-report-20261016-01\\source_manifest.json",
+      "source_manifest_sha256": "40f9864f21f9c03c811492a15e5a7e2b3dee9e2f6b597ec3909f343dbeaf2075",
+      "local_receipt_archive_and_manifest_match": true,
+      "mapping_basis": "remote inventory basename/size; local original receipt and fresh hash; remote exact hash still required",
+      "protected_current_source": false
+    },
+    {
+      "kind": "source_upload_archive",
+      "remote_path": "/work3/s234818/mosaic/brd4-noisy-uniform-5000-20261016-01.tar.gz",
+      "local_archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\releases\\brd4-noisy-uniform-5000-20261016-01\\source.tar.gz",
+      "bytes": 38980076,
+      "sha256": "4d36c3d8d0bb945553eca3e9adf5c53fce754bdf832c896c09866030e51cde21",
+      "receipt": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\releases\\brd4-noisy-uniform-5000-20261016-01\\release_receipt.json",
+      "source_manifest": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\releases\\brd4-noisy-uniform-5000-20261016-01\\source_manifest.json",
+      "source_manifest_sha256": "ea4ceab78cb7605fdd715cb79bebacefc03ec8c8a5947834fa58540d5028c02e",
+      "local_receipt_archive_and_manifest_match": true,
+      "mapping_basis": "remote inventory basename/size; local original receipt and fresh hash; remote exact hash still required",
+      "protected_current_source": false
+    },
+    {
+      "kind": "source_upload_archive",
+      "remote_path": "/work3/s234818/mosaic/brd4-uniform-5000-20261016-01.tar.gz",
+      "local_archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\releases\\brd4-uniform-5000-20261016-01\\source.tar.gz",
+      "bytes": 38973485,
+      "sha256": "058c9dd851e33657897ed3f8c442e94cde6f3c4697c38518a98eab4810dd098c",
+      "receipt": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\releases\\brd4-uniform-5000-20261016-01\\release_receipt.json",
+      "source_manifest": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\releases\\brd4-uniform-5000-20261016-01\\source_manifest.json",
+      "source_manifest_sha256": "cefff19ac9b68d4b546427565b1036fc625c0cde42f22a5157116c930d8252fd",
+      "local_receipt_archive_and_manifest_match": true,
+      "mapping_basis": "remote inventory basename/size; local original receipt and fresh hash; remote exact hash still required",
+      "protected_current_source": false
+    },
+    {
+      "kind": "source_upload_archive",
+      "remote_path": "/work3/s234818/mosaic/known-ligand-1000-20261016-02.tar.gz",
+      "local_archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\releases\\known-ligand-1000-20261016-02\\source.tar.gz",
+      "bytes": 38863153,
+      "sha256": "ff8dd32ace4d5b75b283dc58a65f9749b5e1b541388eb91b215a5fae463a8d35",
+      "receipt": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\releases\\known-ligand-1000-20261016-02\\release_receipt.json",
+      "source_manifest": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\releases\\known-ligand-1000-20261016-02\\source_manifest.json",
+      "source_manifest_sha256": "4060ecaae546339cab71991ba6f42813c996451540eacdc9218b36e071c79cc1",
+      "local_receipt_archive_and_manifest_match": true,
+      "mapping_basis": "remote inventory basename/size; local original receipt and fresh hash; remote exact hash still required",
+      "protected_current_source": false
+    },
+    {
+      "kind": "source_upload_archive",
+      "remote_path": "/work3/s234818/mosaic/known-ligand-1000-20261016-03.tar.gz",
+      "local_archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\releases\\known-ligand-1000-20261016-03\\source.tar.gz",
+      "bytes": 38868328,
+      "sha256": "6979ab616a55432888bc67237c490f475a245e7a3bc5c4fd3fb31110cf310b68",
+      "receipt": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\releases\\known-ligand-1000-20261016-03\\release_receipt.json",
+      "source_manifest": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\releases\\known-ligand-1000-20261016-03\\source_manifest.json",
+      "source_manifest_sha256": "83f62cdb6d0265b09b033663f9b30712b8d319c6410a27dae7fe003256ab9507",
+      "local_receipt_archive_and_manifest_match": true,
+      "mapping_basis": "remote inventory basename/size; local original receipt and fresh hash; remote exact hash still required",
+      "protected_current_source": false
+    },
+    {
+      "kind": "source_upload_archive",
+      "remote_path": "/work3/s234818/mosaic/known-ligand-1000-20261016-04.tar.gz",
+      "local_archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\releases\\known-ligand-1000-20261016-04\\source.tar.gz",
+      "bytes": 38872951,
+      "sha256": "9b7aaf4253f9380b694eae353e6ba7fd91aaccf26aea68245a11ecdf96c7c04a",
+      "receipt": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\releases\\known-ligand-1000-20261016-04\\release_receipt.json",
+      "source_manifest": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\releases\\known-ligand-1000-20261016-04\\source_manifest.json",
+      "source_manifest_sha256": "8df25aaa80a129dd56ef9fdbf8e12a2f7c4f37bd8668d72f172e544d205fb990",
+      "local_receipt_archive_and_manifest_match": true,
+      "mapping_basis": "remote inventory basename/size; local original receipt and fresh hash; remote exact hash still required",
+      "protected_current_source": false
+    },
+    {
+      "kind": "source_upload_archive",
+      "remote_path": "/work3/s234818/mosaic/known-ligand-1000-20261016-05.tar.gz",
+      "local_archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\releases\\known-ligand-1000-20261016-05\\source.tar.gz",
+      "bytes": 38880357,
+      "sha256": "eae3eb9109ba89e42bde1c262340abe536495f987f156bc73dd34150aa4fdecb",
+      "receipt": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\releases\\known-ligand-1000-20261016-05\\release_receipt.json",
+      "source_manifest": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\releases\\known-ligand-1000-20261016-05\\source_manifest.json",
+      "source_manifest_sha256": "544be74174b9568bb712e866483f4cd054400d80fab3ca880561267d3b23373b",
+      "local_receipt_archive_and_manifest_match": true,
+      "mapping_basis": "remote inventory basename/size; local original receipt and fresh hash; remote exact hash still required",
+      "protected_current_source": false
+    },
+    {
+      "kind": "source_upload_archive",
+      "remote_path": "/work3/s234818/mosaic/known-ligand-1000-20261016-06.tar.gz",
+      "local_archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\releases\\known-ligand-1000-20261016-06\\source.tar.gz",
+      "bytes": 38888106,
+      "sha256": "5937111ebd0f63cd3035e916237103af00b21941bed67c599b37cfa543edcc38",
+      "receipt": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\releases\\known-ligand-1000-20261016-06\\release_receipt.json",
+      "source_manifest": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\releases\\known-ligand-1000-20261016-06\\source_manifest.json",
+      "source_manifest_sha256": "1a9ae1fd0f4437571b2d2ac4fbb37fef0fce424330267f4a1fd6a24621269ef0",
+      "local_receipt_archive_and_manifest_match": true,
+      "mapping_basis": "remote inventory basename/size; local original receipt and fresh hash; remote exact hash still required",
+      "protected_current_source": false
+    },
+    {
+      "kind": "source_upload_archive",
+      "remote_path": "/work3/s234818/mosaic/known-ligand-1000-20261016-07.tar.gz",
+      "local_archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\releases\\known-ligand-1000-20261016-07\\source.tar.gz",
+      "bytes": 38889473,
+      "sha256": "c179e4839fc80e258b18551a746188ec0f961fdae47b18e4362019b994b5e0c6",
+      "receipt": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\releases\\known-ligand-1000-20261016-07\\release_receipt.json",
+      "source_manifest": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\releases\\known-ligand-1000-20261016-07\\source_manifest.json",
+      "source_manifest_sha256": "05cd383db826477b59389c38d99870ae55f3a6acd46667bc8c0ee7b9301050c0",
+      "local_receipt_archive_and_manifest_match": true,
+      "mapping_basis": "remote inventory basename/size; local original receipt and fresh hash; remote exact hash still required",
+      "protected_current_source": false
+    },
+    {
+      "kind": "source_upload_archive",
+      "remote_path": "/work3/s234818/mosaic/20261021-brd4-jq1-25-01.tar.gz",
+      "local_archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261021-brd4-jq1-25\\source01\\source.tar.gz",
+      "bytes": 39462299,
+      "sha256": "5e4bf8601f1b09e244a7763dc6c6d8af5ddc76bfd3490830993d7cfd0b2c0906",
+      "receipt": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261021-brd4-jq1-25\\source01\\release_receipt.json",
+      "source_manifest": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261021-brd4-jq1-25\\source01\\source_manifest.json",
+      "source_manifest_sha256": "2503c2382b429ec6b79d7a256b2a2fccd09f7739a609e97a876d604d00dc063c",
+      "local_receipt_archive_and_manifest_match": true,
+      "mapping_basis": "remote inventory basename/size; local original receipt and fresh hash; remote exact hash still required",
+      "protected_current_source": false
+    },
+    {
+      "kind": "source_upload_archive",
+      "remote_path": "/work3/s234818/mosaic/20261021-brd4-jq1-25-protenix-02.tar.gz",
+      "local_archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261021-brd4-jq1-25\\source02\\source.tar.gz",
+      "bytes": 39465640,
+      "sha256": "52caceb014e66749d55ad85950e8cacdddd76e2ebeb5feaac6b975dec5f54b8a",
+      "receipt": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261021-brd4-jq1-25\\source02\\release_receipt.json",
+      "source_manifest": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261021-brd4-jq1-25\\source02\\source_manifest.json",
+      "source_manifest_sha256": "40ab2d4532c477b5074d6631587ae15188941d5167016b7421f993257a064438",
+      "local_receipt_archive_and_manifest_match": true,
+      "mapping_basis": "remote inventory basename/size; local original receipt and fresh hash; remote exact hash still required",
+      "protected_current_source": false
+    },
+    {
+      "kind": "source_upload_archive",
+      "remote_path": "/work3/s234818/mosaic/20261021-brd4-jq1-25-fixed-01.tar.gz",
+      "local_archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261021-brd4-jq1-25-fixed-01\\source01\\source.tar.gz",
+      "bytes": 39583098,
+      "sha256": "ad7492baed5193abaa632810694c86e2ed29455cb5c6bd136b276cd59eb63e68",
+      "receipt": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261021-brd4-jq1-25-fixed-01\\source01\\release_receipt.json",
+      "source_manifest": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261021-brd4-jq1-25-fixed-01\\source01\\source_manifest.json",
+      "source_manifest_sha256": "dc4ac68d1818038ba177241311aecf62072a065ef147356186f1f49eba2d20f3",
+      "local_receipt_archive_and_manifest_match": true,
+      "mapping_basis": "remote inventory basename/size; local original receipt and fresh hash; remote exact hash still required",
+      "protected_current_source": false
+    },
+    {
+      "kind": "source_upload_archive",
+      "remote_path": "/work3/s234818/mosaic/20261021-brd4-jq1-25-fixed-02.tar.gz",
+      "local_archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261021-brd4-jq1-25-fixed-02\\source02\\source.tar.gz",
+      "bytes": 39597594,
+      "sha256": "c024ac03ddcf6091e35f1a666117194cd70b05024ee4563c6d8c965d75ed5798",
+      "receipt": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261021-brd4-jq1-25-fixed-02\\source02\\release_receipt.json",
+      "source_manifest": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261021-brd4-jq1-25-fixed-02\\source02\\source_manifest.json",
+      "source_manifest_sha256": "1e3a8a21e2fa68e24d1c9229238999c42a4a9b44bcc78344e73e188c87d1ee64",
+      "local_receipt_archive_and_manifest_match": true,
+      "mapping_basis": "remote inventory basename/size; local original receipt and fresh hash; remote exact hash still required",
+      "protected_current_source": true
+    },
+    {
+      "kind": "source_upload_archive",
+      "remote_path": "/work3/s234818/mosaic/20261021-brd4-jq1-25-protenix-lr03-01.tar.gz",
+      "local_archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261021-brd4-jq1-25-protenix-lr03-01\\source01\\source.tar.gz",
+      "bytes": 39555775,
+      "sha256": "8c50ef45cf1d60d90b380f21e39aa41cebd95fa6aefd01c0fe5e107fde68ba5c",
+      "receipt": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261021-brd4-jq1-25-protenix-lr03-01\\source01\\release_receipt.json",
+      "source_manifest": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261021-brd4-jq1-25-protenix-lr03-01\\source01\\source_manifest.json",
+      "source_manifest_sha256": "d5c1bf07868a6ef8f3c1a96a24afee11b76c8fb2affe334fb924d0a38b7849a0",
+      "local_receipt_archive_and_manifest_match": true,
+      "mapping_basis": "remote inventory basename/size; local original receipt and fresh hash; remote exact hash still required",
+      "protected_current_source": false
+    },
+    {
+      "kind": "source_upload_archive",
+      "remote_path": "/work3/s234818/mosaic/20261021-brd4-jq1-25-report-01.tar.gz",
+      "local_archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261021-brd4-jq1-25-report\\source01\\source.tar.gz",
+      "bytes": 39494684,
+      "sha256": "58bb4bfc075d2884974e7df56e996561752601a9770ebb9457144b4b7153143d",
+      "receipt": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261021-brd4-jq1-25-report\\source01\\release_receipt.json",
+      "source_manifest": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261021-brd4-jq1-25-report\\source01\\source_manifest.json",
+      "source_manifest_sha256": "16099e18d8555f71c866c95bdf7da2bb68bbd459ddace11050bd40ca039c3f4b",
+      "local_receipt_archive_and_manifest_match": true,
+      "mapping_basis": "remote inventory basename/size; local original receipt and fresh hash; remote exact hash still required",
+      "protected_current_source": false
+    },
+    {
+      "kind": "source_upload_archive",
+      "remote_path": "/work3/s234818/mosaic/20261021-brd4-jq1-25-report-02.tar.gz",
+      "local_archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261021-brd4-jq1-25-report\\source02\\source.tar.gz",
+      "bytes": 39508302,
+      "sha256": "f6608dd46584f8f7c0cbac21d41677555e13f98b74a86b94a93df11afce39ceb",
+      "receipt": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261021-brd4-jq1-25-report\\source02\\release_receipt.json",
+      "source_manifest": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261021-brd4-jq1-25-report\\source02\\source_manifest.json",
+      "source_manifest_sha256": "cff9a2fd0a1ee7b2b1e3fb53d68ee4a46bee9d1fa453506684d7cc7bbfeb75e0",
+      "local_receipt_archive_and_manifest_match": true,
+      "mapping_basis": "remote inventory basename/size; local original receipt and fresh hash; remote exact hash still required",
+      "protected_current_source": false
+    },
+    {
+      "kind": "source_upload_archive",
+      "remote_path": "/work3/s234818/mosaic/20261021-brd4-jq1-25-report-03.tar.gz",
+      "local_archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261021-brd4-jq1-25-report\\source03\\source.tar.gz",
+      "bytes": 39510050,
+      "sha256": "3434ab4cabbac75441adfbf8be7d50fdbc5381d0740bf13c0ce92244076891e0",
+      "receipt": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261021-brd4-jq1-25-report\\source03\\release_receipt.json",
+      "source_manifest": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261021-brd4-jq1-25-report\\source03\\source_manifest.json",
+      "source_manifest_sha256": "3b1ba56f8ddd0dc163333d9dabccd1119e323553a160a0e7b6b41790e73d7252",
+      "local_receipt_archive_and_manifest_match": true,
+      "mapping_basis": "remote inventory basename/size; local original receipt and fresh hash; remote exact hash still required",
+      "protected_current_source": false
+    },
+    {
+      "kind": "source_upload_archive",
+      "remote_path": "/work3/s234818/mosaic/20261021-brd4-jq1-25-report-04.tar.gz",
+      "local_archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261021-brd4-jq1-25-report\\source04\\source.tar.gz",
+      "bytes": 39518412,
+      "sha256": "d1f13f8c440948cb003e3185d3a8daaf3b957985941799d2248b2bce70e57601",
+      "receipt": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261021-brd4-jq1-25-report\\source04\\release_receipt.json",
+      "source_manifest": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261021-brd4-jq1-25-report\\source04\\source_manifest.json",
+      "source_manifest_sha256": "5c3f123748f573dcb5e3d4532659441fc6f5666a1768461a459c94cf208ba31a",
+      "local_receipt_archive_and_manifest_match": true,
+      "mapping_basis": "remote inventory basename/size; local original receipt and fresh hash; remote exact hash still required",
+      "protected_current_source": false
+    }
+  ],
+  "archive_member_coverage": [
+    {
+      "archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261016-carbon-chain-500\\20261016-gradient-evidence-carbon-chain-500-01.tar.gz",
+      "bytes": 2020603152,
+      "archive_sha256": "dc1e1d948c99d487f5c06897964037cd2130a983f003ad4fc1643d996bad14ba",
+      "embedded_manifest_sha256": "5f56f2d6ceccc44bbba4b1f53dad227a6feef8186a6cec80e7b5b5c36413fffd",
+      "manifest": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261016-carbon-chain-500\\20261016-gradient-evidence-carbon-chain-500-01\\evidence_manifest.json",
+      "declared_files": 4619,
+      "verified_embedded_member_files": 4619,
+      "actual_extra_files": [],
+      "embedded_manifest_exact_local_bytes": true,
+      "status": "passed",
+      "path_mapping": "Strip runs/ when present; then map relative run name under /work3/s234818/mosaic/runs/; non-run top-level scheduler/quota helpers are not raw remote files",
+      "groups": {
+        "job-29735858.txt": {
+          "files": 1,
+          "bytes": 3682
+        },
+        "job-29735875.txt": {
+          "files": 1,
+          "bytes": 3802
+        },
+        "job-29735880.txt": {
+          "files": 1,
+          "bytes": 2781
+        },
+        "job-29735926.txt": {
+          "files": 1,
+          "bytes": 3798
+        },
+        "job-29735927.txt": {
+          "files": 1,
+          "bytes": 3482
+        },
+        "quota-after.txt": {
+          "files": 1,
+          "bytes": 2003
+        },
+        "runs/20261016-carbon-chain-500-01": {
+          "files": 3054,
+          "bytes": 1356472382
+        },
+        "runs/20261016-carbon-chain-500-mix50-01": {
+          "files": 4,
+          "bytes": 5511
+        },
+        "runs/20261016-carbon-chain-500-mix50-02": {
+          "files": 1534,
+          "bytes": 677586730
+        },
+        "runs/20261016-carbon-chain-500-report-02": {
+          "files": 21,
+          "bytes": 44476355
+        }
+      },
+      "scope": "Streaming archive-member byte/hash and safe-path verification only; no model/numerical work, no remote deletion",
+      "archive_bytes_rehashed_utc": "2026-10-21T17:56:32.270943+00:00",
+      "remote_archive_path": "/work3/s234818/mosaic/runs/20261016-gradient-evidence-carbon-chain-500-01.tar.gz",
+      "remote_run_group_roots": {
+        "runs/20261016-carbon-chain-500-01": "/work3/s234818/mosaic/runs/20261016-carbon-chain-500-01",
+        "runs/20261016-carbon-chain-500-mix50-01": "/work3/s234818/mosaic/runs/20261016-carbon-chain-500-mix50-01",
+        "runs/20261016-carbon-chain-500-mix50-02": "/work3/s234818/mosaic/runs/20261016-carbon-chain-500-mix50-02",
+        "runs/20261016-carbon-chain-500-report-02": "/work3/s234818/mosaic/runs/20261016-carbon-chain-500-report-02"
+      }
+    },
+    {
+      "archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261016-known-ligand-1000\\download-03\\20261016-known-ligand-1000-evidence-02.tar.gz",
+      "bytes": 795141544,
+      "archive_sha256": "cfe36ec2176432a26b9923cda0526db1cf5a3c657219599e419633995574b96f",
+      "embedded_manifest_sha256": "f3fe33ced3ad9be008dc38dc9fe1f397f3d075a4e071e445469995a25c5b090a",
+      "manifest": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261016-known-ligand-1000\\download-03\\20261016-known-ligand-1000-evidence-02\\evidence_manifest.json",
+      "declared_files": 15775,
+      "verified_embedded_member_files": 15775,
+      "actual_extra_files": [],
+      "embedded_manifest_exact_local_bytes": true,
+      "status": "passed",
+      "path_mapping": "Strip runs/ when present; then map relative run name under /work3/s234818/mosaic/runs/; non-run top-level scheduler/quota helpers are not raw remote files",
+      "groups": {
+        "20261016-known-ligand-readiness-01": {
+          "files": 1473,
+          "bytes": 26244142
+        },
+        "20261016-known-ligand-pilot-01": {
+          "files": 2373,
+          "bytes": 404075464
+        },
+        "20261016-known-ligand-assessment-01": {
+          "files": 56,
+          "bytes": 1248290
+        },
+        "20261016-known-ligand-assessment-02": {
+          "files": 423,
+          "bytes": 15394745
+        },
+        "20261016-known-ligand-1000-01": {
+          "files": 10003,
+          "bytes": 411453039
+        },
+        "20261016-known-ligand-1000-report-01": {
+          "files": 421,
+          "bytes": 62658893
+        },
+        "20261016-known-ligand-collection-smoke-01": {
+          "files": 55,
+          "bytes": 1381824
+        },
+        "20261016-known-ligand-1000-evidence-01": {
+          "files": 53,
+          "bytes": 1349032
+        },
+        "20261016-known-ligand-hard-controls-01": {
+          "files": 795,
+          "bytes": 40623999
+        },
+        "20261016-known-ligand-controls-report-01": {
+          "files": 57,
+          "bytes": 41158120
+        },
+        "20261016-known-ligand-1000-evidence-02": {
+          "files": 53,
+          "bytes": 1346763
+        },
+        "packaging-preflight": {
+          "files": 2,
+          "bytes": 2619
+        },
+        "scheduler": {
+          "files": 11,
+          "bytes": 23024
+        }
+      },
+      "scope": "Streaming archive-member byte/hash and safe-path verification only; no model/numerical work, no remote deletion",
+      "archive_bytes_rehashed_utc": "2026-10-21T17:56:33.080348+00:00",
+      "remote_archive_path": "/work3/s234818/mosaic/runs/20261016-known-ligand-1000-evidence-02.tar.gz",
+      "remote_run_group_roots": {
+        "20261016-known-ligand-readiness-01": "/work3/s234818/mosaic/runs/20261016-known-ligand-readiness-01",
+        "20261016-known-ligand-pilot-01": "/work3/s234818/mosaic/runs/20261016-known-ligand-pilot-01",
+        "20261016-known-ligand-assessment-01": "/work3/s234818/mosaic/runs/20261016-known-ligand-assessment-01",
+        "20261016-known-ligand-assessment-02": "/work3/s234818/mosaic/runs/20261016-known-ligand-assessment-02",
+        "20261016-known-ligand-1000-01": "/work3/s234818/mosaic/runs/20261016-known-ligand-1000-01",
+        "20261016-known-ligand-1000-report-01": "/work3/s234818/mosaic/runs/20261016-known-ligand-1000-report-01",
+        "20261016-known-ligand-collection-smoke-01": "/work3/s234818/mosaic/runs/20261016-known-ligand-collection-smoke-01",
+        "20261016-known-ligand-1000-evidence-01": "/work3/s234818/mosaic/runs/20261016-known-ligand-1000-evidence-01",
+        "20261016-known-ligand-hard-controls-01": "/work3/s234818/mosaic/runs/20261016-known-ligand-hard-controls-01",
+        "20261016-known-ligand-controls-report-01": "/work3/s234818/mosaic/runs/20261016-known-ligand-controls-report-01",
+        "20261016-known-ligand-1000-evidence-02": "/work3/s234818/mosaic/runs/20261016-known-ligand-1000-evidence-02"
+      }
+    },
+    {
+      "archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261016-carbon-chain-100\\20261016-gradient-evidence-carbon-chain-100-01.tar.gz",
+      "bytes": 291872438,
+      "archive_sha256": "68d70cd1c4eb55431ab96b22723fabed845e2bfcc9ca4182e9b4ba252d03b181",
+      "embedded_manifest_sha256": "499704288a56b4e86f176a9eac1ec096c31e48541c8b8ea44d6d160c18c9bc2f",
+      "manifest": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261016-carbon-chain-100\\20261016-gradient-evidence-carbon-chain-100-01\\evidence_manifest.json",
+      "declared_files": 699,
+      "verified_embedded_member_files": 699,
+      "actual_extra_files": [],
+      "embedded_manifest_exact_local_bytes": true,
+      "status": "passed",
+      "path_mapping": "Strip runs/ when present; then map relative run name under /work3/s234818/mosaic/runs/; non-run top-level scheduler/quota helpers are not raw remote files",
+      "groups": {
+        "job-29735600.txt": {
+          "files": 1,
+          "bytes": 2795
+        },
+        "job-29735673.txt": {
+          "files": 1,
+          "bytes": 3558
+        },
+        "job-29735743.txt": {
+          "files": 1,
+          "bytes": 3291
+        },
+        "quota-after.txt": {
+          "files": 1,
+          "bytes": 2003
+        },
+        "runs/20261016-carbon-chain-100-01": {
+          "files": 665,
+          "bytes": 296937492
+        },
+        "runs/20261016-carbon-chain-plot-setup-01": {
+          "files": 11,
+          "bytes": 262882
+        },
+        "runs/20261016-carbon-chain-report-01": {
+          "files": 19,
+          "bytes": 9636211
+        }
+      },
+      "scope": "Streaming archive-member byte/hash and safe-path verification only; no model/numerical work, no remote deletion",
+      "archive_bytes_rehashed_utc": "2026-10-21T17:56:33.507235+00:00",
+      "remote_archive_path": "/work3/s234818/mosaic/runs/20261016-gradient-evidence-carbon-chain-100-01.tar.gz",
+      "remote_run_group_roots": {
+        "runs/20261016-carbon-chain-100-01": "/work3/s234818/mosaic/runs/20261016-carbon-chain-100-01",
+        "runs/20261016-carbon-chain-plot-setup-01": "/work3/s234818/mosaic/runs/20261016-carbon-chain-plot-setup-01",
+        "runs/20261016-carbon-chain-report-01": "/work3/s234818/mosaic/runs/20261016-carbon-chain-report-01"
+      }
+    }
+  ],
+  "archive_member_coverage_updated_utc": "2026-10-21T17:56:05.673075+00:00",
+  "incomplete_extracted_file_scan": {
+    "session": 92917,
+    "status": "intentionally_stopped_own_reader_only_after_no_completed_groups",
+    "reason": "Individual extracted OneDrive file reads stalled; superseded by complete streamed archive member verification, no artifact modifications"
+  },
+  "status_updated_utc": "2026-10-21T18:09:04.901668+00:00",
+  "cleanup_outcome": {
+    "status": "completed",
+    "attempt": "attempt-01",
+    "completed_utc": "2026-10-21T18:03:02.766380+00:00",
+    "original_cleanup_input_index_sha256": "7f1815a5e612ed7cb2d74870f6496f58d0903ccf2670ef4a43fae0616571801e",
+    "receipt_path": "scripts/hpc/receipts/20261021-mosaic-storage-cleanup-01/receipt.json",
+    "receipt_sha256": "ee253fdda15647320b7d3856ead5b0f3450fc1c4c503a0499c642b19afa2f7d2",
+    "removed_files": 21099,
+    "removed_logical_bytes": 5459183284,
+    "retained_changed_files": 2,
+    "already_absent_files": 1,
+    "audit_archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261021-mosaic-storage-cleanup-01\\cleanup-audit-02.tar.gz",
+    "audit_archive_bytes": 4611888,
+    "audit_archive_sha256": "6db36da0eb9418f475fef04ae3314876db43751fa743ecdd5b0b6225583521e6",
+    "verified_audit_files": 10,
+    "post_cleanup_quota": {
+      "storage_pool": 6,
+      "used_gib": 86.45,
+      "hard_gib": 100,
+      "chunk_files": 296102,
+      "hard_chunk_files": 20000000,
+      "evidence": "cleanup-audit-02/attempt-01/quota-after-refresh-02.txt"
+    },
+    "scope": "Only exact locally backed-up previous Mosaic copies removed; all unknown/current data retained",
+    "fresh_long_run_projection_gate": "Not established by this historical quota snapshot; repeat before dispatch."
+  },
+  "native_validation_backup": {
+    "status": "downloaded_and_byte_verified",
+    "files": 294,
+    "archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261021-brd4-jq1-25-fixed-02\\native-evidence-01\\native-evidence-download-02.tar.gz",
+    "bytes": 157243652,
+    "sha256": "fa4fd76c68be6b310f6b8f7724e26e3c5c86ae0ef530905d2c94f676c00dd210",
+    "verification_receipt": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261021-brd4-jq1-25-fixed-02\\native-evidence-01\\native-evidence-download-02-download.json",
+    "scope": "stdlib byte integrity only; no local numerical evaluation",
+    "previous_empty_partial": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261021-brd4-jq1-25-fixed-02\\native-evidence-01\\native-evidence-01.tar.gz",
+    "previous_empty_partial_retained": true
+  }
+}

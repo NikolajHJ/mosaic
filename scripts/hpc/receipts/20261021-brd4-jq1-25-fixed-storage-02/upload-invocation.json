@@ -1,0 +1,40 @@
+{
+  "args": [
+    "ssh",
+    "-T",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=15",
+    "-o",
+    "ConnectionAttempts=1",
+    "-o",
+    "ServerAliveInterval=10",
+    "-o",
+    "ServerAliveCountMax=1",
+    "dtu-hpc",
+    "bash -c 'set -euo pipefail; umask 077; set -o noclobber; cat > /work3/s234818/mosaic/20261021-brd4-jq1-25-fixed-storage-02.tar.gz'"
+  ],
+  "archive": {
+    "local_archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261021-brd4-jq1-25-fixed-storage-02\\source01\\source.tar.gz",
+    "archive_bytes": 18560,
+    "archive_sha256": "8ed85ddae3e116640513b84e4786e8891315541768bb069d8cbfd0546124accc",
+    "manifest_sha256": "c8115e2686b94d78ff1889b9dc8161fdf00356639524853c46d4100fd8638fd9",
+    "files": 11,
+    "remote": "/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-storage-02/source",
+    "file_hashes": {
+      "scripts/fixed25_split_storage.py": "474eb6d1ec1afe62bf8805d091778acabb9e243515f93b062c7864a88af2f406",
+      "scripts/fixed25_split_ops.py": "03058a36f3b5c44e7eb0723219b09152d613f7f4515d71ee17171d4eb548f9fd",
+      "tests/test_fixed25_split_storage.py": "d578a61c143bf2b1f32781d0089699234765d20c51ba226735d7d265c24de453",
+      "tests/test_fixed25_split_ops.py": "075287d12da20ac00338c62d864fbcf6cf91d8bad6380a276f66c82d08abafb2",
+      "scripts/hpc/fixed25_split_stage.lsf": "1f0869793ac49a604df1f384103b9113f614db4f3822212fb71201d76190a4d0",
+      "scripts/hpc/fixed25_split_cpu.lsf": "daab902ceaaab051c9338ab507a07ce19817011e62c1571c8f580f2cab53103b",
+      "scripts/hpc/fixed25_split_after_cpu.lsf": "fb61c25a6df81b9ba26cd39ec65f43fce48ab4a8675c9daa1f3ed5b6d69ef350",
+      "scripts/verify_stage0_release.py": "d3e5373b84b123fe2388db2e9493a5a76d1cfc7edcc53f73ff5746f935c49c02",
+      "examples/configs/brd4_jq1_25_fixed_protenix_10000.json": "69257fd9700d8ca0f42e13ae95ec4c3a15ca623064f657acf4fb8c85b65f1d00",
+      "examples/configs/brd4_jq1_25_fixed_boltz2_10000.json": "b6217159b0180b8c2f4b3e57764b2101b79e20e1e8cd021b357ae6563e5b161b",
+      "examples/configs/brd4_jq1_25_fixed_boltz2_chemistry_10000.json": "dd6347a0756320bc79dea5fbbf7da9aeca8e8bf93dc38f30cd141fd240059049"
+    }
+  },
+  "utc": "2026-10-21T18:11:59.558763+00:00"
+}

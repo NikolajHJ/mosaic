@@ -1,6 +1,6 @@
 {
   "tag": "20261021-brd4-jq1-25-fixed-02",
-  "status": "CPU29776103/afterCPU29776104actualDONE;482passesrawXML/scheduler/LSF/proofsverified;3nativeGPUvalidationsactuallysubmitted/PEND; no10000-updatelongIDsestablished",
+  "status": "Original fixed02 scientific/native readiness allpassed; oldstoragefailure preserved; storage03 launcher adoptedexactproofs and actuallysubmitted3newlongs",
   "parent_failed_release": "20261021-brd4-jq1-25-fixed-01",
   "scientific_policy": "unchanged fixed_step Pro0.3/Bol0.01/chem0.01;10000updates; noDiff",
   "correction": "Uphill toy adds nonzero typed-bond dependence; constant-noop bookkeeping test explicitly isolates native gate. No production bypass or gate change.",
@@ -398,5 +398,108 @@
     "29776122": "PEND"
   },
   "native_scheduler_sha256": "1e4a9bc1161728e09f21f5e9bb42479bdc43e94a6c3d19f84c238e220904945a",
-  "long_runs_submitted": false
+  "long_runs_submitted": true,
+  "native_outcome_observed_at": "2026-10-21T19:42:48.065844+02:00",
+  "native_status_receipt_sha256": "ad1b9fe71854afc25ffd6ce130cff3490be2e3731b75a2c9d9f5765a615d776e",
+  "native_actual_outcomes": {
+    "protenix": {
+      "native_job": "29776117",
+      "status": "passed",
+      "assessment_sha256": "3e1a61215ecb5dd5b7999a05030c3de96b1e811a5f2c1b606af53649e2ca3953",
+      "scheduler_proofs": [
+        {
+          "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/scheduler-final-1.txt",
+          "sha256": "5088f861cfaee776a98b490e8dbf1c78c1883a8e57cb1bef05e68aba4d8923f3"
+        },
+        {
+          "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/stdout.29776117.log",
+          "sha256": "57f73edeea99ec9492c3110bcb4e8a0aca4d7d16cd5abb6373faaea9869a0e00"
+        }
+      ],
+      "proof_count": 74,
+      "projected_bytes": 1493301824
+    },
+    "boltz2": {
+      "native_job": "29776119",
+      "status": "passed",
+      "assessment_sha256": "903a7facf258e29c868160d325287d6c332b339d7a68bf367182b20fca6ff0f0",
+      "scheduler_proofs": [
+        {
+          "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2/scheduler-final-1.txt",
+          "sha256": "1ef7da257522129c6f5d946b5aa7c025318d91e4dfe4f7f50e667694da70b059"
+        },
+        {
+          "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2/stdout.29776119.log",
+          "sha256": "7a08a32a7ed9ea0e1a76aef1424aa64f954dc7e4ccb2bb1839dc678b1a115cb8"
+        }
+      ],
+      "proof_count": 52,
+      "projected_bytes": 1770121824
+    },
+    "boltz2_chemistry": {
+      "native_job": "29776121",
+      "status": "passed",
+      "assessment_sha256": "5602e2c80dd37c6951356eba04762ceb9799b24ccd6126db7fd8c175ec662e88",
+      "scheduler_proofs": [
+        {
+          "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/scheduler-final-1.txt",
+          "sha256": "bd46f85a918fa43f9b29739a8802482dfa422264c4fc21e55c3c024d707873f5"
+        },
+        {
+          "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/stdout.29776121.log",
+          "sha256": "b98bd96fc7ff054a91ba8925d0f3d16b507ce3c085f7a1cf95c55398e93cbf58"
+        }
+      ],
+      "proof_count": 128,
+      "projected_bytes": 5164341824
+    }
+  },
+  "native_evidence_scope": "All 294 files downloaded and independently stdlib-byte/XML/schema verified, including actual native persisted DONE/LSF, all source/config/frozen/model/context/pocket/no-diffusion and original derivative/pilot pins; no local scientific computation",
+  "failed_whole_campaign_storage": {
+    "status": "failed",
+    "utc": "2026-10-21T17:10:59.974537+00:00",
+    "run_dir": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/shared-dispatch-quota",
+    "projected_bytes": 8427765472,
+    "reserve_bytes": 4294967296,
+    "required_bytes": 12722732768,
+    "available_bytes_conservative": 8419460428,
+    "experiment_bytes_subtracted": 170474164,
+    "file_reserve": 100000,
+    "quota": {
+      "finite_pools": [
+        {
+          "used_bytes_upper": 98784247808,
+          "hard_bytes_lower": 107374182400,
+          "remaining_bytes": 8589934592,
+          "remaining_files": 19683080
+        }
+      ],
+      "available_bytes_lower": 8589934592,
+      "available_files_lower": 19683080
+    },
+    "raw_quota": "HPE-Storage-Servers (disks, storagepool 1): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nHPE-Storage-Servers (NVME, storagepool 2): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (disks, storagepool 3): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks, storagepool 4): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks added in 2024, storagepool 5): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (NVMEs added in 2024, storagepool 6): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||   91.98 GiB|  100.00 GiB||   316920| 20000000\n\n",
+    "scope": "Separate work3 artifacts; all historical home results preserved",
+    "limitation": "Conservative rounded finite quota, all finite pools; fresh checks are not reservations"
+  },
+  "cleanup_authorization": "User requested downloading previous results and cleaning storage, 21 October 2026; prune only exact locally byte-verified backups, excluding current dependencies and other projects.",
+  "cleanup_receipts": "scripts/hpc/receipts/20261021-mosaic-storage-cleanup-01/",
+  "native_local_verification": {
+    "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261021-brd4-jq1-25-fixed-02\\native-evidence-01\\verification.json",
+    "sha256": "76821f5448323ee08819a21f394dc78105ca4745f58cd3112db024ce49605d6c",
+    "archive_bytes": 157243652,
+    "archive_sha256": "fa4fd76c68be6b310f6b8f7724e26e3c5c86ae0ef530905d2c94f676c00dd210",
+    "verified_files": 294
+  },
+  "cleanup_actual": {
+    "removed_files": 21099,
+    "removed_logical_bytes": 5459183284,
+    "audit_sha256": "6db36da0eb9418f475fef04ae3314876db43751fa743ecdd5b0b6225583521e6"
+  },
+  "new_long_campaign": "scripts/hpc/receipts/20261021-brd4-jq1-25-fixed-storage-03/campaign.json",
+  "new_long_job_ids": {
+    "protenix": "29777709",
+    "boltz2": "29777710",
+    "boltz2_chemistry": "29777711"
+  },
+  "long_runs_submitted_under_original_root": false
 }

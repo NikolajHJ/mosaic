@@ -5360,3 +5360,160 @@ ActualnativeGPUjobs29776117Pro/29776119Bol/29776121chem,callbacks29776118/20/22;
 allPENDat16:30:34,exactargv/resourcesauthenticated. No10000-update longrun submitted
 yet; allnative/gate/quota requirementsremainmandatory. Fixedrates.3/.01/.01,
 nominalrateappliedwithoutsearch; noDiff. See fixed02campaign/plan/proofverification.
+
+### 21 October 19:42 Paris — all fixed-rate native validations passed; storage blocked launch
+
+All three original GPU readiness assessments and allocated callback decisions now
+report passed: Protenix29776117, Boltz-2 29776119 and chemistry29776121. Their
+saved actual DONE/gpul40s/LSF-success proofs remain available even where live LSF
+records have aged out. Native proof counts are 74/52/128; original fixed rates,
+parity/derivative/pilot/runtime/frozen/pocket/no-diffusion gates are unchanged.
+Full raw local proof download is pending after a connection reset; the captured
+producer assessments, decisions and proof hashes are preserved in the campaign.
+
+No 10,000-update job was submitted. Callback29776122 stopped with exit1 at19:11
+after the whole-work3 storage check rejected 8,427,765,472 projected bytes plus
+4,294,967,296 reserve against 8,419,460,428 conservative available bytes. This
+failed storage receipt stays failed; it is not a native gradient failure.
+
+The user subsequently requested downloading previous results and cleaning storage.
+Three existing local historical archives were freshly byte/member verified
+(21,093 files), together with noncurrent duplicate source-upload archives. Remote
+checksums and dependency exclusions are still required before removing each copy.
+Only exact backed-up prior Mosaic files may be pruned; keep current inputs,
+proofs, release directories, model caches, environments and other projects.
+See `scripts/hpc/receipts/20261021-mosaic-storage-cleanup-01/campaign.json`.
+A fallback split-output launcher is prepared locally with AST checks only; no
+launcher test, release, new job or automatic adoption is established.
+
+### 21 October 2026, 20:03 Paris — Mosaic backup cleanup completed; native proofs downloaded
+
+User-authorized cleanup attempt `attempt-01` completed at
+`2026-10-21T18:03:02.766380+00:00` under plan SHA-256
+`d428ab7ae11fe13311fcb939a2a8c4e4a4b809b5040baa9cf89bc2d302e80771`.
+The actual receipt records **21,099 files removed, 5,459,183,284 logical bytes**,
+two changed files retained and one candidate already absent. Only previous
+Mosaic copies matching verified local backups were removed. Both saved
+unfinished-job inspections returned no Mosaic jobs. Current scientific
+dependencies, proof/release directories, caches, environments, home artifacts,
+other projects and unknown data were retained.
+
+Refreshed storage-pool 6 quota: **86.45 / 100 GiB**, 296,102 / 20,000,000 chunk
+files. This is a historical post-cleanup measurement. Fresh whole-artifact
+projection, byte/inode quota and unchanged reserve gates are still required
+before long dispatch and at GPU entry. The original storage rejection remains
+failed; successful cleanup does not rewrite it.
+
+Audit archive: `results/hpc/20261021-mosaic-storage-cleanup-01/cleanup-audit-02.tar.gz`,
+4,611,888 bytes, SHA-256
+`6db36da0eb9418f475fef04ae3314876db43751fa743ecdd5b0b6225583521e6`.
+All 10 audit manifest files were byte/hash verified using the local standard
+library only. The exact `receipt.json` was copied into the tracked cleanup
+receipt directory, SHA-256
+`ee253fdda15647320b7d3856ead5b0f3450fc1c4c503a0499c642b19afa2f7d2`,
+alongside the compact audit/download receipts and evidence manifest. Full
+deletion/verification journals remain in the local extracted audit. The campaign
+retains the original cleanup-input index binding and binds the updated backup
+index; no cleanup script was rerun for this documentation update.
+
+The fixed-source02 native proof download is complete and locally byte verified:
+294 files, archive 157,243,652 bytes, SHA-256
+`fa4fd76c68be6b310f6b8f7724e26e3c5c86ae0ef530905d2c94f676c00dd210`.
+Receipt:
+`results/hpc/20261021-brd4-jq1-25-fixed-02/native-evidence-01/native-evidence-download-02-download.json`.
+The failed transfer's empty partial remains preserved. All three original native
+gradient validations passed; this download is integrity evidence, not another
+numerical run or a new long-job submission.
+
+An all-work3 launcher tagged `20261021-brd4-jq1-25-fixed-storage-01` is prepared
+locally with AST checks only. CPU validation and staging remain pending, and no
+new long-run job IDs are established. Fixed rates, proof requirements and
+scientific gates remain unchanged. This documentation/history update used no
+SSH, model execution or numerical evaluation and preserved unrelated PDF and
+OneNote changes.
+
+### 21 October 2026 — storage-01 and storage-02 preflight failures; storage-03 pending
+
+Storage-01 was actually staged read-only with 11 authenticated files, manifest
+SHA-256 `9cc079f0b89256cd723b5c6ee87e76f8a93d1b2db3cfdc8d99fc29272f152e7d`.
+Its preflight failed on original pytest `current` symlinks before any CPU
+validation or job submission. Preserve this failed attempt.
+
+The new storage-02 release also staged 11 files, manifest SHA-256
+`c8115e2686b94d78ff1889b9dc8161fdf00356639524853c46d4100fd8638fd9`;
+archive 18,560 bytes, SHA-256
+`8ed85ddae3e116640513b84e4786e8891315541768bb069d8cbfd0546124accc`.
+It stopped at preflight before CPU validation or submission. Its byte check
+passed with 13,468,288,122 available versus 5,368,709,120 required, but an added
+filesystem inode minimum rejected zero. Actual saved `fhgfs` counters were
+`f_files = f_ffree = f_favail = 0`; independently authenticated finite user quota
+reported 19,703,870 remaining files. The original mandatory 100,000-file
+headroom guard used quota. This storage engineering rejection does not undo
+the original three native scientific passes or establish a scientific failure.
+
+Pending immutable storage-03 will treat only that exact all-zero triplet as an
+unreported supplemental filesystem metric, retain the original finite-quota
+and 100,000-file guard, require coherent positive filesystem counters and use
+their minimum when reported, and fail invalid/inconsistent metrics. Byte
+budgets, reserves, original source02 identities and all scientific gates remain
+unchanged. No failed receipt is rewritten as passed.
+
+Independent local verification of the raw original CPU/readiness proofs is
+recorded under verification SHA-256
+`76821f5448323ee08819a21f394dc78105ca4745f58cd3112db024ce49605d6c`.
+This is byte/schema evidence for existing proofs, not another numerical check
+or a CPU pass for a storage launcher. Storage-01/02 established no CPU pass or
+job; storage-03 remains pending with no new job IDs established. This ledger
+update performed no SSH or numerical work.
+
+### 21 October 2026, 20:16 Paris — storage-03 CPU/storage passed; long jobs submitted and pending
+
+Storage-03 sealed and staged 11 files with manifest SHA-256
+`9ee7bf1d6bf412acdc37fc83415476dbefdf45db89533571d4a646ee16f33772`.
+Source archive: 19,732 bytes, SHA-256
+`0473d0908ff6139bc4cbaf98421eab96a33db1f5614db78638500d0bb9684b8e`.
+CPU **29777704** and callback **29777705** actually reached DONE/LSF success at
+20:15:26 / 20:15:44 Paris. All **65 allocated storage-contract cases passed**,
+with no failures, errors or skips. The original 597-file science02 source,
+482 CPU cases and 254 native proof results were adopted unchanged; no new
+native model run is inferred from these launcher tests.
+
+The dispatch gate at `2026-10-21T18:15:42.453744+00:00` passed for all three
+new work3 outputs. Full projected artifacts 8,427,765,472 bytes plus unchanged
+4,294,967,296-byte reserve required 12,722,732,768 bytes, versus conservative
+available **13,468,221,517 bytes**. Authenticated finite quota left 19,703,830
+files, retaining the 100,000-file guard. The exact all-zero `statvfs` inode
+tuple is recorded as `unreported_all_zero`, not independent filesystem inode
+evidence. Quota/headroom is not a reservation, and GPU entry must repeat its
+storage gate. Actual receipt:
+`results/hpc/20261021-brd4-jq1-25-fixed-storage-03/launcher-evidence-02/quota-dispatch/split-storage-gate.json`.
+
+Fresh 10,000-update jobs actually submitted at 20:15:43–44 Paris:
+**Protenix 29777709** at fixed LR 0.3, **Boltz-2 29777710** at fixed LR 0.01,
+and **chemistry 29777711** at fixed LR 0.01. All were **PEND at 20:16:22 Paris**,
+waiting for physical GPU availability; no started/completed trajectory is
+claimed. Each requests `gpul40s`, one exclusive GPU, four CPU slots,
+8 GiB per slot and 23 hours, with no dependencies on the other arms.
+New output root:
+`/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-storage-03`.
+
+Local launcher-evidence download: 33 files, archive 17,016 bytes, SHA-256
+`bd62f30084ec05c0c0e63063f0090a3c9c4d9d05d43d9f0549317d057d2c4c90`.
+Byte integrity checks completed; independent XML/schema verification is still
+underway. All original storage and storage-01/02 failures remain immutable.
+This documentation update performed no SSH, numerical tests or job actions.
+
+Latest actual compact query, **21 October 20:35:30 Paris**: Protenix
+**29777709 RUN**, entry quota passed, with **951 committed states / 950 updates**
+(state index 950, last update index 949). No summary exists; the trajectory is
+partial and not completed. Boltz-2 **29777710** and chemistry **29777711** remain
+**PEND**, without study outputs or an established initial molecule. Independent
+verification of the new 65-case XML and launcher proofs remains underway.
+
+Independent standard-library byte/XML/schema verification of all 33 launcher
+proofs is complete. Raw XML confirms 65 passes without errors, failures or skips;
+actual CPU/callback DONE and LSF success, all original adoption pins, whole-campaign
+storage and the three independent submission/resource vectors matched. Receipt:
+`results/hpc/20261021-brd4-jq1-25-fixed-storage-03/verification.json`, SHA-256
+`e7edc4a4fd07ec1968fba600ce7ef19f691404aefede8fbdd588d0dc198bd90f`.
+This verifies launch readiness and submission; trajectories are still in progress.

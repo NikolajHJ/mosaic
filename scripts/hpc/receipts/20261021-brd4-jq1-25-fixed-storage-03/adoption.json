@@ -1,0 +1,121 @@
+{
+  "version": "fixed25-work3-storage-adoption-v2",
+  "status": "passed",
+  "original": {
+    "science_source": "/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-02/source",
+    "source_manifest_sha256": "1e3a8a21e2fa68e24d1c9229238999c42a4a9b44bcc78344e73e188c87d1ee64",
+    "original_root": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02",
+    "cpu_certificate": {
+      "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/cpu-certificate.json",
+      "sha256": "a595c100b39816d0f87f5d7d44c7a94c35d9138e6f510a0d284a79f20d5317f2"
+    },
+    "cpu_assessment": {
+      "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/cpu/payload/assessment.json",
+      "sha256": "0e821878a92575c3a02370fc22c2b66df3307accf9d7d1c17917af806eabbad9"
+    },
+    "arms": {
+      "protenix": {
+        "native_job": "29776117",
+        "assessment": {
+          "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/payload/study/assessment.json",
+          "sha256": "3e1a61215ecb5dd5b7999a05030c3de96b1e811a5f2c1b606af53649e2ca3953"
+        },
+        "config": {
+          "path": "/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-02/source/examples/configs/brd4_jq1_25_fixed_protenix_10000.json",
+          "sha256": "69257fd9700d8ca0f42e13ae95ec4c3a15ca623064f657acf4fb8c85b65f1d00"
+        },
+        "scheduler_proofs": [
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/scheduler-final-1.txt",
+            "sha256": "5088f861cfaee776a98b490e8dbf1c78c1883a8e57cb1bef05e68aba4d8923f3"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/stdout.29776117.log",
+            "sha256": "57f73edeea99ec9492c3110bcb4e8a0aca4d7d16cd5abb6373faaea9869a0e00"
+          }
+        ],
+        "decision": {
+          "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/decision-protenix.json",
+          "sha256": "41df98d57832500ed8d123682ff3ee84309afea391d9f499df7736c46cb678bb"
+        },
+        "projected_bytes": 1493301824,
+        "context_digest": "b28dfad8e5ede565071c70a61695f6a38f5cb6bd591705e32979e59050ff5ce4",
+        "model_digest": "8d6926d5390fe682e193089f790ce53aa4011a6d5509ddb452a55db3d89b0ab2",
+        "pocket_definition_sha256": "9376c715eaf5b48689fb3e995b00d7820601a7776970df66bd7e7cff3b13ee43"
+      },
+      "boltz2": {
+        "native_job": "29776119",
+        "assessment": {
+          "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2/payload/study/assessment.json",
+          "sha256": "903a7facf258e29c868160d325287d6c332b339d7a68bf367182b20fca6ff0f0"
+        },
+        "config": {
+          "path": "/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-02/source/examples/configs/brd4_jq1_25_fixed_boltz2_10000.json",
+          "sha256": "b6217159b0180b8c2f4b3e57764b2101b79e20e1e8cd021b357ae6563e5b161b"
+        },
+        "scheduler_proofs": [
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2/scheduler-final-1.txt",
+            "sha256": "1ef7da257522129c6f5d946b5aa7c025318d91e4dfe4f7f50e667694da70b059"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2/stdout.29776119.log",
+            "sha256": "7a08a32a7ed9ea0e1a76aef1424aa64f954dc7e4ccb2bb1839dc678b1a115cb8"
+          }
+        ],
+        "decision": {
+          "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/decision-boltz2.json",
+          "sha256": "99083c3c8ca4658a55175da6fd75eae3aa9bcc9b12828a44a8bb2e437466cc50"
+        },
+        "projected_bytes": 1770121824,
+        "context_digest": "fd04211da8e22eccd97ecedd96dd59cf4fb2d80aab6a397fa662af8eb92bbad4",
+        "model_digest": "395876da13ab6d5d175e6603db2118a82954c7c06484842fe2314dbd77a31a16",
+        "pocket_definition_sha256": "9376c715eaf5b48689fb3e995b00d7820601a7776970df66bd7e7cff3b13ee43"
+      },
+      "boltz2_chemistry": {
+        "native_job": "29776121",
+        "assessment": {
+          "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/assessment.json",
+          "sha256": "5602e2c80dd37c6951356eba04762ceb9799b24ccd6126db7fd8c175ec662e88"
+        },
+        "config": {
+          "path": "/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-02/source/examples/configs/brd4_jq1_25_fixed_boltz2_chemistry_10000.json",
+          "sha256": "dd6347a0756320bc79dea5fbbf7da9aeca8e8bf93dc38f30cd141fd240059049"
+        },
+        "scheduler_proofs": [
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/scheduler-final-1.txt",
+            "sha256": "bd46f85a918fa43f9b29739a8802482dfa422264c4fc21e55c3c024d707873f5"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/stdout.29776121.log",
+            "sha256": "b98bd96fc7ff054a91ba8925d0f3d16b507ce3c085f7a1cf95c55398e93cbf58"
+          }
+        ],
+        "decision": {
+          "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/decision-boltz2_chemistry.json",
+          "sha256": "29ea8abe2aa13c52270d0163e01aa6ac32dac36e1834203d22e9babc91712a1c"
+        },
+        "projected_bytes": 5164341824,
+        "context_digest": "fd04211da8e22eccd97ecedd96dd59cf4fb2d80aab6a397fa662af8eb92bbad4",
+        "model_digest": "395876da13ab6d5d175e6603db2118a82954c7c06484842fe2314dbd77a31a16",
+        "pocket_definition_sha256": "9376c715eaf5b48689fb3e995b00d7820601a7776970df66bd7e7cff3b13ee43"
+      }
+    },
+    "historical_failed_storage": {
+      "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/shared-dispatch-quota/work3-storage-gate.json",
+      "sha256": "dd810af25448df9bb7a23376a8ff918e465b74dec1ccde7cd2eba15da2df3049"
+    }
+  },
+  "placement": {
+    "protenix": "work3",
+    "boltz2": "work3",
+    "boltz2_chemistry": "work3"
+  },
+  "output_parents": {
+    "protenix": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-storage-03/run-protenix",
+    "boltz2": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-storage-03/run-boltz2",
+    "boltz2_chemistry": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-storage-03/run-boltz2_chemistry"
+  },
+  "scope": "Evidence-only original readiness adoption, not a new native test or completed trajectory"
+}

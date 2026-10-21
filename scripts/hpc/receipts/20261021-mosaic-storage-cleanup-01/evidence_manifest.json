@@ -1,0 +1,45 @@
+{
+  "files": {
+    "cleanup_verified_files.py": {
+      "bytes": 8185,
+      "sha256": "b72a348f8cae5b4869406aa7b6cfe8a4d093f16301be539d73d9522670f481c9"
+    },
+    "cleanup-plan-01.json": {
+      "bytes": 12072241,
+      "sha256": "d428ab7ae11fe13311fcb939a2a8c4e4a4b809b5040baa9cf89bc2d302e80771"
+    },
+    "attempt-01/deletion-journal.jsonl": {
+      "bytes": 24753887,
+      "sha256": "af6420ce5105ef1dd5674eba0e74bdd83151da679226cce8c353821cc67378fe"
+    },
+    "attempt-01/jobs-before-removal.json": {
+      "bytes": 84,
+      "sha256": "6b2366a5e375697d09391025c7959018cea0ee313cc403944219ff1127231806"
+    },
+    "attempt-01/jobs-before-verification.json": {
+      "bytes": 84,
+      "sha256": "6b2366a5e375697d09391025c7959018cea0ee313cc403944219ff1127231806"
+    },
+    "attempt-01/quota-after-refresh-02.txt": {
+      "bytes": 2003,
+      "sha256": "9314c9bab5122f55ee61adeffd7c83a16c736b02e07faaa8cb6ea91b2cda50ee"
+    },
+    "attempt-01/quota-after-refresh.txt": {
+      "bytes": 2003,
+      "sha256": "661123eaffbf14955b656f10862006a1583b859739e37efd97ee02551998ae4f"
+    },
+    "attempt-01/quota-after.txt": {
+      "bytes": 2003,
+      "sha256": "83ddba412354f6ae6399c0ff6a4468c44cfe827bb5f3995833628bc8601e4c68"
+    },
+    "attempt-01/receipt.json": {
+      "bytes": 614,
+      "sha256": "ee253fdda15647320b7d3856ead5b0f3450fc1c4c503a0499c642b19afa2f7d2"
+    },
+    "attempt-01/verified-candidates.json": {
+      "bytes": 14041232,
+      "sha256": "dd30c927dcb3e474b5359c704fdd0b22ef7c6fb46cdc76656ade8fdb19084e0b"
+    }
+  },
+  "scope": "User-authorized previous Mosaic byte-backup cleanup audit; all original scientific inputs preserved"
+}

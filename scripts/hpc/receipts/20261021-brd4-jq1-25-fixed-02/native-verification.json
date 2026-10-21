@@ -1,0 +1,215 @@
+{
+  "version": "mosaic-fixed25-native-evidence-local-verification-v1",
+  "status": "passed",
+  "verified_at": "2026-10-21T18:09:16.543483+00:00",
+  "scope": "Independent standard-library byte/JSON/XML/schema verification of saved allocated-HPC results; no model, array calculation, new derivative or scientific test performed locally",
+  "evidence_archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261021-brd4-jq1-25-fixed-02\\native-evidence-01\\native-evidence-download-02.tar.gz",
+  "archive_bytes": 157243652,
+  "archive_sha256": "fa4fd76c68be6b310f6b8f7724e26e3c5c86ae0ef530905d2c94f676c00dd210",
+  "evidence_manifest_sha256": "6d9a79aa164e118a70e6f65e94ddefb5a7e30859b472a38aeb924b9d9678e4ed",
+  "verified_evidence_files": 294,
+  "scientific_source_manifest_sha256": "1e3a8a21e2fa68e24d1c9229238999c42a4a9b44bcc78344e73e188c87d1ee64",
+  "scientific_source_archive_sha256": "c024ac03ddcf6091e35f1a666117194cd70b05024ee4563c6d8c965d75ed5798",
+  "verified_scientific_source_files": 597,
+  "cpu": {
+    "status": "passed",
+    "tests": 482,
+    "raw_xml": {
+      "hpc-contract.xml": 150,
+      "legacy.xml": 239,
+      "native-mapping.xml": 34,
+      "chemistry.xml": 59
+    },
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "deliberately_deselected": 3,
+    "scheduler": {
+      "job": "29776103",
+      "status": "DONE",
+      "queue": "hpc",
+      "scheduler_sha256": "81fba6aeeb9eee168030378cbf25bbd3e3cea9726e334515bd85c71105bfac71",
+      "stdout_sha256": "9c6e1ee2020aa55c86bb0b78f8722a7852941e6f3b15abcd3df539d414b90319"
+    },
+    "certificate_sha256": "a595c100b39816d0f87f5d7d44c7a94c35d9138e6f510a0d284a79f20d5317f2"
+  },
+  "arms": {
+    "protenix": {
+      "status": "passed",
+      "native_job": "29776117",
+      "assessment_sha256": "3e1a61215ecb5dd5b7999a05030c3de96b1e811a5f2c1b606af53649e2ca3953",
+      "summary_sha256": "74efd4053ec494328025837fdb524c5e3a95fa4a55ef23d2007be6d905920bfb",
+      "config_sha256": "69257fd9700d8ca0f42e13ae95ec4c3a15ca623064f657acf4fb8c85b65f1d00",
+      "model_digest": "8d6926d5390fe682e193089f790ce53aa4011a6d5509ddb452a55db3d89b0ab2",
+      "context_digest": "b28dfad8e5ede565071c70a61695f6a38f5cb6bd591705e32979e59050ff5ce4",
+      "scheduler": {
+        "job": "29776117",
+        "status": "DONE",
+        "queue": "gpul40s",
+        "scheduler_sha256": "5088f861cfaee776a98b490e8dbf1c78c1883a8e57cb1bef05e68aba4d8923f3",
+        "stdout_sha256": "57f73edeea99ec9492c3110bcb4e8a0aca4d7d16cd5abb6373faaea9869a0e00"
+      },
+      "proofs_rehashed": 74,
+      "raw_atom_bond_original_fd_status": "passed",
+      "hard_native_parity": "passed",
+      "pocket_status": "passed",
+      "diffusion_gradient": false,
+      "pilots": {
+        "early": {
+          "status": "passed",
+          "updates": 10,
+          "states": 11,
+          "rate": 0.3,
+          "single_candidate_each": true,
+          "repair_weight": 0.0,
+          "report_sha256": "48baebc085adf1a51bd7dcc3c63ace23af50c320bbeb26e92caff9adca6e9842",
+          "counts": {
+            "applied": 10,
+            "forced_fallback": 0,
+            "no_op": 0,
+            "strict_improving": 10
+          }
+        }
+      },
+      "runtime_gate": {
+        "allocation_seconds": 82800,
+        "conservative_projected_seconds": 5583.44678398571,
+        "mean_update_seconds": [
+          0.2522297855990473
+        ],
+        "scope": "empirical pilots, not a worst-case guarantee",
+        "status": "passed"
+      },
+      "storage_projection": {
+        "maximum_pilot_update_bytes": 20978,
+        "policy": "twice largest saved pilot update plus 1 GiB for metadata/context; fresh campaign-wide quota gate before submission",
+        "projected_bytes": 1493301824
+      }
+    },
+    "boltz2": {
+      "status": "passed",
+      "native_job": "29776119",
+      "assessment_sha256": "903a7facf258e29c868160d325287d6c332b339d7a68bf367182b20fca6ff0f0",
+      "summary_sha256": "a3551fae359c65f3c5f280b5d7ba5225b1c1bd52ffbd3b8303cc58ab758390b0",
+      "config_sha256": "b6217159b0180b8c2f4b3e57764b2101b79e20e1e8cd021b357ae6563e5b161b",
+      "model_digest": "395876da13ab6d5d175e6603db2118a82954c7c06484842fe2314dbd77a31a16",
+      "context_digest": "fd04211da8e22eccd97ecedd96dd59cf4fb2d80aab6a397fa662af8eb92bbad4",
+      "scheduler": {
+        "job": "29776119",
+        "status": "DONE",
+        "queue": "gpul40s",
+        "scheduler_sha256": "1ef7da257522129c6f5d946b5aa7c025318d91e4dfe4f7f50e667694da70b059",
+        "stdout_sha256": "7a08a32a7ed9ea0e1a76aef1424aa64f954dc7e4ccb2bb1839dc678b1a115cb8"
+      },
+      "proofs_rehashed": 52,
+      "raw_atom_bond_original_fd_status": "passed",
+      "hard_native_parity": "passed",
+      "pocket_status": "passed",
+      "diffusion_gradient": false,
+      "pilots": {
+        "early": {
+          "status": "passed",
+          "updates": 10,
+          "states": 11,
+          "rate": 0.01,
+          "single_candidate_each": true,
+          "repair_weight": 0.0,
+          "report_sha256": "79e2b808a153a08a08d93c278e014bc8a3cec0db4131d88bc87b5f9237f1cada",
+          "counts": {
+            "applied": 10,
+            "forced_fallback": 0,
+            "no_op": 0,
+            "strict_improving": 10
+          }
+        }
+      },
+      "runtime_gate": {
+        "allocation_seconds": 82800,
+        "conservative_projected_seconds": 27799.245883285766,
+        "mean_update_seconds": [
+          1.7332830588857178
+        ],
+        "scope": "empirical pilots, not a worst-case guarantee",
+        "status": "passed"
+      },
+      "storage_projection": {
+        "maximum_pilot_update_bytes": 34819,
+        "policy": "twice largest saved pilot update plus 1 GiB for metadata/context; fresh campaign-wide quota gate before submission",
+        "projected_bytes": 1770121824
+      }
+    },
+    "boltz2_chemistry": {
+      "status": "passed",
+      "native_job": "29776121",
+      "assessment_sha256": "5602e2c80dd37c6951356eba04762ceb9799b24ccd6126db7fd8c175ec662e88",
+      "summary_sha256": "308d2239afb9cb8822a5408a1a1e14c2c6eb39471c1490fcb65406f373f9cf16",
+      "config_sha256": "dd6347a0756320bc79dea5fbbf7da9aeca8e8bf93dc38f30cd141fd240059049",
+      "model_digest": "395876da13ab6d5d175e6603db2118a82954c7c06484842fe2314dbd77a31a16",
+      "context_digest": "fd04211da8e22eccd97ecedd96dd59cf4fb2d80aab6a397fa662af8eb92bbad4",
+      "scheduler": {
+        "job": "29776121",
+        "status": "DONE",
+        "queue": "gpul40s",
+        "scheduler_sha256": "bd46f85a918fa43f9b29739a8802482dfa422264c4fc21e55c3c024d707873f5",
+        "stdout_sha256": "b98bd96fc7ff054a91ba8925d0f3d16b507ce3c085f7a1cf95c55398e93cbf58"
+      },
+      "proofs_rehashed": 128,
+      "raw_atom_bond_original_fd_status": "passed",
+      "hard_native_parity": "passed",
+      "pocket_status": "passed",
+      "diffusion_gradient": false,
+      "pilots": {
+        "early": {
+          "status": "passed",
+          "updates": 10,
+          "states": 11,
+          "rate": 0.01,
+          "single_candidate_each": true,
+          "repair_weight": 0.001,
+          "report_sha256": "2111e7c34a4c4aaa71df9f3ed76dfb66861a381ea1297b3f0b96869132d5dd29",
+          "counts": {
+            "applied": 10,
+            "forced_fallback": 0,
+            "no_op": 0,
+            "strict_improving": 10
+          }
+        },
+        "high": {
+          "status": "passed",
+          "updates": 10,
+          "states": 11,
+          "rate": 0.01,
+          "single_candidate_each": true,
+          "repair_weight": 50.0,
+          "report_sha256": "7df4738339006a7967492eec3e626c44871989f2d5d547e10768d402b20cb633",
+          "counts": {
+            "applied": 10,
+            "forced_fallback": 0,
+            "no_op": 0,
+            "strict_improving": 10
+          }
+        }
+      },
+      "runtime_gate": {
+        "allocation_seconds": 82800,
+        "conservative_projected_seconds": 35055.93151344219,
+        "mean_update_seconds": [
+          1.9785669175966176,
+          2.217062100896146
+        ],
+        "scope": "empirical pilots, not a worst-case guarantee",
+        "status": "passed"
+      },
+      "storage_projection": {
+        "maximum_pilot_update_bytes": 204530,
+        "policy": "twice largest saved pilot update plus 1 GiB for metadata/context; fresh campaign-wide quota gate before submission",
+        "projected_bytes": 5164341824
+      }
+    }
+  },
+  "limitations": [
+    "Readiness certification is not a submitted or completed 10000-update trajectory.",
+    "Combined work3 storage gate remains historically failed; this verification does not waive it.",
+    "Stored NPZ and context bytes were rehashed; their numerical values were not recomputed locally."
+  ]
+}

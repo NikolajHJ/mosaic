@@ -1,0 +1,65 @@
+{
+  "status": "Verified-backup cleanup completed; original nativeproofs authenticated; newfixedlongjobs actuallysubmitted under storage03",
+  "authorization": "User requested downloading previous results and cleaning storage, 21 October 2026; prune only exact locally byte-verified backups, excluding current dependencies and other projects.",
+  "local_backup_index_sha256": "8b3e698dd64c42064de3f3acae896198ddb4d2909fb407edaa08e756dac4d732",
+  "plan_local_path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261021-mosaic-storage-cleanup-01\\cleanup-plan-01.json",
+  "plan_sha256": "d428ab7ae11fe13311fcb939a2a8c4e4a4b809b5040baa9cf89bc2d302e80771",
+  "candidate_count": 21102,
+  "native_validations": "Allthree passed; scientificsource02 unchanged; storage03 independentlytestedlauncher submitted29777709/29777710/29777711",
+  "remote_files_removed": 21099,
+  "raw_evidence_bundle": {
+    "remote_path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/native-evidence-01.tar.gz",
+    "bytes": 157243652,
+    "sha256": "fa4fd76c68be6b310f6b8f7724e26e3c5c86ae0ef530905d2c94f676c00dd210",
+    "local_download": "Completed; all 294 files byte verified using standard-library integrity checks only; original empty partial retained",
+    "local_archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261021-brd4-jq1-25-fixed-02\\native-evidence-01\\native-evidence-download-02.tar.gz",
+    "verification_receipt": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261021-brd4-jq1-25-fixed-02\\native-evidence-01\\native-evidence-download-02-download.json"
+  },
+  "fallback_split_launcher": "Historical local AST-only draft; no test, staging or submission established by this record",
+  "protected": "All current scientific inputs/proofs/release directories/caches/environments, all home artifacts and all other projects",
+  "remote_control_root": "/work3/s234818/mosaic/runs/20261021-mosaic-storage-cleanup-01",
+  "attempt": "attempt-01",
+  "script_sha256": "b72a348f8cae5b4869406aa7b6cfe8a4d093f16301be539d73d9522670f481c9",
+  "dependency_safety": "Two actual unfinished-job inspections and exact allowed paths; all existing bytes must match fully verified local backups; durable per-file intent and removal journal; six GiB cap",
+  "updated_utc": "2026-10-21T18:09:04.901668+00:00",
+  "cleanup_input_local_backup_index_sha256": "7f1815a5e612ed7cb2d74870f6496f58d0903ccf2670ef4a43fae0616571801e",
+  "removed_logical_bytes": 5459183284,
+  "retained_changed_files": 2,
+  "already_absent_files": 1,
+  "cleanup_completed_utc": "2026-10-21T18:03:02.766380+00:00",
+  "actual_receipt": {
+    "path": "scripts/hpc/receipts/20261021-mosaic-storage-cleanup-01/receipt.json",
+    "sha256": "ee253fdda15647320b7d3856ead5b0f3450fc1c4c503a0499c642b19afa2f7d2"
+  },
+  "audit": {
+    "archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261021-mosaic-storage-cleanup-01\\cleanup-audit-02.tar.gz",
+    "bytes": 4611888,
+    "sha256": "6db36da0eb9418f475fef04ae3314876db43751fa743ecdd5b0b6225583521e6",
+    "verified_files": 10,
+    "compact_receipt": "scripts/hpc/receipts/20261021-mosaic-storage-cleanup-01/cleanup-audit-02.receipt.json",
+    "verification_receipt": "scripts/hpc/receipts/20261021-mosaic-storage-cleanup-01/cleanup-audit-02-download.json",
+    "manifest": "scripts/hpc/receipts/20261021-mosaic-storage-cleanup-01/evidence_manifest.json"
+  },
+  "post_cleanup_quota": {
+    "storage_pool": 6,
+    "used_gib": 86.45,
+    "hard_gib": 100,
+    "chunk_files": 296102,
+    "hard_chunk_files": 20000000,
+    "evidence": "cleanup-audit-02/attempt-01/quota-after-refresh-02.txt"
+  },
+  "all_work3_launcher": {
+    "tag": "20261021-brd4-jq1-25-fixed-storage-01",
+    "status": "Prepared locally with AST checks only; CPU validation and staging pending",
+    "long_run_job_ids": [],
+    "scientific_scope": "Original source02 fixed rates and native scientific gates retained; storage placement only"
+  },
+  "completed_exec_session": 60014,
+  "copied_receipt_hashes": {
+    "receipt.json": "ee253fdda15647320b7d3856ead5b0f3450fc1c4c503a0499c642b19afa2f7d2",
+    "cleanup-audit-02.receipt.json": "c056aca48da82d0c4dfad8d2bcd2ecf3d6c9039521f736757ed751172ca071ae",
+    "cleanup-audit-02-download.json": "57f588db2ff8c5e99ee3e948c29847b26ef32d7a7c7057620dd3397c64f26711",
+    "evidence_manifest.json": "78bcbf3ccdf87d09edf615cc8d895e13d6c63caf196bc3d109799f4f89a6ea23"
+  },
+  "subsequent_actual_run_campaign": "scripts/hpc/receipts/20261021-brd4-jq1-25-fixed-storage-03/campaign.json"
+}

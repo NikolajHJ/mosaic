@@ -1,0 +1,19 @@
+{
+  "receipt": {
+    "status": "completed",
+    "utc": "2026-10-21T18:03:02.766380+00:00",
+    "plan_sha256": "d428ab7ae11fe13311fcb939a2a8c4e4a4b809b5040baa9cf89bc2d302e80771",
+    "removed_files": 21099,
+    "removed_logical_bytes": 5459183284,
+    "retained_changed_files": 2,
+    "already_absent_files": 1,
+    "quota_returncode": 0,
+    "deletion_journal_sha256": "af6420ce5105ef1dd5674eba0e74bdd83151da679226cce8c353821cc67378fe",
+    "verified_candidates_sha256": "dd30c927dcb3e474b5359c704fdd0b22ef7c6fb46cdc76656ade8fdb19084e0b",
+    "scope": "Only exact locally backed-up previous Mosaic copies removed; all unknown/current data retained"
+  },
+  "quota": "HPE-Storage-Servers (disks, storagepool 1): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nHPE-Storage-Servers (NVME, storagepool 2): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (disks, storagepool 3): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks, storagepool 4): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks added in 2024, storagepool 5): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (NVMEs added in 2024, storagepool 6): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||   86.45 GiB|  100.00 GiB||   296102| 20000000\n\n",
+  "archive_bytes": 4611888,
+  "archive_sha256": "6db36da0eb9418f475fef04ae3314876db43751fa743ecdd5b0b6225583521e6",
+  "files": 10
+}

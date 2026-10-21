@@ -1,0 +1,25 @@
+{
+  "status": "passed",
+  "source_manifest_sha256": "9ee7bf1d6bf412acdc37fc83415476dbefdf45db89533571d4a646ee16f33772",
+  "producer_job_id": "29777704",
+  "tests": 65,
+  "proofs": [
+    {
+      "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-storage-03/cpu/scheduler-final-1.txt",
+      "sha256": "286c086f261867a12482fa96e437f4050663e83fcc7a024f3fb2787e4c83bfd8"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-storage-03/cpu/stdout.29777704.log",
+      "sha256": "f330d3723f223301569687393b8143ec28cc03a9e1eaad8ca5f88bd704a99f47"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-storage-03/cpu/payload/contracts.xml",
+      "sha256": "9692429d04b32ece05dd634f352ee9e8878e350af74b4d4e54ea4e6023c2acee"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-storage-03/cpu/payload/assessment.json",
+      "sha256": "593c1119a0a67865a7902fb2b16b2832003137beb4ce11814f0161f6cf98cd66"
+    }
+  ],
+  "suite": "fixed25-split-launcher-contract-v1"
+}

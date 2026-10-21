@@ -1,0 +1,98 @@
+{
+  "version": "fixed25-storage03-local-proof-verification-v1",
+  "status": "passed",
+  "verified_utc": "2026-10-21T18:36:37.707521+00:00",
+  "scope": "Independent standard-library saved byte/JSON/XML/schema authentication only; no local scientific tests/model/numerics",
+  "archive_bytes": 17016,
+  "archive_sha256": "bd62f30084ec05c0c0e63063f0090a3c9c4d9d05d43d9f0549317d057d2c4c90",
+  "evidence_files": 33,
+  "tool_manifest_sha256": "9ee7bf1d6bf412acdc37fc83415476dbefdf45db89533571d4a646ee16f33772",
+  "tool_archive_sha256": "0473d0908ff6139bc4cbaf98421eab96a33db1f5614db78638500d0bb9684b8e",
+  "tool_source_files": 11,
+  "science_manifest_sha256": "1e3a8a21e2fa68e24d1c9229238999c42a4a9b44bcc78344e73e188c87d1ee64",
+  "cpu": {
+    "passed": 65,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "actual_scheduler": {
+      "job": "29777704",
+      "status": "DONE",
+      "scheduler_sha256": "286c086f261867a12482fa96e437f4050663e83fcc7a024f3fb2787e4c83bfd8",
+      "stdout_sha256": "f330d3723f223301569687393b8143ec28cc03a9e1eaad8ca5f88bd704a99f47"
+    },
+    "certificate_sha256": "4b2b9f59d22719771528c9439dfbd338fec3a02922df08190b52bb22b0875bd4",
+    "assessment_sha256": "593c1119a0a67865a7902fb2b16b2832003137beb4ce11814f0161f6cf98cd66",
+    "raw_xml_sha256": "9692429d04b32ece05dd634f352ee9e8878e350af74b4d4e54ea4e6023c2acee"
+  },
+  "callback": {
+    "job": "29777705",
+    "status": "DONE",
+    "scheduler_sha256": "a70324064972fd01c6c80228d001ef270d738581295aca20a19322dc0b595354",
+    "stdout_sha256": "b9889d695c7cdd4e5b535a0c45de6045c5d50b87dfb2500bbc9b304031989944"
+  },
+  "adoption_sha256": "7592facd2832058fa81055c72aaa64f06213bb369c68cb39a0d693b1b5496a60",
+  "adoption_original_proofs_rehashed": 18,
+  "whole_campaign_storage_gate_sha256": "f6118ff93fdbf143d71e109a0000930251e0e482c07c21443ab3b7fec906d5a7",
+  "whole_projected_bytes": 8427765472,
+  "reserve_bytes": 4294967296,
+  "required_bytes": 12722732768,
+  "available_bytes_conservative": 13468221517,
+  "available_files_lower": 19703830,
+  "file_reserve": 100000,
+  "inode_reporting": "unreported_all_zero",
+  "actual_long_submissions": {
+    "protenix": {
+      "job_id": "29777709",
+      "status_at_captured_scheduler": "PEND",
+      "submitted_utc": "2026-10-21T18:15:43.369503+00:00",
+      "rate": 0.3,
+      "single_candidate_fixed_step": true,
+      "dependency": null,
+      "queue": "gpul40s",
+      "cpu_slots": 4,
+      "memory_per_slot": "8GiB",
+      "walltime": "23h",
+      "gpu": "one exclusive GPU",
+      "submission_sha256": "088d768ef618b66c6e38916c76cab4d1da44a690cfba34976dfa27513f3e634d",
+      "scheduler_at_submission_sha256": "a83feca3dada8655fec5a0d39ae8a98c265f3ca7608d97e3255632a9fe14eab5"
+    },
+    "boltz2": {
+      "job_id": "29777710",
+      "status_at_captured_scheduler": "PEND",
+      "submitted_utc": "2026-10-21T18:15:43.671695+00:00",
+      "rate": 0.01,
+      "single_candidate_fixed_step": true,
+      "dependency": null,
+      "queue": "gpul40s",
+      "cpu_slots": 4,
+      "memory_per_slot": "8GiB",
+      "walltime": "23h",
+      "gpu": "one exclusive GPU",
+      "submission_sha256": "26c613d747d0b949b23f0c5d63693b8a6fd3bbca9e8f395126aaa78848e03928",
+      "scheduler_at_submission_sha256": "0dff6b109d7a2c94909278367449887bf64ee04a5989a70f7a8dfb159955db26"
+    },
+    "boltz2_chemistry": {
+      "job_id": "29777711",
+      "status_at_captured_scheduler": "PEND",
+      "submitted_utc": "2026-10-21T18:15:43.958492+00:00",
+      "rate": 0.01,
+      "single_candidate_fixed_step": true,
+      "dependency": null,
+      "queue": "gpul40s",
+      "cpu_slots": 4,
+      "memory_per_slot": "8GiB",
+      "walltime": "23h",
+      "gpu": "one exclusive GPU",
+      "submission_sha256": "9b91ed27590e2f6843e5dfa88767b4bc91b2d5c2f40d48fbc42b1a5418801180",
+      "scheduler_at_submission_sha256": "d3b2a336aa3a03e16b3c169bba4cb4a531ca4147b887be42602d8566f88cb4af"
+    }
+  },
+  "long_submissions_sha256": "ec7411acc09b36a5a90bb1a5be2ba70524681113d38329b9c9df0689700cbef9",
+  "long_scheduler_observed_sha256": "07b41b203551956579060b575cfaf269eb85635ef82f8cffd3412b42de60270d",
+  "limitations": [
+    "Queued submission is not execution or a completed trajectory.",
+    "PEND is the captured scheduler state; no newer live status was queried by this verifier.",
+    "Original failed storage/readiness history is preserved; adoption does not relabel failures."
+  ]
+}

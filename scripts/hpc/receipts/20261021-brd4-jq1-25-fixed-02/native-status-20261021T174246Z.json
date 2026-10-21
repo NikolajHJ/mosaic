@@ -1,0 +1,1218 @@
+{
+  "at": "2026-10-21T19:42:48.065844+02:00",
+  "scheduler": {
+    "rc": 255,
+    "stdout": "29776121 DONE gpul40s Oct 21 19:06:38 2026\n29776122 EXIT hpc Oct 21 19:10:44 2026\n",
+    "stderr": "Job <29776117> is not found\nJob <29776118> is not found\nJob <29776119> is not found\nJob <29776120> is not found\n"
+  },
+  "long_submissions": null,
+  "long_marker": false,
+  "arms": {
+    "protenix": {
+      "decision": {
+        "status": "passed",
+        "native_job": "29776117",
+        "assessment_sha256": "3e1a61215ecb5dd5b7999a05030c3de96b1e811a5f2c1b606af53649e2ca3953",
+        "projected_bytes": 1493301824,
+        "scheduler_proofs": [
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/scheduler-final-1.txt",
+            "sha256": "5088f861cfaee776a98b490e8dbf1c78c1883a8e57cb1bef05e68aba4d8923f3"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/stdout.29776117.log",
+            "sha256": "57f73edeea99ec9492c3110bcb4e8a0aca4d7d16cd5abb6373faaea9869a0e00"
+          }
+        ]
+      },
+      "assessment": {
+        "arm": "protenix",
+        "config_sha256": "69257fd9700d8ca0f42e13ae95ec4c3a15ca623064f657acf4fb8c85b65f1d00",
+        "context_digest": "b28dfad8e5ede565071c70a61695f6a38f5cb6bd591705e32979e59050ff5ce4",
+        "context_files": {
+          "prepared_context.json": "694234feda0b6abaa7e7ed8a7f4b8367165e4326392041457236e994689df9e3",
+          "prepared_context.npz": "a0a52d66ba86619474ceed50f2fc380238ed7b4227599d71a4b50a75c50513dc"
+        },
+        "diffusion_gradient": false,
+        "initialization_sha256": "351789aa62d3ff111a4d2050a062cf844a1f29a87a7e352af465ff4299fd1bbf",
+        "model_digest": "8d6926d5390fe682e193089f790ce53aa4011a6d5509ddb452a55db3d89b0ab2",
+        "n_atoms": 25,
+        "pocket_definition_sha256": "9376c715eaf5b48689fb3e995b00d7820601a7776970df66bd7e7cff3b13ee43",
+        "pocket_validation_status": "passed",
+        "proofs": [
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/payload/study/context/prepared_context.json",
+            "sha256": "694234feda0b6abaa7e7ed8a7f4b8367165e4326392041457236e994689df9e3"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/payload/study/context/prepared_context.npz",
+            "sha256": "a0a52d66ba86619474ceed50f2fc380238ed7b4227599d71a4b50a75c50513dc"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/payload/study/early_pilot/combined_initial_checks/atoms-0.001-+1.npz",
+            "sha256": "4c79642cb1d1ffce635503cd5ff18236153f85b7fe5213230d01fb323b8075d6"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/payload/study/early_pilot/combined_initial_checks/atoms-0.001--1.npz",
+            "sha256": "721f6952a20ecdf31de35596dda6f3f6cf26a6c6eca671375b6973950e4ff7fa"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/payload/study/early_pilot/combined_initial_checks/atoms-0.003-+1.npz",
+            "sha256": "fc0138703c44b6662b202a6fb74f3a39a7433950704ba74fd3c7d749bead35d2"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/payload/study/early_pilot/combined_initial_checks/atoms-0.003--1.npz",
+            "sha256": "30662a6df950f1e47c9c89d99da86402cd50496faa91ffb0422418d2de636c90"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/payload/study/early_pilot/combined_initial_checks/atoms-0.01-+1.npz",
+            "sha256": "b2585f9cc974dd8b56987fd016b462bc3ea245c2584e5d9d7aca1e6a05af0f4e"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/payload/study/early_pilot/combined_initial_checks/atoms-0.01--1.npz",
+            "sha256": "7116d6bd36ad1bf7c18c24704bbfa6e526bf56abd5cc8f8b0c3d09426a003e1c"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/payload/study/early_pilot/combined_initial_checks/bonds-0.001-+1.npz",
+            "sha256": "3547d94542d0a38a6afe99d5e75d04fb947b206b0dc7993a254f8844ee22c5d3"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/payload/study/early_pilot/combined_initial_checks/bonds-0.001--1.npz",
+            "sha256": "991ad92acc9f827fd5d8ef110897336a82c01595292dc4bf654176598feeecc6"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/payload/study/early_pilot/combined_initial_checks/bonds-0.003-+1.npz",
+            "sha256": "abf08a77133c40efbf5790601991b5ac0e3d72abd10f6e18f2f5292fbcc97aed"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/payload/study/early_pilot/combined_initial_checks/bonds-0.003--1.npz",
+            "sha256": "e14cb61ab7248e5a94a26290289236684473f1897230f2f8f73e34ece7e7b68f"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/payload/study/early_pilot/combined_initial_checks/bonds-0.01-+1.npz",
+            "sha256": "4e61b8619a5c93929690594394cba81391eff9aca2be7d8e35e3fb79184bc5a2"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/payload/study/early_pilot/combined_initial_checks/bonds-0.01--1.npz",
+            "sha256": "8c10b6e99f9134cb50073a3aa125e9c4cf4b0b4a988fed75e1d3e0ccf7dc6367"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/payload/study/early_pilot/combined_initial_checks/current_probe.npz",
+            "sha256": "8cf7fe78d1454250b4edd0f6aeb17209f626253566388731d982d80899fe1993"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/payload/study/early_pilot/combined_initial_checks/report.json",
+            "sha256": "a5bb1ebd1c79cf726f0e2bbd45329c22df1add7c376956669c0fb97972f7c707"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/payload/study/early_pilot/current_trial.npz",
+            "sha256": "c965225799b194110ef28d05d9219e5f538592b40dd61b865e43dc28d5144cc7"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/payload/study/early_pilot/references/step-0000.json",
+            "sha256": "9199c0bac9faded526ebd8d7b18ee5b0709a15971720f6af9c501609253e0c31"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/payload/study/early_pilot/references/step-0001.json",
+            "sha256": "e1f1be93ec69d46fdabccd6a8ba8b5557a26dd0c8d9dbf22edc28935d67ddc28"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/payload/study/early_pilot/references/step-0002.json",
+            "sha256": "173157d88ec80b47f435bfbcc1c9251cf07b50ee4ab4d4bebb5e45184ed8b576"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/payload/study/early_pilot/references/step-0003.json",
+            "sha256": "61e617f972f6cac7a5cf2b167d8635fe335c2b71cfa867f8b309d6ef186a3ea4"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/payload/study/early_pilot/references/step-0004.json",
+            "sha256": "597c34be62ef3743fb68b98d1cad1b064fe49e41907c0206a26da793762a99a9"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/payload/study/early_pilot/references/step-0005.json",
+            "sha256": "2af008e746d960963a52d768dee7882859750b9b931e95d70c5b7f1fa476fa19"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/payload/study/early_pilot/references/step-0006.json",
+            "sha256": "143414bc4097938b76dbf2e7b4abe07f08a7e54737b57664805367785d7151ec"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/payload/study/early_pilot/references/step-0007.json",
+            "sha256": "4898755f6f8bf9711b0304b4a8c8764159a5e5f02e074afc9989823562282ec0"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/payload/study/early_pilot/references/step-0008.json",
+            "sha256": "e86784835b3a9708b3d622f97ece7ef0bbf86ac0c4dc6e25d32e0199e776fcbe"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/payload/study/early_pilot/references/step-0009.json",
+            "sha256": "d36da3c264b15e3b95c552760a797d61d8920d3d22dc8b52520c5abf1f2be03a"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/payload/study/early_pilot/references/step-0010.json",
+            "sha256": "bd57c12b6edecebd4682dedcab04ad2b33b2f81ae7a7d14e1b653cfef49b0e4b"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/payload/study/early_pilot/report.json",
+            "sha256": "48baebc085adf1a51bd7dcc3c63ace23af50c320bbeb26e92caff9adca6e9842"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/payload/study/early_pilot/snapshots/step-0000.npz",
+            "sha256": "fbf5920d8985b3e16ec1cabc599ec2a13ccc626cd403bbe67fea49644ab4ad55"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/payload/study/early_pilot/snapshots/step-0001.npz",
+            "sha256": "8c301c5115c86bd791692b6577bc0105e25f12374108925e3eec2b098db2b2be"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/payload/study/early_pilot/snapshots/step-0002.npz",
+            "sha256": "faccba1742f231a518c360a588d06550cac6e18053c518334afc2ba121a9d0a3"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/payload/study/early_pilot/snapshots/step-0003.npz",
+            "sha256": "c18292e9a86c20415e61d675624b3e6ea1d6c173fca67cd10305ca7ea1b2ce46"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/payload/study/early_pilot/snapshots/step-0004.npz",
+            "sha256": "0f5ee1793e6f8df71f6ed9db9c94da283526703b80e3ce22768f6eae8c74f5d9"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/payload/study/early_pilot/snapshots/step-0005.npz",
+            "sha256": "90d728996af14605b88527938566ea96b68c9faff2a620f4c930948d2cddbaf2"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/payload/study/early_pilot/snapshots/step-0006.npz",
+            "sha256": "3a857a451c0183b494441f2916fca273a38e781621d07ff20cb05f1dc9c6a56e"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/payload/study/early_pilot/snapshots/step-0007.npz",
+            "sha256": "21e6cd000f60580466f9cb73f6c0ed687b9476dc8488bce6981c534009b87408"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/payload/study/early_pilot/snapshots/step-0008.npz",
+            "sha256": "ed4066995fe1fe048a8e8dab6a003ad1b03b24521fb2fc4da6e8706a59e28611"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/payload/study/early_pilot/snapshots/step-0009.npz",
+            "sha256": "fde788844a66962e7a5e848e896710b7335732934be6f603f8b85bd12be02298"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/payload/study/early_pilot/snapshots/step-0010.npz",
+            "sha256": "f93d0bd571d79f6b7dba9bfa124990354972ad7a360ab7ef769a41bd27f2dac1"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/payload/study/early_pilot/trials/step-0000.npz",
+            "sha256": "4cd8942954642d67899ad2313aecb65715c804a923cebef4edd23800f6d57e3b"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/payload/study/early_pilot/trials/step-0001.npz",
+            "sha256": "d493161da31e354edd1e13541119ad2dd63f12606bcda92ada0ea7505f0a42ae"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/payload/study/early_pilot/trials/step-0002.npz",
+            "sha256": "8f80700370e14c1e0d014f61a7f3021bfd79894598146f29fa1f2bc2539898c6"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/payload/study/early_pilot/trials/step-0003.npz",
+            "sha256": "1cad5f51dc6733fae41fd848f89589d34f6c61b4e8a09a9e0345e1cc8d58cc5f"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/payload/study/early_pilot/trials/step-0004.npz",
+            "sha256": "ff611e7292dca4cc8e887a57975a81db11c7d5449d83f9dfba4d13ae04a7cb18"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/payload/study/early_pilot/trials/step-0005.npz",
+            "sha256": "cdcca4f777f297a4f9ec11a03857155658c80526dea0528dc8d7a8cd48dba78a"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/payload/study/early_pilot/trials/step-0006.npz",
+            "sha256": "f6ea09a39c247d57d00ad9a6af92338b086cbf5175808b9c158f4d0fe5828af0"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/payload/study/early_pilot/trials/step-0007.npz",
+            "sha256": "3256fafb33b047d21077604d320f8dda377835ce46bb4fe49a6e2e0c5094b262"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/payload/study/early_pilot/trials/step-0008.npz",
+            "sha256": "8e988ca2be7f07f69e65511a15f51ba6d4b7fabe40b7f4cd7a41769d47cad878"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/payload/study/early_pilot/trials/step-0009.npz",
+            "sha256": "536874356c032963db83783389ecefe83fee8e5184a7900554874ebf3ac300c4"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/payload/study/initialization.npz",
+            "sha256": "351789aa62d3ff111a4d2050a062cf844a1f29a87a7e352af465ff4299fd1bbf"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/payload/study/native_gradient_checks/E_upper-0-minus.npz",
+            "sha256": "252c7edf07633f205c945b4e0df1756a425d7d529083de8f329933c266cc7e24"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/payload/study/native_gradient_checks/E_upper-0-plus.npz",
+            "sha256": "7c4f29f7599cbe2acc2d9b6abeba4061e8e8f1f55fcf58fc1ccd8b5061da4cd5"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/payload/study/native_gradient_checks/E_upper-1-minus.npz",
+            "sha256": "6f007e401afa5e27b02caf71502ace205e569615c25638194e46ed2d1b4c1e87"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/payload/study/native_gradient_checks/E_upper-1-plus.npz",
+            "sha256": "f92e0915d91122c04e2e4e82467c924834f68d5876a0867cc390ad173d7cc2f8"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/payload/study/native_gradient_checks/E_upper-2-minus.npz",
+            "sha256": "b2677e3acc53adf15c340c80111e825264d729673807d0161fc585d5d6e76dcc"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/payload/study/native_gradient_checks/E_upper-2-plus.npz",
+            "sha256": "1f2d3c99e464a61e108c02e52d3aeab447d084382e776d6d12bbf9fa4ea082e2"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/payload/study/native_gradient_checks/X-0-minus.npz",
+            "sha256": "828be6e067bd811c354105cd02d8bc361daca18af7e8639ff4c70c93ae8dd636"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/payload/study/native_gradient_checks/X-0-plus.npz",
+            "sha256": "9f105eef28fb62c79bba81c4fcd98040ba2c8a8c4a1a90b6c874f7d99d04d64e"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/payload/study/native_gradient_checks/X-1-minus.npz",
+            "sha256": "abbba1bfbce3d066011e6b27da40b40958c3cbb174b1b8eaef84885bea1faba5"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/payload/study/native_gradient_checks/X-1-plus.npz",
+            "sha256": "c5afd4ed22b490d6db73913003d5d6dec0007d74063a6d29455fc6e3c3b5fb81"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/payload/study/native_gradient_checks/X-2-minus.npz",
+            "sha256": "7a67fe9da43b28981c26f377b5b007dcaf7bb88526333e6144eaf37dbcdd9513"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/payload/study/native_gradient_checks/X-2-plus.npz",
+            "sha256": "98a0c0a114fc3460dee9c73d3dcdb7d18a4919d24f3c046273bb652ccf95b607"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/payload/study/native_gradient_checks/baseline-primal.npz",
+            "sha256": "6418d40f00b0bb2898fa5e6227d7f1cde95d7164dceb3d453e0911d3002cf7da"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/payload/study/native_gradient_checks/bond-order-null.npz",
+            "sha256": "2f14d7e037112c21eeb447d4a6b5512da372f966312fe0b1e12d705711f0f8a2"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/payload/study/native_gradient_checks/final.npz",
+            "sha256": "0bcdbd0d003d163d4d887e3edac01be46033a7a8efa134830693e93f54487604"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/payload/study/native_gradient_checks/final_graph.npz",
+            "sha256": "601b83c610996ce1e2d613b10009ee0f6250916f9cb85b9c2bf1ef9a41900fc5"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/payload/study/native_gradient_checks/final_primal.npz",
+            "sha256": "984fea02a401e99f1f0d847e2cdd1d114546bbdf265ea9878320a7d8f75c4af0"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/payload/study/native_gradient_checks/initial.npz",
+            "sha256": "06fc28f2838f74bd1a7cc7fbd0ed02ed207b100782bafb51c7e6c74004e21c5b"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/payload/study/native_gradient_checks/primal-step-0-trial-0.npz",
+            "sha256": "851d3678057ca63047fbac8af714e6b503f7e5b993cd4cd7947c4828b768033c"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/payload/study/native_gradient_checks/report.json",
+            "sha256": "ce5f67b3a6473a6947272e1905eca6cade755a64a5b0cf07a7db0814f00a47c6"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/payload/study/native_gradient_checks/step-0-trial-0.npz",
+            "sha256": "7335fbfe5c575a26af997c54ce98fb9bd24b05da0b66f41764ca937e9316c3e4"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/payload/study/pocket_definition.json",
+            "sha256": "9376c715eaf5b48689fb3e995b00d7820601a7776970df66bd7e7cff3b13ee43"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/payload/study/summary.json",
+            "sha256": "74efd4053ec494328025837fdb524c5e3a95fa4a55ef23d2007be6d905920bfb"
+          }
+        ],
+        "runtime_gate": {
+          "allocation_seconds": 82800,
+          "conservative_projected_seconds": 5583.44678398571,
+          "mean_update_seconds": [
+            0.2522297855990473
+          ],
+          "scope": "empirical pilots, not a worst-case guarantee",
+          "status": "passed"
+        },
+        "source_manifest_sha256": "1e3a8a21e2fa68e24d1c9229238999c42a4a9b44bcc78344e73e188c87d1ee64",
+        "status": "passed",
+        "storage_projection": {
+          "maximum_pilot_update_bytes": 20978,
+          "policy": "twice largest saved pilot update plus 1 GiB for metadata/context; fresh campaign-wide quota gate before submission",
+          "projected_bytes": 1493301824
+        }
+      },
+      "logs": {
+        "validate-protenix/stderr.29776117.log": "Loaded dependency [python3/3.12.11]: sqlite3/3.50.1\nLoaded dependency [python3/3.12.11]: gcc/14.3.0-binutils-2.44\nLoaded module: python3/3.12.11\n\nLoading python3/3.12.11\n  Loading requirement: sqlite3/3.50.1 gcc/14.3.0-binutils-2.44\nLoaded module: cuda/12.9.1\nLoaded module: cudnn/v9.13.0.50-prod-cuda-12.X\n",
+        "validate-protenix/stdout.29776117.log": "t: Job 29776117: <mosaic-jq1-fixed-validate-protenix> in cluster <dcc> Done\n\nJob <mosaic-jq1-fixed-validate-protenix> was submitted from host <n-62-31-23> by user <s234818> in cluster <dcc> at Wed Oct 21 16:28:45 2026\nJob was executed on host(s) <4*n-62-13-16>, in queue <gpul40s>, as user <s234818> in cluster <dcc> at Wed Oct 21 18:12:33 2026\n</zhome/95/e/206121> was used as the home directory.\n</work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-02/source> was used as the working directory.\nStarted at Wed Oct 21 18:12:33 2026\nTerminated at Wed Oct 21 18:18:21 2026\nResults reported at Wed Oct 21 18:18:21 2026\n\nYour job looked like:\n\n------------------------------------------------------------\n# LSBATCH: User input\nbash -l /work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-02/source/scripts/hpc/fixed25_stage.lsf /work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-02/source /work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02 1e3a8a21e2fa68e24d1c9229238999c42a4a9b44bcc78344e73e188c87d1ee64 validate protenix /work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix 0\n------------------------------------------------------------\n\nSuccessfully completed.\n\nResource usage summary:\n\n    CPU time :                                   1170.00 sec.\n    Max Memory :                                 4466 MB\n    Average Memory :                             3556.20 MB\n    Total Requested Memory :                     32768.00 MB\n    Delta Memory :                               28302.00 MB\n    Max Swap :                                   -\n    Max Processes :                              8\n    Max Threads :                                44\n    Run time :                                   348 sec.\n    Turnaround time :                            6576 sec.\n\nThe output (if any) is above this job summary.\n\n\n\nPS:\n\nRead file </work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-protenix/stderr.29776117.log> for stderr output of this job.\n\n",
+        "after-ready-protenix/stderr.29776118.log": "Loaded dependency [python3/3.12.11]: sqlite3/3.50.1\nLoaded dependency [python3/3.12.11]: gcc/14.3.0-binutils-2.44\nLoaded module: python3/3.12.11\n\nLoading python3/3.12.11\n  Loading requirement: sqlite3/3.50.1 gcc/14.3.0-binutils-2.44\n",
+        "after-ready-protenix/stdout.29776118.log": "b 29776118: <mosaic-jq1-fixed-after-ready-protenix> in cluster <dcc> Done\n\nJob <mosaic-jq1-fixed-after-ready-protenix> was submitted from host <n-62-31-23> by user <s234818> in cluster <dcc> at Wed Oct 21 16:28:45 2026\nJob was executed on host(s) <n-62-31-22>, in queue <hpc>, as user <s234818> in cluster <dcc> at Wed Oct 21 18:18:23 2026\n</zhome/95/e/206121> was used as the home directory.\n</work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-02/source> was used as the working directory.\nStarted at Wed Oct 21 18:18:23 2026\nTerminated at Wed Oct 21 18:18:37 2026\nResults reported at Wed Oct 21 18:18:37 2026\n\nYour job looked like:\n\n------------------------------------------------------------\n# LSBATCH: User input\nbash -l /work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-02/source/scripts/hpc/fixed25_stage.lsf /work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-02/source /work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02 1e3a8a21e2fa68e24d1c9229238999c42a4a9b44bcc78344e73e188c87d1ee64 after-ready protenix /work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/after-ready-protenix 29776117\n------------------------------------------------------------\n\nSuccessfully completed.\n\nResource usage summary:\n\n    CPU time :                                   2.65 sec.\n    Max Memory :                                 17 MB\n    Average Memory :                             17.00 MB\n    Total Requested Memory :                     2048.00 MB\n    Delta Memory :                               2031.00 MB\n    Max Swap :                                   -\n    Max Processes :                              4\n    Max Threads :                                5\n    Run time :                                   14 sec.\n    Turnaround time :                            6592 sec.\n\nThe output (if any) is above this job summary.\n\n\n\nPS:\n\nRead file </work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/after-ready-protenix/stderr.29776118.log> for stderr output of this job.\n\n"
+      }
+    },
+    "boltz2": {
+      "decision": {
+        "status": "passed",
+        "native_job": "29776119",
+        "assessment_sha256": "903a7facf258e29c868160d325287d6c332b339d7a68bf367182b20fca6ff0f0",
+        "projected_bytes": 1770121824,
+        "scheduler_proofs": [
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2/scheduler-final-1.txt",
+            "sha256": "1ef7da257522129c6f5d946b5aa7c025318d91e4dfe4f7f50e667694da70b059"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2/stdout.29776119.log",
+            "sha256": "7a08a32a7ed9ea0e1a76aef1424aa64f954dc7e4ccb2bb1839dc678b1a115cb8"
+          }
+        ]
+      },
+      "assessment": {
+        "arm": "boltz2",
+        "config_sha256": "b6217159b0180b8c2f4b3e57764b2101b79e20e1e8cd021b357ae6563e5b161b",
+        "context_digest": "fd04211da8e22eccd97ecedd96dd59cf4fb2d80aab6a397fa662af8eb92bbad4",
+        "diffusion_gradient": false,
+        "initialization_sha256": "90553f0e28762fe81fa0c40f840e1c2e4884a0f79a1bbf48553132e3c0e27391",
+        "model_digest": "395876da13ab6d5d175e6603db2118a82954c7c06484842fe2314dbd77a31a16",
+        "n_atoms": 25,
+        "pocket_definition_sha256": "9376c715eaf5b48689fb3e995b00d7820601a7776970df66bd7e7cff3b13ee43",
+        "pocket_validation_status": "passed",
+        "proofs": [
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2/payload/study/early_pilot/combined_initial_checks/atoms-0.001-+1.npz",
+            "sha256": "7f8990079e13d5b58324f7410c1737a9fbd789548ca22133c91e2a5436035a00"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2/payload/study/early_pilot/combined_initial_checks/atoms-0.001--1.npz",
+            "sha256": "d2b86a482fb2d6db0fb9bc0014e06e64bd851b720dc88cb1b00b31a98946ccb5"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2/payload/study/early_pilot/combined_initial_checks/atoms-0.003-+1.npz",
+            "sha256": "fb3357423f61ad6d82f9ed63fef19df7c811a1703940e057241d887b54326afa"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2/payload/study/early_pilot/combined_initial_checks/atoms-0.003--1.npz",
+            "sha256": "7fa04cda8cc431eb037812a40fe16ad9a30a3ae84cfc834fa6fd5dc83265cbfd"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2/payload/study/early_pilot/combined_initial_checks/atoms-0.01-+1.npz",
+            "sha256": "01a2be095d599d3b0e28583a137fe68bd1cd2c0cdfa1d70ef1e20a4de689385a"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2/payload/study/early_pilot/combined_initial_checks/atoms-0.01--1.npz",
+            "sha256": "78478de7589bb2372391ecf6fb0bedbcc630ea8bc3c88de94a566f904749741a"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2/payload/study/early_pilot/combined_initial_checks/bonds-0.001-+1.npz",
+            "sha256": "c3d6fca3dfcabb02752e60694a612a9e8ffc87c5b8e5c66c023c34bc47625c6f"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2/payload/study/early_pilot/combined_initial_checks/bonds-0.001--1.npz",
+            "sha256": "f885a3243c05265962b995523c0321f5391067095dae3689fc9205a2f7333673"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2/payload/study/early_pilot/combined_initial_checks/bonds-0.003-+1.npz",
+            "sha256": "880d8524d94d7cf46f3b5684a8f8e1ad769d7760e5646822c6f539d6686379ac"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2/payload/study/early_pilot/combined_initial_checks/bonds-0.003--1.npz",
+            "sha256": "a990775bb268877ea7b16c89349cbca39894a3d57736f10df77c6326e3c692dd"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2/payload/study/early_pilot/combined_initial_checks/bonds-0.01-+1.npz",
+            "sha256": "80a5fb678162305ac1e4b2823538c33c5964cac259f730444b6672dd0477a0a1"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2/payload/study/early_pilot/combined_initial_checks/bonds-0.01--1.npz",
+            "sha256": "3aa98ca20df78e943e83b460885d7e8e2dbc0e7f655a3283f70c37c7c5566e82"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2/payload/study/early_pilot/combined_initial_checks/current_probe.npz",
+            "sha256": "8c6f5cc842861d785e1a1470f688dd48f445bf2307011f8f74f968937c8b5c8c"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2/payload/study/early_pilot/combined_initial_checks/report.json",
+            "sha256": "98c1020b11dace99570d297701704d9a5a39f8a77da24f2ef6d325f59e939962"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2/payload/study/early_pilot/current_trial.npz",
+            "sha256": "b29b5458c4067032f60f5b8ef052aff255ca996ee3d41c5971335bddec49dd20"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2/payload/study/early_pilot/references/step-0000.json",
+            "sha256": "9199c0bac9faded526ebd8d7b18ee5b0709a15971720f6af9c501609253e0c31"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2/payload/study/early_pilot/references/step-0001.json",
+            "sha256": "e1f1be93ec69d46fdabccd6a8ba8b5557a26dd0c8d9dbf22edc28935d67ddc28"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2/payload/study/early_pilot/references/step-0002.json",
+            "sha256": "173157d88ec80b47f435bfbcc1c9251cf07b50ee4ab4d4bebb5e45184ed8b576"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2/payload/study/early_pilot/references/step-0003.json",
+            "sha256": "61e617f972f6cac7a5cf2b167d8635fe335c2b71cfa867f8b309d6ef186a3ea4"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2/payload/study/early_pilot/references/step-0004.json",
+            "sha256": "597c34be62ef3743fb68b98d1cad1b064fe49e41907c0206a26da793762a99a9"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2/payload/study/early_pilot/references/step-0005.json",
+            "sha256": "2af008e746d960963a52d768dee7882859750b9b931e95d70c5b7f1fa476fa19"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2/payload/study/early_pilot/references/step-0006.json",
+            "sha256": "143414bc4097938b76dbf2e7b4abe07f08a7e54737b57664805367785d7151ec"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2/payload/study/early_pilot/references/step-0007.json",
+            "sha256": "4898755f6f8bf9711b0304b4a8c8764159a5e5f02e074afc9989823562282ec0"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2/payload/study/early_pilot/references/step-0008.json",
+            "sha256": "e86784835b3a9708b3d622f97ece7ef0bbf86ac0c4dc6e25d32e0199e776fcbe"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2/payload/study/early_pilot/references/step-0009.json",
+            "sha256": "d36da3c264b15e3b95c552760a797d61d8920d3d22dc8b52520c5abf1f2be03a"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2/payload/study/early_pilot/references/step-0010.json",
+            "sha256": "bd57c12b6edecebd4682dedcab04ad2b33b2f81ae7a7d14e1b653cfef49b0e4b"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2/payload/study/early_pilot/report.json",
+            "sha256": "79e2b808a153a08a08d93c278e014bc8a3cec0db4131d88bc87b5f9237f1cada"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2/payload/study/early_pilot/snapshots/step-0000.npz",
+            "sha256": "79fad1d5ff1c15228687c3d39934dde2c16d648d6c458e8fdcc092a9ce42625f"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2/payload/study/early_pilot/snapshots/step-0001.npz",
+            "sha256": "26016314152fd27bae1929d9b4b6b6b77a4a669f97d3eca4a06d3c0aa011100c"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2/payload/study/early_pilot/snapshots/step-0002.npz",
+            "sha256": "3147f6ff94716f9fe0619281d947ace2ab8228ce4c963f19aa2c40803b3cff2c"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2/payload/study/early_pilot/snapshots/step-0003.npz",
+            "sha256": "772e604c8379d677a562f5f669e4d548c776bf844f506bbbf5c04aeb53188da6"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2/payload/study/early_pilot/snapshots/step-0004.npz",
+            "sha256": "c04dcdfeff40c0b3fc06bde2851e4b1568d52808cb68a499c60f49eea8aa3a5b"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2/payload/study/early_pilot/snapshots/step-0005.npz",
+            "sha256": "7efccee9c13187ea06affe4729d8b2342689faf4baed26f02967e82abb71333f"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2/payload/study/early_pilot/snapshots/step-0006.npz",
+            "sha256": "2276a54946beb66b9a311bfa6005ccac5b2e19a928a1290a7b7762f00ca87cf2"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2/payload/study/early_pilot/snapshots/step-0007.npz",
+            "sha256": "645f025da2308895c602c45866a4c183913de74bc78c3cbe43ee16408c277c21"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2/payload/study/early_pilot/snapshots/step-0008.npz",
+            "sha256": "7c62158180d5b38e9257cabf25bd3098e36c3f2618f86d12397d4de776cf7abe"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2/payload/study/early_pilot/snapshots/step-0009.npz",
+            "sha256": "b78a3c6a840805ca296dc82d24cc4813f627c91cf09b27dc4e452490d269e2fb"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2/payload/study/early_pilot/snapshots/step-0010.npz",
+            "sha256": "f6ee69b2b333fea3b993b1e47fd8473e9ba262345d6ff849310f3f07cc480e69"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2/payload/study/early_pilot/trials/step-0000.npz",
+            "sha256": "e16a545c42bb432653fc92dde446d89de48dc5ec71ba2bb6e5591778aaf96814"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2/payload/study/early_pilot/trials/step-0001.npz",
+            "sha256": "915dd401c509f987cec11a7a467663485502908bdea3ead4e7387fd09b2d4c14"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2/payload/study/early_pilot/trials/step-0002.npz",
+            "sha256": "4b38b91c7b70d358733e38b912395e67f7dd498c73a207063deaf610927fd061"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2/payload/study/early_pilot/trials/step-0003.npz",
+            "sha256": "46212c4b888b4aa2f59fc9f5699081aa3e637c8a0067efe495c507dcd4af4858"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2/payload/study/early_pilot/trials/step-0004.npz",
+            "sha256": "f82fc46d7d3b14dedce526464d3a6c8b0751996beabad279305e4f5c9a9489f5"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2/payload/study/early_pilot/trials/step-0005.npz",
+            "sha256": "628cbdd25601ec8227a7254741181fb5d68d555520c59a28a6c5cf63c03cac90"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2/payload/study/early_pilot/trials/step-0006.npz",
+            "sha256": "b4e4081d6d25bee15479f04d246375b1b749c7a7db2db49286ef9506f51f4131"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2/payload/study/early_pilot/trials/step-0007.npz",
+            "sha256": "1df83ee8d1c79aa5a5ad835a1118722bede4c84bdf138a81e307786bccddfecf"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2/payload/study/early_pilot/trials/step-0008.npz",
+            "sha256": "2657492e7404d219cd00ac8d202411a6e62ce5e54b95256740b12b663a1c7c07"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2/payload/study/early_pilot/trials/step-0009.npz",
+            "sha256": "9fc1de8d39c7f1a3478dcfbe5443a6feb4c6e178af5ed0fbf3413e142dfc212f"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2/payload/study/initialization.npz",
+            "sha256": "90553f0e28762fe81fa0c40f840e1c2e4884a0f79a1bbf48553132e3c0e27391"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2/payload/study/native_gradient_checks/report.json",
+            "sha256": "cfa919e63cac1f0a4bbdb3cd09cfce86b92a1da77b5074ea664265721de46e3f"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2/payload/study/pocket_definition.json",
+            "sha256": "9376c715eaf5b48689fb3e995b00d7820601a7776970df66bd7e7cff3b13ee43"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2/payload/study/summary.json",
+            "sha256": "a3551fae359c65f3c5f280b5d7ba5225b1c1bd52ffbd3b8303cc58ab758390b0"
+          }
+        ],
+        "runtime_gate": {
+          "allocation_seconds": 82800,
+          "conservative_projected_seconds": 27799.245883285766,
+          "mean_update_seconds": [
+            1.7332830588857178
+          ],
+          "scope": "empirical pilots, not a worst-case guarantee",
+          "status": "passed"
+        },
+        "source_manifest_sha256": "1e3a8a21e2fa68e24d1c9229238999c42a4a9b44bcc78344e73e188c87d1ee64",
+        "status": "passed",
+        "storage_projection": {
+          "maximum_pilot_update_bytes": 34819,
+          "policy": "twice largest saved pilot update plus 1 GiB for metadata/context; fresh campaign-wide quota gate before submission",
+          "projected_bytes": 1770121824
+        }
+      },
+      "logs": {
+        "validate-boltz2/stdout.29776119.log": ".dk>\nSubject: Job 29776119: <mosaic-jq1-fixed-validate-boltz2> in cluster <dcc> Done\n\nJob <mosaic-jq1-fixed-validate-boltz2> was submitted from host <n-62-31-23> by user <s234818> in cluster <dcc> at Wed Oct 21 16:28:46 2026\nJob was executed on host(s) <4*n-62-13-16>, in queue <gpul40s>, as user <s234818> in cluster <dcc> at Wed Oct 21 18:18:23 2026\n</zhome/95/e/206121> was used as the home directory.\n</work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-02/source> was used as the working directory.\nStarted at Wed Oct 21 18:18:23 2026\nTerminated at Wed Oct 21 18:20:12 2026\nResults reported at Wed Oct 21 18:20:12 2026\n\nYour job looked like:\n\n------------------------------------------------------------\n# LSBATCH: User input\nbash -l /work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-02/source/scripts/hpc/fixed25_stage.lsf /work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-02/source /work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02 1e3a8a21e2fa68e24d1c9229238999c42a4a9b44bcc78344e73e188c87d1ee64 validate boltz2 /work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2 0\n------------------------------------------------------------\n\nSuccessfully completed.\n\nResource usage summary:\n\n    CPU time :                                   123.00 sec.\n    Max Memory :                                 4828 MB\n    Average Memory :                             3330.67 MB\n    Total Requested Memory :                     32768.00 MB\n    Delta Memory :                               27940.00 MB\n    Max Swap :                                   -\n    Max Processes :                              5\n    Max Threads :                                39\n    Run time :                                   109 sec.\n    Turnaround time :                            6686 sec.\n\nThe output (if any) is above this job summary.\n\n\n\nPS:\n\nRead file </work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2/stderr.29776119.log> for stderr output of this job.\n\n",
+        "validate-boltz2/stderr.29776119.log": "Loaded dependency [python3/3.12.11]: sqlite3/3.50.1\nLoaded dependency [python3/3.12.11]: gcc/14.3.0-binutils-2.44\nLoaded module: python3/3.12.11\n\nLoading python3/3.12.11\n  Loading requirement: sqlite3/3.50.1 gcc/14.3.0-binutils-2.44\nLoaded module: cuda/12.9.1\n",
+        "after-ready-boltz2/stderr.29776120.log": "Loaded dependency [python3/3.12.11]: sqlite3/3.50.1\nLoaded dependency [python3/3.12.11]: gcc/14.3.0-binutils-2.44\nLoaded module: python3/3.12.11\n\nLoading python3/3.12.11\n  Loading requirement: sqlite3/3.50.1 gcc/14.3.0-binutils-2.44\n",
+        "after-ready-boltz2/stdout.29776120.log": "ubject: Job 29776120: <mosaic-jq1-fixed-after-ready-boltz2> in cluster <dcc> Done\n\nJob <mosaic-jq1-fixed-after-ready-boltz2> was submitted from host <n-62-31-23> by user <s234818> in cluster <dcc> at Wed Oct 21 16:28:46 2026\nJob was executed on host(s) <n-62-31-22>, in queue <hpc>, as user <s234818> in cluster <dcc> at Wed Oct 21 18:20:14 2026\n</zhome/95/e/206121> was used as the home directory.\n</work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-02/source> was used as the working directory.\nStarted at Wed Oct 21 18:20:14 2026\nTerminated at Wed Oct 21 18:20:28 2026\nResults reported at Wed Oct 21 18:20:28 2026\n\nYour job looked like:\n\n------------------------------------------------------------\n# LSBATCH: User input\nbash -l /work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-02/source/scripts/hpc/fixed25_stage.lsf /work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-02/source /work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02 1e3a8a21e2fa68e24d1c9229238999c42a4a9b44bcc78344e73e188c87d1ee64 after-ready boltz2 /work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/after-ready-boltz2 29776119\n------------------------------------------------------------\n\nSuccessfully completed.\n\nResource usage summary:\n\n    CPU time :                                   2.07 sec.\n    Max Memory :                                 17 MB\n    Average Memory :                             17.00 MB\n    Total Requested Memory :                     2048.00 MB\n    Delta Memory :                               2031.00 MB\n    Max Swap :                                   -\n    Max Processes :                              4\n    Max Threads :                                5\n    Run time :                                   14 sec.\n    Turnaround time :                            6702 sec.\n\nThe output (if any) is above this job summary.\n\n\n\nPS:\n\nRead file </work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/after-ready-boltz2/stderr.29776120.log> for stderr output of this job.\n\n"
+      }
+    },
+    "boltz2_chemistry": {
+      "decision": {
+        "status": "passed",
+        "native_job": "29776121",
+        "assessment_sha256": "5602e2c80dd37c6951356eba04762ceb9799b24ccd6126db7fd8c175ec662e88",
+        "projected_bytes": 5164341824,
+        "scheduler_proofs": [
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/scheduler-final-1.txt",
+            "sha256": "bd46f85a918fa43f9b29739a8802482dfa422264c4fc21e55c3c024d707873f5"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/stdout.29776121.log",
+            "sha256": "b98bd96fc7ff054a91ba8925d0f3d16b507ce3c085f7a1cf95c55398e93cbf58"
+          }
+        ]
+      },
+      "assessment": {
+        "arm": "boltz2_chemistry",
+        "config_sha256": "dd6347a0756320bc79dea5fbbf7da9aeca8e8bf93dc38f30cd141fd240059049",
+        "context_digest": "fd04211da8e22eccd97ecedd96dd59cf4fb2d80aab6a397fa662af8eb92bbad4",
+        "diffusion_gradient": false,
+        "initialization_sha256": "90553f0e28762fe81fa0c40f840e1c2e4884a0f79a1bbf48553132e3c0e27391",
+        "model_digest": "395876da13ab6d5d175e6603db2118a82954c7c06484842fe2314dbd77a31a16",
+        "n_atoms": 25,
+        "pocket_definition_sha256": "9376c715eaf5b48689fb3e995b00d7820601a7776970df66bd7e7cff3b13ee43",
+        "pocket_validation_status": "passed",
+        "proofs": [
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/early_pilot/combined_initial_checks/atoms-0.001-+1.npz",
+            "sha256": "7bfae72e1d235b61fa0a1d8d1cb18eb3bd3b3613b12fdc0bab3782f1bead6333"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/early_pilot/combined_initial_checks/atoms-0.001--1.npz",
+            "sha256": "a754a91093f4567facc64e6464b97c08c00d560f074a3c654b4208c576972941"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/early_pilot/combined_initial_checks/atoms-0.003-+1.npz",
+            "sha256": "b1df88790dc1e64e7e4a3fff7385ba77c38896a185b332868dfbfaf26707b51c"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/early_pilot/combined_initial_checks/atoms-0.003--1.npz",
+            "sha256": "e7370e394df794a1ed1f5c0d5ea743fb8a9cadc6802279903ef6169eec5ecb08"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/early_pilot/combined_initial_checks/atoms-0.01-+1.npz",
+            "sha256": "f2fb729bc4535bba6f74e91857871ed06c24a841c899eeb94a482d8a76e6575f"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/early_pilot/combined_initial_checks/atoms-0.01--1.npz",
+            "sha256": "33b7739f55cd7a85ee33b77044c4ed8f64f7e4f8b9576de1c1564623e1d29030"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/early_pilot/combined_initial_checks/bonds-0.001-+1.npz",
+            "sha256": "5434cfe33c44942c59f45134e7eb06225e79c749c447679d1b67c2cb507a6ac3"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/early_pilot/combined_initial_checks/bonds-0.001--1.npz",
+            "sha256": "32e274feae96a874f4e4e4a2bbaf030dac26a55d1986eb9e97bb2e1040b9b172"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/early_pilot/combined_initial_checks/bonds-0.003-+1.npz",
+            "sha256": "c672b19baefdfd84c110979353d9633f553dc01505d187bee814679e8e41ea4d"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/early_pilot/combined_initial_checks/bonds-0.003--1.npz",
+            "sha256": "5114c39e17dbab5bf1c209776d5b320d01113aed5346e1344f38a7677461a15d"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/early_pilot/combined_initial_checks/bonds-0.01-+1.npz",
+            "sha256": "83e4975fc4bbde2315c9d0f25c829ae90054368da29d13842d23bfd4c4405d4e"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/early_pilot/combined_initial_checks/bonds-0.01--1.npz",
+            "sha256": "7143838ce94b182bd736306f88a38b56da870ec7aa9a262b226e545a08ae13a9"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/early_pilot/combined_initial_checks/current_probe.npz",
+            "sha256": "8c6f5cc842861d785e1a1470f688dd48f445bf2307011f8f74f968937c8b5c8c"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/early_pilot/combined_initial_checks/report.json",
+            "sha256": "a4d1d08f5edcedc095c58829b1e8cafa934194da8b9578bff3fe189062bba76f"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/early_pilot/current_trial.npz",
+            "sha256": "b29b5458c4067032f60f5b8ef052aff255ca996ee3d41c5971335bddec49dd20"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/early_pilot/references/step-0000.json",
+            "sha256": "17d206628a353f0426d9b78741dbc4b024df33e488b06d7d05301c5db5c73e1c"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/early_pilot/references/step-0001.json",
+            "sha256": "9680ef7ee5f9ed8f4144c45d93a6a89df8965f3d1188dd5bc8f5eb9632c1cb16"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/early_pilot/references/step-0002.json",
+            "sha256": "355d39ca53fd0e4775e73ff7ae602617c2708e25ee313a87e0be1acdbe65e05e"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/early_pilot/references/step-0003.json",
+            "sha256": "c294e1ce8fa0c0240f18e7b9bc412f3ed29d53e98e3cbe93438a104e48f91b7d"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/early_pilot/references/step-0004.json",
+            "sha256": "c1dc92dfdb6eb76ac8a2da1b716c1836fd9238deb140a14bf98da831fee60a92"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/early_pilot/references/step-0005.json",
+            "sha256": "ae61af40622228cd9aed91fa3f735f0b7323bee0d6f0a2c18c1dad7fa6c76693"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/early_pilot/references/step-0006.json",
+            "sha256": "b0a6464fa7b43215a48352d0fc3170c73ae0291227a2dc333a203613aa49e80a"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/early_pilot/references/step-0007.json",
+            "sha256": "37ce5c8831f728cd026c25b3595af042be9d870eaf9052377fd6ea390c8f72b7"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/early_pilot/references/step-0008.json",
+            "sha256": "7c8fb300860006823d87a9325c420c6a5bcfe65602e1d046b72081f2ee8edef1"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/early_pilot/references/step-0009.json",
+            "sha256": "1ceb1f407e896867f102c572ccadf6ae8af7609af8f0efadf5db22bf61cd5027"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/early_pilot/references/step-0010.json",
+            "sha256": "b39544f9ef3c2753eeeaa94bea9ae7d15f19c92294c01ef6589e944592f1ce31"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/early_pilot/report.json",
+            "sha256": "2111e7c34a4c4aaa71df9f3ed76dfb66861a381ea1297b3f0b96869132d5dd29"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/early_pilot/snapshots/step-0000.npz",
+            "sha256": "774fbdbcaab45d18933b04a39ac15900e2bf3d8135075f86f42ecfe73accd11e"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/early_pilot/snapshots/step-0001.npz",
+            "sha256": "589e5336d5326b38d72b575509b9d26669e86818bc1ab42056bb825a10e91652"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/early_pilot/snapshots/step-0002.npz",
+            "sha256": "53c534bce70233050d50dc497c871c9661dd48482588e3b30a3fa0cc572b6c69"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/early_pilot/snapshots/step-0003.npz",
+            "sha256": "b7a26932eeb3220fe45e043df5bd92574391da0d1c81930235dbb54d3912c541"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/early_pilot/snapshots/step-0004.npz",
+            "sha256": "547872e6a9f6ea208591b5f0b47880ebc91adf0bcc6b00e59115f017536dcdf5"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/early_pilot/snapshots/step-0005.npz",
+            "sha256": "56a3d112a584be5e673340e1aedbcf76ef7e9c2cee01850d7298a322d533434d"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/early_pilot/snapshots/step-0006.npz",
+            "sha256": "ac10b5e2450f1f12a7b7a1a9b394f141aee844a7b123743ca26cb01da0807105"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/early_pilot/snapshots/step-0007.npz",
+            "sha256": "d08a6d1b26129e72bd5b2b26d65f1747b4787ce9182f7fae5d707bb6940cb93f"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/early_pilot/snapshots/step-0008.npz",
+            "sha256": "cc6f3c6e0abb8cfbd99dc7b3baf69c7fd7f88f7f038fc4292a262ca643a80df0"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/early_pilot/snapshots/step-0009.npz",
+            "sha256": "9aba04ad3c8ff8ce328de23f7e0fec89c9d17de8cd6ecf11b51967559d1fc7dd"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/early_pilot/snapshots/step-0010.npz",
+            "sha256": "a8360ea6adf4ccbbfbbf8f4b80518df26d0e12362ce5506ad9c39cc0bd47288d"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/early_pilot/trials/step-0000.npz",
+            "sha256": "c414a079a1e1ad4bf574a8a8bfa976181c020e0b8cf8a62133afa75194e9b5f8"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/early_pilot/trials/step-0001.npz",
+            "sha256": "284d6049d7fbcfa3f2f9dc808d1cd5e3ad91ac8a5c89a7051afdff423a993d25"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/early_pilot/trials/step-0002.npz",
+            "sha256": "65f624a413c423fce42f7c0853d93d0d9c7383c14f84d68b2507b23c77c4be25"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/early_pilot/trials/step-0003.npz",
+            "sha256": "ae807c474b4c1ea894c818275450fa278fa80e86ef5546568d48263e28d858bd"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/early_pilot/trials/step-0004.npz",
+            "sha256": "be8ee05f303380ea33eb981d59fcf5b9483688e130507e0ebf9697560f9c571e"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/early_pilot/trials/step-0005.npz",
+            "sha256": "29e46e448e8485faa72ee2e534be0973059e78e8f0d1421ba6169edcd50e5842"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/early_pilot/trials/step-0006.npz",
+            "sha256": "ed90d6e1182161f6a1c83955551f6f8540ce72f83e249e170d5384dd25fca2db"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/early_pilot/trials/step-0007.npz",
+            "sha256": "8b78c5b5f1ad243ae77bec28f23953601babce9f3f04634a875b4d5850c6748a"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/early_pilot/trials/step-0008.npz",
+            "sha256": "3c2204cd427f60c90421bd630778dc9aa2269919608f85319e9c0e17f1ed9aea"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/early_pilot/trials/step-0009.npz",
+            "sha256": "4724db70a0467f9d6441665a1146c5d58d545932da6615906ce9fcb13e49bb43"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/high_coupled_checks/atoms-0.001-+1.npz",
+            "sha256": "28cf1aca3893a08fb3126febac673b70db062e22279875ea236afc76233c443a"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/high_coupled_checks/atoms-0.001--1.npz",
+            "sha256": "bc5963dabfd48b58c9529c6b771800f10a550f5f08ecc63df7d3fab28e56aac4"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/high_coupled_checks/atoms-0.003-+1.npz",
+            "sha256": "693675ba6fead22b9683b9b260368d99d693a2170d1b7da0464b496f07773dc5"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/high_coupled_checks/atoms-0.003--1.npz",
+            "sha256": "00b4f56cf3e911c87c06788239c6066d1cbae23bc4cc30064fe49fc0aec793d8"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/high_coupled_checks/atoms-0.01-+1.npz",
+            "sha256": "69bd5a131b51f43e0efb0ef5023622c9d5ffd166f278e849c5d848a8647cc757"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/high_coupled_checks/atoms-0.01--1.npz",
+            "sha256": "1608352ae5f4d59963c43cf06f55bee4cad51129a8fa420e2e2b303d185ad276"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/high_coupled_checks/bonds-0.001-+1.npz",
+            "sha256": "774dc5e63fc2aba0c2ed418a7f9d0e754fe7c773bbc45a834b3951a80f3db1f0"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/high_coupled_checks/bonds-0.001--1.npz",
+            "sha256": "2a4a4a7bf57613572246c60287f407f19953955102be6aa042396093cd04ca4f"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/high_coupled_checks/bonds-0.003-+1.npz",
+            "sha256": "37c0e7d93b17fe589853d2795ca29abaf7361ccee080df622c50839af042f777"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/high_coupled_checks/bonds-0.003--1.npz",
+            "sha256": "cb230a851a855698fb752684a8a5b388ca862dd61d29a9cf0faf524dc2021b10"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/high_coupled_checks/bonds-0.01-+1.npz",
+            "sha256": "3eede0b6e83475f1ba01cd72691030709d2691b81236f157d8c801bf1c663415"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/high_coupled_checks/bonds-0.01--1.npz",
+            "sha256": "7a909bb021a8609a01339ab474731c99825603a5c1c2b07b0c23e6aefe905bca"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/high_coupled_checks/current_probe.npz",
+            "sha256": "1f698a895d3e45277dbfcfe978e95168d601b429f31071887b9591e1cfc7b5b6"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/high_coupled_checks/report.json",
+            "sha256": "f1e671a0190805434b6eaa65dba4c8c0e0f061907c44bdeb82fc813995c38f1d"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/high_pilot/combined_initial_checks/atoms-0.001-+1.npz",
+            "sha256": "28cf1aca3893a08fb3126febac673b70db062e22279875ea236afc76233c443a"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/high_pilot/combined_initial_checks/atoms-0.001--1.npz",
+            "sha256": "bc5963dabfd48b58c9529c6b771800f10a550f5f08ecc63df7d3fab28e56aac4"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/high_pilot/combined_initial_checks/atoms-0.003-+1.npz",
+            "sha256": "693675ba6fead22b9683b9b260368d99d693a2170d1b7da0464b496f07773dc5"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/high_pilot/combined_initial_checks/atoms-0.003--1.npz",
+            "sha256": "00b4f56cf3e911c87c06788239c6066d1cbae23bc4cc30064fe49fc0aec793d8"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/high_pilot/combined_initial_checks/atoms-0.01-+1.npz",
+            "sha256": "69bd5a131b51f43e0efb0ef5023622c9d5ffd166f278e849c5d848a8647cc757"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/high_pilot/combined_initial_checks/atoms-0.01--1.npz",
+            "sha256": "1608352ae5f4d59963c43cf06f55bee4cad51129a8fa420e2e2b303d185ad276"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/high_pilot/combined_initial_checks/bonds-0.001-+1.npz",
+            "sha256": "774dc5e63fc2aba0c2ed418a7f9d0e754fe7c773bbc45a834b3951a80f3db1f0"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/high_pilot/combined_initial_checks/bonds-0.001--1.npz",
+            "sha256": "2a4a4a7bf57613572246c60287f407f19953955102be6aa042396093cd04ca4f"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/high_pilot/combined_initial_checks/bonds-0.003-+1.npz",
+            "sha256": "37c0e7d93b17fe589853d2795ca29abaf7361ccee080df622c50839af042f777"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/high_pilot/combined_initial_checks/bonds-0.003--1.npz",
+            "sha256": "cb230a851a855698fb752684a8a5b388ca862dd61d29a9cf0faf524dc2021b10"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/high_pilot/combined_initial_checks/bonds-0.01-+1.npz",
+            "sha256": "3eede0b6e83475f1ba01cd72691030709d2691b81236f157d8c801bf1c663415"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/high_pilot/combined_initial_checks/bonds-0.01--1.npz",
+            "sha256": "7a909bb021a8609a01339ab474731c99825603a5c1c2b07b0c23e6aefe905bca"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/high_pilot/combined_initial_checks/current_probe.npz",
+            "sha256": "1f698a895d3e45277dbfcfe978e95168d601b429f31071887b9591e1cfc7b5b6"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/high_pilot/combined_initial_checks/report.json",
+            "sha256": "f1e671a0190805434b6eaa65dba4c8c0e0f061907c44bdeb82fc813995c38f1d"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/high_pilot/current_trial.npz",
+            "sha256": "3c89c9f07ffdb4d39fbd1232da6215a91c47ed5f4e691a080caebe80d6d25ec8"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/high_pilot/references/step-0000.json",
+            "sha256": "1a98093009a43a15ce362dc71e0f1018974de0e3930166f95d566189145d2f63"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/high_pilot/references/step-0001.json",
+            "sha256": "815b125208290a715c38d09daf4c5e280ca1f9740529f46bd926d1b195574aeb"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/high_pilot/references/step-0002.json",
+            "sha256": "ba9f9c83426acd52c05de4b316b68024a07e8b8b6af85024073517be95dc2b3e"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/high_pilot/references/step-0003.json",
+            "sha256": "f7253aa073df80febb59cf4d00b9ad0dea43ddc7b9ab45fb0ab192dd77c0944f"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/high_pilot/references/step-0004.json",
+            "sha256": "426c13740e84eda1beafcf3ba19911a46667c42ad14bcc2046de068653014c1f"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/high_pilot/references/step-0005.json",
+            "sha256": "f34bc63552b115e0d47c942faa79d5b7c378094c5ca37bdb792e3000e5322f53"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/high_pilot/references/step-0006.json",
+            "sha256": "be895b1bdc27d713c624c57d68394d13bdcc64ee21b7dec92c4ac55a5ade6154"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/high_pilot/references/step-0007.json",
+            "sha256": "88454149918e5d1dac08ab1ccdb6cc79def1eafabf38bf04c6c510729d92abb8"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/high_pilot/references/step-0008.json",
+            "sha256": "aef6a8fad738303831a4bc528466ce6c018209be0f3d2302d5fcf8e481c86d78"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/high_pilot/references/step-0009.json",
+            "sha256": "d44194c7eaaeaead8bed541a5ab894c6d01cf748dd3413b6ecd81d2ec798b8e9"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/high_pilot/references/step-0010.json",
+            "sha256": "76a6f4e55478cd178a4b4257b44030593fb8b10a41e9dd3ac62048268ccacc41"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/high_pilot/report.json",
+            "sha256": "7df4738339006a7967492eec3e626c44871989f2d5d547e10768d402b20cb633"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/high_pilot/snapshots/step-0000.npz",
+            "sha256": "7d09e048916fa26efefb5bdd47b081b43a31fd24a64d6b3d50ada128d0ec024f"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/high_pilot/snapshots/step-0001.npz",
+            "sha256": "d1e8e523df0bc867caf11d9d4ebc568053389156fd2504ccb3c1edc264844d69"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/high_pilot/snapshots/step-0002.npz",
+            "sha256": "8b654341b9c3241236e9403bafd7d13cc9c2f9d53f7232704f35aec1d9a1052d"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/high_pilot/snapshots/step-0003.npz",
+            "sha256": "13457bf467e7aba962afcf646ffa06a5c2a25a8d00dd250d8a7f0e72f9ade7df"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/high_pilot/snapshots/step-0004.npz",
+            "sha256": "51aa49b3fac8188ad4bcd73f05c9e958fb975679995c38f916d844eb23810d7c"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/high_pilot/snapshots/step-0005.npz",
+            "sha256": "98821014635e8271918be913f3a3b2c9787c944f270e4dbbfc57266d74bb4b46"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/high_pilot/snapshots/step-0006.npz",
+            "sha256": "c9f91ce74a605d100db258dac344111ec98b1aa58e55c52c52801193a52de2a9"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/high_pilot/snapshots/step-0007.npz",
+            "sha256": "877f2933ac850efdd7f7040d46d4a0e2d20996dd55d3c9cbf3dc0034d906c9e1"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/high_pilot/snapshots/step-0008.npz",
+            "sha256": "016abe6fdf4a123fccbdd17c9e89c5e3554956204bbfbbed4a552aa04ca6cff8"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/high_pilot/snapshots/step-0009.npz",
+            "sha256": "b31446928ebba1bdf13e84fdcf73fff5ac96f18924d691dac915e08296e123c0"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/high_pilot/snapshots/step-0010.npz",
+            "sha256": "a25c2190a64383a7c9ccbb9e79f8286264fe4899b166697da5902196c2c68efe"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/high_pilot/trials/step-0000.npz",
+            "sha256": "def8c83119a2856fcf5996da7be262885bee3707a98c081a2f27cfb2d561ae60"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/high_pilot/trials/step-0001.npz",
+            "sha256": "767a4192c355d6455e97fb7f2e3cc547dffaf6fe78c5c72258429867ecc98f44"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/high_pilot/trials/step-0002.npz",
+            "sha256": "94909284b8f5203c8ba6e61ef0b31c2309454bc7be01f85627311b7682a591ae"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/high_pilot/trials/step-0003.npz",
+            "sha256": "fa375c4d68c28954f44264e02f037e935ff40e68ec853e2324e258952524a5ba"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/high_pilot/trials/step-0004.npz",
+            "sha256": "8367ebf019dececed481a16cecab9d56df69cc579b3c85d7b62b85455edef321"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/high_pilot/trials/step-0005.npz",
+            "sha256": "7ea70a4b76376801095b538035329fea44d8e86d0ad47ad1219a37a94cb4de49"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/high_pilot/trials/step-0006.npz",
+            "sha256": "024c8b4493a6c09691f31f693fde2d8c28a4c916bef0fcdf0c8d1110da059982"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/high_pilot/trials/step-0007.npz",
+            "sha256": "92c2daaed4d5a73dfab9ede3b3aa6ec694e83eb05194f97b17b8b5df4be92490"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/high_pilot/trials/step-0008.npz",
+            "sha256": "b38cefbe048c7761b85da326e82c300a8e0ca537bf7caa0b6529058514542254"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/high_pilot/trials/step-0009.npz",
+            "sha256": "80bf8827ad085312821fcdf42bc8d36d61382301cfd16fc0ad10a175193e128a"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/initialization.npz",
+            "sha256": "90553f0e28762fe81fa0c40f840e1c2e4884a0f79a1bbf48553132e3c0e27391"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/low_coupled_checks/atoms-0.001-+1.npz",
+            "sha256": "c230f66246752d1fefc461b0cf2c58996b27742ada9efea91a41f074ea9121cc"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/low_coupled_checks/atoms-0.001--1.npz",
+            "sha256": "23a4025ee2f9f1f9d52045c610635697eb11dbb9f458676e701c4e43f5deb588"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/low_coupled_checks/atoms-0.003-+1.npz",
+            "sha256": "5615465bba5e1aef430f3ab0b8e38a28147525c44ec7378b69ced7c00cdf9543"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/low_coupled_checks/atoms-0.003--1.npz",
+            "sha256": "a1cce10723701bb6fd86500f933cc2998c11f1f64ccf90d1cb7151b48fe7c69f"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/low_coupled_checks/atoms-0.01-+1.npz",
+            "sha256": "3eddcb28489175d7f4ef82ab1b89d27282192d3966e8bf381897aa15063522a2"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/low_coupled_checks/atoms-0.01--1.npz",
+            "sha256": "f1d99a99bb380b6bc4f9bc6f5a7cc8f7abb27e5d1826acc4f09925294240871b"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/low_coupled_checks/bonds-0.001-+1.npz",
+            "sha256": "b495d1e959629661cb5e80d1adc6526a5f2c882437f1d537f033646f4cdf75c0"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/low_coupled_checks/bonds-0.001--1.npz",
+            "sha256": "104fd08dbe45c19e4da9d2e05eeaf00dd998443f427c395a2374d594b8e85abb"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/low_coupled_checks/bonds-0.003-+1.npz",
+            "sha256": "03bc2323761807b5c63dab6be28c604a68d059a226703806b5f1a027f384e80d"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/low_coupled_checks/bonds-0.003--1.npz",
+            "sha256": "0a35360ea9daec475560b5a9dd97cf9679d0a72aff819509cbc7e40a48b874e7"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/low_coupled_checks/bonds-0.01-+1.npz",
+            "sha256": "751b2c9de2cdbca08c2f058d9e8cc3972db052a3d4c748380765bc30ae0728df"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/low_coupled_checks/bonds-0.01--1.npz",
+            "sha256": "e03b8018013f64d4fc2215863acea5d9410d07fa6a98b25fd19d0f3bcfe8d302"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/low_coupled_checks/current_probe.npz",
+            "sha256": "f7081e273248219fd1271ec93c2f9f9a7150e76f02f57ac2356b47c597189143"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/low_coupled_checks/report.json",
+            "sha256": "b51ba5510b487fb92c4c3c00b4befecb1f562110cffcae3ba6833c7fca9ef919"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/native_gradient_checks/report.json",
+            "sha256": "cfa919e63cac1f0a4bbdb3cd09cfce86b92a1da77b5074ea664265721de46e3f"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/pocket_definition.json",
+            "sha256": "9376c715eaf5b48689fb3e995b00d7820601a7776970df66bd7e7cff3b13ee43"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/payload/study/summary.json",
+            "sha256": "308d2239afb9cb8822a5408a1a1e14c2c6eb39471c1490fcb65406f373f9cf16"
+          }
+        ],
+        "runtime_gate": {
+          "allocation_seconds": 82800,
+          "conservative_projected_seconds": 35055.93151344219,
+          "mean_update_seconds": [
+            1.9785669175966176,
+            2.217062100896146
+          ],
+          "scope": "empirical pilots, not a worst-case guarantee",
+          "status": "passed"
+        },
+        "source_manifest_sha256": "1e3a8a21e2fa68e24d1c9229238999c42a4a9b44bcc78344e73e188c87d1ee64",
+        "status": "passed",
+        "storage_projection": {
+          "maximum_pilot_update_bytes": 204530,
+          "policy": "twice largest saved pilot update plus 1 GiB for metadata/context; fresh campaign-wide quota gate before submission",
+          "projected_bytes": 5164341824
+        }
+      },
+      "logs": {
+        "validate-boltz2_chemistry/stderr.29776121.log": "Loaded dependency [python3/3.12.11]: sqlite3/3.50.1\nLoaded dependency [python3/3.12.11]: gcc/14.3.0-binutils-2.44\nLoaded module: python3/3.12.11\n\nLoading python3/3.12.11\n  Loading requirement: sqlite3/3.50.1 gcc/14.3.0-binutils-2.44\nLoaded module: cuda/12.9.1\n",
+        "validate-boltz2_chemistry/stdout.29776121.log": "date-boltz2_chemistry> in cluster <dcc> Done\n\nJob <mosaic-jq1-fixed-validate-boltz2_chemistry> was submitted from host <n-62-31-23> by user <s234818> in cluster <dcc> at Wed Oct 21 16:28:46 2026\nJob was executed on host(s) <4*n-62-13-15>, in queue <gpul40s>, as user <s234818> in cluster <dcc> at Wed Oct 21 19:06:38 2026\n</zhome/95/e/206121> was used as the home directory.\n</work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-02/source> was used as the working directory.\nStarted at Wed Oct 21 19:06:38 2026\nTerminated at Wed Oct 21 19:10:42 2026\nResults reported at Wed Oct 21 19:10:42 2026\n\nYour job looked like:\n\n------------------------------------------------------------\n# LSBATCH: User input\nbash -l /work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-02/source/scripts/hpc/fixed25_stage.lsf /work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-02/source /work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02 1e3a8a21e2fa68e24d1c9229238999c42a4a9b44bcc78344e73e188c87d1ee64 validate boltz2_chemistry /work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry 0\n------------------------------------------------------------\n\nSuccessfully completed.\n\nResource usage summary:\n\n    CPU time :                                   294.00 sec.\n    Max Memory :                                 5533 MB\n    Average Memory :                             4199.00 MB\n    Total Requested Memory :                     32768.00 MB\n    Delta Memory :                               27235.00 MB\n    Max Swap :                                   -\n    Max Processes :                              5\n    Max Threads :                                48\n    Run time :                                   244 sec.\n    Turnaround time :                            9716 sec.\n\nThe output (if any) is above this job summary.\n\n\n\nPS:\n\nRead file </work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/validate-boltz2_chemistry/stderr.29776121.log> for stderr output of this job.\n\n",
+        "after-ready-boltz2_chemistry/stderr.29776122.log": "Loaded dependency [python3/3.12.11]: sqlite3/3.50.1\nLoaded dependency [python3/3.12.11]: gcc/14.3.0-binutils-2.44\nLoaded module: python3/3.12.11\n\nLoading python3/3.12.11\n  Loading requirement: sqlite3/3.50.1 gcc/14.3.0-binutils-2.44\nTraceback (most recent call last):\n  File \"/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-02/source/scripts/fixed25_ops.py\", line 144, in <module>\n    main()\n  File \"/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-02/source/scripts/fixed25_ops.py\", line 140, in main\n    dispatch(source, root, args.manifest)\n  File \"/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-02/source/scripts/fixed25_ops.py\", line 78, in dispatch\n    gate = check_storage(root / 'shared-dispatch-quota', projection)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-02/source/scripts/fixed25_storage.py\", line 69, in check_storage\n    raise ValueError('Independent run exceeds fresh work3 byte/inode budget')\nValueError: Independent run exceeds fresh work3 byte/inode budget\n",
+        "after-ready-boltz2_chemistry/stdout.29776122.log": "oltz2_chemistry> in cluster <dcc> Exited\n\nJob <mosaic-jq1-fixed-after-ready-boltz2_chemistry> was submitted from host <n-62-31-23> by user <s234818> in cluster <dcc> at Wed Oct 21 16:28:46 2026\nJob was executed on host(s) <n-62-31-22>, in queue <hpc>, as user <s234818> in cluster <dcc> at Wed Oct 21 19:10:44 2026\n</zhome/95/e/206121> was used as the home directory.\n</work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-02/source> was used as the working directory.\nStarted at Wed Oct 21 19:10:44 2026\nTerminated at Wed Oct 21 19:11:00 2026\nResults reported at Wed Oct 21 19:11:00 2026\n\nYour job looked like:\n\n------------------------------------------------------------\n# LSBATCH: User input\nbash -l /work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-02/source/scripts/hpc/fixed25_stage.lsf /work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-02/source /work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02 1e3a8a21e2fa68e24d1c9229238999c42a4a9b44bcc78344e73e188c87d1ee64 after-ready boltz2_chemistry /work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/after-ready-boltz2_chemistry 29776121\n------------------------------------------------------------\n\nExited with exit code 1.\n\nResource usage summary:\n\n    CPU time :                                   3.03 sec.\n    Max Memory :                                 17 MB\n    Average Memory :                             17.00 MB\n    Total Requested Memory :                     2048.00 MB\n    Delta Memory :                               2031.00 MB\n    Max Swap :                                   -\n    Max Processes :                              4\n    Max Threads :                                5\n    Run time :                                   15 sec.\n    Turnaround time :                            9734 sec.\n\nThe output (if any) is above this job summary.\n\n\n\nPS:\n\nRead file </work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/after-ready-boltz2_chemistry/stderr.29776122.log> for stderr output of this job.\n\n"
+      }
+    }
+  },
+  "storage": {
+    "status": "failed",
+    "utc": "2026-10-21T17:10:59.974537+00:00",
+    "run_dir": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-02/shared-dispatch-quota",
+    "projected_bytes": 8427765472,
+    "reserve_bytes": 4294967296,
+    "required_bytes": 12722732768,
+    "available_bytes_conservative": 8419460428,
+    "experiment_bytes_subtracted": 170474164,
+    "file_reserve": 100000,
+    "quota": {
+      "finite_pools": [
+        {
+          "used_bytes_upper": 98784247808,
+          "hard_bytes_lower": 107374182400,
+          "remaining_bytes": 8589934592,
+          "remaining_files": 19683080
+        }
+      ],
+      "available_bytes_lower": 8589934592,
+      "available_files_lower": 19683080
+    },
+    "raw_quota": "HPE-Storage-Servers (disks, storagepool 1): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nHPE-Storage-Servers (NVME, storagepool 2): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (disks, storagepool 3): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks, storagepool 4): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks added in 2024, storagepool 5): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (NVMEs added in 2024, storagepool 6): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||   91.98 GiB|  100.00 GiB||   316920| 20000000\n\n",
+    "scope": "Separate work3 artifacts; all historical home results preserved",
+    "limitation": "Conservative rounded finite quota, all finite pools; fresh checks are not reservations"
+  }
+}

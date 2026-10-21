@@ -1,0 +1,22 @@
+{
+  "args": [
+    "ssh",
+    "-T",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=15",
+    "-o",
+    "ConnectionAttempts=1",
+    "-o",
+    "ServerAliveInterval=10",
+    "-o",
+    "ServerAliveCountMax=1",
+    "dtu-hpc",
+    "bash -c 'set -euo pipefail; umask 077; set -o noclobber; cat > /work3/s234818/mosaic/20261021-brd4-jq1-25-fixed-storage-01.tar.gz'"
+  ],
+  "remote": "/work3/s234818/mosaic/20261021-brd4-jq1-25-fixed-storage-01.tar.gz",
+  "archive_sha256": "e6bdbc9abd6a88924023fc1ab7c4fbd53e00edff54bf2cfc895d79f69428079a",
+  "archive_bytes": 17684,
+  "utc": "2026-10-21T18:08:33.602229+00:00"
+}

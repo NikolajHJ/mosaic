@@ -1,0 +1,80 @@
+{
+  "tag": "20261021-brd4-jq1-25-fixed-storage-02",
+  "status": "Staged read-only then failed CPU preflight before any submission: supplemental filesystem inode tuple is allzero while mandatory finite userquota has headroom",
+  "utc": "2026-10-21T18:11:51.646348+00:00",
+  "source": {
+    "local_archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261021-brd4-jq1-25-fixed-storage-02\\source01\\source.tar.gz",
+    "archive_bytes": 18560,
+    "archive_sha256": "8ed85ddae3e116640513b84e4786e8891315541768bb069d8cbfd0546124accc",
+    "manifest_sha256": "c8115e2686b94d78ff1889b9dc8161fdf00356639524853c46d4100fd8638fd9",
+    "files": 11,
+    "remote": "/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-storage-02/source",
+    "file_hashes": {
+      "scripts/fixed25_split_storage.py": "474eb6d1ec1afe62bf8805d091778acabb9e243515f93b062c7864a88af2f406",
+      "scripts/fixed25_split_ops.py": "03058a36f3b5c44e7eb0723219b09152d613f7f4515d71ee17171d4eb548f9fd",
+      "tests/test_fixed25_split_storage.py": "d578a61c143bf2b1f32781d0089699234765d20c51ba226735d7d265c24de453",
+      "tests/test_fixed25_split_ops.py": "075287d12da20ac00338c62d864fbcf6cf91d8bad6380a276f66c82d08abafb2",
+      "scripts/hpc/fixed25_split_stage.lsf": "1f0869793ac49a604df1f384103b9113f614db4f3822212fb71201d76190a4d0",
+      "scripts/hpc/fixed25_split_cpu.lsf": "daab902ceaaab051c9338ab507a07ce19817011e62c1571c8f580f2cab53103b",
+      "scripts/hpc/fixed25_split_after_cpu.lsf": "fb61c25a6df81b9ba26cd39ec65f43fce48ab4a8675c9daa1f3ed5b6d69ef350",
+      "scripts/verify_stage0_release.py": "d3e5373b84b123fe2388db2e9493a5a76d1cfc7edcc53f73ff5746f935c49c02",
+      "examples/configs/brd4_jq1_25_fixed_protenix_10000.json": "69257fd9700d8ca0f42e13ae95ec4c3a15ca623064f657acf4fb8c85b65f1d00",
+      "examples/configs/brd4_jq1_25_fixed_boltz2_10000.json": "b6217159b0180b8c2f4b3e57764b2101b79e20e1e8cd021b357ae6563e5b161b",
+      "examples/configs/brd4_jq1_25_fixed_boltz2_chemistry_10000.json": "dd6347a0756320bc79dea5fbbf7da9aeca8e8bf93dc38f30cd141fd240059049"
+    },
+    "hpc_transfer": "Authenticated all 11 files; read-only"
+  },
+  "root": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-storage-02",
+  "science_source": "/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-02/source",
+  "science_manifest_sha256": "1e3a8a21e2fa68e24d1c9229238999c42a4a9b44bcc78344e73e188c87d1ee64",
+  "long_runs_submitted": false,
+  "parent_failed_launcher": "20261021-brd4-jq1-25-fixed-storage-01",
+  "correction": "Account internal symlink metadata without traversal; reject root/parent/external/unresolved/special. Disposable contract fixtures use owned node /tmp. Full projections/reserve/inodes/native/science unchanged.",
+  "cpu_submitted": false,
+  "preflight_failure": {
+    "gate": {
+      "version": "fixed25-work3-storage-adoption-v1",
+      "phase": "cpu",
+      "status": "failed",
+      "utc": "2026-10-21T18:12:02.273894+00:00",
+      "filesystem": "work3",
+      "quota": {
+        "finite_pools": [
+          {
+            "used_bytes_upper": 93415538688,
+            "hard_bytes_lower": 107374182400,
+            "remaining_bytes": 13958643712,
+            "remaining_files": 19703870
+          }
+        ],
+        "available_bytes_lower": 13958643712,
+        "available_files_lower": 19703870
+      },
+      "raw_quota": "HPE-Storage-Servers (disks, storagepool 1): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nHPE-Storage-Servers (NVME, storagepool 2): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (disks, storagepool 3): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks, storagepool 4): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks added in 2024, storagepool 5): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (NVMEs added in 2024, storagepool 6): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||   86.45 GiB|  100.00 GiB||   296130| 20000000\n\n",
+      "projected_bytes": 1073741824,
+      "reserve_bytes": 4294967296,
+      "required_bytes": 5368709120,
+      "available_bytes_conservative": 13468288122,
+      "mosaic_bytes_subtracted": 490355590,
+      "disk_free_bytes": 557028869144576,
+      "available_files_lower": 0,
+      "file_reserve": 100000,
+      "file_headroom_scope": "Minimum of every finite user quota pool and statvfs f_favail",
+      "limitation": "Fresh rounded quota and filesystem headroom are not reservations"
+    },
+    "cpu_submitted": false,
+    "long_submitted": false
+  },
+  "filesystem_inode_evidence": {
+    "statvfs": {
+      "f_files": 0,
+      "f_ffree": 0,
+      "f_favail": 0,
+      "f_blocks": 1997092268,
+      "f_bfree": 1062441803,
+      "f_bavail": 1062441803,
+      "f_frsize": 524288
+    },
+    "filesystem": "fhgfs"
+  }
+}

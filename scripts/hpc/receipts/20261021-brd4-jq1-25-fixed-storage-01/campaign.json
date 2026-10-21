@@ -1,0 +1,41 @@
+{
+  "tag": "20261021-brd4-jq1-25-fixed-storage-01",
+  "status": "Sealed launcher preflight failed before any CPU or long submission: old pytest current symlinks rejected by byte-accounting traversal; preserved historical failure",
+  "utc": "2026-10-21T18:08:19.455155+00:00",
+  "source": {
+    "local_archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261021-brd4-jq1-25-fixed-storage-01\\source01\\source.tar.gz",
+    "archive_bytes": 17684,
+    "archive_sha256": "e6bdbc9abd6a88924023fc1ab7c4fbd53e00edff54bf2cfc895d79f69428079a",
+    "manifest_sha256": "9cc079f0b89256cd723b5c6ee87e76f8a93d1b2db3cfdc8d99fc29272f152e7d",
+    "files": 11,
+    "remote": "/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-storage-01/source",
+    "file_hashes": {
+      "scripts/fixed25_split_storage.py": "8e0f0acb16769fd2f2fa9becebe0e81f47e0948cab1900c3d1c03eb868509f92",
+      "scripts/fixed25_split_ops.py": "03058a36f3b5c44e7eb0723219b09152d613f7f4515d71ee17171d4eb548f9fd",
+      "tests/test_fixed25_split_storage.py": "f8d1d53ff6f4f2b754e9bd66ae6d852d65213df3f354aabe0cfa39510bdc7bf6",
+      "tests/test_fixed25_split_ops.py": "7fa323052e0df9cab78cb1431add9dd7571681b2a6e355a2842ccf126e874e00",
+      "scripts/hpc/fixed25_split_stage.lsf": "1f0869793ac49a604df1f384103b9113f614db4f3822212fb71201d76190a4d0",
+      "scripts/hpc/fixed25_split_cpu.lsf": "f5ba892f6f6b4bc94cc57c23f73d278aa2fdc2e86f92e922f03bbaaaac7d4adf",
+      "scripts/hpc/fixed25_split_after_cpu.lsf": "fb61c25a6df81b9ba26cd39ec65f43fce48ab4a8675c9daa1f3ed5b6d69ef350",
+      "scripts/verify_stage0_release.py": "d3e5373b84b123fe2388db2e9493a5a76d1cfc7edcc53f73ff5746f935c49c02",
+      "examples/configs/brd4_jq1_25_fixed_protenix_10000.json": "69257fd9700d8ca0f42e13ae95ec4c3a15ca623064f657acf4fb8c85b65f1d00",
+      "examples/configs/brd4_jq1_25_fixed_boltz2_10000.json": "b6217159b0180b8c2f4b3e57764b2101b79e20e1e8cd021b357ae6563e5b161b",
+      "examples/configs/brd4_jq1_25_fixed_boltz2_chemistry_10000.json": "dd6347a0756320bc79dea5fbbf7da9aeca8e8bf93dc38f30cd141fd240059049"
+    },
+    "upload": "Byte upload completed; remote archive/source verification pending",
+    "hpc_transfer": "Authenticated 11 immutable source files; read-only",
+    "preflight": "failed: Storage evidence cannot follow symbolic links"
+  },
+  "root": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-storage-01",
+  "science_source": "/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-02/source",
+  "science_manifest_sha256": "1e3a8a21e2fa68e24d1c9229238999c42a4a9b44bcc78344e73e188c87d1ee64",
+  "policy": "All three new outputs on work3; same full projections plus4GiB reserve/100000inodes; original failedquota preserved; original fixed steps and readiness pins unchanged",
+  "long_runs_submitted": false,
+  "native_readiness_reused": "All3 actual passed original readiness proofs, reauthenticated by allocated new launcher CPU/adoption/entry; no new native validation claimed",
+  "cpu_submitted": false,
+  "failure_receipts": [
+    "bootstrap-stdout.txt",
+    "bootstrap-stderr.txt",
+    "preflight-failure-stdout.json"
+  ]
+}
