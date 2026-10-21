@@ -4325,3 +4325,53 @@ RNG-state advancement is not observed numerical nondeterminism in the
 exactly stable tested outputs and AD gradients. Original gate failure and
 scientific scope remain unchanged; this actual pause supersedes the planned
 pause note above.
+
+## 21 October 2026 — six-milestone saved-results report delivered
+
+The user requested one report spanning the most important early Protenix,
+5,000-update, chemistry and latest Boltz-2 results; clarified DeFoG should be
+included only if it actually ran in this repository/chat. No completed Mosaic
+DeFoG experiment was found. The actual rule-based chemical-repair study is
+labeled accurately; no DBMol VAE/latent/DeFoG experiment was imported.
+
+Six selected completed trajectories: original carbon-chain 30% case of
+29735673 (100 updates/101 states), BRD4 contact-only 50% 29745503
+(5,000/5,001), constant-chemistry 50% 29753152 (5,000/5,001), delayed
+Protenix mix29753667/random29753668 and Boltz mix29759212 (each
+10,000/10,001). Total **40,106** saved states. This is an editorial chronology,
+not the six lowest losses, a matched causal comparison or a new experiment.
+
+Standard-library local presentation assembly authenticates the five existing
+HTML reports/PNG figures against their preserved manifests/receipts. Only
+saved records are selected/compressed for portable HTML. Existing scientific
+plots remain byte-identical; no model, chemical conversion/evaluation, repair,
+sampling, numerical tests or scientific plot generation ran locally or on HPC.
+Legacy presentation field names are normalized without changing their values;
+full probability/readout records, invalid graphs and captured components remain.
+Exact roundtrip, compressed/unpacked SHA and contiguous schema checks passed.
+
+New tooling `scripts/assemble_milestone_report.py` and
+`scripts/templates/mosaic_milestones.html`; plan/command/scope details:
+`docs/mosaic_six_milestones_report.md`. Fresh output
+`results/hpc/20261021-mosaic-six-milestones/edition-01/`, HTML52,444,743bytes
+SHA625c7d8a6b88dcbf98bad1b0d2bdb9182ee40a69ee8786a582b6c8c5506babe4.
+Detached server started on fresh port8775 with the existing serving helper,
+preserving prior servers. HTTP200/full body exact length/SHA authenticated at
+**http://127.0.0.1:8775/report.html**. Output receipts:
+`presentation_receipt.json`, `browser-qa.json`, parent `server.json`.
+
+Actual browser QA passed all six selectors/endpoints, loaded original plots,
+readable element/slot labels, probability sizing, six atom/fifteen bond heatmap
+rows, playback/pause and valid Boltz9639 (`SCCCCCl`) versus invalid10000.
+No console errors/warnings; tab marked deliverable; `report-preview.png` saved.
+Node JavaScript syntax, Python AST and Git whitespace checks passed. Local
+Python3.13 lacked Ruff; its attempted invocation returned No module named ruff,
+not a lint pass or scientific-test outcome. No separate file-scheme browser test.
+
+Targets, atom counts, contact/affinity scales, parameterization changes,
+acceptance policies, changing repair references and fixed-pose affinity scope
+are disclosed. No cross-model score overlay, hard-molecule affinity claim or
+binding conclusion. The original random Boltz gate remains failed, no long
+random Boltz run or new study submitted, and the existing heartbeat stays paused.
+All native outputs, previous report families and unrelated PDF/OneNote changes
+remain unchanged.
