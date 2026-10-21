@@ -133,17 +133,20 @@ def load_model(path):
 
 
 def validate_context(context):
-    """Check complete six-slot native correspondence and seed feature parity."""
+    """Check complete native correspondence for the declared 6/25-slot scope."""
     if context.get("version") != "mosaic-boltz-fixed-pose-v1":
         raise ValueError("Unknown prepared Boltz context")
     f, ai, ti = context["features"], context["atom_indices"], context["token_indices"]
+    n = ai.numel()
     if (
-        ai.shape != (6,)
-        or ti.shape != (6,)
-        or ai.unique().numel() != 6
-        or ti.unique().numel() != 6
+        n not in (6, 25)
+        or ai.shape != (n,)
+        or ti.shape != (n,)
+        or ai.unique().numel() != n
+        or ti.unique().numel() != n
+        or context.get("n_atoms", n) != n
     ):
-        raise ValueError("Require exactly six injective occupied ligand slots")
+        raise ValueError("Require declared 6/25 injective occupied ligand slots")
     if (
         context["coordinates"].requires_grad
         or not torch.isfinite(context["coordinates"]).all()
@@ -161,7 +164,7 @@ def validate_context(context):
     if not torch.all(f["atom_pad_mask"][0, ai] == 1) or torch.any(
         f["ref_charge"][0, ai] != 0
     ):
-        raise ValueError("Mosaic six occupied neutral slots required")
+        raise ValueError("Mosaic occupied neutral slots required")
     mapped, types = inject(context["seed_X"], context["seed_E"], context)
     for name in ("ref_element", "ref_charge", "token_bonds"):
         torch.testing.assert_close(
@@ -181,16 +184,17 @@ def inject(x, edges, context):
     No argmax or chemistry conversion occurs in the differentiable path. Formal
     charge remains fixed at zero, exactly as in Mosaic's current graph schema.
     """
-    if x.shape != (6, 6) or edges.shape != (15, 5):
-        raise ValueError("Boltz backend requires Mosaic six-slot graph shapes")
+    n = context["atom_indices"].numel()
+    if n not in (6, 25) or x.shape != (n, 6) or edges.shape != (n * (n - 1) // 2, 5):
+        raise ValueError("Boltz backend requires declared 6/25-slot graph shapes")
     f = dict(context["features"])
     ai, ti = context["atom_indices"], context["token_indices"]
     element_map = nn.functional.one_hot(
         torch.tensor(ATOMIC_NUMBERS, device=x.device), 128
     ).to(x)
     f["ref_element"] = f["ref_element"].to(x).index_copy(1, ai, (x @ element_map)[None])
-    i, j = torch.triu_indices(6, 6, 1, device=x.device)
-    dense = edges.new_zeros((6, 6, 5))
+    i, j = torch.triu_indices(n, n, 1, device=x.device)
+    dense = edges.new_zeros((n, n, 5))
     dense[..., 0] = 1
     dense[i, j] = edges
     dense[j, i] = edges

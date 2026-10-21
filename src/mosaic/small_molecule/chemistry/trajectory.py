@@ -118,10 +118,30 @@ def evaluate_combined(
         terms = {**terms, "chemistry_loss": loss, "element_js": js}
         return config["repair_weight"] * loss + config["element_js_weight"] * js, terms
 
-    (chemical_value, terms), gradient = eqx.filter_value_and_grad(
-        chemical, has_aux=True
-    )(logits)
-    chemical_primal, _ = chemical(logits)
+    mode = config.get("objective_mode", "native_plus_chemistry")
+    if mode == "native_only":
+        from .native_only import NativeOnlyPreparation
+
+        if (
+            not isinstance(prepared, NativeOnlyPreparation)
+            or config["repair_weight"] != 0
+            or config["element_js_weight"] != 0
+        ):
+            raise ValueError("Native-only objective requires explicit inactive chemistry/composition")
+        chemical_value = chemical_primal = 0.0
+        terms = {"chemistry_enabled": 0.0}
+        gradient = GraphLogits(jnp.zeros_like(logits.atoms), jnp.zeros_like(logits.bonds))
+    elif mode == "native_plus_chemistry":
+        from .native_only import NativeOnlyPreparation
+
+        if isinstance(prepared, NativeOnlyPreparation):
+            raise ValueError("Chemistry objective requires actual teacher preparation")
+        (chemical_value, terms), gradient = eqx.filter_value_and_grad(
+            chemical, has_aux=True
+        )(logits)
+        chemical_primal, _ = chemical(logits)
+    else:
+        raise ValueError("Unknown declared objective mode")
 
     # Each row's softmax Jacobian is diag(p)-p p^T. Do not center, clip or
     # normalize the native raw gradient before retaining/pulling it back.

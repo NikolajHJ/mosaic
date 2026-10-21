@@ -4375,3 +4375,210 @@ binding conclusion. The original random Boltz gate remains failed, no long
 random Boltz run or new study submitted, and the existing heartbeat stays paused.
 All native outputs, previous report families and unrelated PDF/OneNote changes
 remain unchanged.
+
+## 21 October 2026 — authorized fresh 25-atom three-model comparison prepared
+
+User requested new10,000-update runs using Protenix, Boltz-2 and Boltz-2 plus
+chemical validity with25atoms. Prepared three fresh independent arms, same
+50% carbon-chain/uniform initialization, LR0.03, key17 and ten-trial best_primal.
+Baselines optimize only native contact/affinity; the chemical arm adds existing
+repair0.001 through5000 then geometric to50at10000. Element-JS is explicitly
+zero in allthree, a declared difference from the historical chemistry run so
+the Boltz comparison changes only repair. Six-slot studies remain untouched.
+
+Native shape/correspondence mapping and JAX/worker boundary now explicitly
+support6/25slots;25means300unordered pairs. Fresh Protenix context and shared
+fresh Boltz25-carbon pose are required; no resized six-slot context or reused
+six-slot native certificate. Native-only preparation executes no chemistry or
+composition and does not fabricate absent chemical checks as passed. Added
+allocated mapping/VJP/scope/pure-objective/controller tests; all old numerical
+thresholds, parity/null/finite/identity/runtime gates preserved. New plan:
+`docs/brd4_25_atom_comparison.md`.
+
+SSH access worked. First non-login command lacked LSF/quota PATH; a quoting
+mistake in the next read-only shell command is preserved in tool history.
+Correct login-shell query observed actual public queues gpua10/gpul40s and
+home14.52/30GiB at09:42Paris. No numerical work ran on login/local hosts.
+Per-arm pilots/whole-campaign conservative storage projection plus4GiB reserve
+will gate long submissions. Future Protenix uses gpua10; Boltz uses gpul40s,
+each one exclusiveGPU/fourslots/8GiB per slot and23h for long runs.
+
+Source/run candidate20261021-brd4-25-01 prepared; actual packaging, allocation
+IDs, CPU outcomes and native readiness/submission remain pending at this entry.
+User PDF/OneNote changes and all historical failure evidence preserved.
+
+## 21 October 2026 — source01 CPU completion and user-directed chemistry hold
+
+Immutable source01 authenticated450 members: manifest
+4016584825436c9c597307ac51eddb242ac50885352e9c06841da2e1e201ee9c;
+archive39,413,811bytes SHA
+c625c367e34d2d589edc11629d1bf65aac2642da37b54ad2d4bee53622864d44.
+Remote `/work3/s234818/mosaic/releases/20261021-brd4-25-01/source`, run
+`/zhome/95/e/206121/mosaic-runs/20261021-brd4-25-01/`.
+CPU29768889 submitted09:56, actual RUN09:56:56/DONE10:00:54Paris, hpc4slots,
+4GiB/slot/1hour. CPU assessment/XML authentication is recorded separately below;
+scheduler DONE alone is not a native pass. No GPU work had been submitted.
+
+The user asked to estimate chemistry runtime before starting its full25-slot
+optimization. Original after-CPU29768890 was verified PEND/unstarted and bkill
+accepted; actual EXIT authenticated09:59:16, no start time or dispatch artifacts.
+This was an intentional user-directed cancellation, not numerical failure;
+CPU29768889 and all historical experiments remained unchanged. Before/after/
+cancellation text is preserved in source01 run/after-cpu/. This correction also
+keeps the two baselines independent of the chemistry pilot's duration/outcome.
+
+Preparing source02 launcher-only `chemistry-runtime-review-v1`: reject full
+chemistry at both submit API and batch entry, allow bounded native checks and
+two ten-update disposable pilots, expose saved runtime estimate before review.
+Baselines can submit after their own passed gates/quota without waiting for the
+third arm. Scientific src/config/driver bytes remain identical; no test gate or
+runtime allocation changed. New allocated transition contracts cover this hold,
+independent dispatch and unknown-outcome duplicate protection. All numerical
+validation remains allocated DTU HPC; local AST/hash packaging only.
+
+
+## 21 October 2026 — reference-mode fix sealed as source03; chemistry full run held
+
+Source02 CPU29768926 actually DONE10:07:39Paris with341passes, no failures,
+errors or skips; three historical slow/model tests deliberately deselected.
+Actual scheduler/LSF/XML/source/reference proof authenticated and downloaded:
+results/hpc/20261021-brd4-25/source02-cpu/evidence/, all20files byte verified.
+Archive21,059bytes SHA 2e7de344bfaf09c87342230bac8ad2f0ca4c3cefe3ff30eb7cb647cd9077ef5b.
+Callback29768927 was intentionally cancelled while verified PEND; actual EXIT
+10:06:53Paris, no start/GPU dispatch, preserving that complete CPU result.
+
+Static review found the new Protenix hard reference omitted the geometry-hook
+mask; zero placeholder coordinates alone do not select geometry-off execution.
+A new independent-hard-reference helper retains native hard element/bond fields
+and explicitly applies that mask/placeholder scope without relaxed injection.
+Added allocated regression for every feature, permuted maps, protein preservation
+and no context mutation. This corrects reference construction, not the objective
+or native threshold. No prior failed numerical gate has been relabelled passed.
+All scientific configuration/remaining scientific files match source02; only
+examples/brd4_25_atoms.py and src/mosaic/small_molecule/features.py change.
+
+Unique source03 authenticated455files on HPC at
+/work3/s234818/mosaic/releases/20261021-brd4-25-03/source. Manifest
+1b60f14134c607b2a55cd93dbb289ca41c45281380984694d53aaa690772056b;
+archive39,420,362bytes SHA
+bfc6ad6f0af3268551258de55ca1bd196bb7ff35f6f690a305bf64a0d34fcff7.
+New run /zhome/95/e/206121/mosaic-runs/20261021-brd4-25-03/.
+CPU29768990 actually RUN10:08:51Paris; after-CPU29768991 PEND on ended(CPU).
+No source03 CPU/native pass or long submission inferred. The launcher preserves
+chemistry-runtime-review-v1: native gates/two ten-update pilots permitted, full
+chemistry rejected at submit and batch entry even if validation passes. Two
+baselines can proceed independently after their own original gates and quota.
+
+Local AST/source-map/packaging only; a documentation append first encountered
+Windows default cp1252 decoding and stopped before touching the UTF-8 ledger.
+It was repeated with explicit UTF-8; no numerical test/model/chemistry ran locally.
+All historical files/jobs, report servers and unrelated PDF/OneNote changes remain.
+
+
+## 21 October 2026 — source03 passed342 CPU checks; native stages submitted
+
+CPU29768990 actualDONE10:12:22Paris,342passing cases, no failures/errors/skips;
+34launcher/226legacyJAX/23mappingconfig/59chemistry, three historical slow/model
+checks deliberately deselected. Actual scheduler/LSF/rawXML/source/reference and
+all19evidence files byte verified locally at
+results/hpc/20261021-brd4-25/source03-cpu/evidence/. Archive20077bytes SHA
+4aba0625dbd004d73fc1b8faa185b104ef7ffc1c4c577a92ff2460223f5b0fa4.
+AfterCPU29768991 actualDONE10:12:28, authenticates this exact proof and seals
+cpu-certificate.json. Actual native validation29769026 gpua10 and Boltz fresh
+preparation29769028 gpul40s submitted; callbacks29769027/29769029 wait on their
+ended conditions. All four last PEND, no long optimization submitted. Actual
+bsub command/resource receipts saved in initial-submissions.json and each stage.
+One exclusive GPU/fourslots/8GiB per slot/twohours for native stages; genuine
+readiness/runtime/quota required before23h independent baseline submissions.
+Full chemistry blocked by both submit API and batch entry pending runtime review.
+
+## 21 October 2026 — allocated25-slot repair component timing recorded
+
+Supplementary immutable3file tools release
+/work3/s234818/mosaic/releases/20261021-brd4-25-repair-timing-01/source,
+manifest04d4fd4eaaa8e07c02c58a04b9f15c02e0a47fba9a9ec5dbb1e182084c641100,
+archive3852bytes SHA1776307af4e202d8b805c8c8c272902863ecb7abee30f61132288ba10af313f6.
+Numerical benchmark29769038 actualRUN10:14:00/DONE10:14:42Paris, hpc4slots,
+4GiB per slot/20min request. Requires authenticated source03 CPU certificate
+and exact scientific source/config bytes. No native model/optimizer/training;
+FP32JAX CPU, exact6/25-slot chain-uniform and internal-F assay, one warmup plus
+three measured repetitions of preparation and one chemistry value/gradient.
+
+25-slot means0.1132757757s valid/0.4657968260s invalid, extrapolated10k calls
+1132.7578s/4657.9683s (18.9/77.6min). Six-slot0.0550516450s/0.1966275177s,
+about2–2.4times increase for the tested points versus20times pair count. All
+raw timings/preparations/point NPZs preserved. Excludes native inference,
+additional line-search evaluations/startup and later harder graphs; this is
+component overhead, NOT end-to-end ETA, worst-case bound or native approval.
+Native GPU pilots still required; chemistry full-run hold remains.
+
+Actual scheduler/LSF plus recorded status/case schema/source/point hashes
+authenticated. First evidence helper failed because non-login PATH lacked
+bjobs, before capture; empty evidence01 preserved. Unique02 succeeded. All15
+files safely downloaded and byte verified via scripts/verify_hpc_evidence.py at
+results/hpc/20261021-brd4-25/repair-timing/evidence/. Archive16404bytes SHA
+b7881b3dcf522e8ed60fa267b08e7464acde0b6430ba90ef51f7441cebacddf6,
+manifestf553d6afdf7a5adc047171bb158af36a66ca462d885ba4170512341dc1349e50.
+No numerical work ran locally/login. Existing heartbeat updated for NEW25-slot
+native progress and measured total runtime review, hourly/quiet on unchanged
+state; historical six-slot random blocker remains paused, no retry authorized.
+
+
+## 21 October: source03 Boltz final-response contract failure retained
+
+Fresh Boltz preparation29769028 actually DONE10:16:43Paris; afterprepare29769029
+DONE10:16:49. Exact25-slot context SHA
+099fdac537a08f65a14cb60463de24fa0c4ffd6541a142beaaee6e974977fa08,
+tensor digestdf93ef76cc26d5888532dc2c36688dbbff4040375f5357a784b8b6a656ec2f34.
+Actual validators Boltz-only29769078 and chemistry29769080, callbacks29769079/
+29769081 submitted. Boltz-only29769078 ran10:17:15–10:19:03 and EXIT1 after
+native hard parity, all three atom/bond FD scales, ten disposable updates and
+runtime fit individually passed. Whole readiness remains FAILED, no assessment
+or long run. Callback29769079 DONE retains that failed decision.
+
+The actual model/context hashes before/after were exact. Driver incorrectly
+compared the entire response dictionary (which additionally carries status,id,
+elapsed_seconds) against a two-digest dictionary. This is a concrete response-
+shape bug, not changed weights or a scientific threshold rejection. Preserve
+raw failed summary/worker/native/pilot evidence. Source04 will require status
+passed AND exact original model/context digest fields, retaining the raw response
+and the transport's existing request-ID checks. Added allocated contracts accept
+metadata only with exact hashes/success, and reject either mutation or absent/
+failed success. No derivative/parity/frozen/finite/runtime gate is weakened.
+
+Obsolete source03 Protenix29769026/callback29769027 and chemistry29769080/
+callback29769081 were all verified PEND/unstarted, bkill accepted; actual EXIT
+verified with no start times. Their original receipts and cancellation evidence
+remain under source03 root. No long experiment has started or been cancelled.
+Prepare unique source04 and rerun full allocated CPU/native tests, preserving
+identical configuration/scientific settings and the full chemistry runtime hold.
+Source03 passed subchecks/pilot timings are observations, never a readiness pass.
+
+
+## Source04 allocated retry and preserved source03 failure evidence
+
+Unique source04 staged/authenticated461members:
+/work3/s234818/mosaic/releases/20261021-brd4-25-04/source,
+manifest e22aa03b95e630aae7695b0908a5d20eb26ff7f5ee9b79987c098ae86efb3e79,
+archive39,425,961bytes SHA
+b62ef75f6ede08fbed8854ff4efe167571be6eb050c1b222278e19e15b3dc879.
+Source03-to04 src/examples bytes are identical except the driver now calls the
+strict passed-status/two-digest verifier; all three configuration files unchanged.
+CPU29769140 actually RUN10:21:56Paris, afterCPU29769141 PEND on ended(CPU).
+New5response contracts join full regression/native gates; no pass or long job
+inferred. Current run root /zhome/95/e/206121/mosaic-runs/20261021-brd4-25-04/,
+receipt scripts/hpc/receipts/20261021-brd4-25-04/campaign.json. Full chemistry
+remains held even on future readiness success, pending end-to-end runtime review.
+
+Source03 final-response failure evidence, all85files including raw native FD,
+hard parity, ten-update pilot, worker response, complete original prepared25-slot
+context bytes and cancellation before/after records, safely downloaded/verified:
+results/hpc/20261021-brd4-25/source03-response-failure/evidence/.
+Archive664616bytes SHAe635ca196c54c672a9cbfbd9891c3ffdf127f5e81dfc78f53c52da9caab03c58,
+manifest15c540fd57b54e0eddbab7f6f57a4d76b76900a504e20a5030d3940e52b777e3.
+Actual frozen model/context fields before/after exact; metadata mismatch explains
+engineering rejection, but the entire source03 readiness stays failed. None of
+its individual passed subchecks or measured pilot times promotes source04.
+All four obsolete unstarted source03 jobs actualEXIT10:20:21Paris; no long run
+started/cancelled. Heartbeat updated to source04 current jobs and original gates;
+old random scientific blocker still not retried, full chemistry still held.

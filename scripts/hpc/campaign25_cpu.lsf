@@ -1,0 +1,40 @@
+#!/bin/bash
+set -euo pipefail
+[[ -n "${LSB_JOBID:-}" ]]
+release=$1
+parent=$2
+manifest=$3
+module load python3/3.12.11
+python=/work3/s234818/mosaic/envs/protenix-tiny/bin/python
+native=/work3/s234818/latentmol/env/boltz311/bin/python
+mkdir "$parent/payload"
+run="$parent/payload"
+"$python" "$release/scripts/verify_stage0_release.py" "$release" "$manifest"
+"$python" "$release/scripts/hpc/zhome_quota_preflight.py" --run-dir "$run" --minimum-free-gib 10
+export PYTHONPATH="$release/src:$release/tests:$release/scripts" PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+export CUDA_VISIBLE_DEVICES='' JAX_PLATFORMS=cpu JAX_ENABLE_X64=0
+export OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 MKL_NUM_THREADS=2
+export TMPDIR="$run/tmp"
+mkdir "$TMPDIR"
+cd "$release"
+"$python" -m pytest tests/test_boltz_submission_controller.py tests/test_boltz_hpc_tmpdir.py tests/test_campaign25_ops.py \
+  -o addopts= -o cache_dir="$run/cache-contract" --basetemp "$run/tmp-contract" \
+  --junitxml="$run/hpc-contract.xml" > "$run/hpc-contract.log" 2>&1
+legacy=()
+for file in tests/test_small_molecule_*.py; do
+  case "$file" in tests/test_small_molecule_chemistry*.py) ;; *) legacy+=("$file");; esac
+done
+"$python" -m pytest "${legacy[@]}" -o addopts= -m 'not slow and not small_molecule_model' \
+  -o cache_dir="$run/cache-legacy" --basetemp "$run/tmp-legacy" --junitxml="$run/legacy.xml" > "$run/legacy.log" 2>&1
+"$native" -m pytest tests/test_boltz_native_mapping.py tests/test_campaign25_native.py tests/test_campaign25_contract.py \
+  -o addopts= -o cache_dir="$run/cache-native" --basetemp "$run/tmp-native" \
+  --junitxml="$run/native-mapping.xml" > "$run/native-mapping.log" 2>&1
+"$native" scripts/create_chemistry_oracles.py --source tests/data/chemistry_oracle \
+  --manifest src/mosaic/small_molecule/chemistry/_reference/source_manifest.json --output "$run/oracles.json" > "$run/oracles.log" 2>&1
+export JAX_ENABLE_X64=1 MOSAIC_REQUIRE_CHEMISTRY_ORACLES=1 MOSAIC_CHEMISTRY_ORACLES="$run/oracles.json"
+"$python" -m pytest tests/test_small_molecule_chemistry*.py -o addopts= -o cache_dir="$run/cache-chemistry" \
+  --basetemp "$run/tmp-chemistry" --junitxml="$run/chemistry.xml" > "$run/chemistry.log" 2>&1
+reference=/zhome/95/e/206121/mosaic-runs/20261019-brd4-chemistry-ramp-01-readiness/payload/composition_reference.json
+echo "37b34a2ba7be47886936df48faaabdeac20481e5a9cebca9bafab831c07868eb  $reference" | sha256sum -c -
+cp "$reference" "$run/composition_reference.json"
+"$python" scripts/assess_boltz_cpu.py --run "$run" --manifest "$manifest"

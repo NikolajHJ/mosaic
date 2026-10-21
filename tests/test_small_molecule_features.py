@@ -100,6 +100,24 @@ def test_integer_native_element_channel_does_not_truncate_relaxed_values_or_grad
     np.testing.assert_allclose(gradient.X[0, 1] - gradient.X[0, 0], 1, rtol=0, atol=0)
 
 
+def test_independent_hard_reference_matches_geometry_off_injection_without_mutating_native_fields():
+    from mosaic.small_molecule.features import geometry_off_native_features
+    from mosaic.small_molecule.native_hook import GEOMETRY_FEATURE
+
+    context, hard = synthetic_context()
+    before = {k: np.asarray(v).copy() for k, v in context.base_features.items()}
+    native = geometry_off_native_features(context)
+    injected = inject_graph(context, hard)
+    assert GEOMETRY_FEATURE not in context.base_features
+    assert native["ref_element"] is context.base_features["ref_element"]
+    assert native["token_bonds"] is context.base_features["token_bonds"]
+    assert set(native) == set(injected)
+    for name in native:
+        np.testing.assert_array_equal(native[name], injected[name], err_msg=name)
+    for name, value in before.items():
+        np.testing.assert_array_equal(context.base_features[name], value)
+
+
 def test_injection_preserves_protein_and_static_metadata_without_mutating_context():
     context, graph = synthetic_context()
     before = {

@@ -1,0 +1,54 @@
+{
+  "tag": "20261021-brd4-25-02",
+  "source": {
+    "source_archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\releases\\20261021-brd4-25-02\\source.tar.gz",
+    "archive_bytes": 39417267,
+    "archive_sha256": "1f9786dff5a78af8f751d50d475d9f980f91ce75fa168b3936c94acaa7570be1",
+    "manifest_sha256": "68c5ad0d2ee4ab9f95c30dbbee0cec489000a70aafea179ad7711744aecc3625",
+    "files": 451,
+    "git_revision_reference": "2d5ad8d2fa43c8a706a6355ea2cb920c288f7943",
+    "hpc_transfer": "not performed",
+    "numerical_validation": "pending DTU HPC"
+  },
+  "remote_release": "/work3/s234818/mosaic/releases/20261021-brd4-25-02/source",
+  "run": "/zhome/95/e/206121/mosaic-runs/20261021-brd4-25-02",
+  "source01_scientific_comparison": {
+    "status": "byte_identical",
+    "files": 185,
+    "scope": "all src/ and examples/ files including all three configurations and driver"
+  },
+  "cpu": {
+    "job_id": "29768926",
+    "last_observed_status": "RUN",
+    "started_paris": "2026-10-21 10:03:47",
+    "actual_status": "DONE",
+    "ended_paris": "2026-10-21 10:07:39",
+    "passed": 341,
+    "failed": 0,
+    "errors": 0,
+    "skips": 0,
+    "evidence": "results/hpc/20261021-brd4-25/source02-cpu/evidence",
+    "archive_sha256": "2e7de344bfaf09c87342230bac8ad2f0ca4c3cefe3ff30eb7cb647cd9077ef5b"
+  },
+  "after_cpu": {
+    "job_id": "29768927",
+    "last_observed_status": "PEND",
+    "dependency": "ended(29768926)",
+    "actual_status": "EXIT",
+    "started": false,
+    "ended_paris": "2026-10-21 10:06:53",
+    "intentional_cancellation": true,
+    "reason": "New Protenix independent reference omitted geometry-off mask; retire before GPU"
+  },
+  "chemistry_launch_policy": {
+    "version": "chemistry-runtime-review-v1",
+    "full_run": "held",
+    "allowed_scope": "native readiness and two disposable ten-update pilots",
+    "full_submission_possible": false
+  },
+  "baseline_launch_policy": "independent passed native validation plus authenticated CPU/source/context/model/runtime/quota; no inter-arm dependency",
+  "native_validation": "not yet submitted",
+  "long_jobs": "not yet submitted",
+  "numerical_work": "DTU HPC only; local AST/packaging/byte/XML authentication",
+  "replacement": "20261021-brd4-25-03"
+}

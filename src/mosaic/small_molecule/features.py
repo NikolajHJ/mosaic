@@ -333,6 +333,23 @@ def prepare_context(
     return context, graph
 
 
+def geometry_off_native_features(context: PreparedContext):
+    """Independent hard seed reference in the relaxed branch's geometry scope.
+
+    Base features alone omit the hook mask and silently select native geometry.
+    Keep original hard element/bond fields, with zero ligand placeholders and
+    the explicit geometry mask, without going through relaxed graph injection.
+    """
+    if context.geometry_mode != "off":
+        raise ValueError("Hard reference requires explicit geometry-off context")
+    return context.base_features | {
+        "ref_pos": context.base_features["ref_pos"].at[
+            jnp.asarray(context.ligand_atom_indices, dtype=jnp.int32)
+        ].set(0),
+        GEOMETRY_FEATURE: context.reference_geometry_mask,
+    }
+
+
 def inject_graph(context: PreparedContext, graph: RelaxedGraph):
     """Pure differentiable graph -> native feature update; no mutable caches.
 

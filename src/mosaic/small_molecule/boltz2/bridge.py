@@ -67,13 +67,15 @@ class AffinityWorker:
 
     def evaluate(self, x, edges, *, gradient):
         x, edges = np.asarray(x), np.asarray(edges)
+        n = self.identity.get("n_atoms", 6)
         if (
-            x.dtype != np.float32
+            n not in (6, 25)
+            or x.dtype != np.float32
             or edges.dtype != np.float32
-            or x.shape != (6, 6)
-            or edges.shape != (15, 5)
+            or x.shape != (n, 6)
+            or edges.shape != (n * (n - 1) // 2, 5)
         ):
-            raise ValueError("Worker bridge supports exact FP32 Mosaic six-slot graphs")
+            raise ValueError("Worker bridge requires exact FP32 declared 6/25-slot graphs")
         graph_sha = hashlib.sha256(x.tobytes() + edges.tobytes()).hexdigest()
         reply = self.request(
             "evaluate",
@@ -125,13 +127,12 @@ def affinity_loss(worker):
     logging-only, explicitly stopped. Higher derivatives/JVP are unsupported;
     actual finite differences of the independent worker primal validate the VJP.
     """
-    shapes = (
-        jax.ShapeDtypeStruct((3,), jnp.float32),
-        jax.ShapeDtypeStruct((6, 6), jnp.float32),
-        jax.ShapeDtypeStruct((15, 5), jnp.float32),
-    )
-
     def callback(x, edges, gradient):
+        shapes = (
+            jax.ShapeDtypeStruct((3,), jnp.float32),
+            jax.ShapeDtypeStruct(x.shape, jnp.float32),
+            jax.ShapeDtypeStruct(edges.shape, jnp.float32),
+        )
         return jax.pure_callback(
             lambda a, b: worker.evaluate(a, b, gradient=gradient),
             shapes,

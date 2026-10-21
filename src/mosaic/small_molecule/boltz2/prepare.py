@@ -1,4 +1,4 @@
-"""Prepare a fresh native six-atom BRD4/hexane context on allocated HPC.
+"""Prepare a fresh native BRD4/carbon-chain context on allocated HPC.
 
 Native prediction establishes the reference pose once. It is shared by both
 fresh probability initializations; all subsequent affinity gradients hold it
@@ -13,7 +13,7 @@ import subprocess
 import sys
 
 
-def snapshot(prediction, cache, fixture, output):
+def snapshot(prediction, cache, fixture, output, n_atoms=6):
     import numpy as np
     import torch
     from rdkit import Chem
@@ -81,12 +81,13 @@ def snapshot(prediction, cache, fixture, output):
     }
     ligand = tokenized.tokens[tokenized.tokens["affinity_mask"]]
     names = set(ligand["res_name"])
-    if len(ligand) != 6 or len(names) != 1 or not np.all(ligand["atom_num"] == 1):
-        raise ValueError("Native preprocessing changed six occupied ligand slots")
+    if len(ligand) != n_atoms or len(names) != 1 or not np.all(ligand["atom_num"] == 1):
+        raise ValueError("Native preprocessing changed declared occupied ligand slots")
     mol = Chem.RemoveHs(Chem.Mol(molecules[next(iter(names))]))
-    query = Chem.MolFromSmiles("CCCCCC")
+    smiles = "C" * n_atoms
+    query = Chem.MolFromSmiles(smiles)
     match = mol.GetSubstructMatch(query)
-    if mol.GetNumAtoms() != 6 or len(match) != 6 or Chem.MolToSmiles(mol) != "CCCCCC":
+    if mol.GetNumAtoms() != n_atoms or len(match) != n_atoms or Chem.MolToSmiles(mol) != smiles:
         raise ValueError(
             "Native ligand identity is not the requested neutral carbon chain"
         )
@@ -95,8 +96,8 @@ def snapshot(prediction, cache, fixture, output):
         for slot, index in enumerate(match)
     }
     ai, ti = (
-        torch.full((6,), -1, dtype=torch.long),
-        torch.full((6,), -1, dtype=torch.long),
+        torch.full((n_atoms,), -1, dtype=torch.long),
+        torch.full((n_atoms,), -1, dtype=torch.long),
     )
     atom_row = 0
     for token_row, token in enumerate(tokenized.tokens):
@@ -105,11 +106,12 @@ def snapshot(prediction, cache, fixture, output):
             slot = name_to_slot[name]
             ai[slot], ti[slot] = atom_row, token_row
         atom_row += int(token["atom_num"])
-    x = torch.nn.functional.one_hot(torch.zeros(6, dtype=torch.long), 6).float()
-    i, j = torch.triu_indices(6, 6, 1)
+    x = torch.nn.functional.one_hot(torch.zeros(n_atoms, dtype=torch.long), 6).float()
+    i, j = torch.triu_indices(n_atoms, n_atoms, 1)
     edges = torch.nn.functional.one_hot((j == i + 1).long(), 5).float()
     context = {
         "version": "mosaic-boltz-fixed-pose-v1",
+        "n_atoms": n_atoms,
         "features": batch,
         "coordinates": batch["coords"].detach().clone(),
         "atom_indices": ai,
@@ -127,13 +129,13 @@ def snapshot(prediction, cache, fixture, output):
         "fixture_sha256": file_digest(fixture),
         "native_manifest_sha256": file_digest(manifest_path),
         "input_sha256": file_digest(output.parent / "input.yaml"),
-        "n_atoms": 6,
-        "seed_smiles": "CCCCCC",
+        "n_atoms": n_atoms,
+        "seed_smiles": smiles,
         "atom_indices": ai.tolist(),
         "token_indices": ti.tolist(),
         "protein_sequence": json.loads(fixture.read_text())["protein_sequence"],
         "msa_policy": "native single-sequence empty MSA, same deposited 3MXF sequence as prior Mosaic; no external server",
-        "pose_policy": "new native predicted six-slot hexane pose; fixed during optimization; no crystal pose or ligand transplant",
+        "pose_policy": f"new native predicted {n_atoms}-slot carbon-chain pose; fixed during optimization; no crystal pose or ligand transplant",
         "frozen_fields": "coordinates, ref_pos, charge=0, atom names, crop, MSA, masks and all auxiliary fields",
         "prediction": str(prediction),
         "preparation_seed": 42,
@@ -145,6 +147,7 @@ def main():
     parser.add_argument("--fixture", type=Path, required=True)
     parser.add_argument("--cache", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--n-atoms", type=int, choices=(6, 25), default=6)
     args = parser.parse_args()
     if not os.environ.get("LSB_JOBID"):
         raise RuntimeError("Native preparation requires allocated DTU GPU")
@@ -154,10 +157,10 @@ def main():
     fixture = json.loads(args.fixture.read_text())
     if (
         fixture["pdb_id"] != "3MXF"
-        or fixture["n_heavy_atoms"] != 6
-        or fixture["smiles"] != "CCCCCC"
+        or fixture["n_heavy_atoms"] != args.n_atoms
+        or fixture["smiles"] != "C" * args.n_atoms
     ):
-        raise ValueError("Wrong Mosaic BRD4 six-slot fixture")
+        raise ValueError("Wrong Mosaic BRD4 carbon-chain fixture")
     args.output.mkdir(parents=True, exist_ok=False)
     specification = {
         "version": 1,
@@ -169,7 +172,7 @@ def main():
                     "msa": "empty",
                 }
             },
-            {"ligand": {"id": "L", "smiles": "CCCCCC"}},
+            {"ligand": {"id": "L", "smiles": fixture["smiles"]}},
         ],
         "properties": [{"affinity": {"binder": "L"}}],
     }
@@ -207,7 +210,7 @@ def main():
     with (args.output / "prediction.log").open("w") as log:
         subprocess.run(command, check=True, stdout=log, stderr=subprocess.STDOUT)
     prediction = args.output / "native/boltz_results_input"
-    report = snapshot(prediction, args.cache, args.fixture, args.output / "context.pt")
+    report = snapshot(prediction, args.cache, args.fixture, args.output / "context.pt", args.n_atoms)
     (args.output / "preparation.json").write_text(json.dumps(report, indent=2) + "\n")
 
 

@@ -1,0 +1,32 @@
+{
+  "tag": "20261021-brd4-25-04",
+  "source": {
+    "source_archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\releases\\20261021-brd4-25-04\\source.tar.gz",
+    "archive_bytes": 39425961,
+    "archive_sha256": "b62ef75f6ede08fbed8854ff4efe167571be6eb050c1b222278e19e15b3dc879",
+    "manifest_sha256": "e22aa03b95e630aae7695b0908a5d20eb26ff7f5ee9b79987c098ae86efb3e79",
+    "files": 461,
+    "git_revision_reference": "2d5ad8d2fa43c8a706a6355ea2cb920c288f7943",
+    "hpc_transfer": "not performed",
+    "numerical_validation": "pending DTU HPC"
+  },
+  "remote_release": "/work3/s234818/mosaic/releases/20261021-brd4-25-04/source",
+  "run": "/zhome/95/e/206121/mosaic-runs/20261021-brd4-25-04",
+  "correction": "Verify passed worker status and exact model/context digest fields, retain transport metadata; original scientific settings/gates unchanged",
+  "cpu": {
+    "job_id": "29769140",
+    "last_observed_status": "RUN",
+    "started_paris": "2026-10-21 10:21:56"
+  },
+  "after_cpu": {
+    "job_id": "29769141",
+    "last_observed_status": "PEND",
+    "dependency": "ended(29769140)"
+  },
+  "native_jobs": [],
+  "long_jobs": [],
+  "chemistry_full_run": "HELD; runtime estimate before any full chemistry submission",
+  "preserved_prior_failure": "scripts/hpc/receipts/20261021-brd4-25-03/campaign.json",
+  "repair_component_timing": "results/hpc/20261021-brd4-25/repair-timing/evidence/payload/timing/timing.json",
+  "scope": "Queued CPU validation/controller, not native pass or long optimization"
+}

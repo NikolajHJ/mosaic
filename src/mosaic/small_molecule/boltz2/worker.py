@@ -1,4 +1,4 @@
-"""Allocated native worker entry point; JSON transport contains only six-slot graphs."""
+"""Allocated native worker for declared six- or 25-slot relaxed graphs."""
 
 import argparse
 import contextlib
@@ -58,6 +58,7 @@ def main():
                 "pose_policy": "fixed native predicted pose; no diffusion gradients",
                 "optimized_output": "affinity_pred_value",
                 "recycling_steps": 0,
+                "n_atoms": int(context["atom_indices"].numel()),
             }
         ),
         flush=True,

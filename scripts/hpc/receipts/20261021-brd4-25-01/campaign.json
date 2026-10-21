@@ -1,0 +1,38 @@
+{
+  "tag": "20261021-brd4-25-01",
+  "source": {
+    "source_archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\releases\\20261021-brd4-25-01\\source.tar.gz",
+    "archive_bytes": 39413811,
+    "archive_sha256": "c625c367e34d2d589edc11629d1bf65aac2642da37b54ad2d4bee53622864d44",
+    "manifest_sha256": "4016584825436c9c597307ac51eddb242ac50885352e9c06841da2e1e201ee9c",
+    "files": 450,
+    "git_revision_reference": "2d5ad8d2fa43c8a706a6355ea2cb920c288f7943",
+    "hpc_transfer": "not performed",
+    "numerical_validation": "pending DTU HPC"
+  },
+  "remote_release": "/work3/s234818/mosaic/releases/20261021-brd4-25-01/source",
+  "run": "/zhome/95/e/206121/mosaic-runs/20261021-brd4-25-01",
+  "cpu": {
+    "job_id": "29768889",
+    "actual_status": "DONE",
+    "passed": 338,
+    "failed": 0,
+    "errors": 0,
+    "skips": 0,
+    "ended_paris": "2026-10-21 10:00:54",
+    "lsf_success_verified": true,
+    "local_evidence": "results/hpc/20261021-brd4-25/source01-cpu/evidence",
+    "archive_sha256": "f4f217d1da708d883cb5204aa51d134dd63686272133e1897c2427004e45828a"
+  },
+  "after_cpu": {
+    "job_id": "29768890",
+    "actual_status": "EXIT",
+    "started": false,
+    "intentional_user_directed_cancellation": true,
+    "ended_paris": "2026-10-21 09:59:16",
+    "reason": "Hold full chemistry for runtime estimate before launch"
+  },
+  "gpu_or_long_jobs_submitted": false,
+  "replacement": "20261021-brd4-25-02",
+  "scope": "Preserved historical source01; CPU pass is not native validation"
+}

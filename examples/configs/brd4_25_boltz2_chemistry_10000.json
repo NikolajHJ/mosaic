@@ -1,0 +1,51 @@
+{
+  "seed": 17,
+  "steps": 10000,
+  "initial_step_size": 0.03,
+  "max_backtracks": 10,
+  "pilot_steps": 10,
+  "allocation_seconds": 82800,
+  "loss": {
+    "version": "repair-failure-guidance-v1",
+    "extra_valid_weight": 1.0,
+    "partial_weight": 1.0,
+    "local_bond_weight": 0.1,
+    "component_cut_weight": 0.1,
+    "nonempty_weight": 0.1
+  },
+  "search": {
+    "max_edits": 3,
+    "checks_per_depth": 32,
+    "beam_width": 4,
+    "probability_weight": 1.0,
+    "probability_floor": 1e-12
+  },
+  "progress_search": {
+    "version": "repair-progress-v1",
+    "max_edits": 6,
+    "checks_per_depth": 32,
+    "beam_width": 4,
+    "probability_weight": 1.0,
+    "allow_atom_edits": false,
+    "atom_edit_penalty": 3.0,
+    "max_atom_edits": 1
+  },
+  "initialization": {
+    "kind": "chain_uniform",
+    "mixing": 0.5
+  },
+  "version": "mosaic-brd4-25-three-arm-v1",
+  "arm": "boltz2_chemistry",
+  "n_atoms": 25,
+  "element_js_weight": 0.0,
+  "chemistry_enabled": true,
+  "repair_schedule": {
+    "version": "delayed-geometric-v1",
+    "initial": 0.001,
+    "final": 50.0,
+    "hold_updates": 5000,
+    "total_updates": 10000
+  },
+  "fixture": "tests/data/brd4_3mxf/fixture_25.json",
+  "label": "25 occupied slots / boltz2_chemistry / 50% chain-uniform / 10000 updates"
+}
