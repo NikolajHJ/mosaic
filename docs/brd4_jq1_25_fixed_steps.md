@@ -418,3 +418,47 @@ adoption SHA-256
 This is existing-proof integrity and allocated launcher-contract evidence; it
 does not establish a complete storage pass, new Boltz long jobs or Protenix
 completion. At 22:33:09 Paris, callback remained RUN and observer PEND.
+
+### 21 October, 22:36:48 Paris - full dispatch storage passed; two replacement Boltz jobs submitted
+
+The saved actual scheduler/artifact query is
+`results/hpc/20261021-brd4-jq1-25-fixed-storage-04/user-status-20261021T203646Z/status.json`.
+Callback **29778181** completed DONE/LSF success after the complete per-filesystem
+dispatch budget passed: work3 **15,874,334,545 available / 6,827,669,155 required
+bytes**, home **11,811,160,064 / 9,459,309,120 bytes**. Both required budgets retain
+the unchanged 4 GiB reserve. The bounded no-follow home inventory completed with
+return code 0 and no recent Mosaic file/link bytes; it was not a partial-inventory
+pass. Work3 file headroom is authenticated finite user quota; home's positive
+physical filesystem counters are not a reported per-user inode quota. These
+checks are observations, not reservations, and each GPU entry must repeat them.
+
+Both independent replacement jobs were actually submitted at **22:34:20-21 Paris**:
+**Boltz-2 29778203** is scheduler **RUN**, but has no study, saved state/update or
+completed entry gate in this snapshot; **Boltz-2 + chemistry 29778204** is **PEND**,
+also with no study or saved steps. Thus both jobs are submitted, but scientific
+optimization has not yet been verified to start for either. Their fixed LR remains
+**0.01**, one candidate per update and no halving, with unchanged scientific
+source02, configurations and passed native readiness. The old failed admission
+jobs 29777710/29777711 and their original gates remain failed and preserved.
+
+Existing **Protenix 29777709** is actual scheduler **DONE**, with its summary
+present. Allocated observer **29778184** also completed DONE/LSF success and saved
+`observed_success`, authenticating the actual same-job scheduler/LSF and terminal
+metadata for **10,000 updates / 10,001 states**, including saved summary/case,
+JSONL and derivative proof hashes. This does not substitute for the future full
+report frame/snapshot completion certificate or imply that all original native
+bytes have been downloaded locally. No Protenix restart or further cleanup was
+performed. No fixed-step report is published yet; published milestone progress
+remains 0/0/0 until the first verified fixed-report edition.
+
+Independent byte/JSON/schema verification of the 28-file compact delivery
+evidence passed: archive 21,152 bytes, SHA-256
+`ce780f8ffdbeef0b6dacdb2a1dd701caa057537dccfee82b8f318a56ee2129c0`;
+verification receipt SHA-256
+`f175fa887bfe65aed6bf227b4dea712ecb7e966aa16585ba5982a6ee44746dd6`.
+Exact dispatch budgets/reserves, completed inventory/fresh quota, both actual
+new submission/resource vectors, callback/Protenix/observer scheduler and LSF
+outcomes and compact derivative proof hashes were authenticated. GPU entry
+checks and saved Boltz optimization steps remain unverified in this bundle;
+the four large Protenix original trajectory files are remote hash references
+only, not full local original-byte or report-frame verification.

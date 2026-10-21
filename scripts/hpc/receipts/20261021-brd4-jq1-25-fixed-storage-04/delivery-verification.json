@@ -1,0 +1,199 @@
+{
+  "version": "fixed25-storage04-independent-delivery-metadata-verification-v1",
+  "status": "passed",
+  "verified_utc": "2026-10-21T20:39:56.757740+00:00",
+  "scope": "Independent local standard-library archive/byte/hash/JSON/XML/schema and static-AST checks only; no local tests, scientific imports, numerical model work or SSH. Allocated observer authenticated full original summary/case/JSONL equality; compact local delivery omits their full bytes.",
+  "archive": {
+    "bytes": 21152,
+    "sha256": "ce780f8ffdbeef0b6dacdb2a1dd701caa057537dccfee82b8f318a56ee2129c0",
+    "verified_manifest_files": 28,
+    "manifest_sha256": "53878e191097395f2d1642405492b6ae366ca31dd0e46ec099324f187453439e",
+    "observed_utc": "2026-10-21T20:38:00.604602+00:00"
+  },
+  "source_manifest_sha256": "75a76dacf8de25f4ebd2d3b3fe114b1af6092064a01edf141650295300670ab3",
+  "science_manifest_sha256": "1e3a8a21e2fa68e24d1c9229238999c42a4a9b44bcc78344e73e188c87d1ee64",
+  "cpu": {
+    "job": "29778180",
+    "actual_scheduler": "DONE",
+    "actual_LSF": "success",
+    "tests": 85,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "modules": {
+      "tests.test_fixed25_recover_storage": 37,
+      "tests.test_fixed25_recover_ops": 48
+    },
+    "certificate_sha256": "b9f7e4a35289b5b6e7ab240b71fe119ed54ca91ef322736152195f83071408b1",
+    "adoption_sha256": "58b6b9fc2c55d3f8ebd144f474ab0928145597f9e34ffaa6fa33a68dc08d1cfd",
+    "raw_XML_sha256": "c702cfd5ab587bfcda1979c14bc2c4330d19010a69ec3e112f5e6111bc816202"
+  },
+  "storage": {
+    "status": "passed",
+    "phase": "dispatch",
+    "gate_sha256": "a7d77332b7f11f6e6dc83c36c659b7ccfc3b0d107c39775a24a7ea9ad6ebfcb7",
+    "placement": {
+      "protenix": "work3",
+      "boltz2": "work3",
+      "boltz2_chemistry": "zhome"
+    },
+    "per_filesystem": {
+      "work3": {
+        "status": "passed",
+        "full_projected_bytes": 3263423648,
+        "outstanding_projected_bytes": 2532701859,
+        "required_bytes": 6827669155,
+        "available_bytes_conservative": 15874334545,
+        "reserve_bytes": 4294967296,
+        "file_reserve": 100000,
+        "available_files_lower": 19674084,
+        "filesystem_inode_reporting": "unreported_all_zero",
+        "file_headroom_scope": "Mandatory minimum of all authenticated finite user-quota pools",
+        "stale_bytes_subtracted": 1305534639
+      },
+      "zhome": {
+        "status": "passed",
+        "full_projected_bytes": 5164341824,
+        "outstanding_projected_bytes": 5164341824,
+        "required_bytes": 9459309120,
+        "available_bytes_conservative": 11811160064,
+        "reserve_bytes": 4294967296,
+        "file_reserve": 100000,
+        "available_files_lower": 13509800158,
+        "filesystem_inode_reporting": "reported_physical_filesystem_only",
+        "file_headroom_scope": "Physical home filesystem f_favail; no per-user inode quota is reported by DTU home quota",
+        "stale_bytes_subtracted": 0
+      }
+    },
+    "home_inventory": {
+      "command": [
+        "find",
+        "-P",
+        "/zhome/95/e/206121/mosaic-runs",
+        "-mmin",
+        "-240",
+        "(",
+        "-type",
+        "f",
+        "-o",
+        "-type",
+        "l",
+        ")",
+        "-printf",
+        "%s\n"
+      ],
+      "returncode": 0,
+      "bytes": 0,
+      "files_or_links": 0,
+      "stderr": "",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "policy": "GNU find -P; full regular-file/symlink lstat sizes modified within 240 minutes; no symlink traversal",
+      "timeout_seconds": 600,
+      "complete": true
+    },
+    "home_quota_cache_age_seconds": 5416.95267367363,
+    "home_quota_snapshot": "2026-10-21T21:04:04+02:00",
+    "limitation": "Storage checks are conservative observations, not reservations. GPU entries repeat combined checks; their outcomes are not in this delivery bundle."
+  },
+  "replacement_boltz": {
+    "boltz2": {
+      "job": "29778203",
+      "actual_scheduler": "RUN",
+      "output_parent": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-storage-04/run-boltz2",
+      "submission_sha256": "e1a75f7b923a5be08e93d70cd0a1198b25d7d150217fc727c4c66da74e9da5b2",
+      "scheduler_sha256": "1a982930c049c4460265c456e16091f596c0144d49b4feec7b5167fedbfb10a3",
+      "fixed_learning_rate": 0.01,
+      "requested_updates": 10000,
+      "committed_updates_verified": null,
+      "entry_storage_verified": false,
+      "scope": "Actual scheduler allocation status only; entry gate and committed scientific updates not in this compact bundle"
+    },
+    "boltz2_chemistry": {
+      "job": "29778204",
+      "actual_scheduler": "PEND",
+      "output_parent": "/zhome/95/e/206121/mosaic-runs/20261021-brd4-jq1-25-fixed-storage-04/run-boltz2_chemistry",
+      "submission_sha256": "b0b4bedc82c6c4db8162569b04160be067477bcf959788279ae53c1d5bb61676",
+      "scheduler_sha256": "79e0325d9d753ac98b62b77136f7489260fbc380763aabe968e52379300a29db",
+      "fixed_learning_rate": 0.01,
+      "requested_updates": 10000,
+      "committed_updates_verified": null,
+      "entry_storage_verified": false,
+      "scope": "Actual scheduler allocation status only; entry gate and committed scientific updates not in this compact bundle"
+    }
+  },
+  "protenix": {
+    "job": "29777709",
+    "actual_scheduler": "DONE",
+    "actual_LSF": "success",
+    "observer_job": "29778184",
+    "observer_actual_scheduler": "DONE",
+    "observer_actual_LSF": "success",
+    "observation_status": "observed_success",
+    "updates": 10000,
+    "states": 10001,
+    "observation_sha256": "e28a11dd257e68791e8a126c751a504376befdfcdedc1df6d17a78ed47a6b5b7",
+    "scheduler_sha256": "e5e31cab9d281d07d0f97e2999628f851dc4120732c798ed78d9734bf68ba712",
+    "stdout_sha256": "7368d244cf0555eaa0c51ac51f09ce1165e75408dc7a401b861b56242f49c9b3",
+    "local_compact_original_proofs_verified": [
+      {
+        "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-storage-03/run-protenix/payload/study/native_gradient_checks/report.json",
+        "bytes": 5111,
+        "sha256": "8acb9c4d8f2bf395905cffb1e9fd68f8b0fbe3f554ab47a3d6d7beb2a706fc25",
+        "transferred": true
+      },
+      {
+        "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-storage-03/run-protenix/payload/study/terminal_gradient_checks/report.json",
+        "bytes": 5104,
+        "sha256": "65fbf34bed3cb0bdabd6d77e90e19007715ef8630e73c089794f1b58d582cad9",
+        "transferred": true
+      },
+      {
+        "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-storage-03/run-protenix/payload/study/case-0/combined_initial_checks/report.json",
+        "bytes": 2708,
+        "sha256": "ed85f5c49566e6bd6a64f1bb0d8b2bf699a0dad8bc68f8eb34c0c09069b9df23",
+        "transferred": true
+      },
+      {
+        "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-storage-04/pro-observer/native-scheduler-0.txt",
+        "bytes": 3827,
+        "sha256": "e5e31cab9d281d07d0f97e2999628f851dc4120732c798ed78d9734bf68ba712",
+        "transferred": true
+      },
+      {
+        "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-storage-03/run-protenix/stdout.29777709.log",
+        "bytes": 2293,
+        "sha256": "7368d244cf0555eaa0c51ac51f09ce1165e75408dc7a401b861b56242f49c9b3",
+        "transferred": true
+      }
+    ],
+    "original_large_references_only": [
+      {
+        "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-storage-03/run-protenix/payload/study/summary.json",
+        "bytes": 298577297,
+        "sha256": "692170e4553fb3b8ca2d940a0d23645c2b1f7091cde88c99cd5a02171b653eac",
+        "transferred": false
+      },
+      {
+        "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-storage-03/run-protenix/payload/study/case-0/report.json",
+        "bytes": 233884160,
+        "sha256": "e6910ecdb339017e3942c53f802ffc44b46ba45a04125cc0e78b577a941eb24d",
+        "transferred": false
+      },
+      {
+        "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-storage-03/run-protenix/payload/study/case-0/updates.jsonl",
+        "bytes": 8420717,
+        "sha256": "c63455d9d1a83ca8b602b753ff326d6f3a9a2c1411812dbf95de4c14d2a93c20",
+        "transferred": false
+      },
+      {
+        "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-storage-03/run-protenix/payload/study/case-0/states.jsonl",
+        "bytes": 47502075,
+        "sha256": "dcacd0118203648ad8561f572ef90623269dcaa66c19662e90ff40e3ecae8a64",
+        "transferred": false
+      }
+    ],
+    "scope": "Actual completion and allocated terminal-observer metadata authenticated. Full original trajectory bytes/saved probability frames not locally verified or published by this compact transfer."
+  },
+  "report_published": false,
+  "scientific_driver_static_scope": "Unchanged original source02 fixed-step command and configs; recovery changes only output path. No actual new Boltz driver invocation bytes included yet."
+}

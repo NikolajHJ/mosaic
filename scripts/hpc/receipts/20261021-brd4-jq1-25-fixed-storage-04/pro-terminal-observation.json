@@ -1,0 +1,58 @@
+{
+  "version": "fixed25-two-arm-storage-recovery-v1",
+  "status": "observed_success",
+  "native_job": "29777709",
+  "observer_job": "29778184",
+  "tool_manifest_sha256": "75a76dacf8de25f4ebd2d3b3fe114b1af6092064a01edf141650295300670ab3",
+  "cpu_certificate_sha256": "b9f7e4a35289b5b6e7ab240b71fe119ed54ca91ef322736152195f83071408b1",
+  "adoption_sha256": "58b6b9fc2c55d3f8ebd144f474ab0928145597f9e34ffaa6fa33a68dc08d1cfd",
+  "scope": "Actual terminal observation and saved metadata only; final scientific frame report remains separate",
+  "scheduler": {
+    "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-storage-04/pro-observer/native-scheduler-0.txt",
+    "sha256": "e5e31cab9d281d07d0f97e2999628f851dc4120732c798ed78d9734bf68ba712"
+  },
+  "stdout": {
+    "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-storage-03/run-protenix/stdout.29777709.log",
+    "sha256": "7368d244cf0555eaa0c51ac51f09ce1165e75408dc7a401b861b56242f49c9b3"
+  },
+  "updates": 10000,
+  "states": 10001,
+  "proofs": [
+    {
+      "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-storage-03/run-protenix/payload/study/summary.json",
+      "sha256": "692170e4553fb3b8ca2d940a0d23645c2b1f7091cde88c99cd5a02171b653eac"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-storage-03/run-protenix/payload/study/case-0/report.json",
+      "sha256": "e6910ecdb339017e3942c53f802ffc44b46ba45a04125cc0e78b577a941eb24d"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-storage-03/run-protenix/payload/study/case-0/updates.jsonl",
+      "sha256": "c63455d9d1a83ca8b602b753ff326d6f3a9a2c1411812dbf95de4c14d2a93c20"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-storage-03/run-protenix/payload/study/case-0/states.jsonl",
+      "sha256": "dcacd0118203648ad8561f572ef90623269dcaa66c19662e90ff40e3ecae8a64"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-storage-03/run-protenix/payload/study/native_gradient_checks/report.json",
+      "sha256": "8acb9c4d8f2bf395905cffb1e9fd68f8b0fbe3f554ab47a3d6d7beb2a706fc25"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-storage-03/run-protenix/payload/study/terminal_gradient_checks/report.json",
+      "sha256": "65fbf34bed3cb0bdabd6d77e90e19007715ef8630e73c089794f1b58d582cad9"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-storage-03/run-protenix/payload/study/case-0/combined_initial_checks/report.json",
+      "sha256": "ed85f5c49566e6bd6a64f1bb0d8b2bf699a0dad8bc68f8eb34c0c09069b9df23"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-storage-04/pro-observer/native-scheduler-0.txt",
+      "sha256": "e5e31cab9d281d07d0f97e2999628f851dc4120732c798ed78d9734bf68ba712"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-storage-03/run-protenix/stdout.29777709.log",
+      "sha256": "7368d244cf0555eaa0c51ac51f09ce1165e75408dc7a401b861b56242f49c9b3"
+    }
+  ]
+}

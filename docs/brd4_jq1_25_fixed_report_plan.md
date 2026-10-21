@@ -20,24 +20,38 @@ Use the actual receipts in these campaigns as the source of exact identities:
   replacement Boltz submissions. Read its submission files and exclusive markers;
   a running callback does not establish long-run IDs or a storage pass.
 
-At the receipt snapshot used for this plan, recovery CPU **29778180** is recorded
-DONE/LSF success with **85 allocated contract cases**, callback **29778181** is
-RUN performing whole-campaign storage checks, and observer **29778184** is
-submitted/PEND on `ended(29777709)`. The parent task has independently verified
-the recovery CPU bundle's bytes, raw XML and schema. No replacement Boltz long IDs or
-complete recovery storage pass were established. These are launcher facts, not
-report fixture results.
+At the actual **21 October, 22:36:48 Paris** snapshot, recovery CPU **29778180**
+is DONE/LSF success with **85 allocated contract cases**, independently verified
+from bytes, raw XML and schema. Callback **29778181** is DONE/LSF success after
+the **complete dispatch storage check passed on work3 and home**, with the full
+remaining assigned projections plus each filesystem's unchanged 4 GiB reserve
+and file-headroom gate. This does not reserve capacity or waive the repeated
+GPU-entry check. The complete bounded home inventory returned 0; no partial
+inventory was accepted. Exact saved status:
+`results/hpc/20261021-brd4-jq1-25-fixed-storage-04/user-status-20261021T203646Z/status.json`.
 
-| Arm | Actual scientific job available now | Scientific output location |
+| Arm | Actual current scientific job | Scientific output location |
 | --- | --- | --- |
-| Protenix | 29777709, existing run; do not replace | `/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-storage-03/run-protenix/payload/study` |
-| Boltz-2 | 29777710 failed before scientific execution; replacement ID required | Declared replacement: `/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-storage-04/run-boltz2/payload/study`, subject to actual submission |
-| Boltz-2 + chemistry | 29777711 failed before scientific execution; replacement ID required | Declared replacement: `/zhome/95/e/206121/mosaic-runs/20261021-brd4-jq1-25-fixed-storage-04/run-boltz2_chemistry/payload/study`, subject to actual submission |
+| Protenix | **29777709 DONE**, existing run; do not replace | `/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-storage-03/run-protenix/payload/study` |
+| Boltz-2 | **29778203 RUN** allocation; no study, saved steps or completed entry gate observed yet | `/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-storage-04/run-boltz2/payload/study` |
+| Boltz-2 + chemistry | **29778204 PEND**; no study or saved steps | `/zhome/95/e/206121/mosaic-runs/20261021-brd4-jq1-25-fixed-storage-04/run-boltz2_chemistry/payload/study` |
 
-The latest recorded Protenix prefix is 9,655 updates / 9,656 states at
-22:27:56 Paris, still RUN without a summary. Do not infer its terminal outcome.
-The observer authenticates saved terminal metadata; a full report completion
-collector must also authenticate every included snapshot.
+The two replacement jobs were actually submitted independently at 22:34:20-21
+Paris, preserving fixed LR **0.01** and the one-candidate/no-halving policy.
+Both current IDs and roots now exist for the new report contract; scheduler RUN
+alone must not be displayed as an authenticated optimization update. Preserve
+29777710/29777711 as separate failed, scientifically unstarted admission attempts.
+Never combine their records with a replacement trajectory.
+
+Protenix's summary is present. Allocated observer **29778184** is DONE/LSF success
+and saved `observed_success` for **10,000 updates / 10,001 states**, authenticating
+same-job actual terminal scheduler/LSF and saved terminal metadata, JSONL and
+proof hashes. The future report completion collector must still authenticate
+every included snapshot and all full report gates. Observer metadata success is
+not a full frame certificate or a claim that every original native byte was
+independently downloaded locally. These are scientific-run/launcher facts, not
+new report fixture results. No fixed report is published; milestone progress
+remains **0/0/0** until its first verified edition.
 
 Scientific source02 remains
 `/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-02/source`, manifest
@@ -119,9 +133,9 @@ Display zero saved states, empty chunks/curves, `latest_update: null`, passed
 original readiness and the actual resource failure. Once replacement IDs are
 authenticated, pin them as the current scientific arms and retain the failed
 attempts as explicit provenance. Do not merge different jobs into one trajectory.
-The first current three-arm production report should be sealed only after both
-actual replacement IDs/roots exist; preparatory schema/fixture work can proceed
-before then.
+The two actual replacement IDs/roots are now available for sealing the current
+three-arm report bindings. Publication still requires the new allocated report
+fixtures, actual rendering assessment and exact byte verification.
 
 The historical template disables `states === 0` selectors and `draw()` returns
 without clearing old content. Keep all three arms selectable and visible. On an
