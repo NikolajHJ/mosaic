@@ -4640,3 +4640,55 @@ No local numerical work, model change, temperature change, diffusion derivative
 or native gate waiver. Exact actual receipts and source identities in
 scripts/hpc/receipts/20261021-brd4-25-release-07/campaign.json. Follow-up active
 for actual approved full chemistry submission, preserving old random blocker.
+
+
+## 21 October 2026 — 25-slot native Boltz gates passed; independent long arms submitted; JQ1 pocket recommendation
+
+Scientific source04 and launcher07 remain unchanged. Native validators29769502
+and29769504 plus callbacks29769503/29769505 are actualDONE with LSF success and
+persisted passed assessments. Original2e-5 hard parity, independent-primal raw
+atom/typed-bond FD at.01/.003/.001, finite/frozen identities and required pilots
+passed. Chemistry also passed nonzero invalid graph signal, low/high coupled
+checks and both ten-step disposable pilots. No gate was relaxed. Protenix's
+separate29769176 parity failure remains preserved and blocks its long arm.
+
+Actual independent10,000-update submissions: Boltz-only29769525 submitted
+11:02:11Paris, RUN since11:04:20; Boltz+repair29769540 submitted11:04:34, PEND
+on physical GPU availability at capture. Both gpul40s/one exclusiveL40S/four CPU
+slots/8GiB per slot/23h, no inter-arm dependency. Actual bsub receipts and bjobs
+resource records authenticated. No completed trajectory is established.
+New25-slot context tensor digestdf93ef76cc26d5888532dc2c36688dbbff4040375f5357a784b8b6a656ec2f34;
+context.pt SHA099fdac537a08f65a14cb60463de24fa0c4ffd6541a142beaaee6e974977fa08;
+initSHA90553f0e28762fe81fa0c40f840e1c2e4884a0f79a1bbf48553132e3c0e27391.
+Model395876da13ab6d5d175e6603db2118a82954c7c06484842fe2314dbd77a31a16
+before/after exact for both readiness arms. Config hashes and actual assessment
+hashes in scripts/hpc/receipts/20261021-brd4-25-release-07/campaign.json.
+
+Saved pilot means1.74322s/update Boltz;2.02183/2.25575s chemistry early/high.
+Original conservative projections27948.33s/35636.30s passed82800s. Fresh
+submission quota checks passed with both ready arms plus4GiB reserve; not a
+storage reservation or worst-case time guarantee.224proof files safely
+extracted/byte-verified locally under results/hpc/20261021-brd4-25/submission02/;
+archive1985802bytesSHA9f4061050e70e55160e61558b015c578dcf73e0da890084847808951eea38a8c,
+manifest a21a5407415f169b251d3f86efb768e254881f851c20496b8893f276e678abdf.
+Capture01 stopped on LSF wrapping a field name, without scientific changes;
+partial directory preserved. Capture02 strictly normalizes whitespace, retains
+raw output and authenticates exact job/status/queue and all native proof bytes.
+Only stdlib byte/schema/receipt checks ran locally. The submission heartbeat's
+endpoint is fulfilled and is paused; long studies remain unchanged.
+
+User requested an experimentally established pocket for25-slot designs.
+Recommended BRD4-BD1 acetyl-lysine/JQ1 pocket in3MXF, same127-residue construct.
+Primary sources: https://www.rcsb.org/structure/3MXF (1.60A co-crystal),
+https://www.thesgc.org/chemical-probes/jq1 (JQ1 BRD4(N) ITC Kd49.0+/-2.4nM),
+https://pubmed.ncbi.nlm.nih.gov/24497639/ (experimental affinity mutational map).
+Asn140/Tyr97/Trp81/Met149 map to supplied sequence99/56/40/108; WPF81/82/83
+to40/41/42. Mapping is static fixture metadata, not native token/crop validation.
+Proposal: derive spatial pocket around crystallographic JQ1 on allocatedHPC,
+restrict Protenix contact objective, condition new Boltz pose then freeze it.
+Current Boltz whole-complex affinity has no independent pocket selector; current
+prepared pose is not yet geometrically audited against the JQ1 site. No
+pocket-specific implementation/job was made and current runs were not changed.
+No diffusion gradient, temperature change or AE/VAE/latent pipeline introduced.
+Recommendation and versioning/validation requirements recorded in
+ docs/brd4_25_chemistry_release.md. No binding/activity claim for generated graphs.

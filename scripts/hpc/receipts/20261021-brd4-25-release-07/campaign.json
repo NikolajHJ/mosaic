@@ -32,8 +32,12 @@
     "boltz2_callback": "29769503",
     "boltz2_chemistry": "29769504",
     "boltz2_chemistry_callback": "29769505",
-    "last_observed_status": "PEND",
-    "pending_reason": "ngpus_physical availability"
+    "last_observed_status": "DONE; both persisted assessments passed",
+    "pending_reason": null,
+    "assessment_sha256": {
+      "boltz2": "189505ba05b9ee734a3b86809090f0dc6f2022509e48a4e0beff07fe42386b91",
+      "boltz2_chemistry": "c10b3a61940cbdc65fc7fb58f531c5cccff171441bfd3fc475e4e901bdfa1155"
+    }
   },
   "protenix": {
     "validation_job_id": "29769176",
@@ -58,6 +62,53 @@
     "files": 56,
     "archive_sha256": "055c6df3db215eed088da083f07c5ddfbf4473b1527ffc01892b062bed49aded"
   },
-  "long_chemistry_job": null,
-  "scope": "Approval and controller/native submissions, not a submitted or completed10000-update trajectory; require actual laterlongID"
+  "long_chemistry_job": {
+    "job_id": "29769540",
+    "actual_status_at_capture": "PEND",
+    "submitted_paris": "2026-10-21 11:04:34",
+    "resources": {
+      "queue": "gpul40s",
+      "exclusive_gpus": 1,
+      "cpu_slots": 4,
+      "memory_gib_per_slot": 8,
+      "walltime": "23:00",
+      "inter_arm_dependency": false
+    }
+  },
+  "scope": "Authenticated native validation and actual independent long submissions; not completed trajectories. Pocket targeting is a documented recommendation only.",
+  "long_boltz_job": {
+    "job_id": "29769525",
+    "actual_status_at_capture": "RUN",
+    "submitted_paris": "2026-10-21 11:02:11",
+    "started_paris": "2026-10-21 11:04:20"
+  },
+  "submission_evidence": {
+    "local": "results/hpc/20261021-brd4-25/submission02/20261021-brd4-25-04-submission-evidence-02",
+    "files": 224,
+    "archive_bytes": 1985802,
+    "archive_sha256": "9f4061050e70e55160e61558b015c578dcf73e0da890084847808951eea38a8c",
+    "manifest_sha256": "a21a5407415f169b251d3f86efb768e254881f851c20496b8893f276e678abdf"
+  },
+  "context_digest": "df93ef76cc26d5888532dc2c36688dbbff4040375f5357a784b8b6a656ec2f34",
+  "runtime_gate": {
+    "boltz2": {
+      "allocation_seconds": 82800,
+      "conservative_projected_seconds": 27948.326591996014,
+      "mean_update_seconds": [
+        1.7432217727997341
+      ],
+      "scope": "empirical pilots, not a worst-case guarantee",
+      "status": "passed"
+    },
+    "boltz2_chemistry": {
+      "allocation_seconds": 82800,
+      "conservative_projected_seconds": 35636.30145902862,
+      "mean_update_seconds": [
+        2.021829708100995,
+        2.255753430601908
+      ],
+      "scope": "empirical pilots, not a worst-case guarantee",
+      "status": "passed"
+    }
+  }
 }
