@@ -1,0 +1,75 @@
+{
+  "tag": "20261021-brd4-jq1-gradient-audit-02",
+  "scope": "Read-only saved gradient/step analysis on allocated CPU; no model/new derivatives/repair/scientific run changes",
+  "status": "Actual EXIT1; analysis-only exact initial equality assertion failed after saved-data computations; no scientific native gate failed or changed",
+  "files": {
+    "audit.py": {
+      "bytes": 12516,
+      "sha256": "4057c70b1e9714a5e757968409a3e8b9c94a1f8f0c98cc34cfef4466526ad1d8"
+    },
+    "audit.lsf": {
+      "bytes": 969,
+      "sha256": "feb66e7906d33471f2366054c8c9f3ead20c4af20ccecb5e604df37886340c4b"
+    }
+  },
+  "fixed_report_capture": "20261021-brd4-jq1-25-report-04/interim-0003",
+  "capture_sha256": "676b5612bc1651a43a6f8bb41b6212d78220352e26dadedba8be9fe5d87b6f40",
+  "included_updates": [
+    7175,
+    1570,
+    1439
+  ],
+  "submission": {
+    "submitted_utc": "2026-10-21T13:03:40.801746+00:00",
+    "args": [
+      "bsub",
+      "-q",
+      "hpc",
+      "-n",
+      "2",
+      "-R",
+      "span[hosts=1]",
+      "-R",
+      "rusage[mem=4GB]",
+      "-W",
+      "00:20",
+      "-J",
+      "mosaic-jq1-gradient-scale-audit",
+      "-oo",
+      "/zhome/95/e/206121/mosaic-runs/20261021-brd4-jq1-gradient-audit-02/stdout.%J.log",
+      "-eo",
+      "/zhome/95/e/206121/mosaic-runs/20261021-brd4-jq1-gradient-audit-02/stderr.%J.log",
+      "bash",
+      "-l",
+      "/work3/s234818/mosaic/20261021-brd4-jq1-gradient-audit-02.lsf",
+      "feb66e7906d33471f2366054c8c9f3ead20c4af20ccecb5e604df37886340c4b",
+      "/work3/s234818/mosaic/20261021-brd4-jq1-gradient-audit-02.py",
+      "4057c70b1e9714a5e757968409a3e8b9c94a1f8f0c98cc34cfef4466526ad1d8",
+      "/zhome/95/e/206121/mosaic-runs/20261021-brd4-jq1-gradient-audit-02"
+    ],
+    "returncode": 0,
+    "stdout": "Job <29772023> is submitted to queue <hpc>.\n",
+    "stderr": "",
+    "job_id": "29772023"
+  },
+  "failure": {
+    "job_id": "29772023",
+    "version": "audit02",
+    "cause": "Analysis-only exact initial cross-model array-equality assumption failed; no native run failure",
+    "correction": "Measure and disclose actual initial differences instead of assuming equality; retain all original source/config/native/readiness/snapshot identity checks"
+  },
+  "downloaded_failure_proofs": {
+    "scheduler-observed.txt": {
+      "bytes": 3469,
+      "sha256": "330339d0e4bfd59008c822c693b1825dfdf0588bfd9b694a57e27c7d775d66fd"
+    },
+    "stdout.29772023.log": {
+      "bytes": 2500,
+      "sha256": "6f385b2be5a779d63a3a497d7cbee786553ac511b72c90b61570e8c53b280c66"
+    },
+    "stderr.29772023.log": {
+      "bytes": 658,
+      "sha256": "ea7956cd107251a2eae966f3882a192dbd917436af706839e48f896b951bf586"
+    }
+  }
+}

@@ -5157,3 +5157,42 @@ no native dependency or mutation. Downloaded submission/scheduler receipts,
 schedulerSHA `6ba1c1093ee6c4972af97dca6ca7d48001a85ec08e21ebf70b2b44f4a481ce7c`.
 This next submission is not a passed or delivered report. Edition0004 remains
 published until another fully authenticated/verified edition passes browserQA.
+
+### 21 October 2026 — Matched gradient-scale analysis requested by user
+
+Read-only allocated saved-data analysis, no scorer/new derivative/repair/native
+update, using fixed report capture7175/1570/1439 and all original input pins.
+Attempt02 CPU **29772023** EXIT1 after its analysis-only exact initial cross-model
+array equality assertion failed. Failed script SHA
+`4057c70b1e9714a5e757968409a3e8b9c94a1f8f0c98cc34cfef4466526ad1d8`
+and logs/actual terminal scheduler preserved under audit02 receipts/results.
+This is not a molecular run or native gate failure. New immutable attempt03
+measures/discloses initial differences while keeping every scientific binding:
+atoms exactly equal, bond max5.9604645e-8/RMS2.7476384e-8 (FP32-scale difference).
+
+Corrected CPU **29772035** actually DONE/LSFsuccess, descriptive outcome recorded.
+Two CPU slots/4GiBslot/20min in hpc; actual submission receipt/arguments saved.
+Python SHA `82f1be70f73ac7e86c8d0449d688c2a43c8ced19f29cd795ad649ec62364bef7`,
+wrapper SHA `feb66e7906d33471f2366054c8c9f3ead20c4af20ccecb5e604df37886340c4b`.
+At updates1300–1399, median logit-gradient norms0.005920/0.303586/0.303586;
+accepted LR0.03/0.001875/0.001875; measured logit-step norms0.00017753/0.00053153
+/0.00053153; probability-step RMS1.292e-6/3.977e-6/3.977e-6. Boltz gradient51.28x
+larger but LR16x smaller; actual step2.99x and probability movement3.08x larger.
+First100 updates both LR0.03, Boltz gradients16.22x and probability movement
+15.11x larger. Raw gradient size difference already present before softmax;
+pullback attenuation comparable, so no disconnected Protenix gradient inferred.
+Different objective units/reductions preclude interpreting norms as model quality.
+No LR change/new native optimization was submitted; future LR0.1 pilot is only
+a recommendation. Detailed matched windows and figure in report plan.
+
+Archive585931bytes SHA
+`19501ab905634cafb6acddcd9560d3cf8aa81a5cec9051c0ab91811c549a24f7`,
+all14files safely extracted/byte verified. AnalysisSHA
+`7f95f1a3692fc5380f39909d6dde975a368fd40b4172eacab1709dfff5a9454c`;
+figureSHA `6bb952970750a5ac3f6470721df4efac4081c14b5eee903ff0d28a7f789443aa`.
+Final schedulerSHA `9ed4aa147bbe5054652e3c4c5040fccb7297fbdb47a0d6a0f5045cbd929a9153`
+and LSFstdoutSHA `6dde2c7b1fdd8d67d0ac1dc8215e76d2c977a18fc5a92862288319da8627b4b9`
+authenticated separately. Verification/figure/JSON under
+`results/hpc/20261021-brd4-jq1-gradient-audit-03/`. All numerical analysis/plotting
+allocated HPC; local AST/bytes/schema only. Native jobs29770179/29770093/29770124
+and report pipeline/earlier editions remain unchanged.

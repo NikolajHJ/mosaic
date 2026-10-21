@@ -1,0 +1,20 @@
+#!/bin/bash
+# Allocated saved-only numerical analysis. All molecular jobs remain unchanged.
+set -euo pipefail
+[[ -n "${LSB_JOBID:-}" ]]
+expected=$1
+script=$2
+script_sha=$3
+parent=$4
+printf '%s  %s\n' "$expected" "$0" | sha256sum -c -
+printf '%s  %s\n' "$script_sha" "$script" | sha256sum -c -
+module load python3/3.12.11
+python=/work3/s234818/mosaic/envs/protenix-tiny/bin/python
+source=/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-report-04/source
+export CUDA_VISIBLE_DEVICES='' PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
+export PYTHONPATH="$source/scripts"
+mkdir "$parent/payload"
+cp "$script" "$0" "$parent/payload/"
+"$python" "$source/scripts/hpc/zhome_quota_preflight.py" --run-dir "$parent/payload" --minimum-free-gib 4
+"$python" "$script" "$parent/payload"
+"$python" "$source/scripts/collect_protenix_evidence.py" --storage zhome --run "$parent" --output "${parent}.tar.gz" > "$parent/payload/packaging.log" 2>&1

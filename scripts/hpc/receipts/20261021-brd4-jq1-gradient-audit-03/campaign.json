@@ -1,0 +1,72 @@
+{
+  "tag": "20261021-brd4-jq1-gradient-audit-03",
+  "scope": "Local stdlib byte/schema checks only; all numerical analysis and plotting ran on allocated DTU HPC",
+  "status": "Verified descriptive saved-gradient analysis; not a native readiness result",
+  "files": {
+    "audit.py": {
+      "bytes": 12950,
+      "sha256": "82f1be70f73ac7e86c8d0449d688c2a43c8ced19f29cd795ad649ec62364bef7"
+    },
+    "audit.lsf": {
+      "bytes": 969,
+      "sha256": "feb66e7906d33471f2366054c8c9f3ead20c4af20ccecb5e604df37886340c4b"
+    }
+  },
+  "historical_analysis_failure": {
+    "job_id": "29772023",
+    "version": "audit02",
+    "cause": "Analysis-only exact initial cross-model array-equality assumption failed; no native run failure",
+    "correction": "Measure and disclose actual initial differences instead of assuming equality; retain all original source/config/native/readiness/snapshot identity checks"
+  },
+  "job_id": "29772035",
+  "actual_scheduler": "DONE",
+  "lsf_success": true,
+  "archive": {
+    "path": "/zhome/95/e/206121/mosaic-runs/20261021-brd4-jq1-gradient-audit-03.tar.gz",
+    "bytes": 585931,
+    "sha256": "19501ab905634cafb6acddcd9560d3cf8aa81a5cec9051c0ab91811c549a24f7",
+    "files": 14
+  },
+  "verified_files": 14,
+  "analysis_json": "results\\hpc\\20261021-brd4-jq1-gradient-audit-03\\20261021-brd4-jq1-gradient-audit-03\\20261021-brd4-jq1-gradient-audit-03\\payload\\analysis.json",
+  "analysis_sha256": "7f95f1a3692fc5380f39909d6dde975a368fd40b4172eacab1709dfff5a9454c",
+  "figure": "results\\hpc\\20261021-brd4-jq1-gradient-audit-03\\20261021-brd4-jq1-gradient-audit-03\\20261021-brd4-jq1-gradient-audit-03\\payload\\gradient_step_comparison.png",
+  "figure_sha256": "6bb952970750a5ac3f6470721df4efac4081c14b5eee903ff0d28a7f789443aa",
+  "scheduler_stdout_hashes": {
+    "final-scheduler.txt": "9ed4aa147bbe5054652e3c4c5040fccb7297fbdb47a0d6a0f5045cbd929a9153",
+    "stdout.29772035.log": "6dde2c7b1fdd8d67d0ac1dc8215e76d2c977a18fc5a92862288319da8627b4b9"
+  },
+  "submission": {
+    "submitted_utc": "2026-10-21T13:05:05.169417+00:00",
+    "args": [
+      "bsub",
+      "-q",
+      "hpc",
+      "-n",
+      "2",
+      "-R",
+      "span[hosts=1]",
+      "-R",
+      "rusage[mem=4GB]",
+      "-W",
+      "00:20",
+      "-J",
+      "mosaic-jq1-gradient-scale-audit03",
+      "-oo",
+      "/zhome/95/e/206121/mosaic-runs/20261021-brd4-jq1-gradient-audit-03/stdout.%J.log",
+      "-eo",
+      "/zhome/95/e/206121/mosaic-runs/20261021-brd4-jq1-gradient-audit-03/stderr.%J.log",
+      "bash",
+      "-l",
+      "/work3/s234818/mosaic/20261021-brd4-jq1-gradient-audit-03.lsf",
+      "feb66e7906d33471f2366054c8c9f3ead20c4af20ccecb5e604df37886340c4b",
+      "/work3/s234818/mosaic/20261021-brd4-jq1-gradient-audit-03.py",
+      "82f1be70f73ac7e86c8d0449d688c2a43c8ced19f29cd795ad649ec62364bef7",
+      "/zhome/95/e/206121/mosaic-runs/20261021-brd4-jq1-gradient-audit-03"
+    ],
+    "returncode": 0,
+    "stdout": "Job <29772035> is submitted to queue <hpc>.\n",
+    "stderr": "",
+    "job_id": "29772035"
+  }
+}

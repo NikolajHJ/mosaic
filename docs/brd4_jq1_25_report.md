@@ -341,3 +341,70 @@ All checked raw endpoint graphs still show the25-carbon chain; chemistry loss0
 at captured1439 with coefficient0.001. This is IN PROGRESS, not full-budget or
 terminal native certification. Published milestones6500/1500/0; next unused
 capture parent interim-0004 / local edition0005. Native jobs remain unchanged.
+
+### Matched-window gradient scale analysis
+
+The user requested a direct comparison of gradient sizes rather than learning
+rates alone. Allocated read-only CPU **29772035** actually DONE with LSF success;
+its outcome is descriptive `recorded`, not a new native readiness pass. It reads
+the already authenticated edition0004 capture (updates7175/1570/1439), compares
+the first100, updates900–999, updates1300–1399 and each arm's latest100, and
+measures raw native gradients, row-tangent gradients, softmax pullbacks and
+consecutive saved logit/probability differences. No scorer, new derivative,
+repair, candidate update or scientific job changed. All calculations and the
+figure ran on allocated HPC; local work was stdlib byte/schema verification.
+
+For updates **1300–1399**, medians were:
+
+| Quantity | Protenix | Boltz-2 | Boltz-2 + chemistry |
+| --- | ---: | ---: | ---: |
+| Saved logit-gradient L2 | 0.005920 | 0.303586 | 0.303586 |
+| Accepted LR | 0.03 | 0.001875 | 0.001875 |
+| Measured logit-step L2 | 0.00017753 | 0.00053153 | 0.00053153 |
+| Measured probability-step RMS | 1.292e-6 | 3.977e-6 | 3.977e-6 |
+
+Thus Boltz's gradient is **51.28x larger**, its accepted LR16x smaller, but
+its measured parameter step is still **2.99x larger** and probability-step
+RMS **3.08x larger**. These are medians of measured per-update quantities,
+not products of independently aggregated medians. In the first100 updates both
+used LR0.03; Boltz's gradient was16.22x larger, measured logit steps16.23x larger
+and probability movement15.11x larger. Updates900–999 still accepted LR0.03
+in both, with20.76x gradient and19.79x probability movement differences.
+
+The difference is already present before the softmax pullback. At initialization
+raw atom-gradient RMS was0.001243 for Protenix versus0.033963 for Boltz, and raw
+bond-gradient RMS0.000434 versus0.005407. Pullback/tangent norm ratios were
+0.133/0.148 for atoms and0.289/0.246 for bonds: similar orders of attenuation,
+not evidence of a uniquely vanishing Protenix softmax connection. Its native
+contact objective is a negative mean of per-ligand best-pocket contact
+probabilities, bounded[-1,0]; Boltz's affinity-head scalar has different units
+and reductions. Gradient magnitude therefore compares numerical scaling, not
+model quality, native correctness or experimental binding strength.
+
+Both Boltz arms have identical measured values in the matched windows above;
+the repair term is zero at the sampled valid-chain states, with coefficient0.001
+before the delayed ramp. The largest-median-LR comparison previously mixed
+different stages. Protenix's small gradients explain its small steps despite
+accepting the full nominal rate. A future controlled Protenix LR0.1 pilot is a
+reasonable first comparison with0.03, retaining all original native/identity
+checks and actual step-size inspection; no such pilot or change is submitted.
+Do not blindly multiply LR by51 or infer identical loss scales across models.
+
+Analysis-only attempt02 **29772023** EXIT1 because it incorrectly assumed exact
+cross-model initial array equality. Preserve its scripts/logs/receipt. New
+immutable attempt03 measures the difference: atom arrays exactly equal, bond
+maximum difference5.9604645e-8 (consistent with FP32 rounding), RMS2.7476384e-8.
+No native gate was changed or relabelled. Later matched update indices represent
+different molecular probability states, not identical scorer inputs.
+
+Attempt03 Python SHA `82f1be70f73ac7e86c8d0449d688c2a43c8ced19f29cd795ad649ec62364bef7`;
+wrapper SHA `feb66e7906d33471f2366054c8c9f3ead20c4af20ccecb5e604df37886340c4b`.
+Archive585931bytes SHA
+`19501ab905634cafb6acddcd9560d3cf8aa81a5cec9051c0ab91811c549a24f7`,
+all14files safely extracted/byte verified. Analysis JSON SHA
+`7f95f1a3692fc5380f39909d6dde975a368fd40b4172eacab1709dfff5a9454c`;
+figure SHA `6bb952970750a5ac3f6470721df4efac4081c14b5eee903ff0d28a7f789443aa`.
+Verification, JSON and figure are under
+`results/hpc/20261021-brd4-jq1-gradient-audit-03/`; exact commands/source/proofs
+in the corresponding `scripts/hpc/receipts/` campaign. Existing report editions,
+pending report29771969 and all native studies are unchanged.
