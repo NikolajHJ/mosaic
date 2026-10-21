@@ -5890,3 +5890,14 @@ for callbacks. New long-run IDs/readiness passes are not established. All
 56 downloaded CPU/launch evidence files passed safe extraction and byte hashes;
 independent XML/schema proof verification follows. See the new high-rate plan
 and campaign receipts. Monitoring was updated to the new rates and exact jobs.
+
+
+Independent high-rate CPU/launch verification passed
+(`225ce416f5aabb9d549d4ecd066f2e062e66d3b92e30f05723562c46dc50cbca`),
+including all 56 downloaded files, exact 598 actual test rows/log counts,
+original scheduler/LSF successes and all six new submission vectors. The
+unchanged aggregate XML subtest-count distinction is documented, not inflated
+into extra passes. Grouped native-validation storage also passed
+(7,516,192,768 required / 15,292,576,076 available bytes, 4 GiB reserve).
+All six new native/callback jobs remained PEND at 23:45:52 Paris; no readiness
+pass or long-run ID was claimed. Code and receipts pushed as `046430e`.

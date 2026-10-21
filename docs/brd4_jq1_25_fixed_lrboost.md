@@ -103,3 +103,22 @@ validation submissions, not readiness passes or long-run submissions. No new
 all three actual native results and fresh full per-filesystem storage before
 submitting the three independent long runs. The monitor now follows this new
 campaign and cannot resume the intentionally stopped old-rate jobs.
+
+
+Independent CPU/launch evidence verification passed with SHA-256
+`225ce416f5aabb9d549d4ecd066f2e062e66d3b92e30f05723562c46dc50cbca`.
+It authenticated all 56 files, original CPU/callback scheduler and LSF success,
+598 actual test rows and matching collected/passed logs, source/config/input
+hashes, all six exact new submission/resource/dependency vectors, and the grouped
+native-validation storage gate. That gate required 7,516,192,768 bytes against
+15,292,576,076 available with 19,668,255 finite user-quota file headroom.
+It covers all three disposable validations plus 4 GiB reserve; full long-run
+per-filesystem storage still requires the actual new pilot projections.
+
+The contract XML aggregate header says 269 while containing 266 passing test
+rows; the unchanged historical suite similarly said 153 for 150 rows, alongside
+three unchanged unittest subtests. Verification records this metadata distinction
+and counts the actual rows and matching log totals only: 598, not 601.
+At the final 23:45:52 Paris query all six native/callback jobs were still PEND.
+Code, source identities, exact stop/submission records and current status were
+pushed in `046430e`; the verification receipt is additive evidence.

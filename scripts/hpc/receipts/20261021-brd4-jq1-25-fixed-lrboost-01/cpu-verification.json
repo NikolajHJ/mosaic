@@ -1,0 +1,415 @@
+{
+  "status": "passed",
+  "verified_utc": "2026-10-21T21:45:31.911217+00:00",
+  "scope": "Independent standard-library byte/hash/XML/JSON/schema/scheduler/LSF only; no local tests/model/array work; numerical fixtures ran on allocated DTU HPC",
+  "archive": {
+    "bytes": 62340,
+    "sha256": "d7125dff611fc3c49826ea45fe80419c05505a4c0ed37977178921be6d8bf174",
+    "verified_files": 56
+  },
+  "source_manifest_sha256": "9605a5295b9fe8dfe29f15410b3a029038ea8a18feb16907f043abd5be13c323",
+  "source_archive_sha256": "e1a100aebf44698515ba161c1a001e338a902b250bf1a737f888df33f55098d1",
+  "cpu_job": "29778388",
+  "after_cpu_job": "29778391",
+  "actual_cpu_and_callback_outcomes": "DONE and same-job LSF success",
+  "cpu_certificate_sha256": "dc76df74f1432f59e4c5f6fb5491a1258752b639df893cf75bb5a6968e481630",
+  "raw_cases": {
+    "hpc-contract": 266,
+    "legacy": 239,
+    "native-mapping": 34,
+    "chemistry": 59
+  },
+  "raw_suite_test_headers": {
+    "hpc-contract": [
+      269
+    ],
+    "legacy": [
+      239
+    ],
+    "native-mapping": [
+      34
+    ],
+    "chemistry": [
+      59
+    ]
+  },
+  "tests": 598,
+  "failures": 0,
+  "errors": 0,
+  "skips": 0,
+  "deliberately_deselected_legacy": 3,
+  "module_counts": {
+    "hpc-contract": {
+      "tests.test_boltz_submission_controller.SubmissionControllerTests": 8,
+      "tests.test_boltz_hpc_tmpdir.BoltzNodeTemporaryDirectoryTests": 8,
+      "tests.test_campaign25_ops": 18,
+      "tests.test_campaign25_release": 24,
+      "tests.test_campaign25_pocket_ops": 32,
+      "tests.test_pocket_definition": 10,
+      "tests.test_protenix_lr03_ops": 23,
+      "tests.test_protenix_lr03_storage": 12,
+      "tests.test_fixed25_ops": 13,
+      "tests.test_fixed25_storage": 2,
+      "tests.test_fixed25_lrboost_contract": 81,
+      "tests.test_fixed25_lrboost_ops": 24,
+      "tests.test_fixed25_lrboost_storage": 11
+    },
+    "legacy": {
+      "tests.test_small_molecule_boltz_bridge": 3,
+      "tests.test_small_molecule_brd4_fixture": 4,
+      "tests.test_small_molecule_campaign25": 5,
+      "tests.test_small_molecule_case_selection": 7,
+      "tests.test_small_molecule_compact_artifacts": 2,
+      "tests.test_small_molecule_continuation": 11,
+      "tests.test_small_molecule_contracts": 14,
+      "tests.test_small_molecule_diffuse_control": 10,
+      "tests.test_small_molecule_evidence_root": 10,
+      "tests.test_small_molecule_features": 8,
+      "tests.test_small_molecule_fixed_step": 5,
+      "tests.test_small_molecule_gradient_checks": 5,
+      "tests.test_small_molecule_home_quota": 4,
+      "tests.test_small_molecule_io": 13,
+      "tests.test_small_molecule_jq1_pocket": 7,
+      "tests.test_small_molecule_known_ligand_fixture": 3,
+      "tests.test_small_molecule_losses": 21,
+      "tests.test_small_molecule_optimizers": 17,
+      "tests.test_small_molecule_prepared_study": 8,
+      "tests.test_small_molecule_protenix": 12,
+      "tests.test_small_molecule_report_scope": 1,
+      "tests.test_small_molecule_report_studies": 15,
+      "tests.test_small_molecule_report_svg": 1,
+      "tests.test_small_molecule_state": 35,
+      "tests.test_small_molecule_uniform_control": 13,
+      "tests.test_small_molecule_validation": 5
+    },
+    "native-mapping": {
+      "tests.test_boltz_native_mapping": 4,
+      "tests.test_campaign25_native": 7,
+      "tests.test_campaign25_contract": 20,
+      "tests.test_pocket_boltz": 3
+    },
+    "chemistry": {
+      "tests.test_small_molecule_chemistry": 42,
+      "tests.test_small_molecule_chemistry_ramp": 8,
+      "tests.test_small_molecule_chemistry_ramp_report": 6,
+      "tests.test_small_molecule_chemistry_report": 3
+    }
+  },
+  "configurations": {
+    "protenix": {
+      "sha256": "f1c551e5f9cc6f5671acf8b7fef7fe3dbb3197312b096ef55772cb005195fb93",
+      "learning_rate": 3.0
+    },
+    "boltz2": {
+      "sha256": "efb4a41cd3077f03632ca0b4085c0cbfe98c0800b53c0509a857ae28ae4111fd",
+      "learning_rate": 0.05
+    },
+    "boltz2_chemistry": {
+      "sha256": "6a6f15614989e44b6cc1149ee4ca5e35717d5c21fdc7d2b5748832d912e9b3f0",
+      "learning_rate": 0.05
+    }
+  },
+  "all_certificate_and_assessment_proofs_mapped_and_rehashed": true,
+  "origin_mapping_entries": 53,
+  "new_submissions": {
+    "protenix": {
+      "native": {
+        "job_id": "29778424",
+        "actual_submission_scheduler_status": "PEND",
+        "resources_and_own_dependency_verified": true
+      },
+      "callback": {
+        "job_id": "29778425",
+        "actual_submission_scheduler_status": "PEND",
+        "resources_and_own_dependency_verified": true
+      }
+    },
+    "boltz2": {
+      "native": {
+        "job_id": "29778426",
+        "actual_submission_scheduler_status": "PEND",
+        "resources_and_own_dependency_verified": true
+      },
+      "callback": {
+        "job_id": "29778427",
+        "actual_submission_scheduler_status": "PEND",
+        "resources_and_own_dependency_verified": true
+      }
+    },
+    "boltz2_chemistry": {
+      "native": {
+        "job_id": "29778428",
+        "actual_submission_scheduler_status": "PEND",
+        "resources_and_own_dependency_verified": true
+      },
+      "callback": {
+        "job_id": "29778429",
+        "actual_submission_scheduler_status": "PEND",
+        "resources_and_own_dependency_verified": true
+      }
+    }
+  },
+  "storage_gates": {
+    "preflight": {
+      "required_bytes": 5368709120,
+      "available_bytes": 15292863601,
+      "file_headroom": 19668302
+    },
+    "cpu": {
+      "required_bytes": 5368709120,
+      "available_bytes": 15292844375,
+      "file_headroom": 19668290
+    },
+    "validate": {
+      "required_bytes": 7516192768,
+      "available_bytes": 15292576076,
+      "file_headroom": 19668255
+    }
+  },
+  "xml_header_metadata_note": {
+    "hpc_actual_testcase_rows": 266,
+    "hpc_collected_and_passed_log": 266,
+    "hpc_suite_header_tests": 269,
+    "historical_authenticated_source02_testcase_rows": 150,
+    "historical_suite_header_tests": 153,
+    "unchanged_source_test_has_three_unittest_subtests": [
+      "PEND",
+      "RUN",
+      "EXIT"
+    ],
+    "interpretation": "The unchanged +3 aggregate-header discrepancy is consistent with subtest-event accounting. Count actual testcase rows and matching collected/passed logs:598; never relabel as601 or waive a missing testcase. Installed pytest internal accounting was not executed or independently inspected locally."
+  },
+  "limitations": [
+    "New native GPU readiness and ten-update pilots are queued, not passed.",
+    "No new10000-update long job is established by this bundle.",
+    "Only grouped work3 disposable-native allowance passed; later full two-filesystem long-run/home-capacity gates remain pending.",
+    "All-zero work3 filesystem inode counters are unreported physical evidence; finite-user-quota minimum is used.",
+    "Raw original numerical arrays are not evaluated locally."
+  ],
+  "files": {
+    "scheduler-cpu.txt": {
+      "bytes": 3462,
+      "sha256": "54d8fc2bf5aa7dabf54cf814e79d1714a7b656b7d2ea46184a503f012ae4893b"
+    },
+    "campaign/cpu/submission.json": {
+      "bytes": 1055,
+      "sha256": "edb72ebd25a41cb1ff441457d105247ce1ca8dceeb6c091b2d78c6343b997d4f"
+    },
+    "campaign/cpu/submission-started.json": {
+      "bytes": 792,
+      "sha256": "2136794322cce2d279f0a7e24704dd4ccb7afe89c96e22386c233ce99b50e5d0"
+    },
+    "campaign/cpu/scheduler-at-submission.txt": {
+      "bytes": 2178,
+      "sha256": "302d51d0e1d83e0ab0049b5e6b6d27184377e2757a124947b0b8b0c4b3ace3c3"
+    },
+    "campaign/cpu/stdout.29778388.log": {
+      "bytes": 3168,
+      "sha256": "83ab6213e43aaec256b1adb617d39160eab048fa2fc7f31a4da27ec789b63de3"
+    },
+    "campaign/cpu/stderr.29778388.log": {
+      "bytes": 233,
+      "sha256": "7d57e9e44355166e210a310a2b90b7d8543b85c5ffbb82276c701f4dd1f23271"
+    },
+    "scheduler-after-cpu.txt": {
+      "bytes": 3511,
+      "sha256": "62fd8a2456ffabd9aa0398d9edbb3098498887d72bf2e5d488a2a65238d437a8"
+    },
+    "campaign/after-cpu/submission.json": {
+      "bytes": 1244,
+      "sha256": "3145bd0758ee01a57fad48f0940beff31a586fadff76a379069e98d38a83efb7"
+    },
+    "campaign/after-cpu/submission-started.json": {
+      "bytes": 981,
+      "sha256": "001a3430b338031a240d62db60d6a34f2d7a4f66a5d439fee7c4e9395fa455a4"
+    },
+    "campaign/after-cpu/scheduler-at-submission.txt": {
+      "bytes": 2327,
+      "sha256": "126083f7daa172b8b714afe08542b19034aa33577550e19bea84e9202aa2afbf"
+    },
+    "campaign/after-cpu/stdout.29778391.log": {
+      "bytes": 2129,
+      "sha256": "5e3417c2130d30f9994da0df5c58c75355ab9035b9325ab56861b04106cc34cf"
+    },
+    "campaign/after-cpu/stderr.29778391.log": {
+      "bytes": 233,
+      "sha256": "7d57e9e44355166e210a310a2b90b7d8543b85c5ffbb82276c701f4dd1f23271"
+    },
+    "campaign/source-staging.json": {
+      "bytes": 299,
+      "sha256": "79a92cec48b6656036fbfd1ca712f16c6b4eeaf561d75edd5fa6dfcbeda40c51"
+    },
+    "campaign/initial-submissions-complete.json": {
+      "bytes": 2506,
+      "sha256": "224869801d3d976bf196e1b991de4cc1c13bd8281a70aa161df45cc56671b521"
+    },
+    "campaign/cpu-certificate.json": {
+      "bytes": 2954,
+      "sha256": "dc76df74f1432f59e4c5f6fb5491a1258752b639df893cf75bb5a6968e481630"
+    },
+    "campaign/native-submissions.json": {
+      "bytes": 12778,
+      "sha256": "827d61db79d4896ff0dd6bd7c7043f20ef20215d6b09110fd7f9828743250ec6"
+    },
+    "campaign/native-dispatch-started.json": {
+      "bytes": 711,
+      "sha256": "cd5932deb1b0e1c32c14534e149a9483465e69f159625ef5524bbb62e2e2599f"
+    },
+    "campaign/cpu/scheduler-final-0.txt": {
+      "bytes": 3462,
+      "sha256": "54d8fc2bf5aa7dabf54cf814e79d1714a7b656b7d2ea46184a503f012ae4893b"
+    },
+    "campaign/cpu/payload/hpc-contract.xml": {
+      "bytes": 41214,
+      "sha256": "b89dc754396ee7d9a48c5254cc0534bf2ad7fe058b60d658fc7d2a4092846eb9"
+    },
+    "campaign/cpu/payload/legacy.xml": {
+      "bytes": 35054,
+      "sha256": "e3f336a662cd749206d4cac3923f17b631f72a0948161861e10926d240cb8d95"
+    },
+    "campaign/cpu/payload/native-mapping.xml": {
+      "bytes": 5142,
+      "sha256": "561ceed54b558bd9aed4967a7b8a72d2dbd558ab97ef368ad0fed8a93984abbc"
+    },
+    "campaign/cpu/payload/chemistry.xml": {
+      "bytes": 8728,
+      "sha256": "eef1f647b447176fd50ce098cab3198b30deff5e46cc090f3628af7cc504b135"
+    },
+    "campaign/cpu/payload/assessment.json": {
+      "bytes": 1149,
+      "sha256": "02232562dc0f118e4c4cd6df0bef027a170589ccf50203e5f7489700ff845739"
+    },
+    "campaign/cpu/payload/composition_reference.json": {
+      "bytes": 2087,
+      "sha256": "37b34a2ba7be47886936df48faaabdeac20481e5a9cebca9bafab831c07868eb"
+    },
+    "campaign/cpu/payload/pocket_definition.json": {
+      "bytes": 3948,
+      "sha256": "9376c715eaf5b48689fb3e995b00d7820601a7776970df66bd7e7cff3b13ee43"
+    },
+    "campaign/cpu/payload/hpc-contract.log": {
+      "bytes": 1737,
+      "sha256": "8ed7ec6a5bc24f50cfe81f4c10ea2dc1ea3599f54725b464f96627fd5df66446"
+    },
+    "campaign/cpu/payload/legacy.log": {
+      "bytes": 3445,
+      "sha256": "51f9b80431adb1392c680be3b18d94af61340eb0b77e06ea16badcb29daf759b"
+    },
+    "campaign/cpu/payload/native-mapping.log": {
+      "bytes": 942,
+      "sha256": "10ece132199282b08e919b69a63620f9d4f56ce2693ed35cab629984b4652f5b"
+    },
+    "campaign/cpu/payload/chemistry.log": {
+      "bytes": 1014,
+      "sha256": "57daeef13869f01b3c1a2cd6b9b44944b470c5ad23c1599c4586c7e49e136c4d"
+    },
+    "campaign/cpu/payload/oracles.log": {
+      "bytes": 137,
+      "sha256": "c2ee8b58ba5776fbc6fbcdc10a49bcd8371f170bf003e93c8db6e79a329a2be1"
+    },
+    "campaign/preflight-quota/lrboost-storage-gate.json": {
+      "bytes": 6382,
+      "sha256": "a45d886964ce00d8182f02309e159912d91a5738dcf464a4bdfaae73e48a1b11"
+    },
+    "campaign/cpu-entry-quota/lrboost-storage-gate.json": {
+      "bytes": 6376,
+      "sha256": "d1624c8a6ba4974d4b0c6f2a3ff5ae458a0bda7e98d96f8896839cfa885e13c6"
+    },
+    "campaign/native-validation-dispatch-quota/lrboost-storage-gate.json": {
+      "bytes": 6531,
+      "sha256": "2161726cd5c7f48394ddc29a7ef0921561cdefaef5099bddb2f4bdce384d7fec"
+    },
+    "campaign/validate-protenix/submission.json": {
+      "bytes": 1770,
+      "sha256": "7a417e448e13f680d93e507ffea6f7d8e0d521fc1b4edc7917c29e7b39a7302a"
+    },
+    "campaign/validate-protenix/submission-started.json": {
+      "bytes": 1167,
+      "sha256": "d47a734ad9d3d05a3bb5a78636a0717816df12e87d3e9110c92420fbbdf96f14"
+    },
+    "campaign/validate-protenix/scheduler-at-submission.txt": {
+      "bytes": 2393,
+      "sha256": "376dec5e48cd2287c63b2b9720c7378522b875f1f03afc74a288229ee848abe1"
+    },
+    "campaign/after-ready-protenix/submission.json": {
+      "bytes": 1775,
+      "sha256": "6c4779c8e44046a782335567e2e621e6b3f4c93a662391ad535de2964b05c0c7"
+    },
+    "campaign/after-ready-protenix/submission-started.json": {
+      "bytes": 1173,
+      "sha256": "a2559c7a68383414714913de8459df22c69a9f8c5bd48ea07068a8cedcd35ee7"
+    },
+    "campaign/after-ready-protenix/scheduler-at-submission.txt": {
+      "bytes": 2593,
+      "sha256": "609335112007c4553ce5a2c0acf6db09cfc0879846282f5cc83544b5c800567b"
+    },
+    "campaign/validate-boltz2/submission.json": {
+      "bytes": 1757,
+      "sha256": "b851f7ec93f664de9b22865099e66891907df262a865d6bc8d60a8323bbe50b6"
+    },
+    "campaign/validate-boltz2/submission-started.json": {
+      "bytes": 1155,
+      "sha256": "92ffec30b75c130fa63b7ca6c7cef81d34228c2cd4453b0a90c430e0869b86f5"
+    },
+    "campaign/validate-boltz2/scheduler-at-submission.txt": {
+      "bytes": 2383,
+      "sha256": "170d1cf83cab8d7c37ed8e0687f3d90ed89605bbecab84255012b2ae22958ee0"
+    },
+    "campaign/after-ready-boltz2/submission.json": {
+      "bytes": 1762,
+      "sha256": "14ab08b51327b8a06567379f6078e4a0185e9dfbfd0aa9f4ce77d90556a04c97"
+    },
+    "campaign/after-ready-boltz2/submission-started.json": {
+      "bytes": 1161,
+      "sha256": "19b38306f67870aeb0702bdcd69ceef9f6afcde890ebadbbea3c48625accf2a9"
+    },
+    "campaign/after-ready-boltz2/scheduler-at-submission.txt": {
+      "bytes": 2583,
+      "sha256": "5d317ead7644abaf6adea1aa1e32fdd11e9b89a603ce5fa4fd1e2d83dea0163b"
+    },
+    "campaign/validate-boltz2_chemistry/submission.json": {
+      "bytes": 1827,
+      "sha256": "ab6fe96070e3eee6744e0356e50dab1646d1a71291407b010430320a1bb48ba4"
+    },
+    "campaign/validate-boltz2_chemistry/submission-started.json": {
+      "bytes": 1215,
+      "sha256": "d9dc3f85fd907616a9cdc66949f7973b63f4b7f86c0d7aa9dd727deedecf29a7"
+    },
+    "campaign/validate-boltz2_chemistry/scheduler-at-submission.txt": {
+      "bytes": 2460,
+      "sha256": "cfea2e65ed515cf93d1d09d8c344f901060a1698717248b41a74b4b6bc72ee97"
+    },
+    "campaign/after-ready-boltz2_chemistry/submission.json": {
+      "bytes": 1832,
+      "sha256": "1aec1ce7dacd976e0e39e3f8045e8cc4863ee6c7913de49c57a16561147f8a68"
+    },
+    "campaign/after-ready-boltz2_chemistry/submission-started.json": {
+      "bytes": 1221,
+      "sha256": "0c4af692a3af6e3adb00fce5ccb804f0081130b12ec1640cb67276e5780cf882"
+    },
+    "campaign/after-ready-boltz2_chemistry/scheduler-at-submission.txt": {
+      "bytes": 2660,
+      "sha256": "dad445a03126da310166f08dcfe1c7efd420a4a1e1ce885f58a898b3c894118f"
+    },
+    "source/source_manifest.json": {
+      "bytes": 75312,
+      "sha256": "9605a5295b9fe8dfe29f15410b3a029038ea8a18feb16907f043abd5be13c323"
+    },
+    "source/examples/configs/brd4_jq1_25_fixed_lrboost_protenix_10000.json": {
+      "bytes": 1549,
+      "sha256": "f1c551e5f9cc6f5671acf8b7fef7fe3dbb3197312b096ef55772cb005195fb93"
+    },
+    "source/examples/configs/brd4_jq1_25_fixed_lrboost_boltz2_10000.json": {
+      "bytes": 1547,
+      "sha256": "efb4a41cd3077f03632ca0b4085c0cbfe98c0800b53c0509a857ae28ae4111fd"
+    },
+    "source/examples/configs/brd4_jq1_25_fixed_lrboost_boltz2_chemistry_10000.json": {
+      "bytes": 1700,
+      "sha256": "6a6f15614989e44b6cc1149ee4ca5e35717d5c21fdc7d2b5748832d912e9b3f0"
+    },
+    "origin-map.json": {
+      "bytes": 8261,
+      "sha256": "0c175f1f904fb33201f58d99b3c79ec17bb39ee252c891833678143a49e503b4"
+    }
+  }
+}

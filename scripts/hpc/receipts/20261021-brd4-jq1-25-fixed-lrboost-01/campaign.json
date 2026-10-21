@@ -116,10 +116,12 @@
     "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-lrboost-01/cpu-evidence-01.tar.gz",
     "bytes": 62340,
     "sha256": "d7125dff611fc3c49826ea45fe80419c05505a4c0ed37977178921be6d8bf174",
-    "files": 56
+    "files": 56,
+    "independent_verification_sha256": "225ce416f5aabb9d549d4ecd066f2e062e66d3b92e30f05723562c46dc50cbca",
+    "independent_verification_status": "passed"
   },
   "last_observation": {
-    "utc": "2026-10-21T21:42:21.301786+00:00",
+    "utc": "2026-10-21T21:45:52.806958+00:00",
     "native_status": {
       "protenix": "PEND",
       "boltz2": "PEND",
@@ -127,5 +129,13 @@
     },
     "reason": "physical GPU resource availability; callbacks await own-ended dependencies",
     "long_jobs_verified": false
+  },
+  "last_pushed_code_commit": "046430e",
+  "native_validation_storage": {
+    "status": "passed",
+    "required_bytes": 7516192768,
+    "available_bytes": 15292576076,
+    "finite_quota_file_headroom": 19668255,
+    "scope": "3GiB grouped disposable validation + 4GiB reserve; not full long twoFS gate"
   }
 }
