@@ -1,0 +1,24 @@
+#!/bin/bash
+set -euo pipefail
+[[ -n "${LSB_JOBID:-}" ]]
+tools=$1
+manifest=$2
+science=$3
+parent=$4
+module load python3/3.12.11
+python=/work3/s234818/mosaic/envs/protenix-tiny/bin/python
+"$python" "$tools/scripts/verify_stage0_release.py" "$tools" "$manifest"
+export PYTHONPATH="$science/scripts:$tools/scripts" PYTHONDONTWRITEBYTECODE=1
+mkdir "$parent/payload"
+run="$parent/payload"
+"$python" "$science/scripts/hpc/zhome_quota_preflight.py" --run-dir "$run" --minimum-free-gib 4
+cd "$tools"
+"$python" -m pytest tests/test_campaign25_release.py -o addopts= -o cache_dir="$run/cache" --basetemp "$run/tmp" --junitxml="$run/tests.xml" > "$run/tests.log" 2>&1
+"$python" - "$run" "$manifest" <<'PY'
+import hashlib,json,sys,xml.etree.ElementTree as ET
+from pathlib import Path
+r=Path(sys.argv[1]);p=r/'tests.xml';cases=ET.parse(p).findall('.//testcase')
+assert len(cases)>=18 and not any(c.find(t) is not None for c in cases for t in ('failure','error','skipped'))
+(r/'assessment.json').write_text(json.dumps({'status':'passed','passed':len(cases),'source_manifest_sha256':sys.argv[2],'xml_sha256':hashlib.sha256(p.read_bytes()).hexdigest()},indent=2)+'\n')
+print('Launcher contracts passed:',len(cases))
+PY

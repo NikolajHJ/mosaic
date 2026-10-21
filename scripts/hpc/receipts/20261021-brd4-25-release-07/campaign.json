@@ -1,0 +1,63 @@
+{
+  "tag": "20261021-brd4-25-release-07",
+  "authorization": "User accepted runtime and requested full25-atom Boltz2+repair10000-update submission on21October2026",
+  "diffusion_gradient": false,
+  "temperature": 1,
+  "scientific_source": "20261021-brd4-25-04",
+  "scientific_manifest_sha256": "e22aa03b95e630aae7695b0908a5d20eb26ff7f5ee9b79987c098ae86efb3e79",
+  "source": {
+    "manifest_sha256": "80274d8d5f066af3e364f0356182ab0aa124302613800aa8b68fe3ed3cdec964",
+    "archive_bytes": 10105,
+    "archive_sha256": "61d23c4d5f6c7e34b59cdfec60947c1a001c838994fd175d5dc07a5a44c8127b",
+    "files": 5
+  },
+  "remote_release": "/work3/s234818/mosaic/releases/20261021-brd4-25-release-07/source",
+  "run": "/zhome/95/e/206121/mosaic-runs/20261021-brd4-25-04",
+  "tool_cpu": {
+    "job_id": "29769499",
+    "actual_status": "DONE",
+    "passed": 24,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "ended_paris": "2026-10-21 10:54:45"
+  },
+  "bootstrap": {
+    "job_id": "29769500",
+    "actual_status": "DONE",
+    "ended_paris": "2026-10-21 10:55:02"
+  },
+  "native_validation": {
+    "boltz2": "29769502",
+    "boltz2_callback": "29769503",
+    "boltz2_chemistry": "29769504",
+    "boltz2_chemistry_callback": "29769505",
+    "last_observed_status": "PEND",
+    "pending_reason": "ngpus_physical availability"
+  },
+  "protenix": {
+    "validation_job_id": "29769176",
+    "actual_status": "EXIT",
+    "reason": "original hard forward parity2e-5 failed; no Protenix long submitted",
+    "replacement_callback_job_id": "29769501"
+  },
+  "retired_callback": {
+    "job_id": "29769177",
+    "actual_status": "EXIT",
+    "started": false,
+    "ended_paris": "2026-10-21 10:50:49",
+    "intentional_cancellation": true
+  },
+  "old_prepare_callback": {
+    "job_id": "29769179",
+    "actual_status": "EXIT",
+    "reason": "stale cached RUN at ended dependency; originalcapture preserved, actual finalDONE authenticated for29769178"
+  },
+  "evidence": {
+    "local": "results/hpc/20261021-brd4-25/release07/evidence",
+    "files": 56,
+    "archive_sha256": "055c6df3db215eed088da083f07c5ddfbf4473b1527ffc01892b062bed49aded"
+  },
+  "long_chemistry_job": null,
+  "scope": "Approval and controller/native submissions, not a submitted or completed10000-update trajectory; require actual laterlongID"
+}

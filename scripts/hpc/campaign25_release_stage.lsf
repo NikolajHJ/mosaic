@@ -1,0 +1,87 @@
+#!/bin/bash
+# Normal wrapper arguments avoid LSF splitting inline Python commands.
+set -euo pipefail
+[[ -n "${LSB_JOBID:-}" ]]
+tools=$1
+tools_manifest=$2
+tools_certificate_sha=$3
+source=$4
+root=$5
+manifest=$6
+phase=$7
+arm=$8
+parent=$9
+producer=${10}
+module load python3/3.12.11
+python=/work3/s234818/mosaic/envs/protenix-tiny/bin/python
+native=/work3/s234818/latentmol/env/boltz311/bin/python
+export PYTHONPATH="$source/src:$source/tests:$source/scripts" PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+export OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 MKL_NUM_THREADS=4
+export HF_HUB_OFFLINE=1 HF_HUB_DISABLE_TELEMETRY=1 JAX_ENABLE_X64=0
+export MOSAIC25_LAUNCHER_MANIFEST="$tools_manifest" MOSAIC25_LAUNCHER_CERT_SHA="$tools_certificate_sha"
+"$python" "$tools/scripts/verify_stage0_release.py" "$tools" "$tools_manifest"
+cd "$source"
+"$python" scripts/verify_stage0_release.py "$source" "$manifest"
+if [[ "$phase" != bootstrap ]]; then
+  "$python" - "$root/launcher07-certificate.json" "$tools_certificate_sha" "$tools_manifest" <<'PY'
+from campaign25_contract import verify_cpu_certificate
+import sys
+verify_cpu_certificate(*sys.argv[1:])
+PY
+fi
+if [[ "$phase" == bootstrap || "$phase" == after-prepare || "$phase" == after-ready ]]; then
+  params=(--phase "$phase" --source "$source" --root "$root" --manifest "$manifest" --job "$producer")
+  [[ "$arm" == none ]] || params+=(--arm "$arm")
+  "$python" "$tools/scripts/campaign25_release.py" "${params[@]}"
+  exit 0
+fi
+[[ "$phase" == prepare || "$phase" == validate || "$phase" == run ]]
+module load cuda/12.9.1
+export JAX_PLATFORMS=cpu
+if [[ "$arm" == protenix ]]; then
+  module load cudnn/v9.13.0.50-prod-cuda-12.X
+  export JAX_PLATFORMS=cuda XLA_PYTHON_CLIENT_PREALLOCATE=false
+fi
+source "$source/scripts/hpc/boltz_node_tmpdir.sh"
+mkdir "$parent/payload"
+run="$parent/payload"
+"$python" scripts/hpc/zhome_quota_preflight.py --run-dir "$run" --minimum-free-gib 4
+cpu_sha=$("$python" - "$root/dispatch-started.json" <<'PY'
+import json,sys
+print(json.load(open(sys.argv[1]))['cpu_certificate_sha256'])
+PY
+)
+"$python" - "$root/cpu-certificate.json" "$cpu_sha" "$manifest" <<'PY'
+from campaign25_contract import verify_cpu_certificate
+import sys
+verify_cpu_certificate(*sys.argv[1:])
+PY
+nvidia-smi --query-gpu=name,driver_version,memory.total --format=csv > "$run/gpu.txt"
+if [[ "$phase" == prepare ]]; then
+  "$native" -m mosaic.small_molecule.boltz2.prepare --fixture tests/data/brd4_3mxf/fixture_25.json \
+    --n-atoms 25 --cache /work3/s234818/latentmol/cache/boltz2 --output "$run/prepared" > "$run/prepare.log" 2>&1
+  exit 0
+fi
+config="examples/configs/brd4_25_${arm}_10000.json"
+reference="$root/cpu/payload/composition_reference.json"
+params=(--mode "$phase" --config "$config" --output "$run/study" --manifest "$manifest" \
+  --cpu-certificate "$root/cpu-certificate.json" --cpu-certificate-sha256 "$cpu_sha" --reference "$reference")
+if [[ "$arm" != protenix ]]; then
+  context_sha=$("$python" - "$root/prepared-certificate.json" "$manifest" <<'PY'
+from campaign25_contract import sha
+import json,sys
+from pathlib import Path
+p=Path(sys.argv[1]); a=json.loads(p.read_text())
+assert a['status']=='passed' and a['source_manifest_sha256']==sys.argv[2]
+for proof in a['proofs']: assert sha(proof['path'])==proof['sha256']
+print(a['context_sha256'])
+PY
+  )
+  params+=(--prepared "$root/prepare/payload/prepared" --context-sha256 "$context_sha")
+fi
+if [[ "$phase" == run ]]; then
+  ready="$root/validate-$arm/payload/study/assessment.json"
+  ready_sha=$(sha256sum "$ready" | cut -d' ' -f1)
+  params+=(--ready "$ready" --ready-sha256 "$ready_sha")
+fi
+"$python" examples/brd4_25_atoms.py "${params[@]}" > "$run/native.log" 2>&1

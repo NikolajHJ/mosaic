@@ -4603,3 +4603,40 @@ end-to-end estimate; supplemental19–78min/10k component calls is not total ETA
 Tooling/science/tests/docs pushed as784ab66; only user PDF/OneNote changes remain
 unrelated. Runtime follow-up active/quiet on unchanged state; old six-slot random
 scientific failure not retried. No local numerical work.
+
+
+## 21 October 2026 — user approved chemistry runtime and released full-run hold
+
+User explicitly accepted25-slot repair timing and requested full submission.
+Diffusion gradients explicitly prohibited back to the molecule; existing fixed-
+pose detached-coordinate affinity/trunk and repair gradients remain unchanged.
+Temperature sharpening only brainstormed; T1 retained. Current execution plan:
+docs/brd4_25_chemistry_release.md. Original native/runtime/quota gates unchanged.
+
+Source04 scientific347-test pass and all461 scientific bytes reused unchanged.
+New launcher07 five files manifest80274d8d5f066af3e364f0356182ab0aa124302613800aa8b68fe3ed3cdec964,
+archive10105bytesSHA61d23c4d5f6c7e34b59cdfec60947c1a001c838994fd175d5dc07a5a44c8127b.
+CPU29769499 actuallyDONE10:54:45Paris24passed/no failures/errors/skips;
+bootstrap29769500 actuallyDONE10:55:02 authenticated existing prep29769178DONE.
+Old callback29769179 had read stale schedulerRUN; original capture preserved,
+new bounded retries require actual final status/LSF rather than assuming DONE.
+Actual new native validators29769502Boltz/29769504chemistry and callbacks
+29769503/29769505 submitted, latestPEND on physical L40S availability. No full
+chemistry10,000-update ID yet; its submission remains conditional on real gates.
+
+Protenix29769176 independently EXIT10:51:47 at original hard parity2e-5,
+maxreported discrepancy~1.564e-4. No Protenix long run. Its obsolete callback
+29769177 was intentionally retired while verified PEND/unstarted, actualEXIT
+10:50:49; replacement29769501 records the actual failed native outcome without
+blocking Boltz arms. Source05tools sealed/not staged after static callback-name
+collision; source06staging rejectedCRLF before any test/job; source07 LF wrappers
+passed Bash syntax/allocated contracts. All failed records preserved.
+
+All56CPU/controller/preparation/XML/cancellation/Protenix-failure files byte-
+verified under results/hpc/20261021-brd4-25/release07/evidence/ via standard-library
+scripts/verify_hpc_evidence.py. Archive153209bytesSHA
+055c6df3db215eed088da083f07c5ddfbf4473b1527ffc01892b062bed49aded.
+No local numerical work, model change, temperature change, diffusion derivative
+or native gate waiver. Exact actual receipts and source identities in
+scripts/hpc/receipts/20261021-brd4-25-release-07/campaign.json. Follow-up active
+for actual approved full chemistry submission, preserving old random blocker.
