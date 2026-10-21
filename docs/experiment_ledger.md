@@ -5087,3 +5087,18 @@ Milestone progression5500/0/0; nextremoteinterim-0003/localedition0004. Report i
 still INPROGRESS with terminal/native full-budget checks pending. GPU jobs remain
 29770179/29770093/29770124 without mutation. Monitoring continues quietly until
 new milestones or actual authenticated final completion/failure.
+
+### 21 October 2026, 14:18 Paris — Milestone capture queued
+
+One compact SSH status/artifact query showed all three native jobs RUN with
+committed states7140/1557/1420 and no terminal summaries. Completion collectors
+and final report remain PEND. Protenix crossed6500 and Boltz crossed1500 since
+the latest published milestone5500/0/0; no interim was active and the next
+unique parent did not exist. Submitted report-only **29771001** at14:18:57Paris:
+unchanged source04, hpc/2slots/4GiBslot/30min, no native dependency or mutation.
+Exact actual submission arguments and scheduler receipt were downloaded into
+local edition0004 and copied to the source04 campaign receipts. Scheduler SHA
+`4e30a59afa3931b233c8806e33e740be12ace4a639cf17c21b0e1b054a004400`.
+Remote parent is source04root/interim-0003. Submission is not a passed report;
+completion authentication, full download/verification and browserQA remain
+pending. Published edition0003 remains intact at the stable8776link.

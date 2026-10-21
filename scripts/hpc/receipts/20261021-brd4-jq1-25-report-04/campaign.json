@@ -24,7 +24,8 @@
     "complete-boltz2_chemistry": "29770708",
     "combined-report": "29770709",
     "interim-0001": "29770710",
-    "interim-0002": "29770891"
+    "interim-0002": "29770891",
+    "interim-0003": "29771001"
   },
   "status": "Source04 CPU71passed; interim29770891 actuallyDONE/LSFsuccess/passed,208files byte/schema verified,8626 exact frames published as edition0003; HTTP and browser QA passed",
   "source_authenticated_files": 518,
@@ -82,5 +83,14 @@
   "native_jobs_unchanged": true,
   "next_interim_parent": "interim-0003",
   "next_local_edition": "edition-0004",
-  "saved_gradient_audit": "scripts/hpc/receipts/20261021-brd4-jq1-gradient-audit-01/campaign.json"
+  "saved_gradient_audit": "scripts/hpc/receipts/20261021-brd4-jq1-gradient-audit-01/campaign.json",
+  "pending_interim": {
+    "remote_parent": "interim-0003",
+    "local_edition": "edition-0004",
+    "job_id": "29771001",
+    "status": "submitted; completion/assessment/download/publication pending",
+    "trigger": "Latest checked7140/1557/1420; new per-arm milestones6500/1500/0 exceed published5500/0/0",
+    "submission_receipt": "results/hpc/20261021-brd4-jq1-25-report/edition-0004/submission.json",
+    "scheduler_at_submission_sha256": "4e30a59afa3931b233c8806e33e740be12ace4a639cf17c21b0e1b054a004400"
+  }
 }
