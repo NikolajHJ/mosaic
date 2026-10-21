@@ -4907,3 +4907,73 @@ manifestdecd27d60516955603019988894b6a50335a1fecbcea806ad0a0a7e3f4d0c0fb.
 All tests/model/scientific work allocatedHPC; local stdlib byte/XML/schema only.
 Relevant tooling/docs pushed, unrelated PDF/OneNote changes preserved. Existing
 submission monitor can now pause at its authorized endpoint.
+
+
+## 21 October 2026 — new three-arm 25-atom report authorized
+
+User requested leaving current Protenix 29770179, Boltz-2
+29770093 and Boltz-2 + chemistry 29770124 unchanged on HPC, then a new combined
+report after all three complete. Plan: docs/brd4_jq1_25_report.md. Separate
+saved-only25-slot renderer and lossless bounded FP32 assets are prepared;
+no native experiment, optimizer, loss, diffusion scope or gate changed.
+Local static AST/LF checks only; allocated report fixture tests and numerical
+rendering are not yet established. Dedicated completion collectors will preserve
+actual native scheduler/LSF outcomes before live retention expires. Existing
+reports/servers and unrelated PDF/OneNote changes remain untouched.
+
+
+### 21 October 2026 — JQ1 25-slot progress editions authorized
+
+User requested downloading saved molecules near update 1500 and refreshing the
+new report every 1000 further updates. All current native jobs remain unchanged:
+Protenix 29770179, Boltz-2 29770093, Boltz-2 + chemistry 29770124. At 13:14:26
+Paris all three were RUN, with latest saved states 1641/1099/850 respectively.
+Report source01 CPU 29770499 and certificate 29770500 were actually DONE; 56
+report fixtures passed. Live schema inspection found case.initial_checks is a
+direction list, with passed status in its separate coupled report. New report-only
+source02 corrects this equality contract and adds sparse incomplete editions;
+no source02 pass/submission follows from this preparation. Final native/full-budget
+gates remain unchanged. See docs/brd4_jq1_25_report.md for milestone/prefix rules.
+
+
+Report source02 authenticated 511 files, manifest
+cff9a2fd0a1ee7b2b1e3fb53d68ee4a46bee9d1fa453506684d7cc7bbfeb75e0,
+archive 39,508,302 bytes SHA
+f6608dd46584f8f7c0cbac21d41677555e13f98b74a86b94a93df11afce39ceb.
+Allocated CPU 29770598 failed one aged-out-record fixture (68 passed, one failed,
+34.65s): the missing-job message included its job ID and was incorrectly routed
+to the live-status parser. Source03 routes only an actual Status field to that
+parser and tests both completion-collector and legacy scheduler filenames.
+Keep the failed source02 result. No GPU experiment was changed or retested.
+
+
+### 21 October 2026 — First 25-slot interim report verified and published
+
+Report-only source03 authenticated 513 files; manifest
+3b1ba56f8ddd0dc163333d9dabccd1119e323553a160a0e7b6b41790e73d7252,
+archive 39,510,050 bytes SHA3434ab4cabbac75441adfbf8be7d50fdbc5381d0740bf13c0ce92244076891e0.
+CPU29770614/certificate29770615 actually DONE with70 passing report fixtures,
+no failures/errors/skips. CPU assessment SHA
+dadb07afdd95440aeb18ca2adaf133c8de8d3c6ccad711f3b305a1383f38d2d2.
+Preserve source02's68-pass/one-failure aged-out-message fixture; it was corrected
+without relaxing source, scheduler or native checks. Obsolete report-only pending
+jobs were intentionally retired; actual EXIT receipts are in source03 campaign.
+All three native GPU jobs remain unchanged.
+
+Current completion collectors29770616/29770617/29770618 and finalreport29770619
+wait on the same natives. First interim29770620 actually DONE/passed; included
+updates2275/1133/996, with exact milestone/current snapshots and full scalar
+prefixes. Archive197826bytes SHAe82677ec2d1135e450707ff5b8e47e1e47e6f77594865447142b7661748123e2,
+all36files verified locally with safe paths/lengths/hashes. Report assessment SHA
+bb51c887a27b8abc43af2df4cae0d122af95f050b7b8613bdf144b7c94e86179.
+Actual final scheduler and LSF success, CPU XML/proofs and source/input identities
+were checked. Local work was stdlib byte/XML/schema/publication/HTTP checks only;
+all rendering/tests ran on allocated HPC. Browser QA passed selectors/endpoints,
+1500 snapshot, playback, labels/colors, exact probability maps and loss overlays.
+Displayed argmax molecules remain sanitized25-carbon chains at this capture.
+
+Stable new link http://127.0.0.1:8776/report.html, preserving older editions/servers.
+Existing heartbeat updated to ten-minute checks and per-arm1500,2500,...9500,10000
+milestone publication; unchanged polls stay quiet. The complete report still
+requires all native/full-budget/terminal/frozen gates and10001states per arm.
+See docs/brd4_jq1_25_report.md and source03 campaign receipt for exact paths/IDs.

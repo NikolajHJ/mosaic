@@ -1,0 +1,31 @@
+{
+  "tag": "20261021-brd4-jq1-25-report-01",
+  "source": {
+    "source_archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261021-brd4-jq1-25-report\\source01\\source.tar.gz",
+    "archive_bytes": 39494684,
+    "archive_sha256": "58bb4bfc075d2884974e7df56e996561752601a9770ebb9457144b4b7153143d",
+    "manifest_sha256": "16099e18d8555f71c866c95bdf7da2bb68bbd459ddace11050bd40ca039c3f4b",
+    "files": 506,
+    "git_revision_reference": "8af0bb0cb71b63e491d653fc6a69a295ff6e21ac",
+    "hpc_transfer": "not performed",
+    "numerical_validation": "pending DTU HPC"
+  },
+  "native_jobs": {
+    "protenix": "29770179",
+    "boltz2": "29770093",
+    "boltz2_chemistry": "29770124"
+  },
+  "scope": "New saved-only combined report after all three native studies pass; leave all GPU experiments unchanged",
+  "jobs": {
+    "cpu": "29770499",
+    "cpu-certificate": "29770500",
+    "complete-protenix": "29770501",
+    "complete-boltz2": "29770502",
+    "complete-boltz2_chemistry": "29770503",
+    "combined-report": "29770504"
+  },
+  "status": "CPU and certificate actually DONE; 56 fixtures passed. Final collectors/report superseded by schema-corrected source02; preserve source01 evidence.",
+  "cpu_tests": 56,
+  "source_transfer": "authenticated 506 files",
+  "obsolete_pending_cancellation": "actual EXIT authenticated after retirement while PEND; source03 cancellation receipts retained"
+}

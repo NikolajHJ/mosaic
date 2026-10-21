@@ -1,0 +1,29 @@
+{
+  "tag": "20261021-brd4-jq1-25-report-02",
+  "source": {
+    "source_archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261021-brd4-jq1-25-report\\source02\\source.tar.gz",
+    "archive_bytes": 39508302,
+    "archive_sha256": "f6608dd46584f8f7c0cbac21d41677555e13f98b74a86b94a93df11afce39ceb",
+    "manifest_sha256": "cff9a2fd0a1ee7b2b1e3fb53d68ee4a46bee9d1fa453506684d7cc7bbfeb75e0",
+    "files": 511,
+    "git_revision_reference": "8af0bb0cb71b63e491d653fc6a69a295ff6e21ac",
+    "hpc_transfer": "not performed",
+    "numerical_validation": "pending DTU HPC"
+  },
+  "native_jobs": {
+    "protenix": "29770179",
+    "boltz2": "29770093",
+    "boltz2_chemistry": "29770124"
+  },
+  "scope": "Report-only schema correction, allocated fixtures and milestone interim editions; no native job changes",
+  "jobs": {
+    "cpu": "29770598",
+    "cpu-certificate": "29770599",
+    "complete-protenix": "29770600",
+    "complete-boltz2": "29770601",
+    "complete-boltz2_chemistry": "29770602",
+    "combined-report": "29770603",
+    "interim-0001": "29770604"
+  },
+  "status": "CPU 68 passed/one failed; certificate EXIT propagated. Unstarted obsolete report jobs intentionally retired with authenticated EXIT; no native experiment changed"
+}

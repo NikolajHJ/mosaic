@@ -1,0 +1,87 @@
+#!/bin/bash
+# Presentation allocations only. Native GPU experiments are never changed.
+set -euo pipefail
+[[ -n "${LSB_JOBID:-}" ]]
+release=$1
+root=$2
+manifest=$3
+phase=$4
+arm=$5
+parent=$6
+module load python3/3.12.11
+python=/work3/s234818/mosaic/envs/protenix-tiny/bin/python
+export PYTHONPATH="$release/scripts:$release/src:$release/tests" PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+export CUDA_VISIBLE_DEVICES='' JAX_PLATFORMS=cpu JAX_ENABLE_X64=0
+export OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 MKL_NUM_THREADS=2
+export MPLCONFIGDIR="$parent/mplcache"
+cd "$release"
+"$python" scripts/verify_stage0_release.py "$release" "$manifest"
+if [[ "$phase" == certify-cpu ]]; then
+  "$python" - "$root" "$manifest" <<'PY'
+import json,sys,xml.etree.ElementTree as ET
+from pathlib import Path
+from campaign25_pocket_ops import final_job
+from jq1_report_contract import sha
+root,manifest=Path(sys.argv[1]),sys.argv[2]
+job=json.loads((root/'jobs.json').read_text())['cpu']
+status,queue,proofs=final_job(job,root/'cpu')
+assert status=='DONE' and queue=='hpc'
+xml=root/'cpu/payload/report-tests.xml'
+cases=ET.parse(xml).findall('.//testcase')
+assert cases and not any(c.find(t) is not None for c in cases for t in ('failure','error','skipped'))
+proofs.append({'path':str(xml),'sha256':sha(xml)})
+(root/'cpu/payload/assessment.json').write_text(json.dumps({'status':'passed','job_id':job,'tests':len(cases),
+  'source_manifest_sha256':manifest,'proofs':proofs},indent=2)+'\n')
+PY
+  exit 0
+fi
+if [[ "$phase" == capture ]]; then
+  "$python" scripts/capture_jq1_completion.py --arm "$arm" --output "$parent/payload"
+  exit 0
+fi
+mkdir "$parent/payload"
+run="$parent/payload"
+"$python" scripts/hpc/zhome_quota_preflight.py --run-dir "$run" --minimum-free-gib 8
+if [[ "$phase" == cpu ]]; then
+  "$python" -m pytest tests/test_jq1_25_report.py tests/test_jq1_25_interim.py tests/test_boltz_affinity_report.py \
+    tests/test_small_molecule_chemistry_report.py tests/test_small_molecule_chemistry_ramp_report.py \
+    -o addopts= -o cache_dir="$run/cache" --basetemp "$run/pytest-unit-tmp" \
+    --junitxml="$run/report-tests.xml" > "$run/report-tests.log" 2>&1
+  exit 0
+fi
+[[ "$phase" == report ]]
+"$python" - "$root" <<'PY'
+import json,sys,xml.etree.ElementTree as ET
+from pathlib import Path
+from jq1_report_contract import sha
+root=Path(sys.argv[1])
+assessment=json.loads((root/'cpu/payload/assessment.json').read_text())
+assert assessment['status']=='passed'
+for proof in assessment['proofs']: assert sha(proof['path'])==proof['sha256']
+cases=ET.parse(root/'cpu/payload/report-tests.xml').findall('.//testcase')
+assert cases and not any(c.find(t) is not None for c in cases for t in ('failure','error','skipped'))
+for arm in ('protenix','boltz2','boltz2_chemistry'):
+    assert json.loads((root/('complete-'+arm)/'payload/assessment.json').read_text())['status']=='passed'
+PY
+"$python" scripts/render_jq1_25_report.py --completions "$root" --output "$run/report" > "$run/render.log" 2>&1
+"$python" - "$root" "$run" "$manifest" <<'PY'
+import json,os,shutil,sys
+from pathlib import Path
+from jq1_report_contract import sha
+root,run,manifest=Path(sys.argv[1]),Path(sys.argv[2]),sys.argv[3]
+receipt=json.loads((run/'report/report_receipt.json').read_text())
+assert receipt['complete'] and receipt['n_atoms']==25
+assert receipt['input_jobs']==['29770179','29770093','29770124'] and receipt['states']==[10001]*3
+shutil.copytree(root/'cpu/payload',run/'cpu-proof',ignore=shutil.ignore_patterns('pytest-unit-tmp','cache'))
+for proof in json.loads((root/'cpu/payload/assessment.json').read_text())['proofs']:
+    shutil.copyfile(proof['path'],run/'cpu-proof'/Path(proof['path']).name)
+shutil.copyfile('source_manifest.json',run/'report-source-manifest.json')
+for arm in ('protenix','boltz2','boltz2_chemistry'):
+    shutil.copytree(root/('complete-'+arm)/'payload',run/('completion-'+arm))
+record={'status':'passed','job_id':os.environ['LSB_JOBID'],'report_source_manifest_sha256':manifest,
+        'input_jobs':receipt['input_jobs'],'states':receipt['states'],'n_atoms':25,
+        'report_receipt_sha256':sha(run/'report/report_receipt.json'),
+        'scope':'Saved-only report; no model, repair, molecular conversion or resampling'}
+(run/'assessment.json').write_text(json.dumps(record,indent=2)+'\n')
+PY
+"$python" scripts/collect_protenix_evidence.py --storage zhome --run "$parent" --output "${parent}.tar.gz" > "$run/packaging.log" 2>&1

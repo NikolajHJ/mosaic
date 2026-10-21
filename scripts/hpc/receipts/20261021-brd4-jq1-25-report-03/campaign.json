@@ -1,0 +1,80 @@
+{
+  "tag": "20261021-brd4-jq1-25-report-03",
+  "source": {
+    "source_archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261021-brd4-jq1-25-report\\source03\\source.tar.gz",
+    "archive_bytes": 39510050,
+    "archive_sha256": "3434ab4cabbac75441adfbf8be7d50fdbc5381d0740bf13c0ce92244076891e0",
+    "manifest_sha256": "3b1ba56f8ddd0dc163333d9dabccd1119e323553a160a0e7b6b41790e73d7252",
+    "files": 513,
+    "git_revision_reference": "8af0bb0cb71b63e491d653fc6a69a295ff6e21ac",
+    "hpc_transfer": "not performed",
+    "numerical_validation": "pending DTU HPC"
+  },
+  "native_jobs": {
+    "protenix": "29770179",
+    "boltz2": "29770093",
+    "boltz2_chemistry": "29770124"
+  },
+  "scope": "Saved-only progress and final reports, no native changes",
+  "jobs": {
+    "cpu": "29770614",
+    "cpu-certificate": "29770615",
+    "complete-protenix": "29770616",
+    "complete-boltz2": "29770617",
+    "complete-boltz2_chemistry": "29770618",
+    "combined-report": "29770619",
+    "interim-0001": "29770620"
+  },
+  "status": "70 allocated report tests passed; first interim DONE/passed/downloaded/verified/published; final collectors/report wait on unchanged natives",
+  "source_authenticated_files": 513,
+  "cpu_assessment_sha256": "dadb07afdd95440aeb18ca2adaf133c8de8d3c6ccad711f3b305a1383f38d2d2",
+  "interim_editions": [
+    {
+      "name": "interim-0001",
+      "job_id": "29770620",
+      "verification": {
+        "status": "verified",
+        "report_job": "29770620",
+        "cpu_job": "29770614",
+        "report_cpu_tests": 70,
+        "report_source_manifest_sha256": "3b1ba56f8ddd0dc163333d9dabccd1119e323553a160a0e7b6b41790e73d7252",
+        "archive_sha256": "e82677ec2d1135e450707ff5b8e47e1e47e6f77594865447142b7661748123e2",
+        "included_updates": [
+          2275,
+          1133,
+          996
+        ],
+        "complete": false,
+        "local_checks": "stdlib byte/XML/schema and HTTP bytes only",
+        "browser_QA": "All three selectors, milestone 1500, latest endpoints, exact heatmaps, playback, labels/colors and loss overlays inspected. Saved displayed graphs in this edition are sanitized carbon chains; raw-invalid fixture passed on HPC.",
+        "link": "http://127.0.0.1:8776/report.html",
+        "assessment_sha256": "bb51c887a27b8abc43af2df4cae0d122af95f050b7b8613bdf144b7c94e86179",
+        "cpu_assessment_sha256": "dadb07afdd95440aeb18ca2adaf133c8de8d3c6ccad711f3b305a1383f38d2d2"
+      },
+      "archive_bytes": 197826,
+      "snapshot_steps": [
+        [
+          0,
+          1500,
+          2275
+        ],
+        [
+          0,
+          1133
+        ],
+        [
+          0,
+          996
+        ]
+      ],
+      "milestone_progress": {
+        "protenix": 1500,
+        "boltz2": 0,
+        "boltz2_chemistry": 0
+      }
+    }
+  ],
+  "stable_url": "http://127.0.0.1:8776/report.html",
+  "monitor_interval_minutes": 10,
+  "obsolete_report_jobs": "verified PEND before bkill, actual EXIT authenticated; see preserved cancellation receipts"
+}
