@@ -408,3 +408,30 @@ Verification, JSON and figure are under
 `results/hpc/20261021-brd4-jq1-gradient-audit-03/`; exact commands/source/proofs
 in the corresponding `scripts/hpc/receipts/` campaign. Existing report editions,
 pending report29771969 and all native studies are unchanged.
+
+### Edition0005 verified and published
+
+Interim **29771969** actually DONE/LSF success/passed, captured21October15:02:18
+Paris at **9425 / 1859 / 1726 updates** and **9426 / 1860 / 1727 states**.
+All **13,013 frames** retained. Exact archive49,698,929bytes SHA
+`ef0f74b678f8ded9caa333cfa28d0a313076eafc99cdc7bcee94c2b1bce473a3`,
+294files safely extracted/byte verified. Binary SSH streaming downloaded the
+unchanged archive directly to an exclusive local file; exact receipt path,
+length, archiveSHA and every manifest file/path/hash gates were retained.
+Actual final scheduler/LSFsuccess, report assessment
+`4e9886989e697b1ae66e0b1c08f97f254170fb2d1c054206a973211c741e3632`,
+rawCPU71-pass XML/proofs, all native/source/config/frozen/readiness identities,
+every-frame metadata contiguity and chunk lengths/hashes passed authentication.
+
+Published immutable edition0005 at the stable8776link. All273served files
+HTTP200/exactbytes. BrowserQA all3selectors/endpoints, actual drags4825then1707,
+numeric1500/next1501, playback777to779/manualpause500, exact probability tables,
+readable slot/element labels and probability-sized raw graphs passed. Screenshot
+and verification under `results/hpc/20261021-brd4-jq1-25-report/edition-0005/`.
+Captured contact loss-0.0882124; Boltz affinity scalars0.229913 and0.234419;
+contact and affinity remain distinct. Checked endpoint graphs remain C25 chains;
+chemistry loss0 at1726, weight0.001. Report is INPROGRESS, terminal/full-budget
+checks pending; native jobs/configurations and older report editions unchanged.
+Latest compact15:09Paris status showed all3RUN at9946/1918/1776, no terminal
+summaries. Do not infer Protenix completion from its proximity to10000.
+Published milestones8500/1500/1500; next unused interim-0005/localedition0006.

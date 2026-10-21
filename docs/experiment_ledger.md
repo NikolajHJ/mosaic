@@ -5196,3 +5196,37 @@ authenticated separately. Verification/figure/JSON under
 `results/hpc/20261021-brd4-jq1-gradient-audit-03/`. All numerical analysis/plotting
 allocated HPC; local AST/bytes/schema only. Native jobs29770179/29770093/29770124
 and report pipeline/earlier editions remain unchanged.
+
+### 21 October 2026 — Edition0005 delivered
+
+One compact15:09Paris status/artifact query authenticated all3nativejobsRUN,
+committed9946/1918/1776, no summaries; finalcollectors/reportPEND. Interim
+**29771969** actuallyDONE/LSFsuccess/passed, captured15:02:18Paris through
+9425/1859/1726, states9426/1860/1727, all13,013frames. Exactreceiptarchive
+49698929bytes SHA `ef0f74b678f8ded9caa333cfa28d0a313076eafc99cdc7bcee94c2b1bce473a3`;
+294files safely extracted/byte verified. BinarySSHstreaming to exclusive local
+file retained every exact path/length/hash/archive-member gate. AssessmentSHA
+`4e9886989e697b1ae66e0b1c08f97f254170fb2d1c054206a973211c741e3632`;
+finalschedulerSHA `aa0fe227dcb97cdce8689656fb2e20f49b33984cd6f41eb326f99a9140ef2bca`,
+LSFstdoutSHA `33eca8af1b4731b21ebe290cb762acd9550466f55b1c6509bed210361a4b210b`.
+RawCPU71passes/noerrors/failures/skips, source/input/frozen/readiness pins and
+every-frame metadata/chunk bytes authenticated separately. Local stdlib only;
+scientific rendering remained allocatedHPC.
+
+Published immutable edition0005 at http://127.0.0.1:8776/report.html. All273served
+files HTTP200/exactbytes. Actual browserQA all3selectors/endpoints, drag4825/1707,
+numeric1500/next1501, chemistryplayback777to779/manualpause500 and exact heatmaps/
+labels/probabilitysizes/rawgraphs passed. Screenshot/verification localedition5.
+Native jobs29770179/29770093/29770124 unchanged; reportstillINPROGRESS. No terminal
+completion inferred from Protenix9946. Published milestones8500/1500/1500;
+nextunusedremoteinterim-0005/localedition0006. Older editions/servers preserved.
+
+After edition0005 delivery, the checked Protenix9946 state crossed the next9500
+milestone beyond published8500. Verified the unique parent absent and no other
+interim pending, then submitted report-only **29772558** at15:14:05Paris:
+remoteinterim-0005/localedition0006, unchanged source04, hpc/2slots/4GiBslot/30min,
+no native dependency/mutation. Actual arguments/receipt/scheduler saved, SHA
+`095f9f847c54393f8f0804ca6437f30d5cbd2bc4f76469b83a272c462294ac43`.
+This is not a passed/delivered edition or native completion. Published0005 remains
+intact until another fully authenticated/verified/browser-checked report replaces
+the latest pointer. Nextunused after this is interim-0006/localedition0007.

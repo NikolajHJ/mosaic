@@ -26,12 +26,13 @@
     "interim-0001": "29770710",
     "interim-0002": "29770891",
     "interim-0003": "29771001",
-    "interim-0004": "29771969"
+    "interim-0004": "29771969",
+    "interim-0005": "29772558"
   },
-  "status": "Source04 CPU71passed; interim29771001 actuallyDONE/LSFsuccess/passed,236files byte/schema verified,10187 exact frames published as edition0004; HTTP and browser QA passed",
+  "status": "Source04 CPU71passed; interim29771969 actuallyDONE/LSFsuccess/passed,294files byte/schema verified,13013 exact frames published as edition0005; HTTP and browser QA passed",
   "source_authenticated_files": 518,
   "cpu_assessment_sha256": "a2654b958374b19cb9f42113032ad3a3a4776c38a88fb387d6409da37ce872d0",
-  "report_assessment_sha256": "eff9ea20cb86ceaebd643dd40907a444aeec8f1a8d498de70c3e455789417964",
+  "report_assessment_sha256": "4e9886989e697b1ae66e0b1c08f97f254170fb2d1c054206a973211c741e3632",
   "interim_editions": [
     {
       "remote_parent": "interim-0001",
@@ -101,20 +102,43 @@
         "boltz2_chemistry": 0
       },
       "verification": "results/hpc/20261021-brd4-jq1-25-report/edition-0004/verification.json"
+    },
+    {
+      "remote_parent": "interim-0004",
+      "local_edition": "edition-0005",
+      "job_id": "29771969",
+      "archive_bytes": 49698929,
+      "archive_sha256": "ef0f74b678f8ded9caa333cfa28d0a313076eafc99cdc7bcee94c2b1bce473a3",
+      "states": [
+        9426,
+        1860,
+        1727
+      ],
+      "included_updates": [
+        9425,
+        1859,
+        1726
+      ],
+      "milestone_progress": {
+        "protenix": 8500,
+        "boltz2": 1500,
+        "boltz2_chemistry": 1500
+      },
+      "verification": "results/hpc/20261021-brd4-jq1-25-report/edition-0005/verification.json"
     }
   ],
   "stable_url": "http://127.0.0.1:8776/report.html",
   "native_jobs_unchanged": true,
-  "next_interim_parent": "interim-0004",
-  "next_local_edition": "edition-0005",
-  "saved_gradient_audit": "scripts/hpc/receipts/20261021-brd4-jq1-gradient-audit-01/campaign.json",
+  "next_interim_parent": "interim-0005",
+  "next_local_edition": "edition-0006",
+  "saved_gradient_audit": "scripts/hpc/receipts/20261021-brd4-jq1-gradient-audit-03/campaign.json",
   "pending_interim": {
-    "remote_parent": "interim-0004",
-    "local_edition": "edition-0005",
-    "job_id": "29771969",
+    "remote_parent": "interim-0005",
+    "local_edition": "edition-0006",
+    "job_id": "29772558",
     "status": "submitted; completion/assessment/download/publication pending",
-    "trigger": "Latest checked8300/1700/1571; new milestones7500/1500/1500 exceed published6500/1500/0",
-    "submission_receipt": "results/hpc/20261021-brd4-jq1-25-report/edition-0005/submission.json",
-    "scheduler_at_submission_sha256": "6ba1c1093ee6c4972af97dca6ca7d48001a85ec08e21ebf70b2b44f4a481ce7c"
+    "trigger": "Latest checked9946/1918/1776; new Protenix9500 milestone exceeds published8500; Protenix not certified complete",
+    "submission_receipt": "results/hpc/20261021-brd4-jq1-25-report/edition-0006/submission.json",
+    "scheduler_at_submission_sha256": "095f9f847c54393f8f0804ca6437f30d5cbd2bc4f76469b83a272c462294ac43"
   }
 }
