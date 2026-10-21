@@ -1,0 +1,82 @@
+{
+  "tag": "20261021-brd4-jq1-25-fixed-storage-04",
+  "status": "Locally packaged immutable launcher-only candidate; AST and byte checks only. No remote staging, allocated CPU validation, observer or recovery jobs. Home capacity and current Protenix outcome remain unverified.",
+  "utc": "2026-10-21T20:15:30.201716+00:00",
+  "scope": "Launcher-only recovery of TWO unstarted Boltz arms; existing Protenix29777709/source03 untouched",
+  "science_source": "/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-02/source",
+  "science_manifest_sha256": "1e3a8a21e2fa68e24d1c9229238999c42a4a9b44bcc78344e73e188c87d1ee64",
+  "original_launcher": "/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-storage-03/source",
+  "original_launcher_manifest_sha256": "9ee7bf1d6bf412acdc37fc83415476dbefdf45db89533571d4a646ee16f33772",
+  "failed_production_attempts": {
+    "boltz2": "29777710",
+    "boltz2_chemistry": "29777711"
+  },
+  "protenix_existing_job": "29777709",
+  "declared_candidate_placement": {
+    "protenix": "Existing source03 work3 output, no restart",
+    "boltz2": "New work3 output",
+    "boltz2_chemistry": "New dedicated zhome Mosaic output"
+  },
+  "scientific_policy": "Unchanged source02 fixed_step rates0.3/0.01/0.01, single finite candidate,10000updates, original FD/parity/null/frozen/pocket/noDiff/runtime gates",
+  "resource_requirements": "Each filesystem combined full remaining assigned projection incl existingPro onwork3 plus4GiB and100000files; no reserve reduction or borrowing filesystem headroom",
+  "home_capacity": "Not established:55s bounded metadata scan incomplete;240sfind/localSSH260stimeout produced no completed result. Newtool requires full600sbounded inventory plusfreshquotas, neverusespartialoutput.",
+  "inventory_01": "Read-only Python metadata walk stopped at55seconds incomplete, no resource pass",
+  "inventory_02": "Read-only find240second child timeout/localSSH260second timeout; no completed result. Inspect partial logs/remote exact Mosaic inventory processes before any further scan; do not blindly duplicate unknown active read-only scan. No GPU/scientific mutation occurred.",
+  "latest_connection": "22:15Paris bounded terminal-evidence connection deniedpassword255; no actual newPro outcome established. Do not infer completion from time.",
+  "cpu_submitted": false,
+  "recovery_long_runs_submitted": false,
+  "next_steps": "After restored access, inspect exact current receipts and any remaining read-only inventory process before recovery. Authenticate source04 bytes, pass allocated CPU contracts and unchanged adoption pins, capture actual existing Protenix terminal evidence when available, and require fresh complete per-filesystem storage gates before at most two independent new Boltz submissions. Never retry source03 dispatch or modify its failed records.",
+  "source": {
+    "local_archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261021-brd4-jq1-25-fixed-storage-04\\source02\\source.tar.gz",
+    "archive_bytes": 25618,
+    "archive_sha256": "6fc50a4be658b7ed8631f1d013bf95a96cf3f0260bdb2fb21ac39e213d54562b",
+    "manifest_sha256": "bfb047786fd7dd1dafbd0a709e34ba1856d30ab4f156e4e084bb4a6c5226286a",
+    "files": 12,
+    "file_hashes": {
+      "scripts/fixed25_recover_ops.py": "98f5649b7f2f6dac0b804977cd8322a95ceaea40dbd18b9540601dbf2dacd71e",
+      "scripts/fixed25_recover_storage.py": "52c627d1865231d7c7e2a61b182640cf38f492d84a8a1f44aeec1b865c40d861",
+      "tests/test_fixed25_recover_ops.py": "6ba8dbbbd6b9fe8672f53acbff19c38577062f8097cd0185e930c62862567b65",
+      "tests/test_fixed25_recover_storage.py": "73bc249dc9e0bec11eb7029ecd6718d9cba3e9fc2513accedeecf8201b2add78",
+      "scripts/hpc/fixed25_recover_cpu.lsf": "379c95a24640f31e5945ab77264d6aa04f09c11eece982db52776d2f2758e5ff",
+      "scripts/hpc/fixed25_recover_after_cpu.lsf": "e40dc9e11c938cfeeffe719618c595c9d63e48c6e9bc4bcdc6fdb7840e13f7b7",
+      "scripts/hpc/fixed25_recover_stage.lsf": "11ab6a2d843d3786ddafee258542562b19acd61223fc7b4c7e57a36826a47dbf",
+      "scripts/hpc/fixed25_recover_observe_pro.lsf": "3092f6ad43f449934a1040ce020bed95d0deb59b5b45def69ab9b400027bebd8",
+      "scripts/verify_stage0_release.py": "d3e5373b84b123fe2388db2e9493a5a76d1cfc7edcc53f73ff5746f935c49c02",
+      "examples/configs/brd4_jq1_25_fixed_protenix_10000.json": "69257fd9700d8ca0f42e13ae95ec4c3a15ca623064f657acf4fb8c85b65f1d00",
+      "examples/configs/brd4_jq1_25_fixed_boltz2_10000.json": "b6217159b0180b8c2f4b3e57764b2101b79e20e1e8cd021b357ae6563e5b161b",
+      "examples/configs/brd4_jq1_25_fixed_boltz2_chemistry_10000.json": "dd6347a0756320bc79dea5fbbf7da9aeca8e8bf93dc38f30cd141fd240059049"
+    },
+    "remote_expected": "/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-storage-04/source",
+    "hpc_verification": "not_run",
+    "numerical_validation": "not_run",
+    "tracked_manifest": "scripts/hpc/receipts/20261021-brd4-jq1-25-fixed-storage-04/source-manifest.json",
+    "local_package": "source02"
+  },
+  "observer_submitted": false,
+  "latest_verified_scientific_status": {
+    "observed_utc": "2026-10-21T18:39:34.359327+00:00",
+    "protenix": {
+      "job": "29777709",
+      "scheduler": "RUN",
+      "committed_updates": 1575,
+      "committed_states": 1576,
+      "summary_present": false
+    },
+    "boltz2": {
+      "job": "29777710",
+      "scheduler": "EXIT",
+      "scientific_execution_started": false,
+      "cause": "entry byte-quota guard"
+    },
+    "boltz2_chemistry": {
+      "job": "29777711",
+      "scheduler": "EXIT",
+      "scientific_execution_started": false,
+      "cause": "entry byte-quota guard"
+    }
+  },
+  "superseded_local_packages": [
+    "scripts/hpc/receipts/20261021-brd4-jq1-25-fixed-storage-04/superseded-source01-receipt.json"
+  ],
+  "local_static_check": "All Python ASTs parsed; line-ending normalization of storage helper leaves AST unchanged; source02 archive/manifest/current file hashes agree. No tests or numerical work performed."
+}

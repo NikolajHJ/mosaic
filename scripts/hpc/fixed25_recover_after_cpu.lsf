@@ -1,0 +1,32 @@
+#!/bin/bash
+set -euo pipefail
+[[ -n "${LSB_JOBID:-}" ]]
+tool=$1
+root=$2
+manifest=$3
+producer=$4
+original_launcher=/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-storage-03/source
+science=/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-02/source
+module load python3/3.12.11
+python=/work3/s234818/mosaic/envs/protenix-tiny/bin/python
+export PYTHONPATH="$tool/scripts:$original_launcher/scripts:$science/scripts" PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+"$python" "$tool/scripts/verify_stage0_release.py" "$tool" "$manifest"
+"$python" "$tool/scripts/verify_stage0_release.py" "$original_launcher" 9ee7bf1d6bf412acdc37fc83415476dbefdf45db89533571d4a646ee16f33772
+"$python" "$tool/scripts/verify_stage0_release.py" "$science" 1e3a8a21e2fa68e24d1c9229238999c42a4a9b44bcc78344e73e188c87d1ee64
+"$python" - "$tool" "$root" "$manifest" "$producer" <<'PY'
+import json,subprocess,sys
+from pathlib import Path
+from campaign25_contract import sha
+from campaign25_pocket_ops import final_job,read,write
+tool,root=map(Path,sys.argv[1:3]);manifest,producer=sys.argv[3:5]
+status,queue,proofs=final_job(producer,root/'cpu')
+if status!='DONE' or queue!='hpc':raise ValueError('Recovery CPU actual scheduler/queue failure')
+a=root/'cpu/payload/assessment.json';v=read(a)
+if v['status']!='passed' or v['source_manifest_sha256']!=manifest or v['suite']!='fixed25-two-arm-recovery-contract-v1':raise ValueError('Recovery CPU assessment mismatch')
+for p in v['proofs']:
+    if sha(p['path'])!=p['sha256']:raise ValueError('Recovery CPU proof changed')
+proofs+=v['proofs']+[{'path':str(a),'sha256':sha(a)}]
+certificate={'status':'passed','source_manifest_sha256':manifest,'producer_job_id':producer,'tests':v['passed'],'proofs':proofs,'suite':v['suite']}
+with (root/'cpu-certificate.json').open('x') as f:json.dump(certificate,f,indent=2)
+subprocess.run([sys.executable,str(tool/'scripts/fixed25_recover_ops.py'),'--phase','dispatch','--tool-source',str(tool),'--tool-manifest',manifest,'--root',str(root),'--cpu-certificate-sha256',sha(root/'cpu-certificate.json'),'--adoption-sha256',sha(root/'adoption.json')],check=True)
+PY

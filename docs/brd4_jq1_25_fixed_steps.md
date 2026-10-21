@@ -288,12 +288,81 @@ actual CPU/callback DONE and LSF success, all original adoption pins, whole-camp
 storage and the three independent submission/resource vectors matched. Receipt:
 `results/hpc/20261021-brd4-jq1-25-fixed-storage-03/verification.json`, SHA-256
 `e7edc4a4fd07ec1968fba600ce7ef19f691404aefede8fbdd588d0dc198bd90f`.
-This verifies launch readiness and submission; trajectories are still in progress.
+This verifies launch readiness and submission; it does not certify trajectory
+completion.
 
-Independent standard-library byte/XML/schema verification of all 33 launcher
-proofs is complete. Raw XML confirms 65 passes without errors, failures or skips;
-actual CPU/callback DONE and LSF success, all original adoption pins, whole-campaign
-storage and the three independent submission/resource vectors matched. Receipt:
-`results/hpc/20261021-brd4-jq1-25-fixed-storage-03/verification.json`, SHA-256
-`e7edc4a4fd07ec1968fba600ce7ef19f691404aefede8fbdd588d0dc198bd90f`.
-This verifies launch readiness and submission; trajectories are still in progress.
+### 21 October, 20:39:34 Paris - Boltz entry storage failures; Protenix still running
+
+The latest actual query shows Protenix **29777709 RUN**, with a contiguous
+**1,576-state / 1,575-update** committed prefix and no summary. This is partial
+progress, not completion; its existing job and results remain unchanged.
+
+Boltz-2 **29777710** and chemistry **29777711** actually **EXIT** before any
+study or model execution because their whole-campaign entry byte-quota guard
+failed:
+
+| Arm | Required bytes including reserve | Conservative available bytes |
+| --- | ---: | ---: |
+| Boltz-2 | 12,502,649,138 | 12,173,988,090 |
+| Boltz-2 plus chemistry | 12,496,820,290 | 12,140,892,177 |
+
+Raw quota used was 87.29 / 87.41 GiB, versus 86.70 GiB at Protenix entry;
+the rounded quota-derived available bound decreased by 1 GiB. File quota
+retained about 19.7 million available files, and the exact all-zero filesystem
+inode counters were correctly recorded as unreported. These are failed storage
+entries, not native gradient failures: both original readiness proofs remain
+passed, and neither failed Boltz job performed a scientific step.
+
+The shared byte verifier passed the 13-file failure archive, 6,088 bytes,
+SHA-256 `7cdbb679cc3acb4e38c8a1a28fa8727a2b934362a95c3104858c6a94da157739`.
+Local evidence is under
+`results/hpc/20261021-brd4-jq1-25-fixed-storage-03/entry-failures-01/`.
+All three original source/outcome records and current Protenix progress are
+preserved.
+
+A declared launcher-only split-storage recovery for the **two Boltz arms only**
+is under investigation. No new recovery source, CPU pass or job is established.
+The home quota snapshot was 18.62 / 30 GiB, last updated at 19:03:58; a bounded
+Mosaic-only home inventory is underway, but output fit is not established. No
+storage or scientific gate is waived, and Protenix is not restarted.
+
+### 21 October, 22:18 Paris - local recovery candidate only; access and capacity unresolved
+
+A new launcher-only candidate, `20261021-brd4-jq1-25-fixed-storage-04`, is
+packaged locally: **12 files**, archive **26,245 bytes**, SHA-256
+`b7f897ba92a21559cc706c527c897b2c0cac56f1f9233f269be9823e58993388`,
+manifest SHA-256
+`ca4d27b6f887fbe02bced7b81c7bb8a3425357434b440beb808a8908f0e2fa3c`.
+The source manifest and campaign are saved in
+`scripts/hpc/receipts/20261021-brd4-jq1-25-fixed-storage-04/`.
+Only local standard-library AST/byte checks have run: **no remote staging,
+allocated CPU pass, observer or replacement Boltz job is established**.
+
+The declared placement keeps existing Protenix 29777709 unchanged on work3,
+places only a new Boltz-2 output on work3, and a new chemistry output in a
+separate dedicated home Mosaic directory. Scientific source02, configurations,
+readiness and fixed-step settings stay pinned. Each filesystem must independently
+fit its combined full remaining assigned projections plus the unchanged 4 GiB
+and 100,000-file headroom; no failed gate is relabelled or reduced. The candidate
+also includes a CPU observer for actual existing-Protenix terminal evidence,
+gated by allocated contracts and unchanged adoption identities.
+
+Home capacity remains **unproven**. The 55-second metadata walk and subsequent
+bounded read-only `find` attempt did not complete; partial inventory is not a
+resource pass. The saved positive home filesystem inode counters do not establish
+byte capacity or a user inode quota. Later SSH attempts failed authentication,
+including the bounded 22:15 Paris terminal-evidence attempt (return 255), so no
+later Protenix outcome was observed. Its latest verified state remains RUN at
+1,575 updates / 1,576 states at 20:39:34 Paris; elapsed time is not completion.
+All failed attempts and logs are preserved. No further storage deletion,
+scientific execution, local numerical test or report publication occurred.
+
+Local source04 package `source01` above remains preserved. Before committing,
+the storage helper's mixed line endings were normalized to the repository's
+required LF format; its Python AST is unchanged. The active local candidate is
+now `source02`: 25,618 archive bytes, SHA-256
+`6fc50a4be658b7ed8631f1d013bf95a96cf3f0260bdb2fb21ac39e213d54562b`, manifest SHA-256
+`bfb047786fd7dd1dafbd0a709e34ba1856d30ab4f156e4e084bb4a6c5226286a`. All 12 member hashes match
+the working files. This is a byte-format correction only, with no remote staging,
+allocated tests, observer or scientific job. The superseded local package receipt
+is retained beside the active campaign.

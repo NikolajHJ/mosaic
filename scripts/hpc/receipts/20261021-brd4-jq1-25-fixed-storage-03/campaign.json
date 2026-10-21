@@ -1,6 +1,6 @@
 {
   "tag": "20261021-brd4-jq1-25-fixed-storage-03",
-  "status": "All65 launcher CPU contracts/actualDONE/LSF passed; original scientific readiness adopted; full3artifactstorage gate passed; newlongs actuallysubmitted; latestProRUN/950updates,Boltz2andchemPEND",
+  "status": "ProtenixRUN; both Boltz production attempts EXIT before modelwork at mandatory fresh whole-campaign entry bytequota gate; readiness remains passed; recovery resource paths under investigation",
   "utc": "2026-10-21T18:15:05.064969+00:00",
   "source": {
     "local_archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261021-brd4-jq1-25-fixed-storage-03\\source01\\source.tar.gz",
@@ -333,40 +333,38 @@
     "science_manifest_sha256": "1e3a8a21e2fa68e24d1c9229238999c42a4a9b44bcc78344e73e188c87d1ee64"
   },
   "current_status": {
-    "utc": "2026-10-21T18:35:30.971759+00:00",
+    "utc": "2026-10-21T18:39:34.359327+00:00",
     "scheduler_returncode": 0,
-    "scheduler": "JOBID STAT QUEUE JOB_NAME                                     \n29777709 RUN gpul40s mosaic-jq1-fixed-split-protenix              \n29777710 PEND gpul40s mosaic-jq1-fixed-split-boltz2                \n29777711 PEND gpul40s mosaic-jq1-fixed-split-boltz2_chemistry      \n",
+    "scheduler": "JOBID STAT QUEUE JOB_NAME                                     \n29777709 RUN gpul40s mosaic-jq1-fixed-split-protenix              \n29777710 EXIT gpul40s mosaic-jq1-fixed-split-boltz2                \n29777711 EXIT gpul40s mosaic-jq1-fixed-split-boltz2_chemistry      \n",
     "arms": {
       "protenix": {
         "study_present": true,
         "summary_present": false,
-        "case_report_present": true,
-        "states_committed_rows": 951,
-        "states_last_index": {
-          "step": 950
-        },
-        "updates_committed_rows": 950,
-        "updates_last_index": {
-          "step": 949
-        },
+        "assessment_present": false,
+        "states_committed_rows": 1576,
+        "states_last_index": 1575,
+        "updates_committed_rows": 1575,
+        "updates_last_index": 1574,
         "entry_quota_status": "passed",
-        "stderr_tail": "Loaded dependency [python3/3.12.11]: sqlite3/3.50.1\nLoaded dependency [python3/3.12.11]: gcc/14.3.0-binutils-2.44\nLoaded module: python3/3.12.11\n\nLoading python3/3.12.11\n  Loading requirement: sqlite3/3.50.1 gcc/14.3.0-binutils-2.44\nLoaded module: cuda/12.9.1\nLoaded module: cudnn/v9.13.0.50-prod-cuda-12.X"
+        "stderr_tail": "Loaded dependency [python3/3.12.11]: sqlite3/3.50.1\nLoaded dependency [python3/3.12.11]: gcc/14.3.0-binutils-2.44\nLoaded module: python3/3.12.11\n\nLoading python3/3.12.11\n  Loading requirement: sqlite3/3.50.1 gcc/14.3.0-binutils-2.44\nLoaded module: cuda/12.9.1\nLoaded module: cudnn/v9.13.0.50-prod-cuda-12.X\n"
       },
       "boltz2": {
         "study_present": false,
         "summary_present": false,
-        "case_report_present": false,
+        "assessment_present": false,
         "states_committed_rows": 0,
         "updates_committed_rows": 0,
-        "stderr_tail": ""
+        "entry_quota_status": "failed",
+        "stderr_tail": "]: sqlite3/3.50.1\nLoaded dependency [python3/3.12.11]: gcc/14.3.0-binutils-2.44\nLoaded module: python3/3.12.11\n\nLoading python3/3.12.11\n  Loading requirement: sqlite3/3.50.1 gcc/14.3.0-binutils-2.44\nLoaded module: cuda/12.9.1\nTraceback (most recent call last):\n  File \"/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-storage-03/source/scripts/fixed25_split_ops.py\", line 351, in <module>\n    main()\n  File \"/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-storage-03/source/scripts/fixed25_split_ops.py\", line 347, in main\n    run_arm(args.arm, args.tool_manifest, args.cpu_certificate_sha256, args.adoption_sha256)\n  File \"/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-storage-03/source/scripts/fixed25_split_ops.py\", line 315, in run_arm\n    storage.check_campaign_storage(projections, ROOT / ('entry-quota-' + arm), phase='entry')\n  File \"/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-storage-03/source/scripts/fixed25_split_storage.py\", line 223, in check_campaign_storage\n    raise ValueError('All-three whole-campaign byte/inode budget exceeds fresh work3 headroom')\nValueError: All-three whole-campaign byte/inode budget exceeds fresh work3 headroom\n"
       },
       "boltz2_chemistry": {
         "study_present": false,
         "summary_present": false,
-        "case_report_present": false,
+        "assessment_present": false,
         "states_committed_rows": 0,
         "updates_committed_rows": 0,
-        "stderr_tail": ""
+        "entry_quota_status": "failed",
+        "stderr_tail": "]: sqlite3/3.50.1\nLoaded dependency [python3/3.12.11]: gcc/14.3.0-binutils-2.44\nLoaded module: python3/3.12.11\n\nLoading python3/3.12.11\n  Loading requirement: sqlite3/3.50.1 gcc/14.3.0-binutils-2.44\nLoaded module: cuda/12.9.1\nTraceback (most recent call last):\n  File \"/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-storage-03/source/scripts/fixed25_split_ops.py\", line 351, in <module>\n    main()\n  File \"/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-storage-03/source/scripts/fixed25_split_ops.py\", line 347, in main\n    run_arm(args.arm, args.tool_manifest, args.cpu_certificate_sha256, args.adoption_sha256)\n  File \"/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-storage-03/source/scripts/fixed25_split_ops.py\", line 315, in run_arm\n    storage.check_campaign_storage(projections, ROOT / ('entry-quota-' + arm), phase='entry')\n  File \"/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-storage-03/source/scripts/fixed25_split_storage.py\", line 223, in check_campaign_storage\n    raise ValueError('All-three whole-campaign byte/inode budget exceeds fresh work3 headroom')\nValueError: All-three whole-campaign byte/inode budget exceeds fresh work3 headroom\n"
       }
     }
   },
@@ -387,5 +385,49 @@
       "sha256": "e7edc4a4fd07ec1968fba600ce7ef19f691404aefede8fbdd588d0dc198bd90f",
       "scope": "stdlibbyte/XML/JSON/schema only; no local scientific computations"
     }
+  },
+  "entry_failures": {
+    "status": "verified",
+    "utc": "2026-10-21T18:43:00.934964+00:00",
+    "archive_bytes": 6088,
+    "archive_sha256": "7cdbb679cc3acb4e38c8a1a28fa8727a2b934362a95c3104858c6a94da157739",
+    "verified_files": 13,
+    "arms": {
+      "boltz2": {
+        "job": "29777710",
+        "actual_scheduler_status": "EXIT",
+        "lsf_exit": 1,
+        "classification": "Resource admission failed before model/driver invocation",
+        "gate_sha256": "d58e107ab49748c7f7bc5cd3aff50156d84b61df927c5e7e06175e262b9aeafb",
+        "required_bytes": 12502649138,
+        "available_bytes_conservative": 12173988090,
+        "inode_headroom_passed": true,
+        "original_native_readiness": "unchanged, passed"
+      },
+      "boltz2_chemistry": {
+        "job": "29777711",
+        "actual_scheduler_status": "EXIT",
+        "lsf_exit": 1,
+        "classification": "Resource admission failed before model/driver invocation",
+        "gate_sha256": "1b6f07a120dc804f192c70de5fed2556e29e483292e5e271337202f0e4230fc4",
+        "required_bytes": 12496820290,
+        "available_bytes_conservative": 12140892177,
+        "inode_headroom_passed": true,
+        "original_native_readiness": "unchanged, passed"
+      }
+    },
+    "protenix": "Running unchanged; committed1575updates at20:39:34Paris, not complete",
+    "no_scientific_output_scope": "Actual read-only status04 query observed absent studies; immutable launcher03 orders storage gate before GPU capture and driver invocation; no new model execution result exists for Bol arms",
+    "scope": "Local stdlib byte/JSON/schema verification only, no scientific computations"
+  },
+  "recovery": {
+    "status": "Locally packaged source04 candidate only; no new HPC submission or storage fit established",
+    "campaign": "scripts/hpc/receipts/20261021-brd4-jq1-25-fixed-storage-04/campaign.json",
+    "existing_protenix_job": "29777709",
+    "preserve_failed_boltz_jobs": [
+      "29777710",
+      "29777711"
+    ],
+    "latest_connection": "22:15 Paris: SSH authentication denied, return 255; no later Protenix status or completion is established."
   }
 }

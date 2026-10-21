@@ -1,0 +1,34 @@
+{
+  "status": "verified",
+  "utc": "2026-10-21T18:43:00.934964+00:00",
+  "archive_bytes": 6088,
+  "archive_sha256": "7cdbb679cc3acb4e38c8a1a28fa8727a2b934362a95c3104858c6a94da157739",
+  "verified_files": 13,
+  "arms": {
+    "boltz2": {
+      "job": "29777710",
+      "actual_scheduler_status": "EXIT",
+      "lsf_exit": 1,
+      "classification": "Resource admission failed before model/driver invocation",
+      "gate_sha256": "d58e107ab49748c7f7bc5cd3aff50156d84b61df927c5e7e06175e262b9aeafb",
+      "required_bytes": 12502649138,
+      "available_bytes_conservative": 12173988090,
+      "inode_headroom_passed": true,
+      "original_native_readiness": "unchanged, passed"
+    },
+    "boltz2_chemistry": {
+      "job": "29777711",
+      "actual_scheduler_status": "EXIT",
+      "lsf_exit": 1,
+      "classification": "Resource admission failed before model/driver invocation",
+      "gate_sha256": "1b6f07a120dc804f192c70de5fed2556e29e483292e5e271337202f0e4230fc4",
+      "required_bytes": 12496820290,
+      "available_bytes_conservative": 12140892177,
+      "inode_headroom_passed": true,
+      "original_native_readiness": "unchanged, passed"
+    }
+  },
+  "protenix": "Running unchanged; committed1575updates at20:39:34Paris, not complete",
+  "no_scientific_output_scope": "Actual read-only status04 query observed absent studies; immutable launcher03 orders storage gate before GPU capture and driver invocation; no new model execution result exists for Bol arms",
+  "scope": "Local stdlib byte/JSON/schema verification only, no scientific computations"
+}
