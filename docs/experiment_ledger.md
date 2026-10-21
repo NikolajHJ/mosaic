@@ -5230,3 +5230,32 @@ no native dependency/mutation. Actual arguments/receipt/scheduler saved, SHA
 This is not a passed/delivered edition or native completion. Published0005 remains
 intact until another fully authenticated/verified/browser-checked report replaces
 the latest pointer. Nextunused after this is interim-0006/localedition0007.
+
+### 21 October 2026, 15:19 Paris — Protenix terminal collector passed; edition6 transfer pending
+
+One compact query showed Protenix native29770179 actuallyDONE, casepassed with
+10000updates/10001states and summary present; allocated completion collector
+29770706 actuallyDONE with persisted passed assessment. It authenticated native
+DONE/LSFsuccess and full original scientific/source/frozen/readiness/terminal
+gates under the sealed source04 contract. SummarySHA
+`942b260ea5b1b60271c818e67dc4169c646cb1216d10baeab0d76c20bb3ee0ee`;
+caseSHA `77c9712b204ac7a429d5a5477109337416ea48c1e19b97435508cffdcd676d54`.
+Local completion-proof transfer is active in execsession51862 into
+`results/hpc/20261021-brd4-jq1-25-report/protenix-completion-01/`; full local
+verification remains pending. No completion is inferred from schedulerDONE alone.
+Boltz native29770093 and chemistry29770124 remainRUN at1995/1839; their
+collectors and strict finalreport29770709 remainPEND. No experiment changed.
+
+Interim **29772558** actuallyDONE/LSFsuccess/passed, captured15:15:42Paris at
+10000/1960/1812updates and10001/1961/1813states. AssessmentSHA
+`ca440b1dc46f87dad88fee291605f9dfe3fba50cfe0a5c642ba4d9bf8562c486`.
+Actual final schedulerSHA
+`ebae16f5f4923a4812fc3b0b8f24edac9d1a24c745bfb91325bd5ed1cb96928b`,
+LSFstdoutSHA `855fe998d336f6741262a60635ab1f2b69be650fef278f2a9702567291028769`
+downloaded and byte/status authenticated. Exactreceiptarchive52544644bytes SHA
+`f283da0ffb883987fa5385b16a215abca4d4c0918b8dfbee99f7e3ab0cc30518`,
+310files. BinarySSH transfer is active in execsession8126 into reserved
+edition0006, followed automatically by receipt/path/length/SHA/safe extraction.
+Do not duplicate active transfers or submit another capture before this edition
+is verified/published. Current edition0005 stays immutable/published. No edition6
+local full byte/schema pass, publication or browserQA is established yet.

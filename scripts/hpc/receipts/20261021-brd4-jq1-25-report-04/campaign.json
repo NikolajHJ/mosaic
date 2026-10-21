@@ -136,9 +136,48 @@
     "remote_parent": "interim-0005",
     "local_edition": "edition-0006",
     "job_id": "29772558",
-    "status": "submitted; completion/assessment/download/publication pending",
+    "status": "Actual DONE/LSFsuccess and remote passed assessment; binary SSH download in progress, full local byte/schema verification/publication pending",
     "trigger": "Latest checked9946/1918/1776; new Protenix9500 milestone exceeds published8500; Protenix not certified complete",
     "submission_receipt": "results/hpc/20261021-brd4-jq1-25-report/edition-0006/submission.json",
-    "scheduler_at_submission_sha256": "095f9f847c54393f8f0804ca6437f30d5cbd2bc4f76469b83a272c462294ac43"
+    "scheduler_at_submission_sha256": "095f9f847c54393f8f0804ca6437f30d5cbd2bc4f76469b83a272c462294ac43",
+    "archive_receipt": {
+      "path": "/zhome/95/e/206121/mosaic-runs/20261021-brd4-jq1-25-report-04/interim-0005.tar.gz",
+      "bytes": 52544644,
+      "sha256": "f283da0ffb883987fa5385b16a215abca4d4c0918b8dfbee99f7e3ab0cc30518",
+      "files": 310
+    },
+    "included_updates": [
+      10000,
+      1960,
+      1812
+    ],
+    "states": [
+      10001,
+      1961,
+      1813
+    ],
+    "report_assessment_sha256": "ca440b1dc46f87dad88fee291605f9dfe3fba50cfe0a5c642ba4d9bf8562c486",
+    "report_receipt_sha256": "664469bddc4b0c7e93c04ba97d08bacc7bf4cad6e69eaf2f93bae6bda2052ed8",
+    "html_sha256": "8184bba69866bea8092e486a1d34788cb0e1d972a2d4a90793548581e44ba2ad",
+    "html_bytes": 53414,
+    "captured_utc": "2026-10-21T13:15:42.628400+00:00",
+    "download_exec_session_id": 8126,
+    "final_scheduler_sha256": "ebae16f5f4923a4812fc3b0b8f24edac9d1a24c745bfb91325bd5ed1cb96928b",
+    "lsf_stdout_sha256": "855fe998d336f6741262a60635ab1f2b69be650fef278f2a9702567291028769"
+  },
+  "native_completion_progress": {
+    "protenix": {
+      "native_job": "29770179",
+      "collector_job": "29770706",
+      "actual_scheduler_observed": "DONE",
+      "native_case_status": "passed",
+      "collector_assessment_status": "passed",
+      "updates": 10000,
+      "states": 10001,
+      "summary_sha256": "942b260ea5b1b60271c818e67dc4169c646cb1216d10baeab0d76c20bb3ee0ee",
+      "local_proof_download_exec_session_id": 51862,
+      "local_proof_download_directory": "results/hpc/20261021-brd4-jq1-25-report/protenix-completion-01",
+      "local_full_verification": "pending completed transfers and schema checks"
+    }
   }
 }
