@@ -4582,3 +4582,24 @@ its individual passed subchecks or measured pilot times promotes source04.
 All four obsolete unstarted source03 jobs actualEXIT10:20:21Paris; no long run
 started/cancelled. Heartbeat updated to source04 current jobs and original gates;
 old random scientific blocker still not retried, full chemistry still held.
+
+
+## Source04 CPU347 passed; actual replacement native stages submitted
+
+CPU29769140 actually DONE21October10:25:45Paris,347passes, no failures/errors/
+skips; three historical slow/model checks deliberately deselected. Raw counts
+34launcher/226legacyJAX/28mappingconfig/59chemistry include all five new response
+contracts. Actual scheduler/LSF/source/reference/XML and all19proof file bytes
+safely downloaded and authenticated at
+results/hpc/20261021-brd4-25/source04-cpu/evidence/.
+Archive20,154bytes SHA230d88e262bd92af319ba6d417141795e3a21df57a49456aa10a4107087fd99f.
+AfterCPU29769141 actualDONE10:25:51 and authenticated actual native submissions:
+Protenix validation29769176/callback29769177, fresh Boltz preparation29769178/
+callback29769179. Same resource shape and original unchanged gates. These are
+native validation/preparation, not submitted10,000-update arms. Current actual
+receipts scripts/hpc/receipts/20261021-brd4-25-04/campaign.json; conditional later
+IDs must be authenticated, not inferred. Full chemistry still held for measured
+end-to-end estimate; supplemental19–78min/10k component calls is not total ETA.
+Tooling/science/tests/docs pushed as784ab66; only user PDF/OneNote changes remain
+unrelated. Runtime follow-up active/quiet on unchanged state; old six-slot random
+scientific failure not retried. No local numerical work.
