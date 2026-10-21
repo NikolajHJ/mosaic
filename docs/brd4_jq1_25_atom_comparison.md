@@ -239,3 +239,44 @@ byte totals. It does not resumejobs. SHA
 f84e64b64869fe4979cdb5f0e1c31de2a97eb265f12f6f0f1ee169fdc8f529e1;
 preparedfor later execution only after ProtenixactuallyDONE/passed. LocalAST
 review only; no local numericaltests or scientific execution.
+
+
+## 21 October 2026 — all three JQ1-pocket long runs authenticated
+
+Corrected Protenix native29770090 actuallyDONE/passed all original hard/rawFD/
+null/parity/finite/frozen/pocket gates plus independent-primal update and10-step
+pilot. Assessment70fa96f9009a0e7316fff341e8c091bfd5339f9c9e2f4456f39d35b6a2e13cf8,
+74nativeproofs rehashed. Runtime mean0.2504813783s/update; conservative original
+projection5557.220675s<82800; artifactprojection1439101824bytes. Model
+8d6926d5390fe682e193089f790ce53aa4011a6d5509ddb452a55db3d89b0ab2 and
+contextb28dfad8e5ede565071c70a61695f6a38f5cb6bd591705e32979e59050ff5ce4
+unchanged before/after. Original source01 failure remains failed historical
+evidence; correctedsource02 is a new successful readiness.
+
+Fresh shared quota audit authenticated all3actual nativeDONE/LSF/source/config/
+CPU/proof identities. Required12726272768bytes(all3projections+4GiB), available
+15820561335bytes after conservatively subtracting both roots' actual artifacts.
+Cached quota remains no reservation; original callback repeats fresh ownquota.
+Audit assessmentSHA52585026fd21d3c8baaa0f1214420090db9e8d9341e89a207e3cd8f1bbe209b3.
+Only then exact heldcallback29770091 resumed; actualDONE/LSFsuccess authenticated.
+
+Actual independent Protenix10000-update long29770179 submitted, lastPEND.
+Boltz-only29770093 and Boltz+chemistry29770124 nowRUN. All3actual receipts and
+scheduler resource vectors matchgpul40s/1exclusiveL40S48GB/4CPU/8GiBslot/23h,
+with no inter-arm dependency. Fixed25neutraloccupiedslots,50%chain/uniform,
+LR.03,10000updates,oldchemistryschedule and detached/no-diffusion scope retained.
+This completes the authorized submission endpoint, not any10000-update result.
+
+Protenix ready evidence127files downloaded/safely extracted/byte+schema-verified
+under results/hpc/20261021-brd4-jq1-25/protenix-ready02/verification.json. Archive
+155160236bytesSHA0fe698c72575d74f9acdc3c53b3c9ce719a0a36213fc96e468b5ca6c73b91f91,
+manifest7b3f80654d5fd191d40e7419e9385b676bc304897a29054e7b2b004041e8489e.
+Its scheduler snapshot precedes asynchronous resume completion; finalcontrol
+proves actual callbackDONE and newsubmission rather than relabeling the oldPSUSP.
+Finalcontrol42files verified under results/hpc/20261021-brd4-jq1-25/final03/
+verification.json, archive44120bytesSHA
+ae01f2098727e435588a9e16a401459f71816c081e52fe689ea24adb06dbc344,
+manifestdecd27d60516955603019988894b6a50335a1fecbcea806ad0a0a7e3f4d0c0fb.
+All tests/model/scientific work allocatedHPC; local stdlib byte/XML/schema only.
+Relevant tooling/docs pushed, unrelated PDF/OneNote changes preserved. Existing
+submission monitor can now pause at its authorized endpoint.

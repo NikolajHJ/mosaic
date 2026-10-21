@@ -11,7 +11,7 @@
     "numerical_validation": "pending DTU HPC",
     "remote": "/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-protenix-02/source"
   },
-  "scope": "Protenix-only correction; source01 Boltz work remains independent and unchanged",
+  "scope": "Authorized endpoint achieved: all3actualindependent10000-update submissions after fullnative and sharedquota gates; no completed trajectory claimed",
   "historical_failed_native": "29769668",
   "correction": "Explicit independent candidate primal forwards; all native gates unchanged",
   "jobs": [
@@ -28,13 +28,21 @@
     {
       "job_id": "29770090",
       "phase": "validate-protenix",
-      "last_observed_status": "PEND"
+      "last_observed_status": "DONE"
     },
     {
       "job_id": "29770091",
       "phase": "after-ready-protenix",
-      "last_observed_status": "PSUSP",
-      "intentional_reversible_hold": "Review whole-three-arm quota across source01/source02 roots before bresume; native job unchanged"
+      "last_observed_status": "DONE",
+      "intentional_reversible_hold": "Review whole-three-arm quota across source01/source02 roots before bresume; native job unchanged",
+      "hold_released_after": "authenticated fullnative and whole-three-arm quota pass"
+    },
+    {
+      "job_id": "29770179",
+      "phase": "run-protenix",
+      "last_observed_status": "PEND",
+      "submitted": true,
+      "no_inter_arm_dependency": true
     }
   ],
   "failure_evidence": {
@@ -57,5 +65,72 @@
     "archive_sha256": "bfd3762940b5eb3a1522a3a65df7b885ad4da988444155db26ee761a6584a407",
     "manifest_sha256": "0aeb9a89311ebb66011a0d3a62f0b5ec548ea2260082275b4132bd466b2f5020",
     "verification": "results/hpc/20261021-brd4-jq1-25/cpu02/verification.json"
+  },
+  "native_readiness": {
+    "status": "passed",
+    "native_job": "29770090",
+    "assessment_sha256": "70fa96f9009a0e7316fff341e8c091bfd5339f9c9e2f4456f39d35b6a2e13cf8",
+    "native_proofs": 74,
+    "runtime_gate": {
+      "allocation_seconds": 82800,
+      "conservative_projected_seconds": 5557.2206746554,
+      "mean_update_seconds": [
+        0.25048137831036
+      ],
+      "scope": "empirical pilots, not a worst-case guarantee",
+      "status": "passed"
+    },
+    "storage_projection": {
+      "maximum_pilot_update_bytes": 18268,
+      "policy": "twice largest saved pilot update plus 1 GiB for metadata/context; fresh campaign-wide quota gate before submission",
+      "projected_bytes": 1439101824
+    },
+    "model_digest": "8d6926d5390fe682e193089f790ce53aa4011a6d5509ddb452a55db3d89b0ab2",
+    "context_digest": "b28dfad8e5ede565071c70a61695f6a38f5cb6bd591705e32979e59050ff5ce4"
+  },
+  "shared_quota": {
+    "status": "passed",
+    "required_bytes": 12726272768,
+    "available_bytes_conservative": 15820561335,
+    "reserve_bytes": 4294967296,
+    "assessment_sha256": "52585026fd21d3c8baaa0f1214420090db9e8d9341e89a207e3cd8f1bbe209b3",
+    "auditor_sha256": "f84e64b64869fe4979cdb5f0e1c31de2a97eb265f12f6f0f1ee169fdc8f529e1"
+  },
+  "readiness_evidence": {
+    "verification": "results/hpc/20261021-brd4-jq1-25/protenix-ready02/verification.json",
+    "files": 127,
+    "archive_bytes": 155160236,
+    "archive_sha256": "0fe698c72575d74f9acdc3c53b3c9ce719a0a36213fc96e468b5ca6c73b91f91",
+    "manifest_sha256": "7b3f80654d5fd191d40e7419e9385b676bc304897a29054e7b2b004041e8489e"
+  },
+  "final_three_arm_submissions": [
+    {
+      "arm": "protenix",
+      "job_id": "29770179",
+      "actual_status": "PEND",
+      "source_root": "/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-protenix-02/source",
+      "submission_sha256": "2690615c6a51fb7b62c4f43edca23d746bb133708299bc7dc59d7d5cc8d901ef"
+    },
+    {
+      "arm": "boltz2",
+      "job_id": "29770093",
+      "actual_status": "RUN",
+      "source_root": "/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-01/source",
+      "submission_sha256": "c5977b7c775e7104069f753a6dac5878164e7da397e876fa5a9d63c66a7bdcbb"
+    },
+    {
+      "arm": "boltz2_chemistry",
+      "job_id": "29770124",
+      "actual_status": "RUN",
+      "source_root": "/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-01/source",
+      "submission_sha256": "1041d5ba736f39a8fb713fc28b2977de2b44090c85c829492b943410a7877f67"
+    }
+  ],
+  "final_control_evidence": {
+    "verification": "results/hpc/20261021-brd4-jq1-25/final03/verification.json",
+    "files": 42,
+    "archive_bytes": 44120,
+    "archive_sha256": "ae01f2098727e435588a9e16a401459f71816c081e52fe689ea24adb06dbc344",
+    "manifest_sha256": "decd27d60516955603019988894b6a50335a1fecbcea806ad0a0a7e3f4d0c0fb"
   }
 }
