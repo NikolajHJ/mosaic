@@ -1,6 +1,6 @@
 {
   "tag": "20261021-brd4-jq1-25-fixed-storage-04",
-  "status": "Locally packaged immutable launcher-only candidate; AST and byte checks only. No remote staging, allocated CPU validation, observer or recovery jobs. Home capacity and current Protenix outcome remain unverified.",
+  "status": "Source04 CPU29778180 actualDONE/LSF85contractpasses; callback29778181 RUN performing whole-storage gate; observer29778184 actuallysubmitted/PEND. No replacement Boltz longjobs or fullhome/campaign storage pass established.",
   "utc": "2026-10-21T20:15:30.201716+00:00",
   "scope": "Launcher-only recovery of TWO unstarted Boltz arms; existing Protenix29777709/source03 untouched",
   "science_source": "/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-02/source",
@@ -22,10 +22,10 @@
   "home_capacity": "Not established:55s bounded metadata scan incomplete;240sfind/localSSH260stimeout produced no completed result. Newtool requires full600sbounded inventory plusfreshquotas, neverusespartialoutput.",
   "inventory_01": "Read-only Python metadata walk stopped at55seconds incomplete, no resource pass",
   "inventory_02": "Read-only find240second child timeout/localSSH260second timeout; no completed result. Inspect partial logs/remote exact Mosaic inventory processes before any further scan; do not blindly duplicate unknown active read-only scan. No GPU/scientific mutation occurred.",
-  "latest_connection": "22:15Paris bounded terminal-evidence connection deniedpassword255; no actual newPro outcome established. Do not infer completion from time.",
-  "cpu_submitted": false,
+  "latest_connection": "22:27:56Paris SSH restored; Pro29777709 actuallyRUN9655updates/9656states,no summary; oldBolrecordsagedoutbut preserved actualEXIT/LSFproofs remain authoritative.",
+  "cpu_submitted": true,
   "recovery_long_runs_submitted": false,
-  "next_steps": "After restored access, inspect exact current receipts and any remaining read-only inventory process before recovery. Authenticate source04 bytes, pass allocated CPU contracts and unchanged adoption pins, capture actual existing Protenix terminal evidence when available, and require fresh complete per-filesystem storage gates before at most two independent new Boltz submissions. Never retry source03 dispatch or modify its failed records.",
+  "next_steps": "Authenticate actual allocated CPU outcome/rawXML/source/adoption before any pass claim. Callback may queue guarded Pro observer and twoBoltz only after full fresh per-filesystem gate. Read exact ROOT04 receipts/markers before recovery, never duplicate. ExistingPro remains unchanged.",
   "source": {
     "local_archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261021-brd4-jq1-25-fixed-storage-04\\source03\\source.tar.gz",
     "archive_bytes": 25613,
@@ -47,32 +47,39 @@
       "examples/configs/brd4_jq1_25_fixed_boltz2_chemistry_10000.json": "dd6347a0756320bc79dea5fbbf7da9aeca8e8bf93dc38f30cd141fd240059049"
     },
     "remote_expected": "/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-storage-04/source",
-    "hpc_verification": "not_run",
+    "hpc_verification": "Authenticated12immutablefiles, archive length/SHA, all source03/science02 files; four bash syntax checks passed remotely; read-only release.",
     "numerical_validation": "not_run",
     "tracked_manifest": "scripts/hpc/receipts/20261021-brd4-jq1-25-fixed-storage-04/source-manifest.json",
-    "local_package": "source03"
+    "local_package": "source03",
+    "remote": "/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-storage-04/source"
   },
-  "observer_submitted": false,
+  "observer_submitted": true,
   "latest_verified_scientific_status": {
-    "observed_utc": "2026-10-21T18:39:34.359327+00:00",
+    "observed_utc": "2026-10-21T20:27:56.035658+00:00",
     "protenix": {
       "job": "29777709",
-      "scheduler": "RUN",
-      "committed_updates": 1575,
-      "committed_states": 1576,
-      "summary_present": false
+      "study_present": true,
+      "summary_present": false,
+      "assessment_present": false,
+      "states_committed_rows": 9656,
+      "states_last_index": 9655,
+      "states_unfinished_tail_bytes": 0,
+      "updates_committed_rows": 9655,
+      "updates_last_index": 9654,
+      "updates_unfinished_tail_bytes": 0,
+      "lsf_stdout_tail": "Authenticated 11 immutable source files\nAuthenticated 11 immutable source files\nAuthenticated 11 immutable source files\nAuthenticated 597 immutable source files\n"
     },
     "boltz2": {
       "job": "29777710",
-      "scheduler": "EXIT",
-      "scientific_execution_started": false,
-      "cause": "entry byte-quota guard"
+      "status": "previouslyauthenticatedEXIT; nowagedout",
+      "study_present": false,
+      "committed_updates": 0
     },
     "boltz2_chemistry": {
       "job": "29777711",
-      "scheduler": "EXIT",
-      "scientific_execution_started": false,
-      "cause": "entry byte-quota guard"
+      "status": "previouslyauthenticatedEXIT; nowagedout",
+      "study_present": false,
+      "committed_updates": 0
     }
   },
   "superseded_local_packages": [
@@ -83,5 +90,179 @@
   "local_static_verification": {
     "path": "scripts/hpc/receipts/20261021-brd4-jq1-25-fixed-storage-04/local-static-verification.json",
     "sha256": "878eff11054dda59ed65d87c275adf7d2bf46fe6cf55a39ca7e40db59ed16b29"
+  },
+  "initial_submissions": {
+    "cpu": {
+      "utc": "2026-10-21T20:29:42.843685+00:00",
+      "phase": "cpu",
+      "args": [
+        "bsub",
+        "-q",
+        "hpc",
+        "-n",
+        "2",
+        "-R",
+        "span[hosts=1]",
+        "-R",
+        "rusage[mem=4GB]",
+        "-W",
+        "00:20",
+        "-J",
+        "mosaic-fixed-storage04-cpu",
+        "-oo",
+        "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-storage-04/cpu/stdout.%J.log",
+        "-eo",
+        "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-storage-04/cpu/stderr.%J.log",
+        "bash",
+        "-l",
+        "/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-storage-04/source/scripts/hpc/fixed25_recover_cpu.lsf",
+        "/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-storage-04/source",
+        "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-storage-04",
+        "75a76dacf8de25f4ebd2d3b3fe114b1af6092064a01edf141650295300670ab3"
+      ],
+      "outcome": "submitted",
+      "returncode": 0,
+      "stdout": "Job <29778180> is submitted to queue <hpc>.\n",
+      "stderr": "",
+      "job_id": "29778180",
+      "actual_scheduler_at_submission": "\nJob <29778180>, Job Name <mosaic-fixed-storage04-cpu>, User <s234818>, Project \n                          <default>, Status <PEND>, Queue <hpc>, Command <bash \n                          -l /work3/s234818/mosaic/releases/20261021-brd4-jq1-2\n                          5-fixed-storage-04/source/scripts/hpc/fixed25_recover\n                          _cpu.lsf /work3/s234818/mosaic/releases/20261021-brd4\n                          -jq1-25-fixed-storage-04/source /work3/s234818/mosaic\n                          /runs/20261021-brd4-jq1-25-fixed-storage-04 75a76dacf\n                          8de25f4ebd2d3b3fe114b1af6092064a01edf141650295300670a\n                          b3>, Esub <dcc>\nWed Oct 21 22:29:43 2026: Submitted from host <hpclogin1>, CWD <$HOME>, Output \n                          File (overwrite) </work3/s234818/mosaic/runs/20261021\n                          -brd4-jq1-25-fixed-storage-04/cpu/stdout.29778180.log\n                          >, Error File (overwrite) </work3/s234818/mosaic/runs\n                          /20261021-brd4-jq1-25-fixed-storage-04/cpu/stderr.297\n                          78180.log>, 2 Task(s), Requested Resources <{select[s\n                          hortparallel_] rusage[mem=4096.00] span[hosts=1]} || \n                          {select[!shortparallel_] rusage[mem=4096.00] span[hos\n                          ts=1]}>;\n PENDING REASONS:\n New job is waiting for scheduling;\n\n RUNLIMIT                \n 20.0 min of hpclogin1\n\n MEMLIMIT\n      4 G \n\n PENDING TIME DETAILS:\n Eligible pending time (seconds):\t0\n Ineligible pending time (seconds):\t0\n\n SCHEDULING PARAMETERS:\n           r15s   r1m  r15m   ut      pg    io   ls    it    tmp    swp    mem\n loadSched   -     -     -     -       -     -    -     -     -      -      -  \n loadStop    -     -     -     -       -     -    -     -     -      -      -  \n\n RESOURCE REQUIREMENT DETAILS:\n Job-level: {select[shortparallel_] rusage[mem=4096.00] span[hosts=1]} || {sele\n                          ct[!shortparallel_] rusage[mem=4096.00] span[hosts=1]\n                          }\n App-level: -\n Queue-level: same[type:model] affinity[core] cu[type=enclosure:maxcus=1]\n Combined: -\n Effective: -\n\n"
+    },
+    "callback": {
+      "utc": "2026-10-21T20:29:43.226539+00:00",
+      "phase": "after-cpu",
+      "args": [
+        "bsub",
+        "-q",
+        "hpc",
+        "-n",
+        "1",
+        "-R",
+        "span[hosts=1]",
+        "-R",
+        "rusage[mem=2GB]",
+        "-W",
+        "00:20",
+        "-J",
+        "mosaic-fixed-storage04-after-cpu",
+        "-oo",
+        "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-storage-04/after-cpu/stdout.%J.log",
+        "-eo",
+        "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-storage-04/after-cpu/stderr.%J.log",
+        "-w",
+        "ended(29778180)",
+        "bash",
+        "-l",
+        "/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-storage-04/source/scripts/hpc/fixed25_recover_after_cpu.lsf",
+        "/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-storage-04/source",
+        "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-storage-04",
+        "75a76dacf8de25f4ebd2d3b3fe114b1af6092064a01edf141650295300670ab3",
+        "29778180"
+      ],
+      "outcome": "submitted",
+      "returncode": 0,
+      "stdout": "Job <29778181> is submitted to queue <hpc>.\n",
+      "stderr": "",
+      "job_id": "29778181",
+      "actual_scheduler_at_submission": "\nJob <29778181>, Job Name <mosaic-fixed-storage04-after-cpu>, User <s234818>, Pr\n                          oject <default>, Status <PEND>, Queue <hpc>, Command \n                          <bash -l /work3/s234818/mosaic/releases/20261021-brd4\n                          -jq1-25-fixed-storage-04/source/scripts/hpc/fixed25_r\n                          ecover_after_cpu.lsf /work3/s234818/mosaic/releases/2\n                          0261021-brd4-jq1-25-fixed-storage-04/source /work3/s2\n                          34818/mosaic/runs/20261021-brd4-jq1-25-fixed-storage-\n                          04 75a76dacf8de25f4ebd2d3b3fe114b1af6092064a01edf1416\n                          50295300670ab3 29778180>, Esub <dcc>\nWed Oct 21 22:29:43 2026: Submitted from host <hpclogin1>, CWD <$HOME>, Output \n                          File (overwrite) </work3/s234818/mosaic/runs/20261021\n                          -brd4-jq1-25-fixed-storage-04/after-cpu/stdout.297781\n                          81.log>, Error File (overwrite) </work3/s234818/mosai\n                          c/runs/20261021-brd4-jq1-25-fixed-storage-04/after-cp\n                          u/stderr.29778181.log>, Requested Resources <{select[\n                          serial_] rusage[mem=2048.00] span[hosts=1]} || {selec\n                          t[!serial_] rusage[mem=2048.00] span[hosts=1]}>, Depe\n                          ndency Condition <ended(29778180)>;\n PENDING REASONS:\n New job is waiting for scheduling;\n\n RUNLIMIT                \n 20.0 min of hpclogin1\n\n MEMLIMIT\n      2 G \n\n PENDING TIME DETAILS:\n Eligible pending time (seconds):\t0\n Ineligible pending time (seconds):\t0\n\n SCHEDULING PARAMETERS:\n           r15s   r1m  r15m   ut      pg    io   ls    it    tmp    swp    mem\n loadSched   -     -     -     -       -     -    -     -     -      -      -  \n loadStop    -     -     -     -       -     -    -     -     -      -      -  \n\n RESOURCE REQUIREMENT DETAILS:\n Job-level: {select[serial_] rusage[mem=2048.00] span[hosts=1]} || {select[!ser\n                          ial_] rusage[mem=2048.00] span[hosts=1]}\n App-level: -\n Queue-level: same[type:model] affinity[core] cu[type=enclosure:maxcus=1]\n Combined: -\n Effective: -\n\n"
+    },
+    "tool_manifest_sha256": "75a76dacf8de25f4ebd2d3b3fe114b1af6092064a01edf141650295300670ab3",
+    "science_manifest_sha256": "1e3a8a21e2fa68e24d1c9229238999c42a4a9b44bcc78344e73e188c87d1ee64",
+    "scope": "Actual launcher-only CPU submissions; no new long-run ID is inferred"
+  },
+  "launch_preflight": {
+    "status": "passed",
+    "observed_utc": "2026-10-21T20:29:38.769205+00:00",
+    "phase": "CPUallowanceonly, notwholecampaign/home",
+    "work3_raw_used_GiB": "82.87",
+    "available_bytes_conservative": 17100677313,
+    "required_bytes": 5368709120,
+    "available_files_lower": 19674822,
+    "scope": "Freshmetadataonly, notreservation; no additional cleanup",
+    "prior_inventory_processes": "No exact old Mosaic find inventory process found before CPU submission"
+  },
+  "cpu_outcome": {
+    "observed_utc": "2026-10-21T20:30:44.100284+00:00",
+    "producer_job_id": "29778180",
+    "actual_scheduler": "DONE",
+    "actual_LSF": "success",
+    "tests": 85,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "cpu_certificate_sha256": "b9f7e4a35289b5b6e7ab240b71fe119ed54ca91ef322736152195f83071408b1",
+    "assessment_sha256": "b80a80c64213765b25b09b385a3398e28d360b75841c838bacbe3bc600d54443",
+    "raw_XML_sha256": "c702cfd5ab587bfcda1979c14bc2c4330d19010a69ec3e112f5e6111bc816202",
+    "raw_final_scheduler_sha256": "746e41ddafac26edb8be84d16d43069e9267ab80ae6f25c670a5f4965c308bf9",
+    "CPU_stdout_sha256": "a4157229dd3dee486c405ec3ea839562ba699ee56552142a843d75c425914c12",
+    "independent_local_schema_verification": "passed"
+  },
+  "adoption_sha256": "58b6b9fc2c55d3f8ebd144f474ab0928145597f9e34ffaa6fa33a68dc08d1cfd",
+  "observer_submission": {
+    "phase": "observe-pro",
+    "producer_job": "29777709",
+    "tool_manifest_sha256": "75a76dacf8de25f4ebd2d3b3fe114b1af6092064a01edf141650295300670ab3",
+    "cpu_certificate_sha256": "b9f7e4a35289b5b6e7ab240b71fe119ed54ca91ef322736152195f83071408b1",
+    "adoption_sha256": "58b6b9fc2c55d3f8ebd144f474ab0928145597f9e34ffaa6fa33a68dc08d1cfd",
+    "utc": "2026-10-21T20:30:17.337035+00:00",
+    "args": [
+      "bsub",
+      "-q",
+      "hpc",
+      "-n",
+      "1",
+      "-R",
+      "span[hosts=1]",
+      "-R",
+      "rusage[mem=2GB]",
+      "-W",
+      "00:30",
+      "-J",
+      "mosaic-jq1-fixed-observe-pro",
+      "-oo",
+      "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-storage-04/pro-observer/stdout.%J.log",
+      "-eo",
+      "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-storage-04/pro-observer/stderr.%J.log",
+      "-w",
+      "ended(29777709)",
+      "bash",
+      "-l",
+      "/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-storage-04/source/scripts/hpc/fixed25_recover_observe_pro.lsf",
+      "/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-storage-04/source",
+      "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-storage-04",
+      "75a76dacf8de25f4ebd2d3b3fe114b1af6092064a01edf141650295300670ab3",
+      "b9f7e4a35289b5b6e7ab240b71fe119ed54ca91ef322736152195f83071408b1",
+      "58b6b9fc2c55d3f8ebd144f474ab0928145597f9e34ffaa6fa33a68dc08d1cfd"
+    ],
+    "outcome": "submitted",
+    "stdout": "Job <29778184> is submitted to queue <hpc>.\n",
+    "stderr": "",
+    "returncode": 0,
+    "job_id": "29778184"
+  },
+  "callback_status": {
+    "job": "29778181",
+    "actual_status": "RUN",
+    "observed_utc": "2026-10-21T20:30:44.100284+00:00",
+    "phase": "whole-campaign storage inventory/gate",
+    "no_long_submission_established": true
+  },
+  "evidence": {
+    "archive": "results/hpc/20261021-brd4-jq1-25-fixed-storage-04/metadata-evidence-01/metadata-evidence-01.tar.gz",
+    "bytes": 47750,
+    "sha256": "c17196252f310101fb79fa17b1e72a40188149673f2d23d7770635a615656f98",
+    "verified_files": 27,
+    "scope": "All27files byte/safearchive/XML/schema/proofchain verified, no numerical computation",
+    "independent_verification": {
+      "path": "results/hpc/20261021-brd4-jq1-25-fixed-storage-04/verification.json",
+      "sha256": "dff06db043a51285a90be3d363acf796f51cc8b216d12cc130a5902f31b2919b"
+    }
+  },
+  "current_scheduler_status": {
+    "observed_utc": "2026-10-21T20:33:09.283472+00:00",
+    "protenix": "RUN",
+    "CPU": "DONE",
+    "callback": "RUN",
+    "observer": "PEND",
+    "replacement_Boltz_long_IDs": []
   }
 }

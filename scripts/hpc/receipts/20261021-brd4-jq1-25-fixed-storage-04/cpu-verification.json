@@ -1,0 +1,125 @@
+{
+  "version": "fixed25-storage04-independent-cpu-metadata-verification-v1",
+  "status": "passed",
+  "verified_utc": "2026-10-21T20:33:45.758144+00:00",
+  "scope": "Independent local standard-library byte/hash/tar/JSON/XML/schema verification of saved allocated-HPC results only; no local tests, imports of scientific modules, arrays, inference or remote query.",
+  "archive": {
+    "archive": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-storage-04/metadata-evidence-01.tar.gz",
+    "bytes": 47750,
+    "sha256": "c17196252f310101fb79fa17b1e72a40188149673f2d23d7770635a615656f98",
+    "files": 27,
+    "manifest_sha256": "674bba339e3c0b2a3b827bbd2ed7012b3a642531854fa1f86c9983170214f82f"
+  },
+  "verified_metadata_files": 27,
+  "verified_sources": {
+    "source04": {
+      "manifest_sha256": "75a76dacf8de25f4ebd2d3b3fe114b1af6092064a01edf141650295300670ab3",
+      "archive_sha256": "0ae3e8359f5ec7e6b25684746fca90aecc080c1fb2e86c59b71822981fd784a0",
+      "verified_files": 12
+    },
+    "source03": {
+      "manifest_sha256": "9ee7bf1d6bf412acdc37fc83415476dbefdf45db89533571d4a646ee16f33772",
+      "archive_sha256": "0473d0908ff6139bc4cbaf98421eab96a33db1f5614db78638500d0bb9684b8e",
+      "verified_files": 11
+    },
+    "science02": {
+      "manifest_sha256": "1e3a8a21e2fa68e24d1c9229238999c42a4a9b44bcc78344e73e188c87d1ee64",
+      "archive_sha256": "c024ac03ddcf6091e35f1a666117194cd70b05024ee4563c6d8c965d75ed5798",
+      "verified_files": 597
+    }
+  },
+  "cpu": {
+    "job": "29778180",
+    "status": "passed",
+    "raw_testcases": 85,
+    "modules": {
+      "tests.test_fixed25_recover_storage": 37,
+      "tests.test_fixed25_recover_ops": 48
+    },
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "runtime_seconds_from_raw_log": "3.69",
+    "suite": "fixed25-two-arm-recovery-contract-v1",
+    "actual_scheduler": {
+      "job": "29778180",
+      "status": "DONE",
+      "queue": "hpc",
+      "scheduler_sha256": "746e41ddafac26edb8be84d16d43069e9267ab80ae6f25c670a5f4965c308bf9",
+      "stdout_sha256": "a4157229dd3dee486c405ec3ea839562ba699ee56552142a843d75c425914c12"
+    },
+    "certificate_sha256": "b9f7e4a35289b5b6e7ab240b71fe119ed54ca91ef322736152195f83071408b1",
+    "assessment_sha256": "b80a80c64213765b25b09b385a3398e28d360b75841c838bacbe3bc600d54443",
+    "raw_xml_sha256": "c702cfd5ab587bfcda1979c14bc2c4330d19010a69ec3e112f5e6111bc816202",
+    "resources": {
+      "queue": "hpc",
+      "cpu_slots": 2,
+      "memory_per_slot": "4GB",
+      "walltime": "00:20"
+    }
+  },
+  "adoption": {
+    "sha256": "58b6b9fc2c55d3f8ebd144f474ab0928145597f9e34ffaa6fa33a68dc08d1cfd",
+    "unchanged_original_envelope": true,
+    "original_leaf_proofs_rehashed": 18,
+    "original_native_evidence_files_rehashed": 294,
+    "original_native_assessment_proofs_rehashed": {
+      "protenix": 74,
+      "boltz2": 52,
+      "boltz2_chemistry": 128
+    },
+    "original_source03_evidence_files_rehashed": 33,
+    "original_source03_raw_cpu_testcases": 65,
+    "original_source03_certificate_sha256": "4b2b9f59d22719771528c9439dfbd338fec3a02922df08190b52bb22b0875bd4",
+    "original_source03_adoption_sha256": "7592facd2832058fa81055c72aaa64f06213bb369c68cb39a0d693b1b5496a60",
+    "placement": {
+      "protenix": "work3",
+      "boltz2": "work3",
+      "boltz2_chemistry": "zhome"
+    },
+    "outputs": {
+      "boltz2": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-storage-04/run-boltz2",
+      "boltz2_chemistry": "/zhome/95/e/206121/mosaic-runs/20261021-brd4-jq1-25-fixed-storage-04/run-boltz2_chemistry"
+    }
+  },
+  "failed_original_admissions": {
+    "boltz2": {
+      "job": "29777710",
+      "status": "EXIT",
+      "queue": "gpul40s",
+      "scheduler_sha256": "75b32202c77921b8daa25b146a3476cf1c63bb615c0bd77e316b63eeaee91813",
+      "stdout_sha256": "70c37fa20439f79a7e59d1438a50c8c95cf2b41c0fece85d3c46015cba14e40b"
+    },
+    "boltz2_chemistry": {
+      "job": "29777711",
+      "status": "EXIT",
+      "queue": "gpul40s",
+      "scheduler_sha256": "4ecb81967b07e16c6f6dea6c958cffa602d7838c8ec46e1b68399b44f942c18d",
+      "stdout_sha256": "f07eb0a06b400caa496aa7f11f18ffd7e1d5cae4facad986e4f60cac42543958"
+    }
+  },
+  "existing_protenix": {
+    "job": "29777709",
+    "unchanged_submission_sha256": "088d768ef618b66c6e38916c76cab4d1da44a690cfba34976dfa27513f3e634d",
+    "unchanged_entry_gate_sha256": "b0f7009c68a0e49d203f34fa82f9636f4a85e7cac1e7a60c84ee747e586ae75d",
+    "original_driver_invocation_sha256": "02bf446724f913541af50b4b331a4f0509c5e8c2be9116b74a684210ba4ce4c7",
+    "driver_source": "/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-02/source",
+    "exact_original_command_verified": true,
+    "current_status_or_completion_not_inferred": true
+  },
+  "observer": {
+    "job": "29778184",
+    "outcome": "submitted",
+    "queue": "hpc",
+    "dependency": "ended(29777709)",
+    "submission_sha256": "35259698c91585587296a92ff87d612b14769feccc22faeb5849f2f3f0259174",
+    "scope": "Saved metadata observer submission only; no execution or producer completion is inferred."
+  },
+  "limitations": [
+    "CPU preflight and CPU entry gates cover work3 CPU allowance only, not the full two-filesystem long-run campaign.",
+    "No complete home inventory or full recovery campaign storage pass is established by this compact CPU evidence set.",
+    "No recovery long-run IDs, scientific execution, Protenix completion or final report are inferred.",
+    "Remote absence of old scientific outputs was authenticated by the allocated adoption capture; compact local evidence does not independently enumerate remote directories.",
+    "Original scientific arrays were rehashed as opaque bytes only; prior allocated scientific checks remain authoritative."
+  ]
+}

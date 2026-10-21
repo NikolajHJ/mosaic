@@ -1,0 +1,27 @@
+{
+  "utc": "2026-10-21T20:29:35.018895+00:00",
+  "args": [
+    "ssh",
+    "-T",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=15",
+    "-o",
+    "ConnectionAttempts=1",
+    "-o",
+    "ServerAliveInterval=10",
+    "-o",
+    "ServerAliveCountMax=1",
+    "dtu-hpc",
+    "bash -l -s"
+  ],
+  "bootstrap_script_sha256": "5c45cee93e13b4861a4ff422758f797780c1966d3f46d81005f1c466d7ee3bae",
+  "full_remote_input_sha256": "a4aa70531e876709f13b6a40ac50c12857aacbcbb3865d59bd2b6ce12e42ce4b",
+  "archive_sha256": "0ae3e8359f5ec7e6b25684746fca90aecc080c1fb2e86c59b71822981fd784a0",
+  "outcome": "returned",
+  "returncode": 0,
+  "timeout": false,
+  "stdout_sha256": "2cc28298127e8f964ebb471fbfe4a2a5fbfc5a03373738d4b686f7b1151038d1",
+  "stderr_sha256": "10ecb23506d1334ee56c708487ed4e0660473929b2ab6eef0838e804082ce706"
+}

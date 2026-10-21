@@ -360,3 +360,61 @@ later Protenix outcome was observed. Its latest verified state remains RUN at
 1,575 updates / 1,576 states at 20:39:34 Paris; elapsed time is not completion.
 All failed attempts and logs are preserved. No further storage deletion,
 scientific execution, local numerical test or report publication occurred.
+
+### 21 October, 22:29 Paris - access restored; source04 CPU validation submitted
+
+The actual read-only query at 22:27:56 Paris found **Protenix 29777709 RUN**,
+with **9,656 contiguous committed states / 9,655 updates**, no unfinished JSONL
+tail and no summary. It remains unchanged and is not yet complete. The two old
+Boltz records have aged out of live scheduler history; their authenticated EXIT
+and LSF failure proofs remain preserved, with no study or model execution.
+
+Source04 package source03 was uploaded with exact length/SHA, authenticated for
+all **12 files** alongside original source03/science02, checked for shell syntax,
+and made read-only. The fresh CPU-only work3 preflight passed: **17,100,677,313
+available bytes versus 5,368,709,120 required**, with 19,674,822-file quota
+headroom. Raw work3 usage was 82.87 / 100 GiB. This is an updated quota snapshot,
+not a reservation or additional cleanup; the complete home/campaign storage gate
+is still required. The exact old read-only inventory process inspection found
+no active matching Mosaic `find` process before submission.
+
+Actual CPU **29778180** and callback **29778181** were submitted at 22:29:43
+Paris and initially observed PEND. CPU requests two hpc slots, 4 GiB per slot,
+20 minutes; callback requests one slot, 2 GiB, 20 minutes and only
+`ended(29778180)`. Exact actual arguments, IDs and scheduler receipts are in the
+source04 campaign and `initial-submissions.json`. Submission does not establish
+an allocated CPU pass, a home storage pass, an observer or new Boltz long jobs.
+All scientific identities and existing Protenix remain unchanged.
+
+### 21 October, 22:30:44 Paris - allocated recovery contracts passed; completion observer queued
+
+CPU **29778180** actually completed DONE/LSF success. The saved raw XML contains
+**85 cases**, zero failures, errors or skips across both recovery modules. The
+immutable original-science adoption was captured. Callback **29778181** is RUN
+and observer **29778184** is actually submitted/PEND with only
+`ended(29777709)`; it observes saved Protenix terminal metadata and does not run
+or modify Protenix. No replacement Boltz GPU IDs or complete home/campaign
+storage pass are established. The current controller is performing the bounded
+complete inventory and fresh per-filesystem budget checks.
+
+A 27-file metadata/CPU proof archive was downloaded and safely byte-verified:
+47,750 bytes, SHA-256
+`c17196252f310101fb79fa17b1e72a40188149673f2d23d7770635a615656f98`.
+Independent local XML/schema verification is underway. Protenix remains RUN in
+this actual scheduler snapshot; no terminal scientific completion is inferred.
+
+Independent standard-library byte/XML/schema verification is complete. All
+27 metadata files and source archives (12 / 11 / 597 files) matched; raw XML
+confirms **37 storage + 48 controller = 85 passes**, no failures, errors or skips,
+with raw test-log runtime 3.69 seconds. CPU 29778180 actual DONE/LSF success,
+the unchanged original adoption/native proof chain, both old failed Boltz
+admissions and Protenix's exact original invocation were authenticated. Receipt:
+`results/hpc/20261021-brd4-jq1-25-fixed-storage-04/verification.json`, SHA-256
+`dff06db043a51285a90be3d363acf796f51cc8b216d12cc130a5902f31b2919b`.
+CPU certificate SHA-256
+`b9f7e4a35289b5b6e7ab240b71fe119ed54ca91ef322736152195f83071408b1`;
+adoption SHA-256
+`58b6b9fc2c55d3f8ebd144f474ab0928145597f9e34ffaa6fa33a68dc08d1cfd`.
+This is existing-proof integrity and allocated launcher-contract evidence; it
+does not establish a complete storage pass, new Boltz long jobs or Protenix
+completion. At 22:33:09 Paris, callback remained RUN and observer PEND.
