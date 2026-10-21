@@ -4977,3 +4977,44 @@ Existing heartbeat updated to ten-minute checks and per-arm1500,2500,...9500,100
 milestone publication; unchanged polls stay quiet. The complete report still
 requires all native/full-budget/terminal/frozen gates and10001states per arm.
 See docs/brd4_jq1_25_report.md and source03 campaign receipt for exact paths/IDs.
+
+
+### 21 October 2026 — Report timeline correction requested
+
+User could not scrub through progress. Edition0001 held only2–3 saved molecule
+snapshots per arm. New report-only source04 includes every committed state in
+progress editions using the existing lossless bounded chunk writer, with exact
+update input/previous-next controls and playback pause on manual scrubbing.
+No new source/pass/job follows from preparation. Preserve edition0001 and all
+native settings/jobs. At13:29:12Paris all3nativesRUN; states3350/1201/1121.
+Required allocated report tests and browser drag QA precede promotion. Full
+final completion/native/source/identity gates remain hard requirements.
+
+
+### 21 October 2026 — Timeline fix verified and published
+
+Source04manifest5c3f123748f573dcb5e3d4532659441fc6f5666a1768461a459c94cf208ba31a
+(518files;archive39518412bytes SHAd1f13f8c440948cb003e3185d3a8daaf3b957985941799d2248b2bce70e57601)
+passed allocatedCPU29770704/certificate29770705:71fixtures, no failure/error/skip,
+36.83s. Current collectors29770706/07/08 and finalreport29770709 preserve native
+completion gates; old source03 report-only predecessors retired while verified
+PEND after newCPU/certificatepass, actualEXITreceipts retained. Native jobs
+29770179/29770093/29770124 remain unchanged.
+
+Interim29770710 actualDONE/LSFsuccess/passed assessment; captured13:34:09Paris,
+updates3634/1227/1148, every saved frame retained (3635/1228/1149;6012total).
+Archive24677266bytes SHAaf2ae8c68c44329211bbf1ed676920cfe3dfa885103155f5690509f9d4a15831;
+all154files safe-extracted and byte-verified locally. CPUassessmentSHA
+ a2654b958374b19cb9f42113032ad3a3a4776c38a88fb387d6409da37ce872d0;
+reportassessmentSHAf33a28fdfc86966262791fc7b5be4803c38ab2dddf223be87ee8fb1f47dc3d33.
+Exact per-frame metadata contiguity/chunk lengths, identities, rawCPUXML/proofs
+and final scheduler/LSF authenticated. Local work was staticAST/JSsyntax,
+stdlibbyte/XML/schema/HTTP/publication and actual browser presentationQA only.
+No local scientific evaluation/model/chemistry; tests/rendering allocatedHPC.
+
+Published edition0002 at http://127.0.0.1:8776/report.html; oldedition0001intact.
+Actual mouse drags selected1860then658, numeric1500 worked, Boltz600 and chemistry
+777→778 worked, and manualscrub paused playback at500. Saved scalars updated;
+hard molecule still a carbonchain at checked points. Screenshot andverification
+are under results/hpc/20261021-brd4-jq1-25-report/edition-0002/. Monitor continues
+same milestone publication cadence with every committed frame in each edition.

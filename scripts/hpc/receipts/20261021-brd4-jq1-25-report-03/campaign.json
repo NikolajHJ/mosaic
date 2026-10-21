@@ -76,5 +76,8 @@
   ],
   "stable_url": "http://127.0.0.1:8776/report.html",
   "monitor_interval_minutes": 10,
-  "obsolete_report_jobs": "verified PEND before bkill, actual EXIT authenticated; see preserved cancellation receipts"
+  "obsolete_report_jobs": "verified PEND before bkill, actual EXIT authenticated; see preserved cancellation receipts",
+  "current_final_pipeline": "Superseded by source04 after user-reported timeline issue. Source03 CPU70pass and sparse edition0001 remain valid historical evidence.",
+  "obsolete_pending_report_jobs": "29770616/29770617/29770618/29770619 intentionally retired while verified PEND after source04 CPU71pass; actual EXIT receipts preserved in source04 campaign",
+  "replacement_campaign": "scripts/hpc/receipts/20261021-brd4-jq1-25-report-04/campaign.json"
 }

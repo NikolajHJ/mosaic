@@ -1,6 +1,7 @@
 """Allocated fixtures for append-only prefixes and sparse interim presentation."""
 
 import json
+import copy
 import os
 from pathlib import Path
 import sys
@@ -58,22 +59,36 @@ def test_milestones_keep_exact_requested_steps_and_latest_without_duplicates():
     assert interim.milestone(1499) == 0 and interim.milestone(2501) == 2500
 
 
-def test_sparse_assets_keep_exact_float_bytes_raw_graph_and_every_scalar(saved, tmp_path):
+def test_progress_assets_keep_exact_float_bytes_raw_graph_and_every_scalar(saved, tmp_path):
     root, case, x, e = saved
-    chunks, curves, selected, counts = interim.sparse_assets(root, case, tmp_path / 'sparse', 'contact')
-    assert selected == [0, 1] and len(curves) == 2 and counts['applied'] == 1
-    array = np.frombuffer((tmp_path / 'sparse/frames.bin').read_bytes(), dtype='<f4').reshape(2, 1650)
+    chunks, curves, counts = interim.progress_assets(root, case, tmp_path / 'progress', 'contact')
+    assert len(curves) == 2 and counts['applied'] == 1
+    array = np.frombuffer((tmp_path / 'progress/frames-00000.bin').read_bytes(), dtype='<f4').reshape(2, 1650)
     np.testing.assert_array_equal(array[1, :150], x.ravel())
     np.testing.assert_array_equal(array[1, 150:], e.ravel())
-    assert contract.read(tmp_path / 'sparse/frames.json')[1]['readout']['disconnected']
+    assert contract.read(tmp_path / 'progress/frames-00000.json')[1]['readout']['disconnected']
     studies = [{'arm': 'fixture', 'job_id': 'allocated-fixture', 'label': 'Fixture', 'color': '#246bb2',
-                'metric': 'contact', 'chunks': chunks, 'curves': curves, 'snapshot_steps': selected,
+                'metric': 'contact', 'chunks': chunks, 'curves': curves,
                 'states': 2, 'latest_update': 1}]
-    interim.assemble(studies, tmp_path / 'sparse', interim=True)
-    receipt = contract.read(tmp_path / 'sparse/report_receipt.json')
+    interim.assemble(studies, tmp_path / 'progress', interim=True)
+    receipt = contract.read(tmp_path / 'progress/report_receipt.json')
     assert receipt['complete'] is False and receipt['included_updates'] == [1]
-    assert receipt['snapshot_steps'] == [[0, 1]]
-    assert 'IN PROGRESS' in (tmp_path / 'sparse/report.html').read_text(encoding='utf-8')
+    assert receipt['snapshot_steps'] == [None]
+    html = (tmp_path / 'progress/report.html').read_text(encoding='utf-8')
+    assert 'IN PROGRESS' in html and 'id="stepInput"' in html
+
+
+def test_progress_timeline_retains_intermediate_updates_and_chunk_boundaries(saved, tmp_path):
+    root, case, _, _ = saved
+    # Repeated fixture bytes isolate frame indexing rather than model behavior.
+    for step in range(2, 105):
+        case['states'].append(copy.deepcopy(case['states'][1]) | {'step': step})
+        case['updates'].append(copy.deepcopy(case['updates'][0]) | {'step': step - 1})
+    chunks, curves, counts = interim.progress_assets(root, case, tmp_path / 'progress', 'contact')
+    assert [(c['start'], c['count']) for c in chunks] == [(0, 100), (100, 5)]
+    rows = [r for c in chunks for r in contract.read(tmp_path / 'progress' / c['metadata'])]
+    assert [r['step'] for r in rows] == list(range(105))
+    assert len(curves) == 105 and counts['applied'] == 104
 
 
 @pytest.mark.parametrize('status', ['RUN', 'PEND', 'DONE'])

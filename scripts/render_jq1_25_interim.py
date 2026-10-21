@@ -1,7 +1,7 @@
 """Allocated, saved-only progress editions; never certify an unfinished study.
 
-Only complete JSONL lines form a captured prefix. Sparse milestone probability
-frames retain their original steps; every committed scalar curve point remains.
+Only complete JSONL lines form a captured prefix. Every saved probability frame
+in that prefix is retained so the timeline can scrub through individual updates.
 The separate final renderer still requires all native terminal gates and frames.
 """
 
@@ -16,7 +16,7 @@ import subprocess
 import time
 
 from jq1_report_contract import ARMS, HOME, POCKET, RELEASES, read, require, scheduler_outcome, sha, study_path
-from render_jq1_25_report import assemble, frame_arrays
+from render_jq1_25_report import assemble, write_frames
 
 MILESTONES = tuple(range(1500, 10000, 1000)) + (10000,)
 
@@ -123,35 +123,15 @@ def authenticate_prefix(arm, status):
     return captured, proof
 
 
-def sparse_assets(root, case, destination, metric):
-    """Reuse exact snapshot checks, without relaxing final contiguous-frame rules."""
-    destination.mkdir(parents=True, exist_ok=False)
+def progress_assets(root, case, destination, metric):
+    """Full committed prefix, with the same exact chunk checks as final reports."""
     latest = len(case['states']) - 1
-    selected, rows, binary, curves = selected_steps(latest), [], bytearray(), []
-    for state in case['states']:
-        step = state['step']
-        update = case['updates'][step - 1] if step else None
-        components, chemical = state['components'], state['components'].get('chemistry_loss')
-        curves.append({'step': step, 'native': state[metric + '_loss'], 'binder': components.get('affinity_probability_binary'),
-            'repair': chemical, 'weighted_repair': None if chemical is None else state['repair_weight'] * chemical,
-            'weight': state['repair_weight'], 'fixed_delta': None if update is None else update['fixed_after'] - update['fixed_before'],
-            'fallback': False if update is None else update['fallback_used'],
-            'sanitized_connected': bool(state['readout']['sanitized'] and not state['readout']['disconnected'])})
-        if step in selected:
-            binary.extend(frame_arrays(root, state, metric))
-            row = dict(state)
-            row['readout'] = {k: v for k, v in state['readout'].items() if k != 'pairs'}
-            row['previous_update'] = None if update is None else {k: update[k] for k in ('fixed_before', 'fixed_after', 'fallback_used', 'no_op', 'accepted_step_size')}
-            rows.append(row)
-    (destination / 'frames.bin').write_bytes(binary)
-    (destination / 'frames.json').write_text(json.dumps(rows, separators=(',', ':'), allow_nan=False), encoding='utf-8')
-    (destination / 'curves.json').write_text(json.dumps(curves, separators=(',', ':'), allow_nan=False), encoding='utf-8')
-    chunk = {'start': 0, 'count': len(rows), 'binary': 'frames.bin', 'binary_sha256': sha(destination / 'frames.bin'),
-             'metadata': 'frames.json', 'metadata_sha256': sha(destination / 'frames.json')}
+    require(len(case['updates']) == latest, 'Committed update/state prefix differs')
+    chunks, curves = write_frames(root, case, destination, metric)
     counts = {'applied': latest, 'forced_fallback': sum(bool(u['fallback_used']) for u in case['updates']),
               'no_op': sum(bool(u['no_op']) for u in case['updates'])}
     counts['strict_improving'] = latest - counts['forced_fallback']
-    return [chunk], curves, selected, counts
+    return chunks, curves, counts
 
 
 def main():
@@ -171,12 +151,13 @@ def main():
         status = status_or_completion(raw, arm, args.completions)
         case, proof = authenticate_prefix(arm, status)
         entry = {'arm': arm, 'job_id': pin['job'], 'label': pin['label'], 'color': pin['color'], 'metric': pin['metric'],
-            'states': 0, 'latest_update': None, 'snapshot_steps': [], 'curves': [], 'chunks': [], 'counts': {},
+            'states': 0, 'latest_update': None, 'milestone_steps': [], 'curves': [], 'chunks': [], 'counts': {},
+            'frame_sampling': 'Every committed saved state; no interpolation',
             'model_digest': pin['model'], 'context_digest': pin['context'], 'source_manifest_sha256': pin['manifest'],
             'config_sha256': pin['config'], 'progress_evidence': proof}
         if case is not None:
-            chunks, curves, selected, counts = sparse_assets(study_path(arm) / 'case-0', case, args.output / arm, pin['metric'])
-            entry.update(chunks=chunks, curves=curves, states=len(selected), snapshot_steps=selected, counts=counts, latest_update=len(curves) - 1)
+            chunks, curves, counts = progress_assets(study_path(arm) / 'case-0', case, args.output / arm, pin['metric'])
+            entry.update(chunks=chunks, curves=curves, states=len(curves), milestone_steps=selected_steps(len(curves) - 1), counts=counts, latest_update=len(curves) - 1)
         studies.append(entry)
     require(any(milestone(s['latest_update']) for s in studies), 'First 1500-update milestone not reached')
     assemble(studies, args.output, interim=True)

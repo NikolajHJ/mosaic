@@ -188,3 +188,63 @@ Terminal native checks and complete budgets remain pending. The existing monitor
 now checks every ten minutes and publishes only on new per-arm milestones,
 quiet when nothing actionable changes. Every new published edition is meaningful
 progress; final completion still requires all three native studies to pass.
+
+
+## User-reported timeline issue and report-only correction
+
+On 21 October the user reported being unable to slide through changes over time.
+Edition0001's progress timeline contained only 2 or 3 frames per arm, not every
+saved update. Snapshot jumps and unchanged hard carbon-chain labels made it
+appear unresponsive. Replace that interim sampling policy with every committed
+state through each arm's captured prefix, still exact saved probabilities in
+bounded100-frame chunks. Publication remains at the authorized1000-update
+milestones; this changes presentation sampling only, not GPU capture or science.
+Keep edition0001 immutable. Final full-budget and native gates remain unchanged.
+
+Add an exact-update input and previous/next saved-state buttons, pause playback
+when scrubbing, show the selected update and available frame count immediately,
+label the interim endpoint Latest captured and disable the5000 shortcut until it
+exists. The full committed prefix is checked by the same final-frame writer;
+new allocated regression covers intermediate frames across a chunk boundary.
+No interpolation or invented intermediate molecules/probabilities is permitted.
+Scientific rendering and fixtures still run on allocatedCPU; local byte/schema
+checks, static editing and actual browser drag/keyboard presentation QA only.
+Seal a new immutable report-only release, retain all historical passes/failures,
+and leave current native jobs29770179/29770093/29770124 unchanged.
+
+
+### Actual source04 timeline fix and edition0002
+
+Report-only source04 authenticated518files at
+`/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-report-04/source`, manifest
+`5c3f123748f573dcb5e3d4532659441fc6f5666a1768461a459c94cf208ba31a`;
+archive39,518,412bytes SHA
+`d1f13f8c440948cb003e3185d3a8daaf3b957985941799d2248b2bce70e57601`.
+CPU **29770704** and certificate **29770705** actually DONE: **71passed**,
+no failures/errors/skips in36.83s. CPU assessment SHA
+`a2654b958374b19cb9f42113032ad3a3a4776c38a88fb387d6409da37ce872d0`.
+New completion collectors **29770706 / 29770707 / 29770708** and final report
+**29770709** replace source03's verified-pending report-only predecessors after
+source04CPU/certificate success. Actual intentional EXIT receipts are preserved.
+All scientific GPU jobs/configuration/settings remain unchanged.
+
+New interim **29770710** actually DONE/LSFsuccess and assessmentpassed; report
+assessment SHA `f33a28fdfc86966262791fc7b5be4803c38ab2dddf223be87ee8fb1f47dc3d33`.
+It includes every saved update0..3634 /0..1227 /0..1148, **3635/1228/1149frames**
+(**6012total**), captured21October13:34:09Paris. No interpolation or resampling.
+Archive24,677,266bytes SHA
+`af2ae8c68c44329211bbf1ed676920cfe3dfa885103155f5690509f9d4a15831`.
+All154files safe-extracted/byte-verified, exact CPU XML/proofs, input/source
+identities, per-arm frame contiguity/counts/chunk sizes and actual final scheduler
+were authenticated locally using stdlib only. Verification is at
+`results/hpc/20261021-brd4-jq1-25-report/edition-0002/verification.json`.
+
+Published immutable `viewer/edition-0002/` at the same stable8776link. Every
+served asset returned HTTP200/exact bytes. Real browser mouse dragging selected
+Protenix1860then658 across multiple chunks; exact numeric1500 worked. Boltz600,
+chemistry777→778, playback advancement and manual-scrub pause at500 all worked,
+with corresponding saved scalar/readout updates. Screenshot `slider-browser-QA.png`
+preserves visible controls. Native hard argmax can remain a carbon chain while
+its probabilities and score change. The ten-minute milestone monitor now uses
+source04/every-frame progress captures, preserving earlier editions and final
+full-budget/native/identity gates.

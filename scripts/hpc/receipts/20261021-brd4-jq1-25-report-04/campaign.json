@@ -1,0 +1,59 @@
+{
+  "tag": "20261021-brd4-jq1-25-report-04",
+  "source": {
+    "source_archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261021-brd4-jq1-25-report\\source04\\source.tar.gz",
+    "archive_bytes": 39518412,
+    "archive_sha256": "d1f13f8c440948cb003e3185d3a8daaf3b957985941799d2248b2bce70e57601",
+    "manifest_sha256": "5c3f123748f573dcb5e3d4532659441fc6f5666a1768461a459c94cf208ba31a",
+    "files": 518,
+    "git_revision_reference": "4ea64664c3b6f99383d59919e5a24507dae608da",
+    "hpc_transfer": "not performed",
+    "numerical_validation": "pending DTU HPC"
+  },
+  "native_jobs": {
+    "protenix": "29770179",
+    "boltz2": "29770093",
+    "boltz2_chemistry": "29770124"
+  },
+  "scope": "Report-only full-prefix scrubbing; scientific runs unchanged",
+  "jobs": {
+    "cpu": "29770704",
+    "cpu-certificate": "29770705",
+    "complete-protenix": "29770706",
+    "complete-boltz2": "29770707",
+    "complete-boltz2_chemistry": "29770708",
+    "combined-report": "29770709",
+    "interim-0001": "29770710"
+  },
+  "status": "71 allocated report fixtures passed; interim29770710 actually DONE/passed,154files byte verified,6012 exact frames published; real browser drag/numeric/step/playback QA passed",
+  "source_authenticated_files": 518,
+  "cpu_assessment_sha256": "a2654b958374b19cb9f42113032ad3a3a4776c38a88fb387d6409da37ce872d0",
+  "report_assessment_sha256": "f33a28fdfc86966262791fc7b5be4803c38ab2dddf223be87ee8fb1f47dc3d33",
+  "interim_editions": [
+    {
+      "remote_parent": "interim-0001",
+      "local_edition": "edition-0002",
+      "job_id": "29770710",
+      "archive_bytes": 24677266,
+      "archive_sha256": "af2ae8c68c44329211bbf1ed676920cfe3dfa885103155f5690509f9d4a15831",
+      "states": [
+        3635,
+        1228,
+        1149
+      ],
+      "included_updates": [
+        3634,
+        1227,
+        1148
+      ],
+      "milestone_progress": {
+        "protenix": 3500,
+        "boltz2": 0,
+        "boltz2_chemistry": 0
+      },
+      "verification": "results/hpc/20261021-brd4-jq1-25-report/edition-0002/verification.json"
+    }
+  ],
+  "stable_url": "http://127.0.0.1:8776/report.html",
+  "native_jobs_unchanged": true
+}
