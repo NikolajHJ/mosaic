@@ -1,0 +1,69 @@
+{
+  "version": "jq1-lrboost-predecessor-stop-v1",
+  "status": "passed",
+  "user_requested": true,
+  "utc": "2026-10-21T21:27:15.585676+00:00",
+  "jobs": {
+    "boltz2": {
+      "job_id": "29778203",
+      "status": "EXIT",
+      "scheduler": {
+        "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-lrboost-stop-01/boltz2/scheduler-final.txt",
+        "sha256": "95ef0d4e03c4f76f9fd87b81f3af6bc12acf8343d8c1cfda9d91a7744e514ac9"
+      },
+      "stdout": {
+        "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-lrboost-stop-01/boltz2/stdout.29778203.log",
+        "sha256": "af3f74331f2cead3c443422ec377634bf894cc5d4f7e141d89057e38912cda28"
+      },
+      "intentional_exit_code": 130,
+      "reason": "TERM_OWNER user-requested restart"
+    },
+    "boltz2_chemistry": {
+      "job_id": "29778204",
+      "status": "EXIT",
+      "scheduler": {
+        "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-lrboost-stop-01/boltz2_chemistry/scheduler-final.txt",
+        "sha256": "b507488b68f769141b0c0b879b829fe99a480ffa25bf51b545ac2790b72775e0"
+      },
+      "stdout": {
+        "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-lrboost-stop-01/boltz2_chemistry/stdout.29778204.log",
+        "sha256": "8ff18f774298811d493491d2749362d5f7b8b12948f7bc7408a47b42cdf9f9d6"
+      },
+      "intentional_exit_code": 130,
+      "reason": "TERM_OWNER user-requested restart"
+    }
+  },
+  "preserved_completed_protenix": "29777709",
+  "retired_unstarted_reports": [
+    "29778246",
+    "29778247",
+    "29778249"
+  ],
+  "proofs": [
+    {
+      "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-lrboost-stop-01/boltz2/scheduler-final.txt",
+      "sha256": "95ef0d4e03c4f76f9fd87b81f3af6bc12acf8343d8c1cfda9d91a7744e514ac9"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-lrboost-stop-01/boltz2/stdout.29778203.log",
+      "sha256": "af3f74331f2cead3c443422ec377634bf894cc5d4f7e141d89057e38912cda28"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-lrboost-stop-01/boltz2_chemistry/scheduler-final.txt",
+      "sha256": "b507488b68f769141b0c0b879b829fe99a480ffa25bf51b545ac2790b72775e0"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-lrboost-stop-01/boltz2_chemistry/stdout.29778204.log",
+      "sha256": "8ff18f774298811d493491d2749362d5f7b8b12948f7bc7408a47b42cdf9f9d6"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-lrboost-stop-01/scheduler-after-7.txt",
+      "sha256": "7964bc4bd6f909b0088af97505b7370cec911f9fac0b79158bce78157c35e4e3"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-lrboost-stop-01/stop-receipt.json",
+      "sha256": "7404c971744efe4a243c546327daefd6116d2d1d03265761bad67dea4f5218df"
+    }
+  ],
+  "scope": "Authenticated actual EXIT/TERM_OWNER/LSF130 only; partial scientific results preserved, not spontaneous native failure or full-budget completion"
+}

@@ -1,0 +1,30 @@
+{
+  "status": "passed",
+  "scope": "Independent agent read-only standard-library archive/manifest/Git-index/config/AST review; no numerical execution or tests",
+  "utc": "2026-10-21T21:38:37.566011+00:00",
+  "source_manifest_sha256": "9605a5295b9fe8dfe29f15410b3a029038ea8a18feb16907f043abd5be13c323",
+  "archive_sha256": "e1a100aebf44698515ba161c1a001e338a902b250bf1a737f888df33f55098d1",
+  "archive_bytes": 39582615,
+  "regular_safe_unique_members": 611,
+  "files": 610,
+  "unchanged_scientific_src_files": 145,
+  "modified_base_files": [
+    ".gitattributes",
+    "examples/brd4_25_atoms.py",
+    "scripts/campaign25_contract.py"
+  ],
+  "allowed_added_files": 13,
+  "all_16_declared_overlays_match_git_index_and_current": true,
+  "pure_helpers_match_original_source_archives_and_manifests": true,
+  "all_python_members_ast_parse": true,
+  "config_differences_only": [
+    "version",
+    "label",
+    "initial_step_size"
+  ],
+  "config_sha256": {
+    "protenix": "f1c551e5f9cc6f5671acf8b7fef7fe3dbb3197312b096ef55772cb005195fb93",
+    "boltz2": "efb4a41cd3077f03632ca0b4085c0cbfe98c0800b53c0509a857ae28ae4111fd",
+    "boltz2_chemistry": "6a6f15614989e44b6cc1149ee4ca5e35717d5c21fdc7d2b5748832d912e9b3f0"
+  }
+}

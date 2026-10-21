@@ -1,0 +1,38 @@
+{
+  "authorization": "Human21October2026 stopcurrent/restartfreshall3 withPro3.0/Bol.05/chem.05",
+  "utc": "2026-10-21T21:25:38.790846+00:00",
+  "actions": [
+    {
+      "jobs": [
+        "29778246",
+        "29778247",
+        "29778249"
+      ],
+      "action": "retire_verified_pending_unstarted_reports",
+      "returncode": 0,
+      "stdout": "Job <29778246> is being terminated\nJob <29778247> is being terminated\nJob <29778249> is being terminated\n",
+      "stderr": ""
+    },
+    {
+      "jobs": [
+        "29778203",
+        "29778204"
+      ],
+      "action": "user_requested_native_stop",
+      "returncode": 0,
+      "stdout": "Job <29778203> is being terminated\nJob <29778204> is being terminated\n",
+      "stderr": ""
+    }
+  ],
+  "preserved_completed_protenix": "29777709",
+  "scientific_inputs_mutated": false,
+  "actual_final": {
+    "29778246": "EXIT",
+    "29778247": "EXIT",
+    "29778249": "EXIT",
+    "29778203": "EXIT",
+    "29778204": "EXIT"
+  },
+  "stopped_confirmed": true,
+  "retirement_confirmed": true
+}

@@ -635,3 +635,19 @@ after those verified editions are published. Contact remains distinct from
 affinity; changing repair totals are not one fixed objective, and a valid graph
 or fixed-pose score does not establish binding or activity. No additional cleanup,
 scientific setting change, native rerun or local numerical work occurred.
+
+
+## 21 October2026 — authorized learning-rate increase and confirmed stops
+
+The user requested fresh10,000-update restarts with Protenix LR3.0 and both
+normal Boltz-2 and Boltz-2+chemistry/valid-output-loss LR0.05. Old queued
+report collectors29778246/29778247 and final29778249 were verifiedPEND and
+retired first. Both native Boltz jobs29778203/29778204 actually EXITed with
+TERM_OWNER and LSF130 at23:25:47 Paris; completed Protenix29777709 and all
+artifacts/reports are preserved. No new high-rate job or pass is established
+yet. See docs/brd4_jq1_25_fixed_lrboost.md and the new campaign stop receipts.
+
+The higher-rate source is now sealed/staged as `20261021-brd4-jq1-25-fixed-lrboost-01`
+with 610 files and manifest `9605a5295b9fe8dfe29f15410b3a029038ea8a18feb16907f043abd5be13c323`.
+New CPU 29778388 and own-ended callback 29778391 were actually submitted;
+all new-rate scientific readiness and whole-campaign capacity gates remain required.

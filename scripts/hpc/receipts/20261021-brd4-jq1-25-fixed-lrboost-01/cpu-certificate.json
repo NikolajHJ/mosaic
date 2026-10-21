@@ -1,0 +1,64 @@
+{
+  "status": "passed",
+  "source_manifest_sha256": "9605a5295b9fe8dfe29f15410b3a029038ea8a18feb16907f043abd5be13c323",
+  "producer_job_id": "29778388",
+  "tests": 598,
+  "proofs": [
+    {
+      "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-lrboost-01/cpu/scheduler-final-0.txt",
+      "sha256": "54d8fc2bf5aa7dabf54cf814e79d1714a7b656b7d2ea46184a503f012ae4893b"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-lrboost-01/cpu/stdout.29778388.log",
+      "sha256": "83ab6213e43aaec256b1adb617d39160eab048fa2fc7f31a4da27ec789b63de3"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-lrboost-01/cpu/payload/hpc-contract.xml",
+      "sha256": "b89dc754396ee7d9a48c5254cc0534bf2ad7fe058b60d658fc7d2a4092846eb9",
+      "passed": 266
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-lrboost-01/cpu/payload/legacy.xml",
+      "sha256": "e3f336a662cd749206d4cac3923f17b631f72a0948161861e10926d240cb8d95",
+      "passed": 239
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-lrboost-01/cpu/payload/native-mapping.xml",
+      "sha256": "561ceed54b558bd9aed4967a7b8a72d2dbd558ab97ef368ad0fed8a93984abbc",
+      "passed": 34
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-lrboost-01/cpu/payload/chemistry.xml",
+      "sha256": "eef1f647b447176fd50ce098cab3198b30deff5e46cc090f3628af7cc504b135",
+      "passed": 59
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-lrboost-01/cpu/payload/assessment.json",
+      "sha256": "02232562dc0f118e4c4cd6df0bef027a170589ccf50203e5f7489700ff845739"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-lrboost-01/cpu/payload/composition_reference.json",
+      "sha256": "37b34a2ba7be47886936df48faaabdeac20481e5a9cebca9bafab831c07868eb"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-lrboost-01/cpu/payload/pocket_definition.json",
+      "sha256": "9376c715eaf5b48689fb3e995b00d7820601a7776970df66bd7e7cff3b13ee43"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-lrboost-01/cpu/payload/hpc-contract.log",
+      "sha256": "8ed7ec6a5bc24f50cfe81f4c10ea2dc1ea3599f54725b464f96627fd5df66446"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-lrboost-01/cpu/payload/legacy.log",
+      "sha256": "51f9b80431adb1392c680be3b18d94af61340eb0b77e06ea16badcb29daf759b"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-lrboost-01/cpu/payload/native-mapping.log",
+      "sha256": "10ece132199282b08e919b69a63620f9d4f56ce2693ed35cab629984b4652f5b"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-lrboost-01/cpu/payload/chemistry.log",
+      "sha256": "57daeef13869f01b3c1a2cd6b9b44944b470c5ad23c1599c4586c7e49e136c4d"
+    }
+  ]
+}

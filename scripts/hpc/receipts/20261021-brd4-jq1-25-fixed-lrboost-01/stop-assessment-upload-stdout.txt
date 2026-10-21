@@ -1,0 +1,1 @@
+{"status": "stop_assessment_authenticated", "assessment_sha256": "8fc3ce7a6fffd0df8bb30a23ad1f37c9954beb5a572ee2b3ed8746206778800c", "native_jobs": ["29778203", "29778204"]}

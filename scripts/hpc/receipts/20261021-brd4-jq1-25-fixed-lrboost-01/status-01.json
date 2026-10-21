@@ -1,0 +1,252 @@
+{
+  "connection_returncode": 0,
+  "local_utc": "2026-10-21T21:38:28.789740+00:00",
+  "remote": {
+    "utc": "2026-10-21T21:38:28.959864+00:00",
+    "records": {
+      "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-lrboost-01/cpu": {
+        "submission": {
+          "args": [
+            "bsub",
+            "-q",
+            "hpc",
+            "-n",
+            "4",
+            "-R",
+            "span[hosts=1]",
+            "-R",
+            "rusage[mem=4GB]",
+            "-W",
+            "01:00",
+            "-J",
+            "mosaic-jq1-lrboost-cpu",
+            "-oo",
+            "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-lrboost-01/cpu/stdout.%J.log",
+            "-eo",
+            "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-lrboost-01/cpu/stderr.%J.log",
+            "bash",
+            "-l",
+            "/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-lrboost-01/source/scripts/hpc/fixed25_lrboost_cpu.lsf",
+            "/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-lrboost-01/source",
+            "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-lrboost-01",
+            "9605a5295b9fe8dfe29f15410b3a029038ea8a18feb16907f043abd5be13c323"
+          ],
+          "stdout": "Job <29778388> is submitted to queue <hpc>.\n",
+          "stderr": "",
+          "returncode": 0,
+          "outcome": "submitted",
+          "source_manifest_sha256": "9605a5295b9fe8dfe29f15410b3a029038ea8a18feb16907f043abd5be13c323",
+          "utc": "2026-10-21T21:36:42.814013+00:00",
+          "job_id": "29778388"
+        },
+        "submission_proof": {
+          "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-lrboost-01/cpu/submission.json",
+          "bytes": 1055,
+          "sha256": "edb72ebd25a41cb1ff441457d105247ce1ca8dceeb6c091b2d78c6343b997d4f"
+        },
+        "logs": {
+          "stdout": {
+            "bytes": 41,
+            "tail": "Authenticated 610 immutable source files\n"
+          },
+          "stderr": {
+            "bytes": 233,
+            "tail": "Loaded dependency [python3/3.12.11]: sqlite3/3.50.1\nLoaded dependency [python3/3.12.11]: gcc/14.3.0-binutils-2.44\nLoaded module: python3/3.12.11\n\nLoading python3/3.12.11\n  Loading requirement: sqlite3/3.50.1 gcc/14.3.0-binutils-2.44\n"
+          }
+        }
+      },
+      "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-lrboost-01/after-cpu": {
+        "submission": {
+          "args": [
+            "bsub",
+            "-q",
+            "hpc",
+            "-n",
+            "1",
+            "-R",
+            "span[hosts=1]",
+            "-R",
+            "rusage[mem=2GB]",
+            "-W",
+            "00:30",
+            "-w",
+            "ended(29778388)",
+            "-J",
+            "mosaic-jq1-lrboost-after-cpu",
+            "-oo",
+            "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-lrboost-01/after-cpu/stdout.%J.log",
+            "-eo",
+            "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-lrboost-01/after-cpu/stderr.%J.log",
+            "bash",
+            "-l",
+            "/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-lrboost-01/source/scripts/hpc/fixed25_lrboost_stage.lsf",
+            "/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-lrboost-01/source",
+            "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-lrboost-01",
+            "9605a5295b9fe8dfe29f15410b3a029038ea8a18feb16907f043abd5be13c323",
+            "after-cpu",
+            "none",
+            "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-lrboost-01/after-cpu",
+            "29778388",
+            "0"
+          ],
+          "stdout": "Job <29778391> is submitted to queue <hpc>.\n",
+          "stderr": "",
+          "returncode": 0,
+          "outcome": "submitted",
+          "source_manifest_sha256": "9605a5295b9fe8dfe29f15410b3a029038ea8a18feb16907f043abd5be13c323",
+          "utc": "2026-10-21T21:36:43.178718+00:00",
+          "job_id": "29778391"
+        },
+        "submission_proof": {
+          "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-lrboost-01/after-cpu/submission.json",
+          "bytes": 1244,
+          "sha256": "3145bd0758ee01a57fad48f0940beff31a586fadff76a379069e98d38a83efb7"
+        },
+        "logs": {}
+      }
+    },
+    "scheduler": {
+      "job_ids": [
+        "29778388",
+        "29778391"
+      ],
+      "returncode": 0,
+      "stdout": "\nJob <29778388>, Job Name <mosaic-jq1-lrboost-cpu>, User <s234818>, Project <def\n                          ault>, Service Class <sc_hpc1>, Status <RUN>, Queue <\n                          hpc>, Command <bash -l /work3/s234818/mosaic/releases\n                          /20261021-brd4-jq1-25-fixed-lrboost-01/source/scripts\n                          /hpc/fixed25_lrboost_cpu.lsf /work3/s234818/mosaic/re\n                          leases/20261021-brd4-jq1-25-fixed-lrboost-01/source /\n                          work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-\n                          lrboost-01 9605a5295b9fe8dfe29f15410b3a029038ea8a18fe\n                          b16907f043abd5be13c323>, Share group charged </s23481\n                          8>, Esub <dcc>\nWed Oct 21 23:36:42 2026: Submitted from host <hpclogin1>, CWD <$HOME>, Output \n                          File (overwrite) </work3/s234818/mosaic/runs/20261021\n                          -brd4-jq1-25-fixed-lrboost-01/cpu/stdout.29778388.log\n                          >, Error File (overwrite) </work3/s234818/mosaic/runs\n                          /20261021-brd4-jq1-25-fixed-lrboost-01/cpu/stderr.297\n                          78388.log>, 4 Task(s), Requested Resources <{select[s\n                          hortparallel_] rusage[mem=4096.00] span[hosts=1]} || \n                          {select[!shortparallel_] rusage[mem=4096.00] span[hos\n                          ts=1]}>;\nWed Oct 21 23:36:44 2026: Started 4 Task(s) on Host(s) <4*n-62-11-67>, Allocate\n                          d 4 Slot(s) on Host(s) <4*n-62-11-67>, Execution Home\n                           </zhome/95/e/206121>, Execution CWD </zhome/95/e/206\n                          121>;\n RUNLIMIT                \n 60.0 min\n\n MEMLIMIT\n      4 G \n\n MEMORY USAGE:\n MEM Efficiency: 0.00%\n\n CPU USAGE:\n CPU PEAK: 0.00 ;  CPU PEAK DURATION: 0 second(s)\n CPU AVERAGE EFFICIENCY: 0.00% ;  CPU PEAK EFFICIENCY: 0.00%\n\n PENDING TIME DETAILS:\n Eligible pending time (seconds):\t2\n Ineligible pending time (seconds):\t0\n\n SCHEDULING PARAMETERS:\n           r15s   r1m  r15m   ut      pg    io   ls    it    tmp    swp    mem\n loadSched   -     -     -     -       -     -    -     -     -      -      -  \n loadStop    -     -     -     -       -     -    -     -     -      -      -  \n\n RESOURCE REQUIREMENT DETAILS:\n Job-level: {select[shortparallel_] rusage[mem=4096.00] span[hosts=1]} || {sele\n                          ct[!shortparallel_] rusage[mem=4096.00] span[hosts=1]\n                          }\n App-level: -\n Queue-level: same[type:model] affinity[core] cu[type=enclosure:maxcus=1]\n Combined: {select[(shortparallel_) && (type == any)] order[-slots:-maxslots] r\n                          usage[mem=4096.00] span[hosts=1] cu[pref=config:maxcu\n                          s=1:type=enclosure] affinity[core(1)*1]} || {select[(\n                          !shortparallel_) && (type == any)] order[-slots:-maxs\n                          lots] rusage[mem=4096.00] span[hosts=1] cu[pref=confi\n                          g:maxcus=1:type=enclosure] affinity[core(1)*1]}\n Effective: select[((!shortparallel_) && (type == any))] order[-slots:-maxslots\n                          ] rusage[mem=4096.00] span[hosts=1] cu[type=enclosure\n                          :maxcus=1:pref=config] affinity[core(1)*1] \n------------------------------------------------------------------------------\n\nJob <29778391>, Job Name <mosaic-jq1-lrboost-after-cpu>, User <s234818>, Projec\n                          t <default>, Service Class <sc_hpc1>, Status <PEND>, \n                          Queue <hpc>, Command <bash -l /work3/s234818/mosaic/r\n                          eleases/20261021-brd4-jq1-25-fixed-lrboost-01/source/\n                          scripts/hpc/fixed25_lrboost_stage.lsf /work3/s234818/\n                          mosaic/releases/20261021-brd4-jq1-25-fixed-lrboost-01\n                          /source /work3/s234818/mosaic/runs/20261021-brd4-jq1-\n                          25-fixed-lrboost-01 9605a5295b9fe8dfe29f15410b3a02903\n                          8ea8a18feb16907f043abd5be13c323 after-cpu none /work3\n                          /s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-lrboo\n                          st-01/after-cpu 29778388 0>, Esub <dcc>\nWed Oct 21 23:36:43 2026: Submitted from host <hpclogin1>, CWD <$HOME>, Output \n                          File (overwrite) </work3/s234818/mosaic/runs/20261021\n                          -brd4-jq1-25-fixed-lrboost-01/after-cpu/stdout.297783\n                          91.log>, Error File (overwrite) </work3/s234818/mosai\n                          c/runs/20261021-brd4-jq1-25-fixed-lrboost-01/after-cp\n                          u/stderr.29778391.log>, Requested Resources <{select[\n                          serial_] rusage[mem=2048.00] span[hosts=1]} || {selec\n                          t[!serial_] rusage[mem=2048.00] span[hosts=1]}>, Depe\n                          ndency Condition <ended(29778388)>;\n PENDING REASONS:\n Job dependency condition not satisfied;\n\n RUNLIMIT                \n 30.0 min\n\n MEMLIMIT\n      2 G \n\n PENDING TIME DETAILS:\n Eligible pending time (seconds):\t0\n Ineligible pending time (seconds):\t105\n\n SCHEDULING PARAMETERS:\n           r15s   r1m  r15m   ut      pg    io   ls    it    tmp    swp    mem\n loadSched   -     -     -     -       -     -    -     -     -      -      -  \n loadStop    -     -     -     -       -     -    -     -     -      -      -  \n\n RESOURCE REQUIREMENT DETAILS:\n Job-level: {select[serial_] rusage[mem=2048.00] span[hosts=1]} || {select[!ser\n                          ial_] rusage[mem=2048.00] span[hosts=1]}\n App-level: -\n Queue-level: same[type:model] affinity[core] cu[type=enclosure:maxcus=1]\n Combined: {select[(serial_) && (type == any)] order[-slots:-maxslots] rusage[m\n                          em=2048.00] span[hosts=1] cu[pref=config:maxcus=1:typ\n                          e=enclosure] affinity[core(1)*1]} || {select[(!serial\n                          _) && (type == any)] order[-slots:-maxslots] rusage[m\n                          em=2048.00] span[hosts=1] cu[pref=config:maxcus=1:typ\n                          e=enclosure] affinity[core(1)*1]}\n Effective: -\n\n",
+      "stderr": ""
+    },
+    "artifacts": {
+      "source-staging.json": {
+        "record": {
+          "status": "passed",
+          "source_manifest_sha256": "9605a5295b9fe8dfe29f15410b3a029038ea8a18feb16907f043abd5be13c323",
+          "archive_sha256": "e1a100aebf44698515ba161c1a001e338a902b250bf1a737f888df33f55098d1",
+          "archive_bytes": 39582615,
+          "files": 610,
+          "utc": "2026-10-21T21:36:42.477926+00:00"
+        },
+        "proof": {
+          "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-lrboost-01/source-staging.json",
+          "bytes": 299,
+          "sha256": "79a92cec48b6656036fbfd1ca712f16c6b4eeaf561d75edd5fa6dfcbeda40c51"
+        }
+      },
+      "initial-submissions-complete.json": {
+        "record": {
+          "cpu": {
+            "args": [
+              "bsub",
+              "-q",
+              "hpc",
+              "-n",
+              "4",
+              "-R",
+              "span[hosts=1]",
+              "-R",
+              "rusage[mem=4GB]",
+              "-W",
+              "01:00",
+              "-J",
+              "mosaic-jq1-lrboost-cpu",
+              "-oo",
+              "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-lrboost-01/cpu/stdout.%J.log",
+              "-eo",
+              "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-lrboost-01/cpu/stderr.%J.log",
+              "bash",
+              "-l",
+              "/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-lrboost-01/source/scripts/hpc/fixed25_lrboost_cpu.lsf",
+              "/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-lrboost-01/source",
+              "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-lrboost-01",
+              "9605a5295b9fe8dfe29f15410b3a029038ea8a18feb16907f043abd5be13c323"
+            ],
+            "stdout": "Job <29778388> is submitted to queue <hpc>.\n",
+            "stderr": "",
+            "returncode": 0,
+            "outcome": "submitted",
+            "source_manifest_sha256": "9605a5295b9fe8dfe29f15410b3a029038ea8a18feb16907f043abd5be13c323",
+            "utc": "2026-10-21T21:36:42.814013+00:00",
+            "job_id": "29778388"
+          },
+          "callback": {
+            "args": [
+              "bsub",
+              "-q",
+              "hpc",
+              "-n",
+              "1",
+              "-R",
+              "span[hosts=1]",
+              "-R",
+              "rusage[mem=2GB]",
+              "-W",
+              "00:30",
+              "-w",
+              "ended(29778388)",
+              "-J",
+              "mosaic-jq1-lrboost-after-cpu",
+              "-oo",
+              "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-lrboost-01/after-cpu/stdout.%J.log",
+              "-eo",
+              "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-lrboost-01/after-cpu/stderr.%J.log",
+              "bash",
+              "-l",
+              "/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-lrboost-01/source/scripts/hpc/fixed25_lrboost_stage.lsf",
+              "/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-lrboost-01/source",
+              "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-lrboost-01",
+              "9605a5295b9fe8dfe29f15410b3a029038ea8a18feb16907f043abd5be13c323",
+              "after-cpu",
+              "none",
+              "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-lrboost-01/after-cpu",
+              "29778388",
+              "0"
+            ],
+            "stdout": "Job <29778391> is submitted to queue <hpc>.\n",
+            "stderr": "",
+            "returncode": 0,
+            "outcome": "submitted",
+            "source_manifest_sha256": "9605a5295b9fe8dfe29f15410b3a029038ea8a18feb16907f043abd5be13c323",
+            "utc": "2026-10-21T21:36:43.178718+00:00",
+            "job_id": "29778391"
+          },
+          "all_initial_submitted": true
+        },
+        "proof": {
+          "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-lrboost-01/initial-submissions-complete.json",
+          "bytes": 2506,
+          "sha256": "224869801d3d976bf196e1b991de4cc1c13bd8281a70aa161df45cc56671b521"
+        }
+      }
+    },
+    "xml": {
+      "hpc-contract.xml": {
+        "proof": {
+          "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-lrboost-01/cpu/payload/hpc-contract.xml",
+          "bytes": 41214,
+          "sha256": "b89dc754396ee7d9a48c5254cc0534bf2ad7fe058b60d658fc7d2a4092846eb9"
+        },
+        "cases": 266,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "modules": [
+          "tests.test_boltz_hpc_tmpdir.BoltzNodeTemporaryDirectoryTests",
+          "tests.test_boltz_submission_controller.SubmissionControllerTests",
+          "tests.test_campaign25_ops",
+          "tests.test_campaign25_pocket_ops",
+          "tests.test_campaign25_release",
+          "tests.test_fixed25_lrboost_contract",
+          "tests.test_fixed25_lrboost_ops",
+          "tests.test_fixed25_lrboost_storage",
+          "tests.test_fixed25_ops",
+          "tests.test_fixed25_storage",
+          "tests.test_pocket_definition",
+          "tests.test_protenix_lr03_ops",
+          "tests.test_protenix_lr03_storage"
+        ]
+      }
+    },
+    "cpu_logs": {
+      "hpc-contract.log": "============================= test session starts ==============================\nplatform linux -- Python 3.12.11, pytest-9.0.3, pluggy-1.7.0\ncachedir: /work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-lrboost-01/cpu/payload/cache-contract\nrootdir: /work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-lrboost-01/source\nconfigfile: pyproject.toml\nplugins: anyio-4.15.1, jaxtyping-0.3.11\ncollected 266 items\n\ntests/test_boltz_submission_controller.py ........                       [  3%]\ntests/test_boltz_hpc_tmpdir.py ........                                  [  6%]\ntests/test_campaign25_ops.py ..................                          [ 12%]\ntests/test_campaign25_release.py ........................                [ 21%]\ntests/test_campaign25_pocket_ops.py ................................     [ 33%]\ntests/test_pocket_definition.py ..........                               [ 37%]\ntests/test_protenix_lr03_ops.py .......................                  [ 46%]\ntests/test_protenix_lr03_storage.py ............                         [ 50%]\ntests/test_fixed25_ops.py .............                                  [ 55%]\ntests/test_fixed25_storage.py ..                                         [ 56%]\ntests/test_fixed25_lrboost_contract.py ................................. [ 68%]\n................................................                         [ 86%]\ntests/test_fixed25_lrboost_ops.py ........................               [ 95%]\ntests/test_fixed25_lrboost_storage.py ...........                        [100%]\n\n- generated xml file: /work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-lrboost-01/cpu/payload/hpc-contract.xml -\n============================= 266 passed in 4.06s ==============================\n",
+      "legacy.log": "cule_brd4_fixture.py ....                           [  2%]\ntests/test_small_molecule_campaign25.py .....                            [  5%]\ntests/test_small_molecule_case_selection.py .......                      [  7%]\ntests/test_small_molecule_compact_artifacts.py ..                        [  8%]\ntests/test_small_molecule_continuation.py ...........                    [ 13%]\ntests/test_small_molecule_contracts.py ..............                    [ 19%]\ntests/test_small_molecule_diffuse_control.py ..........                  [ 23%]\ntests/test_small_molecule_evidence_root.py ..........                    [ 27%]\ntests/test_small_molecule_features.py ........                           [ 30%]\ntests/test_small_molecule_fixed_step.py .....                            [ 33%]\ntests/test_small_molecule_gradient_checks.py .....                       [ 35%]\ntests/test_small_molecule_home_quota.py ....                             [ 36%]\ntests/test_small_molecule_io.py .............                            [ 42%]\ntests/test_small_molecule_jq1_pocket.py .......                          [ 45%]\ntests/test_small_molecule_known_ligand_fixture.py ...                    [ 46%]\ntests/test_small_molecule_losses.py .....................                [ 55%]\ntests/test_small_molecule_optimizers.py .................                [ 62%]\ntests/test_small_molecule_prepared_study.py ........                     [ 65%]\ntests/test_small_molecule_protenix.py ............                       [ 70%]\ntests/test_small_molecule_report_scope.py .                              [ 71%]\ntests/test_small_molecule_report_studies.py ...............              [ 77%]\ntests/test_small_molecule_report_svg.py .                                [ 77%]\ntests/test_small_molecule_state.py .........................."
+    }
+  }
+}

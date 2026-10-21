@@ -1,0 +1,33 @@
+#!/bin/bash
+set -euo pipefail
+[[ -n "${LSB_JOBID:-}" ]]
+source=$1
+root=$2
+manifest=$3
+phase=$4
+arm=$5
+parent=$6
+producer=$7
+cpu_sha=$8
+module load python3/3.12.11
+python=/work3/s234818/mosaic/envs/protenix-tiny/bin/python
+"$python" "$source/scripts/verify_stage0_release.py" "$source" "$manifest"
+export PYTHONPATH="$source/scripts:$source/src:$source/tests" PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+export OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 MKL_NUM_THREADS=4
+export HF_HUB_OFFLINE=1 HF_HUB_DISABLE_TELEMETRY=1 JAX_ENABLE_X64=0
+cd "$source"
+params=(--source "$source" --root "$root" --manifest "$manifest" --phase "$phase" --arm "$arm" --producer "$producer" --cpu-certificate-sha256 "$cpu_sha")
+if [[ "$phase" == after-cpu || "$phase" == after-ready ]]; then
+  "$python" scripts/fixed25_lrboost_ops.py "${params[@]}"
+  exit 0
+fi
+[[ "$phase" == validate || "$phase" == run ]]
+[[ "$arm" == protenix || "$arm" == boltz2 || "$arm" == boltz2_chemistry ]]
+module load cuda/12.9.1
+export JAX_PLATFORMS=cpu
+if [[ "$arm" == protenix ]]; then
+  module load cudnn/v9.13.0.50-prod-cuda-12.X
+  export JAX_PLATFORMS=cuda XLA_PYTHON_CLIENT_PREALLOCATE=false
+fi
+source "$source/scripts/hpc/boltz_node_tmpdir.sh"
+"$python" scripts/fixed25_lrboost_ops.py "${params[@]}"

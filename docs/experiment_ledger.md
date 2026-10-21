@@ -5858,3 +5858,35 @@ after those verified editions are published. Contact remains distinct from
 affinity; changing repair totals are not one fixed objective, and a valid graph
 or fixed-pose score does not establish binding or activity. No additional cleanup,
 scientific setting change, native rerun or local numerical work occurred.
+
+
+## 21 October2026 — authorized learning-rate increase and confirmed stops
+
+The user requested fresh10,000-update restarts with Protenix LR3.0 and both
+normal Boltz-2 and Boltz-2+chemistry/valid-output-loss LR0.05. Old queued
+report collectors29778246/29778247 and final29778249 were verifiedPEND and
+retired first. Both native Boltz jobs29778203/29778204 actually EXITed with
+TERM_OWNER and LSF130 at23:25:47 Paris; completed Protenix29777709 and all
+artifacts/reports are preserved. No new high-rate job or pass is established
+yet. See docs/brd4_jq1_25_fixed_lrboost.md and the new campaign stop receipts.
+
+
+At 23:36:42–43 Paris the new higher-rate release authenticated 610 source files
+(manifest `9605a5295b9fe8dfe29f15410b3a029038ea8a18feb16907f043abd5be13c323`)
+and actually submitted CPU **29778388** / after-CPU **29778391**. Initial CPU
+storage admission passed (15,292,863,601 available / 5,368,709,120 required bytes,
+4 GiB reserve). Full CPU/native passes and long submissions require actual
+terminal evidence; they are not inferred from these submissions.
+
+
+At 23:41:11 Paris both new CPU/callback jobs were actual DONE, with all **598**
+cases passed (266 contracts + 239 legacy + 34 mapping + 59 chemistry), no
+failures/errors/skips and the original three deliberate legacy deselections.
+CPU certificate SHA-256 `dc76df74f1432f59e4c5f6fb5491a1258752b639df893cf75bb5a6968e481630`.
+New GPU validations/callbacks are Pro **29778424/29778425**, normal Boltz
+**29778426/29778427**, chemistry **29778428/29778429**. At 23:42:21 all six
+were PEND: physical GPU availability for validations, own-ended dependencies
+for callbacks. New long-run IDs/readiness passes are not established. All
+56 downloaded CPU/launch evidence files passed safe extraction and byte hashes;
+independent XML/schema proof verification follows. See the new high-rate plan
+and campaign receipts. Monitoring was updated to the new rates and exact jobs.

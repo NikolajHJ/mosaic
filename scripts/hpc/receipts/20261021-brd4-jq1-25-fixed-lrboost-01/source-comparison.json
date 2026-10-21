@@ -1,0 +1,33 @@
+{
+  "status": "passed",
+  "scope": "Local standard-library AST/JSON/byte/hash packaging only; no tests or numerical execution",
+  "source_files": 610,
+  "archive_members": 611,
+  "manifest_sha256": "9605a5295b9fe8dfe29f15410b3a029038ea8a18feb16907f043abd5be13c323",
+  "archive_bytes": 39582615,
+  "archive_sha256": "e1a100aebf44698515ba161c1a001e338a902b250bf1a737f888df33f55098d1",
+  "source_root": "/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-lrboost-01/source",
+  "unchanged_src_files": 145,
+  "modified_base_files": [
+    ".gitattributes",
+    "examples/brd4_25_atoms.py",
+    "scripts/campaign25_contract.py"
+  ],
+  "added_files": [
+    "docs/brd4_jq1_25_fixed_lrboost.md",
+    "examples/configs/brd4_jq1_25_fixed_lrboost_boltz2_10000.json",
+    "examples/configs/brd4_jq1_25_fixed_lrboost_boltz2_chemistry_10000.json",
+    "examples/configs/brd4_jq1_25_fixed_lrboost_protenix_10000.json",
+    "scripts/fixed25_lrboost_ops.py",
+    "scripts/fixed25_lrboost_storage.py",
+    "scripts/fixed25_recover_storage.py",
+    "scripts/fixed25_split_storage.py",
+    "scripts/hpc/fixed25_lrboost_cpu.lsf",
+    "scripts/hpc/fixed25_lrboost_stage.lsf",
+    "tests/test_fixed25_lrboost_contract.py",
+    "tests/test_fixed25_lrboost_ops.py",
+    "tests/test_fixed25_lrboost_storage.py"
+  ],
+  "git_index_and_current_bytes_equal": true,
+  "pure_storage_helpers_match_original_authenticated_manifests": true
+}

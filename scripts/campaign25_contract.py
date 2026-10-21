@@ -2,6 +2,7 @@
 
 import hashlib
 import json
+import math
 from pathlib import Path
 
 
@@ -21,6 +22,9 @@ POCKET_POLICY = {
 
 PROTENIX_LR03_VERSION = "mosaic-brd4-jq1-25-protenix-lr0p3-v1"
 FIXED25_VERSION = "mosaic-brd4-jq1-25-fixed-step-v1"
+FIXED25_LRBOOST_VERSION = "mosaic-brd4-jq1-25-fixed-step-lrboost-v1"
+FIXED25_VERSIONS = (FIXED25_VERSION, FIXED25_LRBOOST_VERSION)
+FIXED25_LRBOOST_RATES = {"protenix": 3.0, "boltz2": 0.05, "boltz2_chemistry": 0.05}
 
 
 def verify_frozen_response(response, model_digest, context_digest):
@@ -47,9 +51,10 @@ def sha(path):
 def config25(config):
     version = config.get("version")
     lr03 = version == PROTENIX_LR03_VERSION
-    fixed = version == FIXED25_VERSION
-    pocket = version in ("mosaic-brd4-jq1-25-three-arm-v1", PROTENIX_LR03_VERSION, FIXED25_VERSION)
-    if version not in ("mosaic-brd4-25-three-arm-v1", "mosaic-brd4-jq1-25-three-arm-v1", PROTENIX_LR03_VERSION, FIXED25_VERSION):
+    fixed = version in FIXED25_VERSIONS
+    boosted = version == FIXED25_LRBOOST_VERSION
+    pocket = version in ("mosaic-brd4-jq1-25-three-arm-v1", PROTENIX_LR03_VERSION, *FIXED25_VERSIONS)
+    if version not in ("mosaic-brd4-25-three-arm-v1", "mosaic-brd4-jq1-25-three-arm-v1", PROTENIX_LR03_VERSION, *FIXED25_VERSIONS):
         raise ValueError("Unknown declared campaign version")
     if lr03 and config.get("arm") != "protenix":
         raise ValueError("LR0.3 authorization covers Protenix only")
@@ -57,7 +62,8 @@ def config25(config):
         raise ValueError("Changed declared pocket protocol")
     if config.get('acceptance_policy') != ('fixed_step' if fixed else None):
         raise ValueError('Changed declared step acceptance policy')
-    nominal = (0.3 if config.get('arm') == 'protenix' else 0.01) if fixed else (0.3 if lr03 else 0.03)
+    nominal = (FIXED25_LRBOOST_RATES.get(config.get('arm')) if boosted else
+               ((0.3 if config.get('arm') == 'protenix' else 0.01) if fixed else (0.3 if lr03 else 0.03)))
     expected = {
         "version": version, "n_atoms": 25,
         "steps": 10000, "seed": 17, "initial_step_size": nominal,
@@ -76,6 +82,25 @@ def config25(config):
     }
     if config.get("repair_schedule") != (schedule if active else None):
         raise ValueError("Changed declared repair schedule")
+    if boosted:
+        preserved = {
+            "loss": {"version": "repair-failure-guidance-v1", "extra_valid_weight": 1.0,
+                     "partial_weight": 1.0, "local_bond_weight": 0.1,
+                     "component_cut_weight": 0.1, "nonempty_weight": 0.1},
+            "search": {"max_edits": 3, "checks_per_depth": 32, "beam_width": 4,
+                       "probability_weight": 1.0, "probability_floor": 1e-12},
+            "progress_search": {"version": "repair-progress-v1", "max_edits": 6,
+                "checks_per_depth": 32, "beam_width": 4, "probability_weight": 1.0,
+                "allow_atom_edits": False, "atom_edit_penalty": 3.0, "max_atom_edits": 1},
+            "fixture": "tests/data/brd4_3mxf/fixture_25.json",
+        }
+        allowed = set(expected) | set(preserved) | {"arm", "chemistry_enabled", "repair_schedule", "pocket", "acceptance_policy", "label"}
+        if set(config) != allowed or any(config.get(k) != v for k, v in preserved.items()):
+            raise ValueError("LR-boost version changes only declared rates; objective/search/fixture fields must stay fixed")
+        if any(type(config.get(k)) is not int for k in ("n_atoms", "steps", "seed", "max_backtracks", "pilot_steps", "allocation_seconds")):
+            raise ValueError("LR-boost dimensions, key and budgets must be exact integers")
+        if type(config.get("initial_step_size")) not in (int, float) or not math.isfinite(config["initial_step_size"]):
+            raise ValueError("LR-boost learning rate must be finite")
     return config
 
 
@@ -83,7 +108,7 @@ def update_parameters(config):
     """Route the authenticated nominal rate to pilots and production alike."""
     config25(config)
     result = {"step_size": config["initial_step_size"], "max_backtracks": config["max_backtracks"]}
-    if config['version'] == FIXED25_VERSION:
+    if config['version'] in FIXED25_VERSIONS:
         result['acceptance_policy'] = 'fixed_step'
     return result
 
@@ -91,7 +116,9 @@ def update_parameters(config):
 def verify_attempt_rates(result, config):
     """Check executed trial rates, including honest fallback/no-op updates."""
     policy = update_parameters(config)
-    if config['version'] == FIXED25_VERSION and result.get('acceptance_policy') != 'fixed_step':
+    fixed = config['version'] in FIXED25_VERSIONS
+    boosted = config['version'] == FIXED25_LRBOOST_VERSION
+    if fixed and result.get('acceptance_policy') != 'fixed_step':
         raise ValueError('Actual optimization used an unexpected acceptance policy')
     for update in result["updates"]:
         attempts = update["attempts"]
@@ -103,8 +130,23 @@ def verify_attempt_rates(result, config):
         selected = update["selected_trial"]
         if not 0 <= selected < len(attempts) or update["accepted_step_size"] != attempts[selected]["rate"]:
             raise ValueError("Actual selected rate differs from attempted trial")
-        if config['version'] == FIXED25_VERSION and (update.get('fallback_used') is not False or selected != 0):
+        if fixed and (update.get('fallback_used') is not False or selected != 0):
             raise ValueError('Fixed steps cannot be relabelled as a search/fallback')
+        if boosted:
+            candidate = attempts[0]
+            numeric = [update.get(k) for k in ('fixed_before', 'fixed_after', 'accepted_step_size')]
+            numeric += [candidate.get(k) for k in ('rate', 'autodiff_surrogate', 'independent_primal_surrogate', 'repair_weight')]
+            components = candidate.get('components', {})
+            if (update.get('selection_policy') != 'fixed_step' or type(selected) is not int
+                    or type(candidate.get('trial')) is not int or candidate['trial'] != 0
+                    or not components or not isinstance(components, dict)
+                    or any(type(v) not in (int, float) or not math.isfinite(v) for v in numeric + list(components.values()))
+                    or update.get('fixed_after') != candidate.get('independent_primal_surrogate')
+                    or update.get('repair_weight') != candidate.get('repair_weight')
+                    or type(candidate.get('strict')) is not bool or type(update.get('no_op')) is not bool
+                    or type(update.get('fixed_increased')) is not bool
+                    or update['fixed_increased'] is not (update['fixed_after'] > update['fixed_before'])):
+                raise ValueError('LR-boost update must authenticate its one finite full-rate candidate')
     return policy
 
 
@@ -151,7 +193,7 @@ def verify_readiness(path, expected_sha, config_path, manifest):
     for proof in assessment["proofs"]:
         if sha(proof["path"]) != proof["sha256"]:
             raise ValueError("Native proof changed")
-    if config["version"] in (PROTENIX_LR03_VERSION, FIXED25_VERSION):
+    if config["version"] in (PROTENIX_LR03_VERSION, *FIXED25_VERSIONS):
         summary = json.loads(path.with_name("summary.json").read_text())
         pilot = json.loads((path.parent / "early_pilot/report.json").read_text())
         if summary.get("optimization_parameters") != update_parameters(config) or pilot["status"] != "passed" or len(pilot["updates"]) != 10:
@@ -159,7 +201,17 @@ def verify_readiness(path, expected_sha, config_path, manifest):
         if config['arm'] == 'protenix':
             initial_match = summary.get('baseline_initialization_match', {})
             if initial_match.get('status') != 'passed' or initial_match.get('job') != '29770179' or initial_match.get('sha256') != '351789aa62d3ff111a4d2050a062cf844a1f29a87a7e352af465ff4299fd1bbf':
-                raise ValueError('Fresh LR0.3 initialization differs from original run')
+                raise ValueError('Fresh declared-rate initialization differs from original run')
+            if config['version'] == FIXED25_LRBOOST_VERSION:
+                raw = summary.get('native_gradient_checks', {})
+                updates = raw.get('updates', [])
+                if (raw.get('status') != 'passed' or raw.get('requested_updates') != 1 or len(updates) != 1
+                        or raw.get('primal_every_step') is not True or raw.get('acceptance_policy') != 'best_primal'
+                        or len(updates[0].get('attempts', [])) != 1
+                        or updates[0].get('selected_trial') != 0
+                        or updates[0].get('accepted_step_size') != config['initial_step_size']
+                        or updates[0]['attempts'][0].get('step_size') != config['initial_step_size']):
+                    raise ValueError('LR-boost native Protenix one-step probe did not execute the declared single full-rate candidate')
         verify_attempt_rates(pilot, config)
         if config['arm'] == 'boltz2_chemistry':
             high = json.loads((path.parent / 'high_pilot/report.json').read_text())

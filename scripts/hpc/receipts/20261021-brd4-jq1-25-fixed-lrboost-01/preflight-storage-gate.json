@@ -1,0 +1,66 @@
+{
+  "version": "fixed25-three-arm-lrboost-storage-v1",
+  "utc": "2026-10-21T21:36:37.768105+00:00",
+  "phase": "preflight",
+  "status": "passed",
+  "placement": {
+    "protenix": "work3",
+    "boltz2": "work3",
+    "boltz2_chemistry": "zhome"
+  },
+  "output_parents": {
+    "protenix": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-lrboost-01/run-protenix",
+    "boltz2": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-lrboost-01/run-boltz2",
+    "boltz2_chemistry": "/zhome/95/e/206121/mosaic-runs/20261021-brd4-jq1-25-fixed-lrboost-01/run-boltz2_chemistry"
+  },
+  "filesystems": {
+    "work3": {
+      "status": "passed",
+      "filesystem": "work3",
+      "raw_quota": "HPE-Storage-Servers (disks, storagepool 1): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nHPE-Storage-Servers (NVME, storagepool 2): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (disks, storagepool 3): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks, storagepool 4): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks added in 2024, storagepool 5): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (NVMEs added in 2024, storagepool 6): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||   83.23 GiB|  100.00 GiB||   331698| 20000000\n\n",
+      "quota": {
+        "finite_pools": [
+          {
+            "used_bytes_upper": 90194313216,
+            "hard_bytes_lower": 107374182400,
+            "remaining_bytes": 17179869184,
+            "remaining_files": 19668302
+          }
+        ],
+        "available_bytes_lower": 17179869184,
+        "available_files_lower": 19668302
+      },
+      "projected_bytes": 1073741824,
+      "stale_bytes_subtracted": 1887005583,
+      "disk_free_bytes": 557223276707840,
+      "available_bytes_conservative": 15292863601,
+      "required_bytes": 5368709120,
+      "reserve_bytes": 4294967296,
+      "file_reserve": 100000,
+      "filesystem_inode_observation": {
+        "f_files": 0,
+        "f_ffree": 0,
+        "f_favail": 0
+      },
+      "available_files_lower": 19668302,
+      "filesystem_inode_reporting": "unreported_all_zero",
+      "file_headroom_scope": "Mandatory minimum of all authenticated finite user-quota pools",
+      "inode_limitation": "All-zero statvfs tuple supplies no independent filesystem inode proof",
+      "limitation": "Observations are conservative budget checks, not storage reservations"
+    }
+  },
+  "raw_quotas": {
+    "work3": "HPE-Storage-Servers (disks, storagepool 1): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nHPE-Storage-Servers (NVME, storagepool 2): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (disks, storagepool 3): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks, storagepool 4): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks added in 2024, storagepool 5): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (NVMEs added in 2024, storagepool 6): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||   83.23 GiB|  100.00 GiB||   331698| 20000000\n\n"
+  },
+  "filesystem_inode_observations": {
+    "work3": {
+      "f_files": 0,
+      "f_ffree": 0,
+      "f_favail": 0
+    }
+  },
+  "reserve_bytes_per_filesystem": 4294967296,
+  "file_reserve_per_filesystem": 100000,
+  "scope": "All three fresh high-rate trajectories; no existing trajectory resumed or replaced",
+  "limitation": "Fresh conservative observations are not reservations; home inode evidence is physical filesystem scope only"
+}

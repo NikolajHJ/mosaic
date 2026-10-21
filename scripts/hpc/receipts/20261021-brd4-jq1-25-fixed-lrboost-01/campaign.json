@@ -1,0 +1,131 @@
+{
+  "tag": "20261021-brd4-jq1-25-fixed-lrboost-01",
+  "status": "Higher-rate full CPU598passed; actual CPU/callbackDONE. All3newrate nativeGPUvalidations submitted andPEND at23:41:11Paris; no longIDs established.",
+  "authorization": {
+    "fresh_updates_each": 10000,
+    "rates": {
+      "protenix": 3.0,
+      "boltz2": 0.05,
+      "boltz2_chemistry": 0.05
+    },
+    "version": "mosaic-brd4-jq1-25-fixed-step-lrboost-v1",
+    "one_finite_candidate": true,
+    "acceptance_policy": "fixed_step",
+    "max_backtracks": 1,
+    "both_boltz_arms_explicitly_clarified": true
+  },
+  "predecessor_stop_assessment_sha256": "8fc3ce7a6fffd0df8bb30a23ad1f37c9954beb5a572ee2b3ed8746206778800c",
+  "stopped_native_jobs": [
+    "29778203",
+    "29778204"
+  ],
+  "retired_pending_reports": [
+    "29778246",
+    "29778247",
+    "29778249"
+  ],
+  "preserved_completed_protenix": "29777709",
+  "source_sealed": true,
+  "cpu_submitted": true,
+  "native_submitted": true,
+  "long_submitted": false,
+  "historical_reports_preserved": [
+    "http://127.0.0.1:8776/report.html",
+    "http://127.0.0.1:8777/report.html"
+  ],
+  "source": {
+    "status": "passed",
+    "scope": "Local standard-library AST/JSON/byte/hash packaging only; no tests or numerical execution",
+    "source_files": 610,
+    "archive_members": 611,
+    "manifest_sha256": "9605a5295b9fe8dfe29f15410b3a029038ea8a18feb16907f043abd5be13c323",
+    "archive_bytes": 39582615,
+    "archive_sha256": "e1a100aebf44698515ba161c1a001e338a902b250bf1a737f888df33f55098d1",
+    "source_root": "/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-lrboost-01/source",
+    "unchanged_src_files": 145,
+    "modified_base_files": [
+      ".gitattributes",
+      "examples/brd4_25_atoms.py",
+      "scripts/campaign25_contract.py"
+    ],
+    "added_files": [
+      "docs/brd4_jq1_25_fixed_lrboost.md",
+      "examples/configs/brd4_jq1_25_fixed_lrboost_boltz2_10000.json",
+      "examples/configs/brd4_jq1_25_fixed_lrboost_boltz2_chemistry_10000.json",
+      "examples/configs/brd4_jq1_25_fixed_lrboost_protenix_10000.json",
+      "scripts/fixed25_lrboost_ops.py",
+      "scripts/fixed25_lrboost_storage.py",
+      "scripts/fixed25_recover_storage.py",
+      "scripts/fixed25_split_storage.py",
+      "scripts/hpc/fixed25_lrboost_cpu.lsf",
+      "scripts/hpc/fixed25_lrboost_stage.lsf",
+      "tests/test_fixed25_lrboost_contract.py",
+      "tests/test_fixed25_lrboost_ops.py",
+      "tests/test_fixed25_lrboost_storage.py"
+    ],
+    "git_index_and_current_bytes_equal": true,
+    "pure_storage_helpers_match_original_authenticated_manifests": true
+  },
+  "new_report": null,
+  "initial_jobs": {
+    "cpu": "29778388",
+    "after_cpu": "29778391"
+  },
+  "preflight_storage": {
+    "status": "passed",
+    "required_bytes": 5368709120,
+    "available_bytes": 15292863601
+  },
+  "cpu_result": {
+    "status": "passed",
+    "job": "29778388",
+    "after_cpu_job": "29778391",
+    "tests": 598,
+    "groups": {
+      "contracts": 266,
+      "legacy": 239,
+      "mapping": 34,
+      "chemistry": 59
+    },
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "legacy_deliberately_deselected": 3,
+    "certificate": {
+      "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-lrboost-01/cpu-certificate.json",
+      "bytes": 2954,
+      "sha256": "dc76df74f1432f59e4c5f6fb5491a1258752b639df893cf75bb5a6968e481630"
+    }
+  },
+  "native_jobs": {
+    "protenix": {
+      "native": "29778424",
+      "callback": "29778425"
+    },
+    "boltz2": {
+      "native": "29778426",
+      "callback": "29778427"
+    },
+    "boltz2_chemistry": {
+      "native": "29778428",
+      "callback": "29778429"
+    }
+  },
+  "native_readiness_passed": false,
+  "cpu_evidence": {
+    "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-lrboost-01/cpu-evidence-01.tar.gz",
+    "bytes": 62340,
+    "sha256": "d7125dff611fc3c49826ea45fe80419c05505a4c0ed37977178921be6d8bf174",
+    "files": 56
+  },
+  "last_observation": {
+    "utc": "2026-10-21T21:42:21.301786+00:00",
+    "native_status": {
+      "protenix": "PEND",
+      "boltz2": "PEND",
+      "boltz2_chemistry": "PEND"
+    },
+    "reason": "physical GPU resource availability; callbacks await own-ended dependencies",
+    "long_jobs_verified": false
+  }
+}

@@ -46,7 +46,7 @@ def main():
     if not os.environ.get("LSB_JOBID"):
         raise RuntimeError("All numerical work requires allocated DTU HPC")
     sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
-    from campaign25_contract import config25, sha, verify_cpu_certificate, verify_readiness, verify_frozen_response, update_parameters, verify_attempt_rates, MODEL_DIGESTS, REFERENCE_SHA, PROTENIX_LR03_VERSION, FIXED25_VERSION
+    from campaign25_contract import config25, sha, verify_cpu_certificate, verify_readiness, verify_frozen_response, update_parameters, verify_attempt_rates, MODEL_DIGESTS, REFERENCE_SHA, PROTENIX_LR03_VERSION, FIXED25_VERSIONS
 
     config = config25(json.loads(args.config.read_text()))
     verify_cpu_certificate(args.cpu_certificate, args.cpu_certificate_sha256, args.manifest)
@@ -182,7 +182,7 @@ def main():
         initial = GraphLogits.from_graph(initialize_graph(hard, config["initialization"]))
         np.savez_compressed(args.output / "initialization.npz", X=np.asarray(initial.graph().X), E_upper=np.asarray(initial.graph().E_upper), atom_logits=np.asarray(initial.atoms), bond_logits=np.asarray(initial.bonds), key_data=np.asarray(jax.random.key_data(key)))
         report["initialization_sha256"] = sha(args.output / "initialization.npz")
-        if arm == 'protenix' and config["version"] in (PROTENIX_LR03_VERSION, FIXED25_VERSION):
+        if arm == 'protenix' and config["version"] in (PROTENIX_LR03_VERSION, *FIXED25_VERSIONS):
             previous_path = Path('/zhome/95/e/206121/mosaic-runs/20261021-brd4-jq1-25-protenix-02/run-protenix/payload/study/initialization.npz')
             if sha(previous_path) != '351789aa62d3ff111a4d2050a062cf844a1f29a87a7e352af465ff4299fd1bbf':
                 raise ValueError('Original LR0.03 initialization evidence changed')
@@ -204,7 +204,7 @@ def main():
         def raw_check(graph, directory):
             if arm == "protenix":
                 return check_protenix_raw_gradients(loss, graph, key=key, directory=directory,
-                    fixed_rate=config['initial_step_size'] if config['version'] == FIXED25_VERSION else None)
+                    fixed_rate=config['initial_step_size'] if config['version'] in FIXED25_VERSIONS else None)
             from mosaic.small_molecule.boltz2.checks import check_affinity_gradients
             return check_affinity_gradients(loss, graph, key, directory)
 
