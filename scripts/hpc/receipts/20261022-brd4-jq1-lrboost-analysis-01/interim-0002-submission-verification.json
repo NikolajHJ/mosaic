@@ -1,0 +1,168 @@
+{
+  "status": "passed",
+  "scope": "Independent stdlib JSON/schema/actual raw scheduler and exact submission vector verification; no local scientific/numerical work",
+  "utc": "2026-10-22T09:13:55.911939+00:00",
+  "report_job": "29781041",
+  "report_status": "RUN",
+  "submission": {
+    "phase": "interim",
+    "arm": "none",
+    "args": [
+      "bsub",
+      "-q",
+      "hpc",
+      "-n",
+      "4",
+      "-R",
+      "span[hosts=1]",
+      "-R",
+      "rusage[mem=8GB]",
+      "-W",
+      "01:00",
+      "-J",
+      "mosaic-lrboost-analysis-interim-0002",
+      "-oo",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/interim-0002/stdout.%J.log",
+      "-eo",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/interim-0002/stderr.%J.log",
+      "bash",
+      "-l",
+      "/work3/s234818/mosaic/releases/20261022-brd4-jq1-lrboost-analysis-01/source/scripts/hpc/jq1_lrboost_analysis_stage.lsf",
+      "/work3/s234818/mosaic/releases/20261022-brd4-jq1-lrboost-analysis-01/source",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01",
+      "214c19387649a741a7ad42f1e3e027061631993b4ae33425071aba9005fdcbcc",
+      "interim",
+      "none",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/interim-0002"
+    ],
+    "dependency": null,
+    "outcome": "submitted",
+    "utc": "2026-10-22T09:12:04.978732+00:00",
+    "returncode": 0,
+    "stdout": "Job <29781041> is submitted to queue <hpc>.\n",
+    "stderr": "",
+    "job_id": "29781041"
+  },
+  "guard_sha256": "af0f4a4a968dd85d13f3a06e6e2d6d3ea268a83bab6afaa554632463cb7d5d3a",
+  "entry_gate": {
+    "content": {
+      "status": "passed",
+      "phase": "interim",
+      "utc": "2026-10-22T09:12:09.370592+00:00",
+      "scope": "New work3 diagnostics/report only; original studies unchanged; full remaining native work3 projections retained",
+      "reserve_bytes": 4294967296,
+      "file_reserve": 100000,
+      "raw_quota": "HPE-Storage-Servers (disks, storagepool 1): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nHPE-Storage-Servers (NVME, storagepool 2): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (disks, storagepool 3): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks, storagepool 4): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks added in 2024, storagepool 5): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (NVMEs added in 2024, storagepool 6): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||   86.58 GiB|  100.00 GiB||   402596| 20000000\n\n",
+      "quota": {
+        "finite_pools": [
+          {
+            "used_bytes_upper": 93415538688,
+            "hard_bytes_lower": 107374182400,
+            "remaining_bytes": 13958643712,
+            "remaining_files": 19597404
+          }
+        ],
+        "available_bytes_lower": 13958643712,
+        "available_files_lower": 19597404
+      },
+      "inode": {
+        "available_files_lower": 19597404,
+        "filesystem_inode_reporting": "unreported_all_zero",
+        "file_headroom_scope": "Mandatory minimum of all authenticated finite user-quota pools",
+        "inode_limitation": "All-zero statvfs tuple supplies no independent filesystem inode proof"
+      },
+      "filesystem_inode_observation": {
+        "f_files": 0,
+        "f_ffree": 0,
+        "f_favail": 0
+      },
+      "current_native_bytes": {
+        "protenix": 990112142,
+        "boltz2": 1017713957
+      },
+      "full_native_projections": {
+        "protenix": 1514341824,
+        "boltz2": 1820641824
+      },
+      "outstanding_native_bytes": 1327157549,
+      "analysis_allowance_bytes": 2684354560,
+      "diagnostic_per_arm_hard_output_bytes": 268435456,
+      "stale_bytes_subtracted": 4424086667,
+      "available_bytes_conservative": 9534557045,
+      "required_bytes": 8306479405
+    },
+    "file": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/interim-0002/storage-interim/gate.json",
+      "bytes": 3462,
+      "sha256": "6b7fd2ec8a3311b1a5bb0531786c710a554d10a7d11327231daa47961edd406a"
+    }
+  },
+  "observed_jobs": {
+    "29781041": "RUN",
+    "29780827": "RUN",
+    "29780821": "PEND",
+    "29780822": "PEND",
+    "29780823": "PEND",
+    "29780824": "PEND",
+    "29780830": "PEND",
+    "29780814": "DONE",
+    "29780815": "DONE",
+    "29780826": "DONE",
+    "29780825": "DONE",
+    "29779179": "DONE"
+  },
+  "chemistry_summary": {
+    "file": {
+      "path": "/zhome/95/e/206121/mosaic-runs/20261021-brd4-jq1-25-fixed-lrboost-01/run-boltz2_chemistry/payload/study/summary.json",
+      "bytes": 311775359,
+      "sha256": "aa96fa193252b2205a89f31fefc352b4303a4878fe04f314146cbe8521c05cd0"
+    },
+    "status": "passed",
+    "keys": [
+      "cases",
+      "chemistry_enabled",
+      "composition_guidance",
+      "config",
+      "config_sha256",
+      "context_digest",
+      "context_file_sha256",
+      "diffusion_gradient",
+      "elapsed_seconds",
+      "environment",
+      "frozen_identity_after",
+      "initialization_sha256",
+      "job_id",
+      "mode",
+      "model_digest",
+      "native_gradient_checks",
+      "native_hard_parity",
+      "native_identity",
+      "optimization_parameters",
+      "pocket_definition_sha256",
+      "pocket_pose_audit",
+      "pocket_validation_status",
+      "source",
+      "source_manifest_sha256",
+      "status",
+      "terminal_gradient_checks"
+    ],
+    "errors": null
+  },
+  "chemistry_terminal_verification": "Original summary reports passed; allocated independent collector29780827 stillRUN at this observation",
+  "original_scientific_runs_unchanged": true,
+  "first_caller_attempt": {
+    "outcome": "failed before submit",
+    "reason": "Guard matched archive/evidence directories; read-only inspection confirmed nointerim0002 orunknownsubmission; subsequentcaller scoped anchoredinterim-parent regex",
+    "evidence": [
+      "submit-interim-0002-result.json",
+      "inspect-interim-0002-guard-stdout.txt"
+    ]
+  },
+  "input_hashes": {
+    "submit-interim-0002-attempt02-stdout.txt": "fa1d9434fde371a0f818c0d14bed4d16511bdc4996d95288fb74262ccc39ff71",
+    "submit-interim-0002-attempt02-result.json": "58f00c59a73cc828d8f74dfad323de155ee8f73110c03d3c2e17f506ff8bf33d",
+    "status-10-stdout.txt": "c1353a6347314a542c3ff469c6ef99b34cb1bc429cd7dd52918e27e1642af0a7",
+    "status-10-result.json": "f2e74165eb32104c02c6e8d0d0734a7e7b0289179a1bb8b522f636c582f885ac",
+    "inspect-interim-0002-guard-stdout.txt": "a8da728c60983698a837f9d9c5f655fb16c84cd223f3fbaa074d74d37f35c623"
+  }
+}

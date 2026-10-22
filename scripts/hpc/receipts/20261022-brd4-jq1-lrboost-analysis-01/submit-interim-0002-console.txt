@@ -1,0 +1,23 @@
+Authenticated 16 immutable source files
+Authenticated 610 immutable source files
+
+{
+  "started_utc": "2026-10-22T09:11:26.511272+00:00",
+  "command": [
+    "ssh",
+    "-T",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=15",
+    "-o",
+    "ConnectionAttempts=1",
+    "dtu-hpc",
+    "bash -l -s"
+  ],
+  "script": "submit-interim-0002.sh",
+  "script_sha256": "9464093dd74864afb32371e361d2675fa1bd62a8f00ff60122dcefb71bcf3ea1",
+  "outcome": "failed",
+  "returncode": 1,
+  "finished_utc": "2026-10-22T09:11:29.233035+00:00"
+}

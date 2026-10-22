@@ -1,0 +1,172 @@
+{
+  "items": [
+    {
+      "name": "interim-0001",
+      "is_dir": true,
+      "is_symlink": false,
+      "children": [
+        "payload",
+        "scheduler-at-submission.txt",
+        "stderr.29780829.log",
+        "stdout.29780829.log",
+        "storage-interim",
+        "submission-started.json",
+        "submission.json"
+      ],
+      "submission-started.json": {
+        "phase": "interim",
+        "arm": "none",
+        "args": [
+          "bsub",
+          "-q",
+          "hpc",
+          "-n",
+          "4",
+          "-R",
+          "span[hosts=1]",
+          "-R",
+          "rusage[mem=8GB]",
+          "-W",
+          "01:00",
+          "-J",
+          "mosaic-lrboost-analysis-interim-0001",
+          "-oo",
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/interim-0001/stdout.%J.log",
+          "-eo",
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/interim-0001/stderr.%J.log",
+          "bash",
+          "-l",
+          "/work3/s234818/mosaic/releases/20261022-brd4-jq1-lrboost-analysis-01/source/scripts/hpc/jq1_lrboost_analysis_stage.lsf",
+          "/work3/s234818/mosaic/releases/20261022-brd4-jq1-lrboost-analysis-01/source",
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01",
+          "214c19387649a741a7ad42f1e3e027061631993b4ae33425071aba9005fdcbcc",
+          "interim",
+          "none",
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/interim-0001"
+        ],
+        "dependency": null,
+        "outcome": "unknown",
+        "utc": "2026-10-22T08:38:42.267511+00:00"
+      },
+      "submission.json": {
+        "phase": "interim",
+        "arm": "none",
+        "args": [
+          "bsub",
+          "-q",
+          "hpc",
+          "-n",
+          "4",
+          "-R",
+          "span[hosts=1]",
+          "-R",
+          "rusage[mem=8GB]",
+          "-W",
+          "01:00",
+          "-J",
+          "mosaic-lrboost-analysis-interim-0001",
+          "-oo",
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/interim-0001/stdout.%J.log",
+          "-eo",
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/interim-0001/stderr.%J.log",
+          "bash",
+          "-l",
+          "/work3/s234818/mosaic/releases/20261022-brd4-jq1-lrboost-analysis-01/source/scripts/hpc/jq1_lrboost_analysis_stage.lsf",
+          "/work3/s234818/mosaic/releases/20261022-brd4-jq1-lrboost-analysis-01/source",
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01",
+          "214c19387649a741a7ad42f1e3e027061631993b4ae33425071aba9005fdcbcc",
+          "interim",
+          "none",
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/interim-0001"
+        ],
+        "dependency": null,
+        "outcome": "submitted",
+        "utc": "2026-10-22T08:38:42.267511+00:00",
+        "returncode": 0,
+        "stdout": "Job <29780829> is submitted to queue <hpc>.\n",
+        "stderr": "",
+        "job_id": "29780829"
+      }
+    },
+    {
+      "name": "interim-0001.tar.gz",
+      "is_dir": false,
+      "is_symlink": false
+    },
+    {
+      "name": "interim-0001.tar.gz.metadata",
+      "is_dir": true,
+      "is_symlink": false,
+      "children": [
+        "job-29780814.txt",
+        "job-29780829.txt"
+      ]
+    },
+    {
+      "name": "interim-0001.tar.gz.preflight",
+      "is_dir": true,
+      "is_symlink": false,
+      "children": [
+        "quota_preflight.json",
+        "quota_work3.txt"
+      ]
+    },
+    {
+      "name": "interim-0001.tar.receipt.json",
+      "is_dir": false,
+      "is_symlink": false
+    },
+    {
+      "name": "interim-delivery-evidence-01",
+      "is_dir": true,
+      "is_symlink": false,
+      "children": [
+        "analysis",
+        "collector-boltz2-scheduler.txt",
+        "collector-protenix-scheduler.txt",
+        "evidence_manifest.json",
+        "origin-map.json",
+        "report-final-scheduler.txt",
+        "source"
+      ]
+    },
+    {
+      "name": "interim-delivery-evidence-01.receipt.json",
+      "is_dir": false,
+      "is_symlink": false
+    },
+    {
+      "name": "interim-delivery-evidence-01.tar.gz",
+      "is_dir": false,
+      "is_symlink": false
+    }
+  ],
+  "jobs": {
+    "cpu": "29780814",
+    "native_jobs": {
+      "protenix": "29779177",
+      "boltz2": "29779178",
+      "boltz2_chemistry": "29779179"
+    },
+    "report_manifest": "214c19387649a741a7ad42f1e3e027061631993b4ae33425071aba9005fdcbcc",
+    "diagnostics": {
+      "protenix": "29780821",
+      "boltz2": "29780823"
+    },
+    "diagnostic_captures": {
+      "protenix": "29780822",
+      "boltz2": "29780824"
+    },
+    "collectors": {
+      "protenix": "29780825",
+      "boltz2": "29780826",
+      "boltz2_chemistry": "29780827"
+    },
+    "active_interim": "29780829",
+    "interim_parent": "interim-0001",
+    "final": "29780830",
+    "cpu_certificate_job": "29780815"
+  },
+  "guard_exists": false,
+  "jobs_tmp_exists": false
+}

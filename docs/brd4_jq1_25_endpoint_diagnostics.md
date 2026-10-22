@@ -114,3 +114,42 @@ remained PEND, chemistry **29779179** remained RUN, and its completion collector
 and final presentation were pending their original dependencies. No new
 diagnostic result or cause is claimed. Continue monitoring these exact jobs;
 publish verified findings and terminal chemistry evidence in new editions.
+
+
+At 11:13:55 Paris on 22 October, chemistry **29779179** was actually DONE on
+its original GPU allocation. Its saved prefix contains **10000 contiguous
+updates / 10001 states**, and its original 311775359-byte summary reports
+`passed`, SHA-256
+`aa96fa193252b2205a89f31fefc352b4303a4878fe04f314146cbe8521c05cd0`.
+The independent allocated completion collector **29780827** was still RUN;
+its full scientific/frame evidence had not yet been independently delivered.
+The Pro/Bol original terminal failures remain unchanged.
+
+Because chemistry reached the final saved-update milestone, a guarded metadata
+operation submitted unique interim **29781041**, parent `interim-0002`, at
+09:12:04 UTC. It authenticated both immutable releases, the CPU certificate and
+all original arm input pins, held `dispatch.lock`, verified the prior publication,
+actual previous-interim DONE/LSF and final PEND, checked contiguous chemistry
+JSONL, and atomically recorded the actual new job. No scientific job changed.
+An earlier caller guard rejected archive/evidence directories before submission;
+its failed receipt and subsequent read-only inspection are preserved. Only that
+unsealed caller's parent-name filter changed; sealed source/gates are unchanged.
+
+The new renderer was actually RUN with its allocated storage gate passed:
+8306479405 required versus 9534557045 conservatively available bytes, retaining
+4 GiB and 100000 files. Separate diagnostic GPUs **29780821/29780823** and
+captures **29780822/29780824** remained PEND; final presentation **29780830**
+remained PEND on its original dependencies. No diagnostic finding is claimed.
+Edition-0001 stays published, with chemistry milestone9500 until a new report
+passes rendering, exact archive/member verification, publication, HTTP and browser
+QA. Fresh delivery02/stream helpers and its independent verifier have local
+stdlib AST review only and have not transferred or published any new edition.
+
+At 11:18:34 Paris chemistry collector **29780827** was actually DONE/hpc, with
+its assessment passed, scientific_status passed, 10000 updates/10001 states and
+all_probability_frames_verified=true. Its original scientific job **29779179**
+was DONE/gpul40s. The collector assessment is bound by the raw status receipt;
+independent local delivery-byte/LSF/proof audit is still pending. Interim29781041
+remained RUN, both separate diagnostics/captures PEND, final29780830 PEND. No
+new edition was published; original Pro/Bol failures and all immutable artifacts
+remain unchanged.

@@ -1,0 +1,20 @@
+{
+  "started_utc": "2026-10-22T09:10:17.210804+00:00",
+  "command": [
+    "ssh",
+    "-T",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=15",
+    "-o",
+    "ConnectionAttempts=1",
+    "dtu-hpc",
+    "bash -l -s"
+  ],
+  "script": "heartbeat-status-09.sh",
+  "script_sha256": "7c9541a6f8680d25c5cebe5a401caa893b7250c01958ab6ed939aabe8658c8df",
+  "outcome": "completed",
+  "returncode": 0,
+  "finished_utc": "2026-10-22T09:10:20.585339+00:00"
+}

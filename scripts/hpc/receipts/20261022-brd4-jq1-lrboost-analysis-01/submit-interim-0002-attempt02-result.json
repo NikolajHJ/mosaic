@@ -1,0 +1,20 @@
+{
+  "started_utc": "2026-10-22T09:11:56.927727+00:00",
+  "command": [
+    "ssh",
+    "-T",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=15",
+    "-o",
+    "ConnectionAttempts=1",
+    "dtu-hpc",
+    "bash -l -s"
+  ],
+  "script": "submit-interim-0002-attempt02.sh",
+  "script_sha256": "8e511b4225bca495cd25f46d06188874a1eb6e46fb6301082cdea60344635ed6",
+  "outcome": "completed",
+  "returncode": 0,
+  "finished_utc": "2026-10-22T09:12:06.763567+00:00"
+}

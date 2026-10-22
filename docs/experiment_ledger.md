@@ -6004,3 +6004,35 @@ At11:03:11Paris diagnostics29780821/29780823 and captures22/24 remained PEND;
 chemistry29779179 RUN, completion collector29780827/final29780830 pending original
 dependencies. No diagnostic finding/pass yet. Monitoring continues with the new
 published milestone receipt and exact submitted jobs, without modifying saved runs.
+
+
+## 22 October 2026 — chemistry full budget and second saved report submitted
+
+At11:13:55Paris original chemistry29779179 actualDONE/gpul40s,10000 contiguous
+updates/10001states; original summary reports passed,311775359bytes SHA
+`aa96fa193252b2205a89f31fefc352b4303a4878fe04f314146cbe8521c05cd0`.
+Independent collector29780827 was RUN, so full terminal/frame verification and
+delivery were still pending. Original failed Pro/Bol trajectories stay failed.
+
+New saved-only interim29781041 (`interim-0002`) actuallysubmitted09:12:04UTC,
+thenRUN/hpc with unchanged source16/CPU278/originalsource610/input pins. Full
+entry storage gate passed8306479405required/9534557045available,4GiBreserve and
+100000-file headroom retained. Lock/prior publication/actualjobs/exclusive
+markers/contiguouschemistry prefix guards authenticated before submission;
+only one new report job. The first caller guard failed before submission on
+archive directory names; failure and read-only inspection preserved, with a
+narrower unsealed caller filter and no sealed tooling/scientific change.
+
+Both separate diagnostics29780821/29780823 and captures22/24 remainPEND;
+existing final29780830 remainsPEND. No diagnostic findings or new publication
+are established. Published chemistry milestone remains9500 in edition0001.
+All original runs, old reports/servers and unrelated PDF/OneNote changes preserved.
+
+At 11:18:34 Paris chemistry collector **29780827** was actually DONE/hpc, with
+its assessment passed, scientific_status passed, 10000 updates/10001 states and
+all_probability_frames_verified=true. Its original scientific job **29779179**
+was DONE/gpul40s. The collector assessment is bound by the raw status receipt;
+independent local delivery-byte/LSF/proof audit is still pending. Interim29781041
+remained RUN, both separate diagnostics/captures PEND, final29780830 PEND. No
+new edition was published; original Pro/Bol failures and all immutable artifacts
+remain unchanged.
