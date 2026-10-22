@@ -184,5 +184,26 @@
     "status_preserved": "PAUSED",
     "schedule_preserved": true,
     "hpc_native_callbacks_automatic_independent_of_desktop_monitor": true
+  },
+  "final_queued_checkpoint": {
+    "utc": "2026-10-22T10:38:23.106259+00:00",
+    "states": {
+      "29780821": "PEND",
+      "29780822": "PEND",
+      "29780823": "PEND",
+      "29780824": "PEND",
+      "29780830": "PEND",
+      "29783703": "PEND",
+      "29783705": "PEND",
+      "29783707": "PEND",
+      "29783708": "PEND",
+      "29783710": "PEND",
+      "29783711": "PEND",
+      "29781363": "DONE",
+      "29781364": "EXIT"
+    },
+    "new_native_passes": 0,
+    "new_scientific_long_ids": [],
+    "raw_status_sha256": "c15470cea5d28f3f3120f5bdc8b7f3572e2438b65b01a6a562f150f5a93ea3bf"
   }
 }

@@ -1,0 +1,892 @@
+{
+  "utc": "2026-10-22T10:38:23.106259+00:00",
+  "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02",
+  "artifacts": {
+    "source-staging.json": {
+      "file": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/source-staging.json",
+        "bytes": 299,
+        "sha256": "a2847667a5c3c3d2240b084edac79c18221bca64c19346c78cbaeae9cb4cc02d"
+      },
+      "content": {
+        "status": "passed",
+        "source_manifest_sha256": "832f833dd486c2ff305f7e3eb33fc775c87810a2e12a8bc597c5df744699c5d3",
+        "archive_sha256": "306bdf055770e7245bb37de291800cb7da0998af7345aabb7d1b9e0b97057e25",
+        "archive_bytes": 39601171,
+        "files": 622,
+        "utc": "2026-10-22T09:55:19.727495+00:00"
+      }
+    },
+    "initial-submissions-complete.json": {
+      "file": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/initial-submissions-complete.json",
+        "bytes": 2731,
+        "sha256": "a66f7432ed7de6e79f687da9b52b0e412616c89e422545183760c820e0b74aa9"
+      },
+      "content": {
+        "cpu": {
+          "args": [
+            "bsub",
+            "-q",
+            "hpc",
+            "-n",
+            "4",
+            "-R",
+            "span[hosts=1]",
+            "-R",
+            "rusage[mem=4GB]",
+            "-W",
+            "01:00",
+            "-J",
+            "mosaic-jq1-lrreset-cpu",
+            "-oo",
+            "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/cpu/stdout.%J.log",
+            "-eo",
+            "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/cpu/stderr.%J.log",
+            "bash",
+            "-l",
+            "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-release-02/source/scripts/hpc/fixed25_lrreset_cpu.lsf",
+            "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-release-02/source",
+            "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02",
+            "832f833dd486c2ff305f7e3eb33fc775c87810a2e12a8bc597c5df744699c5d3"
+          ],
+          "stdout": "Job <29781363> is submitted to queue <hpc>.\n",
+          "stderr": "",
+          "returncode": 0,
+          "outcome": "submitted",
+          "source_manifest_sha256": "832f833dd486c2ff305f7e3eb33fc775c87810a2e12a8bc597c5df744699c5d3",
+          "utc": "2026-10-22T09:55:20.138204+00:00",
+          "job_id": "29781363"
+        },
+        "callback": {
+          "args": [
+            "bsub",
+            "-q",
+            "hpc",
+            "-n",
+            "1",
+            "-R",
+            "span[hosts=1]",
+            "-R",
+            "rusage[mem=2GB]",
+            "-W",
+            "00:30",
+            "-w",
+            "ended(29781363)",
+            "-J",
+            "mosaic-jq1-lrreset-after-cpu",
+            "-oo",
+            "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/after-cpu/stdout.%J.log",
+            "-eo",
+            "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/after-cpu/stderr.%J.log",
+            "bash",
+            "-l",
+            "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-release-02/source/scripts/hpc/fixed25_lrreset_stage.lsf",
+            "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-release-02/source",
+            "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02",
+            "832f833dd486c2ff305f7e3eb33fc775c87810a2e12a8bc597c5df744699c5d3",
+            "after-cpu",
+            "none",
+            "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/after-cpu",
+            "29781363",
+            "0"
+          ],
+          "stdout": "Job <29781364> is submitted to queue <hpc>.\n",
+          "stderr": "",
+          "returncode": 0,
+          "outcome": "submitted",
+          "source_manifest_sha256": "832f833dd486c2ff305f7e3eb33fc775c87810a2e12a8bc597c5df744699c5d3",
+          "utc": "2026-10-22T09:55:20.629868+00:00",
+          "job_id": "29781364"
+        },
+        "all_initial_submitted": true
+      }
+    },
+    "cpu/submission.json": {
+      "file": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/cpu/submission.json",
+        "bytes": 1158,
+        "sha256": "1efa505f24b3db9708c2dbfe111c09e816f68700e950479b742751c49fff33ad"
+      },
+      "content": {
+        "args": [
+          "bsub",
+          "-q",
+          "hpc",
+          "-n",
+          "4",
+          "-R",
+          "span[hosts=1]",
+          "-R",
+          "rusage[mem=4GB]",
+          "-W",
+          "01:00",
+          "-J",
+          "mosaic-jq1-lrreset-cpu",
+          "-oo",
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/cpu/stdout.%J.log",
+          "-eo",
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/cpu/stderr.%J.log",
+          "bash",
+          "-l",
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-release-02/source/scripts/hpc/fixed25_lrreset_cpu.lsf",
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-release-02/source",
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02",
+          "832f833dd486c2ff305f7e3eb33fc775c87810a2e12a8bc597c5df744699c5d3"
+        ],
+        "stdout": "Job <29781363> is submitted to queue <hpc>.\n",
+        "stderr": "",
+        "returncode": 0,
+        "outcome": "submitted",
+        "source_manifest_sha256": "832f833dd486c2ff305f7e3eb33fc775c87810a2e12a8bc597c5df744699c5d3",
+        "utc": "2026-10-22T09:55:20.138204+00:00",
+        "job_id": "29781363"
+      }
+    },
+    "after-cpu/submission.json": {
+      "file": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/after-cpu/submission.json",
+        "bytes": 1366,
+        "sha256": "a30df1683cebb7e7189a82460e010c44b5cf945b3a84e3b5383a3d9041c4552a"
+      },
+      "content": {
+        "args": [
+          "bsub",
+          "-q",
+          "hpc",
+          "-n",
+          "1",
+          "-R",
+          "span[hosts=1]",
+          "-R",
+          "rusage[mem=2GB]",
+          "-W",
+          "00:30",
+          "-w",
+          "ended(29781363)",
+          "-J",
+          "mosaic-jq1-lrreset-after-cpu",
+          "-oo",
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/after-cpu/stdout.%J.log",
+          "-eo",
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/after-cpu/stderr.%J.log",
+          "bash",
+          "-l",
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-release-02/source/scripts/hpc/fixed25_lrreset_stage.lsf",
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-release-02/source",
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02",
+          "832f833dd486c2ff305f7e3eb33fc775c87810a2e12a8bc597c5df744699c5d3",
+          "after-cpu",
+          "none",
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/after-cpu",
+          "29781363",
+          "0"
+        ],
+        "stdout": "Job <29781364> is submitted to queue <hpc>.\n",
+        "stderr": "",
+        "returncode": 0,
+        "outcome": "submitted",
+        "source_manifest_sha256": "832f833dd486c2ff305f7e3eb33fc775c87810a2e12a8bc597c5df744699c5d3",
+        "utc": "2026-10-22T09:55:20.629868+00:00",
+        "job_id": "29781364"
+      }
+    },
+    "cpu-certificate.json": {
+      "file": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/cpu-certificate.json",
+        "bytes": 3201,
+        "sha256": "6e02392176f71238b1af36564c796615758ba82af7715ebe487bd48030a5a5d5"
+      },
+      "content": {
+        "status": "passed",
+        "source_manifest_sha256": "832f833dd486c2ff305f7e3eb33fc775c87810a2e12a8bc597c5df744699c5d3",
+        "producer_job_id": "29781363",
+        "tests": 723,
+        "proofs": [
+          {
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/cpu/scheduler-final-0.txt",
+            "sha256": "83da730b164e59cfcb1026b66287ea094ddab5a23bcb9866c7c728dceda7684f"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/cpu/stdout.29781363.log",
+            "sha256": "d95f3d16d951679ca881f0d284ed4c8b3893124cfea0de09ca05ad44e3c90dc0"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/cpu/payload/hpc-contract.xml",
+            "sha256": "91d6784815dd80fcececc3928f526356668b6d394b2d4818778abb595fee8d25",
+            "passed": 391
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/cpu/payload/legacy.xml",
+            "sha256": "92108335a0b6de387ef8cdccee97a862a6fa8b19f1b8a1ca6460ae4727f50b55",
+            "passed": 239
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/cpu/payload/native-mapping.xml",
+            "sha256": "f6124175f740bda7f5864a8d3b142d05c0493d41bc7e0f169782f7693df98a4d",
+            "passed": 34
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/cpu/payload/chemistry.xml",
+            "sha256": "7068a8e771707286fc60077abe1c26a6f982d18d1972a6d6d000e270b622e215",
+            "passed": 59
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/cpu/payload/assessment.json",
+            "sha256": "8a1ee92c2066da8fa377e26d04368318e7cb18bdc84b411ba979b3fe36128163"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/cpu/payload/composition_reference.json",
+            "sha256": "37b34a2ba7be47886936df48faaabdeac20481e5a9cebca9bafab831c07868eb"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/cpu/payload/pocket_definition.json",
+            "sha256": "9376c715eaf5b48689fb3e995b00d7820601a7776970df66bd7e7cff3b13ee43"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/cpu/payload/hpc-contract.log",
+            "sha256": "d679107275881a465e025b9bd4d87fe7210d6026aedb69017eb50db872a4a8fa"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/cpu/payload/legacy.log",
+            "sha256": "6609e17eb617dcb81c13ad33404c769e0900a213ee88bcc3a06f68a24747aa0f"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/cpu/payload/native-mapping.log",
+            "sha256": "2897ed8d51ee9dced4742f00cc8af67ab95224a5fc8196b724cd0b3d7efaeec3"
+          },
+          {
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/cpu/payload/chemistry.log",
+            "sha256": "0e4f0cab955d896771f60c1117c7d0d069826c87217646c80e5bfceefe999199"
+          }
+        ]
+      }
+    },
+    "native-submissions.json": {
+      "file": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/native-submissions.json",
+        "bytes": 13628,
+        "sha256": "400d5a5ce9df935fadf5d4974a689c64edff328b9e85662de353a2296cb6c601"
+      },
+      "content": {
+        "version": "jq1-three-arm-fixed-lrreset-launcher-v1",
+        "jobs": [
+          {
+            "arm": "protenix",
+            "native": {
+              "version": "jq1-three-arm-fixed-lrreset-launcher-v1",
+              "outcome": "submitted",
+              "utc": "2026-10-22T10:24:49.421198+00:00",
+              "args": [
+                "bsub",
+                "-q",
+                "gpul40s",
+                "-n",
+                "4",
+                "-R",
+                "span[hosts=1]",
+                "-R",
+                "rusage[mem=8GB]",
+                "-W",
+                "02:00",
+                "-J",
+                "mosaic-jq1-lrreset-validate-protenix",
+                "-oo",
+                "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/validate-protenix/stdout.%J.log",
+                "-eo",
+                "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/validate-protenix/stderr.%J.log",
+                "-gpu",
+                "num=1:mode=exclusive_process",
+                "bash",
+                "-l",
+                "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-release-02/source/scripts/hpc/fixed25_lrreset_stage.lsf",
+                "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-release-02/source",
+                "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02",
+                "832f833dd486c2ff305f7e3eb33fc775c87810a2e12a8bc597c5df744699c5d3",
+                "validate",
+                "protenix",
+                "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/validate-protenix",
+                "0",
+                "6e02392176f71238b1af36564c796615758ba82af7715ebe487bd48030a5a5d5"
+              ],
+              "phase": "validate",
+              "arm": "protenix",
+              "output_parent": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/validate-protenix",
+              "source_manifest_sha256": "832f833dd486c2ff305f7e3eb33fc775c87810a2e12a8bc597c5df744699c5d3",
+              "cpu_certificate_sha256": "6e02392176f71238b1af36564c796615758ba82af7715ebe487bd48030a5a5d5",
+              "config_sha256": "5b1739f0c9c82e97c05d1fee4fe2b26b8efdacb96d2f4152cd873d96b4464959",
+              "learning_rate": 0.3,
+              "stdout": "Job <29783703> is submitted to queue <gpul40s>.\n",
+              "stderr": "",
+              "returncode": 0,
+              "job_id": "29783703"
+            },
+            "callback": {
+              "version": "jq1-three-arm-fixed-lrreset-launcher-v1",
+              "outcome": "submitted",
+              "utc": "2026-10-22T10:24:49.862543+00:00",
+              "args": [
+                "bsub",
+                "-q",
+                "hpc",
+                "-n",
+                "1",
+                "-R",
+                "span[hosts=1]",
+                "-R",
+                "rusage[mem=2GB]",
+                "-W",
+                "00:30",
+                "-J",
+                "mosaic-jq1-lrreset-after-ready-protenix",
+                "-oo",
+                "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/after-ready-protenix/stdout.%J.log",
+                "-eo",
+                "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/after-ready-protenix/stderr.%J.log",
+                "-w",
+                "ended(29783703)",
+                "bash",
+                "-l",
+                "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-release-02/source/scripts/hpc/fixed25_lrreset_stage.lsf",
+                "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-release-02/source",
+                "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02",
+                "832f833dd486c2ff305f7e3eb33fc775c87810a2e12a8bc597c5df744699c5d3",
+                "after-ready",
+                "protenix",
+                "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/after-ready-protenix",
+                "29783703",
+                "6e02392176f71238b1af36564c796615758ba82af7715ebe487bd48030a5a5d5"
+              ],
+              "phase": "after-ready",
+              "arm": "protenix",
+              "output_parent": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/after-ready-protenix",
+              "source_manifest_sha256": "832f833dd486c2ff305f7e3eb33fc775c87810a2e12a8bc597c5df744699c5d3",
+              "cpu_certificate_sha256": "6e02392176f71238b1af36564c796615758ba82af7715ebe487bd48030a5a5d5",
+              "config_sha256": "5b1739f0c9c82e97c05d1fee4fe2b26b8efdacb96d2f4152cd873d96b4464959",
+              "learning_rate": 0.3,
+              "stdout": "Job <29783705> is submitted to queue <hpc>.\n",
+              "stderr": "",
+              "returncode": 0,
+              "job_id": "29783705"
+            }
+          },
+          {
+            "arm": "boltz2",
+            "native": {
+              "version": "jq1-three-arm-fixed-lrreset-launcher-v1",
+              "outcome": "submitted",
+              "utc": "2026-10-22T10:24:50.592719+00:00",
+              "args": [
+                "bsub",
+                "-q",
+                "gpul40s",
+                "-n",
+                "4",
+                "-R",
+                "span[hosts=1]",
+                "-R",
+                "rusage[mem=8GB]",
+                "-W",
+                "02:00",
+                "-J",
+                "mosaic-jq1-lrreset-validate-boltz2",
+                "-oo",
+                "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/validate-boltz2/stdout.%J.log",
+                "-eo",
+                "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/validate-boltz2/stderr.%J.log",
+                "-gpu",
+                "num=1:mode=exclusive_process",
+                "bash",
+                "-l",
+                "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-release-02/source/scripts/hpc/fixed25_lrreset_stage.lsf",
+                "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-release-02/source",
+                "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02",
+                "832f833dd486c2ff305f7e3eb33fc775c87810a2e12a8bc597c5df744699c5d3",
+                "validate",
+                "boltz2",
+                "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/validate-boltz2",
+                "0",
+                "6e02392176f71238b1af36564c796615758ba82af7715ebe487bd48030a5a5d5"
+              ],
+              "phase": "validate",
+              "arm": "boltz2",
+              "output_parent": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/validate-boltz2",
+              "source_manifest_sha256": "832f833dd486c2ff305f7e3eb33fc775c87810a2e12a8bc597c5df744699c5d3",
+              "cpu_certificate_sha256": "6e02392176f71238b1af36564c796615758ba82af7715ebe487bd48030a5a5d5",
+              "config_sha256": "40f8038dac8485bdfcde4591d48b1162edaf6294e04406efee97a68813670d7f",
+              "learning_rate": 0.005,
+              "stdout": "Job <29783707> is submitted to queue <gpul40s>.\n",
+              "stderr": "",
+              "returncode": 0,
+              "job_id": "29783707"
+            },
+            "callback": {
+              "version": "jq1-three-arm-fixed-lrreset-launcher-v1",
+              "outcome": "submitted",
+              "utc": "2026-10-22T10:24:51.044296+00:00",
+              "args": [
+                "bsub",
+                "-q",
+                "hpc",
+                "-n",
+                "1",
+                "-R",
+                "span[hosts=1]",
+                "-R",
+                "rusage[mem=2GB]",
+                "-W",
+                "00:30",
+                "-J",
+                "mosaic-jq1-lrreset-after-ready-boltz2",
+                "-oo",
+                "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/after-ready-boltz2/stdout.%J.log",
+                "-eo",
+                "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/after-ready-boltz2/stderr.%J.log",
+                "-w",
+                "ended(29783707)",
+                "bash",
+                "-l",
+                "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-release-02/source/scripts/hpc/fixed25_lrreset_stage.lsf",
+                "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-release-02/source",
+                "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02",
+                "832f833dd486c2ff305f7e3eb33fc775c87810a2e12a8bc597c5df744699c5d3",
+                "after-ready",
+                "boltz2",
+                "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/after-ready-boltz2",
+                "29783707",
+                "6e02392176f71238b1af36564c796615758ba82af7715ebe487bd48030a5a5d5"
+              ],
+              "phase": "after-ready",
+              "arm": "boltz2",
+              "output_parent": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/after-ready-boltz2",
+              "source_manifest_sha256": "832f833dd486c2ff305f7e3eb33fc775c87810a2e12a8bc597c5df744699c5d3",
+              "cpu_certificate_sha256": "6e02392176f71238b1af36564c796615758ba82af7715ebe487bd48030a5a5d5",
+              "config_sha256": "40f8038dac8485bdfcde4591d48b1162edaf6294e04406efee97a68813670d7f",
+              "learning_rate": 0.005,
+              "stdout": "Job <29783708> is submitted to queue <hpc>.\n",
+              "stderr": "",
+              "returncode": 0,
+              "job_id": "29783708"
+            }
+          },
+          {
+            "arm": "boltz2_chemistry",
+            "native": {
+              "version": "jq1-three-arm-fixed-lrreset-launcher-v1",
+              "outcome": "submitted",
+              "utc": "2026-10-22T10:24:51.513781+00:00",
+              "args": [
+                "bsub",
+                "-q",
+                "gpul40s",
+                "-n",
+                "4",
+                "-R",
+                "span[hosts=1]",
+                "-R",
+                "rusage[mem=8GB]",
+                "-W",
+                "02:00",
+                "-J",
+                "mosaic-jq1-lrreset-validate-boltz2_chemistry",
+                "-oo",
+                "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/validate-boltz2_chemistry/stdout.%J.log",
+                "-eo",
+                "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/validate-boltz2_chemistry/stderr.%J.log",
+                "-gpu",
+                "num=1:mode=exclusive_process",
+                "bash",
+                "-l",
+                "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-release-02/source/scripts/hpc/fixed25_lrreset_stage.lsf",
+                "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-release-02/source",
+                "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02",
+                "832f833dd486c2ff305f7e3eb33fc775c87810a2e12a8bc597c5df744699c5d3",
+                "validate",
+                "boltz2_chemistry",
+                "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/validate-boltz2_chemistry",
+                "0",
+                "6e02392176f71238b1af36564c796615758ba82af7715ebe487bd48030a5a5d5"
+              ],
+              "phase": "validate",
+              "arm": "boltz2_chemistry",
+              "output_parent": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/validate-boltz2_chemistry",
+              "source_manifest_sha256": "832f833dd486c2ff305f7e3eb33fc775c87810a2e12a8bc597c5df744699c5d3",
+              "cpu_certificate_sha256": "6e02392176f71238b1af36564c796615758ba82af7715ebe487bd48030a5a5d5",
+              "config_sha256": "02b65a4face438c4e37d15b92f7833673513cce2dbfb6feceff8aef7a2c63063",
+              "learning_rate": 0.005,
+              "stdout": "Job <29783710> is submitted to queue <gpul40s>.\n",
+              "stderr": "",
+              "returncode": 0,
+              "job_id": "29783710"
+            },
+            "callback": {
+              "version": "jq1-three-arm-fixed-lrreset-launcher-v1",
+              "outcome": "submitted",
+              "utc": "2026-10-22T10:24:51.917866+00:00",
+              "args": [
+                "bsub",
+                "-q",
+                "hpc",
+                "-n",
+                "1",
+                "-R",
+                "span[hosts=1]",
+                "-R",
+                "rusage[mem=2GB]",
+                "-W",
+                "00:30",
+                "-J",
+                "mosaic-jq1-lrreset-after-ready-boltz2_chemistry",
+                "-oo",
+                "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/after-ready-boltz2_chemistry/stdout.%J.log",
+                "-eo",
+                "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/after-ready-boltz2_chemistry/stderr.%J.log",
+                "-w",
+                "ended(29783710)",
+                "bash",
+                "-l",
+                "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-release-02/source/scripts/hpc/fixed25_lrreset_stage.lsf",
+                "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-release-02/source",
+                "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02",
+                "832f833dd486c2ff305f7e3eb33fc775c87810a2e12a8bc597c5df744699c5d3",
+                "after-ready",
+                "boltz2_chemistry",
+                "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/after-ready-boltz2_chemistry",
+                "29783710",
+                "6e02392176f71238b1af36564c796615758ba82af7715ebe487bd48030a5a5d5"
+              ],
+              "phase": "after-ready",
+              "arm": "boltz2_chemistry",
+              "output_parent": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/after-ready-boltz2_chemistry",
+              "source_manifest_sha256": "832f833dd486c2ff305f7e3eb33fc775c87810a2e12a8bc597c5df744699c5d3",
+              "cpu_certificate_sha256": "6e02392176f71238b1af36564c796615758ba82af7715ebe487bd48030a5a5d5",
+              "config_sha256": "02b65a4face438c4e37d15b92f7833673513cce2dbfb6feceff8aef7a2c63063",
+              "learning_rate": 0.005,
+              "stdout": "Job <29783711> is submitted to queue <hpc>.\n",
+              "stderr": "",
+              "returncode": 0,
+              "job_id": "29783711"
+            }
+          }
+        ],
+        "all_three_submitted": true,
+        "long_runs_submitted": false
+      }
+    },
+    "native-validation-dispatch-quota/lrreset-storage-gate.json": {
+      "file": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/native-validation-dispatch-quota/lrreset-storage-gate.json",
+        "bytes": 6612,
+        "sha256": "2c47b1e90fe4f7a4c2d259f95e370dea38dbef9c392c4becd7a186ebf31d8bc8"
+      },
+      "content": {
+        "version": "fixed25-three-arm-lrreset-storage-v1",
+        "utc": "2026-10-22T10:00:03.645511+00:00",
+        "phase": "validate",
+        "status": "failed",
+        "placement": {
+          "protenix": "work3",
+          "boltz2": "work3",
+          "boltz2_chemistry": "zhome"
+        },
+        "output_parents": {
+          "protenix": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/run-protenix",
+          "boltz2": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/run-boltz2",
+          "boltz2_chemistry": "/zhome/95/e/206121/mosaic-runs/20261022-brd4-jq1-25-fixed-lrreset-02/run-boltz2_chemistry"
+        },
+        "filesystems": {
+          "work3": {
+            "status": "failed",
+            "filesystem": "work3",
+            "raw_quota": "HPE-Storage-Servers (disks, storagepool 1): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nHPE-Storage-Servers (NVME, storagepool 2): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (disks, storagepool 3): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks, storagepool 4): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks added in 2024, storagepool 5): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (NVMEs added in 2024, storagepool 6): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||   87.46 GiB|  100.00 GiB||   404848| 20000000\n\n",
+            "quota": {
+              "finite_pools": [
+                {
+                  "used_bytes_upper": 94489280512,
+                  "hard_bytes_lower": 107374182400,
+                  "remaining_bytes": 12884901888,
+                  "remaining_files": 19595152
+                }
+              ],
+              "available_bytes_lower": 12884901888,
+              "available_files_lower": 19595152
+            },
+            "projected_bytes": 5905580032,
+            "stale_bytes_subtracted": 5048552466,
+            "disk_free_bytes": 557007763931136,
+            "available_bytes_conservative": 7836349422,
+            "required_bytes": 10200547328,
+            "reserve_bytes": 4294967296,
+            "file_reserve": 100000,
+            "filesystem_inode_observation": {
+              "f_files": 0,
+              "f_ffree": 0,
+              "f_favail": 0
+            },
+            "available_files_lower": 19595152,
+            "filesystem_inode_reporting": "unreported_all_zero",
+            "file_headroom_scope": "Mandatory minimum of all authenticated finite user-quota pools",
+            "inode_limitation": "All-zero statvfs tuple supplies no independent filesystem inode proof",
+            "limitation": "Observations are conservative budget checks, not storage reservations"
+          }
+        },
+        "raw_quotas": {
+          "work3": "HPE-Storage-Servers (disks, storagepool 1): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nHPE-Storage-Servers (NVME, storagepool 2): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (disks, storagepool 3): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks, storagepool 4): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks added in 2024, storagepool 5): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (NVMEs added in 2024, storagepool 6): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||   87.46 GiB|  100.00 GiB||   404848| 20000000\n\n"
+        },
+        "filesystem_inode_observations": {
+          "work3": {
+            "f_files": 0,
+            "f_ffree": 0,
+            "f_favail": 0
+          }
+        },
+        "reserve_bytes_per_filesystem": 4294967296,
+        "file_reserve_per_filesystem": 100000,
+        "scope": "Three fresh lower-rate trajectories; immutable finished studies retained",
+        "concurrent_analysis_allowance_bytes": 2684354560,
+        "limitation": "Fresh conservative observations are not reservations; home inode evidence is physical filesystem scope only",
+        "current_validation_outputs": {
+          "protenix": 0,
+          "boltz2": 0,
+          "boltz2_chemistry": 0
+        },
+        "full_validation_allowance_bytes": 3221225472
+      }
+    },
+    "cpu-entry-quota/lrreset-storage-gate.json": {
+      "file": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/cpu-entry-quota/lrreset-storage-gate.json",
+        "bytes": 6456,
+        "sha256": "78a3becf1966a145bcb9dadfaa4e1ed86c00007d096615c5f69a4cb15c4b4825"
+      },
+      "content": {
+        "version": "fixed25-three-arm-lrreset-storage-v1",
+        "utc": "2026-10-22T09:55:27.396137+00:00",
+        "phase": "cpu",
+        "status": "passed",
+        "placement": {
+          "protenix": "work3",
+          "boltz2": "work3",
+          "boltz2_chemistry": "zhome"
+        },
+        "output_parents": {
+          "protenix": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/run-protenix",
+          "boltz2": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/run-boltz2",
+          "boltz2_chemistry": "/zhome/95/e/206121/mosaic-runs/20261022-brd4-jq1-25-fixed-lrreset-02/run-boltz2_chemistry"
+        },
+        "filesystems": {
+          "work3": {
+            "status": "passed",
+            "filesystem": "work3",
+            "raw_quota": "HPE-Storage-Servers (disks, storagepool 1): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nHPE-Storage-Servers (NVME, storagepool 2): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (disks, storagepool 3): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks, storagepool 4): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks added in 2024, storagepool 5): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (NVMEs added in 2024, storagepool 6): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||   86.91 GiB|  100.00 GiB||   404573| 20000000\n\n",
+            "quota": {
+              "finite_pools": [
+                {
+                  "used_bytes_upper": 93415538688,
+                  "hard_bytes_lower": 107374182400,
+                  "remaining_bytes": 13958643712,
+                  "remaining_files": 19595427
+                }
+              ],
+              "available_bytes_lower": 13958643712,
+              "available_files_lower": 19595427
+            },
+            "projected_bytes": 3758096384,
+            "stale_bytes_subtracted": 5048247322,
+            "disk_free_bytes": 557022870765568,
+            "available_bytes_conservative": 8910396390,
+            "required_bytes": 8053063680,
+            "reserve_bytes": 4294967296,
+            "file_reserve": 100000,
+            "filesystem_inode_observation": {
+              "f_files": 0,
+              "f_ffree": 0,
+              "f_favail": 0
+            },
+            "available_files_lower": 19595427,
+            "filesystem_inode_reporting": "unreported_all_zero",
+            "file_headroom_scope": "Mandatory minimum of all authenticated finite user-quota pools",
+            "inode_limitation": "All-zero statvfs tuple supplies no independent filesystem inode proof",
+            "limitation": "Observations are conservative budget checks, not storage reservations"
+          }
+        },
+        "raw_quotas": {
+          "work3": "HPE-Storage-Servers (disks, storagepool 1): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nHPE-Storage-Servers (NVME, storagepool 2): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (disks, storagepool 3): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks, storagepool 4): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks added in 2024, storagepool 5): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (NVMEs added in 2024, storagepool 6): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||   86.91 GiB|  100.00 GiB||   404573| 20000000\n\n"
+        },
+        "filesystem_inode_observations": {
+          "work3": {
+            "f_files": 0,
+            "f_ffree": 0,
+            "f_favail": 0
+          }
+        },
+        "reserve_bytes_per_filesystem": 4294967296,
+        "file_reserve_per_filesystem": 100000,
+        "scope": "Three fresh lower-rate trajectories; immutable finished studies retained",
+        "concurrent_analysis_allowance_bytes": 2684354560,
+        "limitation": "Fresh conservative observations are not reservations; home inode evidence is physical filesystem scope only"
+      }
+    },
+    "preflight-quota/lrreset-storage-gate.json": {
+      "file": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/preflight-quota/lrreset-storage-gate.json",
+        "bytes": 6462,
+        "sha256": "ec5ab2438b66d59c26854d511a3f90fea493d2ab68150939b20c2d5e103ad7f7"
+      },
+      "content": {
+        "version": "fixed25-three-arm-lrreset-storage-v1",
+        "utc": "2026-10-22T09:55:06.470846+00:00",
+        "phase": "preflight",
+        "status": "passed",
+        "placement": {
+          "protenix": "work3",
+          "boltz2": "work3",
+          "boltz2_chemistry": "zhome"
+        },
+        "output_parents": {
+          "protenix": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/run-protenix",
+          "boltz2": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/run-boltz2",
+          "boltz2_chemistry": "/zhome/95/e/206121/mosaic-runs/20261022-brd4-jq1-25-fixed-lrreset-02/run-boltz2_chemistry"
+        },
+        "filesystems": {
+          "work3": {
+            "status": "passed",
+            "filesystem": "work3",
+            "raw_quota": "HPE-Storage-Servers (disks, storagepool 1): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nHPE-Storage-Servers (NVME, storagepool 2): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (disks, storagepool 3): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks, storagepool 4): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks added in 2024, storagepool 5): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (NVMEs added in 2024, storagepool 6): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||   86.66 GiB|  100.00 GiB||   404561| 20000000\n\n",
+            "quota": {
+              "finite_pools": [
+                {
+                  "used_bytes_upper": 93415538688,
+                  "hard_bytes_lower": 107374182400,
+                  "remaining_bytes": 13958643712,
+                  "remaining_files": 19595439
+                }
+              ],
+              "available_bytes_lower": 13958643712,
+              "available_files_lower": 19595439
+            },
+            "projected_bytes": 3758096384,
+            "stale_bytes_subtracted": 5048226932,
+            "disk_free_bytes": 557026139701248,
+            "available_bytes_conservative": 8910416780,
+            "required_bytes": 8053063680,
+            "reserve_bytes": 4294967296,
+            "file_reserve": 100000,
+            "filesystem_inode_observation": {
+              "f_files": 0,
+              "f_ffree": 0,
+              "f_favail": 0
+            },
+            "available_files_lower": 19595439,
+            "filesystem_inode_reporting": "unreported_all_zero",
+            "file_headroom_scope": "Mandatory minimum of all authenticated finite user-quota pools",
+            "inode_limitation": "All-zero statvfs tuple supplies no independent filesystem inode proof",
+            "limitation": "Observations are conservative budget checks, not storage reservations"
+          }
+        },
+        "raw_quotas": {
+          "work3": "HPE-Storage-Servers (disks, storagepool 1): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nHPE-Storage-Servers (NVME, storagepool 2): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (disks, storagepool 3): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks, storagepool 4): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks added in 2024, storagepool 5): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (NVMEs added in 2024, storagepool 6): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||   86.66 GiB|  100.00 GiB||   404561| 20000000\n\n"
+        },
+        "filesystem_inode_observations": {
+          "work3": {
+            "f_files": 0,
+            "f_ffree": 0,
+            "f_favail": 0
+          }
+        },
+        "reserve_bytes_per_filesystem": 4294967296,
+        "file_reserve_per_filesystem": 100000,
+        "scope": "Three fresh lower-rate trajectories; immutable finished studies retained",
+        "concurrent_analysis_allowance_bytes": 2684354560,
+        "limitation": "Fresh conservative observations are not reservations; home inode evidence is physical filesystem scope only"
+      }
+    }
+  },
+  "cpu_xml": {
+    "hpc-contract": {
+      "file": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/cpu/payload/hpc-contract.xml",
+        "bytes": 61187,
+        "sha256": "91d6784815dd80fcececc3928f526356668b6d394b2d4818778abb595fee8d25"
+      },
+      "cases": 391,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "problem_texts": []
+    },
+    "legacy": {
+      "file": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/cpu/payload/legacy.xml",
+        "bytes": 35054,
+        "sha256": "92108335a0b6de387ef8cdccee97a862a6fa8b19f1b8a1ca6460ae4727f50b55"
+      },
+      "cases": 239,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "problem_texts": []
+    },
+    "native-mapping": {
+      "file": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/cpu/payload/native-mapping.xml",
+        "bytes": 5142,
+        "sha256": "f6124175f740bda7f5864a8d3b142d05c0493d41bc7e0f169782f7693df98a4d"
+      },
+      "cases": 34,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "problem_texts": []
+    },
+    "chemistry": {
+      "file": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/cpu/payload/chemistry.xml",
+        "bytes": 8728,
+        "sha256": "7068a8e771707286fc60077abe1c26a6f982d18d1972a6d6d000e270b622e215"
+      },
+      "cases": 59,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "problem_texts": []
+    }
+  },
+  "log_tails": {
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/cpu/stderr.29781363.log": "Loaded dependency [python3/3.12.11]: sqlite3/3.50.1\nLoaded dependency [python3/3.12.11]: gcc/14.3.0-binutils-2.44\nLoaded module: python3/3.12.11\n\nLoading python3/3.12.11\n  Loading requirement: sqlite3/3.50.1 gcc/14.3.0-binutils-2.44\n",
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/cpu/stdout.29781363.log": "Authenticated 622 immutable source files\n/zhome/95/e/206121/mosaic-runs/20261019-brd4-chemistry-ramp-01-readiness/payload/composition_reference.json: OK\n{\"status\": \"defined\", \"residues\": 19}\n{\"status\": \"passed\", \"passed\": 723, \"source_manifest_sha256\": \"832f833dd486c2ff305f7e3eb33fc775c87810a2e12a8bc597c5df744699c5d3\", \"proofs\": [{\"path\": \"/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/cpu/payload/hpc-contract.xml\", \"sha256\": \"91d6784815dd80fcececc3928f526356668b6d394b2d4818778abb595fee8d25\", \"passed\": 391}, {\"path\": \"/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/cpu/payload/legacy.xml\", \"sha256\": \"92108335a0b6de387ef8cdccee97a862a6fa8b19f1b8a1ca6460ae4727f50b55\", \"passed\": 239}, {\"path\": \"/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/cpu/payload/native-mapping.xml\", \"sha256\": \"f6124175f740bda7f5864a8d3b142d05c0493d41bc7e0f169782f7693df98a4d\", \"passed\": 34}, {\"path\": \"/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/cpu/payload/chemistry.xml\", \"sha256\": \"7068a8e771707286fc60077abe1c26a6f982d18d1972a6d6d000e270b622e215\", \"passed\": 59}], \"reference_sha256\": \"37b34a2ba7be47886936df48faaabdeac20481e5a9cebca9bafab831c07868eb\"}\n\n------------------------------------------------------------\nSender: LSF System <lsfadmin@hpc.dtu.dk>\nSubject: Job 29781363: <mosaic-jq1-lrreset-cpu> in cluster <dcc> Done\n\nJob <mosaic-jq1-lrreset-cpu> was submitted from host <hpclogin1> by user <s234818> in cluster <dcc> at Thu Oct 22 11:55:20 2026\nJob was executed on host(s) <4*n-62-31-16>, in queue <hpc>, as user <s234818> in cluster <dcc> at Thu Oct 22 11:55:22 2026\n</zhome/95/e/206121> was used as the home directory.\n</zhome/95/e/206121> was used as the working directory.\nStarted at Thu Oct 22 11:55:22 2026\nTerminated at Thu Oct 22 11:59:57 2026\nResults reported at Thu Oct 22 11:59:57 2026\n\nYour job looked like:\n\n------------------------------------------------------------\n# LSBATCH: User input\nbash -l /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-release-02/source/scripts/hpc/fixed25_lrreset_cpu.lsf /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-release-02/source /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02 832f833dd486c2ff305f7e3eb33fc775c87810a2e12a8bc597c5df744699c5d3\n------------------------------------------------------------\n\nSuccessfully completed.\n\nResource usage summary:\n\n    CPU time :                                   270.01 sec.\n    Max Memory :                                 491 MB\n    Average Memory :                             372.50 MB\n    Total Requested Memory :                     16384.00 MB\n    Delta Memory :                               15893.00 MB\n    Max Swap :                                   -\n    Max Processes :                              4\n    Max Threads :                                32\n    Run time :                                   275 sec.\n    Turnaround time :                            277 sec.\n\nThe output (if any) is above this job summary.\n\n\n\nPS:\n\nRead file </work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/cpu/stderr.29781363.log> for stderr output of this job.\n\n",
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/after-cpu/stdout.29781364.log": "Authenticated 622 immutable source files\nAuthenticated 622 immutable source files\n\n------------------------------------------------------------\nSender: LSF System <lsfadmin@hpc.dtu.dk>\nSubject: Job 29781364: <mosaic-jq1-lrreset-after-cpu> in cluster <dcc> Exited\n\nJob <mosaic-jq1-lrreset-after-cpu> was submitted from host <hpclogin1> by user <s234818> in cluster <dcc> at Thu Oct 22 11:55:20 2026\nJob was executed on host(s) <n-62-31-23>, in queue <hpc>, as user <s234818> in cluster <dcc> at Thu Oct 22 11:59:59 2026\n</zhome/95/e/206121> was used as the home directory.\n</zhome/95/e/206121> was used as the working directory.\nStarted at Thu Oct 22 11:59:59 2026\nTerminated at Thu Oct 22 12:00:17 2026\nResults reported at Thu Oct 22 12:00:17 2026\n\nYour job looked like:\n\n------------------------------------------------------------\n# LSBATCH: User input\nbash -l /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-release-02/source/scripts/hpc/fixed25_lrreset_stage.lsf /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-release-02/source /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02 832f833dd486c2ff305f7e3eb33fc775c87810a2e12a8bc597c5df744699c5d3 after-cpu none /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/after-cpu 29781363 0\n------------------------------------------------------------\n\nExited with exit code 1.\n\nResource usage summary:\n\n    CPU time :                                   6.55 sec.\n    Max Memory :                                 32 MB\n    Average Memory :                             32.00 MB\n    Total Requested Memory :                     2048.00 MB\n    Delta Memory :                               2016.00 MB\n    Max Swap :                                   -\n    Max Processes :                              4\n    Max Threads :                                5\n    Run time :                                   18 sec.\n    Turnaround time :                            297 sec.\n\nThe output (if any) is above this job summary.\n\n\n\nPS:\n\nRead file </work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/after-cpu/stderr.29781364.log> for stderr output of this job.\n\n",
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/after-cpu/stderr.29781364.log": "Loaded dependency [python3/3.12.11]: sqlite3/3.50.1\nLoaded dependency [python3/3.12.11]: gcc/14.3.0-binutils-2.44\nLoaded module: python3/3.12.11\n\nLoading python3/3.12.11\n  Loading requirement: sqlite3/3.50.1 gcc/14.3.0-binutils-2.44\nTraceback (most recent call last):\n  File \"/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-release-02/source/scripts/fixed25_lrreset_ops.py\", line 426, in <module>\n    main()\n  File \"/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-release-02/source/scripts/fixed25_lrreset_ops.py\", line 418, in main\n    certify_cpu(args.manifest, args.producer)\n  File \"/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-release-02/source/scripts/fixed25_lrreset_ops.py\", line 178, in certify_cpu\n    storage.check_work_storage(ROOT / 'native-validation-dispatch-quota', phase='validate')\n  File \"/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-release-02/source/scripts/fixed25_lrreset_storage.py\", line 120, in check_work_storage\n    raise ValueError('Fresh validation work3 byte/inode allowance plus reserve does not fit')\nValueError: Fresh validation work3 byte/inode allowance plus reserve does not fit\n",
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/cpu/payload/hpc-contract.log": "============================= test session starts ==============================\nplatform linux -- Python 3.12.11, pytest-9.0.3, pluggy-1.7.0\ncachedir: /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/cpu/payload/cache-contract\nrootdir: /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-release-02/source\nconfigfile: pyproject.toml\nplugins: anyio-4.15.1, jaxtyping-0.3.11\ncollected 391 items\n\ntests/test_boltz_submission_controller.py ........                       [  2%]\ntests/test_boltz_hpc_tmpdir.py ........                                  [  4%]\ntests/test_campaign25_ops.py ..................                          [  8%]\ntests/test_campaign25_release.py ........................                [ 14%]\ntests/test_campaign25_pocket_ops.py ................................     [ 23%]\ntests/test_pocket_definition.py ..........                               [ 25%]\ntests/test_protenix_lr03_ops.py .......................                  [ 31%]\ntests/test_protenix_lr03_storage.py ............                         [ 34%]\ntests/test_fixed25_ops.py .............                                  [ 37%]\ntests/test_fixed25_storage.py ..                                         [ 38%]\ntests/test_fixed25_lrboost_contract.py ................................. [ 46%]\n................................................                         [ 59%]\ntests/test_fixed25_lrboost_ops.py ........................               [ 65%]\ntests/test_fixed25_lrboost_storage.py ...........                        [ 68%]\ntests/test_fixed25_lrreset_contract.py ................................. [ 76%]\n........................................................                 [ 90%]\ntests/test_fixed25_lrreset_ops.py ........................               [ 96%]\ntests/test_fixed25_lrreset_storage.py ............                       [100%]\n\n- generated xml file: /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/cpu/payload/hpc-contract.xml -\n============================= 391 passed in 8.08s ==============================\n"
+  },
+  "scheduler": {
+    "returncode": 0,
+    "raw": "\nJob <29780821>, Job Name <mosaic-lrboost-analysis-diagnostic-protenix>, User <s\n                          234818>, Project <default>, Status <PEND>, Queue <gpu\n                          l40s>, Command <bash -l /work3/s234818/mosaic/release\n                          s/20261022-brd4-jq1-lrboost-analysis-01/source/script\n                          s/hpc/jq1_lrboost_analysis_stage.lsf /work3/s234818/m\n                          osaic/releases/20261022-brd4-jq1-lrboost-analysis-01/\n                          source /work3/s234818/mosaic/runs/20261022-brd4-jq1-l\n                          rboost-analysis-01 214c19387649a741a7ad42f1e3e0270616\n                          31993b4ae33425071aba9005fdcbcc diagnostic protenix /w\n                          ork3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-an\n                          alysis-01/diagnostic-protenix>, Esub <dcc>\nThu Oct 22 10:38:40 2026: Submitted from host <n-62-11-60>, CWD </work3/s234818\n                          /mosaic/releases/20261022-brd4-jq1-lrboost-analysis-0\n                          1/source>, Output File (overwrite) </work3/s234818/mo\n                          saic/runs/20261022-brd4-jq1-lrboost-analysis-01/diagn\n                          ostic-protenix/stdout.29780821.log>, Error File (over\n                          write) </work3/s234818/mosaic/runs/20261022-brd4-jq1-\n                          lrboost-analysis-01/diagnostic-protenix/stderr.297808\n                          21.log>, 4 Task(s), Requested Resources < rusage[mem=\n                          8192.00] span[hosts=1]>, Requested GPU <num=1:mode=ex\n                          clusive_process>;\n PENDING REASONS:\n Job's requirements for reserving resource (ngpus_physical) not satisfied: 3 \n                          hosts;\n\n RUNLIMIT                \n 120.0 min\n\n MEMLIMIT\n      8 G \n\n PENDING TIME DETAILS:\n Eligible pending time (seconds):\t7183\n Ineligible pending time (seconds):\t0\n\n SCHEDULING PARAMETERS:\n           r15s   r1m  r15m   ut      pg    io   ls    it    tmp    swp    mem\n loadSched   -     -     -     -       -     -    -     -     -      -      -  \n loadStop    -     -     -     -       -     -    -     -     -      -      -  \n\n RESOURCE REQUIREMENT DETAILS:\n Job-level:  rusage[mem=8192.00] span[hosts=1]\n App-level: -\n Queue-level: same[type:model] affinity[core] cu[type=enclosure:maxcus=1]\n Combined: select[(ngpus>0) && (type == local)] order[-slots:-maxslots] rusage[\n                          mem=8192.00:ngpus_physical=1.00] span[hosts=1] same[t\n                          ype:model] cu[pref=config:maxcus=1:type=enclosure] af\n                          finity[core(1)*1]\n Effective: -\n\n GPU REQUIREMENT DETAILS:\n Combined: num=1:mode=exclusive_process:mps=no:j_exclusive=yes:aff=no:gvendor=n\n                          vidia\n Effective: -\n------------------------------------------------------------------------------\n\nJob <29780822>, Job Name <mosaic-lrboost-analysis-diagnostic-capture-protenix>,\n                          User <s234818>, Project <default>, Service Class <sc_\n                          hpc1>, Status <PEND>, Queue <hpc>, Command <bash -l /\n                          work3/s234818/mosaic/releases/20261022-brd4-jq1-lrboo\n                          st-analysis-01/source/scripts/hpc/jq1_lrboost_analysi\n                          s_stage.lsf /work3/s234818/mosaic/releases/20261022-b\n                          rd4-jq1-lrboost-analysis-01/source /work3/s234818/mos\n                          aic/runs/20261022-brd4-jq1-lrboost-analysis-01 214c19\n                          387649a741a7ad42f1e3e027061631993b4ae33425071aba9005f\n                          dcbcc diagnostic-capture protenix /work3/s234818/mosa\n                          ic/runs/20261022-brd4-jq1-lrboost-analysis-01/diagnos\n                          tic-capture-protenix>, Esub <dcc>\nThu Oct 22 10:38:40 2026: Submitted from host <n-62-11-60>, CWD </work3/s234818\n                          /mosaic/releases/20261022-brd4-jq1-lrboost-analysis-0\n                          1/source>, Output File (overwrite) </work3/s234818/mo\n                          saic/runs/20261022-brd4-jq1-lrboost-analysis-01/diagn\n                          ostic-capture-protenix/stdout.29780822.log>, Error Fi\n                          le (overwrite) </work3/s234818/mosaic/runs/20261022-b\n                          rd4-jq1-lrboost-analysis-01/diagnostic-capture-proten\n                          ix/stderr.29780822.log>, 2 Task(s), Requested Resourc\n                          es <{select[shortparallel_] rusage[mem=4096.00] span[\n                          hosts=1]} || {select[!shortparallel_] rusage[mem=4096\n                          .00] span[hosts=1]}>, Dependency Condition <ended(297\n                          80821)>;\n PENDING REASONS:\n Job dependency condition not satisfied;\n\n RUNLIMIT                \n 45.0 min\n\n MEMLIMIT\n      4 G \n\n PENDING TIME DETAILS:\n Eligible pending time (seconds):\t0\n Ineligible pending time (seconds):\t7183\n\n SCHEDULING PARAMETERS:\n           r15s   r1m  r15m   ut      pg    io   ls    it    tmp    swp    mem\n loadSched   -     -     -     -       -     -    -     -     -      -      -  \n loadStop    -     -     -     -       -     -    -     -     -      -      -  \n\n RESOURCE REQUIREMENT DETAILS:\n Job-level: {select[shortparallel_] rusage[mem=4096.00] span[hosts=1]} || {sele\n                          ct[!shortparallel_] rusage[mem=4096.00] span[hosts=1]\n                          }\n App-level: -\n Queue-level: same[type:model] affinity[core] cu[type=enclosure:maxcus=1]\n Combined: {select[(shortparallel_) && (type == any)] order[-slots:-maxslots] r\n                          usage[mem=4096.00] span[hosts=1] cu[pref=config:maxcu\n                          s=1:type=enclosure] affinity[core(1)*1]} || {select[(\n                          !shortparallel_) && (type == any)] order[-slots:-maxs\n                          lots] rusage[mem=4096.00] span[hosts=1] cu[pref=confi\n                          g:maxcus=1:type=enclosure] affinity[core(1)*1]}\n Effective: -\n------------------------------------------------------------------------------\n\nJob <29780823>, Job Name <mosaic-lrboost-analysis-diagnostic-boltz2>, User <s23\n                          4818>, Project <default>, Status <PEND>, Queue <gpul4\n                          0s>, Command <bash -l /work3/s234818/mosaic/releases/\n                          20261022-brd4-jq1-lrboost-analysis-01/source/scripts/\n                          hpc/jq1_lrboost_analysis_stage.lsf /work3/s234818/mos\n                          aic/releases/20261022-brd4-jq1-lrboost-analysis-01/so\n                          urce /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrb\n                          oost-analysis-01 214c19387649a741a7ad42f1e3e027061631\n                          993b4ae33425071aba9005fdcbcc diagnostic boltz2 /work3\n                          /s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analys\n                          is-01/diagnostic-boltz2>, Esub <dcc>\nThu Oct 22 10:38:40 2026: Submitted from host <n-62-11-60>, CWD </work3/s234818\n                          /mosaic/releases/20261022-brd4-jq1-lrboost-analysis-0\n                          1/source>, Output File (overwrite) </work3/s234818/mo\n                          saic/runs/20261022-brd4-jq1-lrboost-analysis-01/diagn\n                          ostic-boltz2/stdout.29780823.log>, Error File (overwr\n                          ite) </work3/s234818/mosaic/runs/20261022-brd4-jq1-lr\n                          boost-analysis-01/diagnostic-boltz2/stderr.29780823.l\n                          og>, 4 Task(s), Requested Resources < rusage[mem=8192\n                          .00] span[hosts=1]>, Requested GPU <num=1:mode=exclus\n                          ive_process>;\n PENDING REASONS:\n Job's requirements for reserving resource (ngpus_physical) not satisfied: 3 \n                          hosts;\n\n RUNLIMIT                \n 120.0 min\n\n MEMLIMIT\n      8 G \n\n PENDING TIME DETAILS:\n Eligible pending time (seconds):\t7183\n Ineligible pending time (seconds):\t0\n\n SCHEDULING PARAMETERS:\n           r15s   r1m  r15m   ut      pg    io   ls    it    tmp    swp    mem\n loadSched   -     -     -     -       -     -    -     -     -      -      -  \n loadStop    -     -     -     -       -     -    -     -     -      -      -  \n\n RESOURCE REQUIREMENT DETAILS:\n Job-level:  rusage[mem=8192.00] span[hosts=1]\n App-level: -\n Queue-level: same[type:model] affinity[core] cu[type=enclosure:maxcus=1]\n Combined: select[(ngpus>0) && (type == local)] order[-slots:-maxslots] rusage[\n                          mem=8192.00:ngpus_physical=1.00] span[hosts=1] same[t\n                          ype:model] cu[pref=config:maxcus=1:type=enclosure] af\n                          finity[core(1)*1]\n Effective: -\n\n GPU REQUIREMENT DETAILS:\n Combined: num=1:mode=exclusive_process:mps=no:j_exclusive=yes:aff=no:gvendor=n\n                          vidia\n Effective: -\n------------------------------------------------------------------------------\n\nJob <29780824>, Job Name <mosaic-lrboost-analysis-diagnostic-capture-boltz2>, U\n                          ser <s234818>, Project <default>, Service Class <sc_h\n                          pc1>, Status <PEND>, Queue <hpc>, Command <bash -l /w\n                          ork3/s234818/mosaic/releases/20261022-brd4-jq1-lrboos\n                          t-analysis-01/source/scripts/hpc/jq1_lrboost_analysis\n                          _stage.lsf /work3/s234818/mosaic/releases/20261022-br\n                          d4-jq1-lrboost-analysis-01/source /work3/s234818/mosa\n                          ic/runs/20261022-brd4-jq1-lrboost-analysis-01 214c193\n                          87649a741a7ad42f1e3e027061631993b4ae33425071aba9005fd\n                          cbcc diagnostic-capture boltz2 /work3/s234818/mosaic/\n                          runs/20261022-brd4-jq1-lrboost-analysis-01/diagnostic\n                          -capture-boltz2>, Esub <dcc>\nThu Oct 22 10:38:41 2026: Submitted from host <n-62-11-60>, CWD </work3/s234818\n                          /mosaic/releases/20261022-brd4-jq1-lrboost-analysis-0\n                          1/source>, Output File (overwrite) </work3/s234818/mo\n                          saic/runs/20261022-brd4-jq1-lrboost-analysis-01/diagn\n                          ostic-capture-boltz2/stdout.29780824.log>, Error File\n                           (overwrite) </work3/s234818/mosaic/runs/20261022-brd\n                          4-jq1-lrboost-analysis-01/diagnostic-capture-boltz2/s\n                          tderr.29780824.log>, 2 Task(s), Requested Resources <\n                          {select[shortparallel_] rusage[mem=4096.00] span[host\n                          s=1]} || {select[!shortparallel_] rusage[mem=4096.00]\n                           span[hosts=1]}>, Dependency Condition <ended(2978082\n                          3)>;\n PENDING REASONS:\n Job dependency condition not satisfied;\n\n RUNLIMIT                \n 45.0 min\n\n MEMLIMIT\n      4 G \n\n PENDING TIME DETAILS:\n Eligible pending time (seconds):\t0\n Ineligible pending time (seconds):\t7182\n\n SCHEDULING PARAMETERS:\n           r15s   r1m  r15m   ut      pg    io   ls    it    tmp    swp    mem\n loadSched   -     -     -     -       -     -    -     -     -      -      -  \n loadStop    -     -     -     -       -     -    -     -     -      -      -  \n\n RESOURCE REQUIREMENT DETAILS:\n Job-level: {select[shortparallel_] rusage[mem=4096.00] span[hosts=1]} || {sele\n                          ct[!shortparallel_] rusage[mem=4096.00] span[hosts=1]\n                          }\n App-level: -\n Queue-level: same[type:model] affinity[core] cu[type=enclosure:maxcus=1]\n Combined: {select[(shortparallel_) && (type == any)] order[-slots:-maxslots] r\n                          usage[mem=4096.00] span[hosts=1] cu[pref=config:maxcu\n                          s=1:type=enclosure] affinity[core(1)*1]} || {select[(\n                          !shortparallel_) && (type == any)] order[-slots:-maxs\n                          lots] rusage[mem=4096.00] span[hosts=1] cu[pref=confi\n                          g:maxcus=1:type=enclosure] affinity[core(1)*1]}\n Effective: -\n------------------------------------------------------------------------------\n\nJob <29780830>, Job Name <mosaic-lrboost-analysis-combined-report>, User <s2348\n                          18>, Project <default>, Service Class <sc_hpc1>, Stat\n                          us <PEND>, Queue <hpc>, Command <bash -l /work3/s2348\n                          18/mosaic/releases/20261022-brd4-jq1-lrboost-analysis\n                          -01/source/scripts/hpc/jq1_lrboost_analysis_stage.lsf\n                           /work3/s234818/mosaic/releases/20261022-brd4-jq1-lrb\n                          oost-analysis-01/source /work3/s234818/mosaic/runs/20\n                          261022-brd4-jq1-lrboost-analysis-01 214c19387649a741a\n                          7ad42f1e3e027061631993b4ae33425071aba9005fdcbcc final\n                           none /work3/s234818/mosaic/runs/20261022-brd4-jq1-lr\n                          boost-analysis-01/combined-report>, Esub <dcc>\nThu Oct 22 10:38:42 2026: Submitted from host <n-62-11-60>, CWD </work3/s234818\n                          /mosaic/releases/20261022-brd4-jq1-lrboost-analysis-0\n                          1/source>, Output File (overwrite) </work3/s234818/mo\n                          saic/runs/20261022-brd4-jq1-lrboost-analysis-01/combi\n                          ned-report/stdout.29780830.log>, Error File (overwrit\n                          e) </work3/s234818/mosaic/runs/20261022-brd4-jq1-lrbo\n                          ost-analysis-01/combined-report/stderr.29780830.log>,\n                           4 Task(s), Requested Resources <{select[shortparalle\n                          l_] rusage[mem=8192.00] span[hosts=1]} || {select[!sh\n                          ortparallel_] rusage[mem=8192.00] span[hosts=1]}>, De\n                          pendency Condition <done(29780825) && done(29780826) \n                          && done(29780827) && done(29780822) && done(29780824)\n                          >;\n PENDING REASONS:\n Job dependency condition not satisfied;\n\n RUNLIMIT                \n 60.0 min\n\n MEMLIMIT\n      8 G \n\n PENDING TIME DETAILS:\n Eligible pending time (seconds):\t0\n Ineligible pending time (seconds):\t7181\n\n SCHEDULING PARAMETERS:\n           r15s   r1m  r15m   ut      pg    io   ls    it    tmp    swp    mem\n loadSched   -     -     -     -       -     -    -     -     -      -      -  \n loadStop    -     -     -     -       -     -    -     -     -      -      -  \n\n RESOURCE REQUIREMENT DETAILS:\n Job-level: {select[shortparallel_] rusage[mem=8192.00] span[hosts=1]} || {sele\n                          ct[!shortparallel_] rusage[mem=8192.00] span[hosts=1]\n                          }\n App-level: -\n Queue-level: same[type:model] affinity[core] cu[type=enclosure:maxcus=1]\n Combined: {select[(shortparallel_) && (type == any)] order[-slots:-maxslots] r\n                          usage[mem=8192.00] span[hosts=1] cu[pref=config:maxcu\n                          s=1:type=enclosure] affinity[core(1)*1]} || {select[(\n                          !shortparallel_) && (type == any)] order[-slots:-maxs\n                          lots] rusage[mem=8192.00] span[hosts=1] cu[pref=confi\n                          g:maxcus=1:type=enclosure] affinity[core(1)*1]}\n Effective: -\n------------------------------------------------------------------------------\n\nJob <29783703>, Job Name <mosaic-jq1-lrreset-validate-protenix>, User <s234818>\n                          , Project <default>, Status <PEND>, Queue <gpul40s>, \n                          Command <bash -l /work3/s234818/mosaic/runs/20261022-\n                          brd4-jq1-lrboost-analysis-01/restart-lrreset-release-\n                          02/source/scripts/hpc/fixed25_lrreset_stage.lsf /work\n                          3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analy\n                          sis-01/restart-lrreset-release-02/source /work3/s2348\n                          18/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/\n                          restart-lrreset-02 832f833dd486c2ff305f7e3eb33fc775c8\n                          7810a2e12a8bc597c5df744699c5d3 validate protenix /wor\n                          k3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-anal\n                          ysis-01/restart-lrreset-02/validate-protenix 0 6e0239\n                          2176f71238b1af36564c796615758ba82af7715ebe487bd48030a\n                          5a5d5>, Esub <dcc>\nThu Oct 22 12:24:49 2026: Submitted from host <hpclogin1>, CWD <$HOME>, Output \n                          File (overwrite) </work3/s234818/mosaic/runs/20261022\n                          -brd4-jq1-lrboost-analysis-01/restart-lrreset-02/vali\n                          date-protenix/stdout.29783703.log>, Error File (overw\n                          rite) </work3/s234818/mosaic/runs/20261022-brd4-jq1-l\n                          rboost-analysis-01/restart-lrreset-02/validate-proten\n                          ix/stderr.29783703.log>, 4 Task(s), Requested Resourc\n                          es < rusage[mem=8192.00] span[hosts=1]>, Requested GP\n                          U <num=1:mode=exclusive_process>;\n PENDING REASONS:\n Job's requirements for reserving resource (ngpus_physical) not satisfied: 3 \n                          hosts;\n\n RUNLIMIT                \n 120.0 min\n\n MEMLIMIT\n      8 G \n\n PENDING TIME DETAILS:\n Eligible pending time (seconds):\t814\n Ineligible pending time (seconds):\t0\n\n SCHEDULING PARAMETERS:\n           r15s   r1m  r15m   ut      pg    io   ls    it    tmp    swp    mem\n loadSched   -     -     -     -       -     -    -     -     -      -      -  \n loadStop    -     -     -     -       -     -    -     -     -      -      -  \n\n RESOURCE REQUIREMENT DETAILS:\n Job-level:  rusage[mem=8192.00] span[hosts=1]\n App-level: -\n Queue-level: same[type:model] affinity[core] cu[type=enclosure:maxcus=1]\n Combined: select[(ngpus>0) && (type == local)] order[-slots:-maxslots] rusage[\n                          mem=8192.00:ngpus_physical=1.00] span[hosts=1] same[t\n                          ype:model] cu[pref=config:maxcus=1:type=enclosure] af\n                          finity[core(1)*1]\n Effective: -\n\n GPU REQUIREMENT DETAILS:\n Combined: num=1:mode=exclusive_process:mps=no:j_exclusive=yes:aff=no:gvendor=n\n                          vidia\n Effective: -\n------------------------------------------------------------------------------\n\nJob <29783705>, Job Name <mosaic-jq1-lrreset-after-ready-protenix>, User <s2348\n                          18>, Project <default>, Service Class <sc_hpc1>, Stat\n                          us <PEND>, Queue <hpc>, Command <bash -l /work3/s2348\n                          18/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/\n                          restart-lrreset-release-02/source/scripts/hpc/fixed25\n                          _lrreset_stage.lsf /work3/s234818/mosaic/runs/2026102\n                          2-brd4-jq1-lrboost-analysis-01/restart-lrreset-releas\n                          e-02/source /work3/s234818/mosaic/runs/20261022-brd4-\n                          jq1-lrboost-analysis-01/restart-lrreset-02 832f833dd4\n                          86c2ff305f7e3eb33fc775c87810a2e12a8bc597c5df744699c5d\n                          3 after-ready protenix /work3/s234818/mosaic/runs/202\n                          61022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02\n                          /after-ready-protenix 29783703 6e02392176f71238b1af36\n                          564c796615758ba82af7715ebe487bd48030a5a5d5>, Esub <dc\n                          c>\nThu Oct 22 12:24:50 2026: Submitted from host <hpclogin1>, CWD <$HOME>, Output \n                          File (overwrite) </work3/s234818/mosaic/runs/20261022\n                          -brd4-jq1-lrboost-analysis-01/restart-lrreset-02/afte\n                          r-ready-protenix/stdout.29783705.log>, Error File (ov\n                          erwrite) </work3/s234818/mosaic/runs/20261022-brd4-jq\n                          1-lrboost-analysis-01/restart-lrreset-02/after-ready-\n                          protenix/stderr.29783705.log>, Requested Resources <{\n                          select[serial_] rusage[mem=2048.00] span[hosts=1]} ||\n                           {select[!serial_] rusage[mem=2048.00] span[hosts=1]}\n                          >, Dependency Condition <ended(29783703)>;\n PENDING REASONS:\n Job dependency condition not satisfied;\n\n RUNLIMIT                \n 30.0 min\n\n MEMLIMIT\n      2 G \n\n PENDING TIME DETAILS:\n Eligible pending time (seconds):\t0\n Ineligible pending time (seconds):\t813\n\n SCHEDULING PARAMETERS:\n           r15s   r1m  r15m   ut      pg    io   ls    it    tmp    swp    mem\n loadSched   -     -     -     -       -     -    -     -     -      -      -  \n loadStop    -     -     -     -       -     -    -     -     -      -      -  \n\n RESOURCE REQUIREMENT DETAILS:\n Job-level: {select[serial_] rusage[mem=2048.00] span[hosts=1]} || {select[!ser\n                          ial_] rusage[mem=2048.00] span[hosts=1]}\n App-level: -\n Queue-level: same[type:model] affinity[core] cu[type=enclosure:maxcus=1]\n Combined: {select[(serial_) && (type == any)] order[-slots:-maxslots] rusage[m\n                          em=2048.00] span[hosts=1] cu[pref=config:maxcus=1:typ\n                          e=enclosure] affinity[core(1)*1]} || {select[(!serial\n                          _) && (type == any)] order[-slots:-maxslots] rusage[m\n                          em=2048.00] span[hosts=1] cu[pref=config:maxcus=1:typ\n                          e=enclosure] affinity[core(1)*1]}\n Effective: -\n------------------------------------------------------------------------------\n\nJob <29783707>, Job Name <mosaic-jq1-lrreset-validate-boltz2>, User <s234818>, \n                          Project <default>, Status <PEND>, Queue <gpul40s>, Co\n                          mmand <bash -l /work3/s234818/mosaic/runs/20261022-br\n                          d4-jq1-lrboost-analysis-01/restart-lrreset-release-02\n                          /source/scripts/hpc/fixed25_lrreset_stage.lsf /work3/\n                          s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysi\n                          s-01/restart-lrreset-release-02/source /work3/s234818\n                          /mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/re\n                          start-lrreset-02 832f833dd486c2ff305f7e3eb33fc775c878\n                          10a2e12a8bc597c5df744699c5d3 validate boltz2 /work3/s\n                          234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis\n                          -01/restart-lrreset-02/validate-boltz2 0 6e02392176f7\n                          1238b1af36564c796615758ba82af7715ebe487bd48030a5a5d5>\n                          , Esub <dcc>\nThu Oct 22 12:24:50 2026: Submitted from host <hpclogin1>, CWD <$HOME>, Output \n                          File (overwrite) </work3/s234818/mosaic/runs/20261022\n                          -brd4-jq1-lrboost-analysis-01/restart-lrreset-02/vali\n                          date-boltz2/stdout.29783707.log>, Error File (overwri\n                          te) </work3/s234818/mosaic/runs/20261022-brd4-jq1-lrb\n                          oost-analysis-01/restart-lrreset-02/validate-boltz2/s\n                          tderr.29783707.log>, 4 Task(s), Requested Resources <\n                           rusage[mem=8192.00] span[hosts=1]>, Requested GPU <n\n                          um=1:mode=exclusive_process>;\n PENDING REASONS:\n Job's requirements for reserving resource (ngpus_physical) not satisfied: 3 \n                          hosts;\n\n RUNLIMIT                \n 120.0 min\n\n MEMLIMIT\n      8 G \n\n PENDING TIME DETAILS:\n Eligible pending time (seconds):\t813\n Ineligible pending time (seconds):\t0\n\n SCHEDULING PARAMETERS:\n           r15s   r1m  r15m   ut      pg    io   ls    it    tmp    swp    mem\n loadSched   -     -     -     -       -     -    -     -     -      -      -  \n loadStop    -     -     -     -       -     -    -     -     -      -      -  \n\n RESOURCE REQUIREMENT DETAILS:\n Job-level:  rusage[mem=8192.00] span[hosts=1]\n App-level: -\n Queue-level: same[type:model] affinity[core] cu[type=enclosure:maxcus=1]\n Combined: select[(ngpus>0) && (type == local)] order[-slots:-maxslots] rusage[\n                          mem=8192.00:ngpus_physical=1.00] span[hosts=1] same[t\n                          ype:model] cu[pref=config:maxcus=1:type=enclosure] af\n                          finity[core(1)*1]\n Effective: -\n\n GPU REQUIREMENT DETAILS:\n Combined: num=1:mode=exclusive_process:mps=no:j_exclusive=yes:aff=no:gvendor=n\n                          vidia\n Effective: -\n------------------------------------------------------------------------------\n\nJob <29783708>, Job Name <mosaic-jq1-lrreset-after-ready-boltz2>, User <s234818\n                          >, Project <default>, Service Class <sc_hpc1>, Status\n                           <PEND>, Queue <hpc>, Command <bash -l /work3/s234818\n                          /mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/re\n                          start-lrreset-release-02/source/scripts/hpc/fixed25_l\n                          rreset_stage.lsf /work3/s234818/mosaic/runs/20261022-\n                          brd4-jq1-lrboost-analysis-01/restart-lrreset-release-\n                          02/source /work3/s234818/mosaic/runs/20261022-brd4-jq\n                          1-lrboost-analysis-01/restart-lrreset-02 832f833dd486\n                          c2ff305f7e3eb33fc775c87810a2e12a8bc597c5df744699c5d3 \n                          after-ready boltz2 /work3/s234818/mosaic/runs/2026102\n                          2-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/aft\n                          er-ready-boltz2 29783707 6e02392176f71238b1af36564c79\n                          6615758ba82af7715ebe487bd48030a5a5d5>, Esub <dcc>\nThu Oct 22 12:24:51 2026: Submitted from host <hpclogin1>, CWD <$HOME>, Output \n                          File (overwrite) </work3/s234818/mosaic/runs/20261022\n                          -brd4-jq1-lrboost-analysis-01/restart-lrreset-02/afte\n                          r-ready-boltz2/stdout.29783708.log>, Error File (over\n                          write) </work3/s234818/mosaic/runs/20261022-brd4-jq1-\n                          lrboost-analysis-01/restart-lrreset-02/after-ready-bo\n                          ltz2/stderr.29783708.log>, Requested Resources <{sele\n                          ct[serial_] rusage[mem=2048.00] span[hosts=1]} || {se\n                          lect[!serial_] rusage[mem=2048.00] span[hosts=1]}>, D\n                          ependency Condition <ended(29783707)>;\n PENDING REASONS:\n Job dependency condition not satisfied;\n\n RUNLIMIT                \n 30.0 min\n\n MEMLIMIT\n      2 G \n\n PENDING TIME DETAILS:\n Eligible pending time (seconds):\t1\n Ineligible pending time (seconds):\t811\n\n SCHEDULING PARAMETERS:\n           r15s   r1m  r15m   ut      pg    io   ls    it    tmp    swp    mem\n loadSched   -     -     -     -       -     -    -     -     -      -      -  \n loadStop    -     -     -     -       -     -    -     -     -      -      -  \n\n RESOURCE REQUIREMENT DETAILS:\n Job-level: {select[serial_] rusage[mem=2048.00] span[hosts=1]} || {select[!ser\n                          ial_] rusage[mem=2048.00] span[hosts=1]}\n App-level: -\n Queue-level: same[type:model] affinity[core] cu[type=enclosure:maxcus=1]\n Combined: {select[(serial_) && (type == any)] order[-slots:-maxslots] rusage[m\n                          em=2048.00] span[hosts=1] cu[pref=config:maxcus=1:typ\n                          e=enclosure] affinity[core(1)*1]} || {select[(!serial\n                          _) && (type == any)] order[-slots:-maxslots] rusage[m\n                          em=2048.00] span[hosts=1] cu[pref=config:maxcus=1:typ\n                          e=enclosure] affinity[core(1)*1]}\n Effective: -\n------------------------------------------------------------------------------\n\nJob <29783710>, Job Name <mosaic-jq1-lrreset-validate-boltz2_chemistry>, User <\n                          s234818>, Project <default>, Status <PEND>, Queue <gp\n                          ul40s>, Command <bash -l /work3/s234818/mosaic/runs/2\n                          0261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-\n                          release-02/source/scripts/hpc/fixed25_lrreset_stage.l\n                          sf /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboo\n                          st-analysis-01/restart-lrreset-release-02/source /wor\n                          k3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-anal\n                          ysis-01/restart-lrreset-02 832f833dd486c2ff305f7e3eb3\n                          3fc775c87810a2e12a8bc597c5df744699c5d3 validate boltz\n                          2_chemistry /work3/s234818/mosaic/runs/20261022-brd4-\n                          jq1-lrboost-analysis-01/restart-lrreset-02/validate-b\n                          oltz2_chemistry 0 6e02392176f71238b1af36564c796615758\n                          ba82af7715ebe487bd48030a5a5d5>, Esub <dcc>\nThu Oct 22 12:24:51 2026: Submitted from host <hpclogin1>, CWD <$HOME>, Output \n                          File (overwrite) </work3/s234818/mosaic/runs/20261022\n                          -brd4-jq1-lrboost-analysis-01/restart-lrreset-02/vali\n                          date-boltz2_chemistry/stdout.29783710.log>, Error Fil\n                          e (overwrite) </work3/s234818/mosaic/runs/20261022-br\n                          d4-jq1-lrboost-analysis-01/restart-lrreset-02/validat\n                          e-boltz2_chemistry/stderr.29783710.log>, 4 Task(s), R\n                          equested Resources < rusage[mem=8192.00] span[hosts=1\n                          ]>, Requested GPU <num=1:mode=exclusive_process>;\n PENDING REASONS:\n Job's requirements for reserving resource (ngpus_physical) not satisfied: 3 \n                          hosts;\n\n RUNLIMIT                \n 120.0 min\n\n MEMLIMIT\n      8 G \n\n PENDING TIME DETAILS:\n Eligible pending time (seconds):\t812\n Ineligible pending time (seconds):\t0\n\n SCHEDULING PARAMETERS:\n           r15s   r1m  r15m   ut      pg    io   ls    it    tmp    swp    mem\n loadSched   -     -     -     -       -     -    -     -     -      -      -  \n loadStop    -     -     -     -       -     -    -     -     -      -      -  \n\n RESOURCE REQUIREMENT DETAILS:\n Job-level:  rusage[mem=8192.00] span[hosts=1]\n App-level: -\n Queue-level: same[type:model] affinity[core] cu[type=enclosure:maxcus=1]\n Combined: select[(ngpus>0) && (type == local)] order[-slots:-maxslots] rusage[\n                          mem=8192.00:ngpus_physical=1.00] span[hosts=1] same[t\n                          ype:model] cu[pref=config:maxcus=1:type=enclosure] af\n                          finity[core(1)*1]\n Effective: -\n\n GPU REQUIREMENT DETAILS:\n Combined: num=1:mode=exclusive_process:mps=no:j_exclusive=yes:aff=no:gvendor=n\n                          vidia\n Effective: -\n------------------------------------------------------------------------------\n\nJob <29783711>, Job Name <mosaic-jq1-lrreset-after-ready-boltz2_chemistry>, Use\n                          r <s234818>, Project <default>, Service Class <sc_hpc\n                          1>, Status <PEND>, Queue <hpc>, Command <bash -l /wor\n                          k3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-anal\n                          ysis-01/restart-lrreset-release-02/source/scripts/hpc\n                          /fixed25_lrreset_stage.lsf /work3/s234818/mosaic/runs\n                          /20261022-brd4-jq1-lrboost-analysis-01/restart-lrrese\n                          t-release-02/source /work3/s234818/mosaic/runs/202610\n                          22-brd4-jq1-lrboost-analysis-01/restart-lrreset-02 83\n                          2f833dd486c2ff305f7e3eb33fc775c87810a2e12a8bc597c5df7\n                          44699c5d3 after-ready boltz2_chemistry /work3/s234818\n                          /mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/re\n                          start-lrreset-02/after-ready-boltz2_chemistry 2978371\n                          0 6e02392176f71238b1af36564c796615758ba82af7715ebe487\n                          bd48030a5a5d5>, Esub <dcc>\nThu Oct 22 12:24:52 2026: Submitted from host <hpclogin1>, CWD <$HOME>, Output \n                          File (overwrite) </work3/s234818/mosaic/runs/20261022\n                          -brd4-jq1-lrboost-analysis-01/restart-lrreset-02/afte\n                          r-ready-boltz2_chemistry/stdout.29783711.log>, Error \n                          File (overwrite) </work3/s234818/mosaic/runs/20261022\n                          -brd4-jq1-lrboost-analysis-01/restart-lrreset-02/afte\n                          r-ready-boltz2_chemistry/stderr.29783711.log>, Reques\n                          ted Resources <{select[serial_] rusage[mem=2048.00] s\n                          pan[hosts=1]} || {select[!serial_] rusage[mem=2048.00\n                          ] span[hosts=1]}>, Dependency Condition <ended(297837\n                          10)>;\n PENDING REASONS:\n Job dependency condition not satisfied;\n\n RUNLIMIT                \n 30.0 min\n\n MEMLIMIT\n      2 G \n\n PENDING TIME DETAILS:\n Eligible pending time (seconds):\t1\n Ineligible pending time (seconds):\t810\n\n SCHEDULING PARAMETERS:\n           r15s   r1m  r15m   ut      pg    io   ls    it    tmp    swp    mem\n loadSched   -     -     -     -       -     -    -     -     -      -      -  \n loadStop    -     -     -     -       -     -    -     -     -      -      -  \n\n RESOURCE REQUIREMENT DETAILS:\n Job-level: {select[serial_] rusage[mem=2048.00] span[hosts=1]} || {select[!ser\n                          ial_] rusage[mem=2048.00] span[hosts=1]}\n App-level: -\n Queue-level: same[type:model] affinity[core] cu[type=enclosure:maxcus=1]\n Combined: {select[(serial_) && (type == any)] order[-slots:-maxslots] rusage[m\n                          em=2048.00] span[hosts=1] cu[pref=config:maxcus=1:typ\n                          e=enclosure] affinity[core(1)*1]} || {select[(!serial\n                          _) && (type == any)] order[-slots:-maxslots] rusage[m\n                          em=2048.00] span[hosts=1] cu[pref=config:maxcus=1:typ\n                          e=enclosure] affinity[core(1)*1]}\n Effective: -\n------------------------------------------------------------------------------\n\nJob <29781363>, Job Name <mosaic-jq1-lrreset-cpu>, User <s234818>, Project <def\n                          ault>, Service Class <sc_hpc1>, Status <DONE>, Queue \n                          <hpc>, Command <bash -l /work3/s234818/mosaic/runs/20\n                          261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-r\n                          elease-02/source/scripts/hpc/fixed25_lrreset_cpu.lsf \n                          /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-\n                          analysis-01/restart-lrreset-release-02/source /work3/\n                          s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysi\n                          s-01/restart-lrreset-02 832f833dd486c2ff305f7e3eb33fc\n                          775c87810a2e12a8bc597c5df744699c5d3>, Share group cha\n                          rged </s234818>, Esub <dcc>\nThu Oct 22 11:55:20 2026: Submitted from host <hpclogin1>, CWD <$HOME>, Output \n                          File (overwrite) </work3/s234818/mosaic/runs/20261022\n                          -brd4-jq1-lrboost-analysis-01/restart-lrreset-02/cpu/\n                          stdout.29781363.log>, Error File (overwrite) </work3/\n                          s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysi\n                          s-01/restart-lrreset-02/cpu/stderr.29781363.log>, 4 T\n                          ask(s), Requested Resources <{select[shortparallel_] \n                          rusage[mem=4096.00] span[hosts=1]} || {select[!shortp\n                          arallel_] rusage[mem=4096.00] span[hosts=1]}>;\nThu Oct 22 11:55:22 2026: Started 4 Task(s) on Host(s) <4*n-62-31-16>, Allocate\n                          d 4 Slot(s) on Host(s) <4*n-62-31-16>, Execution Home\n                           </zhome/95/e/206121>, Execution CWD </zhome/95/e/206\n                          121>;\nThu Oct 22 11:59:57 2026: Done successfully. The CPU time used is 270.0 seconds\n                          .\n\n RUNLIMIT                \n 60.0 min\n\n MEMLIMIT\n      4 G \n\n MEMORY USAGE:\n MAX MEM: 491 Mbytes;  AVG MEM: 396 Mbytes; MEM Efficiency: 3.00%\n\n CPU USAGE:\n CPU PEAK: 1.11 ;  CPU PEAK DURATION: 80 second(s)\n CPU AVERAGE EFFICIENCY: 25.51% ;  CPU PEAK EFFICIENCY: 27.81%\n\n PENDING TIME DETAILS:\n Eligible pending time (seconds):\t2\n Ineligible pending time (seconds):\t0\n\n SCHEDULING PARAMETERS:\n           r15s   r1m  r15m   ut      pg    io   ls    it    tmp    swp    mem\n loadSched   -     -     -     -       -     -    -     -     -      -      -  \n loadStop    -     -     -     -       -     -    -     -     -      -      -  \n\n RESOURCE REQUIREMENT DETAILS:\n Job-level: {select[shortparallel_] rusage[mem=4096.00] span[hosts=1]} || {sele\n                          ct[!shortparallel_] rusage[mem=4096.00] span[hosts=1]\n                          }\n App-level: -\n Queue-level: same[type:model] affinity[core] cu[type=enclosure:maxcus=1]\n Combined: {select[(shortparallel_) && (type == any)] order[-slots:-maxslots] r\n                          usage[mem=4096.00] span[hosts=1] cu[pref=config:maxcu\n                          s=1:type=enclosure] affinity[core(1)*1]} || {select[(\n                          !shortparallel_) && (type == any)] order[-slots:-maxs\n                          lots] rusage[mem=4096.00] span[hosts=1] cu[pref=confi\n                          g:maxcus=1:type=enclosure] affinity[core(1)*1]}\n Effective: select[((shortparallel_) && (type == any))] order[-slots:-maxslots]\n                           rusage[mem=4096.00] span[hosts=1] cu[type=enclosure:\n                          maxcus=1:pref=config] affinity[core(1)*1] \n------------------------------------------------------------------------------\n\nJob <29781364>, Job Name <mosaic-jq1-lrreset-after-cpu>, User <s234818>, Projec\n                          t <default>, Service Class <sc_hpc1>, Status <EXIT>, \n                          Queue <hpc>, Command <bash -l /work3/s234818/mosaic/r\n                          uns/20261022-brd4-jq1-lrboost-analysis-01/restart-lrr\n                          eset-release-02/source/scripts/hpc/fixed25_lrreset_st\n                          age.lsf /work3/s234818/mosaic/runs/20261022-brd4-jq1-\n                          lrboost-analysis-01/restart-lrreset-release-02/source\n                           /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost\n                          -analysis-01/restart-lrreset-02 832f833dd486c2ff305f7\n                          e3eb33fc775c87810a2e12a8bc597c5df744699c5d3 after-cpu\n                           none /work3/s234818/mosaic/runs/20261022-brd4-jq1-lr\n                          boost-analysis-01/restart-lrreset-02/after-cpu 297813\n                          63 0>, Share group charged </s234818>, Esub <dcc>\nThu Oct 22 11:55:20 2026: Submitted from host <hpclogin1>, CWD <$HOME>, Output \n                          File (overwrite) </work3/s234818/mosaic/runs/20261022\n                          -brd4-jq1-lrboost-analysis-01/restart-lrreset-02/afte\n                          r-cpu/stdout.29781364.log>, Error File (overwrite) </\n                          work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-a\n                          nalysis-01/restart-lrreset-02/after-cpu/stderr.297813\n                          64.log>, Requested Resources <{select[serial_] rusage\n                          [mem=2048.00] span[hosts=1]} || {select[!serial_] rus\n                          age[mem=2048.00] span[hosts=1]}>, Dependency Conditio\n                          n <ended(29781363)>;\nThu Oct 22 11:59:59 2026: Started 1 Task(s) on Host(s) <n-62-31-23>, Allocated \n                          1 Slot(s) on Host(s) <n-62-31-23>, Execution Home </z\n                          home/95/e/206121>, Execution CWD </zhome/95/e/206121>\n                          ;\nThu Oct 22 12:00:17 2026: Exited with exit code 1. The CPU time used is 6.6 sec\n                          onds.\nThu Oct 22 12:00:17 2026: Completed <exit>.\n\n RUNLIMIT                \n 30.0 min\n\n MEMLIMIT\n      2 G \n\n MEMORY USAGE:\n MAX MEM: 32 Mbytes;  AVG MEM: 32 Mbytes; MEM Efficiency: 1.56%\n\n CPU USAGE:\n CPU PEAK: 0.33 ;  CPU PEAK DURATION: 18 second(s)\n CPU AVERAGE EFFICIENCY: 33.33% ;  CPU PEAK EFFICIENCY: 33.33%\n\n PENDING TIME DETAILS:\n Eligible pending time (seconds):\t1\n Ineligible pending time (seconds):\t278\n\n SCHEDULING PARAMETERS:\n           r15s   r1m  r15m   ut      pg    io   ls    it    tmp    swp    mem\n loadSched   -     -     -     -       -     -    -     -     -      -      -  \n loadStop    -     -     -     -       -     -    -     -     -      -      -  \n\n RESOURCE REQUIREMENT DETAILS:\n Job-level: {select[serial_] rusage[mem=2048.00] span[hosts=1]} || {select[!ser\n                          ial_] rusage[mem=2048.00] span[hosts=1]}\n App-level: -\n Queue-level: same[type:model] affinity[core] cu[type=enclosure:maxcus=1]\n Combined: {select[(serial_) && (type == any)] order[-slots:-maxslots] rusage[m\n                          em=2048.00] span[hosts=1] cu[pref=config:maxcus=1:typ\n                          e=enclosure] affinity[core(1)*1]} || {select[(!serial\n                          _) && (type == any)] order[-slots:-maxslots] rusage[m\n                          em=2048.00] span[hosts=1] cu[pref=config:maxcus=1:typ\n                          e=enclosure] affinity[core(1)*1]}\n Effective: select[((serial_) && (type == any))] order[-slots:-maxslots] rusage\n                          [mem=2048.00] span[hosts=1] cu[type=enclosure:maxcus=\n                          1:pref=config] affinity[core(1)*1] \n\n"
+  },
+  "analysis_jobs": {
+    "cpu": "29780814",
+    "native_jobs": {
+      "protenix": "29779177",
+      "boltz2": "29779178",
+      "boltz2_chemistry": "29779179"
+    },
+    "report_manifest": "214c19387649a741a7ad42f1e3e027061631993b4ae33425071aba9005fdcbcc",
+    "diagnostics": {
+      "protenix": "29780821",
+      "boltz2": "29780823"
+    },
+    "diagnostic_captures": {
+      "protenix": "29780822",
+      "boltz2": "29780824"
+    },
+    "collectors": {
+      "protenix": "29780825",
+      "boltz2": "29780826",
+      "boltz2_chemistry": "29780827"
+    },
+    "active_interim": "29781041",
+    "interim_parent": "interim-0002",
+    "final": "29780830",
+    "cpu_certificate_job": "29780815"
+  }
+}
