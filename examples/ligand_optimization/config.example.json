@@ -1,0 +1,32 @@
+{
+  "model": {
+    "name": "protenix-tiny",
+    "cache_dir": "/path/to/mosaic/cache/protenix"
+  },
+  "target": {
+    "structure": "/path/to/protein_with_reference_ligand.pdb",
+    "chain": "A",
+    "pocket": {
+      "kind": "reference_ligand",
+      "ligand": {
+        "chain": "A",
+        "residue_name": "LIG",
+        "number": 501,
+        "insertion": ""
+      },
+      "cutoff_angstrom": 6.0
+    }
+  },
+  "initialization": "./initialization",
+  "updates": 1000,
+  "learning_rate": 0.01,
+  "seed": 17,
+  "losses": [
+    {"name": "contact", "scale": 1.0, "cutoff_angstrom": 8.0},
+    {"name": "pocket_coverage", "scale": 1.0, "cutoff_angstrom": 8.0}
+  ],
+  "weight_schedule": [
+    {"update": 1, "weights_pct": {"contact": 100, "pocket_coverage": 0}},
+    {"update": 500, "weights_pct": {"contact": 50, "pocket_coverage": 50}}
+  ]
+}
