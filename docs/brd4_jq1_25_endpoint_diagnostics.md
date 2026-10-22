@@ -199,3 +199,8 @@ The authorized new diagnostic leaves raw saved probability graphs unchanged and 
 ## 22 October20:10Paris: corrected diagnostic still queued
 
 Corrected Protenix diagnostic29792158 remainsPEND/gpul40s, with a host slot-limit reason; own capture29792159 remainsPEND waiting ended(29792158). No new endpoint findings or completion exists. This separate read-only diagnostic is distinct from new lower-rate Pro readiness29792127, which failed exact initialization identity before gradient checks. Saved original studies are unchanged. [Current evidence](../experiments/brd4-jq1/fixed-lrreset/runs/20261022-brd4-jq1-25-fixed-lrreset-03/status-20261022-2010.md).
+
+
+## 22 October20:33Paris: corrected separate Protenix diagnostic verified
+
+Diagnostic29792158 and capture29792159 actualDONE/samejobLSFsuccess. Independent byte/schema/proofchain audit passed416files/385remotehashreferences, report2045d6e8537ff86c176e6619725d206b32029058df351ce639cc88f90da9c1db. Savedsteps0/9900/10000, frozenmodel/context unchanged; original terminalXrow3 source1to4 symmetricmargin0.0001437509199604392 makes.01/.003/.001 predeclared probes infeasible. Smallerdiagnostic-only.0001/.00003 atterminal agreewithAD; repeatsreportzero spread, butfiner/coordinate controlsare not uniformlypassing and do notcertifyoriginalgate. Originalscientificfailurestaysfailed; nooptimizer or savedresultmutation. [Proofscope/verifier](../experiments/brd4-jq1/fixed-lrreset/runs/20261022-brd4-jq1-25-fixed-lrreset-04/probe-diagnostic-verification.json), [run record](../experiments/brd4-jq1/fixed-lrreset/runs/20261022-brd4-jq1-25-fixed-lrreset-04/README.md). Five originalsnapshot/summary/terminalreport references remain authenticatedonHPC rather than downloaded originals.

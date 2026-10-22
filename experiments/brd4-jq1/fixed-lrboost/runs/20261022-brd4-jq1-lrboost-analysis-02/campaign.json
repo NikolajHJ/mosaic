@@ -1,7 +1,7 @@
 {
   "tag": "20261022-brd4-jq1-lrboost-analysis-02",
-  "status": "Corrected diagnostic29792158 and own capture29792159 still PEND at20:10Paris. No diagnostic finding or completion yet; saved studies unchanged.",
-  "latest_observed_utc": "2026-10-22T18:10:41.512579+00:00",
+  "status": "Corrected separate Prodiagnostic29792158 and capture29792159 actualDONE/LSFsuccess. Full evidence audit passed; original scientific failure remains failed. Original declared terminal X perturbations are infeasible, smaller diagnostic-only probes agree. No saved result changed.",
+  "latest_observed_utc": "2026-10-22T18:33:04.059050+00:00",
   "core_source": {
     "tag": "20261022-brd4-jq1-lrboost-analysis-02",
     "source_files": 16,
@@ -53,7 +53,7 @@
   },
   "diagnostic_job": "29792158",
   "capture_job": "29792159",
-  "diagnostic_findings_passed": false,
+  "diagnostic_findings_passed": true,
   "saved_steps": [
     0,
     9900,
@@ -82,5 +82,14 @@
   "latest_status_evidence": {
     "directory": "results/hpc/20261022-brd4-jq1-25-fixed-lrreset-03/news-20261022-2012",
     "verification_sha256": "ca00e03022542b2e1e90f83832dc2c646a567252190517850c117042cc4f8fe1"
+  },
+  "verified_completion": {
+    "native_job": "29792158",
+    "capture_job": "29792159",
+    "report_sha256": "2045d6e8537ff86c176e6619725d206b32029058df351ce639cc88f90da9c1db",
+    "evidence_files": 416,
+    "remote_reference_hashes_verified": 385,
+    "independent_verification_sha256": "f660e02ffe67051c5f8adc3c79887791cbdf6d62277e1d83ec64d0bcc6f4a9f7",
+    "evidence_directory": "results/hpc/20261022-brd4-jq1-25-fixed-lrreset-04/probe-diagnostic-evidence01"
   }
 }

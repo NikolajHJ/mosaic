@@ -1,0 +1,86 @@
+{
+  "tag": "20261022-brd4-jq1-25-fixed-lrreset-04",
+  "status": "FullCPU728 independently verified, callbackDONE; all3freshnative validations actuallysubmitted/PEND at20:38Paris. No native pass or freshlongIDyet.",
+  "authorization": {
+    "rates": {
+      "protenix": 0.3,
+      "boltz2": 0.005,
+      "boltz2_chemistry": 0.005
+    },
+    "fresh_updates_each": 10000,
+    "acceptance_policy": "fixed_step",
+    "max_backtracks": 1,
+    "chemistry": {
+      "initial": 0.001,
+      "hold_updates": 5000,
+      "final": 100.0,
+      "total_updates": 10000
+    }
+  },
+  "source": {
+    "tag": "20261022-brd4-jq1-25-fixed-lrreset-04",
+    "source_files": 625,
+    "manifest_sha256": "c2628d08f7224f3b572ab456f4113d8a66b587a5d69f85a072877052fc09a057",
+    "archive_bytes": 39604161,
+    "archive_sha256": "4d6d297451d9820543abc3298622e6599014c4b96bc999e104dd732825f56e4e",
+    "parent_manifest_sha256": "ff82857ecd4a985d0ba6cc16a87f1bf7b7bb2c7ffdbde18a183bbd63670ff567",
+    "changed_files": [
+      "docs/brd4_jq1_25_initialization_recovery04.md",
+      "examples/brd4_25_atoms.py",
+      "scripts/fixed25_lrreset_ops.py",
+      "scripts/fixed25_lrreset_storage.py",
+      "scripts/hpc/fixed25_lrreset_cpu.lsf",
+      "scripts/hpc/fixed25_lrreset_stage.lsf",
+      "scripts/protenix_initialization.py",
+      "src/mosaic/small_molecule/chemistry/trajectory.py",
+      "tests/test_fixed25_lrreset_storage.py",
+      "tests/test_protenix_initialization.py"
+    ],
+    "local_scope": "Byte/AST/JSON packaging only; no numerical tests or model execution"
+  },
+  "source_root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-release-04/source",
+  "work3_root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04",
+  "home_root": "/zhome/95/e/206121/mosaic-runs/20261022-brd4-jq1-25-fixed-lrreset-04",
+  "initialization_execution": "protenix-fp32-cpu-atom-softmax-v1",
+  "shared_library_change": "One proposal-constructor line preserves the input logit subclass. All other144srcfiles and all configurations/contract/baseGraphLogits unchanged.",
+  "exact_five_array_initialization_check_unchanged": true,
+  "probe_jobs": {
+    "cpu": "29792346",
+    "gpu": "29792347",
+    "both_actual_done": true
+  },
+  "cpu": {
+    "job": "29792389",
+    "after_cpu": "29792390",
+    "actual_done": true,
+    "cases": 728,
+    "by_xml": {
+      "hpc-contract.xml": 396,
+      "legacy.xml": 239,
+      "native-mapping.xml": 34,
+      "chemistry.xml": 59
+    },
+    "certificate_sha256": "6a87093f3da0d1ca0694c7152de84fdeed308251f709c685b526d978b1455e23",
+    "verification_sha256": "8d3c0b853e5192a7bfd81cf38f6e07a94e1f5aa3265a434f4503dedc66c23291"
+  },
+  "native_ready_passed": false,
+  "long_submissions": null,
+  "saved_results_changed": false,
+  "prior_failures_preserved": true,
+  "diagnostic_evidence_verification_sha256": "f660e02ffe67051c5f8adc3c79887791cbdf6d62277e1d83ec64d0bcc6f4a9f7",
+  "latest_observed_utc": "2026-10-22T18:38:38.220149+00:00",
+  "native_jobs": {
+    "protenix": {
+      "job": "29792413",
+      "callback": "29792414"
+    },
+    "boltz2": {
+      "job": "29792415",
+      "callback": "29792416"
+    },
+    "boltz2_chemistry": {
+      "job": "29792417",
+      "callback": "29792418"
+    }
+  }
+}

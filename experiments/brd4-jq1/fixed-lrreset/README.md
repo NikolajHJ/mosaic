@@ -98,3 +98,6 @@ callback stopping at native-dispatch storage admission, before native/long
 submission. It also describes a separate authorized cleanup in progress. Those
 updates are preserved, are independent of this migration, and do not validate
 the migrated working source. Consult that agent's latest receipts for follow-up.
+
+
+Latest authorized initialization recovery: [attempt04](runs/20261022-brd4-jq1-25-fixed-lrreset-04/README.md), with exact baseline identity preserved and all fresh gates repeated. [Attempt03](runs/20261022-brd4-jq1-25-fixed-lrreset-03/README.md) remains the preserved Pro initialization failure and two passed Boltz validations; no old run is restarted.

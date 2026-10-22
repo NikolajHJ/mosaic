@@ -1,0 +1,21 @@
+{
+  "tag": "20261022-brd4-jq1-25-fixed-lrreset-04",
+  "source_files": 625,
+  "manifest_sha256": "c2628d08f7224f3b572ab456f4113d8a66b587a5d69f85a072877052fc09a057",
+  "archive_bytes": 39604161,
+  "archive_sha256": "4d6d297451d9820543abc3298622e6599014c4b96bc999e104dd732825f56e4e",
+  "parent_manifest_sha256": "ff82857ecd4a985d0ba6cc16a87f1bf7b7bb2c7ffdbde18a183bbd63670ff567",
+  "changed_files": [
+    "docs/brd4_jq1_25_initialization_recovery04.md",
+    "examples/brd4_25_atoms.py",
+    "scripts/fixed25_lrreset_ops.py",
+    "scripts/fixed25_lrreset_storage.py",
+    "scripts/hpc/fixed25_lrreset_cpu.lsf",
+    "scripts/hpc/fixed25_lrreset_stage.lsf",
+    "scripts/protenix_initialization.py",
+    "src/mosaic/small_molecule/chemistry/trajectory.py",
+    "tests/test_fixed25_lrreset_storage.py",
+    "tests/test_protenix_initialization.py"
+  ],
+  "local_scope": "Byte/AST/JSON packaging only; no numerical tests or model execution"
+}
