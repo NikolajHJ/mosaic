@@ -1,0 +1,284 @@
+{
+  "status": "passed",
+  "commit": "82476a8",
+  "scope": "Local stdlib AST/JSON/byte/index audit only; no local numerical/scientific execution or tests",
+  "prior_audit": "Initial exact-byte assertion rejected Markdown line-ending normalization; proof/executable bytes remain exact. This follow-up explicitly authenticates declared repository Markdown LF normalization. No scientific/source/gate waiver.",
+  "files": [
+    {
+      "path": "docs/brd4_jq1_25_endpoint_diagnostics.md",
+      "bytes": 10139,
+      "sha256": "89a40ec0c48f826b27eacf6fad79066d4ca7439de8c473dc088702aa79473758",
+      "comparison": "repository text LF normalization, semantic bytes otherwise exact"
+    },
+    {
+      "path": "docs/experiment_ledger.md",
+      "bytes": 409804,
+      "sha256": "404ae2eec27d3ffce484b954ac4cbb589d7ad33bcdab990b2a567058abff38ed",
+      "comparison": "repository text LF normalization, semantic bytes otherwise exact"
+    },
+    {
+      "path": "scripts/hpc/receipts/20261021-brd4-jq1-25-fixed-lrboost-01/campaign.json",
+      "bytes": 11444,
+      "sha256": "09456c097978109aff1825b42935badd97525a1064599e21b0212ecdf25ec18a",
+      "comparison": "exact bytes"
+    },
+    {
+      "path": "scripts/hpc/receipts/20261022-brd4-jq1-lrboost-analysis-01/campaign.json",
+      "bytes": 16059,
+      "sha256": "c8e7720da305b41ca2d9cfb34908790675758dea37b18206af108ab3c4dafcc4",
+      "comparison": "exact bytes"
+    },
+    {
+      "path": "scripts/hpc/receipts/20261022-brd4-jq1-lrboost-analysis-01/collect-report-delivery-02.sh",
+      "bytes": 4785,
+      "sha256": "30189a91b9b8e40263122a5dfdb2f4b6c5f747fcc5fa85448f17a72e4157368c",
+      "comparison": "exact bytes"
+    },
+    {
+      "path": "scripts/hpc/receipts/20261022-brd4-jq1-lrboost-analysis-01/download_fresh_stream.py",
+      "bytes": 3513,
+      "sha256": "9a0276038a0ebb91289ae9b2d80d7996a3a8f9abc61cb82e427e0ccdc6c89da7",
+      "comparison": "exact bytes"
+    },
+    {
+      "path": "scripts/hpc/receipts/20261022-brd4-jq1-lrboost-analysis-01/heartbeat-status-09.sh",
+      "bytes": 3395,
+      "sha256": "7c9541a6f8680d25c5cebe5a401caa893b7250c01958ab6ed939aabe8658c8df",
+      "comparison": "exact bytes"
+    },
+    {
+      "path": "scripts/hpc/receipts/20261022-brd4-jq1-lrboost-analysis-01/heartbeat-status-10.sh",
+      "bytes": 3486,
+      "sha256": "3d44a1e124eeb583430dbc8d7824efb5d7284e01812ac5f84863630965c781eb",
+      "comparison": "exact bytes"
+    },
+    {
+      "path": "scripts/hpc/receipts/20261022-brd4-jq1-lrboost-analysis-01/heartbeat-status-11.sh",
+      "bytes": 3486,
+      "sha256": "3d44a1e124eeb583430dbc8d7824efb5d7284e01812ac5f84863630965c781eb",
+      "comparison": "exact bytes"
+    },
+    {
+      "path": "scripts/hpc/receipts/20261022-brd4-jq1-lrboost-analysis-01/inspect-interim-0002-guard-console.txt",
+      "bytes": 5648,
+      "sha256": "ca46efce6840db533af9f57592c342044aafdd9c79c0d1414deb3acdfbf92c4f",
+      "comparison": "exact bytes"
+    },
+    {
+      "path": "scripts/hpc/receipts/20261022-brd4-jq1-lrboost-analysis-01/inspect-interim-0002-guard-result.json",
+      "bytes": 484,
+      "sha256": "b3fb7ca261a02b18f1d2e996422cbaadb88e31f94cda609cfd3025da92fe3a67",
+      "comparison": "exact bytes"
+    },
+    {
+      "path": "scripts/hpc/receipts/20261022-brd4-jq1-lrboost-analysis-01/inspect-interim-0002-guard-started.json",
+      "bytes": 405,
+      "sha256": "872daecdb8b9b576a417f9f40b358507e6b8848424bd319d02a67e37085d1856",
+      "comparison": "exact bytes"
+    },
+    {
+      "path": "scripts/hpc/receipts/20261022-brd4-jq1-lrboost-analysis-01/inspect-interim-0002-guard-stderr.txt",
+      "bytes": 648,
+      "sha256": "fea9148a59ac100e18fee8ae1046abe628954b736796d86853c4ad991d822c95",
+      "comparison": "exact bytes"
+    },
+    {
+      "path": "scripts/hpc/receipts/20261022-brd4-jq1-lrboost-analysis-01/inspect-interim-0002-guard-stdout.txt",
+      "bytes": 4990,
+      "sha256": "a8da728c60983698a837f9d9c5f655fb16c84cd223f3fbaa074d74d37f35c623",
+      "comparison": "exact bytes"
+    },
+    {
+      "path": "scripts/hpc/receipts/20261022-brd4-jq1-lrboost-analysis-01/inspect-interim-0002-guard.sh",
+      "bytes": 721,
+      "sha256": "bc9e1eb47c79ad5a5fc0b108d1a0c2c1e863d7c3b1938f5bed8ad832b9a86823",
+      "comparison": "exact bytes"
+    },
+    {
+      "path": "scripts/hpc/receipts/20261022-brd4-jq1-lrboost-analysis-01/interim-0002-submission-verification.json",
+      "bytes": 7988,
+      "sha256": "42a7c19016cf86bb97f6a046cc2cf601e8f450abd8e7305f3ef8f8bf2318556e",
+      "comparison": "exact bytes"
+    },
+    {
+      "path": "scripts/hpc/receipts/20261022-brd4-jq1-lrboost-analysis-01/interim-0002-submission.json",
+      "bytes": 1171,
+      "sha256": "a6946043fc084d38d103edfec327c22017d4fe8e0f36ce1068118f569ee231e1",
+      "comparison": "exact bytes"
+    },
+    {
+      "path": "scripts/hpc/receipts/20261022-brd4-jq1-lrboost-analysis-01/jobs.json",
+      "bytes": 628,
+      "sha256": "8ba7726f9621518bc5eb81ec219eb31c1ba99ed6249388d9c62877346e75cf53",
+      "comparison": "exact bytes"
+    },
+    {
+      "path": "scripts/hpc/receipts/20261022-brd4-jq1-lrboost-analysis-01/status-09-console.txt",
+      "bytes": 98297,
+      "sha256": "38c31580b5c96c257e294eeda5b99d4255c43694dcf8c660704b8d2c9f34c0ec",
+      "comparison": "exact bytes"
+    },
+    {
+      "path": "scripts/hpc/receipts/20261022-brd4-jq1-lrboost-analysis-01/status-09-result.json",
+      "bytes": 477,
+      "sha256": "10193fa02af708ba5af4f08bebd665c5f57dd3d2ad854df7620f7734c9d9bb23",
+      "comparison": "exact bytes"
+    },
+    {
+      "path": "scripts/hpc/receipts/20261022-brd4-jq1-lrboost-analysis-01/status-09-started.json",
+      "bytes": 398,
+      "sha256": "457a39f9afbf529d0636783f59e94a3b703c9cffe0c9621b2a896b3326bb4b7b",
+      "comparison": "exact bytes"
+    },
+    {
+      "path": "scripts/hpc/receipts/20261022-brd4-jq1-lrboost-analysis-01/status-09-stderr.txt",
+      "bytes": 648,
+      "sha256": "fea9148a59ac100e18fee8ae1046abe628954b736796d86853c4ad991d822c95",
+      "comparison": "exact bytes"
+    },
+    {
+      "path": "scripts/hpc/receipts/20261022-brd4-jq1-lrboost-analysis-01/status-09-stdout.txt",
+      "bytes": 96661,
+      "sha256": "aeeaf7f4c0166e06500a296093a1d0753d63f834767a97ec800712d748828e38",
+      "comparison": "exact bytes"
+    },
+    {
+      "path": "scripts/hpc/receipts/20261022-brd4-jq1-lrboost-analysis-01/status-10-console.txt",
+      "bytes": 124075,
+      "sha256": "dd9649dc086c81704221dba81004e5b15e453cf5709241b732628e7d9870bd98",
+      "comparison": "exact bytes"
+    },
+    {
+      "path": "scripts/hpc/receipts/20261022-brd4-jq1-lrboost-analysis-01/status-10-result.json",
+      "bytes": 477,
+      "sha256": "f2e74165eb32104c02c6e8d0d0734a7e7b0289179a1bb8b522f636c582f885ac",
+      "comparison": "exact bytes"
+    },
+    {
+      "path": "scripts/hpc/receipts/20261022-brd4-jq1-lrboost-analysis-01/status-10-started.json",
+      "bytes": 398,
+      "sha256": "55beb41d825e82c6138ff5e3affc8dbdefafc04015edffc7d1f8edf19d7b8bfb",
+      "comparison": "exact bytes"
+    },
+    {
+      "path": "scripts/hpc/receipts/20261022-brd4-jq1-lrboost-analysis-01/status-10-stderr.txt",
+      "bytes": 648,
+      "sha256": "fea9148a59ac100e18fee8ae1046abe628954b736796d86853c4ad991d822c95",
+      "comparison": "exact bytes"
+    },
+    {
+      "path": "scripts/hpc/receipts/20261022-brd4-jq1-lrboost-analysis-01/status-10-stdout.txt",
+      "bytes": 122180,
+      "sha256": "c1353a6347314a542c3ff469c6ef99b34cb1bc429cd7dd52918e27e1642af0a7",
+      "comparison": "exact bytes"
+    },
+    {
+      "path": "scripts/hpc/receipts/20261022-brd4-jq1-lrboost-analysis-01/status-11-console.txt",
+      "bytes": 134993,
+      "sha256": "11f386a586e8d25511a715bb16a7a23c2fa7401e14110e7ef538e5fd11188b8a",
+      "comparison": "exact bytes"
+    },
+    {
+      "path": "scripts/hpc/receipts/20261022-brd4-jq1-lrboost-analysis-01/status-11-result.json",
+      "bytes": 477,
+      "sha256": "dd194c98ea2c94c9f5f7b3d88d0e3fcf327b063adbdc579e5e8b1662898c218f",
+      "comparison": "exact bytes"
+    },
+    {
+      "path": "scripts/hpc/receipts/20261022-brd4-jq1-lrboost-analysis-01/status-11-started.json",
+      "bytes": 398,
+      "sha256": "bcdb08b60e0287db8c781729f187203ad73bb5616b7eee1902ffffdb24e29019",
+      "comparison": "exact bytes"
+    },
+    {
+      "path": "scripts/hpc/receipts/20261022-brd4-jq1-lrboost-analysis-01/status-11-stderr.txt",
+      "bytes": 648,
+      "sha256": "fea9148a59ac100e18fee8ae1046abe628954b736796d86853c4ad991d822c95",
+      "comparison": "exact bytes"
+    },
+    {
+      "path": "scripts/hpc/receipts/20261022-brd4-jq1-lrboost-analysis-01/status-11-stdout.txt",
+      "bytes": 132900,
+      "sha256": "c8ac247d4e64fcda5c3288cb583437fa32005d9145c2bf9cbc1e15db411d2b6d",
+      "comparison": "exact bytes"
+    },
+    {
+      "path": "scripts/hpc/receipts/20261022-brd4-jq1-lrboost-analysis-01/submit-interim-0002-attempt02-console.txt",
+      "bytes": 2303,
+      "sha256": "c397c8fd4b5b7ef3eb941dc67c4c286c079a911828c521df5c0b2694b3cc4cfc",
+      "comparison": "exact bytes"
+    },
+    {
+      "path": "scripts/hpc/receipts/20261022-brd4-jq1-lrboost-analysis-01/submit-interim-0002-attempt02-result.json",
+      "bytes": 487,
+      "sha256": "58f00c59a73cc828d8f74dfad323de155ee8f73110c03d3c2e17f506ff8bf33d",
+      "comparison": "exact bytes"
+    },
+    {
+      "path": "scripts/hpc/receipts/20261022-brd4-jq1-lrboost-analysis-01/submit-interim-0002-attempt02-started.json",
+      "bytes": 408,
+      "sha256": "ed5f4b73bc9ece4fd6f7a71221c912e5c9593512ce6d9e9b4af4ec2acf7de250",
+      "comparison": "exact bytes"
+    },
+    {
+      "path": "scripts/hpc/receipts/20261022-brd4-jq1-lrboost-analysis-01/submit-interim-0002-attempt02-stderr.txt",
+      "bytes": 648,
+      "sha256": "fea9148a59ac100e18fee8ae1046abe628954b736796d86853c4ad991d822c95",
+      "comparison": "exact bytes"
+    },
+    {
+      "path": "scripts/hpc/receipts/20261022-brd4-jq1-lrboost-analysis-01/submit-interim-0002-attempt02-stdout.txt",
+      "bytes": 1811,
+      "sha256": "fa1d9434fde371a0f818c0d14bed4d16511bdc4996d95288fb74262ccc39ff71",
+      "comparison": "exact bytes"
+    },
+    {
+      "path": "scripts/hpc/receipts/20261022-brd4-jq1-lrboost-analysis-01/submit-interim-0002-attempt02.sh",
+      "bytes": 4746,
+      "sha256": "8e511b4225bca495cd25f46d06188874a1eb6e46fb6301082cdea60344635ed6",
+      "comparison": "exact bytes"
+    },
+    {
+      "path": "scripts/hpc/receipts/20261022-brd4-jq1-lrboost-analysis-01/submit-interim-0002-console.txt",
+      "bytes": 559,
+      "sha256": "5cac022bd6fdccaff0b4c290f56331c3d76238cc83250020c39fb899184da2c6",
+      "comparison": "exact bytes"
+    },
+    {
+      "path": "scripts/hpc/receipts/20261022-brd4-jq1-lrboost-analysis-01/submit-interim-0002-result.json",
+      "bytes": 474,
+      "sha256": "12772fb47e342e31f62d6acd86bedecc4c8be0c358e75db5a70019d8c91fc29a",
+      "comparison": "exact bytes"
+    },
+    {
+      "path": "scripts/hpc/receipts/20261022-brd4-jq1-lrboost-analysis-01/submit-interim-0002-started.json",
+      "bytes": 398,
+      "sha256": "f417aa7ad9f8e4aff53b8c03ae64939328a26f9dfc6befc872bcb65c0fef5688",
+      "comparison": "exact bytes"
+    },
+    {
+      "path": "scripts/hpc/receipts/20261022-brd4-jq1-lrboost-analysis-01/submit-interim-0002-stderr.txt",
+      "bytes": 774,
+      "sha256": "0e6980bd51c79d2acb85d125382978e53bf42187dcf2267350ee5217d8f10246",
+      "comparison": "exact bytes"
+    },
+    {
+      "path": "scripts/hpc/receipts/20261022-brd4-jq1-lrboost-analysis-01/submit-interim-0002-stdout.txt",
+      "bytes": 81,
+      "sha256": "668bc830f6b1ffab52f6c94ec4d4156f5e73f2a361966e95eed8d8caa4aa51b8",
+      "comparison": "exact bytes"
+    },
+    {
+      "path": "scripts/hpc/receipts/20261022-brd4-jq1-lrboost-analysis-01/submit-interim-0002.sh",
+      "bytes": 4704,
+      "sha256": "9464093dd74864afb32371e361d2675fa1bd62a8f00ff60122dcefb71bcf3ea1",
+      "comparison": "exact bytes"
+    },
+    {
+      "path": "scripts/hpc/receipts/20261022-brd4-jq1-lrboost-analysis-01/verify_report_delivery_0002.py",
+      "bytes": 48002,
+      "sha256": "75d1bf7fcc05ccb96c44a6666d38f7d468ce838a5722525544fb5cb011e5e738",
+      "comparison": "exact bytes"
+    }
+  ]
+}
