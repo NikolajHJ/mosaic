@@ -1,7 +1,7 @@
 {
   "tag": "20261022-brd4-jq1-25-fixed-lrreset-03",
-  "status": "Fresh CPU724 passed, all3 native validations and own callbacks actually submitted; PEND at19:36Paris. No native readiness pass or10000-update long ID yet.",
-  "latest_observed_utc": "2026-10-22T17:36:06.375234+00:00",
+  "status": "Both Boltz native readiness checks passed. Protenix29792127 EXIT1 at exact original-initialization equality before raw gradient checks. All three long runs remain unsubmitted; corrected separate Prodiagnostic29792158 still PEND at20:10Paris.",
+  "latest_observed_utc": "2026-10-22T18:10:41.512579+00:00",
   "authorization": {
     "rates": {
       "protenix": 0.3,
@@ -91,5 +91,25 @@
   },
   "original_studies_changed_or_restarted": false,
   "old_failed_sources_and_gates_preserved": true,
-  "new_report_published": false
+  "new_report_published": false,
+  "native_ready_by_arm": {
+    "protenix": "failed initialization identity before gradients",
+    "boltz2": "passed",
+    "boltz2_chemistry": "passed"
+  },
+  "latest_status_evidence": {
+    "directory": "results/hpc/20261022-brd4-jq1-25-fixed-lrreset-03/news-20261022-2012",
+    "metadata_files": 108,
+    "remote_proof_hashes_matched": 188,
+    "verification_sha256": "ca00e03022542b2e1e90f83832dc2c646a567252190517850c117042cc4f8fe1"
+  },
+  "protenix_failure": {
+    "job": "29792127",
+    "exit_code": 1,
+    "failure_stage": "exact saved initialization identity before native_gradient_checks",
+    "native_gradient_checks_evaluated": false,
+    "reported_mismatched_entries": "150/150",
+    "reported_max_absolute_difference": "5.9604645e-08",
+    "scientific_gate_waived": false
+  }
 }

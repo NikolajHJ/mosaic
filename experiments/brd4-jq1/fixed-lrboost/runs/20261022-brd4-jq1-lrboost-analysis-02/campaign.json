@@ -1,7 +1,7 @@
 {
   "tag": "20261022-brd4-jq1-lrboost-analysis-02",
-  "status": "Corrected diagnostic CPU282 and separate resource launcher CPU12 passed. Protenix-only diagnostic29792158 and capture29792159 actually submitted/PEND19:36Paris; no native finding yet.",
-  "latest_observed_utc": "2026-10-22T17:36:06.375234+00:00",
+  "status": "Corrected diagnostic29792158 and own capture29792159 still PEND at20:10Paris. No diagnostic finding or completion yet; saved studies unchanged.",
+  "latest_observed_utc": "2026-10-22T18:10:41.512579+00:00",
   "core_source": {
     "tag": "20261022-brd4-jq1-lrboost-analysis-02",
     "source_files": 16,
@@ -78,5 +78,9 @@
     "archive_sha256": "b5d7a6b6b4f228d8e560184f7d7a9b8f8a810151890cdcbdeb9e0064427f46a4",
     "files": 93,
     "independent_verification_sha256": "ce57cee2eabb1a2d7aa9bfcc8b33c4687ebb582e4a79148fa41dc16f1596a184"
+  },
+  "latest_status_evidence": {
+    "directory": "results/hpc/20261022-brd4-jq1-25-fixed-lrreset-03/news-20261022-2012",
+    "verification_sha256": "ca00e03022542b2e1e90f83832dc2c646a567252190517850c117042cc4f8fe1"
   }
 }
