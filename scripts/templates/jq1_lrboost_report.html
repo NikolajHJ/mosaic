@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BRD4 JQ1 pocket — higher learning-rate saved progress</title>
+<style>
+body{font:16px system-ui;margin:28px auto;padding:0 20px;max-width:1200px;background:#f3f6f8;color:#17313b}section{background:white;border:1px solid #d9e2e7;border-radius:12px;padding:20px;margin:20px 0}h1{font-size:28px}p{line-height:1.5}.note{color:#526773;font-size:14px}button,select{font:inherit;padding:7px;margin:3px}#step{width:55%;cursor:ew-resize;touch-action:pan-y}#stepInput{width:90px;font:inherit;padding:6px}.timeline{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.timeline #step{flex:1;min-width:240px}#graph-scroll{overflow:auto;max-height:670px;border:1px solid #dae4e8}#molecule{width:900px;height:650px;display:block;margin:auto}img{width:100%}pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}.maps{max-height:500px;overflow:auto}table{border-collapse:collapse;width:100%;font-size:12px}td,th{border:1px solid #dce5e8;padding:5px;text-align:right}th{position:sticky;top:0;background:#eef3f6}#error{color:#a22935;font-weight:bold}#status{font-weight:bold;color:#136651}.arm-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}.arm-card{border:1px solid #d9e2e7;border-top:4px solid #526773;border-radius:8px;padding:12px}.arm-card h2{font-size:17px;margin:0 0 8px}.arm-card p{font-size:14px;margin:6px 0}.arm-card button{font-size:14px}#arm-status{padding:10px;background:#eef3f6;border-radius:6px}button:disabled,input:disabled{opacity:.5;cursor:default}
+</style>
+<h1>BRD4 JQ1 pocket: higher learning-rate trajectories</h1>
+<p id="status">Loading authenticated saved progress…</p><p id="capture" class="note"></p><div class="arm-cards" id="arm-cards" aria-label="All three scientific runs"></div>
+<p class="note">50% carbon-chain/uniform initialization · 25 occupied neutral slots. Fixed LR: Protenix 3.0; both Boltz-2 arms 0.05. Each update applies exactly one finite candidate, including increases, equality and no-ops; there is no halving or backtracking. Protenix optimizes pocket contact; Boltz-2 optimizes whole-complex affinity at a fixed pocket pose. These metrics have different units and are plotted separately. Coordinates are detached: no gradients through diffusion.</p>
+<p class="note">Initial readiness, applied update budget, terminal gradient validation and overall scientific outcome are shown separately for each arm. A saved 10,000-update trajectory can fail its mandatory terminal checks. A verified report presents that failure; it does not certify the failed run. A finite-difference probe that cannot stay inside the probability simplex does not demonstrate a gradient disagreement. Agreement at only one declared scale does not pass the required two adjacent scales.</p>
+<section><img src="loss-overlays.svg" alt="Separate Protenix contact and Boltz affinity overlays, binder probability, chemistry ramp, repair losses, fixed-target changes and saved validity">
+<p class="note">All saved loss points are retained, including increases. Chemistry targets and coefficients can change between updates; refreshed totals are not one fixed objective. Markers show saved scalar increases, equality and probability no-ops; saved strict-improvement counts are shown separately. These descriptions can overlap; they are not search fallbacks. The hard argmax molecule can remain unchanged while probabilities and losses move. A valid graph or fixed-pose score does not prove binding or activity. Saved sanitization/connectivity does not establish selectivity or synthesis feasibility.</p></section>
+<section>
+<label>Run <select id="run" aria-label="Saved run"></select></label><p id="arm-status" role="status"></p><pre id="validation" aria-label="Independent readiness budget and terminal validation"></pre>
+<p class="timeline"><button id="play">Play</button><button id="previous" aria-label="Previous saved update">←</button><input id="step" type="range" min="0" max="10000" step="1" value="0" aria-label="Saved update"><button id="next" aria-label="Next saved update">→</button><label>Update <input id="stepInput" type="number" min="0" max="10000" step="1" value="0" aria-label="Exact saved update"></label></p><p><strong id="number"></strong><span id="timeline-note" class="note"></span></p>
+<p><button id="initial">Initial</button><button id="middle">Update 5000</button><button id="final">Latest captured</button><label>Zoom <select id="zoom"><option value="1">100%</option><option value="1.5">150%</option><option value="2">200%</option></select></label></p>
+<p id="error" role="alert"></p><div id="graph-scroll"><svg id="molecule" viewBox="0 0 900 650" role="img" aria-label="Raw saved 25-slot argmax graph"></svg></div>
+<p id="readout"></p><p class="note">All raw argmax bonds are drawn, including invalid and disconnected graphs. Labels identify element and slot; node radius reflects winning element probability and bond width reflects bond-existence probability. This fixed grid is a display layout, not predicted molecular coordinates. No repaired target replaces the shared molecule.</p>
+<pre id="metrics"></pre>
+<details id="probabilities"><summary>Exact saved probabilities — 25 atoms / 300 unordered pairs</summary><div id="heatmaps" class="maps"></div></details>
+<details><summary>Saved readout, preparation and snapshot hash</summary><pre id="evidence"></pre></details>
+</section>
+<section><h2>Separate endpoint diagnostics</h2><p class="note">These saved probes diagnose the endpoints without changing either original trajectory, its learning rate or its failed terminal gate. Diagnostic agreement is not a retroactive native pass, an authorized continuation point or evidence of binding. Pending diagnostics do not block the saved trajectory presentation.</p><div id="diagnostics"></div></section>
+<section><details><summary>Run identities and update counts</summary><pre id="identity"></pre></details></section>
+<script id="manifest" type="application/json">__SAVED_REPORT_MANIFEST__</script>
+<script>
+'use strict';
+const data=JSON.parse(document.getElementById('manifest').textContent), byId=id=>document.getElementById(id);
+const elements=['C','N','O','S','F','Cl'], bonds=['NONE','SINGLE','DOUBLE','TRIPLE','AROMATIC'];
+const colors=['#bed5de','#80afe9','#ef9c9c','#f1d47b','#a9d5aa','#81bc97'], ns='http://www.w3.org/2000/svg';
+const argmax=a=>a.reduce((best,x,i)=>x>a[best]?i:best,0), cache=new Map();
+let request=0, playing=false, playEpoch=0;
+const frameControls=['play','previous','step','next','stepInput','initial','middle','final'];
+const selected=()=>data.studies[Number(byId('run').value)];
+const hasFrames=s=>Boolean(s&&Number.isInteger(s.states)&&s.states>0);
+const statusText=s=>`${s.status??'Saved status unavailable'} · scheduler ${s.native_status??s.progress_evidence?.native_status??'unknown'}`;
+const validationText=s=>`Readiness ${s.readiness_status}; budget ${s.budget_status}; terminal validation ${s.terminal_status}; overall ${s.overall_status}; scientific pass ${s.scientific_passed?'yes':'no'}.`;
+const outcomeText=s=>({readiness:s.readiness_status,applied_budget:s.budget_status,terminal_validation:s.terminal_status,terminal_error:s.terminal_error,overall_scientific_outcome:s.overall_status,scientific_passed:s.scientific_passed,scheduler:s.native_status,scheduler_scope:s.progress_evidence?.scheduler_scope});
+const countsText=s=>{const c=s.counts??{};return `Applied ${c.applied??0}; strict ${c.strict_improving??0}; scalar increased ${c.scalar_increased??0}, equal ${c.scalar_equal??0}, decreased ${c.scalar_decreased??0}; probability no-op ${c.no_op??0}.`;};
+for(const [i,s] of data.studies.entries()){
+ const option=document.createElement('option');option.value=i;option.textContent=`${s.label} · ${hasFrames(s)?'through '+s.latest_update:'no saved snapshot'}`;option.style.color=s.color;byId('run').append(option);
+ const card=document.createElement('article');card.className='arm-card';card.style.borderTopColor=s.color;
+ const title=document.createElement('h2');title.textContent=s.label;
+ const state=document.createElement('p');state.textContent=statusText(s);
+ const validation=document.createElement('p');validation.textContent=validationText(s);
+ const terminalError=document.createElement('p');terminalError.textContent=s.terminal_error??'';terminalError.style.color='#a22935';
+ const scope=document.createElement('p');scope.textContent=`Job ${s.job_id} · fixed LR ${s.learning_rate} · ${s.states.toLocaleString()} saved states`;
+ const count=document.createElement('p');count.textContent=countsText(s);
+ const inspect=document.createElement('button');inspect.textContent='Inspect saved run';inspect.addEventListener('click',()=>{byId('run').value=i;selectRun();byId('arm-status').scrollIntoView({block:'center',behavior:'smooth'});});
+ card.append(title,state,validation,terminalError,scope,count,inspect);byId('arm-cards').append(card);
+}
+byId('run').value=Math.max(0,data.studies.findIndex(hasFrames));
+byId('status').textContent=(data.complete?'PRESENTATION COMPLETE':'SAVED CAPTURE IN PROGRESS')+' — scientific campaign '+data.campaign_status.toUpperCase()+(data.scientific_passed?'':'; failed or pending validation remains explicit');
+if(data.campaign_status==='failed')byId('status').style.color='#a22935';
+document.title=data.campaign_status.toUpperCase()+' · '+document.title;
+byId('capture').textContent=`Captured ${data.captured_utc??'time recorded in the report receipt'}. This immutable edition uses saved evidence only. The latest-report page checks for a newly verified edition every minute.`;
+byId('identity').textContent=JSON.stringify(data.studies.map(({chunks,...s})=>s),null,2);
+for(const entry of data.diagnostics??[]){
+ const details=document.createElement('details'),summary=document.createElement('summary');
+ summary.textContent=`${entry.arm} · original job ${entry.original_job} · diagnostics ${entry.status==='available'?entry.diagnostic_status:'pending'}`;details.append(summary);
+ const provenance=document.createElement('pre');provenance.textContent=JSON.stringify(entry,null,2);details.append(provenance);
+ if(entry.status==='available'){
+  const button=document.createElement('button');button.textContent='Load verbatim saved diagnostic JSON';
+  const raw=document.createElement('pre');raw.style.maxHeight='65vh';raw.style.overflow='auto';
+  button.addEventListener('click',async()=>{button.disabled=true;try{const asset=entry.assets.report;const bytes=await checked(asset.path,asset.sha256);raw.textContent=new TextDecoder().decode(bytes);}catch(error){raw.textContent=error.message;button.disabled=false;}});
+  details.append(button,raw);
+ }
+ byId('diagnostics').append(details);
+}
+
+function clearFrame(){
+ byId('molecule').replaceChildren();byId('molecule').style.borderBottom='';byId('heatmaps').replaceChildren();
+ for(const id of ['readout','metrics','evidence','number','timeline-note','error'])byId(id).textContent='';
+}
+function updateControls(study){
+ const available=hasFrames(study);for(const id of frameControls)byId(id).disabled=!available;
+ byId('step').min=0;byId('step').max=available?study.states-1:0;byId('stepInput').min=0;byId('stepInput').max=available?study.latest_update:0;
+ if(!available){byId('step').value=0;byId('stepInput').value='';byId('step').removeAttribute('aria-valuetext');}
+ else byId('middle').disabled=study.latest_update<5000;
+ byId('final').textContent='Latest captured';
+ byId('arm-status').textContent=`${study.label} · ${statusText(study)} · fixed LR ${study.learning_rate} · one candidate per update. ${countsText(study)}`;
+ byId('validation').textContent=JSON.stringify(outcomeText(study),null,2);
+}
+function selectRun(){stop();++request;clearFrame();byId('step').value=0;draw();}
+function el(tag,attrs,text){const node=document.createElementNS(ns,tag);for(const [k,v]of Object.entries(attrs))node.setAttribute(k,v);if(text!==undefined)node.textContent=text;return node;}
+async function checked(url,expected){const response=await fetch(url);if(!response.ok)throw Error(`Cannot load ${url}: HTTP ${response.status}`);const bytes=await response.arrayBuffer();const digest=await crypto.subtle.digest('SHA-256',bytes);const hash=[...new Uint8Array(digest)].map(n=>n.toString(16).padStart(2,'0')).join('');if(hash!==expected)throw Error(`Saved asset checksum differs: ${url}`);return bytes;}
+async function block(study,index){const c=study.chunks.find(c=>index>=c.start&&index<c.start+c.count);if(!c)throw Error('Saved frame is missing');const key=`${study.arm}/${c.start}`;if(cache.has(key))return cache.get(key);const [raw,metadata]=await Promise.all([checked(`${study.arm}/${c.binary}`,c.binary_sha256),checked(`${study.arm}/${c.metadata}`,c.metadata_sha256)]);if(raw.byteLength!==c.count*data.frame_stride_floats*4)throw Error('Saved probability byte length differs');const result={start:c.start,view:new DataView(raw),rows:JSON.parse(new TextDecoder().decode(metadata))};if(result.rows.length!==c.count)throw Error('Saved metadata frame count differs');cache.set(key,result);while(cache.size>3)cache.delete(cache.keys().next().value);return result;}
+function table(title,rows,labels){const heading=document.createElement('h3');heading.textContent=title;const table=document.createElement('table'),head=table.insertRow();for(const text of ['Slot / pair',...labels]){const th=document.createElement('th');th.textContent=text;head.append(th);}for(const [name,values] of rows){const tr=table.insertRow();tr.insertCell().textContent=name;for(const value of values){const td=tr.insertCell();td.textContent=value.toPrecision(9);td.title=String(value);td.style.background=`rgba(0,137,121,${Math.max(0,Math.min(1,value))*.6})`;}}return [heading,table];}
+async function draw(){const token=++request,study=selected();if(!study)return;updateControls(study);if(!hasFrames(study)){stop();clearFrame();byId('number').textContent='No saved snapshot';byId('timeline-note').textContent=' · 0 saved states available';byId('readout').textContent='This arm has no authenticated saved molecule in this captured edition. Its status and readiness evidence remain visible.';byId('evidence').textContent=JSON.stringify(study.progress_evidence??{},null,2);return;}byId('step').max=study.states-1;const index=Math.min(+byId('step').value,study.states-1);byId('step').value=index;const savedStep=study.snapshot_steps?study.snapshot_steps[index]:index;byId('stepInput').max=study.latest_update??10000;byId('stepInput').value=savedStep;byId('step').setAttribute('aria-valuetext',`Saved update ${savedStep}`);byId('number').textContent=`Saved update ${savedStep} / ${study.latest_update}`;byId('timeline-note').textContent=` · ${study.states.toLocaleString()} saved states available${study.snapshot_steps?' (milestone snapshots)':''}`;byId('middle').disabled=(study.latest_update??10000)<5000;byId('error').textContent='';try{const chunk=await block(study,index);if(token!==request)return;const frame=chunk.rows[index-chunk.start];byId('number').textContent=`Saved update ${frame.step} / ${study.latest_update} (${study.scientific_passed?'native validation passed':study.overall_status==='failed'?'native validation FAILED; saved evidence':'captured prefix'})`;let offset=(index-chunk.start)*data.frame_stride_floats*4;const next=()=>{const value=chunk.view.getFloat32(offset,true);offset+=4;return value;};const X=Array.from({length:25},()=>Array.from({length:6},next)),E=Array.from({length:300},()=>Array.from({length:5},next));
+const svg=byId('molecule');svg.replaceChildren();svg.style.borderBottom=`4px solid ${study.color}`;const points=X.map((_,i)=>{const row=Math.floor(i/5),col=row%2?4-i%5:i%5;return [120+col*165,80+row*120];});let pair=0;
+for(let i=0;i<25;i++)for(let j=i+1;j<25;j++){const p=E[pair++],kind=argmax(p);if(!kind)continue;const [x1,y1]=points[i],[x2,y2]=points[j],length=Math.hypot(x2-x1,y2-y1),count=kind===4?2:kind;for(let k=0;k<count;k++){const d=(k-(count-1)/2)*4,dx=-(y2-y1)/length*d,dy=(x2-x1)/length*d;svg.append(el('line',{x1:x1+dx,y1:y1+dy,x2:x2+dx,y2:y2+dy,stroke:'#546c78','stroke-width':.6+3*(1-p[0]),...(kind===4&&k===1?{'stroke-dasharray':'6 4'}:{})}));}}
+for(let i=0;i<25;i++){const a=argmax(X[i]),[x,y]=points[i];svg.append(el('circle',{cx:x,cy:y,r:14+14*X[i][a],fill:colors[a],stroke:'#234b5b','stroke-width':1.3}));svg.append(el('text',{x,y:y+6,'text-anchor':'middle','font-size':18,'font-weight':'bold'},`${elements[a]}${i+1}`));}
+const raw=frame.readout;byId('readout').textContent=`${raw.sanitized?'Saved sanitized':'RAW SAVED INVALID'}${raw.disconnected?' · DISCONNECTED':''} · ${raw.canonical_smiles??'No canonical SMILES'}${raw.conversion_error?' · '+raw.conversion_error:''}`;
+byId('metrics').textContent=JSON.stringify({job:study.job_id,step:frame.step,metric:study.metric,fixed_learning_rate:study.learning_rate,selection_policy:study.selection_policy,native_status:study.native_status,validation:outcomeText(study),native_loss:frame[study.metric+'_loss'],logged_binder_probability:frame.components.affinity_probability_binary,repair_weight:frame.repair_weight,refreshed_surrogate_not_fixed_objective:frame.refreshed_surrogate,components:frame.components,previous_update_fixed_target:frame.previous_update},null,2);
+byId('evidence').textContent=JSON.stringify({readout:frame.readout,snapshot_sha256:frame.snapshot_sha256,preparation_identity:frame.preparation_identity,chemistry_preparation:frame.chemistry_preparation},null,2);
+if(byId('probabilities').open){const maps=byId('heatmaps');maps.replaceChildren(...table('Atom probabilities',X.map((p,i)=>[i+1,p]),elements));const edges=[];pair=0;for(let i=0;i<25;i++)for(let j=i+1;j<25;j++)edges.push([`${i+1}–${j+1}`,E[pair++]]);maps.append(...table('Unordered bond probabilities',edges,bonds));}
+}catch(error){if(token===request){stop();clearFrame();byId('error').textContent=`${error.message}. Open the supplied localhost report link; keep all report assets together.`;}}}
+function stop(){playing=false;playEpoch++;byId('play').textContent='Play';}
+byId('run').addEventListener('change',selectRun);
+byId('step').addEventListener('input',()=>{if(!hasFrames(selected()))return;stop();draw();});
+byId('step').addEventListener('change',()=>{if(!hasFrames(selected()))return;stop();draw();});
+byId('probabilities').addEventListener('toggle',()=>{if(byId('probabilities').open)draw();});
+function chooseStep(value){
+ stop();const s=selected();if(!hasFrames(s)||!Number.isFinite(value))return;
+ let index=Math.max(0,Math.min(Math.round(value),s.states-1));
+ if(s.snapshot_steps){index=0;for(let i=0;i<s.snapshot_steps.length;i++)if(s.snapshot_steps[i]<=value)index=i;}
+ byId('step').value=index;draw();
+}
+byId('stepInput').addEventListener('change',()=>chooseStep(byId('stepInput').valueAsNumber));
+byId('stepInput').addEventListener('keydown',event=>{if(event.key==='Enter'){event.preventDefault();chooseStep(byId('stepInput').valueAsNumber);}});
+for(const [id,delta]of [['previous',-1],['next',1]])byId(id).addEventListener('click',()=>{if(hasFrames(selected()))chooseStep(+byId('step').value+delta);});
+for(const [id,value]of [['initial',0],['middle',5000],['final',10000]])byId(id).addEventListener('click',()=>chooseStep(value));
+byId('zoom').addEventListener('change',()=>{const z=+byId('zoom').value;byId('molecule').style.width=`${900*z}px`;byId('molecule').style.height=`${650*z}px`;});
+byId('play').addEventListener('click',async()=>{
+ if(playing){stop();return;}if(!hasFrames(selected()))return;
+ playing=true;const epoch=++playEpoch;byId('play').textContent='Pause';
+ while(playing&&epoch===playEpoch){const s=selected();if(!hasFrames(s)){stop();return;}byId('step').value=(+byId('step').value+1)%s.states;await draw();if(playing&&epoch===playEpoch)await new Promise(resolve=>setTimeout(resolve,120));}
+});draw();
+</script></html>

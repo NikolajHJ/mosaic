@@ -1,0 +1,6 @@
+{
+  "scope": "Unsealed new local file LF normalization only; identical Python AST",
+  "path": "scripts\\jq1_lrboost_report_contract.py",
+  "before_sha256": "bd821bc45900c0451f0635722891ef7ff519be4991ec1d0725b25fcc7e3a369e",
+  "after_sha256": "30081c671677aa89738ec4451a1ba6815eb64097e0e50d31e9f1bb447d59f63a"
+}

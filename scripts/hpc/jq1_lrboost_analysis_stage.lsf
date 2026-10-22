@@ -1,0 +1,34 @@
+#!/bin/bash
+# Separate endpoint diagnostics and saved-only reporting; original runs read-only.
+set -euo pipefail
+[[ -n "${LSB_JOBID:-}" ]]
+release=$1
+root=$2
+manifest=$3
+phase=$4
+arm=$5
+parent=$6
+science=/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-lrboost-01/source
+module load python3/3.12.11
+python=/work3/s234818/mosaic/envs/protenix-tiny/bin/python
+export PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+"$python" "$release/scripts/verify_stage0_release.py" "$release" "$manifest"
+"$python" "$release/scripts/verify_stage0_release.py" "$science" 9605a5295b9fe8dfe29f15410b3a029038ea8a18feb16907f043abd5be13c323
+export PYTHONPATH="$release/scripts:$release/tests:$science/scripts:$science/tests:$science/src"
+export JAX_PLATFORMS=cpu JAX_ENABLE_X64=0
+export OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 MKL_NUM_THREADS=4
+export HF_HUB_OFFLINE=1 HF_HUB_DISABLE_TELEMETRY=1
+if [[ "$phase" == diagnostic ]]; then
+  [[ "$arm" == protenix || "$arm" == boltz2 ]]
+  module load cuda/12.9.1
+  if [[ "$arm" == protenix ]]; then
+    module load cudnn/v9.13.0.50-prod-cuda-12.X
+    export JAX_PLATFORMS=cuda XLA_PYTHON_CLIENT_PREALLOCATE=false
+  fi
+else
+  export CUDA_VISIBLE_DEVICES=''
+fi
+source "$science/scripts/hpc/boltz_node_tmpdir.sh"
+export MPLCONFIGDIR="$TMPDIR/mplconfig"
+cd "$release"
+"$python" scripts/jq1_lrboost_report_ops.py --phase "$phase" --root "$root" --source "$release" --manifest "$manifest" --parent "$parent" --arm "$arm"

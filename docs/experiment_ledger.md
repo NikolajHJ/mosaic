@@ -5946,3 +5946,32 @@ All full-original, active-file and unavailable-history limitations remain explic
 this evidence pass does not make either failed scientific run pass. New report
 work is specified in `docs/brd4_jq1_25_lrboost_report_plan.md`; no higher-rate
 edition has yet been published and all historical editions remain unchanged.
+
+
+## 22 October 2026 — separate endpoint diagnostics and higher-rate report
+
+The user authorized separate read-only diagnostics of the failed Protenix and
+normal Boltz terminal checks, plus a saved-only updating report. Original jobs
+29779177/29779178 and all failed raw gates remain unchanged; chemistry29779179
+continues independently (actual RUN at10:34Paris,9450 committedupdates/9451states).
+No restart, optimizer update, repair, fresh diffusion or scientific gate waiver.
+
+New immutable tooling release `20261022-brd4-jq1-lrboost-analysis-01` contains16
+files, manifest `214c19387649a741a7ad42f1e3e027061631993b4ae33425071aba9005fdcbcc`,
+archive76750bytes SHA `9707bec755c9c116a03a56abceabbe1caeaf019922f4bd68cb2a99141546f3e1`.
+All17 safe archive members/current/Git-index bytes and13 Python ASTs were
+independently verified; no local tests or model execution. Original610scientific
+source is external, authenticated and unchanged.
+
+CPU **29780814** and certificate callback **29780815** actually DONE/hpc/LSFsuccess;
+all **278 cases** passed across all8 modules, with no failures/errors/skips. Fresh
+whole-analysis storage passed with full remaining native projections, 2GiB report
+allowance,512MiB bounded diagnostic outputs,4GiB reserve and100000-file headroom.
+Separate GPU diagnostics actually submitted: Pro **29780821**, Bol **29780823**,
+with own-ended metadata captures **29780822/29780824**. Saved-frame collectors
+**29780825/29780826/29780827**, first interim renderer **29780829**, and final
+presentation **29780830** were also actually submitted. No diagnostic result or
+new report publication is established yet. CPU/dispatch evidence24524bytes SHA
+`b6d05c1eea559db93c650d356e5fffadcac7c68b49fe61dc0084a6fa7125f8f7` safely downloaded
+and all56 member hashes checked; independent raw XML/proof/schema audit follows.
+See the new endpoint diagnostics plan and exact campaign/submission receipts.

@@ -1,0 +1,18 @@
+{
+  "started_utc": "2026-10-22T08:36:23.023397+00:00",
+  "outcome": "unknown",
+  "command": [
+    "ssh",
+    "-T",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=15",
+    "-o",
+    "ConnectionAttempts=1",
+    "dtu-hpc",
+    "/work3/s234818/mosaic/envs/protenix-tiny/bin/python -c 'import pathlib,sys,hashlib,json; p=pathlib.Path('\"'\"'/work3/s234818/mosaic/20261022-brd4-jq1-lrboost-analysis-01.tar.gz'\"'\"'); f=p.open(\"xb\"); data=sys.stdin.buffer.read(); f.write(data); f.close(); assert len(data)==76750; assert hashlib.sha256(data).hexdigest()=='\"'\"'9707bec755c9c116a03a56abceabbe1caeaf019922f4bd68cb2a99141546f3e1'\"'\"'; print(json.dumps({\"path\":str(p),\"bytes\":len(data),\"sha256\":hashlib.sha256(data).hexdigest()}))'"
+  ],
+  "archive_sha256": "9707bec755c9c116a03a56abceabbe1caeaf019922f4bd68cb2a99141546f3e1",
+  "archive_bytes": 76750
+}

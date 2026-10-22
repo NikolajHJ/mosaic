@@ -46,3 +46,8 @@ tests/test_fixed25_lrboost*.py text eol=lf
 scripts/hpc/receipts/20261021-brd4-jq1-25-fixed-lrboost-01/* -text -eol
 # Reuse this authenticated historical helper byte-for-byte, including CRLF.
 scripts/fixed25_split_storage.py -text -eol
+
+# Keep the independent endpoint analysis release and its receipts byte stable.
+tests/test_jq1_lrboost*.py text eol=lf
+tests/test_lrboost_endpoint_diagnostics.py text eol=lf
+scripts/hpc/receipts/20261022-brd4-jq1-lrboost-analysis-01/* -text -eol

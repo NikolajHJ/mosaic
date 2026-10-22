@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "scope": "Local static AST/byte/JSON/hash packaging only; allocated tests pending",
+  "source_files": 16,
+  "archive_members": 17,
+  "manifest_sha256": "214c19387649a741a7ad42f1e3e027061631993b4ae33425071aba9005fdcbcc",
+  "archive_bytes": 76750,
+  "archive_sha256": "9707bec755c9c116a03a56abceabbe1caeaf019922f4bd68cb2a99141546f3e1",
+  "git_index_and_current_bytes_equal": true
+}

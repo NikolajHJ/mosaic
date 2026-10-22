@@ -1,0 +1,24 @@
+{
+  "created_utc": "2026-10-22T08:35:49.297336+00:00",
+  "git_revision_reference": "c3a838ed3d1daa3a5925f912886a89f4422b3719",
+  "scope": "Separate read-only endpoint diagnostics and saved-only presentation; no original scientific edits/restarts",
+  "external_scientific_source_manifest_sha256": "9605a5295b9fe8dfe29f15410b3a029038ea8a18feb16907f043abd5be13c323",
+  "files": {
+    "docs/brd4_jq1_25_endpoint_diagnostics.md": "466d323156bbc82715b12b68d90b91e28d8c3474e14f61f99882c48f7c261881",
+    "scripts/capture_jq1_lrboost_completion.py": "3426b72cdcb4761cdb2907cc14ff2c0519c744b24b092ad999f8c78075d74f12",
+    "scripts/hpc/jq1_lrboost_analysis_stage.lsf": "996b13274513811b5658d5a2975281fcb606625f2df1555388006ca96dbbf26e",
+    "scripts/jq1_lrboost_report_contract.py": "30081c671677aa89738ec4451a1ba6815eb64097e0e50d31e9f1bb447d59f63a",
+    "scripts/jq1_lrboost_report_ops.py": "3e3fddcbc95634ce91671dcdb6d9ffc3d24b5e2f51562a1156b5be93956ad9f1",
+    "scripts/lrboost_endpoint_diagnostics.py": "f9abef058c74ac7e7a9494d1965dcaf7a09967a21e5c9b9647f99f13791ead88",
+    "scripts/publish_jq1_lrboost_report.py": "5b1235bc65f501484e4bc2f3eb8acf78a8905ff85f9b84385f6151d37de7a49b",
+    "scripts/render_jq1_lrboost_progress.py": "c6d84c6890c479b0543a5f17c3bf4bfd12345c7fec6018cf142af85c75fd2f3e",
+    "scripts/render_jq1_lrboost_report.py": "a807146621ebe4ae3136451ca475edf688868c703eb77586390ec565f24ab672",
+    "scripts/templates/jq1_lrboost_report.html": "79c344b48be13115fa5b44d1763c9f6ad96b26a0f73cea431854213ecb792b50",
+    "scripts/verify_stage0_release.py": "d3e5373b84b123fe2388db2e9493a5a76d1cfc7edcc53f73ff5746f935c49c02",
+    "tests/test_jq1_lrboost_ops.py": "0e6dbeb4772eff403669a4521c65bc9fa8a935cd68886cdde643b71e67b8ff3a",
+    "tests/test_jq1_lrboost_publish.py": "9dd6ec80483247ff429f3b93be5310b440b9c8cb656ab65cf16b36380ea7d1e4",
+    "tests/test_jq1_lrboost_render.py": "91cecc8c283be9cb5a346e30603cb0653dfebe3839a5d6e1d9ba0166cc6be710",
+    "tests/test_jq1_lrboost_report_contract.py": "98df7117e7714e4ad418c9c1ed5af2f237793c46d9504b709d82661c01362445",
+    "tests/test_lrboost_endpoint_diagnostics.py": "f3158c7f6cdf4535a690f63d33369688e1053baac3e6cefd0301314bc50050c3"
+  }
+}

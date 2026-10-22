@@ -1,0 +1,35 @@
+{
+  "utc": "2026-10-22T08:34:24.649063+00:00",
+  "paths": {
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01": false,
+    "/work3/s234818/mosaic/releases/20261022-brd4-jq1-lrboost-analysis-01": false,
+    "/work3/s234818/mosaic/20261022-brd4-jq1-lrboost-analysis-01.tar.gz": false
+  },
+  "chemistry_scheduler": {
+    "returncode": 0,
+    "raw": "\nJob <29779179>, Job Name <mosaic-jq1-lrboost-run-boltz2_chemistry>, User <s2348\n                          18>, Project <default>, Status <RUN>, Queue <gpul40s>\n                          , Command <bash -l /work3/s234818/mosaic/releases/202\n                          61021-brd4-jq1-25-fixed-lrboost-01/source/scripts/hpc\n                          /fixed25_lrboost_stage.lsf /work3/s234818/mosaic/rele\n                          ases/20261021-brd4-jq1-25-fixed-lrboost-01/source /wo\n                          rk3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-lr\n                          boost-01 9605a5295b9fe8dfe29f15410b3a029038ea8a18feb1\n                          6907f043abd5be13c323 run boltz2_chemistry /zhome/95/e\n                          /206121/mosaic-runs/20261021-brd4-jq1-25-fixed-lrboos\n                          t-01/run-boltz2_chemistry 0 dc76df74f1432f59e4c5f6fb5\n                          491a1258752b639df893cf75bb5a6968e481630>, Share group\n                           charged </s234818>, Esub <dcc>\nThu Oct 22 01:23:10 2026: Submitted from host <n-62-11-64>, CWD </work3/s234818\n                          /mosaic/releases/20261021-brd4-jq1-25-fixed-lrboost-0\n                          1/source>, Output File (overwrite) </zhome/95/e/20612\n                          1/mosaic-runs/20261021-brd4-jq1-25-fixed-lrboost-01/r\n                          un-boltz2_chemistry/stdout.29779179.log>, Error File \n                          (overwrite) </zhome/95/e/206121/mosaic-runs/20261021-\n                          brd4-jq1-25-fixed-lrboost-01/run-boltz2_chemistry/std\n                          err.29779179.log>, 4 Task(s), Requested Resources < r\n                          usage[mem=8192.00] span[hosts=1]>, Requested GPU <num\n                          =1:mode=exclusive_process>;\nThu Oct 22 02:08:31 2026: Started 4 Task(s) on Host(s) <4*n-62-13-18>, Allocate\n                          d 4 Slot(s) on Host(s) <4*n-62-13-18>, Execution Home\n                           </zhome/95/e/206121>, Execution CWD </work3/s234818/\n                          mosaic/releases/20261021-brd4-jq1-25-fixed-lrboost-01\n                          /source>;\nThu Oct 22 10:33:06 2026: Resource usage collected.\n                          The CPU time used is 30239 seconds.\n                          MEM: 6.7 Gbytes;  SWAP: 0 Mbytes;  NTHREAD: 49\n                          PGID: 1811753;  PIDs: 1811753 1811764 1811766 \n                          1812119 1813566 1813620 \n\n RUNLIMIT                \n 1380.0 min\n\n MEMLIMIT\n      8 G \n\n MEMORY USAGE:\n MAX MEM: 6.7 Gbytes;  AVG MEM: 6.3 Gbytes; MEM Efficiency: 21.08%\n\n CPU USAGE:\n CPU PEAK: 1.21 ;  CPU PEAK DURATION: 180 second(s)\n CPU AVERAGE EFFICIENCY: 24.96% ;  CPU PEAK EFFICIENCY: 30.14%\n\n PENDING TIME DETAILS:\n Eligible pending time (seconds):\t2721\n Ineligible pending time (seconds):\t0\n\n SCHEDULING PARAMETERS:\n           r15s   r1m  r15m   ut      pg    io   ls    it    tmp    swp    mem\n loadSched   -     -     -     -       -     -    -     -     -      -      -  \n loadStop    -     -     -     -       -     -    -     -     -      -      -  \n\n EXTERNAL MESSAGES:\n MSG_ID FROM       POST_TIME      MESSAGE                             ATTACHMENT \n 0      s234818    Oct 22 02:10   GPU 0: Detected Power error: Detect     N     \n\n RESOURCE REQUIREMENT DETAILS:\n Job-level:  rusage[mem=8192.00] span[hosts=1]\n App-level: -\n Queue-level: same[type:model] affinity[core] cu[type=enclosure:maxcus=1]\n Combined: select[(ngpus>0) && (type == local)] order[-slots:-maxslots] rusage[\n                          mem=8192.00:ngpus_physical=1.00] span[hosts=1] same[t\n                          ype:model] cu[pref=config:maxcus=1:type=enclosure] af\n                          finity[core(1)*1]\n Effective: select[((ngpus>0)) && (type == local)] order[-slots:-maxslots] rusa\n                          ge[mem=8192.00,ngpus_physical=1.00] span[hosts=1] sam\n                          e[type:model] cu[type=enclosure:maxcus=1:pref=config]\n                           affinity[core(1)*1] \n\n GPU REQUIREMENT DETAILS:\n Combined: num=1:mode=exclusive_process:mps=no:j_exclusive=yes:aff=no:gvendor=n\n                          vidia\n Effective: num=1:mode=exclusive_process:mps=no:j_exclusive=yes:aff=no:gvendor=\n                          nvidia\n\n"
+  },
+  "chemistry_saved_prefix": {
+    "states": {
+      "rows": 9451,
+      "last": {
+        "step": 9450,
+        "index": null,
+        "repair_weight": 15.241338123753346,
+        "selection_reason": null,
+        "affinity_loss": -1.8272801637649536
+      }
+    },
+    "updates": {
+      "rows": 9450,
+      "last": {
+        "step": 9449,
+        "index": null,
+        "repair_weight": 15.208392203513583,
+        "selection_reason": null,
+        "affinity_loss": null
+      }
+    }
+  },
+  "chemistry_summary_exists": false
+}

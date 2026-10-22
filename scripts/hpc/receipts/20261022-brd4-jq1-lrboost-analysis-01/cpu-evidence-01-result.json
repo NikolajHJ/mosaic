@@ -1,0 +1,20 @@
+{
+  "started_utc": "2026-10-22T08:39:38.473179+00:00",
+  "command": [
+    "ssh",
+    "-T",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=15",
+    "-o",
+    "ConnectionAttempts=1",
+    "dtu-hpc",
+    "bash -l -s"
+  ],
+  "script": "collect-cpu-evidence-01.sh",
+  "script_sha256": "e1f6ec164a2bbde92b05df64aad31028086ab0a543cf1da9bfecf496e3c8892c",
+  "outcome": "completed",
+  "returncode": 0,
+  "finished_utc": "2026-10-22T08:39:40.391149+00:00"
+}
