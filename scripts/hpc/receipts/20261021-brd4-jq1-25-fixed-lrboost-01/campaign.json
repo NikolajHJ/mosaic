@@ -1,6 +1,6 @@
 {
   "tag": "20261021-brd4-jq1-25-fixed-lrboost-01",
-  "status": "Higher-rate full CPU598passed; actual CPU/callbackDONE. All3newrate nativeGPUvalidations submitted andPEND at23:41:11Paris; no longIDs established.",
+  "status": "All3higher-rate readiness and whole2FS/entry storage passed; three fresh runs actually started. Pro/Bol each saved10000updates then failed mandatory terminal gradient gates; chemistry remainsRUN.",
   "authorization": {
     "fresh_updates_each": 10000,
     "rates": {
@@ -28,7 +28,7 @@
   "source_sealed": true,
   "cpu_submitted": true,
   "native_submitted": true,
-  "long_submitted": false,
+  "long_submitted": true,
   "historical_reports_preserved": [
     "http://127.0.0.1:8776/report.html",
     "http://127.0.0.1:8777/report.html"
@@ -111,7 +111,7 @@
       "callback": "29778429"
     }
   },
-  "native_readiness_passed": false,
+  "native_readiness_passed": true,
   "cpu_evidence": {
     "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-lrboost-01/cpu-evidence-01.tar.gz",
     "bytes": 62340,
@@ -121,14 +121,15 @@
     "independent_verification_status": "passed"
   },
   "last_observation": {
-    "utc": "2026-10-21T21:45:52.806958+00:00",
+    "utc": "2026-10-22T07:45:10.185717+00:00",
+    "metadata_capture_note": "Readiness rehash then per-arm metadata scans continue after this start time; dynamic chemistry reads are not atomic.",
+    "actual_live_running_job": "29779179",
+    "long_jobs_verified": true,
     "native_status": {
-      "protenix": "PEND",
-      "boltz2": "PEND",
-      "boltz2_chemistry": "PEND"
-    },
-    "reason": "physical GPU resource availability; callbacks await own-ended dependencies",
-    "long_jobs_verified": false
+      "protenix": "passed_original_persisted_scheduler_LSF_and_scientific_readiness",
+      "boltz2": "passed_original_persisted_scheduler_LSF_and_scientific_readiness",
+      "boltz2_chemistry": "passed_original_persisted_scheduler_LSF_and_scientific_readiness"
+    }
   },
   "last_pushed_code_commit": "046430e",
   "native_validation_storage": {
@@ -137,5 +138,102 @@
     "available_bytes": 15292576076,
     "finite_quota_file_headroom": 19668255,
     "scope": "3GiB grouped disposable validation + 4GiB reserve; not full long twoFS gate"
-  }
+  },
+  "long_jobs": {
+    "protenix": {
+      "job_id": "29779177",
+      "learning_rate": 3.0,
+      "output_parent": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-lrboost-01/run-protenix",
+      "submitted_utc": "2026-10-21T23:23:09.872347+00:00"
+    },
+    "boltz2": {
+      "job_id": "29779178",
+      "learning_rate": 0.05,
+      "output_parent": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-lrboost-01/run-boltz2",
+      "submitted_utc": "2026-10-21T23:23:10.281491+00:00"
+    },
+    "boltz2_chemistry": {
+      "job_id": "29779179",
+      "learning_rate": 0.05,
+      "output_parent": "/zhome/95/e/206121/mosaic-runs/20261021-brd4-jq1-25-fixed-lrboost-01/run-boltz2_chemistry",
+      "submitted_utc": "2026-10-21T23:23:10.534368+00:00"
+    }
+  },
+  "long_results": {
+    "protenix": {
+      "job_id": "29779177",
+      "learning_rate": 3.0,
+      "common_committed_updates_observed": 10000,
+      "common_committed_states_observed": 10001,
+      "observation_scope": "Non-atomic separately read saved JSONL files; conservative common prefix only. No local NPZ/scientific numerical validation.",
+      "status": "failed",
+      "error": "ValueError: Predeclared epsilon leaves the simplex interior",
+      "saved_case_status": "passed",
+      "applied_updates": 10000,
+      "summary_original": {
+        "original_path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-lrboost-01/run-protenix/payload/study/summary.json",
+        "original_bytes": 298841777,
+        "original_sha256": "02bcc7dede3c8bd69e741c230e1eea598946534b15ff7d6cfa7999dbebed2d08"
+      },
+      "scheduler_scope": "Live record aged out; original same-job LSF exit1 and saved scientific failure authenticated; no fabricated live EXIT record"
+    },
+    "boltz2": {
+      "job_id": "29779178",
+      "learning_rate": 0.05,
+      "common_committed_updates_observed": 10000,
+      "common_committed_states_observed": 10001,
+      "observation_scope": "Non-atomic separately read saved JSONL files; conservative common prefix only. No local NPZ/scientific numerical validation.",
+      "status": "failed",
+      "error": "AssertionError: Native affinity E_upper finite differences failed",
+      "saved_case_status": "passed",
+      "applied_updates": 10000,
+      "summary_original": {
+        "original_path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-lrboost-01/run-boltz2/payload/study/summary.json",
+        "original_bytes": 302508245,
+        "original_sha256": "9e48647de26a21ba619e0ad368e8b3848d2ef5ad4ebbda35ff68dfdf3a6c9e7e"
+      },
+      "scheduler_scope": "Live record aged out; original same-job LSF exit1 and saved scientific failure authenticated; no fabricated live EXIT record"
+    },
+    "boltz2_chemistry": {
+      "job_id": "29779179",
+      "learning_rate": 0.05,
+      "common_committed_updates_observed": 8677,
+      "common_committed_states_observed": 8678,
+      "observation_scope": "Non-atomic separately read saved JSONL files; conservative common prefix only. No local NPZ/scientific numerical validation.",
+      "status": "running",
+      "scheduler_scope": "Actual bjobs RUN at2026-10-22T07:40:51Z; later saved committed prefix captured around07:45Z"
+    }
+  },
+  "scientific_campaign_passed": false,
+  "delivery_metadata_evidence": {
+    "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-lrboost-01/delivery-metadata-02.tar.gz",
+    "bytes": 313614,
+    "sha256": "6448daedff400ef8f66ea30675f9079063ab13b163d4b66b5e6214066c14786d",
+    "files": 140,
+    "capture_utc": "2026-10-22T07:45:10.185717+00:00",
+    "independent_verification": {
+      "status": "passed",
+      "sha256": "d939121ba93e71fccc03413d04ce93e3496624b8e81a9ebb0e54015b211ec267",
+      "bytes": 115878,
+      "scope": "140 listed evidence files plus manifest; 254 readiness proof references, of which64originalproofs local and190remainremote-only; no full original JSONL/NPZ scientific validation"
+    }
+  },
+  "full_dispatch_storage": {
+    "status": "passed",
+    "pools": {
+      "work3": {
+        "required_bytes": 7629950944,
+        "available_bytes_conservative": 15129533034,
+        "reserve_bytes": 4294967296,
+        "available_files_lower": 19667878
+      },
+      "zhome": {
+        "required_bytes": 9493469120,
+        "available_bytes_conservative": 11640790944,
+        "reserve_bytes": 4294967296,
+        "available_files_lower": 13503526137
+      }
+    }
+  },
+  "report_plan": "docs/brd4_jq1_25_lrboost_report_plan.md"
 }

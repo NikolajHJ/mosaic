@@ -1,0 +1,20 @@
+{
+  "status": "passed",
+  "native_job": "29778424",
+  "assessment_sha256": "4f69927bf12970bd8f573bb3b5eb439beda217f2454e508bf1b5f7ad50dc9185",
+  "projected_bytes": 1514341824,
+  "proofs": [
+    {
+      "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-lrboost-01/validate-protenix/scheduler-final-0.txt",
+      "sha256": "af4f89f6ac181cf32c68edd08ae80129c448ca93a33b8e15807532a75b1f08d3"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-lrboost-01/validate-protenix/stdout.29778424.log",
+      "sha256": "3152487cf243216d78e99710f92a117ffa6839dcfb4c9ac4eb12017386fd7274"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-lrboost-01/validate-protenix/payload/study/assessment.json",
+      "sha256": "4f69927bf12970bd8f573bb3b5eb439beda217f2454e508bf1b5f7ad50dc9185"
+    }
+  ]
+}

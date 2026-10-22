@@ -36,7 +36,7 @@ for parent,record in records.items():
  if study.exists():
   record['study']={}
   for name in ('states.jsonl','updates.jsonl'):
-   file=study/name
+   file=study/'case-0'/name
    if file.exists():
     rows=0;last=None
     with file.open('rb') as stream:

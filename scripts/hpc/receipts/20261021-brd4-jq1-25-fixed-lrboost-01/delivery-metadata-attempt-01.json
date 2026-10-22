@@ -1,0 +1,6 @@
+{
+  "status": "failed_packaging_only",
+  "reason": "bhist execution denied PermissionError13 after read-only scientific metadata collection; no job/config/source mutation",
+  "partial_remote_directory_preserved": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-lrboost-01/delivery-metadata-01",
+  "archive_created": false
+}

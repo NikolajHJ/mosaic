@@ -1,0 +1,20 @@
+{
+  "status": "passed",
+  "native_job": "29778428",
+  "assessment_sha256": "a963facfd8fd57af3ee12b8b071ef5d2d7bcdcea18b5a09e2c3373e166b87385",
+  "projected_bytes": 5198501824,
+  "proofs": [
+    {
+      "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-lrboost-01/validate-boltz2_chemistry/scheduler-final-0.txt",
+      "sha256": "b142aacd0cb63162d87618e72a85c67830a38263efcbc1b6a37e09119867b3d6"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-lrboost-01/validate-boltz2_chemistry/stdout.29778428.log",
+      "sha256": "cd9538275d64cabfc48a444f7cc5fb7e3611e36446fe44b6926b52e35884f327"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-lrboost-01/validate-boltz2_chemistry/payload/study/assessment.json",
+      "sha256": "a963facfd8fd57af3ee12b8b071ef5d2d7bcdcea18b5a09e2c3373e166b87385"
+    }
+  ]
+}

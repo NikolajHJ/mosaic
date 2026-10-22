@@ -122,3 +122,78 @@ and counts the actual rows and matching log totals only: 598, not 601.
 At the final 23:45:52 Paris query all six native/callback jobs were still PEND.
 Code, source identities, exact stop/submission records and current status were
 pushed in `046430e`; the verification receipt is additive evidence.
+
+
+## 22 October, 09:45 Paris: runs started; two terminal checks failed
+
+All three higher-rate readiness jobs passed their original native parity,
+raw-gradient, null, finite/frozen, pilot and runtime checks. Their persisted
+original scheduler/LSF proofs and 254 referenced proof-file hashes are preserved.
+The full independent work3/home dispatch gate and every GPU entry gate passed.
+Actual fresh long submissions occurred at **01:23:09–10 Paris**:
+
+| Arm | Fixed LR | Actual job | Latest saved outcome |
+| --- | --- | --- | --- |
+| Protenix | 3.0 | 29779177 | 10,000 updates, then terminal gradient failure |
+| Boltz-2 | 0.05 | 29779178 | 10,000 updates, then terminal gradient failure |
+| Boltz-2 + chemistry | 0.05 | 29779179 | Running; at least 8,677 updates in the captured common prefix |
+
+Protenix started at 01:49:37 and its original same-job LSF log records exit1 at
+04:00:35. Both its case report and committed logs contain 10,000 applied updates
+and 10,001 states. The overall summary is **failed**, because the terminal raw
+probe raised `ValueError: Predeclared epsilon leaves the simplex interior`.
+Its declared terminal atom direction could not complete the original FD sweep.
+The original finite-difference scales are retained; no smaller-scale substitute
+is certified. Frozen model/context identities remain the original identities.
+
+Boltz-2 started at 01:54:27 and its original same-job LSF log records exit1 at
+08:17:00. It likewise saved 10,000 applied updates and 10,001 states, but its
+overall summary is **failed**: `AssertionError: Native affinity E_upper finite
+differences failed`. The terminal atom sweep passed all three scales. The bond
+sweep reported agrees=false/false/true for 0.01/0.003/0.001, failing the original
+two-adjacent-scale requirement. Full budget consumption is not a terminal
+scientific pass, and neither failed outcome is relabeled or restarted.
+
+Chemistry job 29779179 was actual RUN at 09:40:51 Paris and continued saving
+updates during the capture around 09:45. Its JSONL files were read separately:
+8,678 state rows through state8677 and 8,678 update rows through update8677.
+The conservative shared prefix is therefore **8,677 updates / 8,678 states**.
+This asynchronous observation is not a missing-production-record diagnosis or
+an atomic capture. The running case summary is an older periodic snapshot.
+Original full JSONL/NPZ correspondence remains an allocated report check.
+
+Compact delivery evidence is 313,614 bytes, SHA-256
+`6448daedff400ef8f66ea30675f9079063ab13b163d4b66b5e6214066c14786d`;
+all 140 archive files were safely extracted and byte-verified locally. It
+contains original readiness/terminal JSON, original LSF logs, exact submission
+and quota records and compact saved metadata. Original large native summaries,
+case reports, JSONL bytes and all NPZ frames remain authenticated HPC references,
+not a claim that those originals have been downloaded or numerically checked
+locally. The compact scan records original big-file hashes and counts only.
+
+Live records for ended jobs have aged out. `bhist` execution is denied on the
+login host; the first metadata-packaging attempt and its partial directory are
+preserved. The second attempt records that limitation and uses original same-job
+LSF records, never fabricated live scheduler statuses. This packaging limitation
+does not change a scientific outcome or authorize a gate waiver. No source,
+configuration, model, LR, historical artifact or active chemistry job changed.
+The monitor's metadata paths were corrected to the actual `study/case-0/` logs;
+this is a read-only observer fix, separate from sealed scientific source610.
+
+The current campaign is not a successful final scientific result. Preserve the
+two terminal failures and continue observing the independent chemistry run.
+A new saved-only report must show these failures and its own exact captured
+prefix; it must not reinterpret the old report editions or certify all three.
+
+
+Independent delivery proof verification passed, SHA-256
+`d939121ba93e71fccc03413d04ce93e3496624b8e81a9ebb0e54015b211ec267`.
+It checked 140 listed evidence files plus the archive manifest, source610/config
+bytes, CPU598 proofs, all 254 readiness references (64 original proof files
+present locally and190 remaining remote-only), original native DONE/LSF records,
+three actual long submissions/driver bindings and full dispatch/entry accounting.
+The two terminal failures and conservative running chemistry prefix are confirmed.
+All full-original, active-file and unavailable-history limitations remain explicit;
+this evidence pass does not make either failed scientific run pass. New report
+work is specified in `docs/brd4_jq1_25_lrboost_report_plan.md`; no higher-rate
+edition has yet been published and all historical editions remain unchanged.

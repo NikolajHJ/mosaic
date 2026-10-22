@@ -1,0 +1,198 @@
+{
+  "version": "jq1-three-arm-fixed-lrboost-launcher-v1",
+  "source_manifest_sha256": "9605a5295b9fe8dfe29f15410b3a029038ea8a18feb16907f043abd5be13c323",
+  "cpu_certificate_sha256": "dc76df74f1432f59e4c5f6fb5491a1258752b639df893cf75bb5a6968e481630",
+  "authorization": {
+    "version": "jq1-three-arm-fixed-lrboost-launcher-v1",
+    "fresh_updates_per_arm": 10000,
+    "rates": {
+      "protenix": 3.0,
+      "boltz2": 0.05,
+      "boltz2_chemistry": 0.05
+    },
+    "acceptance_policy": "fixed_step",
+    "one_candidate": true,
+    "diffusion_gradient": false,
+    "predecessor_boltz_jobs_intentionally_stopped": [
+      "29778203",
+      "29778204"
+    ],
+    "completed_protenix_preserved": "29777709"
+  },
+  "projections": {
+    "protenix": 1514341824,
+    "boltz2": 1820641824,
+    "boltz2_chemistry": 5198501824
+  },
+  "readiness": {
+    "protenix": {
+      "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-lrboost-01/decision-protenix.json",
+      "sha256": "b510f30591d4f23771346d44f0bab774ee3916e41e544221a8164eee70991463"
+    },
+    "boltz2": {
+      "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-lrboost-01/decision-boltz2.json",
+      "sha256": "e0fe8d0b7abb09be03312bb5e2182aa7e60329af04c2715d530a254abefb6153"
+    },
+    "boltz2_chemistry": {
+      "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-lrboost-01/decision-boltz2_chemistry.json",
+      "sha256": "98151f5df98b5c9efbc9868486cfa47c64659d25a5f955be34fbbfad52cd74bd"
+    }
+  },
+  "predecessors_stopped": {
+    "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-lrboost-stop-01/assessment.json",
+    "sha256": "8fc3ce7a6fffd0df8bb30a23ad1f37c9954beb5a572ee2b3ed8746206778800c"
+  },
+  "storage_gate": {
+    "version": "fixed25-three-arm-lrboost-storage-v1",
+    "utc": "2026-10-21T23:19:11.740542+00:00",
+    "phase": "dispatch",
+    "status": "passed",
+    "placement": {
+      "protenix": "work3",
+      "boltz2": "work3",
+      "boltz2_chemistry": "zhome"
+    },
+    "output_parents": {
+      "protenix": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-lrboost-01/run-protenix",
+      "boltz2": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-lrboost-01/run-boltz2",
+      "boltz2_chemistry": "/zhome/95/e/206121/mosaic-runs/20261021-brd4-jq1-25-fixed-lrboost-01/run-boltz2_chemistry"
+    },
+    "filesystems": {
+      "work3": {
+        "status": "passed",
+        "filesystem": "work3",
+        "raw_quota": "HPE-Storage-Servers (disks, storagepool 1): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nHPE-Storage-Servers (NVME, storagepool 2): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (disks, storagepool 3): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks, storagepool 4): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks added in 2024, storagepool 5): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (NVMEs added in 2024, storagepool 6): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||   83.76 GiB|  100.00 GiB||   332122| 20000000\n\n",
+        "quota": {
+          "finite_pools": [
+            {
+              "used_bytes_upper": 90194313216,
+              "hard_bytes_lower": 107374182400,
+              "remaining_bytes": 17179869184,
+              "remaining_files": 19667878
+            }
+          ],
+          "available_bytes_lower": 17179869184,
+          "available_files_lower": 19667878
+        },
+        "projected_bytes": 3334983648,
+        "stale_bytes_subtracted": 2050336150,
+        "disk_free_bytes": 557101399146496,
+        "available_bytes_conservative": 15129533034,
+        "required_bytes": 7629950944,
+        "reserve_bytes": 4294967296,
+        "file_reserve": 100000,
+        "filesystem_inode_observation": {
+          "f_files": 0,
+          "f_ffree": 0,
+          "f_favail": 0
+        },
+        "available_files_lower": 19667878,
+        "filesystem_inode_reporting": "unreported_all_zero",
+        "file_headroom_scope": "Mandatory minimum of all authenticated finite user-quota pools",
+        "inode_limitation": "All-zero statvfs tuple supplies no independent filesystem inode proof",
+        "limitation": "Observations are conservative budget checks, not storage reservations",
+        "arms": [
+          "protenix",
+          "boltz2"
+        ],
+        "full_projected_bytes": 3334983648,
+        "outstanding_projected_bytes": 3334983648,
+        "target": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-lrboost-01"
+      },
+      "zhome": {
+        "status": "passed",
+        "filesystem": "zhome",
+        "raw_quota": "You are using 18.79G of 30.00G quota\n\n(Information updated ca. every 240 minutes. Last Update: 2026-10-22 01:04:06)\n\n",
+        "quota": {
+          "used_bytes_upper": 20401094656,
+          "hard_bytes_lower": 32212254720,
+          "available_bytes_lower": 11811160064,
+          "reported_snapshot": "2026-10-22T01:04:06+02:00",
+          "cache_age_seconds": 1143.86288356781,
+          "maximum_cache_age_seconds": 14400,
+          "reported_user_inode_quota": false
+        },
+        "projected_bytes": 5198501824,
+        "stale_bytes_subtracted": 170369120,
+        "disk_free_bytes": 77253079269376,
+        "available_bytes_conservative": 11640790944,
+        "required_bytes": 9493469120,
+        "reserve_bytes": 4294967296,
+        "file_reserve": 100000,
+        "filesystem_inode_observation": {
+          "f_files": 114162648124,
+          "f_ffree": 13503526137,
+          "f_favail": 13503526137
+        },
+        "available_files_lower": 13503526137,
+        "filesystem_inode_reporting": "reported_physical_filesystem_only",
+        "file_headroom_scope": "Physical home filesystem f_favail; no per-user inode quota is reported by DTU home quota",
+        "inode_limitation": "This is physical filesystem headroom, not an invented user inode quota or a reservation",
+        "limitation": "Observations are conservative budget checks, not storage reservations",
+        "arms": [
+          "boltz2_chemistry"
+        ],
+        "full_projected_bytes": 5198501824,
+        "outstanding_projected_bytes": 5198501824,
+        "target": "/zhome/95/e/206121/mosaic-runs"
+      }
+    },
+    "raw_quotas": {
+      "work3": "HPE-Storage-Servers (disks, storagepool 1): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nHPE-Storage-Servers (NVME, storagepool 2): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (disks, storagepool 3): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks, storagepool 4): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks added in 2024, storagepool 5): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (NVMEs added in 2024, storagepool 6): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||   83.76 GiB|  100.00 GiB||   332122| 20000000\n\n",
+      "zhome": "You are using 18.79G of 30.00G quota\n\n(Information updated ca. every 240 minutes. Last Update: 2026-10-22 01:04:06)\n\n"
+    },
+    "filesystem_inode_observations": {
+      "work3": {
+        "f_files": 0,
+        "f_ffree": 0,
+        "f_favail": 0
+      },
+      "zhome": {
+        "f_files": 114162648124,
+        "f_ffree": 13503526137,
+        "f_favail": 13503526137
+      }
+    },
+    "reserve_bytes_per_filesystem": 4294967296,
+    "file_reserve_per_filesystem": 100000,
+    "scope": "All three fresh high-rate trajectories; no existing trajectory resumed or replaced",
+    "limitation": "Fresh conservative observations are not reservations; home inode evidence is physical filesystem scope only",
+    "projections": {
+      "protenix": 1514341824,
+      "boltz2": 1820641824,
+      "boltz2_chemistry": 5198501824
+    },
+    "recent_home_inventory": {
+      "command": [
+        "find",
+        "-P",
+        "/zhome/95/e/206121/mosaic-runs",
+        "-mmin",
+        "-240",
+        "(",
+        "-type",
+        "f",
+        "-o",
+        "-type",
+        "l",
+        ")",
+        "-printf",
+        "%s\n"
+      ],
+      "returncode": 0,
+      "bytes": 170369120,
+      "files_or_links": 2319,
+      "stderr": "",
+      "stdout_sha256": "b8e98f4b16c691d44598b0c8d9475acd6aa88cba0e7f924b7f2b5b3e3e592076",
+      "policy": "GNU find -P; full regular-file/symlink lstat sizes modified within 240 minutes; no symlink traversal",
+      "timeout_seconds": 600,
+      "complete": true
+    },
+    "current_outputs": {
+      "protenix": 0,
+      "boltz2": 0,
+      "boltz2_chemistry": 0
+    },
+    "complete_home_root_bytes_subtracted_again": 0
+  }
+}

@@ -5901,3 +5901,48 @@ into extra passes. Grouped native-validation storage also passed
 (7,516,192,768 required / 15,292,576,076 available bytes, 4 GiB reserve).
 All six new native/callback jobs remained PEND at 23:45:52 Paris; no readiness
 pass or long-run ID was claimed. Code and receipts pushed as `046430e`.
+
+
+## 22 October 2026 — higher-rate readiness passed; long outcomes authenticated
+
+All three new native readiness jobs passed with original gates. Full per-FS
+storage and each entry gate passed, then three fresh long jobs were actually
+submitted at 01:23:09–10 Paris: Pro **29779177** at LR3.0, normal Boltz
+**29779178** at LR0.05, chemistry **29779179** at LR0.05.
+
+Pro and normal Boltz each saved **10,000 updates / 10,001 states** and their
+optimizer case reports passed. Both overall scientific summaries nevertheless
+**failed terminal raw-gradient validation**. Pro raised `Predeclared epsilon
+leaves the simplex interior` (original LSF exit1 at04:00:35); Bol's E_upper FD
+sweep failed the two-adjacent-scale requirement, with false/false/true at
+0.01/0.003/0.001 (original LSF exit1 at08:17:00). Frozen identities stayed fixed.
+These are failed terminal scientific gates, not successful certified completions
+or resource-admission failures. No retries, LR/FD changes or gate waivers.
+
+Chemistry was actual RUN at09:40:51 and kept saving around09:45. Separately read
+state/update logs yield a conservative shared committed prefix **8,677 updates /
+8,678 states**. Do not treat the asynchronous extra update row as missing output
+or claim an atomic prefix capture. Continue that independent job unchanged.
+
+Delivery-metadata-02 archive **313,614 bytes**, SHA-256
+`6448daedff400ef8f66ea30675f9079063ab13b163d4b66b5e6214066c14786d`,
+contains 140 safely extracted/byte-verified files, 254 remote readiness proof
+rehashes, raw terminal JSON/LSF and exact source/config/entry/dispatch metadata.
+Large summaries/case/JSONL/NPZ originals remain HPC references; no local numerical
+or full-frame validation is claimed. Aged-out live history is not fabricated;
+first packaging failed solely on denied bhist execution and is preserved. All
+science source610 and active chemistry remain unchanged. The local read-only
+query now follows actual case-0 JSONL paths. See the higher-rate plan/campaign.
+
+
+Independent delivery proof verification passed, SHA-256
+`d939121ba93e71fccc03413d04ce93e3496624b8e81a9ebb0e54015b211ec267`.
+It checked 140 listed evidence files plus the archive manifest, source610/config
+bytes, CPU598 proofs, all 254 readiness references (64 original proof files
+present locally and190 remaining remote-only), original native DONE/LSF records,
+three actual long submissions/driver bindings and full dispatch/entry accounting.
+The two terminal failures and conservative running chemistry prefix are confirmed.
+All full-original, active-file and unavailable-history limitations remain explicit;
+this evidence pass does not make either failed scientific run pass. New report
+work is specified in `docs/brd4_jq1_25_lrboost_report_plan.md`; no higher-rate
+edition has yet been published and all historical editions remain unchanged.
