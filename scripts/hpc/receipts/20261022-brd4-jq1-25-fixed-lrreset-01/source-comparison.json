@@ -1,0 +1,31 @@
+{
+  "status": "passed",
+  "scope": "Local stdlib byte/hash/AST/JSON packaging only; no tests or numerical execution",
+  "source_files": 622,
+  "archive_members": 623,
+  "manifest_sha256": "47263fedea42e593455b43d4b75c1c874670bb53d934dd93a531aec439abf403",
+  "archive_bytes": 39600744,
+  "archive_sha256": "838389193a60d2828ceebd8a4c3cc0d38abcc10a76accfaa91b9137eb9ecad08",
+  "source_root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-release-01/source",
+  "unchanged_scientific_library_files": 145,
+  "modified_base_files": [
+    ".gitattributes",
+    "examples/brd4_25_atoms.py",
+    "scripts/campaign25_contract.py"
+  ],
+  "added_files": [
+    "docs/brd4_jq1_25_fixed_lrreset.md",
+    "examples/configs/brd4_jq1_25_fixed_lrreset_boltz2_10000.json",
+    "examples/configs/brd4_jq1_25_fixed_lrreset_boltz2_chemistry_10000.json",
+    "examples/configs/brd4_jq1_25_fixed_lrreset_protenix_10000.json",
+    "scripts/fixed25_lrreset_ops.py",
+    "scripts/fixed25_lrreset_storage.py",
+    "scripts/hpc/fixed25_lrreset_cpu.lsf",
+    "scripts/hpc/fixed25_lrreset_stage.lsf",
+    "scripts/hpc/lrreset_predecessors.json",
+    "tests/test_fixed25_lrreset_contract.py",
+    "tests/test_fixed25_lrreset_ops.py",
+    "tests/test_fixed25_lrreset_storage.py"
+  ],
+  "exact_index_executable_and_configuration_bytes": true
+}

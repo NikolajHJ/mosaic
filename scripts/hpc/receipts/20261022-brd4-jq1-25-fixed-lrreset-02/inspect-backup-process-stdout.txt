@@ -1,0 +1,33 @@
+{
+  "scope": "Read-only identification of exact stdin metadata/backup workers; no process killed",
+  "processes": [
+    {
+      "pid": "1806752",
+      "metadata": "    PID    PPID                  STARTED     ELAPSED     TIME %CPU COMMAND\n1806752 1806581 Thu Oct 22 11:57:50 2026       12:09 00:00:05  0.7 /work3/s234818/mosaic/envs/protenix-tiny/bin/python -\n",
+      "open_paths": [
+        "pipe:[320633557]",
+        "pipe:[320634511]",
+        "pipe:[320634512]"
+      ]
+    },
+    {
+      "pid": "1878607",
+      "metadata": "    PID    PPID                  STARTED     ELAPSED     TIME %CPU COMMAND\n1878607 1878419 Thu Oct 22 12:07:12 2026       02:47 00:00:02  1.5 /work3/s234818/mosaic/envs/protenix-tiny/bin/python -\n",
+      "open_paths": [
+        "pipe:[321124245]",
+        "pipe:[321125656]",
+        "pipe:[321125657]",
+        "/work3/s234818/mosaic/20261021-brd4-jq1-25-fixed-02.tar.gz"
+      ]
+    },
+    {
+      "pid": "1896907",
+      "metadata": "    PID    PPID                  STARTED     ELAPSED     TIME %CPU COMMAND\n1896907 1896678 Thu Oct 22 12:09:57 2026       00:03 00:00:00  1.6 /work3/s234818/mosaic/envs/protenix-tiny/bin/python -\n",
+      "open_paths": [
+        "pipe:[321187797]",
+        "pipe:[321192821]",
+        "pipe:[321192822]"
+      ]
+    }
+  ]
+}

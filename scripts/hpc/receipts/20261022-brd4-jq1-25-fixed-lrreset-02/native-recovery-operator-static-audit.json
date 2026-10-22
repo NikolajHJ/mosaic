@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "scope": "Static byte/AST review of metadata-only calls to original CPU723-tested APIs; no new scientific implementation",
+  "operator_sha256": "9785b89296d28bfeacf81391f132ac051b487966adcddce3472b062f4f0f1fde",
+  "source_manifest_sha256": "832f833dd486c2ff305f7e3eb33fc775c87810a2e12a8bc597c5df744699c5d3",
+  "cpu_certificate_sha256": "6e02392176f71238b1af36564c796615758ba82af7715ebe487bd48030a5a5d5",
+  "old_failed_gate_preserved": true,
+  "fresh_same_full_storage_required": true,
+  "original_callback_not_repeated": true,
+  "cleanup_receipt_sha256": "56d925421ac6225cf191cdb00a28b8f76d6e46d7dc74de3f39af3a8a30a467b4"
+}

@@ -1,0 +1,18 @@
+{
+  "utc": "2026-10-22T10:10:31.241957+00:00",
+  "scope": "Terminate only two explicitly identified own read-only helper workers; no model/diagnostic/scientific job affected",
+  "workers": [
+    {
+      "pid": 1806752,
+      "role": "obsolete read-only metadata inventory",
+      "start": "Thu Oct 22 11:57:50 2026",
+      "status": "stopped_SIGTERM"
+    },
+    {
+      "pid": 1878607,
+      "role": "slow read-only byte backup attempt01",
+      "start": "Thu Oct 22 12:07:12 2026",
+      "status": "stopped_SIGTERM"
+    }
+  ]
+}

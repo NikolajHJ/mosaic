@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "scope": "Independent stdlib static AST/byte/JSON exact backup and protected-path audit; no numerical/model execution",
+  "files": 34847,
+  "logical_bytes": 1540133784,
+  "plan_sha256": "03bbc4fa67a286b8f51b6c02f3af8b898e0ed4acd80255e9f88527f82787c8bb",
+  "helper_sha256": "7f3d98cd747b114f298eea53b40514a76aa738dcd2ead807165d93001d005f52",
+  "native_recovery_operator_sha256": "785262966ddb82fb0e89f330a3232723a2d4f03529688b63a49e4634963f288f",
+  "current_diagnostics_inputs_all_home_and_model_environment_release_paths_excluded": true
+}

@@ -51,3 +51,18 @@ scripts/fixed25_split_storage.py -text -eol
 tests/test_jq1_lrboost*.py text eol=lf
 tests/test_lrboost_endpoint_diagnostics.py text eol=lf
 scripts/hpc/receipts/20261022-brd4-jq1-lrboost-analysis-01/* -text -eol
+# Keep new immutable viewer and restart sources/receipts byte stable.
+scripts/hpc/receipts/20261022-brd4-jq1-lrboost-viewer-focus-01/* -text -eol
+scripts/hpc/receipts/20261022-brd4-jq1-25-fixed-lrreset-01/* -text -eol
+scripts/hpc/receipts/20261022-brd4-jq1-25-fixed-lrreset-02/* -text -eol
+tests/test_fixed25_lrreset*.py text eol=lf
+scripts/hpc/lrreset_predecessors.json text eol=lf
+
+# Canonical experiment working sources; historical receipts retain their existing rules.
+experiments/**/*.py text eol=lf
+experiments/**/*.lsf text eol=lf
+experiments/**/*.sh text eol=lf
+experiments/**/*.json text eol=lf
+experiments/**/*.html text eol=lf
+scripts/layout/*.py text eol=lf
+scripts/*/*.py text eol=lf

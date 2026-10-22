@@ -1,0 +1,23 @@
+
+When connecting from _outside_ of DTU (and not using DTU-VPN) one is 
+required to authenticate with a ssh-key + ssh-key-keyphrase + DTU-password.
+
+From inside of DTU (or connecting via DTU-VPN) one can also connect 
+with password or ssh-key.
+
+Info page on SSH: https://www.hpc.dtu.dk/?page_id=4317
+
+---
+For ThinLinc users: 
+Please make sure that your TL client is at least version 4.16 - else you 
+cannot connect to this system!
+
+This is not an error-message, it's just a way to give you some information. 
+Click 'Close' to continue ...
+---
+
+Info page on the system update 08/2024: https://www.hpc.dtu.dk/?page_id=5209
+
+---
+
+{"status": "backup_stream_completed", "utc": "2026-10-22T10:13:06.160728+00:00", "bytes": 1620686314, "sha256": "1f6b91446dba1866ff7c6e732a1ce2457e60c59661943fdbd2eb6cf870a305f4", "original_files": 34847, "original_logical_bytes": 1540133784, "control": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/cleanup-recovery-02", "deletion_performed": false}

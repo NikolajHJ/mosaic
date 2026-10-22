@@ -1,0 +1,20 @@
+{
+  "started_utc": "2026-10-22T09:59:48.260292+00:00",
+  "command": [
+    "ssh",
+    "-T",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=15",
+    "-o",
+    "ConnectionAttempts=1",
+    "dtu-hpc",
+    "bash -l -s"
+  ],
+  "script": "query-status.sh",
+  "script_sha256": "7a462a6f3b7f4eb7987abc127fb49a0d5810a1fbe42a539a2c88aa7a9dc05996",
+  "outcome": "completed",
+  "returncode": 0,
+  "finished_utc": "2026-10-22T09:59:49.058737+00:00"
+}

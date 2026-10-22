@@ -1,0 +1,18 @@
+{
+  "started_utc": "2026-10-22T10:09:57.929370+00:00",
+  "command": [
+    "ssh",
+    "-T",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=15",
+    "-o",
+    "ConnectionAttempts=1",
+    "dtu-hpc",
+    "bash -l -s"
+  ],
+  "script": "inspect-backup-process.sh",
+  "script_sha256": "f23a2c775476d732bb4548905388d55d6ee0f79cfeb644c08f3e77236e84dbc4",
+  "outcome": "unknown"
+}

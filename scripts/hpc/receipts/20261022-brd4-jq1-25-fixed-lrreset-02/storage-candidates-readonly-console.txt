@@ -1,0 +1,20 @@
+{
+  "started_utc": "2026-10-22T09:57:51.680364+00:00",
+  "command": [
+    "ssh",
+    "-T",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=15",
+    "-o",
+    "ConnectionAttempts=1",
+    "dtu-hpc",
+    "bash -l -s"
+  ],
+  "script": "storage-candidates-readonly.sh",
+  "script_sha256": "81effce0097b64be35275672433342f670ebc3cacb832ec95936685ea8c118ef",
+  "outcome": "timeout_unknown",
+  "error": "TimeoutExpired(['ssh', '-T', '-o', 'BatchMode=yes', '-o', 'ConnectTimeout=15', '-o', 'ConnectionAttempts=1', 'dtu-hpc', 'bash -l -s'], 180)",
+  "finished_utc": "2026-10-22T10:00:51.698433+00:00"
+}

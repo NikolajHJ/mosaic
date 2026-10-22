@@ -1,0 +1,96 @@
+
+
+When connecting from _outside_ of DTU (and not using DTU-VPN) one is 
+
+required to authenticate with a ssh-key + ssh-key-keyphrase + DTU-password.
+
+
+
+From inside of DTU (or connecting via DTU-VPN) one can also connect 
+
+with password or ssh-key.
+
+
+
+Info page on SSH: https://www.hpc.dtu.dk/?page_id=4317
+
+
+
+---
+
+For ThinLinc users: 
+
+Please make sure that your TL client is at least version 4.16 - else you 
+
+cannot connect to this system!
+
+
+
+This is not an error-message, it's just a way to give you some information. 
+
+Click 'Close' to continue ...
+
+---
+
+
+
+Info page on the system update 08/2024: https://www.hpc.dtu.dk/?page_id=5209
+
+
+
+---
+
+
+
+
+{
+  "utc": "2026-10-22T10:04:31.386617+00:00",
+  "scope": "Read-only metadata options; no deletion/archive/submission",
+  "readonly_ssh_python_processes": [
+    "1806581       1 Thu Oct 22 11:57:50 2026 bash -l -s",
+    "1806752 1806581 Thu Oct 22 11:57:50 2026 /work3/s234818/mosaic/envs/protenix-tiny/bin/python -",
+    "1860596 1860589 Thu Oct 22 12:04:30 2026 bash -l -s",
+    "1860789 1860596 Thu Oct 22 12:04:30 2026 /work3/s234818/mosaic/envs/protenix-tiny/bin/python -"
+  ],
+  "targets": {
+    "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-storage-03/run-protenix/payload/study": {
+      "exists": true,
+      "resolved_identity_matches": true,
+      "returncode": 0,
+      "raw": "1064014902\t/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-storage-03/run-protenix/payload/study\n"
+    },
+    "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-storage-04/run-boltz2/payload/study": {
+      "exists": true,
+      "resolved_identity_matches": true,
+      "returncode": 0,
+      "raw": "103674450\t/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-storage-04/run-boltz2/payload/study\n"
+    },
+    "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-report-04/interim-0001/payload": {
+      "exists": true,
+      "resolved_identity_matches": true,
+      "returncode": 0,
+      "raw": "98867838\t/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-report-04/interim-0001/payload\n"
+    }
+  }
+}
+
+{
+  "started_utc": "2026-10-22T10:04:31.471983+00:00",
+  "command": [
+    "ssh",
+    "-T",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=15",
+    "-o",
+    "ConnectionAttempts=1",
+    "dtu-hpc",
+    "bash -l -s"
+  ],
+  "script": "inspect-work3-options.sh",
+  "script_sha256": "ca56114bb6bcc3b626c3b314ea31fcf8c8aa63aa74e768a369677acc60a150ef",
+  "outcome": "completed",
+  "returncode": 0,
+  "finished_utc": "2026-10-22T10:04:36.243906+00:00"
+}

@@ -1,0 +1,43 @@
+
+When connecting from _outside_ of DTU (and not using DTU-VPN) one is 
+required to authenticate with a ssh-key + ssh-key-keyphrase + DTU-password.
+
+From inside of DTU (or connecting via DTU-VPN) one can also connect 
+with password or ssh-key.
+
+Info page on SSH: https://www.hpc.dtu.dk/?page_id=4317
+
+---
+For ThinLinc users: 
+Please make sure that your TL client is at least version 4.16 - else you 
+cannot connect to this system!
+
+This is not an error-message, it's just a way to give you some information. 
+Click 'Close' to continue ...
+---
+
+Info page on the system update 08/2024: https://www.hpc.dtu.dk/?page_id=5209
+
+---
+
+Traceback (most recent call last):
+  File "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/cleanup-recovery-02/cleanup_verified_work3.py", line 164, in <module>
+    main()
+  File "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/cleanup-recovery-02/cleanup_verified_work3.py", line 90, in main
+    active_jobs(paths, attempt / 'jobs-before-verification.json')
+  File "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/cleanup-recovery-02/cleanup_verified_work3.py", line 47, in active_jobs
+    result = subprocess.run(['bjobs', '-noheader', '-o', 'jobid stat job_name:100 command:2000'],
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/subprocess.py", line 548, in run
+    with Popen(*popenargs, **kwargs) as process:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/appl9/python/3.12.11/lib/python3.12/subprocess.py", line 1955, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+FileNotFoundError: [Errno 2] No such file or directory: 'bjobs'
+Traceback (most recent call last):
+  File "<string>", line 17, in <module>
+  File "/appl9/python/3.12.11/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/work3/s234818/mosaic/envs/protenix-tiny/bin/python', '/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/cleanup-recovery-02/cleanup_verified_work3.py', '--plan', '/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/cleanup-recovery-02/cleanup-plan.json', '--plan-sha256', '03bbc4fa67a286b8f51b6c02f3af8b898e0ed4acd80255e9f88527f82787c8bb', '--attempt', 'attempt-01']' returned non-zero exit status 1.

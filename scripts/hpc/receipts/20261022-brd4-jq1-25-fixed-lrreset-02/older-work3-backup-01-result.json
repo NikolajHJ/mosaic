@@ -1,0 +1,23 @@
+{
+  "started_utc": "2026-10-22T10:07:13.963476+00:00",
+  "outcome": "unknown",
+  "command": [
+    "ssh",
+    "-T",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=15",
+    "-o",
+    "ConnectionAttempts=1",
+    "dtu-hpc",
+    "bash -l -s"
+  ],
+  "script_sha256": "83149c1c492ca3d43d3f73c9442bf57ad803c25b7327fdec6feaf2b51de778ca",
+  "local_archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261022-brd4-jq1-25-fixed-lrreset-02\\older-work3-backup-01.tar.gz",
+  "deletion_performed": false,
+  "returncode": 4294967295,
+  "error": "AssertionError()",
+  "finished_utc": "2026-10-22T10:11:00.862374+00:00",
+  "observed_archive_bytes": 12023808
+}

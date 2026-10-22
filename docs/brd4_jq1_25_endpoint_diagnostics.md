@@ -153,3 +153,25 @@ independent local delivery-byte/LSF/proof audit is still pending. Interim2978104
 remained RUN, both separate diagnostics/captures PEND, final29780830 PEND. No
 new edition was published; original Pro/Bol failures and all immutable artifacts
 remain unchanged.
+
+
+At 11:26 Paris the second immutable report edition was published with all three
+10000-update/10001-state trajectories, capture09:19:33.637806UTC. Original
+chemistry29779179 and its allocated collector29780827 passed terminal/source/
+frozen/frame validation. The independent local byte/XML/schema/LSF delivery audit
+passed, SHA5f4fbb8d458af62ab76294f20f4228a80ebdbbdf1d790ae40d10f3d88ba993a6.
+The 157404869-byte report archive SHAe92c477b8d173c1c0a9e17813e9cb0f8549cd24c9e97578d43e7591823cbb30a
+has647 files; compact metadata1514864bytes SHA81a6d395be476cddf3cf16e5259565cd3e732acb51af18a819382aebf70fc75f
+has41 files. Both fresh transfers ended successfully; large original scientific
+files remain authenticated HPC references. All1221 served files matched HTTP.
+Pro/Bol remain scientifically failed; all_terminal=true does not make this a
+successful scientific campaign. Separate diagnostics are still pending.
+
+BrowserQA of edition0002 FAILED the manual numeric-during-playback path: entering
+321 selected46 because the playback draw overwrote the textbox before Enter.
+Paused numeric navigation, sliders/arrows, allselectors, terminalgraphs and
+25atom/300pair heatmaps worked. This is a viewer defect, not a scientific failure.
+Do not relabel QA passed or edit the immutable edition/source. A new viewer-only
+immutable correction20261022-brd4-jq1-lrboost-viewer-focus-01 is being implemented,
+adding focus-to-pause only, with original assets/proofs unchanged and new allocated
+CPU/adoption requirements. No new patch source/job/pass is yet established.

@@ -1,0 +1,95 @@
+Authenticated 622 immutable source files
+{
+  "status": "all_three_fresh_native_checks_actually_submitted",
+  "jobs": [
+    [
+      "protenix",
+      "29783703",
+      "29783705"
+    ],
+    [
+      "boltz2",
+      "29783707",
+      "29783708"
+    ],
+    [
+      "boltz2_chemistry",
+      "29783710",
+      "29783711"
+    ]
+  ],
+  "adoption_sha256": "434a42093cb466c32eb7fe144eb952f462c72e75014c0a5347fd95b1370ce8d4",
+  "fresh_storage_gate": {
+    "version": "fixed25-three-arm-lrreset-storage-v1",
+    "utc": "2026-10-22T10:24:40.371362+00:00",
+    "phase": "validate",
+    "status": "passed",
+    "placement": {
+      "protenix": "work3",
+      "boltz2": "work3",
+      "boltz2_chemistry": "zhome"
+    },
+    "output_parents": {
+      "protenix": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/run-protenix",
+      "boltz2": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/run-boltz2",
+      "boltz2_chemistry": "/zhome/95/e/206121/mosaic-runs/20261022-brd4-jq1-25-fixed-lrreset-02/run-boltz2_chemistry"
+    },
+    "filesystems": {
+      "work3": {
+        "status": "passed",
+        "filesystem": "work3",
+        "raw_quota": "HPE-Storage-Servers (disks, storagepool 1): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nHPE-Storage-Servers (NVME, storagepool 2): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (disks, storagepool 3): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks, storagepool 4): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks added in 2024, storagepool 5): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (NVMEs added in 2024, storagepool 6): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||   86.49 GiB|  100.00 GiB||   380960| 20000000\n\n",
+        "quota": {
+          "finite_pools": [
+            {
+              "used_bytes_upper": 93415538688,
+              "hard_bytes_lower": 107374182400,
+              "remaining_bytes": 13958643712,
+              "remaining_files": 19619040
+            }
+          ],
+          "available_bytes_lower": 13958643712,
+          "available_files_lower": 19619040
+        },
+        "projected_bytes": 5905580032,
+        "stale_bytes_subtracted": 3672348896,
+        "disk_free_bytes": 556963565404160,
+        "available_bytes_conservative": 10286294816,
+        "required_bytes": 10200547328,
+        "reserve_bytes": 4294967296,
+        "file_reserve": 100000,
+        "filesystem_inode_observation": {
+          "f_files": 0,
+          "f_ffree": 0,
+          "f_favail": 0
+        },
+        "available_files_lower": 19619040,
+        "filesystem_inode_reporting": "unreported_all_zero",
+        "file_headroom_scope": "Mandatory minimum of all authenticated finite user-quota pools",
+        "inode_limitation": "All-zero statvfs tuple supplies no independent filesystem inode proof",
+        "limitation": "Observations are conservative budget checks, not storage reservations"
+      }
+    },
+    "raw_quotas": {
+      "work3": "HPE-Storage-Servers (disks, storagepool 1): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nHPE-Storage-Servers (NVME, storagepool 2): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (disks, storagepool 3): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks, storagepool 4): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks added in 2024, storagepool 5): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (NVMEs added in 2024, storagepool 6): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||   86.49 GiB|  100.00 GiB||   380960| 20000000\n\n"
+    },
+    "filesystem_inode_observations": {
+      "work3": {
+        "f_files": 0,
+        "f_ffree": 0,
+        "f_favail": 0
+      }
+    },
+    "reserve_bytes_per_filesystem": 4294967296,
+    "file_reserve_per_filesystem": 100000,
+    "scope": "Three fresh lower-rate trajectories; immutable finished studies retained",
+    "concurrent_analysis_allowance_bytes": 2684354560,
+    "limitation": "Fresh conservative observations are not reservations; home inode evidence is physical filesystem scope only",
+    "current_validation_outputs": {
+      "protenix": 0,
+      "boltz2": 0,
+      "boltz2_chemistry": 0
+    },
+    "full_validation_allowance_bytes": 3221225472
+  }
+}

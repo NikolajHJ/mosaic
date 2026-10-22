@@ -2,6 +2,20 @@
 
 Retain submitted, completed, failed, and incomplete attempts with their source/config/input identities and artifact paths. A submission or successful dependency installation is not a completed model experiment. Never turn a skipped check into acceptance evidence.
 
+## Required agent logbook workflow
+
+This ledger is the **single repository-wide experiment logbook**. Follow the
+[experiment folder policy](../experiments/README.md#agent-logbook-and-run-records)
+and [root agent instructions](../AGENTS.md). Before a new attempt, create its
+experiment README and `runs/<run-id>/README.md`. Append a dated ledger event
+at preparation, submission, observed start, terminal outcome and handoff, linking
+the experiment folder, run record, exact commands/source identities, job IDs
+and saved evidence. Use explicit timezones and retain unsuccessful attempts.
+Keep execution, scientific acceptance and report status separate. Record unknown
+times/states honestly; documentation-only work must say no experiment executed.
+Legacy entries and receipt paths remain authoritative history; migration must
+link them rather than rewrite them into the new format.
+
 ## 2026-10-10: DTU setup and bounded native Protenix-Tiny example
 
 Status: **completed for the bounded native protein example — GPU job `29674532` DONE, output checks passed, results downloaded and verified**.
@@ -6036,3 +6050,156 @@ independent local delivery-byte/LSF/proof audit is still pending. Interim2978104
 remained RUN, both separate diagnostics/captures PEND, final29780830 PEND. No
 new edition was published; original Pro/Bol failures and all immutable artifacts
 remain unchanged.
+
+
+At 11:26 Paris the second immutable report edition was published with all three
+10000-update/10001-state trajectories, capture09:19:33.637806UTC. Original
+chemistry29779179 and its allocated collector29780827 passed terminal/source/
+frozen/frame validation. The independent local byte/XML/schema/LSF delivery audit
+passed, SHA5f4fbb8d458af62ab76294f20f4228a80ebdbbdf1d790ae40d10f3d88ba993a6.
+The 157404869-byte report archive SHAe92c477b8d173c1c0a9e17813e9cb0f8549cd24c9e97578d43e7591823cbb30a
+has647 files; compact metadata1514864bytes SHA81a6d395be476cddf3cf16e5259565cd3e732acb51af18a819382aebf70fc75f
+has41 files. Both fresh transfers ended successfully; large original scientific
+files remain authenticated HPC references. All1221 served files matched HTTP.
+Pro/Bol remain scientifically failed; all_terminal=true does not make this a
+successful scientific campaign. Separate diagnostics are still pending.
+
+BrowserQA of edition0002 FAILED the manual numeric-during-playback path: entering
+321 selected46 because the playback draw overwrote the textbox before Enter.
+Paused numeric navigation, sliders/arrows, allselectors, terminalgraphs and
+25atom/300pair heatmaps worked. This is a viewer defect, not a scientific failure.
+Do not relabel QA passed or edit the immutable edition/source. A new viewer-only
+immutable correction20261022-brd4-jq1-lrboost-viewer-focus-01 is being implemented,
+adding focus-to-pause only, with original assets/proofs unchanged and new allocated
+CPU/adoption requirements. No new patch source/job/pass is yet established.
+
+## 22 October 2026 — lower-rate fresh restart, chemistry endpoint100
+
+The user requested all three higher-rate LRs divided by10, then clarified
+chemistry0.001 to100. Fresh10000updates each: Pro0.3, normalBol0.005 and
+Bol+chem_valid_loss0.005. Keep the original hold through5000/geometric endpoint
+at10000, all other scientific settings, fixed_step/onecandidate/nohalving and
+all native/FD/parity/primal/finite/frozen/runtime/quota gates. Original higher
+Pro/Bol failures and passed chemistry remain unchanged, and the two endpoint
+diagnostics remain separate. The old three scientific allocations are finished;
+no cancellation/resume was necessary. See brd4_jq1_25_fixed_lrreset.md.
+
+Immutable attempt01 source622 manifest47263fedea42e593455b43d4b75c1c874670bb53d934dd93a531aec439abf403,
+CPU29781350/callback29781351 EXIT after388contractpasses/3outdated new fixtures.
+No native/long submission. Preserve the failure. A fixture-only attempt02 keeps
+all scientific config/driver/contract/library bytes identical, changes three
+fixture expectations and declared root identities, and repeats the full CPU.
+Actual attempt02 source622 manifest832f833dd486c2ff305f7e3eb33fc775c87810a2e12a8bc597c5df744699c5d3,
+archive39601171bytes SHA306bdf055770e7245bb37de291800cb7da0998af7345aabb7d1b9e0b97057e25.
+Read-only source/control nested under original analysis01root keep existing
+sealed diagnostic-entry accounting aware of every new work3 byte.
+
+Actual CPU29781363 DONE/hpc/LSF passed723actualrawcases:391contracts+239legacy+
+34mapping+59chemistry, no failures/errors/skips,3deliberate legacy deselections.
+CPU certificate6e02392176f71238b1af36564c796615758ba82af7715ebe487bd48030a5a5d5.
+Callback29781364 EXIT only at fresh native-dispatch byte admission before any
+native or long job: required10200547328 versus available7836349422 bytes. Keep
+4GiB reserve,100000files, full3GiB validation plus2GiB oldreport/512MiB olddiag
+allowances. Independent61file/rawXML/LSF/schema audit passed
+19fd207053ee8ab4974693261d5d3e7090abfba615a4bce3355d4d5808805e27;
+evidence112789bytes SHAc681d57d812e5bdd7f58c7cedca92c1a81ba1ba9c873223170f1967a6513cfd9.
+CPU pass is not a native pass or an optimization submission.
+
+Under the user's existing verified-backup cleanup authorization, an additional
+limited work3-only plan backs up older lower-rate Pro/Bol study copies, an older
+fixed report payload and duplicate archives. All current higher-rate studies,
+their diagnostics/report inputs, home files, source releases, caches/models/envs
+and other projects are excluded. Backup1620686314bytes SHA
+1f6b91446dba1866ff7c6e732a1ce2457e60c59661943fdbd2eb6cf870a305f4 contains34847
+originalfiles/1540133784logicalbytes, all independently stream byte/hash verified.
+Slow backup01 was explicitly identified/stopped and its partial preserved;
+backup02 transfer completed. Slow full Windows extraction was stopped with its
+partial tree preserved; the separate complete stream audit verifies every
+member without relying on that partial extraction. No scientific calculation.
+
+Exact removal plan03bbc4fa67a286b8f51b6c02f3af8b898e0ed4acd80255e9f88527f82787c8bb
+uses the existing per-file hash/inode/mtime/active-job/durable-journal algorithm,
+an explicit inactive target allowlist and stricter2GiB cap. First execution
+failed before verification/deletion because a direct SSH shell lacked bjobs.
+Same plan/helper attempt02 runs through the normal HPC login environment; at
+10:21:30UTC journal showed7952 exact files/439201656bytes retired, not final
+completion. A fresh full unchanged native storage gate and authenticated
+CPU723-tested submit API are required afterward. Never rerun the failed
+certificate callback or overwrite its failed gate. Exact receipts are under
+20261022-brd4-jq1-25-fixed-lrreset-02. No new native/long IDs established yet.
+
+At10:21:56UTC the additional work3-only cleanup completed:34847exact backed-up
+copies/1540133784logicalbytes,0changed/absent, all34847local archive members
+verified before removal. Receipt56d925421ac6225cf191cdb00a28b8f76d6e46d7dc74de3f39af3a8a30a467b4;
+full journal68a1573237fa5dafd21c299e87c1b1a089857ac9dd66d55fc7ed83cd103eb9b1.
+All current higher-rate studies/diagnostic inputs/home/releases/models/caches/envs
+and other projects remain untouched. Prior lower-rate copies and named duplicate
+archives are preserved in the verified local1.62GB archive, with exact origin map.
+
+Fresh original full native-dispatch gate passed10200547328required against
+10286294816available, retaining full3GiB native+2.5GiB analysis allowances,
+4GiB reserve/100000files. Metadata-only resource adoption reauthenticated actual
+CPU723/source622/pins/finished predecessors and used original tested submit APIs
+under dispatch lock, without repeating the failed callback or changing any gate.
+Adoption434a42093cb466c32eb7fe144eb952f462c72e75014c0a5347fd95b1370ce8d4.
+Actual three native submissions: Pro29783703/callback29783705,
+Bol29783707/callback29783708, chemistry29783710/callback29783711. All6PEND at
+10:27:52UTC/12:27:52Paris; no new native pass/long ID yet. Existing separate
+diagnostics/captures/final remainPEND. Native+full two-FS gates still precede
+fresh scientific long jobs; the observations are not reservations.
+
+All41new proof files/archive7332680bytes SHA
+f6dadc17eb468f87a46cbb177f545682267b365c6963f6aec3a25210a8e8ecf6 verified.
+Independent submission/source/config/CPU/wholequota/backup/fullcleanup-journal
+audit passed4c7979a05a635d5f7f19feec407827eb8e8af43ecc3ccdaef0740918d69f8361.
+
+## 22 October 2026 — experiment organization policy and agent logbook established
+
+Actor: Codex documentation/organization agent. Scope: local repository inspection
+and documentation only; **no experiment executed**, no HPC connection/submission,
+and no existing execution file moved.
+
+Added root [agent instructions](../AGENTS.md), a prominent README entry point,
+the [experiment folder policy and discovery map](../experiments/README.md),
+[copyable experiment/run templates](../experiments/_templates/README.md) and
+[script navigation](../scripts/README.md). New experiment-specific work belongs
+under `experiments/<family>/<experiment-id>/`, with a README in each directory
+and all experiment-owned code/configs/tests/report assets kept together.
+This existing ledger is the required global agent logbook, linked to per-attempt
+run records with real timestamps, commands, identities, jobs and outcomes.
+
+Inspection found hard-coded imports, launch/config paths and source-packaging
+enumeration, so existing experiments require incremental, dependency-aware
+migrations. Historical receipt directories, sealed releases, failed evidence,
+scientific gates and all pre-existing ledger history are preserved. The inventory
+is a proposed ownership map; physical migration and execution validation remain
+future work. This policy does not authorize a new scientific run or retry.
+
+Documentation checks resolved all 89 local file/directory link targets across
+the eight touched documents, found no missing experiment-directory READMEs or
+new-file formatting issues, and passed scoped `git diff --check`. A comparison
+against pre-edit copies confirmed preservation of the original README content
+and ledger history, apart from these additive policy sections. These are local
+documentation checks, not numerical validation.
+
+
+## 2026-10-22T10:29:42.939514+00:00 — existing scripts migrated into documented experiment homes
+
+Actor: Codex organization agent. User scope: organize existing scripts, update imports/paths, fill READMEs and logbook, preserve current runs and historical receipts. This was local source/documentation work; **no scientific experiment executed**, no HPC connection, submission, cancellation or restart.
+
+Assigned **237 files** to **24 experiment homes** and documented shared release/evidence/graph/chemistry/campaign25/Boltz/reporting/HPC tooling. [Experiment index](../experiments/INDEX.md), [complete old-to-new map](../experiments/MIGRATION.md), and [static audit](../experiments/migration-verification.json) are the review entry points. Added protocol/file/command/dependency READMEs in every created experiment directory and indexed **52 existing dated attempts** with links to unchanged original receipt locations. Existing protocol/history documents remain in docs/ to preserve earlier links. Quoted saved statuses are not live scheduler observations or new scientific acceptance claims.
+
+Moved implementations have old-path Python/shell forwarding entry points; default tests/ discovery loads each canonical campaign test once. Canonical path resolution, controller imports, template/source lookups, shell launch commands and source packaging/authentication now include the new homes. All 41 old/canonical declarative config/template pairs retain identical bytes. Shared fixture/oracle data remain in tests/data/. No objective/optimizer/model code, scientific setting or gate was intentionally changed. One provenance-only tuple in src/mosaic/small_molecule/provenance.py adds experiments/ to execution hashing; reverting only that tuple exactly reproduces the old file hash, while the other 144 library files remain byte-identical.
+
+Preserved all **736 pre-existing receipt paths**; **735 hashes unchanged**. The initially empty live operator console scripts/hpc/receipts/20261022-brd4-jq1-25-fixed-lrreset-02/older-work3-backup-01-console.txt was populated by its concurrent task; the audit records both hashes, not a false unchanged-byte claim. No migration tool wrote a receipt file. Current attempt02 externally sealed source remains bound to manifest 832f833dd486c2ff305f7e3eb33fc775c87810a2e12a8bc597c5df744699c5d3; saved CPU29781363/callback29781364 IDs are references only, with no fresh scheduler-state claim. The Git staging index matched its pre-edit tree; other staged/uncommitted work and all existing results/report locations were retained.
+
+Local validation passed: 122 canonical Python ASTs; 84 script module names resolved without imports; 237 working-path mappings and old-source fallback; 147 Bash syntax checks; 41 declarative byte pairs; synthetic stdlib module/source-identity/authentication checks; all checked README links/folder docs; static signatures/numeric literals/guard-message comparisons. The sole live-console difference is recorded separately.
+
+Exact check: `py -3.13 scripts/layout/verify_layout.py --root . --baseline results/static/20261022-script-migration/before --live-receipt scripts/hpc/receipts/20261022-brd4-jq1-25-fixed-lrreset-02/older-work3-backup-01-console.txt --output results/static/20261022-script-migration/layout-final.json`. Local-only packaging: `py -3.13 scripts/releases/package_stage0_release.py --output results/releases/20261022-script-layout-smoke-01`. The disposable archive authenticated **1731 files**, archive SHA-256 76a4f2add447fb57e380bc0ab73824fd0f2c59c4fef88b8a2484b25e24d9c888, manifest SHA-256 0966e7c9fc9551c345c37b459192d4949a65a191a3a63431f3f98c8dc76dbcc0. All members were independently rehashed; the extracted old verifier CLI passed and rejected a deliberately unmanifested experiment file in the disposable copy. No upload or scientific release adoption. Final documentation postdates this smoke archive.
+
+Pre-edit copies, intermediate/final static receipts and smoke generator/outputs are retained under ignored results/static/20261022-script-migration/. Allocated CPU/native/numerical regressions were **not run** for the new layout and remain required before future scientific execution. No old pass, failure, cancellation, partial run or skipped/unreached gate is reinterpreted by this migration.
+
+
+## 2026-10-22T10:34:14.557841+00:00 — migration preservation follow-up: concurrent receipt summaries
+
+A final read-only observation retained all 736 original receipt paths. Since the earlier static audit, the concurrent existing campaign/cleanup task updated six campaign.json summaries in addition to its initially empty console log: seven changed files total, 729 still byte-identical at this observation. The migration wrote none of those original files. All seven pre-migration byte states were preserved additionally under ignored results/static/20261022-script-migration/preserved-receipt-baseline/ using matching-hash members from the already verified local smoke archive, plus the known empty-file state for the console log. [The migration audit](../experiments/migration-verification.json) retains before/current hashes, exact paths, observation time and copy provenance. Current copies keep the newer operational information. Concurrent ledger insertions were also retained; line-by-line comparison found no deletion/replacement of any pre-migration history line. These observations do not alter any scientific outcome or authorize further execution.

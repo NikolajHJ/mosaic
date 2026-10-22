@@ -401,5 +401,12 @@
     "campaign": "scripts/hpc/receipts/20261021-brd4-jq1-25-fixed-storage-04/campaign.json",
     "existing_protenix_job": "29777709",
     "latest_connection": "22:27:56Paris restored; existingProRUN9655updates, oldBolagedout/knownEXIT proofspreserved"
+  },
+  "additional_exact_backup_retirement_20261022": {
+    "scope": "Only named older lower-rate study/report duplicate or transport archive copies retired after complete byte backup; original scientific outcomes unchanged",
+    "audit_campaign": "20261022-brd4-jq1-25-fixed-lrreset-02",
+    "backup_archive_sha256": "1f6b91446dba1866ff7c6e732a1ce2457e60c59661943fdbd2eb6cf870a305f4",
+    "audit_verification_sha256": "4c7979a05a635d5f7f19feec407827eb8e8af43ecc3ccdaef0740918d69f8361",
+    "all_source_release_directories_and_current_higher_rate_trajectories_preserved": true
   }
 }

@@ -1,0 +1,13 @@
+{
+  "status": "completed",
+  "utc": "2026-10-22T10:21:56.681907+00:00",
+  "plan_sha256": "03bbc4fa67a286b8f51b6c02f3af8b898e0ed4acd80255e9f88527f82787c8bb",
+  "removed_files": 34847,
+  "removed_logical_bytes": 1540133784,
+  "retained_changed_files": 0,
+  "already_absent_files": 0,
+  "quota_returncode": 0,
+  "deletion_journal_sha256": "68a1573237fa5dafd21c299e87c1b1a089857ac9dd66d55fc7ed83cd103eb9b1",
+  "verified_candidates_sha256": "f8111ae845e083b859bf30d4c9879ac72aa74df7ea45572239f0532abdcf7dce",
+  "scope": "Only exact locally backed-up previous Mosaic copies removed; all unknown/current data retained"
+}

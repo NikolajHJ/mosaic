@@ -1,0 +1,30 @@
+{
+  "status": "passed",
+  "scope": "stdlib AST/shell-embeddedPython/byte-only audit; no execution/import of candidate or local scientific/numerical/tests",
+  "files": {
+    "viewer_focus.py": {
+      "bytes": 40688,
+      "sha256": "b2f8662aa4e077b58d4c4fad624427f66150e65d49da3feeaeb76736ee18995d"
+    },
+    "viewer_focus_ops.py": {
+      "bytes": 25216,
+      "sha256": "ca551fcbeadda3abcf91a29f67a8216f61f10f619a7b8628d5f782f321adb4bf"
+    },
+    "test_viewer_focus.py": {
+      "bytes": 12510,
+      "sha256": "ac2d47b1f259a615558441d2f0627873801da09cd711641b1ec1f8849ac47797"
+    },
+    "test_viewer_focus_ops.py": {
+      "bytes": 10262,
+      "sha256": "b6daa2f2f675be519323faea9bff9a5d38f7d8862f0c16152cbb2325941a7f6f"
+    },
+    "stage.lsf": {
+      "bytes": 2653,
+      "sha256": "91bd5ff16ec83ba45a15e3192c166c1edd933ac9412bc7393a56462033a64287"
+    },
+    "plan.md": {
+      "bytes": 5679,
+      "sha256": "e222685063ca4e08ddbfa8860999f188ff54d744b108da6266bf3b2e659f4587"
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "report_archive": {
+    "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/interim-0002.tar.gz",
+    "bytes": 157404869,
+    "sha256": "e92c477b8d173c1c0a9e17813e9cb0f8549cd24c9e97578d43e7591823cbb30a",
+    "files": 647
+  },
+  "delivery_evidence": {
+    "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/interim-delivery-evidence-02.tar.gz",
+    "bytes": 1514864,
+    "sha256": "81a6d395be476cddf3cf16e5259565cd3e732acb51af18a819382aebf70fc75f",
+    "files": 41
+  }
+}

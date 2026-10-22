@@ -1,0 +1,41 @@
+{
+  "status": "passed",
+  "scope": "Independent local standard-library byte/schema/actual scheduler/resource/config/CPU723/source622 and complete cleanup-journal audit; no scientific or numerical calculation",
+  "files": 41,
+  "captured_utc": "2026-10-22T10:27:52.167244+00:00",
+  "native_jobs": {
+    "protenix": "29783703",
+    "boltz2": "29783707",
+    "boltz2_chemistry": "29783710"
+  },
+  "callbacks": {
+    "protenix": "29783705",
+    "boltz2": "29783708",
+    "boltz2_chemistry": "29783711"
+  },
+  "actual_states": {
+    "29780821": "PEND",
+    "29780822": "PEND",
+    "29780823": "PEND",
+    "29780824": "PEND",
+    "29780830": "PEND",
+    "29783703": "PEND",
+    "29783705": "PEND",
+    "29783707": "PEND",
+    "29783708": "PEND",
+    "29783710": "PEND",
+    "29783711": "PEND"
+  },
+  "source_manifest_sha256": "832f833dd486c2ff305f7e3eb33fc775c87810a2e12a8bc597c5df744699c5d3",
+  "cpu_certificate_sha256": "6e02392176f71238b1af36564c796615758ba82af7715ebe487bd48030a5a5d5",
+  "cpu_tests": 723,
+  "adoption_sha256": "434a42093cb466c32eb7fe144eb952f462c72e75014c0a5347fd95b1370ce8d4",
+  "storage_required_bytes": 10200547328,
+  "storage_available_bytes": 10286294816,
+  "cleanup_verified_removed_files": 34847,
+  "cleanup_verified_removed_logical_bytes": 1540133784,
+  "backup_archive_sha256": "1f6b91446dba1866ff7c6e732a1ce2457e60c59661943fdbd2eb6cf870a305f4",
+  "new_native_readiness_pass_established": false,
+  "new_10000_update_job_ids_established": false,
+  "current_original_higherrate_studies_and_home_untouched": true
+}

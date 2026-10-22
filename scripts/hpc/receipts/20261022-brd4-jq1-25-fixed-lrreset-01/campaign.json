@@ -1,0 +1,117 @@
+{
+  "tag": "20261022-brd4-jq1-25-fixed-lrreset-01",
+  "status": "FAILED CPU29781350:388contract passes/3outdatedfixtureexpectations, no legacy/mapping/chem groups reached; owncallback29781351EXIT. No native/long submission.",
+  "authorization": {
+    "rates": {
+      "protenix": 0.3,
+      "boltz2": 0.005,
+      "boltz2_chemistry": 0.005
+    },
+    "fresh_updates_each": 10000,
+    "repair_schedule": {
+      "initial": 0.001,
+      "final": 100.0,
+      "hold_updates": 5000,
+      "total_updates": 10000
+    },
+    "acceptance_policy": "fixed_step",
+    "max_backtracks": 1,
+    "finite_uphill_equal_noop_applied": true
+  },
+  "source": {
+    "status": "passed",
+    "scope": "Local stdlib byte/hash/AST/JSON packaging only; no tests or numerical execution",
+    "source_files": 622,
+    "archive_members": 623,
+    "manifest_sha256": "47263fedea42e593455b43d4b75c1c874670bb53d934dd93a531aec439abf403",
+    "archive_bytes": 39600744,
+    "archive_sha256": "838389193a60d2828ceebd8a4c3cc0d38abcc10a76accfaa91b9137eb9ecad08",
+    "source_root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-release-01/source",
+    "unchanged_scientific_library_files": 145,
+    "modified_base_files": [
+      ".gitattributes",
+      "examples/brd4_25_atoms.py",
+      "scripts/campaign25_contract.py"
+    ],
+    "added_files": [
+      "docs/brd4_jq1_25_fixed_lrreset.md",
+      "examples/configs/brd4_jq1_25_fixed_lrreset_boltz2_10000.json",
+      "examples/configs/brd4_jq1_25_fixed_lrreset_boltz2_chemistry_10000.json",
+      "examples/configs/brd4_jq1_25_fixed_lrreset_protenix_10000.json",
+      "scripts/fixed25_lrreset_ops.py",
+      "scripts/fixed25_lrreset_storage.py",
+      "scripts/hpc/fixed25_lrreset_cpu.lsf",
+      "scripts/hpc/fixed25_lrreset_stage.lsf",
+      "scripts/hpc/lrreset_predecessors.json",
+      "tests/test_fixed25_lrreset_contract.py",
+      "tests/test_fixed25_lrreset_ops.py",
+      "tests/test_fixed25_lrreset_storage.py"
+    ],
+    "exact_index_executable_and_configuration_bytes": true
+  },
+  "initial_jobs": {
+    "cpu": "29781350",
+    "after_cpu": "29781351"
+  },
+  "cpu_submitted": true,
+  "cpu_passed": false,
+  "native_submitted": false,
+  "native_passed": false,
+  "long_submitted": false,
+  "preflight": {
+    "status": "passed",
+    "required_bytes": 8053063680,
+    "available_bytes": 8997467107,
+    "concurrent_analysis_allowance_bytes": 2684354560,
+    "limitation": "CPU allowance only; not validation/long gate or reservation"
+  },
+  "work3_root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-01",
+  "home_root": "/zhome/95/e/206121/mosaic-runs/20261022-brd4-jq1-25-fixed-lrreset-01",
+  "finished_predecessors": {
+    "protenix": {
+      "job": "29779177",
+      "scientific_status": "failed"
+    },
+    "boltz2": {
+      "job": "29779178",
+      "scientific_status": "failed"
+    },
+    "boltz2_chemistry": {
+      "job": "29779179",
+      "scientific_status": "passed"
+    }
+  },
+  "existing_diagnostics_preserved": [
+    "29780821",
+    "29780823"
+  ],
+  "existing_diagnostic_captures_preserved": [
+    "29780822",
+    "29780824"
+  ],
+  "existing_final_presentation_preserved": "29780830",
+  "new_report": null,
+  "milestone_progress": {
+    "protenix": 0,
+    "boltz2": 0,
+    "boltz2_chemistry": 0
+  },
+  "no_old_run_cancelled_resumed_or_modified": true,
+  "no_additional_cleanup": true,
+  "superseded_by": "20261022-brd4-jq1-25-fixed-lrreset-02",
+  "cpu_failure": {
+    "job": "29781350",
+    "after_cpu": "29781351",
+    "passed": 388,
+    "failed": 3,
+    "errors": 0,
+    "skips": 0,
+    "raw_xml_sha256": "b60281fc60dc23917827f69f4be31565a710186d1f2b268945e82b68a2280947",
+    "failures": [
+      "Fixture injected0.3 which is nowvalidinstead ofoldinvalid rate",
+      "Fixture expectedoldBoltz.05instead ofdeclared.005",
+      "Fixture assumedtag appearsin nestedwork3leaf"
+    ],
+    "new_scientific_settings_changed_to_fix": false
+  }
+}

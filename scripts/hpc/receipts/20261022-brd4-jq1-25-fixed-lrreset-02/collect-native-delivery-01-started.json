@@ -1,0 +1,18 @@
+{
+  "started_utc": "2026-10-22T10:27:52.082889+00:00",
+  "command": [
+    "ssh",
+    "-T",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=15",
+    "-o",
+    "ConnectionAttempts=1",
+    "dtu-hpc",
+    "bash -l -s"
+  ],
+  "script": "collect-native-delivery.sh",
+  "script_sha256": "2e8add7123e3b5987063ccf1b28358d9057ab0dbc0d866ab1a0dc06df108105d",
+  "outcome": "unknown"
+}

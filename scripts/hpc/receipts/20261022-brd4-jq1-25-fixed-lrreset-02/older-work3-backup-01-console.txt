@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "C:\Users\nikol\OneDrive\Dokumenter\GitHub\mosaic\scripts\hpc\receipts\20261022-brd4-jq1-25-fixed-lrreset-02\backup_older_work3.py", line 16, in <module>
+    assert r.returncode==0
+           ^^^^^^^^^^^^^^^
+AssertionError

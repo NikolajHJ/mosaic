@@ -1,0 +1,20 @@
+{
+  "started_utc": "2026-10-22T10:20:22.456102+00:00",
+  "command": [
+    "ssh",
+    "-T",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=15",
+    "-o",
+    "ConnectionAttempts=1",
+    "dtu-hpc",
+    "bash -l -s"
+  ],
+  "script": "retry-cleanup-login.sh",
+  "script_sha256": "e2e856f424b9268573da1fc7283cbc3c2ca881628aa3aa71542e5bad8a664e04",
+  "outcome": "completed",
+  "returncode": 0,
+  "finished_utc": "2026-10-22T10:21:58.289238+00:00"
+}

@@ -1,0 +1,28 @@
+{"archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261022-brd4-jq1-lrboost-analysis-01\\interim-0002.tar.gz", "sha256": "e92c477b8d173c1c0a9e17813e9cb0f8549cd24c9e97578d43e7591823cbb30a", "verified_files": 647, "scope": "stdlib byte integrity only; no local numerical evaluation"}
+{
+  "started_utc": "2026-10-22T09:23:34.428828+00:00",
+  "command": [
+    "ssh",
+    "-T",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=15",
+    "-o",
+    "ConnectionAttempts=1",
+    "dtu-hpc",
+    "/work3/s234818/mosaic/envs/protenix-tiny/bin/python -c 'import hashlib,os,pathlib,sys\np=pathlib.Path(sys.argv[1]);assert p.is_file() and not p.is_symlink()\nwith p.open('\"'\"'rb'\"'\"') as stream:\n assert os.fstat(stream.fileno()).st_size==int(sys.argv[2])\n assert hashlib.file_digest(stream,'\"'\"'sha256'\"'\"').hexdigest()==sys.argv[3]\n stream.seek(0)\n for block in iter(lambda:stream.read(1048576),b'\"'\"''\"'\"'):sys.stdout.buffer.write(block)\n sys.stdout.buffer.flush()\n' /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/interim-0002.tar.gz 157404869 e92c477b8d173c1c0a9e17813e9cb0f8549cd24c9e97578d43e7591823cbb30a"
+  ],
+  "receipt": {
+    "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/interim-0002.tar.gz",
+    "bytes": 157404869,
+    "sha256": "e92c477b8d173c1c0a9e17813e9cb0f8549cd24c9e97578d43e7591823cbb30a",
+    "files": 647
+  },
+  "outcome": "safe_extraction_and_all_files_verified",
+  "fresh_file": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261022-brd4-jq1-lrboost-analysis-01\\interim-0002.tar.gz",
+  "pid": 39020,
+  "returncode": 0,
+  "finished_utc": "2026-10-22T09:24:00.363150+00:00",
+  "observed_bytes": 157404869
+}

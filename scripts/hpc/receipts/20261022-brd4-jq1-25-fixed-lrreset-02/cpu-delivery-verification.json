@@ -1,0 +1,28 @@
+{
+  "status": "passed",
+  "scope": "Independent local stdlib byte/XML/schema/actual LSF and persisted CPU scheduler proof verification; no model/numerical execution",
+  "files": 61,
+  "actual_cpu_job": "29781363",
+  "actual_cpu_status": "DONE",
+  "callback_job": "29781364",
+  "callback_status": "EXIT",
+  "callback_failure": "Mandatory native-dispatch storage admission; CPU scientific/model checks not performed",
+  "tests": 723,
+  "groups": {
+    "hpc-contract": 391,
+    "legacy": 239,
+    "native-mapping": 34,
+    "chemistry": 59
+  },
+  "failures": 0,
+  "errors": 0,
+  "skips": 0,
+  "legacy_deliberately_deselected": 3,
+  "cpu_certificate_sha256": "6e02392176f71238b1af36564c796615758ba82af7715ebe487bd48030a5a5d5",
+  "storage_gate_sha256": "2c47b1e90fe4f7a4c2d259f95e370dea38dbef9c392c4becd7a186ebf31d8bc8",
+  "required_bytes": 10200547328,
+  "available_bytes": 7836349422,
+  "storage_shortfall_bytes": 2364197906,
+  "source01_failure_preserved": true,
+  "new_native_or_long_pass_established": false
+}

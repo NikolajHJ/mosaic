@@ -1,0 +1,19 @@
+{
+  "status": "passed",
+  "scope": "Independent stdlib complete archive/member/hash/Git/AST/static source comparison only; no numerical execution",
+  "manifest_sha256": "832f833dd486c2ff305f7e3eb33fc775c87810a2e12a8bc597c5df744699c5d3",
+  "source_files": 622,
+  "archive_members": 623,
+  "parent_attempt01_manifest_sha256": "47263fedea42e593455b43d4b75c1c874670bb53d934dd93a531aec439abf403",
+  "changed_files": [
+    ".gitattributes",
+    "docs/brd4_jq1_25_fixed_lrreset.md",
+    "scripts/fixed25_lrreset_ops.py",
+    "scripts/fixed25_lrreset_storage.py",
+    "tests/test_fixed25_lrreset_ops.py",
+    "tests/test_fixed25_lrreset_storage.py"
+  ],
+  "all_scientific_config_driver_contract_library_bytes_identical_to_attempt01": true,
+  "production_launcher_changes_only_declared_new_root_identity": true,
+  "no_gate_waiver": true
+}

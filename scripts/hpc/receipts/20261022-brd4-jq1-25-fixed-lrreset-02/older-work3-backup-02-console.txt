@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "C:\Users\nikol\OneDrive\Dokumenter\GitHub\mosaic\scripts\hpc\receipts\20261022-brd4-jq1-25-fixed-lrreset-02\backup_older_work3_02.py", line 24, in <module>
+    subprocess.run([sys.executable,str(repo/'scripts/verify_hpc_evidence.py'),str(out),actual],cwd=repo,check=True)
+  File "C:\Users\nikol\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['C:\\Users\\nikol\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe', 'C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\scripts\\verify_hpc_evidence.py', 'C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261022-brd4-jq1-25-fixed-lrreset-02\\older-work3-backup-02.tar.gz', '1f6b91446dba1866ff7c6e732a1ce2457e60c59661943fdbd2eb6cf870a305f4']' returned non-zero exit status 4294967295.

@@ -1,0 +1,8 @@
+{
+  "status": "passed",
+  "scope": "Independent standard-library archive/member/hash/Git-index/AST/JSON/static-route verification only; no tests or numerical execution",
+  "archive_members": 623,
+  "files": 622,
+  "manifest_sha256": "47263fedea42e593455b43d4b75c1c874670bb53d934dd93a531aec439abf403",
+  "driver_endpoints_route_to_declared_coupled_and_high_pilot": true
+}

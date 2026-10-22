@@ -1,0 +1,20 @@
+{
+  "started_utc": "2026-10-22T10:10:31.282044+00:00",
+  "command": [
+    "ssh",
+    "-T",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=15",
+    "-o",
+    "ConnectionAttempts=1",
+    "dtu-hpc",
+    "bash -l -s"
+  ],
+  "script": "stop-exact-readonly-workers.sh",
+  "script_sha256": "bf8ba9a3efc763b36a866f6162c1bd45f1adbab0d414f01498a0ee176a2c5fbb",
+  "outcome": "completed",
+  "returncode": 0,
+  "finished_utc": "2026-10-22T10:10:32.937024+00:00"
+}

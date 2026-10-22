@@ -1,0 +1,33 @@
+{
+  "started_utc": "2026-10-22T10:11:15.569098+00:00",
+  "outcome": "archive_bytes_verified",
+  "command": [
+    "ssh",
+    "-T",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=15",
+    "-o",
+    "ConnectionAttempts=1",
+    "dtu-hpc",
+    "bash -l -s"
+  ],
+  "script_sha256": "0eadcf617463e371a6b615f178d768c8e3e1c949ab54caa4572f5739932d2683",
+  "local_archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261022-brd4-jq1-25-fixed-lrreset-02\\older-work3-backup-02.tar.gz",
+  "deletion_performed": false,
+  "returncode": 0,
+  "receipt": {
+    "status": "backup_stream_completed",
+    "utc": "2026-10-22T10:13:06.160728+00:00",
+    "bytes": 1620686314,
+    "sha256": "1f6b91446dba1866ff7c6e732a1ce2457e60c59661943fdbd2eb6cf870a305f4",
+    "original_files": 34847,
+    "original_logical_bytes": 1540133784,
+    "control": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/cleanup-recovery-02",
+    "deletion_performed": false
+  },
+  "error": "CalledProcessError(4294967295, ['C:\\\\Users\\\\nikol\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\python\\\\python.exe', 'C:\\\\Users\\\\nikol\\\\OneDrive\\\\Dokumenter\\\\GitHub\\\\mosaic\\\\scripts\\\\verify_hpc_evidence.py', 'C:\\\\Users\\\\nikol\\\\OneDrive\\\\Dokumenter\\\\GitHub\\\\mosaic\\\\results\\\\hpc\\\\20261022-brd4-jq1-25-fixed-lrreset-02\\\\older-work3-backup-02.tar.gz', '1f6b91446dba1866ff7c6e732a1ce2457e60c59661943fdbd2eb6cf870a305f4'])",
+  "finished_utc": "2026-10-22T10:17:01.575579+00:00",
+  "observed_archive_bytes": 1620686314
+}

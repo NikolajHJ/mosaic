@@ -1,0 +1,139 @@
+{
+  "utc": "2026-10-22T10:21:30.855441+00:00",
+  "artifacts": {
+    "backup-receipt.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/cleanup-recovery-02/backup-receipt.json",
+      "bytes": 408,
+      "sha256": "6a56ee86e1103dcf7db2611257589a950864892157958b331785c07ecabe21ce",
+      "content": {
+        "status": "backup_stream_completed",
+        "utc": "2026-10-22T10:13:06.160728+00:00",
+        "bytes": 1620686314,
+        "sha256": "1f6b91446dba1866ff7c6e732a1ce2457e60c59661943fdbd2eb6cf870a305f4",
+        "original_files": 34847,
+        "original_logical_bytes": 1540133784,
+        "control": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/cleanup-recovery-02",
+        "deletion_performed": false
+      }
+    },
+    "attempt-02/jobs-before-verification.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/cleanup-recovery-02/attempt-02/jobs-before-verification.json",
+      "bytes": 10676,
+      "sha256": "501c8dbb739ca99258ee8f65436d0225e382a065b14229aade5ffb359e391bff",
+      "content": {
+        "returncode": 0,
+        "mosaic_jobs": [
+          "29780821 PEND mosaic-lrboost-analysis-diagnostic-protenix                                                          bash -l /work3/s234818/mosaic/releases/20261022-brd4-jq1-lrboost-analysis-01/source/scripts/hpc/jq1_lrboost_analysis_stage.lsf /work3/s234818/mosaic/releases/20261022-brd4-jq1-lrboost-analysis-01/source /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01 214c19387649a741a7ad42f1e3e027061631993b4ae33425071aba9005fdcbcc diagnostic protenix /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/diagnostic-protenix                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           ",
+          "29780822 PEND mosaic-lrboost-analysis-diagnostic-capture-protenix                                                  bash -l /work3/s234818/mosaic/releases/20261022-brd4-jq1-lrboost-analysis-01/source/scripts/hpc/jq1_lrboost_analysis_stage.lsf /work3/s234818/mosaic/releases/20261022-brd4-jq1-lrboost-analysis-01/source /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01 214c19387649a741a7ad42f1e3e027061631993b4ae33425071aba9005fdcbcc diagnostic-capture protenix /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/diagnostic-capture-protenix                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           ",
+          "29780823 PEND mosaic-lrboost-analysis-diagnostic-boltz2                                                            bash -l /work3/s234818/mosaic/releases/20261022-brd4-jq1-lrboost-analysis-01/source/scripts/hpc/jq1_lrboost_analysis_stage.lsf /work3/s234818/mosaic/releases/20261022-brd4-jq1-lrboost-analysis-01/source /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01 214c19387649a741a7ad42f1e3e027061631993b4ae33425071aba9005fdcbcc diagnostic boltz2 /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/diagnostic-boltz2                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               ",
+          "29780824 PEND mosaic-lrboost-analysis-diagnostic-capture-boltz2                                                    bash -l /work3/s234818/mosaic/releases/20261022-brd4-jq1-lrboost-analysis-01/source/scripts/hpc/jq1_lrboost_analysis_stage.lsf /work3/s234818/mosaic/releases/20261022-brd4-jq1-lrboost-analysis-01/source /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01 214c19387649a741a7ad42f1e3e027061631993b4ae33425071aba9005fdcbcc diagnostic-capture boltz2 /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/diagnostic-capture-boltz2                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               ",
+          "29780830 PEND mosaic-lrboost-analysis-combined-report                                                              bash -l /work3/s234818/mosaic/releases/20261022-brd4-jq1-lrboost-analysis-01/source/scripts/hpc/jq1_lrboost_analysis_stage.lsf /work3/s234818/mosaic/releases/20261022-brd4-jq1-lrboost-analysis-01/source /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01 214c19387649a741a7ad42f1e3e027061631993b4ae33425071aba9005fdcbcc final none /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/combined-report                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        "
+        ],
+        "stderr": ""
+      }
+    },
+    "attempt-02/jobs-before-removal.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/cleanup-recovery-02/attempt-02/jobs-before-removal.json",
+      "bytes": 10676,
+      "sha256": "501c8dbb739ca99258ee8f65436d0225e382a065b14229aade5ffb359e391bff",
+      "content": {
+        "returncode": 0,
+        "mosaic_jobs": [
+          "29780821 PEND mosaic-lrboost-analysis-diagnostic-protenix                                                          bash -l /work3/s234818/mosaic/releases/20261022-brd4-jq1-lrboost-analysis-01/source/scripts/hpc/jq1_lrboost_analysis_stage.lsf /work3/s234818/mosaic/releases/20261022-brd4-jq1-lrboost-analysis-01/source /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01 214c19387649a741a7ad42f1e3e027061631993b4ae33425071aba9005fdcbcc diagnostic protenix /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/diagnostic-protenix                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           ",
+          "29780822 PEND mosaic-lrboost-analysis-diagnostic-capture-protenix                                                  bash -l /work3/s234818/mosaic/releases/20261022-brd4-jq1-lrboost-analysis-01/source/scripts/hpc/jq1_lrboost_analysis_stage.lsf /work3/s234818/mosaic/releases/20261022-brd4-jq1-lrboost-analysis-01/source /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01 214c19387649a741a7ad42f1e3e027061631993b4ae33425071aba9005fdcbcc diagnostic-capture protenix /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/diagnostic-capture-protenix                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           ",
+          "29780823 PEND mosaic-lrboost-analysis-diagnostic-boltz2                                                            bash -l /work3/s234818/mosaic/releases/20261022-brd4-jq1-lrboost-analysis-01/source/scripts/hpc/jq1_lrboost_analysis_stage.lsf /work3/s234818/mosaic/releases/20261022-brd4-jq1-lrboost-analysis-01/source /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01 214c19387649a741a7ad42f1e3e027061631993b4ae33425071aba9005fdcbcc diagnostic boltz2 /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/diagnostic-boltz2                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               ",
+          "29780824 PEND mosaic-lrboost-analysis-diagnostic-capture-boltz2                                                    bash -l /work3/s234818/mosaic/releases/20261022-brd4-jq1-lrboost-analysis-01/source/scripts/hpc/jq1_lrboost_analysis_stage.lsf /work3/s234818/mosaic/releases/20261022-brd4-jq1-lrboost-analysis-01/source /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01 214c19387649a741a7ad42f1e3e027061631993b4ae33425071aba9005fdcbcc diagnostic-capture boltz2 /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/diagnostic-capture-boltz2                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               ",
+          "29780830 PEND mosaic-lrboost-analysis-combined-report                                                              bash -l /work3/s234818/mosaic/releases/20261022-brd4-jq1-lrboost-analysis-01/source/scripts/hpc/jq1_lrboost_analysis_stage.lsf /work3/s234818/mosaic/releases/20261022-brd4-jq1-lrboost-analysis-01/source /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01 214c19387649a741a7ad42f1e3e027061631993b4ae33425071aba9005fdcbcc final none /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/combined-report                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        "
+        ],
+        "stderr": ""
+      }
+    }
+  },
+  "journal": {
+    "newline_committed_events": {
+      "intent": 7953,
+      "removed": 7952
+    },
+    "removed_bytes_so_far": 439201656,
+    "last": {
+      "utc": "2026-10-22T10:21:30.977014+00:00",
+      "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-storage-03/run-protenix/payload/study/case-0/references/step-7687.json",
+      "bytes": 335,
+      "sha256": "581092a0497ffee973e66763707cf0cbd03050c6ec1eb2df3217ee3e04f0fef1",
+      "local_backup": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261022-brd4-jq1-25-fixed-lrreset-02\\older-work3-backup-02.tar.gz",
+      "archive_member": "files/runs/20261021-brd4-jq1-25-fixed-storage-03/run-protenix/payload/study/case-0/references/step-7687.json",
+      "event": "intent"
+    }
+  },
+  "raw_quota": {
+    "returncode": 0,
+    "raw": "HPE-Storage-Servers (disks, storagepool 1): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nHPE-Storage-Servers (NVME, storagepool 2): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (disks, storagepool 3): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks, storagepool 4): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks added in 2024, storagepool 5): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (NVMEs added in 2024, storagepool 6): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||   87.42 GiB|  100.00 GiB||   400129| 20000000\n\n",
+    "scope": "Observation only; a fresh original full capacity gate remains mandatory"
+  }
+}
+
+
+When connecting from _outside_ of DTU (and not using DTU-VPN) one is 
+
+required to authenticate with a ssh-key + ssh-key-keyphrase + DTU-password.
+
+
+
+From inside of DTU (or connecting via DTU-VPN) one can also connect 
+
+with password or ssh-key.
+
+
+
+Info page on SSH: https://www.hpc.dtu.dk/?page_id=4317
+
+
+
+---
+
+For ThinLinc users: 
+
+Please make sure that your TL client is at least version 4.16 - else you 
+
+cannot connect to this system!
+
+
+
+This is not an error-message, it's just a way to give you some information. 
+
+Click 'Close' to continue ...
+
+---
+
+
+
+Info page on the system update 08/2024: https://www.hpc.dtu.dk/?page_id=5209
+
+
+
+---
+
+
+
+
+
+{
+  "started_utc": "2026-10-22T10:21:31.415404+00:00",
+  "command": [
+    "ssh",
+    "-T",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=15",
+    "-o",
+    "ConnectionAttempts=1",
+    "dtu-hpc",
+    "bash -l -s"
+  ],
+  "script": "cleanup-status-02.sh",
+  "script_sha256": "6cb77f1229714cb0472634e2583f9088904a03f56a6d21ebf7af4c66379fd01e",
+  "outcome": "completed",
+  "returncode": 0,
+  "finished_utc": "2026-10-22T10:21:32.424777+00:00"
+}

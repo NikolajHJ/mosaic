@@ -1,0 +1,27 @@
+{
+  "tag": "20261022-brd4-jq1-lrboost-viewer-focus-01",
+  "scope": "Viewer-only numeric-focus playback correction; no original scientific or diagnostic job mutation",
+  "status": "local_preparation_not_sealed_not_staged_no_CPU_or_patch_job",
+  "original_report": {
+    "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/interim-0002.tar.gz",
+    "bytes": 157404869,
+    "sha256": "e92c477b8d173c1c0a9e17813e9cb0f8549cd24c9e97578d43e7591823cbb30a",
+    "files": 647
+  },
+  "original_render_job": "29781041",
+  "original_report_source_manifest_sha256": "214c19387649a741a7ad42f1e3e027061631993b4ae33425071aba9005fdcbcc",
+  "original_cpu_certificate_sha256": "42b2b000ecce5d661da9b75ad85f03a41c3b303010ccfa03f87835a25993ca69",
+  "original_report_byte_verification_sha256": "5f4fbb8d458af62ab76294f20f4228a80ebdbbdf1d790ae40d10f3d88ba993a6",
+  "browser_failure_sha256": "e30b5476be44274c1646cd078ba5f2b1b25de0b9aa0b364b9c318223db971b68",
+  "scientific_runs_unchanged": true,
+  "native_jobs": [
+    "29779177",
+    "29779178",
+    "29779179"
+  ],
+  "diagnostic_jobs": [
+    "29780821",
+    "29780823"
+  ],
+  "final_original_report_job": "29780830"
+}

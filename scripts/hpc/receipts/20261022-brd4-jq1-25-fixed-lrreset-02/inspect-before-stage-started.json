@@ -1,0 +1,18 @@
+{
+  "started_utc": "2026-10-22T09:54:28.895963+00:00",
+  "command": [
+    "ssh",
+    "-T",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=15",
+    "-o",
+    "ConnectionAttempts=1",
+    "dtu-hpc",
+    "bash -l -s"
+  ],
+  "script": "inspect-before-stage.sh",
+  "script_sha256": "d28e40a7460e38468f1f0780bb28d15e00690aec437cb4d5958caee6f44ed099",
+  "outcome": "unknown"
+}

@@ -1,0 +1,188 @@
+{
+  "tag": "20261022-brd4-jq1-25-fixed-lrreset-02",
+  "status": "CPU723passed; verified additional older-work3 backup/cleanup completed; unchanged fresh native admission passed and all3native+owncallbacks actually submitted/PEND12:27:52Paris. No new native pass or10000-update longID yet.",
+  "authorization": {
+    "rates": {
+      "protenix": 0.3,
+      "boltz2": 0.005,
+      "boltz2_chemistry": 0.005
+    },
+    "fresh_updates_each": 10000,
+    "repair_schedule": {
+      "initial": 0.001,
+      "final": 100.0,
+      "hold_updates": 5000,
+      "total_updates": 10000
+    },
+    "acceptance_policy": "fixed_step",
+    "max_backtracks": 1,
+    "finite_uphill_equal_noop_applied": true
+  },
+  "source": {
+    "status": "passed",
+    "scope": "Local stdlib byte/hash/AST/JSON packaging only; no tests or numerical execution",
+    "source_files": 622,
+    "archive_members": 623,
+    "manifest_sha256": "832f833dd486c2ff305f7e3eb33fc775c87810a2e12a8bc597c5df744699c5d3",
+    "archive_bytes": 39601171,
+    "archive_sha256": "306bdf055770e7245bb37de291800cb7da0998af7345aabb7d1b9e0b97057e25",
+    "source_root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-release-02/source",
+    "unchanged_scientific_library_files": 145,
+    "modified_base_files": [
+      ".gitattributes",
+      "examples/brd4_25_atoms.py",
+      "scripts/campaign25_contract.py"
+    ],
+    "added_files": [
+      "docs/brd4_jq1_25_fixed_lrreset.md",
+      "examples/configs/brd4_jq1_25_fixed_lrreset_boltz2_10000.json",
+      "examples/configs/brd4_jq1_25_fixed_lrreset_boltz2_chemistry_10000.json",
+      "examples/configs/brd4_jq1_25_fixed_lrreset_protenix_10000.json",
+      "scripts/fixed25_lrreset_ops.py",
+      "scripts/fixed25_lrreset_storage.py",
+      "scripts/hpc/fixed25_lrreset_cpu.lsf",
+      "scripts/hpc/fixed25_lrreset_stage.lsf",
+      "scripts/hpc/lrreset_predecessors.json",
+      "tests/test_fixed25_lrreset_contract.py",
+      "tests/test_fixed25_lrreset_ops.py",
+      "tests/test_fixed25_lrreset_storage.py"
+    ],
+    "exact_index_executable_and_configuration_bytes": true
+  },
+  "initial_jobs": {
+    "cpu": "29781363",
+    "after_cpu": "29781364"
+  },
+  "cpu_submitted": true,
+  "cpu_passed": true,
+  "native_submitted": true,
+  "native_passed": false,
+  "long_submitted": false,
+  "preflight": {
+    "status": "passed",
+    "required_bytes": 8053063680,
+    "available_bytes": 8910416780,
+    "concurrent_analysis_allowance_bytes": 2684354560,
+    "limitation": "CPU allowance only; not validation/long gate or reservation"
+  },
+  "work3_root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02",
+  "home_root": "/zhome/95/e/206121/mosaic-runs/20261022-brd4-jq1-25-fixed-lrreset-02",
+  "finished_predecessors": {
+    "protenix": {
+      "job": "29779177",
+      "scientific_status": "failed"
+    },
+    "boltz2": {
+      "job": "29779178",
+      "scientific_status": "failed"
+    },
+    "boltz2_chemistry": {
+      "job": "29779179",
+      "scientific_status": "passed"
+    }
+  },
+  "existing_diagnostics_preserved": [
+    "29780821",
+    "29780823"
+  ],
+  "existing_diagnostic_captures_preserved": [
+    "29780822",
+    "29780824"
+  ],
+  "existing_final_presentation_preserved": "29780830",
+  "new_report": null,
+  "milestone_progress": {
+    "protenix": 0,
+    "boltz2": 0,
+    "boltz2_chemistry": 0
+  },
+  "no_additional_cleanup": false,
+  "cpu_result": {
+    "job": "29781363",
+    "actual_status": "DONE",
+    "tests": 723,
+    "groups": {
+      "contracts": 391,
+      "legacy": 239,
+      "mapping": 34,
+      "chemistry": 59
+    },
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "deliberately_deselected": 3,
+    "certificate_sha256": "6e02392176f71238b1af36564c796615758ba82af7715ebe487bd48030a5a5d5",
+    "independent_verification_sha256": "19fd207053ee8ab4974693261d5d3e7090abfba615a4bce3355d4d5808805e27"
+  },
+  "failed_native_admission": {
+    "callback": "29781364",
+    "status": "EXIT",
+    "gate_sha256": "2c47b1e90fe4f7a4c2d259f95e370dea38dbef9c392c4becd7a186ebf31d8bc8",
+    "required_bytes": 10200547328,
+    "available_bytes": 7836349422,
+    "preserved_unchanged": true,
+    "native_jobs_before_failure": 0
+  },
+  "additional_work3_cleanup": {
+    "status": "completed",
+    "original_files": 34847,
+    "logical_bytes_removed": 1540133784,
+    "backup_archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261022-brd4-jq1-25-fixed-lrreset-02\\older-work3-backup-02.tar.gz",
+    "archive_bytes": 1620686314,
+    "archive_sha256": "1f6b91446dba1866ff7c6e732a1ce2457e60c59661943fdbd2eb6cf870a305f4",
+    "receipt_sha256": "56d925421ac6225cf191cdb00a28b8f76d6e46d7dc74de3f39af3a8a30a467b4",
+    "plan_sha256": "03bbc4fa67a286b8f51b6c02f3af8b898e0ed4acd80255e9f88527f82787c8bb",
+    "journal_sha256": "68a1573237fa5dafd21c299e87c1b1a089857ac9dd66d55fc7ed83cd103eb9b1",
+    "changed_files_retained": 0,
+    "absent_files": 0,
+    "current_higher_rate_inputs_and_all_home_untouched": true
+  },
+  "native_jobs": {
+    "protenix": "29783703",
+    "boltz2": "29783707",
+    "boltz2_chemistry": "29783710"
+  },
+  "native_callbacks": {
+    "protenix": "29783705",
+    "boltz2": "29783708",
+    "boltz2_chemistry": "29783711"
+  },
+  "actual_status_capture": {
+    "utc": "2026-10-22T10:27:52.167244+00:00",
+    "states": {
+      "29780821": "PEND",
+      "29780822": "PEND",
+      "29780823": "PEND",
+      "29780824": "PEND",
+      "29780830": "PEND",
+      "29783703": "PEND",
+      "29783705": "PEND",
+      "29783707": "PEND",
+      "29783708": "PEND",
+      "29783710": "PEND",
+      "29783711": "PEND"
+    }
+  },
+  "resource_adoption_sha256": "434a42093cb466c32eb7fe144eb952f462c72e75014c0a5347fd95b1370ce8d4",
+  "fresh_native_admission": {
+    "status": "passed",
+    "required_bytes": 10200547328,
+    "available_bytes": 10286294816,
+    "same_full_allowances_and_reserves": true,
+    "not_full_long_storage_or_reservation": true
+  },
+  "native_delivery_archive": {
+    "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/native-delivery-01.tar.gz",
+    "bytes": 7332680,
+    "sha256": "f6dadc17eb468f87a46cbb177f545682267b365c6963f6aec3a25210a8e8ecf6",
+    "files": 41,
+    "utc": "2026-10-22T10:27:52.957737+00:00"
+  },
+  "independent_delivery_verification_sha256": "4c7979a05a635d5f7f19feec407827eb8e8af43ecc3ccdaef0740918d69f8361",
+  "no_current_higher_rate_run_cancelled_resumed_or_modified": true,
+  "automation_configuration": {
+    "status_preserved": "PAUSED",
+    "schedule_preserved": true,
+    "hpc_native_callbacks_automatic_independent_of_desktop_monitor": true
+  }
+}

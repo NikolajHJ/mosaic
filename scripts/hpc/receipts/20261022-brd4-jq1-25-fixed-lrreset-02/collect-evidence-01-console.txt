@@ -1,0 +1,67 @@
+{"path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/verification-evidence-01.tar.gz", "bytes": 112789, "sha256": "c681d57d812e5bdd7f58c7cedca92c1a81ba1ba9c873223170f1967a6513cfd9", "files": 61, "utc": "2026-10-22T10:01:13.538332+00:00"}
+
+
+{
+  "started_utc": "2026-10-22T10:01:13.528956+00:00",
+  "command": [
+    "ssh",
+    "-T",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=15",
+    "-o",
+    "ConnectionAttempts=1",
+
+    "dtu-hpc",
+When connecting from _outside_ of DTU (and not using DTU-VPN) one is 
+    "bash -l -s"
+  ],
+  "script": "collect-evidence.sh",
+  "script_sha256": "54d9f8edfe60812b034a3230b740c5749453300dcae61eba967f2dd88e8898a9",
+  "outcome": "completed",
+  "returncode": 0,
+  "finished_utc": "2026-10-22T10:01:14.871581+00:00"
+}
+
+required to authenticate with a ssh-key + ssh-key-keyphrase + DTU-password.
+
+
+
+From inside of DTU (or connecting via DTU-VPN) one can also connect 
+
+with password or ssh-key.
+
+
+
+Info page on SSH: https://www.hpc.dtu.dk/?page_id=4317
+
+
+
+---
+
+For ThinLinc users: 
+
+Please make sure that your TL client is at least version 4.16 - else you 
+
+cannot connect to this system!
+
+
+
+This is not an error-message, it's just a way to give you some information. 
+
+Click 'Close' to continue ...
+
+---
+
+
+
+Info page on the system update 08/2024: https://www.hpc.dtu.dk/?page_id=5209
+
+
+
+---
+
+
+
+

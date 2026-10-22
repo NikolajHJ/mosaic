@@ -1,0 +1,11 @@
+{
+  "status": "ready",
+  "files": 34847,
+  "logical_bytes": 1540133784,
+  "plan_local_path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261022-brd4-jq1-25-fixed-lrreset-02\\cleanup-plan-02.json",
+  "plan_sha256": "03bbc4fa67a286b8f51b6c02f3af8b898e0ed4acd80255e9f88527f82787c8bb",
+  "helper_sha256": "7f3d98cd747b114f298eea53b40514a76aa738dcd2ead807165d93001d005f52",
+  "all_current_collector_proofs_excluded": true,
+  "all_home_files_excluded": true,
+  "deletion_performed": false
+}

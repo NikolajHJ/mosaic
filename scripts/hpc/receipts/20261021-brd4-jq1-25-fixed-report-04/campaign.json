@@ -224,5 +224,12 @@
     "browser_qa_sha256": "5e2a8b33be03927dda2bd0a5ace46157bd2d5c4287e7943e1b27a1ce51311af4",
     "publisher": "Validatedpublisher-onlysource05/CPU29778252; originalreport04archive/editionsunchanged",
     "local_byte_scope": "Fullreportarchive/assets,rawCPUproofs;originalnativebigJSON/JSONL/NPZremotehashedreferencesvalidatedonallocatedHPC"
+  },
+  "additional_exact_backup_retirement_20261022": {
+    "scope": "Only named older lower-rate study/report duplicate or transport archive copies retired after complete byte backup; original scientific outcomes unchanged",
+    "audit_campaign": "20261022-brd4-jq1-25-fixed-lrreset-02",
+    "backup_archive_sha256": "1f6b91446dba1866ff7c6e732a1ce2457e60c59661943fdbd2eb6cf870a305f4",
+    "audit_verification_sha256": "4c7979a05a635d5f7f19feec407827eb8e8af43ecc3ccdaef0740918d69f8361",
+    "all_source_release_directories_and_current_higher_rate_trajectories_preserved": true
   }
 }

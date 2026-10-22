@@ -1,0 +1,20 @@
+{
+  "started_utc": "2026-10-22T10:19:48.810433+00:00",
+  "command": [
+    "ssh",
+    "-T",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=15",
+    "-o",
+    "ConnectionAttempts=1",
+    "dtu-hpc",
+    "bash -l -s"
+  ],
+  "script": "cleanup-status.sh",
+  "script_sha256": "51890c8f36b8cdf6e0eded8c7592a55ca86785cf6f0f49f844519de1d7b94ce9",
+  "outcome": "completed",
+  "returncode": 0,
+  "finished_utc": "2026-10-22T10:19:49.662454+00:00"
+}

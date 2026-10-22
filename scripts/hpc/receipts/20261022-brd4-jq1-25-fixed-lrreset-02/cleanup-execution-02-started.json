@@ -1,0 +1,10 @@
+{
+  "started_utc": "2026-10-22T10:18:30.030926+00:00",
+  "outcome": "unknown",
+  "archive_sha256": "55df17e2c09deedb46e8e5812242d47ae755c66061dfcaf95a38e14baafe6090",
+  "archive_bytes": 1712958,
+  "plan_sha256": "03bbc4fa67a286b8f51b6c02f3af8b898e0ed4acd80255e9f88527f82787c8bb",
+  "helper_sha256": "7f3d98cd747b114f298eea53b40514a76aa738dcd2ead807165d93001d005f52",
+  "control": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-02/cleanup-recovery-02",
+  "scope": "Exact matching locally backed-up inactive older-work3 files only; current three studies/allhome/releases/cache/model/env untouched"
+}
