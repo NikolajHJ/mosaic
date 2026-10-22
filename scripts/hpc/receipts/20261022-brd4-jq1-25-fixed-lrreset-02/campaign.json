@@ -1,6 +1,6 @@
 {
   "tag": "20261022-brd4-jq1-25-fixed-lrreset-02",
-  "status": "CPU723passed; verified additional older-work3 backup/cleanup completed; unchanged fresh native admission passed and all3native+owncallbacks actually submitted/PEND12:27:52Paris. No new native pass or10000-update longID yet.",
+  "status": "All3 native validation allocations EXIT1 at entry work3 byte-quota before model/gradient execution (19:01-19:02Paris); own callbacks blocked dispatch. CPU723 remains passed; no new readiness pass or 10000-update long submission.",
   "authorization": {
     "rates": {
       "protenix": 0.3,
@@ -205,5 +205,42 @@
     "new_native_passes": 0,
     "new_scientific_long_ids": [],
     "raw_status_sha256": "c15470cea5d28f3f3120f5bdc8b7f3572e2438b65b01a6a562f150f5a93ea3bf"
+  },
+  "latest_observed_utc": "2026-10-22T17:03:45.469403+00:00",
+  "entry_storage_failures_20261022_1903": {
+    "status": "passed",
+    "scope": "same-job LSF exit1, failed gate bytes and decision proof hashes; model/gradient testing never started",
+    "arms": [
+      {
+        "arm": "protenix",
+        "job_id": "29783703",
+        "required_bytes": 10200529817,
+        "available_bytes": 10191922566,
+        "shortfall_bytes": 8607251,
+        "file_headroom": 19632529
+      },
+      {
+        "arm": "boltz2",
+        "job_id": "29783707",
+        "required_bytes": 10200522040,
+        "available_bytes": 10191904301,
+        "shortfall_bytes": 8617739,
+        "file_headroom": 19632522
+      },
+      {
+        "arm": "boltz2_chemistry",
+        "job_id": "29783710",
+        "required_bytes": 10200514283,
+        "available_bytes": 10191886069,
+        "shortfall_bytes": 8628214,
+        "file_headroom": 19632515
+      }
+    ],
+    "raw_evidence_archive_bytes": 705571,
+    "raw_evidence_archive_sha256": "cb5b63ec3c3db90a68fc5d21e34749660dd4ff752e991e550b076ff78357d307",
+    "raw_evidence_files": 75,
+    "local_evidence_directory": "results/hpc/20261022-brd4-jq1-25-fixed-lrreset-02/news-20261022-1903",
+    "run_record": "experiments/brd4-jq1/fixed-lrreset/runs/20261022-brd4-jq1-25-fixed-lrreset-02/status-20261022-1903.md",
+    "no_new_submission_cleanup_or_scientific_execution": true
   }
 }

@@ -184,3 +184,8 @@ Do not relabel QA passed or edit the immutable edition/source. A new viewer-only
 immutable correction20261022-brd4-jq1-lrboost-viewer-focus-01 is being implemented,
 adding focus-to-pause only, with original assets/proofs unchanged and new allocated
 CPU/adoption requirements. No new patch source/job/pass is yet established.
+
+
+## 22 October 19:03 Paris: separate diagnostic outcomes
+
+Boltz29780823 and capture29780824 completed successfully. All423 archived files and411 of413 capture-proof byte identities were independently verified locally; two original summary/terminal-report proofs remain explicit HPC references. The original terminal bond contrast reproduces its large-scale disagreement, while finer diagnostic-only scales agree more closely; repeated scalar/AD evaluations are identical. No unique root cause or retroactive original-gate pass follows. Protenix29780821 failed the exact saved-logit/probability identity control atstep0; capture29780822 correctly exited, leaving terminal diagnosis incomplete. Existing final29780830 is PEND with an unsatisfiable successful-capture dependency. All original saved runs and existing immutable report/QA outcomes remain unchanged. See the [dated diagnostic outcome](../experiments/brd4-jq1/fixed-lrboost/runs/20261022-brd4-jq1-lrboost-analysis-01/status-20261022-1903.md). No scientific execution, cleanup, retry or new publication occurred during this read-only evidence delivery.

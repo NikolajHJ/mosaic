@@ -85,3 +85,8 @@ Saved job/stage fields (quoted metadata, not independently revalidated):
 ```
 
 Submitted/start/end timestamps, exact interpreter/resource vectors and native outcomes are retained in the linked raw receipts; fields not recorded there remain **unknown**. Read the latest dated status artifact before acting: a compact campaign summary may lag later observations. No command was replayed, no job restarted, no failed/skipped/unreached gate promoted, and no historical output was moved.
+
+
+## Later actual observation: 22 October 19:03 Paris
+
+Boltz separate diagnostics completed and their capture passed; Protenix diagnostics stopped at the saved-logit identity control, with final presentation blocked. The original studies were preserved. See the [dated outcome and exact evidence](status-20261022-1903.md).

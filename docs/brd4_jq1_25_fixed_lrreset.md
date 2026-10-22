@@ -157,3 +157,8 @@ Native/cleanup delivery7332680bytes SHAf6dadc17eb468f87a46cbb177f545682267b365c6
 41files safely extracted/hashed. Independent complete submission/resource/source/
 CPU/backup/journal audit passed4c7979a05a635d5f7f19feec407827eb8e8af43ecc3ccdaef0740918d69f8361.
 Local archive/report/proof integrity checks are not numerical/model validation.
+
+
+## 22 October 19:03 Paris: native allocations failed storage admission
+
+All three original validation jobs29783703/29783707/29783710 reached an L40S at19:01-19:02 and exited1 before any model/gradient invocation. Their conservative byte budgets were short by8607251/8617739/8628214 bytes respectively; file headroom remained adequate. Own callbacks recorded failed decisions and no long-submissions file exists. These are resource-admission failures; CPU723/source622 remain unchanged and no native gradient result was evaluated. No retry, cleanup, policy change or submission occurred in this status turn. Exact gates, own-job LSF and decision hashes were safely downloaded/verified in the [dated run record](../experiments/brd4-jq1/fixed-lrreset/runs/20261022-brd4-jq1-25-fixed-lrreset-02/status-20261022-1903.md).
