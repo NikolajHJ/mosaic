@@ -1,0 +1,28 @@
+{
+  "started_utc": "2026-10-22T08:55:15.519602+00:00",
+  "offset": 8814592,
+  "prefix_sha256": "07550a2431296f46d51b11a8e35ab5c94c088c467b9287732613cf4658530433",
+  "remote": {
+    "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/interim-0001.tar.gz",
+    "bytes": 154498144,
+    "sha256": "f83155ecd2b83b4eff0d0c7693d8142b3d8eeeccfd4f6035784e9581711a170f",
+    "files": 636
+  },
+  "outcome": "unknown",
+  "command": [
+    "ssh",
+    "-T",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=15",
+    "-o",
+    "ConnectionAttempts=1",
+    "-o",
+    "ServerAliveInterval=30",
+    "-o",
+    "ServerAliveCountMax=2",
+    "dtu-hpc",
+    "/work3/s234818/mosaic/envs/protenix-tiny/bin/python -c 'from pathlib import Path; import hashlib,sys,shutil; p=Path('\"'\"'/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/interim-0001.tar.gz'\"'\"'); assert p.stat().st_size==154498144; assert hashlib.sha256(p.read_bytes()).hexdigest()=='\"'\"'f83155ecd2b83b4eff0d0c7693d8142b3d8eeeccfd4f6035784e9581711a170f'\"'\"'; f=p.open(\"rb\"); first=f.read(8814592); assert hashlib.sha256(first).hexdigest()=='\"'\"'07550a2431296f46d51b11a8e35ab5c94c088c467b9287732613cf4658530433'\"'\"'; shutil.copyfileobj(f,sys.stdout.buffer,1024*1024); sys.stdout.buffer.flush()'"
+  ]
+}

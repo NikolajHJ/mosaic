@@ -5975,3 +5975,32 @@ new report publication is established yet. CPU/dispatch evidence24524bytes SHA
 `b6d05c1eea559db93c650d356e5fffadcac7c68b49fe61dc0084a6fa7125f8f7` safely downloaded
 and all56 member hashes checked; independent raw XML/proof/schema audit follows.
 See the new endpoint diagnostics plan and exact campaign/submission receipts.
+
+Independent analysis CPU/dispatch verification passed, SHA-256
+`ac8d58f18e84cb15823e7e68077c0ac04cfa82e35be129a6c44ddf6da3a080e9`.
+All56 downloaded files, actual CPU/callback DONE/LSF successes, exact278 raw XML
+rows and all8 module counts,11 submitted resource/dependency vectors and6 quota
+gates were checked. The original610source/compact provenance chain was rehashed.
+Pro/Bol presentation collectors actually DONE after every10001 saved NPZ frame
+passed its audit; their scientific_status remains failed. First rendering and
+separate GPU diagnostics are still pending completion. Code/receipts pushed
+as `d1b65f2`; older reports and unrelated PDF/OneNote files remain untouched.
+
+The first higher-rate report is now published and browser-verified at
+http://127.0.0.1:8778/report.html, separate immutable edition-0001. Actual render
+29780829 DONE/hpc/LSFsuccess captured10000/10000/9600updates, all29603 saved
+states, with original Pro/Bol failures visible. Published milestone floors are
+10000/10000/9500. Presentation success does not certify the failed native runs.
+Archive154498144bytes SHA
+`f83155ecd2b83b4eff0d0c7693d8142b3d8eeeccfd4f6035784e9581711a170f`
+and all636 files passed safe extraction/hashes. Independent delivery verification
+`6571fa254b224a7f70ed1b97865b09dec8590423a5debd1718b28f8b5d04d588`;
+HTTP608files and actual browser controls/heatmaps/raw graph checks passed. New
+hidden localhost server PID41952; old8777/8776 reports/servers preserved.
+Initial SCP timed out, its process was confirmed ended, and the existing prefix
+was authenticated before a successful byte-stream resume; no active transfer.
+
+At11:03:11Paris diagnostics29780821/29780823 and captures22/24 remained PEND;
+chemistry29779179 RUN, completion collector29780827/final29780830 pending original
+dependencies. No diagnostic finding/pass yet. Monitoring continues with the new
+published milestone receipt and exact submitted jobs, without modifying saved runs.

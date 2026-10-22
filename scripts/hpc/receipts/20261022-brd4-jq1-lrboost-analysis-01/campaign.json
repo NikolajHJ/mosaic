@@ -1,6 +1,6 @@
 {
   "tag": "20261022-brd4-jq1-lrboost-analysis-01",
-  "status": "CPU and callback actual DONE; all278 raw cases passed; whole analysis storage passed; separate diagnostic GPU and saved-only report/collector jobs actually submitted",
+  "status": "First high-rate saved-only report verified/published/browser-QA passed; original scientific failures preserved; separate diagnostic GPUs still pending",
   "authorization": {
     "separate_read_only_endpoint_diagnostics": [
       "protenix",
@@ -24,7 +24,7 @@
   "cpu_submitted": true,
   "diagnostics_submitted": true,
   "report_submitted": true,
-  "report_published": false,
+  "report_published": true,
   "source_manifest_sha256": "214c19387649a741a7ad42f1e3e027061631993b4ae33425071aba9005fdcbcc",
   "archive_sha256": "9707bec755c9c116a03a56abceabbe1caeaf019922f4bd68cb2a99141546f3e1",
   "archive_bytes": 76750,
@@ -118,5 +118,80 @@
       "bytes": 3464,
       "sha256": "ba29a44a157a6e0fe400a61c87967cb09c0cb131240529b9ace09d81a005cb14"
     }
+  },
+  "independent_cpu_dispatch_verification": {
+    "status": "passed",
+    "path": "scripts\\hpc\\receipts\\20261022-brd4-jq1-lrboost-analysis-01\\CPU-verification.json",
+    "sha256": "ac8d58f18e84cb15823e7e68077c0ac04cfa82e35be129a6c44ddf6da3a080e9",
+    "scope": "56 downloaded files; rawXML/LSF/source/actualsubmissions/storage; no local scientific execution"
+  },
+  "report_url": "http://127.0.0.1:8778/report.html",
+  "report_edition": "edition-0001",
+  "published_milestones": {
+    "protenix": 10000,
+    "boltz2": 10000,
+    "boltz2_chemistry": 9500
+  },
+  "publication": {
+    "version": "jq1-25-lrboost-saved-report-v1",
+    "path": "edition-0001/report.html",
+    "complete": false,
+    "presentation_complete": false,
+    "all_terminal": false,
+    "scientific_passed": false,
+    "strict_scientific_campaign_passed": false,
+    "overall_success": false,
+    "campaign_status": "failed",
+    "input_jobs": [
+      "29779177",
+      "29779178",
+      "29779179"
+    ],
+    "included_updates": [
+      10000,
+      10000,
+      9600
+    ],
+    "states": [
+      10001,
+      10001,
+      9601
+    ],
+    "milestone_progress": {
+      "protenix": 10000,
+      "boltz2": 10000,
+      "boltz2_chemistry": 9500
+    },
+    "html_sha256": "f607bd85eb3ddbcbdf4061c6516bd53796b079a5eaf89676e4f461a9afe4f2f9",
+    "report_receipt_sha256": "e0d07ee7618aacd9dfafa0c374b76530b04c727b2a2b552e2b356468b50e0da7",
+    "published_utc": "2026-10-22T08:56:38.315975+00:00"
+  },
+  "diagnostics_completed": false,
+  "latest_actual_utc": "2026-10-22T09:03:11.461602Z",
+  "diagnostic_states": {
+    "29780821": "PEND",
+    "29780823": "PEND"
+  },
+  "chemistry_native_status": "RUN",
+  "report_job": "29780829",
+  "report_job_actual_status": "DONE",
+  "report_archive": {
+    "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/interim-0001.tar.gz",
+    "bytes": 154498144,
+    "sha256": "f83155ecd2b83b4eff0d0c7693d8142b3d8eeeccfd4f6035784e9581711a170f",
+    "files": 636
+  },
+  "delivery_verification_sha256": "6571fa254b224a7f70ed1b97865b09dec8590423a5debd1718b28f8b5d04d588",
+  "http_verification_sha256": "1e0eeb500efd5b1bcea768ec84721b6a331fe871f4d6267395a872a350363caa",
+  "browser_qa_sha256": "5c6eb80ad7d816cd25efc9571017083f0b3ddfbdd15e2c5d4dd5e3e2b5999fde",
+  "viewer_server": {
+    "pid": 41952,
+    "port": 8778,
+    "hidden": true
+  },
+  "report_transfer": {
+    "session": 62409,
+    "outcome": "endedsuccess",
+    "scope": "OriginalSCP55176 confirmedstopped after180stimeout; existing8814592-byteprefix remotelyauthenticated and preserved, remainingbytes streamed viaSSH47352; fullarchiveSHA/all636filespassed; no active transfer"
   }
 }

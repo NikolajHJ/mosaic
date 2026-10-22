@@ -1,0 +1,34 @@
+{
+  "version": "jq1-25-lrboost-saved-report-v1",
+  "path": "edition-0001/report.html",
+  "complete": false,
+  "presentation_complete": false,
+  "all_terminal": false,
+  "scientific_passed": false,
+  "strict_scientific_campaign_passed": false,
+  "overall_success": false,
+  "campaign_status": "failed",
+  "input_jobs": [
+    "29779177",
+    "29779178",
+    "29779179"
+  ],
+  "included_updates": [
+    10000,
+    10000,
+    9600
+  ],
+  "states": [
+    10001,
+    10001,
+    9601
+  ],
+  "milestone_progress": {
+    "protenix": 10000,
+    "boltz2": 10000,
+    "boltz2_chemistry": 9500
+  },
+  "html_sha256": "f607bd85eb3ddbcbdf4061c6516bd53796b079a5eaf89676e4f461a9afe4f2f9",
+  "report_receipt_sha256": "e0d07ee7618aacd9dfafa0c374b76530b04c727b2a2b552e2b356468b50e0da7",
+  "published_utc": "2026-10-22T08:56:38.315975+00:00"
+}

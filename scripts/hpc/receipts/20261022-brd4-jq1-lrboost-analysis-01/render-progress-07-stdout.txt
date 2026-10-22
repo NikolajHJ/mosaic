@@ -1,0 +1,24 @@
+{
+  "utc": "2026-10-22T08:51:17.011149+00:00",
+  "render_files": {
+    "protenix": {
+      "binary_chunks": 101,
+      "latest_binary_chunk": "frames-10000.bin",
+      "curves_exists": true
+    },
+    "boltz2": {
+      "binary_chunks": 101,
+      "latest_binary_chunk": "frames-10000.bin",
+      "curves_exists": true
+    },
+    "boltz2_chemistry": {
+      "binary_chunks": 97,
+      "latest_binary_chunk": "frames-09600.bin",
+      "curves_exists": true
+    }
+  },
+  "stderr.29780829.log": "Loaded dependency [python3/3.12.11]: sqlite3/3.50.1\nLoaded dependency [python3/3.12.11]: gcc/14.3.0-binutils-2.44\nLoaded module: python3/3.12.11\n\nLoading python3/3.12.11\n  Loading requirement: sqlite3/3.50.1 gcc/14.3.0-binutils-2.44\n",
+  "payload/render.log": "",
+  "archive_exists": true,
+  "assessment_exists": true
+}

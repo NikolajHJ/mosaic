@@ -86,3 +86,31 @@ Presentation collectors are **29780825/29780826/29780827**, interim report
 diagnostic findings or a published report. Original scientific jobs and all
 failed terminal checks remain unchanged. Actual receipts override the earlier
 preparation checkpoint captured in the sealed release's copy of this document.
+
+The first report is now verified and published at
+[the new higher-rate viewer](http://127.0.0.1:8778/report.html), immutable
+`edition-0001`, captured at 08:50:52.340672 UTC. It includes **10000 / 10000 /
+9600 updates**, with all saved frames, and per-arm published milestone floors
+10000 / 10000 / 9500. Pro/Bol remain scientifically failed; chemistry is the
+captured running prefix. Presentation validation and browser QA passed.
+
+Rendering job **29780829** actually completed on hpc with same-job LSF success.
+Its 154498144-byte archive SHA-256 is
+`f83155ecd2b83b4eff0d0c7693d8142b3d8eeeccfd4f6035784e9581711a170f`;
+all 636 files were safely extracted and byte-verified. Independent delivery
+verification is `6571fa254b224a7f70ed1b97865b09dec8590423a5debd1718b28f8b5d04d588`.
+All 608 served files matched HTTP bytes. Actual browser checks covered slider
+dragging, numeric and arrow navigation, playback/manual pause, every selector,
+25-atom/300-pair heatmaps and visible raw invalid/disconnected graphs. The
+separate hidden server is PID41952/port8778; historical viewers are untouched.
+
+The first SCP transfer timed out at 180 seconds. After verifying that its exact
+process had stopped, the existing 8814592-byte prefix was authenticated remotely
+and the remainder streamed over SSH. The final archive hash and every member
+passed. Both transfer sessions ended; no duplicate/recovery transfer is needed.
+
+At 11:03:11 Paris both diagnostic GPUs **29780821/29780823** and their captures
+remained PEND, chemistry **29779179** remained RUN, and its completion collector
+and final presentation were pending their original dependencies. No new
+diagnostic result or cause is claimed. Continue monitoring these exact jobs;
+publish verified findings and terminal chemistry evidence in new editions.

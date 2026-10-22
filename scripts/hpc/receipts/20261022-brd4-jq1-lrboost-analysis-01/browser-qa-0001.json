@@ -1,0 +1,35 @@
+{
+  "status": "passed",
+  "utc": "2026-10-22T09:04:11.902630+00:00",
+  "url": "http://127.0.0.1:8778/report.html",
+  "edition": "edition-0001",
+  "browser_tab": "3",
+  "capture_updates": [
+    10000,
+    10000,
+    9600
+  ],
+  "checks": {
+    "all_three_selectors": "Actual Pro/Bol/Chem selections, each resets to initial saved state",
+    "protenix_numeric_next": "1500 then1501 via next button",
+    "actual_slider_drag": "1501 to7079, an interior saved frame",
+    "midpoint_and_latest": "5000 and10000",
+    "boltz_playback_manual_pause": "Play reached7; numeric321+Enter switched toPlay and remained321 after delay",
+    "previous_arrow": "321 to320",
+    "boltz_latest": "10000",
+    "chemistry_numeric_latest": "37 and9600",
+    "all_three_heatmaps": "26/301 table rows including headers,25 atoms/300pairs",
+    "all_three_raw_graphs": "25 circles/25 labels, invalid and disconnected readouts retained",
+    "outcomes": "Pro/Bol full budget+failed terminal/overall; chemistry capturedRUN+partialbudget+pendingterminal",
+    "asset_errors": "No displayed asset/hash errors across exercised frames",
+    "diagnostics": "Explicit pending evidence; no findings invented",
+    "historical_viewers": "8776/8777 unchanged",
+    "wrapper": "Verified current edition pointer visible; tab marked deliverable"
+  },
+  "preview": {
+    "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261022-brd4-jq1-lrboost-analysis-01\\report-preview-01.png",
+    "bytes": 174603,
+    "sha256": "723802e6e723ca3d8837d9b285e6c1fb0460fdb1fb43476c2b9e008b293e1291"
+  },
+  "scope": "Browser presentation QA only; no local scientific recomputation"
+}
