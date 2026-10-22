@@ -1,5 +1,14 @@
 # 500-update carbon-chain experiment
 
+> **Scope and access note (22 October 2026):** this document contains an
+> experiment protocol and dated operator evidence. Concrete account paths,
+> environments, jobs and source hashes describe that operator/attempt; they
+> are not shared-account defaults or a fresh status/acceptance claim. Use
+> [your own HPC setup](HPC_GUIDE.md). Keep the scientific gates and historical
+> outcomes below intact when preparing a separately validated candidate.
+> Canonical working home: [graph-controls/carbon-chain-500](../experiments/graph-controls/carbon-chain-500/README.md).
+
+
 Requested and executed 2026-10-16. Run two fresh carbon-chain trajectories
 with exactly 500 accepted updates each, from the same 15%/30% relaxed neutral
 decane starts as the completed [100-update study](carbon_chain_100.md).

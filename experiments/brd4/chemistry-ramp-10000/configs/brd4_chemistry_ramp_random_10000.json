@@ -1,0 +1,67 @@
+{
+  "version": "brd4-contact-chemistry-ramp-v2",
+  "n_atoms": 6,
+  "seed": 17,
+  "steps": 10000,
+  "initial_step_size": 0.03,
+  "max_backtracks": 10,
+  "pilot_steps": 10,
+  "allocation_seconds": 82800,
+  "matmul_precision": "highest",
+  "contact_cutoff_angstrom": 8.0,
+  "element_js_weight": 0.1,
+  "parity_atol": 2e-05,
+  "loss": {
+    "version": "repair-failure-guidance-v1",
+    "extra_valid_weight": 1.0,
+    "partial_weight": 1.0,
+    "local_bond_weight": 0.1,
+    "component_cut_weight": 0.1,
+    "nonempty_weight": 0.1
+  },
+  "search": {
+    "max_edits": 3,
+    "checks_per_depth": 32,
+    "beam_width": 4,
+    "probability_weight": 1.0,
+    "probability_floor": 1e-12
+  },
+  "progress_search": {
+    "version": "repair-progress-v1",
+    "max_edits": 6,
+    "checks_per_depth": 32,
+    "beam_width": 4,
+    "probability_weight": 1.0,
+    "allow_atom_edits": false,
+    "atom_edit_penalty": 3.0,
+    "max_atom_edits": 1
+  },
+  "prepared_study": "/zhome/95/e/206121/mosaic-runs/20261016-brd4-canonical-diffuse-5000-01/payload/study",
+  "prepared_summary_sha256": "af58a02da9f2a9b36bf526c67df59f43841970eb34d424d85e7f5ba590c5cf12",
+  "model_digest": "8d6926d5390fe682e193089f790ce53aa4011a6d5509ddb452a55db3d89b0ab2",
+  "context_digest": "6747ba18833013da02dbf407d9faefb1adbc8314353b4882a34f99557b96d4f6",
+  "historical_study": "/zhome/95/e/206121/mosaic-runs/20261017-brd4-chain50-best-primal-01/payload/study",
+  "historical_summary_sha256": "902ce637b8a65fa3b6bdae02393b4f72223721595f78d00a9e6e8343cf14651f",
+  "composition_data": {
+    "path": "/work3/s234818/latentmol/data/source095-moses-triangle-v2",
+    "manifest_sha256": "f246cc93805b73a557cd0c09a78891ac8410c465192db615ce0b6709218c8c0e",
+    "dataset_sha256": "54f37815d5901f7d76b855f69e237d97172c72b027e98616f949c08178f9cae3",
+    "split_sha256": "356499265847be6af63f4e70c809ff4b82967fd971b4ffabe94f3aa095adf739",
+    "training_molecules": 1688539
+  },
+  "oracle_source": "tests/data/chemistry_oracle",
+  "oracle_python": "/work3/s234818/latentmol/env/boltz311/bin/python",
+  "initialization": {
+    "kind": "dirichlet",
+    "concentration": 1.0,
+    "seed": 20261019
+  },
+  "label": "Random Dirichlet \u00b7 delayed chemistry",
+  "repair_schedule": {
+    "version": "delayed-geometric-v1",
+    "initial": 0.001,
+    "final": 50.0,
+    "hold_updates": 5000,
+    "total_updates": 10000
+  }
+}

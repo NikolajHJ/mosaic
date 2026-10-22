@@ -1,5 +1,14 @@
 # Approved 25-atom Boltz-2 plus repair submission
 
+> **Scope and access note (22 October 2026):** this document contains an
+> experiment protocol and dated operator evidence. Concrete account paths,
+> environments, jobs and source hashes describe that operator/attempt; they
+> are not shared-account defaults or a fresh status/acceptance claim. Use
+> [your own HPC setup](HPC_GUIDE.md). Keep the scientific gates and historical
+> outcomes below intact when preparing a separately validated candidate.
+> Canonical working home: [brd4/three-model-25](../experiments/brd4/three-model-25/README.md).
+
+
 **Superseded for the live runs on21October2026:** the user subsequently explicitly
 requested stopping29769525/29769540 and testing/submitting three fresh JQ1-pocket
 arms. Both old jobs are confirmed intentionally EXIT; retain the historical

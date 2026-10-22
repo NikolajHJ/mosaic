@@ -1,5 +1,14 @@
 # JQ1-pocket 25-slot, 10,000-update comparison
 
+> **Scope and access note (22 October 2026):** this document contains an
+> experiment protocol and dated operator evidence. Concrete account paths,
+> environments, jobs and source hashes describe that operator/attempt; they
+> are not shared-account defaults or a fresh status/acceptance claim. Use
+> [your own HPC setup](HPC_GUIDE.md). Keep the scientific gates and historical
+> outcomes below intact when preparing a separately validated candidate.
+> Canonical working home: [brd4-jq1/backtracking-25](../experiments/brd4-jq1/backtracking-25/README.md).
+
+
 21 October 2026. The user explicitly authorized stopping the old25-slot runs,
 implementing the JQ1 pocket for fresh Protenix, Boltz-2 and Boltz-2+chemistry
 arms, testing on allocated DTU HPC and submitting each only after its gates

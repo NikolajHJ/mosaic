@@ -1,5 +1,14 @@
 # Separate combined JQ1-pocket 25-atom report
 
+> **Scope and access note (22 October 2026):** this document contains an
+> experiment protocol and dated operator evidence. Concrete account paths,
+> environments, jobs and source hashes describe that operator/attempt; they
+> are not shared-account defaults or a fresh status/acceptance claim. Use
+> [your own HPC setup](HPC_GUIDE.md). Keep the scientific gates and historical
+> outcomes below intact when preparing a separately validated candidate.
+> Canonical working home: [brd4-jq1/backtracking-25](../experiments/brd4-jq1/backtracking-25/README.md).
+
+
 21 October 2026. The user explicitly requested leaving all three current GPU
 experiments running unchanged and making a **new combined report when all are
 done**. This extends the completed submission phase; it does not authorize a

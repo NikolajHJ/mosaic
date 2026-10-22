@@ -1,9 +1,9 @@
 """Read DTU quota once; decline numerical work when headroom is insufficient.
 
-Run on DTU only after access returns. No cleanup, downloads or retries occur.
-Storage pool selection must match the run/cache location's actual pool; the
-default reflects the previously recorded /work3 Mosaic placement, not a new
-claim about today's storage availability.
+Run on allocated DTU HPC. No cleanup, downloads or retries occur.
+--storage-pool is required and must match the run/cache location's actual pool;
+there is no implicit pool default. Historical placement is not a claim about
+today's storage availability or another account's permissions.
 """
 
 import argparse

@@ -1,17 +1,8 @@
 #!/bin/bash
-set -euo pipefail
-[[ -n "${LSB_JOBID:-}" ]]
-tool=$1
-root=$2
-manifest=$3
-cpu_sha=$4
-adoption_sha=$5
-science=/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-02/source
-original_launcher=/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-storage-03/source
-module load python3/3.12.11
-python=/work3/s234818/mosaic/envs/protenix-tiny/bin/python
-export PYTHONPATH="$tool/scripts:$original_launcher/scripts:$science/scripts" PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
-"$python" "$tool/scripts/verify_stage0_release.py" "$tool" "$manifest"
-"$python" "$tool/scripts/verify_stage0_release.py" "$original_launcher" 9ee7bf1d6bf412acdc37fc83415476dbefdf45db89533571d4a646ee16f33772
-"$python" "$tool/scripts/verify_stage0_release.py" "$science" 1e3a8a21e2fa68e24d1c9229238999c42a4a9b44bcc78344e73e188c87d1ee64
-"$python" "$tool/scripts/fixed25_recover_ops.py" --phase observe-pro --tool-source "$tool" --tool-manifest "$manifest" --root "$root" --cpu-certificate-sha256 "$cpu_sha" --adoption-sha256 "$adoption_sha"
+# Compatibility entry point; implementation: experiments/brd4-jq1/fixed-steps/hpc/fixed25_recover_observe_pro.lsf
+_mosaic_compat_root=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/../.." && pwd)
+if [[ "${BASH_SOURCE[0]}" != "$0" ]]; then
+  source "$_mosaic_compat_root/experiments/brd4-jq1/fixed-steps/hpc/fixed25_recover_observe_pro.lsf"
+else
+  exec bash -l "$_mosaic_compat_root/experiments/brd4-jq1/fixed-steps/hpc/fixed25_recover_observe_pro.lsf" "$@"
+fi

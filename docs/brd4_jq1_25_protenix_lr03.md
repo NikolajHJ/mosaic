@@ -1,5 +1,14 @@
 # Independent JQ1-pocket Protenix run with LR 0.3
 
+> **Scope and access note (22 October 2026):** this document contains an
+> experiment protocol and dated operator evidence. Concrete account paths,
+> environments, jobs and source hashes describe that operator/attempt; they
+> are not shared-account defaults or a fresh status/acceptance claim. Use
+> [your own HPC setup](HPC_GUIDE.md). Keep the scientific gates and historical
+> outcomes below intact when preparing a separately validated candidate.
+> Canonical working home: [brd4-jq1/protenix-lr03](../experiments/brd4-jq1/protenix-lr03/README.md).
+
+
 21 October 2026. The user explicitly requested one fresh 10,000-update Protenix
 run with nominal LR0.3, preserving both live Boltz runs29770093/29770124 unchanged.
 This authorizes independent allocated CPU/native checks and conditional long

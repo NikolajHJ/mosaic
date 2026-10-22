@@ -1,5 +1,14 @@
 # Separate higher-rate endpoint diagnostics and saved report
 
+> **Scope and access note (22 October 2026):** this document contains an
+> experiment protocol and dated operator evidence. Concrete account paths,
+> environments, jobs and source hashes describe that operator/attempt; they
+> are not shared-account defaults or a fresh status/acceptance claim. Use
+> [your own HPC setup](HPC_GUIDE.md). Keep the scientific gates and historical
+> outcomes below intact when preparing a separately validated candidate.
+> Canonical working home: [brd4-jq1/fixed-lrboost](../experiments/brd4-jq1/fixed-lrboost/README.md).
+
+
 On 22 October2026 the user explicitly authorized separate diagnostics of the
 Protenix and normal Boltz final-gradient failures, without changing or restarting
 the saved runs, and preparing their updating saved-only report.

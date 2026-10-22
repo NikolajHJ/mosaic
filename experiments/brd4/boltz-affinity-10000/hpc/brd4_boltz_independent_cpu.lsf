@@ -1,0 +1,61 @@
+#!/bin/bash
+
+# Resolve working-source paths; old sealed sources keep their old paths.
+_mosaic_layout_root=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/../../../.." && pwd)
+mosaic_path() { python3 "$_mosaic_layout_root/scripts/layout/experiment_layout.py" resolve "$1"; }
+
+set -euo pipefail
+[[ -n "${LSB_JOBID:-}" ]]
+tools=$1
+tools_manifest=$2
+release=$3
+manifest=$4
+cpu=$5
+ready=$6
+parent=$7
+module load python3/3.12.11
+python=/work3/s234818/mosaic/envs/protenix-tiny/bin/python
+mkdir "$parent/payload"
+run="$parent/payload"
+export PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+"$python" "$(mosaic_path "$tools/scripts/verify_stage0_release.py")" "$tools" "$tools_manifest"
+"$python" "$(mosaic_path "$release/scripts/verify_stage0_release.py")" "$release" "$manifest"
+"$python" "$(mosaic_path "$release/scripts/hpc/zhome_quota_preflight.py")" --run-dir "$run" --minimum-free-gib 8
+cd "$tools"
+tests=("$(mosaic_path tests/test_boltz_arm_readiness.py)")
+if [[ -f "$(mosaic_path tests/test_boltz_gradient_diagnostic_contract.py)" ]]; then
+  tests+=("$(mosaic_path tests/test_boltz_gradient_diagnostic_contract.py)")
+fi
+"$python" -m pytest "${tests[@]}" -o addopts= -o cache_dir="$run/cache" \
+  --basetemp "$run/tmp-tests" --junitxml="$run/tests.xml" > "$run/tests.log" 2>&1
+"$python" "$(mosaic_path scripts/assess_boltz_arm.py)" --release "$release" --run "$ready" \
+  --cpu "$cpu" --manifest "$manifest" --arm mix50 --output "$run/mix50-ready" \
+  > "$run/adoption.log" 2>&1
+"$python" - "$run" "$tools_manifest" "$manifest" <<'PY'
+import hashlib
+import json
+import os
+from pathlib import Path
+import sys
+import xml.etree.ElementTree as ET
+
+run, tool_manifest, scientific_manifest = Path(sys.argv[1]), sys.argv[2], sys.argv[3]
+cases = ET.parse(run / "tests.xml").findall(".//testcase")
+if not cases or any(case.find(tag) is not None for case in cases for tag in ("failure", "error", "skipped")):
+    raise ValueError("Arm adoption/control tests did not all pass")
+paths = [run / "tests.xml", run / "mix50-ready/assessment.json"]
+result = {
+    "status": "passed",
+    "job_id": os.environ["LSB_JOBID"],
+    "tests": len(cases),
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "tools_manifest_sha256": tool_manifest,
+    "scientific_manifest_sha256": scientific_manifest,
+    "scope": "mix50 evidence-only adoption; random remains uncertified",
+    "proofs": [{"path": str(path), "sha256": hashlib.sha256(path.read_bytes()).hexdigest()} for path in paths],
+}
+(run / "assessment.json").write_text(json.dumps(result, indent=2) + "\n")
+print(json.dumps(result))
+PY

@@ -1,5 +1,14 @@
 # Standalone delayed-chemistry report
 
+> **Scope and access note (22 October 2026):** this document contains an
+> experiment protocol and dated operator evidence. Concrete account paths,
+> environments, jobs and source hashes describe that operator/attempt; they
+> are not shared-account defaults or a fresh status/acceptance claim. Use
+> [your own HPC setup](HPC_GUIDE.md). Keep the scientific gates and historical
+> outcomes below intact when preparing a separately validated candidate.
+> Canonical working home: [brd4/chemistry-ramp-10000](../experiments/brd4/chemistry-ramp-10000/README.md).
+
+
 19 October 2026. User requested a **new report** for the completed 50% mix,
 ready to include random when it finishes. Historical five-thousand-update
 chemistry reports and earlier six-initialization reports remain separate.

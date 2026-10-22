@@ -1,5 +1,21 @@
 ## Functional, multi-objective protein design using continuous relaxation.
 
+> **Working on experiments or scripts? Start here:**
+> [Experiment folder policy and inventory](experiments/README.md) ·
+> [Agent instructions](AGENTS.md) ·
+> [Experiment ledger / agent logbook](docs/experiment_ledger.md).
+> Keep each experiment's scripts and supporting files in its own documented
+> folder under `experiments/<family>/<experiment-id>/`, and log every attempt
+> and its actual outcome. Browse the [24 experiment homes](experiments/INDEX.md)
+> and [migration map](experiments/MIGRATION.md). The `scripts/` and `tests/`
+> roots contain only navigation and collection infrastructure; use their documented subfolders. Legacy adapters
+> live under [scripts/compat/](scripts/compat/README.md); old flat names are added
+> only to new authenticated archives. Historical submission receipts keep their paths.
+
+For cluster setup, use [DTU HPC for your own account](docs/HPC_GUIDE.md).
+The [documentation index and audit](docs/README.md) distinguish reusable guides
+from dated protocols, private operator paths and imported reference material.
+
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23193038.svg)](https://doi.org/10.5281/zenodo.23193038)
 
 > **WARNING**: Unlike [BindCraft](https://www.nature.com/articles/s41586-025-09429-6) (which is a well-tested and well-tuned method for generic binder design), `mosaic` may require substantial hand-holding (tuning learning rates, etc), often produces proteins that fail simple in-silico tests, should be combined with standard filtering methods, etc. This is not for the faint of heart: the intent is to provide a framework in which to implement custom objective functions and optimization algorithms for your application. You can read about some applications in [our blog](https://blog.escalante.bio).

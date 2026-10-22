@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# Resolve working-source paths; old sealed sources keep their old paths.
+_mosaic_layout_root=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/../../../.." && pwd)
+mosaic_path() { python3 "$_mosaic_layout_root/scripts/layout/experiment_layout.py" resolve "$1"; }
+
+set -euo pipefail
+[[ -n "${LSB_JOBID:-}" ]] || { echo 'Allocated LSF job required' >&2; exit 2; }
+release=$1
+parent=$2
+manifest_sha=$3
+study=$4
+summary_sha=$5
+project=/work3/s234818/mosaic
+python="$project/envs/protenix-tiny/bin/python"
+module load python3/3.12.11 cuda/12.9.1 cudnn/v9.13.0.50-prod-cuda-12.X
+mkdir "$parent/payload"
+run="$parent/payload"
+"$python" "$(mosaic_path "$release/scripts/verify_stage0_release.py")" "$release" "$manifest_sha"
+"$python" "$(mosaic_path "$release/scripts/hpc/stage0_quota_preflight.py")" --run-dir "$run" --storage-pool 6 --minimum-free-gib 4.25
+export PYTHONPATH="$release/src" PYTHONUNBUFFERED=1 JAX_PLATFORMS=cuda
+export OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 MKL_NUM_THREADS=4
+export MOSAIC_CACHE_DIR="$project/cache/mosaic" HF_HOME="$project/cache/huggingface"
+export HF_HUB_OFFLINE=1 HF_HUB_DISABLE_TELEMETRY=1 XLA_PYTHON_CLIENT_PREALLOCATE=false
+export PYTHONPYCACHEPREFIX="$run/pycache" TMPDIR="$run/tmp"
+mkdir "$TMPDIR"
+"$python" "$(mosaic_path "$release/examples/score_protenix_hard_controls.py")" \
+  --study "$study" --summary-sha256 "$summary_sha" \
+  --cache-dir "$MOSAIC_CACHE_DIR/protenix" --output "$run/study" > "$run/native.log" 2>&1

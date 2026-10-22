@@ -1,5 +1,14 @@
 # Mosaic: six research milestones, 16–20 October 2026
 
+> **Scope and access note (22 October 2026):** this document contains an
+> experiment protocol and dated operator evidence. Concrete account paths,
+> environments, jobs and source hashes describe that operator/attempt; they
+> are not shared-account defaults or a fresh status/acceptance claim. Use
+> [your own HPC setup](HPC_GUIDE.md). Keep the scientific gates and historical
+> outcomes below intact when preparing a separately validated candidate.
+> Canonical working home: [reporting/milestones](../experiments/reporting/milestones/README.md).
+
+
 Prepared 21 October at the user's request for one report covering the most
 important early and recent Protenix/Boltz-2 results. This is a chronological
 selection, not a ranking by loss. The user clarified to include DeFoG only if

@@ -1,0 +1,25 @@
+#!/bin/bash
+# Saved-record numerical interpretation only; no model inference or optimization.
+
+# Resolve working-source paths; old sealed sources keep their old paths.
+_mosaic_layout_root=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/../../../.." && pwd)
+mosaic_path() { python3 "$_mosaic_layout_root/scripts/layout/experiment_layout.py" resolve "$1"; }
+
+set -euo pipefail
+[[ -n "${LSB_JOBID:-}" ]]
+release=$1
+manifest=$2
+parent=$3
+input=$4
+report_sha=$5
+module load python3/3.12.11
+python=/work3/s234818/mosaic/envs/protenix-tiny/bin/python
+export PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
+mkdir "$parent/payload"
+run="$parent/payload"
+"$python" "$(mosaic_path "$release/scripts/verify_stage0_release.py")" "$release" "$manifest"
+"$python" /work3/s234818/mosaic/releases/20261019-brd4-boltz-affinity-02/source/scripts/hpc/zhome_quota_preflight.py --run-dir "$run" --minimum-free-gib 4
+"$python" "$(mosaic_path "$release/scripts/analyze_boltz_gradient_diagnostic.py")" \
+  --diagnostic "$input/diagnostic" --replay "$input/replay" \
+  --report-sha256 "$report_sha" --output "$run/analysis.json" > "$run/analysis.log" 2>&1

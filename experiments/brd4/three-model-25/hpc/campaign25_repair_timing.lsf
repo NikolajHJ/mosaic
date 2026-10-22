@@ -1,0 +1,35 @@
+#!/bin/bash
+# Observational component timing; never a readiness or full-run launcher.
+
+# Resolve working-source paths; old sealed sources keep their old paths.
+_mosaic_layout_root=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/../../../.." && pwd)
+mosaic_path() { python3 "$_mosaic_layout_root/scripts/layout/experiment_layout.py" resolve "$1"; }
+
+set -euo pipefail
+[[ -n "${LSB_JOBID:-}" ]]
+tools=$1
+tool_manifest=$2
+science=$3
+science_manifest=$4
+campaign=$5
+parent=$6
+module load python3/3.12.11
+python=/work3/s234818/mosaic/envs/protenix-tiny/bin/python
+"$python" "$(mosaic_path "$tools/scripts/verify_stage0_release.py")" "$tools" "$tool_manifest"
+export PYTHONPATH="$science/src:$science/tests:$science/scripts"
+export JAX_PLATFORMS=cpu JAX_ENABLE_X64=0 CUDA_VISIBLE_DEVICES='' PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+export OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 MKL_NUM_THREADS=4
+"$python" - "$campaign" "$science_manifest" <<'PY'
+from campaign25_contract import verify_cpu_certificate
+from pathlib import Path
+import json,sys
+root=Path(sys.argv[1])
+sha=json.loads((root/'dispatch-started.json').read_text())['cpu_certificate_sha256']
+verify_cpu_certificate(root/'cpu-certificate.json',sha,sys.argv[2])
+PY
+mkdir "$parent/payload"
+export TMPDIR="$parent/payload/tmp"
+mkdir "$TMPDIR"
+"$python" "$(mosaic_path "$science/scripts/hpc/zhome_quota_preflight.py")" --run-dir "$parent/payload" --minimum-free-gib 4
+cd "$science"
+"$python" "$(mosaic_path "$tools/scripts/benchmark25_repair.py")" --science "$science" --manifest "$science_manifest" --output "$parent/payload/timing"

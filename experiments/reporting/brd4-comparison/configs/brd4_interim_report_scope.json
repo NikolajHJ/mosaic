@@ -1,0 +1,18 @@
+{
+  "kind": "interim",
+  "title": "Interim BRD4 report — five of six trajectories",
+  "note": "Only the five completed, passed 5000-update trajectories are shown. The 50% chain is still running and has no curve or invented states here. A separate full report will add it after completion. All displayed graphs are raw saved outputs; strict prefixes and best-primal fallback segments have different policy exposure.",
+  "planned_case_count": 6,
+  "planned_native_job_ids": ["29745501", "29745502", "29745503", "29745473", "29745474", "29736988"],
+  "included_native_job_ids": ["29745501", "29745502", "29745473", "29745474", "29736988"],
+  "pending_studies": [{"job_id": "29745503", "label": "50% uniform-mixture chain", "status_at_submission": "RUN"}],
+  "expected_model_digest": "8d6926d5390fe682e193089f790ce53aa4011a6d5509ddb452a55db3d89b0ab2",
+  "expected_context_digest": "6747ba18833013da02dbf407d9faefb1adbc8314353b4882a34f99557b96d4f6",
+  "case_colors": {
+    "29745501": "#087f8c",
+    "29745502": "#dc7139",
+    "29745473": "#a77800",
+    "29745474": "#b84b70",
+    "29736988": "#2a6496"
+  }
+}

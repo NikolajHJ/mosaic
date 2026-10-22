@@ -1,5 +1,14 @@
 # BRD4 Boltz-2 affinity with delayed chemistry
 
+> **Scope and access note (22 October 2026):** this document contains an
+> experiment protocol and dated operator evidence. Concrete account paths,
+> environments, jobs and source hashes describe that operator/attempt; they
+> are not shared-account defaults or a fresh status/acceptance claim. Use
+> [your own HPC setup](HPC_GUIDE.md). Keep the scientific gates and historical
+> outcomes below intact when preparing a separately validated candidate.
+> Canonical working home: [brd4/boltz-affinity-10000](../experiments/brd4/boltz-affinity-10000/README.md).
+
+
 19 October 2026. User authorized implementation, allocated HPC validation and,
 only after passing, two independent fresh 10,000-update runs: 50% chain/uniform
 and seeded random probability initialization. Implementation is being validated;

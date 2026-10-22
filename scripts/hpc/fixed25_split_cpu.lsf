@@ -1,37 +1,8 @@
 #!/bin/bash
-set -euo pipefail
-[[ -n "${LSB_JOBID:-}" ]]
-tool=$1
-root=$2
-manifest=$3
-science=/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-02/source
-module load python3/3.12.11
-python=/work3/s234818/mosaic/envs/protenix-tiny/bin/python
-export PYTHONPATH="$tool/scripts:$science/scripts:$tool/tests" PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
-export CUDA_VISIBLE_DEVICES='' JAX_PLATFORMS=cpu
-export OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 MKL_NUM_THREADS=2
-"$python" "$tool/scripts/verify_stage0_release.py" "$tool" "$manifest"
-"$python" - "$root" <<'PY'
-import sys
-from pathlib import Path
-from fixed25_split_storage import check_cpu_storage
-r=Path(sys.argv[1])
-check_cpu_storage(r,r/'cpu-entry-quota')
-PY
-mkdir "$root/cpu/payload"
-run="$root/cpu/payload"
-source "$science/scripts/hpc/boltz_node_tmpdir.sh"
-printf '%s\n' "$TMPDIR/storage-contracts" > "$run/temporary-fixture-root.txt"
-cd "$tool"
-"$python" -m pytest tests/test_fixed25_split_storage.py tests/test_fixed25_split_ops.py -o addopts= -o cache_dir="$run/cache" --basetemp "$TMPDIR/storage-contracts" --junitxml="$run/contracts.xml" > "$run/contracts.log" 2>&1
-"$python" scripts/fixed25_split_ops.py --phase capture --tool-source "$tool" --tool-manifest "$manifest" --root "$root" > "$run/adoption.log" 2>&1
-"$python" - "$run" "$manifest" <<'PY'
-import hashlib,json,sys,xml.etree.ElementTree as ET
-from pathlib import Path
-r=Path(sys.argv[1]);p=r/'contracts.xml';cases=ET.parse(p).findall('.//testcase')
-if not cases or any(c.find(t) is not None for c in cases for t in ('failure','error','skipped')):
-    raise ValueError('Split launcher contract tests missing/failed/skipped')
-out={'status':'passed','source_manifest_sha256':sys.argv[2],'passed':len(cases),'suite':'fixed25-split-launcher-contract-v1','proofs':[{'path':str(p),'sha256':hashlib.sha256(p.read_bytes()).hexdigest()}]}
-(r/'assessment.json').write_text(json.dumps(out,indent=2)+'\n')
-print(json.dumps(out))
-PY
+# Compatibility entry point; implementation: experiments/brd4-jq1/fixed-steps/hpc/fixed25_split_cpu.lsf
+_mosaic_compat_root=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/../.." && pwd)
+if [[ "${BASH_SOURCE[0]}" != "$0" ]]; then
+  source "$_mosaic_compat_root/experiments/brd4-jq1/fixed-steps/hpc/fixed25_split_cpu.lsf"
+else
+  exec bash -l "$_mosaic_compat_root/experiments/brd4-jq1/fixed-steps/hpc/fixed25_split_cpu.lsf" "$@"
+fi

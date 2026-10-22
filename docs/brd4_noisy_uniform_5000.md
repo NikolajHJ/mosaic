@@ -1,5 +1,14 @@
 # BRD4-BD1 noisy-uniform control, 5000 updates
 
+> **Scope and access note (22 October 2026):** this document contains an
+> experiment protocol and dated operator evidence. Concrete account paths,
+> environments, jobs and source hashes describe that operator/attempt; they
+> are not shared-account defaults or a fresh status/acceptance claim. Use
+> [your own HPC setup](HPC_GUIDE.md). Keep the scientific gates and historical
+> outcomes below intact when preparing a separately validated candidate.
+> Canonical working home: [brd4/noisy-uniform-5000](../experiments/brd4/noisy-uniform-5000/README.md).
+
+
 Requested 2026-10-16 as a third study alongside the unchanged chain-mixture
 and exact-uniform studies. CPU readiness passed; native job 29736761 and
 dependent report 29736762 were submitted and remain pending. Actual noisy

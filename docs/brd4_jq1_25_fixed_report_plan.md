@@ -1,5 +1,14 @@
 # Saved-only fixed-step JQ1 report: implementation plan
 
+> **Scope and access note (22 October 2026):** this document contains an
+> experiment protocol and dated operator evidence. Concrete account paths,
+> environments, jobs and source hashes describe that operator/attempt; they
+> are not shared-account defaults or a fresh status/acceptance claim. Use
+> [your own HPC setup](HPC_GUIDE.md). Keep the scientific gates and historical
+> outcomes below intact when preparing a separately validated candidate.
+> Canonical working home: [brd4-jq1/fixed-steps](../experiments/brd4-jq1/fixed-steps/README.md).
+
+
 Status: **first fixed-step edition published and browser-verified; updateable
 viewer active at http://127.0.0.1:8777/report.html**. Source04 allocated fixtures
 and first rendering passed; the separately validated source05 publisher delivered

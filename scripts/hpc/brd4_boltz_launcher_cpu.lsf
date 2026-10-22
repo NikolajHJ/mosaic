@@ -1,45 +1,8 @@
 #!/bin/bash
-set -euo pipefail
-[[ -n "${LSB_JOBID:-}" ]]
-launcher=$1
-manifest=$2
-run=$3
-module load python3/3.12.11
-export PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
-/work3/s234818/mosaic/envs/protenix-tiny/bin/python - "$launcher" "$manifest" "$run" <<'PY'
-import hashlib
-import json
-import os
-from pathlib import Path
-import sys
-import unittest
-
-source, expected, run = Path(sys.argv[1]), sys.argv[2], Path(sys.argv[3])
-manifest = source / "manifest.json"
-assert hashlib.sha256(manifest.read_bytes()).hexdigest() == expected
-proofs = []
-for entry in json.loads(manifest.read_text())["files"]:
-    path = source / entry["path"]
-    data = path.read_bytes()
-    assert len(data) == entry["bytes"]
-    assert hashlib.sha256(data).hexdigest() == entry["sha256"]
-    proofs.append({"path": str(path), "sha256": entry["sha256"]})
-suite = unittest.defaultTestLoader.discover(
-    str(source / "tests"), pattern="test_boltz_submission_controller.py"
-)
-result = unittest.TextTestRunner(verbosity=2).run(suite)
-passed = result.wasSuccessful() and result.testsRun == 8 and not result.skipped
-assessment = {
-    "status": "passed" if passed else "failed",
-    "job_id": os.environ["LSB_JOBID"],
-    "tests": result.testsRun,
-    "failures": len(result.failures),
-    "errors": len(result.errors),
-    "skips": len(result.skipped),
-    "launcher_manifest_sha256": expected,
-    "proofs": proofs,
-}
-(run / "assessment.json").write_text(json.dumps(assessment, indent=2) + "\n")
-print(json.dumps(assessment))
-sys.exit(0 if passed else 1)
-PY
+# Compatibility entry point; implementation: experiments/brd4/boltz-affinity-10000/hpc/brd4_boltz_launcher_cpu.lsf
+_mosaic_compat_root=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/../.." && pwd)
+if [[ "${BASH_SOURCE[0]}" != "$0" ]]; then
+  source "$_mosaic_compat_root/experiments/brd4/boltz-affinity-10000/hpc/brd4_boltz_launcher_cpu.lsf"
+else
+  exec bash -l "$_mosaic_compat_root/experiments/brd4/boltz-affinity-10000/hpc/brd4_boltz_launcher_cpu.lsf" "$@"
+fi

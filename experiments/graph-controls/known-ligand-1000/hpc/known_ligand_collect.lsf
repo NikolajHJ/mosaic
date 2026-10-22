@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# Resolve working-source paths; old sealed sources keep their old paths.
+_mosaic_layout_root=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/../../../.." && pwd)
+mosaic_path() { python3 "$_mosaic_layout_root/scripts/layout/experiment_layout.py" resolve "$1"; }
+
+set -euo pipefail
+[[ -n "${LSB_JOBID:-}" ]] || { echo 'Allocated LSF job required' >&2; exit 2; }
+release=$1
+parent=$2
+manifest_sha=$3
+archive=$4
+shift 4
+python=/work3/s234818/mosaic/envs/protenix-tiny/bin/python
+module load python3/3.12.11
+mkdir "$parent/payload"
+run="$parent/payload"
+"$python" "$(mosaic_path "$release/scripts/verify_stage0_release.py")" "$release" "$manifest_sha"
+export PYTHONPYCACHEPREFIX="$run/pycache"
+arguments=()
+for directory in "$@"; do
+  arguments+=(--run "$directory")
+done
+"$python" "$(mosaic_path "$release/scripts/collect_protenix_evidence.py")" \
+  "${arguments[@]}" --run "$parent" --output "$archive" > "$run/collection.log" 2>&1

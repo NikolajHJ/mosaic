@@ -1,0 +1,84 @@
+#!/bin/bash
+# Presentation-only allocation: consume authenticated saved artifacts, never infer/repair.
+
+# Resolve working-source paths; old sealed sources keep their old paths.
+_mosaic_layout_root=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/../../../.." && pwd)
+mosaic_path() { python3 "$_mosaic_layout_root/scripts/layout/experiment_layout.py" resolve "$1"; }
+
+set -euo pipefail
+[[ -n "${LSB_JOBID:-}" ]] || exit 2
+release=$1
+parent=$2
+manifest=$3
+science=/work3/s234818/mosaic/releases/20261019-brd4-boltz-affinity-02/source
+native=/zhome/95/e/206121/mosaic-runs/20261019-brd4-boltz-mix50-independent-01
+ready=/zhome/95/e/206121/mosaic-runs/20261019-brd4-boltz-independent-02-cpu/payload/mix50-ready
+completion=/zhome/95/e/206121/mosaic-runs/20261020-brd4-boltz-mix50-completion-02
+python=/work3/s234818/mosaic/envs/protenix-tiny/bin/python
+module load python3/3.12.11
+mkdir "$parent/payload"
+run="$parent/payload"
+export PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+"$python" "$(mosaic_path "$release/scripts/verify_stage0_release.py")" "$release" "$manifest"
+"$python" "$(mosaic_path "$science/scripts/verify_stage0_release.py")" "$science" 5eb6e17ea8d19e52c99a589243228710994dcf137f59a6b9a6659a4fe719a7f4
+"$python" "$(mosaic_path "$release/scripts/hpc/zhome_quota_preflight.py")" --run-dir "$run" --minimum-free-gib 8
+export PYTHONPATH="$science/src:$release/tests" JAX_PLATFORMS=cpu JAX_ENABLE_X64=0
+export OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 MKL_NUM_THREADS=2
+export TMPDIR="$run/tmp" MPLCONFIGDIR="$run/mplcache"
+mkdir "$TMPDIR"
+cd "$release"
+"$python" - "$science" "$native" "$ready" "$completion" "$run" <<'PY'
+import hashlib, json, shutil, subprocess, sys
+from pathlib import Path
+science, native, ready, completion, run = map(Path, sys.argv[1:])
+def sha(p):
+    with p.open('rb') as f: return hashlib.file_digest(f, 'sha256').hexdigest()
+assert sha(completion/'evidence_manifest.json') == '4d1d19a8a30a9cc485d5f94e84f49b1d1cfe7dd979e924d3ea3cc385857559aa'
+evidence=json.loads((completion/'evidence_manifest.json').read_text())
+scheduler=completion/'scheduler-final.txt'
+assert sha(scheduler)==evidence['files']['scheduler-final.txt']['sha256']
+assert scheduler.stat().st_size==evidence['files']['scheduler-final.txt']['bytes']
+assert 'Job <29759212>' in scheduler.read_text() and 'Status <DONE>' in scheduler.read_text() and 'Done successfully.' in scheduler.read_text()
+stdout=native/'stdout.29759212.log'
+assert sha(stdout)==evidence['files']['run/stdout.29759212.log']['sha256']
+assert 'Subject: Job 29759212:' in stdout.read_text() and 'Successfully completed.' in stdout.read_text()
+study=native/'payload/study'
+assert sha(study/'summary.json') == '7f49087f12efc762a46691581f80bc42c43395c00b0cc4778a9e04a6679aae7c'
+assert sha(ready/'assessment.json') == 'ca400a1477471790bcc5c93cd85a55455da77b331caa504f882b2020d954140e'
+proof=run/'native-proof';proof.mkdir()
+for name in ['summary.json','initialization.npz','case-0/report.json','native_gradient_checks/report.json','terminal_gradient_checks/report.json','case-0/combined_initial_checks/report.json']:
+    target=proof/name;target.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(study/name,target)
+for source,target in [(scheduler,run/'native-job-final.txt'),(stdout,run/'native-stdout.txt'),(science/'source_manifest.json',run/'native-source-manifest.json'),(Path('source_manifest.json'),run/'report-source-manifest.json'),(science/'examples/configs/brd4_boltz_affinity_mix50_10000.json',run/'native-config.json'),(ready/'assessment.json',run/'mix50-adoption.json'),(completion/'completion-audit.json',run/'native-completion-audit.json')]:
+    shutil.copyfile(source,target)
+# Preserve a live outcome if still retained; aged-out live records never erase pinned final evidence.
+live=subprocess.run(['bjobs','-l','29759212'],capture_output=True,text=True,timeout=30)
+(run/'native-live-scheduler.txt').write_text(live.stdout+live.stderr)
+(run/'scope.json').write_text(json.dumps({'kind':'standalone Boltz mix50 report','input_jobs':['29759212'],'scientific_source':'unchanged source02','snapshot_policy':'all10001saved probability snapshots authenticated; raw invalid outputs retained','random_included':False,'no_model_or_chemistry_evaluation':True},indent=2)+'\n')
+PY
+"$python" -m pytest "$(mosaic_path tests/test_boltz_affinity_report.py)" \
+  tests/test_small_molecule_chemistry_report.py tests/test_small_molecule_chemistry_ramp_report.py \
+  -o addopts= -o cache_dir="$run/pytest-cache" --basetemp "$run/pytest-unit-tmp" \
+  --junitxml="$run/report-tests.xml" > "$run/report-tests.log" 2>&1
+"$python" "$(mosaic_path scripts/render_boltz_affinity.py)" \
+  --study "$native/payload/study" \
+  --config "$(mosaic_path "$science/examples/configs/brd4_boltz_affinity_mix50_10000.json")" \
+  --job 29759212 \
+  --summary-sha256 7f49087f12efc762a46691581f80bc42c43395c00b0cc4778a9e04a6679aae7c \
+  --config-sha256 97faf3b192a7aca566ad86752c2f3efacad69e89b076c88e67e8d14b5435de0e \
+  --readiness "$ready/assessment.json" \
+  --readiness-sha256 ca400a1477471790bcc5c93cd85a55455da77b331caa504f882b2020d954140e \
+  --output "$run/report" > "$run/render.log" 2>&1
+"$python" - "$run" "$manifest" <<'PY'
+import hashlib, json, os, sys, xml.etree.ElementTree as ET
+from pathlib import Path
+run,manifest=Path(sys.argv[1]),sys.argv[2]
+cases=ET.parse(run/'report-tests.xml').findall('.//testcase')
+assert cases and not any(c.find(t) is not None for c in cases for t in ['failure','error','skipped'])
+receipt=json.loads((run/'report/report_receipt.json').read_text())
+assert receipt['input_jobs']==['29759212'] and receipt['states']==[10001]
+files=[run/'report-tests.xml',run/'report/report_receipt.json']
+record={'status':'passed','job_id':os.environ['LSB_JOBID'],'source_manifest_sha256':manifest,'tests':len(cases),'failures':0,'errors':0,'skips':0,'scope':'saved-only Boltz mix50 report; no model/repair execution','input_jobs':['29759212'],'states':[10001],'proofs':[{'path':str(p),'sha256':hashlib.sha256(p.read_bytes()).hexdigest()} for p in files]}
+(run/'assessment.json').write_text(json.dumps(record,indent=2)+'\n')
+PY
+"$python" "$(mosaic_path scripts/collect_protenix_evidence.py)" --storage zhome --run "$parent" \
+  --output "${parent}.tar.gz" > "$run/packaging.log" 2>&1

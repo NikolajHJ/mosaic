@@ -1,5 +1,14 @@
 # Higher fixed learning rates for all three JQ1-pocket runs
 
+> **Scope and access note (22 October 2026):** this document contains an
+> experiment protocol and dated operator evidence. Concrete account paths,
+> environments, jobs and source hashes describe that operator/attempt; they
+> are not shared-account defaults or a fresh status/acceptance claim. Use
+> [your own HPC setup](HPC_GUIDE.md). Keep the scientific gates and historical
+> outcomes below intact when preparing a separately validated candidate.
+> Canonical working home: [brd4-jq1/fixed-lrboost](../experiments/brd4-jq1/fixed-lrboost/README.md).
+
+
 The user authorized stopping the current optimization runs and resubmitting
 fresh 10,000-update runs on 21 October 2026. They explicitly clarified that
 Boltz includes both normal Boltz-2 and Boltz-2 + chemistry/valid-output loss.

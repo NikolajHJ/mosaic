@@ -1,5 +1,14 @@
 # Stage 0 native Protenix contract
 
+> **Scope and access note (22 October 2026):** this document contains an
+> experiment protocol and dated operator evidence. Concrete account paths,
+> environments, jobs and source hashes describe that operator/attempt; they
+> are not shared-account defaults or a fresh status/acceptance claim. Use
+> [your own HPC setup](HPC_GUIDE.md). Keep the scientific gates and historical
+> outcomes below intact when preparing a separately validated candidate.
+> Canonical working home: [graph-validation/stage0](../experiments/graph-validation/stage0/README.md).
+
+
 Audit/implementation started: 2026-10-12; documentation update: 2026-10-13. Status: **native implementation authored, merged and independently reviewed; numerical fidelity/acceptance pending**. No model run, preprocessing, local numerical test, HPC connection, upload or submission is performed for this implementation turn. Source inspection, AST parsing and lint are static evidence only.
 
 This contract implements the Mosaic small-molecule scope in [the plan](stage_0_implementation_plan.md) and [project description](project_desc.pdf). It does not adopt the separate DBMol AE/VAE scope. The historical native protein smoke is preserved in [its receipt](hpc_protenix_tiny.md); it does not establish ligand-graph gradients or geometry-off fidelity.

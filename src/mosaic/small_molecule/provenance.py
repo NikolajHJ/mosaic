@@ -17,7 +17,7 @@ def source_identity(root: str | Path) -> dict:
     """
     root = Path(root).resolve()
     paths = [root / "pyproject.toml"]
-    for folder in ("src", "tests", "examples", "scripts"):
+    for folder in ("src", "tests", "examples", "scripts", "experiments"):
         paths.extend(
             path
             for path in (root / folder).rglob("*")

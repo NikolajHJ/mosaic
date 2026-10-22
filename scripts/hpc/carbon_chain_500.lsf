@@ -1,38 +1,8 @@
 #!/bin/bash
-# Immutable source + unique run + finite accounting pool + manifest SHA.
-set -euo pipefail
-[[ -n "${LSB_JOBID:-}" ]] || { echo 'Allocated LSF job required' >&2; exit 2; }
-release=$1
-parent=$2
-pool=$3
-manifest_sha=$4
-prepared=$5
-prepared_sha=$6
-project=/work3/s234818/mosaic
-python="$project/envs/protenix-tiny/bin/python"
-module load python3/3.12.11 cuda/12.9.1 cudnn/v9.13.0.50-prod-cuda-12.X
-mkdir "$parent/payload"
-run="$parent/payload"
-"$python" "$release/scripts/verify_stage0_release.py" "$release" "$manifest_sha"
-"$python" "$release/scripts/hpc/stage0_quota_preflight.py" --run-dir "$run" --storage-pool "$pool" --minimum-free-gib 8
-export PYTHONUNBUFFERED=1 OMP_NUM_THREADS=4 MKL_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4
-export PYTHONPATH="$release/src:$release/tests"
-export MOSAIC_CACHE_DIR="$project/cache/mosaic" HF_HOME="$project/cache/huggingface"
-export XDG_CACHE_HOME="$project/cache/xdg" TMPDIR="$run/tmp" PYTHONPYCACHEPREFIX="$run/pycache"
-export MPLCONFIGDIR="$run/mplcache"
-export HF_HUB_OFFLINE=1 HF_HUB_DISABLE_TELEMETRY=1 JAX_PLATFORMS=cuda
-export XLA_PYTHON_CLIENT_PREALLOCATE=false
-mkdir "$TMPDIR"
-cd "$release"
-hostname > "$run/host.txt"
-module list 2> "$run/modules.txt"
-nvidia-smi --query-gpu=name,driver_version,memory.total --format=csv > "$run/gpu.txt"
-JAX_PLATFORMS=cpu "$python" -m pytest tests/test_small_molecule_*.py -o addopts= --strict-markers \
-  -m 'not slow and not small_molecule_model' -o cache_dir="$run/pytest-cache" \
-  --basetemp "$run/pytest-unit-tmp" --junitxml="$run/unit.xml" > "$run/unit.log" 2>&1
-"$python" examples/protenix_relaxed_gradients.py \
-  --config examples/configs/carbon_chain_500.json \
-  --prepared-study "$prepared" --prepared-summary-sha256 "$prepared_sha" \
-  --allow-update-count-change \
-  --cache-dir "$MOSAIC_CACHE_DIR/protenix" --output "$run/study" > "$run/native.log" 2>&1
-# Render after model completion in a separate allocated CPU job.
+# Compatibility entry point; implementation: experiments/graph-controls/carbon-chain-500/hpc/carbon_chain_500.lsf
+_mosaic_compat_root=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/../.." && pwd)
+if [[ "${BASH_SOURCE[0]}" != "$0" ]]; then
+  source "$_mosaic_compat_root/experiments/graph-controls/carbon-chain-500/hpc/carbon_chain_500.lsf"
+else
+  exec bash -l "$_mosaic_compat_root/experiments/graph-controls/carbon-chain-500/hpc/carbon_chain_500.lsf" "$@"
+fi

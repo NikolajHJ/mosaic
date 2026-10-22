@@ -1,5 +1,14 @@
 # Section 4.2 diffuse initialization, six slots, BRD4 5000 updates
 
+> **Scope and access note (22 October 2026):** this document contains an
+> experiment protocol and dated operator evidence. Concrete account paths,
+> environments, jobs and source hashes describe that operator/attempt; they
+> are not shared-account defaults or a fresh status/acceptance claim. Use
+> [your own HPC setup](HPC_GUIDE.md). Keep the scientific gates and historical
+> outcomes below intact when preparing a separately validated candidate.
+> Canonical working home: [brd4/canonical-diffuse-5000](../experiments/brd4/canonical-diffuse-5000/README.md).
+
+
 Requested 2026-10-16. Read the complete section 4.2 across PDF pages 3-4,
 including its unordered-pair/noise/projection rules. Source PDF SHA-256:
 `c9785f45dcd34fbc3feaebcc0bc57905dc606387f76308bb6364eadb40cbeda0`.

@@ -1,0 +1,45 @@
+#!/bin/bash
+
+# Resolve working-source paths; old sealed sources keep their old paths.
+_mosaic_layout_root=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/../../../.." && pwd)
+mosaic_path() { python3 "$_mosaic_layout_root/scripts/layout/experiment_layout.py" resolve "$1"; }
+
+set -euo pipefail
+[[ -n "${LSB_JOBID:-}" ]]
+tool=$1
+root=$2
+manifest=$3
+original_launcher=/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-storage-03/source
+science=/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-02/source
+module load python3/3.12.11
+python=/work3/s234818/mosaic/envs/protenix-tiny/bin/python
+export PYTHONPATH="$tool/scripts:$original_launcher/scripts:$science/scripts:$tool/tests" PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+export CUDA_VISIBLE_DEVICES='' JAX_PLATFORMS=cpu
+export OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 MKL_NUM_THREADS=2
+"$python" "$(mosaic_path "$tool/scripts/verify_stage0_release.py")" "$tool" "$manifest"
+"$python" "$(mosaic_path "$tool/scripts/verify_stage0_release.py")" "$original_launcher" 9ee7bf1d6bf412acdc37fc83415476dbefdf45db89533571d4a646ee16f33772
+"$python" "$(mosaic_path "$tool/scripts/verify_stage0_release.py")" "$science" 1e3a8a21e2fa68e24d1c9229238999c42a4a9b44bcc78344e73e188c87d1ee64
+"$python" - "$root" <<'PY'
+import sys
+from pathlib import Path
+from fixed25_recover_storage import check_cpu_storage
+r=Path(sys.argv[1])
+check_cpu_storage(r,r/'cpu-entry-quota')
+PY
+mkdir "$root/cpu/payload"
+run="$root/cpu/payload"
+source "$(mosaic_path "$science/scripts/hpc/boltz_node_tmpdir.sh")"
+printf '%s\n' "$TMPDIR/storage-contracts" > "$run/temporary-fixture-root.txt"
+cd "$tool"
+"$python" -m pytest "$(mosaic_path tests/test_fixed25_recover_storage.py)" "$(mosaic_path tests/test_fixed25_recover_ops.py)" -o addopts= -o cache_dir="$run/cache" --basetemp "$TMPDIR/storage-contracts" --junitxml="$run/contracts.xml" > "$run/contracts.log" 2>&1
+"$python" "$(mosaic_path scripts/fixed25_recover_ops.py)" --phase capture --tool-source "$tool" --tool-manifest "$manifest" --root "$root" > "$run/adoption.log" 2>&1
+"$python" - "$run" "$manifest" <<'PY'
+import hashlib,json,sys,xml.etree.ElementTree as ET
+from pathlib import Path
+r=Path(sys.argv[1]);p=r/'contracts.xml';cases=ET.parse(p).findall('.//testcase')
+if not cases or any(c.find(t) is not None for c in cases for t in ('failure','error','skipped')):
+    raise ValueError('Recovery launcher contract tests missing/failed/skipped')
+out={'status':'passed','source_manifest_sha256':sys.argv[2],'passed':len(cases),'suite':'fixed25-two-arm-recovery-contract-v1','proofs':[{'path':str(p),'sha256':hashlib.sha256(p.read_bytes()).hexdigest()}]}
+(r/'assessment.json').write_text(json.dumps(out,indent=2)+'\n')
+print(json.dumps(out))
+PY

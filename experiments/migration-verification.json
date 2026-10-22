@@ -1,0 +1,166 @@
+{
+  "scope": "stdlib layout/AST/byte/syntax checks only; no numerical/model/native checks or submissions",
+  "created_utc": "2026-10-22T10:24:52.452617+00:00",
+  "counts": {
+    "canonical_python_asts": 122,
+    "declarative_byte_pairs": 41,
+    "local_document_links": 1368,
+    "documents": 185,
+    "module_names_resolved_without_import": 84,
+    "working_path_resolutions": 237,
+    "sealed_source_fallback_checks": 1,
+    "synthetic_compatibility_checks": 3,
+    "synthetic_execution_identity_checks": 2,
+    "synthetic_source_authentication_checks": 3,
+    "shell_syntax_checks": 147,
+    "protected_scientific_library_files": 145,
+    "protected_receipts_files": 736,
+    "static_scientific_source_comparisons": 122
+  },
+  "canonical_content_changed_since_migration": [],
+  "metadata_only_source_changes": [
+    {
+      "path": "src/mosaic/small_molecule/provenance.py",
+      "change": "Execution-source identity additionally includes experiments/; restoring only the enumeration tuple exactly reproduces the original file hash."
+    }
+  ],
+  "concurrent_receipt_changes": [
+    {
+      "path": "scripts/hpc/receipts/20261022-brd4-jq1-25-fixed-lrreset-02/older-work3-backup-01-console.txt",
+      "before_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "observed_sha256": "ad34a6ad0b58f5b0a04f4753690f27c5f37c4aab8fce0fc6c9afaaf05241b811",
+      "scope": "Explicitly named live operator log; retained in place. Its external writer continued during migration. No unchanged-byte claim."
+    }
+  ],
+  "errors": [],
+  "status": "passed",
+  "archive_smoke": {
+    "status": "passed",
+    "scope": "Local stdlib packaging, extraction, all-member hashes and legacy source-verifier CLI only; no experiment/model imports or numerical tests; no HPC transfer/submission.",
+    "created_utc": "2026-10-22T10:27:26.326405+00:00",
+    "archive": {
+      "source_archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\releases\\20261022-script-layout-smoke-01\\source.tar.gz",
+      "archive_bytes": 41373605,
+      "archive_sha256": "76a4f2add447fb57e380bc0ab73824fd0f2c59c4fef88b8a2484b25e24d9c888",
+      "manifest_sha256": "0966e7c9fc9551c345c37b459192d4949a65a191a3a63431f3f98c8dc76dbcc0",
+      "files": 1731,
+      "git_revision_reference": "4d3f450d857bf6ea8ed666507c3895203e57c4ac",
+      "hpc_transfer": "not performed",
+      "numerical_validation": "pending DTU HPC"
+    },
+    "manifest_members_rehashed": 1731,
+    "legacy_verifier_returncode": 0,
+    "legacy_verifier_stdout": "Authenticated 1731 immutable source files",
+    "unmanifested_experiment_input_rejected": true,
+    "smoke_source_copy": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\static\\20261022-script-migration\\source-smoke",
+    "pre_migration_backup": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\static\\20261022-script-migration\\before"
+  },
+  "organization": {
+    "experiment_homes": 24,
+    "path_records": 237,
+    "historical_attempts_indexed": 52,
+    "staging_index_unchanged": true,
+    "numerical_validation": "not performed; allocated DTU HPC checks remain required",
+    "current_hpc_release_modified": false,
+    "historical_receipt_directory_writes_by_migration": false
+  },
+  "final_document_and_history_check": {
+    "documents_checked": 180,
+    "broken_links": [],
+    "missing_readmes": [],
+    "stale_canonical_hashes": [],
+    "staging_changes": [],
+    "original_ledger_lines_preserved_exactly_with_insertions": true,
+    "ledger_destructive_edits": [],
+    "ledger_insertions": [
+      [
+        "insert",
+        6075,
+        6075,
+        6075,
+        6155
+      ],
+      [
+        "insert",
+        6103,
+        6103,
+        6183,
+        6200
+      ]
+    ],
+    "asts_parsed": 125,
+    "experiment_homes": 24,
+    "status": "passed"
+  },
+  "later_concurrent_receipt_observation": {
+    "observed_utc": "2026-10-22T10:34:14.557841+00:00",
+    "original_receipt_paths_retained": 736,
+    "unchanged_at_observation": 729,
+    "concurrent_updates": [
+      {
+        "path": "scripts/hpc/receipts/20261021-brd4-jq1-25-fixed-02/campaign.json",
+        "baseline_sha256": "b41cce61cf9d7147325773fc79b41381d8272ff272476c9880c58f76472366b9",
+        "observed_sha256": "1ab32440b652fb42c18550e323c711b6f28665d8d996248154f2a28a92f4d9a9",
+        "observed_utc": "2026-10-22T10:34:14.557841+00:00",
+        "scope": "Concurrent existing campaign summary/operator update; migration never wrote this receipt.",
+        "baseline_copy_provenance": "recovered from independently rehashed local smoke archive",
+        "preserved_baseline_copy": "results\\static\\20261022-script-migration\\preserved-receipt-baseline\\scripts\\hpc\\receipts\\20261021-brd4-jq1-25-fixed-02\\campaign.json"
+      },
+      {
+        "path": "scripts/hpc/receipts/20261021-brd4-jq1-25-fixed-lrboost-01/campaign.json",
+        "baseline_sha256": "44a715e44e9b9e9dd7964869344cfd2c8da09380d0fd741a1bc320fbb853a8e1",
+        "observed_sha256": "13e3b392f6ac424acd93f7e10502a13fe908a0ffeb4f529f41ae684657af4f0d",
+        "observed_utc": "2026-10-22T10:34:14.557841+00:00",
+        "scope": "Concurrent existing campaign summary/operator update; migration never wrote this receipt.",
+        "baseline_copy_provenance": "recovered from independently rehashed local smoke archive",
+        "preserved_baseline_copy": "results\\static\\20261022-script-migration\\preserved-receipt-baseline\\scripts\\hpc\\receipts\\20261021-brd4-jq1-25-fixed-lrboost-01\\campaign.json"
+      },
+      {
+        "path": "scripts/hpc/receipts/20261021-brd4-jq1-25-fixed-report-04/campaign.json",
+        "baseline_sha256": "2323a05135b74d60e813f2b35b8472bd247c1fce2eca60616f6acd28352eae0b",
+        "observed_sha256": "f99c2a4ab3f37f63efa3e72f5be90b8874a0a269914225b0d421886a64b767e0",
+        "observed_utc": "2026-10-22T10:34:14.557841+00:00",
+        "scope": "Concurrent existing campaign summary/operator update; migration never wrote this receipt.",
+        "baseline_copy_provenance": "recovered from independently rehashed local smoke archive",
+        "preserved_baseline_copy": "results\\static\\20261022-script-migration\\preserved-receipt-baseline\\scripts\\hpc\\receipts\\20261021-brd4-jq1-25-fixed-report-04\\campaign.json"
+      },
+      {
+        "path": "scripts/hpc/receipts/20261021-brd4-jq1-25-fixed-storage-03/campaign.json",
+        "baseline_sha256": "17e0f4a7ef31fd95549fc3ddc59810fe71a76f7720e805f6717c8a0d8a6042e2",
+        "observed_sha256": "4d291b8c87202b8beec07ccb6341a4fadb16e402afb6c32ec7413169af5931ee",
+        "observed_utc": "2026-10-22T10:34:14.557841+00:00",
+        "scope": "Concurrent existing campaign summary/operator update; migration never wrote this receipt.",
+        "baseline_copy_provenance": "recovered from independently rehashed local smoke archive",
+        "preserved_baseline_copy": "results\\static\\20261022-script-migration\\preserved-receipt-baseline\\scripts\\hpc\\receipts\\20261021-brd4-jq1-25-fixed-storage-03\\campaign.json"
+      },
+      {
+        "path": "scripts/hpc/receipts/20261021-brd4-jq1-25-fixed-storage-04/campaign.json",
+        "baseline_sha256": "fdf226f8d8e634fccf892a5f1acf1f075b752cf9b87c32f76a923c4d39a36383",
+        "observed_sha256": "0c615988265002f5cde5b4e8ed2ff936950c82e6a61a520840d27179fed4e619",
+        "observed_utc": "2026-10-22T10:34:14.557841+00:00",
+        "scope": "Concurrent existing campaign summary/operator update; migration never wrote this receipt.",
+        "baseline_copy_provenance": "recovered from independently rehashed local smoke archive",
+        "preserved_baseline_copy": "results\\static\\20261022-script-migration\\preserved-receipt-baseline\\scripts\\hpc\\receipts\\20261021-brd4-jq1-25-fixed-storage-04\\campaign.json"
+      },
+      {
+        "path": "scripts/hpc/receipts/20261022-brd4-jq1-25-fixed-lrreset-02/campaign.json",
+        "baseline_sha256": "682fc53f2fa8638790952a753ad7b838622003ad2e5fd672baee228b061afd30",
+        "observed_sha256": "852fef6cea2e27e229f3c1f0cb6cbade8bf77f99523d1048f03af4b1da6b2d7c",
+        "observed_utc": "2026-10-22T10:34:14.557841+00:00",
+        "scope": "Concurrent existing campaign summary/operator update; migration never wrote this receipt.",
+        "baseline_copy_provenance": "recovered from independently rehashed local smoke archive",
+        "preserved_baseline_copy": "results\\static\\20261022-script-migration\\preserved-receipt-baseline\\scripts\\hpc\\receipts\\20261022-brd4-jq1-25-fixed-lrreset-02\\campaign.json"
+      },
+      {
+        "path": "scripts/hpc/receipts/20261022-brd4-jq1-25-fixed-lrreset-02/older-work3-backup-01-console.txt",
+        "baseline_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "observed_sha256": "ad34a6ad0b58f5b0a04f4753690f27c5f37c4aab8fce0fc6c9afaaf05241b811",
+        "observed_utc": "2026-10-22T10:34:14.557841+00:00",
+        "scope": "Concurrent existing campaign summary/operator update; migration never wrote this receipt.",
+        "baseline_copy_provenance": "initially empty log, reconstructed from known empty-file hash",
+        "preserved_baseline_copy": "results\\static\\20261022-script-migration\\preserved-receipt-baseline\\scripts\\hpc\\receipts\\20261022-brd4-jq1-25-fixed-lrreset-02\\older-work3-backup-01-console.txt"
+      }
+    ],
+    "scope": "Read-only observation and additional local backup copies only; no original receipt mutation."
+  }
+}

@@ -1,5 +1,14 @@
 # Chemistry guidance on valid relaxed molecules
 
+> **Scope and access note (22 October 2026):** this document contains an
+> experiment protocol and dated operator evidence. Concrete account paths,
+> environments, jobs and source hashes describe that operator/attempt; they
+> are not shared-account defaults or a fresh status/acceptance claim. Use
+> [your own HPC setup](HPC_GUIDE.md). Keep the scientific gates and historical
+> outcomes below intact when preparing a separately validated candidate.
+> Canonical working home: [brd4/chemistry-compatibility](../experiments/brd4/chemistry-compatibility/README.md).
+
+
 20 October 2026. The user asked to investigate useful chemistry gradients
 on already-valid molecules and to retain **LR 0.03**. A lower 0.01 rate is a
 possible future comparison; the earlier 0.1 recommendation is withdrawn.

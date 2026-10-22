@@ -1,0 +1,59 @@
+{
+  "seed": 17,
+  "steps": 10000,
+  "initial_step_size": 0.3,
+  "max_backtracks": 1,
+  "pilot_steps": 10,
+  "allocation_seconds": 82800,
+  "loss": {
+    "version": "repair-failure-guidance-v1",
+    "extra_valid_weight": 1.0,
+    "partial_weight": 1.0,
+    "local_bond_weight": 0.1,
+    "component_cut_weight": 0.1,
+    "nonempty_weight": 0.1
+  },
+  "search": {
+    "max_edits": 3,
+    "checks_per_depth": 32,
+    "beam_width": 4,
+    "probability_weight": 1.0,
+    "probability_floor": 1e-12
+  },
+  "progress_search": {
+    "version": "repair-progress-v1",
+    "max_edits": 6,
+    "checks_per_depth": 32,
+    "beam_width": 4,
+    "probability_weight": 1.0,
+    "allow_atom_edits": false,
+    "atom_edit_penalty": 3.0,
+    "max_atom_edits": 1
+  },
+  "initialization": {
+    "kind": "chain_uniform",
+    "mixing": 0.5
+  },
+  "version": "mosaic-brd4-jq1-25-fixed-step-v1",
+  "arm": "protenix",
+  "n_atoms": 25,
+  "element_js_weight": 0.0,
+  "chemistry_enabled": false,
+  "repair_schedule": null,
+  "fixture": "tests/data/brd4_3mxf/fixture_25.json",
+  "label": "JQ1 pocket / 25 occupied slots / protenix / fixed LR0.3 / 10000 updates",
+  "pocket": {
+    "version": "brd4-jq1-heavy-neighborhood-v1",
+    "pdb_id": "3MXF",
+    "radius_angstrom": 6.0,
+    "anchor_author_residues": [
+      81,
+      140
+    ],
+    "protenix_contact_cutoff_angstrom": 8.0,
+    "boltz_anchor_max_distance_angstrom": 6.0,
+    "minimum_ligand_fraction_within_pocket": 0.5,
+    "diffusion_gradient": false
+  },
+  "acceptance_policy": "fixed_step"
+}

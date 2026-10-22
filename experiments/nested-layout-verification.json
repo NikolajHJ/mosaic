@@ -1,0 +1,96 @@
+{
+  "version": "mosaic-nested-layout-verification-v1",
+  "observed_utc": "2026-10-22T11:44:44.534697+00:00",
+  "scope": "Local organization, static source/path/discovery/byte checks, disposable archive authentication and synthetic stdlib pytest routing only. No scientific/numerical/model tests, HPC connection or job action.",
+  "counts": {
+    "loose_script_files_nested": 73,
+    "shared_tests_nested": 44,
+    "experiment_tests_kept_with_experiments": 38,
+    "canonical_test_modules": 82,
+    "release_only_legacy_aliases": 155
+  },
+  "root_files": {
+    "scripts": [
+      "README.md"
+    ],
+    "tests": [
+      "README.md",
+      "conftest.py"
+    ]
+  },
+  "layout_map_sha256": "f0fe6242e5c4043c6998c1b27b1aee2c1ac0e2f6044b8a283a44ab4277dc4ad9",
+  "static_layout_checks": {
+    "canonical_python_asts": 166,
+    "declarative_byte_pairs": 41,
+    "unique_test_modules": 82,
+    "canonical_test_discovery_paths": 82,
+    "local_document_links": 1504,
+    "documents": 195,
+    "test_helper_modules_resolved_without_import": 5,
+    "module_names_resolved_without_import": 84,
+    "working_path_resolutions": 281,
+    "release_only_aliases_checked": 155,
+    "sealed_source_fallback_checks": 1,
+    "synthetic_compatibility_checks": 3,
+    "synthetic_execution_identity_checks": 2,
+    "synthetic_source_authentication_checks": 3,
+    "shell_syntax_checks": 147
+  },
+  "layout_errors": [],
+  "shared_test_ast_equivalence_except_bootstrap_and_paths": true,
+  "protected_files_unchanged": 966,
+  "protected_missing": [],
+  "concurrent_protected_changes": [],
+  "historical_migration_map_unchanged": true,
+  "pyproject_settings_outside_pytest_unchanged": true,
+  "synthetic_pytest": {
+    "observed_utc": "2026-10-22T11:40:21.677140+00:00",
+    "scope": "Real pytest on two synthetic stdlib-only modules; no Mosaic/model/numerical test imports or HPC.",
+    "regression_without_hook": "expected import-file mismatch reproduced",
+    "explicit_legacy_selection": "2 passed",
+    "default_canonical_discovery": "2 passed",
+    "function_globals_monkeypatch_and_source_paths": "passed",
+    "cross_folder_helper_import": "passed",
+    "import_mismatch_checks_disabled": false,
+    "status": "passed"
+  },
+  "disposable_archive": {
+    "path": "results/releases/20261022-nested-layout-smoke-02/source.tar.gz",
+    "archive_sha256": "208621b85390daaa4b7717d5cd8dbef1ede3bf54a8c18880e62ef4867d70b653",
+    "manifest_sha256": "c506cc72ea092869a4e0783e0b08667b1564a886b84060d2f0a6582cbc9cb2d7",
+    "files_authenticated": 1962,
+    "legacy_aliases_authenticated": 155,
+    "alias_tamper_rejected": true,
+    "unmanifested_test_rejected": true,
+    "cold_legacy_verifier": "passed",
+    "cold_legacy_packager_help": "passed",
+    "canonical_default_discovery_modules": 82,
+    "legacy_explicit_test_paths": 82,
+    "legacy_small_molecule_glob_members": 32,
+    "uploaded_or_adopted": false
+  },
+  "documentation_checks": {
+    "files": 597,
+    "broken_links": 0,
+    "unresolved_literal_repository_paths": 0,
+    "latex_compile": "success",
+    "whitespace_check": "passed"
+  },
+  "earlier_disposable_work": "The first smoke archive and synthetic source attempts are retained under results/. The initial alias collector path failed synthetic CLI argument matching; the final hook retains requested node paths and imports canonical modules. Smoke02 includes the final fix. No HPC experiment ran.",
+  "detailed_receipts": "results/static/20261022-nested-layout/",
+  "pending_validation": "Allocated DTU HPC CPU/native/numerical regressions remain required for future scientific execution. Final navigation/report/logbook postdate the disposable smoke archive.",
+  "status": "passed_static_archive_and_synthetic_checks_not_scientific_validation",
+  "git_checkout_verification": {
+    "observed_utc": "2026-10-22T11:55:45.540661+00:00",
+    "staged_source_layout_status": "passed",
+    "staged_source_synthetic_pytest": "explicit aliases 2 passed; default discovery 2 passed",
+    "staged_execution_config_and_pdf_bytes_checked": 565,
+    "index_byte_mismatches": 0,
+    "declarative_pairs": 41,
+    "shell_syntax_checks": 147,
+    "remote_update_preserved": "82abf8aa0132a2fc56549667704920735032f2f4",
+    "line_ending_policy": "Explicit LF for shell launchers and byte-preserving attributes for existing authenticated CRLF pairs, nested adapters/tests and layout metadata. No working source bytes normalized.",
+    "raw_notebook_exports_included": false,
+    "detail_receipts": "results/static/20261022-publish-layout/"
+  }
+}

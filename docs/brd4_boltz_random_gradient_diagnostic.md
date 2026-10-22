@@ -1,5 +1,14 @@
 # BRD4 Boltz random-initialization gradient diagnostic
 
+> **Scope and access note (22 October 2026):** this document contains an
+> experiment protocol and dated operator evidence. Concrete account paths,
+> environments, jobs and source hashes describe that operator/attempt; they
+> are not shared-account defaults or a fresh status/acceptance claim. Use
+> [your own HPC setup](HPC_GUIDE.md). Keep the scientific gates and historical
+> outcomes below intact when preparing a separately validated candidate.
+> Canonical working home: [brd4/boltz-gradient-diagnostic](../experiments/brd4/boltz-gradient-diagnostic/README.md).
+
+
 **Current status, 20 October 2026, 19:12 Europe/Paris: random remains blocked.**
 Native replay 29763949 actually completed at 18:22:34; saved-record audit
 **29764094 DONE 19:12:55**, with all nine downloaded audit files verified.

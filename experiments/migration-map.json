@@ -1,0 +1,1767 @@
+{
+  "version": "mosaic-experiment-layout-v1",
+  "created_utc": "2026-10-22T10:07:46.767895+00:00",
+  "files": {
+    "scripts/package_stage0_release.py": {
+      "path": "scripts/releases/package_stage0_release.py",
+      "owner": "shared:releases",
+      "before_sha256": "70e404182f068cde897c58ee9baa8feac8397784905323a5876d69a1881fb6e3",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "a6b605cf76a6f7d349890a83da95347a0bac1fcba0702d4506430e202a2dc05b"
+    },
+    "scripts/verify_stage0_release.py": {
+      "path": "scripts/releases/verify_stage0_release.py",
+      "owner": "shared:releases",
+      "before_sha256": "d3e5373b84b123fe2388db2e9493a5a76d1cfc7edcc53f73ff5746f935c49c02",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "dcc7a31e6d8805e142e444ecb211747dcc017466e80ffe50d27797a06c9e7f12"
+    },
+    "scripts/collect_protenix_evidence.py": {
+      "path": "scripts/evidence/collect_protenix_evidence.py",
+      "owner": "shared:evidence",
+      "before_sha256": "258f6290b7040b1b87b204c6fceadd2bef162641ceb6099e5393f984fd7c6c6b",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "9ae17a71eb64f50dd6a8c93863e372d1e41f895f9d7e98b8c3ea1057ca84dded"
+    },
+    "scripts/download_hpc_when_complete.py": {
+      "path": "scripts/evidence/download_hpc_when_complete.py",
+      "owner": "shared:evidence",
+      "before_sha256": "7241b3b925ba2edec9df83c8c7b6ffa20eecafc5887a3beabd265dfaacf0b1fc",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "e069811c2e3c8e8edb26df19874c6192218d4107a7bc1f1988cc09d01bd58058"
+    },
+    "scripts/verify_hpc_evidence.py": {
+      "path": "scripts/evidence/verify_hpc_evidence.py",
+      "owner": "shared:evidence",
+      "before_sha256": "504f175278340b0bd4c62cb86afcad5f637f85a6f73a7a913840dde16271ea2c",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "64f73ea10eae216cefdab4aad483261d5af2daf27071eb51f2093bc55d5a3427"
+    },
+    "scripts/augment_protenix_hard_controls.py": {
+      "path": "scripts/graph/augment_protenix_hard_controls.py",
+      "owner": "shared:graph",
+      "before_sha256": "5dbdfac8b7c0490f30441e4daf29c67b9c1a5544f85d03432d116c6288ff70e2",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "b28559c04bc6630f83fa134d0e8470170d217ea9b392e036d7c0e89e375c2df9"
+    },
+    "scripts/prepare_brd4_fixture.py": {
+      "path": "scripts/graph/prepare_brd4_fixture.py",
+      "owner": "shared:graph",
+      "before_sha256": "8b1d3869573d7c86769a0645e52884cd8a3f78b52e31b3e35a6afc94c5b85cfc",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "6f2cb94492084241da7b9e5d61157e2d7efd0f8d1ef7800be919f9f6544b07cc"
+    },
+    "scripts/prepare_known_ligand_fixture.py": {
+      "path": "scripts/graph/prepare_known_ligand_fixture.py",
+      "owner": "shared:graph",
+      "before_sha256": "a7138ab28f693bb245723e6cad4c90b80c99386ca122787d66fe4e74ece6f732",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "3f22fdbc1c4d789a1020dbb5cdc087b36135d8ec7e7f12aeac13f95e189a885d"
+    },
+    "scripts/assess_uniform_control.py": {
+      "path": "scripts/graph/assess_uniform_control.py",
+      "owner": "shared:graph",
+      "before_sha256": "03142e97227b156e3817dc68203cdfbf94eadd9b605bd2a1ac1355d86c7c6194",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "6de68d553ada875535294c952f111456dd54f90861667813390edc96d4379e55"
+    },
+    "scripts/validate_brd4_launch.py": {
+      "path": "scripts/graph/validate_brd4_launch.py",
+      "owner": "shared:graph",
+      "before_sha256": "db3296c001066a89893ddb597baed9f35c9c3cad5823affad49551ad5dccbe91",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "81f5591efdf41dfcfefe0984e3d451a72e8845e6cd8ca6da70172e8ed630e30a"
+    },
+    "scripts/validate_brd4_parallel.py": {
+      "path": "scripts/graph/validate_brd4_parallel.py",
+      "owner": "shared:graph",
+      "before_sha256": "4ac893b8ea40d93dfd88fd0881607d4a2986358bf3ef3241bb242a19bc2fd889",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "2f0718763e3e29abccb66c26111e13ff787359960c59c913a19dc4c91b00249b"
+    },
+    "scripts/prepare_chemistry_reference.py": {
+      "path": "scripts/chemistry/prepare_chemistry_reference.py",
+      "owner": "shared:chemistry",
+      "before_sha256": "fc228a425bd22bfcf98c484aa13fa034d7539c9201fcf39cd2eab3d45ae9bbc2",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "a42c072029978bd2beada7d3a3e66ed70f223e0dbf8c32a45018c6f4cd1812a6"
+    },
+    "scripts/create_chemistry_oracles.py": {
+      "path": "scripts/chemistry/create_chemistry_oracles.py",
+      "owner": "shared:chemistry",
+      "before_sha256": "a7b17218a6ea40a8ce745b4754e98926b54d9e96cf49e0ea78d8c8c00939aab9",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "855aac31b3491470b4abdb05f6549dd2be06c044ddb9142c099121e5f8cd2025"
+    },
+    "scripts/vendor_repair_reference.py": {
+      "path": "scripts/chemistry/vendor_repair_reference.py",
+      "owner": "shared:chemistry",
+      "before_sha256": "af668855267539b7b4b0ed8f172abf9bcdce3674c2f9a601f8e46b2b26ac54dc",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "3c9388b5427d70a6046946b53da26905232405f45a27acaa411c37047770d889"
+    },
+    "scripts/validate_chemistry_readiness.py": {
+      "path": "scripts/chemistry/validate_chemistry_readiness.py",
+      "owner": "shared:chemistry",
+      "before_sha256": "b54261b313a2bccfa0d89482f569f2fd6386771fe4e2b12271a9c5602226d726",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "1871ab0d51e067852daebd1599931434232c538dec76b493c14e77bbdc6e1165"
+    },
+    "scripts/render_chemistry_trajectory.py": {
+      "path": "scripts/chemistry/render_chemistry_trajectory.py",
+      "owner": "shared:chemistry",
+      "before_sha256": "21bf2249fb3fe9a766c8e95151428509a1711f87176241a0e4658a1c3f8bb093",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "a9a6d6828cc036d6b9099ecb498d3b4f8cea74b3598fb7db0d7f2d922caf81fd"
+    },
+    "scripts/chemistry_report_template.html": {
+      "path": "scripts/chemistry/chemistry_report_template.html",
+      "owner": "shared:chemistry",
+      "before_sha256": "08c3b3bbcfc2b79e521d1d826ac3f2b3350175c19861b22eb5cb6027fbaebabf",
+      "compatibility": "byte-identical declarative compatibility copy; canonical owner is new path",
+      "after_sha256": "08c3b3bbcfc2b79e521d1d826ac3f2b3350175c19861b22eb5cb6027fbaebabf"
+    },
+    "scripts/campaign25_contract.py": {
+      "path": "scripts/campaign25/campaign25_contract.py",
+      "owner": "shared:campaign25",
+      "before_sha256": "9f77db40c3d6f394b320fb5f27c7109a5db9b0752fd1fc14d766e898dcd4766c",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "45910457a3b5aa7196bca38c5ec1f165c23f9622e5c3dd0d5484aabe4a037b92"
+    },
+    "scripts/campaign25_pocket_ops.py": {
+      "path": "scripts/campaign25/campaign25_pocket_ops.py",
+      "owner": "shared:campaign25",
+      "before_sha256": "8fc7e33826f95043ffc6033ff69532558cdf3a18fe201dc30728182925667047",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "8f99a90b205d88c0154aacd19abe180d508f10cf01657e51f362cfbb053b11f1"
+    },
+    "scripts/fixed25_storage.py": {
+      "path": "scripts/campaign25/fixed25_storage.py",
+      "owner": "shared:campaign25",
+      "before_sha256": "e7b34835c75ba85e7b4f4380c8087d3a8c054eddacf180a693da09d5c017a9ad",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "bdd926f12c9d58c290896fd96128ded66eb9d515043efbcaf2e6cb39384971dd"
+    },
+    "scripts/fixed25_split_storage.py": {
+      "path": "scripts/campaign25/fixed25_split_storage.py",
+      "owner": "shared:campaign25",
+      "before_sha256": "56744c8eb858b9a15e64943427c393d058e3f680a9e4743bd42e463dc9337245",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "bf3e6be9bfde0e2748f9fece5119f50313c4ca06d619de473a7c61b313b18f4e"
+    },
+    "scripts/fixed25_recover_storage.py": {
+      "path": "scripts/campaign25/fixed25_recover_storage.py",
+      "owner": "shared:campaign25",
+      "before_sha256": "52c627d1865231d7c7e2a61b182640cf38f492d84a8a1f44aeec1b865c40d861",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "18079ec5dce97e48023c955afcc39224a2bc3d0d6d0ba2f99cb5191af77ad607"
+    },
+    "scripts/check_boltz_cpu_proof.py": {
+      "path": "scripts/boltz/check_boltz_cpu_proof.py",
+      "owner": "shared:boltz",
+      "before_sha256": "ba9f6923febedd9f0f0e742535b1b00e2c4e4dc9d70782cf39d0acb65feca0af",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "2e5ce8574f0293a5a0de07dc85e887130363493350c98af64f791ca9d50f0570"
+    },
+    "scripts/render_protenix_trajectory.py": {
+      "path": "scripts/reporting/render_protenix_trajectory.py",
+      "owner": "shared:reporting",
+      "before_sha256": "db485e9d6fe0737c8fa95a590804da8306d898a666a74ea1210db4b8f967ccd1",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "7266238228d99da79ea008f2729371a89db4f80c4b6b93151722017f35730e53"
+    },
+    "scripts/protenix_trajectory_depiction.py": {
+      "path": "scripts/reporting/protenix_trajectory_depiction.py",
+      "owner": "shared:reporting",
+      "before_sha256": "65bc4d58e834812d138a580dbb2bb6b98aa28a40f1b4341f5ae7c10ac971eb04",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "065bf8b345adb0eeebd7d2bf29aaf7137ab89e22236e06d2057fed32a017418a"
+    },
+    "scripts/protenix_trajectory_svg.py": {
+      "path": "scripts/reporting/protenix_trajectory_svg.py",
+      "owner": "shared:reporting",
+      "before_sha256": "404762969a020d5a94ec7bc4de3aa8b7884d3e6c898f3beed4f8b6be66ab2417",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "f742cda65124ccf19dff7d3eb73adff2b6b9b1733c814a8220621d639d0a0d1f"
+    },
+    "scripts/serve_protenix_report.py": {
+      "path": "scripts/reporting/serve_protenix_report.py",
+      "owner": "shared:reporting",
+      "before_sha256": "ecd72cb511be26d84291ad5a513a7b14bf2abe71ab17929d6494860bb467029c",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "5d5ee8bd13fbee97b63530027fce6f66144bbbed5d2730887c6c47b8a09cbfef"
+    },
+    "scripts/assess_known_ligand_pilot.py": {
+      "path": "experiments/graph-controls/known-ligand-1000/scripts/assess_known_ligand_pilot.py",
+      "owner": "graph-controls/known-ligand-1000",
+      "before_sha256": "833757ce7d8684e63653c7155e9be17d7ceef5e498f1cde65d9bf30f12e008da",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "ef32f5da34897b81ad4befe0ebed05e3c1a4d0150ec36e3f96421da01bffafc7"
+    },
+    "scripts/prepare_brd4_continuation.py": {
+      "path": "experiments/brd4/best-primal-continuation/scripts/prepare_brd4_continuation.py",
+      "owner": "brd4/best-primal-continuation",
+      "before_sha256": "26a29ce43814d820d9e27e75f5c758360c256226a67b749fba515edc7a66f795",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "70f0295b1fd6916f98b5f7f3fbdef4e2eea53aa2cc6a9c0277ffc9293eb9f0b1"
+    },
+    "scripts/render_chemistry_ramp.py": {
+      "path": "experiments/brd4/chemistry-ramp-10000/scripts/render_chemistry_ramp.py",
+      "owner": "brd4/chemistry-ramp-10000",
+      "before_sha256": "f93af6f811623560074c9fb1a728e95d96e6a0bc9ab9bdb5ad0a3eb2fe64cc39",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "c51a4d2e077a13563af4908db40f9161dc4c240d121d2aeb49f9f2db9f026257"
+    },
+    "scripts/chemistry_compatibility_probe.py": {
+      "path": "experiments/brd4/chemistry-compatibility/scripts/chemistry_compatibility_probe.py",
+      "owner": "brd4/chemistry-compatibility",
+      "before_sha256": "4929fbf5f989e0cf5931c4db9ef7830dc4a241bf1018cb3f49b2801880d673f9",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "91cddb400da50636366b1e3f905c6d43ddaf543c86d435bfd965c37d3854b3dc"
+    },
+    "scripts/run_chemistry_compatibility_probe.py": {
+      "path": "experiments/brd4/chemistry-compatibility/scripts/run_chemistry_compatibility_probe.py",
+      "owner": "brd4/chemistry-compatibility",
+      "before_sha256": "b4c546522823b98f790111452dc33321b34e98a2006ebfe95a818ce108a5a2ef",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "5f61db4955c15d67b3cc42ba79f8993d104b636af0b7a65220d907432ea3757f"
+    },
+    "scripts/assess_boltz_arm.py": {
+      "path": "experiments/brd4/boltz-affinity-10000/scripts/assess_boltz_arm.py",
+      "owner": "brd4/boltz-affinity-10000",
+      "before_sha256": "e0430aa29a9a4f7f640e524073dcf30dda26ece5ed2bcdcc366c04ccdb57ca89",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "ef4ed57b0844fb70880a32a2b19d07daed6302c9a34a5ae71aeb553a5bdb78ac"
+    },
+    "scripts/assess_boltz_cpu.py": {
+      "path": "experiments/brd4/boltz-affinity-10000/scripts/assess_boltz_cpu.py",
+      "owner": "brd4/boltz-affinity-10000",
+      "before_sha256": "e8d11f1549f5d960fe865001489584edb475ff6432c5256c5d98ab08c54a2e59",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "3b05913a8adfa250674229ff2ed4b0d4c2f11ab3920b1ebd524130f561db4cfe"
+    },
+    "scripts/assess_boltz_native.py": {
+      "path": "experiments/brd4/boltz-affinity-10000/scripts/assess_boltz_native.py",
+      "owner": "brd4/boltz-affinity-10000",
+      "before_sha256": "c430f9d0500083f1bb4627f4bed1cc79df813d97d80483f351ad1e95d24b985e",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "379dcbc33e3e23c5988cb5c91b98e13a4021731d0682cc967fe016b81984c31e"
+    },
+    "scripts/submit_boltz_arms.py": {
+      "path": "experiments/brd4/boltz-affinity-10000/scripts/submit_boltz_arms.py",
+      "owner": "brd4/boltz-affinity-10000",
+      "before_sha256": "2476e821bff97dc88db73006ae41dfa9feef0a85e7d957fda83b76c2b9a6cb88",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "0cf81d271cfcb555a54f86d35e8ab76776d0fd82cd85d4dab23d03116fc66f69"
+    },
+    "scripts/render_boltz_affinity.py": {
+      "path": "experiments/brd4/boltz-affinity-10000/scripts/render_boltz_affinity.py",
+      "owner": "brd4/boltz-affinity-10000",
+      "before_sha256": "fc99cfa080555c1a25aeb64476f6a7290905bb4227089eb3ceb5f55db7d85095",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "f88b5218fb22ebb170245d1efe2f9670e625a5a94a9b657d79d1dde9685c5b85"
+    },
+    "scripts/analyze_boltz_balance.py": {
+      "path": "experiments/brd4/boltz-gradient-diagnostic/scripts/analyze_boltz_balance.py",
+      "owner": "brd4/boltz-gradient-diagnostic",
+      "before_sha256": "3a1edf8959b0bd7cdfa0dd142c1a6c51a55b300c0577feff1e9a7850d22594dc",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "dca6a0fb350ce5cbc5d260a9585f05a88fce19c7a18645d0b8aa039e6d9dc53f"
+    },
+    "scripts/analyze_boltz_gradient_diagnostic.py": {
+      "path": "experiments/brd4/boltz-gradient-diagnostic/scripts/analyze_boltz_gradient_diagnostic.py",
+      "owner": "brd4/boltz-gradient-diagnostic",
+      "before_sha256": "beb9de1c779c81f043d3e172d5436e236ef5a44e4c0ce3e6781a9ed379de255a",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "bf6707dbef94048217aa58b85a237e06f5091331ab24e02fa633acf4e6d46413"
+    },
+    "scripts/check_boltz_diagnostic_cpu.py": {
+      "path": "experiments/brd4/boltz-gradient-diagnostic/scripts/check_boltz_diagnostic_cpu.py",
+      "owner": "brd4/boltz-gradient-diagnostic",
+      "before_sha256": "6033ed57d25cedb3590b2cfaf0fff8ff662fdf31e5d2637ed1a8fd2cb9f80aa5",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "f1b3e94b6064363ac4b686b20ab9103c956562dc178316f961121f2bf1ca2a0a"
+    },
+    "scripts/diagnose_boltz_random_gradient.py": {
+      "path": "experiments/brd4/boltz-gradient-diagnostic/scripts/diagnose_boltz_random_gradient.py",
+      "owner": "brd4/boltz-gradient-diagnostic",
+      "before_sha256": "251bfa76cb4fab680eb14d653803c3e6677a1573b0d7df56ce9f429c87f23e66",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "b0c9a74693b6b89d4fb1d27a230092517621d20d2b95ec7f879bd693f2514c97"
+    },
+    "scripts/campaign25_ops.py": {
+      "path": "experiments/brd4/three-model-25/scripts/campaign25_ops.py",
+      "owner": "brd4/three-model-25",
+      "before_sha256": "ee2e41a8a934fca0cb211d1c6ce8300a81d076f5f5336c9d36932c04f9fe5731",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "d8bd5e99f77655c99f8ec82711f9026997e106fc35ec8a700711846c95b272ec"
+    },
+    "scripts/campaign25_release.py": {
+      "path": "experiments/brd4/three-model-25/scripts/campaign25_release.py",
+      "owner": "brd4/three-model-25",
+      "before_sha256": "a4da9dddba6903b5dbf0eb022ee3511f20b2af470bb8af44e7be48a3f49a8f55",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "98aeb3c7ed1b5e3fc10dbd29943342915e4c0399c581fba681da58f77d66c68a"
+    },
+    "scripts/benchmark25_repair.py": {
+      "path": "experiments/brd4/three-model-25/scripts/benchmark25_repair.py",
+      "owner": "brd4/three-model-25",
+      "before_sha256": "da0d04482795c774e4189e9d942941531c9571f9b5b591db55123daca5a29977",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "c494413ded933bc40a1e277e272d75cafb650500faf96bee028fd929501a3fe8"
+    },
+    "scripts/derive_brd4_jq1_pocket.py": {
+      "path": "experiments/brd4-jq1/backtracking-25/scripts/derive_brd4_jq1_pocket.py",
+      "owner": "brd4-jq1/backtracking-25",
+      "before_sha256": "4791b52c858487799e1faf70eb924ef2d60f0e47b71224e8da7a54214ff0a67a",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "c6f75f12ae548798f6d333710a1aa7e0b4108ec0f7084780bb1c4f53da897725"
+    },
+    "scripts/capture_jq1_completion.py": {
+      "path": "experiments/brd4-jq1/backtracking-25/scripts/capture_jq1_completion.py",
+      "owner": "brd4-jq1/backtracking-25",
+      "before_sha256": "2d303d0ffa98f523798511ef676b21b53af54f20f7d13fd05803785726d93534",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "03d8f43fb632d4778d5e5117bea1043c31fdf1175ddad5dabd62bee9acb18d72"
+    },
+    "scripts/jq1_report_contract.py": {
+      "path": "experiments/brd4-jq1/backtracking-25/scripts/jq1_report_contract.py",
+      "owner": "brd4-jq1/backtracking-25",
+      "before_sha256": "a49c4b4afcf691e0b5f993e07b44b4b84da14a6ead0b09b7c8e04b7b4f72ac27",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "28751498508b51c82564128fd2cc1a7003812401a4566bbfb5a14cfe8f81c84f"
+    },
+    "scripts/render_jq1_25_report.py": {
+      "path": "experiments/brd4-jq1/backtracking-25/scripts/render_jq1_25_report.py",
+      "owner": "brd4-jq1/backtracking-25",
+      "before_sha256": "2fe2d9b56d7117905397bae95e6c3c91f508eaf6ebaf458efddd5b955c10d882",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "d90a806687faf4e744f67cd061d203e4b6a50aefeb3b76dce93b5846dd0ea46f"
+    },
+    "scripts/render_jq1_25_interim.py": {
+      "path": "experiments/brd4-jq1/backtracking-25/scripts/render_jq1_25_interim.py",
+      "owner": "brd4-jq1/backtracking-25",
+      "before_sha256": "0f299bb2e0c8862429542072fe41cbebf58d399cceed6a2b05c9d6b2b1903b44",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "bf7fbdb1f40f60553adc140d822ad29767ff82b9fd5b07fdd524b6e848c935b3"
+    },
+    "scripts/publish_jq1_report.py": {
+      "path": "experiments/brd4-jq1/backtracking-25/scripts/publish_jq1_report.py",
+      "owner": "brd4-jq1/backtracking-25",
+      "before_sha256": "3579acff55c4a56c814e21ff76e56d8be1b2f9514b89d77f7e32e05ab8166202",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "07c8c6a464924cc1ec175fda9e5d968439b3bc049cf7a8bae151a3a700b935b4"
+    },
+    "scripts/protenix_lr03_ops.py": {
+      "path": "experiments/brd4-jq1/protenix-lr03/scripts/protenix_lr03_ops.py",
+      "owner": "brd4-jq1/protenix-lr03",
+      "before_sha256": "bd18440c0e5aeb9efa4d3d963968c7aa636181e7cc958e4ff8c94e0089bd51a4",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "bcf1104ce8eed877a89b186500cf0ba56a9673d45026819665194edce56bade7"
+    },
+    "scripts/protenix_lr03_storage.py": {
+      "path": "experiments/brd4-jq1/protenix-lr03/scripts/protenix_lr03_storage.py",
+      "owner": "brd4-jq1/protenix-lr03",
+      "before_sha256": "2bd52d14c5006134efbc7b52f8c98aab5279c3178c13dca12be5e3defd7d8e6a",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "b38c657dec2c94af617a27fdc9f6250052713f6c44a8803a480d789ce00f8173"
+    },
+    "scripts/fixed25_ops.py": {
+      "path": "experiments/brd4-jq1/fixed-steps/scripts/fixed25_ops.py",
+      "owner": "brd4-jq1/fixed-steps",
+      "before_sha256": "2c6c2a94c25229caca6e00d0873103e7829a9fca6689662efd5e701731775212",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "ff7a3010f2f738bc6633658c2ef412f5ecca232757a53b258242b4351e2366ba"
+    },
+    "scripts/fixed25_split_ops.py": {
+      "path": "experiments/brd4-jq1/fixed-steps/scripts/fixed25_split_ops.py",
+      "owner": "brd4-jq1/fixed-steps",
+      "before_sha256": "13cadfb942c14d1b20834a2d27b0d5201cd7cf74817a32fd1ed3ce41e8c632f8",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "311cfa2af89274775095a346cc64bf45b148fd5856b8abd9e06c45f4f728266b"
+    },
+    "scripts/fixed25_recover_ops.py": {
+      "path": "experiments/brd4-jq1/fixed-steps/scripts/fixed25_recover_ops.py",
+      "owner": "brd4-jq1/fixed-steps",
+      "before_sha256": "98f5649b7f2f6dac0b804977cd8322a95ceaea40dbd18b9540601dbf2dacd71e",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "bfb5ea7245adaca3a783221f9a18db35f06533d81248210a01a6f938f6bd52c1"
+    },
+    "scripts/capture_jq1_fixed_completion.py": {
+      "path": "experiments/brd4-jq1/fixed-steps/scripts/capture_jq1_fixed_completion.py",
+      "owner": "brd4-jq1/fixed-steps",
+      "before_sha256": "d2f027f34194689a2fa5b5f7b1a1e54dd918e167b8aa02ab57e57970b0069c9d",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "e465eb183892c2c16ea7a40fed3905cf444069d22ea82dd506011b90df38e04c"
+    },
+    "scripts/jq1_fixed_report_contract.py": {
+      "path": "experiments/brd4-jq1/fixed-steps/scripts/jq1_fixed_report_contract.py",
+      "owner": "brd4-jq1/fixed-steps",
+      "before_sha256": "b287154b3915089759757511d8d40587c7a72bab37d361b7dafa71422b15bf0d",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "f9d6bba4f76aa7a48904bcb3146e00d729ffa0d7fa71d8d4dd811594aa0a62ac"
+    },
+    "scripts/jq1_fixed_report_ops.py": {
+      "path": "experiments/brd4-jq1/fixed-steps/scripts/jq1_fixed_report_ops.py",
+      "owner": "brd4-jq1/fixed-steps",
+      "before_sha256": "f4dcb0951ff0c384b7115b13eeef821f2978d4b30ecc8d277bd5a079d2903c42",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "046e18aedcc655f1fff2b87416765b9ceaa9db70e53750943f23bb50cfa73b22"
+    },
+    "scripts/publish_jq1_fixed_report.py": {
+      "path": "experiments/brd4-jq1/fixed-steps/scripts/publish_jq1_fixed_report.py",
+      "owner": "brd4-jq1/fixed-steps",
+      "before_sha256": "ab7993800fde66484f0f8f7407e18442cc00e6b64fc2aa0ebfcc4a8c6378583c",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "81b879a89467d9d8eacf0e6a48a9a041b3d4339499340d1290f5748236a3b361"
+    },
+    "scripts/render_jq1_fixed_interim.py": {
+      "path": "experiments/brd4-jq1/fixed-steps/scripts/render_jq1_fixed_interim.py",
+      "owner": "brd4-jq1/fixed-steps",
+      "before_sha256": "3def1f7b2c49e4280a995e8ed4594b2a0658cb396e796c0ec926761c1324356a",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "8c6ee0eea144ff235d93150fcbc55f54810a284c963ff006127a08de28fcbd07"
+    },
+    "scripts/render_jq1_fixed_report.py": {
+      "path": "experiments/brd4-jq1/fixed-steps/scripts/render_jq1_fixed_report.py",
+      "owner": "brd4-jq1/fixed-steps",
+      "before_sha256": "9a04218caa7cc2ed771b47d767d74112e44858b6f47032f00327cb5e2351f234",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "5955e385b01fb1dc332ad8a3f09c68c026c31304c9c00d0306cd62ce92e56578"
+    },
+    "scripts/fixed25_lrboost_ops.py": {
+      "path": "experiments/brd4-jq1/fixed-lrboost/scripts/fixed25_lrboost_ops.py",
+      "owner": "brd4-jq1/fixed-lrboost",
+      "before_sha256": "8f4b2e0b212447effc747b4b9ffcd27a80a1592caab2e6af9f2c22bb79f5b789",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "41cde6487e2a5c1f96fa0bb849c45673b8111d3bfdccdded061b7481a1aa7cbb"
+    },
+    "scripts/fixed25_lrboost_storage.py": {
+      "path": "experiments/brd4-jq1/fixed-lrboost/scripts/fixed25_lrboost_storage.py",
+      "owner": "brd4-jq1/fixed-lrboost",
+      "before_sha256": "a5b9cf465a7f9652e8670277582bd02328901b30aba8ccff0790134d325ed086",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "dc3a713b3a41b71e18258e4b1802a982acf79df56836454932e24114c883a0e8"
+    },
+    "scripts/capture_jq1_lrboost_completion.py": {
+      "path": "experiments/brd4-jq1/fixed-lrboost/scripts/capture_jq1_lrboost_completion.py",
+      "owner": "brd4-jq1/fixed-lrboost",
+      "before_sha256": "3426b72cdcb4761cdb2907cc14ff2c0519c744b24b092ad999f8c78075d74f12",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "5b0b5b7fef2801f8698706b39690cab1deb633cb8a2a958878889760bf7a4a23"
+    },
+    "scripts/jq1_lrboost_report_contract.py": {
+      "path": "experiments/brd4-jq1/fixed-lrboost/scripts/jq1_lrboost_report_contract.py",
+      "owner": "brd4-jq1/fixed-lrboost",
+      "before_sha256": "30081c671677aa89738ec4451a1ba6815eb64097e0e50d31e9f1bb447d59f63a",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "84e2e4e966d5cb0885eefc2090f5ec8cc75593ee6a84d1f9f701250026810f11"
+    },
+    "scripts/jq1_lrboost_report_ops.py": {
+      "path": "experiments/brd4-jq1/fixed-lrboost/scripts/jq1_lrboost_report_ops.py",
+      "owner": "brd4-jq1/fixed-lrboost",
+      "before_sha256": "3e3fddcbc95634ce91671dcdb6d9ffc3d24b5e2f51562a1156b5be93956ad9f1",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "0e3ba6287434e42594904403aa4706d411e231e807094fcfc6ae36260cb7793c"
+    },
+    "scripts/lrboost_endpoint_diagnostics.py": {
+      "path": "experiments/brd4-jq1/fixed-lrboost/scripts/lrboost_endpoint_diagnostics.py",
+      "owner": "brd4-jq1/fixed-lrboost",
+      "before_sha256": "f9abef058c74ac7e7a9494d1965dcaf7a09967a21e5c9b9647f99f13791ead88",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "9813ff7f2b054c25ae4d2b62b06053a20c9ef1c50093b3961eb981139ee99ed4"
+    },
+    "scripts/publish_jq1_lrboost_report.py": {
+      "path": "experiments/brd4-jq1/fixed-lrboost/scripts/publish_jq1_lrboost_report.py",
+      "owner": "brd4-jq1/fixed-lrboost",
+      "before_sha256": "5b1235bc65f501484e4bc2f3eb8acf78a8905ff85f9b84385f6151d37de7a49b",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "ff1dc24c9c2ac500556892a3baf87433996663386a58d2f0f6fa3c3d9c20c723"
+    },
+    "scripts/render_jq1_lrboost_progress.py": {
+      "path": "experiments/brd4-jq1/fixed-lrboost/scripts/render_jq1_lrboost_progress.py",
+      "owner": "brd4-jq1/fixed-lrboost",
+      "before_sha256": "c6d84c6890c479b0543a5f17c3bf4bfd12345c7fec6018cf142af85c75fd2f3e",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "b344bde1c198efc4b129eccb1dbd513c303e58c1be50cccc132a751c89205768"
+    },
+    "scripts/render_jq1_lrboost_report.py": {
+      "path": "experiments/brd4-jq1/fixed-lrboost/scripts/render_jq1_lrboost_report.py",
+      "owner": "brd4-jq1/fixed-lrboost",
+      "before_sha256": "a807146621ebe4ae3136451ca475edf688868c703eb77586390ec565f24ab672",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "d9596e5228484e5bf675d7f0921360077b3c775cfa64a7c9bc7282ac3dd4bb97"
+    },
+    "scripts/fixed25_lrreset_ops.py": {
+      "path": "experiments/brd4-jq1/fixed-lrreset/scripts/fixed25_lrreset_ops.py",
+      "owner": "brd4-jq1/fixed-lrreset",
+      "before_sha256": "46b17f86bbdabf90a16c1fd6a523aa7d333eed54040c1da8a4abff61958a6cca",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "9b4134d76f24b1ad0ba6bbc69f3722c89df901f73bec52195cace6d505368903"
+    },
+    "scripts/fixed25_lrreset_storage.py": {
+      "path": "experiments/brd4-jq1/fixed-lrreset/scripts/fixed25_lrreset_storage.py",
+      "owner": "brd4-jq1/fixed-lrreset",
+      "before_sha256": "013edb47a3d42bd6aa6b6d34c2273b012801bb58b03bd6a16893cac32822b24a",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "4af2dc14f84705274f8ef59240e5d84e3ced6d812b559f9a163f15d4bb4f135d"
+    },
+    "scripts/assemble_milestone_report.py": {
+      "path": "experiments/reporting/milestones/scripts/assemble_milestone_report.py",
+      "owner": "reporting/milestones",
+      "before_sha256": "f23706388850b98a6938a96bc86aa0f1000163ec0a4b813f22dfb0550e7325b2",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "81950f0c94401c4f87fe10c4e9c836826b37667d55676064ea965264157be187"
+    },
+    "scripts/hpc/augment_protenix_controls.lsf": {
+      "path": "scripts/graph/augment_protenix_controls.lsf",
+      "owner": "shared:graph",
+      "before_sha256": "8945dcca8b41d5a67035ba531a302f9e6d4018cb23245e2ac3b2dfeaf30924e8",
+      "compatibility": "forwarding shell entry point; BSUB directives retained",
+      "after_sha256": "f96b974176c01ec7f6c26c6e06bd7100ba322034ff78f39d5c7660741970c45d"
+    },
+    "scripts/hpc/boltz_node_tmpdir.sh": {
+      "path": "scripts/hpc/boltz_node_tmpdir.sh",
+      "owner": "shared:hpc",
+      "before_sha256": "0ca1c8f5cf98ad80df8b673a0fe5b8d13aaa6d11153c66897e3609c34e597d62",
+      "compatibility": "unchanged shared canonical file at its existing path",
+      "after_sha256": "0ca1c8f5cf98ad80df8b673a0fe5b8d13aaa6d11153c66897e3609c34e597d62"
+    },
+    "scripts/hpc/brd4_boltz_cpu.lsf": {
+      "path": "experiments/brd4/boltz-affinity-10000/hpc/brd4_boltz_cpu.lsf",
+      "owner": "brd4/boltz-affinity-10000",
+      "before_sha256": "ec4b0b9029787c179f413022b26393bd204365469afc1912eea8abf6be84c77d",
+      "compatibility": "forwarding shell entry point; BSUB directives retained",
+      "after_sha256": "cbf2649f7a11fb9583ad6aa373d09b380949a3083ac704afc249375ba42bef30"
+    },
+    "scripts/hpc/brd4_boltz_diagnostic_certificate_cpu.lsf": {
+      "path": "experiments/brd4/boltz-gradient-diagnostic/hpc/brd4_boltz_diagnostic_certificate_cpu.lsf",
+      "owner": "brd4/boltz-gradient-diagnostic",
+      "before_sha256": "10d0526e63f6b7073e99698441829d453cb0ef3f20097aa436ae5d8c770c1c1d",
+      "compatibility": "forwarding shell entry point; BSUB directives retained",
+      "after_sha256": "50539f1d1041dfe720b3eb046282fd81a9a1203f13f176faf8467a82f68d884c"
+    },
+    "scripts/hpc/brd4_boltz_diagnostic_cpu.lsf": {
+      "path": "experiments/brd4/boltz-gradient-diagnostic/hpc/brd4_boltz_diagnostic_cpu.lsf",
+      "owner": "brd4/boltz-gradient-diagnostic",
+      "before_sha256": "ed9d967eb102d18f8abead648c37556c1cc68ec60ea68014f7e6cd72ada5aa09",
+      "compatibility": "forwarding shell entry point; BSUB directives retained",
+      "after_sha256": "9b293fd84961f454dde7dbe4361ddf56eea9f511558344b6fe58640b6b3fe956"
+    },
+    "scripts/hpc/brd4_boltz_gradient_analysis_cpu.lsf": {
+      "path": "experiments/brd4/boltz-gradient-diagnostic/hpc/brd4_boltz_gradient_analysis_cpu.lsf",
+      "owner": "brd4/boltz-gradient-diagnostic",
+      "before_sha256": "bdba8f9795619f5b7122efa19e41cb56df445645aba83dc1e9ab303be08c05db",
+      "compatibility": "forwarding shell entry point; BSUB directives retained",
+      "after_sha256": "ecc9b5022961b7879eb9acda42d935b8d53a257837ffd2b0ee6b4c60b004979a"
+    },
+    "scripts/hpc/brd4_boltz_independent_cpu.lsf": {
+      "path": "experiments/brd4/boltz-affinity-10000/hpc/brd4_boltz_independent_cpu.lsf",
+      "owner": "brd4/boltz-affinity-10000",
+      "before_sha256": "c9547996b02c0c460c388f2dc983817fb1e37ca2886bede8218804c79fe41436",
+      "compatibility": "forwarding shell entry point; BSUB directives retained",
+      "after_sha256": "c09cc6829c45e71d9f3028a632e48fda248bdcad02a46eccbed012b327b1d29e"
+    },
+    "scripts/hpc/brd4_boltz_launcher_cpu.lsf": {
+      "path": "experiments/brd4/boltz-affinity-10000/hpc/brd4_boltz_launcher_cpu.lsf",
+      "owner": "brd4/boltz-affinity-10000",
+      "before_sha256": "9f3e6592315b3e20b4c75c7605309d4fabd373ece9bf13e5d2006ec8cbde1050",
+      "compatibility": "forwarding shell entry point; BSUB directives retained",
+      "after_sha256": "9bbb8b1251b07e81eee147e675c3fd01273c9e726005e46ea2d4efece8ba4b9b"
+    },
+    "scripts/hpc/brd4_boltz_random_diagnostic.lsf": {
+      "path": "experiments/brd4/boltz-gradient-diagnostic/hpc/brd4_boltz_random_diagnostic.lsf",
+      "owner": "brd4/boltz-gradient-diagnostic",
+      "before_sha256": "d619aa67fd09a4d12451097cbe54cdab843b9ef0ad1d511564c9c2a8f99f6a86",
+      "compatibility": "forwarding shell entry point; BSUB directives retained",
+      "after_sha256": "a0499e3ed1b0d75acd7d6cd7e6d7aa4b3667d4a2f1ffe5d1252c9ffac6d1c797"
+    },
+    "scripts/hpc/brd4_boltz_random_diagnostic_retry.lsf": {
+      "path": "experiments/brd4/boltz-gradient-diagnostic/hpc/brd4_boltz_random_diagnostic_retry.lsf",
+      "owner": "brd4/boltz-gradient-diagnostic",
+      "before_sha256": "b0882be6ff0bd4c54e4045ecb0a3bdc00f8f2bd4f335a94758681ea4ee24e915",
+      "compatibility": "forwarding shell entry point; BSUB directives retained",
+      "after_sha256": "8eeee553c65becd67a815f539aab25b116be24d60c3fa8b58bb24b5e81edb5f2"
+    },
+    "scripts/hpc/brd4_boltz_ready.lsf": {
+      "path": "experiments/brd4/boltz-affinity-10000/hpc/brd4_boltz_ready.lsf",
+      "owner": "brd4/boltz-affinity-10000",
+      "before_sha256": "1de449af0a5b14b64e5a06c47c0dd7693ed787082820b1c4208d1ee28913b8f5",
+      "compatibility": "forwarding shell entry point; BSUB directives retained",
+      "after_sha256": "30d7b7871430823cace987136660af84a9a16865cc05ab4bbea8de0fbc13a787"
+    },
+    "scripts/hpc/brd4_boltz_report.lsf": {
+      "path": "experiments/brd4/boltz-affinity-10000/hpc/brd4_boltz_report.lsf",
+      "owner": "brd4/boltz-affinity-10000",
+      "before_sha256": "e386d7b77f6e59354e1d097632f8e753767fc2f1c483a388faf6328e4408d2bf",
+      "compatibility": "forwarding shell entry point; BSUB directives retained",
+      "after_sha256": "0c8517a09dd6ba15973defa54563e41d67b24a85935dc9ff0e7e644e26e09f73"
+    },
+    "scripts/hpc/brd4_boltz_run.lsf": {
+      "path": "experiments/brd4/boltz-affinity-10000/hpc/brd4_boltz_run.lsf",
+      "owner": "brd4/boltz-affinity-10000",
+      "before_sha256": "c071a622f04a4ebae894385e2b193ccc355301eb2d86a48c58637cdc55c53e27",
+      "compatibility": "forwarding shell entry point; BSUB directives retained",
+      "after_sha256": "8ab66635fbea25bfc783d42aa875be2b35f1d94b46289dd64a443da3fff3cd9e"
+    },
+    "scripts/hpc/brd4_boltz_submit_queue.lsf": {
+      "path": "experiments/brd4/boltz-affinity-10000/hpc/brd4_boltz_submit_queue.lsf",
+      "owner": "brd4/boltz-affinity-10000",
+      "before_sha256": "1275cb3d236ad501fb06f2cef6f5dc924d9ce829cb3ef6f8c8317f2812a514e6",
+      "compatibility": "forwarding shell entry point; BSUB directives retained",
+      "after_sha256": "eb6ee23b8054c44799271d6d2d0710fbd7a9ef55f5f4cd95a3edc6673472c13c"
+    },
+    "scripts/hpc/brd4_chemistry.lsf": {
+      "path": "experiments/brd4/chemistry-5000/hpc/brd4_chemistry.lsf",
+      "owner": "brd4/chemistry-5000",
+      "before_sha256": "a00ad8fa73c9c552181c1e113049a5a27a9581302734402083e58740e4e12951",
+      "compatibility": "forwarding shell entry point; BSUB directives retained",
+      "after_sha256": "02c67fa39680ba5d28789a0860a97d9d26f724d44455caaf40f2d0802e3c5457"
+    },
+    "scripts/hpc/brd4_chemistry_preview.lsf": {
+      "path": "experiments/brd4/chemistry-5000/hpc/brd4_chemistry_preview.lsf",
+      "owner": "brd4/chemistry-5000",
+      "before_sha256": "4f78183637e72558808629f25329299ab1060335a124067c7f1b30a9d6e71869",
+      "compatibility": "forwarding shell entry point; BSUB directives retained",
+      "after_sha256": "84ae843ab939d33559536c7f93ddf0840de94fbb697b0cb5e350e2f890347360"
+    },
+    "scripts/hpc/brd4_chemistry_ramp_report.lsf": {
+      "path": "experiments/brd4/chemistry-ramp-10000/hpc/brd4_chemistry_ramp_report.lsf",
+      "owner": "brd4/chemistry-ramp-10000",
+      "before_sha256": "f430187a8958618b37ac4427c8bee3c1d90a573e52984fc9be1611656bcd689c",
+      "compatibility": "forwarding shell entry point; BSUB directives retained",
+      "after_sha256": "9933619087c1ce059fecf7a958d0a1ffe2157a9e9faf8145d93178ca12e54161"
+    },
+    "scripts/hpc/brd4_chemistry_readiness.lsf": {
+      "path": "experiments/brd4/chemistry-5000/hpc/brd4_chemistry_readiness.lsf",
+      "owner": "brd4/chemistry-5000",
+      "before_sha256": "61d0060bf2ff00e0417b108d0cebf0cb812861ef63cb4d476c010a9636cff119",
+      "compatibility": "forwarding shell entry point; BSUB directives retained",
+      "after_sha256": "b01dc0cddf868636b96582a56e8e2681fe041e372cb807b327ca6750f2f95751"
+    },
+    "scripts/hpc/brd4_chemistry_repackage.lsf": {
+      "path": "experiments/brd4/chemistry-5000/hpc/brd4_chemistry_repackage.lsf",
+      "owner": "brd4/chemistry-5000",
+      "before_sha256": "0bd5c7b312115804ca98726723273fc1ed0857b7ca0761a959306be209d51cd4",
+      "compatibility": "forwarding shell entry point; BSUB directives retained",
+      "after_sha256": "2ee911e845b707d5fa844546282bd053d9018633cb6d37557c40cb70d5c6cb5d"
+    },
+    "scripts/hpc/brd4_chemistry_report.lsf": {
+      "path": "experiments/brd4/chemistry-5000/hpc/brd4_chemistry_report.lsf",
+      "owner": "brd4/chemistry-5000",
+      "before_sha256": "ce5324a76c2dde1ed8beb02329feef9c6369ccdf923de9e4c992c8a4bd53ded1",
+      "compatibility": "forwarding shell entry point; BSUB directives retained",
+      "after_sha256": "12eadd5f399424f1fdcd1551a43fb9909067dac77db5a033d4fb216569392b52"
+    },
+    "scripts/hpc/brd4_combined_report.lsf": {
+      "path": "experiments/reporting/brd4-comparison/hpc/brd4_combined_report.lsf",
+      "owner": "reporting/brd4-comparison",
+      "before_sha256": "5e11c5e2da13c2d067f70804eae651dd97f9120aa2318e025e9df28b60c173fd",
+      "compatibility": "forwarding shell entry point; BSUB directives retained",
+      "after_sha256": "3aa53998fa904f175a44054c06e8f3ae41ed57b9db36425024eb341ac23c0fed"
+    },
+    "scripts/hpc/brd4_comparison_readiness.lsf": {
+      "path": "experiments/reporting/brd4-comparison/hpc/brd4_comparison_readiness.lsf",
+      "owner": "reporting/brd4-comparison",
+      "before_sha256": "77215ff78b1b348f97a9c19a7a0afd6233ae0816cea5d3604b41e9ea4034efb4",
+      "compatibility": "forwarding shell entry point; BSUB directives retained",
+      "after_sha256": "93df3f5aa1aa81e24830510ec26374b0414d544984c9676642597173295c7e1c"
+    },
+    "scripts/hpc/brd4_contact.lsf": {
+      "path": "scripts/graph/brd4_contact.lsf",
+      "owner": "shared:graph",
+      "before_sha256": "6652b4ffddb76f0d26f9cfc3c124f0eea9147bf2bb8b83609a69caf566f37c0a",
+      "compatibility": "forwarding shell entry point; BSUB directives retained",
+      "after_sha256": "f56ee86eeee12744b64013a5dc2582668d65fd3ffc1e1d74f0a7fc5f1d789e1a"
+    },
+    "scripts/hpc/brd4_continuation_readiness.lsf": {
+      "path": "experiments/brd4/best-primal-continuation/hpc/brd4_continuation_readiness.lsf",
+      "owner": "brd4/best-primal-continuation",
+      "before_sha256": "93085f73e0332a2dd82f7e618b704cede0f47cc3314c26558333aa217400bb94",
+      "compatibility": "forwarding shell entry point; BSUB directives retained",
+      "after_sha256": "0764e786afc3a5a8d5d10f723feb23523e499f473f82d9fb57ecb8c9bee131e1"
+    },
+    "scripts/hpc/brd4_continuation_report.lsf": {
+      "path": "experiments/brd4/best-primal-continuation/hpc/brd4_continuation_report.lsf",
+      "owner": "brd4/best-primal-continuation",
+      "before_sha256": "e4495dc642c0588c21e4e1ce57175b7336cad66bbaea099bfcd9d6a64e89e946",
+      "compatibility": "forwarding shell entry point; BSUB directives retained",
+      "after_sha256": "78d5ff7b7eb687fe94c3c9345327246c4005bffe9d579bc97c364660fa7586e3"
+    },
+    "scripts/hpc/brd4_continue.lsf": {
+      "path": "experiments/brd4/best-primal-continuation/hpc/brd4_continue.lsf",
+      "owner": "brd4/best-primal-continuation",
+      "before_sha256": "2c737d2f5d70ac861a36f2c1ae34ca2d4a8cfcd063c3fd13ae6c39abff254df9",
+      "compatibility": "forwarding shell entry point; BSUB directives retained",
+      "after_sha256": "e3b75caa7e8947d79fa40375f7cf6cfe936a808699fed204416082c9771ffdb4"
+    },
+    "scripts/hpc/brd4_interim_evidence.lsf": {
+      "path": "experiments/reporting/brd4-comparison/hpc/brd4_interim_evidence.lsf",
+      "owner": "reporting/brd4-comparison",
+      "before_sha256": "4ed04c20a1c671fbb0476b75adf6268f76495fd986ae9950b231aea1ff5acca0",
+      "compatibility": "forwarding shell entry point; BSUB directives retained",
+      "after_sha256": "3386a4ae8d99fd6a01e937ff569da3a768f50fc05b591b9757ccb29dfa5669e4"
+    },
+    "scripts/hpc/brd4_interim_report.lsf": {
+      "path": "experiments/reporting/brd4-comparison/hpc/brd4_interim_report.lsf",
+      "owner": "reporting/brd4-comparison",
+      "before_sha256": "6e81cc2ee0e681434f4556f97f844178253ed19f15de6fc519657089d6cbffdc",
+      "compatibility": "forwarding shell entry point; BSUB directives retained",
+      "after_sha256": "04be3e084e7086dcc8e4a32be00a8e5ac591cfb8c26e7f73765fe608c01a1ade"
+    },
+    "scripts/hpc/brd4_parallel_readiness.lsf": {
+      "path": "scripts/graph/brd4_parallel_readiness.lsf",
+      "owner": "shared:graph",
+      "before_sha256": "1bcf52e651683b9dcc4300d63f0d3a5f073109a37baa4a9d7195e60f242080b1",
+      "compatibility": "forwarding shell entry point; BSUB directives retained",
+      "after_sha256": "e5b3b9353a0519f9b3cb86e5552965c51eebf351b706fadfd8673c1787b4a875"
+    },
+    "scripts/hpc/brd4_parallel_report.lsf": {
+      "path": "scripts/graph/brd4_parallel_report.lsf",
+      "owner": "shared:graph",
+      "before_sha256": "986aa9968f3f43630a4a3bb8e9d2946ddb18ebcdea282ed320ac765ec2c31e4a",
+      "compatibility": "forwarding shell entry point; BSUB directives retained",
+      "after_sha256": "d8a79357ecaa9e4d3d237767b1d4bb2b5a8081d06891cba3b72b3909d41d2a30"
+    },
+    "scripts/hpc/brd4_readiness.lsf": {
+      "path": "scripts/graph/brd4_readiness.lsf",
+      "owner": "shared:graph",
+      "before_sha256": "2e498dc4ba3bdaa942543ddf63c5748b6c768550f52df0df774e5fa342dd25f4",
+      "compatibility": "forwarding shell entry point; BSUB directives retained",
+      "after_sha256": "72c1c26774d5a2abbd626c1a4b73c321b371a42950427f89e7f6265160e5f51a"
+    },
+    "scripts/hpc/brd4_uniform_readiness.lsf": {
+      "path": "scripts/graph/brd4_uniform_readiness.lsf",
+      "owner": "shared:graph",
+      "before_sha256": "f049e62f421bcf7518d35e7b221734f94a33b6078c267b0606ee56e6fa251dbc",
+      "compatibility": "forwarding shell entry point; BSUB directives retained",
+      "after_sha256": "89368871561a6acc9d83d7040b363df2179cfdc15ba5d86ca6fe1693ff9a2580"
+    },
+    "scripts/hpc/campaign25_cpu.lsf": {
+      "path": "experiments/brd4/three-model-25/hpc/campaign25_cpu.lsf",
+      "owner": "brd4/three-model-25",
+      "before_sha256": "51aad00b65b0cffb3610aaf318e02a281f05047f65f94672267d3405660c8411",
+      "compatibility": "forwarding shell entry point; BSUB directives retained",
+      "after_sha256": "9e4b5b6e0e3b2326ec8055f5b02e62a8e85a58667b37f6abe1142668099f5060"
+    },
+    "scripts/hpc/campaign25_pocket_cpu.lsf": {
+      "path": "experiments/brd4-jq1/backtracking-25/hpc/campaign25_pocket_cpu.lsf",
+      "owner": "brd4-jq1/backtracking-25",
+      "before_sha256": "6307137b34d18c4b9ea5fd61a693d781493ff192d646b1c060cde63feba35fb3",
+      "compatibility": "forwarding shell entry point; BSUB directives retained",
+      "after_sha256": "7b53e70c4d07cb4c11067ef0a99c24ce2edf2f1753cd978c9185e1bcc534b8f9"
+    },
+    "scripts/hpc/campaign25_pocket_stage.lsf": {
+      "path": "experiments/brd4-jq1/backtracking-25/hpc/campaign25_pocket_stage.lsf",
+      "owner": "brd4-jq1/backtracking-25",
+      "before_sha256": "fd95289f4f3b6d30c84a67cd5b669e8a3d155b83f7e38fd223f3fbc6b9b94b61",
+      "compatibility": "forwarding shell entry point; BSUB directives retained",
+      "after_sha256": "d08214df9411870592472bf5c2e75d86bbcadca0eed003ba762ef2a8453f2260"
+    },
+    "scripts/hpc/campaign25_release_cpu.lsf": {
+      "path": "experiments/brd4/three-model-25/hpc/campaign25_release_cpu.lsf",
+      "owner": "brd4/three-model-25",
+      "before_sha256": "123533ab4b682592dcc4209d6d490f705d87663e287986fa865f50beec8298e9",
+      "compatibility": "forwarding shell entry point; BSUB directives retained",
+      "after_sha256": "c876204831449796bb525a5a6f8e4232193391c71a00af813d791e33e460147c"
+    },
+    "scripts/hpc/campaign25_release_stage.lsf": {
+      "path": "experiments/brd4/three-model-25/hpc/campaign25_release_stage.lsf",
+      "owner": "brd4/three-model-25",
+      "before_sha256": "78cef6f61a38f2cc27ba687fdf4d90b00a0482cdcfbe343615fbfcb8061cf9cf",
+      "compatibility": "forwarding shell entry point; BSUB directives retained",
+      "after_sha256": "c29c2273d29a8d67c66fee30a8fc3c36cb1e08d740870b542b30577415047cdf"
+    },
+    "scripts/hpc/campaign25_repair_timing.lsf": {
+      "path": "experiments/brd4/three-model-25/hpc/campaign25_repair_timing.lsf",
+      "owner": "brd4/three-model-25",
+      "before_sha256": "e1ec2c273318ff48bffba93b208bd67abd9213f494bbd679a0d69b539db61686",
+      "compatibility": "forwarding shell entry point; BSUB directives retained",
+      "after_sha256": "d0045afb90f9608b84da608e3bd029529ed2f15621aa41c8344bd42fbb93767a"
+    },
+    "scripts/hpc/campaign25_stage.lsf": {
+      "path": "experiments/brd4/three-model-25/hpc/campaign25_stage.lsf",
+      "owner": "brd4/three-model-25",
+      "before_sha256": "dcc9f81c7c49456276b7408886de62bc68574fe9aae4ae4b554bfba477c0d552",
+      "compatibility": "forwarding shell entry point; BSUB directives retained",
+      "after_sha256": "052a0af08ca2f14624d16ca7670d47585914cf09e26b91cc0cd24cd2720f59a4"
+    },
+    "scripts/hpc/carbon_chain_100.lsf": {
+      "path": "experiments/graph-controls/carbon-chain-100/hpc/carbon_chain_100.lsf",
+      "owner": "graph-controls/carbon-chain-100",
+      "before_sha256": "6c980cf9008df5e8bc62d50c2a3ef6a6308bc7c1fa5a5ccea9de16a39b99b690",
+      "compatibility": "forwarding shell entry point; BSUB directives retained",
+      "after_sha256": "e317c492244904c0e658b298f8404303b267b59ac60f649c562820ce18982387"
+    },
+    "scripts/hpc/carbon_chain_500.lsf": {
+      "path": "experiments/graph-controls/carbon-chain-500/hpc/carbon_chain_500.lsf",
+      "owner": "graph-controls/carbon-chain-500",
+      "before_sha256": "1cd7356678fc84828cbf9d8e45cf3742bc7a32f492ad3b8b0bfa2aea7927bb50",
+      "compatibility": "forwarding shell entry point; BSUB directives retained",
+      "after_sha256": "acd0183ed794ff1e6120a644e1abd39cb21e95c5adfbf8b6d812732033358ac5"
+    },
+    "scripts/hpc/carbon_chain_500_mix50.lsf": {
+      "path": "experiments/graph-controls/carbon-chain-500/hpc/carbon_chain_500_mix50.lsf",
+      "owner": "graph-controls/carbon-chain-500",
+      "before_sha256": "3a00c7461e0a41fc58e960a02f2ee533b8ee29f2d97d0b89538cde863264a47f",
+      "compatibility": "forwarding shell entry point; BSUB directives retained",
+      "after_sha256": "1e7f64541e4a78ca67745b06b9e2382055d49169ed019a883356c8714a55d4b0"
+    },
+    "scripts/hpc/chemistry_compatibility_probe.lsf": {
+      "path": "experiments/brd4/chemistry-compatibility/hpc/chemistry_compatibility_probe.lsf",
+      "owner": "brd4/chemistry-compatibility",
+      "before_sha256": "52bb84cbd86190c42ae9fcb907696c74b33d4b5c11dc18f48920d2f373538cf3",
+      "compatibility": "forwarding shell entry point; BSUB directives retained",
+      "after_sha256": "d2959bdb5119b3d87f8f7ebb5293f694b742735e5cf69cc68ecf489aa28a8263"
+    },
+    "scripts/hpc/fixed25_cpu.lsf": {
+      "path": "experiments/brd4-jq1/fixed-steps/hpc/fixed25_cpu.lsf",
+      "owner": "brd4-jq1/fixed-steps",
+      "before_sha256": "36c1630599d66cc5de5c48cbcc05bf182a03eea44c1dc108330141d8b71c28a8",
+      "compatibility": "forwarding shell entry point; BSUB directives retained",
+      "after_sha256": "989f5ff3c0e0be77c4936452de2372a0693ddc528b17c9a8edc7e4355c75f8bb"
+    },
+    "scripts/hpc/fixed25_lrboost_cpu.lsf": {
+      "path": "experiments/brd4-jq1/fixed-lrboost/hpc/fixed25_lrboost_cpu.lsf",
+      "owner": "brd4-jq1/fixed-lrboost",
+      "before_sha256": "98286de44c3104fafa1374a61071aa1ad34c10e0c99aaf64b968bb0ad736acba",
+      "compatibility": "forwarding shell entry point; BSUB directives retained",
+      "after_sha256": "67adfaf803864127388c7442f3c0c712365adcb0eb9fba5ffbc044028379bd58"
+    },
+    "scripts/hpc/fixed25_lrboost_stage.lsf": {
+      "path": "experiments/brd4-jq1/fixed-lrboost/hpc/fixed25_lrboost_stage.lsf",
+      "owner": "brd4-jq1/fixed-lrboost",
+      "before_sha256": "5f394493a8b8637071c5778ade940790af5679e268c572b8789cb44a23330e66",
+      "compatibility": "forwarding shell entry point; BSUB directives retained",
+      "after_sha256": "31cc85fc0692959b84668f1afe15416c6b523927682f55712418a7dc1e7b5b3b"
+    },
+    "scripts/hpc/fixed25_lrreset_cpu.lsf": {
+      "path": "experiments/brd4-jq1/fixed-lrreset/hpc/fixed25_lrreset_cpu.lsf",
+      "owner": "brd4-jq1/fixed-lrreset",
+      "before_sha256": "d8fe1fa5ad97b04c201bd14cfbdbc8e54fc90f5cf3898126c2dab089c847c1a0",
+      "compatibility": "forwarding shell entry point; BSUB directives retained",
+      "after_sha256": "63ca8f4d692fc262515ef53130b26f437ce64dda8ca978166f2c9ba4baefc813"
+    },
+    "scripts/hpc/fixed25_lrreset_stage.lsf": {
+      "path": "experiments/brd4-jq1/fixed-lrreset/hpc/fixed25_lrreset_stage.lsf",
+      "owner": "brd4-jq1/fixed-lrreset",
+      "before_sha256": "823c70e40bdec518150d05916aced88879b0140d104858d45b88159597a4391f",
+      "compatibility": "forwarding shell entry point; BSUB directives retained",
+      "after_sha256": "5a186358418e7ee0fb4e0eafcf3554a8eadc89eb36a9bb05385ff05189310f2b"
+    },
+    "scripts/hpc/fixed25_recover_after_cpu.lsf": {
+      "path": "experiments/brd4-jq1/fixed-steps/hpc/fixed25_recover_after_cpu.lsf",
+      "owner": "brd4-jq1/fixed-steps",
+      "before_sha256": "e40dc9e11c938cfeeffe719618c595c9d63e48c6e9bc4bcdc6fdb7840e13f7b7",
+      "compatibility": "forwarding shell entry point; BSUB directives retained",
+      "after_sha256": "4394b6501de7a309dac00a9bb422c7288ca2d4a3282dfc6b19ffce6af3aeac26"
+    },
+    "scripts/hpc/fixed25_recover_cpu.lsf": {
+      "path": "experiments/brd4-jq1/fixed-steps/hpc/fixed25_recover_cpu.lsf",
+      "owner": "brd4-jq1/fixed-steps",
+      "before_sha256": "379c95a24640f31e5945ab77264d6aa04f09c11eece982db52776d2f2758e5ff",
+      "compatibility": "forwarding shell entry point; BSUB directives retained",
+      "after_sha256": "5caff01f02351f6f660d68a129a2edca2dd7661c151eae9b0dc2f8b3536e81f9"
+    },
+    "scripts/hpc/fixed25_recover_observe_pro.lsf": {
+      "path": "experiments/brd4-jq1/fixed-steps/hpc/fixed25_recover_observe_pro.lsf",
+      "owner": "brd4-jq1/fixed-steps",
+      "before_sha256": "3092f6ad43f449934a1040ce020bed95d0deb59b5b45def69ab9b400027bebd8",
+      "compatibility": "forwarding shell entry point; BSUB directives retained",
+      "after_sha256": "f111d7b5af5e543e97be168c3c36463874842b61757e911be2b96ef34c2f867f"
+    },
+    "scripts/hpc/fixed25_recover_stage.lsf": {
+      "path": "experiments/brd4-jq1/fixed-steps/hpc/fixed25_recover_stage.lsf",
+      "owner": "brd4-jq1/fixed-steps",
+      "before_sha256": "11ab6a2d843d3786ddafee258542562b19acd61223fc7b4c7e57a36826a47dbf",
+      "compatibility": "forwarding shell entry point; BSUB directives retained",
+      "after_sha256": "cc90a32a95a60c28f8beb494f26b4a1e708e374cc7eaa9babc29c05087cc334c"
+    },
+    "scripts/hpc/fixed25_split_after_cpu.lsf": {
+      "path": "experiments/brd4-jq1/fixed-steps/hpc/fixed25_split_after_cpu.lsf",
+      "owner": "brd4-jq1/fixed-steps",
+      "before_sha256": "fb61c25a6df81b9ba26cd39ec65f43fce48ab4a8675c9daa1f3ed5b6d69ef350",
+      "compatibility": "forwarding shell entry point; BSUB directives retained",
+      "after_sha256": "e9d267a43e928af685e6ee7c0a4bcf8dd011920003ff42cdf4200b80358e4b6f"
+    },
+    "scripts/hpc/fixed25_split_cpu.lsf": {
+      "path": "experiments/brd4-jq1/fixed-steps/hpc/fixed25_split_cpu.lsf",
+      "owner": "brd4-jq1/fixed-steps",
+      "before_sha256": "daab902ceaaab051c9338ab507a07ce19817011e62c1571c8f580f2cab53103b",
+      "compatibility": "forwarding shell entry point; BSUB directives retained",
+      "after_sha256": "73f3f281487f0ea4bbca5d74b753cd9ca74726767d7d38f2cc723aec78eb1e4c"
+    },
+    "scripts/hpc/fixed25_split_stage.lsf": {
+      "path": "experiments/brd4-jq1/fixed-steps/hpc/fixed25_split_stage.lsf",
+      "owner": "brd4-jq1/fixed-steps",
+      "before_sha256": "1f0869793ac49a604df1f384103b9113f614db4f3822212fb71201d76190a4d0",
+      "compatibility": "forwarding shell entry point; BSUB directives retained",
+      "after_sha256": "f32ac74216d5401053d25f688043dfbcc1dc8327e5fb41655e55dc8706ea8992"
+    },
+    "scripts/hpc/fixed25_stage.lsf": {
+      "path": "experiments/brd4-jq1/fixed-steps/hpc/fixed25_stage.lsf",
+      "owner": "brd4-jq1/fixed-steps",
+      "before_sha256": "58673afba6370442b92c94b3b8c6873a16b91a8393544610afa307fce7b2a668",
+      "compatibility": "forwarding shell entry point; BSUB directives retained",
+      "after_sha256": "ed78de240085ac929088e8adce2a4469f47061ecef723039e7ac0a5941a2df85"
+    },
+    "scripts/hpc/jq1_25_interim_stage.lsf": {
+      "path": "experiments/brd4-jq1/backtracking-25/hpc/jq1_25_interim_stage.lsf",
+      "owner": "brd4-jq1/backtracking-25",
+      "before_sha256": "ccd0909aa7d1e603c03aacdab0c3954020db0a3468d1c3b00d96d9e145b7837c",
+      "compatibility": "forwarding shell entry point; BSUB directives retained",
+      "after_sha256": "5a61a51e33227e9cff8832a3e3c2f0c1b068f9e6dbaa97470fe8b83e3ca48234"
+    },
+    "scripts/hpc/jq1_25_report_stage.lsf": {
+      "path": "experiments/brd4-jq1/backtracking-25/hpc/jq1_25_report_stage.lsf",
+      "owner": "brd4-jq1/backtracking-25",
+      "before_sha256": "cef0e2f72d3958ede750ba6e261849e70b13bde9fb141b5f361670ad91986e41",
+      "compatibility": "forwarding shell entry point; BSUB directives retained",
+      "after_sha256": "610e22dd7d864b7779973f1391718ab9fd2262f8550440fb06e50f0b22070c3b"
+    },
+    "scripts/hpc/jq1_fixed_report_stage.lsf": {
+      "path": "experiments/brd4-jq1/fixed-steps/hpc/jq1_fixed_report_stage.lsf",
+      "owner": "brd4-jq1/fixed-steps",
+      "before_sha256": "f6cdb34d5c9a88fb8c3414f39a271c3593d83f1d13de80d3102d3636306d989d",
+      "compatibility": "forwarding shell entry point; BSUB directives retained",
+      "after_sha256": "b7cb676279684095246512feca4053be0b44c3e4b34631b0b7f2143ed9c1f71b"
+    },
+    "scripts/hpc/jq1_lrboost_analysis_stage.lsf": {
+      "path": "experiments/brd4-jq1/fixed-lrboost/hpc/jq1_lrboost_analysis_stage.lsf",
+      "owner": "brd4-jq1/fixed-lrboost",
+      "before_sha256": "996b13274513811b5658d5a2975281fcb606625f2df1555388006ca96dbbf26e",
+      "compatibility": "forwarding shell entry point; BSUB directives retained",
+      "after_sha256": "d98fd222fd63f2a61fa024d2d1c4f819729a3fe31b03b99dd73b12d5b31d7bda"
+    },
+    "scripts/hpc/known_ligand_1000.lsf": {
+      "path": "experiments/graph-controls/known-ligand-1000/hpc/known_ligand_1000.lsf",
+      "owner": "graph-controls/known-ligand-1000",
+      "before_sha256": "95af458de3001c9a6b9852d9e32c3cdffa2630b847bbbd87d9eb27f1ef9c08b0",
+      "compatibility": "forwarding shell entry point; BSUB directives retained",
+      "after_sha256": "d080203906e86bdb89fbcccd363e41870f4ad31d3c7f6258e64e26b8991aa495"
+    },
+    "scripts/hpc/known_ligand_assess.lsf": {
+      "path": "experiments/graph-controls/known-ligand-1000/hpc/known_ligand_assess.lsf",
+      "owner": "graph-controls/known-ligand-1000",
+      "before_sha256": "fb010be2c0f235ca4fe392c45b6bbc6f77fd0a263b11bb65a5673e94dd59a51e",
+      "compatibility": "forwarding shell entry point; BSUB directives retained",
+      "after_sha256": "e223983dab6348d210ebe5ca348d4a680eaa3490ac61f29590be34d9e440f80c"
+    },
+    "scripts/hpc/known_ligand_collect.lsf": {
+      "path": "experiments/graph-controls/known-ligand-1000/hpc/known_ligand_collect.lsf",
+      "owner": "graph-controls/known-ligand-1000",
+      "before_sha256": "49bf4d51ecd64072e2c1b19017709d8cc0b7df67bd541d3b655de45cfd2d88fd",
+      "compatibility": "forwarding shell entry point; BSUB directives retained",
+      "after_sha256": "a640321d899f22598b59ac30bfe38faa8d131132132ceb4d619933ff81ec6668"
+    },
+    "scripts/hpc/known_ligand_controls.lsf": {
+      "path": "experiments/graph-controls/known-ligand-1000/hpc/known_ligand_controls.lsf",
+      "owner": "graph-controls/known-ligand-1000",
+      "before_sha256": "30405f90b4b8c3f957ff4662b5c4b4d1285dbf6618adbcf9ee14b9531e4e0596",
+      "compatibility": "forwarding shell entry point; BSUB directives retained",
+      "after_sha256": "627989b6aa53c9e9ed2210479039808f26925111daeba7350524fe3a30053e63"
+    },
+    "scripts/hpc/known_ligand_readiness.lsf": {
+      "path": "experiments/graph-controls/known-ligand-1000/hpc/known_ligand_readiness.lsf",
+      "owner": "graph-controls/known-ligand-1000",
+      "before_sha256": "d66d47c64efb16cc17bf5c424b8b96c48587414b43782fa448faaf3ffb5a50d0",
+      "compatibility": "forwarding shell entry point; BSUB directives retained",
+      "after_sha256": "cbf57b471ce55d948dc49e3b516399e0fa08ceff67c3c0c70587f8f5ea9defb1"
+    },
+    "scripts/hpc/lrreset_predecessors.json": {
+      "path": "experiments/brd4-jq1/fixed-lrreset/configs/lrreset_predecessors.json",
+      "owner": "brd4-jq1/fixed-lrreset",
+      "before_sha256": "4b4e2408e867c773392d4694c9cb5a518dd725296ded7dc03f8a484d364f9215",
+      "compatibility": "byte-identical declarative compatibility copy; canonical owner is new path",
+      "after_sha256": "4b4e2408e867c773392d4694c9cb5a518dd725296ded7dc03f8a484d364f9215"
+    },
+    "scripts/hpc/protenix_lr03_cpu.lsf": {
+      "path": "experiments/brd4-jq1/protenix-lr03/hpc/protenix_lr03_cpu.lsf",
+      "owner": "brd4-jq1/protenix-lr03",
+      "before_sha256": "27df0438c813e8a351147f2009a523195a8ac8509b715f673797a8e3da06e115",
+      "compatibility": "forwarding shell entry point; BSUB directives retained",
+      "after_sha256": "0502ea1480d647aaa360d8fe17d56836c9798792d68ea83af7f789b53d7b9fbf"
+    },
+    "scripts/hpc/protenix_lr03_stage.lsf": {
+      "path": "experiments/brd4-jq1/protenix-lr03/hpc/protenix_lr03_stage.lsf",
+      "owner": "brd4-jq1/protenix-lr03",
+      "before_sha256": "c8a5c7e699d60f9d3afa6d61886f0991a258714f6874c76a40fd9c99e1f6a69e",
+      "compatibility": "forwarding shell entry point; BSUB directives retained",
+      "after_sha256": "7e9b16e9d7c5e8374ec3b762d28a9c9e19c0717ac070661701e04ed39b263ce6"
+    },
+    "scripts/hpc/protenix_relaxed_gradients.lsf": {
+      "path": "experiments/graph-validation/relaxed-gradients/hpc/protenix_relaxed_gradients.lsf",
+      "owner": "graph-validation/relaxed-gradients",
+      "before_sha256": "c9ed8112f8a539b4acc05275c0228393c5e64bb991b3f46bb2112e7bdf3d9e74",
+      "compatibility": "forwarding shell entry point; BSUB directives retained",
+      "after_sha256": "9ffe8573bb9f3399e2f0e59ab4b99f24b86e2566e28669082944268a5100dc4c"
+    },
+    "scripts/hpc/protenix_tiny.lsf": {
+      "path": "experiments/native-inference/protenix-tiny/hpc/protenix_tiny.lsf",
+      "owner": "native-inference/protenix-tiny",
+      "before_sha256": "068eb4358d7a9982268ea92602de813e0d37de2ac100b2a3221fa130b52ee53a",
+      "compatibility": "forwarding shell entry point; BSUB directives retained",
+      "after_sha256": "fb1cacaec13e847f3e097d8734cec25453ecda0babca431fa458e72f975153f5"
+    },
+    "scripts/hpc/recover_verified_500_archive.py": {
+      "path": "scripts/hpc/recover_verified_500_archive.py",
+      "owner": "shared:hpc",
+      "before_sha256": "37d3d5ef1ef2074a134bba7a0567b588bc326de9a2762eb62d549e0623e7fb87",
+      "compatibility": "unchanged shared canonical file at its existing path",
+      "after_sha256": "37d3d5ef1ef2074a134bba7a0567b588bc326de9a2762eb62d549e0623e7fb87"
+    },
+    "scripts/hpc/render_protenix_trajectory.lsf": {
+      "path": "scripts/reporting/render_protenix_trajectory.lsf",
+      "owner": "shared:reporting",
+      "before_sha256": "c0f926350258a7ee0c0836cbb82144ac90e36e629e420a4307e33241b5e86e82",
+      "compatibility": "forwarding shell entry point; BSUB directives retained",
+      "after_sha256": "985ae525cceefaf1e028c8e84f539daaabcfb1b12b1c9bba8d90804d2c23adde"
+    },
+    "scripts/hpc/small_molecule_stage0.lsf": {
+      "path": "experiments/graph-validation/stage0/hpc/small_molecule_stage0.lsf",
+      "owner": "graph-validation/stage0",
+      "before_sha256": "71168e356af0b03eccfcaaffde089ed111c103df1137d41e9050ec6cbf6a1784",
+      "compatibility": "forwarding shell entry point; BSUB directives retained",
+      "after_sha256": "f5e3f0d57b9c5f8eb792ecf061bb76dca9dba551c92940a416fc0d634f5fb3c7"
+    },
+    "scripts/hpc/stage0_quota_preflight.py": {
+      "path": "scripts/hpc/stage0_quota_preflight.py",
+      "owner": "shared:hpc",
+      "before_sha256": "43c31e001d95cb1dc4a28c40fb4791d7cc271537e91af55172175397fb0f37f9",
+      "compatibility": "unchanged shared canonical file at its existing path",
+      "after_sha256": "43c31e001d95cb1dc4a28c40fb4791d7cc271537e91af55172175397fb0f37f9"
+    },
+    "scripts/hpc/stage_tiny_assets.py": {
+      "path": "experiments/native-inference/protenix-tiny/scripts/stage_tiny_assets.py",
+      "owner": "native-inference/protenix-tiny",
+      "before_sha256": "1ae8c1dbb2d45146c99d014e2f9d9538f3022b98956bfcf55accca38ca564bcf",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "96a96ef6d84c86e76ad652c495b129fcff48c598dd7f68ee6961ebdd71b5517b"
+    },
+    "scripts/hpc/submit_chemistry_native.sh": {
+      "path": "experiments/brd4/chemistry-5000/hpc/submit_chemistry_native.sh",
+      "owner": "brd4/chemistry-5000",
+      "before_sha256": "8a39f2e8ec7a0a87d6e67fa4c1fd7a298822a132a7a69e8862f703991124d02e",
+      "compatibility": "forwarding shell entry point; BSUB directives retained",
+      "after_sha256": "42e0a03836b2e1af437429240d4065de6688f89a8944135baa06f4762dc9efba"
+    },
+    "scripts/hpc/submit_chemistry_ramp.sh": {
+      "path": "experiments/brd4/chemistry-ramp-10000/hpc/submit_chemistry_ramp.sh",
+      "owner": "brd4/chemistry-ramp-10000",
+      "before_sha256": "997e6f7bb80033ad25e5b1cdefd460c95b24d2236397b20fbaecf4f79f9fd0ce",
+      "compatibility": "forwarding shell entry point; BSUB directives retained",
+      "after_sha256": "b57f9f19ff46ae399890320b0abcfdcfb31f317f672395acafa551ed52ec08b5"
+    },
+    "scripts/hpc/submit_chemistry_readiness.sh": {
+      "path": "experiments/brd4/chemistry-5000/hpc/submit_chemistry_readiness.sh",
+      "owner": "brd4/chemistry-5000",
+      "before_sha256": "af8be632de5e3383acfe231e33e771f62bbc8bd55e7f8b4389a4a16309d0f4d1",
+      "compatibility": "forwarding shell entry point; BSUB directives retained",
+      "after_sha256": "557fd3f1acb16bed01e37962d4de58167396d5cf147059c94b7c1351048a28f3"
+    },
+    "scripts/hpc/zhome_quota_preflight.py": {
+      "path": "scripts/hpc/zhome_quota_preflight.py",
+      "owner": "shared:hpc",
+      "before_sha256": "a0bc24ea622de1478728f77bce8412b4bb44594bcaac61667bbbf28989aab95e",
+      "compatibility": "unchanged shared canonical file at its existing path",
+      "after_sha256": "a0bc24ea622de1478728f77bce8412b4bb44594bcaac61667bbbf28989aab95e"
+    },
+    "examples/hpc_protenix_tiny.py": {
+      "path": "experiments/native-inference/protenix-tiny/scripts/hpc_protenix_tiny.py",
+      "owner": "native-inference/protenix-tiny",
+      "before_sha256": "d9fce3e1752b99f59f3460ddc15b054d3dc04186e315be3eba29cadc53c34b04",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "1fa02d275b0f5d61785f8f127f11c07297410aec519270a4676118e91487904a"
+    },
+    "examples/small_molecule_stage0.py": {
+      "path": "experiments/graph-validation/stage0/scripts/small_molecule_stage0.py",
+      "owner": "graph-validation/stage0",
+      "before_sha256": "3104394f8ea22c87e8af151dee14e9dbb264b3de6fa3e167ac6ce5f0eb2fd76d",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "9f7611a2cec6fff69d8f4b1940bfeecfc2c10b425ad2ba59eff3fbef169b6a1c"
+    },
+    "examples/protenix_relaxed_gradients.py": {
+      "path": "scripts/graph/protenix_relaxed_gradients.py",
+      "owner": "shared:graph",
+      "before_sha256": "b257ff1c8de6bcffd5eb1b472bdece50ebcd18eb55be70d95ed4f252a4a5f21d",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "f9dcb59903ff4bd412580c98d0f1ae932b3648da0f1995ededcb817e2c0272d7"
+    },
+    "examples/score_protenix_hard_controls.py": {
+      "path": "scripts/graph/score_protenix_hard_controls.py",
+      "owner": "shared:graph",
+      "before_sha256": "0e0dc501aa4bbf3324261d45937f8eb80879e7254a41f093bfedc914825a2496",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "58e0fad6aec42b1e2e0e853cc73e5ab60f74faa05a5b920c56e3d142dfe64c1d"
+    },
+    "examples/continue_brd4.py": {
+      "path": "experiments/brd4/best-primal-continuation/scripts/continue_brd4.py",
+      "owner": "brd4/best-primal-continuation",
+      "before_sha256": "d0abb0aa1cf6847216524198e00b8fea7071a8964e3dd0c31dfa0ed3f21f553a",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "773465f9e98ef287dfc4ad0703bca28928146ee1299cc0793767cb92af299c4e"
+    },
+    "examples/brd4_chemistry.py": {
+      "path": "scripts/chemistry/brd4_chemistry.py",
+      "owner": "shared:chemistry",
+      "before_sha256": "5369d7f699122acc436e265e101b83adc4356de72807919afb29180a39d527b0",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "9516a3d2c481e477a7295898cd9363b1fc5f920bb33889175133f1d8698da31b"
+    },
+    "examples/brd4_boltz_affinity.py": {
+      "path": "experiments/brd4/boltz-affinity-10000/scripts/brd4_boltz_affinity.py",
+      "owner": "brd4/boltz-affinity-10000",
+      "before_sha256": "b3d8050e6f09c7247ed1240e668831bec412e5b5922de3bec7b7b195be1b62e3",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "01dd8387fbdac68146f65fa83cf27d542b265e73269b5780baaecf319012cf8d"
+    },
+    "examples/brd4_25_atoms.py": {
+      "path": "scripts/campaign25/brd4_25_atoms.py",
+      "owner": "shared:campaign25",
+      "before_sha256": "df39797b999ced8696166815fa9510d00eade58acbf87ea0f424c23ebcdf69b9",
+      "compatibility": "forwarding entry point",
+      "after_sha256": "0b68e46f1f9b89974ba7d900cd86340715b800d3634d8837b01fea0ab68894cd"
+    },
+    "examples/configs/brd4_25_boltz2_10000.json": {
+      "path": "experiments/brd4/three-model-25/configs/brd4_25_boltz2_10000.json",
+      "owner": "brd4/three-model-25",
+      "before_sha256": "329ded111399885a8910741d055df4b3bc2b0a8549df8f60401c60aa14c0b53c",
+      "compatibility": "byte-identical declarative compatibility copy; canonical owner is new path",
+      "after_sha256": "329ded111399885a8910741d055df4b3bc2b0a8549df8f60401c60aa14c0b53c"
+    },
+    "examples/configs/brd4_25_boltz2_chemistry_10000.json": {
+      "path": "experiments/brd4/three-model-25/configs/brd4_25_boltz2_chemistry_10000.json",
+      "owner": "brd4/three-model-25",
+      "before_sha256": "1ea469215c4e8b09fa167753104bf43b2fcf235644184d0003e79333bd71aa4f",
+      "compatibility": "byte-identical declarative compatibility copy; canonical owner is new path",
+      "after_sha256": "1ea469215c4e8b09fa167753104bf43b2fcf235644184d0003e79333bd71aa4f"
+    },
+    "examples/configs/brd4_25_protenix_10000.json": {
+      "path": "experiments/brd4/three-model-25/configs/brd4_25_protenix_10000.json",
+      "owner": "brd4/three-model-25",
+      "before_sha256": "77e8d46a17a74b110a71f6b70bca66efe1496b1ba4edd0822bd1ffa3c8ce8ff1",
+      "compatibility": "byte-identical declarative compatibility copy; canonical owner is new path",
+      "after_sha256": "77e8d46a17a74b110a71f6b70bca66efe1496b1ba4edd0822bd1ffa3c8ce8ff1"
+    },
+    "examples/configs/brd4_5000.json": {
+      "path": "experiments/brd4/contact-5000/configs/brd4_5000.json",
+      "owner": "brd4/contact-5000",
+      "before_sha256": "e893ad0416894409cfef7a3fb6ae61f17b53ae141858c3f519f7c5954f542e09",
+      "compatibility": "byte-identical declarative compatibility copy; canonical owner is new path",
+      "after_sha256": "e893ad0416894409cfef7a3fb6ae61f17b53ae141858c3f519f7c5954f542e09"
+    },
+    "examples/configs/brd4_boltz_affinity_mix50_10000.json": {
+      "path": "experiments/brd4/boltz-affinity-10000/configs/brd4_boltz_affinity_mix50_10000.json",
+      "owner": "brd4/boltz-affinity-10000",
+      "before_sha256": "97faf3b192a7aca566ad86752c2f3efacad69e89b076c88e67e8d14b5435de0e",
+      "compatibility": "byte-identical declarative compatibility copy; canonical owner is new path",
+      "after_sha256": "97faf3b192a7aca566ad86752c2f3efacad69e89b076c88e67e8d14b5435de0e"
+    },
+    "examples/configs/brd4_boltz_affinity_random_10000.json": {
+      "path": "experiments/brd4/boltz-affinity-10000/configs/brd4_boltz_affinity_random_10000.json",
+      "owner": "brd4/boltz-affinity-10000",
+      "before_sha256": "a9556cef734dee421a2c3146506f21da9716f5c5cf8d25874e367c432d15d932",
+      "compatibility": "byte-identical declarative compatibility copy; canonical owner is new path",
+      "after_sha256": "a9556cef734dee421a2c3146506f21da9716f5c5cf8d25874e367c432d15d932"
+    },
+    "examples/configs/brd4_canonical_diffuse_5000.json": {
+      "path": "experiments/brd4/canonical-diffuse-5000/configs/brd4_canonical_diffuse_5000.json",
+      "owner": "brd4/canonical-diffuse-5000",
+      "before_sha256": "49e01e601f77e21770d19b4a40df365315e4521318245d14ccec6e7cdbe6e359",
+      "compatibility": "byte-identical declarative compatibility copy; canonical owner is new path",
+      "after_sha256": "49e01e601f77e21770d19b4a40df365315e4521318245d14ccec6e7cdbe6e359"
+    },
+    "examples/configs/brd4_chemistry_5000.json": {
+      "path": "experiments/brd4/chemistry-5000/configs/brd4_chemistry_5000.json",
+      "owner": "brd4/chemistry-5000",
+      "before_sha256": "42de1ea55cced1d2c0577f65332c26a439d34b61cc620301c439372f88d0ae72",
+      "compatibility": "byte-identical declarative compatibility copy; canonical owner is new path",
+      "after_sha256": "42de1ea55cced1d2c0577f65332c26a439d34b61cc620301c439372f88d0ae72"
+    },
+    "examples/configs/brd4_chemistry_ramp_mix50_10000.json": {
+      "path": "experiments/brd4/chemistry-ramp-10000/configs/brd4_chemistry_ramp_mix50_10000.json",
+      "owner": "brd4/chemistry-ramp-10000",
+      "before_sha256": "1b9ea19c4405a2289f111db7dd8fc41f9df17f4ddffdfe1033de2554197c56ed",
+      "compatibility": "byte-identical declarative compatibility copy; canonical owner is new path",
+      "after_sha256": "1b9ea19c4405a2289f111db7dd8fc41f9df17f4ddffdfe1033de2554197c56ed"
+    },
+    "examples/configs/brd4_chemistry_ramp_random_10000.json": {
+      "path": "experiments/brd4/chemistry-ramp-10000/configs/brd4_chemistry_ramp_random_10000.json",
+      "owner": "brd4/chemistry-ramp-10000",
+      "before_sha256": "3f3bb1fd0b087417a462f7b4b5743ce1fc72ddbd8d099af0348380912ac0685f",
+      "compatibility": "byte-identical declarative compatibility copy; canonical owner is new path",
+      "after_sha256": "3f3bb1fd0b087417a462f7b4b5743ce1fc72ddbd8d099af0348380912ac0685f"
+    },
+    "examples/configs/brd4_interim_report_scope.json": {
+      "path": "experiments/reporting/brd4-comparison/configs/brd4_interim_report_scope.json",
+      "owner": "reporting/brd4-comparison",
+      "before_sha256": "37646b33a879175519019ed9ff290a256a3eaab2dd3b2416534db00c0b5c18c1",
+      "compatibility": "byte-identical declarative compatibility copy; canonical owner is new path",
+      "after_sha256": "37646b33a879175519019ed9ff290a256a3eaab2dd3b2416534db00c0b5c18c1"
+    },
+    "examples/configs/brd4_jq1_25_boltz2_10000.json": {
+      "path": "experiments/brd4-jq1/backtracking-25/configs/brd4_jq1_25_boltz2_10000.json",
+      "owner": "brd4-jq1/backtracking-25",
+      "before_sha256": "cf8d582b79da2c6c65e032a938e9acabcc69a83ef2f490306deb060e7a03c851",
+      "compatibility": "byte-identical declarative compatibility copy; canonical owner is new path",
+      "after_sha256": "cf8d582b79da2c6c65e032a938e9acabcc69a83ef2f490306deb060e7a03c851"
+    },
+    "examples/configs/brd4_jq1_25_boltz2_chemistry_10000.json": {
+      "path": "experiments/brd4-jq1/backtracking-25/configs/brd4_jq1_25_boltz2_chemistry_10000.json",
+      "owner": "brd4-jq1/backtracking-25",
+      "before_sha256": "d6408d2512a6db8cff802369de019f6e878d2c12cbc3421996dff7eb7f3aeee3",
+      "compatibility": "byte-identical declarative compatibility copy; canonical owner is new path",
+      "after_sha256": "d6408d2512a6db8cff802369de019f6e878d2c12cbc3421996dff7eb7f3aeee3"
+    },
+    "examples/configs/brd4_jq1_25_fixed_boltz2_10000.json": {
+      "path": "experiments/brd4-jq1/fixed-steps/configs/brd4_jq1_25_fixed_boltz2_10000.json",
+      "owner": "brd4-jq1/fixed-steps",
+      "before_sha256": "b6217159b0180b8c2f4b3e57764b2101b79e20e1e8cd021b357ae6563e5b161b",
+      "compatibility": "byte-identical declarative compatibility copy; canonical owner is new path",
+      "after_sha256": "b6217159b0180b8c2f4b3e57764b2101b79e20e1e8cd021b357ae6563e5b161b"
+    },
+    "examples/configs/brd4_jq1_25_fixed_boltz2_chemistry_10000.json": {
+      "path": "experiments/brd4-jq1/fixed-steps/configs/brd4_jq1_25_fixed_boltz2_chemistry_10000.json",
+      "owner": "brd4-jq1/fixed-steps",
+      "before_sha256": "dd6347a0756320bc79dea5fbbf7da9aeca8e8bf93dc38f30cd141fd240059049",
+      "compatibility": "byte-identical declarative compatibility copy; canonical owner is new path",
+      "after_sha256": "dd6347a0756320bc79dea5fbbf7da9aeca8e8bf93dc38f30cd141fd240059049"
+    },
+    "examples/configs/brd4_jq1_25_fixed_lrboost_boltz2_10000.json": {
+      "path": "experiments/brd4-jq1/fixed-lrboost/configs/brd4_jq1_25_fixed_lrboost_boltz2_10000.json",
+      "owner": "brd4-jq1/fixed-lrboost",
+      "before_sha256": "efb4a41cd3077f03632ca0b4085c0cbfe98c0800b53c0509a857ae28ae4111fd",
+      "compatibility": "byte-identical declarative compatibility copy; canonical owner is new path",
+      "after_sha256": "efb4a41cd3077f03632ca0b4085c0cbfe98c0800b53c0509a857ae28ae4111fd"
+    },
+    "examples/configs/brd4_jq1_25_fixed_lrboost_boltz2_chemistry_10000.json": {
+      "path": "experiments/brd4-jq1/fixed-lrboost/configs/brd4_jq1_25_fixed_lrboost_boltz2_chemistry_10000.json",
+      "owner": "brd4-jq1/fixed-lrboost",
+      "before_sha256": "6a6f15614989e44b6cc1149ee4ca5e35717d5c21fdc7d2b5748832d912e9b3f0",
+      "compatibility": "byte-identical declarative compatibility copy; canonical owner is new path",
+      "after_sha256": "6a6f15614989e44b6cc1149ee4ca5e35717d5c21fdc7d2b5748832d912e9b3f0"
+    },
+    "examples/configs/brd4_jq1_25_fixed_lrboost_protenix_10000.json": {
+      "path": "experiments/brd4-jq1/fixed-lrboost/configs/brd4_jq1_25_fixed_lrboost_protenix_10000.json",
+      "owner": "brd4-jq1/fixed-lrboost",
+      "before_sha256": "f1c551e5f9cc6f5671acf8b7fef7fe3dbb3197312b096ef55772cb005195fb93",
+      "compatibility": "byte-identical declarative compatibility copy; canonical owner is new path",
+      "after_sha256": "f1c551e5f9cc6f5671acf8b7fef7fe3dbb3197312b096ef55772cb005195fb93"
+    },
+    "examples/configs/brd4_jq1_25_fixed_lrreset_boltz2_10000.json": {
+      "path": "experiments/brd4-jq1/fixed-lrreset/configs/brd4_jq1_25_fixed_lrreset_boltz2_10000.json",
+      "owner": "brd4-jq1/fixed-lrreset",
+      "before_sha256": "40f8038dac8485bdfcde4591d48b1162edaf6294e04406efee97a68813670d7f",
+      "compatibility": "byte-identical declarative compatibility copy; canonical owner is new path",
+      "after_sha256": "40f8038dac8485bdfcde4591d48b1162edaf6294e04406efee97a68813670d7f"
+    },
+    "examples/configs/brd4_jq1_25_fixed_lrreset_boltz2_chemistry_10000.json": {
+      "path": "experiments/brd4-jq1/fixed-lrreset/configs/brd4_jq1_25_fixed_lrreset_boltz2_chemistry_10000.json",
+      "owner": "brd4-jq1/fixed-lrreset",
+      "before_sha256": "02b65a4face438c4e37d15b92f7833673513cce2dbfb6feceff8aef7a2c63063",
+      "compatibility": "byte-identical declarative compatibility copy; canonical owner is new path",
+      "after_sha256": "02b65a4face438c4e37d15b92f7833673513cce2dbfb6feceff8aef7a2c63063"
+    },
+    "examples/configs/brd4_jq1_25_fixed_lrreset_protenix_10000.json": {
+      "path": "experiments/brd4-jq1/fixed-lrreset/configs/brd4_jq1_25_fixed_lrreset_protenix_10000.json",
+      "owner": "brd4-jq1/fixed-lrreset",
+      "before_sha256": "5b1739f0c9c82e97c05d1fee4fe2b26b8efdacb96d2f4152cd873d96b4464959",
+      "compatibility": "byte-identical declarative compatibility copy; canonical owner is new path",
+      "after_sha256": "5b1739f0c9c82e97c05d1fee4fe2b26b8efdacb96d2f4152cd873d96b4464959"
+    },
+    "examples/configs/brd4_jq1_25_fixed_protenix_10000.json": {
+      "path": "experiments/brd4-jq1/fixed-steps/configs/brd4_jq1_25_fixed_protenix_10000.json",
+      "owner": "brd4-jq1/fixed-steps",
+      "before_sha256": "69257fd9700d8ca0f42e13ae95ec4c3a15ca623064f657acf4fb8c85b65f1d00",
+      "compatibility": "byte-identical declarative compatibility copy; canonical owner is new path",
+      "after_sha256": "69257fd9700d8ca0f42e13ae95ec4c3a15ca623064f657acf4fb8c85b65f1d00"
+    },
+    "examples/configs/brd4_jq1_25_protenix_10000.json": {
+      "path": "experiments/brd4-jq1/backtracking-25/configs/brd4_jq1_25_protenix_10000.json",
+      "owner": "brd4-jq1/backtracking-25",
+      "before_sha256": "4faaa44f4ee4adca2c3f1e0f7bdc33b0e3d939a9be312afe9b2f1c736f18252e",
+      "compatibility": "byte-identical declarative compatibility copy; canonical owner is new path",
+      "after_sha256": "4faaa44f4ee4adca2c3f1e0f7bdc33b0e3d939a9be312afe9b2f1c736f18252e"
+    },
+    "examples/configs/brd4_jq1_25_protenix_lr03_10000.json": {
+      "path": "experiments/brd4-jq1/protenix-lr03/configs/brd4_jq1_25_protenix_lr03_10000.json",
+      "owner": "brd4-jq1/protenix-lr03",
+      "before_sha256": "cb5421162dd9a96ea2c453da1d5286b73428cc7d8a82a139a8ea2e44cad7e7f5",
+      "compatibility": "byte-identical declarative compatibility copy; canonical owner is new path",
+      "after_sha256": "cb5421162dd9a96ea2c453da1d5286b73428cc7d8a82a139a8ea2e44cad7e7f5"
+    },
+    "examples/configs/brd4_noisy_uniform_5000.json": {
+      "path": "experiments/brd4/noisy-uniform-5000/configs/brd4_noisy_uniform_5000.json",
+      "owner": "brd4/noisy-uniform-5000",
+      "before_sha256": "c74107f4720b148ac3b19968fa32bd5dd4f093824cae5527345ec24c93625c71",
+      "compatibility": "byte-identical declarative compatibility copy; canonical owner is new path",
+      "after_sha256": "c74107f4720b148ac3b19968fa32bd5dd4f093824cae5527345ec24c93625c71"
+    },
+    "examples/configs/brd4_pilot.json": {
+      "path": "experiments/brd4/contact-5000/configs/brd4_pilot.json",
+      "owner": "brd4/contact-5000",
+      "before_sha256": "e2594b7f5717cd6f895e92cdebf67238218c0340022fa55e7b27ee4ecd1fd338",
+      "compatibility": "byte-identical declarative compatibility copy; canonical owner is new path",
+      "after_sha256": "e2594b7f5717cd6f895e92cdebf67238218c0340022fa55e7b27ee4ecd1fd338"
+    },
+    "examples/configs/brd4_uniform_5000.json": {
+      "path": "experiments/brd4/uniform-5000/configs/brd4_uniform_5000.json",
+      "owner": "brd4/uniform-5000",
+      "before_sha256": "898d4bda519ebe53ce40881a5bf0ff66c53f81788ab1679111f990a201161836",
+      "compatibility": "byte-identical declarative compatibility copy; canonical owner is new path",
+      "after_sha256": "898d4bda519ebe53ce40881a5bf0ff66c53f81788ab1679111f990a201161836"
+    },
+    "examples/configs/carbon_chain_100.json": {
+      "path": "experiments/graph-controls/carbon-chain-100/configs/carbon_chain_100.json",
+      "owner": "graph-controls/carbon-chain-100",
+      "before_sha256": "b009546466d29ae202abf4ed0b781b3b438adb58f0cf94c5f79b17406b8d8c2d",
+      "compatibility": "byte-identical declarative compatibility copy; canonical owner is new path",
+      "after_sha256": "b009546466d29ae202abf4ed0b781b3b438adb58f0cf94c5f79b17406b8d8c2d"
+    },
+    "examples/configs/carbon_chain_500.json": {
+      "path": "experiments/graph-controls/carbon-chain-500/configs/carbon_chain_500.json",
+      "owner": "graph-controls/carbon-chain-500",
+      "before_sha256": "133c9916981f541fe668c06ac6bb4329a72f611997d1488ad6db20a99c9e3426",
+      "compatibility": "byte-identical declarative compatibility copy; canonical owner is new path",
+      "after_sha256": "133c9916981f541fe668c06ac6bb4329a72f611997d1488ad6db20a99c9e3426"
+    },
+    "examples/configs/carbon_chain_500_mix50.json": {
+      "path": "experiments/graph-controls/carbon-chain-500/configs/carbon_chain_500_mix50.json",
+      "owner": "graph-controls/carbon-chain-500",
+      "before_sha256": "3980cbec9a573f25cd93511a9a4730ba9d641c4efc5024c7459dca995ad0dd35",
+      "compatibility": "byte-identical declarative compatibility copy; canonical owner is new path",
+      "after_sha256": "3980cbec9a573f25cd93511a9a4730ba9d641c4efc5024c7459dca995ad0dd35"
+    },
+    "examples/configs/known_ligand_1000.json": {
+      "path": "experiments/graph-controls/known-ligand-1000/configs/known_ligand_1000.json",
+      "owner": "graph-controls/known-ligand-1000",
+      "before_sha256": "b0f05ce6735a094e080734dfae8a4bfec08be6886686f6c9899f87723923c3d0",
+      "compatibility": "byte-identical declarative compatibility copy; canonical owner is new path",
+      "after_sha256": "b0f05ce6735a094e080734dfae8a4bfec08be6886686f6c9899f87723923c3d0"
+    },
+    "examples/configs/known_ligand_pilot.json": {
+      "path": "experiments/graph-controls/known-ligand-1000/configs/known_ligand_pilot.json",
+      "owner": "graph-controls/known-ligand-1000",
+      "before_sha256": "62984fc869f5a5a136a5fa3fd50c901b9ea733c6d7189c493a63b32ea15f8c30",
+      "compatibility": "byte-identical declarative compatibility copy; canonical owner is new path",
+      "after_sha256": "62984fc869f5a5a136a5fa3fd50c901b9ea733c6d7189c493a63b32ea15f8c30"
+    },
+    "examples/configs/protenix_relaxed_gradients.json": {
+      "path": "experiments/graph-validation/relaxed-gradients/configs/protenix_relaxed_gradients.json",
+      "owner": "graph-validation/relaxed-gradients",
+      "before_sha256": "5a216c87afaa9d4283730fbf790e9b09ad2f0bf553edbdbb8a6830d4711d61f0",
+      "compatibility": "byte-identical declarative compatibility copy; canonical owner is new path",
+      "after_sha256": "5a216c87afaa9d4283730fbf790e9b09ad2f0bf553edbdbb8a6830d4711d61f0"
+    },
+    "examples/configs/small_molecule_stage0.json": {
+      "path": "experiments/graph-validation/stage0/configs/small_molecule_stage0.json",
+      "owner": "graph-validation/stage0",
+      "before_sha256": "fbb0de4a8055d5e4219dc0de5acb8b9c44ca3118fed5bf496ac8726c8602947b",
+      "compatibility": "byte-identical declarative compatibility copy; canonical owner is new path",
+      "after_sha256": "fbb0de4a8055d5e4219dc0de5acb8b9c44ca3118fed5bf496ac8726c8602947b"
+    },
+    "scripts/templates/protenix_trajectory_report.html": {
+      "path": "scripts/reporting/protenix_trajectory_report.html",
+      "owner": "shared:reporting",
+      "before_sha256": "71ebcf184ab804733ba915bd130671f32771b3cb3ea80366ae239c8cd2f43b4d",
+      "compatibility": "byte-identical declarative compatibility copy; canonical owner is new path",
+      "after_sha256": "71ebcf184ab804733ba915bd130671f32771b3cb3ea80366ae239c8cd2f43b4d"
+    },
+    "scripts/templates/mosaic_milestones.html": {
+      "path": "experiments/reporting/milestones/templates/mosaic_milestones.html",
+      "owner": "reporting/milestones",
+      "before_sha256": "b8079759e6daa934c68ffbdc144289de67410cc85ad07ac0f269e50a760e3e2b",
+      "compatibility": "byte-identical declarative compatibility copy; canonical owner is new path",
+      "after_sha256": "b8079759e6daa934c68ffbdc144289de67410cc85ad07ac0f269e50a760e3e2b"
+    },
+    "scripts/templates/jq1_25_report.html": {
+      "path": "experiments/brd4-jq1/backtracking-25/templates/jq1_25_report.html",
+      "owner": "brd4-jq1/backtracking-25",
+      "before_sha256": "8d8a54db4c78366b7af01a110e9c7cde7c2005fb003b3ce50cd1cbc86220be1a",
+      "compatibility": "byte-identical declarative compatibility copy; canonical owner is new path",
+      "after_sha256": "8d8a54db4c78366b7af01a110e9c7cde7c2005fb003b3ce50cd1cbc86220be1a"
+    },
+    "scripts/templates/jq1_fixed_report.html": {
+      "path": "experiments/brd4-jq1/fixed-steps/templates/jq1_fixed_report.html",
+      "owner": "brd4-jq1/fixed-steps",
+      "before_sha256": "6a3ce2e0cde8cea72379382dc19b5d8437f1489817d98e06dcb6af18150eea16",
+      "compatibility": "byte-identical declarative compatibility copy; canonical owner is new path",
+      "after_sha256": "6a3ce2e0cde8cea72379382dc19b5d8437f1489817d98e06dcb6af18150eea16"
+    },
+    "scripts/templates/jq1_lrboost_report.html": {
+      "path": "experiments/brd4-jq1/fixed-lrboost/templates/jq1_lrboost_report.html",
+      "owner": "brd4-jq1/fixed-lrboost",
+      "before_sha256": "79c344b48be13115fa5b44d1763c9f6ad96b26a0f73cea431854213ecb792b50",
+      "compatibility": "byte-identical declarative compatibility copy; canonical owner is new path",
+      "after_sha256": "79c344b48be13115fa5b44d1763c9f6ad96b26a0f73cea431854213ecb792b50"
+    },
+    "tests/test_boltz_affinity_report.py": {
+      "path": "experiments/brd4/boltz-affinity-10000/tests/test_boltz_affinity_report.py",
+      "owner": "brd4/boltz-affinity-10000",
+      "before_sha256": "06e75dfbcbdc406927cf6bffa78c6112efb836cbd41d8f94f41d256114f754b1",
+      "compatibility": "forwarding pytest entry point; default tests/ discovery remains single-copy",
+      "after_sha256": "9ff4adbc899e07acc82417c987ff480e822b20ac976090ed8fddfe8e02e0bf91"
+    },
+    "tests/test_boltz_arm_readiness.py": {
+      "path": "experiments/brd4/boltz-affinity-10000/tests/test_boltz_arm_readiness.py",
+      "owner": "brd4/boltz-affinity-10000",
+      "before_sha256": "fa27165d4c854c668db2d9defa1c48d8acbe38f66807d95aa86b3d16d4ea0e7e",
+      "compatibility": "forwarding pytest entry point; default tests/ discovery remains single-copy",
+      "after_sha256": "d13d1f24426a44f151d21acfa51fafcf23be151afb2cf972b8ec485ae1ee7d42"
+    },
+    "tests/test_boltz_diagnostic_cpu.py": {
+      "path": "experiments/brd4/boltz-gradient-diagnostic/tests/test_boltz_diagnostic_cpu.py",
+      "owner": "brd4/boltz-gradient-diagnostic",
+      "before_sha256": "19887754cfc801c10ec8f724e54f02c4a14c59ec7bc731e5699f9e11cb8f2d0b",
+      "compatibility": "forwarding pytest entry point; default tests/ discovery remains single-copy",
+      "after_sha256": "c840286918d0e34904f39a3015fb8b0e1d69a83b6c9aeb7b9fe9eea4c6a79a5c"
+    },
+    "tests/test_boltz_gradient_diagnostic_contract.py": {
+      "path": "experiments/brd4/boltz-gradient-diagnostic/tests/test_boltz_gradient_diagnostic_contract.py",
+      "owner": "brd4/boltz-gradient-diagnostic",
+      "before_sha256": "aeabec1d89ca826788f103dab19a41ccc143e8a1dbe46cef18151c3779700e3e",
+      "compatibility": "forwarding pytest entry point; default tests/ discovery remains single-copy",
+      "after_sha256": "fabd8af453168c2ad2e059a3cc3d266ddb76877a1f40e6a0a54ceb08436d0ee2"
+    },
+    "tests/test_boltz_hpc_tmpdir.py": {
+      "path": "experiments/brd4/boltz-affinity-10000/tests/test_boltz_hpc_tmpdir.py",
+      "owner": "brd4/boltz-affinity-10000",
+      "before_sha256": "5d3f20113a1a77540aee97fe8cca6e8f988e4be99ad2fbf9b16c6327fba0070f",
+      "compatibility": "forwarding pytest entry point; default tests/ discovery remains single-copy",
+      "after_sha256": "aa925e6133d55bafe9098ba3e26478f5b51cce7a0f26b43f73aebf3d90dcd501"
+    },
+    "tests/test_boltz_native_mapping.py": {
+      "path": "experiments/brd4/boltz-affinity-10000/tests/test_boltz_native_mapping.py",
+      "owner": "brd4/boltz-affinity-10000",
+      "before_sha256": "8ef019c0a4a000b7cdaa33c5db49df630494c53d25de3ddf1a5a8db84b4b21cf",
+      "compatibility": "forwarding pytest entry point; default tests/ discovery remains single-copy",
+      "after_sha256": "1443695c84757014f4f9d7b9cecfef745288a4765d625980473adc05b1a09e1e"
+    },
+    "tests/test_boltz_submission_controller.py": {
+      "path": "experiments/brd4/boltz-affinity-10000/tests/test_boltz_submission_controller.py",
+      "owner": "brd4/boltz-affinity-10000",
+      "before_sha256": "655683537a3c6908e06ccc484a11767098757046b91c75d45c6fbf9ef01967aa",
+      "compatibility": "forwarding pytest entry point; default tests/ discovery remains single-copy",
+      "after_sha256": "210662f2db86578b625baa25ab8e7cdac38056f0f176afa315f5abfbe2117c56"
+    },
+    "tests/test_campaign25_contract.py": {
+      "path": "experiments/brd4/three-model-25/tests/test_campaign25_contract.py",
+      "owner": "brd4/three-model-25",
+      "before_sha256": "ca26d07a017418880db6b47e221406bd9347e0c21a60af60b52254b55df9b9a2",
+      "compatibility": "forwarding pytest entry point; default tests/ discovery remains single-copy",
+      "after_sha256": "e2058a941748005b51c557c8f7d8ea14c94c050f6a5fc6fb2ed2b6c16f5b252b"
+    },
+    "tests/test_campaign25_native.py": {
+      "path": "experiments/brd4/three-model-25/tests/test_campaign25_native.py",
+      "owner": "brd4/three-model-25",
+      "before_sha256": "6b71f2205e78ca05f1c88bbbfc8b93d5008a65f581aa7d11a7fa92531f1162c4",
+      "compatibility": "forwarding pytest entry point; default tests/ discovery remains single-copy",
+      "after_sha256": "bc821990ed9570100406cf5fe7b5f0888912fddc5cb4255bc995036301c1ea39"
+    },
+    "tests/test_campaign25_ops.py": {
+      "path": "experiments/brd4/three-model-25/tests/test_campaign25_ops.py",
+      "owner": "brd4/three-model-25",
+      "before_sha256": "88d78ac65364a3d3d4d6db8b1d39df8ec8c8029bff5c536746f67388590d2463",
+      "compatibility": "forwarding pytest entry point; default tests/ discovery remains single-copy",
+      "after_sha256": "13bc6583d5eefb158bf753bbb13718a711bfbbc91756c2f8b3fbad4bc4103876"
+    },
+    "tests/test_campaign25_pocket_ops.py": {
+      "path": "experiments/brd4/three-model-25/tests/test_campaign25_pocket_ops.py",
+      "owner": "brd4/three-model-25",
+      "before_sha256": "d310c270e6355b413333901b1569a822aa08fd4010f6dd75ed001cf34950dd9e",
+      "compatibility": "forwarding pytest entry point; default tests/ discovery remains single-copy",
+      "after_sha256": "f0ce6ee13d6f5a981ca334565da883201dbb7dff1dbf559672dd8ec25ad14f42"
+    },
+    "tests/test_campaign25_release.py": {
+      "path": "experiments/brd4/three-model-25/tests/test_campaign25_release.py",
+      "owner": "brd4/three-model-25",
+      "before_sha256": "b3ab3c7a2fffa7cd249529e66fe3c99c5a669b7baa2b788bc01561f1fb2593de",
+      "compatibility": "forwarding pytest entry point; default tests/ discovery remains single-copy",
+      "after_sha256": "514ff803aafe1f521ec6d03203a3cb2adf179610a421d5e55f2751558cbde3a0"
+    },
+    "tests/test_chemistry_compatibility_probe.py": {
+      "path": "experiments/brd4/chemistry-compatibility/tests/test_chemistry_compatibility_probe.py",
+      "owner": "brd4/chemistry-compatibility",
+      "before_sha256": "f5948d86c03e3ca4235052824319562201d9a441691ef45cd11991cf68039aed",
+      "compatibility": "forwarding pytest entry point; default tests/ discovery remains single-copy",
+      "after_sha256": "f4c13363eceab3e98e8c63f9113fb371154e1897c698dc0424da377a64525ea1"
+    },
+    "tests/test_fixed25_lrboost_contract.py": {
+      "path": "experiments/brd4-jq1/fixed-lrboost/tests/test_fixed25_lrboost_contract.py",
+      "owner": "brd4-jq1/fixed-lrboost",
+      "before_sha256": "8cc7b52cc47fb63e9592611e5f6a88ce5b94370d96f4202829ff6ca7aef06009",
+      "compatibility": "forwarding pytest entry point; default tests/ discovery remains single-copy",
+      "after_sha256": "7b8ba74eaba62f69e222f8329f57af560ee94f6a56cbce2c6f14c86b2868ebf6"
+    },
+    "tests/test_fixed25_lrboost_ops.py": {
+      "path": "experiments/brd4-jq1/fixed-lrboost/tests/test_fixed25_lrboost_ops.py",
+      "owner": "brd4-jq1/fixed-lrboost",
+      "before_sha256": "9bcca5cf298831e4e011f05eac2237cb28072a5c7d748da8fa47d917877242ea",
+      "compatibility": "forwarding pytest entry point; default tests/ discovery remains single-copy",
+      "after_sha256": "9c3079c2d1c0201ca20a62fd1cba690089a7d07ed345c0f6efe853f74c0afd38"
+    },
+    "tests/test_fixed25_lrboost_storage.py": {
+      "path": "experiments/brd4-jq1/fixed-lrboost/tests/test_fixed25_lrboost_storage.py",
+      "owner": "brd4-jq1/fixed-lrboost",
+      "before_sha256": "f85456c23a10bae58b74080390f2969613c11743ae2f83134224f8b6024a7d4b",
+      "compatibility": "forwarding pytest entry point; default tests/ discovery remains single-copy",
+      "after_sha256": "36309d9a4c101db26c86526c405e1da2ca3bc7e9f034c5abeb3c493d4b751fd4"
+    },
+    "tests/test_fixed25_lrreset_contract.py": {
+      "path": "experiments/brd4-jq1/fixed-lrreset/tests/test_fixed25_lrreset_contract.py",
+      "owner": "brd4-jq1/fixed-lrreset",
+      "before_sha256": "35038b439533bc7b0e0e9b4e47c92706b3f19619b75d2e64afea97bbd160a6d2",
+      "compatibility": "forwarding pytest entry point; default tests/ discovery remains single-copy",
+      "after_sha256": "ac245f90895aa599033bad3f793f3f7d4f5dd523ff14305be5d4759677703022"
+    },
+    "tests/test_fixed25_lrreset_ops.py": {
+      "path": "experiments/brd4-jq1/fixed-lrreset/tests/test_fixed25_lrreset_ops.py",
+      "owner": "brd4-jq1/fixed-lrreset",
+      "before_sha256": "bf8e0725564816799f99ac52e4622be6b9ca73b6cd762dbaeff356c6f4b4fd9e",
+      "compatibility": "forwarding pytest entry point; default tests/ discovery remains single-copy",
+      "after_sha256": "0e7b9b46d46b4afe89d2cf877d812f7a2e898610e9d546392e3496994489f655"
+    },
+    "tests/test_fixed25_lrreset_storage.py": {
+      "path": "experiments/brd4-jq1/fixed-lrreset/tests/test_fixed25_lrreset_storage.py",
+      "owner": "brd4-jq1/fixed-lrreset",
+      "before_sha256": "24b30f65b801ea57b7358385acf8d262599314225cc8cd1d5090f42038b0a41e",
+      "compatibility": "forwarding pytest entry point; default tests/ discovery remains single-copy",
+      "after_sha256": "95e0cb1210294cf7ee5f4f577695573e619ad0bc8bb873a913ad1d24aaf08609"
+    },
+    "tests/test_fixed25_ops.py": {
+      "path": "experiments/brd4-jq1/fixed-steps/tests/test_fixed25_ops.py",
+      "owner": "brd4-jq1/fixed-steps",
+      "before_sha256": "76610c2462fb3ec6727a34e738fdecc1a6bed431c23d0f28fb1bee5067d192f7",
+      "compatibility": "forwarding pytest entry point; default tests/ discovery remains single-copy",
+      "after_sha256": "e76911184e27c141ddf7bb8d85607a47b17cdda66bd4cb80055d7748f511c1d1"
+    },
+    "tests/test_fixed25_recover_ops.py": {
+      "path": "experiments/brd4-jq1/fixed-steps/tests/test_fixed25_recover_ops.py",
+      "owner": "brd4-jq1/fixed-steps",
+      "before_sha256": "6ba8dbbbd6b9fe8672f53acbff19c38577062f8097cd0185e930c62862567b65",
+      "compatibility": "forwarding pytest entry point; default tests/ discovery remains single-copy",
+      "after_sha256": "b5d90ad1cd17916235d3cd714530d0a4e70feadbd561f6ff6f9708fafea0db89"
+    },
+    "tests/test_fixed25_recover_storage.py": {
+      "path": "experiments/brd4-jq1/fixed-steps/tests/test_fixed25_recover_storage.py",
+      "owner": "brd4-jq1/fixed-steps",
+      "before_sha256": "d155360b9bd1ffa77681db462501a57bd542b4a019624a7bcbfa763774414282",
+      "compatibility": "forwarding pytest entry point; default tests/ discovery remains single-copy",
+      "after_sha256": "f0bea4b733b89a6af89eac11e7cf4d49674dbfcf2b6363c1882609faabc47320"
+    },
+    "tests/test_fixed25_split_ops.py": {
+      "path": "experiments/brd4-jq1/fixed-steps/tests/test_fixed25_split_ops.py",
+      "owner": "brd4-jq1/fixed-steps",
+      "before_sha256": "075287d12da20ac00338c62d864fbcf6cf91d8bad6380a276f66c82d08abafb2",
+      "compatibility": "forwarding pytest entry point; default tests/ discovery remains single-copy",
+      "after_sha256": "ccacd97536685b662f55ca7df136f5399e7f0343779c23ff8a68753cfa31b749"
+    },
+    "tests/test_fixed25_split_storage.py": {
+      "path": "experiments/brd4-jq1/fixed-steps/tests/test_fixed25_split_storage.py",
+      "owner": "brd4-jq1/fixed-steps",
+      "before_sha256": "2fc201e4e66c9f36b99cb31bc785b8e434d35b8d1471a2466aac273bc74ccd87",
+      "compatibility": "forwarding pytest entry point; default tests/ discovery remains single-copy",
+      "after_sha256": "924d849e5bde65bdb53e26a849075e47ed72cb30ebdcacc16f64ec5f725a866b"
+    },
+    "tests/test_fixed25_storage.py": {
+      "path": "experiments/brd4-jq1/fixed-steps/tests/test_fixed25_storage.py",
+      "owner": "brd4-jq1/fixed-steps",
+      "before_sha256": "85e42073b8356547c2a67e7d20e3194667db8282a7447f0d7ff6bdd3bf9caee7",
+      "compatibility": "forwarding pytest entry point; default tests/ discovery remains single-copy",
+      "after_sha256": "d7dc5e4faee2d6b11b1a7cde79a41e02b744063365d91e422db6cd37167729de"
+    },
+    "tests/test_jq1_25_interim.py": {
+      "path": "experiments/brd4-jq1/backtracking-25/tests/test_jq1_25_interim.py",
+      "owner": "brd4-jq1/backtracking-25",
+      "before_sha256": "388df60c1f5164c2762fe31bd1cf27affb6d5da77e2eaddb5a89590840f9b5e7",
+      "compatibility": "forwarding pytest entry point; default tests/ discovery remains single-copy",
+      "after_sha256": "964038c44ac599f3458d02f5d82b74ea39e226fa632e531e176a8e7cccdb3d2d"
+    },
+    "tests/test_jq1_25_report.py": {
+      "path": "experiments/brd4-jq1/backtracking-25/tests/test_jq1_25_report.py",
+      "owner": "brd4-jq1/backtracking-25",
+      "before_sha256": "8f647919fee515fbec9a9f3e2c244f7686cf43c668e8d36b3b4d1f3259cea2ea",
+      "compatibility": "forwarding pytest entry point; default tests/ discovery remains single-copy",
+      "after_sha256": "3d51fdeb2049da020ef00814760157004fc276238fca9479f42ba81df6d8f780"
+    },
+    "tests/test_jq1_fixed_ops.py": {
+      "path": "experiments/brd4-jq1/fixed-steps/tests/test_jq1_fixed_ops.py",
+      "owner": "brd4-jq1/fixed-steps",
+      "before_sha256": "9c7068a1d9b523a0bbb71ea01693f6ef48bac7f73f6470c08a8e1f59f51e3cc6",
+      "compatibility": "forwarding pytest entry point; default tests/ discovery remains single-copy",
+      "after_sha256": "35e789e9f5753fa108d8a32e3132ac7ad07178753698a0b253de11ca4a572096"
+    },
+    "tests/test_jq1_fixed_publish.py": {
+      "path": "experiments/brd4-jq1/fixed-steps/tests/test_jq1_fixed_publish.py",
+      "owner": "brd4-jq1/fixed-steps",
+      "before_sha256": "7b41ccd08e992a52451ef3400acb79d6b35ea15bb5daa581c4b8e475c6c343b5",
+      "compatibility": "forwarding pytest entry point; default tests/ discovery remains single-copy",
+      "after_sha256": "6533329248fb2feb93153f26d77214381766003eeba64e5264a2bb0f222004d1"
+    },
+    "tests/test_jq1_fixed_render.py": {
+      "path": "experiments/brd4-jq1/fixed-steps/tests/test_jq1_fixed_render.py",
+      "owner": "brd4-jq1/fixed-steps",
+      "before_sha256": "83cdbf9a3cf0e9cec03890d9ad246e6161856526f6a95be8a18c865e2aea0303",
+      "compatibility": "forwarding pytest entry point; default tests/ discovery remains single-copy",
+      "after_sha256": "128f524902646e355393b4065810142af1ad096386c1211b666123d532e633b1"
+    },
+    "tests/test_jq1_fixed_report_contract.py": {
+      "path": "experiments/brd4-jq1/fixed-steps/tests/test_jq1_fixed_report_contract.py",
+      "owner": "brd4-jq1/fixed-steps",
+      "before_sha256": "aec492b67ae8a8f67e98ccc592e62c219bff7f1658d4e7773a89dd68ac6cf56b",
+      "compatibility": "forwarding pytest entry point; default tests/ discovery remains single-copy",
+      "after_sha256": "4047ece6b25064b55ca67ff511f73db4cc19a18e6620be904f9829a8e26e6530"
+    },
+    "tests/test_jq1_lrboost_ops.py": {
+      "path": "experiments/brd4-jq1/fixed-lrboost/tests/test_jq1_lrboost_ops.py",
+      "owner": "brd4-jq1/fixed-lrboost",
+      "before_sha256": "0e6dbeb4772eff403669a4521c65bc9fa8a935cd68886cdde643b71e67b8ff3a",
+      "compatibility": "forwarding pytest entry point; default tests/ discovery remains single-copy",
+      "after_sha256": "2a62310b7dec96cac16712ab80b8fcda43b5c25d6be54cb294907a0ff58a3270"
+    },
+    "tests/test_jq1_lrboost_publish.py": {
+      "path": "experiments/brd4-jq1/fixed-lrboost/tests/test_jq1_lrboost_publish.py",
+      "owner": "brd4-jq1/fixed-lrboost",
+      "before_sha256": "9dd6ec80483247ff429f3b93be5310b440b9c8cb656ab65cf16b36380ea7d1e4",
+      "compatibility": "forwarding pytest entry point; default tests/ discovery remains single-copy",
+      "after_sha256": "a311d3cb116c9b4309c1d6ac57f93615da855553728056f465e6d41156a34f62"
+    },
+    "tests/test_jq1_lrboost_render.py": {
+      "path": "experiments/brd4-jq1/fixed-lrboost/tests/test_jq1_lrboost_render.py",
+      "owner": "brd4-jq1/fixed-lrboost",
+      "before_sha256": "91cecc8c283be9cb5a346e30603cb0653dfebe3839a5d6e1d9ba0166cc6be710",
+      "compatibility": "forwarding pytest entry point; default tests/ discovery remains single-copy",
+      "after_sha256": "62858141e4a7c9ae4862aa0802a39e774646a585b5dbd63047365906580bcfa6"
+    },
+    "tests/test_jq1_lrboost_report_contract.py": {
+      "path": "experiments/brd4-jq1/fixed-lrboost/tests/test_jq1_lrboost_report_contract.py",
+      "owner": "brd4-jq1/fixed-lrboost",
+      "before_sha256": "98df7117e7714e4ad418c9c1ed5af2f237793c46d9504b709d82661c01362445",
+      "compatibility": "forwarding pytest entry point; default tests/ discovery remains single-copy",
+      "after_sha256": "185489350df7c2afc88de868d183ab52ec6272a0eeec131f060e1292772df646"
+    },
+    "tests/test_lrboost_endpoint_diagnostics.py": {
+      "path": "experiments/brd4-jq1/fixed-lrboost/tests/test_lrboost_endpoint_diagnostics.py",
+      "owner": "brd4-jq1/fixed-lrboost",
+      "before_sha256": "f3158c7f6cdf4535a690f63d33369688e1053baac3e6cefd0301314bc50050c3",
+      "compatibility": "forwarding pytest entry point; default tests/ discovery remains single-copy",
+      "after_sha256": "b9d82d07ef3a416637633f1d7474603856dd38325feedd06f796c805f373d31b"
+    },
+    "tests/test_protenix_lr03_ops.py": {
+      "path": "experiments/brd4-jq1/protenix-lr03/tests/test_protenix_lr03_ops.py",
+      "owner": "brd4-jq1/protenix-lr03",
+      "before_sha256": "df00a71762be35b6a917ff38e3a33646ce0c5f440d8c7788858c7d5c29a47982",
+      "compatibility": "forwarding pytest entry point; default tests/ discovery remains single-copy",
+      "after_sha256": "6e06555b4460a58e672a22d46e49cd002cdd5beaca01b02b0e53307ca3d29b11"
+    },
+    "tests/test_protenix_lr03_storage.py": {
+      "path": "experiments/brd4-jq1/protenix-lr03/tests/test_protenix_lr03_storage.py",
+      "owner": "brd4-jq1/protenix-lr03",
+      "before_sha256": "e28fdc0dab7bdcc77e9ed82e4202b88fa1e74f70192ebb00c15583e2e6b9b71d",
+      "compatibility": "forwarding pytest entry point; default tests/ discovery remains single-copy",
+      "after_sha256": "19f9a52469c157cd1857535c3b8f9a4a48cd36b513fe9b8f1228cb0e20ff1666"
+    }
+  },
+  "adapted_shared_tests": [
+    "tests/test_small_molecule_brd4_fixture.py",
+    "tests/test_small_molecule_case_selection.py",
+    "tests/test_small_molecule_chemistry_ramp_report.py",
+    "tests/test_small_molecule_chemistry_report.py",
+    "tests/test_small_molecule_contact_native.py",
+    "tests/test_small_molecule_diffuse_control.py",
+    "tests/test_small_molecule_evidence_root.py",
+    "tests/test_small_molecule_gradient_checks.py",
+    "tests/test_small_molecule_home_quota.py",
+    "tests/test_small_molecule_integration.py",
+    "tests/test_small_molecule_known_ligand_fixture.py",
+    "tests/test_small_molecule_prepared_study.py",
+    "tests/test_small_molecule_report_scope.py",
+    "tests/test_small_molecule_report_studies.py",
+    "tests/test_small_molecule_report_svg.py",
+    "tests/test_small_molecule_uniform_control.py"
+  ],
+  "canonical_shell_paths_updated": [
+    "scripts/graph/augment_protenix_controls.lsf",
+    "experiments/brd4/boltz-affinity-10000/hpc/brd4_boltz_cpu.lsf",
+    "experiments/brd4/boltz-gradient-diagnostic/hpc/brd4_boltz_diagnostic_certificate_cpu.lsf",
+    "experiments/brd4/boltz-gradient-diagnostic/hpc/brd4_boltz_diagnostic_cpu.lsf",
+    "experiments/brd4/boltz-gradient-diagnostic/hpc/brd4_boltz_gradient_analysis_cpu.lsf",
+    "experiments/brd4/boltz-affinity-10000/hpc/brd4_boltz_independent_cpu.lsf",
+    "experiments/brd4/boltz-affinity-10000/hpc/brd4_boltz_launcher_cpu.lsf",
+    "experiments/brd4/boltz-gradient-diagnostic/hpc/brd4_boltz_random_diagnostic.lsf",
+    "experiments/brd4/boltz-gradient-diagnostic/hpc/brd4_boltz_random_diagnostic_retry.lsf",
+    "experiments/brd4/boltz-affinity-10000/hpc/brd4_boltz_ready.lsf",
+    "experiments/brd4/boltz-affinity-10000/hpc/brd4_boltz_report.lsf",
+    "experiments/brd4/boltz-affinity-10000/hpc/brd4_boltz_run.lsf",
+    "experiments/brd4/boltz-affinity-10000/hpc/brd4_boltz_submit_queue.lsf",
+    "experiments/brd4/chemistry-5000/hpc/brd4_chemistry.lsf",
+    "experiments/brd4/chemistry-5000/hpc/brd4_chemistry_preview.lsf",
+    "experiments/brd4/chemistry-ramp-10000/hpc/brd4_chemistry_ramp_report.lsf",
+    "experiments/brd4/chemistry-5000/hpc/brd4_chemistry_readiness.lsf",
+    "experiments/brd4/chemistry-5000/hpc/brd4_chemistry_repackage.lsf",
+    "experiments/brd4/chemistry-5000/hpc/brd4_chemistry_report.lsf",
+    "experiments/reporting/brd4-comparison/hpc/brd4_combined_report.lsf",
+    "experiments/reporting/brd4-comparison/hpc/brd4_comparison_readiness.lsf",
+    "scripts/graph/brd4_contact.lsf",
+    "experiments/brd4/best-primal-continuation/hpc/brd4_continuation_readiness.lsf",
+    "experiments/brd4/best-primal-continuation/hpc/brd4_continuation_report.lsf",
+    "experiments/brd4/best-primal-continuation/hpc/brd4_continue.lsf",
+    "experiments/reporting/brd4-comparison/hpc/brd4_interim_evidence.lsf",
+    "experiments/reporting/brd4-comparison/hpc/brd4_interim_report.lsf",
+    "scripts/graph/brd4_parallel_readiness.lsf",
+    "scripts/graph/brd4_parallel_report.lsf",
+    "scripts/graph/brd4_readiness.lsf",
+    "scripts/graph/brd4_uniform_readiness.lsf",
+    "experiments/brd4/three-model-25/hpc/campaign25_cpu.lsf",
+    "experiments/brd4-jq1/backtracking-25/hpc/campaign25_pocket_cpu.lsf",
+    "experiments/brd4-jq1/backtracking-25/hpc/campaign25_pocket_stage.lsf",
+    "experiments/brd4/three-model-25/hpc/campaign25_release_cpu.lsf",
+    "experiments/brd4/three-model-25/hpc/campaign25_release_stage.lsf",
+    "experiments/brd4/three-model-25/hpc/campaign25_repair_timing.lsf",
+    "experiments/brd4/three-model-25/hpc/campaign25_stage.lsf",
+    "experiments/graph-controls/carbon-chain-100/hpc/carbon_chain_100.lsf",
+    "experiments/graph-controls/carbon-chain-500/hpc/carbon_chain_500.lsf",
+    "experiments/graph-controls/carbon-chain-500/hpc/carbon_chain_500_mix50.lsf",
+    "experiments/brd4/chemistry-compatibility/hpc/chemistry_compatibility_probe.lsf",
+    "experiments/brd4-jq1/fixed-steps/hpc/fixed25_cpu.lsf",
+    "experiments/brd4-jq1/fixed-lrboost/hpc/fixed25_lrboost_cpu.lsf",
+    "experiments/brd4-jq1/fixed-lrboost/hpc/fixed25_lrboost_stage.lsf",
+    "experiments/brd4-jq1/fixed-lrreset/hpc/fixed25_lrreset_cpu.lsf",
+    "experiments/brd4-jq1/fixed-lrreset/hpc/fixed25_lrreset_stage.lsf",
+    "experiments/brd4-jq1/fixed-steps/hpc/fixed25_recover_after_cpu.lsf",
+    "experiments/brd4-jq1/fixed-steps/hpc/fixed25_recover_cpu.lsf",
+    "experiments/brd4-jq1/fixed-steps/hpc/fixed25_recover_observe_pro.lsf",
+    "experiments/brd4-jq1/fixed-steps/hpc/fixed25_recover_stage.lsf",
+    "experiments/brd4-jq1/fixed-steps/hpc/fixed25_split_after_cpu.lsf",
+    "experiments/brd4-jq1/fixed-steps/hpc/fixed25_split_cpu.lsf",
+    "experiments/brd4-jq1/fixed-steps/hpc/fixed25_split_stage.lsf",
+    "experiments/brd4-jq1/fixed-steps/hpc/fixed25_stage.lsf",
+    "experiments/brd4-jq1/backtracking-25/hpc/jq1_25_interim_stage.lsf",
+    "experiments/brd4-jq1/backtracking-25/hpc/jq1_25_report_stage.lsf",
+    "experiments/brd4-jq1/fixed-steps/hpc/jq1_fixed_report_stage.lsf",
+    "experiments/brd4-jq1/fixed-lrboost/hpc/jq1_lrboost_analysis_stage.lsf",
+    "experiments/graph-controls/known-ligand-1000/hpc/known_ligand_1000.lsf",
+    "experiments/graph-controls/known-ligand-1000/hpc/known_ligand_assess.lsf",
+    "experiments/graph-controls/known-ligand-1000/hpc/known_ligand_collect.lsf",
+    "experiments/graph-controls/known-ligand-1000/hpc/known_ligand_controls.lsf",
+    "experiments/graph-controls/known-ligand-1000/hpc/known_ligand_readiness.lsf",
+    "experiments/brd4-jq1/protenix-lr03/hpc/protenix_lr03_cpu.lsf",
+    "experiments/brd4-jq1/protenix-lr03/hpc/protenix_lr03_stage.lsf",
+    "experiments/graph-validation/relaxed-gradients/hpc/protenix_relaxed_gradients.lsf",
+    "experiments/native-inference/protenix-tiny/hpc/protenix_tiny.lsf",
+    "scripts/reporting/render_protenix_trajectory.lsf",
+    "experiments/graph-validation/stage0/hpc/small_molecule_stage0.lsf",
+    "experiments/brd4/chemistry-5000/hpc/submit_chemistry_native.sh",
+    "experiments/brd4/chemistry-ramp-10000/hpc/submit_chemistry_ramp.sh",
+    "experiments/brd4/chemistry-5000/hpc/submit_chemistry_readiness.sh"
+  ],
+  "canonical_self_bindings_updated": [
+    "experiments/brd4-jq1/fixed-lrboost/scripts/capture_jq1_lrboost_completion.py",
+    "experiments/brd4-jq1/fixed-lrboost/scripts/lrboost_endpoint_diagnostics.py",
+    "experiments/brd4-jq1/fixed-steps/scripts/capture_jq1_fixed_completion.py"
+  ],
+  "source_identity_metadata_change": {
+    "path": "src/mosaic/small_molecule/provenance.py",
+    "change": "include experiments in source identity enumeration; only this tuple changed"
+  }
+}

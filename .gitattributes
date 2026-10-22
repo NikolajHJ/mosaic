@@ -66,3 +66,39 @@ experiments/**/*.json text eol=lf
 experiments/**/*.html text eol=lf
 scripts/layout/*.py text eol=lf
 scripts/*/*.py text eol=lf
+scripts/*/*.lsf text eol=lf
+scripts/*/*.sh text eol=lf
+
+# Nested compatibility inputs and shared tests must retain the same bytes on checkout.
+scripts/compat/**/*.py text eol=lf
+scripts/compat/**/*.html text eol=lf
+tests/*/*.py text eol=lf
+tests/conftest.py text eol=lf
+
+# Preserve existing CRLF bytes in authenticated declarative compatibility pairs.
+examples/configs/brd4_25_boltz2_10000.json -text -eol
+examples/configs/brd4_25_boltz2_chemistry_10000.json -text -eol
+examples/configs/brd4_25_protenix_10000.json -text -eol
+examples/configs/brd4_chemistry_ramp_mix50_10000.json -text -eol
+examples/configs/brd4_chemistry_ramp_random_10000.json -text -eol
+examples/configs/known_ligand_pilot.json -text -eol
+experiments/brd4-jq1/backtracking-25/templates/jq1_25_report.html -text -eol
+experiments/brd4/chemistry-ramp-10000/configs/brd4_chemistry_ramp_mix50_10000.json -text -eol
+experiments/brd4/chemistry-ramp-10000/configs/brd4_chemistry_ramp_random_10000.json -text -eol
+experiments/brd4/three-model-25/configs/brd4_25_boltz2_10000.json -text -eol
+experiments/brd4/three-model-25/configs/brd4_25_boltz2_chemistry_10000.json -text -eol
+experiments/brd4/three-model-25/configs/brd4_25_protenix_10000.json -text -eol
+experiments/graph-controls/known-ligand-1000/configs/known_ligand_pilot.json -text -eol
+scripts/chemistry/chemistry_report_template.html -text -eol
+scripts/compat/assets/chemistry_report_template.html -text -eol
+scripts/reporting/protenix_trajectory_report.html -text -eol
+scripts/templates/jq1_25_report.html -text -eol
+scripts/templates/protenix_trajectory_report.html -text -eol
+
+# Preserve the exact local bytes recorded in layout/source audit receipts.
+experiments/*.json -text -eol
+scripts/compat/**/*.py -text -eol
+tests/*/*.py -text -eol
+scripts/layout/verify_pytest_routing.py -text -eol
+pyproject.toml -text -eol
+docs/documentation-audit.json -text -eol

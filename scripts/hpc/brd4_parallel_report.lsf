@@ -1,36 +1,8 @@
 #!/bin/bash
-set -euo pipefail
-[[ -n "${LSB_JOBID:-}" ]] || exit 2
-release=$1
-parent=$2
-manifest_sha=$3
-root=/zhome/95/e/206121/mosaic-runs
-python=/work3/s234818/mosaic/envs/protenix-tiny/bin/python
-module load python3/3.12.11
-mkdir "$parent/payload"
-run="$parent/payload"
-export PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 MKL_NUM_THREADS=2
-export MPLCONFIGDIR="$run/mplcache"
-"$python" "$release/scripts/verify_stage0_release.py" "$release" "$manifest_sha"
-"$python" "$release/scripts/hpc/zhome_quota_preflight.py" --run-dir "$run" --minimum-free-gib 8
-echo "af58a02da9f2a9b36bf526c67df59f43841970eb34d424d85e7f5ba590c5cf12  $root/20261016-brd4-canonical-diffuse-5000-01/payload/study/summary.json" | sha256sum -c -
-"$python" "$release/scripts/render_protenix_trajectory.py" \
-  --study "$root/20261017-brd4-chain15-best-primal-01/payload/study" \
-  --study "$root/20261017-brd4-chain30-best-primal-01/payload/study" \
-  --study "$root/20261017-brd4-chain50-best-primal-01/payload/study" \
-  --study "$root/20261017-brd4-uniform-best-primal-01/payload/study" \
-  --study "$root/20261017-brd4-noisy-best-primal-01/payload/study" \
-  --study "$root/20261016-brd4-canonical-diffuse-5000-01/payload/study" \
-  --allow-initialization-comparison --allow-optimization-policy-comparison \
-  --output "$run/report" > "$run/render.log" 2>&1
-"$python" "$release/scripts/collect_protenix_evidence.py" --storage zhome \
-  --run "$root/20261017-brd4-chain15-best-primal-01" \
-  --run "$root/20261017-brd4-chain30-best-primal-01" \
-  --run "$root/20261017-brd4-chain50-best-primal-01" \
-  --run "$root/20261017-brd4-uniform-best-primal-01" \
-  --run "$root/20261017-brd4-noisy-best-primal-01" \
-  --run "$root/20261016-brd4-5000-03" \
-  --run "$root/20261016-brd4-uniform-5000-01" \
-  --run "$root/20261016-brd4-noisy-uniform-5000-01" \
-  --run "$root/20261016-brd4-canonical-diffuse-5000-01" \
-  --run "$run" --output "$root/$(basename "$parent").tar.gz" > "$run/packaging.log" 2>&1
+# Compatibility entry point; implementation: scripts/graph/brd4_parallel_report.lsf
+_mosaic_compat_root=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/../.." && pwd)
+if [[ "${BASH_SOURCE[0]}" != "$0" ]]; then
+  source "$_mosaic_compat_root/scripts/graph/brd4_parallel_report.lsf"
+else
+  exec bash -l "$_mosaic_compat_root/scripts/graph/brd4_parallel_report.lsf" "$@"
+fi

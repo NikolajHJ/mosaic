@@ -1,0 +1,37 @@
+#!/bin/bash
+#BSUB -J mosaic-tiny
+#BSUB -q gpua10
+#BSUB -n 4
+#BSUB -R "span[hosts=1]"
+#BSUB -R "rusage[mem=4GB]"
+#BSUB -gpu "num=1:mode=exclusive_process"
+#BSUB -W 00:30
+
+# Invoke with absolute release and unique run paths. Pass absolute stdout/stderr
+# destinations to bsub; their parent directory must exist before submission.
+
+# Resolve working-source paths; old sealed sources keep their old paths.
+_mosaic_layout_root=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/../../../.." && pwd)
+mosaic_path() { python3 "$_mosaic_layout_root/scripts/layout/experiment_layout.py" resolve "$1"; }
+
+set -euo pipefail
+release=$1
+run=$2
+project=/work3/s234818/mosaic
+module load python3/3.12.11 cuda/12.9.1 cudnn/v9.13.0.50-prod-cuda-12.X
+export PYTHONUNBUFFERED=1
+export OMP_NUM_THREADS=4 MKL_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4
+export PYTHONPATH="$release/src"
+export MOSAIC_CACHE_DIR="$project/cache/mosaic"
+export HF_HOME="$project/cache/huggingface"
+export XDG_CACHE_HOME="$project/cache/xdg"
+export TMPDIR="$project/cache/tmp"
+export HF_HUB_OFFLINE=1 HF_HUB_DISABLE_TELEMETRY=1
+export JAX_PLATFORMS=cuda
+export XLA_PYTHON_CLIENT_PREALLOCATE=false
+cd "$run"
+hostname
+date -u
+module list
+nvidia-smi --query-gpu=name,driver_version,memory.total --format=csv
+"$project/envs/protenix-tiny/bin/python" "$(mosaic_path "$release/examples/hpc_protenix_tiny.py")" --output "$run/artifacts"

@@ -1,45 +1,8 @@
 #!/bin/bash
-set -euo pipefail
-[[ -n "${LSB_JOBID:-}" ]]
-launcher=$1
-launcher_manifest=$2
-launcher_cpu=$3
-release=$4
-manifest=$5
-root=$6
-cpu=$7
-ready=$8
-ready_job=$9
-queue=${10}
-module load python3/3.12.11
-export PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
-python=/work3/s234818/mosaic/envs/protenix-tiny/bin/python
-"$python" - "$launcher" "$launcher_manifest" "$launcher_cpu" <<'PY'
-import hashlib
-import json
-from pathlib import Path
-import subprocess
-import sys
-
-source, expected, cpu = Path(sys.argv[1]), sys.argv[2], Path(sys.argv[3])
-assert hashlib.sha256((source / "manifest.json").read_bytes()).hexdigest() == expected
-assessment = json.loads((cpu / "assessment.json").read_text())
-assert assessment["status"] == "passed"
-assert assessment["tests"] == 8
-assert all(assessment[key] == 0 for key in ("failures", "errors", "skips"))
-assert assessment["launcher_manifest_sha256"] == expected
-state = subprocess.run(
-    ["bjobs", "-noheader", "-o", "stat", assessment["job_id"]],
-    capture_output=True, text=True, check=True,
-).stdout.strip()
-assert state == "DONE"
-for entry in json.loads((source / "manifest.json").read_text())["files"]:
-    data = (source / entry["path"]).read_bytes()
-    assert len(data) == entry["bytes"]
-    assert hashlib.sha256(data).hexdigest() == entry["sha256"]
-for proof in assessment["proofs"]:
-    assert hashlib.sha256(Path(proof["path"]).read_bytes()).hexdigest() == proof["sha256"]
-PY
-exec "$python" "$launcher/scripts/submit_boltz_arms.py" \
-  --release "$release" --manifest "$manifest" --root "$root" --cpu "$cpu" \
-  --ready "$ready" --ready-job "$ready_job" --queue "$queue"
+# Compatibility entry point; implementation: experiments/brd4/boltz-affinity-10000/hpc/brd4_boltz_submit_queue.lsf
+_mosaic_compat_root=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/../.." && pwd)
+if [[ "${BASH_SOURCE[0]}" != "$0" ]]; then
+  source "$_mosaic_compat_root/experiments/brd4/boltz-affinity-10000/hpc/brd4_boltz_submit_queue.lsf"
+else
+  exec bash -l "$_mosaic_compat_root/experiments/brd4/boltz-affinity-10000/hpc/brd4_boltz_submit_queue.lsf" "$@"
+fi

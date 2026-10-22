@@ -1,5 +1,14 @@
 # Fresh 25-atom JQ1 runs with fixed steps
 
+> **Scope and access note (22 October 2026):** this document contains an
+> experiment protocol and dated operator evidence. Concrete account paths,
+> environments, jobs and source hashes describe that operator/attempt; they
+> are not shared-account defaults or a fresh status/acceptance claim. Use
+> [your own HPC setup](HPC_GUIDE.md). Keep the scientific gates and historical
+> outcomes below intact when preparing a separately validated candidate.
+> Canonical working home: [brd4-jq1/fixed-steps](../experiments/brd4-jq1/fixed-steps/README.md).
+
+
 21 October 2026. The user explicitly selected BOTH Boltz arms for restart at
 fixed LR0.01 and requested no halving for Protenix, whose newly requested nominal
 rate is0.3. This supersedes the earlier instruction to leave native jobs29770093

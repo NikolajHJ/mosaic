@@ -1,5 +1,14 @@
 # BRD4 best-primal continuation — 17 October 2026
 
+> **Scope and access note (22 October 2026):** this document contains an
+> experiment protocol and dated operator evidence. Concrete account paths,
+> environments, jobs and source hashes describe that operator/attempt; they
+> are not shared-account defaults or a fresh status/acceptance claim. Use
+> [your own HPC setup](HPC_GUIDE.md). Keep the scientific gates and historical
+> outcomes below intact when preparing a separately validated candidate.
+> Canonical working home: [brd4/best-primal-continuation](../experiments/brd4/best-primal-continuation/README.md).
+
+
 The user authorized resubmission with a changed optimization policy and resume
 from the last saved molecule. Historical strict runs and their failed outcomes
 remain unchanged. Implementation and CPU/GPU execution have separate receipts

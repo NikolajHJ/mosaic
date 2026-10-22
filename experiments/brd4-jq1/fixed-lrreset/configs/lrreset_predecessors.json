@@ -1,0 +1,53 @@
+{
+  "version": "jq1-lrreset-finished-predecessors-v1",
+  "arms": {
+    "protenix": {
+      "native_job": "29779177",
+      "collector_job": "29780825",
+      "scientific_status": "failed",
+      "config_sha256": "f1c551e5f9cc6f5671acf8b7fef7fe3dbb3197312b096ef55772cb005195fb93",
+      "assessment": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/complete-protenix/payload/assessment.json",
+        "bytes": 9069,
+        "sha256": "72636170345567fc20aa07475d66a96ae962feb7c11e5e5a05bb4a3f2a38917a"
+      },
+      "collector_lsf": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/complete-protenix/stdout.29780825.log",
+        "bytes": 2252,
+        "sha256": "0b354e9c352690bc8a8569b79a6c04c5379590e7b273fefa1cd28f7569bd9693"
+      }
+    },
+    "boltz2": {
+      "native_job": "29779178",
+      "collector_job": "29780826",
+      "scientific_status": "failed",
+      "config_sha256": "efb4a41cd3077f03632ca0b4085c0cbfe98c0800b53c0509a857ae28ae4111fd",
+      "assessment": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/complete-boltz2/payload/assessment.json",
+        "bytes": 9038,
+        "sha256": "96953a674f7b7c85fec3bf51c810e9a945e961231353d683e925f73fd92e08c7"
+      },
+      "collector_lsf": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/complete-boltz2/stdout.29780826.log",
+        "bytes": 2240,
+        "sha256": "bb219d3c0c19904bb3ecd6822350fd02c4cc27746a167d37727746f8a6aa94ec"
+      }
+    },
+    "boltz2_chemistry": {
+      "native_job": "29779179",
+      "collector_job": "29780827",
+      "scientific_status": "passed",
+      "config_sha256": "6a6f15614989e44b6cc1149ee4ca5e35717d5c21fdc7d2b5748832d912e9b3f0",
+      "assessment": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/complete-boltz2_chemistry/payload/assessment.json",
+        "bytes": 9157,
+        "sha256": "a5801c9fb82cef1fd25441ad03ef387254a9303d066fed81441421bbd051e3bc"
+      },
+      "collector_lsf": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/complete-boltz2_chemistry/stdout.29780827.log",
+        "bytes": 2291,
+        "sha256": "ede1d5fbde4036cbe3471ba8138a140e5d808684eeedf22ec96e7abd91d73f39"
+      }
+    }
+  }
+}

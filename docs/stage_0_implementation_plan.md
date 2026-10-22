@@ -1,5 +1,14 @@
 # Stage 0 implementation plan: relaxed small-molecule graphs in Mosaic
 
+> **Scope and access note (22 October 2026):** this document contains an
+> experiment protocol and dated operator evidence. Concrete account paths,
+> environments, jobs and source hashes describe that operator/attempt; they
+> are not shared-account defaults or a fresh status/acceptance claim. Use
+> [your own HPC setup](HPC_GUIDE.md). Keep the scientific gates and historical
+> outcomes below intact when preparing a separately validated candidate.
+> Canonical working home: [graph-validation/stage0](../experiments/graph-validation/stage0/README.md).
+
+
 Plan date: 2026-10-10. Implementation started: 2026-10-12; documentation update: 2026-10-16. Status: all Work 0-5 code and tests authored and merged; independently reviewed. Static checks and local immutable source packaging completed. Numerical acceptance gates A-G remain pending; the dated follow-up below records allocated-HPC gradient testing and pivotal numerical decisions. [The ledger](experiment_ledger.md) records actual receipts.
 
 Source of requirements: [project description](project_desc.pdf), especially Stage 0 (page 2, section 3), the V0 optimizer contract (pages 3-5, section 4), and the minimum outputs (page 7, section 8). The reviewed Mosaic baseline is commit `1eb4af6`. The source PDF SHA-256 is `c9785f45dcd34fbc3feaebcc0bc57905dc606387f76308bb6364eadb40cbeda0`; the user has moved the input to `docs/project_desc.pdf`, and that move is currently uncommitted.

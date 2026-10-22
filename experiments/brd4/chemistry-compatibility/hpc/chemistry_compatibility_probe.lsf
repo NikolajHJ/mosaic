@@ -1,0 +1,47 @@
+#!/bin/bash
+# Research-only saved CPU probes; no scorer inference or molecular optimization.
+
+# Resolve working-source paths; old sealed sources keep their old paths.
+_mosaic_layout_root=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/../../../.." && pwd)
+mosaic_path() { python3 "$_mosaic_layout_root/scripts/layout/experiment_layout.py" resolve "$1"; }
+
+set -euo pipefail
+[[ -n "${LSB_JOBID:-}" ]] || exit 2
+release=$1
+run=$2
+manifest=$3
+science=/work3/s234818/mosaic/releases/20261019-brd4-boltz-affinity-02/source
+python=/work3/s234818/mosaic/envs/protenix-tiny/bin/python
+module load python3/3.12.11
+export PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+export OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 MKL_NUM_THREADS=2
+"$python" "$(mosaic_path "$science/scripts/verify_stage0_release.py")" "$science" 5eb6e17ea8d19e52c99a589243228710994dcf137f59a6b9a6659a4fe719a7f4
+"$python" - "$release" "$manifest" <<'PY'
+import hashlib,json,sys
+from pathlib import Path
+root=Path(sys.argv[1]); manifest=root/'manifest.json'
+assert hashlib.sha256(manifest.read_bytes()).hexdigest()==sys.argv[2]
+for name,pin in json.loads(manifest.read_text())['files'].items():
+    path=root/name
+    assert path.stat().st_size==pin['bytes'] and hashlib.sha256(path.read_bytes()).hexdigest()==pin['sha256']
+PY
+"$python" "$(mosaic_path "$science/scripts/hpc/zhome_quota_preflight.py")" --run-dir "$run" --minimum-free-gib 1
+export PYTHONPATH="$release/scripts:$science/src" JAX_PLATFORMS=cpu
+cd "$release"
+JAX_ENABLE_X64=1 "$python" -m pytest "$(mosaic_path tests/test_chemistry_compatibility_probe.py)" \
+    -o addopts= -o cache_dir="$run/cache" --basetemp "$run/test-tmp" \
+    --junitxml="$run/tests.xml" > "$run/tests.log" 2>&1
+JAX_ENABLE_X64=0 "$python" "$(mosaic_path scripts/run_chemistry_compatibility_probe.py)" \
+    /zhome/95/e/206121/mosaic-runs/20261019-brd4-boltz-mix50-independent-01/payload/study \
+    "$run/probes.json" > "$run/probes.log" 2>&1
+"$python" - "$run" "$manifest" <<'PY'
+import hashlib,json,os,sys,xml.etree.ElementTree as ET
+from pathlib import Path
+run=Path(sys.argv[1])
+tests=ET.parse(run/'tests.xml').findall('.//testcase')
+assert tests and not any(c.find(t) is not None for c in tests for t in ('failure','error','skipped'))
+report=json.loads((run/'probes.json').read_text())
+assert report['status']=='recorded' and len(report['cases'])==8
+files={name:{'bytes':(run/name).stat().st_size,'sha256':hashlib.sha256((run/name).read_bytes()).hexdigest()} for name in ['tests.xml','tests.log','probes.json','probes.log']}
+(run/'assessment.json').write_text(json.dumps({'status':'recorded','job_id':os.environ['LSB_JOBID'],'source_manifest_sha256':sys.argv[2],'tests':len(tests),'failures':0,'errors':0,'skips':0,'cases':8,'files':files,'scope':'CPU engineering/saved-gradient probes; not native Boltz coupled validation or optimization'},indent=2)+'\n')
+PY

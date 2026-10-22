@@ -1,0 +1,58 @@
+#!/bin/bash
+
+# Resolve working-source paths; old sealed sources keep their old paths.
+_mosaic_layout_root=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/../../../.." && pwd)
+mosaic_path() { python3 "$_mosaic_layout_root/scripts/layout/experiment_layout.py" resolve "$1"; }
+
+set -euo pipefail
+[[ -n "${LSB_JOBID:-}" ]] || exit 2
+release=$1
+parent=$2
+manifest=$3
+assessment=$4
+assessment_sha=$5
+config=${6:-"$(mosaic_path examples/configs/brd4_chemistry_5000.json)"}
+project=/work3/s234818/mosaic
+python="$project/envs/protenix-tiny/bin/python"
+module load python3/3.12.11 cuda/12.9.1 cudnn/v9.13.0.50-prod-cuda-12.X
+mkdir "$parent/payload"
+run="$parent/payload"
+"$python" "$(mosaic_path "$release/scripts/verify_stage0_release.py")" "$release" "$manifest"
+echo "$assessment_sha  $assessment" | sha256sum -c -
+"$python" "$(mosaic_path "$release/scripts/hpc/zhome_quota_preflight.py")" --run-dir "$run" --minimum-free-gib 8
+export PYTHONPATH="$release/src:$release/tests" PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+export OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 MKL_NUM_THREADS=4
+export HF_HUB_OFFLINE=1 HF_HUB_DISABLE_TELEMETRY=1 JAX_PLATFORMS=cuda JAX_ENABLE_X64=0
+export MOSAIC_CACHE_DIR="$project/cache/mosaic" HF_HOME="$project/cache/huggingface" XDG_CACHE_HOME="$project/cache/xdg"
+export XLA_PYTHON_CLIENT_PREALLOCATE=false TMPDIR="$run/tmp"
+mkdir "$TMPDIR"
+cd "$release"
+hostname > "$run/host.txt"
+module list 2> "$run/modules.txt"
+nvidia-smi --query-gpu=name,driver_version,memory.total --format=csv > "$run/gpu.txt"
+"$python" - "$assessment" "$run" "$manifest" "$config" <<'PY'
+import hashlib,json,sys
+from pathlib import Path
+a=json.loads(Path(sys.argv[1]).read_text()); cfg=Path(sys.argv[4])
+expected=a.get('configs',{}).get(cfg.as_posix())
+if expected is None and cfg.as_posix()=='examples/configs/brd4_chemistry_5000.json':
+    expected=a['config_sha256']
+if a['status']!='passed' or a['source_manifest_sha256']!=sys.argv[3] or hashlib.sha256(cfg.read_bytes()).hexdigest()!=expected:
+    raise ValueError('CPU assessment/config identity differs')
+ready=Path(sys.argv[1]).parent
+for name,entry in a['tests'].items():
+    if hashlib.sha256((ready/name).read_bytes()).hexdigest()!=entry['sha256']:
+        raise ValueError('CPU test proof changed: '+name)
+if hashlib.sha256((ready/'chemistry_oracles.json').read_bytes()).hexdigest()!=a['oracles_sha256']:
+    raise ValueError('Original-source oracle proof changed')
+source=Path(a['reference'])
+if hashlib.sha256(source.read_bytes()).hexdigest()!=a['reference_sha256']:
+    raise ValueError('Empirical reference changed')
+out=Path(sys.argv[2]); (out/'composition_reference.json').write_bytes(source.read_bytes())
+(out/'reference_sha256.txt').write_text(a['reference_sha256']+'\n')
+(out/'cpu_assessment.json').write_bytes(Path(sys.argv[1]).read_bytes())
+PY
+reference_sha=$(cat "$run/reference_sha256.txt")
+"$python" "$(mosaic_path examples/brd4_chemistry.py)" --config "$config" \
+  --reference "$run/composition_reference.json" --reference-sha256 "$reference_sha" \
+  --cache-dir "$MOSAIC_CACHE_DIR/protenix" --output "$run/study" > "$run/native.log" 2>&1

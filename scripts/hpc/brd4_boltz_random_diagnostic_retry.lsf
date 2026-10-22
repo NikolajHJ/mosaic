@@ -1,53 +1,8 @@
 #!/bin/bash
-# Same scientific diagnostic, with separately authenticated persisted CPU outcomes.
-set -euo pipefail
-[[ -n "${LSB_JOBID:-}" ]]
-launcher=$1
-launcher_manifest=$2
-launcher_cpu=$3
-launcher_assessment=$4
-launcher_job=$5
-launcher_tests=$6
-launcher_scheduler=$7
-launcher_stdout=$8
-parent=$9
-tools=/work3/s234818/mosaic/releases/20261019-brd4-boltz-independent-02/source
-tools_manifest=848cb213d91be09513439f719ece8e43ec55991bd473f1bc233f3d80eb204c1b
-release=/work3/s234818/mosaic/releases/20261019-brd4-boltz-affinity-02/source
-manifest=5eb6e17ea8d19e52c99a589243228710994dcf137f59a6b9a6659a4fe719a7f4
-parent_ready=/zhome/95/e/206121/mosaic-runs/20261019-brd4-boltz-affinity-02-ready/payload
-tools_cpu=/zhome/95/e/206121/mosaic-runs/20261019-brd4-boltz-independent-02-cpu/payload
-module load python3/3.12.11 cuda/12.9.1
-python=/work3/s234818/mosaic/envs/protenix-tiny/bin/python
-native=/work3/s234818/latentmol/env/boltz311/bin/python
-mkdir "$parent/payload"
-run="$parent/payload"
-export PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
-"$python" "$release/scripts/verify_stage0_release.py" "$launcher" "$launcher_manifest"
-"$python" "$tools/scripts/verify_stage0_release.py" "$tools" "$tools_manifest"
-"$python" "$release/scripts/verify_stage0_release.py" "$release" "$manifest"
-cmp "$launcher/scripts/diagnose_boltz_random_gradient.py" "$tools/scripts/diagnose_boltz_random_gradient.py"
-"$python" "$launcher/scripts/check_boltz_diagnostic_cpu.py" \
-  --root "$tools_cpu" --job 29759211 --tests 19 \
-  --assessment-sha256 bc76e33927104e88a9e019b706d0ed4c6e1fc8f3bd4460264acad13ca7594448 \
-  --tools-manifest "$tools_manifest" --scientific-manifest "$manifest" \
-  --scheduler-sha256 9ea1c0ea6e5aa539934a61106d44b89c69442e68d96267cd8b40c4e551629516 \
-  --stdout-sha256 eb712ecc4c7d410905fd8a8573260328b85b9ff48b9a4c42fefcd394d0d7a2c3 \
-  --output "$run/original-cpu-verification.json"
-"$python" "$launcher/scripts/check_boltz_diagnostic_cpu.py" \
-  --root "$launcher_cpu" --job "$launcher_job" --tests "$launcher_tests" \
-  --assessment-sha256 "$launcher_assessment" \
-  --tools-manifest "$launcher_manifest" --scientific-manifest "$manifest" \
-  --scheduler-sha256 "$launcher_scheduler" --stdout-sha256 "$launcher_stdout" \
-  --output "$run/launcher-cpu-verification.json"
-"$python" "$release/scripts/hpc/zhome_quota_preflight.py" --run-dir "$run" --minimum-free-gib 6
-export PYTHONPATH="$release/src" JAX_PLATFORMS=cpu JAX_ENABLE_X64=0
-export OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 MKL_NUM_THREADS=4
-export HF_HUB_OFFLINE=1 HF_HUB_DISABLE_TELEMETRY=1
-source "$release/scripts/hpc/boltz_node_tmpdir.sh"
-printf '%s\n' "$TMPDIR" > "$run/tmpdir.txt"
-nvidia-smi --query-gpu=name,driver_version,memory.total --format=csv > "$run/gpu.txt"
-cd "$release"
-"$python" "$tools/scripts/diagnose_boltz_random_gradient.py" replay --scientific-source "$release" --initialization "$parent_ready/random/initialization.npz" --output "$run/replay" > "$run/replay.log" 2>&1
-replay_sha=$(sha256sum "$run/replay/replay.npz" | cut -d' ' -f1)
-"$native" "$tools/scripts/diagnose_boltz_random_gradient.py" diagnose --scientific-source "$release" --replay "$run/replay" --replay-sha256 "$replay_sha" --context "$parent_ready/prepared/context.pt" --checkpoint /work3/s234818/latentmol/cache/boltz2/boltz2_aff.ckpt --output "$run/diagnostic" > "$run/diagnostic.log" 2>&1
+# Compatibility entry point; implementation: experiments/brd4/boltz-gradient-diagnostic/hpc/brd4_boltz_random_diagnostic_retry.lsf
+_mosaic_compat_root=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/../.." && pwd)
+if [[ "${BASH_SOURCE[0]}" != "$0" ]]; then
+  source "$_mosaic_compat_root/experiments/brd4/boltz-gradient-diagnostic/hpc/brd4_boltz_random_diagnostic_retry.lsf"
+else
+  exec bash -l "$_mosaic_compat_root/experiments/brd4/boltz-gradient-diagnostic/hpc/brd4_boltz_random_diagnostic_retry.lsf" "$@"
+fi

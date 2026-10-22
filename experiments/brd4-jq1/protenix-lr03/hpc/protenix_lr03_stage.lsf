@@ -1,0 +1,55 @@
+#!/bin/bash
+
+# Resolve working-source paths; old sealed sources keep their old paths.
+_mosaic_layout_root=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/../../../.." && pwd)
+mosaic_path() { python3 "$_mosaic_layout_root/scripts/layout/experiment_layout.py" resolve "$1"; }
+
+set -euo pipefail
+[[ -n "${LSB_JOBID:-}" ]]
+source=$1
+root=$2
+manifest=$3
+phase=$4
+parent=$5
+producer=$6
+module load python3/3.12.11
+python=/work3/s234818/mosaic/envs/protenix-tiny/bin/python
+export PYTHONPATH="$source/src:$source/tests:$source/scripts" PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+export OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 MKL_NUM_THREADS=4
+export HF_HUB_OFFLINE=1 HF_HUB_DISABLE_TELEMETRY=1 JAX_ENABLE_X64=0
+cd "$source"
+"$python" "$(mosaic_path scripts/verify_stage0_release.py)" "$source" "$manifest"
+if [[ "$phase" == after-cpu || "$phase" == after-ready ]]; then
+  "$python" "$(mosaic_path scripts/protenix_lr03_ops.py)" --source "$source" --root "$root" --manifest "$manifest" --phase "$phase" --parent "$parent" --producer "$producer"
+  exit 0
+fi
+[[ "$phase" == validate || "$phase" == run ]]
+module load cuda/12.9.1
+module load cudnn/v9.13.0.50-prod-cuda-12.X
+export JAX_PLATFORMS=cuda XLA_PYTHON_CLIENT_PREALLOCATE=false
+source "$(mosaic_path "$source/scripts/hpc/boltz_node_tmpdir.sh")"
+mkdir "$parent/payload"
+run="$parent/payload"
+projected=0
+if [[ "$phase" == run ]]; then
+  projected=$("$python" - "$root/validate-protenix/payload/study/assessment.json" <<'PY'
+import json,sys
+print(json.load(open(sys.argv[1]))['storage_projection']['projected_bytes'])
+PY
+)
+fi
+"$python" "$(mosaic_path scripts/protenix_lr03_storage.py)" --run-dir "$run" --projected-bytes "$projected"
+cpu_sha=$("$python" - "$root/native-dispatch-started.json" <<'PY'
+import json,sys
+print(json.load(open(sys.argv[1]))['cpu_certificate_sha256'])
+PY
+)
+nvidia-smi --query-gpu=name,driver_version,memory.total --format=csv > "$run/gpu.txt"
+params=(--mode "$phase" --config "$(mosaic_path examples/configs/brd4_jq1_25_protenix_lr03_10000.json)" --output "$run/study" --manifest "$manifest"
+  --cpu-certificate "$root/cpu-certificate.json" --cpu-certificate-sha256 "$cpu_sha" --reference "$root/cpu/payload/composition_reference.json"
+  --pocket "$root/cpu/payload/pocket_definition.json" --pocket-sha256 "$(sha256sum "$root/cpu/payload/pocket_definition.json" | cut -d' ' -f1)")
+if [[ "$phase" == run ]]; then
+  ready="$root/validate-protenix/payload/study/assessment.json"
+  params+=(--ready "$ready" --ready-sha256 "$(sha256sum "$ready" | cut -d' ' -f1)")
+fi
+"$python" "$(mosaic_path examples/brd4_25_atoms.py)" "${params[@]}" > "$run/native.log" 2>&1

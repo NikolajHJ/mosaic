@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# Resolve working-source paths; old sealed sources keep their old paths.
+_mosaic_layout_root=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/../../../.." && pwd)
+mosaic_path() { python3 "$_mosaic_layout_root/scripts/layout/experiment_layout.py" resolve "$1"; }
+
+set -euo pipefail
+[[ -n "${LSB_JOBID:-}" ]]
+tool=$1
+tool_manifest=$2
+root=$3
+arm=$4
+cpu_sha=$5
+adoption_sha=$6
+science=/work3/s234818/mosaic/releases/20261021-brd4-jq1-25-fixed-02/source
+module load python3/3.12.11
+python=/work3/s234818/mosaic/envs/protenix-tiny/bin/python
+export PYTHONPATH="$tool/scripts:$science/scripts:$science/src" PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+export OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 MKL_NUM_THREADS=4
+export HF_HUB_OFFLINE=1 HF_HUB_DISABLE_TELEMETRY=1 JAX_ENABLE_X64=0 JAX_PLATFORMS=cpu
+"$python" "$(mosaic_path "$tool/scripts/verify_stage0_release.py")" "$tool" "$tool_manifest"
+module load cuda/12.9.1
+if [[ "$arm" == protenix ]]; then
+  module load cudnn/v9.13.0.50-prod-cuda-12.X
+  export JAX_PLATFORMS=cuda XLA_PYTHON_CLIENT_PREALLOCATE=false
+fi
+source "$(mosaic_path "$science/scripts/hpc/boltz_node_tmpdir.sh")"
+cd "$science"
+"$python" "$(mosaic_path "$tool/scripts/fixed25_split_ops.py")" --phase run --tool-source "$tool" --tool-manifest "$tool_manifest" --root "$root" --arm "$arm" --cpu-certificate-sha256 "$cpu_sha" --adoption-sha256 "$adoption_sha"

@@ -1,0 +1,87 @@
+#!/bin/bash
+# Report-only recovery. Never execute or replace the completed native study.
+
+# Resolve working-source paths; old sealed sources keep their old paths.
+_mosaic_layout_root=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/../../../.." && pwd)
+mosaic_path() { python3 "$_mosaic_layout_root/scripts/layout/experiment_layout.py" resolve "$1"; }
+
+set -euo pipefail
+[[ -n "${LSB_JOBID:-}" ]] || exit 2
+release=$1
+parent=$2
+manifest=$3
+root=/zhome/95/e/206121/mosaic-runs
+native="$root/20261019-brd4-chemistry-04-native"
+ready="$root/20261019-brd4-chemistry-04-readiness"
+previous="$root/20261019-brd4-chemistry-04-report"
+python=/work3/s234818/mosaic/envs/protenix-tiny/bin/python
+module load python3/3.12.11
+mkdir "$parent/payload"
+run="$parent/payload"
+"$python" "$(mosaic_path "$release/scripts/verify_stage0_release.py")" "$release" "$manifest"
+"$python" "$(mosaic_path "$release/scripts/hpc/zhome_quota_preflight.py")" --run-dir "$run" --minimum-free-gib 8
+export PYTHONPATH="$release/src:$release/tests" PYTHONDONTWRITEBYTECODE=1 JAX_PLATFORMS=cpu
+export OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 MKL_NUM_THREADS=2
+export TMPDIR="$run/tmp" MPLCONFIGDIR="$run/mplcache"
+mkdir "$TMPDIR"
+cd "$release"
+"$python" -m pytest tests/test_small_molecule_evidence_root.py tests/test_small_molecule_chemistry_report.py \
+  -o addopts= --strict-markers -o cache_dir="$run/pytest-cache" \
+  --basetemp "$run/pytest-unit-tmp" --junitxml="$run/unit.xml" > "$run/unit.log" 2>&1
+"$python" - "$native" "$previous" "$run" "$manifest" <<'PY'
+import hashlib,json,shutil,sys
+from pathlib import Path
+
+def sha(path):
+    with path.open('rb') as stream:
+        return hashlib.file_digest(stream,'sha256').hexdigest()
+
+native,previous,out=map(Path,sys.argv[1:4])
+study=native/'payload/study'; source=study/'summary.json'
+expected='c110b4e0bcd716679102022ad51d46590a658f8f3f9471b7b91bfbc1166d85fa'
+if sha(source)!=expected:
+    raise ValueError('Completed native summary changed')
+s=json.loads(source.read_text()); c=json.loads((study/'case-0/report.json').read_text())
+if s['status']!='passed' or c['status']!='passed' or s['job_id']!='29753152' or any(s['cases'][0].get(k)!=v for k,v in c.items()):
+    raise ValueError('Native terminal summary/case identity differs')
+if [v['step'] for v in c['states']]!=list(range(5001)) or len(c['updates'])!=5000:
+    raise ValueError('Requested native budget is incomplete')
+for stem in ('model','context'):
+    if s[stem+'_digest_before']!=s['config'][stem+'_digest'] or s[stem+'_digest_after']!=s['config'][stem+'_digest']:
+        raise ValueError('Native frozen identity failed')
+if any(s[key]['status']!='passed' for key in ('native_contact_checks','coupled_chemistry_probe','pilot')):
+    raise ValueError('Native gates did not pass')
+manifest=json.loads(Path('source_manifest.json').read_text())
+for name,digest in s['source']['files'].items():
+    if name.startswith('src/') and manifest['files'].get(name)!=digest:
+        raise ValueError('Scientific production source changed: '+name)
+cfg=Path('examples/configs/brd4_chemistry_5000.json')
+if sha(cfg)!=s['config_sha256'] or sha(study/'configuration.json')!=sha(cfg):
+    raise ValueError('Scientific configuration changed')
+report=previous/'payload/report'; receipt=json.loads((report/'report_receipt.json').read_text())
+if receipt['render_job_id']!='29753153' or (previous/'payload/render_exit.txt').read_text().strip()!='0' or receipt['source_summary_sha256']!=expected or not receipt['complete'] or receipt['states']!=[5001] or receipt['input_jobs']!=['29753152','29745503']:
+    raise ValueError('Saved rendered report inputs differ')
+destination=out/'report'; destination.mkdir()
+for name,entry in receipt['files'].items():
+    path=report/name
+    if Path(name).name!=name or path.is_symlink() or not path.is_file() or path.stat().st_size!=entry['bytes'] or sha(path)!=entry['sha256']:
+        raise ValueError('Saved rendered artifact changed: '+name)
+    shutil.copyfile(path,destination/name)
+    if sha(destination/name)!=entry['sha256']:
+        raise ValueError('Rendered artifact copy differs')
+shutil.copyfile(report/'report_receipt.json',destination/'report_receipt.json')
+result={
+    'status':'passed','scope':'allocated saved-artifact authentication and byte-preserving copy; no model execution, chemistry evaluation or rendering',
+    'source_manifest_sha256':sys.argv[4],'native_job_id':'29753152','original_render_job_id':receipt['render_job_id'],
+    'native_summary_sha256':expected,'render_receipt_sha256':sha(report/'report_receipt.json'),
+    'states':len(c['states']),'updates':len(c['updates']),'counts':c['counts'],
+    'contact_initial':c['states'][0]['contact_loss'],'contact_final':c['states'][-1]['contact_loss'],
+    'saved_chemistry_nonzero_states':sum(v['components']['chemistry_loss']!=0 for v in c['states']),
+    'saved_raw_readout_smiles':sorted({v['readout']['canonical_smiles'] for v in c['states']},key=str),
+    'saved_sanitized_states':sum(v['readout']['sanitized'] for v in c['states']),
+}
+(out/'artifact_authentication.json').write_text(json.dumps(result,indent=2)+'\n')
+print(json.dumps(result))
+PY
+"$python" "$(mosaic_path scripts/collect_protenix_evidence.py)" --storage zhome --run "$native" --run "$ready" \
+  --run "$previous" --run "$parent" --output "${parent}.tar.gz" > "$run/packaging.log" 2>&1

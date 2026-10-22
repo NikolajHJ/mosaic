@@ -104,7 +104,10 @@ extend-exclude = [
 ignore = ["F722"]
 
 [tool.pytest.ini_options]
-testpaths = ["tests"]
+# Collect canonical tests once; release-only legacy aliases are deliberately excluded.
+testpaths = ["tests/core", "tests/models", "tests/small_molecule", "experiments"]
+# Stable helper-module imports across shared and experiment test directories.
+pythonpath = ["experiments/brd4-jq1/backtracking-25/tests", "experiments/brd4-jq1/fixed-lrboost/tests", "experiments/brd4-jq1/fixed-lrreset/tests", "experiments/brd4-jq1/fixed-steps/tests", "experiments/brd4-jq1/protenix-lr03/tests", "experiments/brd4/boltz-affinity-10000/tests", "experiments/brd4/boltz-gradient-diagnostic/tests", "experiments/brd4/chemistry-compatibility/tests", "experiments/brd4/three-model-25/tests", "tests/core", "tests/models", "tests/small_molecule"]
 markers = [
     "slow: marks tests as slow (deselect with '-m \"not slow\"')",
     "model_smoke: loads real checkpoints and exercises model featurization",

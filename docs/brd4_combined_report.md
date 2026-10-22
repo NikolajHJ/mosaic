@@ -1,5 +1,14 @@
 # Combined BRD4 5000-update report
 
+> **Scope and access note (22 October 2026):** this document contains an
+> experiment protocol and dated operator evidence. Concrete account paths,
+> environments, jobs and source hashes describe that operator/attempt; they
+> are not shared-account defaults or a fresh status/acceptance claim. Use
+> [your own HPC setup](HPC_GUIDE.md). Keep the scientific gates and historical
+> outcomes below intact when preparing a separately validated candidate.
+> Canonical working home: [reporting/brd4-comparison](../experiments/reporting/brd4-comparison/README.md).
+
+
 Requested 2026-10-16; expanded after the section 4.2 request. The current
 final report is job **29736989**, report-02, comparing four separately
 submitted studies and six trajectories. The earlier three-study report job

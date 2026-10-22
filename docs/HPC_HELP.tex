@@ -21,7 +21,7 @@
   linkcolor=blue,
   urlcolor=blue,
   pdftitle={DTU HPC Runbook for AI Coding Agents},
-  pdfauthor={OpenAI}
+  pdfauthor={Mosaic project documentation}
 }
 
 \pagestyle{fancy}
@@ -44,7 +44,7 @@
 
 \title{\textbf{DTU HPC Runbook for AI Coding Agents}}
 \author{}
-\date{\today}
+\date{Documentation review: 22 October 2026}
 
 \begin{document}
 \maketitle
@@ -52,6 +52,14 @@
 \newpage
 
 \section{Purpose and scope}
+
+\textbf{Project reference, not an official DTU manual.} Start with
+\href{HPC_GUIDE.md}{the maintained account-independent HPC guide} and
+\href{README.md}{the documentation index}. Every operator needs their own
+DTU identity and authorized storage. Personal paths in experiment records do
+not imply shared access. Existing Mosaic campaign launchers remain account-bound
+unless their actual interfaces and source bindings have been ported and validated.
+No example here changes a running job or authorizes a new one.
 
 This document is an operator-style reference for an AI coding agent working on DTU HPC. It is biased toward practical software engineering and ML/DL workflows rather than classical HPC simulation workflows.
 
@@ -120,7 +128,10 @@ From outside DTU, most services require VPN.
   \item complete MFA.
 \end{enumerate}
 
-If you are already on VPN, standard password-based SSH login works. If you are outside DTU \emph{without} VPN, DTU requires SSH-key based access with an SSH key, a key passphrase, and your DTU password.
+Use the authentication method currently supported for your account and network.
+DTU documents VPN access and SSH-key access without VPN; the exact prompts depend
+on the route. Do not assume that a VPN profile, SSH alias or private key from
+another workstation exists on yours.
 
 \subsection{SSH login}
 
@@ -158,6 +169,9 @@ That gives an interactive shell on a shared interactive node where you can:
 \end{itemize}
 
 \textbf{Do not assume the interactive node is private.}
+For this Mosaic project, \texttt{linuxsh} alone does not satisfy the numerical
+allocation guards. Model imports, preprocessing, numerical tests and scientific
+rendering still require the authorized LSF allocation.
 
 \subsection{ThinLinc}
 
@@ -218,20 +232,32 @@ ssh dtu-hpc
 
 \subsection{Suggested repo layout}
 
-A practical project layout:
+The actual Mosaic working-source layout is:
 
 \begin{lstlisting}[style=shell]
 repo/
-  .venv/
-  logs/
-  submit_scripts/
-  src/
-  data/
-  runs/
-  scripts/
+  AGENTS.md
+  experiments/<family>/<experiment-id>/
+    README.md
+    scripts/  hpc/  configs/  tests/  runs/
+  src/mosaic/
+  scripts/<shared-capability>/
+  scripts/compat/    # labeled inputs for archive-only legacy aliases
+  tests/core/  tests/models/  tests/small_molecule/
+  tests/data/
+  docs/
+  results/hpc/       # ignored evidence copies
+  results/releases/  # ignored immutable bundles
   pyproject.toml
-  uv.lock
 \end{lstlisting}
+
+Create only needed experiment directories; each needs its own README.
+The root experiment index and migration maps name canonical owners. Former flat
+script/test adapters live under \texttt{scripts/compat/}; old names are emitted
+only inside new authenticated archives. Both working roots contain only
+navigation/collection infrastructure. Default pytest discovery selects nested shared and canonical experiment
+tests once. The repository ignores \texttt{uv.lock};
+do not assume a fresh clone includes a frozen dependency lock.
 
 \subsection{Recommended shell habits}
 
@@ -291,9 +317,9 @@ transfer.gbar.dtu.dk
 Examples:
 
 \begin{lstlisting}[style=shell]
-scp -i ~/.ssh/gbar file1.txt s123456@transfer.gbar.dtu.dk:
-scp -i ~/.ssh/gbar s123456@transfer.gbar.dtu.dk:file1.txt .
-rsync -avP localdir/ s123456@transfer.gbar.dtu.dk:remote-dir/
+scp -i ~/.ssh/gbar file1.txt YOUR_DTU_ID@transfer.gbar.dtu.dk:
+scp -i ~/.ssh/gbar YOUR_DTU_ID@transfer.gbar.dtu.dk:file1.txt .
+rsync -avP localdir/ YOUR_DTU_ID@transfer.gbar.dtu.dk:remote-dir/
 \end{lstlisting}
 
 \subsection{Cleaning quota pressure}
@@ -309,15 +335,19 @@ Common space hogs on DTU HPC:
   \item local package caches for pip/conda/uv
 \end{itemize}
 
-Useful commands:
+Read-only inspection commands:
 
 \begin{lstlisting}[style=shell]
 du -h --apparent --max-depth=1 .
-pip cache purge
-uv cache clean
-rm -rvf $HOME/.cache/huggingface/*
-rm -rvf $HOME/.local/share/Trash/*
+getquota_zhome.sh
+getquota_work3.sh
+df -h .
 \end{lstlisting}
+
+Cleanup is a separate, scoped operation. Inspect ownership, active consumers,
+exact targets and verified backups before an authorized removal. A generic
+space-pressure example does not authorize deleting cached weights, environments,
+ignored evidence or another experiment's inputs.
 
 \section{Shell and Bash basics an agent should know}
 
@@ -330,7 +360,6 @@ cd /path/to/dir
 mkdir -p logs
 cp src dst
 mv src dst
-rm -rf path
 find . -name "*.py"
 du -h --apparent --max-depth=1 .
 df -h .
@@ -345,10 +374,13 @@ ls -l script.sh
 
 \subsection{Line endings}
 
-If a script was edited on Windows and fails on Linux, normalize line endings:
+For a mutable working script, follow the repository's \texttt{.gitattributes}.
+If normalization is needed, do it before source sealing and reseal/revalidate
+the changed candidate. Never rewrite authenticated archived bytes in place.
+An example inspection is:
 
 \begin{lstlisting}[style=shell]
-sed -i 's/\r$//' script.sh
+file script.sh
 \end{lstlisting}
 
 \subsection{Environment variables}
@@ -383,14 +415,18 @@ git switch -c <branch> --track origin/<branch>
 git pull
 \end{lstlisting}
 
-\subsection{Force-sync to remote and discard local changes}
+\subsection{Inspect divergence without discarding evidence}
 
 \begin{lstlisting}[style=shell]
 git fetch origin
-git reset --hard origin/<branch>
-git clean -fd      # remove untracked files
-git clean -fdx     # also remove ignored files
+git status --short
+git diff
+git diff --stat
+git clean -nd      # preview only; does not authorize removal
 \end{lstlisting}
+
+Resetting or cleaning a scientific checkout can erase local sources and ignored
+receipts. Reorganization and documentation work do not authorize that action.
 
 \subsection{GitHub authentication: important}
 
@@ -519,6 +555,12 @@ module load dcc-setup/2023-aug
 
 \subsection{Python on DTU HPC}
 
+Mosaic's \texttt{pyproject.toml} requires Python 3.12.x. Select an available
+compatible module with \texttt{module avail}; examples below use
+\texttt{MOSAIC\_PYTHON\_MODULE}, which you must set to that actual module name.
+Dedicated native workers may have different pinned runtimes; record them
+separately and preserve their contracts.
+
 DTU's Python guidance boils down to:
 
 \begin{itemize}[leftmargin=1.5em]
@@ -533,7 +575,7 @@ DTU's Python guidance boils down to:
 
 \begin{lstlisting}[style=shell]
 module avail python
-module load python3/3.10.13
+module load "${MOSAIC_PYTHON_MODULE:?Choose an available Python 3.12 module}"
 python3 --version
 which python3
 \end{lstlisting}
@@ -541,11 +583,11 @@ which python3
 \subsection{Classic venv workflow}
 
 \begin{lstlisting}[style=shell]
-module load python3/3.10.13
+module load "${MOSAIC_PYTHON_MODULE:?Choose an available Python 3.12 module}"
 python3 -m venv .venv
 . .venv/bin/activate
 python3 -m pip install -U pip
-python3 -m pip install -r requirements.txt
+python3 -m pip install -e .
 \end{lstlisting}
 
 \subsection{\texttt{uv} workflow}
@@ -555,13 +597,18 @@ If you use \texttt{uv}, do it \emph{on the cluster}. Do not reuse a Windows-crea
 Typical pattern:
 
 \begin{lstlisting}[style=shell]
-module load python3/3.10.13
+module load "${MOSAIC_PYTHON_MODULE:?Choose an available Python 3.12 module}"
 python3 -m pip install --user -U uv
 export PATH="$HOME/.local/bin:$PATH"
 
 uv venv .venv --python "$(which python3)"
-uv sync --frozen
+uv sync --group jax-cuda
 \end{lstlisting}
+
+Use \texttt{--frozen} only with an actual supplied/resolved lockfile. The general
+installation resolves the full project environment; focused native studies may
+instead require their documented minimal pinned environment and offline assets.
+Neither installation success nor a Python version check is native-model acceptance.
 
 Then in jobs, prefer:
 
@@ -693,32 +740,33 @@ Important consequence of DTU's memory model:
 
 \subsection{Queue defaults and limits}
 
-DTU documents for the main CPU queue family:
+Inspect the actual scheduler configuration for the selected account and queue:
 
-\begin{itemize}[leftmargin=1.5em]
-  \item default queue: \texttt{hpc}
-  \item max wallclock: 72 hours
-  \item default walltime: 15 minutes
-\end{itemize}
+\begin{lstlisting}[style=shell]
+bqueues -l
+\end{lstlisting}
+
+Specify resources and walltime explicitly. A general queue maximum does not
+replace the tighter declared experiment/allocation/runtime limits in Mosaic.
 
 ThinLinc/application nodes differ and are not batch-compute targets in the same way.
 
 \section{GPU queues and hardware}
 
-\subsection{Current public GPU queues}
+\subsection{GPU queue discovery}
 
-DTU's public GPU page currently lists:
+Queue names seen in past Mosaic runs include \texttt{gpul40s}, \texttt{gpua100}
+and \texttt{gpua10}. These are examples, not a verified current hardware census.
+Inspect scheduler/node information and the official GPU documentation before
+choosing a supported queue, memory selector and runtime.
 
 \begin{longtable}{p{0.20\linewidth} p{0.58\linewidth} p{0.14\linewidth}}
 \toprule
-Queue & Hardware & Notes \\
+Command & Information & Scope \\
 \midrule
-\texttt{gpul40s} & 6 nodes, each with 2x Nvidia L40S PCIe 48 GB & public GPU queue \\
-\texttt{gpua100} & 4 nodes with 2x A100 40 GB and 6 nodes with 2x A100 80 GB & A100 queue \\
-\texttt{gpuv100} & 6 nodes with 2x V100 16 GB; 8 nodes with 2x V100 32 GB; 3 nodes with 4x V100 32 GB NVLink & V100 queue \\
-\texttt{gpua10} & 1 node with 2x Tesla A10 24 GB & small queue \\
-\texttt{gpua40} & 1 node with 2x Tesla A40 48 GB NVLink & small queue \\
-\texttt{gpuamd} & AMD MI25 queue & non-Nvidia \\
+\texttt{classstat} & Queue/node observations & inspect live output \\
+\texttt{nodestat} & Node features and memory & inspect live output \\
+\texttt{bqueues -l} & Queue resource/time constraints & inspect live output \\
 \bottomrule
 \end{longtable}
 
@@ -746,7 +794,9 @@ Examples:
 
 \subsection{A100 compatibility}
 
-DTU notes that code targeting Nvidia A100 should be built with CUDA 11.0 or newer.
+Use the selected model/runtime's actual CUDA and driver requirements. A hardware
+minimum from an old example is not a compatibility certificate for current JAX
+or the project's pinned native workers.
 
 \subsection{Choosing a queue for testing}
 
@@ -754,27 +804,33 @@ Practical guidance:
 
 \begin{itemize}[leftmargin=1.5em]
   \item shortest queue is dynamic; check with \texttt{classstat} and \texttt{nodestat},
-  \item cheapest/worst GPU is often \texttt{gpua10}, but it has very little capacity,
-  \item \texttt{gpuv100} often starts sooner due to more nodes,
+  \item choose hardware that satisfies the model's memory and runtime contract,
+  \item do not infer cost or expected queue wait from a historical node count,
   \item use short walltimes for smoke tests.
 \end{itemize}
 
-\subsection{Current CPU hardware summary}
+\subsection{CPU hardware and placement}
 
-DTU's central cluster page currently shows a mixed CPU fleet including, among others:
+Inspect available node features rather than relying on a fixed hardware list:
 
 \begin{itemize}[leftmargin=1.5em]
-  \item 2x AMD EPYC 9554 nodes with 1536 GB RAM and EDR InfiniBand,
-  \item Intel Xeon Gold 6342 nodes with 512 GB RAM,
-  \item Intel Xeon Gold 6226R nodes with 384 or 768 GB RAM,
-  \item Intel Xeon Gold 6126 / 6142 nodes,
-  \item older Xeon E5-2650v4 / E5-2660v3 nodes,
-  \item dedicated AMD queues such as \texttt{epyc}, \texttt{rome}, and \texttt{milan}.
+  \item CPU instruction set and core count,
+  \item per-host memory and slot limits,
+  \item queue permissions, placement and runtime limits.
 \end{itemize}
 
 Therefore, identical CPU jobs may run at different speeds on different hosts. If node features matter, use \texttt{nodestat -F <queue>} and explicit \texttt{select[...]} requirements.
 
 \section{Submit-script templates}
+
+These are illustrative, self-contained Bash templates, not Mosaic experiment
+launchers. Names such as \texttt{mypackage} and \texttt{scripts/run\_pipeline.sh}
+are placeholders, not repository files. Create the scheduler log directories
+before submission; creating them inside the job is too late for LSF's log opening.
+For migrated Mosaic launchers, invoke the actual script file with
+\texttt{bsub ... bash -l SCRIPT ARGS} and explicit command-line resources:
+their layout resolution uses the script's location, so do not assume that piping
+their contents through \texttt{bsub < SCRIPT} preserves that location.
 
 \subsection{Minimal CPU batch script}
 
@@ -794,7 +850,7 @@ Therefore, identical CPU jobs may run at different speeds on different hosts. If
 cd "${LS_SUBCWD:-$PWD}"
 mkdir -p logs
 
-module load python3/3.10.13
+module load "${MOSAIC_PYTHON_MODULE:?Choose an available Python 3.12 module}"
 . .venv/bin/activate
 
 export PYTHONUNBUFFERED=1
@@ -1226,7 +1282,7 @@ exit
 \begin{lstlisting}[style=shell]
 module avail
 module list
-module load python3/3.10.13
+module load "${MOSAIC_PYTHON_MODULE:?Choose an available Python 3.12 module}"
 module purge
 \end{lstlisting}
 
@@ -1236,7 +1292,7 @@ module purge
 python3 -m venv .venv
 . .venv/bin/activate
 python3 -m pip install -U pip
-uv sync --frozen
+uv sync --group jax-cuda
 \end{lstlisting}
 
 \subsection{Git}
@@ -1245,8 +1301,8 @@ uv sync --frozen
 git clone <url>
 git switch <branch>
 git fetch
-git reset --hard origin/<branch>
-git clean -fdx
+git status --short
+git diff
 \end{lstlisting}
 
 \subsection{Submission and monitoring}
@@ -1274,8 +1330,8 @@ df -h .
 \subsection{Transfer}
 
 \begin{lstlisting}[style=shell]
-scp file s123456@transfer.gbar.dtu.dk:
-rsync -avP localdir/ s123456@transfer.gbar.dtu.dk:remote-dir/
+scp file YOUR_DTU_ID@transfer.gbar.dtu.dk:
+rsync -avP localdir/ YOUR_DTU_ID@transfer.gbar.dtu.dk:remote-dir/
 \end{lstlisting}
 
 \section{Agent checklist before launching a long run}

@@ -1,5 +1,14 @@
 # Standalone Boltz mix50 trajectory report
 
+> **Scope and access note (22 October 2026):** this document contains an
+> experiment protocol and dated operator evidence. Concrete account paths,
+> environments, jobs and source hashes describe that operator/attempt; they
+> are not shared-account defaults or a fresh status/acceptance claim. Use
+> [your own HPC setup](HPC_GUIDE.md). Keep the scientific gates and historical
+> outcomes below intact when preparing a separately validated candidate.
+> Canonical working home: [brd4/boltz-affinity-10000](../experiments/brd4/boltz-affinity-10000/README.md).
+
+
 20 October 2026. The user requested a new interactive report for completed
 Boltz mix50 run **29759212**. Allocated report job **29760530 DONE** at
 **09:16:29 Europe/Paris**, with actual scheduler/LSF success authenticated.

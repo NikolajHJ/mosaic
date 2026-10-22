@@ -1,5 +1,14 @@
 # Saved-only higher-rate JQ1 report
 
+> **Scope and access note (22 October 2026):** this document contains an
+> experiment protocol and dated operator evidence. Concrete account paths,
+> environments, jobs and source hashes describe that operator/attempt; they
+> are not shared-account defaults or a fresh status/acceptance claim. Use
+> [your own HPC setup](HPC_GUIDE.md). Keep the scientific gates and historical
+> outcomes below intact when preparing a separately validated candidate.
+> Canonical working home: [brd4-jq1/fixed-lrboost](../experiments/brd4-jq1/fixed-lrboost/README.md).
+
+
 The existing report on localhost8777 is an immutable historical old-rate edition.
 The higher-rate family needs its own contract, source release, allocated CPU
 fixtures, evidence receipts and viewer directory/unused local port. Do not repin

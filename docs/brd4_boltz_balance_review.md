@@ -1,5 +1,14 @@
 # Boltz mix50 learning-rate and chemistry-balance review
 
+> **Scope and access note (22 October 2026):** this document contains an
+> experiment protocol and dated operator evidence. Concrete account paths,
+> environments, jobs and source hashes describe that operator/attempt; they
+> are not shared-account defaults or a fresh status/acceptance claim. Use
+> [your own HPC setup](HPC_GUIDE.md). Keep the scientific gates and historical
+> outcomes below intact when preparing a separately validated candidate.
+> Canonical working home: [brd4/boltz-gradient-diagnostic](../experiments/brd4/boltz-gradient-diagnostic/README.md).
+
+
 20 October 2026. **Updated user preference: keep learning rate 0.03 for now**
 and investigate chemistry gradients that remain useful on valid molecules.
 LR 0.01 is only a possible future comparison. The user withdrew the earlier

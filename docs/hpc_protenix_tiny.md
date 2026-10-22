@@ -1,5 +1,14 @@
 # DTU HPC: bounded native Protenix-Tiny example
 
+> **Scope and access note (22 October 2026):** this document contains an
+> experiment protocol and dated operator evidence. Concrete account paths,
+> environments, jobs and source hashes describe that operator/attempt; they
+> are not shared-account defaults or a fresh status/acceptance claim. Use
+> [your own HPC setup](HPC_GUIDE.md). Keep the scientific gates and historical
+> outcomes below intact when preparing a separately validated candidate.
+> Canonical working home: [native-inference/protenix-tiny](../experiments/native-inference/protenix-tiny/README.md).
+
+
 Date: 2026-10-10. Status: **completed for this bounded example**. GPU job `29674532` finished successfully, all recorded model arrays were finite, and the small result bundle was downloaded and checksum-verified at `2026-10-10T11:32:47.6274266Z`.
 
 The user authorized DTU HPC setup, one small Protenix-Tiny example, quota inspection, and download of results. This exercised Mosaic's existing native **protein** inference interface. It does not implement or validate the Stage 0 relaxed ligand graph, molecular gradients, or the complete Mosaic dependency/model collection. Results and retained limitations are recorded in [the experiment ledger](experiment_ledger.md).

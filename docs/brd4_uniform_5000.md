@@ -1,5 +1,14 @@
 # BRD4-BD1 uniform-start control, 5000 updates
 
+> **Scope and access note (22 October 2026):** this document contains an
+> experiment protocol and dated operator evidence. Concrete account paths,
+> environments, jobs and source hashes describe that operator/attempt; they
+> are not shared-account defaults or a fresh status/acceptance claim. Use
+> [your own HPC setup](HPC_GUIDE.md). Keep the scientific gates and historical
+> outcomes below intact when preparing a separately validated candidate.
+> Canonical working home: [brd4/uniform-5000](../experiments/brd4/uniform-5000/README.md).
+
+
 Requested 2026-10-16. CPU readiness and resource gates passed; uniform native
 job **29736735 submitted** on A10, with report **29736736** attached. Native
 uniform checks/optimization remain pending. The original study is unchanged.

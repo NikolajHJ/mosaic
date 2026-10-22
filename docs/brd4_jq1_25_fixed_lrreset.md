@@ -1,5 +1,14 @@
 # Fresh lower-rate JQ1 runs with chemistry endpoint 100
 
+> **Scope and access note (22 October 2026):** this document contains an
+> experiment protocol and dated operator evidence. Concrete account paths,
+> environments, jobs and source hashes describe that operator/attempt; they
+> are not shared-account defaults or a fresh status/acceptance claim. Use
+> [your own HPC setup](HPC_GUIDE.md). Keep the scientific gates and historical
+> outcomes below intact when preparing a separately validated candidate.
+> Canonical working home: [brd4-jq1/fixed-lrreset](../experiments/brd4-jq1/fixed-lrreset/README.md).
+
+
 22 October 2026. The user requested dividing every higher-rate learning rate
 by ten and fresh submission of all three runs. After clarification, the user
 selected chemistry coefficients 0.001 to 100. This is an explicit stronger

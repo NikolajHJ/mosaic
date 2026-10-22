@@ -1,5 +1,14 @@
 # 100 projected updates from a carbon chain
 
+> **Scope and access note (22 October 2026):** this document contains an
+> experiment protocol and dated operator evidence. Concrete account paths,
+> environments, jobs and source hashes describe that operator/attempt; they
+> are not shared-account defaults or a fresh status/acceptance claim. Use
+> [your own HPC setup](HPC_GUIDE.md). Keep the scientific gates and historical
+> outcomes below intact when preparing a separately validated candidate.
+> Canonical working home: [graph-controls/carbon-chain-100](../experiments/graph-controls/carbon-chain-100/README.md).
+
+
 Completed 2026-10-16 on allocated DTU HPC. The user requested 100 updates
 for each previous relaxation strength, now initialized from a carbon chain,
 with loss and molecular changes shown over time.
@@ -48,7 +57,7 @@ GPU job **29735673 DONE**, with **128 selected unit checks passed** and
 100 accepted updates per start. Each of the 202 saved states has its
 unrepaired graph, derivatives, primal/AD losses and detached chemical readout.
 Initial presentation-only CPU jobs **29735743 DONE** and **29735759 DONE** used the revised
-[`render_protenix_trajectory.py`](../scripts/render_protenix_trajectory.py)
+[`render_protenix_trajectory.py`](../scripts/reporting/render_protenix_trajectory.py)
 and its [HTML template](../scripts/templates/protenix_trajectory_report.html)
 against that completed study. It did not execute the model again.
 

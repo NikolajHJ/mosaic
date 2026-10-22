@@ -1,5 +1,14 @@
 # Protenix gradients into a relaxed molecular graph
 
+> **Scope and access note (22 October 2026):** this document contains an
+> experiment protocol and dated operator evidence. Concrete account paths,
+> environments, jobs and source hashes describe that operator/attempt; they
+> are not shared-account defaults or a fresh status/acceptance claim. Use
+> [your own HPC setup](HPC_GUIDE.md). Keep the scientific gates and historical
+> outcomes below intact when preparing a separately validated candidate.
+> Canonical working home: [graph-validation/relaxed-gradients](../experiments/graph-validation/relaxed-gradients/README.md).
+
+
 Completed: 2026-10-16. Status: **focused study passed on allocated DTU HPC; source-04 job `29735139` DONE**. All earlier failed jobs remain retained. The user confirmed DTU HPC access and authorized these tests on an allocated node. Full Stage 0 A–G acceptance remains pending.
 
 Both relaxed initializations produced finite nonzero atom and edge-existence gradients, passed all three finite-difference scales for both leaves, and completed three declining AD-evaluated projected-step losses at `eta_X=eta_E=0.01`. An independent standalone primal forward verified the initial-to-final loss decrease; intermediate standalone-primal losses were not separately evaluated. Standalone primal endpoint losses were:

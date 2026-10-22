@@ -1,5 +1,14 @@
 # BRD4 contact plus failure-aware chemistry — 19 October 2026
 
+> **Scope and access note (22 October 2026):** this document contains an
+> experiment protocol and dated operator evidence. Concrete account paths,
+> environments, jobs and source hashes describe that operator/attempt; they
+> are not shared-account defaults or a fresh status/acceptance claim. Use
+> [your own HPC setup](HPC_GUIDE.md). Keep the scientific gates and historical
+> outcomes below intact when preparing a separately validated candidate.
+> Canonical working home: [brd4/chemistry-5000](../experiments/brd4/chemistry-5000/README.md).
+
+
 The user requested integrating the DBMol failure-aware, atom-preserving repair
 objective and a fresh **50% chain/uniform initialization**. This is a separate
 study; the six completed historical trajectories and their reports stay sealed.
