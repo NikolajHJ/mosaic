@@ -1,6 +1,6 @@
 {
   "tag": "20261022-brd4-jq1-25-fixed-lrreset-04",
-  "status": "All3 native checks passed; launcher02 CPU26/DONE and full all-work3 storage passed; all3 fresh10000 long jobs actually submitted, PEND at19:25UTC. No scientific update start established yet.",
+  "status": "Initialization fix passed in validation AND new Protenix production output (exact original NPZ hash). All3 native readiness checks and full work3 storage passed. Three fresh longs submitted: Pro29792670 RUN/entry passed/driver startup; Bol29792671 and chem29792672 PEND for GPUs. No committed optimization update verified yet.",
   "authorization": {
     "rates": {
       "protenix": 0.3,
@@ -94,7 +94,7 @@
   "saved_results_changed": false,
   "prior_failures_preserved": true,
   "diagnostic_evidence_verification_sha256": "f660e02ffe67051c5f8adc3c79887791cbdf6d62277e1d83ec64d0bcc6f4a9f7",
-  "latest_observed_utc": "2026-10-22T19:27:10.271667+00:00",
+  "latest_observed_utc": "2026-10-22T19:31:50.070350+00:00",
   "native_jobs": {
     "protenix": {
       "job": "29792413",
@@ -209,8 +209,8 @@
   "queue_status": {
     "protenix": {
       "job": "29792670",
-      "state": "PEND",
-      "reason": "Job slot limit reached"
+      "state": "RUN",
+      "reason": "GPU allocated; full entry gate passed; validated driver startup; exact production initialization matched"
     },
     "boltz2": {
       "job": "29792671",
@@ -223,5 +223,15 @@
       "reason": "ngpus_physical reservation requirements not satisfied"
     }
   },
-  "automation_remains_paused": true
+  "automation_remains_paused": true,
+  "current_entry_observation": {
+    "file": "entry-observation.json",
+    "sha256": "4ad99dee2494762339a1a1c4f1bb49a9638921112768e6cae764965b47d60f03",
+    "all_three_optimization_starts_verified": false
+  },
+  "actual_scheduler_resource_verification": {
+    "file": "launcher-resource-verification.json",
+    "sha256": "b0e1737ffb76a509951b3c359184349c105f9d27d278a2266ff96a4cd52d30d6",
+    "all_three_actual_gpuls40s_4CPU_8GiBslot_23h_one_exclusive_GPU": true
+  }
 }

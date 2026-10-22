@@ -17,7 +17,7 @@ ARMS=['protenix','boltz2','boltz2_chemistry']
 
 
 def main():
-    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--name',required=True);parser.add_argument('--submitted-only',action='store_true');args=parser.parse_args()
+    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--name',required=True);parser.add_argument('--submitted-only',action='store_true');parser.add_argument('--output-name');args=parser.parse_args()
     assert re.fullmatch('[a-zA-Z0-9-]+',args.name)
     folder=REPO/'results/hpc/20261022-brd4-jq1-25-fixed-lrreset-04'/args.name
     index=json.loads((folder/'evidence-index.json').read_bytes());by={}
@@ -35,6 +35,10 @@ def main():
             scheduler|=re.findall(r'Job<([^>]+)>',c)==[job] and re.findall(r'Status<([^>]+)>',c)==[status] and re.findall(r'Queue<([^>]+)>',c)==[queue]
             lsf|=('Subject: Job '+job+':' in raw and ('Successfully completed.' if status=='DONE' else 'Exited with exit code 1.') in raw)
         assert scheduler and lsf,(job,status)
+    blocks={}
+    for raw in re.split(r'(?=\nJob <\d+>)',index['scheduler']['stdout']):
+        c=re.sub(r'\s+','',raw);ids=re.findall(r'Job<([^>]+)>',c)
+        if len(ids)==1:blocks[ids[0]]=c
     prior=json.loads((folder/'verification.json').read_bytes());assert prior['status']=='passed' and len(prior['native_passes_verified'])==3 and prior['source_files']==625 and prior['cpu_cases']==728
     ctl=ROOT+'/all-work3-launch-02';launch_source=SOURCE.replace('restart-lrreset-release-04','restart-lrreset-allwork3-launch-02')
     assert digest(launch_source+'/source_manifest.json')==LAUNCH
@@ -48,6 +52,8 @@ def main():
             assert digest(launch_source+'/'+name)==h==hashlib.sha256(tar.extractfile('source/'+name).read()).hexdigest()
     own=read(ctl+'/cpu-certificate.json');assert own['status']=='passed' and own['tests']==26 and own['manifest']==LAUNCH and own['job']=='29792667'
     terminal(own['proofs'],'29792667','DONE','hpc')
+    assert 'Status<DONE>' in blocks['29792668'] and 'Queue<hpc>' in blocks['29792668']
+    callback=by[ctl+'/after-cpu/stdout.29792668.log'].read_text();assert 'Subject: Job 29792668:' in callback and 'Successfully completed.' in callback
     t=ET.parse(by[ctl+'/cpu/payload/tests.xml']);assert len(list(t.iter('testcase')))==26 and not any(list(t.iter(s)) for s in ['failure','error','skipped'])
     assert all('fixture_all_work3_launch' in x.get('classname','') for x in t.iter('testcase'))
     adoption=read(ctl+'/adoption.json');assert adoption['scientific_source_manifest_sha256']==SCI and adoption['launcher_manifest']==LAUNCH and adoption['launcher_cpu']['sha256']==digest(ctl+'/cpu-certificate.json')
@@ -77,6 +83,11 @@ def main():
         p=ROOT+'/run-'+a;assert row['output_parent']==p and read(p+'/submission.json')==row
         v=row['args'];assert v[:5]==['bsub','-q','gpul40s','-n','4'] and v[v.index('-W')+1]=='23:00' and v[v.index('-gpu')+1]=='num=1:mode=exclusive_process' and '-w' not in v and 'rusage[mem=8GB]' in v
         assert v[-5:]==[launch_source,LAUNCH,'run',a,digest(ctl+'/cpu-certificate.json')]
+        actual=blocks[row['job_id']]
+        assert 'Queue<gpul40s>' in actual and '4Task(s)' in actual
+        assert 'RequestedResources<rusage[mem=8192.00]span[hosts=1]>' in actual
+        assert 'RequestedGPU<num=1:mode=exclusive_process>' in actual and 'RUNLIMIT1380.0min' in actual and 'MEMLIMIT8G' in actual
+        assert re.findall(r'Command<([^>]+)>',actual)==[''.join(v[v.index('bash'):])]
         config=read(SOURCE+'/examples/configs/brd4_jq1_25_fixed_lrreset_'+a+'_10000.json')
         assert config['initial_step_size']==row['learning_rate'] and config['steps']==10000 and config['max_backtracks']==1 and config['acceptance_policy']=='fixed_step'
         if a=='boltz2_chemistry':assert config['repair_schedule']=={'version':'delayed-geometric-v1','initial':.001,'final':100.,'hold_updates':5000,'total_updates':10000}
@@ -91,7 +102,9 @@ def main():
         prefix=index['committed_prefixes'][a];assert prefix['states']['contiguous'] and prefix['updates']['contiguous'] and prefix['states']['committed_rows']>=2 and prefix['updates']['committed_rows']>=1
         starts[a]={'job':row['job_id'],'states':prefix['states']['committed_rows'],'updates':prefix['updates']['committed_rows'],'entry_gate':'passed','driver_source_manifest':SCI}
     result={'status':'passed','scope':'Independent stdlib bytes/XML/JSON/source/resource/proof audit; no local scientific calculations','all_scientifically_started_verified':not args.submitted_only,'captured_utc':index['captured_utc'],'scientific_cpu_cases':728,'launcher_cpu_cases':26,'source_manifest_sha256':SCI,'launcher_manifest_sha256':LAUNCH,'starts':starts,'saved_results_changed':False,'failed_home_gate_preserved':True,'full_work3_dispatch_gate':marker['storage_gate'],'evidence_index_sha256':hashlib.sha256((folder/'evidence-index.json').read_bytes()).hexdigest()}
-    with (folder/('launcher-submission-verification.json' if args.submitted_only else 'launcher-start-verification.json')).open('x') as f:json.dump(result,f,indent=2);f.write('\n')
+    output=args.output_name or ('launcher-submission-verification.json' if args.submitted_only else 'launcher-start-verification.json')
+    assert re.fullmatch(r'[a-zA-Z0-9-]+\.json',output)
+    with (folder/output).open('x') as f:json.dump(result,f,indent=2);f.write('\n')
     print(json.dumps({k:v for k,v in result.items() if k!='full_work3_dispatch_gate'},indent=2))
 
 

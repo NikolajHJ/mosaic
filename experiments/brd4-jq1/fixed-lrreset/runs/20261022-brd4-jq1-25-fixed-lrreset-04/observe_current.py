@@ -60,6 +60,12 @@ for arm in ['protenix','boltz2','boltz2_chemistry']:
  parent=placements.get(arm,(home if arm=='boltz2_chemistry' else root)/('run-'+arm))
  a['output_parent']=str(parent)
  a['driver_invocation_exists']=(parent/'payload/driver-invocation.json').exists()
+ p=parent/'payload/study/initialization.npz'
+ if p.exists():a['production_initialization']={'bytes':p.stat().st_size,'sha256':hashlib.sha256(p.read_bytes()).hexdigest()}
+ for name in ['native_gradient_checks/report.json','summary.json']:
+  p=parent/'payload/study'/name
+  if p.exists():
+   j=json.loads(p.read_bytes());a['production_'+name]={k:v for k,v in j.items() if k in ['status','error','job_id','baseline_initialization_match','initialization_execution']}
  for p in parent.glob('**/*storage-gate.json'):
   j=json.loads(p.read_bytes());a['entry_gate']={'path':str(p),'status':j.get('status'),'sha256':hashlib.sha256(p.read_bytes()).hexdigest()}
  for name in ['states','updates']:

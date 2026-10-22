@@ -129,3 +129,15 @@ At21:27Paris, all3remainPEND (host slot/physicalGPU availability). No further
 bootstrap, callback or dispatch retry is permitted; these exact jobs execute
 when LSF admits them and each repeats the full entry gate. Existing monitoring
 automation remains paused as previously requested; no schedule was changed.
+
+
+Latest21:31:50Paris: Pro29792670 actualRUN, full all3entry budgetpassed, original
+validated625driver invoked. Its NEW production initialization1197bytes is exactly
+originalSHA351789aa62d3ff111a4d2050a062cf844a1f29a87a7e352af465ff4299fd1bbf.
+Production raw native checks/startup are in progress; no committed optimizer
+update is yet verified. Both Bol jobs29792671/72 remainPEND for GPUcapacity,
+not failed and must not be duplicated. All3actual scheduler Command/queue/4tasks/
+8GiBslot/1380min/exclusive1GPU records passed a separate stdlib resource audit;
+launcher-resource-verification.json preserves that audit independently of the
+first successful submission audit. Source fixes/receipts pushed2327e73; this
+append records the later production entry. All old saved results remain unchanged.

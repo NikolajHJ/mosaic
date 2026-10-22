@@ -6348,3 +6348,19 @@ on hostslot/physicalGPU capacity; no entry/optimization started yet. Automatic L
 execution needs no new submit. Preserve exclusive markers; never duplicate.
 Existing heartbeat automation stays paused; no schedule changed. No scientific
 completion or terminal pass follows from successful submission/presentation.
+
+
+### 2026-10-22 21:31:50 Paris — Protenix actual entry and exact production initialization
+
+Pro29792670 actualRUN/gpul40s, own full all3remaining-projection entry storage gate
+passed (SHAe6f331c0a5502a60c8abcbd91e36bd7bea45dd4b7ad42f46b1891bad66a7289f),
+validated source625driver invoked. NEW production initialization1197bytes SHA
+351789aa62d3ff111a4d2050a062cf844a1f29a87a7e352af465ff4299fd1bbf equals original.
+No committed optimizer update yet; native startup/checks continue. Bol29792671 and
+chem29792672 stillPEND on GPUcapacity, not failures and no duplicate/resubmit.
+Additional independent raw scheduler audit verified all3actual command/source/queue/
+4CPU/8GiBslot/23h/oneexclusiveGPU and completed launcher callbackLSF/DONE;
+launcher-resource-verification.json and entry-observation.json record scope.
+No scientific completion/all3start claim; existing heartbeat remainspaused.
+Allsavedresultbytes/source625/settings/checks preserved. Code/first submissions
+and independent full evidence were pushed2327e73 before this later observation.
