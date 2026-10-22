@@ -55,7 +55,7 @@ def main():
     text = files[name].decode()
     text = replace(text, "    modules = {part for c in cases for part in c.get('classname', '').split('.')}",
         "    modules = {part for c in cases for part in c.get('classname', '').split('.')}\n    require(sum('test_protenix_initialization' in c.get('classname', '').split('.') for c in cases) == 4,\n            'Exact initialization/trajectory subclass regressions did not all execute')")
-    text = replace(text, "    if arm != 'protenix':\n        require(summary['context_file_sha256']", 
+    text = replace(text, "    if arm != 'protenix':\n        require(summary['context_file_sha256']",
         "    if arm == 'protenix':\n        require(summary.get('initialization_execution', {}).get('version') == 'protenix-fp32-cpu-atom-softmax-v1',\n                'Missing declared same-trajectory exact initialization execution policy')\n    if arm != 'protenix':\n        require(summary['context_file_sha256']")
     files[name] = text.encode()
     files['scripts/protenix_initialization.py'] = (HERE / 'protenix_initialization.py').read_bytes()
