@@ -6299,3 +6299,52 @@ Separate corrected Prodiagnostic29792158/capture29792159 actualDONE/samejobLSFsu
 ## 2026-10-22T18:38:38.220149+00:00 — initialization recovery fullCPU independently verified; all3newnative checks queued
 
 CPU29792389/afterCPU29792390 actualDONE/LSF,728actualcases396+239+34+59/noerrorsfailsskip/3unchangedlegacydeselections. RawJUnit inherited3subtest header surplus is not extra cases. Independent36file/source625/config/XML/proof/scheduler/LSF/resource audit passed; sourcec2628d08f7224f3b572ab456f4113d8a66b587a5d69f85a072877052fc09a057 andCPUcert6a87093f3da0d1ca0694c7152de84fdeed308251f709c685b526d978b1455e23 authenticated. All3actualnewnative/owncallbackjobsPro29792413/14,Bol29792415/16,chem29792417/18 PEND physicalGPU/hostslots. No newnativepass/longsubmission. All settings/checks/savedresults unchanged; exact-init placement and proposal-type preservation are documented engineering changes, with fullrequiredallocatedchecks repeated. Currentuserautomation remains paused; no cleanup thisturn.
+
+
+## 2026-10-22T18:58:10.627079+00:00 — exact Protenix initialization and full native readiness passed
+
+Protenix validation29792413 and owncallback29792414 actualDONE/samejobLSFsuccess. Fresh initialization NPZ is1197bytes and exactly the originalSHA351789aa62d3ff111a4d2050a062cf844a1f29a87a7e352af465ff4299fd1bbf; all5arrays/key exact, original strict assertion retained. Native/rawFD/null/independentprimal/hardparity/frozen/tenupdatepilot/runtime passed atLR0.3. Empiricalpilotmean2.1728954s/update, conservative34393.4310s (estimateonly) fits82800s. Original fullstorageprojection formula yields1493521824bytes. Pro-only sameFP32softmaxplacement applies eachstate/trial, GPUscoringunchanged.
+
+Independent142filebyte/source625/XML/LSF/proof audit passed,74nativeProproofs plus CPU728chain; no local numerical arraysloaded. NormalBol29792415/owncallback16 readinesspassed; chemistry29792417 RUN/rawgradient andearly10pilotpassed, owncallback18PEND. No long IDs or fullfinalstoragegate established yet; no duplicatejobs/cancellation/cleanup/scientificsettingchange.
+
+
+## 2026-10-22T19:09:36+00:00 - fullhomeinventory timedout beforelongsubmission; all-work3 recovery prepared
+
+All3source625native validations29792413/15/17 passed. Callback29792418 EXIT only because GNUfind fullrecenthomeinventory exceeded600s; no long-dispatch marker/long IDs exist. Preserve failedgate/LSF unchanged. New launcher-only all-work3 placement budgets all3unchanged scientific625remainingprojections + original2GiBreport/512MiBdiagnostic +4GiB/100000files on the actual outputfilesystem. No home output/write or old data move/delete. Original science625/CPU728/all3readiness/source/config/context/model/pocket/frozen/runtime gates adopted exactly; new launcher requires allocatedCPUcontracts and actualfullwork3/entry admission before3independentlongjobs. Preparation only, no newlaunch/pass yet.
+
+
+### 2026-10-22 21:21 Paris — exact initialization/native passes and all-work3 launcher gate
+
+All three source625 validations29792413/15/17 passed independently (74/52/128proofs). Pro initialization whole NPZ equals original1197bytes/SHA351789aa62d3ff111a4d2050a062cf844a1f29a87a7e352af465ff4299fd1bbf. Native evidence338files/276remote proof hashes passed stdlib audit. Original callback29792418 EXIT1 solely on mandatory home inventory600s timeout before ANYlongmarker/output/submission; original failed gate and LSF preserved. New immutable launcher-only all-work3 adoption01 authenticated4files, manifest99fcd95e150a671adb30a1cb910079474452319ddd67a36b042dc6a8e94940fa; CPU29792659/own-ended callback29792660 actually submitted. Full20metadata fixtures ran with no errors/fails/skips in rawXML, but final CPU/LSF/certificate/fullcampaign gate/longIDs not established in this observation. Each new output assigned work3 with original all3remaining projections+2GiBreport/512MiBdiag+4GiB/100000files; same source625/config/nativepins, no new home output or altered scientific setting. No further cleanup or saved-result mutation. Static layout03 passed166AST/82tests/155aliases; local work remains stdlib-only.
+
+
+### 2026-10-22 21:25 Paris — full storage passed and three actual lower-rate long submissions
+
+All-work3 launcher01 CPU29792659 passed20 cases, but callback29792660 failed its first
+scheduler-proof check before any long submission. Preserve failure/source. The first
+raw response was not saved; later allocated readonly probe29792663 actualDONE captured
+same CPU actualDONE/hpc. Exact transient cause unproven. New immutable launcher02
+records every raw observation and bounds RUN/PEND waiting without accepting EXIT,
+unknown/malformed/wrong-job/queue; required actualDONE/hpc/LSF/full26cases passed on
+CPU29792667, callback29792668 actualDONE. Scientific625 and all new native passes
+unchanged. Own source4 manifest40c5055150c06e0aeb9989d33f869aecb6642c3823f6bdc9330e66f41a3bcbbe.
+
+Full all3 work3 dispatch quota PASSED required15364887328 vs25726653739 available,
+including full native projections+2GiBreport/512MiBdiagnostic+4GiBreserve/100000files.
+File headroom19622802 from finite userquota; allzero physical inodes honestly
+unreported. Original600s failed home gate remains failed. Three actual independent
+longs submitted: Pro29792670, Bol29792671, chemistry29792672, allPEND at21:25Paris.
+All outputs ROOT04/run-ARM onwork3, no new home output; no saved result moved/edited,
+no new cleanup. Same rates0.3/0.005/0.005, chemistry0.001->100, exact unchanged
+science625/config/CPU728/all3 native proofs. Entry gates/first updates still pending.
+
+
+Independent all-work3 submission delivery passed415 files/303 remote proof hashes,
+source625+4launcher members/raw728+26caseXML/all3newnativeproofs/fullquota/actual
+Pro29792670,Bol29792671,chem29792672 vectors. Tracked
+experiments/brd4-jq1/fixed-lrreset/runs/20261022-brd4-jq1-25-fixed-lrreset-04/launcher-submission-verification.json
+explicitly records scientific_start_verified=false. At21:27Paris current3jobs PEND
+on hostslot/physicalGPU capacity; no entry/optimization started yet. Automatic LSF
+execution needs no new submit. Preserve exclusive markers; never duplicate.
+Existing heartbeat automation stays paused; no schedule changed. No scientific
+completion or terminal pass follows from successful submission/presentation.

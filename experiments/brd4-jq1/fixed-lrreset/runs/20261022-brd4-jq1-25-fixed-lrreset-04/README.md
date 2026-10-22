@@ -78,3 +78,54 @@ Owned production source additions are protenix_initialization.py and fixture_pro
 Commands (Mosaic repository root; bundledPython3.13): submit_initialization_probe.py once; prepare_initialization_fix.py produced preserved localsource01 then correctedsource02; submit_fix.py once; collect_probe_and_diagnostic.py and verify_probe_and_diagnostic.py once; collect_gate_evidence.py --mode cpu --name cpu-evidence01 then verify_gate_evidence.py --name cpu-evidence01. All operators refuse existing/unknown outcomes. observe_current.py is a read-only one-connection snapshot, with fresh timestamped local receipts. Local work is stdlib packaging/static/byte/schema only; all numerical/probe/fixture work ran on allocatedHPC.
 
 Separate corrected Prodiagnostic29792158/capture29792159 completed and independently verified:416files/385remoteproofhashes, rawreport2045d6e8537ff86c176e6619725d206b32029058df351ce639cc88f90da9c1db. Original terminalXmargin0.0001437509 makes declared.01/.003/.001 infeasible; smallerdiagnostic probesagree, coordinate/finercontrolsnotuniformpasses. Originalscientificfailurepreserved; cannotcertify/restartoriginal. Five originalinput/summary/terminal files remain remoteauthenticated references, not a claim allnativebytesdownloaded.
+
+
+The first local stdlib layout check found a previous run's historical launcher fixture in default discovery (83paths vs82registered canonicaltests). Its working filename was changed to fixture_launcher_resource_recovery.py with identical bytes, preserving the archived test name and12mandatoryallocatedcases. No local scientific tests ran and no gate was waived. Initial failed static audit remains in results/static/20261022-lrreset04-layout.json.
+
+
+## Current outcome, 22 October 21:25 Paris
+
+All three new native validations passed with the exact original Protenix
+initialization and unchanged rates/configuration. Independent native evidence
+verified all 338 delivered files and 276 remote proof hashes. Protenix's saved
+initialization NPZ is byte-identical to the original (SHA351789aa62d3ff111a4d2050a062cf844a1f29a87a7e352af465ff4299fd1bbf).
+
+Original callback29792418 failed the 600-second home inventory before any long
+submission. Its failed gate remains unchanged. The new launcher assigns all
+three NEW outputs to work3; original home inputs and saved results retain their
+paths. All three full remaining projections, 2GiB report/512MiB diagnostic allowance,
+4GiB reserve and100000-file headroom are checked before dispatch and each entry.
+
+Launcher01 CPU29792659 passed20 metadata contracts but callback29792660 failed
+its first scheduler-proof check before any long marker/submission. The first raw
+response was not saved; later allocated metadata probe29792663 observed the same
+CPU as actual DONE/hpc. Exact transient cause is unproven. Source/failure preserved.
+New immutable launcher02 saves every raw observation, waits only for a bounded
+RUN/PEND transition, and still requires actual DONE/hpc/LSF success. All26 allocated
+contracts passed on CPU29792667; callback29792668 actually DONE. Source4 manifest
+40c5055150c06e0aeb9989d33f869aecb6642c3823f6bdc9330e66f41a3bcbbe.
+
+The full work3 gate passed: required15364887328 vs conservative available25726653739
+bytes, including4GiB reserve; finite user-quota file headroom19622802. Physical
+statvfs inode counters were all zero/unreported, not independent filesystem inode
+proof. These observations are not reservations.
+
+Fresh independent 10000-update jobs were submitted: Pro29792670 (LR0.3), normal
+Bol29792671 (LR0.005), chemistry29792672 (LR0.005, coefficient0.001 through5000
+then geometric to100). All PEND at21:25Paris; scientific starts require own passed
+entry gates, original source625 driver invocations and committed update prefixes.
+No saved result, scientific setting or original gate was changed; no cleanup ran.
+See campaign.json for current receipts. Do not replay either launcher's one-shot
+prepare_submit.py or certify/dispatch commands.
+
+
+Independent delivery audit passed415 downloaded files,303 remote proof rehashes,
+all625 scientific source members and4 launcher source members, raw728+26 allocated
+cases, original all3native proof chains, preserved home/launcher01 failures,
+full storage budget and actual3submission vectors. See
+launcher-submission-verification.json and native-verification.json. This audit
+certifies actual submissions; it explicitly does not certify scientific starts.
+At21:27Paris, all3remainPEND (host slot/physicalGPU availability). No further
+bootstrap, callback or dispatch retry is permitted; these exact jobs execute
+when LSF admits them and each repeats the full entry gate. Existing monitoring
+automation remains paused as previously requested; no schedule was changed.

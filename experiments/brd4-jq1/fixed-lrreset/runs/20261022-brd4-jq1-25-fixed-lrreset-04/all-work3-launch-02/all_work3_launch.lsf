@@ -1,0 +1,56 @@
+#!/bin/bash
+set -euo pipefail
+[[ -n "${LSB_JOBID:-}" ]]
+source=$1
+manifest=$2
+phase=$3
+arm=$4
+cpu_sha=$5
+science=/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-release-04/source
+control=/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/all-work3-launch-02
+module load python3/3.12.11
+python=/work3/s234818/mosaic/envs/protenix-tiny/bin/python
+"$python" - "$source" "$manifest" <<'PY'
+import hashlib,json,sys
+from pathlib import Path
+p=Path(sys.argv[1]); raw=(p/'source_manifest.json').read_bytes()
+assert p==Path('/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-allwork3-launch-02/source')
+assert hashlib.sha256(raw).hexdigest()==sys.argv[2]
+m=json.loads(raw);assert len(m['files'])==4
+assert {str(x.relative_to(p)) for x in p.rglob('*') if x.is_file()}==set(m['files'])|{'source_manifest.json'}
+for name,digest in m['files'].items():
+ f=p/name
+ assert f.resolve()==f.absolute() and not f.is_symlink() and hashlib.sha256(f.read_bytes()).hexdigest()==digest
+PY
+"$python" "$science/scripts/verify_stage0_release.py" "$science" c2628d08f7224f3b572ab456f4113d8a66b587a5d69f85a072877052fc09a057
+export PYTHONPATH="$source:$science/scripts:$science/src:$science/tests" PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+export OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 MKL_NUM_THREADS=4
+export HF_HUB_OFFLINE=1 HF_HUB_DISABLE_TELEMETRY=1 JAX_ENABLE_X64=0
+cd "$source"
+if [[ "$phase" == cpu ]]; then
+  [[ "$LSB_QUEUE" == hpc ]]
+  export CUDA_VISIBLE_DEVICES='' JAX_PLATFORMS=cpu
+  source "$science/scripts/hpc/boltz_node_tmpdir.sh"
+  "$python" - <<'PY'
+import all_work3_launch as a
+a.inherited()
+a.science.storage.check_work_storage(a.CONTROL/'cpu-entry-quota',phase='cpu')
+PY
+  mkdir "$control/cpu/payload"
+  "$python" -m pytest fixture_all_work3_launch.py --rootdir "$source" --import-mode=importlib -o addopts= -o cache_dir="$control/cpu/payload/cache" --basetemp "$TMPDIR/contracts" --junitxml="$control/cpu/payload/tests.xml" > "$control/cpu/payload/tests.log" 2>&1
+elif [[ "$phase" == certify ]]; then
+  [[ "$LSB_QUEUE" == hpc ]]
+  "$python" all_work3_launch.py --manifest "$manifest" --phase certify
+elif [[ "$phase" == run ]]; then
+  [[ "$LSB_QUEUE" == gpul40s ]]
+  module load cuda/12.9.1
+  export JAX_PLATFORMS=cpu
+  if [[ "$arm" == protenix ]]; then
+    module load cudnn/v9.13.0.50-prod-cuda-12.X
+    export JAX_PLATFORMS=cuda,cpu XLA_PYTHON_CLIENT_PREALLOCATE=false
+  fi
+  source "$science/scripts/hpc/boltz_node_tmpdir.sh"
+  "$python" all_work3_launch.py --manifest "$manifest" --phase run --arm "$arm" --cpu-sha "$cpu_sha"
+else
+  exit 2
+fi

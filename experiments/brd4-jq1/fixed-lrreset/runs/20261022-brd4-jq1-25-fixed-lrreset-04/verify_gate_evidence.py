@@ -16,6 +16,8 @@ MANIFEST = 'c2628d08f7224f3b572ab456f4113d8a66b587a5d69f85a072877052fc09a057'
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--name', required=True)
+    parser.add_argument('--arms', nargs='+', choices=['protenix', 'boltz2', 'boltz2_chemistry'],
+                        default=['protenix', 'boltz2', 'boltz2_chemistry'])
     args = parser.parse_args()
     assert args.name.isascii() and all(c.isalnum() or c == '-' for c in args.name)
     folder = REPO / 'results/hpc/20261022-brd4-jq1-25-fixed-lrreset-04' / args.name
@@ -94,6 +96,8 @@ def main():
     if index['mode'] != 'cpu':
         for row in native:
             arm = row['arm']; parent = 'work/validate-' + arm + '/payload/study/'
+            if arm not in args.arms:
+                continue
             decision = read('work/decision-' + arm + '.json')
             summary = read(parent + 'summary.json'); assessment = read(parent + 'assessment.json')
             assert decision['status'] == summary['status'] == assessment['status'] == 'passed'
@@ -109,6 +113,7 @@ def main():
             for proof in assessment['proofs']:
                 bound(proof)
             if arm == 'protenix':
+                assert summary['initialization_sha256'] == '351789aa62d3ff111a4d2050a062cf844a1f29a87a7e352af465ff4299fd1bbf'
                 assert summary['baseline_initialization_match']['status'] == 'passed'
                 assert summary['baseline_initialization_match']['sha256'] == '351789aa62d3ff111a4d2050a062cf844a1f29a87a7e352af465ff4299fd1bbf'
                 assert summary['initialization_execution']['version'] == 'protenix-fp32-cpu-atom-softmax-v1'
@@ -117,6 +122,7 @@ def main():
                 assert pilot['status'] == 'passed' and len(pilot['updates']) == pilot['counts']['applied'] == 10
                 assert all(len(x['attempts']) == 1 and x['accepted_step_size'] == row['native']['learning_rate'] for x in pilot['updates'])
             result['native_passes_verified'][arm] = {'job': row['native']['job_id'], 'assessment_sha256': decision['assessment_sha256'], 'proofs': len(assessment['proofs'])}
+    result['native_passes_not_yet_verified'] = [x['arm'] for x in native if x['arm'] not in result['native_passes_verified']]
     with (folder / 'verification.json').open('xb') as f:
         f.write(json.dumps(result, indent=2).encode() + b'\n')
     print(json.dumps(result, indent=2))

@@ -16,6 +16,10 @@ r=Path('/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart
 source=r.parent/'restart-lrreset-release-04/source'
 home=Path('/zhome/95/e/206121/mosaic-runs/20261022-brd4-jq1-25-fixed-lrreset-04')
 paths=set();refs={};ids=['29792389','29792390']
+prefixes={}
+placements={}
+p=r/'long-submissions.json'
+if p.exists():placements={v['arm']:Path(v['output_parent']) for v in json.loads(p.read_bytes())['jobs']}
 def add(p):
  p=Path(p)
  if p.is_file() and not p.is_symlink():paths.add(p)
@@ -36,13 +40,31 @@ for p in [source/'source_manifest.json',source/'scripts/protenix_initialization.
  add(p)
 for p in source.glob('examples/configs/brd4_jq1_25_fixed_lrreset_*.json'):add(p)
 for p in r.glob('*quota*/*storage-gate.json'):add(p)
+for control in sorted(r.glob('all-work3-launch-*')):
+ if not control.is_dir():continue
+ for p in control.rglob('*'):
+  if p.is_file() and p.suffix in ['.json','.xml','.txt','.log']:
+   add(p)
+   if p.suffix=='.json':scan(json.loads(p.read_bytes()))
+for launcher in r.parent.glob('restart-lrreset-allwork3-launch-*/source'):
+ for p in launcher.glob('*'):add(p)
 if mode!='cpu':
  for arm in ['protenix','boltz2','boltz2_chemistry']:
-  for parent in [r/('validate-'+arm),r/('after-ready-'+arm), (home if arm=='boltz2_chemistry' else r)/('run-'+arm)]:
+  for parent in [r/('validate-'+arm),r/('after-ready-'+arm), placements.get(arm,(home if arm=='boltz2_chemistry' else r)/('run-'+arm))]:
    for p in parent.glob('*'):
     if p.suffix in ['.json','.txt','.log']:add(p)
    for p in parent.glob('**/*storage-gate.json'):add(p)
    for p in parent.glob('payload/driver-invocation.json'):add(p)
+  parent=placements.get(arm,(home if arm=='boltz2_chemistry' else r)/('run-'+arm))
+  prefixes[arm]={}
+  for label in ['states','updates']:
+   p=parent/('payload/study/case-0/'+label+'.jsonl')
+   if p.exists():
+    count=0;h=hashlib.sha256();last=None
+    for line in p.open('rb'):
+     if not line.endswith(b'\n'):break
+     row=json.loads(line);assert row['step']==count;h.update(line);last=row;count+=1
+    prefixes[arm][label]={'path':str(p),'committed_rows':count,'committed_bytes_sha256':h.hexdigest(),'last':last,'contiguous':True}
   for p in [r/('decision-'+arm+'.json'),r/('validate-'+arm)/'payload/study/assessment.json',r/('validate-'+arm)/'payload/study/summary.json']:
    if p.exists():add(p);scan(json.loads(p.read_bytes()))
 raw_rehash=[]
@@ -61,7 +83,7 @@ for p in sorted(paths):
  rows.append({'path':name,'remote_path':str(p),'bytes':len(b),'sha256':hashlib.sha256(b).hexdigest(),'base64':base64.b64encode(b).decode()})
 s=subprocess.run(['bjobs','-l']+list(dict.fromkeys(ids)),text=True,capture_output=True,timeout=30)
 print('EVIDENCE_JSON_BEGIN')
-print(json.dumps({'mode':mode,'captured_utc':datetime.now(timezone.utc).isoformat(),'files':rows,'remote_rehash':raw_rehash,'scheduler':{'returncode':s.returncode,'stdout':s.stdout,'stderr':s.stderr}}))
+print(json.dumps({'mode':mode,'captured_utc':datetime.now(timezone.utc).isoformat(),'files':rows,'remote_rehash':raw_rehash,'committed_prefixes':prefixes,'scheduler':{'returncode':s.returncode,'stdout':s.stdout,'stderr':s.stderr}}))
 '''
 
 

@@ -12,6 +12,19 @@ from datetime import datetime,timezone
 root=Path('/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04')
 home=Path('/zhome/95/e/206121/mosaic-runs/20261022-brd4-jq1-25-fixed-lrreset-04')
 out={'captured_utc':datetime.now(timezone.utc).isoformat(),'records':{},'arms':{},'cpu_xml':{}};ids=['29792389','29792390']
+control=root/('all-work3-launch-02' if (root/'all-work3-launch-02').exists() else 'all-work3-launch-01')
+for name in ['initial-submissions.json','cpu-certificate.json','adoption.json']:
+ p=control/name
+ if p.exists():
+  j=json.loads(p.read_bytes());out['records'][control.name+'/'+name]=j
+  if name=='initial-submissions.json':ids.extend(v['job_id'] for v in j.values())
+for p in control.glob('**/lrreset-storage-gate.json'):
+ j=json.loads(p.read_bytes());out['records'][str(p.relative_to(root))]={'status':j['status'],'error':j.get('error'),'filesystems':j.get('filesystems')}
+for p in (control/'cpu/payload').glob('tests.xml'):
+ t=ET.parse(p);out['cpu_xml']['launcher-tests.xml']={'cases':len(list(t.iter('testcase'))),'failures':len(list(t.iter('failure'))),'errors':len(list(t.iter('error'))),'skipped':len(list(t.iter('skipped')))}
+placements={}
+p=root/'long-submissions.json'
+if p.exists():placements={v['arm']:Path(v['output_parent']) for v in json.loads(p.read_bytes())['jobs']}
 for name in ['cpu-certificate.json','native-submissions.json','long-submissions.json','long-dispatch-started.json']:
  p=root/name
  if not p.exists():out['records'][name]={'exists':False};continue
@@ -38,7 +51,14 @@ for arm in ['protenix','boltz2','boltz2_chemistry']:
   p=root/name
   if p.exists():
    b=p.read_bytes();j=json.loads(b);a[name]={'sha256':hashlib.sha256(b).hexdigest(),**{k:v for k,v in j.items() if k in ['status','error','native_job','job_id','baseline_initialization_match','initialization_execution','runtime_gate','storage_projection']}}
- parent=(home if arm=='boltz2_chemistry' else root)/('run-'+arm)
+ p=root/('validate-'+arm)/'payload/study/initialization.npz'
+ if p.exists():a['validation_initialization']={'bytes':p.stat().st_size,'sha256':hashlib.sha256(p.read_bytes()).hexdigest()}
+ for name in ['native_gradient_checks/report.json','early_pilot/report.json']:
+  p=root/('validate-'+arm)/'payload/study'/name
+  if p.exists():
+   j=json.loads(p.read_bytes());a[name]={k:v for k,v in j.items() if k in ['status','error','counts','requested_updates']}
+ parent=placements.get(arm,(home if arm=='boltz2_chemistry' else root)/('run-'+arm))
+ a['output_parent']=str(parent)
  a['driver_invocation_exists']=(parent/'payload/driver-invocation.json').exists()
  for p in parent.glob('**/*storage-gate.json'):
   j=json.loads(p.read_bytes());a['entry_gate']={'path':str(p),'status':j.get('status'),'sha256':hashlib.sha256(p.read_bytes()).hexdigest()}
@@ -51,7 +71,7 @@ for arm in ['protenix','boltz2','boltz2_chemistry']:
     j=json.loads(line);contiguous=contiguous and j['step']==count;last=j['step'];count+=1
    a[name]={'committed_rows':count,'last_index':last,'contiguous':contiguous}
  out['arms'][arm]=a
-for parent in ['cpu','after-cpu','validate-protenix','validate-boltz2','validate-boltz2_chemistry','after-ready-protenix','after-ready-boltz2','after-ready-boltz2_chemistry']:
+for parent in ['cpu','after-cpu','validate-protenix','validate-boltz2','validate-boltz2_chemistry','after-ready-protenix','after-ready-boltz2','after-ready-boltz2_chemistry','all-work3-launch-01/cpu','all-work3-launch-01/after-cpu','all-work3-launch-02/cpu','all-work3-launch-02/after-cpu','run-protenix','run-boltz2','run-boltz2_chemistry']:
  for p in (root/parent).glob('stderr.*.log'):
   s=p.read_text(errors='replace')
   if 'Traceback' in s:out['records'][str(p.relative_to(root))]=s[-3600:]
