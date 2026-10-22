@@ -1,0 +1,24 @@
+#!/bin/bash
+set -euo pipefail
+[[ -n "${LSB_JOBID:-}" ]]
+manifest=$1
+phase=$2
+source=/work3/s234818/mosaic/releases/20261022-brd4-jq1-lrboost-analysis-02-launcher-03/source
+lower=/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-release-03/source
+python=/work3/s234818/mosaic/envs/protenix-tiny/bin/python
+module load python3/3.12.11
+"$python" "$lower/scripts/verify_stage0_release.py" "$source" "$manifest"
+export PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1 JAX_ENABLE_X64=0 JAX_PLATFORMS=cpu
+export OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 MKL_NUM_THREADS=4
+export HF_HUB_OFFLINE=1 HF_HUB_DISABLE_TELEMETRY=1
+export PYTHONPATH="$source:$lower/scripts:$lower/src"
+if [[ "$phase" == diagnostic ]]; then
+  module load cuda/12.9.1
+  module load cudnn/v9.13.0.50-prod-cuda-12.X
+  export JAX_PLATFORMS=cuda XLA_PYTHON_CLIENT_PREALLOCATE=false
+else
+  export CUDA_VISIBLE_DEVICES=''
+fi
+source "$lower/scripts/hpc/boltz_node_tmpdir.sh"
+cd "$source"
+"$python" launcher_resource_recovery.py "$manifest" "$phase"

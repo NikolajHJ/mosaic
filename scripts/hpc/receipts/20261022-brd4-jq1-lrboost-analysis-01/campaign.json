@@ -408,5 +408,6 @@
     "run_record": "experiments/brd4-jq1/fixed-lrboost/runs/20261022-brd4-jq1-lrboost-analysis-01/status-20261022-1903.md",
     "no_saved_study_changed_or_restarted": true,
     "no_new_render_or_publication": true
-  }
+  },
+  "authorized_followup_run_record": "experiments/brd4-jq1/fixed-lrboost/runs/20261022-brd4-jq1-lrboost-analysis-02/campaign.json"
 }

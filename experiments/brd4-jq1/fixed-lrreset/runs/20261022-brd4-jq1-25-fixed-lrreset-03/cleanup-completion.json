@@ -1,0 +1,18 @@
+{
+  "status": "completed",
+  "utc": "2026-10-22T17:17:15.621039+00:00",
+  "plan_sha256": "bfe10342b9d8378f7c5842ca3a2eb87806a46cdb08501d9e0813f81776ca7e9f",
+  "removed_files": 1212,
+  "removed_logical_bytes": 852317966,
+  "journal_sha256": "c1e82fc70a1a80d71c0d8bc8ed0ac380f5a962a033c7c6c21763434fbd3ed756",
+  "scope": "Exact verified duplicate report frames/curves and archives only; all original native studies untouched",
+  "local_backups_reverified_members": [
+    636,
+    647
+  ],
+  "backup_archive_sha256": [
+    "f83155ecd2b83b4eff0d0c7693d8142b3d8eeeccfd4f6035784e9581711a170f",
+    "e92c477b8d173c1c0a9e17813e9cb0f8549cd24c9e97578d43e7591823cbb30a"
+  ],
+  "raw_audit_directory": "results/hpc/20261022-brd4-jq1-25-fixed-lrreset-03/evidence01"
+}

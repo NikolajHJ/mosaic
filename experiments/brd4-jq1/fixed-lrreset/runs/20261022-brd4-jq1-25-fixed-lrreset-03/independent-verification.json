@@ -1,0 +1,45 @@
+{
+  "status": "passed",
+  "scope": "Independent stdlib bytes/JSON/XML/scheduler/LSF/resource/cleanup verification; no numerical model checks",
+  "cpu": {
+    "lower": {
+      "cpu_job": "29792104",
+      "cases": 724,
+      "by_raw_xml": {
+        "chemistry.xml": 59,
+        "hpc-contract.xml": 392,
+        "legacy.xml": 239,
+        "native-mapping.xml": 34
+      },
+      "certificate_sha256": "864f7b92d2118c28ef7c5064a96812e5b25217e4c232c6791f2e08ebaca151ed"
+    },
+    "core": {
+      "cpu_job": "29792111",
+      "cases": 282,
+      "by_raw_xml": {
+        "report-tests.xml": 282
+      },
+      "certificate_sha256": "5d31b9a130f5a904c5da4b0f2e8707c610ff49654acddf1b89b8945aa05cba6d"
+    },
+    "launcher": {
+      "cpu_job": "29792154",
+      "cases": 12,
+      "by_raw_xml": {
+        "tests.xml": 12
+      },
+      "certificate_sha256": "9facf84cdfc9436bc86ab1155ae9a7c2ad19fda143a6d8b62a1ad8c6209e1e07"
+    }
+  },
+  "native_jobs": {
+    "protenix": "29792127",
+    "boltz2": "29792129",
+    "boltz2_chemistry": "29792131"
+  },
+  "corrected_diagnostic_job": "29792158",
+  "corrected_capture_job": "29792159",
+  "cleanup_files": 1212,
+  "cleanup_bytes": 852317966,
+  "files_byte_verified": 93,
+  "native_readiness_or_long_run_pass_claimed": false,
+  "saved_original_studies_modified": false
+}

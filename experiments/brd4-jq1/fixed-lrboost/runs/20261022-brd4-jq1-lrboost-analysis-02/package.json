@@ -1,0 +1,16 @@
+{
+  "tag": "20261022-brd4-jq1-lrboost-analysis-02",
+  "source_files": 16,
+  "manifest_sha256": "6d547929ce3227302729b022628cc26612d9829e72c0a70861870023463dac3a",
+  "archive_bytes": 78295,
+  "archive_sha256": "799869cbce1ea09b6862c30b3d3c39a258872d0948de7981cbf93790f418ab13",
+  "parent_manifest_sha256": "214c19387649a741a7ad42f1e3e027061631993b4ae33425071aba9005fdcbcc",
+  "changed_files": [
+    "docs/brd4_jq1_25_endpoint_diagnostics.md",
+    "scripts/jq1_lrboost_report_ops.py",
+    "scripts/lrboost_endpoint_diagnostics.py",
+    "tests/test_jq1_lrboost_ops.py",
+    "tests/test_lrboost_endpoint_diagnostics.py"
+  ],
+  "local_scope": "Byte/AST/JSON packaging only; no numerical tests or model execution"
+}

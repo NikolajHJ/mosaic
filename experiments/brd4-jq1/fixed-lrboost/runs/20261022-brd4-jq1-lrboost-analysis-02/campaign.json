@@ -1,0 +1,82 @@
+{
+  "tag": "20261022-brd4-jq1-lrboost-analysis-02",
+  "status": "Corrected diagnostic CPU282 and separate resource launcher CPU12 passed. Protenix-only diagnostic29792158 and capture29792159 actually submitted/PEND19:36Paris; no native finding yet.",
+  "latest_observed_utc": "2026-10-22T17:36:06.375234+00:00",
+  "core_source": {
+    "tag": "20261022-brd4-jq1-lrboost-analysis-02",
+    "source_files": 16,
+    "manifest_sha256": "6d547929ce3227302729b022628cc26612d9829e72c0a70861870023463dac3a",
+    "archive_bytes": 78295,
+    "archive_sha256": "799869cbce1ea09b6862c30b3d3c39a258872d0948de7981cbf93790f418ab13",
+    "parent_manifest_sha256": "214c19387649a741a7ad42f1e3e027061631993b4ae33425071aba9005fdcbcc",
+    "changed_files": [
+      "docs/brd4_jq1_25_endpoint_diagnostics.md",
+      "scripts/jq1_lrboost_report_ops.py",
+      "scripts/lrboost_endpoint_diagnostics.py",
+      "tests/test_jq1_lrboost_ops.py",
+      "tests/test_lrboost_endpoint_diagnostics.py"
+    ],
+    "local_scope": "Byte/AST/JSON packaging only; no numerical tests or model execution"
+  },
+  "core_cpu": {
+    "cpu_job": "29792111",
+    "cases": 282,
+    "by_raw_xml": {
+      "report-tests.xml": 282
+    },
+    "certificate_sha256": "5d31b9a130f5a904c5da4b0f2e8707c610ff49654acddf1b89b8945aa05cba6d"
+  },
+  "core_after_cpu_job": "29792112",
+  "core_callback_outcome": "EXIT solely full old-analysis plus new-campaign resource admission; failure preserved before any diagnostic submission",
+  "resource_launcher": {
+    "manifest_sha256": "99292b7eed1662f5975a704aa4adfca5a93c1754ff3717c3d75f24473f8ef219",
+    "archive_sha256": "f71d8d2cb75a4b2580dc3771bd2b80962a68b032e6eeb2b9b2c6cb61f9456f43",
+    "archive_bytes": 5285,
+    "source_files": 3
+  },
+  "resource_launcher_cpu": {
+    "cpu_job": "29792154",
+    "cases": 12,
+    "by_raw_xml": {
+      "tests.xml": 12
+    },
+    "certificate_sha256": "9facf84cdfc9436bc86ab1155ae9a7c2ad19fda143a6d8b62a1ad8c6209e1e07"
+  },
+  "resource_launcher_callback": "29792155",
+  "resource_adoption_version": "protenix-diagnostic-shared-budget-adoption-v1",
+  "resource_adoption": "Exact CPU724-certified current campaign full storage gate; all current lower native/long projections + original2GiB report/512MiB diagnostic allowances +4GiB/100000files; completed predecessor proof chains reauthenticated; launcher bytes additionally subtracted",
+  "shared_preflight": {
+    "required_bytes": 10200529759,
+    "available_after_extra_bytes": 12027869322,
+    "reserve_bytes": 4294967296,
+    "file_reserve": 100000
+  },
+  "diagnostic_job": "29792158",
+  "capture_job": "29792159",
+  "diagnostic_findings_passed": false,
+  "saved_steps": [
+    0,
+    9900,
+    10000
+  ],
+  "max_output_bytes": 268435456,
+  "max_evaluation_seconds": 5400,
+  "native_resources": {
+    "queue": "gpul40s",
+    "cpu_slots": 4,
+    "memory_gib_per_slot": 8,
+    "exclusive_l40s_gpus": 1,
+    "walltime_hours": 2
+  },
+  "control_policy": "Exact saved probability graphs for raw probes; separately bound GraphLogits.graph(original saved logits) for coordinate controls, with measured exact equality and FP32 differences; no graph adjustment/tolerance gate",
+  "can_certify_or_restart_original_study": false,
+  "original_studies_unchanged": true,
+  "old_failed_diagnostic_and_callback_preserved": true,
+  "new_report_published": false,
+  "evidence": {
+    "archive_bytes": 251284,
+    "archive_sha256": "b5d7a6b6b4f228d8e560184f7d7a9b8f8a810151890cdcbdeb9e0064427f46a4",
+    "files": 93,
+    "independent_verification_sha256": "ce57cee2eabb1a2d7aa9bfcc8b33c4687ebb582e4a79148fa41dc16f1596a184"
+  }
+}

@@ -242,5 +242,6 @@
     "local_evidence_directory": "results/hpc/20261022-brd4-jq1-25-fixed-lrreset-02/news-20261022-1903",
     "run_record": "experiments/brd4-jq1/fixed-lrreset/runs/20261022-brd4-jq1-25-fixed-lrreset-02/status-20261022-1903.md",
     "no_new_submission_cleanup_or_scientific_execution": true
-  }
+  },
+  "authorized_followup_run_record": "experiments/brd4-jq1/fixed-lrreset/runs/20261022-brd4-jq1-25-fixed-lrreset-03/campaign.json"
 }
