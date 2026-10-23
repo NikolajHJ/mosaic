@@ -1,5 +1,5 @@
 {
-  "state": "cpu_running_callback_pending",
+  "state": "cpu_passed_native_failed_startup_metadata",
   "package": {
     "tag": "20261023-boltz-dbmol-storage-04",
     "files": 8,
@@ -13,7 +13,7 @@
     "previous_callback_status": "failed"
   },
   "expected_raw_cases": 1135,
-  "cpu_passed": false,
+  "cpu_passed": true,
   "native_passed": false,
   "optimization_started": false,
   "scientific_source_changed": false,
@@ -432,5 +432,39 @@
     },
     "native_readiness_passed_by_this_audit": false,
     "optimization_started_by_this_audit": false
+  },
+  "cpu_completion": {
+    "status": "passed",
+    "cases": 1135,
+    "groups": {
+      "hpc-contract": 500,
+      "legacy": 239,
+      "native-mapping": 34,
+      "chemistry": 59,
+      "dbmol-native": 83,
+      "dbmol-transport": 148,
+      "launcher-adoption": 72
+    },
+    "certificate_sha256": "14199ca0444d614385c5bda4863fd449e063a34540085513c3985080e02b5880",
+    "verification_sha256": "7dc3f88a16a6e7dab869412ecfb8c1a02cdb05c3ab6d2bd6fbc6af9c2210812b",
+    "persisted_same_job_lsf_success": true,
+    "live_scheduler": "unavailable_live_history"
+  },
+  "native_failure": {
+    "native_job": "29802648",
+    "callback_job": "29802649",
+    "persisted_same_job_lsf": "Exited",
+    "exit_code": 1,
+    "failure": "KeyError: 'git_revision_reference'",
+    "kind": "source_manifest_startup_metadata",
+    "checks_ran": false,
+    "saved_results_changed": false,
+    "proof_verification_sha256": "6d3c22db129160d1497719cb04ab01bea914de37d92a1d60eece0cc5ae6dd7fe",
+    "observed_utc": "2026-10-23T23:31:23.576374+00:00",
+    "live_scheduler": "unavailable_live_history"
+  },
+  "next_required_engineering_correction": {
+    "status": "diagnosed_not_implemented_or_submitted",
+    "scope": "New immutable release must carry authenticated git_revision_reference and pass allocated actual generated-command startup checks before repeating native validation. Preserve old seals/results and all scientific gates."
   }
 }

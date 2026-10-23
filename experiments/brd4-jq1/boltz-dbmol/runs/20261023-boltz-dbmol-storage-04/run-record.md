@@ -43,3 +43,41 @@ was corrected before the second check; the remaining error is the repository's
 existing/concurrent default test-discovery mismatch. No owned directory or link
 error remains. This is not a passing global layout claim or a scientific check.
 Explicit allocated suites remain authoritative for the new launcher.
+
+
+## Actual terminal outcomes observed24October01:30Paris
+
+CPU29802621 and callback29802622 passed; the independent full168-file audit
+verified all1,135 raw cases, zero failures/errors/skips, all input/source/resource
+and original proof bindings. CPU certificate14199ca0444d614385c5bda4863fd449e063a34540085513c3985080e02b5880.
+Fresh evidence02 archive286,297bytes SHAcfe7d8e0b80c455b84474769c46b7551b66588eeeee9ad327500fe6ab8ce918b.
+Large original scientific files remain authenticated remote references.
+
+The callback actually submitted native29802648/callback29802649 at19:16UTC.
+Native job ran23October22:06:36–22:07:35Paris and exited1 before the model
+worker or gradient checks: KeyError git_revision_reference in source_identity.
+The immutable source657 manifest omits that required metadata key. Callback
+then correctly exited1 on its failed producer. Both live records aged out;
+the original same-job LSF/stdout/stderr/proofs authenticate failure, never
+invented current scheduler statuses. Entry storage passed; no native readiness,
+projection, production segment or optimization update exists.
+
+Executed read-only delivery and independent standard-library audits:
+
+```text
+python experiments/brd4-jq1/boltz-dbmol/runs/20261023-boltz-dbmol-storage-04/collect_cpu.py --edition 02
+python experiments/brd4-jq1/boltz-dbmol/runs/20261023-boltz-dbmol-storage-04/verify_cpu.py --edition 02
+python experiments/brd4-jq1/boltz-dbmol/runs/20261023-boltz-dbmol-storage-04/verify_native_failure.py
+```
+
+The failure is startup packaging, not an observed gradient mismatch. Correction
+requires a new immutable source/run identity with authenticated inherited revision
+metadata and an allocated real generated-command startup regression, followed
+by all required native checks. No new corrective release or job was submitted
+in this status check; all saved studies, settings, old failures and paused
+heartbeat remain unchanged.
+
+
+This follow-up's stdlib layout audit again reports only the existing/concurrent
+default test-discovery mismatch; no new owned directory or link error. AST/JSON
+and exact evidence-byte audits passed. This is not a passing global-layout claim.

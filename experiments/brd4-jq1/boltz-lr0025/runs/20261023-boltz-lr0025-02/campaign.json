@@ -1,5 +1,5 @@
 {
-  "state": "cpu_passed_native_submitted",
+  "state": "cpu_passed_both_native_failed_startup_metadata",
   "source": {
     "tag": "20261023-boltz-lr0025-02",
     "manifest_sha256": "3689071a4e7dd135071ff5b420c026543c4d10887c951077dff63d498d9f812c",
@@ -211,5 +211,98 @@
       "callback": "29798608",
       "scheduler_state": "PEND"
     }
+  },
+  "latest_native_verification": {
+    "observed_utc": "2026-10-23T23:30:47.784336+00:00",
+    "status": "failed_native_startup_evidence_verified",
+    "verification_sha256": "32831fff5fec8e596b85a41182ad758a0f547b6f7b890034307cb68e3c2385c2",
+    "evidence_archive_sha256": "badea0d29e26d40123c51e6efd8376567a5ed54e11f6d537daa8d9040dec6fc5",
+    "outcomes": {
+      "boltz2": {
+        "status": "failed_before_model_at_provenance_metadata",
+        "error_verbatim": "KeyError: 'git_revision_reference'",
+        "native": {
+          "job": "29798605",
+          "persisted_lsf_status": "Exited",
+          "exit_code": 1,
+          "live_scheduler_status": "unavailable_live_history",
+          "stdout_sha256": "ccce50002ef5cd8c0d5b133881216a854355da3cdce13cac2f235c45006d063a",
+          "stderr_sha256": "6144d264ecb828f3a055d3acd666b488905b0d6275027ae7f4b31ed6f0921741"
+        },
+        "callback": {
+          "job": "29798606",
+          "persisted_lsf_status": "Exited",
+          "exit_code": 1,
+          "live_scheduler_status": "unavailable_live_history",
+          "stdout_sha256": "c00ade901bea5a1f1e26ce4fbcb4e1fcf3f02b026391e8e4cd4c9ae2b5bc201f",
+          "stderr_sha256": "8a9212e6699c91e583041363c3675a512c0f8d3fa2bb0b7729e6482939616a85"
+        },
+        "persisted_native_final_scheduler_proofs": [
+          {
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-02/boltz2-native-0000/scheduler-final-5.txt",
+            "bytes": 4241,
+            "sha256": "32d51305ec8fb5ac4979f46ead45373974baeaa002a981dbd4ee0bd151cbed18"
+          }
+        ],
+        "config_sha256": "ecdf8a4103291f2f3a7bc7197dd394f03a46c3ccc74c72eb42dfc2b76eb13124",
+        "driver_invocation_sha256": "bb1baa4d31b8e580110a54f31351fa4e1b166539904746bc621e5f2224412081",
+        "entry_storage_gate_sha256": "a2b4dc1eff27a95c2d002527e56bdfa51be0fc59e42cf57f71580494ca5e90a5",
+        "entry_storage": {
+          "status": "passed",
+          "required_bytes": 17176077653,
+          "available_bytes_conservative": 28817668932,
+          "scope": "Native validation allowance only, not full optimization admission/reservation"
+        },
+        "native_gradient_checks_started": false,
+        "native_readiness_passed": false,
+        "production_submitted": false,
+        "optimization_started": false,
+        "committed_updates": 0
+      },
+      "boltz2_chemistry": {
+        "status": "failed_before_model_at_provenance_metadata",
+        "error_verbatim": "KeyError: 'git_revision_reference'",
+        "native": {
+          "job": "29798607",
+          "persisted_lsf_status": "Exited",
+          "exit_code": 1,
+          "live_scheduler_status": "unavailable_live_history",
+          "stdout_sha256": "c2893df30c11030071210e4d07a7a2da04e0f577ea859df28b0cd655c5471cdc",
+          "stderr_sha256": "cd5de01e1c02b7f4e1b7cab650f10f5b423e6337c5ec3f72f86b9cd5f29fc84a"
+        },
+        "callback": {
+          "job": "29798608",
+          "persisted_lsf_status": "Exited",
+          "exit_code": 1,
+          "live_scheduler_status": "unavailable_live_history",
+          "stdout_sha256": "de2d170a9fc7526a32e33761e038a0282db9493105411ff3878eefa8c90470b3",
+          "stderr_sha256": "8a9212e6699c91e583041363c3675a512c0f8d3fa2bb0b7729e6482939616a85"
+        },
+        "persisted_native_final_scheduler_proofs": [
+          {
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-02/boltz2_chemistry-native-0000/scheduler-final-4.txt",
+            "bytes": 4281,
+            "sha256": "b1cc7027d9871162f4b836830c7886f3e01cca2bb4fa87da3981f799a8cf48be"
+          }
+        ],
+        "config_sha256": "3b3bc33d087f0c03a48c6bf89f03bc707d236ca0f64a95ba5ae2159d1918737c",
+        "driver_invocation_sha256": "4e108a5fc3c30f11a26bcc6d07a9c139a8ba1186bc659423548e90a2ec638589",
+        "entry_storage_gate_sha256": "d3182480af3f05b7d7141b2cd38e3dde3417ed48f3a9adc2ed8f9aec30d3fa19",
+        "entry_storage": {
+          "status": "passed",
+          "required_bytes": 17176037849,
+          "available_bytes_conservative": 28817629128,
+          "scope": "Native validation allowance only, not full optimization admission/reservation"
+        },
+        "native_gradient_checks_started": false,
+        "native_readiness_passed": false,
+        "production_submitted": false,
+        "optimization_started": false,
+        "committed_updates": 0
+      }
+    },
+    "saved_results_changed": false,
+    "new_submissions": false,
+    "correction_status": "diagnosed_not_implemented_or_submitted"
   }
 }

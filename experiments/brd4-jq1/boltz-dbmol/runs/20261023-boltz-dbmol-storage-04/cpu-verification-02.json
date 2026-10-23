@@ -1,0 +1,239 @@
+{
+  "files_verified": 168,
+  "source_members_verified": {
+    "science": 657,
+    "launcher": 8,
+    "preserved_previous_launcher": 5,
+    "preserved_last_launcher": 7
+  },
+  "source_manifest_sha256": "24c207da5510fa579576a04ad32bf1afc6e1f23f51dcb5251d82a4ebdfa8f436",
+  "launcher_manifest_sha256": "df89def61047469e0db8ee6f4b235c75344dd4ad9f35a0833b0839f23859e9fa",
+  "source_archive_sha256": "ec333fd3e0b33d9e5b82e0cd5e4e12c14ffb4f91782c18cd820d4bfab53de1f8",
+  "launcher_archive_sha256": "40ee3c1ea0e9181528c82c5d99e7d6347033a99051ba7e55b5ffdde1edb7cefc",
+  "previous_launcher_manifest_sha256": "7b67e6221e4d227b6e501478802ab4ebc8536d74272ca3a7d305bb6f15e7ffee",
+  "earlier_failed_launcher_manifest_sha256": "5f479f2e5342469efd8606c9457c946a51dbcf0dd90d837ee472babfdd820a4b",
+  "evidence_archive_sha256": "cfe7d8e0b80c455b84474769c46b7551b66588eeeee9ad327500fe6ab8ce918b",
+  "jobs": {
+    "cpu": "29798549",
+    "after-cpu": "29798550",
+    "cpu-02": "29798699",
+    "after-cpu-02": "29798700",
+    "cpu-03": "29798769",
+    "after-cpu-03": "29798770",
+    "cpu-04": "29802621",
+    "after-cpu-04": "29802622",
+    "pilot-native-0000": "29802648",
+    "pilot-after-native-0000": "29802649"
+  },
+  "actual_scheduler": {
+    "cpu": "unavailable_live_history",
+    "after-cpu": "unavailable_live_history",
+    "cpu-02": "unavailable_live_history",
+    "after-cpu-02": "unavailable_live_history",
+    "cpu-03": "unavailable_live_history",
+    "after-cpu-03": "unavailable_live_history",
+    "cpu-04": "unavailable_live_history",
+    "after-cpu-04": "unavailable_live_history",
+    "pilot-native-0000": "unavailable_live_history",
+    "pilot-after-native-0000": "unavailable_live_history"
+  },
+  "storage_gates": {
+    "run/cpu/storage-cpu-entry/gate.json": "failed",
+    "run/cpu-02/storage-cpu-entry/gate.json": "passed",
+    "run/cpu-03/storage-cpu-entry/gate.json": "passed",
+    "run/cpu-04/storage-cpu-entry/gate.json": "passed",
+    "run/after-cpu-04/storage-native-dispatch/gate.json": "passed",
+    "run/pilot-native-0000/storage-entry/gate.json": "passed",
+    "run/storage-preflight/gate.json": "failed",
+    "run/admission-02/storage-preflight/gate.json": "passed",
+    "run/storage-adoption-02/storage-preflight/gate.json": "passed",
+    "run/storage-adoption-03/storage-preflight/gate.json": "passed",
+    "run/storage-adoption-04/storage-preflight/gate.json": "passed"
+  },
+  "storage_budgets": {
+    "run/cpu/storage-cpu-entry/gate.json": {
+      "status": "failed",
+      "required_bytes": 19175262065,
+      "available_bytes_conservative": 18158117863,
+      "stale_bytes_subtracted": 6537944089,
+      "available_files_lower": 19557200,
+      "full_long_admission": false
+    },
+    "run/cpu-02/storage-cpu-entry/gate.json": {
+      "status": "passed",
+      "required_bytes": 17930480407,
+      "available_bytes_conservative": 34137364714,
+      "stale_bytes_subtracted": 6664824598,
+      "available_files_lower": 19587390,
+      "full_long_admission": false
+    },
+    "run/cpu-03/storage-cpu-entry/gate.json": {
+      "status": "passed",
+      "required_bytes": 17849022378,
+      "available_bytes_conservative": 34065094772,
+      "stale_bytes_subtracted": 6737094540,
+      "available_files_lower": 19586239,
+      "full_long_admission": false
+    },
+    "run/cpu-04/storage-cpu-entry/gate.json": {
+      "status": "passed",
+      "required_bytes": 16003104260,
+      "available_bytes_conservative": 31147162203,
+      "stale_bytes_subtracted": 8581285285,
+      "available_files_lower": 19572890,
+      "full_long_admission": false
+    },
+    "run/after-cpu-04/storage-native-dispatch/gate.json": {
+      "status": "passed",
+      "required_bytes": 16003104260,
+      "available_bytes_conservative": 31146718350,
+      "stale_bytes_subtracted": 8581729138,
+      "available_files_lower": 19572596,
+      "full_long_admission": false
+    },
+    "run/pilot-native-0000/storage-entry/gate.json": {
+      "status": "passed",
+      "required_bytes": 16003092289,
+      "available_bytes_conservative": 28817591694,
+      "stale_bytes_subtracted": 8763372146,
+      "available_files_lower": 19561468,
+      "full_long_admission": false
+    },
+    "run/storage-preflight/gate.json": {
+      "status": "failed",
+      "required_bytes": 19256933986,
+      "available_bytes_conservative": 19236336523,
+      "stale_bytes_subtracted": 6533467253,
+      "available_files_lower": 19558339,
+      "full_long_admission": false
+    },
+    "run/admission-02/storage-preflight/gate.json": {
+      "status": "passed",
+      "required_bytes": 19225068665,
+      "available_bytes_conservative": 19235502439,
+      "stale_bytes_subtracted": 6534301337,
+      "available_files_lower": 19557270,
+      "full_long_admission": false
+    },
+    "run/storage-adoption-02/storage-preflight/gate.json": {
+      "status": "passed",
+      "required_bytes": 17934470372,
+      "available_bytes_conservative": 34151538760,
+      "stale_bytes_subtracted": 6650650552,
+      "available_files_lower": 19587457,
+      "full_long_admission": false
+    },
+    "run/storage-adoption-03/storage-preflight/gate.json": {
+      "status": "passed",
+      "required_bytes": 17852645235,
+      "available_bytes_conservative": 34069120249,
+      "stale_bytes_subtracted": 6733069063,
+      "available_files_lower": 19586296,
+      "full_long_admission": false
+    },
+    "run/storage-adoption-04/storage-preflight/gate.json": {
+      "status": "passed",
+      "required_bytes": 16003104260,
+      "available_bytes_conservative": 31147201201,
+      "stale_bytes_subtracted": 8581246287,
+      "available_files_lower": 19572899,
+      "full_long_admission": false
+    }
+  },
+  "historical_cpu_jobs_preserved": {
+    "cpu": "29798549",
+    "after-cpu": "29798550",
+    "cpu-02": "29798699",
+    "after-cpu-02": "29798700",
+    "cpu-03": "29798769",
+    "after-cpu-03": "29798770"
+  },
+  "historical_cpu03": {
+    "cpu": "passed",
+    "callback": "failed",
+    "raw_passed_cases": 1135,
+    "bridge_rows_missing_classname": 9
+  },
+  "historical_cpu02_fixture_failure_names": [
+    "test_config_rejects_undeclared_policy_changes[extra]",
+    "test_config_rejects_undeclared_policy_changes[seed]",
+    "test_config_rejects_undeclared_policy_changes[steps]",
+    "test_config_rejects_undeclared_policy_changes[temperature]",
+    "test_peer_dispatch_waits_only_actual_authenticated_own_ended_callback_ids",
+    "test_raw_checker_rejects_missing_wrong_or_nonfinite_derivative_paths[nonfinite-E_upper]",
+    "test_raw_checker_rejects_missing_wrong_or_nonfinite_derivative_paths[nonfinite-X]"
+  ],
+  "original_scientific_status_preserved": {
+    "protenix": "passed",
+    "boltz2": "failed"
+  },
+  "large_original_summary_bytes_downloaded": false,
+  "native_readiness_passed_by_this_audit": false,
+  "optimization_started_by_this_audit": false,
+  "scope": "Independent stdlib bytes/XML/schema/source/resource/scheduler/LSF audit. No numerical/model execution. Storage observations are not reservations.",
+  "status": "passed",
+  "cpu_passed": true,
+  "cpu_cases": 1135,
+  "inherited_cases": 832,
+  "new_cases": 303,
+  "groups": {
+    "hpc-contract": 500,
+    "legacy": 239,
+    "native-mapping": 34,
+    "chemistry": 59,
+    "dbmol-native": 83,
+    "dbmol-transport": 148,
+    "launcher-adoption": 72
+  },
+  "xml_header_counts": {
+    "hpc-contract": 503,
+    "legacy": 239,
+    "native-mapping": 34,
+    "chemistry": 59,
+    "dbmol-native": 83,
+    "dbmol-transport": 148,
+    "launcher-adoption": 72
+  },
+  "source_function_coverage": {
+    "dbmol-native": {
+      "test_dbmol_objective": {
+        "source_functions": 11,
+        "actual_cases": 48
+      },
+      "test_dbmol_native_paths": {
+        "source_functions": 12,
+        "actual_cases": 35
+      }
+    },
+    "dbmol-transport": {
+      "test_dbmol_pilot_contract": {
+        "source_functions": 28,
+        "actual_cases": 116
+      },
+      "test_dbmol_gradient_contract": {
+        "source_functions": 8,
+        "actual_cases": 23
+      },
+      "test_dbmol_bridge": {
+        "source_functions": 4,
+        "actual_cases": 9
+      }
+    },
+    "launcher-adoption": {
+      "fixture_storage_adoption": {
+        "source_functions": 18,
+        "actual_cases": 72
+      }
+    }
+  },
+  "xml_header_limitation": "Actual testcase rows and raw pass logs are authoritative; the inherited hpc-contract header adds three unchanged unittest subtests, not extra passed cases.",
+  "cpu_certificate_sha256": "14199ca0444d614385c5bda4863fd449e063a34540085513c3985080e02b5880",
+  "current_cpu_jobs": {
+    "cpu": "29802621",
+    "callback": "29802622"
+  },
+  "native_submission": {
+    "pilot-native-0000": "29802648",
+    "pilot-after-native-0000": "29802649"
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "status": "failed_native_startup_evidence_verified",
+  "verified_utc": "2026-10-23T23:35:38.164099+00:00",
+  "observed_utc": "2026-10-23T23:31:23.576374+00:00",
+  "source_manifest_sha256": "24c207da5510fa579576a04ad32bf1afc6e1f23f51dcb5251d82a4ebdfa8f436",
+  "launcher_manifest_sha256": "df89def61047469e0db8ee6f4b235c75344dd4ad9f35a0833b0839f23859e9fa",
+  "cpu_recheck_passed": true,
+  "cpu_cases": 1135,
+  "cpu_verification_sha256": "7dc3f88a16a6e7dab869412ecfb8c1a02cdb05c3ab6d2bd6fbc6af9c2210812b",
+  "files_verified": 168,
+  "evidence_archive_bytes": 286297,
+  "evidence_archive_sha256": "cfe7d8e0b80c455b84474769c46b7551b66588eeeee9ad327500fe6ab8ce918b",
+  "native_job": "29802648",
+  "callback_job": "29802649",
+  "persisted_lsf_status": "Exited",
+  "persisted_lsf_exit_code": 1,
+  "live_scheduler_status": "unavailable_live_history",
+  "failure": "KeyError: 'git_revision_reference'",
+  "failure_kind": "source_manifest_startup_metadata",
+  "source_metadata_line": 40,
+  "worker_constructor_line": 58,
+  "native_model_worker_reached": false,
+  "native_gradient_checks_run": false,
+  "native_gradient_passed": false,
+  "optimization_started": false,
+  "production_submissions": [],
+  "original_saved_results_changed": false,
+  "new_jobs_submitted_by_this_audit": false,
+  "native_failure_times_lsf_dtulocal": {
+    "pilot-native-0000": {
+      "Started": [
+        "Fri Oct 23 22:06:36 2026"
+      ],
+      "Terminated": [
+        "Fri Oct 23 22:07:35 2026"
+      ]
+    },
+    "pilot-after-native-0000": {
+      "Started": [
+        "Fri Oct 23 22:07:37 2026"
+      ],
+      "Terminated": [
+        "Fri Oct 23 22:07:44 2026"
+      ]
+    }
+  },
+  "proofs": {
+    "run/pilot-native-0000/submission.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-01/pilot-native-0000/submission.json",
+      "bytes": 1516,
+      "sha256": "fbf85f020b240124d11ed7b648cb9a1804f0c51d4d0a9f299d471a43b1826402"
+    },
+    "run/pilot-native-0000/stdout.29802648.log": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-01/pilot-native-0000/stdout.29802648.log",
+      "bytes": 2445,
+      "sha256": "21510672bfd17acca29b368bf63e9943d5726f9dcffb225f2c1d1d7071d0187a"
+    },
+    "run/pilot-native-0000/stderr.29802648.log": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-01/pilot-native-0000/stderr.29802648.log",
+      "bytes": 3719,
+      "sha256": "c86905513718c0a867b23f858a030fff35dbb2924af7009798420c5797296f5c"
+    },
+    "run/pilot-after-native-0000/submission.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-01/pilot-after-native-0000/submission.json",
+      "bytes": 1542,
+      "sha256": "8a8761cec242f79258b9312f2d2d392946da6553ed166dc284a478900e320fad"
+    },
+    "run/pilot-after-native-0000/stdout.29802649.log": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-01/pilot-after-native-0000/stdout.29802649.log",
+      "bytes": 2447,
+      "sha256": "9eb42dffbd473f3da997e19eea215014f0b67040a79606461b76b4f2b5844062"
+    },
+    "run/pilot-after-native-0000/stderr.29802649.log": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-01/pilot-after-native-0000/stderr.29802649.log",
+      "bytes": 1740,
+      "sha256": "0f9c9161e31b604e3289ab0a129727d7c63dea61892d855398209ecee3ce4d5f"
+    }
+  },
+  "scope": "Independent stdlib byte/XML/source-AST/metadata/submission/LSF audit only. No numerical evaluation, native restart or gate waiver."
+}
