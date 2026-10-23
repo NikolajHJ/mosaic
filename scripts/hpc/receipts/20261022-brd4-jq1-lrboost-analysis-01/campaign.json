@@ -1,6 +1,6 @@
 {
   "tag": "20261022-brd4-jq1-lrboost-analysis-01",
-  "status": "First high-rate saved-only report verified/published/browser-QA passed; original scientific failures preserved; separate diagnostic GPUs still pending",
+  "status": "Boltz separate endpoint diagnostic completed/capture passed; Protenix diagnostic failed saved-logit probability identity at step0, capture EXIT; existing final presentation blocked on failed dependency. Original scientific failures and published edition0002/failed browser QA preserved.",
   "authorization": {
     "separate_read_only_endpoint_diagnostics": [
       "protenix",
@@ -167,7 +167,7 @@
     "published_utc": "2026-10-22T09:26:16.452075+00:00"
   },
   "diagnostics_completed": false,
-  "latest_actual_utc": "2026-10-22T09:18:34.010342+00:00",
+  "latest_actual_utc": "2026-10-22T17:03:45.469403+00:00",
   "diagnostic_states": {
     "29780821": "PEND",
     "29780823": "PEND"
@@ -354,5 +354,60 @@
     "status": "local_implementation_in_progress_not_staged_or_tested",
     "change": "Pause playback when numeric field receives focus; report-only, original trajectories unchanged",
     "no_scientific_rerender_required": "All original probability assets must remain exact bytes; new immutable source/allocatedCPU/adoption required"
-  }
+  },
+  "diagnostic_outcomes_20261022_1903": {
+    "boltz2": {
+      "diagnostic_job": "29780823",
+      "capture_job": "29780824",
+      "diagnostic_status": "diagnostics_completed_original_failure_preserved",
+      "capture_status": "passed",
+      "scientific_passed": false,
+      "saved_steps": [
+        0,
+        9900,
+        10000
+      ],
+      "frozen_before_after_match": true,
+      "original_terminal_failure_reproduced": true,
+      "finer_scales_agree_diagnostic_only": true,
+      "unique_cause_established": false,
+      "archive_bytes": 599008,
+      "archive_sha256": "271246fe15f82e6d71f5c7ca01e96959561a43a7c3cf7ce4c8679700a2feb2b5",
+      "all423files_verified": true,
+      "capture_proof_bytes_verified": 411,
+      "original_remote_references": [
+        {
+          "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-lrboost-01/run-boltz2/payload/study/summary.json",
+          "sha256": "9e48647de26a21ba619e0ad368e8b3848d2ef5ad4ebbda35ff68dfdf3a6c9e7e"
+        },
+        {
+          "path": "/work3/s234818/mosaic/runs/20261021-brd4-jq1-25-fixed-lrboost-01/run-boltz2/payload/study/terminal_gradient_checks/report.json",
+          "sha256": "9f84726f8c412aa001cd735de14d3d5ed008eaf6b6075cabe61585a51b110685"
+        }
+      ],
+      "capture_archived_scheduler_status": "RUN_before_self_completion",
+      "capture_later_same_job_LSF": "Successfully completed"
+    },
+    "protenix": {
+      "diagnostic_job": "29780821",
+      "capture_job": "29780822",
+      "diagnostic_status": "failed",
+      "capture_status": "EXIT",
+      "recorded_steps": [
+        0
+      ],
+      "error": "Original saved logits do not reproduce exact diagnostic graph probabilities",
+      "frozen_before_after_match": true,
+      "endpoint_diagnosis_complete": false
+    },
+    "final_presentation": {
+      "job_id": "29780830",
+      "status": "PEND",
+      "pending_reason": "Dependency condition invalid or never satisfied"
+    },
+    "run_record": "experiments/brd4-jq1/fixed-lrboost/runs/20261022-brd4-jq1-lrboost-analysis-01/status-20261022-1903.md",
+    "no_saved_study_changed_or_restarted": true,
+    "no_new_render_or_publication": true
+  },
+  "authorized_followup_run_record": "experiments/brd4-jq1/fixed-lrboost/runs/20261022-brd4-jq1-lrboost-analysis-02/campaign.json"
 }

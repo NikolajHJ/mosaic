@@ -1,0 +1,242 @@
+{
+  "tag": "20261022-brd4-jq1-25-fixed-lrreset-04",
+  "status": "Pro29792670 finished10000updates/10001states with original summary and final gradient checks passed, same-job LSFsuccess (live scheduler aged out). NormalBol29792671 finished10000updates/10001states but original terminal E_upper FD failed, actualEXIT1. Chemistry29792672 stillPEND/slotlimits, no optimization started. No saved results/settings/jobs changed.",
+  "authorization": {
+    "rates": {
+      "protenix": 0.3,
+      "boltz2": 0.005,
+      "boltz2_chemistry": 0.005
+    },
+    "fresh_updates_each": 10000,
+    "acceptance_policy": "fixed_step",
+    "max_backtracks": 1,
+    "chemistry": {
+      "initial": 0.001,
+      "hold_updates": 5000,
+      "final": 100.0,
+      "total_updates": 10000
+    }
+  },
+  "source": {
+    "tag": "20261022-brd4-jq1-25-fixed-lrreset-04",
+    "source_files": 625,
+    "manifest_sha256": "c2628d08f7224f3b572ab456f4113d8a66b587a5d69f85a072877052fc09a057",
+    "archive_bytes": 39604161,
+    "archive_sha256": "4d6d297451d9820543abc3298622e6599014c4b96bc999e104dd732825f56e4e",
+    "parent_manifest_sha256": "ff82857ecd4a985d0ba6cc16a87f1bf7b7bb2c7ffdbde18a183bbd63670ff567",
+    "changed_files": [
+      "docs/brd4_jq1_25_initialization_recovery04.md",
+      "examples/brd4_25_atoms.py",
+      "scripts/fixed25_lrreset_ops.py",
+      "scripts/fixed25_lrreset_storage.py",
+      "scripts/hpc/fixed25_lrreset_cpu.lsf",
+      "scripts/hpc/fixed25_lrreset_stage.lsf",
+      "scripts/protenix_initialization.py",
+      "src/mosaic/small_molecule/chemistry/trajectory.py",
+      "tests/test_fixed25_lrreset_storage.py",
+      "tests/test_protenix_initialization.py"
+    ],
+    "local_scope": "Byte/AST/JSON packaging only; no numerical tests or model execution"
+  },
+  "source_root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-release-04/source",
+  "work3_root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04",
+  "initialization_execution": "protenix-fp32-cpu-atom-softmax-v1",
+  "shared_library_change": "One proposal-constructor line preserves the input logit subclass. All other144srcfiles and all configurations/contract/baseGraphLogits unchanged.",
+  "exact_five_array_initialization_check_unchanged": true,
+  "probe_jobs": {
+    "cpu": "29792346",
+    "gpu": "29792347",
+    "both_actual_done": true
+  },
+  "cpu": {
+    "job": "29792389",
+    "after_cpu": "29792390",
+    "actual_done": true,
+    "cases": 728,
+    "by_xml": {
+      "hpc-contract.xml": 396,
+      "legacy.xml": 239,
+      "native-mapping.xml": 34,
+      "chemistry.xml": 59
+    },
+    "certificate_sha256": "6a87093f3da0d1ca0694c7152de84fdeed308251f709c685b526d978b1455e23",
+    "verification_sha256": "8d3c0b853e5192a7bfd81cf38f6e07a94e1f5aa3265a434f4503dedc66c23291"
+  },
+  "native_ready_passed": true,
+  "long_submissions": {
+    "exists": true,
+    "bytes": 6306,
+    "sha256": "2aa2f705d039a18ccb9adf8e2a7721e74685959aaab264b2df4cd8d348b47c59",
+    "jobs": [
+      {
+        "outcome": "submitted",
+        "arm": "protenix",
+        "output_parent": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-protenix",
+        "learning_rate": 0.3,
+        "job_id": "29792670"
+      },
+      {
+        "outcome": "submitted",
+        "arm": "boltz2",
+        "output_parent": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-boltz2",
+        "learning_rate": 0.005,
+        "job_id": "29792671"
+      },
+      {
+        "outcome": "submitted",
+        "arm": "boltz2_chemistry",
+        "output_parent": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-boltz2_chemistry",
+        "learning_rate": 0.005,
+        "job_id": "29792672"
+      }
+    ]
+  },
+  "saved_results_changed": false,
+  "prior_failures_preserved": true,
+  "diagnostic_evidence_verification_sha256": "f660e02ffe67051c5f8adc3c79887791cbdf6d62277e1d83ec64d0bcc6f4a9f7",
+  "latest_observed_utc": "2026-10-23T08:10:42.347765+00:00",
+  "native_jobs": {
+    "protenix": {
+      "job": "29792413",
+      "callback": "29792414"
+    },
+    "boltz2": {
+      "job": "29792415",
+      "callback": "29792416"
+    },
+    "boltz2_chemistry": {
+      "job": "29792417",
+      "callback": "29792418"
+    }
+  },
+  "native_ready_by_arm": {
+    "protenix": "passed_independently_verified",
+    "boltz2": "passed_independently_verified",
+    "boltz2_chemistry": "passed_independently_verified"
+  },
+  "protenix_native_verified": {
+    "job": "29792413",
+    "assessment_sha256": "9674aacd7c8601f755fcad31df6efb9877dc39cd5114d9b1fe3ee867c1dc55dd",
+    "proofs": 74,
+    "initialization_npz_sha256": "351789aa62d3ff111a4d2050a062cf844a1f29a87a7e352af465ff4299fd1bbf",
+    "verification_sha256": "0a83177e10833334bf3ab2bdcbfcb5c8a27c4700e03f997e95d88fa9fe154d91"
+  },
+  "native_verification_sha256": "1071a585241f8c94e2a3b377a3f57c74027e1b1a98a09fdf8648d1603c2ba5ce",
+  "all_work3_launcher": {
+    "manifest_sha256": "40c5055150c06e0aeb9989d33f869aecb6642c3823f6bdc9330e66f41a3bcbbe",
+    "cpu": "29792667",
+    "callback": "29792668",
+    "status": "cpu26passed_actual_done_full_storage_passed",
+    "new_output_placement": "all three on work3",
+    "scientific_source_changed": false,
+    "control_name": "all-work3-launch-02",
+    "previous_launcher01": {
+      "cpu": "29792659",
+      "actual_cpu_cases": 20,
+      "actual_cpu_status": "DONE",
+      "callback": "29792660",
+      "actual_callback_status": "EXIT",
+      "reason": "First own CPU scheduler-proof check failed; raw first response not saved; later allocated readonly probe29792663 observed same CPU actualDONE/hpc. Exact transient cause unproven.",
+      "no_long_submissions": true,
+      "preserved": true
+    }
+  },
+  "original_dispatch_failure": {
+    "callback": "29792418",
+    "actual_status": "EXIT",
+    "reason": "Mandatory home recent-write inventory TimeoutExpired at600seconds",
+    "longs_submitted": false,
+    "gate_preserved": true
+  },
+  "home_root_original_unused": "/zhome/95/e/206121/mosaic-runs/20261022-brd4-jq1-25-fixed-lrreset-04",
+  "current_output_parents": {
+    "protenix": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-protenix",
+    "boltz2": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-boltz2",
+    "boltz2_chemistry": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-boltz2_chemistry"
+  },
+  "all_work3_dispatch_gate": {
+    "status": "passed",
+    "error": null,
+    "filesystems": {
+      "work3": {
+        "status": "passed",
+        "filesystem": "work3",
+        "raw_quota": "HPE-Storage-Servers (disks, storagepool 1): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nHPE-Storage-Servers (NVME, storagepool 2): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (disks, storagepool 3): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks, storagepool 4): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks added in 2024, storagepool 5): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (NVMEs added in 2024, storagepool 6): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||   72.09 GiB|  100.00 GiB||   377198| 20000000\n\n",
+        "quota": {
+          "finite_pools": [
+            {
+              "used_bytes_upper": 78383153152,
+              "hard_bytes_lower": 107374182400,
+              "remaining_bytes": 28991029248,
+              "remaining_files": 19622802
+            }
+          ],
+          "available_bytes_lower": 28991029248,
+          "available_files_lower": 19622802
+        },
+        "projected_bytes": 11069920032,
+        "stale_bytes_subtracted": 3264375509,
+        "disk_free_bytes": 556712829911040,
+        "available_bytes_conservative": 25726653739,
+        "required_bytes": 15364887328,
+        "reserve_bytes": 4294967296,
+        "file_reserve": 100000,
+        "filesystem_inode_observation": {
+          "f_files": 0,
+          "f_ffree": 0,
+          "f_favail": 0
+        },
+        "available_files_lower": 19622802,
+        "filesystem_inode_reporting": "unreported_all_zero",
+        "file_headroom_scope": "Mandatory minimum of all authenticated finite user-quota pools",
+        "inode_limitation": "All-zero statvfs tuple supplies no independent filesystem inode proof",
+        "limitation": "Observations are conservative budget checks, not storage reservations"
+      }
+    }
+  },
+  "submission_delivery_verification": {
+    "file": "launcher-submission-verification.json",
+    "sha256": "b0e1737ffb76a509951b3c359184349c105f9d27d278a2266ff96a4cd52d30d6",
+    "listed_files": 415,
+    "remote_rehashed_proofs": 303,
+    "source625_files_rehashed": 625,
+    "launcher_source_files_rehashed": 4,
+    "all_native_passes_authenticated": true,
+    "scientific_cpu_cases": 728,
+    "launcher_cpu_cases": 26,
+    "scientific_start_verified": false
+  },
+  "queue_status": {
+    "protenix": {
+      "job": "29792670",
+      "state": "SUCCESS_PERSISTED",
+      "reason": "Original summary/case/terminal gradients passed and same-job LSFsuccess; current live record aged out"
+    },
+    "boltz2": {
+      "job": "29792671",
+      "state": "EXIT",
+      "reason": "Completed10000updates, then mandatory terminal E_upper finite differences failed"
+    },
+    "boltz2_chemistry": {
+      "job": "29792672",
+      "state": "PEND",
+      "reason": "Job slot limit reached:6hosts"
+    }
+  },
+  "automation_remains_paused": true,
+  "current_entry_observation": {
+    "file": "entry-observation.json",
+    "sha256": "4ad99dee2494762339a1a1c4f1bb49a9638921112768e6cae764965b47d60f03",
+    "all_three_optimization_starts_verified": false
+  },
+  "actual_scheduler_resource_verification": {
+    "file": "launcher-resource-verification.json",
+    "sha256": "b0e1737ffb76a509951b3c359184349c105f9d27d278a2266ff96a4cd52d30d6",
+    "all_three_actual_gpuls40s_4CPU_8GiBslot_23h_one_exclusive_GPU": true
+  },
+  "terminal_status_receipt": {
+    "file": "terminal-status-20261023.json",
+    "sha256": "cf1ddcfe3ad050ee809453fdd4de0bd87f01661df0fffc4a7edfb51395452c61",
+    "full_frame_completion_collector_run": false
+  }
+}

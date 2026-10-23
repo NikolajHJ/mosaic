@@ -1,0 +1,8 @@
+{
+  "tag": "20261023-brd4-jq1-lrreset-analysis-01",
+  "source_files": 17,
+  "manifest_sha256": "761d66642052fde3da2da2016736fdd91bdea477ba714787a5c393b2038f8b83",
+  "archive_bytes": 80297,
+  "archive_sha256": "4c809367734cf6e529d1ae59e0b30cac603d9eae147914b518d992fb8818dc53",
+  "parent_manifest_sha256": "6d547929ce3227302729b022628cc26612d9829e72c0a70861870023463dac3a"
+}

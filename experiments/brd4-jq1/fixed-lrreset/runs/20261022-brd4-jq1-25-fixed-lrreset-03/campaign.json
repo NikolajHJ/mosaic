@@ -1,0 +1,115 @@
+{
+  "tag": "20261022-brd4-jq1-25-fixed-lrreset-03",
+  "status": "Both Boltz native readiness checks passed. Protenix29792127 EXIT1 at exact original-initialization equality before raw gradient checks. All three long runs remain unsubmitted; corrected separate Prodiagnostic29792158 still PEND at20:10Paris.",
+  "latest_observed_utc": "2026-10-22T18:10:41.512579+00:00",
+  "authorization": {
+    "rates": {
+      "protenix": 0.3,
+      "boltz2": 0.005,
+      "boltz2_chemistry": 0.005
+    },
+    "updates_each": 10000,
+    "fresh_not_resume": true,
+    "acceptance_policy": "fixed_step",
+    "max_backtracks": 1,
+    "repair_schedule": {
+      "initial": 0.001,
+      "hold_updates": 5000,
+      "final": 100.0,
+      "total_updates": 10000
+    }
+  },
+  "source": {
+    "tag": "20261022-brd4-jq1-25-fixed-lrreset-03",
+    "source_files": 622,
+    "manifest_sha256": "ff82857ecd4a985d0ba6cc16a87f1bf7b7bb2c7ffdbde18a183bbd63670ff567",
+    "archive_bytes": 39601344,
+    "archive_sha256": "31809b975f0387db4ad15b6530c443afc1220fd501b6b8ac62e147bbcf739b01",
+    "parent_manifest_sha256": "832f833dd486c2ff305f7e3eb33fc775c87810a2e12a8bc597c5df744699c5d3",
+    "changed_files": [
+      "scripts/fixed25_lrreset_ops.py",
+      "scripts/fixed25_lrreset_storage.py",
+      "tests/test_fixed25_lrreset_storage.py"
+    ],
+    "local_scope": "Byte/AST/JSON packaging only; no numerical tests or model execution"
+  },
+  "source_root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-release-03/source",
+  "work3_root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-03",
+  "home_root": "/zhome/95/e/206121/mosaic-runs/20261022-brd4-jq1-25-fixed-lrreset-03",
+  "scientific_library_145_files_and_all_configs_unchanged_from_source622": true,
+  "cpu": {
+    "cpu_job": "29792104",
+    "cases": 724,
+    "by_raw_xml": {
+      "chemistry.xml": 59,
+      "hpc-contract.xml": 392,
+      "legacy.xml": 239,
+      "native-mapping.xml": 34
+    },
+    "certificate_sha256": "864f7b92d2118c28ef7c5064a96812e5b25217e4c232c6791f2e08ebaca151ed"
+  },
+  "after_cpu_job": "29792105",
+  "native_jobs": {
+    "protenix": {
+      "job": "29792127",
+      "callback": "29792128"
+    },
+    "boltz2": {
+      "job": "29792129",
+      "callback": "29792130"
+    },
+    "boltz2_chemistry": {
+      "job": "29792131",
+      "callback": "29792132"
+    }
+  },
+  "native_ready_passed": false,
+  "long_submissions": null,
+  "cleanup": {
+    "status": "completed",
+    "utc": "2026-10-22T17:17:15.621039+00:00",
+    "plan_sha256": "bfe10342b9d8378f7c5842ca3a2eb87806a46cdb08501d9e0813f81776ca7e9f",
+    "removed_files": 1212,
+    "removed_logical_bytes": 852317966,
+    "journal_sha256": "c1e82fc70a1a80d71c0d8bc8ed0ac380f5a962a033c7c6c21763434fbd3ed756",
+    "scope": "Exact verified duplicate report frames/curves and archives only; all original native studies untouched",
+    "local_backups_reverified_members": [
+      636,
+      647
+    ],
+    "backup_archive_sha256": [
+      "f83155ecd2b83b4eff0d0c7693d8142b3d8eeeccfd4f6035784e9581711a170f",
+      "e92c477b8d173c1c0a9e17813e9cb0f8549cd24c9e97578d43e7591823cbb30a"
+    ],
+    "raw_audit_directory": "results/hpc/20261022-brd4-jq1-25-fixed-lrreset-03/evidence01"
+  },
+  "evidence": {
+    "archive_bytes": 251284,
+    "archive_sha256": "b5d7a6b6b4f228d8e560184f7d7a9b8f8a810151890cdcbdeb9e0064427f46a4",
+    "files": 93,
+    "independent_verification_sha256": "ce57cee2eabb1a2d7aa9bfcc8b33c4687ebb582e4a79148fa41dc16f1596a184"
+  },
+  "original_studies_changed_or_restarted": false,
+  "old_failed_sources_and_gates_preserved": true,
+  "new_report_published": false,
+  "native_ready_by_arm": {
+    "protenix": "failed initialization identity before gradients",
+    "boltz2": "passed",
+    "boltz2_chemistry": "passed"
+  },
+  "latest_status_evidence": {
+    "directory": "results/hpc/20261022-brd4-jq1-25-fixed-lrreset-03/news-20261022-2012",
+    "metadata_files": 108,
+    "remote_proof_hashes_matched": 188,
+    "verification_sha256": "ca00e03022542b2e1e90f83832dc2c646a567252190517850c117042cc4f8fe1"
+  },
+  "protenix_failure": {
+    "job": "29792127",
+    "exit_code": 1,
+    "failure_stage": "exact saved initialization identity before native_gradient_checks",
+    "native_gradient_checks_evaluated": false,
+    "reported_mismatched_entries": "150/150",
+    "reported_max_absolute_difference": "5.9604645e-08",
+    "scientific_gate_waived": false
+  }
+}

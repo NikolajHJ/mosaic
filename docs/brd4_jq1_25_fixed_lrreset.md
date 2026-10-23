@@ -157,3 +157,25 @@ Native/cleanup delivery7332680bytes SHAf6dadc17eb468f87a46cbb177f545682267b365c6
 41files safely extracted/hashed. Independent complete submission/resource/source/
 CPU/backup/journal audit passed4c7979a05a635d5f7f19feec407827eb8e8af43ecc3ccdaef0740918d69f8361.
 Local archive/report/proof integrity checks are not numerical/model validation.
+
+
+## 22 October 19:03 Paris: native allocations failed storage admission
+
+All three original validation jobs29783703/29783707/29783710 reached an L40S at19:01-19:02 and exited1 before any model/gradient invocation. Their conservative byte budgets were short by8607251/8617739/8628214 bytes respectively; file headroom remained adequate. Own callbacks recorded failed decisions and no long-submissions file exists. These are resource-admission failures; CPU723/source622 remain unchanged and no native gradient result was evaluated. No retry, cleanup, policy change or submission occurred in this status turn. Exact gates, own-job LSF and decision hashes were safely downloaded/verified in the [dated run record](../experiments/brd4-jq1/fixed-lrreset/runs/20261022-brd4-jq1-25-fixed-lrreset-02/status-20261022-1903.md).
+
+
+## 22 October: authorized retry03 after verified storage recovery
+
+The user explicitly requested enough space and resubmission of all three lower-rate arms with identical settings, plus a separate Protenix diagnostic correction. Removed1212 exact duplicated report frames/curves/archives,852317966 logicalbytes, only after both complete local report archives and all636/647 memberfiles were reverified. Original native studies, proofs/configs, releases, home/caches/models/envs and other projects remain unchanged. Source622 scientific library145files/configs/driver/contract byte-identical; new launcher/storage roots and conservative separate diagnostic charges were allocated-retested. CPU29792104/afterCPU29792105 DONE/full724passes. Actual new native/callbacks Pro29792127/28, Bol29792129/30, chemistry29792131/32 allPEND19:36Paris; no readiness pass or10000-update long ID established yet. Full native/whole two-filesystem gates remain mandatory. [Current retry record](../experiments/brd4-jq1/fixed-lrreset/runs/20261022-brd4-jq1-25-fixed-lrreset-03/README.md).
+
+
+## 22 October20:10Paris: both Boltz readiness checks passed; Pro initialization blocked
+
+Native29792129/29792131 actualDONE/LSF and full readinesspassed at newLR0.005, including chemistry low0.001/high100 coupled checks and both ten-update pilots. All52/128 declared proof hashes matched. Pro29792127 actualEXIT1 before raw gradients: exact comparison to original initialization failed150/150 atom entries, reported maximum absolute difference5.9604645e-08. This is an initialization identity failure, not established gradient disagreement; the exact gate was preserved. Pro callbackEXIT and chemistry callbackEXIT block global dispatch despite both passed Boltz readiness decisions. No long-submissions or dispatch marker exists, so none of the three fresh10000-update runs has started. Corrected separate Prodiagnostic29792158/capture29792159 remainPEND. [Dated evidence and verification](../experiments/brd4-jq1/fixed-lrreset/runs/20261022-brd4-jq1-25-fixed-lrreset-03/status-20261022-2010.md). No scientific action or new job in this status turn.
+
+
+## 22 October: authorized exact-initialization fix, attempt04
+
+[New immutable run04](../experiments/brd4-jq1/fixed-lrreset/runs/20261022-brd4-jq1-25-fixed-lrreset-04/README.md) preserves rates0.3/.005/.005, onefixedcandidate, chemistry.001through5000thengeometric100 and every check. Allocated CPU/GPU replay proves stockCPU atomsoftmax and stockGPU bondsoftmax reproduce the exact original initialization, with logits/keyunchanged. Pro-only same-math FP32placement applies every state/trial, atomprobabilities copied unchanged to GPUscoring. One proposal-constructor line preserves the logit subclass; no tolerance/cachedspecialpoint/projection/scientificsettingchange. Exactfivearraybaseline assertion retained. Other144srcfiles/allconfigs/contract/baseGraphLogits byteidentical parent03.
+
+Source625manifestc2628d08f7224f3b572ab456f4113d8a66b587a5d69f85a072877052fc09a057 stagedread-only. ActualCPU29792389/afterCPU29792390DONE/full728cases, independently byte/XML/LSFverified. Freshnative/owncallbacksPro29792413/14,Bol29792415/16,chem29792417/18 PEND20:38Paris. No newnativepass orlongIDs established yet. Originalfailed03Pro andpassed03Bolreadiness preserved; nooldstudy/source/gatechanged.

@@ -1,0 +1,23 @@
+{
+  "status": "passed",
+  "scope": "Independent standard-library bytes/source/XML/JSON/same-job LSF/scheduler audit, no numerical evaluation",
+  "captured_utc": "2026-10-22T18:37:41.678415+00:00",
+  "files": 36,
+  "source_files": 625,
+  "source_manifest_sha256": "c2628d08f7224f3b572ab456f4113d8a66b587a5d69f85a072877052fc09a057",
+  "cpu_cases": 728,
+  "raw_xml_cases": {
+    "hpc-contract.xml": 396,
+    "legacy.xml": 239,
+    "native-mapping.xml": 34,
+    "chemistry.xml": 59
+  },
+  "cpu_certificate_sha256": "6a87093f3da0d1ca0694c7152de84fdeed308251f709c685b526d978b1455e23",
+  "native_jobs": {
+    "protenix": "29792413",
+    "boltz2": "29792415",
+    "boltz2_chemistry": "29792417"
+  },
+  "native_passes_verified": {},
+  "evidence_index_sha256": "9edc844a2adf675c8d415cb61634917379fdcc21418897188ace19eab1b345f4"
+}

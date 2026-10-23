@@ -1,0 +1,41 @@
+#!/bin/bash
+set -euo pipefail
+[[ -n "${LSB_JOBID:-}" ]]
+source=$1
+root=$2
+manifest=$3
+module load python3/3.12.11
+python=/work3/s234818/mosaic/envs/protenix-tiny/bin/python
+native=/work3/s234818/latentmol/env/boltz311/bin/python
+"$python" "$source/scripts/verify_stage0_release.py" "$source" "$manifest"
+export PYTHONPATH="$source/scripts:$source/src:$source/tests" PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+export CUDA_VISIBLE_DEVICES='' JAX_PLATFORMS=cpu JAX_ENABLE_X64=0
+export OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 MKL_NUM_THREADS=4
+source "$source/scripts/hpc/boltz_node_tmpdir.sh"
+"$python" - "$root" <<'PY'
+from pathlib import Path
+import sys
+from fixed25_lrreset_storage import ROOT,check_work_storage
+root=Path(sys.argv[1])
+if root != ROOT:raise ValueError('Wrong fresh high-rate CPU root')
+check_work_storage(root/'cpu-entry-quota',phase='cpu')
+PY
+mkdir "$root/cpu/payload"
+run="$root/cpu/payload"
+cd "$source"
+contracts=(tests/test_boltz_submission_controller.py tests/test_boltz_hpc_tmpdir.py tests/test_campaign25_ops.py tests/test_campaign25_release.py tests/test_campaign25_pocket_ops.py tests/test_pocket_definition.py tests/test_protenix_lr03_ops.py tests/test_protenix_lr03_storage.py tests/test_fixed25_ops.py tests/test_fixed25_storage.py tests/test_fixed25_lrboost_contract.py tests/test_fixed25_lrboost_ops.py tests/test_fixed25_lrboost_storage.py tests/test_fixed25_lrreset_contract.py tests/test_fixed25_lrreset_ops.py tests/test_fixed25_lrreset_storage.py tests/test_protenix_initialization.py)
+"$python" -m pytest "${contracts[@]}" --rootdir "$source" --import-mode=importlib -o addopts= -o cache_dir="$run/cache-contract" --basetemp "$TMPDIR/contracts" --junitxml="$run/hpc-contract.xml" > "$run/hpc-contract.log" 2>&1
+legacy=()
+for file in tests/test_small_molecule_*.py; do
+  case "$file" in tests/test_small_molecule_chemistry*.py) ;; *) legacy+=("$file");; esac
+done
+"$python" -m pytest "${legacy[@]}" --rootdir "$source" --import-mode=importlib -o addopts= -m 'not slow and not small_molecule_model' -o cache_dir="$run/cache-legacy" --basetemp "$TMPDIR/legacy" --junitxml="$run/legacy.xml" > "$run/legacy.log" 2>&1
+"$native" -m pytest tests/test_boltz_native_mapping.py tests/test_campaign25_native.py tests/test_campaign25_contract.py tests/test_pocket_boltz.py --rootdir "$source" --import-mode=importlib -o addopts= -o cache_dir="$run/cache-native" --basetemp "$TMPDIR/native" --junitxml="$run/native-mapping.xml" > "$run/native-mapping.log" 2>&1
+"$native" scripts/create_chemistry_oracles.py --source tests/data/chemistry_oracle --manifest src/mosaic/small_molecule/chemistry/_reference/source_manifest.json --output "$run/oracles.json" > "$run/oracles.log" 2>&1
+export JAX_ENABLE_X64=1 MOSAIC_REQUIRE_CHEMISTRY_ORACLES=1 MOSAIC_CHEMISTRY_ORACLES="$run/oracles.json"
+"$python" -m pytest tests/test_small_molecule_chemistry*.py --rootdir "$source" --import-mode=importlib -o addopts= -o cache_dir="$run/cache-chemistry" --basetemp "$TMPDIR/chemistry" --junitxml="$run/chemistry.xml" > "$run/chemistry.log" 2>&1
+reference=/zhome/95/e/206121/mosaic-runs/20261019-brd4-chemistry-ramp-01-readiness/payload/composition_reference.json
+echo "37b34a2ba7be47886936df48faaabdeac20481e5a9cebca9bafab831c07868eb  $reference" | sha256sum -c -
+cp "$reference" "$run/composition_reference.json"
+"$python" scripts/derive_brd4_jq1_pocket.py --pdb tests/data/brd4_3mxf/3MXF.pdb --fixture tests/data/brd4_3mxf/fixture_25.json --output "$run/pocket_definition.json"
+"$python" scripts/assess_boltz_cpu.py --run "$run" --manifest "$manifest"

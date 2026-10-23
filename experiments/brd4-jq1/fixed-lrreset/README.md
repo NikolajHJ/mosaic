@@ -98,3 +98,9 @@ callback stopping at native-dispatch storage admission, before native/long
 submission. It also describes a separate authorized cleanup in progress. Those
 updates are preserved, are independent of this migration, and do not validate
 the migrated working source. Consult that agent's latest receipts for follow-up.
+
+
+Latest authorized initialization recovery: [attempt04](runs/20261022-brd4-jq1-25-fixed-lrreset-04/README.md), with exact baseline identity preserved and all fresh gates repeated. [Attempt03](runs/20261022-brd4-jq1-25-fixed-lrreset-03/README.md) remains the preserved Pro initialization failure and two passed Boltz validations; no old run is restarted.
+
+
+23October current separate endpoint/report investigation: [analysis03](runs/20261023-brd4-jq1-lrreset-analysis-03/README.md). OriginalPro29792670 passed10000/finalderivatives; normalBol29792671 saved10000 but failedterminalE_upperFD; chemistry29792672 remainsoriginalqueuedjob. Full284analysisCPUfixtures passed; separateBoltzdiagnostic and saved-only collectors/renderers submitted, no originalrun restart or settingchange.

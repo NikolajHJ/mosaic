@@ -1,0 +1,25 @@
+{
+  "status": "passed",
+  "scope": "Independent saved bytes, JSON metadata, actual scheduler/LSF and immutable source audit; no numerical re-evaluation",
+  "captured_utc": "2026-10-22T18:10:41.512579+00:00",
+  "metadata_files": 108,
+  "hpc_remote_proof_hashes_matched": 188,
+  "boltz_readiness_passed": {
+    "boltz2": {
+      "native_job": "29792129",
+      "proofs_rehashed_on_hpc": 52,
+      "assessment_sha256": "7b6c8f822987f057376bfe5d6894a1f22d0ab01b35a1379c9f8a8e6dc745b388"
+    },
+    "boltz2_chemistry": {
+      "native_job": "29792131",
+      "proofs_rehashed_on_hpc": 128,
+      "assessment_sha256": "7549c44c38eb73dacb4edcfba4f2e7b56d036b12720a76933889cf2d06cd79ec"
+    }
+  },
+  "protenix_readiness": "failed exact initialization identity before gradient checks",
+  "long_runs_submitted": false,
+  "corrected_protenix_diagnostic": "29792158 PEND; capture29792159 PEND",
+  "evidence_index_sha256": "a64b6cc118530c365b9c11cddd8cef3bc4b4ea2fd4608fad9da52634ac361231",
+  "raw_npz_proofs_downloaded": false,
+  "original_studies_modified": false
+}

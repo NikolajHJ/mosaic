@@ -1,0 +1,40 @@
+#!/bin/bash
+set -euo pipefail
+[[ -n "${LSB_JOBID:-}" ]]
+probe=$1
+manifest=$2
+phase=$3
+root=$4
+module load python3/3.12.11
+python=/work3/s234818/mosaic/envs/protenix-tiny/bin/python
+source=/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-release-03/source
+"$python" - "$probe" "$manifest" <<'PY'
+import hashlib,json,sys
+from pathlib import Path
+p=Path(sys.argv[1]); raw=(p/'source_manifest.json').read_bytes()
+assert hashlib.sha256(raw).hexdigest()==sys.argv[2]
+for n,h in json.loads(raw)['files'].items():
+    assert hashlib.sha256((p/n).read_bytes()).hexdigest()==h
+PY
+"$python" "$source/scripts/verify_stage0_release.py" "$source" ff82857ecd4a985d0ba6cc16a87f1bf7b7bb2c7ffdbde18a183bbd63670ff567
+export PYTHONPATH="$source/scripts:$source/src:$source/tests" PYTHONDONTWRITEBYTECODE=1
+export OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 MKL_NUM_THREADS=4
+export HF_HUB_OFFLINE=1 HF_HUB_DISABLE_TELEMETRY=1 JAX_ENABLE_X64=0
+"$python" - "$root" "$phase" <<'PY'
+import os,sys,json
+from pathlib import Path
+import fixed25_lrreset_ops as ops
+ops.verify_cpu('ff82857ecd4a985d0ba6cc16a87f1bf7b7bb2c7ffdbde18a183bbd63670ff567','864f7b92d2118c28ef7c5064a96812e5b25217e4c232c6791f2e08ebaca151ed')
+if sys.argv[2]=='gpu':
+    a=json.loads((Path(sys.argv[1])/'initialization-probe-cpu/payload/assessment.json').read_bytes())
+    assert a['phase']=='cpu' and a['status']=='diagnostic_completed' and a['fixture_one_ulp_detection']=='passed'
+ops.storage.check_work_storage(ops.ROOT/('initialization-probe04-'+sys.argv[2]+'-'+os.environ['LSB_JOBID']),phase='cpu' if sys.argv[2]=='cpu' else 'validate')
+PY
+export JAX_PLATFORMS=cpu
+if [[ "$phase" == gpu ]]; then
+  module load cuda/12.9.1 cudnn/v9.13.0.50-prod-cuda-12.X
+  export JAX_PLATFORMS=cuda,cpu XLA_PYTHON_CLIENT_PREALLOCATE=false
+fi
+source "$source/scripts/hpc/boltz_node_tmpdir.sh"
+cd "$source"
+"$python" "$probe/initialization_probe.py" --phase "$phase" --manifest "$manifest" --output "$root/initialization-probe-$phase/payload"

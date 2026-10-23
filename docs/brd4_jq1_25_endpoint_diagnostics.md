@@ -184,3 +184,30 @@ Do not relabel QA passed or edit the immutable edition/source. A new viewer-only
 immutable correction20261022-brd4-jq1-lrboost-viewer-focus-01 is being implemented,
 adding focus-to-pause only, with original assets/proofs unchanged and new allocated
 CPU/adoption requirements. No new patch source/job/pass is yet established.
+
+
+## 22 October 19:03 Paris: separate diagnostic outcomes
+
+Boltz29780823 and capture29780824 completed successfully. All423 archived files and411 of413 capture-proof byte identities were independently verified locally; two original summary/terminal-report proofs remain explicit HPC references. The original terminal bond contrast reproduces its large-scale disagreement, while finer diagnostic-only scales agree more closely; repeated scalar/AD evaluations are identical. No unique root cause or retroactive original-gate pass follows. Protenix29780821 failed the exact saved-logit/probability identity control atstep0; capture29780822 correctly exited, leaving terminal diagnosis incomplete. Existing final29780830 is PEND with an unsatisfiable successful-capture dependency. All original saved runs and existing immutable report/QA outcomes remain unchanged. See the [dated diagnostic outcome](../experiments/brd4-jq1/fixed-lrboost/runs/20261022-brd4-jq1-lrboost-analysis-01/status-20261022-1903.md). No scientific execution, cleanup, retry or new publication occurred during this read-only evidence delivery.
+
+
+## 22 October: separate Protenix correction CPU-validated and queued
+
+The authorized new diagnostic leaves raw saved probability graphs unchanged and explicitly distinguishes the graph represented by original saved logits. Exact equality and FP32 differences are reported, without adjusting probabilities or substituting a tolerance; logit-coordinate controls have their own saved represented baseline and never certify the original raw-probability gate. Core16file release6d547929ce3227302729b022628cc26612d9829e72c0a70861870023463dac3a passed282allocatedCPUcases. Its callback29792112 failed conservative separate resource admission before GPU dispatch; preserve failure. New launcher99292b7eed1662f5975a704aa4adfca5a93c1754ff3717c3d75f24473f8ef219 passed12allocated contracts and adopts the unchanged current campaign combined storage gate, keeping all original reserves/current projections/analysis allowances and additional launcher charges. Only Prodiagnostic29792158/capture29792159 were actuallysubmitted; PEND19:36Paris, no native finding yet. Original study/failure records and published report editions remain unchanged. [Correction/adoption run record](../experiments/brd4-jq1/fixed-lrboost/runs/20261022-brd4-jq1-lrboost-analysis-02/README.md).
+
+
+## 22 October20:10Paris: corrected diagnostic still queued
+
+Corrected Protenix diagnostic29792158 remainsPEND/gpul40s, with a host slot-limit reason; own capture29792159 remainsPEND waiting ended(29792158). No new endpoint findings or completion exists. This separate read-only diagnostic is distinct from new lower-rate Pro readiness29792127, which failed exact initialization identity before gradient checks. Saved original studies are unchanged. [Current evidence](../experiments/brd4-jq1/fixed-lrreset/runs/20261022-brd4-jq1-25-fixed-lrreset-03/status-20261022-2010.md).
+
+
+## 22 October20:33Paris: corrected separate Protenix diagnostic verified
+
+Diagnostic29792158 and capture29792159 actualDONE/samejobLSFsuccess. Independent byte/schema/proofchain audit passed416files/385remotehashreferences, report2045d6e8537ff86c176e6619725d206b32029058df351ce639cc88f90da9c1db. Savedsteps0/9900/10000, frozenmodel/context unchanged; original terminalXrow3 source1to4 symmetricmargin0.0001437509199604392 makes.01/.003/.001 predeclared probes infeasible. Smallerdiagnostic-only.0001/.00003 atterminal agreewithAD; repeatsreportzero spread, butfiner/coordinate controlsare not uniformlypassing and do notcertifyoriginalgate. Originalscientificfailurestaysfailed; nooptimizer or savedresultmutation. [Proofscope/verifier](../experiments/brd4-jq1/fixed-lrreset/runs/20261022-brd4-jq1-25-fixed-lrreset-04/probe-diagnostic-verification.json), [run record](../experiments/brd4-jq1/fixed-lrreset/runs/20261022-brd4-jq1-25-fixed-lrreset-04/README.md). Five originalsnapshot/summary/terminalreport references remain authenticatedonHPC rather than downloaded originals.
+
+
+## 23 October: lower-rate Boltz endpoint, separate current investigation
+
+The user requested read-only investigation of lower-rate normalBoltz29792671 and an updated completed-Pro/Bol report. Pro29792670 passed10000updates/10001states and finalderivatives. NormalBol29792671 saved the same full budget but failed terminalE_upper FD: row239 0to1 AD4.448079109; FD-7.524552941/-6.906365355/3.221578896 at.01/.003/.001, allfalse; atomcheckpassed/frozendigestsunchanged. These differ from the older higher-rate endpoint and are not diagnosed by the old results.
+
+New [separate analysis03](../experiments/brd4-jq1/fixed-lrreset/runs/20261023-brd4-jq1-lrreset-analysis-03/README.md) retains all saved results/scientific settings and originalchemistry29792672. Full284allocatedCPUfixtures passed, separateBoltzdiagnostic29796551/capture29796552 actuallyqueued; CPUcollectors/renderjobs own independent outputs. No newcause/finding yet. Its diagnostic-only finer scales cannot certify the originalfailedgate. Boltz trajectory/graphs/fixed-pose scores remain usable for clearly labelled exploratory analysis, not a validated endpoint gradient, passed scientific campaign or binding/activity claim. Existing reports/editions remain unchanged; new lower-rate publication pending.

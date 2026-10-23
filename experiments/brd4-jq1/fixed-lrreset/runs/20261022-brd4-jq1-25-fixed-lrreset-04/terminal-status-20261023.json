@@ -1,0 +1,327 @@
+{
+  "captured_utc": "2026-10-23T08:10:42.347765+00:00",
+  "scope": "Read-only saved JSON metadata/contiguous newline counts/remote original-file SHA and same-job complete LSF byte audit; full NPZ/frame terminal collector not run in this status turn",
+  "scientific_source_manifest_sha256": "c2628d08f7224f3b572ab456f4113d8a66b587a5d69f85a072877052fc09a057",
+  "saved_results_changed": false,
+  "new_jobs_submitted": false,
+  "arms": {
+    "protenix": {
+      "job": "29792670",
+      "scheduler_evidence": "SUCCESS_PERSISTED_same_job_LSF",
+      "saved_summary_status": "passed",
+      "saved_case_status": "passed",
+      "applied_updates": 10000,
+      "states": 10001,
+      "contiguous_saved_prefixes": true,
+      "terminal_gradient_status": "passed",
+      "summary_reference": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-protenix/payload/study/summary.json",
+        "bytes": 298580732,
+        "sha256": "b94d4bae58b7c82b92f4cf0b6b0e9804734afff0f54ea0b162b65d825ec2661d"
+      },
+      "terminal_report": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-protenix/payload/study/terminal_gradient_checks/report.json",
+        "bytes": 5098,
+        "sha256": "bbebdde489788df172f46822a3cdd486efaadcc61c9fa2a4cc40ec4716e93440",
+        "report": {
+          "acceptance_policy": "best_primal",
+          "artifact_policy": "compact",
+          "artifact_scope": "all graphs/raw gradients/scalars/RNG; logits at initial/final/probes; no persisted trunk tensors",
+          "bond_order_null_absolute_scalar_difference": 0,
+          "bond_order_null_comparison": "standalone primal versus standalone primal",
+          "bond_order_null_max_gradient_difference": 0,
+          "bond_order_null_max_output_difference": 0,
+          "bond_order_null_output_atol": 2e-05,
+          "bond_order_null_same_atom_and_existence_inputs": true,
+          "bond_order_null_scalar_atol": 2e-05,
+          "directions": [
+            {
+              "autodiff": 0.010231317486613989,
+              "destination": 2,
+              "field": "X",
+              "gradient_norm": 0.034492786995843634,
+              "row": 23,
+              "source": 4,
+              "sweep": [
+                {
+                  "absolute_error": 5.648471415042877e-07,
+                  "agrees": true,
+                  "epsilon": 0.01,
+                  "finite_difference": 0.010231882333755493,
+                  "minus_loss": -0.1779223382472992,
+                  "plus_loss": -0.17771770060062408,
+                  "relative_error": 5.520461661690818e-05,
+                  "same_sign": true
+                },
+                {
+                  "absolute_error": 1.6703270375728607e-06,
+                  "agrees": true,
+                  "epsilon": 0.003,
+                  "finite_difference": 0.010229647159576416,
+                  "minus_loss": -0.17785678803920746,
+                  "plus_loss": -0.17779541015625,
+                  "relative_error": 0.00016325630005697812,
+                  "same_sign": true
+                },
+                {
+                  "absolute_error": 5.780253559350967e-06,
+                  "agrees": true,
+                  "epsilon": 0.001,
+                  "finite_difference": 0.01023709774017334,
+                  "minus_loss": -0.17783679068088531,
+                  "plus_loss": -0.17781631648540497,
+                  "relative_error": 0.0005646379184861718,
+                  "same_sign": true
+                }
+              ]
+            },
+            {
+              "autodiff": 0.0034544779919087887,
+              "destination": 0,
+              "field": "E_upper",
+              "gradient_norm": 0.011438319512797984,
+              "row": 130,
+              "source": 1,
+              "sweep": [
+                {
+                  "absolute_error": 1.8463470041751862e-06,
+                  "agrees": true,
+                  "epsilon": 0.01,
+                  "finite_difference": 0.003456324338912964,
+                  "minus_loss": -0.17785964906215668,
+                  "plus_loss": -0.17779052257537842,
+                  "relative_error": 0.0005341937917654667,
+                  "same_sign": true
+                },
+                {
+                  "absolute_error": 2.591405063867569e-06,
+                  "agrees": true,
+                  "epsilon": 0.003,
+                  "finite_difference": 0.0034570693969726562,
+                  "minus_loss": -0.17783695459365845,
+                  "plus_loss": -0.1778162121772766,
+                  "relative_error": 0.0007495959051724138,
+                  "same_sign": true
+                },
+                {
+                  "absolute_error": 2.4943146854639053e-05,
+                  "agrees": true,
+                  "epsilon": 0.001,
+                  "finite_difference": 0.0034794211387634277,
+                  "minus_loss": -0.17783021926879883,
+                  "plus_loss": -0.1778232604265213,
+                  "relative_error": 0.007168763383297644,
+                  "same_sign": true
+                }
+              ]
+            }
+          ],
+          "final_loss": -0.17807979881763458,
+          "final_primal_loss": -0.178079754114151,
+          "finite_difference_policy": {
+            "absolute_tolerance": 0.002,
+            "acceptance": "same sign, relative error <= rtol, and absolute+relative tolerance; two adjacent scales",
+            "epsilons": [
+              0.01,
+              0.003,
+              0.001
+            ],
+            "minimum_tangent": 1e-07,
+            "relative_error_denominator": "max(abs(FD), abs(autodiff))",
+            "relative_tolerance": 0.15
+          },
+          "initial_loss": -0.17782670259475708,
+          "initial_primal_loss": -0.1778266280889511,
+          "policy_segments": [
+            {
+              "first_update": 1,
+              "last_update": 1,
+              "policy": "best_primal"
+            }
+          ],
+          "primal_autodiff_parity": {
+            "absolute_scalar_difference": 7.450580596923828e-08,
+            "autodiff_loss": -0.17782670259475708,
+            "logit_interpretation": "compilation-path diagnostic; null invariance compares standalone primal with standalone primal",
+            "max_logit_difference": 0.0001544952392578125,
+            "primal_loss": -0.1778266280889511,
+            "raw_artifact": "baseline-primal.npz",
+            "scalar_atol": 2e-05
+          },
+          "primal_descent_minimum_decrease": null,
+          "primal_every_step": true,
+          "record_readouts": false,
+          "requested_updates": 1,
+          "status": "passed",
+          "updates": [
+            {
+              "acceptance_policy": "best_primal",
+              "accepted_step_size": 0.3,
+              "after": -0.17807979881763458,
+              "attempts": [
+                {
+                  "loss": -0.17807979881763458,
+                  "passes_strict_threshold": true,
+                  "primal_loss": -0.178079754114151,
+                  "projection_residuals": {
+                    "E_upper": 0.001534577785129296,
+                    "X": 0.006347439841742926
+                  },
+                  "step_size": 0.3
+                }
+              ],
+              "before": -0.17782670259475708,
+              "delta_E_upper": 0.003069225698709488,
+              "delta_X": 0.00817241333425045,
+              "fallback_used": false,
+              "primal_after": -0.178079754114151,
+              "primal_before": -0.1778266280889511,
+              "primal_increased": false,
+              "selected_trial": 0,
+              "step": 0
+            }
+          ]
+        }
+      },
+      "stdout": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-protenix/stdout.29792670.log",
+        "bytes": 2201,
+        "sha256": "46f7ff9c942cf3ca9447e4d4d2630a3e604d8a6cd42504b56e8a0fcd6bb3170e",
+        "same_job_subject": true,
+        "success": true,
+        "exit1": false,
+        "tail": "Authenticated 625 immutable source files\n\n------------------------------------------------------------\nSender: LSF System <lsfadmin@hpc.dtu.dk>\nSubject: Job 29792670: <mosaic-lrreset04-work3-protenix> in cluster <dcc> Done\n\nJob <mosaic-lrreset04-work3-protenix> was submitted from host <n-62-31-21> by user <s234818> in cluster <dcc> at Thu Oct 22 21:25:03 2026\nJob was executed on host(s) <4*n-62-13-14>, in queue <gpul40s>, as user <s234818> in cluster <dcc> at Thu Oct 22 21:27:39 2026\n</zhome/95/e/206121> was used as the home directory.\n</work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-allwork3-launch-02/source> was used as the working directory.\nStarted at Thu Oct 22 21:27:39 2026\nTerminated at Thu Oct 22 23:36:53 2026\nResults reported at Thu Oct 22 23:36:53 2026\n\nYour job looked like:\n\n------------------------------------------------------------\n# LSBATCH: User input\nbash -l /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-allwork3-launch-02/source/all_work3_launch.lsf /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-allwork3-launch-02/source 40c5055150c06e0aeb9989d33f869aecb6642c3823f6bdc9330e66f41a3bcbbe run protenix f71291c8a542871773f18b4cbeeaa9641683b04b554e40324e1c79073b4d72d4\n------------------------------------------------------------\n\nSuccessfully completed.\n\nResource usage summary:\n\n    CPU time :                                   8667.00 sec.\n    Max Memory :                                 2605 MB\n    Average Memory :                             2322.52 MB\n    Total Requested Memory :                     32768.00 MB\n    Delta Memory :                               30163.00 MB\n    Max Swap :                                   -\n    Max Processes :                              8\n    Max Threads :                                52\n    Run time :                                   7754 sec.\n    Turnaround time :                            7910 sec.\n\nThe output (if any) is above this job summary.\n\n\n\nPS:\n\nRead file </work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-protenix/stderr.29792670.log> for stderr output of this job.\n\n"
+      },
+      "frozen_identity_after": {
+        "context_digest": "b28dfad8e5ede565071c70a61695f6a38f5cb6bd591705e32979e59050ff5ce4",
+        "model_digest": "8d6926d5390fe682e193089f790ce53aa4011a6d5509ddb452a55db3d89b0ab2"
+      }
+    },
+    "boltz2": {
+      "job": "29792671",
+      "scheduler_evidence": "EXIT_current_and_same_job_LSF_exit1",
+      "saved_summary_status": "failed",
+      "saved_case_status": "passed",
+      "applied_updates": 10000,
+      "states": 10001,
+      "contiguous_saved_prefixes": true,
+      "terminal_gradient_status": "failed",
+      "summary_reference": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-boltz2/payload/study/summary.json",
+        "bytes": 301971481,
+        "sha256": "06a68008a0dfb8b6a66668447bcda4f01c7b54427d9b68f0d84e5926db278cc1"
+      },
+      "terminal_report": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-boltz2/payload/study/terminal_gradient_checks/report.json",
+        "bytes": 2110,
+        "sha256": "1a95448ea1d3fe373f7a3f8ad64017ef7ffd620f52efc3086cf2262ecf4868a4",
+        "report": {
+          "status": "failed",
+          "scope": "quantitative affinity; fixed pose/masks; first-order raw graph derivatives",
+          "rows": [
+            {
+              "field": "X",
+              "row": 12,
+              "source": 3,
+              "target": 0,
+              "probes": [
+                {
+                  "epsilon": 0.01,
+                  "finite_difference": 0.17769485712051392,
+                  "analytic": 0.17768771946430206,
+                  "agrees": true,
+                  "primal_endpoints": [
+                    0.10887490957975388,
+                    0.11242880672216415
+                  ]
+                },
+                {
+                  "epsilon": 0.003,
+                  "finite_difference": 0.17784287532170615,
+                  "analytic": 0.17768771946430206,
+                  "agrees": true,
+                  "primal_endpoints": [
+                    0.11013037711381912,
+                    0.11119743436574936
+                  ]
+                },
+                {
+                  "epsilon": 0.001,
+                  "finite_difference": 0.1779310405254364,
+                  "analytic": 0.17768771946430206,
+                  "agrees": true,
+                  "primal_endpoints": [
+                    0.11048677563667297,
+                    0.11084263771772385
+                  ]
+                }
+              ]
+            },
+            {
+              "field": "E_upper",
+              "row": 239,
+              "source": 0,
+              "target": 1,
+              "probes": [
+                {
+                  "epsilon": 0.01,
+                  "finite_difference": -7.524552941322327,
+                  "analytic": 4.4480791091918945,
+                  "agrees": false,
+                  "primal_endpoints": [
+                    0.30404332280158997,
+                    0.15355226397514343
+                  ]
+                },
+                {
+                  "epsilon": 0.003,
+                  "finite_difference": -6.906365354855855,
+                  "analytic": 4.4480791091918945,
+                  "agrees": false,
+                  "primal_endpoints": [
+                    0.17043858766555786,
+                    0.12900039553642273
+                  ]
+                },
+                {
+                  "epsilon": 0.001,
+                  "finite_difference": 3.221578896045685,
+                  "analytic": 4.4480791091918945,
+                  "agrees": false,
+                  "primal_endpoints": [
+                    0.10905475914478302,
+                    0.11549791693687439
+                  ]
+                }
+              ]
+            }
+          ],
+          "error": "AssertionError: Native affinity E_upper finite differences failed"
+        }
+      },
+      "stdout": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-boltz2/stdout.29792671.log",
+        "bytes": 2199,
+        "sha256": "b40c2741e3d500f74aafa8819a597d260b7372f5372eb2642aeb6c450341f5c0",
+        "same_job_subject": true,
+        "success": false,
+        "exit1": true,
+        "tail": "Authenticated 625 immutable source files\n\n------------------------------------------------------------\nSender: LSF System <lsfadmin@hpc.dtu.dk>\nSubject: Job 29792671: <mosaic-lrreset04-work3-boltz2> in cluster <dcc> Exited\n\nJob <mosaic-lrreset04-work3-boltz2> was submitted from host <n-62-31-21> by user <s234818> in cluster <dcc> at Thu Oct 22 21:25:03 2026\nJob was executed on host(s) <4*n-62-13-17>, in queue <gpul40s>, as user <s234818> in cluster <dcc> at Fri Oct 23 03:15:59 2026\n</zhome/95/e/206121> was used as the home directory.\n</work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-allwork3-launch-02/source> was used as the working directory.\nStarted at Fri Oct 23 03:15:59 2026\nTerminated at Fri Oct 23 09:32:59 2026\nResults reported at Fri Oct 23 09:32:59 2026\n\nYour job looked like:\n\n------------------------------------------------------------\n# LSBATCH: User input\nbash -l /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-allwork3-launch-02/source/all_work3_launch.lsf /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-allwork3-launch-02/source 40c5055150c06e0aeb9989d33f869aecb6642c3823f6bdc9330e66f41a3bcbbe run boltz2 f71291c8a542871773f18b4cbeeaa9641683b04b554e40324e1c79073b4d72d4\n------------------------------------------------------------\n\nExited with exit code 1.\n\nResource usage summary:\n\n    CPU time :                                   23347.00 sec.\n    Max Memory :                                 6832 MB\n    Average Memory :                             6309.00 MB\n    Total Requested Memory :                     32768.00 MB\n    Delta Memory :                               25936.00 MB\n    Max Swap :                                   -\n    Max Processes :                              6\n    Max Threads :                                41\n    Run time :                                   22620 sec.\n    Turnaround time :                            43676 sec.\n\nThe output (if any) is above this job summary.\n\n\n\nPS:\n\nRead file </work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-boltz2/stderr.29792671.log> for stderr output of this job.\n\n"
+      },
+      "frozen_identity_after": {
+        "context_digest": "fd04211da8e22eccd97ecedd96dd59cf4fb2d80aab6a397fa662af8eb92bbad4",
+        "elapsed_seconds": 2.535415215010289,
+        "id": 20057,
+        "model_digest": "395876da13ab6d5d175e6603db2118a82954c7c06484842fe2314dbd77a31a16",
+        "status": "passed"
+      }
+    },
+    "boltz2_chemistry": {
+      "job": "29792672",
+      "scheduler_state": "PEND",
+      "reason": "Job slot limit reached: 6 hosts",
+      "driver_invoked": false,
+      "committed_updates": 0
+    }
+  }
+}

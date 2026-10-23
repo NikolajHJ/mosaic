@@ -1,0 +1,22 @@
+{
+  "parent_manifest": "761d66642052fde3da2da2016736fdd91bdea477ba714787a5c393b2038f8b83",
+  "changes": {
+    "scripts/jq1_lrboost_report_ops.py": {
+      "before": "4c4b5be8552f910485b32e4453f8f5cda8074258c35974f0c732b9570e7c0bf0",
+      "after": "226f11494c5613b0ef0c3e7e886c3b896b301b5e43cd554c89fc154461e3ada7"
+    },
+    "scripts/lrboost_endpoint_diagnostics.py": {
+      "before": "f1e79b8c8f20214fb7158c475e1650c4e721149c21b45087f701ba9263dbc6de",
+      "after": "4662907e09ec4815a17188bf01e61ca559e8841b98d41d598c9c9b1626e76d53"
+    },
+    "tests/test_jq1_lrboost_render.py": {
+      "before": "6eb498f319f57313552541543772b5f00ac6d19e8e63bb6f34f0a7c60c7049a8",
+      "after": "fdf1eb9feebb080faca50b2bd5c339b8075da9f33a9004ce7d7fd4c963d330ab"
+    },
+    "tests/test_lrboost_endpoint_diagnostics.py": {
+      "before": "b5609a30550d0d5bfea7b33a1f440462e58a11fa0a4568ed6ecf97bde7389b3c",
+      "after": "b2874401ddb6d215900a8b63780d53cd6552edc39641ee2ea2454725b49bc0d0"
+    }
+  },
+  "scope": "Fixture endpoint expectation and separate root identities only; no scientific code or original-result edits"
+}

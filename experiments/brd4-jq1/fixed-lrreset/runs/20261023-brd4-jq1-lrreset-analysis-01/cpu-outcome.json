@@ -1,0 +1,53 @@
+{
+  "actual_scheduler": "\nJob <29796461>, Job Name <mosaic-lrboost-analysis-cpu>, User <s234818>, Project\n                           <default>, Service Class <sc_hpc1>, Status <EXIT>, Q\n                          ueue <hpc>, Command <bash -l /work3/s234818/mosaic/ru\n                          ns/20261022-brd4-jq1-lrboost-analysis-01/lrreset-anal\n                          ysis-release-01/source/scripts/hpc/jq1_lrboost_analys\n                          is_stage.lsf /work3/s234818/mosaic/runs/20261022-brd4\n                          -jq1-lrboost-analysis-01/lrreset-analysis-release-01/\n                          source /work3/s234818/mosaic/runs/20261022-brd4-jq1-l\n                          rboost-analysis-01/lrreset-analysis-01 761d66642052fd\n                          e3da2da2016736fdd91bdea477ba714787a5c393b2038f8b83 cp\n                          u none /work3/s234818/mosaic/runs/20261022-brd4-jq1-l\n                          rboost-analysis-01/lrreset-analysis-01/cpu>, Share gr\n                          oup charged </s234818>, Esub <dcc>\nFri Oct 23 10:24:55 2026: Submitted from host <hpclogin1>, CWD <$HOME>, Output \n                          File (overwrite) </work3/s234818/mosaic/runs/20261022\n                          -brd4-jq1-lrboost-analysis-01/lrreset-analysis-01/cpu\n                          /stdout.29796461.log>, Error File (overwrite) </work3\n                          /s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analys\n                          is-01/lrreset-analysis-01/cpu/stderr.29796461.log>, 2\n                           Task(s), Requested Resources <{select[shortparallel_\n                          ] rusage[mem=4096.00] span[hosts=1]} || {select[!shor\n                          tparallel_] rusage[mem=4096.00] span[hosts=1]}>;\nFri Oct 23 10:24:56 2026: Started 2 Task(s) on Host(s) <2*n-62-30-25>, Allocate\n                          d 2 Slot(s) on Host(s) <2*n-62-30-25>, Execution Home\n                           </zhome/95/e/206121>, Execution CWD </zhome/95/e/206\n                          121>;\nFri Oct 23 10:26:32 2026: Exited with exit code 1. The CPU time used is 50.1 se\n                          conds.\nFri Oct 23 10:26:32 2026: Completed <exit>.\n\n RUNLIMIT                \n 45.0 min\n\n MEMLIMIT\n      4 G \n\n MEMORY USAGE:\n MAX MEM: 207 Mbytes;  AVG MEM: 163 Mbytes; MEM Efficiency: 2.53%\n\n CPU USAGE:\n CPU PEAK: 0.52 ;  CPU PEAK DURATION: 96 second(s)\n CPU AVERAGE EFFICIENCY: 26.04% ;  CPU PEAK EFFICIENCY: 26.04%\n\n PENDING TIME DETAILS:\n Eligible pending time (seconds):\t1\n Ineligible pending time (seconds):\t0\n\n SCHEDULING PARAMETERS:\n           r15s   r1m  r15m   ut      pg    io   ls    it    tmp    swp    mem\n loadSched   -     -     -     -       -     -    -     -     -      -      -  \n loadStop    -     -     -     -       -     -    -     -     -      -      -  \n\n RESOURCE REQUIREMENT DETAILS:\n Job-level: {select[shortparallel_] rusage[mem=4096.00] span[hosts=1]} || {sele\n                          ct[!shortparallel_] rusage[mem=4096.00] span[hosts=1]\n                          }\n App-level: -\n Queue-level: same[type:model] affinity[core] cu[type=enclosure:maxcus=1]\n Combined: {select[(shortparallel_) && (type == any)] order[-slots:-maxslots] r\n                          usage[mem=4096.00] span[hosts=1] cu[pref=config:maxcu\n                          s=1:type=enclosure] affinity[core(1)*1]} || {select[(\n                          !shortparallel_) && (type == any)] order[-slots:-maxs\n                          lots] rusage[mem=4096.00] span[hosts=1] cu[pref=confi\n                          g:maxcus=1:type=enclosure] affinity[core(1)*1]}\n Effective: select[((shortparallel_) && (type == any))] order[-slots:-maxslots]\n                           rusage[mem=4096.00] span[hosts=1] cu[type=enclosure:\n                          maxcus=1:pref=config] affinity[core(1)*1] \n------------------------------------------------------------------------------\n\nJob <29796462>, Job Name <mosaic-lrboost-analysis-after-cpu>, User <s234818>, P\n                          roject <default>, Service Class <sc_hpc1>, Status <EX\n                          IT>, Queue <hpc>, Command <bash -l /work3/s234818/mos\n                          aic/runs/20261022-brd4-jq1-lrboost-analysis-01/lrrese\n                          t-analysis-release-01/source/scripts/hpc/jq1_lrboost_\n                          analysis_stage.lsf /work3/s234818/mosaic/runs/2026102\n                          2-brd4-jq1-lrboost-analysis-01/lrreset-analysis-relea\n                          se-01/source /work3/s234818/mosaic/runs/20261022-brd4\n                          -jq1-lrboost-analysis-01/lrreset-analysis-01 761d6664\n                          2052fde3da2da2016736fdd91bdea477ba714787a5c393b2038f8\n                          b83 certify-cpu none /work3/s234818/mosaic/runs/20261\n                          022-brd4-jq1-lrboost-analysis-01/lrreset-analysis-01/\n                          after-cpu>, Share group charged </s234818>, Esub <dcc\n                          >\nFri Oct 23 10:24:56 2026: Submitted from host <hpclogin1>, CWD <$HOME>, Output \n                          File (overwrite) </work3/s234818/mosaic/runs/20261022\n                          -brd4-jq1-lrboost-analysis-01/lrreset-analysis-01/aft\n                          er-cpu/stdout.29796462.log>, Error File (overwrite) <\n                          /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-\n                          analysis-01/lrreset-analysis-01/after-cpu/stderr.2979\n                          6462.log>, Requested Resources <{select[serial_] rusa\n                          ge[mem=2048.00] span[hosts=1]} || {select[!serial_] r\n                          usage[mem=2048.00] span[hosts=1]}>, Dependency Condit\n                          ion <ended(29796461)>;\nFri Oct 23 10:26:33 2026: Started 1 Task(s) on Host(s) <n-62-31-23>, Allocated \n                          1 Slot(s) on Host(s) <n-62-31-23>, Execution Home </z\n                          home/95/e/206121>, Execution CWD </zhome/95/e/206121>\n                          ;\nFri Oct 23 10:26:36 2026: Exited with exit code 1. The CPU time used is 1.8 sec\n                          onds.\nFri Oct 23 10:26:36 2026: Completed <exit>.\n\n RUNLIMIT                \n 30.0 min\n\n MEMLIMIT\n      2 G \n\n MEMORY USAGE:\n MEM Efficiency: 0.00%\n\n CPU USAGE:\n CPU PEAK: 0.00 ;  CPU PEAK DURATION: 0 second(s)\n CPU AVERAGE EFFICIENCY: 0.00% ;  CPU PEAK EFFICIENCY: 0.00%\n\n PENDING TIME DETAILS:\n Eligible pending time (seconds):\t1\n Ineligible pending time (seconds):\t96\n\n SCHEDULING PARAMETERS:\n           r15s   r1m  r15m   ut      pg    io   ls    it    tmp    swp    mem\n loadSched   -     -     -     -       -     -    -     -     -      -      -  \n loadStop    -     -     -     -       -     -    -     -     -      -      -  \n\n RESOURCE REQUIREMENT DETAILS:\n Job-level: {select[serial_] rusage[mem=2048.00] span[hosts=1]} || {select[!ser\n                          ial_] rusage[mem=2048.00] span[hosts=1]}\n App-level: -\n Queue-level: same[type:model] affinity[core] cu[type=enclosure:maxcus=1]\n Combined: {select[(serial_) && (type == any)] order[-slots:-maxslots] rusage[m\n                          em=2048.00] span[hosts=1] cu[pref=config:maxcus=1:typ\n                          e=enclosure] affinity[core(1)*1]} || {select[(!serial\n                          _) && (type == any)] order[-slots:-maxslots] rusage[m\n                          em=2048.00] span[hosts=1] cu[pref=config:maxcus=1:typ\n                          e=enclosure] affinity[core(1)*1]}\n Effective: select[((serial_) && (type == any))] order[-slots:-maxslots] rusage\n                          [mem=2048.00] span[hosts=1] cu[type=enclosure:maxcus=\n                          1:pref=config] affinity[core(1)*1] \n\n",
+  "no_dispatch_marker": true,
+  "files": {
+    "jobs.json": {
+      "sha256": "2fc9e7b791b77ded08b2197fd64b4122e0f9344e8afa5cb08ef4bd3462040abc",
+      "bytes": 51
+    },
+    "source-staging.json": {
+      "sha256": "a37ef8559ba87448e7896c279ad449be732cc8262e31003b00bd8756dd467bcc",
+      "bytes": 305
+    },
+    "cpu/submission.json": {
+      "sha256": "f4a94403969779ed0a71c337c6c4aaf2010061660367a01f372de27dc1eacdc4",
+      "bytes": 1255
+    },
+    "cpu/stdout.29796461.log": {
+      "sha256": "68012c2bd737356c9f49c99110aa0faa05fee700f3b9893ec0885b4db648fe7a",
+      "bytes": 2238
+    },
+    "cpu/stderr.29796461.log": {
+      "sha256": "8ad12c2dc74753f5942dc455956afa536d7a2ba33a6fb1d9a91dc9ab0a308104",
+      "bytes": 2904
+    },
+    "cpu/payload/report-tests.xml": {
+      "sha256": "1a692ddbef4c9feb24e79bf82950a1e8a1c97683c4ffd570523b300a8c8b1d6d",
+      "bytes": 43705
+    },
+    "cpu/payload/report-tests.log": {
+      "sha256": "b491e95245be9b2dd042346569258bb5559e0c4c0654c5d75b766cb81f9a1592",
+      "bytes": 2407
+    },
+    "cpu/payload/test-invocation.json": {
+      "sha256": "3d7d160f14c3921393799749bf54825b5f454111efce7dffb7a8c99a365ea0f3",
+      "bytes": 1883
+    },
+    "after-cpu/submission.json": {
+      "sha256": "a7fc1b0d4d81baa8b54cac73216b9ce3320ac2d27c17903ca73b4fb2a0347edf",
+      "bytes": 1341
+    },
+    "after-cpu/stdout.29796462.log": {
+      "sha256": "04eec6ede38155e95c79470446f4a08fc5e276ce59ff03ec1674d1aef2d9f63c",
+      "bytes": 2244
+    },
+    "after-cpu/stderr.29796462.log": {
+      "sha256": "6db67891adfd6dd807c953020c71ccfddedc5c22a399b836b074a86a7f05ba6c",
+      "bytes": 1338
+    }
+  },
+  "scope": "Stdlib byte/XML proof only",
+  "verification_file_sha256": "39d7412019a2c0344a93e29ac1d9beaf48e0693ef1b2d20fe2b0e14048954d9f",
+  "original_big_results_downloaded": false
+}

@@ -1,0 +1,205 @@
+{
+  "utc": "2026-10-23T08:16:33.787198+00:00",
+  "scientific_source": {
+    "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-release-04/source/source_manifest.json",
+    "bytes": 76728,
+    "sha256": "c2628d08f7224f3b572ab456f4113d8a66b587a5d69f85a072877052fc09a057"
+  },
+  "launcher_source": {
+    "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-allwork3-launch-02/source/source_manifest.json",
+    "bytes": 456,
+    "sha256": "40c5055150c06e0aeb9989d33f869aecb6642c3823f6bdc9330e66f41a3bcbbe"
+  },
+  "dispatch": {
+    "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/long-dispatch-started.json",
+    "bytes": 11214,
+    "sha256": "5ed789a3ffc83821332dcb615ec7d94dc88969fe49ef1b761ec09cc5393d5441"
+  },
+  "submissions": {
+    "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/long-submissions.json",
+    "bytes": 6306,
+    "sha256": "2aa2f705d039a18ccb9adf8e2a7721e74685959aaab264b2df4cd8d348b47c59"
+  },
+  "cpu": {
+    "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/cpu-certificate.json",
+    "bytes": 3201,
+    "sha256": "6a87093f3da0d1ca0694c7152de84fdeed308251f709c685b526d978b1455e23"
+  },
+  "launcher_cpu": {
+    "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/all-work3-launch-02/cpu-certificate.json",
+    "bytes": 1130,
+    "sha256": "f71291c8a542871773f18b4cbeeaa9641683b04b554e40324e1c79073b4d72d4"
+  },
+  "arms": {
+    "protenix": {
+      "job": "29792670",
+      "rate": 0.3,
+      "config": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-release-04/source/examples/configs/brd4_jq1_25_fixed_lrreset_protenix_10000.json",
+        "bytes": 1546,
+        "sha256": "5b1739f0c9c82e97c05d1fee4fe2b26b8efdacb96d2f4152cd873d96b4464959"
+      },
+      "ready": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/assessment.json",
+        "bytes": 21266,
+        "sha256": "9674aacd7c8601f755fcad31df6efb9877dc39cd5114d9b1fe3ee867c1dc55dd"
+      },
+      "decision": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/decision-protenix.json",
+        "bytes": 912,
+        "sha256": "d15fa46fefefb66aeaae6147293d280ad3b24aa8b9a48e37846feae009793537"
+      },
+      "submission": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-protenix/submission.json",
+        "bytes": 1808,
+        "sha256": "5dc53846d086b2b6522d1d4aeb42c3461e4875f890b547b8362904793f33e58a"
+      },
+      "output_parent": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-protenix",
+      "projections": 1493521824,
+      "driver": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-protenix/payload/driver-invocation.json",
+        "bytes": 1897,
+        "sha256": "2768739f1896c0ca89872323eb5bf2dd75cb1dda444b53701e250fc44c7e47e5"
+      },
+      "entry": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-protenix/entry-quota/lrreset-storage-gate.json",
+        "bytes": 3987,
+        "sha256": "e6f331c0a5502a60c8abcbd91e36bd7bea45dd4b7ad42f46b1891bad66a7289f"
+      },
+      "summary": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-protenix/payload/study/summary.json",
+        "bytes": 298580732,
+        "sha256": "b94d4bae58b7c82b92f4cf0b6b0e9804734afff0f54ea0b162b65d825ec2661d"
+      },
+      "case": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-protenix/payload/study/case-0/report.json",
+        "bytes": 233884234,
+        "sha256": "60dfb100c34a731b5270c7973bcc7b0d9f6f14324f8b7a0567ccb0aaa95ba1ba"
+      },
+      "raw_entry": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-protenix/payload/study/native_gradient_checks/report.json",
+        "bytes": 5090,
+        "sha256": "04e641b69132069a2cfd42b7de25d30c78aa6a5a374fd30bb6282809e12c1064"
+      },
+      "coupled_entry": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-protenix/payload/study/case-0/combined_initial_checks/report.json",
+        "bytes": 2699,
+        "sha256": "3ef8a644ce2963837f6c723860ca585dc925727a9edda20a24b65c30f4d5c593"
+      },
+      "terminal": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-protenix/payload/study/terminal_gradient_checks/report.json",
+        "bytes": 5098,
+        "sha256": "bbebdde489788df172f46822a3cdd486efaadcc61c9fa2a4cc40ec4716e93440"
+      },
+      "stdout": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-protenix/stdout.29792670.log",
+        "bytes": 2201,
+        "sha256": "46f7ff9c942cf3ca9447e4d4d2630a3e604d8a6cd42504b56e8a0fcd6bb3170e"
+      },
+      "scientific_status": "passed",
+      "model": "8d6926d5390fe682e193089f790ce53aa4011a6d5509ddb452a55db3d89b0ab2",
+      "context": "b28dfad8e5ede565071c70a61695f6a38f5cb6bd591705e32979e59050ff5ce4",
+      "error": null
+    },
+    "boltz2": {
+      "job": "29792671",
+      "rate": 0.005,
+      "config": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-release-04/source/examples/configs/brd4_jq1_25_fixed_lrreset_boltz2_10000.json",
+        "bytes": 1546,
+        "sha256": "40f8038dac8485bdfcde4591d48b1162edaf6294e04406efee97a68813670d7f"
+      },
+      "ready": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-boltz2/payload/study/assessment.json",
+        "bytes": 15049,
+        "sha256": "6d9fe45458296f8e0320e4cf771f363a900ed0b002bb1fddb0d30a63171bf67a"
+      },
+      "decision": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/decision-boltz2.json",
+        "bytes": 906,
+        "sha256": "603ea09a5ef241688f2db220c25d2840a04cf1dadda42c73520dc4c53277fd5b"
+      },
+      "submission": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-boltz2/submission.json",
+        "bytes": 1798,
+        "sha256": "ddc416a8ed853307b639e9011fefadbb484d2721dfd3e3f9d054045c1eee8df0"
+      },
+      "output_parent": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-boltz2",
+      "projections": 1748021824,
+      "driver": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-boltz2/payload/driver-invocation.json",
+        "bytes": 2092,
+        "sha256": "00f0d951c87b311d76aebd7ca87391b2db17ad8176fe98257ac0b88be66708c8"
+      },
+      "entry": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-boltz2/entry-quota/lrreset-storage-gate.json",
+        "bytes": 3993,
+        "sha256": "4fdfa14d791a1966fdea7da9d1c6939fbe952387d5ee683a732ec6c721eaf3a6"
+      },
+      "summary": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-boltz2/payload/study/summary.json",
+        "bytes": 301971481,
+        "sha256": "06a68008a0dfb8b6a66668447bcda4f01c7b54427d9b68f0d84e5926db278cc1"
+      },
+      "case": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-boltz2/payload/study/case-0/report.json",
+        "bytes": 237041960,
+        "sha256": "1c2ee9ef8f62c1c0034757f4e8d000e62b90d5c912d12fa1be182ec9526f6e95"
+      },
+      "raw_entry": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-boltz2/payload/study/native_gradient_checks/report.json",
+        "bytes": 2090,
+        "sha256": "cfa919e63cac1f0a4bbdb3cd09cfce86b92a1da77b5074ea664265721de46e3f"
+      },
+      "coupled_entry": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-boltz2/payload/study/case-0/combined_initial_checks/report.json",
+        "bytes": 2719,
+        "sha256": "98c1020b11dace99570d297701704d9a5a39f8a77da24f2ef6d325f59e939962"
+      },
+      "terminal": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-boltz2/payload/study/terminal_gradient_checks/report.json",
+        "bytes": 2110,
+        "sha256": "1a95448ea1d3fe373f7a3f8ad64017ef7ffd620f52efc3086cf2262ecf4868a4"
+      },
+      "stdout": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-boltz2/stdout.29792671.log",
+        "bytes": 2199,
+        "sha256": "b40c2741e3d500f74aafa8819a597d260b7372f5372eb2642aeb6c450341f5c0"
+      },
+      "scientific_status": "failed",
+      "model": "395876da13ab6d5d175e6603db2118a82954c7c06484842fe2314dbd77a31a16",
+      "context": "fd04211da8e22eccd97ecedd96dd59cf4fb2d80aab6a397fa662af8eb92bbad4",
+      "error": "AssertionError: Native affinity E_upper finite differences failed"
+    },
+    "boltz2_chemistry": {
+      "job": "29792672",
+      "rate": 0.005,
+      "config": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-release-04/source/examples/configs/brd4_jq1_25_fixed_lrreset_boltz2_chemistry_10000.json",
+        "bytes": 1700,
+        "sha256": "02b65a4face438c4e37d15b92f7833673513cce2dbfb6feceff8aef7a2c63063"
+      },
+      "ready": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-boltz2_chemistry/payload/study/assessment.json",
+        "bytes": 36578,
+        "sha256": "785332602a1e72a3e5d59add5c0e7e338d7f42ceceb3b24ad48f14be30305457"
+      },
+      "decision": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/decision-boltz2_chemistry.json",
+        "bytes": 936,
+        "sha256": "043981f8b755c996cfea45eb6fe94754498d46fc6590a4805495f758f33c7995"
+      },
+      "submission": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-boltz2_chemistry/submission.json",
+        "bytes": 1858,
+        "sha256": "da519e68877d3ab007f4e83a78038068f8df198cc69d4b155b3503a306b2f969"
+      },
+      "output_parent": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-boltz2_chemistry",
+      "projections": 5144021824
+    }
+  },
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/lrreset-analysis-01": false,
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/lrreset-analysis-release-01": false,
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/lrreset-analysis-01.tar.gz": false,
+  "scheduler": "JOBID STAT QUEUE JOB_NAME\n29792671 EXIT gpul40s mosaic-lrreset04-work3-boltz2\n29792672 PEND gpul40s mosaic-lrreset04-work3-boltz2_chemistry\n"
+}

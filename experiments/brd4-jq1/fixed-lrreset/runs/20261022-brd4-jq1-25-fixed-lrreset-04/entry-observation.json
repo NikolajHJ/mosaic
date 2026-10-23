@@ -1,0 +1,34 @@
+{
+  "scope": "Read-only actual scheduler/entry/driver and saved-initialization byte observation; no local numerical work",
+  "captured_utc": "2026-10-22T19:31:50.070350+00:00",
+  "scheduler": {
+    "returncode": 0,
+    "stdout": "JOBID STAT QUEUE JOB_NAME\n29792389 DONE hpc mosaic-jq1-lrreset04-cpu\n29792390 DONE hpc mosaic-jq1-lrreset04-after-cpu\n29792667 DONE hpc mosaic-lrreset04-work3-cpu\n29792668 DONE hpc mosaic-lrreset04-work3-after-cpu\n29792413 DONE gpul40s mosaic-jq1-lrreset-validate-protenix\n29792414 DONE hpc mosaic-jq1-lrreset-after-ready-protenix\n29792415 DONE gpul40s mosaic-jq1-lrreset-validate-boltz2\n29792416 DONE hpc mosaic-jq1-lrreset-after-ready-boltz2\n29792417 DONE gpul40s mosaic-jq1-lrreset-validate-boltz2_chemistry\n29792418 EXIT hpc mosaic-jq1-lrreset-after-ready-boltz2_chemistry\n29792670 RUN gpul40s mosaic-lrreset04-work3-protenix\n29792671 PEND gpul40s mosaic-lrreset04-work3-boltz2\n29792672 PEND gpul40s mosaic-lrreset04-work3-boltz2_chemistry\n",
+    "stderr": ""
+  },
+  "arms": {
+    "protenix": {
+      "output_parent": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-protenix",
+      "driver_invocation_exists": true,
+      "production_initialization": {
+        "bytes": 1197,
+        "sha256": "351789aa62d3ff111a4d2050a062cf844a1f29a87a7e352af465ff4299fd1bbf"
+      },
+      "entry_gate": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-protenix/entry-quota/lrreset-storage-gate.json",
+        "status": "passed",
+        "sha256": "e6f331c0a5502a60c8abcbd91e36bd7bea45dd4b7ad42f46b1891bad66a7289f"
+      }
+    },
+    "boltz2": {
+      "output_parent": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-boltz2",
+      "driver_invocation_exists": false
+    },
+    "boltz2_chemistry": {
+      "output_parent": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-boltz2_chemistry",
+      "driver_invocation_exists": false
+    }
+  },
+  "all_three_scientific_starts_verified": false,
+  "saved_results_changed": false
+}

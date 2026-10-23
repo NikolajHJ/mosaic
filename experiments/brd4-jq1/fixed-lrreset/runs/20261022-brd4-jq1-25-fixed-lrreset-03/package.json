@@ -1,0 +1,14 @@
+{
+  "tag": "20261022-brd4-jq1-25-fixed-lrreset-03",
+  "source_files": 622,
+  "manifest_sha256": "ff82857ecd4a985d0ba6cc16a87f1bf7b7bb2c7ffdbde18a183bbd63670ff567",
+  "archive_bytes": 39601344,
+  "archive_sha256": "31809b975f0387db4ad15b6530c443afc1220fd501b6b8ac62e147bbcf739b01",
+  "parent_manifest_sha256": "832f833dd486c2ff305f7e3eb33fc775c87810a2e12a8bc597c5df744699c5d3",
+  "changed_files": [
+    "scripts/fixed25_lrreset_ops.py",
+    "scripts/fixed25_lrreset_storage.py",
+    "tests/test_fixed25_lrreset_storage.py"
+  ],
+  "local_scope": "Byte/AST/JSON packaging only; no numerical tests or model execution"
+}

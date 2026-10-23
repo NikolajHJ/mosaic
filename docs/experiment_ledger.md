@@ -6238,3 +6238,178 @@ Disposable smoke02 authenticated all 1,962 members, including 155 legacy aliases
 The user explicitly requested pushing the organization/documentation work. Fast-forwarded origin/main to 82abf8aa0132a2fc56549667704920735032f2f4, preserving its independent JQ1 multistart additions. Staged the experiment homes, nested script/test layout, policy, guides, audits and additive logbook history. The original project PDF is a byte-identical move into docs/. Only the OneNote reading guide is included; 198 pre-existing local notebook note/attachment files are excluded from publication. No ignored run artifacts, caches or disposable releases are included.
 
 Pre-publication validation caught Git checkout line-ending conversion of declarative copies/shared launchers. Added targeted .gitattributes rules preserving the current authenticated bytes and LF shell sources, without rewriting working source/config bytes. The second fresh staged checkout passed the full layout checker (166 canonical ASTs, 281 mappings, 82 test discovery paths, 41 byte-identical declarative pairs and 147 Bash syntax checks). Its synthetic pytest explicit-alias/default invocations each passed two stdlib-only tests. All 565 checked execution/config/PDF index bytes match the working copies; no notebook export payload is staged. The original failed staged check is retained alongside the successful check under ignored results/static/20261022-publish-layout/. Scientific/numerical validation remains pending allocated HPC; no HPC job action occurred. This entry records preparation and checks, not a push outcome.
+
+
+## 2026-10-22T17:03:45+00:00 — lower-rate entry admission failed; separate diagnostic outcomes delivered
+
+Actor: Codex Mosaic status/evidence task. User scope: current news on the authorized lower-rate restart and separate endpoint diagnostics. Read-only SSH query plus a fresh in-memory metadata/archive transfer; local standard-library byte/path/hash/JSON checks only. No model/numerical execution, new job, cancellation, retry, cleanup, source/gate change or saved-study mutation.
+
+Original source622 native jobs29783703/29783707/29783710 actually started19:01:22/19:01:52/19:02:23Paris and exited1 at19:01:37/19:02:06/19:02:37, before model/gradient invocation. Entry work3 gates report available10191922566/10191904301/10191886069 versus required10200529817/10200522040/10200514283bytes; shortfalls8607251/8617739/8628214bytes. More than19.6million finite user-quota files remain; physical inode tuple allzero is unreported, not independent proof. Failed gates/decisions/own-job LSF hashes authenticated and preserved. CPU723 remains passed; no native readiness pass or long-submissions file. [Exact run outcome](../experiments/brd4-jq1/fixed-lrreset/runs/20261022-brd4-jq1-25-fixed-lrreset-02/status-20261022-1903.md).
+
+Separate original Boltz diagnostic29780823 completed16:50:23Paris, capture29780824 completed16:50:48 with assessmentpassed/scientific_passedfalse. All423 files in599008-byte archive SHA271246fe15f82e6d71f5c7ca01e96959561a43a7c3cf7ce4c8679700a2feb2b5 and411 capture proof byte identities passed local audit; two original summary/terminal-report proofs remain explicit HPC references. The capture archive contains its own intermediate RUN snapshot; later original same-job LSF proves successful completion separately. The terminal original-scale bond discrepancy is reproduced, with closer agreement on the diagnostic-only finer ladder and zero reported repeat spread; no unique cause or retroactive scientific pass. Protenix diagnostic29780821 and capture29780822 failed the exact saved-logit probability identity control atstep0; frozen before/after match, terminal diagnosis remains incomplete. Final presentation29780830 remains PEND with invalid/never-satisfied dependency. [Diagnostic outcome](../experiments/brd4-jq1/fixed-lrboost/runs/20261022-brd4-jq1-lrboost-analysis-01/status-20261022-1903.md).
+
+Combined75-file evidence delivery705571bytes SHAcb5b63ec3c3db90a68fc5d21e34749660dd4ff752e991e550b076ff78357d307 safely extracted/every member verified under results/hpc/20261022-brd4-jq1-25-fixed-lrreset-02/news-20261022-1903/. Original scientific outcomes remain failed/failed/passed, existing edition0002/failed browser QA unchanged. No large original summary download is claimed. New tooling or resource recovery requires a separately recorded immutable attempt and applicable checks; no failed source is restarted or relabeled.
+
+
+## 2026-10-22T17:16:17.379453+00:00 — authorized storage recovery, unchanged lower-rate retry and separate Protenix diagnostic correction prepared
+
+User explicitly requested enough storage and a fresh resubmission of all three lower-rate arms with unchanged settings, plus a Protenix diagnostic fix without saved-result changes. New attempts are fixed-lrreset-03 and lrboost-analysis-02 in their canonical experiment run folders. Full original scientific sources/configuration/library bytes remain pinned. Preparation is local standard-library byte/AST/JSON/packaging only; no new job/pass yet. Cleanup plan uses only exact duplicated completed report frames/curves and two archives, with all local archive members verified before any remote removal. Original native studies/proofs/releases, home/models/caches/envs and other projects are excluded. New allocated CPU/native and fresh full quota gates remain mandatory; old failed jobs/source/gates remain failed.
+
+
+## 2026-10-22T17:36:06+00:00 — verified storage recovery, unchanged lower-rate retry and separate Protenix correction queued
+
+User scope: free sufficient storage, resubmit all3unchanged lower-rate runs and fix separate Prodiagnostic without modifying saved results. Completed exact verified-backup cleanup1212files/852317966logicalbytes, planbfe10342b9d8378f7c5842ca3a2eb87806a46cdb08501d9e0813f81776ca7e9f, journalc1e82fc70a1a80d71c0d8bc8ed0ac380f5a962a033c7c6c21763434fbd3ed756. All636/647members of existing local interim archives reverified first. Retired only duplicated report frame/curve files and2archives; all original native studies/proofs/configs/releases/home/models/caches/envs/other projects untouched. Initial systemPython3.9 helper failed before deletion; same bytes/plan succeeded with declaredPython3.12, both receipts retained.
+
+[Lower-rate retry03](../experiments/brd4-jq1/fixed-lrreset/runs/20261022-brd4-jq1-25-fixed-lrreset-03/README.md): source622 manifestff82857ecd4a985d0ba6cc16a87f1bf7b7bb2c7ffdbde18a183bbd63670ff567, archive39601344bytes SHA31809b975f0387db4ad15b6530c443afc1220fd501b6b8ac62e147bbcf739b01. All145scientificlibraryfiles/config/driver/contract bytes unchanged from parent622; launcher/storage root identity and additional diagnostic stale accounting only, plus path fixtures. ActualCPU29792104/afterCPU29792105 DONE/LSF, raw392+239+34+59=724passes/noerrorsfailsskip/3unchangedlegacydeselections. CPUcert864f7b92d2118c28ef7c5064a96812e5b25217e4c232c6791f2e08ebaca151ed. Actual native/callbacks Pro29792127/28, Bol29792129/30, chemistry29792131/32 PEND19:36Paris. No native readiness pass or10000-update long ID yet; all original scientific and whole storage gates remain.
+
+[Prodiagnostic correction](../experiments/brd4-jq1/fixed-lrboost/runs/20261022-brd4-jq1-lrboost-analysis-02/README.md): source16manifest6d547929ce3227302729b022628cc26612d9829e72c0a70861870023463dac3a/archive78295bytes SHA799869cbce1ea09b6862c30b3d3c39a258872d0948de7981cbf93790f418ab13. CPU29792111 DONE282passes; callback29792112 EXIT on separate resource gate before any GPU, preserved. Raw probability probes stay exact; original saved-logit coordinate point is explicitly separate if FP32 replay differs, with measured equality/differences and separate baseline. No original scientific gate is waived. CPUcert5d31b9a130f5a904c5da4b0f2e8707c610ff49654acddf1b89b8945aa05cba6d.
+
+Separate three-file resource launcher99292b7eed1662f5975a704aa4adfca5a93c1754ff3717c3d75f24473f8ef219/archive5285bytes SHAf71d8d2cb75a4b2580dc3771bd2b80962a68b032e6eeb2b9b2c6cb61f9456f43 adopts actualCPU724-tested current combined gate instead of independently reserving old completed predecessor output. All completed predecessors/source/CPU282/724 reauthenticated; full current lower validation/actual-long projections, original2GiB report/512MiB diagnostic allowances,4GiB/100000files remain, with launcher bytes additionally charged. Actual launcherCPU29792154/callback29792155 DONE12pass, cert9facf84cdfc9436bc86ab1155ae9a7c2ad19fda143a6d8b62a1ad8c6209e1e07. Preflight required10200529759/available12027869322bytes. Actual Prodiagnostic29792158/capture29792159 PEND19:36Paris. No repeated Boltzdiagnostic or original scientific run submitted by launcher.
+
+Fresh93-file evidence251284bytes SHAb5d7a6b6b4f228d8e560184f7d7a9b8f8a810151890cdcbdeb9e0064427f46a4 safelyextracted/everymemberhashed. Independent localstdlib XML/source/proof/scheduler/LSF/resource/cleanup journal audit passed; no local numerical/model execution. Saved original higher-rate results stayfailed/failed/passed; existing immutable viewers/failedQA unchanged, no new report publication or diagnostic-native pass claimed.
+
+
+## 2026-10-22T18:10:41.512579+00:00 — lower-rate Boltz readiness passed; Pro initialization identity blocked dispatch
+
+User scope: news on gradient checks, all3lower-rate starts and separate Prodiagnostic. One compact live scheduler/artifact query followed by targeted new-failure metadata/proof retrieval; no scientific execution, job action, cleanup, setting or sealed-source change. Original saved studies remain unchanged.
+
+Actual Boltz29792129 DONE19:57:13Paris and chemistry29792131 DONE20:01:19, same-job LSFsuccess/passed summaries/readiness. Source622/config/CPU724 pins matched; normal52 and chemistry128 raw-proof hashes matched. Original rawFD/parity/frozen/runtime/tenpilots and chemistry low0.001/high100 coupled checks/bothpilots passed. Pro29792127 EXIT1 at19:49:04 before raw gradients: exact initialization-array identity against original baseline failed150/150 atom probabilities, reported max absolute difference5.9604645e-08. Hardparity had passed but no native_gradient_checks result was produced. This is not established AD/FD disagreement; no tolerance or waiver. Scheduler GPU power annotations are preserved without claiming causation.
+
+Pro callback29792128EXIT; normal callback29792130DONE. Chemistry callback29792132 recorded its own passed readiness then EXIT because the global dispatcher rejected Pro's failed decision. Both passed Boltz decisions remain passed. No long-submissions.json or long-dispatch-started marker exists: zero fresh10000-update long jobs submitted/started. Corrected separate Prodiagnostic29792158 and capture29792159 remainPEND, no findings. Existing automation remains paused.
+
+Fresh108-file local metadata/log delivery byteverified;188 declared proof hashes rehashed on HPC matched. Native NPZbytes remain explicit remote references, no local scientific calculations. Independent stdlib audit passed SHAca00e03022542b2e1e90f83832dc2c646a567252190517850c117042cc4f8fe1; initial local member-prefix lookup failure preserved in tool output before unique authenticated lookup correction. [Dated record](../experiments/brd4-jq1/fixed-lrreset/runs/20261022-brd4-jq1-25-fixed-lrreset-03/status-20261022-2010.md). No new report publication or unrelated PDF/OneNote changes.
+
+
+## 2026-10-22T18:20:41.105371+00:00 — exact Protenix initialization recovery authorized and prepared
+
+User requested an initialization fix and all3unchanged lower-rate runs started without changing saved results. New attempt04 first performs a bounded separate allocated CPU/GPU replay probe of the exact original initialization, preserving bitwise checks and parent03failed/pass outcomes. No tolerance, model/loss/rate/policy change or local numerical execution. Full allocated CPU/newnative/fullstorage gates precede any future longdispatch. Preparation only; exact packages/jobs/results remain to be recorded in the new run README/campaign.
+
+
+## 2026-10-22T18:36:35.557629+00:00 — exact initialization correction sealed, allocatedCPU728 passed; separate Prodiagnostic verified
+
+User authorization: fix Pro initialization and get all3lower-rate runs started, identical rates/settings/checks, saved results unchanged. Isolated probe CPU29792346/GPU29792347 actualDONE/LSFsuccess authenticated original baselineNPZ351789aa62d3ff111a4d2050a062cf844a1f29a87a7e352af465ff4299fd1bbf. Logits/key exact on bothbackends; stockCPU atomsoftmax reproduces originalX, stockGPU bondsoftmax originalE. Neither entire backend alone reproduces bothfields. This is FP32 replay dependence, not a changedseed or proven unique historical compiler cause.
+
+New Pro-only parameterization uses unchanged FP32jax.nn.softmax for CPU atoms and scorer-device bonds, then copies atom probabilities unchanged to GPU. Same placement applies every state/trial, no special cachedinitialpoint/tolerance/projection/clipping/newtemperature/loss. One shared proposal-constructor line preserves the current input class through updates. Other144srcfiles/allconfigs/contract/baseGraphLogits byte-identical parent03; original exactfivearraybaseline equality and every native/FD/parity/null/primal/finite/frozen/coupled/pilot/runtime/quota gate retained. Full freshCPU and all3native checks repeat.
+
+Source625active localpackage source02 manifestc2628d08f7224f3b572ab456f4113d8a66b587a5d69f85a072877052fc09a057, archive39604161B SHA4d6d297451d9820543abc3298622e6599014c4b96bc999e104dd732825f56e4e staged read-only. Localdraftsource01 was unexecuted, preserved before launcher-upload stale-accounting path/document correction. New CPU29792389 actualDONE with396+239+34+59=728actualcases/noerrorsfailsskips/3unchangedlegacydeselections; cert6a87093f3da0d1ca0694c7152de84fdeed308251f709c685b526d978b1455e23. Owncallback29792390 dispatch inprogress; no newnativepass/longID established at18:35:31UTC.
+
+Separate corrected Prodiagnostic29792158/capture29792159 actualDONE/samejobLSFsuccess. Independent416filebyte/schema/LSF/proofchain audit passed SHAf660e02ffe67051c5f8adc3c79887791cbdf6d62277e1d83ec64d0bcc6f4a9f7;385declared references rehashed remotely. Five original snapshot/summary/terminalreport files remain explicitHPC references. Raw endpointreport2045d6e8537ff86c176e6619725d206b32029058df351ce639cc88f90da9c1db copiedverbatim. Frozenmodel/context unchanged atsteps0/9900/10000; original terminalXrow3 source1to4 has symmetricmargin0.0001437509199604392, declared0.01/.003/.001 perturbations infeasible. Diagnostic-only.0001/.00003 agree withAD atterminal; finer/coordinate controls are not uniformpass certificates. Originalfailed study remainsfailed/cannotrestart; no scientificgatewaiver. New original saved results untouched. No cleanup or automation schedule change thisturn.
+
+
+## 2026-10-22T18:38:38.220149+00:00 — initialization recovery fullCPU independently verified; all3newnative checks queued
+
+CPU29792389/afterCPU29792390 actualDONE/LSF,728actualcases396+239+34+59/noerrorsfailsskip/3unchangedlegacydeselections. RawJUnit inherited3subtest header surplus is not extra cases. Independent36file/source625/config/XML/proof/scheduler/LSF/resource audit passed; sourcec2628d08f7224f3b572ab456f4113d8a66b587a5d69f85a072877052fc09a057 andCPUcert6a87093f3da0d1ca0694c7152de84fdeed308251f709c685b526d978b1455e23 authenticated. All3actualnewnative/owncallbackjobsPro29792413/14,Bol29792415/16,chem29792417/18 PEND physicalGPU/hostslots. No newnativepass/longsubmission. All settings/checks/savedresults unchanged; exact-init placement and proposal-type preservation are documented engineering changes, with fullrequiredallocatedchecks repeated. Currentuserautomation remains paused; no cleanup thisturn.
+
+
+## 2026-10-22T18:58:10.627079+00:00 — exact Protenix initialization and full native readiness passed
+
+Protenix validation29792413 and owncallback29792414 actualDONE/samejobLSFsuccess. Fresh initialization NPZ is1197bytes and exactly the originalSHA351789aa62d3ff111a4d2050a062cf844a1f29a87a7e352af465ff4299fd1bbf; all5arrays/key exact, original strict assertion retained. Native/rawFD/null/independentprimal/hardparity/frozen/tenupdatepilot/runtime passed atLR0.3. Empiricalpilotmean2.1728954s/update, conservative34393.4310s (estimateonly) fits82800s. Original fullstorageprojection formula yields1493521824bytes. Pro-only sameFP32softmaxplacement applies eachstate/trial, GPUscoringunchanged.
+
+Independent142filebyte/source625/XML/LSF/proof audit passed,74nativeProproofs plus CPU728chain; no local numerical arraysloaded. NormalBol29792415/owncallback16 readinesspassed; chemistry29792417 RUN/rawgradient andearly10pilotpassed, owncallback18PEND. No long IDs or fullfinalstoragegate established yet; no duplicatejobs/cancellation/cleanup/scientificsettingchange.
+
+
+## 2026-10-22T19:09:36+00:00 - fullhomeinventory timedout beforelongsubmission; all-work3 recovery prepared
+
+All3source625native validations29792413/15/17 passed. Callback29792418 EXIT only because GNUfind fullrecenthomeinventory exceeded600s; no long-dispatch marker/long IDs exist. Preserve failedgate/LSF unchanged. New launcher-only all-work3 placement budgets all3unchanged scientific625remainingprojections + original2GiBreport/512MiBdiagnostic +4GiB/100000files on the actual outputfilesystem. No home output/write or old data move/delete. Original science625/CPU728/all3readiness/source/config/context/model/pocket/frozen/runtime gates adopted exactly; new launcher requires allocatedCPUcontracts and actualfullwork3/entry admission before3independentlongjobs. Preparation only, no newlaunch/pass yet.
+
+
+### 2026-10-22 21:21 Paris — exact initialization/native passes and all-work3 launcher gate
+
+All three source625 validations29792413/15/17 passed independently (74/52/128proofs). Pro initialization whole NPZ equals original1197bytes/SHA351789aa62d3ff111a4d2050a062cf844a1f29a87a7e352af465ff4299fd1bbf. Native evidence338files/276remote proof hashes passed stdlib audit. Original callback29792418 EXIT1 solely on mandatory home inventory600s timeout before ANYlongmarker/output/submission; original failed gate and LSF preserved. New immutable launcher-only all-work3 adoption01 authenticated4files, manifest99fcd95e150a671adb30a1cb910079474452319ddd67a36b042dc6a8e94940fa; CPU29792659/own-ended callback29792660 actually submitted. Full20metadata fixtures ran with no errors/fails/skips in rawXML, but final CPU/LSF/certificate/fullcampaign gate/longIDs not established in this observation. Each new output assigned work3 with original all3remaining projections+2GiBreport/512MiBdiag+4GiB/100000files; same source625/config/nativepins, no new home output or altered scientific setting. No further cleanup or saved-result mutation. Static layout03 passed166AST/82tests/155aliases; local work remains stdlib-only.
+
+
+### 2026-10-22 21:25 Paris — full storage passed and three actual lower-rate long submissions
+
+All-work3 launcher01 CPU29792659 passed20 cases, but callback29792660 failed its first
+scheduler-proof check before any long submission. Preserve failure/source. The first
+raw response was not saved; later allocated readonly probe29792663 actualDONE captured
+same CPU actualDONE/hpc. Exact transient cause unproven. New immutable launcher02
+records every raw observation and bounds RUN/PEND waiting without accepting EXIT,
+unknown/malformed/wrong-job/queue; required actualDONE/hpc/LSF/full26cases passed on
+CPU29792667, callback29792668 actualDONE. Scientific625 and all new native passes
+unchanged. Own source4 manifest40c5055150c06e0aeb9989d33f869aecb6642c3823f6bdc9330e66f41a3bcbbe.
+
+Full all3 work3 dispatch quota PASSED required15364887328 vs25726653739 available,
+including full native projections+2GiBreport/512MiBdiagnostic+4GiBreserve/100000files.
+File headroom19622802 from finite userquota; allzero physical inodes honestly
+unreported. Original600s failed home gate remains failed. Three actual independent
+longs submitted: Pro29792670, Bol29792671, chemistry29792672, allPEND at21:25Paris.
+All outputs ROOT04/run-ARM onwork3, no new home output; no saved result moved/edited,
+no new cleanup. Same rates0.3/0.005/0.005, chemistry0.001->100, exact unchanged
+science625/config/CPU728/all3 native proofs. Entry gates/first updates still pending.
+
+
+Independent all-work3 submission delivery passed415 files/303 remote proof hashes,
+source625+4launcher members/raw728+26caseXML/all3newnativeproofs/fullquota/actual
+Pro29792670,Bol29792671,chem29792672 vectors. Tracked
+experiments/brd4-jq1/fixed-lrreset/runs/20261022-brd4-jq1-25-fixed-lrreset-04/launcher-submission-verification.json
+explicitly records scientific_start_verified=false. At21:27Paris current3jobs PEND
+on hostslot/physicalGPU capacity; no entry/optimization started yet. Automatic LSF
+execution needs no new submit. Preserve exclusive markers; never duplicate.
+Existing heartbeat automation stays paused; no schedule changed. No scientific
+completion or terminal pass follows from successful submission/presentation.
+
+
+### 2026-10-22 21:31:50 Paris — Protenix actual entry and exact production initialization
+
+Pro29792670 actualRUN/gpul40s, own full all3remaining-projection entry storage gate
+passed (SHAe6f331c0a5502a60c8abcbd91e36bd7bea45dd4b7ad42f46b1891bad66a7289f),
+validated source625driver invoked. NEW production initialization1197bytes SHA
+351789aa62d3ff111a4d2050a062cf844a1f29a87a7e352af465ff4299fd1bbf equals original.
+No committed optimizer update yet; native startup/checks continue. Bol29792671 and
+chem29792672 stillPEND on GPUcapacity, not failures and no duplicate/resubmit.
+Additional independent raw scheduler audit verified all3actual command/source/queue/
+4CPU/8GiBslot/23h/oneexclusiveGPU and completed launcher callbackLSF/DONE;
+launcher-resource-verification.json and entry-observation.json record scope.
+No scientific completion/all3start claim; existing heartbeat remainspaused.
+Allsavedresultbytes/source625/settings/checks preserved. Code/first submissions
+and independent full evidence were pushed2327e73 before this later observation.
+
+
+### 2026-10-23 10:10 Paris — lower-rate terminal progress and preserved Boltz failure
+
+Protenix29792670 completed all10000updates/10001contiguousstates. Original summary,
+case and final raw atom/bond derivatives passed; frozen identities unchanged and
+exact original initialization retained. Same-job LSF success ended22October23:36:53
+Paris. Its live scheduler record aged out; use SUCCESS_PERSISTED original proof,
+not a fabricated live DONE. Summary298580732bytes SHA
+b94d4bae58b7c82b92f4cf0b6b0e9804734afff0f54ea0b162b65d825ec2661d.
+
+NormalBol29792671 started23October03:15:59 and ended09:32:59Paris actualEXIT1.
+All10000updates/10001states and optimizer casepassed, but original overallsummary
+failed mandatory terminal E_upper FD. X passed; E row239 0->1 AD4.448079109,
+FD -7.524552941/-6.906365355/3.221578896 at.01/.003/.001, all original flagsfalse.
+No cause or diagnostic fix is inferred. Model/context frozen digests unchanged.
+Original failed summary301971481bytes SHA
+06a68008a0dfb8b6a66668447bcda4f01c7b54427d9b68f0d84e5926db278cc1;
+terminalreportSHA1a95448ea1d3fe373f7a3f8ad64017ef7ffd620f52efc3086cf2262ecf4868a4.
+
+Chemistry29792672 remainsPEND, jobslotlimit6hosts; no driver/study/update yet.
+No resubmission, setting change, stop, diagnostics or cleanup occurred in this
+read-only status turn. Saved results remain unchanged. Same-job complete LSF
+bytes rehashed locally and remote original summaries/terminal metadata hashed;
+large original summaries/all NPZframes were not downloaded or recertified by a
+new allocated completion collector. See terminal-status-20261023.json. Existing
+heartbeat remains paused.
+
+
+### 2026-10-23 — separate lower-rate Boltz endpoint analysis and saved-only report prepared
+
+User authorized separate diagnostics of failed original29792671, without saved-run changes/restart, plus completed Pro29792670/Bol29792671 report. New run20261023-brd4-jq1-lrreset-analysis-01 owns source17 and independent output root. Local source01 was an unexecuted draft; active local source02 removes inherited Pro-only dispatch and adapts the CPU scope fixture to the new declared one-Boltz-diagnostic/three-collector/two-interim/final plan. Source manifest761d66642052fde3da2da2016736fdd91bdea477ba714787a5c393b2038f8b83, archive80297bytes SHA4c809367734cf6e529d1ae59e0b30cac603d9eae147914b518d992fb8818dc53. Exact source625/CPU728/all3native/launcher40 CPU26/adoption/inputpins remain independently authenticated. Full all3remaining work3 projections+2GiBreport/512MiBdiagnostics+4GiB/100000file reserves required before each phase. No oldviewer/source/result mutation, no optimizer/training/diffusion/repair or original job action. Diagnostic uses original saved0/9900/10000, original rawscales plus diagnostic-only finer controls and unchanged frozen identities; cannot certify original failedgate. New viewer includes numeric-focus pause, old editions/servers preserved. Local AST/JSON/byte preparation only; allocated CPU/models/scientific frame validation/rendering still pending.
+
+
+### 2026-10-23 10:30 Paris — analysis01 fixture failure preserved; new immutable analysis02 prepared
+
+Analysis01 CPU29796461 EXIT1 with282passes/one inherited synthetic schedule assertion failure/zeroerrorsskip; callback29796462 EXIT correctly blocked dispatch. Production expected_weight correctly ends100; old fixture still asserted50 at terminal. Eleven raw CPU/callback/submission/log/XML files downloaded and independently byte/XML verified, no analysis-dispatch marker. Sealed source17 remains unchanged. New analysis02 source17 manifest955872e4621b1e5a3d23a69a989aadcf16c8d0e2793e6db464782f58be15fa37/archive80420bytes SHA013b3003443b2b2b4da543caa82dafef0032b31ef0e4cfb204938172d432abeb changes only two fixture expectations/name and separate own analysis root identities. Full283allocated fixtures required again, no scientific setting/gate/run changes. Prepared only; original P/B saved results unchanged and chemistry29792672 retained.
+
+
+### 2026-10-23 10:36 Paris — analysis02 all283passed but XML attribution rejected; immutable retry03
+
+CPU29796495 actualDONE/samejobLSF/full283passes with zero failures/errors/skips. Callback29796496 EXIT before any dispatch:35 raw JUnit rows have emptyclass names because external legacy testpaths lie outside pytest rootdir;18diagrows are correctly attributed. Saved full raw XML/logs/LSF/submissions/source; no XML rewriting or gate waiver. New analysis03 changes pytest rootdir to exact common ancestor of the two pinned sources and adds one allocated collection-root coverage regression. New17file manifest8e3045ddfd44a701127deb7af7a163536dfbf699123ba883f98207d6d57b95d5/archive80735bytes SHA62915ff15d9a493eadd08ab27a64ae64aed0a6e331f7481c0ce1d105bd7aa751. Full284allocated cases in8modules required before any newdiagnostic/report dispatch. Original source625/scientific runs/config/readiness/inputs/resultbytes remain unchanged; no cleanup. Newretry03 preparation only.
+
+
+### 2026-10-23 10:39 Paris — new separate analysis full284passed and actual diagnostic/report jobs
+
+Analysis03 CPU29796532 and callback29796533 actualDONE/hpc/samejobLSFsuccess. Full284actualcases82contract+54render+60publish+35ops+18diagnostic+26Bolreport+3chemreport+6ramp, zeroerrors/failures/skips/deselections. Exact rawmoduleattribution nowpresent. CPUcertc1cfb3730419a48e82c45b45981a874275dbdec31a13fdffbf865139b9416cf3; independent40-file byte/XML/JSON/submission/source/reserve audit passed. One local auditor assertion incorrectly counted both raw scheduler observations instead of certificate-bound final observation; failedauditorrecord retained, all rawproofbytes reverified after metadata-only correction, no scientific gate waiver. Original625/CPU728/native/allwork3launcher26/settings/results unchanged.
+
+Fresh fullcapacity passed with full3remaining native projections+2GiBreport/512MiBdiagnostics+4GiB/100000files. Actual separate Boltzdiagnostic29796551/capture29796552 PEND, P/Bsaved10001framecollectors29796553/54RUN, chemcollector29796555 waitsoriginal29792672. Interim29796556 dependsP/Bcollectorpasses; diagnosticinterim29796557 follows first+Bolcapture; final29796558 dependsallcollectors+capture+secondinterim. Original chemistry29792672 remainsPEND unchanged. No diagnosticfinding/renderpass/publication yet. No savedrun restart/mutation/cleanup or automationunpause.
