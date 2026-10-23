@@ -119,7 +119,8 @@ def attached_confidence(module, inputs, s, z, features, coordinates, distogram, 
         z = z + module.rel_pos(features)
         z = z + module.token_bonds(features["token_bonds"].float())
         if module.bond_type_feature:
-            z = z + bonds @ module.token_bonds_type.weight
+            from .embedding_injection import bond_type_embedding
+            z = z + bond_type_embedding(module, bonds)
         z = z + module.contact_conditioning(features)
     z = z + module.s_to_z(inputs)[:, :, None, :] + module.s_to_z_transpose(inputs)[:, None, :, :]
     if module.add_s_to_z_prod:
@@ -217,7 +218,9 @@ class FrozenBoltzDBMol(nn.Module):
                                          features, coordinates, distogram, bonds)
         scores = strict_confidence_scores(confidence, features, coordinates)
         result = self._reduce(affinity, scores, distogram, features, pair=z)
-        if torch.is_grad_enabled() and (features["ref_element"].requires_grad or bonds.requires_grad):
+        from .embedding_injection import any_injected_requires_grad
+        if torch.is_grad_enabled() and (features["ref_element"].requires_grad or bonds.requires_grad
+                                        or any_injected_requires_grad()):
             for key in ("affinity_pred_value", "affinity_logits_binary", "dbmol_contact_loss", *CONFIDENCE_WEIGHTS):
                 if not result[key].requires_grad:
                     raise ValueError(f"Detached DBMol term: {key}")

@@ -100,6 +100,12 @@ class GraphAutoencoder(nn.Module):
     def decode(self, z) -> DecoderOutput:
         return self.decoder(z)
 
+    def decode_with_features(self, z):
+        """Expose refined decoder states without changing its molecular heads."""
+        if not isinstance(self.decoder, RefinedGraphDecoder):
+            raise ValueError("Hidden-state bridges require a refined decoder")
+        return self.decoder.decode_with_features(z)
+
     def forward(self, graph: RelaxedGraph, sample_latent: bool = False) -> AEOutput:
         mu, logvar = self.encode(graph)
         z = mu + torch.randn_like(mu) * (0.5 * logvar).exp() if sample_latent else mu

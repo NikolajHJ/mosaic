@@ -188,7 +188,8 @@ def attached_trunk(model, features, bond_probabilities, recycling_steps):
     z_init = m.z_init_1(inputs)[:, :, None] + m.z_init_2(inputs)[:, None, :]
     z_init = z_init + m.rel_pos(features) + m.token_bonds(features["token_bonds"].float())
     if m.bond_type_feature:
-        z_init = z_init + bond_probabilities @ m.token_bonds_type.weight
+        from .embedding_injection import bond_type_embedding
+        z_init = z_init + bond_type_embedding(m, bond_probabilities)
     z_init = z_init + m.contact_conditioning(features)
     s, z = torch.zeros_like(s_init), torch.zeros_like(z_init)
     mask = features["token_pad_mask"].float()

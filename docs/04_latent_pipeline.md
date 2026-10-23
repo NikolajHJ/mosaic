@@ -2,6 +2,22 @@
 
 Status: active implementation plan; first draft 2026-09-26.
 
+**Separate frozen epoch-36 embedding prototype, 23 October 2026:** the user
+authorized a supervised decoder-hidden-to-native-Boltz bridge on
+`codex/epoch36-boltz-embedding-bridge` (baseline `e2f5a2c`), leaving the existing
+VAE continuation unchanged. Corrected attempt002 staged **569 authenticated
+members**; **CPU 29796619 DONE at 10:47:38 DTU-local**, **139 test passes**,
+zero failures/errors/skips, actual original-36 loading/bitwise decoder parity.
+**Native GPU 29796624 PEND**, submitted 10:47:59, one exclusive 80GB
+A100/four slots/four-hour allocation with 3h50 internal cap. Two CPU slots are
+reserved on n-62-18-8; its provisional no-sooner-than **24 October 02:32:54
+DTU-local** forecast is not guaranteed. No CUDA/native pass, paired-data outcome,
+trained bridge or optimization exists yet. Attempt001's **128-test CPU pass**
+is preserved; its launch-time manifest/archive authentication gap prevented
+GPU promotion and was corrected under the new seal. VAE/source136 and
+independent Protenix work remain unchanged.
+[Exact seals, terminal CPU evidence and actual GPU receipt](76_epoch36_boltz_embedding_bridge.md#attempt002-cpu-passed-native-gpu-submitted).
+
 **Separate Protenix attempt007 reached derivatives and failed, 23 October 2026:**
 CPU **29796458** passed **128 fixtures**, strict load, three preparations and
 actual-input CPU preflight. GPU **29796475 EXIT / exit 1**, **10:26:07–10:26:48

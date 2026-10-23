@@ -8,6 +8,19 @@ This file is the human-readable history for the active
 executed, observed, failed, and decided. It must not turn a planned experiment
 into a completed result or omit unsuccessful attempts.
 
+## Protenix attempt007 status unchanged, 23 October 2026 10:48 DTU-local
+
+The [read-only third collection](../outputs/hpc-submissions/source135-protenix-occupancy-native-attempt007-collect-003.json)
+at **10:48:40–10:48:59 DTU-local** returned zero. CPU readiness remains passed
+(128 fixtures); GPU 29796475 remains terminal failed at the first C direct-q
+derivative, after output comparisons passed under loss/TV policy. Only one of
+three FD scales agreed; no Z or actual NO_ATOM-logit derivative result exists.
+The native result is unchanged, SHA256
+`07db7b65d385a1a3cbb42fdc4cdcf065892560ae02007fa6040df0bbd9165d0c`.
+No Protenix job appears in the fresh active scheduler listing, and no replacement
+submission or new result exists. This check changed no code, setting or job;
+all failures and unrelated work remain preserved.
+
 ## Separate Protenix attempt007 output policy passed; derivative gate failed, 23 October 2026
 
 The [second collection](../outputs/hpc-submissions/source135-protenix-occupancy-native-attempt007-collect-002.json)
@@ -22494,3 +22507,99 @@ Source070 29622699 remained RUN; source071 29623874 PEND waits for its end;
 source069 29621180 remained PEND. The search pilot has an eight-hour allocation;
 4-8 hours after it starts is a rough estimate, with queue/dependency uncertainty.
 
+## Frozen original-36 embedding bridge implemented; attempt001 CPU RUN, 23 October 2026
+
+The user explicitly authorized implementing and training the prototype on a new
+branch while keeping the existing VAE continuation unchanged. Branch
+`codex/epoch36-boltz-embedding-bridge` starts from `e2f5a2c`. The separate
+prototype fits small shared atom/charge/symmetric-pair heads to exact native
+early chemical features, with original epoch-36 VAE and pretrained Boltz weights
+frozen. The authentic VAE checkpoint SHA256 remains
+`3179ef01f84a2c714ee031bc3e6a6a4dc2cedc767d30e700c887aab1abbd706f`;
+discarded source135 proof weights are not used. No affinity/validity reward
+surrogate or VAE update is trained. Native scoring fixes the existing occupancy
+and pose; hidden-state fitting does not establish variable-size/pose gradients.
+
+The configured diagnostic pilot selects **512/64/64 original VAE-training root
+identities** for bridge train/dev/audit, **128 prior roots**, seed **137036**,
+**1,000 updates**, batch **16**, hidden width **128**, development evaluation
+every **100** updates. Roots are partitioned before descendants, source val/test
+identities are excluded using metadata only, and every accepted teacher is the
+same-z decoded molecule under its fixed root mask with explicit atom alignment.
+The first fit has no promotion thresholds and cannot automatically optimize z.
+
+Immutable `source137-epoch36-boltz-embedding-bridge-attempt001`
+[seal](../outputs/hpc-submissions/source137-epoch36-boltz-embedding-bridge-attempt001/seal.json)
+has **568 members**, archive/manifest/plan SHA256:
+`ae4281fdc971bf8874fe557576d1439f9b84943b2250ca69a4bf223afd7940e0` /
+`88d23ee54df9acea13b9c406fadcfc38438b8fe9189212b11549479127fc8095` /
+`1565e0261a422f13b0b6feba1285fa267bc4416915039ee5c8bf3be98d9e884b`.
+The [staging receipt](../outputs/hpc-submissions/source137-epoch36-boltz-embedding-bridge-attempt001/stage.json)
+returned zero with **568 authenticated members**. The
+[submission receipt](../outputs/hpc-submissions/source137-epoch36-boltz-embedding-bridge-attempt001/submit-cpu-1792745069622880300.json)
+returned zero, **CPU 29796597 submitted at 10:44:32 DTU-local**, `hpc`, four
+slots, 8 GiB, 45 minutes. The
+[saved status](../outputs/hpc-results/source137-epoch36-boltz-embedding-bridge-attempt001/status-1792745089497102300.json)
+records actual RUN since **10:44:33** on **n-62-30-25**, with
+`running_not_passed`; no JUnit/native/fit result exists in that snapshot.
+Fresh quota was **74.29/100 GiB used** before submission and **74.54/100 GiB**
+at launch, leaving **25.46 GiB** in the latter saved check.
+
+Independent static review then found that the operator did not rebind its
+extracted manifest to the authenticated archive's own manifest bytes at launch.
+The working source now compares those bytes exactly before verifying members.
+Attempt001's immutable source and CPU outcome remain preserved, but **it will
+not promote GPU work**. A new attempt002 will reseal the correction and require
+its own allocated contracts after the unit outcome; it is not submitted/passed
+by this note. No native pass, trained mapping or molecular optimization is
+established. Source136 continuation jobs, scientific settings and every
+independent Protenix record remain unchanged.
+[Detailed scope and evidence](76_epoch36_boltz_embedding_bridge.md).
+
+## Frozen original-36 embedding attempt002 CPU passed; native GPU submitted, 23 October 2026
+
+The [attempt001 terminal snapshot](../outputs/hpc-results/source137-epoch36-boltz-embedding-bridge-attempt001/status-1792745155243000600.json)
+supersedes its initial RUN observation: **29796597 DONE at 10:45:15 DTU-local**,
+**128 passes in 18.93s**, zero failures/errors/skips, original-36 strict load,
+bitwise ordinary/capture decoder parity and unchanged tensor state. This
+remains valid CPU evidence, while its launch-manifest authentication limitation
+prevents attempt001 GPU promotion. Its immutable source and outcomes remain
+preserved.
+
+New `source137-epoch36-boltz-embedding-bridge-attempt002`
+[seal](../outputs/hpc-submissions/source137-epoch36-boltz-embedding-bridge-attempt002/seal.json)
+has **569 members**. Archive/manifest/plan SHA256:
+`8209d548ec0420fce5a850bae4d1a900cfda6fee7d7c4672cec35e460dd08923` /
+`aecd3f93e9c422f0cae3ca6eeeb635f4641474b6fe49ddf3ca50347e93192c71` /
+`34db99c4714bf0ccd5e0a83d5a3b54fa5f85f59dc8416b422d25e8a20f5b5ad5`.
+It authenticates the archived manifest at launch and adds operator fixtures.
+The [saved allocated CPU outcome](../outputs/hpc-results/source137-epoch36-boltz-embedding-bridge-attempt002/status-1792745265419026200.json)
+records **CPU 29796619 DONE**, **10:47:03–10:47:38 DTU-local**, n-62-30-25,
+**139 tests passed in 22.05s**, zero failures/errors/skips, full runner elapsed
+27.098s. Actual original-36 loading and bitwise ordinary/capture decoder parity
+passed. VAE tensor-state SHA256 is
+`bca36c9c7dcad67fa7eed8c2996f9304032738cfd5a3b8957147e99c3cde2bec`;
+CPU JUnit SHA256
+`4754a7245caf941fdb409d5f69fc31ac3a21e6b18e3e7e3d59b9268e01f20ba0`.
+
+The [actual GPU submission](../outputs/hpc-submissions/source137-epoch36-boltz-embedding-bridge-attempt002/submit-gpu-1792745276851064400.json)
+returned zero, **29796624 submitted**, `gpua100`, one exclusive 80GB A100/four
+CPU slots/four-hour walltime, 3h50 internal cap. Fresh quota was **74.39/100 GiB
+used**, **25.61 GiB free**. Submission is not native readiness, a trained bridge
+or a start/completion result. Exact/soft-oracle native forward/AD checks precede
+the diagnostic pilot; FD observations do not establish a learned-bridge FD
+pass. The first fit has no promotion thresholds and optimization remains
+disabled. Existing source136/VAE continuation and independent Protenix work
+remain unchanged.
+[Current scoped status and receipts](76_epoch36_boltz_embedding_bridge.md#attempt002-cpu-passed-native-gpu-submitted).
+
+## Frozen original-36 embedding GPU queued, 23 October 2026
+
+The [scheduler snapshot](../outputs/hpc-results/source137-epoch36-boltz-embedding-bridge-attempt002/status-1792745360088722400.json)
+confirms **GPU 29796624 PEND**, submitted **10:47:59 DTU-local**, with **two
+of four CPU slots reserved on n-62-18-8** from 10:48:01. The affinity request
+cannot yet obtain enough processor units on one host. Its provisional
+**no-sooner-than 24 October 02:32:54 DTU-local** forecast can change; it is not a
+guaranteed start, allocation or CUDA pass. No GPU result/native checks/paired
+data/bridge fitting is present. Passed attempt002 CPU evidence remains unchanged.
+No source136 continuation or Protenix jobs/settings were changed.

@@ -1,5 +1,24 @@
 # Active project instructions
 
+**Independent frozen epoch-36 embedding prototype, 2026-10-23:** the user
+authorized implementation, supervised mapping training and HPC submission on
+`codex/epoch36-boltz-embedding-bridge`, while leaving the existing VAE
+continuation unchanged. Use only authenticated original epoch 36, SHA256
+`3179ef01f84a2c714ee031bc3e6a6a4dc2cedc767d30e700c887aab1abbd706f`.
+The new heads fit native early chemical projections from final decoder hidden
+states; VAE/Boltz stay frozen and desired scores are never training labels.
+This is an explicit experimental alternative to the relaxed-graph boundary,
+with a common decoded hard identity, fixed occupancy/pose, independent native
+oracle validation and diagnostic feature audits. No learned/native gradient,
+chemical improvement or optimization approval follows from a supervised fit.
+Do not change source136 jobs, settings, checkpoints or its immutable release.
+Attempt001 CPU 29796597 passed 128 tests but is not promoted because its launch
+manifest binding was corrected in a new release. Attempt002 CPU 29796619
+passed 139 tests with zero failures/errors/skips and exact original-VAE output
+parity. GPU 29796624 has been submitted for native checks then a bounded
+1,000-update mapping pilot; submission is not a native pass or training start.
+Preserve both attempts. See `docs/76_epoch36_boltz_embedding_bridge.md`.
+
 The user-directed scope is **graph AE -> matched graph VAE -> frozen Boltz-2
 latent optimization**. Read `docs/04_latent_pipeline.md` and the experiment ledger
 before continuing. The older small-KIBA-predictor plan is historical context.

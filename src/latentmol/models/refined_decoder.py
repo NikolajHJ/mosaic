@@ -7,12 +7,29 @@ logits but does not turn independent final categorical draws into a joint law.
 """
 
 import math
+from dataclasses import dataclass
 
 import torch
 from torch import nn
 
 from latentmol.representation import DecoderOutput, GraphSpec
 from .triangle import TrianglePairUpdate
+
+
+@dataclass(frozen=True)
+class DecoderFeatures:
+    """Final decoder states for separately trained, checkpoint-bound input bridges.
+
+    This is an additional view of one decoding operation, not an alternative
+    molecular identity. Keeping tensors attached permits latent derivatives
+    after both the VAE and a supervised bridge have been frozen.
+    """
+
+    atom_hidden: torch.Tensor
+    pair_hidden: torch.Tensor
+    node_context: torch.Tensor
+    charge_input: torch.Tensor
+    bond_input: torch.Tensor
 
 
 def symmetric_pair_features(h: torch.Tensor) -> torch.Tensor:
@@ -212,7 +229,7 @@ class RefinedGraphDecoder(nn.Module):
         charge_context = self.charge_feedback(charges.softmax(dim=-1))
         return atoms, charges, self.context_norm(h + atom_context + charge_context)
 
-    def forward(self, z: torch.Tensor) -> DecoderOutput:
+    def forward(self, z: torch.Tensor, *, return_features: bool = False):
         slots = self.nodes(z).reshape(
             -1, self.spec.max_nodes + int(self.global_bond_context),
             self.atom_head.in_features)
@@ -243,4 +260,15 @@ class RefinedGraphDecoder(nn.Module):
                 -1, self.spec.max_nodes, self.spec.max_nodes, -1))
         bond_input = torch.cat(bond_inputs, dim=-1)
         bonds = self.bond_head(bond_input)
-        return DecoderOutput(atoms, charges, bonds)
+        decoded = DecoderOutput(atoms, charges, bonds)
+        if return_features:
+            atom_context = self.atom_feedback(atoms.softmax(dim=-1))
+            return decoded, DecoderFeatures(
+                atom_hidden=h, pair_hidden=edge, node_context=node_context,
+                charge_input=torch.cat((h, atom_context), dim=-1),
+                bond_input=bond_input)
+        return decoded
+
+    def decode_with_features(self, z: torch.Tensor):
+        """Return ordinary logits and their final hidden states in one pass."""
+        return self.forward(z, return_features=True)

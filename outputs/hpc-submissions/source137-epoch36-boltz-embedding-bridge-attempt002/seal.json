@@ -1,0 +1,11 @@
+{
+  "archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source137-epoch36-boltz-embedding-bridge-attempt002\\source137-epoch36-boltz-embedding-bridge-attempt002.tar.gz",
+  "archive_sha256": "8209d548ec0420fce5a850bae4d1a900cfda6fee7d7c4672cec35e460dd08923",
+  "campaign": "/work3/s234818/latentmol/runs/source137-epoch36-boltz-embedding-bridge-attempt002",
+  "label": "source137-epoch36-boltz-embedding-bridge-attempt002",
+  "manifest_sha256": "aecd3f93e9c422f0cae3ca6eeeb635f4641474b6fe49ddf3ca50347e93192c71",
+  "members": 569,
+  "plan_sha256": "34db99c4714bf0ccd5e0a83d5a3b54fa5f85f59dc8416b422d25e8a20f5b5ad5",
+  "release": "/work3/s234818/latentmol/releases/source-137-epoch36-boltz-embedding-bridge-attempt002",
+  "status": "sealed_not_submitted"
+}
