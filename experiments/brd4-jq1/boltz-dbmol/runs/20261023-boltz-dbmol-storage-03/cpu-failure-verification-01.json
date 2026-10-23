@@ -1,0 +1,170 @@
+{
+  "files_verified": 109,
+  "source_members_verified": {
+    "science": 657,
+    "launcher": 7,
+    "preserved_previous_launcher": 5
+  },
+  "source_manifest_sha256": "24c207da5510fa579576a04ad32bf1afc6e1f23f51dcb5251d82a4ebdfa8f436",
+  "launcher_manifest_sha256": "7b67e6221e4d227b6e501478802ab4ebc8536d74272ca3a7d305bb6f15e7ffee",
+  "source_archive_sha256": "ec333fd3e0b33d9e5b82e0cd5e4e12c14ffb4f91782c18cd820d4bfab53de1f8",
+  "launcher_archive_sha256": "e8d60f4a03f0d6dcd05b9dbe66add8885fa7253d95537b08b3e170ed7ca763ca",
+  "previous_launcher_manifest_sha256": "5f479f2e5342469efd8606c9457c946a51dbcf0dd90d837ee472babfdd820a4b",
+  "evidence_archive_sha256": "1659285fa9f14ecca3425529f873020b028d2c8eab129efa3c143055786bd097",
+  "jobs": {
+    "cpu": "29798549",
+    "after-cpu": "29798550",
+    "cpu-02": "29798699",
+    "after-cpu-02": "29798700",
+    "cpu-03": "29798769",
+    "after-cpu-03": "29798770"
+  },
+  "actual_scheduler": {
+    "cpu": "unavailable_live_history",
+    "after-cpu": "unavailable_live_history",
+    "cpu-02": "unavailable_live_history",
+    "after-cpu-02": "unavailable_live_history",
+    "cpu-03": "unavailable_live_history",
+    "after-cpu-03": "unavailable_live_history"
+  },
+  "storage_gates": {
+    "run/cpu/storage-cpu-entry/gate.json": "failed",
+    "run/cpu-02/storage-cpu-entry/gate.json": "passed",
+    "run/cpu-03/storage-cpu-entry/gate.json": "passed",
+    "run/storage-preflight/gate.json": "failed",
+    "run/admission-02/storage-preflight/gate.json": "passed",
+    "run/storage-adoption-02/storage-preflight/gate.json": "passed",
+    "run/storage-adoption-03/storage-preflight/gate.json": "passed"
+  },
+  "storage_budgets": {
+    "run/cpu/storage-cpu-entry/gate.json": {
+      "status": "failed",
+      "required_bytes": 19175262065,
+      "available_bytes_conservative": 18158117863,
+      "stale_bytes_subtracted": 6537944089,
+      "available_files_lower": 19557200,
+      "full_long_admission": false
+    },
+    "run/cpu-02/storage-cpu-entry/gate.json": {
+      "status": "passed",
+      "required_bytes": 17930480407,
+      "available_bytes_conservative": 34137364714,
+      "stale_bytes_subtracted": 6664824598,
+      "available_files_lower": 19587390,
+      "full_long_admission": false
+    },
+    "run/cpu-03/storage-cpu-entry/gate.json": {
+      "status": "passed",
+      "required_bytes": 17849022378,
+      "available_bytes_conservative": 34065094772,
+      "stale_bytes_subtracted": 6737094540,
+      "available_files_lower": 19586239,
+      "full_long_admission": false
+    },
+    "run/storage-preflight/gate.json": {
+      "status": "failed",
+      "required_bytes": 19256933986,
+      "available_bytes_conservative": 19236336523,
+      "stale_bytes_subtracted": 6533467253,
+      "available_files_lower": 19558339,
+      "full_long_admission": false
+    },
+    "run/admission-02/storage-preflight/gate.json": {
+      "status": "passed",
+      "required_bytes": 19225068665,
+      "available_bytes_conservative": 19235502439,
+      "stale_bytes_subtracted": 6534301337,
+      "available_files_lower": 19557270,
+      "full_long_admission": false
+    },
+    "run/storage-adoption-02/storage-preflight/gate.json": {
+      "status": "passed",
+      "required_bytes": 17934470372,
+      "available_bytes_conservative": 34151538760,
+      "stale_bytes_subtracted": 6650650552,
+      "available_files_lower": 19587457,
+      "full_long_admission": false
+    },
+    "run/storage-adoption-03/storage-preflight/gate.json": {
+      "status": "passed",
+      "required_bytes": 17852645235,
+      "available_bytes_conservative": 34069120249,
+      "stale_bytes_subtracted": 6733069063,
+      "available_files_lower": 19586296,
+      "full_long_admission": false
+    }
+  },
+  "historical_failed_cpu_jobs_preserved": {
+    "cpu": "29798549",
+    "after-cpu": "29798550",
+    "cpu-02": "29798699",
+    "after-cpu-02": "29798700"
+  },
+  "historical_cpu02_fixture_failure_names": [
+    "test_config_rejects_undeclared_policy_changes[extra]",
+    "test_config_rejects_undeclared_policy_changes[seed]",
+    "test_config_rejects_undeclared_policy_changes[steps]",
+    "test_config_rejects_undeclared_policy_changes[temperature]",
+    "test_peer_dispatch_waits_only_actual_authenticated_own_ended_callback_ids",
+    "test_raw_checker_rejects_missing_wrong_or_nonfinite_derivative_paths[nonfinite-E_upper]",
+    "test_raw_checker_rejects_missing_wrong_or_nonfinite_derivative_paths[nonfinite-X]"
+  ],
+  "original_scientific_status_preserved": {
+    "protenix": "passed",
+    "boltz2": "failed"
+  },
+  "large_original_summary_bytes_downloaded": false,
+  "native_readiness_passed_by_this_audit": false,
+  "optimization_started_by_this_audit": false,
+  "scope": "Independent stdlib bytes/XML/schema/source/resource/scheduler/LSF audit. No numerical/model execution. Storage observations are not reservations.",
+  "status": "failed_new_cpu_attempt_evidence_verified",
+  "failed_producers": [
+    "after-cpu-03"
+  ],
+  "cpu_passed": false,
+  "partial_xml_counts": {
+    "run/cpu-03/payload/dbmol-native.xml": {
+      "testcase": 83,
+      "failure": 0,
+      "error": 0,
+      "skipped": 0
+    },
+    "run/cpu-03/payload/legacy.xml": {
+      "testcase": 239,
+      "failure": 0,
+      "error": 0,
+      "skipped": 0
+    },
+    "run/cpu-03/payload/launcher-adoption.xml": {
+      "testcase": 72,
+      "failure": 0,
+      "error": 0,
+      "skipped": 0
+    },
+    "run/cpu-03/payload/native-mapping.xml": {
+      "testcase": 34,
+      "failure": 0,
+      "error": 0,
+      "skipped": 0
+    },
+    "run/cpu-03/payload/hpc-contract.xml": {
+      "testcase": 500,
+      "failure": 0,
+      "error": 0,
+      "skipped": 0
+    },
+    "run/cpu-03/payload/dbmol-transport.xml": {
+      "testcase": 148,
+      "failure": 0,
+      "error": 0,
+      "skipped": 0
+    },
+    "run/cpu-03/payload/chemistry.xml": {
+      "testcase": 59,
+      "failure": 0,
+      "error": 0,
+      "skipped": 0
+    }
+  },
+  "cases_claimed_passed": null
+}

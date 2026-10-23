@@ -1,0 +1,10 @@
+
+### 2026-10-23 — DBMol CPU03 passed1135; callback attribution corrected in new launcher04
+
+At19:01:29UTC the connection succeeded. Both30k Boltz native validators29798605/29798607 and their own-ended callbacks remain PEND with job-slot limits on four hosts. No pretrained native pass or production segment is established. DBMol CPU29798769 actually completed all1,135 raw cases (500+239+34+59+83+148+72), zero failures/errors/skips. Callback29798770 exited1 because nine unchanged bridge tests outside the launcher pytest root had blank XML module names; strict attribution correctly blocked certification and GPU submission. This is a reporting/packaging defect, not a failed native gradient evaluation.
+
+Independent109-file evidence audit authenticates source657+launcher7+priorlauncher5, every XML/log/proof/LSF and actual submissions. Archive201,096bytes SHA1659285fa9f14ecca3425529f873020b028d2c8eab129efa3c143055786bd097. CPU success and callback failure are separate preserved facts; aged-out live records remain unavailable and genuine persisted LSF remains authoritative.
+
+[Launcher04](../experiments/brd4-jq1/boltz-dbmol/runs/20261023-boltz-dbmol-storage-04/README.md) adds an exact unchanged source657 bridge fixture inside the same launcher root as the other two transport fixtures. Source8 manifestdf89def61047469e0db8ee6f4b235c75344dd4ad9f35a0833b0839f23859e9fa, archive35,608bytes SHA40ee3c1ea0e9181528c82c5d99e7d6347033a99051ba7e55b5ffdde1edb7cefc. Independent static AST/member/byte review passed; scientific scorer/worker/driver/config/native-FD/storage/reserves remain unchanged. Newcpu-04/after-cpu-04 repeat all1,135 cases before native dispatch. All earlier decisions and saved studies remain unchanged; no numerical work ran locally and no monitor was unpaused.
+
+Actual newCPU29802621/callback29802622 submitted19:08:22UTC after source8+657 and43 preserved history proofs authenticated. Fresh validation admission passed16,003,104,260required/31,147,201,201available, retaining4GiB/100000files. This is not full optimization capacity or a native gradient pass. No GPU/native/optimization start follows from submission alone.

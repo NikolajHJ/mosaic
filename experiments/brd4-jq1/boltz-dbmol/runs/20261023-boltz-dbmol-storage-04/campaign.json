@@ -1,0 +1,436 @@
+{
+  "state": "cpu_running_callback_pending",
+  "package": {
+    "tag": "20261023-boltz-dbmol-storage-04",
+    "files": 8,
+    "manifest_sha256": "df89def61047469e0db8ee6f4b235c75344dd4ad9f35a0833b0839f23859e9fa",
+    "archive_bytes": 35608,
+    "archive_sha256": "40ee3c1ea0e9181528c82c5d99e7d6347033a99051ba7e55b5ffdde1edb7cefc",
+    "scientific_source_manifest_sha256": "24c207da5510fa579576a04ad32bf1afc6e1f23f51dcb5251d82a4ebdfa8f436",
+    "scientific_source_changed": false,
+    "previous_launcher_manifest_sha256": "7b67e6221e4d227b6e501478802ab4ebc8536d74272ca3a7d305bb6f15e7ffee",
+    "previous_cpu_status": "passed",
+    "previous_callback_status": "failed"
+  },
+  "expected_raw_cases": 1135,
+  "cpu_passed": false,
+  "native_passed": false,
+  "optimization_started": false,
+  "scientific_source_changed": false,
+  "saved_results_changed": false,
+  "previous_cpu": {
+    "job_id": "29798769",
+    "lsf_status": "Done",
+    "passed_cases": 1135
+  },
+  "previous_callback": {
+    "job_id": "29798770",
+    "lsf_status": "Exited",
+    "error": "Missing transport/scope fixture attribution"
+  },
+  "static_verification_sha256": "c10b44b06609045b1ebd9745bfbc9be54f901317935a67d17723fc0c3033fea4",
+  "actual_submission": {
+    "status": "submitted_not_passed",
+    "launcher_manifest_sha256": "df89def61047469e0db8ee6f4b235c75344dd4ad9f35a0833b0839f23859e9fa",
+    "science_manifest_sha256": "24c207da5510fa579576a04ad32bf1afc6e1f23f51dcb5251d82a4ebdfa8f436",
+    "launcher_source": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-storage-release-04/source",
+    "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-01",
+    "cpu": {
+      "phase": "cpu",
+      "args": [
+        "bsub",
+        "-q",
+        "hpc",
+        "-n",
+        "4",
+        "-R",
+        "span[hosts=1]",
+        "-R",
+        "rusage[mem=4GB]",
+        "-W",
+        "01:00",
+        "-J",
+        "mosaic-dbmol-cpu-04",
+        "-oo",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-01/cpu-04/stdout.%J.log",
+        "-eo",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-01/cpu-04/stderr.%J.log",
+        "bash",
+        "-l",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-storage-release-04/source/scripts/hpc/dbmol_storage_cpu.lsf",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-storage-release-04/source",
+        "df89def61047469e0db8ee6f4b235c75344dd4ad9f35a0833b0839f23859e9fa",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-release-01/source",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-01",
+        "24c207da5510fa579576a04ad32bf1afc6e1f23f51dcb5251d82a4ebdfa8f436"
+      ],
+      "dependency": null,
+      "outcome": "submitted",
+      "utc": "2026-10-23T19:08:22.212773+00:00",
+      "returncode": 0,
+      "stdout": "Job <29802621> is submitted to queue <hpc>.\n",
+      "stderr": "",
+      "job_id": "29802621"
+    },
+    "callback": {
+      "phase": "after-cpu",
+      "args": [
+        "bsub",
+        "-q",
+        "hpc",
+        "-n",
+        "2",
+        "-R",
+        "span[hosts=1]",
+        "-R",
+        "rusage[mem=4GB]",
+        "-W",
+        "00:30",
+        "-J",
+        "mosaic-dbmol-after-cpu-04",
+        "-oo",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-01/after-cpu-04/stdout.%J.log",
+        "-eo",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-01/after-cpu-04/stderr.%J.log",
+        "-w",
+        "ended(29802621)",
+        "bash",
+        "-l",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-storage-release-04/source/scripts/hpc/dbmol_storage_stage.lsf",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-storage-release-04/source",
+        "df89def61047469e0db8ee6f4b235c75344dd4ad9f35a0833b0839f23859e9fa",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-release-01/source",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-01",
+        "24c207da5510fa579576a04ad32bf1afc6e1f23f51dcb5251d82a4ebdfa8f436",
+        "after-cpu",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-01/after-cpu-04"
+      ],
+      "dependency": "ended(29802621)",
+      "outcome": "submitted",
+      "utc": "2026-10-23T19:08:22.654006+00:00",
+      "returncode": 0,
+      "stdout": "Job <29802622> is submitted to queue <hpc>.\n",
+      "stderr": "",
+      "job_id": "29802622"
+    },
+    "preflight": {
+      "status": "passed",
+      "reserve_bytes": 4294967296,
+      "file_reserve": 100000,
+      "scope": "all concurrent original+Proextensions+Boltz30k+DBMol remaining, report/diagnostic; no reservation",
+      "additional_prospective_noisy_protenix_allowance": 1073741824,
+      "additional_noise_stale_bytes": 87072952,
+      "work3": {
+        "status": "passed",
+        "filesystem": "work3",
+        "raw_quota": "HPE-Storage-Servers (disks, storagepool 1): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nHPE-Storage-Servers (NVME, storagepool 2): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (disks, storagepool 3): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks, storagepool 4): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks added in 2024, storagepool 5): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (NVMEs added in 2024, storagepool 6): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||   62.50 GiB|  100.00 GiB||   427101| 20000000\n\n",
+        "quota": {
+          "finite_pools": [
+            {
+              "used_bytes_upper": 67645734912,
+              "hard_bytes_lower": 107374182400,
+              "remaining_bytes": 39728447488,
+              "remaining_files": 19572899
+            }
+          ],
+          "available_bytes_lower": 39728447488,
+          "available_files_lower": 19572899
+        },
+        "projected_bytes": 11708136964,
+        "stale_bytes_subtracted": 8581246287,
+        "disk_free_bytes": 552400544858112,
+        "available_bytes_conservative": 31147201201,
+        "required_bytes": 16003104260,
+        "reserve_bytes": 4294967296,
+        "file_reserve": 100000,
+        "filesystem_inode_observation": {
+          "f_files": 0,
+          "f_ffree": 0,
+          "f_favail": 0
+        },
+        "available_files_lower": 19572899,
+        "filesystem_inode_reporting": "unreported_all_zero",
+        "file_headroom_scope": "Mandatory minimum of all authenticated finite user-quota pools",
+        "inode_limitation": "All-zero statvfs tuple supplies no independent filesystem inode proof",
+        "limitation": "Observations are conservative budget checks, not storage reservations"
+      },
+      "peers": {
+        "extended": {
+          "remaining": 2147483648,
+          "scope": "native-validation allowance only; no full-long pass"
+        },
+        "baseline": {
+          "remaining": 2147483648,
+          "scope": "native-validation allowance only; no full-long pass"
+        }
+      },
+      "missing_full_projections": [
+        "extended",
+        "baseline"
+      ],
+      "original_current": {
+        "protenix": 1065476574,
+        "boltz2": 1001537880,
+        "boltz2_chemistry": 2562690364
+      },
+      "original_future": {
+        "protenix": 0,
+        "boltz2": 0,
+        "boltz2_chemistry": 2581331460
+      },
+      "terminal_original_evidence": {
+        "protenix": {
+          "status": "terminal_original_authenticated",
+          "job_id": "29792670",
+          "scientific_status": "passed",
+          "persisted_lsf_status": "Done",
+          "live_scheduler_status_invented": false,
+          "future_output_bytes": 0,
+          "counts_scope": "Exact pinned completed10000-update/10001-state summary previously audited; no numerical re-evaluation",
+          "original_source_manifest_sha256": "c2628d08f7224f3b572ab456f4113d8a66b587a5d69f85a072877052fc09a057",
+          "proofs": {
+            "summary": {
+              "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-protenix/payload/study/summary.json",
+              "bytes": 298580732,
+              "sha256": "b94d4bae58b7c82b92f4cf0b6b0e9804734afff0f54ea0b162b65d825ec2661d"
+            },
+            "stdout": {
+              "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-protenix/stdout.29792670.log",
+              "bytes": 2201,
+              "sha256": "46f7ff9c942cf3ca9447e4d4d2630a3e604d8a6cd42504b56e8a0fcd6bb3170e"
+            },
+            "submission": {
+              "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-protenix/submission.json",
+              "bytes": 1808,
+              "sha256": "5dc53846d086b2b6522d1d4aeb42c3461e4875f890b547b8362904793f33e58a"
+            }
+          }
+        },
+        "boltz2": {
+          "status": "terminal_original_authenticated",
+          "job_id": "29792671",
+          "scientific_status": "failed",
+          "persisted_lsf_status": "Exited",
+          "live_scheduler_status_invented": false,
+          "future_output_bytes": 0,
+          "counts_scope": "Exact pinned completed10000-update/10001-state summary previously audited; no numerical re-evaluation",
+          "original_source_manifest_sha256": "c2628d08f7224f3b572ab456f4113d8a66b587a5d69f85a072877052fc09a057",
+          "proofs": {
+            "summary": {
+              "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-boltz2/payload/study/summary.json",
+              "bytes": 301971481,
+              "sha256": "06a68008a0dfb8b6a66668447bcda4f01c7b54427d9b68f0d84e5926db278cc1"
+            },
+            "stdout": {
+              "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-boltz2/stdout.29792671.log",
+              "bytes": 2199,
+              "sha256": "b40c2741e3d500f74aafa8819a597d260b7372f5372eb2642aeb6c450341f5c0"
+            },
+            "submission": {
+              "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-boltz2/submission.json",
+              "bytes": 1798,
+              "sha256": "ddc416a8ed853307b639e9011fefadbb484d2721dfd3e3f9d054045c1eee8df0"
+            }
+          }
+        }
+      },
+      "launcher_manifest_sha256": "df89def61047469e0db8ee6f4b235c75344dd4ad9f35a0833b0839f23859e9fa",
+      "science_manifest_sha256": "24c207da5510fa579576a04ad32bf1afc6e1f23f51dcb5251d82a4ebdfa8f436",
+      "own_current": 0,
+      "own_full": 1073741824,
+      "projected_bytes": 11708136964,
+      "full_long_admission": false
+    },
+    "old_failed_cpu_proofs": [
+      {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-01/cpu/submission.json",
+        "sha256": "bbc02e915d3cda0d58cfcfe0806b7c5544df9328214bfabb319669ea27c7103d"
+      },
+      {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-01/after-cpu/submission.json",
+        "sha256": "f22d46432171ff8cf5b0fc3ceae8d05b65309dd5185777fa103338f8e7f558e9"
+      },
+      {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-01/cpu/stdout.29798549.log",
+        "sha256": "c1b559a85182bf1fd485e987480c43323a2a7538ea22fd58e51f5df21dc3a33e"
+      },
+      {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-01/after-cpu/stdout.29798550.log",
+        "sha256": "373813d3d4faabc87af19299827c1983ef62de6b2e43fab08dc3542a7cbcd2cf"
+      },
+      {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-01/cpu/storage-cpu-entry/gate.json",
+        "sha256": "0cb5b96b49ebefd8f483e882d3b796d040554e9c60b7e1f2ee194fceda2e8afd"
+      },
+      {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-01/cpu-02/submission.json",
+        "sha256": "cb0d36f854b15cda59f0261366c209ec89f52f9ee57f6045cdc0758904c0bc0e"
+      },
+      {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-01/after-cpu-02/submission.json",
+        "sha256": "5b79746f9331ebb3a8eb5da7d16fe9798ae3aa32a3de256ed344efdd63071dd1"
+      },
+      {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-01/cpu-02/stdout.29798699.log",
+        "sha256": "981fe2fa535f613a131d31aaafc8bfea733829282065c3307e17bcaa7ecf019d"
+      },
+      {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-01/after-cpu-02/stdout.29798700.log",
+        "sha256": "66d1335c49c5672c82f33b200093cd30a303901a65645631a714b9d20fdf3fa8"
+      },
+      {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-01/cpu-02/storage-cpu-entry/gate.json",
+        "sha256": "7e5a75a5a0b132df3ee2f8eb164b298be95cba30950f9de4d8c7945a96498b49"
+      },
+      {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-01/cpu-02/payload/hpc-contract.xml",
+        "sha256": "00251c0632f2cec8b97e17140899192bb164ba34f97887e96b43c2d6e5fded71"
+      },
+      {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-01/cpu-02/payload/hpc-contract.log",
+        "sha256": "b074fd8adb9b31db1f9ad34acde6034f96b2e2b0fb47f9e27971cbe7244c07fc"
+      },
+      {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-01/cpu-02/payload/legacy.xml",
+        "sha256": "7e04fb5fac25026b5550273a402f2b2c4c3a1b8734f5e942f5bd345e42622853"
+      },
+      {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-01/cpu-02/payload/legacy.log",
+        "sha256": "a92649d51ff960fba2d3812290eb16d448c4ed9a9bf3cb0a612b7edbbacd4e45"
+      },
+      {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-01/cpu-02/payload/native-mapping.xml",
+        "sha256": "e79c101288fb95d8544fbac5a3b379305e7856de92d70772203b88655c42b5fa"
+      },
+      {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-01/cpu-02/payload/native-mapping.log",
+        "sha256": "35d2cf6a71308872d5b4b2af41d250375ce1559b123380fb9623f10f4dc7da01"
+      },
+      {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-01/cpu-02/payload/chemistry.xml",
+        "sha256": "97922866e2a72d497ed385c57aae7a9344176a9ca606c9b484907952293fb6b2"
+      },
+      {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-01/cpu-02/payload/chemistry.log",
+        "sha256": "9e3d662a45940d2dbf867d98dd388b05c0213b4bc1da2973f556788b95cb60c8"
+      },
+      {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-01/cpu-02/payload/dbmol-native.xml",
+        "sha256": "ca8246b0d0976a0409e9915e094d49552f29fdb86905a80adf8107a2c5212d9f"
+      },
+      {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-01/cpu-02/payload/dbmol-native.log",
+        "sha256": "25723fb6d2b940eddf4016910ea200bb69b8956d9ad02d251f2b5bf13afeb24c"
+      },
+      {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-01/cpu-02/payload/dbmol-transport.xml",
+        "sha256": "beda98b250233d30431319fe1fd43f2d7d4b5cbcfbc49e43a81cc0f20dba452a"
+      },
+      {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-01/cpu-02/payload/dbmol-transport.log",
+        "sha256": "e7e6f66f2563a27c789a6a970c4334e2d3d1f2df0d4e631e5a6f16e159c6563f"
+      },
+      {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-01/cpu-03/submission.json",
+        "sha256": "07fe54c6c16b7b406f200dccaed2d70afa158e0c3df6e4a529e4469924c502ff"
+      },
+      {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-01/after-cpu-03/submission.json",
+        "sha256": "4f05b6a99aee2576eeb7ffc85480ae1a234bc8e30a2a88df4cdb40f74e9aa096"
+      },
+      {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-01/cpu-03/stdout.29798769.log",
+        "sha256": "4c1b70309891b6e174b1f3e0e9f22e3f4915743183a1697953e112c18b2d8fb8"
+      },
+      {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-01/after-cpu-03/stdout.29798770.log",
+        "sha256": "69fa27b15fbef23bdc0bb3321e3de0b826f073b33f1a67524a1da812642e63f3"
+      },
+      {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-01/after-cpu-03/stderr.29798770.log",
+        "sha256": "b7cc42d085b4f17b11d7828ee3bfcfae524fe4bfc5d87e62b65d881e375e7f89"
+      },
+      {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-01/cpu-03/storage-cpu-entry/gate.json",
+        "sha256": "a95322fe217f1e23c3eae04c1056d0b82288d6d9746f975a8b9df3a504a179f7"
+      },
+      {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-01/cpu-03/payload/hpc-contract.xml",
+        "sha256": "8b958a79a0df1f05f110f5ffedac218d1ba8f28604611d2d0a3675e4931dee72"
+      },
+      {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-01/cpu-03/payload/hpc-contract.log",
+        "sha256": "89028b1892f91a03e150db35ccdc1800f3892dbc2ade50f3985a4c5a511f9dc7"
+      },
+      {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-01/cpu-03/payload/legacy.xml",
+        "sha256": "f0ac8c6c28db1834d7dc7428de2d76cf2ac1c6f5a5345b152e5f8cd057980bbd"
+      },
+      {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-01/cpu-03/payload/legacy.log",
+        "sha256": "faf9a625ac9677b4545e51485a29cef8e21c85f41ed67691210dd8edbd5f2bc8"
+      },
+      {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-01/cpu-03/payload/native-mapping.xml",
+        "sha256": "566f36aadc008cef16803d73abfc0d420625a7cd69de410486394dcdfa722b73"
+      },
+      {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-01/cpu-03/payload/native-mapping.log",
+        "sha256": "59d1a433b95abc37c5cb9a242f2f5b3ead50aecec94f9dec955a84b1cea7ca43"
+      },
+      {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-01/cpu-03/payload/chemistry.xml",
+        "sha256": "6acd47df49f6ebc104e792d087818b50ba29149ac26245176d44965f33280960"
+      },
+      {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-01/cpu-03/payload/chemistry.log",
+        "sha256": "3b3a413b1bcdfa6b0a82cf6a6fff90e0e83d59f9b3673b0c7f3179482cecff47"
+      },
+      {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-01/cpu-03/payload/dbmol-native.xml",
+        "sha256": "44775d744e0e04aa7e400b6e6fbbaea47f65912caaba188913711569989fd6ae"
+      },
+      {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-01/cpu-03/payload/dbmol-native.log",
+        "sha256": "0e94edde5a85ea0e8db7c3c916a03b4d2ebcbab94ce1045bc203b965d07d0f0a"
+      },
+      {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-01/cpu-03/payload/dbmol-transport.xml",
+        "sha256": "8ba540fcc124327840a2c8b16f68a692aa88cccdc6e126ab9beb6aaf186fd6ec"
+      },
+      {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-01/cpu-03/payload/dbmol-transport.log",
+        "sha256": "5b83938cf12b311863026319ba56b99f64aa57f31f879aa9dff19dcea361581d"
+      },
+      {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-01/cpu-03/payload/launcher-adoption.xml",
+        "sha256": "c49f6263e31ce5a71e5d9de88c1ac1dd79c46c8b7862ebb6aa3159d5c3daef25"
+      },
+      {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-01/cpu-03/payload/launcher-adoption.log",
+        "sha256": "de35c3ffacfdacfe9d8112b98f18b28c4e2ca1ffb7be7dd0a5e0db257537fd80"
+      },
+      {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-storage-release-03/source/source_manifest.json",
+        "sha256": "7b67e6221e4d227b6e501478802ab4ebc8536d74272ca3a7d305bb6f15e7ffee"
+      }
+    ],
+    "scientific_source_changed": false
+  },
+  "admission_verification": {
+    "status": "passed_admission_evidence_verified",
+    "sha256": "c0ad1394af70c39c6680d3cbd84c467c29f6fae97c2db6444eb623d892a1a0bb",
+    "actual_scheduler": {
+      "cpu": "unavailable_live_history",
+      "after-cpu": "unavailable_live_history",
+      "cpu-02": "unavailable_live_history",
+      "after-cpu-02": "unavailable_live_history",
+      "cpu-03": "unavailable_live_history",
+      "after-cpu-03": "unavailable_live_history",
+      "cpu-04": "RUN",
+      "after-cpu-04": "PEND"
+    },
+    "native_readiness_passed_by_this_audit": false,
+    "optimization_started_by_this_audit": false
+  }
+}

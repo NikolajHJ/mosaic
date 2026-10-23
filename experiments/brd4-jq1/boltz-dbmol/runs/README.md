@@ -12,3 +12,10 @@ parents. It changes neither the loss nor the saved scientific studies.
 `20261023-boltz-dbmol-storage-03` preserves the failed CPU02 fixture evidence
 and repeats all1,135 cases using two corrected test overlays. Scientific
 source657 and the saved-result roots remain unchanged.
+
+
+`20261023-boltz-dbmol-storage-04` preserves CPU03's1,135passing cases and
+separate callback-attribution failure. It packages an exact bridge-fixture copy
+inside the shared pytest root, retaining strict module checks and unchanged
+science657. [Actual run record](20261023-boltz-dbmol-storage-04/run-record.md)
+and campaign receipts distinguish allocated CPU/native acceptance from admission.

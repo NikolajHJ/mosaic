@@ -65,3 +65,13 @@ corrects those mocks and assertions while retaining all scientific bytes and
 all1,135 cases. New CPU29798769/callback29798770 were submitted after fresh
 validation capacity passed. No DBMol native gradient pass or optimization start
 is established yet.
+
+
+At23October19:01UTC, CPU03 completed all1,135 cases; its callback failed strict
+XML module attribution for nine unchanged bridge tests outside the launcher root.
+The [attribution launcher04](runs/20261023-boltz-dbmol-storage-04/README.md) includes
+an exact byte copy of those fixtures inside the shared pytest root and repeats
+all1,135 cases. NewCPU29802621/callback29802622 submitted19:08UTC after fresh
+validation storage passed. Previous CPU success and callback failure remain
+separately preserved. Native gradients and optimization start require their own
+allocated proofs; current outcomes are in each run's campaign JSON.

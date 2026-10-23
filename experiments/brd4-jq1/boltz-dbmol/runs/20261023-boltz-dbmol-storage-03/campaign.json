@@ -1,5 +1,5 @@
 {
-  "state": "submitted_current_status_unavailable",
+  "state": "cpu_done_1135_callback_failed_attribution",
   "package": {
     "tag": "20261023-boltz-dbmol-storage-03",
     "files": 7,
@@ -321,23 +321,30 @@
   },
   "submission_stdout_sha256": "e3c83482362bdf973164674dd37f7580ef2e586c1a37abe6df5e4d130c7b7d5c",
   "latest_connection": {
-    "status": "ssh_authentication_blocked",
-    "observed_utc": "2026-10-23T14:14:08Z",
-    "returncode": 255,
-    "error": "Permission denied (password)",
-    "stderr_sha256": "dd5abe512547a2d013ab0b4b53f566c336259151633db6dd7cdf8151ef54b9cc",
-    "local_receipt": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261023-boltz-dbmol-storage-03\\observations\\20261023T141409039391Z-receipt.json",
-    "one_connection_attempt": true,
-    "retry_or_mutation": false,
-    "last_successful_observation": "2026-10-23T11:17:08.530064+00:00",
-    "last_verified_current_jobs": {
-      "baseline_boltz_native": "29798605/PEND",
-      "baseline_chem_native": "29798607/PEND",
-      "dbmol_cpu": "29798769/RUN",
-      "dbmol_callback": "29798770/PEND"
+    "status": "connected",
+    "observed_utc": "2026-10-23T19:01:29.965449Z",
+    "stdout_sha256": "dc3dea27beaa07a9def030026a16362ef70bccf531af4f22fe47dc8fd00f6323",
+    "baseline_native_jobs": {
+      "29798605": "PEND",
+      "29798607": "PEND"
     },
-    "new_optimization_starts_verified": false,
-    "native_passes_verified": false,
-    "required_external_action": "Restore DTU VPN/SSH authentication before further outcome verification. Inspect actual receipts; never duplicate jobs."
+    "native_pending_reason": "Job slot limit reached: 4 hosts",
+    "optimization_started": false
+  },
+  "raw_cpu_cases_passed": 1135,
+  "latest_cpu_proof": {
+    "cpu_job": "29798769",
+    "cpu_actual_lsf": "Done",
+    "raw_passed_cases": 1135,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "callback_job": "29798770",
+    "callback_actual_lsf": "Exited",
+    "callback_exit_code": 1,
+    "error": "Missing transport/scope fixture attribution",
+    "bridge_cases_blank_classname": 9,
+    "local_failure_verification_sha256": "91f894b85b6a89f3f164721192bbefeb688d17a976607c472f4f934f927efed2",
+    "next_launcher_prepared": "20261023-boltz-dbmol-storage-04"
   }
 }

@@ -345,7 +345,11 @@ def main():
             require(sub['dependency'] is None, 'Unexpected interarm/scientific dependency')
         query = metadata['scheduler'][label]
         require(query['job_id'] == job, 'Scheduler inventory ID differs')
-        observed[label] = scheduler(query['raw'], job, 'gpul40s' if sub['phase'] in ('native', 'segment') else 'hpc') if query['returncode'] == 0 else 'unavailable_live_history'
+        if re.fullmatch(r'Job\s+<' + re.escape(job) + r'>\s+is\s+not\s+found\s*', query['raw']):
+            observed[label] = 'unavailable_live_history'
+        else:
+            require(query['returncode'] == 0, 'Unexpected unavailable/malformed live scheduler response')
+            observed[label] = scheduler(query['raw'], job, 'gpul40s' if sub['phase'] in ('native', 'segment') else 'hpc')
     for name in files:
         if not name.endswith('/gate.json'): continue
         gate = read(folder / name)

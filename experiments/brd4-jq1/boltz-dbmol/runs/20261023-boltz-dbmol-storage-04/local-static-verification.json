@@ -1,0 +1,20 @@
+{
+  "status": "static_package_verified_not_numerically_tested",
+  "files": 8,
+  "safe_archive_members": 9,
+  "manifest_sha256": "df89def61047469e0db8ee6f4b235c75344dd4ad9f35a0833b0839f23859e9fa",
+  "archive_bytes": 35608,
+  "archive_sha256": "40ee3c1ea0e9181528c82c5d99e7d6347033a99051ba7e55b5ffdde1edb7cefc",
+  "scientific_source_changed": false,
+  "previous_cpu_passed_cases": 1135,
+  "previous_callback": "failed_module_attribution",
+  "all_transport_fixtures_inside_launcher_root": true,
+  "layout_check": {
+    "status": "failed_repository_default_discovery",
+    "errors": [
+      "Default discovery does not reach each canonical test module exactly once"
+    ],
+    "owned_directory_and_links_errors": [],
+    "scope": "Stdlib layout check only; unrelated discovery mismatch remains, no numerical claim"
+  }
+}
