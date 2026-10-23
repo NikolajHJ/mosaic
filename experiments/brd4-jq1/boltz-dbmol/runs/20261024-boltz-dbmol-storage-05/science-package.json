@@ -1,0 +1,12 @@
+{
+  "tag": "20261024-boltz-dbmol-pilot-02",
+  "source_files": 657,
+  "manifest_sha256": "600ecc3b33135141a57c029a28a2c72f29e788e3ecf5cb2dac1761146d1d6eed",
+  "archive_bytes": 39676528,
+  "archive_sha256": "592a4b3d7d95909111013dacc95d4a1301b6e875fb124267ad08af7ca402381e",
+  "parent_manifest_sha256": "24c207da5510fa579576a04ad32bf1afc6e1f23f51dcb5251d82a4ebdfa8f436",
+  "git_revision_reference": "c74c659344123937608077e3e4078f75f09cd743",
+  "revision_ancestor_manifest_sha256": "c2628d08f7224f3b572ab456f4113d8a66b587a5d69f85a072877052fc09a057",
+  "changed_source_members": [],
+  "remote_source": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-release-02/source"
+}

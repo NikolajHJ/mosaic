@@ -44,5 +44,8 @@ status: attempt01 CPU failed two unit fixtures after464 passes and remains
 failed. [Attempt02](runs/20261023-boltz-lr0025-02/README.md) isolates the inherited
 lazy-checker monkeypatch without changing scientific bytes, settings or gates.
 Its full allocated CPU suite passed799 actual cases; native validators29798605
-and29798607 are queued with their own callbacks. Native readiness and new
-optimization starts have not yet been established.
+and29798607 then failed before model loading on missing manifest provenance.
+[Attempt03](runs/20261024-boltz-lr0025-03/run-record.md) seals the authenticated
+revision correction and actual generated-command startup checks. DTU SSH
+authentication currently blocks its allocated testing and fresh submission;
+no new native gradient pass or optimization start is established.

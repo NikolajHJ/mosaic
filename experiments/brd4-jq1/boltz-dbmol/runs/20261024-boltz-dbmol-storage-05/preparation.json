@@ -1,0 +1,15 @@
+{
+  "status": "preparing_not_submitted",
+  "scope": "Explicit archived-manifest metadata fix and fresh DBMol resubmission",
+  "original_scientific_source_manifest_sha256": "24c207da5510fa579576a04ad32bf1afc6e1f23f51dcb5251d82a4ebdfa8f436",
+  "scientific_members_changed": [],
+  "saved_results_changed": false,
+  "trusted_revision": "c74c659344123937608077e3e4078f75f09cd743",
+  "revision_ancestor_manifest_sha256": "c2628d08f7224f3b572ab456f4113d8a66b587a5d69f85a072877052fc09a057",
+  "new_scientific_source": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-release-02/source",
+  "new_root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02",
+  "history_root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-01",
+  "new_cpu_parents": ["cpu-05", "after-cpu-05"],
+  "native_failure_preserved": {"job_id": "29802648", "callback": "29802649", "cause": "KeyError: git_revision_reference before model invocation"},
+  "local_validation_scope": "Standard-library AST/JSON/XML/byte packaging only; all execution checks allocated"
+}

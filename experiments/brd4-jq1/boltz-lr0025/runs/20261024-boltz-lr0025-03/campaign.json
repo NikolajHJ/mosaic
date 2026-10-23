@@ -1,0 +1,51 @@
+{
+  "state": "blocked_hpc_authentication",
+  "package": {
+    "tag": "20261024-boltz-lr0025-03",
+    "manifest_sha256": "c214bccf2c94ac6829996bc0ca7d6415d3c19549be4fe7f874cba2b433901cc6",
+    "source_files": 635,
+    "archive_bytes": 39628961,
+    "archive_sha256": "d77d298b7cd2df41b4fb97fb22bf241a623c0d9825edab89226c54fa90b4b9ba",
+    "parent_manifest_sha256": "3689071a4e7dd135071ff5b420c026543c4d10887c951077dff63d498d9f812c",
+    "changed_members": {
+      "scripts/boltz_serial_ops.py": "93c5395829cdea95dd6da87af060e24bd5f74f5a2c721a486e50b4fbc03087dc",
+      "scripts/hpc/boltz_serial_cpu.lsf": "685955d5461fb02853292e0be3897dff2e44127a0dc7173539e5ac65a45d378f",
+      "docs/boltz_serial30k.md": "61eb6c6e3e3f9a88ac299886cb5e9181f2660bd16c5e0e2d0e69cb62b103380b",
+      "scripts/premodel_startup.py": "51236d7bb18e25e52f2407ecc2efc196aead972ba9694003c78339461934be77",
+      "tests/test_premodel_startup.py": "176b280261d77b60f812ca2c0e7c0828ea92672a506c1eaba364cdab1ed0d4a1"
+    },
+    "git_revision_reference": "c74c659344123937608077e3e4078f75f09cd743",
+    "git_revision_inheritance": {
+      "version": "authenticated-ancestor-git-revision-v1",
+      "ancestor_manifest_sha256": "c2628d08f7224f3b572ab456f4113d8a66b587a5d69f85a072877052fc09a057",
+      "ancestor_archive_sha256": "4d6d297451d9820543abc3298622e6599014c4b96bc999e104dd732825f56e4e",
+      "field": "git_revision_reference",
+      "value": "c74c659344123937608077e3e4078f75f09cd743",
+      "scope": "Exact original625 metadata field; no inferred revision"
+    },
+    "scientific_src_changes": [],
+    "unchanged_scientific_library_members": 145,
+    "execution": "Local stdlib AST/JSON/byte packaging only; allocated checks pending"
+  },
+  "required_cpu_cases": 827,
+  "cpu_status": "not_submitted",
+  "actual_generated_startup_status": "not_run",
+  "native_status": "not_submitted",
+  "optimization_submissions": [],
+  "same_settings": true,
+  "saved_results_changed": false,
+  "source_staging_attempt": {
+    "status": "blocked_hpc_authentication",
+    "returncode": 255,
+    "error": "Permission denied (password)",
+    "remote_command_executed_by_this_attempt": false,
+    "remote_target_existence": "not_established; inspect after access restoration",
+    "new_jobs_submitted": false,
+    "staging_marker_preserved": true,
+    "staging_stderr_sha256": "dd5abe512547a2d013ab0b4b53f566c336259151633db6dd7cdf8151ef54b9cc",
+    "first_preflight": "read-only connection aborted with no completed targets/quota/peer inventory",
+    "blind_retry_allowed": false
+  },
+  "full_dispatch_requires_all_existing_projection_gates": true,
+  "user_paused_monitor_unchanged": true
+}

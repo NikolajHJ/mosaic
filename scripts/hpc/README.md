@@ -14,3 +14,9 @@ These are shared dependencies, not independent scientific experiments. [Experime
 Use canonical paths for new work. Old Python/shell paths forward to these files; retained declarative files are checked against their canonical owner. All original numerical/allocation/scientific guards apply. No model, numerical test or scheduler command was run for this migration.
 
 [Historical receipts](receipts/README.md) retain their original paths and bytes. Do not replay them.
+
+
+The shared [pre-model startup checker](startup/README.md) serves the fresh
+Boltz30k comparison and independent DBMol pilot. It tests actual generated
+driver startup in allocated CPU callbacks; its receipt is separate from native
+gradient readiness and never changes saved scientific results.

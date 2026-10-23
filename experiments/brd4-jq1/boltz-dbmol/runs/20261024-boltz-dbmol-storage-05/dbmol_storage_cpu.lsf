@@ -1,0 +1,60 @@
+#!/bin/bash
+set -euo pipefail
+[[ -n "${LSB_JOBID:-}" ]]
+launcher=$1
+launcher_manifest=$2
+source=$3
+root=$4
+manifest=$5
+module load python3/3.12.11
+python=/work3/s234818/mosaic/envs/protenix-tiny/bin/python
+native=/work3/s234818/latentmol/env/boltz311/bin/python
+"$python" - "$launcher" "$launcher_manifest" "$source" "$manifest" <<'MOSAIC_AUTH'
+import hashlib,json,sys
+from pathlib import Path
+expected_science='600ecc3b33135141a57c029a28a2c72f29e788e3ecf5cb2dac1761146d1d6eed'
+assert sys.argv[4]==expected_science
+for root,expected in [(Path(sys.argv[1]),sys.argv[2]),(Path(sys.argv[3]),sys.argv[4])]:
+ raw=(root/'source_manifest.json').read_bytes();assert hashlib.sha256(raw).hexdigest()==expected
+ files=json.loads(raw)['files'];actual={p.relative_to(root).as_posix() for p in root.rglob('*') if p.is_file() or p.is_symlink()}
+ assert actual==set(files)|{'source_manifest.json'}
+ for p in [root,*root.rglob('*')]:assert not p.is_symlink() and (p.is_file() or p.is_dir()) and not(p.stat().st_mode&0o222)
+ for name,digest in files.items():
+  p=root/name;assert p.resolve().is_relative_to(root.resolve())
+  with p.open('rb') as f:assert hashlib.file_digest(f,'sha256').hexdigest()==digest
+MOSAIC_AUTH
+export PYTHONPATH="$launcher/scripts:$source/scripts:$source/src:$source/tests" PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+unset PYTEST_ADDOPTS
+export CUDA_VISIBLE_DEVICES='' JAX_PLATFORMS=cpu JAX_ENABLE_X64=0
+export OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 MKL_NUM_THREADS=4
+source "$source/scripts/hpc/boltz_node_tmpdir.sh"
+"$python" "$launcher/scripts/dbmol_storage_ops.py" --phase cpu-entry --root "$root" --source "$source" --manifest "$manifest" --launcher "$launcher" --launcher-manifest "$launcher_manifest"
+
+mkdir "$root/cpu-05/payload"
+run="$root/cpu-05/payload"
+cd "$source"
+contracts=(tests/test_boltz_submission_controller.py tests/test_boltz_hpc_tmpdir.py tests/test_campaign25_ops.py tests/test_campaign25_release.py tests/test_campaign25_pocket_ops.py tests/test_pocket_definition.py tests/test_protenix_lr03_ops.py tests/test_protenix_lr03_storage.py tests/test_fixed25_ops.py tests/test_fixed25_storage.py tests/test_fixed25_lrboost_contract.py tests/test_fixed25_lrboost_ops.py tests/test_fixed25_lrboost_storage.py tests/test_fixed25_lrreset_contract.py tests/test_fixed25_lrreset_ops.py tests/test_fixed25_lrreset_storage.py tests/test_protenix_initialization.py tests/test_random_chem.py tests/test_extended_protenix.py)
+"$python" -m pytest "${contracts[@]}" --rootdir "$source" --import-mode=importlib -o addopts= -o cache_dir="$run/cache-contract" --basetemp "$TMPDIR/contracts" --junitxml="$run/hpc-contract.xml" > "$run/hpc-contract.log" 2>&1
+legacy=()
+for file in tests/test_small_molecule_*.py; do
+  case "$file" in tests/test_small_molecule_chemistry*.py) ;; *) legacy+=("$file");; esac
+done
+"$python" -m pytest "${legacy[@]}" --rootdir "$source" --import-mode=importlib -o addopts= -m 'not slow and not small_molecule_model' -o cache_dir="$run/cache-legacy" --basetemp "$TMPDIR/legacy" --junitxml="$run/legacy.xml" > "$run/legacy.log" 2>&1
+"$native" -m pytest tests/test_boltz_native_mapping.py tests/test_campaign25_native.py tests/test_campaign25_contract.py tests/test_pocket_boltz.py --rootdir "$source" --import-mode=importlib -o addopts= -o cache_dir="$run/cache-native" --basetemp "$TMPDIR/native" --junitxml="$run/native-mapping.xml" > "$run/native-mapping.log" 2>&1
+"$native" scripts/create_chemistry_oracles.py --source tests/data/chemistry_oracle --manifest src/mosaic/small_molecule/chemistry/_reference/source_manifest.json --output "$run/oracles.json" > "$run/oracles.log" 2>&1
+export JAX_ENABLE_X64=1 MOSAIC_REQUIRE_CHEMISTRY_ORACLES=1 MOSAIC_CHEMISTRY_ORACLES="$run/oracles.json"
+"$python" -m pytest tests/test_small_molecule_chemistry*.py --rootdir "$source" --import-mode=importlib -o addopts= -o cache_dir="$run/cache-chemistry" --basetemp "$TMPDIR/chemistry" --junitxml="$run/chemistry.xml" > "$run/chemistry.log" 2>&1
+reference=/zhome/95/e/206121/mosaic-runs/20261019-brd4-chemistry-ramp-01-readiness/payload/composition_reference.json
+echo "37b34a2ba7be47886936df48faaabdeac20481e5a9cebca9bafab831c07868eb  $reference" | sha256sum -c -
+cp "$reference" "$run/composition_reference.json"
+"$python" scripts/derive_brd4_jq1_pocket.py --pdb tests/data/brd4_3mxf/3MXF.pdb --fixture tests/data/brd4_3mxf/fixture_25.json --output "$run/pocket_definition.json"
+"$python" scripts/assess_boltz_cpu.py --run "$run" --manifest "$manifest"
+
+# New objective fixtures run in each dependency-owning environment, allocated only.
+export JAX_ENABLE_X64=1
+"$native" -m pytest tests/test_dbmol_objective.py tests/test_dbmol_native_paths.py --rootdir "$source" --import-mode=importlib -o addopts= -o cache_dir="$run/cache-dbmol-native" --basetemp "$TMPDIR/dbmol-native" --junitxml="$run/dbmol-native.xml" > "$run/dbmol-native.log" 2>&1
+"$python" -m pytest "$launcher/tests/test_dbmol_gradient_contract.py" "$launcher/tests/test_dbmol_bridge.py" "$launcher/tests/test_dbmol_pilot_contract.py" --rootdir "$launcher" --import-mode=importlib -o addopts= -o cache_dir="$run/cache-dbmol-transport" --basetemp "$TMPDIR/dbmol-transport" --junitxml="$run/dbmol-transport.xml" > "$run/dbmol-transport.log" 2>&1
+
+"$python" -m pytest "$launcher/tests/fixture_storage_adoption.py" --rootdir "$launcher" --import-mode=importlib -o addopts= -o cache_dir="$run/cache-launcher" --basetemp "$TMPDIR/launcher-adoption" --junitxml="$run/launcher-adoption.xml" > "$run/launcher-adoption.log" 2>&1
+
+"$python" -m pytest "$launcher/tests/test_premodel_startup.py" --rootdir "$launcher" --import-mode=importlib -o addopts= -o cache_dir="$run/cache-startup" --basetemp "$TMPDIR/startup-contracts" --junitxml="$run/startup.xml" > "$run/startup.log" 2>&1

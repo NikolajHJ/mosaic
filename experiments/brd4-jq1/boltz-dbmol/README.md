@@ -75,3 +75,11 @@ all1,135 cases. NewCPU29802621/callback29802622 submitted19:08UTC after fresh
 validation storage passed. Previous CPU success and callback failure remain
 separately preserved. Native gradients and optimization start require their own
 allocated proofs; current outcomes are in each run's campaign JSON.
+
+
+The latest [pilot02/launcher05 correction](runs/20261024-boltz-dbmol-storage-05/run-record.md)
+adds the authenticated manifest revision and actual generated-command startup
+gates after launcher04 CPU passed1,135 cases and its native job failed before
+model loading on missing provenance. All657 scientific member bytes remain
+unchanged. DTU SSH authentication blocks new allocated testing/submission;
+no DBMol native gradient pass or optimization start is established.

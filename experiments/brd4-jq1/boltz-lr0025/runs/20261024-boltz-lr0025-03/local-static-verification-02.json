@@ -1,0 +1,52 @@
+{
+  "actual_startup_smoke_pass_established": false,
+  "allocated_cpu_pass_established": false,
+  "ancestor_manifest_sha256": "c2628d08f7224f3b572ab456f4113d8a66b587a5d69f85a072877052fc09a057",
+  "archive_bytes": 39628961,
+  "archive_sha256": "d77d298b7cd2df41b4fb97fb22bf241a623c0d9825edab89226c54fa90b4b9ba",
+  "canonical_aliases_byte_matched": 11,
+  "changed_inherited_controller_functions": [
+    "certify_cpu",
+    "certify_segment",
+    "dbmol_budget",
+    "dispatch",
+    "main",
+    "queue_native",
+    "storage_gate"
+  ],
+  "changed_members": {
+    "docs/boltz_serial30k.md": "61eb6c6e3e3f9a88ac299886cb5e9181f2660bd16c5e0e2d0e69cb62b103380b",
+    "scripts/boltz_serial_ops.py": "93c5395829cdea95dd6da87af060e24bd5f74f5a2c721a486e50b4fbc03087dc",
+    "scripts/hpc/boltz_serial_cpu.lsf": "685955d5461fb02853292e0be3897dff2e44127a0dc7173539e5ac65a45d378f",
+    "scripts/premodel_startup.py": "51236d7bb18e25e52f2407ecc2efc196aead972ba9694003c78339461934be77",
+    "tests/test_premodel_startup.py": "176b280261d77b60f812ca2c0e7c0828ea92672a506c1eaba364cdab1ed0d4a1"
+  },
+  "expected_allocated_cpu_cases": 827,
+  "git_revision_reference": "c74c659344123937608077e3e4078f75f09cd743",
+  "manifest_sha256": "c214bccf2c94ac6829996bc0ca7d6415d3c19549be4fe7f874cba2b433901cc6",
+  "native_readiness_pass_established": false,
+  "numerical_tests_executed_locally": false,
+  "parent_manifest_sha256": "3689071a4e7dd135071ff5b420c026543c4d10887c951077dff63d498d9f812c",
+  "python_members_ast_parsed": 323,
+  "remote_submission_established": false,
+  "safe_members": 636,
+  "scope": "Post-seal local stdlib byte/JSON/AST verification only",
+  "shared_aliases_byte_matched": 2,
+  "source_files": 635,
+  "startup_fixture_declared_cases": 28,
+  "status": "passed",
+  "tag": "20261024-boltz-lr0025-03",
+  "unchanged_produce_native_assessment_all_budgets_ast": true,
+  "unchanged_protected_members": [
+    "examples/brd4_25_atoms.py",
+    "examples/configs/boltz_serial_boltz2.json",
+    "examples/configs/boltz_serial_boltz2_chemistry.json",
+    "scripts/boltz_serial_protocol.py",
+    "scripts/campaign25_contract.py",
+    "scripts/hpc/boltz_serial_stage.lsf",
+    "tests/test_boltz_serial.py",
+    "tests/test_protenix_initialization.py"
+  ],
+  "unchanged_scientific_members": 145,
+  "verified_at_utc": "2026-10-23T23:56:17.764723+00:00"
+}

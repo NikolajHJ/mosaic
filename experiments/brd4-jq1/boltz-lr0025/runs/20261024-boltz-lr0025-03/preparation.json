@@ -1,0 +1,16 @@
+{
+  "status": "preparing_not_submitted",
+  "user_authorization": "Correct provenance metadata, test actual startup commands, and resubmit both fresh Boltz30k arms unchanged",
+  "parent_source_manifest_sha256": "3689071a4e7dd135071ff5b420c026543c4d10887c951077dff63d498d9f812c",
+  "authenticated_ancestor_manifest_sha256": "c2628d08f7224f3b572ab456f4113d8a66b587a5d69f85a072877052fc09a057",
+  "git_revision_reference": "c74c659344123937608077e3e4078f75f09cd743",
+  "remote_root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03",
+  "remote_source": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-release-03/source",
+  "dbmol_peer_root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02",
+  "scientific_library_driver_protocol_configs_changed": false,
+  "saved_results_changed": false,
+  "old_native_failure_jobs_preserved": ["29798605", "29798606", "29798607", "29798608"],
+  "protenix_scope_changed": false,
+  "missing_full_peer_projection_policy": "Keep prospective native allowance; block full production without authenticated complete projection",
+  "local_validation": "Standard-library AST/JSON/XML/byte packaging only"
+}

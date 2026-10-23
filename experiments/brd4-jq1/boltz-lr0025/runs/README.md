@@ -9,3 +9,10 @@
 
 Source/result history is retained in each dated attempt. Failed or unknown
 outcomes are never overwritten or relabeled as passes.
+
+
+`20261024-boltz-lr0025-03` is the explicit provenance/startup correction after
+both native02 jobs failed before model loading. It preserves scientific source,
+adds the authenticated manifest revision and actual generated-command startup
+gates, and uses fresh output roots. Its local seal and authentication blocker
+are recorded in [run-record.md](20261024-boltz-lr0025-03/run-record.md).

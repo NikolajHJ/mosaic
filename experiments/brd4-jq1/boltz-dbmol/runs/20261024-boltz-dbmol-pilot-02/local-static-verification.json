@@ -1,0 +1,11 @@
+{
+  "status": "static_archive_verified_no_numerical_execution",
+  "source_files": 657,
+  "safe_members": 658,
+  "all657_source_members_byte_identical": true,
+  "only_manifest_changed": true,
+  "manifest_sha256": "600ecc3b33135141a57c029a28a2c72f29e788e3ecf5cb2dac1761146d1d6eed",
+  "archive_sha256": "592a4b3d7d95909111013dacc95d4a1301b6e875fb124267ad08af7ca402381e",
+  "git_revision_reference": "c74c659344123937608077e3e4078f75f09cd743",
+  "original_saved_results_changed": false
+}

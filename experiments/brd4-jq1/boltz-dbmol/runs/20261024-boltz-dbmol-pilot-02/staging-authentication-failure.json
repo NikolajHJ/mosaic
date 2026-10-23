@@ -1,0 +1,12 @@
+{
+  "status": "blocked_hpc_authentication",
+  "returncode": 255,
+  "error": "Permission denied (password)",
+  "remote_command_executed_by_this_attempt": false,
+  "remote_target_existence": "not_established; inspect after access restoration",
+  "new_jobs_submitted": false,
+  "staging_marker_preserved": true,
+  "staging_stderr_sha256": "dd5abe512547a2d013ab0b4b53f566c336259151633db6dd7cdf8151ef54b9cc",
+  "first_preflight": "read-only connection aborted with no completed targets/quota/peer inventory",
+  "blind_retry_allowed": false
+}

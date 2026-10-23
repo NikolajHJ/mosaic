@@ -19,3 +19,10 @@ separate callback-attribution failure. It packages an exact bridge-fixture copy
 inside the shared pytest root, retaining strict module checks and unchanged
 science657. [Actual run record](20261023-boltz-dbmol-storage-04/run-record.md)
 and campaign receipts distinguish allocated CPU/native acceptance from admission.
+
+
+`20261024-boltz-dbmol-pilot-02` preserves all657 scientific member bytes with a
+new authenticated revision manifest. `20261024-boltz-dbmol-storage-05` supplies
+fresh output/history identities and actual generated-command startup checks.
+See its [execution record](20261024-boltz-dbmol-storage-05/run-record.md):
+SSH authentication currently blocks allocated testing and submission.

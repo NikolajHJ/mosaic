@@ -1,0 +1,21 @@
+{
+  "status": "passed",
+  "scope": "Local stdlib archive/hash/AST/JSON and Git-index-byte verification only",
+  "source_members": [
+    635,
+    657,
+    10
+  ],
+  "all657_scientific_members_unchanged": true,
+  "staged_aliases_match_sealed_bytes": true,
+  "staged_files": 57,
+  "staged_python_AST_parsed": 20,
+  "staged_JSON_parsed": 17,
+  "shared_fixture_canonical_path": "tests/core/fixture_premodel_startup.py",
+  "shared_fixture_archive_alias": "tests/test_premodel_startup.py",
+  "startup_fixture_sha256": "176b280261d77b60f812ca2c0e7c0828ea92672a506c1eaba364cdab1ed0d4a1",
+  "actual_startup_commands_executed": false,
+  "allocated_tests_executed": false,
+  "new_job_submitted": false,
+  "blocked": "DTU SSH authentication rejected staging before remote command"
+}

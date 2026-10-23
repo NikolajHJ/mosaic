@@ -1,0 +1,10 @@
+{
+  "status": "parent_independent_static_package_verified",
+  "manifest_sha256": "865303de06fc0a0bdf9297857c5bbc78c6ccd9ee05177e372a51869adc599bc3",
+  "archive_bytes": 46951,
+  "archive_sha256": "d3690757d45422550aca1317491903a446a13ccedb3209621886933229b24586",
+  "safe_regular_members": 11,
+  "shared_helper_fixture_exact": true,
+  "scientific_settings_unchanged": true,
+  "allocated_tests_run": false
+}

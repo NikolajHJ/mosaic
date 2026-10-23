@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "scope": "Independent local stdlib safe archive/byte/AST checks only; no numerical execution",
+  "captured_utc": "2026-10-23T23:48:59.177366+00:00",
+  "files_verified": 10,
+  "safe_members": 11,
+  "manifest_sha256": "865303de06fc0a0bdf9297857c5bbc78c6ccd9ee05177e372a51869adc599bc3",
+  "archive_sha256": "d3690757d45422550aca1317491903a446a13ccedb3209621886933229b24586",
+  "original_transport_fixtures_byte_identical": true,
+  "shared_startup_aliases_byte_identical": true,
+  "scientific_members_changed": [],
+  "required_allocated_cpu_cases": 1163
+}

@@ -1,0 +1,32 @@
+{
+  "status": "blocked_hpc_authentication",
+  "source02_manifest_sha256": "600ecc3b33135141a57c029a28a2c72f29e788e3ecf5cb2dac1761146d1d6eed",
+  "source02_archive_bytes": 39676528,
+  "source02_archive_sha256": "592a4b3d7d95909111013dacc95d4a1301b6e875fb124267ad08af7ca402381e",
+  "source02_members": 657,
+  "changed_scientific_members": [],
+  "launcher05_manifest_sha256": "865303de06fc0a0bdf9297857c5bbc78c6ccd9ee05177e372a51869adc599bc3",
+  "launcher05_archive_bytes": 46951,
+  "launcher05_archive_sha256": "d3690757d45422550aca1317491903a446a13ccedb3209621886933229b24586",
+  "launcher05_members": 10,
+  "local_static_verification": "local-static-verification.json",
+  "remote_attempt": {
+    "path": "results/hpc/20261024-boltz-dbmol-pilot-02/staging-result.json",
+    "returncode": 255,
+    "error": "Permission denied (password)",
+    "successful_staging_not_established": true,
+    "new_job_submissions_attempted": false,
+    "blind_retry_permitted": false
+  },
+  "required_checks": {
+    "cpu_cases": 1163,
+    "cpu_status": "not_submitted",
+    "actual_generated_driver_startup_status": "not_run",
+    "native_gradient_status": "not_submitted",
+    "long_run_status": "not_submitted"
+  },
+  "independent_full_dispatch_blocker": "Existing Protenix641 full native projections are not established; no full-long quota gate waiver or Protenix scope change",
+  "saved_results_changed": false,
+  "history_preserved": "Old pilot01 CPU passes and all native/engineering failures remain separately authenticated",
+  "required_human_action": "Restore DTU HPC SSH authentication; inspect exact staging marker, remote source/root/unknown-outcome paths before any recovery"
+}
