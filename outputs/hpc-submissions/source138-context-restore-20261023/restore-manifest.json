@@ -1,0 +1,365 @@
+{
+  "count": 44,
+  "files": [
+    {
+      "archive_member": "payloads/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-01/prepared.pt",
+      "bytes": 28046446,
+      "local_path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source138-context-restore-20261023\\payloads\\runs\\source056-random-start-study\\20261005T225808Z_vae-random-starts-056_37735924\\contexts\\count-01\\prepared.pt",
+      "original_path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-01/prepared.pt",
+      "relative_path": "runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-01/prepared.pt",
+      "sha256": "cf22b96986b703edd131e2d69ed6b318972b31281f49acc779ce290a36a9d57f"
+    },
+    {
+      "archive_member": "payloads/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-02/prepared.pt",
+      "bytes": 28391278,
+      "local_path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source138-context-restore-20261023\\payloads\\runs\\source056-random-start-study\\20261005T225808Z_vae-random-starts-056_37735924\\contexts\\count-02\\prepared.pt",
+      "original_path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-02/prepared.pt",
+      "relative_path": "runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-02/prepared.pt",
+      "sha256": "a3bfaa4d36d3099f6ef05b8df1aa75fa495c0d81367bfa8f62333ee0d4a5f82d"
+    },
+    {
+      "archive_member": "payloads/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-03/prepared.pt",
+      "bytes": 28379054,
+      "local_path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source138-context-restore-20261023\\payloads\\runs\\source056-random-start-study\\20261005T225808Z_vae-random-starts-056_37735924\\contexts\\count-03\\prepared.pt",
+      "original_path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-03/prepared.pt",
+      "relative_path": "runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-03/prepared.pt",
+      "sha256": "b3b138e5976fe969b397c6c49543a4ab186642538e9d2b4165790b51a2daaebe"
+    },
+    {
+      "archive_member": "payloads/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-04/prepared.pt",
+      "bytes": 27001838,
+      "local_path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source138-context-restore-20261023\\payloads\\runs\\source056-random-start-study\\20261005T225808Z_vae-random-starts-056_37735924\\contexts\\count-04\\prepared.pt",
+      "original_path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-04/prepared.pt",
+      "relative_path": "runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-04/prepared.pt",
+      "sha256": "229cf9b817c5e447788c193b6c00b931389850776561fe01b5acef2cb1fdd933"
+    },
+    {
+      "archive_member": "payloads/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-05/prepared.pt",
+      "bytes": 27338798,
+      "local_path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source138-context-restore-20261023\\payloads\\runs\\source056-random-start-study\\20261005T225808Z_vae-random-starts-056_37735924\\contexts\\count-05\\prepared.pt",
+      "original_path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-05/prepared.pt",
+      "relative_path": "runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-05/prepared.pt",
+      "sha256": "4e51d667c34570e1a8ec1f60a33bebce44a6c5b5bff7d8c396552e3acaff9779"
+    },
+    {
+      "archive_member": "payloads/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-06/prepared.pt",
+      "bytes": 28701294,
+      "local_path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source138-context-restore-20261023\\payloads\\runs\\source056-random-start-study\\20261005T225808Z_vae-random-starts-056_37735924\\contexts\\count-06\\prepared.pt",
+      "original_path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-06/prepared.pt",
+      "relative_path": "runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-06/prepared.pt",
+      "sha256": "e35e05cfde4f2781e43dec2d284279ed3cff7cdf6ce4e6ad639b15fc50f6009a"
+    },
+    {
+      "archive_member": "payloads/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-07/prepared.pt",
+      "bytes": 29231662,
+      "local_path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source138-context-restore-20261023\\payloads\\runs\\source056-random-start-study\\20261005T225808Z_vae-random-starts-056_37735924\\contexts\\count-07\\prepared.pt",
+      "original_path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-07/prepared.pt",
+      "relative_path": "runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-07/prepared.pt",
+      "sha256": "4e063a5541601adfaa46bb93915dd813290be6094f925d1a476d8f502f46b1c0"
+    },
+    {
+      "archive_member": "payloads/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-08/prepared.pt",
+      "bytes": 28009838,
+      "local_path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source138-context-restore-20261023\\payloads\\runs\\source056-random-start-study\\20261005T225808Z_vae-random-starts-056_37735924\\contexts\\count-08\\prepared.pt",
+      "original_path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-08/prepared.pt",
+      "relative_path": "runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-08/prepared.pt",
+      "sha256": "304d502db4bfb64665903e90d611292d9043ec4ba1daf5595e4b32f6ac0ca3c4"
+    },
+    {
+      "archive_member": "payloads/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-09/prepared.pt",
+      "bytes": 27513582,
+      "local_path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source138-context-restore-20261023\\payloads\\runs\\source056-random-start-study\\20261005T225808Z_vae-random-starts-056_37735924\\contexts\\count-09\\prepared.pt",
+      "original_path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-09/prepared.pt",
+      "relative_path": "runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-09/prepared.pt",
+      "sha256": "d9530c6d17400c2b2ed17b46f44f7c0e36333c8515f5de13eb675dfa46b03f20"
+    },
+    {
+      "archive_member": "payloads/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-16/prepared.pt",
+      "bytes": 31297454,
+      "local_path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source138-context-restore-20261023\\payloads\\runs\\source056-random-start-study\\20261005T225808Z_vae-random-starts-056_37735924\\contexts\\count-16\\prepared.pt",
+      "original_path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-16/prepared.pt",
+      "relative_path": "runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-16/prepared.pt",
+      "sha256": "65075ccc9a72a5b376d70aa7ba93071f30899f7a21e41dcaf2164b4138faa702"
+    },
+    {
+      "archive_member": "payloads/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-17/prepared.pt",
+      "bytes": 31474734,
+      "local_path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source138-context-restore-20261023\\payloads\\runs\\source056-random-start-study\\20261005T225808Z_vae-random-starts-056_37735924\\contexts\\count-17\\prepared.pt",
+      "original_path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-17/prepared.pt",
+      "relative_path": "runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-17/prepared.pt",
+      "sha256": "c23fdf9a74d3944f95c115c9819cac75db0fc0b1b9fb456566dc87fae06c162a"
+    },
+    {
+      "archive_member": "payloads/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-18/prepared.pt",
+      "bytes": 31652462,
+      "local_path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source138-context-restore-20261023\\payloads\\runs\\source056-random-start-study\\20261005T225808Z_vae-random-starts-056_37735924\\contexts\\count-18\\prepared.pt",
+      "original_path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-18/prepared.pt",
+      "relative_path": "runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-18/prepared.pt",
+      "sha256": "99efeed3d1b3093b39e64affb6865e5dec7ecb6d6fde54a26b915c2c145b400e"
+    },
+    {
+      "archive_member": "payloads/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-19/prepared.pt",
+      "bytes": 31317102,
+      "local_path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source138-context-restore-20261023\\payloads\\runs\\source056-random-start-study\\20261005T225808Z_vae-random-starts-056_37735924\\contexts\\count-19\\prepared.pt",
+      "original_path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-19/prepared.pt",
+      "relative_path": "runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-19/prepared.pt",
+      "sha256": "492fae1ec092ad6667433bd88b28e3b4ce869a42f4755ea5479a64daba78ae91"
+    },
+    {
+      "archive_member": "payloads/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-20/prepared.pt",
+      "bytes": 32010414,
+      "local_path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source138-context-restore-20261023\\payloads\\runs\\source056-random-start-study\\20261005T225808Z_vae-random-starts-056_37735924\\contexts\\count-20\\prepared.pt",
+      "original_path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-20/prepared.pt",
+      "relative_path": "runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-20/prepared.pt",
+      "sha256": "61687fd6b5a224dc714c356577e7be2e93c29accf3497dd0a614848464a82c70"
+    },
+    {
+      "archive_member": "payloads/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-21/prepared.pt",
+      "bytes": 32190318,
+      "local_path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source138-context-restore-20261023\\payloads\\runs\\source056-random-start-study\\20261005T225808Z_vae-random-starts-056_37735924\\contexts\\count-21\\prepared.pt",
+      "original_path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-21/prepared.pt",
+      "relative_path": "runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-21/prepared.pt",
+      "sha256": "7d093db995b54fe79ecd4393217129eacb18b7d0781ea609c0c962e435938991"
+    },
+    {
+      "archive_member": "payloads/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-22/prepared.pt",
+      "bytes": 30211118,
+      "local_path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source138-context-restore-20261023\\payloads\\runs\\source056-random-start-study\\20261005T225808Z_vae-random-starts-056_37735924\\contexts\\count-22\\prepared.pt",
+      "original_path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-22/prepared.pt",
+      "relative_path": "runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-22/prepared.pt",
+      "sha256": "9a6cd38cfbaf114c09aa31da756b9db472b47ed0afe2de1edf9ef7792c74d570"
+    },
+    {
+      "archive_member": "payloads/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-23/prepared.pt",
+      "bytes": 32551854,
+      "local_path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source138-context-restore-20261023\\payloads\\runs\\source056-random-start-study\\20261005T225808Z_vae-random-starts-056_37735924\\contexts\\count-23\\prepared.pt",
+      "original_path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-23/prepared.pt",
+      "relative_path": "runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-23/prepared.pt",
+      "sha256": "7cb096ed544e8d4982c98b08c85a02ceda2c01ae587c73d1990849e89adc2d92"
+    },
+    {
+      "archive_member": "payloads/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-24/prepared.pt",
+      "bytes": 32735790,
+      "local_path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source138-context-restore-20261023\\payloads\\runs\\source056-random-start-study\\20261005T225808Z_vae-random-starts-056_37735924\\contexts\\count-24\\prepared.pt",
+      "original_path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-24/prepared.pt",
+      "relative_path": "runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-24/prepared.pt",
+      "sha256": "c65b32b06e0e11769730f15685d8072d8877b745601eff20f1c84857e4cc186b"
+    },
+    {
+      "archive_member": "payloads/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-25/prepared.pt",
+      "bytes": 30550446,
+      "local_path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source138-context-restore-20261023\\payloads\\runs\\source056-random-start-study\\20261005T225808Z_vae-random-starts-056_37735924\\contexts\\count-25\\prepared.pt",
+      "original_path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-25/prepared.pt",
+      "relative_path": "runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-25/prepared.pt",
+      "sha256": "84a0d35dbb565a535a18a7ef04bda5fbd7ab589c4e1ea2ac30d3e3437130e9cb"
+    },
+    {
+      "archive_member": "payloads/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-26/prepared.pt",
+      "bytes": 32906286,
+      "local_path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source138-context-restore-20261023\\payloads\\runs\\source056-random-start-study\\20261005T225808Z_vae-random-starts-056_37735924\\contexts\\count-26\\prepared.pt",
+      "original_path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-26/prepared.pt",
+      "relative_path": "runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-26/prepared.pt",
+      "sha256": "85e9dc58dcec048634967676de804d2ff93c4097e59c9cc07031785cf8192acf"
+    },
+    {
+      "archive_member": "payloads/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-27/prepared.pt",
+      "bytes": 33418606,
+      "local_path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source138-context-restore-20261023\\payloads\\runs\\source056-random-start-study\\20261005T225808Z_vae-random-starts-056_37735924\\contexts\\count-27\\prepared.pt",
+      "original_path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-27/prepared.pt",
+      "relative_path": "runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-27/prepared.pt",
+      "sha256": "fb6264fc4bbdcd1cbebef4fcc864c56f5673e5b7f4eee8cbb2e7d5b6f6b97729"
+    },
+    {
+      "archive_member": "payloads/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-28/prepared.pt",
+      "bytes": 33800430,
+      "local_path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source138-context-restore-20261023\\payloads\\runs\\source056-random-start-study\\20261005T225808Z_vae-random-starts-056_37735924\\contexts\\count-28\\prepared.pt",
+      "original_path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-28/prepared.pt",
+      "relative_path": "runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-28/prepared.pt",
+      "sha256": "fccd9bdf00450720e7bdd510f1145f55f10ae90879113db3c31d3ccd5f09891a"
+    },
+    {
+      "archive_member": "payloads/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-29/prepared.pt",
+      "bytes": 33986158,
+      "local_path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source138-context-restore-20261023\\payloads\\runs\\source056-random-start-study\\20261005T225808Z_vae-random-starts-056_37735924\\contexts\\count-29\\prepared.pt",
+      "original_path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-29/prepared.pt",
+      "relative_path": "runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-29/prepared.pt",
+      "sha256": "5ce05c0d41c9d27e5030fd50efc921d70b41829f98f3057e7ac30d9455d496d4"
+    },
+    {
+      "archive_member": "payloads/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-30/prepared.pt",
+      "bytes": 31436718,
+      "local_path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source138-context-restore-20261023\\payloads\\runs\\source056-random-start-study\\20261005T225808Z_vae-random-starts-056_37735924\\contexts\\count-30\\prepared.pt",
+      "original_path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-30/prepared.pt",
+      "relative_path": "runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-30/prepared.pt",
+      "sha256": "60824d5774daae9974c3685dbfac595d274d5f280ee9f36882f86852e48dddc2"
+    },
+    {
+      "archive_member": "payloads/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-31/prepared.pt",
+      "bytes": 34360110,
+      "local_path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source138-context-restore-20261023\\payloads\\runs\\source056-random-start-study\\20261005T225808Z_vae-random-starts-056_37735924\\contexts\\count-31\\prepared.pt",
+      "original_path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-31/prepared.pt",
+      "relative_path": "runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-31/prepared.pt",
+      "sha256": "7bcfc272e6793babc68ae0720714636e51c8d459b67a2f0f57b7e1a145fe0c51"
+    },
+    {
+      "archive_member": "payloads/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-32/prepared.pt",
+      "bytes": 34014894,
+      "local_path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source138-context-restore-20261023\\payloads\\runs\\source056-random-start-study\\20261005T225808Z_vae-random-starts-056_37735924\\contexts\\count-32\\prepared.pt",
+      "original_path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-32/prepared.pt",
+      "relative_path": "runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-32/prepared.pt",
+      "sha256": "733c1e4480dcf3123e0c59b723cfa585ce943623126abd59dc9a7d4f2b12b586"
+    },
+    {
+      "archive_member": "payloads/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-33/prepared.pt",
+      "bytes": 34737070,
+      "local_path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source138-context-restore-20261023\\payloads\\runs\\source056-random-start-study\\20261005T225808Z_vae-random-starts-056_37735924\\contexts\\count-33\\prepared.pt",
+      "original_path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-33/prepared.pt",
+      "relative_path": "runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-33/prepared.pt",
+      "sha256": "d4ab4e3b9abafcc8626de380ffcbe16c638df033123a60bd720b214b13d1d7f4"
+    },
+    {
+      "archive_member": "payloads/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-34/prepared.pt",
+      "bytes": 34925934,
+      "local_path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source138-context-restore-20261023\\payloads\\runs\\source056-random-start-study\\20261005T225808Z_vae-random-starts-056_37735924\\contexts\\count-34\\prepared.pt",
+      "original_path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-34/prepared.pt",
+      "relative_path": "runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-34/prepared.pt",
+      "sha256": "b30e0b6a6f475d0e429e9990886daee4482234911666be36a4f3a7a055bf9d5d"
+    },
+    {
+      "archive_member": "payloads/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-35/prepared.pt",
+      "bytes": 35116014,
+      "local_path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source138-context-restore-20261023\\payloads\\runs\\source056-random-start-study\\20261005T225808Z_vae-random-starts-056_37735924\\contexts\\count-35\\prepared.pt",
+      "original_path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-35/prepared.pt",
+      "relative_path": "runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-35/prepared.pt",
+      "sha256": "41399ac3229310538223a3db1fc9fde1eebebcc30e774a2a644f4728024538c2"
+    },
+    {
+      "archive_member": "payloads/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-36/prepared.pt",
+      "bytes": 35306350,
+      "local_path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source138-context-restore-20261023\\payloads\\runs\\source056-random-start-study\\20261005T225808Z_vae-random-starts-056_37735924\\contexts\\count-36\\prepared.pt",
+      "original_path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-36/prepared.pt",
+      "relative_path": "runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-36/prepared.pt",
+      "sha256": "bd4c9ecf4c96d8b49b00efd54f38fa698a40f14eb4ba95e7ad271fc2d1895793"
+    },
+    {
+      "archive_member": "payloads/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-37/prepared.pt",
+      "bytes": 33231150,
+      "local_path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source138-context-restore-20261023\\payloads\\runs\\source056-random-start-study\\20261005T225808Z_vae-random-starts-056_37735924\\contexts\\count-37\\prepared.pt",
+      "original_path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-37/prepared.pt",
+      "relative_path": "runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-37/prepared.pt",
+      "sha256": "d517d5d5ba9141d9778da088ba89665f543169d05a776e5fbb2fabca5f2265c4"
+    },
+    {
+      "archive_member": "payloads/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-38/prepared.pt",
+      "bytes": 35350062,
+      "local_path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source138-context-restore-20261023\\payloads\\runs\\source056-random-start-study\\20261005T225808Z_vae-random-starts-056_37735924\\contexts\\count-38\\prepared.pt",
+      "original_path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-38/prepared.pt",
+      "relative_path": "runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-38/prepared.pt",
+      "sha256": "acfe7c214dfe4ddcfac602f73a69bb8102f8ed3cf9a204307c557fa15bb05016"
+    },
+    {
+      "archive_member": "payloads/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-39/prepared.pt",
+      "bytes": 33405486,
+      "local_path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source138-context-restore-20261023\\payloads\\runs\\source056-random-start-study\\20261005T225808Z_vae-random-starts-056_37735924\\contexts\\count-39\\prepared.pt",
+      "original_path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-39/prepared.pt",
+      "relative_path": "runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-39/prepared.pt",
+      "sha256": "09edae11613766269bcc6ac501007d1f8211096658f6df16b2f68259f3dc9c8d"
+    },
+    {
+      "archive_member": "payloads/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-40/prepared.pt",
+      "bytes": 36076270,
+      "local_path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source138-context-restore-20261023\\payloads\\runs\\source056-random-start-study\\20261005T225808Z_vae-random-starts-056_37735924\\contexts\\count-40\\prepared.pt",
+      "original_path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-40/prepared.pt",
+      "relative_path": "runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-40/prepared.pt",
+      "sha256": "06042d25b1a2f6543fd9edb3c1706a213f401f0b2e7a43381fe7e5ef1410be5c"
+    },
+    {
+      "archive_member": "payloads/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-41/prepared.pt",
+      "bytes": 36269742,
+      "local_path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source138-context-restore-20261023\\payloads\\runs\\source056-random-start-study\\20261005T225808Z_vae-random-starts-056_37735924\\contexts\\count-41\\prepared.pt",
+      "original_path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-41/prepared.pt",
+      "relative_path": "runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-41/prepared.pt",
+      "sha256": "84a9fe42798b645c892fa78c32e4f916f3dc7e86b3e1743d7eb2a513e9f0688f"
+    },
+    {
+      "archive_member": "payloads/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-42/prepared.pt",
+      "bytes": 36463918,
+      "local_path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source138-context-restore-20261023\\payloads\\runs\\source056-random-start-study\\20261005T225808Z_vae-random-starts-056_37735924\\contexts\\count-42\\prepared.pt",
+      "original_path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-42/prepared.pt",
+      "relative_path": "runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-42/prepared.pt",
+      "sha256": "468a289cb4f9f6d14dea9b0c7d3c81c44191860153eede689c12f2ae887b522e"
+    },
+    {
+      "archive_member": "payloads/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-43/prepared.pt",
+      "bytes": 36658862,
+      "local_path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source138-context-restore-20261023\\payloads\\runs\\source056-random-start-study\\20261005T225808Z_vae-random-starts-056_37735924\\contexts\\count-43\\prepared.pt",
+      "original_path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-43/prepared.pt",
+      "relative_path": "runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-43/prepared.pt",
+      "sha256": "c07842edb30c739483779c05ac3a7ca37903e4bcfa0aca84d4b114727441aca5"
+    },
+    {
+      "archive_member": "payloads/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-44/prepared.pt",
+      "bytes": 36854446,
+      "local_path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source138-context-restore-20261023\\payloads\\runs\\source056-random-start-study\\20261005T225808Z_vae-random-starts-056_37735924\\contexts\\count-44\\prepared.pt",
+      "original_path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-44/prepared.pt",
+      "relative_path": "runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-44/prepared.pt",
+      "sha256": "cd7c7e5b0b54c9346c75d2e8ae136f39504d3dda7b177319ba7632d0959d01cb"
+    },
+    {
+      "archive_member": "payloads/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-45/prepared.pt",
+      "bytes": 37050414,
+      "local_path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source138-context-restore-20261023\\payloads\\runs\\source056-random-start-study\\20261005T225808Z_vae-random-starts-056_37735924\\contexts\\count-45\\prepared.pt",
+      "original_path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-45/prepared.pt",
+      "relative_path": "runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-45/prepared.pt",
+      "sha256": "bbf779089170c75708349e6b673684921b495fac08a2ed46e708d8f18dfb5dc0"
+    },
+    {
+      "archive_member": "payloads/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-46/prepared.pt",
+      "bytes": 37247726,
+      "local_path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source138-context-restore-20261023\\payloads\\runs\\source056-random-start-study\\20261005T225808Z_vae-random-starts-056_37735924\\contexts\\count-46\\prepared.pt",
+      "original_path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-46/prepared.pt",
+      "relative_path": "runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-46/prepared.pt",
+      "sha256": "6ed09a84fb7a7f4a84eabb10d88a0600ed2aa365bbbd4b5cdca221452740ef76"
+    },
+    {
+      "archive_member": "payloads/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-47/prepared.pt",
+      "bytes": 37445166,
+      "local_path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source138-context-restore-20261023\\payloads\\runs\\source056-random-start-study\\20261005T225808Z_vae-random-starts-056_37735924\\contexts\\count-47\\prepared.pt",
+      "original_path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-47/prepared.pt",
+      "relative_path": "runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-47/prepared.pt",
+      "sha256": "65f12b1467a094ee3b33dac6115de40dafcdda3e8eabdb19ab2d376c6e6b53ae"
+    },
+    {
+      "archive_member": "payloads/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-48/prepared.pt",
+      "bytes": 37644206,
+      "local_path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source138-context-restore-20261023\\payloads\\runs\\source056-random-start-study\\20261005T225808Z_vae-random-starts-056_37735924\\contexts\\count-48\\prepared.pt",
+      "original_path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-48/prepared.pt",
+      "relative_path": "runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-48/prepared.pt",
+      "sha256": "6716f0ca652e31ca500d23e918bfd24f697fb831344486c627e34cb90bceabdc"
+    },
+    {
+      "archive_member": "payloads/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-49/prepared.pt",
+      "bytes": 37842990,
+      "local_path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source138-context-restore-20261023\\payloads\\runs\\source056-random-start-study\\20261005T225808Z_vae-random-starts-056_37735924\\contexts\\count-49\\prepared.pt",
+      "original_path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-49/prepared.pt",
+      "relative_path": "runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-49/prepared.pt",
+      "sha256": "0163bb30af9ec5840a9e22fca3906c029c6e03084ea24eb6236535b80d3e5c13"
+    },
+    {
+      "archive_member": "payloads/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-50/prepared.pt",
+      "bytes": 37275246,
+      "local_path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source138-context-restore-20261023\\payloads\\runs\\source056-random-start-study\\20261005T225808Z_vae-random-starts-056_37735924\\contexts\\count-50\\prepared.pt",
+      "original_path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-50/prepared.pt",
+      "relative_path": "runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-50/prepared.pt",
+      "sha256": "2d107456b9865551cf0c53ee1fc6c35923f638730dc37d194e16421b141660a9"
+    }
+  ],
+  "original_work3_root": "/work3/s234818/latentmol",
+  "purpose": "restore all 44 cold-offloaded source056 fixed native contexts before prescribed-start selection; no regeneration",
+  "raw_bytes": 1451429736,
+  "restoration_map": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-results\\storage-cleanup-20261021-001\\cold2-restoration-map.json",
+  "restoration_map_sha256": "4bd8d6d672805238366c262f836d1b083226b09b03d8878eb156a5eb020b0c5f",
+  "source_archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-results\\storage-cleanup-20261021-001\\cold2-payloads.tar.gz",
+  "source_archive_sha256": "ec6797d064f5219b1279ea12b92a737a314bbfd02ebd8c3be25c690968ce866e",
+  "version": "source056-exact-prepared-context-restoration-v1"
+}

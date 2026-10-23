@@ -1,0 +1,17 @@
+{
+  "all_member_sizes_and_sha256_match_restoration_map": true,
+  "elapsed_seconds": 103.8844623999903,
+  "file_count": 44,
+  "manifest": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source138-context-restore-20261023\\restore-manifest.json",
+  "manifest_sha256": "60765caddc95f881ed2207b12ac8ed69398f9b47c3635d7c71eae08cd32938e1",
+  "models_imported": "none",
+  "package": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source138-context-restore-20261023\\source056-prepared-contexts-exact-restore.tar.gz",
+  "package_bytes": 18476907,
+  "package_sha256": "ef82e950d0f1bb426d098592ba7d4b7a0584ef75fb8029babe93a57690c50d8b",
+  "raw_bytes": 1451429736,
+  "remote_mutations": "none",
+  "source_archive_sha256": "ec6797d064f5219b1279ea12b92a737a314bbfd02ebd8c3be25c690968ce866e",
+  "source_archive_unchanged": true,
+  "status": "all_44_exact_context_members_extracted_and_authenticated",
+  "tar_members": 45
+}

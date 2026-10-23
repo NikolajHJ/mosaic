@@ -30,7 +30,7 @@ def write_new(path, value):
         stream.write("\n")
 
 
-def authenticate(release, expected_archive, expected_plan):
+def authenticate(release, expected_archive, expected_plan, config_relative="configs/epoch36_boltz_embedding_bridge.json"):
     if digest(str(release) + ".tar.gz") != expected_archive:
         raise ValueError("Release archive hash mismatch")
     with tarfile.open(str(release) + ".tar.gz") as archive:
@@ -39,11 +39,16 @@ def authenticate(release, expected_archive, expected_plan):
     if manifest_bytes != sealed_manifest:
         raise ValueError("Extracted release manifest differs from authenticated archive")
     manifest = json.loads(manifest_bytes)
+    expected_files = set(manifest["members"]) | {"embedding-release-manifest.json"}
+    actual_files = {path.relative_to(release).as_posix() for path in release.rglob("*")
+                    if path.is_file() and not {"__pycache__", ".pytest_cache"}.intersection(path.parts)}
+    if actual_files != expected_files:
+        raise ValueError("Release file set differs from authenticated manifest")
     for name, sha in manifest["members"].items():
         path = (release / name).resolve()
         if not path.is_relative_to(release) or digest(path) != sha:
             raise ValueError("Release member differs: " + name)
-    if digest(release / "configs/epoch36_boltz_embedding_bridge.json") != expected_plan:
+    if digest(release / config_relative) != expected_plan:
         raise ValueError("Prototype plan hash mismatch")
 
 
@@ -58,7 +63,11 @@ def quota():
             "minimum_free_gib": min(float(limit)-float(used) for used, limit in rows)}
 
 
-def main():
+def main(*, namespace="source137-epoch36-boltz-embedding-bridge-attempt",
+         config_relative="configs/epoch36_boltz_embedding_bridge.json",
+         experiment_module="latentmol.boltz.embedding_experiment",
+         operator_relative="scripts/hpc/embedding_operator.py", gpu_wall="4:00",
+         extra_artifacts=()):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("action", choices=("submit", "verify-run", "collect"))
     parser.add_argument("--stage", choices=("cpu", "gpu"), required=True)
@@ -70,9 +79,12 @@ def main():
     work = Path("/work3/s234818/latentmol")
     release, campaign = args.release.resolve(), args.campaign.resolve()
     if (release.parent != work / "releases" or campaign.parent != work / "runs"
-            or not campaign.name.startswith("source137-epoch36-boltz-embedding-bridge-attempt")):
-        raise ValueError("Prototype paths must belong to independent source137 namespace")
-    authenticate(release, args.archive_sha256, args.plan_sha256)
+            or not campaign.name.startswith(namespace)):
+        raise ValueError("Prototype paths must belong to independent experiment namespace")
+    if config_relative == "configs/epoch36_boltz_embedding_bridge.json":
+        authenticate(release, args.archive_sha256, args.plan_sha256)
+    else:
+        authenticate(release, args.archive_sha256, args.plan_sha256, config_relative)
     control = work / "submissions" / campaign.name
     control.mkdir(parents=True, exist_ok=True)
     identity = dict(release=str(release), campaign=str(campaign),
@@ -84,8 +96,8 @@ def main():
         write_new(control / (args.stage + "-launch-quota.json"), fresh_quota)
         os.chdir(release)
         os.environ["PYTHONDONTWRITEBYTECODE"] = "1"
-        command = [sys.executable, "-m", "latentmol.boltz.embedding_experiment", args.stage,
-            "--plan", str(release / "configs/epoch36_boltz_embedding_bridge.json"),
+        command = [sys.executable, "-m", experiment_module, args.stage,
+            "--plan", str(release / config_relative),
             "--output", str(campaign / args.stage)]
         os.execv(sys.executable, command)
     if args.action == "collect":
@@ -107,7 +119,7 @@ def main():
                         if log.exists():
                             output["files"][str(log)] = log.read_text(errors="replace")[-24000:]
             for name in ("result.json", "cpu-gate.json", "cpu-tests.xml", "cpu-tests.log", "native-gate.json",
-                         "native-projection-bank.json", "learned-diagnostic.json", "fit/training-result.json", "paired-data/manifest.json"):
+                         "native-projection-bank.json", "learned-diagnostic.json", "fit/training-result.json", "paired-data/manifest.json", *extra_artifacts):
                 path = campaign / stage / name
                 if path.exists():
                     output["files"][str(path)] = path.read_text(errors="replace")[-100000:]
@@ -133,13 +145,13 @@ def main():
     label = campaign.name + "-" + args.stage
     bsub = ["bsub", "-J", label, "-q", "hpc" if args.stage == "cpu" else "gpua100",
         "-n", "4", "-R", "rusage[mem=8GB]" if args.stage == "cpu" else "rusage[mem=16GB]",
-        "-R", "span[hosts=1]", "-W", "0:45" if args.stage == "cpu" else "4:00",
+        "-R", "span[hosts=1]", "-W", "0:45" if args.stage == "cpu" else gpu_wall,
         "-oo", str(work / "logs" / (label + ".%J.out")),
         "-eo", str(work / "logs" / (label + ".%J.err"))]
     if args.stage == "gpu":
         bsub += ["-R", "select[gpu80gb]", "-gpu", "num=1:mode=exclusive_process"]
     job = ["env", "PYTHONDONTWRITEBYTECODE=1", f"LATENTMOL_SOURCE_ARCHIVE={release}.tar.gz",
-        "bash", "scripts/hpc/boltz_run.sh", "python", "scripts/hpc/embedding_operator.py", "verify-run",
+        "bash", "scripts/hpc/boltz_run.sh", "python", operator_relative, "verify-run",
         "--stage", args.stage, "--release", str(release), "--archive-sha256", args.archive_sha256,
         "--plan-sha256", args.plan_sha256, "--campaign", str(campaign)]
     intent = dict(identity=identity, stage=args.stage, arguments=bsub, command=job, fresh_quota=fresh_quota)

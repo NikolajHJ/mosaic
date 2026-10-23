@@ -1,0 +1,294 @@
+{
+  "affinity": {
+    "path": "/work3/s234818/latentmol/cache/boltz2/boltz2_aff.ckpt",
+    "sha256": "dcc5cd3722b1c9eaa34267e4ae32f55cbbf1963f4c19319381ccfa30fdd2ca9e"
+  },
+  "boltz_cache": "/work3/s234818/latentmol/cache/boltz2",
+  "bridge": {
+    "path": "/work3/s234818/latentmol/runs/source137-epoch36-boltz-embedding-bridge-attempt002/gpu/fit/best-bridge.pt",
+    "sha256": "013834958d52f7aee999ca4c39496e14fc5333d69eb697d47433821f48290343"
+  },
+  "context_manifest": {
+    "path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/contexts.json",
+    "sha256": "a0ebed8bd67358b4027999901a8cb9e5be12731b4d77d68c6b9154513b2261eb"
+  },
+  "cpu_tests": [
+    "tests/test_decoder_features.py",
+    "tests/test_refined_decoder.py",
+    "tests/test_boltz_embedding_bridge.py",
+    "tests/test_boltz_embedding_injection.py",
+    "tests/test_boltz_embedding_training.py",
+    "tests/test_embedding_experiment.py",
+    "tests/test_embedding_validation.py",
+    "tests/test_boltz_adapter.py",
+    "tests/test_boltz_scoring.py",
+    "tests/test_dbmol_objective.py",
+    "tests/test_embedding_operator.py",
+    "tests/test_embedding_comparison.py",
+    "tests/test_embedding_comparison_validation.py",
+    "tests/test_embedding_comparison_rescore.py",
+    "tests/test_embedding_comparison_experiment.py",
+    "tests/test_boltz_step_control.py"
+  ],
+  "dataset": "/work3/s234818/latentmol/data/source095-moses-triangle-v2",
+  "dataset_manifest": {
+    "path": "/work3/s234818/latentmol/data/source095-moses-triangle-v2/manifest.json",
+    "sha256": "f246cc93805b73a557cd0c09a78891ac8410c465192db615ce0b6709218c8c0e"
+  },
+  "dbmol": {
+    "confidence_checkpoint": {
+      "path": "/work3/s234818/latentmol/cache/boltz2/boltz2_conf.ckpt",
+      "sha256": "090e82ac8c92f5e943fa1b39e7410a44027bea7243c0bbb3caa67a77fc1428e1"
+    },
+    "objective_arithmetic": "contact_head_and_assembly_float64_v1",
+    "pocket_origin": "initial_pose_heavy_atom_8A",
+    "pocket_reference": {
+      "context_sha256": "d9a863dc5e0fd978e35d2b8ff0f7eab31b8efe6d2fc211b710a7ba73690e5030",
+      "prepared_sha256": "8b6e47fdf5a53a8bd92c5ebf0baf7471ca6a329bbc524e9957a3e94a9938f611"
+    },
+    "pocket_residues": [
+      {
+        "asym_id": 0,
+        "residue_index": 122
+      },
+      {
+        "asym_id": 0,
+        "residue_index": 125
+      },
+      {
+        "asym_id": 0,
+        "residue_index": 126
+      },
+      {
+        "asym_id": 0,
+        "residue_index": 129
+      },
+      {
+        "asym_id": 0,
+        "residue_index": 130
+      },
+      {
+        "asym_id": 0,
+        "residue_index": 131
+      },
+      {
+        "asym_id": 0,
+        "residue_index": 134
+      },
+      {
+        "asym_id": 0,
+        "residue_index": 155
+      },
+      {
+        "asym_id": 0,
+        "residue_index": 157
+      },
+      {
+        "asym_id": 0,
+        "residue_index": 162
+      },
+      {
+        "asym_id": 0,
+        "residue_index": 163
+      },
+      {
+        "asym_id": 0,
+        "residue_index": 165
+      },
+      {
+        "asym_id": 0,
+        "residue_index": 166
+      },
+      {
+        "asym_id": 0,
+        "residue_index": 167
+      },
+      {
+        "asym_id": 0,
+        "residue_index": 169
+      },
+      {
+        "asym_id": 0,
+        "residue_index": 172
+      },
+      {
+        "asym_id": 0,
+        "residue_index": 200
+      },
+      {
+        "asym_id": 0,
+        "residue_index": 201
+      },
+      {
+        "asym_id": 0,
+        "residue_index": 202
+      },
+      {
+        "asym_id": 0,
+        "residue_index": 203
+      },
+      {
+        "asym_id": 0,
+        "residue_index": 204
+      },
+      {
+        "asym_id": 0,
+        "residue_index": 205
+      },
+      {
+        "asym_id": 0,
+        "residue_index": 207
+      },
+      {
+        "asym_id": 0,
+        "residue_index": 223
+      },
+      {
+        "asym_id": 0,
+        "residue_index": 224
+      },
+      {
+        "asym_id": 0,
+        "residue_index": 225
+      },
+      {
+        "asym_id": 0,
+        "residue_index": 228
+      },
+      {
+        "asym_id": 0,
+        "residue_index": 252
+      },
+      {
+        "asym_id": 0,
+        "residue_index": 267
+      },
+      {
+        "asym_id": 0,
+        "residue_index": 268
+      },
+      {
+        "asym_id": 0,
+        "residue_index": 269
+      },
+      {
+        "asym_id": 0,
+        "residue_index": 270
+      },
+      {
+        "asym_id": 0,
+        "residue_index": 271
+      },
+      {
+        "asym_id": 0,
+        "residue_index": 272
+      },
+      {
+        "asym_id": 0,
+        "residue_index": 273
+      },
+      {
+        "asym_id": 0,
+        "residue_index": 299
+      },
+      {
+        "asym_id": 0,
+        "residue_index": 300
+      },
+      {
+        "asym_id": 0,
+        "residue_index": 319
+      },
+      {
+        "asym_id": 0,
+        "residue_index": 321
+      },
+      {
+        "asym_id": 0,
+        "residue_index": 322
+      },
+      {
+        "asym_id": 0,
+        "residue_index": 323
+      },
+      {
+        "asym_id": 0,
+        "residue_index": 325
+      },
+      {
+        "asym_id": 0,
+        "residue_index": 326
+      },
+      {
+        "asym_id": 0,
+        "residue_index": 357
+      }
+    ]
+  },
+  "fresh_native": {
+    "audit_timeout_seconds": 600,
+    "msa_sha256": "d98f3b09f429e4fb087d67ca3b89f00c3165553444ef221ead6ed2cc01488bd4",
+    "native_settings": {
+      "affinity_recycles": 5,
+      "affinity_steps": 100,
+      "diffusion_samples": 1,
+      "max_msa_seqs": 8192,
+      "msa_rows": 128,
+      "mw_correction": false,
+      "precision": "bf16-mixed",
+      "structure_recycles": 0,
+      "structure_steps": 100
+    },
+    "native_timeout_seconds": 1800,
+    "pose_seeds": [
+      17,
+      23
+    ],
+    "target_sequence_sha256": "978a204bab1837aa3304a838a621e6ef24fb4e878395db76c9c9ed095ce25f48"
+  },
+  "internal_seconds": {
+    "cpu": 2400,
+    "gpu": 82800
+  },
+  "native_template": {
+    "path": "/work3/s234818/latentmol/boltz-preparation/source054-active-set-attempt001/count-13/input/carbon_chain_13.yaml",
+    "sha256": "ff3f32119c9f6a51b37169306de81e43e60327797e79ae7a53ef90ee5a445117"
+  },
+  "native_tolerances": {
+    "gradient_atol": 1e-05,
+    "gradient_rtol": 0.01,
+    "scalar_atol": 1e-05,
+    "scalar_rtol": 0.0001
+  },
+  "optimization": {
+    "learning_rate": 400.0,
+    "max_gradient_norm": 1.0,
+    "steps": 50,
+    "trust_radius": 3.0
+  },
+  "prepared": {
+    "path": "/work3/s234818/latentmol/boltz-preparation/source054-active-set-attempt001/count-13/prepared.pt",
+    "sha256": "8b6e47fdf5a53a8bd92c5ebf0baf7471ca6a329bbc524e9957a3e94a9938f611"
+  },
+  "seed": 138036,
+  "start_count": 3,
+  "start_data_manifest": {
+    "path": "/work3/s234818/latentmol/runs/source137-epoch36-boltz-embedding-bridge-attempt002/gpu/paired-data/manifest.json",
+    "sha256": "95abd00cb8889ca1b921f5c8e128bb1d6a52f7141e2b5c8dd6291acfdea1fe0e"
+  },
+  "start_samples": {
+    "path": "/work3/s234818/latentmol/runs/source137-epoch36-boltz-embedding-bridge-attempt002/gpu/paired-data/samples.pt",
+    "sha256": "e412a26a39ffd3c44c0ba0cf957fc611444add9842d583e3739948ceaa99b34f"
+  },
+  "start_selection": "first three distinct audit group and decoded identity posterior_mean rows in authenticated stored order; no score filtering or replacement",
+  "step_control": {
+    "max_trials": 16,
+    "version": "best_trial_v2"
+  },
+  "vae": {
+    "path": "/work3/s234818/latentmol/runs/source121a002-chemistry-16core-24h-attempt002/variants/r2_async_w12_m128_h24/segments/001/20261018T175254Z_chemistry-train_89b58520/epoch_0036.pt",
+    "sha256": "3179ef01f84a2c714ee031bc3e6a6a4dc2cedc767d30e700c887aab1abbd706f"
+  },
+  "vae_continuation": "source136 jobs, callbacks, checkpoints, settings, and immutable releases remain untouched",
+  "version": "epoch36-matched-embedding-comparison-experiment-v1"
+}

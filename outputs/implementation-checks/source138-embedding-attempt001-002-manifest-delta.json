@@ -1,0 +1,25 @@
+{
+  "scope": "standard-library immutable manifest comparison; not numerical validation",
+  "manifest_sha256": [
+    "c239d5fecc97133ea5c78aa8a7e81ac7ebab63acf238adfb7c4dc8625f440303",
+    "4a598d1143f6afc180d18dea618cdc09a859f019a7fc042b9025fcb8fb8487dd"
+  ],
+  "member_counts": [
+    582,
+    582
+  ],
+  "added": [],
+  "removed": [],
+  "changed": {
+    "scripts/hpc/check_chemistry_launch.py": {
+      "attempt001": "513f120fc24ee4ec2c888bc945a7bf96739c4f18b885b824154335ccc768e704",
+      "attempt002": "b46b7b66edaaac3d82c0e0aa144e16137cc6e407323024392c121ad109c53dda"
+    },
+    "tests/test_embedding_comparison.py": {
+      "attempt001": "b4efdbeca8b38262f41a8416f2e933b8cf4f71d9623f36e9b23af6ee59bf1c24",
+      "attempt002": "fa8be5e0171f9a59d090725912baa1d87101a62321b03524009767cd1c70d338"
+    }
+  },
+  "all_src_members_identical": true,
+  "comparison_plan_identical": true
+}

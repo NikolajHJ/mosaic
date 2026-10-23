@@ -65,6 +65,25 @@ def test_individual_member_tamper_cannot_pass_unchanged_manifest(tmp_path):
         operator.authenticate(sealed.release, sealed.archive_sha, sealed.plan_sha)
 
 
+def test_extra_importable_source_cannot_enter_an_authenticated_release(tmp_path):
+    operator = operator_module()
+    sealed = sealed_fixture(operator, tmp_path / "release")
+    extra = sealed.release / "src/unsealed_import.py"
+    extra.write_text('UNSEALED = "must never execute"\n')
+    with pytest.raises(ValueError, match="file set differs"):
+        operator.authenticate(sealed.release, sealed.archive_sha, sealed.plan_sha)
+
+
+def test_runtime_caches_do_not_change_scientific_release_file_set(tmp_path):
+    operator = operator_module()
+    sealed = sealed_fixture(operator, tmp_path / "release")
+    for name in ("src/__pycache__/example.cpython-fixture.pyc", ".pytest_cache/v/cache/nodeids"):
+        cache = sealed.release / name
+        cache.parent.mkdir(parents=True, exist_ok=True)
+        cache.write_bytes(b"fixture runtime cache")
+    operator.authenticate(sealed.release, sealed.archive_sha, sealed.plan_sha)
+
+
 @pytest.mark.parametrize("binding", ["archive", "plan"])
 def test_wrong_expected_source_or_plan_binding_stops_authentication(tmp_path, binding):
     operator = operator_module()
@@ -116,6 +135,37 @@ def test_exclusive_receipt_write_never_overwrites_earlier_evidence(tmp_path):
     with pytest.raises(FileExistsError):
         operator.write_new(receipt, {"identity": "replacement"})
     assert receipt.read_bytes() == original
+
+
+@pytest.mark.parametrize("reason", ["failed", "other_source", "other_plan"])
+def test_gpu_submission_never_dispatches_without_exact_release_cpu_pass(tmp_path, monkeypatch, reason):
+    operator = operator_module()
+    work = tmp_path / "isolated-work-root"
+    sealed = sealed_fixture(operator, work / "releases/test-release")
+    campaign = work / "runs/source137-epoch36-boltz-embedding-bridge-attempt999"
+    cpu = campaign / "cpu"
+    cpu.mkdir(parents=True)
+    result = dict(status="failed_not_passed" if reason == "failed" else "passed",
+        source_sha256="a" * 64 if reason == "other_source" else sealed.archive_sha,
+        plan_sha256="b" * 64 if reason == "other_plan" else sealed.plan_sha)
+    (cpu / "result.json").write_text(json.dumps(result))
+    original_path = operator.Path
+    monkeypatch.setattr(operator, "Path", lambda value:
+        work if str(value) == "/work3/s234818/latentmol" else original_path(value))
+    calls = []
+
+    def forbidden(*args, **kwargs):
+        calls.append((args, kwargs))
+        raise AssertionError("Failed CPU predecessor must block quota and scheduler")
+
+    monkeypatch.setattr(operator.subprocess, "run", forbidden)
+    monkeypatch.setattr(operator.sys, "argv", ["embedding_operator", "submit", "--stage", "gpu",
+        "--release", str(sealed.release), "--archive-sha256", sealed.archive_sha,
+        "--plan-sha256", sealed.plan_sha, "--campaign", str(campaign)])
+    with pytest.raises(ValueError, match="completed CPU pass"):
+        operator.main()
+    assert not calls
+    assert not (work / "submissions" / campaign.name / "gpu-intent.json").exists()
 
 
 @pytest.mark.parametrize("returncode,stdout", [

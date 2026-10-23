@@ -1,0 +1,287 @@
+{
+  "status": "exact_context_bank_restored",
+  "files": [
+    {
+      "path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-01/prepared.pt",
+      "sha256": "cf22b96986b703edd131e2d69ed6b318972b31281f49acc779ce290a36a9d57f",
+      "bytes": 28046446,
+      "status": "restored_original_bytes"
+    },
+    {
+      "path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-02/prepared.pt",
+      "sha256": "a3bfaa4d36d3099f6ef05b8df1aa75fa495c0d81367bfa8f62333ee0d4a5f82d",
+      "bytes": 28391278,
+      "status": "restored_original_bytes"
+    },
+    {
+      "path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-03/prepared.pt",
+      "sha256": "b3b138e5976fe969b397c6c49543a4ab186642538e9d2b4165790b51a2daaebe",
+      "bytes": 28379054,
+      "status": "restored_original_bytes"
+    },
+    {
+      "path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-04/prepared.pt",
+      "sha256": "229cf9b817c5e447788c193b6c00b931389850776561fe01b5acef2cb1fdd933",
+      "bytes": 27001838,
+      "status": "restored_original_bytes"
+    },
+    {
+      "path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-05/prepared.pt",
+      "sha256": "4e51d667c34570e1a8ec1f60a33bebce44a6c5b5bff7d8c396552e3acaff9779",
+      "bytes": 27338798,
+      "status": "restored_original_bytes"
+    },
+    {
+      "path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-06/prepared.pt",
+      "sha256": "e35e05cfde4f2781e43dec2d284279ed3cff7cdf6ce4e6ad639b15fc50f6009a",
+      "bytes": 28701294,
+      "status": "restored_original_bytes"
+    },
+    {
+      "path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-07/prepared.pt",
+      "sha256": "4e063a5541601adfaa46bb93915dd813290be6094f925d1a476d8f502f46b1c0",
+      "bytes": 29231662,
+      "status": "restored_original_bytes"
+    },
+    {
+      "path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-08/prepared.pt",
+      "sha256": "304d502db4bfb64665903e90d611292d9043ec4ba1daf5595e4b32f6ac0ca3c4",
+      "bytes": 28009838,
+      "status": "restored_original_bytes"
+    },
+    {
+      "path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-09/prepared.pt",
+      "sha256": "d9530c6d17400c2b2ed17b46f44f7c0e36333c8515f5de13eb675dfa46b03f20",
+      "bytes": 27513582,
+      "status": "restored_original_bytes"
+    },
+    {
+      "path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-16/prepared.pt",
+      "sha256": "65075ccc9a72a5b376d70aa7ba93071f30899f7a21e41dcaf2164b4138faa702",
+      "bytes": 31297454,
+      "status": "restored_original_bytes"
+    },
+    {
+      "path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-17/prepared.pt",
+      "sha256": "c23fdf9a74d3944f95c115c9819cac75db0fc0b1b9fb456566dc87fae06c162a",
+      "bytes": 31474734,
+      "status": "restored_original_bytes"
+    },
+    {
+      "path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-18/prepared.pt",
+      "sha256": "99efeed3d1b3093b39e64affb6865e5dec7ecb6d6fde54a26b915c2c145b400e",
+      "bytes": 31652462,
+      "status": "restored_original_bytes"
+    },
+    {
+      "path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-19/prepared.pt",
+      "sha256": "492fae1ec092ad6667433bd88b28e3b4ce869a42f4755ea5479a64daba78ae91",
+      "bytes": 31317102,
+      "status": "restored_original_bytes"
+    },
+    {
+      "path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-20/prepared.pt",
+      "sha256": "61687fd6b5a224dc714c356577e7be2e93c29accf3497dd0a614848464a82c70",
+      "bytes": 32010414,
+      "status": "restored_original_bytes"
+    },
+    {
+      "path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-21/prepared.pt",
+      "sha256": "7d093db995b54fe79ecd4393217129eacb18b7d0781ea609c0c962e435938991",
+      "bytes": 32190318,
+      "status": "restored_original_bytes"
+    },
+    {
+      "path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-22/prepared.pt",
+      "sha256": "9a6cd38cfbaf114c09aa31da756b9db472b47ed0afe2de1edf9ef7792c74d570",
+      "bytes": 30211118,
+      "status": "restored_original_bytes"
+    },
+    {
+      "path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-23/prepared.pt",
+      "sha256": "7cb096ed544e8d4982c98b08c85a02ceda2c01ae587c73d1990849e89adc2d92",
+      "bytes": 32551854,
+      "status": "restored_original_bytes"
+    },
+    {
+      "path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-24/prepared.pt",
+      "sha256": "c65b32b06e0e11769730f15685d8072d8877b745601eff20f1c84857e4cc186b",
+      "bytes": 32735790,
+      "status": "restored_original_bytes"
+    },
+    {
+      "path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-25/prepared.pt",
+      "sha256": "84a0d35dbb565a535a18a7ef04bda5fbd7ab589c4e1ea2ac30d3e3437130e9cb",
+      "bytes": 30550446,
+      "status": "restored_original_bytes"
+    },
+    {
+      "path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-26/prepared.pt",
+      "sha256": "85e9dc58dcec048634967676de804d2ff93c4097e59c9cc07031785cf8192acf",
+      "bytes": 32906286,
+      "status": "restored_original_bytes"
+    },
+    {
+      "path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-27/prepared.pt",
+      "sha256": "fb6264fc4bbdcd1cbebef4fcc864c56f5673e5b7f4eee8cbb2e7d5b6f6b97729",
+      "bytes": 33418606,
+      "status": "restored_original_bytes"
+    },
+    {
+      "path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-28/prepared.pt",
+      "sha256": "fccd9bdf00450720e7bdd510f1145f55f10ae90879113db3c31d3ccd5f09891a",
+      "bytes": 33800430,
+      "status": "restored_original_bytes"
+    },
+    {
+      "path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-29/prepared.pt",
+      "sha256": "5ce05c0d41c9d27e5030fd50efc921d70b41829f98f3057e7ac30d9455d496d4",
+      "bytes": 33986158,
+      "status": "restored_original_bytes"
+    },
+    {
+      "path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-30/prepared.pt",
+      "sha256": "60824d5774daae9974c3685dbfac595d274d5f280ee9f36882f86852e48dddc2",
+      "bytes": 31436718,
+      "status": "restored_original_bytes"
+    },
+    {
+      "path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-31/prepared.pt",
+      "sha256": "7bcfc272e6793babc68ae0720714636e51c8d459b67a2f0f57b7e1a145fe0c51",
+      "bytes": 34360110,
+      "status": "restored_original_bytes"
+    },
+    {
+      "path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-32/prepared.pt",
+      "sha256": "733c1e4480dcf3123e0c59b723cfa585ce943623126abd59dc9a7d4f2b12b586",
+      "bytes": 34014894,
+      "status": "restored_original_bytes"
+    },
+    {
+      "path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-33/prepared.pt",
+      "sha256": "d4ab4e3b9abafcc8626de380ffcbe16c638df033123a60bd720b214b13d1d7f4",
+      "bytes": 34737070,
+      "status": "restored_original_bytes"
+    },
+    {
+      "path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-34/prepared.pt",
+      "sha256": "b30e0b6a6f475d0e429e9990886daee4482234911666be36a4f3a7a055bf9d5d",
+      "bytes": 34925934,
+      "status": "restored_original_bytes"
+    },
+    {
+      "path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-35/prepared.pt",
+      "sha256": "41399ac3229310538223a3db1fc9fde1eebebcc30e774a2a644f4728024538c2",
+      "bytes": 35116014,
+      "status": "restored_original_bytes"
+    },
+    {
+      "path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-36/prepared.pt",
+      "sha256": "bd4c9ecf4c96d8b49b00efd54f38fa698a40f14eb4ba95e7ad271fc2d1895793",
+      "bytes": 35306350,
+      "status": "restored_original_bytes"
+    },
+    {
+      "path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-37/prepared.pt",
+      "sha256": "d517d5d5ba9141d9778da088ba89665f543169d05a776e5fbb2fabca5f2265c4",
+      "bytes": 33231150,
+      "status": "restored_original_bytes"
+    },
+    {
+      "path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-38/prepared.pt",
+      "sha256": "acfe7c214dfe4ddcfac602f73a69bb8102f8ed3cf9a204307c557fa15bb05016",
+      "bytes": 35350062,
+      "status": "restored_original_bytes"
+    },
+    {
+      "path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-39/prepared.pt",
+      "sha256": "09edae11613766269bcc6ac501007d1f8211096658f6df16b2f68259f3dc9c8d",
+      "bytes": 33405486,
+      "status": "restored_original_bytes"
+    },
+    {
+      "path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-40/prepared.pt",
+      "sha256": "06042d25b1a2f6543fd9edb3c1706a213f401f0b2e7a43381fe7e5ef1410be5c",
+      "bytes": 36076270,
+      "status": "restored_original_bytes"
+    },
+    {
+      "path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-41/prepared.pt",
+      "sha256": "84a9fe42798b645c892fa78c32e4f916f3dc7e86b3e1743d7eb2a513e9f0688f",
+      "bytes": 36269742,
+      "status": "restored_original_bytes"
+    },
+    {
+      "path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-42/prepared.pt",
+      "sha256": "468a289cb4f9f6d14dea9b0c7d3c81c44191860153eede689c12f2ae887b522e",
+      "bytes": 36463918,
+      "status": "restored_original_bytes"
+    },
+    {
+      "path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-43/prepared.pt",
+      "sha256": "c07842edb30c739483779c05ac3a7ca37903e4bcfa0aca84d4b114727441aca5",
+      "bytes": 36658862,
+      "status": "restored_original_bytes"
+    },
+    {
+      "path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-44/prepared.pt",
+      "sha256": "cd7c7e5b0b54c9346c75d2e8ae136f39504d3dda7b177319ba7632d0959d01cb",
+      "bytes": 36854446,
+      "status": "restored_original_bytes"
+    },
+    {
+      "path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-45/prepared.pt",
+      "sha256": "bbf779089170c75708349e6b673684921b495fac08a2ed46e708d8f18dfb5dc0",
+      "bytes": 37050414,
+      "status": "restored_original_bytes"
+    },
+    {
+      "path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-46/prepared.pt",
+      "sha256": "6ed09a84fb7a7f4a84eabb10d88a0600ed2aa365bbbd4b5cdca221452740ef76",
+      "bytes": 37247726,
+      "status": "restored_original_bytes"
+    },
+    {
+      "path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-47/prepared.pt",
+      "sha256": "65f12b1467a094ee3b33dac6115de40dafcdda3e8eabdb19ab2d376c6e6b53ae",
+      "bytes": 37445166,
+      "status": "restored_original_bytes"
+    },
+    {
+      "path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-48/prepared.pt",
+      "sha256": "6716f0ca652e31ca500d23e918bfd24f697fb831344486c627e34cb90bceabdc",
+      "bytes": 37644206,
+      "status": "restored_original_bytes"
+    },
+    {
+      "path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-49/prepared.pt",
+      "sha256": "0163bb30af9ec5840a9e22fca3906c029c6e03084ea24eb6236535b80d3e5c13",
+      "bytes": 37842990,
+      "status": "restored_original_bytes"
+    },
+    {
+      "path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-50/prepared.pt",
+      "sha256": "2d107456b9865551cf0c53ee1fc6c35923f638730dc37d194e16421b141660a9",
+      "bytes": 37275246,
+      "status": "restored_original_bytes"
+    }
+  ],
+  "protected_before": {
+    "/work3/s234818/latentmol/runs/source121a002-chemistry-16core-24h-attempt002/variants/r2_async_w12_m128_h24/segments/001/20261018T175254Z_chemistry-train_89b58520/epoch_0036.pt": "3179ef01f84a2c714ee031bc3e6a6a4dc2cedc767d30e700c887aab1abbd706f",
+    "/work3/s234818/latentmol/runs/source137-epoch36-boltz-embedding-bridge-attempt002/gpu/fit/best-bridge.pt": "013834958d52f7aee999ca4c39496e14fc5333d69eb697d47433821f48290343",
+    "/work3/s234818/latentmol/releases/source-136-valid-reference-epoch40-continuation-attempt001.tar.gz": "4833072e286c39e9233f4bd776cd169623bb1496a14e945c296116527cc0be69"
+  },
+  "protected_after": {
+    "/work3/s234818/latentmol/runs/source121a002-chemistry-16core-24h-attempt002/variants/r2_async_w12_m128_h24/segments/001/20261018T175254Z_chemistry-train_89b58520/epoch_0036.pt": "3179ef01f84a2c714ee031bc3e6a6a4dc2cedc767d30e700c887aab1abbd706f",
+    "/work3/s234818/latentmol/runs/source137-epoch36-boltz-embedding-bridge-attempt002/gpu/fit/best-bridge.pt": "013834958d52f7aee999ca4c39496e14fc5333d69eb697d47433821f48290343",
+    "/work3/s234818/latentmol/releases/source-136-valid-reference-epoch40-continuation-attempt001.tar.gz": "4833072e286c39e9233f4bd776cd169623bb1496a14e945c296116527cc0be69"
+  },
+  "quota_after": {
+    "stdout": "HPE-Storage-Servers (disks, storagepool 1): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nHPE-Storage-Servers (NVME, storagepool 2): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (disks, storagepool 3): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks, storagepool 4): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks added in 2024, storagepool 5): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (NVMEs added in 2024, storagepool 6): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||   64.41 GiB|  100.00 GiB||   436962| 20000000\n\n",
+    "free_gib": 35.59
+  },
+  "timestamp_utc": "2026-10-23T19:30:43.198120+00:00",
+  "numerical_execution": false,
+  "jobs_changed": false,
+  "historical_archives_unchanged": true
+}

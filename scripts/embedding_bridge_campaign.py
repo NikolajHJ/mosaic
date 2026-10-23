@@ -38,14 +38,16 @@ def call(command, receipt, *, payload=None, timeout=180):
     return value
 
 
-def seal(folder, attempt):
+def seal(folder, attempt, *, number=137, campaign_name="epoch36-boltz-embedding-bridge",
+         config_relative="configs/epoch36_boltz_embedding_bridge.json",
+         operator_relative="scripts/hpc/embedding_operator.py"):
     folder.mkdir(parents=True, exist_ok=False)
-    label = "source137-epoch36-boltz-embedding-bridge-" + attempt
+    label = f"source{number}-{campaign_name}-" + attempt
     files = []
     for directory in ("src", "tests", "scripts"):
         files += [p for p in (ROOT / directory).rglob("*") if p.is_file()
                   and "__pycache__" not in p.parts and p.suffix in (".py", ".sh", ".html", ".css", ".js")]
-    files += [ROOT / "pyproject.toml", ROOT / "configs/epoch36_boltz_embedding_bridge.json"]
+    files += [ROOT / "pyproject.toml", ROOT / config_relative]
     for path in files:
         if path.suffix == ".py":
             ast.parse(path.read_text(encoding="utf-8-sig"), filename=str(path))
@@ -58,9 +60,10 @@ def seal(folder, attempt):
             stream.add(ROOT / name, arcname=name, recursive=False)
         stream.add(manifest_path, arcname=manifest_path.name)
     plan = dict(label=label, archive=str(archive.resolve()), archive_sha256=sha(archive),
-        manifest_sha256=sha(manifest_path), plan_sha256=sha(ROOT / "configs/epoch36_boltz_embedding_bridge.json"),
-        release=WORK + "/releases/" + label.replace("source137-", "source-137-", 1),
+        manifest_sha256=sha(manifest_path), plan_sha256=sha(ROOT / config_relative),
+        release=WORK + "/releases/" + label.replace(f"source{number}-", f"source-{number}-", 1),
         campaign=WORK + "/runs/" + label, members=len(members),
+        operator_relative=operator_relative,
         status="sealed_not_submitted")
     save(folder / "seal.json", plan)
     print(json.dumps(plan, indent=2))
@@ -101,7 +104,7 @@ print(json.dumps({{'status':'staged_authenticated','members':len(members),'relea
 
 
 def remote(folder, identity, action, stage_name):
-    argv = [WORK + "/env/boltz311/bin/python", identity["release"] + "/scripts/hpc/embedding_operator.py",
+    argv = [WORK + "/env/boltz311/bin/python", identity["release"] + "/" + identity.get("operator_relative", "scripts/hpc/embedding_operator.py"),
             action, "--stage", stage_name, "--release", identity["release"],
             "--archive-sha256", identity["archive_sha256"], "--plan-sha256", identity["plan_sha256"],
             "--campaign", identity["campaign"]]
