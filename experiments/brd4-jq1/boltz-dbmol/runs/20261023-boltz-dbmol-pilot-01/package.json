@@ -1,0 +1,26 @@
+{
+  "tag": "20261023-boltz-dbmol-pilot-01",
+  "manifest_sha256": "24c207da5510fa579576a04ad32bf1afc6e1f23f51dcb5251d82a4ebdfa8f436",
+  "source_files": 657,
+  "archive_bytes": 39676321,
+  "archive_sha256": "ec333fd3e0b33d9e5b82e0cd5e4e12c14ffb4f91782c18cd820d4bfab53de1f8",
+  "changed_members": {
+    "src/mosaic/small_molecule/chemistry/trajectory.py": "6ab7330726eed2d615f4d518f3a4918c2cdc84fc5c609b52eaa530533d47f64a",
+    "scripts/dbmol_protocol.py": "56ca979722b697f3de9d7b1be021aec87dbbe9342efc5cbfad7907b28f354750",
+    "scripts/dbmol_driver.py": "e80b19d98cf7f6d3825f85d15738ecb83ce1d75343a3cc76725217e98240c67e",
+    "scripts/dbmol_ops.py": "1e486b3af9195a365243effee955cbb20c566bbaad3fb1c0dfb5b248f3ff17cc",
+    "scripts/hpc/dbmol_cpu.lsf": "07532f341dc27bb796fcd1d686c3bd3e437dc3cde3f281f29c60670b8480166b",
+    "scripts/hpc/dbmol_stage.lsf": "45b8e9117f23c18fb03fc609b7d8846689f9232da48c294822cce488737d96a8",
+    "docs/dbmol_pilot.md": "c9c40040e0d79c05459707e05ae5092db69ca7a150b4c5f229e6934bee0de546",
+    "scripts/dbmol_bridge.py": "5e0208d09b81e53c3c0278fe5d0a6c4d384e836884cd7b6c9872f47dc5e7c6d9",
+    "scripts/dbmol_worker.py": "9023ab4e123e39d9db1bc343b3ea7cbd59caf8c27999c492427792cbb4efbbb6",
+    "scripts/dbmol_native_validation.py": "8299ff8d14fb21ae01d4e5247f7c06c2245c01c69cae3af2a701593ac51d7400",
+    "src/mosaic/small_molecule/boltz2/dbmol.py": "00f2d23b01c5b773d677c1d003dd3fa6724ed07f6b67d16b640f62d32af2aba6",
+    "tests/test_dbmol_objective.py": "35250966b0100882084cf2146a5fa0dbd69cdd2c32b5d2251359a0a2fe9b81a5",
+    "tests/test_dbmol_native_paths.py": "aaa847395635a87d49c1ed06e932a8ae945a2d48330f0e43395f338c4f87e125",
+    "tests/test_dbmol_gradient_contract.py": "8e98dc977ef9e42bb05126e2d181e0dac9011bbf364710cd03b0f7b7d9bcbcbb",
+    "tests/test_dbmol_bridge.py": "b31a9903657f589d17a41008dc45690fca28a0288cd6a2e5059e65d111c79505",
+    "tests/test_dbmol_pilot_contract.py": "1e189bca95a92964b644d8f7a0339c1c3b99372eded3dd66c40fc7e7c5417ffc",
+    "examples/configs/dbmol_pilot.json": "b3b56f409a59b3b1d00228bb7dcd3f74fc08f17fdf06facfc1469922778d5497"
+  }
+}

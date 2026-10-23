@@ -1,0 +1,17 @@
+{
+  "tag": "20261023-boltz-lr0025-02",
+  "manifest_sha256": "3689071a4e7dd135071ff5b420c026543c4d10887c951077dff63d498d9f812c",
+  "source_files": 633,
+  "archive_bytes": 39618948,
+  "archive_sha256": "40b4a087c2735de93ed1896f7534618f32d8713dae4d83fa80d36b49b1924dfa",
+  "parent_manifest_sha256": "43767a8564c220821fa06fa68c3a3690870cda2e22baeb7bf956b7f849094e76",
+  "changed_members": {
+    "tests/test_protenix_initialization.py": "0ce1dcb2a3d60181e4ebf43a9f9218eb8f87ec748ed0053619e00a390fe4b1a3",
+    "scripts/boltz_serial_ops.py": "3f350ba2de3bbac54d3634002fc9d10cbc46736056870a5c0696c784b718cff1",
+    "tests/test_boltz_serial.py": "252f4a7d1da12a1c87530ce79d5a59423bf2f96ced85f5a6c0521b91d4c19800",
+    "docs/boltz_serial30k.md": "33d0dfe40a4416363a7ae8fb9b9522f99a0168aec66aae86d5820a823e741881"
+  },
+  "scientific_src_changes": [],
+  "unchanged_scientific_library_members": 145,
+  "execution": "Local stdlib AST/byte packaging only; allocated checks pending"
+}

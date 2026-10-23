@@ -1,0 +1,81 @@
+{
+  "files_verified": 24,
+  "source_members_verified": 657,
+  "source_manifest_sha256": "24c207da5510fa579576a04ad32bf1afc6e1f23f51dcb5251d82a4ebdfa8f436",
+  "source_archive_sha256": "ec333fd3e0b33d9e5b82e0cd5e4e12c14ffb4f91782c18cd820d4bfab53de1f8",
+  "evidence_archive_sha256": "a1a214f68cf153a109c119cd456b6b094a9092d1372c16d4867c782eb1f76b47",
+  "jobs": {
+    "cpu": "29798549",
+    "after-cpu": "29798550"
+  },
+  "actual_scheduler": {
+    "cpu": "EXIT",
+    "after-cpu": "EXIT"
+  },
+  "storage_gates": {
+    "run/cpu/storage-cpu-entry/gate.json": "failed",
+    "run/storage-preflight/gate.json": "failed",
+    "run/admission-02/storage-preflight/gate.json": "passed"
+  },
+  "storage_errors_verbatim": {
+    "run/cpu/storage-cpu-entry/gate.json": "Inspect original failed quota fields; no exception string was stored",
+    "run/storage-preflight/gate.json": "Inspect original failed quota fields; no exception string was stored"
+  },
+  "storage_budget_details": {
+    "run/cpu/storage-cpu-entry/gate.json": {
+      "required_bytes": 19175262065,
+      "available_bytes_conservative": 18158117863,
+      "available_files_lower": 19557200,
+      "filesystem_inode_reporting": "unreported_all_zero",
+      "projected_bytes": 14880294769
+    },
+    "run/storage-preflight/gate.json": {
+      "required_bytes": 19256933986,
+      "available_bytes_conservative": 19236336523,
+      "available_files_lower": 19558339,
+      "filesystem_inode_reporting": "unreported_all_zero",
+      "projected_bytes": 14961966690
+    },
+    "run/admission-02/storage-preflight/gate.json": {
+      "required_bytes": 19225068665,
+      "available_bytes_conservative": 19235502439,
+      "available_files_lower": 19557270,
+      "filesystem_inode_reporting": "unreported_all_zero",
+      "projected_bytes": 14930101369
+    }
+  },
+  "fresh_admission_sha256": "a69472d6999f5154fe9cc028b81ff94d921f10cedb0ad2e57bfd63622d980a78",
+  "original_stage_returncode": 1,
+  "asset_references": {
+    "affinity": {
+      "path": "/work3/s234818/latentmol/cache/boltz2/boltz2_aff.ckpt",
+      "bytes": 2062139170,
+      "sha256": "dcc5cd3722b1c9eaa34267e4ae32f55cbbf1963f4c19319381ccfa30fdd2ca9e",
+      "downloaded": false
+    },
+    "structural": {
+      "path": "/work3/s234818/latentmol/cache/boltz2/boltz2_conf.ckpt",
+      "bytes": 2286561469,
+      "sha256": "090e82ac8c92f5e943fa1b39e7410a44027bea7243c0bbb3caa67a77fc1428e1",
+      "downloaded": false
+    },
+    "prepared_context": {
+      "path": "/zhome/95/e/206121/mosaic-runs/20261021-brd4-jq1-25-01/prepare/payload/prepared/context.pt",
+      "bytes": 16063255,
+      "sha256": "a18a331269170aac3281b0a2ecad313aab81756c9b77e048d7e2cbaa4d8f1093",
+      "downloaded": false
+    }
+  },
+  "native_readiness_passed_by_this_audit": false,
+  "optimization_started_by_this_audit": false,
+  "scope": "Independent stdlib byte/XML/schema/source/resource/scheduler/LSF audit only. No local model, scientific array or numerical test execution. Remote-only native assets were not downloaded.",
+  "status": "failed_attempt_evidence_verified",
+  "failed_producers": [
+    "cpu",
+    "after-cpu"
+  ],
+  "cpu_submitted": true,
+  "cpu_passed": false,
+  "partial_xml_counts": {},
+  "cases_claimed_passed": null
+}

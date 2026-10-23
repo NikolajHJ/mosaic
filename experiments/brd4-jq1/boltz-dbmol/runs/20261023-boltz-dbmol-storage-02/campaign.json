@@ -1,0 +1,268 @@
+{
+  "state": "submitted_not_passed",
+  "package": {
+    "tag": "20261023-boltz-dbmol-storage-02",
+    "files": 5,
+    "manifest_sha256": "5f479f2e5342469efd8606c9457c946a51dbcf0dd90d837ee472babfdd820a4b",
+    "archive_bytes": 20406,
+    "archive_sha256": "a26dafcac4fbc342a275dedb1c93ed8880062f9e3dafe48d188937c3137dd750",
+    "scientific_source_manifest_sha256": "24c207da5510fa579576a04ad32bf1afc6e1f23f51dcb5251d82a4ebdfa8f436",
+    "scientific_source_changed": false
+  },
+  "expected_raw_cases": 1135,
+  "groups": {
+    "hpc-contract": 500,
+    "legacy": 239,
+    "native-mapping": 34,
+    "chemistry": 59,
+    "dbmol-native": 83,
+    "dbmol-transport": 148,
+    "launcher-adoption": 72
+  },
+  "scientific_source_changed": false,
+  "native_passed": false,
+  "optimization_started": false,
+  "actual_submission": {
+    "status": "submitted_not_passed",
+    "launcher_manifest_sha256": "5f479f2e5342469efd8606c9457c946a51dbcf0dd90d837ee472babfdd820a4b",
+    "science_manifest_sha256": "24c207da5510fa579576a04ad32bf1afc6e1f23f51dcb5251d82a4ebdfa8f436",
+    "launcher_source": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-storage-release-02/source",
+    "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-01",
+    "cpu": {
+      "phase": "cpu",
+      "args": [
+        "bsub",
+        "-q",
+        "hpc",
+        "-n",
+        "4",
+        "-R",
+        "span[hosts=1]",
+        "-R",
+        "rusage[mem=4GB]",
+        "-W",
+        "01:00",
+        "-J",
+        "mosaic-dbmol-cpu-02",
+        "-oo",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-01/cpu-02/stdout.%J.log",
+        "-eo",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-01/cpu-02/stderr.%J.log",
+        "bash",
+        "-l",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-storage-release-02/source/scripts/hpc/dbmol_storage_cpu.lsf",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-storage-release-02/source",
+        "5f479f2e5342469efd8606c9457c946a51dbcf0dd90d837ee472babfdd820a4b",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-release-01/source",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-01",
+        "24c207da5510fa579576a04ad32bf1afc6e1f23f51dcb5251d82a4ebdfa8f436"
+      ],
+      "dependency": null,
+      "outcome": "submitted",
+      "utc": "2026-10-23T11:01:04.637440+00:00",
+      "returncode": 0,
+      "stdout": "Job <29798699> is submitted to queue <hpc>.\n",
+      "stderr": "",
+      "job_id": "29798699"
+    },
+    "callback": {
+      "phase": "after-cpu",
+      "args": [
+        "bsub",
+        "-q",
+        "hpc",
+        "-n",
+        "2",
+        "-R",
+        "span[hosts=1]",
+        "-R",
+        "rusage[mem=4GB]",
+        "-W",
+        "00:30",
+        "-J",
+        "mosaic-dbmol-after-cpu-02",
+        "-oo",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-01/after-cpu-02/stdout.%J.log",
+        "-eo",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-01/after-cpu-02/stderr.%J.log",
+        "-w",
+        "ended(29798699)",
+        "bash",
+        "-l",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-storage-release-02/source/scripts/hpc/dbmol_storage_stage.lsf",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-storage-release-02/source",
+        "5f479f2e5342469efd8606c9457c946a51dbcf0dd90d837ee472babfdd820a4b",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-release-01/source",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-01",
+        "24c207da5510fa579576a04ad32bf1afc6e1f23f51dcb5251d82a4ebdfa8f436",
+        "after-cpu",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-01/after-cpu-02"
+      ],
+      "dependency": "ended(29798699)",
+      "outcome": "submitted",
+      "utc": "2026-10-23T11:01:05.019370+00:00",
+      "returncode": 0,
+      "stdout": "Job <29798700> is submitted to queue <hpc>.\n",
+      "stderr": "",
+      "job_id": "29798700"
+    },
+    "preflight": {
+      "status": "passed",
+      "reserve_bytes": 4294967296,
+      "file_reserve": 100000,
+      "scope": "all concurrent original+Proextensions+Boltz30k+DBMol remaining, report/diagnostic; no reservation",
+      "additional_prospective_noisy_protenix_allowance": 1073741824,
+      "additional_noise_stale_bytes": 87072952,
+      "work3": {
+        "status": "passed",
+        "filesystem": "work3",
+        "raw_quota": "HPE-Storage-Servers (disks, storagepool 1): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nHPE-Storage-Servers (NVME, storagepool 2): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (disks, storagepool 3): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks, storagepool 4): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks added in 2024, storagepool 5): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (NVMEs added in 2024, storagepool 6): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||   61.34 GiB|  100.00 GiB||   412543| 20000000\n\n",
+        "quota": {
+          "finite_pools": [
+            {
+              "used_bytes_upper": 66571993088,
+              "hard_bytes_lower": 107374182400,
+              "remaining_bytes": 40802189312,
+              "remaining_files": 19587457
+            }
+          ],
+          "available_bytes_lower": 40802189312,
+          "available_files_lower": 19587457
+        },
+        "projected_bytes": 13639503076,
+        "stale_bytes_subtracted": 6650650552,
+        "disk_free_bytes": 555969516929024,
+        "available_bytes_conservative": 34151538760,
+        "required_bytes": 17934470372,
+        "reserve_bytes": 4294967296,
+        "file_reserve": 100000,
+        "filesystem_inode_observation": {
+          "f_files": 0,
+          "f_ffree": 0,
+          "f_favail": 0
+        },
+        "available_files_lower": 19587457,
+        "filesystem_inode_reporting": "unreported_all_zero",
+        "file_headroom_scope": "Mandatory minimum of all authenticated finite user-quota pools",
+        "inode_limitation": "All-zero statvfs tuple supplies no independent filesystem inode proof",
+        "limitation": "Observations are conservative budget checks, not storage reservations"
+      },
+      "peers": {
+        "extended": {
+          "remaining": 2147483648,
+          "scope": "native-validation allowance only; no full-long pass"
+        },
+        "baseline": {
+          "remaining": 2147483648,
+          "scope": "native-validation allowance only; no full-long pass"
+        }
+      },
+      "missing_full_projections": [
+        "extended",
+        "baseline"
+      ],
+      "original_current": {
+        "protenix": 1065476574,
+        "boltz2": 1001537880,
+        "boltz2_chemistry": 631324252
+      },
+      "original_future": {
+        "protenix": 0,
+        "boltz2": 0,
+        "boltz2_chemistry": 4512697572
+      },
+      "terminal_original_evidence": {
+        "protenix": {
+          "status": "terminal_original_authenticated",
+          "job_id": "29792670",
+          "scientific_status": "passed",
+          "persisted_lsf_status": "Done",
+          "live_scheduler_status_invented": false,
+          "future_output_bytes": 0,
+          "counts_scope": "Exact pinned completed10000-update/10001-state summary previously audited; no numerical re-evaluation",
+          "original_source_manifest_sha256": "c2628d08f7224f3b572ab456f4113d8a66b587a5d69f85a072877052fc09a057",
+          "proofs": {
+            "summary": {
+              "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-protenix/payload/study/summary.json",
+              "bytes": 298580732,
+              "sha256": "b94d4bae58b7c82b92f4cf0b6b0e9804734afff0f54ea0b162b65d825ec2661d"
+            },
+            "stdout": {
+              "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-protenix/stdout.29792670.log",
+              "bytes": 2201,
+              "sha256": "46f7ff9c942cf3ca9447e4d4d2630a3e604d8a6cd42504b56e8a0fcd6bb3170e"
+            },
+            "submission": {
+              "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-protenix/submission.json",
+              "bytes": 1808,
+              "sha256": "5dc53846d086b2b6522d1d4aeb42c3461e4875f890b547b8362904793f33e58a"
+            }
+          }
+        },
+        "boltz2": {
+          "status": "terminal_original_authenticated",
+          "job_id": "29792671",
+          "scientific_status": "failed",
+          "persisted_lsf_status": "Exited",
+          "live_scheduler_status_invented": false,
+          "future_output_bytes": 0,
+          "counts_scope": "Exact pinned completed10000-update/10001-state summary previously audited; no numerical re-evaluation",
+          "original_source_manifest_sha256": "c2628d08f7224f3b572ab456f4113d8a66b587a5d69f85a072877052fc09a057",
+          "proofs": {
+            "summary": {
+              "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-boltz2/payload/study/summary.json",
+              "bytes": 301971481,
+              "sha256": "06a68008a0dfb8b6a66668447bcda4f01c7b54427d9b68f0d84e5926db278cc1"
+            },
+            "stdout": {
+              "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-boltz2/stdout.29792671.log",
+              "bytes": 2199,
+              "sha256": "b40c2741e3d500f74aafa8819a597d260b7372f5372eb2642aeb6c450341f5c0"
+            },
+            "submission": {
+              "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-boltz2/submission.json",
+              "bytes": 1798,
+              "sha256": "ddc416a8ed853307b639e9011fefadbb484d2721dfd3e3f9d054045c1eee8df0"
+            }
+          }
+        }
+      },
+      "launcher_manifest_sha256": "5f479f2e5342469efd8606c9457c946a51dbcf0dd90d837ee472babfdd820a4b",
+      "science_manifest_sha256": "24c207da5510fa579576a04ad32bf1afc6e1f23f51dcb5251d82a4ebdfa8f436",
+      "own_current": 0,
+      "own_full": 1073741824,
+      "projected_bytes": 13639503076,
+      "full_long_admission": false
+    },
+    "old_failed_cpu_proofs": [
+      {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-01/cpu/submission.json",
+        "sha256": "bbc02e915d3cda0d58cfcfe0806b7c5544df9328214bfabb319669ea27c7103d"
+      },
+      {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-01/after-cpu/submission.json",
+        "sha256": "f22d46432171ff8cf5b0fc3ceae8d05b65309dd5185777fa103338f8e7f558e9"
+      },
+      {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-01/cpu/stdout.29798549.log",
+        "sha256": "c1b559a85182bf1fd485e987480c43323a2a7538ea22fd58e51f5df21dc3a33e"
+      },
+      {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-01/after-cpu/stdout.29798550.log",
+        "sha256": "373813d3d4faabc87af19299827c1983ef62de6b2e43fab08dc3542a7cbcd2cf"
+      },
+      {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-01/cpu/storage-cpu-entry/gate.json",
+        "sha256": "0cb5b96b49ebefd8f483e882d3b796d040554e9c60b7e1f2ee194fceda2e8afd"
+      }
+    ],
+    "scientific_source_changed": false
+  },
+  "submission_stdout_sha256": "750cd75934ec13985f228728175b057eb3b6b610282b65a3e0005616d8e8fc00",
+  "admission_verification": {
+    "path": "admission-verification-01.json",
+    "sha256": "5d05051cc87f5cf2f4324d0a15f84de91e06d39ba3afbb748a4219719bf71366",
+    "new_cpu_entry_passed": true,
+    "cpu_passed": false
+  }
+}

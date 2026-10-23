@@ -1,0 +1,55 @@
+{
+  "status": "passed",
+  "cpu_cases": 799,
+  "new_cases": 71,
+  "groups": {
+    "hpc-contract": 467,
+    "legacy": 239,
+    "native-mapping": 34,
+    "chemistry": 59
+  },
+  "xml_header_counts": {
+    "hpc-contract": 470,
+    "legacy": 239,
+    "native-mapping": 34,
+    "chemistry": 59
+  },
+  "xml_header_limitation": "Actual testcase rows/logs are authoritative; inherited unittest subtests add3 to the contract header, not extra passed cases.",
+  "files_verified": 46,
+  "source_members_verified": 633,
+  "source_manifest_sha256": "3689071a4e7dd135071ff5b420c026543c4d10887c951077dff63d498d9f812c",
+  "cpu_certificate_sha256": "b606f924365ece881fc7a348d4c677a4d70858ce92cc259c015a63d2b2dd45b9",
+  "jobs": {
+    "cpu": "29798538",
+    "after-cpu": "29798539",
+    "boltz2-native-0000": "29798605",
+    "boltz2-after-native-0000": "29798606",
+    "boltz2_chemistry-native-0000": "29798607",
+    "boltz2_chemistry-after-native-0000": "29798608"
+  },
+  "actual_scheduler": {
+    "cpu": "DONE",
+    "after-cpu": "DONE",
+    "boltz2-native-0000": "PEND",
+    "boltz2-after-native-0000": "PEND",
+    "boltz2_chemistry-native-0000": "PEND",
+    "boltz2_chemistry-after-native-0000": "PEND"
+  },
+  "fresh_native_submissions": {
+    "boltz2": {
+      "job": "29798605",
+      "callback": "29798606",
+      "scheduler_state": "PEND"
+    },
+    "boltz2_chemistry": {
+      "job": "29798607",
+      "callback": "29798608",
+      "scheduler_state": "PEND"
+    }
+  },
+  "native_readiness_passed_by_this_audit": false,
+  "optimization_started_by_this_audit": false,
+  "remote_only_native_references": {},
+  "evidence_archive_sha256": "92314619d8dd71a59158cfc5534700bf4ecca24089696ec70ed02e3e00a0e77f",
+  "scope": "Independent stdlib byte/XML/schema/source/config/actualresources/scheduler/LSF/storage audit only; no local scientific arrays/models/tests. Native pending/results are separate from full CPU acceptance."
+}

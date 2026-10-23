@@ -1,0 +1,25 @@
+{
+  "tag": "20261023-boltz-lr0025-01",
+  "manifest_sha256": "43767a8564c220821fa06fa68c3a3690870cda2e22baeb7bf956b7f849094e76",
+  "source_files": 633,
+  "archive_bytes": 39617746,
+  "archive_sha256": "d19a5d8671b12990702ee0502f78e247e36bde97d33373461a6de1de25dcc78f",
+  "parent_manifest_sha256": "c2628d08f7224f3b572ab456f4113d8a66b587a5d69f85a072877052fc09a057",
+  "changed_members": {
+    "examples/brd4_25_atoms.py": "497077aef5701e3105f493e0110e6af57017dd1dad0623e09009bb5e1727d6a0",
+    "scripts/campaign25_contract.py": "4ab8fd54d5a71f84f63086183cd807884f989da9aff027f479b014a75abf518b",
+    "src/mosaic/small_molecule/chemistry/trajectory.py": "69c89b84fe0dd1c5b548a84286d6635cb63cff223dd0890a0b50ce8f3e1a8468",
+    "scripts/boltz_serial_protocol.py": "f5691bb1a0b6772f9383b526e7da28146218c2a27bf339f8303a5cacac788250",
+    "scripts/boltz_serial_ops.py": "d4c3ee7da4b7ebddff83c7b79184efcd6e9a68f7914a4ded66e7bb7ee1a1e3bb",
+    "scripts/hpc/boltz_serial_cpu.lsf": "3aef04d2af490a88f5cd4b429cdfcf9427d946b2e68c3a288a9fef3794952d2b",
+    "scripts/hpc/boltz_serial_stage.lsf": "c52c9c2b3b391c05893b6d5ba98d0d9983996596ad865002dbeb2f3c18c251c9",
+    "tests/test_boltz_serial.py": "9d7bc2131964a0ad2c8f9fd7a22752ae69ab9fd79ac75cb007aaf48d42168ee1",
+    "examples/configs/boltz_serial_boltz2.json": "ecdf8a4103291f2f3a7bc7197dd394f03a46c3ccc74c72eb42dfc2b76eb13124",
+    "examples/configs/boltz_serial_boltz2_chemistry.json": "3b3bc33d087f0c03a48c6bf89f03bc707d236ca0f64a95ba5ae2159d1918737c",
+    "docs/boltz_serial30k.md": "61dc0ff8661de5676c0931bc2d0e6cb28b5bd12428af9b218f67a1c92e30abfe"
+  },
+  "scientific_src_change": [
+    "src/mosaic/small_molecule/chemistry/trajectory.py"
+  ],
+  "execution": "Local stdlib packaging/AST only; no numerical validation"
+}

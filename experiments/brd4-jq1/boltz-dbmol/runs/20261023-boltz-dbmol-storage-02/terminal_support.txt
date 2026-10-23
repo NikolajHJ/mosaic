@@ -1,0 +1,111 @@
+
+SCIENCE_MANIFEST='24c207da5510fa579576a04ad32bf1afc6e1f23f51dcb5251d82a4ebdfa8f436'
+LAUNCHER=BASE/'boltz-dbmol-storage-release-02/source'
+LAUNCHER_MANIFEST=None
+CPU_PARENT='cpu-02'
+AFTER_CPU_PARENT='after-cpu-02'
+ORIGINAL_SOURCE=BASE/'restart-lrreset-release-04/source'
+ORIGINAL_SOURCE_MANIFEST='c2628d08f7224f3b572ab456f4113d8a66b587a5d69f85a072877052fc09a057'
+TERMINAL_PINS={
+ 'protenix':{
+  'job_id':'29792670','summary_bytes':298580732,
+  'summary_sha256':'b94d4bae58b7c82b92f4cf0b6b0e9804734afff0f54ea0b162b65d825ec2661d',
+  'status':'passed','lsf_status':'Done','stdout_bytes':2201,
+  'stdout_sha256':'46f7ff9c942cf3ca9447e4d4d2630a3e604d8a6cd42504b56e8a0fcd6bb3170e',
+  'submission_bytes':1808,'submission_sha256':'5dc53846d086b2b6522d1d4aeb42c3461e4875f890b547b8362904793f33e58a'},
+ 'boltz2':{
+  'job_id':'29792671','summary_bytes':301971481,
+  'summary_sha256':'06a68008a0dfb8b6a66668447bcda4f01c7b54427d9b68f0d84e5926db278cc1',
+  'status':'failed','lsf_status':'Exited','stdout_bytes':2199,
+  'stdout_sha256':'b40c2741e3d500f74aafa8819a597d260b7372f5372eb2642aeb6c450341f5c0',
+  'submission_bytes':1798,'submission_sha256':'ddc416a8ed853307b639e9011fefadbb484d2721dfd3e3f9d054045c1eee8df0'},
+}
+FAILED_CPU_PINS={
+ 'cpu/submission.json':'bbc02e915d3cda0d58cfcfe0806b7c5544df9328214bfabb319669ea27c7103d',
+ 'after-cpu/submission.json':'f22d46432171ff8cf5b0fc3ceae8d05b65309dd5185777fa103338f8e7f558e9',
+ 'cpu/stdout.29798549.log':'c1b559a85182bf1fd485e987480c43323a2a7538ea22fd58e51f5df21dc3a33e',
+ 'after-cpu/stdout.29798550.log':'373813d3d4faabc87af19299827c1983ef62de6b2e43fab08dc3542a7cbcd2cf',
+ 'cpu/storage-cpu-entry/gate.json':'0cb5b96b49ebefd8f483e882d3b796d040554e9c60b7e1f2ee194fceda2e8afd',
+}
+
+def configure_launcher(manifest):
+    global LAUNCHER_MANIFEST
+    require(isinstance(manifest,str) and re.fullmatch(r'[0-9a-f]{64}',manifest),'Malformed launcher manifest')
+    require(LAUNCHER_MANIFEST is None or LAUNCHER_MANIFEST==manifest,'Launcher identity changed')
+    LAUNCHER_MANIFEST=manifest
+    return manifest
+
+def verify_launcher(science_manifest,launcher_manifest):
+    require(science_manifest==SCIENCE_MANIFEST,'Scientific source657 identity changed')
+    configure_launcher(launcher_manifest)
+    proofs=[]
+    for root,expected in [(SOURCE,SCIENCE_MANIFEST),(LAUNCHER,launcher_manifest)]:
+        mp=root/'source_manifest.json'
+        require(mp.is_file() and not mp.is_symlink() and sha(mp)==expected,'Source manifest bytes changed')
+        files=read(mp)['files']
+        actual={p.relative_to(root).as_posix() for p in root.rglob('*') if p.is_file() or p.is_symlink()}
+        require(actual==set(files)|{'source_manifest.json'},'Source execution member scope changed')
+        for p in [root,*root.rglob('*')]:
+            require(not p.is_symlink() and (p.is_dir() or p.is_file()) and not(p.stat().st_mode&0o222),'Source is not sealed read-only regular content')
+        for name,digest in files.items():
+            p=root/name
+            require(p.resolve().is_relative_to(root.resolve()) and p.is_file() and sha(p)==digest,'Source member bytes changed')
+            if root==LAUNCHER:proofs.append({'path':str(p),'sha256':digest})
+        if root==LAUNCHER:proofs.append({'path':str(mp),'sha256':expected})
+    return proofs
+
+def terminal_original_evidence(arm):
+    require(arm in ('protenix','boltz2') and arm in TERMINAL_PINS,'Only exact terminal original Pro/Bol may receive zero future charge')
+    p=TERMINAL_PINS[arm];parent=OLD/('run-'+arm)
+    require(sha(ORIGINAL_SOURCE/'source_manifest.json')==ORIGINAL_SOURCE_MANIFEST,'Original source625 manifest changed')
+    paths={'summary':parent/'payload/study/summary.json',
+           'stdout':parent/('stdout.'+p['job_id']+'.log'),'submission':parent/'submission.json'}
+    records={}
+    for name,path in paths.items():
+        require(path.is_file() and not path.is_symlink() and path.resolve().is_relative_to(parent.resolve()),'Original terminal proof missing/nonregular')
+        require(path.stat().st_size==p[name+'_bytes'] and sha(path)==p[name+'_sha256'],'Exact original terminal proof changed')
+        records[name]={'path':str(path),'bytes':path.stat().st_size,'sha256':p[name+'_sha256']}
+    # Authenticate root status using the real sorted JSON, whose large cases
+    # precede status. Nested case statuses must never stand in for root status.
+    summary=read(paths['summary'])
+    require(isinstance(summary,dict) and summary.get('status')==p['status']
+        and summary.get('source_manifest_sha256')==ORIGINAL_SOURCE_MANIFEST,'Pinned original terminal summary status/source differs')
+    cases=summary.get('cases')
+    require(isinstance(cases,list) and len(cases)==1 and isinstance(cases[0],dict),'Original terminal case scope differs')
+    case=cases[0]
+    require(case.get('status')=='passed' and isinstance(case.get('updates'),list) and len(case['updates'])==10000
+        and isinstance(case.get('states'),list) and len(case['states'])==10001,'Original terminal optimization budget incomplete')
+    del case,cases,summary
+    text=paths['stdout'].read_text(encoding='utf-8')
+    require(re.findall(r'^Subject:\s*Job\s+(\d+):[^\r\n]*\b(Done|Exited)\s*$',text,re.M)==[(p['job_id'],p['lsf_status'])],'Original same-job LSF terminal status differs')
+    if p['lsf_status']=='Done':
+        require('Successfully completed.' in text and 'Exited with exit' not in text,'Original Pro LSF success missing')
+    else:require(re.search(r'Exited with exit code\s+1\b',text) is not None,'Original Bol scientific failure not preserved')
+    sub=read(paths['submission'])
+    require(sub.get('job_id')==p['job_id'] and sub.get('outcome')=='submitted'
+        and sub.get('source_manifest_sha256')==ORIGINAL_SOURCE_MANIFEST,'Original actual job submission/source differs')
+    return {'status':'terminal_original_authenticated','job_id':p['job_id'],
+            'scientific_status':p['status'],'persisted_lsf_status':p['lsf_status'],
+            'live_scheduler_status_invented':False,'future_output_bytes':0,
+            'counts_scope':'Exact pinned completed10000-update/10001-state summary previously audited; no numerical re-evaluation',
+            'original_source_manifest_sha256':ORIGINAL_SOURCE_MANIFEST,'proofs':records}
+
+def original_remaining(current):
+    require(set(current)==set(OLD_FULL) and all(type(v) is int and v>=0 for v in current.values()),'Malformed original current-byte inventory')
+    require(set(TERMINAL_PINS)=={'protenix','boltz2'},'Terminal accounting pin scope differs')
+    evidence={arm:terminal_original_evidence(arm) for arm in TERMINAL_PINS}
+    require(type(current['boltz2_chemistry']) is int and current['boltz2_chemistry']<=OLD_FULL['boltz2_chemistry'],'Active original chemistry projection exceeded')
+    remaining={'protenix':0,'boltz2':0,'boltz2_chemistry':OLD_FULL['boltz2_chemistry']-current['boltz2_chemistry']}
+    return remaining,evidence
+
+def verify_failed_old_cpu():
+    pins=FAILED_CPU_PINS
+    for name,digest in pins.items():require(sha(ROOT/name)==digest,'Historical failed CPU evidence changed')
+    require(read(ROOT/'cpu/storage-cpu-entry/gate.json')['status']=='failed','Historical CPU storage failure relabeled')
+    for name,job in [('cpu','29798549'),('after-cpu','29798550')]:
+        sub=read(ROOT/name/'submission.json');text=(ROOT/name/('stdout.'+job+'.log')).read_text()
+        require(sub['job_id']==job and sub['outcome']=='submitted'
+            and re.findall(r'^Subject:\s*Job\s+(\d+):[^\r\n]*\b(Done|Exited)\s*$',text,re.M)==[(job,'Exited')]
+            and 'Exited with exit code 1' in text,'Original failed CPU/callback status differs')
+    require(not list((ROOT/'cpu/payload').glob('*.xml')),'Original failed CPU unexpectedly reached pytest')
+    return [{'path':str(ROOT/name),'sha256':digest} for name,digest in pins.items()]

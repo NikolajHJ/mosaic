@@ -102,3 +102,6 @@ tests/*/*.py -text -eol
 scripts/layout/verify_pytest_routing.py -text -eol
 pyproject.toml -text -eol
 docs/documentation-audit.json -text -eol
+
+# New composite native implementation retains authenticated LF bytes.
+src/mosaic/small_molecule/boltz2/dbmol.py text eol=lf

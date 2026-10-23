@@ -1,0 +1,43 @@
+{
+  "scope": "This request redundant own upload copies only; no saved studies/releases/history/cache/model/env removed",
+  "first_two": {
+    "utc": "2026-10-23T10:38:04.115323+00:00",
+    "status": "completed",
+    "items": [
+      {
+        "local_backup": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261023-boltz-lr0025-01\\source01\\source.tar.gz",
+        "bytes": 39617746,
+        "sha256": "d19a5d8671b12990702ee0502f78e247e36bde97d33373461a6de1de25dcc78f",
+        "remote_upload": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-01.tar.gz",
+        "remote_source": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-release-01/source",
+        "manifest_sha256": "43767a8564c220821fa06fa68c3a3690870cda2e22baeb7bf956b7f849094e76",
+        "source_files_verified": 633,
+        "outcome": "exact_redundant_upload_removed"
+      },
+      {
+        "local_backup": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261023-boltz-dbmol-pilot-01\\source01\\source.tar.gz",
+        "bytes": 39676321,
+        "sha256": "ec333fd3e0b33d9e5b82e0cd5e4e12c14ffb4f91782c18cd820d4bfab53de1f8",
+        "remote_upload": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-01.tar.gz",
+        "remote_source": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-release-01/source",
+        "manifest_sha256": "24c207da5510fa579576a04ad32bf1afc6e1f23f51dcb5251d82a4ebdfa8f436",
+        "source_files_verified": 657,
+        "outcome": "exact_redundant_upload_removed"
+      }
+    ],
+    "saved_studies_and_source_trees_unchanged": true,
+    "bytes_recovered": 79294067
+  },
+  "third": {
+    "utc": "2026-10-23T10:40:22.953446+00:00",
+    "prior_failed_gate_sha256": "9822d97a999ba1232692a17e4e9308518eecf09e583988e93f8954be6d5d0c1f",
+    "scope": "Fresh byte/file observation only; old failed gate preserved; no prior CPU or scientific execution",
+    "retired_upload": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-02.tar.gz",
+    "bytes": 39618948,
+    "sha256": "40b4a087c2735de93ed1896f7534618f32d8713dae4d83fa80d36b49b1924dfa",
+    "local_backup": "results/hpc/20261023-boltz-lr0025-02/source01/source.tar.gz",
+    "immutable_source633_reverified": true,
+    "retirement": "exact_redundant_upload_removed_all_studies_and_source_directories_unchanged"
+  },
+  "total_bytes": 118913015
+}

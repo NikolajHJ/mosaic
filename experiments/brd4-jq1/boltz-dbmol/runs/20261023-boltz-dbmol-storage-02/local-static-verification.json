@@ -1,0 +1,71 @@
+{
+  "scope": "Local stdlib AST/JSON/archive/byte/layout metadata only; no numerical tests, arrays or model execution",
+  "status": "passed_scoped_static_checks",
+  "python_files": {
+    "experiments/brd4-jq1/boltz-dbmol/scripts/bridge.py": "5e0208d09b81e53c3c0278fe5d0a6c4d384e836884cd7b6c9872f47dc5e7c6d9",
+    "experiments/brd4-jq1/boltz-dbmol/scripts/worker.py": "9023ab4e123e39d9db1bc343b3ea7cbd59caf8c27999c492427792cbb4efbbb6",
+    "experiments/brd4-jq1/boltz-dbmol/tests/fixture_bridge.py": "b31a9903657f589d17a41008dc45690fca28a0288cd6a2e5059e65d111c79505",
+    "experiments/brd4-jq1/boltz-dbmol/tests/fixture_gradient_contract.py": "8e98dc977ef9e42bb05126e2d181e0dac9011bbf364710cd03b0f7b7d9bcbcbb",
+    "experiments/brd4-jq1/boltz-dbmol/tests/fixture_native_paths.py": "aaa847395635a87d49c1ed06e932a8ae945a2d48330f0e43395f338c4f87e125",
+    "experiments/brd4-jq1/boltz-dbmol/tests/fixture_objective.py": "35250966b0100882084cf2146a5fa0dbd69cdd2c32b5d2251359a0a2fe9b81a5",
+    "experiments/brd4-jq1/boltz-dbmol/tests/fixture_pilot_contract.py": "1e189bca95a92964b644d8f7a0339c1c3b99372eded3dd66c40fc7e7c5417ffc",
+    "experiments/brd4-jq1/boltz-dbmol/tests/native_validation.py": "8299ff8d14fb21ae01d4e5247f7c06c2245c01c69cae3af2a701593ac51d7400",
+    "experiments/brd4-jq1/boltz-dbmol/runs/20261023-boltz-dbmol-pilot-01/admit_after_capacity.py": "25f0eeb75238db0dad6d8d20d1d7d963e64ef745278d8fa35925bfb96261ebda",
+    "experiments/brd4-jq1/boltz-dbmol/runs/20261023-boltz-dbmol-pilot-01/collect_cpu.py": "11fb1d2cd13caaa452e6967934682cb44e17acbb1ff2c96d0bb00bc77441a5ed",
+    "experiments/brd4-jq1/boltz-dbmol/runs/20261023-boltz-dbmol-pilot-01/dbmol_driver.py": "e80b19d98cf7f6d3825f85d15738ecb83ce1d75343a3cc76725217e98240c67e",
+    "experiments/brd4-jq1/boltz-dbmol/runs/20261023-boltz-dbmol-pilot-01/dbmol_ops.py": "1e486b3af9195a365243effee955cbb20c566bbaad3fb1c0dfb5b248f3ff17cc",
+    "experiments/brd4-jq1/boltz-dbmol/runs/20261023-boltz-dbmol-pilot-01/dbmol_protocol.py": "56ca979722b697f3de9d7b1be021aec87dbbe9342efc5cbfad7907b28f354750",
+    "experiments/brd4-jq1/boltz-dbmol/runs/20261023-boltz-dbmol-pilot-01/overlay-src__mosaic__small_molecule__chemistry__trajectory.py": "6ab7330726eed2d615f4d518f3a4918c2cdc84fc5c609b52eaa530533d47f64a",
+    "experiments/brd4-jq1/boltz-dbmol/runs/20261023-boltz-dbmol-pilot-01/prepare_source.py": "3f86e7a9e7394a439f8fee43ccceffd8aeda61935a1dbec10a80b25aeeb51d1e",
+    "experiments/brd4-jq1/boltz-dbmol/runs/20261023-boltz-dbmol-pilot-01/submit.py": "e0fcde13507423a34f7ac395c616b4e19c95bcea48e915de2e9600fecfbc4ad0",
+    "experiments/brd4-jq1/boltz-dbmol/runs/20261023-boltz-dbmol-pilot-01/verify_cpu.py": "e3be38eb9d9c4502b295ec3dc1d77b5091274c32dd9295694f5a4b5200c83a03",
+    "experiments/brd4-jq1/boltz-dbmol/runs/20261023-boltz-dbmol-storage-02/collect_cpu.py": "e3d004a736f32ca5f8b899532d256d95a67852dddcee77ff95b3767abeb48573",
+    "experiments/brd4-jq1/boltz-dbmol/runs/20261023-boltz-dbmol-storage-02/dbmol_storage_ops.py": "042991d56f2ea98c4db72f4b6704a16b4f700fda3787484116901283909863e1",
+    "experiments/brd4-jq1/boltz-dbmol/runs/20261023-boltz-dbmol-storage-02/fixture_storage_adoption.py": "238159589be70440a50fefca14f0b2bedea99789be1c1ab58992a8dd5c51b9c2",
+    "experiments/brd4-jq1/boltz-dbmol/runs/20261023-boltz-dbmol-storage-02/prepare_launcher.py": "6c5988e53844765c744315e831ec4ff922457b767d7bf5df78eb8a63167465e5",
+    "experiments/brd4-jq1/boltz-dbmol/runs/20261023-boltz-dbmol-storage-02/submit_launcher.py": "cadbc0d0c6fc744d5f1eb8b8d74348f7ae8b4c24d8334d1134605fae3ed545a8",
+    "experiments/brd4-jq1/boltz-dbmol/runs/20261023-boltz-dbmol-storage-02/verify_cpu.py": "d746e0b0c3b9973bbb060438addbab519c8ddcb5f7c6a655abbf519a8859d007",
+    "experiments/brd4-jq1/boltz-lr0025/runs/20261023-boltz-lr0025-01/boltz_serial_contract.py": "4ab8fd54d5a71f84f63086183cd807884f989da9aff027f479b014a75abf518b",
+    "experiments/brd4-jq1/boltz-lr0025/runs/20261023-boltz-lr0025-01/boltz_serial_driver.py": "497077aef5701e3105f493e0110e6af57017dd1dad0623e09009bb5e1727d6a0",
+    "experiments/brd4-jq1/boltz-lr0025/runs/20261023-boltz-lr0025-01/boltz_serial_ops.py": "d4c3ee7da4b7ebddff83c7b79184efcd6e9a68f7914a4ded66e7bb7ee1a1e3bb",
+    "experiments/brd4-jq1/boltz-lr0025/runs/20261023-boltz-lr0025-01/boltz_serial_protocol.py": "f5691bb1a0b6772f9383b526e7da28146218c2a27bf339f8303a5cacac788250",
+    "experiments/brd4-jq1/boltz-lr0025/runs/20261023-boltz-lr0025-01/collect_cpu.py": "f157b044c42f82061717c4f8987678cdcbf759ffc8b2115a575b76c1aaf79a38",
+    "experiments/brd4-jq1/boltz-lr0025/runs/20261023-boltz-lr0025-01/fixture_boltz_serial.py": "9d7bc2131964a0ad2c8f9fd7a22752ae69ab9fd79ac75cb007aaf48d42168ee1",
+    "experiments/brd4-jq1/boltz-lr0025/runs/20261023-boltz-lr0025-01/observe.py": "ac77529cc813a69b3d2f03c5c3565d7e0da485c8eb5fe33e1ff369761dabea77",
+    "experiments/brd4-jq1/boltz-lr0025/runs/20261023-boltz-lr0025-01/prepare_source.py": "dfd5e5761d461492ab13a8b1c6e13f78fc6db64fa4a1a7a8afde11ee637da7b8",
+    "experiments/brd4-jq1/boltz-lr0025/runs/20261023-boltz-lr0025-01/submit.py": "08841ce4081883852fee84f698eebf30576860404dd7eef975341bc90024e5ea",
+    "experiments/brd4-jq1/boltz-lr0025/runs/20261023-boltz-lr0025-01/verify_cpu.py": "860394f34252f7393c9391033d290cc36e92a3b1761692cc65f99673c034f891",
+    "experiments/brd4-jq1/boltz-lr0025/runs/20261023-boltz-lr0025-02/boltz_serial_contract.py": "4ab8fd54d5a71f84f63086183cd807884f989da9aff027f479b014a75abf518b",
+    "experiments/brd4-jq1/boltz-lr0025/runs/20261023-boltz-lr0025-02/boltz_serial_driver.py": "497077aef5701e3105f493e0110e6af57017dd1dad0623e09009bb5e1727d6a0",
+    "experiments/brd4-jq1/boltz-lr0025/runs/20261023-boltz-lr0025-02/boltz_serial_ops.py": "3f350ba2de3bbac54d3634002fc9d10cbc46736056870a5c0696c784b718cff1",
+    "experiments/brd4-jq1/boltz-lr0025/runs/20261023-boltz-lr0025-02/boltz_serial_protocol.py": "f5691bb1a0b6772f9383b526e7da28146218c2a27bf339f8303a5cacac788250",
+    "experiments/brd4-jq1/boltz-lr0025/runs/20261023-boltz-lr0025-02/collect_cpu.py": "ca72e5b9a7c0bf33d4cde9bed95f360d5c85a511b9ceedd88f1ca3e662c4e1d9",
+    "experiments/brd4-jq1/boltz-lr0025/runs/20261023-boltz-lr0025-02/fixture_boltz_serial.py": "252f4a7d1da12a1c87530ce79d5a59423bf2f96ced85f5a6c0521b91d4c19800",
+    "experiments/brd4-jq1/boltz-lr0025/runs/20261023-boltz-lr0025-02/fixture_protenix_initialization.py": "0ce1dcb2a3d60181e4ebf43a9f9218eb8f87ec748ed0053619e00a390fe4b1a3",
+    "experiments/brd4-jq1/boltz-lr0025/runs/20261023-boltz-lr0025-02/observe.py": "75899429ccd59774ba717e9094575c64eab48f070a6b4f80e24239e7428d7225",
+    "experiments/brd4-jq1/boltz-lr0025/runs/20261023-boltz-lr0025-02/prepare_source.py": "c7a85f55e928f8337461be9917c3b26b397974d0d5f74597b566d000d63a61cc",
+    "experiments/brd4-jq1/boltz-lr0025/runs/20261023-boltz-lr0025-02/submit.py": "6e95a753c862215d602aead8fb7319e6c38bc354a742b1b0210d0f0ccdedee70",
+    "experiments/brd4-jq1/boltz-lr0025/runs/20261023-boltz-lr0025-02/verify_cpu.py": "32be4322e7f624222eb97544a81717fdd07a2870c533c6b6f7e5dfc2f26532bf"
+  },
+  "directory_readmes": "all present",
+  "scientific_archives_verified": {
+    "20261023-boltz-lr0025-02": {
+      "source_files": 633,
+      "archive_sha256": "40b4a087c2735de93ed1896f7534618f32d8713dae4d83fa80d36b49b1924dfa",
+      "manifest_sha256": "3689071a4e7dd135071ff5b420c026543c4d10887c951077dff63d498d9f812c"
+    },
+    "20261023-boltz-dbmol-pilot-01": {
+      "source_files": 657,
+      "archive_sha256": "ec333fd3e0b33d9e5b82e0cd5e4e12c14ffb4f91782c18cd820d4bfab53de1f8",
+      "manifest_sha256": "24c207da5510fa579576a04ad32bf1afc6e1f23f51dcb5251d82a4ebdfa8f436"
+    },
+    "20261023-boltz-dbmol-storage-02": {
+      "source_files": 5,
+      "archive_sha256": "a26dafcac4fbc342a275dedb1c93ed8880062f9e3dafe48d188937c3137dd750",
+      "manifest_sha256": "5f479f2e5342469efd8606c9457c946a51dbcf0dd90d837ee472babfdd820a4b"
+    }
+  },
+  "repo_layout_limitations": [
+    "Global layout reader still reports three additional test_* modules in the separate concurrent protenix-noisy-1000 experiment; none are from these Boltz/DBMol homes. No missing canonical tests or broken documentation links. This global check is not relabeled passed."
+  ]
+}

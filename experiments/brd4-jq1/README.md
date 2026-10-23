@@ -16,3 +16,5 @@ freshLR0.3/Dirichlet1 seed17/chemistry0.001-to100, independent of saved studies.
 
 [Protenix extended50k and exact continuation](protenix-extended-50000/README.md):
 user-authorized random50000 stretched chemistry ramp and original passed10k+40000.
+
+[Boltz LR0.0025 comparisons](boltz-lr0025/README.md) and [independent DBMol composite pilot](boltz-dbmol/README.md): fresh30k pair with stretchedchemistry and a separately gated10k binding pilot.

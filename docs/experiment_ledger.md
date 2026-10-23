@@ -6543,3 +6543,75 @@ All old runs/report editions/Boltz endpoint diagnostics remain unchanged. A new
 50k report must pin actual new segment IDs and join global saved frames with
 duplicate boundary states authenticated exactly; old contracts/editions cannot
 be retargeted. All rendering/array/gradient checks stay allocated DTU HPC only.
+
+### 2026-10-23 — prepared Boltz LR0.0025 comparisons and independent DBMol pilot
+
+User authorized two fresh native Boltz2 LR0.0025/30000-update arms, with and
+without chemistry validity loss, plus an independent binding-only DBMol composite
+LR0.0025/10000 pilot. User explicitly selected stretched chemistry timing:
+0.001 through applied5000, geometric to100at30000. New experiment homes
+`experiments/brd4-jq1/boltz-lr0025` and `experiments/brd4-jq1/boltz-dbmol`.
+All saved studies/current jobs remain unchanged. Allocated raw component+total
+FD/parity/null/nonzero/independent-primal/frozen/FP64-scalar-FP32-graph tests are
+mandatory before the new pilot; no AD-only substitute or scientific gate waiver.
+Serial exact-logit segments preserve global indices and the requested budgets.
+Fresh admission must include both pending Protenix50k chains and all concurrent
+Mosaic output projections, not just each new job in isolation. No new experiment
+executed or submitted by this preparation event. Local work is stdlib/static only.
+
+Read-only HPC metadata at2026-10-23T10:13:50.839983Z authenticated both existing
+checkpoint files: affinity2062139170bytes/dcc5cd3722b1c9eaa34267e4ae32f55cbbf1963f4c19319381ccfa30fdd2ca9e
+and structural2286561469bytes/090e82ac8c92f5e943fa1b39e7410a44027bea7243c0bbb3caa67a77fc1428e1.
+Protenix50k native29798159/61 and callbacks29798160/62 remainPEND, with no full
+extension projection yet; existingchemistry29792672 RUN and diagnostic29796551 PEND.
+Raw work3quota75.07/100GiB is an observation, not a reservation or full-new-runs pass.
+Planned new roots/releases were absent. No model/array calculation, cleanup or
+existing scientific mutation occurred.
+
+### Boltz LR0.0025 pair actually staged/submitted,23October12:26Paris
+
+New source633 authenticated read-only, manifest43767a8564c220821fa06fa68c3a3690870cda2e22baeb7bf956b7f849094e76, archive39617746B SHAd19a5d8671b12990702ee0502f78e247e36bde97d33373461a6de1de25dcc78f. CPU29798466/afterCPU29798470 actually submitted10:26:39/54UTC. Full guarded serial30k pair configuredLR.0025, chemistry.001through5000->100at30000. Initial validation storage gate passed18235499918required versus19462959470conservative available,4GiB/100000files retained; not a full30k/Pro50k long-storage pass. All existing runs/results unchanged. Native scientific passes and optimization starts are not yet established. See experiments/brd4-jq1/boltz-lr0025/runs/20261023-boltz-lr0025-01/campaign.json.
+
+### Boltz30k fixture failure preserved and corrected; DBMol fresh admission,23October12:41Paris
+
+Baseline source01 CPU29798466 EXIT1, callback29798470 EXIT1. Actual466contracts:
+464passed/twofailed/noerrors/skips; latergroupsunreached. Independent21-file
+byte/XML/LSF/scheduler/source633auditpassed as FAILED evidence (archive51322B
+SHAd7f937585e481c094eb2df1f2ee7f43a585f717dce704d29065299f0061d8334).
+Cause: inheritedProtenixunitfixture monkeypatchwascapturedbylazilyimported
+chemistry.checks, thenassertedReplayLogitsduringnewGraphLogitsfixtures.
+No scientific/native/GPU testornewoptimizationran. Newimmutableattempt02
+preloadsrealchecksintheunitfixtureandaddsrestorationregression; all145src,
+driver/contract/protocol/configbytesexact01. Source633manifest3689071a4e7dd135071ff5b420c026543c4d10887c951077dff63d498d9f812c,
+archive39618948B SHA40b4a087c2735de93ed1896f7534618f32d8713dae4d83fa80d36b49b1924dfa.
+CPU29798538/callback29798539submitted10:39:27UTC; fullrevalidationpending.
+CPUownallowance1GiBtotal,nativegroup2GiB,allfullprojections/4GiB100000files
+unchanged; independentlypreparednoisypilot1GiB/externalstalebytesincluded.
+
+DBMolsource657manifest24c207da5510fa579576a04ad32bf1afc6e1f23f51dcb5251d82a4ebdfa8f436,
+archive39676321B SHAec333fd3e0b33d9e5b82e0cd5e4e12c14ffb4f91782c18cd820d4bfab53de1f8.
+FirstpreflightFAILEDbeforeanyCPU:19256933986required/19236336523available;
+failedgateSHA9822d97a999ba1232692a17e4e9308518eecf09e583988e93f8954be6d5d0c1f
+andindependent6-file/source657auditpreserved. Recover118913015bytesONLYfrom
+threeexactredundantuploadtarballscreatedduringTHISrequestafterlocalarchive
+backupverificationandall633/657/633remotestagedmembersrehashed. Everyimmutable
+releasedirectory/savedstudy/historicalfailure/cache/model/envremainsunchanged.
+Freshmetadataadmission02 reauthenticatesoldfailedgate,nopriorCPU/unknownmarkers
+andunchangedsource; newgatesiblingretainsoldfailure. ActualCPU29798549/
+callback29798550submitted10:41:05UTC after19225068665required/19235502439available
+validationadmissionpassedwithunchanged4GiB/100000filereserve. No fullnewlong
+storage/readiness/gradientpass is claimed. Noheartbeatunpauseoroldjobchange.
+
+### Boltz30k CPU799 passed/native queued; DBMol entry resource failure, 23October2026
+
+[Boltz attempt02](../experiments/brd4-jq1/boltz-lr0025/runs/20261023-boltz-lr0025-02/README.md): actualCPU29798538/callback29798539 DONE/hpc/samejobLSFsuccess;799 actualcases passed (467+239+34+59), nofail/errors/skips,3 deliberatelydeselectedlegacy. Certificateb606f924365ece881fc7a348d4c677a4d70858ce92cc259c015a63d2b2dd45b9; all46 compactfiles/source633/rawXML/vector proofs independently audited. Newnative Boltz29798605/callback29798606, chemistry29798607/callback29798608 submitted/PEND. These are validators, not optimization starts; no native passyet.
+
+[DBMol pilot01](../experiments/brd4-jq1/boltz-dbmol/runs/20261023-boltz-dbmol-pilot-01/README.md): CPU29798549/callback29798550 EXIT1 atentry bytequota beforepytest/model, required19,175,262,065/available18,158,117,863. Independent24file/source657/scheduler/LSF failure auditpassed; no CPUcases/native/optimization claim. Preserve failedoriginalpreflight/passingadmission02/failedCPUentry; new small immutable launcher-only completion-aware storage candidate prepared separately, retaining source657 and all active/prospective/reserve/stale-byte/scientific guards.
+
+### 2026-10-23 — DBMol launcher02 prepared after CPU entry quota failure
+
+[Storage adoption02](../experiments/brd4-jq1/boltz-dbmol/runs/20261023-boltz-dbmol-storage-02/README.md) is a new five-file immutable metadata launcher, manifest5f479f2e5342469efd8606c9457c946a51dbcf0dd90d837ee472babfdd820a4b, archive20,406bytes SHAa26dafcac4fbc342a275dedb1c93ed8880062f9e3dafe48d188937c3137dd750. Scientific source657/config/loss/driver/worker/checks remain unchanged. Exact original Pro/Bol terminal summary/source/submission/LSF proofs are required before zero future growth; every current byte stays stale-charged and Bol scientific failure remains failed. All active/prospective budgets plus4GiB/100000files remain mandatory. NewCPU02 parents repeat all six inherited/current groups plus72 metadata cases, expected1135 actual cases. Both source seals authenticate before imports; CPU reference paths and dotted XML attribution corrected in this new launcher only. Local stdlib AST/byte review passed; allocated checks and actual submission are pending.
+
+### 2026-10-23 — DBMol launcher02 actually staged and CPU submitted
+
+Actual11:01:04–05UTC CPU29798699/callback29798700 submitted, newcpu-02/after-cpu-02 parents in original pilot01 controlroot. Smallsource5 manifest5f479f2e5342469efd8606c9457c946a51dbcf0dd90d837ee472babfdd820a4b/archive20,406B SHAa26dafcac4fbc342a275dedb1c93ed8880062f9e3dafe48d188937c3137dd750 authenticatedread-only. Exactsource657 and every historical failedCPU/gate reauthenticated before import; originalsummary/source/submission/LSF pins established terminalfuturezero forPro/Bol while actualsavedbytes remain stalecharged. Freshvalidationgate passed17,934,470,372required versus34,151,538,760available, own4GiB/100000file reserve retained; quota61.34GiB observed, no newhistorical cleanup by this action. Expected1135rawCPUcases notyetpassed. Native/full10k admission and all newoptimization starts remain unestablished.

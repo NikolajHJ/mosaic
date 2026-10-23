@@ -1,0 +1,192 @@
+{
+  "state": "failed",
+  "source": {
+    "tag": "20261023-boltz-lr0025-01",
+    "manifest_sha256": "43767a8564c220821fa06fa68c3a3690870cda2e22baeb7bf956b7f849094e76",
+    "source_files": 633,
+    "archive_bytes": 39617746,
+    "archive_sha256": "d19a5d8671b12990702ee0502f78e247e36bde97d33373461a6de1de25dcc78f",
+    "parent_manifest_sha256": "c2628d08f7224f3b572ab456f4113d8a66b587a5d69f85a072877052fc09a057",
+    "changed_members": {
+      "examples/brd4_25_atoms.py": "497077aef5701e3105f493e0110e6af57017dd1dad0623e09009bb5e1727d6a0",
+      "scripts/campaign25_contract.py": "4ab8fd54d5a71f84f63086183cd807884f989da9aff027f479b014a75abf518b",
+      "src/mosaic/small_molecule/chemistry/trajectory.py": "69c89b84fe0dd1c5b548a84286d6635cb63cff223dd0890a0b50ce8f3e1a8468",
+      "scripts/boltz_serial_protocol.py": "f5691bb1a0b6772f9383b526e7da28146218c2a27bf339f8303a5cacac788250",
+      "scripts/boltz_serial_ops.py": "d4c3ee7da4b7ebddff83c7b79184efcd6e9a68f7914a4ded66e7bb7ee1a1e3bb",
+      "scripts/hpc/boltz_serial_cpu.lsf": "3aef04d2af490a88f5cd4b429cdfcf9427d946b2e68c3a288a9fef3794952d2b",
+      "scripts/hpc/boltz_serial_stage.lsf": "c52c9c2b3b391c05893b6d5ba98d0d9983996596ad865002dbeb2f3c18c251c9",
+      "tests/test_boltz_serial.py": "9d7bc2131964a0ad2c8f9fd7a22752ae69ab9fd79ac75cb007aaf48d42168ee1",
+      "examples/configs/boltz_serial_boltz2.json": "ecdf8a4103291f2f3a7bc7197dd394f03a46c3ccc74c72eb42dfc2b76eb13124",
+      "examples/configs/boltz_serial_boltz2_chemistry.json": "3b3bc33d087f0c03a48c6bf89f03bc707d236ca0f64a95ba5ae2159d1918737c",
+      "docs/boltz_serial30k.md": "61dc0ff8661de5676c0931bc2d0e6cb28b5bd12428af9b218f67a1c92e30abfe"
+    },
+    "scientific_src_change": [
+      "src/mosaic/small_molecule/chemistry/trajectory.py"
+    ],
+    "execution": "Local stdlib packaging/AST only; no numerical validation"
+  },
+  "remote_root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-01",
+  "remote_source": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-release-01/source",
+  "cpu": {
+    "phase": "cpu",
+    "args": [
+      "bsub",
+      "-q",
+      "hpc",
+      "-n",
+      "4",
+      "-R",
+      "span[hosts=1]",
+      "-R",
+      "rusage[mem=4GB]",
+      "-W",
+      "01:00",
+      "-J",
+      "mosaic-bol30k-cpu",
+      "-oo",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-01/cpu/stdout.%J.log",
+      "-eo",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-01/cpu/stderr.%J.log",
+      "bash",
+      "-l",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-release-01/source/scripts/hpc/boltz_serial_cpu.lsf",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-release-01/source",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-01",
+      "43767a8564c220821fa06fa68c3a3690870cda2e22baeb7bf956b7f849094e76"
+    ],
+    "dependency": null,
+    "outcome": "submitted",
+    "utc": "2026-10-23T10:26:39.266739+00:00",
+    "returncode": 0,
+    "stdout": "Job <29798466> is submitted to queue <hpc>.\n",
+    "stderr": "",
+    "job_id": "29798466"
+  },
+  "after_cpu": {
+    "phase": "after-cpu",
+    "args": [
+      "bsub",
+      "-q",
+      "hpc",
+      "-n",
+      "2",
+      "-R",
+      "span[hosts=1]",
+      "-R",
+      "rusage[mem=4GB]",
+      "-W",
+      "00:30",
+      "-J",
+      "mosaic-bol30k-after-cpu",
+      "-oo",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-01/after-cpu/stdout.%J.log",
+      "-eo",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-01/after-cpu/stderr.%J.log",
+      "-w",
+      "ended(29798466)",
+      "bash",
+      "-l",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-release-01/source/scripts/hpc/boltz_serial_stage.lsf",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-release-01/source",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-01",
+      "43767a8564c220821fa06fa68c3a3690870cda2e22baeb7bf956b7f849094e76",
+      "after-cpu",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-01/after-cpu"
+    ],
+    "dependency": "ended(29798466)",
+    "outcome": "submitted",
+    "utc": "2026-10-23T10:26:54.336380+00:00",
+    "returncode": 0,
+    "stdout": "Job <29798470> is submitted to queue <hpc>.\n",
+    "stderr": "",
+    "job_id": "29798470"
+  },
+  "preflight": {
+    "status": "passed",
+    "phase": "preflight",
+    "reserve_bytes": 4294967296,
+    "file_reserve": 100000,
+    "scope": "Original3 remaining +report2GiB/diagnostic512MiB +all641 remaining +both Boltz30k remaining +independent DBMol prospective; observations not reservations",
+    "old_current": {
+      "protenix": 1065476574,
+      "boltz2": 1001537880,
+      "boltz2_chemistry": 431061013
+    },
+    "own_current": {
+      "boltz2": 0,
+      "boltz2_chemistry": 0
+    },
+    "full_boltz": {
+      "boltz2": 1073741824,
+      "boltz2_chemistry": 1073741824
+    },
+    "existing_protenix": {
+      "mode": "native_allowances_only_not_full_long_capacity",
+      "full": {
+        "random": 1073741824,
+        "continuation": 1073741824
+      },
+      "current": {
+        "random": 10446,
+        "continuation": 10617
+      },
+      "remaining": 2147462585
+    },
+    "dbmol": {
+      "mode": "validation_allowance_only_no_optimization_admission",
+      "full": 1073741824,
+      "current": 0,
+      "remaining": 1073741824
+    },
+    "projected_bytes": 13940532622,
+    "work3": {
+      "status": "passed",
+      "filesystem": "work3",
+      "raw_quota": "HPE-Storage-Servers (disks, storagepool 1): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nHPE-Storage-Servers (NVME, storagepool 2): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (disks, storagepool 3): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks, storagepool 4): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks added in 2024, storagepool 5): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (NVMEs added in 2024, storagepool 6): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||   75.22 GiB|  100.00 GiB||   439443| 20000000\n\n",
+      "quota": {
+        "finite_pools": [
+          {
+            "used_bytes_upper": 81604378624,
+            "hard_bytes_lower": 107374182400,
+            "remaining_bytes": 25769803776,
+            "remaining_files": 19560557
+          }
+        ],
+        "available_bytes_lower": 25769803776,
+        "available_files_lower": 19560557
+      },
+      "projected_bytes": 13940532622,
+      "stale_bytes_subtracted": 6306844306,
+      "disk_free_bytes": 555992336039936,
+      "available_bytes_conservative": 19462959470,
+      "required_bytes": 18235499918,
+      "reserve_bytes": 4294967296,
+      "file_reserve": 100000,
+      "filesystem_inode_observation": {
+        "f_files": 0,
+        "f_ffree": 0,
+        "f_favail": 0
+      },
+      "available_files_lower": 19560557,
+      "filesystem_inode_reporting": "unreported_all_zero",
+      "file_headroom_scope": "Mandatory minimum of all authenticated finite user-quota pools",
+      "inode_limitation": "All-zero statvfs tuple supplies no independent filesystem inode proof",
+      "limitation": "Observations are conservative budget checks, not storage reservations"
+    }
+  },
+  "full30k_storage_passed": false,
+  "native_passed": false,
+  "optimization_started": false,
+  "cpu_passed": false,
+  "scientific_optimization_started": false,
+  "cpu_failure": {
+    "actual_cases": 466,
+    "passed": 464,
+    "failures": 2,
+    "errors": 0,
+    "skips": 0,
+    "cause": "Inherited monkeypatch closure retained by lazily imported chemistry.checks; fixture isolation failure, no native run",
+    "verification_sha256": "9f960f708036183814babfd0a69ae986f415952a3a963b69e4f2b9eff2796638",
+    "successor_attempt": "20261023-boltz-lr0025-02"
+  }
+}

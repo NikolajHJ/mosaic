@@ -40,3 +40,8 @@ Shared tools: [releases](../scripts/releases/README.md), [evidence](../scripts/e
 
 
 - [Protenix extended50000](brd4-jq1/protenix-extended-50000/README.md): random50k with stretched chemistry ramp and exact passed plain10k+40k continuation; CPU832 passed and fresh native checks queued.
+
+## New Boltz LR0.0025 comparisons and composite pilot, 23 October 2026
+
+- [Native Boltz30k pair](brd4-jq1/boltz-lr0025/README.md): fresh LR0.0025, plain and stretched-chemistry30k arms.
+- [DBMol composite pilot](brd4-jq1/boltz-dbmol/README.md): independent LR0.0025/10k binding-only pilot, conditional on component and total native gradient gates.

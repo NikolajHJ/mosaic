@@ -1,0 +1,32 @@
+{
+  "status": "failed_attempt_evidence_verified",
+  "cpu_scientific_status": "failed",
+  "cpu_passed": false,
+  "cases_claimed_passed": null,
+  "jobs": {
+    "cpu": "29798466",
+    "after-cpu": "29798470"
+  },
+  "actual_scheduler": {
+    "cpu": "EXIT",
+    "after-cpu": "EXIT"
+  },
+  "storage_gates": {
+    "run/cpu/storage-cpu-entry/gate.json": "passed",
+    "run/storage-preflight/gate.json": "passed"
+  },
+  "storage_errors_verbatim": {},
+  "partial_xml_counts": {
+    "run/cpu/payload/hpc-contract.xml": {
+      "testcase": 466,
+      "failure": 2,
+      "error": 0,
+      "skipped": 0
+    }
+  },
+  "files_verified": 21,
+  "source_members_verified": 633,
+  "source_manifest_sha256": "43767a8564c220821fa06fa68c3a3690870cda2e22baeb7bf956b7f849094e76",
+  "evidence_archive_sha256": "d7f937585e481c094eb2df1f2ee7f43a585f717dce704d29065299f0061d8334",
+  "scope": "Independent stdlib byte/schema/source/actualscheduler/LSF failure audit only. No CPU/native/optimization pass or local numerical execution."
+}
