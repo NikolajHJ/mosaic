@@ -1,0 +1,27 @@
+# Opt-in RepairGuidanceConfig mapping for the frozen-mask Boltz runner.
+# New plumbing; native usefulness is unvalidated. This is not an ActiveSetConfig.
+# Use repair_guidance.study prepare to combine with an authenticated Boltz config.
+version: 1
+weight: 0.01  # Prototype coefficient, not calibrated.
+refresh_interval: 5
+attempts_per_refresh: 1
+seed: 61000
+normalization: sum  # Exact -log q; mean_per_decision is an explicit alternative.
+fallback: boltz_only_clear_target
+selection: first_valid_prescribed_order
+probability_policy: stable_log_softmax_no_floor
+provider:
+  model: defog_guacamol
+  python: /work3/s234818/latentmol/env/defog311/bin/python
+  source:
+    path: /work3/s234818/latentmol/cache/defog-official-guacamol/DeFoG
+    commit: 365bda9affadd5c2307014a0532ddaa244399441
+  checkpoint:
+    path: /work3/s234818/latentmol/cache/defog-official-guacamol/guacamol.ckpt
+    sha256: bc97d52ccf33a20d991f98349a1d37662273ab1c3e3f9777b938f9f144bc61f5
+  t0: 0.8
+  steps: 1000  # Entire native time-grid resolution, not the remaining suffix.
+  initialization: direct_candidate_no_corruption
+  device: cuda
+  sampling: {}  # Preserve checkpoint sampler settings; all effective values logged.
+  timeout_seconds: 600

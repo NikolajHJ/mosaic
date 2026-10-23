@@ -1,0 +1,8 @@
+{
+  "validity": 0.0,
+  "repair_proximity": 1.0,
+  "local_consistency": 1.0,
+  "connectedness": 1.0,
+  "repair_quality": 0.0,
+  "native_retention": 0.0
+}

@@ -1,0 +1,41 @@
+# UNTESTED HPC template. Replace every path and SHA256 with staged immutable assets.
+# Generate count contexts with scripts/hpc/boltz_active_set_prepare.sh first.
+version: 1
+name: vae-boltz-active-set-engineering
+mode: vae
+device: cuda
+output_root: ../runs/boltz_active_set
+decoder:
+  path: ../ASSET_SELECTED_VAE.pt
+  sha256: REPLACE_WITH_64_HEX_CHARACTERS
+affinity_checkpoint:
+  path: ../ASSET_boltz2_aff.ckpt
+  sha256: dcc5cd3722b1c9eaa34267e4ae32f55cbbf1963f4c19319381ccfa30fdd2ca9e
+context_manifest:
+  path: ../ASSET_count_contexts.json
+  sha256: REPLACE_WITH_64_HEX_CHARACTERS
+anchor_count: 13
+temperature: 1.0
+threshold: 0.5
+recycling_steps: 0
+allow_lossy_charge: true
+objective:
+  output: affinity_probability_binary
+  direction: maximize
+  weight: 1.0
+  scale: 1.0
+  offset: 0.0
+optimizer:
+  steps: 10
+  learning_rate: 0.05
+  trust_radius: 1.0
+  max_gradient_norm: 1.0
+diagnostics:
+  seed: 1729
+  hard_samples: 8
+  fd_epsilons: [0.001, 0.003, 0.01]
+  fd_rtol: 0.05
+  fd_atol: 0.000001
+  parity_rtol: 0.0001
+  parity_atol: 0.00001
+  minimum_fd_passes: 2

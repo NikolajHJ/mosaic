@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "base_release": "/work3/s234818/latentmol/releases/source-077-dense-chemistry-attempt001",
+  "base_archive_sha256": "3a706846f9e8ace5f409ea761b7b81c65bce55075aa237a3cf9ba1fb3b622cb8",
+  "base_manifest_sha256": "8f9f1fa79ea1285df69c0127e807129a201a8fd4a72f80063b787fbd15c4797a",
+  "base_config_sha256": "c5152f906396f4e2fe095b303088762fab2a34c74e6ecbdaabf1b916f8fd1347",
+  "base_campaign_root": "/work3/s234818/latentmol/runs/source-077-dense-chemistry-attempt001-density-study",
+  "base_receipts_root": "/work3/s234818/latentmol/submissions/source077-dense-chemistry-attempt001/receipts",
+  "endpoint_epochs": 100,
+  "milestones": [25, 50, 75, 100],
+  "segment_budget_seconds": 68400,
+  "evaluation_reserve_seconds": 5400,
+  "gate_budget_seconds": 1800,
+  "prefix_policy": "completed10_or_original",
+  "checkpoint_keep_recent": 2,
+  "archive_evaluation_rows": true
+}

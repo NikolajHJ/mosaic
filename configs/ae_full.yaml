@@ -1,0 +1,22 @@
+# Initial 60-epoch comparison, then explicit resumed convergence stages up to120.
+mode: ae
+seed: 17
+epochs: 120
+batch_size: 64
+learning_rate: 0.001
+lr_milestones:
+  - [61, 0.0003]
+  - [81, 0.0001]
+  - [101, 0.00003]
+validation_limit: 7347
+chemistry_limit: 1024
+train_probe_limit: 2048
+full_chemistry_every: 10
+checkpoint_every: 10
+checkpoint_epochs: [60]
+device: cuda
+model:
+  hidden: 128
+  latent: 128
+  layers: 3
+

@@ -1,0 +1,55 @@
+# UNTESTED native/HPC workflow. Replace assets/hashes before validate/pipeline.
+# This baseline uses the already implemented fixed-pose Boltz adapter.
+version: 1
+name: frozen-boltz-baseline
+device: cuda
+occupancy: fixed
+temperature: 1.0
+decoder:
+  checkpoint: ../assets/selected_vae.pt
+  sha256: REPLACE_WITH_DECODER_SHA256
+# Empty start uses the encoded mean of the prepared canonical seed. If its
+# argmax differs from that seed, the gate refuses to optimize. A separately
+# selected decoder-only raw-z bundle may be supplied as {path, sha256}.
+start: {}
+models:
+  boltz2:
+    objective:
+      output: affinity_probability_binary
+      direction: maximize
+      weight: 1.0
+      scale: 1.0
+      offset: 0.0
+    allow_lossy: true # Explicit expected-formal-charge information loss.
+    options:
+      prepared: ../assets/boltz_prepared.pt
+      prepared_sha256: REPLACE_WITH_PREPARED_SHA256
+      checkpoint: ../assets/boltz2_affinity.ckpt
+      recycling_steps: 0 # Engineering pilot; differs from official production budget.
+      allow_lossy_charge: true
+arms:
+  boltz_only:
+    models: [boltz2]
+  frozen_start:
+    models: [boltz2]
+    control: no_update
+  random_direction:
+    models: [boltz2]
+    control: random_direction
+optimizer:
+  steps: 10
+  learning_rate: 0.05
+  trust_radius: 1.0 # RAW z units; calibrate AE/VAE spread before scientific comparisons.
+  max_gradient_norm: 1.0
+diagnostics:
+  seed: 1729
+  hard_samples: 8
+  fd_epsilons: [0.001, 0.003, 0.01]
+  minimum_fd_passes: 2
+  fd_rtol: 0.05
+  fd_atol: 0.000001
+  parity_rtol: 0.0001
+  parity_atol: 0.00001
+# Fresh native evaluation uses explicit command plugins (see docs28 protocol).
+# Empty means pending/not configured; it NEVER implies native confirmation.
+native_evaluators: {}

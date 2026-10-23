@@ -1,0 +1,69 @@
+# UNVALIDATED example: replace all asset references before HPC execution.
+# First validate per-component gradients through the active-set DBMol gate;
+# the generic named-model runner alone checks only its selected total objective.
+version: 1
+name: frozen-boltz-dbmol
+device: cuda
+occupancy: fixed
+temperature: 1.0
+decoder:
+  checkpoint: ../assets/selected_vae.pt
+  sha256: REPLACE_WITH_DECODER_SHA256
+start: {}
+models:
+  boltz2:
+    objective:
+      output: dbmol_total_loss
+      direction: minimize
+      weight: 1.0
+      scale: 1.0
+      offset: 0.0
+    allow_lossy: true
+    options:
+      prepared: ../assets/boltz_prepared.pt
+      prepared_sha256: REPLACE_WITH_PREPARED_SHA256
+      checkpoint: ../assets/boltz2_affinity.ckpt
+      recycling_steps: 0
+      allow_lossy_charge: true
+      dbmol:
+        confidence_checkpoint:
+          path: ../assets/boltz2_conf.ckpt
+          sha256: 090e82ac8c92f5e943fa1b39e7410a44027bea7243c0bbb3caa67a77fc1428e1
+        # Native Boltz indices, not PDB author residue numbering. Replace these
+        # with a frozen pocket from prepare_dbmol_comparison.py on HPC. That
+        # preparer also records the initial reference-file/context hashes.
+        pocket_origin: explicit_native_residues
+        pocket_residues:
+          - {asym_id: 0, residue_index: 0}
+        affinity_regression_weight: 1.0
+        affinity_logit_weight: 1.0
+        contact_weight: 2.5
+        confidence_weight: 2.5
+        confidence_weights:
+          iptm: 1.0
+          complex_iplddt: 0.3
+          complex_ipde: 0.3
+          complex_pde: 0.1
+          confidence_score: 0.3
+          ptm: 0.1
+arms:
+  dbmol_only:
+    models: [boltz2]
+  frozen_start:
+    models: [boltz2]
+    control: no_update
+optimizer:
+  steps: 3
+  learning_rate: 0.05
+  trust_radius: 1.0
+  max_gradient_norm: 1.0
+diagnostics:
+  seed: 1729
+  hard_samples: 8
+  fd_epsilons: [0.001, 0.003, 0.01]
+  minimum_fd_passes: 2
+  fd_rtol: 0.05
+  fd_atol: 0.000001
+  parity_rtol: 0.0001
+  parity_atol: 0.00001
+native_evaluators: {}

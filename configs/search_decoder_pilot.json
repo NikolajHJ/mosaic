@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "initializer": "/work3/s234818/latentmol/runs/20261001T001617Z_vae-train_c008c090/best_validity.pt",
+  "initializer_sha256": "1893ddc183473fd4f27c6cd921d8b302f67ab388b660ada44bf3a2d6d5e28088",
+  "data": "/work3/s234818/latentmol/data/zinc215k-seed17-v1",
+  "dataset_sha256": "560840389f7d85592ef8e16a5566e26b5ab3e5dfa30ebe392366dbf54489974f",
+  "split_sha256": "e15daf547436b66cbbd54ae82f53f153d54e2bd24edee9bf2c5787099cbe6e79",
+  "fine_tune": {
+    "epochs": 3,
+    "batch_size": 64,
+    "prior_batch_size": 16,
+    "chemistry_reconstruction_batch": 16,
+    "learning_rate": 0.00003,
+    "weight_decay": 0.00001,
+    "clip_grad": 5.0,
+    "occupancy_anchor_weight": 1.0,
+    "aromatic_anchor_weight": 1.0,
+    "chemistry": {"isolated_weight": 0.0},
+    "connectivity": {"draws": 4, "weight": 1.0}
+  },
+  "seed": 17,
+  "arms": [
+    {"name": "control", "defect_weight": 0.0, "repair_weight": 0.0},
+    {"name": "defect", "defect_weight": 1.0, "repair_weight": 0.0},
+    {"name": "search-low", "defect_weight": 0.0, "repair_weight": 0.1},
+    {"name": "search-high", "defect_weight": 0.0, "repair_weight": 1.0}
+  ],
+  "train_limit": 16384,
+  "validation_limit": 256,
+  "validation_prior_count": 256,
+  "final_prior_count": 4096,
+  "final_repair_limit": 64,
+  "training_prior_count": 256,
+  "training_prior_batch": 8,
+  "repair": {"max_edits": 3, "checks_per_depth": 256, "beam_width": 4, "probability_weight": 1.0},
+  "case_budget_seconds": 3600,
+  "controller_budget_seconds": 25200,
+  "smoke_budget_seconds": 1800,
+  "preceding_job": "29622699"
+}

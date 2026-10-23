@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "study_id": "protenix-soft-occupancy-pilot-v1",
+  "preparation_version": "protenix-occupancy-native-case-preparation-v1",
+  "selection": "Score-blind fixed order, BRD4-BD1 crystal complexes; a terminal halogen is selected by deposited atom name. Chemical support is checked on allocated CPU before any model score is opened.",
+  "native_commit": "510faf9f5cc8fbbbb8d9055934d3fa7e6877c76d",
+  "max_protein_tokens": 256,
+  "min_ligand_heavy_atoms": 8,
+  "max_ligand_heavy_atoms": 24,
+  "readout": {
+    "pairs": "Every resolved deposited protein distogram representative atom crossed with each retained ligand heavy atom, once per unordered pair; optional-atom pairs excluded.",
+    "target_bins": "Official Protenix DistogramLoss boundaries linspace(2.3125,21.6875,63); bin is the count of boundaries strictly below the experimental Euclidean distance.",
+    "bin_count": 64
+  },
+  "cases": [
+    {
+      "case_id": "brd4_7za9_hhq",
+      "role": "development",
+      "pdb_id": "7ZA9",
+      "title": "BRD4 in complex with FragLite7",
+      "structure_url": "https://files.rcsb.org/download/7ZA9.cif",
+      "structure_file": "7ZA9.cif",
+      "structure_sha256": "f5ae1b5bcdb49f5cbedcb82fab42d41405758ab7233222948f499ab5f147557e",
+      "protein_label_asym_id": "A",
+      "protein_entity_id": "1",
+      "ligand_label_asym_id": "G",
+      "ligand_ccd_id": "HHQ",
+      "expected_ligand_heavy_atoms": 8,
+      "optional_atom_name": "I1",
+      "optional_element": "I",
+      "citation": "https://www.rcsb.org/structure/7ZA9"
+    },
+    {
+      "case_id": "brd4_7zad_ijl",
+      "role": "confirmation_1",
+      "pdb_id": "7ZAD",
+      "title": "BRD4 in complex with FragLite12",
+      "structure_url": "https://files.rcsb.org/download/7ZAD.cif",
+      "structure_file": "7ZAD.cif",
+      "structure_sha256": "b7e267c910e760748b5c90223cb02c5695fff3c721a495fda62ccf12e54e4114",
+      "protein_label_asym_id": "A",
+      "protein_entity_id": "1",
+      "ligand_label_asym_id": "D",
+      "ligand_ccd_id": "IJL",
+      "expected_ligand_heavy_atoms": 10,
+      "optional_atom_name": "I1",
+      "optional_element": "I",
+      "citation": "https://www.rcsb.org/structure/7ZAD"
+    },
+    {
+      "case_id": "brd4_7zaj_hh8",
+      "role": "confirmation_2",
+      "pdb_id": "7ZAJ",
+      "title": "BRD4 in complex with FragLite16",
+      "structure_url": "https://files.rcsb.org/download/7ZAJ.cif",
+      "structure_file": "7ZAJ.cif",
+      "structure_sha256": "2e4ed7034bd10b51da47c278065c2caea6b51618e8dffabdc268d00a66e99f85",
+      "protein_label_asym_id": "A",
+      "protein_entity_id": "1",
+      "ligand_label_asym_id": "C",
+      "ligand_instance_selection": "Lexicographically first deposited label_asym_id for HH8, fixed before model scoring; the second deposited copy D is excluded.",
+      "ligand_ccd_id": "HH8",
+      "expected_ligand_heavy_atoms": 11,
+      "optional_atom_name": "BR1",
+      "optional_element": "Br",
+      "citation": "https://www.rcsb.org/structure/7ZAJ"
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+# Source058: predefined coverage; new workflow awaits HPC validation.
+# Two bounded sequential23h allocations initially; no compute-node submissions.
+version: 1
+name: boltz-fresh-trajectory-058
+output_root: /work3/s234818/latentmol/runs/source058-fresh-trajectory
+cache: /work3/s234818/latentmol/cache/boltz2
+parents:
+  c13:
+    source_sha256: 89fb6bfda067ebc545a11395ba922749c9c5ef37f63bb2ff275afd4a92d756ef
+    pilot: /work3/s234818/latentmol/runs/source055-full-capped-pilot/20261002T092806Z_vae-active-set-full-capped-055_7d50e896
+    config_sha256: 8631c9e4b44f66206d365b1627502495dcf236dff2b1036bae0b4f148061a607
+    template:
+      path: /work3/s234818/latentmol/boltz-preparation/source054-active-set-attempt001/count-13/input/carbon_chain_13.yaml
+      sha256: ff3f32119c9f6a51b37169306de81e43e60327797e79ae7a53ef90ee5a445117
+  random:
+    source_sha256: 87093eae5bcaf87795be1cfec87a808b0e8adaf3f2979fa0a1914a6fd94ba8f5
+    root: /work3/s234818/latentmol/runs/source056-random-start-study
+    protocol:
+      path: /work3/s234818/latentmol/submissions/source056-random-attempt001/boltz_random_start_study.yaml
+      sha256: 5f6b5d6378a46c632051b112b4d9f0d516991f59fed9bb362541123a87c5c8d6
+    template:
+      path: /work3/s234818/latentmol/boltz-preparation/source054-active-set-attempt001/count-13/input/carbon_chain_13.yaml
+      sha256: ff3f32119c9f6a51b37169306de81e43e60327797e79ae7a53ef90ee5a445117
+  panel:
+    source_sha256: 9ab44499a73d37203df48c6280f1cc9d6b4cd55849e26d4e8dc2b105193ccb37
+    root: /work3/s234818/latentmol/runs/source057-protein-panel
+    protocol:
+      path: /work3/s234818/latentmol/submissions/source057-panel-attempt001/boltz_protein_panel.yaml
+      sha256: 41694234e8a5af4c3a5fab8dd57ddaeab0e4b88ef5baea5e3283666802568c54
+selection:
+  checkpoints: [0, 10, 25, 50, 75, 100]
+  panel_sample_counts: [8, 13]
+  panel_sample_draws: 4
+  c13_sample_draws: 8
+  random_sample_draws: 4
+native:
+  pose_seeds: [17, 23, 31]
+  structure_steps: 100
+  affinity_steps: 100
+  diffusion_samples: 1
+  structure_recycles: 0
+  affinity_recycles: 5
+  precision: bf16-mixed
+  msa_rows: 128
+  max_msa_seqs: 8192
+  mw_correction: false
+checkpoints:
+  affinity: dcc5cd3722b1c9eaa34267e4ae32f55cbbf1963f4c19319381ccfa30fdd2ca9e
+  confidence: 090e82ac8c92f5e943fa1b39e7410a44027bea7243c0bbb3caa67a77fc1428e1
+allocation_seconds: 79200
+native_timeout_seconds: 1800
+audit_timeout_seconds: 300

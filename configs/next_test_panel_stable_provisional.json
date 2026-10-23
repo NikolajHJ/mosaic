@@ -1,0 +1,31 @@
+{
+  "format_version": 1,
+  "primary_candidate_id": "stable-vae-validation-validity",
+  "selection_rationale": "VAE-first latent-continuity hypothesis; stable architecture gives a same-family AE control. This is a provisional plumbing panel while the wide VAE continuation is running, not a claim that the stable VAE is the final decoder.",
+  "historical_test_exposure": true,
+  "cohort": {
+    "split": "val",
+    "seed": 20261001,
+    "molecules": 128
+  },
+  "candidates": [
+    {
+      "id": "stable-vae-validation-validity",
+      "mode": "vae",
+      "variant": "stable_deep_pair_refine",
+      "role": "best_validation_validity",
+      "selection_path": "/work3/s234818/latentmol/runs/20260930T161646Z_vae-full-workflow_c17b4e0e/selection_before_test.json",
+      "selection_sha256": "445f0ed87fe2794ea2bd9a5bc6ca23c6ad44222eab05849a747b258b519a3284",
+      "checkpoint_sha256": "1893ddc183473fd4f27c6cd921d8b302f67ab388b660ada44bf3a2d6d5e28088"
+    },
+    {
+      "id": "stable-ae-validation-validity-control",
+      "mode": "ae",
+      "variant": "stable_deep_pair_refine",
+      "role": "best_validation_validity",
+      "selection_path": "/work3/s234818/latentmol/runs/20260930T141504Z_ae-full-workflow_242a67ba/selection_before_test.json",
+      "selection_sha256": "1d0bc4be868d55048f0f38a6a20d8b6d746be4bcfdf3a26290e139e9377be610",
+      "checkpoint_sha256": "88d7c25f38eee5face84fb5d6f02377b14f698bed05b18808315f5fb71d5f55e"
+    }
+  ]
+}

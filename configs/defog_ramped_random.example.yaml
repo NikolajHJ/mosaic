@@ -1,0 +1,31 @@
+# Prototype schedule, not a calibrated coefficient or validated native result.
+version: 1
+weight: 0.001
+weight_schedule:
+  version: linear_v1
+  start_weight: 0.001
+  end_weight: 0.1
+  start_fraction: 0.5
+  end_fraction: 1.0
+refresh_interval: 10
+attempts_per_refresh: 2
+seed: 61000
+normalization: sum
+fallback: boltz_only_clear_target
+selection: first_valid_prescribed_order
+probability_policy: stable_log_softmax_no_floor
+provider:
+  model: defog_guacamol
+  python: /work3/s234818/latentmol/env/defog311/bin/python
+  source:
+    path: /work3/s234818/latentmol/cache/defog-official-guacamol/DeFoG
+    commit: 365bda9affadd5c2307014a0532ddaa244399441
+  checkpoint:
+    path: /work3/s234818/latentmol/cache/defog-official-guacamol/guacamol.ckpt
+    sha256: bc97d52ccf33a20d991f98349a1d37662273ab1c3e3f9777b938f9f144bc61f5
+  t0: 0.8
+  steps: 1000
+  initialization: direct_candidate_no_corruption
+  device: cuda
+  sampling: {}
+  timeout_seconds: 600

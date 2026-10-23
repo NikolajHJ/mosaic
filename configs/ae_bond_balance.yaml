@@ -1,0 +1,16 @@
+# Controlled follow-up: restore full cost for incorrectly predicting a bond.
+# All other settings match ae_pilot.yaml. Compare chemistry metrics across losses.
+mode: ae
+seed: 17
+epochs: 60
+batch_size: 64
+learning_rate: 0.001
+validation_limit: 256
+chemistry_limit: 128
+device: cuda
+model:
+  hidden: 128
+  latent: 128
+  layers: 3
+loss:
+  no_bond_weight: 1.0

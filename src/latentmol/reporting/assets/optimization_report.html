@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Molecular optimization report</title>
+<style>@@REPORT_CSS@@</style>
+</head>
+<body>
+<a class="skip-link" href="#explorer">Skip to trajectory explorer</a>
+<main>
+  <div class="masthead"><span class="wordmark">LATENTMOL <span>/ EXPLORER</span></span><span>Saved results · offline report</span><span id="created-at"></span></div>
+  <header class="hero"><p class="eyebrow">Frozen-model molecular optimization</p><h1 id="report-title">A molecule, one update at a time.</h1><p class="lead">Explore the measured objectives, changing graph probabilities and discrete readouts. Every value comes from saved artifacts; this report does not run a model.</p><div id="report-chips" class="chips"></div></header>
+  <div id="global-warnings" class="warnings" aria-label="Report limitations"></div>
+  <noscript>This report needs JavaScript to display its embedded saved results. It makes no network requests.</noscript>
+  <section aria-label="Run overview"><div id="run-overview" class="overview-grid"></div></section>
+
+  <section class="panel" id="losses"><div class="section-heading"><div><p class="eyebrow">01 / Objectives</p><h2>Follow the loss, keep the context.</h2><p class="caption">Click a plotted state to inspect it. Lines connect saved states, not every attempted update. Total and binding objectives use separate axes.</p></div><label class="check-control"><input id="overlay-runs" type="checkbox" checked> Overlay other runs</label></div>
+  <p id="comparison-note" class="notice"></p><div class="plot-grid"><div><h3>Total objective</h3><div id="total-plot" class="plot"></div></div><div><h3>Binding objective</h3><div id="binding-plot" class="plot"></div></div></div><div id="plot-legend" class="legend"></div><p class="caption">Vertical dotted markers indicate saved context, repair-target, guidance-weight or update-selection events. Improvement in a relaxed objective does not establish improved binding of a discrete molecule.</p>
+  </section>
+
+  <section class="panel" id="explorer"><div class="section-heading"><div><p class="eyebrow">02 / Trajectory explorer</p><h2>Inspect the shared molecule.</h2><p class="caption">Raw readouts are displayed even when chemically invalid. Slot positions stay fixed within each trajectory.</p></div><span id="trajectory-status" class="badge"></span></div>
+  <div class="selectors"><label>Initialization / run<select id="run-select"></select></label><label>Optimization arm<select id="trajectory-select"></select></label><label>Discrete readout<select id="candidate-select"></select></label></div>
+  <div id="initialization-description" class="notice"></div>
+  <div class="playback"><div class="transport"><button id="previous" type="button" aria-label="Previous saved state">← Previous</button><button id="play" type="button">Play</button><button id="next" type="button" aria-label="Next saved state">Next →</button></div><strong id="step-label" aria-live="polite"></strong></div>
+  <div class="scrubber"><span id="first-step">0</span><label class="sr-only" for="step-slider">Saved trajectory state</label><input id="step-slider" type="range" min="0" max="0" value="0"><span id="last-step">0</span></div><div id="step-presets" class="presets"></div>
+  <div id="frame-events" class="event-list"></div>
+  <div class="explorer-grid"><div><div id="molecule" class="molecule"></div><p class="caption" id="graph-caption">Slot-labelled graph schematic; positions are not molecular coordinates or a physical conformation. Bonds and formal charges are shown as saved.</p></div><aside class="readout"><div id="candidate-validity" class="badge"></div><dl id="frame-measurements"></dl><p class="readout-label" id="candidate-label">Saved readout</p><code id="candidate-smiles"></code><p id="candidate-failure" class="caption"></p></aside></div>
+  <div class="probability-grid"><div><h3>Atom probabilities</h3><p class="caption">Rows retain original slot identity. Distributions are never inferred from hard labels.</p><div id="atom-probabilities" class="table-scroll"></div></div><div><h3>Formal-charge probabilities</h3><div id="charge-probabilities" class="table-scroll"></div></div><div><h3>Bond probabilities</h3><label class="compact-label">Display<select id="bond-category"></select></label><div id="bond-probabilities" class="table-scroll"></div></div></div><p id="probability-scope" class="caption"></p>
+  <details><summary>Occupancy and raw saved measurements</summary><div id="occupancy-probabilities" class="table-scroll"></div><pre id="raw-metrics"></pre></details>
+  </section>
+
+  <section class="panel"><div class="section-heading"><div><p class="eyebrow">03 / Start and endpoint</p><h2>What changed in the hard readout?</h2><p class="caption">The first and last saved argmax candidates are shown separately from sampled candidates.</p></div></div><div id="endpoint-comparison" class="endpoint-grid"></div><h3>Best saved binding state by context</h3><p class="caption">These saved records compare binding loss within one held mask/pose context. They remain separate from the terminal state, chemical validity and fresh native predictions.</p><div id="best-binding-states" class="endpoint-grid"></div></section>
+
+  <section class="panel"><div class="section-heading"><div><p class="eyebrow">04 / Evidence and boundaries</p><h2>Repair guidance, checks and fresh predictions.</h2><p class="caption">A repair target supplies guidance; it is not silently substituted for the shared molecule scored by the binding branch.</p></div></div><div class="evidence-grid"><article><h3>Repair and gradient audit</h3><div id="repair-audit"></div></article><article><h3>Fresh native evaluation</h3><div id="native-followups"></div></article></div><div id="run-limitations" class="notice"></div><details><summary>Run configuration and identity</summary><pre id="run-provenance"></pre></details></section>
+
+  <section class="panel"><div class="section-heading"><div><p class="eyebrow">05 / Reproducibility</p><h2>Trace every result to its saved source.</h2><p class="caption">Hashes identify the inputs used to build this report. Missing artifacts remain explicitly unavailable.</p></div><button type="button" id="download-data">Download report JSON</button></div><details><summary>Source files and SHA-256 identities</summary><pre id="source-provenance"></pre></details></section>
+  <footer><span>LatentMol · shared-graph optimization</span><span>Self-contained · no external libraries · no model execution</span></footer>
+</main>
+<script id="report-data" type="application/json">@@REPORT_DATA@@</script>
+<script>@@REPORT_JS@@</script>
+</body>
+</html>

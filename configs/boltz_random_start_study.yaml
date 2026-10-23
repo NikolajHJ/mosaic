@@ -1,0 +1,25 @@
+# Source056: NEW workflow, not yet validated on native random starts.
+# One GPU allocation; ten unfiltered CPU N(0,I) starts, no seed workers/arrays.
+version: 1
+name: vae-random-starts-056
+output_root: /work3/s234818/latentmol/runs/source056-random-start-study
+base_config:
+  path: /work3/s234818/latentmol/submissions/source055-full-attempt001/source055-full-capped.yaml
+  sha256: 8631c9e4b44f66206d365b1627502495dcf236dff2b1036bae0b4f148061a607
+cache: /work3/s234818/latentmol/cache/boltz2
+example_assets: /work3/s234818/latentmol/boltz-preparation/source029-chain-attempt001/input
+native_template:
+  path: /work3/s234818/latentmol/boltz-preparation/source054-active-set-attempt001/count-13/input/carbon_chain_13.yaml
+  sha256: ff3f32119c9f6a51b37169306de81e43e60327797e79ae7a53ef90ee5a445117
+confidence_sha256: 090e82ac8c92f5e943fa1b39e7410a44027bea7243c0bbb3caa67a77fc1428e1
+seeds: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+counts: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,
+         16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30,
+         31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45,
+         46, 47, 48, 49, 50]
+# Broader probe grid than C13; original tolerance and two-pass rule preserved.
+fd_epsilons: [0.001, 0.003, 0.01, 0.03, 0.1]
+reference_pilot: /work3/s234818/latentmol/runs/source055-full-capped-pilot/20261002T092806Z_vae-active-set-full-capped-055_7d50e896
+preparation_timeout_seconds: 900
+optimization_timeout_seconds: 5400
+rescore_timeout_seconds: 3600

@@ -1,0 +1,24 @@
+# Two-epoch engineering smoke only; do not use as a chemistry conclusion.
+mode: vae
+seed: 17
+epochs: 2
+batch_size: 32
+learning_rate: 0.001
+train_limit: 2048
+validation_limit: 256
+chemistry_limit: 64
+train_probe_limit: 256
+checkpoint_every: 1
+device: cuda
+beta: 0.001
+kl_warmup_epochs: 2
+model:
+  hidden: 96
+  latent: 256
+  layers: 3
+  decoder_variant: stable_deep_pair_refine
+  trunk_hidden: 512
+  global_hidden: 320
+  pair_hidden: 48
+  refinement_rounds: 2
+  attention_heads: 4

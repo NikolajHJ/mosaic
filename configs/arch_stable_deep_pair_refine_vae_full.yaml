@@ -1,0 +1,29 @@
+# Matched stable-decoder restart after source040 deep VAE numerical failure.
+mode: vae
+seed: 17
+epochs: 120
+batch_size: 64
+learning_rate: 0.001
+lr_milestones:
+  - [61, 0.0003]
+  - [81, 0.0001]
+  - [101, 0.00003]
+validation_limit: 7347
+chemistry_limit: 1024
+train_probe_limit: 2048
+full_chemistry_every: 10
+checkpoint_every: 10
+checkpoint_epochs: [60]
+device: cuda
+beta: 0.001
+kl_warmup_epochs: 20
+model:
+  hidden: 96
+  latent: 256
+  layers: 3
+  decoder_variant: stable_deep_pair_refine
+  trunk_hidden: 512
+  global_hidden: 320
+  pair_hidden: 48
+  refinement_rounds: 2
+  attention_heads: 4

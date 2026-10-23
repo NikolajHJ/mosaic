@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "status": "template_requires_authenticated_hpc_paths",
+  "work_root": "/work3/s234818/latentmol",
+  "raw_input": null,
+  "raw_input_sha256": null,
+  "smiles_column": "smiles",
+  "reserve_cache": null,
+  "reserve_manifest_sha256": null,
+  "data": null,
+  "campaign": null,
+  "references": {"original": {"checkpoint": null, "sha256": null}}
+}

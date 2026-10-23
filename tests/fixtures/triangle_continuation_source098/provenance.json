@@ -1,0 +1,11 @@
+{
+  "source_capsule": "outputs/hpc-results/source098-first-suite-003.tar.gz",
+  "source_capsule_sha256": "e6bf491eb53b4f326f777a10317762fd51de826c715c6e8ade97124d38c31b7e",
+  "source_origin": "runs/source098-large-triangle-evaluator-recovery/segments/001/20261011T203219Z_vae-train_645e1074",
+  "files_sha256": {
+    "run.json": "daf47b5e5d7b25a00857dc5b56e03c0cc703e0e044c32e9d44fcec052b9e1f42",
+    "metrics.jsonl": "603ecd857cf06ba13184c2d864af9e74327d6f0ca9f54631233bbc58f8f7b57b",
+    "latest_epoch.json": "3f0c0bf74f6c2bd66f80cebe27e799e22108cf40b157c8df7c075cdbb818ee56"
+  },
+  "scope": "Unmodified archived running 11-epoch metadata; tests synthesize only completion/stop fields in memory for schema compatibility, never an actual completion claim"
+}

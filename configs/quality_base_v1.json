@@ -1,0 +1,7 @@
+{
+  "validity": 0.4,
+  "local_consistency": 0.4,
+  "connectedness": 0.2,
+  "repair_quality": 0.0,
+  "native_retention": 0.0
+}

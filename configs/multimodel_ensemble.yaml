@@ -1,0 +1,76 @@
+# EXPERIMENTAL / UNTESTED on native checkpoints or HPC. No automatic downloads.
+# All three prepared bundles must map to the SAME hard seed and biological target.
+# These objective scales/weights are illustrative, not validated calibration.
+version: 1
+name: frozen-model-ensemble
+device: cuda
+occupancy: fixed
+temperature: 1.0
+decoder:
+  checkpoint: ../assets/selected_vae.pt
+  sha256: REPLACE_WITH_DECODER_SHA256
+start: {}
+models:
+  boltz2:
+    objective: {output: affinity_probability_binary, direction: maximize, weight: 1.0, scale: 1.0}
+    allow_lossy: true
+    options:
+      prepared: ../assets/boltz_prepared.pt
+      prepared_sha256: REPLACE_WITH_PREPARED_SHA256
+      checkpoint: ../assets/boltz2_affinity.ckpt
+      recycling_steps: 0
+      allow_lossy_charge: true
+  nesso1:
+    objective: {output: affinity_probability_binary, direction: maximize, weight: 1.0, scale: 1.0}
+    allow_lossy: true # Missing/additional fixed atom features declared in manifest.
+    options:
+      bundle_path: ../assets/nesso_seed.pt
+      bundle_sha256: REPLACE_WITH_BUNDLE_SHA256
+      weights_path: ../assets/nesso1.safetensors
+      weights_sha256: REPLACE_WITH_WEIGHTS_SHA256
+      model_config_path: ../assets/nesso_resolved_constructor.json
+      model_config_sha256: REPLACE_WITH_CONFIG_SHA256
+      native_source_root: ../external/nesso
+      native_source_sha256: REPLACE_WITH_NATIVE_PACKAGE_SHA256
+      recycling_steps: 0
+  protenix:
+    objective: {output: distance_consistency_loss, direction: minimize, weight: 0.25, scale: 1.0}
+    allow_lossy: true # Scalar charge + bond presence, fixed reference conformer.
+    options:
+      bundle_path: ../assets/protenix_seed.pt
+      bundle_sha256: REPLACE_WITH_BUNDLE_SHA256
+      weights_path: ../assets/protenix_v1.pt
+      weights_sha256: REPLACE_WITH_WEIGHTS_SHA256
+      model_config_path: ../assets/protenix_resolved_config.json
+      model_config_sha256: REPLACE_WITH_CONFIG_SHA256
+      native_source_root: ../external/Protenix
+      native_source_sha256: REPLACE_WITH_NATIVE_PACKAGE_SHA256
+      cycles: 1
+      chunk_size: null
+arms:
+  boltz_only: {models: [boltz2]}
+  nesso_only: {models: [nesso1]}
+  protenix_only: {models: [protenix]}
+  boltz_nesso: {models: [boltz2, nesso1]}
+  boltz_protenix: {models: [boltz2, protenix]}
+  nesso_protenix: {models: [nesso1, protenix]}
+  all_three: {models: [boltz2, nesso1, protenix]}
+  all_three_more_structure:
+    models: [boltz2, nesso1, protenix]
+    weights: {protenix: 0.5}
+  frozen_start: {models: [boltz2, nesso1, protenix], control: no_update}
+  random_direction: {models: [boltz2, nesso1, protenix], control: random_direction}
+optimizer: {steps: 10, learning_rate: 0.05, trust_radius: 1.0, max_gradient_norm: 1.0}
+diagnostics:
+  seed: 1729
+  hard_samples: 8
+  fd_epsilons: [0.001, 0.003, 0.01]
+  minimum_fd_passes: 2
+  fd_rtol: 0.05
+  fd_atol: 0.000001
+  parity_rtol: 0.0001
+  parity_atol: 0.00001
+native_evaluators: {}
+# Add a new trusted factory without changing the optimization runner:
+# plugins: {new_model: my_package.scoring:load_branch}
+# models.new_model: {plugin: new_model, objective: {...}, options: {...}}

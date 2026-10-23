@@ -1,0 +1,38 @@
+# UNTESTED on HPC. Gate construction, gradients, memory and exact continuation.
+# Fresh joint encoder/decoder training; this is not a decoder-only continuation.
+mode: vae
+seed: 17
+epochs: 100
+batch_size: 256  # Written to a sealed selected config after the 256/512 benchmark.
+learning_rate: 0.001
+weight_decay: 0.00001
+clip_grad: 5.0
+beta: 0.001
+kl_warmup_epochs: 20
+train_limit: null
+validation_limit: 4096
+chemistry_limit: 256
+num_workers: 0
+device: cuda
+checkpoint_every: 10
+checkpoint_epochs: [25, 50, 75, 100]
+train_probe_limit: 256
+full_chemistry_every: 25
+lr_milestones: [[61, 0.0003], [81, 0.0001]]
+model:
+  hidden: 96
+  latent: 256
+  layers: 4
+  decoder_variant: triangle_refine
+  global_hidden: 320  # Encoder pooling only; the decoder has no global trunk.
+  encoder_residual_layers: 2
+  pair_hidden: 48
+  refinement_rounds: 4
+  attention_heads: 4
+  triangle_hidden: 24
+loss:
+  padding_weight: 0.2
+  no_bond_weight: 0.1
+  charge_weight: 1.0
+  bond_weight: 2.0
+  size_weight: 0.0  # Diagnostic retained, not an extra training objective.

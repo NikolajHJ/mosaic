@@ -1,0 +1,16 @@
+# Same graph architecture/data/update budget as ae_pilot; stochastic z plus KL.
+mode: vae
+seed: 17
+epochs: 60
+batch_size: 64
+learning_rate: 0.001
+validation_limit: 256
+chemistry_limit: 128
+device: cuda
+beta: 0.001
+kl_warmup_epochs: 20
+model:
+  hidden: 128
+  latent: 128
+  layers: 3
+

@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "base_protocol": "/work3/s234818/latentmol/releases/source-070-decoder-validity-attempt001/configs/decoder_validity_study.json",
+  "base_protocol_sha256": "1b3e8b9142dd8300f79dc0fb9c7400e21b1b67cda5ba3e36b068129ac50a023c",
+  "base_campaign": "/work3/s234818/latentmol/runs/source-070-decoder-validity-attempt001-decoder-study",
+  "base_original_sha256": "0781fa5a0d659ab4eda8c88eb1077ba440cd1f66170433fbae8abe33e957763b",
+  "resume": {
+    "checkpoint": "/work3/s234818/latentmol/runs/source-070-decoder-validity-attempt001-decoder-study/continuations/20261007T132150Z_decoder-s17-a0_b678fc9b/epoch-007.pt",
+    "checkpoint_sha256": "baf5838a6185a90f284518d92a8793a6dd768986e3c9563df1d2df3c18612e3a",
+    "parent_record": "/work3/s234818/latentmol/submissions/source073-budget-recovery-attempt001/parent_run.json",
+    "parent_record_sha256": "41eddf1388ccb3d961f1bba05b2c36ae879d1a362e625dbe2206b6c23a111ab0",
+    "parent_metrics": "/work3/s234818/latentmol/submissions/source073-budget-recovery-attempt001/parent_metrics.jsonl",
+    "parent_metrics_sha256": "6c79a8742ec098e40ac7191bc39c55a1ff0273dca774c6959c07e059a3c8ac5f",
+    "parent_archive_sha256": "711a929014c5199929f420c253b8176ef9605008ddc765ec6a4203549060eee2"
+  },
+  "case_budget_seconds": 21600,
+  "segment_budget_seconds": 75600,
+  "evaluation_reserve_seconds": 2700,
+  "original_job": "29622699",
+  "search_pilot_job": "29623874"
+}

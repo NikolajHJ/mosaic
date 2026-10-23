@@ -1,0 +1,20 @@
+# New source057 protocol. HPC fixtures and real-model checks run in allocation.
+# Exactly100 trajectories: ten counts x ten targets, one fixed-mask arm per case.
+version: 1
+name: vae-protein-panel-057
+base_config:
+  path: /work3/s234818/latentmol/submissions/source055-full-attempt001/source055-full-capped.yaml
+  sha256: 8631c9e4b44f66206d365b1627502495dcf236dff2b1036bae0b4f148061a607
+targets:
+  path: /work3/s234818/latentmol/submissions/source057-panel-attempt001/protein-assets/targets.json
+  sha256: 6bcc4f4bdf1d6842948bd44d054713d2a9b256865d4d027855569366e8a9338b
+counts: [6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+output_root: /work3/s234818/latentmol/runs/source057-protein-panel
+cache: /work3/s234818/latentmol/cache/boltz2
+confidence_sha256: 090e82ac8c92f5e943fa1b39e7410a44027bea7243c0bbb3caa67a77fc1428e1
+pose_seed: 17
+# Leave one hour for fixture/setup costs; don't start a case if its worst-case
+# timeout budget plus120seconds would exceed the remaining controller budget.
+allocation_seconds: 79200
+preparation_timeout_seconds: 900
+optimization_timeout_seconds: 1800
