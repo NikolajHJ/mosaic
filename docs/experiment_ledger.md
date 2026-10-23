@@ -6391,3 +6391,25 @@ bytes rehashed locally and remote original summaries/terminal metadata hashed;
 large original summaries/all NPZframes were not downloaded or recertified by a
 new allocated completion collector. See terminal-status-20261023.json. Existing
 heartbeat remains paused.
+
+
+### 2026-10-23 — separate lower-rate Boltz endpoint analysis and saved-only report prepared
+
+User authorized separate diagnostics of failed original29792671, without saved-run changes/restart, plus completed Pro29792670/Bol29792671 report. New run20261023-brd4-jq1-lrreset-analysis-01 owns source17 and independent output root. Local source01 was an unexecuted draft; active local source02 removes inherited Pro-only dispatch and adapts the CPU scope fixture to the new declared one-Boltz-diagnostic/three-collector/two-interim/final plan. Source manifest761d66642052fde3da2da2016736fdd91bdea477ba714787a5c393b2038f8b83, archive80297bytes SHA4c809367734cf6e529d1ae59e0b30cac603d9eae147914b518d992fb8818dc53. Exact source625/CPU728/all3native/launcher40 CPU26/adoption/inputpins remain independently authenticated. Full all3remaining work3 projections+2GiBreport/512MiBdiagnostics+4GiB/100000file reserves required before each phase. No oldviewer/source/result mutation, no optimizer/training/diffusion/repair or original job action. Diagnostic uses original saved0/9900/10000, original rawscales plus diagnostic-only finer controls and unchanged frozen identities; cannot certify original failedgate. New viewer includes numeric-focus pause, old editions/servers preserved. Local AST/JSON/byte preparation only; allocated CPU/models/scientific frame validation/rendering still pending.
+
+
+### 2026-10-23 10:30 Paris — analysis01 fixture failure preserved; new immutable analysis02 prepared
+
+Analysis01 CPU29796461 EXIT1 with282passes/one inherited synthetic schedule assertion failure/zeroerrorsskip; callback29796462 EXIT correctly blocked dispatch. Production expected_weight correctly ends100; old fixture still asserted50 at terminal. Eleven raw CPU/callback/submission/log/XML files downloaded and independently byte/XML verified, no analysis-dispatch marker. Sealed source17 remains unchanged. New analysis02 source17 manifest955872e4621b1e5a3d23a69a989aadcf16c8d0e2793e6db464782f58be15fa37/archive80420bytes SHA013b3003443b2b2b4da543caa82dafef0032b31ef0e4cfb204938172d432abeb changes only two fixture expectations/name and separate own analysis root identities. Full283allocated fixtures required again, no scientific setting/gate/run changes. Prepared only; original P/B saved results unchanged and chemistry29792672 retained.
+
+
+### 2026-10-23 10:36 Paris — analysis02 all283passed but XML attribution rejected; immutable retry03
+
+CPU29796495 actualDONE/samejobLSF/full283passes with zero failures/errors/skips. Callback29796496 EXIT before any dispatch:35 raw JUnit rows have emptyclass names because external legacy testpaths lie outside pytest rootdir;18diagrows are correctly attributed. Saved full raw XML/logs/LSF/submissions/source; no XML rewriting or gate waiver. New analysis03 changes pytest rootdir to exact common ancestor of the two pinned sources and adds one allocated collection-root coverage regression. New17file manifest8e3045ddfd44a701127deb7af7a163536dfbf699123ba883f98207d6d57b95d5/archive80735bytes SHA62915ff15d9a493eadd08ab27a64ae64aed0a6e331f7481c0ce1d105bd7aa751. Full284allocated cases in8modules required before any newdiagnostic/report dispatch. Original source625/scientific runs/config/readiness/inputs/resultbytes remain unchanged; no cleanup. Newretry03 preparation only.
+
+
+### 2026-10-23 10:39 Paris — new separate analysis full284passed and actual diagnostic/report jobs
+
+Analysis03 CPU29796532 and callback29796533 actualDONE/hpc/samejobLSFsuccess. Full284actualcases82contract+54render+60publish+35ops+18diagnostic+26Bolreport+3chemreport+6ramp, zeroerrors/failures/skips/deselections. Exact rawmoduleattribution nowpresent. CPUcertc1cfb3730419a48e82c45b45981a874275dbdec31a13fdffbf865139b9416cf3; independent40-file byte/XML/JSON/submission/source/reserve audit passed. One local auditor assertion incorrectly counted both raw scheduler observations instead of certificate-bound final observation; failedauditorrecord retained, all rawproofbytes reverified after metadata-only correction, no scientific gate waiver. Original625/CPU728/native/allwork3launcher26/settings/results unchanged.
+
+Fresh fullcapacity passed with full3remaining native projections+2GiBreport/512MiBdiagnostics+4GiB/100000files. Actual separate Boltzdiagnostic29796551/capture29796552 PEND, P/Bsaved10001framecollectors29796553/54RUN, chemcollector29796555 waitsoriginal29792672. Interim29796556 dependsP/Bcollectorpasses; diagnosticinterim29796557 follows first+Bolcapture; final29796558 dependsallcollectors+capture+secondinterim. Original chemistry29792672 remainsPEND unchanged. No diagnosticfinding/renderpass/publication yet. No savedrun restart/mutation/cleanup or automationunpause.

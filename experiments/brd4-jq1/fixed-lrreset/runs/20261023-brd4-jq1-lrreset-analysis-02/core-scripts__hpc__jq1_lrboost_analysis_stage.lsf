@@ -1,0 +1,31 @@
+#!/bin/bash
+# New analysis source only; every scientific study remains read-only.
+set -euo pipefail
+[[ -n "${LSB_JOBID:-}" ]]
+release=$1
+root=$2
+manifest=$3
+phase=$4
+arm=$5
+parent=$6
+science=/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-release-04/source
+module load python3/3.12.11
+python=/work3/s234818/mosaic/envs/protenix-tiny/bin/python
+export PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+"$python" "$release/scripts/verify_stage0_release.py" "$release" "$manifest"
+"$python" "$release/scripts/verify_stage0_release.py" "$science" c2628d08f7224f3b572ab456f4113d8a66b587a5d69f85a072877052fc09a057
+export PYTHONPATH="$release/scripts:$release/tests:$science/scripts:$science/tests:$science/src"
+export JAX_PLATFORMS=cpu JAX_ENABLE_X64=0
+export OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 MKL_NUM_THREADS=4
+export HF_HUB_OFFLINE=1 HF_HUB_DISABLE_TELEMETRY=1
+if [[ "$phase" == diagnostic ]]; then
+  [[ "$arm" == boltz2 && "$LSB_QUEUE" == gpul40s ]]
+  module load cuda/12.9.1
+else
+  [[ "$LSB_QUEUE" == hpc ]]
+  export CUDA_VISIBLE_DEVICES=''
+fi
+source "$science/scripts/hpc/boltz_node_tmpdir.sh"
+export MPLCONFIGDIR="$TMPDIR/mplconfig"
+cd "$release"
+"$python" scripts/jq1_lrboost_report_ops.py --phase "$phase" --root "$root" --source "$release" --manifest "$manifest" --parent "$parent" --arm "$arm"

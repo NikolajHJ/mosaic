@@ -1,0 +1,39 @@
+{
+  "status": "passed",
+  "source_manifest": "8e3045ddfd44a701127deb7af7a163536dfbf699123ba883f98207d6d57b95d5",
+  "cpu_job": "29796532",
+  "cases": 284,
+  "tests_by_module": {
+    "test_jq1_lrboost_report_contract": 82,
+    "test_jq1_lrboost_render": 54,
+    "test_jq1_lrboost_publish": 60,
+    "test_jq1_lrboost_ops": 35,
+    "test_lrboost_endpoint_diagnostics": 18,
+    "test_boltz_affinity_report": 26,
+    "test_small_molecule_chemistry_report": 3,
+    "test_small_molecule_chemistry_ramp_report": 6
+  },
+  "files_verified": 40,
+  "jobs": {
+    "cpu": "29796532",
+    "after_cpu": "29796533",
+    "diagnostics": {
+      "boltz2": "29796551"
+    },
+    "diagnostic_captures": {
+      "boltz2": "29796552"
+    },
+    "collectors": {
+      "protenix": "29796553",
+      "boltz2": "29796554",
+      "boltz2_chemistry": "29796555"
+    },
+    "active_interim": "29796556",
+    "interim_parent": "interim-0001",
+    "diagnostic_interim": "29796557",
+    "final": "29796558",
+    "cpu_certificate_job": "29796533"
+  },
+  "cpu_certificate_sha256": "c1cfb3730419a48e82c45b45981a874275dbdec31a13fdffbf865139b9416cf3",
+  "scope": "Stdlib byte/XML/JSON/scheduler proof audit only; no diagnostic finding or report completion inferred"
+}

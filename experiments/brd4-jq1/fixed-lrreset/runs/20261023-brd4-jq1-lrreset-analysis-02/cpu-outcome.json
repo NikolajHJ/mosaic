@@ -1,0 +1,59 @@
+{
+  "class_counts": {
+    "tests.test_jq1_lrboost_report_contract": 82,
+    "tests.test_jq1_lrboost_render": 54,
+    "tests.test_jq1_lrboost_publish": 60,
+    "tests.test_jq1_lrboost_ops": 34,
+    "tests.test_lrboost_endpoint_diagnostics": 18,
+    "": 35
+  },
+  "no_dispatch": true,
+  "files": {
+    "jobs.json": {
+      "sha256": "f7c61f8ecdf04ccd43557b98a1e0f512eae96bd2caa6a61f15733d476bda5106",
+      "bytes": 51
+    },
+    "source-staging.json": {
+      "sha256": "a984af2fa6f932de3340c68ab069c539d677599c6f1c5421e32f340f4bd9a115",
+      "bytes": 305
+    },
+    "cpu/submission.json": {
+      "sha256": "df0982a52a2abb00fb8112a501acb5fa325da309a875800c5172a06fcc0718c8",
+      "bytes": 1255
+    },
+    "cpu/stdout.29796495.log": {
+      "sha256": "305cc513800e31f413dd3893541ad9f5410e57d69019d60297bc5c1385cfd417",
+      "bytes": 2232
+    },
+    "cpu/stderr.29796495.log": {
+      "sha256": "7d57e9e44355166e210a310a2b90b7d8543b85c5ffbb82276c701f4dd1f23271",
+      "bytes": 233
+    },
+    "cpu/payload/report-tests.xml": {
+      "sha256": "1d9bb48bcc956e6cac0337d8b4e047195dc7241cfac9c6b02cb2e9d948aa1eb3",
+      "bytes": 42724
+    },
+    "cpu/payload/report-tests.log": {
+      "sha256": "0f85ec4d4d6f11fcb970bd424ab52c372ae8c912d4efd9537ce89490ef41032e",
+      "bytes": 1365
+    },
+    "cpu/payload/test-invocation.json": {
+      "sha256": "78abadda6bb04b0e820b08a86db6b801c755e94bc34dbd22cbae04f92d6ef4e5",
+      "bytes": 1883
+    },
+    "after-cpu/submission.json": {
+      "sha256": "c2e5ebfc15f7f4339fd15cd81ffd1cb84d20bd2643020f3b342351d2c935ffa4",
+      "bytes": 1341
+    },
+    "after-cpu/stdout.29796496.log": {
+      "sha256": "9904e87b9617477ba63839b3ef41df1f73f6adef23a3ad9b1c2f49fda7fd59e2",
+      "bytes": 2243
+    },
+    "after-cpu/stderr.29796496.log": {
+      "sha256": "25a5a69f092bfaf1be794d6a694c3fd4e9b83f04c27a2a0ad351134f82d0cd64",
+      "bytes": 1700
+    }
+  },
+  "verification_file_sha256": "6eb61b3af2456467d4119a8cfa30985d7b8141e1dda2a26602ff97c35ed663f1",
+  "original_big_results_downloaded": false
+}
