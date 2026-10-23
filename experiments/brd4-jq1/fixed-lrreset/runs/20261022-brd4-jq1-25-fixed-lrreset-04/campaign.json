@@ -1,6 +1,6 @@
 {
   "tag": "20261022-brd4-jq1-25-fixed-lrreset-04",
-  "status": "Initialization fix passed in validation AND new Protenix production output (exact original NPZ hash). All3 native readiness checks and full work3 storage passed. Three fresh longs submitted: Pro29792670 RUN/entry passed/driver startup; Bol29792671 and chem29792672 PEND for GPUs. No committed optimization update verified yet.",
+  "status": "Pro29792670 finished10000updates/10001states with original summary and final gradient checks passed, same-job LSFsuccess (live scheduler aged out). NormalBol29792671 finished10000updates/10001states but original terminal E_upper FD failed, actualEXIT1. Chemistry29792672 stillPEND/slotlimits, no optimization started. No saved results/settings/jobs changed.",
   "authorization": {
     "rates": {
       "protenix": 0.3,
@@ -94,7 +94,7 @@
   "saved_results_changed": false,
   "prior_failures_preserved": true,
   "diagnostic_evidence_verification_sha256": "f660e02ffe67051c5f8adc3c79887791cbdf6d62277e1d83ec64d0bcc6f4a9f7",
-  "latest_observed_utc": "2026-10-22T19:31:50.070350+00:00",
+  "latest_observed_utc": "2026-10-23T08:10:42.347765+00:00",
   "native_jobs": {
     "protenix": {
       "job": "29792413",
@@ -209,18 +209,18 @@
   "queue_status": {
     "protenix": {
       "job": "29792670",
-      "state": "RUN",
-      "reason": "GPU allocated; full entry gate passed; validated driver startup; exact production initialization matched"
+      "state": "SUCCESS_PERSISTED",
+      "reason": "Original summary/case/terminal gradients passed and same-job LSFsuccess; current live record aged out"
     },
     "boltz2": {
       "job": "29792671",
-      "state": "PEND",
-      "reason": "ngpus_physical reservation requirements not satisfied"
+      "state": "EXIT",
+      "reason": "Completed10000updates, then mandatory terminal E_upper finite differences failed"
     },
     "boltz2_chemistry": {
       "job": "29792672",
       "state": "PEND",
-      "reason": "ngpus_physical reservation requirements not satisfied"
+      "reason": "Job slot limit reached:6hosts"
     }
   },
   "automation_remains_paused": true,
@@ -233,5 +233,10 @@
     "file": "launcher-resource-verification.json",
     "sha256": "b0e1737ffb76a509951b3c359184349c105f9d27d278a2266ff96a4cd52d30d6",
     "all_three_actual_gpuls40s_4CPU_8GiBslot_23h_one_exclusive_GPU": true
+  },
+  "terminal_status_receipt": {
+    "file": "terminal-status-20261023.json",
+    "sha256": "cf1ddcfe3ad050ee809453fdd4de0bd87f01661df0fffc4a7edfb51395452c61",
+    "full_frame_completion_collector_run": false
   }
 }

@@ -6364,3 +6364,30 @@ launcher-resource-verification.json and entry-observation.json record scope.
 No scientific completion/all3start claim; existing heartbeat remainspaused.
 Allsavedresultbytes/source625/settings/checks preserved. Code/first submissions
 and independent full evidence were pushed2327e73 before this later observation.
+
+
+### 2026-10-23 10:10 Paris — lower-rate terminal progress and preserved Boltz failure
+
+Protenix29792670 completed all10000updates/10001contiguousstates. Original summary,
+case and final raw atom/bond derivatives passed; frozen identities unchanged and
+exact original initialization retained. Same-job LSF success ended22October23:36:53
+Paris. Its live scheduler record aged out; use SUCCESS_PERSISTED original proof,
+not a fabricated live DONE. Summary298580732bytes SHA
+b94d4bae58b7c82b92f4cf0b6b0e9804734afff0f54ea0b162b65d825ec2661d.
+
+NormalBol29792671 started23October03:15:59 and ended09:32:59Paris actualEXIT1.
+All10000updates/10001states and optimizer casepassed, but original overallsummary
+failed mandatory terminal E_upper FD. X passed; E row239 0->1 AD4.448079109,
+FD -7.524552941/-6.906365355/3.221578896 at.01/.003/.001, all original flagsfalse.
+No cause or diagnostic fix is inferred. Model/context frozen digests unchanged.
+Original failed summary301971481bytes SHA
+06a68008a0dfb8b6a66668447bcda4f01c7b54427d9b68f0d84e5926db278cc1;
+terminalreportSHA1a95448ea1d3fe373f7a3f8ad64017ef7ffd620f52efc3086cf2262ecf4868a4.
+
+Chemistry29792672 remainsPEND, jobslotlimit6hosts; no driver/study/update yet.
+No resubmission, setting change, stop, diagnostics or cleanup occurred in this
+read-only status turn. Saved results remain unchanged. Same-job complete LSF
+bytes rehashed locally and remote original summaries/terminal metadata hashed;
+large original summaries/all NPZframes were not downloaded or recertified by a
+new allocated completion collector. See terminal-status-20261023.json. Existing
+heartbeat remains paused.
