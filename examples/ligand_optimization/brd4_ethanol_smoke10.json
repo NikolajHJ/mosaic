@@ -1,0 +1,30 @@
+{
+  "model": {
+    "name": "protenix-tiny",
+    "cache_dir": "../../cache/protenix"
+  },
+  "target": {
+    "structure": "../../tests/data/brd4_3mxf/3MXF.pdb",
+    "chain": "A",
+    "pocket": {
+      "kind": "reference_ligand",
+      "ligand": {
+        "chain": "A",
+        "residue_name": "JQ1",
+        "number": 1,
+        "insertion": ""
+      },
+      "cutoff_angstrom": 6.0
+    }
+  },
+  "initialization": "./initialization/ethanol-clean",
+  "updates": 10,
+  "learning_rate": 0.01,
+  "seed": 17,
+  "losses": [
+    {"name": "contact", "scale": 1.0, "cutoff_angstrom": 8.0}
+  ],
+  "weight_schedule": [
+    {"update": 1, "weights_pct": {"contact": 100}}
+  ]
+}

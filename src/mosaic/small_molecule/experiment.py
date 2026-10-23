@@ -85,9 +85,9 @@ def resolve_target(path: str | Path, chain_id: str, pocket: dict) -> dict:
 
     path = Path(path).resolve()
     structure = gemmi.read_structure(str(path))
-    if len(structure) < 1 or chain_id not in structure[0]:
+    chain = next((c for c in structure[0] if c.name == chain_id), None) if len(structure) else None
+    if chain is None:
         raise ValueError(f"Protein chain {chain_id!r} is missing from {path}")
-    chain = structure[0][chain_id]
     residues, sequence = [], []
     for residue in chain:
         name = residue.name.upper()
