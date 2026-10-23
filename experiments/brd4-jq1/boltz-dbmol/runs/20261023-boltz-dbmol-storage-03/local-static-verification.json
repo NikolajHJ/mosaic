@@ -1,0 +1,26 @@
+{
+  "status": "passed_static_only",
+  "scope": "Local stdlib AST/JSON/archive/byte review only; no numerical tests or model execution",
+  "source_files": 7,
+  "manifest_sha256": "7b67e6221e4d227b6e501478802ab4ebc8536d74272ca3a7d305bb6f15e7ffee",
+  "archive_sha256": "e8d60f4a03f0d6dcd05b9dbe66add8885fa7253d95537b08b3e170ed7ca763ca",
+  "scientific_source657_unchanged": true,
+  "corrected_test_functions_only": [
+    "test_raw_checker_rejects_missing_wrong_or_nonfinite_derivative_paths",
+    "config",
+    "peer_callbacks"
+  ],
+  "declared_full_cpu_cases": 1135,
+  "python_hashes": {
+    "collect_cpu.py": "09cefad81db74312437da36003d75c4b4904b45ebf2a918996bb5e11ac49e6a2",
+    "dbmol_storage_ops.py": "05dff1bb99f87ce3fa8973c75d7627cf3901be6d62997a2c8def4d15d292cc3a",
+    "fixture_gradient_contract.py": "af2a548947e152c03866eb269ea72d33530f40221b904aaedeee3392a8d1d670",
+    "fixture_pilot_contract.py": "93eadd155d43d1acd966f1fa3ac57874bc89790bf104f8e8800c7ae85315b917",
+    "fixture_storage_adoption.py": "2b7ea270ae1106e45eedc90f0602369d179b53845a626f1a1c11320139814aa1",
+    "observe.py": "80ca09601e51cbbe7063114729a9ffbe7ba6665b30245bca68903297721c3ead",
+    "prepare_launcher.py": "91033dadccfe60b0c8e51febe31b40aa812acee72ddc6ea9966b26905f0dfd46",
+    "submit_launcher.py": "99fc4893598e5741652135fad580cf7bd149afa2d75a8958714eee2f4bcf12dd",
+    "verify_cpu.py": "a62757e90adf40f201310730e99ac19b8f8e73f4ae61dd57af88fcba38e4058b"
+  },
+  "actual_allocated_outcome": "pending"
+}

@@ -59,5 +59,9 @@ tests, and the original failures remain preserved. The separate five-file
 [storage launcher02](runs/20261023-boltz-dbmol-storage-02/README.md) retains all
 scientific bytes and checks, authenticates completed original runs before
 removing only their future-growth forecast, and keeps every saved byte charged.
-New CPU29798699/callback29798700 were submitted after fresh validation capacity
-passed. No DBMol native gradient pass or optimization start is established yet.
+CPU29798699/callback29798700 then failed seven transport fixtures; the exact
+failures remain preserved. The separate [fixture-only launcher03](runs/20261023-boltz-dbmol-storage-03/README.md)
+corrects those mocks and assertions while retaining all scientific bytes and
+all1,135 cases. New CPU29798769/callback29798770 were submitted after fresh
+validation capacity passed. No DBMol native gradient pass or optimization start
+is established yet.

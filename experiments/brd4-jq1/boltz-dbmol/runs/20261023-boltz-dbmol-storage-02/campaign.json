@@ -1,5 +1,5 @@
 {
-  "state": "submitted_not_passed",
+  "state": "failed_allocated_transport_fixtures",
   "package": {
     "tag": "20261023-boltz-dbmol-storage-02",
     "files": 5,
@@ -264,5 +264,18 @@
     "sha256": "5d05051cc87f5cf2f4324d0a15f84de91e06d39ba3afbb748a4219719bf71366",
     "new_cpu_entry_passed": true,
     "cpu_passed": false
+  },
+  "cpu_passed": false,
+  "actual_cpu_outcome": {
+    "passed": 1056,
+    "failed": 7,
+    "errors": 0,
+    "skips": 0,
+    "adoption_cases_unreached": 72,
+    "failure_scope": "Fixture defects only; source657 scorer/driver/checker unchanged. Native pretrained evaluation not submitted."
+  },
+  "failure_verification": {
+    "path": "cpu-failure-verification-03.json",
+    "sha256": "b4a3741abc2fbf85497d376920b090621e62c4c3edbdb6efa219808d788aaf0d"
   }
 }

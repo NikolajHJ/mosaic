@@ -8,3 +8,7 @@ Each attempt retains its own source, allocation and outcome receipts.
 pilot01's entry quota rejection. It adopts the unchanged scientific source657
 and original output root, preserving failed CPU parents and using fresh CPU02
 parents. It changes neither the loss nor the saved scientific studies.
+
+`20261023-boltz-dbmol-storage-03` preserves the failed CPU02 fixture evidence
+and repeats all1,135 cases using two corrected test overlays. Scientific
+source657 and the saved-result roots remain unchanged.

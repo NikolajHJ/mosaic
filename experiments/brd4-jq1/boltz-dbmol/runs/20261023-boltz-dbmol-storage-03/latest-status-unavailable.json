@@ -1,0 +1,20 @@
+{
+  "status": "ssh_authentication_blocked",
+  "observed_utc": "2026-10-23T14:14:08Z",
+  "returncode": 255,
+  "error": "Permission denied (password)",
+  "stderr_sha256": "dd5abe512547a2d013ab0b4b53f566c336259151633db6dd7cdf8151ef54b9cc",
+  "local_receipt": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261023-boltz-dbmol-storage-03\\observations\\20261023T141409039391Z-receipt.json",
+  "one_connection_attempt": true,
+  "retry_or_mutation": false,
+  "last_successful_observation": "2026-10-23T11:17:08.530064+00:00",
+  "last_verified_current_jobs": {
+    "baseline_boltz_native": "29798605/PEND",
+    "baseline_chem_native": "29798607/PEND",
+    "dbmol_cpu": "29798769/RUN",
+    "dbmol_callback": "29798770/PEND"
+  },
+  "new_optimization_starts_verified": false,
+  "native_passes_verified": false,
+  "required_external_action": "Restore DTU VPN/SSH authentication before further outcome verification. Inspect actual receipts; never duplicate jobs."
+}

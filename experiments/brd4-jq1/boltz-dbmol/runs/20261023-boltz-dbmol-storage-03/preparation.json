@@ -1,0 +1,13 @@
+{
+  "status": "preparing_not_submitted",
+  "scientific_source_manifest_sha256": "24c207da5510fa579576a04ad32bf1afc6e1f23f51dcb5251d82a4ebdfa8f436",
+  "scientific_source_changed": false,
+  "saved_results_changed": false,
+  "scope": "Separate launcher-only fixture adoption after preserved CPU02 failure",
+  "failed_cpu_jobs_preserved": ["29798549", "29798550", "29798699", "29798700"],
+  "new_cpu_parents": ["cpu-03", "after-cpu-03"],
+  "new_launcher_source": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-storage-release-03/source",
+  "root_unchanged": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-01",
+  "allocated_cpu_required_cases": 1135,
+  "local_validation_scope": "Standard-library AST/JSON/XML/byte packaging only; no numerical execution"
+}

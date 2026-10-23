@@ -1,0 +1,10 @@
+{
+  "tag": "20261023-boltz-dbmol-storage-03",
+  "files": 7,
+  "manifest_sha256": "7b67e6221e4d227b6e501478802ab4ebc8536d74272ca3a7d305bb6f15e7ffee",
+  "archive_bytes": 31721,
+  "archive_sha256": "e8d60f4a03f0d6dcd05b9dbe66add8885fa7253d95537b08b3e170ed7ca763ca",
+  "scientific_source_manifest_sha256": "24c207da5510fa579576a04ad32bf1afc6e1f23f51dcb5251d82a4ebdfa8f436",
+  "scientific_source_changed": false,
+  "previous_failed_launcher_manifest_sha256": "5f479f2e5342469efd8606c9457c946a51dbcf0dd90d837ee472babfdd820a4b"
+}

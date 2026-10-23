@@ -1,0 +1,130 @@
+{
+  "files_verified": 67,
+  "source_members_verified": {
+    "science": 657,
+    "launcher": 5
+  },
+  "source_manifest_sha256": "24c207da5510fa579576a04ad32bf1afc6e1f23f51dcb5251d82a4ebdfa8f436",
+  "launcher_manifest_sha256": "5f479f2e5342469efd8606c9457c946a51dbcf0dd90d837ee472babfdd820a4b",
+  "source_archive_sha256": "ec333fd3e0b33d9e5b82e0cd5e4e12c14ffb4f91782c18cd820d4bfab53de1f8",
+  "launcher_archive_sha256": "a26dafcac4fbc342a275dedb1c93ed8880062f9e3dafe48d188937c3137dd750",
+  "evidence_archive_sha256": "dfd351cac57375696f671bc259b105e20040fcfd04c138b6b86f3c86d7ecc2fb",
+  "jobs": {
+    "cpu": "29798549",
+    "after-cpu": "29798550",
+    "cpu-02": "29798699",
+    "after-cpu-02": "29798700"
+  },
+  "actual_scheduler": {
+    "cpu": "EXIT",
+    "after-cpu": "EXIT",
+    "cpu-02": "EXIT",
+    "after-cpu-02": "EXIT"
+  },
+  "storage_gates": {
+    "run/cpu/storage-cpu-entry/gate.json": "failed",
+    "run/cpu-02/storage-cpu-entry/gate.json": "passed",
+    "run/storage-preflight/gate.json": "failed",
+    "run/admission-02/storage-preflight/gate.json": "passed",
+    "run/storage-adoption-02/storage-preflight/gate.json": "passed"
+  },
+  "storage_budgets": {
+    "run/cpu/storage-cpu-entry/gate.json": {
+      "status": "failed",
+      "required_bytes": 19175262065,
+      "available_bytes_conservative": 18158117863,
+      "stale_bytes_subtracted": 6537944089,
+      "available_files_lower": 19557200,
+      "full_long_admission": false
+    },
+    "run/cpu-02/storage-cpu-entry/gate.json": {
+      "status": "passed",
+      "required_bytes": 17930480407,
+      "available_bytes_conservative": 34137364714,
+      "stale_bytes_subtracted": 6664824598,
+      "available_files_lower": 19587390,
+      "full_long_admission": false
+    },
+    "run/storage-preflight/gate.json": {
+      "status": "failed",
+      "required_bytes": 19256933986,
+      "available_bytes_conservative": 19236336523,
+      "stale_bytes_subtracted": 6533467253,
+      "available_files_lower": 19558339,
+      "full_long_admission": false
+    },
+    "run/admission-02/storage-preflight/gate.json": {
+      "status": "passed",
+      "required_bytes": 19225068665,
+      "available_bytes_conservative": 19235502439,
+      "stale_bytes_subtracted": 6534301337,
+      "available_files_lower": 19557270,
+      "full_long_admission": false
+    },
+    "run/storage-adoption-02/storage-preflight/gate.json": {
+      "status": "passed",
+      "required_bytes": 17934470372,
+      "available_bytes_conservative": 34151538760,
+      "stale_bytes_subtracted": 6650650552,
+      "available_files_lower": 19587457,
+      "full_long_admission": false
+    }
+  },
+  "historical_failed_cpu_jobs_preserved": {
+    "cpu": "29798549",
+    "after-cpu": "29798550"
+  },
+  "original_scientific_status_preserved": {
+    "protenix": "passed",
+    "boltz2": "failed"
+  },
+  "large_original_summary_bytes_downloaded": false,
+  "native_readiness_passed_by_this_audit": false,
+  "optimization_started_by_this_audit": false,
+  "scope": "Independent stdlib bytes/XML/schema/source/resource/scheduler/LSF audit. No numerical/model execution. Storage observations are not reservations.",
+  "status": "failed_new_cpu_attempt_evidence_verified",
+  "failed_producers": [
+    "cpu-02",
+    "after-cpu-02"
+  ],
+  "cpu_passed": false,
+  "partial_xml_counts": {
+    "run/cpu-02/payload/chemistry.xml": {
+      "testcase": 59,
+      "failure": 0,
+      "error": 0,
+      "skipped": 0
+    },
+    "run/cpu-02/payload/dbmol-transport.xml": {
+      "testcase": 148,
+      "failure": 7,
+      "error": 0,
+      "skipped": 0
+    },
+    "run/cpu-02/payload/legacy.xml": {
+      "testcase": 239,
+      "failure": 0,
+      "error": 0,
+      "skipped": 0
+    },
+    "run/cpu-02/payload/hpc-contract.xml": {
+      "testcase": 500,
+      "failure": 0,
+      "error": 0,
+      "skipped": 0
+    },
+    "run/cpu-02/payload/native-mapping.xml": {
+      "testcase": 34,
+      "failure": 0,
+      "error": 0,
+      "skipped": 0
+    },
+    "run/cpu-02/payload/dbmol-native.xml": {
+      "testcase": 83,
+      "failure": 0,
+      "error": 0,
+      "skipped": 0
+    }
+  },
+  "cases_claimed_passed": null
+}
