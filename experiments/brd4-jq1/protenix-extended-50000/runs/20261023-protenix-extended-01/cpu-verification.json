@@ -1,0 +1,26 @@
+{
+  "status": "passed",
+  "cpu_cases": 832,
+  "new_cases": 56,
+  "groups": {
+    "hpc-contract": 500,
+    "legacy": 239,
+    "native-mapping": 34,
+    "chemistry": 59
+  },
+  "files_verified": 45,
+  "source_manifest": "a30f980fd8fe95001fdfc6780d720bdde6486d2421d7e4942b119ace61777f00",
+  "source_members_verified": 641,
+  "cpu_certificate_sha256": "c0f784d523d358dfd09d7f57fcfe333fbb5c069d93074681ea35562a5f423171",
+  "jobs": {
+    "cpu": "29798115",
+    "after-cpu": "29798116",
+    "random-native-0000": "29798159",
+    "random-after-native-0000": "29798160",
+    "continuation-native-0000": "29798161",
+    "continuation-after-native-0000": "29798162"
+  },
+  "new_native_passed": false,
+  "new_optimization_submitted": false,
+  "scope": "Stdlib byte/XML/JSON/source/config/submission/scheduler/LSF/adoption/storage audit only; no local numerical work"
+}

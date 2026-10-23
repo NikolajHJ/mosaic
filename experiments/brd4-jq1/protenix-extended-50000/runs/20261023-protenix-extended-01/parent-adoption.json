@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "job": "29792670",
+  "global_state": 10000,
+  "snapshot": {
+    "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-protenix/payload/study/case-0/snapshots/step-10000.npz",
+    "bytes": 14226,
+    "sha256": "edf15f06ba1b6591d62cbc3e04e19ecd93b553a0627da38c370fdeed3c1b780f"
+  },
+  "scope": "Original terminal scientific pass preserved; new exact child only"
+}

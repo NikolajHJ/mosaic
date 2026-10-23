@@ -6480,3 +6480,66 @@ source containing its actual entry/driver pins. Existing diagnostic29796551 and
 capture29796552 remain PEND, with no cause established. New random Pro native
 29796780/callback29796781 remain PEND; no optimization long ID exists yet. No
 duplicate submission, cleanup, original-run restart or heartbeat unpause occurred.
+
+
+### 2026-10-23 — prepared Protenix50k extension and exact plain continuation
+User explicitly requested random Protenix50000 and passed plain29792670 plus40000. User selected chemistry hold.001through5000, geometric100at50000. New experiment experiments/brd4-jq1/protenix-extended-50000, attempt20261023-protenix-extended-01. Preserve original625/results; retire only superseded queued random10k native29796780/callback29796781 under actual dispatch lock after status/no-long inspection. New immutable segmented execution requires exact logits/FP32/key/global-index boundaries, all native/chemistry/CPU/runtime/wholequota guards, no gate waiver. Prepared only; no new50k scientific job/pass yet. Existing Boltz diagnostics/report and running chemistry unchanged.
+
+
+### Protenix50k actual immutable staging/submission, 23October11:36Paris
+
+Superseded random10k native29796780/callback29796781 both actualPEND/unstarted,
+then intentionally retired/actualEXIT at09:26:51UTC under original dispatch lock.
+No old10k long or study existed; all saved source/CPU776 artifacts retained.
+New641 source staged read-only, manifest a30f980fd8fe95001fdfc6780d720bdde6486d2421d7e4942b119ace61777f00,
+archive39627601 bytes SHA8ba1c3370fee1f09b96af139dbf1403bb3c187c52d447ec4b0b23ebe4a65f63d.
+Local unsubmitted draft01 was preserved; active package uses localsource02 with
+stronger real chemistry-offset and parent scientific/frame-adoption checks.
+NewCPU29798115/afterCPU29798116 actually submitted09:36:00–01UTC. Preflight
+15327331773required versus20937322046 conservative available; own allowance2GiB
+plus all old remaining/report/diagnostic budgets and4GiB/100000file reserves.
+Not the full50k storage gate, which awaits actual newpilot projections.
+No new CPU/native/scientific segment pass yet. See campaign.json and exact
+submission/retirement receipts. New random50k ramp .001through5000->100at50000;
+plain originalstate10000 plus40000, bothLR.3. Current immutable newsource changes
+only driver/contract plus optional global-offset trajectory support; remaining
+144scientificlibrary files exact631. No original run/result, other job, cleanup
+or heartbeat schedule changed.
+
+
+### Protenix50k CPU/adoption verified; both fresh native validations queued, 23October11:46Paris
+
+CPU29798115 and callback29798116 actualDONE/hpc/same-job LSFsuccess. Full832 raw
+cases passed:500contracts(56new)+239legacy+34mapping+59chemistry, zero failures,
+errors or skips;3 unchanged legacy deselections. Raw contract XML header503
+versus500 rows is the inherited3 unittest-subtest surplus, not three extra tests.
+New allocated checks include exact split/uninterrupted FP32 logits/graph/key/raw
+gradients, altered checkpoint rejection and real chemistry preparation/schedule
+global offsets across the5000 ramp boundary. Other144scientific library members
+remain exact parent631. Local checks were stdlib AST/JSON/byte/layout only.
+
+Callback rehashed/authenticated original29792670 full summary/case/committed
+JSONL/terminal native success/frozen/raw/parity/attempt rates and full-frame
+collector. Exact saved terminal checkpoint14226bytes,
+SHAedf15f06ba1b6591d62cbc3e04e19ecd93b553a0627da38c370fdeed3c1b780f,
+is the plain continuation's immutable input; original10000 results preserved.
+CPUcertificatec0f784d523d358dfd09d7f57fcfe333fbb5c069d93074681ea35562a5f423171.
+Independent45-file byte/XML/JSON/LSF/source/config/actualresource/gate audit passed;
+all641 source members and642 safe archive members independently rehashed.
+
+Actual fresh native submissions: random29798159/callback29798160 and plain
+continuation29798161/callback29798162. AllfourPEND at09:46:30UTC. No new native
+pass or optimization segment ID yet. Both initial readiness checks, empirical
+pilot runtime and whole50k/40k byte/file projections must pass before either
+independent chain begins. No full extended-output storage pass is claimed from
+the smaller validation allowance. Each later segment requires authenticated
+predecessor scientific completion, exact saved-state replay, fresh native and
+remaining-capacity/runtime gates. Failed/uncompleted segments never authorize
+successors. No gate waiver, additional cleanup or heartbeat unpause.
+
+Random50k keepsLR.3/Dirichlet1 seed17, .001through5000 then geometric100at50000.
+Plain29792670 keeps native-onlyLR.3 and global10000->50000, no new chemistry.
+All old runs/report editions/Boltz endpoint diagnostics remain unchanged. A new
+50k report must pin actual new segment IDs and join global saved frames with
+duplicate boundary states authenticated exactly; old contracts/editions cannot
+be retargeted. All rendering/array/gradient checks stay allocated DTU HPC only.

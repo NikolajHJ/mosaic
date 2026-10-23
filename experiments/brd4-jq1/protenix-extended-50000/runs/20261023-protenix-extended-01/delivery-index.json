@@ -1,0 +1,231 @@
+{
+  "scope": "Compact original-byte delivery index; raw proof files retained in ignored cpu-evidence-01; no original large native arrays downloaded",
+  "evidence_directory": "results/hpc/20261023-protenix-extended-01/cpu-evidence-01",
+  "files": {
+    "run/jobs.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/jobs.json",
+      "bytes": 219,
+      "sha256": "1ddc8060fdfb21755ef082d6f9acfa5b53b8a54b938e09e41fe8af850e14514e"
+    },
+    "run/source-staging.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/source-staging.json",
+      "bytes": 309,
+      "sha256": "a202da072570710f4fabbdbe9acdb2cbd70e0bbf1efae392a1f05508e608b56d"
+    },
+    "run/cpu-certificate.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/cpu-certificate.json",
+      "bytes": 4404,
+      "sha256": "c0f784d523d358dfd09d7f57fcfe333fbb5c069d93074681ea35562a5f423171"
+    },
+    "run/parent-adoption.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/parent-adoption.json",
+      "bytes": 431,
+      "sha256": "fb53a3d37ac46950b38cf824a2bcc3f57edb87434756bcf8ff7289b796af3b03"
+    },
+    "run/random-native-0000/submission.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/random-native-0000/submission.json",
+      "bytes": 1332,
+      "sha256": "b1b2d0a191ac1f40a85b76a48709880c0eec897c1b2ef5fab502849bb27eda01"
+    },
+    "run/random-native-0000/scheduler-at-submission.txt": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/random-native-0000/scheduler-at-submission.txt",
+      "bytes": 2493,
+      "sha256": "e1eb31dbb7e40094a3b7582cb804e5f1a61d12292f3c6a7066a8155ebb299c29"
+    },
+    "run/random-after-native-0000/submission.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/random-after-native-0000/submission.json",
+      "bytes": 1358,
+      "sha256": "5bb9375eff799d02c9cf55ab55ffdfe9f9813a59abfdc54e73058bd23c90a254"
+    },
+    "run/random-after-native-0000/scheduler-at-submission.txt": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/random-after-native-0000/scheduler-at-submission.txt",
+      "bytes": 2821,
+      "sha256": "3579263f1bc5a89ce7897ddfc65bed3b8490a0d659fcdf21f9a236eb3d80e0f7"
+    },
+    "run/cpu/submission.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/cpu/submission.json",
+      "bytes": 1100,
+      "sha256": "df1ad901dec226ced95ab2d8ac6c3948797f17187d395eafee8bd9618a3abaff"
+    },
+    "run/cpu/scheduler-final-0.txt": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/cpu/scheduler-final-0.txt",
+      "bytes": 3772,
+      "sha256": "278774d847d3386de625e8582067315240d333e9459bfafb3a9a72c63f11d817"
+    },
+    "run/cpu/scheduler-at-submission.txt": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/cpu/scheduler-at-submission.txt",
+      "bytes": 2306,
+      "sha256": "4c22063d5e14589d20078f9072eb429ed0a81a50e0694a6d411854d923aeeb37"
+    },
+    "run/cpu/scheduler-final-3.txt": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/cpu/scheduler-final-3.txt",
+      "bytes": 3772,
+      "sha256": "278774d847d3386de625e8582067315240d333e9459bfafb3a9a72c63f11d817"
+    },
+    "run/cpu/scheduler-final-1.txt": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/cpu/scheduler-final-1.txt",
+      "bytes": 3772,
+      "sha256": "278774d847d3386de625e8582067315240d333e9459bfafb3a9a72c63f11d817"
+    },
+    "run/cpu/scheduler-final-2.txt": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/cpu/scheduler-final-2.txt",
+      "bytes": 3772,
+      "sha256": "278774d847d3386de625e8582067315240d333e9459bfafb3a9a72c63f11d817"
+    },
+    "run/cpu/scheduler-final-4.txt": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/cpu/scheduler-final-4.txt",
+      "bytes": 3589,
+      "sha256": "b28f3ab78cc6476b36deabac5a222cfa110f64b414ea35045a4def38005013a7"
+    },
+    "run/cpu/stdout.29798115.log": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/cpu/stdout.29798115.log",
+      "bytes": 3327,
+      "sha256": "e7e7fc1b4f4607d6e84363ed547f3b2bf41ba6eb5da3459c89f2d6d2c15ecb69"
+    },
+    "run/cpu/stderr.29798115.log": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/cpu/stderr.29798115.log",
+      "bytes": 233,
+      "sha256": "7d57e9e44355166e210a310a2b90b7d8543b85c5ffbb82276c701f4dd1f23271"
+    },
+    "run/continuation-native-0000/submission.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/continuation-native-0000/submission.json",
+      "bytes": 1356,
+      "sha256": "287f339427b96c7b269938e7b09638a12855522d9a5c8d390056f162ac443df7"
+    },
+    "run/continuation-native-0000/scheduler-at-submission.txt": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/continuation-native-0000/scheduler-at-submission.txt",
+      "bytes": 2544,
+      "sha256": "e27baf77bbf189ce30c852d54da9a8fccda81a6985ef7062ed7a2b56a3ead5a2"
+    },
+    "run/continuation-after-native-0000/submission.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/continuation-after-native-0000/submission.json",
+      "bytes": 1382,
+      "sha256": "318770b52d775cb93f25192b5f9f33f618d2f28c09bff104c3332176b50c8daf"
+    },
+    "run/continuation-after-native-0000/scheduler-at-submission.txt": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/continuation-after-native-0000/scheduler-at-submission.txt",
+      "bytes": 2845,
+      "sha256": "47c9c418fabc0dabe1d908c8b5797b29d2c25370ad5b341750d695dc6355774b"
+    },
+    "run/after-cpu/submission.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/after-cpu/submission.json",
+      "bytes": 1292,
+      "sha256": "a4e909fee8e7f001b9ed85b381a996e57b9cb1a38aacc3145ac6c028f7cc264e"
+    },
+    "run/after-cpu/scheduler-at-submission.txt": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/after-cpu/scheduler-at-submission.txt",
+      "bytes": 2553,
+      "sha256": "f74b0c63144bec80936af778ae3ba297ea1617f5da1e2d79b10ffae7cec21982"
+    },
+    "run/after-cpu/stdout.29798116.log": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/after-cpu/stdout.29798116.log",
+      "bytes": 2191,
+      "sha256": "b68696042167598a0450b280e8d125ffcd53ca7fa4021cf1d8be4798646b0cc6"
+    },
+    "run/after-cpu/stderr.29798116.log": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/after-cpu/stderr.29798116.log",
+      "bytes": 233,
+      "sha256": "7d57e9e44355166e210a310a2b90b7d8543b85c5ffbb82276c701f4dd1f23271"
+    },
+    "run/storage-preflight/gate.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/storage-preflight/gate.json",
+      "bytes": 3730,
+      "sha256": "0e99f8d1880211b4b1d025cccdd1ece7f676b9dfb447a02810306850d6120a8b"
+    },
+    "run/cpu/storage-cpu-entry/gate.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/cpu/storage-cpu-entry/gate.json",
+      "bytes": 3730,
+      "sha256": "233cb5016674e11233a54bad39810c24ead248bd60eb3f215bdb69e9bb3bce35"
+    },
+    "run/after-cpu/storage-native-dispatch/gate.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/after-cpu/storage-native-dispatch/gate.json",
+      "bytes": 3736,
+      "sha256": "7d21f8cf8b584bfc263aa6dce2cce1c00d32bb560efc65aae5f437f8468b90a4"
+    },
+    "run/cpu/payload/hpc-contract.xml": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/cpu/payload/hpc-contract.xml",
+      "bytes": 75170,
+      "sha256": "cb1059ff7873715d0efe26a20e138dbddcad1e495c20ac38951e6e36fdbf7027"
+    },
+    "run/cpu/payload/hpc-contract.log": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/cpu/payload/hpc-contract.log",
+      "bytes": 2524,
+      "sha256": "38710599fe6ccea3a1cb4cc29b0fd9b4993237c19341822b9f768b5095201f22"
+    },
+    "run/cpu/payload/legacy.xml": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/cpu/payload/legacy.xml",
+      "bytes": 35054,
+      "sha256": "47c76f41dc514dcc0d706c0433b7df7ef1bae4430f8c6171d9f10f5ad836d7a9"
+    },
+    "run/cpu/payload/legacy.log": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/cpu/payload/legacy.log",
+      "bytes": 3512,
+      "sha256": "7d5817e17ae192099ef817ecc7e84520ad186bac8ad75e29b8ce3d3ef233e738"
+    },
+    "run/cpu/payload/native-mapping.xml": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/cpu/payload/native-mapping.xml",
+      "bytes": 5142,
+      "sha256": "5183f879e70d2d8df8d05ed4ea4a86ed679297e3e2f20c8e3e89d0e207dd5365"
+    },
+    "run/cpu/payload/native-mapping.log": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/cpu/payload/native-mapping.log",
+      "bytes": 1009,
+      "sha256": "5c8ffd49baff78e8321d584e131ff1a681d5d3b34528cc53a0008c1173a5c8dd"
+    },
+    "run/cpu/payload/chemistry.xml": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/cpu/payload/chemistry.xml",
+      "bytes": 8728,
+      "sha256": "bca740c8a06ee1674430e85bbfa69f6e632bd289ed49d71195a1f47cf204c15b"
+    },
+    "run/cpu/payload/chemistry.log": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/cpu/payload/chemistry.log",
+      "bytes": 1081,
+      "sha256": "d94596613cfce13a04be37bd15c43b61ad7551307cd97b317bd018e04bb1b98a"
+    },
+    "run/cpu/payload/composition_reference.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/cpu/payload/composition_reference.json",
+      "bytes": 2087,
+      "sha256": "37b34a2ba7be47886936df48faaabdeac20481e5a9cebca9bafab831c07868eb"
+    },
+    "run/cpu/payload/pocket_definition.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/cpu/payload/pocket_definition.json",
+      "bytes": 3948,
+      "sha256": "9376c715eaf5b48689fb3e995b00d7820601a7776970df66bd7e7cff3b13ee43"
+    },
+    "run/cpu/payload/assessment.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/cpu/payload/assessment.json",
+      "bytes": 1233,
+      "sha256": "2725172ed9047bce5accab37d15ab78b3a919a90b3dc8dd717823c1709472c75"
+    },
+    "run/cpu/payload/oracles.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/cpu/payload/oracles.json",
+      "bytes": 77217,
+      "sha256": "f1f264b12edd126b5f936b80da8d9227f4335304e3610de1a2938dfa7e5573d4"
+    },
+    "source/docs/extended_parent.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-01/source/docs/extended_parent.json",
+      "bytes": 21467,
+      "sha256": "397807622c1b4a08b77750bdd7eb0c4236d91b62ccdc11db56df53cd13760f13"
+    },
+    "source/docs/extended_retirement.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-01/source/docs/extended_retirement.json",
+      "bytes": 13518,
+      "sha256": "9a6242684f4f39e71aa98c3c160b8b482078967e90aaa5c1912908bb32017150"
+    },
+    "source/source_manifest.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-01/source/source_manifest.json",
+      "bytes": 77883,
+      "sha256": "a30f980fd8fe95001fdfc6780d720bdde6486d2421d7e4942b119ace61777f00"
+    },
+    "source/examples/configs/extended_random.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-01/source/examples/configs/extended_random.json",
+      "bytes": 1890,
+      "sha256": "d4993743e7f4e6b0f559e3da0c264c2a8b3969c8d113f5defba397350f3e5749"
+    },
+    "source/examples/configs/extended_continuation.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-01/source/examples/configs/extended_continuation.json",
+      "bytes": 1733,
+      "sha256": "f91c90770fe907c00e081f3ed28b46071ac35cc3f869edae504cf8cc16f6b445"
+    }
+  }
+}

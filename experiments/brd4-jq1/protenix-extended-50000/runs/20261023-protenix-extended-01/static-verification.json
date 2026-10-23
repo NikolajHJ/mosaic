@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "scope": "Local stdlib AST/JSON/byte/source/retirement-scheduler audit only; no numerical test or native pass inferred",
+  "source_files_verified": 641,
+  "safe_members": 642,
+  "manifest_sha256": "a30f980fd8fe95001fdfc6780d720bdde6486d2421d7e4942b119ace61777f00",
+  "archive_sha256": "8ba1c3370fee1f09b96af139dbf1403bb3c187c52d447ec4b0b23ebe4a65f63d",
+  "retired_unstarted_jobs": [
+    "29796781",
+    "29796780"
+  ],
+  "layout_audit_status": "passed"
+}

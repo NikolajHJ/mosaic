@@ -49,3 +49,9 @@ native29796780/callback29796781 queued. No native pass or10000-update optimizati
 submission yet. Old results and independent endpoint/report work are unchanged.
 These launchers are account-bound historical execution entries; their constants
 are not portable account defaults.
+
+
+23October2026: user superseded the queued10000-update trial with
+[50000 updates and a stretched ramp](../protenix-extended-50000/README.md).
+Actual native29796780/callback29796781 intentionally retired before execution;
+source631/CPU776 pass remain historical. No10000-update optimization was submitted.

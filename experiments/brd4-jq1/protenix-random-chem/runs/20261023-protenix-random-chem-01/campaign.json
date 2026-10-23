@@ -1,5 +1,5 @@
 {
-  "status": "cpu_passed_native_queued",
+  "status": "intentionally_superseded_unstarted",
   "source_manifest": "bb3ac9cae836b59f9a62fb33d4775c0b4388f3b200a7422ce8a620d2d405950f",
   "source": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-random-chem-release-01/source",
   "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-random-chem-01",
@@ -83,5 +83,12 @@
   "new_native_passed": false,
   "new_long_submitted": false,
   "existing_results_unchanged": true,
-  "heartbeat_remains_paused": true
+  "heartbeat_remains_paused": true,
+  "replacement": "../../../protenix-extended-50000/runs/20261023-protenix-extended-01",
+  "retirement_jobs": [
+    "29796780",
+    "29796781"
+  ],
+  "retirement_status": "EXIT_after_user_requested_budget_change",
+  "optimization_never_submitted": true
 }

@@ -61,3 +61,9 @@ yet. Never duplicate. All fresh raw/parity/null/primal/frozen/random identity,
 nonzero chemistry/low-high coupled/BOTH10pilot/runtime gates and fresh combined
 full output projection/reserves must pass before one independent long. No old
 scientific run/result, cleanup or heartbeat schedule changed.
+
+
+23October09:26:51UTC: user requested50k and stretched ramp. Both actualqueued
+native29796780/callback29796781 intentionally retired under dispatch lock, then
+actualEXIT; no optimization long/study existed. CPU776 pass and source631 remain
+historical. Replacement documented under brd4-jq1/protenix-extended-50000.

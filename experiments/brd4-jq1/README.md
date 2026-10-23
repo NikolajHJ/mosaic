@@ -13,3 +13,6 @@ See the [global experiment index](../INDEX.md) and [agent logbook](../../docs/ex
 
 Additional23October user-authorized [random Protenix plus delayed chemistry](protenix-random-chem/README.md):
 freshLR0.3/Dirichlet1 seed17/chemistry0.001-to100, independent of saved studies.
+
+[Protenix extended50k and exact continuation](protenix-extended-50000/README.md):
+user-authorized random50000 stretched chemistry ramp and original passed10k+40000.

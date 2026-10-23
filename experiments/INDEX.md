@@ -37,3 +37,6 @@ Shared tools: [releases](../scripts/releases/README.md), [evidence](../scripts/e
 ## New Protenix random-initialization chemistry study, 23 October 2026
 
 - [brd4-jq1/protenix-random-chem](brd4-jq1/protenix-random-chem/README.md): one new guarded LR0.3/Dirichlet1 seed17/delayed0.001-to100 run, independent of all saved studies.
+
+
+- [Protenix extended50000](brd4-jq1/protenix-extended-50000/README.md): random50k with stretched chemistry ramp and exact passed plain10k+40k continuation; CPU832 passed and fresh native checks queued.

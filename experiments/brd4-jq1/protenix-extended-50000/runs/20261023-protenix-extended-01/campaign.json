@@ -1,0 +1,101 @@
+{
+  "status": "cpu_passed_native_queued",
+  "package": {
+    "tag": "20261023-protenix-extended-01",
+    "manifest_sha256": "a30f980fd8fe95001fdfc6780d720bdde6486d2421d7e4942b119ace61777f00",
+    "source_files": 641,
+    "archive_bytes": 39627601,
+    "archive_sha256": "8ba1c3370fee1f09b96af139dbf1403bb3c187c52d447ec4b0b23ebe4a65f63d",
+    "changed_members": {
+      "examples/brd4_25_atoms.py": "42dcef6c7ab5d5f4d11aca844d0e2bbb0cd5f7101955695652211cfd0224442f",
+      "scripts/campaign25_contract.py": "ce9f240a7aaa809e4e1b91674e35462dc966279f40254cccde17640c6a8628fc",
+      "src/mosaic/small_molecule/chemistry/trajectory.py": "69c89b84fe0dd1c5b548a84286d6635cb63cff223dd0890a0b50ce8f3e1a8468",
+      "examples/configs/extended_random.json": "d4993743e7f4e6b0f559e3da0c264c2a8b3969c8d113f5defba397350f3e5749",
+      "examples/configs/extended_continuation.json": "f91c90770fe907c00e081f3ed28b46071ac35cc3f869edae504cf8cc16f6b445",
+      "scripts/extended_protocol.py": "e26a43985e40855aa46ae91df5394d0066938e67617ba9d905ab9723d6be879a",
+      "scripts/extended_ops.py": "bb4d353abd92fcf9d8fd31b67f3ffa8054f1ce8ed26002825645076207b63c3b",
+      "scripts/hpc/extended_stage.lsf": "bd4a2d0c377caaa90064945034ab55736bdc59e02043b9a21452b3683078cf2b",
+      "tests/test_extended_protenix.py": "d0822cc42e4fa2a535572fc76c2f374bc071167d94cc9efb23cf21b7d8b47475",
+      "docs/extended_parent.json": "397807622c1b4a08b77750bdd7eb0c4236d91b62ccdc11db56df53cd13760f13",
+      "docs/extended_retirement.json": "9a6242684f4f39e71aa98c3c160b8b482078967e90aaa5c1912908bb32017150",
+      "docs/protenix_extended.md": "c5aa8776cbd13f64749ef2ea18ffe2c6d639b49394f60bfe95e80e4b216b7e40",
+      "scripts/hpc/extended_cpu.lsf": "95b398fa16e50c58d226b60c49ffec90974d7c073687592eca05712c786c2246"
+    }
+  },
+  "source": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-01/source",
+  "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01",
+  "jobs": {
+    "cpu": "29798115",
+    "after-cpu": "29798116",
+    "random-native-0000": "29798159",
+    "random-after-native-0000": "29798160",
+    "continuation-native-0000": "29798161",
+    "continuation-after-native-0000": "29798162"
+  },
+  "preflight": {
+    "status": "passed",
+    "phase": "preflight",
+    "reserve_bytes": 4294967296,
+    "file_reserve": 100000,
+    "scope": "All original3 remaining +report2GiB/diagnostic512MiB +both full extended remaining; independent output; no reservation",
+    "old_current": {
+      "protenix": 1065476574,
+      "boltz2": 1001537880,
+      "boltz2_chemistry": 118024749
+    },
+    "own_current": {
+      "random": 0,
+      "continuation": 0
+    },
+    "full_extended": {
+      "random": 1073741824,
+      "continuation": 1073741824
+    },
+    "projected_bytes": 11032364477,
+    "work3": {
+      "status": "passed",
+      "filesystem": "work3",
+      "raw_quota": "HPE-Storage-Servers (disks, storagepool 1): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nHPE-Storage-Servers (NVME, storagepool 2): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (disks, storagepool 3): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks, storagepool 4): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks added in 2024, storagepool 5): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (NVMEs added in 2024, storagepool 6): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||   74.85 GiB|  100.00 GiB||   434542| 20000000\n\n",
+      "quota": {
+        "finite_pools": [
+          {
+            "used_bytes_upper": 80530636800,
+            "hard_bytes_lower": 107374182400,
+            "remaining_bytes": 26843545600,
+            "remaining_files": 19565458
+          }
+        ],
+        "available_bytes_lower": 26843545600,
+        "available_files_lower": 19565458
+      },
+      "projected_bytes": 11032364477,
+      "stale_bytes_subtracted": 5906223554,
+      "disk_free_bytes": 555660883263488,
+      "available_bytes_conservative": 20937322046,
+      "required_bytes": 15327331773,
+      "reserve_bytes": 4294967296,
+      "file_reserve": 100000,
+      "filesystem_inode_observation": {
+        "f_files": 0,
+        "f_ffree": 0,
+        "f_favail": 0
+      },
+      "available_files_lower": 19565458,
+      "filesystem_inode_reporting": "unreported_all_zero",
+      "file_headroom_scope": "Mandatory minimum of all authenticated finite user-quota pools",
+      "inode_limitation": "All-zero statvfs tuple supplies no independent filesystem inode proof",
+      "limitation": "Observations are conservative budget checks, not storage reservations"
+    }
+  },
+  "new_native_passed": false,
+  "new_segments_submitted": false,
+  "original_results_unchanged": true,
+  "predecessor_retirement_sha256": "9a6242684f4f39e71aa98c3c160b8b482078967e90aaa5c1912908bb32017150",
+  "heartbeat_remains_paused": true,
+  "cpu_cases": 832,
+  "new_cases": 56,
+  "cpu_certificate_sha256": "c0f784d523d358dfd09d7f57fcfe333fbb5c069d93074681ea35562a5f423171",
+  "cpu_verification_sha256": "fd31a716b7b0c328056499e64f68aab1a338d9ef6e6496f01164c4b42559a724",
+  "original_protenix_adoption": "passed_original10000_unchanged",
+  "full_extended_storage_passed": false
+}

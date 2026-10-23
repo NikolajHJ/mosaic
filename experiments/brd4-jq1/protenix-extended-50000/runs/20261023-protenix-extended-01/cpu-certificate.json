@@ -1,0 +1,86 @@
+{
+  "status": "passed",
+  "suite": "protenix-serial50k-v1",
+  "source_manifest_sha256": "a30f980fd8fe95001fdfc6780d720bdde6486d2421d7e4942b119ace61777f00",
+  "cases": 832,
+  "groups": {
+    "hpc-contract": 500,
+    "legacy": 239,
+    "native-mapping": 34,
+    "chemistry": 59
+  },
+  "proofs": [
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/cpu/scheduler-final-4.txt",
+      "sha256": "b28f3ab78cc6476b36deabac5a222cfa110f64b414ea35045a4def38005013a7"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/cpu/stdout.29798115.log",
+      "sha256": "e7e7fc1b4f4607d6e84363ed547f3b2bf41ba6eb5da3459c89f2d6d2c15ecb69"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/cpu/submission.json",
+      "sha256": "df1ad901dec226ced95ab2d8ac6c3948797f17187d395eafee8bd9618a3abaff"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/cpu/payload/hpc-contract.xml",
+      "sha256": "cb1059ff7873715d0efe26a20e138dbddcad1e495c20ac38951e6e36fdbf7027"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/cpu/payload/hpc-contract.log",
+      "sha256": "38710599fe6ccea3a1cb4cc29b0fd9b4993237c19341822b9f768b5095201f22"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/cpu/payload/legacy.xml",
+      "sha256": "47c76f41dc514dcc0d706c0433b7df7ef1bae4430f8c6171d9f10f5ad836d7a9"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/cpu/payload/legacy.log",
+      "sha256": "7d5817e17ae192099ef817ecc7e84520ad186bac8ad75e29b8ce3d3ef233e738"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/cpu/payload/native-mapping.xml",
+      "sha256": "5183f879e70d2d8df8d05ed4ea4a86ed679297e3e2f20c8e3e89d0e207dd5365"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/cpu/payload/native-mapping.log",
+      "sha256": "5c8ffd49baff78e8321d584e131ff1a681d5d3b34528cc53a0008c1173a5c8dd"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/cpu/payload/chemistry.xml",
+      "sha256": "bca740c8a06ee1674430e85bbfa69f6e632bd289ed49d71195a1f47cf204c15b"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/cpu/payload/chemistry.log",
+      "sha256": "d94596613cfce13a04be37bd15c43b61ad7551307cd97b317bd018e04bb1b98a"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/cpu/payload/composition_reference.json",
+      "sha256": "37b34a2ba7be47886936df48faaabdeac20481e5a9cebca9bafab831c07868eb"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/cpu/payload/pocket_definition.json",
+      "sha256": "9376c715eaf5b48689fb3e995b00d7820601a7776970df66bd7e7cff3b13ee43"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/cpu/payload/assessment.json",
+      "sha256": "2725172ed9047bce5accab37d15ab78b3a919a90b3dc8dd717823c1709472c75"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/cpu/payload/oracles.json",
+      "sha256": "f1f264b12edd126b5f936b80da8d9227f4335304e3610de1a2938dfa7e5573d4"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/parent-adoption.json",
+      "sha256": "fb53a3d37ac46950b38cf824a2bcc3f57edb87434756bcf8ff7289b796af3b03"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-01/source/docs/extended_parent.json",
+      "sha256": "397807622c1b4a08b77750bdd7eb0c4236d91b62ccdc11db56df53cd13760f13"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-01/source/docs/extended_retirement.json",
+      "sha256": "9a6242684f4f39e71aa98c3c160b8b482078967e90aaa5c1912908bb32017150"
+    }
+  ]
+}
