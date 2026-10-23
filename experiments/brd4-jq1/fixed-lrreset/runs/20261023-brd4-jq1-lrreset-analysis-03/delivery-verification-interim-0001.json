@@ -1,0 +1,26 @@
+{
+  "status": "passed",
+  "report_job": "29796556",
+  "manifest": "8e3045ddfd44a701127deb7af7a163536dfbf699123ba883f98207d6d57b95d5",
+  "archive_sha256": "9551b2e0b0a821e606fa740ac09df432ec6575f562dfe51390c84629d6009ae7",
+  "report_receipt_sha256": "a392aa4347d8058ef75c72d28ff495c7d2c406117e1fde3624ef5c9221540d0c",
+  "html_sha256": "663235c270daf2ecec09c57c08150eadde1ffbf829a6ae65312f5d0a9b1e50e4",
+  "files": 441,
+  "cpu_cases": 284,
+  "states": [
+    10001,
+    10001,
+    0
+  ],
+  "updates": [
+    10000,
+    10000,
+    null
+  ],
+  "scientific_statuses": [
+    "passed",
+    "failed",
+    "queued"
+  ],
+  "scope": "Independent stdlib bytes/JSON/XML/actual scheduler/LSF/source/input/capture proof audit; original big scientific files remain authenticated remote references. No local scientific frame calculations."
+}

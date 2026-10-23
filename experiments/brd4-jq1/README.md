@@ -9,3 +9,7 @@ Scientific family index. Each study retains its own question, protocol, configur
 - [JQ1 lower-rate restart, chemistry endpoint 100](fixed-lrreset/README.md): Compare fresh Protenix LR 0.3 and both Boltz branches LR 0.005, with chemistry 0.001 held to 5000 then geometric to 100. Existing attempt01 failure and sealed attempt02 remain independent of this migration.
 
 See the [global experiment index](../INDEX.md) and [agent logbook](../../docs/experiment_ledger.md).
+
+
+Additional23October user-authorized [random Protenix plus delayed chemistry](protenix-random-chem/README.md):
+freshLR0.3/Dirichlet1 seed17/chemistry0.001-to100, independent of saved studies.

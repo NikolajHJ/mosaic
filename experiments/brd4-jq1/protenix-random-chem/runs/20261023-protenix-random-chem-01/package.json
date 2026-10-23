@@ -1,0 +1,18 @@
+{
+  "tag": "20261023-protenix-random-chem-01",
+  "manifest_sha256": "bb3ac9cae836b59f9a62fb33d4775c0b4388f3b200a7422ce8a620d2d405950f",
+  "source_files": 631,
+  "archive_bytes": 39609007,
+  "archive_sha256": "c005429dc2581c929662698e80da154fabc0f3365615facfa7582641fa7fcddc",
+  "parent_manifest": "c2628d08f7224f3b572ab456f4113d8a66b587a5d69f85a072877052fc09a057",
+  "changed_members": {
+    "examples/brd4_25_atoms.py": "7014fcd20e3f053336155eaad213d203835a320b8db446bb428fa9d48f73da85",
+    "scripts/campaign25_contract.py": "9e2f13e2b1ac189a995fb358b9117d994475127857a91eed2678568e9b55adb5",
+    "scripts/hpc/random_chem_cpu.lsf": "b3ec1eb8708c9298b5ffff4919a9c4398838820a192807c6b78a3685f974bc1a",
+    "examples/configs/protenix_random_delayed_chem_10000.json": "ceeccf769973d2706c169e3f6e565752dd0974c8c69dd1142498d79053a861b4",
+    "scripts/random_chem_ops.py": "5e1051843bf91e7858d62e4b30b0c1ed8745a65cbe4c65601ea166f1f358d4ea",
+    "scripts/hpc/random_chem_stage.lsf": "8cb3a890e0b97fc82ad93a56006e165414a11bffad211fc3c6747f4d63415b78",
+    "tests/test_random_chem.py": "8ebfe68c2a02e10e18891d8e524756870722c920847f2238598393ffe29f84db",
+    "docs/protenix_random_chem.md": "ddba0f75bd75ef3ca744d03f03fc569c4c85fc628fe2fb8148ef134ac4ae3267"
+  }
+}

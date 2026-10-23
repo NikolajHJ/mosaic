@@ -6413,3 +6413,52 @@ CPU29796495 actualDONE/samejobLSF/full283passes with zero failures/errors/skips.
 Analysis03 CPU29796532 and callback29796533 actualDONE/hpc/samejobLSFsuccess. Full284actualcases82contract+54render+60publish+35ops+18diagnostic+26Bolreport+3chemreport+6ramp, zeroerrors/failures/skips/deselections. Exact rawmoduleattribution nowpresent. CPUcertc1cfb3730419a48e82c45b45981a874275dbdec31a13fdffbf865139b9416cf3; independent40-file byte/XML/JSON/submission/source/reserve audit passed. One local auditor assertion incorrectly counted both raw scheduler observations instead of certificate-bound final observation; failedauditorrecord retained, all rawproofbytes reverified after metadata-only correction, no scientific gate waiver. Original625/CPU728/native/allwork3launcher26/settings/results unchanged.
 
 Fresh fullcapacity passed with full3remaining native projections+2GiBreport/512MiBdiagnostics+4GiB/100000files. Actual separate Boltzdiagnostic29796551/capture29796552 PEND, P/Bsaved10001framecollectors29796553/54RUN, chemcollector29796555 waitsoriginal29792672. Interim29796556 dependsP/Bcollectorpasses; diagnosticinterim29796557 follows first+Bolcapture; final29796558 dependsallcollectors+capture+secondinterim. Original chemistry29792672 remainsPEND unchanged. No diagnosticfinding/renderpass/publication yet. No savedrun restart/mutation/cleanup or automationunpause.
+
+
+### 2026-10-23 — additional random Protenix + delayed chemistry explicitly authorized/prepared
+
+User requested one new Protenix optimization concurrently with the separate Boltz endpoint/report work. New experimentprotenix-random-chem retains original passed lower-rate ProLR0.3/10000fixed1candidate/key17/N25/T1/frozencontext/pocket/contact and all checks. Existing PCG64/Dirichlet1 initializationseed17 replaces chainuniform; existing delayed chemistry0.001through5000 then geometric100at10000. This new declared objective/init variant requires full freshCPU/native low-high coupled/nonzero/bothtenpilots/runtime/storage before exactly one long. Original chainbaseline comparison explicitly remains for all oldversions; newrandom uses exact reproducibility and5-array validation-to-production identity. All old scientific/results/analysis unchanged, no cleanup/automationunpause. Local preparation only, no newsource/job/pass.
+
+
+### 2026-10-23 — random Protenix/chemistry candidate631 sealed locally
+
+New versioned candidate from authenticated original625 preserves every145scientificlibrary member exactly; only driver/contract add explicitly authorized randomProchem branch and six new config/controller/wrapper/fixture/doc members. Local631member AST/archive/byte audit passed. Manifestbb3ac9cae836b59f9a62fb33d4775c0b4388f3b200a7422ce8a620d2d405950f, archive39609007bytes SHAc005429dc2581c929662698e80da154fabc0f3365615facfa7582641fa7fcddc. Newrandom recipe17/Dirichlet1, chemistry.001->100, LR.3/key17/fixed10000; originalchainidentityguard remains alloldversions, newbranch requires exact independent recipe replay and validation/production arrays. Uses exact original frozen context as input; all newrandom/raw/coupled/pilot checks fresh. No allocatedtest/model/pass yet; newCPU and own callback only after fullpreflight, own native/long conditional. Original currentreport and Boltzdiagnostic unchanged.
+
+
+### 2026-10-23 11:09 Paris — completed lower-rate P/B report delivered
+
+Report29796556 actual DONE/hpc/LSF and passed presentation assessment; collectors
+29796553/54 audited all10001 original frames/10000 updates each. Pro passed/Bol
+failed scientific outcomes preserved. Archive90878067 bytes SHA9551b2e0b0a821e606fa740ac09df432ec6575f562dfe51390c84629d6009ae7,
+all441 files verified after authenticated partial/range recovery; all timeouts,
+stopped exact byte-transfer processes and partial evidence retained. No scientific
+process/result mutation. Independent delivery audit passed; local archive-prefix/
+UTF8 audit failures preserved before correction. New edition0001 at8779/report.html
+captures10001/10001/0 states and milestone floors10000/10000/0. First HTTP audit
+covered410 files while publication finished; subsequent stable-set audit passed
+ALL413. Actual browser QA passed drag7263/numeric1500/next1501/mid5000/terminal,
+Bol play2/manual321 pause and stability/prev320/terminal/25atom300pair tables,
+all selectors, raw graphs and actual empty-chemistry clearing/disabled controls.
+Screenshot, QA, source and publication hashes recorded in analysis03; server53268.
+At09:09:36UTC current chemistry29792672 and separate Boltz diagnostic29796551 remain
+PEND. No root-cause finding or retroactive gradient pass exists. Existing interim
+29796557/final29796558 unchanged; future started chemistry requires fresh immutable
+entry pins. Current report is delivered, endpoint investigation remains pending.
+Heartbeat stays paused. All older viewers/editions/results remain unchanged.
+
+
+### 2026-10-23 11:09 Paris — random Protenix chemistry776CPU passed; fresh native queued
+
+New source631 bb3ac9cae836b59f9a62fb33d4775c0b4388f3b200a7422ce8a620d2d405950f
+authenticated/read-only. CPU29796731/callback29796732 actualDONE/LSF/full776 rows:
+444 contracts(48new)+239legacy+34mapping+59chemistry, zero failures/errors/skips,
+3 unchanged legacy deselections. Raw XML contract header surplus3 is inherited
+unittest subtests; actual collected/pass444 matches444 rows. Independent35-file
+byte/XML/source/config/CPU/proof/actualsubmission/quota audit passed, certificate
+7adde8e09679637c597b72c6806aa4fc51cec590ba494da029b457e8d22e1a5d.
+Initial full old3remaining+analysis+new1GiBvalidation+4GiB/100000files gate passed
+14371611825 required/21144155255 available; not new full pilot/long admission.
+Actual fresh native29796780/callback29796781 queued, no native pass or long ID.
+Same declared LR0.3/randomDirichlet1 seed17/chemistry0.001-to100 and original
+frozen context/model/pocket/key/checks. Old results, separate Boltz diagnostic
+and report unchanged; no cleanup or automation unpause.

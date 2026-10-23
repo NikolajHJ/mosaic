@@ -32,3 +32,8 @@ Migrated working-source homes, 22 October 2026. Historical runs and sealed relea
 Shared tools: [releases](../scripts/releases/README.md), [evidence](../scripts/evidence/README.md), [graph](../scripts/graph/README.md), [chemistry](../scripts/chemistry/README.md), [campaign25](../scripts/campaign25/README.md), [boltz](../scripts/boltz/README.md), [reporting](../scripts/reporting/README.md), [hpc](../scripts/hpc/README.md).
 
 [Complete migration and compatibility map](MIGRATION.md) · [Policy](README.md) · [Global logbook](../docs/experiment_ledger.md).
+
+
+## New Protenix random-initialization chemistry study, 23 October 2026
+
+- [brd4-jq1/protenix-random-chem](brd4-jq1/protenix-random-chem/README.md): one new guarded LR0.3/Dirichlet1 seed17/delayed0.001-to100 run, independent of all saved studies.

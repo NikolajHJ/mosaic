@@ -32,16 +32,17 @@ def main():
     em=read(extracted/'evidence_manifest.json')['files'];assert download['verified_files']==len(em)
     assert {f.relative_to(extracted).as_posix() for f in extracted.rglob('*') if f.is_file()}==set(em)|{'evidence_manifest.json'}
     for n,p in em.items():assert (extracted/n).stat().st_size==p['bytes'] and sha(extracted/n)==p['sha256']
-    report=extracted/'payload/report';receipt=read(report/'report_receipt.json');assessment=read(extracted/'payload/assessment.json')
+    payload=extracted/'20261022-brd4-jq1-lrboost-analysis-01/lrreset-analysis-03'/name/'payload'
+    report=payload/'report';receipt=read(report/'report_receipt.json');assessment=read(payload/'assessment.json')
     job=evidence['report_job'];actual(evidence['actual_report_scheduler'],job)
     sub=read(delivery/('analysis/'+name+'/submission.json'));assert sub['job_id']==job and sub['phase']==('final' if name=='combined-report' else 'interim') and sub['arm']=='none' and sub['outcome']=='submitted'
     assert sub['args'][-6:]==[BASE+'/lrreset-analysis-release-03/source',ROOT,manifest,sub['phase'],'none',ROOT+'/'+name]
-    lsf((delivery/('analysis/'+name+'/stdout.'+job+'.log')).read_text(),job)
+    lsf((delivery/('analysis/'+name+'/stdout.'+job+'.log')).read_text(encoding='utf-8'),job)
     assert assessment==read(delivery/('analysis/'+name+'/payload/assessment.json')) and receipt==read(delivery/('analysis/'+name+'/payload/report/report_receipt.json'))
     assert assessment['status']=='passed' and assessment['job_id']==job and assessment['report_source_manifest_sha256']==manifest and assessment['report_receipt_sha256']==sha(report/'report_receipt.json')
     assert receipt['version']=='jq1-25-lrreset-saved-report-v1' and receipt['input_jobs']==['29792670','29792671','29792672']
     assert receipt['states'][:2]==[10001,10001] and receipt['included_updates'][:2]==[10000,10000] and not receipt['scientific_passed'] and receipt['campaign_status']=='failed'
-    html=(report/'report.html').read_text();assert sha(report/'report.html')==receipt['html_sha256'];data=json.loads(re.search(r'<script\s+id="manifest"\s+type="application/json">(.*?)</script>',html,re.S).group(1))
+    html=(report/'report.html').read_text(encoding='utf-8');assert sha(report/'report.html')==receipt['html_sha256'];data=json.loads(re.search(r'<script\s+id="manifest"\s+type="application/json">(.*?)</script>',html,re.S).group(1))
     bindings=receipt['arm_bindings'];pins=read(delivery/'source/analysis-input-pins.json')['arms']
     for i,arm in enumerate(['protenix','boltz2','boltz2_chemistry']):
         b=bindings[i];s=data['studies'][i];p=pins[arm]
@@ -50,19 +51,19 @@ def main():
         if i<2:
             expected='passed' if i==0 else 'failed';assert b['overall_status']==b['terminal_status']==expected and b['scientific_passed']==(i==0) and b['all_terminal'] and b['budget_status']=='full'
             c=evidence['collectors'][arm];actual(c['actual_scheduler'],c['job_id']);cc=read(delivery/('analysis/complete-'+arm+'/payload/assessment.json'))
-            assert cc==read(extracted/('payload/completion-'+arm+'/assessment.json')) and cc['collector_job']==c['job_id'] and cc['native_job']==p['job']
+            assert cc==read(payload/('completion-'+arm+'/assessment.json')) and cc['collector_job']==c['job_id'] and cc['native_job']==p['job']
             assert cc['status']=='passed' and cc['scientific_status']==expected and cc['updates']==10000 and cc['states']==10001 and cc['all_probability_frames_verified'] and cc['report_source_manifest_sha256']==manifest
             inv=read(delivery/('analysis/complete-'+arm+'/payload/snapshots.json'));assert [f['step'] for f in inv['frames']]==list(range(10001))
             for field,ending in [('summary','/summary.json'),('case','/case-0/report.json')]:
                 match=[q for q in cc['proofs'] if q['path']==p[field]['path']];assert len(match)==1 and match[0]['sha256']==p[field]['sha256']
-            log=(delivery/('analysis/complete-'+arm+'/payload/native-stdout.txt')).read_text()
+            log=(delivery/('analysis/complete-'+arm+'/payload/native-stdout.txt')).read_text(encoding='utf-8')
             if i==0:lsf(log,p['job'])
             else:assert 'Subject: Job '+p['job']+':' in log and 'Exited with exit code 1.' in log and b['terminal_error']=='AssertionError: Native affinity E_upper finite differences failed'
         elif s['states']==0:
             assert s['latest_update'] is None and s['chunks']==[] and s['native_status']=='PEND' and b['overall_status']=='queued' and not b['all_terminal']
-    cpu=read(extracted/'payload/cpu-proof/assessment.json');assert cpu==read(delivery/'analysis/cpu-certificate.json') and cpu['status']=='passed' and cpu['tests']==284 and cpu['source_manifest_sha256']==manifest
-    assert sha(extracted/'payload/cpu-proof/assessment.json')==assessment['cpu_certificate_sha256']
-    x=ET.parse(extracted/'payload/cpu-proof/report-tests.xml');cases=list(x.iter('testcase'));assert len(cases)==284 and not any(list(x.iter(k)) for k in ['failure','error','skipped'])
+    cpu=read(payload/'cpu-proof/assessment.json');assert cpu==read(delivery/'analysis/cpu-certificate.json') and cpu['status']=='passed' and cpu['tests']==284 and cpu['source_manifest_sha256']==manifest
+    assert sha(payload/'cpu-proof/assessment.json')==assessment['cpu_certificate_sha256']
+    x=ET.parse(payload/'cpu-proof/report-tests.xml');cases=list(x.iter('testcase'));assert len(cases)==284 and not any(list(x.iter(k)) for k in ['failure','error','skipped'])
     assert len(cpu['tests_by_module'])==8 and sum(cpu['tests_by_module'].values())==284
     for k,n in cpu['tests_by_module'].items():assert sum(k in c.get('classname','').split('.') for c in cases)==n
     for n,p in evidence['files'].items():

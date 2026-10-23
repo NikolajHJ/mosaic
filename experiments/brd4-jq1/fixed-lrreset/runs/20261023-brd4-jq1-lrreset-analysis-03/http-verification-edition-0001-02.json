@@ -1,0 +1,40 @@
+{
+  "status": "passed",
+  "utc": "2026-10-23T09:08:29.451914+00:00",
+  "served_files_verified": 413,
+  "latest": {
+    "version": "jq1-25-lrreset-saved-report-v1",
+    "path": "edition-0001/report.html",
+    "complete": false,
+    "presentation_complete": false,
+    "all_terminal": false,
+    "scientific_passed": false,
+    "strict_scientific_campaign_passed": false,
+    "overall_success": false,
+    "campaign_status": "failed",
+    "input_jobs": [
+      "29792670",
+      "29792671",
+      "29792672"
+    ],
+    "included_updates": [
+      10000,
+      10000,
+      null
+    ],
+    "states": [
+      10001,
+      10001,
+      0
+    ],
+    "milestone_progress": {
+      "protenix": 10000,
+      "boltz2": 10000,
+      "boltz2_chemistry": 0
+    },
+    "html_sha256": "663235c270daf2ecec09c57c08150eadde1ffbf829a6ae65312f5d0a9b1e50e4",
+    "report_receipt_sha256": "a392aa4347d8058ef75c72d28ff495c7d2c406117e1fde3624ef5c9221540d0c",
+    "published_utc": "2026-10-23T09:03:14.202985+00:00"
+  },
+  "scope": "HTTP exact bytes only; browser interaction QA recorded separately"
+}
