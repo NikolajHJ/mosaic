@@ -36,6 +36,10 @@ for p in r.iterdir():
    except Exception as e:a[name]={'incomplete':repr(e)}
  for f in p.glob('payload/report-tests.log'):
   value=f.read_text(errors='replace');a['test_log_tail']=value[-6000:]
+ report=p/'payload/report'
+ if report.exists():a['written_frame_chunk_metadata_files']={arm:len(list((report/arm).glob('frames-*.json'))) for arm in ['protenix','boltz2','boltz2_chemistry']}
+ render=p/'payload/render.log'
+ if render.exists():a['render_log_tail']=render.read_text(errors='replace')[-2000:]
 for p in r.glob('*.tar.gz'):out['archives'][p.name]={'path':str(p),'bytes':p.stat().st_size}
 for p in r.glob('*.json'):
  if p.name.startswith(('interim-','combined-report')):out['records'][p.name]=json.loads(p.read_bytes())

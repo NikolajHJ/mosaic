@@ -15,3 +15,57 @@ Current state: local preparation only, no new submitted job/pass.
 Actual submission23October08:36:29UTC: CPU29796532/own-ended callback29796533. Remote17files sealed read-only, manifest8e3045ddfd44a701127deb7af7a163536dfbf699123ba883f98207d6d57b95d5. Preflight passed13297870001required versus21510765911conservative available with4GiB/100000file reserves. Not a CPU/model/diagnostic/report pass. See campaign.json.
 
 23October10:39Paris: actualCPU29796532/callback29796533 DONE/hpc/samejobLSFsuccess. Full284cases across8modules passed0errors/failures/skips; CPUcertc1cfb3730419a48e82c45b45981a874275dbdec31a13fdffbf865139b9416cf3. Independent40file byte/XML/source/submission/reserve audit passed, see cpu-verification.json. First local auditor assertion counted both raw scheduler RUN/DONE observations rather than unique certificate-bound finalDONE; failure saved, all observations retained, auditor corrected only and existing downloaded bytes reverified. No gate waiver. Actual Boltzdiagnostic29796551 PEND/owncapture29796552PEND; P/Bcollectors29796553/54RUN, chemcollector29796555 waits original29792672; interim29796556 waitsP/Bcollectors, diagnosticinterim29796557 serially waitsfirst+Bolcapture, final29796558 waitsallcollectors+capture+diagnosticinterim. No diagnostic finding/report publication yet.
+
+
+## Verified delivery, 23 October 11:09 Paris
+
+Report job 29796556 actually finished DONE/hpc with same-job LSF success and a
+passed presentation assessment. Collectors 29796553/54 verified all 10,001 original
+frames and 10,000 updates per arm. Protenix remains scientifically passed; Boltz
+remains failed. Original chemistry is queued with zero captured states.
+
+Archive: 90,878,067 bytes, SHA9551b2e0b0a821e606fa740ac09df432ec6575f562dfe51390c84629d6009ae7,
+all 441 files verified. The first transfer timed out and stopped, preserving its
+12,713,984-byte prefix. Exact missing-range recovery authenticated every prefix,
+range and full archive SHA. Two stalled range-transfer SSH children were verified
+and stopped; no scientific or scheduler process was changed. All partial files,
+timeouts and recovery receipts remain. Local audit corrections for the canonical
+archive prefix and UTF8 decoding retained their failed attempts; no source or
+scientific assessment changed. Large original summaries/NPZs remain explicit HPC
+references; the complete local report assets and compact proofs are verified.
+
+New immutable edition-0001: http://127.0.0.1:8779/report.html. Captured at
+08:48:51.533606 UTC and published at 09:03:14.202985 UTC. States are
+10001/10001/0 and milestone floors 10000/10000/0. Initial HTTP audit started
+before publisher completion and covered 410 files; a fresh stable-file-set audit
+after completion passed ALL 413 served files. Actual browser QA passed numeric,
+arrows, midpoint/latest, drag to 7263, Boltz playback/manual321 pause/stability,
+previous320, both 25-atom/300-pair tables, raw invalid Protenix graph and REAL empty
+chemistry graph/metrics/heatmap clearing with all eight frame controls disabled.
+Stable wrapper checked; screenshot report-preview-01.png. Server PID53268 is hidden
+and bound to localhost8779; inspect process/port before any recovery, no duplicate.
+
+At 09:09:36 UTC diagnostic29796551/capture29796552 remain PEND, with no finding
+or established unique cause. Existing interim29796557 and final29796558 remain
+submitted, never duplicate. Source17 pins chemistry as unstarted: its later start
+requires a new immutable report source with actual entry/driver pins before that
+arm is published. Original saved runs are unchanged. The existing heartbeat is
+user-paused; do not silently unpause it.
+
+
+## Original chemistry started, 23 October 11:18–11:19 Paris
+
+Readonly scheduler observation at09:18:48.777054UTC shows original chemistry
+29792672 RUN/gpul40s. Its separate saved metadata receipt, locally collected at
+09:19UTC, authenticates the same submission, passed entry quota, driver invocation,
+62 newline-committed state rows and61 update rows. This is actual optimization
+progress, not a terminal validation or a new numerical analysis. Exact path/length/
+SHA bindings are preserved in chemistry-start-observation.json. Original run,
+settings and saved results were not changed by the analysis.
+
+Published edition0001 remains the truthful earlier08:48UTC capture with chemistry
+unstarted; it is immutable. Future chemistry publication requires a new immutable
+source containing its actual entry/driver pins. Existing diagnostic29796551 and
+capture29796552 remain PEND, with no cause established. New random Pro native
+29796780/callback29796781 remain PEND; no optimization long ID exists yet. No
+duplicate submission, cleanup, original-run restart or heartbeat unpause occurred.

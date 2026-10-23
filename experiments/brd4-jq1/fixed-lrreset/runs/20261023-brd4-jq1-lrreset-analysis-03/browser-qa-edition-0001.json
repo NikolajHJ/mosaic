@@ -1,0 +1,44 @@
+{
+  "status": "passed",
+  "utc": "2026-10-23T09:12:26.154576+00:00",
+  "url": "http://127.0.0.1:8779/report.html",
+  "edition": "edition-0001",
+  "tab": "1",
+  "html_sha256": "663235c270daf2ecec09c57c08150eadde1ffbf829a6ae65312f5d0a9b1e50e4",
+  "checks": {
+    "protenix_numeric_then_next": [
+      1500,
+      1501
+    ],
+    "protenix_midpoint": 5000,
+    "protenix_latest": 10000,
+    "actual_slider_drag_interior": 7263,
+    "boltz_playback_observed_update": 2,
+    "manual_during_playback": {
+      "chosen": 321,
+      "paused_button": "Play",
+      "stable_after_zoom": 321
+    },
+    "boltz_previous": 320,
+    "boltz_latest": 10000,
+    "zoom": "150% then restored100%",
+    "probability_table_data_rows": [
+      25,
+      300
+    ],
+    "protenix_terminal_raw_invalid_disconnected_visible": true,
+    "boltz_terminal_sanitized_carbon_chain_visible": true,
+    "all_three_selectors": true,
+    "chemistry_empty": {
+      "graph_children": 0,
+      "metrics": "",
+      "heatmap_children": 0,
+      "all_eight_frame_controls_disabled": true,
+      "number": "No saved snapshot"
+    },
+    "stable_wrapper_pins_edition": true,
+    "diagnostic_panel_pending_other_two_not_requested": true
+  },
+  "scope": "Actual browser presentation only; no scientific pass inferred",
+  "preview_sha256": "31813975778738df131e4cdbcf72445e407f497fa1388793247d8b6f9020cf9a"
+}

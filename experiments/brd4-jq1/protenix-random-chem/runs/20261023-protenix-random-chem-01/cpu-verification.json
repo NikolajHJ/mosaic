@@ -1,0 +1,22 @@
+{
+  "status": "passed",
+  "files_verified": 35,
+  "cpu_cases": 776,
+  "groups": {
+    "hpc-contract": 444,
+    "legacy": 239,
+    "native-mapping": 34,
+    "chemistry": 59
+  },
+  "manifest": "bb3ac9cae836b59f9a62fb33d4775c0b4388f3b200a7422ce8a620d2d405950f",
+  "cpu_certificate_sha256": "7adde8e09679637c597b72c6806aa4fc51cec590ba494da029b457e8d22e1a5d",
+  "jobs": {
+    "cpu": "29796731",
+    "after_cpu": "29796732",
+    "native": "29796780",
+    "after_ready": "29796781"
+  },
+  "new_long_submitted": false,
+  "new_native_passed": false,
+  "scope": "Independent stdlib byte/XML/JSON/source/config/scheduler/LSF/fulladmission/actualsubmission audit only; no local model calculations"
+}

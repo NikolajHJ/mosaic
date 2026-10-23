@@ -1,5 +1,5 @@
 {
-  "status": "analysis_cpu_passed_diagnostic_queued",
+  "status": "report_published_diagnostic_queued",
   "source_manifest": "8e3045ddfd44a701127deb7af7a163536dfbf699123ba883f98207d6d57b95d5",
   "cpu": "29796532",
   "after_cpu": "29796533",
@@ -61,8 +61,8 @@
   "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/lrreset-analysis-03",
   "diagnostic_findings": null,
   "published_milestones": {
-    "protenix": 0,
-    "boltz2": 0,
+    "protenix": 10000,
+    "boltz2": 10000,
     "boltz2_chemistry": 0
   },
   "original_scientific_results_unchanged": true,
@@ -88,5 +88,53 @@
   },
   "cpu_certificate_sha256": "c1cfb3730419a48e82c45b45981a874275dbdec31a13fdffbf865139b9416cf3",
   "cpu_cases": 284,
-  "cpu_verification_sha256": "c00f7403ece99c0a23b69bce3865f4625607788057456d27190d0e63b600e3d2"
+  "cpu_verification_sha256": "45c85c5287434d55aee2ba9a3da7e99a7e8529abbdc9ea3e2ebc12bb9cc9ebd4",
+  "report_url": "http://127.0.0.1:8779/report.html",
+  "published_edition": {
+    "version": "jq1-25-lrreset-saved-report-v1",
+    "path": "edition-0001/report.html",
+    "complete": false,
+    "presentation_complete": false,
+    "all_terminal": false,
+    "scientific_passed": false,
+    "strict_scientific_campaign_passed": false,
+    "overall_success": false,
+    "campaign_status": "failed",
+    "input_jobs": [
+      "29792670",
+      "29792671",
+      "29792672"
+    ],
+    "included_updates": [
+      10000,
+      10000,
+      null
+    ],
+    "states": [
+      10001,
+      10001,
+      0
+    ],
+    "milestone_progress": {
+      "protenix": 10000,
+      "boltz2": 10000,
+      "boltz2_chemistry": 0
+    },
+    "html_sha256": "663235c270daf2ecec09c57c08150eadde1ffbf829a6ae65312f5d0a9b1e50e4",
+    "report_receipt_sha256": "a392aa4347d8058ef75c72d28ff495c7d2c406117e1fde3624ef5c9221540d0c",
+    "published_utc": "2026-10-23T09:03:14.202985+00:00"
+  },
+  "delivery_verification_sha256": "4f85c0b95e8dc91773c4a38d28e3d06e790aa3bd9222eea4bcead74ed05fb696",
+  "browser_qa_sha256": "36c74263748b7cfc33dc658c753cc7c8c6f2f8aec9db5146f8e5bc0f9fe4d869",
+  "http_complete_verified_files": 413,
+  "latest_chemistry_observation": {
+    "job_id": "29792672",
+    "scheduler_utc": "2026-10-23T09:18:48.777054+00:00",
+    "status": "RUN",
+    "entry_quota": "passed",
+    "committed_update_rows": 61,
+    "committed_state_rows": 62,
+    "observation_sha256": "74abb66e49e6ac87c8221034e65f7ef31e82115f8b9fb66dada2bacd8eba6bcf",
+    "published_capture_unchanged": true
+  }
 }
