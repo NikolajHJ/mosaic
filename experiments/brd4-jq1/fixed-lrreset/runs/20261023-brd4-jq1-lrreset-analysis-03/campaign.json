@@ -126,5 +126,15 @@
   },
   "delivery_verification_sha256": "4f85c0b95e8dc91773c4a38d28e3d06e790aa3bd9222eea4bcead74ed05fb696",
   "browser_qa_sha256": "36c74263748b7cfc33dc658c753cc7c8c6f2f8aec9db5146f8e5bc0f9fe4d869",
-  "http_complete_verified_files": 413
+  "http_complete_verified_files": 413,
+  "latest_chemistry_observation": {
+    "job_id": "29792672",
+    "scheduler_utc": "2026-10-23T09:18:48.777054+00:00",
+    "status": "RUN",
+    "entry_quota": "passed",
+    "committed_update_rows": 61,
+    "committed_state_rows": 62,
+    "observation_sha256": "74abb66e49e6ac87c8221034e65f7ef31e82115f8b9fb66dada2bacd8eba6bcf",
+    "published_capture_unchanged": true
+  }
 }

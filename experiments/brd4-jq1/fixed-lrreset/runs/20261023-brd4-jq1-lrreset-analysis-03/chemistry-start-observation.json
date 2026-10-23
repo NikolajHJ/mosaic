@@ -1,0 +1,68 @@
+{
+  "status": "scientific_updates_observed",
+  "job_id": "29792672",
+  "scheduler_observation_utc": "2026-10-23T09:18:48.777054+00:00",
+  "prefix_local_receipt_mtime_utc": "2026-10-23T09:19:27.705084+00:00",
+  "prefix_remote_capture_utc": null,
+  "scheduler": {
+    "utc": "2026-10-23T09:18:48.777054+00:00",
+    "scheduler": "JOBID STAT QUEUE JOB_NAME\n29792672 RUN gpul40s mosaic-lrreset04-work3-boltz2_chemistry\n29796551 PEND gpul40s mosaic-lrboost-analysis-diagnostic-boltz2\n29796552 PEND hpc mosaic-lrboost-analysis-diagnostic-capture-boltz2\n29796780 PEND gpul40s mosaic-random-prochem-native\n29796781 PEND hpc mosaic-random-prochem-after-ready\n",
+    "returncode": 0,
+    "artifacts": {
+      "protenix-random-chem-01/jobs.json": {
+        "cpu": "29796731",
+        "after_cpu": "29796732",
+        "native": "29796780",
+        "after_ready": "29796781"
+      }
+    }
+  },
+  "saved_metadata": {
+    "submission.json": {
+      "bytes": 1858,
+      "sha256": "da519e68877d3ab007f4e83a78038068f8df198cc69d4b155b3503a306b2f969",
+      "status": null,
+      "job_id": "29792672"
+    },
+    "entry-quota/lrreset-storage-gate.json": {
+      "bytes": 3998,
+      "sha256": "1ea56e0c530af2fdcefddb16ba3c15d2c28b34574c3ce7b350c5aa1bb2ee3452",
+      "status": "passed",
+      "job_id": null
+    },
+    "payload/driver-invocation.json": {
+      "bytes": 2122,
+      "sha256": "ca0938ffdedb82e8104a133ecfcd73366c7f5c70287d7efc69f31e9ae5dbf157",
+      "status": null,
+      "job_id": null
+    },
+    "states.jsonl": {
+      "committed_rows": 62,
+      "latest_index": 61,
+      "bytes": 321928,
+      "sha256": "df74e727e1153d8a356de4cff98cc74efdf923271c10a16c5bd680a6164ab559"
+    },
+    "updates.jsonl": {
+      "committed_rows": 61,
+      "latest_index": 60,
+      "bytes": 70615,
+      "sha256": "10bfdc97990fdc7a6b6db1dea062eb8f9f2264ef136e0b60fe3788466f48761f"
+    }
+  },
+  "evidence_bytes": {
+    "handoff-20261023T091848Z.json": {
+      "bytes": 614,
+      "sha256": "282f445360e55d5a3ddcf9d031dc21129c1e3d4df8f47f203f5adb09a4905637"
+    },
+    "chemistry-entry-observation-01.json": {
+      "bytes": 940,
+      "sha256": "9717c5e4743007233481f82504d41e65feb4fd6733c689376f8e742bcaf1a4c9"
+    }
+  },
+  "scope": "Readonly metadata: actual allocation, passed entry gate, driver invocation and 61 newline-committed update rows. No terminal pass, full trajectory audit, scientific calculation or original-output change by this recorder.",
+  "published_edition_unchanged": "edition-0001",
+  "future_started_chemistry_report_requires_new_immutable_entry_pins": true,
+  "diagnostic_findings": null,
+  "random_protenix_native_status": "PEND",
+  "random_protenix_long_id": null
+}

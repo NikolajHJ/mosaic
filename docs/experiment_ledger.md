@@ -6462,3 +6462,21 @@ Actual fresh native29796780/callback29796781 queued, no native pass or long ID.
 Same declared LR0.3/randomDirichlet1 seed17/chemistry0.001-to100 and original
 frozen context/model/pocket/key/checks. Old results, separate Boltz diagnostic
 and report unchanged; no cleanup or automation unpause.
+
+
+### Original chemistry started, 23 October 11:18–11:19 Paris
+
+Readonly scheduler observation at09:18:48.777054UTC shows original chemistry
+29792672 RUN/gpul40s. Its separate saved metadata receipt, locally collected at
+09:19UTC, authenticates the same submission, passed entry quota, driver invocation,
+62 newline-committed state rows and61 update rows. This is actual optimization
+progress, not a terminal validation or a new numerical analysis. Exact path/length/
+SHA bindings are preserved in chemistry-start-observation.json. Original run,
+settings and saved results were not changed by the analysis.
+
+Published edition0001 remains the truthful earlier08:48UTC capture with chemistry
+unstarted; it is immutable. Future chemistry publication requires a new immutable
+source containing its actual entry/driver pins. Existing diagnostic29796551 and
+capture29796552 remain PEND, with no cause established. New random Pro native
+29796780/callback29796781 remain PEND; no optimization long ID exists yet. No
+duplicate submission, cleanup, original-run restart or heartbeat unpause occurred.
