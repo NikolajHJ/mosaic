@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "latentmol"
+version = "0.1.0"
+description = "Auditable molecular graph autoencoders and latent design experiments"
+requires-python = ">=3.11"
+dependencies = ["numpy>=1.26,<3", "torch>=2.5,<3", "rdkit>=2024.9", "PyYAML>=6,<7"]
+
+[project.optional-dependencies]
+test = ["pytest>=8,<9"]
+diagnostics = ["matplotlib==3.10.1"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"latentmol.reporting" = ["assets/*.html", "assets/*.css", "assets/*.js"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
