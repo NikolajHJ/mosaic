@@ -1,0 +1,99 @@
+{
+  "actual_cpu_job_id": "29806690",
+  "actual_raw_cases": 75,
+  "collected_stdout_sha256": "55acbb28c6f30cb4344db4ce05c1a09660bc300c3ce180abef1920628b5adc34",
+  "committed_prefix_observations": {
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02": {},
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03": {},
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-pro02-adoption-04": {},
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-pro02-adoption-06": {},
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03": {}
+  },
+  "full_production_storage_admission_pass_claimed": false,
+  "gpu_startup_or_production_start_claimed": false,
+  "large_or_expired_references_not_recertified": [
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-boltz2/payload/study/summary.json",
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-protenix/payload/study/summary.json"
+  ],
+  "launcher_manifest_sha256": "9c8b496f65f41ed7eb76263cd947064d40fa3821a692f7276b00b4ccf70c4ced",
+  "launcher_package": {
+    "bytes": 28268,
+    "metadata_cases": 75,
+    "path": "results\\hpc\\20261024-boltz-pro02-adoption-04\\source01\\source.tar.gz",
+    "sha256": "5958373b3dc53a41cf6106264c611f334c6165d93f562ce167b221bf5cf6eac5"
+  },
+  "metadata_cpu_pass_authenticated": true,
+  "metadata_entry_adoption_capacity_sha256": "07306570a45429460e3bd6553b6666a46446ad828fb9602aa1b8646cdcffaaca",
+  "metadata_entry_original_gate_sha256": "bef8ebd83918cb354ce8a68f8f614af1776f4507c7c5be26b46241c7e92e27f0",
+  "observer_or_adoption_pass_claimed": false,
+  "opaque_prior_parent_inventory_boundaries": [],
+  "optional_adoption_records": {
+    "adoption-certificate.json": {
+      "independently_certified_by_this_cpu_audit": false,
+      "present": false,
+      "sha256": null
+    },
+    "ownership.json": {
+      "independently_certified_by_this_cpu_audit": false,
+      "present": false,
+      "sha256": null
+    }
+  },
+  "original_native_metadata": [
+    {
+      "assessment_sha256": "75f9feecf5f9eb0b1850579238718f74c1133db5e8326cf8d66e5ea96d81fea3",
+      "callback_job_id": "29805951",
+      "label": "boltz2-native-0000",
+      "native_job_id": "29805950",
+      "scope": "Prior allocated original native result metadata and actual same-job persisted LSF; no local derivative re-evaluation."
+    },
+    {
+      "assessment_sha256": "927a20848aa65d30f2d22e3b8441a561ce1e6d33a0ce72ea30773c56d368349a",
+      "callback_job_id": "29805959",
+      "label": "boltz2_chemistry-native-0000",
+      "native_job_id": "29805958",
+      "scope": "Prior allocated original native result metadata and actual same-job persisted LSF; no local derivative re-evaluation."
+    }
+  ],
+  "original_scientific_cpu_sha256": "06efbb027f1008a0921494af0e226c3fc7a78c0a8f4ab01b93e8b50f2c042836",
+  "other_actual_jobs_observed": {
+    "after-cpu": {
+      "completion_or_start_claimed": false,
+      "job_id": "29806691",
+      "live_scheduler_query": {
+        "args": [
+          "bjobs",
+          "-l",
+          "29806691"
+        ],
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "\nJob <29806691>, Job Name <mosaic-peer-boltz30k-after-cpu>, User <s234818>, Proj\n                          ect <default>, Service Class <sc_hpc1>, Status <DONE>\n                          , Queue <hpc>, Command <bash -l /work3/s234818/mosaic\n                          /runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-pro\n                          02-adoption-release-04/source/scripts/hpc/peer_adopti\n                          on_stage.lsf /work3/s234818/mosaic/runs/20261022-brd4\n                          -jq1-lrboost-analysis-01/boltz-pro02-adoption-release\n                          -04/source 9c8b496f65f41ed7eb76263cd947064d40fa3821a6\n                          92f7276b00b4ccf70c4ced boltz30k /work3/s234818/mosaic\n                          /runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0\n                          025-release-03/source /work3/s234818/mosaic/runs/2026\n                          1022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03 c21\n                          4bccf2c94ac6829996bc0ca7d6415d3c19549be4fe7f874cba2b4\n                          33901cc6 /work3/s234818/mosaic/runs/20261022-brd4-jq1\n                          -lrboost-analysis-01/boltz-pro02-adoption-04 after-cp\n                          u /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboos\n                          t-analysis-01/boltz-pro02-adoption-04/after-cpu>, Sha\n                          re group charged </s234818>, Esub <dcc>\nSat Oct 24 14:06:28 2026: Submitted from host <hpclogin1>, CWD <$HOME>, Output \n                          File (overwrite) </work3/s234818/mosaic/runs/20261022\n                          -brd4-jq1-lrboost-analysis-01/boltz-pro02-adoption-04\n                          /after-cpu/stdout.29806691.log>, Error File (overwrit\n                          e) </work3/s234818/mosaic/runs/20261022-brd4-jq1-lrbo\n                          ost-analysis-01/boltz-pro02-adoption-04/after-cpu/std\n                          err.29806691.log>, 2 Task(s), Requested Resources <{s\n                          elect[shortparallel_] rusage[mem=4096.00] span[hosts=\n                          1]} || {select[!shortparallel_] rusage[mem=4096.00] s\n                          pan[hosts=1]}>, Dependency Condition <ended(29806690)\n                          >;\nSat Oct 24 14:07:43 2026: Started 2 Task(s) on Host(s) <2*n-62-30-23>, Allocate\n                          d 2 Slot(s) on Host(s) <2*n-62-30-23>, Execution Home\n                           </zhome/95/e/206121>, Execution CWD </zhome/95/e/206\n                          121>;\nSat Oct 24 14:07:54 2026: Done successfully. The CPU time used is 5.0 seconds.\n\n RUNLIMIT                \n 30.0 min\n\n MEMLIMIT\n      4 G \n\n MEMORY USAGE:\n MEM Efficiency: 0.00%\n\n CPU USAGE:\n CPU PEAK: 0.00 ;  CPU PEAK DURATION: 0 second(s)\n CPU AVERAGE EFFICIENCY: 0.00% ;  CPU PEAK EFFICIENCY: 0.00%\n\n PENDING TIME DETAILS:\n Eligible pending time (seconds):\t2\n Ineligible pending time (seconds):\t73\n\n SCHEDULING PARAMETERS:\n           r15s   r1m  r15m   ut      pg    io   ls    it    tmp    swp    mem\n loadSched   -     -     -     -       -     -    -     -     -      -      -  \n loadStop    -     -     -     -       -     -    -     -     -      -      -  \n\n RESOURCE REQUIREMENT DETAILS:\n Job-level: {select[shortparallel_] rusage[mem=4096.00] span[hosts=1]} || {sele\n                          ct[!shortparallel_] rusage[mem=4096.00] span[hosts=1]\n                          }\n App-level: -\n Queue-level: same[type:model] affinity[core] cu[type=enclosure:maxcus=1]\n Combined: {select[(shortparallel_) && (type == any)] order[-slots:-maxslots] r\n                          usage[mem=4096.00] span[hosts=1] cu[pref=config:maxcu\n                          s=1:type=enclosure] affinity[core(1)*1]} || {select[(\n                          !shortparallel_) && (type == any)] order[-slots:-maxs\n                          lots] rusage[mem=4096.00] span[hosts=1] cu[pref=confi\n                          g:maxcus=1:type=enclosure] affinity[core(1)*1]}\n Effective: select[((shortparallel_) && (type == any))] order[-slots:-maxslots]\n                           rusage[mem=4096.00] span[hosts=1] cu[type=enclosure:\n                          maxcus=1:pref=config] affinity[core(1)*1] \n\n"
+      }
+    },
+    "observe-0001": {
+      "completion_or_start_claimed": false,
+      "job_id": "29806694",
+      "live_scheduler_query": {
+        "args": [
+          "bjobs",
+          "-l",
+          "29806694"
+        ],
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "\nJob <29806694>, Job Name <mosaic-peer-boltz30k-observe-0001>, User <s234818>, P\n                          roject <default>, Service Class <sc_hpc1>, Status <PE\n                          ND>, Queue <hpc>, Command <bash -l /work3/s234818/mos\n                          aic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-\n                          pro02-adoption-release-04/source/scripts/hpc/peer_ado\n                          ption_stage.lsf /work3/s234818/mosaic/runs/20261022-b\n                          rd4-jq1-lrboost-analysis-01/boltz-pro02-adoption-rele\n                          ase-04/source 9c8b496f65f41ed7eb76263cd947064d40fa382\n                          1a692f7276b00b4ccf70c4ced boltz30k /work3/s234818/mos\n                          aic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-\n                          lr0025-release-03/source /work3/s234818/mosaic/runs/2\n                          0261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03 \n                          c214bccf2c94ac6829996bc0ca7d6415d3c19549be4fe7f874cba\n                          2b433901cc6 /work3/s234818/mosaic/runs/20261022-brd4-\n                          jq1-lrboost-analysis-01/boltz-pro02-adoption-04 obser\n                          ve /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboo\n                          st-analysis-01/boltz-pro02-adoption-04/observe-0001>,\n                           Esub <dcc>\nSat Oct 24 14:07:53 2026: Submitted from host <n-62-30-23>, CWD </work3/s234818\n                          /mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/bo\n                          ltz-lr0025-release-03/source>, Output File (overwrite\n                          ) </work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboo\n                          st-analysis-01/boltz-pro02-adoption-04/observe-0001/s\n                          tdout.29806694.log>, Error File (overwrite) </work3/s\n                          234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis\n                          -01/boltz-pro02-adoption-04/observe-0001/stderr.29806\n                          694.log>, 2 Task(s), Requested Resources <{select[sho\n                          rtparallel_] rusage[mem=4096.00] span[hosts=1]} || {s\n                          elect[!shortparallel_] rusage[mem=4096.00] span[hosts\n                          =1]}>, Dependency Condition <ended(29806665)&&ended(2\n                          9806668)>;\n PENDING REASONS:\n Job dependency condition not satisfied;\n\n RUNLIMIT                \n 30.0 min\n\n MEMLIMIT\n      4 G \n\n PENDING TIME DETAILS:\n Eligible pending time (seconds):\t1\n Ineligible pending time (seconds):\t144\n\n SCHEDULING PARAMETERS:\n           r15s   r1m  r15m   ut      pg    io   ls    it    tmp    swp    mem\n loadSched   -     -     -     -       -     -    -     -     -      -      -  \n loadStop    -     -     -     -       -     -    -     -     -      -      -  \n\n RESOURCE REQUIREMENT DETAILS:\n Job-level: {select[shortparallel_] rusage[mem=4096.00] span[hosts=1]} || {sele\n                          ct[!shortparallel_] rusage[mem=4096.00] span[hosts=1]\n                          }\n App-level: -\n Queue-level: same[type:model] affinity[core] cu[type=enclosure:maxcus=1]\n Combined: {select[(shortparallel_) && (type == any)] order[-slots:-maxslots] r\n                          usage[mem=4096.00] span[hosts=1] cu[pref=config:maxcu\n                          s=1:type=enclosure] affinity[core(1)*1]} || {select[(\n                          !shortparallel_) && (type == any)] order[-slots:-maxs\n                          lots] rusage[mem=4096.00] span[hosts=1] cu[pref=confi\n                          g:maxcus=1:type=enclosure] affinity[core(1)*1]}\n Effective: -\n\n"
+      }
+    }
+  },
+  "prior_parent_probability_frames_freshly_rehashed_by_this_collection": false,
+  "profile": "boltz30k",
+  "scientific_cpu_certificate_replaced": false,
+  "scientific_readiness_or_gradients_pass_claimed": false,
+  "scope": "Current allocated metadata CPU only: exact source hashes, actual resources/LSF/final scheduler and raw testcase rows. Optional records/prefixes remain observations, never optimization or scientific passes.",
+  "source_manifest_sha256": "c214bccf2c94ac6829996bc0ca7d6415d3c19549be4fe7f874cba2b433901cc6",
+  "status": "passed_independent_metadata_cpu_evidence",
+  "verified_utc": "2026-10-24T12:11:02.969610+00:00",
+  "verifier_sha256": "598f0b6d00c20caac5d3f458d5a250710110cd122db49a2a9c45e27190e8c03c",
+  "version": "mosaic-peer-adoption-independent-cpu-audit-v1"
+}

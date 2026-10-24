@@ -1,0 +1,286 @@
+{
+  "actual_cpu_cases": 866,
+  "authenticated_external_references": 10063,
+  "callback_lsf_success_authenticated": true,
+  "collected_stdout_sha256": "52088e20f4330ce6e5eba90ea08d1486b19f00e65f79e24c3e9a40552a13f0b8",
+  "compact_original_files_verified": 101,
+  "cpu_cases": 866,
+  "cpu_certificate_sha256": "ab3148ea6dd8d25361f85e9d8283578e0cf4429844d820a4dab6b03673ef577b",
+  "cpu_pass_authenticated": true,
+  "current_validation_gates": [
+    {
+      "available_bytes": 42505285132,
+      "full_long_admission": false,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/cpu-recovery-03/storage-preflight/gate.json",
+      "phase": "preflight",
+      "required_bytes": 41643669252,
+      "sha256": "c8b972a2c89097f2c0eeac4e77dd6ae4224994c49a494dc7e9293dd3bedf3f3d"
+    },
+    {
+      "available_bytes": 43579000712,
+      "full_long_admission": false,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/cpu/storage-cpu-entry/gate.json",
+      "phase": "cpu-entry",
+      "required_bytes": 41643669252,
+      "sha256": "8d67f65aa10119c1507a67073ff97668e7e979e1ed042baf0112d7f206cf4430"
+    },
+    {
+      "available_bytes": 42504904933,
+      "full_long_admission": false,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/after-cpu/storage-native-dispatch/gate.json",
+      "phase": "native-dispatch",
+      "required_bytes": 41643669252,
+      "sha256": "cd9073ae56b49e451fec62a01a5ea701b4b3cda48b91af31f34958d9f623d751"
+    }
+  ],
+  "full_extended_production_admission_pass_claimed": false,
+  "git_revision_reference": "c74c659344123937608077e3e4078f75f09cd743",
+  "historical_failed_gate_preserved": {
+    "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/staging-01/storage-preflight/gate.json",
+    "sha256": "6d1d0fae516de98615b83ebc005ab2330dd2146c08ef631f1bd5c3d28593a951",
+    "status": "failed"
+  },
+  "initial_native_submissions": {
+    "continuation": {
+      "callback_job_id": "29806668",
+      "gpu_startup_metadata": {
+        "native_gradient_pass_claimed": false,
+        "status": "no_completed_gpu_startup_receipt"
+      },
+      "gpu_startup_receipt_present": false,
+      "job_id": "29806667",
+      "live_scheduler_query": {
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "\nJob <29806667>, Job Name <mosaic-pro50k-continuation-native-0000>, User <s23481\n                          8>, Project <default>, Status <PEND>, Queue <gpul40s>\n                          , Command <bash -l /work3/s234818/mosaic/runs/2026102\n                          2-brd4-jq1-lrboost-analysis-01/protenix-extended-rele\n                          ase-03/source/scripts/hpc/extended_stage.lsf /work3/s\n                          234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis\n                          -01/protenix-extended-release-03/source /work3/s23481\n                          8/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/p\n                          rotenix-extended-03 da9db6821d26b884ca1749303fc8e0b00\n                          95bd9ee7cbd1b427cdcf1b22eec6562 native /work3/s234818\n                          /mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/pr\n                          otenix-extended-03/continuation-native-0000>, Share g\n                          roup charged </s234818>, Esub <dcc>\nSat Oct 24 14:01:58 2026: Submitted from host <n-62-30-23>, CWD </work3/s234818\n                          /mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/pr\n                          otenix-extended-release-03/source>, Output File (over\n                          write) </work3/s234818/mosaic/runs/20261022-brd4-jq1-\n                          lrboost-analysis-01/protenix-extended-03/continuation\n                          -native-0000/stdout.29806667.log>, Error File (overwr\n                          ite) </work3/s234818/mosaic/runs/20261022-brd4-jq1-lr\n                          boost-analysis-01/protenix-extended-03/continuation-n\n                          ative-0000/stderr.29806667.log>, 4 Task(s), Requested\n                           Resources < rusage[mem=8192.00] span[hosts=1]>, Requ\n                          ested GPU <num=1:mode=exclusive_process>;\nSat Oct 24 14:01:59 2026: Reserved <4> job slots on host(s) <4*n-62-13-14> for \n                          <4> tasks;\n PENDING REASONS:\n New job is waiting for scheduling;\n\n RUNLIMIT                \n 120.0 min\n\n MEMLIMIT\n      8 G \n\n PENDING TIME DETAILS:\n Eligible pending time (seconds):\t22\n Ineligible pending time (seconds):\t0\n\n SCHEDULING PARAMETERS:\n           r15s   r1m  r15m   ut      pg    io   ls    it    tmp    swp    mem\n loadSched   -     -     -     -       -     -    -     -     -      -      -  \n loadStop    -     -     -     -       -     -    -     -     -      -      -  \n\n RESOURCE REQUIREMENT DETAILS:\n Job-level:  rusage[mem=8192.00] span[hosts=1]\n App-level: -\n Queue-level: same[type:model] affinity[core] cu[type=enclosure:maxcus=1]\n Combined: select[(ngpus>0) && (type == local)] order[-slots:-maxslots] rusage[\n                          mem=8192.00:ngpus_physical=1.00] span[hosts=1] same[t\n                          ype:model] cu[pref=config:maxcus=1:type=enclosure] af\n                          finity[core(1)*1]\n Effective: -\n\n GPU REQUIREMENT DETAILS:\n Combined: num=1:mode=exclusive_process:mps=no:j_exclusive=yes:aff=no:gvendor=n\n                          vidia\n Effective: -\n\n"
+      },
+      "native_certificate_present": false,
+      "native_readiness_pass_claimed": false
+    },
+    "random": {
+      "callback_job_id": "29806665",
+      "gpu_startup_metadata": {
+        "native_gradient_pass_claimed": false,
+        "status": "no_completed_gpu_startup_receipt"
+      },
+      "gpu_startup_receipt_present": false,
+      "job_id": "29806664",
+      "live_scheduler_query": {
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "\nJob <29806664>, Job Name <mosaic-pro50k-random-native-0000>, User <s234818>, Pr\n                          oject <default>, Status <PEND>, Queue <gpul40s>, Comm\n                          and <bash -l /work3/s234818/mosaic/runs/20261022-brd4\n                          -jq1-lrboost-analysis-01/protenix-extended-release-03\n                          /source/scripts/hpc/extended_stage.lsf /work3/s234818\n                          /mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/pr\n                          otenix-extended-release-03/source /work3/s234818/mosa\n                          ic/runs/20261022-brd4-jq1-lrboost-analysis-01/proteni\n                          x-extended-03 da9db6821d26b884ca1749303fc8e0b0095bd9e\n                          e7cbd1b427cdcf1b22eec6562 native /work3/s234818/mosai\n                          c/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix\n                          -extended-03/random-native-0000>, Share group charged\n                           </s234818>, Esub <dcc>\nSat Oct 24 14:01:12 2026: Submitted from host <n-62-30-23>, CWD </work3/s234818\n                          /mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/pr\n                          otenix-extended-release-03/source>, Output File (over\n                          write) </work3/s234818/mosaic/runs/20261022-brd4-jq1-\n                          lrboost-analysis-01/protenix-extended-03/random-nativ\n                          e-0000/stdout.29806664.log>, Error File (overwrite) <\n                          /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-\n                          analysis-01/protenix-extended-03/random-native-0000/s\n                          tderr.29806664.log>, 4 Task(s), Requested Resources <\n                           rusage[mem=8192.00] span[hosts=1]>, Requested GPU <n\n                          um=1:mode=exclusive_process>;\nSat Oct 24 14:01:17 2026: Reserved <4> job slots on host(s) <4*n-62-13-14> for \n                          <4> tasks;\n PENDING REASONS:\n Job's requirements for reserving resource (ngpus_physical) not satisfied: 1 \n                          host;\n\n RUNLIMIT                \n 120.0 min\n\n MEMLIMIT\n      8 G \n\n PENDING TIME DETAILS:\n Eligible pending time (seconds):\t68\n Ineligible pending time (seconds):\t0\n\n SCHEDULING PARAMETERS:\n           r15s   r1m  r15m   ut      pg    io   ls    it    tmp    swp    mem\n loadSched   -     -     -     -       -     -    -     -     -      -      -  \n loadStop    -     -     -     -       -     -    -     -     -      -      -  \n\n RESOURCE REQUIREMENT DETAILS:\n Job-level:  rusage[mem=8192.00] span[hosts=1]\n App-level: -\n Queue-level: same[type:model] affinity[core] cu[type=enclosure:maxcus=1]\n Combined: select[(ngpus>0) && (type == local)] order[-slots:-maxslots] rusage[\n                          mem=8192.00:ngpus_physical=1.00] span[hosts=1] same[t\n                          ype:model] cu[pref=config:maxcus=1:type=enclosure] af\n                          finity[core(1)*1]\n Effective: -\n\n GPU REQUIREMENT DETAILS:\n Combined: num=1:mode=exclusive_process:mps=no:j_exclusive=yes:aff=no:gvendor=n\n                          vidia\n Effective: -\n\n"
+      },
+      "native_certificate_present": false,
+      "native_readiness_pass_claimed": false
+    }
+  },
+  "jobs": {
+    "after-cpu": "29806661",
+    "continuation-after-native-0000": "29806668",
+    "continuation-native-0000": "29806667",
+    "cpu": "29806660",
+    "random-after-native-0000": "29806665",
+    "random-native-0000": "29806664"
+  },
+  "large_original_parent_or_snapshot_bytes_downloaded": false,
+  "new_native_gradient_or_production_pass_claimed": false,
+  "new_optimization_pass_claimed": false,
+  "prepared_verifier_sha256": "eeb976b573d9b4ae33dcda6b60eba2867e8958fff9d7c5195e77f1964fff2e69",
+  "preserved_failure_evidence_scope": "Prior downloaded12 raw original641 failures plus fresh recovery-operator pin map; not a claim of fresh original641/625 byte download.",
+  "protected_original641_members_unchanged": 638,
+  "raw_groups": {
+    "chemistry": {
+      "actual_cases": 59,
+      "modules": [
+        "test_small_molecule_chemistry",
+        "test_small_molecule_chemistry_ramp",
+        "test_small_molecule_chemistry_ramp_report",
+        "test_small_molecule_chemistry_report"
+      ],
+      "original_fully_deselected_modules": [],
+      "raw_suite_headers": [
+        {
+          "errors": "0",
+          "failures": "0",
+          "hostname": "n-62-30-23",
+          "name": "pytest",
+          "skipped": "0",
+          "tests": "59",
+          "time": "101.818",
+          "timestamp": "2026-10-24T13:57:24.267643+02:00"
+        }
+      ]
+    },
+    "hpc-contract": {
+      "actual_cases": 500,
+      "modules": [
+        "test_boltz_hpc_tmpdir",
+        "test_boltz_submission_controller",
+        "test_campaign25_ops",
+        "test_campaign25_pocket_ops",
+        "test_campaign25_release",
+        "test_extended_protenix",
+        "test_fixed25_lrboost_contract",
+        "test_fixed25_lrboost_ops",
+        "test_fixed25_lrboost_storage",
+        "test_fixed25_lrreset_contract",
+        "test_fixed25_lrreset_ops",
+        "test_fixed25_lrreset_storage",
+        "test_fixed25_ops",
+        "test_fixed25_storage",
+        "test_pocket_definition",
+        "test_protenix_initialization",
+        "test_protenix_lr03_ops",
+        "test_protenix_lr03_storage",
+        "test_random_chem"
+      ],
+      "original_fully_deselected_modules": [],
+      "raw_suite_headers": [
+        {
+          "errors": "0",
+          "failures": "0",
+          "hostname": "n-62-30-23",
+          "name": "pytest",
+          "skipped": "0",
+          "tests": "503",
+          "time": "96.151",
+          "timestamp": "2026-10-24T13:53:58.543043+02:00"
+        }
+      ]
+    },
+    "legacy": {
+      "actual_cases": 239,
+      "modules": [
+        "test_small_molecule_boltz_bridge",
+        "test_small_molecule_brd4_fixture",
+        "test_small_molecule_campaign25",
+        "test_small_molecule_case_selection",
+        "test_small_molecule_compact_artifacts",
+        "test_small_molecule_continuation",
+        "test_small_molecule_contracts",
+        "test_small_molecule_diffuse_control",
+        "test_small_molecule_evidence_root",
+        "test_small_molecule_features",
+        "test_small_molecule_fixed_step",
+        "test_small_molecule_gradient_checks",
+        "test_small_molecule_home_quota",
+        "test_small_molecule_io",
+        "test_small_molecule_jq1_pocket",
+        "test_small_molecule_known_ligand_fixture",
+        "test_small_molecule_losses",
+        "test_small_molecule_optimizers",
+        "test_small_molecule_prepared_study",
+        "test_small_molecule_protenix",
+        "test_small_molecule_report_scope",
+        "test_small_molecule_report_studies",
+        "test_small_molecule_report_svg",
+        "test_small_molecule_state",
+        "test_small_molecule_uniform_control",
+        "test_small_molecule_validation"
+      ],
+      "original_fully_deselected_modules": [
+        "test_small_molecule_contact_native",
+        "test_small_molecule_integration"
+      ],
+      "raw_suite_headers": [
+        {
+          "errors": "0",
+          "failures": "0",
+          "hostname": "n-62-30-23",
+          "name": "pytest",
+          "skipped": "0",
+          "tests": "239",
+          "time": "89.424",
+          "timestamp": "2026-10-24T13:55:38.394676+02:00"
+        }
+      ]
+    },
+    "native-mapping": {
+      "actual_cases": 34,
+      "modules": [
+        "test_boltz_native_mapping",
+        "test_campaign25_contract",
+        "test_campaign25_native",
+        "test_pocket_boltz"
+      ],
+      "original_fully_deselected_modules": [],
+      "raw_suite_headers": [
+        {
+          "errors": "0",
+          "failures": "0",
+          "hostname": "n-62-30-23",
+          "name": "pytest",
+          "skipped": "0",
+          "tests": "34",
+          "time": "6.152",
+          "timestamp": "2026-10-24T13:57:11.236209+02:00"
+        }
+      ]
+    },
+    "startup": {
+      "actual_cases": 34,
+      "modules": [
+        "test_extended_startup"
+      ],
+      "original_fully_deselected_modules": [],
+      "raw_suite_headers": [
+        {
+          "errors": "0",
+          "failures": "0",
+          "hostname": "n-62-30-23",
+          "name": "pytest",
+          "skipped": "0",
+          "tests": "34",
+          "time": "0.653",
+          "timestamp": "2026-10-24T13:59:09.923398+02:00"
+        }
+      ]
+    }
+  },
+  "scientific_settings_or_saved_results_changed": false,
+  "scientific_src_members_unchanged": 145,
+  "scope": "Opaque bytes, XML rows/modules, exact own resources/LSF/source/config/input/gate/CPU-command metadata only. Allocated native and production proofs are separate; no local numerical work.",
+  "source_and_config_recovery_changed_science": false,
+  "source_manifest_sha256": "da9db6821d26b884ca1749303fc8e0b0095bd9ee7cbd1b427cdcf1b22eec6562",
+  "sources": [
+    {
+      "bytes": 39644558,
+      "members": 643,
+      "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261024-protenix-extended-03\\source01\\source.tar.gz",
+      "sha256": "bde714a20a49308365744ab5018c06a6d68dff82c3485dc075848827a5f7a8ef"
+    },
+    {
+      "bytes": 39627601,
+      "members": 641,
+      "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261023-protenix-extended-01\\source02\\source.tar.gz",
+      "sha256": "8ba1c3370fee1f09b96af139dbf1403bb3c187c52d447ec4b0b23ebe4a65f63d"
+    },
+    {
+      "bytes": 39604161,
+      "members": 625,
+      "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261022-brd4-jq1-25-fixed-lrreset-04\\source02\\source.tar.gz",
+      "sha256": "4d6d297451d9820543abc3298622e6599014c4b96bc999e104dd732825f56e4e"
+    }
+  ],
+  "startup_command_metadata": {
+    "continuation": {
+      "command_sha256": "78d0d58330347f9ed30ec5f3485dad295faa47bb5280bf50d8750a169e0a91ca",
+      "gpu_startup_passed": false,
+      "job_id": "29806661",
+      "native_gradient_passed": false,
+      "optimizer_updates": 0,
+      "status": "authenticated_command_metadata_only"
+    },
+    "random": {
+      "command_sha256": "f8a24142d9ade5757a3e44c014f2c1fa88af19e7a07caa8796ba9757c1db2500",
+      "gpu_startup_passed": false,
+      "job_id": "29806661",
+      "native_gradient_passed": false,
+      "optimizer_updates": 0,
+      "status": "authenticated_command_metadata_only"
+    }
+  },
+  "status": "passed_independent_pro03_cpu866_and_command_metadata_verification",
+  "verified_utc": "2026-10-24T12:02:58.978764+00:00",
+  "version": "mosaic-pro03-independent-cpu-recovery-verification-v1"
+}

@@ -1,0 +1,105 @@
+{
+  "actual_callback_job_id": "29806698",
+  "actual_callback_lsf_success": true,
+  "adoption_or_production_pass_claimed": false,
+  "all_five_original_callback_mappings_authenticated": true,
+  "captured_utc": "2026-10-24T12:11:20.504089+00:00",
+  "metadata_cpu_cases": 75,
+  "metadata_cpu_independent_verification_sha256": "cb7eaa6e4bc1741cc14a4316d55066110e5dbe9f2cf99703a6980cd25d4a278e",
+  "observer_completed": false,
+  "observer_status": "PEND",
+  "observer_submission": {
+    "args": [
+      "bsub",
+      "-q",
+      "hpc",
+      "-n",
+      "2",
+      "-R",
+      "span[hosts=1]",
+      "-R",
+      "rusage[mem=4GB]",
+      "-W",
+      "00:30",
+      "-J",
+      "mosaic-peer-dbmol10k-observe-0001",
+      "-oo",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-pro02-adoption-06/observe-0001/stdout.%J.log",
+      "-eo",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-pro02-adoption-06/observe-0001/stderr.%J.log",
+      "-w",
+      "ended(29806665)&&ended(29806668)",
+      "bash",
+      "-l",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-pro02-adoption-release-06/source/scripts/hpc/peer_adoption_stage.lsf",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-pro02-adoption-release-06/source",
+      "cad7c8efa0c83a301e4c9e1183d3d279a648cf65f9c3bc3d9d69281c63d32f11",
+      "dbmol10k",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-release-02/source",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02",
+      "600ecc3b33135141a57c029a28a2c72f29e788e3ecf5cb2dac1761146d1d6eed",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-pro02-adoption-06",
+      "observe",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-pro02-adoption-06/observe-0001"
+    ],
+    "dependency": "ended(29806665)&&ended(29806668)",
+    "job_id": "29806701",
+    "launcher_manifest_sha256": "cad7c8efa0c83a301e4c9e1183d3d279a648cf65f9c3bc3d9d69281c63d32f11",
+    "outcome": "submitted",
+    "phase": "observe",
+    "returncode": 0,
+    "source_manifest_sha256": "600ecc3b33135141a57c029a28a2c72f29e788e3ecf5cb2dac1761146d1d6eed",
+    "stderr": "",
+    "stdout": "Job <29806701> is submitted to queue <hpc>.\n",
+    "utc": "2026-10-24T12:10:23.680723+00:00",
+    "version": "protenix02-peer-adoption-v1"
+  },
+  "original_terminal_callback_live_history_required": false,
+  "pending_callback_ids": [
+    "29806665",
+    "29806668"
+  ],
+  "profile": "dbmol10k",
+  "raw_metadata_path": "results/hpc/20261024-dbmol-pro02-adoption-06/evidence-01/metadata.json",
+  "raw_metadata_sha256": "6b8c0858b379c669b3c7593101fa3ef9f5b513218e2aea7bbfad5cb43d7b51c8",
+  "scope": "Byte/JSON/resource/submission/actual LSF and scheduler evidence only; observer remains pending, Pro GPU/native/full storage and production unpassed.",
+  "status": "passed_actual_metadata_callback_and_observer_submission_verification",
+  "terminal_callbacks": [
+    {
+      "arm": "boltz2",
+      "job_id": "29805951",
+      "profile": "boltz30k",
+      "proof": {
+        "bytes": 2290,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/boltz2-after-native-0000/stdout.29805951.log",
+        "sha256": "047c9c565ab1b4a6a8d6bec4d1a58ffc996a33f0e1d437eb0e286b2429a8fddb"
+      },
+      "scheduler_state_invented": false,
+      "status": "Done"
+    },
+    {
+      "arm": "boltz2_chemistry",
+      "job_id": "29805959",
+      "profile": "boltz30k",
+      "proof": {
+        "bytes": 2330,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/boltz2_chemistry-after-native-0000/stdout.29805959.log",
+        "sha256": "b1aaa8a04bf290bcb2efbc8d3e0e7bfab9ca77b636073b7d547ca09ae5bbecc7"
+      },
+      "scheduler_state_invented": false,
+      "status": "Done"
+    },
+    {
+      "arm": "boltz2_dbmol",
+      "job_id": "29805981",
+      "profile": "dbmol10k",
+      "proof": {
+        "bytes": 2461,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-after-native-0000/stdout.29805981.log",
+        "sha256": "f209d0fdd7149f738fa35f6d4c56e9f2125f0ecedf7be90b96b81e53fc7ab81a"
+      },
+      "scheduler_state_invented": false,
+      "status": "Done"
+    }
+  ]
+}

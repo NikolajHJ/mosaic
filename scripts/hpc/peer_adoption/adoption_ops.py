@@ -24,7 +24,7 @@ from adoption_contract import (BASE, GIB, PROFILES, VERSION, atomic, exclusive,
 PYTHON = '/work3/s234818/mosaic/envs/protenix-tiny/bin/python'
 METADATA_SUITE = 'mosaic-peer-adoption-metadata-v1'
 # Reviewed fixture scope; these cases remain unexecuted until allocated on HPC.
-METADATA_CASES = 73
+METADATA_CASES = 75
 ACTIVE = None
 
 
@@ -473,6 +473,8 @@ def maybe_queue_observer(profile, parent, launcher_manifest):
         return state
     # Never queue an observer when no dependency is needed and all evidence is
     # already complete; dispatch in this allocated callback handles that case.
+    if state['all_callbacks_terminal']:
+        return state
     for label in sorted(read(p['control'] / 'jobs.json')):
         if label.startswith('observe-'):
             record = read(p['control'] / label / 'submission.json')

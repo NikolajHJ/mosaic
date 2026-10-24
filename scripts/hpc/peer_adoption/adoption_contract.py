@@ -313,7 +313,7 @@ def verify_native_units(profile):
 
 def pending_dependencies(profiles):
     """Only actual own-ended callbacks; missing IDs yield waiting, not a guess."""
-    jobs, missing, failed, running = [], [], [], []
+    jobs, pending, missing, failed, running, terminal_callbacks = [], [], [], [], [], []
     for profile in profiles:
         p = PROFILES[profile]
         for arm in p['arms']:
@@ -326,18 +326,25 @@ def pending_dependencies(profiles):
             log = p['root'] / label / ('stdout.' + job + '.log')
             if log.exists() and re.search(r'^Subject:', log.read_text(), re.M):
                 terminal = lsf_terminal(p['root'] / label, job)
+                terminal_callbacks.append({'profile': profile, 'arm': arm, **terminal})
                 if terminal['status'] == 'Exited':
                     failed.append({'profile': profile, 'arm': arm, **terminal})
             else:
                 running.append({'profile': profile, 'arm': arm, 'job_id': job,
                                 'status': 'actual_callback_not_terminal',
                                 'scheduler_state_invented': False})
+                pending.append(job)
             jobs.append(job)
     require(len(jobs) == len(set(jobs)), 'Duplicate peer callback IDs')
     return {'status': 'failed_peer' if failed else ('waiting_unknown_actual_ids' if missing else 'actual_callbacks_known'),
             'missing': missing, 'failed': failed, 'actual_callback_ids': jobs,
+            'pending_callback_ids': pending, 'terminal_callbacks': terminal_callbacks,
             'running': running, 'all_callbacks_terminal': not running and not missing,
-            'dependency': None if failed or missing else '&&'.join('ended(' + job + ')' for job in jobs)}
+            # Persisted same-job terminal evidence remains mandatory above.
+            # Finished jobs need no live scheduler dependency: their history
+            # can age out before this later metadata observer is submitted.
+            'dependency': None if failed or missing or not pending else
+                          '&&'.join('ended(' + job + ')' for job in pending)}
 
 
 def proof_inventory(profile):

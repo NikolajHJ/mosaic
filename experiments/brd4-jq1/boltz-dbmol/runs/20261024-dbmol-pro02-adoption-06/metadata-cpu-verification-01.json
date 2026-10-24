@@ -1,0 +1,92 @@
+{
+  "actual_cpu_job_id": "29806697",
+  "actual_raw_cases": 75,
+  "collected_stdout_sha256": "7ac8cdb94e81fa515db127164574a314d9169a2e03a90ae616a745e12b244fc0",
+  "committed_prefix_observations": {
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02": {},
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03": {},
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-pro02-adoption-04": {},
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-pro02-adoption-06": {},
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03": {}
+  },
+  "full_production_storage_admission_pass_claimed": false,
+  "gpu_startup_or_production_start_claimed": false,
+  "large_or_expired_references_not_recertified": [
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-boltz2/payload/study/summary.json",
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-protenix/payload/study/summary.json"
+  ],
+  "launcher_manifest_sha256": "cad7c8efa0c83a301e4c9e1183d3d279a648cf65f9c3bc3d9d69281c63d32f11",
+  "launcher_package": {
+    "bytes": 28270,
+    "metadata_cases": 75,
+    "path": "results\\hpc\\20261024-dbmol-pro02-adoption-06\\source01\\source.tar.gz",
+    "sha256": "f3604c518ec1e4637c23f68cbbf0bad9d635d657bdd33c52122812df662e17db"
+  },
+  "metadata_cpu_pass_authenticated": true,
+  "metadata_entry_adoption_capacity_sha256": "b1ba472749a962d714f7ae039896b4a92906dfcc815e67c1b43d97a17dd0e2ef",
+  "metadata_entry_original_gate_sha256": "2e34ae18fca2543dcf8a046db8375dd7033b5471e99a8f5f3a89bbc2de8c17fe",
+  "observer_or_adoption_pass_claimed": false,
+  "opaque_prior_parent_inventory_boundaries": [],
+  "optional_adoption_records": {
+    "adoption-certificate.json": {
+      "independently_certified_by_this_cpu_audit": false,
+      "present": false,
+      "sha256": null
+    },
+    "ownership.json": {
+      "independently_certified_by_this_cpu_audit": false,
+      "present": false,
+      "sha256": null
+    }
+  },
+  "original_native_metadata": [
+    {
+      "assessment_sha256": "04918662a1671a7089e5d8155a92ef8aec3d4a6d894f71c3a19ea487a6686992",
+      "callback_job_id": "29805981",
+      "label": "pilot-native-0000",
+      "native_job_id": "29805980",
+      "scope": "Prior allocated original native result metadata and actual same-job persisted LSF; no local derivative re-evaluation."
+    }
+  ],
+  "original_scientific_cpu_sha256": "387070e8fe56b17ddbd7c8e0b82d2d6a44d9aa99e7015d3fbe4757ce82c0819b",
+  "other_actual_jobs_observed": {
+    "after-cpu": {
+      "completion_or_start_claimed": false,
+      "job_id": "29806698",
+      "live_scheduler_query": {
+        "args": [
+          "bjobs",
+          "-l",
+          "29806698"
+        ],
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "\nJob <29806698>, Job Name <mosaic-peer-dbmol10k-after-cpu>, User <s234818>, Proj\n                          ect <default>, Service Class <sc_hpc1>, Status <DONE>\n                          , Queue <hpc>, Command <bash -l /work3/s234818/mosaic\n                          /runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-pro\n                          02-adoption-release-06/source/scripts/hpc/peer_adopti\n                          on_stage.lsf /work3/s234818/mosaic/runs/20261022-brd4\n                          -jq1-lrboost-analysis-01/dbmol-pro02-adoption-release\n                          -06/source cad7c8efa0c83a301e4c9e1183d3d279a648cf65f9\n                          c3bc3d9d69281c63d32f11 dbmol10k /work3/s234818/mosaic\n                          /runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbm\n                          ol-pilot-release-02/source /work3/s234818/mosaic/runs\n                          /20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pi\n                          lot-02 600ecc3b33135141a57c029a28a2c72f29e788e3ecf5cb\n                          2dac1761146d1d6eed /work3/s234818/mosaic/runs/2026102\n                          2-brd4-jq1-lrboost-analysis-01/dbmol-pro02-adoption-0\n                          6 after-cpu /work3/s234818/mosaic/runs/20261022-brd4-\n                          jq1-lrboost-analysis-01/dbmol-pro02-adoption-06/after\n                          -cpu>, Share group charged </s234818>, Esub <dcc>\nSat Oct 24 14:08:51 2026: Submitted from host <hpclogin1>, CWD <$HOME>, Output \n                          File (overwrite) </work3/s234818/mosaic/runs/20261022\n                          -brd4-jq1-lrboost-analysis-01/dbmol-pro02-adoption-06\n                          /after-cpu/stdout.29806698.log>, Error File (overwrit\n                          e) </work3/s234818/mosaic/runs/20261022-brd4-jq1-lrbo\n                          ost-analysis-01/dbmol-pro02-adoption-06/after-cpu/std\n                          err.29806698.log>, 2 Task(s), Requested Resources <{s\n                          elect[shortparallel_] rusage[mem=4096.00] span[hosts=\n                          1]} || {select[!shortparallel_] rusage[mem=4096.00] s\n                          pan[hosts=1]}>, Dependency Condition <ended(29806697)\n                          >;\nSat Oct 24 14:10:12 2026: Started 2 Task(s) on Host(s) <2*n-62-30-23>, Allocate\n                          d 2 Slot(s) on Host(s) <2*n-62-30-23>, Execution Home\n                           </zhome/95/e/206121>, Execution CWD </zhome/95/e/206\n                          121>;\nSat Oct 24 14:10:24 2026: Done successfully. The CPU time used is 5.2 seconds.\n\n RUNLIMIT                \n 30.0 min\n\n MEMLIMIT\n      4 G \n\n MEMORY USAGE:\n MEM Efficiency: 0.00%\n\n CPU USAGE:\n CPU PEAK: 0.00 ;  CPU PEAK DURATION: 0 second(s)\n CPU AVERAGE EFFICIENCY: 0.00% ;  CPU PEAK EFFICIENCY: 0.00%\n\n PENDING TIME DETAILS:\n Eligible pending time (seconds):\t1\n Ineligible pending time (seconds):\t80\n\n SCHEDULING PARAMETERS:\n           r15s   r1m  r15m   ut      pg    io   ls    it    tmp    swp    mem\n loadSched   -     -     -     -       -     -    -     -     -      -      -  \n loadStop    -     -     -     -       -     -    -     -     -      -      -  \n\n RESOURCE REQUIREMENT DETAILS:\n Job-level: {select[shortparallel_] rusage[mem=4096.00] span[hosts=1]} || {sele\n                          ct[!shortparallel_] rusage[mem=4096.00] span[hosts=1]\n                          }\n App-level: -\n Queue-level: same[type:model] affinity[core] cu[type=enclosure:maxcus=1]\n Combined: {select[(shortparallel_) && (type == any)] order[-slots:-maxslots] r\n                          usage[mem=4096.00] span[hosts=1] cu[pref=config:maxcu\n                          s=1:type=enclosure] affinity[core(1)*1]} || {select[(\n                          !shortparallel_) && (type == any)] order[-slots:-maxs\n                          lots] rusage[mem=4096.00] span[hosts=1] cu[pref=confi\n                          g:maxcus=1:type=enclosure] affinity[core(1)*1]}\n Effective: select[((shortparallel_) && (type == any))] order[-slots:-maxslots]\n                           rusage[mem=4096.00] span[hosts=1] cu[type=enclosure:\n                          maxcus=1:pref=config] affinity[core(1)*1] \n\n"
+      }
+    },
+    "observe-0001": {
+      "completion_or_start_claimed": false,
+      "job_id": "29806701",
+      "live_scheduler_query": {
+        "args": [
+          "bjobs",
+          "-l",
+          "29806701"
+        ],
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "\nJob <29806701>, Job Name <mosaic-peer-dbmol10k-observe-0001>, User <s234818>, P\n                          roject <default>, Service Class <sc_hpc1>, Status <PE\n                          ND>, Queue <hpc>, Command <bash -l /work3/s234818/mos\n                          aic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-\n                          pro02-adoption-release-06/source/scripts/hpc/peer_ado\n                          ption_stage.lsf /work3/s234818/mosaic/runs/20261022-b\n                          rd4-jq1-lrboost-analysis-01/dbmol-pro02-adoption-rele\n                          ase-06/source cad7c8efa0c83a301e4c9e1183d3d279a648cf6\n                          5f9c3bc3d9d69281c63d32f11 dbmol10k /work3/s234818/mos\n                          aic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-\n                          dbmol-pilot-release-02/source /work3/s234818/mosaic/r\n                          uns/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol\n                          -pilot-02 600ecc3b33135141a57c029a28a2c72f29e788e3ecf\n                          5cb2dac1761146d1d6eed /work3/s234818/mosaic/runs/2026\n                          1022-brd4-jq1-lrboost-analysis-01/dbmol-pro02-adoptio\n                          n-06 observe /work3/s234818/mosaic/runs/20261022-brd4\n                          -jq1-lrboost-analysis-01/dbmol-pro02-adoption-06/obse\n                          rve-0001>, Esub <dcc>\nSat Oct 24 14:10:23 2026: Submitted from host <n-62-30-23>, CWD </work3/s234818\n                          /mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/bo\n                          ltz-dbmol-pilot-release-02/source>, Output File (over\n                          write) </work3/s234818/mosaic/runs/20261022-brd4-jq1-\n                          lrboost-analysis-01/dbmol-pro02-adoption-06/observe-0\n                          001/stdout.29806701.log>, Error File (overwrite) </wo\n                          rk3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-ana\n                          lysis-01/dbmol-pro02-adoption-06/observe-0001/stderr.\n                          29806701.log>, 2 Task(s), Requested Resources <{selec\n                          t[shortparallel_] rusage[mem=4096.00] span[hosts=1]} \n                          || {select[!shortparallel_] rusage[mem=4096.00] span[\n                          hosts=1]}>, Dependency Condition <ended(29806665)&&en\n                          ded(29806668)>;\n PENDING REASONS:\n Job dependency condition not satisfied;\n\n RUNLIMIT                \n 30.0 min\n\n MEMLIMIT\n      4 G \n\n PENDING TIME DETAILS:\n Eligible pending time (seconds):\t1\n Ineligible pending time (seconds):\t63\n\n SCHEDULING PARAMETERS:\n           r15s   r1m  r15m   ut      pg    io   ls    it    tmp    swp    mem\n loadSched   -     -     -     -       -     -    -     -     -      -      -  \n loadStop    -     -     -     -       -     -    -     -     -      -      -  \n\n RESOURCE REQUIREMENT DETAILS:\n Job-level: {select[shortparallel_] rusage[mem=4096.00] span[hosts=1]} || {sele\n                          ct[!shortparallel_] rusage[mem=4096.00] span[hosts=1]\n                          }\n App-level: -\n Queue-level: same[type:model] affinity[core] cu[type=enclosure:maxcus=1]\n Combined: {select[(shortparallel_) && (type == any)] order[-slots:-maxslots] r\n                          usage[mem=4096.00] span[hosts=1] cu[pref=config:maxcu\n                          s=1:type=enclosure] affinity[core(1)*1]} || {select[(\n                          !shortparallel_) && (type == any)] order[-slots:-maxs\n                          lots] rusage[mem=4096.00] span[hosts=1] cu[pref=confi\n                          g:maxcus=1:type=enclosure] affinity[core(1)*1]}\n Effective: -\n\n"
+      }
+    }
+  },
+  "prior_parent_probability_frames_freshly_rehashed_by_this_collection": false,
+  "profile": "dbmol10k",
+  "scientific_cpu_certificate_replaced": false,
+  "scientific_readiness_or_gradients_pass_claimed": false,
+  "scope": "Current allocated metadata CPU only: exact source hashes, actual resources/LSF/final scheduler and raw testcase rows. Optional records/prefixes remain observations, never optimization or scientific passes.",
+  "source_manifest_sha256": "600ecc3b33135141a57c029a28a2c72f29e788e3ecf5cb2dac1761146d1d6eed",
+  "status": "passed_independent_metadata_cpu_evidence",
+  "verified_utc": "2026-10-24T12:12:05.441539+00:00",
+  "verifier_sha256": "598f0b6d00c20caac5d3f458d5a250710110cd122db49a2a9c45e27190e8c03c",
+  "version": "mosaic-peer-adoption-independent-cpu-audit-v1"
+}

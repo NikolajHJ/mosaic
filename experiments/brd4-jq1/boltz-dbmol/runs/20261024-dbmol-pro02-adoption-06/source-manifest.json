@@ -1,0 +1,17 @@
+{
+  "files": {
+    "README.md": "ce3af050e20bc493de5996de90efdfcd04c097e0f92ae47a45880260cb5d1ca5",
+    "adoption-plan.json": "0165124a9358823affdcf82a8ff99147ea2bdce9530a34ae2369a482d022df33",
+    "scripts/adoption_contract.py": "9918125b181e38ce953066e1210a1a34c3331c6cdcf5d590c805d71881ec1820",
+    "scripts/adoption_ops.py": "0dfa9cae1cc393960072513a7839314658c01b987758bbc838eb800a1838063d",
+    "scripts/hpc/peer_adoption_cpu.lsf": "a3151064b20d9526b1076c0c2f56ec45bd20ee454e8749fd35bd21bf33a6aeb0",
+    "scripts/hpc/peer_adoption_stage.lsf": "e3281a38c61aada2fb4cf3db41b325d24ddad3a85839dff845fb5576549c0048",
+    "tests/test_peer_adoption.py": "e575202a52a74fee341210e7493f766bd551781bd832e9cb242d3fdc44309659"
+  },
+  "git_revision_reference": "c74c659344123937608077e3e4078f75f09cd743",
+  "metadata_cpu_cases": 75,
+  "metadata_cpu_is_scientific_readiness": false,
+  "profile": "dbmol10k",
+  "scientific_source_unchanged": true,
+  "version": "mosaic-provenance-peer-adoption-launcher-v1"
+}

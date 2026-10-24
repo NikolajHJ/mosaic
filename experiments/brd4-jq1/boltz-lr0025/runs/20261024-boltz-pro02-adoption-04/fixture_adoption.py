@@ -23,7 +23,7 @@ except ModuleNotFoundError:
 
 
 # Declared rows are independently counted from the allocated raw XML.
-METADATA_CASES = 73
+METADATA_CASES = 75
 
 
 def write(path, value):
@@ -251,8 +251,14 @@ def test_observer_waits_only_for_authentic_existing_own_ended_callbacks(campaign
     assert result['all_callbacks_terminal'] is (state in ('known', 'failed'))
     if state in ('known', 'no_footer'):
         assert len(result['actual_callback_ids']) == 5
-        assert result['dependency'] == '&&'.join('ended(' + x + ')' for x in result['actual_callback_ids'])
-    else: assert result['dependency'] is None
+    if state == 'no_footer':
+        assert result['pending_callback_ids'] == [job]
+        assert result['dependency'] == 'ended(' + job + ')'
+        assert len(result['terminal_callbacks']) == 4
+    else:
+        assert result['pending_callback_ids'] == []
+        assert result['dependency'] is None
+        assert len(result['terminal_callbacks']) == (4 if state == 'missing' else 5)
     if state == 'no_footer':
         parent = p['control'] / 'race-observer'; parent.mkdir(); queued = []
         monkeypatch.setattr(ops, 'metadata_certificate', lambda *args: {'status': 'passed'})
@@ -371,7 +377,10 @@ def test_metadata_launcher_cannot_replay_initial_native_or_expand_scientific_sco
 def test_observer_submission_waits_without_duplicate_or_invented_dependencies(campaign, monkeypatch, state):
     p = campaign['boltz30k']; parent = p['control'] / 'after-cpu'; parent.mkdir(); calls = []
     result = {'status': {'missing': 'waiting_unknown_actual_ids', 'failed': 'failed_peer'}.get(state, 'actual_callbacks_known'),
-              'dependency': None if state in ('missing', 'failed') else 'ended(101)&&ended(202)'}
+              'dependency': None if state in ('missing', 'failed') else 'ended(101)&&ended(202)',
+              'all_callbacks_terminal': state == 'failed',
+              'actual_callback_ids': ['101', '202'],
+              'pending_callback_ids': [] if state in ('missing', 'failed') else ['101', '202']}
     monkeypatch.setattr(contract, 'pending_dependencies', lambda profiles: result)
     monkeypatch.setattr(ops, 'submit', lambda *args: calls.append(args) or {'outcome': 'submitted', 'job_id': '303'})
     if state == 'unknown_existing':
@@ -424,3 +433,41 @@ def test_allocated_metadata_cpu_does_not_require_future_peer_native_success(camp
         '--control', str(p['control']), '--phase', 'cpu', '--parent', str(parent)])
     ops.main()
     assert gates == [(parent, 'metadata-cpu-entry', {'synthetic_validation_scope': True})]
+
+
+def test_mixed_terminal_originals_and_unfinished_protenix_depend_only_on_actual_pending_callbacks(campaign, monkeypatch):
+    expected_pending = []
+    for arm in campaign['protenix50k40k']['arms']:
+        p = campaign['protenix50k40k']; label = contract.callback_name('protenix50k40k', arm)
+        job = contract.read(p['root'] / label / 'submission.json')['job_id']
+        write(p['root'] / label / ('stdout.' + job + '.log'), 'Actual callback still running; no terminal footer.\n')
+        expected_pending.append(job)
+    state = contract.pending_dependencies(('boltz30k', 'dbmol10k', 'protenix50k40k'))
+    assert state['status'] == 'actual_callbacks_known' and state['all_callbacks_terminal'] is False
+    assert len(state['actual_callback_ids']) == 5 and state['pending_callback_ids'] == expected_pending
+    assert len(state['terminal_callbacks']) == 3
+    assert {row['profile'] for row in state['terminal_callbacks']} == {'boltz30k', 'dbmol10k'}
+    assert all(row['status'] == 'Done' and contract.file_record(row['proof']['path']) == row['proof']
+               for row in state['terminal_callbacks'])
+    expected = '&&'.join('ended(' + job + ')' for job in expected_pending)
+    assert state['dependency'] == expected
+    terminal_ids = {row['job_id'] for row in state['terminal_callbacks']}
+    assert not terminal_ids.intersection(expected_pending)
+    parent = campaign['boltz30k']['control'] / 'after-cpu'; parent.mkdir(); queued = []
+    monkeypatch.setattr(ops, 'submit', lambda *args: queued.append(args) or {'outcome': 'submitted', 'job_id': '303'})
+    result = ops.maybe_queue_observer('boltz30k', parent, 'a' * 64)
+    assert result['job_id'] == '303' and len(queued) == 1 and queued[0][-1] == expected
+    assert contract.read(parent / 'peer-observation.json')['terminal_callbacks'] == state['terminal_callbacks']
+
+
+def test_all_terminal_authenticated_callbacks_require_no_live_dependency_or_observer(campaign, monkeypatch):
+    parent = campaign['boltz30k']['control'] / 'after-cpu'; parent.mkdir()
+    monkeypatch.setattr(ops, 'submit', lambda *args: pytest.fail('Persisted terminal callbacks need no live scheduler observer'))
+    state = ops.maybe_queue_observer('boltz30k', parent, 'a' * 64)
+    assert state['status'] == 'actual_callbacks_known' and state['all_callbacks_terminal'] is True
+    assert len(state['actual_callback_ids']) == len(state['terminal_callbacks']) == 5
+    assert state['pending_callback_ids'] == [] and state['dependency'] is None
+    assert all(row['status'] == 'Done' and contract.file_record(row['proof']['path']) == row['proof']
+               for row in state['terminal_callbacks'])
+    assert contract.read(parent / 'peer-observation.json') == state
+    assert contract.read(campaign['boltz30k']['control'] / 'jobs.json') == {}

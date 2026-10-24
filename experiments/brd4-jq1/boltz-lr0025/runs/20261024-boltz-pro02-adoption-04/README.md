@@ -1,9 +1,10 @@
 # Conditional Protenix provenance-peer adoption for Boltz30k
 
-Current status,24October2026: **resource blocked, unsealed local preparation**.
+Current status,24October2026 at11:56:41UTC: **unsealed local preparation;
+validation storage admission recovered, Protenix CPU checks running**.
 No adoption release archive/manifest exists, no adoption source is staged and
 no adoption CPU, observer or production job has been submitted. Local review
-is standard-library AST/compile/JSON/byte inspection only. All73 planned
+is standard-library AST/compile/JSON/byte inspection only. All75 planned
 metadata fixtures remain unexecuted on allocated HPC.
 
 The original scientific CPU suite passed827 actual cases. Current native
@@ -16,14 +17,26 @@ optimization start.
 The final prospective peer is **Protenix03**, SOURCE
 `/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source`,
 manifest`da9db6821d26b884ca1749303fc8e0b0095bd9ee7cbd1b427cdcf1b22eec6562`.
-Its643 source files were actually staged/authenticated read-only, but mandatory
-preflight failed **before any Pro03 CPU or jobs.json**:41,643,669,252required
-versus27,472,908,456conservatively available bytes, retaining4GiB reserve.
-The14,170,760,796-byte shortfall is an actual admission blocker. No verified
-permitted inactive/duplicate subset sufficient to close it has been identified;
-no cleanup or gate reduction is performed by this preparation. Local unsubmitted
-Pro02 remains historical; it is not the adopted peer. The prospective control
-name retains its original `pro02` label, while every scientific peer pin uses03.
+Its643 source files remain authenticated read-only. The original preflight
+failure before CPU remains preserved:41,643,669,252required versus
+27,472,908,456conservatively available bytes. Separate user-authorized cleanup
+subsequently downloaded and verified every member before removing25,413 exact
+inactive remote files,15,725,430,139logical bytes; current scientific/proof/source
+dependencies were independently rehashed and preserved. This preparation did
+not perform that cleanup. Its completion does not establish an attributable
+physical quota saving or a scientific pass.
+
+A distinct unchanged preflight passed after cleanup:41,643,669,252required
+versus42,505,285,132conservatively available bytes, retaining4GiB/100000files.
+GateSHA`c8b972a2c89097f2c0eeac4e77dd6ae4224994c49a494dc7e9293dd3bedf3f3d`;
+original failed gateSHA`6d1d0fae516de98615b83ebc005ab2330dd2146c08ef631f1bd5c3d28593a951`
+remains unchanged. Pro CPU`29806660` and callback`29806661` were actually
+submitted11:53:11UTC; their11:56:41UTC scheduler snapshot isRUN/PEND.
+No866-case pass, new Pro GPU startup/native pass or full50k/40k projection is
+established. Validation admission is not production admission. Exact receipts
+are in the Pro03 run's`cpu-recovery-03-submissions.json` and the cleanup run's
+`cleanup-completion-03.json`. Local unsubmitted Pro02 remains historical; the
+prospective control name retains `pro02`, while every scientific peer pin uses03.
 
 This launcher will retain original scientific source, exact configuration,
 original passed scientific CPU/native/readiness proofs and the unchanged
@@ -57,7 +70,9 @@ initial native chains (both baseline arms, DBMol, both Pro03 arms), original
 full CPU and configuration/source bindings, actual same-job LSF/scheduler
 proofs and full empirical projections. Unknown IDs persist waiting. Known RUN
 callbacks use unique`ended(actual-ID)` observation, never guessed IDs or a
-`done(EXIT)` dependency. Actual failures persist failure and hard-block adoption.
+`done(EXIT)` dependency. Completed callbacks retain authenticated persisted LSF
+proofs and are excluded from new scheduler dependencies, so aged-out live
+history cannot strand the observer. Actual failures persist failure and hard-block adoption.
 A terminal-Done callback missing required evidence is a failure, not a retry.
 
 Every native/production command executes its real generated-command startup
@@ -76,6 +91,8 @@ Shared owner:`scripts/hpc/peer_adoption/` contains`adoption_contract.py`,
 `scripts/hpc/peer_adoption_cpu.lsf`,`scripts/hpc/peer_adoption_stage.lsf` and
 `tests/test_peer_adoption.py`. The fixture is physically owned by the baseline
 adoption run as a shared named metadata contract; both packages would contain
-identical fixture/helper bytes. No package preparation command should be run
-while this resource blocker remains unresolved. Parent orchestration owns any
-later exclusive staging/submission and records actual vectors separately.
+identical fixture/helper bytes. No package, seal or allocated adoption pass is
+created by this status update. Parent orchestration owns later exclusive
+preparation/staging/submission and records actual vectors separately. Full
+production still requires genuine Pro03 CPU/native projections, the separate
+75-case metadata pass and fresh complete admission at each action.

@@ -1,0 +1,53 @@
+{
+  "status": "prepared_local_only",
+  "profile": "dbmol10k",
+  "source_file_count": 7,
+  "manifest_sha256": "cad7c8efa0c83a301e4c9e1183d3d279a648cf65f9c3bc3d9d69281c63d32f11",
+  "archive": {
+    "path": "results\\hpc\\20261024-dbmol-pro02-adoption-06\\source01\\source.tar.gz",
+    "bytes": 28270,
+    "sha256": "f3604c518ec1e4637c23f68cbbf0bad9d635d657bdd33c52122812df662e17db"
+  },
+  "canonical_members": {
+    "README.md": {
+      "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\brd4-jq1\\boltz-dbmol\\runs\\20261024-dbmol-pro02-adoption-06\\README.md",
+      "bytes": 6649,
+      "sha256": "ce3af050e20bc493de5996de90efdfcd04c097e0f92ae47a45880260cb5d1ca5"
+    },
+    "adoption-plan.json": {
+      "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\brd4-jq1\\boltz-dbmol\\runs\\20261024-dbmol-pro02-adoption-06\\adoption-plan.json",
+      "bytes": 5381,
+      "sha256": "0165124a9358823affdcf82a8ff99147ea2bdce9530a34ae2369a482d022df33"
+    },
+    "scripts/adoption_contract.py": {
+      "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\scripts\\hpc\\peer_adoption\\adoption_contract.py",
+      "bytes": 26004,
+      "sha256": "9918125b181e38ce953066e1210a1a34c3331c6cdcf5d590c805d71881ec1820"
+    },
+    "scripts/adoption_ops.py": {
+      "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\scripts\\hpc\\peer_adoption\\adoption_ops.py",
+      "bytes": 35199,
+      "sha256": "0dfa9cae1cc393960072513a7839314658c01b987758bbc838eb800a1838063d"
+    },
+    "scripts/hpc/peer_adoption_cpu.lsf": {
+      "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\scripts\\hpc\\peer_adoption\\cpu.lsf",
+      "bytes": 2416,
+      "sha256": "a3151064b20d9526b1076c0c2f56ec45bd20ee454e8749fd35bd21bf33a6aeb0"
+    },
+    "scripts/hpc/peer_adoption_stage.lsf": {
+      "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\scripts\\hpc\\peer_adoption\\stage.lsf",
+      "bytes": 2355,
+      "sha256": "e3281a38c61aada2fb4cf3db41b325d24ddad3a85839dff845fb5576549c0048"
+    },
+    "tests/test_peer_adoption.py": {
+      "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\brd4-jq1\\boltz-lr0025\\runs\\20261024-boltz-pro02-adoption-04\\fixture_adoption.py",
+      "bytes": 27792,
+      "sha256": "e575202a52a74fee341210e7493f766bd551781bd832e9cb242d3fdc44309659"
+    }
+  },
+  "metadata_cpu_cases_planned": 75,
+  "numerical_execution": false,
+  "allocated_cpu_passed": false,
+  "staged": false,
+  "submitted": false
+}

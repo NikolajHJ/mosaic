@@ -1,16 +1,47 @@
 {
+  "actual_passed_validation_gates": [
+    {
+      "available_bytes": 42505285132,
+      "full_long_admission": false,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/cpu-recovery-03/storage-preflight/gate.json",
+      "phase": "preflight",
+      "required_bytes": 41643669252,
+      "sha256": "c8b972a2c89097f2c0eeac4e77dd6ae4224994c49a494dc7e9293dd3bedf3f3d"
+    },
+    {
+      "available_bytes": 43579000712,
+      "full_long_admission": false,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/cpu/storage-cpu-entry/gate.json",
+      "phase": "cpu-entry",
+      "required_bytes": 41643669252,
+      "sha256": "8d67f65aa10119c1507a67073ff97668e7e979e1ed042baf0112d7f206cf4430"
+    },
+    {
+      "available_bytes": 42504904933,
+      "full_long_admission": false,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/after-cpu/storage-native-dispatch/gate.json",
+      "phase": "native-dispatch",
+      "required_bytes": 41643669252,
+      "sha256": "cd9073ae56b49e451fec62a01a5ea701b4b3cda48b91af31f34958d9f623d751"
+    }
+  ],
   "attempt": "cpu-recovery-03",
   "cpu_cases_required": 866,
-  "cpu_passed": false,
+  "cpu_certificate_sha256": "ab3148ea6dd8d25361f85e9d8283578e0cf4429844d820a4dab6b03673ef577b",
+  "cpu_passed": true,
   "cpu_recovery_submissions": {
     "bytes": 10993,
     "path": "cpu-recovery-03-submissions.json",
     "sha256": "ea749d580937044e36961b86c424e9e59607b85972698ba70645bb93b710445d"
   },
-  "current_evidence_captured_utc": "2026-10-24T11:56:41.668761+00:00",
+  "current_evidence_captured_utc": "2026-10-24T12:02:20.608102+00:00",
   "current_scheduler": {
-    "29806660": "RUN",
-    "29806661": "PEND"
+    "29806660": "DONE",
+    "29806661": "DONE",
+    "29806664": "PEND",
+    "29806665": "PEND",
+    "29806667": "PEND",
+    "29806668": "PEND"
   },
   "failure_verification": {
     "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\brd4-jq1\\protenix-extended-50000\\runs\\20261024-protenix-extended-03\\preflight-failure-verification-01.json",
@@ -135,12 +166,49 @@
     }
   },
   "gpu_startup_passed": false,
+  "independent_cpu_verification": {
+    "bytes": 16757,
+    "path": "cpu-recovery-verification-08.json",
+    "sha256": "e4563eb2035e48e9d552db97d8b2f4e358757ca21be13fbc3e225049fdc1eec8"
+  },
   "jobs": {
     "after-cpu": "29806661",
-    "cpu": "29806660"
+    "continuation-after-native-0000": "29806668",
+    "continuation-native-0000": "29806667",
+    "cpu": "29806660",
+    "random-after-native-0000": "29806665",
+    "random-native-0000": "29806664"
   },
   "jobs_file_present": true,
+  "latest_shared_scheduler_observation": {
+    "captured_utc": "2026-10-24T12:11:20.504089+00:00",
+    "metadata": "results/hpc/20261024-dbmol-pro02-adoption-06/evidence-01/metadata.json",
+    "metadata_sha256": "6b8c0858b379c669b3c7593101fa3ef9f5b513218e2aea7bbfad5cb43d7b51c8",
+    "native_jobs": {
+      "continuation": "29806667",
+      "random": "29806664"
+    },
+    "new_native_or_full_production_pass_claimed": false,
+    "observed_native_status": {
+      "29806664": "PEND",
+      "29806667": "PEND"
+    }
+  },
   "native_passed": false,
+  "native_submissions": {
+    "continuation": {
+      "callback_job_id": "29806668",
+      "gpu_startup_receipt_present": false,
+      "job_id": "29806667",
+      "native_readiness_pass_claimed": false
+    },
+    "random": {
+      "callback_job_id": "29806665",
+      "gpu_startup_receipt_present": false,
+      "job_id": "29806664",
+      "native_readiness_pass_claimed": false
+    }
+  },
   "optimization_started": false,
   "package": {
     "archive_bytes": 39644558,
@@ -170,9 +238,9 @@
   },
   "paused_monitor_changed": false,
   "previous_checkpoint": {
-    "bytes": 9234,
-    "path": "campaign-checkpoint-before-cpu-recovery-03.json",
-    "sha256": "4111f61be32291640d4b8d0735caff78b7b02706610a99cb898389c840cbffb5"
+    "bytes": 16737,
+    "path": "campaign-checkpoint-before-cpu-pass-08.json",
+    "sha256": "33ce23801a9cc2afa32edbb6e7901501d93e9afe7c4f619aee94f430a2038875"
   },
   "previous_failed_gate": {
     "file_reserve": 100000,
@@ -291,12 +359,12 @@
   "remote_source_members_rehashed": 643,
   "remote_source_readonly": true,
   "required_next": [
-    "Authenticate actual full866CPU/rawXML/scheduler/LSF/certificate and generated startup-command metadata.",
-    "Require both actual new Pro native/GPU startup/full pilot projections before production.",
-    "Validate metadata-only Boltz/DBMol adoption launchers and fresh whole-campaign capacity without changing saved results or scientific settings."
+    "Both genuine GPU startup/native/chemistry coupled pilots must pass and authenticate actual source/config/parent pins.",
+    "Require empirical full50k/40k projections and fresh full production capacity, unchanged reserves.",
+    "Boltz/DBMol separately validate metadata adoption then conditional production without changing scientific sources or saved results."
   ],
   "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03",
   "scientific_settings_and_saved_results_changed": false,
   "source": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source",
-  "status": "cpu_revalidation_running_after_verified_inactive_offload"
+  "status": "cpu866_and_command_metadata_passed_two_native_validations_queued"
 }

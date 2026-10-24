@@ -13,3 +13,17 @@ at11:56:41UTC CPU isRUN/callbackPEND. No866CPU pass, new native/GPU-startup pass
 or production segment is claimed. Source643 is unchanged/read-only and every
 member rehashed. Exact vectors and raw evidence are in cpu-recovery-03-submissions.json.
 The paused monitor remains paused.
+
+
+24October14:02:20Paris: CPU29806660 and callback29806661 actualDONE/hpc/
+same-jobLSF success. Independent CPU recovery audit verified866actualrawcases
+(500contracts+239legacy+34mapping+59chemistry+34startup), zero failures/errors/
+skips and original3deliberatelegacy deselections. CPUcertificate
+ab3148ea6dd8d25361f85e9d8283578e0cf4429844d820a4dab6b03673ef577b;
+independentverificatione4563eb2035e48e9d552db97d8b2f4e358757ca21be13fbc3e225049fdc1eec8.
+Both real generated commands passed metadata-only capture, not actual GPU/model
+startup. Actual new native validations random29806664/callback29806665 and
+continuation29806667/callback29806668 arePEND. Both retain2h gpul40s/4CPU/
+8GiBslot/oneexclusiveL40S and actual own-ended callbacks. Source643/config/
+parent/originalfailures remain exact. No production/native-gradient/GPU-startup
+or full50k/40k storage pass is claimed.

@@ -1,6 +1,6 @@
 {
   "version": "protenix02-peer-adoption-v1",
-  "status": "resource_blocked_unsealed_local_preparation",
+  "status": "unsealed_local_preparation_protenix_cpu_running_after_verified_cleanup",
   "profile": "dbmol10k",
   "scientific_source": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-release-02/source",
   "scientific_source_manifest_sha256": "600ecc3b33135141a57c029a28a2c72f29e788e3ecf5cb2dac1761146d1d6eed",
@@ -51,10 +51,11 @@
   "protenix03_root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03",
   "protenix03_manifest_pin": "da9db6821d26b884ca1749303fc8e0b0095bd9ee7cbd1b427cdcf1b22eec6562",
   "current_peer_version": "Protenix03; local unsubmitted02 preserved separately",
-  "metadata_cpu_case_count": 73,
+  "metadata_cpu_case_count": 75,
   "metadata_control_allowance_per_root_bytes": 1073741824,
   "unrecognized_noisy_capsules": "fail closed every admission phase with persisted raw inventory",
-  "resource_blocker": {
+  "metadata_preparation_validation": "stdlib AST/compile/JSON/byte review only; allocated metadata cases remain unexecuted",
+  "historical_resource_blocker": {
     "peer": "Protenix03",
     "stage": "preflight before CPU/jobs",
     "required_bytes": 41643669252,
@@ -68,5 +69,54 @@
     "storage_gate_reduced": false,
     "scope": "Actual whole-project preflight failure, no verified permitted cleanup subset closes the gap; further capacity/human scope required"
   },
-  "metadata_preparation_validation": "stdlib AST/compile/JSON/byte review only; allocated metadata cases remain unexecuted"
+  "current_evidence_captured_utc": "2026-10-24T11:56:41.668761+00:00",
+  "verified_cleanup": {
+    "status": "completed_verified_backup_exact_removal_and_protection_audit",
+    "removed_files": 25413,
+    "removed_logical_bytes": 15725430139,
+    "completion": {
+      "bytes": 7185,
+      "path": "experiments/brd4-jq1/boltz-lr0025/runs/20261024-storage-offload-01/cleanup-completion-03.json",
+      "sha256": "b3f877b20f11a5e76d8d2e27ee8d60e6cf1193f4ed430438855d5f7d97d6d11f"
+    },
+    "attributable_physical_quota_savings_established": false,
+    "scientific_or_saved_current_results_changed": false
+  },
+  "protenix03_validation_admission": {
+    "status": "passed",
+    "required_bytes": 41643669252,
+    "conservative_available_bytes": 42505285132,
+    "reserve_bytes": 4294967296,
+    "file_reserve": 100000,
+    "gate_sha256": "c8b972a2c89097f2c0eeac4e77dd6ae4224994c49a494dc7e9293dd3bedf3f3d",
+    "original_failed_gate_sha256": "6d1d0fae516de98615b83ebc005ab2330dd2146c08ef631f1bd5c3d28593a951",
+    "original_failed_gate_preserved": true,
+    "full_long_admission": false,
+    "storage_gate_reduced": false
+  },
+  "protenix03_current_jobs": {
+    "submitted_utc": "2026-10-24T11:53:11+00:00",
+    "scheduler": {
+      "29806660": "RUN",
+      "29806661": "PEND"
+    },
+    "cpu_cases_required": 866,
+    "cpu_passed": false,
+    "new_gpu_startup_passed": false,
+    "new_native_passed": false,
+    "full_50k_40k_projections_established": false,
+    "production_started": false,
+    "submission_receipt": {
+      "bytes": 10993,
+      "path": "cpu-recovery-03-submissions.json",
+      "sha256": "ea749d580937044e36961b86c424e9e59607b85972698ba70645bb93b710445d"
+    }
+  },
+  "current_prerequisites": [
+    "independent allocated75-case adoption metadata CPU certificate",
+    "actual Protenix03 CPU866 and both native proof/projection chains",
+    "matching real generated production startup receipt",
+    "fresh full whole-campaign byte/inode admission with unchanged4GiB/100000-file reserves"
+  ],
+  "observer_dependency_policy": "Authenticate all five actual source/resource/submission/terminal LSF chains; ended() only for actual callbacks not yet terminal; no live dependency for persisted successful callbacks or dependency-free observer"
 }
