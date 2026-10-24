@@ -1,0 +1,29 @@
+{
+  "status": "passed",
+  "kind": "selected_owner",
+  "version": "independent-nonchemistry-stride20-admission-v2",
+  "profile": "dbmol10k",
+  "selected_arm": "boltz2_dbmol",
+  "launcher_manifest_sha256": "704fab033d97342a14dc12b58dc32df44874232c5c30aad47c4d02041a502aab",
+  "scientific_source_manifest_sha256": "600ecc3b33135141a57c029a28a2c72f29e788e3ecf5cb2dac1761146d1d6eed",
+  "initial_empirical_unit_bytes": 35150,
+  "proofs": [
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/cpu-certificate.json",
+      "sha256": "387070e8fe56b17ddbd7c8e0b82d2d6a44d9aa99e7015d3fbe4757ce82c0819b"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-native-0000-certificate.json",
+      "sha256": "bd4ebb266280eb447a2b4a91fedf19bb97e039097a7ecd3a9b4a5055b7100a3e"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-native-0000/payload/study/assessment.json",
+      "sha256": "04918662a1671a7089e5d8155a92ef8aec3d4a6d894f71c3a19ea487a6686992"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-02/startup-fix-03/cpu-certificate.json",
+      "sha256": "b5fd3fb230bc6479b8f6f081381f6663c3b823c8643c41e93dbaf21942837d16"
+    }
+  ],
+  "science_and_saved_results_changed": false
+}

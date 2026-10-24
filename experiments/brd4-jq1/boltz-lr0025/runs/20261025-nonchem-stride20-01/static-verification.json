@@ -1,0 +1,42 @@
+{
+  "allocated_cases_declared_not_run": 66,
+  "archive_members": 13,
+  "budget_scope_caveat": "Additional fixed/reserve/other-work scopes do not shrink by20; new immutable control has its own full allowance",
+  "local_scientific_or_numerical_tests_run": false,
+  "loss_stride": 1,
+  "matrix_stride": 20,
+  "repository_layout_known_preexisting_failures": true,
+  "source01_draft_retained": true,
+  "source_manifest_sha256": "af73bea37be4620d1515052a805b43db0a892aa74cd2e783708cc2d66ce07502",
+  "status": "passed_static_bytes_only",
+  "storage_metadata_arithmetic_only": {
+    "boltz30k": {
+      "new_sparse_projection_bytes": 3319422138,
+      "old_full_projection_bytes": 5173445472,
+      "original_maximum_pilot_update_bytes": 32537,
+      "reduction_bytes": 1854023334,
+      "segments": 3,
+      "unchanged_overhead_bytes": 3221225472,
+      "updates": 30000
+    },
+    "dbmol10k": {
+      "new_sparse_projection_bytes": 4330960896,
+      "old_full_projection_bytes": 4997967296,
+      "original_maximum_pilot_update_bytes": 35150,
+      "reduction_bytes": 667006400,
+      "segments": 4,
+      "unchanged_overhead_bytes": 4294967296,
+      "updates": 10000
+    },
+    "protenix50k40k": {
+      "new_sparse_projection_bytes": 4388251664,
+      "old_full_projection_bytes": 6149527296,
+      "original_maximum_pilot_update_bytes": 23182,
+      "reduction_bytes": 1761275632,
+      "segments": 4,
+      "unchanged_overhead_bytes": 4294967296,
+      "updates": 40000
+    }
+  },
+  "three_chain_projection_reduction_bytes": 4282305366
+}

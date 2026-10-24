@@ -1,0 +1,51 @@
+{
+  "scope": "stdlib layout/AST/byte/syntax checks only; no numerical/model/native checks or submissions",
+  "created_utc": "2026-10-24T22:21:34.495860+00:00",
+  "counts": {
+    "canonical_python_asts": 166,
+    "declarative_byte_pairs": 41,
+    "unique_test_modules": 82,
+    "canonical_test_discovery_paths": 85,
+    "local_document_links": 1670,
+    "documents": 294,
+    "test_helper_modules_resolved_without_import": 5,
+    "module_names_resolved_without_import": 84,
+    "working_path_resolutions": 281,
+    "release_only_aliases_checked": 155,
+    "sealed_source_fallback_checks": 1,
+    "synthetic_compatibility_checks": 3,
+    "synthetic_execution_identity_checks": 2,
+    "synthetic_source_authentication_checks": 3,
+    "shell_syntax_checks": 147
+  },
+  "canonical_content_changed_since_migration": [
+    "scripts/releases/package_stage0_release.py",
+    "scripts/hpc/stage0_quota_preflight.py"
+  ],
+  "metadata_only_source_changes": [],
+  "concurrent_receipt_changes": [],
+  "errors": [
+    "Default discovery does not reach each canonical test module exactly once",
+    "Experiment folder lacks README: C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\brd4-jq1\\boltz-dbmol\\runs\\20261024-dbmol-pro02-adoption-06\\observer-failure-02",
+    "Experiment folder lacks README: C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\brd4-jq1\\boltz-dbmol\\runs\\20261024-dbmol-pro02-adoption-06\\observer-failure-02\\observe-0001",
+    "Experiment folder lacks README: C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\brd4-jq1\\boltz-lr0025\\runs\\20261024-boltz-pro02-adoption-04\\observer-failure-02",
+    "Experiment folder lacks README: C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\brd4-jq1\\boltz-lr0025\\runs\\20261024-boltz-pro02-adoption-04\\observer-failure-02\\observe-0001",
+    "Experiment folder lacks README: C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\brd4-jq1\\protenix-extended-50000\\runs\\20261024-protenix-extended-03\\native-outcomes-02",
+    "Experiment folder lacks README: C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\brd4-jq1\\protenix-extended-50000\\runs\\20261024-protenix-extended-03\\native-outcomes-02\\continuation-after-native-0000",
+    "Experiment folder lacks README: C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\brd4-jq1\\protenix-extended-50000\\runs\\20261024-protenix-extended-03\\native-outcomes-02\\continuation-native-0000",
+    "Experiment folder lacks README: C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\brd4-jq1\\protenix-extended-50000\\runs\\20261024-protenix-extended-03\\native-outcomes-02\\random-after-native-0000",
+    "Experiment folder lacks README: C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\brd4-jq1\\protenix-extended-50000\\runs\\20261024-protenix-extended-03\\native-outcomes-02\\random-native-0000",
+    "Experiment folder lacks README: C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\brd4-jq1\\protenix-extended-50000\\runs\\20261024-protenix-extended-03\\native-outcomes-02\\continuation-native-0000\\payload",
+    "Experiment folder lacks README: C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\brd4-jq1\\protenix-extended-50000\\runs\\20261024-protenix-extended-03\\native-outcomes-02\\continuation-native-0000\\storage-entry",
+    "Experiment folder lacks README: C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\brd4-jq1\\protenix-extended-50000\\runs\\20261024-protenix-extended-03\\native-outcomes-02\\random-native-0000\\payload",
+    "Experiment folder lacks README: C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\brd4-jq1\\protenix-extended-50000\\runs\\20261024-protenix-extended-03\\native-outcomes-02\\random-native-0000\\storage-entry",
+    "Experiment folder lacks README: C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\brd4-jq1\\protenix-extended-50000\\runs\\20261024-protenix-extended-03\\native-outcomes-02\\continuation-native-0000\\payload\\study",
+    "Experiment folder lacks README: C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\brd4-jq1\\protenix-extended-50000\\runs\\20261024-protenix-extended-03\\native-outcomes-02\\continuation-native-0000\\payload\\study\\context",
+    "Experiment folder lacks README: C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\brd4-jq1\\protenix-extended-50000\\runs\\20261024-protenix-extended-03\\native-outcomes-02\\continuation-native-0000\\payload\\study\\early_pilot",
+    "Experiment folder lacks README: C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\brd4-jq1\\protenix-extended-50000\\runs\\20261024-protenix-extended-03\\native-outcomes-02\\continuation-native-0000\\payload\\study\\native_gradient_checks",
+    "Experiment folder lacks README: C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\brd4-jq1\\protenix-extended-50000\\runs\\20261024-protenix-extended-03\\native-outcomes-02\\continuation-native-0000\\payload\\study\\early_pilot\\combined_initial_checks",
+    "Experiment folder lacks README: C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\brd4-jq1\\protenix-extended-50000\\runs\\20261024-protenix-extended-03\\native-outcomes-02\\continuation-native-0000\\payload\\study\\early_pilot\\references",
+    "Experiment folder lacks README: C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\brd4-jq1\\protenix-extended-50000\\runs\\20261024-protenix-extended-03\\native-outcomes-02\\random-native-0000\\payload\\study"
+  ],
+  "status": "failed"
+}

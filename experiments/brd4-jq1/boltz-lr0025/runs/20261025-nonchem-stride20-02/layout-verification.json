@@ -1,0 +1,7 @@
+{
+  "scope": "local standard-library layout/AST/byte/syntax checks only",
+  "returncode": 1,
+  "stdout_sha256": "455252798ef30fd6b446d207245668c43ac0333eedd29fe10cdf20250b010c17",
+  "status": "failed_preexisting_global_discovery_and_historical_README_errors",
+  "local_scientific_tests_run": false
+}

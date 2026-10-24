@@ -1,0 +1,29 @@
+{
+  "status": "passed",
+  "suite": "selected-nonchemistry-stride20-metadata-v2",
+  "cases": 78,
+  "launcher_manifest_sha256": "704fab033d97342a14dc12b58dc32df44874232c5c30aad47c4d02041a502aab",
+  "proofs": [
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-02/startup-fix-03/cpu/selected-scheduler-final-0.txt",
+      "sha256": "366e547afb55ab67aac36928500e17c74a64cc32436f5c77bf681eb5179a72e4"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-02/startup-fix-03/cpu/submission.json",
+      "sha256": "09e3fa27a4196f4b7e631e05ceadf8891fced1fa540dd80c5606de1ae80c1b92"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-02/startup-fix-03/cpu/stdout.29809262.log",
+      "sha256": "1ca2af26b0f51cf4037caf4d1322894a5eb4c8ff4c9870d209320dd198f13ca7"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-02/startup-fix-03/cpu/payload/selected.xml",
+      "sha256": "ef8c0adbd18938db4401607565f716c3b52ca382ab2207a5a6240dc92232118e"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-02/startup-fix-03/cpu/payload/selected.log",
+      "sha256": "4747d182406d7df89f6f93bd5f8cf1618c2f1dcc6f52223399af7e66e4238589"
+    }
+  ],
+  "original_scientific_cpu_replaced": false
+}

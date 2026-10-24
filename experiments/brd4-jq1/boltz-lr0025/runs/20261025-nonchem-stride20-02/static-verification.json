@@ -1,0 +1,11 @@
+{
+  "status": "passed_static_only",
+  "source_manifest_sha256": "f3be7c2f85d495ae042ee8092eecb5274c6298cc8f12907a7ba9ba6d8fb740db",
+  "source_files": 12,
+  "archive_members": 13,
+  "runtime_members_match_normalized_working_bytes": true,
+  "declared_allocated_cases": 67,
+  "new_run_directories_have_README": true,
+  "local_scientific_or_numeric_tests": false,
+  "old_failed_packages_and_evidence_preserved": true
+}

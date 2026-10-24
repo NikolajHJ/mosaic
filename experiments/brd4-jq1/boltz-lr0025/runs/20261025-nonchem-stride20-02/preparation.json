@@ -1,0 +1,12 @@
+{
+  "status": "prepared_local_stdlib_only",
+  "files": 12,
+  "manifest_sha256": "f3be7c2f85d495ae042ee8092eecb5274c6298cc8f12907a7ba9ba6d8fb740db",
+  "archive_bytes": 32375,
+  "archive_sha256": "75a227c738f1ce0540263dd21a174d464509cba136ef83558bb46d59407268e9",
+  "allocated_cpu_passed": false,
+  "staged": false,
+  "submitted": false,
+  "scientific_execution": false,
+  "original_metadata_contract_archive_sha256": "5958373b3dc53a41cf6106264c611f334c6165d93f562ce167b221bf5cf6eac5"
+}

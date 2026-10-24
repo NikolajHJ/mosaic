@@ -1,0 +1,11 @@
+{
+  "status": "passed_static_only",
+  "source_manifest_sha256": "704fab033d97342a14dc12b58dc32df44874232c5c30aad47c4d02041a502aab",
+  "source_files": 12,
+  "archive_members": 13,
+  "declared_allocated_cases": 78,
+  "runtime_bytes_match_normalized_working_tree": true,
+  "original_scientific_sources_settings_results_unchanged": true,
+  "local_scientific_tests_run": false,
+  "monitor_remains_paused": true
+}

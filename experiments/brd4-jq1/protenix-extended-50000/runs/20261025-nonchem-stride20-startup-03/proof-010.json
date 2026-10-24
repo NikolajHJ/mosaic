@@ -1,0 +1,29 @@
+{
+  "status": "passed",
+  "kind": "selected_owner",
+  "version": "independent-nonchemistry-stride20-admission-v2",
+  "profile": "protenix50k40k",
+  "selected_arm": "continuation",
+  "launcher_manifest_sha256": "704fab033d97342a14dc12b58dc32df44874232c5c30aad47c4d02041a502aab",
+  "scientific_source_manifest_sha256": "da9db6821d26b884ca1749303fc8e0b0095bd9ee7cbd1b427cdcf1b22eec6562",
+  "initial_empirical_unit_bytes": 23182,
+  "proofs": [
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/cpu-certificate.json",
+      "sha256": "ab3148ea6dd8d25361f85e9d8283578e0cf4429844d820a4dab6b03673ef577b"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000-certificate.json",
+      "sha256": "23eabefd3c08eb65c1395090bb4ab4683d282083b76ceb444b25f84356ed9169"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/assessment.json",
+      "sha256": "edd616ca16b1d7bd4882ca4f395b8a4375387cffff5f4124f5fbb071ff02e81d"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-02/startup-fix-03/cpu-certificate.json",
+      "sha256": "b5fd3fb230bc6479b8f6f081381f6663c3b823c8643c41e93dbaf21942837d16"
+    }
+  ],
+  "science_and_saved_results_changed": false
+}

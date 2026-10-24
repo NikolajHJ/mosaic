@@ -1,0 +1,29 @@
+{
+  "status": "passed",
+  "suite": "selected-nonchemistry-stride20-metadata-v2",
+  "cases": 67,
+  "launcher_manifest_sha256": "f3be7c2f85d495ae042ee8092eecb5274c6298cc8f12907a7ba9ba6d8fb740db",
+  "proofs": [
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-02/cpu/selected-scheduler-final-5.txt",
+      "sha256": "da2a5fca34e26648cb848e4650f31144c22cf0375a09cf2517cbda4defdf4d75"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-02/cpu/submission.json",
+      "sha256": "22d616aed7cc58f3401a12a271df1beb6d3f58804277c9535c637fae26cedc8c"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-02/cpu/stdout.29809209.log",
+      "sha256": "2d681976e4263f7a822fd720b5bb5df6bb150e78775fd31e508434bbc4147ddb"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-02/cpu/payload/selected.xml",
+      "sha256": "6ab63d6a3e819610015fac7619f7ffb2afb2fbee8e418b0fa9b16960e007e487"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-02/cpu/payload/selected.log",
+      "sha256": "3e136d71448e966d2ffa317340babdba5938cffd288094fe81f3fbd502772f2e"
+    }
+  ],
+  "original_scientific_cpu_replaced": false
+}

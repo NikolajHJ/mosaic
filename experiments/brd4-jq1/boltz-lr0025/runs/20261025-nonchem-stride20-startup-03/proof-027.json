@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "source": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-startup-release-03/source",
+  "manifest_sha256": "704fab033d97342a14dc12b58dc32df44874232c5c30aad47c4d02041a502aab",
+  "archive_sha256": "763dd122080bfc1896b391d26dbf7bba0b382af0f0e34feddef48b848ed0048d",
+  "archive_bytes": 34175,
+  "preflight_gate": {
+    "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-02/startup-fix-03/preflight/selected-storage-preflight/gate.json",
+    "bytes": 6979,
+    "sha256": "18ef1ad9c88386dfa42797feb579dd481cc95f91795a5f9d0111dfdf3ccbd94f"
+  }
+}

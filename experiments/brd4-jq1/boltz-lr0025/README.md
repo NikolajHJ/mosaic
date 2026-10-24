@@ -49,3 +49,12 @@ and29798607 then failed before model loading on missing manifest provenance.
 revision correction and actual generated-command startup checks. DTU SSH
 authentication currently blocks its allocated testing and fresh submission;
 no new native gradient pass or optimization start is established.
+
+Dated update25October2026 00:36Paris: the independently admitted non-chemistry
+chain now uses matrix snapshots/trials every20updates (plus0/end/boundaries and
+boundedlatest/best), with EVERY loss/component/update scalar preserved. All78
+allocated persistence/routing checks and original CPU/startup/readiness proofs
+passed. First GPUjob29809297/callback29809298 is actuallysubmitted/PEND, with no
+optimization start inferred. Scientific settings/checks/results unchanged;
+delayed-chemistry arms remain deferred. See
+[runtime/storage/source receipts](runs/20261025-nonchem-stride20-startup-03/README.md).

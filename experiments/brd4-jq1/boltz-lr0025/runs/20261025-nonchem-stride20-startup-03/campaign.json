@@ -1,0 +1,186 @@
+{
+  "status": "allocated78_and_original_startup_passed_first_gpu_queued",
+  "observed_utc": "2026-10-24T22:36:22.393198+00:00",
+  "source_manifest_sha256": "704fab033d97342a14dc12b58dc32df44874232c5c30aad47c4d02041a502aab",
+  "scientific_source_and_settings_changed": false,
+  "matrix_stride": 20,
+  "loss_stride": 1,
+  "profile": "boltz30k",
+  "first_segment_job_id": "29809297",
+  "own_ended_callback_job_id": "29809298",
+  "scientific_updates_verified": 0,
+  "all_terminal_passed": false,
+  "verification_sha256": "0b9a31565c2195c99c3a1658865d3d4b6053e1ed68cb72561fb307ccef84ee5d",
+  "proofs": [
+    {
+      "remote": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/boltz2-after-segment-0000/submission.json",
+      "local": "proof-000.json",
+      "bytes": 1399,
+      "sha256": "3de5912e2200968adfdfdc8193b771e9c53ca897444f802f83f6c0cd4b2429f2"
+    },
+    {
+      "remote": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/boltz2-segment-0000/submission.json",
+      "local": "proof-001.json",
+      "bytes": 1373,
+      "sha256": "223e1e875ff5fd0d8827f34d4ad8cd9d5e37f8418b0cf68c230a501ebd435416"
+    },
+    {
+      "remote": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/boltz2-stride20-v3-segment-0000-certificate.json",
+      "local": "proof-002.json",
+      "bytes": 4443,
+      "sha256": "09b96c0a72a9bf7680f4d8ac42040eaec1800a85e5de3e537ec5500b9ff4f28a"
+    },
+    {
+      "remote": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/boltz2-stride20-v3-segment-0000.json",
+      "local": "proof-003.json",
+      "bytes": 87371,
+      "sha256": "f13c3a4693f007135cefc1639f4feeead8371c0dba6af0edb7fd01850e5c5f78"
+    },
+    {
+      "remote": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/dispatch-0004/scheduler-at-submission.txt",
+      "local": "proof-004.txt",
+      "bytes": 2571,
+      "sha256": "0ffa9a538a64f884ecdf3d4181a23856c93a53f79d9657b687004252802470d7"
+    },
+    {
+      "remote": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/dispatch-0004/selected-storage-dispatch-0/gate.json",
+      "local": "proof-005.json",
+      "bytes": 6983,
+      "sha256": "3d889a05193b40b004edf79b41d1260d64bfe302aa9607264676085f73061e8f"
+    },
+    {
+      "remote": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/dispatch-0004/stderr.29809268.log",
+      "local": "proof-006.log",
+      "bytes": 1077,
+      "sha256": "a5531a44eb5c5d57a9400089e20e988554f607f3ae04d91fa695c84e1b13b5c0"
+    },
+    {
+      "remote": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/dispatch-0004/stdout.29809268.log",
+      "local": "proof-007.log",
+      "bytes": 2184,
+      "sha256": "74aafcf1ac604cfc58e74f75c9c31a8824e18428708eb7014fbdbb28f491eec4"
+    },
+    {
+      "remote": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/dispatch-0004/submission-started.json",
+      "local": "proof-008.json",
+      "bytes": 1173,
+      "sha256": "a7415a06612bbabf17316c6738ceee25b0c0f8fe7866c1f519e5331dadeb3ac6"
+    },
+    {
+      "remote": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/dispatch-0004/submission.json",
+      "local": "proof-009.json",
+      "bytes": 1295,
+      "sha256": "d0196ff53163e7a44ade952c67be521856a1306279133dce0cd0258bb2b0dd34"
+    },
+    {
+      "remote": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/nonchem-stride20-v3-owner.json",
+      "local": "proof-010.json",
+      "bytes": 1401,
+      "sha256": "5b6ccef9e156c53557ad004e7c9cafd846730c1418fe1da8e46e663fe7524173"
+    },
+    {
+      "remote": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-02/startup-fix-03/after-cpu/independent-noise-preserved.json",
+      "local": "proof-011.json",
+      "bytes": 137,
+      "sha256": "a22b2b5c741a5650437b5ec1f47a5aa2f2c09ad44b21ecbf97b94b5d6fdd5194"
+    },
+    {
+      "remote": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-02/startup-fix-03/after-cpu/scheduler-at-submission.txt",
+      "local": "proof-012.txt",
+      "bytes": 2520,
+      "sha256": "17df7bfe9942455037b41dac737fc348a3f36c4b59d8957d1844c0e7ae730eda"
+    },
+    {
+      "remote": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-02/startup-fix-03/after-cpu/stderr.29809263.log",
+      "local": "proof-013.log",
+      "bytes": 233,
+      "sha256": "7d57e9e44355166e210a310a2b90b7d8543b85c5ffbb82276c701f4dd1f23271"
+    },
+    {
+      "remote": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-02/startup-fix-03/after-cpu/stdout.29809263.log",
+      "local": "proof-014.log",
+      "bytes": 2113,
+      "sha256": "427f9fa75b769948d48c9a0ecc5de89b2e7dc2947f5efe5c8ac0a5fddac3a10d"
+    },
+    {
+      "remote": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-02/startup-fix-03/after-cpu/submission-started.json",
+      "local": "proof-015.json",
+      "bytes": 1259,
+      "sha256": "794925be1c47c74a17237206e12cce5e36e4c0b409ff2a1a104dfda6c8578aa8"
+    },
+    {
+      "remote": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-02/startup-fix-03/after-cpu/submission.json",
+      "local": "proof-016.json",
+      "bytes": 1381,
+      "sha256": "d78e651ad9c14ebe51599d8f97d88636d46af955c038fe66a3297ce79879464a"
+    },
+    {
+      "remote": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-02/startup-fix-03/cpu-certificate.json",
+      "local": "proof-017.json",
+      "bytes": 1452,
+      "sha256": "b5fd3fb230bc6479b8f6f081381f6663c3b823c8643c41e93dbaf21942837d16"
+    },
+    {
+      "remote": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-02/startup-fix-03/cpu/payload/selected.log",
+      "local": "proof-018.log",
+      "bytes": 180,
+      "sha256": "4747d182406d7df89f6f93bd5f8cf1618c2f1dcc6f52223399af7e66e4238589"
+    },
+    {
+      "remote": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-02/startup-fix-03/cpu/payload/selected.xml",
+      "local": "proof-019.xml",
+      "bytes": 10646,
+      "sha256": "ef8c0adbd18938db4401607565f716c3b52ca382ab2207a5a6240dc92232118e"
+    },
+    {
+      "remote": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-02/startup-fix-03/cpu/scheduler-at-submission.txt",
+      "local": "proof-020.txt",
+      "bytes": 2396,
+      "sha256": "677d0fedf0192d72914beaf75bb7ef93357f57333f865ce4e49bd7add01f11fe"
+    },
+    {
+      "remote": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-02/startup-fix-03/cpu/selected-scheduler-final-0.txt",
+      "local": "proof-021.txt",
+      "bytes": 3675,
+      "sha256": "366e547afb55ab67aac36928500e17c74a64cc32436f5c77bf681eb5179a72e4"
+    },
+    {
+      "remote": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-02/startup-fix-03/cpu/selected-storage-cpu-entry/gate.json",
+      "local": "proof-022.json",
+      "bytes": 6980,
+      "sha256": "38603be2b191cc7951111d0aed3ddb536ce88379e3a78885fefbe8e5c3518277"
+    },
+    {
+      "remote": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-02/startup-fix-03/cpu/stderr.29809262.log",
+      "local": "proof-023.log",
+      "bytes": 233,
+      "sha256": "7d57e9e44355166e210a310a2b90b7d8543b85c5ffbb82276c701f4dd1f23271"
+    },
+    {
+      "remote": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-02/startup-fix-03/cpu/stdout.29809262.log",
+      "local": "proof-024.log",
+      "bytes": 2082,
+      "sha256": "1ca2af26b0f51cf4037caf4d1322894a5eb4c8ff4c9870d209320dd198f13ca7"
+    },
+    {
+      "remote": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-02/startup-fix-03/cpu/submission-started.json",
+      "local": "proof-025.json",
+      "bytes": 1177,
+      "sha256": "9c6da7418df4eee4b4086cb24e86f9401e895fa73826598e7517ae2ee0ab6552"
+    },
+    {
+      "remote": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-02/startup-fix-03/cpu/submission.json",
+      "local": "proof-026.json",
+      "bytes": 1299,
+      "sha256": "09e3fa27a4196f4b7e631e05ceadf8891fced1fa540dd80c5606de1ae80c1b92"
+    },
+    {
+      "remote": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-02/startup-fix-03/source-staging.json",
+      "local": "proof-027.json",
+      "bytes": 640,
+      "sha256": "15f70b09121dc6b0a95e36e57de4412c899cbb1b13333ef46412d3324cf36cdd"
+    }
+  ],
+  "noise_job_preserved": "29809228",
+  "monitor_remains_paused": true
+}

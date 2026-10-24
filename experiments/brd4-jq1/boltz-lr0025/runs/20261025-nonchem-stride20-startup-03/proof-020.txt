@@ -1,0 +1,48 @@
+
+Job <29809262>, Job Name <mosaic-selected-control-cpu>, User <s234818>, Project
+                           <default>, Status <PEND>, Queue <hpc>, Command <bash
+                           -l /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrbo
+                          ost-analysis-01/nonchem-stride20-startup-release-03/s
+                          ource/stage.lsf /work3/s234818/mosaic/runs/20261022-b
+                          rd4-jq1-lrboost-analysis-01/nonchem-stride20-startup-
+                          release-03/source 704fab033d97342a14dc12b58dc32df4487
+                          4232c5c30aad47c4d02041a502aab control cpu /work3/s234
+                          818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01
+                          /nonchem-stride20-02/startup-fix-03/cpu>, Esub <dcc>
+Sun Oct 25 00:30:20 2026: Submitted from host <hpclogin1>, CWD <$HOME>, Output 
+                          File (overwrite) </work3/s234818/mosaic/runs/20261022
+                          -brd4-jq1-lrboost-analysis-01/nonchem-stride20-02/sta
+                          rtup-fix-03/cpu/stdout.29809262.log>, Error File (ove
+                          rwrite) </work3/s234818/mosaic/runs/20261022-brd4-jq1
+                          -lrboost-analysis-01/nonchem-stride20-02/startup-fix-
+                          03/cpu/stderr.29809262.log>, 2 Task(s), Requested Res
+                          ources <{select[shortparallel_] rusage[mem=4096.00] s
+                          pan[hosts=1]} || {select[!shortparallel_] rusage[mem=
+                          4096.00] span[hosts=1]}>;
+ PENDING REASONS:
+ New job is waiting for scheduling;
+
+ RUNLIMIT                
+ 30.0 min of hpclogin1
+
+ MEMLIMIT
+      4 G 
+
+ PENDING TIME DETAILS:
+ Eligible pending time (seconds):	0
+ Ineligible pending time (seconds):	0
+
+ SCHEDULING PARAMETERS:
+           r15s   r1m  r15m   ut      pg    io   ls    it    tmp    swp    mem
+ loadSched   -     -     -     -       -     -    -     -     -      -      -  
+ loadStop    -     -     -     -       -     -    -     -     -      -      -  
+
+ RESOURCE REQUIREMENT DETAILS:
+ Job-level: {select[shortparallel_] rusage[mem=4096.00] span[hosts=1]} || {sele
+                          ct[!shortparallel_] rusage[mem=4096.00] span[hosts=1]
+                          }
+ App-level: -
+ Queue-level: same[type:model] affinity[core] cu[type=enclosure:maxcus=1]
+ Combined: -
+ Effective: -
+

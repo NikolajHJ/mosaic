@@ -1,0 +1,54 @@
+#!/bin/bash
+set -euo pipefail
+[[ $# == 5 && -n "${LSB_JOBID:-}" ]]
+launcher=$1
+manifest=$2
+profile=$3
+phase=$4
+parent=$5
+export MOSAIC_NOISY_ALLOCATION_STARTED="$(date +%s)"
+module load python3/3.12.11
+python=/work3/s234818/mosaic/envs/protenix-tiny/bin/python
+"$python" - "$launcher" "$manifest" <<'VERIFY_SELECTED'
+import hashlib,json,stat,sys
+from pathlib import Path
+root=Path(sys.argv[1]);raw=(root/'source_manifest.json').read_bytes()
+assert hashlib.sha256(raw).hexdigest()==sys.argv[2]
+files=json.loads(raw)['files']
+assert {p.relative_to(root).as_posix() for p in root.rglob('*') if p.is_file() or p.is_symlink()}==set(files)|{'source_manifest.json'}
+for p in [root,*root.rglob('*')]:assert not p.is_symlink() and (p.is_file() or p.is_dir()) and not p.stat().st_mode&0o222
+for rel,digest in files.items():
+ assert not Path(rel).is_absolute() and '..' not in Path(rel).parts
+ with (root/rel).open('rb') as f:assert hashlib.file_digest(f,'sha256').hexdigest()==digest
+VERIFY_SELECTED
+base=/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01
+case "$profile" in
+  boltz30k) science="$base/boltz-lr0025-release-03/source" ;;
+  dbmol10k) science="$base/boltz-dbmol-pilot-release-02/source" ;;
+  protenix50k40k|control) science="$base/protenix-extended-release-03/source" ;;
+  *) exit 2 ;;
+esac
+export PYTHONPATH="$launcher:$science/scripts:$science/src:$science/tests"
+export PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1 HF_HUB_OFFLINE=1 HF_HUB_DISABLE_TELEMETRY=1
+export OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 MKL_NUM_THREADS=4
+export JAX_PLATFORMS=cpu JAX_ENABLE_X64=0
+[[ "$profile" != dbmol10k ]] || export JAX_ENABLE_X64=1
+if [[ "$phase" == native || "$phase" == segment || "$phase" == noise-gpu ]]; then
+  [[ "$LSB_QUEUE" == gpul40s ]]
+  module load cuda/12.9.1 cudnn/v9.13.0.50-prod-cuda-12.X
+  if [[ "$profile" == protenix50k40k || "$phase" == noise-gpu ]]; then
+    export JAX_PLATFORMS=cuda,cpu XLA_PYTHON_CLIENT_PREALLOCATE=false
+  fi
+else
+  [[ "$LSB_QUEUE" == hpc ]]
+  export CUDA_VISIBLE_DEVICES=''
+fi
+source "$science/scripts/hpc/boltz_node_tmpdir.sh"
+cd "$launcher"
+"$python" "$launcher/selected_ops.py" --profile "$profile" --phase "$phase" --parent "$parent" --manifest "$manifest"
+if [[ "$phase" == cpu ]]; then
+  mkdir "$parent/payload"
+  "$python" -m pytest tests/test_selected_launch.py tests/test_retention.py --rootdir "$launcher" --import-mode=importlib -o addopts= \
+    -o cache_dir="$parent/payload/cache" --basetemp "$TMPDIR/selected-fixtures" \
+    --junitxml="$parent/payload/selected.xml" -q > "$parent/payload/selected.log" 2>&1
+fi

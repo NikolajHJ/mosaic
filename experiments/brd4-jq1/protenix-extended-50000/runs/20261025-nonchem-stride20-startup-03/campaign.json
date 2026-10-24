@@ -1,0 +1,84 @@
+{
+  "status": "allocated78_and_original_startup_passed_first_gpu_queued",
+  "observed_utc": "2026-10-24T22:36:22.393198+00:00",
+  "source_manifest_sha256": "704fab033d97342a14dc12b58dc32df44874232c5c30aad47c4d02041a502aab",
+  "scientific_source_and_settings_changed": false,
+  "matrix_stride": 20,
+  "loss_stride": 1,
+  "profile": "protenix50k40k",
+  "first_segment_job_id": "29809291",
+  "own_ended_callback_job_id": "29809292",
+  "scientific_updates_verified": 0,
+  "all_terminal_passed": false,
+  "verification_sha256": "0b9a31565c2195c99c3a1658865d3d4b6053e1ed68cb72561fb307ccef84ee5d",
+  "proofs": [
+    {
+      "remote": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-after-segment-0000/submission.json",
+      "local": "proof-000.json",
+      "bytes": 1456,
+      "sha256": "c37a251d81c4e23246c3f6887ad9989e25651ada2a9817c4ec76d931bdff4e5b"
+    },
+    {
+      "remote": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-segment-0000/submission.json",
+      "local": "proof-001.json",
+      "bytes": 1430,
+      "sha256": "dd10718a178003e80a77ed37725a7c4e12b15fa55090bd4b63258ab72574878d"
+    },
+    {
+      "remote": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-stride20-v3-command-segment-0000-started.json",
+      "local": "proof-002.json",
+      "bytes": 118,
+      "sha256": "b0e3a8ee59a307b6d7412bdf4e2163738cd52e62d1fdf49748179bc46cd081ac"
+    },
+    {
+      "remote": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-stride20-v3-command-segment-0000.json",
+      "local": "proof-003.json",
+      "bytes": 8888,
+      "sha256": "c2da22bfeb4d2c8a80e19b77aa2fe9182e5618aab355842df372ebf2a927cdf4"
+    },
+    {
+      "remote": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/dispatch-0004/scheduler-at-submission.txt",
+      "local": "proof-004.txt",
+      "bytes": 2598,
+      "sha256": "24593e3f47aaf577c712770c41413fefdf1ed96473e951d652c5504d20042d1e"
+    },
+    {
+      "remote": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/dispatch-0004/selected-storage-dispatch-0/gate.json",
+      "local": "proof-005.json",
+      "bytes": 6983,
+      "sha256": "0052d07c62b65fb083dbc3a48b512cce7a02c88a9712573b75b8c572155b3bbf"
+    },
+    {
+      "remote": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/dispatch-0004/stderr.29809270.log",
+      "local": "proof-006.log",
+      "bytes": 233,
+      "sha256": "7d57e9e44355166e210a310a2b90b7d8543b85c5ffbb82276c701f4dd1f23271"
+    },
+    {
+      "remote": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/dispatch-0004/stdout.29809270.log",
+      "local": "proof-007.log",
+      "bytes": 2210,
+      "sha256": "95873a41c0676e22b2a7658cb9a10e504286fa08b8756d8842cb2a2f13de5375"
+    },
+    {
+      "remote": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/dispatch-0004/submission-started.json",
+      "local": "proof-008.json",
+      "bytes": 1206,
+      "sha256": "37295f57d8f0c0afc2f8dec7901249afa3e288eacbd04829fd5df71e810fdcf4"
+    },
+    {
+      "remote": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/dispatch-0004/submission.json",
+      "local": "proof-009.json",
+      "bytes": 1328,
+      "sha256": "de03037b3988219054ecb3492bbd736f7f7a6b7b7156b0b4ff36febdb6b0ec4c"
+    },
+    {
+      "remote": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/nonchem-stride20-v3-owner.json",
+      "local": "proof-010.json",
+      "bytes": 1440,
+      "sha256": "2d26080f549bd40c9b58d1b4e9d2506677ec7e9239bc8bb29be4097046b7676b"
+    }
+  ],
+  "noise_job_preserved": "29809228",
+  "monitor_remains_paused": true
+}

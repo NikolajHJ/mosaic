@@ -1,0 +1,22 @@
+{
+  "artifact_writers_adapted": true,
+  "files": {
+    "README.md": "c7c68ad56bf7acd89925e9f68607ca3772cdfd7b266e660e10b6d94bed32f2c6",
+    "legacy_contract.py": "9918125b181e38ce953066e1210a1a34c3331c6cdcf5d590c805d71881ec1820",
+    "noisy_entry.py": "80fe0b90d7ce4345082751ffcc4f93582b7da3cba8e454a7ec911a36e9c9ef1c",
+    "plan.json": "75f9bafa3193853fb0051f0f3868d899e707331fd5583ec985b595cd0435e3ab",
+    "retention.py": "3629f2d03adf2887c72aa52a1a2eae297dedab2817f3e80eee50a5ddf454fd3d",
+    "selected_contract.py": "d3f73bede625a309718cf7c28cf4793c17d421a0d0da470386565d1dd0c20e85",
+    "selected_ops.py": "b4595dd8c17188d7dfcac2e5326c38b59796684c20da07121e5e23b5e2807f23",
+    "selected_storage.py": "9612a7144a19e903d215823947046d18b098124b739edc3a15d0eca76da08b01",
+    "stage.lsf": "90c1ce422c6305b6f447d92df59fba37c1d6ff88023b6a9ca030eba22a62291f",
+    "tests/README.md": "8cb8ffbcdff3686b02af318e9322bd9c17c7d23cb9aea99ea7b9e0b04af09565",
+    "tests/test_retention.py": "cd6c7454bc3e8d43e20b89992efc54f48a63f23698cff221af18e60544a0ae24",
+    "tests/test_selected_launch.py": "f0bd22d6be4373d5f78a5030d9a8220b9d00190b1d174140ec00d0578a622372"
+  },
+  "git_revision_reference": "c74c659344123937608077e3e4078f75f09cd743",
+  "loss_every_step_matrix_stride": 20,
+  "metadata_cases": 67,
+  "scientific_source_changed": false,
+  "version": "selected-nonchemistry-metadata-release-v1"
+}

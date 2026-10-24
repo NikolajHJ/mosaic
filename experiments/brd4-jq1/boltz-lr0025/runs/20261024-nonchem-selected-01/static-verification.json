@@ -1,0 +1,18 @@
+{
+  "status": "passed_static_only",
+  "asts": [
+    "scripts\\hpc\\selected_launch\\bootstrap.py",
+    "scripts\\hpc\\selected_launch\\noisy_entry.py",
+    "scripts\\hpc\\selected_launch\\prepare.py",
+    "scripts\\hpc\\selected_launch\\selected_contract.py",
+    "scripts\\hpc\\selected_launch\\selected_ops.py",
+    "scripts\\hpc\\selected_launch\\selected_storage.py",
+    "scripts\\hpc\\selected_launch\\tests\\test_selected_launch.py"
+  ],
+  "source_files": 10,
+  "archive_manifest_and_current_normalized_bytes_exact": true,
+  "declared_allocated_cases": 42,
+  "local_pytest_or_scientific_execution": false,
+  "repository_layout_status": "failed_preexisting_default85paths82modules_and_historical_evidence_READMEs",
+  "new_experiment_directories_have_README": true
+}

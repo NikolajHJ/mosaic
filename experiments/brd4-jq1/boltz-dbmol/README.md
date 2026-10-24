@@ -83,3 +83,12 @@ gates after launcher04 CPU passed1,135 cases and its native job failed before
 model loading on missing provenance. All657 scientific member bytes remain
 unchanged. DTU SSH authentication blocks new allocated testing/submission;
 no DBMol native gradient pass or optimization start is established.
+
+Dated update25October2026 00:36Paris: the independently admitted non-chemistry
+chain now uses matrix snapshots/trials every20updates (plus0/end/boundaries and
+boundedlatest/best), with EVERY loss/component/update scalar preserved. All78
+allocated persistence/routing checks and original CPU/startup/readiness proofs
+passed. First GPUjob29809294/callback29809295 is actuallysubmitted/PEND, with no
+optimization start inferred. Scientific settings/checks/results unchanged;
+delayed-chemistry arms remain deferred. See
+[runtime/storage/source receipts](runs/20261025-nonchem-stride20-startup-03/README.md).

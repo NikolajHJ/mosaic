@@ -6844,3 +6844,159 @@ Original runtime failure/all5production block remain unchanged, with no gate
 waiver, source/setting/result/job change, extra cleanup or monitor unpause.
 Exact local stdlib byte/JSON/source/timing audit is chemistry-timing-inspection-03.json
 in the Pro03run. All scientific/model/numerical execution remains allocatedHPC.
+
+
+### 2026-10-24 — selected non-chemistry launcher prepared; no new job yet
+
+The user explicitly asked to start all requested runs without delayed chemistry.
+A new shared launcher selects plainBoltz30k/DBMolbinding10k/Protenixnative+40k,
+retaining original635/657/643science,CPU827/1163/866, successful selected native
+proofs, exact settings/parent/results and all original generated-command/native/
+terminal/boundary checks. Independent original642 noisyPro1k receives separate
+CPU/native validation and cannot block the otherthree. DelayedBoltzchem30k and
+randomProchem50k remain deferred with no production/unknown marker allowed;
+all existing bytes stay charged. Failed prior observers/gates are preserved.
+New10file metadata manifest e63f830f4f01f0740151fdd0b2baeb125d0faf9a927b5cd2e57b7400fea9d4c4,
+archive21600bytes SHA0782f673d4abd5536cff7cc6302b87eb86bbab9cf3e4846638e169f7dba7214b.
+Local stdlib AST/bytes/archive checks only;42allocated metadata cases, fresh full
+selected-capacity gate and actual submission remain pending. Full projections,
+oldremaining/report/diagnostic/metadata/noise/learnedprior allowances, stale-root
+charges and4GiB/100000file reserves retained. No extra cleanup/parallelchemistry
+implementation/numerical execution, scientific source/result change or monitor
+unpause. Four dated run READMEs reference shared scripts/hpc/selected_launch and
+results/hpc/20261024-nonchem-selected-01.
+
+
+
+### 2026-10-25 — stride20 user policy prepared; original42 pass and dispatch-role failure preserved
+
+Previous selected launcherCPU29809133/callback29809134 actualDONE/hpc/LSF and42
+raw cases passed. New independent byte/XML/source/resource/reserve audit
+7d8185c98e332d9ac30a19ef5b68c105a38fc627dd8aa1262c4c5369057195fc verified original
+proofs and full preflight34413013534required/41990259569availablebytes. Allthree
+dispatches29809135/36/37 actualEXIT1 beforeGPU/driver/study on a metadata role
+status selected_owner passed to a status=passed verifier. Preserve failed
+source/owners and all originals; this is tooling, not native gradient failure.
+NoisyCPU29809138/callback29809139 completed before the user's output change;
+GPU29809146 was verifiedPEND/unstarted, then suspended and intentionallyretired
+(actualEXIT/TERM_OWNER) with no driver/model/study/scientificupdates. A first
+caller used unavailablebhold (no mutation), correctedbstop succeeded, and bkill
+exit appeared after the short initial confirmation window. Read-only recovery
+authenticated actualEXIT/noStarted/nooutputs before finishing immutable
+retirementSHAc75c65397c2b36378c8127be7da3d2dde803fa8d38ab51a594e2b1d3839896ab.
+No second kill/replay occurred.
+
+User requests every loss value and full matrices every20updates. New persistence
+adapter keeps all scalar state/update/attempt/component rows, periodic full
+snapshots/trials/references, initial/end/segment boundaries and boundedrolling
+latest/best checkpoints. Full initial/terminal derivative and failedcurrenttrial
+files remain. No interpolated/invented frames. All mathematical source/config/
+loss/rate/optimizer/native checks unchanged; artifact-only callbacks verify the
+new exact retained-frame index plus original complete scalar/JSONL/terminal gates.
+New66 allocated cases include dense/sparse exact arrays/scalars/key/evaluation
+counts under allthree original sources, actual persistenceCLI startup and fixed
+owner-roundtrip regression. Local AST/byte/JSON packaging only, no numerical work.
+New12file manifestaf73bea37be4620d1515052a805b43db0a892aa74cd2e783708cc2d66ce07502, archive31395bytes SHA8c414e059b98ebd57520314d9e807c256cecbf6365844db83451445d4309df8b.
+Local draftsource01 retained, correctedREADME source02 not yetstaged/submitted.
+Whole new empirical sparseprojections retain2xsafety/1GiBpersegment/fullremaining
+scopes/stalecharge/4GiB/100000file reserves; freshcapacity and allocatedpass
+remainpending. Four datedrun records link sharedtooling. No savedresultchange,
+scientificrestart, additionalcleanup, independentprojectchange or monitorunpause.
+
+
+
+### 2026-10-25 — stride20 allocated fixture failure preserved; immutable67-case correction prepared
+
+New sourceaf73...CPU29809167 actualEXIT1:66rawcases,63passes/3failures, noerrors/
+skips. Allthree real original-source toy trajectories passed exact loss/scalar/
+gradient/retainedarray/key/evaluation-count assertions before failing JSONL vs
+Python readout tuples on syntheticline42. Actual saved JSON uses lists. Callback
+29809168 correctlyEXIT/blocked; no new owner/dispatch/GPU/scientificupdates.
+Full sparsepreflight actuallypassed31204244536required/41989918047availablebytes,
+unchanged4GiB/100000file reserve, notreservation. Failure stays failed.
+
+New67case metadata source12files manifestf3be7c2f85d495ae042ee8092eecb5274c6298cc8f12907a7ba9ba6d8fb740db,
+archive32375bytes SHA75a227c738f1ce0540263dd21a174d464509cba136ef83558bb46d59407268e9. Compare against
+actual reportJSON plus explicit memoryJSON normalization, retaining all exact
+checks. Remove unsaved readout pair/element arrays; retaineveryloss/periodicfull
+matrices/latest/best/rawderivatives. Adopt allthree initialowners before any
+dispatch to avoid metadataabsence/scheduling races, with source-isolated actual
+readiness childchecks; an additional fixture covers ordering. No loss/rate/model/
+optimizer/FD/parity/frozen/runtime/source/config/savedresult change. Original
+failedsource01/oldCPU42/oldrolefailures/noisyretirement remain immutable. Local
+AST/byte/JSON preparation only; allocated67pass and submission pending. Three
+datedrun02 records plus noisy05phase update written before execution.
+
+
+
+### 2026-10-25 — stride20 numerical persistence67 passed; scoped startup adapter fix prepared
+
+CPU29809209 actualDONE/LSF/67rawcases: authoritative module counts44routing+23
+persistence, zero failures/errors/skips. Independent verification
+13559d86a21703c8c9a40a5139afa7978df689d2d72fa34fcbed85d939b616e0
+validated all rawproofs/resources/source/capacity67. CPUcertificate
+ddb6d4fa028bee151d644a6fbb09ae4c2b7e20a6e36e177c99110e82a4fecac6.
+Wholecapacity32277781752required/41989578302availablebytes, reserves unchanged.
+Callback29809210 actualDONE; dispatch29809221/22/23 actualEXIT during startup
+capture because module-load subprocess proxy also wrapped the probe, escaping
+its interception and attempting the original driver on allocatedCPU/backend
+admission. No scientificGPU/core updates; old probe/startup failures preserved.
+Independent noisyGPU29809228 actuallysubmitted under validated67source; keep it
+unchanged.
+
+New immutable12files source782087e70537f11a3a868b61e73a7354e9c38e592f7dc8a65f8e13ea3ff132c3, archive33546
+SHA0141251bfe024c531f36aaf703639adb9b8f56c8abca228060f771b0a2cb893e. Scope only proxyactivation after unchangedstartup
+and restoration afterward; new proof names preserve failed markers. Three
+additional routing fixtures/full70cases planned allocatedrecheck. Original
+math/config/gradients/FD/parity/frozen/rates/optimizer/boundaries/results retained.
+Control nests in existing1GiB treecap countedonce, wholedata/stale/reserves retained.
+No noisyresubmission, extra cleanup or monitorunpause. Three run records written
+beforebootstrap. Local AST/bytes only; newCPU/GPU outcome not yet established.
+
+
+### 2026-10-25 — startup03 read-only pre-stage filter failure and source02 correction
+
+Initial startup03 caller stopped before any new remote source/control/upload
+or job at a broad *-segment-* assertion: it matched failed startup-command JSON
+files. Preserve caller failure/localdraft source01. Newsource02 explicitly
+classifies exact production phase markers versus known regular startup JSON,
+rejecting unknown/nonregular entries;8fixture cases added (78total). No stored
+artifact removal or priorfailure relabel. Source12files704fab033d97342a14dc12b58dc32df44874232c5c30aad47c4d02041a502aab,
+archive34175SHA763dd122080bfc1896b391d26dbf7bba0b382af0f0e34feddef48b848ed0048d. Full numerical persistence
+checks unchanged; localAST/bytes only. Fresh bootstrap02 has unique markers and
+will recheck every exact target/proof/fullcapacity. Existing noisyGPU29809228
+remains unchanged. No other job/result/setting/monitor changes.
+
+
+### 2026-10-25 — stride20 startup03 full78 and actual startup passed; three GPU chains submitted
+
+Source12files704fab033d97342a14dc12b58dc32df44874232c5c30aad47c4d02041a502aab authenticatedreadonly, archive34175bytes
+SHA763dd122080bfc1896b391d26dbf7bba0b382af0f0e34feddef48b848ed0048d.
+ActualCPU29809262/callback29809263 DONE/hpc/LSFsuccess.78rawcases55routing+23
+persistence allpassed, zeroerrors/fails/skips. CPUcertb5fd3fb230bc6479b8f6f081381f6663c3b823c8643c41e93dbaf21942837d16;
+independent deliveryaudit0b9a31565c2195c99c3a1658865d3d4b6053e1ed68cb72561fb307ccef84ee5d. Original scientificCPU827/1163/866 and
+selectednative52/53/Procontinuationproofs/config/source/parent/model/context
+pins retained. Pro commandcapture and Bol/DBactualpremodel CPUstartup proofs
+passed; ProrealGPUstartup/native/terminal productionchecks arestillfuture.
+Wholefullstorage passed32277683804required/41989268945conservativeavailablebytes,
+4GiB/100000fileheadroom retained; work3FSallzero onlysupplementalunreported.
+Metadata is nestedinside existing1GiB controlcap countonce, with old/source
+bytes/entirebase stalecharged and all future scopes funded.
+
+Actualdispatch29809268/69/70 DONE/LSF and submitted three independent scientific
+GPUchains: plainBoltz30k first29809297/callback29809298; DBMolbinding10k first
+29809294/callback29809295; Protenixnative+40k first29809291/callback29809292.
+At22:36:22UTC allsixPEND. FourCPU/8GiBslot/oneexclusiveL40S/23h, ownendedcallbacks
+only. No corecommittedupdates or newterminalpass inferred fromsubmission. Noisy
+originalGPU29809228 remainsRUN and unchanged; no duplicate/resume/restart.
+Original savedresults and delayed-chemistry deferral preserved; monitornotunpaused.
+
+Newpersistence retains every scalar loss/component/attempt/update and full
+matrices every20/initial/end/boundary plus boundedlatest/best. Matched allocated
+source trajectories verify exact gradients/retainedarrays/keys/scalars/evaluation
+counts. Matrixhistory about95percentlower; three-chain projection16.32094GB to
+12.03863GB (4.28231GB reduction), with fixedscopes/reserves notdividedby20.
+RawCPU/XML/LSF/resource/startup/source proofs and canonicalcampaign/READMEupdates
+retained in the three startup03runrecords; originalfailedattempts remainfailed.
+No modelmath, learningrate/loss/FD/gatewaiver, historicalthinning, extra cleanup,
+independentprojectchange, localnumerics or reportframe invention occurred.

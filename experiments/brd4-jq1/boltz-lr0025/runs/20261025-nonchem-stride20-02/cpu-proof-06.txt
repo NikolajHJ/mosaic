@@ -1,0 +1,65 @@
+
+Job <29809209>, Job Name <mosaic-selected-control-cpu>, User <s234818>, Project
+                           <default>, Service Class <sc_hpc1>, Status <DONE>, Q
+                          ueue <hpc>, Command <bash -l /work3/s234818/mosaic/ru
+                          ns/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stri
+                          de20-release-02/source/stage.lsf /work3/s234818/mosai
+                          c/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-
+                          stride20-release-02/source f3be7c2f85d495ae042ee8092e
+                          ecb5274c6298cc8f12907a7ba9ba6d8fb740db control cpu /w
+                          ork3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-an
+                          alysis-01/nonchem-stride20-02/cpu>, Share group charg
+                          ed </s234818>, Esub <dcc>
+Sun Oct 25 00:19:02 2026: Submitted from host <hpclogin1>, CWD <$HOME>, Output 
+                          File (overwrite) </work3/s234818/mosaic/runs/20261022
+                          -brd4-jq1-lrboost-analysis-01/nonchem-stride20-02/cpu
+                          /stdout.29809209.log>, Error File (overwrite) </work3
+                          /s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analys
+                          is-01/nonchem-stride20-02/cpu/stderr.29809209.log>, 2
+                           Task(s), Requested Resources <{select[shortparallel_
+                          ] rusage[mem=4096.00] span[hosts=1]} || {select[!shor
+                          tparallel_] rusage[mem=4096.00] span[hosts=1]}>;
+Sun Oct 25 00:19:03 2026: Started 2 Task(s) on Host(s) <2*n-62-30-24>, Allocate
+                          d 2 Slot(s) on Host(s) <2*n-62-30-24>, Execution Home
+                           </zhome/95/e/206121>, Execution CWD </zhome/95/e/206
+                          121>;
+Sun Oct 25 00:20:36 2026: Done successfully. The CPU time used is 49.3 seconds.
+
+ RUNLIMIT                
+ 30.0 min
+
+ MEMLIMIT
+      4 G 
+
+ MEMORY USAGE:
+ MAX MEM: 21 Mbytes;  AVG MEM: 21 Mbytes; MEM Efficiency: 0.26%
+
+ CPU USAGE:
+ CPU PEAK: 0.53 ;  CPU PEAK DURATION: 93 second(s)
+ CPU AVERAGE EFFICIENCY: 26.34% ;  CPU PEAK EFFICIENCY: 26.34%
+
+ PENDING TIME DETAILS:
+ Eligible pending time (seconds):	1
+ Ineligible pending time (seconds):	0
+
+ SCHEDULING PARAMETERS:
+           r15s   r1m  r15m   ut      pg    io   ls    it    tmp    swp    mem
+ loadSched   -     -     -     -       -     -    -     -     -      -      -  
+ loadStop    -     -     -     -       -     -    -     -     -      -      -  
+
+ RESOURCE REQUIREMENT DETAILS:
+ Job-level: {select[shortparallel_] rusage[mem=4096.00] span[hosts=1]} || {sele
+                          ct[!shortparallel_] rusage[mem=4096.00] span[hosts=1]
+                          }
+ App-level: -
+ Queue-level: same[type:model] affinity[core] cu[type=enclosure:maxcus=1]
+ Combined: {select[(shortparallel_) && (type == any)] order[-slots:-maxslots] r
+                          usage[mem=4096.00] span[hosts=1] cu[pref=config:maxcu
+                          s=1:type=enclosure] affinity[core(1)*1]} || {select[(
+                          !shortparallel_) && (type == any)] order[-slots:-maxs
+                          lots] rusage[mem=4096.00] span[hosts=1] cu[pref=confi
+                          g:maxcus=1:type=enclosure] affinity[core(1)*1]}
+ Effective: select[((shortparallel_) && (type == any))] order[-slots:-maxslots]
+                           rusage[mem=4096.00] span[hosts=1] cu[type=enclosure:
+                          maxcus=1:pref=config] affinity[core(1)*1] 
+

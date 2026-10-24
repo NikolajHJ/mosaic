@@ -1,0 +1,84 @@
+{
+  "status": "allocated78_and_original_startup_passed_first_gpu_queued",
+  "observed_utc": "2026-10-24T22:36:22.393198+00:00",
+  "source_manifest_sha256": "704fab033d97342a14dc12b58dc32df44874232c5c30aad47c4d02041a502aab",
+  "scientific_source_and_settings_changed": false,
+  "matrix_stride": 20,
+  "loss_stride": 1,
+  "profile": "dbmol10k",
+  "first_segment_job_id": "29809294",
+  "own_ended_callback_job_id": "29809295",
+  "scientific_updates_verified": 0,
+  "all_terminal_passed": false,
+  "verification_sha256": "0b9a31565c2195c99c3a1658865d3d4b6053e1ed68cb72561fb307ccef84ee5d",
+  "proofs": [
+    {
+      "remote": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/dispatch-0004/scheduler-at-submission.txt",
+      "local": "proof-000.txt",
+      "bytes": 2586,
+      "sha256": "9df2ca8bfaa49e17fae64a8f403452e120fb65ca04d0406b657a25521fdb6a15"
+    },
+    {
+      "remote": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/dispatch-0004/selected-storage-dispatch-0/gate.json",
+      "local": "proof-001.json",
+      "bytes": 6983,
+      "sha256": "8fff9a278da1a7dcd15892dd7bcd5a0c0716766c51846ca0fed179d810e5cedc"
+    },
+    {
+      "remote": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/dispatch-0004/stderr.29809269.log",
+      "local": "proof-002.log",
+      "bytes": 1077,
+      "sha256": "72b6d35f8b87210bcb1a43f950b82bf0ca9f455710a02ef917eaa16947163890"
+    },
+    {
+      "remote": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/dispatch-0004/stdout.29809269.log",
+      "local": "proof-003.log",
+      "bytes": 2192,
+      "sha256": "223ed7d3a74c2c0e6fe43903dc64fe68dbb33274bc81734f045de54df4c9ab03"
+    },
+    {
+      "remote": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/dispatch-0004/submission-started.json",
+      "local": "proof-004.json",
+      "bytes": 1188,
+      "sha256": "b6acca8b8e13fcc47e347a576df88399d195d1f00108c2a484c26262e8305308"
+    },
+    {
+      "remote": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/dispatch-0004/submission.json",
+      "local": "proof-005.json",
+      "bytes": 1310,
+      "sha256": "d4ca8a17a0c3ba15413e9d400bbba2d48e3adacd3f9b4de615fe3004bdd52c9f"
+    },
+    {
+      "remote": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/nonchem-stride20-v3-owner.json",
+      "local": "proof-006.json",
+      "bytes": 1420,
+      "sha256": "3ead40ad8554a00ef9498c16fb85cdd7957c7c8eb8e40fcc850c1e9bac84f048"
+    },
+    {
+      "remote": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-after-segment-0000/submission.json",
+      "local": "proof-007.json",
+      "bytes": 1410,
+      "sha256": "192afe22d2ddfa4a6bc655247fa516f492ac8295ecb2774c2827b80ca004257a"
+    },
+    {
+      "remote": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-segment-0000/submission.json",
+      "local": "proof-008.json",
+      "bytes": 1384,
+      "sha256": "c806e3e63fa6594dbb135e366c815975d68794c5ecdb7e7c950efd14eb2dd828"
+    },
+    {
+      "remote": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-stride20-v3-segment-0000-startup-started.json",
+      "local": "proof-009.json",
+      "bytes": 193,
+      "sha256": "341f5c16a51e96353fbf28363e48e05a186698b81294f9c575757e37fd2c6464"
+    },
+    {
+      "remote": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-stride20-v3-segment-0000-startup.json",
+      "local": "proof-010.json",
+      "bytes": 91524,
+      "sha256": "f08694ffcadd420458ac3cf381304a45374ca0a347ce8c78d63267b21e14a872"
+    }
+  ],
+  "noise_job_preserved": "29809228",
+  "monitor_remains_paused": true
+}

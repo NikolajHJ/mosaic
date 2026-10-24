@@ -36,3 +36,12 @@ Current run: [attempt01](runs/20261023-protenix-extended-01/README.md).
 DONE/full832 and original plain completion adoption passed. Independent45-file
 audit passed. Fresh randomnative29798159 and continuationnative29798161 queued;
 no newnative pass, full extended-storage pass or optimization segment yet.
+
+Dated update25October2026 00:36Paris: the independently admitted non-chemistry
+chain now uses matrix snapshots/trials every20updates (plus0/end/boundaries and
+boundedlatest/best), with EVERY loss/component/update scalar preserved. All78
+allocated persistence/routing checks and original CPU/startup/readiness proofs
+passed. First GPUjob29809291/callback29809292 is actuallysubmitted/PEND, with no
+optimization start inferred. Scientific settings/checks/results unchanged;
+delayed-chemistry arms remain deferred. See
+[runtime/storage/source receipts](runs/20261025-nonchem-stride20-startup-03/README.md).

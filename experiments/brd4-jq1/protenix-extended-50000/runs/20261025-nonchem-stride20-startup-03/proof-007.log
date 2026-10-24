@@ -1,0 +1,43 @@
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@hpc.dtu.dk>
+Subject: Job 29809270: <mosaic-selected-protenix50k40k-dispatch-0004> in cluster <dcc> Done
+
+Job <mosaic-selected-protenix50k40k-dispatch-0004> was submitted from host <n-62-30-24> by user <s234818> in cluster <dcc> at Sun Oct 25 00:32:17 2026
+Job was executed on host(s) <2*n-62-31-21>, in queue <hpc>, as user <s234818> in cluster <dcc> at Sun Oct 25 00:32:19 2026
+</zhome/95/e/206121> was used as the home directory.
+</work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-startup-release-03/source> was used as the working directory.
+Started at Sun Oct 25 00:32:19 2026
+Terminated at Sun Oct 25 00:33:50 2026
+Results reported at Sun Oct 25 00:33:50 2026
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+bash -l /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-startup-release-03/source/stage.lsf /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-startup-release-03/source 704fab033d97342a14dc12b58dc32df44874232c5c30aad47c4d02041a502aab protenix50k40k dispatch /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/dispatch-0004
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   32.83 sec.
+    Max Memory :                                 24 MB
+    Average Memory :                             24.00 MB
+    Total Requested Memory :                     8192.00 MB
+    Delta Memory :                               8168.00 MB
+    Max Swap :                                   -
+    Max Processes :                              4
+    Max Threads :                                5
+    Run time :                                   91 sec.
+    Turnaround time :                            93 sec.
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file </work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/dispatch-0004/stderr.29809270.log> for stderr output of this job.
+

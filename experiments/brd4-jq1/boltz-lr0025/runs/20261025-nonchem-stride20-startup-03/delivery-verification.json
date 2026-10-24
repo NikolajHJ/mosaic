@@ -1,0 +1,252 @@
+{
+  "actual_submissions": [
+    {
+      "job_id": "29809269",
+      "parent": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/dispatch-0004",
+      "phase": "dispatch",
+      "profile": "dbmol10k"
+    },
+    {
+      "job_id": "29809295",
+      "parent": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-after-segment-0000",
+      "phase": "after-segment",
+      "profile": "dbmol10k"
+    },
+    {
+      "job_id": "29809294",
+      "parent": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-segment-0000",
+      "phase": "segment",
+      "profile": "dbmol10k"
+    },
+    {
+      "job_id": "29809298",
+      "parent": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/boltz2-after-segment-0000",
+      "phase": "after-segment",
+      "profile": "boltz30k"
+    },
+    {
+      "job_id": "29809297",
+      "parent": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/boltz2-segment-0000",
+      "phase": "segment",
+      "profile": "boltz30k"
+    },
+    {
+      "job_id": "29809268",
+      "parent": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/dispatch-0004",
+      "phase": "dispatch",
+      "profile": "boltz30k"
+    },
+    {
+      "job_id": "29809263",
+      "parent": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-02/startup-fix-03/after-cpu",
+      "phase": "after-cpu",
+      "profile": "control"
+    },
+    {
+      "job_id": "29809262",
+      "parent": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-02/startup-fix-03/cpu",
+      "phase": "cpu",
+      "profile": "control"
+    },
+    {
+      "job_id": "29809292",
+      "parent": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-after-segment-0000",
+      "phase": "after-segment",
+      "profile": "protenix50k40k"
+    },
+    {
+      "job_id": "29809291",
+      "parent": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-segment-0000",
+      "phase": "segment",
+      "profile": "protenix50k40k"
+    },
+    {
+      "job_id": "29809270",
+      "parent": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/dispatch-0004",
+      "phase": "dispatch",
+      "profile": "protenix50k40k"
+    }
+  ],
+  "all_original_arrays_downloaded": false,
+  "compact_files": 97,
+  "cpu_cases": 78,
+  "monitor_remains_paused": true,
+  "original_scientific_proofs": "Exact source/CPU/native proof bytes rehashed remotely; CPU pins compared independently here",
+  "original_startup_checks": [
+    {
+      "dispatch_job_id": "29809268",
+      "profile": "boltz30k",
+      "proof": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/boltz2-stride20-v3-segment-0000-certificate.json",
+      "scope": "actual_CPU_premodel_startup_only",
+      "sha256": "09b96c0a72a9bf7680f4d8ac42040eaec1800a85e5de3e537ec5500b9ff4f28a"
+    },
+    {
+      "dispatch_job_id": "29809269",
+      "profile": "dbmol10k",
+      "proof": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-stride20-v3-segment-0000-startup.json",
+      "scope": "actual_CPU_premodel_startup_only",
+      "sha256": "f08694ffcadd420458ac3cf381304a45374ca0a347ce8c78d63267b21e14a872"
+    },
+    {
+      "dispatch_job_id": "29809270",
+      "profile": "protenix50k40k",
+      "proof": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-stride20-v3-command-segment-0000.json",
+      "scope": "CPU_command_metadata_only_GPU_probe_pending",
+      "sha256": "c2da22bfeb4d2c8a80e19b77aa2fe9182e5618aab355842df372ebf2a927cdf4"
+    }
+  ],
+  "passed_capacity_gates": [
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/dispatch-0004/selected-storage-dispatch-0/gate.json",
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/dispatch-0004/selected-storage-dispatch-0/gate.json",
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-02/startup-fix-03/cpu/selected-storage-cpu-entry/gate.json",
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-02/startup-fix-03/post-stage/selected-storage-post-stage/gate.json",
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-02/startup-fix-03/preflight/selected-storage-preflight/gate.json",
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/dispatch-0004/selected-storage-dispatch-0/gate.json"
+  ],
+  "policy": {
+    "keeps_initial_terminal_boundaries_rolling_latest_and_best": true,
+    "loss_stride": 1,
+    "matrix_stride": 20
+  },
+  "prefixes": {
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/dispatch-0004": {
+      "actual_retained_frames_byte_verified": [],
+      "states": {
+        "committed_rows": 0,
+        "last": null
+      },
+      "updates": {
+        "committed_rows": 0,
+        "last": null
+      }
+    },
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-after-segment-0000": {
+      "actual_retained_frames_byte_verified": [],
+      "states": {
+        "committed_rows": 0,
+        "last": null
+      },
+      "updates": {
+        "committed_rows": 0,
+        "last": null
+      }
+    },
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-segment-0000": {
+      "actual_retained_frames_byte_verified": [],
+      "states": {
+        "committed_rows": 0,
+        "last": null
+      },
+      "updates": {
+        "committed_rows": 0,
+        "last": null
+      }
+    },
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/boltz2-after-segment-0000": {
+      "actual_retained_frames_byte_verified": [],
+      "states": {
+        "committed_rows": 0,
+        "last": null
+      },
+      "updates": {
+        "committed_rows": 0,
+        "last": null
+      }
+    },
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/boltz2-segment-0000": {
+      "actual_retained_frames_byte_verified": [],
+      "states": {
+        "committed_rows": 0,
+        "last": null
+      },
+      "updates": {
+        "committed_rows": 0,
+        "last": null
+      }
+    },
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/dispatch-0004": {
+      "actual_retained_frames_byte_verified": [],
+      "states": {
+        "committed_rows": 0,
+        "last": null
+      },
+      "updates": {
+        "committed_rows": 0,
+        "last": null
+      }
+    },
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-02/noise-gpu": {
+      "actual_retained_frames_byte_verified": [],
+      "states": {
+        "committed_rows": 0,
+        "last": null
+      },
+      "updates": {
+        "committed_rows": 0,
+        "last": null
+      }
+    },
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-02/startup-fix-03/after-cpu": {
+      "actual_retained_frames_byte_verified": [],
+      "states": {
+        "committed_rows": 0,
+        "last": null
+      },
+      "updates": {
+        "committed_rows": 0,
+        "last": null
+      }
+    },
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-02/startup-fix-03/cpu": {
+      "actual_retained_frames_byte_verified": [],
+      "states": {
+        "committed_rows": 0,
+        "last": null
+      },
+      "updates": {
+        "committed_rows": 0,
+        "last": null
+      }
+    },
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-after-segment-0000": {
+      "actual_retained_frames_byte_verified": [],
+      "states": {
+        "committed_rows": 0,
+        "last": null
+      },
+      "updates": {
+        "committed_rows": 0,
+        "last": null
+      }
+    },
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-segment-0000": {
+      "actual_retained_frames_byte_verified": [],
+      "states": {
+        "committed_rows": 0,
+        "last": null
+      },
+      "updates": {
+        "committed_rows": 0,
+        "last": null
+      }
+    },
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/dispatch-0004": {
+      "actual_retained_frames_byte_verified": [],
+      "states": {
+        "committed_rows": 0,
+        "last": null
+      },
+      "updates": {
+        "committed_rows": 0,
+        "last": null
+      }
+    }
+  },
+  "preserved_independent_noisy_gpu_job": "29809228",
+  "scientific_original_sources_settings_results_changed": false,
+  "scope": "independent_stdlib_bytes_XML_schema_resources_scope_and_reserve_audit",
+  "selected_metadata_cpu_passed": true,
+  "source_manifest_sha256": "704fab033d97342a14dc12b58dc32df44874232c5c30aad47c4d02041a502aab",
+  "status": "passed",
+  "utc": "2026-10-24T22:36:22.393198+00:00"
+}

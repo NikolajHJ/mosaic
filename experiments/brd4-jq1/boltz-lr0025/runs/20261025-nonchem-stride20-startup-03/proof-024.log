@@ -1,0 +1,43 @@
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@hpc.dtu.dk>
+Subject: Job 29809262: <mosaic-selected-control-cpu> in cluster <dcc> Done
+
+Job <mosaic-selected-control-cpu> was submitted from host <hpclogin1> by user <s234818> in cluster <dcc> at Sun Oct 25 00:30:20 2026
+Job was executed on host(s) <2*n-62-30-24>, in queue <hpc>, as user <s234818> in cluster <dcc> at Sun Oct 25 00:30:21 2026
+</zhome/95/e/206121> was used as the home directory.
+</zhome/95/e/206121> was used as the working directory.
+Started at Sun Oct 25 00:30:21 2026
+Terminated at Sun Oct 25 00:31:54 2026
+Results reported at Sun Oct 25 00:31:54 2026
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+bash -l /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-startup-release-03/source/stage.lsf /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-startup-release-03/source 704fab033d97342a14dc12b58dc32df44874232c5c30aad47c4d02041a502aab control cpu /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-02/startup-fix-03/cpu
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   49.79 sec.
+    Max Memory :                                 22 MB
+    Average Memory :                             21.33 MB
+    Total Requested Memory :                     8192.00 MB
+    Delta Memory :                               8170.00 MB
+    Max Swap :                                   -
+    Max Processes :                              4
+    Max Threads :                                5
+    Run time :                                   93 sec.
+    Turnaround time :                            94 sec.
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file </work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-02/startup-fix-03/cpu/stderr.29809262.log> for stderr output of this job.
+

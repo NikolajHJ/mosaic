@@ -1,0 +1,50 @@
+{
+  "status": "actual_allocated_cpu_67_passed",
+  "job_id": "29809209",
+  "source_manifest_sha256": "f3be7c2f85d495ae042ee8092eecb5274c6298cc8f12907a7ba9ba6d8fb740db",
+  "files": [
+    {
+      "remote": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-02/cpu-certificate.json",
+      "local": "cpu-proof-00.json",
+      "bytes": 1377,
+      "sha256": "ddb6d4fa028bee151d644a6fbb09ae4c2b7e20a6e36e177c99110e82a4fecac6"
+    },
+    {
+      "remote": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-02/cpu/payload/selected.xml",
+      "local": "cpu-proof-01.xml",
+      "bytes": 8822,
+      "sha256": "6ab63d6a3e819610015fac7619f7ffb2afb2fbee8e418b0fa9b16960e007e487"
+    },
+    {
+      "remote": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-02/cpu/payload/selected.log",
+      "local": "cpu-proof-02.log",
+      "bytes": 100,
+      "sha256": "3e136d71448e966d2ffa317340babdba5938cffd288094fe81f3fbd502772f2e"
+    },
+    {
+      "remote": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-02/cpu/stdout.29809209.log",
+      "local": "cpu-proof-03.log",
+      "bytes": 2036,
+      "sha256": "2d681976e4263f7a822fd720b5bb5df6bb150e78775fd31e508434bbc4147ddb"
+    },
+    {
+      "remote": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-02/cpu/stderr.29809209.log",
+      "local": "cpu-proof-04.log",
+      "bytes": 233,
+      "sha256": "7d57e9e44355166e210a310a2b90b7d8543b85c5ffbb82276c701f4dd1f23271"
+    },
+    {
+      "remote": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-02/cpu/submission.json",
+      "local": "cpu-proof-05.json",
+      "bytes": 1238,
+      "sha256": "22d616aed7cc58f3401a12a271df1beb6d3f58804277c9535c637fae26cedc8c"
+    },
+    {
+      "remote": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-02/cpu/selected-scheduler-final-5.txt",
+      "local": "cpu-proof-06.txt",
+      "bytes": 3560,
+      "sha256": "da2a5fca34e26648cb848e4650f31144c22cf0375a09cf2517cbda4defdf4d75"
+    }
+  ],
+  "independent_verification_sha256": "13559d86a21703c8c9a40a5139afa7978df689d2d72fa34fcbed85d939b616e0"
+}

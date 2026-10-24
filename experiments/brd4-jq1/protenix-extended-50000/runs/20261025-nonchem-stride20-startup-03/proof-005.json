@@ -1,0 +1,144 @@
+{
+  "status": "passed",
+  "phase": "dispatch-0",
+  "version": "selected-nonchem-full-storage-v1",
+  "scope": "All selected full remaining projections; deferred chemistry gets no execution/future admission; every existing byte retained",
+  "reserve_bytes": 4294967296,
+  "file_reserve": 100000,
+  "full_selected_production_admission": true,
+  "matrix_stride": 20,
+  "loss_stride": 1,
+  "historical_failed_gates_changed": false,
+  "deferred_arms": [
+    {
+      "profile": "boltz30k",
+      "arm": "boltz2_chemistry",
+      "future_admission": false,
+      "production_absent": true,
+      "terminal_callback": {
+        "job_id": "29805959",
+        "status": "Done",
+        "proof": {
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/boltz2_chemistry-after-native-0000/stdout.29805959.log",
+          "bytes": 2330,
+          "sha256": "b1aaa8a04bf290bcb2efbc8d3e0e7bfab9ca77b636073b7d547ca09ae5bbecc7"
+        },
+        "scheduler_state_invented": false
+      }
+    },
+    {
+      "profile": "protenix50k40k",
+      "arm": "random",
+      "future_admission": false,
+      "production_absent": true,
+      "terminal_callback": {
+        "job_id": "29806665",
+        "status": "Exited",
+        "proof": {
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/random-after-native-0000/stdout.29806665.log",
+          "bytes": 2320,
+          "sha256": "09a63bb6cd921b6d77b70a4acdc6e7a5d92f8daf044b977b5b72d81cce254f44"
+        },
+        "scheduler_state_invented": false
+      }
+    }
+  ],
+  "selected": {
+    "boltz30k": {
+      "full": 3319422138,
+      "current": 1018381,
+      "remaining": 3318403757,
+      "unit_bytes": 32537
+    },
+    "dbmol10k": {
+      "full": 4330960896,
+      "current": 1185699,
+      "remaining": 4329775197,
+      "unit_bytes": 35150
+    },
+    "protenix50k40k": {
+      "full": 4388251664,
+      "current": 156486687,
+      "remaining": 4231764977,
+      "unit_bytes": 23182
+    }
+  },
+  "historical_remaining": {
+    "protenix": 428045250,
+    "boltz2": 746483944,
+    "boltz2_chemistry": 2581331460
+  },
+  "metadata_controls": {
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-pro02-adoption-04": 288301,
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-pro02-adoption-06": 317785,
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-selected-01": 205456,
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-01": 204608,
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-02": 175006
+  },
+  "noise_caps": {
+    "/work3/s234818/mosaic/runs/20261023-protenix-noisy-01": 4955,
+    "/work3/s234818/mosaic/runs/20261025-protenix-noisy-05": 73516
+  },
+  "retired_noise_current_bytes": 1826,
+  "retired_noise_future_admission": false,
+  "retained_learned_prior_allowance_bytes": 1073741824,
+  "new_metadata_release_allowance_bytes": 1073741824,
+  "external_capsules": [
+    {
+      "path": "/work3/s234818/mosaic/runs/20261023-protenix-noisy-01",
+      "bytes": 4955
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261024-protenix-noisy-04",
+      "bytes": 1826
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261025-protenix-noisy-05",
+      "bytes": 73516
+    },
+    {
+      "path": "/work3/s234818/mosaic/releases/20261023-protenix-noisy-01",
+      "bytes": 47431694
+    },
+    {
+      "path": "/work3/s234818/mosaic/releases/20261023-protenix-noisy-01.tar.gz",
+      "bytes": 39636303
+    }
+  ],
+  "projected_bytes": 27982565934,
+  "work3": {
+    "status": "passed",
+    "filesystem": "work3",
+    "raw_quota": "HPE-Storage-Servers (disks, storagepool 1): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nHPE-Storage-Servers (NVME, storagepool 2): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (disks, storagepool 3): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks, storagepool 4): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks added in 2024, storagepool 5): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (NVMEs added in 2024, storagepool 6): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||   51.52 GiB|  100.00 GiB||   412041| 20000000\n\n",
+    "quota": {
+      "finite_pools": [
+        {
+          "used_bytes_upper": 55834574848,
+          "hard_bytes_lower": 107374182400,
+          "remaining_bytes": 51539607552,
+          "remaining_files": 19587959
+        }
+      ],
+      "available_bytes_lower": 51539607552,
+      "available_files_lower": 19587959
+    },
+    "projected_bytes": 27982565934,
+    "stale_bytes_subtracted": 9550656751,
+    "disk_free_bytes": 549906697682944,
+    "available_bytes_conservative": 41988950801,
+    "required_bytes": 32277533230,
+    "reserve_bytes": 4294967296,
+    "file_reserve": 100000,
+    "filesystem_inode_observation": {
+      "f_files": 0,
+      "f_ffree": 0,
+      "f_favail": 0
+    },
+    "available_files_lower": 19587959,
+    "filesystem_inode_reporting": "unreported_all_zero",
+    "file_headroom_scope": "Mandatory minimum of all authenticated finite user-quota pools",
+    "inode_limitation": "All-zero statvfs tuple supplies no independent filesystem inode proof",
+    "limitation": "Observations are conservative budget checks, not storage reservations"
+  },
+  "limitation": "Fresh conservative observation, not a reservation; all-zero filesystem inode counters remain unreported supplemental evidence"
+}
