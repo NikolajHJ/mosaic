@@ -1,0 +1,112 @@
+{
+  "SSH_or_new_backup_or_deletion_executed_by_this_audit": false,
+  "active_job_rechecks": 256,
+  "actual_cpu_cases": 44,
+  "actual_cpu_job_id": "29806439",
+  "all_metadata_proofs": {
+    "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\brd4-jq1\\boltz-lr0025\\runs\\20261024-storage-offload-01\\approved-selection-03.json": {
+      "bytes": 2265,
+      "sha256": "67524633c923c9584e36a816cc2ed71657e1920a98966ae2b5d1baf1474a9c0f"
+    },
+    "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\brd4-jq1\\boltz-lr0025\\runs\\20261024-storage-offload-01\\flat-protection-approved-01.json": {
+      "bytes": 56775,
+      "sha256": "35c78f3571b26304e453eb9da1e04c1fe0bdd05d0a6e3756e81e3f825d121511"
+    },
+    "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\brd4-jq1\\boltz-lr0025\\runs\\20261024-storage-offload-01\\flat-protection-approved-03.json": {
+      "bytes": 86675,
+      "sha256": "a87eec9f7e68e9174604e3900490ec1ed5cbc941fec968c8c413e6cb95afd3e9"
+    },
+    "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\brd4-jq1\\boltz-lr0025\\runs\\20261024-storage-offload-01\\operator-verification-04.json": {
+      "bytes": 21646,
+      "sha256": "d712220f553d0988b0e1e3ae9655d78369999665f71641e5a670c52e163d3ce1"
+    },
+    "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261024-storage-offload-01\\backup-03\\approved-plan.json": {
+      "bytes": 15558449,
+      "sha256": "8abfb724eaa6629ac73d6985d6216e898788868aec70a6784bcce8ba975e57bb"
+    },
+    "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261024-storage-offload-01\\backup-03\\deletion-receipts-01\\deletion-complete.json": {
+      "bytes": 593,
+      "sha256": "f50d568970d6bc4531d9144ba4b3de6804e77f827b539bb44d3ed03b8b61c9ce"
+    },
+    "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261024-storage-offload-01\\backup-03\\deletion-receipts-01\\deletion-journal.jsonl": {
+      "bytes": 19412359,
+      "sha256": "402989c870cd95f1d78d4e98bd95dd2162336e310970be2c2ec74861f10488f9"
+    },
+    "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261024-storage-offload-01\\backup-03\\deletion-receipts-01\\deletion-started.json": {
+      "bytes": 526,
+      "sha256": "6801d74ec9ac9c190dafedba199b557014012a010ea958414877e8cd5d953bbd"
+    },
+    "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261024-storage-offload-01\\backup-03\\deletion-receipts-01\\receipt-index.json": {
+      "bytes": 4984,
+      "sha256": "43cb2040ae638b63d7d976b9d46807a9934b52963a281a397a7464ecb189b52b"
+    },
+    "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261024-storage-offload-01\\backup-03\\deletion-receipts-01\\result.json": {
+      "bytes": 19,
+      "sha256": "067fd603355b38e4ba4a5c3014b04994865fcee137b41a3e06a841b40fe1f084"
+    },
+    "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261024-storage-offload-01\\backup-03\\removal-execution-01\\result.json": {
+      "bytes": 19,
+      "sha256": "067fd603355b38e4ba4a5c3014b04994865fcee137b41a3e06a841b40fe1f084"
+    },
+    "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261024-storage-offload-01\\backup-03\\stream-receipts-01\\receipt-index.json": {
+      "bytes": 5260,
+      "sha256": "6dca983e6105fc5cc361b746bfb151622b13135d7cd1b9e14e295270227afb15"
+    },
+    "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261024-storage-offload-01\\backup-03\\stream-receipts-01\\result.json": {
+      "bytes": 19,
+      "sha256": "067fd603355b38e4ba4a5c3014b04994865fcee137b41a3e06a841b40fe1f084"
+    },
+    "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261024-storage-offload-01\\backup-03\\stream-receipts-01\\stream-complete.json": {
+      "bytes": 795,
+      "sha256": "e2858b0dcf70da1d33b72e3dc7a015facb7f0bddaa475a0aa5a0a6a69ac7843b"
+    },
+    "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261024-storage-offload-01\\backup-03\\verification.json": {
+      "bytes": 10636707,
+      "sha256": "e6821f9135537829d9849405d48cd4a69960bd399d0dbf74669f5d3e3cfd4c9b"
+    },
+    "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261024-storage-offload-01\\exact-inventory-02\\stdout.bin": {
+      "bytes": 22730068,
+      "sha256": "208e0514b87a876129f961575b4b11ca6433c27cdfaf4493255434811607081a"
+    },
+    "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261024-storage-offload-01\\operator-evidence-05\\stdout.bin": {
+      "bytes": 783897,
+      "sha256": "9bb9692472172b2c673734879fa6d103143b5106a5e8b1c179cf0d95a32f3add"
+    },
+    "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261024-storage-offload-01\\protection-staging-03\\result.json": {
+      "bytes": 19,
+      "sha256": "067fd603355b38e4ba4a5c3014b04994865fcee137b41a3e06a841b40fe1f084"
+    },
+    "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261024-storage-offload-01\\protection-staging-03\\stdout.bin": {
+      "bytes": 915,
+      "sha256": "76360d784ce990e8ba350422ca07447bb2a813c0431658b3b04c644694f93e16"
+    }
+  },
+  "archive_bytes": 8769931895,
+  "archive_payload_rehashed_in_this_audit": false,
+  "archive_sha256_as_verified_record": "ac75713c102dba31b0ea9934c2303ebd5cb529d5c98c422baccfc42afda29ff3",
+  "current_remote_path_absence_established_by_this_audit": false,
+  "journal_bytes": 19412359,
+  "journal_sha256": "402989c870cd95f1d78d4e98bd95dd2162336e310970be2c2ec74861f10488f9",
+  "no_selected_protected_dependencies": true,
+  "observed_active_ids": [
+    "29796558",
+    "29802716",
+    "29802717",
+    "29802743"
+  ],
+  "operation_id": "legacy-offload-03",
+  "plan_sha256": "8abfb724eaa6629ac73d6985d6216e898788868aec70a6784bcce8ba975e57bb",
+  "protection_sha256": "a87eec9f7e68e9174604e3900490ec1ed5cbc941fec968c8c413e6cb95afd3e9",
+  "quota_bytes_reclaimed_established": false,
+  "remaining_linked_aliases_protected": 324,
+  "removed_logical_bytes_from_exact_journal": 15725430139,
+  "scope": "Independent local stdlib JSON/XML/byte/journal audit only. Original archive full verification is authenticated as a prior exact record; current absence/protection rehash/quota require the separate root-owned remote audit.",
+  "source_manifest_sha256": "8a6420047f7260eedd1219c4313c835dae4bb2a13cd39d4914f9e87abcd5bafe",
+  "status": "passed_recorded_backup_authority_and_exact_journal",
+  "unique_matching_intents": 25413,
+  "unique_matching_unlinked_terminals": 25413,
+  "utc": "2026-10-24T11:53:56.986739+00:00",
+  "verified_member_records_exact": 25413,
+  "version": "mosaic-independent-actual-journal-audit-v1",
+  "whole_scientific_budget_or_readiness_pass_claimed": false
+}

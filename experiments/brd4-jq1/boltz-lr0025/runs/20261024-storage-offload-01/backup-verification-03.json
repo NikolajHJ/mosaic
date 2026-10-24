@@ -1,0 +1,37 @@
+{
+  "status": "full_laptop_backup_verified_all_members",
+  "verified_utc": "2026-10-24T11:47:35.277129+00:00",
+  "operation_id": "legacy-offload-03",
+  "archive": {
+    "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261024-storage-offload-01\\backup-03\\legacy-offload-03.tar.gz",
+    "bytes": 8769931895,
+    "sha256": "ac75713c102dba31b0ea9934c2303ebd5cb529d5c98c422baccfc42afda29ff3"
+  },
+  "approved_plan": {
+    "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261024-storage-offload-01\\backup-03\\approved-plan.json",
+    "bytes": 15558449,
+    "sha256": "8abfb724eaa6629ac73d6985d6216e898788868aec70a6784bcce8ba975e57bb"
+  },
+  "actual_remote_completed_receipt": {
+    "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261024-storage-offload-01\\backup-03\\stream-receipts-01\\stream-complete.json",
+    "bytes": 795,
+    "sha256": "e2858b0dcf70da1d33b72e3dc7a015facb7f0bddaa475a0aa5a0a6a69ac7843b"
+  },
+  "standalone_verification": {
+    "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261024-storage-offload-01\\backup-03\\verification.json",
+    "bytes": 10636707,
+    "sha256": "e6821f9135537829d9849405d48cd4a69960bd399d0dbf74669f5d3e3cfd4c9b"
+  },
+  "standalone_verifier": {
+    "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\brd4-jq1\\boltz-lr0025\\runs\\20261024-storage-offload-01\\verify_stream_backup_02.py",
+    "bytes": 13276,
+    "sha256": "9401d8220cf82d38991179f3c1ae2da33a902058ab03020803e751266d95c46a"
+  },
+  "files_count": 25413,
+  "member_count": 25414,
+  "logical_original_bytes": 15725430139,
+  "all_members_verified": true,
+  "metadata_only_no_array_or_model_decoding": true,
+  "deletion_completed_claimed": false,
+  "actual_quota_savings_established": false
+}

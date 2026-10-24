@@ -198,3 +198,39 @@ source04, CPU44, content hashes, remote safeguards and scientific policies are
 unchanged. No collector variant is needed because its local reads have no
 cross-channel creation-time comparison. These two alternate callers received
 static review only and have not run.
+
+## Actual operation03 backup, exact removal and post-audit completion
+
+The completed evidence now supersedes the preceding in-progress and unexecuted
+checkpoints. At 24 October 2026 11:47:35 UTC, the standalone verifier accepted
+the complete laptop archive: 8,769,931,895 bytes, SHA256
+`ac75713c102dba31b0ea9934c2303ebd5cb529d5c98c422baccfc42afda29ff3`.
+All 25,413 original members and the exact embedded `offload-manifest.json` were
+verified against plan03; no array or model was decoded. The separately fetched
+795-byte stream-completion receipt has SHA256
+`e2858b0dcf70da1d33b72e3dc7a015facb7f0bddaa475a0aa5a0a6a69ac7843b`.
+See [canonical backup verification](C:/Users/nikol/OneDrive/Dokumenter/GitHub/mosaic/experiments/brd4-jq1/boltz-lr0025/runs/20261024-storage-offload-01/backup-verification-03.json)
+and [restore notes](C:/Users/nikol/OneDrive/Dokumenter/GitHub/mosaic/experiments/brd4-jq1/boltz-lr0025/runs/20261024-storage-offload-01/restore-notes-03.md).
+
+Only after that complete backup verification, the original exact deleter
+returned zero. Its independently fetched completion receipt and durable journal
+record all 25,413 selected remote copies removed: 15,725,430,139 logical bytes,
+zero changed/unreadable retentions and zero already-absent paths. No recursive
+deletion was used. The journal SHA256 is
+`402989c870cd95f1d78d4e98bd95dd2162336e310970be2c2ec74861f10488f9`.
+All excluded linked aliases, current experiments and earlier partial archives
+remain protected; no scientific setting or retained saved result changed.
+
+At 11:51:43 UTC the [independently verified post-deletion audit](C:/Users/nikol/OneDrive/Dokumenter/GitHub/mosaic/results/hpc/20261024-storage-offload-01/backup-03/post-deletion-audit-03/verification.json)
+confirmed all 25,413 removed paths absent. It rehashed 575,469,439 protected
+bytes across 3,489 pins: seven complete Mosaic source scopes with 3,219 members
+plus 270 explicit input/proof pins. The Windows metadata variants performed
+their intended local observation adaptation while retaining exact original
+remote guards. The audit itself deleted no files and claimed no scientific or
+storage-admission pass.
+
+Fresh raw work3 quota reported 51.22/100 GiB used. This is a quota observation,
+not an exact physical-space gain attributable to cleanup: quota reporting and
+concurrent VAE writes are independent. The supplemental filesystem inode tuple
+remains all zero/unreported. Every subsequent experiment still requires its
+unchanged fresh byte, quota, file-headroom, runtime and scientific gates.

@@ -1,3 +1,15 @@
 Pro03 source643 was staged read-only, then its mandatory preflight rejected capacity before jobs.json/CPU creation. Required 41643669252 bytes; conservative available 27472908456; shortfall 14170760796. All full peer projections, 2GiB Pro validation allowance, 2GiB adoption controls and 4GiB/100000-file reserves remain unchanged. No startup/CPU/native/optimization pass exists. This is a resource-admission failure, not a scientific failure. Original saved results and failed predecessors remain unchanged.
 
 Fresh read-only evidence at 2026-10-24T09:25:58.104007+00:00 rehashed all643 remote source members and verified the complete seal read-only; the downloaded manifest matches the full local sealed archive. The same original failed gate is unchanged, and jobs.json remains absent: no CPU, GPU startup, new native pass or optimization was submitted. The independent second audit authenticates the exact executed collector, RC0 and all3 compact proof files. No safe verified inactive/duplicate cleanup subset sufficient to resolve the actual admission shortfall has been identified; aggregate du is not a proof about all possible deletions. No files were deleted by this audit.
+
+
+24 October13:56:41Paris: verified inactive-artifact cleanup allowed a fresh unchanged
+preflight pass,41,643,669,252required/42,505,285,132conservativeavailable bytes,
+including4GiB/100000-file reserve and full actual Boltz/DBMol peer projections.
+The original failed6d1d0fae...gate remains preserved. This is validation admission,
+not full50k/40k production: both Pro pilots still require their own projections.
+CPU29806660 and own-ended callback29806661 actually submitted11:53:11UTC;
+at11:56:41UTC CPU isRUN/callbackPEND. No866CPU pass, new native/GPU-startup pass
+or production segment is claimed. Source643 is unchanged/read-only and every
+member rehashed. Exact vectors and raw evidence are in cpu-recovery-03-submissions.json.
+The paused monitor remains paused.

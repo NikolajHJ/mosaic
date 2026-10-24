@@ -1,0 +1,162 @@
+{
+  "attempt": "recovery-attempt-02",
+  "cpu_passed": false,
+  "current_evidence_captured_utc": "2026-10-24T09:25:58.104007+00:00",
+  "failure_verification": {
+    "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\brd4-jq1\\protenix-extended-50000\\runs\\20261024-protenix-extended-03\\preflight-failure-verification-01.json",
+    "sha256": "6b7228c4b2b14203e961243fc1fde0b92ee8cfc8c9c3de7bd00245150e4854a5"
+  },
+  "full_remote_source_failure_verification": {
+    "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\brd4-jq1\\protenix-extended-50000\\runs\\20261024-protenix-extended-03\\preflight-failure-verification-02.json",
+    "sha256": "202108a4edb38a6846b8a2679fe0b6d203ff23e4b15cb43c9f2049d89d00af85"
+  },
+  "gate": {
+    "file_reserve": 100000,
+    "full_extended": {
+      "continuation": 1073741824,
+      "random": 1073741824
+    },
+    "full_long_admission": false,
+    "missing_full_projections": [],
+    "noisy_capsule_inventory": {
+      "capsules": [
+        {
+          "bytes": 47431694,
+          "path": "/work3/s234818/mosaic/releases/20261023-protenix-noisy-01",
+          "scope": "authenticated_noisy01"
+        },
+        {
+          "bytes": 39636303,
+          "path": "/work3/s234818/mosaic/releases/20261023-protenix-noisy-01.tar.gz",
+          "scope": "authenticated_noisy01"
+        },
+        {
+          "bytes": 4955,
+          "path": "/work3/s234818/mosaic/runs/20261023-protenix-noisy-01",
+          "scope": "authenticated_noisy01"
+        }
+      ],
+      "scope": "Every matching direct work3 Mosaic run/release/upload byte inventoried; unknown scope blocks every admission phase",
+      "stale_bytes": 87072952,
+      "unknown_scopes": []
+    },
+    "noisy_protenix": {
+      "current": 4955,
+      "full": 1073741824,
+      "remaining": 1073736869,
+      "scope": "authenticated_immutable_one_GiB_cap"
+    },
+    "old_current": {
+      "boltz2": 1001537880,
+      "boltz2_chemistry": 2562690364,
+      "protenix": 1065476574
+    },
+    "own_current": {
+      "continuation": 0,
+      "random": 0
+    },
+    "peers": {
+      "baseline": {
+        "current": 6889964,
+        "full": 20549890944,
+        "projection_sha256": "e2417e6e14ba25543d776d7108e556d6bf467476247ce83847266066bb6fd9e4",
+        "remaining": 20543000980,
+        "scope": "Declared mutable capacity metadata; exact all authenticated native maxima, no lowering",
+        "source_manifest_sha256": "c214bccf2c94ac6829996bc0ca7d6415d3c19549be4fe7f874cba2b433901cc6"
+      },
+      "dbmol": {
+        "current": 1185699,
+        "full": 4997967296,
+        "projection_sha256": "246af7452231e07dbfe683d78f73276e9acd48de5d0460d0868107c86f175d88",
+        "remaining": 4996781597,
+        "scope": "Declared mutable capacity metadata; exact all authenticated native maxima, no lowering",
+        "source_manifest_sha256": "600ecc3b33135141a57c029a28a2c72f29e788e3ecf5cb2dac1761146d1d6eed"
+      }
+    },
+    "phase": "preflight",
+    "projected_bytes": 37348701956,
+    "prospective_adoption_metadata_controls": {
+      "current": {
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-pro02-adoption-04": 0,
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-pro02-adoption-06": 0
+      },
+      "per_control_bytes": 1073741824,
+      "remaining_bytes": 2147483648,
+      "scope": "Two explicit metadata-only adoption controls; current bytes additionally remain in entire BASE stale charge"
+    },
+    "reserve_bytes": 4294967296,
+    "scope": "All original remaining +report2GiB/diagnostic512MiB +both Pro02 +current Boltz30k +DBMol10k +bounded noisyPro; no reservations",
+    "stale_scope": "Entire analysis BASE includes original/new Pro/Boltz/DBMol roots/releases/uploads; external noise paths additionally charged",
+    "status": "failed",
+    "work3": {
+      "available_bytes_conservative": 27472908456,
+      "available_files_lower": 19564018,
+      "disk_free_bytes": 551151818244096,
+      "file_headroom_scope": "Mandatory minimum of all authenticated finite user-quota pools",
+      "file_reserve": 100000,
+      "filesystem": "work3",
+      "filesystem_inode_observation": {
+        "f_favail": 0,
+        "f_ffree": 0,
+        "f_files": 0
+      },
+      "filesystem_inode_reporting": "unreported_all_zero",
+      "inode_limitation": "All-zero statvfs tuple supplies no independent filesystem inode proof",
+      "limitation": "Observations are conservative budget checks, not storage reservations",
+      "projected_bytes": 37348701956,
+      "quota": {
+        "available_bytes_lower": 36507222016,
+        "available_files_lower": 19564018,
+        "finite_pools": [
+          {
+            "hard_bytes_lower": 107374182400,
+            "remaining_bytes": 36507222016,
+            "remaining_files": 19564018,
+            "used_bytes_upper": 70866960384
+          }
+        ]
+      },
+      "raw_quota": "HPE-Storage-Servers (disks, storagepool 1): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nHPE-Storage-Servers (NVME, storagepool 2): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (disks, storagepool 3): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks, storagepool 4): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks added in 2024, storagepool 5): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (NVMEs added in 2024, storagepool 6): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||   65.81 GiB|  100.00 GiB||   435982| 20000000\n\n",
+      "required_bytes": 41643669252,
+      "reserve_bytes": 4294967296,
+      "stale_bytes_subtracted": 9034313560,
+      "status": "failed"
+    }
+  },
+  "jobs": {},
+  "jobs_file_present": false,
+  "native_passed": false,
+  "optimization_started": false,
+  "package": {
+    "archive_bytes": 39644558,
+    "archive_sha256": "bde714a20a49308365744ab5018c06a6d68dff82c3485dc075848827a5f7a8ef",
+    "changed_members": {
+      "docs/protenix_extended.md": "6a0d408b0b0d22ccbd3dc3af8a10c069099dff3f39007d5a9f8fe9a9a81dfe54",
+      "scripts/extended_ops.py": "305277d9f5b8fc6678e4f950f7a799eb99f83ba973a1349f88ed9ee1c4d5db2f",
+      "scripts/extended_startup.py": "fe35348952ec4bc2ba20d61df5a565a9389e9b64f3f6429657221bdd0b48b573",
+      "scripts/hpc/extended_cpu.lsf": "14eb28b2d97f843e11d43023960b0a0c121bd7cf8b83c834f04d3d456a5abd74",
+      "tests/test_extended_startup.py": "014284868e1f916449b91bc189501b5f5fad41b9e309ad1f6532f1671624fb94"
+    },
+    "execution": "Local stdlib byte/AST packaging only; allocated CPU/GPU checks pending",
+    "git_revision_inheritance": {
+      "ancestor_archive_sha256": "4d6d297451d9820543abc3298622e6599014c4b96bc999e104dd732825f56e4e",
+      "ancestor_manifest_sha256": "c2628d08f7224f3b572ab456f4113d8a66b587a5d69f85a072877052fc09a057",
+      "field": "git_revision_reference",
+      "value": "c74c659344123937608077e3e4078f75f09cd743",
+      "version": "authenticated-ancestor-git-revision-v1"
+    },
+    "git_revision_reference": "c74c659344123937608077e3e4078f75f09cd743",
+    "manifest_sha256": "da9db6821d26b884ca1749303fc8e0b0095bd9ee7cbd1b427cdcf1b22eec6562",
+    "parent_manifest_sha256": "a30f980fd8fe95001fdfc6780d720bdde6486d2421d7e4942b119ace61777f00",
+    "source_files": 643,
+    "tag": "20261024-protenix-extended-03",
+    "unchanged_original641_members": 638,
+    "unchanged_scientific_src_members": 145
+  },
+  "remote_source_members_rehashed": 643,
+  "remote_source_readonly": true,
+  "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03",
+  "scientific_settings_and_saved_results_changed": false,
+  "source": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source",
+  "status": "pre_cpu_storage_blocked"
+}

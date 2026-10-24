@@ -55,3 +55,15 @@ their actual bytes in the full analysis-root stale accounting. A read-only
 inventory covers every matching noisy Protenix run/release/upload capsule.
 Any unregistered noisy scope outside authenticated noisy01 blocks all admission
 phases; no output cap or future budget is guessed from another thread's code.
+
+
+24 October13:56:41Paris: verified inactive-artifact cleanup allowed a fresh unchanged
+preflight pass,41,643,669,252required/42,505,285,132conservativeavailable bytes,
+including4GiB/100000-file reserve and full actual Boltz/DBMol peer projections.
+The original failed6d1d0fae...gate remains preserved. This is validation admission,
+not full50k/40k production: both Pro pilots still require their own projections.
+CPU29806660 and own-ended callback29806661 actually submitted11:53:11UTC;
+at11:56:41UTC CPU isRUN/callbackPEND. No866CPU pass, new native/GPU-startup pass
+or production segment is claimed. Source643 is unchanged/read-only and every
+member rehashed. Exact vectors and raw evidence are in cpu-recovery-03-submissions.json.
+The paused monitor remains paused.

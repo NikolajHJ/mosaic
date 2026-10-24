@@ -1,0 +1,147 @@
+{
+  "actual_quota_savings_established": false,
+  "archive": {
+    "all_members_verified": true,
+    "archive_payload_rehashed_by_this_metadata_finalizer": false,
+    "bytes": 8769931895,
+    "hash_authority": "Canonical completed backup and standalone all-member verification; archive current byte length checked only in this metadata finalizer.",
+    "original_files_verified": 25413,
+    "original_logical_bytes": 15725430139,
+    "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261024-storage-offload-01\\backup-03\\legacy-offload-03.tar.gz",
+    "sha256": "ac75713c102dba31b0ea9934c2303ebd5cb529d5c98c422baccfc42afda29ff3",
+    "total_archive_members_verified": 25414
+  },
+  "numerical_or_model_work_performed_by_finalizer": false,
+  "operation_id": "legacy-offload-03",
+  "post_deletion_protection_audit": {
+    "explicit_file_pins_rehashed": 270,
+    "files_deleted_by_audit": 0,
+    "full_source_members_rehashed": 3219,
+    "full_source_scopes": 7,
+    "protected_bytes_rehashed": 575469439,
+    "protected_pin_rehashes": 3489,
+    "removed_original_paths_verified_absent": 25413,
+    "status": "independently_verified_read_only_post_deletion_audit",
+    "verified_utc": "2026-10-24T11:51:43.555110+00:00"
+  },
+  "preservation": {
+    "all_excluded_linked_aliases_retained": 324,
+    "all_original_current_experiment_protections_retained": true,
+    "excluded_linked_inode_groups_retained": 123,
+    "paused_monitor_changed": false,
+    "prior_retired_partial_archives_preserved": true,
+    "retained_saved_current_results_changed": false,
+    "source_seals_or_scientific_settings_changed": false
+  },
+  "proofs": {
+    "actual_stream_receipt": {
+      "bytes": 795,
+      "path": "results/hpc/20261024-storage-offload-01/backup-03/stream-receipts-01/stream-complete.json",
+      "sha256": "e2858b0dcf70da1d33b72e3dc7a015facb7f0bddaa475a0aa5a0a6a69ac7843b"
+    },
+    "approved_plan": {
+      "bytes": 15558449,
+      "path": "results/hpc/20261024-storage-offload-01/backup-03/approved-plan.json",
+      "sha256": "8abfb724eaa6629ac73d6985d6216e898788868aec70a6784bcce8ba975e57bb"
+    },
+    "approved_selection": {
+      "bytes": 2265,
+      "path": "experiments/brd4-jq1/boltz-lr0025/runs/20261024-storage-offload-01/approved-selection-03.json",
+      "sha256": "67524633c923c9584e36a816cc2ed71657e1920a98966ae2b5d1baf1474a9c0f"
+    },
+    "canonical_backup_verification": {
+      "bytes": 1854,
+      "path": "experiments/brd4-jq1/boltz-lr0025/runs/20261024-storage-offload-01/backup-verification-03.json",
+      "sha256": "4b07eda12779ada39107325dcda1a9f8d3e794c2335640170330b1aff11fa47a"
+    },
+    "deletion_collection_index": {
+      "bytes": 4984,
+      "path": "results/hpc/20261024-storage-offload-01/backup-03/deletion-receipts-01/receipt-index.json",
+      "sha256": "43cb2040ae638b63d7d976b9d46807a9934b52963a281a397a7464ecb189b52b"
+    },
+    "deletion_completed": {
+      "bytes": 593,
+      "path": "results/hpc/20261024-storage-offload-01/backup-03/deletion-receipts-01/deletion-complete.json",
+      "sha256": "f50d568970d6bc4531d9144ba4b3de6804e77f827b539bb44d3ed03b8b61c9ce"
+    },
+    "deletion_journal": {
+      "bytes": 19412359,
+      "path": "results/hpc/20261024-storage-offload-01/backup-03/deletion-receipts-01/deletion-journal.jsonl",
+      "sha256": "402989c870cd95f1d78d4e98bd95dd2162336e310970be2c2ec74861f10488f9"
+    },
+    "deletion_started": {
+      "bytes": 526,
+      "path": "results/hpc/20261024-storage-offload-01/backup-03/deletion-receipts-01/deletion-started.json",
+      "sha256": "6801d74ec9ac9c190dafedba199b557014012a010ea958414877e8cd5d953bbd"
+    },
+    "expanded_protection": {
+      "bytes": 86675,
+      "path": "experiments/brd4-jq1/boltz-lr0025/runs/20261024-storage-offload-01/flat-protection-approved-03.json",
+      "sha256": "a87eec9f7e68e9174604e3900490ec1ed5cbc941fec968c8c413e6cb95afd3e9"
+    },
+    "operator_source_manifest": {
+      "bytes": 17644,
+      "path": "experiments/brd4-jq1/boltz-lr0025/runs/20261024-storage-offload-01/operator-source-manifest-04.json",
+      "sha256": "8a6420047f7260eedd1219c4313c835dae4bb2a13cd39d4914f9e87abcd5bafe"
+    },
+    "operator_validation": {
+      "bytes": 21646,
+      "path": "experiments/brd4-jq1/boltz-lr0025/runs/20261024-storage-offload-01/operator-verification-04.json",
+      "sha256": "d712220f553d0988b0e1e3ae9655d78369999665f71641e5a670c52e163d3ce1"
+    },
+    "original_deleter_caller_result": {
+      "bytes": 19,
+      "path": "results/hpc/20261024-storage-offload-01/backup-03/removal-execution-01/result.json",
+      "sha256": "067fd603355b38e4ba4a5c3014b04994865fcee137b41a3e06a841b40fe1f084"
+    },
+    "post_deletion_audit": {
+      "bytes": 4720,
+      "path": "results/hpc/20261024-storage-offload-01/backup-03/post-deletion-audit-03/verification.json",
+      "sha256": "6f9bc7d324df5afff592583801ca03770945548cd61ef4d4d1ee83b5e44fbc06"
+    },
+    "post_deletion_audit_result": {
+      "bytes": 583,
+      "path": "results/hpc/20261024-storage-offload-01/backup-03/post-deletion-audit-03/result.json",
+      "sha256": "a17f830ac522a5d8febd23370378dab77957d27a42980bd3f519c1f49079312b"
+    },
+    "standalone_backup_verification": {
+      "bytes": 10636707,
+      "path": "results/hpc/20261024-storage-offload-01/backup-03/verification.json",
+      "sha256": "e6821f9135537829d9849405d48cd4a69960bd399d0dbf74669f5d3e3cfd4c9b"
+    }
+  },
+  "quota_observation": {
+    "actual_attributable_physical_or_quota_savings_established": false,
+    "authority": {
+      "bytes": 4720,
+      "path": "results/hpc/20261024-storage-offload-01/backup-03/post-deletion-audit-03/verification.json",
+      "sha256": "6f9bc7d324df5afff592583801ca03770945548cd61ef4d4d1ee83b5e44fbc06"
+    },
+    "captured_unix_ns": 1792842691573061890,
+    "hard_gib": 100.0,
+    "observed_used_gib": 51.22,
+    "query": [
+      "getquota_work3.sh"
+    ],
+    "returncode": 0,
+    "scope": "Independent raw user-quota observation; concurrent VAE writes/cached accounting prevent an exact cleanup-attributable saving claim. Supplemental filesystem inode counters all zero/unreported."
+  },
+  "recorded_utc": "2026-10-24T11:57:18.460662+00:00",
+  "removal": {
+    "already_absent_no_removal_claim": 0,
+    "completed_unix_ns": 1792842635596281549,
+    "journal_all_exact_paths_independently_reconciled": true,
+    "journal_sha256": "402989c870cd95f1d78d4e98bd95dd2162336e310970be2c2ec74861f10488f9",
+    "original_deleter_returncode": 0,
+    "recursive_delete_used": false,
+    "removed_files": 25413,
+    "removed_logical_bytes": 15725430139,
+    "retained_changed_or_unreadable": 0,
+    "status": "exact_deletion_completed"
+  },
+  "scientific_or_storage_admission_pass_claimed": false,
+  "scope": "Local receipt/JSON/byte-hash and durable-journal reconciliation only; no SSH, transfer, deletion, model, numerical test or scientific admission. Every subsequent experiment still requires its own unchanged actual gates.",
+  "source_manifest_sha256": "8a6420047f7260eedd1219c4313c835dae4bb2a13cd39d4914f9e87abcd5bafe",
+  "status": "completed_verified_backup_exact_removal_and_protection_audit",
+  "version": "mosaic-exact-offload-cleanup-completion-v1"
+}

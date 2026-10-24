@@ -1,102 +1,158 @@
 {
-  "version": "mosaic-reviewed-storage-offload-campaign-v1",
-  "status": "approved_single_link_backup03_client_started_completion_unverified",
-  "authorization": "Download and verify files not needed by current experiments, then remove identical inactive remote copies only.",
-  "operation_id": "legacy-offload-03",
-  "remote_control_root": "/work3/s234818/mosaic/runs/20261024-storage-offload-01",
-  "operator_source_manifest_sha256": "8a6420047f7260eedd1219c4313c835dae4bb2a13cd39d4914f9e87abcd5bafe",
+  "active_cleanup_transfer": false,
+  "actual_quota_savings_established": false,
   "allocated_operator": {
-    "job_id": "29806439",
-    "actual_status": "DONE",
-    "same_job_lsf_success": true,
     "actual_raw_cases_passed": 44,
+    "actual_status": "DONE",
+    "job_id": "29806439",
+    "raw_evidence_bundle_sha256": "9bb9692472172b2c673734879fa6d103143b5106a5e8b1c179cf0d95a32f3add",
+    "same_job_lsf_success": true,
     "verification": "operator-verification-04.json",
-    "verification_sha256": "d712220f553d0988b0e1e3ae9655d78369999665f71641e5a670c52e163d3ce1",
-    "raw_evidence_bundle_sha256": "9bb9692472172b2c673734879fa6d103143b5106a5e8b1c179cf0d95a32f3add"
+    "verification_sha256": "d712220f553d0988b0e1e3ae9655d78369999665f71641e5a670c52e163d3ce1"
   },
   "approved_plan": {
-    "path": "results/hpc/20261024-storage-offload-01/backup-03/approved-plan.json",
     "bytes": 15558449,
-    "sha256": "8abfb724eaa6629ac73d6985d6216e898788868aec70a6784bcce8ba975e57bb",
-    "exact_files": 25413,
     "exact_candidate_roots": 76,
-    "logical_backup_bytes": 15725430139,
-    "unique_logical_candidate_bytes": 15725430139,
-    "selection_policy": "complete_single_link_inode_groups_only",
-    "excluded_linked_inode_groups": 123,
+    "exact_files": 25413,
     "excluded_linked_alias_files": 324,
+    "excluded_linked_inode_groups": 123,
     "excluded_linked_unique_logical_bytes": 6166336979,
-    "selection_unchanged": false
+    "logical_backup_bytes": 15725430139,
+    "path": "results/hpc/20261024-storage-offload-01/backup-03/approved-plan.json",
+    "selection_policy": "complete_single_link_inode_groups_only",
+    "selection_unchanged": false,
+    "sha256": "8abfb724eaa6629ac73d6985d6216e898788868aec70a6784bcce8ba975e57bb",
+    "unique_logical_candidate_bytes": 15725430139
   },
-  "protection": {
-    "path": "/work3/s234818/mosaic/runs/20261024-storage-offload-01/protection-03.json",
-    "bytes": 86675,
-    "sha256": "a87eec9f7e68e9174604e3900490ec1ed5cbc941fec968c8c413e6cb95afd3e9",
-    "staging_evidence": "results/hpc/20261024-storage-offload-01/protection-staging-03/",
-    "all_original_protections_retained": true,
-    "all_mosaic_and_home_paths_protected": true,
-    "all_current_vae_embedding_sources_inputs_checkpoints_contexts_data_and_proofs_protected": true
-  },
+  "authorization": "Download and verify files not needed by current experiments, then remove identical inactive remote copies only.",
   "backup": {
-    "local_path": "results/hpc/20261024-storage-offload-01/backup-03/legacy-offload-03.tar.gz",
-    "remote_completion_receipt": "/work3/s234818/mosaic/runs/20261024-storage-offload-01/legacy-offload-03/stream-complete.json",
-    "status": "fresh_client_started_completion_not_yet_verified",
-    "unified_exec_session": 78079,
+    "active_transfer": false,
+    "all_members_locally_verified": true,
+    "bytes": 8769931895,
+    "completion": {
+      "bytes": 795,
+      "path": "results/hpc/20261024-storage-offload-01/backup-03/stream-receipts-01/stream-complete.json",
+      "sha256": "e2858b0dcf70da1d33b72e3dc7a015facb7f0bddaa475a0aa5a0a6a69ac7843b"
+    },
     "gzip_compresslevel": 1,
+    "local_path": "results/hpc/20261024-storage-offload-01/backup-03/legacy-offload-03.tar.gz",
     "no_large_remote_archive": true,
-    "all_members_locally_verified": false
+    "remote_completion_receipt": "/work3/s234818/mosaic/runs/20261024-storage-offload-01/legacy-offload-03/stream-complete.json",
+    "sha256": "ac75713c102dba31b0ea9934c2303ebd5cb529d5c98c422baccfc42afda29ff3",
+    "standalone_verification": {
+      "bytes": 10636707,
+      "path": "results/hpc/20261024-storage-offload-01/backup-03/verification.json",
+      "sha256": "e6821f9135537829d9849405d48cd4a69960bd399d0dbf74669f5d3e3cfd4c9b"
+    },
+    "status": "full_laptop_backup_verified_all_members",
+    "transfer_finished_utc": "2026-10-24T11:44:30.221192+00:00",
+    "unified_exec_session": 78079,
+    "verification": "backup-verification-03.json",
+    "verification_sha256": "4b07eda12779ada39107325dcda1a9f8d3e794c2335640170330b1aff11fa47a"
   },
-  "removed_files_verified": 0,
-  "actual_quota_savings_established": false,
-  "scientific_or_saved_current_results_changed": false,
+  "cleanup_completion": {
+    "bytes": 7185,
+    "path": "experiments/brd4-jq1/boltz-lr0025/runs/20261024-storage-offload-01/cleanup-completion-03.json",
+    "sha256": "b3f877b20f11a5e76d8d2e27ee8d60e6cf1193f4ed430438855d5f7d97d6d11f"
+  },
+  "follow_up_outside_cleanup": "Future experiment admission remains independent and requires every unchanged scientific/runtime/quota/storage gate; cleanup completion is not a new run submission or pass.",
+  "local_transport_failure_preserved": "operator-submission-04 WinError206 before child spawn; separate framed-stdin caller stages identical20605B reviewed code and exact31403B archive, succeeded.",
+  "metadata_changes": "Indexed equivalent canonical path protections and faster gzip1; original file bytes and all authentication/alias/finite-quota/current-job/race/hash/unlink guards unchanged.",
+  "operation_id": "legacy-offload-03",
+  "operator_source_manifest_sha256": "8a6420047f7260eedd1219c4313c835dae4bb2a13cd39d4914f9e87abcd5bafe",
   "paused_monitor_changed": false,
-  "required_next": [
-    "Finish reviewed distinct single-link operation03 plan/protection and literal-only helper bindings; never replay either retired backup.",
-    "Start only a fresh operation03 stream after its actual source/CPU/retirement/activity/protection checks.",
-    "Authenticate its separately collected actual completed stream receipt and verify every original laptop member before conditional literal unlink.",
-    "Audit durable deletion journal, retained/protected entries and fresh quota after any actual removal.",
-    "Repeat unchanged full Pro03 admission before any CPU866 recovery submission; full future Pro50k/40k projections remain unknown."
-  ],
-  "updated_utc": "2026-10-24T11:11:31.235158+00:00",
-  "previous_checkpoint": {
-    "path": "campaign-checkpoint-03.json",
-    "sha256": "6fa2e7c119c99364c10a782b908d04cb3ab92c54bae50e2269015b7a76f85ae1"
+  "post_deletion_protection_audit": {
+    "explicit_file_pins_rehashed": 270,
+    "files_deleted_by_audit": 0,
+    "full_source_members_rehashed": 3219,
+    "full_source_scopes": 7,
+    "protected_bytes_rehashed": 575469439,
+    "protected_pin_rehashes": 3489,
+    "removed_original_paths_verified_absent": 25413,
+    "status": "independently_verified_read_only_post_deletion_audit",
+    "verified_utc": "2026-10-24T11:51:43.555110+00:00"
   },
   "previous_backup_attempt": {
-    "local_path": "results/hpc/20261024-storage-offload-01/backup-02/legacy-offload-02.tar.gz",
-    "remote_completion_receipt": "/work3/s234818/mosaic/runs/20261024-storage-offload-01/legacy-offload-02/stream-complete.json",
-    "status": "intentionally_retired_incomplete_backup_all_originals_retained",
-    "gzip_compresslevel": 1,
-    "no_large_remote_archive": true,
+    "active_transfer": false,
     "all_members_locally_verified": false,
+    "all_original_remote_files_retained": true,
+    "gzip_compresslevel": 1,
+    "local_path": "results/hpc/20261024-storage-offload-01/backup-02/legacy-offload-02.tar.gz",
+    "no_large_remote_archive": true,
+    "original_owned_producer_no_longer_running": true,
+    "original_owned_producer_pid": 177888,
     "partial_bytes": 1470834414,
     "partial_sha256": "241ed738bdecc407f8c4bdfe77586b054d7fcf7282e1099463d77794c425c731",
-    "retirement_proof": "stream-retirement-02.json",
+    "remote_completion_receipt": "/work3/s234818/mosaic/runs/20261024-storage-offload-01/legacy-offload-02/stream-complete.json",
     "remote_retirement_receipt_bytes": 1132,
     "remote_retirement_receipt_sha256": "3324ff5a10fe9e461ab1946c4072859a8a09d4ffce72eca9d09cebcf2a9a2da2",
-    "original_owned_producer_pid": 177888,
-    "original_owned_producer_no_longer_running": true,
-    "all_original_remote_files_retained": true,
-    "active_transfer": false
+    "retirement_proof": "stream-retirement-02.json",
+    "status": "intentionally_retired_incomplete_backup_all_originals_retained"
   },
-  "metadata_changes": "Indexed equivalent canonical path protections and faster gzip1; original file bytes and all authentication/alias/finite-quota/current-job/race/hash/unlink guards unchanged.",
-  "local_transport_failure_preserved": "operator-submission-04 WinError206 before child spawn; separate framed-stdin caller stages identical20605B reviewed code and exact31403B archive, succeeded.",
-  "proposed_operation": {
-    "status": "local_preparation_not_started",
-    "operation_id": "legacy-offload-03",
-    "local_backup_directory": "results/hpc/20261024-storage-offload-01/backup-03",
-    "selection_policy": "complete_single_link_inode_groups_only",
-    "proposed_files": 25413,
-    "proposed_logical_backup_bytes": 15725430139,
-    "linked_alias_files_to_remain_protected": 324,
-    "linked_inode_groups_to_remain_protected": 123,
-    "source_manifest_sha256": "8a6420047f7260eedd1219c4313c835dae4bb2a13cd39d4914f9e87abcd5bafe",
-    "actual_operator_cpu_job_id": "29806439",
-    "actual_operator_cases": 44,
-    "backup_started": false,
-    "original_remote_files_deleted": 0,
-    "actual_quota_savings_established": false,
-    "full_scientific_admission_pass_claimed": false
+  "previous_checkpoint": {
+    "bytes": 6261,
+    "path": "experiments/brd4-jq1/boltz-lr0025/runs/20261024-storage-offload-01/campaign-checkpoint-05.json",
+    "sha256": "9819205b9b993f99736d7f20ea83d59504617d350cb2e1ace81b76a7c8f26c72"
   },
-  "active_cleanup_transfer": false
+  "protection": {
+    "all_current_vae_embedding_sources_inputs_checkpoints_contexts_data_and_proofs_protected": true,
+    "all_mosaic_and_home_paths_protected": true,
+    "all_original_protections_retained": true,
+    "bytes": 86675,
+    "path": "/work3/s234818/mosaic/runs/20261024-storage-offload-01/protection-03.json",
+    "sha256": "a87eec9f7e68e9174604e3900490ec1ed5cbc941fec968c8c413e6cb95afd3e9",
+    "staging_evidence": "results/hpc/20261024-storage-offload-01/protection-staging-03/"
+  },
+  "quota_observation": {
+    "actual_attributable_physical_or_quota_savings_established": false,
+    "authority": {
+      "bytes": 4720,
+      "path": "results/hpc/20261024-storage-offload-01/backup-03/post-deletion-audit-03/verification.json",
+      "sha256": "6f9bc7d324df5afff592583801ca03770945548cd61ef4d4d1ee83b5e44fbc06"
+    },
+    "captured_unix_ns": 1792842691573061890,
+    "hard_gib": 100.0,
+    "observed_used_gib": 51.22,
+    "query": [
+      "getquota_work3.sh"
+    ],
+    "returncode": 0,
+    "scope": "Independent raw user-quota observation; concurrent VAE writes/cached accounting prevent an exact cleanup-attributable saving claim. Supplemental filesystem inode counters all zero/unreported."
+  },
+  "remote_control_root": "/work3/s234818/mosaic/runs/20261024-storage-offload-01",
+  "removal": {
+    "all_remote_guards_unchanged": true,
+    "already_absent_no_removal_claim": 0,
+    "caller": "execute_verified_removal_03_windows.py",
+    "completion": {
+      "bytes": 593,
+      "path": "results/hpc/20261024-storage-offload-01/backup-03/deletion-receipts-01/deletion-complete.json",
+      "sha256": "f50d568970d6bc4531d9144ba4b3de6804e77f827b539bb44d3ed03b8b61c9ce"
+    },
+    "journal": {
+      "bytes": 19412359,
+      "path": "results/hpc/20261024-storage-offload-01/backup-03/deletion-receipts-01/deletion-journal.jsonl",
+      "sha256": "402989c870cd95f1d78d4e98bd95dd2162336e310970be2c2ec74861f10488f9"
+    },
+    "local_closed_archive_full_rehash_required": true,
+    "post_audit": {
+      "bytes": 4720,
+      "path": "results/hpc/20261024-storage-offload-01/backup-03/post-deletion-audit-03/verification.json",
+      "sha256": "6f9bc7d324df5afff592583801ca03770945548cd61ef4d4d1ee83b5e44fbc06"
+    },
+    "recursive_delete_used": false,
+    "removed_files": 25413,
+    "removed_logical_bytes": 15725430139,
+    "retained_changed_or_unreadable": 0,
+    "returncode": 0,
+    "session_id": 60573,
+    "status": "exact_deletion_completed_and_post_audit_verified"
+  },
+  "removed_files_verified": 25413,
+  "removed_logical_bytes_verified": 15725430139,
+  "required_next": [],
+  "scientific_or_saved_current_results_changed": false,
+  "status": "completed_verified_backup_exact_removal_and_protection_audit",
+  "updated_utc": "2026-10-24T11:57:18.460662+00:00",
+  "version": "mosaic-reviewed-storage-offload-campaign-v1"
 }

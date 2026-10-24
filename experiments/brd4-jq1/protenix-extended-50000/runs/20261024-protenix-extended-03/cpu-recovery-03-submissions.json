@@ -1,0 +1,224 @@
+{
+  "actual_current_status": {
+    "after-cpu": "PEND",
+    "cpu": "RUN"
+  },
+  "actual_scheduler_at": "2026-10-24T11:56:41.668761+00:00",
+  "actual_submission_complete": {
+    "bytes": 10387,
+    "path": "results/hpc/20261024-protenix-extended-03/evidence-04/files/0005/submission-complete.json",
+    "sha256": "14ad8b60c44f9dd95a84fe35d17adbfa64f07585317d1a364566480d2dd03ee9"
+  },
+  "callback": {
+    "args": [
+      "bsub",
+      "-q",
+      "hpc",
+      "-n",
+      "2",
+      "-R",
+      "span[hosts=1]",
+      "-R",
+      "rusage[mem=4GB]",
+      "-W",
+      "00:30",
+      "-J",
+      "mosaic-pro50k-after-cpu",
+      "-oo",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/after-cpu/stdout.%J.log",
+      "-eo",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/after-cpu/stderr.%J.log",
+      "-w",
+      "ended(29806660)",
+      "bash",
+      "-l",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source/scripts/hpc/extended_stage.lsf",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03",
+      "da9db6821d26b884ca1749303fc8e0b0095bd9ee7cbd1b427cdcf1b22eec6562",
+      "after-cpu",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/after-cpu"
+    ],
+    "dependency": "ended(29806660)",
+    "job_id": "29806661",
+    "outcome": "submitted",
+    "phase": "after-cpu",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "Job <29806661> is submitted to queue <hpc>.\n",
+    "utc": "2026-10-24T11:53:11.599538+00:00"
+  },
+  "control": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/cpu-recovery-03",
+  "cpu": {
+    "args": [
+      "bsub",
+      "-q",
+      "hpc",
+      "-n",
+      "4",
+      "-R",
+      "span[hosts=1]",
+      "-R",
+      "rusage[mem=4GB]",
+      "-W",
+      "01:00",
+      "-J",
+      "mosaic-pro50k-cpu",
+      "-oo",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/cpu/stdout.%J.log",
+      "-eo",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/cpu/stderr.%J.log",
+      "bash",
+      "-l",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source/scripts/hpc/extended_cpu.lsf",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03",
+      "da9db6821d26b884ca1749303fc8e0b0095bd9ee7cbd1b427cdcf1b22eec6562"
+    ],
+    "dependency": null,
+    "job_id": "29806660",
+    "outcome": "submitted",
+    "phase": "cpu",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "Job <29806660> is submitted to queue <hpc>.\n",
+    "utc": "2026-10-24T11:53:11.168357+00:00"
+  },
+  "cpu_cases_required": 866,
+  "cpu_passed": false,
+  "gpu_startup_passed": false,
+  "local_evidence": "results/hpc/20261024-protenix-extended-03/evidence-04",
+  "native_passed": false,
+  "no_new_native_jobs_or_cpu_pass_established": true,
+  "optimization_started": false,
+  "original_saved_results_unchanged": true,
+  "preflight": {
+    "gate": {
+      "file_reserve": 100000,
+      "full_extended": {
+        "continuation": 1073741824,
+        "random": 1073741824
+      },
+      "full_long_admission": false,
+      "missing_full_projections": [],
+      "noisy_capsule_inventory": {
+        "capsules": [
+          {
+            "bytes": 47431694,
+            "path": "/work3/s234818/mosaic/releases/20261023-protenix-noisy-01",
+            "scope": "authenticated_noisy01"
+          },
+          {
+            "bytes": 39636303,
+            "path": "/work3/s234818/mosaic/releases/20261023-protenix-noisy-01.tar.gz",
+            "scope": "authenticated_noisy01"
+          },
+          {
+            "bytes": 4955,
+            "path": "/work3/s234818/mosaic/runs/20261023-protenix-noisy-01",
+            "scope": "authenticated_noisy01"
+          }
+        ],
+        "scope": "Every matching direct work3 Mosaic run/release/upload byte inventoried; unknown scope blocks every admission phase",
+        "stale_bytes": 87072952,
+        "unknown_scopes": []
+      },
+      "noisy_protenix": {
+        "current": 4955,
+        "full": 1073741824,
+        "remaining": 1073736869,
+        "scope": "authenticated_immutable_one_GiB_cap"
+      },
+      "old_current": {
+        "boltz2": 1001537880,
+        "boltz2_chemistry": 2562690364,
+        "protenix": 1065476574
+      },
+      "own_current": {
+        "continuation": 0,
+        "random": 0
+      },
+      "peers": {
+        "baseline": {
+          "current": 6889964,
+          "full": 20549890944,
+          "projection_sha256": "e2417e6e14ba25543d776d7108e556d6bf467476247ce83847266066bb6fd9e4",
+          "remaining": 20543000980,
+          "scope": "Declared mutable capacity metadata; exact all authenticated native maxima, no lowering",
+          "source_manifest_sha256": "c214bccf2c94ac6829996bc0ca7d6415d3c19549be4fe7f874cba2b433901cc6"
+        },
+        "dbmol": {
+          "current": 1185699,
+          "full": 4997967296,
+          "projection_sha256": "246af7452231e07dbfe683d78f73276e9acd48de5d0460d0868107c86f175d88",
+          "remaining": 4996781597,
+          "scope": "Declared mutable capacity metadata; exact all authenticated native maxima, no lowering",
+          "source_manifest_sha256": "600ecc3b33135141a57c029a28a2c72f29e788e3ecf5cb2dac1761146d1d6eed"
+        }
+      },
+      "phase": "preflight",
+      "projected_bytes": 37348701956,
+      "prospective_adoption_metadata_controls": {
+        "current": {
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-pro02-adoption-04": 0,
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-pro02-adoption-06": 0
+        },
+        "per_control_bytes": 1073741824,
+        "remaining_bytes": 2147483648,
+        "scope": "Two explicit metadata-only adoption controls; current bytes additionally remain in entire BASE stale charge"
+      },
+      "reserve_bytes": 4294967296,
+      "scope": "All original remaining +report2GiB/diagnostic512MiB +both Pro02 +current Boltz30k +DBMol10k +bounded noisyPro; no reservations",
+      "stale_scope": "Entire analysis BASE includes original/new Pro/Boltz/DBMol roots/releases/uploads; external noise paths additionally charged",
+      "status": "passed",
+      "work3": {
+        "available_bytes_conservative": 42505285132,
+        "available_files_lower": 19588704,
+        "disk_free_bytes": 551000522883072,
+        "file_headroom_scope": "Mandatory minimum of all authenticated finite user-quota pools",
+        "file_reserve": 100000,
+        "filesystem": "work3",
+        "filesystem_inode_observation": {
+          "f_favail": 0,
+          "f_ffree": 0,
+          "f_files": 0
+        },
+        "filesystem_inode_reporting": "unreported_all_zero",
+        "inode_limitation": "All-zero statvfs tuple supplies no independent filesystem inode proof",
+        "limitation": "Observations are conservative budget checks, not storage reservations",
+        "projected_bytes": 37348701956,
+        "quota": {
+          "available_bytes_lower": 51539607552,
+          "available_files_lower": 19588704,
+          "finite_pools": [
+            {
+              "hard_bytes_lower": 107374182400,
+              "remaining_bytes": 51539607552,
+              "remaining_files": 19588704,
+              "used_bytes_upper": 55834574848
+            }
+          ]
+        },
+        "raw_quota": "HPE-Storage-Servers (disks, storagepool 1): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nHPE-Storage-Servers (NVME, storagepool 2): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (disks, storagepool 3): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks, storagepool 4): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks added in 2024, storagepool 5): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (NVMEs added in 2024, storagepool 6): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||   51.09 GiB|  100.00 GiB||   411296| 20000000\n\n",
+        "required_bytes": 41643669252,
+        "reserve_bytes": 4294967296,
+        "stale_bytes_subtracted": 9034322420,
+        "status": "passed"
+      }
+    },
+    "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/cpu-recovery-03/storage-preflight/gate.json",
+    "sha256": "c8b972a2c89097f2c0eeac4e77dd6ae4224994c49a494dc7e9293dd3bedf3f3d"
+  },
+  "previous_failed_gate": {
+    "bytes": 6133,
+    "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/staging-01/storage-preflight/gate.json",
+    "sha256": "6d1d0fae516de98615b83ebc005ab2330dd2146c08ef631f1bd5c3d28593a951",
+    "status": "failed_preserved"
+  },
+  "raw_metadata_sha256": "a27bbd04fb8d7f9bb0a7ffc91f0fb008e256ddf5f035410ec2624104060ec226",
+  "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03",
+  "source": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source",
+  "source_files": 643,
+  "source_manifest_sha256": "da9db6821d26b884ca1749303fc8e0b0095bd9ee7cbd1b427cdcf1b22eec6562",
+  "status": "submitted_not_passed"
+}
