@@ -1,0 +1,22 @@
+{
+  "status": "passed_independent_metadata_source_byte_XML_LSF_dispatch_audit",
+  "captured_utc": "2026-10-24T23:29:38.546232+00:00",
+  "source_manifest_sha256": "00e223b9b453aa0e390f315951eee3406916ac8c8499284945967a72fbf38698",
+  "source_files": 5,
+  "raw_metadata_cases": 19,
+  "original_numerical_cases_adopted": 143,
+  "actual_metadata_CPU_job": "29809552",
+  "actual_callback_job": "29809553",
+  "gpu_job": "29809554",
+  "gpu_status_claim": "actually_submitted_not_a_GPU_execution_pass",
+  "actual_GPU_runtime_source_manifest_sha256": "09c0ab837bede0c5779eac0da06885cfbef6a98744f67af19e7b5a8b33ffa222",
+  "cpu_assessment_sha256": "cf7a0a15ffba10d3127986e79f04deec85947e76de10f684ee09d201b17243ba",
+  "callback_assessment_sha256": "d16b27e187b9a4553d937c767a0e89aca7614859090e5785cabeff122aa5870d",
+  "raw_observation_sha256": "623309b8d1744f11920abbcd6cf60b74870aceba079b0b833ace732b3c2794eb",
+  "verifier_sha256": "f5f0e79a41d3910f586dedcd279a50631f90ef790bce02aab867b9f9dcc5c9ff",
+  "storage_required_bytes": 32815757995,
+  "storage_available_bytes": 39303877607,
+  "original_failure_preserved": true,
+  "original_scientific_runs_changed": false,
+  "scope": "Stdlib artifact/schema audit; no local scientific evaluation"
+}

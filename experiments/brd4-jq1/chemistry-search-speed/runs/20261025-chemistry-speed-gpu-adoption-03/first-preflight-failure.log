@@ -1,0 +1,43 @@
+
+When connecting from _outside_ of DTU (and not using DTU-VPN) one is 
+required to authenticate with a ssh-key + ssh-key-keyphrase + DTU-password.
+
+From inside of DTU (or connecting via DTU-VPN) one can also connect 
+with password or ssh-key.
+
+Info page on SSH: https://www.hpc.dtu.dk/?page_id=4317
+
+---
+For ThinLinc users: 
+Please make sure that your TL client is at least version 4.16 - else you 
+cannot connect to this system!
+
+This is not an error-message, it's just a way to give you some information. 
+Click 'Close' to continue ...
+---
+
+Info page on the system update 08/2024: https://www.hpc.dtu.dk/?page_id=5209
+
+---
+
+Traceback (most recent call last):
+  File "<stdin>", line 32, in <module>
+  File "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-search-speed-release-02/source/scripts/round2_worker.py", line 62, in storage
+    original=storage_gate(parent,phase)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-startup-release-03/source/selected_storage.py", line 63, in storage_gate
+    current = sum(tree(p) for p in profile(key)['root'].glob(prefix + '-*'))
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-startup-release-03/source/selected_storage.py", line 63, in <genexpr>
+    current = sum(tree(p) for p in profile(key)['root'].glob(prefix + '-*'))
+                  ^^^^^^^
+  File "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source/scripts/fixed25_split_storage.py", line 60, in tree_bytes
+    info = path.lstat()
+           ^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/pathlib.py", line 847, in lstat
+    return self.stat(follow_symlinks=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/pathlib.py", line 840, in stat
+    return os.stat(self, follow_symlinks=follow_symlinks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-segment-0000/payload/study/case-0/trials/latest-trial.partial'

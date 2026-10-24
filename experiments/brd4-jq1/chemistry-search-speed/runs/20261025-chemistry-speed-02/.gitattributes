@@ -1,0 +1,5 @@
+# Keep original authenticated evidence bytes and scheduler whitespace.
+*.json -text -eol whitespace=cr-at-eol
+*.xml -text -eol -diff
+*.log -text -eol -diff
+*.txt -text -eol -diff

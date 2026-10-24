@@ -1,0 +1,17 @@
+Loaded dependency [python3/3.12.11]: sqlite3/3.50.1
+Loaded dependency [python3/3.12.11]: gcc/14.3.0-binutils-2.44
+Loaded module: python3/3.12.11
+
+Loading python3/3.12.11
+  Loading requirement: sqlite3/3.50.1 gcc/14.3.0-binutils-2.44
+Traceback (most recent call last):
+  File "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-search-speed-release-02/source/scripts/round2_worker.py", line 216, in <module>
+    if __name__=='__main__':run(sys.argv[2],sys.argv[1])
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-search-speed-release-02/source/scripts/round2_worker.py", line 163, in run
+    proof=cpu_terminal(manifest)
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-search-speed-release-02/source/scripts/round2_worker.py", line 142, in cpu_terminal
+    assert f'Job<{job}>' in compact and 'Status<DONE>' in compact and 'Queue<hpc>' in compact
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

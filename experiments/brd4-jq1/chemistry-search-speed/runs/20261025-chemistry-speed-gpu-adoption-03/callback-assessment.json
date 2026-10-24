@@ -1,0 +1,221 @@
+{
+  "status": "metadata_checks_passed_GPU_submitted_not_passed",
+  "job_id": "29809553",
+  "manifest_sha256": "00e223b9b453aa0e390f315951eee3406916ac8c8499284945967a72fbf38698",
+  "scientific_source_changed": false,
+  "original_callback_status": "failed_preserved",
+  "gpu_submitted": true,
+  "metadata_cases": 19,
+  "raw_xml_sha256": "14831ffc306dfd9875f344c76c81625f30d60f1c1236aa5bdac37919e6e0aab0",
+  "cpu_actual_terminal": {
+    "returncode": 0,
+    "stdout": "\nJob <29809477>, Job Name <mosaic-chem-speed02-cpu>, User <s234818>, Project <de\n                          fault>, Service Class <sc_hpc1>, Status <DONE>, Queue\n                           <hpc>, Command <bash -l /work3/s234818/mosaic/runs/2\n                          0261022-brd4-jq1-lrboost-analysis-01/chemistry-search\n                          -speed-release-02/source/scripts/round2_stage.lsf /wo\n                          rk3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-ana\n                          lysis-01/chemistry-search-speed-release-02/source 09c\n                          0ab837bede0c5779eac0da06885cfbef6a98744f67af19e7b5a8b\n                          33ffa222 cpu>, Share group charged </s234818>, Esub <\n                          dcc>\nSun Oct 25 01:15:35 2026: Submitted from host <hpclogin1>, CWD <$HOME>, Output \n                          File (overwrite) </work3/s234818/mosaic/runs/20261022\n                          -brd4-jq1-lrboost-analysis-01/chemistry-search-speed-\n                          02/cpu/stdout.29809477.log>, Error File (overwrite) <\n                          /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-\n                          analysis-01/chemistry-search-speed-02/cpu/stderr.2980\n                          9477.log>, 16 Task(s), Requested Resources <{select[s\n                          hortparallel_] rusage[mem=2048.00] span[hosts=1]} || \n                          {select[!shortparallel_] rusage[mem=2048.00] span[hos\n                          ts=1]}>;\nSun Oct 25 01:15:36 2026: Started 16 Task(s) on Host(s) <16*n-62-30-23>, Alloca\n                          ted 16 Slot(s) on Host(s) <16*n-62-30-23>, Execution \n                          Home </zhome/95/e/206121>, Execution CWD </zhome/95/e\n                          /206121>;\nSun Oct 25 01:23:05 2026: Done successfully. The CPU time used is 506.2 seconds\n                          .\n\n RUNLIMIT                \n 120.0 min\n\n MEMLIMIT\n      2 G \n\n MEMORY USAGE:\n MAX MEM: 725 Mbytes;  AVG MEM: 581 Mbytes; MEM Efficiency: 2.21%\n\n CPU USAGE:\n CPU PEAK: 1.39 ;  CPU PEAK DURATION: 87 second(s)\n CPU AVERAGE EFFICIENCY: 7.15% ;  CPU PEAK EFFICIENCY: 8.69%\n\n PENDING TIME DETAILS:\n Eligible pending time (seconds):\t1\n Ineligible pending time (seconds):\t0\n\n SCHEDULING PARAMETERS:\n           r15s   r1m  r15m   ut      pg    io   ls    it    tmp    swp    mem\n loadSched   -     -     -     -       -     -    -     -     -      -      -  \n loadStop    -     -     -     -       -     -    -     -     -      -      -  \n\n RESOURCE REQUIREMENT DETAILS:\n Job-level: {select[shortparallel_] rusage[mem=2048.00] span[hosts=1]} || {sele\n                          ct[!shortparallel_] rusage[mem=2048.00] span[hosts=1]\n                          }\n App-level: -\n Queue-level: same[type:model] affinity[core] cu[type=enclosure:maxcus=1]\n Combined: {select[(shortparallel_) && (type == any)] order[-slots:-maxslots] r\n                          usage[mem=2048.00] span[hosts=1] cu[pref=config:maxcu\n                          s=1:type=enclosure] affinity[core(1)*1]} || {select[(\n                          !shortparallel_) && (type == any)] order[-slots:-maxs\n                          lots] rusage[mem=2048.00] span[hosts=1] cu[pref=confi\n                          g:maxcus=1:type=enclosure] affinity[core(1)*1]}\n Effective: select[((shortparallel_) && (type == any))] order[-slots:-maxslots]\n                           rusage[mem=2048.00] span[hosts=1] cu[type=enclosure:\n                          maxcus=1:pref=config] affinity[core(1)*1] \n\n",
+    "stderr": "",
+    "captured_utc": "2026-10-24T23:28:02.720904+00:00"
+  },
+  "original_cpu_assessment_sha256": "51fccda60b2178d39fb9ae90067d1ea9062c05d0560ec494dae41272ea33ec34",
+  "original_cpu_lsf_sha256": "e95e148296b17e523441525eeb507b5a7d37f622b5a1a036c85b5b243c805398",
+  "original_cpu_xml_sha256": "dcc176b0a4a74aeedb78a61454bacf6d2d2b1cfc6d8024d2e726f23f99c10791",
+  "original_benchmark_sha256": "68b2ef335a15958fc1f2bebaa0411408e2a12eb055637398c7bcde3f26e6b4bf",
+  "plan_sha256": "672dfbb1380c26212cca7ccb1033cf329b8f426a76d0d60ad1335f2f9885e334",
+  "storage": {
+    "status": "passed",
+    "whole_original_gate": {
+      "status": "passed",
+      "phase": "gpu-dispatch-adoption03",
+      "version": "selected-nonchem-full-storage-v1",
+      "scope": "All selected full remaining projections; deferred chemistry gets no execution/future admission; every existing byte retained",
+      "reserve_bytes": 4294967296,
+      "file_reserve": 100000,
+      "full_selected_production_admission": true,
+      "matrix_stride": 20,
+      "loss_stride": 1,
+      "historical_failed_gates_changed": false,
+      "deferred_arms": [
+        {
+          "profile": "boltz30k",
+          "arm": "boltz2_chemistry",
+          "future_admission": false,
+          "production_absent": true,
+          "terminal_callback": {
+            "job_id": "29805959",
+            "status": "Done",
+            "proof": {
+              "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/boltz2_chemistry-after-native-0000/stdout.29805959.log",
+              "bytes": 2330,
+              "sha256": "b1aaa8a04bf290bcb2efbc8d3e0e7bfab9ca77b636073b7d547ca09ae5bbecc7"
+            },
+            "scheduler_state_invented": false
+          }
+        },
+        {
+          "profile": "protenix50k40k",
+          "arm": "random",
+          "future_admission": false,
+          "production_absent": true,
+          "terminal_callback": {
+            "job_id": "29806665",
+            "status": "Exited",
+            "proof": {
+              "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/random-after-native-0000/stdout.29806665.log",
+              "bytes": 2320,
+              "sha256": "09a63bb6cd921b6d77b70a4acdc6e7a5d92f8daf044b977b5b72d81cce254f44"
+            },
+            "scheduler_state_invented": false
+          }
+        }
+      ],
+      "selected": {
+        "boltz30k": {
+          "full": 3319422138,
+          "current": 11427834,
+          "remaining": 3307994304,
+          "unit_bytes": 32537
+        },
+        "dbmol10k": {
+          "full": 4330960896,
+          "current": 8291018,
+          "remaining": 4322669878,
+          "unit_bytes": 35150
+        },
+        "protenix50k40k": {
+          "full": 4388251664,
+          "current": 360342299,
+          "remaining": 4027909365,
+          "unit_bytes": 23182
+        }
+      },
+      "historical_remaining": {
+        "protenix": 428045250,
+        "boltz2": 746483944,
+        "boltz2_chemistry": 2581331460
+      },
+      "metadata_controls": {
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-pro02-adoption-04": 288301,
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-pro02-adoption-06": 317785,
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-selected-01": 205456,
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-01": 204608,
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-02": 304598
+      },
+      "noise_caps": {
+        "/work3/s234818/mosaic/runs/20261023-protenix-noisy-01": 4955,
+        "/work3/s234818/mosaic/runs/20261025-protenix-noisy-05": 314090599
+      },
+      "retired_noise_current_bytes": 1826,
+      "retired_noise_future_admission": false,
+      "retained_learned_prior_allowance_bytes": 1073741824,
+      "new_metadata_release_allowance_bytes": 1073741824,
+      "external_capsules": [
+        {
+          "path": "/work3/s234818/mosaic/runs/20261023-protenix-noisy-01",
+          "bytes": 4955
+        },
+        {
+          "path": "/work3/s234818/mosaic/runs/20261024-protenix-noisy-04",
+          "bytes": 1826
+        },
+        {
+          "path": "/work3/s234818/mosaic/runs/20261025-protenix-noisy-05",
+          "bytes": 314090599
+        },
+        {
+          "path": "/work3/s234818/mosaic/releases/20261023-protenix-noisy-01",
+          "bytes": 47431694
+        },
+        {
+          "path": "/work3/s234818/mosaic/releases/20261023-protenix-noisy-01.tar.gz",
+          "bytes": 39636303
+        }
+      ],
+      "projected_bytes": 27447048875,
+      "work3": {
+        "status": "passed",
+        "filesystem": "work3",
+        "raw_quota": "HPE-Storage-Servers (disks, storagepool 1): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nHPE-Storage-Servers (NVME, storagepool 2): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (disks, storagepool 3): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks, storagepool 4): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks added in 2024, storagepool 5): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (NVMEs added in 2024, storagepool 6): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||   53.26 GiB|  100.00 GiB||   415379| 20000000\n\n",
+        "quota": {
+          "finite_pools": [
+            {
+              "used_bytes_upper": 57982058496,
+              "hard_bytes_lower": 107374182400,
+              "remaining_bytes": 49392123904,
+              "remaining_files": 19584621
+            }
+          ],
+          "available_bytes_lower": 49392123904,
+          "available_files_lower": 19584621
+        },
+        "projected_bytes": 27447048875,
+        "stale_bytes_subtracted": 10088246297,
+        "disk_free_bytes": 549865888153600,
+        "available_bytes_conservative": 39303877607,
+        "required_bytes": 31742016171,
+        "reserve_bytes": 4294967296,
+        "file_reserve": 100000,
+        "filesystem_inode_observation": {
+          "f_files": 0,
+          "f_ffree": 0,
+          "f_favail": 0
+        },
+        "available_files_lower": 19584621,
+        "filesystem_inode_reporting": "unreported_all_zero",
+        "file_headroom_scope": "Mandatory minimum of all authenticated finite user-quota pools",
+        "inode_limitation": "All-zero statvfs tuple supplies no independent filesystem inode proof",
+        "limitation": "Observations are conservative budget checks, not storage reservations"
+      },
+      "limitation": "Fresh conservative observation, not a reservation; all-zero filesystem inode counters remain unreported supplemental evidence"
+    },
+    "additional_allowance_bytes": 1073741824,
+    "required_bytes": 32815757995,
+    "available_bytes": 39303877607,
+    "reserve_bytes": 4294967296,
+    "file_reserve": 100000
+  },
+  "gpu": {
+    "status": "submitted",
+    "phase": "gpu",
+    "argv": [
+      "bsub",
+      "-q",
+      "gpul40s",
+      "-n",
+      "4",
+      "-R",
+      "span[hosts=1]",
+      "-R",
+      "rusage[mem=8GB]",
+      "-gpu",
+      "num=1:mode=exclusive_process",
+      "-W",
+      "02:00",
+      "-J",
+      "mosaic-chem-speed02-gpu",
+      "-oo",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-search-speed-02/gpu/stdout.%J.log",
+      "-eo",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-search-speed-02/gpu/stderr.%J.log",
+      "bash",
+      "-l",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-search-speed-release-02/source/scripts/round2_stage.lsf",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-search-speed-release-02/source",
+      "09c0ab837bede0c5779eac0da06885cfbef6a98744f67af19e7b5a8b33ffa222",
+      "gpu"
+    ],
+    "dependency": null,
+    "manifest_sha256": "09c0ab837bede0c5779eac0da06885cfbef6a98744f67af19e7b5a8b33ffa222",
+    "submitted_utc": "2026-10-24T23:28:46.970183+00:00",
+    "returncode": 0,
+    "stdout": "Job <29809554> is submitted to queue <gpul40s>.\n",
+    "stderr": "",
+    "job_id": "29809554"
+  },
+  "combined_current_bytes": 401283,
+  "adoption_cpu_terminal": {
+    "returncode": 0,
+    "stdout": "\nJob <29809552>, Job Name <mosaic-chem-speed-gpu-adoption03-cpu>, User <s234818>\n                          , Project <default>, Service Class <sc_hpc1>, Status \n                          <DONE>, Queue <hpc>, Command <bash -l /work3/s234818/\n                          mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/che\n                          mistry-search-speed-gpu-adoption-release-03/source/sc\n                          ripts/gpu_adoption_stage.lsf /work3/s234818/mosaic/ru\n                          ns/20261022-brd4-jq1-lrboost-analysis-01/chemistry-se\n                          arch-speed-gpu-adoption-release-03/source 00e223b9b45\n                          3aa0e390f315951eee3406916ac8c8499284945967a72fbf38698\n                           cpu>, Share group charged </s234818>, Esub <dcc>\nSun Oct 25 01:27:52 2026: Submitted from host <hpclogin1>, CWD <$HOME>, Output \n                          File (overwrite) </work3/s234818/mosaic/runs/20261022\n                          -brd4-jq1-lrboost-analysis-01/chemistry-search-speed-\n                          gpu-adoption-03/cpu/stdout.29809552.log>, Error File \n                          (overwrite) </work3/s234818/mosaic/runs/20261022-brd4\n                          -jq1-lrboost-analysis-01/chemistry-search-speed-gpu-a\n                          doption-03/cpu/stderr.29809552.log>, 2 Task(s), Reque\n                          sted Resources <{select[shortparallel_] rusage[mem=20\n                          48.00] span[hosts=1]} || {select[!shortparallel_] rus\n                          age[mem=2048.00] span[hosts=1]}>;\nSun Oct 25 01:27:54 2026: Started 2 Task(s) on Host(s) <2*n-62-30-23>, Allocate\n                          d 2 Slot(s) on Host(s) <2*n-62-30-23>, Execution Home\n                           </zhome/95/e/206121>, Execution CWD </zhome/95/e/206\n                          121>;\nSun Oct 25 01:27:58 2026: Done successfully. The CPU time used is 2.6 seconds.\n\n RUNLIMIT                \n 30.0 min\n\n MEMLIMIT\n      2 G \n\n MEMORY USAGE:\n MEM Efficiency: 0.00%\n\n CPU USAGE:\n CPU PEAK: 0.00 ;  CPU PEAK DURATION: 0 second(s)\n CPU AVERAGE EFFICIENCY: 0.00% ;  CPU PEAK EFFICIENCY: 0.00%\n\n PENDING TIME DETAILS:\n Eligible pending time (seconds):\t2\n Ineligible pending time (seconds):\t0\n\n SCHEDULING PARAMETERS:\n           r15s   r1m  r15m   ut      pg    io   ls    it    tmp    swp    mem\n loadSched   -     -     -     -       -     -    -     -     -      -      -  \n loadStop    -     -     -     -       -     -    -     -     -      -      -  \n\n RESOURCE REQUIREMENT DETAILS:\n Job-level: {select[shortparallel_] rusage[mem=2048.00] span[hosts=1]} || {sele\n                          ct[!shortparallel_] rusage[mem=2048.00] span[hosts=1]\n                          }\n App-level: -\n Queue-level: same[type:model] affinity[core] cu[type=enclosure:maxcus=1]\n Combined: {select[(shortparallel_) && (type == any)] order[-slots:-maxslots] r\n                          usage[mem=2048.00] span[hosts=1] cu[pref=config:maxcu\n                          s=1:type=enclosure] affinity[core(1)*1]} || {select[(\n                          !shortparallel_) && (type == any)] order[-slots:-maxs\n                          lots] rusage[mem=2048.00] span[hosts=1] cu[pref=confi\n                          g:maxcus=1:type=enclosure] affinity[core(1)*1]}\n Effective: select[((shortparallel_) && (type == any))] order[-slots:-maxslots]\n                           rusage[mem=2048.00] span[hosts=1] cu[type=enclosure:\n                          maxcus=1:pref=config] affinity[core(1)*1] \n\n",
+    "stderr": "",
+    "captured_utc": "2026-10-24T23:28:02.742720+00:00"
+  },
+  "adoption_cpu_lsf_sha256": "09409ad571b31e00c55e26e3190bb6ef14a094d711650778253a133bc9e83550",
+  "adoption_cpu_assessment_sha256": "cf7a0a15ffba10d3127986e79f04deec85947e76de10f684ee09d201b17243ba",
+  "parent_source_manifest_sha256": "09c0ab837bede0c5779eac0da06885cfbef6a98744f67af19e7b5a8b33ffa222"
+}

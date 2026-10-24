@@ -7053,3 +7053,82 @@ validBoltz was already~0.013s. Profiling identifies hardgraphdiagnosis asdominan
 No automatic productionadoption, fullnativepilot, savedresult change, extra
 cleanup, independentproject/job modification or monitorunpause. Optionallazy
 neighbor41-fixture localdraft remains unexecuted/excludedfrom79pass claim.
+
+
+### 2026-10-25 — further chemistry hybrid/GPU matrix experiment prepared
+
+New explicit userrequest authorizes further optimization/parallelism andmatrix
+GPUconversion. New chemistry-search-speed02 isolatesparent-ownedboundedexact
+nativefactcache+4/8spawnworkers, plusrealGPUbatchedintegergraphfeatures and
+scan/log-semiringmatrix locallosskernels. NativeRDKit/roundtriporacle remains
+CPU/mandatory; no approximatevalidity/pruning/staletarget or currentrun change.
+Full143allocatedCPU cases andmatched6savedinputtarget/loss/gradientparity are
+required beforeownendedcallback mayqueue19GPU-onlycases pluskernelbenchmarks.
+GPUFP32reassociation retainsoriginal2e-5value/gradienttolerance andrawFD
+.01/.003/.001/15percent/twoadjacent. CPU16slots/2GiBslot/2h, GPUoneexclusive
+L40S/fourCPU/8GiBslot/2h, separatejoint1GiBpersistentbudget plusunchangedwhole
+storage4GiB/100000filereserves. Allsources/old79proofs/inputs reauthenticated.
+LocalAST/bytepreparationonlysofar; no newCPU/GPU pass/job/speed result.
+Existing optimizationjobs/savedresults/source01failurehistory andpausedmonitor
+unchanged. Protocol/runrecord writtenbeforeexecution.
+
+
+### 2026-10-25 — chemistry hybrid/GPU02 CPUactually submitted
+
+Immutable19file source09c0ab837bede0c5779eac0da06885cfbef6a98744f67af19e7b5a8b33ffa222 staged/authenticatedread-only; archive35875
+SHAe079f5a30c4e062b2d8dee04311824425a593d16278c3c378d592dd46d127432. Original643science+source01ninefiles/raw79XML/LSFassessment
+and6NPZ/frozenreferencepaths rehashed. Whole originalselectedcapacity plus1GiB
+passed32836817040required/39325369650available retaining4GiB/100000files.
+ActualCPU29809477,ownendedcallback29809478 submitted01:15:35Paris; CPUactualRUN
+01:15:54,callbackPEND. No new143fixturepass, GPUsubmission/result orspeedclaim
+yet. No existingrun/source/result/job settingsmodified, monitorremainspaused.
+
+
+### 2026-10-25 — chemistry GPU admission scheduler-lag correction prepared
+
+Source02 CPU29809477 actualDONE/LSF,143 fixtures and all24 saved-input rows
+passed; independent byte/XML/schema audit observation11 passed. Original
+callback29809478 EXIT1 because own-ended dependency fired while its raw bjobs
+query still returned CPU RUN. Later actualDONE proof preserved separately;
+no GPU submission occurred. New immutable metadata-only adoption03 is prepared
+with bounded actual-terminal waiting and allocated regression tests, own CPU
+DONE/LSF/raw XML authentication, original source/input/plan/143-pass adoption
+and unchanged full storage gate before submitting original source02 GPU argv.
+No failed record rewritten, saved result/current optimization changed, numerical
+gate waived or monitor resumed. No new adoption job/pass yet.
+
+
+### 2026-10-25 — chemistry hybrid CPU passed; original GPU callback failed closed
+
+CPU29809477 actualDONE/hpc/LSFsuccess,143 raw fixtures and24 exact saved-input
+rows/72 preparations passed. Independent observation11 byte/XML/schema audit
+passed; source19/archive/initialplan/sixNPZ+frozenreferences and original643
+source reauthenticated. Warm difficult early preparation16s to.278–.288s;
+first cold16.833 to8.674/7.633s with4/8workers. Alltargets/receipts/losses/
+components/gradienthashes exact. NativeDetectChemistryProblems dominates cold
+profile14.848s; SanitizeMol.054s. These are preparation, not fullmodel timings.
+Originalcallback29809478 EXIT1 on cachedactualCPU RUN afterended; lateractual
+DONE/LSFproof separate. No GPU submitted. Newadmission03 source staged but
+first preflight failed closed on a concurrently replaced currenttrial.partial,
+before anynewjob. Preserve failure; a distinct fullfreshcapacity recheck is
+being made after verifying no CPU/GPU/unknown markers exist. No gate relaxed,
+existing run/source/result modified or monitor resumed.
+
+
+### 2026-10-25 — chemistry GPU benchmark actually queued after validated metadata correction
+
+New five-file immutable admission03 manifest00e223b9b453aa0e390f315951eee3406916ac8c8499284945967a72fbf38698,
+archive9050bytes SHAae2031e920ec7d40058a04215fd4c3bb767e16832672538f12e11b9a5564348b.
+First preflight failed closed on a concurrent active trial.partial replacement,
+before any job. Exact failure preserved; a separate complete fresh unchanged
+gate passed after checking all unknown markers absent, without restaging or
+changing the sealed source/formula. Actual CPU29809552/callback29809553 DONE
+hpc/same-job LSF,19 raw metadata fixtures passed; original143 numerical passes
+and exact plan/source/input/LSF/benchmark proof pins adopted independently.
+Actual GPU29809554 submitted under unchanged source02/19GPU-only checks. At
+01:29:38Paris PEND on physical GPU queue limit; no execution/speed/pass yet.
+Dispatch required32815757995 vs conservative39303877607 bytes with unchanged
+full projections+1GiB benchmark+4GiB/100000file reserves. Independent byte/
+XML/LSF/schema/dispatch audit passed. CPU search targets/losses/gradients remain
+exact; GPU matrix/scans still await actual hardware evaluation. Existing
+scientific jobs/results/settings and paused monitor unchanged.

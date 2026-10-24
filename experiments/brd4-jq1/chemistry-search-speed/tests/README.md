@@ -2,3 +2,12 @@
 
 Exact original-versus-accelerated preparation, loss/gradient and validation/cache
 contracts. Run only in the allocated DTU HPC benchmark job, never locally.
+
+Round2 CPU modules have143planned cases; `test_gpu_execution.py` has19separate
+GPU-only cases and fails on CPU fallback. Counts are disjoint and must be
+authenticated from raw allocated XML, never inferred from this README.
+
+`test_gpu_adoption_terminal.py` has 19 additional allocated metadata fixtures
+for the distinct admission03 capsule. They check raw terminal-proof handling,
+not chemistry or GPU arithmetic, and do not replace the original 143 cases or
+the 19 actual-GPU-only cases.

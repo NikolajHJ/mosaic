@@ -37,4 +37,17 @@ loss benchmark. GPU acceleration is not presumed useful for RDKit/Python search.
 input hashes, resources and outcomes are in each run record. The monitor remains
 paused and existing jobs are not changed.
 
-Current attempt: [20261025-chemistry-speed-01](runs/20261025-chemistry-speed-01/README.md).
+Parent benchmark: [20261025-chemistry-speed-01](runs/20261025-chemistry-speed-01/README.md).
+
+Further user authorization25October: [attempt02](runs/20261025-chemistry-speed-02/README.md)
+tests a combined central-cache/parallel-worker search and real GPU matrix/scan
+loss kernels. Phase01's verified results and immutable source stay preserved;
+phase02 requires its own allocated CPU and GPU evidence before any claims.
+
+At 25 October 01:29 Paris, phase02 CPU passed all 143 fixtures and exact
+six-input comparisons. Warm difficult preparations took about 0.28 seconds
+versus 16 seconds serial; first cold search still took 7.6–8.7 seconds.
+See its [measured results](runs/20261025-chemistry-speed-02/RESULTS.md).
+GPU benchmark 29809554 is queued after the separate
+[validated admission correction](runs/20261025-chemistry-speed-gpu-adoption-03/README.md).
+No GPU speedup or production adoption is established yet.

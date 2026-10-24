@@ -1,0 +1,27 @@
+{
+  "files": {
+    "README.md": "82277e61952b782a6b1814971dff57c0cfc0d3f3d8f363fa2ceb4dcdde04b6f6",
+    "scripts/gpu_adoption.py": "a04a05df53d7af497b0b6abfe64cf59f5770b7a7f178d60586d56adff77308da",
+    "scripts/gpu_adoption_stage.lsf": "90c9c1500854c0003ba3f8a79acdf53544a8bcb7b0d81afbc244c109d158e96c",
+    "scripts/gpu_adoption_terminal.py": "1612ebcd79acd9c9dcb7f5bda6753184971aaf411c91646182df718faf0e44dc",
+    "tests/test_gpu_adoption_terminal.py": "95f8ce9bad08de0185dba248be6ebeddf2970c7358c1d5de4930dd7c44f7a2a1"
+  },
+  "metadata_cases": 19,
+  "parent_source_manifest_sha256": "09c0ab837bede0c5779eac0da06885cfbef6a98744f67af19e7b5a8b33ffa222",
+  "preserved_callback_failure": [
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-search-speed-02/after-cpu/stdout.29809478.log",
+      "sha256": "f4b2d3c7be08bb3fe5c5a5a080ecd14665150fad1b26c4b9b416cca15289fc30"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-search-speed-02/after-cpu/stderr.29809478.log",
+      "sha256": "cec6e10e7dc11a7e31bc8a10f959f9ab59360c6615a64470ace212e703e4864b"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-search-speed-02/after-cpu/cpu-final-scheduler.json",
+      "sha256": "9c0775414ba0dac110afda8cb6efe932213d08147cb6a2b4ab02b003427c442b"
+    }
+  ],
+  "scientific_source_changed": false,
+  "version": "chemistry-GPU-admission-scheduler-lag-v1"
+}

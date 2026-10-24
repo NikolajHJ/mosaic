@@ -1,0 +1,10 @@
+#!/bin/bash
+set -euo pipefail
+[[ $# == 3 && -n "${LSB_JOBID:-}" && "$LSB_QUEUE" == hpc ]]
+source_root=$1
+manifest=$2
+phase=$3
+module load python3/3.12.11
+export PYTHONDONTWRITEBYTECODE=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1
+export CUDA_VISIBLE_DEVICES=""
+exec /work3/s234818/mosaic/envs/protenix-tiny/bin/python -u "$source_root/scripts/gpu_adoption.py" "$manifest" "$phase"

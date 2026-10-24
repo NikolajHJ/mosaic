@@ -1,0 +1,36 @@
+{
+  "cpu_cases": 143,
+  "fd_epsilons": [
+    0.01,
+    0.003,
+    0.001
+  ],
+  "fd_relative_error": 0.15,
+  "fd_two_adjacent": true,
+  "files": {
+    "README.md": "a10c224927fdf211a2ffd40a413efd3d12603690b0bce2d4e62683c502fe6392",
+    "protocol.md": "b6c3c87ef57d7ca43f799ebdd2e29c1939ccbab13923501bffe95b2fe2da132d",
+    "scripts/README.md": "37be293820ef39b71bdfa7222bff47692c775ecf15f2ee476749d9f9754d2d25",
+    "scripts/exact_reuse.py": "b9ecf079d9697fb9efc650f0bbd944b726c2df0d2fcd3b908d9e221f2d565d88",
+    "scripts/gpu_matrix.py": "772e3ea5a691b4aaf8432040ee0066e429e4f6ddd092ed17a2efb917647f3ef3",
+    "scripts/hybrid_search.py": "4bed62f1f3be9aaa96ead9ef79e00840762fd28dd0b9430f6b4b08e5ab60eda8",
+    "scripts/parallel_search.py": "137d5bb6cab95ad3263090eb9b017efa1a78ed42543afe713c7fa654d3628170",
+    "scripts/profile_oracle.py": "7cb0989fda0713b78598eff489b35b5b39cc1a2d6f608eff215cec590dd126c1",
+    "scripts/round2_cpu.py": "29b866896b0ad8d0f2b1585b70a568c565599493b0964853fbe37ff141a68885",
+    "scripts/round2_data.py": "7d6ca6168b77fa96f30d3696ed57c24805cde9669f2083793f1458ab0d23ab31",
+    "scripts/round2_gpu.py": "fba95dfd98a6df0cf259778801bf04d1ed779ccc714ca1ecf47425e31297f3a6",
+    "scripts/round2_stage.lsf": "17b76e5243e21a75deb6e46faed35130660121f8370f8c6bf64ab8451b8484f0",
+    "scripts/round2_worker.py": "fc733654453367f01a13ba581b9571090ee0ffa9f3ca8928103965f4c2ae6dae",
+    "tests/README.md": "e832bf80007e8b03fa849d41b0971df1f5e95426ad61be149312e0caa1884a50",
+    "tests/test_gpu_execution.py": "0294daaba47671ccceaef2c7c24890c30e72b1567b791465b8f98ca8dcfc4287",
+    "tests/test_gpu_matrix.py": "29f8b5559a0f984f762ac246a229603210f1daff843d6de9ffec5a8e23240ee9",
+    "tests/test_hybrid.py": "5f773ef128c8c9290ce77d02346919809c8dceb6d4f562f212646282eb94ed1a",
+    "tests/test_oracle_profile.py": "a4e0f288096d729f39389083b582c225e20202ab7bd6a4bec6fe56c121fea565",
+    "tests/test_speed.py": "64b3272de7e4291b648b36985ff478a9cfc542030ac3cef3c37e66996ab2b0f9"
+  },
+  "gpu_cases": 19,
+  "original_source_manifest_sha256": "da9db6821d26b884ca1749303fc8e0b0095bd9ee7cbd1b427cdcf1b22eec6562",
+  "scientific_production_changed": false,
+  "value_gradient_tolerance": 2e-05,
+  "version": "chemistry-hybrid-gpu-matrix-v1"
+}

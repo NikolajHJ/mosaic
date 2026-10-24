@@ -1,0 +1,43 @@
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@hpc.dtu.dk>
+Subject: Job 29809477: <mosaic-chem-speed02-cpu> in cluster <dcc> Done
+
+Job <mosaic-chem-speed02-cpu> was submitted from host <hpclogin1> by user <s234818> in cluster <dcc> at Sun Oct 25 01:15:35 2026
+Job was executed on host(s) <16*n-62-30-23>, in queue <hpc>, as user <s234818> in cluster <dcc> at Sun Oct 25 01:15:36 2026
+</zhome/95/e/206121> was used as the home directory.
+</zhome/95/e/206121> was used as the working directory.
+Started at Sun Oct 25 01:15:36 2026
+Terminated at Sun Oct 25 01:23:05 2026
+Results reported at Sun Oct 25 01:23:05 2026
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+bash -l /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-search-speed-release-02/source/scripts/round2_stage.lsf /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-search-speed-release-02/source 09c0ab837bede0c5779eac0da06885cfbef6a98744f67af19e7b5a8b33ffa222 cpu
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   506.22 sec.
+    Max Memory :                                 725 MB
+    Average Memory :                             553.20 MB
+    Total Requested Memory :                     32768.00 MB
+    Delta Memory :                               32043.00 MB
+    Max Swap :                                   -
+    Max Processes :                              5
+    Max Threads :                                87
+    Run time :                                   449 sec.
+    Turnaround time :                            450 sec.
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file </work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-search-speed-02/cpu/stderr.29809477.log> for stderr output of this job.
+

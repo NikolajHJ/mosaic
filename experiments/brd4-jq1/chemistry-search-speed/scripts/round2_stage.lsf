@@ -1,0 +1,18 @@
+#!/bin/bash
+set -euo pipefail
+[[ $# == 3 && -n "${LSB_JOBID:-}" ]]
+source_root=$1
+manifest=$2
+phase=$3
+module load python3/3.12.11
+export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1
+export PYTHONDONTWRITEBYTECODE=1 XLA_PYTHON_CLIENT_PREALLOCATE=false JAX_ENABLE_X64=0
+if [[ "$phase" == gpu ]]; then
+  [[ "$LSB_QUEUE" == gpul40s ]]
+  module load cuda/12.9.1 cudnn/v9.13.0.50-prod-cuda-12.X
+  export JAX_PLATFORMS=cuda,cpu
+else
+  [[ "$LSB_QUEUE" == hpc ]]
+  export JAX_PLATFORMS=cpu CUDA_VISIBLE_DEVICES=""
+fi
+exec /work3/s234818/mosaic/envs/protenix-tiny/bin/python -u "$source_root/scripts/round2_worker.py" "$manifest" "$phase"
