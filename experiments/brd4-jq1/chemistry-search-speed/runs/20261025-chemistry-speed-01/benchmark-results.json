@@ -1,0 +1,1939 @@
+{
+  "status": "passed_exact_on_sampled_saved_inputs",
+  "started_utc": "2026-10-24T22:51:26.685197+00:00",
+  "plan_sha256": "36fa175e4a8b040e30078450fceeedeb93dcf76a3f31ec10bf7f1d5c709aa2b6",
+  "modes": [
+    "baseline",
+    "cost",
+    "cache",
+    "combined",
+    "parallel2",
+    "parallel4"
+  ],
+  "scope": "Detached saved graph preparation only; no native model, optimizer updates or production installation",
+  "original_results_changed": false,
+  "rows": [
+    {
+      "mode": "baseline",
+      "input": {
+        "label": "random-early0",
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/random-native-0000/payload/study/early_pilot/snapshots/step-0000.npz",
+        "bytes": 23026,
+        "sha256": "c4febbe4a95cc0746a1fafb7febf141c00bc48e555a1cb11c1d8bc330f0ebd07"
+      },
+      "first_encounter_seconds": 17.845765566919,
+      "seconds": [
+        17.845765566919,
+        16.979357620934024,
+        16.759930553962477
+      ],
+      "cache_history": "One persistent context per mode across the ordered saved inputs; pool startup affects first searched graph",
+      "warm_median_seconds": 16.86964408744825,
+      "preparation_identity": "9182c4e8fbbda33a9512c10a010f97bd8ee5d0e47fcfea98550649aaa6553aa3",
+      "exact_preparation_and_gradient": true,
+      "original_checks": 96,
+      "additional_checks": 192,
+      "routes": [
+        4
+      ],
+      "loss": {
+        "value": 3.6049644947052,
+        "independent_primal": 3.6049644947052,
+        "terms": {
+          "component_cut_risk": 0.0,
+          "extra_valid_nll": 0.0,
+          "local_bond_risk": 36.049644470214844,
+          "nonempty_risk": 0.0,
+          "partial_edited_nll": 0.0,
+          "valid_full_nll": 0.0
+        },
+        "gradient_sha256": [
+          "bd50e12c55dda3ee443c1cb6d71c7bcf6351c4ec96f7bc8d6adec015d1192eea",
+          "b81421cc160bc6533ebc2068a46b42f358d82d613d1feb1e5004fb9fe0f2e53a"
+        ],
+        "gradient_norm": 0.11462633311748505
+      },
+      "adapter_stats": {}
+    },
+    {
+      "mode": "baseline",
+      "input": {
+        "label": "random-early1",
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/random-native-0000/payload/study/early_pilot/snapshots/step-0001.npz",
+        "bytes": 23032,
+        "sha256": "2712a6c8b10a4bdccef1201f05c8cd4b9c668ed3c1dd28eb4afb77b67e390bec"
+      },
+      "first_encounter_seconds": 18.393080794019625,
+      "seconds": [
+        18.393080794019625,
+        18.105677054962143,
+        18.24033594201319
+      ],
+      "cache_history": "One persistent context per mode across the ordered saved inputs; pool startup affects first searched graph",
+      "warm_median_seconds": 18.173006498487666,
+      "preparation_identity": "50e9c5ee92087b76561debeab4cf16d32c8b8b9b426d0a920abe26fdf6241e65",
+      "exact_preparation_and_gradient": true,
+      "original_checks": 96,
+      "additional_checks": 192,
+      "routes": [
+        4
+      ],
+      "loss": {
+        "value": 3.605198621749878,
+        "independent_primal": 3.605198621749878,
+        "terms": {
+          "component_cut_risk": 0.0,
+          "extra_valid_nll": 0.0,
+          "local_bond_risk": 36.05198669433594,
+          "nonempty_risk": 0.0,
+          "partial_edited_nll": 0.0,
+          "valid_full_nll": 0.0
+        },
+        "gradient_sha256": [
+          "bd50e12c55dda3ee443c1cb6d71c7bcf6351c4ec96f7bc8d6adec015d1192eea",
+          "495ee97f0e27083d8ab25ec1dd24175cded867c3443973baed37faf850bb7be5"
+        ],
+        "gradient_norm": 0.11462884396314621
+      },
+      "adapter_stats": {}
+    },
+    {
+      "mode": "baseline",
+      "input": {
+        "label": "random-early2",
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/random-native-0000/payload/study/early_pilot/snapshots/step-0002.npz",
+        "bytes": 23027,
+        "sha256": "98c8a62c36a8097ef1951b1e19890638a04e2160afd3579c52ff37c84544af16"
+      },
+      "first_encounter_seconds": 18.053948285989463,
+      "seconds": [
+        18.053948285989463,
+        17.962399411946535,
+        17.998202938004397
+      ],
+      "cache_history": "One persistent context per mode across the ordered saved inputs; pool startup affects first searched graph",
+      "warm_median_seconds": 17.980301174975466,
+      "preparation_identity": "008b6a5f04b4a6b5f5242b5aa1e1a919c9e8287c953c18c73f87515420cb1394",
+      "exact_preparation_and_gradient": true,
+      "original_checks": 96,
+      "additional_checks": 192,
+      "routes": [
+        4
+      ],
+      "loss": {
+        "value": 3.6054341793060303,
+        "independent_primal": 3.6054341793060303,
+        "terms": {
+          "component_cut_risk": 0.0,
+          "extra_valid_nll": 0.0,
+          "local_bond_risk": 36.05434036254883,
+          "nonempty_risk": 0.0,
+          "partial_edited_nll": 0.0,
+          "valid_full_nll": 0.0
+        },
+        "gradient_sha256": [
+          "bd50e12c55dda3ee443c1cb6d71c7bcf6351c4ec96f7bc8d6adec015d1192eea",
+          "d5ed709c37aa3ec4cf57ab39db938c14b22c99a242ff1ef9355a1c60cbec34b4"
+        ],
+        "gradient_norm": 0.11463135480880737
+      },
+      "adapter_stats": {}
+    },
+    {
+      "mode": "baseline",
+      "input": {
+        "label": "random-high10",
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/random-native-0000/payload/study/high_pilot/snapshots/step-0010.npz",
+        "bytes": 23041,
+        "sha256": "6a5a18fa499184159eecf12b8bdad95f8443ea022f627379d84d7adbeb2acdf2"
+      },
+      "first_encounter_seconds": 1.3734951840015128,
+      "seconds": [
+        1.3734951840015128,
+        1.2561018399428576,
+        1.2364554269006476
+      ],
+      "cache_history": "One persistent context per mode across the ordered saved inputs; pool startup affects first searched graph",
+      "warm_median_seconds": 1.2462786334217526,
+      "preparation_identity": "f062c99dd5af395ed24dff9264b2875ace3fc05040dfe21e9e16249afaafc655",
+      "exact_preparation_and_gradient": true,
+      "original_checks": 96,
+      "additional_checks": 192,
+      "routes": [
+        3
+      ],
+      "loss": {
+        "value": 2.5101561546325684,
+        "independent_primal": 2.5101561546325684,
+        "terms": {
+          "component_cut_risk": 0.0,
+          "extra_valid_nll": 0.0,
+          "local_bond_risk": 11.772455215454102,
+          "nonempty_risk": 0.0,
+          "partial_edited_nll": 1.3329105377197266,
+          "valid_full_nll": 0.0
+        },
+        "gradient_sha256": [
+          "bd50e12c55dda3ee443c1cb6d71c7bcf6351c4ec96f7bc8d6adec015d1192eea",
+          "1416b29ce6c20a2cf95f5d780dddf6a21e4071571c3a2ad036265c8bd271dc29"
+        ],
+        "gradient_norm": 0.4380422830581665
+      },
+      "adapter_stats": {}
+    },
+    {
+      "mode": "baseline",
+      "input": {
+        "label": "boltz-valid0",
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/boltz2_chemistry-native-0000/payload/study/early_pilot/snapshots/step-0000.npz",
+        "bytes": 15409,
+        "sha256": "774fbdbcaab45d18933b04a39ac15900e2bf3d8135075f86f42ecfe73accd11e"
+      },
+      "first_encounter_seconds": 0.01599420397542417,
+      "seconds": [
+        0.01599420397542417,
+        0.013275705045089126,
+        0.01306473696604371
+      ],
+      "cache_history": "One persistent context per mode across the ordered saved inputs; pool startup affects first searched graph",
+      "warm_median_seconds": 0.013170221005566418,
+      "preparation_identity": "2f1e78242acc752225957933dce2ec0aabcff3b264defcc4e2a20fd669e11bf4",
+      "exact_preparation_and_gradient": true,
+      "original_checks": 0,
+      "additional_checks": 0,
+      "routes": [
+        0
+      ],
+      "loss": {
+        "value": 0.0,
+        "independent_primal": 0.0,
+        "terms": {
+          "component_cut_risk": 0.0,
+          "extra_valid_nll": 0.0,
+          "local_bond_risk": 0.0,
+          "nonempty_risk": 0.0,
+          "partial_edited_nll": 0.0,
+          "valid_full_nll": 0.0
+        },
+        "gradient_sha256": [
+          "bd50e12c55dda3ee443c1cb6d71c7bcf6351c4ec96f7bc8d6adec015d1192eea",
+          "a6bedce1e512d6531cd02fe7a0b72bb64f229cdb254ec48d63308877004e620a"
+        ],
+        "gradient_norm": 0.0
+      },
+      "adapter_stats": {}
+    },
+    {
+      "mode": "baseline",
+      "input": {
+        "label": "boltz-invalid0",
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/boltz2_chemistry-native-0000/payload/study/high_pilot/snapshots/step-0000.npz",
+        "bytes": 14802,
+        "sha256": "ef54ff485d358fac65a4b9c522767573cec579f46c54a003d0681c961d06e85b"
+      },
+      "first_encounter_seconds": 0.2708775020437315,
+      "seconds": [
+        0.2708775020437315,
+        0.2694948250427842,
+        0.2698838959913701
+      ],
+      "cache_history": "One persistent context per mode across the ordered saved inputs; pool startup affects first searched graph",
+      "warm_median_seconds": 0.26968936051707715,
+      "preparation_identity": "bb447cad8fd77ff15a40b48850946c5040bbecc77c1f16e4f9dbcbf9d470a61a",
+      "exact_preparation_and_gradient": true,
+      "original_checks": 96,
+      "additional_checks": 0,
+      "routes": [
+        1
+      ],
+      "loss": {
+        "value": 0.4865887463092804,
+        "independent_primal": 0.4865887463092804,
+        "terms": {
+          "component_cut_risk": 0.0,
+          "extra_valid_nll": 0.0,
+          "local_bond_risk": 0.0,
+          "nonempty_risk": 0.0,
+          "partial_edited_nll": 0.0,
+          "valid_full_nll": 0.4865887463092804
+        },
+        "gradient_sha256": [
+          "6a6be7cb8423ae7bd1de0baaa4588cd35ed16b4251a5b3b1f580cfdb29e56f09",
+          "fe8d6c57e6fc7180a96a9579e0ba416270d928cfc360d56c88d0d06871dada35"
+        ],
+        "gradient_norm": 0.023423051461577415
+      },
+      "adapter_stats": {}
+    },
+    {
+      "mode": "cost",
+      "input": {
+        "label": "random-early0",
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/random-native-0000/payload/study/early_pilot/snapshots/step-0000.npz",
+        "bytes": 23026,
+        "sha256": "c4febbe4a95cc0746a1fafb7febf141c00bc48e555a1cb11c1d8bc330f0ebd07"
+      },
+      "first_encounter_seconds": 17.937285655061714,
+      "seconds": [
+        17.937285655061714,
+        17.94410002999939,
+        18.372876465087757
+      ],
+      "cache_history": "One persistent context per mode across the ordered saved inputs; pool startup affects first searched graph",
+      "warm_median_seconds": 18.158488247543573,
+      "preparation_identity": "9182c4e8fbbda33a9512c10a010f97bd8ee5d0e47fcfea98550649aaa6553aa3",
+      "exact_preparation_and_gradient": true,
+      "original_checks": 96,
+      "additional_checks": 192,
+      "routes": [
+        4
+      ],
+      "loss": {
+        "value": 3.6049644947052,
+        "independent_primal": 3.6049644947052,
+        "terms": {
+          "component_cut_risk": 0.0,
+          "extra_valid_nll": 0.0,
+          "local_bond_risk": 36.049644470214844,
+          "nonempty_risk": 0.0,
+          "partial_edited_nll": 0.0,
+          "valid_full_nll": 0.0
+        },
+        "gradient_sha256": [
+          "bd50e12c55dda3ee443c1cb6d71c7bcf6351c4ec96f7bc8d6adec015d1192eea",
+          "b81421cc160bc6533ebc2068a46b42f358d82d613d1feb1e5004fb9fe0f2e53a"
+        ],
+        "gradient_norm": 0.11462633311748505
+      },
+      "adapter_stats": {
+        "cache_hits": 0,
+        "cache_misses": 0,
+        "cache_evictions": 0,
+        "cache_entries": 0,
+        "diagnose_hits": 0,
+        "diagnose_misses": 0,
+        "inspect_hits": 0,
+        "inspect_misses": 0,
+        "encode_hits": 0,
+        "encode_misses": 0,
+        "cache_passthrough": 0,
+        "cost_calls": 870,
+        "cost_validation_count": 2,
+        "cost_invariant_hits": 868,
+        "cost_evictions": 0,
+        "cost_entries": 2,
+        "cost_passthrough": 0,
+        "cost_edit_term_hits": 2528,
+        "cost_edit_term_misses": 64
+      }
+    },
+    {
+      "mode": "cost",
+      "input": {
+        "label": "random-early1",
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/random-native-0000/payload/study/early_pilot/snapshots/step-0001.npz",
+        "bytes": 23032,
+        "sha256": "2712a6c8b10a4bdccef1201f05c8cd4b9c668ed3c1dd28eb4afb77b67e390bec"
+      },
+      "first_encounter_seconds": 18.34475080098491,
+      "seconds": [
+        18.34475080098491,
+        18.428349578985944,
+        18.558642375050113
+      ],
+      "cache_history": "One persistent context per mode across the ordered saved inputs; pool startup affects first searched graph",
+      "warm_median_seconds": 18.49349597701803,
+      "preparation_identity": "50e9c5ee92087b76561debeab4cf16d32c8b8b9b426d0a920abe26fdf6241e65",
+      "exact_preparation_and_gradient": true,
+      "original_checks": 96,
+      "additional_checks": 192,
+      "routes": [
+        4
+      ],
+      "loss": {
+        "value": 3.605198621749878,
+        "independent_primal": 3.605198621749878,
+        "terms": {
+          "component_cut_risk": 0.0,
+          "extra_valid_nll": 0.0,
+          "local_bond_risk": 36.05198669433594,
+          "nonempty_risk": 0.0,
+          "partial_edited_nll": 0.0,
+          "valid_full_nll": 0.0
+        },
+        "gradient_sha256": [
+          "bd50e12c55dda3ee443c1cb6d71c7bcf6351c4ec96f7bc8d6adec015d1192eea",
+          "495ee97f0e27083d8ab25ec1dd24175cded867c3443973baed37faf850bb7be5"
+        ],
+        "gradient_norm": 0.11462884396314621
+      },
+      "adapter_stats": {
+        "cache_hits": 0,
+        "cache_misses": 0,
+        "cache_evictions": 0,
+        "cache_entries": 0,
+        "diagnose_hits": 0,
+        "diagnose_misses": 0,
+        "inspect_hits": 0,
+        "inspect_misses": 0,
+        "encode_hits": 0,
+        "encode_misses": 0,
+        "cache_passthrough": 0,
+        "cost_calls": 1740,
+        "cost_validation_count": 4,
+        "cost_invariant_hits": 1736,
+        "cost_evictions": 0,
+        "cost_entries": 4,
+        "cost_passthrough": 0,
+        "cost_edit_term_hits": 5056,
+        "cost_edit_term_misses": 128
+      }
+    },
+    {
+      "mode": "cost",
+      "input": {
+        "label": "random-early2",
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/random-native-0000/payload/study/early_pilot/snapshots/step-0002.npz",
+        "bytes": 23027,
+        "sha256": "98c8a62c36a8097ef1951b1e19890638a04e2160afd3579c52ff37c84544af16"
+      },
+      "first_encounter_seconds": 18.56854197208304,
+      "seconds": [
+        18.56854197208304,
+        18.329696619999595,
+        18.34676662099082
+      ],
+      "cache_history": "One persistent context per mode across the ordered saved inputs; pool startup affects first searched graph",
+      "warm_median_seconds": 18.338231620495208,
+      "preparation_identity": "008b6a5f04b4a6b5f5242b5aa1e1a919c9e8287c953c18c73f87515420cb1394",
+      "exact_preparation_and_gradient": true,
+      "original_checks": 96,
+      "additional_checks": 192,
+      "routes": [
+        4
+      ],
+      "loss": {
+        "value": 3.6054341793060303,
+        "independent_primal": 3.6054341793060303,
+        "terms": {
+          "component_cut_risk": 0.0,
+          "extra_valid_nll": 0.0,
+          "local_bond_risk": 36.05434036254883,
+          "nonempty_risk": 0.0,
+          "partial_edited_nll": 0.0,
+          "valid_full_nll": 0.0
+        },
+        "gradient_sha256": [
+          "bd50e12c55dda3ee443c1cb6d71c7bcf6351c4ec96f7bc8d6adec015d1192eea",
+          "d5ed709c37aa3ec4cf57ab39db938c14b22c99a242ff1ef9355a1c60cbec34b4"
+        ],
+        "gradient_norm": 0.11463135480880737
+      },
+      "adapter_stats": {
+        "cache_hits": 0,
+        "cache_misses": 0,
+        "cache_evictions": 0,
+        "cache_entries": 0,
+        "diagnose_hits": 0,
+        "diagnose_misses": 0,
+        "inspect_hits": 0,
+        "inspect_misses": 0,
+        "encode_hits": 0,
+        "encode_misses": 0,
+        "cache_passthrough": 0,
+        "cost_calls": 2610,
+        "cost_validation_count": 6,
+        "cost_invariant_hits": 2604,
+        "cost_evictions": 0,
+        "cost_entries": 6,
+        "cost_passthrough": 0,
+        "cost_edit_term_hits": 7584,
+        "cost_edit_term_misses": 192
+      }
+    },
+    {
+      "mode": "cost",
+      "input": {
+        "label": "random-high10",
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/random-native-0000/payload/study/high_pilot/snapshots/step-0010.npz",
+        "bytes": 23041,
+        "sha256": "6a5a18fa499184159eecf12b8bdad95f8443ea022f627379d84d7adbeb2acdf2"
+      },
+      "first_encounter_seconds": 1.1511536439647898,
+      "seconds": [
+        1.1511536439647898,
+        1.1330183950485662,
+        1.1619730639504269
+      ],
+      "cache_history": "One persistent context per mode across the ordered saved inputs; pool startup affects first searched graph",
+      "warm_median_seconds": 1.1474957294994965,
+      "preparation_identity": "f062c99dd5af395ed24dff9264b2875ace3fc05040dfe21e9e16249afaafc655",
+      "exact_preparation_and_gradient": true,
+      "original_checks": 96,
+      "additional_checks": 192,
+      "routes": [
+        3
+      ],
+      "loss": {
+        "value": 2.5101561546325684,
+        "independent_primal": 2.5101561546325684,
+        "terms": {
+          "component_cut_risk": 0.0,
+          "extra_valid_nll": 0.0,
+          "local_bond_risk": 11.772455215454102,
+          "nonempty_risk": 0.0,
+          "partial_edited_nll": 1.3329105377197266,
+          "valid_full_nll": 0.0
+        },
+        "gradient_sha256": [
+          "bd50e12c55dda3ee443c1cb6d71c7bcf6351c4ec96f7bc8d6adec015d1192eea",
+          "1416b29ce6c20a2cf95f5d780dddf6a21e4071571c3a2ad036265c8bd271dc29"
+        ],
+        "gradient_norm": 0.4380422830581665
+      },
+      "adapter_stats": {
+        "cache_hits": 0,
+        "cache_misses": 0,
+        "cache_evictions": 0,
+        "cache_entries": 0,
+        "diagnose_hits": 0,
+        "diagnose_misses": 0,
+        "inspect_hits": 0,
+        "inspect_misses": 0,
+        "encode_hits": 0,
+        "encode_misses": 0,
+        "cache_passthrough": 0,
+        "cost_calls": 3480,
+        "cost_validation_count": 8,
+        "cost_invariant_hits": 3472,
+        "cost_evictions": 0,
+        "cost_entries": 8,
+        "cost_passthrough": 0,
+        "cost_edit_term_hits": 10112,
+        "cost_edit_term_misses": 256
+      }
+    },
+    {
+      "mode": "cost",
+      "input": {
+        "label": "boltz-valid0",
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/boltz2_chemistry-native-0000/payload/study/early_pilot/snapshots/step-0000.npz",
+        "bytes": 15409,
+        "sha256": "774fbdbcaab45d18933b04a39ac15900e2bf3d8135075f86f42ecfe73accd11e"
+      },
+      "first_encounter_seconds": 0.012710988987237215,
+      "seconds": [
+        0.012710988987237215,
+        0.011858643032610416,
+        0.011807068018242717
+      ],
+      "cache_history": "One persistent context per mode across the ordered saved inputs; pool startup affects first searched graph",
+      "warm_median_seconds": 0.011832855525426567,
+      "preparation_identity": "2f1e78242acc752225957933dce2ec0aabcff3b264defcc4e2a20fd669e11bf4",
+      "exact_preparation_and_gradient": true,
+      "original_checks": 0,
+      "additional_checks": 0,
+      "routes": [
+        0
+      ],
+      "loss": {
+        "value": 0.0,
+        "independent_primal": 0.0,
+        "terms": {
+          "component_cut_risk": 0.0,
+          "extra_valid_nll": 0.0,
+          "local_bond_risk": 0.0,
+          "nonempty_risk": 0.0,
+          "partial_edited_nll": 0.0,
+          "valid_full_nll": 0.0
+        },
+        "gradient_sha256": [
+          "bd50e12c55dda3ee443c1cb6d71c7bcf6351c4ec96f7bc8d6adec015d1192eea",
+          "a6bedce1e512d6531cd02fe7a0b72bb64f229cdb254ec48d63308877004e620a"
+        ],
+        "gradient_norm": 0.0
+      },
+      "adapter_stats": {
+        "cache_hits": 0,
+        "cache_misses": 0,
+        "cache_evictions": 0,
+        "cache_entries": 0,
+        "diagnose_hits": 0,
+        "diagnose_misses": 0,
+        "inspect_hits": 0,
+        "inspect_misses": 0,
+        "encode_hits": 0,
+        "encode_misses": 0,
+        "cache_passthrough": 0,
+        "cost_calls": 3483,
+        "cost_validation_count": 9,
+        "cost_invariant_hits": 3474,
+        "cost_evictions": 0,
+        "cost_entries": 9,
+        "cost_passthrough": 0,
+        "cost_edit_term_hits": 10112,
+        "cost_edit_term_misses": 256
+      }
+    },
+    {
+      "mode": "cost",
+      "input": {
+        "label": "boltz-invalid0",
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/boltz2_chemistry-native-0000/payload/study/high_pilot/snapshots/step-0000.npz",
+        "bytes": 14802,
+        "sha256": "ef54ff485d358fac65a4b9c522767573cec579f46c54a003d0681c961d06e85b"
+      },
+      "first_encounter_seconds": 0.23275680793449283,
+      "seconds": [
+        0.23275680793449283,
+        0.2355107000330463,
+        0.23177316295914352
+      ],
+      "cache_history": "One persistent context per mode across the ordered saved inputs; pool startup affects first searched graph",
+      "warm_median_seconds": 0.2336419314960949,
+      "preparation_identity": "bb447cad8fd77ff15a40b48850946c5040bbecc77c1f16e4f9dbcbf9d470a61a",
+      "exact_preparation_and_gradient": true,
+      "original_checks": 96,
+      "additional_checks": 0,
+      "routes": [
+        1
+      ],
+      "loss": {
+        "value": 0.4865887463092804,
+        "independent_primal": 0.4865887463092804,
+        "terms": {
+          "component_cut_risk": 0.0,
+          "extra_valid_nll": 0.0,
+          "local_bond_risk": 0.0,
+          "nonempty_risk": 0.0,
+          "partial_edited_nll": 0.0,
+          "valid_full_nll": 0.4865887463092804
+        },
+        "gradient_sha256": [
+          "6a6be7cb8423ae7bd1de0baaa4588cd35ed16b4251a5b3b1f580cfdb29e56f09",
+          "fe8d6c57e6fc7180a96a9579e0ba416270d928cfc360d56c88d0d06871dada35"
+        ],
+        "gradient_norm": 0.023423051461577415
+      },
+      "adapter_stats": {
+        "cache_hits": 0,
+        "cache_misses": 0,
+        "cache_evictions": 0,
+        "cache_entries": 0,
+        "diagnose_hits": 0,
+        "diagnose_misses": 0,
+        "inspect_hits": 0,
+        "inspect_misses": 0,
+        "encode_hits": 0,
+        "encode_misses": 0,
+        "cache_passthrough": 0,
+        "cost_calls": 3774,
+        "cost_validation_count": 10,
+        "cost_invariant_hits": 3764,
+        "cost_evictions": 0,
+        "cost_entries": 10,
+        "cost_passthrough": 0,
+        "cost_edit_term_hits": 10644,
+        "cost_edit_term_misses": 300
+      }
+    },
+    {
+      "mode": "cache",
+      "input": {
+        "label": "random-early0",
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/random-native-0000/payload/study/early_pilot/snapshots/step-0000.npz",
+        "bytes": 23026,
+        "sha256": "c4febbe4a95cc0746a1fafb7febf141c00bc48e555a1cb11c1d8bc330f0ebd07"
+      },
+      "first_encounter_seconds": 12.757996169035323,
+      "seconds": [
+        12.757996169035323,
+        0.4580350830219686,
+        0.44862456200644374
+      ],
+      "cache_history": "One persistent context per mode across the ordered saved inputs; pool startup affects first searched graph",
+      "warm_median_seconds": 0.45332982251420617,
+      "preparation_identity": "9182c4e8fbbda33a9512c10a010f97bd8ee5d0e47fcfea98550649aaa6553aa3",
+      "exact_preparation_and_gradient": true,
+      "original_checks": 96,
+      "additional_checks": 192,
+      "routes": [
+        4
+      ],
+      "loss": {
+        "value": 3.6049644947052,
+        "independent_primal": 3.6049644947052,
+        "terms": {
+          "component_cut_risk": 0.0,
+          "extra_valid_nll": 0.0,
+          "local_bond_risk": 36.049644470214844,
+          "nonempty_risk": 0.0,
+          "partial_edited_nll": 0.0,
+          "valid_full_nll": 0.0
+        },
+        "gradient_sha256": [
+          "bd50e12c55dda3ee443c1cb6d71c7bcf6351c4ec96f7bc8d6adec015d1192eea",
+          "b81421cc160bc6533ebc2068a46b42f358d82d613d1feb1e5004fb9fe0f2e53a"
+        ],
+        "gradient_norm": 0.11462633311748505
+      },
+      "adapter_stats": {
+        "cache_hits": 1256,
+        "cache_misses": 386,
+        "cache_evictions": 0,
+        "cache_entries": 386,
+        "diagnose_hits": 677,
+        "diagnose_misses": 193,
+        "inspect_hits": 579,
+        "inspect_misses": 193,
+        "encode_hits": 0,
+        "encode_misses": 0,
+        "cache_passthrough": 0,
+        "cost_calls": 0,
+        "cost_validation_count": 0,
+        "cost_invariant_hits": 0,
+        "cost_evictions": 0,
+        "cost_entries": 0,
+        "cost_passthrough": 0,
+        "cost_edit_term_hits": 0,
+        "cost_edit_term_misses": 0
+      }
+    },
+    {
+      "mode": "cache",
+      "input": {
+        "label": "random-early1",
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/random-native-0000/payload/study/early_pilot/snapshots/step-0001.npz",
+        "bytes": 23032,
+        "sha256": "2712a6c8b10a4bdccef1201f05c8cd4b9c668ed3c1dd28eb4afb77b67e390bec"
+      },
+      "first_encounter_seconds": 0.4548388730036095,
+      "seconds": [
+        0.4548388730036095,
+        0.4550042109331116,
+        0.4538916089804843
+      ],
+      "cache_history": "One persistent context per mode across the ordered saved inputs; pool startup affects first searched graph",
+      "warm_median_seconds": 0.45444790995679796,
+      "preparation_identity": "50e9c5ee92087b76561debeab4cf16d32c8b8b9b426d0a920abe26fdf6241e65",
+      "exact_preparation_and_gradient": true,
+      "original_checks": 96,
+      "additional_checks": 192,
+      "routes": [
+        4
+      ],
+      "loss": {
+        "value": 3.605198621749878,
+        "independent_primal": 3.605198621749878,
+        "terms": {
+          "component_cut_risk": 0.0,
+          "extra_valid_nll": 0.0,
+          "local_bond_risk": 36.05198669433594,
+          "nonempty_risk": 0.0,
+          "partial_edited_nll": 0.0,
+          "valid_full_nll": 0.0
+        },
+        "gradient_sha256": [
+          "bd50e12c55dda3ee443c1cb6d71c7bcf6351c4ec96f7bc8d6adec015d1192eea",
+          "495ee97f0e27083d8ab25ec1dd24175cded867c3443973baed37faf850bb7be5"
+        ],
+        "gradient_norm": 0.11462884396314621
+      },
+      "adapter_stats": {
+        "cache_hits": 2705,
+        "cache_misses": 386,
+        "cache_evictions": 0,
+        "cache_entries": 386,
+        "diagnose_hits": 1547,
+        "diagnose_misses": 193,
+        "inspect_hits": 1158,
+        "inspect_misses": 193,
+        "encode_hits": 0,
+        "encode_misses": 0,
+        "cache_passthrough": 0,
+        "cost_calls": 0,
+        "cost_validation_count": 0,
+        "cost_invariant_hits": 0,
+        "cost_evictions": 0,
+        "cost_entries": 0,
+        "cost_passthrough": 0,
+        "cost_edit_term_hits": 0,
+        "cost_edit_term_misses": 0
+      }
+    },
+    {
+      "mode": "cache",
+      "input": {
+        "label": "random-early2",
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/random-native-0000/payload/study/early_pilot/snapshots/step-0002.npz",
+        "bytes": 23027,
+        "sha256": "98c8a62c36a8097ef1951b1e19890638a04e2160afd3579c52ff37c84544af16"
+      },
+      "first_encounter_seconds": 1.845143934013322,
+      "seconds": [
+        1.845143934013322,
+        0.4603012290317565,
+        0.462221989990212
+      ],
+      "cache_history": "One persistent context per mode across the ordered saved inputs; pool startup affects first searched graph",
+      "warm_median_seconds": 0.46126160951098427,
+      "preparation_identity": "008b6a5f04b4a6b5f5242b5aa1e1a919c9e8287c953c18c73f87515420cb1394",
+      "exact_preparation_and_gradient": true,
+      "original_checks": 96,
+      "additional_checks": 192,
+      "routes": [
+        4
+      ],
+      "loss": {
+        "value": 3.6054341793060303,
+        "independent_primal": 3.6054341793060303,
+        "terms": {
+          "component_cut_risk": 0.0,
+          "extra_valid_nll": 0.0,
+          "local_bond_risk": 36.05434036254883,
+          "nonempty_risk": 0.0,
+          "partial_edited_nll": 0.0,
+          "valid_full_nll": 0.0
+        },
+        "gradient_sha256": [
+          "bd50e12c55dda3ee443c1cb6d71c7bcf6351c4ec96f7bc8d6adec015d1192eea",
+          "d5ed709c37aa3ec4cf57ab39db938c14b22c99a242ff1ef9355a1c60cbec34b4"
+        ],
+        "gradient_norm": 0.11463135480880737
+      },
+      "adapter_stats": {
+        "cache_hits": 4132,
+        "cache_misses": 430,
+        "cache_evictions": 0,
+        "cache_entries": 430,
+        "diagnose_hits": 2395,
+        "diagnose_misses": 215,
+        "inspect_hits": 1737,
+        "inspect_misses": 215,
+        "encode_hits": 0,
+        "encode_misses": 0,
+        "cache_passthrough": 0,
+        "cost_calls": 0,
+        "cost_validation_count": 0,
+        "cost_invariant_hits": 0,
+        "cost_evictions": 0,
+        "cost_entries": 0,
+        "cost_passthrough": 0,
+        "cost_edit_term_hits": 0,
+        "cost_edit_term_misses": 0
+      }
+    },
+    {
+      "mode": "cache",
+      "input": {
+        "label": "random-high10",
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/random-native-0000/payload/study/high_pilot/snapshots/step-0010.npz",
+        "bytes": 23041,
+        "sha256": "6a5a18fa499184159eecf12b8bdad95f8443ea022f627379d84d7adbeb2acdf2"
+      },
+      "first_encounter_seconds": 1.1984560729470104,
+      "seconds": [
+        1.1984560729470104,
+        0.4597343649948016,
+        0.45192983001470566
+      ],
+      "cache_history": "One persistent context per mode across the ordered saved inputs; pool startup affects first searched graph",
+      "warm_median_seconds": 0.4558320975047536,
+      "preparation_identity": "f062c99dd5af395ed24dff9264b2875ace3fc05040dfe21e9e16249afaafc655",
+      "exact_preparation_and_gradient": true,
+      "original_checks": 96,
+      "additional_checks": 192,
+      "routes": [
+        3
+      ],
+      "loss": {
+        "value": 2.5101561546325684,
+        "independent_primal": 2.5101561546325684,
+        "terms": {
+          "component_cut_risk": 0.0,
+          "extra_valid_nll": 0.0,
+          "local_bond_risk": 11.772455215454102,
+          "nonempty_risk": 0.0,
+          "partial_edited_nll": 1.3329105377197266,
+          "valid_full_nll": 0.0
+        },
+        "gradient_sha256": [
+          "bd50e12c55dda3ee443c1cb6d71c7bcf6351c4ec96f7bc8d6adec015d1192eea",
+          "1416b29ce6c20a2cf95f5d780dddf6a21e4071571c3a2ad036265c8bd271dc29"
+        ],
+        "gradient_norm": 0.4380422830581665
+      },
+      "adapter_stats": {
+        "cache_hits": 5388,
+        "cache_misses": 816,
+        "cache_evictions": 0,
+        "cache_entries": 816,
+        "diagnose_hits": 3072,
+        "diagnose_misses": 408,
+        "inspect_hits": 2316,
+        "inspect_misses": 408,
+        "encode_hits": 0,
+        "encode_misses": 0,
+        "cache_passthrough": 0,
+        "cost_calls": 0,
+        "cost_validation_count": 0,
+        "cost_invariant_hits": 0,
+        "cost_evictions": 0,
+        "cost_entries": 0,
+        "cost_passthrough": 0,
+        "cost_edit_term_hits": 0,
+        "cost_edit_term_misses": 0
+      }
+    },
+    {
+      "mode": "cache",
+      "input": {
+        "label": "boltz-valid0",
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/boltz2_chemistry-native-0000/payload/study/early_pilot/snapshots/step-0000.npz",
+        "bytes": 15409,
+        "sha256": "774fbdbcaab45d18933b04a39ac15900e2bf3d8135075f86f42ecfe73accd11e"
+      },
+      "first_encounter_seconds": 0.014154352014884353,
+      "seconds": [
+        0.014154352014884353,
+        0.00979702698532492,
+        0.009825429995544255
+      ],
+      "cache_history": "One persistent context per mode across the ordered saved inputs; pool startup affects first searched graph",
+      "warm_median_seconds": 0.009811228490434587,
+      "preparation_identity": "2f1e78242acc752225957933dce2ec0aabcff3b264defcc4e2a20fd669e11bf4",
+      "exact_preparation_and_gradient": true,
+      "original_checks": 0,
+      "additional_checks": 0,
+      "routes": [
+        0
+      ],
+      "loss": {
+        "value": 0.0,
+        "independent_primal": 0.0,
+        "terms": {
+          "component_cut_risk": 0.0,
+          "extra_valid_nll": 0.0,
+          "local_bond_risk": 0.0,
+          "nonempty_risk": 0.0,
+          "partial_edited_nll": 0.0,
+          "valid_full_nll": 0.0
+        },
+        "gradient_sha256": [
+          "bd50e12c55dda3ee443c1cb6d71c7bcf6351c4ec96f7bc8d6adec015d1192eea",
+          "a6bedce1e512d6531cd02fe7a0b72bb64f229cdb254ec48d63308877004e620a"
+        ],
+        "gradient_norm": 0.0
+      },
+      "adapter_stats": {
+        "cache_hits": 5392,
+        "cache_misses": 820,
+        "cache_evictions": 0,
+        "cache_entries": 820,
+        "diagnose_hits": 3074,
+        "diagnose_misses": 409,
+        "inspect_hits": 2316,
+        "inspect_misses": 410,
+        "encode_hits": 2,
+        "encode_misses": 1,
+        "cache_passthrough": 0,
+        "cost_calls": 0,
+        "cost_validation_count": 0,
+        "cost_invariant_hits": 0,
+        "cost_evictions": 0,
+        "cost_entries": 0,
+        "cost_passthrough": 0,
+        "cost_edit_term_hits": 0,
+        "cost_edit_term_misses": 0
+      }
+    },
+    {
+      "mode": "cache",
+      "input": {
+        "label": "boltz-invalid0",
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/boltz2_chemistry-native-0000/payload/study/high_pilot/snapshots/step-0000.npz",
+        "bytes": 14802,
+        "sha256": "ef54ff485d358fac65a4b9c522767573cec579f46c54a003d0681c961d06e85b"
+      },
+      "first_encounter_seconds": 0.3353390560951084,
+      "seconds": [
+        0.3353390560951084,
+        0.1327643709955737,
+        0.13422605395317078
+      ],
+      "cache_history": "One persistent context per mode across the ordered saved inputs; pool startup affects first searched graph",
+      "warm_median_seconds": 0.13349521247437224,
+      "preparation_identity": "bb447cad8fd77ff15a40b48850946c5040bbecc77c1f16e4f9dbcbf9d470a61a",
+      "exact_preparation_and_gradient": true,
+      "original_checks": 96,
+      "additional_checks": 0,
+      "routes": [
+        1
+      ],
+      "loss": {
+        "value": 0.4865887463092804,
+        "independent_primal": 0.4865887463092804,
+        "terms": {
+          "component_cut_risk": 0.0,
+          "extra_valid_nll": 0.0,
+          "local_bond_risk": 0.0,
+          "nonempty_risk": 0.0,
+          "partial_edited_nll": 0.0,
+          "valid_full_nll": 0.4865887463092804
+        },
+        "gradient_sha256": [
+          "6a6be7cb8423ae7bd1de0baaa4588cd35ed16b4251a5b3b1f580cfdb29e56f09",
+          "fe8d6c57e6fc7180a96a9579e0ba416270d928cfc360d56c88d0d06871dada35"
+        ],
+        "gradient_norm": 0.023423051461577415
+      },
+      "adapter_stats": {
+        "cache_hits": 5600,
+        "cache_misses": 1022,
+        "cache_evictions": 0,
+        "cache_entries": 1022,
+        "diagnose_hits": 3268,
+        "diagnose_misses": 506,
+        "inspect_hits": 2319,
+        "inspect_misses": 511,
+        "encode_hits": 13,
+        "encode_misses": 5,
+        "cache_passthrough": 0,
+        "cost_calls": 0,
+        "cost_validation_count": 0,
+        "cost_invariant_hits": 0,
+        "cost_evictions": 0,
+        "cost_entries": 0,
+        "cost_passthrough": 0,
+        "cost_edit_term_hits": 0,
+        "cost_edit_term_misses": 0
+      }
+    },
+    {
+      "mode": "combined",
+      "input": {
+        "label": "random-early0",
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/random-native-0000/payload/study/early_pilot/snapshots/step-0000.npz",
+        "bytes": 23026,
+        "sha256": "c4febbe4a95cc0746a1fafb7febf141c00bc48e555a1cb11c1d8bc330f0ebd07"
+      },
+      "first_encounter_seconds": 12.732724712928757,
+      "seconds": [
+        12.732724712928757,
+        0.3192372879711911,
+        0.3250918809790164
+      ],
+      "cache_history": "One persistent context per mode across the ordered saved inputs; pool startup affects first searched graph",
+      "warm_median_seconds": 0.32216458447510377,
+      "preparation_identity": "9182c4e8fbbda33a9512c10a010f97bd8ee5d0e47fcfea98550649aaa6553aa3",
+      "exact_preparation_and_gradient": true,
+      "original_checks": 96,
+      "additional_checks": 192,
+      "routes": [
+        4
+      ],
+      "loss": {
+        "value": 3.6049644947052,
+        "independent_primal": 3.6049644947052,
+        "terms": {
+          "component_cut_risk": 0.0,
+          "extra_valid_nll": 0.0,
+          "local_bond_risk": 36.049644470214844,
+          "nonempty_risk": 0.0,
+          "partial_edited_nll": 0.0,
+          "valid_full_nll": 0.0
+        },
+        "gradient_sha256": [
+          "bd50e12c55dda3ee443c1cb6d71c7bcf6351c4ec96f7bc8d6adec015d1192eea",
+          "b81421cc160bc6533ebc2068a46b42f358d82d613d1feb1e5004fb9fe0f2e53a"
+        ],
+        "gradient_norm": 0.11462633311748505
+      },
+      "adapter_stats": {
+        "cache_hits": 1256,
+        "cache_misses": 386,
+        "cache_evictions": 0,
+        "cache_entries": 386,
+        "diagnose_hits": 677,
+        "diagnose_misses": 193,
+        "inspect_hits": 579,
+        "inspect_misses": 193,
+        "encode_hits": 0,
+        "encode_misses": 0,
+        "cache_passthrough": 0,
+        "cost_calls": 870,
+        "cost_validation_count": 2,
+        "cost_invariant_hits": 868,
+        "cost_evictions": 0,
+        "cost_entries": 2,
+        "cost_passthrough": 0,
+        "cost_edit_term_hits": 2528,
+        "cost_edit_term_misses": 64
+      }
+    },
+    {
+      "mode": "combined",
+      "input": {
+        "label": "random-early1",
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/random-native-0000/payload/study/early_pilot/snapshots/step-0001.npz",
+        "bytes": 23032,
+        "sha256": "2712a6c8b10a4bdccef1201f05c8cd4b9c668ed3c1dd28eb4afb77b67e390bec"
+      },
+      "first_encounter_seconds": 0.3215665010502562,
+      "seconds": [
+        0.3215665010502562,
+        0.33594699297100306,
+        0.32570359809324145
+      ],
+      "cache_history": "One persistent context per mode across the ordered saved inputs; pool startup affects first searched graph",
+      "warm_median_seconds": 0.33082529553212225,
+      "preparation_identity": "50e9c5ee92087b76561debeab4cf16d32c8b8b9b426d0a920abe26fdf6241e65",
+      "exact_preparation_and_gradient": true,
+      "original_checks": 96,
+      "additional_checks": 192,
+      "routes": [
+        4
+      ],
+      "loss": {
+        "value": 3.605198621749878,
+        "independent_primal": 3.605198621749878,
+        "terms": {
+          "component_cut_risk": 0.0,
+          "extra_valid_nll": 0.0,
+          "local_bond_risk": 36.05198669433594,
+          "nonempty_risk": 0.0,
+          "partial_edited_nll": 0.0,
+          "valid_full_nll": 0.0
+        },
+        "gradient_sha256": [
+          "bd50e12c55dda3ee443c1cb6d71c7bcf6351c4ec96f7bc8d6adec015d1192eea",
+          "495ee97f0e27083d8ab25ec1dd24175cded867c3443973baed37faf850bb7be5"
+        ],
+        "gradient_norm": 0.11462884396314621
+      },
+      "adapter_stats": {
+        "cache_hits": 2705,
+        "cache_misses": 386,
+        "cache_evictions": 0,
+        "cache_entries": 386,
+        "diagnose_hits": 1547,
+        "diagnose_misses": 193,
+        "inspect_hits": 1158,
+        "inspect_misses": 193,
+        "encode_hits": 0,
+        "encode_misses": 0,
+        "cache_passthrough": 0,
+        "cost_calls": 1740,
+        "cost_validation_count": 4,
+        "cost_invariant_hits": 1736,
+        "cost_evictions": 0,
+        "cost_entries": 4,
+        "cost_passthrough": 0,
+        "cost_edit_term_hits": 5056,
+        "cost_edit_term_misses": 128
+      }
+    },
+    {
+      "mode": "combined",
+      "input": {
+        "label": "random-early2",
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/random-native-0000/payload/study/early_pilot/snapshots/step-0002.npz",
+        "bytes": 23027,
+        "sha256": "98c8a62c36a8097ef1951b1e19890638a04e2160afd3579c52ff37c84544af16"
+      },
+      "first_encounter_seconds": 1.6833059410564601,
+      "seconds": [
+        1.6833059410564601,
+        0.3243904319824651,
+        0.33219668606761843
+      ],
+      "cache_history": "One persistent context per mode across the ordered saved inputs; pool startup affects first searched graph",
+      "warm_median_seconds": 0.32829355902504176,
+      "preparation_identity": "008b6a5f04b4a6b5f5242b5aa1e1a919c9e8287c953c18c73f87515420cb1394",
+      "exact_preparation_and_gradient": true,
+      "original_checks": 96,
+      "additional_checks": 192,
+      "routes": [
+        4
+      ],
+      "loss": {
+        "value": 3.6054341793060303,
+        "independent_primal": 3.6054341793060303,
+        "terms": {
+          "component_cut_risk": 0.0,
+          "extra_valid_nll": 0.0,
+          "local_bond_risk": 36.05434036254883,
+          "nonempty_risk": 0.0,
+          "partial_edited_nll": 0.0,
+          "valid_full_nll": 0.0
+        },
+        "gradient_sha256": [
+          "bd50e12c55dda3ee443c1cb6d71c7bcf6351c4ec96f7bc8d6adec015d1192eea",
+          "d5ed709c37aa3ec4cf57ab39db938c14b22c99a242ff1ef9355a1c60cbec34b4"
+        ],
+        "gradient_norm": 0.11463135480880737
+      },
+      "adapter_stats": {
+        "cache_hits": 4132,
+        "cache_misses": 430,
+        "cache_evictions": 0,
+        "cache_entries": 430,
+        "diagnose_hits": 2395,
+        "diagnose_misses": 215,
+        "inspect_hits": 1737,
+        "inspect_misses": 215,
+        "encode_hits": 0,
+        "encode_misses": 0,
+        "cache_passthrough": 0,
+        "cost_calls": 2610,
+        "cost_validation_count": 6,
+        "cost_invariant_hits": 2604,
+        "cost_evictions": 0,
+        "cost_entries": 6,
+        "cost_passthrough": 0,
+        "cost_edit_term_hits": 7584,
+        "cost_edit_term_misses": 192
+      }
+    },
+    {
+      "mode": "combined",
+      "input": {
+        "label": "random-high10",
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/random-native-0000/payload/study/high_pilot/snapshots/step-0010.npz",
+        "bytes": 23041,
+        "sha256": "6a5a18fa499184159eecf12b8bdad95f8443ea022f627379d84d7adbeb2acdf2"
+      },
+      "first_encounter_seconds": 0.9222140340134501,
+      "seconds": [
+        0.9222140340134501,
+        0.31165317294653505,
+        0.3156737540848553
+      ],
+      "cache_history": "One persistent context per mode across the ordered saved inputs; pool startup affects first searched graph",
+      "warm_median_seconds": 0.3136634635156952,
+      "preparation_identity": "f062c99dd5af395ed24dff9264b2875ace3fc05040dfe21e9e16249afaafc655",
+      "exact_preparation_and_gradient": true,
+      "original_checks": 96,
+      "additional_checks": 192,
+      "routes": [
+        3
+      ],
+      "loss": {
+        "value": 2.5101561546325684,
+        "independent_primal": 2.5101561546325684,
+        "terms": {
+          "component_cut_risk": 0.0,
+          "extra_valid_nll": 0.0,
+          "local_bond_risk": 11.772455215454102,
+          "nonempty_risk": 0.0,
+          "partial_edited_nll": 1.3329105377197266,
+          "valid_full_nll": 0.0
+        },
+        "gradient_sha256": [
+          "bd50e12c55dda3ee443c1cb6d71c7bcf6351c4ec96f7bc8d6adec015d1192eea",
+          "1416b29ce6c20a2cf95f5d780dddf6a21e4071571c3a2ad036265c8bd271dc29"
+        ],
+        "gradient_norm": 0.4380422830581665
+      },
+      "adapter_stats": {
+        "cache_hits": 5388,
+        "cache_misses": 816,
+        "cache_evictions": 0,
+        "cache_entries": 816,
+        "diagnose_hits": 3072,
+        "diagnose_misses": 408,
+        "inspect_hits": 2316,
+        "inspect_misses": 408,
+        "encode_hits": 0,
+        "encode_misses": 0,
+        "cache_passthrough": 0,
+        "cost_calls": 3480,
+        "cost_validation_count": 8,
+        "cost_invariant_hits": 3472,
+        "cost_evictions": 0,
+        "cost_entries": 8,
+        "cost_passthrough": 0,
+        "cost_edit_term_hits": 10112,
+        "cost_edit_term_misses": 256
+      }
+    },
+    {
+      "mode": "combined",
+      "input": {
+        "label": "boltz-valid0",
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/boltz2_chemistry-native-0000/payload/study/early_pilot/snapshots/step-0000.npz",
+        "bytes": 15409,
+        "sha256": "774fbdbcaab45d18933b04a39ac15900e2bf3d8135075f86f42ecfe73accd11e"
+      },
+      "first_encounter_seconds": 0.0149580700090155,
+      "seconds": [
+        0.0149580700090155,
+        0.010033832979388535,
+        0.00991538108792156
+      ],
+      "cache_history": "One persistent context per mode across the ordered saved inputs; pool startup affects first searched graph",
+      "warm_median_seconds": 0.009974607033655047,
+      "preparation_identity": "2f1e78242acc752225957933dce2ec0aabcff3b264defcc4e2a20fd669e11bf4",
+      "exact_preparation_and_gradient": true,
+      "original_checks": 0,
+      "additional_checks": 0,
+      "routes": [
+        0
+      ],
+      "loss": {
+        "value": 0.0,
+        "independent_primal": 0.0,
+        "terms": {
+          "component_cut_risk": 0.0,
+          "extra_valid_nll": 0.0,
+          "local_bond_risk": 0.0,
+          "nonempty_risk": 0.0,
+          "partial_edited_nll": 0.0,
+          "valid_full_nll": 0.0
+        },
+        "gradient_sha256": [
+          "bd50e12c55dda3ee443c1cb6d71c7bcf6351c4ec96f7bc8d6adec015d1192eea",
+          "a6bedce1e512d6531cd02fe7a0b72bb64f229cdb254ec48d63308877004e620a"
+        ],
+        "gradient_norm": 0.0
+      },
+      "adapter_stats": {
+        "cache_hits": 5392,
+        "cache_misses": 820,
+        "cache_evictions": 0,
+        "cache_entries": 820,
+        "diagnose_hits": 3074,
+        "diagnose_misses": 409,
+        "inspect_hits": 2316,
+        "inspect_misses": 410,
+        "encode_hits": 2,
+        "encode_misses": 1,
+        "cache_passthrough": 0,
+        "cost_calls": 3483,
+        "cost_validation_count": 9,
+        "cost_invariant_hits": 3474,
+        "cost_evictions": 0,
+        "cost_entries": 9,
+        "cost_passthrough": 0,
+        "cost_edit_term_hits": 10112,
+        "cost_edit_term_misses": 256
+      }
+    },
+    {
+      "mode": "combined",
+      "input": {
+        "label": "boltz-invalid0",
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/boltz2_chemistry-native-0000/payload/study/high_pilot/snapshots/step-0000.npz",
+        "bytes": 14802,
+        "sha256": "ef54ff485d358fac65a4b9c522767573cec579f46c54a003d0681c961d06e85b"
+      },
+      "first_encounter_seconds": 0.3019326840294525,
+      "seconds": [
+        0.3019326840294525,
+        0.09107884799595922,
+        0.08719161606859416
+      ],
+      "cache_history": "One persistent context per mode across the ordered saved inputs; pool startup affects first searched graph",
+      "warm_median_seconds": 0.08913523203227669,
+      "preparation_identity": "bb447cad8fd77ff15a40b48850946c5040bbecc77c1f16e4f9dbcbf9d470a61a",
+      "exact_preparation_and_gradient": true,
+      "original_checks": 96,
+      "additional_checks": 0,
+      "routes": [
+        1
+      ],
+      "loss": {
+        "value": 0.4865887463092804,
+        "independent_primal": 0.4865887463092804,
+        "terms": {
+          "component_cut_risk": 0.0,
+          "extra_valid_nll": 0.0,
+          "local_bond_risk": 0.0,
+          "nonempty_risk": 0.0,
+          "partial_edited_nll": 0.0,
+          "valid_full_nll": 0.4865887463092804
+        },
+        "gradient_sha256": [
+          "6a6be7cb8423ae7bd1de0baaa4588cd35ed16b4251a5b3b1f580cfdb29e56f09",
+          "fe8d6c57e6fc7180a96a9579e0ba416270d928cfc360d56c88d0d06871dada35"
+        ],
+        "gradient_norm": 0.023423051461577415
+      },
+      "adapter_stats": {
+        "cache_hits": 5600,
+        "cache_misses": 1022,
+        "cache_evictions": 0,
+        "cache_entries": 1022,
+        "diagnose_hits": 3268,
+        "diagnose_misses": 506,
+        "inspect_hits": 2319,
+        "inspect_misses": 511,
+        "encode_hits": 13,
+        "encode_misses": 5,
+        "cache_passthrough": 0,
+        "cost_calls": 3774,
+        "cost_validation_count": 10,
+        "cost_invariant_hits": 3764,
+        "cost_evictions": 0,
+        "cost_entries": 10,
+        "cost_passthrough": 0,
+        "cost_edit_term_hits": 10644,
+        "cost_edit_term_misses": 300
+      }
+    },
+    {
+      "mode": "parallel2",
+      "input": {
+        "label": "random-early0",
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/random-native-0000/payload/study/early_pilot/snapshots/step-0000.npz",
+        "bytes": 23026,
+        "sha256": "c4febbe4a95cc0746a1fafb7febf141c00bc48e555a1cb11c1d8bc330f0ebd07"
+      },
+      "first_encounter_seconds": 11.57294155296404,
+      "seconds": [
+        11.57294155296404,
+        8.775481611024588,
+        8.772229428053834
+      ],
+      "cache_history": "One persistent context per mode across the ordered saved inputs; pool startup affects first searched graph",
+      "warm_median_seconds": 8.773855519539211,
+      "preparation_identity": "9182c4e8fbbda33a9512c10a010f97bd8ee5d0e47fcfea98550649aaa6553aa3",
+      "exact_preparation_and_gradient": true,
+      "original_checks": 96,
+      "additional_checks": 192,
+      "routes": [
+        4
+      ],
+      "loss": {
+        "value": 3.6049644947052,
+        "independent_primal": 3.6049644947052,
+        "terms": {
+          "component_cut_risk": 0.0,
+          "extra_valid_nll": 0.0,
+          "local_bond_risk": 36.049644470214844,
+          "nonempty_risk": 0.0,
+          "partial_edited_nll": 0.0,
+          "valid_full_nll": 0.0
+        },
+        "gradient_sha256": [
+          "bd50e12c55dda3ee443c1cb6d71c7bcf6351c4ec96f7bc8d6adec015d1192eea",
+          "b81421cc160bc6533ebc2068a46b42f358d82d613d1feb1e5004fb9fe0f2e53a"
+        ],
+        "gradient_norm": 0.11462633311748505
+      },
+      "adapter_stats": {
+        "workers": 2,
+        "start_method": "spawn",
+        "reduction_order": "original_candidate_order"
+      }
+    },
+    {
+      "mode": "parallel2",
+      "input": {
+        "label": "random-early1",
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/random-native-0000/payload/study/early_pilot/snapshots/step-0001.npz",
+        "bytes": 23032,
+        "sha256": "2712a6c8b10a4bdccef1201f05c8cd4b9c668ed3c1dd28eb4afb77b67e390bec"
+      },
+      "first_encounter_seconds": 8.770972108002752,
+      "seconds": [
+        8.770972108002752,
+        8.779563485994004,
+        8.821447747061029
+      ],
+      "cache_history": "One persistent context per mode across the ordered saved inputs; pool startup affects first searched graph",
+      "warm_median_seconds": 8.800505616527516,
+      "preparation_identity": "50e9c5ee92087b76561debeab4cf16d32c8b8b9b426d0a920abe26fdf6241e65",
+      "exact_preparation_and_gradient": true,
+      "original_checks": 96,
+      "additional_checks": 192,
+      "routes": [
+        4
+      ],
+      "loss": {
+        "value": 3.605198621749878,
+        "independent_primal": 3.605198621749878,
+        "terms": {
+          "component_cut_risk": 0.0,
+          "extra_valid_nll": 0.0,
+          "local_bond_risk": 36.05198669433594,
+          "nonempty_risk": 0.0,
+          "partial_edited_nll": 0.0,
+          "valid_full_nll": 0.0
+        },
+        "gradient_sha256": [
+          "bd50e12c55dda3ee443c1cb6d71c7bcf6351c4ec96f7bc8d6adec015d1192eea",
+          "495ee97f0e27083d8ab25ec1dd24175cded867c3443973baed37faf850bb7be5"
+        ],
+        "gradient_norm": 0.11462884396314621
+      },
+      "adapter_stats": {
+        "workers": 2,
+        "start_method": "spawn",
+        "reduction_order": "original_candidate_order"
+      }
+    },
+    {
+      "mode": "parallel2",
+      "input": {
+        "label": "random-early2",
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/random-native-0000/payload/study/early_pilot/snapshots/step-0002.npz",
+        "bytes": 23027,
+        "sha256": "98c8a62c36a8097ef1951b1e19890638a04e2160afd3579c52ff37c84544af16"
+      },
+      "first_encounter_seconds": 8.782926285988651,
+      "seconds": [
+        8.782926285988651,
+        8.732900024042465,
+        8.745195077965036
+      ],
+      "cache_history": "One persistent context per mode across the ordered saved inputs; pool startup affects first searched graph",
+      "warm_median_seconds": 8.73904755100375,
+      "preparation_identity": "008b6a5f04b4a6b5f5242b5aa1e1a919c9e8287c953c18c73f87515420cb1394",
+      "exact_preparation_and_gradient": true,
+      "original_checks": 96,
+      "additional_checks": 192,
+      "routes": [
+        4
+      ],
+      "loss": {
+        "value": 3.6054341793060303,
+        "independent_primal": 3.6054341793060303,
+        "terms": {
+          "component_cut_risk": 0.0,
+          "extra_valid_nll": 0.0,
+          "local_bond_risk": 36.05434036254883,
+          "nonempty_risk": 0.0,
+          "partial_edited_nll": 0.0,
+          "valid_full_nll": 0.0
+        },
+        "gradient_sha256": [
+          "bd50e12c55dda3ee443c1cb6d71c7bcf6351c4ec96f7bc8d6adec015d1192eea",
+          "d5ed709c37aa3ec4cf57ab39db938c14b22c99a242ff1ef9355a1c60cbec34b4"
+        ],
+        "gradient_norm": 0.11463135480880737
+      },
+      "adapter_stats": {
+        "workers": 2,
+        "start_method": "spawn",
+        "reduction_order": "original_candidate_order"
+      }
+    },
+    {
+      "mode": "parallel2",
+      "input": {
+        "label": "random-high10",
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/random-native-0000/payload/study/high_pilot/snapshots/step-0010.npz",
+        "bytes": 23041,
+        "sha256": "6a5a18fa499184159eecf12b8bdad95f8443ea022f627379d84d7adbeb2acdf2"
+      },
+      "first_encounter_seconds": 0.8316742380848154,
+      "seconds": [
+        0.8316742380848154,
+        0.8559521610150114,
+        0.8195530080702156
+      ],
+      "cache_history": "One persistent context per mode across the ordered saved inputs; pool startup affects first searched graph",
+      "warm_median_seconds": 0.8377525845426135,
+      "preparation_identity": "f062c99dd5af395ed24dff9264b2875ace3fc05040dfe21e9e16249afaafc655",
+      "exact_preparation_and_gradient": true,
+      "original_checks": 96,
+      "additional_checks": 192,
+      "routes": [
+        3
+      ],
+      "loss": {
+        "value": 2.5101561546325684,
+        "independent_primal": 2.5101561546325684,
+        "terms": {
+          "component_cut_risk": 0.0,
+          "extra_valid_nll": 0.0,
+          "local_bond_risk": 11.772455215454102,
+          "nonempty_risk": 0.0,
+          "partial_edited_nll": 1.3329105377197266,
+          "valid_full_nll": 0.0
+        },
+        "gradient_sha256": [
+          "bd50e12c55dda3ee443c1cb6d71c7bcf6351c4ec96f7bc8d6adec015d1192eea",
+          "1416b29ce6c20a2cf95f5d780dddf6a21e4071571c3a2ad036265c8bd271dc29"
+        ],
+        "gradient_norm": 0.4380422830581665
+      },
+      "adapter_stats": {
+        "workers": 2,
+        "start_method": "spawn",
+        "reduction_order": "original_candidate_order"
+      }
+    },
+    {
+      "mode": "parallel2",
+      "input": {
+        "label": "boltz-valid0",
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/boltz2_chemistry-native-0000/payload/study/early_pilot/snapshots/step-0000.npz",
+        "bytes": 15409,
+        "sha256": "774fbdbcaab45d18933b04a39ac15900e2bf3d8135075f86f42ecfe73accd11e"
+      },
+      "first_encounter_seconds": 0.015696696005761623,
+      "seconds": [
+        0.015696696005761623,
+        0.013313313014805317,
+        0.013415907975286245
+      ],
+      "cache_history": "One persistent context per mode across the ordered saved inputs; pool startup affects first searched graph",
+      "warm_median_seconds": 0.013364610495045781,
+      "preparation_identity": "2f1e78242acc752225957933dce2ec0aabcff3b264defcc4e2a20fd669e11bf4",
+      "exact_preparation_and_gradient": true,
+      "original_checks": 0,
+      "additional_checks": 0,
+      "routes": [
+        0
+      ],
+      "loss": {
+        "value": 0.0,
+        "independent_primal": 0.0,
+        "terms": {
+          "component_cut_risk": 0.0,
+          "extra_valid_nll": 0.0,
+          "local_bond_risk": 0.0,
+          "nonempty_risk": 0.0,
+          "partial_edited_nll": 0.0,
+          "valid_full_nll": 0.0
+        },
+        "gradient_sha256": [
+          "bd50e12c55dda3ee443c1cb6d71c7bcf6351c4ec96f7bc8d6adec015d1192eea",
+          "a6bedce1e512d6531cd02fe7a0b72bb64f229cdb254ec48d63308877004e620a"
+        ],
+        "gradient_norm": 0.0
+      },
+      "adapter_stats": {
+        "workers": 2,
+        "start_method": "spawn",
+        "reduction_order": "original_candidate_order"
+      }
+    },
+    {
+      "mode": "parallel2",
+      "input": {
+        "label": "boltz-invalid0",
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/boltz2_chemistry-native-0000/payload/study/high_pilot/snapshots/step-0000.npz",
+        "bytes": 14802,
+        "sha256": "ef54ff485d358fac65a4b9c522767573cec579f46c54a003d0681c961d06e85b"
+      },
+      "first_encounter_seconds": 0.22020311106462032,
+      "seconds": [
+        0.22020311106462032,
+        0.21003660396672785,
+        0.20206135790795088
+      ],
+      "cache_history": "One persistent context per mode across the ordered saved inputs; pool startup affects first searched graph",
+      "warm_median_seconds": 0.20604898093733937,
+      "preparation_identity": "bb447cad8fd77ff15a40b48850946c5040bbecc77c1f16e4f9dbcbf9d470a61a",
+      "exact_preparation_and_gradient": true,
+      "original_checks": 96,
+      "additional_checks": 0,
+      "routes": [
+        1
+      ],
+      "loss": {
+        "value": 0.4865887463092804,
+        "independent_primal": 0.4865887463092804,
+        "terms": {
+          "component_cut_risk": 0.0,
+          "extra_valid_nll": 0.0,
+          "local_bond_risk": 0.0,
+          "nonempty_risk": 0.0,
+          "partial_edited_nll": 0.0,
+          "valid_full_nll": 0.4865887463092804
+        },
+        "gradient_sha256": [
+          "6a6be7cb8423ae7bd1de0baaa4588cd35ed16b4251a5b3b1f580cfdb29e56f09",
+          "fe8d6c57e6fc7180a96a9579e0ba416270d928cfc360d56c88d0d06871dada35"
+        ],
+        "gradient_norm": 0.023423051461577415
+      },
+      "adapter_stats": {
+        "workers": 2,
+        "start_method": "spawn",
+        "reduction_order": "original_candidate_order"
+      }
+    },
+    {
+      "mode": "parallel4",
+      "input": {
+        "label": "random-early0",
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/random-native-0000/payload/study/early_pilot/snapshots/step-0000.npz",
+        "bytes": 23026,
+        "sha256": "c4febbe4a95cc0746a1fafb7febf141c00bc48e555a1cb11c1d8bc330f0ebd07"
+      },
+      "first_encounter_seconds": 7.631401672028005,
+      "seconds": [
+        7.631401672028005,
+        4.933186502079479,
+        5.013018861063756
+      ],
+      "cache_history": "One persistent context per mode across the ordered saved inputs; pool startup affects first searched graph",
+      "warm_median_seconds": 4.973102681571618,
+      "preparation_identity": "9182c4e8fbbda33a9512c10a010f97bd8ee5d0e47fcfea98550649aaa6553aa3",
+      "exact_preparation_and_gradient": true,
+      "original_checks": 96,
+      "additional_checks": 192,
+      "routes": [
+        4
+      ],
+      "loss": {
+        "value": 3.6049644947052,
+        "independent_primal": 3.6049644947052,
+        "terms": {
+          "component_cut_risk": 0.0,
+          "extra_valid_nll": 0.0,
+          "local_bond_risk": 36.049644470214844,
+          "nonempty_risk": 0.0,
+          "partial_edited_nll": 0.0,
+          "valid_full_nll": 0.0
+        },
+        "gradient_sha256": [
+          "bd50e12c55dda3ee443c1cb6d71c7bcf6351c4ec96f7bc8d6adec015d1192eea",
+          "b81421cc160bc6533ebc2068a46b42f358d82d613d1feb1e5004fb9fe0f2e53a"
+        ],
+        "gradient_norm": 0.11462633311748505
+      },
+      "adapter_stats": {
+        "workers": 4,
+        "start_method": "spawn",
+        "reduction_order": "original_candidate_order"
+      }
+    },
+    {
+      "mode": "parallel4",
+      "input": {
+        "label": "random-early1",
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/random-native-0000/payload/study/early_pilot/snapshots/step-0001.npz",
+        "bytes": 23032,
+        "sha256": "2712a6c8b10a4bdccef1201f05c8cd4b9c668ed3c1dd28eb4afb77b67e390bec"
+      },
+      "first_encounter_seconds": 4.9858928410103545,
+      "seconds": [
+        4.9858928410103545,
+        4.936897441977635,
+        5.039341930067167
+      ],
+      "cache_history": "One persistent context per mode across the ordered saved inputs; pool startup affects first searched graph",
+      "warm_median_seconds": 4.988119686022401,
+      "preparation_identity": "50e9c5ee92087b76561debeab4cf16d32c8b8b9b426d0a920abe26fdf6241e65",
+      "exact_preparation_and_gradient": true,
+      "original_checks": 96,
+      "additional_checks": 192,
+      "routes": [
+        4
+      ],
+      "loss": {
+        "value": 3.605198621749878,
+        "independent_primal": 3.605198621749878,
+        "terms": {
+          "component_cut_risk": 0.0,
+          "extra_valid_nll": 0.0,
+          "local_bond_risk": 36.05198669433594,
+          "nonempty_risk": 0.0,
+          "partial_edited_nll": 0.0,
+          "valid_full_nll": 0.0
+        },
+        "gradient_sha256": [
+          "bd50e12c55dda3ee443c1cb6d71c7bcf6351c4ec96f7bc8d6adec015d1192eea",
+          "495ee97f0e27083d8ab25ec1dd24175cded867c3443973baed37faf850bb7be5"
+        ],
+        "gradient_norm": 0.11462884396314621
+      },
+      "adapter_stats": {
+        "workers": 4,
+        "start_method": "spawn",
+        "reduction_order": "original_candidate_order"
+      }
+    },
+    {
+      "mode": "parallel4",
+      "input": {
+        "label": "random-early2",
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/random-native-0000/payload/study/early_pilot/snapshots/step-0002.npz",
+        "bytes": 23027,
+        "sha256": "98c8a62c36a8097ef1951b1e19890638a04e2160afd3579c52ff37c84544af16"
+      },
+      "first_encounter_seconds": 5.0548146039946005,
+      "seconds": [
+        5.0548146039946005,
+        5.17734311602544,
+        5.059706408996135
+      ],
+      "cache_history": "One persistent context per mode across the ordered saved inputs; pool startup affects first searched graph",
+      "warm_median_seconds": 5.118524762510788,
+      "preparation_identity": "008b6a5f04b4a6b5f5242b5aa1e1a919c9e8287c953c18c73f87515420cb1394",
+      "exact_preparation_and_gradient": true,
+      "original_checks": 96,
+      "additional_checks": 192,
+      "routes": [
+        4
+      ],
+      "loss": {
+        "value": 3.6054341793060303,
+        "independent_primal": 3.6054341793060303,
+        "terms": {
+          "component_cut_risk": 0.0,
+          "extra_valid_nll": 0.0,
+          "local_bond_risk": 36.05434036254883,
+          "nonempty_risk": 0.0,
+          "partial_edited_nll": 0.0,
+          "valid_full_nll": 0.0
+        },
+        "gradient_sha256": [
+          "bd50e12c55dda3ee443c1cb6d71c7bcf6351c4ec96f7bc8d6adec015d1192eea",
+          "d5ed709c37aa3ec4cf57ab39db938c14b22c99a242ff1ef9355a1c60cbec34b4"
+        ],
+        "gradient_norm": 0.11463135480880737
+      },
+      "adapter_stats": {
+        "workers": 4,
+        "start_method": "spawn",
+        "reduction_order": "original_candidate_order"
+      }
+    },
+    {
+      "mode": "parallel4",
+      "input": {
+        "label": "random-high10",
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/random-native-0000/payload/study/high_pilot/snapshots/step-0010.npz",
+        "bytes": 23041,
+        "sha256": "6a5a18fa499184159eecf12b8bdad95f8443ea022f627379d84d7adbeb2acdf2"
+      },
+      "first_encounter_seconds": 0.6257299829740077,
+      "seconds": [
+        0.6257299829740077,
+        0.6248829239048064,
+        0.5775114679709077
+      ],
+      "cache_history": "One persistent context per mode across the ordered saved inputs; pool startup affects first searched graph",
+      "warm_median_seconds": 0.601197195937857,
+      "preparation_identity": "f062c99dd5af395ed24dff9264b2875ace3fc05040dfe21e9e16249afaafc655",
+      "exact_preparation_and_gradient": true,
+      "original_checks": 96,
+      "additional_checks": 192,
+      "routes": [
+        3
+      ],
+      "loss": {
+        "value": 2.5101561546325684,
+        "independent_primal": 2.5101561546325684,
+        "terms": {
+          "component_cut_risk": 0.0,
+          "extra_valid_nll": 0.0,
+          "local_bond_risk": 11.772455215454102,
+          "nonempty_risk": 0.0,
+          "partial_edited_nll": 1.3329105377197266,
+          "valid_full_nll": 0.0
+        },
+        "gradient_sha256": [
+          "bd50e12c55dda3ee443c1cb6d71c7bcf6351c4ec96f7bc8d6adec015d1192eea",
+          "1416b29ce6c20a2cf95f5d780dddf6a21e4071571c3a2ad036265c8bd271dc29"
+        ],
+        "gradient_norm": 0.4380422830581665
+      },
+      "adapter_stats": {
+        "workers": 4,
+        "start_method": "spawn",
+        "reduction_order": "original_candidate_order"
+      }
+    },
+    {
+      "mode": "parallel4",
+      "input": {
+        "label": "boltz-valid0",
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/boltz2_chemistry-native-0000/payload/study/early_pilot/snapshots/step-0000.npz",
+        "bytes": 15409,
+        "sha256": "774fbdbcaab45d18933b04a39ac15900e2bf3d8135075f86f42ecfe73accd11e"
+      },
+      "first_encounter_seconds": 0.0160167480353266,
+      "seconds": [
+        0.0160167480353266,
+        0.014489575987681746,
+        0.013951380038633943
+      ],
+      "cache_history": "One persistent context per mode across the ordered saved inputs; pool startup affects first searched graph",
+      "warm_median_seconds": 0.014220478013157845,
+      "preparation_identity": "2f1e78242acc752225957933dce2ec0aabcff3b264defcc4e2a20fd669e11bf4",
+      "exact_preparation_and_gradient": true,
+      "original_checks": 0,
+      "additional_checks": 0,
+      "routes": [
+        0
+      ],
+      "loss": {
+        "value": 0.0,
+        "independent_primal": 0.0,
+        "terms": {
+          "component_cut_risk": 0.0,
+          "extra_valid_nll": 0.0,
+          "local_bond_risk": 0.0,
+          "nonempty_risk": 0.0,
+          "partial_edited_nll": 0.0,
+          "valid_full_nll": 0.0
+        },
+        "gradient_sha256": [
+          "bd50e12c55dda3ee443c1cb6d71c7bcf6351c4ec96f7bc8d6adec015d1192eea",
+          "a6bedce1e512d6531cd02fe7a0b72bb64f229cdb254ec48d63308877004e620a"
+        ],
+        "gradient_norm": 0.0
+      },
+      "adapter_stats": {
+        "workers": 4,
+        "start_method": "spawn",
+        "reduction_order": "original_candidate_order"
+      }
+    },
+    {
+      "mode": "parallel4",
+      "input": {
+        "label": "boltz-invalid0",
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/boltz2_chemistry-native-0000/payload/study/high_pilot/snapshots/step-0000.npz",
+        "bytes": 14802,
+        "sha256": "ef54ff485d358fac65a4b9c522767573cec579f46c54a003d0681c961d06e85b"
+      },
+      "first_encounter_seconds": 0.17020061507355422,
+      "seconds": [
+        0.17020061507355422,
+        0.15085243608336896,
+        0.17827920301351696
+      ],
+      "cache_history": "One persistent context per mode across the ordered saved inputs; pool startup affects first searched graph",
+      "warm_median_seconds": 0.16456581954844296,
+      "preparation_identity": "bb447cad8fd77ff15a40b48850946c5040bbecc77c1f16e4f9dbcbf9d470a61a",
+      "exact_preparation_and_gradient": true,
+      "original_checks": 96,
+      "additional_checks": 0,
+      "routes": [
+        1
+      ],
+      "loss": {
+        "value": 0.4865887463092804,
+        "independent_primal": 0.4865887463092804,
+        "terms": {
+          "component_cut_risk": 0.0,
+          "extra_valid_nll": 0.0,
+          "local_bond_risk": 0.0,
+          "nonempty_risk": 0.0,
+          "partial_edited_nll": 0.0,
+          "valid_full_nll": 0.4865887463092804
+        },
+        "gradient_sha256": [
+          "6a6be7cb8423ae7bd1de0baaa4588cd35ed16b4251a5b3b1f580cfdb29e56f09",
+          "fe8d6c57e6fc7180a96a9579e0ba416270d928cfc360d56c88d0d06871dada35"
+        ],
+        "gradient_norm": 0.023423051461577415
+      },
+      "adapter_stats": {
+        "workers": 4,
+        "start_method": "spawn",
+        "reduction_order": "original_candidate_order"
+      }
+    }
+  ],
+  "completed_utc": "2026-10-24T23:00:54.790805+00:00",
+  "limitation": "Repeated-input warm timings can benefit from exact chemistry caches. First encounter of each adjacent saved input is separately reported. Not whole-run convergence or native readiness."
+}

@@ -1,0 +1,15 @@
+{
+  "files": {
+    "README.md": "b16cdb0e46f56a1b311e1970f904e9d14ef8be87d96259c0ce8beb5a43a2794f",
+    "scripts/README.md": "474375f602565a103f850fbf23c72ed373035ea51e1f9da98a49be9cb9aef12d",
+    "scripts/benchmark.py": "5b880388fe811272bd805c17ba0ed492cfe9c3904e9da2baf1845c94ff1f177d",
+    "scripts/exact_reuse.py": "b9ecf079d9697fb9efc650f0bbd944b726c2df0d2fcd3b908d9e221f2d565d88",
+    "scripts/parallel_search.py": "137d5bb6cab95ad3263090eb9b017efa1a78ed42543afe713c7fa654d3628170",
+    "scripts/stage.lsf": "084ded7acd7a18bbd9d596eda994462dacfe2589bf3b521339ea090911766c90",
+    "scripts/worker.py": "bd0bea82bd861c182f4dd4f611914d0ca7a57c81062c64e2643fd73f7457bda3",
+    "tests/README.md": "44de617572dad625be74feebcc26c87cc21e624b757c70de35d00dee4a1c866a",
+    "tests/test_speed.py": "64b3272de7e4291b648b36985ff478a9cfc542030ac3cef3c37e66996ab2b0f9"
+  },
+  "scientific_production_installed": false,
+  "version": "chemistry-search-speed-v1"
+}

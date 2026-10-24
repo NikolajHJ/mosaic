@@ -45,3 +45,8 @@ Shared tools: [releases](../scripts/releases/README.md), [evidence](../scripts/e
 
 - [Native Boltz30k pair](brd4-jq1/boltz-lr0025/README.md): fresh LR0.0025, plain and stretched-chemistry30k arms.
 - [DBMol composite pilot](brd4-jq1/boltz-dbmol/README.md): independent LR0.0025/10k binding-only pilot, conditional on component and total native gradient gates.
+
+
+## Chemistry search acceleration
+
+[Chemistry preparation speed study](brd4-jq1/chemistry-search-speed/README.md) compares exact native-fact caching, invariant cost reuse and ordered candidate parallelism on saved N25 inputs, independently of current runs.

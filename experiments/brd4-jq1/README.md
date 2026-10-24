@@ -18,3 +18,8 @@ freshLR0.3/Dirichlet1 seed17/chemistry0.001-to100, independent of saved studies.
 user-authorized random50000 stretched chemistry ramp and original passed10k+40000.
 
 [Boltz LR0.0025 comparisons](boltz-lr0025/README.md) and [independent DBMol composite pilot](boltz-dbmol/README.md): fresh30k pair with stretchedchemistry and a separately gated10k binding pilot.
+
+
+## Chemistry preparation performance
+
+The [separate search speed study](chemistry-search-speed/README.md) tests exact detached-search acceleration on saved pilot graphs. It does not change existing optimizations or automatically promote a loss implementation.

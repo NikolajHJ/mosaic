@@ -7000,3 +7000,56 @@ RawCPU/XML/LSF/resource/startup/source proofs and canonicalcampaign/READMEupdate
 retained in the three startup03runrecords; originalfailedattempts remainfailed.
 No modelmath, learningrate/loss/FD/gatewaiver, historicalthinning, extra cleanup,
 independentprojectchange, localnumerics or reportframe invention occurred.
+
+
+### 2026-10-25 — separate chemistry search speed study prepared
+
+The user authorized testing the most promising chemistry-preparation speedups,
+with a substantial reduction in search time as the goal. New experiment
+experiments/brd4-jq1/chemistry-search-speed isolates exact hard-graph native-fact
+caching, invariant cost/validation reuse and ordered per-depth spawn-pool checks
+(2/4workers). Existing sealed scientific sources/results/jobs stay unchanged;
+no optimizer updates, approximated stale targets or reduced search budgets.
+79allocated-only fixtures and six authenticated saved N25 pilot inputs are
+planned before correctness/performance findings. Original full643source seal,
+input hashes and whole selected-campaign capacity plus separate512MiB allowance
+are rechecked before submission and entry, retaining4GiB/100000file reserves.
+Local work so far is AST/bytes/source inspection only; no speed or numerical
+pass/job exists yet. Existing monitor remains paused and no cleanup occurs.
+
+
+### 2026-10-25 — chemistry speed01 CPU experiment actually submitted
+
+Immutable9file sourcea30fd3937ea79935d0c449c600d2ea42f5f26da31906508a31e306f81d1c13b0 staged/authenticatedread-only,
+archive17604SHA5ec552bcdd5be9a98cba26b00a9db9720098214af66786eee09b7e9da9ce6b31. Six saved N25 pilot snapshots and
+original643source rehashed, original3x32+6x32 search unchanged. Full unchanged
+selected-campaign storage plus512MiB passed32499679864required/40594731268
+available with4GiB/100000file reserves. Actual CPU29809404 submitted00:49:47
+Paris,8slots/4GiBslot/2h, observedPEND00:49:55.79rawfixturepass required before
+real saved-input benchmark; no result/speed/nativepass yet. No current run/job/
+scientificsettings/savedresults modified, monitorremains paused. Staticlayout
+command retained preexisting testdiscovery/historicalREADME errors.
+
+
+### 2026-10-25 — chemistry speed01 completed: exact reuse cuts repeated search sharply
+
+Actual CPU29809404 DONE/hpc/same-job LSFsuccess01:00:56Paris,668sallocatedwall.
+All79unique rawfixtures passed/no failures/errors/skips;108saved preparations
+(6inputs×6modes×3repeats) retained exact receipts/targetarrays/identities and all
+36loss/component/gradient hashes. Immutable9files/sourcea30fd393... and original
+643source da9db682... plus sixinputNPZs rehashed before/after.35deliveryfiles,
+archive17604SHA5ec552bc... and rawXML/LSF/source/wholecapacity/inputbyte proofs
+independently verified. Final audit/hash and rawproofs in chemistry-search-speed
+run20261025-chemistry-speed-01. No local numerical tests or currentrun changes.
+
+Difficult randomN25 warmbaseline16.87–18.17s; exactcache0.453–0.461s, combined
+cache+cost0.322–0.331s(52–55×warm). Cost-only18.16–18.49s gave no materialgain;
+2workers8.74–8.80s,4workers4.97–5.12s(3.4–3.6×warm). Combinedcoldfirst12.73s;
+first encounters of actualadjacent savedstates0.322/1.683s with persistentcache.
+Caching does not reuse probability-dependent targets, reduce96+192logicalchecks,
+change loss/rate/gradient/scientificgates or certify a future50ktrajectory.
+First-time invalidBoltz was0.302s vsbaseline0.271s, but warm0.089s vs0.270s;
+validBoltz was already~0.013s. Profiling identifies hardgraphdiagnosis asdominant.
+No automatic productionadoption, fullnativepilot, savedresult change, extra
+cleanup, independentproject/job modification or monitorunpause. Optionallazy
+neighbor41-fixture localdraft remains unexecuted/excludedfrom79pass claim.

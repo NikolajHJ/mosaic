@@ -1,0 +1,7 @@
+#!/bin/bash
+set -euo pipefail
+SOURCE="$1"
+MANIFEST="$2"
+export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1
+export JAX_PLATFORMS=cpu CUDA_VISIBLE_DEVICES=""
+exec /work3/s234818/mosaic/envs/protenix-tiny/bin/python -u "$SOURCE/scripts/worker.py" "$MANIFEST"

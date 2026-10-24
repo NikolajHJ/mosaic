@@ -1,0 +1,43 @@
+         777001 function calls (761215 primitive calls) in 20.020 seconds
+
+   Ordered by: cumulative time
+   List reduced from 490 to 35 due to restriction <35>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.003    0.003   20.062   20.062 /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source/src/mosaic/small_molecule/chemistry/preparation.py:78(prepare_failure_guidance)
+      290   17.945    0.062   18.896    0.065 /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source/src/mosaic/small_molecule/chemistry/_reference/quality.py:63(diagnose_graph)
+        1    0.010    0.010   13.457   13.457 /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source/src/mosaic/small_molecule/chemistry/_reference/repair_progress.py:165(search_progress_repair)
+      193    0.057    0.000   12.955    0.067 /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source/src/mosaic/small_molecule/chemistry/_reference/repair_progress.py:182(diagnose)
+        1    0.026    0.026    6.594    6.594 /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source/src/mosaic/small_molecule/chemistry/_reference/atom_preserving_chemistry.py:62(search_atom_preserving_repair)
+      483    0.656    0.001    0.715    0.001 /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source/src/mosaic/small_molecule/chemistry/_reference/chemistry.py:126(inspect_graph)
+      290    0.038    0.000    0.474    0.002 /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source/src/mosaic/small_molecule/chemistry/_reference/probability_repair.py:72(measure_probability_edits)
+     7250    0.355    0.000    0.355    0.000 {method 'update' of 'set' objects}
+      871    0.010    0.000    0.284    0.000 /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source/src/mosaic/small_molecule/chemistry/_reference/quality.py:41(graph_identity)
+      336    0.001    0.000    0.152    0.000 /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source/src/mosaic/small_molecule/chemistry/_reference/repair_search.py:47(round_robin_candidates)
+      357    0.089    0.000    0.151    0.000 /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source/src/mosaic/small_molecule/chemistry/_reference/atom_preserving_chemistry.py:28(_bond_edits)
+      327    0.000    0.000    0.150    0.000 {built-in method builtins.next}
+      294    0.004    0.000    0.147    0.000 /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source/src/mosaic/small_molecule/chemistry/_reference/probability_repair.py:47(validate_probabilities)
+     1161    0.060    0.000    0.118    0.000 /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source/src/mosaic/small_molecule/chemistry/_reference/quality.py:23(_labels)
+     9153    0.010    0.000    0.116    0.000 {built-in method builtins.any}
+      874    0.005    0.000    0.110    0.000 /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source/src/mosaic/small_molecule/chemistry/_reference/representation.py:43(fingerprint)
+     2621    0.007    0.000    0.103    0.000 /appl9/python/3.12.11/lib/python3.12/json/__init__.py:183(dumps)
+     1176    0.015    0.000    0.099    0.000 /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source/src/mosaic/small_molecule/chemistry/_reference/probability_repair.py:55(<genexpr>)
+     2621    0.006    0.000    0.096    0.000 /appl9/python/3.12.11/lib/python3.12/json/encoder.py:183(encode)
+     1176    0.004    0.000    0.095    0.000 /work3/s234818/mosaic/envs/protenix-tiny/lib/python3.12/site-packages/numpy/_core/numeric.py:2226(allclose)
+     2621    0.087    0.000    0.087    0.000 /appl9/python/3.12.11/lib/python3.12/json/encoder.py:205(iterencode)
+     1176    0.050    0.000    0.085    0.000 /work3/s234818/mosaic/envs/protenix-tiny/lib/python3.12/site-packages/numpy/_core/numeric.py:2320(isclose)
+      874    0.005    0.000    0.080    0.000 /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source/src/mosaic/small_molecule/chemistry/_reference/representation.py:31(to_dict)
+      219    0.001    0.000    0.076    0.000 /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source/src/mosaic/small_molecule/chemistry/_reference/repair_progress.py:91(_labels)
+     5694    0.024    0.000    0.068    0.000 /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source/src/mosaic/small_molecule/chemistry/_reference/repair_progress.py:93(<genexpr>)
+    15038    0.026    0.000    0.060    0.000 /work3/s234818/mosaic/envs/protenix-tiny/lib/python3.12/site-packages/numpy/_core/fromnumeric.py:86(_wrapreduction_any_all)
+    11507    0.011    0.000    0.052    0.000 /work3/s234818/mosaic/envs/protenix-tiny/lib/python3.12/site-packages/numpy/_core/fromnumeric.py:2474(any)
+     2622    0.005    0.000    0.050    0.000 /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source/src/mosaic/small_molecule/chemistry/_reference/probability_repair.py:38(_array)
+     2635    0.044    0.000    0.044    0.000 {built-in method numpy.array}
+    20118    0.043    0.000    0.043    0.000 {method 'reduce' of 'numpy.ufunc' objects}
+      870    0.001    0.000    0.042    0.000 /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source/src/mosaic/small_molecule/chemistry/_reference/probability_repair.py:81(<lambda>)
+      878    0.002    0.000    0.039    0.000 /appl9/python/3.12.11/lib/python3.12/dataclasses.py:1308(asdict)
+16636/878    0.020    0.000    0.036    0.000 /appl9/python/3.12.11/lib/python3.12/dataclasses.py:1332(_asdict_inner)
+     6676    0.009    0.000    0.036    0.000 /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source/src/mosaic/small_molecule/chemistry/_reference/quality.py:14(_array)
+   115738    0.029    0.000    0.029    0.000 {built-in method builtins.max}
+
+

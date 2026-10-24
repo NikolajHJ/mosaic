@@ -72,3 +72,10 @@ does not establish a CPU pass, capacity pass, submitted GPU or optimization star
 Unknown outcomes and exclusive owner markers prohibit blind replay. The monitor
 remains paused. Earlier failed readiness, storage and adoption records remain
 immutable. No parallel chemistry change is implemented by this launcher.
+
+
+The separate `experiments/brd4-jq1/chemistry-search-speed` benchmark consumes the
+validated startup03 storage helper read-only, reauthenticating its12-file seal.
+It adds an independent512MiB allowance after the entire unchanged selected
+campaign gate; it does not dispatch, alter or adopt any selected scientificjob.
+This named consumer is benchmark admission only, not a new production owner.

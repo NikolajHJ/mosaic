@@ -1,0 +1,9 @@
+........................................................................ [ 91%]
+.......                                                                  [100%]
+=============================== warnings summary ===============================
+../../../../envs/protenix-tiny/lib/python3.12/site-packages/_pytest/cacheprovider.py:475
+  /work3/s234818/mosaic/envs/protenix-tiny/lib/python3.12/site-packages/_pytest/cacheprovider.py:475: PytestCacheWarning: could not create cache path /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-search-speed-release-01/source/.pytest_cache/v/cache/nodeids: [Errno 13] Permission denied: '/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-search-speed-release-01/source/pytest-cache-files-a4lbuxa9'
+    config.cache.set("cache/nodeids", sorted(self.cached_nodeids))
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+79 passed, 1 warning in 42.09s

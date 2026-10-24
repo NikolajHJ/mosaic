@@ -1,0 +1,11 @@
+{
+  "status": "unpromoted_local_AST_only_draft_archived",
+  "archive_bytes": 5367,
+  "archive_sha256": "2952ab8dd0544a46652d940c8a19b94ffa9427da67962a7871c8530f8778a730",
+  "members": {
+    "scripts/lazy_neighbors.py": "a23395019721b0b8195d34bb1e66790b29cfa9f7692dd28ac378e411bd6c4004",
+    "tests/test_lazy.py": "0b77fa62b91ba26efc709a144e7a50227b9316bbbd25c1e64ebe737a98d27484"
+  },
+  "allocated_tests_run": false,
+  "reason": "Cold profile assigns only0.15s of20s to neighbor generation; prioritize measured native-fact reuse. Not part of79passes."
+}

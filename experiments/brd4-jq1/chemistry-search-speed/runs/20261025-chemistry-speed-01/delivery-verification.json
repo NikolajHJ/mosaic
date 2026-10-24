@@ -1,0 +1,199 @@
+{
+  "status": "passed_byte_xml_schema_timing_metadata_only",
+  "job_id": "29809404",
+  "raw_cpu_cases": 79,
+  "source_manifest_sha256": "a30fd3937ea79935d0c449c600d2ea42f5f26da31906508a31e306f81d1c13b0",
+  "source_files": 9,
+  "original_scientific_files": 643,
+  "saved_inputs": 6,
+  "compared_rows": 36,
+  "every_loss_and_gradient_hash_exact": true,
+  "original_runs_changed": false,
+  "evidence_raw_sha256": "63f9251b59b938924d4a9b61963083b5de27d90f2d596bac18215486e9d2463b",
+  "verified_files": 35,
+  "verifier_source_sha256": "2941866838c199eb51a2db6557eddd8124cabb873c911d450ecd4c5eb8074412",
+  "source_archive_sha256": "5ec552bcdd5be9a98cba26b00a9db9720098214af66786eee09b7e9da9ce6b31",
+  "timings": [
+    {
+      "input": "random-early0",
+      "original_checks": 96,
+      "additional_checks": 192,
+      "warm_seconds": {
+        "baseline": 16.86964408744825,
+        "cost": 18.158488247543573,
+        "cache": 0.45332982251420617,
+        "combined": 0.32216458447510377,
+        "parallel2": 8.773855519539211,
+        "parallel4": 4.973102681571618
+      },
+      "first_encounter_seconds": {
+        "baseline": 17.845765566919,
+        "cost": 17.937285655061714,
+        "cache": 12.757996169035323,
+        "combined": 12.732724712928757,
+        "parallel2": 11.57294155296404,
+        "parallel4": 7.631401672028005
+      },
+      "warm_speedup": {
+        "baseline": 1.0,
+        "cost": 0.929022496667933,
+        "cache": 37.21273838523959,
+        "combined": 52.36343440708612,
+        "parallel2": 1.9227173333182739,
+        "parallel4": 3.3921769099923442
+      }
+    },
+    {
+      "input": "random-early1",
+      "original_checks": 96,
+      "additional_checks": 192,
+      "warm_seconds": {
+        "baseline": 18.173006498487666,
+        "cost": 18.49349597701803,
+        "cache": 0.45444790995679796,
+        "combined": 0.33082529553212225,
+        "parallel2": 8.800505616527516,
+        "parallel4": 4.988119686022401
+      },
+      "first_encounter_seconds": {
+        "baseline": 18.393080794019625,
+        "cost": 18.34475080098491,
+        "cache": 0.4548388730036095,
+        "combined": 0.3215665010502562,
+        "parallel2": 8.770972108002752,
+        "parallel4": 4.9858928410103545
+      },
+      "warm_speedup": {
+        "baseline": 1.0,
+        "cost": 0.9826701517696472,
+        "cache": 39.98919590193578,
+        "combined": 54.932336625761785,
+        "parallel2": 2.0649957275589275,
+        "parallel4": 3.6432579092702335
+      }
+    },
+    {
+      "input": "random-early2",
+      "original_checks": 96,
+      "additional_checks": 192,
+      "warm_seconds": {
+        "baseline": 17.980301174975466,
+        "cost": 18.338231620495208,
+        "cache": 0.46126160951098427,
+        "combined": 0.32829355902504176,
+        "parallel2": 8.73904755100375,
+        "parallel4": 5.118524762510788
+      },
+      "first_encounter_seconds": {
+        "baseline": 18.053948285989463,
+        "cost": 18.56854197208304,
+        "cache": 1.845143934013322,
+        "combined": 1.6833059410564601,
+        "parallel2": 8.782926285988651,
+        "parallel4": 5.0548146039946005
+      },
+      "warm_speedup": {
+        "baseline": 1.0,
+        "cost": 0.9804817360295683,
+        "cache": 38.980701632719104,
+        "combined": 54.76897331879714,
+        "parallel2": 2.057466911586982,
+        "parallel4": 3.512789721496941
+      }
+    },
+    {
+      "input": "random-high10",
+      "original_checks": 96,
+      "additional_checks": 192,
+      "warm_seconds": {
+        "baseline": 1.2462786334217526,
+        "cost": 1.1474957294994965,
+        "cache": 0.4558320975047536,
+        "combined": 0.3136634635156952,
+        "parallel2": 0.8377525845426135,
+        "parallel4": 0.601197195937857
+      },
+      "first_encounter_seconds": {
+        "baseline": 1.3734951840015128,
+        "cost": 1.1511536439647898,
+        "cache": 1.1984560729470104,
+        "combined": 0.9222140340134501,
+        "parallel2": 0.8316742380848154,
+        "parallel4": 0.6257299829740077
+      },
+      "warm_speedup": {
+        "baseline": 1.0,
+        "cost": 1.0860856396958813,
+        "cache": 2.7340738843182404,
+        "combined": 3.9732987050925392,
+        "parallel2": 1.487645226546429,
+        "parallel4": 2.0729947542046996
+      }
+    },
+    {
+      "input": "boltz-valid0",
+      "original_checks": 0,
+      "additional_checks": 0,
+      "warm_seconds": {
+        "baseline": 0.013170221005566418,
+        "cost": 0.011832855525426567,
+        "cache": 0.009811228490434587,
+        "combined": 0.009974607033655047,
+        "parallel2": 0.013364610495045781,
+        "parallel4": 0.014220478013157845
+      },
+      "first_encounter_seconds": {
+        "baseline": 0.01599420397542417,
+        "cost": 0.012710988987237215,
+        "cache": 0.014154352014884353,
+        "combined": 0.0149580700090155,
+        "parallel2": 0.015696696005761623,
+        "parallel4": 0.0160167480353266
+      },
+      "warm_speedup": {
+        "baseline": 1.0,
+        "cost": 1.113021364730272,
+        "cache": 1.3423620720286624,
+        "combined": 1.3203749241578278,
+        "parallel2": 0.9854549079786933,
+        "parallel4": 0.9261447465676154
+      }
+    },
+    {
+      "input": "boltz-invalid0",
+      "original_checks": 96,
+      "additional_checks": 0,
+      "warm_seconds": {
+        "baseline": 0.26968936051707715,
+        "cost": 0.2336419314960949,
+        "cache": 0.13349521247437224,
+        "combined": 0.08913523203227669,
+        "parallel2": 0.20604898093733937,
+        "parallel4": 0.16456581954844296
+      },
+      "first_encounter_seconds": {
+        "baseline": 0.2708775020437315,
+        "cost": 0.23275680793449283,
+        "cache": 0.3353390560951084,
+        "combined": 0.3019326840294525,
+        "parallel2": 0.22020311106462032,
+        "parallel4": 0.17020061507355422
+      },
+      "warm_speedup": {
+        "baseline": 1.0,
+        "cost": 1.1542849298931803,
+        "cache": 2.0202174708613674,
+        "combined": 3.0256202218604216,
+        "parallel2": 1.3088604432316566,
+        "parallel4": 1.638793288041744
+      }
+    }
+  ],
+  "scope": "Independent evidence audit; numerical comparisons were allocated HPC",
+  "not_claimed": [
+    "production installation",
+    "native model readiness",
+    "whole-trajectory speedup",
+    "convergence"
+  ]
+}
