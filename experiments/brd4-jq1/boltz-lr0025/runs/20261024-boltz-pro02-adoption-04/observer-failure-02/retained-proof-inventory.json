@@ -1,0 +1,42 @@
+{
+  "captured_utc": "2026-10-24T20:49:35.890353+00:00",
+  "files": [
+    {
+      "bytes": 3037,
+      "path": "experiments/brd4-jq1/boltz-lr0025/runs/20261024-boltz-pro02-adoption-04/observer-failure-02/observe-0001/failure.json",
+      "remote_path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-pro02-adoption-04/observe-0001/failure.json",
+      "sha256": "83149f37e1eaefe7484abf5e307621d299489b1720c87180ece120c0e0f6ef02"
+    },
+    {
+      "bytes": 3169,
+      "path": "experiments/brd4-jq1/boltz-lr0025/runs/20261024-boltz-pro02-adoption-04/observer-failure-02/observe-0001/scheduler-at-submission.txt",
+      "remote_path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-pro02-adoption-04/observe-0001/scheduler-at-submission.txt",
+      "sha256": "4027280861cfb2c326521ad981da1fa585a149c5e041de673cf61b448dc46fd9"
+    },
+    {
+      "bytes": 1308,
+      "path": "experiments/brd4-jq1/boltz-lr0025/runs/20261024-boltz-pro02-adoption-04/observer-failure-02/observe-0001/stderr.29806694.log",
+      "remote_path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-pro02-adoption-04/observe-0001/stderr.29806694.log",
+      "sha256": "04d2b7577469b107b8ab695c42e601140d459dff05f4190a5a9ef0645e114505"
+    },
+    {
+      "bytes": 2522,
+      "path": "experiments/brd4-jq1/boltz-lr0025/runs/20261024-boltz-pro02-adoption-04/observer-failure-02/observe-0001/stdout.29806694.log",
+      "remote_path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-pro02-adoption-04/observe-0001/stdout.29806694.log",
+      "sha256": "f08b83b48b7d645322beba9a144554dddffb214897173abd23718f00db575a06"
+    },
+    {
+      "bytes": 1759,
+      "path": "experiments/brd4-jq1/boltz-lr0025/runs/20261024-boltz-pro02-adoption-04/observer-failure-02/observe-0001/submission-started.json",
+      "remote_path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-pro02-adoption-04/observe-0001/submission-started.json",
+      "sha256": "0f786d2ded049e4c9b4497204615705fe863a304e927425a5800f8d08f54426b"
+    },
+    {
+      "bytes": 1881,
+      "path": "experiments/brd4-jq1/boltz-lr0025/runs/20261024-boltz-pro02-adoption-04/observer-failure-02/observe-0001/submission.json",
+      "remote_path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-pro02-adoption-04/observe-0001/submission.json",
+      "sha256": "d0998d6fc4fe343966f5defcf2a4e900d6101a522eaedc00d62f87684496c100"
+    }
+  ],
+  "scope": "Exact compact original files retained; opaque arrays remain authenticated remote references, not locally loaded."
+}

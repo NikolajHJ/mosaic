@@ -1,0 +1,43 @@
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@hpc.dtu.dk>
+Subject: Job 29806694: <mosaic-peer-boltz30k-observe-0001> in cluster <dcc> Exited
+
+Job <mosaic-peer-boltz30k-observe-0001> was submitted from host <n-62-30-23> by user <s234818> in cluster <dcc> at Sat Oct 24 14:07:53 2026
+Job was executed on host(s) <2*n-62-31-7>, in queue <hpc>, as user <s234818> in cluster <dcc> at Sat Oct 24 15:16:47 2026
+</zhome/95/e/206121> was used as the home directory.
+</work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-release-03/source> was used as the working directory.
+Started at Sat Oct 24 15:16:47 2026
+Terminated at Sat Oct 24 15:16:56 2026
+Results reported at Sat Oct 24 15:16:56 2026
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+bash -l /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-pro02-adoption-release-04/source/scripts/hpc/peer_adoption_stage.lsf /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-pro02-adoption-release-04/source 9c8b496f65f41ed7eb76263cd947064d40fa3821a692f7276b00b4ccf70c4ced boltz30k /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-release-03/source /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03 c214bccf2c94ac6829996bc0ca7d6415d3c19549be4fe7f874cba2b433901cc6 /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-pro02-adoption-04 observe /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-pro02-adoption-04/observe-0001
+------------------------------------------------------------
+
+Exited with exit code 1.
+
+Resource usage summary:
+
+    CPU time :                                   4.44 sec.
+    Max Memory :                                 1 MB
+    Average Memory :                             1.00 MB
+    Total Requested Memory :                     8192.00 MB
+    Delta Memory :                               8191.00 MB
+    Max Swap :                                   -
+    Max Processes :                              1
+    Max Threads :                                1
+    Run time :                                   9 sec.
+    Turnaround time :                            4143 sec.
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file </work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-pro02-adoption-04/observe-0001/stderr.29806694.log> for stderr output of this job.
+

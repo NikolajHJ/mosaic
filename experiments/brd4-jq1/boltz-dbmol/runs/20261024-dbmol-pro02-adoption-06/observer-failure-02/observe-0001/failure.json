@@ -1,0 +1,92 @@
+{
+  "status": "failed_peer",
+  "missing": [],
+  "failed": [
+    {
+      "profile": "protenix50k40k",
+      "arm": "random",
+      "job_id": "29806665",
+      "status": "Exited",
+      "proof": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/random-after-native-0000/stdout.29806665.log",
+        "bytes": 2320,
+        "sha256": "09a63bb6cd921b6d77b70a4acdc6e7a5d92f8daf044b977b5b72d81cce254f44"
+      },
+      "scheduler_state_invented": false
+    }
+  ],
+  "actual_callback_ids": [
+    "29805951",
+    "29805959",
+    "29805981",
+    "29806665",
+    "29806668"
+  ],
+  "pending_callback_ids": [],
+  "terminal_callbacks": [
+    {
+      "profile": "boltz30k",
+      "arm": "boltz2",
+      "job_id": "29805951",
+      "status": "Done",
+      "proof": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/boltz2-after-native-0000/stdout.29805951.log",
+        "bytes": 2290,
+        "sha256": "047c9c565ab1b4a6a8d6bec4d1a58ffc996a33f0e1d437eb0e286b2429a8fddb"
+      },
+      "scheduler_state_invented": false
+    },
+    {
+      "profile": "boltz30k",
+      "arm": "boltz2_chemistry",
+      "job_id": "29805959",
+      "status": "Done",
+      "proof": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/boltz2_chemistry-after-native-0000/stdout.29805959.log",
+        "bytes": 2330,
+        "sha256": "b1aaa8a04bf290bcb2efbc8d3e0e7bfab9ca77b636073b7d547ca09ae5bbecc7"
+      },
+      "scheduler_state_invented": false
+    },
+    {
+      "profile": "dbmol10k",
+      "arm": "boltz2_dbmol",
+      "job_id": "29805981",
+      "status": "Done",
+      "proof": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-after-native-0000/stdout.29805981.log",
+        "bytes": 2461,
+        "sha256": "f209d0fdd7149f738fa35f6d4c56e9f2125f0ecedf7be90b96b81e53fc7ab81a"
+      },
+      "scheduler_state_invented": false
+    },
+    {
+      "profile": "protenix50k40k",
+      "arm": "random",
+      "job_id": "29806665",
+      "status": "Exited",
+      "proof": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/random-after-native-0000/stdout.29806665.log",
+        "bytes": 2320,
+        "sha256": "09a63bb6cd921b6d77b70a4acdc6e7a5d92f8daf044b977b5b72d81cce254f44"
+      },
+      "scheduler_state_invented": false
+    },
+    {
+      "profile": "protenix50k40k",
+      "arm": "continuation",
+      "job_id": "29806668",
+      "status": "Done",
+      "proof": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-after-native-0000/stdout.29806668.log",
+        "bytes": 2361,
+        "sha256": "9bfc3118fdf59e3164e9de95eb4d6e0fb09fcdca0a226778c224b9b1ca47a73c"
+      },
+      "scheduler_state_invented": false
+    }
+  ],
+  "running": [],
+  "all_callbacks_terminal": true,
+  "dependency": null,
+  "production_submitted": false
+}

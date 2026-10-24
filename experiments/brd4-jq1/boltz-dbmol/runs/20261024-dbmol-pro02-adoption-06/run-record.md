@@ -29,3 +29,18 @@ old Boltz/DBMol terminal callback proofs remain authenticated even though their
 live scheduler history aged out. All5 actual job mappings are required.
 No Pro03 native-gradient/full-production-storage or optimizer pass is claimed.
 Original histories/settings/saved results and paused monitor remain unchanged.
+
+
+24October22:49:35Paris: observer29806701 actually exited1 with failed_peer,
+authenticated same-job LSF and preserved failure.json. The random Pro03 native
+callback failed on empirical runtime fit, while continuation native passed.
+Earlier own native readiness and75-case metadataCPU passes remain valid. The
+observer correctly submitted no production. No fresh full-production storage
+gate was reached: full certified random Pro projection is absent. Actual current
+scientific roots have zero segment submissions/committed production prefixes.
+Live records aged out; no fabricated scheduler terminal state is used. Exact
+compact raw observer proofs are in observer-failure-02; shared independent audit
+4a6539621942378797d29d1ad9fddaaaabbf9ad46bbfd2e8bc8e48d0621e29c7
+rehashes all610 compact files and authenticates source/input/proof bindings.
+Sealed seven-member aliases, scientific settings, saved results and paused monitor
+remain unchanged. No resubmission, extra cleanup or numerical execution occurred.

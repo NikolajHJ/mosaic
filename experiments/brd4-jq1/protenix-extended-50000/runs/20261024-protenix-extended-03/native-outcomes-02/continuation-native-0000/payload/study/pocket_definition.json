@@ -1,0 +1,143 @@
+{
+  "anchor_author_residues": [
+    81,
+    140
+  ],
+  "anchor_sequence_positions": [
+    40,
+    99
+  ],
+  "fixture_sha256": "26c5883c8447423f69e95bc69c8a04356404152ce853cb550fc731d6f632681f",
+  "pdb_id": "3MXF",
+  "pdb_sha256": "534dcb8ea9fa29956249b5133b22187c3867363b16a6b98dd8219c18c5d3250f",
+  "pose_requirements": {
+    "anchor_max_distance_angstrom": 6.0,
+    "minimum_ligand_fraction": 0.5,
+    "pocket_max_distance_angstrom": 6.0
+  },
+  "protein_chain": "A",
+  "protein_sequence": "SMNPPPPETSNPNKPKRQTNQLQYLLRVVLKTLWKHQFAWPFQQPVDAVKLNLPDYYKIIKTPMDMGTIKKRLENNYYWNAQECIQDFNTMFTNCYIYNKPGDDIVLMAEALEKLFLQKINELPTEE",
+  "radius_angstrom": 6.0,
+  "reference_ligand": "JQ1",
+  "reference_ligand_author_residue": 1,
+  "reference_ligand_heavy_atoms": 31,
+  "residues": [
+    {
+      "author_residue": 81,
+      "minimum_jq1_distance_angstrom": 3.560277798150027,
+      "residue_name": "TRP",
+      "sequence_position": 40
+    },
+    {
+      "author_residue": 82,
+      "minimum_jq1_distance_angstrom": 3.4073571870292687,
+      "residue_name": "PRO",
+      "sequence_position": 41
+    },
+    {
+      "author_residue": 83,
+      "minimum_jq1_distance_angstrom": 3.743242845448317,
+      "residue_name": "PHE",
+      "sequence_position": 42
+    },
+    {
+      "author_residue": 85,
+      "minimum_jq1_distance_angstrom": 4.47170336672727,
+      "residue_name": "GLN",
+      "sequence_position": 44
+    },
+    {
+      "author_residue": 86,
+      "minimum_jq1_distance_angstrom": 5.918309978363755,
+      "residue_name": "PRO",
+      "sequence_position": 45
+    },
+    {
+      "author_residue": 87,
+      "minimum_jq1_distance_angstrom": 3.739743440398017,
+      "residue_name": "VAL",
+      "sequence_position": 46
+    },
+    {
+      "author_residue": 88,
+      "minimum_jq1_distance_angstrom": 5.712549518384939,
+      "residue_name": "ASP",
+      "sequence_position": 47
+    },
+    {
+      "author_residue": 92,
+      "minimum_jq1_distance_angstrom": 3.594142317716426,
+      "residue_name": "LEU",
+      "sequence_position": 51
+    },
+    {
+      "author_residue": 93,
+      "minimum_jq1_distance_angstrom": 5.477003651632888,
+      "residue_name": "ASN",
+      "sequence_position": 52
+    },
+    {
+      "author_residue": 94,
+      "minimum_jq1_distance_angstrom": 3.7772366883741864,
+      "residue_name": "LEU",
+      "sequence_position": 53
+    },
+    {
+      "author_residue": 97,
+      "minimum_jq1_distance_angstrom": 4.475440872137629,
+      "residue_name": "TYR",
+      "sequence_position": 56
+    },
+    {
+      "author_residue": 135,
+      "minimum_jq1_distance_angstrom": 5.992599686279734,
+      "residue_name": "ASN",
+      "sequence_position": 94
+    },
+    {
+      "author_residue": 136,
+      "minimum_jq1_distance_angstrom": 4.258159226708179,
+      "residue_name": "CYS",
+      "sequence_position": 95
+    },
+    {
+      "author_residue": 139,
+      "minimum_jq1_distance_angstrom": 4.097426265352438,
+      "residue_name": "TYR",
+      "sequence_position": 98
+    },
+    {
+      "author_residue": 140,
+      "minimum_jq1_distance_angstrom": 3.1485237810758253,
+      "residue_name": "ASN",
+      "sequence_position": 99
+    },
+    {
+      "author_residue": 144,
+      "minimum_jq1_distance_angstrom": 5.863491195525066,
+      "residue_name": "ASP",
+      "sequence_position": 103
+    },
+    {
+      "author_residue": 145,
+      "minimum_jq1_distance_angstrom": 3.6851337831888813,
+      "residue_name": "ASP",
+      "sequence_position": 104
+    },
+    {
+      "author_residue": 146,
+      "minimum_jq1_distance_angstrom": 3.6086019453522455,
+      "residue_name": "ILE",
+      "sequence_position": 105
+    },
+    {
+      "author_residue": 149,
+      "minimum_jq1_distance_angstrom": 3.587510975592967,
+      "residue_name": "MET",
+      "sequence_position": 108
+    }
+  ],
+  "selection": "protein heavy atoms within 6A of JQ1 heavy atoms; no solvent/ions",
+  "status": "defined",
+  "version": "brd4-jq1-heavy-neighborhood-v1"
+}

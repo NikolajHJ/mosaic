@@ -1,0 +1,113 @@
+{
+  "status": "passed",
+  "phase": "entry",
+  "reserve_bytes": 4294967296,
+  "file_reserve": 100000,
+  "scope": "All original remaining +report2GiB/diagnostic512MiB +both Pro02 +current Boltz30k +DBMol10k +bounded noisyPro; no reservations",
+  "stale_scope": "Entire analysis BASE includes original/new Pro/Boltz/DBMol roots/releases/uploads; external noise paths additionally charged",
+  "prospective_adoption_metadata_controls": {
+    "per_control_bytes": 1073741824,
+    "current": {
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-pro02-adoption-04": 281434,
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-pro02-adoption-06": 310919
+    },
+    "remaining_bytes": 2146891295,
+    "scope": "Two explicit metadata-only adoption controls; current bytes additionally remain in entire BASE stale charge"
+  },
+  "noisy_capsule_inventory": {
+    "capsules": [
+      {
+        "path": "/work3/s234818/mosaic/releases/20261023-protenix-noisy-01",
+        "bytes": 47431694,
+        "scope": "authenticated_noisy01"
+      },
+      {
+        "path": "/work3/s234818/mosaic/releases/20261023-protenix-noisy-01.tar.gz",
+        "bytes": 39636303,
+        "scope": "authenticated_noisy01"
+      },
+      {
+        "path": "/work3/s234818/mosaic/runs/20261023-protenix-noisy-01",
+        "bytes": 4955,
+        "scope": "authenticated_noisy01"
+      }
+    ],
+    "stale_bytes": 87072952,
+    "unknown_scopes": [],
+    "scope": "Every matching direct work3 Mosaic run/release/upload byte inventoried; unknown scope blocks every admission phase"
+  },
+  "old_current": {
+    "protenix": 1065476574,
+    "boltz2": 1001537880,
+    "boltz2_chemistry": 2562690364
+  },
+  "own_current": {
+    "random": 272289,
+    "continuation": 190214
+  },
+  "full_extended": {
+    "random": 1073741824,
+    "continuation": 1073741824
+  },
+  "peers": {
+    "baseline": {
+      "full": 20549890944,
+      "current": 6889964,
+      "remaining": 20543000980,
+      "source_manifest_sha256": "c214bccf2c94ac6829996bc0ca7d6415d3c19549be4fe7f874cba2b433901cc6",
+      "projection_sha256": "e2417e6e14ba25543d776d7108e556d6bf467476247ce83847266066bb6fd9e4",
+      "scope": "Declared mutable capacity metadata; exact all authenticated native maxima, no lowering"
+    },
+    "dbmol": {
+      "full": 4997967296,
+      "current": 1185699,
+      "remaining": 4996781597,
+      "source_manifest_sha256": "600ecc3b33135141a57c029a28a2c72f29e788e3ecf5cb2dac1761146d1d6eed",
+      "projection_sha256": "246af7452231e07dbfe683d78f73276e9acd48de5d0460d0868107c86f175d88",
+      "scope": "Declared mutable capacity metadata; exact all authenticated native maxima, no lowering"
+    }
+  },
+  "missing_full_projections": [],
+  "full_long_admission": false,
+  "noisy_protenix": {
+    "full": 1073741824,
+    "current": 4955,
+    "remaining": 1073736869,
+    "scope": "authenticated_immutable_one_GiB_cap"
+  },
+  "projected_bytes": 37347647100,
+  "work3": {
+    "status": "passed",
+    "filesystem": "work3",
+    "raw_quota": "HPE-Storage-Servers (disks, storagepool 1): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nHPE-Storage-Servers (NVME, storagepool 2): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (disks, storagepool 3): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks, storagepool 4): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks added in 2024, storagepool 5): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (NVMEs added in 2024, storagepool 6): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||   51.36 GiB|  100.00 GiB||   411474| 20000000\n\n",
+    "quota": {
+      "finite_pools": [
+        {
+          "used_bytes_upper": 55834574848,
+          "hard_bytes_lower": 107374182400,
+          "remaining_bytes": 51539607552,
+          "remaining_files": 19588526
+        }
+      ],
+      "available_bytes_lower": 51539607552,
+      "available_files_lower": 19588526
+    },
+    "projected_bytes": 37347647100,
+    "stale_bytes_subtracted": 9036062788,
+    "disk_free_bytes": 550932048248832,
+    "available_bytes_conservative": 42503544764,
+    "required_bytes": 41642614396,
+    "reserve_bytes": 4294967296,
+    "file_reserve": 100000,
+    "filesystem_inode_observation": {
+      "f_files": 0,
+      "f_ffree": 0,
+      "f_favail": 0
+    },
+    "available_files_lower": 19588526,
+    "filesystem_inode_reporting": "unreported_all_zero",
+    "file_headroom_scope": "Mandatory minimum of all authenticated finite user-quota pools",
+    "inode_limitation": "All-zero statvfs tuple supplies no independent filesystem inode proof",
+    "limitation": "Observations are conservative budget checks, not storage reservations"
+  }
+}

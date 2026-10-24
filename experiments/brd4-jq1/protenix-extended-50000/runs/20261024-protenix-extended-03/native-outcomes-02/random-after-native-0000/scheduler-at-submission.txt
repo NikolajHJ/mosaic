@@ -1,0 +1,54 @@
+
+Job <29806665>, Job Name <mosaic-pro50k-random-after-native-0000>, User <s23481
+                          8>, Project <default>, Status <PEND>, Queue <hpc>, Co
+                          mmand <bash -l /work3/s234818/mosaic/runs/20261022-br
+                          d4-jq1-lrboost-analysis-01/protenix-extended-release-
+                          03/source/scripts/hpc/extended_stage.lsf /work3/s2348
+                          18/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/
+                          protenix-extended-release-03/source /work3/s234818/mo
+                          saic/runs/20261022-brd4-jq1-lrboost-analysis-01/prote
+                          nix-extended-03 da9db6821d26b884ca1749303fc8e0b0095bd
+                          9ee7cbd1b427cdcf1b22eec6562 after-native /work3/s2348
+                          18/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/
+                          protenix-extended-03/random-after-native-0000>, Esub 
+                          <dcc>
+Sat Oct 24 14:01:15 2026: Submitted from host <n-62-30-23>, CWD </work3/s234818
+                          /mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/pr
+                          otenix-extended-release-03/source>, Output File (over
+                          write) </work3/s234818/mosaic/runs/20261022-brd4-jq1-
+                          lrboost-analysis-01/protenix-extended-03/random-after
+                          -native-0000/stdout.29806665.log>, Error File (overwr
+                          ite) </work3/s234818/mosaic/runs/20261022-brd4-jq1-lr
+                          boost-analysis-01/protenix-extended-03/random-after-n
+                          ative-0000/stderr.29806665.log>, 2 Task(s), Requested
+                           Resources <{select[shortparallel_] rusage[mem=4096.0
+                          0] span[hosts=1]} || {select[!shortparallel_] rusage[
+                          mem=4096.00] span[hosts=1]}>, Dependency Condition <e
+                          nded(29806664)>;
+ PENDING REASONS:
+ New job is waiting for scheduling;
+
+ RUNLIMIT                
+ 30.0 min of n-62-30-23
+
+ MEMLIMIT
+      4 G 
+
+ PENDING TIME DETAILS:
+ Eligible pending time (seconds):	0
+ Ineligible pending time (seconds):	0
+
+ SCHEDULING PARAMETERS:
+           r15s   r1m  r15m   ut      pg    io   ls    it    tmp    swp    mem
+ loadSched   -     -     -     -       -     -    -     -     -      -      -  
+ loadStop    -     -     -     -       -     -    -     -     -      -      -  
+
+ RESOURCE REQUIREMENT DETAILS:
+ Job-level: {select[shortparallel_] rusage[mem=4096.00] span[hosts=1]} || {sele
+                          ct[!shortparallel_] rusage[mem=4096.00] span[hosts=1]
+                          }
+ App-level: -
+ Queue-level: same[type:model] affinity[core] cu[type=enclosure:maxcus=1]
+ Combined: -
+ Effective: -
+

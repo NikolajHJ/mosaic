@@ -6786,3 +6786,35 @@ Both metadataCPU29806690/29806697 and callbacks29806691/29806698 actualDONE/hpc/
 Actual allocated callbacks queued Boltzobserver29806694 and DBMolobserver29806701. Independent raw submission/source/resource/dependency/scheduler/own-callbackLSF audit passed, with both observers PEND on only ended(29806665)&&ended(29806668). Allfive original native mappings and three older terminal same-jobLSF proofs are still authenticated; aged-out live Boltz/DBMol records are not new failures and not fabricatedDONE. Pro03native29806664/29806667 remainPEND at12:11:20UTC. No observer/adoption/nativePro/full-production-storage/optimization pass is inferred. Each existing observer will require all actual native successes, full empirical projections, exact generated startup and fresh unchanged complete capacity before any conditional production submission. No duplicate jobs, scientific changes, monitor unpause or additional cleanup occurred.
 
 The separate read-only evidence helper was corrected before first execution to keep the exact2,549,313-byte prior-parent snapshots.json/ec8fa624... inventory freshly byte/hash verified while explicitly leaving its10,001childframe references outside this CPU metadata audit. Both unchanged32MiBdownload/2GiBhash/6000file bounds and every ownCPU/nativeproof check remain. It does not claim all parent frames were newly downloaded or rehashed; the independent Pro03CPU866 audit has its own larger parent proof scope. This is presentation/proof-collection tooling, outside both sealed seven-member runtime packages. All local work was standard-library byte/AST/JSON/XML and metadata; no local numerical/model/test execution.
+
+
+### 2026-10-24 — Pro03 gradients passed but random runtime failed; all five production chains blocked
+
+Fresh read-only22:49:35Paris collection independently rehashed610compactfiles,
+source/input/proof maps and persisted same-job LSF; original live scheduler
+records have aged out. Both genuine Pro GPU startup probes passed with short-lived
+children fully exited before driver execution. Continuation29806667/callback29806668
+passed full native readiness/certificate, raw X/E derivatives, exact parent replay,
+frozen identities and empirical runtime31491.270122712012s versus82800s cap.
+
+Random29806664/callback29806665 exited1 after native-gradient/parity/nonzero-chemistry/
+exact-draw/frozen component passes. Its mandatory runtime-fit gate failed:
+353948.120387632s conservative forecast per10000-update segment versus82800s allowed.
+This is an empirical forecast, not an actual98-hour run or walltime timeout.
+Raw native X/E .01/.003/.001 sweeps all agree; do not call this failed gradients.
+The random low/high coupled and disposable-pilot JSONs were not downloaded by
+this compact failed-job traversal; authenticated driver-flow inference and two
+ten-update stdout traces are separately labeled, not independent raw-report passes
+or retrospective overall readiness. Random has no native readiness certificate.
+
+Only continuation full projection is certified. Boltzobserver29806694 and DBMol
+observer29806701 correctly exited1/failed_peer on actual random callback failure;
+both preserved exact failureSHA83149f37e1eaefe7484abf5e307621d299489b1720c87180ece120c0e0f6ef02.
+Earlier Boltz/chemistry/DBMol native passes and metadataCPU75 passes remain valid.
+Full production storage was not reached/passed, and no segment submission or
+committed production prefix exists for either30kBoltz, DBMol10k, Pro50k or Pro+40k.
+Historical failed storage proofs and successful validation-only admission gates
+remain distinct. Shared independent audit4a6539621942378797d29d1ad9fddaaaabbf9ad46bbfd2e8bc8e48d0621e29c7
+is retained with exact native/observer outcome proofs and chained campaign snapshots.
+No job/settings/results, sealed source, independent project, cleanup or paused
+monitor was changed. All local verification was standard-library bytes/metadata.

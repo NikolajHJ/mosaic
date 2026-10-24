@@ -1,0 +1,35 @@
+{
+  "status": "passed",
+  "proofs": [
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/scheduler-final-5.txt",
+      "sha256": "01a968c2d71baedb691e90748d60e8b4ddf2d87381b259b82164a6f6805b237f"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/stdout.29806667.log",
+      "sha256": "e5fed1cfb5fed8e038070f8b4a6d36401037d76068cc5272f9fcd00e27045b1b"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/submission.json",
+      "sha256": "bfdcc8f27da46cde6c312d27d16553932ad97a90be1370cfcaf52ddcafa2239a"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/assessment.json",
+      "sha256": "edd616ca16b1d7bd4882ca4f395b8a4375387cffff5f4124f5fbb071ff02e81d"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/startup-gpu.json",
+      "sha256": "ea071f30e040b58825ed153429932a5293fddcaccc8c2c45e74f1d36cbc78da6"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/startup-command-continuation-native-0000.json",
+      "sha256": "1db8adf55137cfb782a9bbd52c281cf90539217cd9974b62e5fecd2b0372a200"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/driver-invocation.json",
+      "sha256": "21f3ce5f16a96393790ecbb5468bc56e758d81d1cd686ff3f6e9eef2cfe51045"
+    }
+  ],
+  "source_manifest_sha256": "da9db6821d26b884ca1749303fc8e0b0095bd9ee7cbd1b427cdcf1b22eec6562",
+  "start": 10000
+}

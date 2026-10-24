@@ -1,0 +1,159 @@
+{
+  "acceptance_policy": "best_primal",
+  "artifact_policy": "compact",
+  "artifact_scope": "all graphs/raw gradients/scalars/RNG; logits at initial/final/probes; no persisted trunk tensors",
+  "bond_order_null_absolute_scalar_difference": 0.0,
+  "bond_order_null_comparison": "standalone primal versus standalone primal",
+  "bond_order_null_max_gradient_difference": 0.0,
+  "bond_order_null_max_output_difference": 0.0,
+  "bond_order_null_output_atol": 2e-05,
+  "bond_order_null_same_atom_and_existence_inputs": true,
+  "bond_order_null_scalar_atol": 2e-05,
+  "directions": [
+    {
+      "autodiff": 0.010231344029307365,
+      "destination": 2,
+      "field": "X",
+      "gradient_norm": 0.03449275885849529,
+      "row": 23,
+      "source": 4,
+      "sweep": [
+        {
+          "absolute_error": 5.422160029411316e-06,
+          "agrees": true,
+          "epsilon": 0.01,
+          "finite_difference": 0.010225921869277954,
+          "minus_loss": -0.1779223531484604,
+          "plus_loss": -0.17771783471107483,
+          "relative_error": 0.000529955792110959,
+          "same_sign": true
+        },
+        {
+          "absolute_error": 7.866571346912959e-07,
+          "agrees": true,
+          "epsilon": 0.003,
+          "finite_difference": 0.010232130686442057,
+          "minus_loss": -0.17785663902759552,
+          "plus_loss": -0.17779524624347687,
+          "relative_error": 7.688106796110854e-05,
+          "same_sign": true
+        },
+        {
+          "absolute_error": 2.0654872059822083e-05,
+          "agrees": true,
+          "epsilon": 0.001,
+          "finite_difference": 0.010251998901367188,
+          "minus_loss": -0.1778368353843689,
+          "plus_loss": -0.17781633138656616,
+          "relative_error": 0.0020147165697674417,
+          "same_sign": true
+        }
+      ]
+    },
+    {
+      "autodiff": 0.003454466350376606,
+      "destination": 0,
+      "field": "E_upper",
+      "gradient_norm": 0.011438291888183277,
+      "row": 130,
+      "source": 1,
+      "sweep": [
+        {
+          "absolute_error": 2.6030465960502625e-06,
+          "agrees": true,
+          "epsilon": 0.01,
+          "finite_difference": 0.0034570693969726562,
+          "minus_loss": -0.17785979807376862,
+          "plus_loss": -0.17779065668582916,
+          "relative_error": 0.0007529633620689656,
+          "same_sign": true
+        },
+        {
+          "absolute_error": 1.750420778989792e-05,
+          "agrees": true,
+          "epsilon": 0.003,
+          "finite_difference": 0.003471970558166504,
+          "minus_loss": -0.17783695459365845,
+          "plus_loss": -0.17781612277030945,
+          "relative_error": 0.0050415772532188844,
+          "same_sign": true
+        },
+        {
+          "absolute_error": 3.2405368983745575e-05,
+          "agrees": true,
+          "epsilon": 0.001,
+          "finite_difference": 0.0034868717193603516,
+          "minus_loss": -0.17783018946647644,
+          "plus_loss": -0.17782321572303772,
+          "relative_error": 0.009293536324786324,
+          "same_sign": true
+        }
+      ]
+    }
+  ],
+  "final_loss": -0.17807979881763458,
+  "final_primal_loss": -0.1780797392129898,
+  "finite_difference_policy": {
+    "absolute_tolerance": 0.002,
+    "acceptance": "same sign, relative error <= rtol, and absolute+relative tolerance; two adjacent scales",
+    "epsilons": [
+      0.01,
+      0.003,
+      0.001
+    ],
+    "minimum_tangent": 1e-07,
+    "relative_error_denominator": "max(abs(FD), abs(autodiff))",
+    "relative_tolerance": 0.15
+  },
+  "initial_loss": -0.1778266429901123,
+  "initial_primal_loss": -0.1778266429901123,
+  "policy_segments": [
+    {
+      "first_update": 1,
+      "last_update": 1,
+      "policy": "best_primal"
+    }
+  ],
+  "primal_autodiff_parity": {
+    "absolute_scalar_difference": 0.0,
+    "autodiff_loss": -0.1778266429901123,
+    "logit_interpretation": "compilation-path diagnostic; null invariance compares standalone primal with standalone primal",
+    "max_logit_difference": 0.00014019012451171875,
+    "primal_loss": -0.1778266429901123,
+    "raw_artifact": "baseline-primal.npz",
+    "scalar_atol": 2e-05
+  },
+  "primal_descent_minimum_decrease": null,
+  "primal_every_step": true,
+  "record_readouts": false,
+  "requested_updates": 1,
+  "status": "passed",
+  "updates": [
+    {
+      "acceptance_policy": "best_primal",
+      "accepted_step_size": 0.3,
+      "after": -0.17807979881763458,
+      "attempts": [
+        {
+          "loss": -0.17807979881763458,
+          "passes_strict_threshold": true,
+          "primal_loss": -0.1780797392129898,
+          "projection_residuals": {
+            "E_upper": 0.0015345813867281102,
+            "X": 0.006347425937729188
+          },
+          "step_size": 0.3
+        }
+      ],
+      "before": -0.1778266429901123,
+      "delta_E_upper": 0.003069226862862706,
+      "delta_X": 0.008172404021024704,
+      "fallback_used": false,
+      "primal_after": -0.1780797392129898,
+      "primal_before": -0.1778266429901123,
+      "primal_increased": false,
+      "selected_trial": 0,
+      "step": 0
+    }
+  ]
+}

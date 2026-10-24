@@ -1,0 +1,79 @@
+
+Job <29806667>, Job Name <mosaic-pro50k-continuation-native-0000>, User <s23481
+                          8>, Project <default>, Status <DONE>, Queue <gpul40s>
+                          , Command <bash -l /work3/s234818/mosaic/runs/2026102
+                          2-brd4-jq1-lrboost-analysis-01/protenix-extended-rele
+                          ase-03/source/scripts/hpc/extended_stage.lsf /work3/s
+                          234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis
+                          -01/protenix-extended-release-03/source /work3/s23481
+                          8/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/p
+                          rotenix-extended-03 da9db6821d26b884ca1749303fc8e0b00
+                          95bd9ee7cbd1b427cdcf1b22eec6562 native /work3/s234818
+                          /mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/pr
+                          otenix-extended-03/continuation-native-0000>, Share g
+                          roup charged </s234818>, Esub <dcc>
+Sat Oct 24 14:01:58 2026: Submitted from host <n-62-30-23>, CWD </work3/s234818
+                          /mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/pr
+                          otenix-extended-release-03/source>, Output File (over
+                          write) </work3/s234818/mosaic/runs/20261022-brd4-jq1-
+                          lrboost-analysis-01/protenix-extended-03/continuation
+                          -native-0000/stdout.29806667.log>, Error File (overwr
+                          ite) </work3/s234818/mosaic/runs/20261022-brd4-jq1-lr
+                          boost-analysis-01/protenix-extended-03/continuation-n
+                          ative-0000/stderr.29806667.log>, 4 Task(s), Requested
+                           Resources < rusage[mem=8192.00] span[hosts=1]>, Requ
+                          ested GPU <num=1:mode=exclusive_process>;
+Sat Oct 24 15:04:16 2026: Started 4 Task(s) on Host(s) <4*n-62-13-19>, Allocate
+                          d 4 Slot(s) on Host(s) <4*n-62-13-19>, Execution Home
+                           </zhome/95/e/206121>, Execution CWD </work3/s234818/
+                          mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/pro
+                          tenix-extended-release-03/source>;
+Sat Oct 24 15:11:58 2026: Done successfully. The CPU time used is 1333.0 second
+                          s.
+                          HOST: n-62-13-19; CPU_TIME: 1333 seconds
+
+ RUNLIMIT                
+ 120.0 min
+
+ MEMLIMIT
+      8 G 
+
+ MEMORY USAGE:
+ MAX MEM: 1.8 Gbytes;  AVG MEM: 1.3 Gbytes; MEM Efficiency: 5.68%
+
+ CPU USAGE:
+ CPU PEAK: 3.42 ;  CPU PEAK DURATION: 147 second(s)
+ CPU AVERAGE EFFICIENCY: 66.47% ;  CPU PEAK EFFICIENCY: 85.54%
+
+ PENDING TIME DETAILS:
+ Eligible pending time (seconds):	3738
+ Ineligible pending time (seconds):	0
+
+ SCHEDULING PARAMETERS:
+           r15s   r1m  r15m   ut      pg    io   ls    it    tmp    swp    mem
+ loadSched   -     -     -     -       -     -    -     -     -      -      -  
+ loadStop    -     -     -     -       -     -    -     -     -      -      -  
+
+ EXTERNAL MESSAGES:
+ MSG_ID FROM       POST_TIME      MESSAGE                             ATTACHMENT 
+ 0      s234818    Oct 24 15:04   GPU 0: Detected Power error: Detect     N     
+
+ RESOURCE REQUIREMENT DETAILS:
+ Job-level:  rusage[mem=8192.00] span[hosts=1]
+ App-level: -
+ Queue-level: same[type:model] affinity[core] cu[type=enclosure:maxcus=1]
+ Combined: select[(ngpus>0) && (type == local)] order[-slots:-maxslots] rusage[
+                          mem=8192.00:ngpus_physical=1.00] span[hosts=1] same[t
+                          ype:model] cu[pref=config:maxcus=1:type=enclosure] af
+                          finity[core(1)*1]
+ Effective: select[((ngpus>0)) && (type == local)] order[-slots:-maxslots] rusa
+                          ge[mem=8192.00,ngpus_physical=1.00] span[hosts=1] sam
+                          e[type:model] cu[type=enclosure:maxcus=1:pref=config]
+                           affinity[core(1)*1] 
+
+ GPU REQUIREMENT DETAILS:
+ Combined: num=1:mode=exclusive_process:mps=no:j_exclusive=yes:aff=no:gvendor=n
+                          vidia
+ Effective: num=1:mode=exclusive_process:mps=no:j_exclusive=yes:aff=no:gvendor=
+                          nvidia
+

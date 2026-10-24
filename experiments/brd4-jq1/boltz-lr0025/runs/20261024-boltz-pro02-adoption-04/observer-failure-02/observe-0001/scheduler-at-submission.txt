@@ -1,0 +1,58 @@
+
+Job <29806694>, Job Name <mosaic-peer-boltz30k-observe-0001>, User <s234818>, P
+                          roject <default>, Status <PEND>, Queue <hpc>, Command
+                           <bash -l /work3/s234818/mosaic/runs/20261022-brd4-jq
+                          1-lrboost-analysis-01/boltz-pro02-adoption-release-04
+                          /source/scripts/hpc/peer_adoption_stage.lsf /work3/s2
+                          34818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-
+                          01/boltz-pro02-adoption-release-04/source 9c8b496f65f
+                          41ed7eb76263cd947064d40fa3821a692f7276b00b4ccf70c4ced
+                           boltz30k /work3/s234818/mosaic/runs/20261022-brd4-jq
+                          1-lrboost-analysis-01/boltz-lr0025-release-03/source 
+                          /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-
+                          analysis-01/boltz-lr0025-03 c214bccf2c94ac6829996bc0c
+                          a7d6415d3c19549be4fe7f874cba2b433901cc6 /work3/s23481
+                          8/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/b
+                          oltz-pro02-adoption-04 observe /work3/s234818/mosaic/
+                          runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-pro0
+                          2-adoption-04/observe-0001>, Esub <dcc>
+Sat Oct 24 14:07:53 2026: Submitted from host <n-62-30-23>, CWD </work3/s234818
+                          /mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/bo
+                          ltz-lr0025-release-03/source>, Output File (overwrite
+                          ) </work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboo
+                          st-analysis-01/boltz-pro02-adoption-04/observe-0001/s
+                          tdout.29806694.log>, Error File (overwrite) </work3/s
+                          234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis
+                          -01/boltz-pro02-adoption-04/observe-0001/stderr.29806
+                          694.log>, 2 Task(s), Requested Resources <{select[sho
+                          rtparallel_] rusage[mem=4096.00] span[hosts=1]} || {s
+                          elect[!shortparallel_] rusage[mem=4096.00] span[hosts
+                          =1]}>, Dependency Condition <ended(29806665)&&ended(2
+                          9806668)>;
+ PENDING REASONS:
+ New job is waiting for scheduling;
+
+ RUNLIMIT                
+ 30.0 min of n-62-30-23
+
+ MEMLIMIT
+      4 G 
+
+ PENDING TIME DETAILS:
+ Eligible pending time (seconds):	0
+ Ineligible pending time (seconds):	0
+
+ SCHEDULING PARAMETERS:
+           r15s   r1m  r15m   ut      pg    io   ls    it    tmp    swp    mem
+ loadSched   -     -     -     -       -     -    -     -     -      -      -  
+ loadStop    -     -     -     -       -     -    -     -     -      -      -  
+
+ RESOURCE REQUIREMENT DETAILS:
+ Job-level: {select[shortparallel_] rusage[mem=4096.00] span[hosts=1]} || {sele
+                          ct[!shortparallel_] rusage[mem=4096.00] span[hosts=1]
+                          }
+ App-level: -
+ Queue-level: same[type:model] affinity[core] cu[type=enclosure:maxcus=1]
+ Combined: -
+ Effective: -
+

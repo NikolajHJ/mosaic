@@ -1,0 +1,18 @@
+Loaded dependency [python3/3.12.11]: sqlite3/3.50.1
+Loaded dependency [python3/3.12.11]: gcc/14.3.0-binutils-2.44
+Loaded module: python3/3.12.11
+
+Loading python3/3.12.11
+  Loading requirement: sqlite3/3.50.1 gcc/14.3.0-binutils-2.44
+Loaded module: cuda/12.9.1
+[15:11:29] Explicit valence for atom # 23 Cl, 2, is greater than permitted
+[15:11:53] Explicit valence for atom # 23 Cl, 2, is greater than permitted
+[15:11:54] Explicit valence for atom # 23 Cl, 2, is greater than permitted
+[15:11:54] Explicit valence for atom # 23 Cl, 2, is greater than permitted
+[15:11:54] Explicit valence for atom # 23 Cl, 2, is greater than permitted
+[15:11:55] Explicit valence for atom # 23 Cl, 2, is greater than permitted
+[15:11:55] Explicit valence for atom # 23 Cl, 2, is greater than permitted
+[15:11:55] Explicit valence for atom # 23 Cl, 2, is greater than permitted
+[15:11:55] Explicit valence for atom # 23 Cl, 2, is greater than permitted
+[15:11:56] Explicit valence for atom # 23 Cl, 2, is greater than permitted
+[15:11:56] Explicit valence for atom # 23 Cl, 2, is greater than permitted

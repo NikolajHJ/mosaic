@@ -1,0 +1,23 @@
+Loaded dependency [python3/3.12.11]: sqlite3/3.50.1
+Loaded dependency [python3/3.12.11]: gcc/14.3.0-binutils-2.44
+Loaded module: python3/3.12.11
+
+Loading python3/3.12.11
+  Loading requirement: sqlite3/3.50.1 gcc/14.3.0-binutils-2.44
+Traceback (most recent call last):
+  File "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source/scripts/extended_ops.py", line 536, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source/scripts/extended_ops.py", line 533, in main
+    if phase=='after-native':after_native(arm,index,a.manifest)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source/scripts/extended_ops.py", line 462, in after_native
+    proofs=final_job(producer,'gpul40s');p,a=native_assessment(arm,index,manifest)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source/scripts/extended_ops.py", line 96, in final_job
+    require(status in (['RUN'],['PEND']) and attempt<15,'Actual predecessor failed');time.sleep(2)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source/scripts/extended_ops.py", line 38, in require
+    if not ok:raise ValueError(message)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Actual predecessor failed

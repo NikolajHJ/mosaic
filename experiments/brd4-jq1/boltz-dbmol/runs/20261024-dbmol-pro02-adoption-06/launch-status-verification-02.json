@@ -1,0 +1,474 @@
+{
+  "adoption_observers": {
+    "boltz-pro02-adoption-04": {
+      "all_callbacks_terminal": true,
+      "failure": {
+        "bytes": 3037,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-pro02-adoption-04/observe-0001/failure.json",
+        "sha256": "83149f37e1eaefe7484abf5e307621d299489b1720c87180ece120c0e0f6ef02"
+      },
+      "job_id": "29806694",
+      "lsf": {
+        "bytes": 2522,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-pro02-adoption-04/observe-0001/stdout.29806694.log",
+        "sha256": "f08b83b48b7d645322beba9a144554dddffb214897173abd23718f00db575a06"
+      },
+      "pending_callback_ids": [],
+      "reason": "Actual random Pro native callback exited",
+      "status": "failed_peer"
+    },
+    "dbmol-pro02-adoption-06": {
+      "all_callbacks_terminal": true,
+      "failure": {
+        "bytes": 3037,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-pro02-adoption-06/observe-0001/failure.json",
+        "sha256": "83149f37e1eaefe7484abf5e307621d299489b1720c87180ece120c0e0f6ef02"
+      },
+      "job_id": "29806701",
+      "lsf": {
+        "bytes": 2521,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-pro02-adoption-06/observe-0001/stdout.29806701.log",
+        "sha256": "0a6ab62b1b6f8d8944f526b324edb71cf2a313ddca741607d5a840f93e9585e7"
+      },
+      "pending_callback_ids": [],
+      "reason": "Actual random Pro native callback exited",
+      "status": "failed_peer"
+    }
+  },
+  "capture_utc": "2026-10-24T20:49:35.890353+00:00",
+  "evidence": {
+    "all_extracted_bytes_match": true,
+    "collector_result": {
+      "path": "results\\hpc\\20261024-dbmol-pro02-adoption-06\\evidence-02\\result.json",
+      "sha256": "62c18e4c6bc24ddf6a9c811f4cc6f22ec253139f48df9f858d1927eb1b8c91dc"
+    },
+    "compact_files_locally_rehashed": 610,
+    "fresh_remote_large_asset_hashes_are_references_not_downloads": true,
+    "metadata": {
+      "bytes": 2106356,
+      "path": "results\\hpc\\20261024-dbmol-pro02-adoption-06\\evidence-02\\metadata.json",
+      "sha256": "2e71ccaaec55a46ef405e7d525ea032698f6fdfc438639ae4d71af9863b6db19"
+    },
+    "opaque_parent_inventory_boundary": [],
+    "raw_stdout": {
+      "bytes": 14969167,
+      "path": "results\\hpc\\20261024-dbmol-pro02-adoption-06\\evidence-02\\stdout.bin",
+      "sha256": "2059355bdeb2d8f880dd7aff1c0c9a3e433ae40807a721daf4f168973872cecc"
+    },
+    "sources": [
+      {
+        "files": 657,
+        "fresh_remote_member_hashes_match_manifest": true,
+        "manifest_sha256": "600ecc3b33135141a57c029a28a2c72f29e788e3ecf5cb2dac1761146d1d6eed",
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-release-02/source",
+        "readonly_reported_by_collector": true
+      },
+      {
+        "files": 10,
+        "fresh_remote_member_hashes_match_manifest": true,
+        "manifest_sha256": "865303de06fc0a0bdf9297857c5bbc78c6ccd9ee05177e372a51869adc599bc3",
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-storage-release-05/source",
+        "readonly_reported_by_collector": true
+      },
+      {
+        "files": 635,
+        "fresh_remote_member_hashes_match_manifest": true,
+        "manifest_sha256": "c214bccf2c94ac6829996bc0ca7d6415d3c19549be4fe7f874cba2b433901cc6",
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-release-03/source",
+        "readonly_reported_by_collector": true
+      },
+      {
+        "files": 7,
+        "fresh_remote_member_hashes_match_manifest": true,
+        "manifest_sha256": "cad7c8efa0c83a301e4c9e1183d3d279a648cf65f9c3bc3d9d69281c63d32f11",
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-pro02-adoption-release-06/source",
+        "readonly_reported_by_collector": true
+      },
+      {
+        "files": 643,
+        "fresh_remote_member_hashes_match_manifest": true,
+        "manifest_sha256": "da9db6821d26b884ca1749303fc8e0b0095bd9ee7cbd1b427cdcf1b22eec6562",
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source",
+        "readonly_reported_by_collector": true
+      }
+    ]
+  },
+  "limitations": [
+    "Opaque NPZ/checkpoint arrays were not loaded or recomputed locally; their proof references are fresh remote hashes where marked.",
+    "Random low/high coupled raw reports and disposable pilot reports were not downloaded in this failed-job compact traversal; control-flow inference is separately labeled.",
+    "Passed validation/metadata storage checks are observations, not reservations or full-production admission.",
+    "Historical source/CPU/native successes remain unchanged; this audit does not waive any runtime, scientific, or quota gate."
+  ],
+  "live_scheduler_history": {
+    "all_requested_records": "aged_out_exact_not_found",
+    "invented_terminal_states": false,
+    "terminal_authority": "Actual persisted same-job LSF plus authenticated source/submission/scientific metadata"
+  },
+  "production": {
+    "all_five_optimizers_started": false,
+    "current_root_observations": {
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02": {
+        "actual_jobs": {
+          "after-cpu-05": "29805916",
+          "cpu-05": "29805915",
+          "pilot-after-native-0000": "29805981",
+          "pilot-native-0000": "29805980"
+        },
+        "committed_production_prefixes": {},
+        "segment_submissions": 0
+      },
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03": {
+        "actual_jobs": {
+          "after-cpu": "29805914",
+          "boltz2-after-native-0000": "29805951",
+          "boltz2-native-0000": "29805950",
+          "boltz2_chemistry-after-native-0000": "29805959",
+          "boltz2_chemistry-native-0000": "29805958",
+          "cpu": "29805913"
+        },
+        "committed_production_prefixes": {},
+        "segment_submissions": 0
+      },
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-pro02-adoption-04": {
+        "actual_jobs": {
+          "after-cpu": "29806691",
+          "cpu": "29806690",
+          "observe-0001": "29806694"
+        },
+        "committed_production_prefixes": {},
+        "segment_submissions": 0
+      },
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-pro02-adoption-06": {
+        "actual_jobs": {
+          "after-cpu": "29806698",
+          "cpu": "29806697",
+          "observe-0001": "29806701"
+        },
+        "committed_production_prefixes": {},
+        "segment_submissions": 0
+      },
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03": {
+        "actual_jobs": {
+          "after-cpu": "29806661",
+          "continuation-after-native-0000": "29806668",
+          "continuation-native-0000": "29806667",
+          "cpu": "29806660",
+          "random-after-native-0000": "29806665",
+          "random-native-0000": "29806664"
+        },
+        "committed_production_prefixes": {},
+        "segment_submissions": 0
+      }
+    },
+    "full_production_storage_gate": "not_reached_or_established",
+    "protenix_storage_gates": [
+      {
+        "available_bytes_conservative": 42504904933,
+        "file_reserve": 100000,
+        "full_long_admission": false,
+        "phase": "native-dispatch",
+        "proof": {
+          "bytes": 6139,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/after-cpu/storage-native-dispatch/gate.json",
+          "sha256": "cd9073ae56b49e451fec62a01a5ea701b4b3cda48b91af31f34958d9f623d751"
+        },
+        "required_bytes": 41643669252,
+        "reserve_bytes": 4294967296,
+        "status": "passed"
+      },
+      {
+        "available_bytes_conservative": 42503544764,
+        "file_reserve": 100000,
+        "full_long_admission": false,
+        "phase": "entry",
+        "proof": {
+          "bytes": 6149,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/storage-entry/gate.json",
+          "sha256": "5f5a5ef93a1ea62ce7cfdd1d31a0607b7902f353cb6c452400b1a05f6e10d067"
+        },
+        "required_bytes": 41642614396,
+        "reserve_bytes": 4294967296,
+        "status": "passed"
+      },
+      {
+        "available_bytes_conservative": 42505285132,
+        "file_reserve": 100000,
+        "full_long_admission": false,
+        "phase": "preflight",
+        "proof": {
+          "bytes": 6133,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/cpu-recovery-03/storage-preflight/gate.json",
+          "sha256": "c8b972a2c89097f2c0eeac4e77dd6ae4224994c49a494dc7e9293dd3bedf3f3d"
+        },
+        "required_bytes": 41643669252,
+        "reserve_bytes": 4294967296,
+        "status": "passed"
+      },
+      {
+        "available_bytes_conservative": 43579000712,
+        "file_reserve": 100000,
+        "full_long_admission": false,
+        "phase": "cpu-entry",
+        "proof": {
+          "bytes": 6133,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/cpu/storage-cpu-entry/gate.json",
+          "sha256": "8d67f65aa10119c1507a67073ff97668e7e979e1ed042baf0112d7f206cf4430"
+        },
+        "required_bytes": 41643669252,
+        "reserve_bytes": 4294967296,
+        "status": "passed"
+      },
+      {
+        "available_bytes_conservative": 42503807010,
+        "file_reserve": 100000,
+        "full_long_admission": false,
+        "phase": "entry",
+        "proof": {
+          "bytes": 6148,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/random-native-0000/storage-entry/gate.json",
+          "sha256": "fca64c64420006c7120ccae3f8f07359bd6f49b6893f0b5c3d5ea7f14bf4bd00"
+        },
+        "required_bytes": 41642876642,
+        "reserve_bytes": 4294967296,
+        "status": "passed"
+      },
+      {
+        "available_bytes_conservative": 27472908456,
+        "file_reserve": 100000,
+        "full_long_admission": false,
+        "phase": "preflight",
+        "proof": {
+          "bytes": 6133,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/staging-01/storage-preflight/gate.json",
+          "sha256": "6d1d0fae516de98615b83ebc005ab2330dd2146c08ef631f1bd5c3d28593a951"
+        },
+        "required_bytes": 41643669252,
+        "reserve_bytes": 4294967296,
+        "status": "failed"
+      }
+    ],
+    "reason": "Random Pro native acceptance/projection failed; continuation alone supplied a projection. Both adoption observers rejected the actual failed random callback. No production dispatch or segment exists.",
+    "scientific_campaign_success_claimed": false,
+    "total_segment_submissions": 0,
+    "validation_and_metadata_storage_gates_are_not_full_admission": true
+  },
+  "protenix": {
+    "continuation": {
+      "assessment": {
+        "bytes": 22361,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/assessment.json",
+        "sha256": "edd616ca16b1d7bd4882ca4f395b8a4375387cffff5f4124f5fbb071ff02e81d"
+      },
+      "assessment_proof_counts": {
+        "fresh_remote_opaque_references": 57,
+        "locally_rehashed_compact_files": 17
+      },
+      "callback_job": "29806668",
+      "certificate": {
+        "bytes": 1882,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000-certificate.json",
+        "sha256": "23eabefd3c08eb65c1395090bb4ab4683d282083b76ceb444b25f84356ed9169"
+      },
+      "certificate_proof_counts": {
+        "fresh_remote_opaque_references": 0,
+        "locally_rehashed_compact_files": 7
+      },
+      "chemical_gate": "not_applicable_scorer_only",
+      "exact_parent_snapshot": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-protenix/payload/study/case-0/snapshots/step-10000.npz",
+      "frozen_identity_after": {
+        "context_digest": "b28dfad8e5ede565071c70a61695f6a38f5cb6bd591705e32979e59050ff5ce4",
+        "model_digest": "8d6926d5390fe682e193089f790ce53aa4011a6d5509ddb452a55db3d89b0ab2"
+      },
+      "native_job": "29806667",
+      "overall_native_readiness": "passed",
+      "parent_snapshot_sha256": "edf15f06ba1b6591d62cbc3e04e19ecd93b553a0627da38c370fdeed3c1b780f",
+      "production_started": false,
+      "runtime_gate": {
+        "allocation_seconds": 82800,
+        "conservative_projected_seconds": 31491.270122712012,
+        "mean_update_seconds": [
+          1.9794180081808008
+        ],
+        "scope": "empirical pilots, not a worst-case guarantee",
+        "status": "passed"
+      },
+      "summary": {
+        "bytes": 86903,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/summary.json",
+        "sha256": "43891d4647a80e18a6d8facf44dc7f8278d9a1d25daf71f2eeb94cdd09c47b7f"
+      }
+    },
+    "gpu_startup": {
+      "continuation": {
+        "child_fully_exited_before_driver": true,
+        "job_id": "29806667",
+        "native_readiness_claimed_by_startup": false,
+        "optimizer_updates": 0,
+        "proof_counts": {
+          "fresh_remote_opaque_references": 3,
+          "locally_rehashed_compact_files": 9
+        },
+        "receipt": {
+          "bytes": 179179,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/startup-gpu.json",
+          "sha256": "ea071f30e040b58825ed153429932a5293fddcaccc8c2c45e74f1d36cbc78da6"
+        },
+        "same_actual_scientific_arguments_except_disposable_output": true,
+        "startup_only_passed": true
+      },
+      "random": {
+        "child_fully_exited_before_driver": true,
+        "job_id": "29806664",
+        "native_readiness_claimed_by_startup": false,
+        "optimizer_updates": 0,
+        "proof_counts": {
+          "fresh_remote_opaque_references": 2,
+          "locally_rehashed_compact_files": 9
+        },
+        "receipt": {
+          "bytes": 178684,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/random-native-0000/startup-gpu.json",
+          "sha256": "3afd6a377b2e0462d792cebe443b4371c9a1c093bd3b3f889c4d983a1139f29f"
+        },
+        "same_actual_scientific_arguments_except_disposable_output": true,
+        "startup_only_passed": true
+      }
+    },
+    "persisted_lsf": {
+      "continuation-after-native-0000": {
+        "exit_code": 0,
+        "job_id": "29806668",
+        "lsf": {
+          "bytes": 2361,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-after-native-0000/stdout.29806668.log",
+          "sha256": "9bfc3118fdf59e3164e9de95eb4d6e0fb09fcdca0a226778c224b9b1ca47a73c"
+        },
+        "queue": "hpc",
+        "status_from_persisted_same_job_lsf": "DONE",
+        "submission": {
+          "bytes": 1382,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-after-native-0000/submission.json",
+          "sha256": "001a2bc94146ee47de8ad09b560c498d0e3e9acad0ea39959e270dcd5e489b22"
+        }
+      },
+      "continuation-native-0000": {
+        "exit_code": 0,
+        "job_id": "29806667",
+        "lsf": {
+          "bytes": 3572,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/stdout.29806667.log",
+          "sha256": "e5fed1cfb5fed8e038070f8b4a6d36401037d76068cc5272f9fcd00e27045b1b"
+        },
+        "queue": "gpul40s",
+        "status_from_persisted_same_job_lsf": "DONE",
+        "submission": {
+          "bytes": 1356,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/submission.json",
+          "sha256": "bfdcc8f27da46cde6c312d27d16553932ad97a90be1370cfcaf52ddcafa2239a"
+        }
+      },
+      "random-after-native-0000": {
+        "exit_code": 1,
+        "job_id": "29806665",
+        "lsf": {
+          "bytes": 2320,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/random-after-native-0000/stdout.29806665.log",
+          "sha256": "09a63bb6cd921b6d77b70a4acdc6e7a5d92f8daf044b977b5b72d81cce254f44"
+        },
+        "queue": "hpc",
+        "status_from_persisted_same_job_lsf": "EXIT",
+        "submission": {
+          "bytes": 1358,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/random-after-native-0000/submission.json",
+          "sha256": "af7eb1b37b3b72f339a6394dc294c992369d960bc0002ad11c076220eae59aa4"
+        }
+      },
+      "random-native-0000": {
+        "exit_code": 1,
+        "job_id": "29806664",
+        "lsf": {
+          "bytes": 4753,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/random-native-0000/stdout.29806664.log",
+          "sha256": "84e13bea50c374a82a23f402fcd0885cf8a6cbe4a4bf0d287ce57e4426fd16de"
+        },
+        "queue": "gpul40s",
+        "status_from_persisted_same_job_lsf": "EXIT",
+        "submission": {
+          "bytes": 1430,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/random-native-0000/submission.json",
+          "sha256": "946095393a40dd894f21965c54d125ec60924475881876d8606b0d8391ff3007"
+        }
+      }
+    },
+    "projection": {
+      "continuation": {
+        "unit_bytes": 23182
+      }
+    },
+    "random": {
+      "all_six_raw_sweeps_agree_in_summary": true,
+      "assessment_present": false,
+      "callback_job": "29806665",
+      "can_be_called_failed_gradients": false,
+      "chemistry_assay": {
+        "gradient_norm": 0.1148901954293251,
+        "loss": 3.620206832885742,
+        "status": "passed"
+      },
+      "coupled_and_pilot_scope": {
+        "driver_path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source/examples/brd4_25_atoms.py",
+        "driver_sha256": "42dcef6c7ab5d5f4d11aca844d0e2bbb0cd5f7101955695652211cfd0224442f",
+        "raw_low_high_coupled_json_downloaded": false,
+        "raw_pilot_reports_downloaded": false,
+        "source_control_flow_inference": "The authenticated unchanged driver runs both required low/high combined direction checks and both ten-update pilots, verifies passed status/count/rates, before reaching this runtime rejection. Their raw reports were not included in this compact failed-job proofwalk; no independent raw-report pass or retrospective overall readiness pass is asserted.",
+        "two_ten_update_pilots_observed_in_same_job_stdout": true
+      },
+      "error": "RuntimeError: 10,000-update allocation-fit gate failed",
+      "exact_boundary_replay": "passed",
+      "frozen_identity_after": {
+        "context_digest": "b28dfad8e5ede565071c70a61695f6a38f5cb6bd591705e32979e59050ff5ce4",
+        "model_digest": "8d6926d5390fe682e193089f790ce53aa4011a6d5509ddb452a55db3d89b0ab2"
+      },
+      "gradient_status_reported": "passed",
+      "hard_parity_status": "passed",
+      "native_certificate_present": false,
+      "native_job": "29806664",
+      "overall_status": "failed_runtime_gate",
+      "random_initialization": {
+        "draws_replayed_exactly": true,
+        "model_key": 17,
+        "recipe": {
+          "concentration": 1.0,
+          "kind": "dirichlet",
+          "seed": 17
+        },
+        "scope": "Separate deterministic PCG64 recipe; native model key unchanged",
+        "status": "passed"
+      },
+      "raw_X_and_E_epsilons": [
+        0.01,
+        0.003,
+        0.001
+      ],
+      "runtime_gate": {
+        "allocation_seconds": 82800,
+        "conservative_projected_seconds": 353948.120387632,
+        "mean_update_seconds": [
+          23.476541359175464,
+          4.4065382172120735
+        ],
+        "scope": "empirical pilots, not a worst-case guarantee",
+        "status": "failed"
+      },
+      "summary": {
+        "bytes": 87210,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/random-native-0000/payload/study/summary.json",
+        "sha256": "09521638a6c5dafdc713a8b414055bdd20c8cd132b074a31bc2a3de62fd2b509"
+      }
+    }
+  },
+  "scope": "Local standard-library JSON/byte/hash/source-control-flow/LSF review only; no SSH, scientific arrays, numerical evaluation, tests, jobs, or mutation of scientific artifacts. This file is a new local audit receipt.",
+  "status": "verified_status_with_random_native_runtime_failure_preserved",
+  "verified_utc": "2026-10-24T20:54:48.271226+00:00",
+  "version": "independent-launch-status-byte-schema-audit-v1"
+}

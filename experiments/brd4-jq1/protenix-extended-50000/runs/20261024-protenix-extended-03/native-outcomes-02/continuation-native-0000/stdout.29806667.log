@@ -1,0 +1,55 @@
+Authenticated 643 immutable source files
+accepted update 1/1: loss=-0.178079799; fallback=False
+update 1/10: contact=-0.17783037, refreshed_surrogate=-0.17783037, next_repair_weight=0, fallback=False, no_op=False
+update 2/10: contact=-0.17783412, refreshed_surrogate=-0.17783412, next_repair_weight=0, fallback=False, no_op=False
+update 3/10: contact=-0.17783791, refreshed_surrogate=-0.17783791, next_repair_weight=0, fallback=False, no_op=False
+update 4/10: contact=-0.17784166, refreshed_surrogate=-0.17784166, next_repair_weight=0, fallback=False, no_op=False
+update 5/10: contact=-0.17784543, refreshed_surrogate=-0.17784543, next_repair_weight=0, fallback=False, no_op=False
+update 6/10: contact=-0.17784905, refreshed_surrogate=-0.17784905, next_repair_weight=0, fallback=False, no_op=False
+update 7/10: contact=-0.17785279, refreshed_surrogate=-0.17785279, next_repair_weight=0, fallback=False, no_op=False
+update 8/10: contact=-0.17785655, refreshed_surrogate=-0.17785655, next_repair_weight=0, fallback=False, no_op=False
+update 9/10: contact=-0.17786023, refreshed_surrogate=-0.17786023, next_repair_weight=0, fallback=False, no_op=False
+update 10/10: contact=-0.17786407, refreshed_surrogate=-0.17786407, next_repair_weight=0, fallback=False, no_op=False
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@hpc.dtu.dk>
+Subject: Job 29806667: <mosaic-pro50k-continuation-native-0000> in cluster <dcc> Done
+
+Job <mosaic-pro50k-continuation-native-0000> was submitted from host <n-62-30-23> by user <s234818> in cluster <dcc> at Sat Oct 24 14:01:58 2026
+Job was executed on host(s) <4*n-62-13-19>, in queue <gpul40s>, as user <s234818> in cluster <dcc> at Sat Oct 24 15:04:16 2026
+</zhome/95/e/206121> was used as the home directory.
+</work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source> was used as the working directory.
+Started at Sat Oct 24 15:04:16 2026
+Terminated at Sat Oct 24 15:11:58 2026
+Results reported at Sat Oct 24 15:11:58 2026
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+bash -l /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source/scripts/hpc/extended_stage.lsf /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03 da9db6821d26b884ca1749303fc8e0b0095bd9ee7cbd1b427cdcf1b22eec6562 native /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   1333.00 sec.
+    Max Memory :                                 1861 MB
+    Average Memory :                             1338.40 MB
+    Total Requested Memory :                     32768.00 MB
+    Delta Memory :                               30907.00 MB
+    Max Swap :                                   -
+    Max Processes :                              7
+    Max Threads :                                53
+    Run time :                                   462 sec.
+    Turnaround time :                            4200 sec.
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file </work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/stderr.29806667.log> for stderr output of this job.
+

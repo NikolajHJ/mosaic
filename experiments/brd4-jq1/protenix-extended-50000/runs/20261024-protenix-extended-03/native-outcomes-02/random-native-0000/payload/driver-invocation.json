@@ -1,0 +1,29 @@
+{
+  "args": [
+    "/work3/s234818/mosaic/envs/protenix-tiny/bin/python",
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source/examples/brd4_25_atoms.py",
+    "--mode",
+    "validate",
+    "--config",
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source/examples/configs/extended_random.json",
+    "--output",
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/random-native-0000/payload/study",
+    "--manifest",
+    "da9db6821d26b884ca1749303fc8e0b0095bd9ee7cbd1b427cdcf1b22eec6562",
+    "--cpu-certificate",
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/cpu-certificate.json",
+    "--cpu-certificate-sha256",
+    "ab3148ea6dd8d25361f85e9d8283578e0cf4429844d820a4dab6b03673ef577b",
+    "--reference",
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/cpu/payload/composition_reference.json",
+    "--pocket",
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/cpu/payload/pocket_definition.json",
+    "--pocket-sha256",
+    "9376c715eaf5b48689fb3e995b00d7820601a7776970df66bd7e7cff3b13ee43",
+    "--offset",
+    "0",
+    "--segment-steps",
+    "10000"
+  ],
+  "original_saved_runs_read_only": true
+}

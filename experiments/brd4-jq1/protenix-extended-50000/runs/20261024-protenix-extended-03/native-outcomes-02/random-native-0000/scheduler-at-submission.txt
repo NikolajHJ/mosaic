@@ -1,0 +1,49 @@
+
+Job <29806664>, Job Name <mosaic-pro50k-random-native-0000>, User <s234818>, Pr
+                          oject <default>, Status <PEND>, Queue <gpul40s>, Comm
+                          and <bash -l /work3/s234818/mosaic/runs/20261022-brd4
+                          -jq1-lrboost-analysis-01/protenix-extended-release-03
+                          /source/scripts/hpc/extended_stage.lsf /work3/s234818
+                          /mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/pr
+                          otenix-extended-release-03/source /work3/s234818/mosa
+                          ic/runs/20261022-brd4-jq1-lrboost-analysis-01/proteni
+                          x-extended-03 da9db6821d26b884ca1749303fc8e0b0095bd9e
+                          e7cbd1b427cdcf1b22eec6562 native /work3/s234818/mosai
+                          c/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix
+                          -extended-03/random-native-0000>, Esub <dcc>
+Sat Oct 24 14:01:12 2026: Submitted from host <n-62-30-23>, CWD </work3/s234818
+                          /mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/pr
+                          otenix-extended-release-03/source>, Output File (over
+                          write) </work3/s234818/mosaic/runs/20261022-brd4-jq1-
+                          lrboost-analysis-01/protenix-extended-03/random-nativ
+                          e-0000/stdout.29806664.log>, Error File (overwrite) <
+                          /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-
+                          analysis-01/protenix-extended-03/random-native-0000/s
+                          tderr.29806664.log>, 4 Task(s), Requested Resources <
+                           rusage[mem=8192.00] span[hosts=1]>, Requested GPU <n
+                          um=1:mode=exclusive_process>;
+ PENDING REASONS:
+ New job is waiting for scheduling;
+
+ RUNLIMIT                
+ 120.0 min of n-62-30-23
+
+ MEMLIMIT
+      8 G 
+
+ PENDING TIME DETAILS:
+ Eligible pending time (seconds):	0
+ Ineligible pending time (seconds):	0
+
+ SCHEDULING PARAMETERS:
+           r15s   r1m  r15m   ut      pg    io   ls    it    tmp    swp    mem
+ loadSched   -     -     -     -       -     -    -     -     -      -      -  
+ loadStop    -     -     -     -       -     -    -     -     -      -      -  
+
+ RESOURCE REQUIREMENT DETAILS:
+ Job-level:  rusage[mem=8192.00] span[hosts=1]
+ App-level: -
+ Queue-level: same[type:model] affinity[core] cu[type=enclosure:maxcus=1]
+ Combined: -
+ Effective: -
+

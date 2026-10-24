@@ -1,0 +1,471 @@
+{
+  "atom_names": [
+    "Q000",
+    "Q001",
+    "Q002",
+    "Q003",
+    "Q004",
+    "Q005",
+    "Q006",
+    "Q007",
+    "Q008",
+    "Q009",
+    "Q010",
+    "Q011",
+    "Q012",
+    "Q013",
+    "Q014",
+    "Q015",
+    "Q016",
+    "Q017",
+    "Q018",
+    "Q019",
+    "Q020",
+    "Q021",
+    "Q022",
+    "Q023",
+    "Q024"
+  ],
+  "base_features": {
+    "dict": {
+      "asym_id": {
+        "array": "a_00000"
+      },
+      "atom_to_tokatom_idx": {
+        "array": "a_00001"
+      },
+      "atom_to_token_idx": {
+        "array": "a_00002"
+      },
+      "bond_mask": {
+        "array": "a_00003"
+      },
+      "deletion_mean": {
+        "array": "a_00004"
+      },
+      "deletion_value": {
+        "array": "a_00005"
+      },
+      "distogram_rep_atom_mask": {
+        "array": "a_00006"
+      },
+      "entity_id": {
+        "array": "a_00007"
+      },
+      "entity_mol_id": {
+        "array": "a_00008"
+      },
+      "frame_atom_index": {
+        "array": "a_00009"
+      },
+      "has_deletion": {
+        "array": "a_00010"
+      },
+      "has_frame": {
+        "array": "a_00011"
+      },
+      "is_dna": {
+        "array": "a_00012"
+      },
+      "is_ligand": {
+        "array": "a_00013"
+      },
+      "is_protein": {
+        "array": "a_00014"
+      },
+      "is_rna": {
+        "array": "a_00015"
+      },
+      "modified_res_mask": {
+        "array": "a_00016"
+      },
+      "mol_atom_index": {
+        "array": "a_00017"
+      },
+      "mol_id": {
+        "array": "a_00018"
+      },
+      "msa": {
+        "array": "a_00019"
+      },
+      "pae_rep_atom_mask": {
+        "array": "a_00020"
+      },
+      "plddt_m_rep_atom_mask": {
+        "array": "a_00021"
+      },
+      "profile": {
+        "array": "a_00022"
+      },
+      "ref_atom_name_chars": {
+        "array": "a_00023"
+      },
+      "ref_charge": {
+        "array": "a_00024"
+      },
+      "ref_element": {
+        "array": "a_00025"
+      },
+      "ref_mask": {
+        "array": "a_00026"
+      },
+      "ref_pos": {
+        "array": "a_00027"
+      },
+      "ref_space_uid": {
+        "array": "a_00028"
+      },
+      "residue_index": {
+        "array": "a_00029"
+      },
+      "resolution": {
+        "array": "a_00030"
+      },
+      "restype": {
+        "array": "a_00031"
+      },
+      "sym_id": {
+        "array": "a_00032"
+      },
+      "token_bonds": {
+        "array": "a_00033"
+      },
+      "token_index": {
+        "array": "a_00034"
+      }
+    }
+  },
+  "contract": {
+    "bonds": [
+      "NO_BOND",
+      "SINGLE",
+      "DOUBLE",
+      "TRIPLE",
+      "AROMATIC"
+    ],
+    "checkpoint_version": 1,
+    "elements": [
+      "C",
+      "N",
+      "O",
+      "S",
+      "F",
+      "Cl"
+    ],
+    "feature_loss": "bond existence only; no bond-order, hydrogen, stereo or ligand geometry channels",
+    "formal_charge": 0,
+    "geometry_mode": "off",
+    "occupancy": "all ligand heavy-atom slots occupied",
+    "pair_order": "lexicographic i<j",
+    "version": "small_molecule_v0.1"
+  },
+  "geometry_mode": "off",
+  "identities": {
+    "asset_paths_sha256": "47dddd9992e19faf8678edada2f1fd9ba1647d8a1a1e9c6f9ca316d731a60c53",
+    "asset_revision": "81a257b61a82a17c41a7c20638460c04c29d97ad",
+    "base_features_sha256": "bd177fc216c5af8380f7272a20c8c11c222e3358fd003c50f48a1598822d4272",
+    "hook_version": "mosaic-protenij-reference-geometry-v1",
+    "input_sha256": "ecc62b2d5b6722d887a9af0663b56566c333edcf387da703cbc18bf5bf958371",
+    "model_alias": "protenix_tiny_default_v0.5.0",
+    "native_features_sha256": "25bc97431236d4c4c21713aa96d0bd75e43f8d58f10b48f34b9f6a606896cfda",
+    "native_precast_features_sha256": "88957892dc5c13a93605bf1e7ade5ebcfd309b459e6363779fd8a4ff219b0c0d",
+    "pocket_definition_sha256": "9376c715eaf5b48689fb3e995b00d7820601a7776970df66bd7e7cff3b13ee43",
+    "protein_sequence": "SMNPPPPETSNPNKPKRQTNQLQYLLRVVLKTLWKHQFAWPFQQPVDAVKLNLPDYYKIIKTPMDMGTIKKRLENNYYWNAQECIQDFNTMFTNCYIYNKPGDDIVLMAEALEKLFLQKINELPTEE",
+    "upstream_revision": "97cf8172f61829681582f06de7052485bc94eae4"
+  },
+  "ligand_atom_indices": [
+    1062,
+    1063,
+    1064,
+    1065,
+    1066,
+    1067,
+    1068,
+    1069,
+    1070,
+    1071,
+    1072,
+    1073,
+    1074,
+    1075,
+    1076,
+    1077,
+    1078,
+    1079,
+    1080,
+    1081,
+    1082,
+    1083,
+    1084,
+    1085,
+    1086
+  ],
+  "ligand_token_indices": [
+    127,
+    128,
+    129,
+    130,
+    131,
+    132,
+    133,
+    134,
+    135,
+    136,
+    137,
+    138,
+    139,
+    140,
+    141,
+    142,
+    143,
+    144,
+    145,
+    146,
+    147,
+    148,
+    149,
+    150,
+    151
+  ],
+  "native_features": {
+    "dict": {
+      "asym_id": {
+        "array": "a_00035"
+      },
+      "atom_to_tokatom_idx": {
+        "array": "a_00036"
+      },
+      "atom_to_token_idx": {
+        "array": "a_00037"
+      },
+      "bond_mask": {
+        "array": "a_00038"
+      },
+      "deletion_mean": {
+        "array": "a_00039"
+      },
+      "deletion_value": {
+        "array": "a_00040"
+      },
+      "distogram_rep_atom_mask": {
+        "array": "a_00041"
+      },
+      "entity_id": {
+        "array": "a_00042"
+      },
+      "entity_mol_id": {
+        "array": "a_00043"
+      },
+      "frame_atom_index": {
+        "array": "a_00044"
+      },
+      "has_deletion": {
+        "array": "a_00045"
+      },
+      "has_frame": {
+        "array": "a_00046"
+      },
+      "is_dna": {
+        "array": "a_00047"
+      },
+      "is_ligand": {
+        "array": "a_00048"
+      },
+      "is_protein": {
+        "array": "a_00049"
+      },
+      "is_rna": {
+        "array": "a_00050"
+      },
+      "modified_res_mask": {
+        "array": "a_00051"
+      },
+      "mol_atom_index": {
+        "array": "a_00052"
+      },
+      "mol_id": {
+        "array": "a_00053"
+      },
+      "msa": {
+        "array": "a_00054"
+      },
+      "pae_rep_atom_mask": {
+        "array": "a_00055"
+      },
+      "plddt_m_rep_atom_mask": {
+        "array": "a_00056"
+      },
+      "profile": {
+        "array": "a_00057"
+      },
+      "ref_atom_name_chars": {
+        "array": "a_00058"
+      },
+      "ref_charge": {
+        "array": "a_00059"
+      },
+      "ref_element": {
+        "array": "a_00060"
+      },
+      "ref_mask": {
+        "array": "a_00061"
+      },
+      "ref_pos": {
+        "array": "a_00062"
+      },
+      "ref_space_uid": {
+        "array": "a_00063"
+      },
+      "residue_index": {
+        "array": "a_00064"
+      },
+      "resolution": {
+        "array": "a_00065"
+      },
+      "restype": {
+        "array": "a_00066"
+      },
+      "sym_id": {
+        "array": "a_00067"
+      },
+      "token_bonds": {
+        "array": "a_00068"
+      },
+      "token_index": {
+        "array": "a_00069"
+      }
+    }
+  },
+  "protein_token_indices": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    58,
+    59,
+    60,
+    61,
+    62,
+    63,
+    64,
+    65,
+    66,
+    67,
+    68,
+    69,
+    70,
+    71,
+    72,
+    73,
+    74,
+    75,
+    76,
+    77,
+    78,
+    79,
+    80,
+    81,
+    82,
+    83,
+    84,
+    85,
+    86,
+    87,
+    88,
+    89,
+    90,
+    91,
+    92,
+    93,
+    94,
+    95,
+    96,
+    97,
+    98,
+    99,
+    100,
+    101,
+    102,
+    103,
+    104,
+    105,
+    106,
+    107,
+    108,
+    109,
+    110,
+    111,
+    112,
+    113,
+    114,
+    115,
+    116,
+    117,
+    118,
+    119,
+    120,
+    121,
+    122,
+    123,
+    124,
+    125,
+    126
+  ],
+  "reference_geometry_mask": {
+    "array": "a_00070"
+  }
+}

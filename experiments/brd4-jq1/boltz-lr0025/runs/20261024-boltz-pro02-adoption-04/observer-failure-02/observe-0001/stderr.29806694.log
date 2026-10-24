@@ -1,0 +1,17 @@
+Loaded dependency [python3/3.12.11]: sqlite3/3.50.1
+Loaded dependency [python3/3.12.11]: gcc/14.3.0-binutils-2.44
+Loaded module: python3/3.12.11
+
+Loading python3/3.12.11
+  Loading requirement: sqlite3/3.50.1 gcc/14.3.0-binutils-2.44
+Traceback (most recent call last):
+  File "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-pro02-adoption-release-04/source/scripts/adoption_ops.py", line 636, in <module>
+    main()
+  File "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-pro02-adoption-release-04/source/scripts/adoption_ops.py", line 619, in main
+    dispatch(args.profile, args.parent, args.launcher_manifest, op=op)
+  File "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-pro02-adoption-release-04/source/scripts/adoption_ops.py", line 537, in dispatch
+    if not cert.exists() and not adopt(profile, parent, launcher_manifest, op):
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-pro02-adoption-release-04/source/scripts/adoption_ops.py", line 492, in adopt
+    raise ValueError('An actual peer native callback failed; no adoption or production')
+ValueError: An actual peer native callback failed; no adoption or production

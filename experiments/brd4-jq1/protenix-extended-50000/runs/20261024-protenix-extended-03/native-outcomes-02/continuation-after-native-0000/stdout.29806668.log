@@ -1,0 +1,44 @@
+Authenticated 643 immutable source files
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@hpc.dtu.dk>
+Subject: Job 29806668: <mosaic-pro50k-continuation-after-native-0000> in cluster <dcc> Done
+
+Job <mosaic-pro50k-continuation-after-native-0000> was submitted from host <n-62-30-23> by user <s234818> in cluster <dcc> at Sat Oct 24 14:01:59 2026
+Job was executed on host(s) <2*n-62-30-23>, in queue <hpc>, as user <s234818> in cluster <dcc> at Sat Oct 24 15:11:59 2026
+</zhome/95/e/206121> was used as the home directory.
+</work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source> was used as the working directory.
+Started at Sat Oct 24 15:11:59 2026
+Terminated at Sat Oct 24 15:12:12 2026
+Results reported at Sat Oct 24 15:12:12 2026
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+bash -l /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source/scripts/hpc/extended_stage.lsf /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03 da9db6821d26b884ca1749303fc8e0b0095bd9ee7cbd1b427cdcf1b22eec6562 after-native /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-after-native-0000
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   2.34 sec.
+    Max Memory :                                 20 MB
+    Average Memory :                             20.00 MB
+    Total Requested Memory :                     8192.00 MB
+    Delta Memory :                               8172.00 MB
+    Max Swap :                                   -
+    Max Processes :                              4
+    Max Threads :                                5
+    Run time :                                   13 sec.
+    Turnaround time :                            4213 sec.
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file </work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-after-native-0000/stderr.29806668.log> for stderr output of this job.
+

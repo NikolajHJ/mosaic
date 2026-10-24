@@ -1,0 +1,78 @@
+{
+  "contact_objective_identity": {
+    "coefficient": 1.0,
+    "context_digest": "b28dfad8e5ede565071c70a61695f6a38f5cb6bd591705e32979e59050ff5ce4",
+    "diffusion_gradient": false,
+    "model_digest": "8d6926d5390fe682e193089f790ce53aa4011a6d5509ddb452a55db3d89b0ab2",
+    "n_atoms": 25,
+    "native_name": "contact",
+    "pocket_definition_sha256": "9376c715eaf5b48689fb3e995b00d7820601a7776970df66bd7e7cff3b13ee43",
+    "scope": "JQ1 pocket-restricted contact, geometry-off"
+  },
+  "directions": [
+    {
+      "analytic": 0.0008852150640450418,
+      "destination": 3,
+      "field": "atoms",
+      "probes": [
+        {
+          "agrees": true,
+          "analytic": 0.0008852150640450418,
+          "epsilon": 0.01,
+          "finite_difference": 0.0008866190910339355,
+          "preparation_identity": "51221365c2c35749fde3441e532b2f14907183cbac8ab2f9a99369d9f574f542"
+        },
+        {
+          "agrees": true,
+          "analytic": 0.0008852150640450418,
+          "epsilon": 0.003,
+          "finite_difference": 0.0008642673492431641,
+          "preparation_identity": "51221365c2c35749fde3441e532b2f14907183cbac8ab2f9a99369d9f574f542"
+        },
+        {
+          "agrees": true,
+          "analytic": 0.0008852150640450418,
+          "epsilon": 0.001,
+          "finite_difference": 0.0009387731552124023,
+          "preparation_identity": "51221365c2c35749fde3441e532b2f14907183cbac8ab2f9a99369d9f574f542"
+        }
+      ],
+      "row": 9,
+      "source": 1
+    },
+    {
+      "analytic": 0.0009363461285829544,
+      "destination": 0,
+      "field": "bonds",
+      "probes": [
+        {
+          "agrees": true,
+          "analytic": 0.0009363461285829544,
+          "epsilon": 0.01,
+          "finite_difference": 0.0009492039680480957,
+          "preparation_identity": "51221365c2c35749fde3441e532b2f14907183cbac8ab2f9a99369d9f574f542"
+        },
+        {
+          "agrees": true,
+          "analytic": 0.0009363461285829544,
+          "epsilon": 0.003,
+          "finite_difference": 0.0009412566820780436,
+          "preparation_identity": "51221365c2c35749fde3441e532b2f14907183cbac8ab2f9a99369d9f574f542"
+        },
+        {
+          "agrees": true,
+          "analytic": 0.0009363461285829544,
+          "epsilon": 0.001,
+          "finite_difference": 0.0010132789611816406,
+          "preparation_identity": "51221365c2c35749fde3441e532b2f14907183cbac8ab2f9a99369d9f574f542"
+        }
+      ],
+      "row": 130,
+      "source": 1
+    }
+  ],
+  "preparation_identity": "51221365c2c35749fde3441e532b2f14907183cbac8ab2f9a99369d9f574f542",
+  "repair_weight": 0.0,
+  "schema_sha256": "1f1c30ff69aa4fd34cabfb52f1470a6589034549657268bbf5a4d2ebd8bade6e",
+  "status": "passed"
+}

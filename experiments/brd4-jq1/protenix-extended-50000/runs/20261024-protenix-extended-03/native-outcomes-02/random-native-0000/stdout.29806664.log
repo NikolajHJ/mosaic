@@ -1,0 +1,65 @@
+Authenticated 643 immutable source files
+accepted update 1/1: loss=-0.193214372; fallback=False
+update 1/10: contact=-0.18862234, refreshed_surrogate=-0.18501714, next_repair_weight=0.001, fallback=False, no_op=False
+update 2/10: contact=-0.18885618, refreshed_surrogate=-0.18525075, next_repair_weight=0.001, fallback=False, no_op=False
+update 3/10: contact=-0.18909015, refreshed_surrogate=-0.18548448, next_repair_weight=0.001, fallback=False, no_op=False
+update 4/10: contact=-0.18932445, refreshed_surrogate=-0.18571855, next_repair_weight=0.001, fallback=False, no_op=False
+update 5/10: contact=-0.18955918, refreshed_surrogate=-0.18595304, next_repair_weight=0.001, fallback=False, no_op=False
+update 6/10: contact=-0.18979423, refreshed_surrogate=-0.18618785, next_repair_weight=0.001, fallback=False, no_op=False
+update 7/10: contact=-0.19002944, refreshed_surrogate=-0.18642283, next_repair_weight=0.001, fallback=False, no_op=False
+update 8/10: contact=-0.19026504, refreshed_surrogate=-0.18665819, next_repair_weight=0.001, fallback=False, no_op=False
+update 9/10: contact=-0.190501, refreshed_surrogate=-0.18689392, next_repair_weight=0.001, fallback=False, no_op=False
+update 10/10: contact=-0.19073708, refreshed_surrogate=-0.1871128, next_repair_weight=0.001, fallback=False, no_op=False
+update 1/10: contact=-0.16798292, refreshed_surrogate=323.21141, next_repair_weight=100, fallback=False, no_op=False
+update 2/10: contact=-0.15243761, refreshed_surrogate=288.24731, next_repair_weight=100, fallback=False, no_op=False
+update 3/10: contact=-0.14087921, refreshed_surrogate=256.8326, next_repair_weight=100, fallback=False, no_op=False
+update 4/10: contact=-0.13268612, refreshed_surrogate=228.7925, next_repair_weight=100, fallback=False, no_op=False
+update 5/10: contact=-0.12541319, refreshed_surrogate=203.90555, next_repair_weight=100, fallback=False, no_op=False
+update 6/10: contact=-0.11902745, refreshed_surrogate=271.729, next_repair_weight=100, fallback=False, no_op=False
+update 7/10: contact=-0.11290043, refreshed_surrogate=162.00714, next_repair_weight=100, fallback=False, no_op=False
+update 8/10: contact=-0.10791634, refreshed_surrogate=267.2449, next_repair_weight=100, fallback=False, no_op=False
+update 9/10: contact=-0.1032157, refreshed_surrogate=247.27142, next_repair_weight=100, fallback=False, no_op=False
+update 10/10: contact=-0.095110804, refreshed_surrogate=250.9205, next_repair_weight=100, fallback=False, no_op=False
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@hpc.dtu.dk>
+Subject: Job 29806664: <mosaic-pro50k-random-native-0000> in cluster <dcc> Exited
+
+Job <mosaic-pro50k-random-native-0000> was submitted from host <n-62-30-23> by user <s234818> in cluster <dcc> at Sat Oct 24 14:01:12 2026
+Job was executed on host(s) <4*n-62-13-17>, in queue <gpul40s>, as user <s234818> in cluster <dcc> at Sat Oct 24 15:01:37 2026
+</zhome/95/e/206121> was used as the home directory.
+</work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source> was used as the working directory.
+Started at Sat Oct 24 15:01:37 2026
+Terminated at Sat Oct 24 15:16:34 2026
+Results reported at Sat Oct 24 15:16:34 2026
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+bash -l /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source/scripts/hpc/extended_stage.lsf /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03 da9db6821d26b884ca1749303fc8e0b0095bd9ee7cbd1b427cdcf1b22eec6562 native /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/random-native-0000
+------------------------------------------------------------
+
+Exited with exit code 1.
+
+Resource usage summary:
+
+    CPU time :                                   1970.00 sec.
+    Max Memory :                                 3064 MB
+    Average Memory :                             2190.33 MB
+    Total Requested Memory :                     32768.00 MB
+    Delta Memory :                               29704.00 MB
+    Max Swap :                                   -
+    Max Processes :                              6
+    Max Threads :                                55
+    Run time :                                   897 sec.
+    Turnaround time :                            4522 sec.
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file </work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/random-native-0000/stderr.29806664.log> for stderr output of this job.
+

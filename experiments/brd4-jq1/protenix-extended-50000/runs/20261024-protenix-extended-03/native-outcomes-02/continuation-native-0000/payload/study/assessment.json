@@ -1,0 +1,338 @@
+{
+  "arm": "protenix",
+  "config_sha256": "f91c90770fe907c00e081f3ed28b46071ac35cc3f869edae504cf8cc16f6b445",
+  "context_digest": "b28dfad8e5ede565071c70a61695f6a38f5cb6bd591705e32979e59050ff5ce4",
+  "context_files": {
+    "prepared_context.json": "a3fecabf51222c1faf93b46fb1e4d25f049b3f970a7a522e827bdcaacb09f916",
+    "prepared_context.npz": "901467de3e47fe4183f818e8630f8833a9c2d3197244456c522bc38a0532accc"
+  },
+  "diffusion_gradient": false,
+  "extended_execution": {
+    "end": 20000,
+    "input_snapshot": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-protenix/payload/study/case-0/snapshots/step-10000.npz",
+    "input_snapshot_sha256": "edf15f06ba1b6591d62cbc3e04e19ecd93b553a0627da38c370fdeed3c1b780f",
+    "start": 10000,
+    "target": 50000,
+    "updates": 10000,
+    "version": "protenix-exact-logits-segment-v1"
+  },
+  "initialization_sha256": "ff192170484f240344eb5835b0a97e5a965d60a6500bb8f5cd3c042def19b00f",
+  "model_digest": "8d6926d5390fe682e193089f790ce53aa4011a6d5509ddb452a55db3d89b0ab2",
+  "n_atoms": 25,
+  "pocket_definition_sha256": "9376c715eaf5b48689fb3e995b00d7820601a7776970df66bd7e7cff3b13ee43",
+  "pocket_validation_status": "passed",
+  "proofs": [
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/context/prepared_context.json",
+      "sha256": "a3fecabf51222c1faf93b46fb1e4d25f049b3f970a7a522e827bdcaacb09f916"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/context/prepared_context.npz",
+      "sha256": "901467de3e47fe4183f818e8630f8833a9c2d3197244456c522bc38a0532accc"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/early_pilot/combined_initial_checks/atoms-0.001-+1.npz",
+      "sha256": "489bb5eeed127c7b3d85384bfd21d0dbb98330a2c4a38f1190e0d3b9280c9e41"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/early_pilot/combined_initial_checks/atoms-0.001--1.npz",
+      "sha256": "ddeb9f1fd96e8a7c6b85bc02f178091d8cc4b26fabe15d6523e3475fe2c77a64"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/early_pilot/combined_initial_checks/atoms-0.003-+1.npz",
+      "sha256": "1e1dceffd9b0d85823c180cd85f2aafbe3c04978c56e110b1233a17d62787f33"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/early_pilot/combined_initial_checks/atoms-0.003--1.npz",
+      "sha256": "0f4e1d08882a9f2fd2a0c18b3d37db52e0553afe9cf175ecb9e77efd323292b9"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/early_pilot/combined_initial_checks/atoms-0.01-+1.npz",
+      "sha256": "fea365863408323b2ea190d90b7c3f7cbdb09e7ec5164ad0fcc464cf395f5fbe"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/early_pilot/combined_initial_checks/atoms-0.01--1.npz",
+      "sha256": "6539f3fa8fed43fc19ce174a820ad839b7f2d7c736725442a9488358b788b080"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/early_pilot/combined_initial_checks/bonds-0.001-+1.npz",
+      "sha256": "6d986b493fddc3d8c5db4e3e65dac07d0a8396bfcecc181bd10b8e844f2d6b21"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/early_pilot/combined_initial_checks/bonds-0.001--1.npz",
+      "sha256": "978e9308bf3d0b70ccb95bd6f6e90895008866904d5e367e9a7fc00a95dbd039"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/early_pilot/combined_initial_checks/bonds-0.003-+1.npz",
+      "sha256": "d6f0d45944e8fcd76d12a7cda9d61f3dae47a8c64badc4ba944848041bbe17f3"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/early_pilot/combined_initial_checks/bonds-0.003--1.npz",
+      "sha256": "424b788f88f83a1899935b93eea75b8c18a0bd44ac4904c1ef02de824e8313c5"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/early_pilot/combined_initial_checks/bonds-0.01-+1.npz",
+      "sha256": "f1f726044a5f16b8a1db71c4b143f8c0dd135a396e50adc5890d616075f1b5b4"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/early_pilot/combined_initial_checks/bonds-0.01--1.npz",
+      "sha256": "b4de2d6ef9909a3294d658d0fa5aac905b46c2d348b72b1236f8443c21430937"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/early_pilot/combined_initial_checks/current_probe.npz",
+      "sha256": "da420ae2941c2c6306ed56effdec839353650c9992a7f664d6a7095c17695a04"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/early_pilot/combined_initial_checks/report.json",
+      "sha256": "0a284f861a7532f1391dbe676838058292b1272b378e53925cad4462d1592f54"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/early_pilot/current_trial.npz",
+      "sha256": "5f213af5e2ee371434d06af2d8a30b50aa8c4ecc7893e01c49007add2c895f6e"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/early_pilot/references/step-0000.json",
+      "sha256": "9199c0bac9faded526ebd8d7b18ee5b0709a15971720f6af9c501609253e0c31"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/early_pilot/references/step-0001.json",
+      "sha256": "e1f1be93ec69d46fdabccd6a8ba8b5557a26dd0c8d9dbf22edc28935d67ddc28"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/early_pilot/references/step-0002.json",
+      "sha256": "173157d88ec80b47f435bfbcc1c9251cf07b50ee4ab4d4bebb5e45184ed8b576"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/early_pilot/references/step-0003.json",
+      "sha256": "61e617f972f6cac7a5cf2b167d8635fe335c2b71cfa867f8b309d6ef186a3ea4"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/early_pilot/references/step-0004.json",
+      "sha256": "597c34be62ef3743fb68b98d1cad1b064fe49e41907c0206a26da793762a99a9"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/early_pilot/references/step-0005.json",
+      "sha256": "2af008e746d960963a52d768dee7882859750b9b931e95d70c5b7f1fa476fa19"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/early_pilot/references/step-0006.json",
+      "sha256": "143414bc4097938b76dbf2e7b4abe07f08a7e54737b57664805367785d7151ec"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/early_pilot/references/step-0007.json",
+      "sha256": "4898755f6f8bf9711b0304b4a8c8764159a5e5f02e074afc9989823562282ec0"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/early_pilot/references/step-0008.json",
+      "sha256": "e86784835b3a9708b3d622f97ece7ef0bbf86ac0c4dc6e25d32e0199e776fcbe"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/early_pilot/references/step-0009.json",
+      "sha256": "d36da3c264b15e3b95c552760a797d61d8920d3d22dc8b52520c5abf1f2be03a"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/early_pilot/references/step-0010.json",
+      "sha256": "bd57c12b6edecebd4682dedcab04ad2b33b2f81ae7a7d14e1b653cfef49b0e4b"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/early_pilot/report.json",
+      "sha256": "97b10d5d706c205a47ea8b8c0119acf420f54d146025711f2b4bba6614353997"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/early_pilot/snapshots/step-0000.npz",
+      "sha256": "4c116120ba1db454ca688d4acd30d20d284544cd3c3c340bea746577a81f9c1a"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/early_pilot/snapshots/step-0001.npz",
+      "sha256": "e8f19e4f7ba5e84037bea63d59b7cbe34022b0f2343f271f7acd2da26d148b5f"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/early_pilot/snapshots/step-0002.npz",
+      "sha256": "7d8c79a02f7c3ba55738081b64ba778b5ac8025102a73c2bff6dc4837ec64198"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/early_pilot/snapshots/step-0003.npz",
+      "sha256": "31ddabe2ad0784bd898ff29e03c88188b113ee6bcba2aa16cee3f1f354effb06"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/early_pilot/snapshots/step-0004.npz",
+      "sha256": "77f77ef9ef5a4d6a6ebec326932263336f03debba6888ae5da4f4d5473fcaa2d"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/early_pilot/snapshots/step-0005.npz",
+      "sha256": "f5d52114d4b9432d1b68011c2365a953ca3f8d81cf0b30e94a159a33ca424e4f"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/early_pilot/snapshots/step-0006.npz",
+      "sha256": "7f9645ab9da3cf99b74029e36667dba68969c3862ca2d07dee9a11affde6fa93"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/early_pilot/snapshots/step-0007.npz",
+      "sha256": "a606f1b366600e157cc00d2f34483df5cc9e723f147f9c6936723cd9d2937aec"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/early_pilot/snapshots/step-0008.npz",
+      "sha256": "a5ddf9f0e567b91b84eb9b5b91aed11900b836e1c2f62740a087b5115ccce441"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/early_pilot/snapshots/step-0009.npz",
+      "sha256": "14cd96e47d1f04df906197b8a487d1340c6d56a95f966449560c8722c5a91ac9"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/early_pilot/snapshots/step-0010.npz",
+      "sha256": "346df34dd6c49e2aa0100b0b99fb4dd8048d3d16f3e7930fae87019783985b40"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/early_pilot/trials/step-0000.npz",
+      "sha256": "82688413a3038116b2d45dc94e1c3b8dd8dd3e643d8b3b8406d4f0ae5bda6579"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/early_pilot/trials/step-0001.npz",
+      "sha256": "f12fbe2133021a39e5afe5c93ed2bb5a89c62ab2b42a7809d244cd671374b163"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/early_pilot/trials/step-0002.npz",
+      "sha256": "457037c0364bd9fdac43b4d8674a2f856a4bd5413b15812d9bb8cfcd7b5f473f"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/early_pilot/trials/step-0003.npz",
+      "sha256": "348ef528207a8d7fafb1c0a6e1343f5b50b13fac5ff04919599464b27ce20789"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/early_pilot/trials/step-0004.npz",
+      "sha256": "887312127ca607e58c3ee66d6d9bba098791410203080662b96af4673415ffcf"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/early_pilot/trials/step-0005.npz",
+      "sha256": "e14e2f78d90a6ee8ae542e93af2e964dbe5cf3556c900ea13a21822c8a2cab74"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/early_pilot/trials/step-0006.npz",
+      "sha256": "d1f2a8c509fc03b3905cad68ea532908f815a7059a77da3827ee87b50e0f002e"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/early_pilot/trials/step-0007.npz",
+      "sha256": "d221260eaa44ffc09f5bccee4e174a6849b09fcacb9766605ac44cf633b2efb1"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/early_pilot/trials/step-0008.npz",
+      "sha256": "2162242fffd34d82f9ee6ee7094e4aad93facd7663d5d82e17a7b0755db3c25a"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/early_pilot/trials/step-0009.npz",
+      "sha256": "d4194ceb98c8ae702035c244144902e215e19c1a47a2525b9955d4629d601ae0"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/initialization.npz",
+      "sha256": "ff192170484f240344eb5835b0a97e5a965d60a6500bb8f5cd3c042def19b00f"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/native_gradient_checks/E_upper-0-minus.npz",
+      "sha256": "0949a08cb9a7ddef988ed4fe3ba2c7ba293a9bf23733be1906c201391f71ee65"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/native_gradient_checks/E_upper-0-plus.npz",
+      "sha256": "c487a382b485fdd64f93d60aef04eef9df3f9d820272d2f90f0a02b918ceca5b"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/native_gradient_checks/E_upper-1-minus.npz",
+      "sha256": "1bb93fbb49ace79f7369cc6860ab632b59ce444e328fef82e2ed4e3fe334a5ff"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/native_gradient_checks/E_upper-1-plus.npz",
+      "sha256": "eb697a0afa5e546e53246cf50108d8f5f583e86bb1cc7dd581cd617b8a4c15b0"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/native_gradient_checks/E_upper-2-minus.npz",
+      "sha256": "6d516cd785bcc2d946401d4aa7f52e7167a9537ced67964584629396292ab296"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/native_gradient_checks/E_upper-2-plus.npz",
+      "sha256": "e902485154781a0dffded5d9c1a49829fc64701c740233a115ff0851afed4c0b"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/native_gradient_checks/X-0-minus.npz",
+      "sha256": "0078b86216a2b72e97749f5b4c82ec42caf36f55ea20c4cd979e25ed58298a6a"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/native_gradient_checks/X-0-plus.npz",
+      "sha256": "1620020149d176164dae239d6b84bbf98683d1181b389d8fac7213d1ecc2e083"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/native_gradient_checks/X-1-minus.npz",
+      "sha256": "c6f226090b1bfcb992c96d7afe1493a88818b8c37ea20ba1ac4f393324c9badd"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/native_gradient_checks/X-1-plus.npz",
+      "sha256": "ac9fdc3156e7bf33eeda34b78f64508dd4f974a73d89ee69e7cd243d3cbba44e"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/native_gradient_checks/X-2-minus.npz",
+      "sha256": "abbf2c9fa429a43da57f84ae51525b74a789c65a0f93e968841366f40dbb9feb"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/native_gradient_checks/X-2-plus.npz",
+      "sha256": "04cbefd6a4ffa39aab9413838db6f428454ab79395d6aa5bb02fd1eb3b5cd9a6"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/native_gradient_checks/baseline-primal.npz",
+      "sha256": "41ba1d9a864855a6c7a569329bc569922ac692934f7f79115bd709cb07791655"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/native_gradient_checks/bond-order-null.npz",
+      "sha256": "b10c346fe0abc1392a0b4a94ae4398f0f0cc1e621df35a901bbd80c875dbfe7a"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/native_gradient_checks/final.npz",
+      "sha256": "1c624b330feea76c1b053002339ee2808b9f0a85099da208349d4ea61f44370e"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/native_gradient_checks/final_graph.npz",
+      "sha256": "a1b78d104f5b0d6b7b880a44c6623b52d95818d261d4680fd34d7d707931a73a"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/native_gradient_checks/final_primal.npz",
+      "sha256": "2874110c2e73b9c99055a334423a8fd52240ea29d8791e0166f5f408eeeaa099"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/native_gradient_checks/initial.npz",
+      "sha256": "7ccb5f039c9f8ae6b902ff8eabb55e50286aa1b11ae86a981b8162a7a24b31c6"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/native_gradient_checks/primal-step-0-trial-0.npz",
+      "sha256": "63b7a6a0804e684d7faa1fed59f42ead4e98af47e010260fcb4ecee4cfb87daa"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/native_gradient_checks/report.json",
+      "sha256": "a43bb7eb46d587c2fd9cb547bb3bb1b5369c56fd206425e5a11df75c5afbdca9"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/native_gradient_checks/step-0-trial-0.npz",
+      "sha256": "a46da1c97c46343758ccfda5a4285390cc76778ebd022183ae1fe801d873cf6b"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/pocket_definition.json",
+      "sha256": "9376c715eaf5b48689fb3e995b00d7820601a7776970df66bd7e7cff3b13ee43"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/summary.json",
+      "sha256": "43891d4647a80e18a6d8facf44dc7f8278d9a1d25daf71f2eeb94cdd09c47b7f"
+    }
+  ],
+  "runtime_gate": {
+    "allocation_seconds": 82800,
+    "conservative_projected_seconds": 31491.270122712012,
+    "mean_update_seconds": [
+      1.9794180081808008
+    ],
+    "scope": "empirical pilots, not a worst-case guarantee",
+    "status": "passed"
+  },
+  "source_manifest_sha256": "da9db6821d26b884ca1749303fc8e0b0095bd9ee7cbd1b427cdcf1b22eec6562",
+  "status": "passed",
+  "storage_projection": {
+    "maximum_pilot_update_bytes": 23182,
+    "policy": "twice largest saved pilot update plus 1 GiB for metadata/context; fresh campaign-wide quota gate before submission",
+    "projected_bytes": 1537381824
+  }
+}

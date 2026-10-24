@@ -1,0 +1,43 @@
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@hpc.dtu.dk>
+Subject: Job 29806701: <mosaic-peer-dbmol10k-observe-0001> in cluster <dcc> Exited
+
+Job <mosaic-peer-dbmol10k-observe-0001> was submitted from host <n-62-30-23> by user <s234818> in cluster <dcc> at Sat Oct 24 14:10:23 2026
+Job was executed on host(s) <2*n-62-31-15>, in queue <hpc>, as user <s234818> in cluster <dcc> at Sat Oct 24 15:16:47 2026
+</zhome/95/e/206121> was used as the home directory.
+</work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-release-02/source> was used as the working directory.
+Started at Sat Oct 24 15:16:47 2026
+Terminated at Sat Oct 24 15:16:58 2026
+Results reported at Sat Oct 24 15:16:58 2026
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+bash -l /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-pro02-adoption-release-06/source/scripts/hpc/peer_adoption_stage.lsf /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-pro02-adoption-release-06/source cad7c8efa0c83a301e4c9e1183d3d279a648cf65f9c3bc3d9d69281c63d32f11 dbmol10k /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-release-02/source /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02 600ecc3b33135141a57c029a28a2c72f29e788e3ecf5cb2dac1761146d1d6eed /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-pro02-adoption-06 observe /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-pro02-adoption-06/observe-0001
+------------------------------------------------------------
+
+Exited with exit code 1.
+
+Resource usage summary:
+
+    CPU time :                                   5.42 sec.
+    Max Memory :                                 -
+    Average Memory :                             -
+    Total Requested Memory :                     8192.00 MB
+    Delta Memory :                               -
+    Max Swap :                                   -
+    Max Processes :                              -
+    Max Threads :                                -
+    Run time :                                   11 sec.
+    Turnaround time :                            3995 sec.
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file </work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-pro02-adoption-06/observe-0001/stderr.29806701.log> for stderr output of this job.
+

@@ -27,3 +27,27 @@ continuation29806667/callback29806668 arePEND. Both retain2h gpul40s/4CPU/
 8GiBslot/oneexclusiveL40S and actual own-ended callbacks. Source643/config/
 parent/originalfailures remain exact. No production/native-gradient/GPU-startup
 or full50k/40k storage pass is claimed.
+
+
+24 October 22:49:35 Paris: fresh read-only evidence independently verifies both
+actual GPU startups and native outcomes. Continuation29806667 and callback29806668
+completed with same-job LSF success; full native readiness/certificate passed,
+including exact parent replay, raw X/E derivatives, frozen identities and runtime.
+Random29806664 exited1 and callback29806665 exited1: reported native X/E raw
+gradient sweeps, parity, nonzero chemistry assay and exact draw replay passed,
+but the mandatory 10,000-update runtime-fit gate failed. Conservative empirical
+forecast353948.120387632seconds exceeds82800seconds; this is a forecast, not an
+actual98-hour execution or timeout. Both GPU-only startup subprocesses fully
+exited before the unchanged driver. The failed random overall readiness is not
+relabeledpassed. Its low/high coupled and pilot raw JSONs were outside this
+compact traversal; reaching those source-flow guards is labeled inference only.
+
+Only continuation supplies a certified projection (unit23182bytes); random has
+no readiness certificate. Full production storage was therefore not reached,
+not passed or newly failed. All five intended production chains have zero
+segment submissions/committed prefixes. Earlier validation-storage passes remain
+validation-only, and the earlier failed preflight stays unchanged. Live scheduler
+records aged out; exact persisted same-job LSF/summary/certificate proofs establish
+terminal outcomes. Independent audit4a6539621942378797d29d1ad9fddaaaabbf9ad46bbfd2e8bc8e48d0621e29c7
+and native-outcomes-02 bind the raw proof bytes. Saved results/settings and the
+paused monitor are unchanged; no job, cleanup or numerical work occurred locally.

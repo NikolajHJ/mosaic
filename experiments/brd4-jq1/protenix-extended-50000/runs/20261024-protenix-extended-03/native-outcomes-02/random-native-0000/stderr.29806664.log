@@ -1,0 +1,47 @@
+Loaded dependency [python3/3.12.11]: sqlite3/3.50.1
+Loaded dependency [python3/3.12.11]: gcc/14.3.0-binutils-2.44
+Loaded module: python3/3.12.11
+
+Loading python3/3.12.11
+  Loading requirement: sqlite3/3.50.1 gcc/14.3.0-binutils-2.44
+Loaded module: cuda/12.9.1
+E1024 15:03:07.885649 3758362 numa_hwloc.cc:121] Call to hwloc_set_cpubind() failed: Invalid argument [22]
+[15:11:14] Explicit valence for atom # 0 C, 42, is greater than permitted
+[15:12:28] Explicit valence for atom # 0 C, 42, is greater than permitted
+[15:12:47] Explicit valence for atom # 0 C, 42, is greater than permitted
+[15:13:06] Explicit valence for atom # 0 C, 42, is greater than permitted
+[15:13:25] Explicit valence for atom # 0 C, 42, is greater than permitted
+[15:13:44] Explicit valence for atom # 0 C, 42, is greater than permitted
+[15:14:03] Explicit valence for atom # 0 C, 42, is greater than permitted
+[15:14:22] Explicit valence for atom # 0 C, 42, is greater than permitted
+[15:14:40] Explicit valence for atom # 0 C, 42, is greater than permitted
+[15:14:59] Explicit valence for atom # 0 C, 42, is greater than permitted
+[15:15:18] Explicit valence for atom # 0 C, 42, is greater than permitted
+[15:15:37] Explicit valence for atom # 0 C, 42, is greater than permitted
+[15:15:59] Explicit valence for atom # 0 C, 38, is greater than permitted
+[15:16:08] Explicit valence for atom # 0 C, 33, is greater than permitted
+[15:16:13] Explicit valence for atom # 0 C, 29, is greater than permitted
+[15:16:17] Explicit valence for atom # 0 C, 20, is greater than permitted
+[15:16:20] Explicit valence for atom # 0 C, 20, is greater than permitted
+[15:16:22] Explicit valence for atom # 0 C, 19, is greater than permitted
+[15:16:24] Explicit valence for atom # 0 C, 17, is greater than permitted
+[15:16:26] Explicit valence for atom # 0 C, 16, is greater than permitted
+[15:16:28] Explicit valence for atom # 0 C, 16, is greater than permitted
+[15:16:30] Explicit valence for atom # 0 C, 16, is greater than permitted
+Traceback (most recent call last):
+  File "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source/examples/brd4_25_atoms.py", line 357, in <module>
+    main()
+  File "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source/examples/brd4_25_atoms.py", line 308, in main
+    raise RuntimeError("10,000-update allocation-fit gate failed")
+RuntimeError: 10,000-update allocation-fit gate failed
+Traceback (most recent call last):
+  File "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source/scripts/extended_ops.py", line 536, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source/scripts/extended_ops.py", line 528, in main
+    produce(parent,phase,arm,index,a.manifest)
+  File "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source/scripts/extended_ops.py", line 511, in produce
+    subprocess.run(args,cwd=SOURCE,check=True,timeout=6600 if phase=='native' else 81000)
+  File "/appl9/python/3.12.11/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/work3/s234818/mosaic/envs/protenix-tiny/bin/python', '/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source/examples/brd4_25_atoms.py', '--mode', 'validate', '--config', '/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source/examples/configs/extended_random.json', '--output', '/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/random-native-0000/payload/study', '--manifest', 'da9db6821d26b884ca1749303fc8e0b0095bd9ee7cbd1b427cdcf1b22eec6562', '--cpu-certificate', '/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/cpu-certificate.json', '--cpu-certificate-sha256', 'ab3148ea6dd8d25361f85e9d8283578e0cf4429844d820a4dab6b03673ef577b', '--reference', '/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/cpu/payload/composition_reference.json', '--pocket', '/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/cpu/payload/pocket_definition.json', '--pocket-sha256', '9376c715eaf5b48689fb3e995b00d7820601a7776970df66bd7e7cff3b13ee43', '--offset', '0', '--segment-steps', '10000']' returned non-zero exit status 1.

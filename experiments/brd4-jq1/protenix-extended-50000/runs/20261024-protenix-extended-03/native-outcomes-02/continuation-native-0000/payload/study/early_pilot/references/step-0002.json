@@ -1,0 +1,8 @@
+{
+  "chemistry_applicability": "not part of the objective; no teacher assessment",
+  "identity": "5c98d689b72674733575df32018c9386b91f52ad6c1ec4f45b394ed3c5caabda",
+  "rows": [],
+  "schema_sha256": "1f1c30ff69aa4fd34cabfb52f1470a6589034549657268bbf5a4d2ebd8bade6e",
+  "update": 2,
+  "version": "mosaic-native-only-preparation-v1"
+}
