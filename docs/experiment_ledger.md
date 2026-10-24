@@ -6818,3 +6818,29 @@ remain distinct. Shared independent audit4a6539621942378797d29d1ad9fddaaaabbf9ad
 is retained with exact native/observer outcome proofs and chained campaign snapshots.
 No job/settings/results, sealed source, independent project, cleanup or paused
 monitor was changed. All local verification was standard-library bytes/metadata.
+
+
+### 2026-10-24 — saved timing inspection attributes random Protenix slowdown to detached chemistry preparation
+
+Fresh23:34:38Paris read-only collection rehashed26existing compact raw pilot,
+reference and coupled reports/4,079,953bytes. Current Pro03/Boltz03 retain identical
+18chemistry source members and loss/search/progress settings. The new Boltz30k
+chemistry branch is delayed .001through5000→100at30000; randomPro50k uses the same
+loss but .001through5000→100at50000. Earlier completed randomProchem29753668 was
+6slots/10000updates/15261.50s driver, rather than current25slots.
+
+Pro random low-weight pilot first update64.95s then18.70–19.18s; its detached
+repair preparation repeatedly18.07–19.32s, exhausts96base+192extra checks and
+retains censored/no_progress references. The smaller-model comparison therefore
+does not explain measured runtime. Current Boltz starts from valid chain/uniform,
+early prep about.007s/zero repair checks, invalid high assay about.25s/96basechecks
+and a witness. High Pro pilot prep falls to1.16s bystep10. Delayed coefficient
+still computes detached targets every update. First-update overhead contributes,
+but cannot alone explain later19second updates. No fine-grained profiler/new
+model evaluation ran;98.3h remains conservative extrapolation, not actual10kruntime.
+Both new low/high raw coupled reports directly saypassed and bind original frozen
+context/model; this resolves the previous compact-download limitation only.
+Original runtime failure/all5production block remain unchanged, with no gate
+waiver, source/setting/result/job change, extra cleanup or monitor unpause.
+Exact local stdlib byte/JSON/source/timing audit is chemistry-timing-inspection-03.json
+in the Pro03run. All scientific/model/numerical execution remains allocatedHPC.

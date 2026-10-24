@@ -51,3 +51,25 @@ records aged out; exact persisted same-job LSF/summary/certificate proofs establ
 terminal outcomes. Independent audit4a6539621942378797d29d1ad9fddaaaabbf9ad46bbfd2e8bc8e48d0621e29c7
 and native-outcomes-02 bind the raw proof bytes. Saved results/settings and the
 paused monitor are unchanged; no job, cleanup or numerical work occurred locally.
+
+
+24October23:34:38Paris: separate saved-metadata timing inspection downloaded and
+byte-verified26existing compact pilot/reference/coupled reports (4,079,953bytes),
+without new scientific execution. All18chemistry Python source members and
+loss/search/progress settings are byte/metadata-identical between current Pro03
+and Boltz03. Both are delayed chemistry, .001 through5000 then100 at respectively
+50000/30000. RandomPro25 early update1 took64.95s, later updates18.70–19.18s;
+detached preparation itself repeatedly18.07–19.32s. This is not solely cold start
+or evidence the smaller neural model runs slower. All early references exhaust
+96base+192extra checks without a valid/progress target. Boltz starts valid chain/
+uniform: early preparation about.007s/zero repair checks, high assay about.25s/
+96base checks with a valid witness. High Pro pilot preparation falls to1.16s by
+step10. These are different graph workloads, not a matched model-speed benchmark.
+Coefficient delay does not delay computation/search. Earlier completed random
+Prochem29753668 was6slots,10000updates, driver15261.50s on19October; its rate,
+schedule and original policy also differ. The98.3h figure remains a conservative
+ten-step projection and the original runtime gate staysfailed. New raw low/high
+coupled reports are now directly verified as passed, superseding only the prior
+compact-traversal limitation, not failed overall readiness. No settings, saved
+results, segment plan, scientific gate, job or paused monitor changed. Exact
+metadata/source/proof pins: chemistry-timing-inspection-03.json.
