@@ -1,5 +1,5 @@
 {
-  "state": "blocked_hpc_authentication",
+  "state": "both_native_readiness_passed_production_pending_peer_recovery",
   "package": {
     "tag": "20261024-boltz-lr0025-03",
     "manifest_sha256": "c214bccf2c94ac6829996bc0ca7d6415d3c19549be4fe7f874cba2b433901cc6",
@@ -28,9 +28,9 @@
     "execution": "Local stdlib AST/JSON/byte packaging only; allocated checks pending"
   },
   "required_cpu_cases": 827,
-  "cpu_status": "not_submitted",
-  "actual_generated_startup_status": "not_run",
-  "native_status": "not_submitted",
+  "cpu_status": "passed",
+  "actual_generated_startup_status": "both_validation_commands_passed_only;production_commands_pending_capacity_adoption",
+  "native_status": "both_passed",
   "optimization_submissions": [],
   "same_settings": true,
   "saved_results_changed": false,
@@ -47,5 +47,102 @@
     "blind_retry_allowed": false
   },
   "full_dispatch_requires_all_existing_projection_gates": true,
-  "user_paused_monitor_unchanged": true
+  "user_paused_monitor_unchanged": true,
+  "recovery_02": {
+    "receipt": "recovery-02-submissions.json",
+    "cpu": "29805913",
+    "callback": "29805914",
+    "observed_utc": "2026-10-24T08:57:59.311043+00:00",
+    "actual_startup": "not_yet_established",
+    "native_gradient": "not_yet_submitted",
+    "optimization": "not_submitted"
+  },
+  "latest_verified_06": {
+    "evidence_utc": "2026-10-24T09:05:32.856778+00:00",
+    "independent_verification_sha256": "75b5b35cef0209ff2ce56f0dff81eae80b83554ab20dc1097fbf047f3e47f787",
+    "receipt": "cpu-startup-verification-06.json",
+    "actual_cases": 827,
+    "cpu_certificate_sha256": "06efbb027f1008a0921494af0e226c3fc7a78c0a8f4ab01b93e8b50f2c042836",
+    "startup_only_results": [
+      {
+        "arm": "boltz2",
+        "index": 0,
+        "native_gradient_passed": false,
+        "optimization_started": false,
+        "owner_cpu_job_id": "29805914",
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/startup-boltz2-native-0000.json",
+        "phase": "native",
+        "sha256": "6a81b08f19b26f4399aa51e7fdda1492f7e335a1e32e557bb6144232ae58f607",
+        "status": "startup_only_passed"
+      },
+      {
+        "arm": "boltz2_chemistry",
+        "index": 0,
+        "native_gradient_passed": false,
+        "optimization_started": false,
+        "owner_cpu_job_id": "29805914",
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/startup-boltz2_chemistry-native-0000.json",
+        "phase": "native",
+        "sha256": "76b3ec0b1aa77a55d114d55d2b1dc4fda5cbadcc6cfc4fd04f89080cecd1d475",
+        "status": "startup_only_passed"
+      }
+    ],
+    "native_jobs": {
+      "boltz2-native-0000": {
+        "job_id": "29805950",
+        "phase": "native",
+        "scheduler_state": "RUN",
+        "scientific_readiness": "not assessed by this metadata audit"
+      },
+      "boltz2_chemistry-native-0000": {
+        "job_id": "29805958",
+        "phase": "native",
+        "scheduler_state": "PEND",
+        "scientific_readiness": "not assessed by this metadata audit"
+      }
+    },
+    "production_started": false,
+    "scientific_readiness_passed": false
+  },
+  "latest_verified_07": {
+    "observed_utc": "2026-10-24T09:08:48.289935+00:00",
+    "receipt": "cpu-startup-verification-07.json",
+    "receipt_sha256": "7189483347d31f5fc090d395716e52c48679a7a547be5cc9f8fdac808a254e0f",
+    "CPU_cases": 827,
+    "all_validation_startup_commands_passed": true,
+    "native_submissions": {
+      "boltz2-native-0000": {
+        "job_id": "29805950",
+        "phase": "native",
+        "scheduler_state": "DONE",
+        "scientific_readiness": "not assessed by this metadata audit"
+      },
+      "boltz2_chemistry-native-0000": {
+        "job_id": "29805958",
+        "phase": "native",
+        "scheduler_state": "RUN",
+        "scientific_readiness": "not assessed by this metadata audit"
+      }
+    },
+    "optimization_jobs": []
+  },
+  "plain_native_readiness": {
+    "receipt": "plain-native-verification-07.json",
+    "receipt_sha256": "2c4c96286fdb96c95e9e4ea25c6af7219993e22956e076cb5e83a758d4bb7cf1",
+    "job_id": "29805950",
+    "native_gradient_passed": true,
+    "production_started": false
+  },
+  "latest_verified_08": {
+    "observed_utc": "2026-10-24T09:14:55.186880+00:00",
+    "receipt": "chemistry-native-verification-08.json",
+    "receipt_sha256": "15ef197d8348810843e64215a4bb8ed1b032d636bbf03bcefa088a2ae73e562e",
+    "native_job": "29805958",
+    "callback_job": "29805959",
+    "native_readiness": "passed",
+    "production_started": false
+  },
+  "production_blocker": "Unchanged shared storage failed before replacement Pro03 CPU:41,643,669,252required vs27,472,908,456available;14,170,760,796shortfall before full Pro projections. Native readiness passed for all3Boltz/DBMol. Additional approved capacity needed; no full-admission/gate waiver.",
+  "required_human_action": "Provide additional HPC quota/storage directory or identify a specific inactive dataset eligible for verified archival; current saved runs/proofs/sources unchanged",
+  "capacity_observation": "experiments/brd4-jq1/boltz-lr0025/runs/20261024-boltz-lr0025-03/capacity-observation-01.json"
 }

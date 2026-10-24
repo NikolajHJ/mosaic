@@ -1,0 +1,7 @@
+
+
+### 2026-10-24 — access restored; provenance-corrected Boltz/DBMol allocated rechecks submitted
+
+The user explicitly renewed connection/startup-test/conditional resubmission authorization. One compact read-only inspection succeeded08:54:35UTC and found all eight exact new roots/releases/uploads absent. Old SSH255 and markers remain preserved. Distinct science02 recovery staged657 unchanged scientific member bytes read-only with corrected manifest600ecc3b33135141a57c029a28a2c72f29e788e3ecf5cb2dac1761146d1d6eed. Baseline03 source635 and DBMol launcher05 source10 then staged/authenticated read-only; no old run/release was replayed or changed.
+
+Actual baselineCPU29805913/callback29805914 submitted08:56:23–24UTC; DBMolCPU29805915/callback29805916 followed. Fresh validation preflights passed16,103,826,540/27,569,509,027 and16,003,104,260/27,569,248,222 required/available bytes, with4GiB/100000-file reserves and all current/stale/prospective scopes retained. At08:57:59UTC bothCPU jobs RUN, own-ended callbacksPEND. These are not actual startup, native gradient or production passes:827/1163 raw cases and real driver checks are pending. Full production still requires authentic full Protenix641 peer projections; no quota waiver or Protenix scope/job change. Settings/saved results/paused monitor unchanged. Exact vectors/byte hashes/snapshot receipts live in the new03 and launcher05 recovery-02-submissions.json records.

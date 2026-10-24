@@ -1,0 +1,91 @@
+{
+  "actual_native_or_segment_submissions": {
+    "pilot-native-0000": {
+      "job_id": "29805980",
+      "phase": "native",
+      "scheduler_state": "PEND",
+      "scientific_readiness": "not assessed by this metadata audit"
+    }
+  },
+  "callback_done_lsf_authenticated": true,
+  "cpu": {
+    "cases": 1163,
+    "certificate_sha256": "387070e8fe56b17ddbd7c8e0b82d2d6a44d9aa99e7015d3fbe4757ce82c0819b",
+    "count_policy": "Actual raw testcase rows and logs; inherited unittest subtest header differences are recorded separately",
+    "cpu_passed": true,
+    "groups": {
+      "chemistry": 59,
+      "dbmol-native": 83,
+      "dbmol-transport": 148,
+      "hpc-contract": 500,
+      "launcher-adoption": 72,
+      "legacy": 239,
+      "native-mapping": 34,
+      "startup": 28
+    },
+    "raw_xml_header_counts": {
+      "chemistry": 59,
+      "dbmol-native": 83,
+      "dbmol-transport": 148,
+      "hpc-contract": 503,
+      "launcher-adoption": 72,
+      "legacy": 239,
+      "native-mapping": 34,
+      "startup": 28
+    },
+    "status": "full_cpu_evidence_verified"
+  },
+  "downloaded_small_files_verified": 270,
+  "external_files_metadata_only": {
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-boltz2/payload/study/summary.json": {
+      "bytes": 301971481,
+      "local_bytes_downloaded": false,
+      "sha256": "06a68008a0dfb8b6a66668447bcda4f01c7b54427d9b68f0d84e5926db278cc1"
+    },
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-protenix/payload/study/summary.json": {
+      "bytes": 298580732,
+      "local_bytes_downloaded": false,
+      "sha256": "b94d4bae58b7c82b92f4cf0b6b0e9804734afff0f54ea0b162b65d825ec2661d"
+    },
+    "/zhome/95/e/206121/mosaic-runs/20261021-brd4-jq1-25-01/prepare/payload/prepared/context.pt": {
+      "bytes": 16063255,
+      "local_bytes_downloaded": false,
+      "sha256": "a18a331269170aac3281b0a2ecad313aab81756c9b77e048d7e2cbaa4d8f1093"
+    }
+  },
+  "jobs": {
+    "after-cpu-05": "29805916",
+    "cpu-05": "29805915",
+    "pilot-after-native-0000": "29805981",
+    "pilot-native-0000": "29805980"
+  },
+  "kind": "dbmol",
+  "metadata_sha256": "a3c558493e9d821d26c96500f57bcb111bcedd00940128930ff16b8565d8df15",
+  "scheduler_snapshot": {
+    "after-cpu-05": "DONE",
+    "cpu-05": "DONE",
+    "pilot-after-native-0000": "PEND",
+    "pilot-native-0000": "PEND"
+  },
+  "scope": "Independent stdlib byte/JSON/XML/LSF/source/resource/startup verification only. Original big summaries/context are remote-hash references, not downloaded bytes. Startup success is not native gradient readiness or optimization. No local numerical/model execution.",
+  "source_manifest_sha256": "600ecc3b33135141a57c029a28a2c72f29e788e3ecf5cb2dac1761146d1d6eed",
+  "source_members_verified": 657,
+  "startup_only_results": [
+    {
+      "arm": "boltz2_dbmol",
+      "index": 0,
+      "native_gradient_passed": false,
+      "optimization_started": false,
+      "owner_cpu_job_id": "29805916",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/startup-native-0000.json",
+      "phase": "native",
+      "sha256": "c9cab09b0a1007d8e8fc3df1a274f4b49fa41e222f81d9da9b19af4275ded791",
+      "status": "startup_only_passed"
+    }
+  ],
+  "status": "cpu_startup_delivery_verified",
+  "storage_gates": {
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/after-cpu-05/storage-native-dispatch/gate.json": "passed",
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/cpu-05/storage-cpu-entry/gate.json": "passed"
+  }
+}

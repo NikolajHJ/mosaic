@@ -1,0 +1,82 @@
+{
+  "status": "static_preparation_reviewed_resource_blocked",
+  "planned_allocated_metadata_cases": 73,
+  "records": [
+    {
+      "path": "scripts/hpc/peer_adoption/adoption_contract.py",
+      "bytes": 25483,
+      "sha256": "25e48611dfa4ed1d0f77c8e65cb6abb94e494bd75aedaf0100799276cc69488f",
+      "static_ast_compile": "passed"
+    },
+    {
+      "path": "scripts/hpc/peer_adoption/adoption_ops.py",
+      "bytes": 35138,
+      "sha256": "639a890bd086056dbad95a7067c9a69fb6790eeb2b7ef63235cc551350a46773",
+      "static_ast_compile": "passed"
+    },
+    {
+      "path": "scripts/hpc/peer_adoption/cpu.lsf",
+      "bytes": 2416,
+      "sha256": "a3151064b20d9526b1076c0c2f56ec45bd20ee454e8749fd35bd21bf33a6aeb0",
+      "embedded_authentication_ast": "passed",
+      "shell": "static text only; not executed"
+    },
+    {
+      "path": "scripts/hpc/peer_adoption/prepare_source.py",
+      "bytes": 5551,
+      "sha256": "b71b994b7e7892adeb8f2362fa1d2d4dcb73428e3c82acf625be7c3f2d12b66f",
+      "static_ast_compile": "passed"
+    },
+    {
+      "path": "scripts/hpc/peer_adoption/README.md",
+      "bytes": 1138,
+      "sha256": "1ae20a05a3ca6124677c5caa1c5f7fd042cd98e8b87c7c3c27fff53c4d886c92"
+    },
+    {
+      "path": "scripts/hpc/peer_adoption/stage.lsf",
+      "bytes": 2355,
+      "sha256": "e3281a38c61aada2fb4cf3db41b325d24ddad3a85839dff845fb5576549c0048",
+      "embedded_authentication_ast": "passed",
+      "shell": "static text only; not executed"
+    },
+    {
+      "path": "experiments/brd4-jq1/boltz-lr0025/runs/20261024-boltz-pro02-adoption-04/fixture_adoption.py",
+      "bytes": 24555,
+      "sha256": "b1a4632490a85647364f64b5cde612fd51fa6f27ec54cc684b8d84e257c54ea4",
+      "static_ast_compile": "passed"
+    }
+  ],
+  "plan": {
+    "path": "experiments/brd4-jq1/boltz-dbmol/runs/20261024-dbmol-pro02-adoption-06/adoption-plan.json",
+    "bytes": 3086,
+    "sha256": "8e92c7da416787af6f0dc7a4ccd8a4a20dab6138978aab0048bf714875334132"
+  },
+  "numerical_or_fixture_execution": false,
+  "allocated_cpu_passed": false,
+  "new_native_or_production_passed": false,
+  "source_sealed": false,
+  "archive_or_manifest_created": false,
+  "remote_actions": false,
+  "scientific_sources_or_saved_results_edited": false,
+  "resource_blocker": {
+    "peer": "Protenix03",
+    "stage": "preflight before CPU/jobs",
+    "required_bytes": 41643669252,
+    "conservative_available_bytes": 27472908456,
+    "projected_bytes": 37348701956,
+    "reserve_bytes": 4294967296,
+    "shortfall_bytes": 14170760796,
+    "source_staged_read_only": true,
+    "cpu_submitted": false,
+    "new_peer_native_passed": false,
+    "storage_gate_reduced": false,
+    "scope": "Actual whole-project preflight failure, no verified permitted cleanup subset closes the gap; further capacity/human scope required"
+  },
+  "remaining_validation": [
+    "Actual allocated73-case metadata suite and exact raw XML/log/module/CPU LSf/scheduler certificate",
+    "Actual Pro03 full CPU/native/readiness/projections",
+    "Real new generated native/segment startup smoke and exact entry vectors",
+    "Fresh whole-project bytes/inodes/reserve admission without gate reduction",
+    "Final independent operational review before any future seal"
+  ]
+}

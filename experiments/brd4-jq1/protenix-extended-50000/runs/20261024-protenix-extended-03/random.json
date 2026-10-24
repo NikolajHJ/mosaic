@@ -1,0 +1,73 @@
+{
+  "seed": 17,
+  "steps": 50000,
+  "initial_step_size": 0.3,
+  "max_backtracks": 1,
+  "pilot_steps": 10,
+  "allocation_seconds": 82800,
+  "loss": {
+    "version": "repair-failure-guidance-v1",
+    "extra_valid_weight": 1.0,
+    "partial_weight": 1.0,
+    "local_bond_weight": 0.1,
+    "component_cut_weight": 0.1,
+    "nonempty_weight": 0.1
+  },
+  "search": {
+    "max_edits": 3,
+    "checks_per_depth": 32,
+    "beam_width": 4,
+    "probability_weight": 1.0,
+    "probability_floor": 1e-12
+  },
+  "progress_search": {
+    "version": "repair-progress-v1",
+    "max_edits": 6,
+    "checks_per_depth": 32,
+    "beam_width": 4,
+    "probability_weight": 1.0,
+    "allow_atom_edits": false,
+    "atom_edit_penalty": 3.0,
+    "max_atom_edits": 1
+  },
+  "initialization": {
+    "kind": "dirichlet",
+    "concentration": 1.0,
+    "seed": 17
+  },
+  "version": "mosaic-brd4-jq1-protenix-random-chem-50000-v1",
+  "arm": "protenix",
+  "n_atoms": 25,
+  "element_js_weight": 0.0,
+  "chemistry_enabled": true,
+  "repair_schedule": {
+    "version": "delayed-geometric-v1",
+    "initial": 0.001,
+    "final": 100.0,
+    "hold_updates": 5000,
+    "total_updates": 50000
+  },
+  "fixture": "tests/data/brd4_3mxf/fixture_25.json",
+  "label": "Protenix LR0.3 / random Dirichlet1 seed17 / chemistry.001through5000 ->100at50000 / fresh50000",
+  "pocket": {
+    "version": "brd4-jq1-heavy-neighborhood-v1",
+    "pdb_id": "3MXF",
+    "radius_angstrom": 6.0,
+    "anchor_author_residues": [
+      81,
+      140
+    ],
+    "protenix_contact_cutoff_angstrom": 8.0,
+    "boltz_anchor_max_distance_angstrom": 6.0,
+    "minimum_ligand_fraction_within_pocket": 0.5,
+    "diffusion_gradient": false
+  },
+  "acceptance_policy": "fixed_step",
+  "extension": {
+    "version": "protenix-serial50k-v1",
+    "start_global_update": 0,
+    "target_global_update": 50000,
+    "segment_updates": 10000,
+    "parent_job": null
+  }
+}

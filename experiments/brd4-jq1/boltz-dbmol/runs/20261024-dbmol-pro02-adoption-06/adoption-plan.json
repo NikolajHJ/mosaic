@@ -1,0 +1,72 @@
+{
+  "version": "protenix02-peer-adoption-v1",
+  "status": "resource_blocked_unsealed_local_preparation",
+  "profile": "dbmol10k",
+  "scientific_source": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-release-02/source",
+  "scientific_source_manifest_sha256": "600ecc3b33135141a57c029a28a2c72f29e788e3ecf5cb2dac1761146d1d6eed",
+  "scientific_output_root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02",
+  "adoption_control_root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-pro02-adoption-06",
+  "actual_native_job_ids": {
+    "boltz2_dbmol": [
+      "29805980",
+      "29805981"
+    ]
+  },
+  "metadata_cpu_may_precede_native_results": true,
+  "scientific_cpu_certificate_unchanged": true,
+  "new_metadata_cpu_certificate_separate": true,
+  "ownership_requires": [
+    "original dispatch.lock",
+    "no segments or unknown production outcomes",
+    "all actual native callbacks finalized",
+    "exclusive adoption marker"
+  ],
+  "before_production_requires": [
+    "original1163-case CPU and component/total native0 proofs",
+    "new metadata CPU contracts",
+    "actual Protenix03 full CPU and both native projections",
+    "actual both Boltz30k full projections",
+    "real generated startup smoke",
+    "fresh whole-campaign byte/inode gates with unchanged reserves"
+  ],
+  "allowed_mutable_metadata": [
+    "projection.json nondecreasing actual native maxima",
+    "jobs.json actual new IDs only"
+  ],
+  "immutable_scientific_fields": [
+    "source",
+    "configuration",
+    "driver",
+    "worker",
+    "CPU/native/readiness proofs",
+    "arrays",
+    "JSONL",
+    "summaries",
+    "rate",
+    "loss",
+    "gradient gates"
+  ],
+  "operational_launch_tooling_ready": false,
+  "protenix03_source": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source",
+  "protenix03_root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03",
+  "protenix03_manifest_pin": "da9db6821d26b884ca1749303fc8e0b0095bd9ee7cbd1b427cdcf1b22eec6562",
+  "current_peer_version": "Protenix03; local unsubmitted02 preserved separately",
+  "metadata_cpu_case_count": 73,
+  "metadata_control_allowance_per_root_bytes": 1073741824,
+  "unrecognized_noisy_capsules": "fail closed every admission phase with persisted raw inventory",
+  "resource_blocker": {
+    "peer": "Protenix03",
+    "stage": "preflight before CPU/jobs",
+    "required_bytes": 41643669252,
+    "conservative_available_bytes": 27472908456,
+    "projected_bytes": 37348701956,
+    "reserve_bytes": 4294967296,
+    "shortfall_bytes": 14170760796,
+    "source_staged_read_only": true,
+    "cpu_submitted": false,
+    "new_peer_native_passed": false,
+    "storage_gate_reduced": false,
+    "scope": "Actual whole-project preflight failure, no verified permitted cleanup subset closes the gap; further capacity/human scope required"
+  },
+  "metadata_preparation_validation": "stdlib AST/compile/JSON/byte review only; allocated metadata cases remain unexecuted"
+}

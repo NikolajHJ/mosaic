@@ -1,5 +1,5 @@
 {
-  "status": "blocked_hpc_authentication",
+  "status": "native_readiness_passed_production_pending_peer_recovery",
   "source02_manifest_sha256": "600ecc3b33135141a57c029a28a2c72f29e788e3ecf5cb2dac1761146d1d6eed",
   "source02_archive_bytes": 39676528,
   "source02_archive_sha256": "592a4b3d7d95909111013dacc95d4a1301b6e875fb124267ad08af7ca402381e",
@@ -20,13 +20,60 @@
   },
   "required_checks": {
     "cpu_cases": 1163,
-    "cpu_status": "not_submitted",
-    "actual_generated_driver_startup_status": "not_run",
-    "native_gradient_status": "not_submitted",
+    "cpu_status": "passed_1163",
+    "actual_generated_driver_startup_status": "validation_command_passed;production_command_pending_capacity_adoption",
+    "native_gradient_status": "passed_29805980",
     "long_run_status": "not_submitted"
   },
-  "independent_full_dispatch_blocker": "Existing Protenix641 full native projections are not established; no full-long quota gate waiver or Protenix scope change",
+  "independent_full_dispatch_blocker": "Actual replacement Pro03 native projections and launcher-only allocated adoption/full-capacity guards pending; original failed Pro641 projections never fabricated",
   "saved_results_changed": false,
   "history_preserved": "Old pilot01 CPU passes and all native/engineering failures remain separately authenticated",
-  "required_human_action": "Restore DTU HPC SSH authentication; inspect exact staging marker, remote source/root/unknown-outcome paths before any recovery"
+  "required_human_action": "Provide additional HPC quota/storage directory or identify a specific inactive dataset eligible for verified archival; current saved runs/proofs/sources unchanged",
+  "recovery_02": {
+    "receipt": "recovery-02-submissions.json",
+    "cpu": "29805915",
+    "callback": "29805916",
+    "observed_utc": "2026-10-24T08:57:59.311043+00:00"
+  },
+  "cpu_status": "passed",
+  "latest_verified_06": {
+    "evidence_utc": "2026-10-24T09:05:32.856778+00:00",
+    "independent_verification_sha256": "bd1ecd1bb2a7128f093e84dc95e8047ad0d0dc454690b077278e1c9bd53ea041",
+    "receipt": "cpu-startup-verification-06.json",
+    "actual_cases": 1163,
+    "cpu_certificate_sha256": "387070e8fe56b17ddbd7c8e0b82d2d6a44d9aa99e7015d3fbe4757ce82c0819b",
+    "startup_only_results": [],
+    "native_jobs": {},
+    "production_started": false,
+    "scientific_readiness_passed": false
+  },
+  "latest_verified_07": {
+    "observed_utc": "2026-10-24T09:08:48.289935+00:00",
+    "receipt": "cpu-startup-verification-07.json",
+    "receipt_sha256": "f42274bfb920ba9e8cbe2f7a8bf2e5ebf4f16de4398ca87e22982fa70561cead",
+    "CPU_cases": 1163,
+    "all_validation_startup_commands_passed": true,
+    "native_submissions": {
+      "pilot-native-0000": {
+        "job_id": "29805980",
+        "phase": "native",
+        "scheduler_state": "PEND",
+        "scientific_readiness": "not assessed by this metadata audit"
+      }
+    },
+    "optimization_jobs": []
+  },
+  "native_job": "29805980",
+  "native_callback": "29805981",
+  "latest_verified_08": {
+    "observed_utc": "2026-10-24T09:14:55.186880+00:00",
+    "receipt": "dbmol-native-verification-08.json",
+    "receipt_sha256": "dcd06bddbd05847af07734ae9522fe9a1f1216a7282f4e17e1be5b22dd2779c0",
+    "native_job": "29805980",
+    "callback_job": "29805981",
+    "native_readiness": "passed",
+    "production_started": false
+  },
+  "production_blocker": "Unchanged shared storage failed before replacement Pro03 CPU:41,643,669,252required vs27,472,908,456available;14,170,760,796shortfall before full Pro projections. Native readiness passed for all3Boltz/DBMol. Additional approved capacity needed; no full-admission/gate waiver.",
+  "capacity_observation": "experiments/brd4-jq1/boltz-lr0025/runs/20261024-boltz-lr0025-03/capacity-observation-01.json"
 }

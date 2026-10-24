@@ -1,0 +1,7 @@
+
+
+### 2026-10-24 — full Boltz827/DBMol1163 CPU suites passed; both Boltz actual startup commands passed
+
+Independent standard-library byte/JSON/XML/schema/source/resource/same-job LSF verification of194 compact files at09:05:32UTC authenticated baselineCPU29805913 DONE/827 actual rows (467+239+34+59+28), certificate06efbb027f1008a0921494af0e226c3fc7a78c0a8f4ab01b93e8b50f2c042836, and DBMolCPU29805915 DONE/1163 actual rows (500+239+34+59+83+148+72+28), certificate387070e8fe56b17ddbd7c8e0b82d2d6a44d9aa99e7015d3fbe4757ce82c0819b. No failures/errors/skips; inherited three legacy deselections are explicit. XML hpc-contract headers470/503 include three unchanged unittest subtest header increments; actual467/500 rows/log counts are the scope, no count inflation.
+
+Baselinecallback29805914 actualDONE/same-jobLSF; both real generated validation commands reached the intentional pre-model boundary with exactsource/config/CPU/reference/pocket/context/argv bindings. Startup-only receipts remain explicitly not gradient/readiness/optimization passes. Nativeplain29805950 RUN/callback29805951 PEND; nativechemistry29805958/callback29805959 PEND. DBMolcallback29805916 RUN/actualstartup notyetverified; no DBMol nativeID yet. Optimization0. Old huge summaries and prepared context are exact remote-hash metadata-only references, not a claim those original bytes were downloaded. Detailed independent receipts are cpu-startup-verification-06.json in new03 and launcher05; savedresults/settings/oldfailures unchanged.

@@ -1,0 +1,187 @@
+def command_path(arm,phase,index):
+    offset(arm,index);require(phase in ('native','segment'),'Unknown startup phase')
+    return ROOT/(f'startup-command-{arm}-{phase}-{index:04d}.json')
+
+def startup_inputs(arm,phase,index,manifest):
+    paths={'config':config(arm),'cpu-certificate':cpu_certificate(manifest),
+           'reference':ROOT/'cpu/payload/composition_reference.json','pocket':ROOT/'cpu/payload/pocket_definition.json'}
+    context_ready=CONTEXT_READY
+    if phase=='segment':
+        context_ready,_=native_assessment(arm,index,manifest)
+        paths['ready']=context_ready
+    else:require(sha(context_ready)==CONTEXT_READY_SHA,'Original frozen context assessment changed')
+    paths['context-assessment']=context_ready
+    context=read(context_ready)['context_files']
+    require(set(context)=={'prepared_context.json','prepared_context.npz'},'Frozen context file scope differs')
+    for name,digest in context.items():
+        path=context_ready.parent/'context'/name
+        require(sha(path)==digest,'Frozen context bytes changed')
+        paths['context-'+name]=path
+    snapshot=input_snapshot(arm,index)
+    if snapshot:
+        path=Path(snapshot['path']);require(sha(path)==snapshot['sha256'],'Exact predecessor snapshot changed')
+        paths['resume-snapshot']=path
+    return {key:{'path':str(path),'bytes':path.stat().st_size,'sha256':sha(path)} for key,path in paths.items()}
+
+def startup_args(arm,phase,index,manifest,inputs,output):
+    args=[PYTHON,str(SOURCE/'examples/brd4_25_atoms.py'),'--mode','validate' if phase=='native' else 'run',
+          '--config',inputs['config']['path'],'--output',output,'--manifest',manifest,
+          '--cpu-certificate',inputs['cpu-certificate']['path'],'--cpu-certificate-sha256',inputs['cpu-certificate']['sha256'],
+          '--reference',inputs['reference']['path'],'--pocket',inputs['pocket']['path'],'--pocket-sha256',POCKET,
+          '--offset',str(offset(arm,index)),'--segment-steps','10000']
+    if 'resume-snapshot' in inputs:args+=['--resume-snapshot',inputs['resume-snapshot']['path'],'--resume-sha256',inputs['resume-snapshot']['sha256']]
+    if 'ready' in inputs:args+=['--ready',inputs['ready']['path'],'--ready-sha256',inputs['ready']['sha256']]
+    return args
+
+def verify_command_capture(arm,phase,index,manifest):
+    path=command_path(arm,phase,index);record=read(path);verify_proofs(record)
+    r=record['result'];inputs=startup_inputs(arm,phase,index,manifest)
+    require(record['source_manifest_sha256']==manifest and record['version']==STARTUP_VERSION
+            and record['arm']==arm and record['phase']==phase and record['index']==index,
+            'CPU command certificate scope differs')
+    require(r['version']==STARTUP_VERSION and r['kind']=='cpu_generated_command_only'
+            and r['status']=='command_only_authenticated' and r['queue']=='hpc'
+            and r['source']==str(SOURCE) and r['source_manifest_sha256']==manifest and r['git_revision_reference']==REVISION
+            and r['arm']==arm and r['phase']==phase and r['index']==index and r['inputs']==inputs
+            and r['actual_driver_executed'] is False and r['gpu_startup_passed'] is False
+            and r['model_loaded'] is False and r['gradient_passed'] is False and r['scientific_readiness_passed'] is False
+            and r['optimizer_updates']==0 and r['saved_results_changed'] is False,'CPU command metadata cannot certify GPU startup/science')
+    owner=Path(record['owner_parent']);require(owner.parent==ROOT,'CPU command owner escapes campaign')
+    submission=read(owner/'submission.json')
+    require(submission['outcome']=='submitted' and submission['job_id']==record['owner_job_id']==r['job_id']
+            and submission['phase'] in ('after-cpu','after-native','after-segment','dispatch')
+            and submission['args']==command(owner.name,submission['phase'],manifest,submission['dependency']),
+            'CPU command owner submission/resources differs')
+    expected=[owner/'submission.json',SOURCE/'source_manifest.json',SOURCE/'scripts/extended_startup.py',*[Path(v['path']) for v in inputs.values()]]
+    require({p['path']:p['sha256'] for p in record['proofs']}=={str(p):sha(p) for p in expected},'CPU command input/proof coverage differs')
+    args=r['args'];require(args.count('--output')==1,'Missing exact disposable output')
+    require(args==startup_args(arm,phase,index,manifest,inputs,args[args.index('--output')+1]),'Actual generated CPU command differs')
+    return record
+
+def ensure_command_capture(arm,phase,index,manifest,owner):
+    path=command_path(arm,phase,index)
+    if path.exists():return verify_command_capture(arm,phase,index,manifest)
+    started=path.with_name(path.stem+'-started.json');require(not started.exists(),'Unknown command-capture outcome; no replay')
+    require(os.environ.get('LSB_QUEUE')=='hpc' and os.environ.get('TMPDIR'),'CPU command capture requires allocated hpc/node TMP')
+    owner=Path(owner);submission=read(owner/'submission.json');executing(owner,submission['phase'],manifest)
+    exclusive(started,{'outcome':'unknown','owner_job_id':os.environ['LSB_JOBID'],'arm':arm,'phase':phase,'index':index})
+    from extended_startup import capture_cpu
+    result=capture_cpu(sys.modules[__name__],manifest,Path(os.environ['TMPDIR'])/f'pro-command-{arm}-{phase}-{index:04d}',arm=arm,index=index,phase=phase)
+    inputs=startup_inputs(arm,phase,index,manifest)
+    paths=[owner/'submission.json',SOURCE/'source_manifest.json',SOURCE/'scripts/extended_startup.py',*[Path(v['path']) for v in inputs.values()]]
+    exclusive(path,{'status':'passed','version':STARTUP_VERSION,'source_manifest_sha256':manifest,'arm':arm,'phase':phase,'index':index,
+                    'owner_job_id':submission['job_id'],'owner_parent':str(owner),'result':result,
+                    'scope':'Actual command/input metadata only; real GPU startup remains pending',
+                    'proofs':[{'path':str(p),'sha256':sha(p)} for p in paths]})
+    return verify_command_capture(arm,phase,index,manifest)
+
+def verify_gpu_startup(arm,phase,index,manifest,parent):
+    cpu=verify_command_capture(arm,phase,index,manifest)
+    parent=Path(parent);path=parent/'startup-gpu.json';record=read(path);verify_proofs(record)
+    r=record['result'];inputs=startup_inputs(arm,phase,index,manifest);submission=read(parent/'submission.json')
+    require(record['source_manifest_sha256']==manifest and record['version']==STARTUP_VERSION
+            and record['arm']==arm and record['phase']==phase and record['index']==index,
+            'GPU startup certificate applicability differs')
+    require(parent==ROOT/name(arm,phase,index) and submission['outcome']=='submitted'
+            and submission['job_id']==r['job_id'] and submission['phase']==phase
+            and submission['args']==command(parent.name,phase,manifest,submission['dependency']),
+            'Actual GPU startup owner/resources/source differs')
+    require(r['version']==STARTUP_VERSION and r['kind']=='gpu_startup_only' and r['status']=='startup_only_passed'
+            and r['queue']=='gpul40s' and r['source']==str(SOURCE) and r['source_manifest_sha256']==manifest
+            and r['git_revision_reference']==REVISION and r['arm']==arm and r['phase']==phase and r['index']==index
+            and r['inputs']==inputs and r['actual_driver_executed'] is True and r['gpu_backend_guard_executed_unchanged'] is True
+            and r['model_loaded'] is False and r['gradient_passed'] is False and r['scientific_readiness_passed'] is False
+            and r['optimizer_updates']==0 and r['saved_results_changed'] is False,'GPU startup cannot certify science or optimization')
+    expected=[parent/'submission.json',command_path(arm,phase,index),SOURCE/'source_manifest.json',SOURCE/'scripts/extended_startup.py',*[Path(v['path']) for v in inputs.values()]]
+    require({p['path']:p['sha256'] for p in record['proofs']}=={str(p):sha(p) for p in expected},'GPU startup proof coverage differs')
+    args=r['args'];require(args.count('--output')==1 and args==startup_args(arm,phase,index,manifest,inputs,args[args.index('--output')+1]),'GPU actual driver command differs')
+    summary=r['summary']
+    require(summary['status']=='failed' and summary['error']=='ProtenixPremodelBoundaryReached: Intentional Protenix GPU startup-only boundary; no native model loaded'
+            and summary['source_manifest_sha256']==manifest and summary['source']['git_revision_reference']==REVISION
+            and not summary.get('model_digest') and not summary.get('native_gradient_checks') and not summary.get('cases'),
+            'Disposable startup sentinel must remain a failed pre-model summary')
+    return record
+
+def ensure_gpu_startup(arm,phase,index,manifest,parent):
+    require(os.environ.get('LSB_QUEUE')=='gpul40s' and os.environ.get('TMPDIR'),'Actual GPU allocation/node TMP required')
+    parent=Path(parent);executing(parent,phase,manifest);verify_command_capture(arm,phase,index,manifest)
+    path=parent/'startup-gpu.json';started=parent/'startup-gpu-started.json'
+    require(not path.exists() and not started.exists(),'Inspect existing/unknown GPU startup; no replay')
+    exclusive(started,{'outcome':'unknown','owner_job_id':os.environ['LSB_JOBID'],'arm':arm,'phase':phase,'index':index})
+    from extended_startup import gpu_startup
+    result=gpu_startup(sys.modules[__name__],manifest,Path(os.environ['TMPDIR'])/f'pro-gpu-startup-{arm}-{phase}-{index:04d}',arm=arm,index=index,phase=phase)
+    inputs=startup_inputs(arm,phase,index,manifest)
+    paths=[parent/'submission.json',command_path(arm,phase,index),SOURCE/'source_manifest.json',SOURCE/'scripts/extended_startup.py',*[Path(v['path']) for v in inputs.values()]]
+    exclusive(path,{'status':'passed','version':STARTUP_VERSION,'source_manifest_sha256':manifest,'arm':arm,'phase':phase,'index':index,
+                    'result':result,'scope':'Actual unchanged GPU/FP32/provenance startup only; native scientific checks still mandatory',
+                    'proofs':[{'path':str(p),'sha256':sha(p)} for p in paths]})
+    return verify_gpu_startup(arm,phase,index,manifest,parent)
+
+def external_budgets(full_required):
+    peers={};missing=[]
+    declarations=[('baseline',BASELINE,BASELINE_SOURCE,('boltz2','boltz2_chemistry'),(3,3),
+                   'c214bccf2c94ac6829996bc0ca7d6415d3c19549be4fe7f874cba2b433901cc6'),
+                  ('dbmol',DBMOL,DBMOL_SOURCE,('boltz2_dbmol',),(4,),
+                   '600ecc3b33135141a57c029a28a2c72f29e788e3ecf5cb2dac1761146d1d6eed')]
+    for key,root,source,arms,segments,manifest in declarations:
+        projection_path=root/'projection.json'
+        if not projection_path.exists():
+            require(not any(root.glob('*-segment-*')) and not (root/'long-submissions.json').exists(),'Peer optimization/unknown markers lack full projection')
+            require(not full_required,'Await authenticated full peer native projections: '+key)
+            current=sum(tree(path) for arm in arms for path in root.glob((arm if key=='baseline' else 'pilot')+'-*'))
+            budget=len(arms)*GIB;require(0<=current<=budget,'Pending peer native allowance exceeded')
+            peers[key]={'full':budget,'current':current,'remaining':budget-current,'scope':'native validation allowance only'}
+            missing.append(key);continue
+        require(sha(source/'source_manifest.json')==manifest,'Peer scientific source changed')
+        cpu_path=root/'cpu-certificate.json';cpu=read(cpu_path);verify_proofs(cpu)
+        require(cpu['source_manifest_sha256']==manifest,'Peer CPU source differs')
+        base=read(projection_path)
+        if key=='baseline':
+            require(set(base)==set(arms),'Both baseline projections required')
+            units={arm:base[arm]['unit_bytes'] for arm in arms}
+        else:
+            verify_proofs(base);require(base['source_manifest_sha256']==manifest,'DBMol projection source differs')
+            units={arms[0]:base['unit_bytes']}
+        current=0;budget=0
+        for arm,count in zip(arms,segments):
+            observed=[]
+            pattern=(arm if key=='baseline' else 'pilot')+'-native-*-certificate.json'
+            for path in sorted(root.glob(pattern)):
+                cert=read(path);verify_proofs(cert);require(cert['source_manifest_sha256']==manifest,'Peer native source differs')
+                producer=root/path.name.removesuffix('-certificate.json');submission=read(producer/'submission.json')
+                require(submission['outcome']=='submitted' and submission['phase']=='native','Peer native actual producer missing')
+                ready_path=producer/'payload/study/assessment.json';ready=read(ready_path)
+                config_path=source/('examples/configs/boltz_serial_'+arm+'.json' if key=='baseline' else 'examples/configs/dbmol_pilot.json')
+                require(ready['status']=='passed' and ready['source_manifest_sha256']==manifest
+                        and ready['config_sha256']==sha(config_path)
+                        and any(p['path']==str(ready_path) and p['sha256']==sha(ready_path) for p in cert['proofs']),
+                        'Peer readiness source/config/proofs differ')
+                unit=ready['storage_projection']['maximum_pilot_update_bytes'];require(type(unit) is int and unit>0,'Invalid native peer projection unit')
+                observed.append(unit)
+            require(observed and type(units[arm]) is int and units[arm]==max(observed),'Peer full projection is not all authenticated native maxima')
+            budget+=2*max(observed)*(count*10000 if key=='baseline' else 10000)+count*GIB
+            current+=sum(tree(path) for path in root.glob((arm if key=='baseline' else 'pilot')+'-*'))
+        require(0<=current<=budget,'Peer full output projection exceeded')
+        peers[key]={'full':budget,'current':current,'remaining':budget-current,'source_manifest_sha256':manifest,
+                    'projection_sha256':sha(projection_path),'scope':'Declared mutable capacity metadata; exact all authenticated native maxima, no lowering'}
+    return peers,missing
+
+def dispatch(manifest,parent):
+    values=read(ROOT/'projection.json') if (ROOT/'projection.json').exists() else {}
+    if set(values)!=set(ARMS):
+        exclusive(Path(parent)/'waiting.json',{'status':'waiting_own_native_projections','long_submitted':False});return
+    _,missing=external_budgets(False)
+    if missing:
+        exclusive(Path(parent)/'waiting.json',{'status':'waiting_peer_native_projections','missing':missing,'long_submitted':False,
+                    'required_action':'New declared CPU dispatch after authenticated peer projections; never replay callbacks or waive full budgets'});return
+    for arm in ARMS:
+        for index in range(COUNTS[arm]):
+            cert=ROOT/(name(arm,'native',index)+'-certificate.json')
+            if not cert.exists():continue
+            label=name(arm,'segment',index)
+            if (ROOT/label).exists():
+                require(read(ROOT/label/'submission.json')['outcome']=='submitted','Unknown segment outcome blocks duplicate');continue
+            verify_proofs(read(cert));native_assessment(arm,index,manifest)
+            storage_gate(parent,'dispatch-'+arm+'-'+str(index),all_budgets(),existing_full=True)
+            ensure_command_capture(arm,'segment',index,manifest,parent)
+            sub=submit(label,'segment',manifest);submit(name(arm,'after-segment',index),'after-segment',manifest,'ended('+sub['job_id']+')')

@@ -1,0 +1,15 @@
+{
+  "status": "preparing_not_submitted",
+  "user_authorization": "Correct and revalidate separate random50k and original-completed-plus40k Protenix provenance/startup without changing settings or saved results",
+  "parent_source_manifest_sha256": "a30f980fd8fe95001fdfc6780d720bdde6486d2421d7e4942b119ace61777f00",
+  "authenticated_ancestor_manifest_sha256": "c2628d08f7224f3b572ab456f4113d8a66b587a5d69f85a072877052fc09a057",
+  "git_revision_reference": "c74c659344123937608077e3e4078f75f09cd743",
+  "remote_root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-02",
+  "remote_source": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-02/source",
+  "scientific_library_driver_protocol_configs_changed": false,
+  "saved_results_changed": false,
+  "old_native_failure_jobs_preserved": ["29798159", "29798160", "29798161", "29798162"],
+  "cpu_startup_scope": "Actual generated command/input metadata only; no GPU startup claim",
+  "gpu_startup_scope": "Unchanged real GPU/FP32 driver; intentional premodel sentinel before FrozenProtenixTiny.load",
+  "local_validation": "Standard-library byte/AST/JSON only; all allocated execution pending"
+}

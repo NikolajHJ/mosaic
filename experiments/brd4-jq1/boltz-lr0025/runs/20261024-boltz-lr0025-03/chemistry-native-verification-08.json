@@ -1,0 +1,28 @@
+{
+  "status": "passed_native_readiness_byte_schema_audit",
+  "arm": "boltz2_chemistry",
+  "native_job": "29805958",
+  "callback_job": "29805959",
+  "source_manifest_sha256": "c214bccf2c94ac6829996bc0ca7d6415d3c19549be4fe7f874cba2b433901cc6",
+  "readiness_sha256": "927a20848aa65d30f2d22e3b8441a561ce1e6d33a0ce72ea30773c56d368349a",
+  "native_certificate_sha256": "643fa9a1c5993c98758dd4ad53265079b08fdc4b34a8f1feecf6f470053afa7a",
+  "summary_sha256": "2146f8fe72e14d1f85d8daae3e7c1d83c7873cfd3f87e037a2e59cebc21bf6cd",
+  "readiness_proof_files_verified": 128,
+  "cpu_cases_verified": 827,
+  "raw_epsilon_ladder": [
+    0.01,
+    0.003,
+    0.001
+  ],
+  "reported_adjacent_agreement_authenticated": true,
+  "hard_parity_frozen_runtime_passes_authenticated": true,
+  "reported_ten_update_pilots_authenticated": 2,
+  "production_optimization_started": false,
+  "storage_projection": {
+    "maximum_pilot_update_bytes": 202587,
+    "policy": "twice largest saved pilot update plus 1 GiB for metadata/context; fresh campaign-wide quota gate before submission",
+    "projected_bytes": 5125481824
+  },
+  "metadata_sha256": "683b2da7425cb4e8146b006a10eb2edfdf1a05e434d134a87eedea284c77c31f",
+  "scope": "Local stdlib byte/schema/LSF/source proof verification only. No array decoding, derivative recomputation, inference or model execution. Original allocated numerical checks remain authoritative."
+}

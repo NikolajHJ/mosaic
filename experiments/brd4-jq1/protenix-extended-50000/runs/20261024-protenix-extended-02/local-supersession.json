@@ -1,0 +1,14 @@
+{
+  "status": "local_unsubmitted_candidate_preserved",
+  "source_manifest_sha256": "f1c15dc99052a8c4764e4ea0d0e9d8ca068e1c496e12c8c76c55251233b1220e",
+  "archive_sha256": "e04c57d588ef3bc531902f8ccc8fbb2d634ceea78dc8cbe6640cfbb3607d6b36",
+  "reason": "Read-only engineering review found that in-process realGPU startup could retain a GPU client while launching the production child",
+  "cause_scope": "A prospective resource-interference risk inferred from process lifetime; no OOM or allocated failure occurred",
+  "allocated_execution_established": false,
+  "hpc_staging_or_submission_established": false,
+  "sealed_bytes_modified": false,
+  "successor_candidate": "20261024-protenix-extended-03",
+  "correction_scope": "Execute genuine unchanged-driver GPU startup in a short-lived same-allocation child, await child exit and authenticate its receipt before production",
+  "scientific_source_settings_allocator_policy_changed": false,
+  "reference": "https://docs.jax.dev/en/latest/gpu_memory_allocation.html"
+}

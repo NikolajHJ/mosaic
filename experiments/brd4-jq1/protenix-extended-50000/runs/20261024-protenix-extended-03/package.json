@@ -1,0 +1,26 @@
+{
+  "tag": "20261024-protenix-extended-03",
+  "manifest_sha256": "da9db6821d26b884ca1749303fc8e0b0095bd9ee7cbd1b427cdcf1b22eec6562",
+  "source_files": 643,
+  "archive_bytes": 39644558,
+  "archive_sha256": "bde714a20a49308365744ab5018c06a6d68dff82c3485dc075848827a5f7a8ef",
+  "parent_manifest_sha256": "a30f980fd8fe95001fdfc6780d720bdde6486d2421d7e4942b119ace61777f00",
+  "git_revision_reference": "c74c659344123937608077e3e4078f75f09cd743",
+  "git_revision_inheritance": {
+    "version": "authenticated-ancestor-git-revision-v1",
+    "ancestor_manifest_sha256": "c2628d08f7224f3b572ab456f4113d8a66b587a5d69f85a072877052fc09a057",
+    "ancestor_archive_sha256": "4d6d297451d9820543abc3298622e6599014c4b96bc999e104dd732825f56e4e",
+    "field": "git_revision_reference",
+    "value": "c74c659344123937608077e3e4078f75f09cd743"
+  },
+  "changed_members": {
+    "scripts/extended_ops.py": "305277d9f5b8fc6678e4f950f7a799eb99f83ba973a1349f88ed9ee1c4d5db2f",
+    "docs/protenix_extended.md": "6a0d408b0b0d22ccbd3dc3af8a10c069099dff3f39007d5a9f8fe9a9a81dfe54",
+    "scripts/hpc/extended_cpu.lsf": "14eb28b2d97f843e11d43023960b0a0c121bd7cf8b83c834f04d3d456a5abd74",
+    "scripts/extended_startup.py": "fe35348952ec4bc2ba20d61df5a565a9389e9b64f3f6429657221bdd0b48b573",
+    "tests/test_extended_startup.py": "014284868e1f916449b91bc189501b5f5fad41b9e309ad1f6532f1671624fb94"
+  },
+  "unchanged_scientific_src_members": 145,
+  "unchanged_original641_members": 638,
+  "execution": "Local stdlib byte/AST packaging only; allocated CPU/GPU checks pending"
+}

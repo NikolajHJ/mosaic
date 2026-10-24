@@ -1,5 +1,5 @@
 {
-  "state": "blocked_hpc_authentication",
+  "state": "native_readiness_passed_production_resource_blocked",
   "package": {
     "tag": "20261024-boltz-dbmol-pilot-02",
     "source_files": 657,
@@ -25,8 +25,21 @@
     "first_preflight": "read-only connection aborted with no completed targets/quota/peer inventory",
     "blind_retry_allowed": false
   },
-  "new_jobs_submitted": false,
-  "allocated_startup_tests_executed": false,
+  "new_jobs_submitted": true,
+  "allocated_startup_tests_executed": true,
   "scientific_bytes_changed": false,
-  "saved_results_changed": false
+  "saved_results_changed": false,
+  "status": "staged_readonly_CPU1163_and_actual_validation_startup_and_native_passed",
+  "recovery_02": {
+    "stage_receipt": "results/hpc/20261024-boltz-dbmol-pilot-02/staging-recovery-02/result.json",
+    "all657_member_bytes_unchanged": true,
+    "launcher_cpu": "29805915",
+    "launcher_callback": "29805916"
+  },
+  "native_job": "29805980",
+  "native_callback": "29805981",
+  "production_submitted": false,
+  "launcher": "20261024-boltz-dbmol-storage-05",
+  "native_verification": "experiments/brd4-jq1/boltz-dbmol/runs/20261024-boltz-dbmol-storage-05/dbmol-native-verification-08.json",
+  "resource_blocker": "Unchanged shared guard requires41,643,669,252bytes vs27,472,908,456available before replacement Pro03 CPU; actual full Pro projections and metadata adoption pending; no saved results/settings/gates altered"
 }

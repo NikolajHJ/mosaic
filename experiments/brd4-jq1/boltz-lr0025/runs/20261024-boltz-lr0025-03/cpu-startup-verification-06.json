@@ -1,0 +1,107 @@
+{
+  "actual_native_or_segment_submissions": {
+    "boltz2-native-0000": {
+      "job_id": "29805950",
+      "phase": "native",
+      "scheduler_state": "RUN",
+      "scientific_readiness": "not assessed by this metadata audit"
+    },
+    "boltz2_chemistry-native-0000": {
+      "job_id": "29805958",
+      "phase": "native",
+      "scheduler_state": "PEND",
+      "scientific_readiness": "not assessed by this metadata audit"
+    }
+  },
+  "callback_done_lsf_authenticated": true,
+  "cpu": {
+    "cases": 827,
+    "certificate_sha256": "06efbb027f1008a0921494af0e226c3fc7a78c0a8f4ab01b93e8b50f2c042836",
+    "count_policy": "Actual raw testcase rows and logs; inherited unittest subtest header differences are recorded separately",
+    "cpu_passed": true,
+    "groups": {
+      "chemistry": 59,
+      "hpc-contract": 467,
+      "legacy": 239,
+      "native-mapping": 34,
+      "startup": 28
+    },
+    "raw_xml_header_counts": {
+      "chemistry": 59,
+      "hpc-contract": 470,
+      "legacy": 239,
+      "native-mapping": 34,
+      "startup": 28
+    },
+    "status": "full_cpu_evidence_verified"
+  },
+  "downloaded_small_files_verified": 194,
+  "external_files_metadata_only": {
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-boltz2/payload/study/summary.json": {
+      "bytes": 301971481,
+      "local_bytes_downloaded": false,
+      "sha256": "06a68008a0dfb8b6a66668447bcda4f01c7b54427d9b68f0d84e5926db278cc1"
+    },
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-protenix/payload/study/summary.json": {
+      "bytes": 298580732,
+      "local_bytes_downloaded": false,
+      "sha256": "b94d4bae58b7c82b92f4cf0b6b0e9804734afff0f54ea0b162b65d825ec2661d"
+    },
+    "/zhome/95/e/206121/mosaic-runs/20261021-brd4-jq1-25-01/prepare/payload/prepared/context.pt": {
+      "bytes": 16063255,
+      "local_bytes_downloaded": false,
+      "sha256": "a18a331269170aac3281b0a2ecad313aab81756c9b77e048d7e2cbaa4d8f1093"
+    }
+  },
+  "jobs": {
+    "after-cpu": "29805914",
+    "boltz2-after-native-0000": "29805951",
+    "boltz2-native-0000": "29805950",
+    "boltz2_chemistry-after-native-0000": "29805959",
+    "boltz2_chemistry-native-0000": "29805958",
+    "cpu": "29805913"
+  },
+  "kind": "baseline",
+  "metadata_sha256": "e0f2ac7b77cb9420bc89a481292e6d5ac60decc35227eeba1405f5117199cd45",
+  "scheduler_snapshot": {
+    "after-cpu": "DONE",
+    "boltz2-after-native-0000": "PEND",
+    "boltz2-native-0000": "RUN",
+    "boltz2_chemistry-after-native-0000": "PEND",
+    "boltz2_chemistry-native-0000": "PEND",
+    "cpu": "DONE"
+  },
+  "scope": "Independent stdlib byte/JSON/XML/LSF/source/resource/startup verification only. Original big summaries/context are remote-hash references, not downloaded bytes. Startup success is not native gradient readiness or optimization. No local numerical/model execution.",
+  "source_manifest_sha256": "c214bccf2c94ac6829996bc0ca7d6415d3c19549be4fe7f874cba2b433901cc6",
+  "source_members_verified": 635,
+  "startup_only_results": [
+    {
+      "arm": "boltz2",
+      "index": 0,
+      "native_gradient_passed": false,
+      "optimization_started": false,
+      "owner_cpu_job_id": "29805914",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/startup-boltz2-native-0000.json",
+      "phase": "native",
+      "sha256": "6a81b08f19b26f4399aa51e7fdda1492f7e335a1e32e557bb6144232ae58f607",
+      "status": "startup_only_passed"
+    },
+    {
+      "arm": "boltz2_chemistry",
+      "index": 0,
+      "native_gradient_passed": false,
+      "optimization_started": false,
+      "owner_cpu_job_id": "29805914",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/startup-boltz2_chemistry-native-0000.json",
+      "phase": "native",
+      "sha256": "76b3ec0b1aa77a55d114d55d2b1dc4fda5cbadcc6cfc4fd04f89080cecd1d475",
+      "status": "startup_only_passed"
+    }
+  ],
+  "status": "cpu_startup_delivery_verified",
+  "storage_gates": {
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/after-cpu/storage-native-dispatch/gate.json": "passed",
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/boltz2-native-0000/storage-entry/gate.json": "passed",
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/cpu/storage-cpu-entry/gate.json": "passed"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "status": "passed_native_readiness_byte_schema_audit",
+  "arm": "boltz2_dbmol",
+  "native_job": "29805980",
+  "callback_job": "29805981",
+  "source_manifest_sha256": "600ecc3b33135141a57c029a28a2c72f29e788e3ecf5cb2dac1761146d1d6eed",
+  "readiness_sha256": "04918662a1671a7089e5d8155a92ef8aec3d4a6d894f71c3a19ea487a6686992",
+  "native_certificate_sha256": "bd4ebb266280eb447a2b4a91fedf19bb97e039097a7ecd3a9b4a5055b7100a3e",
+  "summary_sha256": "e05504c0969be077b9e3d7f43f233cc6fe38816f7c7c37aa126ad1ffa78f2cb6",
+  "readiness_proof_files_verified": 53,
+  "cpu_cases_verified": 1163,
+  "raw_epsilon_ladder": [
+    0.01,
+    0.003,
+    0.001
+  ],
+  "reported_adjacent_agreement_authenticated": true,
+  "hard_parity_frozen_runtime_passes_authenticated": true,
+  "reported_ten_update_pilots_authenticated": 1,
+  "production_optimization_started": false,
+  "storage_projection": {
+    "full_projected_bytes": 4997967296,
+    "maximum_pilot_update_bytes": 35150,
+    "segment_projected_bytes": 1249491824
+  },
+  "metadata_sha256": "683b2da7425cb4e8146b006a10eb2edfdf1a05e434d134a87eedea284c77c31f",
+  "scope": "Local stdlib byte/schema/LSF/source proof verification only. No array decoding, derivative recomputation, inference or model execution. Original allocated numerical checks remain authoritative."
+}

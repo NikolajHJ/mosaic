@@ -1,0 +1,7 @@
+
+
+### 2026-10-24 — all three real validation startup commands passed; plain Boltz native readiness passed
+
+At09:08:48UTC both afterCPU29805914/29805916 are actualDONE/LSFsuccess. Independent270-file proof/source/schema/vector audit verified all real validation startup-only receipts, exact generated argv/inputsource/context pins and CPU827/1163 raw cases. Baseline verification7189483347d31f5fc090d395716e52c48679a7a547be5cc9f8fdac808a254e0f; DBMol f42274bfb920ba9e8cbe2f7a8bf2e5ebf4f16de4398ca87e22982fa70561cead. DBMol actual native29805980/callback29805981 PEND; chemistry29805958 RUN/callback29805959 PEND.
+
+Plain native29805950/callback29805951 actualDONE/same-job LSF. Independent byte/schema audit verified readinessSHA75f9feecf5f9eb0b1850579238718f74c1133db5e8326cf8d66e5ea96d81fea3, all52 raw proof files, exact immutable source635/config/LR.0025/fixed-single candidate/model/context/pocket, raw X/E epsilon.01/.003/.001 reported adjacent agreement, hard parity, frozen before/after and ten-update/runtime gates. This is native readiness, not10k or30k production; modevalidate has only its disposable ten-update pilot. Original numerical decisions stay allocated-HPC authoritative, no local array parsing or derivative recalculation. Full production0 and all scientific/reserve guards remain intact.

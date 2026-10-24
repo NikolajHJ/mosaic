@@ -1,0 +1,31 @@
+{
+  "status": "old_peer_startup_failure_authenticated",
+  "observed_utc": "2026-10-24T08:59:40.404020+00:00",
+  "proof_capture_sha256": "7b28b33288172998d1dd77c4e4f6a986e7eefafb8a3acf8ec0cc5e43a0bac5cc",
+  "old_source_files_rehashed": 641,
+  "native_failures": {
+    "random-native-0000": {
+      "job_id": "29798159",
+      "persisted_LSF": "EXIT1",
+      "cause": "KeyError: 'git_revision_reference' before model construction",
+      "stdout_sha256": "629e9eed183a7ea0413b89d16540d36cf37c053a9c6644c8d52f0249030078da",
+      "stderr_sha256": "3b6a507c49322336efd96f9df70f673c69eeb870c4c81d11f7e11f2a75b024ca",
+      "source_manifest_sha256": "a30f980fd8fe95001fdfc6780d720bdde6486d2421d7e4942b119ace61777f00"
+    },
+    "continuation-native-0000": {
+      "job_id": "29798161",
+      "persisted_LSF": "EXIT1",
+      "cause": "KeyError: 'git_revision_reference' before model construction",
+      "stdout_sha256": "2bacdc93fa3398c3238f156cebeac853c39d647f94502d8e7cb810ccb8bd5919",
+      "stderr_sha256": "747533af4205a17eb3e4073720a4f5cd1c2bdcd46255de7adb72a0ecd3d9ddd4",
+      "source_manifest_sha256": "a30f980fd8fe95001fdfc6780d720bdde6486d2421d7e4942b119ace61777f00"
+    }
+  },
+  "original_projection_exists": false,
+  "old_segments": [],
+  "scientific_gradient_failure_established": false,
+  "saved_results_changed": false,
+  "user_authorized_separate_immutable_peer_recovery": true,
+  "new_Protenix_scope": "Same existing random50k and additional40k continuation; metadata/startup correction and repeat original checks only",
+  "guard_waived": false
+}
