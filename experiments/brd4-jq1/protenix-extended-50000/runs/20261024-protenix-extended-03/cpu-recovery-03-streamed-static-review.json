@@ -1,0 +1,24 @@
+{
+  "status": "unexecuted_transport_only_static_review_passed",
+  "original_operator": "submit_cpu_recovery03.py",
+  "original_operator_sha256": "4715ca7cb9a4646f3c03a19b3cb81cb6cd3c9f4d4a1fd3da99694ec0971b31bc",
+  "original_operator_executed": false,
+  "candidate": "submit_cpu_recovery03_streamed.py",
+  "bytes": 30058,
+  "sha256": "e6b7d991725572be62e002b8f24289c5fa9cab7d204749cc62d2626e5d002d4a",
+  "windows_command_chars": 3593,
+  "original_windows_command_chars": 33824,
+  "unchanged_remote_bytes": 13820,
+  "unchanged_remote_sha256": "97b891efb301fbe4b50a34c34bc63e09bcc7341327f334c7d6f578316c6cb696",
+  "unchanged_original_argv_sha256": "5030766f5568675292a3e352326e889fe9cace77657a8f4fcfef698bef1fe56a",
+  "unchanged_guard_ASTs": [
+    "sha",
+    "local_archive",
+    "authenticate_staged_failure"
+  ],
+  "bootstrap_bytes": 1944,
+  "remote_execution": false,
+  "cpu_or_native_pass_claimed": false,
+  "source_or_scientific_changes": false,
+  "requires": "Verified inactive artifact removal and fresh original full admission, then actual allocated CPU866 and native checks."
+}

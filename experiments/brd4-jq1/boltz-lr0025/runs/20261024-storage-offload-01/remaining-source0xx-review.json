@@ -1,0 +1,743 @@
+{
+  "actual_quota_savings_established": false,
+  "backup_or_deletion_performed": false,
+  "cannot_supply_four_gigabytes": true,
+  "conditions": [
+    "Root selects exact inactive ordinary output files only after owner-job metadata/terminal proof and a fresh whole-account scheduler check.",
+    "Keep root/run/config/summary/gate metadata, logs and every current proof/input closure; do not delete an entire run tree.",
+    "For any hardlinked file, enumerate every live alias and retain groups with current/protected or unaudited aliases; do not equate logical bytes to reclaimed quota.",
+    "Complete local archive and every-member verification must precede any separate exact unchanged-file unlink."
+  ],
+  "files_including_retained_metadata": 13423,
+  "findings": [
+    "Current selected VAE/embedding plans, contexts/catalog and direct proof inputs do not bind the remaining roots listed here. Current source176-member import refinement and raw14-controller review remain authoritative for current execution scope.",
+    "The complete current executable member inventory contains no source063/source091/source089/source072 literal reference; source055 appears only in unused old boltz_fresh_trajectory and boltz_random_start_study configs. Those current immutable source files remain protected.",
+    "Source063 has2542hardlinked entries; current global alias membership for its groups is not exposed by exact-inventory02 because source063 was not among the approved roots. No reclaim estimate or whole-root deletion is allowed from its682380553logicalbytes.",
+    "All68remainingunprotected source0xx scopes together have at most962767797logicalbytes before retaining root metadata, reports, logs, direct proof files or hardlink aliases; they cannot honestly supply a further4GB."
+  ],
+  "input": {
+    "bytes": 4665058,
+    "path": "results/hpc/20261024-storage-offload-01/shared-closure-scan-02/stdout.bin",
+    "sha256": "cdc4292800598688eda930efb5ab5f3d9f32655285d93c5a6d80d82aa5167842"
+  },
+  "logical_upper_bound_including_retained_metadata": 962767797,
+  "priority_simple_nonlinked_roots": [
+    {
+      "candidate_for_exact_followup_only": true,
+      "files_including_metadata": 269,
+      "hardlinked_file_entries": 0,
+      "inactive_owner_terminal_proof_not_yet_captured": true,
+      "logical_bytes_including_metadata": 70838825,
+      "path": "/work3/s234818/latentmol/runs/source-091-defog-matched-pilot-attempt001-pilot",
+      "root_unchanged_in_capture": true,
+      "special_or_link_entries": 0
+    },
+    {
+      "candidate_for_exact_followup_only": true,
+      "files_including_metadata": 108,
+      "hardlinked_file_entries": 0,
+      "inactive_owner_terminal_proof_not_yet_captured": true,
+      "logical_bytes_including_metadata": 39429796,
+      "path": "/work3/s234818/latentmol/runs/source-089-defog-minimal-smoke-attempt001-smoke",
+      "root_unchanged_in_capture": true,
+      "special_or_link_entries": 0
+    },
+    {
+      "candidate_for_exact_followup_only": true,
+      "files_including_metadata": 3,
+      "hardlinked_file_entries": 0,
+      "inactive_owner_terminal_proof_not_yet_captured": true,
+      "logical_bytes_including_metadata": 24534067,
+      "path": "/work3/s234818/latentmol/runs/source-072-search-checkpoint-probe-attempt001-probe",
+      "root_unchanged_in_capture": true,
+      "special_or_link_entries": 0
+    }
+  ],
+  "roots": [
+    {
+      "candidate_for_exact_followup_only": true,
+      "files_including_metadata": 11891,
+      "hardlinked_file_entries": 2542,
+      "inactive_owner_terminal_proof_not_yet_captured": true,
+      "logical_bytes_including_metadata": 682380553,
+      "path": "/work3/s234818/latentmol/runs/source063-stability-campaign",
+      "root_unchanged_in_capture": true,
+      "special_or_link_entries": 0
+    },
+    {
+      "candidate_for_exact_followup_only": true,
+      "files_including_metadata": 269,
+      "hardlinked_file_entries": 0,
+      "inactive_owner_terminal_proof_not_yet_captured": true,
+      "logical_bytes_including_metadata": 70838825,
+      "path": "/work3/s234818/latentmol/runs/source-091-defog-matched-pilot-attempt001-pilot",
+      "root_unchanged_in_capture": true,
+      "special_or_link_entries": 0
+    },
+    {
+      "candidate_for_exact_followup_only": true,
+      "files_including_metadata": 108,
+      "hardlinked_file_entries": 0,
+      "inactive_owner_terminal_proof_not_yet_captured": true,
+      "logical_bytes_including_metadata": 39429796,
+      "path": "/work3/s234818/latentmol/runs/source-089-defog-minimal-smoke-attempt001-smoke",
+      "root_unchanged_in_capture": true,
+      "special_or_link_entries": 0
+    },
+    {
+      "candidate_for_exact_followup_only": true,
+      "files_including_metadata": 3,
+      "hardlinked_file_entries": 0,
+      "inactive_owner_terminal_proof_not_yet_captured": true,
+      "logical_bytes_including_metadata": 24534067,
+      "path": "/work3/s234818/latentmol/runs/source-072-search-checkpoint-probe-attempt001-probe",
+      "root_unchanged_in_capture": true,
+      "special_or_link_entries": 0
+    },
+    {
+      "candidate_for_exact_followup_only": true,
+      "files_including_metadata": 422,
+      "hardlinked_file_entries": 203,
+      "inactive_owner_terminal_proof_not_yet_captured": true,
+      "logical_bytes_including_metadata": 17418519,
+      "path": "/work3/s234818/latentmol/runs/source055-full-capped-pilot",
+      "root_unchanged_in_capture": true,
+      "special_or_link_entries": 0
+    },
+    {
+      "candidate_for_exact_followup_only": true,
+      "files_including_metadata": 38,
+      "hardlinked_file_entries": 0,
+      "inactive_owner_terminal_proof_not_yet_captured": true,
+      "logical_bytes_including_metadata": 10298328,
+      "path": "/work3/s234818/latentmol/runs/source059-gate-replays",
+      "root_unchanged_in_capture": true,
+      "special_or_link_entries": 0
+    },
+    {
+      "candidate_for_exact_followup_only": true,
+      "files_including_metadata": 2,
+      "hardlinked_file_entries": 0,
+      "inactive_owner_terminal_proof_not_yet_captured": true,
+      "logical_bytes_including_metadata": 9675364,
+      "path": "/work3/s234818/latentmol/runs/source-073-decoder-budget-attempt002-seed23",
+      "root_unchanged_in_capture": true,
+      "special_or_link_entries": 0
+    },
+    {
+      "candidate_for_exact_followup_only": true,
+      "files_including_metadata": 2,
+      "hardlinked_file_entries": 0,
+      "inactive_owner_terminal_proof_not_yet_captured": true,
+      "logical_bytes_including_metadata": 8147874,
+      "path": "/work3/s234818/latentmol/runs/source078-single-seed17-seed17-a1-e100",
+      "root_unchanged_in_capture": true,
+      "special_or_link_entries": 0
+    },
+    {
+      "candidate_for_exact_followup_only": true,
+      "files_including_metadata": 2,
+      "hardlinked_file_entries": 0,
+      "inactive_owner_terminal_proof_not_yet_captured": true,
+      "logical_bytes_including_metadata": 8141599,
+      "path": "/work3/s234818/latentmol/runs/source078-single-seed17-seed17-a1-e075",
+      "root_unchanged_in_capture": true,
+      "special_or_link_entries": 0
+    },
+    {
+      "candidate_for_exact_followup_only": true,
+      "files_including_metadata": 2,
+      "hardlinked_file_entries": 0,
+      "inactive_owner_terminal_proof_not_yet_captured": true,
+      "logical_bytes_including_metadata": 8127176,
+      "path": "/work3/s234818/latentmol/runs/source078-single-seed17-seed17-a1-e050",
+      "root_unchanged_in_capture": true,
+      "special_or_link_entries": 0
+    },
+    {
+      "candidate_for_exact_followup_only": true,
+      "files_including_metadata": 2,
+      "hardlinked_file_entries": 0,
+      "inactive_owner_terminal_proof_not_yet_captured": true,
+      "logical_bytes_including_metadata": 7431497,
+      "path": "/work3/s234818/latentmol/runs/source-073-decoder-budget-attempt002-seed17",
+      "root_unchanged_in_capture": true,
+      "special_or_link_entries": 0
+    },
+    {
+      "candidate_for_exact_followup_only": true,
+      "files_including_metadata": 2,
+      "hardlinked_file_entries": 0,
+      "inactive_owner_terminal_proof_not_yet_captured": true,
+      "logical_bytes_including_metadata": 7169695,
+      "path": "/work3/s234818/latentmol/runs/source-075-search-full-attempt001-seed23",
+      "root_unchanged_in_capture": true,
+      "special_or_link_entries": 0
+    },
+    {
+      "candidate_for_exact_followup_only": true,
+      "files_including_metadata": 2,
+      "hardlinked_file_entries": 0,
+      "inactive_owner_terminal_proof_not_yet_captured": true,
+      "logical_bytes_including_metadata": 7169511,
+      "path": "/work3/s234818/latentmol/runs/source-075-search-full-attempt001-seed17",
+      "root_unchanged_in_capture": true,
+      "special_or_link_entries": 0
+    },
+    {
+      "candidate_for_exact_followup_only": true,
+      "files_including_metadata": 2,
+      "hardlinked_file_entries": 0,
+      "inactive_owner_terminal_proof_not_yet_captured": true,
+      "logical_bytes_including_metadata": 4883937,
+      "path": "/work3/s234818/latentmol/runs/source078-single-seed17-seed17-a1-e025",
+      "root_unchanged_in_capture": true,
+      "special_or_link_entries": 0
+    },
+    {
+      "candidate_for_exact_followup_only": true,
+      "files_including_metadata": 2,
+      "hardlinked_file_entries": 0,
+      "inactive_owner_terminal_proof_not_yet_captured": true,
+      "logical_bytes_including_metadata": 4154743,
+      "path": "/work3/s234818/latentmol/runs/source-071-search-decoder-attempt001-native",
+      "root_unchanged_in_capture": true,
+      "special_or_link_entries": 0
+    },
+    {
+      "candidate_for_exact_followup_only": true,
+      "files_including_metadata": 10,
+      "hardlinked_file_entries": 0,
+      "inactive_owner_terminal_proof_not_yet_captured": true,
+      "logical_bytes_including_metadata": 3770920,
+      "path": "/work3/s234818/latentmol/runs/source-097-operation-boundary-recovery-attempt001-replay",
+      "root_unchanged_in_capture": true,
+      "special_or_link_entries": 0
+    },
+    {
+      "candidate_for_exact_followup_only": true,
+      "files_including_metadata": 6,
+      "hardlinked_file_entries": 0,
+      "inactive_owner_terminal_proof_not_yet_captured": true,
+      "logical_bytes_including_metadata": 3763912,
+      "path": "/work3/s234818/latentmol/runs/source-087-affinity-causal-attempt002-replay",
+      "root_unchanged_in_capture": true,
+      "special_or_link_entries": 0
+    },
+    {
+      "candidate_for_exact_followup_only": true,
+      "files_including_metadata": 6,
+      "hardlinked_file_entries": 0,
+      "inactive_owner_terminal_proof_not_yet_captured": true,
+      "logical_bytes_including_metadata": 3710751,
+      "path": "/work3/s234818/latentmol/runs/source-088-affinity-decoder-attempt001-replay",
+      "root_unchanged_in_capture": true,
+      "special_or_link_entries": 0
+    },
+    {
+      "candidate_for_exact_followup_only": true,
+      "files_including_metadata": 59,
+      "hardlinked_file_entries": 8,
+      "inactive_owner_terminal_proof_not_yet_captured": true,
+      "logical_bytes_including_metadata": 3406264,
+      "path": "/work3/s234818/latentmol/runs/source063-native-smoke",
+      "root_unchanged_in_capture": true,
+      "special_or_link_entries": 0
+    },
+    {
+      "candidate_for_exact_followup_only": true,
+      "files_including_metadata": 2,
+      "hardlinked_file_entries": 0,
+      "inactive_owner_terminal_proof_not_yet_captured": true,
+      "logical_bytes_including_metadata": 3263197,
+      "path": "/work3/s234818/latentmol/runs/source-077-dense-chemistry-attempt001-seed17-a1",
+      "root_unchanged_in_capture": true,
+      "special_or_link_entries": 0
+    },
+    {
+      "candidate_for_exact_followup_only": true,
+      "files_including_metadata": 70,
+      "hardlinked_file_entries": 0,
+      "inactive_owner_terminal_proof_not_yet_captured": true,
+      "logical_bytes_including_metadata": 3210408,
+      "path": "/work3/s234818/latentmol/runs/source-085-charge-interface-attempt004-replay",
+      "root_unchanged_in_capture": true,
+      "special_or_link_entries": 0
+    },
+    {
+      "candidate_for_exact_followup_only": true,
+      "files_including_metadata": 6,
+      "hardlinked_file_entries": 0,
+      "inactive_owner_terminal_proof_not_yet_captured": true,
+      "logical_bytes_including_metadata": 2910885,
+      "path": "/work3/s234818/latentmol/runs/source-082-decoder-causal-attempt002-replay",
+      "root_unchanged_in_capture": true,
+      "special_or_link_entries": 0
+    },
+    {
+      "candidate_for_exact_followup_only": true,
+      "files_including_metadata": 14,
+      "hardlinked_file_entries": 0,
+      "inactive_owner_terminal_proof_not_yet_captured": true,
+      "logical_bytes_including_metadata": 2778735,
+      "path": "/work3/s234818/latentmol/runs/source-080-failed-gate-attribution-attempt001-replay",
+      "root_unchanged_in_capture": true,
+      "special_or_link_entries": 0
+    },
+    {
+      "candidate_for_exact_followup_only": true,
+      "files_including_metadata": 14,
+      "hardlinked_file_entries": 0,
+      "inactive_owner_terminal_proof_not_yet_captured": true,
+      "logical_bytes_including_metadata": 2601086,
+      "path": "/work3/s234818/latentmol/runs/source-081-attention-causal-attempt001-replay",
+      "root_unchanged_in_capture": true,
+      "special_or_link_entries": 0
+    },
+    {
+      "candidate_for_exact_followup_only": true,
+      "files_including_metadata": 3,
+      "hardlinked_file_entries": 0,
+      "inactive_owner_terminal_proof_not_yet_captured": true,
+      "logical_bytes_including_metadata": 2530381,
+      "path": "/work3/s234818/latentmol/runs/source-070-decoder-validity-attempt001-native",
+      "root_unchanged_in_capture": true,
+      "special_or_link_entries": 0
+    },
+    {
+      "candidate_for_exact_followup_only": true,
+      "files_including_metadata": 10,
+      "hardlinked_file_entries": 0,
+      "inactive_owner_terminal_proof_not_yet_captured": true,
+      "logical_bytes_including_metadata": 2384464,
+      "path": "/work3/s234818/latentmol/runs/source-086-precision-head-attempt001-replay",
+      "root_unchanged_in_capture": true,
+      "special_or_link_entries": 0
+    },
+    {
+      "candidate_for_exact_followup_only": true,
+      "files_including_metadata": 10,
+      "hardlinked_file_entries": 0,
+      "inactive_owner_terminal_proof_not_yet_captured": true,
+      "logical_bytes_including_metadata": 2040476,
+      "path": "/work3/s234818/latentmol/runs/source-093-first-suite-attempt001-replay",
+      "root_unchanged_in_capture": true,
+      "special_or_link_entries": 0
+    },
+    {
+      "candidate_for_exact_followup_only": true,
+      "files_including_metadata": 50,
+      "hardlinked_file_entries": 0,
+      "inactive_owner_terminal_proof_not_yet_captured": true,
+      "logical_bytes_including_metadata": 2030194,
+      "path": "/work3/s234818/latentmol/runs/source061-local-fd-validation",
+      "root_unchanged_in_capture": true,
+      "special_or_link_entries": 0
+    },
+    {
+      "candidate_for_exact_followup_only": true,
+      "files_including_metadata": 62,
+      "hardlinked_file_entries": 23,
+      "inactive_owner_terminal_proof_not_yet_captured": true,
+      "logical_bytes_including_metadata": 1967222,
+      "path": "/work3/s234818/latentmol/runs/source055-step-calibrated-pilot",
+      "root_unchanged_in_capture": true,
+      "special_or_link_entries": 0
+    },
+    {
+      "candidate_for_exact_followup_only": true,
+      "files_including_metadata": 62,
+      "hardlinked_file_entries": 23,
+      "inactive_owner_terminal_proof_not_yet_captured": true,
+      "logical_bytes_including_metadata": 1967132,
+      "path": "/work3/s234818/latentmol/runs/source055-fd-corrected-pilot",
+      "root_unchanged_in_capture": true,
+      "special_or_link_entries": 0
+    },
+    {
+      "candidate_for_exact_followup_only": true,
+      "files_including_metadata": 10,
+      "hardlinked_file_entries": 0,
+      "inactive_owner_terminal_proof_not_yet_captured": true,
+      "logical_bytes_including_metadata": 1614529,
+      "path": "/work3/s234818/latentmol/runs/source-083-head-causal-attempt001-replay",
+      "root_unchanged_in_capture": true,
+      "special_or_link_entries": 0
+    },
+    {
+      "candidate_for_exact_followup_only": true,
+      "files_including_metadata": 7,
+      "hardlinked_file_entries": 0,
+      "inactive_owner_terminal_proof_not_yet_captured": true,
+      "logical_bytes_including_metadata": 1552226,
+      "path": "/work3/s234818/latentmol/runs/source060-gradient-cpu-retry",
+      "root_unchanged_in_capture": true,
+      "special_or_link_entries": 0
+    },
+    {
+      "candidate_for_exact_followup_only": true,
+      "files_including_metadata": 6,
+      "hardlinked_file_entries": 0,
+      "inactive_owner_terminal_proof_not_yet_captured": true,
+      "logical_bytes_including_metadata": 1487460,
+      "path": "/work3/s234818/latentmol/runs/source060-gradient-cpu",
+      "root_unchanged_in_capture": true,
+      "special_or_link_entries": 0
+    },
+    {
+      "candidate_for_exact_followup_only": true,
+      "files_including_metadata": 43,
+      "hardlinked_file_entries": 0,
+      "inactive_owner_terminal_proof_not_yet_captured": true,
+      "logical_bytes_including_metadata": 1405791,
+      "path": "/work3/s234818/latentmol/runs/source-076-defog-mps-recovery-attempt001-random-study",
+      "root_unchanged_in_capture": true,
+      "special_or_link_entries": 0
+    },
+    {
+      "candidate_for_exact_followup_only": true,
+      "files_including_metadata": 86,
+      "hardlinked_file_entries": 0,
+      "inactive_owner_terminal_proof_not_yet_captured": true,
+      "logical_bytes_including_metadata": 1299466,
+      "path": "/work3/s234818/latentmol/runs/source062-step-control-comparison",
+      "root_unchanged_in_capture": true,
+      "special_or_link_entries": 0
+    },
+    {
+      "candidate_for_exact_followup_only": true,
+      "files_including_metadata": 2,
+      "hardlinked_file_entries": 0,
+      "inactive_owner_terminal_proof_not_yet_captured": true,
+      "logical_bytes_including_metadata": 418326,
+      "path": "/work3/s234818/latentmol/runs/source-078-dense-100epoch-attempt002-gate",
+      "root_unchanged_in_capture": true,
+      "special_or_link_entries": 0
+    },
+    {
+      "candidate_for_exact_followup_only": true,
+      "files_including_metadata": 4,
+      "hardlinked_file_entries": 0,
+      "inactive_owner_terminal_proof_not_yet_captured": true,
+      "logical_bytes_including_metadata": 333828,
+      "path": "/work3/s234818/latentmol/runs/source059-probability-repair",
+      "root_unchanged_in_capture": true,
+      "special_or_link_entries": 0
+    },
+    {
+      "candidate_for_exact_followup_only": true,
+      "files_including_metadata": 22,
+      "hardlinked_file_entries": 0,
+      "inactive_owner_terminal_proof_not_yet_captured": true,
+      "logical_bytes_including_metadata": 330406,
+      "path": "/work3/s234818/latentmol/runs/source-069-ramped-defog-random-attempt001-random-study",
+      "root_unchanged_in_capture": true,
+      "special_or_link_entries": 0
+    },
+    {
+      "candidate_for_exact_followup_only": true,
+      "files_including_metadata": 13,
+      "hardlinked_file_entries": 0,
+      "inactive_owner_terminal_proof_not_yet_captured": true,
+      "logical_bytes_including_metadata": 267016,
+      "path": "/work3/s234818/latentmol/runs/source-099-affinity-head-isolation-attempt001-replay",
+      "root_unchanged_in_capture": true,
+      "special_or_link_entries": 0
+    },
+    {
+      "candidate_for_exact_followup_only": true,
+      "files_including_metadata": 12,
+      "hardlinked_file_entries": 0,
+      "inactive_owner_terminal_proof_not_yet_captured": true,
+      "logical_bytes_including_metadata": 260463,
+      "path": "/work3/s234818/latentmol/runs/source-096-operation-boundary-attempt001-replay",
+      "root_unchanged_in_capture": true,
+      "special_or_link_entries": 0
+    },
+    {
+      "candidate_for_exact_followup_only": true,
+      "files_including_metadata": 8,
+      "hardlinked_file_entries": 0,
+      "inactive_owner_terminal_proof_not_yet_captured": true,
+      "logical_bytes_including_metadata": 214136,
+      "path": "/work3/s234818/latentmol/runs/source065-dbmol-native",
+      "root_unchanged_in_capture": true,
+      "special_or_link_entries": 0
+    },
+    {
+      "candidate_for_exact_followup_only": true,
+      "files_including_metadata": 2,
+      "hardlinked_file_entries": 0,
+      "inactive_owner_terminal_proof_not_yet_captured": true,
+      "logical_bytes_including_metadata": 167817,
+      "path": "/work3/s234818/latentmol/runs/source-077-dense-chemistry-attempt001-gate",
+      "root_unchanged_in_capture": true,
+      "special_or_link_entries": 0
+    },
+    {
+      "candidate_for_exact_followup_only": true,
+      "files_including_metadata": 8,
+      "hardlinked_file_entries": 0,
+      "inactive_owner_terminal_proof_not_yet_captured": true,
+      "logical_bytes_including_metadata": 129712,
+      "path": "/work3/s234818/latentmol/runs/source-087-affinity-causal-attempt001-replay",
+      "root_unchanged_in_capture": true,
+      "special_or_link_entries": 0
+    },
+    {
+      "candidate_for_exact_followup_only": true,
+      "files_including_metadata": 2,
+      "hardlinked_file_entries": 0,
+      "inactive_owner_terminal_proof_not_yet_captured": true,
+      "logical_bytes_including_metadata": 73514,
+      "path": "/work3/s234818/latentmol/runs/source-085-charge-interface-attempt002-parity",
+      "root_unchanged_in_capture": true,
+      "special_or_link_entries": 0
+    },
+    {
+      "candidate_for_exact_followup_only": true,
+      "files_including_metadata": 7,
+      "hardlinked_file_entries": 0,
+      "inactive_owner_terminal_proof_not_yet_captured": true,
+      "logical_bytes_including_metadata": 59914,
+      "path": "/work3/s234818/latentmol/runs/source093-large-triangle-first-suite",
+      "root_unchanged_in_capture": true,
+      "special_or_link_entries": 0
+    },
+    {
+      "candidate_for_exact_followup_only": true,
+      "files_including_metadata": 2,
+      "hardlinked_file_entries": 0,
+      "inactive_owner_terminal_proof_not_yet_captured": true,
+      "logical_bytes_including_metadata": 54449,
+      "path": "/work3/s234818/latentmol/runs/source-079-defog-contract-recovery-attempt001-native",
+      "root_unchanged_in_capture": true,
+      "special_or_link_entries": 0
+    },
+    {
+      "candidate_for_exact_followup_only": true,
+      "files_including_metadata": 2,
+      "hardlinked_file_entries": 0,
+      "inactive_owner_terminal_proof_not_yet_captured": true,
+      "logical_bytes_including_metadata": 52890,
+      "path": "/work3/s234818/latentmol/runs/source058-preflight",
+      "root_unchanged_in_capture": true,
+      "special_or_link_entries": 0
+    },
+    {
+      "candidate_for_exact_followup_only": true,
+      "files_including_metadata": 10,
+      "hardlinked_file_entries": 0,
+      "inactive_owner_terminal_proof_not_yet_captured": true,
+      "logical_bytes_including_metadata": 52088,
+      "path": "/work3/s234818/latentmol/runs/source054-active-set-pilot",
+      "root_unchanged_in_capture": true,
+      "special_or_link_entries": 0
+    },
+    {
+      "candidate_for_exact_followup_only": true,
+      "files_including_metadata": 3,
+      "hardlinked_file_entries": 0,
+      "inactive_owner_terminal_proof_not_yet_captured": true,
+      "logical_bytes_including_metadata": 49831,
+      "path": "/work3/s234818/latentmol/runs/source-077-dense-chemistry-attempt001-seed17-a0",
+      "root_unchanged_in_capture": true,
+      "special_or_link_entries": 0
+    },
+    {
+      "candidate_for_exact_followup_only": true,
+      "files_including_metadata": 2,
+      "hardlinked_file_entries": 0,
+      "inactive_owner_terminal_proof_not_yet_captured": true,
+      "logical_bytes_including_metadata": 47831,
+      "path": "/work3/s234818/latentmol/runs/source-072-search-checkpoint-probe-attempt001-cpu-probe",
+      "root_unchanged_in_capture": true,
+      "special_or_link_entries": 0
+    },
+    {
+      "candidate_for_exact_followup_only": true,
+      "files_including_metadata": 2,
+      "hardlinked_file_entries": 0,
+      "inactive_owner_terminal_proof_not_yet_captured": true,
+      "logical_bytes_including_metadata": 46568,
+      "path": "/work3/s234818/latentmol/runs/source-079-defog-contract-recovery-attempt001-cpu",
+      "root_unchanged_in_capture": true,
+      "special_or_link_entries": 0
+    },
+    {
+      "candidate_for_exact_followup_only": true,
+      "files_including_metadata": 3,
+      "hardlinked_file_entries": 0,
+      "inactive_owner_terminal_proof_not_yet_captured": true,
+      "logical_bytes_including_metadata": 45817,
+      "path": "/work3/s234818/latentmol/runs/source-076-defog-mps-recovery-attempt001-native",
+      "root_unchanged_in_capture": true,
+      "special_or_link_entries": 0
+    },
+    {
+      "candidate_for_exact_followup_only": true,
+      "files_including_metadata": 2,
+      "hardlinked_file_entries": 0,
+      "inactive_owner_terminal_proof_not_yet_captured": true,
+      "logical_bytes_including_metadata": 45536,
+      "path": "/work3/s234818/latentmol/runs/source-078-dense-100epoch-attempt002-cpu",
+      "root_unchanged_in_capture": true,
+      "special_or_link_entries": 0
+    },
+    {
+      "candidate_for_exact_followup_only": true,
+      "files_including_metadata": 2,
+      "hardlinked_file_entries": 0,
+      "inactive_owner_terminal_proof_not_yet_captured": true,
+      "logical_bytes_including_metadata": 45298,
+      "path": "/work3/s234818/latentmol/runs/source-078-dense-100epoch-attempt001-cpu",
+      "root_unchanged_in_capture": true,
+      "special_or_link_entries": 0
+    },
+    {
+      "candidate_for_exact_followup_only": true,
+      "files_including_metadata": 2,
+      "hardlinked_file_entries": 0,
+      "inactive_owner_terminal_proof_not_yet_captured": true,
+      "logical_bytes_including_metadata": 44121,
+      "path": "/work3/s234818/latentmol/runs/source-076-defog-mps-recovery-attempt001-cpu",
+      "root_unchanged_in_capture": true,
+      "special_or_link_entries": 0
+    },
+    {
+      "candidate_for_exact_followup_only": true,
+      "files_including_metadata": 2,
+      "hardlinked_file_entries": 0,
+      "inactive_owner_terminal_proof_not_yet_captured": true,
+      "logical_bytes_including_metadata": 44113,
+      "path": "/work3/s234818/latentmol/runs/source-077-dense-chemistry-attempt001-cpu",
+      "root_unchanged_in_capture": true,
+      "special_or_link_entries": 0
+    },
+    {
+      "candidate_for_exact_followup_only": true,
+      "files_including_metadata": 2,
+      "hardlinked_file_entries": 0,
+      "inactive_owner_terminal_proof_not_yet_captured": true,
+      "logical_bytes_including_metadata": 43422,
+      "path": "/work3/s234818/latentmol/runs/source-076-defog-mps-recovery-attempt001-exclusive-control",
+      "root_unchanged_in_capture": true,
+      "special_or_link_entries": 0
+    },
+    {
+      "candidate_for_exact_followup_only": true,
+      "files_including_metadata": 2,
+      "hardlinked_file_entries": 0,
+      "inactive_owner_terminal_proof_not_yet_captured": true,
+      "logical_bytes_including_metadata": 43337,
+      "path": "/work3/s234818/latentmol/runs/source-076-defog-mps-recovery-attempt001-mps-probe",
+      "root_unchanged_in_capture": true,
+      "special_or_link_entries": 0
+    },
+    {
+      "candidate_for_exact_followup_only": true,
+      "files_including_metadata": 2,
+      "hardlinked_file_entries": 0,
+      "inactive_owner_terminal_proof_not_yet_captured": true,
+      "logical_bytes_including_metadata": 43203,
+      "path": "/work3/s234818/latentmol/runs/source-075-search-full-attempt001-cpu",
+      "root_unchanged_in_capture": true,
+      "special_or_link_entries": 0
+    },
+    {
+      "candidate_for_exact_followup_only": true,
+      "files_including_metadata": 3,
+      "hardlinked_file_entries": 0,
+      "inactive_owner_terminal_proof_not_yet_captured": true,
+      "logical_bytes_including_metadata": 42610,
+      "path": "/work3/s234818/latentmol/runs/source-066-defog-repair-guidance-attempt001-cpu",
+      "root_unchanged_in_capture": true,
+      "special_or_link_entries": 0
+    },
+    {
+      "candidate_for_exact_followup_only": true,
+      "files_including_metadata": 2,
+      "hardlinked_file_entries": 0,
+      "inactive_owner_terminal_proof_not_yet_captured": true,
+      "logical_bytes_including_metadata": 42068,
+      "path": "/work3/s234818/latentmol/runs/source-073-decoder-budget-attempt002-cpu",
+      "root_unchanged_in_capture": true,
+      "special_or_link_entries": 0
+    },
+    {
+      "candidate_for_exact_followup_only": true,
+      "files_including_metadata": 3,
+      "hardlinked_file_entries": 0,
+      "inactive_owner_terminal_proof_not_yet_captured": true,
+      "logical_bytes_including_metadata": 40880,
+      "path": "/work3/s234818/latentmol/runs/source-069-ramped-defog-random-attempt001-native",
+      "root_unchanged_in_capture": true,
+      "special_or_link_entries": 0
+    },
+    {
+      "candidate_for_exact_followup_only": true,
+      "files_including_metadata": 2,
+      "hardlinked_file_entries": 0,
+      "inactive_owner_terminal_proof_not_yet_captured": true,
+      "logical_bytes_including_metadata": 40797,
+      "path": "/work3/s234818/latentmol/runs/source-071-search-decoder-attempt001-cpu",
+      "root_unchanged_in_capture": true,
+      "special_or_link_entries": 0
+    },
+    {
+      "candidate_for_exact_followup_only": true,
+      "files_including_metadata": 2,
+      "hardlinked_file_entries": 0,
+      "inactive_owner_terminal_proof_not_yet_captured": true,
+      "logical_bytes_including_metadata": 39907,
+      "path": "/work3/s234818/latentmol/runs/source-070-decoder-validity-attempt001-cpu",
+      "root_unchanged_in_capture": true,
+      "special_or_link_entries": 0
+    },
+    {
+      "candidate_for_exact_followup_only": true,
+      "files_including_metadata": 2,
+      "hardlinked_file_entries": 0,
+      "inactive_owner_terminal_proof_not_yet_captured": true,
+      "logical_bytes_including_metadata": 39204,
+      "path": "/work3/s234818/latentmol/runs/source-069-ramped-defog-random-attempt001-cpu",
+      "root_unchanged_in_capture": true,
+      "special_or_link_entries": 0
+    },
+    {
+      "candidate_for_exact_followup_only": true,
+      "files_including_metadata": 2,
+      "hardlinked_file_entries": 0,
+      "inactive_owner_terminal_proof_not_yet_captured": true,
+      "logical_bytes_including_metadata": 38012,
+      "path": "/work3/s234818/latentmol/runs/source-067-defog-repair-guidance-attempt002-cpu",
+      "root_unchanged_in_capture": true,
+      "special_or_link_entries": 0
+    },
+    {
+      "candidate_for_exact_followup_only": true,
+      "files_including_metadata": 2,
+      "hardlinked_file_entries": 0,
+      "inactive_owner_terminal_proof_not_yet_captured": true,
+      "logical_bytes_including_metadata": 38012,
+      "path": "/work3/s234818/latentmol/runs/source-068-defog-repair-guidance-attempt003-cpu",
+      "root_unchanged_in_capture": true,
+      "special_or_link_entries": 0
+    },
+    {
+      "candidate_for_exact_followup_only": true,
+      "files_including_metadata": 2,
+      "hardlinked_file_entries": 0,
+      "inactive_owner_terminal_proof_not_yet_captured": true,
+      "logical_bytes_including_metadata": 35688,
+      "path": "/work3/s234818/latentmol/runs/source065-dbmol-cpu",
+      "root_unchanged_in_capture": true,
+      "special_or_link_entries": 0
+    }
+  ],
+  "scientific_execution_performed": false,
+  "source0xx_roots_outside_approved_and_protected_scopes": 68,
+  "ssh_performed": false,
+  "status": "read_only_candidate_review_no_deletion_plan",
+  "version": "mosaic-remaining-source0xx-review-v1"
+}

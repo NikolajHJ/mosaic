@@ -1,0 +1,35 @@
+{
+  "scope": "Local byte/source read only; mapping is the collector declared storage root plus exact safe tar member name. Fresh remote existence and exact SHA checks still mandatory. No deletion approval or inference from report exports to originals.",
+  "collector_root_policy": {
+    "zhome": "Path.home()/mosaic-runs",
+    "work3": "/work3/s234818/mosaic/runs"
+  },
+  "collector_member_policy": "files[path.relative_to(root).as_posix()]=path; handle.add(path,arcname=name,recursive=False)",
+  "sources": [
+    {
+      "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\scripts\\evidence\\collect_protenix_evidence.py",
+      "bytes": 6201,
+      "sha256": "9ae17a71eb64f50dd6a8c93863e372d1e41f895f9d7e98b8c3ea1057ca84dded"
+    },
+    {
+      "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\brd4\\best-primal-continuation\\hpc\\brd4_continuation_report.lsf",
+      "bytes": 1900,
+      "sha256": "78d5ff7b7eb687fe94c3c9345327246c4005bffe9d579bc97c364660fa7586e3"
+    },
+    {
+      "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\brd4\\chemistry-ramp-10000\\hpc\\brd4_chemistry_ramp_report.lsf",
+      "bytes": 1625,
+      "sha256": "9933619087c1ce059fecf7a958d0a1ffe2157a9e9faf8145d93178ca12e54161"
+    },
+    {
+      "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\brd4\\chemistry-5000\\hpc\\brd4_chemistry_repackage.lsf",
+      "bytes": 5333,
+      "sha256": "2ee911e845b707d5fa844546282bd053d9018633cb6d37557c40cb70d5c6cb5d"
+    },
+    {
+      "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\brd4-jq1\\fixed-lrboost\\scripts\\jq1_lrboost_report_ops.py",
+      "bytes": 25759,
+      "sha256": "0e3ba6287434e42594904403aa4706d411e231e807094fcfc6ae36260cb7793c"
+    }
+  ]
+}

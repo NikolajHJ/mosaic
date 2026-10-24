@@ -1,0 +1,98 @@
+{
+  "actual_allocated_cases": 44,
+  "actual_cpu_bundle_sha256": "9bb9692472172b2c673734879fa6d103143b5106a5e8b1c179cf0d95a32f3add",
+  "actual_cpu_job_id": "29806439",
+  "allocated_verification_sha256": "d712220f553d0988b0e1e3ae9655d78369999665f71641e5a670c52e163d3ce1",
+  "approved_pin_spec_sha256": "cb8e794d5f67731ff7389c99fd3827a7ad0874f2055879166d932760ad12a9f4",
+  "approved_selection": "approved-selection-03.json",
+  "approved_selection_sha256": "67524633c923c9584e36a816cc2ed71657e1920a98966ae2b5d1baf1474a9c0f",
+  "backup_or_deletion_authority_created": false,
+  "generated_helpers_executed": false,
+  "generic_post_audit_code_sha256": "441ec4d6f05a9bf8357edc5fe3b421cbc7b5893ace1f959924cf05b4540ee6c2",
+  "literal_substitution_whitelist": [
+    [
+      "legacy-offload-02",
+      "legacy-offload-03"
+    ],
+    [
+      "backup-02",
+      "backup-03"
+    ],
+    [
+      "approved-selection-02.json",
+      "approved-selection-03.json"
+    ],
+    [
+      "flat-protection-approved-01.json",
+      "flat-protection-approved-03.json"
+    ],
+    [
+      "protection-01.json",
+      "protection-03.json"
+    ],
+    [
+      "post-deletion-audit-02",
+      "post-deletion-audit-03"
+    ],
+    [
+      "post-audit-02",
+      "post-audit-03"
+    ]
+  ],
+  "local_backup_directory": "backup-03",
+  "old_helpers_and_evidence_unchanged": true,
+  "operation_id": "legacy-offload-03",
+  "outputs": {
+    "collect_offload_receipts_03.py": {
+      "bytes": 14246,
+      "embedded_remote_programs": [
+        {
+          "bytes": 3211,
+          "sha256": "acb5ff728f02bd11adb97bc7abf541cb93fd2f6694b8f67acbbf25955d50f897"
+        }
+      ],
+      "sha256": "7713a482f1b4a8f7d6a2aac85100d5a8546d5c4d1e0c1acd0f43192cbdcecbc3",
+      "syntax_changes": "whitelisted string data only"
+    },
+    "execute_verified_removal_03.py": {
+      "bytes": 17475,
+      "embedded_remote_programs": [
+        {
+          "bytes": 7126,
+          "sha256": "50f816060771c17e233656e6e5d535fa68b0f80b440eb250eed01917a13eab43"
+        }
+      ],
+      "sha256": "83d9c7bcd311ce2dd20dc4ffdfc1c5f5435e6113f1869cd5b20d049f0ad8f7fb",
+      "syntax_changes": "whitelisted string data only"
+    },
+    "run_post_deletion_audit_03.py": {
+      "bytes": 32417,
+      "embedded_remote_programs": [
+        {
+          "bytes": 8803,
+          "sha256": "2c6b951327b47d010b1a738650bd9da556ffd4ca4e44a5930dc4ecd9b0b6b2e3"
+        }
+      ],
+      "sha256": "940afbb6f3bb9d257b4c4cc05e8dcbdad2a24bedf07e353f6d8b92ba7d02d5a9",
+      "syntax_changes": "whitelisted string data only"
+    }
+  },
+  "plan_sha256": "8abfb724eaa6629ac73d6985d6216e898788868aec70a6784bcce8ba975e57bb",
+  "protection_sha256": "a87eec9f7e68e9174604e3900490ec1ed5cbc941fec968c8c413e6cb95afd3e9",
+  "remote_execution": false,
+  "retirement02_sha256": "9c0c93d41df6708853dfa80360d66e42dffee771683f020082d294e855d934e6",
+  "scientific_or_storage_admission_pass_claimed": false,
+  "source_manifest_sha256": "8a6420047f7260eedd1219c4313c835dae4bb2a13cd39d4914f9e87abcd5bafe",
+  "sources": {
+    "collect_offload_receipts_02.py": "b785aaeab24af70c7378ac7f90ba2ef5041ea42f7ec731409f06b5412cb6da17",
+    "execute_verified_removal_02.py": "e936e8e24d6eaf120b188305a937d072d6bf2690ecd7fdaa57185c7929856fae",
+    "run_post_deletion_audit_02.py": "e29174c0e51b792d94a27d9260168dc63fef2b6da8a7bec9da5119be358d0b4d"
+  },
+  "status": "three_new_operation03_helpers_bound_unexecuted",
+  "unchanged_generic_backup_helper": {
+    "path": "run_approved_backup_02.py",
+    "sha256": "a3296c53fb63eb14fdeb0fedcc77ec45e83d2a88ae10f8078a11fa20663c1543"
+  },
+  "unchanged_standalone_verifier": "verify_stream_backup_02.py",
+  "utc": "2026-10-24T11:10:31.736137+00:00"
+}

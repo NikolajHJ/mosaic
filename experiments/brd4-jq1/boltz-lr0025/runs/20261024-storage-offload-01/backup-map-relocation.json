@@ -1,0 +1,151 @@
+{
+  "version": "mosaic-heavy-metadata-relocation-v1",
+  "status": "verified_byte_identical_local_move",
+  "scope": "Generated full-member maps moved to ignored evidence storage per repository artifact policy. Original inventory receipts preserved verbatim; no HPC file changed.",
+  "files": [
+    {
+      "historical_path": "experiments/brd4-jq1/boltz-lr0025/runs/20261024-storage-offload-01/backup-members-higher-rate-report-0001.jsonl.gz",
+      "current_path": "results/hpc/20261024-storage-offload-01/existing-backup-maps/backup-members-higher-rate-report-0001.jsonl.gz",
+      "bytes": 33419,
+      "sha256": "0b2a3f11779fca03c3228ed85e0d158852bade262548cf95cc7b97870b9fa9e3"
+    },
+    {
+      "historical_path": "experiments/brd4-jq1/boltz-lr0025/runs/20261024-storage-offload-01/backup-members-higher-rate-report-0002.jsonl.gz",
+      "current_path": "results/hpc/20261024-storage-offload-01/existing-backup-maps/backup-members-higher-rate-report-0002.jsonl.gz",
+      "bytes": 33997,
+      "sha256": "f850ad608973dd2b92ab0dbb5a22a7dde1a33ace8c357133e7ddd679f8e32379"
+    },
+    {
+      "historical_path": "experiments/brd4-jq1/boltz-lr0025/runs/20261024-storage-offload-01/backup-members-historical-brd4-best-primal.jsonl.gz",
+      "current_path": "results/hpc/20261024-storage-offload-01/existing-backup-maps/backup-members-historical-brd4-best-primal.jsonl.gz",
+      "bytes": 9247947,
+      "sha256": "470e708861421e41d67f9431988b2af22824eedc568e387a77629f95f171616d"
+    },
+    {
+      "historical_path": "experiments/brd4-jq1/boltz-lr0025/runs/20261024-storage-offload-01/backup-members-historical-brd4-chemistry.jsonl.gz",
+      "current_path": "results/hpc/20261024-storage-offload-01/existing-backup-maps/backup-members-historical-brd4-chemistry.jsonl.gz",
+      "bytes": 781020,
+      "sha256": "e819ae7259814e707aa96089f443266fb5f470dacc05f869eac606338e46013c"
+    },
+    {
+      "historical_path": "experiments/brd4-jq1/boltz-lr0025/runs/20261024-storage-offload-01/backup-members-historical-brd4-delayed-chemistry.jsonl.gz",
+      "current_path": "results/hpc/20261024-storage-offload-01/existing-backup-maps/backup-members-historical-brd4-delayed-chemistry.jsonl.gz",
+      "bytes": 3039105,
+      "sha256": "dc4c1f63d0b6119433c56058c4ca66e85176e8afd65561e1a669291a7dcc8233"
+    },
+    {
+      "historical_path": "experiments/brd4-jq1/boltz-lr0025/runs/20261024-storage-offload-01/backup-members-lower-rate-report-0001.jsonl.gz",
+      "current_path": "results/hpc/20261024-storage-offload-01/existing-backup-maps/backup-members-lower-rate-report-0001.jsonl.gz",
+      "bytes": 23623,
+      "sha256": "8339b9dab29de1d94b5977ac31dea77670c1ca031db1297cda1b8b9e877f96f3"
+    },
+    {
+      "historical_path": "experiments/brd4-jq1/boltz-lr0025/runs/20261024-storage-offload-01/backup-members-original-jq1-edition-0001.jsonl.gz",
+      "current_path": "results/hpc/20261024-storage-offload-01/existing-backup-maps/backup-members-original-jq1-edition-0001.jsonl.gz",
+      "bytes": 2585,
+      "sha256": "df6428b13db7d5a1920f61001abbdbbd3f6413e572b9fbe1f2900b84d55251db"
+    },
+    {
+      "historical_path": "experiments/brd4-jq1/boltz-lr0025/runs/20261024-storage-offload-01/backup-members-original-jq1-edition-0002.jsonl.gz",
+      "current_path": "results/hpc/20261024-storage-offload-01/existing-backup-maps/backup-members-original-jq1-edition-0002.jsonl.gz",
+      "bytes": 8463,
+      "sha256": "f4b6beacbfec8bc7122762b0640cf1683eefb56dbaa7030df39ae8d8e5bb1668"
+    },
+    {
+      "historical_path": "experiments/brd4-jq1/boltz-lr0025/runs/20261024-storage-offload-01/backup-members-original-jq1-edition-0003.jsonl.gz",
+      "current_path": "results/hpc/20261024-storage-offload-01/existing-backup-maps/backup-members-original-jq1-edition-0003.jsonl.gz",
+      "bytes": 11137,
+      "sha256": "06fb05b7d79fe66ed3c4867e6f2be7b232746a1de1b3cdb30bbe30c1654804ea"
+    },
+    {
+      "historical_path": "experiments/brd4-jq1/boltz-lr0025/runs/20261024-storage-offload-01/backup-members-original-jq1-edition-0004.jsonl.gz",
+      "current_path": "results/hpc/20261024-storage-offload-01/existing-backup-maps/backup-members-original-jq1-edition-0004.jsonl.gz",
+      "bytes": 12522,
+      "sha256": "7f5e647297031af0c3e3fa4876140b23f2c7ba886d1d8d57307983d3455a409f"
+    },
+    {
+      "historical_path": "experiments/brd4-jq1/boltz-lr0025/runs/20261024-storage-offload-01/backup-members-original-jq1-edition-0005.jsonl.gz",
+      "current_path": "results/hpc/20261024-storage-offload-01/existing-backup-maps/backup-members-original-jq1-edition-0005.jsonl.gz",
+      "bytes": 15349,
+      "sha256": "4ec9a698893aa204fb06ed33f9c91fd78fcaac83696acc19661de33de26170b0"
+    },
+    {
+      "historical_path": "experiments/brd4-jq1/boltz-lr0025/runs/20261024-storage-offload-01/backup-members-original-jq1-edition-0006.jsonl.gz",
+      "current_path": "results/hpc/20261024-storage-offload-01/existing-backup-maps/backup-members-original-jq1-edition-0006.jsonl.gz",
+      "bytes": 16145,
+      "sha256": "bdede255b2954141cebabcd94ff2cfbea26f0719a51fde5af845543a5a2bf60c"
+    },
+    {
+      "historical_path": "experiments/brd4-jq1/boltz-lr0025/runs/20261024-storage-offload-01/backup-members-reconciled02-higher-rate-report-0001.jsonl.gz",
+      "current_path": "results/hpc/20261024-storage-offload-01/existing-backup-maps/backup-members-reconciled02-higher-rate-report-0001.jsonl.gz",
+      "bytes": 33902,
+      "sha256": "48fd635d0012e2df2c277436056db0772ae10863786733889b12ca150c023d1e"
+    },
+    {
+      "historical_path": "experiments/brd4-jq1/boltz-lr0025/runs/20261024-storage-offload-01/backup-members-reconciled02-higher-rate-report-0002.jsonl.gz",
+      "current_path": "results/hpc/20261024-storage-offload-01/existing-backup-maps/backup-members-reconciled02-higher-rate-report-0002.jsonl.gz",
+      "bytes": 34458,
+      "sha256": "a9b5a69e88aea12c4f1fbb46fe5847ffe1ab64967ef3945b72d5e7927490b861"
+    },
+    {
+      "historical_path": "experiments/brd4-jq1/boltz-lr0025/runs/20261024-storage-offload-01/backup-members-reconciled02-historical-brd4-best-primal.jsonl.gz",
+      "current_path": "results/hpc/20261024-storage-offload-01/existing-backup-maps/backup-members-reconciled02-historical-brd4-best-primal.jsonl.gz",
+      "bytes": 9326958,
+      "sha256": "49b5cae7a7cc2b87dc51189aedb908999e8899aa737cf1023faa9f7a4d0bf87a"
+    },
+    {
+      "historical_path": "experiments/brd4-jq1/boltz-lr0025/runs/20261024-storage-offload-01/backup-members-reconciled02-historical-brd4-chemistry.jsonl.gz",
+      "current_path": "results/hpc/20261024-storage-offload-01/existing-backup-maps/backup-members-reconciled02-historical-brd4-chemistry.jsonl.gz",
+      "bytes": 790147,
+      "sha256": "6497e9d4730783f35adda8a45b4ac49392b20767fee6d12c63dcf86c040efe35"
+    },
+    {
+      "historical_path": "experiments/brd4-jq1/boltz-lr0025/runs/20261024-storage-offload-01/backup-members-reconciled02-historical-brd4-delayed-chemistry.jsonl.gz",
+      "current_path": "results/hpc/20261024-storage-offload-01/existing-backup-maps/backup-members-reconciled02-historical-brd4-delayed-chemistry.jsonl.gz",
+      "bytes": 3055575,
+      "sha256": "90efd7d2eb9d922d345209b95858721100c792f80f6db2daa0880b3287e351f8"
+    },
+    {
+      "historical_path": "experiments/brd4-jq1/boltz-lr0025/runs/20261024-storage-offload-01/backup-members-reconciled02-lower-rate-report-0001.jsonl.gz",
+      "current_path": "results/hpc/20261024-storage-offload-01/existing-backup-maps/backup-members-reconciled02-lower-rate-report-0001.jsonl.gz",
+      "bytes": 23664,
+      "sha256": "77dbbf48f9545b6ec56a1b7e9222e2c566fb58510d8afc6205c49d6fa099e921"
+    },
+    {
+      "historical_path": "experiments/brd4-jq1/boltz-lr0025/runs/20261024-storage-offload-01/backup-members-reconciled02-original-jq1-edition-0001.jsonl.gz",
+      "current_path": "results/hpc/20261024-storage-offload-01/existing-backup-maps/backup-members-reconciled02-original-jq1-edition-0001.jsonl.gz",
+      "bytes": 2698,
+      "sha256": "c4f3da0a98db160c85b3250e51fa2f2a49cf940ab90d93291228498ebd7718b2"
+    },
+    {
+      "historical_path": "experiments/brd4-jq1/boltz-lr0025/runs/20261024-storage-offload-01/backup-members-reconciled02-original-jq1-edition-0002.jsonl.gz",
+      "current_path": "results/hpc/20261024-storage-offload-01/existing-backup-maps/backup-members-reconciled02-original-jq1-edition-0002.jsonl.gz",
+      "bytes": 8654,
+      "sha256": "1e50eb891fc9e3a524f19fc0ef09eae4bf2b00f7235fa57ee1607e6c9d1023c8"
+    },
+    {
+      "historical_path": "experiments/brd4-jq1/boltz-lr0025/runs/20261024-storage-offload-01/backup-members-reconciled02-original-jq1-edition-0003.jsonl.gz",
+      "current_path": "results/hpc/20261024-storage-offload-01/existing-backup-maps/backup-members-reconciled02-original-jq1-edition-0003.jsonl.gz",
+      "bytes": 11347,
+      "sha256": "954bdf45c5acd40bde4d6da86c2afe1cef75a51479ee2130aadf1db66abbc5c2"
+    },
+    {
+      "historical_path": "experiments/brd4-jq1/boltz-lr0025/runs/20261024-storage-offload-01/backup-members-reconciled02-original-jq1-edition-0004.jsonl.gz",
+      "current_path": "results/hpc/20261024-storage-offload-01/existing-backup-maps/backup-members-reconciled02-original-jq1-edition-0004.jsonl.gz",
+      "bytes": 12759,
+      "sha256": "c0a712a4824569e60e4f8288a6d1de0c6b9580ee722b079c385682f780ccac28"
+    },
+    {
+      "historical_path": "experiments/brd4-jq1/boltz-lr0025/runs/20261024-storage-offload-01/backup-members-reconciled02-original-jq1-edition-0005.jsonl.gz",
+      "current_path": "results/hpc/20261024-storage-offload-01/existing-backup-maps/backup-members-reconciled02-original-jq1-edition-0005.jsonl.gz",
+      "bytes": 15608,
+      "sha256": "010add6913170bc9e17c1d0976025156808d0483b8e7dac3cb78e19cc589d54a"
+    },
+    {
+      "historical_path": "experiments/brd4-jq1/boltz-lr0025/runs/20261024-storage-offload-01/backup-members-reconciled02-original-jq1-edition-0006.jsonl.gz",
+      "current_path": "results/hpc/20261024-storage-offload-01/existing-backup-maps/backup-members-reconciled02-original-jq1-edition-0006.jsonl.gz",
+      "bytes": 17088,
+      "sha256": "e9f0e7b27f193fd881b7fab34c9e3b3a8c4e20010ebe6362c36590e9646a53dd"
+    }
+  ]
+}

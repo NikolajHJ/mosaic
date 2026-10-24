@@ -1,0 +1,125 @@
+{
+  "all_prior_protection_still_applies": true,
+  "created_utc": "2026-10-24T10:10:26.227693+00:00",
+  "delete_allowlist": [],
+  "latentmol_run_offload_disjoint": true,
+  "no_ssh_or_model_execution": true,
+  "operator": "experiments/brd4-jq1/protenix-extended-50000/runs/20261024-protenix-extended-03/submit_cpu_recovery03.py",
+  "operator_sha256": "4715ca7cb9a4646f3c03a19b3cb81cb6cd3c9f4d4a1fd3da99694ec0971b31bc",
+  "required_remote_files": [
+    {
+      "bytes": 39644558,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03.tar.gz",
+      "reason": "Actual recovery03 operator authenticates existing staged upload; not redundant while needed by this operator.",
+      "sha256": "bde714a20a49308365744ab5018c06a6d68dff82c3485dc075848827a5f7a8ef"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03-staging-started.json",
+      "reason": "Actual recovery03 reauthenticates exact existing staging intent/unknown marker; retain original bytes, no replay."
+    },
+    {
+      "bytes": 4404,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/cpu-certificate.json",
+      "reason": "Recovery03 authenticate_history requires original832pass certificate; historical success stays passed.",
+      "sha256": "c0f784d523d358dfd09d7f57fcfe333fbb5c069d93074681ea35562a5f423171"
+    },
+    {
+      "bytes": 219,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/jobs.json",
+      "reason": "Recovery03 actual predecessor identity/unknown-outcome guard reads exact old jobs.",
+      "sha256": "1ddc8060fdfb21755ef082d6f9acfa5b53b8a54b938e09e41fe8af850e14514e"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/cpu/scheduler-final-4.txt",
+      "reason": "Recovery03 reopens every proof in the original832case CPU certificate.",
+      "sha256": "b28f3ab78cc6476b36deabac5a222cfa110f64b414ea35045a4def38005013a7"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/cpu/stdout.29798115.log",
+      "reason": "Recovery03 reopens every proof in the original832case CPU certificate.",
+      "sha256": "e7e7fc1b4f4607d6e84363ed547f3b2bf41ba6eb5da3459c89f2d6d2c15ecb69"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/cpu/submission.json",
+      "reason": "Recovery03 reopens every proof in the original832case CPU certificate.",
+      "sha256": "df1ad901dec226ced95ab2d8ac6c3948797f17187d395eafee8bd9618a3abaff"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/cpu/payload/hpc-contract.xml",
+      "reason": "Recovery03 reopens every proof in the original832case CPU certificate.",
+      "sha256": "cb1059ff7873715d0efe26a20e138dbddcad1e495c20ac38951e6e36fdbf7027"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/cpu/payload/hpc-contract.log",
+      "reason": "Recovery03 reopens every proof in the original832case CPU certificate.",
+      "sha256": "38710599fe6ccea3a1cb4cc29b0fd9b4993237c19341822b9f768b5095201f22"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/cpu/payload/legacy.xml",
+      "reason": "Recovery03 reopens every proof in the original832case CPU certificate.",
+      "sha256": "47c76f41dc514dcc0d706c0433b7df7ef1bae4430f8c6171d9f10f5ad836d7a9"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/cpu/payload/legacy.log",
+      "reason": "Recovery03 reopens every proof in the original832case CPU certificate.",
+      "sha256": "7d5817e17ae192099ef817ecc7e84520ad186bac8ad75e29b8ce3d3ef233e738"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/cpu/payload/native-mapping.xml",
+      "reason": "Recovery03 reopens every proof in the original832case CPU certificate.",
+      "sha256": "5183f879e70d2d8df8d05ed4ea4a86ed679297e3e2f20c8e3e89d0e207dd5365"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/cpu/payload/native-mapping.log",
+      "reason": "Recovery03 reopens every proof in the original832case CPU certificate.",
+      "sha256": "5c8ffd49baff78e8321d584e131ff1a681d5d3b34528cc53a0008c1173a5c8dd"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/cpu/payload/chemistry.xml",
+      "reason": "Recovery03 reopens every proof in the original832case CPU certificate.",
+      "sha256": "bca740c8a06ee1674430e85bbfa69f6e632bd289ed49d71195a1f47cf204c15b"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/cpu/payload/chemistry.log",
+      "reason": "Recovery03 reopens every proof in the original832case CPU certificate.",
+      "sha256": "d94596613cfce13a04be37bd15c43b61ad7551307cd97b317bd018e04bb1b98a"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/cpu/payload/composition_reference.json",
+      "reason": "Recovery03 reopens every proof in the original832case CPU certificate.",
+      "sha256": "37b34a2ba7be47886936df48faaabdeac20481e5a9cebca9bafab831c07868eb"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/cpu/payload/pocket_definition.json",
+      "reason": "Recovery03 reopens every proof in the original832case CPU certificate.",
+      "sha256": "9376c715eaf5b48689fb3e995b00d7820601a7776970df66bd7e7cff3b13ee43"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/cpu/payload/assessment.json",
+      "reason": "Recovery03 reopens every proof in the original832case CPU certificate.",
+      "sha256": "2725172ed9047bce5accab37d15ab78b3a919a90b3dc8dd717823c1709472c75"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/cpu/payload/oracles.json",
+      "reason": "Recovery03 reopens every proof in the original832case CPU certificate.",
+      "sha256": "f1f264b12edd126b5f936b80da8d9227f4335304e3610de1a2938dfa7e5573d4"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/parent-adoption.json",
+      "reason": "Recovery03 reopens every proof in the original832case CPU certificate.",
+      "sha256": "fb53a3d37ac46950b38cf824a2bcc3f57edb87434756bcf8ff7289b796af3b03"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-01/source/docs/extended_parent.json",
+      "reason": "Recovery03 reopens every proof in the original832case CPU certificate.",
+      "sha256": "397807622c1b4a08b77750bdd7eb0c4236d91b62ccdc11db56df53cd13760f13"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-01/source/docs/extended_retirement.json",
+      "reason": "Recovery03 reopens every proof in the original832case CPU certificate.",
+      "sha256": "9a6242684f4f39e71aa98c3c160b8b482078967e90aaa5c1912908bb32017150"
+    }
+  ],
+  "scope": "Additive protection for new outside-seal recovery03 operator; source seal and old receipts unchanged. No job was submitted or cleanup executed by this review.",
+  "version": "pro03-current-recovery-operator-protection-addendum-v1"
+}

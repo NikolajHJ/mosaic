@@ -1,0 +1,13 @@
+{
+  "status": "failed_before_plan03_outputs",
+  "utc_recorded": "2026-10-24T11:08:40.600464+00:00",
+  "source_sha256": "f7fa6b07aed73162e455bd3dff5068575e892c27cf2117b9e89ec848a50ace00",
+  "preserved_source": "approve_single_copy_plan_03_attempt01.py",
+  "original_source_unchanged": true,
+  "error_reported_by_root": "ValueError: Metadata changed/oversized",
+  "failure_scope": "Windows opened-handle versus path st_ctime_ns representation differs; both own before/after signatures stable. No source, approved plan, remote file or scientific setting was changed.",
+  "opened_st_ctime_ns_observed_by_root": 1792839396748973600,
+  "path_st_ctime_ns_observed_by_root": 1792839396744929900,
+  "plan03_outputs_absent": true,
+  "backup_or_deletion_executed": false
+}

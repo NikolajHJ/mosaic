@@ -1,0 +1,15 @@
+{
+  "status": "sealed_unvalidated",
+  "source_files": 11,
+  "allocated_cases_expected": 44,
+  "manifest_sha256": "8a6420047f7260eedd1219c4313c835dae4bb2a13cd39d4914f9e87abcd5bafe",
+  "archive_sha256": "ce1fb5252bbd4ba57669198187efec8d77c041b33b958ee352c10248e5d3fd7b",
+  "archive_bytes": 31403,
+  "archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261024-storage-offload-01\\operator-source-04\\source.tar.gz",
+  "parent_source_manifest_sha256": "9af242392c14b3fc09804f0868b49f0d650245a1f075d43c3b132d994545230d",
+  "parent_cpu_job_id": "29806228",
+  "parent_cases": 32,
+  "gzip_compresslevel": 1,
+  "backup_or_deletion_executed": false,
+  "allocated_validation_passed": false
+}

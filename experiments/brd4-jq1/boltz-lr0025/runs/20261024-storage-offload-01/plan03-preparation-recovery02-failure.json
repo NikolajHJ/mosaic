@@ -1,0 +1,10 @@
+{
+  "status": "failed_before_plan03_outputs",
+  "utc_recorded": "2026-10-24T11:10:09.894028+00:00",
+  "source": "approve_single_copy_plan_03_recovery02.py",
+  "source_sha256": "cb4b572727dcefaea87c73ca2da3ea5b58b163b12abafcab1eb835b8b035c73a",
+  "error_reported_by_root": "ValueError: Active/owner scope differs",
+  "cause": "Original inventory active IDs predate genuine allocated CPU44 job29806439; approved02 active list includes that exact authenticated job. No foreign active ID is accepted by the successor.",
+  "plan03_outputs_absent": true,
+  "backup_or_deletion_executed": false
+}

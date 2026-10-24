@@ -1,0 +1,16 @@
+{
+  "status": "approved_for_read_only_post_deletion_audit_only",
+  "candidate": "post-audit-pin-spec-candidate-01.json",
+  "candidate_sha256": "cb8e794d5f67731ff7389c99fd3827a7ad0874f2055879166d932760ad12a9f4",
+  "maximum_hash_bytes": 2147483648,
+  "known_source_and_explicit_pin_bytes_upper_bound": 575863502,
+  "full_mosaic_source_scopes": 7,
+  "full_mosaic_source_members": 3219,
+  "explicit_file_pins": 270,
+  "independent_selected_execution_members": 176,
+  "review": "Exact current635/657/643 sources and required625/641/launcher05/history04 member maps; original Pro continuation snapshot/context, frozen Boltz context, readiness/CPU proofs, independent original36/source104 parents/bridge/samples/catalog/selected contexts and both current source138 archives. All reviewed paths remain under the approved flat protection. Independent source138 file selections are execution/input pins, not a claim that selected execution members exhaust prose/lock files in those releases.",
+  "omitted_scope": "Large current summaries/cases/JSONLs, dynamic training output and redundant4.348GB cache-model rehashes. The entire corresponding paths remain protected and disjoint from every literal unlink candidate; no new cache-model digest claim.",
+  "no_backup_or_deletion_authority_created": true,
+  "no_scientific_or_storage_admission_pass_claimed": true,
+  "execution_status": "unexecuted"
+}

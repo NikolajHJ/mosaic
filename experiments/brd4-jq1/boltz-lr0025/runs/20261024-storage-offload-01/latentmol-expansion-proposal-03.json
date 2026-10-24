@@ -1,0 +1,2329 @@
+{
+  "actual_unique_additional_bytes_not_yet_established": true,
+  "additional_full_artifact_roots": [
+    {
+      "file_mode": "full regular-file backup candidate except protected files and preserved root metadata/logs",
+      "full_manifest_and_hashes_required": true,
+      "observed_inventory": {
+        "blocks512": 960547,
+        "candidate_scope": false,
+        "directories": 17,
+        "eligible_for_deletion": false,
+        "files": 88,
+        "hardlinks": [],
+        "inactive_established": false,
+        "logical_bytes": 491786194,
+        "root_lstat": {
+          "blocks512": 1,
+          "ctime_ns": 1791379310000000000,
+          "dev": 1048654,
+          "ino": 13399195913049023984,
+          "mode": 493,
+          "mtime_ns": 1791379310000000000,
+          "nlink": 5,
+          "size": 7
+        },
+        "root_unchanged": true,
+        "symlinks_or_specials": []
+      },
+      "reason": "No concrete selected-plan, runtime-metadata, protected input or captured live-job namespace refers to this exact retired optimization output root. Additional bare-import closure and raw entrypoint bindings must be independently accepted before final allowlist.",
+      "root": "/work3/s234818/latentmol/runs/source-070-decoder-validity-attempt001-decoder-study"
+    },
+    {
+      "file_mode": "full regular-file backup candidate except protected files and preserved root metadata/logs",
+      "full_manifest_and_hashes_required": true,
+      "observed_inventory": {
+        "blocks512": 2515771,
+        "candidate_scope": false,
+        "directories": 118,
+        "eligible_for_deletion": false,
+        "files": 395,
+        "hardlinks": [],
+        "inactive_established": false,
+        "logical_bytes": 1288006446,
+        "root_lstat": {
+          "blocks512": 1,
+          "ctime_ns": 1791562959000000000,
+          "dev": 1048654,
+          "ino": 16656189234231724276,
+          "mode": 493,
+          "mtime_ns": 1791562959000000000,
+          "nlink": 4,
+          "size": 3
+        },
+        "root_unchanged": true,
+        "symlinks_or_specials": []
+      },
+      "reason": "No concrete selected-plan, runtime-metadata, protected input or captured live-job namespace refers to this exact retired optimization output root. Additional bare-import closure and raw entrypoint bindings must be independently accepted before final allowlist.",
+      "root": "/work3/s234818/latentmol/runs/source-075-search-full-attempt001-search-full"
+    },
+    {
+      "file_mode": "full regular-file backup candidate except protected files and preserved root metadata/logs",
+      "full_manifest_and_hashes_required": true,
+      "observed_inventory": {
+        "blocks512": 1124859,
+        "candidate_scope": false,
+        "directories": 24,
+        "eligible_for_deletion": false,
+        "files": 108,
+        "hardlinks": [],
+        "inactive_established": false,
+        "logical_bytes": 575907704,
+        "root_lstat": {
+          "blocks512": 1,
+          "ctime_ns": 1791456765000000000,
+          "dev": 1048654,
+          "ino": 3779968787156880274,
+          "mode": 493,
+          "mtime_ns": 1791456765000000000,
+          "nlink": 5,
+          "size": 3
+        },
+        "root_unchanged": true,
+        "symlinks_or_specials": []
+      },
+      "reason": "No concrete selected-plan, runtime-metadata, protected input or captured live-job namespace refers to this exact retired optimization output root. Additional bare-import closure and raw entrypoint bindings must be independently accepted before final allowlist.",
+      "root": "/work3/s234818/latentmol/runs/source-077-dense-chemistry-attempt001-density-study"
+    },
+    {
+      "file_mode": "full regular-file backup candidate except protected files and preserved root metadata/logs",
+      "full_manifest_and_hashes_required": true,
+      "observed_inventory": {
+        "blocks512": 1255730,
+        "candidate_scope": false,
+        "directories": 10277,
+        "eligible_for_deletion": false,
+        "files": 13491,
+        "hardlinks": [],
+        "inactive_established": false,
+        "logical_bytes": 639761228,
+        "root_lstat": {
+          "blocks512": 1,
+          "ctime_ns": 1791446447000000000,
+          "dev": 1048654,
+          "ino": 12606822794887752772,
+          "mode": 493,
+          "mtime_ns": 1791446447000000000,
+          "nlink": 5,
+          "size": 9
+        },
+        "root_unchanged": true,
+        "symlinks_or_specials": []
+      },
+      "reason": "No concrete selected-plan, runtime-metadata, protected input or captured live-job namespace refers to this exact retired optimization output root. Additional bare-import closure and raw entrypoint bindings must be independently accepted before final allowlist.",
+      "root": "/work3/s234818/latentmol/runs/source058-fresh-trajectory"
+    }
+  ],
+  "additional_named_gross_logical_bytes": 2995461572,
+  "additional_october_roots_binary_only": [
+    {
+      "all_current_protected_files_and_aliases_excluded": true,
+      "file_mode": "old binary checkpoint files ONLY, exact lstat/sha manifest still required; preserve metadata/logs",
+      "observed_inventory": {
+        "blocks512": 1187763,
+        "candidate_scope": false,
+        "directories": 0,
+        "eligible_for_deletion": false,
+        "files": 15,
+        "hardlinks": [
+          {
+            "lstat": {
+              "blocks512": 98409,
+              "ctime_ns": 1791458384000000000,
+              "dev": 1048654,
+              "ino": 10079531484698566427,
+              "mode": 420,
+              "mtime_ns": 1790816994000000000,
+              "nlink": 2,
+              "size": 50385341
+            },
+            "path": "/work3/s234818/latentmol/runs/20261001T001617Z_vae-train_c008c090/epoch_0089.pt"
+          },
+          {
+            "lstat": {
+              "blocks512": 98409,
+              "ctime_ns": 1791458385000000000,
+              "dev": 1048654,
+              "ino": 141938343379155799,
+              "mode": 420,
+              "mtime_ns": 1790820940000000000,
+              "nlink": 2,
+              "size": 50385341
+            },
+            "path": "/work3/s234818/latentmol/runs/20261001T001617Z_vae-train_c008c090/last.pt"
+          },
+          {
+            "lstat": {
+              "blocks512": 98409,
+              "ctime_ns": 1791458384000000000,
+              "dev": 1048654,
+              "ino": 10079531484698566427,
+              "mode": 420,
+              "mtime_ns": 1790816994000000000,
+              "nlink": 2,
+              "size": 50385341
+            },
+            "path": "/work3/s234818/latentmol/runs/20261001T001617Z_vae-train_c008c090/best_validity.pt"
+          },
+          {
+            "lstat": {
+              "blocks512": 98409,
+              "ctime_ns": 1791458385000000000,
+              "dev": 1048654,
+              "ino": 141938343379155799,
+              "mode": 420,
+              "mtime_ns": 1790820940000000000,
+              "nlink": 2,
+              "size": 50385341
+            },
+            "path": "/work3/s234818/latentmol/runs/20261001T001617Z_vae-train_c008c090/epoch_0100.pt"
+          },
+          {
+            "lstat": {
+              "blocks512": 98409,
+              "ctime_ns": 1791458385000000000,
+              "dev": 1048654,
+              "ino": 12485705919628052932,
+              "mode": 420,
+              "mtime_ns": 1790815926000000000,
+              "nlink": 2,
+              "size": 50385341
+            },
+            "path": "/work3/s234818/latentmol/runs/20261001T001617Z_vae-train_c008c090/best.pt"
+          },
+          {
+            "lstat": {
+              "blocks512": 98409,
+              "ctime_ns": 1791458385000000000,
+              "dev": 1048654,
+              "ino": 12485705919628052932,
+              "mode": 420,
+              "mtime_ns": 1790815926000000000,
+              "nlink": 2,
+              "size": 50385341
+            },
+            "path": "/work3/s234818/latentmol/runs/20261001T001617Z_vae-train_c008c090/epoch_0086.pt"
+          },
+          {
+            "lstat": {
+              "blocks512": 98409,
+              "ctime_ns": 1791458388000000000,
+              "dev": 1048654,
+              "ino": 10309780294475355473,
+              "mode": 420,
+              "mtime_ns": 1790813784000000000,
+              "nlink": 4,
+              "size": 50385341
+            },
+            "path": "/work3/s234818/latentmol/runs/20261001T001617Z_vae-train_c008c090/inherited_best_validity.pt"
+          },
+          {
+            "lstat": {
+              "blocks512": 98409,
+              "ctime_ns": 1791458388000000000,
+              "dev": 1048654,
+              "ino": 14064964599469098814,
+              "mode": 420,
+              "mtime_ns": 1790813783000000000,
+              "nlink": 3,
+              "size": 50385341
+            },
+            "path": "/work3/s234818/latentmol/runs/20261001T001617Z_vae-train_c008c090/inherited_best_reconstruction.pt"
+          }
+        ],
+        "inactive_established": false,
+        "logical_bytes": 608132511,
+        "root_lstat": {
+          "blocks512": 1,
+          "ctime_ns": 1791458385000000000,
+          "dev": 1048654,
+          "ino": 16666258355883170814,
+          "mode": 493,
+          "mtime_ns": 1791458385000000000,
+          "nlink": 2,
+          "size": 15
+        },
+        "root_unchanged": true,
+        "symlinks_or_specials": []
+      },
+      "reason": "Dated predecessor training output, not current source138 VAE/embedding root or original source121 epoch36/source104 epoch35. Exact old source098 selected checkpoints remain protected; fresh alias audit may uncover additional protected aliases.",
+      "root": "/work3/s234818/latentmol/runs/20261001T001617Z_vae-train_c008c090"
+    },
+    {
+      "all_current_protected_files_and_aliases_excluded": true,
+      "file_mode": "old binary checkpoint files ONLY, exact lstat/sha manifest still required; preserve metadata/logs",
+      "observed_inventory": {
+        "blocks512": 22432,
+        "candidate_scope": false,
+        "directories": 0,
+        "eligible_for_deletion": false,
+        "files": 6,
+        "hardlinks": [],
+        "inactive_established": false,
+        "logical_bytes": 11483476,
+        "root_lstat": {
+          "blocks512": 1,
+          "ctime_ns": 1790867799000000000,
+          "dev": 1048654,
+          "ino": 6351006554655357377,
+          "mode": 493,
+          "mtime_ns": 1790867799000000000,
+          "nlink": 2,
+          "size": 6
+        },
+        "root_unchanged": true,
+        "symlinks_or_specials": []
+      },
+      "reason": "Dated predecessor training output, not current source138 VAE/embedding root or original source121 epoch36/source104 epoch35. Exact old source098 selected checkpoints remain protected; fresh alias audit may uncover additional protected aliases.",
+      "root": "/work3/s234818/latentmol/runs/20261001T091512Z_vae-epoch-continuation_00e6b73f"
+    },
+    {
+      "all_current_protected_files_and_aliases_excluded": true,
+      "file_mode": "old binary checkpoint files ONLY, exact lstat/sha manifest still required; preserve metadata/logs",
+      "observed_inventory": {
+        "blocks512": 1591209,
+        "candidate_scope": false,
+        "directories": 0,
+        "eligible_for_deletion": false,
+        "files": 16,
+        "hardlinks": [
+          {
+            "lstat": {
+              "blocks512": 121618,
+              "ctime_ns": 1791458402000000000,
+              "dev": 1048654,
+              "ino": 8055650841483811541,
+              "mode": 420,
+              "mtime_ns": 1790866939000000000,
+              "nlink": 2,
+              "size": 62267949
+            },
+            "path": "/work3/s234818/latentmol/runs/20261001T091512Z_vae-train_ce9f56be/best.pt"
+          },
+          {
+            "lstat": {
+              "blocks512": 121618,
+              "ctime_ns": 1791458406000000000,
+              "dev": 1048654,
+              "ino": 6721461166684824450,
+              "mode": 420,
+              "mtime_ns": 1790846126000000000,
+              "nlink": 3,
+              "size": 62267949
+            },
+            "path": "/work3/s234818/latentmol/runs/20261001T091512Z_vae-train_ce9f56be/inherited_best_validity.pt"
+          },
+          {
+            "lstat": {
+              "blocks512": 121618,
+              "ctime_ns": 1791458405000000000,
+              "dev": 1048654,
+              "ino": 1593572482092736746,
+              "mode": 420,
+              "mtime_ns": 1790846125000000000,
+              "nlink": 3,
+              "size": 62267949
+            },
+            "path": "/work3/s234818/latentmol/runs/20261001T091512Z_vae-train_ce9f56be/inherited_best_reconstruction.pt"
+          },
+          {
+            "lstat": {
+              "blocks512": 121618,
+              "ctime_ns": 1791458403000000000,
+              "dev": 1048654,
+              "ino": 1452480551311844731,
+              "mode": 420,
+              "mtime_ns": 1790866223000000000,
+              "nlink": 2,
+              "size": 62267949
+            },
+            "path": "/work3/s234818/latentmol/runs/20261001T091512Z_vae-train_ce9f56be/epoch_0176.pt"
+          },
+          {
+            "lstat": {
+              "blocks512": 121618,
+              "ctime_ns": 1791458403000000000,
+              "dev": 1048654,
+              "ino": 7014496298960344058,
+              "mode": 420,
+              "mtime_ns": 1790867673000000000,
+              "nlink": 2,
+              "size": 62267949
+            },
+            "path": "/work3/s234818/latentmol/runs/20261001T091512Z_vae-train_ce9f56be/last.pt"
+          },
+          {
+            "lstat": {
+              "blocks512": 121618,
+              "ctime_ns": 1791458402000000000,
+              "dev": 1048654,
+              "ino": 8055650841483811541,
+              "mode": 420,
+              "mtime_ns": 1790866939000000000,
+              "nlink": 2,
+              "size": 62267949
+            },
+            "path": "/work3/s234818/latentmol/runs/20261001T091512Z_vae-train_ce9f56be/epoch_0178.pt"
+          },
+          {
+            "lstat": {
+              "blocks512": 121618,
+              "ctime_ns": 1791458403000000000,
+              "dev": 1048654,
+              "ino": 1452480551311844731,
+              "mode": 420,
+              "mtime_ns": 1790866223000000000,
+              "nlink": 2,
+              "size": 62267949
+            },
+            "path": "/work3/s234818/latentmol/runs/20261001T091512Z_vae-train_ce9f56be/best_validity.pt"
+          },
+          {
+            "lstat": {
+              "blocks512": 121618,
+              "ctime_ns": 1791458403000000000,
+              "dev": 1048654,
+              "ino": 7014496298960344058,
+              "mode": 420,
+              "mtime_ns": 1790867673000000000,
+              "nlink": 2,
+              "size": 62267949
+            },
+            "path": "/work3/s234818/latentmol/runs/20261001T091512Z_vae-train_ce9f56be/epoch_0180.pt"
+          }
+        ],
+        "inactive_established": false,
+        "logical_bytes": 814692593,
+        "root_lstat": {
+          "blocks512": 1,
+          "ctime_ns": 1791632159000000000,
+          "dev": 1048654,
+          "ino": 4185215080016568755,
+          "mode": 493,
+          "mtime_ns": 1791632159000000000,
+          "nlink": 2,
+          "size": 16
+        },
+        "root_unchanged": true,
+        "symlinks_or_specials": []
+      },
+      "reason": "Dated predecessor training output, not current source138 VAE/embedding root or original source121 epoch36/source104 epoch35. Exact old source098 selected checkpoints remain protected; fresh alias audit may uncover additional protected aliases.",
+      "root": "/work3/s234818/latentmol/runs/20261001T091512Z_vae-train_ce9f56be"
+    }
+  ],
+  "captured_scan_sha256": "cdc4292800598688eda930efb5ab5f3d9f32655285d93c5a6d80d82aa5167842",
+  "created_utc": "2026-10-24T10:07:07.113569+00:00",
+  "delete_allowlist": [],
+  "expected_scope_capacity": "Approximately22GB unique potential may be possible after exact inventory;25GB is not established or a requirement to fabricate. No actual quota or fullPro projection pass follows.",
+  "explicit_september_roots_binary_only": [
+    "/work3/s234818/latentmol/runs/20260926T154501Z_tests_4be1e373",
+    "/work3/s234818/latentmol/runs/20260926T154519Z_prepare-zinc5k_6be83806",
+    "/work3/s234818/latentmol/runs/20260927T134553Z_tests-before-ae_863a6ab6",
+    "/work3/s234818/latentmol/runs/20260927T134617Z_ae-train_dc66226d",
+    "/work3/s234818/latentmol/runs/20260927T134654Z_evaluation_c52542da",
+    "/work3/s234818/latentmol/runs/20260927T134854Z_evaluation_22950888",
+    "/work3/s234818/latentmol/runs/20260927T135347Z_tests-before-pilot_b999ef52",
+    "/work3/s234818/latentmol/runs/20260927T135410Z_ae-train_4b2da706",
+    "/work3/s234818/latentmol/runs/20260927T135822Z_evaluation_b40fc7dd",
+    "/work3/s234818/latentmol/runs/20260927T135824Z_evaluation_ec127c91",
+    "/work3/s234818/latentmol/runs/20260927T135938Z_vae-train_19abddb1",
+    "/work3/s234818/latentmol/runs/20260927T140349Z_evaluation_bfd397c9",
+    "/work3/s234818/latentmol/runs/20260927T140351Z_evaluation_857a448d",
+    "/work3/s234818/latentmol/runs/20260927T140357Z_tests-before-diagnostics_17568cd9",
+    "/work3/s234818/latentmol/runs/20260927T140419Z_evaluation_2fe943bb",
+    "/work3/s234818/latentmol/runs/20260927T140429Z_evaluation_017be479",
+    "/work3/s234818/latentmol/runs/20260927T140439Z_evaluation_09b13f20",
+    "/work3/s234818/latentmol/runs/20260927T140759Z_ae-train_0487dec6",
+    "/work3/s234818/latentmol/runs/20260927T141204Z_evaluation_918ad05a",
+    "/work3/s234818/latentmol/runs/20260927T141206Z_evaluation_801c426f",
+    "/work3/s234818/latentmol/runs/20260927T141215Z_vae-train_0875cdbf",
+    "/work3/s234818/latentmol/runs/20260927T141621Z_evaluation_67161977",
+    "/work3/s234818/latentmol/runs/20260927T141623Z_evaluation_d0e56394",
+    "/work3/s234818/latentmol/runs/20260927T142108Z_tests-before-boltz_29e394ab",
+    "/work3/s234818/latentmol/runs/20260927T142147Z_evaluation_72d2a587",
+    "/work3/s234818/latentmol/runs/20260927T142158Z_evaluation_d8b695cf",
+    "/work3/s234818/latentmol/runs/20260927T142209Z_evaluation_338dac57",
+    "/work3/s234818/latentmol/runs/20260927T142219Z_evaluation_7bc650ba",
+    "/work3/s234818/latentmol/runs/20260927T142223Z_boltz-preparation_5bdfa808",
+    "/work3/s234818/latentmol/runs/20260927T142444Z_boltz_fixed_pose_gradient_smoke_d9b386e8",
+    "/work3/s234818/latentmol/runs/20260927T142915Z_tests-before-boltz-recovery_e348a214",
+    "/work3/s234818/latentmol/runs/20260927T142946Z_boltz_fixed_pose_gradient_smoke_97f21fa9",
+    "/work3/s234818/latentmol/runs/20260927T143527Z_tests-before-boltz-recovery_941022db",
+    "/work3/s234818/latentmol/runs/20260927T143603Z_boltz_fixed_pose_gradient_smoke_a70c8a90",
+    "/work3/s234818/latentmol/runs/20260927T145221Z_tests-before-boltz-recovery_0c8ab702",
+    "/work3/s234818/latentmol/runs/20260927T145301Z_boltz_fixed_pose_gradient_smoke_27b94624",
+    "/work3/s234818/latentmol/runs/20260927T175935Z_tests-full-data_426fafa6",
+    "/work3/s234818/latentmol/runs/20260927T175942Z_prepare-zinc215k_270e6965",
+    "/work3/s234818/latentmol/runs/20260927T181222Z_tests-full-training_3903b437",
+    "/work3/s234818/latentmol/runs/20260927T181538Z_tests-full-training_c54a90dd",
+    "/work3/s234818/latentmol/runs/20260927T181637Z_full-data-isolation-audit_b1dae78a",
+    "/work3/s234818/latentmol/runs/20260927T182225Z_gpu-rng-before-full-ae_06a788e2",
+    "/work3/s234818/latentmol/runs/20260927T182242Z_ae-full-workflow_9f45dcd5",
+    "/work3/s234818/latentmol/runs/20260927T182242Z_ae-train_6c46765b",
+    "/work3/s234818/latentmol/runs/20260927T182255Z_gpu-rng-before-full-vae_dc95ea34",
+    "/work3/s234818/latentmol/runs/20260927T182312Z_vae-full-workflow_aeded2ce",
+    "/work3/s234818/latentmol/runs/20260927T182312Z_vae-train_28ecb77e",
+    "/work3/s234818/latentmol/runs/20260927T182633Z_tests-full-training_3417a773",
+    "/work3/s234818/latentmol/runs/20260927T182804Z_full-data-isolation-audit_7b111b14",
+    "/work3/s234818/latentmol/runs/20260927T182811Z_gpu-rng-before-full-ae_1dadc250",
+    "/work3/s234818/latentmol/runs/20260927T182827Z_ae-full-workflow_04509a97",
+    "/work3/s234818/latentmol/runs/20260927T182828Z_ae-train_dc832d48",
+    "/work3/s234818/latentmol/runs/20260927T182840Z_gpu-rng-before-full-vae_545f4427",
+    "/work3/s234818/latentmol/runs/20260927T182856Z_vae-full-workflow_ade6e67e",
+    "/work3/s234818/latentmol/runs/20260927T182857Z_vae-train_bb66bd2d",
+    "/work3/s234818/latentmol/runs/20260927T220315Z_evaluation_18671707",
+    "/work3/s234818/latentmol/runs/20260927T220339Z_ae-train_406d4e54",
+    "/work3/s234818/latentmol/runs/20260927T220412Z_evaluation_79512dbd",
+    "/work3/s234818/latentmol/runs/20260927T220435Z_vae-train_5045659f",
+    "/work3/s234818/latentmol/runs/20260927T231517Z_evaluation_8ca479fc",
+    "/work3/s234818/latentmol/runs/20260927T231538Z_ae-train_67f36b41",
+    "/work3/s234818/latentmol/runs/20260927T231625Z_evaluation_cf9b1743",
+    "/work3/s234818/latentmol/runs/20260927T231648Z_vae-train_a0e7eba0",
+    "/work3/s234818/latentmol/runs/20260928T002717Z_evaluation_4c55524e",
+    "/work3/s234818/latentmol/runs/20260928T002738Z_ae-train_2f61b913",
+    "/work3/s234818/latentmol/runs/20260928T002831Z_evaluation_38314482",
+    "/work3/s234818/latentmol/runs/20260928T002856Z_evaluation_f54cab1b",
+    "/work3/s234818/latentmol/runs/20260928T002911Z_evaluation_2e5e8b69",
+    "/work3/s234818/latentmol/runs/20260928T002925Z_evaluation_591a6862",
+    "/work3/s234818/latentmol/runs/20260928T002939Z_evaluation_dd6ed16e",
+    "/work3/s234818/latentmol/runs/20260928T002955Z_evaluation_a0f906f2",
+    "/work3/s234818/latentmol/runs/20260928T003011Z_evaluation_84e78e95",
+    "/work3/s234818/latentmol/runs/20260928T003025Z_evaluation_c17b34df",
+    "/work3/s234818/latentmol/runs/20260928T003041Z_evaluation_037d945f",
+    "/work3/s234818/latentmol/runs/20260928T013853Z_evaluation_2acbc706",
+    "/work3/s234818/latentmol/runs/20260928T013916Z_evaluation_6ddbfd88",
+    "/work3/s234818/latentmol/runs/20260928T013932Z_evaluation_ae3ebc9e",
+    "/work3/s234818/latentmol/runs/20260928T013947Z_evaluation_be781e9a",
+    "/work3/s234818/latentmol/runs/20260928T014002Z_evaluation_6b6ea49f",
+    "/work3/s234818/latentmol/runs/20260928T014016Z_evaluation_3f3e1b54",
+    "/work3/s234818/latentmol/runs/20260928T014031Z_evaluation_f63b72e0",
+    "/work3/s234818/latentmol/runs/20260928T014045Z_evaluation_e18df464",
+    "/work3/s234818/latentmol/runs/20260928T014059Z_evaluation_30498933",
+    "/work3/s234818/latentmol/runs/20260928T063802Z_tests-latent-stage1-ae_4064919c",
+    "/work3/s234818/latentmol/runs/20260928T063833Z_ae-latent-stage1_580abd75",
+    "/work3/s234818/latentmol/runs/20260928T064047Z_tests-latent-stage1-vae_eec574fc",
+    "/work3/s234818/latentmol/runs/20260928T064117Z_vae-latent-stage1_bd6a6a7a",
+    "/work3/s234818/latentmol/runs/20260928T073541Z_tests-paired-latent-audit_ac56ae92",
+    "/work3/s234818/latentmol/runs/20260928T073544Z_ae-vae-interpolation-comparison_4e92495d",
+    "/work3/s234818/latentmol/runs/20260928T073555Z_tests-boltz-stage2-ae_43348715",
+    "/work3/s234818/latentmol/runs/20260928T073635Z_ae-boltz-latent-pilot_6889d56d",
+    "/work3/s234818/latentmol/runs/20260928T073645Z_tests-boltz-stage2-vae_9f7925af",
+    "/work3/s234818/latentmol/runs/20260928T073724Z_vae-boltz-latent-pilot_a8e9e0e3",
+    "/work3/s234818/latentmol/runs/20260928T075217Z_tests-source018-native_9f859569",
+    "/work3/s234818/latentmol/runs/20260928T082358Z_tests-native-rescore-ae_08e03e90",
+    "/work3/s234818/latentmol/runs/20260928T082423Z_ae-native-fresh-pose_972c2d83",
+    "/work3/s234818/latentmol/runs/20260928T083817Z_tests-native-rescore-vae_bc028143",
+    "/work3/s234818/latentmol/runs/20260928T083844Z_vae-native-fresh-pose_253bb4de",
+    "/work3/s234818/latentmol/runs/20260928T085545Z_tests-chemical-audit_a24f26e5",
+    "/work3/s234818/latentmol/runs/20260928T085606Z_selected-molecule-chemical-audit_3d54051c",
+    "/work3/s234818/latentmol/runs/20260928T090711Z_tests-stage3-training-support_fe27d1c1",
+    "/work3/s234818/latentmol/runs/20260928T090722Z_stage3-training-support-preflight_54e96ff7",
+    "/work3/s234818/latentmol/runs/20260928T091230Z_tests-stage3-training-support_0ebb06f6",
+    "/work3/s234818/latentmol/runs/20260928T091242Z_stage3-training-support-preflight_ceb9b559",
+    "/work3/s234818/latentmol/runs/20260928T092041Z_tests-stage3-denoiser-preflight_a3a08d56",
+    "/work3/s234818/latentmol/runs/20260928T092142Z_tests-stage3-denoiser-pilot_29d70ea6",
+    "/work3/s234818/latentmol/runs/20260928T092202Z_stage3-schema-denoiser-pilot_ac19a401",
+    "/work3/s234818/latentmol/runs/20260928T092654Z_stage3-denoiser-failure-audit_3b2a9bed",
+    "/work3/s234818/latentmol/runs/20260928T093543Z_tests-stage3-denoiser-repair-preflight_a6a603fc",
+    "/work3/s234818/latentmol/runs/20260928T093654Z_tests-stage3-denoiser-pilot_a2a41e6b",
+    "/work3/s234818/latentmol/runs/20260928T093714Z_stage3-schema-denoiser-repair_bcd42239",
+    "/work3/s234818/latentmol/runs/20260928T122056Z_tests-stochastic-bridge-preflight_4ac765f1",
+    "/work3/s234818/latentmol/runs/20260928T122224Z_tests-stochastic-bridge-preflight-corrected_f5958964",
+    "/work3/s234818/latentmol/runs/20260928T122329Z_ae-stochastic-bridge_9ff8ddc9",
+    "/work3/s234818/latentmol/runs/20260928T122331Z_vae-stochastic-bridge_5a23a72f",
+    "/work3/s234818/latentmol/runs/20260928T123509Z_defog-native-env-setup_39fd5715",
+    "/work3/s234818/latentmol/runs/20260928T123752Z_defog-official-import-deps_6f4dea31",
+    "/work3/s234818/latentmol/runs/20260928T123810Z_defog-native-checkpoint-load-retry_4b7060d2",
+    "/work3/s234818/latentmol/runs/20260928T124510Z_defog-native-checkpoint-load-audit_6055f70e",
+    "/work3/s234818/latentmol/runs/20260928T124511Z_tests-carbon-seed-027_a23f7535",
+    "/work3/s234818/latentmol/runs/20260928T124528Z_ae-carbon-chain-seed-preflight_4bcb2f5b",
+    "/work3/s234818/latentmol/runs/20260928T124528Z_vae-carbon-chain-seed-preflight_fb92a698",
+    "/work3/s234818/latentmol/runs/20260928T124625Z_tests-stage3-native-defog-contract_d1be6642",
+    "/work3/s234818/latentmol/runs/20260928T124733Z_tests-stage3-native-defog-contract_53f96b23",
+    "/work3/s234818/latentmol/runs/20260928T124749Z_stage3-native-defog-interface-smoke_4d0f1680",
+    "/work3/s234818/latentmol/runs/20260928T125320Z_tests-chain-native-029_b541af1f",
+    "/work3/s234818/latentmol/runs/20260928T125333Z_chain-native-prepare-029_279cccee",
+    "/work3/s234818/latentmol/runs/20260928T125535Z_tests-stage3-native-defog-contract_4b0630a7",
+    "/work3/s234818/latentmol/runs/20260928T125551Z_stage3-native-defog-interface-smoke_c72694fc",
+    "/work3/s234818/latentmol/runs/20260928T130245Z_tests-carbon-anchor-031_c7704cea",
+    "/work3/s234818/latentmol/runs/20260928T130321Z_ae-boltz-carbon-anchor-pilot_18114367",
+    "/work3/s234818/latentmol/runs/20260928T130451Z_vae-boltz-carbon-anchor-pilot_a9376cee",
+    "/work3/s234818/latentmol/runs/20260928T130729Z_boltz_fixed_pose_gradient_smoke_f349e8cd",
+    "/work3/s234818/latentmol/runs/20260928T131910Z_tests-carbon-native-rescore-032_591906d0",
+    "/work3/s234818/latentmol/runs/20260928T132239Z_vae-carbon-anchor-native-rescore_293a741c",
+    "/work3/s234818/latentmol/runs/20260928T133633Z_tests-carbon-local-start-033_5578427a",
+    "/work3/s234818/latentmol/runs/20260928T134642Z_ae-boltz-carbon-local-start-rescue_d04081b2",
+    "/work3/s234818/latentmol/runs/20260928T134848Z_vae-boltz-carbon-local-start-rescue_5700cf7b",
+    "/work3/s234818/latentmol/runs/20260928T142349Z_tests-frozen-score-contract-034_b834b5c1",
+    "/work3/s234818/latentmol/runs/20260928T142648Z_tests-frozen-score-contract-035_526671fe",
+    "/work3/s234818/latentmol/runs/20260928T153219Z_tests-atom-pair-architecture_af744b79",
+    "/work3/s234818/latentmol/runs/20260928T153428Z_tests-atom-pair-architecture_6df74c5d",
+    "/work3/s234818/latentmol/runs/20260928T153623Z_ae-train_73f0d866",
+    "/work3/s234818/latentmol/runs/20260928T153643Z_evaluation_85d88a6a",
+    "/work3/s234818/latentmol/runs/20260928T153647Z_evaluation_658fe7d9",
+    "/work3/s234818/latentmol/runs/20260928T153651Z_evaluation_9dd2f0cc",
+    "/work3/s234818/latentmol/runs/20260928T153714Z_ae-train_4d5668d9",
+    "/work3/s234818/latentmol/runs/20260928T153736Z_evaluation_798c7241",
+    "/work3/s234818/latentmol/runs/20260928T153740Z_evaluation_7a2f3cc3",
+    "/work3/s234818/latentmol/runs/20260928T153745Z_evaluation_d7f633fa",
+    "/work3/s234818/latentmol/runs/20260928T153810Z_vae-train_528baf3f",
+    "/work3/s234818/latentmol/runs/20260928T153831Z_evaluation_ccf6e584",
+    "/work3/s234818/latentmol/runs/20260928T153835Z_evaluation_702629cc",
+    "/work3/s234818/latentmol/runs/20260928T153840Z_evaluation_f2976884",
+    "/work3/s234818/latentmol/runs/20260928T153904Z_vae-train_1ff128c0",
+    "/work3/s234818/latentmol/runs/20260928T153927Z_evaluation_8b9d4b4b",
+    "/work3/s234818/latentmol/runs/20260928T153932Z_evaluation_90946f24",
+    "/work3/s234818/latentmol/runs/20260928T153936Z_evaluation_20ade9f5",
+    "/work3/s234818/latentmol/runs/20260928T162808Z_tests-atom-pair-architecture_afce9900",
+    "/work3/s234818/latentmol/runs/20260928T162955Z_architecture-fixed-z-draws_45792e36",
+    "/work3/s234818/latentmol/runs/20260928T164052Z_tests-atom-pair-architecture_00691dd7",
+    "/work3/s234818/latentmol/runs/20260928T172120Z_tests-atom-pair-architecture_953e4f6a",
+    "/work3/s234818/latentmol/runs/20260928T172809Z_tests-atom-pair-architecture_cbee55c0",
+    "/work3/s234818/latentmol/runs/20260928T174429Z_tests-atom-pair-architecture_91def424",
+    "/work3/s234818/latentmol/runs/20260928T174833Z_tests-atom-pair-architecture_97df0930",
+    "/work3/s234818/latentmol/runs/20260928T190616Z_gpu-rng-before-arch-residual-ae_fb48b2a3",
+    "/work3/s234818/latentmol/runs/20260928T190633Z_ae-full-workflow_ed2458d9",
+    "/work3/s234818/latentmol/runs/20260928T190634Z_ae-train_8bca0e25",
+    "/work3/s234818/latentmol/runs/20260928T191101Z_gpu-rng-before-arch-pair_refine-ae_17a98199",
+    "/work3/s234818/latentmol/runs/20260928T191118Z_ae-full-workflow_b77174e9",
+    "/work3/s234818/latentmol/runs/20260928T191119Z_ae-train_9e2d402c",
+    "/work3/s234818/latentmol/runs/20260928T224424Z_evaluation_5504b7af",
+    "/work3/s234818/latentmol/runs/20260928T224449Z_ae-train_2ce6b339",
+    "/work3/s234818/latentmol/runs/20260928T235735Z_evaluation_b2be06bb",
+    "/work3/s234818/latentmol/runs/20260928T235800Z_evaluation_12d49eb5",
+    "/work3/s234818/latentmol/runs/20260928T235816Z_evaluation_5754de48",
+    "/work3/s234818/latentmol/runs/20260928T235831Z_evaluation_73012129",
+    "/work3/s234818/latentmol/runs/20260928T235846Z_evaluation_270e1e31",
+    "/work3/s234818/latentmol/runs/20260928T235901Z_evaluation_c72500ec",
+    "/work3/s234818/latentmol/runs/20260928T235915Z_evaluation_9d034277",
+    "/work3/s234818/latentmol/runs/20260928T235932Z_evaluation_53142dca",
+    "/work3/s234818/latentmol/runs/20260928T235948Z_evaluation_1fed3dba",
+    "/work3/s234818/latentmol/runs/20260929T000006Z_followup-residual-ae-parent-29510332_f2537e6d",
+    "/work3/s234818/latentmol/runs/20260929T000012Z_architecture-fixed-z-draws_88a13363",
+    "/work3/s234818/latentmol/runs/20260929T000904Z_gpu-rng-before-arch-residual-vae_1e947bbe",
+    "/work3/s234818/latentmol/runs/20260929T000921Z_vae-full-workflow_03cd94d9",
+    "/work3/s234818/latentmol/runs/20260929T000921Z_vae-train_21d7d355",
+    "/work3/s234818/latentmol/runs/20260929T010508Z_evaluation_f5844ed5",
+    "/work3/s234818/latentmol/runs/20260929T010533Z_ae-train_5fc2462f",
+    "/work3/s234818/latentmol/runs/20260929T030402Z_evaluation_605c3790",
+    "/work3/s234818/latentmol/runs/20260929T030430Z_evaluation_2e686e1f",
+    "/work3/s234818/latentmol/runs/20260929T030449Z_evaluation_18b9e39a",
+    "/work3/s234818/latentmol/runs/20260929T030506Z_evaluation_45e78327",
+    "/work3/s234818/latentmol/runs/20260929T030523Z_evaluation_055ace3f",
+    "/work3/s234818/latentmol/runs/20260929T030539Z_evaluation_18736090",
+    "/work3/s234818/latentmol/runs/20260929T030556Z_evaluation_b8129d9f",
+    "/work3/s234818/latentmol/runs/20260929T030615Z_evaluation_1014c3c9",
+    "/work3/s234818/latentmol/runs/20260929T030633Z_evaluation_84e04d6d",
+    "/work3/s234818/latentmol/runs/20260929T030654Z_followup-pair_refine-ae-parent-29510333_51a2979a",
+    "/work3/s234818/latentmol/runs/20260929T030659Z_architecture-fixed-z-draws_65700a2a",
+    "/work3/s234818/latentmol/runs/20260929T035024Z_evaluation_22b6ed61",
+    "/work3/s234818/latentmol/runs/20260929T035052Z_vae-train_430fefea",
+    "/work3/s234818/latentmol/runs/20260929T050445Z_evaluation_69aeaf6a",
+    "/work3/s234818/latentmol/runs/20260929T050512Z_vae-train_f0543717",
+    "/work3/s234818/latentmol/runs/20260929T053154Z_gpu-rng-before-arch-pair_refine-vae_63a268b4",
+    "/work3/s234818/latentmol/runs/20260929T053211Z_vae-full-workflow_7fa422fc",
+    "/work3/s234818/latentmol/runs/20260929T053211Z_vae-train_12007433",
+    "/work3/s234818/latentmol/runs/20260929T061830Z_evaluation_c13ad30c",
+    "/work3/s234818/latentmol/runs/20260929T061856Z_evaluation_94e7277f",
+    "/work3/s234818/latentmol/runs/20260929T061913Z_evaluation_0334c4a1",
+    "/work3/s234818/latentmol/runs/20260929T061928Z_evaluation_6043c1e7",
+    "/work3/s234818/latentmol/runs/20260929T061944Z_evaluation_eca82659",
+    "/work3/s234818/latentmol/runs/20260929T061959Z_evaluation_2e71781b",
+    "/work3/s234818/latentmol/runs/20260929T062014Z_evaluation_878563dd",
+    "/work3/s234818/latentmol/runs/20260929T062031Z_evaluation_40f1def6",
+    "/work3/s234818/latentmol/runs/20260929T062046Z_evaluation_7011511a",
+    "/work3/s234818/latentmol/runs/20260929T062103Z_followup-residual-vae-parent-29510334_b7b2dd79",
+    "/work3/s234818/latentmol/runs/20260929T062108Z_architecture-fixed-z-draws_8c446ab6",
+    "/work3/s234818/latentmol/runs/20260929T062112Z_ae-train_93cd01fc",
+    "/work3/s234818/latentmol/runs/20260929T062137Z_evaluation_bc612765",
+    "/work3/s234818/latentmol/runs/20260929T062142Z_evaluation_84f851df",
+    "/work3/s234818/latentmol/runs/20260929T062147Z_evaluation_2d6191ac",
+    "/work3/s234818/latentmol/runs/20260929T062213Z_ae-train_a71b09f9",
+    "/work3/s234818/latentmol/runs/20260929T062238Z_evaluation_37d41b4c",
+    "/work3/s234818/latentmol/runs/20260929T062243Z_evaluation_5a229046",
+    "/work3/s234818/latentmol/runs/20260929T062248Z_evaluation_c937ff1d",
+    "/work3/s234818/latentmol/runs/20260929T062315Z_vae-train_52048f7d",
+    "/work3/s234818/latentmol/runs/20260929T062340Z_evaluation_91365d0b",
+    "/work3/s234818/latentmol/runs/20260929T062345Z_evaluation_027e7b08",
+    "/work3/s234818/latentmol/runs/20260929T062351Z_evaluation_6c143fc7",
+    "/work3/s234818/latentmol/runs/20260929T062418Z_vae-train_bbedd8af",
+    "/work3/s234818/latentmol/runs/20260929T062443Z_evaluation_352f3443",
+    "/work3/s234818/latentmol/runs/20260929T062448Z_evaluation_fab9cfc7",
+    "/work3/s234818/latentmol/runs/20260929T062454Z_evaluation_eabe6da6",
+    "/work3/s234818/latentmol/runs/20260929T062515Z_gpu-rng-before-arch-deep_pair_refine-ae_b87ee4b2",
+    "/work3/s234818/latentmol/runs/20260929T062532Z_ae-full-workflow_13465b56",
+    "/work3/s234818/latentmol/runs/20260929T062532Z_ae-train_6cf9ede7",
+    "/work3/s234818/latentmol/runs/20260929T112910Z_evaluation_64b2eab9",
+    "/work3/s234818/latentmol/runs/20260929T112939Z_vae-train_24304075",
+    "/work3/s234818/latentmol/runs/20260929T122246Z_evaluation_63e20d4f",
+    "/work3/s234818/latentmol/runs/20260929T122312Z_ae-train_280638ed",
+    "/work3/s234818/latentmol/runs/20260929T132845Z_evaluation_a7a389eb",
+    "/work3/s234818/latentmol/runs/20260929T132916Z_vae-train_247f06e5",
+    "/work3/s234818/latentmol/runs/20260929T142218Z_evaluation_352e5c1e",
+    "/work3/s234818/latentmol/runs/20260929T142245Z_evaluation_43d5b75b",
+    "/work3/s234818/latentmol/runs/20260929T142303Z_evaluation_31dc4b7b",
+    "/work3/s234818/latentmol/runs/20260929T142320Z_evaluation_9ea249d7",
+    "/work3/s234818/latentmol/runs/20260929T142337Z_evaluation_dea8462c",
+    "/work3/s234818/latentmol/runs/20260929T142354Z_evaluation_c384256d",
+    "/work3/s234818/latentmol/runs/20260929T142412Z_evaluation_fd947221",
+    "/work3/s234818/latentmol/runs/20260929T142429Z_evaluation_ec8dcd00",
+    "/work3/s234818/latentmol/runs/20260929T142446Z_evaluation_a8eb05dd",
+    "/work3/s234818/latentmol/runs/20260929T142507Z_followup-deep_pair_refine-ae-parent-29510443_900f62e8",
+    "/work3/s234818/latentmol/runs/20260929T142513Z_architecture-fixed-z-draws_073ad94f",
+    "/work3/s234818/latentmol/runs/20260929T145732Z_gpu-rng-before-arch-global_bond-ae_7e0a3d1b",
+    "/work3/s234818/latentmol/runs/20260929T145748Z_ae-full-workflow_23de6394",
+    "/work3/s234818/latentmol/runs/20260929T145749Z_ae-train_b580f749",
+    "/work3/s234818/latentmol/runs/20260929T152756Z_evaluation_8199d0ad",
+    "/work3/s234818/latentmol/runs/20260929T152824Z_vae-train_02a7d391",
+    "/work3/s234818/latentmol/runs/20260929T172732Z_evaluation_af33e707",
+    "/work3/s234818/latentmol/runs/20260929T172800Z_evaluation_b103477a",
+    "/work3/s234818/latentmol/runs/20260929T172821Z_evaluation_42151681",
+    "/work3/s234818/latentmol/runs/20260929T172840Z_evaluation_48e441d5",
+    "/work3/s234818/latentmol/runs/20260929T172858Z_evaluation_1af8b941",
+    "/work3/s234818/latentmol/runs/20260929T172918Z_evaluation_e328eb73",
+    "/work3/s234818/latentmol/runs/20260929T172938Z_evaluation_205d1972",
+    "/work3/s234818/latentmol/runs/20260929T172956Z_evaluation_8037a3ad",
+    "/work3/s234818/latentmol/runs/20260929T173016Z_evaluation_fdaefd00",
+    "/work3/s234818/latentmol/runs/20260929T173038Z_followup-pair_refine-vae-parent-29510335_0c64fbe9",
+    "/work3/s234818/latentmol/runs/20260929T173039Z_gpu-rng-before-arch-deep_pair_refine-vae_f2dc21f2",
+    "/work3/s234818/latentmol/runs/20260929T173043Z_architecture-fixed-z-draws_40b8f80e",
+    "/work3/s234818/latentmol/runs/20260929T173056Z_vae-full-workflow_741f851c",
+    "/work3/s234818/latentmol/runs/20260929T173057Z_vae-train_c128eaf6",
+    "/work3/s234818/latentmol/runs/20260929T181116Z_gpu-rng-before-arch-global_bond-vae_95e87083",
+    "/work3/s234818/latentmol/runs/20260929T181133Z_vae-full-workflow_d113470f",
+    "/work3/s234818/latentmol/runs/20260929T181133Z_vae-train_f8f64fa9",
+    "/work3/s234818/latentmol/runs/20260929T205618Z_evaluation_0911a7be",
+    "/work3/s234818/latentmol/runs/20260929T205647Z_ae-train_50b7d171",
+    "/work3/s234818/latentmol/runs/20260929T225621Z_evaluation_472e2865",
+    "/work3/s234818/latentmol/runs/20260929T225650Z_evaluation_d2d7d187",
+    "/work3/s234818/latentmol/runs/20260929T225708Z_evaluation_638713a4",
+    "/work3/s234818/latentmol/runs/20260929T225726Z_evaluation_24c73880",
+    "/work3/s234818/latentmol/runs/20260929T225744Z_evaluation_40e1a62c",
+    "/work3/s234818/latentmol/runs/20260929T225801Z_evaluation_de67c3ff",
+    "/work3/s234818/latentmol/runs/20260929T225818Z_evaluation_e80e0e50",
+    "/work3/s234818/latentmol/runs/20260929T225835Z_evaluation_b3c156d7",
+    "/work3/s234818/latentmol/runs/20260929T225852Z_evaluation_4bb0461f",
+    "/work3/s234818/latentmol/runs/20260929T225913Z_followup-global_bond-ae-parent-29510444_c24f55c5",
+    "/work3/s234818/latentmol/runs/20260929T225918Z_architecture-fixed-z-draws_248e9a6f",
+    "/work3/s234818/latentmol/runs/20260929T231438Z_ae-train_dbc23c31",
+    "/work3/s234818/latentmol/runs/20260929T231502Z_evaluation_9c82fd58",
+    "/work3/s234818/latentmol/runs/20260929T231508Z_evaluation_8af2b33d",
+    "/work3/s234818/latentmol/runs/20260929T231513Z_evaluation_6fa265e4",
+    "/work3/s234818/latentmol/runs/20260929T231540Z_vae-train_51fd2eb5",
+    "/work3/s234818/latentmol/runs/20260929T231605Z_evaluation_3d7a9055",
+    "/work3/s234818/latentmol/runs/20260929T231610Z_evaluation_a8323af1",
+    "/work3/s234818/latentmol/runs/20260929T231616Z_evaluation_61557aef",
+    "/work3/s234818/latentmol/runs/20260929T231639Z_gpu-rng-before-arch-wide_global_bond-ae_34ac6fa5",
+    "/work3/s234818/latentmol/runs/20260929T231655Z_ae-full-workflow_be842def",
+    "/work3/s234818/latentmol/runs/20260929T231656Z_ae-train_781877bf",
+    "/work3/s234818/latentmol/runs/20260930T001031Z_evaluation_2ebba790",
+    "/work3/s234818/latentmol/runs/20260930T001058Z_vae-train_79f58031",
+    "/work3/s234818/latentmol/runs/20260930T021036Z_evaluation_74a34883",
+    "/work3/s234818/latentmol/runs/20260930T021104Z_vae-train_7cd1c1b7",
+    "/work3/s234818/latentmol/runs/20260930T041050Z_evaluation_8a9f2808",
+    "/work3/s234818/latentmol/runs/20260930T041121Z_evaluation_310221b5",
+    "/work3/s234818/latentmol/runs/20260930T041141Z_evaluation_f1bdbb55",
+    "/work3/s234818/latentmol/runs/20260930T041200Z_evaluation_48f61f0d",
+    "/work3/s234818/latentmol/runs/20260930T041221Z_evaluation_5b38b07c",
+    "/work3/s234818/latentmol/runs/20260930T041239Z_evaluation_1f7201cb",
+    "/work3/s234818/latentmol/runs/20260930T041258Z_evaluation_9bdb8a75",
+    "/work3/s234818/latentmol/runs/20260930T041318Z_evaluation_b8ddb05c",
+    "/work3/s234818/latentmol/runs/20260930T041339Z_evaluation_f714488c",
+    "/work3/s234818/latentmol/runs/20260930T041404Z_followup-global_bond-vae-parent-29510451_6c15b55f",
+    "/work3/s234818/latentmol/runs/20260930T041406Z_gpu-rng-before-arch-wide_global_bond-vae_9d4b44fc",
+    "/work3/s234818/latentmol/runs/20260930T041409Z_architecture-fixed-z-draws_b997bb0d",
+    "/work3/s234818/latentmol/runs/20260930T041423Z_vae-full-workflow_1a3a89c8",
+    "/work3/s234818/latentmol/runs/20260930T041423Z_vae-train_d47e81c8",
+    "/work3/s234818/latentmol/runs/20260930T051554Z_evaluation_e5059187",
+    "/work3/s234818/latentmol/runs/20260930T051623Z_ae-train_95e9d971",
+    "/work3/s234818/latentmol/runs/20260930T071606Z_evaluation_7fdf88a7",
+    "/work3/s234818/latentmol/runs/20260930T071632Z_ae-train_55161bd8",
+    "/work3/s234818/latentmol/runs/20260930T091614Z_evaluation_2e2e9002",
+    "/work3/s234818/latentmol/runs/20260930T091644Z_evaluation_661c5cfc",
+    "/work3/s234818/latentmol/runs/20260930T091702Z_evaluation_6d03f0f1",
+    "/work3/s234818/latentmol/runs/20260930T091720Z_evaluation_edb23b67",
+    "/work3/s234818/latentmol/runs/20260930T091737Z_evaluation_23d9043c",
+    "/work3/s234818/latentmol/runs/20260930T091756Z_evaluation_64e50132",
+    "/work3/s234818/latentmol/runs/20260930T091814Z_evaluation_5c440f52",
+    "/work3/s234818/latentmol/runs/20260930T091831Z_evaluation_9f9fe513",
+    "/work3/s234818/latentmol/runs/20260930T091848Z_evaluation_cd09ee2e",
+    "/work3/s234818/latentmol/runs/20260930T091908Z_followup-wide_global_bond-ae-parent-29510500_27e4d5db",
+    "/work3/s234818/latentmol/runs/20260930T091914Z_architecture-fixed-z-draws_3a1cc3de",
+    "/work3/s234818/latentmol/runs/20260930T101318Z_evaluation_d8ec30e4",
+    "/work3/s234818/latentmol/runs/20260930T101352Z_vae-train_a2560f0f",
+    "/work3/s234818/latentmol/runs/20260930T121315Z_evaluation_73eef0a0",
+    "/work3/s234818/latentmol/runs/20260930T121344Z_vae-train_05fd06c1",
+    "/work3/s234818/latentmol/runs/20260930T132536Z_vae-train_b5307895",
+    "/work3/s234818/latentmol/runs/20260930T133505Z_vae-train_463f9d8b",
+    "/work3/s234818/latentmol/runs/20260930T135607Z_vae-train_29969afd",
+    "/work3/s234818/latentmol/runs/20260930T135907Z_tests-atom-pair-architecture_f967b7a5",
+    "/work3/s234818/latentmol/runs/20260930T140712Z_ae-train_a2aae2b6",
+    "/work3/s234818/latentmol/runs/20260930T140736Z_evaluation_3f5551a5",
+    "/work3/s234818/latentmol/runs/20260930T140741Z_evaluation_f1284584",
+    "/work3/s234818/latentmol/runs/20260930T140747Z_evaluation_7b9d81cc",
+    "/work3/s234818/latentmol/runs/20260930T140817Z_vae-train_7785fd5f",
+    "/work3/s234818/latentmol/runs/20260930T140842Z_evaluation_0cdedcab",
+    "/work3/s234818/latentmol/runs/20260930T140848Z_evaluation_177f2d3d",
+    "/work3/s234818/latentmol/runs/20260930T140854Z_evaluation_e89a3827",
+    "/work3/s234818/latentmol/runs/20260930T141303Z_evaluation_979e1707",
+    "/work3/s234818/latentmol/runs/20260930T141333Z_vae-train_7f1a1117",
+    "/work3/s234818/latentmol/runs/20260930T141446Z_gpu-rng-before-arch-stable_deep_pair_refine-ae_26edf610",
+    "/work3/s234818/latentmol/runs/20260930T141504Z_ae-full-workflow_242a67ba",
+    "/work3/s234818/latentmol/runs/20260930T141504Z_ae-train_4744b807",
+    "/work3/s234818/latentmol/runs/20260930T161318Z_evaluation_06abef9f",
+    "/work3/s234818/latentmol/runs/20260930T161352Z_evaluation_b72f5cdb",
+    "/work3/s234818/latentmol/runs/20260930T161411Z_evaluation_fb6a1569",
+    "/work3/s234818/latentmol/runs/20260930T161429Z_evaluation_134f2a64",
+    "/work3/s234818/latentmol/runs/20260930T161448Z_evaluation_567222a7",
+    "/work3/s234818/latentmol/runs/20260930T161506Z_evaluation_be9725ad",
+    "/work3/s234818/latentmol/runs/20260930T161526Z_evaluation_e4bfa226",
+    "/work3/s234818/latentmol/runs/20260930T161546Z_evaluation_20c89ceb",
+    "/work3/s234818/latentmol/runs/20260930T161604Z_evaluation_d680838c",
+    "/work3/s234818/latentmol/runs/20260930T161626Z_followup-wide_global_bond-vae-parent-29510501_b449c996",
+    "/work3/s234818/latentmol/runs/20260930T161628Z_gpu-rng-before-arch-stable_deep_pair_refine-vae_7576f725",
+    "/work3/s234818/latentmol/runs/20260930T161632Z_architecture-fixed-z-draws_af356a32",
+    "/work3/s234818/latentmol/runs/20260930T161646Z_vae-full-workflow_c17b4e0e",
+    "/work3/s234818/latentmol/runs/20260930T161647Z_vae-train_aa51f274",
+    "/work3/s234818/latentmol/runs/20260930T201342Z_evaluation_1fcc054f",
+    "/work3/s234818/latentmol/runs/20260930T201413Z_ae-train_0f1cc922",
+    "/work3/s234818/latentmol/runs/20260930T221349Z_evaluation_174d910d",
+    "/work3/s234818/latentmol/runs/20260930T221419Z_evaluation_a502084b",
+    "/work3/s234818/latentmol/runs/20260930T221438Z_evaluation_9ded8097",
+    "/work3/s234818/latentmol/runs/20260930T221455Z_evaluation_371eb94b",
+    "/work3/s234818/latentmol/runs/20260930T221514Z_evaluation_418763ea",
+    "/work3/s234818/latentmol/runs/20260930T221531Z_evaluation_d0f734ef",
+    "/work3/s234818/latentmol/runs/20260930T221548Z_evaluation_bcb2c292",
+    "/work3/s234818/latentmol/runs/20260930T221605Z_evaluation_766a59d9",
+    "/work3/s234818/latentmol/runs/20260930T221606Z_evaluation_18fb9de3",
+    "/work3/s234818/latentmol/runs/20260930T221624Z_evaluation_e8278df5",
+    "/work3/s234818/latentmol/runs/20260930T221635Z_vae-train_aa82f645"
+  ],
+  "no_numerical_execution": true,
+  "no_remote_execution_by_agent": true,
+  "october_gross_logical_bytes_before_inode_deduplication": 1434308580,
+  "prior_full_artifact_roots": [
+    "/work3/s234818/latentmol/runs/source-071-search-decoder-attempt001-search-study",
+    "/work3/s234818/latentmol/runs/source-073-decoder-budget-attempt002-recovery",
+    "/work3/s234818/latentmol/runs/source-078-dense-100epoch-attempt002-density100-study",
+    "/work3/s234818/latentmol/runs/source-079-defog-contract-recovery-attempt001-random-study",
+    "/work3/s234818/latentmol/runs/source120a004-boltz-defog-staged-24h-attempt004"
+  ],
+  "prior_refinement_sha256": "ebf8185d73335e28fbd2a6e9b7e9028c1c20af241be120a876838e201d780cf4",
+  "protected_exact_files": {
+    "/work3/s234818/latentmol/boltz-preparation/source054-active-set-attempt001/count-13/input/carbon_chain_13.yaml": {
+      "expected_sha256": [
+        "ff3f32119c9f6a51b37169306de81e43e60327797e79ae7a53ef90ee5a445117"
+      ],
+      "lstat": {
+        "blocks512": 2,
+        "ctime_ns": 1790887252000000000,
+        "dev": 1048654,
+        "ino": 9118375633549083765,
+        "mode": 420,
+        "mtime_ns": 1790887252000000000,
+        "nlink": 1,
+        "size": 634
+      },
+      "reasons": [
+        "Runtime input: /work3/s234818/latentmol/releases/source-138-epoch36-embedding-comparison-attempt003/configs/epoch36_embedding_comparison.json:path"
+      ]
+    },
+    "/work3/s234818/latentmol/boltz-preparation/source054-active-set-attempt001/count-13/prepared.pt": {
+      "expected_sha256": [
+        "8b6e47fdf5a53a8bd92c5ebf0baf7471ca6a329bbc524e9957a3e94a9938f611"
+      ],
+      "lstat": {
+        "blocks512": 58027,
+        "ctime_ns": 1790887356000000000,
+        "dev": 1048654,
+        "ino": 17370603330565787942,
+        "mode": 420,
+        "mtime_ns": 1790887356000000000,
+        "nlink": 1,
+        "size": 29709486
+      },
+      "reasons": [
+        "Runtime input: /work3/s234818/latentmol/releases/source-138-epoch36-embedding-comparison-attempt003/configs/epoch36_embedding_comparison.json:path"
+      ],
+      "scope": "Protected without deserializing or parsing dataset/model bytes"
+    },
+    "/work3/s234818/latentmol/cache/boltz2": {
+      "expected_sha256": [],
+      "reasons": [
+        "Runtime input: /work3/s234818/latentmol/releases/source-138-epoch36-embedding-comparison-attempt003/configs/epoch36_embedding_comparison.json:boltz_cache"
+      ]
+    },
+    "/work3/s234818/latentmol/cache/boltz2/boltz2_aff.ckpt": {
+      "expected_sha256": [
+        "dcc5cd3722b1c9eaa34267e4ae32f55cbbf1963f4c19319381ccfa30fdd2ca9e"
+      ],
+      "lstat": {
+        "blocks512": 4027616,
+        "ctime_ns": 1790518313000000000,
+        "dev": 1048654,
+        "ino": 16618026208491753350,
+        "mode": 420,
+        "mtime_ns": 1790518306000000000,
+        "nlink": 1,
+        "size": 2062139170
+      },
+      "reasons": [
+        "Runtime input: /work3/s234818/latentmol/releases/source-138-epoch36-embedding-comparison-attempt003/configs/epoch36_embedding_comparison.json:path"
+      ],
+      "scope": "Protected without deserializing or parsing dataset/model bytes"
+    },
+    "/work3/s234818/latentmol/cache/boltz2/boltz2_conf.ckpt": {
+      "expected_sha256": [
+        "090e82ac8c92f5e943fa1b39e7410a44027bea7243c0bbb3caa67a77fc1428e1"
+      ],
+      "lstat": {
+        "blocks512": 4465941,
+        "ctime_ns": 1790518399000000000,
+        "dev": 1048654,
+        "ino": 3579245352626243317,
+        "mode": 420,
+        "mtime_ns": 1790518391000000000,
+        "nlink": 1,
+        "size": 2286561469
+      },
+      "reasons": [
+        "Runtime input: /work3/s234818/latentmol/releases/source-138-epoch36-embedding-comparison-attempt003/configs/epoch36_embedding_comparison.json:path"
+      ],
+      "scope": "Protected without deserializing or parsing dataset/model bytes"
+    },
+    "/work3/s234818/latentmol/data/source095-moses-triangle-v2": {
+      "expected_sha256": [],
+      "reasons": [
+        "Runtime input: /work3/s234818/latentmol/releases/source-138-epoch36-embedding-comparison-attempt003/configs/epoch36_embedding_comparison.json:dataset",
+        "Runtime input: /work3/s234818/latentmol/submissions/source121a002-chemistry-16core-24h-attempt002/plans/r2_async_w12_m128_h24.json:data",
+        "Runtime input: /work3/s234818/latentmol/submissions/source138-vae-cli-startup-fix-attempt001/source138-vae-cli-startup-fix-attempt001.json:data"
+      ]
+    },
+    "/work3/s234818/latentmol/data/source095-moses-triangle-v2/manifest.json": {
+      "expected_sha256": [
+        "f246cc93805b73a557cd0c09a78891ac8410c465192db615ce0b6709218c8c0e"
+      ],
+      "lstat": {
+        "blocks512": 16,
+        "ctime_ns": 1791714263000000000,
+        "dev": 1048654,
+        "ino": 7894949723428541756,
+        "mode": 420,
+        "mtime_ns": 1791714263000000000,
+        "nlink": 1,
+        "size": 7777
+      },
+      "reasons": [
+        "Runtime input: Authenticated active plan seed:plan",
+        "Runtime input: /work3/s234818/latentmol/releases/source-138-epoch36-embedding-comparison-attempt003/configs/epoch36_embedding_comparison.json:path",
+        "Exact proof bytes only: /work3/s234818/latentmol/submissions/source121a002-chemistry-16core-24h-attempt002/plans/r2_async_w12_m128_h24.json:absolute_map_key",
+        "Exact proof bytes only: /work3/s234818/latentmol/submissions/source138-vae-cli-startup-fix-attempt001/source138-vae-cli-startup-fix-attempt001.json:absolute_map_key"
+      ]
+    },
+    "/work3/s234818/latentmol/data/zinc215k-seed17-v1": {
+      "expected_sha256": [],
+      "reasons": [
+        "Runtime input: /work3/s234818/latentmol/data/source095-moses-triangle-v2/manifest.json:path",
+        "Runtime input: /work3/s234818/latentmol/submissions/source104-chemistry-continuation-attempt005/parent-run.json:path"
+      ]
+    },
+    "/work3/s234818/latentmol/raw/moses-v1-dd7ed6ab38e2.csv": {
+      "expected_sha256": [],
+      "lstat": {
+        "blocks512": 165006,
+        "ctime_ns": 1791672184000000000,
+        "dev": 1048654,
+        "ino": 6157895764986803093,
+        "mode": 420,
+        "mtime_ns": 1791672184000000000,
+        "nlink": 1,
+        "size": 84482588
+      },
+      "reasons": [
+        "Runtime input: /work3/s234818/latentmol/data/source095-moses-triangle-v2/manifest.json:source_path",
+        "Runtime input: /work3/s234818/latentmol/submissions/source104-chemistry-continuation-attempt005/parent-run.json:source_path"
+      ],
+      "scope": "Protected without deserializing or parsing dataset/model bytes"
+    },
+    "/work3/s234818/latentmol/releases/source-098-triangle-evaluator-recovery-attempt001": {
+      "expected_sha256": [],
+      "reasons": [
+        "Exact proof bytes only: /work3/s234818/latentmol/submissions/source104-chemistry-continuation-attempt005/parent-run.json:root",
+        "Runtime input: /work3/s234818/latentmol/submissions/source121a002-chemistry-16core-24h-attempt002/plans/r2_async_w12_m128_h24.json:parent_release",
+        "Runtime input: /work3/s234818/latentmol/submissions/source138-vae-cli-startup-fix-attempt001/source138-vae-cli-startup-fix-attempt001.json:parent_release"
+      ]
+    },
+    "/work3/s234818/latentmol/releases/source-121-chemistry-16core-24h-attempt002": {
+      "expected_sha256": [],
+      "reasons": [
+        "Runtime input: /work3/s234818/latentmol/submissions/source121a002-chemistry-16core-24h-attempt002/plans/r2_async_w12_m128_h24.json:release"
+      ]
+    },
+    "/work3/s234818/latentmol/releases/source-124-deterministic-chemistry-events-attempt002/src/latentmol/repair_failure_guidance.py": {
+      "expected_sha256": [
+        "34c1a67cb339233312a1317db39a926b55f378c0eb8ed42c38bde86307fdd184"
+      ],
+      "lstat": {
+        "blocks512": 50,
+        "ctime_ns": 1792396912000000000,
+        "dev": 1048654,
+        "ino": 13648803061513281196,
+        "mode": 420,
+        "mtime_ns": 1792396912000000000,
+        "nlink": 1,
+        "size": 25502
+      },
+      "reasons": [
+        "Exact proof bytes only: Authenticated active plan seed:proof",
+        "Runtime input: /work3/s234818/latentmol/submissions/source138-vae-cli-startup-fix-attempt001/source138-vae-cli-startup-fix-attempt001.json:module"
+      ]
+    },
+    "/work3/s234818/latentmol/releases/source-138-epoch36-embedding-comparison-attempt003/configs/epoch36_embedding_comparison.json": {
+      "expected_sha256": [
+        "60f555eb6193b804d8446dc864a57c52662e4c146be424b8f7cc118f6d6ecd6c"
+      ],
+      "lstat": {
+        "blocks512": 16,
+        "ctime_ns": 1792783919000000000,
+        "dev": 1048654,
+        "ino": 14648099765294964960,
+        "mode": 420,
+        "mtime_ns": 1792782943000000000,
+        "nlink": 1,
+        "size": 8154
+      },
+      "reasons": [
+        "Runtime input: Authenticated active plan seed:plan"
+      ]
+    },
+    "/work3/s234818/latentmol/releases/source-138-epoch36-embedding-comparison-attempt003/embedding-release-manifest.json": {
+      "expected_sha256": [
+        "4a598d1143f6afc180d18dea618cdc09a859f019a7fc042b9025fcb8fb8487dd"
+      ],
+      "lstat": {
+        "blocks512": 131,
+        "ctime_ns": 1792783920000000000,
+        "dev": 1048654,
+        "ino": 2061785046339824171,
+        "mode": 420,
+        "mtime_ns": 1792783905000000000,
+        "nlink": 1,
+        "size": 66754
+      },
+      "reasons": [
+        "Pinned actual current execution manifest",
+        "Exact proof bytes only: Authenticated active plan seed:proof"
+      ]
+    },
+    "/work3/s234818/latentmol/releases/source-138-vae-cli-startup-fix-attempt001": {
+      "expected_sha256": [],
+      "reasons": [
+        "Runtime input: /work3/s234818/latentmol/submissions/source138-vae-cli-startup-fix-attempt001/source138-vae-cli-startup-fix-attempt001.json:release"
+      ]
+    },
+    "/work3/s234818/latentmol/releases/source-138-vae-cli-startup-fix-attempt001/configs/chemistry_failure_variants/frozen_valid_reference_test.json": {
+      "expected_sha256": [],
+      "lstat": {
+        "blocks512": 3,
+        "ctime_ns": 1792783332000000000,
+        "dev": 1048654,
+        "ino": 11610874713757356088,
+        "mode": 420,
+        "mtime_ns": 1792783332000000000,
+        "nlink": 1,
+        "size": 1351
+      },
+      "reasons": [
+        "Runtime input: /work3/s234818/latentmol/submissions/source138-vae-cli-startup-fix-attempt001/source138-vae-cli-startup-fix-attempt001.json:protocol_config"
+      ]
+    },
+    "/work3/s234818/latentmol/releases/source-138-vae-cli-startup-fix-attempt001/configs/chemistry_speed_variants/r2_async_w12_m128_h24.json": {
+      "expected_sha256": [],
+      "lstat": {
+        "blocks512": 2,
+        "ctime_ns": 1792783332000000000,
+        "dev": 1048654,
+        "ino": 10179162401940018110,
+        "mode": 420,
+        "mtime_ns": 1792783332000000000,
+        "nlink": 1,
+        "size": 961
+      },
+      "reasons": [
+        "Runtime input: /work3/s234818/latentmol/submissions/source121a002-chemistry-16core-24h-attempt002/plans/r2_async_w12_m128_h24.json:protocol_config"
+      ]
+    },
+    "/work3/s234818/latentmol/releases/source-138-vae-cli-startup-fix-attempt001/release_manifest.json": {
+      "expected_sha256": [
+        "4376ee2331f975e441eb6d641ab3d5735f573236cd0b3403a3a4e8c6ec729498"
+      ],
+      "lstat": {
+        "blocks512": 130,
+        "ctime_ns": 1792783333000000000,
+        "dev": 1048654,
+        "ino": 8899856375931144186,
+        "mode": 420,
+        "mtime_ns": 1792783333000000000,
+        "nlink": 1,
+        "size": 66055
+      },
+      "reasons": [
+        "Pinned actual current execution manifest",
+        "Exact proof bytes only: Authenticated active plan seed:proof"
+      ]
+    },
+    "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/contexts.json": {
+      "expected_sha256": [
+        "a0ebed8bd67358b4027999901a8cb9e5be12731b4d77d68c6b9154513b2261eb"
+      ],
+      "lstat": {
+        "blocks512": 18,
+        "ctime_ns": 1791246314000000000,
+        "dev": 1048654,
+        "ino": 16512071919505270446,
+        "mode": 420,
+        "mtime_ns": 1791246314000000000,
+        "nlink": 1,
+        "size": 8998
+      },
+      "reasons": [
+        "Runtime input: /work3/s234818/latentmol/releases/source-138-epoch36-embedding-comparison-attempt003/configs/epoch36_embedding_comparison.json:path"
+      ]
+    },
+    "/work3/s234818/latentmol/runs/source094-large-triangle-first-suite/inventory/inventory.json": {
+      "expected_sha256": [
+        "3e860f868c1d71a68cae4f1b32cab9cea162ff118f0c5d4917afee6db99333c1"
+      ],
+      "lstat": {
+        "blocks512": 11,
+        "ctime_ns": 1791676314000000000,
+        "dev": 1048654,
+        "ino": 7997821192306758692,
+        "mode": 420,
+        "mtime_ns": 1791676314000000000,
+        "nlink": 1,
+        "size": 5447
+      },
+      "reasons": [
+        "Exact proof bytes only: Authenticated active plan seed:proof",
+        "Exact proof bytes only: /work3/s234818/latentmol/submissions/source121a002-chemistry-16core-24h-attempt002/plans/r2_async_w12_m128_h24.json:absolute_map_key",
+        "Exact proof bytes only: /work3/s234818/latentmol/submissions/source138-vae-cli-startup-fix-attempt001/source138-vae-cli-startup-fix-attempt001.json:absolute_map_key"
+      ]
+    },
+    "/work3/s234818/latentmol/runs/source094-large-triangle-first-suite/receipts/inventory-intent.json": {
+      "expected_sha256": [
+        "df9e01a8d12f4d178f58f994d7e7567030c9428f810a3c5c3d7f65609d22d343"
+      ],
+      "lstat": {
+        "blocks512": 4,
+        "ctime_ns": 1791672915000000000,
+        "dev": 1048654,
+        "ino": 1353823217840972098,
+        "mode": 420,
+        "mtime_ns": 1791672915000000000,
+        "nlink": 1,
+        "size": 1824
+      },
+      "reasons": [
+        "Exact proof bytes only: Authenticated active plan seed:proof",
+        "Exact proof bytes only: /work3/s234818/latentmol/submissions/source121a002-chemistry-16core-24h-attempt002/plans/r2_async_w12_m128_h24.json:absolute_map_key",
+        "Exact proof bytes only: /work3/s234818/latentmol/submissions/source138-vae-cli-startup-fix-attempt001/source138-vae-cli-startup-fix-attempt001.json:absolute_map_key"
+      ]
+    },
+    "/work3/s234818/latentmol/runs/source094-large-triangle-first-suite/receipts/inventory-receipt.json": {
+      "expected_sha256": [
+        "8a1a4cb3f849296d6eef65b40b8ead66c3aadc174f58e8b2af09c7097e268279"
+      ],
+      "lstat": {
+        "blocks512": 4,
+        "ctime_ns": 1791672916000000000,
+        "dev": 1048654,
+        "ino": 7831352470971808689,
+        "mode": 420,
+        "mtime_ns": 1791672916000000000,
+        "nlink": 1,
+        "size": 1959
+      },
+      "reasons": [
+        "Exact proof bytes only: Authenticated active plan seed:proof",
+        "Exact proof bytes only: /work3/s234818/latentmol/submissions/source121a002-chemistry-16core-24h-attempt002/plans/r2_async_w12_m128_h24.json:absolute_map_key",
+        "Exact proof bytes only: /work3/s234818/latentmol/submissions/source138-vae-cli-startup-fix-attempt001/source138-vae-cli-startup-fix-attempt001.json:absolute_map_key"
+      ]
+    },
+    "/work3/s234818/latentmol/runs/source094-large-triangle-first-suite/stage-completions/inventory.json": {
+      "expected_sha256": [
+        "874afe5ba525cfc69e9f63a9bcb344a566203ff631d9b170c068bbe7fec6e728"
+      ],
+      "lstat": {
+        "blocks512": 2,
+        "ctime_ns": 1791676314000000000,
+        "dev": 1048654,
+        "ino": 14118427987101659653,
+        "mode": 420,
+        "mtime_ns": 1791676314000000000,
+        "nlink": 1,
+        "size": 557
+      },
+      "reasons": [
+        "Exact proof bytes only: Authenticated active plan seed:proof",
+        "Exact proof bytes only: /work3/s234818/latentmol/submissions/source121a002-chemistry-16core-24h-attempt002/plans/r2_async_w12_m128_h24.json:absolute_map_key",
+        "Exact proof bytes only: /work3/s234818/latentmol/submissions/source138-vae-cli-startup-fix-attempt001/source138-vae-cli-startup-fix-attempt001.json:absolute_map_key"
+      ]
+    },
+    "/work3/s234818/latentmol/runs/source095-large-triangle-prepare-benchmark/receipts/prepare-intent.json": {
+      "expected_sha256": [
+        "dcbd676e3e630763bf0808c4e0fd72ffb9f64a4dcce258a5b6ec3cef103bb203"
+      ],
+      "lstat": {
+        "blocks512": 4,
+        "ctime_ns": 1791707594000000000,
+        "dev": 1048654,
+        "ino": 15668359471184568795,
+        "mode": 420,
+        "mtime_ns": 1791707594000000000,
+        "nlink": 1,
+        "size": 1856
+      },
+      "reasons": [
+        "Exact proof bytes only: Authenticated active plan seed:proof",
+        "Exact proof bytes only: /work3/s234818/latentmol/submissions/source121a002-chemistry-16core-24h-attempt002/plans/r2_async_w12_m128_h24.json:absolute_map_key",
+        "Exact proof bytes only: /work3/s234818/latentmol/submissions/source138-vae-cli-startup-fix-attempt001/source138-vae-cli-startup-fix-attempt001.json:absolute_map_key"
+      ]
+    },
+    "/work3/s234818/latentmol/runs/source095-large-triangle-prepare-benchmark/receipts/prepare-receipt.json": {
+      "expected_sha256": [
+        "667ea9f3a22a9a03ead1c165a28dec5171a74272545c19421be1ed6e36364e4a"
+      ],
+      "lstat": {
+        "blocks512": 4,
+        "ctime_ns": 1791707594000000000,
+        "dev": 1048654,
+        "ino": 7884655514979105468,
+        "mode": 420,
+        "mtime_ns": 1791707594000000000,
+        "nlink": 1,
+        "size": 1991
+      },
+      "reasons": [
+        "Exact proof bytes only: Authenticated active plan seed:proof",
+        "Exact proof bytes only: /work3/s234818/latentmol/submissions/source121a002-chemistry-16core-24h-attempt002/plans/r2_async_w12_m128_h24.json:absolute_map_key",
+        "Exact proof bytes only: /work3/s234818/latentmol/submissions/source138-vae-cli-startup-fix-attempt001/source138-vae-cli-startup-fix-attempt001.json:absolute_map_key"
+      ]
+    },
+    "/work3/s234818/latentmol/runs/source095-large-triangle-prepare-benchmark/stage-completions/prepare.json": {
+      "expected_sha256": [
+        "dd3345fa57c266537ff11980facf9aca053c337a46ceb15bb38e18e87ceb3fea"
+      ],
+      "lstat": {
+        "blocks512": 2,
+        "ctime_ns": 1791714264000000000,
+        "dev": 1048654,
+        "ino": 10551387669730910127,
+        "mode": 420,
+        "mtime_ns": 1791714264000000000,
+        "nlink": 1,
+        "size": 535
+      },
+      "reasons": [
+        "Exact proof bytes only: Authenticated active plan seed:proof",
+        "Exact proof bytes only: /work3/s234818/latentmol/submissions/source121a002-chemistry-16core-24h-attempt002/plans/r2_async_w12_m128_h24.json:absolute_map_key",
+        "Exact proof bytes only: /work3/s234818/latentmol/submissions/source138-vae-cli-startup-fix-attempt001/source138-vae-cli-startup-fix-attempt001.json:absolute_map_key"
+      ]
+    },
+    "/work3/s234818/latentmol/runs/source098-large-triangle-evaluator-recovery/benchmark/passed.json": {
+      "expected_sha256": [
+        "be94a25134f60a36b03512900cbb3a8e9ee7643aed81199f68b1da1866bc084c"
+      ],
+      "lstat": {
+        "blocks512": 22,
+        "ctime_ns": 1791750398000000000,
+        "dev": 1048654,
+        "ino": 16040682261594244497,
+        "mode": 420,
+        "mtime_ns": 1791750398000000000,
+        "nlink": 1,
+        "size": 10823
+      },
+      "reasons": [
+        "Exact proof bytes only: Authenticated active plan seed:proof",
+        "Exact proof bytes only: /work3/s234818/latentmol/submissions/source121a002-chemistry-16core-24h-attempt002/plans/r2_async_w12_m128_h24.json:absolute_map_key",
+        "Exact proof bytes only: /work3/s234818/latentmol/submissions/source138-vae-cli-startup-fix-attempt001/source138-vae-cli-startup-fix-attempt001.json:absolute_map_key"
+      ]
+    },
+    "/work3/s234818/latentmol/runs/source098-large-triangle-evaluator-recovery/segments/001/20261011T203219Z_vae-train_645e1074/epoch_0017.pt": {
+      "expected_sha256": [],
+      "lstat": {
+        "blocks512": 92996,
+        "ctime_ns": 1791809496000000000,
+        "dev": 1048654,
+        "ino": 6436531038050050279,
+        "mode": 420,
+        "mtime_ns": 1791809496000000000,
+        "nlink": 1,
+        "size": 47613578
+      },
+      "reasons": [
+        "Runtime input: /work3/s234818/latentmol/submissions/source104-chemistry-continuation-attempt005/parent-run.json:inherited_from"
+      ],
+      "scope": "Protected without deserializing or parsing dataset/model bytes"
+    },
+    "/work3/s234818/latentmol/runs/source098-large-triangle-evaluator-recovery/segments/001/20261011T203219Z_vae-train_645e1074/last.pt": {
+      "expected_sha256": [],
+      "lstat": {
+        "blocks512": 92996,
+        "ctime_ns": 1791819849000000000,
+        "dev": 1048654,
+        "ino": 8118740017075854749,
+        "mode": 420,
+        "mtime_ns": 1791819849000000000,
+        "nlink": 1,
+        "size": 47613578
+      },
+      "reasons": [
+        "Runtime input: /work3/s234818/latentmol/submissions/source104-chemistry-continuation-attempt005/parent-run.json:checkpoint"
+      ],
+      "scope": "Protected without deserializing or parsing dataset/model bytes"
+    },
+    "/work3/s234818/latentmol/runs/source098-large-triangle-evaluator-recovery/segments/002/20261013T054947Z_vae-train_9e484e3f/epoch_0035.pt": {
+      "expected_sha256": [],
+      "lstat": {
+        "blocks512": 92996,
+        "ctime_ns": 1791922465000000000,
+        "dev": 1048654,
+        "ino": 2289902937747469385,
+        "mode": 420,
+        "mtime_ns": 1791922465000000000,
+        "nlink": 1,
+        "size": 47613642
+      },
+      "reasons": [
+        "Runtime input: /work3/s234818/latentmol/submissions/source104-chemistry-continuation-attempt005/parent-run.json:path"
+      ],
+      "scope": "Protected without deserializing or parsing dataset/model bytes"
+    },
+    "/work3/s234818/latentmol/runs/source098-large-triangle-evaluator-recovery/segments/002/20261013T054947Z_vae-train_9e484e3f/inherited_best_reconstruction.pt": {
+      "expected_sha256": [],
+      "lstat": {
+        "blocks512": 92996,
+        "ctime_ns": 1791870595000000000,
+        "dev": 1048654,
+        "ino": 6968384215312329504,
+        "mode": 420,
+        "mtime_ns": 1791870595000000000,
+        "nlink": 1,
+        "size": 47613578
+      },
+      "reasons": [
+        "Runtime input: /work3/s234818/latentmol/submissions/source104-chemistry-continuation-attempt005/parent-run.json:path"
+      ],
+      "scope": "Protected without deserializing or parsing dataset/model bytes"
+    },
+    "/work3/s234818/latentmol/runs/source098-large-triangle-evaluator-recovery/segments/002/20261013T054947Z_vae-train_9e484e3f/inherited_best_validity.pt": {
+      "expected_sha256": [],
+      "lstat": {
+        "blocks512": 92996,
+        "ctime_ns": 1791870595000000000,
+        "dev": 1048654,
+        "ino": 9185288113045301047,
+        "mode": 420,
+        "mtime_ns": 1791870595000000000,
+        "nlink": 1,
+        "size": 47613578
+      },
+      "reasons": [
+        "Runtime input: /work3/s234818/latentmol/submissions/source104-chemistry-continuation-attempt005/parent-run.json:path"
+      ],
+      "scope": "Protected without deserializing or parsing dataset/model bytes"
+    },
+    "/work3/s234818/latentmol/runs/source121a002-chemistry-16core-24h-attempt002": {
+      "expected_sha256": [],
+      "reasons": [
+        "Runtime input: /work3/s234818/latentmol/submissions/source121a002-chemistry-16core-24h-attempt002/plans/r2_async_w12_m128_h24.json:speed_suite_root",
+        "Runtime input: /work3/s234818/latentmol/submissions/source138-vae-cli-startup-fix-attempt001/source138-vae-cli-startup-fix-attempt001.json:speed_suite_root"
+      ]
+    },
+    "/work3/s234818/latentmol/runs/source121a002-chemistry-16core-24h-attempt002/variants/r2_async_w12_m128_h24": {
+      "expected_sha256": [],
+      "reasons": [
+        "Runtime input: /work3/s234818/latentmol/submissions/source121a002-chemistry-16core-24h-attempt002/plans/r2_async_w12_m128_h24.json:campaign"
+      ]
+    },
+    "/work3/s234818/latentmol/runs/source121a002-chemistry-16core-24h-attempt002/variants/r2_async_w12_m128_h24/segment-001-completion.json": {
+      "expected_sha256": [
+        "4d9aab0216d574f1551a8b2ecd5e1c78f873726bcd5fab134773bbd6412c29b5"
+      ],
+      "lstat": {
+        "blocks512": 2,
+        "ctime_ns": 1792380856000000000,
+        "dev": 1048654,
+        "ino": 4869094665457710599,
+        "mode": 420,
+        "mtime_ns": 1792380856000000000,
+        "nlink": 1,
+        "size": 748
+      },
+      "reasons": [
+        "Runtime input: Authenticated active plan seed:plan",
+        "Runtime input: /work3/s234818/latentmol/submissions/source138-vae-cli-startup-fix-attempt001/source138-vae-cli-startup-fix-attempt001.json:completion"
+      ]
+    },
+    "/work3/s234818/latentmol/runs/source121a002-chemistry-16core-24h-attempt002/variants/r2_async_w12_m128_h24/segments/001/20261018T175254Z_chemistry-train_89b58520": {
+      "expected_sha256": [],
+      "reasons": [
+        "Runtime input: /work3/s234818/latentmol/runs/source121a002-chemistry-16core-24h-attempt002/variants/r2_async_w12_m128_h24/segment-001-completion.json:run_dir"
+      ]
+    },
+    "/work3/s234818/latentmol/runs/source121a002-chemistry-16core-24h-attempt002/variants/r2_async_w12_m128_h24/segments/001/20261018T175254Z_chemistry-train_89b58520/epoch_0036.pt": {
+      "expected_sha256": [
+        "3179ef01f84a2c714ee031bc3e6a6a4dc2cedc767d30e700c887aab1abbd706f"
+      ],
+      "lstat": {
+        "blocks512": 93096,
+        "ctime_ns": 1792380856000000000,
+        "dev": 1048654,
+        "ino": 2258262632483254930,
+        "mode": 420,
+        "mtime_ns": 1792380856000000000,
+        "nlink": 1,
+        "size": 47664990
+      },
+      "reasons": [
+        "Exact proof bytes only: Authenticated active plan seed:proof",
+        "Runtime input: /work3/s234818/latentmol/releases/source-138-epoch36-embedding-comparison-attempt003/configs/epoch36_embedding_comparison.json:path",
+        "Runtime input: /work3/s234818/latentmol/runs/source121a002-chemistry-16core-24h-attempt002/variants/r2_async_w12_m128_h24/segment-001-completion.json:checkpoint",
+        "Runtime input: /work3/s234818/latentmol/submissions/source138-vae-cli-startup-fix-attempt001/source138-vae-cli-startup-fix-attempt001.json:path"
+      ],
+      "scope": "Protected without deserializing or parsing dataset/model bytes"
+    },
+    "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/after-cpu-decision.json": {
+      "expected_sha256": [
+        "0875d19d42b86e157e3437a728d3143eb13930e1a51a2e0f53f45cba970553f2"
+      ],
+      "lstat": {
+        "blocks512": 2,
+        "ctime_ns": 1792664803000000000,
+        "dev": 1048654,
+        "ino": 7549348467000305619,
+        "mode": 420,
+        "mtime_ns": 1792664803000000000,
+        "nlink": 1,
+        "size": 872
+      },
+      "reasons": [
+        "Exact proof bytes only: Authenticated active plan seed:proof",
+        "Exact proof bytes only: /work3/s234818/latentmol/submissions/source138-vae-cli-startup-fix-attempt001/source138-vae-cli-startup-fix-attempt001.json:absolute_map_key"
+      ]
+    },
+    "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/allocations/20261022T102132Z_guarded-chemistry-cpu_b50fa68e/run.json": {
+      "expected_sha256": [
+        "36f6f9f2c801b97bd2e3fc689c835352a99aa6466277d17f151182bd28892f21"
+      ],
+      "lstat": {
+        "blocks512": 138,
+        "ctime_ns": 1792664798000000000,
+        "dev": 1048654,
+        "ino": 17907535519426903487,
+        "mode": 420,
+        "mtime_ns": 1792664798000000000,
+        "nlink": 1,
+        "size": 70310
+      },
+      "reasons": [
+        "Exact proof bytes only: Authenticated active plan seed:proof",
+        "Exact proof bytes only: /work3/s234818/latentmol/submissions/source138-vae-cli-startup-fix-attempt001/source138-vae-cli-startup-fix-attempt001.json:absolute_map_key"
+      ]
+    },
+    "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/allocations/20261022T102658Z_independent-valid-self-test_c80f275d/run.json": {
+      "expected_sha256": [
+        "0dbe38ee85afebb6a896c804f23149d82add909f4928a4c393e03444178a80db"
+      ],
+      "lstat": {
+        "blocks512": 140,
+        "ctime_ns": 1792684110000000000,
+        "dev": 1048654,
+        "ino": 4869530098598917471,
+        "mode": 420,
+        "mtime_ns": 1792684110000000000,
+        "nlink": 1,
+        "size": 71247
+      },
+      "reasons": [
+        "Exact proof bytes only: Authenticated active plan seed:proof",
+        "Exact proof bytes only: /work3/s234818/latentmol/submissions/source138-vae-cli-startup-fix-attempt001/source138-vae-cli-startup-fix-attempt001.json:absolute_map_key"
+      ]
+    },
+    "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/benchmark_gate.json": {
+      "expected_sha256": [
+        "a004617814cb2687bacf41a7dce385b1c10c6ba2473d785502f369248368fc27"
+      ],
+      "lstat": {
+        "blocks512": 11210,
+        "ctime_ns": 1792665163000000000,
+        "dev": 1048654,
+        "ino": 7412071473545264626,
+        "mode": 420,
+        "mtime_ns": 1792665163000000000,
+        "nlink": 1,
+        "size": 5739434
+      },
+      "reasons": [
+        "Exact proof bytes only: Authenticated active plan seed:proof",
+        "Exact proof bytes only: /work3/s234818/latentmol/submissions/source138-vae-cli-startup-fix-attempt001/source138-vae-cli-startup-fix-attempt001.json:absolute_map_key"
+      ]
+    },
+    "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/cpu_gate.json": {
+      "expected_sha256": [
+        "f672675517ddf04027c29828b668316b342f320e137ad008f76147b436d3c3db"
+      ],
+      "lstat": {
+        "blocks512": 8,
+        "ctime_ns": 1792664798000000000,
+        "dev": 1048654,
+        "ino": 3827596485858580927,
+        "mode": 420,
+        "mtime_ns": 1792664798000000000,
+        "nlink": 1,
+        "size": 3839
+      },
+      "reasons": [
+        "Exact proof bytes only: Authenticated active plan seed:proof",
+        "Exact proof bytes only: /work3/s234818/latentmol/submissions/source138-vae-cli-startup-fix-attempt001/source138-vae-cli-startup-fix-attempt001.json:absolute_map_key"
+      ]
+    },
+    "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/early-health-baseline.json": {
+      "expected_sha256": [
+        "d19e62be77d956283733b2b6da3dbb0fb81431fecf12bc31d77c34dde3814beb"
+      ],
+      "lstat": {
+        "blocks512": 5693,
+        "ctime_ns": 1792666712000000000,
+        "dev": 1048654,
+        "ino": 4358932107215459361,
+        "mode": 420,
+        "mtime_ns": 1792666712000000000,
+        "nlink": 1,
+        "size": 2914728
+      },
+      "reasons": [
+        "Exact proof bytes only: Authenticated active plan seed:proof",
+        "Exact proof bytes only: /work3/s234818/latentmol/submissions/source138-vae-cli-startup-fix-attempt001/source138-vae-cli-startup-fix-attempt001.json:absolute_map_key"
+      ]
+    },
+    "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/failure_readiness.json": {
+      "expected_sha256": [
+        "f49a8d4d70cf5693bcc0f7521087dd44f0a67e2339b0a0376a0c58585cfd408a"
+      ],
+      "lstat": {
+        "blocks512": 136,
+        "ctime_ns": 1792684109000000000,
+        "dev": 1048654,
+        "ino": 8784182325822251583,
+        "mode": 420,
+        "mtime_ns": 1792684109000000000,
+        "nlink": 1,
+        "size": 69236
+      },
+      "reasons": [
+        "Exact proof bytes only: Authenticated active plan seed:proof",
+        "Exact proof bytes only: /work3/s234818/latentmol/submissions/source138-vae-cli-startup-fix-attempt001/source138-vae-cli-startup-fix-attempt001.json:absolute_map_key"
+      ]
+    },
+    "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/guarded-cpu-pytest.xml": {
+      "expected_sha256": [
+        "ea990a9d19a51e3620bc49779135b37373fb24fec7b99c3aed46f8f2f9c6ed20"
+      ],
+      "lstat": {
+        "blocks512": 719,
+        "ctime_ns": 1792664695000000000,
+        "dev": 1048654,
+        "ino": 2159123692655361575,
+        "mode": 420,
+        "mtime_ns": 1792664695000000000,
+        "nlink": 1,
+        "size": 367790
+      },
+      "reasons": [
+        "Exact proof bytes only: Authenticated active plan seed:proof",
+        "Exact proof bytes only: /work3/s234818/latentmol/submissions/source138-vae-cli-startup-fix-attempt001/source138-vae-cli-startup-fix-attempt001.json:absolute_map_key"
+      ]
+    },
+    "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/independent-self-cuda-pytest.xml": {
+      "expected_sha256": [
+        "9e91b62547afb964cef59f6e9a0aa9ab1ae1a4292842c96481f714ff51944847"
+      ],
+      "lstat": {
+        "blocks512": 171,
+        "ctime_ns": 1792664884000000000,
+        "dev": 1048654,
+        "ino": 14525445432952318275,
+        "mode": 420,
+        "mtime_ns": 1792664884000000000,
+        "nlink": 1,
+        "size": 87404
+      },
+      "reasons": [
+        "Exact proof bytes only: Authenticated active plan seed:proof",
+        "Exact proof bytes only: /work3/s234818/latentmol/submissions/source138-vae-cli-startup-fix-attempt001/source138-vae-cli-startup-fix-attempt001.json:absolute_map_key"
+      ]
+    },
+    "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/receipts/after-cpu-intent.json": {
+      "expected_sha256": [
+        "a0a03feca0ff76efa411d79582062ae9253beba7af596f1fcf2586ed96e47bce"
+      ],
+      "lstat": {
+        "blocks512": 3,
+        "ctime_ns": 1792664489000000000,
+        "dev": 1048654,
+        "ino": 8167271645575631259,
+        "mode": 420,
+        "mtime_ns": 1792664489000000000,
+        "nlink": 1,
+        "size": 1315
+      },
+      "reasons": [
+        "Exact proof bytes only: Authenticated active plan seed:proof",
+        "Exact proof bytes only: /work3/s234818/latentmol/submissions/source138-vae-cli-startup-fix-attempt001/source138-vae-cli-startup-fix-attempt001.json:absolute_map_key"
+      ]
+    },
+    "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/receipts/after-cpu-receipt.json": {
+      "expected_sha256": [
+        "2bb1a7cc369531787ce4d57764d215ea18fa0b0111aec2402cc531b5c4616fb6"
+      ],
+      "lstat": {
+        "blocks512": 3,
+        "ctime_ns": 1792664489000000000,
+        "dev": 1048654,
+        "ino": 12977181428676391200,
+        "mode": 420,
+        "mtime_ns": 1792664489000000000,
+        "nlink": 1,
+        "size": 1452
+      },
+      "reasons": [
+        "Exact proof bytes only: Authenticated active plan seed:proof",
+        "Exact proof bytes only: /work3/s234818/latentmol/submissions/source138-vae-cli-startup-fix-attempt001/source138-vae-cli-startup-fix-attempt001.json:absolute_map_key"
+      ]
+    },
+    "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/receipts/cpu-intent.json": {
+      "expected_sha256": [
+        "009d13471eb080cca88d4149511ec535ed7b17e30fffd85854f2b9ebc3269a8e"
+      ],
+      "lstat": {
+        "blocks512": 4,
+        "ctime_ns": 1792664489000000000,
+        "dev": 1048654,
+        "ino": 11603218769596955518,
+        "mode": 420,
+        "mtime_ns": 1792664489000000000,
+        "nlink": 1,
+        "size": 1886
+      },
+      "reasons": [
+        "Exact proof bytes only: Authenticated active plan seed:proof",
+        "Exact proof bytes only: /work3/s234818/latentmol/submissions/source138-vae-cli-startup-fix-attempt001/source138-vae-cli-startup-fix-attempt001.json:absolute_map_key"
+      ]
+    },
+    "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/receipts/cpu-receipt.json": {
+      "expected_sha256": [
+        "baa105c073f64cb9ac515a9da6d01454645b988df1f702ba810e450c72e9b9c8"
+      ],
+      "lstat": {
+        "blocks512": 4,
+        "ctime_ns": 1792664489000000000,
+        "dev": 1048654,
+        "ino": 15689079830879104209,
+        "mode": 420,
+        "mtime_ns": 1792664489000000000,
+        "nlink": 1,
+        "size": 2019
+      },
+      "reasons": [
+        "Exact proof bytes only: Authenticated active plan seed:proof",
+        "Exact proof bytes only: /work3/s234818/latentmol/submissions/source138-vae-cli-startup-fix-attempt001/source138-vae-cli-startup-fix-attempt001.json:absolute_map_key"
+      ]
+    },
+    "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/receipts/independent-self-test-intent.json": {
+      "expected_sha256": [
+        "1b932329e5661c418d6ccd1ffdb508252bce3e3234e59f7518aed1820d05e0f2"
+      ],
+      "lstat": {
+        "blocks512": 6,
+        "ctime_ns": 1792664803000000000,
+        "dev": 1048654,
+        "ino": 15672056145352913902,
+        "mode": 420,
+        "mtime_ns": 1792664803000000000,
+        "nlink": 1,
+        "size": 3037
+      },
+      "reasons": [
+        "Exact proof bytes only: Authenticated active plan seed:proof",
+        "Exact proof bytes only: /work3/s234818/latentmol/submissions/source138-vae-cli-startup-fix-attempt001/source138-vae-cli-startup-fix-attempt001.json:absolute_map_key"
+      ]
+    },
+    "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/receipts/independent-self-test-receipt.json": {
+      "expected_sha256": [
+        "4f69f756033e4051e9afd8ce4c336ef2f49f8d2420d6a3aec79d74f83325e0ec"
+      ],
+      "lstat": {
+        "blocks512": 7,
+        "ctime_ns": 1792664803000000000,
+        "dev": 1048654,
+        "ino": 138425198863594981,
+        "mode": 420,
+        "mtime_ns": 1792664803000000000,
+        "nlink": 1,
+        "size": 3178
+      },
+      "reasons": [
+        "Exact proof bytes only: Authenticated active plan seed:proof",
+        "Exact proof bytes only: /work3/s234818/latentmol/submissions/source138-vae-cli-startup-fix-attempt001/source138-vae-cli-startup-fix-attempt001.json:absolute_map_key"
+      ]
+    },
+    "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/repair_profile.json": {
+      "expected_sha256": [
+        "1cfd3e3bc6aea8d672afb6fafca98a2eaa787ab06f2edb4910a40b2638aad599"
+      ],
+      "lstat": {
+        "blocks512": 50,
+        "ctime_ns": 1792664797000000000,
+        "dev": 1048654,
+        "ino": 5924117019711054202,
+        "mode": 420,
+        "mtime_ns": 1792664797000000000,
+        "nlink": 1,
+        "size": 25288
+      },
+      "reasons": [
+        "Exact proof bytes only: Authenticated active plan seed:proof",
+        "Exact proof bytes only: /work3/s234818/latentmol/submissions/source138-vae-cli-startup-fix-attempt001/source138-vae-cli-startup-fix-attempt001.json:absolute_map_key"
+      ]
+    },
+    "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/stability/20261022T105758Z_guarded-chemistry-stability_ddb64372/run.json": {
+      "expected_sha256": [
+        "f42767cf395bffb09d05e7b8475d9624e4fb00979184277d638430e17bc0929f"
+      ],
+      "lstat": {
+        "blocks512": 192,
+        "ctime_ns": 1792684108000000000,
+        "dev": 1048654,
+        "ino": 4256693510376745705,
+        "mode": 420,
+        "mtime_ns": 1792684108000000000,
+        "nlink": 1,
+        "size": 98182
+      },
+      "reasons": [
+        "Exact proof bytes only: Authenticated active plan seed:proof",
+        "Exact proof bytes only: /work3/s234818/latentmol/submissions/source138-vae-cli-startup-fix-attempt001/source138-vae-cli-startup-fix-attempt001.json:absolute_map_key"
+      ]
+    },
+    "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/stability_gate.json": {
+      "expected_sha256": [
+        "218a3c9e0318286f9122017cf9c4507885202ed7981bea61852d0c16886a39b0"
+      ],
+      "lstat": {
+        "blocks512": 29,
+        "ctime_ns": 1792684108000000000,
+        "dev": 1048654,
+        "ino": 13294998377873480569,
+        "mode": 420,
+        "mtime_ns": 1792684108000000000,
+        "nlink": 1,
+        "size": 14362
+      },
+      "reasons": [
+        "Exact proof bytes only: Authenticated active plan seed:proof",
+        "Exact proof bytes only: /work3/s234818/latentmol/submissions/source138-vae-cli-startup-fix-attempt001/source138-vae-cli-startup-fix-attempt001.json:absolute_map_key"
+      ]
+    },
+    "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/training_composition.json": {
+      "expected_sha256": [
+        "5ddc4dc0eda9dc93589c8f0904433135f899cfdcab8657fc127f304d4a136ee9"
+      ],
+      "lstat": {
+        "blocks512": 4,
+        "ctime_ns": 1792665016000000000,
+        "dev": 1048654,
+        "ino": 16051038748687899038,
+        "mode": 420,
+        "mtime_ns": 1792665016000000000,
+        "nlink": 1,
+        "size": 1670
+      },
+      "reasons": [
+        "Exact proof bytes only: Authenticated active plan seed:proof",
+        "Exact proof bytes only: /work3/s234818/latentmol/submissions/source138-vae-cli-startup-fix-attempt001/source138-vae-cli-startup-fix-attempt001.json:absolute_map_key"
+      ]
+    },
+    "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/valid_reference_probe.json": {
+      "expected_sha256": [
+        "0ac941e58eee04d2eebae923530bd60dcc28f19c79aa1e6356a517251d844f43"
+      ],
+      "lstat": {
+        "blocks512": 2541,
+        "ctime_ns": 1792666678000000000,
+        "dev": 1048654,
+        "ino": 12189630993199493747,
+        "mode": 420,
+        "mtime_ns": 1792666678000000000,
+        "nlink": 1,
+        "size": 1300673
+      },
+      "reasons": [
+        "Exact proof bytes only: Authenticated active plan seed:proof",
+        "Exact proof bytes only: /work3/s234818/latentmol/submissions/source138-vae-cli-startup-fix-attempt001/source138-vae-cli-startup-fix-attempt001.json:absolute_map_key"
+      ]
+    },
+    "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/valid_reference_probe/20261022T103244Z_chemistry-valid-reference-probe_609f2c03/run.json": {
+      "expected_sha256": [
+        "34ceb40cfc2366d93f125c3d6ee23885e3ace5f130ab686d9cb9182a5e5db2b6"
+      ],
+      "lstat": {
+        "blocks512": 192,
+        "ctime_ns": 1792666678000000000,
+        "dev": 1048654,
+        "ino": 12566808726625884426,
+        "mode": 420,
+        "mtime_ns": 1792666678000000000,
+        "nlink": 1,
+        "size": 98203
+      },
+      "reasons": [
+        "Exact proof bytes only: Authenticated active plan seed:proof",
+        "Exact proof bytes only: /work3/s234818/latentmol/submissions/source138-vae-cli-startup-fix-attempt001/source138-vae-cli-startup-fix-attempt001.json:absolute_map_key"
+      ]
+    },
+    "/work3/s234818/latentmol/runs/source137-epoch36-boltz-embedding-bridge-attempt002/gpu/fit/best-bridge.pt": {
+      "expected_sha256": [
+        "013834958d52f7aee999ca4c39496e14fc5333d69eb697d47433821f48290343"
+      ],
+      "lstat": {
+        "blocks512": 2257,
+        "ctime_ns": 1792777535000000000,
+        "dev": 1048654,
+        "ino": 5448029203872229717,
+        "mode": 420,
+        "mtime_ns": 1792777535000000000,
+        "nlink": 1,
+        "size": 1155216
+      },
+      "reasons": [
+        "Runtime input: /work3/s234818/latentmol/releases/source-138-epoch36-embedding-comparison-attempt003/configs/epoch36_embedding_comparison.json:path"
+      ],
+      "scope": "Protected without deserializing or parsing dataset/model bytes"
+    },
+    "/work3/s234818/latentmol/runs/source137-epoch36-boltz-embedding-bridge-attempt002/gpu/paired-data/manifest.json": {
+      "expected_sha256": [
+        "95abd00cb8889ca1b921f5c8e128bb1d6a52f7141e2b5c8dd6291acfdea1fe0e"
+      ],
+      "lstat": {
+        "blocks512": 23,
+        "ctime_ns": 1792777494000000000,
+        "dev": 1048654,
+        "ino": 2272442589964787512,
+        "mode": 420,
+        "mtime_ns": 1792777494000000000,
+        "nlink": 1,
+        "size": 11448
+      },
+      "reasons": [
+        "Runtime input: /work3/s234818/latentmol/releases/source-138-epoch36-embedding-comparison-attempt003/configs/epoch36_embedding_comparison.json:path"
+      ]
+    },
+    "/work3/s234818/latentmol/runs/source137-epoch36-boltz-embedding-bridge-attempt002/gpu/paired-data/samples.pt": {
+      "expected_sha256": [
+        "e412a26a39ffd3c44c0ba0cf957fc611444add9842d583e3739948ceaa99b34f"
+      ],
+      "lstat": {
+        "blocks512": 15298,
+        "ctime_ns": 1792777494000000000,
+        "dev": 1048654,
+        "ino": 3492117594345102615,
+        "mode": 420,
+        "mtime_ns": 1792777494000000000,
+        "nlink": 1,
+        "size": 7832136
+      },
+      "reasons": [
+        "Runtime input: /work3/s234818/latentmol/releases/source-138-epoch36-embedding-comparison-attempt003/configs/epoch36_embedding_comparison.json:path"
+      ],
+      "scope": "Protected without deserializing or parsing dataset/model bytes"
+    },
+    "/work3/s234818/latentmol/runs/source138-epoch36-embedding-comparison-attempt003/cpu/cpu-gate.json": {
+      "expected_sha256": [
+        "583c541fb6995f0f3894d89f64e35d1a4fccd1db1943259ac153826adba242e8"
+      ],
+      "lstat": {
+        "blocks512": 4,
+        "ctime_ns": 1792783966000000000,
+        "dev": 1048654,
+        "ino": 11464820503037934523,
+        "mode": 420,
+        "mtime_ns": 1792783966000000000,
+        "nlink": 1,
+        "size": 1951
+      },
+      "reasons": [
+        "Exact proof bytes only: Authenticated active plan seed:proof"
+      ]
+    },
+    "/work3/s234818/latentmol/runs/source138-epoch36-embedding-comparison-attempt003/cpu/result.json": {
+      "expected_sha256": [
+        "fa87e020197175eed82c5331b80b2bae30c75dbc1adc2dedf3e22a14ca59c201"
+      ],
+      "lstat": {
+        "blocks512": 13,
+        "ctime_ns": 1792783969000000000,
+        "dev": 1048654,
+        "ino": 2975027244466419349,
+        "mode": 420,
+        "mtime_ns": 1792783969000000000,
+        "nlink": 1,
+        "size": 6586
+      },
+      "reasons": [
+        "Exact proof bytes only: Authenticated active plan seed:proof"
+      ]
+    },
+    "/work3/s234818/latentmol/runs/source138-epoch36-embedding-comparison-attempt003/cpu/starts.json": {
+      "expected_sha256": [
+        "22faa10f9b1d45ddc4b88c8d4c25777067dabadd9c1caa92e9270432f08d87b8"
+      ],
+      "lstat": {
+        "blocks512": 7,
+        "ctime_ns": 1792783969000000000,
+        "dev": 1048654,
+        "ino": 14367943175813886143,
+        "mode": 420,
+        "mtime_ns": 1792783969000000000,
+        "nlink": 1,
+        "size": 3461
+      },
+      "reasons": [
+        "Exact proof bytes only: Authenticated active plan seed:proof"
+      ]
+    },
+    "/work3/s234818/latentmol/runs/source138-vae-cli-startup-fix-attempt001": {
+      "expected_sha256": [],
+      "reasons": [
+        "Runtime input: /work3/s234818/latentmol/submissions/source138-vae-cli-startup-fix-attempt001/source138-vae-cli-startup-fix-attempt001.json:campaign"
+      ]
+    },
+    "/work3/s234818/latentmol/submissions/source094-large-triangle-first-suite/bindings.json": {
+      "expected_sha256": [
+        "11fc11aa10acb1debc2264c98a7911080b419705c4e17dc37fee73d54bfdf9d1"
+      ],
+      "lstat": {
+        "blocks512": 2,
+        "ctime_ns": 1791672814000000000,
+        "dev": 1048654,
+        "ino": 14157222028013793912,
+        "mode": 420,
+        "mtime_ns": 1791672814000000000,
+        "nlink": 1,
+        "size": 883
+      },
+      "reasons": [
+        "Exact proof bytes only: Authenticated active plan seed:proof",
+        "Exact proof bytes only: /work3/s234818/latentmol/submissions/source121a002-chemistry-16core-24h-attempt002/plans/r2_async_w12_m128_h24.json:absolute_map_key",
+        "Exact proof bytes only: /work3/s234818/latentmol/submissions/source138-vae-cli-startup-fix-attempt001/source138-vae-cli-startup-fix-attempt001.json:absolute_map_key"
+      ]
+    },
+    "/work3/s234818/latentmol/submissions/source095-large-triangle-prepare-benchmark/bindings.json": {
+      "expected_sha256": [
+        "8231878eb667e834d53b751c9007ae2185d0d4e3518724f4f96de196a297ecb2"
+      ],
+      "lstat": {
+        "blocks512": 5,
+        "ctime_ns": 1791707486000000000,
+        "dev": 1048654,
+        "ino": 1623170918430530114,
+        "mode": 420,
+        "mtime_ns": 1791707486000000000,
+        "nlink": 1,
+        "size": 2070
+      },
+      "reasons": [
+        "Exact proof bytes only: Authenticated active plan seed:proof",
+        "Exact proof bytes only: /work3/s234818/latentmol/submissions/source121a002-chemistry-16core-24h-attempt002/plans/r2_async_w12_m128_h24.json:absolute_map_key",
+        "Exact proof bytes only: /work3/s234818/latentmol/submissions/source138-vae-cli-startup-fix-attempt001/source138-vae-cli-startup-fix-attempt001.json:absolute_map_key"
+      ]
+    },
+    "/work3/s234818/latentmol/submissions/source098-large-triangle-evaluator-recovery/bindings.json": {
+      "expected_sha256": [
+        "14ae640aa68a9c776c68c8c17f0343ffc8096c7dd394687d0b5df2acdc7f9949"
+      ],
+      "lstat": {
+        "blocks512": 7,
+        "ctime_ns": 1791747567000000000,
+        "dev": 1048654,
+        "ino": 6700864336455524659,
+        "mode": 420,
+        "mtime_ns": 1791747567000000000,
+        "nlink": 1,
+        "size": 3229
+      },
+      "reasons": [
+        "Exact proof bytes only: Authenticated active plan seed:proof",
+        "Exact proof bytes only: /work3/s234818/latentmol/submissions/source121a002-chemistry-16core-24h-attempt002/plans/r2_async_w12_m128_h24.json:absolute_map_key",
+        "Exact proof bytes only: /work3/s234818/latentmol/submissions/source138-vae-cli-startup-fix-attempt001/source138-vae-cli-startup-fix-attempt001.json:absolute_map_key"
+      ]
+    },
+    "/work3/s234818/latentmol/submissions/source104-chemistry-continuation-attempt005/parent-config.json": {
+      "expected_sha256": [
+        "b6704c80c4f3308b5f20623eb0ef21fc39c4b7b1d0cd60d519a9990670b1b254"
+      ],
+      "lstat": {
+        "blocks512": 2,
+        "ctime_ns": 1791924864000000000,
+        "dev": 1048654,
+        "ino": 6140159505963102005,
+        "mode": 420,
+        "mtime_ns": 1791924864000000000,
+        "nlink": 1,
+        "size": 992
+      },
+      "reasons": [
+        "Runtime input: Authenticated active plan seed:plan",
+        "Runtime input: /work3/s234818/latentmol/submissions/source121a002-chemistry-16core-24h-attempt002/plans/r2_async_w12_m128_h24.json:config",
+        "Runtime input: /work3/s234818/latentmol/submissions/source138-vae-cli-startup-fix-attempt001/source138-vae-cli-startup-fix-attempt001.json:config"
+      ]
+    },
+    "/work3/s234818/latentmol/submissions/source104-chemistry-continuation-attempt005/parent-latest_epoch.json": {
+      "expected_sha256": [
+        "3f7fb9bd0166226a48309ece731c39df86231562e17211b01627971eee647102"
+      ],
+      "lstat": {
+        "blocks512": 111,
+        "ctime_ns": 1791924864000000000,
+        "dev": 1048654,
+        "ino": 6935447235603363816,
+        "mode": 420,
+        "mtime_ns": 1791924864000000000,
+        "nlink": 1,
+        "size": 56802
+      },
+      "reasons": [
+        "Runtime input: Authenticated active plan seed:plan",
+        "Exact proof bytes only: /work3/s234818/latentmol/submissions/source121a002-chemistry-16core-24h-attempt002/plans/r2_async_w12_m128_h24.json:absolute_map_key",
+        "Exact proof bytes only: /work3/s234818/latentmol/submissions/source138-vae-cli-startup-fix-attempt001/source138-vae-cli-startup-fix-attempt001.json:absolute_map_key"
+      ]
+    },
+    "/work3/s234818/latentmol/submissions/source104-chemistry-continuation-attempt005/parent-metrics.jsonl": {
+      "expected_sha256": [
+        "ea4dadeff686775a9bc490895c7965e5c7e32e4c92d6e89aa6e3c0149d9ce1ba"
+      ],
+      "lstat": {
+        "blocks512": 1458,
+        "ctime_ns": 1791924864000000000,
+        "dev": 1048654,
+        "ino": 13517705709956807838,
+        "mode": 420,
+        "mtime_ns": 1791924864000000000,
+        "nlink": 1,
+        "size": 746336
+      },
+      "reasons": [
+        "Exact proof bytes only: Authenticated active plan seed:proof",
+        "Exact proof bytes only: /work3/s234818/latentmol/submissions/source121a002-chemistry-16core-24h-attempt002/plans/r2_async_w12_m128_h24.json:absolute_map_key",
+        "Exact proof bytes only: /work3/s234818/latentmol/submissions/source138-vae-cli-startup-fix-attempt001/source138-vae-cli-startup-fix-attempt001.json:absolute_map_key"
+      ]
+    },
+    "/work3/s234818/latentmol/submissions/source104-chemistry-continuation-attempt005/parent-run.json": {
+      "expected_sha256": [
+        "4f4fea801418ce42828bdc8b4f7fa784eb1f039fd3b3a51208fa1213fda5d387"
+      ],
+      "lstat": {
+        "blocks512": 159,
+        "ctime_ns": 1791924864000000000,
+        "dev": 1048654,
+        "ino": 15811960119821981213,
+        "mode": 420,
+        "mtime_ns": 1791924864000000000,
+        "nlink": 1,
+        "size": 81276
+      },
+      "reasons": [
+        "Runtime input: Authenticated active plan seed:plan",
+        "Runtime input: /work3/s234818/latentmol/submissions/source121a002-chemistry-16core-24h-attempt002/plans/r2_async_w12_m128_h24.json:parent_run_record",
+        "Runtime input: /work3/s234818/latentmol/submissions/source138-vae-cli-startup-fix-attempt001/source138-vae-cli-startup-fix-attempt001.json:parent_run_record"
+      ]
+    },
+    "/work3/s234818/latentmol/submissions/source104-chemistry-continuation-attempt005/parent.pt": {
+      "expected_sha256": [
+        "19f438222e454ef53169f6d81082335ee7e24902b1b7cf5e0f18eced4b8e92ed"
+      ],
+      "lstat": {
+        "blocks512": 92996,
+        "ctime_ns": 1791924864000000000,
+        "dev": 1048654,
+        "ino": 17701580930808954907,
+        "mode": 292,
+        "mtime_ns": 1791924864000000000,
+        "nlink": 1,
+        "size": 47613642
+      },
+      "reasons": [
+        "Exact proof bytes only: Authenticated active plan seed:proof",
+        "Runtime input: /work3/s234818/latentmol/submissions/source121a002-chemistry-16core-24h-attempt002/plans/r2_async_w12_m128_h24.json:parent_checkpoint",
+        "Runtime input: /work3/s234818/latentmol/submissions/source138-vae-cli-startup-fix-attempt001/source138-vae-cli-startup-fix-attempt001.json:parent_checkpoint"
+      ],
+      "scope": "Protected without deserializing or parsing dataset/model bytes"
+    },
+    "/work3/s234818/latentmol/submissions/source121a002-chemistry-16core-24h-attempt002/plans/r2_async_w12_m128_h24.json": {
+      "expected_sha256": [
+        "238bb5627cf7f4bbc2fd65a7d2d7bb0c860c7872c56bd1e51399c52ee0e98e8e"
+      ],
+      "lstat": {
+        "blocks512": 12,
+        "ctime_ns": 1792270400000000000,
+        "dev": 1048654,
+        "ino": 599575771524753682,
+        "mode": 420,
+        "mtime_ns": 1792270400000000000,
+        "nlink": 1,
+        "size": 5652
+      },
+      "reasons": [
+        "Runtime input: Authenticated active plan seed:plan",
+        "Runtime input: /work3/s234818/latentmol/submissions/source138-vae-cli-startup-fix-attempt001/source138-vae-cli-startup-fix-attempt001.json:source_plan"
+      ]
+    },
+    "/work3/s234818/latentmol/submissions/source134-bond-weighted-chemistry-attempt002/source133-saved-outcomes.json": {
+      "expected_sha256": [
+        "a67e440504595542b2bb372419fc2084b0e2b6e2083422cda39c8b284ee3b719"
+      ],
+      "lstat": {
+        "blocks512": 58046,
+        "ctime_ns": 1792657910000000000,
+        "dev": 1048654,
+        "ino": 10652964217986350524,
+        "mode": 420,
+        "mtime_ns": 1792657910000000000,
+        "nlink": 1,
+        "size": 29719141
+      },
+      "reasons": [
+        "Exact proof bytes only: Authenticated active plan seed:proof",
+        "Exact proof bytes only: /work3/s234818/latentmol/submissions/source138-vae-cli-startup-fix-attempt001/source138-vae-cli-startup-fix-attempt001.json:absolute_map_key",
+        "Exact proof bytes only: /work3/s234818/latentmol/submissions/source138-vae-cli-startup-fix-attempt001/source138-vae-cli-startup-fix-attempt001.json:evidence"
+      ]
+    },
+    "/work3/s234818/latentmol/submissions/source134-bond-weighted-chemistry-attempt002/source134-attempt001-cpu-failure.json": {
+      "expected_sha256": [
+        "f3f1aba785d1e4e03b89de85601f0cc510150b1247c45a26652400a945b5c7de"
+      ],
+      "lstat": {
+        "blocks512": 259,
+        "ctime_ns": 1792657910000000000,
+        "dev": 1048654,
+        "ino": 13451210986760262583,
+        "mode": 420,
+        "mtime_ns": 1792657910000000000,
+        "nlink": 1,
+        "size": 132476
+      },
+      "reasons": [
+        "Exact proof bytes only: Authenticated active plan seed:proof",
+        "Exact proof bytes only: /work3/s234818/latentmol/submissions/source138-vae-cli-startup-fix-attempt001/source138-vae-cli-startup-fix-attempt001.json:absolute_map_key",
+        "Exact proof bytes only: /work3/s234818/latentmol/submissions/source138-vae-cli-startup-fix-attempt001/source138-vae-cli-startup-fix-attempt001.json:evidence"
+      ]
+    },
+    "/work3/s234818/latentmol/submissions/source135-epoch36-valid-reference-attempt001/saved-mechanism-review.json": {
+      "expected_sha256": [
+        "d1317879cbe26401ae76d768242fe68a2fbe1896797c409e573edc8c437e2218"
+      ],
+      "lstat": {
+        "blocks512": 8,
+        "ctime_ns": 1792664486000000000,
+        "dev": 1048654,
+        "ino": 10682771571630857779,
+        "mode": 420,
+        "mtime_ns": 1792664486000000000,
+        "nlink": 1,
+        "size": 3732
+      },
+      "reasons": [
+        "Exact proof bytes only: Authenticated active plan seed:proof",
+        "Exact proof bytes only: /work3/s234818/latentmol/submissions/source138-vae-cli-startup-fix-attempt001/source138-vae-cli-startup-fix-attempt001.json:absolute_map_key",
+        "Exact proof bytes only: /work3/s234818/latentmol/submissions/source138-vae-cli-startup-fix-attempt001/source138-vae-cli-startup-fix-attempt001.json:remote"
+      ]
+    },
+    "/work3/s234818/latentmol/submissions/source135-epoch36-valid-reference-attempt001/source127-terminal-evidence.json": {
+      "expected_sha256": [
+        "5b354651896975a3cb29cfe1b1a7f7be5a41f783764a39e905a35f2e61d95bde"
+      ],
+      "lstat": {
+        "blocks512": 910,
+        "ctime_ns": 1792664486000000000,
+        "dev": 1048654,
+        "ino": 10954529120888463155,
+        "mode": 420,
+        "mtime_ns": 1792664486000000000,
+        "nlink": 1,
+        "size": 465746
+      },
+      "reasons": [
+        "Exact proof bytes only: Authenticated active plan seed:proof",
+        "Exact proof bytes only: /work3/s234818/latentmol/submissions/source138-vae-cli-startup-fix-attempt001/source138-vae-cli-startup-fix-attempt001.json:terminal_evidence"
+      ]
+    },
+    "/work3/s234818/latentmol/submissions/source135-epoch36-valid-reference-attempt001/source134-terminal-evidence.json": {
+      "expected_sha256": [
+        "07f37751ca7c4d2c399134e39eb92bf3439239e0f82f48b2fb5d9acccdc79f5f"
+      ],
+      "lstat": {
+        "blocks512": 16443,
+        "ctime_ns": 1792664486000000000,
+        "dev": 1048654,
+        "ino": 15141756739074190715,
+        "mode": 420,
+        "mtime_ns": 1792664486000000000,
+        "nlink": 1,
+        "size": 8418776
+      },
+      "reasons": [
+        "Exact proof bytes only: Authenticated active plan seed:proof",
+        "Exact proof bytes only: /work3/s234818/latentmol/submissions/source138-vae-cli-startup-fix-attempt001/source138-vae-cli-startup-fix-attempt001.json:absolute_map_key",
+        "Exact proof bytes only: /work3/s234818/latentmol/submissions/source138-vae-cli-startup-fix-attempt001/source138-vae-cli-startup-fix-attempt001.json:remote"
+      ]
+    },
+    "/work3/s234818/latentmol/submissions/source135-epoch36-valid-reference-attempt001/source135-epoch36-valid-reference-attempt001.json": {
+      "expected_sha256": [
+        "ad7533a6ce9011c17ba8c962fe939f1e3391b77b73c4ae7574bdbebaf203c609"
+      ],
+      "lstat": {
+        "blocks512": 53,
+        "ctime_ns": 1792664486000000000,
+        "dev": 1048654,
+        "ino": 5280879728052379613,
+        "mode": 420,
+        "mtime_ns": 1792664486000000000,
+        "nlink": 1,
+        "size": 27083
+      },
+      "reasons": [
+        "Exact proof bytes only: Authenticated active plan seed:proof",
+        "Exact proof bytes only: /work3/s234818/latentmol/submissions/source138-vae-cli-startup-fix-attempt001/source138-vae-cli-startup-fix-attempt001.json:absolute_map_key",
+        "Exact proof bytes only: /work3/s234818/latentmol/submissions/source138-vae-cli-startup-fix-attempt001/source138-vae-cli-startup-fix-attempt001.json:source_plan"
+      ]
+    },
+    "/work3/s234818/latentmol/submissions/source138-vae-cli-startup-fix-attempt001/source138-vae-cli-startup-fix-attempt001.json": {
+      "expected_sha256": [
+        "183abba4bcd8e185b407ccdb5596a8fd6c37c0f9a82aeaf7c21e28a9cdb219c4"
+      ],
+      "lstat": {
+        "blocks512": 62,
+        "ctime_ns": 1792783332000000000,
+        "dev": 1048654,
+        "ino": 10806763119973328061,
+        "mode": 420,
+        "mtime_ns": 1792783332000000000,
+        "nlink": 1,
+        "size": 31338
+      },
+      "reasons": [
+        "Runtime input: Authenticated active plan seed:plan"
+      ]
+    }
+  },
+  "protected_trees": {
+    "/work3/s234818/latentmol/boltz-preparation": [
+      "Explicit current source/env/data/context/checkpoint protection"
+    ],
+    "/work3/s234818/latentmol/cache": [
+      "Explicit current source/env/data/context/checkpoint protection"
+    ],
+    "/work3/s234818/latentmol/cache/boltz2": [
+      "Concrete current runtime directory: /work3/s234818/latentmol/releases/source-138-epoch36-embedding-comparison-attempt003/configs/epoch36_embedding_comparison.json:boltz_cache"
+    ],
+    "/work3/s234818/latentmol/data": [
+      "Explicit current source/env/data/context/checkpoint protection"
+    ],
+    "/work3/s234818/latentmol/data/source095-moses-triangle-v2": [
+      "Concrete current runtime directory: /work3/s234818/latentmol/releases/source-138-epoch36-embedding-comparison-attempt003/configs/epoch36_embedding_comparison.json:dataset",
+      "Concrete current runtime directory: /work3/s234818/latentmol/submissions/source121a002-chemistry-16core-24h-attempt002/plans/r2_async_w12_m128_h24.json:data",
+      "Concrete current runtime directory: /work3/s234818/latentmol/submissions/source138-vae-cli-startup-fix-attempt001/source138-vae-cli-startup-fix-attempt001.json:data"
+    ],
+    "/work3/s234818/latentmol/data/zinc215k-seed17-v1": [
+      "Concrete current runtime directory: /work3/s234818/latentmol/data/source095-moses-triangle-v2/manifest.json:path",
+      "Concrete current runtime directory: /work3/s234818/latentmol/submissions/source104-chemistry-continuation-attempt005/parent-run.json:path"
+    ],
+    "/work3/s234818/latentmol/env": [
+      "Explicit current source/env/data/context/checkpoint protection"
+    ],
+    "/work3/s234818/latentmol/raw": [
+      "Explicit current source/env/data/context/checkpoint protection"
+    ],
+    "/work3/s234818/latentmol/releases/source-098-triangle-evaluator-recovery-attempt001": [
+      "Concrete current runtime directory: /work3/s234818/latentmol/submissions/source104-chemistry-continuation-attempt005/parent-run.json:root",
+      "Concrete current runtime directory: /work3/s234818/latentmol/submissions/source121a002-chemistry-16core-24h-attempt002/plans/r2_async_w12_m128_h24.json:parent_release",
+      "Concrete current runtime directory: /work3/s234818/latentmol/submissions/source138-vae-cli-startup-fix-attempt001/source138-vae-cli-startup-fix-attempt001.json:parent_release"
+    ],
+    "/work3/s234818/latentmol/releases/source-121-chemistry-16core-24h-attempt002": [
+      "Concrete current runtime directory: /work3/s234818/latentmol/submissions/source121a002-chemistry-16core-24h-attempt002/plans/r2_async_w12_m128_h24.json:release"
+    ],
+    "/work3/s234818/latentmol/releases/source-138-epoch36-embedding-comparison-attempt003": [
+      "Complete current immutable execution source"
+    ],
+    "/work3/s234818/latentmol/releases/source-138-vae-cli-startup-fix-attempt001": [
+      "Complete current immutable execution source",
+      "Concrete current runtime directory: /work3/s234818/latentmol/submissions/source138-vae-cli-startup-fix-attempt001/source138-vae-cli-startup-fix-attempt001.json:release"
+    ],
+    "/work3/s234818/latentmol/runs/source056-random-start-study": [
+      "Explicit current source/env/data/context/checkpoint protection",
+      "Runtime checkpoint/context/catalog/lineage input"
+    ],
+    "/work3/s234818/latentmol/runs/source057-protein-panel": [
+      "Current input/readiness/catalog ancestor; not an offload candidate"
+    ],
+    "/work3/s234818/latentmol/runs/source094-large-triangle-first-suite": [
+      "Current input/readiness/catalog ancestor; not an offload candidate"
+    ],
+    "/work3/s234818/latentmol/runs/source095-large-triangle-prepare-benchmark": [
+      "Current input/readiness/catalog ancestor; not an offload candidate"
+    ],
+    "/work3/s234818/latentmol/runs/source098-large-triangle-evaluator-recovery": [
+      "Current input/readiness/catalog ancestor; not an offload candidate",
+      "Runtime checkpoint/context/catalog/lineage input"
+    ],
+    "/work3/s234818/latentmol/runs/source121a002-chemistry-16core-24h-attempt002": [
+      "Explicit current source/env/data/context/checkpoint protection",
+      "Runtime checkpoint/context/catalog/lineage input",
+      "Concrete current runtime directory: /work3/s234818/latentmol/submissions/source121a002-chemistry-16core-24h-attempt002/plans/r2_async_w12_m128_h24.json:speed_suite_root",
+      "Concrete current runtime directory: /work3/s234818/latentmol/submissions/source138-vae-cli-startup-fix-attempt001/source138-vae-cli-startup-fix-attempt001.json:speed_suite_root"
+    ],
+    "/work3/s234818/latentmol/runs/source121a002-chemistry-16core-24h-attempt002/variants/r2_async_w12_m128_h24": [
+      "Concrete current runtime directory: /work3/s234818/latentmol/submissions/source121a002-chemistry-16core-24h-attempt002/plans/r2_async_w12_m128_h24.json:campaign"
+    ],
+    "/work3/s234818/latentmol/runs/source121a002-chemistry-16core-24h-attempt002/variants/r2_async_w12_m128_h24/segments/001/20261018T175254Z_chemistry-train_89b58520": [
+      "Concrete current runtime directory: /work3/s234818/latentmol/runs/source121a002-chemistry-16core-24h-attempt002/variants/r2_async_w12_m128_h24/segment-001-completion.json:run_dir"
+    ],
+    "/work3/s234818/latentmol/runs/source137-epoch36-boltz-embedding-bridge-attempt002": [
+      "Explicit current source/env/data/context/checkpoint protection",
+      "Runtime checkpoint/context/catalog/lineage input"
+    ],
+    "/work3/s234818/latentmol/runs/source138-epoch36-embedding-comparison-attempt003": [
+      "Explicit current source/env/data/context/checkpoint protection",
+      "Actual current live job command/input/output namespace"
+    ],
+    "/work3/s234818/latentmol/runs/source138-vae-cli-startup-fix-attempt001": [
+      "Explicit current source/env/data/context/checkpoint protection",
+      "Concrete current runtime directory: /work3/s234818/latentmol/submissions/source138-vae-cli-startup-fix-attempt001/source138-vae-cli-startup-fix-attempt001.json:campaign",
+      "Actual current live job command/input/output namespace"
+    ],
+    "/work3/s234818/latentmol/submissions/source104-chemistry-continuation-attempt005": [
+      "Explicit current source/env/data/context/checkpoint protection"
+    ]
+  },
+  "required_before_final_selection": [
+    "Close scan02 bare script import graph gap; accept independent actual entrypoint/input binding audit.",
+    "Fresh nofollow metadata and inode-alias inventory across ALL runs and submissions; require every st_nlink alias named and either included in the explicit candidate set or retain whole inode. Never infer no outside alias from a partial traversal.",
+    "Exclude source056/057 and all current source094/095/098/121/137/138 inputs/proof trees; original35/36 and required source135 proof files remain remote.",
+    "Complete per-file laptop backup, length/SHA verification of every regular file/alias and final exact remote identity/race check before root authors deletion allowlist.",
+    "Preserve root metadata and logs; outside-scope/protected aliases block the entire inode group. No cache/env/data/source/current-study removal."
+  ],
+  "status": "conditional_proposal_not_delete_allowlist",
+  "version": "latentmol-explicit-backup-scope-expansion-v1"
+}

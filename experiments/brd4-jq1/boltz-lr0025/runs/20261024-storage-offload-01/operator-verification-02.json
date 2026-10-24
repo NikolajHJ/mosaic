@@ -1,0 +1,204 @@
+{
+  "version": "mosaic-offload-allocated-operator-verification-v1",
+  "status": "passed",
+  "job_id": "29806198",
+  "cases": 31,
+  "failures": 0,
+  "errors": 0,
+  "skips": 0,
+  "source_manifest_sha256": "996c086e15e0151f3fc6484c14d4b5b34b7fce4b8b2e3835e6bb941dfe3391a3",
+  "bundle_sha256": "49c26a0c00d986a7f442b3ea844afc90a981f048fa0292b58c57a6fe723519d8",
+  "proofs": {
+    "/work3/s234818/mosaic/runs/20261024-storage-offload-01/cpu-01/payload/invocation.json": {
+      "bytes": 688,
+      "sha256": "5630a5d7e868a942767a0a736ca77631882358c419a11efbade53fb306e6deb9"
+    },
+    "/work3/s234818/mosaic/runs/20261024-storage-offload-01/cpu-01/payload/operator-contract.log": {
+      "bytes": 2622,
+      "sha256": "2cf67be31a100550a897dec1fb18db319ea34119f1b8e334aa60812229ba205a"
+    },
+    "/work3/s234818/mosaic/runs/20261024-storage-offload-01/cpu-01/payload/operator-contract.xml": {
+      "bytes": 5115,
+      "sha256": "edf7f2334102f2396ebfd5e0c9bf2d6e68178b367c0cd86980e87461f17537de"
+    },
+    "/work3/s234818/mosaic/runs/20261024-storage-offload-01/cpu-01/payload/storage-gate.json": {
+      "bytes": 4635,
+      "sha256": "5d94420c2d1a97d703b344ac5950b3696fe15b26ea1fac17ac2b688104d4fd30"
+    },
+    "/work3/s234818/mosaic/runs/20261024-storage-offload-01/cpu-01/stderr.29806186.log": {
+      "bytes": 456,
+      "sha256": "a13b548feaff4f4a8e0f764c707eea7c664685be9bbddd5082c7a5368e0b9d74"
+    },
+    "/work3/s234818/mosaic/runs/20261024-storage-offload-01/cpu-01/stdout.29806186.log": {
+      "bytes": 1795,
+      "sha256": "746e60f68622b61d650d67dcb3f15857a698827e723b4434565e90443522e0c1"
+    },
+    "/work3/s234818/mosaic/runs/20261024-storage-offload-01/cpu-01/submission-started.json": {
+      "bytes": 704,
+      "sha256": "aa518f868ef8bbbcb2ec260c1c630a63d3439688e29eeb9feb0eaf7537aaab8b"
+    },
+    "/work3/s234818/mosaic/runs/20261024-storage-offload-01/cpu-01/submission.json": {
+      "bytes": 914,
+      "sha256": "3df6afd08197ede80c9f58f97a5ff43edbfa2a0bc9ff53c276a452e517d26ce4"
+    },
+    "/work3/s234818/mosaic/runs/20261024-storage-offload-01/cpu-02/payload/assessment.json": {
+      "bytes": 1210,
+      "sha256": "8a0c3dffc8efd86a5792b6c2733b1366715253ae9ddf8ad375654fcf4e41024f"
+    },
+    "/work3/s234818/mosaic/runs/20261024-storage-offload-01/cpu-02/payload/invocation.json": {
+      "bytes": 688,
+      "sha256": "0d10f29c525b6a5c089fba75a70554cad356d1291b31ad85e354cc5e4f37df6e"
+    },
+    "/work3/s234818/mosaic/runs/20261024-storage-offload-01/cpu-02/payload/operator-contract.log": {
+      "bytes": 99,
+      "sha256": "f531af35fca553f145a6b9eafbb4c64f6baaa3b3775b3ae7a9480b26298fc0fb"
+    },
+    "/work3/s234818/mosaic/runs/20261024-storage-offload-01/cpu-02/payload/operator-contract.xml": {
+      "bytes": 5140,
+      "sha256": "7c63baa0f7c9442e268db82c9cacc75bb11d8c73f9f3962f60a7d35687ae8963"
+    },
+    "/work3/s234818/mosaic/runs/20261024-storage-offload-01/cpu-02/payload/storage-gate.json": {
+      "bytes": 4635,
+      "sha256": "5d8575a5ee6b1bb4a4e6d7a90aa7be4ed33fd8155a08293944f566bb2e8f679a"
+    },
+    "/work3/s234818/mosaic/runs/20261024-storage-offload-01/cpu-02/stderr.29806198.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "/work3/s234818/mosaic/runs/20261024-storage-offload-01/cpu-02/stdout.29806198.log": {
+      "bytes": 1792,
+      "sha256": "18001fa61dd6742374c611b8c6a16fed9a4ada83c3387c4a706943d0179328da"
+    },
+    "/work3/s234818/mosaic/runs/20261024-storage-offload-01/cpu-02/submission-started.json": {
+      "bytes": 704,
+      "sha256": "beabca37422fe024dd6534e918c765c0817f6936fbed6276406668b71d89e70f"
+    },
+    "/work3/s234818/mosaic/runs/20261024-storage-offload-01/cpu-02/submission.json": {
+      "bytes": 914,
+      "sha256": "1e6450b4973a37fefe09e64df1755618dca80827945b6d4268b7ce2872cba1c3"
+    },
+    "/work3/s234818/mosaic/runs/20261024-storage-offload-01/operator-preflight-01/storage-gate.json": {
+      "bytes": 4642,
+      "sha256": "a646ef310aaf0aa7cc24d1764aa66aa946d9b55af7b35d5b6073d773138a1bb4"
+    },
+    "/work3/s234818/mosaic/runs/20261024-storage-offload-01/operator-preflight-02/storage-gate.json": {
+      "bytes": 4642,
+      "sha256": "2c1a03f56a47ad97eb76dec8219c46a87a6e41eb4a2795fbc5d24faeac6cf2dc"
+    },
+    "/work3/s234818/mosaic/runs/20261024-storage-offload-01/operator-source-01/cleanup_cpu.lsf": {
+      "bytes": 368,
+      "sha256": "9f5a723c88050a256c0554c11af901df55b9d03b3c324e01ed1245e317b53d39"
+    },
+    "/work3/s234818/mosaic/runs/20261024-storage-offload-01/operator-source-01/cleanup_cpu.py": {
+      "bytes": 4871,
+      "sha256": "e6c02421ba61dc3e37a57ccfff314d7d503524313f0476184c26e0122d2247eb"
+    },
+    "/work3/s234818/mosaic/runs/20261024-storage-offload-01/operator-source-01/delete_verified.py": {
+      "bytes": 4636,
+      "sha256": "4765449d4c075d979c9200be29dc3b43aeaaff52440e5461551f11b69810b743"
+    },
+    "/work3/s234818/mosaic/runs/20261024-storage-offload-01/operator-source-01/fixed25_recover_storage.py": {
+      "bytes": 14509,
+      "sha256": "52c627d1865231d7c7e2a61b182640cf38f492d84a8a1f44aeec1b865c40d861"
+    },
+    "/work3/s234818/mosaic/runs/20261024-storage-offload-01/operator-source-01/fixed25_split_storage.py": {
+      "bytes": 11967,
+      "sha256": "56744c8eb858b9a15e64943427c393d058e3f680a9e4743bd42e463dc9337245"
+    },
+    "/work3/s234818/mosaic/runs/20261024-storage-offload-01/operator-source-01/fixed25_storage.py": {
+      "bytes": 4035,
+      "sha256": "e7b34835c75ba85e7b4f4380c8087d3a8c054eddacf180a693da09d5c017a9ad"
+    },
+    "/work3/s234818/mosaic/runs/20261024-storage-offload-01/operator-source-01/fixture_backup_contract.py": {
+      "bytes": 12993,
+      "sha256": "338a9e68579636e7e5c28664efef8bf40715cde4612833261edd5b5a18cd844b"
+    },
+    "/work3/s234818/mosaic/runs/20261024-storage-offload-01/operator-source-01/fresh_stream_backup.py": {
+      "bytes": 7727,
+      "sha256": "69752f900542a742c221989861004869c74b5de24f702b30a25d6b0f06fd45da"
+    },
+    "/work3/s234818/mosaic/runs/20261024-storage-offload-01/operator-source-01/offload_protocol.py": {
+      "bytes": 18877,
+      "sha256": "605eb4f606ae8c50c6dd000145e5a8cb8edb164c091203b8769197f8f7342239"
+    },
+    "/work3/s234818/mosaic/runs/20261024-storage-offload-01/operator-source-01/source-manifest.json": {
+      "bytes": 1283,
+      "sha256": "984e39e117ac6de6940d61b9d875b36608f69a60cb9c28eff92b768adf97754b"
+    },
+    "/work3/s234818/mosaic/runs/20261024-storage-offload-01/operator-source-01/stream_backup.py": {
+      "bytes": 3814,
+      "sha256": "f210d448529323076a997fdc1fa494f7068dd2580100e58354af4626f9a7ef83"
+    },
+    "/work3/s234818/mosaic/runs/20261024-storage-offload-01/operator-source-01/verify_stream_backup.py": {
+      "bytes": 13151,
+      "sha256": "1dd370eb75997947dd146935e5f814a767d9b6ebdc49389dffc394200841b35c"
+    },
+    "/work3/s234818/mosaic/runs/20261024-storage-offload-01/operator-source-02/cleanup_cpu.lsf": {
+      "bytes": 368,
+      "sha256": "33bba22c51f909eee2f4801add4c46c7fd9a06f6a3b0002681e219df58074315"
+    },
+    "/work3/s234818/mosaic/runs/20261024-storage-offload-01/operator-source-02/cleanup_cpu.py": {
+      "bytes": 4871,
+      "sha256": "4f11dedef1387200fb06463488a6f327af3e8966027feea957d8edb29715e038"
+    },
+    "/work3/s234818/mosaic/runs/20261024-storage-offload-01/operator-source-02/delete_verified.py": {
+      "bytes": 4636,
+      "sha256": "4765449d4c075d979c9200be29dc3b43aeaaff52440e5461551f11b69810b743"
+    },
+    "/work3/s234818/mosaic/runs/20261024-storage-offload-01/operator-source-02/fixed25_recover_storage.py": {
+      "bytes": 14509,
+      "sha256": "52c627d1865231d7c7e2a61b182640cf38f492d84a8a1f44aeec1b865c40d861"
+    },
+    "/work3/s234818/mosaic/runs/20261024-storage-offload-01/operator-source-02/fixed25_split_storage.py": {
+      "bytes": 11967,
+      "sha256": "56744c8eb858b9a15e64943427c393d058e3f680a9e4743bd42e463dc9337245"
+    },
+    "/work3/s234818/mosaic/runs/20261024-storage-offload-01/operator-source-02/fixed25_storage.py": {
+      "bytes": 4035,
+      "sha256": "e7b34835c75ba85e7b4f4380c8087d3a8c054eddacf180a693da09d5c017a9ad"
+    },
+    "/work3/s234818/mosaic/runs/20261024-storage-offload-01/operator-source-02/fixture_backup_contract.py": {
+      "bytes": 14921,
+      "sha256": "04dfedfc1faa76209f96f92cd411a3a33c438226d32c2a4def58c1c5cb15c831"
+    },
+    "/work3/s234818/mosaic/runs/20261024-storage-offload-01/operator-source-02/fresh_stream_backup.py": {
+      "bytes": 7727,
+      "sha256": "69752f900542a742c221989861004869c74b5de24f702b30a25d6b0f06fd45da"
+    },
+    "/work3/s234818/mosaic/runs/20261024-storage-offload-01/operator-source-02/offload_protocol.py": {
+      "bytes": 19020,
+      "sha256": "579337ac6a8afef5f826e2ff6036bdab01af754166071c2ab428e9983434ae82"
+    },
+    "/work3/s234818/mosaic/runs/20261024-storage-offload-01/operator-source-02/source-manifest.json": {
+      "bytes": 1595,
+      "sha256": "996c086e15e0151f3fc6484c14d4b5b34b7fce4b8b2e3835e6bb941dfe3391a3"
+    },
+    "/work3/s234818/mosaic/runs/20261024-storage-offload-01/operator-source-02/stream_backup.py": {
+      "bytes": 3814,
+      "sha256": "f210d448529323076a997fdc1fa494f7068dd2580100e58354af4626f9a7ef83"
+    },
+    "/work3/s234818/mosaic/runs/20261024-storage-offload-01/operator-source-02/verify_stream_backup.py": {
+      "bytes": 13276,
+      "sha256": "9401d8220cf82d38991179f3c1ae2da33a902058ab03020803e751266d95c46a"
+    },
+    "/work3/s234818/mosaic/runs/20261024-storage-offload-01/operator-staging-complete-02.json": {
+      "bytes": 263,
+      "sha256": "df3de6820b52133f8cedab6439fa6aabc10f157a6335293d3088eedfc97f82c1"
+    },
+    "/work3/s234818/mosaic/runs/20261024-storage-offload-01/operator-staging-complete.json": {
+      "bytes": 263,
+      "sha256": "f650a814fcc420a1a944528b55112cb7d8cdb860060c1bed7ae58a7287fd4514"
+    },
+    "/work3/s234818/mosaic/runs/20261024-storage-offload-01/operator-staging-started-02.json": {
+      "bytes": 211,
+      "sha256": "c69ec8dd94dbacf3ef68324c177997027766c5c3056b8e7ebce475d1dafe8916"
+    },
+    "/work3/s234818/mosaic/runs/20261024-storage-offload-01/operator-staging-started.json": {
+      "bytes": 211,
+      "sha256": "2b88d55deefa4b9fcd4246384440f59f629150c60198ab402e35fb260eca02cf"
+    }
+  },
+  "scientific_admission_or_result_claimed": false,
+  "original_remote_files_deleted": 0,
+  "scope": "Allocated byte/metadata operator fixtures, actual job/source/resource/LSF/XML bindings. Scientific guards unchanged."
+}

@@ -1,0 +1,134 @@
+{
+  "actual_allocated_cases": 44,
+  "actual_cpu_bundle_sha256": "9bb9692472172b2c673734879fa6d103143b5106a5e8b1c179cf0d95a32f3add",
+  "actual_cpu_job_id": "29806439",
+  "actual_cpu_parent": "cpu-04",
+  "allocated_verification_sha256": "d712220f553d0988b0e1e3ae9655d78369999665f71641e5a670c52e163d3ce1",
+  "approved_pin_spec_sha256": "cb8e794d5f67731ff7389c99fd3827a7ad0874f2055879166d932760ad12a9f4",
+  "approved_selection": "approved-selection-02.json",
+  "backup_or_deletion_authority_created": false,
+  "generated_helpers_executed": false,
+  "generic_post_audit_code_sha256": "441ec4d6f05a9bf8357edc5fe3b421cbc7b5893ace1f959924cf05b4540ee6c2",
+  "literal_substitution_whitelist": [
+    [
+      "9af242392c14b3fc09804f0868b49f0d650245a1f075d43c3b132d994545230d",
+      "8a6420047f7260eedd1219c4313c835dae4bb2a13cd39d4914f9e87abcd5bafe"
+    ],
+    [
+      "29806228",
+      "29806439"
+    ],
+    [
+      "operator-source-manifest-03.json",
+      "operator-source-manifest-04.json"
+    ],
+    [
+      "operator-verification-03.json",
+      "operator-verification-04.json"
+    ],
+    [
+      "operator-source-03",
+      "operator-source-04"
+    ],
+    [
+      "cpu-03",
+      "cpu-04"
+    ],
+    [
+      "legacy-offload-01",
+      "legacy-offload-02"
+    ],
+    [
+      "backup-01",
+      "backup-02"
+    ],
+    [
+      "approved-selection-01.json",
+      "approved-selection-02.json"
+    ],
+    [
+      "post-deletion-audit-01",
+      "post-deletion-audit-02"
+    ],
+    [
+      "post-audit-01",
+      "post-audit-02"
+    ],
+    [
+      "CPU32",
+      "CPU44"
+    ],
+    [
+      "operator32",
+      "operator44"
+    ],
+    [
+      "\\b32\\s+passed\\b",
+      "\\b44\\s+passed\\b"
+    ]
+  ],
+  "local_backup_directory": "backup-02",
+  "operation_id": "legacy-offload-02",
+  "original01_files_unchanged": true,
+  "original03_history_adopted_by_actual04_cpu": true,
+  "outputs": {
+    "collect_offload_receipts_02.py": {
+      "bytes": 14246,
+      "embedded_remote_programs": [
+        {
+          "bytes": 3211,
+          "sha256": "501472daf23a75d88e03ab5326c983ee06c35dd584d58c81f9f0e2c033009e73",
+          "syntax_changes": "independently parsed whitelisted literal data only"
+        }
+      ],
+      "original_helper": "collect_offload_receipts.py",
+      "sha256": "b785aaeab24af70c7378ac7f90ba2ef5041ea42f7ec731409f06b5412cb6da17",
+      "syntax_changes": "whitelisted literal data only"
+    },
+    "execute_verified_removal_02.py": {
+      "bytes": 17475,
+      "embedded_remote_programs": [
+        {
+          "bytes": 7126,
+          "sha256": "547b5e8a26054713a54602063a99f89f233fd600a4dc125383cce769f5104584",
+          "syntax_changes": "independently parsed whitelisted literal data only"
+        }
+      ],
+      "original_helper": "execute_verified_removal.py",
+      "sha256": "e936e8e24d6eaf120b188305a937d072d6bf2690ecd7fdaa57185c7929856fae",
+      "syntax_changes": "whitelisted literal data only"
+    },
+    "run_approved_backup_02.py": {
+      "bytes": 1622,
+      "embedded_remote_programs": [],
+      "original_helper": "run_approved_backup.py",
+      "sha256": "a3296c53fb63eb14fdeb0fedcc77ec45e83d2a88ae10f8078a11fa20663c1543",
+      "syntax_changes": "whitelisted literal data only"
+    },
+    "run_post_deletion_audit_02.py": {
+      "bytes": 32417,
+      "embedded_remote_programs": [
+        {
+          "bytes": 8803,
+          "sha256": "504078cab9a9524eb627b99c56e6842da6e425f216b1116ad8eeecb0e73d5e5a",
+          "syntax_changes": "independently parsed whitelisted literal data only"
+        }
+      ],
+      "original_helper": "run_post_deletion_audit.py",
+      "sha256": "e29174c0e51b792d94a27d9260168dc63fef2b6da8a7bec9da5119be358d0b4d",
+      "syntax_changes": "whitelisted literal data only"
+    }
+  },
+  "remote_execution": false,
+  "remote_operator_source": "operator-source-04",
+  "scientific_or_storage_admission_pass_claimed": false,
+  "source_manifest_sha256": "8a6420047f7260eedd1219c4313c835dae4bb2a13cd39d4914f9e87abcd5bafe",
+  "sources": {
+    "collect_offload_receipts.py": "fc9d3b591d8f00e584ddd5369e033a8e94031d817300e80fb31773f3a29ce72c",
+    "execute_verified_removal.py": "0bee28202e8d7498a712d8a7ffc324352c9f8f1cd42a602dabcbd3cf068b91e5",
+    "run_approved_backup.py": "182bd5f47a5a1173831eb7f8ebd857149a15dbb7b24ff8574b2c6d2377f28a26",
+    "run_post_deletion_audit.py": "04a6d2b7979c3ea0bc6ce378070c80bc665af8e974ad773d6f6f44cb2aa9d49d"
+  },
+  "status": "four_new_operation02_helpers_bound_unexecuted",
+  "utc": "2026-10-24T10:56:23.329900+00:00"
+}

@@ -1,0 +1,20 @@
+{
+  "status": "approved_for_backup_then_conditional_identical_copy_removal",
+  "operation_id": "legacy-offload-02",
+  "plan_path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261024-storage-offload-01\\backup-02\\approved-plan.json",
+  "plan_bytes": 15706651,
+  "plan_sha256": "5fc74e3eeb3eedb2df5dfec541bb62b31e2b03dc01b8d0dd20eb3ad277dff6ea",
+  "files": 25737,
+  "candidate_roots": 96,
+  "logical_bytes": 32041124599,
+  "unique_logical_bytes": 21891767118,
+  "protection_sha256": "35c78f3571b26304e453eb9da1e04c1fe0bdd05d0a6e3756e81e3f825d121511",
+  "operator_source_manifest_sha256": "8a6420047f7260eedd1219c4313c835dae4bb2a13cd39d4914f9e87abcd5bafe",
+  "allocated_operator_job_id": "29806439",
+  "allocated_operator_cases": 44,
+  "selection_unchanged": true,
+  "previous_approved_plan_sha256": "6573d5d471df56b229e5d1f9adb28b74ddf8959b7d6c419332ca36b45f11d07b",
+  "backup_or_deletion_completed": false,
+  "actual_quota_savings_established": false,
+  "remote_protection_policy": "Reuse only the exact existing immutable protection-01.json by its original SHA; no overwrite."
+}

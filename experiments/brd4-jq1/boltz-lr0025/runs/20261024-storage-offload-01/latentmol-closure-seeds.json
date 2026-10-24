@@ -1,0 +1,3695 @@
+{
+  "active_embedding_closure": {
+    "available_in_inputs": false,
+    "do_not_guess_plan_path_from_historical_names": true,
+    "required_next": "From authenticated current embedding submission/argv, fetch its exact plan, binding/adoption manifest, current run control and sealed source manifest. Preserve source/env/data/checkpoint/context/catalog scopes until then."
+  },
+  "active_plan_absolute_reference_seeds": [
+    {
+      "classification": "directory_scope",
+      "declared_by": [
+        "$.work_root"
+      ],
+      "must_remain_remote_until_closure_complete": true,
+      "path": "/work3/s234818/latentmol"
+    },
+    {
+      "classification": "directory_scope",
+      "declared_by": [
+        "$.data"
+      ],
+      "must_remain_remote_until_closure_complete": true,
+      "path": "/work3/s234818/latentmol/data/source095-moses-triangle-v2"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.readiness_artifacts[absolute-key]"
+      ],
+      "must_remain_remote_until_closure_complete": true,
+      "path": "/work3/s234818/latentmol/data/source095-moses-triangle-v2/manifest.json",
+      "sha256": "f246cc93805b73a557cd0c09a78891ac8410c465192db615ce0b6709218c8c0e"
+    },
+    {
+      "classification": "directory_scope",
+      "declared_by": [
+        "$.parent_release"
+      ],
+      "must_remain_remote_until_closure_complete": true,
+      "path": "/work3/s234818/latentmol/releases/source-098-triangle-evaluator-recovery-attempt001"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.loss_v1_reference.module"
+      ],
+      "must_remain_remote_until_closure_complete": true,
+      "path": "/work3/s234818/latentmol/releases/source-124-deterministic-chemistry-events-attempt002/src/latentmol/repair_failure_guidance.py",
+      "sha256": "34c1a67cb339233312a1317db39a926b55f378c0eb8ed42c38bde86307fdd184"
+    },
+    {
+      "classification": "directory_scope",
+      "declared_by": [
+        "$.release"
+      ],
+      "must_remain_remote_until_closure_complete": true,
+      "path": "/work3/s234818/latentmol/releases/source-138-vae-cli-startup-fix-attempt001"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.readiness_artifacts[absolute-key]"
+      ],
+      "must_remain_remote_until_closure_complete": true,
+      "path": "/work3/s234818/latentmol/runs/source094-large-triangle-first-suite/inventory/inventory.json",
+      "sha256": "3e860f868c1d71a68cae4f1b32cab9cea162ff118f0c5d4917afee6db99333c1"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.readiness_artifacts[absolute-key]"
+      ],
+      "must_remain_remote_until_closure_complete": true,
+      "path": "/work3/s234818/latentmol/runs/source094-large-triangle-first-suite/receipts/inventory-intent.json",
+      "sha256": "df9e01a8d12f4d178f58f994d7e7567030c9428f810a3c5c3d7f65609d22d343"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.readiness_artifacts[absolute-key]"
+      ],
+      "must_remain_remote_until_closure_complete": true,
+      "path": "/work3/s234818/latentmol/runs/source094-large-triangle-first-suite/receipts/inventory-receipt.json",
+      "sha256": "8a1a4cb3f849296d6eef65b40b8ead66c3aadc174f58e8b2af09c7097e268279"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.readiness_artifacts[absolute-key]"
+      ],
+      "must_remain_remote_until_closure_complete": true,
+      "path": "/work3/s234818/latentmol/runs/source094-large-triangle-first-suite/stage-completions/inventory.json",
+      "sha256": "874afe5ba525cfc69e9f63a9bcb344a566203ff631d9b170c068bbe7fec6e728"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.readiness_artifacts[absolute-key]"
+      ],
+      "must_remain_remote_until_closure_complete": true,
+      "path": "/work3/s234818/latentmol/runs/source095-large-triangle-prepare-benchmark/receipts/prepare-intent.json",
+      "sha256": "dcbd676e3e630763bf0808c4e0fd72ffb9f64a4dcce258a5b6ec3cef103bb203"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.readiness_artifacts[absolute-key]"
+      ],
+      "must_remain_remote_until_closure_complete": true,
+      "path": "/work3/s234818/latentmol/runs/source095-large-triangle-prepare-benchmark/receipts/prepare-receipt.json",
+      "sha256": "667ea9f3a22a9a03ead1c165a28dec5171a74272545c19421be1ed6e36364e4a"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.readiness_artifacts[absolute-key]"
+      ],
+      "must_remain_remote_until_closure_complete": true,
+      "path": "/work3/s234818/latentmol/runs/source095-large-triangle-prepare-benchmark/stage-completions/prepare.json",
+      "sha256": "dd3345fa57c266537ff11980facf9aca053c337a46ceb15bb38e18e87ceb3fea"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.readiness_artifacts[absolute-key]"
+      ],
+      "must_remain_remote_until_closure_complete": true,
+      "path": "/work3/s234818/latentmol/runs/source098-large-triangle-evaluator-recovery/benchmark/passed.json",
+      "sha256": "be94a25134f60a36b03512900cbb3a8e9ee7643aed81199f68b1da1866bc084c"
+    },
+    {
+      "classification": "directory_scope",
+      "declared_by": [
+        "$.speed_suite_root"
+      ],
+      "must_remain_remote_until_closure_complete": true,
+      "path": "/work3/s234818/latentmol/runs/source121a002-chemistry-16core-24h-attempt002"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.starting_checkpoint.completion"
+      ],
+      "must_remain_remote_until_closure_complete": true,
+      "path": "/work3/s234818/latentmol/runs/source121a002-chemistry-16core-24h-attempt002/variants/r2_async_w12_m128_h24/segment-001-completion.json",
+      "sha256": "4d9aab0216d574f1551a8b2ecd5e1c78f873726bcd5fab134773bbd6412c29b5"
+    },
+    {
+      "classification": "large_checkpoint_protect_metadata_only",
+      "declared_by": [
+        "$.starting_checkpoint.path"
+      ],
+      "must_remain_remote_until_closure_complete": true,
+      "path": "/work3/s234818/latentmol/runs/source121a002-chemistry-16core-24h-attempt002/variants/r2_async_w12_m128_h24/segments/001/20261018T175254Z_chemistry-train_89b58520/epoch_0036.pt",
+      "sha256": "3179ef01f84a2c714ee031bc3e6a6a4dc2cedc767d30e700c887aab1abbd706f"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.valid_reference_adoption.artifacts[absolute-key]"
+      ],
+      "must_remain_remote_until_closure_complete": true,
+      "path": "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/after-cpu-decision.json",
+      "sha256": "0875d19d42b86e157e3437a728d3143eb13930e1a51a2e0f53f45cba970553f2"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.valid_reference_adoption.artifacts[absolute-key]"
+      ],
+      "must_remain_remote_until_closure_complete": true,
+      "path": "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/allocations/20261022T102132Z_guarded-chemistry-cpu_b50fa68e/run.json",
+      "sha256": "36f6f9f2c801b97bd2e3fc689c835352a99aa6466277d17f151182bd28892f21"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.valid_reference_adoption.artifacts[absolute-key]"
+      ],
+      "must_remain_remote_until_closure_complete": true,
+      "path": "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/allocations/20261022T102658Z_independent-valid-self-test_c80f275d/run.json",
+      "sha256": "0dbe38ee85afebb6a896c804f23149d82add909f4928a4c393e03444178a80db"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.valid_reference_adoption.artifacts[absolute-key]"
+      ],
+      "must_remain_remote_until_closure_complete": true,
+      "path": "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/benchmark_gate.json",
+      "sha256": "a004617814cb2687bacf41a7dce385b1c10c6ba2473d785502f369248368fc27"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.valid_reference_adoption.artifacts[absolute-key]"
+      ],
+      "must_remain_remote_until_closure_complete": true,
+      "path": "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/cpu_gate.json",
+      "sha256": "f672675517ddf04027c29828b668316b342f320e137ad008f76147b436d3c3db"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.valid_reference_adoption.artifacts[absolute-key]"
+      ],
+      "must_remain_remote_until_closure_complete": true,
+      "path": "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/early-health-baseline.json",
+      "sha256": "d19e62be77d956283733b2b6da3dbb0fb81431fecf12bc31d77c34dde3814beb"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.valid_reference_adoption.artifacts[absolute-key]"
+      ],
+      "must_remain_remote_until_closure_complete": true,
+      "path": "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/failure_readiness.json",
+      "sha256": "f49a8d4d70cf5693bcc0f7521087dd44f0a67e2339b0a0376a0c58585cfd408a"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.valid_reference_adoption.artifacts[absolute-key]"
+      ],
+      "must_remain_remote_until_closure_complete": true,
+      "path": "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/guarded-cpu-pytest.xml",
+      "sha256": "ea990a9d19a51e3620bc49779135b37373fb24fec7b99c3aed46f8f2f9c6ed20"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.valid_reference_adoption.artifacts[absolute-key]"
+      ],
+      "must_remain_remote_until_closure_complete": true,
+      "path": "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/independent-self-cuda-pytest.xml",
+      "sha256": "9e91b62547afb964cef59f6e9a0aa9ab1ae1a4292842c96481f714ff51944847"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.valid_reference_adoption.artifacts[absolute-key]"
+      ],
+      "must_remain_remote_until_closure_complete": true,
+      "path": "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/receipts/after-cpu-intent.json",
+      "sha256": "a0a03feca0ff76efa411d79582062ae9253beba7af596f1fcf2586ed96e47bce"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.valid_reference_adoption.artifacts[absolute-key]"
+      ],
+      "must_remain_remote_until_closure_complete": true,
+      "path": "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/receipts/after-cpu-receipt.json",
+      "sha256": "2bb1a7cc369531787ce4d57764d215ea18fa0b0111aec2402cc531b5c4616fb6"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.valid_reference_adoption.artifacts[absolute-key]"
+      ],
+      "must_remain_remote_until_closure_complete": true,
+      "path": "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/receipts/cpu-intent.json",
+      "sha256": "009d13471eb080cca88d4149511ec535ed7b17e30fffd85854f2b9ebc3269a8e"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.valid_reference_adoption.artifacts[absolute-key]"
+      ],
+      "must_remain_remote_until_closure_complete": true,
+      "path": "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/receipts/cpu-receipt.json",
+      "sha256": "baa105c073f64cb9ac515a9da6d01454645b988df1f702ba810e450c72e9b9c8"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.valid_reference_adoption.artifacts[absolute-key]"
+      ],
+      "must_remain_remote_until_closure_complete": true,
+      "path": "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/receipts/independent-self-test-intent.json",
+      "sha256": "1b932329e5661c418d6ccd1ffdb508252bce3e3234e59f7518aed1820d05e0f2"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.valid_reference_adoption.artifacts[absolute-key]"
+      ],
+      "must_remain_remote_until_closure_complete": true,
+      "path": "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/receipts/independent-self-test-receipt.json",
+      "sha256": "4f69f756033e4051e9afd8ce4c336ef2f49f8d2420d6a3aec79d74f83325e0ec"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.valid_reference_adoption.artifacts[absolute-key]"
+      ],
+      "must_remain_remote_until_closure_complete": true,
+      "path": "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/repair_profile.json",
+      "sha256": "1cfd3e3bc6aea8d672afb6fafca98a2eaa787ab06f2edb4910a40b2638aad599"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.valid_reference_adoption.artifacts[absolute-key]"
+      ],
+      "must_remain_remote_until_closure_complete": true,
+      "path": "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/stability/20261022T105758Z_guarded-chemistry-stability_ddb64372/run.json",
+      "sha256": "f42767cf395bffb09d05e7b8475d9624e4fb00979184277d638430e17bc0929f"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.valid_reference_adoption.artifacts[absolute-key]"
+      ],
+      "must_remain_remote_until_closure_complete": true,
+      "path": "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/stability_gate.json",
+      "sha256": "218a3c9e0318286f9122017cf9c4507885202ed7981bea61852d0c16886a39b0"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.valid_reference_adoption.artifacts[absolute-key]"
+      ],
+      "must_remain_remote_until_closure_complete": true,
+      "path": "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/training_composition.json",
+      "sha256": "5ddc4dc0eda9dc93589c8f0904433135f899cfdcab8657fc127f304d4a136ee9"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.valid_reference_adoption.artifacts[absolute-key]"
+      ],
+      "must_remain_remote_until_closure_complete": true,
+      "path": "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/valid_reference_probe.json",
+      "sha256": "0ac941e58eee04d2eebae923530bd60dcc28f19c79aa1e6356a517251d844f43"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.valid_reference_adoption.artifacts[absolute-key]"
+      ],
+      "must_remain_remote_until_closure_complete": true,
+      "path": "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/valid_reference_probe/20261022T103244Z_chemistry-valid-reference-probe_609f2c03/run.json",
+      "sha256": "34ceb40cfc2366d93f125c3d6ee23885e3ace5f130ab686d9cb9182a5e5db2b6"
+    },
+    {
+      "classification": "directory_scope",
+      "declared_by": [
+        "$.campaign"
+      ],
+      "must_remain_remote_until_closure_complete": true,
+      "path": "/work3/s234818/latentmol/runs/source138-vae-cli-startup-fix-attempt001"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.readiness_artifacts[absolute-key]"
+      ],
+      "must_remain_remote_until_closure_complete": true,
+      "path": "/work3/s234818/latentmol/submissions/source094-large-triangle-first-suite/bindings.json",
+      "sha256": "11fc11aa10acb1debc2264c98a7911080b419705c4e17dc37fee73d54bfdf9d1"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.readiness_artifacts[absolute-key]"
+      ],
+      "must_remain_remote_until_closure_complete": true,
+      "path": "/work3/s234818/latentmol/submissions/source095-large-triangle-prepare-benchmark/bindings.json",
+      "sha256": "8231878eb667e834d53b751c9007ae2185d0d4e3518724f4f96de196a297ecb2"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.readiness_artifacts[absolute-key]"
+      ],
+      "must_remain_remote_until_closure_complete": true,
+      "path": "/work3/s234818/latentmol/submissions/source098-large-triangle-evaluator-recovery/bindings.json",
+      "sha256": "14ae640aa68a9c776c68c8c17f0343ffc8096c7dd394687d0b5df2acdc7f9949"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.config"
+      ],
+      "must_remain_remote_until_closure_complete": true,
+      "path": "/work3/s234818/latentmol/submissions/source104-chemistry-continuation-attempt005/parent-config.json",
+      "sha256": "b6704c80c4f3308b5f20623eb0ef21fc39c4b7b1d0cd60d519a9990670b1b254"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.readiness_artifacts[absolute-key]"
+      ],
+      "must_remain_remote_until_closure_complete": true,
+      "path": "/work3/s234818/latentmol/submissions/source104-chemistry-continuation-attempt005/parent-latest_epoch.json",
+      "sha256": "3f7fb9bd0166226a48309ece731c39df86231562e17211b01627971eee647102"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.readiness_artifacts[absolute-key]"
+      ],
+      "must_remain_remote_until_closure_complete": true,
+      "path": "/work3/s234818/latentmol/submissions/source104-chemistry-continuation-attempt005/parent-metrics.jsonl",
+      "sha256": "ea4dadeff686775a9bc490895c7965e5c7e32e4c92d6e89aa6e3c0149d9ce1ba"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.parent_run_record"
+      ],
+      "must_remain_remote_until_closure_complete": true,
+      "path": "/work3/s234818/latentmol/submissions/source104-chemistry-continuation-attempt005/parent-run.json",
+      "sha256": "4f4fea801418ce42828bdc8b4f7fa784eb1f039fd3b3a51208fa1213fda5d387"
+    },
+    {
+      "classification": "large_checkpoint_protect_metadata_only",
+      "declared_by": [
+        "$.parent_checkpoint"
+      ],
+      "must_remain_remote_until_closure_complete": true,
+      "path": "/work3/s234818/latentmol/submissions/source104-chemistry-continuation-attempt005/parent.pt",
+      "sha256": "19f438222e454ef53169f6d81082335ee7e24902b1b7cf5e0f18eced4b8e92ed"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.starting_checkpoint.source_plan"
+      ],
+      "must_remain_remote_until_closure_complete": true,
+      "path": "/work3/s234818/latentmol/submissions/source121a002-chemistry-16core-24h-attempt002/plans/r2_async_w12_m128_h24.json",
+      "sha256": "238bb5627cf7f4bbc2fd65a7d2d7bb0c860c7872c56bd1e51399c52ee0e98e8e"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.readiness_artifacts[absolute-key]",
+        "$.superseded_failed_candidate.evidence"
+      ],
+      "must_remain_remote_until_closure_complete": true,
+      "path": "/work3/s234818/latentmol/submissions/source134-bond-weighted-chemistry-attempt002/source133-saved-outcomes.json",
+      "sha256": "a67e440504595542b2bb372419fc2084b0e2b6e2083422cda39c8b284ee3b719"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.readiness_artifacts[absolute-key]",
+        "$.superseded_failed_fixture_attempt.evidence"
+      ],
+      "must_remain_remote_until_closure_complete": true,
+      "path": "/work3/s234818/latentmol/submissions/source134-bond-weighted-chemistry-attempt002/source134-attempt001-cpu-failure.json",
+      "sha256": "f3f1aba785d1e4e03b89de85601f0cc510150b1247c45a26652400a945b5c7de"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.readiness_artifacts[absolute-key]",
+        "$.valid_reference_mechanism_evidence.saved_artifacts[1].remote"
+      ],
+      "must_remain_remote_until_closure_complete": true,
+      "path": "/work3/s234818/latentmol/submissions/source135-epoch36-valid-reference-attempt001/saved-mechanism-review.json",
+      "sha256": "d1317879cbe26401ae76d768242fe68a2fbe1896797c409e573edc8c437e2218"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.stopped_predecessor.terminal_evidence"
+      ],
+      "must_remain_remote_until_closure_complete": true,
+      "path": "/work3/s234818/latentmol/submissions/source135-epoch36-valid-reference-attempt001/source127-terminal-evidence.json",
+      "sha256": "5b354651896975a3cb29cfe1b1a7f7be5a41f783764a39e905a35f2e61d95bde"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.readiness_artifacts[absolute-key]",
+        "$.valid_reference_mechanism_evidence.saved_artifacts[0].remote"
+      ],
+      "must_remain_remote_until_closure_complete": true,
+      "path": "/work3/s234818/latentmol/submissions/source135-epoch36-valid-reference-attempt001/source134-terminal-evidence.json",
+      "sha256": "07f37751ca7c4d2c399134e39eb92bf3439239e0f82f48b2fb5d9acccdc79f5f"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.valid_reference_adoption.artifacts[absolute-key]",
+        "$.valid_reference_adoption.source_plan"
+      ],
+      "must_remain_remote_until_closure_complete": true,
+      "path": "/work3/s234818/latentmol/submissions/source135-epoch36-valid-reference-attempt001/source135-epoch36-valid-reference-attempt001.json",
+      "sha256": "ad7533a6ce9011c17ba8c962fe939f1e3391b77b73c4ae7574bdbebaf203c609"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$actual_active_plan"
+      ],
+      "must_remain_remote_until_closure_complete": true,
+      "path": "/work3/s234818/latentmol/submissions/source138-vae-cli-startup-fix-attempt001/source138-vae-cli-startup-fix-attempt001.json",
+      "sha256": "183abba4bcd8e185b407ccdb5596a8fd6c37c0f9a82aeaf7c21e28a9cdb219c4"
+    }
+  ],
+  "actual_active_vae_plan": {
+    "path": "/work3/s234818/latentmol/submissions/source138-vae-cli-startup-fix-attempt001/source138-vae-cli-startup-fix-attempt001.json",
+    "sha256": "183abba4bcd8e185b407ccdb5596a8fd6c37c0f9a82aeaf7c21e28a9cdb219c4"
+  },
+  "closure_algorithm": [
+    "Keep blanket latentmol protection while this closure is incomplete. Seed with all delivered VAE absolute references AND the missing actual embedding plan/source/control.",
+    "Read only bounded regular JSON/JSONL/YAML/TOML manifests, catalogs, run records, bindings and receipt descriptors; verify declared hashes before following each absolute reference. If a metadata file is too large, malformed or absent, retain its scope unresolved instead of treating it unused.",
+    "For paths in dataset manifests, original35/36 run records/completions, source135 adoption/failure_readiness and embedding preparation/catalog manifests, recursively follow dependency/proof/input/output paths and relative paths resolved against their real documented owning root.",
+    "Inspect the active sealed controller/loader/readiness modules named by actual source manifests to capture computed/default/glob paths that a simple JSON string search misses; fetching a manifest alone does not prove closure.",
+    "For each September candidate, inspect existing run.json plus root metadata/catalog/manifest inventory. Reject deletion if it intersects any resolved protected path or symlink/hardlink target, active command/open file, future continuation/resume input, prepared context or original catalog.",
+    "Only parent may certify a candidate inactive after fresh actual all-job/scope checks, full laptop download, every-file hashes and final race-safe identical-byte comparison. Preserve exact unresolved references and never infer inactivity from age, a missing live bjobs record or partial duRC124."
+  ],
+  "created_utc": "2026-10-24T09:45:13.182416+00:00",
+  "delete_allowlist": [],
+  "direct_vae_plan_september_references": [],
+  "du_complete": false,
+  "du_returncode": 124,
+  "du_unit_or_physical_savings_inferred": false,
+  "inputs": [
+    {
+      "bytes": 31707,
+      "path": "results/hpc/20261024-storage-offload-01/active-vae-plan.json",
+      "sha256": "deb60ed8ab66115d8dd61700153306cd95de3f93543c89e00aa5afabd3ebf412"
+    },
+    {
+      "bytes": 98434,
+      "path": "results/hpc/20261024-storage-offload-01/shared-account-metadata/stdout.bin",
+      "sha256": "a452e6023d3393836561f283ee5f1f9d50d67cd7d13bae5a23a5e19fb6f69a0c"
+    }
+  ],
+  "no_dbmol_checkout_accessed": true,
+  "no_numerical_execution": true,
+  "no_remote_mutation": true,
+  "no_ssh": true,
+  "release_manifest_discovery_requests": [
+    {
+      "directory": "/work3/s234818/latentmol/releases/source-138-vae-cli-startup-fix-attempt001",
+      "expected_manifest_sha256": "c702a81e665ad8b77b19b37ba5d3c19ee1595f5877e3cc926a6811024a279a84",
+      "mode": "list_top_level_regular_metadata_only",
+      "reason": "Actual sealed source138 manifest filename is not stated in the delivered plan; discover the real manifest rather than guessing it."
+    },
+    {
+      "directory": "/work3/s234818/latentmol/releases/source-098-triangle-evaluator-recovery-attempt001",
+      "expected_manifest_sha256": "e8fe9b66df2224672c1c0ef69ad71c29aefab1ebfa7e353ea28536fc746bc405",
+      "mode": "list_top_level_regular_metadata_only",
+      "reason": "Original parent35 source/provenance is protected; inspect its declared manifest and code consumers."
+    }
+  ],
+  "september_candidate_metadata_only": [
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 4389,
+      "path": "/work3/s234818/latentmol/runs/20260926T154501Z_tests_4be1e373"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 5247,
+      "path": "/work3/s234818/latentmol/runs/20260927T134553Z_tests-before-ae_863a6ab6"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 22972732,
+      "path": "/work3/s234818/latentmol/runs/20260927T134617Z_ae-train_dc66226d"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 35454,
+      "path": "/work3/s234818/latentmol/runs/20260927T134854Z_evaluation_22950888"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 5426,
+      "path": "/work3/s234818/latentmol/runs/20260927T135347Z_tests-before-pilot_b999ef52"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 190977,
+      "path": "/work3/s234818/latentmol/runs/20260927T135824Z_evaluation_ec127c91"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 91751914,
+      "path": "/work3/s234818/latentmol/runs/20260927T135938Z_vae-train_19abddb1"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 192408,
+      "path": "/work3/s234818/latentmol/runs/20260927T140351Z_evaluation_857a448d"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 5416,
+      "path": "/work3/s234818/latentmol/runs/20260927T140357Z_tests-before-diagnostics_17568cd9"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 486880,
+      "path": "/work3/s234818/latentmol/runs/20260927T140439Z_evaluation_09b13f20"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 91759887,
+      "path": "/work3/s234818/latentmol/runs/20260927T140759Z_ae-train_0487dec6"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 91763559,
+      "path": "/work3/s234818/latentmol/runs/20260927T141215Z_vae-train_0875cdbf"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 488631,
+      "path": "/work3/s234818/latentmol/runs/20260927T141621Z_evaluation_67161977"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 8496,
+      "path": "/work3/s234818/latentmol/runs/20260927T142108Z_tests-before-boltz_29e394ab"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 501127,
+      "path": "/work3/s234818/latentmol/runs/20260927T142147Z_evaluation_72d2a587"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 507803,
+      "path": "/work3/s234818/latentmol/runs/20260927T142158Z_evaluation_d8b695cf"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 505024,
+      "path": "/work3/s234818/latentmol/runs/20260927T142209Z_evaluation_338dac57"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 505499,
+      "path": "/work3/s234818/latentmol/runs/20260927T142219Z_evaluation_7bc650ba"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 11971,
+      "path": "/work3/s234818/latentmol/runs/20260927T142223Z_boltz-preparation_5bdfa808"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 10724,
+      "path": "/work3/s234818/latentmol/runs/20260927T142444Z_boltz_fixed_pose_gradient_smoke_d9b386e8"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 8741,
+      "path": "/work3/s234818/latentmol/runs/20260927T142915Z_tests-before-boltz-recovery_e348a214"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 19991,
+      "path": "/work3/s234818/latentmol/runs/20260927T142946Z_boltz_fixed_pose_gradient_smoke_97f21fa9"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 23956,
+      "path": "/work3/s234818/latentmol/runs/20260927T143603Z_boltz_fixed_pose_gradient_smoke_a70c8a90"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 3722,
+      "path": "/work3/s234818/latentmol/runs/20260927T175935Z_tests-full-data_426fafa6"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 21992,
+      "path": "/work3/s234818/latentmol/runs/20260927T181222Z_tests-full-training_3903b437"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 14924,
+      "path": "/work3/s234818/latentmol/runs/20260927T181538Z_tests-full-training_c54a90dd"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 10099,
+      "path": "/work3/s234818/latentmol/runs/20260927T181637Z_full-data-isolation-audit_b1dae78a"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 8604,
+      "path": "/work3/s234818/latentmol/runs/20260927T182225Z_gpu-rng-before-full-ae_06a788e2"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 11593,
+      "path": "/work3/s234818/latentmol/runs/20260927T182242Z_ae-full-workflow_9f45dcd5"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 11596,
+      "path": "/work3/s234818/latentmol/runs/20260927T182312Z_vae-full-workflow_aeded2ce"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2606253,
+      "path": "/work3/s234818/latentmol/runs/20260927T182312Z_vae-train_28ecb77e"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 15032,
+      "path": "/work3/s234818/latentmol/runs/20260927T182633Z_tests-full-training_3417a773"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 143811925,
+      "path": "/work3/s234818/latentmol/runs/20260927T182828Z_ae-train_dc832d48"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 8704,
+      "path": "/work3/s234818/latentmol/runs/20260927T182840Z_gpu-rng-before-full-vae_545f4427"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2349888,
+      "path": "/work3/s234818/latentmol/runs/20260927T220315Z_evaluation_18671707"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 49685107,
+      "path": "/work3/s234818/latentmol/runs/20260927T220339Z_ae-train_406d4e54"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 143353657,
+      "path": "/work3/s234818/latentmol/runs/20260927T220435Z_vae-train_5045659f"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2361528,
+      "path": "/work3/s234818/latentmol/runs/20260927T231517Z_evaluation_8ca479fc"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 96424073,
+      "path": "/work3/s234818/latentmol/runs/20260927T231538Z_ae-train_67f36b41"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 190098813,
+      "path": "/work3/s234818/latentmol/runs/20260927T231648Z_vae-train_a0e7eba0"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2367910,
+      "path": "/work3/s234818/latentmol/runs/20260928T002717Z_evaluation_4c55524e"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 236649340,
+      "path": "/work3/s234818/latentmol/runs/20260928T002738Z_ae-train_2f61b913"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2415511,
+      "path": "/work3/s234818/latentmol/runs/20260928T002831Z_evaluation_38314482"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2397134,
+      "path": "/work3/s234818/latentmol/runs/20260928T002856Z_evaluation_f54cab1b"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2410999,
+      "path": "/work3/s234818/latentmol/runs/20260928T002925Z_evaluation_591a6862"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2410147,
+      "path": "/work3/s234818/latentmol/runs/20260928T002939Z_evaluation_dd6ed16e"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2414515,
+      "path": "/work3/s234818/latentmol/runs/20260928T002955Z_evaluation_a0f906f2"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2417425,
+      "path": "/work3/s234818/latentmol/runs/20260928T003011Z_evaluation_84e78e95"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2415511,
+      "path": "/work3/s234818/latentmol/runs/20260928T003025Z_evaluation_c17b34df"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2369089,
+      "path": "/work3/s234818/latentmol/runs/20260928T013853Z_evaluation_2acbc706"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2349888,
+      "path": "/work3/s234818/latentmol/runs/20260928T013916Z_evaluation_6ddbfd88"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2350422,
+      "path": "/work3/s234818/latentmol/runs/20260928T013932Z_evaluation_ae3ebc9e"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2359479,
+      "path": "/work3/s234818/latentmol/runs/20260928T013947Z_evaluation_be781e9a"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2369089,
+      "path": "/work3/s234818/latentmol/runs/20260928T014045Z_evaluation_e18df464"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2369901,
+      "path": "/work3/s234818/latentmol/runs/20260928T014059Z_evaluation_30498933"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 119238180,
+      "path": "/work3/s234818/latentmol/runs/20260928T063833Z_ae-latent-stage1_580abd75"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 9425,
+      "path": "/work3/s234818/latentmol/runs/20260928T064047Z_tests-latent-stage1-vae_eec574fc"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 119339001,
+      "path": "/work3/s234818/latentmol/runs/20260928T064117Z_vae-latent-stage1_bd6a6a7a"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 10027,
+      "path": "/work3/s234818/latentmol/runs/20260928T073541Z_tests-paired-latent-audit_ac56ae92"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 14270,
+      "path": "/work3/s234818/latentmol/runs/20260928T073544Z_ae-vae-interpolation-comparison_4e92495d"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 11317,
+      "path": "/work3/s234818/latentmol/runs/20260928T073645Z_tests-boltz-stage2-vae_9f7925af"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 42213616,
+      "path": "/work3/s234818/latentmol/runs/20260928T073724Z_vae-boltz-latent-pilot_a8e9e0e3"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 11450,
+      "path": "/work3/s234818/latentmol/runs/20260928T075217Z_tests-source018-native_9f859569"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 11587,
+      "path": "/work3/s234818/latentmol/runs/20260928T082358Z_tests-native-rescore-ae_08e03e90"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 12151417,
+      "path": "/work3/s234818/latentmol/runs/20260928T082423Z_ae-native-fresh-pose_972c2d83"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 11591,
+      "path": "/work3/s234818/latentmol/runs/20260928T083817Z_tests-native-rescore-vae_bc028143"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 12517,
+      "path": "/work3/s234818/latentmol/runs/20260928T085545Z_tests-chemical-audit_a24f26e5"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 12311,
+      "path": "/work3/s234818/latentmol/runs/20260928T090711Z_tests-stage3-training-support_fe27d1c1"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 38949,
+      "path": "/work3/s234818/latentmol/runs/20260928T090722Z_stage3-training-support-preflight_54e96ff7"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 12320,
+      "path": "/work3/s234818/latentmol/runs/20260928T091230Z_tests-stage3-training-support_0ebb06f6"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 40063,
+      "path": "/work3/s234818/latentmol/runs/20260928T091242Z_stage3-training-support-preflight_ceb9b559"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 15384516,
+      "path": "/work3/s234818/latentmol/runs/20260928T092202Z_stage3-schema-denoiser-pilot_ac19a401"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 26548,
+      "path": "/work3/s234818/latentmol/runs/20260928T092654Z_stage3-denoiser-failure-audit_3b2a9bed"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 11756,
+      "path": "/work3/s234818/latentmol/runs/20260928T093654Z_tests-stage3-denoiser-pilot_a2a41e6b"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 15394616,
+      "path": "/work3/s234818/latentmol/runs/20260928T093714Z_stage3-schema-denoiser-repair_bcd42239"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 12308,
+      "path": "/work3/s234818/latentmol/runs/20260928T122056Z_tests-stochastic-bridge-preflight_4ac765f1"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 1447004,
+      "path": "/work3/s234818/latentmol/runs/20260928T122329Z_ae-stochastic-bridge_9ff8ddc9"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 17804,
+      "path": "/work3/s234818/latentmol/runs/20260928T123509Z_defog-native-env-setup_39fd5715"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 12709,
+      "path": "/work3/s234818/latentmol/runs/20260928T123752Z_defog-official-import-deps_6f4dea31"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 15429,
+      "path": "/work3/s234818/latentmol/runs/20260928T123810Z_defog-native-checkpoint-load-retry_4b7060d2"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 13873,
+      "path": "/work3/s234818/latentmol/runs/20260928T124510Z_defog-native-checkpoint-load-audit_6055f70e"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 60351,
+      "path": "/work3/s234818/latentmol/runs/20260928T124528Z_ae-carbon-chain-seed-preflight_4bcb2f5b"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 60594,
+      "path": "/work3/s234818/latentmol/runs/20260928T124528Z_vae-carbon-chain-seed-preflight_fb92a698"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 17475,
+      "path": "/work3/s234818/latentmol/runs/20260928T124625Z_tests-stage3-native-defog-contract_d1be6642"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 19101,
+      "path": "/work3/s234818/latentmol/runs/20260928T124749Z_stage3-native-defog-interface-smoke_4d0f1680"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 12719,
+      "path": "/work3/s234818/latentmol/runs/20260928T125320Z_tests-chain-native-029_b541af1f"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 13807,
+      "path": "/work3/s234818/latentmol/runs/20260928T125535Z_tests-stage3-native-defog-contract_4b0630a7"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 24597,
+      "path": "/work3/s234818/latentmol/runs/20260928T125551Z_stage3-native-defog-interface-smoke_c72694fc"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 13966,
+      "path": "/work3/s234818/latentmol/runs/20260928T130245Z_tests-carbon-anchor-031_c7704cea"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 96201,
+      "path": "/work3/s234818/latentmol/runs/20260928T130321Z_ae-boltz-carbon-anchor-pilot_18114367"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 1030579,
+      "path": "/work3/s234818/latentmol/runs/20260928T130451Z_vae-boltz-carbon-anchor-pilot_a9376cee"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 14832,
+      "path": "/work3/s234818/latentmol/runs/20260928T131910Z_tests-carbon-native-rescore-032_591906d0"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 6090983,
+      "path": "/work3/s234818/latentmol/runs/20260928T132239Z_vae-carbon-anchor-native-rescore_293a741c"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 158412,
+      "path": "/work3/s234818/latentmol/runs/20260928T134642Z_ae-boltz-carbon-local-start-rescue_d04081b2"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 23766,
+      "path": "/work3/s234818/latentmol/runs/20260928T142349Z_tests-frozen-score-contract-034_b834b5c1"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 15577,
+      "path": "/work3/s234818/latentmol/runs/20260928T142648Z_tests-frozen-score-contract-035_526671fe"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 25529,
+      "path": "/work3/s234818/latentmol/runs/20260928T153219Z_tests-atom-pair-architecture_af744b79"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 21886,
+      "path": "/work3/s234818/latentmol/runs/20260928T153428Z_tests-atom-pair-architecture_6df74c5d"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 86708479,
+      "path": "/work3/s234818/latentmol/runs/20260928T153623Z_ae-train_73f0d866"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 522596,
+      "path": "/work3/s234818/latentmol/runs/20260928T153643Z_evaluation_85d88a6a"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 522596,
+      "path": "/work3/s234818/latentmol/runs/20260928T153647Z_evaluation_658fe7d9"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 523283,
+      "path": "/work3/s234818/latentmol/runs/20260928T153740Z_evaluation_7a2f3cc3"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 1919827,
+      "path": "/work3/s234818/latentmol/runs/20260928T153745Z_evaluation_d7f633fa"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 86762957,
+      "path": "/work3/s234818/latentmol/runs/20260928T153810Z_vae-train_528baf3f"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 548029,
+      "path": "/work3/s234818/latentmol/runs/20260928T153831Z_evaluation_ccf6e584"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 548029,
+      "path": "/work3/s234818/latentmol/runs/20260928T153835Z_evaluation_702629cc"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2031190,
+      "path": "/work3/s234818/latentmol/runs/20260928T153840Z_evaluation_f2976884"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 91110242,
+      "path": "/work3/s234818/latentmol/runs/20260928T153904Z_vae-train_1ff128c0"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 548103,
+      "path": "/work3/s234818/latentmol/runs/20260928T153927Z_evaluation_8b9d4b4b"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 22537,
+      "path": "/work3/s234818/latentmol/runs/20260928T164052Z_tests-atom-pair-architecture_00691dd7"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 23482,
+      "path": "/work3/s234818/latentmol/runs/20260928T172120Z_tests-atom-pair-architecture_953e4f6a"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 23966,
+      "path": "/work3/s234818/latentmol/runs/20260928T174833Z_tests-atom-pair-architecture_97df0930"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 15524,
+      "path": "/work3/s234818/latentmol/runs/20260928T190616Z_gpu-rng-before-arch-residual-ae_fb48b2a3"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 6442173,
+      "path": "/work3/s234818/latentmol/runs/20260928T190633Z_ae-full-workflow_ed2458d9"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 181115103,
+      "path": "/work3/s234818/latentmol/runs/20260928T190634Z_ae-train_8bca0e25"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 15530,
+      "path": "/work3/s234818/latentmol/runs/20260928T191101Z_gpu-rng-before-arch-pair_refine-ae_17a98199"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 6480236,
+      "path": "/work3/s234818/latentmol/runs/20260928T191118Z_ae-full-workflow_b77174e9"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 143405713,
+      "path": "/work3/s234818/latentmol/runs/20260928T191119Z_ae-train_9e2d402c"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 180152145,
+      "path": "/work3/s234818/latentmol/runs/20260928T224449Z_ae-train_2ce6b339"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2377875,
+      "path": "/work3/s234818/latentmol/runs/20260928T235735Z_evaluation_b2be06bb"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2357518,
+      "path": "/work3/s234818/latentmol/runs/20260928T235800Z_evaluation_12d49eb5"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2377448,
+      "path": "/work3/s234818/latentmol/runs/20260928T235831Z_evaluation_73012129"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2379269,
+      "path": "/work3/s234818/latentmol/runs/20260928T235846Z_evaluation_270e1e31"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2380691,
+      "path": "/work3/s234818/latentmol/runs/20260928T235915Z_evaluation_9d034277"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2377875,
+      "path": "/work3/s234818/latentmol/runs/20260928T235932Z_evaluation_53142dca"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2380937,
+      "path": "/work3/s234818/latentmol/runs/20260928T235948Z_evaluation_1fed3dba"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 15526,
+      "path": "/work3/s234818/latentmol/runs/20260929T000904Z_gpu-rng-before-arch-residual-vae_1e947bbe"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2374445,
+      "path": "/work3/s234818/latentmol/runs/20260929T010508Z_evaluation_f5844ed5"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 142430019,
+      "path": "/work3/s234818/latentmol/runs/20260929T010533Z_ae-train_5fc2462f"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2374445,
+      "path": "/work3/s234818/latentmol/runs/20260929T030430Z_evaluation_2e686e1f"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2373481,
+      "path": "/work3/s234818/latentmol/runs/20260929T030449Z_evaluation_18b9e39a"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2380848,
+      "path": "/work3/s234818/latentmol/runs/20260929T030506Z_evaluation_45e78327"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2383916,
+      "path": "/work3/s234818/latentmol/runs/20260929T030523Z_evaluation_055ace3f"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2384775,
+      "path": "/work3/s234818/latentmol/runs/20260929T030539Z_evaluation_18736090"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2381132,
+      "path": "/work3/s234818/latentmol/runs/20260929T030615Z_evaluation_1014c3c9"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2383718,
+      "path": "/work3/s234818/latentmol/runs/20260929T030633Z_evaluation_84e04d6d"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 16792,
+      "path": "/work3/s234818/latentmol/runs/20260929T030654Z_followup-pair_refine-ae-parent-29510333_51a2979a"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2425278,
+      "path": "/work3/s234818/latentmol/runs/20260929T035024Z_evaluation_22b6ed61"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 136277098,
+      "path": "/work3/s234818/latentmol/runs/20260929T035052Z_vae-train_430fefea"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2435710,
+      "path": "/work3/s234818/latentmol/runs/20260929T050445Z_evaluation_69aeaf6a"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 224800709,
+      "path": "/work3/s234818/latentmol/runs/20260929T050512Z_vae-train_f0543717"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 15532,
+      "path": "/work3/s234818/latentmol/runs/20260929T053154Z_gpu-rng-before-arch-pair_refine-vae_63a268b4"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 15543265,
+      "path": "/work3/s234818/latentmol/runs/20260929T053211Z_vae-full-workflow_7fa422fc"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 51551358,
+      "path": "/work3/s234818/latentmol/runs/20260929T053211Z_vae-train_12007433"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2438251,
+      "path": "/work3/s234818/latentmol/runs/20260929T061830Z_evaluation_c13ad30c"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2425278,
+      "path": "/work3/s234818/latentmol/runs/20260929T061856Z_evaluation_94e7277f"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2436662,
+      "path": "/work3/s234818/latentmol/runs/20260929T061928Z_evaluation_6043c1e7"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2438825,
+      "path": "/work3/s234818/latentmol/runs/20260929T061959Z_evaluation_2e71781b"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2441703,
+      "path": "/work3/s234818/latentmol/runs/20260929T062014Z_evaluation_878563dd"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2438251,
+      "path": "/work3/s234818/latentmol/runs/20260929T062031Z_evaluation_40f1def6"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 16787,
+      "path": "/work3/s234818/latentmol/runs/20260929T062103Z_followup-residual-vae-parent-29510334_b7b2dd79"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 6061194,
+      "path": "/work3/s234818/latentmol/runs/20260929T062108Z_architecture-fixed-z-draws_8c446ab6"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 98970023,
+      "path": "/work3/s234818/latentmol/runs/20260929T062112Z_ae-train_93cd01fc"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 524395,
+      "path": "/work3/s234818/latentmol/runs/20260929T062142Z_evaluation_84f851df"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 1920271,
+      "path": "/work3/s234818/latentmol/runs/20260929T062147Z_evaluation_2d6191ac"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 99944650,
+      "path": "/work3/s234818/latentmol/runs/20260929T062213Z_ae-train_a71b09f9"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 524699,
+      "path": "/work3/s234818/latentmol/runs/20260929T062238Z_evaluation_37d41b4c"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 524699,
+      "path": "/work3/s234818/latentmol/runs/20260929T062243Z_evaluation_5a229046"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 1919706,
+      "path": "/work3/s234818/latentmol/runs/20260929T062248Z_evaluation_c937ff1d"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 549556,
+      "path": "/work3/s234818/latentmol/runs/20260929T062340Z_evaluation_91365d0b"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 549556,
+      "path": "/work3/s234818/latentmol/runs/20260929T062345Z_evaluation_027e7b08"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 100000028,
+      "path": "/work3/s234818/latentmol/runs/20260929T062418Z_vae-train_bbedd8af"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 17047,
+      "path": "/work3/s234818/latentmol/runs/20260929T062515Z_gpu-rng-before-arch-deep_pair_refine-ae_b87ee4b2"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 6440980,
+      "path": "/work3/s234818/latentmol/runs/20260929T062532Z_ae-full-workflow_13465b56"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 54479400,
+      "path": "/work3/s234818/latentmol/runs/20260929T062532Z_ae-train_6cf9ede7"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 142797448,
+      "path": "/work3/s234818/latentmol/runs/20260929T112939Z_vae-train_24304075"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2363349,
+      "path": "/work3/s234818/latentmol/runs/20260929T122246Z_evaluation_63e20d4f"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 255058046,
+      "path": "/work3/s234818/latentmol/runs/20260929T122312Z_ae-train_280638ed"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2443814,
+      "path": "/work3/s234818/latentmol/runs/20260929T132845Z_evaluation_a7a389eb"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 235668004,
+      "path": "/work3/s234818/latentmol/runs/20260929T132916Z_vae-train_247f06e5"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2363349,
+      "path": "/work3/s234818/latentmol/runs/20260929T142245Z_evaluation_43d5b75b"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2381199,
+      "path": "/work3/s234818/latentmol/runs/20260929T142337Z_evaluation_dea8462c"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2385251,
+      "path": "/work3/s234818/latentmol/runs/20260929T142412Z_evaluation_fd947221"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2378683,
+      "path": "/work3/s234818/latentmol/runs/20260929T142429Z_evaluation_ec8dcd00"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2381366,
+      "path": "/work3/s234818/latentmol/runs/20260929T142446Z_evaluation_a8eb05dd"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 17753,
+      "path": "/work3/s234818/latentmol/runs/20260929T142507Z_followup-deep_pair_refine-ae-parent-29510443_900f62e8"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 6443874,
+      "path": "/work3/s234818/latentmol/runs/20260929T145748Z_ae-full-workflow_23de6394"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 461947223,
+      "path": "/work3/s234818/latentmol/runs/20260929T145749Z_ae-train_b580f749"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2447666,
+      "path": "/work3/s234818/latentmol/runs/20260929T152756Z_evaluation_8199d0ad"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 189244161,
+      "path": "/work3/s234818/latentmol/runs/20260929T152824Z_vae-train_02a7d391"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2447425,
+      "path": "/work3/s234818/latentmol/runs/20260929T172732Z_evaluation_af33e707"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2430755,
+      "path": "/work3/s234818/latentmol/runs/20260929T172800Z_evaluation_b103477a"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2433208,
+      "path": "/work3/s234818/latentmol/runs/20260929T172821Z_evaluation_42151681"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2447409,
+      "path": "/work3/s234818/latentmol/runs/20260929T172918Z_evaluation_e328eb73"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2449583,
+      "path": "/work3/s234818/latentmol/runs/20260929T172938Z_evaluation_205d1972"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2447425,
+      "path": "/work3/s234818/latentmol/runs/20260929T172956Z_evaluation_8037a3ad"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 16795,
+      "path": "/work3/s234818/latentmol/runs/20260929T173038Z_followup-pair_refine-vae-parent-29510335_0c64fbe9"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 17049,
+      "path": "/work3/s234818/latentmol/runs/20260929T173039Z_gpu-rng-before-arch-deep_pair_refine-vae_f2dc21f2"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 6060878,
+      "path": "/work3/s234818/latentmol/runs/20260929T173043Z_architecture-fixed-z-draws_40b8f80e"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 18836,
+      "path": "/work3/s234818/latentmol/runs/20260929T173056Z_vae-full-workflow_741f851c"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 254829556,
+      "path": "/work3/s234818/latentmol/runs/20260929T173057Z_vae-train_c128eaf6"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 513834009,
+      "path": "/work3/s234818/latentmol/runs/20260929T181133Z_vae-train_f8f64fa9"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2378191,
+      "path": "/work3/s234818/latentmol/runs/20260929T205618Z_evaluation_0911a7be"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2378191,
+      "path": "/work3/s234818/latentmol/runs/20260929T225650Z_evaluation_d2d7d187"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2385406,
+      "path": "/work3/s234818/latentmol/runs/20260929T225726Z_evaluation_24c73880"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2385375,
+      "path": "/work3/s234818/latentmol/runs/20260929T225744Z_evaluation_40e1a62c"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2383620,
+      "path": "/work3/s234818/latentmol/runs/20260929T225835Z_evaluation_b3c156d7"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2383748,
+      "path": "/work3/s234818/latentmol/runs/20260929T225852Z_evaluation_4bb0461f"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 17738,
+      "path": "/work3/s234818/latentmol/runs/20260929T225913Z_followup-global_bond-ae-parent-29510444_c24f55c5"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 6061560,
+      "path": "/work3/s234818/latentmol/runs/20260929T225918Z_architecture-fixed-z-draws_248e9a6f"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 122736698,
+      "path": "/work3/s234818/latentmol/runs/20260929T231438Z_ae-train_dbc23c31"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 525895,
+      "path": "/work3/s234818/latentmol/runs/20260929T231508Z_evaluation_8af2b33d"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 549919,
+      "path": "/work3/s234818/latentmol/runs/20260929T231605Z_evaluation_3d7a9055"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 549919,
+      "path": "/work3/s234818/latentmol/runs/20260929T231610Z_evaluation_a8323af1"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2031420,
+      "path": "/work3/s234818/latentmol/runs/20260929T231616Z_evaluation_61557aef"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 7988311,
+      "path": "/work3/s234818/latentmol/runs/20260929T231655Z_ae-full-workflow_be842def"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2427741,
+      "path": "/work3/s234818/latentmol/runs/20260930T001031Z_evaluation_2ebba790"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 206995574,
+      "path": "/work3/s234818/latentmol/runs/20260930T001058Z_vae-train_79f58031"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 207002492,
+      "path": "/work3/s234818/latentmol/runs/20260930T021104Z_vae-train_7cd1c1b7"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2450589,
+      "path": "/work3/s234818/latentmol/runs/20260930T041258Z_evaluation_9bdb8a75"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2449455,
+      "path": "/work3/s234818/latentmol/runs/20260930T041318Z_evaluation_b8ddb05c"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2449672,
+      "path": "/work3/s234818/latentmol/runs/20260930T041339Z_evaluation_f714488c"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 17530,
+      "path": "/work3/s234818/latentmol/runs/20260930T041406Z_gpu-rng-before-arch-wide_global_bond-vae_9d4b44fc"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 15501561,
+      "path": "/work3/s234818/latentmol/runs/20260930T041423Z_vae-full-workflow_1a3a89c8"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 189944230,
+      "path": "/work3/s234818/latentmol/runs/20260930T051623Z_ae-train_95e9d971"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 376746163,
+      "path": "/work3/s234818/latentmol/runs/20260930T071632Z_ae-train_55161bd8"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2387548,
+      "path": "/work3/s234818/latentmol/runs/20260930T091614Z_evaluation_2e2e9002"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2345681,
+      "path": "/work3/s234818/latentmol/runs/20260930T091702Z_evaluation_6d03f0f1"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2386253,
+      "path": "/work3/s234818/latentmol/runs/20260930T091720Z_evaluation_edb23b67"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2388744,
+      "path": "/work3/s234818/latentmol/runs/20260930T091737Z_evaluation_23d9043c"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2388255,
+      "path": "/work3/s234818/latentmol/runs/20260930T091756Z_evaluation_64e50132"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2389521,
+      "path": "/work3/s234818/latentmol/runs/20260930T091814Z_evaluation_5c440f52"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2387548,
+      "path": "/work3/s234818/latentmol/runs/20260930T091831Z_evaluation_9f9fe513"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2388709,
+      "path": "/work3/s234818/latentmol/runs/20260930T091848Z_evaluation_cd09ee2e"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 18235,
+      "path": "/work3/s234818/latentmol/runs/20260930T091908Z_followup-wide_global_bond-ae-parent-29510500_27e4d5db"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 6061841,
+      "path": "/work3/s234818/latentmol/runs/20260930T091914Z_architecture-fixed-z-draws_3a1cc3de"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2416275,
+      "path": "/work3/s234818/latentmol/runs/20260930T101318Z_evaluation_d8ec30e4"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 314843962,
+      "path": "/work3/s234818/latentmol/runs/20260930T101352Z_vae-train_a2560f0f"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 204156885,
+      "path": "/work3/s234818/latentmol/runs/20260930T132536Z_vae-train_b5307895"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 204156885,
+      "path": "/work3/s234818/latentmol/runs/20260930T133505Z_vae-train_463f9d8b"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 204156885,
+      "path": "/work3/s234818/latentmol/runs/20260930T135607Z_vae-train_29969afd"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 98973107,
+      "path": "/work3/s234818/latentmol/runs/20260930T140712Z_ae-train_a2aae2b6"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 527020,
+      "path": "/work3/s234818/latentmol/runs/20260930T140741Z_evaluation_f1284584"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 1924275,
+      "path": "/work3/s234818/latentmol/runs/20260930T140747Z_evaluation_7b9d81cc"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 99031649,
+      "path": "/work3/s234818/latentmol/runs/20260930T140817Z_vae-train_7785fd5f"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 18647,
+      "path": "/work3/s234818/latentmol/runs/20260930T141446Z_gpu-rng-before-arch-stable_deep_pair_refine-ae_26edf610"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 6164320,
+      "path": "/work3/s234818/latentmol/runs/20260930T141504Z_ae-full-workflow_242a67ba"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 407102125,
+      "path": "/work3/s234818/latentmol/runs/20260930T141504Z_ae-train_4744b807"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2446277,
+      "path": "/work3/s234818/latentmol/runs/20260930T161318Z_evaluation_06abef9f"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2414085,
+      "path": "/work3/s234818/latentmol/runs/20260930T161411Z_evaluation_fb6a1569"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2445684,
+      "path": "/work3/s234818/latentmol/runs/20260930T161429Z_evaluation_134f2a64"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2446648,
+      "path": "/work3/s234818/latentmol/runs/20260930T161506Z_evaluation_be9725ad"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2445798,
+      "path": "/work3/s234818/latentmol/runs/20260930T161526Z_evaluation_e4bfa226"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2446277,
+      "path": "/work3/s234818/latentmol/runs/20260930T161546Z_evaluation_20c89ceb"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 18240,
+      "path": "/work3/s234818/latentmol/runs/20260930T161626Z_followup-wide_global_bond-vae-parent-29510501_b449c996"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 6062674,
+      "path": "/work3/s234818/latentmol/runs/20260930T161632Z_architecture-fixed-z-draws_af356a32"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 12910817,
+      "path": "/work3/s234818/latentmol/runs/20260930T161646Z_vae-full-workflow_c17b4e0e"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 508961943,
+      "path": "/work3/s234818/latentmol/runs/20260930T161647Z_vae-train_aa51f274"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2375453,
+      "path": "/work3/s234818/latentmol/runs/20260930T201342Z_evaluation_1fcc054f"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 255028514,
+      "path": "/work3/s234818/latentmol/runs/20260930T201413Z_ae-train_0f1cc922"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2375453,
+      "path": "/work3/s234818/latentmol/runs/20260930T221419Z_evaluation_a502084b"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2385627,
+      "path": "/work3/s234818/latentmol/runs/20260930T221514Z_evaluation_418763ea"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2447759,
+      "path": "/work3/s234818/latentmol/runs/20260930T221605Z_evaluation_766a59d9"
+    },
+    {
+      "eligible_for_deletion": false,
+      "inactive_established": false,
+      "metadata_first": [
+        "run.json"
+      ],
+      "metadata_rule": "Fetch existing root JSON/manifests/catalogs/input or output descriptors and a no-follow basename/size inventory; do not assume run.json exists or import checkpoint bytes.",
+      "observed_du_value": 2385913,
+      "path": "/work3/s234818/latentmol/runs/20260930T221606Z_evaluation_18fb9de3"
+    }
+  ],
+  "small_metadata_fetch_requests": [
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.readiness_artifacts[absolute-key]"
+      ],
+      "maximum_bytes_per_file": 8388608,
+      "mode": "lstat_then_download_regular_file_if_bounded",
+      "must_remain_remote_until_closure_complete": true,
+      "on_oversize": "Preserve as unresolved protected dependency; do not truncate or infer no references",
+      "path": "/work3/s234818/latentmol/data/source095-moses-triangle-v2/manifest.json",
+      "sha256": "f246cc93805b73a557cd0c09a78891ac8410c465192db615ce0b6709218c8c0e"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.loss_v1_reference.module"
+      ],
+      "maximum_bytes_per_file": 8388608,
+      "mode": "lstat_then_download_regular_file_if_bounded",
+      "must_remain_remote_until_closure_complete": true,
+      "on_oversize": "Preserve as unresolved protected dependency; do not truncate or infer no references",
+      "path": "/work3/s234818/latentmol/releases/source-124-deterministic-chemistry-events-attempt002/src/latentmol/repair_failure_guidance.py",
+      "sha256": "34c1a67cb339233312a1317db39a926b55f378c0eb8ed42c38bde86307fdd184"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.readiness_artifacts[absolute-key]"
+      ],
+      "maximum_bytes_per_file": 8388608,
+      "mode": "lstat_then_download_regular_file_if_bounded",
+      "must_remain_remote_until_closure_complete": true,
+      "on_oversize": "Preserve as unresolved protected dependency; do not truncate or infer no references",
+      "path": "/work3/s234818/latentmol/runs/source094-large-triangle-first-suite/inventory/inventory.json",
+      "sha256": "3e860f868c1d71a68cae4f1b32cab9cea162ff118f0c5d4917afee6db99333c1"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.readiness_artifacts[absolute-key]"
+      ],
+      "maximum_bytes_per_file": 8388608,
+      "mode": "lstat_then_download_regular_file_if_bounded",
+      "must_remain_remote_until_closure_complete": true,
+      "on_oversize": "Preserve as unresolved protected dependency; do not truncate or infer no references",
+      "path": "/work3/s234818/latentmol/runs/source094-large-triangle-first-suite/receipts/inventory-intent.json",
+      "sha256": "df9e01a8d12f4d178f58f994d7e7567030c9428f810a3c5c3d7f65609d22d343"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.readiness_artifacts[absolute-key]"
+      ],
+      "maximum_bytes_per_file": 8388608,
+      "mode": "lstat_then_download_regular_file_if_bounded",
+      "must_remain_remote_until_closure_complete": true,
+      "on_oversize": "Preserve as unresolved protected dependency; do not truncate or infer no references",
+      "path": "/work3/s234818/latentmol/runs/source094-large-triangle-first-suite/receipts/inventory-receipt.json",
+      "sha256": "8a1a4cb3f849296d6eef65b40b8ead66c3aadc174f58e8b2af09c7097e268279"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.readiness_artifacts[absolute-key]"
+      ],
+      "maximum_bytes_per_file": 8388608,
+      "mode": "lstat_then_download_regular_file_if_bounded",
+      "must_remain_remote_until_closure_complete": true,
+      "on_oversize": "Preserve as unresolved protected dependency; do not truncate or infer no references",
+      "path": "/work3/s234818/latentmol/runs/source094-large-triangle-first-suite/stage-completions/inventory.json",
+      "sha256": "874afe5ba525cfc69e9f63a9bcb344a566203ff631d9b170c068bbe7fec6e728"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.readiness_artifacts[absolute-key]"
+      ],
+      "maximum_bytes_per_file": 8388608,
+      "mode": "lstat_then_download_regular_file_if_bounded",
+      "must_remain_remote_until_closure_complete": true,
+      "on_oversize": "Preserve as unresolved protected dependency; do not truncate or infer no references",
+      "path": "/work3/s234818/latentmol/runs/source095-large-triangle-prepare-benchmark/receipts/prepare-intent.json",
+      "sha256": "dcbd676e3e630763bf0808c4e0fd72ffb9f64a4dcce258a5b6ec3cef103bb203"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.readiness_artifacts[absolute-key]"
+      ],
+      "maximum_bytes_per_file": 8388608,
+      "mode": "lstat_then_download_regular_file_if_bounded",
+      "must_remain_remote_until_closure_complete": true,
+      "on_oversize": "Preserve as unresolved protected dependency; do not truncate or infer no references",
+      "path": "/work3/s234818/latentmol/runs/source095-large-triangle-prepare-benchmark/receipts/prepare-receipt.json",
+      "sha256": "667ea9f3a22a9a03ead1c165a28dec5171a74272545c19421be1ed6e36364e4a"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.readiness_artifacts[absolute-key]"
+      ],
+      "maximum_bytes_per_file": 8388608,
+      "mode": "lstat_then_download_regular_file_if_bounded",
+      "must_remain_remote_until_closure_complete": true,
+      "on_oversize": "Preserve as unresolved protected dependency; do not truncate or infer no references",
+      "path": "/work3/s234818/latentmol/runs/source095-large-triangle-prepare-benchmark/stage-completions/prepare.json",
+      "sha256": "dd3345fa57c266537ff11980facf9aca053c337a46ceb15bb38e18e87ceb3fea"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.readiness_artifacts[absolute-key]"
+      ],
+      "maximum_bytes_per_file": 8388608,
+      "mode": "lstat_then_download_regular_file_if_bounded",
+      "must_remain_remote_until_closure_complete": true,
+      "on_oversize": "Preserve as unresolved protected dependency; do not truncate or infer no references",
+      "path": "/work3/s234818/latentmol/runs/source098-large-triangle-evaluator-recovery/benchmark/passed.json",
+      "sha256": "be94a25134f60a36b03512900cbb3a8e9ee7643aed81199f68b1da1866bc084c"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.starting_checkpoint.completion"
+      ],
+      "maximum_bytes_per_file": 8388608,
+      "mode": "lstat_then_download_regular_file_if_bounded",
+      "must_remain_remote_until_closure_complete": true,
+      "on_oversize": "Preserve as unresolved protected dependency; do not truncate or infer no references",
+      "path": "/work3/s234818/latentmol/runs/source121a002-chemistry-16core-24h-attempt002/variants/r2_async_w12_m128_h24/segment-001-completion.json",
+      "sha256": "4d9aab0216d574f1551a8b2ecd5e1c78f873726bcd5fab134773bbd6412c29b5"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.valid_reference_adoption.artifacts[absolute-key]"
+      ],
+      "maximum_bytes_per_file": 8388608,
+      "mode": "lstat_then_download_regular_file_if_bounded",
+      "must_remain_remote_until_closure_complete": true,
+      "on_oversize": "Preserve as unresolved protected dependency; do not truncate or infer no references",
+      "path": "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/after-cpu-decision.json",
+      "sha256": "0875d19d42b86e157e3437a728d3143eb13930e1a51a2e0f53f45cba970553f2"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.valid_reference_adoption.artifacts[absolute-key]"
+      ],
+      "maximum_bytes_per_file": 8388608,
+      "mode": "lstat_then_download_regular_file_if_bounded",
+      "must_remain_remote_until_closure_complete": true,
+      "on_oversize": "Preserve as unresolved protected dependency; do not truncate or infer no references",
+      "path": "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/allocations/20261022T102132Z_guarded-chemistry-cpu_b50fa68e/run.json",
+      "sha256": "36f6f9f2c801b97bd2e3fc689c835352a99aa6466277d17f151182bd28892f21"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.valid_reference_adoption.artifacts[absolute-key]"
+      ],
+      "maximum_bytes_per_file": 8388608,
+      "mode": "lstat_then_download_regular_file_if_bounded",
+      "must_remain_remote_until_closure_complete": true,
+      "on_oversize": "Preserve as unresolved protected dependency; do not truncate or infer no references",
+      "path": "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/allocations/20261022T102658Z_independent-valid-self-test_c80f275d/run.json",
+      "sha256": "0dbe38ee85afebb6a896c804f23149d82add909f4928a4c393e03444178a80db"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.valid_reference_adoption.artifacts[absolute-key]"
+      ],
+      "maximum_bytes_per_file": 8388608,
+      "mode": "lstat_then_download_regular_file_if_bounded",
+      "must_remain_remote_until_closure_complete": true,
+      "on_oversize": "Preserve as unresolved protected dependency; do not truncate or infer no references",
+      "path": "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/benchmark_gate.json",
+      "sha256": "a004617814cb2687bacf41a7dce385b1c10c6ba2473d785502f369248368fc27"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.valid_reference_adoption.artifacts[absolute-key]"
+      ],
+      "maximum_bytes_per_file": 8388608,
+      "mode": "lstat_then_download_regular_file_if_bounded",
+      "must_remain_remote_until_closure_complete": true,
+      "on_oversize": "Preserve as unresolved protected dependency; do not truncate or infer no references",
+      "path": "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/cpu_gate.json",
+      "sha256": "f672675517ddf04027c29828b668316b342f320e137ad008f76147b436d3c3db"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.valid_reference_adoption.artifacts[absolute-key]"
+      ],
+      "maximum_bytes_per_file": 8388608,
+      "mode": "lstat_then_download_regular_file_if_bounded",
+      "must_remain_remote_until_closure_complete": true,
+      "on_oversize": "Preserve as unresolved protected dependency; do not truncate or infer no references",
+      "path": "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/early-health-baseline.json",
+      "sha256": "d19e62be77d956283733b2b6da3dbb0fb81431fecf12bc31d77c34dde3814beb"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.valid_reference_adoption.artifacts[absolute-key]"
+      ],
+      "maximum_bytes_per_file": 8388608,
+      "mode": "lstat_then_download_regular_file_if_bounded",
+      "must_remain_remote_until_closure_complete": true,
+      "on_oversize": "Preserve as unresolved protected dependency; do not truncate or infer no references",
+      "path": "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/failure_readiness.json",
+      "sha256": "f49a8d4d70cf5693bcc0f7521087dd44f0a67e2339b0a0376a0c58585cfd408a"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.valid_reference_adoption.artifacts[absolute-key]"
+      ],
+      "maximum_bytes_per_file": 8388608,
+      "mode": "lstat_then_download_regular_file_if_bounded",
+      "must_remain_remote_until_closure_complete": true,
+      "on_oversize": "Preserve as unresolved protected dependency; do not truncate or infer no references",
+      "path": "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/guarded-cpu-pytest.xml",
+      "sha256": "ea990a9d19a51e3620bc49779135b37373fb24fec7b99c3aed46f8f2f9c6ed20"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.valid_reference_adoption.artifacts[absolute-key]"
+      ],
+      "maximum_bytes_per_file": 8388608,
+      "mode": "lstat_then_download_regular_file_if_bounded",
+      "must_remain_remote_until_closure_complete": true,
+      "on_oversize": "Preserve as unresolved protected dependency; do not truncate or infer no references",
+      "path": "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/independent-self-cuda-pytest.xml",
+      "sha256": "9e91b62547afb964cef59f6e9a0aa9ab1ae1a4292842c96481f714ff51944847"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.valid_reference_adoption.artifacts[absolute-key]"
+      ],
+      "maximum_bytes_per_file": 8388608,
+      "mode": "lstat_then_download_regular_file_if_bounded",
+      "must_remain_remote_until_closure_complete": true,
+      "on_oversize": "Preserve as unresolved protected dependency; do not truncate or infer no references",
+      "path": "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/receipts/after-cpu-intent.json",
+      "sha256": "a0a03feca0ff76efa411d79582062ae9253beba7af596f1fcf2586ed96e47bce"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.valid_reference_adoption.artifacts[absolute-key]"
+      ],
+      "maximum_bytes_per_file": 8388608,
+      "mode": "lstat_then_download_regular_file_if_bounded",
+      "must_remain_remote_until_closure_complete": true,
+      "on_oversize": "Preserve as unresolved protected dependency; do not truncate or infer no references",
+      "path": "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/receipts/after-cpu-receipt.json",
+      "sha256": "2bb1a7cc369531787ce4d57764d215ea18fa0b0111aec2402cc531b5c4616fb6"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.valid_reference_adoption.artifacts[absolute-key]"
+      ],
+      "maximum_bytes_per_file": 8388608,
+      "mode": "lstat_then_download_regular_file_if_bounded",
+      "must_remain_remote_until_closure_complete": true,
+      "on_oversize": "Preserve as unresolved protected dependency; do not truncate or infer no references",
+      "path": "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/receipts/cpu-intent.json",
+      "sha256": "009d13471eb080cca88d4149511ec535ed7b17e30fffd85854f2b9ebc3269a8e"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.valid_reference_adoption.artifacts[absolute-key]"
+      ],
+      "maximum_bytes_per_file": 8388608,
+      "mode": "lstat_then_download_regular_file_if_bounded",
+      "must_remain_remote_until_closure_complete": true,
+      "on_oversize": "Preserve as unresolved protected dependency; do not truncate or infer no references",
+      "path": "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/receipts/cpu-receipt.json",
+      "sha256": "baa105c073f64cb9ac515a9da6d01454645b988df1f702ba810e450c72e9b9c8"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.valid_reference_adoption.artifacts[absolute-key]"
+      ],
+      "maximum_bytes_per_file": 8388608,
+      "mode": "lstat_then_download_regular_file_if_bounded",
+      "must_remain_remote_until_closure_complete": true,
+      "on_oversize": "Preserve as unresolved protected dependency; do not truncate or infer no references",
+      "path": "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/receipts/independent-self-test-intent.json",
+      "sha256": "1b932329e5661c418d6ccd1ffdb508252bce3e3234e59f7518aed1820d05e0f2"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.valid_reference_adoption.artifacts[absolute-key]"
+      ],
+      "maximum_bytes_per_file": 8388608,
+      "mode": "lstat_then_download_regular_file_if_bounded",
+      "must_remain_remote_until_closure_complete": true,
+      "on_oversize": "Preserve as unresolved protected dependency; do not truncate or infer no references",
+      "path": "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/receipts/independent-self-test-receipt.json",
+      "sha256": "4f69f756033e4051e9afd8ce4c336ef2f49f8d2420d6a3aec79d74f83325e0ec"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.valid_reference_adoption.artifacts[absolute-key]"
+      ],
+      "maximum_bytes_per_file": 8388608,
+      "mode": "lstat_then_download_regular_file_if_bounded",
+      "must_remain_remote_until_closure_complete": true,
+      "on_oversize": "Preserve as unresolved protected dependency; do not truncate or infer no references",
+      "path": "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/repair_profile.json",
+      "sha256": "1cfd3e3bc6aea8d672afb6fafca98a2eaa787ab06f2edb4910a40b2638aad599"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.valid_reference_adoption.artifacts[absolute-key]"
+      ],
+      "maximum_bytes_per_file": 8388608,
+      "mode": "lstat_then_download_regular_file_if_bounded",
+      "must_remain_remote_until_closure_complete": true,
+      "on_oversize": "Preserve as unresolved protected dependency; do not truncate or infer no references",
+      "path": "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/stability/20261022T105758Z_guarded-chemistry-stability_ddb64372/run.json",
+      "sha256": "f42767cf395bffb09d05e7b8475d9624e4fb00979184277d638430e17bc0929f"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.valid_reference_adoption.artifacts[absolute-key]"
+      ],
+      "maximum_bytes_per_file": 8388608,
+      "mode": "lstat_then_download_regular_file_if_bounded",
+      "must_remain_remote_until_closure_complete": true,
+      "on_oversize": "Preserve as unresolved protected dependency; do not truncate or infer no references",
+      "path": "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/stability_gate.json",
+      "sha256": "218a3c9e0318286f9122017cf9c4507885202ed7981bea61852d0c16886a39b0"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.valid_reference_adoption.artifacts[absolute-key]"
+      ],
+      "maximum_bytes_per_file": 8388608,
+      "mode": "lstat_then_download_regular_file_if_bounded",
+      "must_remain_remote_until_closure_complete": true,
+      "on_oversize": "Preserve as unresolved protected dependency; do not truncate or infer no references",
+      "path": "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/training_composition.json",
+      "sha256": "5ddc4dc0eda9dc93589c8f0904433135f899cfdcab8657fc127f304d4a136ee9"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.valid_reference_adoption.artifacts[absolute-key]"
+      ],
+      "maximum_bytes_per_file": 8388608,
+      "mode": "lstat_then_download_regular_file_if_bounded",
+      "must_remain_remote_until_closure_complete": true,
+      "on_oversize": "Preserve as unresolved protected dependency; do not truncate or infer no references",
+      "path": "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/valid_reference_probe.json",
+      "sha256": "0ac941e58eee04d2eebae923530bd60dcc28f19c79aa1e6356a517251d844f43"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.valid_reference_adoption.artifacts[absolute-key]"
+      ],
+      "maximum_bytes_per_file": 8388608,
+      "mode": "lstat_then_download_regular_file_if_bounded",
+      "must_remain_remote_until_closure_complete": true,
+      "on_oversize": "Preserve as unresolved protected dependency; do not truncate or infer no references",
+      "path": "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/valid_reference_probe/20261022T103244Z_chemistry-valid-reference-probe_609f2c03/run.json",
+      "sha256": "34ceb40cfc2366d93f125c3d6ee23885e3ace5f130ab686d9cb9182a5e5db2b6"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.readiness_artifacts[absolute-key]"
+      ],
+      "maximum_bytes_per_file": 8388608,
+      "mode": "lstat_then_download_regular_file_if_bounded",
+      "must_remain_remote_until_closure_complete": true,
+      "on_oversize": "Preserve as unresolved protected dependency; do not truncate or infer no references",
+      "path": "/work3/s234818/latentmol/submissions/source094-large-triangle-first-suite/bindings.json",
+      "sha256": "11fc11aa10acb1debc2264c98a7911080b419705c4e17dc37fee73d54bfdf9d1"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.readiness_artifacts[absolute-key]"
+      ],
+      "maximum_bytes_per_file": 8388608,
+      "mode": "lstat_then_download_regular_file_if_bounded",
+      "must_remain_remote_until_closure_complete": true,
+      "on_oversize": "Preserve as unresolved protected dependency; do not truncate or infer no references",
+      "path": "/work3/s234818/latentmol/submissions/source095-large-triangle-prepare-benchmark/bindings.json",
+      "sha256": "8231878eb667e834d53b751c9007ae2185d0d4e3518724f4f96de196a297ecb2"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.readiness_artifacts[absolute-key]"
+      ],
+      "maximum_bytes_per_file": 8388608,
+      "mode": "lstat_then_download_regular_file_if_bounded",
+      "must_remain_remote_until_closure_complete": true,
+      "on_oversize": "Preserve as unresolved protected dependency; do not truncate or infer no references",
+      "path": "/work3/s234818/latentmol/submissions/source098-large-triangle-evaluator-recovery/bindings.json",
+      "sha256": "14ae640aa68a9c776c68c8c17f0343ffc8096c7dd394687d0b5df2acdc7f9949"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.config"
+      ],
+      "maximum_bytes_per_file": 8388608,
+      "mode": "lstat_then_download_regular_file_if_bounded",
+      "must_remain_remote_until_closure_complete": true,
+      "on_oversize": "Preserve as unresolved protected dependency; do not truncate or infer no references",
+      "path": "/work3/s234818/latentmol/submissions/source104-chemistry-continuation-attempt005/parent-config.json",
+      "sha256": "b6704c80c4f3308b5f20623eb0ef21fc39c4b7b1d0cd60d519a9990670b1b254"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.readiness_artifacts[absolute-key]"
+      ],
+      "maximum_bytes_per_file": 8388608,
+      "mode": "lstat_then_download_regular_file_if_bounded",
+      "must_remain_remote_until_closure_complete": true,
+      "on_oversize": "Preserve as unresolved protected dependency; do not truncate or infer no references",
+      "path": "/work3/s234818/latentmol/submissions/source104-chemistry-continuation-attempt005/parent-latest_epoch.json",
+      "sha256": "3f7fb9bd0166226a48309ece731c39df86231562e17211b01627971eee647102"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.readiness_artifacts[absolute-key]"
+      ],
+      "maximum_bytes_per_file": 8388608,
+      "mode": "lstat_then_download_regular_file_if_bounded",
+      "must_remain_remote_until_closure_complete": true,
+      "on_oversize": "Preserve as unresolved protected dependency; do not truncate or infer no references",
+      "path": "/work3/s234818/latentmol/submissions/source104-chemistry-continuation-attempt005/parent-metrics.jsonl",
+      "sha256": "ea4dadeff686775a9bc490895c7965e5c7e32e4c92d6e89aa6e3c0149d9ce1ba"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.parent_run_record"
+      ],
+      "maximum_bytes_per_file": 8388608,
+      "mode": "lstat_then_download_regular_file_if_bounded",
+      "must_remain_remote_until_closure_complete": true,
+      "on_oversize": "Preserve as unresolved protected dependency; do not truncate or infer no references",
+      "path": "/work3/s234818/latentmol/submissions/source104-chemistry-continuation-attempt005/parent-run.json",
+      "sha256": "4f4fea801418ce42828bdc8b4f7fa784eb1f039fd3b3a51208fa1213fda5d387"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.starting_checkpoint.source_plan"
+      ],
+      "maximum_bytes_per_file": 8388608,
+      "mode": "lstat_then_download_regular_file_if_bounded",
+      "must_remain_remote_until_closure_complete": true,
+      "on_oversize": "Preserve as unresolved protected dependency; do not truncate or infer no references",
+      "path": "/work3/s234818/latentmol/submissions/source121a002-chemistry-16core-24h-attempt002/plans/r2_async_w12_m128_h24.json",
+      "sha256": "238bb5627cf7f4bbc2fd65a7d2d7bb0c860c7872c56bd1e51399c52ee0e98e8e"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.readiness_artifacts[absolute-key]",
+        "$.superseded_failed_candidate.evidence"
+      ],
+      "maximum_bytes_per_file": 8388608,
+      "mode": "lstat_then_download_regular_file_if_bounded",
+      "must_remain_remote_until_closure_complete": true,
+      "on_oversize": "Preserve as unresolved protected dependency; do not truncate or infer no references",
+      "path": "/work3/s234818/latentmol/submissions/source134-bond-weighted-chemistry-attempt002/source133-saved-outcomes.json",
+      "sha256": "a67e440504595542b2bb372419fc2084b0e2b6e2083422cda39c8b284ee3b719"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.readiness_artifacts[absolute-key]",
+        "$.superseded_failed_fixture_attempt.evidence"
+      ],
+      "maximum_bytes_per_file": 8388608,
+      "mode": "lstat_then_download_regular_file_if_bounded",
+      "must_remain_remote_until_closure_complete": true,
+      "on_oversize": "Preserve as unresolved protected dependency; do not truncate or infer no references",
+      "path": "/work3/s234818/latentmol/submissions/source134-bond-weighted-chemistry-attempt002/source134-attempt001-cpu-failure.json",
+      "sha256": "f3f1aba785d1e4e03b89de85601f0cc510150b1247c45a26652400a945b5c7de"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.readiness_artifacts[absolute-key]",
+        "$.valid_reference_mechanism_evidence.saved_artifacts[1].remote"
+      ],
+      "maximum_bytes_per_file": 8388608,
+      "mode": "lstat_then_download_regular_file_if_bounded",
+      "must_remain_remote_until_closure_complete": true,
+      "on_oversize": "Preserve as unresolved protected dependency; do not truncate or infer no references",
+      "path": "/work3/s234818/latentmol/submissions/source135-epoch36-valid-reference-attempt001/saved-mechanism-review.json",
+      "sha256": "d1317879cbe26401ae76d768242fe68a2fbe1896797c409e573edc8c437e2218"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.stopped_predecessor.terminal_evidence"
+      ],
+      "maximum_bytes_per_file": 8388608,
+      "mode": "lstat_then_download_regular_file_if_bounded",
+      "must_remain_remote_until_closure_complete": true,
+      "on_oversize": "Preserve as unresolved protected dependency; do not truncate or infer no references",
+      "path": "/work3/s234818/latentmol/submissions/source135-epoch36-valid-reference-attempt001/source127-terminal-evidence.json",
+      "sha256": "5b354651896975a3cb29cfe1b1a7f7be5a41f783764a39e905a35f2e61d95bde"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.readiness_artifacts[absolute-key]",
+        "$.valid_reference_mechanism_evidence.saved_artifacts[0].remote"
+      ],
+      "maximum_bytes_per_file": 8388608,
+      "mode": "lstat_then_download_regular_file_if_bounded",
+      "must_remain_remote_until_closure_complete": true,
+      "on_oversize": "Preserve as unresolved protected dependency; do not truncate or infer no references",
+      "path": "/work3/s234818/latentmol/submissions/source135-epoch36-valid-reference-attempt001/source134-terminal-evidence.json",
+      "sha256": "07f37751ca7c4d2c399134e39eb92bf3439239e0f82f48b2fb5d9acccdc79f5f"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$.valid_reference_adoption.artifacts[absolute-key]",
+        "$.valid_reference_adoption.source_plan"
+      ],
+      "maximum_bytes_per_file": 8388608,
+      "mode": "lstat_then_download_regular_file_if_bounded",
+      "must_remain_remote_until_closure_complete": true,
+      "on_oversize": "Preserve as unresolved protected dependency; do not truncate or infer no references",
+      "path": "/work3/s234818/latentmol/submissions/source135-epoch36-valid-reference-attempt001/source135-epoch36-valid-reference-attempt001.json",
+      "sha256": "ad7533a6ce9011c17ba8c962fe939f1e3391b77b73c4ae7574bdbebaf203c609"
+    },
+    {
+      "classification": "exact_declared_file",
+      "declared_by": [
+        "$actual_active_plan"
+      ],
+      "maximum_bytes_per_file": 8388608,
+      "mode": "lstat_then_download_regular_file_if_bounded",
+      "must_remain_remote_until_closure_complete": true,
+      "on_oversize": "Preserve as unresolved protected dependency; do not truncate or infer no references",
+      "path": "/work3/s234818/latentmol/submissions/source138-vae-cli-startup-fix-attempt001/source138-vae-cli-startup-fix-attempt001.json",
+      "sha256": "183abba4bcd8e185b407ccdb5596a8fd6c37c0f9a82aeaf7c21e28a9cdb219c4"
+    }
+  ],
+  "special_protection": [
+    {
+      "path": "/work3/s234818/latentmol/runs/source121a002-chemistry-16core-24h-attempt002/variants/r2_async_w12_m128_h24/segments/001/20261018T175254Z_chemistry-train_89b58520/epoch_0036.pt",
+      "reason": "Authentic original36 shared by VAE continuation and frozen embedding; no checkpoint deserialization in audit.",
+      "sha256": "3179ef01f84a2c714ee031bc3e6a6a4dc2cedc767d30e700c887aab1abbd706f"
+    },
+    {
+      "path": "/work3/s234818/latentmol/submissions/source104-chemistry-continuation-attempt005/parent.pt",
+      "reason": "Original35 occupancy/reference anchor; lineage inputs remain protected.",
+      "sha256": "19f438222e454ef53169f6d81082335ee7e24902b1b7cf5e0f18eced4b8e92ed"
+    },
+    {
+      "exact_paths_available": false,
+      "preserve_all_until_positive_closure": true,
+      "reason": "Parent explicitly requires protection. Names/paths must come from fetched embedding/data/preparation manifests; no guessed directory may serve as a substitute.",
+      "scope": "Every source056 prepared context and original source050/50-molecule catalog dependency"
+    }
+  ],
+  "status": "incomplete_closure_no_september_inactivity_or_delete_pass",
+  "strong_protection_roots": [
+    "/work3/s234818/latentmol/env",
+    "/work3/s234818/latentmol/data",
+    "/work3/s234818/latentmol/cache",
+    "/work3/s234818/latentmol/raw",
+    "/work3/s234818/latentmol/boltz-preparation",
+    "/work3/s234818/latentmol/runs/source138-vae-cli-startup-fix-attempt001",
+    "/work3/s234818/latentmol/releases/source-138-vae-cli-startup-fix-attempt001",
+    "/work3/s234818/latentmol/runs/source121a002-chemistry-16core-24h-attempt002",
+    "/work3/s234818/latentmol/submissions/source104-chemistry-continuation-attempt005"
+  ],
+  "version": "latentmol-active-closure-seeds-v1"
+}

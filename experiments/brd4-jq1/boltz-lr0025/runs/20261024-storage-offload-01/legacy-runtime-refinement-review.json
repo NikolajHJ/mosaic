@@ -1,0 +1,74 @@
+{
+  "blanket_legacy_tree_deletion_authorized_by_review": false,
+  "candidate_prefixes_reviewed": [
+    "/work3/s234818/latentmol/runs/202609",
+    "/work3/s234818/latentmol/runs/source120a004-boltz-defog-staged-24h-attempt004",
+    "/work3/s234818/latentmol/runs/source-073-decoder-budget-attempt002-recovery",
+    "/work3/s234818/latentmol/runs/source-071-search-decoder-attempt001-search-study",
+    "/work3/s234818/latentmol/runs/source-078-dense-100epoch-attempt002-density100-study",
+    "/work3/s234818/latentmol/runs/source-079-defog-contract-recovery-attempt001-random-study"
+  ],
+  "capture_utc": "2026-10-24T09:59:57.214469+00:00",
+  "captured_source_seals": {
+    "/work3/s234818/latentmol/releases/source-138-epoch36-embedding-comparison-attempt003": {
+      "all_execution_members_rehashed": true,
+      "execution_members_rehashed": 582,
+      "manifest": "/work3/s234818/latentmol/releases/source-138-epoch36-embedding-comparison-attempt003/embedding-release-manifest.json",
+      "manifest_file_sha256": "4a598d1143f6afc180d18dea618cdc09a859f019a7fc042b9025fcb8fb8487dd",
+      "prose_not_used_as_runtime_inputs": true
+    },
+    "/work3/s234818/latentmol/releases/source-138-vae-cli-startup-fix-attempt001": {
+      "all_execution_members_rehashed": true,
+      "execution_members_rehashed": 577,
+      "manifest": "/work3/s234818/latentmol/releases/source-138-vae-cli-startup-fix-attempt001/release_manifest.json",
+      "manifest_file_sha256": "4376ee2331f975e441eb6d641ab3d5735f573236cd0b3403a3a4e8c6ec729498",
+      "prose_not_used_as_runtime_inputs": true
+    }
+  },
+  "captured_text_files_byte_rehashed": 50,
+  "captured_text_files_total": 50,
+  "conditions_before_any_exact_binary_offload": [
+    "Root-approved exact candidate file list and positive inactivity audit against fresh whole-account jobs.",
+    "Retain current source/proof/config/log/root metadata and every protected input, environment, cache and data tree.",
+    "Complete laptop gzip archive and exact raw plan manifest; independent every-member SHA/length verification and authenticated remote completed-stream receipt.",
+    "Separate exact deletion authority; fresh active-job set and unchanged nofollow inode/stat/hash rechecks; changed paths retained."
+  ],
+  "current_plan_copy_equals_captured_remote_plan": true,
+  "findings": [
+    "Actual VAE selected checkpoint is original source121 epoch36 SHA3179ef01f84a2c714ee031bc3e6a6a4dc2cedc767d30e700c887aab1abbd706f; source104 parent.pt/config/run, source095 data, source124 reference module and exact source135 adoption evidence remain protected.",
+    "Actual embedding selected inputs are source137 best-bridge and paired samples, the same source121 epoch36, source056 context catalog and count25/count19 prepared assets, Boltz affinity/confidence caches, current CPU starts/result and complete source138 execution seal.",
+    "No reviewed candidate prefix occurs in actual selected VAE plan, embedding config/CPU starts, or literal paths of any of the152 reachable runtime members.",
+    "The candidate matches in the complete executable member inventory are unreachable historical submit045/046/044 shell scripts with September last.pt defaults, unused decoder_density_study config pointing to source073, and unused provisional panel config pointing to September selection JSON. These source members themselves remain protected by full-source seals.",
+    "The three generic work_root references are workspace/output containers. They do not establish recursive current runtime reads of every legacy run.",
+    "Source098 parent-run resume/selection ancestry remains conservatively protected; this review does not reduce it.",
+    "Historical proof containers remain protected as exact current read/hash inputs; old command strings embedded inside them are not independently current execution instructions."
+  ],
+  "inputs": [
+    {
+      "bytes": 31707,
+      "path": "results/hpc/20261024-storage-offload-01/active-vae-plan.json",
+      "sha256": "deb60ed8ab66115d8dd61700153306cd95de3f93543c89e00aa5afabd3ebf412"
+    },
+    {
+      "bytes": 7228245,
+      "path": "results/hpc/20261024-storage-offload-01/active-closure-01/stdout.bin",
+      "sha256": "2dab85dd982d86f16cd112970eaed266403e72562f9c2417a397a8cb6b54d7d4"
+    },
+    {
+      "bytes": 71540,
+      "path": "results/hpc/20261024-storage-offload-01/embedding-control-metadata/stdout.bin",
+      "sha256": "0cf3bf626fe831480247e2c760bd02a2be1a788c466c5e1d0753434fc782953b"
+    },
+    {
+      "bytes": 4665058,
+      "path": "results/hpc/20261024-storage-offload-01/shared-closure-scan-02/stdout.bin",
+      "sha256": "cdc4292800598688eda930efb5ab5f3d9f32655285d93c5a6d80d82aa5167842"
+    }
+  ],
+  "reachable_runtime_members": 152,
+  "saved_scientific_results_mutated": false,
+  "scientific_tests_run": false,
+  "scope": "Local standard-library JSON/hash review of captured metadata and AST-derived executable inventories only; no DBMol checkout, SSH, model loading, numerical tests, backup or deletion.",
+  "status": "captured_runtime_review_completed_not_deletion_authority",
+  "version": "mosaic-legacy-protection-independent-refinement-v1"
+}

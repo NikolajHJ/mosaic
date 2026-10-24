@@ -105,3 +105,6 @@ docs/documentation-audit.json -text -eol
 
 # New composite native implementation retains authenticated LF bytes.
 src/mosaic/small_molecule/boltz2/dbmol.py text eol=lf
+
+# Preserve exact local/remote metadata-operator source and proof receipt bytes.
+experiments/brd4-jq1/boltz-lr0025/runs/20261024-storage-offload-01/* -text -eol

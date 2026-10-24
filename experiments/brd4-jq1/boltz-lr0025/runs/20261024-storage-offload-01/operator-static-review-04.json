@@ -1,0 +1,44 @@
+{
+  "status": "static_byte_ast_only_no_allocated_pass",
+  "source_manifest_sha256": "8a6420047f7260eedd1219c4313c835dae4bb2a13cd39d4914f9e87abcd5bafe",
+  "archive": {
+    "bytes": 31403,
+    "sha256": "ce1fb5252bbd4ba57669198187efec8d77c041b33b958ee352c10248e5d3fd7b"
+  },
+  "safe_regular_members": 12,
+  "source_files": 11,
+  "expected_allocated_cases": 44,
+  "generated_remote_bytes": 20605,
+  "generated_remote_sha256": "751d3fe6b97a78c5c3bef8bc20fd76057af367bee8efc04f75c432c62267b54a",
+  "operator_files": {
+    "submit_cleanup_cpu_04.py": {
+      "bytes": 9780,
+      "sha256": "8962e5539914d54f1db2e65781d06c57db7609039a2719441a75bfe30170a0b1"
+    },
+    "prepare_operator_source_04.py": {
+      "bytes": 7359,
+      "sha256": "75a4bdce762a5e79cf84b4280c5dc6f490e80fe8312a47849a8343684c0fd006"
+    },
+    "cleanup_cpu_04.py": {
+      "bytes": 7440,
+      "sha256": "ef4e3269885b9660388b37985b6aa7dc3d3b98102a8ca3a56b6d5ce35d2af378"
+    },
+    "cleanup_cpu_04.lsf": {
+      "bytes": 368,
+      "sha256": "e44576e7c264f61f73e38f06669cff3283ab143d76855bd9dec59ebeda4219a3"
+    },
+    "offload_protocol_04.py": {
+      "bytes": 20150,
+      "sha256": "5be455d21a4144d4dec6c7342b57d730800ca799109bc677e860dc983dc1a66e"
+    },
+    "fixture_backup_contract_04.py": {
+      "bytes": 20182,
+      "sha256": "60cdceda7a6b79ae56d53c9b0b3c59de8ccd515a2e9eb80883a5fdaa238745b9"
+    }
+  },
+  "allocated_validation_passed": false,
+  "SSH_executed": false,
+  "submission_executed": false,
+  "backup_or_deletion_executed": false,
+  "retired03_original_bytes_preserved": true
+}

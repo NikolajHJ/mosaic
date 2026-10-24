@@ -1,0 +1,18 @@
+{
+  "allocated_fixture_rows_expected": 19,
+  "files": {
+    "cleanup_cpu.lsf": "9f5a723c88050a256c0554c11af901df55b9d03b3c324e01ed1245e317b53d39",
+    "cleanup_cpu.py": "e6c02421ba61dc3e37a57ccfff314d7d503524313f0476184c26e0122d2247eb",
+    "delete_verified.py": "4765449d4c075d979c9200be29dc3b43aeaaff52440e5461551f11b69810b743",
+    "fixed25_recover_storage.py": "52c627d1865231d7c7e2a61b182640cf38f492d84a8a1f44aeec1b865c40d861",
+    "fixed25_split_storage.py": "56744c8eb858b9a15e64943427c393d058e3f680a9e4743bd42e463dc9337245",
+    "fixed25_storage.py": "e7b34835c75ba85e7b4f4380c8087d3a8c054eddacf180a693da09d5c017a9ad",
+    "fixture_backup_contract.py": "338a9e68579636e7e5c28664efef8bf40715cde4612833261edd5b5a18cd844b",
+    "fresh_stream_backup.py": "69752f900542a742c221989861004869c74b5de24f702b30a25d6b0f06fd45da",
+    "offload_protocol.py": "605eb4f606ae8c50c6dd000145e5a8cb8edb164c091203b8769197f8f7342239",
+    "stream_backup.py": "f210d448529323076a997fdc1fa494f7068dd2580100e58354af4626f9a7ef83",
+    "verify_stream_backup.py": "1dd370eb75997947dd146935e5f814a767d9b6ebdc49389dffc394200841b35c"
+  },
+  "purpose": "Exact file backup, independent byte verification, guarded literal unlink; no scientific execution.",
+  "version": "mosaic-offload-operator-source-v1"
+}

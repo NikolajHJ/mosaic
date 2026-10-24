@@ -1,0 +1,535 @@
+{
+  "all_added_code_already_exactly_rehashed_by_scan02": true,
+  "ambiguous_same_source_imports": [],
+  "created_utc": "2026-10-24T10:08:10.819814+00:00",
+  "delete_allowlist": [],
+  "expanded_reachable_members": 176,
+  "limitation": "Metadata-only graph refinement from recorded ASTimports, not dynamic tracing. Parent/scorer raw actual entrypoint binding review remains mandatory. No removal or backup verified.",
+  "new_members": {
+    "/work3/s234818/latentmol/releases/source-138-epoch36-embedding-comparison-attempt003/scripts/embedding_bridge_campaign.py": {
+      "filesystem_calls": [
+        {
+          "call": "tarfile.open(archive, 'w:gz')",
+          "line": 58
+        },
+        {
+          "call": "(folder / 'seal.json').read_text()",
+          "line": 137
+        },
+        {
+          "call": "Path(path).read_bytes()",
+          "line": 25
+        },
+        {
+          "call": "(ROOT / directory).rglob('*')",
+          "line": 48
+        },
+        {
+          "call": "path.read_text(encoding='utf-8-sig')",
+          "line": 53
+        }
+      ],
+      "import": "embedding_bridge_campaign",
+      "literal_paths": [
+        {
+          "line": 20,
+          "path": "/work3/s234818/latentmol"
+        }
+      ],
+      "reached_from": "/work3/s234818/latentmol/releases/source-138-epoch36-embedding-comparison-attempt003/scripts/embedding_comparison_campaign.py",
+      "sha256": "2773040fb721b8e656c6bdfe5ea299c84d5987fb3922093e2631a8c5c3fc055c"
+    },
+    "/work3/s234818/latentmol/releases/source-138-epoch36-embedding-comparison-attempt003/scripts/hpc/embedding_operator.py": {
+      "filesystem_calls": [
+        {
+          "call": "(release / 'embedding-release-manifest.json').read_bytes()",
+          "line": 38
+        },
+        {
+          "call": "Path(path).open('rb')",
+          "line": 21
+        },
+        {
+          "call": "Path(path).open('x')",
+          "line": 28
+        },
+        {
+          "call": "tarfile.open(str(release) + '.tar.gz')",
+          "line": 36
+        },
+        {
+          "call": "release.rglob('*')",
+          "line": 43
+        },
+        {
+          "call": "cpu_path.read_text()",
+          "line": 134
+        },
+        {
+          "call": "(control / 'cpu-receipt.json').read_text()",
+          "line": 138
+        },
+        {
+          "call": "path.read_text()",
+          "line": 109
+        },
+        {
+          "call": "receipt_path.read_text()",
+          "line": 112
+        },
+        {
+          "call": "path.read_text(errors='replace')",
+          "line": 125
+        },
+        {
+          "call": "log.read_text(errors='replace')",
+          "line": 120
+        }
+      ],
+      "import": "embedding_operator",
+      "literal_paths": [
+        {
+          "line": 79,
+          "path": "/work3/s234818/latentmol"
+        }
+      ],
+      "reached_from": "/work3/s234818/latentmol/releases/source-138-epoch36-embedding-comparison-attempt003/scripts/hpc/embedding_comparison_operator.py",
+      "sha256": "32106557aa26e2ebbef88fb3a799b4e8253f37b0556c7a9072725b67f8d7878c"
+    },
+    "/work3/s234818/latentmol/releases/source-138-vae-cli-startup-fix-attempt001/scripts/hpc/chemistry_guarded_restart.py": {
+      "filesystem_calls": [
+        {
+          "call": "intent.open('x')",
+          "line": 147
+        }
+      ],
+      "import": "chemistry_guarded_restart",
+      "literal_paths": [],
+      "reached_from": "/work3/s234818/latentmol/releases/source-138-vae-cli-startup-fix-attempt001/scripts/hpc/chemistry_valid_reference_campaign.py",
+      "sha256": "1db57a7992350fe5f918636b7cf0dad750ef3c46301fdf2048f876bdd4e370ad"
+    },
+    "/work3/s234818/latentmol/releases/source-138-vae-cli-startup-fix-attempt001/scripts/hpc/chemistry_independent_self_test.py": {
+      "filesystem_calls": [
+        {
+          "call": "(self.root / 'after-cpu-intent.json').open('x')",
+          "line": 81
+        }
+      ],
+      "import": "chemistry_independent_self_test",
+      "literal_paths": [],
+      "reached_from": "/work3/s234818/latentmol/releases/source-138-vae-cli-startup-fix-attempt001/scripts/hpc/chemistry_valid_reference_campaign.py",
+      "sha256": "b39cbac87a8885ee71a60cc9f6ff0c9f149e9cc0c3ca8cb220e9fdbf0d0e0d32"
+    },
+    "/work3/s234818/latentmol/releases/source-138-vae-cli-startup-fix-attempt001/scripts/hpc/chemistry_short_campaign.py": {
+      "filesystem_calls": [
+        {
+          "call": "(self.root / 'self-test-intent.json').open('x')",
+          "line": 78
+        },
+        {
+          "call": "(self.root / 'after-self-test-intent.json').open('x')",
+          "line": 127
+        }
+      ],
+      "import": "chemistry_short_campaign",
+      "literal_paths": [],
+      "reached_from": "/work3/s234818/latentmol/releases/source-138-vae-cli-startup-fix-attempt001/scripts/hpc/chemistry_independent_self_test.py",
+      "sha256": "50905e43bbcce27c822e5fe988ef052f1dffbe6d7d112e3447d36ee6076c03ce"
+    },
+    "/work3/s234818/latentmol/releases/source-138-vae-cli-startup-fix-attempt001/scripts/hpc/failure_guidance_campaign.py": {
+      "filesystem_calls": [
+        {
+          "call": "callback_output.read_text()",
+          "line": 107
+        },
+        {
+          "call": "log.read_text()",
+          "line": 256
+        },
+        {
+          "call": "(self.root / 'source-callback-retirement-intent.json').open('x')",
+          "line": 432
+        },
+        {
+          "call": "(run / 'metrics.jsonl').read_text()",
+          "line": 182
+        },
+        {
+          "call": "root.glob(pattern)",
+          "line": 314
+        }
+      ],
+      "import": "failure_guidance_campaign",
+      "literal_paths": [],
+      "reached_from": "/work3/s234818/latentmol/releases/source-138-vae-cli-startup-fix-attempt001/scripts/hpc/chemistry_runtime_continuation.py",
+      "sha256": "9a2fe7538cedc5fb292ac0a8179f49a0f184b32c84d7384dccd5ce59007a5005"
+    },
+    "/work3/s234818/latentmol/releases/source-138-vae-cli-startup-fix-attempt001/scripts/hpc/submit_stability_study.py": {
+      "filesystem_calls": [
+        {
+          "call": "path.read_text()",
+          "line": 18
+        },
+        {
+          "call": "intent_path.open('x')",
+          "line": 89
+        }
+      ],
+      "import": "submit_stability_study",
+      "literal_paths": [
+        {
+          "line": 109,
+          "path": "/work3/s234818/latentmol"
+        }
+      ],
+      "reached_from": "/work3/s234818/latentmol/releases/source-138-vae-cli-startup-fix-attempt001/scripts/hpc/chemistry_campaign.py",
+      "sha256": "7e44d463275680b9f79f060e227c34a41c4d74c1a963e530d640c0510a5619da"
+    },
+    "/work3/s234818/latentmol/releases/source-138-vae-cli-startup-fix-attempt001/scripts/hpc/triangle_continuation_health.py": {
+      "filesystem_calls": [],
+      "import": "triangle_continuation_health",
+      "literal_paths": [],
+      "reached_from": "/work3/s234818/latentmol/releases/source-138-vae-cli-startup-fix-attempt001/scripts/hpc/chemistry_campaign.py",
+      "sha256": "6bdc96016b87812c95fdaa53078e76f1b4dac07e95fd0403c6dda70bfab8fcd1"
+    },
+    "/work3/s234818/latentmol/releases/source-138-vae-cli-startup-fix-attempt001/src/latentmol/boltz/active_set_rescore.py": {
+      "filesystem_calls": [
+        {
+          "call": "(pilot / 'run.json').read_text()",
+          "line": 73
+        },
+        {
+          "call": "(pilot / 'summary.json').read_text()",
+          "line": 84
+        },
+        {
+          "call": "template_path.read_text()",
+          "line": 171
+        },
+        {
+          "call": "(pilot / 'run.json').read_text()",
+          "line": 250
+        },
+        {
+          "call": "path.read_text()",
+          "line": 37
+        },
+        {
+          "call": "(pilot / arm / 'summary.json').read_text()",
+          "line": 96
+        },
+        {
+          "call": "(pilot / arm / 'gates.json').read_text()",
+          "line": 97
+        },
+        {
+          "call": "path.read_text()",
+          "line": 164
+        }
+      ],
+      "import": "latentmol.boltz.active_set_rescore",
+      "literal_paths": [],
+      "reached_from": "/work3/s234818/latentmol/releases/source-138-vae-cli-startup-fix-attempt001/src/latentmol/boltz/stability_study.py",
+      "sha256": "36a3d252fc74be521bcd6fa5a3d641be6b4865149c571522d353a5e4ef1b4cc5"
+    },
+    "/work3/s234818/latentmol/releases/source-138-vae-cli-startup-fix-attempt001/src/latentmol/boltz/adapter.py": {
+      "filesystem_calls": [],
+      "import": "latentmol.boltz.adapter",
+      "literal_paths": [],
+      "reached_from": "/work3/s234818/latentmol/releases/source-138-vae-cli-startup-fix-attempt001/src/latentmol/boltz/contracts.py",
+      "sha256": "bb04155bd76ae6668cbcc0ce3989f0f1b123d04e65209eef73a0388c647f77c2"
+    },
+    "/work3/s234818/latentmol/releases/source-138-vae-cli-startup-fix-attempt001/src/latentmol/boltz/chemical_audit.py": {
+      "filesystem_calls": [
+        {
+          "call": "(path.parent / 'run.json').read_text()",
+          "line": 74
+        },
+        {
+          "call": "path.read_text()",
+          "line": 77
+        }
+      ],
+      "import": "latentmol.boltz.chemical_audit",
+      "literal_paths": [],
+      "reached_from": "/work3/s234818/latentmol/releases/source-138-vae-cli-startup-fix-attempt001/src/latentmol/boltz/active_set_rescore.py",
+      "sha256": "30df4d42e8d756f3d30ea0194a7cfacfc0332e8fd1840bf322801dc673954395"
+    },
+    "/work3/s234818/latentmol/releases/source-138-vae-cli-startup-fix-attempt001/src/latentmol/boltz/contracts.py": {
+      "filesystem_calls": [
+        {
+          "call": "torch.load(path, map_location=device, weights_only=True)",
+          "line": 116
+        }
+      ],
+      "import": "latentmol.boltz.contracts",
+      "literal_paths": [],
+      "reached_from": "/work3/s234818/latentmol/releases/source-138-vae-cli-startup-fix-attempt001/src/latentmol/boltz/active_set_rescore.py",
+      "sha256": "61607cbc195ca0dbdfd0ed9ce6dbea2d88ff00210ab325d66bca36b38ec34ca9"
+    },
+    "/work3/s234818/latentmol/releases/source-138-vae-cli-startup-fix-attempt001/src/latentmol/boltz/native_rescore.py": {
+      "filesystem_calls": [
+        {
+          "call": "(pilot_path / 'run.json').read_text()",
+          "line": 186
+        },
+        {
+          "call": "(pilot_path / 'summary.json').read_text()",
+          "line": 189
+        },
+        {
+          "call": "attempts_path.read_text()",
+          "line": 194
+        },
+        {
+          "call": "baseline_path.read_text()",
+          "line": 195
+        },
+        {
+          "call": "template_path.read_text()",
+          "line": 200
+        },
+        {
+          "call": "log.open('w')",
+          "line": 105
+        },
+        {
+          "call": "affinity.read_text()",
+          "line": 123
+        }
+      ],
+      "import": "latentmol.boltz.native_rescore",
+      "literal_paths": [],
+      "reached_from": "/work3/s234818/latentmol/releases/source-138-vae-cli-startup-fix-attempt001/src/latentmol/boltz/active_set_rescore.py",
+      "sha256": "b24c84efe414f586ccac50619e82ec732b3d7d39ed1746306cfccd422b214ee6"
+    },
+    "/work3/s234818/latentmol/releases/source-138-vae-cli-startup-fix-attempt001/src/latentmol/boltz/prepare.py": {
+      "filesystem_calls": [
+        {
+          "call": "Manifest.load(manifest_path)",
+          "line": 181
+        },
+        {
+          "call": "(output / 'official_affinity.yaml').read_text()",
+          "line": 71
+        },
+        {
+          "call": "manifest.read_text()",
+          "line": 123
+        },
+        {
+          "call": "raw.read_text()",
+          "line": 135
+        },
+        {
+          "call": "torch.load(ae_checkpoint, map_location='cpu', weights_only=True)",
+          "line": 223
+        },
+        {
+          "call": "PreparedComplex.load(path)",
+          "line": 324
+        },
+        {
+          "call": "dist.read_text('direct_url.json')",
+          "line": 41
+        },
+        {
+          "call": "input_manifest.read_text()",
+          "line": 230
+        },
+        {
+          "call": "declared_yaml.read_text()",
+          "line": 237
+        },
+        {
+          "call": "(output / 'seq1.a3m').read_text()",
+          "line": 73
+        },
+        {
+          "call": "msa.read_text()",
+          "line": 139
+        }
+      ],
+      "import": "latentmol.boltz.prepare",
+      "literal_paths": [],
+      "reached_from": "/work3/s234818/latentmol/releases/source-138-vae-cli-startup-fix-attempt001/src/latentmol/boltz/active_set_rescore.py",
+      "sha256": "bf81f31c4a03e11edd555c15ab763476305aa583fc7be61002d1553d48b28928"
+    },
+    "/work3/s234818/latentmol/releases/source-138-vae-cli-startup-fix-attempt001/src/latentmol/boltz/stability_study.py": {
+      "filesystem_calls": [
+        {
+          "call": "Path(path).read_text()",
+          "line": 32
+        },
+        {
+          "call": "attempt.rglob('*')",
+          "line": 254
+        },
+        {
+          "call": "folder.glob('metrics-*.json')",
+          "line": 186
+        },
+        {
+          "call": "folder.glob('step-control-*.json')",
+          "line": 199
+        },
+        {
+          "call": "folder.glob('transition-*.json')",
+          "line": 200
+        },
+        {
+          "call": "attempt.rglob('*')",
+          "line": 234
+        },
+        {
+          "call": "torch.load(pilot / 'start.pt', map_location='cpu', weights_only=True)",
+          "line": 354
+        },
+        {
+          "call": "torch.load(verify_asset(start['initial_latent']), map_location='cpu', weights_only=True)",
+          "line": 355
+        }
+      ],
+      "import": "latentmol.boltz.stability_study",
+      "literal_paths": [],
+      "reached_from": "/work3/s234818/latentmol/releases/source-138-vae-cli-startup-fix-attempt001/scripts/hpc/submit_stability_study.py",
+      "sha256": "62238825e254702e21ff8d59d9f98b955969cff56bd52ade8d47886c12935010"
+    },
+    "/work3/s234818/latentmol/releases/source-138-vae-cli-startup-fix-attempt001/src/latentmol/boltz/trajectory_terminal.py": {
+      "filesystem_calls": [
+        {
+          "call": "folder.glob('metrics-*.json')",
+          "line": 176
+        },
+        {
+          "call": "folder.glob('step-control-*.json')",
+          "line": 176
+        },
+        {
+          "call": "path.read_text()",
+          "line": 189
+        }
+      ],
+      "import": "latentmol.boltz.trajectory_terminal",
+      "literal_paths": [],
+      "reached_from": "/work3/s234818/latentmol/releases/source-138-vae-cli-startup-fix-attempt001/src/latentmol/boltz/active_set_rescore.py",
+      "sha256": "0f390fbf9d67b1bb5d21c5bc02c5110f84e8d33a4b46fd5e4923deb3af915bdb"
+    },
+    "/work3/s234818/latentmol/releases/source-138-vae-cli-startup-fix-attempt001/src/latentmol/boltz/workflow_process.py": {
+      "filesystem_calls": [
+        {
+          "call": "log_path.open('x', encoding='utf-8')",
+          "line": 58
+        },
+        {
+          "call": "log_path.open('a', encoding='utf-8')",
+          "line": 87
+        },
+        {
+          "call": "log_path.read_text(errors='replace')",
+          "line": 79
+        },
+        {
+          "call": "(path / 'run.json').read_text()",
+          "line": 104
+        }
+      ],
+      "import": "latentmol.boltz.workflow_process",
+      "literal_paths": [],
+      "reached_from": "/work3/s234818/latentmol/releases/source-138-vae-cli-startup-fix-attempt001/src/latentmol/boltz/stability_study.py",
+      "sha256": "ed96cc9779ab875724af2e09676e64685374bfb6b285d5ddc7621343e2bd7865"
+    },
+    "/work3/s234818/latentmol/releases/source-138-vae-cli-startup-fix-attempt001/src/latentmol/graph_policy.py": {
+      "filesystem_calls": [],
+      "import": "latentmol.graph_policy",
+      "literal_paths": [],
+      "reached_from": "/work3/s234818/latentmol/releases/source-138-vae-cli-startup-fix-attempt001/src/latentmol/multimodel/study.py",
+      "sha256": "a6bb4daa4165c6af85936f8eb81bfecdb35770b231b8ad7c34cece0e56ef9c2d"
+    },
+    "/work3/s234818/latentmol/releases/source-138-vae-cli-startup-fix-attempt001/src/latentmol/multimodel/config.py": {
+      "filesystem_calls": [
+        {
+          "call": "path.read_text(encoding='utf-8')",
+          "line": 206
+        }
+      ],
+      "import": "latentmol.multimodel.config",
+      "literal_paths": [],
+      "reached_from": "/work3/s234818/latentmol/releases/source-138-vae-cli-startup-fix-attempt001/src/latentmol/boltz/active_set_rescore.py",
+      "sha256": "5735dd385b278195256a4b2eeede19efc1ea0a4319c3d6324e2e508554bffc9c"
+    },
+    "/work3/s234818/latentmol/releases/source-138-vae-cli-startup-fix-attempt001/src/latentmol/multimodel/engine.py": {
+      "filesystem_calls": [],
+      "import": "latentmol.multimodel.engine",
+      "literal_paths": [],
+      "reached_from": "/work3/s234818/latentmol/releases/source-138-vae-cli-startup-fix-attempt001/src/latentmol/multimodel/study.py",
+      "sha256": "09ed082b93a31a989ca85ff11e6d5ebfbd936aa01158d5e677ba9b04a1ebbf68"
+    },
+    "/work3/s234818/latentmol/releases/source-138-vae-cli-startup-fix-attempt001/src/latentmol/multimodel/registry.py": {
+      "filesystem_calls": [],
+      "import": "latentmol.multimodel.registry",
+      "literal_paths": [],
+      "reached_from": "/work3/s234818/latentmol/releases/source-138-vae-cli-startup-fix-attempt001/src/latentmol/multimodel/study.py",
+      "sha256": "eecb48f12cd3ec9bb0a2131a69618696d7782c05e5e64a7412c21780f89821f3"
+    },
+    "/work3/s234818/latentmol/releases/source-138-vae-cli-startup-fix-attempt001/src/latentmol/multimodel/study.py": {
+      "filesystem_calls": [
+        {
+          "call": "Path(path).read_text()",
+          "line": 268
+        },
+        {
+          "call": "torch.load(path, map_location=study.device, weights_only=True)",
+          "line": 134
+        },
+        {
+          "call": "(path / 'candidates.jsonl').open('a')",
+          "line": 328
+        }
+      ],
+      "import": "latentmol.multimodel.study",
+      "literal_paths": [],
+      "reached_from": "/work3/s234818/latentmol/releases/source-138-vae-cli-startup-fix-attempt001/src/latentmol/boltz/stability_study.py",
+      "sha256": "dee659ca5f3215396f7b74dbcdacaf1cf060d1891c114739c33e28a13220973f"
+    },
+    "/work3/s234818/latentmol/releases/source-138-vae-cli-startup-fix-attempt001/src/latentmol/optimization.py": {
+      "filesystem_calls": [],
+      "import": "latentmol.optimization",
+      "literal_paths": [],
+      "reached_from": "/work3/s234818/latentmol/releases/source-138-vae-cli-startup-fix-attempt001/src/latentmol/boltz/trajectory_terminal.py",
+      "sha256": "3828bb63a9d7280ceae1a0a037d11307d175c352f1e46c6bd26874e3d0996663"
+    },
+    "/work3/s234818/latentmol/releases/source-138-vae-cli-startup-fix-attempt001/src/latentmol/scoring.py": {
+      "filesystem_calls": [],
+      "import": "latentmol.scoring",
+      "literal_paths": [],
+      "reached_from": "/work3/s234818/latentmol/releases/source-138-vae-cli-startup-fix-attempt001/src/latentmol/multimodel/study.py",
+      "sha256": "a343fa68db3c3c930673745f74d24ff29830eea510041701999629a89120944c"
+    }
+  },
+  "no_numerical_execution": true,
+  "no_ssh": true,
+  "original_reachable_members": 152,
+  "proposed_legacy_scope_literals_in_expanded_graph": [],
+  "protected_archive_additions": [
+    {
+      "expected_sha256": "3dd998a9953aa4d61dddc38af92b7779221308edd0a5a75140a4475d1273259a",
+      "path": "/work3/s234818/latentmol/releases/source-138-vae-cli-startup-fix-attempt001.tar.gz",
+      "reason": "Actual current VAE wrapper authenticates archive before worker; retain remote."
+    },
+    {
+      "expected_sha256": "bccba5d6a762349b450baf03b24251e12994be598926ce8960f6e5869d55ce9b",
+      "path": "/work3/s234818/latentmol/releases/source-138-epoch36-embedding-comparison-attempt003.tar.gz",
+      "reason": "Actual current embedding verify-run authenticates exact archive; retain remote."
+    }
+  ],
+  "same_source_resolution_roots": [
+    "importer directory",
+    "SOURCE/scripts/hpc",
+    "SOURCE/scripts",
+    "SOURCE/src"
+  ],
+  "scan02_sha256": "cdc4292800598688eda930efb5ab5f3d9f32655285d93c5a6d80d82aa5167842",
+  "status": "static_captured_import_graph_expanded_raw_runtime_binding_review_separate",
+  "version": "latentmol-bare-script-import-graph-refinement-v1"
+}

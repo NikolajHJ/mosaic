@@ -1,0 +1,530 @@
+{
+  "archives": [
+    {
+      "all_safe_members": 637,
+      "already_removed_logical_bytes": 0,
+      "already_removed_member_files": 0,
+      "category_bytes": {
+        "other_archived_proof_or_fixture_exact_bytes": 4889002,
+        "report_export_exact_bytes_only": 270784155
+      },
+      "category_files": {
+        "other_archived_proof_or_fixture_exact_bytes": 32,
+        "report_export_exact_bytes_only": 604
+      },
+      "embedded_manifest_sha256": "ee77e455c41453ea76603baf9ba2140e43c78422330bd84d8f6e6e7a83bae65a",
+      "id": "higher-rate-report-0001",
+      "listed_files": 636,
+      "local_archive": {
+        "bytes": 154498144,
+        "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261022-brd4-jq1-lrboost-analysis-01\\interim-0001.tar.gz",
+        "sha256": "f83155ecd2b83b4eff0d0c7693d8142b3d8eeeccfd4f6035784e9581711a170f"
+      },
+      "logical_member_bytes": 275673157,
+      "member_inventory": {
+        "bytes": 33419,
+        "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\brd4-jq1\\boltz-lr0025\\runs\\20261024-storage-offload-01\\backup-members-higher-rate-report-0001.jsonl.gz",
+        "sha256": "0b2a3f11779fca03c3228ed85e0d158852bade262548cf95cc7b97870b9fa9e3"
+      },
+      "original_delivery_verification": {
+        "bytes": 160819,
+        "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\scripts\\hpc\\receipts\\20261022-brd4-jq1-lrboost-analysis-01\\report-delivery-verification-0001.json",
+        "sha256": "6571fa254b224a7f70ed1b97865b09dec8590423a5debd1718b28f8b5d04d588"
+      },
+      "potential_saved_or_report_member_bytes": 270784155,
+      "potential_saved_or_report_member_files": 604,
+      "remote_archive_existing_now": false,
+      "remote_archive_path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/interim-0001.tar.gz",
+      "remote_archive_previously_removed": false,
+      "scope": "Exact bytes in named archive members only; report export JSON does not back native NPZ/JSONL or another path unless its exact SHA matches.",
+      "status": "complete_archive_and_every_member_rehashed_passed"
+    },
+    {
+      "all_safe_members": 648,
+      "already_removed_logical_bytes": 0,
+      "already_removed_member_files": 0,
+      "category_bytes": {
+        "other_archived_proof_or_fixture_exact_bytes": 7379469,
+        "report_export_exact_bytes_only": 274409777
+      },
+      "category_files": {
+        "other_archived_proof_or_fixture_exact_bytes": 35,
+        "report_export_exact_bytes_only": 612
+      },
+      "embedded_manifest_sha256": "1279dad26ca01954e3336a00f2d57fcaa7c22b0d628e67ec1336d550ca5e43ef",
+      "id": "higher-rate-report-0002",
+      "listed_files": 647,
+      "local_archive": {
+        "bytes": 157404869,
+        "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261022-brd4-jq1-lrboost-analysis-01\\interim-0002.tar.gz",
+        "sha256": "e92c477b8d173c1c0a9e17813e9cb0f8549cd24c9e97578d43e7591823cbb30a"
+      },
+      "logical_member_bytes": 281789246,
+      "member_inventory": {
+        "bytes": 33997,
+        "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\brd4-jq1\\boltz-lr0025\\runs\\20261024-storage-offload-01\\backup-members-higher-rate-report-0002.jsonl.gz",
+        "sha256": "f850ad608973dd2b92ab0dbb5a22a7dde1a33ace8c357133e7ddd679f8e32379"
+      },
+      "original_delivery_verification": {
+        "bytes": 172217,
+        "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\scripts\\hpc\\receipts\\20261022-brd4-jq1-lrboost-analysis-01\\report-delivery-verification-0002.json",
+        "sha256": "5f4fbb8d458af62ab76294f20f4228a80ebdbbdf1d790ae40d10f3d88ba993a6"
+      },
+      "potential_saved_or_report_member_bytes": 274409777,
+      "potential_saved_or_report_member_files": 612,
+      "remote_archive_existing_now": false,
+      "remote_archive_path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/interim-0002.tar.gz",
+      "remote_archive_previously_removed": false,
+      "scope": "Exact bytes in named archive members only; report export JSON does not back native NPZ/JSONL or another path unless its exact SHA matches.",
+      "status": "complete_archive_and_every_member_rehashed_passed"
+    },
+    {
+      "all_safe_members": 442,
+      "already_removed_logical_bytes": 0,
+      "already_removed_member_files": 0,
+      "category_bytes": {
+        "other_archived_proof_or_fixture_exact_bytes": 5266412,
+        "report_export_exact_bytes_only": 178228357
+      },
+      "category_files": {
+        "other_archived_proof_or_fixture_exact_bytes": 32,
+        "report_export_exact_bytes_only": 409
+      },
+      "embedded_manifest_sha256": "b8d463f1702004fbb527f231d2e3e36958dff6502365812e9d1d954eff2bdd6c",
+      "id": "lower-rate-report-0001",
+      "listed_files": 441,
+      "local_archive": {
+        "bytes": 90878067,
+        "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261023-brd4-jq1-lrreset-analysis-03\\interim-0001.tar.gz",
+        "sha256": "9551b2e0b0a821e606fa740ac09df432ec6575f562dfe51390c84629d6009ae7"
+      },
+      "logical_member_bytes": 183494769,
+      "member_inventory": {
+        "bytes": 23623,
+        "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\brd4-jq1\\boltz-lr0025\\runs\\20261024-storage-offload-01\\backup-members-lower-rate-report-0001.jsonl.gz",
+        "sha256": "8339b9dab29de1d94b5977ac31dea77670c1ca031db1297cda1b8b9e877f96f3"
+      },
+      "original_delivery_verification": {
+        "bytes": 849,
+        "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261023-brd4-jq1-lrreset-analysis-03\\delivery-interim-0001\\independent-verification.json",
+        "sha256": "4c0573e74a31a4feb7430069a271d8eee1d179d4a91240e67c6a9c033e3879c9"
+      },
+      "potential_saved_or_report_member_bytes": 178228357,
+      "potential_saved_or_report_member_files": 409,
+      "remote_archive_existing_now": false,
+      "remote_archive_path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/lrreset-analysis-03/interim-0001.tar.gz",
+      "remote_archive_previously_removed": false,
+      "scope": "Exact bytes in named archive members only; report export JSON does not back native NPZ/JSONL or another path unless its exact SHA matches.",
+      "status": "complete_archive_and_every_member_rehashed_passed"
+    },
+    {
+      "all_safe_members": 37,
+      "already_removed_logical_bytes": 0,
+      "already_removed_member_files": 0,
+      "category_bytes": {
+        "other_archived_proof_or_fixture_exact_bytes": 258019,
+        "report_export_exact_bytes_only": 1123492
+      },
+      "category_files": {
+        "other_archived_proof_or_fixture_exact_bytes": 24,
+        "report_export_exact_bytes_only": 12
+      },
+      "embedded_manifest_sha256": "561e25c57dcabb8b3d104d807a815920bd3c083508b6f8f4e45edbec3d51a868",
+      "id": "original-jq1-edition-0001",
+      "listed_files": 36,
+      "local_archive": {
+        "bytes": 197826,
+        "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261021-brd4-jq1-25-report\\edition-0001\\interim-0001.tar.gz",
+        "sha256": "e82677ec2d1135e450707ff5b8e47e1e47e6f77594865447142b7661748123e2"
+      },
+      "logical_member_bytes": 1381511,
+      "member_inventory": {
+        "bytes": 2585,
+        "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\brd4-jq1\\boltz-lr0025\\runs\\20261024-storage-offload-01\\backup-members-original-jq1-edition-0001.jsonl.gz",
+        "sha256": "df6428b13db7d5a1920f61001abbdbbd3f6413e572b9fbe1f2900b84d55251db"
+      },
+      "original_delivery_verification": {
+        "bytes": 937,
+        "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261021-brd4-jq1-25-report\\edition-0001\\verification.json",
+        "sha256": "dff8e89ad30ca61980883f27e9d612c9546f7bddff60d5e82ca70754bd28464e"
+      },
+      "potential_saved_or_report_member_bytes": 1123492,
+      "potential_saved_or_report_member_files": 12,
+      "remote_archive_existing_now": false,
+      "remote_archive_path": "/zhome/95/e/206121/mosaic-runs/20261021-brd4-jq1-25-report-03/interim-0001.tar.gz",
+      "remote_archive_previously_removed": false,
+      "scope": "Exact bytes in named archive members only; report export JSON does not back native NPZ/JSONL or another path unless its exact SHA matches.",
+      "status": "complete_archive_and_every_member_rehashed_passed"
+    },
+    {
+      "all_safe_members": 155,
+      "already_removed_logical_bytes": 0,
+      "already_removed_member_files": 0,
+      "category_bytes": {
+        "other_archived_proof_or_fixture_exact_bytes": 259451,
+        "report_export_exact_bytes_only": 52077624
+      },
+      "category_files": {
+        "other_archived_proof_or_fixture_exact_bytes": 24,
+        "report_export_exact_bytes_only": 130
+      },
+      "embedded_manifest_sha256": "f7363cac66cab2879ba503e7e8ff9ef91e37b9e5b5afd45bd862cb9e0cf244ec",
+      "id": "original-jq1-edition-0002",
+      "listed_files": 154,
+      "local_archive": {
+        "bytes": 24677266,
+        "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261021-brd4-jq1-25-report\\edition-0002\\interim-0001.tar.gz",
+        "sha256": "af2ae8c68c44329211bbf1ed676920cfe3dfa885103155f5690509f9d4a15831"
+      },
+      "logical_member_bytes": 52337075,
+      "member_inventory": {
+        "bytes": 8463,
+        "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\brd4-jq1\\boltz-lr0025\\runs\\20261024-storage-offload-01\\backup-members-original-jq1-edition-0002.jsonl.gz",
+        "sha256": "f4b6beacbfec8bc7122762b0640cf1683eefb56dbaa7030df39ae8d8e5bb1668"
+      },
+      "original_delivery_verification": {
+        "bytes": 1398,
+        "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261021-brd4-jq1-25-report\\edition-0002\\verification.json",
+        "sha256": "9f92256bffe2694403c45a33208825bbf789cd2786a6e17df4bbe2227797076e"
+      },
+      "potential_saved_or_report_member_bytes": 52077624,
+      "potential_saved_or_report_member_files": 130,
+      "remote_archive_existing_now": false,
+      "remote_archive_path": "/zhome/95/e/206121/mosaic-runs/20261021-brd4-jq1-25-report-04/interim-0001.tar.gz",
+      "remote_archive_previously_removed": false,
+      "scope": "Exact bytes in named archive members only; report export JSON does not back native NPZ/JSONL or another path unless its exact SHA matches.",
+      "status": "complete_archive_and_every_member_rehashed_passed"
+    },
+    {
+      "all_safe_members": 209,
+      "already_removed_logical_bytes": 0,
+      "already_removed_member_files": 0,
+      "category_bytes": {
+        "other_archived_proof_or_fixture_exact_bytes": 259404,
+        "report_export_exact_bytes_only": 74436035
+      },
+      "category_files": {
+        "other_archived_proof_or_fixture_exact_bytes": 24,
+        "report_export_exact_bytes_only": 184
+      },
+      "embedded_manifest_sha256": "37537a13cbe2ef46fb5fb95c5984c83988110de6261d579da29a047666a14d69",
+      "id": "original-jq1-edition-0003",
+      "listed_files": 208,
+      "local_archive": {
+        "bytes": 33764779,
+        "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261021-brd4-jq1-25-report\\edition-0003\\interim-0002.tar.gz",
+        "sha256": "4e744970c5b095b9a2dfdf4c606abf266328b98535e78c546138744f2dbffd07"
+      },
+      "logical_member_bytes": 74695439,
+      "member_inventory": {
+        "bytes": 11137,
+        "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\brd4-jq1\\boltz-lr0025\\runs\\20261024-storage-offload-01\\backup-members-original-jq1-edition-0003.jsonl.gz",
+        "sha256": "06fb05b7d79fe66ed3c4867e6f2be7b232746a1de1b3cdb30bbe30c1654804ea"
+      },
+      "original_delivery_verification": {
+        "bytes": 1468,
+        "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261021-brd4-jq1-25-report\\edition-0003\\verification.json",
+        "sha256": "fb7a1e3ca9d47f334b0799d80ca18c721794785bf39563f9b50d5f4fe394be1b"
+      },
+      "potential_saved_or_report_member_bytes": 74436035,
+      "potential_saved_or_report_member_files": 184,
+      "remote_archive_existing_now": false,
+      "remote_archive_path": "/zhome/95/e/206121/mosaic-runs/20261021-brd4-jq1-25-report-04/interim-0002.tar.gz",
+      "remote_archive_previously_removed": false,
+      "scope": "Exact bytes in named archive members only; report export JSON does not back native NPZ/JSONL or another path unless its exact SHA matches.",
+      "status": "complete_archive_and_every_member_rehashed_passed"
+    },
+    {
+      "all_safe_members": 237,
+      "already_removed_logical_bytes": 0,
+      "already_removed_member_files": 0,
+      "category_bytes": {
+        "other_archived_proof_or_fixture_exact_bytes": 259535,
+        "report_export_exact_bytes_only": 87813118
+      },
+      "category_files": {
+        "other_archived_proof_or_fixture_exact_bytes": 24,
+        "report_export_exact_bytes_only": 212
+      },
+      "embedded_manifest_sha256": "bc553580f1c47554e3ce4b2ef4778b7507b36ba24c90de6080aa60a0d43d368b",
+      "id": "original-jq1-edition-0004",
+      "listed_files": 236,
+      "local_archive": {
+        "bytes": 39386991,
+        "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261021-brd4-jq1-25-report\\edition-0004\\interim-0003.tar.gz",
+        "sha256": "dd54d783a35a52e571edd731abea859af19f66075393f2b6985bcd3664a8973c"
+      },
+      "logical_member_bytes": 88072653,
+      "member_inventory": {
+        "bytes": 12522,
+        "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\brd4-jq1\\boltz-lr0025\\runs\\20261024-storage-offload-01\\backup-members-original-jq1-edition-0004.jsonl.gz",
+        "sha256": "7f5e647297031af0c3e3fa4876140b23f2c7ba886d1d8d57307983d3455a409f"
+      },
+      "original_delivery_verification": {
+        "bytes": 1503,
+        "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261021-brd4-jq1-25-report\\edition-0004\\verification.json",
+        "sha256": "d3b6e4be61ffa5f5c237ee6b911bf4751e1034cc09c8f5d1dc5998a8f4c0ef66"
+      },
+      "potential_saved_or_report_member_bytes": 87813118,
+      "potential_saved_or_report_member_files": 212,
+      "remote_archive_existing_now": false,
+      "remote_archive_path": "/zhome/95/e/206121/mosaic-runs/20261021-brd4-jq1-25-report-04/interim-0003.tar.gz",
+      "remote_archive_previously_removed": false,
+      "scope": "Exact bytes in named archive members only; report export JSON does not back native NPZ/JSONL or another path unless its exact SHA matches.",
+      "status": "complete_archive_and_every_member_rehashed_passed"
+    },
+    {
+      "all_safe_members": 295,
+      "already_removed_logical_bytes": 0,
+      "already_removed_member_files": 0,
+      "category_bytes": {
+        "other_archived_proof_or_fixture_exact_bytes": 256052,
+        "report_export_exact_bytes_only": 112052552
+      },
+      "category_files": {
+        "other_archived_proof_or_fixture_exact_bytes": 24,
+        "report_export_exact_bytes_only": 270
+      },
+      "embedded_manifest_sha256": "0ac62ab47d2817845f58c4d4638f22f5bfb1e61ae5c301a701c44632238ffc25",
+      "id": "original-jq1-edition-0005",
+      "listed_files": 294,
+      "local_archive": {
+        "bytes": 49698929,
+        "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261021-brd4-jq1-25-report\\edition-0005\\interim-0004.tar.gz",
+        "sha256": "ef0f74b678f8ded9caa333cfa28d0a313076eafc99cdc7bcee94c2b1bce473a3"
+      },
+      "logical_member_bytes": 112308604,
+      "member_inventory": {
+        "bytes": 15349,
+        "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\brd4-jq1\\boltz-lr0025\\runs\\20261024-storage-offload-01\\backup-members-original-jq1-edition-0005.jsonl.gz",
+        "sha256": "4ec9a698893aa204fb06ed33f9c91fd78fcaac83696acc19661de33de26170b0"
+      },
+      "original_delivery_verification": {
+        "bytes": 1506,
+        "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261021-brd4-jq1-25-report\\edition-0005\\verification.json",
+        "sha256": "13ad5c5efe3133e8a2c2aadf56b20e691a3f6bbed91064d1c1492b3ad181f262"
+      },
+      "potential_saved_or_report_member_bytes": 112052552,
+      "potential_saved_or_report_member_files": 270,
+      "remote_archive_existing_now": false,
+      "remote_archive_path": "/zhome/95/e/206121/mosaic-runs/20261021-brd4-jq1-25-report-04/interim-0004.tar.gz",
+      "remote_archive_previously_removed": false,
+      "scope": "Exact bytes in named archive members only; report export JSON does not back native NPZ/JSONL or another path unless its exact SHA matches.",
+      "status": "complete_archive_and_every_member_rehashed_passed"
+    },
+    {
+      "all_safe_members": 311,
+      "already_removed_logical_bytes": 0,
+      "already_removed_member_files": 0,
+      "category_bytes": {
+        "other_archived_proof_or_fixture_exact_bytes": 255958,
+        "report_export_exact_bytes_only": 118599793
+      },
+      "category_files": {
+        "other_archived_proof_or_fixture_exact_bytes": 24,
+        "report_export_exact_bytes_only": 286
+      },
+      "embedded_manifest_sha256": "2e1f545f11922f9219762c52deb8f8cedb5154fdcb7d525491ad9280e39a7fca",
+      "id": "original-jq1-edition-0006",
+      "listed_files": 310,
+      "local_archive": {
+        "bytes": 52544644,
+        "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261021-brd4-jq1-25-report\\edition-0006\\interim-0005.tar.gz",
+        "sha256": "f283da0ffb883987fa5385b16a215abca4d4c0918b8dfbee99f7e3ab0cc30518"
+      },
+      "logical_member_bytes": 118855751,
+      "member_inventory": {
+        "bytes": 16145,
+        "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\brd4-jq1\\boltz-lr0025\\runs\\20261024-storage-offload-01\\backup-members-original-jq1-edition-0006.jsonl.gz",
+        "sha256": "bdede255b2954141cebabcd94ff2cfbea26f0719a51fde5af845543a5a2bf60c"
+      },
+      "original_delivery_verification": {
+        "bytes": 1815,
+        "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261021-brd4-jq1-25-report\\edition-0006\\verification.json",
+        "sha256": "f0fe6975754091d7d03d8646cc557b0f92278baa1dc4a786a1292e734ac73baf"
+      },
+      "potential_saved_or_report_member_bytes": 118599793,
+      "potential_saved_or_report_member_files": 286,
+      "remote_archive_existing_now": false,
+      "remote_archive_path": "/zhome/95/e/206121/mosaic-runs/20261021-brd4-jq1-25-report-04/interim-0005.tar.gz",
+      "remote_archive_previously_removed": false,
+      "scope": "Exact bytes in named archive members only; report export JSON does not back native NPZ/JSONL or another path unless its exact SHA matches.",
+      "status": "complete_archive_and_every_member_rehashed_passed"
+    },
+    {
+      "all_safe_members": 186507,
+      "already_removed_logical_bytes": 0,
+      "already_removed_member_files": 0,
+      "category_bytes": {
+        "original_saved_case_metadata_exact_bytes": 129037710,
+        "original_saved_npz_exact_bytes": 70099248,
+        "original_saved_summary_exact_bytes": 114560818,
+        "other_archived_proof_or_fixture_exact_bytes": 982747507,
+        "report_export_exact_bytes_only": 419534981
+      },
+      "category_files": {
+        "original_saved_case_metadata_exact_bytes": 9,
+        "original_saved_npz_exact_bytes": 42033,
+        "original_saved_summary_exact_bytes": 9,
+        "other_archived_proof_or_fixture_exact_bytes": 144442,
+        "report_export_exact_bytes_only": 13
+      },
+      "embedded_manifest_sha256": "5d070e3b72d41bd8c8cb6ed343d78921c5fb1c76f6d7693f50f9c96e85d423d1",
+      "id": "historical-brd4-best-primal",
+      "listed_files": 186506,
+      "local_archive": {
+        "bytes": 786077737,
+        "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261017-brd4-parallel\\complete-report-01\\20261017-brd4-best-primal-report-02.tar.gz",
+        "sha256": "4d5540823d5b43c8b2ca60900c52c1c28653f5a43287369d9d533df41c2b9b4d"
+      },
+      "logical_member_bytes": 1715980264,
+      "member_inventory": {
+        "bytes": 9247947,
+        "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\brd4-jq1\\boltz-lr0025\\runs\\20261024-storage-offload-01\\backup-members-historical-brd4-best-primal.jsonl.gz",
+        "sha256": "470e708861421e41d67f9431988b2af22824eedc568e387a77629f95f171616d"
+      },
+      "original_delivery_verification": {
+        "bytes": 1886,
+        "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261017-brd4-parallel\\complete-report-01\\study-verification.json",
+        "sha256": "4e17cfbb2b483ca57a42993970e6513943dc30462be90d5c517b18cfe3dd90a8"
+      },
+      "potential_saved_or_report_member_bytes": 733232757,
+      "potential_saved_or_report_member_files": 42064,
+      "remote_archive_existing_now": false,
+      "remote_archive_path": "/zhome/95/e/206121/mosaic-runs/20261017-brd4-best-primal-report-02.tar.gz",
+      "remote_archive_previously_removed": false,
+      "scope": "Exact bytes in named archive members only; report export JSON does not back native NPZ/JSONL or another path unless its exact SHA matches.",
+      "status": "complete_archive_and_every_member_rehashed_passed"
+    },
+    {
+      "all_safe_members": 61268,
+      "already_removed_logical_bytes": 0,
+      "already_removed_member_files": 0,
+      "category_bytes": {
+        "original_saved_case_metadata_exact_bytes": 132357742,
+        "original_saved_npz_exact_bytes": 82008789,
+        "original_saved_summary_exact_bytes": 96975206,
+        "other_archived_proof_or_fixture_exact_bytes": 903943011,
+        "report_export_exact_bytes_only": 74595997
+      },
+      "category_files": {
+        "original_saved_case_metadata_exact_bytes": 8,
+        "original_saved_npz_exact_bytes": 20002,
+        "original_saved_summary_exact_bytes": 2,
+        "other_archived_proof_or_fixture_exact_bytes": 41251,
+        "report_export_exact_bytes_only": 4
+      },
+      "embedded_manifest_sha256": "7b03a248fe3019018ab12d1c1b14d797c5d6349ce4cbcaf4c70f99207b1558ca",
+      "id": "historical-brd4-delayed-chemistry",
+      "listed_files": 61267,
+      "local_archive": {
+        "bytes": 739279500,
+        "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261019-brd4-delayed-chemistry-report\\edition-02\\20261019-brd4-chemistry-ramp-01-report.tar.gz",
+        "sha256": "fea18fc354e3185dbb3b6b38058cd992a8713ac068bbeb5dfe2e8df4616d41e0"
+      },
+      "logical_member_bytes": 1289880745,
+      "member_inventory": {
+        "bytes": 3039105,
+        "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\brd4-jq1\\boltz-lr0025\\runs\\20261024-storage-offload-01\\backup-members-historical-brd4-delayed-chemistry.jsonl.gz",
+        "sha256": "dc4c1f63d0b6119433c56058c4ca66e85176e8afd65561e1a669291a7dcc8233"
+      },
+      "original_delivery_verification": {
+        "bytes": 5362,
+        "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261019-brd4-delayed-chemistry-report\\edition-02\\pair-verification.json",
+        "sha256": "d244fe72fe862ccfa2c128c2228b877f21f5a2b86d2c2285e494ed5cefdffd99"
+      },
+      "potential_saved_or_report_member_bytes": 385937734,
+      "potential_saved_or_report_member_files": 20016,
+      "remote_archive_existing_now": false,
+      "remote_archive_path": "/zhome/95/e/206121/mosaic-runs/20261019-brd4-chemistry-ramp-01-report.tar.gz",
+      "remote_archive_previously_removed": false,
+      "scope": "Exact bytes in named archive members only; report export JSON does not back native NPZ/JSONL or another path unless its exact SHA matches.",
+      "status": "complete_archive_and_every_member_rehashed_passed"
+    },
+    {
+      "all_safe_members": 15996,
+      "already_removed_logical_bytes": 0,
+      "already_removed_member_files": 0,
+      "category_bytes": {
+        "original_saved_case_metadata_exact_bytes": 31345855,
+        "original_saved_npz_exact_bytes": 18380763,
+        "original_saved_summary_exact_bytes": 23285691,
+        "other_archived_proof_or_fixture_exact_bytes": 280430277,
+        "report_export_exact_bytes_only": 82679672
+      },
+      "category_files": {
+        "original_saved_case_metadata_exact_bytes": 4,
+        "original_saved_npz_exact_bytes": 5001,
+        "original_saved_summary_exact_bytes": 1,
+        "other_archived_proof_or_fixture_exact_bytes": 10979,
+        "report_export_exact_bytes_only": 10
+      },
+      "embedded_manifest_sha256": "0ecf15951cb5bf7c61ee6706445f73270a5431700afb9bd510ad61d7537797c1",
+      "id": "historical-brd4-chemistry",
+      "listed_files": 15995,
+      "local_archive": {
+        "bytes": 249546618,
+        "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261019-brd4-chemistry\\complete-report-01\\20261019-brd4-chemistry-05-repackage.tar.gz",
+        "sha256": "c0309f186da134d48f69bc6fd8594535325934f4904def3aaad377b2452d0c89"
+      },
+      "logical_member_bytes": 436122258,
+      "member_inventory": {
+        "bytes": 781020,
+        "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\brd4-jq1\\boltz-lr0025\\runs\\20261024-storage-offload-01\\backup-members-historical-brd4-chemistry.jsonl.gz",
+        "sha256": "e819ae7259814e707aa96089f443266fb5f470dacc05f869eac606338e46013c"
+      },
+      "original_delivery_verification": {
+        "bytes": 773,
+        "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261019-brd4-chemistry\\complete-report-01\\study-verification.json",
+        "sha256": "59c0c8623ea0f419906af2acc6edc45e73d09fa78f9c304869d0762c3d36733b"
+      },
+      "potential_saved_or_report_member_bytes": 155691981,
+      "potential_saved_or_report_member_files": 5016,
+      "remote_archive_existing_now": false,
+      "remote_archive_path": "/zhome/95/e/206121/mosaic-runs/20261019-brd4-chemistry-05-repackage.tar.gz",
+      "remote_archive_previously_removed": false,
+      "scope": "Exact bytes in named archive members only; report export JSON does not back native NPZ/JSONL or another path unless its exact SHA matches.",
+      "status": "complete_archive_and_every_member_rehashed_passed"
+    }
+  ],
+  "completed_utc": "2026-10-24T09:44:44.158606+00:00",
+  "created_utc": "2026-10-24T09:43:37.475813+00:00",
+  "errors": [],
+  "exact_single_original_summary": {
+    "already_removed": false,
+    "assessment": {
+      "bytes": 3394,
+      "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261021-brd4-jq1-25-report\\protenix-completion-01\\assessment.json",
+      "sha256": "e4f49c9186631377e93f570fc63fec963d54940a3a88ba222f53adb4f17579ed"
+    },
+    "local": {
+      "bytes": 297952692,
+      "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261021-brd4-jq1-25-report\\protenix-completion-01\\native-summary.json",
+      "sha256": "942b260ea5b1b60271c818e67dc4169c646cb1216d10baeab0d76c20bb3ee0ee"
+    },
+    "remote_existence_established_now": false,
+    "remote_path": "/zhome/95/e/206121/mosaic-runs/20261021-brd4-jq1-25-protenix-02/run-protenix/payload/study/summary.json",
+    "scope": "Only original summary.json bytes; no case JSON/JSONL or NPZ backup is implied."
+  },
+  "prior_cleanup_journals": [
+    {
+      "bytes": 24753887,
+      "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261021-mosaic-storage-cleanup-01\\cleanup-audit-02\\attempt-01\\deletion-journal.jsonl",
+      "removed_files": 21099,
+      "removed_logical_bytes": 5459183284,
+      "sha256": "af6420ce5105ef1dd5674eba0e74bdd83151da679226cce8c353821cc67378fe"
+    },
+    {
+      "bytes": 40028621,
+      "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261022-brd4-jq1-25-fixed-lrreset-02\\native-delivery-01\\cleanup\\attempt-02\\deletion-journal.jsonl",
+      "removed_files": 34847,
+      "removed_logical_bytes": 1540133784,
+      "sha256": "68a1573237fa5dafd21c299e87c1b1a089857ac9dd66d55fc7ed83cd103eb9b1"
+    }
+  ],
+  "prior_removed_unique_files": 55946,
+  "prior_removed_unique_logical_bytes": 6999317068,
+  "scope": "Local stdlib byte/hash/tar/JSON only; no SSH/deletion/numerics. Remote existence, inactivity and dependency exclusions must be authenticated by the root operator before any removal.",
+  "status": "passed",
+  "version": "local-exact-backup-offload-audit-v1"
+}

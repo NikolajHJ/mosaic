@@ -1,0 +1,17 @@
+{
+  "status": "approved_for_backup_then_conditional_identical_copy_removal",
+  "operation_id": "legacy-offload-01",
+  "plan_bytes": 15705771,
+  "plan_sha256": "6573d5d471df56b229e5d1f9adb28b74ddf8959b7d6c419332ca36b45f11d07b",
+  "plan_path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261024-storage-offload-01\\backup-01\\approved-plan.json",
+  "files": 25737,
+  "candidate_roots": 96,
+  "logical_bytes": 32041124599,
+  "unique_logical_bytes": 21891767118,
+  "unique_allocated_blocks512": 42770264,
+  "protection_sha256": "35c78f3571b26304e453eb9da1e04c1fe0bdd05d0a6e3756e81e3f825d121511",
+  "backup_or_deletion_completed": false,
+  "actual_quota_savings_established": false,
+  "retained_inventory_groups": 7,
+  "required_before_removal": "Complete actual remote stream receipt + exact laptop compressed archive hash and every original member verified; fresh active-set/protection/content/inode/race checks."
+}

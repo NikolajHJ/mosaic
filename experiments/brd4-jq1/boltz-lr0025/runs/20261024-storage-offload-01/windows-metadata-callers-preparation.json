@@ -1,0 +1,66 @@
+{
+  "archive_payload_bytes_read_for_observations": 0,
+  "files": {
+    "execute_verified_removal_03_windows.py": {
+      "bytes": 17697,
+      "embedded_remote_AST_exact": true,
+      "embedded_remote_bytes_exact": true,
+      "embedded_remote_sha256": "50f816060771c17e233656e6e5d535fa68b0f80b440eb250eed01917a13eab43",
+      "executed": false,
+      "only_changed_local_function": "archive_record",
+      "original": "execute_verified_removal_03.py",
+      "original_sha256": "83d9c7bcd311ce2dd20dc4ffdfc1c5f5435e6113f1869cd5b20d049f0ad8f7fb",
+      "other_module_AST_exact": true,
+      "sha256": "de34d74e53ee74b6ce91707d75f5da7ac5192da53e3a8fc4e9179136ea9f6637",
+      "static_compile_passed": true
+    },
+    "run_post_deletion_audit_03_windows.py": {
+      "bytes": 32862,
+      "embedded_remote_AST_exact": true,
+      "embedded_remote_bytes_exact": true,
+      "embedded_remote_sha256": "2c6b951327b47d010b1a738650bd9da556ffd4ca4e44a5930dc4ecd9b0b6b2e3",
+      "executed": false,
+      "only_changed_local_function": "read",
+      "original": "run_post_deletion_audit_03.py",
+      "original_sha256": "940afbb6f3bb9d257b4c4cc05e8dcbdad2a24bedf07e353f6d8b92ba7d02d5a9",
+      "other_module_AST_exact": true,
+      "sha256": "dd6a83ff3cd29574268da3a7636761abfeada8b4494da58e6f25c4a8e277119b",
+      "static_compile_passed": true
+    }
+  },
+  "observations": [
+    {
+      "cross_channel_ctime_equal": false,
+      "handle_before_after_seven_fields_equal": true,
+      "handle_ctime_ns": 1792839327435224200,
+      "literal_before_after_seven_fields_equal": true,
+      "path": "experiments\\brd4-jq1\\boltz-lr0025\\runs\\20261024-storage-offload-01\\operator-verification-04.json",
+      "path_ctime_ns": 1792839327434222800,
+      "shared_six_fields_equal": true
+    },
+    {
+      "cross_channel_ctime_equal": false,
+      "handle_before_after_seven_fields_equal": true,
+      "handle_ctime_ns": 1792837704487314000,
+      "literal_before_after_seven_fields_equal": true,
+      "path": "experiments\\brd4-jq1\\boltz-lr0025\\runs\\20261024-storage-offload-01\\flat-protection-approved-01.json",
+      "path_ctime_ns": 1792837704486146200,
+      "shared_six_fields_equal": true
+    },
+    {
+      "cross_channel_ctime_equal": false,
+      "handle_before_after_seven_fields_equal": true,
+      "handle_ctime_ns": 1792839819829736200,
+      "literal_before_after_seven_fields_equal": true,
+      "path": "results\\hpc\\20261024-storage-offload-01\\backup-02\\legacy-offload-02.tar.gz",
+      "path_ctime_ns": 1792839504495688300,
+      "shared_six_fields_equal": true
+    }
+  ],
+  "original_files_changed": false,
+  "prepared_callers_executed": false,
+  "remote_execution": false,
+  "scope": "Local metadata observation portability only; embedded remote programs byte-exact, no original/source04/verification/deletion policy change.",
+  "status": "two_unexecuted_windows_metadata_callers_prepared",
+  "utc": "2026-10-24T11:12:24.071286+00:00"
+}

@@ -1,0 +1,57 @@
+{
+  "version": "mosaic-reviewed-storage-offload-campaign-v1",
+  "status": "first_incomplete_backup_intentionally_retired_faster_tooling_pending",
+  "authorization": "Download and verify files not needed by current experiments, then remove identical inactive remote copies only.",
+  "operation_id": "legacy-offload-01",
+  "remote_control_root": "/work3/s234818/mosaic/runs/20261024-storage-offload-01",
+  "operator_source_manifest_sha256": "9af242392c14b3fc09804f0868b49f0d650245a1f075d43c3b132d994545230d",
+  "allocated_operator": {
+    "job_id": "29806228",
+    "actual_status": "DONE",
+    "same_job_lsf_success": true,
+    "actual_raw_cases_passed": 32,
+    "verification": "operator-verification-03.json"
+  },
+  "approved_plan": {
+    "path": "results/hpc/20261024-storage-offload-01/backup-01/approved-plan.json",
+    "bytes": 15705771,
+    "sha256": "6573d5d471df56b229e5d1f9adb28b74ddf8959b7d6c419332ca36b45f11d07b",
+    "exact_files": 25737,
+    "exact_candidate_roots": 96,
+    "logical_backup_bytes": 32041124599,
+    "unique_logical_candidate_bytes": 21891767118,
+    "candidate_allocated_blocks512": 42770264,
+    "retained_incomplete_or_protected_groups": 7
+  },
+  "protection": {
+    "path": "/work3/s234818/mosaic/runs/20261024-storage-offload-01/protection-01.json",
+    "bytes": 56775,
+    "sha256": "35c78f3571b26304e453eb9da1e04c1fe0bdd05d0a6e3756e81e3f825d121511",
+    "staging_evidence": "results/hpc/20261024-storage-offload-01/protection-staging-01/",
+    "all_mosaic_and_home_paths_protected": true,
+    "all_current_vae_embedding_sources_inputs_checkpoints_contexts_data_and_proofs_protected": true
+  },
+  "backup": {
+    "local_path": "results/hpc/20261024-storage-offload-01/backup-01/legacy-offload-01.tar.gz",
+    "remote_completion_receipt": "/work3/s234818/mosaic/runs/20261024-storage-offload-01/legacy-offload-01/stream-complete.json",
+    "status": "intentionally_retired_incomplete_backup_all_originals_retained",
+    "partial_bytes": 1169453216,
+    "partial_sha256": "ae5c9639cf018247be0b007b28c77ab0e1fedc30c982a9189236119e70b336e1",
+    "retirement_proof": "stream-retirement-01.json",
+    "remote_retirement_receipt_sha256": "41d238499d97bdb0e415c684a5ccf95bb2c73b7264395c310816e144e83988ab",
+    "original_owned_producer_no_longer_running": true,
+    "no_large_remote_archive": true,
+    "all_members_locally_verified": false
+  },
+  "removed_files_verified": 0,
+  "actual_quota_savings_established": false,
+  "scientific_or_saved_current_results_changed": false,
+  "paused_monitor_changed": false,
+  "required_next": [
+    "Authenticate separate actual remote completed stream receipt.",
+    "Verify exact laptop compressed bytes and every original member.",
+    "Only then run separately guarded literal unlink with fresh active-set and unchanged-file checks.",
+    "Audit durable deletion journal, retained entries, protected inputs and fresh quota.",
+    "Repeat unchanged full Pro03 admission before any CPU866 recovery submission."
+  ]
+}

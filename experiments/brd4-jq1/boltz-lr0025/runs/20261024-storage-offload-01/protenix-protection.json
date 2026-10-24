@@ -1,0 +1,1667 @@
+{
+  "created_utc": "2026-10-24T09:42:48.495398+00:00",
+  "current_status_inference": false,
+  "delete_allowlist": [],
+  "inspected_local_sources": [
+    {
+      "path": "experiments/brd4-jq1/protenix-extended-50000/runs/20261024-protenix-extended-03/extended_ops.py",
+      "sha256": "305277d9f5b8fc6678e4f950f7a799eb99f83ba973a1349f88ed9ee1c4d5db2f"
+    },
+    {
+      "path": "experiments/brd4-jq1/protenix-extended-50000/runs/20261024-protenix-extended-03/extended_protocol.py",
+      "sha256": "e26a43985e40855aa46ae91df5394d0066938e67617ba9d905ab9723d6be879a"
+    },
+    {
+      "path": "experiments/brd4-jq1/protenix-extended-50000/runs/20261024-protenix-extended-03/extended_driver.py",
+      "sha256": "42dcef6c7ab5d5f4d11aca844d0e2bbb0cd5f7101955695652211cfd0224442f"
+    },
+    {
+      "path": "experiments/brd4-jq1/protenix-extended-50000/runs/20261024-protenix-extended-03/extended_contract.py",
+      "sha256": "ce9f240a7aaa809e4e1b91674e35462dc966279f40254cccde17640c6a8628fc"
+    },
+    {
+      "path": "experiments/brd4-jq1/protenix-extended-50000/runs/20261024-protenix-extended-03/extended_cpu.lsf",
+      "sha256": "14eb28b2d97f843e11d43023960b0a0c121bd7cf8b83c834f04d3d456a5abd74"
+    },
+    {
+      "path": "experiments/brd4-jq1/protenix-extended-50000/runs/20261024-protenix-extended-03/extended_stage.lsf",
+      "sha256": "bd4a2d0c377caaa90064945034ab55736bdc59e02043b9a21452b3683078cf2b"
+    },
+    {
+      "path": "experiments/brd4-jq1/protenix-extended-50000/runs/20261024-protenix-extended-03/parent.json",
+      "sha256": "397807622c1b4a08b77750bdd7eb0c4236d91b62ccdc11db56df53cd13760f13"
+    },
+    {
+      "path": "experiments/brd4-jq1/protenix-extended-50000/runs/20261024-protenix-extended-03/submit_recovery02.py",
+      "sha256": "307ee96a42e1fa0c446ce2e7aaf44072eebc96ec37aad38561d1e0b56e5790d2"
+    },
+    {
+      "path": "experiments/brd4-jq1/protenix-extended-50000/runs/20261024-protenix-extended-03/package.json",
+      "sha256": "f61507988e54efca1232ba3b5b09d87df3f5816392acdbf6ab02550d1cbe65d5"
+    },
+    {
+      "path": "experiments/brd4-jq1/fixed-lrreset/runs/20261023-brd4-jq1-lrreset-analysis-03/core-scripts__jq1_lrboost_report_contract.py",
+      "sha256": "e4a8b0b5ba7eafd2eda69438543e8338332bba63a9da7ed5ccf23b83fbbbd2ab"
+    },
+    {
+      "path": "experiments/brd4-jq1/fixed-lrreset/runs/20261023-brd4-jq1-lrreset-analysis-03/core-scripts__lrboost_endpoint_diagnostics.py",
+      "sha256": "f14e2e3776a0458edfd07c250e03d75dfc125ec8c4506ea3942865073ee9a7e6"
+    }
+  ],
+  "no_local_numerical_execution": true,
+  "no_remote_mutation": true,
+  "no_saved_result_change": true,
+  "no_ssh": true,
+  "older_original_snapshots": {
+    "current_report_requires_all_frames": true,
+    "direct_continuation_other_saved_npz_read": false,
+    "direct_continuation_reads": [
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-protenix/payload/study/case-0/snapshots/step-10000.npz"
+    ],
+    "offload_now": false,
+    "reason": "Current pending saved-only report/collector rereads exact every-frame probability snapshots. Diagnostics additionally select original0/10000 plus nearest declared nearby state (9500,9900,9999) if applicable."
+  },
+  "original_large_metadata": {
+    "fields": [
+      "summary.json",
+      "case-0/report.json",
+      "case-0/states.jsonl",
+      "case-0/updates.jsonl"
+    ],
+    "must_remain_remote_under_current_contract": true,
+    "reason": "Pro03 CPU verify_parent rehashes and parses these original bytes and compares complete JSONL rows; a laptop-only copy cannot satisfy original remote paths."
+  },
+  "possible_offload_review_only": [
+    {
+      "condition": "Parent proves no currently executing/pending operator needs this exact path, complete laptop archive and every member match, source tree/proofs retained, fresh per-file identity/race check before removal.",
+      "scope": "A redundant upload .tar.gz beside a fully authenticated source tree"
+    },
+    {
+      "condition": "Parent inventories exact paths and verifies no current subprocess, certificate proof or symlink target depends on them; full backup and race-safe identity check still mandatory.",
+      "scope": "Past pytest cache/owned temporary fixture directories not in any active proof/source map"
+    },
+    {
+      "candidate_names_only": [
+        "alphafold2",
+        "boltzgen",
+        "promera",
+        "openfold3",
+        "huggingface",
+        "opendde",
+        "msa",
+        "protenix_mini_default_v0.5.0",
+        "protenix_base_default_v1.0.0",
+        "protenix_base_20250630_v1.0.0",
+        "protenix-v2"
+      ],
+      "condition": "These are source-declared loader names, not proof of remote existence or non-use. Parent must check all current experiments and other projects before selecting an exact asset; never delete a whole cache directory containing the five protected Tiny files.",
+      "scope": "Other Mosaic model-cache families"
+    }
+  ],
+  "required_exact_files": [
+    {
+      "consumers": [
+        "FrozenProtenixTiny.load -> bootstrap_native_assets(include_model=True)"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/cache/mosaic/protenix/clusters-by-entity-40.txt",
+      "reasons": [
+        "Pinned offline Tiny native asset, checked before native loader import"
+      ],
+      "sha256": "4828f38172e9f6cc5b6c552c23012d5f1d73178c178a31482a1363991a16d3cf"
+    },
+    {
+      "consumers": [
+        "FrozenProtenixTiny.load -> bootstrap_native_assets(include_model=True)"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/cache/mosaic/protenix/components.v20240608.cif",
+      "reasons": [
+        "Pinned offline Tiny native asset, checked before native loader import"
+      ],
+      "sha256": "7240b17369ccfbbcc86e2d02dc8c9db59f46c32e0420f58889c6c121c60bfef0"
+    },
+    {
+      "consumers": [
+        "FrozenProtenixTiny.load -> bootstrap_native_assets(include_model=True)"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/cache/mosaic/protenix/components.v20240608.cif.rdkit_mol.pkl",
+      "reasons": [
+        "Pinned offline Tiny native asset, checked before native loader import"
+      ],
+      "sha256": "2d6caced2d26c62015115a1d0a50f4106755a300e0c2a2d2b5c101c9038dcbcd"
+    },
+    {
+      "consumers": [
+        "FrozenProtenixTiny.load -> bootstrap_native_assets(include_model=True)"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/cache/mosaic/protenix/protenix_tiny_default_v0.5.0.eqx",
+      "reasons": [
+        "Pinned offline Tiny native asset, checked before native loader import"
+      ],
+      "sha256": "19f5f7af00cda104e8b059289e7e641cecc03309d7e960e6e53d82ad6e3f1f57"
+    },
+    {
+      "consumers": [
+        "FrozenProtenixTiny.load -> bootstrap_native_assets(include_model=True)"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/cache/mosaic/protenix/protenix_tiny_default_v0.5.0.skeleton.pkl",
+      "reasons": [
+        "Pinned offline Tiny native asset, checked before native loader import"
+      ],
+      "sha256": "d2192a547d471ed132e1b051b496baf5e9eb60dca1519ae12a78de124808aa1e"
+    },
+    {
+      "bytes": 9714,
+      "consumers": [
+        "Pro03 extended_protocol.verify_parent, called by certify_cpu"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/lrreset-analysis-03/complete-protenix/payload/assessment.json",
+      "reasons": [
+        "Pinned original completed Pro29792670 collector"
+      ],
+      "sha256": "1293b8de2025e3cb267f05f3b8eb66ed9254360e4d03184eb98b4c9153ace3e6"
+    },
+    {
+      "bytes": 28,
+      "consumers": [
+        "Current saved-only report collector/terminal evidence contracts"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/lrreset-analysis-03/complete-protenix/payload/native-scheduler-0.txt",
+      "reasons": [
+        "Original complete-frame collector proof closure"
+      ],
+      "sha256": "4e5507060dd46e4fae1056c2d75003c01bff9286974607a0b6e03c4c0aac2919"
+    },
+    {
+      "bytes": 2201,
+      "consumers": [
+        "Current saved-only report collector/terminal evidence contracts"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/lrreset-analysis-03/complete-protenix/payload/native-stdout.txt",
+      "reasons": [
+        "Original complete-frame collector proof closure"
+      ],
+      "sha256": "46f7ff9c942cf3ca9447e4d4d2630a3e604d8a6cd42504b56e8a0fcd6bb3170e"
+    },
+    {
+      "bytes": 2549313,
+      "consumers": [
+        "Current saved-only report collector/terminal evidence contracts"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/lrreset-analysis-03/complete-protenix/payload/snapshots.json",
+      "reasons": [
+        "Original complete-frame collector proof closure"
+      ],
+      "sha256": "ec8fa62462e5e9db4bb83f431ed43121e30b619f3bc7b43e53b7295224d5d919"
+    },
+    {
+      "bytes": 1750,
+      "consumers": [
+        "Current saved-only report collector/terminal evidence contracts"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/lrreset-analysis-03/cpu-certificate.json",
+      "reasons": [
+        "Original complete-frame collector proof closure"
+      ],
+      "sha256": "c1cfb3730419a48e82c45b45981a874275dbdec31a13fdffbf865139b9416cf3"
+    },
+    {
+      "bytes": 1705,
+      "consumers": [
+        "Current saved-only report collector/terminal evidence contracts"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/lrreset-analysis-03/cpu/payload/report-tests.log",
+      "reasons": [
+        "Original complete-frame collector proof closure"
+      ],
+      "sha256": "889df7023d873cdca04b5885d31d060116000a4ef58f2e692c02f66e7e6688d8"
+    },
+    {
+      "bytes": 53996,
+      "consumers": [
+        "Current saved-only report collector/terminal evidence contracts"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/lrreset-analysis-03/cpu/payload/report-tests.xml",
+      "reasons": [
+        "Original complete-frame collector proof closure"
+      ],
+      "sha256": "ecd1430a3007e90e01965cee5f6aa3575cd20a87039fc583ad33d0253de1a4d8"
+    },
+    {
+      "bytes": 1848,
+      "consumers": [
+        "Current saved-only report collector/terminal evidence contracts"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/lrreset-analysis-03/cpu/payload/test-invocation.json",
+      "reasons": [
+        "Original complete-frame collector proof closure"
+      ],
+      "sha256": "3d8c123c9e1d7046e4f4cfebd85c38ec7e6017083ccd2a5b7832456a9054565b"
+    },
+    {
+      "bytes": 3730,
+      "consumers": [
+        "Current saved-only report collector/terminal evidence contracts"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/lrreset-analysis-03/cpu/scheduler-final-1.txt",
+      "reasons": [
+        "Original complete-frame collector proof closure"
+      ],
+      "sha256": "a93271080ee22def31c78e1d1284bfd8669506786ceb47cc664b16c737a75842"
+    },
+    {
+      "bytes": 2233,
+      "consumers": [
+        "Current saved-only report collector/terminal evidence contracts"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/lrreset-analysis-03/cpu/stdout.29796532.log",
+      "reasons": [
+        "Original complete-frame collector proof closure"
+      ],
+      "sha256": "a232dc53006ddd893d3954cbccb949ad90a801fc12ec4fb664c869b18f915ece"
+    },
+    {
+      "bytes": 7851,
+      "consumers": [
+        "Current saved-only report collector/terminal evidence contracts"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/lrreset-analysis-release-03/source/scripts/capture_jq1_lrboost_completion.py",
+      "reasons": [
+        "Original complete-frame collector proof closure"
+      ],
+      "sha256": "8f3a4838f79db7232f299f6ebfc85637ad99ca7e6b33bda4eb23dfd07c5c91bc"
+    },
+    {
+      "bytes": 2452,
+      "consumers": [
+        "Current saved-only report collector/terminal evidence contracts"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/lrreset-analysis-release-03/source/source_manifest.json",
+      "reasons": [
+        "Original complete-frame collector proof closure"
+      ],
+      "sha256": "8e3045ddfd44a701127deb7af7a163536dfbf699123ba883f98207d6d57b95d5"
+    },
+    {
+      "bytes": 1761,
+      "consumers": [
+        "Pro03 operator authenticate_history; historical failure preservation"
+      ],
+      "direct_runtime_or_guard_read": false,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/continuation-after-native-0000/stderr.29798162.log",
+      "reasons": [
+        "Original641 pre-model failure evidence; exact staging history pins"
+      ],
+      "sha256": "bd53db318c0b92fcac7c95b4ee18f7095283ea4d6355c2bcbd0ccd4753ceec7d"
+    },
+    {
+      "bytes": 2344,
+      "consumers": [
+        "Pro03 operator authenticate_history; historical failure preservation"
+      ],
+      "direct_runtime_or_guard_read": false,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/continuation-after-native-0000/stdout.29798162.log",
+      "reasons": [
+        "Original641 pre-model failure evidence; exact staging history pins"
+      ],
+      "sha256": "da7983522401fefd7cb0d6ccf63c8785a105fe56d7d4fe19772586e14caab707"
+    },
+    {
+      "bytes": 1382,
+      "consumers": [
+        "Pro03 operator authenticate_history; historical failure preservation"
+      ],
+      "direct_runtime_or_guard_read": false,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/continuation-after-native-0000/submission.json",
+      "reasons": [
+        "Original641 pre-model failure evidence; exact staging history pins"
+      ],
+      "sha256": "318770b52d775cb93f25192b5f9f33f618d2f28c09bff104c3332176b50c8daf"
+    },
+    {
+      "bytes": 3710,
+      "consumers": [
+        "Pro03 operator authenticate_history; historical failure preservation"
+      ],
+      "direct_runtime_or_guard_read": false,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/continuation-native-0000/stderr.29798161.log",
+      "reasons": [
+        "Original641 pre-model failure evidence; exact staging history pins"
+      ],
+      "sha256": "747533af4205a17eb3e4073720a4f5cd1c2bdcd46255de7adb72a0ecd3d9ddd4"
+    },
+    {
+      "bytes": 2342,
+      "consumers": [
+        "Pro03 operator authenticate_history; historical failure preservation"
+      ],
+      "direct_runtime_or_guard_read": false,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/continuation-native-0000/stdout.29798161.log",
+      "reasons": [
+        "Original641 pre-model failure evidence; exact staging history pins"
+      ],
+      "sha256": "2bacdc93fa3398c3238f156cebeac853c39d647f94502d8e7cb810ccb8bd5919"
+    },
+    {
+      "bytes": 1356,
+      "consumers": [
+        "Pro03 operator authenticate_history; historical failure preservation"
+      ],
+      "direct_runtime_or_guard_read": false,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/continuation-native-0000/submission.json",
+      "reasons": [
+        "Original641 pre-model failure evidence; exact staging history pins"
+      ],
+      "sha256": "287f339427b96c7b269938e7b09638a12855522d9a5c8d390056f162ac443df7"
+    },
+    {
+      "bytes": 1761,
+      "consumers": [
+        "Pro03 operator authenticate_history; historical failure preservation"
+      ],
+      "direct_runtime_or_guard_read": false,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/random-after-native-0000/stderr.29798160.log",
+      "reasons": [
+        "Original641 pre-model failure evidence; exact staging history pins"
+      ],
+      "sha256": "bd53db318c0b92fcac7c95b4ee18f7095283ea4d6355c2bcbd0ccd4753ceec7d"
+    },
+    {
+      "bytes": 2320,
+      "consumers": [
+        "Pro03 operator authenticate_history; historical failure preservation"
+      ],
+      "direct_runtime_or_guard_read": false,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/random-after-native-0000/stdout.29798160.log",
+      "reasons": [
+        "Original641 pre-model failure evidence; exact staging history pins"
+      ],
+      "sha256": "69d249db60f9760a774225af40c5df92ce66e6d8e874adc74c7e678d9daed5be"
+    },
+    {
+      "bytes": 1358,
+      "consumers": [
+        "Pro03 operator authenticate_history; historical failure preservation"
+      ],
+      "direct_runtime_or_guard_read": false,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/random-after-native-0000/submission.json",
+      "reasons": [
+        "Original641 pre-model failure evidence; exact staging history pins"
+      ],
+      "sha256": "5bb9375eff799d02c9cf55ab55ffdfe9f9813a59abfdc54e73058bd23c90a254"
+    },
+    {
+      "bytes": 3440,
+      "consumers": [
+        "Pro03 operator authenticate_history; historical failure preservation"
+      ],
+      "direct_runtime_or_guard_read": false,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/random-native-0000/stderr.29798159.log",
+      "reasons": [
+        "Original641 pre-model failure evidence; exact staging history pins"
+      ],
+      "sha256": "3b6a507c49322336efd96f9df70f673c69eeb870c4c81d11f7e11f2a75b024ca"
+    },
+    {
+      "bytes": 2318,
+      "consumers": [
+        "Pro03 operator authenticate_history; historical failure preservation"
+      ],
+      "direct_runtime_or_guard_read": false,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/random-native-0000/stdout.29798159.log",
+      "reasons": [
+        "Original641 pre-model failure evidence; exact staging history pins"
+      ],
+      "sha256": "629e9eed183a7ea0413b89d16540d36cf37c053a9c6644c8d52f0249030078da"
+    },
+    {
+      "bytes": 1332,
+      "consumers": [
+        "Pro03 operator authenticate_history; historical failure preservation"
+      ],
+      "direct_runtime_or_guard_read": false,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-01/random-native-0000/submission.json",
+      "reasons": [
+        "Original641 pre-model failure evidence; exact staging history pins"
+      ],
+      "sha256": "b1b2d0a191ac1f40a85b76a48709880c0eec897c1b2ef5fab502849bb27eda01"
+    },
+    {
+      "bytes": 2699,
+      "consumers": [
+        "Current saved-only report collector/terminal evidence contracts"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-protenix/payload/study/case-0/combined_initial_checks/report.json",
+      "reasons": [
+        "Original complete-frame collector proof closure"
+      ],
+      "sha256": "3ef8a644ce2963837f6c723860ca585dc925727a9edda20a24b65c30f4d5c593"
+    },
+    {
+      "bytes": 233884234,
+      "consumers": [
+        "Pro03 extended_protocol.verify_parent, called by certify_cpu",
+        "Current saved-only report collector/terminal evidence contracts"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-protenix/payload/study/case-0/report.json",
+      "reasons": [
+        "Pinned original completed Pro29792670 case",
+        "Original complete-frame collector proof closure"
+      ],
+      "sha256": "60dfb100c34a731b5270c7973bcc7b0d9f6f14324f8b7a0567ccb0aaa95ba1ba"
+    },
+    {
+      "bytes": 14226,
+      "consumers": [
+        "Pro03 extended_ops.input_snapshot; extended_protocol.restore_logits"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-protenix/payload/study/case-0/snapshots/step-10000.npz",
+      "reasons": [
+        "Exact FP32 logits/probabilities/key continuation boundary"
+      ],
+      "sha256": "edf15f06ba1b6591d62cbc3e04e19ecd93b553a0627da38c370fdeed3c1b780f"
+    },
+    {
+      "bytes": 47502107,
+      "consumers": [
+        "Pro03 extended_protocol.verify_parent, called by certify_cpu",
+        "Current saved-only report collector/terminal evidence contracts"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-protenix/payload/study/case-0/states.jsonl",
+      "reasons": [
+        "Pinned original completed Pro29792670 states",
+        "Original complete-frame collector proof closure"
+      ],
+      "sha256": "485d0ed7029898cd28c7bab09ff1ab37d34f4c71cd9466a7c160ff1b45bf4527"
+    },
+    {
+      "bytes": 8420767,
+      "consumers": [
+        "Pro03 extended_protocol.verify_parent, called by certify_cpu",
+        "Current saved-only report collector/terminal evidence contracts"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-protenix/payload/study/case-0/updates.jsonl",
+      "reasons": [
+        "Pinned original completed Pro29792670 updates",
+        "Original complete-frame collector proof closure"
+      ],
+      "sha256": "1b751e88ecb99727f6144eccc60c58f0e57a2efa02a017b1d5c1d8956eaca7fb"
+    },
+    {
+      "bytes": 1197,
+      "consumers": [
+        "Current saved-only report collector/terminal evidence contracts"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-protenix/payload/study/initialization.npz",
+      "reasons": [
+        "Original complete-frame collector proof closure"
+      ],
+      "sha256": "351789aa62d3ff111a4d2050a062cf844a1f29a87a7e352af465ff4299fd1bbf"
+    },
+    {
+      "bytes": 5090,
+      "consumers": [
+        "Current saved-only report collector/terminal evidence contracts"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-protenix/payload/study/native_gradient_checks/report.json",
+      "reasons": [
+        "Original complete-frame collector proof closure"
+      ],
+      "sha256": "04e641b69132069a2cfd42b7de25d30c78aa6a5a374fd30bb6282809e12c1064"
+    },
+    {
+      "bytes": 3948,
+      "consumers": [
+        "Current saved-only report collector/terminal evidence contracts"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-protenix/payload/study/pocket_definition.json",
+      "reasons": [
+        "Original complete-frame collector proof closure"
+      ],
+      "sha256": "9376c715eaf5b48689fb3e995b00d7820601a7776970df66bd7e7cff3b13ee43"
+    },
+    {
+      "bytes": 298580732,
+      "consumers": [
+        "Pro03 extended_protocol.verify_parent, called by certify_cpu",
+        "Current saved-only report collector/terminal evidence contracts"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-protenix/payload/study/summary.json",
+      "reasons": [
+        "Pinned original completed Pro29792670 summary",
+        "Original complete-frame collector proof closure"
+      ],
+      "sha256": "b94d4bae58b7c82b92f4cf0b6b0e9804734afff0f54ea0b162b65d825ec2661d"
+    },
+    {
+      "bytes": 5098,
+      "consumers": [
+        "Pro03 extended_protocol.verify_parent, called by certify_cpu",
+        "Current saved-only report collector/terminal evidence contracts"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-protenix/payload/study/terminal_gradient_checks/report.json",
+      "reasons": [
+        "Pinned original completed Pro29792670 terminal",
+        "Original complete-frame collector proof closure"
+      ],
+      "sha256": "bbebdde489788df172f46822a3cdd486efaadcc61c9fa2a4cc40ec4716e93440"
+    },
+    {
+      "bytes": 2201,
+      "consumers": [
+        "Pro03 extended_protocol.verify_parent, called by certify_cpu"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-protenix/stdout.29792670.log",
+      "reasons": [
+        "Pinned original completed Pro29792670 stdout"
+      ],
+      "sha256": "46f7ff9c942cf3ca9447e4d4d2630a3e604d8a6cd42504b56e8a0fcd6bb3170e"
+    },
+    {
+      "bytes": 21266,
+      "consumers": [
+        "Pro03 startup_inputs and unchanged driver validation",
+        "Current saved-only report collector/terminal evidence contracts"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/assessment.json",
+      "reasons": [
+        "Original frozen context assessment",
+        "Original complete-frame collector proof closure"
+      ],
+      "sha256": "9674aacd7c8601f755fcad31df6efb9877dc39cd5114d9b1fe3ee867c1dc55dd"
+    },
+    {
+      "consumers": [
+        "Pro03 startup_inputs/driver.load_context",
+        "Original625/report readiness contract verifies every assessment proof"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/context/prepared_context.json",
+      "reasons": [
+        "Exact original frozen context; no fresh preparation",
+        "Original readiness proof closure retained"
+      ],
+      "sha256": "694234feda0b6abaa7e7ed8a7f4b8367165e4326392041457236e994689df9e3"
+    },
+    {
+      "consumers": [
+        "Pro03 startup_inputs/driver.load_context",
+        "Original625/report readiness contract verifies every assessment proof"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/context/prepared_context.npz",
+      "reasons": [
+        "Exact original frozen context; no fresh preparation",
+        "Original readiness proof closure retained"
+      ],
+      "sha256": "a0a52d66ba86619474ceed50f2fc380238ed7b4227599d71a4b50a75c50513dc"
+    },
+    {
+      "consumers": [
+        "Original625/report readiness contract verifies every assessment proof"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/early_pilot/combined_initial_checks/atoms-0.001-+1.npz",
+      "reasons": [
+        "Original readiness proof closure retained"
+      ],
+      "sha256": "0a00a72f8318c7d63f787a221e057ae63645ab929a7125a8f1830efcef6c26f7"
+    },
+    {
+      "consumers": [
+        "Original625/report readiness contract verifies every assessment proof"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/early_pilot/combined_initial_checks/atoms-0.001--1.npz",
+      "reasons": [
+        "Original readiness proof closure retained"
+      ],
+      "sha256": "c2d144aa045a6e15d5d14d59293edc3728670ac93548ee82f7662d62dd3a071b"
+    },
+    {
+      "consumers": [
+        "Original625/report readiness contract verifies every assessment proof"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/early_pilot/combined_initial_checks/atoms-0.003-+1.npz",
+      "reasons": [
+        "Original readiness proof closure retained"
+      ],
+      "sha256": "6117929239ac9d3eba8f43546daaf707cca15a6050a18bb8b7929d5a840ac279"
+    },
+    {
+      "consumers": [
+        "Original625/report readiness contract verifies every assessment proof"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/early_pilot/combined_initial_checks/atoms-0.003--1.npz",
+      "reasons": [
+        "Original readiness proof closure retained"
+      ],
+      "sha256": "b94ff5c09eb6039cc5b8408dba573f3ed432fae9024f01302270d9b1a41ed328"
+    },
+    {
+      "consumers": [
+        "Original625/report readiness contract verifies every assessment proof"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/early_pilot/combined_initial_checks/atoms-0.01-+1.npz",
+      "reasons": [
+        "Original readiness proof closure retained"
+      ],
+      "sha256": "4690b71112671f315709a9cb5be32dc38b62619447328533a1b3fafc84f2b93c"
+    },
+    {
+      "consumers": [
+        "Original625/report readiness contract verifies every assessment proof"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/early_pilot/combined_initial_checks/atoms-0.01--1.npz",
+      "reasons": [
+        "Original readiness proof closure retained"
+      ],
+      "sha256": "db8158da1770cdbf1a6408d17f5f98384d1e4e067a25a6e2cb76f873f807522f"
+    },
+    {
+      "consumers": [
+        "Original625/report readiness contract verifies every assessment proof"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/early_pilot/combined_initial_checks/bonds-0.001-+1.npz",
+      "reasons": [
+        "Original readiness proof closure retained"
+      ],
+      "sha256": "ab9e1f5e366f20cd3c03e025fe1f100db3f96530e7d83ce38bcc80148735d667"
+    },
+    {
+      "consumers": [
+        "Original625/report readiness contract verifies every assessment proof"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/early_pilot/combined_initial_checks/bonds-0.001--1.npz",
+      "reasons": [
+        "Original readiness proof closure retained"
+      ],
+      "sha256": "9f71062733edf08c819ca2ff3df6ea9eab7f12c3671e88c6d1ce5b75961e9b82"
+    },
+    {
+      "consumers": [
+        "Original625/report readiness contract verifies every assessment proof"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/early_pilot/combined_initial_checks/bonds-0.003-+1.npz",
+      "reasons": [
+        "Original readiness proof closure retained"
+      ],
+      "sha256": "628d4c289007ba40b6c75ae9287c159afd608d5fe3c6c1327951d46b5e0bff78"
+    },
+    {
+      "consumers": [
+        "Original625/report readiness contract verifies every assessment proof"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/early_pilot/combined_initial_checks/bonds-0.003--1.npz",
+      "reasons": [
+        "Original readiness proof closure retained"
+      ],
+      "sha256": "43a97e6ae5f15c7f2cb6f26361815b97ad293f2ba42a5b6711bd2f02413871b0"
+    },
+    {
+      "consumers": [
+        "Original625/report readiness contract verifies every assessment proof"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/early_pilot/combined_initial_checks/bonds-0.01-+1.npz",
+      "reasons": [
+        "Original readiness proof closure retained"
+      ],
+      "sha256": "b689db5dc78d2deb58d157c45ea4968891f64090fe0b37d7fbf861e540d3b631"
+    },
+    {
+      "consumers": [
+        "Original625/report readiness contract verifies every assessment proof"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/early_pilot/combined_initial_checks/bonds-0.01--1.npz",
+      "reasons": [
+        "Original readiness proof closure retained"
+      ],
+      "sha256": "cc53b68e5983e0a797e1893f0fe31bc954fdf7beb6aa9b4c09a42bbdfe2004fe"
+    },
+    {
+      "consumers": [
+        "Original625/report readiness contract verifies every assessment proof"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/early_pilot/combined_initial_checks/current_probe.npz",
+      "reasons": [
+        "Original readiness proof closure retained"
+      ],
+      "sha256": "8cf7fe78d1454250b4edd0f6aeb17209f626253566388731d982d80899fe1993"
+    },
+    {
+      "consumers": [
+        "Original625/report readiness contract verifies every assessment proof"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/early_pilot/combined_initial_checks/report.json",
+      "reasons": [
+        "Original readiness proof closure retained"
+      ],
+      "sha256": "8580fdf6e6d473ab34ee29f9d7df10199b5978e4a038c33615a6a00d5f14d255"
+    },
+    {
+      "consumers": [
+        "Original625/report readiness contract verifies every assessment proof"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/early_pilot/current_trial.npz",
+      "reasons": [
+        "Original readiness proof closure retained"
+      ],
+      "sha256": "25664718b379fea8c4f92fbee7280d786bcec82ff13624e9c3c3897571a294df"
+    },
+    {
+      "consumers": [
+        "Original625/report readiness contract verifies every assessment proof"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/early_pilot/references/step-0000.json",
+      "reasons": [
+        "Original readiness proof closure retained"
+      ],
+      "sha256": "9199c0bac9faded526ebd8d7b18ee5b0709a15971720f6af9c501609253e0c31"
+    },
+    {
+      "consumers": [
+        "Original625/report readiness contract verifies every assessment proof"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/early_pilot/references/step-0001.json",
+      "reasons": [
+        "Original readiness proof closure retained"
+      ],
+      "sha256": "e1f1be93ec69d46fdabccd6a8ba8b5557a26dd0c8d9dbf22edc28935d67ddc28"
+    },
+    {
+      "consumers": [
+        "Original625/report readiness contract verifies every assessment proof"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/early_pilot/references/step-0002.json",
+      "reasons": [
+        "Original readiness proof closure retained"
+      ],
+      "sha256": "173157d88ec80b47f435bfbcc1c9251cf07b50ee4ab4d4bebb5e45184ed8b576"
+    },
+    {
+      "consumers": [
+        "Original625/report readiness contract verifies every assessment proof"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/early_pilot/references/step-0003.json",
+      "reasons": [
+        "Original readiness proof closure retained"
+      ],
+      "sha256": "61e617f972f6cac7a5cf2b167d8635fe335c2b71cfa867f8b309d6ef186a3ea4"
+    },
+    {
+      "consumers": [
+        "Original625/report readiness contract verifies every assessment proof"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/early_pilot/references/step-0004.json",
+      "reasons": [
+        "Original readiness proof closure retained"
+      ],
+      "sha256": "597c34be62ef3743fb68b98d1cad1b064fe49e41907c0206a26da793762a99a9"
+    },
+    {
+      "consumers": [
+        "Original625/report readiness contract verifies every assessment proof"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/early_pilot/references/step-0005.json",
+      "reasons": [
+        "Original readiness proof closure retained"
+      ],
+      "sha256": "2af008e746d960963a52d768dee7882859750b9b931e95d70c5b7f1fa476fa19"
+    },
+    {
+      "consumers": [
+        "Original625/report readiness contract verifies every assessment proof"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/early_pilot/references/step-0006.json",
+      "reasons": [
+        "Original readiness proof closure retained"
+      ],
+      "sha256": "143414bc4097938b76dbf2e7b4abe07f08a7e54737b57664805367785d7151ec"
+    },
+    {
+      "consumers": [
+        "Original625/report readiness contract verifies every assessment proof"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/early_pilot/references/step-0007.json",
+      "reasons": [
+        "Original readiness proof closure retained"
+      ],
+      "sha256": "4898755f6f8bf9711b0304b4a8c8764159a5e5f02e074afc9989823562282ec0"
+    },
+    {
+      "consumers": [
+        "Original625/report readiness contract verifies every assessment proof"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/early_pilot/references/step-0008.json",
+      "reasons": [
+        "Original readiness proof closure retained"
+      ],
+      "sha256": "e86784835b3a9708b3d622f97ece7ef0bbf86ac0c4dc6e25d32e0199e776fcbe"
+    },
+    {
+      "consumers": [
+        "Original625/report readiness contract verifies every assessment proof"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/early_pilot/references/step-0009.json",
+      "reasons": [
+        "Original readiness proof closure retained"
+      ],
+      "sha256": "d36da3c264b15e3b95c552760a797d61d8920d3d22dc8b52520c5abf1f2be03a"
+    },
+    {
+      "consumers": [
+        "Original625/report readiness contract verifies every assessment proof"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/early_pilot/references/step-0010.json",
+      "reasons": [
+        "Original readiness proof closure retained"
+      ],
+      "sha256": "bd57c12b6edecebd4682dedcab04ad2b33b2f81ae7a7d14e1b653cfef49b0e4b"
+    },
+    {
+      "consumers": [
+        "Original625/report readiness contract verifies every assessment proof"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/early_pilot/report.json",
+      "reasons": [
+        "Original readiness proof closure retained"
+      ],
+      "sha256": "639515b5470fb730a7d8f80c3a8bbc6ea982b0c2de9cbfe83b565a3d6b3b015e"
+    },
+    {
+      "consumers": [
+        "Original625/report readiness contract verifies every assessment proof"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/early_pilot/snapshots/step-0000.npz",
+      "reasons": [
+        "Original readiness proof closure retained"
+      ],
+      "sha256": "029707d662047e15d0d13e9f4f3646f349cde679de040cc65e4da2f5c034a98d"
+    },
+    {
+      "consumers": [
+        "Original625/report readiness contract verifies every assessment proof"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/early_pilot/snapshots/step-0001.npz",
+      "reasons": [
+        "Original readiness proof closure retained"
+      ],
+      "sha256": "e2f1cbb59ae073b3a48563165f5698a84f883189dd53422f6aff5145b84653cd"
+    },
+    {
+      "consumers": [
+        "Original625/report readiness contract verifies every assessment proof"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/early_pilot/snapshots/step-0002.npz",
+      "reasons": [
+        "Original readiness proof closure retained"
+      ],
+      "sha256": "8c23003e52b48d30b4d6ab24cf47b6710d8b63a3642724767fe7215b7b45a9db"
+    },
+    {
+      "consumers": [
+        "Original625/report readiness contract verifies every assessment proof"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/early_pilot/snapshots/step-0003.npz",
+      "reasons": [
+        "Original readiness proof closure retained"
+      ],
+      "sha256": "b36dfd4e47d0a329165991268bf617cbe307133ac797001acf4604470e7fd83f"
+    },
+    {
+      "consumers": [
+        "Original625/report readiness contract verifies every assessment proof"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/early_pilot/snapshots/step-0004.npz",
+      "reasons": [
+        "Original readiness proof closure retained"
+      ],
+      "sha256": "7c4f0d3e099fecf6ec0fc2bd3e6dbde911e538fd2cb7cc4dbf987f60073aab0a"
+    },
+    {
+      "consumers": [
+        "Original625/report readiness contract verifies every assessment proof"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/early_pilot/snapshots/step-0005.npz",
+      "reasons": [
+        "Original readiness proof closure retained"
+      ],
+      "sha256": "d1a5647106a7e16c8c8070d116ebba0b671a0e46aa2d48125c55dc835fa63e49"
+    },
+    {
+      "consumers": [
+        "Original625/report readiness contract verifies every assessment proof"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/early_pilot/snapshots/step-0006.npz",
+      "reasons": [
+        "Original readiness proof closure retained"
+      ],
+      "sha256": "39fa87a1f8142d83aa2376a39a58c2c50e48a4be6dd0161cf42e6cfbb2727af8"
+    },
+    {
+      "consumers": [
+        "Original625/report readiness contract verifies every assessment proof"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/early_pilot/snapshots/step-0007.npz",
+      "reasons": [
+        "Original readiness proof closure retained"
+      ],
+      "sha256": "0150ac2fb59c52881d976c6fcaf3d23dd67e83f6e6e4c4d1e1569eae1b7753ac"
+    },
+    {
+      "consumers": [
+        "Original625/report readiness contract verifies every assessment proof"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/early_pilot/snapshots/step-0008.npz",
+      "reasons": [
+        "Original readiness proof closure retained"
+      ],
+      "sha256": "30bb23b0c2cf3d5cd68e6f75d6ef600a8b4191df040d22d007288b8934bac084"
+    },
+    {
+      "consumers": [
+        "Original625/report readiness contract verifies every assessment proof"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/early_pilot/snapshots/step-0009.npz",
+      "reasons": [
+        "Original readiness proof closure retained"
+      ],
+      "sha256": "120e7ff5b1972c94bc4a215e73a8ebb6e405497557f96a9e4707a524728ecada"
+    },
+    {
+      "consumers": [
+        "Original625/report readiness contract verifies every assessment proof"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/early_pilot/snapshots/step-0010.npz",
+      "reasons": [
+        "Original readiness proof closure retained"
+      ],
+      "sha256": "f5db53ab2fe1bbd4e413d4ab94d67c4d641dc7b9bc65409753dc61677446567f"
+    },
+    {
+      "consumers": [
+        "Original625/report readiness contract verifies every assessment proof"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/early_pilot/trials/step-0000.npz",
+      "reasons": [
+        "Original readiness proof closure retained"
+      ],
+      "sha256": "3bba6f376c84d0060c01345d5b91ef73855eec982778373612dbf2cf20dc68d1"
+    },
+    {
+      "consumers": [
+        "Original625/report readiness contract verifies every assessment proof"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/early_pilot/trials/step-0001.npz",
+      "reasons": [
+        "Original readiness proof closure retained"
+      ],
+      "sha256": "69c0c0118bec754e9de025996277a7edd72abe3bb92f508561087b26aea215b3"
+    },
+    {
+      "consumers": [
+        "Original625/report readiness contract verifies every assessment proof"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/early_pilot/trials/step-0002.npz",
+      "reasons": [
+        "Original readiness proof closure retained"
+      ],
+      "sha256": "b040bdebc60a610aa4f21c5bffae56790572cb9b8a80e15dbfb60285ffb13d30"
+    },
+    {
+      "consumers": [
+        "Original625/report readiness contract verifies every assessment proof"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/early_pilot/trials/step-0003.npz",
+      "reasons": [
+        "Original readiness proof closure retained"
+      ],
+      "sha256": "9d9f73dc39ff439a08c7e1faae779f4f870b2ba5eabaa07ad3c95a50f53a33a3"
+    },
+    {
+      "consumers": [
+        "Original625/report readiness contract verifies every assessment proof"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/early_pilot/trials/step-0004.npz",
+      "reasons": [
+        "Original readiness proof closure retained"
+      ],
+      "sha256": "45a84a11b4a4c65fd860228485e226d608238900080d3d8fe255ec895ec1ddf5"
+    },
+    {
+      "consumers": [
+        "Original625/report readiness contract verifies every assessment proof"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/early_pilot/trials/step-0005.npz",
+      "reasons": [
+        "Original readiness proof closure retained"
+      ],
+      "sha256": "f8cb4fe18a08de740dc5eee891400f6b62bb4305c6fb8256c9147e81400968da"
+    },
+    {
+      "consumers": [
+        "Original625/report readiness contract verifies every assessment proof"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/early_pilot/trials/step-0006.npz",
+      "reasons": [
+        "Original readiness proof closure retained"
+      ],
+      "sha256": "45612fe2bec3ed05922043eab5e2ba5918692c0ad02af86e7279c3ac91f0e74a"
+    },
+    {
+      "consumers": [
+        "Original625/report readiness contract verifies every assessment proof"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/early_pilot/trials/step-0007.npz",
+      "reasons": [
+        "Original readiness proof closure retained"
+      ],
+      "sha256": "f287e1adc388a293fe8bf3461d4a5b788168c7207419ba6809108544c822d36e"
+    },
+    {
+      "consumers": [
+        "Original625/report readiness contract verifies every assessment proof"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/early_pilot/trials/step-0008.npz",
+      "reasons": [
+        "Original readiness proof closure retained"
+      ],
+      "sha256": "5a84aaa301d9f56029421af032e228c7793d05b8af18c12d00004294eeb32396"
+    },
+    {
+      "consumers": [
+        "Original625/report readiness contract verifies every assessment proof"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/early_pilot/trials/step-0009.npz",
+      "reasons": [
+        "Original readiness proof closure retained"
+      ],
+      "sha256": "27a532adc48a44551b979aecd6b4fe5afda17e4b5bb08e8cfa7d3cd077995129"
+    },
+    {
+      "consumers": [
+        "Original625/report readiness contract verifies every assessment proof"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/initialization.npz",
+      "reasons": [
+        "Original readiness proof closure retained"
+      ],
+      "sha256": "351789aa62d3ff111a4d2050a062cf844a1f29a87a7e352af465ff4299fd1bbf"
+    },
+    {
+      "consumers": [
+        "Original625/report readiness contract verifies every assessment proof"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/native_gradient_checks/E_upper-0-minus.npz",
+      "reasons": [
+        "Original readiness proof closure retained"
+      ],
+      "sha256": "8fe96c21d2040e61b7f0bf2b81e4a020ec0409b97045dbd51ebdde435f093629"
+    },
+    {
+      "consumers": [
+        "Original625/report readiness contract verifies every assessment proof"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/native_gradient_checks/E_upper-0-plus.npz",
+      "reasons": [
+        "Original readiness proof closure retained"
+      ],
+      "sha256": "0925f21ec11a88cfc1a3c6ac6cff9e9f022e7ac1152a5ebca67a6de5cfc2788e"
+    },
+    {
+      "consumers": [
+        "Original625/report readiness contract verifies every assessment proof"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/native_gradient_checks/E_upper-1-minus.npz",
+      "reasons": [
+        "Original readiness proof closure retained"
+      ],
+      "sha256": "dd8e762af3a489b489cde92f92c29d5635bdedf438f2bf784796138bb5f6fe29"
+    },
+    {
+      "consumers": [
+        "Original625/report readiness contract verifies every assessment proof"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/native_gradient_checks/E_upper-1-plus.npz",
+      "reasons": [
+        "Original readiness proof closure retained"
+      ],
+      "sha256": "e7075113606373ce5d885b7e6e1bf5ace381deb6f0125c2a7fffbb1998bcb384"
+    },
+    {
+      "consumers": [
+        "Original625/report readiness contract verifies every assessment proof"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/native_gradient_checks/E_upper-2-minus.npz",
+      "reasons": [
+        "Original readiness proof closure retained"
+      ],
+      "sha256": "41e6634f7aecea45c7cf3a6ddcc554b3de3019ff5c4f223d782a62066454454e"
+    },
+    {
+      "consumers": [
+        "Original625/report readiness contract verifies every assessment proof"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/native_gradient_checks/E_upper-2-plus.npz",
+      "reasons": [
+        "Original readiness proof closure retained"
+      ],
+      "sha256": "fcb73cfb9f5bd2bd9e3e191791f542d18034f31c768ddeb9f889d51e8a1bd67f"
+    },
+    {
+      "consumers": [
+        "Original625/report readiness contract verifies every assessment proof"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/native_gradient_checks/X-0-minus.npz",
+      "reasons": [
+        "Original readiness proof closure retained"
+      ],
+      "sha256": "686f8814b8b0e92e3dcbc47baeaeeded83c91ca1ad0dcabd3cdd1b584e7ada71"
+    },
+    {
+      "consumers": [
+        "Original625/report readiness contract verifies every assessment proof"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/native_gradient_checks/X-0-plus.npz",
+      "reasons": [
+        "Original readiness proof closure retained"
+      ],
+      "sha256": "b678768c4acf0488f1ab6d27b7d2be359e6dfd8fcbf7c3a69ce515eca188d12e"
+    },
+    {
+      "consumers": [
+        "Original625/report readiness contract verifies every assessment proof"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/native_gradient_checks/X-1-minus.npz",
+      "reasons": [
+        "Original readiness proof closure retained"
+      ],
+      "sha256": "155a71815c6879fe79d3895a477b1928dcf5457f936b9f428487f18b30e75fd5"
+    },
+    {
+      "consumers": [
+        "Original625/report readiness contract verifies every assessment proof"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/native_gradient_checks/X-1-plus.npz",
+      "reasons": [
+        "Original readiness proof closure retained"
+      ],
+      "sha256": "2c740460672f3d77b10192fb846efa95e904b81b8d14d9a66b893fda7d2ff9de"
+    },
+    {
+      "consumers": [
+        "Original625/report readiness contract verifies every assessment proof"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/native_gradient_checks/X-2-minus.npz",
+      "reasons": [
+        "Original readiness proof closure retained"
+      ],
+      "sha256": "731496e1a0992bf2be51fd84433e2b6c31b198d186cb473aca3a5d9964cd5d0f"
+    },
+    {
+      "consumers": [
+        "Original625/report readiness contract verifies every assessment proof"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/native_gradient_checks/X-2-plus.npz",
+      "reasons": [
+        "Original readiness proof closure retained"
+      ],
+      "sha256": "0d8c30c61322414ff9578e6ef7b291ebb3bfef872e0b87c5750b50ec5359137a"
+    },
+    {
+      "consumers": [
+        "Original625/report readiness contract verifies every assessment proof"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/native_gradient_checks/baseline-primal.npz",
+      "reasons": [
+        "Original readiness proof closure retained"
+      ],
+      "sha256": "9f0b66743a161ea852b8aaf49da663a874c7c307a2e400dcf86074c9b588fa14"
+    },
+    {
+      "consumers": [
+        "Original625/report readiness contract verifies every assessment proof"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/native_gradient_checks/bond-order-null.npz",
+      "reasons": [
+        "Original readiness proof closure retained"
+      ],
+      "sha256": "7536f7a0b7237285fa29b95def4de7856b57adeee644664b9027aa4047ef2776"
+    },
+    {
+      "consumers": [
+        "Original625/report readiness contract verifies every assessment proof"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/native_gradient_checks/final.npz",
+      "reasons": [
+        "Original readiness proof closure retained"
+      ],
+      "sha256": "cf7de0407d89c05a024780a89338b435e82430d6a1745bd5aa915b03360f4f20"
+    },
+    {
+      "consumers": [
+        "Original625/report readiness contract verifies every assessment proof"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/native_gradient_checks/final_graph.npz",
+      "reasons": [
+        "Original readiness proof closure retained"
+      ],
+      "sha256": "222e78443047ed3596ff63faa29a64efa2ceab58db5bcc50b59566d2350e994d"
+    },
+    {
+      "consumers": [
+        "Original625/report readiness contract verifies every assessment proof"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/native_gradient_checks/final_primal.npz",
+      "reasons": [
+        "Original readiness proof closure retained"
+      ],
+      "sha256": "aac9d7f6d150808f348a455e5be694b22c68f01f30e042d1db897ded33e8e639"
+    },
+    {
+      "consumers": [
+        "Original625/report readiness contract verifies every assessment proof"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/native_gradient_checks/initial.npz",
+      "reasons": [
+        "Original readiness proof closure retained"
+      ],
+      "sha256": "d36400f92a4d9d2ac9f87ed3d4c003ed846a1b4c934d0c9653bb0a7d6a51f985"
+    },
+    {
+      "consumers": [
+        "Original625/report readiness contract verifies every assessment proof"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/native_gradient_checks/primal-step-0-trial-0.npz",
+      "reasons": [
+        "Original readiness proof closure retained"
+      ],
+      "sha256": "e53d3047daa37b169d126fc13a02cbdb5bfef56f311b737c30b0fdcef9ac9243"
+    },
+    {
+      "consumers": [
+        "Original625/report readiness contract verifies every assessment proof"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/native_gradient_checks/report.json",
+      "reasons": [
+        "Original readiness proof closure retained"
+      ],
+      "sha256": "6599904a215ae1edb24f416c7131217003642a8feaf8ddc1bc96f3689344a273"
+    },
+    {
+      "consumers": [
+        "Original625/report readiness contract verifies every assessment proof"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/native_gradient_checks/step-0-trial-0.npz",
+      "reasons": [
+        "Original readiness proof closure retained"
+      ],
+      "sha256": "111ebf58feff6f05f54390d94126246b26bf93fbb43d8ecb063f43432d368906"
+    },
+    {
+      "consumers": [
+        "Original625/report readiness contract verifies every assessment proof"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/pocket_definition.json",
+      "reasons": [
+        "Original readiness proof closure retained"
+      ],
+      "sha256": "9376c715eaf5b48689fb3e995b00d7820601a7776970df66bd7e7cff3b13ee43"
+    },
+    {
+      "consumers": [
+        "Original625/report readiness contract verifies every assessment proof"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/summary.json",
+      "reasons": [
+        "Original readiness proof closure retained"
+      ],
+      "sha256": "6e7e6da35cce2e8fd750815f5f2ff1cfa7173dd84b176f8930b72d29d0dd2194"
+    },
+    {
+      "bytes": 1546,
+      "consumers": [
+        "Current saved-only report collector/terminal evidence contracts"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-release-04/source/examples/configs/brd4_jq1_25_fixed_lrreset_protenix_10000.json",
+      "reasons": [
+        "Original complete-frame collector proof closure"
+      ],
+      "sha256": "5b1739f0c9c82e97c05d1fee4fe2b26b8efdacb96d2f4152cd873d96b4464959"
+    },
+    {
+      "bytes": 76728,
+      "consumers": [
+        "Current saved-only report collector/terminal evidence contracts"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-release-04/source/source_manifest.json",
+      "reasons": [
+        "Original complete-frame collector proof closure"
+      ],
+      "sha256": "c2628d08f7224f3b572ab456f4113d8a66b587a5d69f85a072877052fc09a057"
+    },
+    {
+      "consumers": [
+        "Pro03 extended_cpu.lsf copies into own CPU payload"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/zhome/95/e/206121/mosaic-runs/20261019-brd4-chemistry-ramp-01-readiness/payload/composition_reference.json",
+      "reasons": [
+        "Frozen empirical chemistry composition reference"
+      ],
+      "sha256": "37b34a2ba7be47886936df48faaabdeac20481e5a9cebca9bafab831c07868eb"
+    },
+    {
+      "consumers": [
+        "Current625 saved-only report identity and declared legacy driver branch"
+      ],
+      "direct_runtime_or_guard_read": true,
+      "must_remain_remote": true,
+      "path": "/zhome/95/e/206121/mosaic-runs/20261021-brd4-jq1-25-protenix-02/run-protenix/payload/study/initialization.npz",
+      "reasons": [
+        "Original baseline initialization identity"
+      ],
+      "sha256": "351789aa62d3ff111a4d2050a062cf844a1f29a87a7e352af465ff4299fd1bbf"
+    }
+  ],
+  "required_remote_directories": [
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03",
+      "reason": "Current staged Pro03 control/output namespace: no deletion of present gates/unknown markers or future CPU/startup/native/segment proofs.",
+      "recursive": true
+    },
+    {
+      "files": 643,
+      "manifest_sha256": "da9db6821d26b884ca1749303fc8e0b0095bd9ee7cbd1b427cdcf1b22eec6562",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source",
+      "reason": "Every wrapper and driver reauthenticates full exact sealed execution source.",
+      "recursive": true
+    },
+    {
+      "files": 641,
+      "manifest_sha256": "a30f980fd8fe95001fdfc6780d720bdde6486d2421d7e4942b119ace61777f00",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-01/source",
+      "reason": "Pro03 authenticated ancestor/source comparison and failure provenance; not a redundant upload archive.",
+      "recursive": true
+    },
+    {
+      "files": 625,
+      "manifest_sha256": "c2628d08f7224f3b572ab456f4113d8a66b587a5d69f85a072877052fc09a057",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-release-04/source",
+      "reason": "Current original-study report/diagnostics and ancestor provenance require full immutable source.",
+      "recursive": true
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04",
+      "reason": "Parent reports current combined-report29796558 still PEND/invalid dependencies. All3 original saved studies, native readiness/CPU/launcher proof closure and all probability frames remain protected; no job cancellation was authorized by this audit.",
+      "recursive": true
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/lrreset-analysis-03",
+      "reason": "Current report/diagnostic control, source-input pins, collector/diagnostic evidence and pending report outcome must not disappear during offload.",
+      "recursive": true
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/lrreset-analysis-release-03/source",
+      "reason": "Currently pending report/diagnostic immutable execution source; inspect actual submitted command path before any equivalent alias claim.",
+      "recursive": true
+    },
+    {
+      "path": "/work3/s234818/mosaic/envs/protenix-tiny",
+      "reason": "Actual Pro03 Python/native Protenix/JAX/CUDA dependencies; native source hashes are authenticated inside the environment.",
+      "recursive": true
+    },
+    {
+      "path": "/work3/s234818/latentmol",
+      "reason": "Parent explicitly reports current VAE/embedding work; entire other project is protected. No dependency/status inference made here.",
+      "recursive": true
+    },
+    {
+      "path": "/zhome/95/e/206121/mosaic-runs/20261021-brd4-jq1-25-01/prepare/payload/prepared",
+      "reason": "Shared unchanged Boltz prepared context used by current peers; sibling review supplies exact asset proof closure.",
+      "recursive": true
+    }
+  ],
+  "runtime_proof_closure_rules": [
+    "For every current cpu/native/segment/startup certificate or readiness assessment, retain all path/sha256 proof targets recursively, the actual submission, raw same-job LSF/scheduler proof, and input asset files.",
+    "Do not remove any new segment snapshots: certify_segment hashes every saved state NPZ and places every snapshot into certificate.proofs; successors reverify that entire certificate closure.",
+    "Keep all original625 saved frames while current combined-report29796558 remains pending; direct continuation requirements alone do not override the separate reporting dependency.",
+    "All new owned control and scientific output namespaces are protected, even if a local snapshot previously said no jobs. Only an actual fresh parent scheduler/artifact query can establish current outcomes.",
+    "Do not use an unreferenced-file search as delete authorization: source manifests and environment/native code inventories can authenticate files without literal path strings in this review."
+  ],
+  "scope": "Pro03/641/625 continuation, frozen inputs and current original-study reporting/diagnostics; read local sealed bytes/JSON/AST only.",
+  "source_archive": {
+    "bytes": 39644558,
+    "path": "results/hpc/20261024-protenix-extended-03/source01/source.tar.gz",
+    "sha256": "bde714a20a49308365744ab5018c06a6d68dff82c3485dc075848827a5f7a8ef",
+    "source_members": 643
+  },
+  "space_accounting": {
+    "complete_remote_inventory_available": false,
+    "exact_required_file_entries": 119,
+    "hardlinks_or_sparse_allocation_observed_locally": false,
+    "physical_or_quota_savings_established": false,
+    "requirements": "Remote lstat must record device/inode/link count/mode/size/allocated blocks. Logical sizes of hardlinked paths cannot be added as physical savings; removing one link may free no data. Current conservative quota gate must be rerun after any completed deletion/quota refresh.",
+    "sum_known_logical_bytes_with_duplicate_paths_deduplicated": 591184084
+  },
+  "status": "local_dependency_protection_only_no_remote_delete_plan",
+  "version": "mosaic-current-protenix-offload-protection-v1"
+}

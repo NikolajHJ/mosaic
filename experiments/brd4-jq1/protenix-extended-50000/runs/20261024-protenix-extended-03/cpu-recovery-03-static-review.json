@@ -1,0 +1,39 @@
+{
+  "actual_submission_expressions": [
+    "ops.submit('cpu', 'cpu', manifest)",
+    "ops.submit('after-cpu', 'after-cpu', manifest, dependency)"
+  ],
+  "bootstrap_or_upload": false,
+  "checks": [
+    "Outer and generated remote AST parsed/compiled without execution",
+    "Exact prior failed source/gate/history/parent pins retained",
+    "Fresh exclusive local and remote controls; any CPU/jobs/projection/native/segment/unknown outcome rejects",
+    "All643 current read-only source and old641/ancestor625 reauthenticated remotely before any mutation",
+    "One exact unchanged full storage_gate preflight; original 4GiB/100000-file reserves remain",
+    "Only original ops.submit CPU866 and own-ended callback after fresh pass; actual submission vectors compared",
+    "No upload/extraction/chmod/unlink/rebootstrap in generated remote",
+    "Original failed gate remains unchanged before/after admission and submission"
+  ],
+  "cpu_cases_required": 866,
+  "cpu_submitted": false,
+  "fresh_gate_expression": "ops.storage_gate(control, 'preflight')",
+  "limitation": "Preparation is not execution, cleanup completion, a capacity pass, CPU pass, native readiness or optimization start.",
+  "local_control": "results/hpc/20261024-protenix-extended-03/cpu-recovery-03",
+  "local_tests_or_numerics_executed": false,
+  "operator": {
+    "bytes": 25556,
+    "path": "experiments\\brd4-jq1\\protenix-extended-50000\\runs\\20261024-protenix-extended-03\\submit_cpu_recovery03.py",
+    "sha256": "4715ca7cb9a4646f3c03a19b3cb81cb6cd3c9f4d4a1fd3da99694ec0971b31bc"
+  },
+  "original_operators_preserved": true,
+  "previous_gate_sha256": "6d1d0fae516de98615b83ebc005ab2330dd2146c08ef631f1bd5c3d28593a951",
+  "remote_code_sha256": "97b891efb301fbe4b50a34c34bc63e09bcc7341327f334c7d6f578316c6cb696",
+  "remote_control": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/cpu-recovery-03",
+  "saved_results_changed": false,
+  "settings_or_scientific_source_changed": false,
+  "source_files": 643,
+  "source_manifest_sha256": "da9db6821d26b884ca1749303fc8e0b0095bd9ee7cbd1b427cdcf1b22eec6562",
+  "ssh_executed": false,
+  "status": "prepared_static_only_not_executed",
+  "utc": "2026-10-24T10:06:38.536095+00:00"
+}

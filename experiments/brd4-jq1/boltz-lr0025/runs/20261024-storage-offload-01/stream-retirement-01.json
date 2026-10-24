@@ -1,0 +1,26 @@
+{
+  "path": "/work3/s234818/mosaic/runs/20261024-storage-offload-01/stream-retirement-complete-01.json",
+  "bytes": 1109,
+  "sha256": "41d238499d97bdb0e415c684a5ccf95bb2c73b7264395c310816e144e83988ab",
+  "local_path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261024-storage-offload-01\\backup-01\\retirement-evidence-01\\stream-retirement-complete-01.json",
+  "status": "intentionally_stopped_own_incomplete_backup",
+  "version": "mosaic-intentional-backup-retirement-proof-v1",
+  "old_exact_producer_running": false,
+  "all_remote_originals_retained": true,
+  "files": {
+    "/work3/s234818/mosaic/runs/20261024-storage-offload-01/stream-retirement-intent-01.json": {
+      "path": "/work3/s234818/mosaic/runs/20261024-storage-offload-01/stream-retirement-intent-01.json",
+      "bytes": 845,
+      "sha256": "08d8d547815332bc33f7d72b99712c1868be6064e8562e87208a018cd24b1a34",
+      "local_path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261024-storage-offload-01\\backup-01\\retirement-evidence-01\\stream-retirement-intent-01.json",
+      "status": "intentional_owned_incomplete_backup_retirement"
+    },
+    "/work3/s234818/mosaic/runs/20261024-storage-offload-01/stream-retirement-complete-01.json": {
+      "path": "/work3/s234818/mosaic/runs/20261024-storage-offload-01/stream-retirement-complete-01.json",
+      "bytes": 1109,
+      "sha256": "41d238499d97bdb0e415c684a5ccf95bb2c73b7264395c310816e144e83988ab",
+      "local_path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261024-storage-offload-01\\backup-01\\retirement-evidence-01\\stream-retirement-complete-01.json",
+      "status": "intentionally_stopped_own_incomplete_backup"
+    }
+  }
+}

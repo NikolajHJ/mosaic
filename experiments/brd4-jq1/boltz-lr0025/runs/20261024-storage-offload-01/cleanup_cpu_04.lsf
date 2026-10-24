@@ -1,0 +1,11 @@
+#!/bin/bash
+set -euo pipefail
+export PYTHONDONTWRITEBYTECODE=1
+export OMP_NUM_THREADS=2
+ROOT=/work3/s234818/mosaic/runs/20261024-storage-offload-01
+SOURCE="$ROOT/operator-source-04"
+PYTHON=/work3/s234818/mosaic/envs/protenix-tiny/bin/python
+test "${LSB_QUEUE:-}" = hpc
+test -n "${LSB_JOBID:-}"
+test "$#" = 1
+exec "$PYTHON" "$SOURCE/cleanup_cpu.py" "$1" "$ROOT/cpu-04"

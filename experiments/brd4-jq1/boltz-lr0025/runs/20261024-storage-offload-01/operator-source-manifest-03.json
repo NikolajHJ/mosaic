@@ -1,0 +1,20 @@
+{
+  "allocated_fixture_rows_expected": 32,
+  "correction": "Real supported scheduler command removes incompatible -w with -o; adds unmocked allocated scheduler test. Prior31 CPU passes remain valid for their fixture scope; actual failed scheduler query preserved. No guard weakened.",
+  "files": {
+    "cleanup_cpu.lsf": "b32767eb46d3114ccbccb9c734b51621b0963e241a5fee6a3a92a1d166836917",
+    "cleanup_cpu.py": "eac306e668864cd3f353faa29965fef2fa8be82682164037133814de86cce44d",
+    "delete_verified.py": "4765449d4c075d979c9200be29dc3b43aeaaff52440e5461551f11b69810b743",
+    "fixed25_recover_storage.py": "52c627d1865231d7c7e2a61b182640cf38f492d84a8a1f44aeec1b865c40d861",
+    "fixed25_split_storage.py": "56744c8eb858b9a15e64943427c393d058e3f680a9e4743bd42e463dc9337245",
+    "fixed25_storage.py": "e7b34835c75ba85e7b4f4380c8087d3a8c054eddacf180a693da09d5c017a9ad",
+    "fixture_backup_contract.py": "a7093729072652a6984762ba769d720e5e78f8be1211f72f915e64e93f4a527a",
+    "fresh_stream_backup.py": "69752f900542a742c221989861004869c74b5de24f702b30a25d6b0f06fd45da",
+    "offload_protocol.py": "95cbe442e6c51704e898c341ad59d7764c5069867365770b6683b1673dfc511d",
+    "stream_backup.py": "f210d448529323076a997fdc1fa494f7068dd2580100e58354af4626f9a7ef83",
+    "verify_stream_backup.py": "9401d8220cf82d38991179f3c1ae2da33a902058ab03020803e751266d95c46a"
+  },
+  "parent_manifest_sha256": "996c086e15e0151f3fc6484c14d4b5b34b7fce4b8b2e3835e6bb941dfe3391a3",
+  "purpose": "Exact file backup, independent byte verification, guarded literal unlink; no scientific execution.",
+  "version": "mosaic-offload-operator-source-v1"
+}

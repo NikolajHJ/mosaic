@@ -1,0 +1,20 @@
+{
+  "actual_cases": 44,
+  "actual_cpu_bundle_sha256": "9bb9692472172b2c673734879fa6d103143b5106a5e8b1c179cf0d95a32f3add",
+  "actual_cpu_job_id": "29806439",
+  "allocated_verification_sha256": "d712220f553d0988b0e1e3ae9655d78369999665f71641e5a670c52e163d3ce1",
+  "approved_selection_sha256": "67524633c923c9584e36a816cc2ed71657e1920a98966ae2b5d1baf1474a9c0f",
+  "binder_sha256": "d081489bdd16d7495b1f36c10ca7f7b2f6f42b0e74c27e672425f11c690ec742",
+  "intended_outputs": [
+    "collect_offload_receipts_03.py",
+    "execute_verified_removal_03.py",
+    "run_post_deletion_audit_03.py"
+  ],
+  "plan_sha256": "8abfb724eaa6629ac73d6985d6216e898788868aec70a6784bcce8ba975e57bb",
+  "protection_sha256": "a87eec9f7e68e9174604e3900490ec1ed5cbc941fec968c8c413e6cb95afd3e9",
+  "remote_execution": false,
+  "retirement02_sha256": "9c0c93d41df6708853dfa80360d66e42dffee771683f020082d294e855d934e6",
+  "source_manifest_sha256": "8a6420047f7260eedd1219c4313c835dae4bb2a13cd39d4914f9e87abcd5bafe",
+  "status": "unknown_until_three_bound_helpers_complete",
+  "utc": "2026-10-24T11:10:31.616361+00:00"
+}

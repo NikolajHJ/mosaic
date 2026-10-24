@@ -1,0 +1,123 @@
+{
+  "backup_performed": false,
+  "candidate_specific_conclusion": "No current input dependency on the reviewed September binary checkpoints or five named source120a004/source073/source071/source078/source079 study outputs was identified in actual selected plans/config/starts and authenticated entrypoint/controller usage. Root may select exact inactive binary files subject to all current source/proof/metadata protections and fresh scheduler, complete backup, member-verification and unchanged-unlink controls.",
+  "current_control_flow": [
+    "Actual embedding comparison operator imports embedding_operator.main then verify-run authenticates the explicit current release archive, complete source members and selected configuration before os.execv of latentmol.boltz.embedding_comparison_experiment with explicit current output.",
+    "Embedding bridge campaign ROOT is its source-release root. Its seal/stage/remote collection functions are local operator actions; the GPU verify-run path does not invoke a whole legacy run directory search.",
+    "ValidReferenceCampaign inherits GuardedRestart then Campaign. Imported failure-suite, short-test and independent-test controllers contribute constants/imports, not their unrelated controller methods to this MRO.",
+    "GuardedRestart.require_predecessor_stopped authenticates the exact stopped_predecessor.terminal_evidence and metadata query records; it does not reopen all paths embedded in historical status text.",
+    "Campaign.complete searches only the selected current campaign allocations for exact predecessor job ID. Campaign.advance reads selected current CPU/native/adoption/segment completion/readiness paths and exact resume checkpoints, with current-campaign containment checks.",
+    "submit_stability_study.submit reads/writes only supplied receipt-root/identity/stage metadata and submits explicit commands; its unrelated CLI main is not called by the current campaign."
+  ],
+  "deletion_performed": false,
+  "inputs": [
+    {
+      "bytes": 100421,
+      "path": "results/hpc/20261024-storage-offload-01/runtime-entrypoint-review-01/stdout.bin",
+      "sha256": "dd1a365fb099d0760db553e5d0c7119e6c9d409534a6bc614c76381818c1306e"
+    },
+    {
+      "bytes": 120508,
+      "path": "results/hpc/20261024-storage-offload-01/runtime-entrypoint-review-02/stdout.bin",
+      "sha256": "d629f5db5ffb25658d41c1b50249c63d103ca0ddc47aec41f286cbcda1ac7ede"
+    }
+  ],
+  "members_count": 14,
+  "numerical_execution_performed": false,
+  "raw_original_source_members_verified": [
+    {
+      "bytes": 897,
+      "path": "/work3/s234818/latentmol/releases/source-138-epoch36-embedding-comparison-attempt003/scripts/hpc/embedding_comparison_operator.py",
+      "record_length_sha_and_original_source_manifest_match": true,
+      "sha256": "862260d464eb8beb1319616ec9ea9d069e995d8b7faeb768f7ae0a4c7757e094"
+    },
+    {
+      "bytes": 9461,
+      "path": "/work3/s234818/latentmol/releases/source-138-epoch36-embedding-comparison-attempt003/scripts/hpc/embedding_operator.py",
+      "record_length_sha_and_original_source_manifest_match": true,
+      "sha256": "32106557aa26e2ebbef88fb3a799b4e8253f37b0556c7a9072725b67f8d7878c"
+    },
+    {
+      "bytes": 6911,
+      "path": "/work3/s234818/latentmol/releases/source-138-epoch36-embedding-comparison-attempt003/scripts/embedding_bridge_campaign.py",
+      "record_length_sha_and_original_source_manifest_match": true,
+      "sha256": "2773040fb721b8e656c6bdfe5ea299c84d5987fb3922093e2631a8c5c3fc055c"
+    },
+    {
+      "bytes": 1276,
+      "path": "/work3/s234818/latentmol/releases/source-138-epoch36-embedding-comparison-attempt003/scripts/embedding_comparison_campaign.py",
+      "record_length_sha_and_original_source_manifest_match": true,
+      "sha256": "7f91461b6a2fa244143eff5769e27b8bc0cda7fb24fb9921e31f5aa773d53814"
+    },
+    {
+      "bytes": 8062,
+      "path": "/work3/s234818/latentmol/releases/source-138-vae-cli-startup-fix-attempt001/scripts/hpc/chemistry_valid_reference_campaign.py",
+      "record_length_sha_and_original_source_manifest_match": true,
+      "sha256": "d7c92017d47f834a12c09172e9b2d65ba4865b4299c33c16a9e76eeb98b12563"
+    },
+    {
+      "bytes": 35623,
+      "path": "/work3/s234818/latentmol/releases/source-138-vae-cli-startup-fix-attempt001/scripts/hpc/chemistry_campaign.py",
+      "record_length_sha_and_original_source_manifest_match": true,
+      "sha256": "355b99febedf2906b46c73da7bc10ce984155092a132aec4cc4d578965556ad8"
+    },
+    {
+      "bytes": 6579,
+      "path": "/work3/s234818/latentmol/releases/source-138-vae-cli-startup-fix-attempt001/scripts/hpc/chemistry_runtime_continuation.py",
+      "record_length_sha_and_original_source_manifest_match": true,
+      "sha256": "d8d8068ae9efb3c96c4e1694e235b0845c7f118da7b59aa03114bf37124364d2"
+    },
+    {
+      "bytes": 5061,
+      "path": "/work3/s234818/latentmol/releases/source-138-vae-cli-startup-fix-attempt001/src/latentmol/chemistry_valid_reference_training_policy.py",
+      "record_length_sha_and_original_source_manifest_match": true,
+      "sha256": "1cec8770830e54c025c94c880123fdbdd170d0b81294b5e74421cc8620c7a05e"
+    },
+    {
+      "bytes": 7984,
+      "path": "/work3/s234818/latentmol/releases/source-138-vae-cli-startup-fix-attempt001/scripts/hpc/submit_stability_study.py",
+      "record_length_sha_and_original_source_manifest_match": true,
+      "sha256": "7e44d463275680b9f79f060e227c34a41c4d74c1a963e530d640c0510a5619da"
+    },
+    {
+      "bytes": 9863,
+      "path": "/work3/s234818/latentmol/releases/source-138-vae-cli-startup-fix-attempt001/scripts/hpc/triangle_continuation_health.py",
+      "record_length_sha_and_original_source_manifest_match": true,
+      "sha256": "6bdc96016b87812c95fdaa53078e76f1b4dac07e95fd0403c6dda70bfab8fcd1"
+    },
+    {
+      "bytes": 42241,
+      "path": "/work3/s234818/latentmol/releases/source-138-vae-cli-startup-fix-attempt001/scripts/hpc/failure_guidance_campaign.py",
+      "record_length_sha_and_original_source_manifest_match": true,
+      "sha256": "9a2fe7538cedc5fb292ac0a8179f49a0f184b32c84d7384dccd5ce59007a5005"
+    },
+    {
+      "bytes": 11216,
+      "path": "/work3/s234818/latentmol/releases/source-138-vae-cli-startup-fix-attempt001/scripts/hpc/chemistry_guarded_restart.py",
+      "record_length_sha_and_original_source_manifest_match": true,
+      "sha256": "1db57a7992350fe5f918636b7cf0dad750ef3c46301fdf2048f876bdd4e370ad"
+    },
+    {
+      "bytes": 8197,
+      "path": "/work3/s234818/latentmol/releases/source-138-vae-cli-startup-fix-attempt001/scripts/hpc/chemistry_independent_self_test.py",
+      "record_length_sha_and_original_source_manifest_match": true,
+      "sha256": "b39cbac87a8885ee71a60cc9f6ff0c9f149e9cc0c3ca8cb220e9fdbf0d0e0d32"
+    },
+    {
+      "bytes": 9812,
+      "path": "/work3/s234818/latentmol/releases/source-138-vae-cli-startup-fix-attempt001/scripts/hpc/chemistry_short_campaign.py",
+      "record_length_sha_and_original_source_manifest_match": true,
+      "sha256": "50905e43bbcce27c822e5fe988ef052f1dffbe6d7d112e3447d36ee6076c03ce"
+    }
+  ],
+  "required_archive_dependencies_retained": [
+    "/work3/s234818/latentmol/releases/source-138-epoch36-embedding-comparison-attempt003.tar.gz",
+    "/work3/s234818/latentmol/releases/source-138-vae-cli-startup-fix-attempt001.tar.gz"
+  ],
+  "scope": "Local standard-library decoding, original-manifest byte authentication, AST parsing and read-only control-flow review; no model or array deserialization.",
+  "ssh_performed": false,
+  "status": "reviewed_positive_current_input_scope",
+  "supersedes_limitation": "The earlier AST-only graph omitted same-directory bare script imports; this addendum explicitly reviews the corresponding authenticated raw entrypoint/controller code. It does not relabel the original scanner graph as complete.",
+  "unresolved_current_input_from_added_bare_imports": [],
+  "version": "mosaic-legacy-runtime-entrypoint-refinement-v1"
+}
