@@ -7302,3 +7302,52 @@ all immutable old editions exact. Future refresh helper pinned to refined04/141
 fixtures is static-only, uninvoked; monitor stays paused and no optimizer jobs
 or saved results changed. Exact proof/QA/publication hashes are in the new dated
 run campaign; full original native NPZs/large summaries remain HPC references.
+
+
+## 25 October 2026 — Requested non-chemistry continuations
+
+User explicitly requested continuations to the desired budgets. Audited exact
+remaining ranges Pro20k→50k, plainBol10k→30k and DBMol5k→10k; noisyPro1k
+alreadycomplete. Existing controllers correctly require passed terminal
+certificates; allthree partial original endpoints failed their mandatory
+derivative checks, so oldcallbacks cannot be replayed or certificates forged.
+Preparing a read-only actualqueue/endpoint/proof inventory and explicit child
+plan. No optimizer or model job submitted and no saved result/gate changed.
+
+User explicitly chose prospective endpoint-aware validation before conditional
+children. New `prospective-endpoint-admission-v1` fixes represented probability
+probes and local ladder before perturbed forwards, seals precision eligibility
+from independent baselines, preserves original coarse failures and requires
+informative agreement/frozen/nonzero evidence. Restricted original checker and
+readiness adapters retain all non-FD native/null/component/pilot/runtime checks.
+Exact native-only settings/rates and20-update matrix retention remain unchanged.
+New serial targets20k→50k Pro,10k→30k Bol,5k→10k DBMol live under the existing
+endpoint-qualification owner. Read-only10:46:08UTC inventory authenticated all
+saved endpoints/failed originals and queue; no successor present. No new job or
+native pass yet. All numerical validation remains allocated HPC; monitor paused.
+
+At11:07:22UTC actual source14-file capsule was staged read-only, manifest
+08e53ba66312b06e5f1c2836a3863479ceb85e11e9364c23026079301d2cd713,
+archive75,321B SHA22d9c72b09fd76d0f01662675826793237b046574adea1cc018288499bbc4136.
+Whole-storage preflight passed36,059,576,308required versus37,753,317,148available,
+4GiB/100k-file reserves unchanged;19,581,202finite user-quota file headroom,
+allzero physical inode counters explicitly unreported. Original scientific
+sources/configs/saved endpoints unchanged. CPU29813836/afterCPU29813837 actually
+submitted;11:08:51UTC actualCPU DONE/hpc,171 cases passed and6 actual startup
+commands accepted, callbackRUN. Independent full terminal CPU audit and new
+native checks remain pending, not inferred passes or optimization starts.
+
+At11:09:48UTC actualCPU29813836 and afterCPU29813837 bothDONE/hpc/same-job LSF
+success. Independent stdlib audit verified42 downloaded proof files, all171 raw
+XMLcases (19+43+35+74; zero failures/errors/skips),6startup receipts/source/plan
+and CPUcertSHA704e51e422da084d46faaf99c79bbfc9ae619f80fe459d9271dc4cb8754ec76e.
+Actual new native checks submitted Pro29813840/callback29813841,
+plainBol29813842/29813843,DBMol29813844/29813845. All6PEND; actual argv/resources/
+own-ended dependencies independently authenticated. Native4CPU/8GiBslot/1exclusive
+L40S/2h; callbacks1CPU/2GiB/20min. Native physical-GPU wait, no reliable ETA.
+No new native pass or child optimizer ID/start yet. Each independent guarded
+chain can submit only after new endpoint/native/pilot/runtime/frozen/source/
+actual-ready-startup/whole-storage checks pass, repeating at subsequent segment
+boundaries. Original failed studies/results unchanged, monitor paused, report
+edition0003 unchanged. Exact plan/manifest/jobs/audits in endpoint-qualification
+run20261025-continuation-admission-01; all native/numerical work allocated HPC.

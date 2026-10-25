@@ -1,0 +1,136 @@
+{
+  "version": "endpoint-aware-continuation-campaign-v1",
+  "status": "native_validation_queued_not_passed",
+  "captured_utc": "2026-10-25T11:09:48.416476+00:00",
+  "source_manifest_sha256": "08e53ba66312b06e5f1c2836a3863479ceb85e11e9364c23026079301d2cd713",
+  "archive_bytes": 75321,
+  "archive_sha256": "22d9c72b09fd76d0f01662675826793237b046574adea1cc018288499bbc4136",
+  "plan_sha256": "cf7292ff571e202d1dadd12686a341e45d45865816c95d204dd752f8da89de39",
+  "actual_cpu_job": "29813836",
+  "actual_cpu_callback": "29813837",
+  "actual_cpu_cases": 171,
+  "actual_startup_commands": 6,
+  "native_jobs": [
+    {
+      "parent": "protenix-validate-20000",
+      "job_id": "29813840",
+      "scheduler_state": "PEND",
+      "phase": "validate",
+      "resources_and_source_authenticated": true
+    },
+    {
+      "parent": "protenix-after-validate-20000",
+      "job_id": "29813841",
+      "scheduler_state": "PEND",
+      "phase": "after-validate",
+      "resources_and_source_authenticated": true
+    },
+    {
+      "parent": "boltz-validate-10000",
+      "job_id": "29813842",
+      "scheduler_state": "PEND",
+      "phase": "validate",
+      "resources_and_source_authenticated": true
+    },
+    {
+      "parent": "boltz-after-validate-10000",
+      "job_id": "29813843",
+      "scheduler_state": "PEND",
+      "phase": "after-validate",
+      "resources_and_source_authenticated": true
+    },
+    {
+      "parent": "dbmol-validate-05000",
+      "job_id": "29813844",
+      "scheduler_state": "PEND",
+      "phase": "validate",
+      "resources_and_source_authenticated": true
+    },
+    {
+      "parent": "dbmol-after-validate-05000",
+      "job_id": "29813845",
+      "scheduler_state": "PEND",
+      "phase": "after-validate",
+      "resources_and_source_authenticated": true
+    }
+  ],
+  "optimizer_jobs": [],
+  "targets": [
+    {
+      "arm": "protenix",
+      "from": 20000,
+      "to": 50000,
+      "rate": 0.3,
+      "segment_updates": 10000,
+      "original_failed_job": "29809291"
+    },
+    {
+      "arm": "boltz",
+      "from": 10000,
+      "to": 30000,
+      "rate": 0.0025,
+      "segment_updates": 10000,
+      "original_failed_job": "29809297"
+    },
+    {
+      "arm": "dbmol",
+      "from": 5000,
+      "to": 10000,
+      "rate": 0.0025,
+      "segment_updates": 2500,
+      "original_failed_job": "29810971"
+    }
+  ],
+  "storage_preflight": {
+    "status": "passed",
+    "required_bytes": 36059576308,
+    "available_bytes": 37753317148,
+    "reserve_bytes": 4294967296,
+    "file_reserve": 100000,
+    "not_a_reservation": true
+  },
+  "proofs": [
+    {
+      "path": "experiments/validation/endpoint-qualification/runs/20261025-continuation-admission-01/preparation.json",
+      "bytes": 634,
+      "sha256": "0af3206a022d9c3d5fedfe6702b7d7413a4af1004e1537338f2b6fc817d64999"
+    },
+    {
+      "path": "experiments/validation/endpoint-qualification/runs/20261025-continuation-admission-01/source-manifest.json",
+      "bytes": 15261,
+      "sha256": "08e53ba66312b06e5f1c2836a3863479ceb85e11e9364c23026079301d2cd713"
+    },
+    {
+      "path": "experiments/validation/endpoint-qualification/runs/20261025-continuation-admission-01/plan.json",
+      "bytes": 91274,
+      "sha256": "cf7292ff571e202d1dadd12686a341e45d45865816c95d204dd752f8da89de39"
+    },
+    {
+      "path": "experiments/validation/endpoint-qualification/runs/20261025-continuation-admission-01/static-verification.json",
+      "bytes": 301,
+      "sha256": "f916abcb341de4a0630fff08e3158ce1b7a81041615dcbba7696c7ddc14da83a"
+    },
+    {
+      "path": "experiments/validation/endpoint-qualification/runs/20261025-continuation-admission-01/submission.json",
+      "bytes": 11209,
+      "sha256": "26200ffe297fd57ae4bf5c74cfad5bf8dfa2a07a4c7c54ebc37d117757711f57"
+    },
+    {
+      "path": "experiments/validation/endpoint-qualification/runs/20261025-continuation-admission-01/cpu-verification.json",
+      "bytes": 993,
+      "sha256": "e16730680df532ee0a92ac0c820e1ebf0bb3dca880551ca103d168eecb276f7e"
+    },
+    {
+      "path": "experiments/validation/endpoint-qualification/runs/20261025-continuation-admission-01/initial-validation-verification.json",
+      "bytes": 1709,
+      "sha256": "427508a5f9ddb0bf2e7a2d6f61944e96fdc9aedaada6926093aba9d357242664"
+    }
+  ],
+  "original_results_changed": false,
+  "original_failures_preserved": true,
+  "optimization_settings_changed": false,
+  "monitor_remains_paused": true,
+  "actual_native_admission_passed": false,
+  "optimization_started": false,
+  "conditional_serial_dispatch": true
+}

@@ -1,0 +1,9 @@
+{
+  "status": "passed_static_bytes_only",
+  "members": 15,
+  "payload_files": 14,
+  "cpu_expected_cases": 171,
+  "manifest_sha256": "08e53ba66312b06e5f1c2836a3863479ceb85e11e9364c23026079301d2cd713",
+  "numerical_or_native_checks_run_locally": false,
+  "original_scientific_sources_modified": false
+}

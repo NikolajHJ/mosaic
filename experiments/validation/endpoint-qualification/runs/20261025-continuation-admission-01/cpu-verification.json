@@ -1,0 +1,25 @@
+{
+  "status": "passed",
+  "scope": "independent local stdlib bytes/XML/schema, not native numerical validation",
+  "captured_utc": "2026-10-25T11:09:48.416476+00:00",
+  "source_manifest_sha256": "08e53ba66312b06e5f1c2836a3863479ceb85e11e9364c23026079301d2cd713",
+  "cpu_job": "29813836",
+  "callback_job": "29813837",
+  "raw_cases": 171,
+  "modules": {
+    "tests.test_admission": 43,
+    "tests.test_continuation_driver": 35,
+    "tests.test_continuation_ops": 74,
+    "tests.test_qualification": 19
+  },
+  "actual_startup_commands": 6,
+  "native_readiness_established": false,
+  "certificate": {
+    "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-01/cpu-certificate.json",
+    "bytes": 5786,
+    "sha256": "704e51e422da084d46faaf99c79bbfc9ae619f80fe459d9271dc4cb8754ec76e"
+  },
+  "downloaded_files": 42,
+  "observation_sha256": "23a5b6524901d9bb926b8b925c399f9bccc5ad111fb675f169746baf65976be7",
+  "original_results_changed": false
+}

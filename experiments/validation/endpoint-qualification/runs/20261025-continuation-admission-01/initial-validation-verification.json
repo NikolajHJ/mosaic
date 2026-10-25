@@ -1,0 +1,55 @@
+{
+  "status": "passed_submission_proof_audit",
+  "captured_utc": "2026-10-25T11:09:48.416476+00:00",
+  "source_manifest_sha256": "08e53ba66312b06e5f1c2836a3863479ceb85e11e9364c23026079301d2cd713",
+  "observation_sha256": "23a5b6524901d9bb926b8b925c399f9bccc5ad111fb675f169746baf65976be7",
+  "actual_jobs": [
+    {
+      "parent": "protenix-validate-20000",
+      "job_id": "29813840",
+      "scheduler_state": "PEND",
+      "phase": "validate",
+      "resources_and_source_authenticated": true
+    },
+    {
+      "parent": "protenix-after-validate-20000",
+      "job_id": "29813841",
+      "scheduler_state": "PEND",
+      "phase": "after-validate",
+      "resources_and_source_authenticated": true
+    },
+    {
+      "parent": "boltz-validate-10000",
+      "job_id": "29813842",
+      "scheduler_state": "PEND",
+      "phase": "validate",
+      "resources_and_source_authenticated": true
+    },
+    {
+      "parent": "boltz-after-validate-10000",
+      "job_id": "29813843",
+      "scheduler_state": "PEND",
+      "phase": "after-validate",
+      "resources_and_source_authenticated": true
+    },
+    {
+      "parent": "dbmol-validate-05000",
+      "job_id": "29813844",
+      "scheduler_state": "PEND",
+      "phase": "validate",
+      "resources_and_source_authenticated": true
+    },
+    {
+      "parent": "dbmol-after-validate-05000",
+      "job_id": "29813845",
+      "scheduler_state": "PEND",
+      "phase": "after-validate",
+      "resources_and_source_authenticated": true
+    }
+  ],
+  "native_validation_passed": false,
+  "optimization_started": false,
+  "scope": "Actual initial submitted resources/receipts/scheduler only",
+  "original_results_changed": false,
+  "monitor_remains_paused": true
+}

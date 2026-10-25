@@ -53,3 +53,12 @@ zero failures/errors/skips, actual DONE/hpc/LSF and independent byte/XML/schema
 authentication. These are toy diagnostic controls, not pretrained native probes.
 The production checkers and all saved scientific outcomes remain unchanged.
 Evidence: [report run record](../../reporting/jq1-live-progress/runs/20261025-jq1-live-report-01/README.md).
+
+On25October2026 the user explicitly authorized a separately versioned prospective
+endpoint-aware admission check before the requested non-chemistry continuations.
+That work belongs to [the continuation run record](runs/20261025-continuation-admission-01/README.md)
+and [its declared policy](runs/20261025-continuation-admission-01/prospective-policy.md).
+`admission.py` is a new prospective API; the diagnostic-only `qualification.py`
+above and all original failed runs remain unchanged. Numerical fixtures, actual
+generated-command startup checks and native validations must pass on allocated
+HPC before conditional child optimization. Preparation is not a pass or start.
