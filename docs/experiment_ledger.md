@@ -7445,3 +7445,48 @@ expects267rawcases (89reference+30policy+76native+72ops), independently verified
 actual metadata-only startup required. No model/optimizer evaluation locally.
 Layout check still fails on preexisting discovery/missing historical README paths;
 none name this owner. Own14-member archive/AST/bytes verified.
+
+Allocated CPU29816090 actualEXIT:266passes/onefailure of267cases, zeroerrors/skips.
+Independent16-file byte/XML/LSF/startup audit passed. The failing actual-JAX
+canary established a dtype-auditor traversal bug: real Jaxpr exposes a legacy
+self-returning jaxpr accessor, which was followed before equations. No native
+GPU or optimizer ran; every old scientific outcome stays unchanged. A new
+immutable fix02 will correct graph traversal and add two controls, retaining the
+same scientific/precision policy and all other checks. Failedsource01 preserved.
+
+## 2026-10-25 — Protenix precision checker fix02 preparation
+
+New immutable endpoint-fix02 corrects only actual-JAX graph traversal plus new
+ROOT/source identities and two regression controls. Independent AST/byte
+comparison confirms precision/reference/admission policy/wrapper exactfix01;
+all native science/settings/saved inputs remain unchanged.269allocatedcases
+required, not yet passed. Failedfix01 CPU267cases/onefailure and every original
+scientific failure preserved. No optimizer branch or local numerical work.
+
+Fix02 actualCPU29816100/callback29816101 submitted17:16:59UTC after complete
+full-storage pass36,344,788,980required/36,609,872,290available, unchanged4GiB/
+100k reserves/all old forecasts. Source14files manifest09f759a7befb8a7b8f0e1d203e15acf939126fba493b30e6a2bf9cd2eea2216b;
+archive56,404B SHAfc1132f1852700cd4fa8664f244397222ff27d31f6a2375b171bbd71e4125c34.
+No full CPU/native pass or optimizer continuation established yet. Priorfix01
+CPU/callback actualEXIT confirmed17:16:45UTC, no native job; failure retained.
+Local packaging first needed the new output parent directory, corrected before
+any source02staging/submission. No duplicate/unknown submission or local numerical
+work. CurrentnewROOT02/config/source/settings/endpoint pins recorded.
+
+Fix02 CPU29816100 actualDONE/hpc/same-jobLSFsuccess at17:21:17UTC observation.
+All269 raw cases passed30policy+78native+72ops+89reference, no errors/failures/
+skips. Actual native metadata-only startup passed with no numerical setup/update.
+Independent17-file byte/XML/schema/LSF/source audit passed; original failures
+stay failed. Callback29816101 RUN; native job/pass and optimization continuation
+not yet established. The actual-JAX traversal regression now passes.
+
+At17:23:59UTC actualCPU29816100 and callback29816101 DONE/hpc/same-jobLSFsuccess;
+all269 CPU cases and actual metadata startup independently verified. Fresh full
+dispatch storage passed36,344,788,980required/37,683,264,268available, unchanged
+4GiB/100k/all original future projections. Actual nativeGPU29816113 submitted
+(oneexclusiveL40S/4CPU/8GiBslot/2h), PEND at this observation. Independent24-file
+CPU/certificate/rawXML/actualcallbackLSF/source/proof/resource/storage audit passed,
+CPUcertificateSHA7af030f4ee35dd84c91ca5d55a75802384e4f51fb4fb5ed7baa773c1f9e72f0e.
+No native precision gate pass or optimization continuation established; exact20k
+saved state/source643/LR0.3/objective/frozen inputs remain unchanged. No automatic
+monitor restart; preserve source01 failure and do not repeat either submission.

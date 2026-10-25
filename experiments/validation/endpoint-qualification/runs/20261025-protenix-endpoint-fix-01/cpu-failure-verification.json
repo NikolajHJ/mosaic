@@ -1,0 +1,34 @@
+{
+  "status": "independently_verified_cpu_failure",
+  "captured_utc": "2026-10-25T17:13:43.348308+00:00",
+  "cpu_job_id": "29816090",
+  "scheduler_status": "EXIT",
+  "source_manifest_sha256": "bdc0a25311602e4c0c9a1645fdc6f62181023d6834ea12554f6327fe3114c52f",
+  "files_byte_verified": 16,
+  "cases": 267,
+  "module_counts": {
+    "tests.test_protenix_precision_admission": 30,
+    "tests.test_protenix_precision_native": 76,
+    "tests.test_protenix_precision_ops": 72,
+    "tests.test_protenix_precision_reference": 89
+  },
+  "failed_cases": [
+    {
+      "module": "tests.test_protenix_precision_native",
+      "name": "test_actual_nested_cpu_jaxpr_accepts_float64_and_rejects_downcast",
+      "outcomes": [
+        {
+          "type": "failure",
+          "message": "ValueError: Reference native computation contains non-FP64 floating operations: []",
+          "text": "def test_actual_nested_cpu_jaxpr_accepts_float64_and_rejects_downcast():\n        # Runs only in the allocated CPU capsule; no model or pretrained inference.\n        import jax\n        import jax.numpy as jnp\n        assert jax.config.jax_enable_x64, \"Precision fixtures require declared CPU x64\"\n        x = jnp.asarray([.25, .5], dtype=jnp.float64)\n        double = jax.make_jaxpr(jax.jit(lambda v: jnp.sin(v) + jnp.sum(v)))(x)\n>       assert n.audit_jaxpr(double)[\"status\"] == \"passed\"\n               ^^^^^^^^^^^^^^^^^^^^^\n\ntests/test_protenix_precision_native.py:213: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \nscripts/protenix_precision_native.py:179: in audit_jaxpr\n    require(counts.get(\"float64\", 0) > 0 and not wrong, \"Reference native computation contains non-FP64 floating operations: \" + repr(wrong[:8]))\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nvalue = False\nmessage = 'Reference native computation contains non-FP64 floating operations: []'\n\n    def require(value, message):\n        if not value:\n>           raise ValueError(message)\nE           ValueError: Reference native computation contains non-FP64 floating operations: []\n\nscripts/protenix_precision_native.py:46: ValueError"
+        }
+      ]
+    }
+  ],
+  "actual_startup_passed_metadata_only": true,
+  "native_result_established": false,
+  "optimizer_updates": 0,
+  "observation_sha256": "3819be3d149d4ae9b6e14e066db526c8214ae794532494f78658c883cce13903",
+  "original_results_changed": false,
+  "local_scientific_calculations": false
+}

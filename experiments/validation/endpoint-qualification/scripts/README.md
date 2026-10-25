@@ -21,3 +21,5 @@ The `protenix_precision_*` modules own the separate-process prospective precisio
 reference, endpoint policy and bounded native/CPU orchestration. The associated
 `manage_protenix_precision.py` is stdlib-only. Exact scope and immutable paths are
 in runs/20261025-protenix-endpoint-fix-01/README.md; no optimizer branch exists.
+
+`verify_protenix_precision_delivery.py` independently checks compact CPU delivery bytes, raw XML case attribution, actual scheduler/LSF and metadata-only startup using the standard library only. It does not evaluate arrays or native gradients.

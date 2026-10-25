@@ -21,8 +21,8 @@ import xml.etree.ElementTree as ET
 VERSION = "protenix-endpoint-precision-source-v1"
 PLAN_VERSION = "protenix-endpoint-precision-plan-v1"
 BASE = Path("/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01")
-SOURCE = BASE / "protenix-endpoint-fix-release-01/source"
-ROOT = BASE / "protenix-endpoint-fix-01"
+SOURCE = BASE / "protenix-endpoint-fix-release-02/source"
+ROOT = BASE / "protenix-endpoint-fix-02"
 PARENT_SOURCE = BASE / "nonchem-endpoint-release-02/source"
 PARENT_PIN = "88372f92b6349e6c34c542fb84fb39482c4c340568431d1499ebc166a1e1e7fa"
 PARENT_FILES = 14

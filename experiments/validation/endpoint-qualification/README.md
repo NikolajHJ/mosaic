@@ -77,3 +77,9 @@ is being validated at the immutable20k endpoint. It separates the original FP32
 measurement from an authenticated full-FP64 reference and rejects wrong-gradient
 controls. This validation-only capsule cannot submit optimizer work or erase any
 original failure. Preparation/local AST checks are not an allocated/native pass.
+
+The first separate-precision candidate failed its real-JAX dtype traversal
+canary (266/267passes) before any native work. [Fix02](runs/20261025-protenix-endpoint-fix-02/README.md)
+corrects that traversal and has passed all269 allocated CPU fixtures plus actual
+metadata-only startup. Native saved-endpoint validation remains required; no
+optimizer continuation or original recertification follows from the CPU pass.

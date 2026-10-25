@@ -1,0 +1,33 @@
+{
+  "status": "cpu_passed_native_queued",
+  "cpu_job_id": "29816100",
+  "callback_job_id": "29816101",
+  "source_manifest_sha256": "09f759a7befb8a7b8f0e1d203e15acf939126fba493b30e6a2bf9cd2eea2216b",
+  "native_job_id": "29816113",
+  "native_gate_passed": false,
+  "optimizer_continuation_submitted": false,
+  "original_results_changed": false,
+  "optimization_settings_changed": false,
+  "monitor_remains_paused": true,
+  "preflight_storage": {
+    "status": "passed",
+    "required_bytes": 36344788980,
+    "available_bytes": 36609872290,
+    "reserve_bytes": 4294967296,
+    "file_reserve": 100000
+  },
+  "cpu_passed": true,
+  "cpu_cases": 269,
+  "cpu_verification_sha256": "792ceb7e8ffceda91a5b7eeb90d1e84d413205c3a0b4b23697db018a8b14b5d7",
+  "captured_utc": "2026-10-25T17:23:59.471364+00:00",
+  "native_scheduler_status": "PEND",
+  "dispatch_verification_sha256": "02d9703225a2700990bc66d07dd67ba9d2c41a6df0e25151f90a12b3c5ffcb8c",
+  "dispatch_storage": {
+    "status": "passed",
+    "required_bytes": 36344788980,
+    "available_bytes": 37683264268,
+    "reserve_bytes": 4294967296,
+    "file_reserve": 100000
+  },
+  "cpu_certificate_sha256": "7af030f4ee35dd84c91ca5d55a75802384e4f51fb4fb5ed7baa773c1f9e72f0e"
+}

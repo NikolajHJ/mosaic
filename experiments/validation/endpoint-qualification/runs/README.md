@@ -13,3 +13,5 @@ an original failed run into a pass or authorize a gate waiver.
 
 - `20261025-protenix-endpoint-fix-01`: prospective separate-FP64-reference checker
   validation at the untouched20k endpoint; no optimizer or historical recertification.
+
+- `20261025-protenix-endpoint-fix-02`: JAX graph traversal correction after fix01 CPU failure; same prospective/scientific policy.

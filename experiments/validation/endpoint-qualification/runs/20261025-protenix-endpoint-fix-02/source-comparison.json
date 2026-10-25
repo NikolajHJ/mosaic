@@ -1,0 +1,12 @@
+{
+  "status": "passed_stdlib_AST_byte_only",
+  "checks": {
+    "protenix_precision_reference.py": "byte_identical",
+    "protenix_precision_admission.py": "byte_identical",
+    "protenix_precision_stage.lsf": "byte_identical",
+    "protenix_precision_native.py": "only_audit_jaxpr_and_new_root_identity",
+    "protenix_precision_ops.py": "only_new_root_identity"
+  },
+  "numerical_policy_changed": false,
+  "saved_results_changed": false
+}

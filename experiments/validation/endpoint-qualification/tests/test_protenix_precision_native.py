@@ -203,6 +203,21 @@ def test_integer_only_or_empty_jaxpr_cannot_claim_native_double_precision():
     with pytest.raises(ValueError): n.audit_jaxpr(graph("int32"))
 
 
+def test_executable_jaxpr_self_alias_cannot_hide_valid_double_operations():
+    value = graph()
+    value.jaxpr.jaxpr = value.jaxpr
+    result = n.audit_jaxpr(value)
+    assert result["status"] == "passed" and result["aval_counts"]["float64"] > 0
+
+
+def test_nested_jaxpr_self_alias_cannot_hide_narrow_operations():
+    nested = graph("float32")
+    nested.jaxpr.jaxpr = nested.jaxpr
+    value = graph(params={"call": nested})
+    with pytest.raises(ValueError, match="non-FP64"):
+        n.audit_jaxpr(value)
+
+
 def test_actual_nested_cpu_jaxpr_accepts_float64_and_rejects_downcast():
     # Runs only in the allocated CPU capsule; no model or pretrained inference.
     import jax

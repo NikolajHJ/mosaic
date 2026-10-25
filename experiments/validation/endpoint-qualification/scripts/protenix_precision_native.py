@@ -19,8 +19,8 @@ import time
 
 VERSION = "protenix-endpoint-precision-plan-v1"
 BASE = Path("/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01")
-ROOT = BASE / "protenix-endpoint-fix-01"
-SOURCE = BASE / "protenix-endpoint-fix-release-01/source"
+ROOT = BASE / "protenix-endpoint-fix-02"
+SOURCE = BASE / "protenix-endpoint-fix-release-02/source"
 FORENSICS = BASE / "protenix-endpoint-forensics-release-01/source"
 FORENSICS_PIN = "d127d6abe87307a5d305edb6d04e3a32e3545c508e58b82ce45290e0f3fc03d8"
 FORENSICS_PLAN_SHA = "14d0cf5b03af73ee5d87ece55b8c48616897521c50bbb40e8f76b6a9bb8f5861"
@@ -155,13 +155,13 @@ def audit_jaxpr(closed):
     def walk(value, where):
         if id(value) in visited:
             return
-        if hasattr(value, "jaxpr"):
+        # Current JAX Jaxpr objects expose ``jaxpr`` as a compatibility alias
+        # returning themselves. Inspect an executable graph before unwrapping
+        # ClosedJaxpr; otherwise cycle prevention skips every actual equation.
+        if hasattr(value, "eqns") and all(hasattr(value, key) for key in ("constvars", "invars", "outvars")):
             visited.add(id(value))
             for const in getattr(value, "consts", ()):
                 aval(const, where + ".const")
-            walk(value.jaxpr, where + ".jaxpr")
-        elif hasattr(value, "eqns"):
-            visited.add(id(value))
             for var in (*value.constvars, *value.invars, *value.outvars):
                 aval(var, where + ".var")
             for i, eqn in enumerate(value.eqns):
@@ -169,6 +169,11 @@ def audit_jaxpr(closed):
                 for var in (*eqn.invars, *eqn.outvars):
                     aval(var, label)
                 walk(eqn.params, label)
+        elif hasattr(value, "jaxpr"):
+            visited.add(id(value))
+            for const in getattr(value, "consts", ()):
+                aval(const, where + ".const")
+            walk(value.jaxpr, where + ".jaxpr")
         elif isinstance(value, dict):
             for key, item in value.items():
                 walk(item, where + "." + str(key))

@@ -18,12 +18,12 @@ import tarfile
 
 REPO = Path(__file__).resolve().parents[4]
 OWNER = REPO / 'experiments/validation/endpoint-qualification'
-TAG = '20261025-protenix-endpoint-fix-01'
+TAG = '20261025-protenix-endpoint-fix-02'
 RUN = OWNER / 'runs' / TAG
 LOCAL = REPO / 'results/hpc' / TAG
 BASE = '/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01'
-SOURCE = BASE + '/protenix-endpoint-fix-release-01/source'
-ROOT = BASE + '/protenix-endpoint-fix-01'
+SOURCE = BASE + '/protenix-endpoint-fix-release-02/source'
+ROOT = BASE + '/protenix-endpoint-fix-02'
 PYTHON = '/work3/s234818/mosaic/envs/protenix-tiny/bin/python'
 
 
@@ -66,6 +66,10 @@ def prepare(counts_path):
         {'path':BASE+'/protenix-endpoint-forensics-release-01/source',
          'manifest_sha256':'d127d6abe87307a5d305edb6d04e3a32e3545c508e58b82ce45290e0f3fc03d8','files':13}]
     proofs = list(forensic['preserved_proofs']) + [plan['original_forensics_plan'], plan['prior_forensic_report']]
+    predecessor=plan.get('engineering_predecessor')
+    if predecessor:
+        parents += [predecessor['source']]
+        proofs += predecessor['proofs']
     proofs = list({v['path']:v for v in proofs}.values())
     names = ['README.md','scripts/README.md','tests/README.md',
              'scripts/protenix_precision_admission.py','scripts/protenix_precision_reference.py',
@@ -86,6 +90,7 @@ def prepare(counts_path):
                 'original_results_changed':False,'optimization_settings_changed':False,
                 'can_certify_or_restart_original_study':False,'optimizer_updates':0}
     members['source_manifest.json'] = raw(manifest)
+    LOCAL.mkdir(parents=True, exist_ok=True)
     out = LOCAL/'source01'; out.mkdir(exist_ok=False)
     for name,data in members.items():
         target = out/name; target.parent.mkdir(parents=True,exist_ok=True);target.write_bytes(data)
@@ -113,7 +118,7 @@ def stage():
 import base64,hashlib,io,json,os,sys,tarfile
 from pathlib import Path,PurePosixPath
 base=Path('/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01')
-source=base/'protenix-endpoint-fix-release-01/source';root=base/'protenix-endpoint-fix-01'
+source=base/'protenix-endpoint-fix-release-02/source';root=base/'protenix-endpoint-fix-02'
 assert not root.exists() and not source.parent.exists(),'Existing/unknown outcome; inspect, never replay'
 data=base64.b64decode(ARCHIVE,validate=True)
 assert len(data)==PREP['archive_bytes'] and hashlib.sha256(data).hexdigest()==PREP['archive_sha256']
@@ -179,7 +184,8 @@ for phase in ('cpu','after-cpu','gpu'):
  for pattern in ('submission*.json','stdout.*.log','stderr.*.log','*storage*.json','terminal-query*.json'):
   for path in sorted(p.glob(pattern)):
    if path.is_file() and path.stat().st_size<2000000:records.append(file(path))
-for relative in ('bootstrap-complete.json','cpu-certificate.json','cpu/payload/tests.xml',
+for relative in ('bootstrap-complete.json','cpu-certificate.json',
+ 'after-cpu/dispatch-storage/precision-storage-dispatch.json','cpu/payload/tests.xml',
  'cpu/payload/command.json','cpu/payload/tests.log','cpu/payload/assessment.json',
  'cpu/payload/native-startup-invocation.json',
  'cpu/payload/native-startup/endpoint-startup.json','gpu/payload/assessment.json',

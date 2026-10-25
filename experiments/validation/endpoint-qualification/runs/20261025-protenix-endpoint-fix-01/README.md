@@ -82,3 +82,11 @@ expects267rawcases (89reference+30policy+76native+72ops), independently verified
 actual metadata-only startup required. No model/optimizer evaluation locally.
 Layout check still fails on preexisting discovery/missing historical README paths;
 none name this owner. Own14-member archive/AST/bytes verified.
+
+Allocated CPU29816090 actualEXIT:266passes/onefailure of267cases, zeroerrors/skips.
+Independent16-file byte/XML/LSF/startup audit passed. The failing actual-JAX
+canary established a dtype-auditor traversal bug: real Jaxpr exposes a legacy
+self-returning jaxpr accessor, which was followed before equations. No native
+GPU or optimizer ran; every old scientific outcome stays unchanged. A new
+immutable fix02 will correct graph traversal and add two controls, retaining the
+same scientific/precision policy and all other checks. Failedsource01 preserved.
