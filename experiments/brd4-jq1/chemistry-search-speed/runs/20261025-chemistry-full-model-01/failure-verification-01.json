@@ -1,0 +1,112 @@
+{
+  "status": "verified_failed_pilots_no_chemistry_production_submitted",
+  "captured_utc": "2026-10-25T17:28:06.698800+00:00",
+  "observation": "results/hpc/20261025-chemistry-full-model-01/observation-chemistry-launch-check-20261025-01",
+  "raw_sha256": "6b3a8b8744276a4548ea2e9e21a249fb12dc1d174d1a4721a0f7099e7e77975b",
+  "independent_verification_sha256": "a7204172a58f2dce6fe9f8d3471f99c08524ecdecbdb6f903deb86b00157c248",
+  "verification_scope": "passed_independent_CPU_byte_XML_LSF_schema_audit",
+  "source_manifest_sha256": "347e753d481ec3d584f3b0b05cc2801ee745036ee17638d7c3672fc2ca2cba16",
+  "CPU_cases": 284,
+  "CPU_certificate_sha256": "947dd2b539b9cbd951dd50f164107188c7973b0e850131e0e914b63fd3b53b9b",
+  "files_rehashed": 166,
+  "comparisons": {
+    "protenix": {
+      "status": "failed_preserved",
+      "job_id": "29811883",
+      "assessment_sha256": "682850ad42b7afafad375712005c156fa3ea7d95f2b59e1a6e894b311ea36ef2",
+      "actual_terminal_proof_sha256": "b62611bf495c9893c452e9d057a28b2097adce750f6e7c453e68113d31d3937c",
+      "baseline_classification": "passed_original_runtime_failure_preserved",
+      "nested_failures": {
+        "payload/comparison/assessment.json": {
+          "sha256": "cb904313432ed66697a03a75913a77b1e46352b24c3452e2b644828f2cfe7fe8",
+          "status": "failed",
+          "error": "CalledProcessError: Command '['/work3/s234818/mosaic/envs/protenix-tiny/bin/python', '/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-release-01/source/scripts/full_model_pilot.py', '--plan', '/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-release-01/source/plans/protenix.json', '--output', '/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-01/protenix/payload/comparison/combined', '--child', 'combined', '--baseline', '/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-01/protenix/payload/comparison/baseline']' returned non-zero exit status 1."
+        },
+        "payload/comparison/combined/assessment.json": {
+          "sha256": "c40aef841d66472a69251f502d7b6da602ac5cab07270aa318a975f821c72da0",
+          "status": "failed",
+          "error": "ValueError: Full runtime observations missing"
+        },
+        "payload/comparison/combined/study/summary.json": {
+          "sha256": "28013e78fc9116b6061734c888efe2721bf5216db2cafc53bcb2360cfc683bca",
+          "status": "failed",
+          "error": "AssertionError: \nArrays are not equal\n\nMismatched elements: 399 / 1500 (26.6%)\nFirst 5 mismatches are at indices:\n [2, 0]: 0.3515531122684479 (ACTUAL), 0.35155314207077026 (DESIRED)\n [2, 1]: 0.024955231696367264 (ACTUAL), 0.024955233559012413 (DESIRED)\n [2, 3]: 0.41425150632858276 (ACTUAL), 0.41425153613090515 (DESIRED)\n [2, 4]: 0.17484694719314575 (ACTUAL), 0.17484696209430695 (DESIRED)\n [4, 0]: 0.0736902728676796 (ACTUAL), 0.07369028031826019 (DESIRED)\nMax absolute difference among violations: 1.1920929e-07\nMax relative difference among violations: 2.3693114e-07\n ACTUAL: array([[1.811581e-01, 3.947120e-01, 2.555120e-01, 3.269187e-02,\n        1.359260e-01],\n       [2.787620e-01, 7.171694e-02, 2.704866e-04, 2.640338e-01,...\n DESIRED: array([[1.811581e-01, 3.947120e-01, 2.555120e-01, 3.269187e-02,\n        1.359260e-01],\n       [2.787620e-01, 7.171694e-02, 2.704866e-04, 2.640338e-01,..."
+        },
+        "payload/comparison/combined/paired-checks/assessment.json": {
+          "sha256": "54453e35b73c92c760f39e2077be58be408703a848d32f35d8230b8ef6d05491",
+          "status": "failed",
+          "error": "AssertionError: \nArrays are not equal\n\nMismatched elements: 399 / 1500 (26.6%)\nFirst 5 mismatches are at indices:\n [2, 0]: 0.3515531122684479 (ACTUAL), 0.35155314207077026 (DESIRED)\n [2, 1]: 0.024955231696367264 (ACTUAL), 0.024955233559012413 (DESIRED)\n [2, 3]: 0.41425150632858276 (ACTUAL), 0.41425153613090515 (DESIRED)\n [2, 4]: 0.17484694719314575 (ACTUAL), 0.17484696209430695 (DESIRED)\n [4, 0]: 0.0736902728676796 (ACTUAL), 0.07369028031826019 (DESIRED)\nMax absolute difference among violations: 1.1920929e-07\nMax relative difference among violations: 2.3693114e-07\n ACTUAL: array([[1.811581e-01, 3.947120e-01, 2.555120e-01, 3.269187e-02,\n        1.359260e-01],\n       [2.787620e-01, 7.171694e-02, 2.704866e-04, 2.640338e-01,...\n DESIRED: array([[1.811581e-01, 3.947120e-01, 2.555120e-01, 3.269187e-02,\n        1.359260e-01],\n       [2.787620e-01, 7.171694e-02, 2.704866e-04, 2.640338e-01,..."
+        }
+      },
+      "production_readiness_passed": false,
+      "scope": "Compact byte/JSON/source/CPU/submission/actual failed LSF audit; no local numerical evaluation or passed GPU comparison"
+    },
+    "boltz": {
+      "status": "failed_preserved",
+      "job_id": "29811884",
+      "assessment_sha256": "8b682e13e6cfa01ac1445deb409aa72439f553250b835ce80e45c90e24eafb43",
+      "actual_terminal_proof_sha256": "19dbb6dd125b47b66dc42539d1b28baef64a10c5a71e36388e97d7d292e6714c",
+      "baseline_classification": "passed_original_baseline",
+      "nested_failures": {
+        "payload/comparison/assessment.json": {
+          "sha256": "9e5a451d4325272ee35330484f49b1cdaa33bb3ca6ef6f30c92c1530c657f68c",
+          "status": "failed",
+          "error": "CalledProcessError: Command '['/work3/s234818/mosaic/envs/protenix-tiny/bin/python', '/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-release-01/source/scripts/full_model_pilot.py', '--plan', '/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-release-01/source/plans/boltz.json', '--output', '/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-01/boltz/payload/comparison/combined', '--child', 'combined', '--baseline', '/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-01/boltz/payload/comparison/baseline']' returned non-zero exit status 1."
+        },
+        "payload/comparison/combined/assessment.json": {
+          "sha256": "fb78e930fe9ef14f7498f2e5219fd9ccaf283dfb66e8be5778a96070cb7808c7",
+          "status": "failed",
+          "error": "FileNotFoundError: [Errno 2] No such file or directory: '/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-01/boltz/payload/comparison/combined/study/low_coupled_checks/report.json'"
+        },
+        "payload/comparison/combined/study/summary.json": {
+          "sha256": "d5ba193672521bfc4c2e746f9747898cbaa80d2546474e622d7675563ed326d1",
+          "status": "failed",
+          "error": "RuntimeError: Native Boltz worker exited: None"
+        }
+      },
+      "production_readiness_passed": false,
+      "scope": "Compact byte/JSON/source/CPU/submission/actual failed LSF audit; no local numerical evaluation or passed GPU comparison"
+    }
+  },
+  "production_inventory": {
+    "random_protenix": {
+      "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03",
+      "production_entries": [],
+      "existing_native_parent": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/random-native-0000"
+    },
+    "boltz_chemistry": {
+      "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03",
+      "production_entries": [],
+      "existing_native_parent": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/boltz2_chemistry-native-0000"
+    }
+  },
+  "primary_errors": {
+    "protenix": {
+      "classification": "paired_snapshot_exact_replay_failure",
+      "first_paired_boundary": "early-0",
+      "reported_mismatched_bond_probabilities": 399,
+      "reported_total_bond_probability_elements": 1500,
+      "reported_max_absolute_error": 1.1920929e-07,
+      "paired_evaluations_completed": 0,
+      "specific_device_or_layout_cause_established": false,
+      "earlier_low_and_high_disposable_pilots": "both_10_updates_passed",
+      "secondary_error": "Full runtime observations missing"
+    },
+    "boltz": {
+      "classification": "native_CUDA_worker_startup_failure",
+      "error": "CUDA-capable device(s) is/are busy or unavailable",
+      "worker_log_sha256": "453feb2a84edb854e93f22e561a38fd51db23c31d1fae6c16766212e6a411a52",
+      "GPU_chemistry_receipt_sha256": "990a091631236d31b4aec4dbdfa7bd76995c7f90ca32a44cbdc2f78d34a25b29",
+      "inference": "Separate JAX chemistry process starts before the separate PyTorch native worker under an exclusive_process GPU request; competing CUDA process access is the source-supported likely cause",
+      "actual_NVML_compute_mode_independently_captured": false,
+      "combined_native_or_chemistry_gradient_pass": false,
+      "secondary_error": "Missing low_coupled_checks/report.json"
+    }
+  },
+  "new_submission": false,
+  "production_readiness_passed": false,
+  "original_results_changed": false,
+  "optimization_settings_changed": false,
+  "monitor_remains_paused": true,
+  "DBMol_changed": false
+}

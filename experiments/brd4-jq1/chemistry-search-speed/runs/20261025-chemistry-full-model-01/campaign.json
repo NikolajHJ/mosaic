@@ -1,5 +1,5 @@
 {
-  "status": "CPU_passed_two_full_model_GPU_pilots_queued",
+  "status": "both_full_model_pilots_failed_chemistry_production_blocked",
   "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-01",
   "source": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-release-01/source",
   "source_manifest_sha256": "347e753d481ec3d584f3b0b05cc2801ee745036ee17638d7c3672fc2ca2cba16",
@@ -174,7 +174,7 @@
   "original_results_changed": false,
   "DBMol_changed": false,
   "full_model_jobs_submitted": true,
-  "latest_observed_utc": "2026-10-25T09:23:09.782573+00:00",
+  "latest_observed_utc": "2026-10-25T17:28:06.698800+00:00",
   "CPU_cases": 284,
   "CPU_status": "actual_DONE_raw_XML_LSF_passed",
   "callback_status": "actual_DONE_LSF_success",
@@ -186,9 +186,33 @@
   "native_gradient_findings": null,
   "integrated_speedup": null,
   "current_GPU_status": {
-    "protenix": "PEND_physical_GPU_wait",
-    "boltz": "PEND_physical_GPU_wait"
+    "protenix": "EXIT1_persisted_same_job_LSF",
+    "boltz": "EXIT1_persisted_same_job_LSF"
   },
   "dispatch_required_bytes": 33643657204,
-  "dispatch_available_bytes": 40125741934
+  "dispatch_available_bytes": 40125741934,
+  "previous_checkpoint": {
+    "status": "CPU_passed_two_full_model_GPU_pilots_queued",
+    "latest_observed_utc": "2026-10-25T09:23:09.782573+00:00",
+    "current_GPU_status": {
+      "protenix": "PEND_physical_GPU_wait",
+      "boltz": "PEND_physical_GPU_wait"
+    }
+  },
+  "terminal_evidence": "failure-verification-01.json",
+  "terminal_evidence_sha256": "7ce1e736b5f6ee6ae9f9c1b741f0d070b2cf022d70d7f6197f94df131affa2ff",
+  "latest_independent_verification_sha256": "a7204172a58f2dce6fe9f8d3471f99c08524ecdecbdb6f903deb86b00157c248",
+  "chemistry_production_submitted": false,
+  "chemistry_production_inventory": {
+    "random_protenix": {
+      "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03",
+      "production_entries": [],
+      "existing_native_parent": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/random-native-0000"
+    },
+    "boltz_chemistry": {
+      "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03",
+      "production_entries": [],
+      "existing_native_parent": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/boltz2_chemistry-native-0000"
+    }
+  }
 }

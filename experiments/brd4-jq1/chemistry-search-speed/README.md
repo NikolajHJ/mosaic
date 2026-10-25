@@ -66,3 +66,12 @@ unchanged. Four persistent CPU workers handle independent native chemistry
 checks; only differentiable local-risk arithmetic is converted to GPU matrices.
 Integrated gradient correctness and actual update speed remain unproven until
 those allocated pilots pass. Existing production studies remain untouched.
+
+Fresh25October17:28UTC terminal evidence shows both full-model pilots failed:
+Protenix's extra paired check rejected exact saved probability replay; Boltz's
+combined native worker could not acquire CUDA after the separate chemistry GPU
+service started. These are current integration/replay blockers, with no passed
+combined comparison. The earlier CPU284 pass and Boltz serial native readiness
+remain valid. Neither randomPro50k+chemistry nor Boltz30k+chemistry production
+is submitted. See the full-model run's authenticated failure record; production
+also requires explicit adoption and full future chemistry storage admission.

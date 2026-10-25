@@ -83,3 +83,37 @@ start. No full-model gradient verdict or integrated speedup exists yet. Each
 GPU entry repeats source/input/CPUcertificate/storage gates. Do not repeat
 bootstrap/callback/dispatch or replace unknown submission outcomes. Monitor
 remains paused, all existing scientific jobs/results and DBMol VAE unchanged.
+
+At25October17:28:06UTC a fresh read-only observation superseded the queued
+snapshot: both GPU pilots have actual same-job LSF exit1. Protenix29811883
+ran10:39:15–10:56:12CET; Boltz29811884 ran10:56:12–11:01:06CET. Live scheduler
+entries have aged out; those persisted terminal logs establish the failures.
+The284-case CPU pass remains valid. No chemistry production was submitted.
+
+Protenix completed the combined low/high disposable ten-update pilots, but its
+first extra paired boundary (`early-0`) failed exact saved bond-probability
+replay:399/1500 elements differ, maximum reported absolute error1.1920929e-7.
+The paired derivative comparisons had not started. The precise device/layout
+mechanism remains unproved; the check must retain exact equality. Its parent
+missing-runtime error is secondary, and no complete accelerated comparison or
+runtime pass is established.
+
+Boltz's original baseline passed. The combined path started a separate JAX GPU
+chemistry service, then its separate PyTorch native worker failed loading its
+CUDA context with device busy/unavailable. Combined native/chemistry gradients
+and pilots did not run. The exclusive-process GPU request plus two CUDA
+processes strongly suggests a process-ownership conflict; actual NVML compute
+mode was not independently captured. Opening the absent low-coupled report
+subsequently obscured the primary startup error.
+
+Independent standard-library byte/source/XML/schema/submission/LSF verification
+reauthenticated166 compact files, all26 source files and the CPU284 cases.
+See [failure-verification-01.json](failure-verification-01.json); the audit hash
+is recorded in campaign.json. Native arrays remain authenticated remote inputs,
+not locally recomputed results. Both original production-parent inventories
+have no chemistry production entries. RandomPro50k/LR0.3 and Boltzchem30k/
+LR0.0025 keep their approved0.001-through5000→100-at-final schedules. Before
+production, the combined implementation needs corrected startup/exact replay,
+new immutable allocated checks and an explicit stride20 production adopter with
+full chemistry-growth storage admission. No old dispatcher was replayed, no
+saved study/settings changed, and the monitor remains paused.

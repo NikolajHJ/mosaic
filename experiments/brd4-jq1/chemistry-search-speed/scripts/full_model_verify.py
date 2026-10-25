@@ -30,6 +30,17 @@ def lsf(path, job, name, queue):
     assert compact.count('Successfullycompleted.')==1
 
 
+def failed_lsf(path, job, name, queue):
+    """Authenticate an actual failed job without manufacturing live history."""
+    raw=Path(path).read_text();compact=''.join(raw.split())
+    subjects=re.findall(r'Subject:\s*Job\s*(\d+)\s*:\s*<([^>]+)>\s*in\s*cluster\s*<([^>]+)>\s*([A-Za-z]+)[ \t]*(?=\r?\n|$)',raw)
+    assert [tuple(''.join(field.split()) for field in row) for row in subjects]==[(job,name,'dcc','Exited')]
+    assert compact.count('Subject:Job')==1
+    assert re.findall(r'inqueue<([^>]+)>',compact)==[queue]
+    assert re.findall(r'Exitedwithexitcode(\d+)\.',compact)==['1']
+    assert 'Successfullycompleted.' not in compact
+
+
 def expected_argv(phase,pin,root,source,cpu):
     if phase=='cpu':resources=['-q','hpc','-n','16','-R','span[hosts=1]','-R','rusage[mem=2GB]','-W','02:00']
     elif phase=='after-cpu':resources=['-q','hpc','-n','1','-R','span[hosts=1]','-R','rusage[mem=2GB]','-W','00:20']
@@ -147,7 +158,40 @@ def main():
         if not path.exists():continue
         allocated=load(path)
         if allocated['status']!='passed':
-            report['full_model_comparisons'][arm]={'status':'failed_preserved','assessment_sha256':sha(path)};continue
+            assert allocated['status']=='failed' and allocated['job_id']==job
+            assert allocated['phase']==arm and allocated['source_manifest_sha256']==pin
+            assert allocated['original_results_changed'] is False and allocated['production_authorized'] is False
+            assert allocated['new_cpu_certificate']['status']=='passed'
+            assert allocated['new_cpu_certificate']['sha256']==certificate_sha
+            assert allocated['external_before']==assessment['external_before']
+            failed_lsf(files/arm/('stdout.'+job+'.log'),job,'mosaic-chem-full01-'+arm,'gpul40s')
+            plan=load(files/'_source/plans'/(arm+'.json'))
+            comparison=load(files/arm/'payload/comparison/assessment.json')
+            assert comparison['status']=='failed' and comparison['original_results_changed'] is False
+            assert comparison['plan_sha256']==sha(files/'_source/plans'/(arm+'.json'))
+            nested={}
+            for relative in ['payload/comparison/assessment.json',
+                             'payload/comparison/combined/assessment.json',
+                             'payload/comparison/combined/study/summary.json',
+                             'payload/comparison/combined/paired-checks/assessment.json']:
+                q=files/arm/relative
+                if q.exists():
+                    value=load(q);assert value['status']=='failed'
+                    if 'original_results_changed' in value:assert value['original_results_changed'] is False
+                    if 'job_id' in value:assert value['job_id']==job
+                    nested[relative]={'sha256':sha(q),'status':value['status'],'error':value.get('error')}
+            study=load(files/arm/'payload/comparison/combined/study/summary.json')
+            assert study['mode']=='validate' and study['source_manifest_sha256']==plan['source']['manifest_sha256']
+            assert study['config_sha256']==plan['inputs']['config']['sha256']
+            baseline=load(files/arm/'payload/comparison/baseline/assessment.json')
+            assert baseline['status'] in ['passed_original_baseline','passed_original_runtime_failure_preserved']
+            report['full_model_comparisons'][arm]={'status':'failed_preserved',
+                 'job_id':job,'assessment_sha256':sha(path),
+                 'actual_terminal_proof_sha256':sha(files/arm/('stdout.'+job+'.log')),
+                 'baseline_classification':baseline['status'],'nested_failures':nested,
+                 'production_readiness_passed':False,
+                 'scope':'Compact byte/JSON/source/CPU/submission/actual failed LSF audit; no local numerical evaluation or passed GPU comparison'}
+            continue
         assert allocated['job_id']==job and allocated['source_manifest_sha256']==pin
         assert allocated['new_cpu_certificate']['status']=='passed' and allocated['new_cpu_certificate']['sha256']==certificate_sha
         assert allocated['external_before']==allocated['external_after']
@@ -184,6 +228,16 @@ def main():
         report['full_model_comparisons'][arm]={'status':'passed_full_model_comparison',
                  'assessment_sha256':sha(path),'comparison_sha256':allocated['comparison_sha256'],
                  'scope':'Raw native arrays remain remotely authenticated references; compact original reports/LSF/schema verified locally'}
+    if 'production_inventory' in raw_observation:
+        inventory=raw_observation['production_inventory']
+        expected={'random_protenix':'protenix-extended-03','boltz_chemistry':'boltz-lr0025-03'}
+        assert set(inventory)==set(expected)
+        base='/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/'
+        for arm,suffix in expected.items():
+            assert inventory[arm]['root']==base+suffix
+            assert inventory[arm]['production_entries']==[]
+        report['chemistry_production_inventory']=inventory
+        report['inventory_scope']='Read-only observation of declared original chemistry production marker/segment parents; no new submission'
     (out/'verification.json').write_text(json.dumps(report,indent=2)+'\n')
     print(json.dumps(report,indent=2))
 

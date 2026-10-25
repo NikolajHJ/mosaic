@@ -7490,3 +7490,38 @@ CPUcertificateSHA7af030f4ee35dd84c91ca5d55a75802384e4f51fb4fb5ed7baa773c1f9e72f0
 No native precision gate pass or optimization continuation established; exact20k
 saved state/source643/LR0.3/objective/frozen inputs remain unchanged. No automatic
 monitor restart; preserve source01 failure and do not repeat either submission.
+
+## 2026-10-25 Chemistry production admission status and full-model pilot failures
+
+User requested chemistry production submission if unblocked. One read-only SSH
+at17:28:06UTC authenticated both full-model pilot terminal failures and checked
+the original randomPro/chemistryBol production parents: no production entries.
+No new job was submitted. Full-model source26/manifest347e753d481ec3d584f3b0b05cc2801ee745036ee17638d7c3672fc2ca2cba16
+remains sealed. CPU29811875/callback29811876 and284 raw cases remain passed.
+Actual same-job gpul40s LSF logs establish Pro29811883 EXIT1 at10:56:12CET and
+Bol29811884 EXIT1 at11:01:06CET; aged-out live records are not fabricated states.
+
+Pro combined low/high ten-update pilots passed, then the first paired saved
+boundary early-0 failed exactE_upper replay399/1500elements/maxabs1.1920929e-7.
+No paired derivative evaluation completed. Specific device/layout cause is not
+proven; exact equality remains mandatory. Missing full-runtime observations is
+secondary. OriginalPro baseline runtime failure remains failed.
+
+Bol original baseline passed native/coupled/pilot/runtime. Combined JAX GPU
+chemistry service started, then original separateTorchworker failed CUDA context
+loading with device busy/unavailable. Two CUDA processes under the requested
+exclusive_process mode strongly suggest process-access conflict; actual NVML
+mode was not independently captured. No combined native/chemistry gradient or
+pilot pass. Missing low_coupled_checks/report.json is a secondary harness error.
+
+Independent stdlib source/archive/byte/XML/schema/actual submissions/LSF audit
+reauthenticated166compact files and26source files, all284CPU cases. AuditSHA
+a7204172a58f2dce6fe9f8d3471f99c08524ecdecbdb6f903deb86b00157c248;
+tracked failure-verification-01.json SHA7ce1e736b5f6ee6ae9f9c1b741f0d070b2cf022d70d7f6197f94df131affa2ff
+under experiments/brd4-jq1/chemistry-search-speed/runs/20261025-chemistry-full-model-01.
+No new accelerated readiness/speed verdict or full chemistry production storage
+admission follows. RandomPro50k/LR0.3 and Boltzchem30k/LR0.0025 remain deferred,
+with original0.001through5000→100at50000/30000 schedules unchanged. Correct
+startup/exact replay and required allocated validation/adoption/full future-byte
+guards must precede production. No saved results, scientific settings, jobs,
+monitor state, DBMol or unrelated files changed; no local numerical work.
