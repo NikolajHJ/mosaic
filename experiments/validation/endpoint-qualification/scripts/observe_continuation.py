@@ -12,14 +12,17 @@ LOCAL=REPO/'results/hpc/20261025-continuation-admission-01'
 
 
 def main():
-    parser=argparse.ArgumentParser();parser.add_argument('--name',required=True);args=parser.parse_args()
+    parser=argparse.ArgumentParser();parser.add_argument('--name',required=True)
+    parser.add_argument('--attempt',choices=('01','02'),default='01');args=parser.parse_args()
+    global LOCAL
+    if args.attempt=='02':LOCAL=REPO/'results/hpc/20261025-continuation-worker-fix-02'
     assert args.name.replace('-','').isalnum()
     out=LOCAL/args.name;out.mkdir(exist_ok=False)
-    program=r'''
+    program='ATTEMPT='+repr(args.attempt)+'\n'+r'''
 from datetime import datetime,timezone
 from pathlib import Path
 import base64,hashlib,json,subprocess
-root=Path('/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-01')
+root=Path('/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01')/('nonchem-endpoint-continuation-'+ATTEMPT)
 def bound(path):
  with path.open('rb') as stream:digest=hashlib.file_digest(stream,'sha256').hexdigest()
  return {'path':str(path),'bytes':path.stat().st_size,'sha256':digest}

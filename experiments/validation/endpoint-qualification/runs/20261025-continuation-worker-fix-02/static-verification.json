@@ -1,0 +1,23 @@
+{
+  "status": "passed_static_bytes_only",
+  "members": 15,
+  "payload_files": 14,
+  "expected_cpu_cases": 209,
+  "manifest_sha256": "88372f92b6349e6c34c542fb84fb39482c4c340568431d1499ebc166a1e1e7fa",
+  "admission_policy_and_tests_exact_source01": true,
+  "dispatch_arms": [
+    "boltz",
+    "dbmol"
+  ],
+  "blocked_arms": {
+    "protenix": {
+      "source01_admission": {
+        "bytes": 2531142,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-01/protenix-validate-20000/payload/study/native_gradient_checks-prospective/admission.json",
+        "sha256": "3b4e6c14aa21aed083594ab040a7faf4a50f93b4adce5a4fa679108bc531aaf1"
+      },
+      "status": "blocked_failed_endpoint_admission"
+    }
+  },
+  "numerical_evaluations_locally": false
+}

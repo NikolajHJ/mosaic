@@ -20,7 +20,13 @@ def encoded(value):
 def main():
     parser=argparse.ArgumentParser()
     parser.add_argument('--counts',type=Path,required=True)
+    parser.add_argument('--attempt',choices=('01','02'),default='01')
     args=parser.parse_args()
+    global RUN,LOCAL
+    if args.attempt=='02':
+        RUN=HERE/'runs/20261025-continuation-worker-fix-02'
+        LOCAL=REPO/'results/hpc/20261025-continuation-worker-fix-02'
+        LOCAL.mkdir(exist_ok=True)
     counts=json.loads(args.counts.read_bytes())
     assert set(counts)=={'tests.test_qualification','tests.test_admission',
                          'tests.test_continuation_driver','tests.test_continuation_ops'}
@@ -28,6 +34,9 @@ def main():
     plan=json.loads((RUN/'plan.json').read_bytes())
     report=json.loads((REPO/'results/hpc/20261025-jq1-live-report-01/source04/source_manifest.json').read_bytes())
     parents=[r for r in report['parent_sources'] if r['files']!=642]
+    if args.attempt=='02':
+        parents.append({'path':plan['control_root'].rsplit('/',1)[0]+'/nonchem-endpoint-release-01/source',
+                        'files':14,'manifest_sha256':'08e53ba66312b06e5f1c2836a3863479ceb85e11e9364c23026079301d2cd713'})
     proofs={}
     for arm in plan['arms']:
         for group in (arm['inputs'],arm['failed_parent']):
@@ -36,6 +45,9 @@ def main():
                     if row['path'] in proofs:assert proofs[row['path']]==row
                     proofs[row['path']]=row
         proofs[arm['config']['path']]=arm['config']
+    if args.attempt=='02':
+        for row in json.loads((RUN/'failure-adoption.json').read_bytes())['proofs']:
+            proofs[row['path']]=row
     members={}
     names=['README.md','scripts/README.md','tests/README.md',
            'scripts/qualification.py','scripts/admission.py','scripts/continuation_driver.py',
@@ -47,7 +59,8 @@ def main():
         if name.endswith('.py'):ast.parse(content,filename=name)
         members[name]=content
     members['plan.json']=(RUN/'plan.json').read_bytes()
-    members['prospective-policy.md']=(RUN/'prospective-policy.md').read_bytes().replace(b'\r\n',b'\n')
+    policy=HERE/'runs/20261025-continuation-admission-01/prospective-policy.md'
+    members['prospective-policy.md']=policy.read_bytes().replace(b'\r\n',b'\n')
     manifest={'version':'endpoint-aware-continuation-source-v1',
               'files':{name:hashlib.sha256(data).hexdigest() for name,data in sorted(members.items())},
               'cpu_counts':counts,'parent_sources':parents,
@@ -55,6 +68,9 @@ def main():
               'original_failures_preserved':True,'original_results_changed':False,
               'policy_scope':'Explicit prospective child admission; original failed studies remain failed',
               'monitor_remains_paused':True,'optimization_settings_changed':False}
+    if args.attempt=='02':
+        manifest['dispatch_arms']=plan['dispatch_arms']
+        manifest['blocked_arms']=plan['blocked_arms']
     members['source_manifest.json']=encoded(manifest)
     pin=hashlib.sha256(members['source_manifest.json']).hexdigest()
     out=LOCAL/'source01';out.mkdir(exist_ok=False)

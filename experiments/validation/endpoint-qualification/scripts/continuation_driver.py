@@ -18,6 +18,7 @@ import json
 import os
 from pathlib import Path, PurePosixPath
 import runpy
+import subprocess
 import sys
 import textwrap
 
@@ -136,8 +137,10 @@ def build_original_argv(plan, name, phase, offset, output, snapshot, ready=None)
         _option(argv, option, optional=True)
     output = Path(output)
     startup = Path(plan["root"]) / "cpu/payload" / ("startup-" + name + "-" + phase) / "study"
+    worker_startup_scope = Path(plan["root"]) / "cpu/payload" / ("worker-startup-" + name) / "study"
     require(output.is_absolute() and output.resolve().is_relative_to(Path(plan["root"]).resolve())
-            and output.name == "study" and (output.parent.name == "payload" or output == startup),
+            and output.name == "study" and (output.parent.name == "payload" or output == startup
+                or (name in ("boltz", "dbmol") and phase == "validate" and output == worker_startup_scope)),
             "Output outside declared new scientific/startup scope")
     require(isinstance(snapshot, dict) and set(snapshot) == {"path", "bytes", "sha256"}, "Exact snapshot binding required")
     require((ready is not None) == (phase == "segment"), "Fresh readiness required only for production")
@@ -226,16 +229,91 @@ def prospective_ready(ready_path, arm, arm_name, offset, snapshot, manifest, pla
 @contextmanager
 def execution_context(source, argv):
     old_path, old_argv, old_cwd = sys.path[:], sys.argv[:], Path.cwd()
+    old_bytecode = sys.dont_write_bytecode
+    old_pythonpath = os.environ.get("PYTHONPATH")
+    old_bytecode_env = os.environ.get("PYTHONDONTWRITEBYTECODE")
     try:
         sys.dont_write_bytecode = True
         sys.path[:0] = [str(source / "scripts"), str(source / "src"), str(source / "tests")]
+        # sys.path is process-local. The original frozen Boltz workers are new
+        # interpreters and must inherit the same authenticated scientific src.
+        os.environ["PYTHONPATH"] = worker_environment(source)["PYTHONPATH"]
+        os.environ["PYTHONDONTWRITEBYTECODE"] = "1"
         sys.argv = argv[1:]
         os.chdir(source)
         yield
     finally:
         sys.path[:] = old_path
         sys.argv[:] = old_argv
+        sys.dont_write_bytecode = old_bytecode
+        if old_pythonpath is None:
+            os.environ.pop("PYTHONPATH", None)
+        else:
+            os.environ["PYTHONPATH"] = old_pythonpath
+        if old_bytecode_env is None:
+            os.environ.pop("PYTHONDONTWRITEBYTECODE", None)
+        else:
+            os.environ["PYTHONDONTWRITEBYTECODE"] = old_bytecode_env
         os.chdir(old_cwd)
+
+
+def worker_environment(source):
+    """Give child interpreters exact original src first, preserving old entries."""
+    result = dict(os.environ)
+    prefix = [str(Path(source) / "src"), str(Path(source) / "scripts")]
+    previous = result.get("PYTHONPATH")
+    result["PYTHONPATH"] = os.pathsep.join(prefix + ([previous] if previous else []))
+    result["PYTHONDONTWRITEBYTECODE"] = "1"
+    return result
+
+
+def worker_startup(source, arm_name, original_argv):
+    """Real worker-interpreter import/CLI checks; never enter model setup."""
+    require(arm_name in ("boltz", "dbmol"), "No separate worker for this arm")
+    source = Path(source)
+    python = _option(original_argv, "--worker-python", optional=True) or \
+        "/work3/s234818/latentmol/env/boltz311/bin/python"
+    modules = ["mosaic", "mosaic.small_molecule.boltz2.native"]
+    if arm_name == "dbmol":
+        modules.append("mosaic.small_molecule.boltz2.dbmol")
+    expected = {name: binding(source / "src" / (name.replace(".", "/") + ".py"))
+                for name in modules if name != "mosaic"}
+    expected["mosaic"] = binding(source / "src/mosaic/__init__.py")
+    program = """import hashlib,importlib,json,pathlib,sys
+expected=json.loads(sys.argv[1]); observed={}
+for name,row in expected.items():
+    module=importlib.import_module(name)
+    path=pathlib.Path(module.__file__).resolve()
+    assert str(path)==str(pathlib.Path(row['path']).resolve()), (name,str(path),row['path'])
+    assert path.stat().st_size==row['bytes'] and hashlib.sha256(path.read_bytes()).hexdigest()==row['sha256'], name
+    observed[name]={'path':str(path),'bytes':path.stat().st_size,'sha256':hashlib.sha256(path.read_bytes()).hexdigest()}
+print(json.dumps({'status':'passed_exact_original_imports','modules':observed},allow_nan=False))
+"""
+    environment = worker_environment(source)
+    commands = [[python, "-c", program, json.dumps(expected, separators=(",", ":"))]]
+    commands.append([python, "-u", "-m", "mosaic.small_molecule.boltz2.worker", "--help"]
+                    if arm_name == "boltz" else
+                    [python, "-u", str(source / "scripts/dbmol_worker.py"), "--help"])
+    rows = []; imports = None
+    for index, command in enumerate(commands):
+        process = subprocess.run(command, cwd=source, env=environment, capture_output=True,
+                                 text=True, timeout=180, check=False)
+        row = {"argv": command, "returncode": process.returncode,
+               "stdout": process.stdout, "stderr": process.stderr}
+        rows.append(row)
+        require(process.returncode == 0, "Original worker premodel startup failed: " + repr(row))
+        if index == 0:
+            imports = json.loads(process.stdout)
+            require(imports.get("status") == "passed_exact_original_imports"
+                    and imports.get("modules") == expected, "Actual worker scientific import origin differs")
+    require("--context-sha256" in rows[1]["stdout"] and "--checkpoint" in rows[1]["stdout"],
+            "Actual original worker help did not execute")
+    return {"version": "original-worker-premodel-startup-v1", "status": "passed_metadata_only",
+            "arm": arm_name, "worker_python": python, "pythonpath": environment["PYTHONPATH"],
+            "mosaic_origin": imports["modules"]["mosaic"]["path"],
+            "exact_original_modules": imports["modules"], "commands": rows,
+            "original_scientific_source_unchanged": True, "numerical_setup_entered": False,
+            "model_constructed": False, "updates": 0, "scientific_readiness_passed": False}
 
 
 def _json_safe(value):
@@ -648,6 +726,45 @@ def assessment(state, plan, pin, phase, offset, output, snapshot, ready, error=N
     return result
 
 
+def failed_assessment(state, plan, pin, phase, offset, output, snapshot, error, *, additional_errors=()):
+    """Keep the original exception; absence of later checks is not a new cause."""
+    names = ("entry_admission", "hard_parity", "null_controls", "native_components",
+             "pilot_early", "pilot_high", "runtime", "terminal_admission", "case_jsonl", "fp32_boundary")
+    rows = state.records
+    needed = 4 if state.name == "dbmol" else 1
+    entry = [row for row in rows if row["stage"] == "native_gradient_checks"]
+    outcomes = {name: "not_completed" for name in names}
+    if entry:
+        outcomes["entry_admission"] = "passed" if len(entry) == needed and all(
+            row["status"] == "passed" and row["can_admit_new_child"] is True for row in entry) else "failed"
+    outcomes["pilot_high"] = "not_applicable_chemistry_disabled"
+    if phase == "validate":
+        outcomes["terminal_admission"] = outcomes["case_jsonl"] = "not_applicable_validation_phase"
+    summary_path = output / "summary.json"; summary = None; proofs = []
+    secondary = list(additional_errors)
+    try:
+        if output.is_dir():
+            proofs = [binding(path) for path in sorted(output.rglob("*"))
+                      if path.is_file() and not path.is_symlink()]
+        summary = read(summary_path) if summary_path.is_file() else None
+    except BaseException as metadata_error:
+        secondary.append(metadata_error)
+    return {"version": VERSION, "status": "failed", "arm": state.name, "phase": phase, "offset": offset,
+            "job_id": os.environ["LSB_JOBID"], "input_snapshot": snapshot,
+            "source_manifest_sha256": pin, "scientific_source_manifest_sha256": state.arm["source"]["manifest_sha256"],
+            "plan_sha256": plan["_sha256"], "config_sha256": state.arm["config"]["sha256"],
+            "error": repr(error), "primary_error": repr(error), "primary_error_preserved": True,
+            "additional_errors": [repr(item) for item in secondary],
+            "original_results_changed": False, "original_failed_parent_preserved": True,
+            "checks": {name: outcome == "passed" for name, outcome in outcomes.items()},
+            "check_outcomes": outcomes, "frozen_unchanged": None,
+            "frozen_check_status": "not_completed_not_a_new_frozen_failure",
+            "endpoint_policy": "prospective-endpoint-admission-v1", "endpoint_records": rows,
+            "original_summary": binding(summary_path) if summary is not None else None,
+            "original_summary_status": summary.get("status") if summary is not None else None,
+            "proofs": proofs}
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     for name in ("plan", "output", "snapshot"):
@@ -657,13 +774,17 @@ def main():
     parser.add_argument("--offset", type=int, required=True)
     parser.add_argument("--ready", type=Path); parser.add_argument("--ready-sha256")
     parser.add_argument("--startup-only", action="store_true")
+    parser.add_argument("--worker-startup-only", action="store_true")
     parser.add_argument("--startup-defer-ready", action="store_true")
     args = parser.parse_args()
+    require(not args.worker_startup_only or (args.phase == "validate" and not args.startup_only
+            and not args.startup_defer_ready), "Worker probe is a distinct validation-only premodel phase")
     require(not args.startup_defer_ready or (args.startup_only and args.phase == "segment"),
             "Readiness deferral is restricted to CPU segment metadata sentinel")
     require(os.environ.get("LSB_JOBID"), "Allocated DTU HPC required")
     require(sha(args.plan) == args.plan_sha256, "Plan changed")
     plan = read(args.plan); plan["_sha256"] = args.plan_sha256
+    require(args.arm in plan.get("dispatch_arms", []), "This arm is blocked in the declared continuation plan")
     own = Path(__file__).resolve().parents[1]
     verify_source(own, args.manifest)
     arm = arm_record(plan, args.arm); source = Path(arm["source"]["path"])
@@ -684,6 +805,11 @@ def main():
     argv = build_original_argv(plan, args.arm, args.phase, args.offset, args.output, snapshot, ready)
     require(not args.output.exists(), "Existing/unknown scientific output must not be replayed")
     args.output.parent.mkdir(parents=True, exist_ok=True)
+    if args.worker_startup_only:
+        expected = Path(plan["root"]) / "cpu/payload" / ("worker-startup-" + args.arm) / "study"
+        require(args.output == expected, "Worker probe outside declared allocated CPU scope")
+        write(args.output.parent / "worker-startup.json", worker_startup(source, args.arm, argv))
+        return
     if args.startup_only:
         if args.startup_defer_ready:
             require(ready == arm["inputs"]["ready"], "Deferred CPU sentinel must bind exact historical ready bytes")
@@ -716,6 +842,7 @@ def main():
         prospective_ready(args.ready, arm, args.arm, args.offset, snapshot, args.manifest, args.plan_sha256)
     state = EndpointHooks(arm, args.arm, args.output, args.offset)
     error = None
+    additional_errors = []
     result = {"version": VERSION, "status": "failed", "error": "Original driver produced no saved summary",
               "job_id": os.environ["LSB_JOBID"], "original_results_changed": False,
               "original_failed_parent_preserved": True}
@@ -742,15 +869,21 @@ def main():
                     if isinstance(row, dict) and set(row) == {"path", "bytes", "sha256"}: bound(row)
             except BaseException as caught:
                 identity.update(status="failed", error=repr(caught))
-                error = caught if error is None else RuntimeError(repr(error) + "; immutability: " + repr(caught))
+                if error is None:
+                    error = caught
+                else:
+                    additional_errors.append(caught)
             write(args.output.parent / "postexecution-immutability.json", identity)
-        if (args.output / "summary.json").is_file():
+        if error is not None:
+            result = failed_assessment(state, plan, args.manifest, args.phase, args.offset,
+                                       args.output, snapshot, error, additional_errors=additional_errors)
+        elif (args.output / "summary.json").is_file():
             try:
                 result = assessment(state, plan, args.manifest, args.phase, args.offset,
                                     args.output, snapshot, ready, error)
             except BaseException as caught:
-                result = {"version": VERSION, "status": "failed", "error": repr(caught),
-                          "original_results_changed": False, "original_failed_parent_preserved": True}
+                result = failed_assessment(state, plan, args.manifest, args.phase, args.offset,
+                                           args.output, snapshot, caught)
         write(args.output.parent / "assessment.json", result)
         if error is not None:
             raise error

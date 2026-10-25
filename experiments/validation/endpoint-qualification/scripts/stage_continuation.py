@@ -5,6 +5,7 @@ remote paths or unknown outcomes prohibit replay of this one-shot bootstrap.
 """
 from datetime import datetime,timezone
 import base64
+import argparse
 import hashlib
 import json
 from pathlib import Path
@@ -17,15 +18,20 @@ RUN=REPO/'experiments/validation/endpoint-qualification/runs/20261025-continuati
 
 
 def main():
+    parser=argparse.ArgumentParser();parser.add_argument('--attempt',choices=('01','02'),default='01');args=parser.parse_args()
+    global LOCAL,RUN
+    if args.attempt=='02':
+        LOCAL=REPO/'results/hpc/20261025-continuation-worker-fix-02'
+        RUN=REPO/'experiments/validation/endpoint-qualification/runs/20261025-continuation-worker-fix-02'
     source=LOCAL/'source01';preparation=json.loads((source/'preparation.json').read_bytes())
     archive=(source/'source.tar.gz').read_bytes()
     assert len(archive)==preparation['archive_bytes'] and hashlib.sha256(archive).hexdigest()==preparation['archive_sha256']
-    program='PREPARATION='+repr(preparation)+'\nARCHIVE='+repr(base64.b64encode(archive).decode())+'\n'+r'''
+    program='ATTEMPT='+repr(args.attempt)+'\nPREPARATION='+repr(preparation)+'\nARCHIVE='+repr(base64.b64encode(archive).decode())+'\n'+r'''
 from datetime import datetime,timezone
 import base64,hashlib,importlib.util,io,json,os,stat,sys,tarfile
 from pathlib import Path,PurePosixPath
 base=Path('/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01')
-source=base/'nonchem-endpoint-release-01/source';root=base/'nonchem-endpoint-continuation-01'
+source=base/('nonchem-endpoint-release-'+ATTEMPT)/'source';root=base/('nonchem-endpoint-continuation-'+ATTEMPT)
 assert not source.parent.exists() and not root.exists(),'Existing/unknown attempt: inspect, never replay'
 assert base.is_dir() and not base.is_symlink()
 raw=base64.b64decode(ARCHIVE,validate=True)

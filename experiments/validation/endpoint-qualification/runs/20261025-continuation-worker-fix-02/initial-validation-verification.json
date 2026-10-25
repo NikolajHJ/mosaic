@@ -1,0 +1,41 @@
+{
+  "status": "passed_submission_proof_audit",
+  "captured_utc": "2026-10-25T11:41:57.812838+00:00",
+  "source_manifest_sha256": "88372f92b6349e6c34c542fb84fb39482c4c340568431d1499ebc166a1e1e7fa",
+  "observation_sha256": "7ebba0e329e5de463922369cbb60306ff1cb8a78ae3c83fe6b3b7017b233e5ef",
+  "actual_jobs": [
+    {
+      "parent": "boltz-validate-10000",
+      "job_id": "29813924",
+      "scheduler_state": "RUN",
+      "phase": "validate",
+      "resources_and_source_authenticated": true
+    },
+    {
+      "parent": "boltz-after-validate-10000",
+      "job_id": "29813925",
+      "scheduler_state": "PEND",
+      "phase": "after-validate",
+      "resources_and_source_authenticated": true
+    },
+    {
+      "parent": "dbmol-validate-05000",
+      "job_id": "29813926",
+      "scheduler_state": "PEND",
+      "phase": "validate",
+      "resources_and_source_authenticated": true
+    },
+    {
+      "parent": "dbmol-after-validate-05000",
+      "job_id": "29813927",
+      "scheduler_state": "PEND",
+      "phase": "after-validate",
+      "resources_and_source_authenticated": true
+    }
+  ],
+  "native_validation_passed": false,
+  "optimization_started": false,
+  "scope": "Actual initial submitted resources/receipts/scheduler only",
+  "original_results_changed": false,
+  "monitor_remains_paused": true
+}

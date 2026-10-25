@@ -7351,3 +7351,49 @@ actual-ready-startup/whole-storage checks pass, repeating at subsequent segment
 boundaries. Original failed studies/results unchanged, monitor paused, report
 edition0003 unchanged. Exact plan/manifest/jobs/audits in endpoint-qualification
 run20261025-continuation-admission-01; all native/numerical work allocated HPC.
+
+
+## 25 October 2026 — Endpoint validation outcomes and worker import correction
+
+At11:30:34UTC (12:30Paris), read-only source01 status found all3native jobs and
+their own callbacks actualEXIT1; no optimizer submissions or new updates.
+Independent stdlib byte/JSON/LSF audit verified92 compact proof files and all
+original source/config/input preservation receipts. No saved result changed.
+Pro29813840 reached prospective admission: original X contrast now passes, but
+extra local directions fail and no informative geometry pair passes E_upper.
+Frozen identity/scalar parity/AD repeats passed; this remains rejected admission,
+not a unique causal diagnosis. Admission2,531,142B SHA
+3b4e6c14aa21aed083594ab040a7faf4a50f93b4adce5a4fa679108bc531aaf1.
+Bol29813842 and DB29813844 failed before native testing because worker subprocess
+PYTHONPATH omitted the original Mosaic src (`No module named 'mosaic'`). Outer
+frozen/missing-pilot assessment errors were secondary masking, not primary causes.
+All callbacks correctly blocked successors. Preserve source01/jobs/failures.
+
+Prepare separate immutable worker-fix02 for Boltz and DBMol only. Export exact
+original authenticated src/scripts to workers, test real worker imports/origins
+and CLI help on allocated CPU, preserve primary failure and explicit incomplete
+checks. New driver/controller both block Pro using its pinned failed admission.
+All207+planned fixtures repeat on allocated HPC; numerical policy/library sources/
+rates/losses/saved states and full old storage allowances stay unchanged. No
+source02 job/native pass yet; monitor remains paused. Run record is
+endpoint-qualification/runs/20261025-continuation-worker-fix-02.
+
+Worker-fix02 actual source staged read-only14files, manifest
+88372f92b6349e6c34c542fb84fb39482c4c340568431d1499ebc166a1e1e7fa,
+archive87,336B SHAec45392f71b5acc4d0bb72ab564f93562829af5bc87f18da61f9444ede5056c6.
+Scientific hooks AST and numerical policy/tests exactsource01; only inherited
+imports/startup/error-reporting change. Full storage passed11:38:31UTC,
+36,059,576,308required/37,734,898,689available, same4GiB/100k reserve/all old
+future budgets (including blocked Pro); no cleanup. CPU29813920/callback29813921
+actualDONE/hpc/LSFsuccess by11:41:57UTC. All209 rawfixtures passed19+43+49+98,
+zero errors/failures/skips. Four actual CLI routes plus both real worker import/
+help commands passed, exact original module origins, zero model/update. Local
+independent byte/XML/LSF/schema audit verified40 compact files and CPUcertSHA
+bbe0137e350a01d4586166121f9a26426e885632cbd646dde33280c200149644.
+Actual new native jobs Bol29813924/callback29813925, DB29813926/29813927.
+At11:41:57UTC BolRUN allocation/DBPEND/callbacksPEND, resources/own-ended/source
+pins authenticated. No native gradient pass, optimizer ID or new update yet.
+Pro not submitted in02; remains blocked at20k by authentic rejected admission.
+Both Bol/DB chains retain all native/pilot/runtime/frozen/startup/storage guards
+before conditional children. Original saved states/settings unchanged; monitor
+paused/report0003 unchanged. No numerical/model tests performed locally.

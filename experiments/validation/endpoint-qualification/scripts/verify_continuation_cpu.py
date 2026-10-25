@@ -17,7 +17,12 @@ def digest(data):return hashlib.sha256(data).hexdigest()
 
 
 def main():
-    parser=argparse.ArgumentParser();parser.add_argument('--observation',type=Path,required=True);args=parser.parse_args()
+    parser=argparse.ArgumentParser();parser.add_argument('--observation',type=Path,required=True)
+    parser.add_argument('--attempt',choices=('01','02'),default='01');args=parser.parse_args()
+    global LOCAL,RUN
+    if args.attempt=='02':
+        LOCAL=REPO/'results/hpc/20261025-continuation-worker-fix-02'
+        RUN=REPO/'experiments/validation/endpoint-qualification/runs/20261025-continuation-worker-fix-02'
     observed=json.loads(args.observation.read_bytes())
     manifest=json.loads((LOCAL/'source01/source_manifest.json').read_bytes())
     preparation=json.loads((LOCAL/'source01/preparation.json').read_bytes())
@@ -43,7 +48,7 @@ def main():
         assert re.findall(r'Status<([^>]+)>',text)==['DONE']
         assert re.findall(r'Queue<([^>]+)>',text)==['hpc']
         log=''.join(raw(parent,'stdout.'+job+'.log').decode().split())
-        assert log.count('Subject:Job')==1 and 'Subject:Job'+job+':<mosaic-endpoint01-'+parent+'>incluster<dcc>Done' in log
+        assert log.count('Subject:Job')==1 and 'Subject:Job'+job+':<mosaic-endpoint'+args.attempt+'-'+parent+'>incluster<dcc>Done' in log
         assert re.findall(r'inqueue<([^>]+)>',log)==['hpc'] and log.count('Successfullycompleted.')==1
         assert 'Exitedwithexit' not in log
     cpu=submission['cpu']['job_id'];callback=submission['after_cpu']['job_id']
@@ -64,8 +69,9 @@ def main():
     starts=document('cpu','payload/actual-startup-checks.json')
     assert starts['status']=='passed_metadata_only' and starts['native_readiness_established'] is False
     assert starts['fresh_prospective_readiness_deferred_until_native_validation'] is True
-    assert len(starts['checks'])==6 and assessment['actual_startup_checks']==starts['checks']
-    assert {(r['arm'],r['phase']) for r in starts['checks']}=={(a,p) for a in ('protenix','boltz','dbmol') for p in ('validate','segment')}
+    arms=('protenix','boltz','dbmol') if args.attempt=='01' else ('boltz','dbmol')
+    assert len(starts['checks'])==2*len(arms) and assessment['actual_startup_checks']==starts['checks']
+    assert {(r['arm'],r['phase']) for r in starts['checks']}=={(a,p) for a in arms for p in ('validate','segment')}
     for row in starts['checks']:
         rel='payload/startup-'+row['arm']+'-'+row['phase']+'/endpoint-startup.json'
         value=document('cpu',rel)
@@ -73,6 +79,28 @@ def main():
         assert value['readiness_deferred'] is (row['phase']=='segment')
         assert value['job_id']==cpu
         assert digest(raw('cpu',rel))==row['receipt']['sha256']
+    if args.attempt=='02':
+        assert starts['blocked_arms']==manifest['blocked_arms']
+        assert manifest['dispatch_arms']==list(arms)
+        workers=starts['worker_checks'];assert len(workers)==2 and {r['arm'] for r in workers}==set(arms)
+        assert assessment['actual_worker_startup_checks']==workers
+        plan=json.loads((RUN/'plan.json').read_bytes())
+        for row in workers:
+            value=document('cpu','payload/worker-startup-'+row['arm']+'/worker-startup.json')
+            arm=next(a for a in plan['arms'] if a['id']==row['arm'])
+            argv=arm['original_argv'];python=argv[argv.index('--worker-python')+1]
+            assert value['status']=='passed_metadata_only' and value['worker_python']==python and value['updates']==0
+            assert value['model_constructed'] is False and value['scientific_readiness_passed'] is False
+            assert value['mosaic_origin']==arm['source']['path']+'/src/mosaic/__init__.py'
+            expected={'mosaic','mosaic.small_molecule.boltz2.native'}
+            if row['arm']=='dbmol':expected.add('mosaic.small_molecule.boltz2.dbmol')
+            assert set(value['exact_original_modules'])==expected
+            for name,item in value['exact_original_modules'].items():
+                suffix='mosaic/__init__.py' if name=='mosaic' else name.replace('.','/')+'.py'
+                assert item['path']==arm['source']['path']+'/src/'+suffix
+                assert type(item['bytes']) is int and item['bytes']>=0 and re.fullmatch('[a-f0-9]{64}',item['sha256'])
+            assert len(value['commands'])==2 and all(r['returncode']==0 and r['argv'][0]==python for r in value['commands'])
+            assert value['commands'][1]['argv'][-1]=='--help'
     for parent in ('cpu','after-cpu'):
         gate=document(parent,'continuation-storage-entry.json')
         assert gate['status']=='passed' and gate['original_gate_changed'] is False
@@ -87,7 +115,8 @@ def main():
     report={'status':'passed','scope':'independent local stdlib bytes/XML/schema, not native numerical validation',
             'captured_utc':observed['captured_utc'],'source_manifest_sha256':preparation['manifest_sha256'],
             'cpu_job':cpu,'callback_job':callback,'raw_cases':len(cases),'modules':counts,
-            'actual_startup_commands':6,'native_readiness_established':False,
+            'actual_startup_commands':2*len(arms),'actual_worker_import_checks':2 if args.attempt=='02' else 0,
+            'native_readiness_established':False,
             'certificate':certificate['binding'],'downloaded_files':len(files),
             'observation_sha256':digest(args.observation.read_bytes()),'original_results_changed':False}
     target=args.observation.parent/'cpu-verification.json'

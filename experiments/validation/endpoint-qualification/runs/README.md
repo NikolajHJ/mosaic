@@ -3,3 +3,8 @@
 Dated records bind exact saved inputs, original failures, prospective check
 policies and actual allocated outcomes. A record or diagnostic does not convert
 an original failed run into a pass or authorize a gate waiver.
+
+- `20261025-continuation-admission-01`: prospective endpoint protocol; CPU171
+  passed, Protenix native admission rejected and both Boltz workers failed import.
+- `20261025-continuation-worker-fix-02`: restricted worker-path/error-reporting
+  correction for Boltz and DBMol only; Protenix remains explicitly blocked.

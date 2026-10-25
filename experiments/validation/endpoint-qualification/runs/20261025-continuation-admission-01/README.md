@@ -97,3 +97,32 @@ python experiments/validation/endpoint-qualification/scripts/observe_continuatio
 The staging helper has already run: never replay it or bootstrap/callbacks into
 existing paths. Inspect actual receipts/unknown markers before recovery. Shared
 allocated budgets are1h CPU,2h native validations,23h segments and20min callbacks.
+
+## Observed native attempt failures
+
+Read-only status at11:30:34UTC (12:30Paris) found all3 native jobs and their own
+callbacks actualEXIT1; no child segment submissions/certificates exist. All3
+post-execution source/config/input/proof preservation audits passed. Independently
+authenticated raw LSF and92 compact proof files are bound in
+[failure-verification.json](failure-verification.json). No saved study changed.
+
+Protenix29813840 ran12:12:30–12:19:33Paris and reached prospective admission.
+Its original X contrast now passes the planned feasible local pair, but extra
+directions fail: no meaningful geometry pair passes for E_upper, and one further
+X direction fails its selected pair. Independent baseline scalar parity and
+gradient repeats passed; model/context frozen identity stayed unchanged.
+This is a rejected admission, not a certified continuation or proof of a unique
+numerical cause. Raw admission2,531,142B SHA
+`3b4e6c14aa21aed083594ab040a7faf4a50f93b4adce5a4fa679108bc531aaf1`.
+
+Plain Boltz29813842 and DBMol29813844 failed during worker startup, before any
+native derivative result: `ModuleNotFoundError: No module named 'mosaic'`.
+The private parent import path had not been exported to subprocess PYTHONPATH.
+Their outer frozen-identity errors and Protenix's missing-pilot error were
+secondary assessment failures, not the primary causes. All3 callbacks correctly
+blocked production after the failed producers.
+
+Preserve this immutable failed attempt. A restricted worker-path/startup/error
+reporting correction is being prepared in
+[worker-fix02](../20261025-continuation-worker-fix-02/README.md) for only Boltz and
+DBMol. Protenix remains explicitly blocked by this actual failed admission.

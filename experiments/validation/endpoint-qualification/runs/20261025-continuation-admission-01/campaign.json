@@ -1,7 +1,7 @@
 {
   "version": "endpoint-aware-continuation-campaign-v1",
-  "status": "native_validation_queued_not_passed",
-  "captured_utc": "2026-10-25T11:09:48.416476+00:00",
+  "status": "all_native_validation_attempts_failed_no_children",
+  "captured_utc": "2026-10-25T11:30:34.085335+00:00",
   "source_manifest_sha256": "08e53ba66312b06e5f1c2836a3863479ceb85e11e9364c23026079301d2cd713",
   "archive_bytes": 75321,
   "archive_sha256": "22d9c72b09fd76d0f01662675826793237b046574adea1cc018288499bbc4136",
@@ -14,42 +14,42 @@
     {
       "parent": "protenix-validate-20000",
       "job_id": "29813840",
-      "scheduler_state": "PEND",
+      "scheduler_state": "EXIT",
       "phase": "validate",
       "resources_and_source_authenticated": true
     },
     {
       "parent": "protenix-after-validate-20000",
       "job_id": "29813841",
-      "scheduler_state": "PEND",
+      "scheduler_state": "EXIT",
       "phase": "after-validate",
       "resources_and_source_authenticated": true
     },
     {
       "parent": "boltz-validate-10000",
       "job_id": "29813842",
-      "scheduler_state": "PEND",
+      "scheduler_state": "EXIT",
       "phase": "validate",
       "resources_and_source_authenticated": true
     },
     {
       "parent": "boltz-after-validate-10000",
       "job_id": "29813843",
-      "scheduler_state": "PEND",
+      "scheduler_state": "EXIT",
       "phase": "after-validate",
       "resources_and_source_authenticated": true
     },
     {
       "parent": "dbmol-validate-05000",
       "job_id": "29813844",
-      "scheduler_state": "PEND",
+      "scheduler_state": "EXIT",
       "phase": "validate",
       "resources_and_source_authenticated": true
     },
     {
       "parent": "dbmol-after-validate-05000",
       "job_id": "29813845",
-      "scheduler_state": "PEND",
+      "scheduler_state": "EXIT",
       "phase": "after-validate",
       "resources_and_source_authenticated": true
     }
@@ -132,5 +132,56 @@
   "monitor_remains_paused": true,
   "actual_native_admission_passed": false,
   "optimization_started": false,
-  "conditional_serial_dispatch": true
+  "conditional_serial_dispatch": true,
+  "outcomes": [
+    {
+      "arm": "protenix",
+      "status": "blocked_failed_prospective_endpoint_admission",
+      "primary_failure": "Additional raw-field directional agreement/precision criteria failed; no passed geometry pair for E_upper",
+      "original_atom_contrast_passed": true,
+      "frozen_unchanged": true,
+      "admission": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-01/protenix-validate-20000/payload/study/native_gradient_checks-prospective/admission.json",
+        "bytes": 2531142,
+        "sha256": "3b4e6c14aa21aed083594ab040a7faf4a50f93b4adce5a4fa679108bc531aaf1"
+      },
+      "validation_job": "29813840",
+      "callback_job": "29813841",
+      "optimizer_submitted": false,
+      "optimizer_started": false,
+      "original_results_changed": false
+    },
+    {
+      "arm": "boltz",
+      "status": "blocked_worker_import_before_native_checks",
+      "primary_failure": "ModuleNotFoundError: No module named 'mosaic' in worker subprocess",
+      "native_gradient_result_established": false,
+      "worker_log": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-01/boltz-validate-10000/payload/study/worker.log",
+        "bytes": 181,
+        "sha256": "24796f1d17236b143b82de94f6f35e8484147eb5a31d8a4fcee87430c10780f2"
+      },
+      "validation_job": "29813842",
+      "callback_job": "29813843",
+      "optimizer_submitted": false,
+      "optimizer_started": false,
+      "original_results_changed": false
+    },
+    {
+      "arm": "dbmol",
+      "status": "blocked_worker_import_before_native_checks",
+      "primary_failure": "ModuleNotFoundError: No module named 'mosaic' in worker subprocess",
+      "native_gradient_result_established": false,
+      "worker_log": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-01/dbmol-validate-05000/payload/study/worker.log",
+        "bytes": 453,
+        "sha256": "239d91ea787ca629b6d27f527f0ebca651b24d054eefccdc5b6e2a33ddd6234c"
+      },
+      "validation_job": "29813844",
+      "callback_job": "29813845",
+      "optimizer_submitted": false,
+      "optimizer_started": false,
+      "original_results_changed": false
+    }
+  ]
 }

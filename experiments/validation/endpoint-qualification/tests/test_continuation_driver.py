@@ -5,6 +5,7 @@ import importlib.util
 import json
 import os
 from pathlib import Path
+import subprocess
 import sys
 from types import SimpleNamespace
 
@@ -88,6 +89,19 @@ def test_cpu_startup_scope_is_exact(tmp_path, name):
     assert d.build_original_argv(plan, name, "segment", arm["start_global"], output, snapshot, ready)
     with pytest.raises(ValueError):
         d.build_original_argv(plan, name, "segment", arm["start_global"], output.with_name("wrong"), snapshot, ready)
+
+
+@pytest.mark.parametrize("name", ["boltz", "dbmol"])
+def test_actual_controller_worker_startup_output_scope_is_exact(tmp_path, name):
+    plan, arm = plan_for(tmp_path, name)
+    snapshot, ready = inputs(tmp_path)
+    output = Path(plan["root"]) / "cpu/payload" / ("worker-startup-" + name) / "study"
+    assert d.build_original_argv(plan, name, "validate", arm["start_global"], output, snapshot)
+    for invalid in (output.with_name("wrong"), output.parent.with_name("worker-startup-other") / "study"):
+        with pytest.raises(ValueError, match="Output outside"):
+            d.build_original_argv(plan, name, "validate", arm["start_global"], invalid, snapshot)
+    with pytest.raises(ValueError, match="Output outside"):
+        d.build_original_argv(plan, name, "segment", arm["start_global"], output, snapshot, ready)
 
 
 STARTUP = '''
@@ -236,6 +250,113 @@ def test_execution_context_restores_process_on_error(tmp_path):
             assert Path.cwd() == tmp_path
             raise RuntimeError("disposable")
     assert (sys.path, sys.argv, Path.cwd()) == before
+
+
+@pytest.mark.parametrize("existing", [None, "/retained/caller/src"])
+@pytest.mark.parametrize("fails", [False, True])
+def test_worker_environment_reaches_child_and_restores_on_all_exits(tmp_path, monkeypatch, existing, fails):
+    if existing is None:
+        monkeypatch.delenv("PYTHONPATH", raising=False)
+    else:
+        monkeypatch.setenv("PYTHONPATH", existing)
+    previous_bytecode = sys.dont_write_bytecode
+    previous_bytecode_env = os.environ.get("PYTHONDONTWRITEBYTECODE")
+    def execute():
+        with d.execution_context(tmp_path, [sys.executable, "original.py"]):
+            process = subprocess.run([sys.executable, "-c", "import os; print(os.environ['PYTHONPATH'])"],
+                                     capture_output=True, text=True, check=True)
+            expected = [str(tmp_path / "src"), str(tmp_path / "scripts")]
+            if existing is not None: expected.append(existing)
+            assert process.stdout.strip() == os.pathsep.join(expected)
+            assert sys.dont_write_bytecode is True
+            assert os.environ["PYTHONDONTWRITEBYTECODE"] == "1"
+            if fails: raise RuntimeError("original worker failed")
+    if fails:
+        with pytest.raises(RuntimeError, match="original worker failed"): execute()
+    else:
+        execute()
+    assert os.environ.get("PYTHONPATH") == existing
+    assert sys.dont_write_bytecode == previous_bytecode
+    assert os.environ.get("PYTHONDONTWRITEBYTECODE") == previous_bytecode_env
+
+
+def make_worker_fixture(tmp_path, name):
+    source = tmp_path / "original"
+    root = source / "src/mosaic/small_molecule/boltz2"
+    root.mkdir(parents=True)
+    for folder in (root, root.parent, root.parent.parent):
+        (folder / "__init__.py").write_text("")
+    (root / "native.py").write_text("# Disposable fixture; no native model or numerical code.\n")
+    (root / "dbmol.py").write_text("# Disposable fixture; no native model or numerical code.\n")
+    script = "import argparse\np=argparse.ArgumentParser()\np.add_argument('--context-sha256')\np.add_argument('--checkpoint')\np.parse_args()\nraise AssertionError('Model setup must never be reached')\n"
+    (root / "worker.py").write_text(script)
+    (source / "scripts").mkdir()
+    (source / "scripts/dbmol_worker.py").write_text(script)
+    return source, [sys.executable, "original.py", "--worker-python", sys.executable]
+
+
+@pytest.mark.parametrize("name", ["boltz", "dbmol"])
+def test_actual_child_interpreter_checks_original_imports_and_real_help_only(tmp_path, monkeypatch, name):
+    source, argv = make_worker_fixture(tmp_path, name)
+    monkeypatch.setenv("PYTHONPATH", str(tmp_path / "wrong-first-source"))
+    result = d.worker_startup(source, name, argv)
+    assert result["status"] == "passed_metadata_only" and result["updates"] == 0
+    assert result["mosaic_origin"] == str(source / "src/mosaic/__init__.py")
+    assert result["numerical_setup_entered"] is False and result["model_constructed"] is False
+    assert result["original_scientific_source_unchanged"] is True
+    assert result["exact_original_modules"]["mosaic.small_molecule.boltz2.native"] == d.binding(source / "src/mosaic/small_molecule/boltz2/native.py")
+    assert all(row["returncode"] == 0 for row in result["commands"])
+    assert os.environ["PYTHONPATH"] == str(tmp_path / "wrong-first-source")
+
+
+def test_worker_origin_mismatch_rejected_before_help(tmp_path, monkeypatch):
+    source, argv = make_worker_fixture(tmp_path, "boltz")
+    expected = d.binding(source / "src/mosaic/__init__.py")
+    calls = []
+    def fake_run(command, **kwargs):
+        calls.append(command)
+        return SimpleNamespace(returncode=0, stdout=json.dumps({"status": "passed_exact_original_imports",
+                               "modules": {"mosaic": dict(expected, path="/wrong/src/mosaic/__init__.py")}}), stderr="")
+    monkeypatch.setattr(d.subprocess, "run", fake_run)
+    with pytest.raises(ValueError, match="import origin differs"):
+        d.worker_startup(source, "boltz", argv)
+    assert len(calls) == 1
+
+
+@pytest.mark.parametrize("name", ["protenix", "undeclared"])
+def test_main_blocks_arms_outside_declared_dispatch_before_scientific_imports(tmp_path, monkeypatch, name):
+    path = tmp_path / "plan.json"
+    d.write(path, {"dispatch_arms": ["boltz", "dbmol"]})
+    monkeypatch.setattr(sys, "argv", ["continuation_driver.py", "--plan", str(path), "--plan-sha256", d.sha(path),
+        "--manifest", "a" * 64, "--arm", name, "--phase", "validate", "--offset", "20000",
+        "--output", str(tmp_path / "new/payload/study"), "--snapshot", str(tmp_path / "original.npz"),
+        "--snapshot-sha256", "b" * 64])
+    monkeypatch.setattr(d, "verify_source", lambda *args: pytest.fail("Source execution must not be reached"))
+    with pytest.raises(ValueError, match="blocked in the declared continuation plan"):
+        d.main()
+
+
+@pytest.mark.parametrize("name,cause", [("protenix", "Prospective endpoint admission failed"),
+                                        ("boltz", "Worker exited before reply"),
+                                        ("dbmol", "DBMol worker handshake failed")])
+def test_failed_result_preserves_primary_without_inventing_missing_later_failures(tmp_path, monkeypatch, name, cause):
+    plan, arm = plan_for(tmp_path, name); plan["_sha256"] = "c" * 64
+    output = tmp_path / "study"; output.mkdir()
+    d.write(output / "summary.json", {"status": "failed"})
+    state = d.EndpointHooks(arm, name, output, arm["start_global"])
+    if name == "protenix":
+        state.records.append({"stage": "native_gradient_checks", "status": "failed", "can_admit_new_child": False})
+    primary = ValueError(cause)
+    result = d.failed_assessment(state, plan, "d" * 64, "validate", arm["start_global"], output,
+                                 {"path": "/unchanged/endpoint.npz", "bytes": 1, "sha256": "e" * 64}, primary,
+                                 additional_errors=[RuntimeError("secondary metadata error")])
+    assert result["error"] == result["primary_error"] == repr(primary)
+    assert result["primary_error_preserved"] is True and result["status"] == "failed"
+    assert result["frozen_unchanged"] is None and result["frozen_check_status"].startswith("not_completed")
+    assert result["check_outcomes"]["pilot_early"] == "not_completed"
+    assert result["check_outcomes"]["entry_admission"] == ("failed" if name == "protenix" else "not_completed")
+    assert result["additional_errors"] == [repr(RuntimeError("secondary metadata error"))]
+    assert "early_pilot" not in result["error"] and "frozen" not in result["error"]
 
 
 def test_hook_restores_original_checker_on_failure(monkeypatch):

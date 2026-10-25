@@ -25,8 +25,8 @@ VERSION = "endpoint-aware-continuation-source-v1"
 PLAN_VERSION = "endpoint-aware-continuation-plan-v1"
 RESULT_VERSION = "endpoint-aware-continuation-result-v1"
 BASE = Path("/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01")
-ROOT = BASE / "nonchem-endpoint-continuation-01"
-SOURCE = BASE / "nonchem-endpoint-release-01/source"
+ROOT = BASE / "nonchem-endpoint-continuation-02"
+SOURCE = BASE / "nonchem-endpoint-release-02/source"
 ADMISSION = BASE / "nonchem-stride20-startup-release-03/source"
 ADMISSION_SHA = "704fab033d97342a14dc12b58dc32df44874232c5c30aad47c4d02041a502aab"
 PYTHON = "/work3/s234818/mosaic/envs/protenix-tiny/bin/python"
@@ -55,6 +55,11 @@ ORIGINALS = {
               "config": "examples/configs/dbmol_pilot.json", "config_bytes": 1816,
               "config_sha256": "b3b56f409a59b3b1d00228bb7dcd3f74fc08f17fdf06facfc1469922778d5497", "job_id": "29810971"},
 }
+DISPATCH_ARMS = ("boltz", "dbmol")
+BLOCKED_ARMS = {"protenix": {"status": "blocked_failed_endpoint_admission", "source01_admission": {
+    "path": str(BASE / "nonchem-endpoint-continuation-01/protenix-validate-20000/payload/study/native_gradient_checks-prospective/admission.json"),
+    "bytes": 2531142,
+    "sha256": "3b4e6c14aa21aed083594ab040a7faf4a50f93b4adce5a4fa679108bc531aaf1"}}}
 PHASES = ("cpu", "after-cpu", "validate", "after-validate", "segment", "after-segment")
 CHECKS = ("entry_admission", "hard_parity", "null_controls", "native_components",
           "pilot_early", "pilot_high", "runtime", "terminal_admission", "case_jsonl", "fp32_boundary")
@@ -149,6 +154,8 @@ def validate_plan(plan):
             and type(plan.get("loss_stride")) is int and plan["loss_stride"] == 1,
             "Prospective admission/preservation/retention scope changed")
     require(plan.get("control_root") == str(ROOT) and plan.get("source_root") == str(SOURCE), "Own control/source scope changed")
+    require(plan.get("dispatch_arms") == list(DISPATCH_ARMS) and plan.get("blocked_arms") == BLOCKED_ARMS,
+            "Only Boltz and DBMol may dispatch; original Protenix admission remains blocked")
     arms = plan.get("arms")
     require(isinstance(arms, list) and len(arms) == len(ARMS)
             and {row.get("id") for row in arms} == set(ARMS), "Require exact three distinct continuation arms")
@@ -172,7 +179,7 @@ def validate_plan(plan):
 
 def arm_plan(plan, arm):
     validate_plan(plan)
-    require(arm in ARMS, "Undeclared continuation arm")
+    require(arm in DISPATCH_ARMS, "Blocked or undeclared continuation arm")
     return next(row for row in plan["arms"] if row["id"] == arm)
 
 
@@ -181,7 +188,7 @@ def label(phase, arm="all", offset=0):
     if phase in ("cpu", "after-cpu"):
         require(arm == "all" and offset == 0, "CPU phase cannot select a scientific arm")
         return phase
-    require(arm in ARMS and type(offset) is int and offset in ARMS[arm]["offsets"], "Undeclared arm or boundary")
+    require(arm in DISPATCH_ARMS and type(offset) is int and offset in ARMS[arm]["offsets"], "Undeclared arm or boundary")
     return arm + "-" + phase + "-" + str(offset).zfill(5)
 
 
@@ -208,7 +215,7 @@ def argv(phase, pin, arm="all", offset=0, dependency=None):
     else:
         require(dependency is None, "Scientific/CPU phases have no interarm dependencies")
     parent = ROOT / name
-    command = ["bsub", *resources(phase), "-J", "mosaic-endpoint01-" + name,
+    command = ["bsub", *resources(phase), "-J", "mosaic-endpoint02-" + name,
                "-oo", str(parent / "stdout.%J.log"), "-eo", str(parent / "stderr.%J.log")]
     if dependency is not None:
         command += ["-w", dependency]
@@ -289,7 +296,7 @@ def terminal(parent, queue):
             break
         require(index < 20, "Terminal LSF output unavailable")
         time.sleep(1)
-    lsf_success(path.read_text(), job, "mosaic-endpoint01-" + parent.name, queue)
+    lsf_success(path.read_text(), job, "mosaic-endpoint02-" + parent.name, queue)
     proofs.append(binding(path))
     return proofs
 
@@ -313,6 +320,25 @@ def _module(path, name):
     return module
 
 
+def blocked_admission(manifest, plan):
+    """Keep the rejected Protenix endpoint immutable and outside dispatch."""
+    validate_plan(plan)
+    require(manifest.get("blocked_arms") == BLOCKED_ARMS, "Blocked original admission is not pinned by new source")
+    blocked = BLOCKED_ARMS["protenix"]["source01_admission"]
+    require(blocked in manifest["preserved_proofs"], "Blocked admission missing from preserved exact proofs")
+    check_binding(blocked)
+    blocked_observation = read(blocked["path"])
+    require(blocked_observation.get("version") == "prospective-endpoint-admission-v1"
+            and blocked_observation.get("status") == "failed"
+            and blocked_observation.get("can_admit_new_child") is False
+            and blocked_observation.get("original_run_failed_preserved") is True
+            and blocked_observation.get("can_certify_original_study") is False
+            and blocked_observation.get("frozen_unchanged") is True
+            and blocked_observation.get("field_outcomes", {}).get("E_upper", {}).get("passed") is False,
+            "Original Protenix failed endpoint admission was changed or relabeled")
+    return blocked
+
+
 def external(manifest, plan):
     require(manifest.get("version") == VERSION, "Wrong new source schema")
     for row in manifest["parent_sources"]:
@@ -320,8 +346,10 @@ def external(manifest, plan):
         require(len(observed["files"]) == row["files"], "Original source file count differs")
     for row in manifest["preserved_proofs"]:
         check_binding(row)
+    validate_plan(plan)
+    blocked_admission(manifest, plan)
     adoption = {}
-    for arm in validate_plan(plan)["arms"]:
+    for arm in plan["arms"]:
         observed = verify(arm["source"]["path"], arm["source"]["manifest_sha256"])
         require(len(observed["files"]) == arm["source"]["files"], "Original scientific source scope differs")
         check_binding(arm["config"])
@@ -377,7 +405,7 @@ def metadata_bytes():
     fit the separately funded 512MiB control allowance.
     """
     excluded = {parent_path("segment", arm, offset) / "payload/study"
-                for arm in ARMS for offset in ARMS[arm]["offsets"]}
+                for arm in DISPATCH_ARMS for offset in ARMS[arm]["offsets"]}
     total = 0
     for root in (ROOT, SOURCE.parent):
         if not root.exists():
@@ -505,7 +533,7 @@ def cpu_startups(plan, pin, payload, deadline):
     """
     module = _module(SOURCE / "scripts/continuation_driver.py", "_authenticated_endpoint_startup_driver")
     reports = []
-    for arm in ARMS:
+    for arm in DISPATCH_ARMS:
         offset = ARMS[arm]["offsets"][0]
         row = arm_plan(plan, arm)
         snapshot = input_snapshot(plan, arm, offset)
@@ -539,10 +567,73 @@ def cpu_startups(plan, pin, payload, deadline):
                     and receipt.get("readiness_deferred") is (phase == "segment")
                     and receipt.get("original_argv") == expected, "Actual startup metadata sentinel differs")
             reports.append({"arm": arm, "phase": phase, "receipt": binding(path), "invocation": binding(directory / "invocation.json")})
+    workers = cpu_worker_startups(plan, pin, payload, deadline)
     write(Path(payload) / "actual-startup-checks.json", {"status": "passed_metadata_only", "checks": reports,
+                                                         "worker_checks": workers,
+                                                         "blocked_arms": BLOCKED_ARMS,
                                                          "native_readiness_established": False,
                                                          "fresh_prospective_readiness_deferred_until_native_validation": True})
     return reports
+
+
+def cpu_worker_startups(plan, pin, payload, deadline):
+    """Run real old worker import/help paths without loading models or updating."""
+    reports = []
+    for arm in DISPATCH_ARMS:
+        offset = ARMS[arm]["offsets"][0]
+        row = arm_plan(plan, arm)
+        snapshot = input_snapshot(plan, arm, offset)
+        directory = Path(payload) / ("worker-startup-" + arm)
+        directory.mkdir(exist_ok=False)
+        output = directory / "study"
+        command = [PYTHON, str(SOURCE / "scripts/continuation_driver.py"), "--plan", str(SOURCE / "plan.json"),
+                   "--plan-sha256", sha(SOURCE / "plan.json"), "--manifest", pin,
+                   "--arm", arm, "--phase", "validate", "--offset", str(offset), "--output", str(output),
+                   "--snapshot", snapshot["path"], "--snapshot-sha256", snapshot["sha256"], "--worker-startup-only"]
+        remaining = deadline - time.monotonic()
+        require(remaining > 0, "CPU shared worker startup/fixture budget exhausted")
+        run = subprocess.run(command, capture_output=True, text=True, timeout=min(180, remaining))
+        write(directory / "invocation.json", {"argv": command, "returncode": run.returncode,
+              "stdout": run.stdout, "stderr": run.stderr,
+              "scope": "Actual old worker interpreter/import/help only; models and updates forbidden"})
+        require(run.returncode == 0, "Actual worker import/startup command failed before native dispatch")
+        receipt_path = directory / "worker-startup.json"
+        receipt = read(receipt_path)
+        verify_worker_startup(receipt, row, arm)
+        reports.append({"arm": arm, "receipt": binding(receipt_path), "invocation": binding(directory / "invocation.json")})
+    return reports
+
+
+def verify_worker_startup(receipt, row, arm):
+    original = row["inputs"]["original_driver_argv"]
+    worker_python = original[original.index("--worker-python") + 1] if "--worker-python" in original else "/work3/s234818/latentmol/env/boltz311/bin/python"
+    require(receipt.get("status") == "passed_metadata_only" and receipt.get("arm") == arm
+            and receipt.get("worker_python") == worker_python
+            and receipt.get("mosaic_origin") == str(Path(row["source"]["path"]) / "src/mosaic/__init__.py")
+            and receipt.get("numerical_setup_entered") is False
+            and type(receipt.get("updates")) is int and receipt["updates"] == 0
+            and receipt.get("original_scientific_source_unchanged") is True,
+            "Actual worker startup/import origin differs")
+    return receipt
+
+
+def startup_proofs(startups, plan):
+    """Authenticate four real CLI routes and both real worker imports."""
+    require(startups.get("status") == "passed_metadata_only" and startups.get("native_readiness_established") is False
+            and startups.get("fresh_prospective_readiness_deferred_until_native_validation") is True
+            and startups.get("blocked_arms") == BLOCKED_ARMS
+            and len(startups.get("checks", [])) == 4
+            and {(row["arm"], row["phase"]) for row in startups.get("checks", [])}
+                == {(arm, phase) for arm in DISPATCH_ARMS for phase in ("validate", "segment")}
+            and len(startups.get("worker_checks", [])) == 2
+            and {row["arm"] for row in startups.get("worker_checks", [])} == set(DISPATCH_ARMS),
+            "Actual four CLI and two worker startup commands not established")
+    proofs = []
+    for row in startups["checks"] + startups["worker_checks"]:
+        proofs += [check_binding(row["receipt"]), check_binding(row["invocation"])]
+    for row in startups["worker_checks"]:
+        verify_worker_startup(read(row["receipt"]["path"]), arm_plan(plan, row["arm"]), row["arm"])
+    return proofs
 
 
 def final_startup(plan, pin, arm, offset, parent, deadline):
@@ -732,7 +823,8 @@ def execute(pin, phase, arm="all", offset=0):
         cases = xml_cases(payload / "tests.xml", manifest["cpu_counts"])
         write(payload / "assessment.json", {"status": "passed", "cases": cases, "source_manifest_sha256": pin,
                                               "plan_sha256": sha(SOURCE / "plan.json"), "adoption": adoption,
-                                              "actual_startup_checks": startups})
+                                              "actual_startup_checks": startups,
+                                              "actual_worker_startup_checks": read(payload / "actual-startup-checks.json")["worker_checks"]})
         return
     if phase in ("validate", "segment"):
         certificate(pin, manifest)
@@ -757,22 +849,17 @@ def execute(pin, phase, arm="all", offset=0):
             require(assessment.get("status") == "passed" and assessment.get("cases") == cases
                     and assessment.get("source_manifest_sha256") == pin, "Allocated CPU assessment differs")
             startups = read(ROOT / "cpu/payload/actual-startup-checks.json")
-            require(startups.get("status") == "passed_metadata_only" and startups.get("native_readiness_established") is False
-                    and startups.get("fresh_prospective_readiness_deferred_until_native_validation") is True
-                    and len(startups.get("checks", [])) == 6
-                    and {(row["arm"], row["phase"]) for row in startups.get("checks", [])} == {(arm, phase) for arm in ARMS for phase in ("validate", "segment")},
-                    "Actual six startup commands not established")
-            require(assessment.get("actual_startup_checks") == startups["checks"], "Startup check summary differs")
-            for row in startups["checks"]:
-                proofs += [check_binding(row["receipt"]), check_binding(row["invocation"])]
+            proofs += startup_proofs(startups, plan)
+            require(assessment.get("actual_startup_checks") == startups["checks"]
+                    and assessment.get("actual_worker_startup_checks") == startups["worker_checks"], "Startup check summary differs")
             proofs += [binding(ROOT / "cpu/payload" / name) for name in ("tests.xml", "tests.log", "assessment.json", "command.json", "actual-startup-checks.json")]
             write(ROOT / "cpu-certificate.json", {"status": "passed", "cases": cases, "source_manifest_sha256": pin,
                                                     "plan_sha256": sha(SOURCE / "plan.json"), "proofs": proofs,
                                                     "original_scientific_cpu_replaced": False})
-            for item in ARMS:
+            for item in DISPATCH_ARMS:
                 require(not parent_path("validate", item, ARMS[item]["offsets"][0]).exists(), "Existing/unknown validation must not be duplicated")
             require(time.monotonic() < phase_deadline, "CPU callback metadata runtime exhausted")
-            for item in ARMS:
+            for item in DISPATCH_ARMS:
                 _pair("validate", pin, item, ARMS[item]["offsets"][0])
             return
         certificate(pin, manifest)
@@ -804,7 +891,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--pin", required=True)
     parser.add_argument("--phase", choices=PHASES, required=True)
-    parser.add_argument("--arm", choices=("all", *ARMS), default="all")
+    parser.add_argument("--arm", choices=("all", *DISPATCH_ARMS), default="all")
     parser.add_argument("--offset", type=int, default=0)
     args = parser.parse_args()
     require(os.environ.get("LSB_JOBID"), "A real allocated job is required")

@@ -1,0 +1,2063 @@
+{
+  "version": "endpoint-aware-continuation-plan-v1",
+  "admission_policy": "prospective-endpoint-admission-v1",
+  "user_authorized_prospective_checks_before_children": true,
+  "original_failures_preserved": true,
+  "optimization_settings_changed": false,
+  "monitor_remains_paused": true,
+  "matrix_stride": 20,
+  "loss_stride": 1,
+  "control_root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-02",
+  "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-02",
+  "source_root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-release-02/source",
+  "arms": [
+    {
+      "id": "protenix",
+      "label": "Protenix native-only continuation",
+      "rate": 0.3,
+      "source": {
+        "files": 643,
+        "manifest_sha256": "da9db6821d26b884ca1749303fc8e0b0095bd9ee7cbd1b427cdcf1b22eec6562",
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source"
+      },
+      "config": {
+        "bytes": 1733,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source/examples/configs/extended_continuation.json",
+        "sha256": "f91c90770fe907c00e081f3ed28b46071ac35cc3f869edae504cf8cc16f6b445"
+      },
+      "start_global": 20000,
+      "global_start": 20000,
+      "target_global": 50000,
+      "global_target": 50000,
+      "segment_updates": 10000,
+      "segment_steps": 10000,
+      "offsets": [
+        20000,
+        30000,
+        40000
+      ],
+      "original_argv": [
+        "/work3/s234818/mosaic/envs/protenix-tiny/bin/python",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source/examples/brd4_25_atoms.py",
+        "--mode",
+        "run",
+        "--config",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source/examples/configs/extended_continuation.json",
+        "--output",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-segment-0000/payload/study",
+        "--manifest",
+        "da9db6821d26b884ca1749303fc8e0b0095bd9ee7cbd1b427cdcf1b22eec6562",
+        "--cpu-certificate",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/cpu-certificate.json",
+        "--cpu-certificate-sha256",
+        "ab3148ea6dd8d25361f85e9d8283578e0cf4429844d820a4dab6b03673ef577b",
+        "--reference",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/cpu/payload/composition_reference.json",
+        "--pocket",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/cpu/payload/pocket_definition.json",
+        "--pocket-sha256",
+        "9376c715eaf5b48689fb3e995b00d7820601a7776970df66bd7e7cff3b13ee43",
+        "--offset",
+        "10000",
+        "--segment-steps",
+        "10000",
+        "--resume-snapshot",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-protenix/payload/study/case-0/snapshots/step-10000.npz",
+        "--resume-sha256",
+        "edf15f06ba1b6591d62cbc3e04e19ecd93b553a0627da38c370fdeed3c1b780f",
+        "--ready",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/assessment.json",
+        "--ready-sha256",
+        "edd616ca16b1d7bd4882ca4f395b8a4375387cffff5f4124f5fbb071ff02e81d"
+      ],
+      "inputs": {
+        "original_driver_argv": [
+          "/work3/s234818/mosaic/envs/protenix-tiny/bin/python",
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source/examples/brd4_25_atoms.py",
+          "--mode",
+          "run",
+          "--config",
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source/examples/configs/extended_continuation.json",
+          "--output",
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-segment-0000/payload/study",
+          "--manifest",
+          "da9db6821d26b884ca1749303fc8e0b0095bd9ee7cbd1b427cdcf1b22eec6562",
+          "--cpu-certificate",
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/cpu-certificate.json",
+          "--cpu-certificate-sha256",
+          "ab3148ea6dd8d25361f85e9d8283578e0cf4429844d820a4dab6b03673ef577b",
+          "--reference",
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/cpu/payload/composition_reference.json",
+          "--pocket",
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/cpu/payload/pocket_definition.json",
+          "--pocket-sha256",
+          "9376c715eaf5b48689fb3e995b00d7820601a7776970df66bd7e7cff3b13ee43",
+          "--offset",
+          "10000",
+          "--segment-steps",
+          "10000",
+          "--resume-snapshot",
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-protenix/payload/study/case-0/snapshots/step-10000.npz",
+          "--resume-sha256",
+          "edf15f06ba1b6591d62cbc3e04e19ecd93b553a0627da38c370fdeed3c1b780f",
+          "--ready",
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/assessment.json",
+          "--ready-sha256",
+          "edd616ca16b1d7bd4882ca4f395b8a4375387cffff5f4124f5fbb071ff02e81d"
+        ],
+        "original_driver_invocation": {
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-segment-0000/payload/driver-invocation.json",
+          "bytes": 1910,
+          "sha256": "81bf732e0f37fa514380e71b8d78c12a280c3a32c62a587251bdca283f0ae363"
+        },
+        "original_native_report": {
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-segment-0000/payload/study/native_gradient_checks/report.json",
+          "bytes": 5101,
+          "sha256": "4b736d6e0576a472d01cc1fe8b62a50e1c72a473980873e1ae074bacb00273ec"
+        },
+        "cpu_certificate": {
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/cpu-certificate.json",
+          "bytes": 4869,
+          "sha256": "ab3148ea6dd8d25361f85e9d8283578e0cf4429844d820a4dab6b03673ef577b"
+        },
+        "reference": {
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/cpu/payload/composition_reference.json",
+          "bytes": 2087,
+          "sha256": "37b34a2ba7be47886936df48faaabdeac20481e5a9cebca9bafab831c07868eb"
+        },
+        "pocket": {
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/cpu/payload/pocket_definition.json",
+          "bytes": 3948,
+          "sha256": "9376c715eaf5b48689fb3e995b00d7820601a7776970df66bd7e7cff3b13ee43"
+        },
+        "ready": {
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/assessment.json",
+          "bytes": 22361,
+          "sha256": "edd616ca16b1d7bd4882ca4f395b8a4375387cffff5f4124f5fbb071ff02e81d"
+        }
+      },
+      "failed_parent": {
+        "summary": {
+          "bytes": 37975078,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-segment-0000/payload/study/summary.json",
+          "sha256": "99d63960395797f0884140101afc012fd3335ed0edff80e6ef5d669549ea8285"
+        },
+        "stdout": {
+          "bytes": 1229018,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-segment-0000/stdout.29809291.log",
+          "sha256": "e87b2e9640768fb2c8d0ae064030f9e646d1820b4f55bea44bb10ff92ac7fa92"
+        },
+        "stderr": {
+          "bytes": 750208,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-segment-0000/stderr.29809291.log",
+          "sha256": "12b4a4011c8d0a7de4c4c63f6b172d987de90f50e41d8425e41acc63b9e5b52f"
+        },
+        "states": {
+          "bytes": 10528552,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-segment-0000/payload/study/case-0/states.jsonl",
+          "sha256": "f24feed2906ff2307fb07d72c05cda4c17b0894f1515c7b566b921d2a0c5a5fb"
+        },
+        "updates": {
+          "bytes": 8634606,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-segment-0000/payload/study/case-0/updates.jsonl",
+          "sha256": "ba72dc41ed84a221e4d7711ca8054438d2e75496f32fe042f436e16fb3373075"
+        },
+        "job_id": "29809291",
+        "parent": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-segment-0000",
+        "endpoint": {
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-segment-0000/payload/study/case-0/snapshots/step-10000.npz",
+          "bytes": 14284,
+          "sha256": "6be2b3868d58162d4aa3cc9d960cfb85a84d4078748f0b24d50b138ae3e47dbd"
+        },
+        "submission": {
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-segment-0000/submission.json",
+          "bytes": 1430,
+          "sha256": "dd10718a178003e80a77ed37725a7c4e12b15fa55090bd4b63258ab72574878d"
+        },
+        "terminal": {
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-segment-0000/payload/study/terminal_gradient_checks/report.json",
+          "bytes": 1599,
+          "sha256": "1506e7ed0d6d4e56b62a72097133bcf4832493fa2f9a6365967ca4eafcdf26c0"
+        }
+      },
+      "parent_snapshot": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-segment-0000/payload/study/case-0/snapshots/step-10000.npz",
+        "bytes": 14284,
+        "sha256": "6be2b3868d58162d4aa3cc9d960cfb85a84d4078748f0b24d50b138ae3e47dbd"
+      },
+      "original_directions": {
+        "X": [
+          {
+            "row": 3,
+            "source": 1,
+            "target": 2
+          }
+        ],
+        "E_upper": []
+      },
+      "original_direction_scope": "saved_failed_endpoint",
+      "original_direction_limits": "Authentic terminal observations only; fields not reached remain explicit empty",
+      "future_endpoint_direction_scope": "not_preexisting_at_new_endpoint",
+      "expected": {
+        "saved_parent_scientific_status": "failed",
+        "parent_committed_states": 10001,
+        "parent_committed_updates": 10000,
+        "original_native_report": {
+          "acceptance_policy": "best_primal",
+          "artifact_policy": "compact",
+          "artifact_scope": "all graphs/raw gradients/scalars/RNG; logits at initial/final/probes; no persisted trunk tensors",
+          "bond_order_null_absolute_scalar_difference": 0.0,
+          "bond_order_null_comparison": "standalone primal versus standalone primal",
+          "bond_order_null_max_gradient_difference": 0.0,
+          "bond_order_null_max_output_difference": 0.0,
+          "bond_order_null_output_atol": 2e-05,
+          "bond_order_null_same_atom_and_existence_inputs": true,
+          "bond_order_null_scalar_atol": 2e-05,
+          "directions": [
+            {
+              "autodiff": 0.0102313794195652,
+              "destination": 2,
+              "field": "X",
+              "gradient_norm": 0.03449278123409062,
+              "row": 23,
+              "source": 4,
+              "sweep": [
+                {
+                  "absolute_error": 1.73225998878479e-06,
+                  "agrees": true,
+                  "epsilon": 0.01,
+                  "finite_difference": 0.010229647159576416,
+                  "minus_loss": -0.1779223531484604,
+                  "plus_loss": -0.17771776020526886,
+                  "relative_error": 0.0001693085475329196,
+                  "same_sign": true
+                },
+                {
+                  "absolute_error": 1.3168901205062866e-05,
+                  "agrees": true,
+                  "epsilon": 0.003,
+                  "finite_difference": 0.010244548320770264,
+                  "minus_loss": -0.1778566837310791,
+                  "plus_loss": -0.17779521644115448,
+                  "relative_error": 0.0012854545454545454,
+                  "same_sign": true
+                },
+                {
+                  "absolute_error": 1.73225998878479e-06,
+                  "agrees": true,
+                  "epsilon": 0.001,
+                  "finite_difference": 0.010229647159576416,
+                  "minus_loss": -0.17783679068088531,
+                  "plus_loss": -0.17781633138656616,
+                  "relative_error": 0.0001693085475329196,
+                  "same_sign": true
+                }
+              ]
+            },
+            {
+              "autodiff": 0.0034544626250863075,
+              "destination": 0,
+              "field": "E_upper",
+              "gradient_norm": 0.011438282489079056,
+              "row": 130,
+              "source": 1,
+              "sweep": [
+                {
+                  "absolute_error": 3.351829946041107e-06,
+                  "agrees": true,
+                  "epsilon": 0.01,
+                  "finite_difference": 0.0034578144550323486,
+                  "minus_loss": -0.17785975337028503,
+                  "plus_loss": -0.1777905970811844,
+                  "relative_error": 0.0009693492781728076,
+                  "same_sign": true
+                },
+                {
+                  "absolute_error": 2.2474986811478644e-05,
+                  "agrees": true,
+                  "epsilon": 0.003,
+                  "finite_difference": 0.003476937611897786,
+                  "minus_loss": -0.17783699929714203,
+                  "plus_loss": -0.17781613767147064,
+                  "relative_error": 0.006464017857142774,
+                  "same_sign": true
+                },
+                {
+                  "absolute_error": 1.2294389307498932e-05,
+                  "agrees": true,
+                  "epsilon": 0.001,
+                  "finite_difference": 0.0034421682357788086,
+                  "minus_loss": -0.17783014476299286,
+                  "plus_loss": -0.1778232604265213,
+                  "relative_error": 0.003558987501620969,
+                  "same_sign": true
+                }
+              ]
+            }
+          ],
+          "final_loss": -0.17807969450950623,
+          "final_primal_loss": -0.17807970941066742,
+          "finite_difference_policy": {
+            "absolute_tolerance": 0.002,
+            "acceptance": "same sign, relative error <= rtol, and absolute+relative tolerance; two adjacent scales",
+            "epsilons": [
+              0.01,
+              0.003,
+              0.001
+            ],
+            "minimum_tangent": 1e-07,
+            "relative_error_denominator": "max(abs(FD), abs(autodiff))",
+            "relative_tolerance": 0.15
+          },
+          "initial_loss": -0.17782661318778992,
+          "initial_primal_loss": -0.1778266280889511,
+          "policy_segments": [
+            {
+              "first_update": 1,
+              "last_update": 1,
+              "policy": "best_primal"
+            }
+          ],
+          "primal_autodiff_parity": {
+            "absolute_scalar_difference": 1.4901161193847656e-08,
+            "autodiff_loss": -0.17782661318778992,
+            "logit_interpretation": "compilation-path diagnostic; null invariance compares standalone primal with standalone primal",
+            "max_logit_difference": 0.00020599365234375,
+            "primal_loss": -0.1778266280889511,
+            "raw_artifact": "baseline-primal.npz",
+            "scalar_atol": 2e-05
+          },
+          "primal_descent_minimum_decrease": null,
+          "primal_every_step": true,
+          "record_readouts": false,
+          "requested_updates": 1,
+          "status": "passed",
+          "updates": [
+            {
+              "acceptance_policy": "best_primal",
+              "accepted_step_size": 0.3,
+              "after": -0.17807969450950623,
+              "attempts": [
+                {
+                  "loss": -0.17807969450950623,
+                  "passes_strict_threshold": true,
+                  "primal_loss": -0.17807970941066742,
+                  "projection_residuals": {
+                    "E_upper": 0.001534577243032136,
+                    "X": 0.006347440048214824
+                  },
+                  "step_size": 0.3
+                }
+              ],
+              "before": -0.17782661318778992,
+              "delta_E_upper": 0.0030692233704030514,
+              "delta_X": 0.008172400295734406,
+              "fallback_used": false,
+              "primal_after": -0.17807970941066742,
+              "primal_before": -0.1778266280889511,
+              "primal_increased": false,
+              "selected_trial": 0,
+              "step": 0
+            }
+          ]
+        },
+        "original_terminal_report": {
+          "acceptance_policy": "best_primal",
+          "artifact_policy": "compact",
+          "artifact_scope": "all graphs/raw gradients/scalars/RNG; logits at initial/final/probes; no persisted trunk tensors",
+          "directions": [
+            {
+              "autodiff": 0.08608892560005188,
+              "destination": 2,
+              "field": "X",
+              "gradient_norm": 0.11101075102291362,
+              "row": 3,
+              "source": 1,
+              "sweep": []
+            }
+          ],
+          "error": "ValueError: Predeclared epsilon leaves the simplex interior",
+          "finite_difference_policy": {
+            "absolute_tolerance": 0.002,
+            "acceptance": "same sign, relative error <= rtol, and absolute+relative tolerance; two adjacent scales",
+            "epsilons": [
+              0.01,
+              0.003,
+              0.001
+            ],
+            "minimum_tangent": 1e-07,
+            "relative_error_denominator": "max(abs(FD), abs(autodiff))",
+            "relative_tolerance": 0.15
+          },
+          "initial_loss": -0.22756804525852203,
+          "initial_primal_loss": -0.22756801545619965,
+          "policy_segments": [
+            {
+              "first_update": 1,
+              "last_update": 1,
+              "policy": "best_primal"
+            }
+          ],
+          "primal_autodiff_parity": {
+            "absolute_scalar_difference": 2.9802322387695312e-08,
+            "autodiff_loss": -0.22756804525852203,
+            "logit_interpretation": "compilation-path diagnostic; null invariance compares standalone primal with standalone primal",
+            "max_logit_difference": 0.0002307891845703125,
+            "primal_loss": -0.22756801545619965,
+            "raw_artifact": "baseline-primal.npz",
+            "scalar_atol": 2e-05
+          },
+          "primal_every_step": true,
+          "record_readouts": false,
+          "requested_updates": 1,
+          "status": "failed",
+          "updates": []
+        }
+      }
+    },
+    {
+      "id": "boltz",
+      "label": "Boltz-2 affinity, planned30k",
+      "rate": 0.0025,
+      "source": {
+        "files": 635,
+        "manifest_sha256": "c214bccf2c94ac6829996bc0ca7d6415d3c19549be4fe7f874cba2b433901cc6",
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-release-03/source"
+      },
+      "config": {
+        "bytes": 1698,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-release-03/source/examples/configs/boltz_serial_boltz2.json",
+        "sha256": "ecdf8a4103291f2f3a7bc7197dd394f03a46c3ccc74c72eb42dfc2b76eb13124"
+      },
+      "start_global": 10000,
+      "global_start": 10000,
+      "target_global": 30000,
+      "global_target": 30000,
+      "segment_updates": 10000,
+      "segment_steps": 10000,
+      "offsets": [
+        10000,
+        20000
+      ],
+      "original_argv": [
+        "/work3/s234818/mosaic/envs/protenix-tiny/bin/python",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-release-03/source/examples/brd4_25_atoms.py",
+        "--mode",
+        "run",
+        "--config",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-release-03/source/examples/configs/boltz_serial_boltz2.json",
+        "--output",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/boltz2-segment-0000/payload/study",
+        "--manifest",
+        "c214bccf2c94ac6829996bc0ca7d6415d3c19549be4fe7f874cba2b433901cc6",
+        "--cpu-certificate",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/cpu-certificate.json",
+        "--cpu-certificate-sha256",
+        "06efbb027f1008a0921494af0e226c3fc7a78c0a8f4ab01b93e8b50f2c042836",
+        "--reference",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/cpu/payload/composition_reference.json",
+        "--pocket",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/cpu/payload/pocket_definition.json",
+        "--pocket-sha256",
+        "9376c715eaf5b48689fb3e995b00d7820601a7776970df66bd7e7cff3b13ee43",
+        "--prepared",
+        "/zhome/95/e/206121/mosaic-runs/20261021-brd4-jq1-25-01/prepare/payload/prepared",
+        "--context-sha256",
+        "a18a331269170aac3281b0a2ecad313aab81756c9b77e048d7e2cbaa4d8f1093",
+        "--worker-python",
+        "/work3/s234818/latentmol/env/boltz311/bin/python",
+        "--offset",
+        "0",
+        "--segment-steps",
+        "10000",
+        "--ready",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/boltz2-native-0000/payload/study/assessment.json",
+        "--ready-sha256",
+        "75f9feecf5f9eb0b1850579238718f74c1133db5e8326cf8d66e5ea96d81fea3"
+      ],
+      "inputs": {
+        "original_driver_argv": [
+          "/work3/s234818/mosaic/envs/protenix-tiny/bin/python",
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-release-03/source/examples/brd4_25_atoms.py",
+          "--mode",
+          "run",
+          "--config",
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-release-03/source/examples/configs/boltz_serial_boltz2.json",
+          "--output",
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/boltz2-segment-0000/payload/study",
+          "--manifest",
+          "c214bccf2c94ac6829996bc0ca7d6415d3c19549be4fe7f874cba2b433901cc6",
+          "--cpu-certificate",
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/cpu-certificate.json",
+          "--cpu-certificate-sha256",
+          "06efbb027f1008a0921494af0e226c3fc7a78c0a8f4ab01b93e8b50f2c042836",
+          "--reference",
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/cpu/payload/composition_reference.json",
+          "--pocket",
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/cpu/payload/pocket_definition.json",
+          "--pocket-sha256",
+          "9376c715eaf5b48689fb3e995b00d7820601a7776970df66bd7e7cff3b13ee43",
+          "--prepared",
+          "/zhome/95/e/206121/mosaic-runs/20261021-brd4-jq1-25-01/prepare/payload/prepared",
+          "--context-sha256",
+          "a18a331269170aac3281b0a2ecad313aab81756c9b77e048d7e2cbaa4d8f1093",
+          "--worker-python",
+          "/work3/s234818/latentmol/env/boltz311/bin/python",
+          "--offset",
+          "0",
+          "--segment-steps",
+          "10000",
+          "--ready",
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/boltz2-native-0000/payload/study/assessment.json",
+          "--ready-sha256",
+          "75f9feecf5f9eb0b1850579238718f74c1133db5e8326cf8d66e5ea96d81fea3"
+        ],
+        "original_driver_invocation": {
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/boltz2-segment-0000/payload/driver-invocation.json",
+          "bytes": 1924,
+          "sha256": "bd5a7a71d3df78e637e440447a2cc3b515206ecd4fd28a056ad19e9e31823f9d"
+        },
+        "original_native_report": {
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/boltz2-segment-0000/payload/study/native_gradient_checks/report.json",
+          "bytes": 2090,
+          "sha256": "cfa919e63cac1f0a4bbdb3cd09cfce86b92a1da77b5074ea664265721de46e3f"
+        },
+        "cpu_certificate": {
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/cpu-certificate.json",
+          "bytes": 4085,
+          "sha256": "06efbb027f1008a0921494af0e226c3fc7a78c0a8f4ab01b93e8b50f2c042836"
+        },
+        "reference": {
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/cpu/payload/composition_reference.json",
+          "bytes": 2087,
+          "sha256": "37b34a2ba7be47886936df48faaabdeac20481e5a9cebca9bafab831c07868eb"
+        },
+        "pocket": {
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/cpu/payload/pocket_definition.json",
+          "bytes": 3948,
+          "sha256": "9376c715eaf5b48689fb3e995b00d7820601a7776970df66bd7e7cff3b13ee43"
+        },
+        "ready": {
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/boltz2-native-0000/payload/study/assessment.json",
+          "bytes": 15273,
+          "sha256": "75f9feecf5f9eb0b1850579238718f74c1133db5e8326cf8d66e5ea96d81fea3"
+        }
+      },
+      "failed_parent": {
+        "summary": {
+          "bytes": 40923777,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/boltz2-segment-0000/payload/study/summary.json",
+          "sha256": "3be92e7592273f4fc9d1d17ca1be9541d7fa03046e20edd76e48acc34168e986"
+        },
+        "stdout": {
+          "bytes": 1206610,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/boltz2-segment-0000/stdout.29809297.log",
+          "sha256": "f69cba5b2eba11c73db75175493dcf7bd5e97d7b4e8c1c4907d735b387e7117a"
+        },
+        "stderr": {
+          "bytes": 5477,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/boltz2-segment-0000/stderr.29809297.log",
+          "sha256": "b7cac4f74d0fd40ab67568f865cb6e8365901b9bf385abd95b2216b1684b4887"
+        },
+        "states": {
+          "bytes": 11279759,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/boltz2-segment-0000/payload/study/case-0/states.jsonl",
+          "sha256": "a04bf28626d5b908229e4e9eeefa07ab4571240d2063820fd59fe888e9b24025"
+        },
+        "updates": {
+          "bytes": 9993988,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/boltz2-segment-0000/payload/study/case-0/updates.jsonl",
+          "sha256": "8101acc4f0fc0c103c5201547c425c1d47ac15e4fc8952ac86368c6c14cf5284"
+        },
+        "job_id": "29809297",
+        "parent": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/boltz2-segment-0000",
+        "endpoint": {
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/boltz2-segment-0000/payload/study/case-0/snapshots/step-10000.npz",
+          "bytes": 26501,
+          "sha256": "34ce9e74d6d4b53b13c0055f2ddbd2cc037a7fb2b9bab30532f030804d778318"
+        },
+        "submission": {
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/boltz2-segment-0000/submission.json",
+          "bytes": 1373,
+          "sha256": "223e1e875ff5fd0d8827f34d4ad8cd9d5e37f8418b0cf68c230a501ebd435416"
+        },
+        "terminal": {
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/boltz2-segment-0000/payload/study/terminal_gradient_checks/report.json",
+          "bytes": 2085,
+          "sha256": "d39ed2a9d29c8f9799083bcfb61961f78ad06588768e0f458c7caff4bf7ddddd"
+        }
+      },
+      "parent_snapshot": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/boltz2-segment-0000/payload/study/case-0/snapshots/step-10000.npz",
+        "bytes": 26501,
+        "sha256": "34ce9e74d6d4b53b13c0055f2ddbd2cc037a7fb2b9bab30532f030804d778318"
+      },
+      "original_directions": {
+        "X": [
+          {
+            "row": 15,
+            "source": 1,
+            "target": 4
+          }
+        ],
+        "E_upper": [
+          {
+            "row": 132,
+            "source": 1,
+            "target": 0
+          }
+        ]
+      },
+      "original_direction_scope": "saved_failed_endpoint",
+      "original_direction_limits": "Authentic terminal observations only; fields not reached remain explicit empty",
+      "future_endpoint_direction_scope": "not_preexisting_at_new_endpoint",
+      "expected": {
+        "saved_parent_scientific_status": "failed",
+        "parent_committed_states": 10001,
+        "parent_committed_updates": 10000,
+        "original_native_report": {
+          "status": "passed",
+          "scope": "quantitative affinity; fixed pose/masks; first-order raw graph derivatives",
+          "rows": [
+            {
+              "field": "X",
+              "row": 1,
+              "source": 4,
+              "target": 1,
+              "probes": [
+                {
+                  "epsilon": 0.01,
+                  "finite_difference": 0.17918944358825684,
+                  "analytic": 0.17920349538326263,
+                  "agrees": true,
+                  "primal_endpoints": [
+                    1.1018683910369873,
+                    1.1054521799087524
+                  ]
+                },
+                {
+                  "epsilon": 0.003,
+                  "finite_difference": 0.17919143040974936,
+                  "analytic": 0.17920349538326263,
+                  "agrees": true,
+                  "primal_endpoints": [
+                    1.1031241416931152,
+                    1.1041992902755737
+                  ]
+                },
+                {
+                  "epsilon": 0.001,
+                  "finite_difference": 0.179290771484375,
+                  "analytic": 0.17920349538326263,
+                  "agrees": true,
+                  "primal_endpoints": [
+                    1.1034826040267944,
+                    1.1038411855697632
+                  ]
+                }
+              ]
+            },
+            {
+              "field": "E_upper",
+              "row": 0,
+              "source": 4,
+              "target": 0,
+              "probes": [
+                {
+                  "epsilon": 0.01,
+                  "finite_difference": 0.08034706115722656,
+                  "analytic": 0.08031609654426575,
+                  "agrees": true,
+                  "primal_endpoints": [
+                    1.102860450744629,
+                    1.1044673919677734
+                  ]
+                },
+                {
+                  "epsilon": 0.003,
+                  "finite_difference": 0.08028745651245117,
+                  "analytic": 0.08031609654426575,
+                  "agrees": true,
+                  "primal_endpoints": [
+                    1.1034207344055176,
+                    1.1039024591445923
+                  ]
+                },
+                {
+                  "epsilon": 0.001,
+                  "finite_difference": 0.08040666580200195,
+                  "analytic": 0.08031609654426575,
+                  "agrees": true,
+                  "primal_endpoints": [
+                    1.1035809516906738,
+                    1.1037417650222778
+                  ]
+                }
+              ]
+            }
+          ],
+          "baseline": 1.1036616563796997,
+          "typed_bond_contrast_nonzero": true
+        },
+        "original_terminal_report": {
+          "status": "failed",
+          "scope": "quantitative affinity; fixed pose/masks; first-order raw graph derivatives",
+          "rows": [
+            {
+              "field": "X",
+              "row": 15,
+              "source": 1,
+              "target": 4,
+              "probes": [
+                {
+                  "epsilon": 0.01,
+                  "finite_difference": 0.2663224935531616,
+                  "analytic": 0.268088698387146,
+                  "agrees": true,
+                  "primal_endpoints": [
+                    0.6426512002944946,
+                    0.6479776501655579
+                  ]
+                },
+                {
+                  "epsilon": 0.003,
+                  "finite_difference": 0.2665420373280843,
+                  "analytic": 0.268088698387146,
+                  "agrees": true,
+                  "primal_endpoints": [
+                    0.6445426940917969,
+                    0.6461419463157654
+                  ]
+                },
+                {
+                  "epsilon": 0.001,
+                  "finite_difference": 0.26744604110717773,
+                  "analytic": 0.268088698387146,
+                  "agrees": true,
+                  "primal_endpoints": [
+                    0.6450803279876709,
+                    0.6456152200698853
+                  ]
+                }
+              ]
+            },
+            {
+              "field": "E_upper",
+              "row": 132,
+              "source": 1,
+              "target": 0,
+              "probes": [
+                {
+                  "epsilon": 0.01,
+                  "finite_difference": 6.225293874740601,
+                  "analytic": 3.075040102005005,
+                  "agrees": false,
+                  "primal_endpoints": [
+                    0.661461591720581,
+                    0.7859674692153931
+                  ]
+                },
+                {
+                  "epsilon": 0.003,
+                  "finite_difference": 12.717187404632568,
+                  "analytic": 3.075040102005005,
+                  "agrees": false,
+                  "primal_endpoints": [
+                    0.6591706275939941,
+                    0.7354737520217896
+                  ]
+                },
+                {
+                  "epsilon": 0.001,
+                  "finite_difference": 6.982535123825073,
+                  "analytic": 3.075040102005005,
+                  "agrees": false,
+                  "primal_endpoints": [
+                    0.649941623210907,
+                    0.6639066934585571
+                  ]
+                }
+              ]
+            }
+          ],
+          "error": "AssertionError: Native affinity E_upper finite differences failed"
+        }
+      }
+    },
+    {
+      "id": "dbmol",
+      "label": "Boltz-2 DBMol binding objective, planned10k",
+      "rate": 0.0025,
+      "source": {
+        "files": 657,
+        "manifest_sha256": "600ecc3b33135141a57c029a28a2c72f29e788e3ecf5cb2dac1761146d1d6eed",
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-release-02/source"
+      },
+      "config": {
+        "bytes": 1816,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-release-02/source/examples/configs/dbmol_pilot.json",
+        "sha256": "b3b56f409a59b3b1d00228bb7dcd3f74fc08f17fdf06facfc1469922778d5497"
+      },
+      "start_global": 5000,
+      "global_start": 5000,
+      "target_global": 10000,
+      "global_target": 10000,
+      "segment_updates": 2500,
+      "segment_steps": 2500,
+      "offsets": [
+        5000,
+        7500
+      ],
+      "original_argv": [
+        "/work3/s234818/mosaic/envs/protenix-tiny/bin/python",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-release-02/source/scripts/dbmol_driver.py",
+        "--mode",
+        "run",
+        "--config",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-release-02/source/examples/configs/dbmol_pilot.json",
+        "--output",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-segment-0001/payload/study",
+        "--manifest",
+        "600ecc3b33135141a57c029a28a2c72f29e788e3ecf5cb2dac1761146d1d6eed",
+        "--cpu-certificate",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/cpu-certificate.json",
+        "--cpu-certificate-sha256",
+        "387070e8fe56b17ddbd7c8e0b82d2d6a44d9aa99e7015d3fbe4757ce82c0819b",
+        "--reference",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/cpu-05/payload/composition_reference.json",
+        "--pocket",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/cpu-05/payload/pocket_definition.json",
+        "--pocket-sha256",
+        "9376c715eaf5b48689fb3e995b00d7820601a7776970df66bd7e7cff3b13ee43",
+        "--prepared",
+        "/zhome/95/e/206121/mosaic-runs/20261021-brd4-jq1-25-01/prepare/payload/prepared",
+        "--context-sha256",
+        "a18a331269170aac3281b0a2ecad313aab81756c9b77e048d7e2cbaa4d8f1093",
+        "--worker-python",
+        "/work3/s234818/latentmol/env/boltz311/bin/python",
+        "--offset",
+        "2500",
+        "--segment-steps",
+        "2500",
+        "--resume-snapshot",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-segment-0000/payload/study/case-0/snapshots/step-2500.npz",
+        "--resume-sha256",
+        "40b8c6983bdbefec35b0aba16233281f630a46614ef091683d26b917dfd3913f",
+        "--ready",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-native-0001/payload/study/assessment.json",
+        "--ready-sha256",
+        "9e10b8d79735e8f14b98d78ce8663b3aabb7897c4a87907a1faeccd12aae8218"
+      ],
+      "inputs": {
+        "original_driver_argv": [
+          "/work3/s234818/mosaic/envs/protenix-tiny/bin/python",
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-release-02/source/scripts/dbmol_driver.py",
+          "--mode",
+          "run",
+          "--config",
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-release-02/source/examples/configs/dbmol_pilot.json",
+          "--output",
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-segment-0001/payload/study",
+          "--manifest",
+          "600ecc3b33135141a57c029a28a2c72f29e788e3ecf5cb2dac1761146d1d6eed",
+          "--cpu-certificate",
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/cpu-certificate.json",
+          "--cpu-certificate-sha256",
+          "387070e8fe56b17ddbd7c8e0b82d2d6a44d9aa99e7015d3fbe4757ce82c0819b",
+          "--reference",
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/cpu-05/payload/composition_reference.json",
+          "--pocket",
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/cpu-05/payload/pocket_definition.json",
+          "--pocket-sha256",
+          "9376c715eaf5b48689fb3e995b00d7820601a7776970df66bd7e7cff3b13ee43",
+          "--prepared",
+          "/zhome/95/e/206121/mosaic-runs/20261021-brd4-jq1-25-01/prepare/payload/prepared",
+          "--context-sha256",
+          "a18a331269170aac3281b0a2ecad313aab81756c9b77e048d7e2cbaa4d8f1093",
+          "--worker-python",
+          "/work3/s234818/latentmol/env/boltz311/bin/python",
+          "--offset",
+          "2500",
+          "--segment-steps",
+          "2500",
+          "--resume-snapshot",
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-segment-0000/payload/study/case-0/snapshots/step-2500.npz",
+          "--resume-sha256",
+          "40b8c6983bdbefec35b0aba16233281f630a46614ef091683d26b917dfd3913f",
+          "--ready",
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-native-0001/payload/study/assessment.json",
+          "--ready-sha256",
+          "9e10b8d79735e8f14b98d78ce8663b3aabb7897c4a87907a1faeccd12aae8218"
+        ],
+        "original_driver_invocation": {
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-segment-0001/payload/driver-invocation.json",
+          "bytes": 2500,
+          "sha256": "f25972fa5c2ccb7f4b2fed7c63a1dfcc5c0604567dfff3b54e094c1592bb0d9e"
+        },
+        "original_native_report": {
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-segment-0001/payload/study/native_gradient_checks/report.json",
+          "bytes": 22580,
+          "sha256": "33d42155034370a361b1ed79f98d10425adadcaee93b21d4fd4e30d6f7c80eee"
+        },
+        "cpu_certificate": {
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/cpu-certificate.json",
+          "bytes": 24559,
+          "sha256": "387070e8fe56b17ddbd7c8e0b82d2d6a44d9aa99e7015d3fbe4757ce82c0819b"
+        },
+        "reference": {
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/cpu-05/payload/composition_reference.json",
+          "bytes": 2087,
+          "sha256": "37b34a2ba7be47886936df48faaabdeac20481e5a9cebca9bafab831c07868eb"
+        },
+        "pocket": {
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/cpu-05/payload/pocket_definition.json",
+          "bytes": 3948,
+          "sha256": "9376c715eaf5b48689fb3e995b00d7820601a7776970df66bd7e7cff3b13ee43"
+        },
+        "ready": {
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-native-0001/payload/study/assessment.json",
+          "bytes": 19102,
+          "sha256": "9e10b8d79735e8f14b98d78ce8663b3aabb7897c4a87907a1faeccd12aae8218"
+        }
+      },
+      "failed_parent": {
+        "summary": {
+          "bytes": 14568511,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-segment-0001/payload/study/summary.json",
+          "sha256": "eb2b72e51c4a80c32a70229e2eb49adadad5addf71bc7ed91a9c80ea16399285"
+        },
+        "stdout": {
+          "bytes": 307626,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-segment-0001/stdout.29810971.log",
+          "sha256": "48c2404f121fbbc03c952436bf13fb7042598dcebbe1a375c40c20924e518a00"
+        },
+        "stderr": {
+          "bytes": 6946,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-segment-0001/stderr.29810971.log",
+          "sha256": "7a3108464fb096183e50a7112dd877eb05c972ebf1af1d148e9a94813d6380ed"
+        },
+        "states": {
+          "bytes": 4406776,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-segment-0001/payload/study/case-0/states.jsonl",
+          "sha256": "584f0819022936b368099b979f1626958561c94b8d4ffe50f22338bbda293a51"
+        },
+        "updates": {
+          "bytes": 4082222,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-segment-0001/payload/study/case-0/updates.jsonl",
+          "sha256": "03ac0f707fcdd0bfc5c0cf0d1542e0aa05cb45ce2cdedc43a3136f511b51ef40"
+        },
+        "job_id": "29810971",
+        "parent": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-segment-0001",
+        "endpoint": {
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-segment-0001/payload/study/case-0/snapshots/step-2500.npz",
+          "bytes": 26700,
+          "sha256": "dd0b183c77c1e75404c206fe325fcf0c9aec59976264b53b11ba00b1263a64fb"
+        },
+        "submission": {
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-segment-0001/submission.json",
+          "bytes": 1384,
+          "sha256": "65e7a6cee4bab477f82efd27e5c59368555f320a5971e4ec9d09db6c7b889684"
+        },
+        "terminal": {
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-segment-0001/payload/study/terminal_gradient_checks/report.json",
+          "bytes": 13307,
+          "sha256": "9c5a8a7f742ed83cc96bf8fcfb9cb386d9aba794d746570f4aa6961ab4f84258"
+        }
+      },
+      "parent_snapshot": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-segment-0001/payload/study/case-0/snapshots/step-2500.npz",
+        "bytes": 26700,
+        "sha256": "dd0b183c77c1e75404c206fe325fcf0c9aec59976264b53b11ba00b1263a64fb"
+      },
+      "original_directions": {
+        "dbmol_affinity_loss": {
+          "X": [
+            {
+              "row": 12,
+              "source": 3,
+              "target": 4
+            }
+          ],
+          "E_upper": [
+            {
+              "row": 247,
+              "source": 0,
+              "target": 1
+            }
+          ]
+        },
+        "dbmol_contact_loss": {
+          "X": [
+            {
+              "row": 10,
+              "source": 2,
+              "target": 0
+            }
+          ],
+          "E_upper": [
+            {
+              "row": 248,
+              "source": 0,
+              "target": 1
+            }
+          ]
+        },
+        "dbmol_confidence_loss": {
+          "X": [],
+          "E_upper": []
+        },
+        "dbmol_total_loss": {
+          "X": [],
+          "E_upper": []
+        }
+      },
+      "original_direction_scope": "saved_failed_endpoint",
+      "original_direction_limits": "Authentic terminal observations only; fields not reached remain explicit empty",
+      "future_endpoint_direction_scope": "not_preexisting_at_new_endpoint",
+      "expected": {
+        "saved_parent_scientific_status": "failed",
+        "parent_committed_states": 2501,
+        "parent_committed_updates": 2500,
+        "original_native_report": {
+          "status": "passed",
+          "policy": "dbmol-native-raw-fd-v1",
+          "scope": "fixed occupied graph/pose/context; no diffusion or optimizer update",
+          "components": {
+            "dbmol_affinity_loss": {
+              "status": "passed",
+              "objective": "dbmol_affinity_loss",
+              "epsilons": [
+                0.01,
+                0.003,
+                0.001
+              ],
+              "relative_tolerance": 0.15,
+              "required_adjacent_passes": 2,
+              "rows": [
+                {
+                  "field": "X",
+                  "row": 15,
+                  "source": 1,
+                  "target": 4,
+                  "analytic": 0.9448727369308472,
+                  "probes": [
+                    {
+                      "epsilon": 0.01,
+                      "analytic": 0.9448727369308472,
+                      "finite_difference": 0.9488195180892944,
+                      "agrees": true,
+                      "primal_endpoints": [
+                        5.602688491344452,
+                        5.621664881706238
+                      ],
+                      "endpoint_graph_sha256": [
+                        "1b045eb3fcbbeb5d3bd4a120371697bd139eecbe6494303ba9788e0b15bf2725",
+                        "d9a15204ef6486cb8a11e54ee8098abc8ffc1f6f27da60be2af05d5298c1ee21"
+                      ]
+                    },
+                    {
+                      "epsilon": 0.003,
+                      "analytic": 0.9448727369308472,
+                      "finite_difference": 0.9458661079406738,
+                      "agrees": true,
+                      "primal_endpoints": [
+                        5.609397530555725,
+                        5.615072727203369
+                      ],
+                      "endpoint_graph_sha256": [
+                        "c41e7552ea3304c7a479753e4622a3493655da94bd279807da91cb4f96fe79d1",
+                        "27839713225fed161db08f6fa515dcd109db8bd37518691e907c41431e52cc3f"
+                      ]
+                    },
+                    {
+                      "epsilon": 0.001,
+                      "analytic": 0.9448727369308472,
+                      "finite_difference": 0.9450912475585938,
+                      "agrees": true,
+                      "primal_endpoints": [
+                        5.6112977266311646,
+                        5.613187909126282
+                      ],
+                      "endpoint_graph_sha256": [
+                        "06f68e324e6cd765b9ef460f9642c80f89bbee9fa750805b8c193227af804fd1",
+                        "37719eaf66d0e5f5cdcaa3110e54d76862cd75a303fd91ba837250b56eda1071"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "field": "E_upper",
+                  "row": 253,
+                  "source": 4,
+                  "target": 0,
+                  "analytic": 1.0737534761428833,
+                  "probes": [
+                    {
+                      "epsilon": 0.01,
+                      "analytic": 1.0737534761428833,
+                      "finite_difference": 1.0866284370422363,
+                      "agrees": true,
+                      "primal_endpoints": [
+                        5.600180387496948,
+                        5.621912956237793
+                      ],
+                      "endpoint_graph_sha256": [
+                        "adb28951e7cd3694e9cf0874e16d1825e33473c1a5daca3dd9e3a237ab3246bb",
+                        "a43610ecd91f215c2a4c56a62f1711b08d5b803ef0fe84b19616610484f6f0c2"
+                      ]
+                    },
+                    {
+                      "epsilon": 0.003,
+                      "analytic": 1.0737534761428833,
+                      "finite_difference": 1.0747512181599934,
+                      "agrees": true,
+                      "primal_endpoints": [
+                        5.6089091300964355,
+                        5.6153576374053955
+                      ],
+                      "endpoint_graph_sha256": [
+                        "7afb9c7bb990773019860f4385117307bf1df4a23f78ef31ae680774a91babfc",
+                        "65c3b5daa4bbe2ac11997a0ff9f806cce2d15a81415152f26faa0b9b410bae62"
+                      ]
+                    },
+                    {
+                      "epsilon": 0.001,
+                      "analytic": 1.0737534761428833,
+                      "finite_difference": 1.0729432106018066,
+                      "agrees": true,
+                      "primal_endpoints": [
+                        5.611155271530151,
+                        5.613301157951355
+                      ],
+                      "endpoint_graph_sha256": [
+                        "a25011567c811a35dd1d0167f170846cc545f55009da490beafd9bf5760b52a7",
+                        "f11ad9f64ccf4d0a6296d428f1037749d50650524e790f3a7982adb932300d2d"
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "independent_primal": true,
+              "raw_unclipped_gradients": true,
+              "typed_bond_contrast_nonzero": true,
+              "typed_bond_maximum_contrast": 0.310907244682312,
+              "baseline": 5.6122400760650635,
+              "production_jax_transport": "passed"
+            },
+            "dbmol_contact_loss": {
+              "status": "passed",
+              "objective": "dbmol_contact_loss",
+              "epsilons": [
+                0.01,
+                0.003,
+                0.001
+              ],
+              "relative_tolerance": 0.15,
+              "required_adjacent_passes": 2,
+              "rows": [
+                {
+                  "field": "X",
+                  "row": 10,
+                  "source": 2,
+                  "target": 0,
+                  "analytic": 0.10424034297466278,
+                  "probes": [
+                    {
+                      "epsilon": 0.01,
+                      "analytic": 0.10424034297466278,
+                      "finite_difference": 0.10228277003054287,
+                      "agrees": true,
+                      "primal_endpoints": [
+                        0.9066659993507257,
+                        0.9087116547513365
+                      ],
+                      "endpoint_graph_sha256": [
+                        "300a556e822084ee94dae1704f2a4bcc2e9b65255bd72d83ef792bd121acb99b",
+                        "d01a0ad6a1642b429f0fc293d762df6bc983323e919fefa9cc2cdf5635b98e70"
+                      ]
+                    },
+                    {
+                      "epsilon": 0.003,
+                      "analytic": 0.10424034297466278,
+                      "finite_difference": 0.10304236418462454,
+                      "agrees": true,
+                      "primal_endpoints": [
+                        0.9074063237098244,
+                        0.9080245778949322
+                      ],
+                      "endpoint_graph_sha256": [
+                        "aab823e64ebf1fb7226914ab41e426510762c821cb34dc88162ffe96df51979f",
+                        "a01e7065f377b653a578ae9b1dfe8dd4c5dcebe276a97d54eb0cc01224176f19"
+                      ]
+                    },
+                    {
+                      "epsilon": 0.001,
+                      "analytic": 0.10424034297466278,
+                      "finite_difference": 0.10430442686848451,
+                      "agrees": true,
+                      "primal_endpoints": [
+                        0.9076160222810696,
+                        0.9078246311348066
+                      ],
+                      "endpoint_graph_sha256": [
+                        "ddef5908d74132d38429a555beb8f78e43bd9ba9e548407631e8fb6fca7136f0",
+                        "ae058c5b0bc11af62b9a0c17197260ab5e4b17cb3fe2fe197f1d6a55102616ab"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "field": "E_upper",
+                  "row": 210,
+                  "source": 1,
+                  "target": 0,
+                  "analytic": 0.09207170456647873,
+                  "probes": [
+                    {
+                      "epsilon": 0.01,
+                      "analytic": 0.09207170456647873,
+                      "finite_difference": 0.09232495917909089,
+                      "agrees": true,
+                      "primal_endpoints": [
+                        0.9067403884604743,
+                        0.9085868876440562
+                      ],
+                      "endpoint_graph_sha256": [
+                        "5383bd56bae2f20ddd2a1f7a4acdb8ac79a6eb2f2a2f00b4d89962a3e723d568",
+                        "a13cd00a738c0ca17ee7886cc959d06ed7d2c03713aad1ffdbe51b54a12daa3e"
+                      ]
+                    },
+                    {
+                      "epsilon": 0.003,
+                      "analytic": 0.09207170456647873,
+                      "finite_difference": 0.092057270524822,
+                      "agrees": true,
+                      "primal_endpoints": [
+                        0.9074391816045765,
+                        0.9079915252277254
+                      ],
+                      "endpoint_graph_sha256": [
+                        "f49702974409a60f229403496750d5d4eaf58df1f0f425b4003dedd744a5e225",
+                        "13b7c5182b468600b74a097ba7bd63bc43efbc5bf610a15464a66f24b239f99e"
+                      ]
+                    },
+                    {
+                      "epsilon": 0.001,
+                      "analytic": 0.09207170456647873,
+                      "finite_difference": 0.09197042024239321,
+                      "agrees": true,
+                      "primal_endpoints": [
+                        0.9076277828868894,
+                        0.9078117237273742
+                      ],
+                      "endpoint_graph_sha256": [
+                        "1e97c75403e112abb59f229fb8940fdaba1b43c976b0d185294c461b8ad919d3",
+                        "ebd6be7915f10b6fe60276a0288b0354e3f6eb2bb72f95ae464e969cc73e82e2"
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "independent_primal": true,
+              "raw_unclipped_gradients": true,
+              "typed_bond_contrast_nonzero": true,
+              "typed_bond_maximum_contrast": 0.028982050716876984,
+              "baseline": 0.9077205052619564,
+              "production_jax_transport": "passed"
+            },
+            "dbmol_confidence_loss": {
+              "status": "passed",
+              "objective": "dbmol_confidence_loss",
+              "epsilons": [
+                0.01,
+                0.003,
+                0.001
+              ],
+              "relative_tolerance": 0.15,
+              "required_adjacent_passes": 2,
+              "rows": [
+                {
+                  "field": "X",
+                  "row": 1,
+                  "source": 4,
+                  "target": 0,
+                  "analytic": 0.03754480928182602,
+                  "probes": [
+                    {
+                      "epsilon": 0.01,
+                      "analytic": 0.03754480928182602,
+                      "finite_difference": 0.03531128168105524,
+                      "agrees": true,
+                      "primal_endpoints": [
+                        -0.9735618710517883,
+                        -0.9728556454181672
+                      ],
+                      "endpoint_graph_sha256": [
+                        "e2f3076d09628ab225725b3307c5c0290b174ff1cc0086cc84edfe2bc2005fd4",
+                        "1384aa6a434394f988d28bec98fc293205f653dfea1f73b8ca297938c7273fa5"
+                      ]
+                    },
+                    {
+                      "epsilon": 0.003,
+                      "analytic": 0.03754480928182602,
+                      "finite_difference": 0.03756036361057813,
+                      "agrees": true,
+                      "primal_endpoints": [
+                        -0.9733003586530684,
+                        -0.9730749964714049
+                      ],
+                      "endpoint_graph_sha256": [
+                        "a3e2dbc279520690642445c6462f759bf2afe57d1e9c905292df514f2ea093fc",
+                        "9ceb4b4d22505f3a6555a3e5baef9944b1de585cd8d0e5b58b56e0e3075b98a2"
+                      ]
+                    },
+                    {
+                      "epsilon": 0.001,
+                      "analytic": 0.03754480928182602,
+                      "finite_difference": 0.037631392478809644,
+                      "agrees": true,
+                      "primal_endpoints": [
+                        -0.9732253551483152,
+                        -0.9731500923633576
+                      ],
+                      "endpoint_graph_sha256": [
+                        "f1944f5fdd8246ccdb4784cd8f12b048815c31e5419749637fd8a11a12dc14ea",
+                        "3a3bf89770bc9e5f4eb074edf939431e7825e037cdd0b843a15eebcc849a9050"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "field": "E_upper",
+                  "row": 49,
+                  "source": 1,
+                  "target": 0,
+                  "analytic": 0.03470941632986069,
+                  "probes": [
+                    {
+                      "epsilon": 0.01,
+                      "analytic": 0.03470941632986069,
+                      "finite_difference": 0.03470122814178689,
+                      "agrees": true,
+                      "primal_endpoints": [
+                        -0.973534044623375,
+                        -0.9728400200605393
+                      ],
+                      "endpoint_graph_sha256": [
+                        "115e2c6372912a33e388349b5d82eb714fc51557112efcd77a7f36cda6e46a56",
+                        "1a864bef765e4801b972fc409bfa9b3ee7820e885c565b8f151aea584e2e4558"
+                      ]
+                    },
+                    {
+                      "epsilon": 0.003,
+                      "analytic": 0.03470941632986069,
+                      "finite_difference": 0.03473907709126515,
+                      "agrees": true,
+                      "primal_endpoints": [
+                        -0.9732919037342073,
+                        -0.9730834692716597
+                      ],
+                      "endpoint_graph_sha256": [
+                        "218b5625266db58e2a4444ac2c93bd9999ccdc831c1d15718147aee03ffac78b",
+                        "2119b33f1db92bda454a6e2675c38bbb1d5d8632d582c90aee810ce9ab6b692e"
+                      ]
+                    },
+                    {
+                      "epsilon": 0.001,
+                      "analytic": 0.03470941632986069,
+                      "finite_difference": 0.0346928834914495,
+                      "agrees": true,
+                      "primal_endpoints": [
+                        -0.9732224434614181,
+                        -0.9731530576944352
+                      ],
+                      "endpoint_graph_sha256": [
+                        "43822168fc1e475d3276139b45bbed1b113e729217e148946e00233c27238e52",
+                        "fe5cf4a03693f6b8b1ec4efb36d6e00294beaab3368e67cce097b55f98563fce"
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "independent_primal": true,
+              "raw_unclipped_gradients": true,
+              "typed_bond_contrast_nonzero": true,
+              "typed_bond_maximum_contrast": 0.025955339893698692,
+              "baseline": -0.9731878250837326,
+              "production_jax_transport": "passed"
+            },
+            "dbmol_total_loss": {
+              "status": "passed",
+              "objective": "dbmol_total_loss",
+              "epsilons": [
+                0.01,
+                0.003,
+                0.001
+              ],
+              "relative_tolerance": 0.15,
+              "required_adjacent_passes": 2,
+              "rows": [
+                {
+                  "field": "X",
+                  "row": 15,
+                  "source": 1,
+                  "target": 4,
+                  "analytic": 1.0042071342468262,
+                  "probes": [
+                    {
+                      "epsilon": 0.01,
+                      "analytic": 1.0042071342468262,
+                      "finite_difference": 1.010027130047142,
+                      "agrees": true,
+                      "primal_endpoints": [
+                        5.438360306266517,
+                        5.45856084886746
+                      ],
+                      "endpoint_graph_sha256": [
+                        "1b045eb3fcbbeb5d3bd4a120371697bd139eecbe6494303ba9788e0b15bf2725",
+                        "d9a15204ef6486cb8a11e54ee8098abc8ffc1f6f27da60be2af05d5298c1ee21"
+                      ]
+                    },
+                    {
+                      "epsilon": 0.003,
+                      "analytic": 1.0042071342468262,
+                      "finite_difference": 1.0066408685311206,
+                      "agrees": true,
+                      "primal_endpoints": [
+                        5.445542315646024,
+                        5.45158216085721
+                      ],
+                      "endpoint_graph_sha256": [
+                        "c41e7552ea3304c7a479753e4622a3493655da94bd279807da91cb4f96fe79d1",
+                        "27839713225fed161db08f6fa515dcd109db8bd37518691e907c41431e52cc3f"
+                      ]
+                    },
+                    {
+                      "epsilon": 0.001,
+                      "analytic": 1.0042071342468262,
+                      "finite_difference": 1.0046441346589496,
+                      "agrees": true,
+                      "primal_endpoints": [
+                        5.447569762912298,
+                        5.449579051181616
+                      ],
+                      "endpoint_graph_sha256": [
+                        "06f68e324e6cd765b9ef460f9642c80f89bbee9fa750805b8c193227af804fd1",
+                        "37719eaf66d0e5f5cdcaa3110e54d76862cd75a303fd91ba837250b56eda1071"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "field": "E_upper",
+                  "row": 253,
+                  "source": 4,
+                  "target": 0,
+                  "analytic": 1.023102879524231,
+                  "probes": [
+                    {
+                      "epsilon": 0.01,
+                      "analytic": 1.023102879524231,
+                      "finite_difference": 1.035182026858461,
+                      "agrees": true,
+                      "primal_endpoints": [
+                        5.437087087758323,
+                        5.4577907282954925
+                      ],
+                      "endpoint_graph_sha256": [
+                        "adb28951e7cd3694e9cf0874e16d1825e33473c1a5daca3dd9e3a237ab3246bb",
+                        "a43610ecd91f215c2a4c56a62f1711b08d5b803ef0fe84b19616610484f6f0c2"
+                      ]
+                    },
+                    {
+                      "epsilon": 0.003,
+                      "analytic": 1.023102879524231,
+                      "finite_difference": 1.0242013267691696,
+                      "agrees": true,
+                      "primal_endpoints": [
+                        5.4453978614144205,
+                        5.4515430693750355
+                      ],
+                      "endpoint_graph_sha256": [
+                        "7afb9c7bb990773019860f4385117307bf1df4a23f78ef31ae680774a91babfc",
+                        "65c3b5daa4bbe2ac11997a0ff9f806cce2d15a81415152f26faa0b9b410bae62"
+                      ]
+                    },
+                    {
+                      "epsilon": 0.001,
+                      "analytic": 1.023102879524231,
+                      "finite_difference": 1.0225837949171535,
+                      "agrees": true,
+                      "primal_endpoints": [
+                        5.447537759186094,
+                        5.449582926775928
+                      ],
+                      "endpoint_graph_sha256": [
+                        "a25011567c811a35dd1d0167f170846cc545f55009da490beafd9bf5760b52a7",
+                        "f11ad9f64ccf4d0a6296d428f1037749d50650524e790f3a7982adb932300d2d"
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "independent_primal": true,
+              "raw_unclipped_gradients": true,
+              "typed_bond_contrast_nonzero": true,
+              "typed_bond_maximum_contrast": 0.3235163986682892,
+              "baseline": 5.448571776510622,
+              "production_jax_transport": "passed"
+            }
+          },
+          "input_graph_sha256": "1f2fa6bead2acc724aff20670420d0adca67f0ef66fa3baddc27b439b43addc0",
+          "hard_graph_sha256": "4524dc0b7c6577bc929016a98027ae59bb21984d4f3d7a533155fd65c48ff765",
+          "can_recertify_saved_failed_run": false,
+          "worker_identity": {
+            "status": "ready",
+            "protocol": "mosaic-boltz-dbmol-v1",
+            "profile": "mosaic-dbmol-fixed-jq1-v1",
+            "source": "b1ebfc46ecf57f5414e0d1a6f9027bbb122c53bc",
+            "checkpoint_sha256": "dcc5cd3722b1c9eaa34267e4ae32f55cbbf1963f4c19319381ccfa30fdd2ca9e",
+            "structural_checkpoint_sha256": "090e82ac8c92f5e943fa1b39e7410a44027bea7243c0bbb3caa67a77fc1428e1",
+            "context_file_sha256": "a18a331269170aac3281b0a2ecad313aab81756c9b77e048d7e2cbaa4d8f1093",
+            "affinity_model_digest": "395876da13ab6d5d175e6603db2118a82954c7c06484842fe2314dbd77a31a16",
+            "structural_model_digest": "7a3c34ea2b6ee79728e6232d9755d260cafd9ea8a524edd737f2e28c8581e8f1",
+            "model_digest": "7c90f5dd617310781780a8abe5f225f220f6586d4e2d910e67cbfcb8a4470044",
+            "context_digest": "fd04211da8e22eccd97ecedd96dd59cf4fb2d80aab6a397fa662af8eb92bbad4",
+            "full_context_digest": "73b9438f667b0239755ae886cb110b96cb61870c4fc4084f01c8eef141305e30",
+            "pocket_definition_sha256": "9376c715eaf5b48689fb3e995b00d7820601a7776970df66bd7e7cff3b13ee43",
+            "native_pocket_token_indices": [
+              39,
+              40,
+              41,
+              43,
+              44,
+              45,
+              46,
+              50,
+              51,
+              52,
+              55,
+              93,
+              94,
+              97,
+              98,
+              102,
+              103,
+              104,
+              107
+            ],
+            "pose_policy": "fixed original predicted pose; detached; no diffusion call",
+            "diffusion_gradient": false,
+            "recycling_steps": 0,
+            "n_atoms": 25,
+            "optimized_output": "dbmol_total_loss",
+            "objective_arithmetic": "contact_head_and_assembly_float64_v1",
+            "scalar_dtype": "float64",
+            "graph_dtype": "float32",
+            "gradient_dtype": "float32",
+            "metric_order": [
+              "dbmol_total_loss",
+              "dbmol_affinity_loss",
+              "dbmol_contact_loss",
+              "dbmol_confidence_loss",
+              "dbmol_weighted_affinity_loss",
+              "dbmol_weighted_contact_loss",
+              "dbmol_weighted_confidence_loss",
+              "affinity_pred_value",
+              "affinity_probability_binary",
+              "affinity_logits_binary",
+              "dbmol_contact_pocket_loss",
+              "dbmol_contact_anchor_loss",
+              "complex_plddt",
+              "iptm",
+              "complex_iplddt",
+              "complex_ipde",
+              "complex_pde",
+              "confidence_score",
+              "ptm"
+            ],
+            "supported_objectives": [
+              "dbmol_total_loss",
+              "dbmol_affinity_loss",
+              "dbmol_contact_loss",
+              "dbmol_confidence_loss",
+              "dbmol_weighted_affinity_loss",
+              "dbmol_weighted_contact_loss",
+              "dbmol_weighted_confidence_loss",
+              "affinity_pred_value",
+              "affinity_logits_binary",
+              "dbmol_contact_pocket_loss",
+              "dbmol_contact_anchor_loss",
+              "complex_plddt",
+              "iptm",
+              "complex_iplddt",
+              "complex_ipde",
+              "complex_pde",
+              "confidence_score",
+              "ptm"
+            ],
+            "contact_weight": 2.5,
+            "confidence_weight": 2.5,
+            "confidence_signed_weights": {
+              "iptm": -1.0,
+              "complex_iplddt": -0.3,
+              "complex_ipde": 0.3,
+              "complex_pde": 0.1,
+              "confidence_score": -0.3,
+              "ptm": -0.1
+            },
+            "physical_trunks_per_forward": 2,
+            "affinity_mw_correction": false
+          },
+          "frozen_before": {
+            "model_digest": "7c90f5dd617310781780a8abe5f225f220f6586d4e2d910e67cbfcb8a4470044",
+            "affinity_model_digest": "395876da13ab6d5d175e6603db2118a82954c7c06484842fe2314dbd77a31a16",
+            "structural_model_digest": "7a3c34ea2b6ee79728e6232d9755d260cafd9ea8a524edd737f2e28c8581e8f1",
+            "context_digest": "fd04211da8e22eccd97ecedd96dd59cf4fb2d80aab6a397fa662af8eb92bbad4",
+            "full_context_digest": "73b9438f667b0239755ae886cb110b96cb61870c4fc4084f01c8eef141305e30",
+            "context_file_sha256": "a18a331269170aac3281b0a2ecad313aab81756c9b77e048d7e2cbaa4d8f1093",
+            "checkpoint_sha256": "dcc5cd3722b1c9eaa34267e4ae32f55cbbf1963f4c19319381ccfa30fdd2ca9e",
+            "structural_checkpoint_sha256": "090e82ac8c92f5e943fa1b39e7410a44027bea7243c0bbb3caa67a77fc1428e1"
+          },
+          "hard_native_parity": {
+            "status": "passed",
+            "atol": 2e-05,
+            "absolute_differences": {
+              "dbmol_total_loss": 0.0,
+              "dbmol_affinity_loss": 0.0,
+              "dbmol_contact_loss": 0.0,
+              "dbmol_confidence_loss": 0.0,
+              "dbmol_weighted_affinity_loss": 0.0,
+              "dbmol_weighted_contact_loss": 0.0,
+              "dbmol_weighted_confidence_loss": 0.0,
+              "affinity_pred_value": 0.0,
+              "affinity_probability_binary": 0.0,
+              "affinity_logits_binary": 0.0,
+              "dbmol_contact_pocket_loss": 0.0,
+              "dbmol_contact_anchor_loss": 0.0,
+              "complex_plddt": 0.0,
+              "iptm": 0.0,
+              "complex_iplddt": 0.0,
+              "complex_ipde": 0.0,
+              "complex_pde": 0.0,
+              "confidence_score": 0.0,
+              "ptm": 0.0
+            }
+          },
+          "live_primitive_recomposition": "passed_exact_scalar_and_raw_gradients",
+          "key_and_logit_row_shift_nulls": "passed",
+          "frozen_after": {
+            "model_digest": "7c90f5dd617310781780a8abe5f225f220f6586d4e2d910e67cbfcb8a4470044",
+            "affinity_model_digest": "395876da13ab6d5d175e6603db2118a82954c7c06484842fe2314dbd77a31a16",
+            "structural_model_digest": "7a3c34ea2b6ee79728e6232d9755d260cafd9ea8a524edd737f2e28c8581e8f1",
+            "context_digest": "fd04211da8e22eccd97ecedd96dd59cf4fb2d80aab6a397fa662af8eb92bbad4",
+            "full_context_digest": "73b9438f667b0239755ae886cb110b96cb61870c4fc4084f01c8eef141305e30",
+            "context_file_sha256": "a18a331269170aac3281b0a2ecad313aab81756c9b77e048d7e2cbaa4d8f1093",
+            "checkpoint_sha256": "dcc5cd3722b1c9eaa34267e4ae32f55cbbf1963f4c19319381ccfa30fdd2ca9e",
+            "structural_checkpoint_sha256": "090e82ac8c92f5e943fa1b39e7410a44027bea7243c0bbb3caa67a77fc1428e1"
+          },
+          "all_components_and_total_raw_fd_passed": true,
+          "frozen_unchanged": true
+        },
+        "original_terminal_report": {
+          "status": "failed",
+          "policy": "dbmol-native-raw-fd-v1",
+          "scope": "fixed occupied graph/pose/context; no diffusion or optimizer update",
+          "components": {
+            "dbmol_affinity_loss": {
+              "status": "passed",
+              "objective": "dbmol_affinity_loss",
+              "epsilons": [
+                0.01,
+                0.003,
+                0.001
+              ],
+              "relative_tolerance": 0.15,
+              "required_adjacent_passes": 2,
+              "rows": [
+                {
+                  "field": "X",
+                  "row": 12,
+                  "source": 3,
+                  "target": 4,
+                  "analytic": 0.6000285148620605,
+                  "probes": [
+                    {
+                      "epsilon": 0.01,
+                      "analytic": 0.6000285148620605,
+                      "finite_difference": 0.5946949124336243,
+                      "agrees": true,
+                      "primal_endpoints": [
+                        1.6285383701324463,
+                        1.6404322683811188
+                      ],
+                      "endpoint_graph_sha256": [
+                        "f8afe9c5583aaf9d5dce93465115d0ac02d028b389e86ed17ca3dded8e065ca4",
+                        "d5fe994f0f0a88892835ac31ac08ae034b805d2d80c64a1236e0846ff899a195"
+                      ]
+                    },
+                    {
+                      "epsilon": 0.003,
+                      "analytic": 0.6000285148620605,
+                      "finite_difference": 0.6002684434254965,
+                      "agrees": true,
+                      "primal_endpoints": [
+                        1.6327182352542877,
+                        1.6363198459148407
+                      ],
+                      "endpoint_graph_sha256": [
+                        "a0fbee8195c5b49b6771dc59f933846d7280ce9c52132078f3af8717466f89a3",
+                        "d2f14a1ed87f223b1d78b83c29e8ebb2874dc3bed619406479805a31022b9539"
+                      ]
+                    },
+                    {
+                      "epsilon": 0.001,
+                      "analytic": 0.6000285148620605,
+                      "finite_difference": 0.5998462438583374,
+                      "agrees": true,
+                      "primal_endpoints": [
+                        1.6339176297187805,
+                        1.6351173222064972
+                      ],
+                      "endpoint_graph_sha256": [
+                        "3e2454380ff21d06d1ff0cfe2e9ccbd5feda0b46983f354601de7a7660a1e49b",
+                        "e43e5ea6730bb15180e3c0fcae314c2fdf7b558637f7bf4e75a4f79c8afdb2f6"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "field": "E_upper",
+                  "row": 247,
+                  "source": 0,
+                  "target": 1,
+                  "analytic": 2.379676103591919,
+                  "probes": [
+                    {
+                      "epsilon": 0.01,
+                      "analytic": 2.379676103591919,
+                      "finite_difference": 1.835082471370697,
+                      "agrees": false,
+                      "primal_endpoints": [
+                        1.687770813703537,
+                        1.724472463130951
+                      ],
+                      "endpoint_graph_sha256": [
+                        "e57c27527c400f9001d549626e1d22b06c38bea2acf25dd97325de705ae1d4be",
+                        "3adc67ca89f2bb1fb36314da9fe9bdef543d40b7f3761f7c47436c3554bb78ac"
+                      ]
+                    },
+                    {
+                      "epsilon": 0.003,
+                      "analytic": 2.379676103591919,
+                      "finite_difference": 2.028112610181173,
+                      "agrees": true,
+                      "primal_endpoints": [
+                        1.6404053568840027,
+                        1.6525740325450897
+                      ],
+                      "endpoint_graph_sha256": [
+                        "497231a62088a75b42f4f4642a86074e503b1316c81b4f48efc06906d43e17ee",
+                        "a21f48485569341f14ea911ca2f770f0c5cf7ddea3617c3e5b3dc9b65d4fdfed"
+                      ]
+                    },
+                    {
+                      "epsilon": 0.001,
+                      "analytic": 2.379676103591919,
+                      "finite_difference": 2.3580193519592285,
+                      "agrees": true,
+                      "primal_endpoints": [
+                        1.6336610615253448,
+                        1.6383771002292633
+                      ],
+                      "endpoint_graph_sha256": [
+                        "c9706c7bb9bbbca824d4514c09853f212bbb9a4db98943dd3f1ae7de1ec6b0b4",
+                        "147a61b884d18433748ecadbbafc51dd2ce9b4e6b7992d620a4ac2587d7ffce6"
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "independent_primal": true,
+              "raw_unclipped_gradients": true,
+              "typed_bond_contrast_nonzero": true,
+              "typed_bond_maximum_contrast": 0.6189390420913696,
+              "baseline": 1.6345166563987732,
+              "production_jax_transport": "passed"
+            },
+            "dbmol_contact_loss": {
+              "status": "failed",
+              "objective": "dbmol_contact_loss",
+              "epsilons": [
+                0.01,
+                0.003,
+                0.001
+              ],
+              "relative_tolerance": 0.15,
+              "required_adjacent_passes": 2,
+              "rows": [
+                {
+                  "field": "X",
+                  "row": 10,
+                  "source": 2,
+                  "target": 0,
+                  "analytic": 0.3546760082244873,
+                  "probes": [
+                    {
+                      "epsilon": 0.01,
+                      "analytic": 0.3546760082244873,
+                      "finite_difference": 0.3550802639683409,
+                      "agrees": true,
+                      "primal_endpoints": [
+                        0.4376101067598164,
+                        0.4447117120391832
+                      ],
+                      "endpoint_graph_sha256": [
+                        "0d8345c42de6de7a426f66076a8dc56bd4fa04cd2dea83576c240208ecc67e61",
+                        "9de0da0b2a8cb173b7512d31d3ae6a48f98d5782d3108e76032fcf69467d7408"
+                      ]
+                    },
+                    {
+                      "epsilon": 0.003,
+                      "analytic": 0.3546760082244873,
+                      "finite_difference": 0.35469979381543465,
+                      "agrees": true,
+                      "primal_endpoints": [
+                        0.4400701538525261,
+                        0.44219835261541873
+                      ],
+                      "endpoint_graph_sha256": [
+                        "ae29dc1c9f2224caa594977528486b71963d8f6da8bd6d0d7871b1889d9824a3",
+                        "519566244cf3a8a9bca3b416220f7e0db153ff53e70e5187f58a30f4990819de"
+                      ]
+                    },
+                    {
+                      "epsilon": 0.001,
+                      "analytic": 0.3546760082244873,
+                      "finite_difference": 0.3547323507339939,
+                      "agrees": true,
+                      "primal_endpoints": [
+                        0.44077702801510493,
+                        0.4414864927165729
+                      ],
+                      "endpoint_graph_sha256": [
+                        "7173608fa80f6ce461275f0556954dc05b3a1b11c3ebe5b046571374e9f67261",
+                        "96f2ea960eb5c433bb0ed8a496b7ca3f46f7929c3bc1f814b989b73014c6a97c"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "field": "E_upper",
+                  "row": 248,
+                  "source": 0,
+                  "target": 1,
+                  "analytic": 2.210824966430664,
+                  "probes": [
+                    {
+                      "epsilon": 0.01,
+                      "analytic": 2.210824966430664,
+                      "finite_difference": 0.028807906776809333,
+                      "agrees": false,
+                      "primal_endpoints": [
+                        0.45526344004294,
+                        0.4558395981784762
+                      ],
+                      "endpoint_graph_sha256": [
+                        "f324f983881c3d5b913b7920e8c8fbc6ca423573e21367a26cc8f482bd67331a",
+                        "bc1f890e77e8aeec67186e1dd46d135bd81224991827c2448d1bcdb0f668f2ae"
+                      ]
+                    },
+                    {
+                      "epsilon": 0.003,
+                      "analytic": 2.210824966430664,
+                      "finite_difference": 1.1752846994800652,
+                      "agrees": false,
+                      "primal_endpoints": [
+                        0.43865984448209155,
+                        0.44571155267897195
+                      ],
+                      "endpoint_graph_sha256": [
+                        "7177208fde88a88711508eebde2fe20d8f9f9606887e06a3cb5e4017afe06f05",
+                        "7bf4cce6844b31762704187cd980c4bc6eaa9b8a917982001c020ff7e237b57a"
+                      ]
+                    },
+                    {
+                      "epsilon": 0.001,
+                      "analytic": 2.210824966430664,
+                      "finite_difference": 2.0989864729711036,
+                      "agrees": true,
+                      "primal_endpoints": [
+                        0.4388330784483178,
+                        0.44303105139426
+                      ],
+                      "endpoint_graph_sha256": [
+                        "60d50876940ffe6d1442f6959ab27a02bc56f4a65f5567db6d0ded0126391e5b",
+                        "5bd116f689629420db864bba9edb640db9d1f1df3630d9f3dc7e2092d2130170"
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "independent_primal": true,
+              "raw_unclipped_gradients": true,
+              "error": "AssertionError: DBMol dbmol_contact_loss raw E_upper finite differences failed"
+            }
+          },
+          "input_graph_sha256": "1b05479e5472f5e1d374aabab7c456ce2ad7d3400c0a574a762db714a4ba885b",
+          "hard_graph_sha256": "4524dc0b7c6577bc929016a98027ae59bb21984d4f3d7a533155fd65c48ff765",
+          "can_recertify_saved_failed_run": false,
+          "worker_identity": {
+            "status": "ready",
+            "protocol": "mosaic-boltz-dbmol-v1",
+            "profile": "mosaic-dbmol-fixed-jq1-v1",
+            "source": "b1ebfc46ecf57f5414e0d1a6f9027bbb122c53bc",
+            "checkpoint_sha256": "dcc5cd3722b1c9eaa34267e4ae32f55cbbf1963f4c19319381ccfa30fdd2ca9e",
+            "structural_checkpoint_sha256": "090e82ac8c92f5e943fa1b39e7410a44027bea7243c0bbb3caa67a77fc1428e1",
+            "context_file_sha256": "a18a331269170aac3281b0a2ecad313aab81756c9b77e048d7e2cbaa4d8f1093",
+            "affinity_model_digest": "395876da13ab6d5d175e6603db2118a82954c7c06484842fe2314dbd77a31a16",
+            "structural_model_digest": "7a3c34ea2b6ee79728e6232d9755d260cafd9ea8a524edd737f2e28c8581e8f1",
+            "model_digest": "7c90f5dd617310781780a8abe5f225f220f6586d4e2d910e67cbfcb8a4470044",
+            "context_digest": "fd04211da8e22eccd97ecedd96dd59cf4fb2d80aab6a397fa662af8eb92bbad4",
+            "full_context_digest": "73b9438f667b0239755ae886cb110b96cb61870c4fc4084f01c8eef141305e30",
+            "pocket_definition_sha256": "9376c715eaf5b48689fb3e995b00d7820601a7776970df66bd7e7cff3b13ee43",
+            "native_pocket_token_indices": [
+              39,
+              40,
+              41,
+              43,
+              44,
+              45,
+              46,
+              50,
+              51,
+              52,
+              55,
+              93,
+              94,
+              97,
+              98,
+              102,
+              103,
+              104,
+              107
+            ],
+            "pose_policy": "fixed original predicted pose; detached; no diffusion call",
+            "diffusion_gradient": false,
+            "recycling_steps": 0,
+            "n_atoms": 25,
+            "optimized_output": "dbmol_total_loss",
+            "objective_arithmetic": "contact_head_and_assembly_float64_v1",
+            "scalar_dtype": "float64",
+            "graph_dtype": "float32",
+            "gradient_dtype": "float32",
+            "metric_order": [
+              "dbmol_total_loss",
+              "dbmol_affinity_loss",
+              "dbmol_contact_loss",
+              "dbmol_confidence_loss",
+              "dbmol_weighted_affinity_loss",
+              "dbmol_weighted_contact_loss",
+              "dbmol_weighted_confidence_loss",
+              "affinity_pred_value",
+              "affinity_probability_binary",
+              "affinity_logits_binary",
+              "dbmol_contact_pocket_loss",
+              "dbmol_contact_anchor_loss",
+              "complex_plddt",
+              "iptm",
+              "complex_iplddt",
+              "complex_ipde",
+              "complex_pde",
+              "confidence_score",
+              "ptm"
+            ],
+            "supported_objectives": [
+              "dbmol_total_loss",
+              "dbmol_affinity_loss",
+              "dbmol_contact_loss",
+              "dbmol_confidence_loss",
+              "dbmol_weighted_affinity_loss",
+              "dbmol_weighted_contact_loss",
+              "dbmol_weighted_confidence_loss",
+              "affinity_pred_value",
+              "affinity_logits_binary",
+              "dbmol_contact_pocket_loss",
+              "dbmol_contact_anchor_loss",
+              "complex_plddt",
+              "iptm",
+              "complex_iplddt",
+              "complex_ipde",
+              "complex_pde",
+              "confidence_score",
+              "ptm"
+            ],
+            "contact_weight": 2.5,
+            "confidence_weight": 2.5,
+            "confidence_signed_weights": {
+              "iptm": -1.0,
+              "complex_iplddt": -0.3,
+              "complex_ipde": 0.3,
+              "complex_pde": 0.1,
+              "confidence_score": -0.3,
+              "ptm": -0.1
+            },
+            "physical_trunks_per_forward": 2,
+            "affinity_mw_correction": false
+          },
+          "frozen_before": {
+            "model_digest": "7c90f5dd617310781780a8abe5f225f220f6586d4e2d910e67cbfcb8a4470044",
+            "affinity_model_digest": "395876da13ab6d5d175e6603db2118a82954c7c06484842fe2314dbd77a31a16",
+            "structural_model_digest": "7a3c34ea2b6ee79728e6232d9755d260cafd9ea8a524edd737f2e28c8581e8f1",
+            "context_digest": "fd04211da8e22eccd97ecedd96dd59cf4fb2d80aab6a397fa662af8eb92bbad4",
+            "full_context_digest": "73b9438f667b0239755ae886cb110b96cb61870c4fc4084f01c8eef141305e30",
+            "context_file_sha256": "a18a331269170aac3281b0a2ecad313aab81756c9b77e048d7e2cbaa4d8f1093",
+            "checkpoint_sha256": "dcc5cd3722b1c9eaa34267e4ae32f55cbbf1963f4c19319381ccfa30fdd2ca9e",
+            "structural_checkpoint_sha256": "090e82ac8c92f5e943fa1b39e7410a44027bea7243c0bbb3caa67a77fc1428e1"
+          },
+          "hard_native_parity": {
+            "status": "passed",
+            "atol": 2e-05,
+            "absolute_differences": {
+              "dbmol_total_loss": 0.0,
+              "dbmol_affinity_loss": 0.0,
+              "dbmol_contact_loss": 0.0,
+              "dbmol_confidence_loss": 0.0,
+              "dbmol_weighted_affinity_loss": 0.0,
+              "dbmol_weighted_contact_loss": 0.0,
+              "dbmol_weighted_confidence_loss": 0.0,
+              "affinity_pred_value": 0.0,
+              "affinity_probability_binary": 0.0,
+              "affinity_logits_binary": 0.0,
+              "dbmol_contact_pocket_loss": 0.0,
+              "dbmol_contact_anchor_loss": 0.0,
+              "complex_plddt": 0.0,
+              "iptm": 0.0,
+              "complex_iplddt": 0.0,
+              "complex_ipde": 0.0,
+              "complex_pde": 0.0,
+              "confidence_score": 0.0,
+              "ptm": 0.0
+            }
+          },
+          "error": "DerivativeCheckError: DBMol dbmol_contact_loss raw E_upper finite differences failed"
+        }
+      }
+    }
+  ],
+  "dispatch_arms": [
+    "boltz",
+    "dbmol"
+  ],
+  "blocked_arms": {
+    "protenix": {
+      "status": "blocked_failed_endpoint_admission",
+      "source01_admission": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-01/protenix-validate-20000/payload/study/native_gradient_checks-prospective/admission.json",
+        "bytes": 2531142,
+        "sha256": "3b4e6c14aa21aed083594ab040a7faf4a50f93b4adce5a4fa679108bc531aaf1"
+      }
+    }
+  },
+  "engineering_correction": "Inherited authenticated original source PYTHONPATH for workers and primary failure preservation; admission/scientific policies unchanged"
+}

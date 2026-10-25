@@ -1,0 +1,16 @@
+{
+  "status": "passed_static_adoption",
+  "all_original_arm_settings_and_input_bindings_exact": true,
+  "native_admission_hooks_AST_exact": true,
+  "changed_functions": [
+    "build_original_argv",
+    "execution_context",
+    "main"
+  ],
+  "new_functions": [
+    "failed_assessment",
+    "worker_environment",
+    "worker_startup"
+  ],
+  "numerical_evaluation": false
+}

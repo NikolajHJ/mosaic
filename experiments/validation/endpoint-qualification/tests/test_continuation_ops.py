@@ -44,7 +44,8 @@ def plan():
     return {"version": ops.PLAN_VERSION, "admission_policy": "prospective-endpoint-admission-v1",
             "user_authorized_prospective_checks_before_children": True, "original_failures_preserved": True,
             "optimization_settings_changed": False, "monitor_remains_paused": True,
-            "matrix_stride": 20, "loss_stride": 1, "control_root": str(ops.ROOT), "source_root": str(ops.SOURCE), "arms": [
+            "matrix_stride": 20, "loss_stride": 1, "dispatch_arms": list(ops.DISPATCH_ARMS),
+            "blocked_arms": copy.deepcopy(ops.BLOCKED_ARMS), "control_root": str(ops.ROOT), "source_root": str(ops.SOURCE), "arms": [
         {"id": name, "offsets": list(values["offsets"]), "segment_steps": values["segment_steps"],
          "global_target": values["global_target"], "rate": values["rate"],
          "source": {"path": str(ops.BASE / ops.ORIGINALS[name]["release"]), "manifest_sha256": ops.ORIGINALS[name]["manifest"], "files": ops.ORIGINALS[name]["files"]},
@@ -58,7 +59,7 @@ def scheduler(status="DONE", job="111", queue="hpc"):
     return {"job_id": job, "returncode": 0, "stdout": "Job <" + job + ">, Status <" + status + ">, Queue <" + queue + ">", "stderr": ""}
 
 
-def lsf(job="111", name="mosaic-endpoint01-cpu", queue="hpc", status="Done"):
+def lsf(job="111", name="mosaic-endpoint02-cpu", queue="hpc", status="Done"):
     return ("Subject: Job " + job + ": <" + name + "> in cluster <dcc> " + status
             + "\nJob was executed in queue <" + queue + ">.\nSuccessfully completed.\n")
 
@@ -112,7 +113,7 @@ def valid_result(owned, arm="boltz", phase="validate", offset=10000):
     return current_plan, result, path
 
 
-@pytest.mark.parametrize("arm", ["protenix", "boltz", "dbmol"])
+@pytest.mark.parametrize("arm", ["boltz", "dbmol"])
 def test_exact_authorized_ranges_and_own_labels(arm):
     value = ops.arm_plan(plan(), arm)
     for offset in value["offsets"]:
@@ -120,7 +121,7 @@ def test_exact_authorized_ranges_and_own_labels(arm):
             assert ops.label(phase, arm, offset) == arm + "-" + phase + "-" + str(offset).zfill(5)
 
 
-@pytest.mark.parametrize("change", ["missing_arm", "duplicate_arm", "wrong_offset", "wrong_steps", "wrong_target", "missing_argv"])
+@pytest.mark.parametrize("change", ["missing_arm", "duplicate_arm", "wrong_offset", "wrong_steps", "wrong_target", "missing_argv", "enable_protenix", "missing_block", "changed_block_proof"])
 def test_plan_rejects_scope_changes(change):
     value = plan()
     if change == "missing_arm":
@@ -133,8 +134,14 @@ def test_plan_rejects_scope_changes(change):
         value["arms"][0]["segment_steps"] = 9999
     elif change == "wrong_target":
         value["arms"][0]["global_target"] = 60000
-    else:
+    elif change == "missing_argv":
         value["arms"][0]["inputs"].pop("original_driver_argv")
+    elif change == "enable_protenix":
+        value["dispatch_arms"].append("protenix")
+    elif change == "missing_block":
+        value["blocked_arms"] = {}
+    else:
+        value["blocked_arms"]["protenix"]["source01_admission"]["sha256"] = "b" * 64
     with pytest.raises(ValueError):
         ops.validate_plan(value)
 
@@ -215,8 +222,8 @@ def test_scheduler_failures_identity_and_query_errors_fail_closed(change):
 
 
 def test_lsf_wraps_whitespace_without_losing_exact_job_name():
-    raw = lsf().replace("mosaic-endpoint01-cpu", "mosaic-endpoint01-\n cpu")
-    assert ops.lsf_success(raw, "111", "mosaic-endpoint01-cpu", "hpc")
+    raw = lsf().replace("mosaic-endpoint02-cpu", "mosaic-endpoint02-\n cpu")
+    assert ops.lsf_success(raw, "111", "mosaic-endpoint02-cpu", "hpc")
 
 
 @pytest.mark.parametrize("change", ["wrong_job", "wrong_name", "wrong_queue", "duplicate_subject", "fake_done_suffix", "no_success"])
@@ -225,7 +232,7 @@ def test_lsf_failure_does_not_become_a_success(change):
     if change == "wrong_job":
         raw = raw.replace("111", "112")
     elif change == "wrong_name":
-        raw = raw.replace("endpoint01", "endpoint02")
+        raw = raw.replace("endpoint02", "endpoint03")
     elif change == "wrong_queue":
         raw = raw.replace("hpc", "gpul40s")
     elif change == "duplicate_subject":
@@ -235,7 +242,7 @@ def test_lsf_failure_does_not_become_a_success(change):
     else:
         raw = raw.replace("Successfully completed.", "Exited with exit code 1.")
     with pytest.raises(ValueError):
-        ops.lsf_success(raw, "111", "mosaic-endpoint01-cpu", "hpc")
+        ops.lsf_success(raw, "111", "mosaic-endpoint02-cpu", "hpc")
 
 
 def test_raw_xml_counts_actual_rows_and_exact_modules(owned):
@@ -422,6 +429,13 @@ def startup_fixture(owned, monkeypatch, fail=False):
         arm = command[command.index("--arm") + 1]
         phase = command[command.index("--phase") + 1]
         offset = int(command[command.index("--offset") + 1])
+        if "--worker-startup-only" in command:
+            row = ops.arm_plan(current, arm)
+            save(output.parent / "worker-startup.json", {"status": "passed_metadata_only", "arm": arm,
+                 "worker_python": "/work3/s234818/latentmol/env/boltz311/bin/python",
+                 "mosaic_origin": str(Path(row["source"]["path"]) / "src/mosaic/__init__.py"),
+                 "numerical_setup_entered": False, "updates": 0, "original_scientific_source_unchanged": True})
+            return SimpleNamespace(returncode=1 if fail else 0, stdout="actual worker imports", stderr="")
         save(output.parent / "endpoint-startup.json", {"status": "passed_metadata_only", "numerical_setup_entered": False,
                                                        "updates": 0, "job_id": os.environ["LSB_JOBID"], "readiness_deferred": "--startup-defer-ready" in command,
                                                        "original_argv": builder(current, arm, phase, offset, output, snapshot, ready if phase == "segment" else None)})
@@ -432,22 +446,28 @@ def startup_fixture(owned, monkeypatch, fail=False):
     return current, payload, calls, ready
 
 
-def test_cpu_executes_six_actual_startup_commands_with_original_ready_scope_only(owned, monkeypatch):
+def test_cpu_executes_four_cli_routes_and_two_actual_worker_imports(owned, monkeypatch):
     current, payload, calls, ready = startup_fixture(owned, monkeypatch)
     result = ops.cpu_startups(current, PIN, payload, ops.time.monotonic() + 1000)
-    assert len(result) == len(calls) == 6
-    assert {(row["arm"], row["phase"]) for row in result} == {(arm, phase) for arm in ops.ARMS for phase in ("validate", "segment")}
+    assert len(result) == 4 and len(calls) == 6
+    assert {(row["arm"], row["phase"]) for row in result} == {(arm, phase) for arm in ops.DISPATCH_ARMS for phase in ("validate", "segment")}
     for command in calls:
-        assert "--startup-only" in command
-        phase = command[command.index("--phase") + 1]
-        assert ("--startup-defer-ready" in command) == (phase == "segment")
-        assert ("--ready" in command) == (phase == "segment")
-        if phase == "segment":
-            assert command[command.index("--ready") + 1] == ready["path"]
+        assert command[command.index("--arm") + 1] in ops.DISPATCH_ARMS
+        if "--worker-startup-only" in command:
+            assert "--startup-only" not in command and "--ready" not in command
+        else:
+            assert "--startup-only" in command
+            phase = command[command.index("--phase") + 1]
+            assert ("--startup-defer-ready" in command) == (phase == "segment")
+            assert ("--ready" in command) == (phase == "segment")
+            if phase == "segment":
+                assert command[command.index("--ready") + 1] == ready["path"]
         assert Path(command[command.index("--output") + 1]).is_relative_to(payload)
     assessment = ops.read(payload / "actual-startup-checks.json")
     assert assessment["native_readiness_established"] is False
     assert assessment["fresh_prospective_readiness_deferred_until_native_validation"] is True
+    assert assessment["blocked_arms"] == ops.BLOCKED_ARMS
+    assert len(ops.startup_proofs(assessment, current)) == 12
 
 
 def test_actual_startup_failure_stops_before_any_native_submission(owned, monkeypatch):
@@ -456,7 +476,7 @@ def test_actual_startup_failure_stops_before_any_native_submission(owned, monkey
         ops.cpu_startups(current, PIN, payload, ops.time.monotonic() + 1000)
     assert len(calls) == 1
     assert not (payload / "actual-startup-checks.json").exists()
-    assert ops.read(payload / "startup-protenix-validate/invocation.json")["returncode"] == 1
+    assert ops.read(payload / "startup-boltz-validate/invocation.json")["returncode"] == 1
 
 
 def test_cpu_startup_shared_deadline_is_not_reset_per_command(owned, monkeypatch):
@@ -529,3 +549,99 @@ def test_child_failure_or_mutation_preserves_error_and_always_rehashes_originals
     else:
         assert result["preservation_status"] == "failed" and "preservation_error" in result
         assert result["original_results_changed"] is None
+
+
+@pytest.mark.parametrize("phase", ["validate", "segment", "after-validate", "after-segment"])
+def test_blocked_protenix_has_no_submission_or_external_cli_route(phase):
+    value = ops.validate_plan(plan())
+    assert next(row for row in value["arms"] if row["id"] == "protenix")["global_target"] == 50000
+    with pytest.raises(ValueError, match="Blocked"):
+        ops.arm_plan(value, "protenix")
+    with pytest.raises(ValueError):
+        ops.argv(phase, PIN, "protenix", 20000, "ended(111)" if phase.startswith("after-") else None)
+
+
+@pytest.mark.parametrize("failure", ["nonzero", "wrong_origin", "setup_entered", "updates", "source_changed"])
+def test_actual_worker_failure_blocks_before_native_dispatch(owned, monkeypatch, failure):
+    current, payload, calls, _ = startup_fixture(owned, monkeypatch)
+    original = ops.subprocess.run
+    def worker(command, **kwargs):
+        result = original(command, **kwargs)
+        if "--worker-startup-only" in command:
+            output = Path(command[command.index("--output") + 1])
+            receipt = output.parent / "worker-startup.json"
+            row = ops.read(receipt)
+            if failure == "wrong_origin":
+                row["mosaic_origin"] = "/unverified/site-packages/mosaic/__init__.py"
+            elif failure == "setup_entered":
+                row["numerical_setup_entered"] = True
+            elif failure == "updates":
+                row["updates"] = 1
+            elif failure == "source_changed":
+                row["original_scientific_source_unchanged"] = False
+            save(receipt, row)
+            if failure == "nonzero":
+                return SimpleNamespace(returncode=1, stdout="", stderr="ModuleNotFoundError: mosaic")
+        return result
+    monkeypatch.setattr(ops.subprocess, "run", worker)
+    with pytest.raises(ValueError, match="worker"):
+        ops.cpu_startups(current, PIN, payload, ops.time.monotonic() + 1000)
+    assert len(calls) == 5
+    assert not (payload / "actual-startup-checks.json").exists()
+    assert not (owned[1] / "jobs.json").exists()
+
+
+@pytest.mark.parametrize("failure", ["missing_worker", "duplicate_worker", "protenix_worker", "missing_cli", "block_changed"])
+def test_cpu_callback_rejects_incomplete_or_changed_worker_proofs(owned, monkeypatch, failure):
+    current, payload, _, _ = startup_fixture(owned, monkeypatch)
+    ops.cpu_startups(current, PIN, payload, ops.time.monotonic() + 1000)
+    value = ops.read(payload / "actual-startup-checks.json")
+    if failure == "missing_worker":
+        value["worker_checks"].pop()
+    elif failure == "duplicate_worker":
+        value["worker_checks"][1] = copy.deepcopy(value["worker_checks"][0])
+    elif failure == "protenix_worker":
+        value["worker_checks"][0]["arm"] = "protenix"
+    elif failure == "missing_cli":
+        value["checks"].pop()
+    else:
+        value["blocked_arms"] = {}
+    with pytest.raises(ValueError, match="startup commands"):
+        ops.startup_proofs(value, current)
+
+
+@pytest.mark.parametrize("change", ["none", "manifest_missing", "proof_missing", "passed", "can_admit", "certify_old", "frozen_changed", "bond_passed"])
+def test_rejected_original_protenix_admission_stays_file_bound_and_failed(monkeypatch, change):
+    current = plan()
+    blocked = ops.BLOCKED_ARMS["protenix"]["source01_admission"]
+    manifest = {"blocked_arms": copy.deepcopy(ops.BLOCKED_ARMS), "preserved_proofs": [blocked]}
+    observation = {"version": "prospective-endpoint-admission-v1", "status": "failed", "can_admit_new_child": False,
+                   "original_run_failed_preserved": True, "can_certify_original_study": False,
+                   "frozen_unchanged": True, "field_outcomes": {"E_upper": {"passed": False}}}
+    if change == "manifest_missing":
+        manifest.pop("blocked_arms")
+    elif change == "proof_missing":
+        manifest["preserved_proofs"] = []
+    elif change == "passed":
+        observation["status"] = "passed"
+    elif change == "can_admit":
+        observation["can_admit_new_child"] = True
+    elif change == "certify_old":
+        observation["can_certify_original_study"] = True
+    elif change == "frozen_changed":
+        observation["frozen_unchanged"] = False
+    elif change == "bond_passed":
+        observation["field_outcomes"]["E_upper"]["passed"] = True
+    seen = []
+    def check(row):
+        seen.append(row)
+        assert row == blocked
+        return row
+    monkeypatch.setattr(ops, "check_binding", check)
+    monkeypatch.setattr(ops, "read", lambda path: observation)
+    if change == "none":
+        assert ops.blocked_admission(manifest, current) == blocked
+        assert seen == [blocked]
+    else:
+        with pytest.raises(ValueError):
+            ops.blocked_admission(manifest, current)

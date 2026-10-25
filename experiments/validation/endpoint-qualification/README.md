@@ -62,3 +62,10 @@ and [its declared policy](runs/20261025-continuation-admission-01/prospective-po
 above and all original failed runs remain unchanged. Numerical fixtures, actual
 generated-command startup checks and native validations must pass on allocated
 HPC before conditional child optimization. Preparation is not a pass or start.
+
+Actual source01 native validation rejected Protenix and both Boltz workers failed
+their import path before gradient testing. See the immutable failure audit in the
+dated run. A [restricted worker-fix02](runs/20261025-continuation-worker-fix-02/README.md)
+preserves that failed source and Protenix's execution block. It changes only
+subprocess import plumbing, startup coverage and primary-error reporting; the
+prospective numerical policy and all original scientific settings remain exact.

@@ -10,13 +10,17 @@ RUN=REPO/'experiments/validation/endpoint-qualification/runs/20261025-continuati
 
 
 def main():
-    parser=argparse.ArgumentParser();parser.add_argument('--observation',type=Path,required=True);args=parser.parse_args()
+    parser=argparse.ArgumentParser();parser.add_argument('--observation',type=Path,required=True)
+    parser.add_argument('--attempt',choices=('01','02'),default='01');args=parser.parse_args()
+    global RUN
+    if args.attempt=='02':RUN=RUN.with_name('20261025-continuation-worker-fix-02')
     raw=args.observation.read_bytes();observed=json.loads(raw)
     prep=json.loads((RUN/'preparation.json').read_bytes());plan=json.loads((RUN/'plan.json').read_bytes())
     pin=prep['manifest_sha256'];root=plan['control_root'];source=plan['source_root']
     actual=[]
-    assert len(set(observed['jobs'].values()))==len(observed['jobs'])==8
-    for arm,offset in [('protenix',20000),('boltz',10000),('dbmol',5000)]:
+    arms=[('protenix',20000),('boltz',10000),('dbmol',5000)] if args.attempt=='01' else [('boltz',10000),('dbmol',5000)]
+    assert len(set(observed['jobs'].values()))==len(observed['jobs'])==2+2*len(arms)
+    for arm,offset in arms:
         name=arm+'-validate-'+str(offset).zfill(5)
         callback=arm+'-after-validate-'+str(offset).zfill(5)
         native=observed['jobs'][name];after=observed['jobs'][callback]
@@ -27,7 +31,7 @@ def main():
             resources=(['-q','gpul40s','-n','4','-R','span[hosts=1]','-R','rusage[mem=8GB]',
                         '-gpu','num=1:mode=exclusive_process','-W','02:00'] if phase=='validate'
                        else ['-q','hpc','-n','1','-R','span[hosts=1]','-R','rusage[mem=2GB]','-W','00:20'])
-            expected=['bsub',*resources,'-J','mosaic-endpoint01-'+parent,
+            expected=['bsub',*resources,'-J','mosaic-endpoint'+args.attempt+'-'+parent,
                       '-oo',root+'/'+parent+'/stdout.%J.log','-eo',root+'/'+parent+'/stderr.%J.log']
             if phase=='after-validate':expected+=['-w','ended('+native+')']
             expected+=['bash','-l',source+'/scripts/continuation_stage.lsf',source,pin,phase,arm,str(offset)]
