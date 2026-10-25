@@ -7175,3 +7175,15 @@ Whole original storage plus2GiB passed33643657204/40125878917bytes, retaining
 4GiB/100000-file reserves. CPU29811875 actuallyRUN/afterCPU29811876PEND;
 284planned raw cases, no CPU/full-model pass or new GPU job yet. Existing runs,
 DBMol VAE and paused monitor unchanged. Unsubmitted local draft archive preserved.
+
+At25October10:23Paris/CET CPU29811875/callback29811876 actualDONE/hpc/LSFsuccess,
+284raw cases passed79+26+20+18+67+23+51 with nofail/errors/skips/deselections.
+CPUcertificate947dd2b539b9cbd951dd50f164107188c7973b0e850131e0e914b63fd3b53b9b;
+rawXMLcada1b91fc5039352e72e13df582fd2eb92cd2034883ea89a53587ba5db42d7a.
+Independent33file byte/XML/schema/source/archive/actualargv/certificate audit
+passed. Fresh unchanged fullstorage+2GiB passed33643657204required/
+40125741934availablebytes with4GiB/100000file reserves. Actual independent
+full-model GPU pilots Pro29811883 and Bol29811884 submitted10:22:13,
+BOTH PENDphysicalGPU at10:23:09; no native/fullgradient result or integrated
+speedup yet. Original sources/results/settings/DBMol VAE unchanged; monitor
+stays paused. Exact proof records in full-model-01/campaign.json and verification.json.

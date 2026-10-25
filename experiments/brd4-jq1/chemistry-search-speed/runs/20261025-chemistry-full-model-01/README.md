@@ -62,3 +62,24 @@ bytes; this is not a reservation. Both8-slot GPU pilots wait for actual CPU
 completion and fresh dispatch/entry storage. A local unsubmitted first package
 is retained; its only replacement change fixed a synthetic tuple/list receipt
 comparison before any staging or numerical execution. The monitor stays paused.
+
+At25October10:23:09Paris/CET the CPU29811875 and callback29811876 are actual
+DONE/hpc/same-job LSFsuccess. All284raw cases passed79+26+20+18+67+23+51,
+no failures/errors/skips/deselections; actual unchanged original command parser/
+config/scope dispatch passed before model setup. CPUcertificate
+947dd2b539b9cbd951dd50f164107188c7973b0e850131e0e914b63fd3b53b9b
+binds rawXMLcada1b91fc5039352e72e13df582fd2eb92cd2034883ea89a53587ba5db42d7a,
+original schedulerDONE/LSF/source/plans. Independent33-file byte/XML/schema/
+source/archive/complete-argv/certificate/dispatch audit passed; exact audit SHA
+is in campaign.json. Original643/635 sources,13 proof bindings and74 recursive
+original Protenix proof hashes matched.
+
+Fresh dispatch gate passed33643657204required/40125741934availablebytes,
+with original full remaining projections plus2GiB and4GiB/100000file reserves.
+Two actual independent full-model pilot submissions10:22:13Paris/CET:
+Protenix29811883 and Boltz29811884, each8slots/4GiBslot/oneexclusiveL40S48GB/2h.
+Both PEND at10:23:09 waiting physical GPUs; reserved CPU slots are not a model
+start. No full-model gradient verdict or integrated speedup exists yet. Each
+GPU entry repeats source/input/CPUcertificate/storage gates. Do not repeat
+bootstrap/callback/dispatch or replace unknown submission outcomes. Monitor
+remains paused, all existing scientific jobs/results and DBMol VAE unchanged.

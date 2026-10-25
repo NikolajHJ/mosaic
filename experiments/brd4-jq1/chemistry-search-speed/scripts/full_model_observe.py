@@ -46,12 +46,18 @@ def main():
     program = PROGRAM.encode(); (out/'program.py').write_bytes(program)
     command = ['ssh', '-T', '-o', 'BatchMode=yes', '-o', 'ConnectTimeout=15', '-o', 'ConnectionAttempts=1',
                'dtu-hpc', 'bash -l -c '+shlex.quote('/work3/s234818/mosaic/envs/protenix-tiny/bin/python -')]
-    with (out/'raw.json').open('xb') as output, (out/'stderr.txt').open('xb') as error:
-        result = subprocess.run(command, input=program, stdout=output, stderr=error, timeout=120)
-    receipt = {'returncode': result.returncode, 'completed_utc': datetime.now(timezone.utc).isoformat(),
-               'program_sha256': hashlib.sha256(program).hexdigest(),
-               'raw_sha256': hashlib.sha256((out/'raw.json').read_bytes()).hexdigest()}
-    (out/'receipt.json').write_text(json.dumps(receipt, indent=2)+'\n')
+    receipt={'status':'unknown','program_sha256':hashlib.sha256(program).hexdigest()}
+    try:
+        with (out/'raw.json').open('xb') as output, (out/'stderr.txt').open('xb') as error:
+            result = subprocess.run(command, input=program, stdout=output, stderr=error, timeout=120)
+        receipt.update(returncode=result.returncode,status='query_returned')
+    except BaseException as error:
+        receipt.update(status='interrupted_partial_preserved',error=repr(error))
+        raise
+    finally:
+        receipt.update(completed_utc=datetime.now(timezone.utc).isoformat(),
+                       raw_sha256=hashlib.sha256((out/'raw.json').read_bytes()).hexdigest())
+        (out/'receipt.json').write_text(json.dumps(receipt, indent=2)+'\n')
     print(json.dumps(receipt))
     if result.returncode:
         print((out/'stderr.txt').read_text(errors='replace')[-4000:]); raise SystemExit(result.returncode)

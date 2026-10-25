@@ -4,7 +4,7 @@ import ast
 from collections import Counter
 import hashlib
 import json
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 import re
 import tarfile
 import xml.etree.ElementTree as ET
@@ -24,9 +24,19 @@ def load(path):
 def lsf(path, job, name, queue):
     raw = Path(path).read_text(); compact = ''.join(raw.split())
     assert compact.count('Subject:Job') == 1
-    assert 'Subject:Job'+job+':<'+name+'>incluster<dcc>Done' in compact
+    subjects=re.findall(r'Subject:\s*Job\s*(\d+)\s*:\s*<([^>]+)>\s*in\s*cluster\s*<([^>]+)>\s*([A-Za-z]+)[ \t]*(?=\r?\n|$)',raw)
+    assert [tuple(''.join(field.split()) for field in row) for row in subjects]==[(job,name,'dcc','Done')]
     assert re.findall(r'inqueue<([^>]+)>',compact)==[queue]
     assert compact.count('Successfullycompleted.')==1
+
+
+def expected_argv(phase,pin,root,source,cpu):
+    if phase=='cpu':resources=['-q','hpc','-n','16','-R','span[hosts=1]','-R','rusage[mem=2GB]','-W','02:00']
+    elif phase=='after-cpu':resources=['-q','hpc','-n','1','-R','span[hosts=1]','-R','rusage[mem=2GB]','-W','00:20']
+    else:resources=['-q','gpul40s','-n','8','-R','span[hosts=1]','-R','rusage[mem=4GB]','-gpu','num=1:mode=exclusive_process','-W','02:00']
+    command=['bsub',*resources,'-J','mosaic-chem-full01-'+phase,'-oo',root+'/'+phase+'/stdout.%J.log','-eo',root+'/'+phase+'/stderr.%J.log']
+    if phase=='after-cpu':command+=['-w','ended('+cpu+')']
+    return command+['bash','-l',source+'/scripts/full_model_stage.lsf',source,pin,phase]
 
 
 def main():
@@ -34,6 +44,7 @@ def main():
     args=parser.parse_args();out=args.observation;files=out/'files'
     transfer=load(out/'byte-verification.json')
     assert transfer['status']=='passed_compact_byte_transfer_only'
+    assert sha(out/'raw.json')==transfer['raw_sha256']==load(out/'receipt.json')['raw_sha256']
     for row in transfer['files']:
         p=files/row['path'];assert p.stat().st_size==row['bytes'] and sha(p)==row['sha256']
     package=LOCAL/'source02';prep=load(package/'preparation.json')
@@ -50,9 +61,13 @@ def main():
             if row.name=='source_manifest.json':assert hashlib.sha256(raw).hexdigest()==pin
             else:assert hashlib.sha256(raw).hexdigest()==manifest['files'][row.name]
             if row.name.endswith('.py'):ast.parse(raw,filename=row.name)
-    jobs=load(out/'raw.json')['jobs'];cpu=jobs['cpu'];sub=load(files/'cpu/submission.json')
+    raw_observation=load(out/'raw.json');jobs=raw_observation['jobs'];cpu=jobs['cpu'];sub=load(files/'cpu/submission.json')
+    remote_root=raw_observation['root'];remote_source=raw_observation['source']
+    assert remote_root=='/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-01'
+    assert remote_source=='/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-release-01/source'
     assert sub['job_id']==cpu and sub['status']=='submitted' and sub['manifest_sha256']==pin
     assert sub['dependency'] is None and sub['argv'][-2:]==[pin,'cpu']
+    assert sub['argv']==expected_argv('cpu',pin,remote_root,remote_source,cpu)
     assert sub['argv'][sub['argv'].index('-q')+1]=='hpc' and sub['argv'][sub['argv'].index('-n')+1]=='16'
     assessment=load(files/'cpu/payload/assessment.json')
     assert assessment['status']=='passed' and assessment['job_id']==cpu
@@ -75,15 +90,57 @@ def main():
             assert re.findall(r'JobName<([^>]+)>',text)==['mosaic-chem-full01-cpu']
             terminal.append({'path':str(path.relative_to(files)),'sha256':sha(path)})
     assert terminal,'Actual recorded same-job CPU DONE proof is required'
+    cert_path=files/'cpu-certificate.json'
+    certificate_sha=None
+    if cert_path.exists():
+        cert=load(cert_path);certificate_sha=sha(cert_path)
+        assert cert['version']=='chemistry-full-model-cpu-certificate-v1' and cert['status']=='passed'
+        assert cert['source_manifest_sha256']==pin and cert['job_id']==cpu and cert['cpu_counts']==counts
+        assert cert['plans']=={arm:manifest['files']['plans/'+arm+'.json'] for arm in ['protenix','boltz']}
+        expected={'cpu_submission':'cpu/submission.json','cpu_assessment':'cpu/payload/assessment.json',
+                  'cpu_xml':'cpu/payload/tests.xml','cpu_lsf':'cpu/stdout.'+cpu+'.log'}
+        queries=cert['scheduler_queries'];assert 1<=len(queries)<=13
+        expected.update({str(i):'after-cpu/cpu-terminal-query-'+str(i).zfill(3)+'.json' for i in range(len(queries))})
+        observed=[]
+        for key,relative in expected.items():
+            binding=queries[int(key)] if key.isdigit() else cert[key]
+            assert binding['path']==remote_root+'/'+relative
+            assert (files/relative).stat().st_size==binding['bytes'] and sha(files/relative)==binding['sha256']
+            if key.isdigit():
+                row=load(files/relative);compact=''.join(row['stdout'].split())
+                assert row['returncode']==0 and re.findall(r'Job<(\d+)>',compact)==[cpu]
+                assert re.findall(r'Queue<([^>]+)>',compact)==['hpc']
+                assert re.findall(r'JobName<([^>]+)>',compact)==['mosaic-chem-full01-cpu']
+                states=re.findall(r'Status<([^>]+)>',compact);assert len(states)==1;observed+=states
+        assert observed[-1]=='DONE' and all(state in ['PEND','RUN'] for state in observed[:-1])
     report={'status':'passed_independent_CPU_byte_XML_LSF_schema_audit','source_files':len(manifest['files']),
             'source_manifest_sha256':pin,'CPU_job':cpu,'CPU_cases':len(cases),'CPU_counts':counts,
             'raw_XML_sha256':assessment['raw_xml_sha256'],'actual_terminal_proofs':terminal,
             'files_rehashed':len(transfer['files']),'jobs':jobs,'full_model_comparisons':{}}
+    report['cpu_certificate_sha256']=certificate_sha
+    after=load(files/'after-cpu/submission.json')
+    assert after['job_id']==jobs['after-cpu'] and after['status']=='submitted'
+    assert after['manifest_sha256']==pin and after['dependency']=='ended('+cpu+')'
+    assert after['argv']==expected_argv('after-cpu',pin,remote_root,remote_source,cpu)
+    if any(arm in jobs for arm in ['protenix','boltz']):
+        lsf(files/'after-cpu'/('stdout.'+jobs['after-cpu']+'.log'),jobs['after-cpu'],'mosaic-chem-full01-after-cpu','hpc')
+        dispatch=load(files/'after-cpu/gpu-submissions-complete.json')
+        assert dispatch['status']=='submitted_not_passed' and dispatch['source_manifest_sha256']==pin
+        assert dispatch['external_after']==assessment['external_after']
+        gate=dispatch['storage'];assert gate['status']=='passed'
+        assert gate['additional_allowance_bytes']==2*1024**3 and gate['reserve_bytes']==4*1024**3
+        assert gate['file_reserve']==100000 and gate['available_bytes']>=gate['required_bytes']
+        assert gate['required_bytes']==gate['whole_original_gate']['work3']['required_bytes']+2*1024**3
+        assert gate==load(files/'after-cpu/full-model-storage-two-gpu-dispatch.json')
+        report['dispatch_required_bytes']=gate['required_bytes'];report['dispatch_available_bytes']=gate['available_bytes']
     for arm in ['protenix','boltz']:
         if arm not in jobs:continue
         s=load(files/arm/'submission.json');job=jobs[arm]
         assert s['job_id']==job and s['status']=='submitted' and s['manifest_sha256']==pin
         assert s['dependency'] is None and s['argv'][-2:]==[pin,arm]
+        assert s['argv']==expected_argv(arm,pin,remote_root,remote_source,cpu)
+        assert certificate_sha is not None and s['cpu_certificate_sha256']==certificate_sha
+        assert dispatch['submissions'][arm]==s
         assert s['argv'][s['argv'].index('-q')+1]=='gpul40s' and s['argv'][s['argv'].index('-n')+1]=='8'
         assert s['argv'][s['argv'].index('-gpu')+1]=='num=1:mode=exclusive_process'
         path=files/arm/'payload/assessment.json'
@@ -92,6 +149,7 @@ def main():
         if allocated['status']!='passed':
             report['full_model_comparisons'][arm]={'status':'failed_preserved','assessment_sha256':sha(path)};continue
         assert allocated['job_id']==job and allocated['source_manifest_sha256']==pin
+        assert allocated['new_cpu_certificate']['status']=='passed' and allocated['new_cpu_certificate']['sha256']==certificate_sha
         assert allocated['external_before']==allocated['external_after']
         lsf(files/arm/('stdout.'+job+'.log'),job,'mosaic-chem-full01-'+arm,'gpul40s')
         comparison=load(files/arm/'payload/comparison/assessment.json')

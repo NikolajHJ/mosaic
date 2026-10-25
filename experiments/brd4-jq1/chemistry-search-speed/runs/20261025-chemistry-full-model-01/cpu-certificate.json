@@ -1,0 +1,47 @@
+{
+  "version": "chemistry-full-model-cpu-certificate-v1",
+  "status": "passed",
+  "source_manifest_sha256": "347e753d481ec3d584f3b0b05cc2801ee745036ee17638d7c3672fc2ca2cba16",
+  "job_id": "29811875",
+  "cpu_counts": {
+    "tests.test_full_model_ops": 51,
+    "tests.test_full_model_pilot": 67,
+    "tests.test_gpu_local_bridge": 23,
+    "tests.test_gpu_matrix": 20,
+    "tests.test_hybrid": 26,
+    "tests.test_oracle_profile": 18,
+    "tests.test_speed": 79
+  },
+  "cpu_submission": {
+    "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-01/cpu/submission.json",
+    "bytes": 1134,
+    "sha256": "14ec00b3e6fbd8593f75e71fae9a5b4bc93d3d1099e26b84c2614bc61fd0a917"
+  },
+  "cpu_assessment": {
+    "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-01/cpu/payload/assessment.json",
+    "bytes": 10856,
+    "sha256": "a159ef49ed15903428dfd6cf1bfa7e06d0769b075fc23e1a5a2bbd3890166cfb"
+  },
+  "cpu_xml": {
+    "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-01/cpu/payload/tests.xml",
+    "bytes": 38942,
+    "sha256": "cada1b91fc5039352e72e13df582fd2eb92cd2034883ea89a53587ba5db42d7a"
+  },
+  "cpu_lsf": {
+    "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-01/cpu/stdout.29811875.log",
+    "bytes": 1970,
+    "sha256": "dce0e78f05eeb2a326684267c29edb799b33f39e38082fa3a0f7d504c3a08f14"
+  },
+  "scheduler_queries": [
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-01/after-cpu/cpu-terminal-query-000.json",
+      "bytes": 3676,
+      "sha256": "92fdb19089655e3bde2ae3bece3a525e05694620708bb2eac07f42560083bbb1"
+    }
+  ],
+  "plans": {
+    "protenix": "ab36531225cb64451b8ea3b073d7b5e7fa58cbba11b25b85939d820c6d90a925",
+    "boltz": "2c93bbf9aaa58c13c883284796b846332b191d46f3022c248c99a566d107367f"
+  },
+  "scope": "Actual same-job CPU DONE/LSF/raw XML; not a native-model or GPU pass"
+}

@@ -1,5 +1,5 @@
 {
-  "status": "CPU_and_ownended_callback_submitted_not_passed",
+  "status": "CPU_passed_two_full_model_GPU_pilots_queued",
   "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-01",
   "source": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-release-01/source",
   "source_manifest_sha256": "347e753d481ec3d584f3b0b05cc2801ee745036ee17638d7c3672fc2ca2cba16",
@@ -8,7 +8,9 @@
   "source_files": 26,
   "jobs": {
     "cpu": "29811875",
-    "after_cpu": "29811876"
+    "after-cpu": "29811876",
+    "protenix": "29811883",
+    "boltz": "29811884"
   },
   "sealed_plans": {
     "protenix": "ab36531225cb64451b8ea3b073d7b5e7fa58cbba11b25b85939d820c6d90a925",
@@ -171,5 +173,22 @@
   "monitor_remains_paused": true,
   "original_results_changed": false,
   "DBMol_changed": false,
-  "full_model_jobs_submitted": false
+  "full_model_jobs_submitted": true,
+  "latest_observed_utc": "2026-10-25T09:23:09.782573+00:00",
+  "CPU_cases": 284,
+  "CPU_status": "actual_DONE_raw_XML_LSF_passed",
+  "callback_status": "actual_DONE_LSF_success",
+  "CPU_assessment_sha256": "a159ef49ed15903428dfd6cf1bfa7e06d0769b075fc23e1a5a2bbd3890166cfb",
+  "CPU_XML_sha256": "cada1b91fc5039352e72e13df582fd2eb92cd2034883ea89a53587ba5db42d7a",
+  "CPU_certificate_sha256": "947dd2b539b9cbd951dd50f164107188c7973b0e850131e0e914b63fd3b53b9b",
+  "independent_verification_sha256": "de024f4057f3952af2f87f55d46cd5eaffcadc06074443da7052eca3e60640b5",
+  "full_model_scientific_pass_established": false,
+  "native_gradient_findings": null,
+  "integrated_speedup": null,
+  "current_GPU_status": {
+    "protenix": "PEND_physical_GPU_wait",
+    "boltz": "PEND_physical_GPU_wait"
+  },
+  "dispatch_required_bytes": 33643657204,
+  "dispatch_available_bytes": 40125741934
 }
