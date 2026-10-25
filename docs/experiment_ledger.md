@@ -7208,3 +7208,53 @@ comparison; failurepreserved, separate statusonlyaudit checks each recorded
 gate ownunit without newadmission/sciencewaiver. AuditSHA 57c2b30f59c2a046294c134c784bbf5b8ed0c92ab66016445072baf637f88ff8
 under results/hpc/20261025-nonchem-stride20-startup-03/evidence-06; per-arm
 status receipts and campaign.json updated in existing startup03 run records.
+
+
+## 2026-10-25: updating non-chemistry report and endpoint-check investigation
+
+User explicitly requested saved-only easy-updating reports, explanation and
+investigation of recurrent terminal validation, plus checking intended-budget
+continuation queues. New report owner experiments/reporting/jq1-live-progress
+separates complete saved prefixes from failed scientific gates. No original
+run/source/result or gate is rewritten, no failed chain resumed or duplicated.
+Pro continuation20ktotal, plainBol10k, DBMol5k remain stopped; noisyPro1kpassed.
+New report CPU fixtures/rendering/source/byte/publication/browser QA are being
+prepared. Endpoint geometry/numerical investigation is separate; no scientific
+pass or new continuation submission follows from preparation.
+
+
+Report preparation/actual outcomes25October: source01 CPU29812027 passed121
+raw fixtures but failed exact JUnit module attribution (tests. prefix missing);
+callback29812029 blocked rendering. New immutable source02 corrected metadata,
+CPU29812093/callback29812094 and render29812097 actualDONE/LSF success121cases,
+but first published immutable edition0001 failed browser layout QA (inline
+progress span). All failures, releases and edition0001 preserved.
+
+New immutable source03:17files, manifest ee69381d752bf32f3ae55cf76f69ae1330acf5b20c52ddc7c9ee3cd7f711218c,
+archive51,389bytes/51459284779b90baf8f22d3effb7d33708d7c96d8ae5e424c73ccd13c3eeebd9.
+CPU29812102/callback29812103 and renderer29812120 actualDONE/hpc/LSFsuccess.
+All123 raw cases passed58data+33viewer+13ops+19prospective diagnostic toys,
+zero failures/errors/skips. Full existing projections plus separate report/
+speed/diagnostic allowances retain4GiB/100,000-file reserves; gates preserved.
+The19 toys distinguish infeasible-boundary, resolved mismatch and unresolved
+precision; no native endpoint qualification or production gate replacement.
+
+Delivered http://127.0.0.1:8780/report.html edition0002, original progress
+Proabsolute20k/50k (+10k)/Bol10k30k/DB5k10k/noisyPro1k1k, failed/failed/failed/passed.
+Fresh archive27,439,579bytes SHA1fc9887364dec9d07a61130b76b54c9241a0a97d80637e1ee0dc6a5e38f08c2e,
+all26members and56servedHTTP files byteverified, actual browser drag/numeric/
+arrows/play/manualpause/selectors/latest/heatmaps/rawrecord and pointer-update
+QA passed. Stable shell adds responsive CSS only; immutable edition bytes and
+20 scalar/frame assets remain exact. All1,304 retained frames and every scalar
+validated on allocatedCPU. Original nativeNPZ/bigsummary inputs remainHPC refs,
+not claimed downloaded. Hidden localhostPID34336; all older viewers preserved.
+
+Future fresh-bound refresh helper is static preparation only, unexecuted; its
+explicit generated launcher can submit CPU report phases only and preserves
+unknown markers. Viewer polls latest.json every60s, notHPC. Monitor remains
+paused; no optimization successor or original saved result/source/job changed.
+PlainBol needs20k further updates, DB5k, Pro30k after validated new continuations;
+delayed-chem production arms remain deferred behind separate full-model pilots.
+Repository-wide layout check still fails pre-existing defaultdiscovery and old
+missing-README paths; no new-owner README/AST error reported. Unrelated PDF/
+OneNote and other dirty project work were excluded from this change.

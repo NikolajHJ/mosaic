@@ -1,0 +1,8 @@
+{
+  "version": "stable-shell-layout-v1",
+  "scope": "Presentation-only responsive grid; no edition/resource/data/FP32/graph/readout bytes changed",
+  "old_sha256": "c03fe3f64b88b0faa502e9829230f0f5ffa13f47b9a08c7b4665f2617ee5509d",
+  "new_sha256": "e11a58738c2342e47ed241cd62662458de203235ccffddf381dde1739bdacb11",
+  "edition_html_unchanged": true,
+  "scientific_calculation": false
+}

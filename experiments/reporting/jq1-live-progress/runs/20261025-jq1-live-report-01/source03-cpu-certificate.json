@@ -1,0 +1,48 @@
+{
+  "status": "passed",
+  "manifest_sha256": "ee69381d752bf32f3ae55cf76f69ae1330acf5b20c52ddc7c9ee3cd7f711218c",
+  "cpu_job_id": "29812102",
+  "cpu_counts": {
+    "tests.test_qualification": 19,
+    "tests.test_report_data": 58,
+    "tests.test_report_ops": 13,
+    "tests.test_viewer": 33
+  },
+  "proofs": [
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-03/after-cpu/terminal-query-000.json",
+      "bytes": 3604,
+      "sha256": "b3d1a21d6478ccc336a02df2cde0d5cb60e8458c5f68df36f63f31a75a6c39f7"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-03/cpu/stdout.29812102.log",
+      "bytes": 1959,
+      "sha256": "6203665220df59b8a3b0cba772af04f9862d145844462d3cc07b206647fb27f9"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-03/cpu/submission.json",
+      "bytes": 1127,
+      "sha256": "b6e6ccab97010645173b2c26ac1938fef9f5bf4f996fee7e088e99c3f98218f2"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-03/cpu/assessment.json",
+      "bytes": 413,
+      "sha256": "b3d79f4e33053e85f91c0cfa6489b33c7783ad1bf991ca8b91a2db9b694b6ada"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-03/cpu/tests.xml",
+      "bytes": 16409,
+      "sha256": "bb894cae16a8d5ec2593218da9ad3ee7c1d52eedcbdef6ba1cfc5227bd74cbd9"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-03/cpu/tests.log",
+      "bytes": 180,
+      "sha256": "cf8e57cf2e8cb3d9e91932dfbf183b98e8dac4c3dd602110e9dd61d09a004c3a"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-03/cpu/command.json",
+      "bytes": 1160,
+      "sha256": "2a50f5cab9d03e5b97cfc3e899f870b8f35b850203dbb0255a9864f2bb99c351"
+    }
+  ]
+}

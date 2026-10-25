@@ -1,0 +1,26 @@
+{
+  "status": "passed_independent_byte_XML_schema_delivery",
+  "archive": {
+    "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-02/edition-0001.tar.gz",
+    "bytes": 27439165,
+    "sha256": "f53014ce7a95c77512f8b01f84f799ae770dd5420ada2ff127dbe0b0f8092316"
+  },
+  "source_manifest_sha256": "ca95b3ddc3e0da53626902ff4213c8730c142a62ae1949ab91c3ee9b3cf029f4",
+  "actual_jobs": {
+    "cpu": "29812093",
+    "after-cpu": "29812094",
+    "render": "29812097"
+  },
+  "raw_cases": 121,
+  "cpu_counts": {
+    "tests.test_qualification": 19,
+    "tests.test_report_data": 58,
+    "tests.test_report_ops": 13,
+    "tests.test_viewer": 31
+  },
+  "all_member_files_verified": 26,
+  "scientific_success_claim": false,
+  "original_results_changed": false,
+  "native_diagnostic_qualification": false,
+  "report_manifest_sha256": "78ebbe5969091694080a148c440d3d480ec46c482351abe0b4bbba135ed58c15"
+}

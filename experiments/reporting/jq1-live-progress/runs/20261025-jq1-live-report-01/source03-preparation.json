@@ -1,0 +1,14 @@
+{
+  "allocated_checks_passed": false,
+  "archive_bytes": 51389,
+  "archive_sha256": "51459284779b90baf8f22d3effb7d33708d7c96d8ae5e424c73ccd13c3eeebd9",
+  "cpu_counts": {
+    "tests.test_qualification": 19,
+    "tests.test_report_data": 58,
+    "tests.test_report_ops": 13,
+    "tests.test_viewer": 33
+  },
+  "files": 17,
+  "manifest_sha256": "ee69381d752bf32f3ae55cf76f69ae1330acf5b20c52ddc7c9ee3cd7f711218c",
+  "status": "local_static_only"
+}

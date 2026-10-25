@@ -1,0 +1,75 @@
+{
+  "version": "jq1-live-report-campaign-v1",
+  "status": "verified_saved_only_report_delivered",
+  "source_generation": "03",
+  "manifest_sha256": "ee69381d752bf32f3ae55cf76f69ae1330acf5b20c52ddc7c9ee3cd7f711218c",
+  "source_files": 17,
+  "source_archive_sha256": "51459284779b90baf8f22d3effb7d33708d7c96d8ae5e424c73ccd13c3eeebd9",
+  "source_archive_bytes": 51389,
+  "cpu_job_id": "29812102",
+  "callback_job_id": "29812103",
+  "render_job_id": "29812120",
+  "historical_source01": {
+    "cpu": "29812027",
+    "callback": "29812029",
+    "status": "failed_raw_module_attribution",
+    "raw_fixture_passes": 121
+  },
+  "scientific_originals_changed": false,
+  "automatic_optimizer_submission": false,
+  "monitor_remains_paused": true,
+  "original_jobs": {
+    "protenix": "29809291",
+    "boltz": "29809297",
+    "dbmol_segments": [
+      "29809294",
+      "29810971"
+    ],
+    "protenix_noisy": "29809228"
+  },
+  "native_endpoint_qualification": false,
+  "prospective_policy_toy_cases": 19,
+  "saved_progress": {
+    "protenix": {
+      "global": 20000,
+      "target": 50000,
+      "additional": 10000
+    },
+    "boltz": {
+      "global": 10000,
+      "target": 30000
+    },
+    "dbmol": {
+      "global": 5000,
+      "target": 10000
+    },
+    "protenix_noisy": {
+      "global": 1000,
+      "target": 1000
+    }
+  },
+  "optimization_successors_queued": false,
+  "report_published": true,
+  "raw_CPU_cases": 123,
+  "cpu_counts": {
+    "tests.test_qualification": 19,
+    "tests.test_report_data": 58,
+    "tests.test_report_ops": 13,
+    "tests.test_viewer": 33
+  },
+  "source02_visual_QA": {
+    "render_job_id": "29812097",
+    "status": "failed_progress_bar_layout",
+    "edition": "edition-0001_preserved"
+  },
+  "edition": "edition-0002",
+  "url": "http://127.0.0.1:8780/report.html",
+  "original_matrix_files_downloaded": false,
+  "served_files": 56,
+  "local_archive_bytes": 27439579,
+  "local_archive_sha256": "1fc9887364dec9d07a61130b76b54c9241a0a97d80637e1ee0dc6a5e38f08c2e",
+  "report_manifest_sha256": "75510074b37207faca575d93ef52760d1f382358033468c9e73db75c2d61b935",
+  "browser_QA_sha256": "a0b58194ccf3039b62784db8de7996eda522b6502499a89931f1165646a8b588",
+  "HTTP_verification_sha256": "fac22d1bb362757b6d621d8bc0303b8ae710f93b90d80b05a5321efbe67e59ea",
+  "refresh_helper_status": "static_preparation_path_only_not_executed"
+}

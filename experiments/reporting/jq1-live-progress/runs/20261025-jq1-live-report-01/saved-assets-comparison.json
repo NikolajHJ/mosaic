@@ -1,0 +1,27 @@
+{
+  "status": "passed_exact_saved_assets_unchanged_across_presentation_fix",
+  "assets": 20,
+  "files": {
+    "boltz-frames-0000.json": "110f72220a630987c7334598c5578f7321d0dc325bfab018af56106f2ffa3fac",
+    "boltz-frames-0001.json": "b193ee741ab9a70d1ac56b729befb4961cdb4782e0e9a22f62c89eb9715a6b18",
+    "boltz-frames-0002.json": "a75331989126160935e87f95bc83327aaa96e388b06e2c0be62080db71d47c50",
+    "boltz-frames-0003.json": "ead58f68a9376fca8ac47b6ecea79b4a1e68073a0f1f808960c689a6adcff7b4",
+    "boltz-frames-0004.json": "b723a9ee68d3ba499755a6531cfef611ad5b57eb6b093e350484237a473ba66e",
+    "boltz-frames-0005.json": "62fcdb7b64c455547e45dfb8c1cbff5715a448cb828ae2125bf1801704a2b114",
+    "boltz-scalars.json": "9f1dabfbe46b7a4372f686e95acad10535b3b86b2843cac9135384816504884a",
+    "dbmol-frames-0000.json": "2004e99ff4e616cb97cd1744a16bbdb33d092733bd58023ed86ad91fee47a76a",
+    "dbmol-frames-0001.json": "6f37cb67941d1010875a247fe28571247deb8059c442f02685be6b84b24818e1",
+    "dbmol-frames-0002.json": "699ed0674b8a12b50d525c7d782277b9394974e60add18edb9b17129946a8b81",
+    "dbmol-scalars.json": "98e5610a291ae84ec1b671e7501a8bb878faaf5412b8ba8d409b1a5f98a9d08a",
+    "protenix-frames-0000.json": "44367cc492cbc2ccfd7768bd1927b1c956a74ba91630e420ad507bf47ac43f41",
+    "protenix-frames-0001.json": "c85997e2cf26686d0b69f629088f633c342b9dceca8167972a14027901cd1071",
+    "protenix-frames-0002.json": "d8934fe66fcbb95e698fd4aaad81a06a44e39d9572122ba6a831f5efde644c66",
+    "protenix-frames-0003.json": "7332f314efeebd22f1e5545bff231365c40565e62b3dcffa681890a2c79cfe96",
+    "protenix-frames-0004.json": "0b4a3df23b6eb721c87d863d931610a4f896860cb91e976f940bc00c75009c13",
+    "protenix-frames-0005.json": "b148798c97564841fa2a87d39bfad187bfb178547eadc66ba605b9ca349535c0",
+    "protenix-scalars.json": "3c466aa43d30c14217a331eac1e2e21b3a68720fa0d984ed3b43c81df8b9fcbe",
+    "protenix_noisy-frames-0000.json": "31eedffec303aae6e5d103ffa6424c0f61cb17be6eb883c9b53ec2094039f35a",
+    "protenix_noisy-scalars.json": "7825bdc9a2a8635669a0c881e3a156af994f19de2da5d455e1ae530801ca4826"
+  },
+  "scientific_originals_changed": false
+}

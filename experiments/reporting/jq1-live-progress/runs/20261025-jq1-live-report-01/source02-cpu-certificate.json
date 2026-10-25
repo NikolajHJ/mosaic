@@ -1,0 +1,48 @@
+{
+  "status": "passed",
+  "manifest_sha256": "ca95b3ddc3e0da53626902ff4213c8730c142a62ae1949ab91c3ee9b3cf029f4",
+  "cpu_job_id": "29812093",
+  "cpu_counts": {
+    "tests.test_qualification": 19,
+    "tests.test_report_data": 58,
+    "tests.test_report_ops": 13,
+    "tests.test_viewer": 31
+  },
+  "proofs": [
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-02/after-cpu/terminal-query-000.json",
+      "bytes": 3604,
+      "sha256": "e88e8a4e6340567d6e943182d4a0825586d0966689b3416e880dc5975f0e95db"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-02/cpu/stdout.29812093.log",
+      "bytes": 1959,
+      "sha256": "f3c4ed6a7e2d648561e5e9c24a937a855ed09ecab641ca050a6b45c8dfeb627c"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-02/cpu/submission.json",
+      "bytes": 1127,
+      "sha256": "67d50144f329fc565c962b7fa3907220a898e1caeaa862e256fb5eec490cc729"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-02/cpu/assessment.json",
+      "bytes": 413,
+      "sha256": "6a2218a8030c98e88816018922a24b080753c7df5e33de7e07ab6abd2fd7c93d"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-02/cpu/tests.xml",
+      "bytes": 16116,
+      "sha256": "20693c3c660bd63d5cf81c30b44e5155665894250c5db236b4bcc2c625c99067"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-02/cpu/tests.log",
+      "bytes": 180,
+      "sha256": "54d1aa1d1fd6a1e50dfef6cd78e5a27345b9e8ea8ef2283f025993140be07c64"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-02/cpu/command.json",
+      "bytes": 1160,
+      "sha256": "7b198bbc705a13162cb3b263b6206c58dafb5e9aa0aba81a7a270977dc7da090"
+    }
+  ]
+}

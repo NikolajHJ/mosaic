@@ -1,0 +1,106 @@
+{
+  "status": "passed_actual_browser_interaction_QA",
+  "edition": "edition-0002",
+  "url": "http://127.0.0.1:8780/report.html",
+  "checks": [
+    {
+      "check": "stable pointer changes to edition0002 and preserves noisy/1000 selection",
+      "passed": true
+    },
+    {
+      "check": "responsive shell fits1280px and bars5px",
+      "passed": true
+    },
+    {
+      "check": "Pro15001 unsaved clears molecule but keeps scalar record",
+      "frame": "No molecule matrix was saved at global update 15,001. Scalar records remain available; choose a retained frame with the slider or arrows.",
+      "nodes": 0,
+      "matrixHidden": ""
+    },
+    {
+      "check": "previous15000",
+      "frame": "Global update 15,000 \u00b7 retained frame 251 of 501"
+    },
+    {
+      "check": "next15020",
+      "frame": "Global update 15,020 \u00b7 retained frame 252 of 501"
+    },
+    {
+      "check": "slider real keyboard10020",
+      "frame": "Global update 10,020 \u00b7 retained frame 2 of 501"
+    },
+    {
+      "check": "actual interior slider drag",
+      "frame": "Global update 16,480 \u00b7 retained frame 325 of 501"
+    },
+    {
+      "check": "Boltz playback advances",
+      "frame": "Global update 160 \u00b7 retained frame 9 of 501",
+      "play": "true"
+    },
+    {
+      "check": "manual321 pauses and clears unsaved graph",
+      "frame": "No molecule matrix was saved at global update 321. Scalar records remain available; choose a retained frame with the slider or arrows.",
+      "play": "false",
+      "nodes": 0
+    },
+    {
+      "check": "Boltz previous320",
+      "frame": "Global update 320 \u00b7 retained frame 17 of 501"
+    },
+    {
+      "check": "Boltz latest10000 and separate binder selector",
+      "frame": "Global update 10,000 \u00b7 retained frame 501 of 501",
+      "metric": "affinity_probability_binary",
+      "atoms": 25,
+      "bondCells": 1500,
+      "error": ""
+    },
+    {
+      "check": "DBMol latest5000",
+      "frame": "Global update 5,000 \u00b7 retained frame 251 of 251",
+      "status": "Scientific: failedPresentation: saved_prefix_verifiedProgress: saved partial"
+    },
+    {
+      "check": "DBMol shared2500 boundary with retained observations",
+      "frame": "Global update 2,500 \u00b7 retained frame 126 of 251",
+      "hasBoundary": true
+    },
+    {
+      "check": "noisy pilot complete1000/passed",
+      "frame": "Global update 1,000 \u00b7 retained frame 51 of 51",
+      "status": "Scientific: passedPresentation: saved_prefix_verifiedProgress: budget completed"
+    },
+    {
+      "check": "noisy37 unsaved",
+      "frame": "No molecule matrix was saved at global update 37. Scalar records remain available; choose a retained frame with the slider or arrows.",
+      "nodes": 0
+    },
+    {
+      "check": "noisy next40",
+      "frame": "Global update 40 \u00b7 retained frame 3 of 51"
+    },
+    {
+      "check": "card selector restores Pro latest20000 and original invalid raw readout",
+      "frame": "Global update 20,000 \u00b7 retained frame 501 of 501",
+      "rawShowsSanitizationFailure": false,
+      "atoms": 25,
+      "error": ""
+    },
+    {
+      "check": "unchanged pointer preserves selection",
+      "frame": "Global update 20,000 \u00b7 retained frame 501 of 501",
+      "edition": "edition-0002 \u00b7 checks for new editions every60s"
+    },
+    {
+      "check": "original raw validity remains in saved scalar record",
+      "passed": true,
+      "note": "Raw graph details show labels/edges; full scalar record preserves original readout."
+    }
+  ],
+  "scope": "Browser presentation only; no native scientific qualification",
+  "notes": [
+    "Raw graph details show labels/edges. Original validity readout is preserved in the full scalar record; a false rawShowsSanitizationFailure field records which panel contains it, not missing saved data.",
+    "Stable-shell CSS adjusts only responsive layout; immutable HTML/JSON bytes remain unchanged."
+  ]
+}

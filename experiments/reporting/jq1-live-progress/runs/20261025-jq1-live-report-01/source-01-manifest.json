@@ -1,0 +1,200 @@
+{
+  "cpu_counts": {
+    "test_qualification": 19,
+    "test_report_data": 58,
+    "test_report_ops": 13,
+    "test_viewer": 31
+  },
+  "endpoint_policy_scope": "Allocated toy diagnostics only; no native endpoint qualification or production gate replacement",
+  "files": {
+    "README.md": "fe321f7ba37fa1779ba3c5a1345da9eccaea234d968af9675960b7395de0e018",
+    "endpoint-policy.md": "e85b554b8c2724b71325d2578cf58a87f55892cf5937b8f3c2e23c2d6a88cddf",
+    "plan.json": "8c4e78c3c3e8a50d0bdc458b279b34391dc38606ea7d87234c4e98b6ca7d0c2d",
+    "plans-readme.md": "6b2ee43afa4a9e70fc39e8db3f8ed20191200658fa943aa7d2f78ee4e48beb7b",
+    "scripts/README.md": "1432fca1a9195d6f596ef29ecae5cc910f490684f7e05c21d98cc7adfedfa042",
+    "scripts/qualification.py": "6c869379cea7c58eb0ae6a7b9aaa7edf180576fa6420a0922132fd09dcdccbdc",
+    "scripts/report_data.py": "a37050f8719e4b9efe9aa89f91f103f5f939dd94d7e184deadcb690866c2bbdd",
+    "scripts/report_ops.py": "bf12817ad01f17d2ad91e3db0e783066593e0d233a091b3b645c4749131c6abe",
+    "scripts/report_stage.lsf": "a3da60e7adaa47ebf1cec91434c235b35fd3a7875246e30cb0ccc99bf05710b8",
+    "templates/README.md": "134b8bd00a0c82b89ca5dcc519bfcfa4c5a0e8bbf97961ea52808dc93c92e848",
+    "templates/report.html": "c1b5aac36f0224ab530a3402ea0fdcbbad64fa07f52edccae8781b2780744c99",
+    "tests/README.md": "0be44a42d0149a7084d1e547bc343fd0532e0f857d2755a07b353662218797c8",
+    "tests/test_qualification.py": "da5450bb0af5ff1a533d00f5cfc77d06f424c705e45cd60dd3c1d0eeaaa40213",
+    "tests/test_report_data.py": "a97c12460a4e1b5ad3e58672ccce7de2dcb73ab9ec16c313e3c9ee35a7276762",
+    "tests/test_report_ops.py": "22ef9225e2beb2e6f2b1c62dc1143fcdc6412f2804e1a11e75e90a22643e72a0",
+    "tests/test_viewer.py": "c89911c14318385d6c22a1175a0a6d0ece9318830f80342ad4d750e9eb8f0a78"
+  },
+  "monitor_remains_paused": true,
+  "parent_sources": [
+    {
+      "files": 643,
+      "manifest_sha256": "da9db6821d26b884ca1749303fc8e0b0095bd9ee7cbd1b427cdcf1b22eec6562",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source"
+    },
+    {
+      "files": 635,
+      "manifest_sha256": "c214bccf2c94ac6829996bc0ca7d6415d3c19549be4fe7f874cba2b433901cc6",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-release-03/source"
+    },
+    {
+      "files": 657,
+      "manifest_sha256": "600ecc3b33135141a57c029a28a2c72f29e788e3ecf5cb2dac1761146d1d6eed",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-release-02/source"
+    },
+    {
+      "files": 642,
+      "manifest_sha256": "7bb970f48f6f907b7dc05e74a9bc2645a313addf814f08a0eeca11582f3b84ef",
+      "path": "/work3/s234818/mosaic/releases/20261023-protenix-noisy-01/source"
+    },
+    {
+      "files": 12,
+      "manifest_sha256": "704fab033d97342a14dc12b58dc32df44874232c5c30aad47c4d02041a502aab",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-startup-release-03/source"
+    },
+    {
+      "files": 12,
+      "manifest_sha256": "f3be7c2f85d495ae042ee8092eecb5274c6298cc8f12907a7ba9ba6d8fb740db",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-release-02/source"
+    }
+  ],
+  "persistent_cap_bytes": 1073741824,
+  "proofs": [
+    {
+      "bytes": 1229018,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-segment-0000/stdout.29809291.log",
+      "sha256": "e87b2e9640768fb2c8d0ae064030f9e646d1820b4f55bea44bb10ff92ac7fa92"
+    },
+    {
+      "bytes": 750208,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-segment-0000/stderr.29809291.log",
+      "sha256": "12b4a4011c8d0a7de4c4c63f6b172d987de90f50e41d8425e41acc63b9e5b52f"
+    },
+    {
+      "bytes": 1430,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-segment-0000/submission.json",
+      "sha256": "dd10718a178003e80a77ed37725a7c4e12b15fa55090bd4b63258ab72574878d"
+    },
+    {
+      "bytes": 99547,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-segment-0000/payload/study/case-0/retained-frames.json",
+      "sha256": "e998b40afe3aba111ef625d39b1afcd65609b38738626f7483cd258f9e45be6a"
+    },
+    {
+      "bytes": 1599,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-segment-0000/payload/study/terminal_gradient_checks/report.json",
+      "sha256": "1506e7ed0d6d4e56b62a72097133bcf4832493fa2f9a6365967ca4eafcdf26c0"
+    },
+    {
+      "bytes": 1206610,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/boltz2-segment-0000/stdout.29809297.log",
+      "sha256": "f69cba5b2eba11c73db75175493dcf7bd5e97d7b4e8c1c4907d735b387e7117a"
+    },
+    {
+      "bytes": 5477,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/boltz2-segment-0000/stderr.29809297.log",
+      "sha256": "b7cac4f74d0fd40ab67568f865cb6e8365901b9bf385abd95b2216b1684b4887"
+    },
+    {
+      "bytes": 1373,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/boltz2-segment-0000/submission.json",
+      "sha256": "223e1e875ff5fd0d8827f34d4ad8cd9d5e37f8418b0cf68c230a501ebd435416"
+    },
+    {
+      "bytes": 98991,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/boltz2-segment-0000/payload/study/case-0/retained-frames.json",
+      "sha256": "ab6f49b928bd2b736c0640937a747b8db7d24c71271400f639f597e8e36342a0"
+    },
+    {
+      "bytes": 2085,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/boltz2-segment-0000/payload/study/terminal_gradient_checks/report.json",
+      "sha256": "d39ed2a9d29c8f9799083bcfb61961f78ad06588768e0f458c7caff4bf7ddddd"
+    },
+    {
+      "bytes": 305579,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-segment-0000/stdout.29809294.log",
+      "sha256": "8b785675b89398d6dfef726d6fd05b28dff4909fed106b50448fd666c9b70d84"
+    },
+    {
+      "bytes": 260,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-segment-0000/stderr.29809294.log",
+      "sha256": "e88d7498b24f9dd51983e7779ddc9995dcd041200de7e81cbed8ed71a1d6c842"
+    },
+    {
+      "bytes": 1384,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-segment-0000/submission.json",
+      "sha256": "c806e3e63fa6594dbb135e366c815975d68794c5ecdb7e7c950efd14eb2dd828"
+    },
+    {
+      "bytes": 25111,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-segment-0000/payload/study/case-0/retained-frames.json",
+      "sha256": "0f4445b146cf952f4022b2d59d67401fd261cd4cef35573aff358745e03877af"
+    },
+    {
+      "bytes": 22580,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-segment-0000/payload/study/terminal_gradient_checks/report.json",
+      "sha256": "33d42155034370a361b1ed79f98d10425adadcaee93b21d4fd4e30d6f7c80eee"
+    },
+    {
+      "bytes": 307626,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-segment-0001/stdout.29810971.log",
+      "sha256": "48c2404f121fbbc03c952436bf13fb7042598dcebbe1a375c40c20924e518a00"
+    },
+    {
+      "bytes": 6946,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-segment-0001/stderr.29810971.log",
+      "sha256": "7a3108464fb096183e50a7112dd877eb05c972ebf1af1d148e9a94813d6380ed"
+    },
+    {
+      "bytes": 1384,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-segment-0001/submission.json",
+      "sha256": "65e7a6cee4bab477f82efd27e5c59368555f320a5971e4ec9d09db6c7b889684"
+    },
+    {
+      "bytes": 25167,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-segment-0001/payload/study/case-0/retained-frames.json",
+      "sha256": "8b3223061928c7b757d7534ea1c57318aa800c6451451c3d3ddcbc56ba510917"
+    },
+    {
+      "bytes": 13307,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-segment-0001/payload/study/terminal_gradient_checks/report.json",
+      "sha256": "9c5a8a7f742ed83cc96bf8fcfb9cb386d9aba794d746570f4aa6961ab4f84258"
+    },
+    {
+      "bytes": 2441,
+      "path": "/work3/s234818/mosaic/runs/20261025-protenix-noisy-05/cpu-ready.json",
+      "sha256": "7280daf092b24b8dc4802fa771d8cc59a5412d316ecb518df1df42f2c7cc8832"
+    },
+    {
+      "bytes": 894,
+      "path": "/work3/s234818/mosaic/runs/20261025-protenix-noisy-05/gpu/trajectory/result.json",
+      "sha256": "72a70a732e00e3b5e8ececda2e2125ec82e868f9f27b079d75419801613b8c74"
+    },
+    {
+      "bytes": 55778,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-02/noise-gpu/stdout.29809228.log",
+      "sha256": "2b375ee7952a46dd45c3f987274f1d26a2f6053f8efcc4731230aaeb5c2d10fa"
+    },
+    {
+      "bytes": 73777,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-02/noise-gpu/stderr.29809228.log",
+      "sha256": "12938d2fb89ee50f440cfeca468331e4596356d159972961ab4f5174026f640f"
+    },
+    {
+      "bytes": 1330,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-02/noise-gpu/submission.json",
+      "sha256": "ffad9723d224024750c7f927af8fb6ba1c96eba04da98ba91e23b826fd48b6b5"
+    },
+    {
+      "bytes": 1391,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-startup-release-03/source/source_manifest.json",
+      "sha256": "704fab033d97342a14dc12b58dc32df44874232c5c30aad47c4d02041a502aab"
+    },
+    {
+      "bytes": 1391,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-release-02/source/source_manifest.json",
+      "sha256": "f3be7c2f85d495ae042ee8092eecb5274c6298cc8f12907a7ba9ba6d8fb740db"
+    }
+  ],
+  "scientific_results_changed": false,
+  "version": "jq1-live-report-source-v1"
+}

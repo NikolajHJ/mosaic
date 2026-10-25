@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "job_id": "29812102",
+  "manifest_sha256": "ee69381d752bf32f3ae55cf76f69ae1330acf5b20c52ddc7c9ee3cd7f711218c",
+  "cpu_counts": {
+    "tests.test_qualification": 19,
+    "tests.test_report_data": 58,
+    "tests.test_report_ops": 13,
+    "tests.test_viewer": 33
+  },
+  "xml_sha256": "bb894cae16a8d5ec2593218da9ad3ee7c1d52eedcbdef6ba1cfc5227bd74cbd9",
+  "original_results_changed": false
+}

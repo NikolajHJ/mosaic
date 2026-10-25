@@ -1,0 +1,18 @@
+{
+  "status": "returned",
+  "program_sha256": "2416684e9b1e6279664e662df904ab5c185a2c623fed15e57b98ff0ef892a6e6",
+  "argv": [
+    "ssh",
+    "-T",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=15",
+    "-o",
+    "ConnectionAttempts=1",
+    "dtu-hpc",
+    "bash -l -c '/work3/s234818/mosaic/envs/protenix-tiny/bin/python -'"
+  ],
+  "returncode": 0,
+  "captured_utc": "2026-10-25T10:01:31.826605+00:00"
+}

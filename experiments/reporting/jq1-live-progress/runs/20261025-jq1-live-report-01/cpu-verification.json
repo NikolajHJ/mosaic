@@ -1,0 +1,19 @@
+{
+  "status": "passed_independent_raw_XML_byte_schema_CPU_audit",
+  "cpu_job_id": "29812093",
+  "callback_job_id": "29812094",
+  "render_job_id": "29812097",
+  "raw_cases": 121,
+  "counts": {
+    "tests.test_qualification": 19,
+    "tests.test_report_data": 58,
+    "tests.test_report_ops": 13,
+    "tests.test_viewer": 31
+  },
+  "source_manifest_sha256": "ca95b3ddc3e0da53626902ff4213c8730c142a62ae1949ab91c3ee9b3cf029f4",
+  "cpu_certificate_sha256": "0228b6ea4b24eb7ea6c7fbad2dfb4089d9cb061cab40cae9c5d79ca7eefe2afa",
+  "raw_XML_sha256": "20693c3c660bd63d5cf81c30b44e5155665894250c5db236b4bcc2c625c99067",
+  "files_byte_verified": 27,
+  "native_endpoint_qualification": false,
+  "production_gradient_gate_changed": false
+}

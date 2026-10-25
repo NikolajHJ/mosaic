@@ -1,0 +1,6 @@
+*.py text eol=lf
+*.html text eol=lf
+*.lsf text eol=lf
+*.xml -text
+*.log -text
+*.json -text

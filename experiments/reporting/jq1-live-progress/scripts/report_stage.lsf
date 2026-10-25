@@ -1,0 +1,24 @@
+#!/bin/bash
+set -euo pipefail
+[[ $# == 3 && "${LSB_QUEUE:-}" == hpc ]]
+source_root=$1
+manifest=$2
+phase=$3
+module load python3/3.12.11
+export PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1 CUDA_VISIBLE_DEVICES=""
+export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1
+export HF_HUB_OFFLINE=1 HF_HUB_DISABLE_TELEMETRY=1
+science_root=/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source
+/work3/s234818/mosaic/envs/protenix-tiny/bin/python - "$science_root" "$source_root" "$manifest" <<'PY'
+import hashlib,json,sys
+from pathlib import Path
+science,source=map(Path,sys.argv[1:3]);pin=sys.argv[3]
+for root,expected in [(science,'da9db6821d26b884ca1749303fc8e0b0095bd9ee7cbd1b427cdcf1b22eec6562'),(source,pin)]:
+ path=root/'source_manifest.json';assert not root.is_symlink() and not path.is_symlink()
+ assert hashlib.sha256(path.read_bytes()).hexdigest()==expected
+ name='scripts/hpc/boltz_node_tmpdir.sh' if root==science else 'scripts/report_ops.py'
+ path=root/name;assert not path.is_symlink() and path.is_file()
+ assert hashlib.sha256(path.read_bytes()).hexdigest()==json.loads((root/'source_manifest.json').read_bytes())['files'][name]
+PY
+source "$science_root/scripts/hpc/boltz_node_tmpdir.sh"
+/work3/s234818/mosaic/envs/protenix-tiny/bin/python -u "$source_root/scripts/report_ops.py" "$manifest" "$phase"

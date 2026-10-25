@@ -1,0 +1,7 @@
+{
+  "status": "passed_local_AST_byte_Git_scope_audit",
+  "staged_files": 81,
+  "exact_runtime_members_checked": 9,
+  "scope": "No numerical execution; unrelated dirty work excluded",
+  "source_manifest_sha256": "ee69381d752bf32f3ae55cf76f69ae1330acf5b20c52ddc7c9ee3cd7f711218c"
+}
