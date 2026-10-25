@@ -8,3 +8,5 @@ an original failed run into a pass or authorize a gate waiver.
   passed, Protenix native admission rejected and both Boltz workers failed import.
 - `20261025-continuation-worker-fix-02`: restricted worker-path/error-reporting
   correction for Boltz and DBMol only; Protenix remains explicitly blocked.
+
+- [20261025 Protenix endpoint forensics](20261025-protenix-endpoint-forensics-01/README.md): separate diagnostics of the preserved20k endpoint; no settings/result edits or continuation authority.

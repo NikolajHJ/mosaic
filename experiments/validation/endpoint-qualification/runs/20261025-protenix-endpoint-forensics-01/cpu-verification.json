@@ -1,0 +1,21 @@
+{
+  "status": "passed_cpu_byte_xml_lsf_schema",
+  "captured_utc": "2026-10-25T12:20:00.067323+00:00",
+  "verified_files": 22,
+  "cpu_job_id": "29813983",
+  "cpu_cases": 122,
+  "cpu_counts": {
+    "tests.test_protenix_endpoint_forensics": 24,
+    "tests.test_protenix_forensics_native": 39,
+    "tests.test_protenix_forensics_ops": 59
+  },
+  "cpu_certificate_sha256": "d2f44b3b9ae22d4e66a34ee0251dba6d08fa76fc277c852572792c4f37c928e9",
+  "source_manifest_sha256": "d127d6abe87307a5d305edb6d04e3a32e3545c508e58b82ce45290e0f3fc03d8",
+  "plan_sha256": "14d0cf5b03af73ee5d87ece55b8c48616897521c50bbb40e8f76b6a9bb8f5861",
+  "native_findings_established": false,
+  "original_results_changed": false,
+  "optimization_settings_changed": false,
+  "can_certify_or_restart_original_study": false,
+  "scope": "Local stdlib bytes/XML/schema/LSF only; no numerical or array calculations",
+  "gpu_job_id": "29813996"
+}

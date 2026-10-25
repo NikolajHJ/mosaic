@@ -1,0 +1,5 @@
+{
+  "tests.test_protenix_endpoint_forensics": 24,
+  "tests.test_protenix_forensics_native": 39,
+  "tests.test_protenix_forensics_ops": 59
+}

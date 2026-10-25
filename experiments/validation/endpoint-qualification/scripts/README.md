@@ -12,3 +12,5 @@ admission/child-run attempt. See the dated run record and policy. Metadata-only
 read-only remote bindings; `prepare_continuation_plan.py` assembles those exact
 identities locally. Sealing/submission helpers refuse existing attempt paths and
 unknown outcomes. Original scientific sources/results are never overwritten.
+
+Protenix diagnostic-only controls: `protenix_endpoint_forensics.py` preserves the fixed point inventory; `protenix_forensics_native.py` loads the exact original frozen source/checkpoint; `protenix_forensics_ops.py` gates CPU then a bounded diagnostic GPU allocation. `manage_protenix_forensics.py` provides stdlib prepare/stage/observe commands, and `protenix_forensics_stage.lsf` authenticates source before imports. None dispatches optimizer continuations.

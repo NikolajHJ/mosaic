@@ -7397,3 +7397,17 @@ Pro not submitted in02; remains blocked at20k by authentic rejected admission.
 Both Bol/DB chains retain all native/pilot/runtime/frozen/startup/storage guards
 before conditional children. Original saved states/settings unchanged; monitor
 paused/report0003 unchanged. No numerical/model tests performed locally.
+
+## 2026-10-25 — Protenix20k endpoint forensic investigation (preparation)
+
+User requested why Protenix still fails endpoint checks and what would allow50k, without changes to saved results/settings. Exact original29809291 absolute20k endpoint and rejected29813840 admission stay failed/immutable; source02 Pro block remains. Static audits find original infeasible X contrast now passes, while extra bond/atom comparisons reject. Several rejection residuals are below the existing scalar resolution floor; deterministic identical-input repeats do not bound cross-input FP32 error. NativeContactLoss has a max-partner reduction and the network has ReLUs, so precision, curvature/branch changes and true derivative defects remain alternatives. No cause is yet proven.
+
+Prepared diagnostic-only fixed-point replay of every original nine-direction/six-scale probe, independent primal/AD-returned scalars, endpoint gradients, contact winners/margins and reduction-only controls. New immutable capsule requires allocated CPU contracts, fresh full unchanged storage plus256MiB diagnostic/16MiB control allowance, then one bounded2h L40S diagnostic with90min internal limit. No optimizer/pilot/diffusion/repair, new production gate, continuation, monitor resumption or cleanup. Original LR0.3/contact objective/key17/five-field replay/source/context/model remain exact. Local work metadata/AST/bytes only; native findings pending. Owning run: experiments/validation/endpoint-qualification/runs/20261025-protenix-endpoint-forensics-01/.
+
+Protenix forensics actual submission12:14:33UTC: immutable13-file source manifest`d127d6abe87307a5d305edb6d04e3a32e3545c508e58b82ce45290e0f3fc03d8`, archive44,885B SHA`2c62450edb288293de1c595795ccdab5082153f677f7fe6585fabc239311feeb`. Full storage36,344,788,980required/37,711,199,461available passed with unchanged reserves and full other future budgets. CPU29813983/afterCPU29813984 actually submitted; CPU wasRUN at12:15:08UTC. No native diagnostic pass/finding/GPU ID or continuation established. Byte/AST/archive audit passed locally; repository-wide layout check remains failed on existing discovery/historical README issues, none naming this owner.
+
+Forensics CPU29813983 actualDONE/LSFsuccess by12:18:17UTC: all122 raw cases24+39+59 passed, no failures/errors/skips. Independent19-file byte/XML/schema audit passed; certificateSHAd2f44b3b9ae22d4e66a34ee0251dba6d08fa76fc277c852572792c4f37c928e9. Callback29813984 stillRUN, fresh diagnostic dispatch gate pending; no native finding/continuation established.
+
+Forensics actualGPU29813996 submitted12:18:24UTC after actualCPU/callbackDONE/full122cases and fresh full storage36,344,788,980required/37,711,069,987available (unchanged4GiB/100k/full future budgets). At12:20UTC PEND physicalGPU reservation, no native findings. Independent22-file byte/XML/LSF/schema audit passed including exact exclusiveL40S/4CPU/8GiBslot/2h vector. No optimizer continuation/update/settings/result changes; paused monitor unchanged.
+
+Final current-turn observation12:21:38UTC: separatediagnostic29813996 remainsPEND physicalGPU; CPU/callbackDONE. No nativefinding or50k continuation established; monitor remains paused. Source643/current20k study and all failed gates preserved.

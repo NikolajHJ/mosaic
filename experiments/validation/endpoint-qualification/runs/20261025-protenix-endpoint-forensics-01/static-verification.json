@@ -1,0 +1,13 @@
+{
+  "status": "passed_static_bytes_only",
+  "members": 14,
+  "manifest_sha256": "d127d6abe87307a5d305edb6d04e3a32e3545c508e58b82ce45290e0f3fc03d8",
+  "archive_bytes": 44885,
+  "archive_sha256": "2c62450edb288293de1c595795ccdab5082153f677f7fe6585fabc239311feeb",
+  "plan_sha256": "14d0cf5b03af73ee5d87ece55b8c48616897521c50bbb40e8f76b6a9bb8f5861",
+  "numerical_tests_run_locally": false,
+  "preserved_admission_bytes_exact": true,
+  "own_experiment_layout_errors": [],
+  "repository_layout_status": "failed_existing_discovery_and_historical_readme_errors",
+  "layout_report": "results/static/protenix-endpoint-forensics-layout.json"
+}

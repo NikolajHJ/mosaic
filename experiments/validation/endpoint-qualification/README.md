@@ -69,3 +69,5 @@ dated run. A [restricted worker-fix02](runs/20261025-continuation-worker-fix-02/
 preserves that failed source and Protenix's execution block. It changes only
 subprocess import plumbing, startup coverage and primary-error reporting; the
 prospective numerical policy and all original scientific settings remain exact.
+
+A separate [Protenix20k endpoint investigation](runs/20261025-protenix-endpoint-forensics-01/README.md) preserves the failed admission and all optimization settings. It measures the exact existing probe cohort, scalar execution paths, endpoint derivatives and contact-partner switches; it cannot certify or restart a study.
