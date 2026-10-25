@@ -1,0 +1,33 @@
+{
+  "status": "passed_independent_byte_XML_schema_delivery",
+  "archive": {
+    "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-04/edition-0003.tar.gz",
+    "bytes": 28362248,
+    "sha256": "a6ebfc23f9febe46283d19e6832586ba025f478a40bbd161ae72b7938569ce5e"
+  },
+  "source_manifest_sha256": "856f788c5959c6fe5239374d3141808ec011907f4e092deb78a65f28ef9b196d",
+  "actual_jobs": {
+    "cpu": "29813776",
+    "after-cpu": "29813777",
+    "render": "29813792"
+  },
+  "raw_cases": 141,
+  "cpu_counts": {
+    "tests.test_qualification": 19,
+    "tests.test_report_data": 71,
+    "tests.test_report_ops": 13,
+    "tests.test_viewer": 38
+  },
+  "all_member_files_verified": 26,
+  "scientific_success_claim": false,
+  "original_results_changed": false,
+  "native_diagnostic_qualification": false,
+  "report_manifest_sha256": "375ab613d41bee188367000be3aa2aa04f180cdb939d4f2ad31e83ae5f6bd292",
+  "display_only_delta": {
+    "status": "passed_exact_saved_JSON_equality_except_display_coordinates",
+    "previous_edition": "edition-0002",
+    "scalar_assets_byte_identical": 4,
+    "frames_compared": 1304,
+    "scientific_array_evaluation_performed_locally": false
+  }
+}

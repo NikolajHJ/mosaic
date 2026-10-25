@@ -28,7 +28,8 @@ binding/activity. Presentation can pass while the original scientific run failed
 ## Ownership and execution
 
 - `scripts/report_data.py`: allocated HPC CPU validation of original FP32 matrices,
-  simplex/scalar/argmax/hash correspondences and contiguous scalar prefixes.
+  simplex/scalar/argmax/hash correspondences and contiguous scalar prefixes;
+  deterministic bond-aware display geometry retaining every raw atom and bond.
 - `templates/report.html`: report controls, scalar curves, raw graphs and heatmaps.
 - `scripts/report_ops.py`, `report_stage.lsf`: account-bound immutable CPU fixture,
   actual terminal certificate and report-render controller. No optimizer phase.
@@ -40,6 +41,10 @@ binding/activity. Presentation can pass while the original scientific run failed
   fixtures. Real browser interactions are checked separately before delivery.
 - `runs/20261025-jq1-live-report-01/`: exact immutable sources, jobs, outcomes,
   original failure preservation, publication and QA receipts.
+- `scripts/prepare_refined.py`: explicit generation04 presentation redesign
+  packaging, distinct from an unchanged-template data refresh.
+- `runs/20261025-jq1-refined-report-01/`: redesign provenance, allocated checks,
+  original-data equality audit and delivery QA.
 
 All numerical fixtures and frame validation/rendering run on allocated DTU HPC.
 Local work is stdlib metadata/AST/XML/byte/packaging, transfers, publication and
@@ -65,11 +70,18 @@ original failed gate to a pass or authorizes a continuation.
 ## Current delivery
 
 Verified on25October2026: [updating viewer](http://127.0.0.1:8780/report.html),
-immutable edition-0002. CPU29812102/callback29812103 and renderer29812120 all
-actual DONE/LSF success;123 raw fixtures passed. Archive/member, all56 HTTP files
-and actual browser interaction QA passed. The original scientific statuses remain
-failed/failed/failed/passed. See the dated run record for all hashes and limits.
+immutable edition-0003. CPU29813776/callback29813777 and renderer29813792 all
+actual DONE/LSF success;141 raw fixtures passed. All26 archive members,83 HTTP
+files and actual browser interactions passed. Four scalar assets are byte-identical
+to edition0002; all1,304 frames match exactly after removing only their new display
+coordinates/layout. Original scientific statuses remain failed/failed/failed/passed.
 
-A stable-shell responsive CSS adjustment affects layout only. Immutable edition
-resources and every scientific scalar/frame byte remain unchanged. Historical
-source01 metadata rejection and source02 browser-layout failure are preserved.
+The refined view has fixed primary loss curves, a compact DBMol component plot,
+larger bond-aware molecule view and one shared timeline. Matrices and provenance
+start closed. Current four runs have no active chemistry term; no chemistry curve
+is fabricated. Actual active saved chemistry terms are supported when present.
+
+The stable shell applies its historical CSS adjustment only to older documents.
+All old editions and scientific values remain unchanged. The new dated run record
+binds source, checks, equality audit, HTTP/browser QA and preparation-only future
+refresh instructions. Historical failures remain preserved; the monitor stays paused.

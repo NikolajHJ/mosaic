@@ -1,0 +1,43 @@
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@hpc.dtu.dk>
+Subject: Job 29813792: <mosaic-live-report04-render> in cluster <dcc> Done
+
+Job <mosaic-live-report04-render> was submitted from host <n-62-31-22> by user <s234818> in cluster <dcc> at Sun Oct 25 11:29:56 2026
+Job was executed on host(s) <4*n-62-30-24>, in queue <hpc>, as user <s234818> in cluster <dcc> at Sun Oct 25 11:29:56 2026
+</zhome/95/e/206121> was used as the home directory.
+</zhome/95/e/206121> was used as the working directory.
+Started at Sun Oct 25 11:29:56 2026
+Terminated at Sun Oct 25 11:31:44 2026
+Results reported at Sun Oct 25 11:31:44 2026
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+bash -l /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-release-04/source/scripts/report_stage.lsf /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-release-04/source 856f788c5959c6fe5239374d3141808ec011907f4e092deb78a65f28ef9b196d render
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   70.49 sec.
+    Max Memory :                                 35 MB
+    Average Memory :                             34.33 MB
+    Total Requested Memory :                     16384.00 MB
+    Delta Memory :                               16349.00 MB
+    Max Swap :                                   -
+    Max Processes :                              4
+    Max Threads :                                5
+    Run time :                                   108 sec.
+    Turnaround time :                            108 sec.
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file </work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-04/render/stderr.29813792.log> for stderr output of this job.
+

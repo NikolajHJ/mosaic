@@ -1,0 +1,98 @@
+{
+  "status": "passed_actual_browser_presentation_QA",
+  "edition": "edition-0003",
+  "url": "http://127.0.0.1:8780/report.html",
+  "checks": [
+    {
+      "check": "initial refined view",
+      "closedDetails": true,
+      "edition": "edition-0003",
+      "legacyCSS": 0,
+      "mainPaths": 2,
+      "metric": "Pocket contact loss · original optimized direction ↓",
+      "metricSelectors": 0,
+      "overflow": false,
+      "title": "Protenix continuation"
+    },
+    {
+      "atomCells": 0,
+      "check": "unsaved update clears molecule only",
+      "graphChildren": 0,
+      "graphEmpty": true,
+      "lossPaths": 2,
+      "step": "15001"
+    },
+    {
+      "atomCells": 150,
+      "bondCells": 1500,
+      "check": "retained frame and probability disclosure",
+      "graphAtoms": 25,
+      "matricesOpen": true,
+      "status": "Global update 15,000 · retained frame 251 of 501",
+      "step": "15000"
+    },
+    {
+      "check": "actual pointer drag",
+      "status": "Global update 17,360 · retained frame 369 of 501"
+    },
+    {
+      "button": "Play saved frames",
+      "check": "Boltz objective and manual playback pause",
+      "componentsHidden": true,
+      "metric": "Native affinity objective · original optimized direction ↓",
+      "scientific": "Scientific: Terminal check failedPresentation: Saved data verifiedProgress: Partial",
+      "step": "320",
+      "title": "Boltz-2 affinity"
+    },
+    {
+      "check": "DBMol total and fixed weighted breakdown",
+      "chemistryLabelVisible": false,
+      "componentHidden": false,
+      "componentLegend": "Affinity contributionContact contributionConfidence contribution",
+      "componentPaths": 4,
+      "metric": "DBMol total objective · original optimized direction ↓",
+      "metricSelectors": 0,
+      "rawCaption": "25 atoms · 25 bonds · bond-aware diagram",
+      "step": "5000",
+      "title": "DBMol binding objective"
+    },
+    {
+      "check": "exact shared DBMol boundary",
+      "status": "Global update 2,500 · retained frame 126 of 251"
+    },
+    {
+      "check": "independent noisy Protenix pilot",
+      "componentsHidden": true,
+      "graphAtoms": 25,
+      "metric": "Pocket contact loss · original optimized direction ↓",
+      "overflow": false,
+      "scientific": "Scientific: PassedPresentation: Saved data verifiedProgress: Budget complete",
+      "step": "1000",
+      "title": "Protenix noisy-logit pilot"
+    },
+    {
+      "check": "manual latest-pointer check preserves selection",
+      "title": "Protenix noisy-logit pilot",
+      "step": "400",
+      "state": "edition-0003 · checks for new editions every60s"
+    },
+    {
+      "check": "DBMol final visual composition",
+      "metricSelectorCount": 0,
+      "overflow": false,
+      "rawAtoms": 25,
+      "step": "5000"
+    }
+  ],
+  "actual_slider_drag": [
+    17360
+  ],
+  "playback_observed_through_update": 200,
+  "manual_pause_stable_at": 320,
+  "previous_after_pause": 300,
+  "all_four_arm_cards_exercised": true,
+  "all_important_losses_have_explicit_semantic_labels": true,
+  "original_scientific_statuses_unchanged": true,
+  "preview": "refined-report-preview.png",
+  "captured_utc": "2026-10-25T10:36:16.674Z"
+}

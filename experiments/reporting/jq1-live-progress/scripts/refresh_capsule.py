@@ -1,6 +1,6 @@
 """Prepare a fresh immutable saved-report capsule; never connect or submit.
 
-The source03 archive is the immutable template. Only its bound plan and the
+The refined source04 archive is the immutable template. Only its bound plan and the
 controller's root/source/job-prefix/archive-edition literals may change. The
 generated start_prepared.py is a separate, explicit one-shot CPU-only action.
 This helper does not poll HPC, update a viewer, or launch optimization jobs.
@@ -22,15 +22,17 @@ import tarfile
 
 REPO = Path(__file__).resolve().parents[4]
 LOCAL = REPO / "results/hpc/20261025-jq1-live-report-01"
-TEMPLATE = LOCAL / "source03"
-ARCHIVE_BYTES = 51389
-ARCHIVE_SHA = "51459284779b90baf8f22d3effb7d33708d7c96d8ae5e424c73ccd13c3eeebd9"
-MANIFEST_SHA = "ee69381d752bf32f3ae55cf76f69ae1330acf5b20c52ddc7c9ee3cd7f711218c"
+TEMPLATE = LOCAL / "source04"
+ARCHIVE_BYTES = 58014
+ARCHIVE_SHA = "518fef6d982e3ed166e1826ad97c96b385967f5e65dc0423e8190e771a240fde"
+MANIFEST_SHA = "856f788c5959c6fe5239374d3141808ec011907f4e092deb78a65f28ef9b196d"
+# launch.py is a preserved historical source03 caller. Its exact prefix stays
+# separately pinned; source04 controller literals require their own rewrite map.
 PREFIX_SHA = "2094d1cfcf43eee3dc2210e8464375007c3a306835a42a2c8225a7cf94a8aeab"
 KNOWN_ARMS = {"protenix", "boltz", "dbmol", "protenix_noisy"}
 PLAN_VERSION = "jq1-live-saved-report-v1"
-EXPECTED_COUNTS = {"tests.test_qualification": 19, "tests.test_report_data": 58,
-                   "tests.test_report_ops": 13, "tests.test_viewer": 33}
+EXPECTED_COUNTS = {"tests.test_qualification": 19, "tests.test_report_data": 71,
+                   "tests.test_report_ops": 13, "tests.test_viewer": 38}
 BASE = "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01"
 PYTHON = "/work3/s234818/mosaic/envs/protenix-tiny/bin/python"
 
@@ -66,7 +68,7 @@ def archive_members(raw, expected_manifest):
             require(member.name not in members, "Duplicate source archive member")
             members[member.name] = source.extractfile(member).read()
     require("source_manifest.json" in members and digest(members["source_manifest.json"]) == expected_manifest,
-            "Exact source03 manifest changed")
+            "Exact template manifest changed")
     manifest = read_json(members["source_manifest.json"])
     require(set(members) == set(manifest["files"]) | {"source_manifest.json"},
             "Unlisted/missing source archive member")
@@ -133,7 +135,7 @@ def fresh_plan(raw, original, edition):
             require(segment.get("global_offset") == offset and type(segment.get("requested_updates")) is int
                     and segment["requested_updates"] > 0, "Segment budget/absolute offset differs")
             require(segment.get("scientific_status") in ("passed", "failed"),
-                    "Source03 controller supports original terminal saved segments only; running data needs a separate validated controller")
+                    "Template controller supports original terminal saved segments only; running data needs a separate validated controller")
             require(re.fullmatch("[1-9][0-9]*", str(segment.get("job_id", ""))) is not None
                     and isinstance(segment["job_id"], str), "Exact original job ID is required")
             require((segment.get("source_manifest_sha256"), json.dumps(segment.get("config"), sort_keys=True)) in permitted,
@@ -250,28 +252,28 @@ def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--plan", type=Path, required=True)
     parser.add_argument("--plan-sha256", required=True)
-    parser.add_argument("--generation", required=True, help="Fresh two-digit generation04..99")
-    parser.add_argument("--edition", required=True, help="Fresh edition-0003 or later")
+    parser.add_argument("--generation", required=True, help="Fresh two-digit generation05..99")
+    parser.add_argument("--edition", required=True, help="Fresh edition-0004 or later")
     args = parser.parse_args(argv)
-    require(re.fullmatch("[0-9]{2}", args.generation) and 4 <= int(args.generation) <= 99, "Generation must be04..99")
-    require(re.fullmatch("edition-[0-9]{4}", args.edition) and int(args.edition[-4:]) >= 3, "Edition must be0003 or later")
+    require(re.fullmatch("[0-9]{2}", args.generation) and 5 <= int(args.generation) <= 99, "Generation must be05..99")
+    require(re.fullmatch("edition-[0-9]{4}", args.edition) and int(args.edition[-4:]) >= 4, "Edition must be0004 or later")
     require(re.fullmatch("[a-f0-9]{64}", args.plan_sha256) is not None, "Explicit fresh plan SHA is required")
     plan_raw = args.plan.read_bytes()
     require(digest(plan_raw) == args.plan_sha256, "Fresh bound plan changed")
     original_raw = (TEMPLATE / "source.tar.gz").read_bytes()
-    require(len(original_raw) == ARCHIVE_BYTES and digest(original_raw) == ARCHIVE_SHA, "Exact sealed source03 archive changed")
+    require(len(original_raw) == ARCHIVE_BYTES and digest(original_raw) == ARCHIVE_SHA, "Exact sealed source04 archive changed")
     members, manifest = archive_members(original_raw, MANIFEST_SHA)
     require(len(manifest["files"]) == 17 and manifest["cpu_counts"] == EXPECTED_COUNTS,
-            "Exact source03 fixture/source identities differ")
+            "Exact source04 fixture/source identities differ")
     plan, fresh_proofs = fresh_plan(plan_raw, read_json(members["plan.json"]), args.edition)
     source = BASE + "/nonchem-live-report-release-" + args.generation + "/source"
     root = BASE + "/nonchem-live-report-" + args.generation
     original_ops = members["scripts/report_ops.py"].decode()
     changed_ops = original_ops
-    replacements = {"nonchem-live-report-release-03": "nonchem-live-report-release-" + args.generation,
-                    "nonchem-live-report-03": "nonchem-live-report-" + args.generation,
-                    "mosaic-live-report03-": "mosaic-live-report" + args.generation + "-",
-                    "edition-0002": args.edition}
+    replacements = {"nonchem-live-report-release-04": "nonchem-live-report-release-" + args.generation,
+                    "nonchem-live-report-04": "nonchem-live-report-" + args.generation,
+                    "mosaic-live-report04-": "mosaic-live-report" + args.generation + "-",
+                    "edition-0003": args.edition}
     for old, new in replacements.items():
         require(old in changed_ops, "Required controller metadata literal missing: " + old)
         changed_ops = changed_ops.replace(old, new)
@@ -311,7 +313,11 @@ def main(argv=None):
     checked, _ = archive_members(archive, pin)
     require(checked == members, "Prepared archive differs from exact member bytes")
     prefix = launcher_prefix()
-    for old, new in replacements.items():
+    prefix_replacements = {"nonchem-live-report-release-03": "nonchem-live-report-release-" + args.generation,
+                           "nonchem-live-report-03": "nonchem-live-report-" + args.generation,
+                           "mosaic-live-report03-": "mosaic-live-report" + args.generation + "-",
+                           "edition-0002": args.edition}
+    for old, new in prefix_replacements.items():
         prefix = prefix.replace(old, new)
     marker = "assert not root.exists() and not source.parent.exists(), 'Existing/unknown source or report root: never replay'"
     require(prefix.count(marker) == 1 and prefix.count("preflight=root/'preflight'") == 1, "Launch prefix metadata anchors changed")
@@ -348,7 +354,7 @@ def main(argv=None):
         " --generation " + args.generation + " --edition " + args.edition]
     print(json.dumps({"status": preparation["status"], "package": str(package), "manifest_sha256": pin,
                       "commands_not_executed": commands,
-                      "publication_condition": "Actual CPU123pass and reportDONE/LSF/passedarchive evidence, independentbytechecks then HTTP/browserQA"}, indent=2))
+                      "publication_condition": "Actual CPU141pass and reportDONE/LSF/passedarchive evidence, independentbytechecks then HTTP/browserQA"}, indent=2))
 
 
 if __name__ == "__main__":

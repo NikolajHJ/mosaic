@@ -1,0 +1,25 @@
+{
+  "allocated_checks_passed": false,
+  "archive_bytes": 58014,
+  "archive_sha256": "518fef6d982e3ed166e1826ad97c96b385967f5e65dc0423e8190e771a240fde",
+  "cpu_counts": {
+    "tests.test_qualification": 19,
+    "tests.test_report_data": 71,
+    "tests.test_report_ops": 13,
+    "tests.test_viewer": 38
+  },
+  "edition": "edition-0003",
+  "files": 17,
+  "generation": "04",
+  "manifest_bytes": 13198,
+  "manifest_sha256": "856f788c5959c6fe5239374d3141808ec011907f4e092deb78a65f28ef9b196d",
+  "monitor_remains_paused": true,
+  "optimizer_submission": false,
+  "plan_bytes": 17481,
+  "plan_sha256": "5bee088564f06d0336ae27eff1187946a1b30c6d942ba115ef2ee089fd9dbc68",
+  "prepared_utc": "2026-10-25T10:27:19.040804+00:00",
+  "program_bytes": 79651,
+  "program_sha256": "be42300a3dc3290b1d26183dc0c5ab521de9b9cba0f7c7ece8460f087e39ec91",
+  "same_original_saved_inputs": true,
+  "status": "prepared_only_not_submitted"
+}

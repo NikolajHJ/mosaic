@@ -1,0 +1,6 @@
+{
+  "scope": "Mutable shell layout compatibility only; immutable editions unchanged",
+  "before_sha256": "e11a58738c2342e47ed241cd62662458de203235ccffddf381dde1739bdacb11",
+  "after_sha256": "8ea5d994aae48a244e0d486faca92a874dc0f30b22a708efcfe6b5e40480bd1e",
+  "refined_edition_uses_own_responsive_CSS": true
+}

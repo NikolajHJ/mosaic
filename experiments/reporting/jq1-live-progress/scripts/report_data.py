@@ -7,6 +7,7 @@ Presentation completeness and the original scientific verdict remain separate.
 """
 
 import argparse
+from collections import OrderedDict
 from copy import deepcopy
 from datetime import datetime, timezone
 import hashlib
@@ -23,6 +24,9 @@ ATOMS = ("C", "N", "O", "S", "F", "Cl")
 BONDS = ("NONE", "SINGLE", "DOUBLE", "TRIPLE", "AROMATIC")
 MATRIX_STRIDE = 20
 CHUNK_FRAMES = 100
+LAYOUT_VERSION = "raw-bond-layout-v1"
+_LAYOUT_CACHE = OrderedDict()
+_LAYOUT_CACHE_LIMIT = 512
 
 
 def require(condition, message):
@@ -142,6 +146,183 @@ def _scalar_equal(actual, expected, message):
     require(actual.shape == () and actual.dtype.kind == "f" and float(actual) == expected, message + " scalar differs")
 
 
+def layout_raw_graph(nodes, edges):
+    """Return independent display geometry, reusing only exact raw identities."""
+    require(isinstance(nodes, list) and nodes and isinstance(edges, list), "Missing raw graph for display layout")
+    require(all(isinstance(node, dict) and type(node.get("id")) is int for node in nodes), "Raw layout node identities differ")
+    canonical_nodes = sorted(nodes, key=lambda node: node["id"])
+    canonical_edges = sorted(edges, key=lambda edge: json.dumps(edge, sort_keys=True, allow_nan=False))
+    key = json.dumps([canonical_nodes, canonical_edges], sort_keys=True, separators=(",", ":"), allow_nan=False)
+    if key not in _LAYOUT_CACHE:
+        geometry = _layout_raw_graph_uncached(canonical_nodes, canonical_edges)
+        _LAYOUT_CACHE[key] = geometry
+        while len(_LAYOUT_CACHE) > _LAYOUT_CACHE_LIMIT:
+            _LAYOUT_CACHE.popitem(last=False)
+    _LAYOUT_CACHE.move_to_end(key)
+    cached = _LAYOUT_CACHE[key]
+    by_id = {node["id"]: node for node in cached["nodes"]}
+    return {"nodes": [{**deepcopy(node), "x": by_id[node["id"]]["x"], "y": by_id[node["id"]]["y"]}
+                      for node in nodes], "edges": deepcopy(edges), "layout": deepcopy(cached["layout"])}
+
+
+def _layout_raw_graph_uncached(nodes, edges):
+    """Deterministic display geometry, never a molecular pose or validity test.
+
+    Every raw node/edge is preserved. Paths use a zigzag, simple rings use ring
+    geometry, and branched graphs use graph-distance initialization plus bounded
+    spring/repulsion relaxation. Disconnected raw components occupy separate
+    tiles. NumPy is already required for allocated saved-frame validation.
+    """
+    import numpy as np
+
+    require(isinstance(nodes, list) and nodes, "Display layout requires actual raw nodes")
+    identifiers = [node["id"] for node in nodes]
+    require(len(set(identifiers)) == len(identifiers)
+            and all(type(node) is int and node >= 0 for node in identifiers), "Raw layout node identities differ")
+    adjacency = {node: set() for node in identifiers}
+    edge_pairs = set()
+    for edge in edges:
+        first, second = edge["source"], edge["target"]
+        require(first in adjacency and second in adjacency and first != second, "Raw layout edge endpoints differ")
+        pair = tuple(sorted((first, second)))
+        require(pair not in edge_pairs, "Raw layout contains a duplicate edge")
+        edge_pairs.add(pair)
+        adjacency[first].add(second)
+        adjacency[second].add(first)
+    pending = set(identifiers)
+    components = []
+    while pending:
+        queue = [min(pending)]
+        found = {queue[0]}
+        for current in queue:
+            for neighbor in sorted(adjacency[current]):
+                if neighbor not in found:
+                    found.add(neighbor)
+                    queue.append(neighbor)
+        pending.difference_update(found)
+        components.append(sorted(found))
+
+    tiles = []
+    methods = []
+    for component in components:
+        count = len(component)
+        index = {node: number for number, node in enumerate(component)}
+        degrees = [len(adjacency[node]) for node in component]
+        component_edges = [(index[first], index[second]) for first, second in sorted(edge_pairs)
+                           if first in index and second in index]
+        if count == 1:
+            points = np.zeros((1, 2), dtype=np.float64)
+            method = "isolated-node"
+        elif len(component_edges) == count - 1 and max(degrees) <= 2:
+            endpoints = [node for node in component if len(adjacency[node]) == 1]
+            walk = [min(endpoints)]
+            while len(walk) < count:
+                walk.append(next(node for node in sorted(adjacency[walk[-1]]) if node not in walk))
+            points = np.zeros((count, 2), dtype=np.float64)
+            for position, node in enumerate(walk):
+                points[index[node]] = [position * math.sqrt(3) / 2, (position % 2) * 0.5]
+            method = "bond-path-zigzag"
+        elif len(component_edges) == count and min(degrees) == max(degrees) == 2:
+            walk = [min(component)]
+            while len(walk) < count:
+                walk.append(next(node for node in sorted(adjacency[walk[-1]]) if node not in walk))
+            radius = 1 / (2 * math.sin(math.pi / count))
+            points = np.zeros((count, 2), dtype=np.float64)
+            for position, node in enumerate(walk):
+                angle = 2 * math.pi * position / count
+                points[index[node]] = [radius * math.cos(angle), radius * math.sin(angle)]
+            method = "bond-ring"
+        else:
+            distances = np.zeros((count, count), dtype=np.float64)
+            for source in component:
+                queue, hops = [source], {source: 0}
+                for current in queue:
+                    for neighbor in sorted(adjacency[current]):
+                        if neighbor not in hops:
+                            hops[neighbor] = hops[current] + 1
+                            queue.append(neighbor)
+                for target in component:
+                    distances[index[source], index[target]] = hops[target]
+            # Graph distances provide a topology-aware start rather than a circle.
+            center = np.eye(count) - np.ones((count, count)) / count
+            gram = -0.5 * center @ (distances * distances) @ center
+            values, vectors = np.linalg.eigh(gram)
+            points = vectors[:, -2:] * np.sqrt(np.maximum(values[-2:], 0))
+            points = points[:, ::-1]
+            for axis in range(2):
+                pivot = int(np.argmax(np.abs(points[:, axis])))
+                if points[pivot, axis] < 0:
+                    points[:, axis] *= -1
+            # Fixed node-index perturbations resolve collinear/symmetric starts.
+            for number, node in enumerate(component):
+                points[number, 0] += 0.025 * math.sin((node + 1) * 2.399963229728653)
+                points[number, 1] += 0.025 * math.cos((node + 1) * 2.399963229728653)
+            weights = np.zeros_like(distances)
+            np.divide(1, distances * distances, out=weights, where=distances > 0)
+            linked = np.zeros_like(distances)
+            for first, second in component_edges:
+                linked[first, second] = linked[second, first] = 1
+            for iteration in range(100):
+                difference = points[:, None, :] - points[None, :, :]
+                length = np.sqrt(np.sum(difference * difference, axis=-1) + 1e-12)
+                stress = weights * (distances - length) / length
+                springs = 0.45 * linked * (1 - length) / length
+                repulsion = 0.10 / (length * length)
+                np.fill_diagonal(repulsion, 0)
+                forces = np.sum((stress + springs + repulsion)[:, :, None] * difference, axis=1)
+                forces /= np.maximum(weights.sum(axis=1), 1)[:, None]
+                displacement = 0.14 * forces
+                norm = np.sqrt(np.sum(displacement * displacement, axis=1))
+                temperature = 0.18 * (1 - iteration / 100) + 0.012
+                displacement *= np.minimum(1, temperature / np.maximum(norm, 1e-12))[:, None]
+                points += displacement
+                points -= points.mean(axis=0)
+            # Canonical horizontal principal axis makes narrow layouts readable.
+            _, axes = np.linalg.eigh(points.T @ points)
+            points = points @ axes[:, ::-1]
+            for axis in range(2):
+                pivot = int(np.argmax(np.abs(points[:, axis])))
+                if points[pivot, axis] < 0:
+                    points[:, axis] *= -1
+            lengths = [np.linalg.norm(points[first] - points[second]) for first, second in component_edges]
+            scale = float(np.median(lengths))
+            if scale > 1e-12:
+                points /= scale
+            method = "graph-distance-spring-repulsion"
+        require(np.isfinite(points).all(), "Raw display layout produced nonfinite coordinates")
+        low, high = points.min(axis=0), points.max(axis=0)
+        width, height = np.maximum(high - low, 0) + 1.4
+        tiles.append({"nodes": component, "points": points - low + 0.7,
+                      "width": float(width), "height": float(height)})
+        methods.append({"nodes": component, "method": method})
+    # Shelf packing separates disconnected raw components without joining them.
+    order = sorted(range(len(tiles)), key=lambda number: (-len(tiles[number]["nodes"]), tiles[number]["nodes"][0]))
+    target_width = max(max(tile["width"] for tile in tiles),
+                       math.sqrt(sum(tile["width"] * tile["height"] for tile in tiles) * 1.7))
+    x = y = shelf_height = occupied_width = 0.0
+    positions = {}
+    for number in order:
+        tile = tiles[number]
+        if x and x + tile["width"] > target_width:
+            y += shelf_height
+            x, shelf_height = 0.0, 0.0
+        for node, point in zip(tile["nodes"], tile["points"]):
+            positions[node] = [x + float(point[0]), y + float(point[1])]
+        x += tile["width"]
+        occupied_width = max(occupied_width, x)
+        shelf_height = max(shelf_height, tile["height"])
+    occupied_height = y + shelf_height
+    output = [{**deepcopy(node), "x": positions[node["id"]][0] / occupied_width,
+               "y": positions[node["id"]][1] / occupied_height} for node in nodes]
+    require(all(math.isfinite(node[axis]) and 0 <= node[axis] <= 1 for node in output for axis in ("x", "y")),
+            "Raw display layout coordinates left the bounded canvas")
+    return {"nodes": output, "edges": deepcopy(edges), "layout": {
+        "version": LAYOUT_VERSION, "method": "bond-topology-with-separated-components",
+        "coordinate_system": "normalized_0_1", "width": occupied_width, "height": occupied_height,
+        "deterministic": True, "components": methods, "component_count": len(components),
+        "identity_preserved": True, "scope": "Display coordinates only; not a molecular pose, validity judgment, repair or native scoring"}}
+
+
 def validate_frame(path, state, global_step):
     """Validate stored FP32 arrays and derived argmax, without a forward pass."""
     import numpy as np
@@ -193,15 +374,15 @@ def validate_frame(path, state, global_step):
     require(np.array_equal(np.asarray(json.loads(json.dumps(x)), dtype=np.float32), arrays["X"])
             and np.array_equal(np.asarray(json.loads(json.dumps(e)), dtype=np.float32), arrays["E_upper"]),
             "FP32 JSON serialization changed molecule probabilities")
+    graph = layout_raw_graph(
+        [{"id": index, "element": ATOMS[label]} for index, label in enumerate(atom_indices)],
+        [{"source": pair[0], "target": pair[1], "label": BONDS[label]}
+         for pair, label in zip(pairs, bond_indices) if label])
     frame = {
         "global_step": global_step, "atoms": x, "bonds": e, "matrix_dtype": "float32",
         "atom_labels": [ATOMS[index] for index in atom_indices],
         "bond_labels": [BONDS[index] for index in bond_indices],
-        "graph": {
-            "nodes": [{"id": index, "element": ATOMS[label]} for index, label in enumerate(atom_indices)],
-            "edges": [{"source": pair[0], "target": pair[1], "label": BONDS[label]}
-                      for pair, label in zip(pairs, bond_indices) if label],
-        },
+        "graph": graph,
         "readout": deepcopy(readout), "losses": _losses(state),
         "source_snapshot": {"path": str(path), "bytes": Path(path).stat().st_size,
                             "sha256": state["snapshot_sha256"]},

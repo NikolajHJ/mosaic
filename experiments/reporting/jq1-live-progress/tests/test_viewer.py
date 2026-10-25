@@ -65,21 +65,21 @@ def javascript(document):
 @pytest.mark.parametrize('identifier, tag', (
     ('arm-cards', 'nav'), ('arm-select', 'select'), ('global-step', 'input'),
     ('frame-slider', 'input'), ('previous', 'button'), ('next', 'button'),
-    ('play', 'button'), ('latest', 'button'), ('metric-select', 'select'),
+    ('play', 'button'), ('latest', 'button'), ('component-plot', 'svg'),
     ('loss-plot', 'svg'), ('raw-graph', 'svg'), ('atom-heatmap', 'svg'),
     ('bond-heatmap', 'svg'), ('report-error', 'div'),
 ))
 def test_real_template_declares_required_unique_accessible_controls(document, identifier, tag):
     assert document.ids[identifier][0] == tag
     attrs = document.ids[identifier][1]
-    if identifier in ('arm-select', 'frame-slider', 'previous', 'next', 'metric-select',
+    if identifier in ('arm-select', 'frame-slider', 'previous', 'next', 'component-plot',
                       'loss-plot', 'raw-graph', 'atom-heatmap', 'bond-heatmap'):
         assert attrs.get('aria-label')
 
 
 def test_template_has_only_inline_styles_and_scripts_with_no_external_assets(document, source):
     assert source.startswith('<!doctype html>')
-    assert '<html lang="en">' in source and '<meta charset="utf-8">' in source
+    assert '<html lang="en" data-presentation="refined-v1">' in source and '<meta charset="utf-8">' in source
     assert not any(tag in ('iframe', 'object', 'embed') for tag, _ in document.tags)
     for tag, attrs in document.tags:
         if tag in ('script', 'img', 'link'):
@@ -153,7 +153,7 @@ def test_probability_shapes_and_precomputed_hpc_argmax_are_required_without_reca
 def test_every_loss_row_is_plotted_without_index_decimation(javascript):
     assert 'data-points":rows.length' in javascript
     assert 'const path=rows.map(' in javascript
-    assert 'scalarRows.filter(r=>finite(r.losses?.[metric]))' in javascript
+    assert 'scalarRows.filter(r=>finite(r.losses?.[metric.key]))' in javascript
     assert not re.search(r'\b(?:stride|downsample|resample)\s*\(', javascript)
     assert 'r.global_step>scalarRows[i-1].global_step' in javascript
 
@@ -215,7 +215,7 @@ def test_all_raw_scalar_frame_manifest_and_provenance_downloads_exist(document, 
 
 
 def test_scope_and_interpretation_caveats_are_short_and_visible(source):
-    assert 'contact, affinity and the DBMol objective are different metrics' in source
+    assert 'contact, affinity and the dbmol objective are different metrics' in source.lower()
     assert 'does not turn a failed or incomplete gradient check into a scientific pass' in source
     assert 'no new inference, interpolation, molecule repair or rescoring' in source
     assert 'does not establish binding or activity' in source
@@ -239,14 +239,57 @@ def test_progress_bar_is_a_bounded_block_so_span_fill_cannot_overlay_following_p
 
 
 def test_visible_primary_metrics_are_bounded_without_removing_full_scalar_curves_or_records(source, javascript, document):
-    assert 'for(const [name,value]of primaryMetrics(row?.losses||{}))' in javascript
-    primary = javascript[javascript.index('function primaryMetrics('):javascript.index('function pretty(')]
-    assert '.slice(0,8)' in primary
-    assert '!name.startsWith("components.")' in primary and '!name.startsWith("update.")' in primary
-    assert 'function availableMetrics(){const keys=new Set();for(const row of scalarRows)' in javascript
+    assert 'const metric=mainMetric()' in javascript
+    assert 'const values=[["Initial",first?.losses?.[metric.key]],["Selected update",row?.losses?.[metric.key]]]' in javascript
+    assert 'values.push(["Binder probability · separate"' in javascript
     assert 'JSON.stringify(row,null,2)' in javascript and 'const path=rows.map(' in javascript
-    assert 'All saved values remain available in the metric selector, full record and download.' in source
-    label = next(attrs for tag, attrs in document.tags if tag == 'label' and attrs.get('for') == 'metric-select')
-    assert 'metric-picker' in label['class']
-    assert '.top{flex-wrap:wrap}' in source
-    assert '.metric-picker select{width:100%;max-width:100%;min-width:0;' in source
+    assert 'All scalar records' in source
+    assert 'metric-select' not in document.ids
+    assert '.workspace>*{min-width:0}' in source
+
+
+def test_refined_layout_has_two_primary_panels_and_secondary_data_closed(document, source):
+    assert 'data-presentation="refined-v1"' in source
+    assert 'class="workspace"' in source and 'class="loss-panel"' in source
+    assert 'class="molecule-panel"' in source
+    for identifier in ('probability-details', 'provenance-details', 'record-details', 'status-details'):
+        tag, attrs = document.ids[identifier]
+        assert tag == 'details' and 'open' not in attrs
+    assert '.graph{display:block;width:100%;height:352px}' in source
+    assert '.plot{display:block;width:100%;height:280px}' in source
+
+
+def test_primary_objective_is_fixed_to_real_arm_metric_with_no_choice_control(javascript, document):
+    assert 'arm.id==="dbmol"?{key:"dbmol_total_loss"' in javascript
+    assert 'arm.id==="boltz"?{key:"affinity_loss"' in javascript
+    assert '{key:"contact_loss",label:"Pocket contact loss"' in javascript
+    assert 'metric-select' not in javascript
+    assert [attrs['id'] for tag, attrs in document.tags if tag == 'select'] == ['arm-select']
+
+
+def test_dbmol_subordinate_curves_use_actual_weighted_components_and_allow_negative_values(javascript):
+    for name in ('dbmol_weighted_affinity_loss', 'dbmol_weighted_contact_loss', 'dbmol_weighted_confidence_loss'):
+        assert 'key:"' + name + '"' in javascript
+    assert 'candidates.filter(s=>scalarRows.some(r=>finite(r.losses?.[s.key])))' in javascript
+    assert 'low=Math.min(low,r.losses[metric.key])' in javascript
+    assert 'high=Math.max(high,r.losses[metric.key])' in javascript
+    draw = javascript[javascript.index('function drawSeries('):javascript.index('function clearFrame(')]
+    assert 'Math.log(' not in draw and 'Math.log10(' not in draw
+    assert 'Math.max(0,' not in draw
+
+
+def test_optional_chemistry_curve_requires_both_actual_activity_and_saved_values(javascript):
+    assert 'r.losses?.chemistry_enabled===1' in javascript
+    assert 'r.losses.repair_weight>0' in javascript
+    assert '["weighted_repair_loss","repair_loss","chemistry_loss"].find(' in javascript
+    assert 'if(chemistryActive&&chemistryKey)' in javascript
+
+
+def test_bond_aware_geometry_preserves_aspect_and_readout_without_repair(javascript):
+    assert 'layout?.coordinate_system==="normalized_0_1"' in javascript
+    assert 'scale=Math.min(640/layout.width,360/layout.height)' in javascript
+    assert 'left+v.x*layout.width*scale' in javascript and 'top+v.y*layout.height*scale' in javascript
+    assert 'for(const edge of frame.graph.edges)' in javascript
+    assert 'frame.readout||{}' in javascript
+    assert 'readout.canonical_smiles||""' in javascript
+    assert 'readout.sanitized?' in javascript and 'readout.disconnected?' in javascript

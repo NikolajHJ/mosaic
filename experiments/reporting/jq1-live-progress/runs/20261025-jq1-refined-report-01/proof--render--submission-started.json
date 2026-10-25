@@ -1,0 +1,33 @@
+{
+  "status": "unknown",
+  "phase": "render",
+  "manifest_sha256": "856f788c5959c6fe5239374d3141808ec011907f4e092deb78a65f28ef9b196d",
+  "argv": [
+    "bsub",
+    "-q",
+    "hpc",
+    "-n",
+    "4",
+    "-R",
+    "span[hosts=1]",
+    "-R",
+    "rusage[mem=4GB]",
+    "-W",
+    "01:00",
+    "-J",
+    "mosaic-live-report04-render",
+    "-oo",
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-04/render/stdout.%J.log",
+    "-eo",
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-04/render/stderr.%J.log",
+    "bash",
+    "-l",
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-release-04/source/scripts/report_stage.lsf",
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-release-04/source",
+    "856f788c5959c6fe5239374d3141808ec011907f4e092deb78a65f28ef9b196d",
+    "render"
+  ],
+  "dependency": null,
+  "submitted_utc": "2026-10-25T10:29:55.981675+00:00",
+  "cpu_certificate_sha256": "b6f945a775534df8d0e0adcaca156a989c31bf4174ca72799d17ae673a39af4c"
+}

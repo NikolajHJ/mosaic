@@ -1,0 +1,48 @@
+{
+  "status": "passed",
+  "manifest_sha256": "856f788c5959c6fe5239374d3141808ec011907f4e092deb78a65f28ef9b196d",
+  "cpu_job_id": "29813776",
+  "cpu_counts": {
+    "tests.test_qualification": 19,
+    "tests.test_report_data": 71,
+    "tests.test_report_ops": 13,
+    "tests.test_viewer": 38
+  },
+  "proofs": [
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-04/after-cpu/terminal-query-000.json",
+      "bytes": 3605,
+      "sha256": "4618d4d09ed62f5e251e99cf9bd70219885e12a22df1a51d4f64e8d2e6083041"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-04/cpu/stdout.29813776.log",
+      "bytes": 1959,
+      "sha256": "3052fc6ae67c647ead15aaa3fab5050cc6c0ab54c2566974368cf06231e78029"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-04/cpu/submission.json",
+      "bytes": 1127,
+      "sha256": "c5b28b395309cd1d6cbe5f2e6f85c5856720bd2dbb8851e5daa687013f45e8b8"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-04/cpu/assessment.json",
+      "bytes": 413,
+      "sha256": "924b44250000317bd4d9e593836b828671914125495fdd372f318b399a5ab156"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-04/cpu/tests.xml",
+      "bytes": 18977,
+      "sha256": "634d46d98f6f4fd1629dca347226caab9831fb2bd11af81d5a4cf1f3a4a8266b"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-04/cpu/tests.log",
+      "bytes": 180,
+      "sha256": "200f51ede00472581f907fff967fa834e5b57dc2f396f11c3e5b16537eee84cb"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-04/cpu/command.json",
+      "bytes": 1160,
+      "sha256": "cfbaa14d2a0bd6d3f817429fff250b82946f60026e890706bc06c00d58087a72"
+    }
+  ]
+}

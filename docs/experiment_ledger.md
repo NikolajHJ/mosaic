@@ -7258,3 +7258,47 @@ delayed-chem production arms remain deferred behind separate full-model pilots.
 Repository-wide layout check still fails pre-existing defaultdiscovery and old
 missing-README paths; no new-owner README/AST error reported. Unrelated PDF/
 OneNote and other dirty project work were excluded from this change.
+
+
+## 25 October 2026 — Refine the saved JQ1 report presentation
+
+User-authorized redesign: fewer explicit objective loss curves, larger bond-aware
+raw molecule view, compact navigation and folded matrices/provenance. Preparing
+new immutable report generation04/edition0003 against exactly the prior saved
+inputs. Original scientific settings/results/failures and historical editions
+remain unchanged. Monitor stays paused; no optimizer/model/cleanup jobs. New
+display coordinates and fixtures/rendering will execute only on allocatedHPC.
+Local work so far is static/byte preparation, not an allocated pass.
+
+Generation04 staged17files read-only; manifest856f788c5959c6fe5239374d3141808ec011907f4e092deb78a65f28ef9b196d,
+archive58,014bytes SHA518fef6d982e3ed166e1826ad97c96b385967f5e65dc0423e8190e771a240fde.
+ActualCPU29813776 and own-endedcallback29813777 submitted25October10:28:10UTC;
+first observation CPU RUN/callback PEND.141 declared cases require actual raw
+JUnit/module/LSF/scheduler authentication. Full original storage guard passed
+preflight; no model/optimizer work. Layout verifier still reports pre-existing
+default-discovery and historical missing-README errors, no new-owner errors.
+
+Allocated CPU29813776 actualDONE/hpc/LSFsuccess; all141 rawcases passed
+(71data+38viewer+13ops+19diagnostic-policy toys), no failures/errors/skips.
+Independent localstdlib XML/LSF/count audit passed. No native endpoint pass
+is implied by the19toy cases. Callback29813777 running, render notyetverified.
+
+Refined renderer29813792 and callback29813777 actualDONE/hpc/LSFsuccess.
+CPU141 rawcases independently passed. Full unchanged storage gate passed with
+required35,522,705,396/available37,946,191,594bytes at render entry, unchanged
+4GiB/100,000-file reserves. New archive28,362,248bytes SHA
+a6ebfc23f9febe46283d19e6832586ba025f478a40bbd161ae72b7938569ce5e; all26files
+safely extracted/hashed. Four scalarassets byte-identical to edition0002;
+all1,304frameJSONs exactly type-sensitive equal after removing only display
+coordinates/layout. Original failed/failed/failed/passed scientific statuses
+and all probability/scalar/readout bytes preserved. No native qualification.
+
+Published edition0003 at http://127.0.0.1:8780/report.html; all83servedfiles
+HTTP-byte verified. BrowserQA passed all4cards, main loss semantics, DBMol
+weighted3component curves, no metricmenu, bond-aware rawgraph, actualdrag17360,
+numeric/missing15001/saved15000, arrows,play/manualpause320,DBboundary2500,
+latest,matrices and folded details. Stable shell conditional legacyCSS keeps
+all immutable old editions exact. Future refresh helper pinned to refined04/141
+fixtures is static-only, uninvoked; monitor stays paused and no optimizer jobs
+or saved results changed. Exact proof/QA/publication hashes are in the new dated
+run campaign; full original native NPZs/large summaries remain HPC references.

@@ -1,0 +1,14 @@
+{
+  "status": "passed_independent_actual_CPU_XML_LSF",
+  "job": "29813776",
+  "raw_cases": 141,
+  "cpu_counts": {
+    "tests.test_qualification": 19,
+    "tests.test_report_data": 71,
+    "tests.test_report_ops": 13,
+    "tests.test_viewer": 38
+  },
+  "xml_sha256": "634d46d98f6f4fd1629dca347226caab9831fb2bd11af81d5a4cf1f3a4a8266b",
+  "no_failures_errors_skips": true,
+  "original_saved_results_changed": false
+}

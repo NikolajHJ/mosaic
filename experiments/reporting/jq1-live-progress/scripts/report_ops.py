@@ -17,8 +17,8 @@ import xml.etree.ElementTree as ET
 
 VERSION = 'jq1-live-report-source-v1'
 BASE = Path('/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01')
-ROOT = BASE/'nonchem-live-report-03'
-SOURCE = BASE/'nonchem-live-report-release-03/source'
+ROOT = BASE/'nonchem-live-report-04'
+SOURCE = BASE/'nonchem-live-report-release-04/source'
 ADMISSION = BASE/'nonchem-stride20-startup-release-03/source'
 ADMISSION_SHA = '704fab033d97342a14dc12b58dc32df44874232c5c30aad47c4d02041a502aab'
 PYTHON = '/work3/s234818/mosaic/envs/protenix-tiny/bin/python'
@@ -138,7 +138,7 @@ def argv(phase,pin,dependency=None):
     parent=ROOT/phase
     args=['bsub','-q','hpc','-n','1' if phase=='after-cpu' else '4',
           '-R','span[hosts=1]','-R','rusage[mem=4GB]','-W','00:20' if phase=='after-cpu' else '01:00',
-          '-J','mosaic-live-report03-'+phase,'-oo',str(parent/'stdout.%J.log'),'-eo',str(parent/'stderr.%J.log')]
+          '-J','mosaic-live-report04-'+phase,'-oo',str(parent/'stdout.%J.log'),'-eo',str(parent/'stderr.%J.log')]
     if dependency is not None:
         require(phase=='after-cpu' and re.fullmatch(r'ended\([1-9]\d*\)',dependency),'Wrong own-ended dependency')
         args+=['-w',dependency]
@@ -184,7 +184,7 @@ def success_lsf(parent,job,phase):
         time.sleep(1)
     raw=path.read_text();text=''.join(raw.split())
     require(text.count('Subject:Job')==1 and 'Subject:Job'+job+':' in text
-            and '<mosaic-live-report03-'+phase+'>incluster<dcc>Done' in text
+            and '<mosaic-live-report04-'+phase+'>incluster<dcc>Done' in text
             and 'inqueue<hpc>' in text and text.count('Successfullycompleted.')==1,
             'Actual same-job/name/hpc LSF success missing')
     return binding(path)
@@ -263,16 +263,16 @@ def execute(pin,phase):
                  'files':{path.relative_to(output).as_posix():{'bytes':path.stat().st_size,'sha256':sha(path)} for path in sorted(output.rglob('*')) if path.is_file()},
                  'original_results_changed':False,'scientific_success_claim':False}
         write(output/'report-receipt.json',receipt)
-        archive=ROOT/'edition-0002.tar.gz'
+        archive=ROOT/'edition-0003.tar.gz'
         with tarfile.open(archive,'x:gz') as target:
             for path in sorted(output.rglob('*')):
                 if path.is_file():target.add(path,arcname=path.relative_to(output).as_posix(),recursive=False)
         require(own_bytes()<CAP,'New report cap exceeded')
-        write(ROOT/'edition-0002-archive.json',{'status':'passed_saved_only_presentation','job_id':sub['job_id'],
+        write(ROOT/'edition-0003-archive.json',{'status':'passed_saved_only_presentation','job_id':sub['job_id'],
               'manifest_sha256':pin,'archive':binding(archive),'receipt_sha256':sha(output/'report-receipt.json'),
               'cpu_certificate_sha256':sha(ROOT/'cpu-certificate.json'),'scientific_success_claim':False})
         write(parent/'assessment.json',{'status':'passed_saved_only_presentation','job_id':sub['job_id'],
-              'manifest_sha256':pin,'archive_receipt_sha256':sha(ROOT/'edition-0002-archive.json')})
+              'manifest_sha256':pin,'archive_receipt_sha256':sha(ROOT/'edition-0003-archive.json')})
 
 
 if __name__=='__main__':

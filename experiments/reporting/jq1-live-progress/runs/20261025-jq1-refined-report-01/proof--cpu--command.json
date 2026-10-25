@@ -1,0 +1,23 @@
+{
+  "argv": [
+    "/work3/s234818/mosaic/envs/protenix-tiny/bin/python",
+    "-m",
+    "pytest",
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-release-04/source/tests/test_qualification.py",
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-release-04/source/tests/test_report_data.py",
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-release-04/source/tests/test_report_ops.py",
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-release-04/source/tests/test_viewer.py",
+    "--rootdir",
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-release-04/source",
+    "--import-mode=importlib",
+    "-o",
+    "addopts=",
+    "-o",
+    "cache_dir=/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-04/cpu/cache",
+    "--basetemp",
+    "/tmp/mosaic-boltz.29813776.Qx1FLB/report-tests",
+    "--junitxml",
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-04/cpu/tests.xml",
+    "-q"
+  ]
+}

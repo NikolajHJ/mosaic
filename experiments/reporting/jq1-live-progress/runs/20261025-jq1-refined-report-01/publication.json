@@ -1,0 +1,9 @@
+{
+  "version": "jq1-live-publication-v1",
+  "edition": "edition-0003",
+  "report_url": "editions/edition-0003/report.html",
+  "manifest_sha256": "375ab613d41bee188367000be3aa2aa04f180cdb939d4f2ad31e83ae5f6bd292",
+  "delivery_verification_sha256": "fe1027f0aa198eceb461a995369996c83e1eba274cf65f3c34d1443bf0566d0b",
+  "published_utc": "2026-10-25T10:32:31.556736+00:00",
+  "automatic_optimizer_submission": false
+}

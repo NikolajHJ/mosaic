@@ -1,0 +1,22 @@
+{
+  "status": "returned",
+  "program_sha256": "be42300a3dc3290b1d26183dc0c5ab521de9b9cba0f7c7ece8460f087e39ec91",
+  "manifest_sha256": "856f788c5959c6fe5239374d3141808ec011907f4e092deb78a65f28ef9b196d",
+  "generation": "04",
+  "edition": "edition-0003",
+  "argv": [
+    "ssh",
+    "-T",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=15",
+    "-o",
+    "ConnectionAttempts=1",
+    "dtu-hpc",
+    "bash -l -c '/work3/s234818/mosaic/envs/protenix-tiny/bin/python -'"
+  ],
+  "optimizer_submission": false,
+  "returncode": 0,
+  "captured_utc": "2026-10-25T10:28:10.862753+00:00"
+}

@@ -415,3 +415,104 @@ def test_render_produces_four_saved_only_arms_and_failed_verdict_separately(tmp_
     assert len(manifest["arms"]) == 4 and all(row["scientific_status"] == "failed" for row in manifest["arms"])
     assert assessment["status"] == "passed_saved_only_render" and not assessment["scientific_success_claim"]
     assert assessment["all_scalar_records_retained"] and not assessment["native_inference_executed"]
+
+
+def layout_nodes():
+    return [{"id": index, "element": "C" if index % 3 else "Cl", "original_marker": index}
+            for index in range(25)]
+
+
+def layout_edges(kind):
+    if kind == "path":
+        pairs = [(index, index + 1) for index in range(24)]
+    elif kind == "invalid_star":
+        pairs = [(0, index) for index in range(1, 25)]
+    elif kind == "disconnected":
+        pairs = [(index, index + 1) for index in range(5)] + [(5, 0)]
+        pairs += [(index, index + 1) for index in range(6, 11)]
+    elif kind == "dense_invalid":
+        pairs = [(first, second) for first in range(25) for second in range(first + 1, 25)]
+    else:
+        pairs = []
+    return [{"source": first, "target": second,
+             "label": data.BONDS[1 + number % 4]} for number, (first, second) in enumerate(pairs)]
+
+
+@pytest.mark.parametrize("kind", ["path", "invalid_star", "disconnected", "dense_invalid", "isolated"])
+def test_bond_layout_preserves_all_25_raw_atoms_and_every_original_edge(kind):
+    nodes, edges = layout_nodes(), layout_edges(kind)
+    original_nodes, original_edges = deepcopy(nodes), deepcopy(edges)
+    graph = data.layout_raw_graph(nodes, edges)
+    assert [{key: value for key, value in node.items() if key not in ("x", "y")}
+            for node in graph["nodes"]] == original_nodes
+    assert graph["edges"] == original_edges and nodes == original_nodes and edges == original_edges
+    assert len(graph["nodes"]) == 25 and graph["layout"]["identity_preserved"]
+    assert graph["layout"]["coordinate_system"] == "normalized_0_1"
+    assert all(np.isfinite(node[axis]) and 0 <= node[axis] <= 1
+               for node in graph["nodes"] for axis in ("x", "y"))
+    assert graph["layout"]["width"] > 0 and graph["layout"]["height"] > 0
+
+
+def test_raw_bond_layout_is_deterministic_and_independent_of_input_order():
+    nodes, edges = layout_nodes(), layout_edges("invalid_star")
+    first = data.layout_raw_graph(nodes, edges)
+    again = data.layout_raw_graph(nodes, edges)
+    reversed_graph = data.layout_raw_graph(list(reversed(nodes)), list(reversed(edges)))
+    assert first == again
+    assert {node["id"]: (node["x"], node["y"]) for node in first["nodes"]} == {
+        node["id"]: (node["x"], node["y"]) for node in reversed_graph["nodes"]}
+    assert reversed_graph["edges"] == list(reversed(edges))
+
+
+def test_raw_chain_layout_is_a_bond_zigzag_instead_of_a_circle():
+    graph = data.layout_raw_graph(layout_nodes(), layout_edges("path"))
+    assert graph["layout"]["components"] == [{"nodes": list(range(25)), "method": "bond-path-zigzag"}]
+    assert len({node["y"] for node in graph["nodes"]}) == 2
+    assert all(first["x"] < second["x"] for first, second in zip(graph["nodes"], graph["nodes"][1:]))
+
+
+def test_disconnected_layout_separates_components_without_adding_connecting_bonds():
+    nodes = layout_nodes()
+    edges = [{"source": index, "target": index + 1, "label": "SINGLE"}
+             for index in list(range(11)) + list(range(12, 24))]
+    graph = data.layout_raw_graph(nodes, edges)
+    assert graph["layout"]["component_count"] == 2 and graph["edges"] == edges
+    components = graph["layout"]["components"]
+    boxes = []
+    for component in components:
+        selected = [node for node in graph["nodes"] if node["id"] in component["nodes"]]
+        boxes.append((min(node["x"] for node in selected), max(node["x"] for node in selected),
+                      min(node["y"] for node in selected), max(node["y"] for node in selected)))
+    first, second = boxes
+    assert first[1] < second[0] or second[1] < first[0] or first[3] < second[2] or second[3] < first[2]
+
+
+def test_simple_ring_is_laid_out_by_its_actual_cycle_then_isolated_nodes_are_preserved():
+    edges = [{"source": index, "target": (index + 1) % 6, "label": "AROMATIC"} for index in range(6)]
+    graph = data.layout_raw_graph(layout_nodes(), edges)
+    assert graph["layout"]["component_count"] == 20
+    assert graph["layout"]["components"][0] == {"nodes": list(range(6)), "method": "bond-ring"}
+    assert graph["edges"] == edges and len(graph["nodes"]) == 25
+
+
+@pytest.mark.parametrize("edges", [[{"source": 0, "target": 0, "label": "SINGLE"}],
+                                   [{"source": 0, "target": 25, "label": "SINGLE"}],
+                                   [{"source": 0, "target": 1, "label": "SINGLE"},
+                                    {"source": 1, "target": 0, "label": "DOUBLE"}]])
+def test_display_layout_rejects_malformed_edges_without_silently_repairing_them(edges):
+    with pytest.raises(ValueError):
+        data.layout_raw_graph(layout_nodes(), edges)
+
+
+def test_display_geometry_cache_is_bounded_and_never_returns_mutable_aliases(monkeypatch):
+    monkeypatch.setattr(data, "_LAYOUT_CACHE", data.OrderedDict())
+    original = data.layout_raw_graph(layout_nodes(), layout_edges("path"))
+    changed = data.layout_raw_graph(layout_nodes(), layout_edges("path"))
+    changed["nodes"][0]["x"] = -99
+    changed["layout"]["components"][0]["nodes"].clear()
+    assert data.layout_raw_graph(layout_nodes(), layout_edges("path")) == original
+    for index in range(data._LAYOUT_CACHE_LIMIT + 1):
+        nodes = layout_nodes()
+        nodes[0]["original_marker"] = index + 10000
+        data.layout_raw_graph(nodes, [])
+    assert len(data._LAYOUT_CACHE) == data._LAYOUT_CACHE_LIMIT
