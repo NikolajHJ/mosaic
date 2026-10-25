@@ -1,0 +1,22 @@
+{
+  "allocated_CPU_pass": false,
+  "archive_bytes": 71886,
+  "archive_sha256": "1aa71284f10199a8e0f0034b4b7dc694df9bcc9871633aa0d9c774ed2417dcac",
+  "cpu_cases": 284,
+  "cpu_counts": {
+    "tests.test_full_model_ops": 51,
+    "tests.test_full_model_pilot": 67,
+    "tests.test_gpu_local_bridge": 23,
+    "tests.test_gpu_matrix": 20,
+    "tests.test_hybrid": 26,
+    "tests.test_oracle_profile": 18,
+    "tests.test_speed": 79
+  },
+  "files": 26,
+  "full_model_pass": false,
+  "jobs_submitted": false,
+  "manifest_sha256": "3fb344f7318e962a892022de41441499b222f4599ee6606c3ea1d2cc48888d2d",
+  "status": "unsubmitted_local_draft_preserved",
+  "reason": "Final synthetic fixture receipt normalization corrected before staging; no numerical policy change or HPC execution",
+  "replacement": "source02"
+}

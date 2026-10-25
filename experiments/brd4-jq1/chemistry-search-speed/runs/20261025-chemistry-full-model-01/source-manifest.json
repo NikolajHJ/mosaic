@@ -1,0 +1,133 @@
+{
+  "cpu_counts": {
+    "tests.test_full_model_ops": 51,
+    "tests.test_full_model_pilot": 67,
+    "tests.test_gpu_local_bridge": 23,
+    "tests.test_gpu_matrix": 20,
+    "tests.test_hybrid": 26,
+    "tests.test_oracle_profile": 18,
+    "tests.test_speed": 79
+  },
+  "files": {
+    "README.md": "5620f145faa5daf1a12473063b0f4fc4c73f54b9297a1ca3861ec1e9d7a16fa1",
+    "plans/README.md": "7a8d5808d411d9c6523335424d27e707b3528e5af87f3d4d9de4b2ada3a76555",
+    "plans/boltz.json": "2c93bbf9aaa58c13c883284796b846332b191d46f3022c248c99a566d107367f",
+    "plans/protenix.json": "ab36531225cb64451b8ea3b073d7b5e7fa58cbba11b25b85939d820c6d90a925",
+    "protocol.md": "f6e9e8a90864621217c547c7040abadd27372ba4086bd6a7b1a5cf9f43ed550f",
+    "scripts/README.md": "26a9c62fd2296bff2f6c3074f8c027114dd88f615189d96b4448ed5857741578",
+    "scripts/exact_reuse.py": "b9ecf079d9697fb9efc650f0bbd944b726c2df0d2fcd3b908d9e221f2d565d88",
+    "scripts/full_model_contract.py": "d6cc337345c1e88a8f83ab668f33cbecd5a0baacaa7c30b56d72c65628fe4b08",
+    "scripts/full_model_ops.py": "309861690cda6d39d5615290c0ba6120cdc68b92238d20bc9fe2d46e76d720c2",
+    "scripts/full_model_pilot.py": "f55d9e93e4a637abe4fb8ccb873a9156a331375988d5756594a093b7c64ab708",
+    "scripts/full_model_stage.lsf": "d61e42a0e5748ea90fe3dc43752816dd5a79fdec97f7b6e62b1ea931ece5dafd",
+    "scripts/gpu_local_bridge.py": "18260a973c9b9347772f16e5ff3e28577edb4b60f8b37634cb8f4070a3905a76",
+    "scripts/gpu_local_worker.py": "0121d8a375e8297ae85ba4ee0e4d54a81700cfa9823e5d1b1c96e2f44d7aa2b4",
+    "scripts/gpu_matrix.py": "772e3ea5a691b4aaf8432040ee0066e429e4f6ddd092ed17a2efb917647f3ef3",
+    "scripts/hybrid_search.py": "4bed62f1f3be9aaa96ead9ef79e00840762fd28dd0b9430f6b4b08e5ab60eda8",
+    "scripts/parallel_search.py": "137d5bb6cab95ad3263090eb9b017efa1a78ed42543afe713c7fa654d3628170",
+    "scripts/profile_oracle.py": "7cb0989fda0713b78598eff489b35b5b39cc1a2d6f608eff215cec590dd126c1",
+    "scripts/round2_data.py": "7d6ca6168b77fa96f30d3696ed57c24805cde9669f2083793f1458ab0d23ab31",
+    "tests/README.md": "712935f15276687cdaf4a9227b10b2dc098c83897f5dbd07e1ccd26d71a57f4c",
+    "tests/test_full_model_ops.py": "3606e97e3525a2e3d44dcdb35e40635c26a231d64e04bedaf65e719219c81b44",
+    "tests/test_full_model_pilot.py": "4d56eaf5fe487c9d9b60d0a9aa22e28ea5486a1555ebb773b0bafd1962e70fe6",
+    "tests/test_gpu_local_bridge.py": "6b95570384190f402e0f5d8c4701842c37e269efa1b3b6e3d906c004b8dccade",
+    "tests/test_gpu_matrix.py": "29f8b5559a0f984f762ac246a229603210f1daff843d6de9ffec5a8e23240ee9",
+    "tests/test_hybrid.py": "5f773ef128c8c9290ce77d02346919809c8dceb6d4f562f212646282eb94ed1a",
+    "tests/test_oracle_profile.py": "a4e0f288096d729f39389083b582c225e20202ab7bd6a4bec6fe56c121fea565",
+    "tests/test_speed.py": "64b3272de7e4291b648b36985ff478a9cfc542030ac3cef3c37e66996ab2b0f9"
+  },
+  "monitor_remains_paused": true,
+  "parent_sources": [
+    {
+      "files": 643,
+      "manifest_sha256": "da9db6821d26b884ca1749303fc8e0b0095bd9ee7cbd1b427cdcf1b22eec6562",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source"
+    },
+    {
+      "files": 635,
+      "manifest_sha256": "c214bccf2c94ac6829996bc0ca7d6415d3c19549be4fe7f874cba2b433901cc6",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-release-03/source"
+    },
+    {
+      "files": 19,
+      "manifest_sha256": "09c0ab837bede0c5779eac0da06885cfbef6a98744f67af19e7b5a8b33ffa222",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-search-speed-release-02/source"
+    },
+    {
+      "files": 12,
+      "manifest_sha256": "704fab033d97342a14dc12b58dc32df44874232c5c30aad47c4d02041a502aab",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-startup-release-03/source"
+    }
+  ],
+  "persistent_cap_bytes": 2147483648,
+  "preserved_proofs": [
+    {
+      "bytes": 1371,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/random-native-0000/payload/driver-invocation.json",
+      "sha256": "26dc929a5439fbc13a5f72bff031e3557f0f131b2edcc2a82ccf75f52bacbad7"
+    },
+    {
+      "bytes": 1702,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/boltz2_chemistry-native-0000/payload/driver-invocation.json",
+      "sha256": "edb8f36cd57142a5aafc5cc1d0c94bac5cb4f1f871fcaec53669134015b350a1"
+    },
+    {
+      "bytes": 8548,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-search-speed-02/cpu/payload/assessment.json",
+      "sha256": "51fccda60b2178d39fb9ae90067d1ea9062c05d0560ec494dae41272ea33ec34"
+    },
+    {
+      "bytes": 19057,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-search-speed-02/cpu/payload/tests.xml",
+      "sha256": "dcc176b0a4a74aeedb78a61454bacf6d2d2b1cfc6d8024d2e726f23f99c10791"
+    },
+    {
+      "bytes": 61178,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-search-speed-02/cpu/payload/benchmark/assessment.json",
+      "sha256": "68b2ef335a15958fc1f2bebaa0411408e2a12eb055637398c7bcde3f26e6b4bf"
+    },
+    {
+      "bytes": 1973,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-search-speed-02/cpu/stdout.29809477.log",
+      "sha256": "e95e148296b17e523441525eeb507b5a7d37f622b5a1a036c85b5b243c805398"
+    },
+    {
+      "bytes": 8458,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-search-speed-02/gpu/payload/assessment.json",
+      "sha256": "45d384bb0db8d8b407d2e79029027588ed7908f2db84d13aa067de6d64114023"
+    },
+    {
+      "bytes": 2528,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-search-speed-02/gpu/payload/tests.xml",
+      "sha256": "9bfe530b6463b7cb0a29b0d1899d7b0dce807bf911c2fcad819e674a9ad1d56b"
+    },
+    {
+      "bytes": 50227,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-search-speed-02/gpu/payload/benchmark/assessment.json",
+      "sha256": "79e5daba5d1201dc3a9c112e843ba851f875a59b6323bbf65004213db535d0c9"
+    },
+    {
+      "bytes": 1981,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-search-speed-02/gpu/stdout.29809554.log",
+      "sha256": "293d80940d3260baf11d1a6d40bd3be83639357d5172cc4858bc9f29f2f66a10"
+    },
+    {
+      "bytes": 5322,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-search-speed-02/plan.json",
+      "sha256": "672dfbb1380c26212cca7ccb1033cf329b8f426a76d0d60ad1335f2f9885e334"
+    },
+    {
+      "bytes": 15031,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-search-speed-02/initial-submissions.json",
+      "sha256": "45d882d690b8883b13c79f5ed07f438592cd08343ebdab0b5a06637e3f53dd7a"
+    },
+    {
+      "bytes": 21266,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/assessment.json",
+      "sha256": "9674aacd7c8601f755fcad31df6efb9877dc39cd5114d9b1fe3ee867c1dc55dd"
+    }
+  ],
+  "scientific_production_changed": false,
+  "version": "chemistry-full-model-source-v1",
+  "worker_count": 4
+}

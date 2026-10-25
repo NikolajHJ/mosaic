@@ -7153,3 +7153,25 @@ Matrix FP32 association is tolerance-equivalent, not bitwise identity. These
 are GPU-versus-GPU component timings;1.34ms saved is small beside~280ms cached
 CPU preparation and native model work. RDKit/search remains CPU. No production
 adoption, new jobs, settings/saved-results changes or monitor resumption.
+
+
+## 2026-10-25: separate matched full-model chemistry acceleration pilots
+
+The user authorized combining native-fact caching, refreshed probability-cost reuse,
+ordered persistent four-worker search and GPU matrix local-risk arithmetic, with
+full-model Protenix/Boltz native gradients and update timing checks. Preparation
+retains exact original random50k Protenix and chemistry30k Boltz configurations,
+original validation drivers and every scientific/runtime/quota gate. Baseline
+runtime failure is preserved if encountered; candidate science/runtime must pass.
+No existing saved result/job, monitor or DBMol VAE setting is changed. Allocated
+CPU contracts and two independent full-model GPU pilots are being prepared; no
+new full-model pass, job or integrated speedup is claimed at this point. Protocol:
+experiments/brd4-jq1/chemistry-search-speed/runs/20261025-chemistry-full-model-01.
+
+Actual25October10:18Paris/CET: new26-file immutable capsule
+347e753d481ec3d584f3b0b05cc2801ee745036ee17638d7c3672fc2ca2cba16,
+archive71952bytes/4f5ec7f81f39a67667fa254321e47795d215c26ee537cac5ed280bade320366a.
+Whole original storage plus2GiB passed33643657204/40125878917bytes, retaining
+4GiB/100000-file reserves. CPU29811875 actuallyRUN/afterCPU29811876PEND;
+284planned raw cases, no CPU/full-model pass or new GPU job yet. Existing runs,
+DBMol VAE and paused monitor unchanged. Unsubmitted local draft archive preserved.

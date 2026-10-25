@@ -1,0 +1,20 @@
+{
+  "allocated_CPU_pass": false,
+  "archive_bytes": 71952,
+  "archive_sha256": "4f5ec7f81f39a67667fa254321e47795d215c26ee537cac5ed280bade320366a",
+  "cpu_cases": 284,
+  "cpu_counts": {
+    "tests.test_full_model_ops": 51,
+    "tests.test_full_model_pilot": 67,
+    "tests.test_gpu_local_bridge": 23,
+    "tests.test_gpu_matrix": 20,
+    "tests.test_hybrid": 26,
+    "tests.test_oracle_profile": 18,
+    "tests.test_speed": 79
+  },
+  "files": 26,
+  "full_model_pass": false,
+  "jobs_submitted": false,
+  "manifest_sha256": "347e753d481ec3d584f3b0b05cc2801ee745036ee17638d7c3672fc2ca2cba16",
+  "status": "local_static_AST_byte_schema_only"
+}

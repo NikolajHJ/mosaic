@@ -58,3 +58,11 @@ show matrix local-risk value/gradient execution 6.16 times faster at batch 1,
 3.77 times at batch 32, and 24 percent slower at batch 256. Scan warm execution
 was slower throughout. These are GPU component gains; CPU RDKit search remains
 separate and no production run has adopted the candidates.
+
+The next explicitly authorized [full-model study](runs/20261025-chemistry-full-model-01/README.md)
+combines all four candidates in matched original/combined Protenix and Boltz
+validation pilots. Original model/optimizer backends, settings and gates stay
+unchanged. Four persistent CPU workers handle independent native chemistry
+checks; only differentiable local-risk arithmetic is converted to GPU matrices.
+Integrated gradient correctness and actual update speed remain unproven until
+those allocated pilots pass. Existing production studies remain untouched.

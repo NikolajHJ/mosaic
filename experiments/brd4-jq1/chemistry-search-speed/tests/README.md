@@ -11,3 +11,9 @@ authenticated from raw allocated XML, never inferred from this README.
 for the distinct admission03 capsule. They check raw terminal-proof handling,
 not chemistry or GPU arithmetic, and do not replace the original 143 cases or
 the 19 actual-GPU-only cases.
+
+Full-model fixtures separately cover exact original configuration/provenance,
+real generated-command parser dispatch before model setup, adapter restoration,
+finite fixed-step bookkeeping and the CPU-to-GPU VJP transport with a declared
+fake client. Fake-client fixtures do not establish GPU or native-model parity;
+the subsequent full-model allocated pilots must supply that evidence.
