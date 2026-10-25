@@ -1,5 +1,7 @@
 # Protenix endpoint forensic diagnostics, 25 October 2026
 
+**Current verified outcome,25October2026:** diagnostic29813996 completed successfully; all108graphs/110raw evaluations and21protected inputs independently authenticated. Allocated scalar-summary29815099 alsoDONE/LSFsuccess with4controls. No contact-partner switching observed. Small native differences depend on FP32execution paths; larger atom probes show nonlinearity. The checker needs prospective numerical validation; no new admission/continuation. Original20k checkpoint/settings/results unchanged. See [findings](findings.md).
+
 Question: why does the exact saved absolute20k Protenix endpoint still fail
 prospective admission, and what evidence would allow an unchanged20k→50k
 continuation? This is diagnostic-only. No optimizer update, saved-result edit,
@@ -88,3 +90,13 @@ Actual CPU29813983 DONE/hpc/LSFsuccess, all122 raw cases passed24+39+59, no fail
 Actual diagnosticGPU29813996 submitted12:18:24UTC after CPU/callbackDONE and full fresh dispatch storage passed36,344,788,980required/37,711,069,987available bytes. At12:20UTC GPU wasPEND on physicalGPU availability,4slots reserved; no model/native result yet. Independent22-file byte/XML/schema/LSF audit passed, including actual newresource/submissionvector. This is a diagnostic allocation, not an optimization start. Monitor stays paused; prior saved studies/settings and separate continuations are unchanged.
 
 Final read-only checkpoint12:21:38UTC: diagnostic29813996 stillPEND waiting for physicalGPU; CPU/callbackDONE. No diagnostic finding/native pass or50k continuation established. Existing exact scalar/probe records support the measurement hypotheses above, not a confirmed root cause.
+
+Terminal evidence collected25October15:24UTC confirms GPU29813996 completed successfully13:27:30–13:34:23DTU-local, actual same-job LSFsuccess/413s. Live scheduler records aged out; no bjobsDONE record is invented. Native assessment completed all108graphs/110evaluations/9directions/54probes. Independent local139-file archive/ZIP/NPY-header/payload-byte/LSF/schema audit passed15:28UTC; all21 protected input bindings and frozen identities unchanged. Original20k endpoint and failed admission remain failed, zero updates/settings changes.
+
+Read-only scalar-summary addendum prepared for allocatedCPU only, with4 hand-calculable controls and exact report/admission pins. It tabulates existing scalars/branch labels and makes no model calls or acceptance decision. Fresh full storage plus existing funded metadata cap retained; original sealed13-file release unchanged.
+
+See [measured findings](findings.md) and [independent native delivery audit](native-verification.json). Contact winner switching is absent in all tested points. Different FP32 native forward paths produce materially different tiny differences; float64 final reductions alone do not remove this. The extra atom contrast also exhibits strong finite-radius nonlinearity. These observations identify needed checker validation work, not a new admission pass.
+
+Actual scalar-only analysis addendum29815099 submitted with the immutable code SHA84113a19fc1b474c593496690f23f31146f7f50c272c4f9d1fdd9054dc9c61d1 and full fresh storage checks. It has no model calls/updates and cannot certify or restart. Its allocated4 scalar controls and summary are pending completion. No new optimization submitted.
+
+Scalar-summary CPU29815099 actualDONE/hpc/LSFsuccess,4allocated scalar controls passed. Independent12-file byte/schema/code/LSF audit passed; summary356,125B SHA7c452566ab1747db72e12e6b707d0acfbeff963e83d6d02dbb530e13c242623b. All54probe rows retained. Matching the AD scalar path improved26comparisons, worsened27and left1equal;17predictions are no larger than the old reported floor. These are descriptive diagnostics, not acceptance counts or a calibrated noise bound. No model calls/optimization/source changes.

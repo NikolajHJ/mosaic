@@ -1,0 +1,17 @@
+{
+  "status": "passed_independent_summary_byte_schema_source_lsf_audit",
+  "job_id": "29815099",
+  "actual_scheduler": "DONE/hpc",
+  "same_job_LSF_success": true,
+  "allocated_scalar_controls": 4,
+  "verified_files": 12,
+  "summary_sha256": "7c452566ab1747db72e12e6b707d0acfbeff963e83d6d02dbb530e13c242623b",
+  "summary_bytes": 356125,
+  "code_sha256": "84113a19fc1b474c593496690f23f31146f7f50c272c4f9d1fdd9054dc9c61d1",
+  "native_model_calls": 0,
+  "optimizer_updates": 0,
+  "original_results_changed": false,
+  "optimization_settings_changed": false,
+  "can_admit_new_child": false,
+  "scope": "Stdlib byte/schema/LSF/source audit only; numerical scalar summary computed on allocated HPC"
+}

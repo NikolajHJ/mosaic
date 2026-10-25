@@ -14,3 +14,5 @@ identities locally. Sealing/submission helpers refuse existing attempt paths and
 unknown outcomes. Original scientific sources/results are never overwritten.
 
 Protenix diagnostic-only controls: `protenix_endpoint_forensics.py` preserves the fixed point inventory; `protenix_forensics_native.py` loads the exact original frozen source/checkpoint; `protenix_forensics_ops.py` gates CPU then a bounded diagnostic GPU allocation. `manage_protenix_forensics.py` provides stdlib prepare/stage/observe commands, and `protenix_forensics_stage.lsf` authenticates source before imports. None dispatches optimizer continuations.
+
+Terminal forensic delivery uses `collect_protenix_forensics.py` (exclusive fresh archive/stream) and `verify_protenix_forensics_delivery.py` (stdlib tar/ZIP/NPY payload and provenance audit). `summarize_protenix_forensics.py` tabulates existing scalar findings on allocated CPU only; its one-shot account-bound `submit_protenix_forensics_summary.py` preserves original science/source/proofs and cannot dispatch optimization. See the dated forensic run for exact evidence and findings.

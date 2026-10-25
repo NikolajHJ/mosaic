@@ -1,0 +1,16 @@
+{
+  "version": "protenix-fixed-point-forensic-summary-addendum-v1",
+  "code_sha256": "84113a19fc1b474c593496690f23f31146f7f50c272c4f9d1fdd9054dc9c61d1",
+  "code_bytes": 20311,
+  "diagnostic_report_sha256": "acbb5273e0c794d5719067210e27a8031717fb8a51a21dc0eb19988881ee8359",
+  "failed_admission_sha256": "3b4e6c14aa21aed083594ab040a7faf4a50f93b4adce5a4fa679108bc531aaf1",
+  "allocated_cpu_only": true,
+  "self_test_cases": 4,
+  "model_evaluations": 0,
+  "optimizer_updates": 0,
+  "can_admit_new_child": false,
+  "can_certify_or_restart_original_study": false,
+  "optimization_settings_changed": false,
+  "output_root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-forensics-01/analysis-01",
+  "metadata_scope": "read-only scalar tabulation; funded inside existing16MiB control cap, full fresh storage guards retained"
+}
