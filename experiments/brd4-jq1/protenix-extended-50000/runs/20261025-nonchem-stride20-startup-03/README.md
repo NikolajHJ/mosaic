@@ -57,3 +57,18 @@ Three main outputprojections16.32094GBdense to12.03863GBsparse; fixed/other scop
 remain funded. Noisypilot29809228 remainsRUN/unchanged, no committedupdates seen
 atthiscapture. Existing savedresults unaffected; monitorstillpaused. Actual
 proofs and campaign.json are alongside, with the deliveryverification JSON.
+
+
+Read-only outcome25October10:29Paris/CET: Protenix29809291 applied10000 additional updates (absolute20000/50000),10001segmentstates,501retainedframes. It then exited1 because predeclared terminal epsilon leaves simplex interior. This infeasible probe is not demonstrated AD/FD disagreement or negative optimized probabilities. Callback29809292 blocked continuation; remaining30000 additional updates did not run.
+
+All171 compact evidence files were independently rehashed; original same-job
+LSF queue/exit/error records and committed newline prefixes authenticate these
+FAILED_PERSISTED outcomes. Live scheduler records aged out; not_found was not
+converted into a synthetic DONE/EXIT. Retained NPZ hashes were checked remotely;
+large original arrays/summaries remain remote. No restart, setting, source or
+saved-result change occurred. Losses every step/matrices every20 remain intact.
+The old full-admission delivery verifier failed its comparison of a historical
+projection against a later DBMol native unit; its failure is preserved. A
+separate status-only byte/LSF/prefix audit passed using recorded gate units,
+without claiming new storage admission or waiving any scientific check.
+Exact status audit hash/paths are in status-20261025-1029.json.

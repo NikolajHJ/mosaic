@@ -1,5 +1,5 @@
 {
-  "status": "allocated78_and_original_startup_passed_first_gpu_queued",
+  "status": "terminal_validation_failed_chain_stopped",
   "observed_utc": "2026-10-24T22:36:22.393198+00:00",
   "source_manifest_sha256": "704fab033d97342a14dc12b58dc32df44874232c5c30aad47c4d02041a502aab",
   "scientific_source_and_settings_changed": false,
@@ -8,7 +8,7 @@
   "profile": "protenix50k40k",
   "first_segment_job_id": "29809291",
   "own_ended_callback_job_id": "29809292",
-  "scientific_updates_verified": 0,
+  "scientific_updates_verified": 20000,
   "all_terminal_passed": false,
   "verification_sha256": "0b9a31565c2195c99c3a1658865d3d4b6053e1ed68cb72561fb307ccef84ee5d",
   "proofs": [
@@ -80,5 +80,34 @@
     }
   ],
   "noise_job_preserved": "29809228",
-  "monitor_remains_paused": true
+  "monitor_remains_paused": true,
+  "historical_initial_status": "allocated78_and_original_startup_passed_first_gpu_queued",
+  "latest_observed_utc": "2026-10-25T09:29:28.787753+00:00",
+  "latest_status": {
+    "scope": "readonly status, no new scientific execution or mutation",
+    "captured_utc": "2026-10-25T09:29:28.787753+00:00",
+    "outcome": {
+      "job_id": "29809291",
+      "status": "FAILED_PERSISTED",
+      "stdout_sha256": "e87b2e9640768fb2c8d0ae064030f9e646d1820b4f55bea44bb10ff92ac7fa92",
+      "stderr_sha256": "12b4a4011c8d0a7de4c4c63f6b172d987de90f50e41d8425e41acc63b9e5b52f",
+      "failure": "ValueError: Predeclared epsilon leaves the simplex interior",
+      "scheduler_state_invented": false,
+      "segment_applied_updates": 10000,
+      "total_global_updates": 20000,
+      "target_global_updates": 50000,
+      "terminal_validation": "failed",
+      "successor_submitted": false,
+      "retained_frames_remotely_byte_verified": 501
+    },
+    "source_manifest_sha256": "704fab033d97342a14dc12b58dc32df44874232c5c30aad47c4d02041a502aab",
+    "independent_status_audit_sha256": "57c2b30f59c2a046294c134c784bbf5b8ed0c92ab66016445072baf637f88ff8",
+    "compact_files_rehashed": 171,
+    "local_artifacts": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261025-nonchem-stride20-startup-03\\evidence-06",
+    "raw_delivery_sha256": "b1cbdc68a3da30b4807c0ca987056aa9a69628a09b8d3ae24897fb2d8befaab2",
+    "monitor_remains_paused": true,
+    "legacy_full_admission_audit": "failed_preserved_historical_versus_current_DBMol_projection_comparison; no new storage admission claimed",
+    "scientific_settings_jobs_and_saved_results_changed": false
+  },
+  "verified_updates_scope": "absolute total includes original10k parent"
 }

@@ -7187,3 +7187,24 @@ full-model GPU pilots Pro29811883 and Bol29811884 submitted10:22:13,
 BOTH PENDphysicalGPU at10:23:09; no native/fullgradient result or integrated
 speedup yet. Original sources/results/settings/DBMol VAE unchanged; monitor
 stays paused. Exact proof records in full-model-01/campaign.json and verification.json.
+
+
+## 2026-10-25: read-only terminal status of non-chemistry chains
+
+Fresh compactSSH capture09:29:28UTC/10:29:28Paris/CET,171bytefiles independently
+rehashpassed, original same-job LSF/queue/exit/errors and newline prefixes:
+Pro29809291 applied+10000 toabsolute20000 then terminalpredeclaredepsilon
+leaves simplexinterior; Bol29809297 applied10000/30000 then affinityE_upperFD
+failed; DB29809294 passedfirst2500/native29809968passed, next29810971 reached
+global5000/10000 then terminaldbmol_contact_lossE_upperFDfailed. Their exact
+own-ended callbacks blocked successors. Live scheduler entries are agedout;
+FAILED_PERSISTED uses actual original LSF, no fabricated currentEXIT/DONE.
+Independent noisyPro29809228 completed1000/1000, summarypassed, initial+terminal
+raw/logitgradientchecks and runtimepassed. It remains a single-seed contact
+feasibility result, notbinding/activity evidence. All originals/savedresults,
+newchemistryfull-model pilots and pausedmonitor unchanged. No resubmission.
+Existing genericdeliveryverifier failed historical/current DBMolprojection
+comparison; failurepreserved, separate statusonlyaudit checks each recorded
+gate ownunit without newadmission/sciencewaiver. AuditSHA 57c2b30f59c2a046294c134c784bbf5b8ed0c92ab66016445072baf637f88ff8
+under results/hpc/20261025-nonchem-stride20-startup-03/evidence-06; per-arm
+status receipts and campaign.json updated in existing startup03 run records.

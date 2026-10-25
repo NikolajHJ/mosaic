@@ -57,3 +57,18 @@ Three main outputprojections16.32094GBdense to12.03863GBsparse; fixed/other scop
 remain funded. Noisypilot29809228 remainsRUN/unchanged, no committedupdates seen
 atthiscapture. Existing savedresults unaffected; monitorstillpaused. Actual
 proofs and campaign.json are alongside, with the deliveryverification JSON.
+
+
+Read-only outcome25October10:29Paris/CET: DBMol firstsegment29809294 passed2500; native29809968 passed before segment29810971. Secondsegment applied another2500 (global5000/10000), then exited1 at terminal dbmol_contact_loss E_upper finite differences. Callback29810972 blocked continuation; no third segment.
+
+All171 compact evidence files were independently rehashed; original same-job
+LSF queue/exit/error records and committed newline prefixes authenticate these
+FAILED_PERSISTED outcomes. Live scheduler records aged out; not_found was not
+converted into a synthetic DONE/EXIT. Retained NPZ hashes were checked remotely;
+large original arrays/summaries remain remote. No restart, setting, source or
+saved-result change occurred. Losses every step/matrices every20 remain intact.
+The old full-admission delivery verifier failed its comparison of a historical
+projection against a later DBMol native unit; its failure is preserved. A
+separate status-only byte/LSF/prefix audit passed using recorded gate units,
+without claiming new storage admission or waiving any scientific check.
+Exact status audit hash/paths are in status-20261025-1029.json.
