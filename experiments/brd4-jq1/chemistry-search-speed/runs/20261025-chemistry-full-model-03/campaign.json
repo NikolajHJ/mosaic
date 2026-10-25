@@ -1,5 +1,5 @@
 {
-  "status": "CPU388_passed_Pro_GPU_RUNNING",
+  "status": "Pro_GPU_failed_cross_process_exact_probability_replay",
   "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-03",
   "source": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-release-03/source",
   "source_manifest_sha256": "8480a39c05d612d1a80ea1892d816c9429fcd471e97adb31655f8132d9007f31",
@@ -286,5 +286,11 @@
     "path": "results\\hpc\\20261025-chemistry-full-model-03\\observation-cpu-terminal-03\\verification.json",
     "sha256": "d6a55d5227228d7093bf86548542c8000b9c2bd0e90972ec488762c1b14d6b6e"
   },
-  "full_model_comparisons": {}
+  "full_model_comparisons": {},
+  "latest_observation": "results\\hpc\\20261025-chemistry-full-model-03\\observation-protenix-progress-04",
+  "verification_sha256": "5d7508b7fb4f750af228098fbb709c41a46e79d51a0c33d4744e65ea381aff1c",
+  "gpu_job": "29816284",
+  "actual_gpu_terminal": "EXIT1_samejob_LSF_authenticated",
+  "scientific_settings_changed": false,
+  "paired_FD_started": false
 }

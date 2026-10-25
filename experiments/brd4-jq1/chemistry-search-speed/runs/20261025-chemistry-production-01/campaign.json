@@ -18,7 +18,7 @@
     "tests/test_production_ops.py",
     "tests/test_production_integration.py"
   ],
-  "jobs_submitted": false,
+  "jobs_submitted": true,
   "manifest_sha256": "54c74c1552e98af2d185d0f07c84f82adffa2246a6b1ec406f17e79590eff458",
   "monitor_resumed": false,
   "plan": {
@@ -42,7 +42,7 @@
   },
   "plan_sha256": "bf6c79049f54235e500cfdd47fe730ad46203572cbc21d5cdbd8ccc376747658",
   "production_readiness_passed": false,
-  "status": "CPU_waiting_both_actual_pilots_and_callback_submitted_not_passed",
+  "status": "failed_metadata_startup_admission_original_failed_Pro_pilot_preserved",
   "cpu_submission": {
     "status": "submitted",
     "phase": "cpu",
@@ -327,5 +327,12 @@
     "additional_remaining_bytes": 66947241,
     "required_bytes": 36411736221
   },
-  "production_submitted": false
+  "production_submitted": false,
+  "raw_fixture_cases_passed": 94,
+  "actual_terminal_jobs": {
+    "29816320": "actual_EXIT1_LSF",
+    "29816321": "actual_EXIT1_LSF"
+  },
+  "full_chemistry_future_storage_passed": false,
+  "startup_child_trace_limitation": "Captured child stderr was not persisted before assertion; no separately observed child exception. Failed Pro input and static route are evidence only."
 }

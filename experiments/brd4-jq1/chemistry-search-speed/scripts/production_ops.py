@@ -526,6 +526,46 @@ def child(arm, phase, index, pin, parent, *, startup=False, terminal=False):
     require(process.returncode == 0, 'Allocated chemistry '+mode+' child failed; preserve primary log')
 
 
+def metadata_startups(payload, pin):
+    """Persist each actual attempted CPU startup before accepting its outcome.
+
+    The original pilot/readiness acceptance remains in production_run. Failed
+    pilots still reject that route; their captured reason must survive the
+    controller's return-code assertion, with no implied GPU/native pass.
+    """
+    payload = Path(payload)
+    summary = {'status': 'failed_metadata_only', 'commands': [],
+               'gpu_or_gradient_passed': False, 'optimizer_updates': 0}
+    try:
+        for name in c.PROFILES:
+            command = [PYTHON, str(SOURCE/'scripts/production_run.py'), '--manifest', pin,
+                       '--arm', name, '--phase', 'segment', '--index', '0', '--metadata-startup']
+            attempt = {'arm': name, 'argv': command, 'returncode': None, 'stdout': '', 'stderr': ''}
+            try:
+                result = subprocess.run(command, cwd=SOURCE, capture_output=True, text=True, timeout=180)
+                attempt.update(returncode=result.returncode, stdout=result.stdout, stderr=result.stderr)
+            except BaseException as error:
+                def text(value):
+                    return value.decode('utf8', errors='replace') if isinstance(value, bytes) else value or ''
+                attempt.update(error=repr(error), stdout=text(getattr(error, 'stdout', None)),
+                               stderr=text(getattr(error, 'stderr', None)),
+                               timed_out_or_interrupted=True)
+                raise
+            finally:
+                path = payload/('startup-attempt-'+name+'.json')
+                write(path, attempt)
+                summary['commands'].append({**attempt, 'captured_attempt': binding(path)})
+            require(result.returncode == 0, 'Actual production wrapper/parser metadata startup rejected; '
+                    'captured original reason: '+str(path))
+        summary['status'] = 'passed_metadata_only'
+        return summary
+    except BaseException as error:
+        summary['error'] = repr(error)
+        raise
+    finally:
+        write(payload/'startup.json', summary)
+
+
 def bootstrap(pin):
     """Explicit once-only metadata entry; called only after source staging audit."""
     manifest, plan = own_plan(pin)
@@ -649,16 +689,7 @@ def execute(phase, pin, arm='control', index=0):
             assessment['cases'] = xml_cases(payload/'tests.xml', manifest['cpu_counts'])
             # Execute the sealed real wrapper and original parser route in fresh
             # metadata-only processes. Neither readiness nor GPU passes follow.
-            rows = []
-            for name in c.PROFILES:
-                command = [PYTHON, str(SOURCE/'scripts/production_run.py'), '--manifest', pin,
-                           '--arm', name, '--phase', 'segment', '--index', '0', '--metadata-startup']
-                result = subprocess.run(command, cwd=SOURCE, capture_output=True, text=True, timeout=180)
-                rows.append({'argv': command, 'returncode': result.returncode,
-                             'stdout': result.stdout, 'stderr': result.stderr})
-                require(result.returncode == 0, 'Actual production wrapper/parser metadata startup rejected')
-            write(payload/'startup.json', {'status': 'passed_metadata_only', 'commands': rows,
-                                          'gpu_or_gradient_passed': False, 'optimizer_updates': 0})
+            metadata_startups(payload, pin)
         else:
             cpu_certificate(pin, manifest); adoption(arm)
             assessment['storage'] = storage(payload, phase+'-entry', adopted=True)

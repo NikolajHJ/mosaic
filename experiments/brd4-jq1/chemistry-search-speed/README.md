@@ -77,3 +77,13 @@ is submitted. See the full-model run's authenticated failure record; production
 also requires explicit adoption and full future chemistry storage admission.
 
 At25October18:02UTC, the Boltz startup fix passed actual two-CUDA-process admission and the full original baseline/combined native comparison (GPU29816184). Pro source02 stopped on an atomic metadata rename race; unchanged numerical source03 passed388CPU cases and ProGPU29816284 is running. See [retry02](runs/20261025-chemistry-full-model-02/README.md) and [Pro retry03](runs/20261025-chemistry-full-model-03/README.md). The [production adopter](runs/20261025-chemistry-production-01/README.md) has an actual queued CPU/callback chain that waits both pilots, all94contracts, actual startup, original readiness and complete future storage. Neither chemistry production run has been submitted yet. No saved results/settings changed.
+
+At25October18:36UTC, Pro retry03 GPU29816284 is a preserved exact cross-process
+probability replay failure after all low/high pilots and immediate canaries.
+Bol retry02 full native comparison remains passed. Production01 stopped at
+metadata startup admission (94 fixtures passed; overall CPU/callback EXIT1),
+with no long submissions/full chemistry storage verdict. The separate
+[replay-only diagnostic](runs/20261025-chemistry-replay-01/README.md) passed60
+allocated CPU contracts and queued GPU29816561. It recomputes original saved
+logits with predeclared import/compiler controls; no model or optimizer evaluation
+and no acceptance-tolerance/probability substitution. Monitor remains paused.

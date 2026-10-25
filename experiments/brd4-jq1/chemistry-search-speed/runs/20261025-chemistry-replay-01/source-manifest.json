@@ -1,0 +1,29 @@
+{
+  "additional_allowance_bytes": 0,
+  "cpu_counts": {
+    "tests.test_replay_ops.ReplayControllerTests": 30,
+    "tests.test_softmax_replay_diagnostic.SoftmaxReplayMetadataTests": 30
+  },
+  "cpu_modules": [
+    "test_replay_ops",
+    "test_softmax_replay_diagnostic"
+  ],
+  "files": {
+    "README.md": "d43ee3d88227e507abf0290509c16406635c5e0bf88b90d3ef37cfbbb7c36536",
+    "admission.json": "9b3124e9da31e17da749b9203ee570f53591934e8ad113a8c9e8a8eb2ae130c5",
+    "plan.json": "19102b7e629bf873c4b6f72453ad924bc91fe52d9defd47b2741f533c924a404",
+    "protocol.md": "c76ae831a874d33060f872ee6d19209ff7703194529c8a9b86e0e4f156cbcfe5",
+    "scripts/README.md": "6080507b0989b57f5b3c17783657e45a402817073237c425475334e88192e2a9",
+    "scripts/replay_ops.py": "7d4aae7c235d2efc6173525bb30e3f82c9df39fda13e5cc306771482c1ae0c33",
+    "scripts/replay_stage.lsf": "e96e52c553eae40706d7dea4404ced0c46e3ab5159b57a5dcf90d96a6edfa9d3",
+    "scripts/softmax_replay_diagnostic.py": "8abd01b3ba6f3c5df0aeacad00cb56d88c33f14401fab758f867026421f3abbf",
+    "tests/README.md": "63eeec150954d038bce880698253a81d6b04ae7d62c20d6827e68c625b3723a2",
+    "tests/test_replay_ops.py": "4e08e3f9bc85df892b12b81de81ce9e4be9568580911d790e09ed7bac4d3147e",
+    "tests/test_softmax_replay_diagnostic.py": "06b96fda0e6ae125cb99436eea3fd9ff731e0f2d5d63ef35a9d2999e1368e14f"
+  },
+  "group_cap_bytes": 2147483648,
+  "monitor_remains_paused": true,
+  "persistent_cap_bytes": 67108864,
+  "production_authorized": false,
+  "version": "chemistry-softmax-replay-source-v1"
+}

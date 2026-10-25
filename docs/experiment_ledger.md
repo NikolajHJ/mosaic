@@ -7569,3 +7569,37 @@ Production01 actual18:04:58UTC stagedread-only12files andsubmittedCPU29816320/ow
 
 Report-copyretirement completed18:11:38UTC:81exactbackedupfiles/571264343logicalbytes, no changed/absent/link aliases or folders removed.96rawauditfiles rehashed and81durableintents/results reconciled;83actualinactivitychecks. All9sourceinventories+originalprotectedclosure matched before/after; samefullvalidationstorageguardpassed. Locallaptoparchives/all78members/viewers/editions retained. No native study/source/proofoutsideviewer/model/context/cache/env/otherproject changes. Fullproductioncapacity stillunestablished; cleanup is0.532GiB headroom, not long-run admission.
 Production initial27-file byte/source/archive/actualresources/dependency audit passed a0c07d780cd57e8f4b2b3954edfe1936278bfb8dab804aa519a1992f0a572c64; CPU29816320/callback29816321 queued, CPU notcertified, no productionIDs or unknownmarkers.
+
+## 2026-10-25 Protenix cross-process replay failure preserved
+
+ActualPro29816284 EXIT1 at18:18:05UTC, source03 unchanged. Bothoriginal/combined low/high10pilots completed, all8immediateexact5fieldcanaries passed; firstpaired early0 E replay still399/1500diff/max1.1920929e-7 beforepairedFD. Independent127file/source30/CPU388/actualsamejobLSF auditpassed. Staticbyteevidence: bothchildren haveidenticallogit/X/keyhashes+placement, butdifferentE; originalCPUvsGPUleaf-onlyhypothesis insufficient. No tolerance/probabilitysubstitution/optimizerchange. Production01raw94fixtures passed17.59s butoverallCPU29816320 didnotcertify becausemetadata startup wasrejected; exactchildstderr wasnotpersisted. FailedProinput/staticroute suggestrefusal, not separatelyobservedcause. Callbackcannotqueueproduction; subsequentterminalproof below.
+
+## 2026-10-25 Isolated Protenix replay diagnostic preparation
+
+Userfixauthorization continues innewchemistry-replay01, original8savedpoints readonly. Predeclared freshimport/adapter/eager/JIT/commitment controls recordfivefieldhashes/config/compiler fingerprints, no model/scorer/optimizer/repair/diffusion or scientificacceptancechanges.64MiB/600s internal/20minL40S target afterallocatedmetadataCPU; currentfullprecision02guard+joint2GiB validation(ownedold02+03+newsource/output) unchanged. No source/job/finding from preparation. Bothchemistryproductionruns remainunsubmitted; oldsavedstudies unchanged, monitorpaused.
+
+Replay01 local11file capsule prepared, manifestdbfef057ac054a0c4eb452b1603933db7815d91d38dcb3ffcad007105f3312d5, archive24127B SHA85ab8c06c10ca704013dcc3b0b144a4ce62fd7e547026620cbe19ca2995670ac, plan19102b7e629bf873c4b6f72453ad924bc91fe52d9defd47b2741f533c924a404.60allocatedmetadatafixtures declared30+30; all10controls mustactuallycomplete, no failedchildhiddenaspass. Packagerfirstlocalattempt rejected Windows-style remote Path spelling before any sourcefolder/submission; POSIX serialization corrected unsealedcaller only. No local array/test evaluation.
+
+Replay01 actual18:31:39UTC CPU29816497/callback29816498 submitted; bothactualDONE
+at18:36:29UTC.60 raw cases30+30 passed/noerrorsfailskip; independent43file/source11/
+archive12/submission/actualLSF/CPUcertificate auditSHA d062fc08976ac00ad277cc9f4a7a62b371fb679980eef3898e7593ac2c6897c6.
+GPU29816561 actuallysubmitted18:33:45UTC, PEND8slots/exclusiveL40S/20min; no finding.
+Source643 exactdriver42dcef6c7ab5d5f4d11aca844d0e2bbb0cd5f7101955695652211cfd0224442f
+line95 confirms highestmatmulprecision originalpolicy, unchanged bydiagnostic.
+Production01 CPU29816320/callback29816321 actualEXIT1;94rawfixtures passed but
+metadata startup rejected, no certification/longs/fullchemfuturestorageverdict.
+Childstderrwasnotpersistedbeforeassertion; exactchildexception unavailable,
+staticfailedProadoptionroute is not separatelyobservedcause. Futurefix will
+persistattemptresultbeforeassertion; sealedfailed01 preserved. Monitorpaused,
+settings/savedresults unchanged, allnumericalwork allocatedHPC only.
+
+Replay01 client-only hardening independentlyverified same18:36capture: exact
+live scheduler/name/queue/resources/argv/terminalLSF conflicts, exact CPUproofset
+and callbacksuccess. Audit02SHA81f059d4e7a8958de868ebcbf261f7237c49bacdf613992edf47fbdaf23b5cb4.
+Single18:46:17UTC readonlyquery SSH255/Permissiondenied(password), emptystdout;
+no reconnect or newerGPU/finding established. No duplicate/currentjobchanges.
+Futureproduction canonicalcontroller nowpersists per-arm startupattempt/timeout
+partialoutput BEFORE assertion and aggregatealways;3newallocated-only fixtures
+routing30→33/full97, ASTonlynotexecuted. Failedsealed01 unchanged; newcapsule
+requires anewpassedProcomparison beforeadoption. Originalscience/settings/results
+unchanged; monitorpaused. Bolcomparisonvalidated, Proreplayblocker unresolved.

@@ -1,0 +1,24 @@
+{
+  "status": "passed_byte_XML_and_actual_failed_admission_audit",
+  "CPU_fixture_cases_passed": 94,
+  "CPU_overall_gate": "failed_not_certified",
+  "CPU_error": "ValueError('Actual production wrapper/parser metadata startup rejected')",
+  "actual_jobs_EXIT1": [
+    "29816320",
+    "29816321"
+  ],
+  "LSF_proofs": [
+    {
+      "path": "results\\hpc\\20261025-chemistry-production-01\\observation-terminal-block-03\\files\\root\\cpu\\stdout.29816320.log",
+      "sha256": "48c595ce54f70ed34115cccf566648e418b132c359200be125059ada6b0f8df0"
+    },
+    {
+      "path": "results\\hpc\\20261025-chemistry-production-01\\observation-terminal-block-03\\files\\root\\after-cpu\\stdout.29816321.log",
+      "sha256": "e40216aa3b9fdba3f0f1ae94e325804030b513f2c3cdaa3e521ee930a4a83822"
+    }
+  ],
+  "production_jobs": [],
+  "unknown_outcomes": false,
+  "startup_child_trace_limitation": "Parent did not persist captured child stderr before assertion; failed Pro input and static route suggest refusal, not a separately observed child exception",
+  "original_results_changed": false
+}

@@ -25,3 +25,8 @@ exercise a GPU; the real two-process canary and original native-model gradient
 checks execute only inside the declared L40S pilot allocation.
 
 The production metadata suite declares94allocated cases:50policy,30routing,14exact original metadata call-site integrations. Fixtures do not certify native gradients, and local AST checks do not count as executed tests.
+
+`test_softmax_replay_diagnostic.py`30 and `test_replay_ops.py`30 form the isolated
+replay capsule metadata suite. All60 passed on allocated CPU29816497; no native
+model/optimizer evaluation follows from fixtures. Actual GPU controls require
+all ten successful processes, byte-bound saved inputs and preserved failures.

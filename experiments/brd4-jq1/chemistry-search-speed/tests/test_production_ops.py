@@ -76,6 +76,68 @@ class ProductionRoutingTests(unittest.TestCase):
             with self.assertRaises(FileExistsError):op.write(path,{'state':'passed'})
             self.assertEqual(op.read(path),{'state':'failed'})
 
+    def test_rejected_actual_startup_is_captured_before_assertion(self):
+        with tempfile.TemporaryDirectory() as temp:
+            payload=Path(temp);expected='Original Pro pilot raw LSF Exited with exit code 1'
+            result=SimpleNamespace(returncode=1,stdout='original captured stdout\n',stderr=expected)
+            original_require=op.require;observed=[]
+            def require_after_capture(value,message):
+                if message.startswith('Actual production wrapper/parser metadata startup rejected'):
+                    path=payload/'startup-attempt-protenix.json'
+                    captured=op.read(path)
+                    self.assertEqual(captured['stderr'],expected)
+                    self.assertEqual(captured['returncode'],1)
+                    observed.append(path)
+                return original_require(value,message)
+            with patch.object(op.subprocess,'run',return_value=result) as execute,\
+                 patch.object(op,'require',side_effect=require_after_capture):
+                with self.assertRaisesRegex(ValueError,'captured original reason'):
+                    op.metadata_startups(payload,'a'*64)
+            self.assertEqual(execute.call_count,1)
+            self.assertEqual(len(observed),1)
+            summary=op.read(payload/'startup.json')
+            self.assertEqual(summary['status'],'failed_metadata_only')
+            self.assertFalse(summary['gpu_or_gradient_passed'])
+            self.assertEqual(summary['optimizer_updates'],0)
+            self.assertEqual(summary['commands'][0]['stderr'],expected)
+            self.assertEqual(summary['commands'][0]['captured_attempt'],op.binding(observed[0]))
+            self.assertFalse((payload/'startup-attempt-boltz.json').exists())
+
+    def test_actual_startup_timeout_retains_partial_output_and_failure(self):
+        with tempfile.TemporaryDirectory() as temp:
+            payload=Path(temp)
+            failure=op.subprocess.TimeoutExpired(['original','command'],180,
+                output=b'original partial stdout\n',stderr=b'original partial traceback\n')
+            with patch.object(op.subprocess,'run',side_effect=failure) as execute:
+                with self.assertRaises(op.subprocess.TimeoutExpired):op.metadata_startups(payload,'a'*64)
+            self.assertEqual(execute.call_count,1)
+            captured=op.read(payload/'startup-attempt-protenix.json')
+            self.assertIsNone(captured['returncode'])
+            self.assertTrue(captured['timed_out_or_interrupted'])
+            self.assertEqual(captured['stdout'],'original partial stdout\n')
+            self.assertEqual(captured['stderr'],'original partial traceback\n')
+            self.assertIn('TimeoutExpired',captured['error'])
+            summary=op.read(payload/'startup.json')
+            self.assertEqual(summary['status'],'failed_metadata_only')
+            self.assertEqual(summary['commands'][0]['captured_attempt'],
+                             op.binding(payload/'startup-attempt-protenix.json'))
+
+    def test_both_actual_startup_commands_keep_raw_receipts_without_gpu_claim(self):
+        with tempfile.TemporaryDirectory() as temp:
+            payload=Path(temp);results=[SimpleNamespace(returncode=0,stdout='Pro metadata only\n',stderr=''),
+                SimpleNamespace(returncode=0,stdout='Bol metadata only\n',stderr='')]
+            with patch.object(op.subprocess,'run',side_effect=results) as execute:
+                result=op.metadata_startups(payload,'a'*64)
+            self.assertEqual(execute.call_count,2)
+            self.assertEqual(result,op.read(payload/'startup.json'))
+            self.assertEqual(result['status'],'passed_metadata_only')
+            self.assertFalse(result['gpu_or_gradient_passed'])
+            self.assertEqual(result['optimizer_updates'],0)
+            self.assertEqual([row['arm'] for row in result['commands']],list(c.PROFILES))
+            for name,row in zip(c.PROFILES,result['commands']):
+                self.assertEqual(row['captured_attempt'],op.binding(payload/('startup-attempt-'+name+'.json')))
+                self.assertEqual(row['argv'][-7:],['--arm',name,'--phase','segment','--index','0','--metadata-startup'])
+
     def test_exact_bound_file_mutation_rejected(self):
         with tempfile.TemporaryDirectory() as temp:
             path=Path(temp)/'proof.json';path.write_text('{}')

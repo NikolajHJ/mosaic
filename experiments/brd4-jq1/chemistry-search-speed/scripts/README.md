@@ -47,3 +47,22 @@ and independently reconciled locally. The final unchanged whole storage guard
 has a fresh parent and may still fail; maximum candidate logical bytes are
 571,264,343, not a promise of production capacity. An interrupted or unknown
 outcome must be inspected from its existing operation, never replayed.
+
+`softmax_replay_diagnostic.py` and `replay_*` own a separate, read-only original
+saved-logit replay investigation. Ten declared fresh processes cover import,
+adapter, commitment and compilation controls on eight saved points. All ten
+must complete; equality observations cannot certify or restart the failed pilot.
+No model/loss/optimizer/repair path is permitted. Immutable source01 has60
+allocated metadata contracts, a64MiB persistent cap/600s internal deadline,
+and no production branch. `replay_observe.py` is single-connection byte-only;
+`replay_verify.py` independently audits source/rawXML/actualLSF/submissions and
+all completed child receipts without decoding native arrays. Unknown launch
+outcomes must be inspected, never replayed.
+
+Future production evidence correction is local/unvalidated: `metadata_startups`
+in the canonical controller now persists each actual startup attempt before
+asserting its return code, and always retains the failed aggregate/timeout
+partial output. Three new allocated-only metadata fixtures raise its routing
+module30→33 (future full suite97). This does not modify sealed production01,
+its failed admission, any pilot or gate. Do not prepare/replay01 with these bytes;
+a new immutable production capsule must bind a newly passed Pro comparison.
