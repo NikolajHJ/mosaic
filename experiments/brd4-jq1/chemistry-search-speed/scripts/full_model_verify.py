@@ -10,7 +10,8 @@ import tarfile
 import xml.etree.ElementTree as ET
 
 REPO = Path(__file__).resolve().parents[4]
-LOCAL = REPO/'results/hpc/20261025-chemistry-full-model-01'
+LOCAL = REPO/'results/hpc/20261025-chemistry-full-model-03'
+JOB_PREFIX='mosaic-chem-full03-'
 
 
 def sha(path):
@@ -44,21 +45,29 @@ def failed_lsf(path, job, name, queue):
 def expected_argv(phase,pin,root,source,cpu):
     if phase=='cpu':resources=['-q','hpc','-n','16','-R','span[hosts=1]','-R','rusage[mem=2GB]','-W','02:00']
     elif phase=='after-cpu':resources=['-q','hpc','-n','1','-R','span[hosts=1]','-R','rusage[mem=2GB]','-W','00:20']
-    else:resources=['-q','gpul40s','-n','8','-R','span[hosts=1]','-R','rusage[mem=4GB]','-gpu','num=1:mode=exclusive_process','-W','02:00']
-    command=['bsub',*resources,'-J','mosaic-chem-full01-'+phase,'-oo',root+'/'+phase+'/stdout.%J.log','-eo',root+'/'+phase+'/stderr.%J.log']
+    else:resources=['-q','gpul40s','-n','8','-R','span[hosts=1]','-R','rusage[mem=4GB]','-gpu',('num=1:mode=shared:j_exclusive=yes:mps=no' if phase=='boltz' else 'num=1:mode=exclusive_process'),'-W','02:00']
+    command=['bsub',*resources,'-J',JOB_PREFIX+phase,'-oo',root+'/'+phase+'/stdout.%J.log','-eo',root+'/'+phase+'/stderr.%J.log']
     if phase=='after-cpu':command+=['-w','ended('+cpu+')']
     return command+['bash','-l',source+'/scripts/full_model_stage.lsf',source,pin,phase]
 
 
 def main():
+    global LOCAL,JOB_PREFIX
     parser=argparse.ArgumentParser();parser.add_argument('observation',type=Path)
     args=parser.parse_args();out=args.observation;files=out/'files'
+    header=load(out/'raw.json');capsule=header['root'].rsplit('-',1)[-1]
+    assert capsule in ['02','03']
+    base='/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/'
+    assert header['root']==base+'chemistry-full-model-'+capsule
+    assert header['source']==base+'chemistry-full-model-release-'+capsule+'/source'
+    LOCAL=REPO/('results/hpc/20261025-chemistry-full-model-'+capsule)
+    JOB_PREFIX='mosaic-chem-full'+capsule+'-'
     transfer=load(out/'byte-verification.json')
     assert transfer['status']=='passed_compact_byte_transfer_only'
     assert sha(out/'raw.json')==transfer['raw_sha256']==load(out/'receipt.json')['raw_sha256']
     for row in transfer['files']:
         p=files/row['path'];assert p.stat().st_size==row['bytes'] and sha(p)==row['sha256']
-    package=LOCAL/'source02';prep=load(package/'preparation.json')
+    package=LOCAL/'source01';prep=load(package/'preparation.json')
     assert sha(package/'source.tar.gz')==prep['archive_sha256']
     assert (package/'source.tar.gz').stat().st_size==prep['archive_bytes']
     manifest=load(package/'source_manifest.json');pin=sha(package/'source_manifest.json')
@@ -74,8 +83,8 @@ def main():
             if row.name.endswith('.py'):ast.parse(raw,filename=row.name)
     raw_observation=load(out/'raw.json');jobs=raw_observation['jobs'];cpu=jobs['cpu'];sub=load(files/'cpu/submission.json')
     remote_root=raw_observation['root'];remote_source=raw_observation['source']
-    assert remote_root=='/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-01'
-    assert remote_source=='/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-release-01/source'
+    assert remote_root==header['root']
+    assert remote_source==header['source']
     assert sub['job_id']==cpu and sub['status']=='submitted' and sub['manifest_sha256']==pin
     assert sub['dependency'] is None and sub['argv'][-2:]==[pin,'cpu']
     assert sub['argv']==expected_argv('cpu',pin,remote_root,remote_source,cpu)
@@ -92,13 +101,13 @@ def main():
     assert len(cases)==assessment['cpu_cases']==sum(counts.values())
     assert sha(files/'cpu/payload/tests.xml')==assessment['raw_xml_sha256']
     assert re.search(r'\b[1-9]\d*\s+deselected\b',(files/'cpu/payload/tests.log').read_text()) is None
-    lsf(files/'cpu'/('stdout.'+cpu+'.log'),cpu,'mosaic-chem-full01-cpu','hpc')
+    lsf(files/'cpu'/('stdout.'+cpu+'.log'),cpu,JOB_PREFIX+'cpu','hpc')
     terminal=[]
     for path in (files/'after-cpu').glob('cpu-terminal-query-*.json'):
         row=load(path);text=''.join(row['stdout'].split())
         if row['returncode']==0 and re.findall(r'Job<(\d+)>',text)==[cpu] and re.findall(r'Status<([^>]+)>',text)==['DONE']:
             assert re.findall(r'Queue<([^>]+)>',text)==['hpc']
-            assert re.findall(r'JobName<([^>]+)>',text)==['mosaic-chem-full01-cpu']
+            assert re.findall(r'JobName<([^>]+)>',text)==[JOB_PREFIX+'cpu']
             terminal.append({'path':str(path.relative_to(files)),'sha256':sha(path)})
     assert terminal,'Actual recorded same-job CPU DONE proof is required'
     cert_path=files/'cpu-certificate.json'
@@ -121,7 +130,7 @@ def main():
                 row=load(files/relative);compact=''.join(row['stdout'].split())
                 assert row['returncode']==0 and re.findall(r'Job<(\d+)>',compact)==[cpu]
                 assert re.findall(r'Queue<([^>]+)>',compact)==['hpc']
-                assert re.findall(r'JobName<([^>]+)>',compact)==['mosaic-chem-full01-cpu']
+                assert re.findall(r'JobName<([^>]+)>',compact)==[JOB_PREFIX+'cpu']
                 states=re.findall(r'Status<([^>]+)>',compact);assert len(states)==1;observed+=states
         assert observed[-1]=='DONE' and all(state in ['PEND','RUN'] for state in observed[:-1])
     report={'status':'passed_independent_CPU_byte_XML_LSF_schema_audit','source_files':len(manifest['files']),
@@ -134,14 +143,15 @@ def main():
     assert after['manifest_sha256']==pin and after['dependency']=='ended('+cpu+')'
     assert after['argv']==expected_argv('after-cpu',pin,remote_root,remote_source,cpu)
     if any(arm in jobs for arm in ['protenix','boltz']):
-        lsf(files/'after-cpu'/('stdout.'+jobs['after-cpu']+'.log'),jobs['after-cpu'],'mosaic-chem-full01-after-cpu','hpc')
+        lsf(files/'after-cpu'/('stdout.'+jobs['after-cpu']+'.log'),jobs['after-cpu'],JOB_PREFIX+'after-cpu','hpc')
         dispatch=load(files/'after-cpu/gpu-submissions-complete.json')
         assert dispatch['status']=='submitted_not_passed' and dispatch['source_manifest_sha256']==pin
         assert dispatch['external_after']==assessment['external_after']
         gate=dispatch['storage'];assert gate['status']=='passed'
-        assert gate['additional_allowance_bytes']==2*1024**3 and gate['reserve_bytes']==4*1024**3
+        assert gate['additional_allowance_bytes']==0 and gate['reserved_chemistry_validation_bytes']==2*1024**3 and gate['reserve_bytes']==4*1024**3
         assert gate['file_reserve']==100000 and gate['available_bytes']>=gate['required_bytes']
-        assert gate['required_bytes']==gate['whole_original_gate']['work3']['required_bytes']+2*1024**3
+        assert gate['required_bytes']==gate['whole_current_gate']['required_bytes']
+        assert gate['whole_current_gate']['status']=='passed' and gate['original_gate_changed'] is False
         assert gate==load(files/'after-cpu/full-model-storage-two-gpu-dispatch.json')
         report['dispatch_required_bytes']=gate['required_bytes'];report['dispatch_available_bytes']=gate['available_bytes']
     for arm in ['protenix','boltz']:
@@ -153,7 +163,7 @@ def main():
         assert certificate_sha is not None and s['cpu_certificate_sha256']==certificate_sha
         assert dispatch['submissions'][arm]==s
         assert s['argv'][s['argv'].index('-q')+1]=='gpul40s' and s['argv'][s['argv'].index('-n')+1]=='8'
-        assert s['argv'][s['argv'].index('-gpu')+1]=='num=1:mode=exclusive_process'
+        assert s['argv'][s['argv'].index('-gpu')+1]==('num=1:mode=shared:j_exclusive=yes:mps=no' if arm=='boltz' else 'num=1:mode=exclusive_process')
         path=files/arm/'payload/assessment.json'
         if not path.exists():continue
         allocated=load(path)
@@ -164,11 +174,13 @@ def main():
             assert allocated['new_cpu_certificate']['status']=='passed'
             assert allocated['new_cpu_certificate']['sha256']==certificate_sha
             assert allocated['external_before']==assessment['external_before']
-            failed_lsf(files/arm/('stdout.'+job+'.log'),job,'mosaic-chem-full01-'+arm,'gpul40s')
+            failed_lsf(files/arm/('stdout.'+job+'.log'),job,JOB_PREFIX+arm,'gpul40s')
             plan=load(files/'_source/plans'/(arm+'.json'))
-            comparison=load(files/arm/'payload/comparison/assessment.json')
-            assert comparison['status']=='failed' and comparison['original_results_changed'] is False
-            assert comparison['plan_sha256']==sha(files/'_source/plans'/(arm+'.json'))
+            comparison_path=files/arm/'payload/comparison/assessment.json'
+            if comparison_path.exists():
+                comparison=load(comparison_path)
+                assert comparison['status']=='failed' and comparison['original_results_changed'] is False
+                assert comparison['plan_sha256']==sha(files/'_source/plans'/(arm+'.json'))
             nested={}
             for relative in ['payload/comparison/assessment.json',
                              'payload/comparison/combined/assessment.json',
@@ -180,11 +192,14 @@ def main():
                     if 'original_results_changed' in value:assert value['original_results_changed'] is False
                     if 'job_id' in value:assert value['job_id']==job
                     nested[relative]={'sha256':sha(q),'status':value['status'],'error':value.get('error')}
-            study=load(files/arm/'payload/comparison/combined/study/summary.json')
-            assert study['mode']=='validate' and study['source_manifest_sha256']==plan['source']['manifest_sha256']
-            assert study['config_sha256']==plan['inputs']['config']['sha256']
-            baseline=load(files/arm/'payload/comparison/baseline/assessment.json')
-            assert baseline['status'] in ['passed_original_baseline','passed_original_runtime_failure_preserved']
+            study_path=files/arm/'payload/comparison/combined/study/summary.json'
+            if study_path.exists():
+                study=load(study_path)
+                assert study['mode']=='validate' and study['source_manifest_sha256']==plan['source']['manifest_sha256']
+                assert study['config_sha256']==plan['inputs']['config']['sha256']
+            baseline_path=files/arm/'payload/comparison/baseline/assessment.json'
+            baseline=load(baseline_path) if baseline_path.exists() else {'status':'not_completed_no_pass_inferred'}
+            assert baseline['status'] in ['passed_original_baseline','passed_original_runtime_failure_preserved','not_completed_no_pass_inferred','failed']
             report['full_model_comparisons'][arm]={'status':'failed_preserved',
                  'job_id':job,'assessment_sha256':sha(path),
                  'actual_terminal_proof_sha256':sha(files/arm/('stdout.'+job+'.log')),
@@ -195,7 +210,7 @@ def main():
         assert allocated['job_id']==job and allocated['source_manifest_sha256']==pin
         assert allocated['new_cpu_certificate']['status']=='passed' and allocated['new_cpu_certificate']['sha256']==certificate_sha
         assert allocated['external_before']==allocated['external_after']
-        lsf(files/arm/('stdout.'+job+'.log'),job,'mosaic-chem-full01-'+arm,'gpul40s')
+        lsf(files/arm/('stdout.'+job+'.log'),job,JOB_PREFIX+arm,'gpul40s')
         comparison=load(files/arm/'payload/comparison/assessment.json')
         assert sha(files/arm/'payload/comparison/assessment.json')==allocated['comparison_sha256']
         assert comparison['status']=='passed_full_model_comparison'
@@ -219,6 +234,9 @@ def main():
                 assert paired['epsilons']==[.01,.003,.001] and len(paired['points'])==4
                 for point in paired['points']:
                     assert point['status']=='passed'
+                    replay=point['exact_saved_replay'];assert replay['status']=='passed_exact_five_field_replay'
+                    assert replay['stored_probability_substitution'] is False and replay['equality_tolerance'] is None
+                    assert set(replay['field_bytes_sha256'])=={'atom_logits','bond_logits','X','E_upper','key_data'}
                     for kind, raw_key in [('original','original_fd'),('combined','combined_fd')]:
                         assert isinstance(point[raw_key],list) and len(point[raw_key])==2
                         raw_report=load(files/arm/'payload/comparison/combined/paired-checks'/point['label']/(kind+'-fd')/'report.json')

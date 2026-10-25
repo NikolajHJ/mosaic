@@ -7525,3 +7525,47 @@ with original0.001through5000→100at50000/30000 schedules unchanged. Correct
 startup/exact replay and required allocated validation/adoption/full future-byte
 guards must precede production. No saved results, scientific settings, jobs,
 monitor state, DBMol or unrelated files changed; no local numerical work.
+
+## 2026-10-25 Chemistry replay/startup fix retry02 prepared
+
+User explicitly authorized fixing the blockers before chemistry production.
+New owner run chemistry-search-speed/runs/20261025-chemistry-full-model-02
+preserves failed source01/all original studies. Candidate exact saved-device
+five-field replay and Boltz whole-job-exclusive/sharedcompute CUDA coexistence
+are implemented; no equality or native/scientific gate relaxed. Current
+precision02 whole-campaign guard retains original prospective allowances,
+including its2GiB chemistry-validation allocation; new production is excluded.
+Declared385allocatedCPUcases precede independent full-model GPU pilots, each
+8CPU/4GiBslot/oneexclusive-jobL40S/2h. No pass/submission from local AST/bytes.
+First read-only path/resource inspection confirmed fresh retry/adoption paths
+absent; Protenix independent precision29816113 actualRUN, left unchanged.
+No local numerical work, DBMol edits or monitor resume. Full production adopter
+and chemistry-growth budgets still required before50k/30k launches.
+
+Retry02 actual17:42:48UTC: readonly30files staged/sealed manifest05e316a7b1bcceaf286b03231200a2d1f66e3f6a7ce927d4c1e73f08a24f86f9, archive87,179B SHA1958f53d0910ceecd0a65d09055dedc9c6e6b228d41f0520fa5e534666a4854f. CPU29816171/ownendedcallback29816172 actuallysubmitted aftercurrentwholeguard36,344,788,980required/37,682,680,967available,4GiB/100k unchanged.385casesdeclarednotpassed; no nativeGPU/production yet. Alloriginal643/635/source01failed/currentprecision sources/proofs reauthenticated, previousfailedLSFterminal preserved. No cleanup/monitorresume/originalscientificmutation.
+
+Retry02 observed17:49:35UTC: CPU29816171/callback29816172 actualDONE/LSF385rawcasespassed. Independent63-file/source30/CPU/submission/rawLSF audit passed; CPUcertc46f39e679f503720ae31b561b8b3273a1d38c160bf3c7f3d6feba28f2b5c687. ProGPU29816183actualEXIT1 frommetadataown_bytes atomicrename race on prepared_context.json.tmp; no replay/native verdict. BolGPU29816184actualRUN unchanged. Preservefailedsource02; newimmutablePro-onlyscanretry03 planned, all scientificbytes/settings/gates unchanged, no extraBolrestart.
+
+## 2026-10-25 Pro-only chemistry full-model retry03 prepared
+
+Preserve source02CPU385pass and Pro29816183metadataatomic-renamefailure; leaveBol29816184RUN unchanged. New immutable03 changes only bounded3whole-inventoryretries andcontrollerownership/tests, no skippedbytes/capreduction. Group2GiB counts old02+new03 retainedbytes; currentwholeprecision02native/report/diagnostic/control forecasts,4GiB/100k/freshquota/staleBASE unchanged.388allocatedCPUcases thenONLYnewProvalidation; all13numericaladapter/planbytes/source643/config/FD/paired/replay/runtime identical02. No pass/job/productionfrompreparation.
+
+Retry03 actual17:55:04UTC source30sealed manifest8480a39c05d612d1a80ea1892d816c9429fcd471e97adb31655f8132d9007f31; archive87,881B SHAdcb45f7fbd8ab733fd6d3bed7b380633b92916d1c66d4474b3a2dd2d5fbbe99b. CPU29816234/ownendedcallback29816235 submitted,388declarednotpassed. Currentwholeguardpassed36,344,788,980required/36,600,082,031available; jointold02/new03cap2GiB,4GiB/100k preserved. OnlyProvalidationdispatch allowed; Bol29816184leftunchanged.
+
+Retry03 observed18:00:17UTC: CPU29816234/callback29816235 actualDONE/LSF388rawcases passed, no errors/failures/skips. Independent39-file/source30/byte/XML/schema audit passed; CPUcert ea6c825017788181a81da3421fc83e16f2d74236914eb588d6b5acb4ce852db7. ProGPU29816284 actualsubmitted/RUN after36,344,788,980required/36,592,704,172available fullguard. Bol29816184 unchanged; source02 actualCUDA resource/coexistence canaries passed, fullnative/speed verdict still pending. No chemistry production submitted.
+
+## 2026-10-25 Prospective chemistry production adoption preparation
+
+New chemistry-production01 prepares94allocatedcontracts and exact per-arm source03Pro/source02Bol adoption, originalstartup/terminal checks and five/three serial10k segments to approved50k/30k. Numericaladapter/plan bytes must agree; settings/saved results unchanged. CPU will wait exact currentlyRUN pilots29816284/29816184; conditional firstsegments only after actualbothsuccessfulpilots, originalready and fresh BOTHfullfuture chemistry forecasts in addition to unchangedcurrentwholeguard. Fullfit unestablished; failedgates preservewaiting-storage and submitnolongs.64MiB owncontrolcap; no local tests/numerics or monitorresume.
+
+## 2026-10-25 Inactive report-copy retirement preparation
+
+Authorized capacity cleanup limited to81enumerated derivedreportcopy/tarduplicate files, atmost571264343logicalbytes, three full laptoparchives/all78regularmembers rehashed. Currentcontroller/source/proofclosure staticaudit found no candidates required; all native results/inputs/models/source/proofoutsideviewer roots/otherprojects andalllaptopviewers retained. PlanSHA9b0781ad7f693aea7484d2f8afaa48f74d9b964cac5e321e23f2e37cd1edce66. No remote deletion frompreparation; freshactualterminal/inactivity/regularsinglelinkidentity/hash/protectedpins requiredbefore each exactunlink,durablejournal. Fullproductioncapacity not resolved by this smallheadroom plan.
+
+Production01 local12file source prepared, manifest54c74c1552e98af2d185d0f07c84f82adffa2246a6b1ec406f17e79590eff458, archive28920B SHAb6c918a5a7a665dc5d3cc69ceabe03a18c6a953f0fdcf73cc14035138ae3140d, planbf6c79049f54235e500cfdd47fe730ad46203572cbc21d5cdbd8ccc376747658. Staticreviewfoundno scientific/serialroutingchange;94fixtures declarednotpassed. Bothfullmodel producerIDs actualknown; fullstorage/native/startup/adoptions remainprerequisites.
+Bol02 observed18:02:49UTC actualDONE/LSF/fullpassedcomparison, actualinitialarrays/keyexact, combinedoriginalsciencechecks passed; comparisonSHAe6e33bb5848981a60e21be546b8f7e1edd51bcecd08cf53f6cd04706ec539b6d. Independent161file/source30/CPU385/rawLSF/schema audit passed. Originalsource02Profailure remainsfailed; no productionadoption yet.
+
+Production01 actual18:04:58UTC stagedread-only12files andsubmittedCPU29816320/ownCPU+bothpilot-endedcallback29816321, exactbothactualpilotdependencies29816284/29816184. Initialguardpassed36,411,736,221required/36,498,200,756available including64MiBowncontrol; thisdoesNOTadmitfuturechemistrygrowth. No productionIDs, CPU94pass or ProGPUverdict yet. Alloriginalsettings/results unchanged.
+
+Report-copyretirement completed18:11:38UTC:81exactbackedupfiles/571264343logicalbytes, no changed/absent/link aliases or folders removed.96rawauditfiles rehashed and81durableintents/results reconciled;83actualinactivitychecks. All9sourceinventories+originalprotectedclosure matched before/after; samefullvalidationstorageguardpassed. Locallaptoparchives/all78members/viewers/editions retained. No native study/source/proofoutsideviewer/model/context/cache/env/otherproject changes. Fullproductioncapacity stillunestablished; cleanup is0.532GiB headroom, not long-run admission.
+Production initial27-file byte/source/archive/actualresources/dependency audit passed a0c07d780cd57e8f4b2b3954edfe1936278bfb8dab804aa519a1992f0a572c64; CPU29816320/callback29816321 queued, CPU notcertified, no productionIDs or unknownmarkers.

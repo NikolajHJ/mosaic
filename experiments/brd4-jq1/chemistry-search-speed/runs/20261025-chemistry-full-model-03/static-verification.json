@@ -1,0 +1,13 @@
+{
+  "status": "passed_static_archive_and_exact_scientific_adapter_byte_parity",
+  "changed_members": [
+    "protocol.md",
+    "scripts/full_model_ops.py",
+    "tests/test_full_model_ops.py",
+    "tests/test_full_model_retry.py"
+  ],
+  "manifest_sha256": "8480a39c05d612d1a80ea1892d816c9429fcd471e97adb31655f8132d9007f31",
+  "source_files": 30,
+  "CPU_cases_declared": 388,
+  "local_numerical_work": false
+}

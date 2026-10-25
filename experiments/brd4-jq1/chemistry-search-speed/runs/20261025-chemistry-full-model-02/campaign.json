@@ -1,0 +1,320 @@
+{
+  "status": "Boltz_combined_GPU_passed_Pro03_retry_running",
+  "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-02",
+  "source_manifest_sha256": "05e316a7b1bcceaf286b03231200a2d1f66e3f6a7ce927d4c1e73f08a24f86f9",
+  "source_files": 30,
+  "archive_sha256": "1958f53d0910ceecd0a65d09055dedc9c6e6b228d41f0520fa5e534666a4854f",
+  "archive_bytes": 87179,
+  "CPU_cases_declared": 385,
+  "jobs": {
+    "cpu": "29816171",
+    "after-cpu": "29816172",
+    "protenix": "29816183",
+    "boltz": "29816184"
+  },
+  "cpu_submission": {
+    "status": "submitted",
+    "phase": "cpu",
+    "argv": [
+      "bsub",
+      "-q",
+      "hpc",
+      "-n",
+      "16",
+      "-R",
+      "span[hosts=1]",
+      "-R",
+      "rusage[mem=2GB]",
+      "-W",
+      "02:00",
+      "-J",
+      "mosaic-chem-full02-cpu",
+      "-oo",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-02/cpu/stdout.%J.log",
+      "-eo",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-02/cpu/stderr.%J.log",
+      "bash",
+      "-l",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-release-02/source/scripts/full_model_stage.lsf",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-release-02/source",
+      "05e316a7b1bcceaf286b03231200a2d1f66e3f6a7ce927d4c1e73f08a24f86f9",
+      "cpu"
+    ],
+    "dependency": null,
+    "manifest_sha256": "05e316a7b1bcceaf286b03231200a2d1f66e3f6a7ce927d4c1e73f08a24f86f9",
+    "submitted_utc": "2026-10-25T17:42:48.406185+00:00",
+    "returncode": 0,
+    "stdout": "Job <29816171> is submitted to queue <hpc>.\n",
+    "stderr": "",
+    "job_id": "29816171"
+  },
+  "after_cpu_submission": {
+    "status": "submitted",
+    "phase": "after-cpu",
+    "argv": [
+      "bsub",
+      "-q",
+      "hpc",
+      "-n",
+      "1",
+      "-R",
+      "span[hosts=1]",
+      "-R",
+      "rusage[mem=2GB]",
+      "-W",
+      "00:20",
+      "-J",
+      "mosaic-chem-full02-after-cpu",
+      "-oo",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-02/after-cpu/stdout.%J.log",
+      "-eo",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-02/after-cpu/stderr.%J.log",
+      "-w",
+      "ended(29816171)",
+      "bash",
+      "-l",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-release-02/source/scripts/full_model_stage.lsf",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-release-02/source",
+      "05e316a7b1bcceaf286b03231200a2d1f66e3f6a7ce927d4c1e73f08a24f86f9",
+      "after-cpu"
+    ],
+    "dependency": "ended(29816171)",
+    "manifest_sha256": "05e316a7b1bcceaf286b03231200a2d1f66e3f6a7ce927d4c1e73f08a24f86f9",
+    "submitted_utc": "2026-10-25T17:42:48.835255+00:00",
+    "returncode": 0,
+    "stdout": "Job <29816172> is submitted to queue <hpc>.\n",
+    "stderr": "",
+    "job_id": "29816172"
+  },
+  "preflight_storage": {
+    "status": "passed",
+    "whole_current_gate": {
+      "status": "passed",
+      "parent_gate": {
+        "status": "passed",
+        "whole_original_gate": {
+          "status": "passed",
+          "phase": "precision",
+          "version": "selected-nonchem-full-storage-v1",
+          "scope": "All selected full remaining projections; deferred chemistry gets no execution/future admission; every existing byte retained",
+          "reserve_bytes": 4294967296,
+          "file_reserve": 100000,
+          "full_selected_production_admission": true,
+          "matrix_stride": 20,
+          "loss_stride": 1,
+          "historical_failed_gates_changed": false,
+          "deferred_arms": [
+            {
+              "profile": "boltz30k",
+              "arm": "boltz2_chemistry",
+              "future_admission": false,
+              "production_absent": true,
+              "terminal_callback": {
+                "job_id": "29805959",
+                "status": "Done",
+                "proof": {
+                  "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/boltz2_chemistry-after-native-0000/stdout.29805959.log",
+                  "bytes": 2330,
+                  "sha256": "b1aaa8a04bf290bcb2efbc8d3e0e7bfab9ca77b636073b7d547ca09ae5bbecc7"
+                },
+                "scheduler_state_invented": false
+              }
+            },
+            {
+              "profile": "protenix50k40k",
+              "arm": "random",
+              "future_admission": false,
+              "production_absent": true,
+              "terminal_callback": {
+                "job_id": "29806665",
+                "status": "Exited",
+                "proof": {
+                  "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/random-after-native-0000/stdout.29806665.log",
+                  "bytes": 2320,
+                  "sha256": "09a63bb6cd921b6d77b70a4acdc6e7a5d92f8daf044b977b5b72d81cce254f44"
+                },
+                "scheduler_state_invented": false
+              }
+            }
+          ],
+          "selected": {
+            "boltz30k": {
+              "full": 3319422138,
+              "current": 119387010,
+              "remaining": 3200035128,
+              "unit_bytes": 32537
+            },
+            "dbmol10k": {
+              "full": 4337027072,
+              "current": 86352736,
+              "remaining": 4250674336,
+              "unit_bytes": 41074
+            },
+            "protenix50k40k": {
+              "full": 4388251664,
+              "current": 426230196,
+              "remaining": 3962021468,
+              "unit_bytes": 23182
+            }
+          },
+          "historical_remaining": {
+            "protenix": 428045250,
+            "boltz2": 746483944,
+            "boltz2_chemistry": 2581331460
+          },
+          "metadata_controls": {
+            "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-pro02-adoption-04": 288301,
+            "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-pro02-adoption-06": 317785,
+            "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-selected-01": 205456,
+            "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-01": 204608,
+            "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-02": 304598
+          },
+          "noise_caps": {
+            "/work3/s234818/mosaic/runs/20261023-protenix-noisy-01": 4955,
+            "/work3/s234818/mosaic/runs/20261025-protenix-noisy-05": 314090599
+          },
+          "retired_noise_current_bytes": 1826,
+          "retired_noise_future_admission": false,
+          "retained_learned_prior_allowance_bytes": 1073741824,
+          "new_metadata_release_allowance_bytes": 1073741824,
+          "external_capsules": [
+            {
+              "path": "/work3/s234818/mosaic/runs/20261023-protenix-noisy-01",
+              "bytes": 4955
+            },
+            {
+              "path": "/work3/s234818/mosaic/runs/20261024-protenix-noisy-04",
+              "bytes": 1826
+            },
+            {
+              "path": "/work3/s234818/mosaic/runs/20261025-protenix-noisy-05",
+              "bytes": 314090599
+            },
+            {
+              "path": "/work3/s234818/mosaic/releases/20261023-protenix-noisy-01",
+              "bytes": 47431694
+            },
+            {
+              "path": "/work3/s234818/mosaic/releases/20261023-protenix-noisy-01.tar.gz",
+              "bytes": 39636303
+            }
+          ],
+          "projected_bytes": 27201206260,
+          "work3": {
+            "status": "passed",
+            "filesystem": "work3",
+            "raw_quota": "HPE-Storage-Servers (disks, storagepool 1): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nHPE-Storage-Servers (NVME, storagepool 2): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (disks, storagepool 3): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks, storagepool 4): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks added in 2024, storagepool 5): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (NVMEs added in 2024, storagepool 6): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||   53.69 GiB|  100.00 GiB||   420435| 20000000\n\n",
+            "quota": {
+              "finite_pools": [
+                {
+                  "used_bytes_upper": 57982058496,
+                  "hard_bytes_lower": 107374182400,
+                  "remaining_bytes": 49392123904,
+                  "remaining_files": 19579565
+                }
+              ],
+              "available_bytes_lower": 49392123904,
+              "available_files_lower": 19579565
+            },
+            "projected_bytes": 27201206260,
+            "stale_bytes_subtracted": 11695507116,
+            "disk_free_bytes": 549213422747648,
+            "available_bytes_conservative": 37696616788,
+            "required_bytes": 31496173556,
+            "reserve_bytes": 4294967296,
+            "file_reserve": 100000,
+            "filesystem_inode_observation": {
+              "f_files": 0,
+              "f_ffree": 0,
+              "f_favail": 0
+            },
+            "available_files_lower": 19579565,
+            "filesystem_inode_reporting": "unreported_all_zero",
+            "file_headroom_scope": "Mandatory minimum of all authenticated finite user-quota pools",
+            "inode_limitation": "All-zero statvfs tuple supplies no independent filesystem inode proof",
+            "limitation": "Observations are conservative budget checks, not storage reservations"
+          },
+          "limitation": "Fresh conservative observation, not a reservation; all-zero filesystem inode counters remain unreported supplemental evidence"
+        },
+        "projection_excess": {},
+        "positive_projection_excess_bytes": 0,
+        "additional_allowance_bytes": 4563402752,
+        "required_bytes": 36059576308,
+        "available_bytes": 37696616788,
+        "reserve_bytes": 4294967296,
+        "file_reserve": 100000,
+        "original_gate_changed": false,
+        "scope": "Whole original forecasts plus report1GiB/chemistry2GiB/diagnostics768MiB/newcontrol512MiB and positive empirical excess",
+        "new_metadata_bytes": 23955490
+      },
+      "original_gate_changed": false,
+      "output_cap_bytes": 268435456,
+      "metadata_cap_bytes": 16777216,
+      "additional_allowance_bytes": 285212672,
+      "required_bytes": 36344788980,
+      "available_bytes": 37682680967,
+      "extra_conservative_current_tree_charge": {
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-forensics-01": 13171166,
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-forensics-release-01": 216883,
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-02": 269347,
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-release-02": 278425
+      },
+      "reserve_bytes": 4294967296,
+      "file_reserve": 100000,
+      "output_bytes": 35278,
+      "metadata_bytes": 512494
+    },
+    "additional_allowance_bytes": 0,
+    "reserved_chemistry_validation_bytes": 2147483648,
+    "required_bytes": 36344788980,
+    "available_bytes": 37682680967,
+    "reserve_bytes": 4294967296,
+    "file_reserve": 100000,
+    "original_gate_changed": false,
+    "scope": "Current whole native/report/chemistry/diagnostic/control/precision guard; uses its existing2GiB validation allowance; no chemistry production admission",
+    "new_owned_bytes": 432924
+  },
+  "source": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-release-02/source",
+  "production_submitted": false,
+  "native_pass_established": false,
+  "monitor_remains_paused": true,
+  "original_results_changed": false,
+  "local_numeric_work": false,
+  "CPU_status": "actual_DONE_LSF_385_raw_cases_passed",
+  "CPU_certificate_sha256": "c46f39e679f503720ae31b561b8b3273a1d38c160bf3c7f3d6feba28f2b5c687",
+  "CPU_XML_sha256": "a81e15b2be43a3e677002fa5ebef7ee08e1ddf6f75f947f705b2c82110e33cc2",
+  "independent_verification_sha256": "da7e980c3fdf371a7ca4839006e768b88b90e69143980a3186e8fef91880c0c2",
+  "Pro_GPU_status": "actual_EXIT1_persisted_metadata_atomic_rename_race",
+  "Boltz_GPU_status": "actual_RUN_no_final_verdict",
+  "latest_observed_utc": "2026-10-25T17:49:35.956838+00:00",
+  "CPU_cases_actual": 385,
+  "cpu_certificate_sha256": "c46f39e679f503720ae31b561b8b3273a1d38c160bf3c7f3d6feba28f2b5c687",
+  "latest_verification": {
+    "path": "results\\hpc\\20261025-chemistry-full-model-02\\observation-boltz-progress-03\\verification.json",
+    "sha256": "b9201ecc00b671571319d420269742c68d00469e49677d89f50477c5518140b0"
+  },
+  "full_model_comparisons": {
+    "protenix": {
+      "status": "failed_preserved",
+      "job_id": "29816183",
+      "assessment_sha256": "18f05047968ba2c29ee4f208c928464b3780fdf617afbac6fd82d01b7f7042de",
+      "actual_terminal_proof_sha256": "b24bad756a213e5530baa7a09e69e4dd4493bd2d2dd92988026107c302b5e83d",
+      "baseline_classification": "not_completed_no_pass_inferred",
+      "nested_failures": {
+        "payload/comparison/assessment.json": {
+          "sha256": "248d6ccfe516782370cf5267e815125595e234f654fb0d7bc3ae37bdf849cc4f",
+          "status": "failed",
+          "error": "InterruptedError: Allocated full-model pilot parent received SIGTERM"
+        }
+      },
+      "production_readiness_passed": false,
+      "scope": "Compact byte/JSON/source/CPU/submission/actual failed LSF audit; no local numerical evaluation or passed GPU comparison"
+    },
+    "boltz": {
+      "status": "passed_full_model_comparison",
+      "assessment_sha256": "00d86c3697581bc2589962a3e00390e04281074becc29b4475d5ce6aa8738f0b",
+      "comparison_sha256": "e6e33bb5848981a60e21be546b8f7e1edd51bcecd08cf53f6cd04706ec539b6d",
+      "scope": "Raw native arrays remain remotely authenticated references; compact original reports/LSF/schema verified locally"
+    }
+  }
+}

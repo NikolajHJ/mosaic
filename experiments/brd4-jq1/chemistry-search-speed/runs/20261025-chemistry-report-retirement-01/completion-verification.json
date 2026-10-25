@@ -1,0 +1,28 @@
+{
+  "status": "passed_local_archive_allmember_and_remote_audit_journal_verification",
+  "plan_sha256": "9b0781ad7f693aea7484d2f8afaa48f74d9b964cac5e321e23f2e37cd1edce66",
+  "helper_sha256": "a474a81a1d8640ad7ddaca37ac138d7c33378568c4c6621c2aac4435b4142bf8",
+  "completion": {
+    "activity_checks": 83,
+    "completed_utc": "2026-10-25T18:11:38.728703+00:00",
+    "directories_removed": 0,
+    "elapsed_seconds": 87.12380435795058,
+    "full_production_capacity_resolved": false,
+    "original_scientific_results_changed": false,
+    "plan_sha256": "9b0781ad7f693aea7484d2f8afaa48f74d9b964cac5e321e23f2e37cd1edce66",
+    "post_retirement_validation_storage_status": "passed",
+    "protected_inputs_unchanged": true,
+    "remote_root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-report-retirement-01",
+    "removed_files": 81,
+    "removed_logical_bytes": 571264343,
+    "retained_files": [],
+    "status": "completed_exact_report_copy_retirement",
+    "version": "mosaic-derived-report-copy-retirement-v1"
+  },
+  "audit_files": 96,
+  "audit_sha256": "d7356d417e96dfab396c7efcebe2f84d5bf70304f0eb5d27f3dbc14b5d6a7071",
+  "journal_sha256": "43a1984476b78f9197347a64d912f579a8b80b033c2152b9e2bc7a512b844120",
+  "sources_before_sha256": "8b218b400502a092c99cb52f36642a9ae1ae75316122a5af6723fa8322dced0a",
+  "sources_after_sha256": "8b218b400502a092c99cb52f36642a9ae1ae75316122a5af6723fa8322dced0a",
+  "backup_local_verification_sha256": "ec654ca9cd997cfd3b716d90d8456530dcea3d8e5facfe8dcb440dbd3b819ccf"
+}

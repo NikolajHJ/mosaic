@@ -1,0 +1,8 @@
+{
+  "status": "passed_local_AST_byte_archive_input_schema_only",
+  "files": 30,
+  "manifest_sha256": "05e316a7b1bcceaf286b03231200a2d1f66e3f6a7ce927d4c1e73f08a24f86f9",
+  "archive_sha256": "1958f53d0910ceecd0a65d09055dedc9c6e6b228d41f0520fa5e534666a4854f",
+  "CPU_cases_declared": 385,
+  "scientific_tests_run": false
+}

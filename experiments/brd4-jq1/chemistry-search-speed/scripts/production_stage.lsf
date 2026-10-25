@@ -1,0 +1,37 @@
+#!/bin/bash
+set -euo pipefail
+[[ $# == 5 && -n "${LSB_JOBID:-}" ]]
+source_root=$1
+manifest=$2
+phase=$3
+arm=$4
+index=$5
+module load python3/3.12.11
+export PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1 JAX_ENABLE_X64=0
+export XLA_PYTHON_CLIENT_PREALLOCATE=false JAX_ENABLE_COMPILATION_CACHE=false
+export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1
+export HF_HUB_OFFLINE=1 HF_HUB_DISABLE_TELEMETRY=1
+if [[ "$phase" == native || "$phase" == segment ]]; then
+  [[ "$LSB_QUEUE" == gpul40s && "$LSB_DJOB_NUMPROC" == 8 ]]
+  module load cuda/12.9.1 cudnn/v9.13.0.50-prod-cuda-12.X
+else
+  [[ "$LSB_QUEUE" == hpc ]]
+  export CUDA_VISIBLE_DEVICES=""
+fi
+export JAX_PLATFORMS=cpu
+science_root=/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source
+/work3/s234818/mosaic/envs/protenix-tiny/bin/python - "$source_root" "$manifest" "$science_root" <<'PY'
+import hashlib,json,sys
+from pathlib import Path
+source=Path(sys.argv[1]);pin=sys.argv[2]
+assert not source.is_symlink() and hashlib.sha256((source/'source_manifest.json').read_bytes()).hexdigest()==pin
+manifest=json.loads((source/'source_manifest.json').read_bytes())
+for name in ('scripts/production_ops.py','scripts/production_contract.py'):
+    assert hashlib.sha256((source/name).read_bytes()).hexdigest()==manifest['files'][name]
+science=Path(sys.argv[3]);old=science/'source_manifest.json'
+assert hashlib.sha256(old.read_bytes()).hexdigest()=='da9db6821d26b884ca1749303fc8e0b0095bd9ee7cbd1b427cdcf1b22eec6562'
+name='scripts/hpc/boltz_node_tmpdir.sh'
+assert hashlib.sha256((science/name).read_bytes()).hexdigest()==json.loads(old.read_bytes())['files'][name]
+PY
+source "$science_root/scripts/hpc/boltz_node_tmpdir.sh"
+/work3/s234818/mosaic/envs/protenix-tiny/bin/python -u "$source_root/scripts/production_ops.py" "$manifest" "$phase" "$arm" "$index"

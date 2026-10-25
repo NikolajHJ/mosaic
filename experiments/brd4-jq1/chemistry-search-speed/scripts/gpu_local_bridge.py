@@ -17,6 +17,7 @@ import threading
 import time
 
 from gpu_local_worker import VERSION, encode, decode
+from gpu_process_admission import capture_gpu_admission, coexistence_canary
 
 _INSTALLED = False
 
@@ -37,6 +38,7 @@ class LocalGPUClient:
                    XDG_CACHE_HOME=str(directory / 'cache'))
         self.process = None
         try:
+            self.allocation = capture_gpu_admission(directory)
             self.process = subprocess.Popen([sys.executable, '-u', str(Path(__file__).with_name('gpu_local_worker.py'))],
                                             stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=self.stderr,
                                             text=True, bufsize=1, env=env)
@@ -44,6 +46,7 @@ class LocalGPUClient:
             assert self.ready['version'] == VERSION and self.ready['event'] == 'ready'
             assert self.ready['device']['platform'] == 'gpu' and 'L40S' in self.ready['device']['kind']
             assert self.ready['model_or_search_loaded'] is False
+            self.coexistence = coexistence_canary(self, directory)
         except BaseException:
             if self.process is not None:
                 if self.process.poll() is None:
@@ -105,7 +108,8 @@ class LocalGPUClient:
                     self.process.kill(); self.process.wait(timeout=15)
                 self.stderr.close()
                 (self.directory / 'receipt.json').write_text(json.dumps({'ready': self.ready,
-                    'stats': self.stats, 'closed': True, 'returncode': self.process.returncode}, indent=2) + '\n')
+                    'stats': self.stats, 'allocation': self.allocation, 'coexistence': self.coexistence,
+                    'closed': True, 'returncode': self.process.returncode}, indent=2) + '\n')
 
 
 def remote_local(client):
@@ -157,6 +161,8 @@ def install_offloaded_matrix_loss(directory):
 
         loss._compiled_terms = jax.jit(terms, static_argnames=('order_indices',))
         yield {'version': VERSION, 'stats': client.stats, 'ready': client.ready,
+               'GPU_process_admission': getattr(client, 'allocation', None),
+               'GPU_process_coexistence': getattr(client, 'coexistence', None),
                'native_model_worker_unchanged': True, 'parent_optimizer_backend': 'cpu',
                'native_oracle_replaced': False, 'probability_or_target_cache': False}
     finally:

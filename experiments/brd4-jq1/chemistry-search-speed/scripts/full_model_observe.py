@@ -9,13 +9,13 @@ import shlex
 import subprocess
 
 REPO = Path(__file__).resolve().parents[4]
-LOCAL = REPO / 'results/hpc/20261025-chemistry-full-model-01'
+LOCAL = REPO / 'results/hpc/20261025-chemistry-full-model-03'
 PROGRAM = r'''
 from datetime import datetime,timezone
 import base64,hashlib,json,os,stat,subprocess
 from pathlib import Path
 base=Path('/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01')
-root=base/'chemistry-full-model-01';source=base/'chemistry-full-model-release-01/source'
+root=base/'chemistry-full-model-03';source=base/'chemistry-full-model-release-03/source'
 assert root.is_dir() and source.is_dir() and not root.is_symlink() and not source.is_symlink()
 jobs=json.loads((root/'jobs.json').read_bytes()); assert set(jobs)<=set(['cpu','after-cpu','protenix','boltz'])
 q=subprocess.run(['bjobs','-l',*list(jobs.values())],capture_output=True,text=True,timeout=30)
@@ -75,7 +75,9 @@ def main():
     (out/'byte-verification.json').write_text(json.dumps({'status':'passed_compact_byte_transfer_only',
                    'files': verified, 'raw_sha256': receipt['raw_sha256'], 'scientific_pass_claim':False}, indent=2)+'\n')
     print(json.dumps({'jobs':data['jobs'],'files':len(verified),'captured_utc':data['captured_utc']}))
-    print(data['scheduler']['stdout'][-10000:]); print(data['scheduler']['stderr'])
+    import re
+    compact=''.join(data['scheduler']['stdout'].split())
+    print(json.dumps({'actual_scheduler_rows':re.findall(r'Job<(\d+)>.*?Status<([^>]+)>',compact),'scheduler_stderr':data['scheduler']['stderr']}))
 
 
 if __name__ == '__main__':

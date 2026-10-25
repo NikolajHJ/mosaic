@@ -24,19 +24,23 @@ import time
 import xml.etree.ElementTree as ET
 
 
-VERSION = "chemistry-full-model-source-v1"
+VERSION = "chemistry-full-model-source-v3"
 BASE = Path("/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01")
-ROOT = BASE / "chemistry-full-model-01"
-SOURCE = BASE / "chemistry-full-model-release-01/source"
+ROOT = BASE / "chemistry-full-model-03"
+SOURCE = BASE / "chemistry-full-model-release-03/source"
 ADMISSION = BASE / "nonchem-stride20-startup-release-03/source"
 ADMISSION_SHA = "704fab033d97342a14dc12b58dc32df44874232c5c30aad47c4d02041a502aab"
 SCIENCE = BASE / "protenix-extended-release-03/source"
 PYTHON = "/work3/s234818/mosaic/envs/protenix-tiny/bin/python"
 LIMIT = 2 * 1024**3
+PRIOR_OWNED_ROOTS = (BASE / "chemistry-full-model-02", BASE / "chemistry-full-model-release-02")
+CURRENT_ADMISSION = BASE / "protenix-endpoint-fix-release-02/source"
+CURRENT_ADMISSION_SHA = "09f759a7befb8a7b8f0e1d203e15acf939126fba493b30e6a2bf9cd2eea2216b"
 PHASES = ("cpu", "after-cpu", "protenix", "boltz")
 CPU_MODULES = (
     "test_speed", "test_hybrid", "test_gpu_matrix", "test_oracle_profile",
     "test_full_model_pilot", "test_gpu_local_bridge", "test_full_model_ops",
+    "test_full_model_replay", "test_gpu_process_admission", "test_full_model_retry",
 )
 
 
@@ -166,6 +170,26 @@ def xml_cases(path, expected):
     return actual
 
 
+def previous_failures(manifest, bindings):
+    expected={"protenix":"29811883","boltz":"29811884"}
+    require(manifest.get("failed_predecessors")==expected,"Failed predecessor scope changed")
+    for arm,job in expected.items():
+        parent=BASE/"chemistry-full-model-01"/arm
+        assessment=parent/"payload/assessment.json";log=parent/("stdout."+job+".log")
+        require(str(assessment) in bindings and str(log) in bindings,"Missing exact terminal predecessor bindings")
+        row=json.loads(assessment.read_text());raw=log.read_text();compact="".join(raw.split())
+        require(row.get("status")=="failed" and row.get("job_id")==job
+                and row.get("source_manifest_sha256")=="347e753d481ec3d584f3b0b05cc2801ee745036ee17638d7c3672fc2ca2cba16"
+                and row.get("production_authorized") is False,"Predecessor was not the original failed validation")
+        require(compact.count("Subject:Job")==1
+                and re.findall(r"Subject:Job(\d+):<([^>]+)>incluster<([^>]+)>Exited",compact)
+                   ==[(job,"mosaic-chem-full01-"+arm,"dcc")]
+                and re.findall(r"inqueue<([^>]+)>",compact)==["gpul40s"]
+                and re.findall(r"Exitedwithexitcode(\d+)\.",compact)==["1"],
+                "Retained previous pilot has no authentic terminal failure")
+    return expected
+
+
 def external(manifest):
     """Rehash unchanged sources, original readiness/results and every input."""
     require(manifest.get("version") == VERSION, "Wrong full-model source schema")
@@ -215,63 +239,78 @@ def external(manifest):
                 and json.loads(paths[2].read_text()).get("status") == benchmark_status,
                 "Previous saved-input benchmark differs")
         _lsf_success(paths[3].read_text(), job, name, queue)
+    failed=previous_failures(manifest,by_path)
     plans = _plans(manifest)
     return {"parent_sources": len(parents), "preserved_proofs": len(preserved),
             "recursive_original_proofs": recursively_verified,
             "plans": {arm: sha(SOURCE / "plans" / (arm + ".json")) for arm in plans},
+            "failed_predecessors_preserved":failed,
             "original_results_changed": False}
 
 
 def own_bytes():
-    """Count only new owned roots, once; internal alias metadata is not traversed."""
-    roots = [ROOT, SOURCE.parent]
-    total = 0
-    for root in roots:
-        if not root.exists():
-            continue
-        require(not root.is_symlink() and root.is_dir(), "Owned output root is not a real directory")
-        for directory, directories, files in os.walk(root, followlinks=False):
-            for name in directories + files:
-                path = Path(directory) / name
-                info = path.lstat()
-                if stat.S_ISLNK(info.st_mode):
-                    resolved = path.resolve(strict=True)
-                    require(any(resolved.is_relative_to(item.resolve()) for item in roots if item.exists()),
-                            "Owned output contains external alias")
-                    total += info.st_size
-                elif stat.S_ISREG(info.st_mode):
-                    total += info.st_size
-                else:
-                    require(stat.S_ISDIR(info.st_mode), "Owned output contains a special file")
-    return total
+    """Bound the entire replacement group; retry whole scans on atomic turnover.
+
+    A vanished temporary file is not a zero-byte file. Rewalk every root up to
+    three times, preserving the hard cap and rejecting continued instability.
+    No file is ignored, removed or moved by this metadata accounting helper.
+    """
+    roots = [ROOT, SOURCE.parent, *PRIOR_OWNED_ROOTS]
+    roots = [p for p in roots if not any(p != q and p.is_relative_to(q) for q in roots)]
+    for attempt in range(3):
+        total=0
+        try:
+            for root in roots:
+                if not root.exists():continue
+                require(not root.is_symlink() and root.is_dir(),"Owned output root is not a real directory")
+                for directory,directories,files in os.walk(root,followlinks=False):
+                    for name in directories+files:
+                        path=Path(directory)/name;info=path.lstat()
+                        if stat.S_ISLNK(info.st_mode):
+                            resolved=path.resolve(strict=True)
+                            require(any(resolved.is_relative_to(item.resolve()) for item in roots if item.exists()),"Owned output contains external alias")
+                            total+=info.st_size
+                        elif stat.S_ISREG(info.st_mode):total+=info.st_size
+                        else:require(stat.S_ISDIR(info.st_mode),"Owned output contains a special file")
+            return total
+        except FileNotFoundError:
+            if attempt==2:raise
+            time.sleep(.01)
 
 
 def storage(parent, phase):
-    verify(ADMISSION, ADMISSION_SHA)
-    source = str(ADMISSION)
-    if source not in sys.path:
-        sys.path.insert(0, source)
-    loaded = sys.modules.get("selected_storage")
-    require(loaded is None or Path(loaded.__file__).resolve() == (ADMISSION / "selected_storage.py").resolve(),
-            "An unverified storage module is already imported")
-    from selected_storage import storage_gate
+    """Retain the current whole-campaign guard and its reserved chemistry cap.
 
-    original = storage_gate(parent, phase)
-    work3 = original["work3"]
-    record = {
-        "status": "failed", "whole_original_gate": original, "additional_allowance_bytes": LIMIT,
-        "required_bytes": work3["required_bytes"] + LIMIT,
-        "available_bytes": work3["available_bytes_conservative"],
-        "reserve_bytes": 4 * 1024**3, "file_reserve": 100000,
-        "scope": "Unchanged full original campaign budget plus separate joint full-model allowance",
-    }
+    The pinned continuation guard already funds2GiB of chemistry-validation
+    future growth, in addition to all native forecasts and newer precision
+    validation. This sole replacement validation uses that existing allowance;
+    no production chemistry growth is admitted here. Prior failed pilot jobs
+    are terminal and their entire retained bytes remain in the containing BASE
+    stale-quota charge. Nothing is deleted or discounted to obtain admission.
+    """
+    prior_manifest=verify(CURRENT_ADMISSION,CURRENT_ADMISSION_SHA)
+    require(len(prior_manifest["files"])==14,"Current whole-campaign guard changed")
+    prior_module=_module(CURRENT_ADMISSION / "scripts/protenix_precision_ops.py", "_full_model_current_admission")
+    kind="preflight" if phase=="preflight" else "dispatch" if phase=="two-gpu-dispatch" else "entry"
+    prior=prior_module.storage(parent,kind)
+    retained=prior["parent_gate"]
+    record={"status":"failed","whole_current_gate":prior,
+        "additional_allowance_bytes":0,"reserved_chemistry_validation_bytes":LIMIT,
+        "required_bytes":prior["required_bytes"],"available_bytes":prior["available_bytes"],
+        "reserve_bytes":4*1024**3,"file_reserve":100000,"original_gate_changed":False,
+        "scope":"Current whole native/report/chemistry/diagnostic/control/precision guard; uses its existing2GiB validation allowance; no chemistry production admission"}
     try:
-        record["new_owned_bytes"] = own_bytes()
-        require(record["new_owned_bytes"] < LIMIT, "Combined new source/output cap exceeded")
-        require(record["available_bytes"] >= record["required_bytes"], "Full original plus new pilot storage does not fit")
-        record["status"] = "passed"
+        require(prior["status"]=="passed" and retained["status"]=="passed"
+                and prior["reserve_bytes"]==4*1024**3 and prior["file_reserve"]==100000,
+                "Current whole-campaign guard/reserves did not pass")
+        require(retained["additional_allowance_bytes"]==1024**3+LIMIT+768*1024**2+512*1024**2,
+                "Current original chemistry-validation allowance is absent")
+        record["new_owned_bytes"]=own_bytes()
+        require(record["new_owned_bytes"]<LIMIT,"Replacement validation source/output cap exceeded")
+        require(record["available_bytes"]>=record["required_bytes"],"Current whole-campaign storage does not fit")
+        record["status"]="passed"
     finally:
-        write(Path(parent) / ("full-model-storage-" + phase + ".json"), record)
+        write(Path(parent)/("full-model-storage-"+phase+".json"),record)
     return record
 
 
@@ -283,13 +322,13 @@ def resources(phase):
     if phase == "after-cpu":
         return ["-q", "hpc", "-n", "1", *common, "-R", "rusage[mem=2GB]", "-W", "00:20"]
     return ["-q", "gpul40s", "-n", "8", *common, "-R", "rusage[mem=4GB]",
-            "-gpu", "num=1:mode=exclusive_process", "-W", "02:00"]
+            "-gpu", ("num=1:mode=shared:j_exclusive=yes:mps=no" if phase=="boltz" else "num=1:mode=exclusive_process"), "-W", "02:00"]
 
 
 def argv(phase, pin, dependency=None):
     require(re.fullmatch("[a-f0-9]{64}", pin or "") is not None, "Invalid actual submission source pin")
     parent = ROOT / phase
-    command = ["bsub", *resources(phase), "-J", "mosaic-chem-full01-" + phase,
+    command = ["bsub", *resources(phase), "-J", "mosaic-chem-full03-" + phase,
                "-oo", str(parent / "stdout.%J.log"), "-eo", str(parent / "stderr.%J.log")]
     if dependency is not None:
         require(phase == "after-cpu" and re.fullmatch(r"ended\([1-9]\d*\)", dependency) is not None,
@@ -383,7 +422,7 @@ def wait_cpu_terminal(query, job, *, record, pause=lambda: time.sleep(5), maximu
     for index in range(maximum):
         raw = query(job)
         record(index, raw)
-        if _terminal_status(raw, job, "mosaic-chem-full01-cpu") == "DONE":
+        if _terminal_status(raw, job, "mosaic-chem-full03-cpu") == "DONE":
             return raw
         if index + 1 < maximum:
             pause()
@@ -408,7 +447,7 @@ def cpu_terminal(pin, manifest):
         if path.exists() and "Successfully completed." in path.read_text():
             break
         time.sleep(1)
-    _lsf_success(path.read_text(), job, "mosaic-chem-full01-cpu")
+    _lsf_success(path.read_text(), job, "mosaic-chem-full03-cpu")
     assessment_path = ROOT / "cpu/payload/assessment.json"
     assessment = json.loads(assessment_path.read_text())
     require(assessment.get("status") == "passed" and assessment.get("job_id") == job
@@ -482,7 +521,7 @@ def verify_cpu_certificate(pin, manifest, expected_sha):
             and assessment.get("cpu_counts") == manifest["cpu_counts"], "New allocated CPU assessment differs")
     xml_cases(expected_paths["cpu_xml"], manifest["cpu_counts"])
     require(assessment.get("raw_xml_sha256") == sha(expected_paths["cpu_xml"]), "New CPU assessment XML binding differs")
-    _lsf_success(expected_paths["cpu_lsf"].read_text(), job, "mosaic-chem-full01-cpu")
+    _lsf_success(expected_paths["cpu_lsf"].read_text(), job, "mosaic-chem-full03-cpu")
     queries = certificate.get("scheduler_queries")
     require(isinstance(queries, list) and 1 <= len(queries) <= 13, "Missing bounded original scheduler evidence")
     observed = []
@@ -490,7 +529,7 @@ def verify_cpu_certificate(pin, manifest, expected_sha):
         expected_path = ROOT / "after-cpu" / ("cpu-terminal-query-" + str(index).zfill(3) + ".json")
         require(binding["path"] == str(expected_path), "Original CPU query identity/order changed")
         _binding(binding)
-        observed.append(_terminal_status(json.loads(expected_path.read_text()), job, "mosaic-chem-full01-cpu"))
+        observed.append(_terminal_status(json.loads(expected_path.read_text()), job, "mosaic-chem-full03-cpu"))
     require(observed[-1] == "DONE" and all(value in ("RUN", "PEND") for value in observed[:-1]),
             "Persisted actual CPU scheduler queries never established terminal success")
     return {"status": "passed", "sha256": expected_sha, "job_id": job,
@@ -556,12 +595,13 @@ def run(pin, phase):
         import fcntl
         with (ROOT / "dispatch.lock").open("a") as lock:
             fcntl.flock(lock, fcntl.LOCK_EX)
+            require(manifest.get("active_gpu_arms")==["protenix"],"Retry03 cannot duplicate Boltz02 validation")
             require(not any((ROOT / arm).exists() for arm in ("protenix", "boltz")),
                     "Existing/unknown GPU outcome prohibits dispatch replay")
             cpu = cpu_terminal(pin, manifest)
             certificate = certify_cpu(pin, manifest, cpu)
             admission = storage(parent, "two-gpu-dispatch")
-            actual = {arm: submit(arm, pin) for arm in ("protenix", "boltz")}
+            actual = {arm: submit(arm, pin) for arm in ("protenix",)}
             after = external(manifest)
             require(after == before, "Original external bindings changed during dispatch")
             write(parent / "gpu-submissions-complete.json", {

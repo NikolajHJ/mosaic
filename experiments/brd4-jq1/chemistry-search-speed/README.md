@@ -75,3 +75,5 @@ combined comparison. The earlier CPU284 pass and Boltz serial native readiness
 remain valid. Neither randomPro50k+chemistry nor Boltz30k+chemistry production
 is submitted. See the full-model run's authenticated failure record; production
 also requires explicit adoption and full future chemistry storage admission.
+
+At25October18:02UTC, the Boltz startup fix passed actual two-CUDA-process admission and the full original baseline/combined native comparison (GPU29816184). Pro source02 stopped on an atomic metadata rename race; unchanged numerical source03 passed388CPU cases and ProGPU29816284 is running. See [retry02](runs/20261025-chemistry-full-model-02/README.md) and [Pro retry03](runs/20261025-chemistry-full-model-03/README.md). The [production adopter](runs/20261025-chemistry-production-01/README.md) has an actual queued CPU/callback chain that waits both pilots, all94contracts, actual startup, original readiness and complete future storage. Neither chemistry production run has been submitted yet. No saved results/settings changed.

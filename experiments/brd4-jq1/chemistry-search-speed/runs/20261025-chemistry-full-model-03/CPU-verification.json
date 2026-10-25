@@ -1,0 +1,36 @@
+{
+  "status": "passed_independent_CPU_byte_XML_LSF_schema_audit",
+  "source_files": 30,
+  "source_manifest_sha256": "8480a39c05d612d1a80ea1892d816c9429fcd471e97adb31655f8132d9007f31",
+  "CPU_job": "29816234",
+  "CPU_cases": 388,
+  "CPU_counts": {
+    "tests.test_speed": 79,
+    "tests.test_hybrid": 26,
+    "tests.test_gpu_matrix": 20,
+    "tests.test_oracle_profile": 18,
+    "tests.test_full_model_pilot": 67,
+    "tests.test_gpu_local_bridge": 23,
+    "tests.test_full_model_ops": 53,
+    "tests.test_full_model_replay": 30,
+    "tests.test_gpu_process_admission": 49,
+    "tests.test_full_model_retry": 23
+  },
+  "raw_XML_sha256": "84a1f5ea6d424032405bcad444855cc895703860ebd4a465aea6461b97a5b13a",
+  "actual_terminal_proofs": [
+    {
+      "path": "after-cpu\\cpu-terminal-query-001.json",
+      "sha256": "6212039f28d5ea8a40ccb22227b7233c59be624b6fcc236992c22fb1cfc67c35"
+    }
+  ],
+  "files_rehashed": 39,
+  "jobs": {
+    "cpu": "29816234",
+    "after-cpu": "29816235",
+    "protenix": "29816284"
+  },
+  "full_model_comparisons": {},
+  "cpu_certificate_sha256": "ea6c825017788181a81da3421fc83e16f2d74236914eb588d6b5acb4ce852db7",
+  "dispatch_required_bytes": 36344788980,
+  "dispatch_available_bytes": 36592704172
+}

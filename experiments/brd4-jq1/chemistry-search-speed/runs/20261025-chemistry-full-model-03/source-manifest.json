@@ -1,0 +1,227 @@
+{
+  "active_gpu_arms": [
+    "protenix"
+  ],
+  "cpu_counts": {
+    "tests.test_full_model_ops": 53,
+    "tests.test_full_model_pilot": 67,
+    "tests.test_full_model_replay": 30,
+    "tests.test_full_model_retry": 23,
+    "tests.test_gpu_local_bridge": 23,
+    "tests.test_gpu_matrix": 20,
+    "tests.test_gpu_process_admission": 49,
+    "tests.test_hybrid": 26,
+    "tests.test_oracle_profile": 18,
+    "tests.test_speed": 79
+  },
+  "failed_predecessors": {
+    "boltz": "29811884",
+    "protenix": "29811883"
+  },
+  "files": {
+    "README.md": "d81d9644aab15f5c6624a8ade16bdfcfe38fe5f276597561e32ddcc88ff4872b",
+    "plans/README.md": "7a8d5808d411d9c6523335424d27e707b3528e5af87f3d4d9de4b2ada3a76555",
+    "plans/boltz.json": "2c93bbf9aaa58c13c883284796b846332b191d46f3022c248c99a566d107367f",
+    "plans/protenix.json": "ab36531225cb64451b8ea3b073d7b5e7fa58cbba11b25b85939d820c6d90a925",
+    "protocol.md": "0f77be67907ca5d368e1fec31460f528d83bf465cb527393e60c1cd7e9b6385c",
+    "scripts/README.md": "ff9115ab25feb1049e910a5fc09cbbab1e2e9f7ae36da4fb78059781651f9599",
+    "scripts/exact_reuse.py": "b9ecf079d9697fb9efc650f0bbd944b726c2df0d2fcd3b908d9e221f2d565d88",
+    "scripts/full_model_contract.py": "d6cc337345c1e88a8f83ab668f33cbecd5a0baacaa7c30b56d72c65628fe4b08",
+    "scripts/full_model_ops.py": "0233bbbd5167b70ebb1403c7399dc0e2cfdee7fe49daac2fe548d5f9569af7b1",
+    "scripts/full_model_pilot.py": "1dea64afe9e81db8389b7249c0b9470ec1b2b3212c30b663dd73d5fb44a1a4ca",
+    "scripts/full_model_stage.lsf": "d61e42a0e5748ea90fe3dc43752816dd5a79fdec97f7b6e62b1ea931ece5dafd",
+    "scripts/gpu_local_bridge.py": "95d54d753b61b8d3af69cc714f2fe7035a4c59005dbba6394b6564a9d4d751a8",
+    "scripts/gpu_local_worker.py": "0121d8a375e8297ae85ba4ee0e4d54a81700cfa9823e5d1b1c96e2f44d7aa2b4",
+    "scripts/gpu_matrix.py": "772e3ea5a691b4aaf8432040ee0066e429e4f6ddd092ed17a2efb917647f3ef3",
+    "scripts/gpu_process_admission.py": "ef0875cab683210b81e5d990cfbfe8a3653ee59307781595b7c48aaae35539fe",
+    "scripts/hybrid_search.py": "4bed62f1f3be9aaa96ead9ef79e00840762fd28dd0b9430f6b4b08e5ab60eda8",
+    "scripts/parallel_search.py": "137d5bb6cab95ad3263090eb9b017efa1a78ed42543afe713c7fa654d3628170",
+    "scripts/profile_oracle.py": "7cb0989fda0713b78598eff489b35b5b39cc1a2d6f608eff215cec590dd126c1",
+    "scripts/round2_data.py": "7d6ca6168b77fa96f30d3696ed57c24805cde9669f2083793f1458ab0d23ab31",
+    "tests/README.md": "5693419c0edc2298c18b9717cf57b6f0a0012386b68738e14c433cb57bf117ca",
+    "tests/test_full_model_ops.py": "a7b978fe2619e55547a550a0a664da4466cd38449eea6f14b62309f4c2c7cafc",
+    "tests/test_full_model_pilot.py": "4d56eaf5fe487c9d9b60d0a9aa22e28ea5486a1555ebb773b0bafd1962e70fe6",
+    "tests/test_full_model_replay.py": "92c4eafdaf577d53c1b42f51865efedc99764947a0f032b57d9a8283eeb3bae5",
+    "tests/test_full_model_retry.py": "8a7565e60bdc1a744acd8019d9f3ff939b285bf16af8b8645aa00e670acb9e94",
+    "tests/test_gpu_local_bridge.py": "ba34a8279b838f6ca0cbbf835a50d42e768362b05ca87c559aeeaa6b4e60ec90",
+    "tests/test_gpu_matrix.py": "29f8b5559a0f984f762ac246a229603210f1daff843d6de9ffec5a8e23240ee9",
+    "tests/test_gpu_process_admission.py": "6d4c67dfe46d4075e4067951d1665277776bffbb94395c04e067e4fb5f63a13a",
+    "tests/test_hybrid.py": "5f773ef128c8c9290ce77d02346919809c8dceb6d4f562f212646282eb94ed1a",
+    "tests/test_oracle_profile.py": "a4e0f288096d729f39389083b582c225e20202ab7bd6a4bec6fe56c121fea565",
+    "tests/test_speed.py": "64b3272de7e4291b648b36985ff478a9cfc542030ac3cef3c37e66996ab2b0f9"
+  },
+  "monitor_remains_paused": true,
+  "parent_sources": [
+    {
+      "files": 643,
+      "manifest_sha256": "da9db6821d26b884ca1749303fc8e0b0095bd9ee7cbd1b427cdcf1b22eec6562",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source"
+    },
+    {
+      "files": 635,
+      "manifest_sha256": "c214bccf2c94ac6829996bc0ca7d6415d3c19549be4fe7f874cba2b433901cc6",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-release-03/source"
+    },
+    {
+      "files": 19,
+      "manifest_sha256": "09c0ab837bede0c5779eac0da06885cfbef6a98744f67af19e7b5a8b33ffa222",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-search-speed-release-02/source"
+    },
+    {
+      "files": 12,
+      "manifest_sha256": "704fab033d97342a14dc12b58dc32df44874232c5c30aad47c4d02041a502aab",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-startup-release-03/source"
+    },
+    {
+      "files": 26,
+      "manifest_sha256": "347e753d481ec3d584f3b0b05cc2801ee745036ee17638d7c3672fc2ca2cba16",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-release-01/source"
+    },
+    {
+      "files": 14,
+      "manifest_sha256": "09f759a7befb8a7b8f0e1d203e15acf939126fba493b30e6a2bf9cd2eea2216b",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-release-02/source"
+    },
+    {
+      "files": 30,
+      "manifest_sha256": "05e316a7b1bcceaf286b03231200a2d1f66e3f6a7ce927d4c1e73f08a24f86f9",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-release-02/source"
+    }
+  ],
+  "persistent_cap_bytes": 2147483648,
+  "preserved_proofs": [
+    {
+      "bytes": 1371,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/random-native-0000/payload/driver-invocation.json",
+      "sha256": "26dc929a5439fbc13a5f72bff031e3557f0f131b2edcc2a82ccf75f52bacbad7"
+    },
+    {
+      "bytes": 1702,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/boltz2_chemistry-native-0000/payload/driver-invocation.json",
+      "sha256": "edb8f36cd57142a5aafc5cc1d0c94bac5cb4f1f871fcaec53669134015b350a1"
+    },
+    {
+      "bytes": 8548,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-search-speed-02/cpu/payload/assessment.json",
+      "sha256": "51fccda60b2178d39fb9ae90067d1ea9062c05d0560ec494dae41272ea33ec34"
+    },
+    {
+      "bytes": 19057,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-search-speed-02/cpu/payload/tests.xml",
+      "sha256": "dcc176b0a4a74aeedb78a61454bacf6d2d2b1cfc6d8024d2e726f23f99c10791"
+    },
+    {
+      "bytes": 61178,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-search-speed-02/cpu/payload/benchmark/assessment.json",
+      "sha256": "68b2ef335a15958fc1f2bebaa0411408e2a12eb055637398c7bcde3f26e6b4bf"
+    },
+    {
+      "bytes": 1973,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-search-speed-02/cpu/stdout.29809477.log",
+      "sha256": "e95e148296b17e523441525eeb507b5a7d37f622b5a1a036c85b5b243c805398"
+    },
+    {
+      "bytes": 8458,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-search-speed-02/gpu/payload/assessment.json",
+      "sha256": "45d384bb0db8d8b407d2e79029027588ed7908f2db84d13aa067de6d64114023"
+    },
+    {
+      "bytes": 2528,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-search-speed-02/gpu/payload/tests.xml",
+      "sha256": "9bfe530b6463b7cb0a29b0d1899d7b0dce807bf911c2fcad819e674a9ad1d56b"
+    },
+    {
+      "bytes": 50227,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-search-speed-02/gpu/payload/benchmark/assessment.json",
+      "sha256": "79e5daba5d1201dc3a9c112e843ba851f875a59b6323bbf65004213db535d0c9"
+    },
+    {
+      "bytes": 1981,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-search-speed-02/gpu/stdout.29809554.log",
+      "sha256": "293d80940d3260baf11d1a6d40bd3be83639357d5172cc4858bc9f29f2f66a10"
+    },
+    {
+      "bytes": 5322,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-search-speed-02/plan.json",
+      "sha256": "672dfbb1380c26212cca7ccb1033cf329b8f426a76d0d60ad1335f2f9885e334"
+    },
+    {
+      "bytes": 15031,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-search-speed-02/initial-submissions.json",
+      "sha256": "45d882d690b8883b13c79f5ed07f438592cd08343ebdab0b5a06637e3f53dd7a"
+    },
+    {
+      "bytes": 21266,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/assessment.json",
+      "sha256": "9674aacd7c8601f755fcad31df6efb9877dc39cd5114d9b1fe3ee867c1dc55dd"
+    },
+    {
+      "bytes": 8954,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-01/protenix/payload/assessment.json",
+      "sha256": "682850ad42b7afafad375712005c156fa3ea7d95f2b59e1a6e894b311ea36ef2"
+    },
+    {
+      "bytes": 2002,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-01/protenix/stdout.29811883.log",
+      "sha256": "b62611bf495c9893c452e9d057a28b2097adce750f6e7c453e68113d31d3937c"
+    },
+    {
+      "bytes": 87539,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-01/protenix/payload/comparison/combined/study/summary.json",
+      "sha256": "28013e78fc9116b6061734c888efe2721bf5216db2cafc53bcb2360cfc683bca"
+    },
+    {
+      "bytes": 1039,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-01/protenix/payload/comparison/combined/paired-checks/assessment.json",
+      "sha256": "54453e35b73c92c760f39e2077be58be408703a848d32f35d8230b8ef6d05491"
+    },
+    {
+      "bytes": 8952,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-01/boltz/payload/assessment.json",
+      "sha256": "8b682e13e6cfa01ac1445deb409aa72439f553250b835ce80e45c90e24eafb43"
+    },
+    {
+      "bytes": 1987,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-01/boltz/stdout.29811884.log",
+      "sha256": "19dbb6dd125b47b66dc42539d1b28baef64a10c5a71e36388e97d7d292e6714c"
+    },
+    {
+      "bytes": 79857,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-01/boltz/payload/comparison/combined/study/summary.json",
+      "sha256": "d5ba193672521bfc4c2e746f9747898cbaa80d2546474e622d7675563ed326d1"
+    },
+    {
+      "bytes": 3048,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-01/boltz/payload/comparison/combined/study/worker.log",
+      "sha256": "453feb2a84edb854e93f22e561a38fd51db23c31d1fae6c16766212e6a411a52"
+    },
+    {
+      "bytes": 545,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-01/boltz/payload/comparison/combined/gpu-chemistry/receipt.json",
+      "sha256": "990a091631236d31b4aec4dbdfa7bd76995c7f90ca32a44cbdc2f78d34a25b29"
+    },
+    {
+      "bytes": 11290,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-02/protenix/payload/assessment.json",
+      "sha256": "18f05047968ba2c29ee4f208c928464b3780fdf617afbac6fd82d01b7f7042de"
+    },
+    {
+      "bytes": 1990,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-02/protenix/stdout.29816183.log",
+      "sha256": "b24bad756a213e5530baa7a09e69e4dd4493bd2d2dd92988026107c302b5e83d"
+    },
+    {
+      "bytes": 1905,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-02/protenix/stderr.29816183.log",
+      "sha256": "d3d2046b690c0392b20b33dbd8edb8a14d6c17eb37d68b2017006b7932167393"
+    },
+    {
+      "bytes": 492,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-02/protenix/payload/comparison/assessment.json",
+      "sha256": "248d6ccfe516782370cf5267e815125595e234f654fb0d7bc3ae37bdf849cc4f"
+    }
+  ],
+  "scientific_production_changed": false,
+  "version": "chemistry-full-model-source-v3",
+  "worker_count": 4
+}

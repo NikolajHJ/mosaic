@@ -8,12 +8,12 @@ import shlex
 import subprocess
 
 REPO = Path(__file__).resolve().parents[4]
-LOCAL = REPO / 'results/hpc/20261025-chemistry-full-model-01'
+LOCAL = REPO / 'results/hpc/20261025-chemistry-full-model-03'
 REMOTE = r'''
 import ast,base64,hashlib,io,json,os,subprocess,sys,tarfile
 from pathlib import Path,PurePosixPath
 base=Path('/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01')
-root=base/'chemistry-full-model-01';release=base/'chemistry-full-model-release-01';source=release/'source'
+root=base/'chemistry-full-model-03';release=base/'chemistry-full-model-release-03';source=release/'source'
 assert not any(os.path.lexists(p) for p in [root,release]),'Existing/unknown study outcome; inspect, never replay'
 archive=base64.b64decode(ARCHIVE,validate=True)
 assert len(archive)==LENGTH and hashlib.sha256(archive).hexdigest()==SHA
@@ -53,7 +53,7 @@ print(json.dumps(receipt))
 
 def main():
     out = LOCAL / 'launch-01'; out.mkdir(exist_ok=False)
-    package = LOCAL / 'source02'
+    package = LOCAL / 'source01'
     preparation = json.loads((package / 'preparation.json').read_bytes())
     raw = (package / 'source.tar.gz').read_bytes()
     assert len(raw) == preparation['archive_bytes'] and hashlib.sha256(raw).hexdigest() == preparation['archive_sha256']

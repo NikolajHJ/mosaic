@@ -17,3 +17,11 @@ real generated-command parser dispatch before model setup, adapter restoration,
 finite fixed-step bookkeeping and the CPU-to-GPU VJP transport with a declared
 fake client. Fake-client fixtures do not establish GPU or native-model parity;
 the subsequent full-model allocated pilots must supply that evidence.
+
+`test_gpu_process_admission.py` adds allocated CPU metadata/fake-process fixtures
+for resolved whole-job GPU exclusivity, actual Default compute mode, strict CUDA
+device scope, canary identity and owned-process cleanup. These fixtures do not
+exercise a GPU; the real two-process canary and original native-model gradient
+checks execute only inside the declared L40S pilot allocation.
+
+The production metadata suite declares94allocated cases:50policy,30routing,14exact original metadata call-site integrations. Fixtures do not certify native gradients, and local AST checks do not count as executed tests.

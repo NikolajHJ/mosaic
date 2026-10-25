@@ -315,6 +315,129 @@ def restore_preparation(record, spec):
     return prepared
 
 
+def replay_leaf_metadata(value):
+    """Record the actual single-device FP32 source of a saved logit leaf.
+
+    A bare ``jnp.asarray`` chooses the process default device. That is not a
+    declaration of the original leaf's execution placement. Device identity is
+    required here independently of the five saved-array equality checks below.
+    This metadata and all array work are collected only in allocated fixtures
+    or the actual native pilot; they are not a new optimization policy.
+    """
+    import numpy as np
+
+    devices = list(value.devices())
+    if len(devices) != 1 or type(value.sharding).__name__ != "SingleDeviceSharding":
+        raise ValueError("Saved pilot replay requires the original single-device logit placement")
+    device = devices[0]
+    host = np.asarray(value)
+    if host.dtype != np.float32 or not np.isfinite(host).all() or bool(value.weak_type):
+        raise ValueError("Saved pilot replay requires finite, strongly typed FP32 logits")
+    return {
+        "version": "full-model-exact-logit-placement-v1",
+        "platform": device.platform, "device_id": int(device.id),
+        "process_index": int(device.process_index),
+        "sharding_type": "SingleDeviceSharding",
+        "memory_kind": value.sharding.memory_kind,
+        "dtype": str(host.dtype), "shape": list(host.shape), "weak_type": False,
+        "source_committed": bool(value.committed),
+        "host_strides_bytes": list(host.strides),
+        "host_c_contiguous": bool(host.flags.c_contiguous),
+        "host_f_contiguous": bool(host.flags.f_contiguous),
+    }
+
+
+def restore_saved_logits(snapshot, logit_type, key, placement):
+    """Replay original logits on their declared devices and prove all five fields.
+
+    The original logit class still computes its own probability graph. Never
+    substitute stored probabilities, round/re-normalize logits, select another
+    device after seeing a mismatch, or use an equality tolerance. An explicit
+    placement is a candidate correction, not evidence that the replay passed.
+    The actual baseline snapshots each exercise this canary before paired FD.
+    """
+    import jax
+    import numpy as np
+
+    required = {"atom_logits": (25, 6), "bond_logits": (300, 5),
+                "X": (25, 6), "E_upper": (300, 5)}
+    if not isinstance(placement, dict) or set(placement) != {"atom_logits", "bond_logits"}:
+        raise ValueError("Original logit leaf placement is mandatory for exact replay")
+    metadata_names = {
+        "version", "platform", "device_id", "process_index", "sharding_type",
+        "memory_kind", "dtype", "shape", "weak_type", "source_committed",
+        "host_strides_bytes", "host_c_contiguous", "host_f_contiguous",
+    }
+    verify_bound_file(snapshot)
+    with np.load(snapshot["path"], allow_pickle=False) as saved:
+        for name, shape in required.items():
+            if saved[name].dtype != np.float32 or saved[name].shape != shape or not np.isfinite(saved[name]).all():
+                raise ValueError("Saved replay field changed FP32 shape/finiteness: " + name)
+        saved_key = saved["key_data"]
+        actual_key = np.asarray(jax.random.key_data(key))
+        if saved_key.dtype != np.uint32 or saved_key.shape != actual_key.shape:
+            raise ValueError("Saved native key precision/shape differs")
+        np.testing.assert_array_equal(saved_key, actual_key)
+        leaves = []
+        for name in ("atom_logits", "bond_logits"):
+            declared = placement[name]
+            if (not isinstance(declared, dict) or set(declared) != metadata_names
+                    or declared["version"] != "full-model-exact-logit-placement-v1"
+                    or declared["platform"] not in ("cpu", "gpu")
+                    or type(declared["device_id"]) is not int or declared["device_id"] < 0
+                    or type(declared["process_index"]) is not int or declared["process_index"] < 0
+                    or declared["sharding_type"] != "SingleDeviceSharding"
+                    or declared["dtype"] != "float32" or declared["shape"] != list(required[name])
+                    or declared["weak_type"] is not False
+                    or type(declared["source_committed"]) is not bool
+                    or not isinstance(declared["host_strides_bytes"], list)
+                    or len(declared["host_strides_bytes"]) != 2
+                    or any(type(value) is not int or value <= 0 for value in declared["host_strides_bytes"])
+                    or type(declared["host_c_contiguous"]) is not bool
+                    or type(declared["host_f_contiguous"]) is not bool
+                    or not (declared["memory_kind"] is None or isinstance(declared["memory_kind"], str))):
+                raise ValueError("Original logit leaf placement is malformed: " + name)
+            candidates = [device for device in jax.devices(declared["platform"])
+                          if device.id == declared["device_id"]
+                          and device.process_index == declared["process_index"]]
+            if len(candidates) != 1:
+                raise ValueError("Original logit leaf device is unavailable: " + name)
+            sharding = jax.sharding.SingleDeviceSharding(candidates[0], memory_kind=declared["memory_kind"])
+            leaf = jax.device_put(saved[name], sharding)
+            observed = replay_leaf_metadata(leaf)
+            # Host layout and committedness are reported independently. Moving
+            # a leaf explicitly can change those transport properties; exact
+            # original class/graph/key bytes remain the mandatory criterion.
+            transport = {"source_committed", "host_strides_bytes", "host_c_contiguous", "host_f_contiguous"}
+            for field in metadata_names - transport:
+                if observed[field] != declared[field]:
+                    raise ValueError("Restored logit execution placement differs: " + name + ":" + field)
+            np.testing.assert_array_equal(saved[name], np.asarray(leaf))
+            leaves.append(leaf)
+        logits = logit_type(*leaves)
+        graph = logits.graph()
+        fields = {"atom_logits": logits.atoms, "bond_logits": logits.bonds,
+                  "X": graph.X, "E_upper": graph.E_upper, "key_data": actual_key}
+        hashes = {}
+        for name, actual in fields.items():
+            host = np.asarray(actual)
+            if saved[name].dtype != host.dtype or saved[name].shape != host.shape:
+                raise ValueError("Exact replay changed a saved field dtype/shape: " + name)
+            np.testing.assert_array_equal(saved[name], host)
+            if saved[name].tobytes(order="C") != host.tobytes(order="C"):
+                raise AssertionError("Exact replay changed saved field bytes: " + name)
+            hashes[name] = hashlib.sha256(host.tobytes(order="C")).hexdigest()
+    return logits, {
+        "status": "passed_exact_five_field_replay", "snapshot": snapshot,
+        "placement": placement, "restored_placement": {
+            "atom_logits": replay_leaf_metadata(logits.atoms),
+            "bond_logits": replay_leaf_metadata(logits.bonds),
+        },
+        "field_bytes_sha256": hashes, "probabilities_recomputed_by_original_logit_class": True,
+        "stored_probability_substitution": False, "equality_tolerance": None,
+    }
+
+
 def paired_saved_checks(points, contact_loss, spec, reference, key, output, original_math):
     """Full native AD, independent primals and original FD ladder at same inputs."""
     import jax
@@ -340,12 +463,10 @@ def paired_saved_checks(points, contact_loss, spec, reference, key, output, orig
             ):
                 raise ValueError("Undeclared saved logit coordinate class")
             logit_type = getattr(importlib.import_module(module_name), class_name)
-            with np.load(item["snapshot"]["path"], allow_pickle=False) as saved:
-                logits = logit_type(jnp.asarray(saved["atom_logits"]), jnp.asarray(saved["bond_logits"]))
-                graph = logits.graph()
-                for field, actual in (("X", graph.X), ("E_upper", graph.E_upper)):
-                    np.testing.assert_array_equal(saved[field], np.asarray(actual))
-                np.testing.assert_array_equal(saved["key_data"], np.asarray(jax.random.key_data(key)))
+            logits, replay = restore_saved_logits(
+                item["snapshot"], logit_type, key, item.get("replay_placement"),
+            )
+            write_json(directory / "exact-replay.json", replay)
             frozen = json.loads(Path(item["reference"]["path"]).read_text())
             prepared = restore_preparation(frozen, spec)
             config = {**item["config"], "loss": FailureGuidanceConfig(**item["config"]["loss"])}
@@ -385,6 +506,7 @@ def paired_saved_checks(points, contact_loss, spec, reference, key, output, orig
             report["points"].append({
                 "label": item["label"], "status": "passed", "preparation_identity": prepared.identity,
                 "snapshot": item["snapshot"], "reference": item["reference"],
+                "exact_saved_replay": replay,
                 "original": left, "combined": right, "max_abs_gradient_error": gradient_errors,
                 "original_fd": original_checks, "combined_fd": combined_checks,
                 "elapsed_seconds": time.perf_counter() - started,
@@ -438,13 +560,26 @@ class _PilotMeasurements:
         def snapshot(directory, step, evaluation, **kwargs):
             result = original_snapshot(directory, step, evaluation, **kwargs)
             if step in (0, 10) and self.active in ("early", "high"):
-                self.points.append({
+                point = {
                     "label": self.active + "-" + str(step),
                     "snapshot": _binding(Path(directory) / result["snapshot"]),
                     "reference": _binding(Path(directory) / "references" / f"step-{step:04d}.json"),
                     "logit_class": type(evaluation.logits).__module__ + "." + type(evaluation.logits).__name__,
                     "config": _plain(self.active_config),
-                })
+                    "replay_placement": {
+                        "atom_logits": replay_leaf_metadata(evaluation.logits.atoms),
+                        "bond_logits": replay_leaf_metadata(evaluation.logits.bonds),
+                    },
+                }
+                # Actual hardware canary: do not wait until after both pilots
+                # to discover that a saved boundary cannot replay exactly.
+                _, canary = restore_saved_logits(
+                    point["snapshot"], type(evaluation.logits),
+                    evaluation.native.evaluation.key, point["replay_placement"],
+                )
+                point["exact_replay_canary"] = canary
+                write_json(Path(directory) / ("exact-replay-" + str(step).zfill(4) + ".json"), canary)
+                self.points.append(point)
             return result
 
         def run(contact_loss, initial, **kwargs):
@@ -509,6 +644,37 @@ class _PilotMeasurements:
             })
 
 
+@contextmanager
+def combined_adapters(profile, output):
+    """One activation path for validated pilots and future pinned adoption.
+
+    The caller authenticates this capsule and original scientific inputs first.
+    This context only installs the declared equivalent engineering adapters;
+    it does not confer production readiness or relax a native/gradient gate.
+    """
+    if profile not in ("protenix-random50k", "boltz-chem30k"):
+        raise ValueError("Undeclared combined chemistry profile")
+    from hybrid_search import install_hybrid
+    with ExitStack() as stack:
+        record = {"hybrid_policy": stack.enter_context(install_hybrid(workers=4, max_entries=8192))}
+        if profile == "protenix-random50k":
+            from gpu_matrix import install_matrix_loss
+            record["matrix_policy"] = stack.enter_context(install_matrix_loss("matrix"))
+        else:
+            from gpu_local_bridge import install_offloaded_matrix_loss
+            record["matrix_policy"] = stack.enter_context(
+                install_offloaded_matrix_loss(Path(output) / "gpu-chemistry"),
+            )
+        yield record
+
+
+def require_driver_progress(summary):
+    """Keep a primary startup/scientific error ahead of absent later reports."""
+    error=summary.get("error")
+    if summary.get("status")=="failed" and error!=RUNTIME_ERROR:
+        raise ValueError("Original validation failed before complete admission: "+str(error))
+
+
 def child_run(args, plan):
     allocation_guard()
     from full_model_contract import assess_result, validate_config, validate_plan
@@ -543,16 +709,7 @@ def child_run(args, plan):
         try:
             with ExitStack() as stack:
                 if args.child == "combined":
-                    from hybrid_search import install_hybrid
-                    result["hybrid_policy"] = stack.enter_context(install_hybrid(workers=4, max_entries=8192))
-                    if expected == "gpu":
-                        from gpu_matrix import install_matrix_loss
-                        result["matrix_policy"] = stack.enter_context(install_matrix_loss("matrix"))
-                    else:
-                        from gpu_local_bridge import install_offloaded_matrix_loss
-                        result["matrix_policy"] = stack.enter_context(
-                            install_offloaded_matrix_loss(args.output / "gpu-chemistry"),
-                        )
+                    result.update(stack.enter_context(combined_adapters(plan["profile"], args.output)))
                 stack.enter_context(measurements.installed())
                 sys.argv = argv[1:]
                 try:
@@ -569,6 +726,9 @@ def child_run(args, plan):
         result["driver_summary_file"] = _binding(summary)
         result["pilot_reports"] = measurements.pilots
         result["paired_checks"] = measurements.paired
+        # Preserve the first scientific/startup failure rather than replacing
+        # it with an absent later report or missing runtime observation.
+        require_driver_progress(result["driver_summary"])
         result["coupled_checks"] = {
             name: json.loads((args.output / "study" / (name + "_coupled_checks") / "report.json").read_text())
             for name in ("low", "high")

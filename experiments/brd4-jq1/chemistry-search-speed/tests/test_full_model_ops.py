@@ -19,12 +19,12 @@ import full_model_ops as ops
 PIN = "a" * 64
 
 
-def raw(state="DONE", *, job="10", name="mosaic-chem-full01-cpu", queue="hpc", code=0):
+def raw(state="DONE", *, job="10", name="mosaic-chem-full03-cpu", queue="hpc", code=0):
     return {"returncode": code, "stdout": f"Job <{job}>, Job Name <{name}>, Status <{state}>, Queue <{queue}>\n",
             "stderr": ""}
 
 
-def lsf(*, job="10", name="mosaic-chem-full01-cpu", queue="hpc", status="Done"):
+def lsf(*, job="10", name="mosaic-chem-full03-cpu", queue="hpc", status="Done"):
     return (f"Subject: Job {job}: <{name}> in cluster <dcc> {status}\n"
             f"Job was executed on host <node> in queue <{queue}>.\nSuccessfully completed.\n")
 
@@ -37,6 +37,7 @@ def roots(tmp_path, monkeypatch):
     source.mkdir(parents=True)
     monkeypatch.setattr(ops, "ROOT", root)
     monkeypatch.setattr(ops, "SOURCE", source)
+    monkeypatch.setattr(ops, "PRIOR_OWNED_ROOTS", ())
     return root, source
 
 
@@ -52,7 +53,8 @@ def test_exact_resource_vectors(phase, slots, queue, memory):
     assert value[value.index("-n") + 1] == slots
     assert memory in value
     assert value[value.index("-W") + 1] == ("00:20" if phase == "after-cpu" else "02:00")
-    assert ("num=1:mode=exclusive_process" in value) == (queue == "gpul40s")
+    assert ("num=1:mode=exclusive_process" in value) == (phase == "protenix")
+    assert ("num=1:mode=shared:j_exclusive=yes:mps=no" in value) == (phase == "boltz")
 
 
 @pytest.mark.parametrize("phase", ("cpu", "protenix", "boltz"))
@@ -61,7 +63,7 @@ def test_actual_argv_has_no_cross_arm_dependency(roots, phase):
     command = ops.argv(phase, PIN)
     assert command[-6:] == ["bash", "-l", str(source / "scripts/full_model_stage.lsf"), str(source), PIN, phase]
     assert "-w" not in command
-    assert "mosaic-chem-full01-" + phase in command
+    assert "mosaic-chem-full03-" + phase in command
     assert "production" not in " ".join(command)
 
 
@@ -129,7 +131,7 @@ def test_raw_xml_has_exact_attribution_and_no_hidden_failure(tmp_path, kind):
 
 @pytest.mark.parametrize("state", ("DONE", "RUN", "PEND"))
 def test_actual_terminal_parser_returns_observed_state_only(state):
-    assert ops._terminal_status(raw(state), "10", "mosaic-chem-full01-cpu") == state
+    assert ops._terminal_status(raw(state), "10", "mosaic-chem-full03-cpu") == state
 
 
 @pytest.mark.parametrize("change", ("job", "queue", "name", "exit", "query"))
@@ -137,7 +139,7 @@ def test_terminal_parser_rejects_other_job_queue_name_failure(change):
     options = {"job": "11"} if change == "job" else {"queue": "gpul40s"} if change == "queue" else {"name": "other"} if change == "name" else {"code": 255} if change == "query" else {}
     value = raw("EXIT" if change == "exit" else "DONE", **options)
     with pytest.raises(ValueError):
-        ops._terminal_status(value, "10", "mosaic-chem-full01-cpu")
+        ops._terminal_status(value, "10", "mosaic-chem-full03-cpu")
 
 
 def test_bounded_terminal_wait_records_raw_running_before_actual_done():
@@ -169,10 +171,10 @@ def test_unique_same_job_lsf_success(change):
     elif change == "failure":
         text = lsf(status="Exited")
     if change == "none":
-        assert ops._lsf_success(text, "10", "mosaic-chem-full01-cpu") is True
+        assert ops._lsf_success(text, "10", "mosaic-chem-full03-cpu") is True
     else:
         with pytest.raises(ValueError):
-            ops._lsf_success(text, "10", "mosaic-chem-full01-cpu")
+            ops._lsf_success(text, "10", "mosaic-chem-full03-cpu")
 
 
 def test_actual_submission_records_unique_id_and_prevents_replay(roots, monkeypatch):
@@ -222,6 +224,21 @@ def test_owned_cap_rejects_alias_to_other_project(roots, tmp_path):
     (root / "alias").symlink_to(other)
     with pytest.raises(ValueError, match="external alias"):
         ops.own_bytes()
+
+
+@pytest.mark.parametrize("races",[1,3])
+def test_owned_atomic_rename_retries_entire_inventory_and_never_omits_bytes(roots,monkeypatch,races):
+    root,_=roots;member=root/"prepared_context.json.tmp";member.write_bytes(b"1234")
+    original=Path.lstat;calls=[]
+    def turnover(path,*args,**kwargs):
+        if path==member and len(calls)<races:
+            calls.append(True);raise FileNotFoundError("Fixture atomic rename during entire scan")
+        return original(path,*args,**kwargs)
+    monkeypatch.setattr(Path,"lstat",turnover)
+    if races==1:assert ops.own_bytes()==4
+    else:
+        with pytest.raises(FileNotFoundError):ops.own_bytes()
+    assert len(calls)==races
 
 
 @pytest.mark.parametrize("phase,slots,queue", (

@@ -1,0 +1,54 @@
+{
+  "status": "passed_independent_CPU_byte_XML_LSF_schema_audit",
+  "source_files": 30,
+  "source_manifest_sha256": "05e316a7b1bcceaf286b03231200a2d1f66e3f6a7ce927d4c1e73f08a24f86f9",
+  "CPU_job": "29816171",
+  "CPU_cases": 385,
+  "CPU_counts": {
+    "tests.test_speed": 79,
+    "tests.test_hybrid": 26,
+    "tests.test_gpu_matrix": 20,
+    "tests.test_oracle_profile": 18,
+    "tests.test_full_model_pilot": 67,
+    "tests.test_gpu_local_bridge": 23,
+    "tests.test_full_model_ops": 51,
+    "tests.test_full_model_replay": 30,
+    "tests.test_gpu_process_admission": 49,
+    "tests.test_full_model_retry": 22
+  },
+  "raw_XML_sha256": "a81e15b2be43a3e677002fa5ebef7ee08e1ddf6f75f947f705b2c82110e33cc2",
+  "actual_terminal_proofs": [
+    {
+      "path": "after-cpu\\cpu-terminal-query-000.json",
+      "sha256": "2290652bd583a4e00e152e5d2e819cb18370a66770679ef0d5a1633daa958a9f"
+    }
+  ],
+  "files_rehashed": 63,
+  "jobs": {
+    "cpu": "29816171",
+    "after-cpu": "29816172",
+    "protenix": "29816183",
+    "boltz": "29816184"
+  },
+  "full_model_comparisons": {
+    "protenix": {
+      "status": "failed_preserved",
+      "job_id": "29816183",
+      "assessment_sha256": "18f05047968ba2c29ee4f208c928464b3780fdf617afbac6fd82d01b7f7042de",
+      "actual_terminal_proof_sha256": "b24bad756a213e5530baa7a09e69e4dd4493bd2d2dd92988026107c302b5e83d",
+      "baseline_classification": "not_completed_no_pass_inferred",
+      "nested_failures": {
+        "payload/comparison/assessment.json": {
+          "sha256": "248d6ccfe516782370cf5267e815125595e234f654fb0d7bc3ae37bdf849cc4f",
+          "status": "failed",
+          "error": "InterruptedError: Allocated full-model pilot parent received SIGTERM"
+        }
+      },
+      "production_readiness_passed": false,
+      "scope": "Compact byte/JSON/source/CPU/submission/actual failed LSF audit; no local numerical evaluation or passed GPU comparison"
+    }
+  },
+  "cpu_certificate_sha256": "c46f39e679f503720ae31b561b8b3273a1d38c160bf3c7f3d6feba28f2b5c687",
+  "dispatch_required_bytes": 36344788980,
+  "dispatch_available_bytes": 37682473920
+}

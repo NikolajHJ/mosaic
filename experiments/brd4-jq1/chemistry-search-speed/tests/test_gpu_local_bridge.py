@@ -207,6 +207,7 @@ def test_popen_failure_closes_opened_stderr_and_preserves_startup_error(monkeypa
     def failed_popen(*args, **kwargs):
         raise error
     monkeypatch.setattr(Path, 'open', observed_open)
+    monkeypatch.setattr(bridge, 'capture_gpu_admission', lambda directory: {'fixture': True})
     monkeypatch.setattr(bridge.subprocess, 'Popen', failed_popen)
     with pytest.raises(OSError) as caught:
         bridge.LocalGPUClient(tmp_path / 'failed-worker')
