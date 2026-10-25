@@ -2,7 +2,7 @@
 
 CPU 29809477 completed with 143 fixtures and exact six-input comparisons.
 The byte/XML/schema audit is verification.json; original callback failure
-and every original source/results file remain preserved. GPU results pending.
+and every original source/results file remain preserved. GPU results are now verified in GPU_RESULTS.md.
 
 All timings below are preparation seconds on the allocated CPU host.
 First encounter includes cold native facts and pool startup; warm is the
@@ -44,7 +44,12 @@ experiments. Their 19 GPU-only checks require actual L40S execution, original
 2e-5 parity tolerance and .01/.003/.001 FD ladder/15 percent/two adjacent.
 No existing run, model, objective, saved result or paused monitor was changed.
 
-GPU29809554 was actually submitted after admission03 passed19 allocated
+Historical queue observation: GPU29809554 was actually submitted after admission03 passed19 allocated
 metadata regressions and actual CPU/callback terminal authentication. At
 01:29:38Paris it is PEND on queue physical GPU limits. No GPU performance
 result or production installation is claimed; the monitor remains paused.
+
+Completed GPU outcome25October: all19 checks passed; matrix local-risk
+value+gradient6.16x faster atbatch1/3.77x at32,24percent slower at256.
+Scan warm execution slower throughout. See GPU_RESULTS.md; these are component
+gains and not overall optimization speedups.

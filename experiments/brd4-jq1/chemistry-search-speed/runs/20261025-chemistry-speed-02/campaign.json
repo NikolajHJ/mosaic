@@ -1,5 +1,5 @@
 {
-  "status": "CPU_passed_GPU_submitted_PENDING_via_adoption03",
+  "status": "CPU_and_GPU_engineering_benchmarks_passed_not_production_adopted",
   "cpu_job": "29809477",
   "callback_job": "29809478",
   "source": {
@@ -322,21 +322,31 @@
   },
   "cpu_passed": true,
   "GPU_submitted": true,
-  "GPU_passed": false,
+  "GPU_passed": true,
   "original_runs_results_changed": false,
   "monitor_remains_paused": true,
   "latest_observation": {
-    "captured_utc": "2026-10-24T23:29:38.645071+00:00",
-    "cpu_scheduler": "DONE",
-    "original_callback_scheduler": "EXIT_preserved",
-    "GPU_scheduler": "PEND",
+    "captured_utc": "2026-10-25T08:49:45.041460+00:00",
+    "captured_Paris": "2026-10-25T09:49:45.041460+01:00",
     "GPU_job": "29809554",
-    "GPU_passed": false
+    "live_scheduler_record": "not_found_aged_out",
+    "terminal_outcome": "authenticated_original_LSF_success_and_passed_19_GPU_case_assessment",
+    "no_synthetic_scheduler_state": true
   },
   "callback_status": "EXIT1_cached_RUN_after_ended_preserved",
   "verification_sha256": "814f2c7639d8a2334e5e6ca15bbeac5a2b42d29201d4891a9a2b40c5c2863868",
   "cpu_assessment_sha256": "51fccda60b2178d39fb9ae90067d1ea9062c05d0560ec494dae41272ea33ec34",
   "gpu_recovery_attempt": "20261025-chemistry-speed-gpu-adoption-03",
   "GPU_job": "29809554",
-  "adoption_verification_sha256": "0571ec6afa7f01139374af892ced6fb8f4450bc1d1c21bdbfc7c93fca2d6d58d"
+  "adoption_verification_sha256": "0571ec6afa7f01139374af892ced6fb8f4450bc1d1c21bdbfc7c93fca2d6d58d",
+  "GPU_terminal_evidence_scope": "SUCCESS_PERSISTED_original_same_job_LSF_live_record_aged_out",
+  "GPU_started_DTU_local": "2026-10-25T05:57:33+01:00",
+  "GPU_terminated_DTU_local": "2026-10-25T06:03:48+01:00",
+  "GPU_runtime_seconds": 375,
+  "actual_GPU_cases": 19,
+  "GPU_assessment_sha256": "45d384bb0db8d8b407d2e79029027588ed7908f2db84d13aa067de6d64114023",
+  "GPU_benchmark_sha256": "79e5daba5d1201dc3a9c112e843ba851f875a59b6323bbf65004213db535d0c9",
+  "GPU_verification_sha256": "cc27a3bc0fe54e7ef598a616bd9a8ad96fda4ca12cda864d815b1a3164cae541",
+  "GPU_original_scientific_source_files_after": 643,
+  "production_adoption": false
 }

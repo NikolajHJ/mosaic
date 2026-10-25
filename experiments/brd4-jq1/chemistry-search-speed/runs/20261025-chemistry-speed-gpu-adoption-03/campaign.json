@@ -1,5 +1,5 @@
 {
-  "status": "metadata_CPU_callback_passed_original_GPU_submitted_PENDING",
+  "status": "metadata_CPU_callback_passed_parent_GPU_benchmark_later_passed",
   "manifest_sha256": "00e223b9b453aa0e390f315951eee3406916ac8c8499284945967a72fbf38698",
   "archive_sha256": "ae2031e920ec7d40058a04215fd4c3bb767e16832672538f12e11b9a5564348b",
   "archive_bytes": 9050,
@@ -244,12 +244,14 @@
   "metadata_CPU_status": "DONE_LSF_passed",
   "callback_status": "DONE_LSF_passed",
   "GPU_job": "29809554",
-  "GPU_execution_passed": false,
+  "GPU_execution_passed": true,
   "verification_sha256": "0571ec6afa7f01139374af892ced6fb8f4450bc1d1c21bdbfc7c93fca2d6d58d",
   "callback_assessment_sha256": "d16b27e187b9a4553d937c767a0e89aca7614859090e5785cabeff122aa5870d",
   "latest_capture_utc": "2026-10-24T23:29:38.645071+00:00",
   "GPU_pending_reason": "Resource (ngpus_physical) limit defined on queue has been reached",
   "original_143_numerical_CPU_passes_adopted": true,
   "original_results_changed": false,
-  "monitor_remains_paused": true
+  "monitor_remains_paused": true,
+  "related_GPU_results": "../20261025-chemistry-speed-02/GPU_RESULTS.md",
+  "GPU_result_scope": "Parent_source02_19_GPU_engineering_checks_no_production_adoption"
 }

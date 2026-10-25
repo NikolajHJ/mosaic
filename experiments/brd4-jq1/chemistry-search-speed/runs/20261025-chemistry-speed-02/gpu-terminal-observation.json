@@ -1,0 +1,28 @@
+{
+  "captured_utc": "2026-10-25T08:49:45.041460+00:00",
+  "jobs": {
+    "cpu": "29809477",
+    "after-cpu": "29809478",
+    "gpu": "29809554"
+  },
+  "scheduler": {
+    "cpu": {
+      "job_id": "29809477",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "Job <29809477> is not found\n"
+    },
+    "after-cpu": {
+      "job_id": "29809478",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "Job <29809478> is not found\n"
+    },
+    "gpu": {
+      "job_id": "29809554",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "Job <29809554> is not found\n"
+    }
+  }
+}

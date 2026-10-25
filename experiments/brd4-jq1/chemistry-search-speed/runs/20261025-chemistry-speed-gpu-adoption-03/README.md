@@ -1,6 +1,8 @@
 # Scheduler-lag GPU admission correction
 
-Current status: metadata CPU/callback passed; GPU 29809554 queued.
+Current status: metadata CPU/callback passed; GPU 29809554 subsequently passed
+its benchmark under the unchanged parent source02. See the parent
+[GPU results](../20261025-chemistry-speed-02/GPU_RESULTS.md).
 
 Prepared 25 October 2026 after source02 CPU 29809477 actually completed and
 passed 143 fixtures plus all six saved-input comparisons. Original callback

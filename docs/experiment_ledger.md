@@ -7132,3 +7132,24 @@ full projections+1GiB benchmark+4GiB/100000file reserves. Independent byte/
 XML/LSF/schema/dispatch audit passed. CPU search targets/losses/gradients remain
 exact; GPU matrix/scans still await actual hardware evaluation. Existing
 scientific jobs/results/settings and paused monitor unchanged.
+
+
+### 2026-10-25 — chemistry GPU checks and matrix benchmark completed
+
+Read-only collection at08:49:45UTC/09:49:45Paris authenticated GPU29809554
+original same-job LSF success on L40S,05:57:33–06:03:48CET (375seconds).
+Live records aged out, retained as not_found; no synthetic schedulerDONE.
+All19 raw GPU-only cases passed/no errors/failures/skips; six saved-input
+feature and12 loss-gradient/FD comparisons passed original2e-5 and raw
+.01/.003/.001/15percent/twoadjacent gates with explicit original-zero N/A.
+Independent38-file source/archive/byte/XML/schema/LSF/input/entry audit passed;
+original643 source files unchanged. GPU assessment45d384bb0db8d8b407d2e79029027588ed7908f2db84d13aa067de6d64114023,
+rawXML9bfe530b6463b7cb0a29b0d1899d7b0dce807bf911c2fcad819e674a9ad1d56b,
+benchmark79e5daba5d1201dc3a9c112e843ba851f875a59b6323bbf65004213db535d0c9.
+Matrix warm local-risk value+gradient1.602 to.260ms(batch1,6.16x),
+1.435 to.380ms(batch32,3.77x),1.256 to1.554ms(batch256,24percent slower).
+Scan warm slower throughout. Matrix compile+firstcall26.526 to1.985s(batch1).
+Matrix FP32 association is tolerance-equivalent, not bitwise identity. These
+are GPU-versus-GPU component timings;1.34ms saved is small beside~280ms cached
+CPU preparation and native model work. RDKit/search remains CPU. No production
+adoption, new jobs, settings/saved-results changes or monitor resumption.

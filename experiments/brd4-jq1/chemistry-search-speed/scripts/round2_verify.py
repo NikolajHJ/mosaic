@@ -221,20 +221,38 @@ def same_job_terminal(files, observation, phase, job):
     q = observation['scheduler'][phase]
     assert q['job_id'] == job
     scheduler = compact(q['stdout'])
-    # A callback may have retained the actual terminal scheduler before live records expire.
+    provenance = 'actual_live_DONE'
+    # A missing live record is distinct from RUN/EXIT and must never become a
+    # fabricated scheduler DONE. CPU already has an immutable local actual-DONE
+    # observation. GPU may instead have authentic same-job LSF terminal evidence.
     if f'Job<{job}>' not in scheduler:
-        assert phase == 'cpu'
-        persisted = read(files / 'after-cpu/cpu-final-scheduler.json')
-        assert persisted['returncode'] == 0
-        scheduler = compact(persisted['stdout'])
+        assert not q['stdout'].strip() and compact(q['stderr']) == f'Job<{job}>isnotfound'
+        if phase == 'cpu':
+            prior = REPO / 'results/hpc/20261025-chemistry-speed-02/observation-11/raw.json'
+            assert sha(prior) == '29bf752d8806a81ddf0929c3c681f484adcb737621311792d82ee5ea7389d126'
+            old = read(prior)
+            assert old['jobs']['cpu'] == job and old['scheduler']['cpu']['returncode'] == 0
+            scheduler = compact(old['scheduler']['cpu']['stdout'])
+            provenance = 'previous_authenticated_actual_DONE_observation11'
+            assert sha(files / phase / f'stdout.{job}.log') == old['files'][f'cpu/stdout.{job}.log']['sha256']
+        else:
+            assert phase == 'gpu' and job == '29809554'
+            provenance = 'SUCCESS_PERSISTED_same_job_LSF_live_record_not_found'
     else:
         assert q['returncode'] == 0
-    assert f'Job<{job}>' in scheduler and 'Status<DONE>' in scheduler and f'Queue<{queue}>' in scheduler
+    if scheduler:
+        assert re.findall(r'Job<(\d+)>', scheduler) == [job]
+        assert re.findall(r'Status<([^>]+)>', scheduler) == ['DONE']
+        assert re.findall(r'Queue<([^>]+)>', scheduler) == [queue]
     log = files / phase / f'stdout.{job}.log'
     text = compact(log.read_text())
     assert text.count(f'Subject:Job{job}:<mosaic-chem-speed02-{phase}>incluster<dcc>Done') == 1
     assert 'Successfullycompleted.' in text and f'inqueue<{queue}>' in text
-    return {'scheduler_sha256': hashlib.sha256(scheduler.encode()).hexdigest(), 'raw_lsf_sha256': sha(log)}
+    result = {'terminal_evidence_scope': provenance, 'raw_lsf_sha256': sha(log),
+              'current_scheduler_query': q}
+    if scheduler:
+        result['scheduler_sha256'] = hashlib.sha256(scheduler.encode()).hexdigest()
+    return result
 
 
 def cpu_rows(result, plan):

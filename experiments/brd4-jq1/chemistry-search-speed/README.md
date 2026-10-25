@@ -50,4 +50,11 @@ versus 16 seconds serial; first cold search still took 7.6–8.7 seconds.
 See its [measured results](runs/20261025-chemistry-speed-02/RESULTS.md).
 GPU benchmark 29809554 is queued after the separate
 [validated admission correction](runs/20261025-chemistry-speed-gpu-adoption-03/README.md).
-No GPU speedup or production adoption is established yet.
+At that observation no GPU speedup or production adoption was established.
+
+GPU 29809554 subsequently ran 05:57–06:03 Paris/CET on 25 October and passed
+all 19 GPU-only checks. The [verified GPU results](runs/20261025-chemistry-speed-02/GPU_RESULTS.md)
+show matrix local-risk value/gradient execution 6.16 times faster at batch 1,
+3.77 times at batch 32, and 24 percent slower at batch 256. Scan warm execution
+was slower throughout. These are GPU component gains; CPU RDKit search remains
+separate and no production run has adopted the candidates.

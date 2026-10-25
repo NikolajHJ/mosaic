@@ -1,11 +1,12 @@
 # Combined parallel reuse and GPU matrix study
 
-Current status at 25 October 01:29:38 Paris: CPU 29809477 passed all
-143 fixtures and the exact saved-input comparisons. Its original callback
-29809478 remains failed on scheduler lag. Separate admission03 passed19
-metadata fixtures/actual CPU and callback completion, then submitted unchanged
-GPU benchmark29809554. GPU is PEND on physical availability, without execution
-or performance results yet. See the admission03 run for its independent proof.
+Current status verified 25 October09:49 Paris/CET: CPU143 and GPU19
+engineering cases/benchmarks passed. Actual GPU29809554 ran05:57:33–06:03:48
+Paris on L40S. Its live record is now aged out; original same-job LSF success
+and raw proof hashes authenticate SUCCESS_PERSISTED. Original callback29809478
+remains failed; admission03's19 metadata tests/actual terminal proofs passed.
+See GPU_RESULTS.md for measured component gains and limits. No production
+adoption or changes to existing scientific runs/results occurred.
 
 The user explicitly requested further optimization, more parallelism and GPU
 matrix conversions. Existing saved runs, scientific sources/settings and the
