@@ -71,3 +71,9 @@ subprocess import plumbing, startup coverage and primary-error reporting; the
 prospective numerical policy and all original scientific settings remain exact.
 
 A separate [Protenix20k endpoint investigation](runs/20261025-protenix-endpoint-forensics-01/README.md) preserves the failed admission and all optimization settings. It measures the exact existing probe cohort, scalar execution paths, endpoint derivatives and contact-partner switches; it cannot certify or restart a study.
+
+A new [separate-precision Protenix checker](runs/20261025-protenix-endpoint-fix-01/README.md)
+is being validated at the immutable20k endpoint. It separates the original FP32
+measurement from an authenticated full-FP64 reference and rejects wrong-gradient
+controls. This validation-only capsule cannot submit optimizer work or erase any
+original failure. Preparation/local AST checks are not an allocated/native pass.

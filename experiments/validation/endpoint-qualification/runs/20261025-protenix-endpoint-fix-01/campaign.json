@@ -1,0 +1,21 @@
+{
+  "status": "allocated_cpu_running_not_passed",
+  "cpu_job_id": "29816090",
+  "callback_job_id": "29816091",
+  "source_manifest_sha256": "bdc0a25311602e4c0c9a1645fdc6f62181023d6834ea12554f6327fe3114c52f",
+  "plan_sha256": "6f83ccdf7eb8bdbb874c6fba9b837d938ab8e8ae28abf3496e9e808cd51fe13c",
+  "captured_utc": "2026-10-25T17:09:16.100297+00:00",
+  "native_job_id": null,
+  "native_gate_passed": false,
+  "optimizer_continuation_submitted": false,
+  "optimization_settings_changed": false,
+  "original_results_changed": false,
+  "monitor_remains_paused": true,
+  "preflight_storage": {
+    "status": "passed",
+    "required_bytes": 36344788980,
+    "available_bytes": 36610329533,
+    "reserve_bytes": 4294967296,
+    "file_reserve": 100000
+  }
+}

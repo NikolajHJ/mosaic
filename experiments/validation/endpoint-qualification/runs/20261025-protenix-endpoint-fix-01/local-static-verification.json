@@ -1,0 +1,9 @@
+{
+  "status": "passed_local_stdlib_bytes_AST_only",
+  "source_files": 14,
+  "archive_bytes": 56224,
+  "archive_sha256": "7003eb21f1c8badbc21c99153e5f3db419bb1a8671698d808ed082e63ba97638",
+  "manifest_sha256": "bdc0a25311602e4c0c9a1645fdc6f62181023d6834ea12554f6327fe3114c52f",
+  "numerical_tests_executed_locally": false,
+  "optimizer_updates": 0
+}

@@ -7419,3 +7419,29 @@ Actual diagnostic29813996 completed13:27:30–13:34:23DTU-local with same-job LS
 Forensic scalar-only addendum CPU29815099 actually submitted after full fresh gate; immutable code SHA84113a19fc1b474c593496690f23f31146f7f50c272c4f9d1fdd9054dc9c61d1. No model/optimizer calls; all54 stored scalar rows tabulated with4 allocated hand-calculable controls. RUN at the first direct observation, not a completed analysis or gate pass. Original continuation remains blocked at20k.
 
 Forensic scalar-only CPU29815099 actualDONE/hpc/samejobLSFsuccess. All4allocated controls passed;54-row summary356125B SHA7c452566ab1747db72e12e6b707d0acfbeff963e83d6d02dbb530e13c242623b; independent12-file byte/schema/code/LSF audit passed. ADscalarpath improves26/worsens27/equals1;17predictions at/below former scalar floor;0contactwinnerchanges across110evaluations. These are diagnostic counts, not a new acceptance/noise bound. Original20k state/settings and failures unchanged; no continuation/admission, no automatic monitor restart. Measured findings and required prospective checker work documented in forensic run/findings.md.
+
+## 2026-10-25 — Protenix20k prospective separate-precision checker (preparation)
+
+User asked to validate and fix the still-blocking checker without changing saved
+results/settings. New endpoint-fix01 capsule prepares separate sequential FP32
+and FP64 reference processes, three exact AST-pinned precision-only cast clones,
+lossless original model/context/raw-point promotion, full nested floating-JAXPR
+dtype audit, baseline-sealed meaningful directions/two adjacent scales,
+independent FD/AD/production-gradient/locality comparisons and cached native
+wrong-gradient controls. Original29809291/29813840 failures and20k saved boundary
+remain immutable. Fresh allocated CPU/rawXML/actual startup and a bounded native
+validation are required; preparation is not a pass/fixed issue or continuation.
+No optimizer branch/automatic monitor restart, LR/model/loss/state changes,
+cleanup or other-project action. Local work is AST/JSON/bytes only. Owning run:
+experiments/validation/endpoint-qualification/runs/20261025-protenix-endpoint-fix-01/.
+
+Actual submission25October17:09:04UTC: CPU29816090 and own-ended callback29816091;
+14-file source manifestbdc0a25311602e4c0c9a1645fdc6f62181023d6834ea12554f6327fe3114c52f,
+archive56,224B SHA7003eb21f1c8badbc21c99153e5f3db419bb1a8671698d808ed082e63ba97638.
+Full mandatory storage guard passed36,344,788,980required vs36,610,329,533available
+with unchanged4GiB/100k reserves and all old forecasts; not a reservation. CPU
+RUN at17:09:16UTC, no fixture/native pass or continuation yet. New fixture suite
+expects267rawcases (89reference+30policy+76native+72ops), independently verified
+actual metadata-only startup required. No model/optimizer evaluation locally.
+Layout check still fails on preexisting discovery/missing historical README paths;
+none name this owner. Own14-member archive/AST/bytes verified.

@@ -10,3 +10,6 @@ an original failed run into a pass or authorize a gate waiver.
   correction for Boltz and DBMol only; Protenix remains explicitly blocked.
 
 - [20261025 Protenix endpoint forensics](20261025-protenix-endpoint-forensics-01/README.md): separate diagnostics of the preserved20k endpoint; no settings/result edits or continuation authority.
+
+- `20261025-protenix-endpoint-fix-01`: prospective separate-FP64-reference checker
+  validation at the untouched20k endpoint; no optimizer or historical recertification.

@@ -14,3 +14,9 @@ attempt's allocated CPU job. Neither toy passes nor premodel startup receipts
 establish a native model pass or optimization start.
 
 `test_protenix_endpoint_forensics.py`, `test_protenix_forensics_native.py` and `test_protenix_forensics_ops.py` cover the separate Protenix fixed-point investigation. All fixture execution is allocated HPC; local review is AST/bytes only.
+
+The four `test_protenix_precision_*` modules cover authenticated precision-cast
+clones, lossless promotion/dtype audits, positive/adversarial endpoint policies,
+metadata startup/preservation and one-shot CPU/GPU dispatch. Execute only in the
+new immutable allocated CPU capsule, never locally. Toy/reference fixtures alone
+cannot qualify the pretrained Protenix endpoint.

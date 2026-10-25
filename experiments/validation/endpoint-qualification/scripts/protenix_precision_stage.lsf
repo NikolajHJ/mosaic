@@ -1,0 +1,45 @@
+#!/bin/bash
+set -euo pipefail
+[[ $# == 3 && -n "${LSB_JOBID:-}" ]]
+source_root=$1
+manifest=$2
+phase=$3
+module load python3/3.12.11
+python=/work3/s234818/mosaic/envs/protenix-tiny/bin/python
+export PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+"$python" - "$source_root" "$manifest" <<'VERIFY'
+import hashlib,json,sys
+from pathlib import Path,PurePosixPath
+def verify(root,pin,count=None):
+ root=Path(root); assert root.is_absolute() and not root.is_symlink()
+ raw=(root/'source_manifest.json').read_bytes(); assert hashlib.sha256(raw).hexdigest()==pin
+ files=json.loads(raw)['files']; assert count is None or len(files)==count
+ actual=set()
+ for path in root.rglob('*'):
+  assert not path.is_symlink() and (path.is_dir() or path.is_file())
+  if path.is_file(): actual.add(path.relative_to(root).as_posix())
+ assert actual==set(files)|{'source_manifest.json'}
+ for name,digest in files.items():
+  rel=PurePosixPath(name); assert not rel.is_absolute() and '..' not in rel.parts and '\\' not in name
+  with (root/name).open('rb') as stream: assert hashlib.file_digest(stream,'sha256').hexdigest()==digest
+ return json.loads(raw)
+m=verify(sys.argv[1],sys.argv[2])
+for row in m['parent_sources']: verify(row['path'],row['manifest_sha256'],row['files'])
+VERIFY
+base=/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01
+science_root="$base/protenix-extended-release-03/source"
+export HF_HUB_OFFLINE=1 HF_HUB_DISABLE_TELEMETRY=1
+export OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 MKL_NUM_THREADS=4 NUMEXPR_NUM_THREADS=4
+export JAX_ENABLE_X64=1 JAX_PLATFORMS=cpu
+if [[ "$phase" == gpu ]]; then
+ [[ "$LSB_QUEUE" == gpul40s ]]
+ module load cuda/12.9.1 cudnn/v9.13.0.50-prod-cuda-12.X
+ export JAX_PLATFORMS=cuda,cpu XLA_PYTHON_CLIENT_PREALLOCATE=false
+else
+ [[ "$LSB_QUEUE" == hpc ]]
+ export CUDA_VISIBLE_DEVICES=''
+fi
+source "$science_root/scripts/hpc/boltz_node_tmpdir.sh"
+export PYTHONPATH="$source_root/scripts:$science_root/src:$science_root/scripts"
+cd "$source_root"
+"$python" -u "$source_root/scripts/protenix_precision_ops.py" --pin "$manifest" --phase "$phase"
