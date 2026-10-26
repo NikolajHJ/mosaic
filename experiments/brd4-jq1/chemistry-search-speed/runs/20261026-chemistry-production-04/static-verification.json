@@ -1,0 +1,62 @@
+{
+  "status": "static_AST_source_archive_audit_passed",
+  "packages": [
+    {
+      "tag": "20261026-chemistry-production-04",
+      "members": 18,
+      "manifest_sha256": "01e2de2a3413bd903590dd331c5cedf6b756e856a83df2b73ad65e02b9f9fceb",
+      "archive_sha256": "ea539c3d4f73f936785861002f4cd8e9598e821f844b1c907e16a860c4c72875",
+      "runtime_and_fixture_files_exact": [
+        "scripts/production_context.py",
+        "scripts/production_contract.py",
+        "scripts/production_ops.py",
+        "scripts/production_recovery.py",
+        "scripts/production_run.py",
+        "scripts/production_stage.lsf",
+        "tests/test_production_acceleration.py",
+        "tests/test_production_context.py",
+        "tests/test_production_contract.py",
+        "tests/test_production_integration.py",
+        "tests/test_production_ops.py",
+        "tests/test_production_recovery.py"
+      ]
+    },
+    {
+      "tag": "20261026-protenix-endpoint-fix-04",
+      "members": 17,
+      "manifest_sha256": "af2393345d9f284fb395eacf809cdf56ccfcdfdc6938dd7f4747feb728db310f",
+      "archive_sha256": "2ff6b5ee1a3d899b7b388cddab9c466f7268cfb21ec9370538797d11043c4b61",
+      "runtime_and_fixture_files_exact": [
+        "scripts/current_capacity.py",
+        "scripts/protenix_precision_admission.py",
+        "scripts/protenix_precision_native.py",
+        "scripts/protenix_precision_ops.py",
+        "scripts/protenix_precision_reference.py",
+        "scripts/protenix_precision_stage.lsf",
+        "tests/test_current_capacity.py",
+        "tests/test_protenix_precision_admission.py",
+        "tests/test_protenix_precision_native.py",
+        "tests/test_protenix_precision_ops.py",
+        "tests/test_protenix_precision_reference.py"
+      ]
+    }
+  ],
+  "native_charge_AST": {
+    "name": "AtomAttentionEncoder.__call__",
+    "original_ast_sha256": "acec16e3de87879f2ea772deb29ce9157125f5f81632846c478da394925419e0",
+    "reference_ast_sha256": "c203e0f11a20d02380b97cedff18e80be1291a616a249cf09f9fab70059010a3",
+    "changed_expressions": 1,
+    "change": "arcsinh(ref_charge) -> arcsinh(ref_charge.astype(reference_charge_weight.dtype))",
+    "integer_metadata_changed": false,
+    "optimization_execution_changed": false
+  },
+  "nonchem_driver_only_policy_metadata_changed": true,
+  "declared_allocated_cases": {
+    "chemistry": 122,
+    "pro_precision": 286
+  },
+  "new_allocated_cases_passed": 0,
+  "new_native_passes": 0,
+  "jobs_submitted": 0,
+  "monitor_resumed": false
+}

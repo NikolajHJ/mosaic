@@ -317,7 +317,8 @@ def native_functions():
     bootstrap_native_assets('/work3/s234818/mosaic/cache/mosaic/protenix', include_model=False)
     import protenix.protenij as native
     return native, {"average_over_atoms": native.average_over_atoms,
-                    "OuterProductMean.__call__": native.OuterProductMean.__call__}
+                    "OuterProductMean.__call__": native.OuterProductMean.__call__,
+                    "AtomAttentionEncoder.__call__": native.AtomAttentionEncoder.__call__}
 
 
 @pytest.mark.parametrize("name", ["average_over_atoms", "OuterProductMean.__call__"])
@@ -345,12 +346,14 @@ def test_native_source_and_hook_restoration_are_authenticated(x64):
     assert len(audit["mask_functions"]) == 2
     with pytest.raises(RuntimeError, match="fixture interruption"):
         with r.native_precision_context() as active:
-            assert active["changed_expressions"] == 3
+            assert active["changed_expressions"] == 4
             assert native.average_over_atoms is not originals["average_over_atoms"]
             assert native.OuterProductMean.__call__ is not originals["OuterProductMean.__call__"]
+            assert native.AtomAttentionEncoder.__call__ is not originals["AtomAttentionEncoder.__call__"]
             raise RuntimeError("fixture interruption")
     assert native.average_over_atoms is originals["average_over_atoms"]
     assert native.OuterProductMean.__call__ is originals["OuterProductMean.__call__"]
+    assert native.AtomAttentionEncoder.__call__ is originals["AtomAttentionEncoder.__call__"]
 
 
 @pytest.mark.parametrize("masked", [False, True])
@@ -443,3 +446,73 @@ def test_standalone_outer_clone_matches_actual_fp32_runtime(fp32, masked):
     observed = np.asarray(clone(layer, values, token_mask=mask))
     assert baseline.dtype == observed.dtype == np.float32
     np.testing.assert_array_equal(baseline, observed)
+
+
+def test_charge_clone_authenticates_the_complete_actual_encoder():
+    _, functions = native_functions()
+    code, audit = r.clone_native_charge_function(inspect.getsource(functions['AtomAttentionEncoder.__call__']))
+    assert code is not None and audit['changed_expressions'] == 1
+    assert audit['original_ast_sha256'] == r.CHARGE_AST_SHA256
+    assert audit['integer_metadata_changed'] is False and audit['optimization_execution_changed'] is False
+
+
+@pytest.mark.parametrize('before,after', [
+    ('jnp.arcsinh', 'jnp.sinh'),
+    ('["ref_charge"]', '["other_charge"]'),
+    ('batch_shape =', 'changed_batch_shape ='),
+])
+def test_charge_clone_rejects_changed_native_encoder(before, after):
+    _, functions = native_functions()
+    source = inspect.getsource(functions['AtomAttentionEncoder.__call__'])
+    assert before in source and source.replace(before, after, 1) != source
+    with pytest.raises(ValueError, match='Unauthenticated atom encoder charge AST'):
+        r.clone_native_charge_function(source.replace(before, after, 1))
+
+
+@pytest.mark.parametrize('dtype', ['float32','float64'])
+@pytest.mark.parametrize('batched', [False,True])
+def test_actual_charge_prefix_preserves_fp32_and_keeps_fp64(x64, dtype, batched):
+    import jax.numpy as jnp
+    import numpy as np
+    native, functions = native_functions()
+    original = functions['AtomAttentionEncoder.__call__']
+    code, clone_audit = r.clone_native_charge_function(inspect.getsource(original))
+    namespace = dict(original.__globals__); exec(code, namespace)
+    # Execute the exact authenticated native prefix through charge embedding;
+    # stop before the attention trunk, which remains covered by the full native
+    # GPU gate. Both clone and original use identical prefix extraction.
+    def prefix(function, source):
+        tree = ast.parse(source)
+        fn = tree.body[0]
+        end = next(i for i,node in enumerate(fn.body) if isinstance(node,ast.Assign)
+                   and any(isinstance(t,ast.Name) and t.id=='c_l' for t in node.targets))
+        fn.body = fn.body[:end+1] + [ast.Return(ast.Name('c_l',ast.Load()))]
+        ast.fix_missing_locations(tree)
+        values = dict(function.__globals__); exec(compile(tree,'<actual-charge-prefix>','exec'),values)
+        return values['__call__']
+    source = __import__('textwrap').dedent(inspect.getsource(original))
+    class Linear:
+        def __init__(self, weight): self.weight = weight
+        def __call__(self, values): return values @ self.weight.T
+    charge = jnp.asarray([-2,-1,0,1,2],dtype=jnp.int32)
+    if batched: charge = jnp.stack([charge,charge])
+    native_dtype = getattr(jnp,dtype)
+    features = {'ref_charge':charge,'ref_pos':jnp.zeros((*charge.shape,3),dtype=native_dtype),
+                'ref_mask':jnp.ones(charge.shape,dtype=native_dtype),
+                'ref_space_uid':jnp.zeros(charge.shape,dtype=jnp.int32),
+                'atom_to_token_idx':jnp.zeros(charge.shape,dtype=jnp.int32)}
+    layer = SimpleNamespace(has_coords=False,input_feature_keys_ordered=[],
+        linear_no_bias_ref_pos=Linear(jnp.zeros((2,3),dtype=native_dtype)),
+        linear_no_bias_ref_charge=Linear(jnp.ones((2,1),dtype=native_dtype)))
+    clone_source = clone_audit['reference_source']
+    got = prefix(namespace['__call__'],clone_source)(layer,features)
+    expected = jnp.arcsinh(charge.astype(native_dtype))[...,None] * jnp.ones((2,),dtype=native_dtype)
+    assert str(got.dtype) == dtype
+    np.testing.assert_array_equal(np.asarray(got),np.asarray(expected))
+    np.testing.assert_array_equal(np.asarray(features['ref_charge']),np.asarray(charge))
+    if dtype=='float32':
+        np.testing.assert_array_equal(np.asarray(prefix(original,source)(layer,features)),np.asarray(got))
+    audit = __import__('protenix_precision_native').audit_jaxpr
+    if dtype=='float64':
+        graph = x64.make_jaxpr(lambda values: prefix(namespace['__call__'],clone_source)(layer,dict(features,ref_charge=values)))(charge)
+        assert audit(graph)['floating_operations_float64'] is True

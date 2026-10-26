@@ -215,6 +215,25 @@ def terminal(arm,index,pin,parent):
         'scientific_checks_removed':False,'saved_results_changed':False})
 
 
+def prepare_acceleration_output(parent):
+    """Create the owned adapter parent before its GPU child is constructed.
+
+    The original GPU helper exclusively creates acceleration/gpu-chemistry;
+    it deliberately does not create missing parents. Never reuse an existing
+    adapter tree, traverse a link, or modify the separate study directory.
+    """
+    parent = Path(parent)
+    op.require(parent.is_absolute() and parent.is_relative_to(op.ROOT)
+               and not any(p.is_symlink() for p in (parent,*parent.parents)),
+               'Acceleration parent escapes the new ordinary production root')
+    payload = parent/'payload'
+    op.require(payload.is_dir() and not payload.is_symlink()
+               and payload.stat().st_uid == os.getuid(), 'Owned payload parent required')
+    directory = payload/'acceleration'
+    directory.mkdir(exist_ok=False)
+    return directory
+
+
 def execute_driver(arm,phase,index,pin,plan,parent):
     native=op.arm_plan(arm,plan); source=Path(native['source']['path'])
     args=op.driver_args(arm,phase,index,parent/'payload/study',plan)
@@ -237,7 +256,8 @@ def execute_driver(arm,phase,index,pin,plan,parent):
     old_argv,old_cwd=sys.argv,Path.cwd()
     try:
         with ExitStack() as stack:
-            stack.enter_context(adapters.combined_adapters(native['profile'],parent/'payload/acceleration'))
+            acceleration = prepare_acceleration_output(parent)
+            stack.enter_context(adapters.combined_adapters(native['profile'],acceleration))
             if phase=='segment':
                 op.verify(op.RETENTION_SOURCE,op.RETENTION_PIN)
                 retention=op.module(op.RETENTION_SOURCE/'retention.py','_chemistry_production_retention')
@@ -256,6 +276,8 @@ def main(argv=None):
     modes=parser.add_mutually_exclusive_group(required=True)
     for option in ('metadata-startup','startup-only','certify-terminal','execute'):modes.add_argument('--'+option,action='store_true')
     args=parser.parse_args(argv)
+    if not args.metadata_startup:
+        op.recovery.execution_scope('after-'+args.phase if args.certify_terminal else args.phase,args.arm)
     op.require(os.environ.get('LSB_JOBID'),'Allocated HPC only')
     manifest,plan=op.own_plan(args.manifest)
     if args.metadata_startup:

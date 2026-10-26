@@ -1,0 +1,29 @@
+{
+  "status": "local_candidate_prepared_HPC_access_blocked",
+  "active_local_package": "source02",
+  "preparation": {
+    "archive_bytes": 63933,
+    "archive_sha256": "1e0457b1d6c189a4b0efc52d9910520afcf692a028857655da05d76d094a8901",
+    "cpu_counts": {
+      "tests.test_current_capacity": 5,
+      "tests.test_protenix_precision_admission": 30,
+      "tests.test_protenix_precision_native": 82,
+      "tests.test_protenix_precision_ops": 72,
+      "tests.test_protenix_precision_reference": 97
+    },
+    "files": 16,
+    "manifest_sha256": "448f7f27ad26333442643223d10ea3585708aef4bc9c485413327bac56687d2c",
+    "plan_sha256": "1dc6b220af74f550e05ea32041a80475e0b44a9274e0373173a3a2701f3c8459",
+    "status": "prepared_not_validated"
+  },
+  "static_verification_sha256": "b183fdfed15ebfac5249d8647b82b52469a3a22add4e42768904bca0743f8993",
+  "declared_CPU_cases": 286,
+  "new_allocated_CPU_pass": false,
+  "new_native_pass": false,
+  "jobs_submitted": false,
+  "remote_source_staged": false,
+  "settings_changed": false,
+  "saved_results_changed": false,
+  "monitor_resumed": false,
+  "required_next_step": "Authenticate actual remote target absence/current receipts; execute allocated complete CPU/startup/native gates before conditional production. No blind stage or callback replay."
+}

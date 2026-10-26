@@ -22,6 +22,7 @@ import time
 import xml.etree.ElementTree as ET
 
 import production_contract as c
+import production_recovery as recovery
 
 BASE, ROOT, SOURCE = (Path(value) for value in (c.BASE, c.ROOT, c.SOURCE))
 PYTHON = '/work3/s234818/mosaic/envs/protenix-tiny/bin/python'
@@ -96,6 +97,7 @@ def own_plan(pin):
     manifest = verify(SOURCE, pin)
     require(manifest.get('version') == c.VERSION, 'Wrong production seal scope')
     plan=c.validate_plan(read(SOURCE/'plan.json'))
+    recovery.authenticate(sys.modules[__name__],manifest)
     adapter_parity(plan)
     return manifest,plan
 
@@ -186,7 +188,7 @@ def phase_parent(phase, arm='control', index=0):
 def argv(phase, pin, arm='control', index=0, dependency=None):
     c.digest(pin); parent = phase_parent(phase, arm, index)
     args = ['bsub', *c.resources(phase, None if arm=='control' else arm), '-J',
-            'mosaic-chem-prod03-'+arm+'-'+parent.name,
+            'mosaic-chem-prod04-'+arm+'-'+parent.name,
             '-oo', str(parent/'stdout.%J.log'), '-eo', str(parent/'stderr.%J.log')]
     if dependency is not None:
         require(re.fullmatch(r'ended\(\d+\)(?: && ended\(\d+\))*', dependency) is not None,
@@ -197,6 +199,7 @@ def argv(phase, pin, arm='control', index=0, dependency=None):
 
 
 def submit(phase, pin, arm='control', index=0, dependency=None):
+    recovery.execution_scope(phase,arm)
     parent = phase_parent(phase, arm, index); parent.parent.mkdir(exist_ok=True)
     parent.mkdir(exist_ok=False)
     command = argv(phase, pin, arm, index, dependency)
@@ -399,11 +402,14 @@ def storage(parent, phase, *, adopted=False):
               'available_bytes': prior['available_bytes'], 'adopted_full_production': adopted}
     try:
         current_control=enforce_control_cap()
-        future = c.CONTROL_CAP-current_control
+        existing_control = recovery.old_control_bytes(sys.modules[__name__])
+        future = c.CONTROL_CAP-current_control + c.CONTROL_CAP-existing_control
         record['metadata_bytes'] = current_control; record['metadata_full_cap'] = c.CONTROL_CAP
+        record['preserved_chemistry03_control_bytes'] = existing_control
+        record['preserved_chemistry03_control_full_cap'] = c.CONTROL_CAP
         rows = {}
         for arm in c.PROFILES:
-            root = ROOT/arm; current = tree_bytes(root)
+            root = recovery.budget_root(arm,ROOT); current = tree_bytes(root)
             if adopted:
                 evidence = adoption(arm)
                 unit = evidence['unit_bytes']
@@ -415,10 +421,17 @@ def storage(parent, phase, *, adopted=False):
                     unit = update['unit_bytes']
                 full = c.projection(unit, arm)
             else:
-                require(current == 0, 'Unadopted chemistry output/unknown job exists')
-                full = 0
+                # Fresh CPU admission also retains both complete futures. The
+                # original Pro03 tree is only counted, never executed here.
+                preflight=read(ROOT/'producer-preflight.json')
+                require(preflight['status']=='actual_native_proofs_passed','Authenticated native preflight required')
+                evidence=preflight['adoptions'][arm]
+                require(evidence['status']=='passed' and type(evidence['unit_bytes']) is int,
+                        'Exact full pilot projection required before CPU')
+                if arm=='boltz':require(current==0,'Unadopted replacement output/unknown job exists')
+                full = c.projection(evidence['unit_bytes'],arm)
             require(current <= full, 'New chemistry output exceeds full empirical cap')
-            rows[arm] = {'full': full, 'current': current, 'remaining': full-current}
+            rows[arm] = {'full': full, 'current': current, 'remaining': full-current,'budget_root':str(root)}
             future += full-current
         record.update(chemistry=rows, additional_remaining_bytes=future,
                       required_bytes=prior['required_bytes']+future)
@@ -645,6 +658,7 @@ def preserve_storage_block(parent,submission,pin,error):
 
 
 def execute(phase, pin, arm='control', index=0):
+    recovery.execution_scope(phase,arm)
     require(os.environ.get('LSB_JOBID') and not sys.flags.optimize, 'Actual allocated unoptimized Python required')
     manifest, plan = own_plan(pin); parent, sub = own(phase, pin, arm, index)
     require(manifest['cpu_modules']==c.cpu_modules(manifest['cpu_counts']), 'Declared CPU module/class scope differs')
@@ -680,7 +694,7 @@ def execute(phase, pin, arm='control', index=0):
                 # allocated and validated dispatch source/phase.
                 preserve_storage_block(parent,sub,pin,error)
                 raise
-            for name in c.PROFILES: queue_pair(name, 'segment', 0, pin)
+            for name in recovery.DISPATCH_ARMS: queue_pair(name, 'segment', 0, pin)
             enforce_control_cap()
         return
     payload = parent/'payload'; payload.mkdir(exist_ok=False)

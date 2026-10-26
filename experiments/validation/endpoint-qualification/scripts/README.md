@@ -34,3 +34,14 @@ uses one read-only SSH query for BOTH current roots; `verify_endpoint_repair.py
 --name UNIQUE --output FRESH` independently checks bytes/source archives/rawCPU
 XML/LSF/actual submission scope. No model/numerical calls locally. Do not use
 these canonical launchers to replay older attempts. Old failures stay immutable.
+
+
+`collect_repair_inputs.py --label <fresh-label>` is the canonical one-connection,
+read-only collector for source06 Boltz/DBMol admissions/pilot reports, precision03
+failure and hash-pinned native runtime source. Never reuse the preserved failed
+inputs01 label or infer a numerical cause from a connection failure.
+Precision preparation/staging targets04/source03 only, with chemistry04's exact
+full-current-capacity source. Stage only after actual chemistry04 CPU/adoption
+prerequisites are available; no callback or older bootstrap may be replayed.
+The isolated reference's charge clone authenticates/reverses one complete AST
+expression and preserves production FP32; a native pass remains unestablished.

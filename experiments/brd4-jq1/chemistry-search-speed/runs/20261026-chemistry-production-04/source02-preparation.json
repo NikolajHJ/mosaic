@@ -1,0 +1,54 @@
+{
+  "allocated_CPU_pass": false,
+  "archive_bytes": 36341,
+  "archive_sha256": "c361c1e39cedf40adc3c11bdc797f8738309e803ec1eeccfe702d3317d9bb4c8",
+  "cpu_cases": 121,
+  "cpu_counts": {
+    "tests.test_production_acceleration.AccelerationStartupTests": 8,
+    "tests.test_production_context.ProductionContextTests": 6,
+    "tests.test_production_contract.ProductionContractTests": 53,
+    "tests.test_production_integration.OriginalCallSiteTests": 14,
+    "tests.test_production_ops.ProductionRoutingTests": 33,
+    "tests.test_production_recovery.RecoveryOwnershipTests": 7
+  },
+  "files": 17,
+  "implementation_members": [
+    "scripts/production_contract.py",
+    "scripts/production_ops.py",
+    "scripts/production_run.py",
+    "scripts/production_stage.lsf",
+    "tests/test_production_contract.py",
+    "tests/test_production_ops.py",
+    "tests/test_production_integration.py",
+    "scripts/production_context.py",
+    "tests/test_production_context.py",
+    "scripts/production_recovery.py",
+    "tests/test_production_recovery.py",
+    "tests/test_production_acceleration.py"
+  ],
+  "jobs_submitted": false,
+  "manifest_sha256": "ef45d0820387b80c3660fd647abe62a5acdecd9c79d2606b882beeda20ed6001",
+  "monitor_resumed": false,
+  "plan": {
+    "pilots": {
+      "boltz": {
+        "cpu_certificate_sha256": "c46f39e679f503720ae31b561b8b3273a1d38c160bf3c7f3d6feba28f2b5c687",
+        "job_id": "29816184",
+        "manifest_sha256": "05e316a7b1bcceaf286b03231200a2d1f66e3f6a7ce927d4c1e73f08a24f86f9",
+        "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-02",
+        "source": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-release-02/source"
+      },
+      "protenix": {
+        "cpu_certificate_sha256": "c4a88a77f1ae5b4d20aa8c6f3b7fa59152cb295b4791b70c2bc737e1e0857980",
+        "job_id": "29818553",
+        "manifest_sha256": "ab875927a328c34650d2e43baf6dfbe323e8f9bcf5600f39bac78f3ccdfb5d8c",
+        "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-05",
+        "source": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-release-05/source"
+      }
+    },
+    "version": "chemistry-accelerated-production-v4"
+  },
+  "plan_sha256": "053daea8fdda1a684d7d98c9253ff8e0e0f5999262745c365c378a2f700e0f4f",
+  "production_readiness_passed": false,
+  "status": "local_stdlib_AST_byte_packaging_only"
+}

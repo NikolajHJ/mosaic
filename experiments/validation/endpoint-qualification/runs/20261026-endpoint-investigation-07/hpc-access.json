@@ -1,0 +1,10 @@
+{
+  "returncode": 255,
+  "program_sha256": "58898a69c30653b37a1a1c0c5d09cde73323c6d21cf7617f3e8c8e89b95bc548",
+  "read_only": true,
+  "status": "HPC_access_blocked_before_readonly_input_collection",
+  "stderr_sha256": "d63bca729b18809a176a1b884d6a05c44092177aba4baabc98915134280e348a",
+  "new_jobs_submitted": false,
+  "new_remote_staging_established": false,
+  "remote_target_absence_established": false
+}

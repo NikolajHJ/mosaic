@@ -1,6 +1,6 @@
 """Metadata-only admission including both already submitted chemistry futures.
 
-Run the authenticated existing production03 guard in a fresh metadata process,
+Run the authenticated existing Boltz-recovery04 guard in a fresh metadata process,
 avoiding collisions with the current checker modules. No scientific import,
 model execution, deletion or submission is performed here.
 """
@@ -11,8 +11,8 @@ import re
 import subprocess
 
 BASE=Path('/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01')
-SOURCE=BASE/'chemistry-production-release-03/source'
-PIN='c73796b041d8432ef1634e8c56920006170a094d3bdc74867c08f3b5415126d7'
+SOURCE=BASE/'chemistry-production-release-04/source'
+PIN='01e2de2a3413bd903590dd331c5cedf6b756e856a83df2b73ad65e02b9f9fceb'
 PYTHON='/work3/s234818/mosaic/envs/protenix-tiny/bin/python'
 GROUP_ALLOWANCE=512*1024**2+272*1024**2
 
@@ -38,7 +38,7 @@ def validate(prior,excess):
         'required_bytes':prior['required_bytes']+GROUP_ALLOWANCE+excess,
         'available_bytes':prior['available_bytes'],'reserve_bytes':4*1024**3,'file_reserve':100000,
         'new_group_allowance_bytes':GROUP_ALLOWANCE,'additional_projection_excess_bytes':excess,
-        'scope':'Whole existing chemistry03/old budgets plus new continuation512MiB and precision272MiB; no forecast/reserve removed'}
+        'scope':'Whole existing Pro03/new Bol04/old budgets plus new continuation512MiB and precision272MiB; no forecast/reserve removed'}
     require(result['available_bytes']>=result['required_bytes'],'Current full futures plus new checker scopes do not fit')
     result['status']='passed'
     return result
@@ -52,7 +52,7 @@ import hashlib,json,os,sys
 from pathlib import Path
 source=Path(sys.argv[1]);pin=sys.argv[2];output=Path(sys.argv[3])
 raw=(source/'source_manifest.json').read_bytes();assert hashlib.sha256(raw).hexdigest()==pin
-manifest=json.loads(raw);assert len(manifest['files'])==14
+manifest=json.loads(raw);assert len(manifest['files'])==17
 actual={p.relative_to(source).as_posix() for p in source.rglob('*') if p.is_file() or p.is_symlink()}
 assert actual==set(manifest['files'])|{'source_manifest.json'}
 for name,digest in manifest['files'].items():

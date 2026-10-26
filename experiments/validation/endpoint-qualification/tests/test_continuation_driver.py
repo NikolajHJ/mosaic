@@ -436,3 +436,27 @@ def test_raw_points_preserve_original_per_leaf_devices_without_default_placement
     point = d.restore_point_placement(values, template, lambda x, e: SimpleNamespace(X=x, E_upper=e), device_put)
     assert calls == [(values["X"], "original-atoms-CPU"), (values["E_upper"], "original-bonds-GPU")]
     assert point.X.value is values["X"] and point.E_upper.value is values["E_upper"]
+
+
+def test_driver_metadata_binds_its_actual_policy_version(monkeypatch):
+    value=SimpleNamespace(__file__=str(PATH.with_name('admission.py')),VERSION='prospective-endpoint-admission-v2')
+    monkeypatch.setitem(sys.modules,'admission',value)
+    assert d.endpoint_policy_version()==value.VERSION
+
+
+@pytest.mark.parametrize('field,value', [('__file__','/other/admission.py'),('VERSION','prospective-endpoint-admission-v1')])
+def test_driver_rejects_wrong_policy_origin_or_version(monkeypatch,field,value):
+    row={'__file__':str(PATH.with_name('admission.py')),'VERSION':'prospective-endpoint-admission-v2'};row[field]=value
+    monkeypatch.setitem(sys.modules,'admission',SimpleNamespace(**row))
+    with pytest.raises(ValueError):d.endpoint_policy_version()
+
+
+def test_result_and_invocation_labels_are_not_stale_policy_literals():
+    tree=ast.parse(PATH.read_bytes());fields=[]
+    for node in ast.walk(tree):
+        if not isinstance(node,ast.Dict):continue
+        for key,value in zip(node.keys,node.values):
+            if isinstance(key,ast.Constant) and key.value in ('endpoint_policy','new_endpoint_policy'):
+                fields.append(value)
+                assert not isinstance(value,ast.Constant)
+    assert len(fields)>=4

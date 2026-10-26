@@ -1,0 +1,19 @@
+{
+  "pilots": {
+    "boltz": {
+      "cpu_certificate_sha256": "c46f39e679f503720ae31b561b8b3273a1d38c160bf3c7f3d6feba28f2b5c687",
+      "job_id": "29816184",
+      "manifest_sha256": "05e316a7b1bcceaf286b03231200a2d1f66e3f6a7ce927d4c1e73f08a24f86f9",
+      "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-02",
+      "source": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-release-02/source"
+    },
+    "protenix": {
+      "cpu_certificate_sha256": "c4a88a77f1ae5b4d20aa8c6f3b7fa59152cb295b4791b70c2bc737e1e0857980",
+      "job_id": "29818553",
+      "manifest_sha256": "ab875927a328c34650d2e43baf6dfbe323e8f9bcf5600f39bac78f3ccdfb5d8c",
+      "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-05",
+      "source": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-release-05/source"
+    }
+  },
+  "version": "chemistry-accelerated-production-v4"
+}

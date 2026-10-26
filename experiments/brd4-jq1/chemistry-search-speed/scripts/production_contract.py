@@ -9,8 +9,8 @@ import re
 
 VERSION = 'chemistry-accelerated-production-v4'
 BASE = '/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01'
-ROOT = BASE + '/chemistry-production-03'
-SOURCE = BASE + '/chemistry-production-release-03/source'
+ROOT = BASE + '/chemistry-production-04'
+SOURCE = BASE + '/chemistry-production-release-04/source'
 PILOTS = {
     'protenix': {'root':BASE+'/chemistry-full-model-05',
                  'source':BASE+'/chemistry-full-model-release-05/source'},

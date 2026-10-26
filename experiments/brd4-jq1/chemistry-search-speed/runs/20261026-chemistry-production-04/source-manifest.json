@@ -1,0 +1,140 @@
+{
+  "cpu_counts": {
+    "tests.test_production_acceleration.AccelerationStartupTests": 8,
+    "tests.test_production_context.ProductionContextTests": 6,
+    "tests.test_production_contract.ProductionContractTests": 53,
+    "tests.test_production_integration.OriginalCallSiteTests": 14,
+    "tests.test_production_ops.ProductionRoutingTests": 33,
+    "tests.test_production_recovery.RecoveryOwnershipTests": 8
+  },
+  "cpu_modules": [
+    "test_production_acceleration",
+    "test_production_context",
+    "test_production_contract",
+    "test_production_integration",
+    "test_production_ops",
+    "test_production_recovery"
+  ],
+  "files": {
+    "README.md": "e33ae7dfe52ea453ed3ae5b69e7828979705f1a24d20bb078bbcc1157f298d4c",
+    "plan.json": "053daea8fdda1a684d7d98c9253ff8e0e0f5999262745c365c378a2f700e0f4f",
+    "protocol.md": "377d8eacd602d96226121a95090e6a06960d9d3ce1e41f6bf29de114d865ae72",
+    "scripts/README.md": "2e0f5f6e617483f5b7a09573e0a911089e5fbbd1b8ac332f4376680905f073c9",
+    "scripts/production_context.py": "562ee3e111f28877ec0ba9410ec68f9dc68a88254aef0c7ffab1130ea4aac32c",
+    "scripts/production_contract.py": "60f40a0fa3ab443fec3929da59ebaf8398225df4ec60332e62863cbb5d79b676",
+    "scripts/production_ops.py": "47504bfe88e1bf01dacf7a37a966a83f150bcb1b5cd0d0a81754dfc7c6ffb5c3",
+    "scripts/production_recovery.py": "0b36578e7cf4263cae43c3c4b8539e7d0fe07ee00e4f0b673edacd565c078e3f",
+    "scripts/production_run.py": "a1eff62e0832a8df65a9720000cfa6805d53c141b9399deb3909b50746cbd40c",
+    "scripts/production_stage.lsf": "d1a505d04cae00116ea08053b6a2c8d63def686fde0babbf25cd871eafa1a2f4",
+    "tests/README.md": "288bac1aac46ff724cb2a2edc8e8cc8753eef2e633289c87cbfcaac5c569f13c",
+    "tests/test_production_acceleration.py": "76d8eff03da7a7c7c7196ccbde19953dc8f655e164f29baa37e11299936fd23e",
+    "tests/test_production_context.py": "009dce94d2b7c69400c7c6d2e888b619544e29467b9b92452b0a8efa4b639f34",
+    "tests/test_production_contract.py": "2c93aa4df72f17b45a8733fda489d9babce82e8120dc8776a361f4e1ce20698a",
+    "tests/test_production_integration.py": "0bb442cb69ee8c154b5deb624361bcfdfa93b6ae3f0a6ebccb517bf6fc689524",
+    "tests/test_production_ops.py": "5bf8f65d888701beccfe7d4f4213502809316004cadf962e1ac1e6dba8b37378",
+    "tests/test_production_recovery.py": "ba92dcdb1cebc2f8eb016da0515aad25a93179dca39bad96c8ac011074349510"
+  },
+  "loss_stride": 1,
+  "matrix_stride": 20,
+  "monitor_remains_paused": true,
+  "numerical_adapter_sha256_map": {
+    "plans/boltz.json": "2c93bbf9aaa58c13c883284796b846332b191d46f3022c248c99a566d107367f",
+    "plans/protenix.json": "ab36531225cb64451b8ea3b073d7b5e7fa58cbba11b25b85939d820c6d90a925",
+    "scripts/exact_reuse.py": "b9ecf079d9697fb9efc650f0bbd944b726c2df0d2fcd3b908d9e221f2d565d88",
+    "scripts/full_model_contract.py": "d6cc337345c1e88a8f83ab668f33cbecd5a0baacaa7c30b56d72c65628fe4b08",
+    "scripts/full_model_pilot.py": "1dea64afe9e81db8389b7249c0b9470ec1b2b3212c30b663dd73d5fb44a1a4ca",
+    "scripts/gpu_local_bridge.py": "95d54d753b61b8d3af69cc714f2fe7035a4c59005dbba6394b6564a9d4d751a8",
+    "scripts/gpu_local_worker.py": "0121d8a375e8297ae85ba4ee0e4d54a81700cfa9823e5d1b1c96e2f44d7aa2b4",
+    "scripts/gpu_matrix.py": "772e3ea5a691b4aaf8432040ee0066e429e4f6ddd092ed17a2efb917647f3ef3",
+    "scripts/gpu_process_admission.py": "ef0875cab683210b81e5d990cfbfe8a3653ee59307781595b7c48aaae35539fe",
+    "scripts/hybrid_search.py": "4bed62f1f3be9aaa96ead9ef79e00840762fd28dd0b9430f6b4b08e5ab60eda8",
+    "scripts/parallel_search.py": "137d5bb6cab95ad3263090eb9b017efa1a78ed42543afe713c7fa654d3628170",
+    "scripts/profile_oracle.py": "7cb0989fda0713b78598eff489b35b5b39cc1a2d6f608eff215cec590dd126c1",
+    "scripts/round2_data.py": "7d6ca6168b77fa96f30d3696ed57c24805cde9669f2083793f1458ab0d23ab31"
+  },
+  "original_results_changed": false,
+  "own_source_CPU_control_cap_bytes": 67108864,
+  "parent_sources": [
+    {
+      "files": 34,
+      "manifest_sha256": "ab875927a328c34650d2e43baf6dfbe323e8f9bcf5600f39bac78f3ccdfb5d8c",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-release-05/source"
+    },
+    {
+      "files": 30,
+      "manifest_sha256": "05e316a7b1bcceaf286b03231200a2d1f66e3f6a7ce927d4c1e73f08a24f86f9",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-release-02/source"
+    },
+    {
+      "files": 643,
+      "manifest_sha256": "da9db6821d26b884ca1749303fc8e0b0095bd9ee7cbd1b427cdcf1b22eec6562",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source"
+    },
+    {
+      "files": 635,
+      "manifest_sha256": "c214bccf2c94ac6829996bc0ca7d6415d3c19549be4fe7f874cba2b433901cc6",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-release-03/source"
+    },
+    {
+      "files": 14,
+      "manifest_sha256": "09f759a7befb8a7b8f0e1d203e15acf939126fba493b30e6a2bf9cd2eea2216b",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-release-02/source"
+    },
+    {
+      "files": 12,
+      "manifest_sha256": "704fab033d97342a14dc12b58dc32df44874232c5c30aad47c4d02041a502aab",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-startup-release-03/source"
+    },
+    {
+      "files": 14,
+      "manifest_sha256": "c73796b041d8432ef1634e8c56920006170a094d3bdc74867c08f3b5415126d7",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-release-03/source"
+    }
+  ],
+  "recovery": {
+    "execution_arms": [
+      "boltz"
+    ],
+    "preserved_protenix_root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-03/protenix",
+    "proofs": [
+      {
+        "bytes": 1366,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-03/boltz/boltz2_chemistry-segment-0000/submission.json",
+        "sha256": "a5171adeded955971747e4e7cc6804722a3a8a9d473101678a32b673855d6553"
+      },
+      {
+        "bytes": 2081,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-03/boltz/boltz2_chemistry-segment-0000/stdout.29820257.log",
+        "sha256": "1aa6798699feb6f585d797eea0813af2cda988a453c7c641f290787c273fda25"
+      },
+      {
+        "bytes": 3131,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-03/boltz/boltz2_chemistry-segment-0000/driver.json",
+        "sha256": "c3e2e026c2427c6407a694a75c8ba5f492028583fcb0509bb9070b3118834356"
+      },
+      {
+        "bytes": 1374,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-03/boltz/boltz2_chemistry-after-segment-0000/submission.json",
+        "sha256": "f79246b02ae7b33db8a7b05d7ce94dd7819e4acc0183c688084935525010f97c"
+      },
+      {
+        "bytes": 2097,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-03/boltz/boltz2_chemistry-after-segment-0000/stdout.29820258.log",
+        "sha256": "8840f648f9e6af5f7ce61765bf9858a39895a0901e86fa966a91a294eba05139"
+      },
+      {
+        "bytes": 1339,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-03/protenix/random-segment-0000/submission.json",
+        "sha256": "42927004fa71664bb3be1fd09364723b7eaabc5ff667bedb28a8ab6511db89e3"
+      },
+      {
+        "bytes": 143095,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-03/protenix/random-segment-0000-certificate.json",
+        "sha256": "2e790bc79426c45aaee0548daaf134cf471aaff4978db7aeb4ef4ed68d903823"
+      }
+    ],
+    "version": "boltz-chemistry-startup-only-recovery-v1"
+  },
+  "scientific_settings_changed": false,
+  "version": "chemistry-accelerated-production-v4"
+}

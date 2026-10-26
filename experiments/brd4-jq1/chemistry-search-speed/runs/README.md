@@ -42,3 +42,8 @@ productionlongs. Current failure receipts supersede old PEND statements above.
   actual startups/native/compiler/fullfuture storage passed; independent GPU
   first segments29820255(Pro50k)/29820257(Bolchem30k)PEND, own callbacks.
   Settings unchanged; no optimization start yet, paused monitor unchanged.
+
+
+- [20261026-chemistry-production-04](20261026-chemistry-production-04/README.md):
+  Boltz-only missing-parent recovery, active local source03/122 declared cases.
+  Protenix03 preserved; no allocated validation or submission, SSH access blocked.

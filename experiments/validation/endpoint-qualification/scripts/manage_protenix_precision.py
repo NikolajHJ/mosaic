@@ -18,12 +18,12 @@ import tarfile
 
 REPO = Path(__file__).resolve().parents[4]
 OWNER = REPO / 'experiments/validation/endpoint-qualification'
-TAG = '20261026-protenix-endpoint-fix-03'
+TAG = '20261026-protenix-endpoint-fix-04'
 RUN = OWNER / 'runs' / TAG
 LOCAL = REPO / 'results/hpc' / TAG
 BASE = '/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01'
-SOURCE = BASE + '/protenix-endpoint-fix-release-03/source'
-ROOT = BASE + '/protenix-endpoint-fix-03'
+SOURCE = BASE + '/protenix-endpoint-fix-release-04/source'
+ROOT = BASE + '/protenix-endpoint-fix-04'
 PYTHON = '/work3/s234818/mosaic/envs/protenix-tiny/bin/python'
 
 
@@ -66,6 +66,7 @@ def prepare(counts_path):
         {'path':BASE+'/protenix-endpoint-forensics-release-01/source',
          'manifest_sha256':'d127d6abe87307a5d305edb6d04e3a32e3545c508e58b82ce45290e0f3fc03d8','files':13}]
     parents.append({'path':BASE+'/chemistry-production-release-03/source','files':14,'manifest_sha256':'c73796b041d8432ef1634e8c56920006170a094d3bdc74867c08f3b5415126d7'})
+    parents.append({'path':BASE+'/chemistry-production-release-04/source','files':17,'manifest_sha256':'01e2de2a3413bd903590dd331c5cedf6b756e856a83df2b73ad65e02b9f9fceb'})
     proofs = list(forensic['preserved_proofs']) + [plan['original_forensics_plan'], plan['prior_forensic_report']]
     predecessor=plan.get('engineering_predecessor')
     if predecessor:
@@ -92,7 +93,7 @@ def prepare(counts_path):
                 'can_certify_or_restart_original_study':False,'optimizer_updates':0}
     members['source_manifest.json'] = raw(manifest)
     LOCAL.mkdir(parents=True, exist_ok=True)
-    out = LOCAL/'source01'; out.mkdir(exist_ok=False)
+    out = LOCAL/'source03'; out.mkdir(exist_ok=False)
     for name,data in members.items():
         target = out/name; target.parent.mkdir(parents=True,exist_ok=True);target.write_bytes(data)
     buf = io.BytesIO()
@@ -112,14 +113,14 @@ def prepare(counts_path):
 
 
 def stage():
-    src=LOCAL/'source01'; prep=json.loads((src/'preparation.json').read_bytes())
+    src=LOCAL/'source03'; prep=json.loads((src/'preparation.json').read_bytes())
     archive=(src/'source.tar.gz').read_bytes()
     assert len(archive)==prep['archive_bytes'] and sha(archive)==prep['archive_sha256']
     program='PREP='+repr(prep)+'\nARCHIVE='+repr(base64.b64encode(archive).decode())+'\n'+r"""
 import base64,hashlib,io,json,os,sys,tarfile
 from pathlib import Path,PurePosixPath
 base=Path('/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01')
-source=base/'protenix-endpoint-fix-release-03/source';root=base/'protenix-endpoint-fix-03'
+source=base/'protenix-endpoint-fix-release-04/source';root=base/'protenix-endpoint-fix-04'
 assert not root.exists() and not source.parent.exists(),'Existing/unknown outcome; inspect, never replay'
 data=base64.b64decode(ARCHIVE,validate=True)
 assert len(data)==PREP['archive_bytes'] and hashlib.sha256(data).hexdigest()==PREP['archive_sha256']

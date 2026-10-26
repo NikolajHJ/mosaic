@@ -21,3 +21,11 @@ an original failed run into a pass or authorize a gate waiver.
 - [Continuation05](20261026-continuation-precision-05/README.md):222/223 CPU passed, stale negative fixture failed; no native.
 - [Continuation06](20261026-continuation-precision-06/README.md):223CPU passed; Bol29820672/DB29820674 native checksPEND.
 - [Pro precision03](20261026-protenix-endpoint-fix-03/README.md):278CPU passed; separate GPU29820643PEND, no optimizer branch.
+
+
+- [20261026-protenix-endpoint-fix-04](20261026-protenix-endpoint-fix-04/README.md):
+  reference-only integer-charge precision repair, source03 prepared/286 declared
+  cases; no allocated pass/submission while access is blocked.
+- [20261026-endpoint-investigation-07](20261026-endpoint-investigation-07/README.md):
+  separate pilot-logit and DBMol-total failures; metadata label fix only so far,
+  detailed actual FD collection blocked. No numerical waiver or new retry.

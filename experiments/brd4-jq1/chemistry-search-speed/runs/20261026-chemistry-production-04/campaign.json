@@ -1,0 +1,68 @@
+{
+  "status": "local_candidate_prepared_HPC_access_blocked",
+  "active_local_package": "source03",
+  "preparation": {
+    "allocated_CPU_pass": false,
+    "archive_bytes": 37492,
+    "archive_sha256": "ea539c3d4f73f936785861002f4cd8e9598e821f844b1c907e16a860c4c72875",
+    "cpu_cases": 122,
+    "cpu_counts": {
+      "tests.test_production_acceleration.AccelerationStartupTests": 8,
+      "tests.test_production_context.ProductionContextTests": 6,
+      "tests.test_production_contract.ProductionContractTests": 53,
+      "tests.test_production_integration.OriginalCallSiteTests": 14,
+      "tests.test_production_ops.ProductionRoutingTests": 33,
+      "tests.test_production_recovery.RecoveryOwnershipTests": 8
+    },
+    "files": 17,
+    "implementation_members": [
+      "scripts/production_contract.py",
+      "scripts/production_ops.py",
+      "scripts/production_run.py",
+      "scripts/production_stage.lsf",
+      "tests/test_production_contract.py",
+      "tests/test_production_ops.py",
+      "tests/test_production_integration.py",
+      "scripts/production_context.py",
+      "tests/test_production_context.py",
+      "scripts/production_recovery.py",
+      "tests/test_production_recovery.py",
+      "tests/test_production_acceleration.py"
+    ],
+    "jobs_submitted": false,
+    "manifest_sha256": "01e2de2a3413bd903590dd331c5cedf6b756e856a83df2b73ad65e02b9f9fceb",
+    "monitor_resumed": false,
+    "plan": {
+      "pilots": {
+        "boltz": {
+          "cpu_certificate_sha256": "c46f39e679f503720ae31b561b8b3273a1d38c160bf3c7f3d6feba28f2b5c687",
+          "job_id": "29816184",
+          "manifest_sha256": "05e316a7b1bcceaf286b03231200a2d1f66e3f6a7ce927d4c1e73f08a24f86f9",
+          "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-02",
+          "source": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-release-02/source"
+        },
+        "protenix": {
+          "cpu_certificate_sha256": "c4a88a77f1ae5b4d20aa8c6f3b7fa59152cb295b4791b70c2bc737e1e0857980",
+          "job_id": "29818553",
+          "manifest_sha256": "ab875927a328c34650d2e43baf6dfbe323e8f9bcf5600f39bac78f3ccdfb5d8c",
+          "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-05",
+          "source": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-release-05/source"
+        }
+      },
+      "version": "chemistry-accelerated-production-v4"
+    },
+    "plan_sha256": "053daea8fdda1a684d7d98c9253ff8e0e0f5999262745c365c378a2f700e0f4f",
+    "production_readiness_passed": false,
+    "status": "local_stdlib_AST_byte_packaging_only"
+  },
+  "static_verification_sha256": "412de14d320741db20bf40ad5304459129d631aec138ae72d0c33e88779a97e8",
+  "declared_CPU_cases": 122,
+  "new_allocated_CPU_pass": false,
+  "new_native_pass": false,
+  "jobs_submitted": false,
+  "remote_source_staged": false,
+  "settings_changed": false,
+  "saved_results_changed": false,
+  "monitor_resumed": false,
+  "required_next_step": "Authenticate actual remote target absence/current receipts; execute allocated complete CPU/startup/native gates before conditional production. No blind stage or callback replay."
+}

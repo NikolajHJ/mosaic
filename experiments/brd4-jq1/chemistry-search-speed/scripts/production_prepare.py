@@ -13,8 +13,8 @@ import tarfile
 
 HERE=Path(__file__).resolve().parents[1]
 REPO=HERE.parents[2]
-LOCAL=REPO/'results/hpc/20261026-chemistry-production-03'
-RUN=HERE/'runs/20261026-chemistry-production-03'
+LOCAL=REPO/'results/hpc/20261026-chemistry-production-04'
+RUN=HERE/'runs/20261026-chemistry-production-04'
 PRODUCERS={
     'protenix':{
         'manifest_sha256':'ab875927a328c34650d2e43baf6dfbe323e8f9bcf5600f39bac78f3ccdfb5d8c',
@@ -30,12 +30,15 @@ CASE_COUNTS={
     'tests.test_production_ops.ProductionRoutingTests':33,
     'tests.test_production_integration.OriginalCallSiteTests':14,
     'tests.test_production_context.ProductionContextTests':6,
+    'tests.test_production_acceleration.AccelerationStartupTests':8,
+    'tests.test_production_recovery.RecoveryOwnershipTests':8,
 }
 IMPLEMENTATION=(
     'scripts/production_contract.py','scripts/production_ops.py',
     'scripts/production_run.py','scripts/production_stage.lsf',
     'tests/test_production_contract.py','tests/test_production_ops.py',
     'tests/test_production_integration.py','scripts/production_context.py','tests/test_production_context.py',
+    'scripts/production_recovery.py','tests/test_production_recovery.py','tests/test_production_acceleration.py',
 )
 
 
@@ -80,11 +83,12 @@ def main():
                         count=sum(isinstance(item,ast.FunctionDef) and item.name.startswith('test_') for item in node.body)
                         if count:actual_counts[module+'.'+node.name]=count
         members[name]=raw
-    require(actual_counts==CASE_COUNTS and sum(actual_counts.values())==106,
+    require(actual_counts==CASE_COUNTS and sum(actual_counts.values())==122,
             'Declared allocated fixture class attribution/count changed; inspect before sealing')
     members['README.md']=(
         '# Prospective accelerated chemistry production\n\n'
-        'Fresh Protenix50k LR0.3 and Boltz+chemistry30k LR0.0025, unchanged fixed-step science.\n'
+        'Boltz-only startup recovery:30k LR0.0025, unchanged fixed-step science.\n'
+        'The successful Protenix03 chain is read-only and cannot be submitted or executed here.\n'
         'The delayed0.001-through5000 coefficient reaches100 at each arm final update.\n'
         'Both original native/readiness/coupled/runtime checks and genuine new producer passes are mandatory.\n'
         'Losses are saved every update; matrices every20 plus initial/terminal/boundaries/latest/best.\n'
@@ -93,7 +97,7 @@ def main():
         'Storage failure preserves actual gates/adoptions and records waiting-storage.json; no production submission or callback replay.\n'
         'All numerical/scientific work is allocated DTU HPC only. See protocol.md and plan.json.\n').encode('utf8')
     members['scripts/README.md']=b'# Production execution and metadata\n\nSealed contracts, allocated controller, exact original-driver wrapper and shell entrypoint. No optimizer arithmetic or original source bytes are changed.\n'
-    members['tests/README.md']=b'# Allocated production contracts\n\n106 declared metadata/routing/original-call-site cases; actual raw JUnit and same-job scheduler/LSF proofs are required. Fixtures are not native scientific evidence.\n'
+    members['tests/README.md']=b'# Allocated production contracts\n\n122 declared metadata/routing/actual-adapter-entry/original-call-site cases. Raw JUnit and same-job scheduler/LSF proofs required; fixtures are not native scientific evidence.\n'
     members['protocol.md']=(RUN/'README.md').read_bytes().replace(b'\r\n',b'\n')
     members['plan.json']=raw_json(plan)
     parents += [
@@ -104,16 +108,19 @@ def main():
          'manifest_sha256':'09f759a7befb8a7b8f0e1d203e15acf939126fba493b30e6a2bf9cd2eea2216b'},
         {'path':c.BASE+'/nonchem-stride20-startup-release-03/source','files':12,
          'manifest_sha256':'704fab033d97342a14dc12b58dc32df44874232c5c30aad47c4d02041a502aab'}]
+    parents.append({'path':c.BASE+'/chemistry-production-release-03/source','files':14,
+                    'manifest_sha256':'c73796b041d8432ef1634e8c56920006170a094d3bdc74867c08f3b5415126d7'})
     manifest={'version':c.VERSION,'cpu_counts':CASE_COUNTS,
               'cpu_modules':c.cpu_modules(CASE_COUNTS),
               'parent_sources':parents,'numerical_adapter_sha256_map':observed['protenix'],
               'own_source_CPU_control_cap_bytes':c.CONTROL_CAP,'matrix_stride':20,'loss_stride':1,
               'monitor_remains_paused':True,'original_results_changed':False,
               'scientific_settings_changed':False,
+              'recovery':json.loads((RUN/'recovery-proofs.json').read_bytes()),
               'files':{name:hashlib.sha256(raw).hexdigest() for name,raw in sorted(members.items())}}
     manifest_raw=raw_json(manifest);members['source_manifest.json']=manifest_raw
     LOCAL.mkdir(exist_ok=True)
-    out=LOCAL/'source01';out.mkdir(exist_ok=False)
+    out=LOCAL/'source03';out.mkdir(exist_ok=False)
     (out/'source_manifest.json').write_bytes(manifest_raw)
     archive=out/'source.tar.gz'
     with tarfile.open(archive,'x:gz') as target:
@@ -129,7 +136,7 @@ def main():
             'implementation_members':list(IMPLEMENTATION),'manifest_sha256':hashlib.sha256(manifest_raw).hexdigest(),
             'archive_sha256':hashlib.sha256(archive.read_bytes()).hexdigest(),'archive_bytes':archive.stat().st_size,
             'plan_sha256':hashlib.sha256(members['plan.json']).hexdigest(),'plan':plan,'cpu_counts':CASE_COUNTS,
-            'cpu_cases':106,'allocated_CPU_pass':False,'production_readiness_passed':False,
+            'cpu_cases':122,'allocated_CPU_pass':False,'production_readiness_passed':False,
             'jobs_submitted':False,'monitor_resumed':False}
     (out/'preparation.json').write_bytes(raw_json(result))
     print(json.dumps(result,indent=2))

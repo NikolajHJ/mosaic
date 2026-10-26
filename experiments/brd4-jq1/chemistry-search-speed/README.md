@@ -128,3 +128,13 @@ Protenix50k LR0.3 job29820255 and Boltz+chem30k LR0.0025 job29820257 submitted
 independently, both PEND; own callbacks29820256/58. First10k segments only so far,
 validated serial successors target5/3segments. No optimization start established.
 Settings/gates unchanged, historical values byte-preserved, monitor paused.
+
+
+The user authorized a [Boltz-only startup recovery04](runs/20261026-chemistry-production-04/README.md)
+on26October. Its active local source03 adds the missing acceleration parent,
+actual adapter-entry regressions, complete pre-import authentication and explicit
+Protenix execution/submission blocks. Existing Protenix03 completed its first10k
+segment and remains independent. Both complete futures/control caps and original
+scientific gates are retained. The122-case candidate is only statically prepared;
+SSH timed out before input collection, so no new remote staging, validation or
+submission exists. Do not replay production03 or launch another Protenix chain.

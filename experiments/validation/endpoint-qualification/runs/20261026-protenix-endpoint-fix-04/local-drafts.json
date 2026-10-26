@@ -1,0 +1,27 @@
+{
+  "active_package": "source03",
+  "drafts": [
+    {
+      "package": "source01",
+      "manifest_sha256": "122998a169c9955569a6d3978d68dcead41578f9b09bcabec546b95849c148af",
+      "archive_sha256": "7745e2d2fcfbedb2ab14a5767fc97ee2a324d901512b357f59b16cd0b1535d7e",
+      "archive_bytes": 63941,
+      "status": "superseded_local_static_draft_not_staged"
+    },
+    {
+      "package": "source02",
+      "manifest_sha256": "448f7f27ad26333442643223d10ea3585708aef4bc9c485413327bac56687d2c",
+      "archive_sha256": "1e0457b1d6c189a4b0efc52d9910520afcf692a028857655da05d76d094a8901",
+      "archive_bytes": 63933,
+      "status": "superseded_local_static_draft_not_staged"
+    },
+    {
+      "package": "source03",
+      "manifest_sha256": "af2393345d9f284fb395eacf809cdf56ccfcdfdc6938dd7f4747feb728db310f",
+      "archive_sha256": "2ff6b5ee1a3d899b7b388cddab9c466f7268cfb21ec9370538797d11043c4b61",
+      "archive_bytes": 65487,
+      "status": "active_local_candidate_not_staged"
+    }
+  ],
+  "reason": "Final static review retained bounded whole-snapshot retries for concurrently changing Pro03 control metadata and repinned the precision capsule to that final storage source. All drafts preserved; none staged."
+}

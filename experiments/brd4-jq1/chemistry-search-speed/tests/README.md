@@ -52,3 +52,12 @@ regressions require exact class-to-module coverage. Actual generated parser
 commands also accepted with zero updates; those are startup metadata checks,
 not new GPU numerical validation. Native acceptance comes from passed Pro05/
 Bol02 full-model pilots. No tests/scientific arrays executed locally.
+
+
+`test_production_acceleration.py` adds8 allocated-only filesystem/actual sealed
+adapter-entry regressions for the missing parent. `test_production_recovery.py`
+adds8 allocated-only ownership/budget cases, including refusal to create a
+Protenix submission marker. Complete candidate04 CPU scope is122 cases; none
+has been executed for this release yet. Unit filesystem-prefix evidence is not
+a fresh GPU/coexistence/native-gradient pass; original full native proofs and
+all production gates remain required.

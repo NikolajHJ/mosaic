@@ -1,0 +1,44 @@
+{
+  "version": "boltz-chemistry-startup-only-recovery-v1",
+  "execution_arms": [
+    "boltz"
+  ],
+  "preserved_protenix_root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-03/protenix",
+  "proofs": [
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-03/boltz/boltz2_chemistry-segment-0000/submission.json",
+      "bytes": 1366,
+      "sha256": "a5171adeded955971747e4e7cc6804722a3a8a9d473101678a32b673855d6553"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-03/boltz/boltz2_chemistry-segment-0000/stdout.29820257.log",
+      "bytes": 2081,
+      "sha256": "1aa6798699feb6f585d797eea0813af2cda988a453c7c641f290787c273fda25"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-03/boltz/boltz2_chemistry-segment-0000/driver.json",
+      "bytes": 3131,
+      "sha256": "c3e2e026c2427c6407a694a75c8ba5f492028583fcb0509bb9070b3118834356"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-03/boltz/boltz2_chemistry-after-segment-0000/submission.json",
+      "bytes": 1374,
+      "sha256": "f79246b02ae7b33db8a7b05d7ce94dd7819e4acc0183c688084935525010f97c"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-03/boltz/boltz2_chemistry-after-segment-0000/stdout.29820258.log",
+      "bytes": 2097,
+      "sha256": "8840f648f9e6af5f7ce61765bf9858a39895a0901e86fa966a91a294eba05139"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-03/protenix/random-segment-0000/submission.json",
+      "bytes": 1339,
+      "sha256": "42927004fa71664bb3be1fd09364723b7eaabc5ff667bedb28a8ab6511db89e3"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-03/protenix/random-segment-0000-certificate.json",
+      "bytes": 143095,
+      "sha256": "2e790bc79426c45aaee0548daaf134cf471aaff4978db7aeb4ef4ed68d903823"
+    }
+  ]
+}

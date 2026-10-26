@@ -7932,3 +7932,78 @@ Original inputs/model preserved; no false production-gradient-failure claim.
 All old live records aged out: actual same-job LSF establishes persisted failures
 or successes, never synthesized current DONE/EXIT. Existing CPU223/278 passes
 remain valid, not native passes. Status records updated in canonical owners.
+
+## 2026-10-26 Blocked-run repairs authorized and prepared
+
+The user explicitly authorized fixing Boltz chemistry startup and Protenix FP64
+reference tooling, investigating plain Boltz/DBMol numerical failures, then
+submitting blocked runs only after all unchanged checks pass. New run records
+chemistry-production04, Protenix-endpoint-fix04 and endpoint-investigation07
+preserve all failed source03/06 evidence and saved endpoints/settings. The
+random Protenix chemistry03 chain and its jobs remain independent and untouched.
+No cleanup, gate waiver, runtime change or new job follows from preparation.
+Local stdlib AST/metadata/byte work only; all tests/model evaluations allocated
+DTUHPC. Monitor stays paused. Inspect current original receipts and failure
+artifacts before implementation or staging; no duplicate/unknown replay.
+
+
+## 2026-10-26 Blocked-run candidate fixes; HPC access unavailable
+
+Prepared chemistry production04 (active local source02, 17 files/121 declared
+CPU cases) with an exclusive ordinary acceleration parent before the original
+GPU helper. New controller and wrapper are Boltz-only; the successful existing
+Protenix03 chain cannot be resubmitted. Original complete projections are routed
+to existing Pro03/new Bol04, both64MiB control caps and4GiB/100k reserves retained.
+Old Bol03 failure, zero study and absence of successors must authenticate first.
+Wrapper authenticates all17 source members before importing the new helper.
+Plan/model/config/numerical adapter bytes and original gates stay unchanged.
+Manifest ef45d0820387b80c3660fd647abe62a5acdecd9c79d2606b882beeda20ed6001.
+
+Prepared Protenix precision04 (active local source02,16 files/286 declared
+cases). Cached native82,950-byte source exactly matches installed-runtime hash.
+Pinned AtomAttentionEncoder's integer-charge arcsinh operand is cast to reference
+weight dtype only in the isolated FP64 process; one-expression reversal plus
+full JAXPR audit/reference agreement/negative controls/restoration remain.
+Eight new charge tests and extended restoration coverage are unexecuted.
+Manifest448f7f27ad26333442643223d10ea3585708aef4bc9c485413327bac56687d2c.
+Chemistry04 CPU/adoption/current-capacity metadata must validate before this
+capsule; passing reference still needs continuation integration before Pro50k.
+Both source01 local drafts retained, never staged or called scientific failures.
+
+Investigation07: saved DBMol component admissions affinity/contact/confidence
+passed; combined total failed. Bol raw endpoint passed, separate pilot bond-logit
+check failed. Detailed current FD records are required; no numerical workaround
+or gate change selected. Corrected stale v1 driver result labels to authenticated
+v2 with four new unexecuted regressions. Static AST reversal proves no other
+driver behavior changed. New nonchemistry numerical retry is not selected.
+
+The single read-only SSH attempt timed out255 to login1 before input collection.
+No new remote source, CPU/native pass, capacity pass or job is established; no
+blind retry/old callback replay. Local AST/JSON/archive audits passed17+16 source
+files, scientific settings and saved endpoints unchanged. No local scientific
+tests, additional cleanup or monitor resume. Static auditSHA b183fdfed15ebfac5249d8647b82b52469a3a22add4e42768904bca0743f8993.
+
+
+## 2026-10-26 Final unsubmitted repair candidates and handoff
+
+Final local source03 packages supersede only unsubmitted drafts01/02, which
+remain preserved. Chemistry04 has17 files,122 declared cases and manifest
+01e2de2a3413bd903590dd331c5cedf6b756e856a83df2b73ad65e02b9f9fceb;
+archive37,492bytes SHAea539c3d4f73f936785861002f4cd8e9598e821f844b1c907e16a860c4c72875.
+It additionally retains bounded whole-snapshot retries for changing Pro03 root
+metadata, never skipping an entry. All original projections/reserves remain.
+Pro precision04 has16files/286declared cases and manifest
+ af2393345d9f284fb395eacf809cdf56ccfcdfdc6938dd7f4747feb728db310f;
+archive65,487bytes SHA2ff6b5ee1a3d899b7b388cddab9c466f7268cfb21ec9370538797d11043c4b61.
+The isolated reference now pins the final chemistry capacity source. Numerical
+settings, saved results and all old failures remain untouched. Source07 fixes
+only result-label metadata pending actual detailed FD collection; no numerical
+policy retry or continuation integration is selected/passed.
+
+Final local stdlib AST/JSON/source/index/archive checks passed; no numerical
+library/model evaluation or pytest ran locally. No new allocated CPU/native
+pass, remote staging, capacity pass or job exists. The earlier single SSH255
+connect timeout remains the access blocker; no blind retry or old launcher
+replay. Paused monitor unchanged. Repository layout check reports the same21
+preexisting unrelated discovery/README issues, no owner error; left outside
+scope. Final static auditSHA 412de14d320741db20bf40ad5304459129d631aec138ae72d0c33e88779a97e8.

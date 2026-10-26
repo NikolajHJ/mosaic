@@ -1,0 +1,44 @@
+{
+  "status": "raw_failure_collection_blocked_HPC_access",
+  "DBMol_existing_component_records": [
+    {
+      "stage": "native_gradient_checks",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-06/dbmol-validate-05000/payload/study/native_gradient_checks-prospective/dbmol_affinity_loss/admission.json",
+      "status": "passed",
+      "can_admit_new_child": true
+    },
+    {
+      "stage": "native_gradient_checks",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-06/dbmol-validate-05000/payload/study/native_gradient_checks-prospective/dbmol_contact_loss/admission.json",
+      "status": "passed",
+      "can_admit_new_child": true
+    },
+    {
+      "stage": "native_gradient_checks",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-06/dbmol-validate-05000/payload/study/native_gradient_checks-prospective/dbmol_confidence_loss/admission.json",
+      "status": "passed",
+      "can_admit_new_child": true
+    },
+    {
+      "stage": "native_gradient_checks",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-06/dbmol-validate-05000/payload/study/native_gradient_checks-prospective/dbmol_total_loss/admission.json",
+      "status": "failed",
+      "can_admit_new_child": false
+    }
+  ],
+  "raw_source_assessment": {
+    "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-06/dbmol-validate-05000/payload/assessment.json",
+    "bytes": 448467,
+    "sha256": "552642243c9a041cbd73b892706ba8ca0af2432f51fd7d598bdce1273c7f4967"
+  },
+  "Boltz_existing_finding": "Raw endpoint admission passed; failure is the separate combined pilot bond-logit FD gate. Detailed probe values not yet collected.",
+  "numerical_cause_established": false,
+  "numerical_policy_changed": false,
+  "metadata_policy_label_bug_corrected": true,
+  "new_driver_regressions_declared": 4,
+  "new_tests_executed": 0,
+  "new_jobs_submitted": false,
+  "saved_results_changed": false,
+  "monitor_resumed": false,
+  "next_action": "Use canonical collect_repair_inputs.py with a fresh label after HPC access returns; read raw admissions and pilot FD values before selecting any numerical correction."
+}

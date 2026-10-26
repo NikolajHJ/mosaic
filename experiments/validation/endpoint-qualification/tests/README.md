@@ -30,3 +30,12 @@ are unchanged. Hand-calculable saved-row intervals stay noncertifying and wrong
 zero/sign/1.5x gradients remain rejected. Current baseline tests cannot certify
 native correctness. Both complete suites and actual startups ran allocatedHPC;
 no fixtures/scientific arrays executed locally. Native GPU results stillpending.
+
+
+Precision04 adds8 charge-prefix/AST controls and extends exception-restoration
+coverage to the charge encoder. Its full286-case suite is declared, not passed.
+The complete native FP64 trace audit/reference comparison remains mandatory.
+Four new continuation-driver tests cover actual v2 policy identity and reject
+stale labels or wrong module origins; they have not been executed. Static AST
+reversal confirms that this driver edit changes no numerical behavior. No
+Boltz/DBMol numerical correction is selected without the current raw FD reports.

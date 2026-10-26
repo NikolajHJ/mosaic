@@ -112,3 +112,14 @@ startups/native adoption/complete future storage passed before independent first
 segments29820255/29820257. Existing markers prohibit replay; later segments
 require original terminal gates/fresh capacity. Failed production02 untouched.
 The cleanup helper completed exact verified offloads; do not replay operations.
+
+
+`production_recovery.py` owns the Boltz-only04 retry scope, exact preserved
+source03 failures/Protenix identity and existing-control/future-budget routing.
+`production_run.prepare_acceleration_output` creates the ordinary exclusive
+adapter parent before the unchanged GPU helper enters. `production_prepare.py`
+and `production_launch.py` target only the new04/source03 candidate and refuse
+existing/unknown remote roots. No Protenix runtime branch is authorized here;
+its03 jobs remain unchanged. Preparation is not an allocated/native pass. The
+whole current storage and original native proofs remain mandatory at dispatch
+and every entry; source04 CPU122 has not run while HPC access is unavailable.

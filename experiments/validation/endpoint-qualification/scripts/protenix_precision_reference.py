@@ -18,12 +18,13 @@ from pathlib import Path
 import textwrap
 
 
-VERSION = "protenix-separate-fp64-reference-v1"
+VERSION = "protenix-separate-fp64-reference-v2"
 JAX_VERSION = "0.11.1"
 FUNCTIONS_SHA256 = "12e8ef763d56f4cc92189101b0b01e1a458042f851274a5d3f4ad3042430536b"
 CORE_AST_SHA256 = "24bcb2fa8e3ad101b0896972da1e9704c52ce702e82719323366ee45d1a894ae"
 CORE_NAME = "_dot_product_attention_core"
 NATIVE_SHA256 = "37f337839034afd2a814c1ed6b76867b67918f73dd56cdd365e67b8fed882a6d"
+CHARGE_AST_SHA256 = "acec16e3de87879f2ea772deb29ce9157125f5f81632846c478da394925419e0"
 NATIVE_CASTS = {
     "OuterProductMean.__call__": {
         "ast_sha256": "7d8f95ca77f6e672cbb0b72cd1fc1aa61d4858188eb5063c73883d6042123283",
@@ -144,6 +145,41 @@ def clone_native_mask_function(source, name):
         "optimization_execution_changed": False}
 
 
+def clone_native_charge_function(source):
+    """Cast the one integer arcsinh input to its reference weight dtype.
+
+    Int32 arcsinh otherwise narrows to float32 in an x64 process. The cloned
+    reference changes this operand only; production and integer metadata stay
+    exact. Reversal proves that no other executable AST node changed.
+    """
+    tree = ast.parse(textwrap.dedent(source))
+    _require(_ast_digest(tree) == CHARGE_AST_SHA256, "Unauthenticated atom encoder charge AST")
+    original = deepcopy(tree)
+    expected = ast.parse('input_feature_dict["ref_charge"]', mode="eval").body
+    matches = [node for node in ast.walk(tree) if isinstance(node, ast.Call)
+               and isinstance(node.func, ast.Attribute) and isinstance(node.func.value, ast.Name)
+               and node.func.value.id == "jnp" and node.func.attr == "arcsinh"
+               and len(node.args) == 1 and not node.keywords
+               and ast.dump(node.args[0]) == ast.dump(expected)]
+    _require(len(matches) == 1, "Exactly one native integer-charge arcsinh operand required")
+    matches[0].args[0] = ast.Call(
+        func=ast.Attribute(value=deepcopy(expected), attr="astype", ctx=ast.Load()),
+        args=[ast.parse("self.linear_no_bias_ref_charge.weight.dtype", mode="eval").body], keywords=[])
+    restored = deepcopy(tree)
+    calls = [node for node in ast.walk(restored) if isinstance(node, ast.Call)
+             and isinstance(node.func, ast.Attribute) and node.func.attr == "arcsinh"]
+    _require(len(calls) == 1, "Unexpected reference charge clone")
+    calls[0].args[0] = deepcopy(expected)
+    _require(ast.dump(restored) == ast.dump(original), "Reference charge clone changed another executable node")
+    ast.fix_missing_locations(tree)
+    return compile(tree, "<authenticated-protenix-reference-charge>", "exec"), {
+        "name": "AtomAttentionEncoder.__call__", "original_ast_sha256": CHARGE_AST_SHA256,
+        "reference_ast_sha256": _ast_digest(tree), "changed_expressions": 1,
+        "change": "arcsinh(ref_charge) -> arcsinh(ref_charge.astype(reference_charge_weight.dtype))",
+        "reference_source": ast.unparse(tree),
+        "integer_metadata_changed": False, "optimization_execution_changed": False}
+
+
 def authenticate_native_runtime():
     _allocated()
     import protenix.protenij as native
@@ -156,7 +192,9 @@ def authenticate_native_runtime():
         _require(function.__globals__ is native.__dict__, "Unexpected native mask function globals")
         _, audit = clone_native_mask_function(inspect.getsource(function), name)
         rows.append(audit)
-    return {"native_file": str(path), "native_sha256": NATIVE_SHA256, "mask_functions": rows}
+    _, charge = clone_native_charge_function(inspect.getsource(native.AtomAttentionEncoder.__call__))
+    return {"native_file": str(path), "native_sha256": NATIVE_SHA256,
+            "mask_functions": rows, "charge_function": charge}
 
 
 def assert_reference_process():
@@ -204,7 +242,7 @@ def attention_precision_context():
 
 @contextmanager
 def native_precision_context():
-    """Compose three fixed cast clones for the separate native FP64 reference.
+    """Compose four fixed precision expressions in the separate FP64 reference.
 
     Authenticate/configure original assets with bootstrap_native_assets before
     entering, and enter before loading/forward-tracing FrozenProtenixTiny. The
@@ -219,6 +257,7 @@ def native_precision_context():
     import protenix.protenij as native
     original_mean = native.average_over_atoms
     original_outer = native.OuterProductMean.__call__
+    original_encoder = native.AtomAttentionEncoder.__call__
     replacements = []
     for name, function in (("average_over_atoms", original_mean),
                            ("OuterProductMean.__call__", original_outer)):
@@ -228,19 +267,27 @@ def native_precision_context():
         replacement = namespace[NATIVE_CASTS[name]["function"]]
         replacement.__qualname__ = function.__qualname__
         replacements.append(replacement)
+    namespace = dict(original_encoder.__globals__)
+    code, _ = clone_native_charge_function(inspect.getsource(original_encoder))
+    exec(code, namespace)
+    charge_replacement = namespace["__call__"]
+    charge_replacement.__qualname__ = original_encoder.__qualname__
     jax.clear_caches()
     _NATIVE_ACTIVE = True
     native.average_over_atoms = replacements[0]
     native.OuterProductMean.__call__ = replacements[1]
+    native.AtomAttentionEncoder.__call__ = charge_replacement
     try:
         with attention_precision_context() as attention:
-            yield {**audit, "attention": attention, "changed_expressions": 3,
+            yield {**audit, "attention": attention, "changed_expressions": 4,
                    "optimization_execution_changed": False}
     finally:
         changed = (native.average_over_atoms is not replacements[0]
-                   or native.OuterProductMean.__call__ is not replacements[1])
+                   or native.OuterProductMean.__call__ is not replacements[1]
+                   or native.AtomAttentionEncoder.__call__ is not charge_replacement)
         native.average_over_atoms = original_mean
         native.OuterProductMean.__call__ = original_outer
+        native.AtomAttentionEncoder.__call__ = original_encoder
         _NATIVE_ACTIVE = False
         jax.clear_caches()
         _require(not changed, "Native precision hooks changed during their scope")

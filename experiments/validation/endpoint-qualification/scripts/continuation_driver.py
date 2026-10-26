@@ -644,6 +644,14 @@ def _boundary(snapshot, initialization):
     return True
 
 
+def endpoint_policy_version():
+    policy = importlib.import_module('admission')
+    require(Path(policy.__file__).resolve() == Path(__file__).with_name('admission.py').resolve(),
+            'Endpoint policy was imported outside the authenticated driver capsule')
+    require(policy.VERSION == 'prospective-endpoint-admission-v2', 'Undeclared prospective endpoint policy')
+    return policy.VERSION
+
+
 def assessment(state, plan, pin, phase, offset, output, snapshot, ready, error=None):
     """New certificate schema; no original completion certificate is produced."""
     arm = state.arm; summary = read(output / "summary.json")
@@ -712,7 +720,7 @@ def assessment(state, plan, pin, phase, offset, output, snapshot, ready, error=N
                                 "case_jsonl": "not_applicable_validation_phase" if phase == "validate" else "required",
                                 "fp32_boundary": "required",
                                 "null_controls": "typed_bonds_required_nonnull" if state.name == "boltz" else "original_null_controls"},
-              "endpoint_policy": "prospective-endpoint-admission-v1", "driver_hook": HOOK_VERSION,
+              "endpoint_policy": endpoint_policy_version(), "driver_hook": HOOK_VERSION,
               "readiness_adapter": READINESS_VERSION if state.name == "dbmol" else "original_metadata_checks_with_explicit_new_endpoint_report",
               "endpoint_records": state.records, "original_summary": binding(output / "summary.json"),
               "projections": {"maximum_pilot_update_bytes": validation["storage_projection"]["maximum_pilot_update_bytes"],
@@ -759,7 +767,7 @@ def failed_assessment(state, plan, pin, phase, offset, output, snapshot, error, 
             "checks": {name: outcome == "passed" for name, outcome in outcomes.items()},
             "check_outcomes": outcomes, "frozen_unchanged": None,
             "frozen_check_status": "not_completed_not_a_new_frozen_failure",
-            "endpoint_policy": "prospective-endpoint-admission-v1", "endpoint_records": rows,
+            "endpoint_policy": endpoint_policy_version(), "endpoint_records": rows,
             "original_summary": binding(summary_path) if summary is not None else None,
             "original_summary_status": summary.get("status") if summary is not None else None,
             "proofs": proofs}
@@ -837,7 +845,7 @@ def main():
         raise ValueError("Actual startup did not reach its intended pre-model boundary")
     write(args.output.parent / "endpoint-driver-invocation.json", {"argv": argv, "hook": HOOK_VERSION,
           "plan_sha256": args.plan_sha256, "capsule_manifest_sha256": args.manifest,
-          "original_source_unchanged": True, "new_endpoint_policy": "prospective-endpoint-admission-v1"})
+          "original_source_unchanged": True, "new_endpoint_policy": endpoint_policy_version()})
     if args.phase == "segment":
         prospective_ready(args.ready, arm, args.arm, args.offset, snapshot, args.manifest, args.plan_sha256)
     state = EndpointHooks(arm, args.arm, args.output, args.offset)

@@ -107,3 +107,16 @@ No new native pass, optimizer continuation or changed saved result/settings.
 Storage now includes both submitted chemistry futures plus new512+272MiB scopes
 and unchanged4GiB/100k reserves. Pro integration awaits a valid measurement;
 Bol/DB callbacks remain conditional, paused monitor unchanged.
+
+
+The user authorized [Protenix precision04](runs/20261026-protenix-endpoint-fix-04/README.md)
+and [Boltz/DBMol investigation07](runs/20261026-endpoint-investigation-07/README.md).
+Precision04 casts the authenticated integer-charge arcsinh operand to reference
+weight dtype in the isolated FP64 reference only. Eight new charge controls
+and full native dtype/agreement/restoration checks await allocated execution;
+active local source03 declares286 cases and cannot submit optimizer work.
+Investigation07 records that individual DBMol components passed but total failed;
+Boltz's later failure is in a separate pilot bond-logit check. No numerical
+remedy or relaxed gate is selected before reading detailed actual FD evidence.
+The driver metadata now binds the actual v2 policy with four new regressions.
+One read-only SSH attempt timed out; nothing newly staged, tested or submitted.
