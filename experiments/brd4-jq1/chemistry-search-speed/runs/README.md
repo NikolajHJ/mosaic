@@ -20,3 +20,12 @@ production01 CPU/callback EXIT1 (94 fixtures passed, overall gate not certified,
 no longs); exact report retirement completed81files/571264343B.
 [Replay diagnostic01](20261025-chemistry-replay-01/README.md) CPU60passed,
 GPU29816561queued; no findings or production submission yet.
+
+- [Replay02](20261026-chemistry-replay-02/README.md): narrow source-integrity
+  hash correction, CPU67actualpass, GPU29818513submitted;22diagnostic controls,
+  no production branch. Original replay01 final-integrity failure preserved.
+
+- [Full-model04](20261026-chemistry-full-model-04/README.md): preserved CPU fixture-only failure407/408; no GPU.
+- [Full-model05](20261026-chemistry-full-model-05/README.md): corrected assertion, CPU408pass; ProGPU29818553PEND.
+- [Production02](20261026-chemistry-production-02/README.md): CPU29818556/callback29818557 queued; native/startup/fullfuturestorage still mandatory before longs.
+- Replay02 GPU29818513 completed all22controls; autotune0 candidate qualified across all8points/fourprocesses, not a native pass.

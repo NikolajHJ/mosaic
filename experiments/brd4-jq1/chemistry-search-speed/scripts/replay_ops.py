@@ -20,10 +20,10 @@ import time
 import xml.etree.ElementTree as ET
 
 BASE=Path('/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01')
-ROOT=BASE/'chemistry-replay-01'
-SOURCE=BASE/'chemistry-replay-release-01/source'
+ROOT=BASE/'chemistry-replay-02'
+SOURCE=BASE/'chemistry-replay-release-02/source'
 PYTHON='/work3/s234818/mosaic/envs/protenix-tiny/bin/python'
-VERSION='chemistry-softmax-replay-source-v1'
+VERSION='chemistry-softmax-replay-source-v2'
 LIMIT=64*1024**2
 GROUP_LIMIT=2*1024**3
 GUARD=BASE/'protenix-endpoint-fix-release-02/source'
@@ -103,7 +103,7 @@ def lsf(raw,job,name,queue,success):
 def external(manifest):
  admission=read(SOURCE/'admission.json');plan=read(SOURCE/'plan.json')
  require(admission['version']==VERSION and admission['pilots']==PILOTS,'Original pilot identity differs')
- require(plan['version']=='chemistry-softmax-replay-diagnostic-v1' and len(plan['points'])==8,'Replay scope differs')
+ require(plan['version']=='chemistry-softmax-replay-diagnostic-v2' and len(plan['points'])==8,'Replay scope differs')
  require(plan['scientific_source']=={'path':str(BASE/'protenix-extended-release-03/source'),
   'manifest_sha256':'da9db6821d26b884ca1749303fc8e0b0095bd9ee7cbd1b427cdcf1b22eec6562','files':643}
   and plan['failed_pilot_source']=={'path':PILOTS['protenix']['source'],
@@ -111,6 +111,20 @@ def external(manifest):
  for row in admission['parent_sources']:
   require(len(verify(row['path'],row['manifest_sha256'])['files'])==row['files'],'Original source count differs')
  for row in admission['preserved_proofs']:check(row)
+ prior_root=BASE/'chemistry-replay-01'
+ prior=read(prior_root/'gpu/submission.json')
+ require(prior['status']=='submitted' and prior['job_id']=='29816561'
+  and prior['source_manifest_sha256']=='dbfef057ac054a0c4eb452b1603933db7815d91d38dcb3ffcad007105f3312d5',
+  'Failed original replay job/source identity differs')
+ lsf((prior_root/'gpu/stdout.29816561.log').read_text(),'29816561','mosaic-chem-replay01-gpu','gpul40s',False)
+ prior_result=read(prior_root/'gpu/payload/diagnostic/assessment.json')
+ require(prior_result['status']=='failed' and prior_result['all_controls_completed'] is False
+  and len(prior_result['controls'])==10,'Original failed diagnostic reclassified')
+ for row in prior_result['controls']:
+  old=read(row['assessment'])
+  require(old['status']=='failed' and len(old['points'])==8
+   and old['input_after_error']=="RuntimeError('Replay diagnostic cannot open model/context checkpoint assets')",
+   'Original failed diagnostic final-integrity cause changed')
  for arm,row in PILOTS.items():
   source=Path(row['source']);root=Path(row['root']);old=verify(source,row['manifest_sha256'])
   ops=module(source/'scripts/full_model_ops.py','_replay_original_'+arm)
@@ -180,7 +194,8 @@ def tree_bytes(roots):
 def caps():
  own=tree_bytes((ROOT,SOURCE.parent));group=tree_bytes((ROOT,SOURCE.parent,
   BASE/'chemistry-full-model-02',BASE/'chemistry-full-model-release-02',
-  BASE/'chemistry-full-model-03',BASE/'chemistry-full-model-release-03'))
+  BASE/'chemistry-full-model-03',BASE/'chemistry-full-model-release-03',
+  BASE/'chemistry-replay-01',BASE/'chemistry-replay-release-01'))
  remaining=max(0,LIMIT-own);reserved=group+remaining
  require(own<=LIMIT and group<GROUP_LIMIT,'Bounded diagnostic/group persistent cap exceeded')
  require(reserved<=GROUP_LIMIT,'Retained validations plus the full new diagnostic cap exceed the existing group allowance')
@@ -230,7 +245,7 @@ def resources(phase):
 
 
 def argv(phase,pin,dependency=None):
- parent=ROOT/phase;args=['bsub',*resources(phase),'-J','mosaic-chem-replay01-'+phase,
+ parent=ROOT/phase;args=['bsub',*resources(phase),'-J','mosaic-chem-replay02-'+phase,
   '-oo',str(parent/'stdout.%J.log'),'-eo',str(parent/'stderr.%J.log')]
  if phase=='after-cpu':
   require(re.fullmatch(r'ended\([1-9][0-9]*\)',dependency or '') is not None,'Own-ended CPU dependency required')
@@ -299,12 +314,12 @@ def certify_cpu(pin,manifest):
   write(path,{'job_id':job,'returncode':result.returncode,'stdout':result.stdout,'stderr':result.stderr});proofs.append(binding(path))
   raw=''.join(result.stdout.split());state=re.findall(r'Status<([^>]+)>',raw)
   require(result.returncode==0 and re.findall(r'Job<(\d+)>',raw)==[job]
-   and re.findall(r'JobName<([^>]+)>',raw)==['mosaic-chem-replay01-cpu']
+   and re.findall(r'JobName<([^>]+)>',raw)==['mosaic-chem-replay02-cpu']
    and re.findall(r'Queue<([^>]+)>',raw)==['hpc'] and state in (['PEND'],['RUN'],['DONE']),
    'Actual same CPU terminal scheduler unavailable/failed; never infer success')
   if state==['DONE']:
    try:
-    log=ROOT/'cpu'/('stdout.'+job+'.log');lsf(log.read_text(),job,'mosaic-chem-replay01-cpu','hpc',True);break
+    log=ROOT/'cpu'/('stdout.'+job+'.log');lsf(log.read_text(),job,'mosaic-chem-replay02-cpu','hpc',True);break
    except (ValueError,FileNotFoundError):
     if index==15:raise
   require(index<15,'Actual CPU did not finish within bounded metadata wait');time.sleep(2)
@@ -343,7 +358,9 @@ def diagnostic(command,parent):
 
 
 def completed_diagnostic(result):
- expected=[(control,repeat) for control in ('plain','matrix_import','matrix_installed','combined','native_backend_import')
+ expected=[(control,repeat) for control in ('plain','matrix_import','matrix_installed','combined','native_backend_import',
+  'plain_hash0','combined_hash0','plain_autotune0','combined_autotune0',
+  'plain_hash0_autotune0','combined_hash0_autotune0')
   for repeat in (0,1)]
  rows=result.get('controls')
  require(result.get('status')=='diagnostics_completed_original_failure_preserved'
@@ -351,12 +368,12 @@ def completed_diagnostic(result):
   and result.get('original_gate_reclassified') is False and result.get('can_certify_or_restart_original_study') is False
   and result.get('optimizer_updates')==0 and result.get('model_evaluations')==0,
   'Diagnostic is incomplete or overstates its scope')
- require(type(rows) is list and len(rows)==10
+ require(type(rows) is list and len(rows)==22
   and [(row.get('control'),row.get('repeat')) for row in rows]==expected
   and all(type(row.get('returncode')) is int and row['returncode']==0
    and row.get('status')=='diagnostic_control_completed_original_failure_preserved'
    and type(row.get('assessment_sha256')) is str and re.fullmatch('[a-f0-9]{64}',row['assessment_sha256']) is not None
-   for row in rows),'All ten exact declared successful controls are mandatory')
+   for row in rows),'All22 exact declared successful controls are mandatory')
  return True
 
 

@@ -8,7 +8,7 @@ import tarfile
 
 HERE = Path(__file__).resolve().parents[1]
 REPO = HERE.parents[2]
-LOCAL = REPO / 'results/hpc/20261025-chemistry-full-model-03'
+LOCAL = REPO / 'results/hpc/20261026-chemistry-full-model-05'
 BASE = '/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/'
 
 
@@ -39,10 +39,12 @@ def main():
         members['plans/' + arm + '.json'] = raw_json(plan)
     scripts = ['exact_reuse.py', 'parallel_search.py', 'hybrid_search.py', 'gpu_matrix.py',
                'round2_data.py', 'profile_oracle.py', 'full_model_contract.py', 'full_model_pilot.py',
-               'gpu_local_bridge.py', 'gpu_local_worker.py', 'gpu_process_admission.py', 'full_model_ops.py', 'full_model_stage.lsf']
+               'gpu_local_bridge.py', 'gpu_local_worker.py', 'gpu_process_admission.py', 'full_model_ops.py', 'full_model_stage.lsf',
+               'full_model_context.py', 'replay_context_qualification.py']
     tests = ['test_speed.py', 'test_hybrid.py', 'test_gpu_matrix.py', 'test_oracle_profile.py',
              'test_full_model_pilot.py', 'test_gpu_local_bridge.py', 'test_full_model_ops.py',
-             'test_full_model_replay.py', 'test_gpu_process_admission.py', 'test_full_model_retry.py']
+             'test_full_model_replay.py', 'test_gpu_process_admission.py', 'test_full_model_retry.py',
+             'test_full_model_context.py', 'test_replay_context_qualification.py']
     for name in ['README.md', 'scripts/README.md', 'tests/README.md',
                  *['scripts/' + name for name in scripts], *['tests/' + name for name in tests]]:
         raw = (HERE / name).read_bytes().replace(b'\r\n', b'\n')
@@ -50,7 +52,7 @@ def main():
             ast.parse(raw, filename=name)
         members[name] = raw
     members['plans/README.md'] = b'# Immutable matched full-model plans\n\nOriginal settings and byte-bound inputs; no production adoption.\n'
-    members['protocol.md'] = (HERE / 'runs/20261025-chemistry-full-model-03/README.md').read_bytes().replace(b'\r\n', b'\n')
+    members['protocol.md'] = (HERE / 'runs/20261026-chemistry-full-model-05/README.md').read_bytes().replace(b'\r\n', b'\n')
     # Expected counts are declared by the fixture author; only allocated raw XML
     # can establish that the tests actually ran and passed.
     counts = json.loads((LOCAL / 'cpu-counts.json').read_bytes())
@@ -70,8 +72,27 @@ def main():
     race_names=['protenix/payload/assessment.json','protenix/stdout.29816183.log','protenix/stderr.29816183.log','protenix/payload/comparison/assessment.json']
     race_proofs=[{'path':BASE+'chemistry-full-model-02/'+name,'bytes':(race_root/name).stat().st_size,'sha256':hashlib.sha256((race_root/name).read_bytes()).hexdigest()} for name in race_names]
     prior_proofs=[{'path':BASE+'chemistry-full-model-01/'+name,'bytes':(prior_observation/name).stat().st_size,'sha256':hashlib.sha256((prior_observation/name).read_bytes()).hexdigest()} for name in prior_paths]
-    manifest = {'version': 'chemistry-full-model-source-v3', 'cpu_counts': counts,
-                'parent_sources': parent_sources, 'preserved_proofs': inspected['preserved_proofs']+prior_proofs+race_proofs,
+    replay_manifest = json.loads((REPO/'results/hpc/20261026-chemistry-replay-02/source01/source_manifest.json').read_bytes())
+    with tarfile.open(REPO/'results/hpc/20261026-chemistry-replay-02/source01/source.tar.gz') as saved:
+        replay_admission = json.loads(saved.extractfile('admission.json').read())
+    for row in replay_admission['parent_sources']:
+        if row['path'] not in {p['path'] for p in parent_sources}: parent_sources.append(row)
+    parent_sources.append({'path':BASE+'chemistry-replay-release-02/source','files':11,
+                          'manifest_sha256':'89b290831e8ebf5633dba07736189a18848cd835d1d6cdf8a3650a5f056a928b'})
+    merged = {p['path']:p for p in inspected['preserved_proofs']+prior_proofs+race_proofs}
+    for row in replay_admission['preserved_proofs']:
+        assert row['path'] not in merged or merged[row['path']]==row
+        merged[row['path']]=row
+    failed04=REPO/'results/hpc/20261026-chemistry-full-model-04/observation-context-cpu-01/files'
+    for name in ('cpu/submission.json','cpu/stdout.29818517.log','cpu/payload/assessment.json','cpu/payload/tests.xml',
+                 'cpu/payload/tests.log','after-cpu/submission.json','after-cpu/stdout.29818518.log'):
+        data=(failed04/name).read_bytes();path=BASE+'chemistry-full-model-04/'+name
+        merged[path]={'path':path,'bytes':len(data),'sha256':hashlib.sha256(data).hexdigest()}
+    parent_sources.append({'path':BASE+'chemistry-full-model-release-04/source','files':34,
+        'manifest_sha256':'a7c048cd7bfb9ab0fcfa714793fbd69fef50a9cbca9576867ef8ebad6342bcc1'})
+    from full_model_context import PRODUCER
+    manifest = {'version': 'chemistry-full-model-source-v5', 'cpu_counts': counts,
+                'parent_sources': parent_sources, 'preserved_proofs': list(merged.values()), 'replay_context_producer': PRODUCER,
                 'failed_predecessors': {'protenix':'29811883','boltz':'29811884'},
                 'active_gpu_arms':['protenix'],
                 'persistent_cap_bytes': 2 * 1024**3, 'worker_count': 4,

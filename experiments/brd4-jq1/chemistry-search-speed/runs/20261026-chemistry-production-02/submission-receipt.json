@@ -1,0 +1,7 @@
+{
+  "status": "readonly_compact_observation_byte_verified",
+  "program_sha256": "790bc92a10c17ad013ee964bf529c3cd521cd03b06431342bb390a94cf857dac",
+  "returncode": 0,
+  "completed_utc": "2026-10-26T03:06:49.800130+00:00",
+  "stdout_sha256": "18e367e730b55c122c3d71ff5e6efa22924ab51600c25d69c0e1a09677df4252"
+}

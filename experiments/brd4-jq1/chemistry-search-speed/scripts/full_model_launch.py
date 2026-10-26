@@ -8,12 +8,12 @@ import shlex
 import subprocess
 
 REPO = Path(__file__).resolve().parents[4]
-LOCAL = REPO / 'results/hpc/20261025-chemistry-full-model-03'
+LOCAL = REPO / 'results/hpc/20261026-chemistry-full-model-05'
 REMOTE = r'''
 import ast,base64,hashlib,io,json,os,subprocess,sys,tarfile
 from pathlib import Path,PurePosixPath
 base=Path('/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01')
-root=base/'chemistry-full-model-03';release=base/'chemistry-full-model-release-03';source=release/'source'
+root=base/'chemistry-full-model-05';release=base/'chemistry-full-model-release-05';source=release/'source'
 assert not any(os.path.lexists(p) for p in [root,release]),'Existing/unknown study outcome; inspect, never replay'
 archive=base64.b64decode(ARCHIVE,validate=True)
 assert len(archive)==LENGTH and hashlib.sha256(archive).hexdigest()==SHA
@@ -41,6 +41,8 @@ import full_model_ops as ops
 ops.verify(source,MANIFEST);ops.external(m)
 subprocess.run(['bash','-n',str(source/'scripts/full_model_stage.lsf')],check=True,capture_output=True)
 pre=root/'preflight';pre.mkdir();gate=ops.storage(pre,'preflight')
+qualified=ops.context_tools().qualify_predecessor(ops.context_api(),m)
+ops.write(pre/'actual-replay-context.json',qualified)
 cpu=ops.submit('cpu',MANIFEST);after=ops.submit('after-cpu',MANIFEST,'ended('+cpu['job_id']+')')
 receipt={'status':'CPU_and_ownended_callback_submitted_not_passed','cpu':cpu,'after_cpu':after,
  'source_manifest_sha256':MANIFEST,'archive_sha256':SHA,'archive_bytes':LENGTH,'source_files':MEMBERS-1,

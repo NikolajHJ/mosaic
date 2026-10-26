@@ -208,8 +208,69 @@ class SoftmaxReplayMetadataTests(unittest.TestCase):
         diagnostic.forbid_weight_open("open", ("original-snapshot.npz", "rb", 0))
         self.assertEqual(diagnostic.MAX_BYTES, 64 * 1024**2)
         self.assertEqual(diagnostic.INTERNAL_SECONDS, 600)
-        self.assertEqual(len(diagnostic.CONTROLS), 5)
+        self.assertEqual(len(diagnostic.CONTROLS), 11)
         self.assertEqual(set(diagnostic.FIELD_NAMES), {"atom_logits", "bond_logits", "X", "E_upper", "key_data"})
 
+
+    def test_31_real_audit_hook_hashes_manifest_weights_but_blocks_direct_open(self):
+        import subprocess, sys
+        package = Path(diagnostic.__file__).resolve()
+        code = """import importlib.util,json,pathlib,sys,tempfile
+spec=importlib.util.spec_from_file_location('isolated_replay',sys.argv[1]);d=importlib.util.module_from_spec(spec);spec.loader.exec_module(d)
+with tempfile.TemporaryDirectory() as temp:
+ root=pathlib.Path(temp);weight=root/'archived-source.pt';weight.write_bytes(b'not a model; exact archived bytes')
+ manifest={'files':{'archived-source.pt':d.sha(weight)}};d.write(root/'source_manifest.json',manifest)
+ row={'path':str(root),'manifest_sha256':d.sha(root/'source_manifest.json'),'files':1}
+ sys.addaudithook(d.forbid_weight_open)
+ assert d.verify_source(row)['files']==1
+ assert d._INTEGRITY_HASH_OPEN.get() is None
+ try:weight.read_bytes()
+ except RuntimeError:pass
+ else:raise AssertionError('Direct checkpoint read escaped guard')
+ print('exact readonly source hash passed; direct checkpoint open stayed blocked')
+"""
+        result = subprocess.run([sys.executable, "-c", code, str(package)], capture_output=True, text=True, timeout=15)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertIn('direct checkpoint open stayed blocked', result.stdout)
+
+    def test_32_integrity_hash_failure_restores_guard_scope(self):
+        row=self.file_binding('archived.eqx')
+        with self.assertRaises(ValueError):diagnostic.source_member_digest(Path(row['path']), '0'*64)
+        self.assertIsNone(diagnostic._INTEGRITY_HASH_OPEN.get())
+        with self.assertRaises(RuntimeError):diagnostic.forbid_weight_open('open',(row['path'],'rb',0))
+
+    def test_33_integrity_scope_never_allows_other_path_or_write(self):
+        row=self.file_binding('one.pt');token=diagnostic._INTEGRITY_HASH_OPEN.set(row['path'])
+        try:
+            diagnostic.forbid_weight_open('open',(row['path'],'r',0))
+            for path,mode,flags in [(row['path']+'other.pt','r',0),(row['path'],'w',diagnostic.os.O_WRONLY),
+                                   (row['path'],'r',diagnostic.os.O_RDWR),(row['path'],'r',diagnostic.os.O_CREAT)]:
+                with self.assertRaises(RuntimeError):diagnostic.forbid_weight_open('open',(path,mode,flags))
+        finally:diagnostic._INTEGRITY_HASH_OPEN.reset(token)
+        self.assertIsNone(diagnostic._INTEGRITY_HASH_OPEN.get())
+
+    def test_34_plain_diagnostic_environment_retains_original_flags(self):
+        inherited={'XLA_FLAGS':'--original=true','PYTHONHASHSEED':'123','KEEP':'yes'}
+        result=diagnostic.control_environment('plain',inherited)
+        self.assertEqual(result['XLA_FLAGS'],'--original=true');self.assertEqual(result['PYTHONHASHSEED'],'123')
+        self.assertEqual(inherited,{'XLA_FLAGS':'--original=true','PYTHONHASHSEED':'123','KEEP':'yes'})
+        self.assertEqual(result['JAX_ENABLE_X64'],'0')
+
+    def test_35_fixed_hash_control_is_explicit_and_no_autotune_change(self):
+        result=diagnostic.control_environment('plain_hash0',{'XLA_FLAGS':'--original=true'})
+        self.assertEqual(result['PYTHONHASHSEED'],'0');self.assertEqual(result['XLA_FLAGS'],'--original=true')
+
+    def test_36_autotune_control_is_explicit_and_ambiguous_override_fails(self):
+        result=diagnostic.control_environment('combined_autotune0',{})
+        self.assertEqual(result['XLA_FLAGS'],'--xla_gpu_autotune_level=0');self.assertNotIn('PYTHONHASHSEED',result)
+        with self.assertRaises(ValueError):diagnostic.control_environment('combined_autotune0',{'XLA_FLAGS':'--xla_gpu_autotune_level=4'})
+
+    def test_37_combined_controls_and_all22_ordered_receipts_are_required(self):
+        result=diagnostic.control_environment('combined_hash0_autotune0',{})
+        self.assertEqual(result['PYTHONHASHSEED'],'0');self.assertEqual(result['XLA_FLAGS'],'--xla_gpu_autotune_level=0')
+        rows=[{'control':c,'repeat':r,'returncode':0,'status':'diagnostic_control_completed_original_failure_preserved',
+               'assessment_sha256':'a'*64} for c in diagnostic.CONTROLS for r in (0,1)]
+        self.assertEqual(len(rows),22);self.assertTrue(diagnostic.validate_completed_controls(rows))
+        with self.assertRaises(ValueError):diagnostic.validate_completed_controls(rows[:10])
 
 if __name__ == "__main__": unittest.main()

@@ -9,13 +9,13 @@ import shlex
 import subprocess
 
 REPO = Path(__file__).resolve().parents[4]
-LOCAL = REPO / 'results/hpc/20261025-chemistry-full-model-03'
+LOCAL = REPO / 'results/hpc/20261026-chemistry-full-model-05'
 PROGRAM = r'''
 from datetime import datetime,timezone
 import base64,hashlib,json,os,stat,subprocess
 from pathlib import Path
 base=Path('/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01')
-root=base/'chemistry-full-model-03';source=base/'chemistry-full-model-release-03/source'
+root=base/'chemistry-full-model-05';source=base/'chemistry-full-model-release-05/source'
 assert root.is_dir() and source.is_dir() and not root.is_symlink() and not source.is_symlink()
 jobs=json.loads((root/'jobs.json').read_bytes()); assert set(jobs)<=set(['cpu','after-cpu','protenix','boltz'])
 q=subprocess.run(['bjobs','-l',*list(jobs.values())],capture_output=True,text=True,timeout=30)

@@ -87,3 +87,24 @@ with no long submissions/full chemistry storage verdict. The separate
 allocated CPU contracts and queued GPU29816561. It recomputes original saved
 logits with predeclared import/compiler controls; no model or optimizer evaluation
 and no acceptance-tolerance/probability substitution. Monitor remains paused.
+
+At26October02:15UTC the original replay diagnostic01 is a preserved tooling
+failure: its final source hashing collided with its checkpoint-loading guard.
+New [replay02](runs/20261026-chemistry-replay-02/README.md) passed67allocated CPU
+checks including actual audit-hook regression, then submitted GPU29818513.
+Original eight saved points/class/settings remain unchanged;11predeclared
+compiler/import controls each run twice. No new GPU finding or accelerated
+Protenix/native/production pass yet. Bol02's successful comparison is retained.
+Both chemistry production submissions still require validated Protenix replay/
+full-model gates and the complete future-byte admission. Monitor stays paused.
+
+At26October03:06UTC, [replay02](runs/20261026-chemistry-replay-02/README.md)
+GPU29818513 passed all22controls with original inputs restored. Autotune-disabled
+compiler context alone stabilized every tested original replay fingerprint across
+four fresh processes; hashseed alone did not. This qualifies a candidate only.
+[Full-model05](runs/20261026-chemistry-full-model-05/README.md) CPU408 passed;
+new ProGPU29818553 PEND. Failed04 fixture-only attempt remains preserved.
+[Production02](runs/20261026-chemistry-production-02/README.md) CPU29818556 and
+callback29818557 are actually queued, requiring fresh Pro native pass, retained
+Bol02 pass, all103fixtures/actual startups and full future storage before either
+chemistry long. No new chemistry optimization has started; monitor stays paused.

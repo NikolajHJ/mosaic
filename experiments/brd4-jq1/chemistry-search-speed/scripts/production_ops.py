@@ -186,7 +186,7 @@ def phase_parent(phase, arm='control', index=0):
 def argv(phase, pin, arm='control', index=0, dependency=None):
     c.digest(pin); parent = phase_parent(phase, arm, index)
     args = ['bsub', *c.resources(phase, None if arm=='control' else arm), '-J',
-            'mosaic-chem-prod01-'+arm+'-'+parent.name,
+            'mosaic-chem-prod02-'+arm+'-'+parent.name,
             '-oo', str(parent/'stdout.%J.log'), '-eo', str(parent/'stderr.%J.log')]
     if dependency is not None:
         require(re.fullmatch(r'ended\(\d+\)(?: && ended\(\d+\))*', dependency) is not None,
@@ -304,7 +304,8 @@ def pilot_pass(arm, plan):
     require(type(unit) is int and unit > 0 and result['storage_projection']['projected_bytes'] == 2*unit*10000+c.GIB
             and result['runtime_gate']['status'] == 'passed'
             and result['runtime_gate']['conservative_projected_seconds'] < 82800, 'Pilot runtime/empirical projection failed')
-    return {'status': 'passed', 'arm': arm, 'unit_bytes': unit, 'readiness': binding(ready),
+    runtime=module(SOURCE/'scripts/production_context.py','_production_context_adoption').read_context(sys.modules[__name__],arm,plan)
+    return {'status': 'passed', 'arm': arm, 'execution_context':runtime, 'unit_bytes': unit, 'readiness': binding(ready),
             'summary': binding(ready.with_name('summary.json')), 'proofs': proofs,
             'original_scientific_failure_reclassified': False}
 
@@ -495,7 +496,13 @@ def child(arm, phase, index, pin, parent, *, startup=False, terminal=False):
                '--arm', arm, '--phase', phase, '--index', str(index), mode]
     path = parent/('terminal-acceptance' if terminal else 'startup' if startup else 'driver')
     timeout=900 if terminal else 360 if startup else 6700 if phase=='native' else 81000
-    process=subprocess.Popen(command,cwd=SOURCE,env=driver_environment(arm),stdout=subprocess.PIPE,
+    plan=c.validate_plan(read(SOURCE/'plan.json'))
+    transport=module(SOURCE/'scripts/production_context.py','_production_context_execution')
+    actual_context=transport.read_context(sys.modules[__name__],arm,plan)
+    require(adoption(arm)['execution_context']==actual_context,'Accepted pilot compiler context changed')
+    environment=transport.apply(driver_environment(arm),actual_context)
+    write(path.with_name(path.name+'-context.json'),actual_context)
+    process=subprocess.Popen(command,cwd=SOURCE,env=environment,stdout=subprocess.PIPE,
                              stderr=subprocess.PIPE,text=True,start_new_session=True)
     timed_out=False
     started=time.monotonic()
@@ -574,7 +581,7 @@ def bootstrap(pin):
     storage(ROOT, 'preflight')
     # Actual first production startup arguments contain the accepted readiness
     # digest. Wait for those exact files; never use a synthetic future digest.
-    cpu = submit('cpu', pin, dependency=' && '.join('ended('+plan['pilots'][arm]['job_id']+')' for arm in c.PROFILES))
+    cpu = submit('cpu', pin, dependency='ended('+plan['pilots']['protenix']['job_id']+')')
     callback = submit('after-cpu', pin, dependency=c.callback_dependency(cpu['job_id'],plan['pilots']))
     write(ROOT/'initial-submissions.json', {'cpu': cpu, 'after_cpu': callback, 'scientific_updates': 0})
     enforce_control_cap()
@@ -584,7 +591,7 @@ def bootstrap(pin):
 def certify_cpu(pin, manifest):
     parent = ROOT/'cpu'; submission = read(parent/'submission.json')
     plan = c.validate_plan(read(SOURCE/'plan.json'))
-    expected_dependency = ' && '.join('ended('+plan['pilots'][arm]['job_id']+')' for arm in c.PROFILES)
+    expected_dependency = 'ended('+plan['pilots']['protenix']['job_id']+')'
     require(submission['argv'] == argv('cpu', pin, dependency=expected_dependency)
             and submission['status'] == 'submitted', 'CPU submission changed')
     terminal=actual_terminal(parent,submission,ROOT/'after-cpu','cpu')
@@ -638,11 +645,11 @@ def execute(phase, pin, arm='control', index=0):
     require(os.environ.get('LSB_JOBID') and not sys.flags.optimize, 'Actual allocated unoptimized Python required')
     manifest, plan = own_plan(pin); parent, sub = own(phase, pin, arm, index)
     if phase=='cpu':
-        expected=' && '.join('ended('+plan['pilots'][name]['job_id']+')' for name in c.PROFILES)
-        require(sub['dependency']==expected,'CPU must wait only for both exact declared pilot producers')
+        expected='ended('+plan['pilots']['protenix']['job_id']+')'
+        require(sub['dependency']==expected,'CPU must wait for the exact fresh Pro producer; preserved Bol LSF is verified')
     elif phase=='after-cpu':
         expected=c.callback_dependency(read(ROOT/'cpu/submission.json')['job_id'],plan['pilots'])
-        require(sub['dependency']==expected,'Production callback must wait for own CPU and both exact pilots')
+        require(sub['dependency']==expected,'Production callback must wait for its own accepted CPU; both pilot proofs remain required')
     elif phase in ('after-native','after-segment'):
         producer=phase_parent(phase.removeprefix('after-'),arm,index)
         expected='ended('+read(producer/'submission.json')['job_id']+')'

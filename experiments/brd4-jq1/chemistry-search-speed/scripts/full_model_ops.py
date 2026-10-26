@@ -24,16 +24,21 @@ import time
 import xml.etree.ElementTree as ET
 
 
-VERSION = "chemistry-full-model-source-v3"
+VERSION = "chemistry-full-model-source-v5"
 BASE = Path("/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01")
-ROOT = BASE / "chemistry-full-model-03"
-SOURCE = BASE / "chemistry-full-model-release-03/source"
+ROOT = BASE / "chemistry-full-model-05"
+SOURCE = BASE / "chemistry-full-model-release-05/source"
 ADMISSION = BASE / "nonchem-stride20-startup-release-03/source"
 ADMISSION_SHA = "704fab033d97342a14dc12b58dc32df44874232c5c30aad47c4d02041a502aab"
 SCIENCE = BASE / "protenix-extended-release-03/source"
 PYTHON = "/work3/s234818/mosaic/envs/protenix-tiny/bin/python"
 LIMIT = 2 * 1024**3
-PRIOR_OWNED_ROOTS = (BASE / "chemistry-full-model-02", BASE / "chemistry-full-model-release-02")
+PRIOR_OWNED_ROOTS = tuple(BASE / name for name in (
+    "chemistry-full-model-02", "chemistry-full-model-release-02",
+    "chemistry-full-model-03", "chemistry-full-model-release-03",
+    "chemistry-replay-01", "chemistry-replay-release-01",
+    "chemistry-replay-02", "chemistry-replay-release-02",
+    "chemistry-full-model-04", "chemistry-full-model-release-04"))
 CURRENT_ADMISSION = BASE / "protenix-endpoint-fix-release-02/source"
 CURRENT_ADMISSION_SHA = "09f759a7befb8a7b8f0e1d203e15acf939126fba493b30e6a2bf9cd2eea2216b"
 PHASES = ("cpu", "after-cpu", "protenix", "boltz")
@@ -41,6 +46,7 @@ CPU_MODULES = (
     "test_speed", "test_hybrid", "test_gpu_matrix", "test_oracle_profile",
     "test_full_model_pilot", "test_gpu_local_bridge", "test_full_model_ops",
     "test_full_model_replay", "test_gpu_process_admission", "test_full_model_retry",
+    "test_replay_context_qualification", "test_full_model_context",
 )
 
 
@@ -190,6 +196,17 @@ def previous_failures(manifest, bindings):
     return expected
 
 
+def context_api():
+    from types import SimpleNamespace
+    return SimpleNamespace(ROOT=ROOT, SOURCE=SOURCE, require=require, verify=verify, sha=sha,
+                           _module=_module, _binding=_binding, _file_binding=_file_binding,
+                           _lsf_success=_lsf_success)
+
+
+def context_tools():
+    return _module(SOURCE / "scripts/full_model_context.py", "_full_model_execution_context")
+
+
 def external(manifest):
     """Rehash unchanged sources, original readiness/results and every input."""
     require(manifest.get("version") == VERSION, "Wrong full-model source schema")
@@ -241,7 +258,8 @@ def external(manifest):
         _lsf_success(paths[3].read_text(), job, name, queue)
     failed=previous_failures(manifest,by_path)
     plans = _plans(manifest)
-    return {"parent_sources": len(parents), "preserved_proofs": len(preserved),
+    context_tools().producer(context_api(), manifest)
+    return {"replay_context_producer": manifest["replay_context_producer"], "parent_sources": len(parents), "preserved_proofs": len(preserved),
             "recursive_original_proofs": recursively_verified,
             "plans": {arm: sha(SOURCE / "plans" / (arm + ".json")) for arm in plans},
             "failed_predecessors_preserved":failed,
@@ -328,11 +346,12 @@ def resources(phase):
 def argv(phase, pin, dependency=None):
     require(re.fullmatch("[a-f0-9]{64}", pin or "") is not None, "Invalid actual submission source pin")
     parent = ROOT / phase
-    command = ["bsub", *resources(phase), "-J", "mosaic-chem-full03-" + phase,
+    command = ["bsub", *resources(phase), "-J", "mosaic-chem-full05-" + phase,
                "-oo", str(parent / "stdout.%J.log"), "-eo", str(parent / "stderr.%J.log")]
     if dependency is not None:
-        require(phase == "after-cpu" and re.fullmatch(r"ended\([1-9]\d*\)", dependency) is not None,
-                "Only own-ended CPU callback may have a dependency")
+        require((phase == "after-cpu" and re.fullmatch(r"ended\([1-9]\d*\)", dependency) is not None)
+                or (phase == "cpu" and dependency == "ended(29818513)"),
+                "Only own-ended CPU callback or exact replay-ended CPU may have a dependency")
         command += ["-w", dependency]
     else:
         require(phase != "after-cpu", "CPU callback requires its exact own-ended dependency")
@@ -422,7 +441,7 @@ def wait_cpu_terminal(query, job, *, record, pause=lambda: time.sleep(5), maximu
     for index in range(maximum):
         raw = query(job)
         record(index, raw)
-        if _terminal_status(raw, job, "mosaic-chem-full03-cpu") == "DONE":
+        if _terminal_status(raw, job, "mosaic-chem-full05-cpu") == "DONE":
             return raw
         if index + 1 < maximum:
             pause()
@@ -447,7 +466,7 @@ def cpu_terminal(pin, manifest):
         if path.exists() and "Successfully completed." in path.read_text():
             break
         time.sleep(1)
-    _lsf_success(path.read_text(), job, "mosaic-chem-full03-cpu")
+    _lsf_success(path.read_text(), job, "mosaic-chem-full05-cpu")
     assessment_path = ROOT / "cpu/payload/assessment.json"
     assessment = json.loads(assessment_path.read_text())
     require(assessment.get("status") == "passed" and assessment.get("job_id") == job
@@ -521,7 +540,7 @@ def verify_cpu_certificate(pin, manifest, expected_sha):
             and assessment.get("cpu_counts") == manifest["cpu_counts"], "New allocated CPU assessment differs")
     xml_cases(expected_paths["cpu_xml"], manifest["cpu_counts"])
     require(assessment.get("raw_xml_sha256") == sha(expected_paths["cpu_xml"]), "New CPU assessment XML binding differs")
-    _lsf_success(expected_paths["cpu_lsf"].read_text(), job, "mosaic-chem-full03-cpu")
+    _lsf_success(expected_paths["cpu_lsf"].read_text(), job, "mosaic-chem-full05-cpu")
     queries = certificate.get("scheduler_queries")
     require(isinstance(queries, list) and 1 <= len(queries) <= 13, "Missing bounded original scheduler evidence")
     observed = []
@@ -529,7 +548,7 @@ def verify_cpu_certificate(pin, manifest, expected_sha):
         expected_path = ROOT / "after-cpu" / ("cpu-terminal-query-" + str(index).zfill(3) + ".json")
         require(binding["path"] == str(expected_path), "Original CPU query identity/order changed")
         _binding(binding)
-        observed.append(_terminal_status(json.loads(expected_path.read_text()), job, "mosaic-chem-full03-cpu"))
+        observed.append(_terminal_status(json.loads(expected_path.read_text()), job, "mosaic-chem-full05-cpu"))
     require(observed[-1] == "DONE" and all(value in ("RUN", "PEND") for value in observed[:-1]),
             "Persisted actual CPU scheduler queries never established terminal success")
     return {"status": "passed", "sha256": expected_sha, "job_id": job,
@@ -595,18 +614,19 @@ def run(pin, phase):
         import fcntl
         with (ROOT / "dispatch.lock").open("a") as lock:
             fcntl.flock(lock, fcntl.LOCK_EX)
-            require(manifest.get("active_gpu_arms")==["protenix"],"Retry03 cannot duplicate Boltz02 validation")
+            require(manifest.get("active_gpu_arms")==["protenix"],"Retry05 cannot duplicate Boltz02 validation")
             require(not any((ROOT / arm).exists() for arm in ("protenix", "boltz")),
                     "Existing/unknown GPU outcome prohibits dispatch replay")
             cpu = cpu_terminal(pin, manifest)
             certificate = certify_cpu(pin, manifest, cpu)
+            qualified, qualified_binding = context_tools().adopt_cpu(context_api(), manifest)
             admission = storage(parent, "two-gpu-dispatch")
             actual = {arm: submit(arm, pin) for arm in ("protenix",)}
             after = external(manifest)
             require(after == before, "Original external bindings changed during dispatch")
             write(parent / "gpu-submissions-complete.json", {
                 "status": "submitted_not_passed", "cpu_terminal": cpu, "storage": admission,
-                "new_cpu_certificate": certificate,
+                "new_cpu_certificate": certificate, "qualified_context": qualified_binding,
                 "submissions": actual, "source_manifest_sha256": pin, "external_after": after,
             })
         return actual
@@ -653,8 +673,16 @@ def run(pin, phase):
                     "Allocated full CPU suite unexpectedly deselected cases")
             result["cpu_cases"] = sum(counts.values())
             result["raw_xml_sha256"] = sha(payload / "tests.xml")
+            qualified = context_tools().qualify_predecessor(context_api(), manifest)
+            write(payload / "qualified-context.json", qualified)
+            result["qualified_context"] = _file_binding(payload / "qualified-context.json")
         else:
             environment["JAX_PLATFORMS"] = "cuda,cpu"
+            qualified, qualified_binding = context_tools().adopt_cpu(context_api(), manifest)
+            require(phase == "protenix", "Context retry04 may not rerun Boltz")
+            environment = context_tools().apply_environment(environment, qualified)
+            result["qualified_context"] = qualified_binding
+            result["execution_context_overrides"] = qualified["qualification"]["selected_environment"]
             command = [PYTHON, str(SOURCE / "scripts/full_model_pilot.py"), "--plan",
                        str(SOURCE / "plans" / (phase + ".json")), "--output", str(payload / "comparison")]
             result["command"] = _run_child(command, payload / "pilot.log", environment, timeout=6700)

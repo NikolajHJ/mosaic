@@ -1,0 +1,83 @@
+{
+  "cpu_counts": {
+    "tests.test_production_context.ProductionContextTests": 6,
+    "tests.test_production_contract.ProductionContractTests": 50,
+    "tests.test_production_integration.OriginalCallSiteTests": 14,
+    "tests.test_production_ops.ProductionRoutingTests": 33
+  },
+  "cpu_modules": [
+    "test_production_contract",
+    "test_production_ops",
+    "test_production_integration"
+  ],
+  "files": {
+    "README.md": "f0f18b060611c36aa2eee29162c23f0d7dee3a70e7818db6147951a88ed201d9",
+    "plan.json": "b8ef2abd4411be017a5c39472db33d6bf2b33398a39b0efbc0a07e3c82d12dfa",
+    "protocol.md": "4c83f9a1e536a1a893f0ba7cc27b7ce75c2723101df20853f21c10005d198f6e",
+    "scripts/README.md": "2e0f5f6e617483f5b7a09573e0a911089e5fbbd1b8ac332f4376680905f073c9",
+    "scripts/production_context.py": "562ee3e111f28877ec0ba9410ec68f9dc68a88254aef0c7ffab1130ea4aac32c",
+    "scripts/production_contract.py": "26a0fb7b72c9c6de92edd1be617421fb21500500194a77f8d10b3daa07537b6e",
+    "scripts/production_ops.py": "d11804114210be6e0b1bc63843e105657c8eab5e97561c699601d96c509abf53",
+    "scripts/production_run.py": "cc3952b82cc40a4228f7f498306034db7d60828d554a1c5f84add8290b063167",
+    "scripts/production_stage.lsf": "0e7d6ba93af9692710bfc191de0b305b81c032256e82580dae095e30d5841fa5",
+    "tests/README.md": "cb1da243284451f08c6385d7694cbbfd4b2b1e27545099bb362b245cf25dc40f",
+    "tests/test_production_context.py": "009dce94d2b7c69400c7c6d2e888b619544e29467b9b92452b0a8efa4b639f34",
+    "tests/test_production_contract.py": "bf21db25d325d02925139e116b279e020552aa82244fd814493a7821a49ca7c5",
+    "tests/test_production_integration.py": "0bb442cb69ee8c154b5deb624361bcfdfa93b6ae3f0a6ebccb517bf6fc689524",
+    "tests/test_production_ops.py": "5bf8f65d888701beccfe7d4f4213502809316004cadf962e1ac1e6dba8b37378"
+  },
+  "loss_stride": 1,
+  "matrix_stride": 20,
+  "monitor_remains_paused": true,
+  "numerical_adapter_sha256_map": {
+    "plans/boltz.json": "2c93bbf9aaa58c13c883284796b846332b191d46f3022c248c99a566d107367f",
+    "plans/protenix.json": "ab36531225cb64451b8ea3b073d7b5e7fa58cbba11b25b85939d820c6d90a925",
+    "scripts/exact_reuse.py": "b9ecf079d9697fb9efc650f0bbd944b726c2df0d2fcd3b908d9e221f2d565d88",
+    "scripts/full_model_contract.py": "d6cc337345c1e88a8f83ab668f33cbecd5a0baacaa7c30b56d72c65628fe4b08",
+    "scripts/full_model_pilot.py": "1dea64afe9e81db8389b7249c0b9470ec1b2b3212c30b663dd73d5fb44a1a4ca",
+    "scripts/gpu_local_bridge.py": "95d54d753b61b8d3af69cc714f2fe7035a4c59005dbba6394b6564a9d4d751a8",
+    "scripts/gpu_local_worker.py": "0121d8a375e8297ae85ba4ee0e4d54a81700cfa9823e5d1b1c96e2f44d7aa2b4",
+    "scripts/gpu_matrix.py": "772e3ea5a691b4aaf8432040ee0066e429e4f6ddd092ed17a2efb917647f3ef3",
+    "scripts/gpu_process_admission.py": "ef0875cab683210b81e5d990cfbfe8a3653ee59307781595b7c48aaae35539fe",
+    "scripts/hybrid_search.py": "4bed62f1f3be9aaa96ead9ef79e00840762fd28dd0b9430f6b4b08e5ab60eda8",
+    "scripts/parallel_search.py": "137d5bb6cab95ad3263090eb9b017efa1a78ed42543afe713c7fa654d3628170",
+    "scripts/profile_oracle.py": "7cb0989fda0713b78598eff489b35b5b39cc1a2d6f608eff215cec590dd126c1",
+    "scripts/round2_data.py": "7d6ca6168b77fa96f30d3696ed57c24805cde9669f2083793f1458ab0d23ab31"
+  },
+  "original_results_changed": false,
+  "own_source_CPU_control_cap_bytes": 67108864,
+  "parent_sources": [
+    {
+      "files": 34,
+      "manifest_sha256": "ab875927a328c34650d2e43baf6dfbe323e8f9bcf5600f39bac78f3ccdfb5d8c",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-release-05/source"
+    },
+    {
+      "files": 30,
+      "manifest_sha256": "05e316a7b1bcceaf286b03231200a2d1f66e3f6a7ce927d4c1e73f08a24f86f9",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-release-02/source"
+    },
+    {
+      "files": 643,
+      "manifest_sha256": "da9db6821d26b884ca1749303fc8e0b0095bd9ee7cbd1b427cdcf1b22eec6562",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source"
+    },
+    {
+      "files": 635,
+      "manifest_sha256": "c214bccf2c94ac6829996bc0ca7d6415d3c19549be4fe7f874cba2b433901cc6",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-release-03/source"
+    },
+    {
+      "files": 14,
+      "manifest_sha256": "09f759a7befb8a7b8f0e1d203e15acf939126fba493b30e6a2bf9cd2eea2216b",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-release-02/source"
+    },
+    {
+      "files": 12,
+      "manifest_sha256": "704fab033d97342a14dc12b58dc32df44874232c5c30aad47c4d02041a502aab",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-startup-release-03/source"
+    }
+  ],
+  "scientific_settings_changed": false,
+  "version": "chemistry-accelerated-production-v3"
+}

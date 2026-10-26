@@ -9,12 +9,12 @@ import shlex
 import subprocess
 
 REPO=Path(__file__).resolve().parents[4]
-LOCAL=REPO/'results/hpc/20261025-chemistry-replay-01'
+LOCAL=REPO/'results/hpc/20261026-chemistry-replay-02'
 REMOTE=r'''
 import base64,hashlib,importlib.util,io,json,os,stat,sys,tarfile
 from pathlib import Path,PurePosixPath
 base=Path('/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01')
-release=base/'chemistry-replay-release-01';source=release/'source';root=base/'chemistry-replay-01'
+release=base/'chemistry-replay-release-02';source=release/'source';root=base/'chemistry-replay-02'
 def require(value,message):
  if not value:raise ValueError(message)
 require(not root.exists() and not release.exists(),'Existing/unknown replay root/release prohibits staging replay')

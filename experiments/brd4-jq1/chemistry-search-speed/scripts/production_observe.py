@@ -16,13 +16,13 @@ import shlex
 import subprocess
 
 REPO=Path(__file__).resolve().parents[4]
-LOCAL=REPO/'results/hpc/20261025-chemistry-production-01'
+LOCAL=REPO/'results/hpc/20261026-chemistry-production-02'
 PROGRAM=r'''
 import base64,hashlib,json,os,re,stat,subprocess
 from datetime import datetime,timezone
 from pathlib import Path
 base=Path('/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01')
-root=base/'chemistry-production-01';source=base/'chemistry-production-release-01/source'
+root=base/'chemistry-production-02';source=base/'chemistry-production-release-02/source'
 limit=64*1024**2
 record={'version':'chemistry-production-observation-v1','captured_utc':datetime.now(timezone.utc).isoformat(),
         'root':str(root),'source':str(source),'read_only':True,'files':[],'omitted':[],
@@ -105,6 +105,8 @@ for row in list(record['files']):
  if row['scope']=='root' and Path(row['relative']).name=='adoption.json':
   value=json.loads(base64.b64decode(row['base64']))
   references.extend(value.get('proofs',[]));references.extend(value.get(key,{}) for key in ('readiness','summary'))
+  context=value.get('execution_context',{})
+  references.extend(context.get(key,{}) for key in ('qualified_context','native_assessment','native_LSF'))
 for binding in references:
  if not isinstance(binding,dict) or not {'path','bytes','sha256'}<=set(binding):continue
  p=Path(binding['path'])
@@ -114,6 +116,10 @@ for binding in references:
  row=collect(p,'external',format(len([x for x in record['files'] if x['scope']=='external']),'04d')+p.suffix)
  if row is not None:
   require(row['bytes']==binding['bytes'] and row['sha256']==binding['sha256'],'Adoption external metadata bytes differ')
+  if p.name=='qualified-context.json':
+   qualified=json.loads(base64.b64decode(row['base64']))
+   require(qualified.get('version')=='new-full-model-context-adoption-v1','Unexpected qualified-context metadata')
+   references.extend(qualified.get('proofs',[]))
 record['compact_file_bytes']=total
 record['completed_utc']=datetime.now(timezone.utc).isoformat()
 print(json.dumps(record))

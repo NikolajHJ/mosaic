@@ -1,7 +1,7 @@
 """Local stdlib AST/byte packaging of the prospective two-arm production seal.
 
 This helper does not import numerical libraries, execute tests, connect to HPC
-or submit jobs. The source binds the actual Pro03 and Bol02 producer IDs; only
+or submit jobs. The source binds the actual Pro05 and Bol02 producer IDs; only
 allocated validation of their complete proofs can later admit production.
 """
 import ast
@@ -13,13 +13,13 @@ import tarfile
 
 HERE=Path(__file__).resolve().parents[1]
 REPO=HERE.parents[2]
-LOCAL=REPO/'results/hpc/20261025-chemistry-production-01'
-RUN=HERE/'runs/20261025-chemistry-production-01'
+LOCAL=REPO/'results/hpc/20261026-chemistry-production-02'
+RUN=HERE/'runs/20261026-chemistry-production-02'
 PRODUCERS={
     'protenix':{
-        'manifest_sha256':'8480a39c05d612d1a80ea1892d816c9429fcd471e97adb31655f8132d9007f31',
-        'cpu_certificate_sha256':'ea6c825017788181a81da3421fc83e16f2d74236914eb588d6b5acb4ce852db7',
-        'job_id':'29816284','local_run':'20261025-chemistry-full-model-03'},
+        'manifest_sha256':'ab875927a328c34650d2e43baf6dfbe323e8f9bcf5600f39bac78f3ccdfb5d8c',
+        'cpu_certificate_sha256':'c4a88a77f1ae5b4d20aa8c6f3b7fa59152cb295b4791b70c2bc737e1e0857980',
+        'job_id':'29818553','local_run':'20261026-chemistry-full-model-05'},
     'boltz':{
         'manifest_sha256':'05e316a7b1bcceaf286b03231200a2d1f66e3f6a7ce927d4c1e73f08a24f86f9',
         'cpu_certificate_sha256':'c46f39e679f503720ae31b561b8b3273a1d38c160bf3c7f3d6feba28f2b5c687',
@@ -27,14 +27,15 @@ PRODUCERS={
 }
 CASE_COUNTS={
     'tests.test_production_contract.ProductionContractTests':50,
-    'tests.test_production_ops.ProductionRoutingTests':30,
+    'tests.test_production_ops.ProductionRoutingTests':33,
     'tests.test_production_integration.OriginalCallSiteTests':14,
+    'tests.test_production_context.ProductionContextTests':6,
 }
 IMPLEMENTATION=(
     'scripts/production_contract.py','scripts/production_ops.py',
     'scripts/production_run.py','scripts/production_stage.lsf',
     'tests/test_production_contract.py','tests/test_production_ops.py',
-    'tests/test_production_integration.py',
+    'tests/test_production_integration.py','scripts/production_context.py','tests/test_production_context.py',
 )
 
 
@@ -79,7 +80,7 @@ def main():
                         count=sum(isinstance(item,ast.FunctionDef) and item.name.startswith('test_') for item in node.body)
                         if count:actual_counts[module+'.'+node.name]=count
         members[name]=raw
-    require(actual_counts==CASE_COUNTS and sum(actual_counts.values())==94,
+    require(actual_counts==CASE_COUNTS and sum(actual_counts.values())==103,
             'Declared allocated fixture class attribution/count changed; inspect before sealing')
     members['README.md']=(
         '# Prospective accelerated chemistry production\n\n'
@@ -88,11 +89,11 @@ def main():
         'Both original native/readiness/coupled/runtime checks and genuine new producer passes are mandatory.\n'
         'Losses are saved every update; matrices every20 plus initial/terminal/boundaries/latest/best.\n'
         'Current complete inherited storage/reserves remain unchanged; both full chemistry futures and own64MiB control are additional.\n'
-        'CPU waits both actual pilots; callback additionally waits its own CPU. Submission is not a pass/start.\n'
+        'CPU waits actual new Pro producer; callback waits own accepted CPU. Both pilot passes remain mandatory. Submission is not a pass/start.\n'
         'Storage failure preserves actual gates/adoptions and records waiting-storage.json; no production submission or callback replay.\n'
         'All numerical/scientific work is allocated DTU HPC only. See protocol.md and plan.json.\n').encode('utf8')
     members['scripts/README.md']=b'# Production execution and metadata\n\nSealed contracts, allocated controller, exact original-driver wrapper and shell entrypoint. No optimizer arithmetic or original source bytes are changed.\n'
-    members['tests/README.md']=b'# Allocated production contracts\n\n94 declared metadata/routing/original-call-site cases; actual raw JUnit and same-job scheduler/LSF proofs are required. Fixtures are not native scientific evidence.\n'
+    members['tests/README.md']=b'# Allocated production contracts\n\n103 declared metadata/routing/original-call-site cases; actual raw JUnit and same-job scheduler/LSF proofs are required. Fixtures are not native scientific evidence.\n'
     members['protocol.md']=(RUN/'README.md').read_bytes().replace(b'\r\n',b'\n')
     members['plan.json']=raw_json(plan)
     parents += [
@@ -112,7 +113,7 @@ def main():
               'files':{name:hashlib.sha256(raw).hexdigest() for name,raw in sorted(members.items())}}
     manifest_raw=raw_json(manifest);members['source_manifest.json']=manifest_raw
     LOCAL.mkdir(exist_ok=True)
-    out=LOCAL/'source01';out.mkdir(exist_ok=False)
+    out=LOCAL/'source02';out.mkdir(exist_ok=False)
     (out/'source_manifest.json').write_bytes(manifest_raw)
     archive=out/'source.tar.gz'
     with tarfile.open(archive,'x:gz') as target:
@@ -128,7 +129,7 @@ def main():
             'implementation_members':list(IMPLEMENTATION),'manifest_sha256':hashlib.sha256(manifest_raw).hexdigest(),
             'archive_sha256':hashlib.sha256(archive.read_bytes()).hexdigest(),'archive_bytes':archive.stat().st_size,
             'plan_sha256':hashlib.sha256(members['plan.json']).hexdigest(),'plan':plan,'cpu_counts':CASE_COUNTS,
-            'cpu_cases':94,'allocated_CPU_pass':False,'production_readiness_passed':False,
+            'cpu_cases':103,'allocated_CPU_pass':False,'production_readiness_passed':False,
             'jobs_submitted':False,'monitor_resumed':False}
     (out/'preparation.json').write_bytes(raw_json(result))
     print(json.dumps(result,indent=2))

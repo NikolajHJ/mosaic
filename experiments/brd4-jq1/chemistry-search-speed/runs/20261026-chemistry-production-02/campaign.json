@@ -1,0 +1,149 @@
+{
+  "allocated_CPU_pass": false,
+  "archive_bytes": 31832,
+  "archive_sha256": "b92eafcdcbde46cb7f4096c3dff33f6e068e6f464a4ebaf01eaec00486a8a733",
+  "cpu_cases": 103,
+  "cpu_counts": {
+    "tests.test_production_context.ProductionContextTests": 6,
+    "tests.test_production_contract.ProductionContractTests": 50,
+    "tests.test_production_integration.OriginalCallSiteTests": 14,
+    "tests.test_production_ops.ProductionRoutingTests": 33
+  },
+  "files": 14,
+  "implementation_members": [
+    "scripts/production_contract.py",
+    "scripts/production_ops.py",
+    "scripts/production_run.py",
+    "scripts/production_stage.lsf",
+    "tests/test_production_contract.py",
+    "tests/test_production_ops.py",
+    "tests/test_production_integration.py",
+    "scripts/production_context.py",
+    "tests/test_production_context.py"
+  ],
+  "jobs_submitted": true,
+  "manifest_sha256": "71fa3a69ca783632243dc1f9279db3b30902eb7aaacbf1be2efd7a429a9579e6",
+  "monitor_resumed": false,
+  "plan": {
+    "pilots": {
+      "boltz": {
+        "cpu_certificate_sha256": "c46f39e679f503720ae31b561b8b3273a1d38c160bf3c7f3d6feba28f2b5c687",
+        "job_id": "29816184",
+        "manifest_sha256": "05e316a7b1bcceaf286b03231200a2d1f66e3f6a7ce927d4c1e73f08a24f86f9",
+        "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-02",
+        "source": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-release-02/source"
+      },
+      "protenix": {
+        "cpu_certificate_sha256": "c4a88a77f1ae5b4d20aa8c6f3b7fa59152cb295b4791b70c2bc737e1e0857980",
+        "job_id": "29818553",
+        "manifest_sha256": "ab875927a328c34650d2e43baf6dfbe323e8f9bcf5600f39bac78f3ccdfb5d8c",
+        "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-05",
+        "source": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-release-05/source"
+      }
+    },
+    "version": "chemistry-accelerated-production-v3"
+  },
+  "plan_sha256": "b8ef2abd4411be017a5c39472db33d6bf2b33398a39b0efbc0a07e3c82d12dfa",
+  "production_readiness_passed": false,
+  "status": "actual_CPU_callback_submitted_waiting_new_Pro_native_not_passed",
+  "cpu_submission": {
+    "status": "submitted",
+    "phase": "cpu",
+    "arm": "control",
+    "index": 0,
+    "argv": [
+      "bsub",
+      "-q",
+      "hpc",
+      "-n",
+      "4",
+      "-R",
+      "span[hosts=1]",
+      "-R",
+      "rusage[mem=4GB]",
+      "-W",
+      "01:00",
+      "-J",
+      "mosaic-chem-prod02-control-cpu",
+      "-oo",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-02/cpu/stdout.%J.log",
+      "-eo",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-02/cpu/stderr.%J.log",
+      "-w",
+      "ended(29818553)",
+      "bash",
+      "-l",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-release-02/source/scripts/production_stage.lsf",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-release-02/source",
+      "71fa3a69ca783632243dc1f9279db3b30902eb7aaacbf1be2efd7a429a9579e6",
+      "cpu",
+      "control",
+      "0"
+    ],
+    "source_manifest_sha256": "71fa3a69ca783632243dc1f9279db3b30902eb7aaacbf1be2efd7a429a9579e6",
+    "dependency": "ended(29818553)",
+    "submitted_utc": "2026-10-26T03:03:20.840070+00:00",
+    "returncode": 0,
+    "stdout": "Job <29818556> is submitted to queue <hpc>.\n",
+    "stderr": "",
+    "job_id": "29818556"
+  },
+  "callback_submission": {
+    "status": "submitted",
+    "phase": "after-cpu",
+    "arm": "control",
+    "index": 0,
+    "argv": [
+      "bsub",
+      "-q",
+      "hpc",
+      "-n",
+      "1",
+      "-R",
+      "span[hosts=1]",
+      "-R",
+      "rusage[mem=4GB]",
+      "-W",
+      "00:30",
+      "-J",
+      "mosaic-chem-prod02-control-after-cpu",
+      "-oo",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-02/after-cpu/stdout.%J.log",
+      "-eo",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-02/after-cpu/stderr.%J.log",
+      "-w",
+      "ended(29818556)",
+      "bash",
+      "-l",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-release-02/source/scripts/production_stage.lsf",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-release-02/source",
+      "71fa3a69ca783632243dc1f9279db3b30902eb7aaacbf1be2efd7a429a9579e6",
+      "after-cpu",
+      "control",
+      "0"
+    ],
+    "source_manifest_sha256": "71fa3a69ca783632243dc1f9279db3b30902eb7aaacbf1be2efd7a429a9579e6",
+    "dependency": "ended(29818556)",
+    "submitted_utc": "2026-10-26T03:03:21.266531+00:00",
+    "returncode": 0,
+    "stdout": "Job <29818557> is submitted to queue <hpc>.\n",
+    "stderr": "",
+    "job_id": "29818557"
+  },
+  "production_jobs_submitted": false,
+  "scientific_updates": 0,
+  "latest_observation": {
+    "path": "results/hpc/20261026-chemistry-production-02/observation-submission-01",
+    "captured_utc": "2026-10-26T03:06:50.245005+00:00"
+  },
+  "verification": {
+    "path": "results/hpc/20261026-chemistry-production-02/independent-submission-01.json",
+    "sha256": "28aca2832a06930e6e564b53d6577fbec3b0f187280466d002ce7055a20e0a5d"
+  },
+  "bootstrap_storage": {
+    "required_bytes": 36411721536,
+    "available_bytes": 37478455700,
+    "full_chemistry_production_admitted": false
+  },
+  "source_read_only": true
+}

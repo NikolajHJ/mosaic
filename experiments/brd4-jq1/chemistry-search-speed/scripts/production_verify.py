@@ -16,23 +16,29 @@ import tarfile
 import xml.etree.ElementTree as ET
 
 REPO=Path(__file__).resolve().parents[4]
-LOCAL=REPO/'results/hpc/20261025-chemistry-production-01'
+LOCAL=REPO/'results/hpc/20261026-chemistry-production-02'
 BASE='/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01'
-ROOT=BASE+'/chemistry-production-01'
-SOURCE=BASE+'/chemistry-production-release-01/source'
-VERSION='chemistry-accelerated-production-v2'
+ROOT=BASE+'/chemistry-production-02'
+SOURCE=BASE+'/chemistry-production-release-02/source'
+VERSION='chemistry-accelerated-production-v3'
 COUNTS={'tests.test_production_contract.ProductionContractTests':50,
-        'tests.test_production_ops.ProductionRoutingTests':30,
-        'tests.test_production_integration.OriginalCallSiteTests':14}
+        'tests.test_production_ops.ProductionRoutingTests':33,
+        'tests.test_production_integration.OriginalCallSiteTests':14,
+        'tests.test_production_context.ProductionContextTests':6}
+CASES=sum(COUNTS.values())
 PROFILES={
     'protenix':{'arm':'random','target':50000,'segments':5,'rate':.3,
-        'root':BASE+'/chemistry-full-model-03','source':BASE+'/chemistry-full-model-release-03/source',
+        'root':BASE+'/chemistry-full-model-05','source':BASE+'/chemistry-full-model-release-05/source',
+        'job_id':'29818553','pilot_manifest':'ab875927a328c34650d2e43baf6dfbe323e8f9bcf5600f39bac78f3ccdfb5d8c',
+        'pilot_cpu':'c4a88a77f1ae5b4d20aa8c6f3b7fa59152cb295b4791b70c2bc737e1e0857980',
         'science':BASE+'/protenix-extended-release-03/source',
         'manifest':'da9db6821d26b884ca1749303fc8e0b0095bd9ee7cbd1b427cdcf1b22eec6562',
         'config':'extended_random.json','model':'8d6926d5390fe682e193089f790ce53aa4011a6d5509ddb452a55db3d89b0ab2',
         'context':'b28dfad8e5ede565071c70a61695f6a38f5cb6bd591705e32979e59050ff5ce4'},
     'boltz':{'arm':'boltz2_chemistry','target':30000,'segments':3,'rate':.0025,
         'root':BASE+'/chemistry-full-model-02','source':BASE+'/chemistry-full-model-release-02/source',
+        'job_id':'29816184','pilot_manifest':'05e316a7b1bcceaf286b03231200a2d1f66e3f6a7ce927d4c1e73f08a24f86f9',
+        'pilot_cpu':'c46f39e679f503720ae31b561b8b3273a1d38c160bf3c7f3d6feba28f2b5c687',
         'science':BASE+'/boltz-lr0025-release-03/source',
         'manifest':'c214bccf2c94ac6829996bc0ca7d6415d3c19549be4fe7f874cba2b433901cc6',
         'config':'boltz_serial_boltz2_chemistry.json','model':'395876da13ab6d5d175e6603db2118a82954c7c06484842fe2314dbd77a31a16',
@@ -122,8 +128,8 @@ def verify(observation,package):
             'Original local production archive changed')
     with tarfile.open(archive) as source:
         members=source.getmembers()
-        require(len(members)==13 and len({row.name for row in members})==13 and all(row.isfile() for row in members),
-                'Expected exact13-member immutable capsule')
+        require(len(members)==15 and len({row.name for row in members})==15 and all(row.isfile() for row in members),
+                'Expected exact15-member immutable capsule')
         archived={}
         for row in members:
             path=PurePosixPath(row.name)
@@ -132,11 +138,11 @@ def verify(observation,package):
     source_raw=data(SOURCE+'/source_manifest.json');manifest=json.loads(source_raw)
     pin=sha(source_raw);require(pin==preparation['manifest_sha256'] and source_raw==archived['source_manifest.json'],
                                 'Actual remote seal differs from prepared archive')
-    require(manifest['version']==VERSION and manifest['cpu_counts']==COUNTS and len(manifest['files'])==12,
-            'Wrong source/version/94-case scope')
+    require(manifest['version']==VERSION and manifest['cpu_counts']==COUNTS and len(manifest['files'])==14,
+            'Wrong source/version/103-case scope')
     require(set(archived)==set(manifest['files'])|{'source_manifest.json'},'Archive/source scope differs')
     require({key.removeprefix('source/') for key in files if key.startswith('source/')}==set(archived),
-            'Complete source13 members were not delivered')
+            'Complete source15 members were not delivered')
     for name,digest in manifest['files'].items():
         require(sha(archived[name])==digest and data(SOURCE+'/'+name)==archived[name],'Actual source member changed '+name)
     plan=obj(SOURCE+'/plan.json')
@@ -147,7 +153,8 @@ def verify(observation,package):
                 and value['root']==spec['root'] and value['source']==spec['source'],'Wrong per-arm actual producer root/source')
         for key in ('manifest_sha256','cpu_certificate_sha256'):
             require(re.fullmatch('[a-f0-9]{64}',value[key]) is not None,'Missing per-arm source/CPU pin')
-        require(re.fullmatch('[1-9][0-9]*',value['job_id']) is not None,'Missing actual producer job')
+        require(value['job_id']==spec['job_id'] and value['manifest_sha256']==spec['pilot_manifest']
+                and value['cpu_certificate_sha256']==spec['pilot_cpu'],'Wrong actual producer job/source/CPU pin')
     require(len({value['job_id'] for value in plan['pilots'].values()})==2,'Actual producer IDs must be distinct')
     submissions={}
     for path,value in remote.items():
@@ -162,7 +169,7 @@ def verify(observation,package):
             require(index>0 or phase not in ('native','after-native'),'Initial native replay forbidden')
             parent=ROOT+'/'+arm+'/'+PROFILES[arm]['arm']+'-'+phase+'-'+format(index,'04d')
         require(path==parent+'/submission.json' and re.fullmatch('[1-9][0-9]*',sub['job_id']) is not None,'Actual submission path/job differs')
-        command=['bsub',*resources(phase,arm),'-J','mosaic-chem-prod01-'+arm+'-'+PurePosixPath(parent).name,
+        command=['bsub',*resources(phase,arm),'-J','mosaic-chem-prod02-'+arm+'-'+PurePosixPath(parent).name,
                  '-oo',parent+'/stdout.%J.log','-eo',parent+'/stderr.%J.log']
         if sub['dependency'] is not None:command+=['-w',sub['dependency']]
         command+=['bash','-l',SOURCE+'/scripts/production_stage.lsf',SOURCE,pin,phase,arm,str(index)]
@@ -177,11 +184,10 @@ def verify(observation,package):
     require(len({row['job_id'] for row in submissions.values()})==len(submissions),'Duplicate actual job IDs')
     for parent,sub in submissions.items():
         phase,arm,index=sub['phase'],sub['arm'],sub['index']
-        if phase=='cpu':dependency=' && '.join('ended('+plan['pilots'][name]['job_id']+')' for name in PROFILES)
+        if phase=='cpu':dependency='ended('+plan['pilots']['protenix']['job_id']+')'
         elif phase=='after-cpu':
             require(ROOT+'/cpu' in submissions,'Callback lacks actual own CPU')
-            dependency=' && '.join('ended('+job+')' for job in
-                (submissions[ROOT+'/cpu']['job_id'],plan['pilots']['protenix']['job_id'],plan['pilots']['boltz']['job_id']))
+            dependency='ended('+submissions[ROOT+'/cpu']['job_id']+')'
         elif phase.startswith('after-'):
             producer=ROOT+'/'+arm+'/'+PROFILES[arm]['arm']+'-'+phase.removeprefix('after-')+'-'+format(index,'04d')
             require(producer in submissions,'Serial callback lacks actual own producer')
@@ -198,17 +204,17 @@ def verify(observation,package):
     if certificate_path in remote:
         cert=obj(certificate_path)
         require(cert['status']=='passed' and cert['source_manifest_sha256']==pin
-                and cert['plan_sha256']==sha(data(SOURCE+'/plan.json')) and cert['cases']==94,'Wrong allocated production CPU certificate')
+                and cert['plan_sha256']==sha(data(SOURCE+'/plan.json')) and cert['cases']==CASES,'Wrong allocated production CPU certificate')
         for row in cert['proofs']:require(bound(row),'CPU certificate has undelivered proof')
         assessment=obj(ROOT+'/cpu/payload/assessment.json')
-        require(assessment['status']=='passed' and assessment['cases']==94 and assessment['source_manifest_sha256']==pin,
-                'CPU assessment is not exact94-case source-bound pass')
+        require(assessment['status']=='passed' and assessment['cases']==CASES and assessment['source_manifest_sha256']==pin,
+                'CPU assessment is not exact103-case source-bound pass')
         cases=list(ET.fromstring(data(ROOT+'/cpu/payload/tests.xml')).iter('testcase'))
-        require(len(cases)==94 and len({(row.get('classname'),row.get('name')) for row in cases})==94
+        require(len(cases)==CASES and len({(row.get('classname'),row.get('name')) for row in cases})==CASES
                 and all(not list(row) for row in cases) and dict(Counter(row.get('classname') for row in cases))==COUNTS,
                 'Raw allocated JUnit is incomplete/failed/error/skipped/duplicated or wrongly attributed')
         tests=obj(ROOT+'/cpu/payload/tests-command.json')
-        require(tests['returncode']==0 and re.search(r'\b94\s+passed\b',tests['stdout'])
+        require(tests['returncode']==0 and re.search(r'\b103\s+passed\b',tests['stdout'])
                 and re.search(r'\b[1-9][0-9]*\s+deselected\b',tests['stdout']) is None,'Raw CPU execution/count scope differs')
         cpu=submissions[ROOT+'/cpu'];lsf(data(ROOT+'/cpu/stdout.'+cpu['job_id']+'.log').decode(),cpu)
         queries=sorted(path for path in remote if path.startswith(ROOT+'/after-cpu/cpu-scheduler-final-'))
@@ -245,7 +251,7 @@ def verify(observation,package):
                     'Actual original startup parser/source/config/global boundary/ready path differs')
             require(re.fullmatch('[a-f0-9]{64}',option(args,'--ready-sha256')) is not None,
                     'Actual original startup lacks an authenticated readiness SHA')
-        cpu_state='actual_CPU_94_pass_terminal_LSF_and_startup_verified'
+        cpu_state='actual_CPU_103_pass_terminal_LSF_and_startup_verified'
     unresolved=[];adoptions={}
     for arm,spec in PROFILES.items():
         path=ROOT+'/'+arm+'/adoption.json'
@@ -258,6 +264,36 @@ def verify(observation,package):
                 'Adoption redirects original readiness/summary')
         for proof in [*row['proofs'],row['readiness'],row['summary']]:
             if not bound(proof):unresolved.append(proof)
+        context=row['execution_context']
+        require(context['version']=='chemistry-production-context-v1' and context['arm']==arm
+                and context['scientific_settings_changed'] is False,'Compiler transport changed scientific scope')
+        if arm=='boltz':
+            require(context['environment']=={} and set(context)=={'version','arm','environment','scientific_settings_changed'},
+                    'Boltz inherited an unvalidated compiler override')
+        else:
+            require(context['environment']=={'XLA_FLAGS':'--xla_gpu_autotune_level=0'},'Wrong qualified Protenix compiler context')
+            for key in ('qualified_context','native_assessment','native_LSF'):
+                require(bound(context[key]),'Missing exact compiler-context adoption proof '+key)
+            qualified=context['qualified_context']
+            require(qualified['path']==spec['root']+'/cpu/payload/qualified-context.json'
+                    and qualified['sha256']=='b4575a121a20230fe5ed01c8000c9ba8ad22181c1fe76d9a1ac72c9f5fe7993a'
+                    and qualified['bytes']==14108,'Qualified-context CPU artifact changed')
+            q=obj(qualified['path'])
+            require(q['version']=='new-full-model-context-adoption-v1' and len(q['proofs'])==27
+                    and q['native_gradient_passed'] is False and q['original_failure_reclassified'] is False
+                    and q['qualification']['selected_policy']=='autotune0'
+                    and q['qualification']['selected_environment']==context['environment'],
+                    'Compiler qualification falsely certifies an old native failure')
+            for proof in q['proofs']:require(bound(proof),'Qualified context lacks delivered original diagnostic proof')
+            top_path=spec['root']+'/protenix/payload/assessment.json'
+            require(context['native_assessment']['path']==top_path,'Native context assessment redirected')
+            top=obj(top_path)
+            require(top['status']=='passed' and top['job_id']==spec['job_id']
+                    and top['source_manifest_sha256']==spec['pilot_manifest']
+                    and top['qualified_context']==qualified
+                    and top['execution_context_overrides']==context['environment'],
+                    'Fresh native pilot did not pass with the exact qualified compiler context')
+            lsf(data(context['native_LSF']['path']).decode(),obj(spec['root']+'/protenix/submission.json'))
         if expected in remote:
             ready=obj(expected);require(ready['status']=='passed' and ready['source_manifest_sha256']==spec['manifest']
                 and ready['model_digest']==spec['model'] and ready['context_digest']==spec['context']
@@ -281,7 +317,7 @@ def verify(observation,package):
         for proof in waiting['adoptions']:require(bound(proof),'Validated adoption receipt absent')
     return {'version':'chemistry-production-independent-delivery-v1','status':'verified_compact_source_jobs_CPU_and_storage_scope',
         'verified_utc':datetime.now(timezone.utc).isoformat(),'observation':str(observation.resolve()),
-        'raw_sha256':sha(raw),'source_manifest_sha256':pin,'source_files':12,'archive_members':13,
+        'raw_sha256':sha(raw),'source_manifest_sha256':pin,'source_files':14,'archive_members':15,
         'compact_files':len(files),'CPU_status':cpu_state,'adoptions':adoptions,
         'actual_submissions':list(submissions.values()),'production_jobs':longs,
         'blocked_storage':waiting,'unknown_submission_records':packet['unknown_submission_records'],
@@ -292,7 +328,7 @@ def verify(observation,package):
 
 def main():
     parser=argparse.ArgumentParser();parser.add_argument('--observation',type=Path,required=True)
-    parser.add_argument('--package',type=Path,default=LOCAL/'source01');parser.add_argument('--output',type=Path,required=True)
+    parser.add_argument('--package',type=Path,default=LOCAL/'source02');parser.add_argument('--output',type=Path,required=True)
     args=parser.parse_args()
     require(not args.output.exists(),'Independent audit output is immutable; choose a fresh file')
     result=verify(args.observation,args.package)

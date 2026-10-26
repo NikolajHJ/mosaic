@@ -6,6 +6,7 @@ or used to reclassify the failed full-model comparison.
 """
 
 from contextlib import ExitStack
+from contextvars import ContextVar
 from datetime import datetime, timezone
 import argparse
 import hashlib
@@ -23,14 +24,55 @@ import sys
 import time
 
 
-VERSION = "chemistry-softmax-replay-diagnostic-v1"
+VERSION = "chemistry-softmax-replay-diagnostic-v2"
 BASE = Path("/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01")
 SCIENCE = BASE / "protenix-extended-release-03/source"
 SCIENCE_PIN = "da9db6821d26b884ca1749303fc8e0b0095bd9ee7cbd1b427cdcf1b22eec6562"
 FAILED_SOURCE = BASE / "chemistry-full-model-release-03/source"
 FAILED_PIN = "8480a39c05d612d1a80ea1892d816c9429fcd471e97adb31655f8132d9007f31"
 FAILED_ROOT = BASE / "chemistry-full-model-03/protenix/payload/comparison"
-CONTROLS = ("plain", "matrix_import", "matrix_installed", "combined", "native_backend_import")
+CONTROLS = ("plain", "matrix_import", "matrix_installed", "combined", "native_backend_import",
+            "plain_hash0", "combined_hash0", "plain_autotune0", "combined_autotune0",
+            "plain_hash0_autotune0", "combined_hash0_autotune0")
+_INTEGRITY_HASH_OPEN = ContextVar("replay_manifest_member_hash_open", default=None)
+
+
+def source_member_digest(path, expected):
+    """Hash one already manifest-bound member; never deserialize its contents.
+
+    Only verify_source calls this after the whole manifest identity and ordinary
+    source membership have passed. The temporary audit permission covers one
+    exact read-only file open inside hashlib.file_digest, and cannot survive
+    return/exception or authorize model/scientific execution.
+    """
+    path = Path(path)
+    require(path.is_absolute() and not path.is_symlink() and path.is_file()
+            and re.fullmatch("[a-f0-9]{64}", expected) is not None,
+            "Exact ordinary source member/digest required")
+    require(_INTEGRITY_HASH_OPEN.get() is None, "Nested integrity scope forbidden")
+    token = _INTEGRITY_HASH_OPEN.set(str(path))
+    try:
+        actual = sha(path)
+    finally:
+        _INTEGRITY_HASH_OPEN.reset(token)
+    require(actual == expected, "Original source member bytes changed")
+    return actual
+
+
+def control_environment(control, inherited):
+    """Predeclared diagnostic-only compiler controls, before importing JAX."""
+    require(control in CONTROLS, "Undeclared compiler-context control")
+    env = dict(inherited, JAX_PLATFORMS="cuda,cpu", JAX_ENABLE_X64="0",
+               XLA_PYTHON_CLIENT_PREALLOCATE="false", JAX_ENABLE_COMPILATION_CACHE="false",
+               PYTHONDONTWRITEBYTECODE="1", PYTHONUNBUFFERED="1")
+    if "hash0" in control:
+        env["PYTHONHASHSEED"] = "0"
+    if "autotune0" in control:
+        require("xla_gpu_autotune_level" not in env.get("XLA_FLAGS", ""),
+                "Existing autotune flag prohibits ambiguous diagnostic override")
+        env["XLA_FLAGS"] = (env.get("XLA_FLAGS", "") + " --xla_gpu_autotune_level=0").strip()
+    return env
+
 POINT_LABELS = ("early-0", "early-10", "high-0", "high-10")
 MAX_BYTES = 64 * 1024**2
 INTERNAL_SECONDS = 600
@@ -118,7 +160,7 @@ def verify_source(row):
     for name, digest in files.items():
         target = root / name
         require(not Path(name).is_absolute() and ".." not in Path(name).parts and "\\" not in name
-                and target.is_file() and not target.is_symlink() and sha(target) == digest,
+                and target.is_file() and not target.is_symlink() and source_member_digest(target, digest) == digest,
                 "Original source file changed")
     return {"path": str(root), "manifest_sha256": sha(path), "files": len(files)}
 
@@ -171,8 +213,15 @@ def forbid_scientific_execution(frame, event, arg):
 
 def forbid_weight_open(event, args):
     if event != "open" or not args or not isinstance(args[0], (str, bytes, os.PathLike)): return
-    path = os.fsdecode(args[0]).lower()
+    actual = os.fsdecode(args[0]); path = actual.lower()
     if "/cache/mosaic/protenix/" in path or path.endswith((".eqx", ".pt", ".pth", ".ckpt", ".safetensors", ".skeleton.pkl")):
+        allowed = _INTEGRITY_HASH_OPEN.get()
+        mode = args[1] if len(args) > 1 else None
+        flags = args[2] if len(args) > 2 else None
+        readonly = (type(mode) is str and mode in ("r", "rb") and type(flags) is int
+                    and flags & (os.O_WRONLY | os.O_RDWR | os.O_CREAT | os.O_TRUNC | os.O_APPEND) == 0)
+        if allowed is not None and actual == allowed and readonly:
+            return
         raise RuntimeError("Replay diagnostic cannot open model/context checkpoint assets")
 
 
@@ -218,6 +267,8 @@ def _runtime_record(jax):
         "devices": [{"platform": d.platform, "id": int(d.id), "kind": d.device_kind} for d in jax.devices()],
         "softmax": {"module": softmax.__module__, "qualname": softmax.__qualname__, "path": filename,
                     "file_sha256": sha(filename), "source": inspect.getsource(softmax)},
+        "python_hash_seed": os.environ.get("PYTHONHASHSEED"),
+        "python_hash_probe": hash("mosaic-replay-fixed-probe-v2"),
         "numpy": np.__version__, "native_backend_imported": "protenix.backend" in sys.modules,
         "relevant_import_order": [{"module": name, "path": getattr(module, "__file__", None)}
                                   for name, module in sys.modules.items()
@@ -255,7 +306,8 @@ def child(plan, control, repeat, output):
               "input_before": before, "points": [], "scientific_gate_passed": False,
               "optimizer_updates": 0, "model_evaluations": 0, "probability_substitution": False,
               "can_certify_or_restart_original_study": False, "original_gate_reclassified": False,
-              "started_utc": datetime.now(timezone.utc).isoformat()}
+              "started_utc": datetime.now(timezone.utc).isoformat(),
+              "integrity_hash_scope": "exact_manifest_member_readonly_hashlib_only"}
     previous = sys.getprofile(); sys.setprofile(forbid_scientific_execution); sys.addaudithook(forbid_weight_open)
     try:
         sys.path[:0] = [str(FAILED_SOURCE / "scripts"), str(SCIENCE / "scripts"), str(SCIENCE / "src")]
@@ -274,7 +326,7 @@ def child(plan, control, repeat, output):
             if control == "matrix_import": importlib.import_module("gpu_matrix")
             elif control == "matrix_installed":
                 stack.enter_context(importlib.import_module("gpu_matrix").install_matrix_loss("matrix"))
-            elif control == "combined":
+            elif control == "combined" or control.startswith("combined_"):
                 stack.enter_context(adapter.combined_adapters("protenix-random50k", output))
             elif control == "native_backend_import": importlib.import_module("protenix.backend")
             logit_type = importlib.import_module("protenix_initialization").ProtenixReplayLogits
@@ -381,9 +433,7 @@ def parent(plan, plan_path, plan_sha256, output):
                            "--control", control, "--repeat", str(repeat)]
                 remaining = INTERNAL_SECONDS - 30 - (time.monotonic() - started)
                 require(remaining > 0, "Diagnostic internal shared deadline exhausted")
-                env = dict(os.environ, JAX_PLATFORMS="cuda,cpu", JAX_ENABLE_X64="0",
-                           XLA_PYTHON_CLIENT_PREALLOCATE="false", JAX_ENABLE_COMPILATION_CACHE="false",
-                           PYTHONDONTWRITEBYTECODE="1", PYTHONUNBUFFERED="1")
+                env = control_environment(control, os.environ)
                 with (output / (control + "-" + str(repeat) + ".log")).open("xb") as stream:
                     process = subprocess.Popen(command, cwd=SCIENCE, env=env, stdout=stream,
                                                stderr=subprocess.STDOUT, start_new_session=True)

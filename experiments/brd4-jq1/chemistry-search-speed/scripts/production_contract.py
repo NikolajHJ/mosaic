@@ -7,13 +7,13 @@ separate required allocated evidence.
 from pathlib import PurePosixPath
 import re
 
-VERSION = 'chemistry-accelerated-production-v2'
+VERSION = 'chemistry-accelerated-production-v3'
 BASE = '/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01'
-ROOT = BASE + '/chemistry-production-01'
-SOURCE = BASE + '/chemistry-production-release-01/source'
+ROOT = BASE + '/chemistry-production-02'
+SOURCE = BASE + '/chemistry-production-release-02/source'
 PILOTS = {
-    'protenix': {'root':BASE+'/chemistry-full-model-03',
-                 'source':BASE+'/chemistry-full-model-release-03/source'},
+    'protenix': {'root':BASE+'/chemistry-full-model-05',
+                 'source':BASE+'/chemistry-full-model-release-05/source'},
     'boltz': {'root':BASE+'/chemistry-full-model-02',
               'source':BASE+'/chemistry-full-model-release-02/source'},
 }
@@ -104,8 +104,9 @@ def resources(phase, arm=None):
 def callback_dependency(cpu_job, pilots):
     require(re.fullmatch('[1-9][0-9]*', cpu_job or '') is not None, 'Actual own CPU ID required')
     validate_plan({'version':VERSION,'pilots':pilots})
-    return ' && '.join('ended(' + job + ')' for job in
-                      (cpu_job,pilots['protenix']['job_id'],pilots['boltz']['job_id']))
+    # Both actual pilots are independently authenticated inside the CPU gate.
+    # Aged-out Boltz LSF evidence is not an LSF missing-job dependency.
+    return 'ended(' + cpu_job + ')'
 
 
 def require_storage(record):

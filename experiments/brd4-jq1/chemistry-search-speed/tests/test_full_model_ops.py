@@ -19,12 +19,12 @@ import full_model_ops as ops
 PIN = "a" * 64
 
 
-def raw(state="DONE", *, job="10", name="mosaic-chem-full03-cpu", queue="hpc", code=0):
+def raw(state="DONE", *, job="10", name="mosaic-chem-full05-cpu", queue="hpc", code=0):
     return {"returncode": code, "stdout": f"Job <{job}>, Job Name <{name}>, Status <{state}>, Queue <{queue}>\n",
             "stderr": ""}
 
 
-def lsf(*, job="10", name="mosaic-chem-full03-cpu", queue="hpc", status="Done"):
+def lsf(*, job="10", name="mosaic-chem-full05-cpu", queue="hpc", status="Done"):
     return (f"Subject: Job {job}: <{name}> in cluster <dcc> {status}\n"
             f"Job was executed on host <node> in queue <{queue}>.\nSuccessfully completed.\n")
 
@@ -63,7 +63,7 @@ def test_actual_argv_has_no_cross_arm_dependency(roots, phase):
     command = ops.argv(phase, PIN)
     assert command[-6:] == ["bash", "-l", str(source / "scripts/full_model_stage.lsf"), str(source), PIN, phase]
     assert "-w" not in command
-    assert "mosaic-chem-full03-" + phase in command
+    assert "mosaic-chem-full05-" + phase in command
     assert "production" not in " ".join(command)
 
 
@@ -131,7 +131,7 @@ def test_raw_xml_has_exact_attribution_and_no_hidden_failure(tmp_path, kind):
 
 @pytest.mark.parametrize("state", ("DONE", "RUN", "PEND"))
 def test_actual_terminal_parser_returns_observed_state_only(state):
-    assert ops._terminal_status(raw(state), "10", "mosaic-chem-full03-cpu") == state
+    assert ops._terminal_status(raw(state), "10", "mosaic-chem-full05-cpu") == state
 
 
 @pytest.mark.parametrize("change", ("job", "queue", "name", "exit", "query"))
@@ -139,7 +139,7 @@ def test_terminal_parser_rejects_other_job_queue_name_failure(change):
     options = {"job": "11"} if change == "job" else {"queue": "gpul40s"} if change == "queue" else {"name": "other"} if change == "name" else {"code": 255} if change == "query" else {}
     value = raw("EXIT" if change == "exit" else "DONE", **options)
     with pytest.raises(ValueError):
-        ops._terminal_status(value, "10", "mosaic-chem-full03-cpu")
+        ops._terminal_status(value, "10", "mosaic-chem-full05-cpu")
 
 
 def test_bounded_terminal_wait_records_raw_running_before_actual_done():
@@ -171,10 +171,10 @@ def test_unique_same_job_lsf_success(change):
     elif change == "failure":
         text = lsf(status="Exited")
     if change == "none":
-        assert ops._lsf_success(text, "10", "mosaic-chem-full03-cpu") is True
+        assert ops._lsf_success(text, "10", "mosaic-chem-full05-cpu") is True
     else:
         with pytest.raises(ValueError):
-            ops._lsf_success(text, "10", "mosaic-chem-full03-cpu")
+            ops._lsf_success(text, "10", "mosaic-chem-full05-cpu")
 
 
 def test_actual_submission_records_unique_id_and_prevents_replay(roots, monkeypatch):

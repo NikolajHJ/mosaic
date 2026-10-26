@@ -1,0 +1,58 @@
+{
+  "version": "chemistry-replay-independent-delivery-v1",
+  "status": "verified_compact_source_and_actual_execution_scope",
+  "verified_utc": "2026-10-26T02:48:06.037698+00:00",
+  "raw_sha256": "6c9c3584282c84255000481b9ea45c4489c93824e5aaa1a90e87636b2306f5f4",
+  "source_manifest_sha256": "89b290831e8ebf5633dba07736189a18848cd835d1d6cdf8a3650a5f056a928b",
+  "archive_members": 12,
+  "compact_files": 800,
+  "CPU_status": "actual_CPU_67_pass_raw_XML_LSF_certificate_verified",
+  "actual_raw_LSF_outcomes": {
+    "after-cpu": [
+      "actual_LSF_success",
+      0
+    ],
+    "gpu": [
+      "actual_LSF_success",
+      0
+    ],
+    "cpu": [
+      "actual_LSF_success",
+      0
+    ]
+  },
+  "diagnostic_status": "completed_diagnostic_evidence_verified_original_failure_preserved",
+  "actual_live_scheduler_records": {
+    "after-cpu": {
+      "state": "DONE",
+      "live_record": "actual_same_job_record_verified",
+      "job_id": "29818484",
+      "raw_block_sha256": "a030121b30fe72a512248c02d27fd624f8ab8c35b7c44f50916f08816f53691d",
+      "terminal_success_inferred": false
+    },
+    "gpu": {
+      "state": "DONE",
+      "live_record": "actual_same_job_record_verified",
+      "job_id": "29818513",
+      "raw_block_sha256": "79ef9b1b1ba5e7847289bd5c07c1217fc8796968fca6fac5123bf37b849cde19",
+      "terminal_success_inferred": false
+    },
+    "cpu": {
+      "state": "DONE",
+      "live_record": "actual_same_job_record_verified",
+      "job_id": "29818483",
+      "raw_block_sha256": "1295f5db203ff5bdcc07454afb12046335c4a059c8b12b91dd0d443b3de48c1f",
+      "terminal_success_inferred": false
+    }
+  },
+  "full_local_verification": {
+    "path": "results/hpc/20261026-chemistry-replay-02/independent-gpu-06.json",
+    "sha256": "1efc1a2b5f7e6a1cafb5aa29c5cf3675cf4c13b0c19aa5336fff6478c8e1d3cf"
+  },
+  "native_arrays_downloaded": false,
+  "native_gradient_passed": false,
+  "original_failure_reclassified": false,
+  "selected_candidate_environment": {
+    "XLA_FLAGS": "--xla_gpu_autotune_level=0"
+  }
+}

@@ -10,8 +10,8 @@ import tarfile
 import xml.etree.ElementTree as ET
 
 REPO = Path(__file__).resolve().parents[4]
-LOCAL = REPO/'results/hpc/20261025-chemistry-full-model-03'
-JOB_PREFIX='mosaic-chem-full03-'
+LOCAL = REPO/'results/hpc/20261026-chemistry-full-model-05'
+JOB_PREFIX='mosaic-chem-full05-'
 
 
 def sha(path):
@@ -48,19 +48,21 @@ def expected_argv(phase,pin,root,source,cpu):
     else:resources=['-q','gpul40s','-n','8','-R','span[hosts=1]','-R','rusage[mem=4GB]','-gpu',('num=1:mode=shared:j_exclusive=yes:mps=no' if phase=='boltz' else 'num=1:mode=exclusive_process'),'-W','02:00']
     command=['bsub',*resources,'-J',JOB_PREFIX+phase,'-oo',root+'/'+phase+'/stdout.%J.log','-eo',root+'/'+phase+'/stderr.%J.log']
     if phase=='after-cpu':command+=['-w','ended('+cpu+')']
+    elif phase=='cpu' and root.endswith('-04'):command+=['-w','ended(29818513)']
     return command+['bash','-l',source+'/scripts/full_model_stage.lsf',source,pin,phase]
 
 
 def main():
     global LOCAL,JOB_PREFIX
     parser=argparse.ArgumentParser();parser.add_argument('observation',type=Path)
+    parser.add_argument('--replay-observation',type=Path)
     args=parser.parse_args();out=args.observation;files=out/'files'
     header=load(out/'raw.json');capsule=header['root'].rsplit('-',1)[-1]
-    assert capsule in ['02','03']
+    assert capsule in ['02','03','04','05']
     base='/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/'
     assert header['root']==base+'chemistry-full-model-'+capsule
     assert header['source']==base+'chemistry-full-model-release-'+capsule+'/source'
-    LOCAL=REPO/('results/hpc/20261025-chemistry-full-model-'+capsule)
+    LOCAL=REPO/('results/hpc/'+('20261026' if capsule in ['04','05'] else '20261025')+'-chemistry-full-model-'+capsule)
     JOB_PREFIX='mosaic-chem-full'+capsule+'-'
     transfer=load(out/'byte-verification.json')
     assert transfer['status']=='passed_compact_byte_transfer_only'
@@ -86,7 +88,7 @@ def main():
     assert remote_root==header['root']
     assert remote_source==header['source']
     assert sub['job_id']==cpu and sub['status']=='submitted' and sub['manifest_sha256']==pin
-    assert sub['dependency'] is None and sub['argv'][-2:]==[pin,'cpu']
+    assert sub['dependency']==('ended(29818513)' if capsule=='04' else None) and sub['argv'][-2:]==[pin,'cpu']
     assert sub['argv']==expected_argv('cpu',pin,remote_root,remote_source,cpu)
     assert sub['argv'][sub['argv'].index('-q')+1]=='hpc' and sub['argv'][sub['argv'].index('-n')+1]=='16'
     assessment=load(files/'cpu/payload/assessment.json')
@@ -138,6 +140,36 @@ def main():
             'raw_XML_sha256':assessment['raw_xml_sha256'],'actual_terminal_proofs':terminal,
             'files_rehashed':len(transfer['files']),'jobs':jobs,'full_model_comparisons':{}}
     report['cpu_certificate_sha256']=certificate_sha
+    if capsule in ['04','05']:
+        assert args.replay_observation is not None,'Actual replay evidence is required'
+        replay_packet=load(args.replay_observation/'raw.json')
+        replay_receipt=load(args.replay_observation/'receipt.json')
+        assert replay_receipt['returncode']==0 and replay_receipt['stdout_sha256']==sha(args.replay_observation/'raw.json')
+        original={}
+        for row in replay_packet['files']:
+            path=args.replay_observation/'files'/row['scope']/row['relative']
+            assert path.stat().st_size==row['bytes'] and sha(path)==row['sha256']
+            original[row['path']]=path
+        context_binding=assessment['qualified_context']
+        assert context_binding['path']==remote_root+'/cpu/payload/qualified-context.json'
+        context_path=files/'cpu/payload/qualified-context.json'
+        assert context_path.stat().st_size==context_binding['bytes'] and sha(context_path)==context_binding['sha256']
+        context=load(context_path);qualification=context['qualification']
+        assert context['version']=='new-full-model-context-adoption-v1'
+        assert context['producer']==manifest['replay_context_producer']
+        assert context['native_gradient_passed'] is False and context['original_failure_reclassified'] is False
+        assert qualification['selected_policy'] in ['hash0','autotune0','hash0_autotune0']
+        assert qualification['fresh_full_model_validation_required'] is True
+        assert qualification['native_gradient_passed'] is False
+        assert qualification['can_certify_or_restart_original_study'] is False
+        assert qualification['candidates'][qualification['selected_policy']]['all_eight_points_stable'] is True
+        assert len(context['proofs'])==27
+        for proof in context['proofs']:
+            assert proof['path'] in original,'Missing exact delivered replay prerequisite'
+            assert original[proof['path']].stat().st_size==proof['bytes'] and sha(original[proof['path']])==proof['sha256']
+        report['compiler_context_qualification']={'binding':context_binding,'selected_policy':qualification['selected_policy'],
+            'selected_environment':qualification['selected_environment'],'native_gradient_passed':False,
+            'fresh_full_model_validation_required':True,'actual_replay_job':'29818513'}
     after=load(files/'after-cpu/submission.json')
     assert after['job_id']==jobs['after-cpu'] and after['status']=='submitted'
     assert after['manifest_sha256']==pin and after['dependency']=='ended('+cpu+')'
@@ -208,6 +240,9 @@ def main():
                  'scope':'Compact byte/JSON/source/CPU/submission/actual failed LSF audit; no local numerical evaluation or passed GPU comparison'}
             continue
         assert allocated['job_id']==job and allocated['source_manifest_sha256']==pin
+        if capsule in ['04','05']:
+            assert allocated['qualified_context']==context_binding
+            assert allocated['execution_context_overrides']==qualification['selected_environment']
         assert allocated['new_cpu_certificate']['status']=='passed' and allocated['new_cpu_certificate']['sha256']==certificate_sha
         assert allocated['external_before']==allocated['external_after']
         lsf(files/arm/('stdout.'+job+'.log'),job,JOB_PREFIX+arm,'gpul40s')

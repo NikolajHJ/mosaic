@@ -66,3 +66,30 @@ partial output. Three new allocated-only metadata fixtures raise its routing
 module30→33 (future full suite97). This does not modify sealed production01,
 its failed admission, any pilot or gate. Do not prepare/replay01 with these bytes;
 a new immutable production capsule must bind a newly passed Pro comparison.
+
+Canonical `replay_*` clients now target immutable26October replay02 only. Never
+use them to replay source01; historicalsource01/receipts remain intact. Narrow
+`source_member_digest` permits one exact read-only authenticated source member
+for hashlib only, always restores its context, and never permits checkpoint
+deserialization or model/scientific execution. New controls separately fix the
+Python hash seed and disable GPU compilation autotuning for diagnostics only;
+all22 fresh child receipts are required. No policy is automatically promoted.
+
+Current26October clients: replay02 (completed diagnostic), full-model05
+(Protenix native29818553 queued), production02 (CPU29818556/callback29818557
+conditional). `replay_context_qualification.py` compares only exact metadata
+fingerprints across22controls/all8points. `full_model_context.py` authenticates
+its actual producer/CPU/LSF/27proofs and applies the candidate before fresh
+native subprocess imports. `production_context.py` transports only the EXACT
+fresh passed Pro compiler context; Boltz gets no override. These are metadata
+adoption/environment operations, not new loss/model/optimizer mathematics.
+Numerical adapter/plan13members remain exact original02. Fullmodel05 CPU408
+passed; production02 CPU103/startups/fullstorage remain pending. Do not use
+canonical launchers against an existing/unknown root or edit sealed releases.
+
+Read-only commands from repository root (local Python performs stdlib only):
+`python experiments/brd4-jq1/chemistry-search-speed/scripts/full_model_observe.py UNIQUE`
+and `python experiments/brd4-jq1/chemistry-search-speed/scripts/production_observe.py UNIQUE`.
+Independent validators require a fresh output and original prepared archives;
+large native arrays stay authenticated HPC references. One SSH connection
+attempt per observation; no reconnect/submission/cleanup path in observers.

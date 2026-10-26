@@ -7603,3 +7603,117 @@ partialoutput BEFORE assertion and aggregatealways;3newallocated-only fixtures
 routing30→33/full97, ASTonlynotexecuted. Failedsealed01 unchanged; newcapsule
 requires anewpassedProcomparison beforeadoption. Originalscience/settings/results
 unchanged; monitorpaused. Bolcomparisonvalidated, Proreplayblocker unresolved.
+
+## 2026-10-26 Chemistry replay reconnect and narrow integrity correction
+
+Userauthorizedreconnect/fix/submitbothchemistryonlyafterallchecks. Freshreadonly
+SSH succeeded; independent392compactfile/source11/rawCPU60/submission/actualLSF
+byteauditSHA3ae98dc4f4892bb7da3063cd843d04e2e6f306f002548d40a9996b19ebb15d4d.
+GPU29816561 actualfailed: all10 controls reached8points but final sourcehash
+wasblockedbycheckpoint-openaudit on sealed source weight files. Not scientific
+failure/pass; originalPro03failure and independentBol02pass preserved. New
+immutable replay02 prepared: exact narrow readonly source-integrity hash scope,
+real audit regression; predeclared hashseed/autotune controls, all22 mandatory.
+Same64MiB/600s/20min andwhole2GiBretainedbudget+fullcurrent4GiB/100k guards.
+No newjoborproductionpassfrompreparation; settings/results unchanged, monitorpaused.
+
+Replay02 new11files packaged locally: manifest89b290831e8ebf5633dba07736189a18848cd835d1d6cdf8a3650a5f056a928b,
+archive27381B SHAad95557c8074c142502a72cdb7edc86d3442a2fd4a828a188b2256a14175d855;
+plan1706dd6b0f8071292fb16f6ea8df5e94391267a3b3c9bd93378d5f2a60d11988.
+67allocatedcases declared30controller+37diagnostic, no localexecution. Protected
+oldsource11 and actualGPU29816561 failedreceipts added; allold02/03validation+
+oldreplay01bytes+newfull64MiB jointlychargedinsideexisting2GiB. Originaleight
+points/class unchanged; diagnosticcontrols11x2=22, no productionchange.
+
+Replay02 actuallystaged/read-only11files andCPU29818483/ownendedcallback29818484 submitted02:12:52UTC. Source/plan unchangedasrecorded;67fixtures pending, noGPU/production submitted. No savedresults/settings changes.
+
+Replay02 observed02:15:45UTC CPU29818483/callback29818484 actualDONE/hpc/LSF;
+67rawcases passed0fails/errors/skips inclreal audit-hook sourceweight hashregression.
+CPUcertificate0241b63c7ebc62dff3a50ae2b20ac0b767ca3e883bc7b2bb7aca46a44ef722d7;
+independent43file/source11/XML/submission/LSF auditab21e3e2cc6d423d85610593e5bfe7af9e98a5969ec56c4418cf538d8cd57481.
+GPU29818513 actualsubmitted/PEND; no finding/native/productionpass. Fullvalidation
+storage36,344,788,980required/37,503,846,579available unchanged4GiB/100k; fullfuture
+chemistryproductionstorage stillunestablished. NoBolrerun/results/settings changes.
+
+## 2026-10-26 Conditional Protenix full-model context retry04 preparation
+
+Prepare newimmutable04, CPUafteractualreplay02GPU29818513ended thenstrictactual
+LSF/source11/CPU67/all22controls andprospectiveall8pointcontextqualification.
+No assumedcandidate/pass; failed/no-candidateblocks. All13 numericaladapter/plan
+bytes retainedidentical02/03; onlymetadata/environmenttransport changes before
+freshoriginalnative children. FulloriginalFP32/class/config/FD/parity/coupled/
+frozen/paired/runtime gates remain. Proonly, noBol02rerun. Existingfullguard+
+4GiB/100k/shared2GiB countsallretained02/03/replay01/02/new04. No production or
+localnumerics/monitorresume. Preparation notsubmission/pass.
+
+Conditionalfullmodel04 capsule34files/35members prepared, manifest
+a7c048cd7bfb9ab0fcfa714793fbd69fef50a9cbca9576867ef8ebad6342bcc1;
+archive101115B SHA7320fe8b8cb63222f0701e7727e8a085d53cd98a0d87a5d65dd51a1ddd8705f0.
+All13 mathematicaladapter/plan bytes EXACTBol02; originalsource643 unchanged.
+408allocatedCPUcases declared388retained+20newcontextmetadata. CPUwillwait
+ended29818513thenrequiresactualreplay02success+all22/all8pointqualification;
+negativeblocks. No fullmodel/native/productionpassfromlocalAST/bytes.
+
+Conditionalfullmodel04 actualstaged02:35:19UTC34readonlyfiles; CPU29818517
+ended(29818513) andowncallback29818518 submitted. Wholeguard36344788980required/
+37503334600available, unchanged4GiB/100k.408rawcases pending, no newProGPU/pass
+orproductionID. Any failed/no-candidate replayblocks; no automatic scientificwaiver.
+
+## 2026-10-26 Conditional chemistry production handoff preparation
+
+Prepare metadata-only bridge CPUcontracts, thenowncallback waitsactualfullmodel04
+callback29818518success; authenticateCPU408/source34 andactualProGPUsubmission.
+Seal NEWproduction02 fromfixedtemplate+actualplanidentities; onlynewCPU/startup
+validation queuesafteractualProended. No hypotheticalID/nativereadinessinferred.
+Thenfulloriginalnative/contextadoptions/allfixtures+actualstartup+bothfullfuture
+storage precedeanylongs. Bothsettings/savedresults/alloldfailuresunchanged.
+72MiB combinedcontrolbudget (64production+8handoff) fullycharged,4GiB/100k/
+oldforecastsunchanged. No source/job/passfrompreparation; monitorstayspaused.
+
+Replay02 GPU29818513 actualDONE/LSF/all22controls completed, originalsource/8points
+restored, no model/optimizer calls. Independent800file/source11/CPU67/LSF audit
+1efc1a2b5f7e6a1cafb5aa29c5cf3675cf4c13b0c19aa5336fff6478c8e1d3cf.
+All8point/fourfreshprocess fingerprints stablewithautotune0 (andboth), nothash0;
+predeclaredleastchange candidateautotune0 only, notnativeacceptance/oldreclassification.
+Conditionalfullmodel04 CPU29818517/callback29818518 actualEXIT1:407/408passed,
+one pytestfixture self.assertIsNone NameError; no nativeGPU. Preserve04 unchanged.
+Newimmutable05 fixes onlyfixtureassertion+metadataownership/accounting, retains
+all13mathematicalmembers+qualification/context andfulloriginalchecks. CPU408
+willrepeat; actualreplayLSFsuccess reauthenticatedbeforedependency-freeCPUstaging.
+
+Fix05 source34/35members prepared manifestab875927a328c34650d2e43baf6dfbe323e8f9bcf5600f39bac78f3ccdfb5d8c,
+archive101548B SHAe0b3e64170dd24f372cd9427225ba2447a2e44b42e22d81c168196103f47e959.
+All13math/plan+2contextmetadata bytes EXACT04; onefixtureassertionchangedonly,
+metadataidentity/accountingnew05+failed04retained. CPU408repeat required;
+actualsuccessfulreplayLSF/full22controls verifiedbeforeCPUwithoutstaleLSFdep.
+No localtest/numeric execution; full native stillrequired.
+
+Preparation refinement only: no submissionbridge wasimplemented/staged/submitted.
+Production02willpinactualnewPro05GPUreceipt directlyoncesubmitted (asoriginal01
+method); no hypotheticalID/sourcecompilation. Original64MiBcontrolcap retained,
+notdraft72MiB. ExactpassedProcontext transport added; Bolnooverride. Bothactual
+pilot/native/gateproofsmandatory; onlyfreshPro/CPU schedulerdeps avoidagedoutBol
+missingjobdependency. Allfuturebyte/reservechecksunchanged. No source/job yet.
+
+Fix05 actualstaged02:51:58UTC; at02:57:28CPU29818536/callback29818537 DONE/LSF,
+all408actualcases passed0fails/errors/skips. CPUcertc4a88a77f1ae5b4d20aa8c6f3b7fa59152cb295b4791b70c2bc737e1e0857980.
+Independent38files/source34/rawXML/LSF/27actualreplaybindings verified; selected
+contextautotune0, notnativepass. ProGPU29818553actualsubmitted/PEND,L40S8CPU/
+4GiBslot2h; Bol02unchanged. Fullvalidationstorage36344788980/37478665791passed,
+notfuturechemistryproductionfit. Production02canpinthatACTUALID, no bridge.
+
+Production02 active localpackage02 source14, manifest71fa3a69ca783632243dc1f9279db3b30902eb7aaacbf1be2efd7a429a9579e6,
+archive31832B SHAb92eafcdcbde46cb7f4096c3dff33f6e068e6f464a4ebaf01eaec00486a8a733;
+actualPro29818553/c4a88CPUcert andretainedBol29816184/c46CPUcert planpinned.
+Draft01localonlyretained; whitespace-onlyASTidenticalcorrection, no earlierHPC
+staging/submission.103CPUfixtures awaitactualProend, thenoriginalstartup+both
+nativeadoptions+fulltwoarmfuturestorage beforeindependent50k/30klongs. No passyet.
+
+Production02 actuallystaged03:03:20UTC readonly14files; CPU29818556 waits
+ended(29818553), owncallback29818557 waits ended(29818556). Actualsource/archive/
+plan/IDs/resources/exclusive markers independently byte/schema verified,
+audit28aca2832a06930e6e564b53d6577fbec3b0f187280466d002ce7055a20e0a5d.
+Bootstrapcontrols required36411721536/available37478455700; NOTfullfuturechem
+admission. At03:06ProGPU29818553 stillPEND, productionCPU/callback pending;
+no native/startup/103CPU/fullfuturestorage pass or chemistrylong ID established.
+Monitor remains paused, saved settings/results unchanged. No cleanup this turn.

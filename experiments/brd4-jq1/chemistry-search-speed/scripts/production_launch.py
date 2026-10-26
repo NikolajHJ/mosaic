@@ -13,7 +13,7 @@ import shlex
 import subprocess
 
 REPO=Path(__file__).resolve().parents[4]
-LOCAL=REPO/'results/hpc/20261025-chemistry-production-01'
+LOCAL=REPO/'results/hpc/20261026-chemistry-production-02'
 REMOTE=r'''
 import ast,base64,hashlib,io,json,os,subprocess,sys,tarfile
 from pathlib import Path,PurePosixPath
@@ -21,7 +21,7 @@ if sys.flags.optimize:raise RuntimeError('Optimized Python cannot bypass source/
 def require(value,message):
  if not value:raise ValueError(message)
 base=Path('/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01')
-root=base/'chemistry-production-01';release=base/'chemistry-production-release-01';source=release/'source'
+root=base/'chemistry-production-02';release=base/'chemistry-production-release-02';source=release/'source'
 require(not any(os.path.lexists(path) for path in (root,release)),
         'Existing/unknown production or release outcome; inspect, never replay')
 archive=base64.b64decode(ARCHIVE,validate=True)
@@ -87,7 +87,7 @@ def require(value,message):
 
 def main():
     require(REPO.name=='mosaic','Wrong authorized repository')
-    package=LOCAL/'source01';preparation=json.loads((package/'preparation.json').read_bytes())
+    package=LOCAL/'source02';preparation=json.loads((package/'preparation.json').read_bytes())
     raw=(package/'source.tar.gz').read_bytes()
     require(len(raw)==preparation['archive_bytes'] and hashlib.sha256(raw).hexdigest()==preparation['archive_sha256'],
             'Fresh local archive identity differs')

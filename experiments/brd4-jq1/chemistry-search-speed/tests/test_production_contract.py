@@ -132,7 +132,7 @@ class ProductionContractTests(unittest.TestCase):
 
     def test_all_actual_dependencies(self):
         self.assertEqual(c.callback_dependency('29820003',self.plan['pilots']),
-                         'ended(29820003) && ended(29820001) && ended(29820002)')
+                         'ended(29820003)')
 
     def test_unknown_own_cpu_cannot_dispatch(self):
         with self.assertRaises(ValueError):c.callback_dependency('unknown',self.plan['pilots'])

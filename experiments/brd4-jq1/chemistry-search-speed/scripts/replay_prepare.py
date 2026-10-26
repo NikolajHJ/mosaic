@@ -9,7 +9,7 @@ import tarfile
 
 HERE=Path(__file__).resolve().parents[1]
 REPO=HERE.parents[2]
-LOCAL=REPO/'results/hpc/20261025-chemistry-replay-01'
+LOCAL=REPO/'results/hpc/20261026-chemistry-replay-02'
 BASE='/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01'
 IMPLEMENTATION=('scripts/replay_ops.py','scripts/replay_stage.lsf','scripts/softmax_replay_diagnostic.py',
  'tests/test_replay_ops.py','tests/test_softmax_replay_diagnostic.py')
@@ -43,7 +43,7 @@ def main():
       if count:counts['tests.'+mod+'.'+node.name]=count
   members[name]=data
  require(counts=={'tests.test_replay_ops.ReplayControllerTests':30,
-                  'tests.test_softmax_replay_diagnostic.SoftmaxReplayMetadataTests':30},
+                  'tests.test_softmax_replay_diagnostic.SoftmaxReplayMetadataTests':37},
          'Exact declared allocated controller/diagnostic fixture scope differs')
  failed=args.failed_observation/'files';boltz=args.boltz_observation/'files'
  bindings={}
@@ -67,7 +67,7 @@ def main():
  for arm,directory in (('protenix',failed),('boltz',boltz)):
   cert=bindings[roots[arm]+'/cpu-certificate.json']
   require(cert['sha256']==pilots[arm]['cpu_certificate_sha256'],'Original actual producer CPU certificate differs')
- plan={'version':'chemistry-softmax-replay-diagnostic-v1',
+ plan={'version':'chemistry-softmax-replay-diagnostic-v2',
   'scientific_source':{'path':BASE+'/protenix-extended-release-03/source','manifest_sha256':'da9db6821d26b884ca1749303fc8e0b0095bd9ee7cbd1b427cdcf1b22eec6562','files':643},
   'failed_pilot_source':{'path':pilots['protenix']['source'],'manifest_sha256':pilots['protenix']['manifest_sha256'],'files':30},
   'points':[]}
@@ -91,6 +91,15 @@ def main():
   {'path':BASE+'/boltz-lr0025-release-03/source','manifest_sha256':'c214bccf2c94ac6829996bc0ca7d6415d3c19549be4fe7f874cba2b433901cc6','files':635},
   {'path':pilots['boltz']['source'],'manifest_sha256':pilots['boltz']['manifest_sha256'],'files':30},
   {'path':op.GUARD.as_posix(),'manifest_sha256':op.GUARD_PIN,'files':14}]
+ previous=REPO/'results/hpc/20261025-chemistry-replay-01/observation-reconnect-20261026-01/files/root'
+ previous_root=BASE+'/chemistry-replay-01'
+ for name in ('cpu-certificate.json','gpu/submission.json','gpu/stdout.29816561.log','gpu/payload/assessment.json',
+              'gpu/payload/diagnostic-command.json','gpu/payload/diagnostic/assessment.json'):
+  local_binding(previous,name,previous_root)
+ for control in ('plain','matrix_import','matrix_installed','combined','native_backend_import'):
+  for repeat in (0,1):
+   local_binding(previous,'gpu/payload/diagnostic/'+control+'-'+str(repeat)+'/control.json',previous_root)
+ parent_sources.append({'path':BASE+'/chemistry-replay-release-01/source','manifest_sha256':'dbfef057ac054a0c4eb452b1603933db7815d91d38dcb3ffcad007105f3312d5','files':11})
  admission={'version':op.VERSION,'pilots':pilots,'parent_sources':parent_sources,
   'preserved_proofs':sorted(bindings.values(),key=lambda r:r['path']),
   'original_results_changed':False,'production_authorized':False}
@@ -98,7 +107,7 @@ def main():
              for row in admission['preserved_proofs']+parent_sources),
          'Remote source/proof identities must retain POSIX spelling')
  members['plan.json']=raw(plan);members['admission.json']=raw(admission)
- record=HERE/'runs/20261025-chemistry-replay-01/README.md'
+ record=HERE/'runs/20261026-chemistry-replay-02/README.md'
  require(record.is_file(),'Parent must write the dated diagnostic record before packaging')
  members['protocol.md']=record.read_bytes().replace(b'\r\n',b'\n')
  members['README.md']=b'# Separate exact saved-logit replay diagnostic\n\nNo model evaluation, optimizer update, repair, production adoption or saved-result rewrite. CPU then bounded allocated GPU only.\n'

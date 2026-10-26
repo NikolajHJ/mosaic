@@ -11,9 +11,9 @@ op=importlib.util.module_from_spec(SPEC);SPEC.loader.exec_module(op)
 
 class ReplayControllerTests(unittest.TestCase):
  def test_exact_root(self):
-  self.assertEqual(op.ROOT,op.BASE/'chemistry-replay-01')
+  self.assertEqual(op.ROOT,op.BASE/'chemistry-replay-02')
  def test_exact_source(self):
-  self.assertEqual(op.SOURCE,op.BASE/'chemistry-replay-release-01/source')
+  self.assertEqual(op.SOURCE,op.BASE/'chemistry-replay-release-02/source')
  def test_only_three_phases(self):
   for phase in ('production','run','segment','native','resume'):
    with self.assertRaises(ValueError):op.resources(phase)
@@ -58,7 +58,8 @@ class ReplayControllerTests(unittest.TestCase):
   with self.assertRaises(ValueError):op.lsf(raw,'123','exact','hpc',True)
   rows=[{'control':name,'repeat':repeat,'returncode':0,'assessment_sha256':'a'*64,
    'status':'diagnostic_control_completed_original_failure_preserved'}
-   for name in ('plain','matrix_import','matrix_installed','combined','native_backend_import') for repeat in (0,1)]
+   for name in ('plain','matrix_import','matrix_installed','combined','native_backend_import',
+    'plain_hash0','combined_hash0','plain_autotune0','combined_autotune0','plain_hash0_autotune0','combined_hash0_autotune0') for repeat in (0,1)]
   result={'status':'diagnostics_completed_original_failure_preserved','all_controls_completed':True,
    'original_gate_reclassified':False,'can_certify_or_restart_original_study':False,
    'optimizer_updates':0,'model_evaluations':0,'controls':rows}

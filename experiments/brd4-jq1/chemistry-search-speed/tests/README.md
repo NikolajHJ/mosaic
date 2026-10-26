@@ -30,3 +30,18 @@ The production metadata suite declares94allocated cases:50policy,30routing,14exa
 replay capsule metadata suite. All60 passed on allocated CPU29816497; no native
 model/optimizer evaluation follows from fixtures. Actual GPU controls require
 all ten successful processes, byte-bound saved inputs and preserved failures.
+
+Replay02 retains30controller fixtures and extends diagnostic metadata30→37;
+all67 passed allocatedCPU29818483. New regressions run a REAL audit hook in an
+isolated stdlib subprocess: archived-source hashing succeeds while a subsequent
+direct checkpoint read stays blocked. Error restoration, path/write rejection
+and exact compiler-control environment/22receipt scope are covered. This CPU
+pass does not establish a GPU finding or native full-model acceptance.
+
+Current fullmodel05 declares408cases: retained388 plus20 compiler-qualification/
+context-metadata fixtures. CPU29818536 passed every rawcase,0fail/errors/skips;
+failed04's407/408 fixture NameError remains preserved. Production02 adds6exact
+context-transport fixtures to50policy+33routing+14actual-callsite =103cases;
+those are queued on CPU29818556, not yet passed. No local test or scientific
+array execution. Replay22 GPU controls are a separate isolated diagnostic;
+only the fresh full-model pilot can establish new native acceptance.

@@ -1,0 +1,22 @@
+{
+  "status": "stdlib_AST_schema_bytes_only",
+  "mathematical_adapter_and_plan_members_unchanged": {
+    "scripts/exact_reuse.py": "b9ecf079d9697fb9efc650f0bbd944b726c2df0d2fcd3b908d9e221f2d565d88",
+    "scripts/full_model_contract.py": "d6cc337345c1e88a8f83ab668f33cbecd5a0baacaa7c30b56d72c65628fe4b08",
+    "scripts/full_model_pilot.py": "1dea64afe9e81db8389b7249c0b9470ec1b2b3212c30b663dd73d5fb44a1a4ca",
+    "scripts/gpu_local_bridge.py": "95d54d753b61b8d3af69cc714f2fe7035a4c59005dbba6394b6564a9d4d751a8",
+    "scripts/gpu_local_worker.py": "0121d8a375e8297ae85ba4ee0e4d54a81700cfa9823e5d1b1c96e2f44d7aa2b4",
+    "scripts/gpu_matrix.py": "772e3ea5a691b4aaf8432040ee0066e429e4f6ddd092ed17a2efb917647f3ef3",
+    "scripts/gpu_process_admission.py": "ef0875cab683210b81e5d990cfbfe8a3653ee59307781595b7c48aaae35539fe",
+    "scripts/hybrid_search.py": "4bed62f1f3be9aaa96ead9ef79e00840762fd28dd0b9430f6b4b08e5ab60eda8",
+    "scripts/parallel_search.py": "137d5bb6cab95ad3263090eb9b017efa1a78ed42543afe713c7fa654d3628170",
+    "scripts/profile_oracle.py": "7cb0989fda0713b78598eff489b35b5b39cc1a2d6f608eff215cec590dd126c1",
+    "scripts/round2_data.py": "7d6ca6168b77fa96f30d3696ed57c24805cde9669f2083793f1458ab0d23ab31",
+    "plans/protenix.json": "ab36531225cb64451b8ea3b073d7b5e7fa58cbba11b25b85939d820c6d90a925",
+    "plans/boltz.json": "2c93bbf9aaa58c13c883284796b846332b191d46f3022c248c99a566d107367f"
+  },
+  "source_files": 34,
+  "archive_members": 35,
+  "local_tests_executed": false,
+  "native_pass": false
+}

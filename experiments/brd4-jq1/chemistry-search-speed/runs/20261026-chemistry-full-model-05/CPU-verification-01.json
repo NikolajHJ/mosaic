@@ -1,0 +1,52 @@
+{
+  "status": "passed_independent_CPU_byte_XML_LSF_schema_audit",
+  "source_files": 34,
+  "source_manifest_sha256": "ab875927a328c34650d2e43baf6dfbe323e8f9bcf5600f39bac78f3ccdfb5d8c",
+  "CPU_job": "29818536",
+  "CPU_cases": 408,
+  "CPU_counts": {
+    "tests.test_speed": 79,
+    "tests.test_hybrid": 26,
+    "tests.test_gpu_matrix": 20,
+    "tests.test_oracle_profile": 18,
+    "tests.test_full_model_pilot": 67,
+    "tests.test_gpu_local_bridge": 23,
+    "tests.test_full_model_ops": 53,
+    "tests.test_full_model_replay": 30,
+    "tests.test_gpu_process_admission": 49,
+    "tests.test_full_model_retry": 23,
+    "tests.test_replay_context_qualification": 10,
+    "tests.test_full_model_context": 10
+  },
+  "raw_XML_sha256": "355c712a89a03641db788c0c47208d7b92267914749060d8e64f2567c02d0886",
+  "actual_terminal_proofs": [
+    {
+      "path": "after-cpu\\cpu-terminal-query-000.json",
+      "sha256": "b4b9a0e981cf14a9d19031f112c2b4be036eba0193fc5c4b056199d99603da5c"
+    }
+  ],
+  "files_rehashed": 38,
+  "jobs": {
+    "cpu": "29818536",
+    "after-cpu": "29818537",
+    "protenix": "29818553"
+  },
+  "full_model_comparisons": {},
+  "cpu_certificate_sha256": "c4a88a77f1ae5b4d20aa8c6f3b7fa59152cb295b4791b70c2bc737e1e0857980",
+  "compiler_context_qualification": {
+    "binding": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-05/cpu/payload/qualified-context.json",
+      "bytes": 14108,
+      "sha256": "b4575a121a20230fe5ed01c8000c9ba8ad22181c1fe76d9a1ac72c9f5fe7993a"
+    },
+    "selected_policy": "autotune0",
+    "selected_environment": {
+      "XLA_FLAGS": "--xla_gpu_autotune_level=0"
+    },
+    "native_gradient_passed": false,
+    "fresh_full_model_validation_required": true,
+    "actual_replay_job": "29818513"
+  },
+  "dispatch_required_bytes": 36344788980,
+  "dispatch_available_bytes": 37478665791
+}

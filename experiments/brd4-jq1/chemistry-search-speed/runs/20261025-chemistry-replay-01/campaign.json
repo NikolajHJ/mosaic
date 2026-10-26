@@ -12,7 +12,7 @@
   "manifest_sha256": "dbfef057ac054a0c4eb452b1603933db7815d91d38dcb3ffcad007105f3312d5",
   "plan_sha256": "19102b7e629bf873c4b6f72453ad924bc91fe52d9defd47b2741f533c924a404",
   "points": 8,
-  "status": "CPU_60_pass_verified_GPU_last_PEND_latest_SSH_denied_no_findings",
+  "status": "actual_GPU_failed_final_source_byte_hash_false_positive_guard",
   "actual_submissions": {
     "after-cpu": {
       "status": "submitted",
@@ -147,5 +147,12 @@
     "receipt_path": "results/hpc/20261025-chemistry-replay-01/observation-gpu-progress-03/receipt.json",
     "receipt_sha256": "5922457b13342baf1f40464aded533e27635fc8be3bff618e89619ef7354a223",
     "new_job_state_established": false
-  }
+  },
+  "all_controls_completed": false,
+  "partial_controls_reached_eight_points": 10,
+  "terminal_verification": {
+    "path": "results/hpc/20261025-chemistry-replay-01/independent-verification-20261026-01.json",
+    "sha256": "3ae98dc4f4892bb7da3063cd843d04e2e6f306f002548d40a9996b19ebb15d4d"
+  },
+  "original_gate_reclassified": false
 }

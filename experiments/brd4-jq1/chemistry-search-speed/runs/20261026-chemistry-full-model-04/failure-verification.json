@@ -1,0 +1,23 @@
+{
+  "status": "verified_actual_failed_CPU_fixture_only",
+  "cases": 408,
+  "passes": 407,
+  "failures": 1,
+  "actual_jobs_EXIT1": [
+    "29818517",
+    "29818518"
+  ],
+  "LSF_proofs": [
+    {
+      "path": "results/hpc/20261026-chemistry-full-model-04/observation-context-cpu-01/files/cpu/stdout.29818517.log",
+      "sha256": "d9c1c5e04840731a7404eba6333c4e33facff12b5dddc6c403a4a3af2878919e"
+    },
+    {
+      "path": "results/hpc/20261026-chemistry-full-model-04/observation-context-cpu-01/files/after-cpu/stdout.29818518.log",
+      "sha256": "395bda6ce466239281d44fb3f3d838bea207e9f697d88be94341b6f9efc7be9d"
+    }
+  ],
+  "GPU_submitted": false,
+  "saved_results_changed": false,
+  "scope": "Stdlib bytes/XML/actualLSF only; no native pass/reclassification"
+}

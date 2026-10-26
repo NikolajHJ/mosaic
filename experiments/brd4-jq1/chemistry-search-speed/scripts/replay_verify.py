@@ -15,15 +15,17 @@ import tarfile
 import xml.etree.ElementTree as ET
 
 REPO=Path(__file__).resolve().parents[4]
-LOCAL=REPO/'results/hpc/20261025-chemistry-replay-01'
+LOCAL=REPO/'results/hpc/20261026-chemistry-replay-02'
 BASE='/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01'
-ROOT=BASE+'/chemistry-replay-01';SOURCE=BASE+'/chemistry-replay-release-01/source'
-PIN='dbfef057ac054a0c4eb452b1603933db7815d91d38dcb3ffcad007105f3312d5'
-ARCHIVE_SHA='85ab8c06c10ca704013dcc3b0b144a4ce62fd7e547026620cbe19ca2995670ac'
-PLAN_SHA='19102b7e629bf873c4b6f72453ad924bc91fe52d9defd47b2741f533c924a404'
+ROOT=BASE+'/chemistry-replay-02';SOURCE=BASE+'/chemistry-replay-release-02/source'
+PIN='89b290831e8ebf5633dba07736189a18848cd835d1d6cdf8a3650a5f056a928b'
+ARCHIVE_SHA='ad95557c8074c142502a72cdb7edc86d3442a2fd4a828a188b2256a14175d855'
+PLAN_SHA='1706dd6b0f8071292fb16f6ea8df5e94391267a3b3c9bd93378d5f2a60d11988'
 COUNTS={'tests.test_replay_ops.ReplayControllerTests':30,
- 'tests.test_softmax_replay_diagnostic.SoftmaxReplayMetadataTests':30}
-CONTROLS=('plain','matrix_import','matrix_installed','combined','native_backend_import')
+ 'tests.test_softmax_replay_diagnostic.SoftmaxReplayMetadataTests':37}
+CONTROLS=('plain','matrix_import','matrix_installed','combined','native_backend_import',
+ 'plain_hash0','combined_hash0','plain_autotune0','combined_autotune0',
+ 'plain_hash0_autotune0','combined_hash0_autotune0')
 POINTS=[(variant,label) for variant in ('baseline','combined') for label in ('early-0','early-10','high-0','high-10')]
 PYTHON='/work3/s234818/mosaic/envs/protenix-tiny/bin/python'
 
@@ -146,8 +148,8 @@ def verify(observation,package):
   value=data(row['path']);require(len(value)==row['bytes'] and sha(value)==row['sha256'],'Bound compact proof bytes changed');return True
  preparation=read(package/'preparation.json');archive=package/'source.tar.gz';archive_raw=archive.read_bytes()
  require(preparation['manifest_sha256']==PIN and preparation['archive_sha256']==ARCHIVE_SHA
-  and preparation['archive_bytes']==24127 and preparation['files']==11 and preparation['cpu_counts']==COUNTS
-  and len(archive_raw)==24127 and sha(archive_raw)==ARCHIVE_SHA,'Original staged capsule/preparation differs')
+  and preparation['archive_bytes']==27381 and preparation['files']==11 and preparation['cpu_counts']==COUNTS
+  and len(archive_raw)==27381 and sha(archive_raw)==ARCHIVE_SHA,'Original staged capsule/preparation differs')
  with tarfile.open(archive) as capsule:
   members=capsule.getmembers()
   require(len(members)==12 and len({m.name for m in members})==12 and all(m.isfile() for m in members),'Expected exact12 regular source members')
@@ -158,7 +160,7 @@ def verify(observation,package):
    archived[member.name]=capsule.extractfile(member).read()
  manifest_raw=data(SOURCE+'/source_manifest.json');manifest=parse(manifest_raw)
  require(sha(manifest_raw)==PIN and manifest_raw==archived['source_manifest.json']
-  and manifest['version']=='chemistry-softmax-replay-source-v1' and manifest['cpu_counts']==COUNTS
+  and manifest['version']=='chemistry-softmax-replay-source-v2' and manifest['cpu_counts']==COUNTS
   and manifest['persistent_cap_bytes']==64*1024**2 and manifest['group_cap_bytes']==2*1024**3
   and manifest['additional_allowance_bytes']==0 and manifest['production_authorized'] is False
   and manifest['monitor_remains_paused'] is True and len(manifest['files'])==11,'New seal scope/caps/CPU count differs')
@@ -168,7 +170,7 @@ def verify(observation,package):
  for name,digest in manifest['files'].items():
   require(sha(archived[name])==digest and data(SOURCE+'/'+name)==archived[name],'Actual source member changed: '+name)
  plan=obj(SOURCE+'/plan.json');admission=obj(SOURCE+'/admission.json')
- require(sha(data(SOURCE+'/plan.json'))==PLAN_SHA and plan['version']=='chemistry-softmax-replay-diagnostic-v1'
+ require(sha(data(SOURCE+'/plan.json'))==PLAN_SHA and plan['version']=='chemistry-softmax-replay-diagnostic-v2'
   and [(p['variant'],p['label']) for p in plan['points']]==POINTS,'Exact saved-point plan changed')
  references=admission['preserved_proofs'];reference_map={r['path']:r for r in references}
  require(len(reference_map)==len(references) and admission['production_authorized'] is False
@@ -187,7 +189,7 @@ def verify(observation,package):
   if row.get('status')!='submitted':unknown.append({'path':path,'record':row});continue
   phase=row['phase'];require(path==ROOT+'/'+phase+'/submission.json' and phase not in phases,'Actual phase path duplicated/redirected')
   require(re.fullmatch('[1-9][0-9]*',row['job_id']) is not None,'Actual submitted job lacks ID')
-  command=['bsub',*resources(phase),'-J','mosaic-chem-replay01-'+phase,
+  command=['bsub',*resources(phase),'-J','mosaic-chem-replay02-'+phase,
    '-oo',ROOT+'/'+phase+'/stdout.%J.log','-eo',ROOT+'/'+phase+'/stderr.%J.log']
   if row['dependency'] is not None:command+=['-w',row['dependency']]
   command+=['bash','-l',SOURCE+'/scripts/replay_stage.lsf',SOURCE,PIN,phase]
@@ -198,9 +200,9 @@ def verify(observation,package):
   require(marker['status']=='unknown' and all(marker[k]==row[k] for k in
    ('phase','argv','dependency','source_manifest_sha256')),'Exclusive unknown marker was replaced/changed')
   phases[phase]=row
- require({'cpu','after-cpu'}<=set(phases) and phases['cpu']['job_id']=='29816497'
-  and phases['after-cpu']['job_id']=='29816498' and phases['cpu']['dependency'] is None
-  and phases['after-cpu']['dependency']=='ended(29816497)','Actual initial CPU/callback identity/dependency differs')
+ require({'cpu','after-cpu'}<=set(phases) and phases['cpu']['job_id']=='29818483'
+  and phases['after-cpu']['job_id']=='29818484' and phases['cpu']['dependency'] is None
+  and phases['after-cpu']['dependency']=='ended(29818483)','Actual initial CPU/callback identity/dependency differs')
  if 'gpu' in phases:require(phases['gpu']['dependency'] is None,'Diagnostic GPU must have no inter-arm dependency')
  require(len({r['job_id'] for r in phases.values()})==len(phases),'Duplicate actual phase job IDs')
  query=packet['scheduler_query'];actual_ids=sorted([r['job_id'] for r in phases.values()],key=int)
@@ -217,43 +219,43 @@ def verify(observation,package):
  cpu_status='not_certified';certificate=ROOT+'/cpu-certificate.json'
  if certificate in remote:
   cert=obj(certificate)
-  require(cert['status']=='passed' and cert['source_manifest_sha256']==PIN and cert['job_id']=='29816497'
-   and cert['cpu_counts']==COUNTS and cert['cases']==60,'Actual CPU certificate scope differs')
+  require(cert['status']=='passed' and cert['source_manifest_sha256']==PIN and cert['job_id']=='29818483'
+   and cert['cpu_counts']==COUNTS and cert['cases']==sum(COUNTS.values()),'Actual CPU certificate scope differs')
   for proof in cert['proofs']:bound(proof)
   assessment=obj(ROOT+'/cpu/payload/assessment.json');cases=list(ET.fromstring(data(ROOT+'/cpu/payload/tests.xml')).iter('testcase'))
-  require(assessment['status']=='passed' and assessment['job_id']=='29816497' and assessment['source_manifest_sha256']==PIN
-   and assessment['cases']==60 and assessment['production_authorized'] is False
+  require(assessment['status']=='passed' and assessment['job_id']=='29818483' and assessment['source_manifest_sha256']==PIN
+   and assessment['cases']==sum(COUNTS.values()) and assessment['production_authorized'] is False
    and assessment['model_evaluations']==0 and assessment['optimizer_updates']==0,'Actual CPU assessment differs')
   expected_preserved={'status':'original_failure_and_independent_Boltz_pass_preserved','points':8,
    'input_files':len(references),'can_certify_or_restart_original_study':False}
   require(assessment['preserved_inputs']==assessment['preserved_inputs_after']==expected_preserved,
    'CPU did not preserve the exact original failure and independent Boltz pass before/after')
-  require(len(cases)==60 and len({(r.get('classname'),r.get('name')) for r in cases})==60 and all(not list(r) for r in cases)
-   and dict(Counter(r.get('classname') for r in cases))==COUNTS,'Raw CPU60 class-attributed XML failed/missing/skip/duplicate')
+  require(len(cases)==sum(COUNTS.values()) and len({(r.get('classname'),r.get('name')) for r in cases})==sum(COUNTS.values()) and all(not list(r) for r in cases)
+   and dict(Counter(r.get('classname') for r in cases))==COUNTS,'Raw CPU67 class-attributed XML failed/missing/skip/duplicate')
   command=obj(ROOT+'/cpu/payload/tests-command.json')
   expected=[PYTHON,'-m','pytest','-q','-o','addopts=','-p','no:cacheprovider',
    SOURCE+'/tests/test_replay_ops.py',SOURCE+'/tests/test_softmax_replay_diagnostic.py',
    '--junitxml='+ROOT+'/cpu/payload/tests.xml']
-  require(command['argv']==expected and command['returncode']==0 and re.search(r'\b60\s+passed\b',command['stdout'])
+  require(command['argv']==expected and command['returncode']==0 and re.search(r'\b67\s+passed\b',command['stdout'])
    and re.search(r'\b[1-9][0-9]*\s+deselected\b',command['stdout']) is None,'Actual raw CPU command/count differs')
   require(lsf['cpu']==('actual_LSF_success',0),'CPU certificate lacks same-job terminal raw LSF success')
   queries=sorted(p for p in remote if p.startswith(ROOT+'/after-cpu/cpu-terminal-'))
   require(1<=len(queries)<=16 and queries==[ROOT+'/after-cpu/cpu-terminal-'+format(i,'03d')+'.json' for i in range(len(queries))],
    'CPU certificate lacks exact bounded contiguous terminal scheduler proof paths')
-  expected_proofs=[ROOT+'/cpu/submission.json',*queries,ROOT+'/cpu/stdout.29816497.log',
+  expected_proofs=[ROOT+'/cpu/submission.json',*queries,ROOT+'/cpu/stdout.29818483.log',
    ROOT+'/cpu/payload/assessment.json',ROOT+'/cpu/payload/tests.xml',ROOT+'/cpu/payload/tests-command.json']
   require([p['path'] for p in cert['proofs']]==expected_proofs,'CPU certificate proof membership/order differs from sealed controller')
   states=[]
   for path in queries:
    record=obj(path);compact=''.join(record['stdout'].split());state=re.findall(r'Status<([^>]+)>',compact)
-   require(record['returncode']==0 and record['job_id']=='29816497'
-    and re.findall(r'Job<(\d+)>',compact)==['29816497']
-    and re.findall(r'JobName<([^>]+)>',compact)==['mosaic-chem-replay01-cpu']
+   require(record['returncode']==0 and record['job_id']=='29818483'
+    and re.findall(r'Job<(\d+)>',compact)==['29818483']
+    and re.findall(r'JobName<([^>]+)>',compact)==['mosaic-chem-replay02-cpu']
     and re.findall(r'Queue<([^>]+)>',compact)==['hpc'] and state in (['RUN'],['PEND'],['DONE']),
     'Persisted same-job CPU scheduler proof failed/detached')
    states.append(state[0])
   require(states[-1]=='DONE','Persisted scheduler never established original CPU terminal success')
-  cpu_status='actual_CPU_60_pass_raw_XML_LSF_certificate_verified'
+  cpu_status='actual_CPU_67_pass_raw_XML_LSF_certificate_verified'
  callback_status='pending_or_running_callback_no_terminal_outcome'
  if lsf['after-cpu'][0]=='actual_LSF_failed':callback_status='actual_callback_failed_original_failure_preserved'
  elif lsf['after-cpu'][0]=='actual_LSF_success':
@@ -289,7 +291,7 @@ def verify(observation,package):
     require(execution['argv']==[PYTHON,SOURCE+'/scripts/softmax_replay_diagnostic.py','--plan',SOURCE+'/plan.json',
      '--plan-sha256',PLAN_SHA,'--output',ROOT+'/gpu/payload/diagnostic'] and execution['returncode']==0
      and not execution.get('interrupted',False),'Actual parent diagnostic execution failed/differs')
-    require(result['version']=='chemistry-softmax-replay-diagnostic-v1'
+    require(result['version']=='chemistry-softmax-replay-diagnostic-v2'
      and result['status']=='diagnostics_completed_original_failure_preserved' and result['all_controls_completed'] is True
      and result['original_gate_reclassified'] is False and result['can_certify_or_restart_original_study'] is False
      and result['matching_control_selected_as_fix'] is False and result['optimizer_updates']==0 and result['model_evaluations']==0
@@ -299,8 +301,8 @@ def verify(observation,package):
     require(result['input_before']=={'sources':{'scientific_source':expected_science,'failed_pilot_source':expected_failed},
      'point_bindings':expected_points},'Diagnostic original source/8-point identity differs')
     rows=result['controls'];expected_controls=[(control,repeat) for control in CONTROLS for repeat in (0,1)]
-    require(type(rows) is list and len(rows)==10 and [(r['control'],r['repeat']) for r in rows]==expected_controls,
-     'Exactly ten declared controls are mandatory')
+    require(type(rows) is list and len(rows)==22 and [(r['control'],r['repeat']) for r in rows]==expected_controls,
+     'Exactly22 declared controls are mandatory')
     for row in rows:
      prefix=ROOT+'/gpu/payload/diagnostic/'+row['control']+'-'+str(row['repeat']);path=prefix+'/control.json'
      require(type(row['returncode']) is int and row['returncode']==0
@@ -310,12 +312,20 @@ def verify(observation,package):
       '--output',prefix,'--control',row['control'],'--repeat',str(row['repeat'])]
      require(row['argv']==expected,'Actual private child control argv differs')
      control=obj(path)
-     require(control['version']=='chemistry-softmax-replay-diagnostic-v1'
+     require(control['version']=='chemistry-softmax-replay-diagnostic-v2'
       and control['status']==row['status'] and control['control']==row['control'] and control['repeat']==row['repeat']
       and control['scientific_gate_passed'] is False and control['optimizer_updates']==0 and control['model_evaluations']==0
       and control['probability_substitution'] is False and control['can_certify_or_restart_original_study'] is False
+      and control['integrity_hash_scope']=='exact_manifest_member_readonly_hashlib_only'
       and control['original_gate_reclassified'] is False and control['input_before']==control['input_after']==result['input_before']
       and [(p['variant'],p['label']) for p in control['points']]==POINTS,'Completed child scope/point/input restoration differs')
+     runtime=control['runtime_after_control']
+     require(runtime['jax_config_repr']['jax_enable_x64']=='False'
+      and runtime['jax_config_repr']['jax_default_matmul_precision']=="'highest'",'Diagnostic original precision changed')
+     if 'hash0' in row['control']:require(runtime['python_hash_seed']=='0','Declared fixed hash seed missing')
+     if 'autotune0' in row['control']:
+      require(re.findall(r'--xla_gpu_autotune_level=([^ ]+)',runtime['environment'].get('XLA_FLAGS',''))==['0'],
+       'Declared compiler control missing or ambiguous')
      controls.append({'control':row['control'],'repeat':row['repeat'],'assessment_sha256':row['assessment_sha256']})
     diagnostic_result=result
     diagnostic_status='diagnostic_metadata_complete_awaiting_actual_terminal_proof'
