@@ -1,0 +1,12 @@
+{
+  "host": "login2.hpc.dtu.dk",
+  "fingerprint": "SHA256:c3YBugAWV8dhOfi07R+kmtk+RRd50tZ5tjm0wFjJmtQ",
+  "official_source": "https://www.hpc.dtu.dk/?page_id=2975",
+  "host_key_acquisition": "authentication-disabled handshake, then official fingerprint check, then strict authenticated connection",
+  "probe_returncode": 255,
+  "probe_stderr": "Warning: Permanently added 'login2.hpc.dtu.dk' (ED25519) to the list of known hosts.\n\nWhen connecting from _outside_ of DTU (and not using DTU-VPN) one is \nrequired to authenticate with a ssh-key + ssh-key-keyphrase + DTU-password.\n\nFrom inside of DTU (or connecting via DTU-VPN) one can also connect \nwith password or ssh-key.\n\nInfo page on SSH: https://www.hpc.dtu.dk/?page_id=4317\n\n---\nFor ThinLinc users: \nPlease make sure that your TL client is at least version 4.16 - else you \ncannot connect to this system!\n\nThis is not an error-message, it's just a way to give you some information. \nClick 'Close' to continue ...\n---\n\nInfo page on the system update 08/2024: https://www.hpc.dtu.dk/?page_id=5209\n\n---\n\ns234818@login2.hpc.dtu.dk: Permission denied (publickey,password).\n",
+  "known_hosts_path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source139-epoch36-embedding-gradient-diagnostic-attempt001\\verified-login2-known_hosts",
+  "returncode": 255,
+  "stdout": "",
+  "stderr": "ssh_dispatch_run_fatal: Connection to 192.38.95.133 port 22: Connection timed out\n"
+}

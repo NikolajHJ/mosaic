@@ -1,5 +1,26 @@
 # Matched latent optimization: learned embeddings versus relaxed chemistry
 
+## Later collection blocked by SSH timeouts; last-known GPU status remains pending
+
+The [last successful snapshot, 26 October 13:52:49 CET](../outputs/hpc-results/source139-epoch36-embedding-gradient-diagnostic-attempt001/status-1793019169106562100.json)
+records diagnostic **GPU 29821249 PEND**, waiting for `ngpus_physical` on one
+host, with no GPU artifacts or result. Later normal read-only collections
+failed with SSH255/timeouts to login1:
+[first receipt](../outputs/hpc-submissions/source139-epoch36-embedding-gradient-diagnostic-attempt001/collect-gpu-1793019372650144900.json),
+[second receipt](../outputs/hpc-submissions/source139-epoch36-embedding-gradient-diagnostic-attempt001/collect-gpu-1793019410280427500.json).
+These are access failures, **not evidence of GPU failure or a new job state**.
+
+A [verified alternate-login attempt](../outputs/hpc-submissions/source139-epoch36-embedding-gradient-diagnostic-attempt001/alternate-login-verification.json)
+also timed out. Its host key was checked against DTU's official fingerprint
+and stored in a task-local public `known_hosts` file; global SSH configuration
+was unchanged and authentication was not bypassed. No reliable current start
+estimate or native diagnostic outcome is established.
+
+The user's correction/resubmission authorization remains active. The next
+dependent step is to read the native diagnostic evidence, implement the smallest
+demonstrated correction and rerun the full gates. No numerical fix or comparison
+attempt004 is selected yet; all failures and independent VAE work are preserved.
+
 ## Diagnostic CPU passed; GPU queued, 26 October 2026 13:50 CET
 
 The [CPU terminal snapshot](../outputs/hpc-results/source139-epoch36-embedding-gradient-diagnostic-attempt001/status-1793018959232362600.json)
