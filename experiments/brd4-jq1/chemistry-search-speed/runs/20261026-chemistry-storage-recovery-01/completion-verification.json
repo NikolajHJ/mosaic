@@ -1,0 +1,67 @@
+{
+  "status": "independently_reconciled_every_exact_unlink_to_verified_laptop_archive",
+  "batches": [
+    {
+      "root": "chemistry-storage-recovery-02",
+      "removed_files": 211,
+      "removed_logical_bytes": 1579531081,
+      "archive_sha256": "752d2d6a4a931e55bde0ac3dc87684b40bc9827d936adc208120311e3b64f518",
+      "archive_bytes": 1618794428,
+      "plan_sha256": "4355afb49cf9076b64e0d40f7c2c923dd7dabc00d2bd3fc787f74fa1ab1a6ad9",
+      "journal_sha256": "b5338740321294bdc9fb43287ae692b6297611fa6109f05c3a89f5fc76d3918f",
+      "retained_files": 3
+    },
+    {
+      "root": "chemistry-storage-recovery-03",
+      "removed_files": 69598,
+      "removed_logical_bytes": 6722150058,
+      "archive_sha256": "0cc1e0f6ea64dc17241bb39fb767560b9d917050f2507829b9e595c9251c20f2",
+      "archive_bytes": 3825100937,
+      "plan_sha256": "ac1e29ae9a66f941b02ede078576d8e8c0e25d376236a2dff887fff075d7aeb8",
+      "journal_sha256": "2d766d75ae2e6893be2f8a2700e06765e3ca5efa1bc585c772170157da03a45e",
+      "retained_files": 0
+    },
+    {
+      "root": "chemistry-storage-recovery-04",
+      "removed_files": 105,
+      "removed_logical_bytes": 610381164,
+      "archive_sha256": "d2502c5c0bf9cbcfc14cf3717c79e620ded3b654f03876d753456d29bf4a659e",
+      "archive_bytes": 610053504,
+      "plan_sha256": "8f5e1672c7ab17cf73243838dfbf22a329089d7167882f18137eef36db4105f6",
+      "journal_sha256": "d596b5513b57fdf2d0239ebb72b718ea06080f35cabb9aede57b892954bb32aa",
+      "retained_files": 0
+    }
+  ],
+  "removed_files": 69914,
+  "removed_logical_bytes": 8912062303,
+  "final_whole_chemistry_budget": {
+    "status": "passed",
+    "available_bytes": 51602728849,
+    "required_bytes": 49553759044,
+    "full_chemistry_projections": {
+      "protenix": 6481848120,
+      "boltz": 3832633038
+    },
+    "reserve_bytes": 4294967296,
+    "file_reserve": 100000,
+    "original_gate_changed": false,
+    "cleanup_extra_headroom_bytes": 1073741824,
+    "cleanup_stop_with_extra_headroom": true
+  },
+  "interrupted_primary_full_stream_remains_failed": true,
+  "unreceived_primary_files_ineligible": 28856,
+  "scientific_values_or_settings_changed": false,
+  "all_current_native_proofs_verified_after_each_batch": true,
+  "cleanup_archive_delivery": {
+    "status": "all_remote_audit_members_safely_extracted_and_byte_verified",
+    "archive": {
+      "status": "complete_cleanup_audit_stream",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-storage-recovery-04/cleanup-audit-01.tar.gz",
+      "bytes": 16388726,
+      "sha256": "49efc0e5077780a16a842ffe4fae8ec0216a11474427a101154a128d10daffbf",
+      "files": 54
+    },
+    "files": 54
+  },
+  "scope": "Standard-library byte/JSON/journal/accounting audit only; no local scientific calculation; no new scientific job claim"
+}

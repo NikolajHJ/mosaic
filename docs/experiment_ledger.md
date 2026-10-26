@@ -7752,3 +7752,68 @@ no scientific/source/report bytes changed. Saved results/settings/guards remain
 unchanged, monitorpaused, no cleanup or retry. Failed source02 is not replayable.
 Original serial baseline runtimefailure366148s remains failed; combined
 forecast78798s passes82800s. Both nativegradient checks pass; no runtimewaiver.
+
+## 2026-10-26 Authorized chemistry archive recovery preparation
+
+User explicitly requested freeup and submit. Complete readonly du/actual account
+scheduler and both passed native/source proof audits authenticated. Planprimary
+98454inactivefiles/7011243480B and supplement214files/1618702695B, all2176current
+chemistry/Proprecision/forensics/nonchemistry input bindings protected. Laptop
+archives streaming; NO deletion/capacity/submission established yet. Preserve
+models/envs/current combined native proofs/extractedsealed sources and all loss
+rows exactly; old full exports/dense states/probes have byte-exact backups.
+Old invalid-dependency report PEND remains untouched; historical rerenders may
+need exact archive restoration. Current settings and paused monitor unchanged.
+New production03 metadata candidate packaged14files106fixtures: actual both
+native passes required before CPU(no stale LSFdep), source02 missing context
+module fixed by exact class-to-module coverage. Source02 failures preserved;
+new106CPU/actual startups/fullfuture storage required before independent longs.
+No local tests/numerics or scientific source/config/loss changes.
+
+## 2026-10-26 Verified chemistry offload and actual production submission
+
+User authorized freeing space/submitting both unchanged chemistry arms. Exact
+laptop backups and independently reconciled intent/result journals precede
+69,914unlinks/8,912,062,303logical bytes. All2176current input/proof bindings,
+active studies/extracted sealed sources/models/envs/other projects preserved.
+Old inactive export/dense-state/probe bytes and duplicate outer source archives
+are offloaded, scientific values unchanged; historical rerenders may need restore.
+Primary full stream timed out at1200s; only69,598fully received/CRC/hash-verified
+members admitted under new exact-subset plan.28,856unreceived files notdeleted;
+original failed backup remains failed. Supplemental211+105removed,3containers
+retained. Audit54files/55safemembers SHA49efc0e5077780a16a842ffe4fae8ec0216a11474427a101154a128d10daffbf;
+independent completion d06a956f667cbf8d0c8c16933931c64995b334ce812b6e014d7f8357901c35df.
+
+New immutable production03 source14 manifestc73796b041d8432ef1634e8c56920006170a094d3bdc74867c08f3b5415126d7,
+archive31985B SHAdc7ec47516249270b012ee254bffefd227b178991c78c946831e76572c4ef5b1.
+Both actual native producer passes reauthenticated before CPU without staleLSFdep.
+Correct source02 omitted context-module packaging using exact class/module list;
+13numerical adapters/configs remain identical. CPU29820218/afterCPU29820219 DONE,
+all106actualraw cases passed0fails/errors/skips; both actual startup commands
+acceptedzero updates. Original failed02entry gate/jobs retained. Full dispatch
+49,553,432,200required/50,512,270,204available actualpassed, unchanged4GiB/100k
+reserve/both entirechem futures. EachGPUentry repeats; not a reservation.
+
+Actual independentGPU submissions26October10:28:10/14UTC Pro29820255 and
+Bol29820257, ownendedcallbacks29820256/58. At10:32:23UTC allfourPEND, no
+optimization start. Pro random50k LR0.3/Bolchem30k LR0.0025 unchanged; delayed
+0.001hold5k thengeometric100atownendpoint, losses1/matrices20. First10ksegments,
+validated serial5/3chains require original terminal/runtime/frozen/quota gates.
+Independent116compact/source14/rawXML/LSF/adoption/resources audit
+b3051fc69a84c57a637376cfff4a8e0739cf3e5f564c5a574660d62becab3eee;
+dispatch-verification.json separately binds actualfullstorage/callback/scheduler.
+No local scientific/numerical tests; only stdlibbyte/AST/JSON/XML/archive audits.
+Monitor remains paused. See chemistry-search-speed storage-recovery01/production03.
+
+Final read-only10:37:23UTC check: CPU/callback29820218/19DONE; both GPU jobs
+29820255/57 and own callbacks29820256/58 stillPEND, no study trees/updates.
+Submission request fulfilled; paused monitor remains unchanged. Exact raw
+scheduler/metadata captured in production03/final-queue-observation.json.
+
+Final cleanup/dispatch static handoff:74PythonAST/97JSON/source14/safe15archive
+members/current runtime/index bytes passed,13numerical adapters unchanged.
+Dated receipt JSON byte-preservation attributes prevent Git newline conversion
+from changing their authenticated hashes. Full repository stdlib layout check
+reports21preexisting unrelated errors (default discovery/missing other-owner
+README evidence dirs); no chemistry-search-speed owner error and no unrelated
+fix made. Local scientific/numerical tests executed=0. Paused monitor unchanged.

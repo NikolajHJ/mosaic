@@ -16,13 +16,13 @@ import shlex
 import subprocess
 
 REPO=Path(__file__).resolve().parents[4]
-LOCAL=REPO/'results/hpc/20261026-chemistry-production-02'
+LOCAL=REPO/'results/hpc/20261026-chemistry-production-03'
 PROGRAM=r'''
 import base64,hashlib,json,os,re,stat,subprocess
 from datetime import datetime,timezone
 from pathlib import Path
 base=Path('/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01')
-root=base/'chemistry-production-02';source=base/'chemistry-production-release-02/source'
+root=base/'chemistry-production-03';source=base/'chemistry-production-release-03/source'
 limit=64*1024**2
 record={'version':'chemistry-production-observation-v1','captured_utc':datetime.now(timezone.utc).isoformat(),
         'root':str(root),'source':str(source),'read_only':True,'files':[],'omitted':[],

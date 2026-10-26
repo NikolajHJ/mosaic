@@ -9,6 +9,17 @@ import production_contract as c
 
 
 class ProductionContractTests(unittest.TestCase):
+    def test_cpu_module_scope_includes_declared_context_cases(self):
+        counts={'tests.test_production_ops.Routing':35,'tests.test_production_context.Context':6}
+        self.assertEqual(c.cpu_modules(counts),['test_production_context','test_production_ops'])
+
+    def test_cpu_module_scope_rejects_malformed_class(self):
+        with self.assertRaises(ValueError):c.cpu_modules({'test_missing_class':6})
+
+    def test_cpu_module_scope_rejects_nonpositive_or_boolean_count(self):
+        for count in (0,-1,True):
+            with self.assertRaises(ValueError):c.cpu_modules({'tests.test_production_context.Context':count})
+
     def setUp(self):
         self.plan={'version':c.VERSION,'pilots':{
             arm:{**copy.deepcopy(c.PILOTS[arm]),'manifest_sha256':('a' if arm=='protenix' else 'c')*64,

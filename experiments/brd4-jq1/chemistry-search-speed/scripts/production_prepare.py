@@ -13,8 +13,8 @@ import tarfile
 
 HERE=Path(__file__).resolve().parents[1]
 REPO=HERE.parents[2]
-LOCAL=REPO/'results/hpc/20261026-chemistry-production-02'
-RUN=HERE/'runs/20261026-chemistry-production-02'
+LOCAL=REPO/'results/hpc/20261026-chemistry-production-03'
+RUN=HERE/'runs/20261026-chemistry-production-03'
 PRODUCERS={
     'protenix':{
         'manifest_sha256':'ab875927a328c34650d2e43baf6dfbe323e8f9bcf5600f39bac78f3ccdfb5d8c',
@@ -26,7 +26,7 @@ PRODUCERS={
         'job_id':'29816184','local_run':'20261025-chemistry-full-model-02'},
 }
 CASE_COUNTS={
-    'tests.test_production_contract.ProductionContractTests':50,
+    'tests.test_production_contract.ProductionContractTests':53,
     'tests.test_production_ops.ProductionRoutingTests':33,
     'tests.test_production_integration.OriginalCallSiteTests':14,
     'tests.test_production_context.ProductionContextTests':6,
@@ -80,7 +80,7 @@ def main():
                         count=sum(isinstance(item,ast.FunctionDef) and item.name.startswith('test_') for item in node.body)
                         if count:actual_counts[module+'.'+node.name]=count
         members[name]=raw
-    require(actual_counts==CASE_COUNTS and sum(actual_counts.values())==103,
+    require(actual_counts==CASE_COUNTS and sum(actual_counts.values())==106,
             'Declared allocated fixture class attribution/count changed; inspect before sealing')
     members['README.md']=(
         '# Prospective accelerated chemistry production\n\n'
@@ -89,11 +89,11 @@ def main():
         'Both original native/readiness/coupled/runtime checks and genuine new producer passes are mandatory.\n'
         'Losses are saved every update; matrices every20 plus initial/terminal/boundaries/latest/best.\n'
         'Current complete inherited storage/reserves remain unchanged; both full chemistry futures and own64MiB control are additional.\n'
-        'CPU waits actual new Pro producer; callback waits own accepted CPU. Both pilot passes remain mandatory. Submission is not a pass/start.\n'
+        'Both actual native passes authenticated before dependency-free CPU; callback waits own accepted CPU. Both pilot passes remain mandatory. Submission is not a pass/start.\n'
         'Storage failure preserves actual gates/adoptions and records waiting-storage.json; no production submission or callback replay.\n'
         'All numerical/scientific work is allocated DTU HPC only. See protocol.md and plan.json.\n').encode('utf8')
     members['scripts/README.md']=b'# Production execution and metadata\n\nSealed contracts, allocated controller, exact original-driver wrapper and shell entrypoint. No optimizer arithmetic or original source bytes are changed.\n'
-    members['tests/README.md']=b'# Allocated production contracts\n\n103 declared metadata/routing/original-call-site cases; actual raw JUnit and same-job scheduler/LSF proofs are required. Fixtures are not native scientific evidence.\n'
+    members['tests/README.md']=b'# Allocated production contracts\n\n106 declared metadata/routing/original-call-site cases; actual raw JUnit and same-job scheduler/LSF proofs are required. Fixtures are not native scientific evidence.\n'
     members['protocol.md']=(RUN/'README.md').read_bytes().replace(b'\r\n',b'\n')
     members['plan.json']=raw_json(plan)
     parents += [
@@ -105,7 +105,7 @@ def main():
         {'path':c.BASE+'/nonchem-stride20-startup-release-03/source','files':12,
          'manifest_sha256':'704fab033d97342a14dc12b58dc32df44874232c5c30aad47c4d02041a502aab'}]
     manifest={'version':c.VERSION,'cpu_counts':CASE_COUNTS,
-              'cpu_modules':['test_production_contract','test_production_ops','test_production_integration'],
+              'cpu_modules':c.cpu_modules(CASE_COUNTS),
               'parent_sources':parents,'numerical_adapter_sha256_map':observed['protenix'],
               'own_source_CPU_control_cap_bytes':c.CONTROL_CAP,'matrix_stride':20,'loss_stride':1,
               'monitor_remains_paused':True,'original_results_changed':False,
@@ -113,7 +113,7 @@ def main():
               'files':{name:hashlib.sha256(raw).hexdigest() for name,raw in sorted(members.items())}}
     manifest_raw=raw_json(manifest);members['source_manifest.json']=manifest_raw
     LOCAL.mkdir(exist_ok=True)
-    out=LOCAL/'source02';out.mkdir(exist_ok=False)
+    out=LOCAL/'source01';out.mkdir(exist_ok=False)
     (out/'source_manifest.json').write_bytes(manifest_raw)
     archive=out/'source.tar.gz'
     with tarfile.open(archive,'x:gz') as target:
@@ -129,7 +129,7 @@ def main():
             'implementation_members':list(IMPLEMENTATION),'manifest_sha256':hashlib.sha256(manifest_raw).hexdigest(),
             'archive_sha256':hashlib.sha256(archive.read_bytes()).hexdigest(),'archive_bytes':archive.stat().st_size,
             'plan_sha256':hashlib.sha256(members['plan.json']).hexdigest(),'plan':plan,'cpu_counts':CASE_COUNTS,
-            'cpu_cases':103,'allocated_CPU_pass':False,'production_readiness_passed':False,
+            'cpu_cases':106,'allocated_CPU_pass':False,'production_readiness_passed':False,
             'jobs_submitted':False,'monitor_resumed':False}
     (out/'preparation.json').write_bytes(raw_json(result))
     print(json.dumps(result,indent=2))

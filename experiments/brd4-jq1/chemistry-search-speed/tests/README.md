@@ -45,3 +45,10 @@ context-transport fixtures to50policy+33routing+14actual-callsite =103cases;
 those are queued on CPU29818556, not yet passed. No local test or scientific
 array execution. Replay22 GPU controls are a separate isolated diagnostic;
 only the fresh full-model pilot can establish new native acceptance.
+
+Production03 actual CPU29820218 passed106cases:53policy+33routing+
+14original-callsite+6context, zero failures/errors/skips. Three new metadata
+regressions require exact class-to-module coverage. Actual generated parser
+commands also accepted with zero updates; those are startup metadata checks,
+not new GPU numerical validation. Native acceptance comes from passed Pro05/
+Bol02 full-model pilots. No tests/scientific arrays executed locally.

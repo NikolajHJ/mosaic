@@ -13,7 +13,7 @@ import shlex
 import subprocess
 
 REPO=Path(__file__).resolve().parents[4]
-LOCAL=REPO/'results/hpc/20261026-chemistry-production-02'
+LOCAL=REPO/'results/hpc/20261026-chemistry-production-03'
 REMOTE=r'''
 import ast,base64,hashlib,io,json,os,subprocess,sys,tarfile
 from pathlib import Path,PurePosixPath
@@ -21,7 +21,7 @@ if sys.flags.optimize:raise RuntimeError('Optimized Python cannot bypass source/
 def require(value,message):
  if not value:raise ValueError(message)
 base=Path('/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01')
-root=base/'chemistry-production-02';release=base/'chemistry-production-release-02';source=release/'source'
+root=base/'chemistry-production-03';release=base/'chemistry-production-release-03';source=release/'source'
 require(not any(os.path.lexists(path) for path in (root,release)),
         'Existing/unknown production or release outcome; inspect, never replay')
 archive=base64.b64decode(ARCHIVE,validate=True)
@@ -69,7 +69,7 @@ for arm,row in plan['pilots'].items():
  require(ops.read(Path(row['root'])/'jobs.json')[arm]==row['job_id'],'Actual producer map differs')
 subprocess.run(['bash','-n',str(source/'scripts/production_stage.lsf')],check=True,capture_output=True)
 cpu,after=ops.bootstrap(MANIFEST)
-receipt={'status':'CPU_waiting_both_actual_pilots_and_callback_submitted_not_passed',
+receipt={'status':'CPU_after_both_actual_pilots_callback_submitted_not_passed',
          'cpu':cpu,'after_cpu':after,'source_manifest_sha256':MANIFEST,'plan_sha256':ops.sha(source/'plan.json'),
          'archive_sha256':SHA,'archive_bytes':LENGTH,'source_files':MEMBERS-1,
          'storage':ops.read(root/'production-storage-preflight.json'),
@@ -87,7 +87,7 @@ def require(value,message):
 
 def main():
     require(REPO.name=='mosaic','Wrong authorized repository')
-    package=LOCAL/'source02';preparation=json.loads((package/'preparation.json').read_bytes())
+    package=LOCAL/'source01';preparation=json.loads((package/'preparation.json').read_bytes())
     raw=(package/'source.tar.gz').read_bytes()
     require(len(raw)==preparation['archive_bytes'] and hashlib.sha256(raw).hexdigest()==preparation['archive_sha256'],
             'Fresh local archive identity differs')

@@ -7,10 +7,10 @@ separate required allocated evidence.
 from pathlib import PurePosixPath
 import re
 
-VERSION = 'chemistry-accelerated-production-v3'
+VERSION = 'chemistry-accelerated-production-v4'
 BASE = '/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01'
-ROOT = BASE + '/chemistry-production-02'
-SOURCE = BASE + '/chemistry-production-release-02/source'
+ROOT = BASE + '/chemistry-production-03'
+SOURCE = BASE + '/chemistry-production-release-03/source'
 PILOTS = {
     'protenix': {'root':BASE+'/chemistry-full-model-05',
                  'source':BASE+'/chemistry-full-model-release-05/source'},
@@ -107,6 +107,16 @@ def callback_dependency(cpu_job, pilots):
     # Both actual pilots are independently authenticated inside the CPU gate.
     # Aged-out Boltz LSF evidence is not an LSF missing-job dependency.
     return 'ended(' + cpu_job + ')'
+
+
+def cpu_modules(counts):
+    require(type(counts) is dict and counts, 'Nonempty exact CPU class counts required')
+    modules = set()
+    for name, count in counts.items():
+        require(type(name) is str and re.fullmatch(r'tests\.test_[a-z0-9_]+\.[A-Za-z][A-Za-z0-9_]*', name)
+                and type(count) is int and count > 0, 'Malformed CPU class/count')
+        modules.add(name.split('.')[1])
+    return sorted(modules)
 
 
 def require_storage(record):

@@ -34,3 +34,11 @@ GPU29816561queued; no findings or production submission yet.
 chemistry/exactreplay+pairedFD/runtime/frozen checks. Production02 CPU/callback
 failed inherited entry capacity before fixtures/fullnewchem projections; no
 productionlongs. Current failure receipts supersede old PEND statements above.
+
+- [Storage recovery01](20261026-chemistry-storage-recovery-01/README.md):69,914verified
+  offloads/8.912GB; interrupted full backup remains failed, only verified subset
+  retired; current inputs/proofs/extracted sources/models/other projects preserved.
+- [Production03](20261026-chemistry-production-03/README.md):106allocated tests,
+  actual startups/native/compiler/fullfuture storage passed; independent GPU
+  first segments29820255(Pro50k)/29820257(Bolchem30k)PEND, own callbacks.
+  Settings unchanged; no optimization start yet, paused monitor unchanged.

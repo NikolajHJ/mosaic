@@ -117,3 +117,14 @@ storage before103fixtures/startups:36.06GB required vs34.11GB conservative
 available, at least1.95GB short BEFORE adding full new chemistry projections.
 No chemistry production long was submitted or started. Failed receipts retained;
 settings/saved results unchanged, no further cleanup or submission this status.
+
+26October10:32UTC: [safe archive recovery](runs/20261026-chemistry-storage-recovery-01/README.md)
+completed69,914exact backed-up files/8.912GB. Current2176input/proof bindings,
+sources/models/environments/other projects preserved; original interrupted stream
+remains failed, only fully verified members offloaded. [Production03](runs/20261026-chemistry-production-03/README.md)
+then passed106allocated cases, both actual startup commands, both native/compiler
+adoptions and complete full-future storage49.553GBrequired/50.512GBavailable.
+Protenix50k LR0.3 job29820255 and Boltz+chem30k LR0.0025 job29820257 submitted
+independently, both PEND; own callbacks29820256/58. First10k segments only so far,
+validated serial successors target5/3segments. No optimization start established.
+Settings/gates unchanged, historical values byte-preserved, monitor paused.

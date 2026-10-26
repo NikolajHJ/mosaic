@@ -9,8 +9,8 @@ import production_observe as capture
 REPO=Path(__file__).resolve().parents[4]
 capture.LOCAL=REPO/'results/hpc/20261026-chemistry-replay-02'
 capture.PROGRAM=capture.PROGRAM.replace('chemistry-production-observation-v1','chemistry-replay-observation-v1')
-capture.PROGRAM=capture.PROGRAM.replace("base/'chemistry-production-02'","base/'chemistry-replay-02'")
-capture.PROGRAM=capture.PROGRAM.replace("base/'chemistry-production-release-02/source'","base/'chemistry-replay-release-02/source'")
+capture.PROGRAM=capture.PROGRAM.replace("base/'chemistry-production-03'","base/'chemistry-replay-02'")
+capture.PROGRAM=capture.PROGRAM.replace("base/'chemistry-production-release-03/source'","base/'chemistry-replay-release-02/source'")
 
 
 if __name__=='__main__':capture.main()

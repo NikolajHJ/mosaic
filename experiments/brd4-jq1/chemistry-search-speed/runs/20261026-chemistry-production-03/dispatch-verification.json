@@ -1,0 +1,32 @@
+{
+  "status": "actual_first_dispatch_storage_callback_and_independent_jobs_verified",
+  "captured_utc": "2026-10-26T10:32:23.163713+00:00",
+  "scheduler_states": {
+    "29820255": "PEND",
+    "29820256": "PEND",
+    "29820257": "PEND",
+    "29820258": "PEND",
+    "29820218": "DONE",
+    "29820219": "DONE"
+  },
+  "independent_delivery_sha256": "b3051fc69a84c57a637376cfff4a8e0739cf3e5f564c5a574660d62becab3eee",
+  "cpu_certificate_sha256": "42e786305452e8d56b17420a3ad4f76204339ad0251c6dddd346dc0fe2f2e84d",
+  "callback_LSF_sha256": "7fe07b95f237d654853ca32eaf1aa8b920249520441ba469b8abb89a437cd89e",
+  "whole_dispatch_gate_sha256": "2a0211dd60fc843bb5964dea3ceaff6f108e2b5b919d4e2af98cda31158f6ea9",
+  "required_bytes": 49553432200,
+  "available_bytes": 50512270204,
+  "reserve_bytes": 4294967296,
+  "file_reserve": 100000,
+  "jobs": {
+    "control/cpu": "29820218",
+    "control/after-cpu": "29820219",
+    "protenix/random-segment-0000": "29820255",
+    "protenix/random-after-segment-0000": "29820256",
+    "boltz/boltz2_chemistry-segment-0000": "29820257",
+    "boltz/boltz2_chemistry-after-segment-0000": "29820258"
+  },
+  "scientific_optimization_started": false,
+  "settings_changed": false,
+  "monitor_resumed": false,
+  "scope": "Independent stdlib metadata/bytes/LSF only. Native passes authenticated separately; no local numerical tests. PEND is not optimization start."
+}

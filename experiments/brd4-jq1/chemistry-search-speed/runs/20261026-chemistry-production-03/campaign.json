@@ -1,0 +1,109 @@
+{
+  "allocated_CPU_pass": true,
+  "archive_bytes": 31985,
+  "archive_sha256": "dc7ec47516249270b012ee254bffefd227b178991c78c946831e76572c4ef5b1",
+  "cpu_cases": 106,
+  "cpu_counts": {
+    "tests.test_production_context.ProductionContextTests": 6,
+    "tests.test_production_contract.ProductionContractTests": 53,
+    "tests.test_production_integration.OriginalCallSiteTests": 14,
+    "tests.test_production_ops.ProductionRoutingTests": 33
+  },
+  "files": 14,
+  "implementation_members": [
+    "scripts/production_contract.py",
+    "scripts/production_ops.py",
+    "scripts/production_run.py",
+    "scripts/production_stage.lsf",
+    "tests/test_production_contract.py",
+    "tests/test_production_ops.py",
+    "tests/test_production_integration.py",
+    "scripts/production_context.py",
+    "tests/test_production_context.py"
+  ],
+  "jobs_submitted": true,
+  "manifest_sha256": "c73796b041d8432ef1634e8c56920006170a094d3bdc74867c08f3b5415126d7",
+  "monitor_resumed": false,
+  "plan": {
+    "pilots": {
+      "boltz": {
+        "cpu_certificate_sha256": "c46f39e679f503720ae31b561b8b3273a1d38c160bf3c7f3d6feba28f2b5c687",
+        "job_id": "29816184",
+        "manifest_sha256": "05e316a7b1bcceaf286b03231200a2d1f66e3f6a7ce927d4c1e73f08a24f86f9",
+        "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-02",
+        "source": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-release-02/source"
+      },
+      "protenix": {
+        "cpu_certificate_sha256": "c4a88a77f1ae5b4d20aa8c6f3b7fa59152cb295b4791b70c2bc737e1e0857980",
+        "job_id": "29818553",
+        "manifest_sha256": "ab875927a328c34650d2e43baf6dfbe323e8f9bcf5600f39bac78f3ccdfb5d8c",
+        "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-05",
+        "source": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-release-05/source"
+      }
+    },
+    "version": "chemistry-accelerated-production-v4"
+  },
+  "plan_sha256": "053daea8fdda1a684d7d98c9253ff8e0e0f5999262745c365c378a2f700e0f4f",
+  "production_readiness_passed": true,
+  "status": "actual_CPU_106_and_startup_native_adoption_full_storage_passed_two_GPU_jobs_queued",
+  "CPU_job": "29820218",
+  "after_CPU_job": "29820219",
+  "jobs": {
+    "control/cpu": "29820218",
+    "control/after-cpu": "29820219",
+    "protenix/random-segment-0000": "29820255",
+    "protenix/random-after-segment-0000": "29820256",
+    "boltz/boltz2_chemistry-segment-0000": "29820257",
+    "boltz/boltz2_chemistry-after-segment-0000": "29820258"
+  },
+  "observed_utc": "2026-10-26T10:32:23.163713+00:00",
+  "observed_scheduler_states": {
+    "29820255": "PEND",
+    "29820256": "PEND",
+    "29820257": "PEND",
+    "29820258": "PEND",
+    "29820218": "DONE",
+    "29820219": "DONE"
+  },
+  "optimization_started": false,
+  "CPU_certificate_sha256": "42e786305452e8d56b17420a3ad4f76204339ad0251c6dddd346dc0fe2f2e84d",
+  "independent_delivery_sha256": "b3051fc69a84c57a637376cfff4a8e0739cf3e5f564c5a574660d62becab3eee",
+  "independent_dispatch_storage_sha256": "87c469d81591e85e73d5ea111ad5d17292ed53fc345212056c1f9fb0bf747e27",
+  "full_dispatch_storage": {
+    "status": "passed",
+    "required_bytes": 49553432200,
+    "available_bytes": 50512270204,
+    "reserve_bytes": 4294967296,
+    "file_reserve": 100000,
+    "proof_sha256": "2a0211dd60fc843bb5964dea3ceaff6f108e2b5b919d4e2af98cda31158f6ea9"
+  },
+  "segments": {
+    "protenix": {
+      "target": 50000,
+      "segment_updates": 10000,
+      "segments": 5,
+      "LR": 0.3
+    },
+    "boltz": {
+      "target": 30000,
+      "segment_updates": 10000,
+      "segments": 3,
+      "LR": 0.0025
+    }
+  },
+  "limitation": "Full target serial chains admitted, only first segments submitted so far. Each later segment requires authenticated predecessor checks and fresh storage; queued allocation is not scientific start.",
+  "latest_queue_utc": "2026-10-26T10:37:23.906471+00:00",
+  "latest_scheduler_states": {
+    "29820255": "PEND",
+    "29820256": "PEND",
+    "29820257": "PEND",
+    "29820258": "PEND",
+    "29820218": "DONE",
+    "29820219": "DONE"
+  },
+  "latest_study_exists": {
+    "protenix": false,
+    "boltz": false
+  },
+  "final_queue_sha256": "1c5803bdb995dd7a6904d501fc76fe8be84611c6e23de37ac13612e58a2c220e"
+}

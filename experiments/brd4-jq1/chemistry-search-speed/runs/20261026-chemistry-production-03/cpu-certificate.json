@@ -1,0 +1,48 @@
+{
+  "status": "passed",
+  "source_manifest_sha256": "c73796b041d8432ef1634e8c56920006170a094d3bdc74867c08f3b5415126d7",
+  "plan_sha256": "053daea8fdda1a684d7d98c9253ff8e0e0f5999262745c365c378a2f700e0f4f",
+  "cases": 106,
+  "proofs": [
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-03/cpu/submission.json",
+      "bytes": 1206,
+      "sha256": "c8bd008919fac2060806eb0579122c3afee770305bc38bc6ccd14595616455dd"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-03/after-cpu/cpu-scheduler-final-000.json",
+      "bytes": 3528,
+      "sha256": "b12a1527d994533e0a322b2eb97ef705c189ec8dc4f705eaddf490f6de3bf466"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-03/after-cpu/cpu-scheduler-final-001.json",
+      "bytes": 3528,
+      "sha256": "b12a1527d994533e0a322b2eb97ef705c189ec8dc4f705eaddf490f6de3bf466"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-03/after-cpu/cpu-scheduler-final-002.json",
+      "bytes": 3654,
+      "sha256": "3b83ad1a7218ec117f84f6ab7f3bf696dfbd6d7fd6ea38c73c744831a3effca1"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-03/cpu/stdout.29820218.log",
+      "bytes": 1988,
+      "sha256": "75008150c568fc7d44027f13e612011e9a660b0578b46f643ce548bc2264e639"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-03/cpu/payload/assessment.json",
+      "bytes": 328,
+      "sha256": "b0d14d7f6f44c4037e5e8f023a15c31489a27a142c750d3b13a28f38ccbb7957"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-03/cpu/payload/tests.xml",
+      "bytes": 14994,
+      "sha256": "7dc861a84d61e6dd066a8a7fd9c102d4f12d00586c215cb9b539d8598c518765"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-03/cpu/payload/startup.json",
+      "bytes": 5414,
+      "sha256": "4f85141344fd60e2e07a73fa66c6c98e1af0f00a577f0216cdcbca31ff53422c"
+    }
+  ]
+}

@@ -16,12 +16,12 @@ import tarfile
 import xml.etree.ElementTree as ET
 
 REPO=Path(__file__).resolve().parents[4]
-LOCAL=REPO/'results/hpc/20261026-chemistry-production-02'
+LOCAL=REPO/'results/hpc/20261026-chemistry-production-03'
 BASE='/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01'
-ROOT=BASE+'/chemistry-production-02'
-SOURCE=BASE+'/chemistry-production-release-02/source'
-VERSION='chemistry-accelerated-production-v3'
-COUNTS={'tests.test_production_contract.ProductionContractTests':50,
+ROOT=BASE+'/chemistry-production-03'
+SOURCE=BASE+'/chemistry-production-release-03/source'
+VERSION='chemistry-accelerated-production-v4'
+COUNTS={'tests.test_production_contract.ProductionContractTests':53,
         'tests.test_production_ops.ProductionRoutingTests':33,
         'tests.test_production_integration.OriginalCallSiteTests':14,
         'tests.test_production_context.ProductionContextTests':6}
@@ -139,7 +139,7 @@ def verify(observation,package):
     pin=sha(source_raw);require(pin==preparation['manifest_sha256'] and source_raw==archived['source_manifest.json'],
                                 'Actual remote seal differs from prepared archive')
     require(manifest['version']==VERSION and manifest['cpu_counts']==COUNTS and len(manifest['files'])==14,
-            'Wrong source/version/103-case scope')
+            'Wrong source/version/106-case scope')
     require(set(archived)==set(manifest['files'])|{'source_manifest.json'},'Archive/source scope differs')
     require({key.removeprefix('source/') for key in files if key.startswith('source/')}==set(archived),
             'Complete source15 members were not delivered')
@@ -169,7 +169,7 @@ def verify(observation,package):
             require(index>0 or phase not in ('native','after-native'),'Initial native replay forbidden')
             parent=ROOT+'/'+arm+'/'+PROFILES[arm]['arm']+'-'+phase+'-'+format(index,'04d')
         require(path==parent+'/submission.json' and re.fullmatch('[1-9][0-9]*',sub['job_id']) is not None,'Actual submission path/job differs')
-        command=['bsub',*resources(phase,arm),'-J','mosaic-chem-prod02-'+arm+'-'+PurePosixPath(parent).name,
+        command=['bsub',*resources(phase,arm),'-J','mosaic-chem-prod03-'+arm+'-'+PurePosixPath(parent).name,
                  '-oo',parent+'/stdout.%J.log','-eo',parent+'/stderr.%J.log']
         if sub['dependency'] is not None:command+=['-w',sub['dependency']]
         command+=['bash','-l',SOURCE+'/scripts/production_stage.lsf',SOURCE,pin,phase,arm,str(index)]
@@ -184,7 +184,7 @@ def verify(observation,package):
     require(len({row['job_id'] for row in submissions.values()})==len(submissions),'Duplicate actual job IDs')
     for parent,sub in submissions.items():
         phase,arm,index=sub['phase'],sub['arm'],sub['index']
-        if phase=='cpu':dependency='ended('+plan['pilots']['protenix']['job_id']+')'
+        if phase=='cpu':dependency=None
         elif phase=='after-cpu':
             require(ROOT+'/cpu' in submissions,'Callback lacks actual own CPU')
             dependency='ended('+submissions[ROOT+'/cpu']['job_id']+')'
@@ -208,13 +208,13 @@ def verify(observation,package):
         for row in cert['proofs']:require(bound(row),'CPU certificate has undelivered proof')
         assessment=obj(ROOT+'/cpu/payload/assessment.json')
         require(assessment['status']=='passed' and assessment['cases']==CASES and assessment['source_manifest_sha256']==pin,
-                'CPU assessment is not exact103-case source-bound pass')
+                'CPU assessment is not exact106-case source-bound pass')
         cases=list(ET.fromstring(data(ROOT+'/cpu/payload/tests.xml')).iter('testcase'))
         require(len(cases)==CASES and len({(row.get('classname'),row.get('name')) for row in cases})==CASES
                 and all(not list(row) for row in cases) and dict(Counter(row.get('classname') for row in cases))==COUNTS,
                 'Raw allocated JUnit is incomplete/failed/error/skipped/duplicated or wrongly attributed')
         tests=obj(ROOT+'/cpu/payload/tests-command.json')
-        require(tests['returncode']==0 and re.search(r'\b103\s+passed\b',tests['stdout'])
+        require(tests['returncode']==0 and re.search(r'\b106\s+passed\b',tests['stdout'])
                 and re.search(r'\b[1-9][0-9]*\s+deselected\b',tests['stdout']) is None,'Raw CPU execution/count scope differs')
         cpu=submissions[ROOT+'/cpu'];lsf(data(ROOT+'/cpu/stdout.'+cpu['job_id']+'.log').decode(),cpu)
         queries=sorted(path for path in remote if path.startswith(ROOT+'/after-cpu/cpu-scheduler-final-'))
@@ -251,7 +251,7 @@ def verify(observation,package):
                     'Actual original startup parser/source/config/global boundary/ready path differs')
             require(re.fullmatch('[a-f0-9]{64}',option(args,'--ready-sha256')) is not None,
                     'Actual original startup lacks an authenticated readiness SHA')
-        cpu_state='actual_CPU_103_pass_terminal_LSF_and_startup_verified'
+        cpu_state='actual_CPU_106_pass_terminal_LSF_and_startup_verified'
     unresolved=[];adoptions={}
     for arm,spec in PROFILES.items():
         path=ROOT+'/'+arm+'/adoption.json'
@@ -328,7 +328,7 @@ def verify(observation,package):
 
 def main():
     parser=argparse.ArgumentParser();parser.add_argument('--observation',type=Path,required=True)
-    parser.add_argument('--package',type=Path,default=LOCAL/'source02');parser.add_argument('--output',type=Path,required=True)
+    parser.add_argument('--package',type=Path,default=LOCAL/'source01');parser.add_argument('--output',type=Path,required=True)
     args=parser.parse_args()
     require(not args.output.exists(),'Independent audit output is immutable; choose a fresh file')
     result=verify(args.observation,args.package)

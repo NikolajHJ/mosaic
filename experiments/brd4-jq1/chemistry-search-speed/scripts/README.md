@@ -93,3 +93,22 @@ and `python experiments/brd4-jq1/chemistry-search-speed/scripts/production_obser
 Independent validators require a fresh output and original prepared archives;
 large native arrays stay authenticated HPC references. One SSH connection
 attempt per observation; no reconnect/submission/cleanup path in observers.
+
+`inactive_archive_offload.py` is explicit standard-library backup/retirement for
+26October's user-authorized storage recovery. It refuses existing operation
+markers, authenticates all current native/continuation input proofs, verifies
+EVERY laptop archive member before exact singly linked file unlink, journals
+intent/result durably and stops once unchanged full budgets plus extra headroom
+fit. Old redundant source ARCHIVES may be offloaded with exact parent modes
+restored; extracted sealed source files/manifests, models/envs/current proofs
+remain unchanged. No action occurs on import, no scientific inference or job
+submission path exists. Inspect all partial/unknown outcomes before recovery.
+
+Current26October10:32UTC production clients target sealed production03 only.
+Both actual passed native producer LSF/proofs authenticate before independent CPU;
+CPU module list derives from exact class counts (106cases/four modules), including
+all six context fixtures. CPU29820218/callback29820219 succeeded; actual parser
+startups/native adoption/complete future storage passed before independent first
+segments29820255/29820257. Existing markers prohibit replay; later segments
+require original terminal gates/fresh capacity. Failed production02 untouched.
+The cleanup helper completed exact verified offloads; do not replay operations.

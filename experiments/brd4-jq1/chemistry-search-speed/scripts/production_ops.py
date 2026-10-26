@@ -186,7 +186,7 @@ def phase_parent(phase, arm='control', index=0):
 def argv(phase, pin, arm='control', index=0, dependency=None):
     c.digest(pin); parent = phase_parent(phase, arm, index)
     args = ['bsub', *c.resources(phase, None if arm=='control' else arm), '-J',
-            'mosaic-chem-prod02-'+arm+'-'+parent.name,
+            'mosaic-chem-prod03-'+arm+'-'+parent.name,
             '-oo', str(parent/'stdout.%J.log'), '-eo', str(parent/'stderr.%J.log')]
     if dependency is not None:
         require(re.fullmatch(r'ended\(\d+\)(?: && ended\(\d+\))*', dependency) is not None,
@@ -577,11 +577,14 @@ def bootstrap(pin):
     """Explicit once-only metadata entry; called only after source staging audit."""
     manifest, plan = own_plan(pin)
     require(not ROOT.exists(), 'Existing/unknown production root prohibits bootstrap replay')
+    producers={name:pilot_pass(name,plan) for name in c.PROFILES}
+    require(all(row['status']=='passed' for row in producers.values()), 'Both actual native passes required before fresh CPU')
     ROOT.mkdir(); write(ROOT/'bootstrap-started.json', {'source_manifest_sha256': pin, 'plan_sha256': sha(SOURCE/'plan.json')})
+    write(ROOT/'producer-preflight.json', {'status':'actual_native_proofs_passed', 'adoptions':producers})
     storage(ROOT, 'preflight')
     # Actual first production startup arguments contain the accepted readiness
-    # digest. Wait for those exact files; never use a synthetic future digest.
-    cpu = submit('cpu', pin, dependency='ended('+plan['pilots']['protenix']['job_id']+')')
+    # digest. Both exact actual passes were authenticated; never use a future digest.
+    cpu = submit('cpu', pin)
     callback = submit('after-cpu', pin, dependency=c.callback_dependency(cpu['job_id'],plan['pilots']))
     write(ROOT/'initial-submissions.json', {'cpu': cpu, 'after_cpu': callback, 'scientific_updates': 0})
     enforce_control_cap()
@@ -591,7 +594,7 @@ def bootstrap(pin):
 def certify_cpu(pin, manifest):
     parent = ROOT/'cpu'; submission = read(parent/'submission.json')
     plan = c.validate_plan(read(SOURCE/'plan.json'))
-    expected_dependency = 'ended('+plan['pilots']['protenix']['job_id']+')'
+    expected_dependency = None
     require(submission['argv'] == argv('cpu', pin, dependency=expected_dependency)
             and submission['status'] == 'submitted', 'CPU submission changed')
     terminal=actual_terminal(parent,submission,ROOT/'after-cpu','cpu')
@@ -644,9 +647,10 @@ def preserve_storage_block(parent,submission,pin,error):
 def execute(phase, pin, arm='control', index=0):
     require(os.environ.get('LSB_JOBID') and not sys.flags.optimize, 'Actual allocated unoptimized Python required')
     manifest, plan = own_plan(pin); parent, sub = own(phase, pin, arm, index)
+    require(manifest['cpu_modules']==c.cpu_modules(manifest['cpu_counts']), 'Declared CPU module/class scope differs')
     if phase=='cpu':
-        expected='ended('+plan['pilots']['protenix']['job_id']+')'
-        require(sub['dependency']==expected,'CPU must wait for the exact fresh Pro producer; preserved Bol LSF is verified')
+        expected=None
+        require(sub['dependency']==expected,'CPU must have no stale LSF dependency; both actual native passes are reauthenticated')
     elif phase=='after-cpu':
         expected=c.callback_dependency(read(ROOT/'cpu/submission.json')['job_id'],plan['pilots'])
         require(sub['dependency']==expected,'Production callback must wait for its own accepted CPU; both pilot proofs remain required')
