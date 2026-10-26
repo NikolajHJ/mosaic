@@ -1,0 +1,22 @@
+{
+  "elapsed_seconds": 919.3044728150126,
+  "error": "Learned-start independent forward/reverse AD agreement failed",
+  "error_type": "ValueError",
+  "existing_vae_continuation": "untouched",
+  "hostname": "n-62-18-12",
+  "job_id": "29802743",
+  "learned_mapping": {
+    "path": "/work3/s234818/latentmol/runs/source137-epoch36-boltz-embedding-bridge-attempt002/gpu/fit/best-bridge.pt",
+    "sha256": "013834958d52f7aee999ca4c39496e14fc5333d69eb697d47433821f48290343"
+  },
+  "plan_sha256": "60f555eb6193b804d8446dc864a57c52662e4c146be424b8f7cc118f6d6ecd6c",
+  "source_sha256": "bccba5d6a762349b450baf03b24251e12994be598926ce8960f6e5869d55ce9b",
+  "stage": "gpu",
+  "status": "failed_not_passed",
+  "traceback": "Traceback (most recent call last):\n  File \"/work3/s234818/latentmol/releases/source-138-epoch36-embedding-comparison-attempt003/src/latentmol/boltz/embedding_comparison_experiment.py\", line 278, in main\n    result = gpu_stage(config, args.output, deadline)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/work3/s234818/latentmol/releases/source-138-epoch36-embedding-comparison-attempt003/src/latentmol/boltz/embedding_comparison_experiment.py\", line 191, in gpu_stage\n    reports = {path: learned_start_gate(scorer, prepared, bridge, vae, z,\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/work3/s234818/latentmol/releases/source-138-epoch36-embedding-comparison-attempt003/src/latentmol/boltz/embedding_comparison_experiment.py\", line 191, in <dictcomp>\n    reports = {path: learned_start_gate(scorer, prepared, bridge, vae, z,\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/work3/s234818/latentmol/releases/source-138-epoch36-embedding-comparison-attempt003/src/latentmol/boltz/embedding_comparison_validation.py\", line 282, in learned_start_gate\n    raise ValueError(\"Learned-start independent forward/reverse AD agreement failed\")\nValueError: Learned-start independent forward/reverse AD agreement failed\n",
+  "vae_checkpoint": {
+    "path": "/work3/s234818/latentmol/runs/source121a002-chemistry-16core-24h-attempt002/variants/r2_async_w12_m128_h24/segments/001/20261018T175254Z_chemistry-train_89b58520/epoch_0036.pt",
+    "sha256": "3179ef01f84a2c714ee031bc3e6a6a4dc2cedc767d30e700c887aab1abbd706f"
+  },
+  "version": "epoch36-matched-embedding-comparison-experiment-v1"
+}

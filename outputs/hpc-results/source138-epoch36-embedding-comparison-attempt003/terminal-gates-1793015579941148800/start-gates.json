@@ -1,0 +1,21 @@
+{
+  "cases": [
+    {
+      "case_id": "case-001",
+      "native_oracle": "passed_native_oracle_only",
+      "start_gates": {
+        "learned": "passed_pointwise_start_only",
+        "relaxed": "passed_pointwise_start_only"
+      }
+    },
+    {
+      "case_id": "case-002",
+      "native_oracle": "passed_native_oracle_only",
+      "start_gates": {
+        "learned": "passed_pointwise_start_only",
+        "relaxed": "passed_pointwise_start_only"
+      }
+    }
+  ],
+  "status": "gating_not_optimized"
+}

@@ -1,5 +1,133 @@
 # Matched latent optimization: learned embeddings versus relaxed chemistry
 
+## Diagnostic CPU passed; GPU queued, 26 October 2026 13:50 CET
+
+The [CPU terminal snapshot](../outputs/hpc-results/source139-epoch36-embedding-gradient-diagnostic-attempt001/status-1793018959232362600.json)
+records **29821224 DONE**, 13:47:52–13:48:43 CET, n-62-30-23. **All 223
+fixtures passed**, zero failures/errors/skips, JUnit32.285s; the complete stage
+took **41.000s**. Original36 decoder parity, unchanged frozen state and
+reproduction of all three prescribed parent starts passed.
+
+The actual CPU decoder-only duality probe had absolute error
+**`1.5692636872219985e-8`**, within inherited bound
+**`1.1245987208140518e-6`**. It used deterministic engineering cotangents,
+**not native Boltz cotangents**; it is diagnostic attribution evidence, not a
+passed native derivative, selected fix or promotion of the failed historical
+gate. Frozen VAE state remained unchanged.
+
+The [exact-release CPU-guarded GPU submission](../outputs/hpc-submissions/source139-epoch36-embedding-gradient-diagnostic-attempt001/submit-gpu-1793018964838402000.json)
+returned zero: **29821249 submitted 13:49:29 CET**, one exclusive80GB A100/four
+CPU slots, one-hour walltime/55-minute internal cap. Fresh quota was
+**48.20/100 GiB used, 51.80 GiB free**. The
+[13:50:06 saved scheduler snapshot](../outputs/hpc-results/source139-epoch36-embedding-gradient-diagnostic-attempt001/status-1793019006060069300.json)
+confirms **PEND**, waiting for `ngpus_physical` on one host. No reliable ETA or
+GPU artifacts/result exists. No numerical correction or comparison attempt004
+is selected/submitted; no optimization ran and independent VAE continuation
+remains unchanged.
+
+## Diagnostic attempt001 authenticated; CPU running, 26 October 2026
+
+The new independent
+`source139-epoch36-embedding-gradient-diagnostic-attempt001`
+[seal](../outputs/hpc-submissions/source139-epoch36-embedding-gradient-diagnostic-attempt001/seal.json)
+contains **592 members**. Upload and authenticated staging returned zero. The
+[actual CPU submission](../outputs/hpc-submissions/source139-epoch36-embedding-gradient-diagnostic-attempt001/submit-cpu-1793018868370240500.json)
+returned zero and submitted **29821224 at 13:47:51 CET**: four slots,
+`rusage[mem=8GB]`, single host, 45-minute walltime. The
+[saved scheduler/artifact snapshot](../outputs/hpc-results/source139-epoch36-embedding-gradient-diagnostic-attempt001/status-1793018900321656700.json)
+records **RUN since 13:47:52 on n-62-30-23**. CPU fixture/model readiness is
+pending; no pass or diagnostic GPU submission is established in this snapshot.
+
+| Diagnostic attempt001 binding | SHA256 |
+| --- | --- |
+| Source archive | `bd677171c8890c888191e1280ed62c8b84bb622d6b8e8b0f13cdbe5656ac8740` |
+| Release manifest | `90f744e73a71dc79a9165c2db33353c096d0484bde5398ba7c95386eda547ff9` |
+| Diagnostic plan | `517d1086d9eb69c9ea101cb1125f8d87e31ee2341fc6e053b5e989467ac3df7a` |
+
+The [static member comparison](../outputs/implementation-checks/source139-embedding-diagnostic-vs-comparison003-manifest.json)
+confirms protected VAE/native/bridge and production-optimizer modules are
+unchanged. This broad snapshot also contains unrelated concurrent Protenix
+changes; it is not an archive differing only in the diagnostic files. Static
+byte checks do not establish numerical success. No optimization, selected fix
+or comparison attempt004 follows from this CPU submission; independent VAE
+continuation and all earlier failed attempts remain unchanged.
+
+## Targeted correction and resubmission authorized, 26 October 2026
+
+The user authorized **“fix it and resubmit”** after attempt003's relaxed-path
+derivative failure. A new immutable
+`source139-epoch36-embedding-gradient-diagnostic-attempt001` is being prepared
+to localize the mismatch before selecting a correction. Allocated checks will
+split the full derivative at the decoder-logit, relaxed-graph and native-chemistry
+boundaries. CPU readiness precedes a bounded **one-hour GPU allocation with a
+55-minute internal cap**; this diagnostic performs **no optimization updates**.
+
+Retain original epoch36, the trained bridge, exact prescribed starting latents,
+full objective, budgets, tolerances and every failed record. The authorization
+does not permit automatic gate weakening or dropping a start. No root cause,
+chosen correction, passed diagnostic or submission is established by this
+preparation note. A corrected comparison attempt004 is **not yet selected or
+submitted**; the VAE continuation remains unchanged.
+
+## Terminal result collected 26 October 2026: derivative gate stopped optimization
+
+The [26 October 12:52 CET read-only snapshot](../outputs/hpc-results/source138-epoch36-embedding-comparison-attempt003/status-1793015544565816000.json)
+supersedes the pending observations: **GPU 29802743 ran on n-62-18-12 on
+25 October, 06:33:02–06:48:42 CET, then EXIT1**. Saved LSF output establishes
+the exit; the live scheduler record has aged out. Runner elapsed time was
+**919.304s**, versus **940s** in the scheduler's allocation summary.
+
+All **three native-oracle checks passed**. Cases001/002 passed both relaxed
+and learned start gates and exact production-gradient bindings. **Case003's
+relaxed path failed** independent forward/reverse AD agreement in the gradient
+direction; its three random directions passed. The mandatory failures were:
+
+| Component | Absolute error | Allowed error |
+| --- | ---: | ---: |
+| Affinity loss | `2.5204821007445213e-6` | `2.0817236646993208e-6` |
+| Total loss | `3.4778529073341627e-6` | `2.583432959841326e-6` |
+
+Contact/confidence comparisons in that direction passed, and frozen-module
+and context checks passed. The generic exception says “Learned-start”, but the
+[actual failed gate](../outputs/hpc-results/source138-epoch36-embedding-comparison-attempt003/terminal-gates-1793015579941148800/case-003/relaxed-start-gate.json)
+records `scoring_path=relaxed`; **case003's learned gate never ran**. This does
+not establish a root cause or a validated fix.
+
+All prescribed starts had to pass before trajectories. There are **no
+optimization directories, no fresh-native stage and zero optimization
+updates**; no molecular-performance comparison exists. The
+[complete gate summary](../outputs/hpc-results/source138-epoch36-embedding-comparison-attempt003/terminal-gates-1793015579941148800/summary.json)
+and [exact-byte integrity receipt](../outputs/hpc-results/source138-epoch36-embedding-comparison-attempt003/terminal-gates-1793015579941148800/lf-normalization-integrity.json)
+preserve all 12 original remote gate/result files, 890,446 bytes. Earlier
+collector-truncated/local newline-translation evidence remains preserved and
+is superseded by these exact copies. This status collection changed no runtime
+code, settings, jobs or independent VAE continuation.
+
+## Read-only status, 24 October 2026 10:54 CEST
+
+The [fresh saved snapshot](../outputs/hpc-results/source138-epoch36-embedding-comparison-attempt003/status-1792832067824362000.json)
+confirms **GPU 29802743 remains PEND**, now reporting job-slot limits on
+**four hosts**. Eligible pending time is **47,901 seconds** (about **13 hours
+18 minutes**), with zero ineligible time. No GPU logs, gates, result or
+optimization progress artifacts exist, and there is no reliable start ETA.
+The saved full CPU pass, all 212 fixture passes and authenticated three shared
+starts remain valid. This read-only check changed no runtime code, settings
+or jobs and left the independent VAE continuation unchanged.
+
+## Read-only status, 24 October 2026 01:30 CEST
+
+The [fresh scheduler and artifact snapshot](../outputs/hpc-results/source138-epoch36-embedding-comparison-attempt003/status-1792798218154998400.json)
+confirms **GPU 29802743 is still PEND**, with job-slot limits on five hosts.
+Eligible pending time is **14,051 seconds** (about 3 hours 54 minutes), with
+zero ineligible pending time. There is no reliable start estimate and no GPU
+log, result, derivative gate or optimization progress artifact.
+
+The CPU scheduler record has aged out; its saved full-stage `passed` result,
+all **212 fixture passes** without failures/errors/skips, and authenticated
+shared starting latents remain available and valid historical evidence. This
+status check changed no runtime code, settings or jobs, and left the independent
+VAE continuation unchanged.
+
 ## Attempt003 CPU readiness passed; native comparison GPU queued
 
 The [allocated CPU terminal snapshot](../outputs/hpc-results/source138-epoch36-embedding-comparison-attempt003/status-1792784006917505500.json)

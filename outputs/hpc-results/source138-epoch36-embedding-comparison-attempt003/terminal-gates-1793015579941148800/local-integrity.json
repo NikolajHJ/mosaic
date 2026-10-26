@@ -1,0 +1,101 @@
+{
+  "status": "parsed_values_saved_original_remote_hashes_recorded",
+  "files": [
+    {
+      "path": "result.json",
+      "sha256": "2cd60be6c4d35ba5518e68dec566e70a07a14851f990fe762e19541f0e6af317",
+      "original_remote_sha256": "671a65b0787aec1759e2e4b73c21d55beca13e1955a2dd46b099fb7fc257de48",
+      "exact_bytes": false,
+      "local_bytes": 2423,
+      "original_remote_bytes": 2401
+    },
+    {
+      "path": "start-gates.json",
+      "sha256": "eb1ab04ccf8edc3c296320d2f8bfad82d38ab5521dc3e75a12404372a1cfb4c4",
+      "original_remote_sha256": "38eea5d61ddf04aadbb0b393a011c565e552d5871c1cdea9de065fdd00aefa01",
+      "exact_bytes": false,
+      "local_bytes": 525,
+      "original_remote_bytes": 504
+    },
+    {
+      "path": "case-001/native-oracle.json",
+      "sha256": "8e3d12dc84ec785c23d9b8000fd0fb1a4f80dfcbf9f7ffb972bc0b6715444016",
+      "original_remote_sha256": "ff219d745b741da98b70155914eb8c79a7433739f540e2c7d0f530120996bdb1",
+      "exact_bytes": false,
+      "local_bytes": 18345,
+      "original_remote_bytes": 17786
+    },
+    {
+      "path": "case-002/native-oracle.json",
+      "sha256": "4b18b4d9d73c7a8dc479a6972011f4e9ad79cb2678ff4784accc6e297cfdeccb",
+      "original_remote_sha256": "5e68e70ba5832e4daf2464ea8b960372bf92219468fdc55d9f7d4aad808404fb",
+      "exact_bytes": false,
+      "local_bytes": 18528,
+      "original_remote_bytes": 17969
+    },
+    {
+      "path": "case-003/native-oracle.json",
+      "sha256": "4b18b4d9d73c7a8dc479a6972011f4e9ad79cb2678ff4784accc6e297cfdeccb",
+      "original_remote_sha256": "5e68e70ba5832e4daf2464ea8b960372bf92219468fdc55d9f7d4aad808404fb",
+      "exact_bytes": false,
+      "local_bytes": 18528,
+      "original_remote_bytes": 17969
+    },
+    {
+      "path": "case-001/relaxed-start-gate.json",
+      "sha256": "4d44b0a79b0c4aeaaf7f65758adbadc5d26ba1d2aa57e5476da909176af40220",
+      "original_remote_sha256": "c1ae38792b0e34ce8b48ddb10648b1b046087115d49df8ee33bb75eee175db4c",
+      "exact_bytes": false,
+      "local_bytes": 207174,
+      "original_remote_bytes": 201991
+    },
+    {
+      "path": "case-002/relaxed-start-gate.json",
+      "sha256": "ba7e5b2ac980b1074704bcd67f57da31b640ba49233a3c9f67cb1557956ded1a",
+      "original_remote_sha256": "bbfff2168a30adbb0c310a8c5abf8b94f57210faafe0ed1a2733a902e955a56c",
+      "exact_bytes": false,
+      "local_bytes": 207465,
+      "original_remote_bytes": 202282
+    },
+    {
+      "path": "case-003/relaxed-start-gate.json",
+      "sha256": "f20f248e643c9d8466ff3dbe3b7b7ea2c18d4d5b29a14ab989cf36be967bf4c5",
+      "original_remote_sha256": "5906b82e70305a5d40ce3f8d5619ebb1acb9a358f999816a14cd2723c35ffe16",
+      "exact_bytes": false,
+      "local_bytes": 11783,
+      "original_remote_bytes": 11460
+    },
+    {
+      "path": "case-001/learned-start-gate.json",
+      "sha256": "e633d88ecc264f49da6e214d98b91770b4cbac63b332e9a31f199a86e074ca8b",
+      "original_remote_sha256": "5d4707811105b2a166037edf8efec93a7d3fef44925e7fa88406864fd8f18d23",
+      "exact_bytes": false,
+      "local_bytes": 214153,
+      "original_remote_bytes": 208808
+    },
+    {
+      "path": "case-002/learned-start-gate.json",
+      "sha256": "f0792322eafae0df0667e08a02353c8c002484aa936bab9cb77128be2991f18a",
+      "original_remote_sha256": "cd6079a6ce814665261165ba82d90a72dc4e8f3892971160f37fad8075a39d07",
+      "exact_bytes": false,
+      "local_bytes": 214095,
+      "original_remote_bytes": 208750
+    },
+    {
+      "path": "case-001/production-binding.json",
+      "sha256": "f15cc4ea68878f27ae269d66d685e348a767971cd74284dcedb88f7372e05267",
+      "original_remote_sha256": "776783a5ec2cb441ec8a3979e64cd9848d4d9b478d9b2ae19cbb0de27fc7b13b",
+      "exact_bytes": false,
+      "local_bytes": 273,
+      "original_remote_bytes": 263
+    },
+    {
+      "path": "case-002/production-binding.json",
+      "sha256": "84039e133949ecb826a5768fb162afba84e7a7c2efc894f1206c805f4b102ad2",
+      "original_remote_sha256": "2cb9889bb88ee71209f63192267e77e82e17c9dfeff0a7c8d630979200dfb45f",
+      "exact_bytes": false,
+      "local_bytes": 273,
+      "original_remote_bytes": 263
+    }
+  ]
+}

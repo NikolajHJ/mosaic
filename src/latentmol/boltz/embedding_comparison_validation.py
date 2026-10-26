@@ -279,7 +279,7 @@ def learned_start_gate(scorer, prepared, bridge, vae, z, output, deadline=None, 
                 injection_receipt=_receipt(receipt), passed=all(row["passed"] for row in rows)))
             save()
         if not all(item["passed"] for item in report["independent_forward_ad"]):
-            raise ValueError("Learned-start independent forward/reverse AD agreement failed")
+            raise ValueError(f"Comparison {scoring_path} start independent forward/reverse AD agreement failed")
 
         report["stage"] = "mandatory_finite_chord_diagnostics"
         report["finite_difference_observations"] = []

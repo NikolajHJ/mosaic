@@ -1,0 +1,10 @@
+{
+  "learned": {
+    "gradient_sha256": "20a245a8b65f72a0aa0d8923f8618d356d96664996c0db8c0fa0e5c7601eac98",
+    "passed": true
+  },
+  "relaxed": {
+    "gradient_sha256": "2596884ceba2208871f696e14d63713cfdf5a0ff21beb7c652747514fe9fbe93",
+    "passed": true
+  }
+}

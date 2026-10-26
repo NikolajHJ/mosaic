@@ -1,0 +1,43 @@
+{
+  "status": "static_bytes_only",
+  "old_members": 582,
+  "new_members": 592,
+  "changed": [
+    "src/latentmol/boltz/embedding_comparison_validation.py",
+    "src/latentmol/protenix_occupancy/study.py",
+    "tests/test_embedding_comparison_validation.py"
+  ],
+  "added": [
+    "configs/epoch36_embedding_gradient_diagnostic.json",
+    "scripts/embedding_gradient_campaign.py",
+    "scripts/hpc/embedding_gradient_operator.py",
+    "scripts/hpc/protenix_deletion_stage.py",
+    "src/latentmol/boltz/embedding_gradient_diagnostic.py",
+    "src/latentmol/protenix_occupancy/deletion_prepare.py",
+    "src/latentmol/protenix_occupancy/deletion_study.py",
+    "src/latentmol/protenix_occupancy/selection.py",
+    "tests/test_embedding_gradient_diagnostic.py",
+    "tests/test_protenix_deletion_prepare.py",
+    "tests/test_protenix_selection.py"
+  ],
+  "removed": [
+    "configs/epoch36_embedding_comparison.json"
+  ],
+  "protected_comparison_modules_unchanged": true,
+  "protected_modules": {
+    "src/latentmol/boltz/adapter.py": "bb04155bd76ae6668cbcc0ce3989f0f1b123d04e65209eef73a0388c647f77c2",
+    "src/latentmol/boltz/dbmol_model.py": "832a3eb63654834a95755e0cf56a5200ba4c2cba53aa2c8a872989751c61f539",
+    "src/latentmol/boltz/embedding_bridge.py": "c2b1c453a96db2de5f2082669121c6a36ba7d4cb6dae1ad977015848dac0b76c",
+    "src/latentmol/boltz/embedding_comparison.py": "afd582f5437a35c59905afea960f6a795a1bfff8cb0937f822036b366fb88429",
+    "src/latentmol/boltz/embedding_injection.py": "615a715cd3ab5b39f4ae9972b17d19af0fef581ec97f91ac66f1a2b7b3792d9e",
+    "src/latentmol/boltz/model.py": "c9fd3129e61f43b3eecbb98f4fe531c6c2ef7ba21e649ab5899b7b0f5a906469",
+    "src/latentmol/graph_policy.py": "a6bb4daa4165c6af85936f8eb81bfecdb35770b231b8ad7c34cece0e56ef9c2d",
+    "src/latentmol/models/__init__.py": "2e3ce3969849356144d33d0bffbf99cbbc76b4f2aecd4eca1610cedc59df33e9",
+    "src/latentmol/models/autoencoder.py": "60a76e58929217360ecef0be6ea1c58637c86e0167c6d657d6d4dcdf30b4a075",
+    "src/latentmol/models/decoder.py": "885ec0d6188f183b695b16200ba9cea0a7710491819fa83f73abf567e76812cb",
+    "src/latentmol/models/encoder.py": "8956a1960f9181a32ffd3c8c601317ce476f592a169be326467f343b90fb5126",
+    "src/latentmol/models/refined_decoder.py": "c3a44d01bffffd16d6b9c351a0c1d606d8eaa1abdffe6ac9c9f802fa559250a5",
+    "src/latentmol/models/triangle.py": "3310ff50750d4eb7104407339b64e295008f883b728df20ba95f669bbae8ec4d",
+    "src/latentmol/representation.py": "edf7dbd1ee054078a111157b11bb40163fe3e518d50ac61646fc2d3aaaa010d1"
+  }
+}

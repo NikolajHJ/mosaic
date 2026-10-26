@@ -81,7 +81,8 @@ def test_paired_gate_independent_forward_reverse_and_finite_chords(tmp_path, sco
                                       scoring_path=scoring_path)
 
 
-def test_forward_ad_corruption_cannot_be_hidden_by_good_finite_chords(tmp_path, monkeypatch):
+@pytest.mark.parametrize("scoring_path", ["relaxed", "learned"])
+def test_forward_ad_corruption_cannot_be_hidden_by_good_finite_chords(tmp_path, monkeypatch, scoring_path):
     prepared, scorer, bridge, vae, z = comparison_fixture()
     original = validation._local_scores
 
@@ -95,8 +96,9 @@ def test_forward_ad_corruption_cannot_be_hidden_by_good_finite_chords(tmp_path, 
 
     monkeypatch.setattr(validation, "_local_scores", corrupted)
     path = tmp_path / "corrupted.json"
-    with pytest.raises(ValueError, match="forward/reverse AD"):
-        validation.learned_start_gate(scorer, prepared, bridge, vae, z, path)
+    with pytest.raises(ValueError, match=scoring_path + ".*forward/reverse AD"):
+        validation.learned_start_gate(scorer, prepared, bridge, vae, z, path,
+                                      scoring_path=scoring_path)
     report = json.loads(path.read_text())
     assert not report["passed"] and report["status"] == "failed_not_passed"
     assert report["stage"] == "independent_native_forward_ad"

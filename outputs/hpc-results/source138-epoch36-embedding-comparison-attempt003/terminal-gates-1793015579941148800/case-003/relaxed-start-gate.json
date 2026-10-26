@@ -1,0 +1,323 @@
+{
+  "baseline_scores": {
+    "affinity_logits_binary": -0.8477351665496826,
+    "affinity_pred_value": 0.05953437089920044,
+    "affinity_probability_binary": 0.3000655770301819,
+    "complex_ipde": 9.307744979858398,
+    "complex_iplddt": 0.5200747847557068,
+    "complex_pde": 1.6812629699707031,
+    "complex_plddt": 0.6799291372299194,
+    "confidence_score": 0.6445856690406799,
+    "dbmol_affinity_loss": 0.9072695374488831,
+    "dbmol_confidence_loss": 2.025289887189865,
+    "dbmol_contact_anchor_loss": 0.19328402563930558,
+    "dbmol_contact_loss": 1.272293370106682,
+    "dbmol_contact_pocket_loss": 2.3513027145740586,
+    "dbmol_total_loss": 9.151227680690251,
+    "dbmol_weighted_affinity_loss": 0.9072695374488831,
+    "dbmol_weighted_confidence_loss": 5.063224717974663,
+    "dbmol_weighted_contact_loss": 3.1807334252667054,
+    "iptm": 0.5032117366790771,
+    "ptm": 0.8255003094673157
+  },
+  "calls": {
+    "forward_attempted": 8,
+    "independent_forward_ad_attempted": 4,
+    "reverse_attempted": 9
+  },
+  "canonical_smiles": "Cc1ccc(NC(=O)C(C)OCCC(C)C)c(O)c1",
+  "component_gradient_norms": {
+    "dbmol_affinity_loss": 0.001090479794831333,
+    "dbmol_confidence_loss": 0.0001792838058906715,
+    "dbmol_contact_loss": 3.1905625155464844e-05,
+    "dbmol_total_loss": 0.0015834330697963284
+  },
+  "context_sha256": "ab4e79af3669a49f26ef9676bd0794fbf200488d738824c6be5b1e0f16b591a9",
+  "context_unchanged": true,
+  "contract": "pointwise_native_ad_v4_extension_for_frozen_learned_embedding",
+  "direction_bindings": {
+    "gradient": "4f3afaa4f85e08ad83abd787e195de9c214bde0f2464e6a14670c3d1c301030d",
+    "random_1": "6bc5c43978776efaa7cba82b49a67235ebb789b614be99b564cb6821caba3a6f",
+    "random_2": "a7d4494c2a8d6f90865e801c5cb194be4f8f0317eeff9038e21f9cd0b7170111",
+    "random_3": "ba7461a53bfd651cc690901051dbdaf08ed8dc62263a207a8e0476937a1ac742"
+  },
+  "direction_seed": 138036,
+  "error": "Learned-start independent forward/reverse AD agreement failed",
+  "error_type": "ValueError",
+  "finite_difference_policy": {
+    "epsilons": [
+      0.0001,
+      0.001,
+      0.01
+    ],
+    "finite_measurements_required": true,
+    "reason": "native nonsmooth pointwise AD contract; finite chords are separate diagnostics",
+    "secant_agreement_required": false
+  },
+  "fixed_occupancy_sha256": "e17481b780bd5ef010edb729f7d6cd58d81b17bc5e550a900f4bf146146acbd7",
+  "fixed_placeholder_sha256": "d3d8d19f2035db5aad2fc9c71fbb6bf5b49af29d477ec9ea6ffaf18a61b53ae4",
+  "frozen_modules_unchanged": true,
+  "grad_no_grad_primal_exact": true,
+  "gradient_norm": 0.0015834330697963284,
+  "hard_classification": {
+    "detail": null,
+    "failure_kind": "none",
+    "graph_sanitization_valid": true,
+    "raw_chemical_valid": true,
+    "reason": null,
+    "representation_smiles": "Cc1ccc(NC(=O)C(C)OCCC(C)C)c(O)c1",
+    "schema_roundtrip_valid": true,
+    "smiles": "Cc1ccc(NC(=O)C(C)OCCC(C)C)c(O)c1",
+    "smiles_parse_valid": true,
+    "strict_teacher_valid": true,
+    "version": "repair-chemistry-classification-v1"
+  },
+  "independent_forward_ad": [
+    {
+      "direction": "gradient",
+      "injection_receipt": {
+        "injection_used": false,
+        "scoring_path": "relaxed"
+      },
+      "passed": false,
+      "rows": [
+        {
+          "absolute_error": 2.5204821007445213e-06,
+          "allowed_error": 2.0817236646993208e-06,
+          "component": "dbmol_affinity_loss",
+          "native_grouped_primal_jvp_exact": true,
+          "passed": false,
+          "primal": 0.9072695374488831,
+          "reverse_projection": 0.0010817236646993205,
+          "tangent": 0.001079203182598576
+        },
+        {
+          "absolute_error": 3.845099595432231e-08,
+          "allowed_error": 1.031415927468152e-06,
+          "component": "dbmol_contact_loss",
+          "native_grouped_primal_jvp_exact": true,
+          "passed": true,
+          "primal": 1.272293370106682,
+          "reverse_projection": 3.141592746815193e-05,
+          "tangent": 3.137747647219761e-05
+        },
+        {
+          "absolute_error": 2.8971405858214364e-07,
+          "allowed_error": 1.169213007320551e-06,
+          "component": "dbmol_confidence_loss",
+          "native_grouped_primal_jvp_exact": true,
+          "passed": true,
+          "primal": 2.025289887189865,
+          "reverse_projection": 0.000169213007320551,
+          "tangent": 0.00016892329326196885
+        },
+        {
+          "absolute_error": 3.4778529073341627e-06,
+          "allowed_error": 2.583432959841326e-06,
+          "component": "dbmol_total_loss",
+          "native_grouped_primal_jvp_exact": true,
+          "passed": false,
+          "primal": 9.151227680690251,
+          "reverse_projection": 0.0015834329598413263,
+          "tangent": 0.0015799551069339921
+        }
+      ]
+    },
+    {
+      "direction": "random_1",
+      "injection_receipt": {
+        "injection_used": false,
+        "scoring_path": "relaxed"
+      },
+      "passed": true,
+      "rows": [
+        {
+          "absolute_error": 6.474927650452418e-08,
+          "allowed_error": 1.0277126933564494e-06,
+          "component": "dbmol_affinity_loss",
+          "native_grouped_primal_jvp_exact": true,
+          "passed": true,
+          "primal": 0.9072695374488831,
+          "reverse_projection": 2.7712693356449388e-05,
+          "tangent": 2.7647944079944864e-05
+        },
+        {
+          "absolute_error": 9.623691644559407e-10,
+          "allowed_error": 1.0008350380239474e-06,
+          "component": "dbmol_contact_loss",
+          "native_grouped_primal_jvp_exact": true,
+          "passed": true,
+          "primal": 1.272293370106682,
+          "reverse_projection": 8.35038023947465e-07,
+          "tangent": 8.340756547830091e-07
+        },
+        {
+          "absolute_error": 5.528633539514342e-09,
+          "allowed_error": 1.0008426366837507e-06,
+          "component": "dbmol_confidence_loss",
+          "native_grouped_primal_jvp_exact": true,
+          "passed": true,
+          "primal": 2.025289887189865,
+          "reverse_projection": 8.426366837507138e-07,
+          "tangent": 8.371080502111995e-07
+        },
+        {
+          "absolute_error": 7.803120040235042e-08,
+          "allowed_error": 1.0319039345428326e-06,
+          "component": "dbmol_total_loss",
+          "native_grouped_primal_jvp_exact": true,
+          "passed": true,
+          "primal": 9.151227680690251,
+          "reverse_projection": 3.190393454283274e-05,
+          "tangent": 3.182590334243039e-05
+        }
+      ]
+    },
+    {
+      "direction": "random_2",
+      "injection_receipt": {
+        "injection_used": false,
+        "scoring_path": "relaxed"
+      },
+      "passed": true,
+      "rows": [
+        {
+          "absolute_error": 1.0803041397729196e-07,
+          "allowed_error": 1.022245928172489e-06,
+          "component": "dbmol_affinity_loss",
+          "native_grouped_primal_jvp_exact": true,
+          "passed": true,
+          "primal": 0.9072695374488831,
+          "reverse_projection": -2.224592817248912e-05,
+          "tangent": -2.2137897758511826e-05
+        },
+        {
+          "absolute_error": 1.9208023744530472e-09,
+          "allowed_error": 1.0008189933047986e-06,
+          "component": "dbmol_contact_loss",
+          "native_grouped_primal_jvp_exact": true,
+          "passed": true,
+          "primal": 1.272293370106682,
+          "reverse_projection": -8.18993304798785e-07,
+          "tangent": -8.170725024243319e-07
+        },
+        {
+          "absolute_error": 1.1142625402109118e-08,
+          "allowed_error": 1.0068166373540921e-06,
+          "component": "dbmol_confidence_loss",
+          "native_grouped_primal_jvp_exact": true,
+          "passed": true,
+          "primal": 2.025289887189865,
+          "reverse_projection": -6.816637354092073e-06,
+          "tangent": -6.805494728689964e-06
+        },
+        {
+          "absolute_error": 1.4517126496075628e-07,
+          "allowed_error": 1.0413394871012582e-06,
+          "component": "dbmol_total_loss",
+          "native_grouped_primal_jvp_exact": true,
+          "passed": true,
+          "primal": 9.151227680690251,
+          "reverse_projection": -4.133948710125833e-05,
+          "tangent": -4.119431583629757e-05
+        }
+      ]
+    },
+    {
+      "direction": "random_3",
+      "injection_receipt": {
+        "injection_used": false,
+        "scoring_path": "relaxed"
+      },
+      "passed": true,
+      "rows": [
+        {
+          "absolute_error": 1.673842343720487e-08,
+          "allowed_error": 1.0170581580197903e-06,
+          "component": "dbmol_affinity_loss",
+          "native_grouped_primal_jvp_exact": true,
+          "passed": true,
+          "primal": 0.9072695374488831,
+          "reverse_projection": 1.7058158019790285e-05,
+          "tangent": 1.704141959635308e-05
+        },
+        {
+          "absolute_error": 1.044733235895954e-09,
+          "allowed_error": 1.0004830251247308e-06,
+          "component": "dbmol_contact_loss",
+          "native_grouped_primal_jvp_exact": true,
+          "passed": true,
+          "primal": 1.272293370106682,
+          "reverse_projection": 4.81980391494906e-07,
+          "tangent": 4.83025124730802e-07
+        },
+        {
+          "absolute_error": 3.290582057358919e-09,
+          "allowed_error": 1.0013003444998388e-06,
+          "component": "dbmol_confidence_loss",
+          "native_grouped_primal_jvp_exact": true,
+          "passed": true,
+          "primal": 2.025289887189865,
+          "reverse_projection": -1.3003444998388132e-06,
+          "tangent": -1.2970539177814542e-06
+        },
+        {
+          "absolute_error": 4.276557341333618e-09,
+          "allowed_error": 1.0150106241710676e-06,
+          "component": "dbmol_total_loss",
+          "native_grouped_primal_jvp_exact": true,
+          "passed": true,
+          "primal": 9.151227680690251,
+          "reverse_projection": 1.5010624171067784e-05,
+          "tangent": 1.500634761372645e-05
+        }
+      ]
+    }
+  ],
+  "jvp_tolerance": {
+    "atol": 1e-06,
+    "rtol": 0.001
+  },
+  "local_reverse_injection_receipt": {
+    "injection_used": false,
+    "scoring_path": "relaxed"
+  },
+  "minimum_gradient_norm": 1e-12,
+  "molecular_improvement_validated": false,
+  "native_grouped_parity": {
+    "production_total_reverse_exact": true,
+    "reverse_exact": {
+      "dbmol_affinity_loss": true,
+      "dbmol_confidence_loss": true,
+      "dbmol_contact_loss": true,
+      "dbmol_total_loss": true
+    },
+    "scalar_exact": {
+      "dbmol_affinity_loss": true,
+      "dbmol_confidence_loss": true,
+      "dbmol_contact_loss": true,
+      "dbmol_total_loss": true
+    }
+  },
+  "passed": false,
+  "point_sha256": "d5ad6823c4bdc3026d4188c3faa55a3fdc0b83b68e3a280e1c71c24de1985f33",
+  "production_gradient_sha256": "955265a112a3992f20950ebf2927d6e54a499cb392ce60b440c8b0aa9c63f1c6",
+  "production_injection_receipt": {
+    "injection_used": false,
+    "scoring_path": "relaxed"
+  },
+  "production_local_scalar_exact": true,
+  "production_repeated_primal_exact": true,
+  "requires_fresh_native_oracle_gate": true,
+  "scalar_tolerance": {
+    "atol": 1e-05,
+    "rtol": 0.0001
+  },
+  "scope": "pointwise implementation consistency at this start only",
+  "scoring_path": "relaxed",
+  "stage": "independent_native_forward_ad",
+  "status": "failed_not_passed",
+  "thresholds_tuned_from_audit": false,
+  "useful_gradient_validated": false,
+  "version": "embedding-comparison-start-pointwise-ad-v1"
+}

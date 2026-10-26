@@ -1,0 +1,559 @@
+{
+  "calls": {
+    "backward_attempted": 2,
+    "forward_attempted": 21
+  },
+  "claim": "new exact-native projection boundary and constrained graph derivative parity",
+  "context_sha256": "ab4e79af3669a49f26ef9676bd0794fbf200488d738824c6be5b1e0f16b591a9",
+  "context_unchanged": true,
+  "derivative_injection_receipt": {
+    "all_channels_consumed": true,
+    "expected_channels": [
+      "affinity.atom_charge",
+      "affinity.atom_element",
+      "affinity.trunk_connectivity",
+      "affinity.trunk_type",
+      "structure.atom_charge",
+      "structure.atom_element",
+      "structure.confidence_connectivity",
+      "structure.confidence_type",
+      "structure.trunk_connectivity",
+      "structure.trunk_type"
+    ],
+    "fixed_occupancy": true,
+    "ligand_chemical_contributions_only": true,
+    "native_diagonal_retained": true,
+    "version": "native-chemical-embedding-injection-v1",
+    "visited_channels": {
+      "affinity.atom_charge": 2,
+      "affinity.atom_element": 2,
+      "affinity.trunk_connectivity": 1,
+      "affinity.trunk_type": 1,
+      "structure.atom_charge": 1,
+      "structure.atom_element": 1,
+      "structure.confidence_connectivity": 1,
+      "structure.confidence_type": 1,
+      "structure.trunk_connectivity": 1,
+      "structure.trunk_type": 1
+    }
+  },
+  "exact_injection_receipt": {
+    "all_channels_consumed": true,
+    "expected_channels": [
+      "affinity.atom_charge",
+      "affinity.atom_element",
+      "affinity.trunk_connectivity",
+      "affinity.trunk_type",
+      "structure.atom_charge",
+      "structure.atom_element",
+      "structure.confidence_connectivity",
+      "structure.confidence_type",
+      "structure.trunk_connectivity",
+      "structure.trunk_type"
+    ],
+    "fixed_occupancy": true,
+    "ligand_chemical_contributions_only": true,
+    "native_diagonal_retained": true,
+    "version": "native-chemical-embedding-injection-v1",
+    "visited_channels": {
+      "affinity.atom_charge": 2,
+      "affinity.atom_element": 2,
+      "affinity.trunk_connectivity": 1,
+      "affinity.trunk_type": 1,
+      "structure.atom_charge": 1,
+      "structure.atom_element": 1,
+      "structure.confidence_connectivity": 1,
+      "structure.confidence_type": 1,
+      "structure.trunk_connectivity": 1,
+      "structure.trunk_type": 1
+    }
+  },
+  "exact_injection_vs_existing": {
+    "passed": true,
+    "rows": {
+      "affinity_logits_binary": {
+        "absolute_error": 3.0994415283203125e-06,
+        "actual": -2.927011489868164,
+        "allowed_error": 0.0003027014589309693,
+        "expected": -2.9270145893096924,
+        "passed": true
+      },
+      "affinity_pred_value": {
+        "absolute_error": 0.0,
+        "actual": 2.206779956817627,
+        "allowed_error": 0.0002306779956817627,
+        "expected": 2.206779956817627,
+        "passed": true
+      },
+      "affinity_probability_binary": {
+        "absolute_error": 1.4901161193847656e-08,
+        "actual": 0.0879083052277565,
+        "allowed_error": 1.8790829032659533e-05,
+        "expected": 0.0879082903265953,
+        "passed": true
+      },
+      "complex_ipde": {
+        "absolute_error": 2.384185791015625e-06,
+        "actual": 6.5956034660339355,
+        "allowed_error": 0.0006695601081848145,
+        "expected": 6.5956010818481445,
+        "passed": true
+      },
+      "complex_iplddt": {
+        "absolute_error": 0.0,
+        "actual": 0.5001355409622192,
+        "allowed_error": 6.0013554096221925e-05,
+        "expected": 0.5001355409622192,
+        "passed": true
+      },
+      "complex_pde": {
+        "absolute_error": 3.5762786865234375e-07,
+        "actual": 1.2068918943405151,
+        "allowed_error": 0.00013068915367126467,
+        "expected": 1.2068915367126465,
+        "passed": true
+      },
+      "complex_plddt": {
+        "absolute_error": 5.960464477539063e-08,
+        "actual": 0.6649402976036072,
+        "allowed_error": 7.64940357208252e-05,
+        "expected": 0.664940357208252,
+        "passed": true
+      },
+      "confidence_score": {
+        "absolute_error": 1.1920928955078125e-07,
+        "actual": 0.6581247448921204,
+        "allowed_error": 7.581248641014099e-05,
+        "expected": 0.6581248641014099,
+        "passed": true
+      },
+      "dbmol_affinity_loss": {
+        "absolute_error": 3.0994415283203125e-06,
+        "actual": 5.133791446685791,
+        "allowed_error": 0.0005233794546127319,
+        "expected": 5.133794546127319,
+        "passed": true
+      },
+      "dbmol_confidence_loss": {
+        "absolute_error": 9.119510651078855e-07,
+        "actual": 1.0350908160209658,
+        "allowed_error": 0.00011350899040699007,
+        "expected": 1.0350899040699006,
+        "passed": true
+      },
+      "dbmol_contact_anchor_loss": {
+        "absolute_error": 4.294944694338554e-07,
+        "actual": 0.9459948399993712,
+        "allowed_error": 0.00010459952694938406,
+        "expected": 0.9459952694938406,
+        "passed": true
+      },
+      "dbmol_contact_loss": {
+        "absolute_error": 4.067838248467126e-07,
+        "actual": 1.8060319619223202,
+        "allowed_error": 0.0001906032368706145,
+        "expected": 1.806032368706145,
+        "passed": true
+      },
+      "dbmol_contact_pocket_loss": {
+        "absolute_error": 3.8407318037059213e-07,
+        "actual": 2.666069083845269,
+        "allowed_error": 0.000276606946791845,
+        "expected": 2.6660694679184496,
+        "passed": true
+      },
+      "dbmol_total_loss": {
+        "absolute_error": 1.8365234293327148e-06,
+        "actual": 12.236598391544005,
+        "allowed_error": 0.0012336600228067436,
+        "expected": 12.236600228067434,
+        "passed": true
+      },
+      "dbmol_weighted_affinity_loss": {
+        "absolute_error": 3.0994415283203125e-06,
+        "actual": 5.133791446685791,
+        "allowed_error": 0.0005233794546127319,
+        "expected": 5.133794546127319,
+        "passed": true
+      },
+      "dbmol_weighted_confidence_loss": {
+        "absolute_error": 2.2798776626586914e-06,
+        "actual": 2.5877270400524144,
+        "allowed_error": 0.0002687724760174752,
+        "expected": 2.5877247601747517,
+        "passed": true
+      },
+      "dbmol_weighted_contact_loss": {
+        "absolute_error": 1.0169595627829153e-06,
+        "actual": 4.5150799048058,
+        "allowed_error": 0.00046150809217653633,
+        "expected": 4.515080921765363,
+        "passed": true
+      },
+      "iptm": {
+        "absolute_error": 1.1920928955078125e-07,
+        "actual": 0.6308624744415283,
+        "allowed_error": 7.308625936508179e-05,
+        "expected": 0.6308625936508179,
+        "passed": true
+      },
+      "ptm": {
+        "absolute_error": 5.960464477539063e-08,
+        "actual": 0.859388530254364,
+        "allowed_error": 9.593885898590088e-05,
+        "expected": 0.8593885898590088,
+        "passed": true
+      }
+    }
+  },
+  "exact_injection_vs_native": {
+    "passed": true,
+    "rows": {
+      "affinity_logits_binary": {
+        "absolute_error": 3.0994415283203125e-06,
+        "actual": -2.927011489868164,
+        "allowed_error": 0.0003027014589309693,
+        "expected": -2.9270145893096924,
+        "passed": true
+      },
+      "affinity_pred_value": {
+        "absolute_error": 0.0,
+        "actual": 2.206779956817627,
+        "allowed_error": 0.0002306779956817627,
+        "expected": 2.206779956817627,
+        "passed": true
+      },
+      "affinity_probability_binary": {
+        "absolute_error": 1.4901161193847656e-08,
+        "actual": 0.0879083052277565,
+        "allowed_error": 1.8790829032659533e-05,
+        "expected": 0.0879082903265953,
+        "passed": true
+      },
+      "complex_ipde": {
+        "absolute_error": 2.384185791015625e-06,
+        "actual": 6.5956034660339355,
+        "allowed_error": 0.0006695601081848145,
+        "expected": 6.5956010818481445,
+        "passed": true
+      },
+      "complex_iplddt": {
+        "absolute_error": 0.0,
+        "actual": 0.5001355409622192,
+        "allowed_error": 6.0013554096221925e-05,
+        "expected": 0.5001355409622192,
+        "passed": true
+      },
+      "complex_pde": {
+        "absolute_error": 3.5762786865234375e-07,
+        "actual": 1.2068918943405151,
+        "allowed_error": 0.00013068915367126467,
+        "expected": 1.2068915367126465,
+        "passed": true
+      },
+      "complex_plddt": {
+        "absolute_error": 5.960464477539063e-08,
+        "actual": 0.6649402976036072,
+        "allowed_error": 7.64940357208252e-05,
+        "expected": 0.664940357208252,
+        "passed": true
+      },
+      "confidence_score": {
+        "absolute_error": 1.1920928955078125e-07,
+        "actual": 0.6581247448921204,
+        "allowed_error": 7.581248641014099e-05,
+        "expected": 0.6581248641014099,
+        "passed": true
+      },
+      "dbmol_affinity_loss": {
+        "absolute_error": 3.0994415283203125e-06,
+        "actual": 5.133791446685791,
+        "allowed_error": 0.0005233794546127319,
+        "expected": 5.133794546127319,
+        "passed": true
+      },
+      "dbmol_confidence_loss": {
+        "absolute_error": 9.119510651078855e-07,
+        "actual": 1.0350908160209658,
+        "allowed_error": 0.00011350899040699007,
+        "expected": 1.0350899040699006,
+        "passed": true
+      },
+      "dbmol_contact_anchor_loss": {
+        "absolute_error": 4.294944694338554e-07,
+        "actual": 0.9459948399993712,
+        "allowed_error": 0.00010459952694938406,
+        "expected": 0.9459952694938406,
+        "passed": true
+      },
+      "dbmol_contact_loss": {
+        "absolute_error": 4.067838248467126e-07,
+        "actual": 1.8060319619223202,
+        "allowed_error": 0.0001906032368706145,
+        "expected": 1.806032368706145,
+        "passed": true
+      },
+      "dbmol_contact_pocket_loss": {
+        "absolute_error": 3.8407318037059213e-07,
+        "actual": 2.666069083845269,
+        "allowed_error": 0.000276606946791845,
+        "expected": 2.6660694679184496,
+        "passed": true
+      },
+      "dbmol_total_loss": {
+        "absolute_error": 1.8365234293327148e-06,
+        "actual": 12.236598391544005,
+        "allowed_error": 0.0012336600228067436,
+        "expected": 12.236600228067434,
+        "passed": true
+      },
+      "dbmol_weighted_affinity_loss": {
+        "absolute_error": 3.0994415283203125e-06,
+        "actual": 5.133791446685791,
+        "allowed_error": 0.0005233794546127319,
+        "expected": 5.133794546127319,
+        "passed": true
+      },
+      "dbmol_weighted_confidence_loss": {
+        "absolute_error": 2.2798776626586914e-06,
+        "actual": 2.5877270400524144,
+        "allowed_error": 0.0002687724760174752,
+        "expected": 2.5877247601747517,
+        "passed": true
+      },
+      "dbmol_weighted_contact_loss": {
+        "absolute_error": 1.0169595627829153e-06,
+        "actual": 4.5150799048058,
+        "allowed_error": 0.00046150809217653633,
+        "expected": 4.515080921765363,
+        "passed": true
+      },
+      "iptm": {
+        "absolute_error": 1.1920928955078125e-07,
+        "actual": 0.6308624744415283,
+        "allowed_error": 7.308625936508179e-05,
+        "expected": 0.6308625936508179,
+        "passed": true
+      },
+      "ptm": {
+        "absolute_error": 5.960464477539063e-08,
+        "actual": 0.859388530254364,
+        "allowed_error": 9.593885898590088e-05,
+        "expected": 0.8593885898590088,
+        "passed": true
+      }
+    }
+  },
+  "existing_graph_vs_native": {
+    "passed": true,
+    "rows": {
+      "affinity_logits_binary": {
+        "absolute_error": 0.0,
+        "actual": -2.9270145893096924,
+        "allowed_error": 0.0003027014589309693,
+        "expected": -2.9270145893096924,
+        "passed": true
+      },
+      "affinity_pred_value": {
+        "absolute_error": 0.0,
+        "actual": 2.206779956817627,
+        "allowed_error": 0.0002306779956817627,
+        "expected": 2.206779956817627,
+        "passed": true
+      },
+      "affinity_probability_binary": {
+        "absolute_error": 0.0,
+        "actual": 0.0879082903265953,
+        "allowed_error": 1.8790829032659533e-05,
+        "expected": 0.0879082903265953,
+        "passed": true
+      },
+      "complex_ipde": {
+        "absolute_error": 0.0,
+        "actual": 6.5956010818481445,
+        "allowed_error": 0.0006695601081848145,
+        "expected": 6.5956010818481445,
+        "passed": true
+      },
+      "complex_iplddt": {
+        "absolute_error": 0.0,
+        "actual": 0.5001355409622192,
+        "allowed_error": 6.0013554096221925e-05,
+        "expected": 0.5001355409622192,
+        "passed": true
+      },
+      "complex_pde": {
+        "absolute_error": 0.0,
+        "actual": 1.2068915367126465,
+        "allowed_error": 0.00013068915367126467,
+        "expected": 1.2068915367126465,
+        "passed": true
+      },
+      "complex_plddt": {
+        "absolute_error": 0.0,
+        "actual": 0.664940357208252,
+        "allowed_error": 7.64940357208252e-05,
+        "expected": 0.664940357208252,
+        "passed": true
+      },
+      "confidence_score": {
+        "absolute_error": 0.0,
+        "actual": 0.6581248641014099,
+        "allowed_error": 7.581248641014099e-05,
+        "expected": 0.6581248641014099,
+        "passed": true
+      },
+      "dbmol_affinity_loss": {
+        "absolute_error": 0.0,
+        "actual": 5.133794546127319,
+        "allowed_error": 0.0005233794546127319,
+        "expected": 5.133794546127319,
+        "passed": true
+      },
+      "dbmol_confidence_loss": {
+        "absolute_error": 0.0,
+        "actual": 1.0350899040699006,
+        "allowed_error": 0.00011350899040699007,
+        "expected": 1.0350899040699006,
+        "passed": true
+      },
+      "dbmol_contact_anchor_loss": {
+        "absolute_error": 0.0,
+        "actual": 0.9459952694938406,
+        "allowed_error": 0.00010459952694938406,
+        "expected": 0.9459952694938406,
+        "passed": true
+      },
+      "dbmol_contact_loss": {
+        "absolute_error": 0.0,
+        "actual": 1.806032368706145,
+        "allowed_error": 0.0001906032368706145,
+        "expected": 1.806032368706145,
+        "passed": true
+      },
+      "dbmol_contact_pocket_loss": {
+        "absolute_error": 0.0,
+        "actual": 2.6660694679184496,
+        "allowed_error": 0.000276606946791845,
+        "expected": 2.6660694679184496,
+        "passed": true
+      },
+      "dbmol_total_loss": {
+        "absolute_error": 0.0,
+        "actual": 12.236600228067434,
+        "allowed_error": 0.0012336600228067436,
+        "expected": 12.236600228067434,
+        "passed": true
+      },
+      "dbmol_weighted_affinity_loss": {
+        "absolute_error": 0.0,
+        "actual": 5.133794546127319,
+        "allowed_error": 0.0005233794546127319,
+        "expected": 5.133794546127319,
+        "passed": true
+      },
+      "dbmol_weighted_confidence_loss": {
+        "absolute_error": 0.0,
+        "actual": 2.5877247601747517,
+        "allowed_error": 0.0002687724760174752,
+        "expected": 2.5877247601747517,
+        "passed": true
+      },
+      "dbmol_weighted_contact_loss": {
+        "absolute_error": 0.0,
+        "actual": 4.515080921765363,
+        "allowed_error": 0.00046150809217653633,
+        "expected": 4.515080921765363,
+        "passed": true
+      },
+      "iptm": {
+        "absolute_error": 0.0,
+        "actual": 0.6308625936508179,
+        "allowed_error": 7.308625936508179e-05,
+        "expected": 0.6308625936508179,
+        "passed": true
+      },
+      "ptm": {
+        "absolute_error": 0.0,
+        "actual": 0.8593885898590088,
+        "allowed_error": 9.593885898590088e-05,
+        "expected": 0.8593885898590088,
+        "passed": true
+      }
+    }
+  },
+  "finite_difference_observations": [
+    {
+      "analytic": -0.048394489769514853,
+      "central": {
+        "existing": -0.05022570049639796,
+        "injected": -0.04573645225214307
+      },
+      "direction": "affine_1",
+      "epsilon": 0.001,
+      "injected_analytic_difference": 0.0026580375173717863,
+      "oracle_central_difference": 0.004489248244254895,
+      "valid_molecule_claim": false
+    },
+    {
+      "analytic": -0.048394489769514853,
+      "central": {
+        "existing": -0.048514664478815916,
+        "injected": -0.04832904173186492
+      },
+      "direction": "affine_1",
+      "epsilon": 0.01,
+      "injected_analytic_difference": 6.544803764993445e-05,
+      "oracle_central_difference": 0.00018562274695099745,
+      "valid_molecule_claim": false
+    },
+    {
+      "analytic": -0.0546998308246389,
+      "central": {
+        "existing": -0.05369851486403121,
+        "injected": -0.051765749149446094
+      },
+      "direction": "affine_2",
+      "epsilon": 0.001,
+      "injected_analytic_difference": 0.0029340816751928026,
+      "oracle_central_difference": 0.0019327657145851163,
+      "valid_molecule_claim": false
+    },
+    {
+      "analytic": -0.0546998308246389,
+      "central": {
+        "existing": -0.05492668891724506,
+        "injected": -0.054478684087744256
+      },
+      "direction": "affine_2",
+      "epsilon": 0.01,
+      "injected_analytic_difference": 0.00022114673689464098,
+      "oracle_central_difference": 0.0004480048295008032,
+      "valid_molecule_claim": false
+    }
+  ],
+  "finite_differences_are_diagnostic": true,
+  "frozen_modules_unchanged": true,
+  "learned_bridge_validated": false,
+  "optimization_authorized_by_gate": false,
+  "passed": true,
+  "projection_gradient_parity": {
+    "allowed_error_norm": 0.02186696461285398,
+    "error_norm": 4.932147294889207e-06,
+    "existing_norm": 2.185696461285398,
+    "finite": true,
+    "injected_norm": 2.1856980568959945,
+    "passed": true,
+    "policy": "fixed-mask-symmetric-simplex-tangent-v1",
+    "relative_error": 2.256556380197749e-06
+  },
+  "stage": "complete",
+  "status": "passed_native_oracle_only",
+  "tolerances": {
+    "gradient_atol": 1e-05,
+    "gradient_rtol": 0.01,
+    "scalar_atol": 1e-05,
+    "scalar_rtol": 0.0001
+  },
+  "version": "native-embedding-oracle-gate-v1"
+}
