@@ -59,3 +59,27 @@ is never skipped. The Protenix candidate repins this exact complete storage
 source. See current campaign/preparation/static-verification/local-drafts JSON.
 HPC access is still unestablished after the single timed-out attempt; no new
 remote staging, target absence, full-capacity verdict or job is claimed.
+
+
+## Renewed validation authorized — 2026-10-26T22:53:01.117849+00:00
+
+User requested reconnection, validation of the prepared startup/reference fixes,
+separate gradient investigation and conditional submission after every gate.
+Read-only inputs02 returned zero and authenticated136 delivered metadata files.
+No original result/settings changed. Production04 guard will first reject any
+existing/unknown root before one-shot stage/allocated CPU122/own callback;
+Protenix precision04 remains conditional on the exact chemistry04 capacity
+prerequisites. Current remote target absence and fresh storage are not yet
+established. Monitor remains paused. Detailed numerical findings/submissions
+will be recorded only from actual evidence.
+
+
+## Actual resource failure preserved
+
+Source04 is staged and unchanged. CPU29825222 actuallyEXIT1 at renewed whole
+storage entry before any fixtures, startup model or FP64 calculation; callback
+29825223 alsoEXIT1 without successor. Its real initial preflight pass is not a
+reservation: quota rounding changed while the CPU started. No286-case pass or
+native result exists. Source05 is a separate identical-numerics resource retry;
+never replay this stage/CPU/callback. Raw same-job LSF and failed capacity receipts
+are byte-verified under results/hpc/20261026-endpoint-repair-04/status02/03.

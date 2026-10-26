@@ -32,7 +32,11 @@ def verify(observation, source, submission):
     assert states in (["DONE"], ["EXIT"]), "Actual terminal CPU scheduler proof not present"
     log = files[parent + "/stdout." + job + ".log"]["text"]
     compact = "".join(log.split())
-    assert compact.count("Subject:Job") == 1 and "Subject:Job" + job + ":<mosaic-pro-precision-cpu>" in compact
+    name=own['argv'][own['argv'].index('-J')+1]
+    assert name in ('mosaic-pro-precision-cpu','mosaic-pro-precision02-cpu',
+                    'mosaic-pro-precision03-cpu','mosaic-pro-precision04-cpu','mosaic-pro-precision05-cpu')
+    assert compact.count("Subject:Job") == 1 and re.findall(
+        r'Subject:Job(\d+):<([^>]+)>incluster<([^>]+)>(Done|Exited)',compact)==[(job,name,'dcc','Done' if states==['DONE'] else 'Exited')]
     assert compact.count("inqueue<hpc>") == 1
     passed = states == ["DONE"]
     assert ("Successfullycompleted." in compact) == passed

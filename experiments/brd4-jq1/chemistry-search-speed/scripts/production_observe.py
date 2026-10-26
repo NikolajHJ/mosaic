@@ -127,18 +127,22 @@ print(json.dumps(record))
 
 
 def main():
-    parser=argparse.ArgumentParser();parser.add_argument('label');args=parser.parse_args()
+    parser=argparse.ArgumentParser();parser.add_argument('label')
+    parser.add_argument('--attempt',choices=('03','04'),default='03');args=parser.parse_args()
     if re.fullmatch('[a-z0-9][a-z0-9-]{0,100}',args.label) is None:raise ValueError('Invalid unique observation label')
     if REPO.name!='mosaic':raise ValueError('Wrong authorized repository')
-    LOCAL.mkdir(parents=True,exist_ok=True)
-    out=LOCAL/('observation-'+args.label);out.mkdir(exist_ok=False)
-    (out/'program.py').write_text(PROGRAM,encoding='utf8',newline='\n')
+    local=LOCAL.with_name('20261026-chemistry-production-'+args.attempt)
+    program=PROGRAM.replace("root=base/'chemistry-production-03';source=base/'chemistry-production-release-03/source'",
+        "root=base/'chemistry-production-"+args.attempt+"';source=base/'chemistry-production-release-"+args.attempt+"/source'")
+    local.mkdir(parents=True,exist_ok=True)
+    out=local/('observation-'+args.label);out.mkdir(exist_ok=False)
+    (out/'program.py').write_text(program,encoding='utf8',newline='\n')
     command=['ssh','-T','-o','BatchMode=yes','-o','ConnectTimeout=15','-o','ConnectionAttempts=1','dtu-hpc',
              'bash -l -c '+shlex.quote('/work3/s234818/mosaic/envs/protenix-tiny/bin/python -')]
-    receipt={'status':'unknown_readonly_query_outcome','program_sha256':hashlib.sha256(PROGRAM.encode()).hexdigest()}
+    receipt={'status':'unknown_readonly_query_outcome','program_sha256':hashlib.sha256(program.encode()).hexdigest()}
     try:
         with (out/'raw.json').open('xb') as output,(out/'stderr.txt').open('xb') as error:
-            result=subprocess.run(command,input=PROGRAM.encode(),stdout=output,stderr=error,timeout=180)
+            result=subprocess.run(command,input=program.encode(),stdout=output,stderr=error,timeout=180)
         receipt.update(returncode=result.returncode,completed_utc=datetime.now(timezone.utc).isoformat(),
                        stdout_sha256=hashlib.sha256((out/'raw.json').read_bytes()).hexdigest())
         if result.returncode:raise RuntimeError('Single read-only SSH observation failed; no reconnect attempted')

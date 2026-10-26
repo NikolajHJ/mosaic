@@ -1,0 +1,18 @@
+{
+  "status": "immutable_resource_retry_same_numerical_AST_bytes_and_source_archive_verified",
+  "files": 16,
+  "declared_cases": 286,
+  "changed_members": [
+    "README.md",
+    "plan.json",
+    "protocol.md",
+    "scripts/README.md",
+    "scripts/protenix_precision_native.py",
+    "scripts/protenix_precision_ops.py",
+    "tests/test_protenix_precision_ops.py"
+  ],
+  "tests_executed_locally": 0,
+  "settings_changed": false,
+  "saved_results_changed": false,
+  "manifest_sha256": "65b4bd350386a8550c3b588eb7de2b0f6084b32ad790a907851c632dba0f023e"
+}

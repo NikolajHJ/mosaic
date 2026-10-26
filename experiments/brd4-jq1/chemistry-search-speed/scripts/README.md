@@ -123,3 +123,14 @@ existing/unknown remote roots. No Protenix runtime branch is authorized here;
 its03 jobs remain unchanged. Preparation is not an allocated/native pass. The
 whole current storage and original native proofs remain mandatory at dispatch
 and every entry; source04 CPU122 has not run while HPC access is unavailable.
+
+
+Current27October metadata operators: `production_observe.py LABEL --attempt 04`
+collects only exact04 or historical03 proof scopes. `repair_archive_inventory.py`
+is read-only and completed. `repair_frame_offload.py` is an abandoned read-only
+inspection; retirement is explicitly disabled after finding already-absent data.
+`repair_remainder_offload.py` completed the exact16,572-member backup/retirement/
+audit under repair-storage01. Every existing phase refuses replay/unknown markers.
+These are byte/metadata operators only, never native calculations. Do not rerun
+completed operations. Production04 CPU122/native entry pass and Boltz29825209
+are current; no new Protenix chain is allowed in that source.

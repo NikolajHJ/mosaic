@@ -43,3 +43,46 @@ See `hpc-access.json` and `investigation-status.json`. The canonical metadata
 collector is `scripts/collect_repair_inputs.py --label <fresh-label>`; it must
 never overwrite the preserved failed inputs01 attempt. No local numerical work
 or new job, no further cleanup and no monitor resumption.
+
+
+## Renewed validation authorized — 2026-10-26T22:53:01.117849+00:00
+
+User requested reconnection, validation of the prepared startup/reference fixes,
+separate gradient investigation and conditional submission after every gate.
+Read-only inputs02 returned zero and authenticated136 delivered metadata files.
+No original result/settings changed. Production04 guard will first reject any
+existing/unknown root before one-shot stage/allocated CPU122/own callback;
+Protenix precision04 remains conditional on the exact chemistry04 capacity
+prerequisites. Current remote target absence and fresh storage are not yet
+established. Monitor remains paused. Detailed numerical findings/submissions
+will be recorded only from actual evidence.
+
+
+## Detailed native failure evidence collected after access recovery
+
+Read-only inputs02 completed22:52:03UTC26October;136 delivered source/proof
+metadata files rehashed. Boltz's prospective raw admission passed all9 directions.
+The later unchanged pilot selects bond-logit row132 source1-to0: baseline AD
+0.8688704371; FD3.6884605885/1.7388761044/0.9298324585 at.01/.003/.001.
+Only the smallest agrees, so its required adjacent pair correctly fails.
+This is a different coordinate/check from the passed raw-simplex admission.
+
+DBMol affinity/contact/confidence component admissions passed; total failed only
+selected X row1 source0-to4 at3e-5 (reported relative error.2542327288 versus
+.15). Reported derivatives are AD-0.113351549 versus FD-0.151993193 there;
+larger scales agree. Original native trunks remainFP32 even though contact/head
+and scalar assembly areFP64. Deterministic repeats do not rule out FP32
+forward rounding or local branch/curvature effects. Static source inspection
+shows no demonstrated missing component derivative: live native recomposition
+is checked independently. No unique cause or numerical correction is established.
+
+See observed-failures-02.json with exact paths/lengths/hashes and verbatim
+per-scale metadata. Original failures stay failed. No favorable pair selection,
+epsilon/tolerance/weight change or new plainBol/DB optimizer submission. Further
+matched native diagnostics are resource-blocked by the same full budget.
+
+Independent random Protenix chemistry03 boundary29821558 also actuallyEXIT1
+at its combined atom derivative check; callback29821559EXIT1/no successor. Its
+previous passed10k segment/certificate remain intact. Scheduler's power-error
+notice is recorded but does not establish the numerical failure's cause. No
+Protenix03 saved result or job was changed/restarted.

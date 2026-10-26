@@ -1,0 +1,22 @@
+{
+  "status": "independent_source_raw_XML122_and_same_job_LSF_CPU_certificate_verified",
+  "cases": 122,
+  "counts": {
+    "tests.test_production_acceleration.AccelerationStartupTests": 8,
+    "tests.test_production_context.ProductionContextTests": 6,
+    "tests.test_production_contract.ProductionContractTests": 53,
+    "tests.test_production_integration.OriginalCallSiteTests": 14,
+    "tests.test_production_ops.ProductionRoutingTests": 33,
+    "tests.test_production_recovery.RecoveryOwnershipTests": 8
+  },
+  "cpu_job": "29825202",
+  "callback_job": "29825203",
+  "certificate_sha256": "6b1e206c933aba5b9f30264bbfbacc94bc9f6048bc89b8eaa35e5fd02885e2c3",
+  "source_manifest_sha256": "01e2de2a3413bd903590dd331c5cedf6b756e856a83df2b73ad65e02b9f9fceb",
+  "original_results_changed": false,
+  "scientific_GPU_start_not_established": true,
+  "observed_adoptions": {
+    "protenix": true,
+    "boltz": true
+  }
+}

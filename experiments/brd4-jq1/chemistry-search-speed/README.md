@@ -138,3 +138,14 @@ segment and remains independent. Both complete futures/control caps and original
 scientific gates are retained. The122-case candidate is only statically prepared;
 SSH timed out before input collection, so no new remote staging, validation or
 submission exists. Do not replay production03 or launch another Protenix chain.
+
+
+27October00:21Paris: startup recovery04 passed122allocated cases, actual
+startups/native adoptions/full dispatch+entry storage, then Boltz chemistry
+29825209 is actualRUN at686committed updates/687states; own callback29825210
+PEND. Original gradient entry/coupled reports passed; target30k unchanged.
+[Bounded storage recovery](runs/20261027-repair-storage-01/README.md) verified
+and offloaded175MB of previously approved inactive trial copies, but separate
+plain Protenix checker05 still cannot meet its full future budget. Existing
+randomPro03 first10k remains passed; its next boundary check failed and was
+not restarted. Monitor remains paused, saved scientific values/settings unchanged.

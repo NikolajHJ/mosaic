@@ -45,3 +45,14 @@ full-current-capacity source. Stage only after actual chemistry04 CPU/adoption
 prerequisites are available; no callback or older bootstrap may be replayed.
 The isolated reference's charge clone authenticates/reverses one complete AST
 expression and preserves production FP32; a native pass remains unestablished.
+
+
+Current precision operator targets ONLY05/source01. Source04 CPU/callback failed
+entry capacity before tests; source05 failed preflight before submission. Both
+roots/sources now exist, so staging again is forbidden. A fresh explicit
+admission operation needs capacity before unchanged286-case/startup/native
+validation. `observe_endpoint_repair.py --repair04 --precision-attempt05 --name
+FRESH` collects both current exact sources in one read-only connection, including
+nested chemistry JSONL prefixes and failed preflight metadata; absent jobs.json
+is explicit, never a fabricated empty successful job map. `verify_protenix_precision_delivery.py` authenticates exact unique job/name/queue terminal LSF
+with the actual submitted versioned job name. No FP64/native pass yet.

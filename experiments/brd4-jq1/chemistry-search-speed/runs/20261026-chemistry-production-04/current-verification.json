@@ -1,0 +1,66 @@
+{
+  "status": "independent_current_CPU122_startup_native_coupled_and_resource_outcomes_verified",
+  "captured_utc": "2026-10-26T23:21:32.621784+00:00",
+  "compact_files": 57,
+  "boltz_chemistry": {
+    "job_id": "29825209",
+    "actual_status": "RUN",
+    "source_manifest_sha256": "01e2de2a3413bd903590dd331c5cedf6b756e856a83df2b73ad65e02b9f9fceb",
+    "CPU_cases_passed": 122,
+    "CPU_job": "29825202",
+    "callback": "29825203",
+    "original_native_and_combined_entry_checks": "passed",
+    "saved_committed_updates": 686,
+    "saved_committed_states": 687,
+    "target_updates": 30000,
+    "rate": 0.0025,
+    "proofs": [
+      {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-04/boltz/boltz2_chemistry-segment-0000/payload/study/native_gradient_checks/report.json",
+        "bytes": 2090,
+        "sha256": "cfa919e63cac1f0a4bbdb3cd09cfce86b92a1da77b5074ea664265721de46e3f"
+      },
+      {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-04/boltz/boltz2_chemistry-segment-0000/payload/study/case-0/combined_initial_checks/report.json",
+        "bytes": 2721,
+        "sha256": "a4d1d08f5edcedc095c58829b1e8cafa934194da8b9578bff3fe189062bba76f"
+      },
+      {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-04/boltz/boltz2_chemistry-segment-0000/payload/production-storage-segment-entry.json",
+        "bytes": 10070,
+        "sha256": "d7fb683965df1a903b667c98c9e503cb8965bdb2472ddea8fd16a531bf4d0456"
+      }
+    ],
+    "terminal_success_established": false
+  },
+  "protenix_precision05": {
+    "status": "full_storage_preflight_failed_before_CPU_submission",
+    "source_manifest_sha256": "65b4bd350386a8550c3b588eb7de2b0f6084b32ad790a907851c632dba0f023e",
+    "native_checks_started": false,
+    "CPU_cases_passed": 0,
+    "declared_CPU_cases": 286,
+    "jobs_submitted": false,
+    "preflight_gate": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-05/preflight/current-chemistry-capacity-preflight/production-storage-entry.json",
+      "bytes": 10072,
+      "sha256": "450240abaa7f29cf5a41df06daa55e3de02ed6276d3e3991b9c54058d5df6a16"
+    },
+    "observed_parent_required_bytes": 49070056849,
+    "observed_available_bytes": 48812835324,
+    "declared_new_checker_group_bytes": 822083584,
+    "derived_required_bytes_with_group": 49892140433,
+    "derived_shortfall_bytes": 1079305109,
+    "derived_values_are_not_a_passed_gate": true
+  },
+  "cleanup": {
+    "status": "independently_reconciled_every_unlink_to_exact_verified_laptop_member",
+    "returncode": 0,
+    "removed_files": 16572,
+    "removed_bytes": 175379500
+  },
+  "plain_Boltz_and_DBMol_new_continuations_submitted": false,
+  "optimization_settings_changed": false,
+  "current_saved_results_changed": false,
+  "scientific_tests_executed_locally": 0,
+  "monitor_resumed": false
+}

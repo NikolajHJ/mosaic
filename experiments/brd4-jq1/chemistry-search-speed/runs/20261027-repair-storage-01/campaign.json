@@ -1,0 +1,41 @@
+{
+  "status": "every_exact_inactive_unlink_reconciled_to_verified_laptop_member",
+  "removed_files": 16572,
+  "removed_bytes": 175379500,
+  "laptop_backup": {
+    "status": "all_laptop_archive_members_verified",
+    "archive_bytes": 151044095,
+    "archive_sha256": "973347a292fe7e9ebb91804a2dff9b1488dbdbafdb0a8b639b02e5463d189e54",
+    "plan_sha256": "32343eadea6486af376b3e901ce3ac3161cc3c53eb32df8219a99863f53b90df",
+    "files": 16572
+  },
+  "operation": {
+    "status": "exact_verified_inactive_trial_tail_retired",
+    "returncode": 0,
+    "removed_files": 16572,
+    "removed_bytes": 175379500,
+    "journal_sha256": "eb187d5c56fbe0e22193ef77473c7fd4c3e3d7e947583cd2ccf562cb9a25fdaf",
+    "plan_sha256": "32343eadea6486af376b3e901ce3ac3161cc3c53eb32df8219a99863f53b90df",
+    "after": {
+      "status": "original2176_and_current_bound_inputs_protected",
+      "protected_paths": 2185,
+      "source_manifest_sha256": "01e2de2a3413bd903590dd331c5cedf6b756e856a83df2b73ad65e02b9f9fceb"
+    },
+    "current_results_changed": false
+  },
+  "audit": {
+    "status": "independently_reconciled_every_unlink_to_exact_verified_laptop_member",
+    "returncode": 0,
+    "removed_files": 16572,
+    "removed_bytes": 175379500
+  },
+  "audit_sha256": "5217df95c4fb898b29e1127615a88e0aad2a34007e68a4c2391622239b83d0bf",
+  "three_report_inspections_failed_before_mutation": true,
+  "report_frame_files_removed": 0,
+  "full_Protenix_checker_admission_after_cleanup": "failed",
+  "new_remaining_shortfall_is_derived_not_pass": 1079305109,
+  "current_results_changed": false,
+  "loss_values_changed": false,
+  "models_environments_or_other_projects_changed": false,
+  "monitor_resumed": false
+}

@@ -8007,3 +8007,104 @@ connect timeout remains the access blocker; no blind retry or old launcher
 replay. Paused monitor unchanged. Repository layout check reports the same21
 preexisting unrelated discovery/README issues, no owner error; left outside
 scope. Final static auditSHA 412de14d320741db20bf40ad5304459129d631aec138ae72d0c33e88779a97e8.
+
+## 2026-10-26 Renewed repair validation; HPC access restored
+
+User requested reconnection, validation of the prepared startup/reference fixes,
+separate gradient investigation and conditional submission after every gate.
+Read-only inputs02 returned zero and authenticated136 delivered metadata files.
+No original result/settings changed. Production04 guard will first reject any
+existing/unknown root before one-shot stage/allocated CPU122/own callback;
+Protenix precision04 remains conditional on the exact chemistry04 capacity
+prerequisites. Current remote target absence and fresh storage are not yet
+established. Monitor remains paused. Detailed numerical findings/submissions
+will be recorded only from actual evidence.
+
+
+## 2026-10-27 Precision04 resource admission failure; archive inventory prepared
+
+Precision04 CPU29825222 exited1 before tests/model loading at renewed full
+capacity entry after quota rounding changed. Initial preflight remains a real
+pass, not a reservation. Preserve this failed source/job/callback. Prepare a
+read-only Mosaic-only duplicate-archive inventory under repair-storage01; zero
+bytes removed, no guard reduced or replacement replayed. Prior user backup/
+inactive-retirement authorization is retained, but no candidate is yet proven
+eligible. Current running Boltz chemistry04 and all saved results unchanged.
+
+
+## 2026-10-27 Bounded old-trial backup prepared, no unlink yet
+
+Archive/report-copy inspections reclaimed zero; completed-report frames were
+already absent. Preserve all three read-only operator failures. Select16,572
+old non-twentieth trial copies/175,379,500 bytes from the untouched tail of the
+previous approved inactive offload plan; current results/native endpoints and
+2,176 protected old inputs excluded. Newcurrent04 complete proof closure
+rehashes before/after. A fresh complete laptop stream/every-member pass must
+precede exact retirement; no gate reduction, current run mutation or claimed
+new capacity. See chemistry-search-speed repair-storage01 and exact plans.
+
+
+## 2026-10-27 Precision05 resource retry prepared, identical numerical policy
+
+Source04 CPU29825222/callback29825223 failed unchanged full-capacity entry
+before any fixtures or model. New precision05 binds those exact failures,
+retains the identical286 declared cases/four reference casts/all numerical
+checks and new output-only provenance. No optimization branch or settings/
+saved-result change. Prepare only; no source staging or new job until backup
+and fresh full admission pass. Monitor stays paused.
+
+
+## 2026-10-27 Verified repair outcomes and resource handoff23:21UTC26October
+
+Access recovered; source04 chemistry17files staged read-only. CPU29825202 and
+callback29825203 actualDONE/LSF122rawXMLcases passed0fail/error/skip, actual
+startups/native adoption/full storage passed. Only Boltz chemistry29825209
+and owncallback29825210 submitted. ActualGPU RUN with entry storage
+48,904,296,689required/49,739,092,913available/4GiB/100k reserves and both
+original native/raw and combined initial derivative reports passed. Newline
+committed prefix686updates/687states; target30k LR0.0025/settings exact. No
+terminal claim. Independent compact proofSHA
+abce64f2cbff70e824f1482e37c3006a84267394b2b16d5a99b4ee75e0364d4c.
+
+Pro precision04 CPU29825222/callback29825223 failed renewed storage entry
+before tests/model. Identical-numerics precision05source16 manifest
+65b4bd350386a8550c3b588eb7de2b0f6084b32ad790a907851c632dba0f023e
+staged; its fresh preflight failed before ANY CPU/submission. Original four
+reference expressions/fullFP64audit/15%/negative/frozen checks and286cases
+are unchanged but unexecuted. No FP64 pass/Pro50k continuation.
+
+Bounded repair-storage01 completed exact16,572 inactive old trial-file copies/
+175,379,500bytes only AFTER full151,044,095byte laptop archive SHA
+973347a292fe7e9ebb91804a2dff9b1488dbdbafdb0a8b639b02e5463d189e54
+and every member passed. All2,185 old/current protected bindings preserved,
+every journal unlink independently reconciled; every selected HPC absence
+verified. Current saved results, every20th historical state, loss values, models/
+envs and other projects unchanged. Three report-copy inspections failed safely
+(schema/captured preterminalLSF/alreadyabsent); zero report copies deleted.
+No more safe sufficient duplicates established, no blind further cleanup.
+
+The actual precision05 parent gate remains failed49,070,056,849required versus
+48,812,835,324available. With the unchanged822,083,584checker group, derived
+shortage1,079,305,109bytes remains; this derivation is NOT a passed gate.
+Source05root onlypreflight/no jobs.json or CPU markers. Never replay either
+failed stage/callback. Need additional conservative capacity before any further
+Protenix/native diagnostic submission, no reserve/forecast reduction.
+
+Bol source06 raw admissionpassed but pilot bond-logit row132AD.8688704 versus
+FD3.68846/1.73888/.929832 at.01/.003/.001 failed required adjacent pair. DBMol
+components passed; totalXrow1source0to4 selected3e-5 derivative mismatch
+.25423relative >.15, larger scales agree. No unique cause/numerical correction
+established; no new plainBol/DBcontinuation or changed gate. Separate random
+Pro03 boundary29821558/callback29821559 alsoEXIT1 on combinedatoms check;
+first10k accepted segment retained, no restart. Monitor stays paused.
+All scientific tests/model work onlyallocatedHPC; localstdlibbytes/AST/JSON/XML
+and packaging/audits only. Unrelated working changes remain outside commit.
+
+
+Local final audit parsed125owner Python files and233JSON records using only
+stdlib AST/JSON. Layout verification retains21preexisting unrelated issues,
+none in the two changed owners; no local scientific tests ran. New immutable
+source05 numerical AST/bytes identical to04 except output/job roots, with every
+old failure/source preserved. Exact current outcomes and cleanup proof hashes
+are recorded in canonical run campaigns; unrelated PDF/OneNote/other owners
+remain excluded. Monitor remains paused.

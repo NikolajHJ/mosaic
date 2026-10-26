@@ -1,0 +1,318 @@
+{
+  "status": "actual_failure_metadata_investigated_not_numerically_resolved",
+  "observation_utc": "2026-10-26T22:52:03.693308+00:00",
+  "input_packet_sha256": "be48c3304f06f8bc871d1d77399b8024b7c72446de65ef9fa6dee812d0f0b0bc",
+  "evidence": {
+    "122": {
+      "binding": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-06/boltz-validate-10000/payload/study/native_gradient_checks-prospective/admission.json",
+        "bytes": 2537298,
+        "sha256": "e3788e19144a30314ebc67c82e0455a4a4b656d67c5a5e9695a0e3450badb217"
+      },
+      "status": "passed",
+      "failures": []
+    },
+    "123": {
+      "binding": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-06/boltz-validate-10000/payload/study/early_pilot/combined_initial_checks/report.json",
+        "bytes": 2787,
+        "sha256": "48725c2da3b3a32ac3bcb7b99846beb4ebf0313ceaa512c6731a393432b7fcc1"
+      },
+      "status": "failed",
+      "directions": [
+        {
+          "analytic": 0.04821431636810303,
+          "destination": 0,
+          "field": "atoms",
+          "probes": [
+            {
+              "agrees": true,
+              "analytic": 0.04821431636810303,
+              "epsilon": 0.01,
+              "finite_difference": 0.047272443771362305,
+              "preparation_identity": "faed96f1035a816b7039d5a40d3d3683496f39616c04445f2cdd46752c74e67f"
+            },
+            {
+              "agrees": true,
+              "analytic": 0.04821431636810303,
+              "epsilon": 0.003,
+              "finite_difference": 0.047653913497924805,
+              "preparation_identity": "faed96f1035a816b7039d5a40d3d3683496f39616c04445f2cdd46752c74e67f"
+            },
+            {
+              "agrees": true,
+              "analytic": 0.04821431636810303,
+              "epsilon": 0.001,
+              "finite_difference": 0.04824995994567871,
+              "preparation_identity": "faed96f1035a816b7039d5a40d3d3683496f39616c04445f2cdd46752c74e67f"
+            }
+          ],
+          "row": 11,
+          "source": 1
+        },
+        {
+          "analytic": 0.8688704371452332,
+          "destination": 0,
+          "field": "bonds",
+          "probes": [
+            {
+              "agrees": false,
+              "analytic": 0.8688704371452332,
+              "epsilon": 0.01,
+              "finite_difference": 3.6884605884552,
+              "preparation_identity": "faed96f1035a816b7039d5a40d3d3683496f39616c04445f2cdd46752c74e67f"
+            },
+            {
+              "agrees": false,
+              "analytic": 0.8688704371452332,
+              "epsilon": 0.003,
+              "finite_difference": 1.7388761043548584,
+              "preparation_identity": "faed96f1035a816b7039d5a40d3d3683496f39616c04445f2cdd46752c74e67f"
+            },
+            {
+              "agrees": true,
+              "analytic": 0.8688704371452332,
+              "epsilon": 0.001,
+              "finite_difference": 0.9298324584960938,
+              "preparation_identity": "faed96f1035a816b7039d5a40d3d3683496f39616c04445f2cdd46752c74e67f"
+            }
+          ],
+          "row": 132,
+          "source": 1
+        }
+      ]
+    },
+    "125": {
+      "binding": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-06/dbmol-validate-05000/payload/study/native_gradient_checks-prospective/dbmol_total_loss/admission.json",
+        "bytes": 2456510,
+        "sha256": "f48ec5cea0d8017d7b30bd517001c469201062fa0040a81bb2da6f8bd348451a"
+      },
+      "status": "failed",
+      "failures": [
+        "Preselected local pair/finer resolved comparison failed: 4"
+      ],
+      "failed_direction": {
+        "field": "X",
+        "row": 1,
+        "source": 0,
+        "target": 4,
+        "roles": [
+          "geometry_max_margin"
+        ],
+        "selected_local_pair": [
+          0.0001,
+          3e-05
+        ],
+        "pair_passed": false,
+        "finer_resolved_disagreements": [],
+        "unselected_resolved_disagreements": [],
+        "coarser_local_resolved_disagreements": [],
+        "admission_evidence": false,
+        "outcome": "failed_selected_pair",
+        "coarse_observations_replace_original_gate": false
+      },
+      "probe_observations": [
+        {
+          "epsilon": 0.01,
+          "scheme": "central",
+          "original_scale": true,
+          "local_scale": false,
+          "legacy_central_interior_feasible": true,
+          "predicted_scalar_difference": -0.002267999989830294,
+          "predicted_endpoint_signals": [
+            0.001133999994915147,
+            0.001133999994915147
+          ],
+          "precision_eligible": false,
+          "evaluated": true,
+          "agrees": true,
+          "comparison_resolved": true,
+          "relative_error": 3.7680496164547726e-05,
+          "absolute_residual": 8.545936491799466e-08,
+          "uncertainty_charged_inside_tolerance": 2.384185791015625e-07,
+          "outcome": "agreement",
+          "observed_scalar_difference": -0.002267914530465376,
+          "actual_FP32_displacement_JVP": -0.002267999989830294,
+          "effective_step": 0.019999995827674866,
+          "observed_derivative": -0.11339575017946572,
+          "represented_derivative": -0.11340002314860304,
+          "resolution_floor": 2.384185791015625e-07,
+          "endpoint_repeat_spread": 0.0
+        },
+        {
+          "epsilon": 0.003,
+          "scheme": "central",
+          "original_scale": true,
+          "local_scale": false,
+          "legacy_central_interior_feasible": true,
+          "predicted_scalar_difference": -0.0006804018580304216,
+          "predicted_endpoint_signals": [
+            0.0003402009290152108,
+            0.0003402009290152108
+          ],
+          "precision_eligible": false,
+          "evaluated": true,
+          "agrees": true,
+          "comparison_resolved": true,
+          "relative_error": 0.0012268029041266652,
+          "absolute_residual": 8.357442689010952e-07,
+          "uncertainty_charged_inside_tolerance": 2.384185791015625e-07,
+          "outcome": "agreement",
+          "observed_scalar_difference": -0.0006812376022993227,
+          "actual_FP32_displacement_JVP": -0.0006804018580304216,
+          "effective_step": 0.00599999725818634,
+          "observed_derivative": -0.11353965226731537,
+          "represented_derivative": -0.1134003614921803,
+          "resolution_floor": 2.384185791015625e-07,
+          "endpoint_repeat_spread": 0.0
+        },
+        {
+          "epsilon": 0.001,
+          "scheme": "central",
+          "original_scale": true,
+          "local_scale": true,
+          "legacy_central_interior_feasible": true,
+          "predicted_scalar_difference": -0.00022680142620767896,
+          "predicted_endpoint_signals": [
+            0.00011340071310383948,
+            0.00011340071310383948
+          ],
+          "precision_eligible": true,
+          "evaluated": true,
+          "agrees": true,
+          "comparison_resolved": true,
+          "relative_error": 0.008356096380229138,
+          "absolute_residual": 1.9111442823849245e-06,
+          "uncertainty_charged_inside_tolerance": 2.384185791015625e-07,
+          "outcome": "agreement",
+          "observed_scalar_difference": -0.00022871257049006388,
+          "actual_FP32_displacement_JVP": -0.00022680142620767896,
+          "effective_step": 0.001999989151954651,
+          "observed_derivative": -0.11435690551948047,
+          "represented_derivative": -0.11340132819521494,
+          "resolution_floor": 2.384185791015625e-07,
+          "endpoint_repeat_spread": 0.0
+        },
+        {
+          "epsilon": 0.0003,
+          "scheme": "central",
+          "original_scale": false,
+          "local_scale": true,
+          "legacy_central_interior_feasible": true,
+          "predicted_scalar_difference": -6.804228894363717e-05,
+          "predicted_endpoint_signals": [
+            3.402114447181859e-05,
+            3.402114447181859e-05
+          ],
+          "precision_eligible": true,
+          "evaluated": true,
+          "agrees": true,
+          "comparison_resolved": true,
+          "relative_error": 0.0043951610479164615,
+          "absolute_residual": 2.99056817976151e-07,
+          "uncertainty_charged_inside_tolerance": 2.384185791015625e-07,
+          "outcome": "agreement",
+          "observed_scalar_difference": -6.774323212566102e-05,
+          "actual_FP32_displacement_JVP": -6.804228894363717e-05,
+          "effective_step": 0.0005999952554702759,
+          "observed_derivative": -0.11290627968810174,
+          "represented_derivative": -0.1134047116594375,
+          "resolution_floor": 2.384185791015625e-07,
+          "endpoint_repeat_spread": 0.0
+        },
+        {
+          "epsilon": 0.0001,
+          "scheme": "central",
+          "original_scale": false,
+          "local_scale": true,
+          "legacy_central_interior_feasible": true,
+          "predicted_scalar_difference": -2.268156984541747e-05,
+          "predicted_endpoint_signals": [
+            1.1340784922708735e-05,
+            1.1340784922708735e-05
+          ],
+          "precision_eligible": true,
+          "evaluated": true,
+          "agrees": true,
+          "comparison_resolved": true,
+          "relative_error": 0.007441248801544209,
+          "absolute_residual": 1.7004454822000525e-07,
+          "uncertainty_charged_inside_tolerance": 2.384185791015625e-07,
+          "outcome": "agreement",
+          "observed_scalar_difference": -2.2851614393637476e-05,
+          "actual_FP32_displacement_JVP": -2.268156984541747e-05,
+          "effective_step": 0.0001999884843826294,
+          "observed_derivative": -0.11426465110819312,
+          "represented_derivative": -0.11341437941007541,
+          "resolution_floor": 2.384185791015625e-07,
+          "endpoint_repeat_spread": 0.0
+        },
+        {
+          "epsilon": 3e-05,
+          "scheme": "central",
+          "original_scale": false,
+          "local_scale": true,
+          "legacy_central_interior_feasible": true,
+          "predicted_scalar_difference": -6.8018836945071826e-06,
+          "predicted_endpoint_signals": [
+            3.4009418472535913e-06,
+            3.4009418472535913e-06
+          ],
+          "precision_eligible": true,
+          "evaluated": true,
+          "agrees": false,
+          "comparison_resolved": true,
+          "relative_error": 0.2542327288418971,
+          "absolute_residual": 2.3187682267611365e-06,
+          "uncertainty_charged_inside_tolerance": 2.384185791015625e-07,
+          "outcome": "resolved_disagreement",
+          "observed_scalar_difference": -9.120651921268319e-06,
+          "actual_FP32_displacement_JVP": -6.8018836945071826e-06,
+          "effective_step": 6.000697612762451e-05,
+          "observed_derivative": -0.15199319328923128,
+          "represented_derivative": -0.11335154899391608,
+          "resolution_floor": 2.384185791015625e-07,
+          "endpoint_repeat_spread": 0.0
+        }
+      ]
+    },
+    "126": {
+      "binding": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-06/dbmol-validate-05000/payload/study/native_gradient_checks-prospective/dbmol_affinity_loss/admission.json",
+        "bytes": 3052634,
+        "sha256": "240514816ccda6858972e4900f49039f8094b5b5ada678e1090f81976ca274a1"
+      },
+      "status": "passed",
+      "failures": []
+    },
+    "127": {
+      "binding": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-06/dbmol-validate-05000/payload/study/native_gradient_checks-prospective/dbmol_confidence_loss/admission.json",
+        "bytes": 2456619,
+        "sha256": "8e55e269016c643ee34963762ebcf1f4a09ab91c294d7580053c73b440fb8899"
+      },
+      "status": "passed",
+      "failures": []
+    },
+    "128": {
+      "binding": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-06/dbmol-validate-05000/payload/study/native_gradient_checks-prospective/dbmol_contact_loss/admission.json",
+        "bytes": 2971142,
+        "sha256": "38dc2023ac549fff0d997ef4afd9870c4454d9d3ed91d1c603d4c0551cbf011c"
+      },
+      "status": "passed",
+      "failures": []
+    }
+  },
+  "findings": [
+    "Boltz prospective raw endpoint passes; original pilot logit bonds row132 source1 to0 rejects coarser .01/.003, agrees only .001, so original required adjacent pair is absent.",
+    "DBMol individual components pass; total fails selected X row1 source0 to4 at3e-5 (reported relative_error .2542327288418971 versus unchanged .15). Larger observed scales agree; deterministic repeats and frozen identity do not rule out FP32 rounding or a local nonlinearity.",
+    "No unique root cause or scientific correction is established by static metadata. No step/tolerance/loss changes or repeated original optimization are authorized by these observations."
+  ],
+  "next_numerical_work": "Separate matched native diagnostic needed to distinguish scalar resolution, branch/local curvature and gradient composition; never select an alternative passing pair after FD.",
+  "new_numerical_tests_executed": 0,
+  "original_results_changed": false,
+  "optimization_settings_changed": false,
+  "original_failures_preserved": true
+}

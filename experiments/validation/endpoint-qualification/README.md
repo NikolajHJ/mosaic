@@ -120,3 +120,15 @@ Boltz's later failure is in a separate pilot bond-logit check. No numerical
 remedy or relaxed gate is selected before reading detailed actual FD evidence.
 The driver metadata now binds the actual v2 policy with four new regressions.
 One read-only SSH attempt timed out; nothing newly staged, tested or submitted.
+
+
+27October00:21Paris: access recovered and exact reports collected. Plain Boltz
+passed raw admission but failed a separate pilot bond-logit check; DBMol total
+failed one preselected atom-scale comparison despite component passes. No
+scientific gate was weakened and neither continuation was resubmitted.
+Precision04 CPU failed full entry capacity before tests; the numerically
+identical [precision05](runs/20261027-protenix-endpoint-fix-05/README.md) is
+staged but failed preflight before any CPU submission, even after bounded
+verified inactive offload. Approximately1.08GB additional conservative headroom
+is still needed for the checker group. No FP64/reference pass established.
+Detailed evidence in investigation07; source04/05 failures preserved.

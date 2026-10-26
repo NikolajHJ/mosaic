@@ -1,0 +1,7 @@
+{
+  "tests.test_current_capacity": 5,
+  "tests.test_protenix_precision_admission": 30,
+  "tests.test_protenix_precision_native": 82,
+  "tests.test_protenix_precision_ops": 72,
+  "tests.test_protenix_precision_reference": 97
+}

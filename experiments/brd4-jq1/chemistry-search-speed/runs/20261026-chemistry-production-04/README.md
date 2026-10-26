@@ -63,3 +63,39 @@ is never skipped. The Protenix candidate repins this exact complete storage
 source. See current campaign/preparation/static-verification/local-drafts JSON.
 HPC access is still unestablished after the single timed-out attempt; no new
 remote staging, target absence, full-capacity verdict or job is claimed.
+
+
+## Renewed validation authorized — 2026-10-26T22:53:01.117849+00:00
+
+User requested reconnection, validation of the prepared startup/reference fixes,
+separate gradient investigation and conditional submission after every gate.
+Read-only inputs02 returned zero and authenticated136 delivered metadata files.
+No original result/settings changed. Production04 guard will first reject any
+existing/unknown root before one-shot stage/allocated CPU122/own callback;
+Protenix precision04 remains conditional on the exact chemistry04 capacity
+prerequisites. Current remote target absence and fresh storage are not yet
+established. Monitor remains paused. Detailed numerical findings/submissions
+will be recorded only from actual evidence.
+
+
+## Actual validated restart — 26 October23:21:32UTC /27October00:21Paris
+
+Source04/source03 is staged read-only; CPU29825202 and own callback29825203
+actuallyDONE/LSFsuccess. All122 exact raw XML cases passed, no fails/errors/skips,
+including8 adapter-entry and8 recovery ownership/budget cases; both exact
+metadata startups and original producer/native/compiler adoptions passed.
+Independent CPU proof SHA6b1e206c933aba5b9f30264bbfbacc94bc9f6048bc89b8eaa35e5fd02885e2c3.
+
+The callback passed fresh full storage and submitted ONLY Boltz chemistry
+29825209/own callback29825210. GPU29825209 is actualRUN, callbackPEND normally.
+Mandatory GPU entry storage passed48,904,296,689required/49,739,092,913available
+with4GiB/100k reserves; original raw native and combined initial derivative
+reports both passed. Actual committed prefix686updates/687states, latest
+state/global_step686. This is a running first10k segment toward30k, not terminal
+scientific success. Rate0.0025, delayed.001-to100through30k and all settings
+remain unchanged. Existing Protenix03 is never resubmitted here.
+
+Exact local independent delivery verificationSHA
+abce64f2cbff70e824f1482e37c3006a84267394b2b16d5a99b4ee75e0364d4c,
+current-verification.json, raw CPU/startup/source/LSF metadata and actual submission
+vectors preserved. No local numerical work, monitor still paused.

@@ -19,8 +19,8 @@ import time
 
 VERSION = "protenix-endpoint-precision-plan-v2"
 BASE = Path("/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01")
-ROOT = BASE / "protenix-endpoint-fix-04"
-SOURCE = BASE / "protenix-endpoint-fix-release-04/source"
+ROOT = BASE / "protenix-endpoint-fix-05"
+SOURCE = BASE / "protenix-endpoint-fix-release-05/source"
 FORENSICS = BASE / "protenix-endpoint-forensics-release-01/source"
 FORENSICS_PIN = "d127d6abe87307a5d305edb6d04e3a32e3545c508e58b82ce45290e0f3fc03d8"
 FORENSICS_PLAN_SHA = "14d0cf5b03af73ee5d87ece55b8c48616897521c50bbb40e8f76b6a9bb8f5861"

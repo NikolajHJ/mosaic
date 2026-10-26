@@ -29,3 +29,5 @@ an original failed run into a pass or authorize a gate waiver.
 - [20261026-endpoint-investigation-07](20261026-endpoint-investigation-07/README.md):
   separate pilot-logit and DBMol-total failures; metadata label fix only so far,
   detailed actual FD collection blocked. No numerical waiver or new retry.
+
+- [27October precision resource retry05](20261027-protenix-endpoint-fix-05/README.md): identical numerical source staged; full preflight failed, no CPU/GPU submitted.
