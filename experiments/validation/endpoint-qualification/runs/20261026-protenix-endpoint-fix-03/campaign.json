@@ -1,5 +1,5 @@
 {
-  "status": "allocated_CPU_passed_native_GPU_checks_pending",
+  "status": "FP32_baseline_passed_FP64_dtype_audit_failed",
   "captured_utc": "2026-10-26T11:38:44.661280+00:00",
   "CPU": {
     "status": "passed",
@@ -69,5 +69,47 @@
       "proof_sha256": "d9b23beb7dfedc95879713bf3bca8d645b8d30903c77d6ca96fb1a25e955656c",
       "both_chemistry_futures_retained": true
     }
+  },
+  "latest_observed_utc": "2026-10-26T21:40:18.245483+00:00",
+  "latest_independent_verification": {
+    "path": "status-20261026-evening-verification.json",
+    "sha256": "a2ffcd77e49b015955ae5773fe56b9f163b54c08d05c017612810ea5ce0e383a",
+    "metadata_files": 177,
+    "scope": "Original large scientific bytes remain remote; exact saved same-job LSF, assessment, terminal acceptance certificate and current pending submissions verified"
+  },
+  "latest_actual_jobs": {
+    "cpu": {
+      "job_id": "29820595",
+      "phase": "cpu",
+      "parent": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-03/cpu",
+      "submission_sha256": "72f1337756c499531c1005c909132abcde10abcae8aecb0ef2a456881d128e90",
+      "terminal": "DONE_PERSISTED",
+      "raw_same_job_LSF_sha256": "0101b6685e34d3f0ba5c25ba1cd3ca81907a6b771597bc94d75ee8e71613f782",
+      "scheduler_state_invented": false
+    },
+    "after-cpu": {
+      "job_id": "29820597",
+      "phase": "after-cpu",
+      "parent": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-03/after-cpu",
+      "submission_sha256": "0a99ebbd9065c73ad034593911ea93319243ab5375bfbb3791ec0fb2eff95fb5",
+      "terminal": "DONE_PERSISTED",
+      "raw_same_job_LSF_sha256": "b6de8f566ce44905e075486942de57350522982899a0b4a2782fa8fe9a1d52cc",
+      "scheduler_state_invented": false
+    },
+    "gpu": {
+      "job_id": "29820643",
+      "phase": "gpu",
+      "parent": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-03/gpu",
+      "submission_sha256": "89ae3820a49f9d77f95c1ba8f805235435322d314303c3f7173765b14e945546",
+      "terminal": "FAILED_PERSISTED",
+      "raw_same_job_LSF_sha256": "9f842faf715762f367bbc57948e711d921718b6772262495790b16a0d9bb2474",
+      "scheduler_state_invented": false
+    }
+  },
+  "latest_validation_findings": {
+    "status": "FP32_baseline_passed_FP64_reference_dtype_audit_failed",
+    "error": "ValueError(\"Reference native computation contains non-FP64 floating operations: [{'where': 'forward.0:jit.jaxpr.77:jit.jaxpr.3:convert_element_type', 'dtype': 'float32'}, {'where': 'forward.0:jit.jaxpr.77:jit.jaxpr.4:asinh', 'dtype': 'float32'}, {'where': 'forward.0:jit.jaxpr.77:jit.jaxpr.4:asinh', 'dtype': 'float32'}, {'where': 'forward.0:jit.jaxpr.77:jit.jaxpr.5:reshape', 'dtype': 'float32'}, {'where': 'forward.0:jit.jaxpr.77:jit.jaxpr.5:reshape', 'dtype': 'float32'}, {'where': 'forward.0:jit.jaxpr.77:jit.jaxpr.6:dot_general', 'dtype': 'float32'}]\")",
+    "gradient_agreement_established": false,
+    "original_results_changed": false
   }
 }

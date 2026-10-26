@@ -61,3 +61,19 @@ native, pilot, runtime, frozen-state, startup and storage passes. Protenix's
 separate precision capsule cannot submit optimization: its FP64 result must
 first pass and its continuation integration must then be validated. Saved
 results and optimization settings remain unchanged; the monitor remains paused.
+
+
+## Saved terminal status — 26 October 21:40 UTC
+
+Protenix validation29820643 passed its fresh authenticated FP32 baseline,
+then failed the FP64 JAXPR dtype audit: float32 convert/asinh/reshape/dot operations
+remain in the reference path. No completed independent gradient agreement and
+no continuation submission. Input/model preservation passed; the original saved
+endpoint and optimizer settings are unchanged. This is a reference-engineering
+failure, not proof of incorrect production gradients. The 278 CPU passes remain
+valid. Same-job LSF exit1 is persisted; the live record has aged out.
+
+See campaign.json and status-20261026-evening-verification.json. This status
+check changed no runtime code, settings or saved results, submitted no jobs and
+left the monitor paused. Existing automated successor submissions above belong
+to the original controller. Local stdlib bytes/JSON/LSF/schema checks only.

@@ -1,5 +1,5 @@
 {
-  "status": "allocated_CPU_passed_native_GPU_checks_pending",
+  "status": "native_validations_failed_no_optimizer_children",
   "captured_utc": "2026-10-26T11:38:44.661280+00:00",
   "CPU": {
     "status": "passed",
@@ -89,6 +89,85 @@
       "file_reserve": 100000,
       "proof_sha256": "f19352d4fe55f856582408ccfd5de3bb26cc1f614b252a2b55216001d39c489d",
       "both_chemistry_futures_retained": true
+    }
+  },
+  "latest_observed_utc": "2026-10-26T21:40:18.245483+00:00",
+  "latest_independent_verification": {
+    "path": "status-20261026-evening-verification.json",
+    "sha256": "a2ffcd77e49b015955ae5773fe56b9f163b54c08d05c017612810ea5ce0e383a",
+    "metadata_files": 177,
+    "scope": "Original large scientific bytes remain remote; exact saved same-job LSF, assessment, terminal acceptance certificate and current pending submissions verified"
+  },
+  "latest_actual_jobs": {
+    "cpu": {
+      "job_id": "29820662",
+      "phase": "cpu",
+      "parent": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-06/cpu",
+      "submission_sha256": "f9b2482540bb6fffc0c97681dfbdd54d5d425694e3e733c000547c902ae0f166",
+      "terminal": "DONE_PERSISTED",
+      "raw_same_job_LSF_sha256": "3659a3747bcdc8090f579706fa8c2b9d9dd31bf7df307f5a30d466c01c543082",
+      "scheduler_state_invented": false
+    },
+    "after-cpu": {
+      "job_id": "29820663",
+      "phase": "after-cpu",
+      "parent": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-06/after-cpu",
+      "submission_sha256": "eeea6e7dff20bab6e2fc76b89b5e5f347fe7c244493a088bfaf839772a06e42d",
+      "terminal": "DONE_PERSISTED",
+      "raw_same_job_LSF_sha256": "4d22316ac552d4e2be8bdc60c4785a38738acd1df562ca9b97d38625fb0f435b",
+      "scheduler_state_invented": false
+    },
+    "boltz-validate-10000": {
+      "job_id": "29820672",
+      "phase": "validate",
+      "parent": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-06/boltz-validate-10000",
+      "submission_sha256": "22293de558cdd23c1290f53ecb7a01b260b192974b96c4f7ce099c7a9198874e",
+      "terminal": "FAILED_PERSISTED",
+      "raw_same_job_LSF_sha256": "350ec3e413ecea8747084068836a6bed51519f3ce5086c90d0d3c54bbf05ea12",
+      "scheduler_state_invented": false
+    },
+    "boltz-after-validate-10000": {
+      "job_id": "29820673",
+      "phase": "after-validate",
+      "parent": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-06/boltz-after-validate-10000",
+      "submission_sha256": "d5665194c8e3dfd1e7314af73fcd4c129a02d312230266b19a7b4c24f0531038",
+      "terminal": "FAILED_PERSISTED",
+      "raw_same_job_LSF_sha256": "9450a65b6baf3f787e6f62316deb6033dbd7e2b2ef2f2fcf4f956f003de04895",
+      "scheduler_state_invented": false
+    },
+    "dbmol-validate-05000": {
+      "job_id": "29820674",
+      "phase": "validate",
+      "parent": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-06/dbmol-validate-05000",
+      "submission_sha256": "4d08ed8ea5e999b024b3b74effee22b496f8c501ba5eeea0f3ea24730e852780",
+      "terminal": "FAILED_PERSISTED",
+      "raw_same_job_LSF_sha256": "c274445a056a937d463c3a97382f0380302e3acd1eca1a2fefb96566efb0684c",
+      "scheduler_state_invented": false
+    },
+    "dbmol-after-validate-05000": {
+      "job_id": "29820675",
+      "phase": "after-validate",
+      "parent": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-06/dbmol-after-validate-05000",
+      "submission_sha256": "d88add625fe08474798fbece5568e8806defa63abfeee7fd3871ce19625261a9",
+      "terminal": "FAILED_PERSISTED",
+      "raw_same_job_LSF_sha256": "1d5559d93ec98628b40a1e7e64f5010f770f668831eea6010a867ca02a10347c",
+      "scheduler_state_invented": false
+    }
+  },
+  "latest_validation_findings": {
+    "boltz": {
+      "status": "failed_validation_no_continuation",
+      "error": "AssertionError('Combined frozen-reference bonds derivative check failed')",
+      "entry_admission": "passed",
+      "original_results_changed": false,
+      "assessment_sha256": "9a9df95c619db67f7776629046e7e0ee9905ae5636186b780229397002ceead0"
+    },
+    "dbmol": {
+      "status": "failed_validation_no_continuation",
+      "error": "DerivativeCheckError('Prospective endpoint admission failed; original coarse observations preserved')",
+      "entry_admission": "failed",
+      "original_results_changed": false,
+      "assessment_sha256": "552642243c9a041cbd73b892706ba8ca0af2432f51fd7d598bdce1273c7f4967"
     }
   }
 }

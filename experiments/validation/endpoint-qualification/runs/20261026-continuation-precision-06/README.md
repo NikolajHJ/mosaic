@@ -48,3 +48,19 @@ native, pilot, runtime, frozen-state, startup and storage passes. Protenix's
 separate precision capsule cannot submit optimization: its FP64 result must
 first pass and its continuation integration must then be validated. Saved
 results and optimization settings remain unchanged; the monitor remains paused.
+
+
+## Saved terminal status — 26 October 21:40 UTC
+
+Plain Boltz validation29820672 passed prospective endpoint admission, then
+failed the ten-update pilot's combined frozen-reference bonds derivative check.
+DBMol validation29820674 failed prospective endpoint admission. Both same-job
+LSF records exit1; callbacks29820673/75 correctly blocked and submitted no
+optimizer children. Live history aged out, so these are FAILED_PERSISTED, not
+fabricated current scheduler EXIT records. Original saved results remain
+unchanged. The 223 CPU passes remain valid but do not certify native science.
+
+See campaign.json and status-20261026-evening-verification.json. This status
+check changed no runtime code, settings or saved results, submitted no jobs and
+left the monitor paused. Existing automated successor submissions above belong
+to the original controller. Local stdlib bytes/JSON/LSF/schema checks only.

@@ -45,7 +45,7 @@
   },
   "plan_sha256": "053daea8fdda1a684d7d98c9253ff8e0e0f5999262745c365c378a2f700e0f4f",
   "production_readiness_passed": true,
-  "status": "actual_CPU_106_and_startup_native_adoption_full_storage_passed_two_GPU_jobs_queued",
+  "status": "Pro_random_10000_passed_next_native_queued_Bol_startup_failed",
   "CPU_job": "29820218",
   "after_CPU_job": "29820219",
   "jobs": {
@@ -54,7 +54,9 @@
     "protenix/random-segment-0000": "29820255",
     "protenix/random-after-segment-0000": "29820256",
     "boltz/boltz2_chemistry-segment-0000": "29820257",
-    "boltz/boltz2_chemistry-after-segment-0000": "29820258"
+    "boltz/boltz2_chemistry-after-segment-0000": "29820258",
+    "protenix/random-native-0001": "29821558",
+    "protenix/random-after-native-0001": "29821559"
   },
   "observed_utc": "2026-10-26T10:32:23.163713+00:00",
   "observed_scheduler_states": {
@@ -65,7 +67,7 @@
     "29820218": "DONE",
     "29820219": "DONE"
   },
-  "optimization_started": false,
+  "optimization_started": true,
   "CPU_certificate_sha256": "42e786305452e8d56b17420a3ad4f76204339ad0251c6dddd346dc0fe2f2e84d",
   "independent_delivery_sha256": "b3051fc69a84c57a637376cfff4a8e0739cf3e5f564c5a574660d62becab3eee",
   "independent_dispatch_storage_sha256": "87c469d81591e85e73d5ea111ad5d17292ed53fc345212056c1f9fb0bf747e27",
@@ -105,5 +107,82 @@
     "protenix": false,
     "boltz": false
   },
-  "final_queue_sha256": "1c5803bdb995dd7a6904d501fc76fe8be84611c6e23de37ac13612e58a2c220e"
+  "final_queue_sha256": "1c5803bdb995dd7a6904d501fc76fe8be84611c6e23de37ac13612e58a2c220e",
+  "latest_observed_utc": "2026-10-26T21:40:18.245483+00:00",
+  "latest_independent_verification": {
+    "path": "status-20261026-evening-verification.json",
+    "sha256": "a2ffcd77e49b015955ae5773fe56b9f163b54c08d05c017612810ea5ce0e383a",
+    "metadata_files": 177,
+    "scope": "Original large scientific bytes remain remote; exact saved same-job LSF, assessment, terminal acceptance certificate and current pending submissions verified"
+  },
+  "latest_actual_jobs": {
+    "protenix/random-segment-0000": {
+      "job_id": "29820255",
+      "phase": "segment",
+      "parent": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-03/protenix/random-segment-0000",
+      "submission_sha256": "42927004fa71664bb3be1fd09364723b7eaabc5ff667bedb28a8ab6511db89e3",
+      "terminal": "DONE_PERSISTED",
+      "raw_same_job_LSF_sha256": "20e585ebde4b26872663e13769b09f845c96a3933b3425d772118cfa0ff4d01e",
+      "scheduler_state_invented": false
+    },
+    "protenix/random-after-segment-0000": {
+      "job_id": "29820256",
+      "phase": "after-segment",
+      "parent": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-03/protenix/random-after-segment-0000",
+      "submission_sha256": "06716ee9bf0f4d5eddcfa754f3f18c4d50d4300e87a2c44134dfae6e092857c1",
+      "terminal": "DONE_PERSISTED",
+      "raw_same_job_LSF_sha256": "38f26c0dc08fa6dbee2aa772e56611ae34b07760e8869593c7a566fe89468b49",
+      "scheduler_state_invented": false
+    },
+    "boltz/boltz2_chemistry-segment-0000": {
+      "job_id": "29820257",
+      "phase": "segment",
+      "parent": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-03/boltz/boltz2_chemistry-segment-0000",
+      "submission_sha256": "a5171adeded955971747e4e7cc6804722a3a8a9d473101678a32b673855d6553",
+      "terminal": "FAILED_PERSISTED",
+      "raw_same_job_LSF_sha256": "1aa6798699feb6f585d797eea0813af2cda988a453c7c641f290787c273fda25",
+      "scheduler_state_invented": false
+    },
+    "boltz/boltz2_chemistry-after-segment-0000": {
+      "job_id": "29820258",
+      "phase": "after-segment",
+      "parent": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-03/boltz/boltz2_chemistry-after-segment-0000",
+      "submission_sha256": "f79246b02ae7b33db8a7b05d7ce94dd7819e4acc0183c688084935525010f97c",
+      "terminal": "FAILED_PERSISTED",
+      "raw_same_job_LSF_sha256": "8840f648f9e6af5f7ce61765bf9858a39895a0901e86fa966a91a294eba05139",
+      "scheduler_state_invented": false
+    },
+    "protenix/random-native-0001": {
+      "job_id": "29821558",
+      "phase": "native",
+      "parent": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-03/protenix/random-native-0001",
+      "submission_sha256": "d2ca38707c23f383f24b427a9744d082e86b0dd8362a5b4eceb617af0db8b48c",
+      "actual_scheduler_state": "PEND"
+    },
+    "protenix/random-after-native-0001": {
+      "job_id": "29821559",
+      "phase": "after-native",
+      "parent": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-03/protenix/random-after-native-0001",
+      "submission_sha256": "39513fcaf44c0c6f01481af9c660a525d1d6b30096abb498467c65b1a1eeabf9",
+      "actual_scheduler_state": "PEND"
+    }
+  },
+  "latest_scientific_progress": {
+    "protenix_random": {
+      "status": "first_10000_segment_passed_next_boundary_validation_pending",
+      "updates": 10000,
+      "states": 10001,
+      "target": 50000,
+      "certificate_sha256": "2e790bc79426c45aaee0548daaf134cf471aaff4978db7aeb4ef4ed68d903823",
+      "next_native_job": "29821558",
+      "next_callback": "29821559",
+      "original_native_big_arrays_downloaded": false
+    },
+    "boltz_chemistry": {
+      "status": "failed_startup_before_study",
+      "error": "FileNotFoundError: acceleration parent directory absent for gpu-chemistry helper",
+      "driver_proof_sha256": "c3e2e026c2427c6407a694a75c8ba5f492028583fcb0509bb9070b3118834356",
+      "new_study_exists": false
+    }
+  }
 }

@@ -46,3 +46,26 @@ See campaign.json, jobs.json, cpu-certificate.json, delivery-verification.json,
 dispatch-verification.json and first-dispatch-storage.json. All116compact files,
 sealed14files/15archive members/rawXML/LSF/adoption pins independently audited;
 large native arrays remain external authenticated references. Local stdlib only.
+
+
+## Saved terminal status — 26 October 21:40 UTC
+
+Random Protenix segment29820255 completed its first10,000 updates with
+10,001 saved states. Same-job GPU/callback29820256 LSF success, passed original
+terminal acceptance and exact certificate2e790bc79426c45aaee0548daaf134cf471aaff4978db7aeb4ef4ed68d903823
+were independently verified. Full47,001,479-byte summary remains on HPC,
+SHAafc86c37067c8251c05d52de190ea2d172c336d7b00d738e0a751804dc48b32c.
+The original controller submitted next boundary validation29821558 and own-ended
+callback29821559; both are PEND. No second optimizer segment is submitted yet.
+Target remains50k, unchanged chemistry schedule/settings.
+
+Boltz chemistry29820257 failed before creating a study: the GPU helper's
+payload/acceleration/gpu-chemistry directory could not be created because its
+parent was absent. Its entry storage gate passed; this is a startup defect,
+not an optimization/gradient or storage failure. Callback29820258 correctly
+blocked. Failed source/job evidence retained, no replacement submitted.
+
+See campaign.json and status-20261026-evening-verification.json. This status
+check changed no runtime code, settings or saved results, submitted no jobs and
+left the monitor paused. Existing automated successor submissions above belong
+to the original controller. Local stdlib bytes/JSON/LSF/schema checks only.

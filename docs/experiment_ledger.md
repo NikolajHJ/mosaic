@@ -7901,3 +7901,34 @@ chemistry jobs or paused monitor changed. No additional cleanup or local
 numerical execution. The repository-wide stdlib layout audit still reports 21
 pre-existing unrelated discovery/README issues and no endpoint-owner issue;
 these were left outside this repair.
+
+## 2026-10-26 Evening continuation and chemistry status
+
+Read-only 21:40:18 UTC compact observation authenticated current sources16+16+14
+and177 metadata files. Separate exact143,095-byte chemistry terminal certificate
+was downloaded/hash-verified against its original callback binding. Independent
+byte/JSON/LSF/schema auditSHA a2ffcd77e49b015955ae5773fe56b9f163b54c08d05c017612810ea5ce0e383a. No local numerical work,
+cleanup, runtime/settings/saved-result change, new submission or monitor resume.
+A narrow local metadata audit initially referenced chemistry historical control
+CPU parents that were not recollected; failure preserved and scope explicitly
+excludes those two jobs rather than fabricating their current state. Prior106
+CPU pass remains separately authenticated.
+
+Random Protenix+chemistry29820255 passed first10k segment/10001 states and
+original terminal acceptance; same-job callback29820256 also passed. New native
+boundary29821558/callback29821559 are actually PEND, not a second optimization
+segment. Target50k and settings unchanged. Full scientific data remains remote;
+terminal certificate SHA2e790bc79426c45aaee0548daaf134cf471aaff4978db7aeb4ef4ed68d903823.
+Boltz+chemistry29820257 failed before study creation on absent acceleration
+parent for gpu-chemistry helper; storage admission passed, no gradient failure.
+Its callback29820258 correctly failed with no successor. Failed evidence retained.
+
+Nonchem06 Bol29820672 passed new endpoint admission but failed pilot combined
+frozen-reference bonds derivative check. DBMol29820674 failed endpoint admission;
+both callbacks29820673/75 blocked, no optimizer children. Pro29820643 passed
+FP32 baseline, then FP64 reference dtype audit rejected remaining float32
+convert/asinh/reshape/dot operations, before completed gradient comparison.
+Original inputs/model preserved; no false production-gradient-failure claim.
+All old live records aged out: actual same-job LSF establishes persisted failures
+or successes, never synthesized current DONE/EXIT. Existing CPU223/278 passes
+remain valid, not native passes. Status records updated in canonical owners.
