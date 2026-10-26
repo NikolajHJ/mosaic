@@ -1,0 +1,18 @@
+{
+  "status": "failed_unrelated_repository_layout",
+  "command": "python scripts/layout/verify_layout.py --root .",
+  "exit_code": 1,
+  "created_utc": "2026-10-26T03:10:40.203576+00:00",
+  "error_scope": "Default discovery mismatch and missing READMEs under old boltz-dbmol, boltz-lr0025 and protenix-extended-50000 evidence folders; no chemistry-search-speed path reported",
+  "counts": {
+    "canonical_python_asts": 166,
+    "declarative_byte_pairs": 41,
+    "unique_test_modules": 82,
+    "canonical_test_discovery_paths": 119,
+    "local_document_links": 1740,
+    "shell_syntax_checks": 147
+  },
+  "other_experiments_changed": false,
+  "numerical_tests_executed_locally": false,
+  "scope": "Summary of actual stdout; not a complete raw report or scientific pass"
+}

@@ -137,8 +137,15 @@
   },
   "cpu_certificate_sha256": "c4a88a77f1ae5b4d20aa8c6f3b7fa59152cb295b4791b70c2bc737e1e0857980",
   "verification": {
-    "path": "results/hpc/20261026-chemistry-full-model-05/observation-cpu-progress-01/verification.json",
+    "path": "results/hpc/20261026-chemistry-full-model-05/observation-handoff-03/verification.json",
     "sha256": "77562025598da168270bf70e021f5f81f67e2408803613b8849c4eec1bce1fb5"
   },
-  "production_submitted": false
+  "production_submitted": false,
+  "latest_native_status": {
+    "state": "PEND",
+    "captured_utc": "2026-10-26T03:11:27.670453+00:00",
+    "observation": "results/hpc/20261026-chemistry-full-model-05/observation-handoff-03",
+    "raw_sha256": "ec8e79477697854084eb16456d7b84acc17dacf463903867959261fbe0399ff6",
+    "native_or_production_pass_inferred": false
+  }
 }
