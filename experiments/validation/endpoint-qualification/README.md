@@ -83,3 +83,13 @@ canary (266/267passes) before any native work. [Fix02](runs/20261025-protenix-en
 corrects that traversal and has passed all269 allocated CPU fixtures plus actual
 metadata-only startup. Native saved-endpoint validation remains required; no
 optimizer continuation or original recertification follows from the CPU pass.
+
+Read-only26October10:44UTC update: worker-fix02 Boltz29813924 and DBMol29813926
+both failed prospective endpoint admission; their callbacks submitted no child
+optimization. Pro precision29816113 failed its initial FP32 scalar replay against
+the authenticated forensic reference, before any completed FP64 comparison.
+All86 compact metadata/source/own-job LSF/preservation bindings independently
+verified; aged-out live history is represented only through authentic persisted
+LSF, not fabricated current states. Saved progress remains Pro20k/50k,
+plainBol10k/30k and DB5k/10k. Settings/results/paused monitor unchanged. See each
+dated run's status-20261026-verification.json; no local scientific work or new jobs.

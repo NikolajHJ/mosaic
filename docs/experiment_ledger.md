@@ -7817,3 +7817,22 @@ from changing their authenticated hashes. Full repository stdlib layout check
 reports21preexisting unrelated errors (default discovery/missing other-owner
 README evidence dirs); no chemistry-search-speed owner error and no unrelated
 fix made. Local scientific/numerical tests executed=0. Paused monitor unchanged.
+
+## 2026-10-26 Non-chemistry continuation terminal status
+
+User requested news. One readonlySSH10:44:00UTC rehashed bothsealed14-file
+sources and86compactfiles. Same-job nativeLSFexit1/queue/submission/assessment
+independently verified: Bol29813924 and DB29813926 failed prospective endpoint
+admission; owncallbacks29813925/27 failed predecessor check and submitted no
+children. CPU209/269 successes remain valid, not native passes. Pro29816113
+precision checker failed initialFP32stage: fresh scalar differs exactly from
+authenticated prior forensic path. FP64comparison notcompleted, no new gradient
+agreement/disagreement claim. Raw preserved-input records passed; no optimizer
+or result/settings mutation. All9live job records agedout; genuine original
+LSF proofs support FAILED_PERSISTED/DONE_PERSISTED, no manufacturedstates.
+Original progress remainsPro20k/50k, Bol10k/30k, DB5k/10k; no successor
+optimization registered. Separate newchemistry jobs/settings left unchanged.
+Independent auditSHA1f51df98f4fdd498c5d11b06deafba46904f135840b51fd469207a9a11373b2b.
+Evidence results/hpc/20261026-nonchem-status-01; datedrun campaign/readmes
+updated. Localstdlibbytes/JSON/schema only; no newtests/scientificevaluations,
+cleanup/submission, checkerchange, resumption or pausedmonitor change.

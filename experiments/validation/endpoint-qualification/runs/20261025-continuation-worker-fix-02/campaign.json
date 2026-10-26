@@ -1,7 +1,7 @@
 {
   "version": "endpoint-aware-worker-correction-campaign-v1",
-  "status": "cpu_passed_native_rechecks_running_or_pending_no_children",
-  "captured_utc": "2026-10-25T11:41:57.812838+00:00",
+  "status": "native_endpoint_admissions_failed_no_child_optimizer_submitted",
+  "captured_utc": "2026-10-26T10:44:00.081617+00:00",
   "source_manifest_sha256": "88372f92b6349e6c34c542fb84fb39482c4c340568431d1499ebc166a1e1e7fa",
   "plan_sha256": "df867c315e90f72a4962217023199ea21a342295ac6713bf8b0aaf9618d0b16b",
   "archive_bytes": 87336,
@@ -29,30 +29,22 @@
     {
       "parent": "boltz-validate-10000",
       "job_id": "29813924",
-      "scheduler_state": "RUN",
-      "phase": "validate",
-      "resources_and_source_authenticated": true
+      "terminal_evidence": "FAILED_PERSISTED"
     },
     {
       "parent": "boltz-after-validate-10000",
       "job_id": "29813925",
-      "scheduler_state": "PEND",
-      "phase": "after-validate",
-      "resources_and_source_authenticated": true
+      "terminal_evidence": "FAILED_PERSISTED"
     },
     {
       "parent": "dbmol-validate-05000",
       "job_id": "29813926",
-      "scheduler_state": "PEND",
-      "phase": "validate",
-      "resources_and_source_authenticated": true
+      "terminal_evidence": "FAILED_PERSISTED"
     },
     {
       "parent": "dbmol-after-validate-05000",
       "job_id": "29813927",
-      "scheduler_state": "PEND",
-      "phase": "after-validate",
-      "resources_and_source_authenticated": true
+      "terminal_evidence": "FAILED_PERSISTED"
     }
   ],
   "optimizer_jobs": [],
@@ -116,5 +108,7 @@
       "bytes": 1310,
       "sha256": "d6718c203d415503447182c3f4d2bfb59915de3ad9fed6fed3483348f81d49e2"
     }
-  ]
+  ],
+  "status_verification_sha256": "1f51df98f4fdd498c5d11b06deafba46904f135840b51fd469207a9a11373b2b",
+  "live_scheduler_history_aged_out": true
 }

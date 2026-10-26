@@ -83,3 +83,14 @@ python experiments/validation/endpoint-qualification/scripts/observe_continuatio
 
 Staging/bootstrap has already executed. Never repeat it, source upload or any
 callback into existing paths. Inspect actual receipts before any recovery.
+
+## Read-only terminal status — 26 October 10:44 UTC
+
+Both native endpoint admissions29813924/29813926 failed; callbacks29813925/27 correctly blocked successors. Saved original Bol10k/30k and DB5k/10k unchanged.
+
+Fresh compact single SSH query independently authenticated86metadata files,
+both14-file sealed sources, exact own-job LSF/exit1/queue/submissions and
+preservation records. Live job records aged out; FAILED_PERSISTED relies on
+original LSF, never a fabricated current scheduler state. No new optimizer
+jobs, saved updates, scientific/settings changes or monitor resume. Full
+verification in status-20261026-verification.json; no local numerical work.

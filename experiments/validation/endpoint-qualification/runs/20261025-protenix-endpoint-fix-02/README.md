@@ -55,3 +55,14 @@ CPUcertificateSHA7af030f4ee35dd84c91ca5d55a75802384e4f51fb4fb5ed7baa773c1f9e72f0
 No native precision gate pass or optimization continuation established; exact20k
 saved state/source643/LR0.3/objective/frozen inputs remain unchanged. No automatic
 monitor restart; preserve source01 failure and do not repeat either submission.
+
+## Read-only terminal status — 26 October 10:44 UTC
+
+GPU29816113 failed before FP64 comparison: fresh FP32 scalar did not exactly reproduce authenticated prior forensic scalar. This is a replay failure, not a completed gradient comparison. Pro original20k/50k unchanged.
+
+Fresh compact single SSH query independently authenticated86metadata files,
+both14-file sealed sources, exact own-job LSF/exit1/queue/submissions and
+preservation records. Live job records aged out; FAILED_PERSISTED relies on
+original LSF, never a fabricated current scheduler state. No new optimizer
+jobs, saved updates, scientific/settings changes or monitor resume. Full
+verification in status-20261026-verification.json; no local numerical work.
