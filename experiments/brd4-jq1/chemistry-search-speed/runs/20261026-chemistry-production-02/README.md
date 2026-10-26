@@ -38,3 +38,16 @@ Independent stdlib audit verifies all14 source files, actual bsub IDs/resources/
 dependencies and exact marker/archive/plan bytes. CPU/native/startup/fullstorage
 passes are pending. Local work is AST/JSON/bytes only; all tests/science run on
 allocated DTU HPC. Monitor remains paused.
+
+Actual09:20UTC terminal observation supersedes queued status: CPU29818556
+EXIT1 at04:41:10DTU-local on inherited entry capacity BEFORE103fixtures or actual
+startup/adoption. Callback29818557 correctly EXIT1 on failed producer; chain
+has stopped. Required36,059,576,308B versus34,107,172,858B available; minimum
+shortfall1,952,403,450B BEFORE full new chemistry projections and control
+allowances. Original4GiB/100k guards retained. Full chemistry admission was
+never reached/passed, no adoption/production segment or unknown marker exists.
+Fresh ProGPU29818553 full native comparison PASSED; Bol02 remains passed.
+This is a resource-admission failure, not a new gradient failure. All original
+sources/settings/results remain unchanged; no cleanup/retry/newjob this status
+turn. Do not replay bootstrap/callback or overwrite failed02. Independent37file
+source14/actualLSF/submission/gate byte/schema audit4b22c8bed204903a5972f1809a1330b4383ce09efab4109abe733046c6c7028a.

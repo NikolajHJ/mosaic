@@ -29,3 +29,8 @@ GPU29816561queued; no findings or production submission yet.
 - [Full-model05](20261026-chemistry-full-model-05/README.md): corrected assertion, CPU408pass; ProGPU29818553PEND.
 - [Production02](20261026-chemistry-production-02/README.md): CPU29818556/callback29818557 queued; native/startup/fullfuturestorage still mandatory before longs.
 - Replay02 GPU29818513 completed all22controls; autotune0 candidate qualified across all8points/fourprocesses, not a native pass.
+
+26October09:20UTC terminal update: Pro full-model05 actualpassed original native/
+chemistry/exactreplay+pairedFD/runtime/frozen checks. Production02 CPU/callback
+failed inherited entry capacity before fixtures/fullnewchem projections; no
+productionlongs. Current failure receipts supersede old PEND statements above.

@@ -45,7 +45,7 @@
   },
   "plan_sha256": "b8ef2abd4411be017a5c39472db33d6bf2b33398a39b0efbc0a07e3c82d12dfa",
   "production_readiness_passed": false,
-  "status": "actual_CPU_callback_submitted_waiting_new_Pro_native_not_passed",
+  "status": "failed_inherited_storage_before_CPU_fixtures_no_chemistry_production_jobs",
   "cpu_submission": {
     "status": "submitted",
     "phase": "cpu",
@@ -133,8 +133,8 @@
   "production_jobs_submitted": false,
   "scientific_updates": 0,
   "latest_observation": {
-    "path": "results/hpc/20261026-chemistry-production-02/observation-submission-01",
-    "captured_utc": "2026-10-26T03:06:50.245005+00:00"
+    "path": "results/hpc/20261026-chemistry-production-02/observation-status-20261026t091957z",
+    "captured_utc": "2026-10-26T09:20:00.232207+00:00"
   },
   "verification": {
     "path": "results/hpc/20261026-chemistry-production-02/independent-submission-01.json",
@@ -145,5 +145,28 @@
     "available_bytes": 37478455700,
     "full_chemistry_production_admitted": false
   },
-  "source_read_only": true
+  "source_read_only": true,
+  "actual_control_outcomes": {
+    "cpu": "29818556 EXIT1 capacity admission",
+    "after_cpu": "29818557 EXIT1 predecessor failed"
+  },
+  "CPU_103_fixture_suite_executed": false,
+  "actual_startup_commands_executed": false,
+  "full_chemistry_production_storage_passed": false,
+  "full_chemistry_projection_gate_reached": false,
+  "failed_entry_admission": {
+    "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-02/cpu/payload/inherited-storage-cpu-entry/continuation-storage-precision.json",
+    "sha256": "2e8b2267090604977ff0fb29d16ecf09157fe054d6d77a6c0e702a04f9b6998d",
+    "required_bytes": 36059576308,
+    "available_bytes": 34107172858,
+    "minimum_shortfall_before_full_chemistry_projections": 1952403450,
+    "reserve_bytes": 4294967296,
+    "file_reserve": 100000
+  },
+  "terminal_verification": {
+    "path": "results/hpc/20261026-chemistry-production-02/entry-failure-verification-01.json",
+    "sha256": "4b22c8bed204903a5972f1809a1330b4383ce09efab4109abe733046c6c7028a"
+  },
+  "original_results_changed": false,
+  "settings_changed": false
 }

@@ -7730,3 +7730,25 @@ Local stdlib layout check failed on preexisting default discovery and missing
 READMEs under other experiment evidence folders; no chemistry owner error.
 Scoped AST73/JSON81/archive/index byte checks passed. No unrelated fixes or
 local scientific/numerical tests performed.
+
+## 2026-10-26 Chemistry native pass and failed production capacity admission
+
+One joint readonly SSH observation09:20UTC succeeded. ProGPU29818553 actual
+successful same-job gpul40sLSF ended04:40:21DTU-local; complete original native/
+chemistry/coupled/BOTHpilots/paired exact5field replay+rawFD/runtime/frozen and
+unchanged-input reports independently authenticated141compactfiles/source34/
+CPU408/27replaybindings. Native arrays remain original HPC refs. New Pro pilot
+passed; retained Bol02 pass unchanged; old scientific failures stay failed.
+Production02 CPU29818556 EXIT1 ended04:41:10DTU-local: inherited entry storage
+required36059576308 versusavailable34107172858, short1952403450 BEFORE the
+fullnewchemistry projections. CPU103fixtures/startup/adoption/fullchemistrygate
+not reached. Callback29818557 EXIT1 correctly on producer failure. No chemistry
+long submission/unknown markers/study exists, no updates/newjobs this turn.
+Independent37file/source14/actualLSF/submission/gate audit
+4b22c8bed204903a5972f1809a1330b4383ce09efab4109abe733046c6c7028a.
+Aged-out live bjobs uses original persisted LSF/proofs, never fabricated DONE.
+Local joint transport label normalization preserved/rehashed all original bytes;
+no scientific/source/report bytes changed. Saved results/settings/guards remain
+unchanged, monitorpaused, no cleanup or retry. Failed source02 is not replayable.
+Original serial baseline runtimefailure366148s remains failed; combined
+forecast78798s passes82800s. Both nativegradient checks pass; no runtimewaiver.

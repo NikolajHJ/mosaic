@@ -21,7 +21,7 @@
   "full_model_pass": false,
   "jobs_submitted": false,
   "manifest_sha256": "ab875927a328c34650d2e43baf6dfbe323e8f9bcf5600f39bac78f3ccdfb5d8c",
-  "status": "CPU408_pass_actual_native_Pro29818553_submitted_PEND",
+  "status": "actual_native_full_model_comparison_passed_same_job_LSF_verified",
   "cpu_submission": {
     "status": "submitted",
     "phase": "cpu",
@@ -142,10 +142,20 @@
   },
   "production_submitted": false,
   "latest_native_status": {
-    "state": "PEND",
-    "captured_utc": "2026-10-26T03:11:27.670453+00:00",
-    "observation": "results/hpc/20261026-chemistry-full-model-05/observation-handoff-03",
-    "raw_sha256": "ec8e79477697854084eb16456d7b84acc17dacf463903867959261fbe0399ff6",
-    "native_or_production_pass_inferred": false
-  }
+    "job_id": "29818553",
+    "state": "SUCCESS_PERSISTED",
+    "live_scheduler_record": "aged_out",
+    "same_job_LSF_success": true,
+    "captured_utc": "2026-10-26T09:20:00.174640+00:00",
+    "scheduler_state_invented": false
+  },
+  "native_gradient_checks_passed": true,
+  "full_model_comparison_passed": true,
+  "original_results_changed": false,
+  "final_verification": {
+    "path": "results/hpc/20261026-chemistry-full-model-05/observation-status-20261026t091957z/verification.json",
+    "sha256": "be20aa818b326802dfdaa1c962bc575e73093fbc40ff0fad6cd5d4791873777b"
+  },
+  "baseline_original_runtime_failure_preserved": true,
+  "combined_runtime_gate_passed": true
 }

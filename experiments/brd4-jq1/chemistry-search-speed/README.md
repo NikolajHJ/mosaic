@@ -108,3 +108,12 @@ new ProGPU29818553 PEND. Failed04 fixture-only attempt remains preserved.
 callback29818557 are actually queued, requiring fresh Pro native pass, retained
 Bol02 pass, all103fixtures/actual startups and full future storage before either
 chemistry long. No new chemistry optimization has started; monitor stays paused.
+
+26October09:20UTC: fresh Protenix full-model05 GPU29818553 PASSED its complete
+original native/chemistry/paired replay+gradient/runtime/frozen checks; original
+same-job LSF and141compact files verified. Bol02's native pass remains valid.
+Production02 CPU29818556 and callback29818557 then EXIT1 at inherited entry
+storage before103fixtures/startups:36.06GB required vs34.11GB conservative
+available, at least1.95GB short BEFORE adding full new chemistry projections.
+No chemistry production long was submitted or started. Failed receipts retained;
+settings/saved results unchanged, no further cleanup or submission this status.

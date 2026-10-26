@@ -38,3 +38,17 @@ At03:06:18UTC, GPU29818553 remains actualPEND; no new native result. Production0
 CPU29818556 waits this ACTUAL producer, then authenticates full05/retainedBol02
 passes and103fixtures/actual startups; callback29818557 checks full futurestorage
 before any independent long submission. No saved result/settings changed.
+
+26October09:20UTC read-only terminal observation supersedes PEND: original
+ProGPU29818553 completed successfully04:40:21DTU-local. Same-job gpul40s LSF,
+source34/rawCPU408, both original baseline/combined classifiers, raw native
+FD/parity/chemistry/coupled/BOTHten-updatepilots/paired exact5field+FD/frozen/
+runtime checks all authenticated. Original inputs unchanged. Local independent
+141-file byte/XML/JSON/LSF audit passed; native arrays remain remote references.
+The autotune0 candidate now has a NEW full native pilot pass; older failures
+stay failed. Aged-out live bjobs is not a new failure or fabricated DONE.
+Production02 then failed its inherited entry storage, with no production job.
+The original serial baseline still FAILS its runtime forecast (366,148s);
+its scientific/gradient gates pass. Accelerated combined runtime forecast
+78,798s passes the unchanged82,800s allocation gate. Do not relabel the old
+serial runtime failure or treat pilot estimates as actual production duration.
