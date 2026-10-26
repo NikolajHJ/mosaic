@@ -1,0 +1,94 @@
+{
+  "status": "allocated_CPU_passed_native_GPU_checks_pending",
+  "captured_utc": "2026-10-26T11:38:44.661280+00:00",
+  "CPU": {
+    "status": "passed",
+    "cases": 223,
+    "job_id": "29820662",
+    "raw_xml_sha256": "bebefb17343278593daec8bf51777bcb8cae9d5f540e1ab38cb6565ed11a9b6f",
+    "same_job_LSF_sha256": "3659a3747bcdc8090f579706fa8c2b9d9dd31bf7df307f5a30d466c01c543082"
+  },
+  "jobs": {
+    "cpu": "29820662",
+    "after-cpu": "29820663",
+    "boltz-validate-10000": "29820672",
+    "boltz-after-validate-10000": "29820673",
+    "dbmol-validate-05000": "29820674",
+    "dbmol-after-validate-05000": "29820675"
+  },
+  "actual_states": {
+    "29820662": {
+      "parent": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-06/cpu",
+      "state": "DONE",
+      "phase": "cpu",
+      "submission_sha256": "f9b2482540bb6fffc0c97681dfbdd54d5d425694e3e733c000547c902ae0f166"
+    },
+    "29820663": {
+      "parent": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-06/after-cpu",
+      "state": "DONE",
+      "phase": "after-cpu",
+      "submission_sha256": "eeea6e7dff20bab6e2fc76b89b5e5f347fe7c244493a088bfaf839772a06e42d"
+    },
+    "29820672": {
+      "parent": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-06/boltz-validate-10000",
+      "state": "PEND",
+      "phase": "validate",
+      "submission_sha256": "22293de558cdd23c1290f53ecb7a01b260b192974b96c4f7ce099c7a9198874e"
+    },
+    "29820673": {
+      "parent": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-06/boltz-after-validate-10000",
+      "state": "PEND",
+      "phase": "after-validate",
+      "submission_sha256": "d5665194c8e3dfd1e7314af73fcd4c129a02d312230266b19a7b4c24f0531038"
+    },
+    "29820674": {
+      "parent": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-06/dbmol-validate-05000",
+      "state": "PEND",
+      "phase": "validate",
+      "submission_sha256": "4d08ed8ea5e999b024b3b74effee22b496f8c501ba5eeea0f3ea24730e852780"
+    },
+    "29820675": {
+      "parent": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-06/dbmol-after-validate-05000",
+      "state": "PEND",
+      "phase": "after-validate",
+      "submission_sha256": "d88add625fe08474798fbece5568e8806defa63abfeee7fd3871ce19625261a9"
+    }
+  },
+  "source_manifest_sha256": "1519d5761069f73fb6659bc1740cb04c155a04bc3218f143a3f28a73e65a1f69",
+  "independent_verification_sha256": "118d85dd48c756da8105cbc27debbdfcf2968c0bb999bca72ecf3dc2ef81857a",
+  "native_gradient_pass_established": false,
+  "optimizer_jobs": [],
+  "optimization_source_library_changed": false,
+  "optimization_settings_changed": false,
+  "prospective_checker_changed": true,
+  "original_failed_outcomes_preserved": true,
+  "saved_results_changed": false,
+  "monitor_resumed": false,
+  "local_scientific_tests": 0,
+  "independent_extended_verification": {
+    "path": "verification-extended.json",
+    "sha256": "9c0538e4e73cf64d493ed01ad130e9bdb5c46e3f127f764f441e149c0223a58f",
+    "compact_files": 68,
+    "CPU_certificate_bound_proofs": 29
+  },
+  "storage_at_CPU_and_callback": {
+    "cpu": {
+      "status": "passed",
+      "required_bytes": 50184976484,
+      "available_bytes": 50318531670,
+      "reserve_bytes": 4294967296,
+      "file_reserve": 100000,
+      "proof_sha256": "801b293ee35e9bbe58342da1107467858135ed106643ec730526c4cf65f5691d",
+      "both_chemistry_futures_retained": true
+    },
+    "after-cpu": {
+      "status": "passed",
+      "required_bytes": 50183005407,
+      "available_bytes": 50316193989,
+      "reserve_bytes": 4294967296,
+      "file_reserve": 100000,
+      "proof_sha256": "f19352d4fe55f856582408ccfd5de3bb26cc1f614b252a2b55216001d39c489d",
+      "both_chemistry_futures_retained": true
+    }
+  }
+}

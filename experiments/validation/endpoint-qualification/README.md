@@ -93,3 +93,17 @@ verified; aged-out live history is represented only through authentic persisted
 LSF, not fabricated current states. Saved progress remains Pro20k/50k,
 plainBol10k/30k and DB5k/10k. Settings/results/paused monitor unchanged. See each
 dated run's status-20261026-verification.json; no local scientific work or new jobs.
+
+26October11:28UTC: [continuation06](runs/20261026-continuation-precision-06/README.md)
+passed223allocated cases and actual startup; fresh Bol29820672/DB29820674 native
+checks queued with own-ended callbacks. Original endpoint failures remain failed;
+new prospectivev2 requires a stricter pre-forward signal budget and uncertainty
+INSIDE unchanged15% tolerance, not favorable FD selection. Source03 historical
+version binding,04output-root and05stale negative-fixture failures preserved.
+[Pro precision03](runs/20261026-protenix-endpoint-fix-03/README.md) CPU278passed,
+GPU29820643queued: fresh FP32 measurements/historical mismatch are saved before
+qualification, followed by mandatory separate fullFP64 reference and negatives.
+No new native pass, optimizer continuation or changed saved result/settings.
+Storage now includes both submitted chemistry futures plus new512+272MiB scopes
+and unchanged4GiB/100k reserves. Pro integration awaits a valid measurement;
+Bol/DB callbacks remain conditional, paused monitor unchanged.

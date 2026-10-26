@@ -18,11 +18,11 @@ import sys
 import time
 import xml.etree.ElementTree as ET
 
-VERSION = "protenix-endpoint-precision-source-v1"
-PLAN_VERSION = "protenix-endpoint-precision-plan-v1"
+VERSION = "protenix-endpoint-precision-source-v2"
+PLAN_VERSION = "protenix-endpoint-precision-plan-v2"
 BASE = Path("/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01")
-SOURCE = BASE / "protenix-endpoint-fix-release-02/source"
-ROOT = BASE / "protenix-endpoint-fix-02"
+SOURCE = BASE / "protenix-endpoint-fix-release-03/source"
+ROOT = BASE / "protenix-endpoint-fix-03"
 PARENT_SOURCE = BASE / "nonchem-endpoint-release-02/source"
 PARENT_PIN = "88372f92b6349e6c34c542fb84fb39482c4c340568431d1499ebc166a1e1e7fa"
 PARENT_FILES = 14
@@ -187,7 +187,7 @@ def argv(phase, pin, dependency=None):
     else:
         require(dependency is None, "Native/CPU job must be independent")
     parent = ROOT / phase
-    command = ["bsub", *resources(phase), "-J", "mosaic-pro-precision-" + phase,
+    command = ["bsub", *resources(phase), "-J", "mosaic-pro-precision03-" + phase,
                "-oo", str(parent / "stdout.%J.log"), "-eo", str(parent / "stderr.%J.log")]
     if dependency is not None: command += ["-w", dependency]
     return command + ["bash", "-l", str(SOURCE / "scripts/protenix_precision_stage.lsf"), str(SOURCE), pin, phase]
@@ -263,7 +263,7 @@ def terminal_cpu():
     for number in range(21):
         if path.exists() and "Successfullycompleted." in "".join(path.read_text().split()): break
         require(number < 20, "Actual CPU terminal LSF unavailable"); time.sleep(1)
-    lsf_success(path.read_text(), job, "mosaic-pro-precision-cpu", "hpc")
+    lsf_success(path.read_text(), job, "mosaic-pro-precision03-cpu", "hpc")
     return proofs + [binding(path)]
 
 
@@ -318,10 +318,20 @@ def storage(parent, phase="entry"):
         require(record["output_bytes"] <= OUTPUT_CAP and record["metadata_bytes"] <= METADATA_CAP, "Own output/control cap exhausted")
         require(type(record["available_bytes"]) is int and type(record["required_bytes"]) is int
                 and record["available_bytes"] >= record["required_bytes"], "Full campaign plus new precision allowance does not fit")
+        current_gate = current_capacity_gate(parent, phase)
+        record['current_chemistry_and_new_scopes'] = current_gate
+        record['required_bytes'] = max(record['required_bytes'], current_gate['required_bytes'])
+        record['available_bytes'] = min(record['available_bytes'], current_gate['available_bytes'])
+        require(record['available_bytes'] >= record['required_bytes'], 'Full current chemistry/precision group budgets do not fit')
         record["status"] = "passed"
     finally:
         write(Path(parent) / ("precision-storage-" + phase + ".json"), record)
     return record
+
+
+def current_capacity_gate(parent, phase):
+    from current_capacity import gate
+    return gate(parent, phase)
 
 
 def native_argv(plan, *, startup=False):
@@ -370,7 +380,7 @@ def certificate(pin, manifest):
     require(xml_cases(ROOT / "cpu/payload/tests.xml", manifest["cpu_counts"]) == value["cases"], "Raw CPU cases changed")
     verify_startup(read(ROOT / "cpu/payload/assessment.json")["actual_native_startup"])
     sub = read(ROOT / "cpu/submission.json")
-    lsf_success((ROOT / "cpu" / ("stdout." + sub["job_id"] + ".log")).read_text(), sub["job_id"], "mosaic-pro-precision-cpu", "hpc")
+    lsf_success((ROOT / "cpu" / ("stdout." + sub["job_id"] + ".log")).read_text(), sub["job_id"], "mosaic-pro-precision03-cpu", "hpc")
     return value
 
 

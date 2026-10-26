@@ -78,6 +78,40 @@ def test_exact_scientific_plan_allows_only_new_validation_output(owned):
     assert n.validate_plan(plan, root / "cpu/payload/native-startup", True) == prior
 
 
+def fp32_fields():
+    import numpy as np
+    result={'X':np.full((4,3),1/3,np.float32),'E_upper':np.full((4,2),.5,np.float32),
+            'primal':np.ones(3,np.float32),'ad_value':np.ones(3,np.float32)}
+    for field in ('X','E_upper'):
+        result['gradient_'+field]=np.broadcast_to(np.arange(result[field].shape[1],dtype=np.float32),
+                                                  (3,*result[field].shape)).copy()
+    return result
+
+
+def test_current_FP32_baseline_qualifies_measurement_only_not_derivative_or_historical_pass():
+    value=n.current_fp32_measurements(fp32_fields())
+    assert value['status']=='passed_current_authenticated_FP32_baseline'
+    assert value['historical_computed_bits_used_as_gate'] is False
+    assert value['does_not_establish_derivative_correctness'] is True
+
+
+@pytest.mark.parametrize('field',['primal','ad_value'])
+def test_unstable_current_FP32_scalar_cannot_reach_reference(field):
+    values=fp32_fields();values[field][2]+=.001
+    with pytest.raises(ValueError):n.current_fp32_measurements(values)
+
+
+def test_actual_FP32_arrays_and_historical_comparison_are_written_before_current_gate():
+    tree=ast.parse(PATH.read_text())
+    function=next(x for x in tree.body if isinstance(x,ast.FunctionDef) and x.name=='_production')
+    calls=[x for x in ast.walk(function) if isinstance(x,ast.Call)]
+    saved=next(x.lineno for x in calls if ast.unparse(x.func)=='np.savez')
+    qualified=next(x.lineno for x in calls if ast.unparse(x.func)=='current_fp32_measurements')
+    historical=next(x.lineno for x in calls if ast.unparse(x.func)=='write'
+                    and 'historical-replay.json' in ast.unparse(x))
+    assert saved<historical<qualified
+
+
 @pytest.mark.parametrize("change", ["version", "source", "root", "rate", "snapshot", "argv", "target", "output",
                                     "results", "settings", "certify", "monitor", "cap", "seconds", "bool_cap", "old_path", "old_digest",
                                     "runtime", "directions", "report"])
@@ -313,7 +347,9 @@ def fake_worker_artifacts(output, worker):
     if worker == "fp32":
         artifact = save(directory / "data.json", {"standin": "metadata fixture"})
         assessment = {"status": "passed_fp32_measurements", "updates": 0, "data": artifact,
-                      "production_x64_enabled": False, "separate_process": True}
+                      "production_x64_enabled": False, "separate_process": True,
+                      "current_baseline":save(directory/'current.json',{'status':'passed_current_authenticated_FP32_baseline'}),
+                      "historical_observations":save(directory/'historical.json',{'status':'historical_observations_preserved'})}
     else:
         admission = save(directory / "admission.json", {"status": "passed", "can_admit_new_child": True,
                                                        "frozen_unchanged": True})

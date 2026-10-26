@@ -1,0 +1,25 @@
+{
+  "status": "staging_failed_before_CPU_or_job_submission",
+  "receipt": {
+    "status": "returned",
+    "argv": [
+      "ssh",
+      "-T",
+      "-o",
+      "BatchMode=yes",
+      "-o",
+      "ConnectTimeout=15",
+      "-o",
+      "ConnectionAttempts=1",
+      "dtu-hpc",
+      "bash -l -c '/work3/s234818/mosaic/envs/protenix-tiny/bin/python -'"
+    ],
+    "program_sha256": "b41a3f37134e03b8ee3090557db3434ddc6768d49117a4ac4c3f844e5d36a1b8",
+    "started_utc": "2026-10-26T11:05:11.899291+00:00",
+    "returncode": 1,
+    "ended_utc": "2026-10-26T11:05:24.378722+00:00",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "error": "historical v1 failure wrongly required v2; immutable source03 preserved",
+  "new_jobs": []
+}

@@ -1,0 +1,73 @@
+{
+  "status": "allocated_CPU_passed_native_GPU_checks_pending",
+  "captured_utc": "2026-10-26T11:38:44.661280+00:00",
+  "CPU": {
+    "status": "passed",
+    "cases": 278,
+    "job_id": "29820595",
+    "raw_xml_sha256": "eb2f0b20158e26a22789f300016e0d48803ae5be292c2a3566bd9a38636a6815",
+    "same_job_LSF_sha256": "0101b6685e34d3f0ba5c25ba1cd3ca81907a6b771597bc94d75ee8e71613f782"
+  },
+  "jobs": {
+    "cpu": "29820595",
+    "after-cpu": "29820597",
+    "gpu": "29820643"
+  },
+  "actual_states": {
+    "29820595": {
+      "parent": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-03/cpu",
+      "state": "DONE",
+      "phase": "cpu",
+      "submission_sha256": "72f1337756c499531c1005c909132abcde10abcae8aecb0ef2a456881d128e90"
+    },
+    "29820597": {
+      "parent": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-03/after-cpu",
+      "state": "DONE",
+      "phase": "after-cpu",
+      "submission_sha256": "0a99ebbd9065c73ad034593911ea93319243ab5375bfbb3791ec0fb2eff95fb5"
+    },
+    "29820643": {
+      "parent": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-03/gpu",
+      "state": "PEND",
+      "phase": "gpu",
+      "submission_sha256": "89ae3820a49f9d77f95c1ba8f805235435322d314303c3f7173765b14e945546"
+    }
+  },
+  "source_manifest_sha256": "a701b12bd1e69f5aa7169ad5339f2456c3d728b855257b4270437d37f9da68f3",
+  "independent_verification_sha256": "118d85dd48c756da8105cbc27debbdfcf2968c0bb999bca72ecf3dc2ef81857a",
+  "native_gradient_pass_established": false,
+  "optimizer_jobs": [],
+  "optimization_source_library_changed": false,
+  "optimization_settings_changed": false,
+  "prospective_checker_changed": true,
+  "original_failed_outcomes_preserved": true,
+  "saved_results_changed": false,
+  "monitor_resumed": false,
+  "local_scientific_tests": 0,
+  "independent_extended_verification": {
+    "path": "verification-extended.json",
+    "sha256": "9c0538e4e73cf64d493ed01ad130e9bdb5c46e3f127f764f441e149c0223a58f",
+    "compact_files": 68,
+    "CPU_certificate_bound_proofs": 29
+  },
+  "storage_at_CPU_and_callback": {
+    "cpu": {
+      "status": "passed",
+      "required_bytes": 50198843948,
+      "available_bytes": 50334387688,
+      "reserve_bytes": 4294967296,
+      "file_reserve": 100000,
+      "proof_sha256": "b9306780cf0f4b43319e4b561b5e8a9563e828efc8e2d576aa4ba62f0239a7c7",
+      "both_chemistry_futures_retained": true
+    },
+    "after-cpu": {
+      "status": "passed",
+      "required_bytes": 50194328774,
+      "available_bytes": 50329258902,
+      "reserve_bytes": 4294967296,
+      "file_reserve": 100000,
+      "proof_sha256": "d9b23beb7dfedc95879713bf3bca8d645b8d30903c77d6ca96fb1a25e955656c",
+      "both_chemistry_futures_retained": true
+    }
+  }
+}

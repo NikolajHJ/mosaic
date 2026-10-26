@@ -1,0 +1,7 @@
+{
+  "tests.test_admission": 50,
+  "tests.test_continuation_driver": 49,
+  "tests.test_continuation_ops": 99,
+  "tests.test_current_capacity": 5,
+  "tests.test_qualification": 19
+}

@@ -25,8 +25,8 @@ VERSION = "endpoint-aware-continuation-source-v1"
 PLAN_VERSION = "endpoint-aware-continuation-plan-v1"
 RESULT_VERSION = "endpoint-aware-continuation-result-v1"
 BASE = Path("/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01")
-ROOT = BASE / "nonchem-endpoint-continuation-02"
-SOURCE = BASE / "nonchem-endpoint-release-02/source"
+ROOT = BASE / "nonchem-endpoint-continuation-06"
+SOURCE = BASE / "nonchem-endpoint-release-06/source"
 ADMISSION = BASE / "nonchem-stride20-startup-release-03/source"
 ADMISSION_SHA = "704fab033d97342a14dc12b58dc32df44874232c5c30aad47c4d02041a502aab"
 PYTHON = "/work3/s234818/mosaic/envs/protenix-tiny/bin/python"
@@ -145,7 +145,7 @@ def verify(source, pin):
 
 def validate_plan(plan):
     require(isinstance(plan, dict) and plan.get("version") == PLAN_VERSION, "Wrong continuation plan schema")
-    require(plan.get("admission_policy") == "prospective-endpoint-admission-v1"
+    require(plan.get("admission_policy") == "prospective-endpoint-admission-v2"
             and plan.get("user_authorized_prospective_checks_before_children") is True
             and plan.get("original_failures_preserved") is True
             and plan.get("optimization_settings_changed") is False
@@ -153,7 +153,8 @@ def validate_plan(plan):
             and type(plan.get("matrix_stride")) is int and plan["matrix_stride"] == 20
             and type(plan.get("loss_stride")) is int and plan["loss_stride"] == 1,
             "Prospective admission/preservation/retention scope changed")
-    require(plan.get("control_root") == str(ROOT) and plan.get("source_root") == str(SOURCE), "Own control/source scope changed")
+    require(plan.get("root") == plan.get("control_root") == str(ROOT)
+            and plan.get("source_root") == str(SOURCE), "Own scientific/control/source scope changed")
     require(plan.get("dispatch_arms") == list(DISPATCH_ARMS) and plan.get("blocked_arms") == BLOCKED_ARMS,
             "Only Boltz and DBMol may dispatch; original Protenix admission remains blocked")
     arms = plan.get("arms")
@@ -215,7 +216,7 @@ def argv(phase, pin, arm="all", offset=0, dependency=None):
     else:
         require(dependency is None, "Scientific/CPU phases have no interarm dependencies")
     parent = ROOT / name
-    command = ["bsub", *resources(phase), "-J", "mosaic-endpoint02-" + name,
+    command = ["bsub", *resources(phase), "-J", "mosaic-endpoint06-" + name,
                "-oo", str(parent / "stdout.%J.log"), "-eo", str(parent / "stderr.%J.log")]
     if dependency is not None:
         command += ["-w", dependency]
@@ -296,7 +297,7 @@ def terminal(parent, queue):
             break
         require(index < 20, "Terminal LSF output unavailable")
         time.sleep(1)
-    lsf_success(path.read_text(), job, "mosaic-endpoint02-" + parent.name, queue)
+    lsf_success(path.read_text(), job, "mosaic-endpoint06-" + parent.name, queue)
     proofs.append(binding(path))
     return proofs
 
@@ -451,10 +452,20 @@ def storage(parent, phase):
         record["new_metadata_bytes"] = metadata_bytes()
         require(record["new_metadata_bytes"] <= CONTROL_CAP, "New control/validation/source allowance exhausted")
         require(record["available_bytes"] >= record["required_bytes"], "Whole continuation campaign storage does not fit")
+        current = current_capacity_gate(parent, phase, excess)
+        record['current_chemistry_and_new_scopes'] = current
+        record['required_bytes'] = max(record['required_bytes'], current['required_bytes'])
+        record['available_bytes'] = min(record['available_bytes'], current['available_bytes'])
+        require(record['available_bytes'] >= record['required_bytes'], 'Current chemistry futures plus complete continuation budgets do not fit')
         record["status"] = "passed"
     finally:
         write(Path(parent) / ("continuation-storage-" + phase + ".json"), record)
     return record
+
+
+def current_capacity_gate(parent, phase, excess=0):
+    from current_capacity import gate
+    return gate(parent, phase, excess)
 
 
 def certificate(pin, manifest):
@@ -706,7 +717,7 @@ def verify_result(plan, pin, phase, arm, offset):
     require(result.get("original_results_changed") is False and result.get("frozen_unchanged") is True,
             "Original results or frozen identities changed")
     require(result.get("original_failed_parent_preserved") is True
-            and result.get("endpoint_policy") == "prospective-endpoint-admission-v1"
+            and result.get("endpoint_policy") == "prospective-endpoint-admission-v2"
             and result.get("scientific_source_manifest_sha256") == row["source"]["manifest_sha256"],
             "Prospective policy/original failure/source scope differs")
     expected_applicability = {"pilot_high": "not_applicable_chemistry_disabled",

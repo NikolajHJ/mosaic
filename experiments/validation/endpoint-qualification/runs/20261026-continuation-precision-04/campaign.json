@@ -1,0 +1,15 @@
+{
+  "status": "CPU_startup_root_alias_failed_before_fixtures",
+  "CPU_job": "29820602",
+  "after_CPU_job": "29820603",
+  "passed_cases": 0,
+  "failed_cases": 0,
+  "native_or_optimizer_submitted": false,
+  "source_manifest_sha256": "5b1d180d31d8c47bef9f2e66576e1f34f23a8a45c11afcb28a0cd45e6d9671bc",
+  "source_files": 16,
+  "source_archive_sha256": "bcfbf50375461a7fb48855cd3cc57c7a8fc38d574ccbfdb66370aace29fd7755",
+  "original_results_changed": false,
+  "optimization_settings_changed": false,
+  "failure_preserved": true,
+  "monitor_resumed": false
+}

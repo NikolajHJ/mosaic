@@ -18,11 +18,14 @@ RUN=REPO/'experiments/validation/endpoint-qualification/runs/20261025-continuati
 
 
 def main():
-    parser=argparse.ArgumentParser();parser.add_argument('--attempt',choices=('01','02'),default='01');args=parser.parse_args()
+    parser=argparse.ArgumentParser();parser.add_argument('--attempt',choices=('06',),default='06');args=parser.parse_args()
     global LOCAL,RUN
     if args.attempt=='02':
         LOCAL=REPO/'results/hpc/20261025-continuation-worker-fix-02'
         RUN=REPO/'experiments/validation/endpoint-qualification/runs/20261025-continuation-worker-fix-02'
+    if args.attempt in ('03','04','05','06'):
+        LOCAL=REPO/'results/hpc/20261026-endpoint-repair-03/continuation06'
+        RUN=REPO/'experiments/validation/endpoint-qualification/runs/20261026-continuation-precision-06'
     source=LOCAL/'source01';preparation=json.loads((source/'preparation.json').read_bytes())
     archive=(source/'source.tar.gz').read_bytes()
     assert len(archive)==preparation['archive_bytes'] and hashlib.sha256(archive).hexdigest()==preparation['archive_sha256']

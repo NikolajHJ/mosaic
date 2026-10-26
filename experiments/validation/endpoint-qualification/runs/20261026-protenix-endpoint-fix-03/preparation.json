@@ -1,0 +1,15 @@
+{
+  "archive_bytes": 61695,
+  "archive_sha256": "9fbb3a317e980d5252cab00b883cbc52a6a4cb0dd3450702df87c5cc4feda878",
+  "cpu_counts": {
+    "tests.test_current_capacity": 5,
+    "tests.test_protenix_precision_admission": 30,
+    "tests.test_protenix_precision_native": 82,
+    "tests.test_protenix_precision_ops": 72,
+    "tests.test_protenix_precision_reference": 89
+  },
+  "files": 16,
+  "manifest_sha256": "a701b12bd1e69f5aa7169ad5339f2456c3d728b855257b4270437d37f9da68f3",
+  "plan_sha256": "f4ac832c1a38d194a2d0b596a9a897725bcdc6c71fce7b10d254faa1e33db8e7",
+  "status": "prepared_not_validated"
+}

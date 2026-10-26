@@ -1,0 +1,15 @@
+{
+  "status": "staging_failed_historical_version_binding_before_CPU",
+  "CPU_job": null,
+  "after_CPU_job": null,
+  "passed_cases": 0,
+  "failed_cases": 0,
+  "native_or_optimizer_submitted": false,
+  "source_manifest_sha256": "1709b79adfb48f75cd9e22c8a0e571a7e44d689f262c2b8dfe4bfb283a50293f",
+  "source_files": 16,
+  "source_archive_sha256": "195b4095f5e28a72c104f1c6a84150ee6a10abd4bd721559fc9cd5fb3813dc00",
+  "original_results_changed": false,
+  "optimization_settings_changed": false,
+  "failure_preserved": true,
+  "monitor_resumed": false
+}

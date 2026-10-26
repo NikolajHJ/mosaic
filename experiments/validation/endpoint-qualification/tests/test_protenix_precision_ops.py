@@ -19,8 +19,10 @@ PIN = "a" * 64
 
 
 @pytest.fixture(autouse=True)
-def allocated_only():
+def allocated_only(monkeypatch):
     assert os.environ.get("LSB_JOBID"), "Forensic contracts execute on allocated DTU HPC only"
+    monkeypatch.setattr(ops, 'current_capacity_gate', lambda *args: {
+        'status':'passed','required_bytes':0,'available_bytes':10**30})
 
 
 def save(path, value):
@@ -72,7 +74,7 @@ def plan(owned, monkeypatch):
             "monitor_remains_paused": True}
 
 
-def good_lsf(job="111", name="mosaic-pro-precision-cpu", queue="hpc"):
+def good_lsf(job="111", name="mosaic-pro-precision03-cpu", queue="hpc"):
     return ("Subject: Job " + job + ": <" + name + "> in cluster <dcc> Done\n"
             "Job was executed in queue <" + queue + ">.\nSuccessfully completed.\n")
 
@@ -209,7 +211,7 @@ def subprocess_timeout():
 
 def test_lsf_accepts_wrapped_identity_without_changing_raw_bytes():
     raw = good_lsf().replace("precision-cpu", "precision-\n    cpu").replace("queue <hpc>", "queue <\n hpc>")
-    assert ops.lsf_success(raw, "111", "mosaic-pro-precision-cpu", "hpc")
+    assert ops.lsf_success(raw, "111", "mosaic-pro-precision03-cpu", "hpc")
 
 
 @pytest.mark.parametrize("change", ["job", "name", "queue", "duplicate", "exit", "missing_success"])
@@ -228,7 +230,7 @@ def test_lsf_rejects_wrong_or_ambiguous_terminal_evidence(change):
     else:
         raw = raw.replace("Successfully completed.", "")
     with pytest.raises(ValueError, match="LSF success"):
-        ops.lsf_success(raw, "111", "mosaic-pro-precision-cpu", "hpc")
+        ops.lsf_success(raw, "111", "mosaic-pro-precision03-cpu", "hpc")
 
 
 def make_xml(path, child="", duplicate=False, omitted=False):

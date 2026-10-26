@@ -23,3 +23,14 @@ reference, endpoint policy and bounded native/CPU orchestration. The associated
 in runs/20261025-protenix-endpoint-fix-01/README.md; no optimizer branch exists.
 
 `verify_protenix_precision_delivery.py` independently checks compact CPU delivery bytes, raw XML case attribution, actual scheduler/LSF and metadata-only startup using the standard library only. It does not evaluate arrays or native gradients.
+
+Current26October repaired clients: `prepare_continuation_release.py` and
+`stage_continuation.py` acceptONLY06; existing/unknown roots cannot be replayed.
+`manage_protenix_precision.py` targets03 only. `current_capacity.py` runs the
+exact sealed chemistry03 whole-future guard in an isolated metadata process,
+adding new512+272MiB and preserving all old reserves/forecasts. It performs no
+scientific evaluation or submission. `observe_endpoint_repair.py --name UNIQUE`
+uses one read-only SSH query for BOTH current roots; `verify_endpoint_repair.py
+--name UNIQUE --output FRESH` independently checks bytes/source archives/rawCPU
+XML/LSF/actual submission scope. No model/numerical calls locally. Do not use
+these canonical launchers to replay older attempts. Old failures stay immutable.

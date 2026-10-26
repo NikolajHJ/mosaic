@@ -7836,3 +7836,68 @@ Independent auditSHA1f51df98f4fdd498c5d11b06deafba46904f135840b51fd469207a9a1137
 Evidence results/hpc/20261026-nonchem-status-01; datedrun campaign/readmes
 updated. Localstdlibbytes/JSON/schema only; no newtests/scientificevaluations,
 cleanup/submission, checkerchange, resumption or pausedmonitor change.
+
+## 2026-10-26 Authorized endpoint bug repair preparation
+
+User requested all checker/startup defects fixed before continuations. New
+immutable continuation03 introduces stricter pre-forward signal/floor budget
+and uncertainty charged inside15% tolerance; no observed-FD scale selection
+or fallback/rounding/projection. Original failures remainfailed. Pro precision03
+persists actualFP32 arrays/historical mismatch before validation; fresh exact
+input/model/context-bound current baseline must pass repeats/parity and full
+separateFP64reference/negative controls. Historical computed bits stay explicit
+observations, not original-run recertification. Both fresh chemistry futures
+and new512+272MiB scopes kept in fresh full4GiB/100k capacity guard. Original
+saved endpoints/config/rates/objectives/updates and pausedmonitor unchanged.
+LocalAST/JSON preparation only; CPU221/278/native not yet submitted/passed.
+
+## 2026-10-26 Endpoint repair allocated outcomes and native submissions
+
+Preserved03staging failure beforeCPU: broad new-policy label incorrectly applied
+to historical v1 Pro failure.04CPU29820602/03 failed actual generated-command
+scope beforefixtures because plan.root still named02; fixed strict own-root
+alias validation in05.05CPU29820647/48 ran223cases,222passed/one stale
+wrong-name negative fixture no-op; no native.06mutates stable name prefix,
+asserts actual mutation and repeatsall223. No old release/job/report rewritten.
+
+Actual06CPU29820662/afterCPU29820663 DONE/hpc/LSFsuccess, all223rawcases
+19+50+49+100+5passed0fail/errors/skips. Pro03CPU29820595/callback29820597
+DONE/hpc/LSFsuccess278rawcases89+30+82+72+5pass. All startup/worker commands
+accepted zero updates. Original scientific source/config/input/rates/retention
+unchanged. New prospective checker isv2, strictly greater pre-forward signal/
+floor and complete uncertainty inside unchanged15% tolerance; no scale fallback,
+original-failure recertification or optimizer math change. Prov2measurement
+preserves fresh actual FP32 bytes/historical comparison before current baseline
+validation, then full independent FP64/negative checks mandatory. No native pass
+is inferred from501CPUcases.
+
+ActualGPUchecks Pro29820643, Bol29820672/owncallback29820673,
+DB29820674/owncallback29820675 allPEND at11:28:45UTC. No optimizer child/new
+updates. Bol/DB callbacks require all native/pilot/runtime/frozen/startup/current
+full-storage gates before independent continuations; Pro measurement has no
+optimizer branch and needs validated integration after a valid reference result.
+Whole storage includes both currentchemistry futures plus new512+272MiB and
+all original4GiB/100k reserves. Current55compactfiles/source16+16/17+17safe
+archive members/rawXML/LSF/jobvectors independently audited; verification.json
+in results/hpc/20261026-endpoint-repair-03. No scientific work locally, monitor
+remains paused, existing chemistry jobs/results unchanged. No new cleanup.
+
+
+## 2026-10-26 Endpoint repair independent launch audit
+
+At 11:38:44 UTC the three new native validation jobs remained PEND; no optimizer
+child or new continuation update existed. Independently audited all 68 compact
+files, 29 CPU-certificate proof bindings, 501 raw passed cases, exact generated
+startup/submission/resource vectors and own-ended callback dependencies. All
+four actual CPU/callback whole-capacity gates include both current chemistry
+futures plus 822,083,584 bytes of new checker allowances and unchanged 4 GiB /
+100,000-file reserves. These are not reservations or native-gradient passes.
+Verification SHA256: 9c0538e4e73cf64d493ed01ad130e9bdb5c46e3f127f764f441e149c0223a58f.
+
+Protenix still needs the independent FP64 result and validated continuation
+integration. Boltz/DBMol conditional native callbacks are already queued; never
+replay them or duplicate unknown outcomes. No saved data, optimizer settings,
+chemistry jobs or paused monitor changed. No additional cleanup or local
+numerical execution. The repository-wide stdlib layout audit still reports 21
+pre-existing unrelated discovery/README issues and no endpoint-owner issue;
+these were left outside this repair.

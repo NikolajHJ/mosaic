@@ -1,0 +1,18 @@
+{
+  "archive_bytes": 92293,
+  "archive_sha256": "18ae169a96a05e232f15a6b657d1fca6f5b090051157e315a322bb358682b8ee",
+  "cpu_counts": {
+    "tests.test_admission": 50,
+    "tests.test_continuation_driver": 49,
+    "tests.test_continuation_ops": 100,
+    "tests.test_current_capacity": 5,
+    "tests.test_qualification": 19
+  },
+  "files": 16,
+  "jobs_submitted": false,
+  "manifest_sha256": "1519d5761069f73fb6659bc1740cb04c155a04bc3218f143a3f28a73e65a1f69",
+  "plan_sha256": "08358c91caf17fad2f49495c30b9d4f4d443a7bbeb5e52bc5f13c6865101b98d",
+  "scientific_source_changed": false,
+  "status": "prepared_not_validated",
+  "version": "endpoint-aware-continuation-source-v1"
+}

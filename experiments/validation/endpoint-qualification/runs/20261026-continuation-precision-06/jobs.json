@@ -1,0 +1,8 @@
+{
+  "cpu": "29820662",
+  "after-cpu": "29820663",
+  "boltz-validate-10000": "29820672",
+  "boltz-after-validate-10000": "29820673",
+  "dbmol-validate-05000": "29820674",
+  "dbmol-after-validate-05000": "29820675"
+}

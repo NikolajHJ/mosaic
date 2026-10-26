@@ -70,6 +70,36 @@ def test_linear_raw_jacobian_admits_new_child_without_certifying_original():
     assert all(value["meaningful_passed_directions"] >= 1 for value in report["field_outcomes"].values())
 
 
+@pytest.mark.parametrize("observed,predicted,floor", [
+    (-1.2516975402832031e-6, -1.6733607327568123e-6, 4.76837158203125e-7),
+    (-3.7848949432373047e-6, -2.4398952300774823e-6, 9.5367431640625e-7)])
+def test_saved_low_signal_rows_are_unresolved_not_fabricated_gradient_errors(observed, predicted, floor):
+    # Hand-calculable interval controls only, not a pass for old/native runs.
+    value = admission.agreement(observed, predicted, floor)
+    assert value["outcome"] == "unresolved_precision" and not value["agrees"]
+    assert not value["comparison_resolved"]
+
+
+def test_uncertainty_is_inside_tolerance_and_cannot_turn_wrong_gradient_into_pass():
+    assert admission.agreement(1.0, 1.0, 0.01)["agrees"]
+    assert not admission.agreement(1.0, 1.0, 0.2)["agrees"]
+    assert admission.agreement(1.0, 1.5, 0.01)["outcome"] == "resolved_disagreement"
+    assert admission.agreement(1.0, -1.0, 0.01)["outcome"] == "resolved_disagreement"
+
+
+def test_interval_budget_is_committed_as_stricter_pre_forward_signal_rule():
+    values = graph()
+    planned = admission.plan(values, originals())
+    assert planned["policy"]["signal_to_floor"] == 2 / .15
+    assert planned["policy"]["uncertainty_inside_relative_tolerance"] is True
+    assert planned["policy"]["relative_tolerance"] == .15
+
+
+@pytest.mark.parametrize("bad", [float("nan"), float("inf"), -1.0])
+def test_interval_rejects_nonfinite_or_negative_uncertainty(bad):
+    with pytest.raises(ValueError):admission.agreement(1.0, 1.0, bad)
+
+
 def test_all_points_and_fixed_ladders_are_sealed_before_any_callback():
     values = graph()
     before = {field: value.copy() for field, value in values.items()}
@@ -220,7 +250,9 @@ def test_FP32_constant_roundoff_cannot_be_called_a_zero_gradient_pass():
 def test_baseline_low_signal_selects_coarser_pair_before_FD_without_searching_outcomes():
     values = graph()
     primal, autodiff, frozen = evaluators(values)
-    coefficients = {field: value * 0.01 for field, value in weights(values).items()}
+    # The stronger v2 signal budget requires an informative toy at the two
+    # coarsest local radii; no production coefficient or native fixture changes.
+    coefficients = {field: value * 0.1 for field, value in weights(values).items()}
 
     def low_signal(payload):
         return np.float32(4 + sum(np.sum(payload[field] * coefficient) for field, coefficient in coefficients.items()))

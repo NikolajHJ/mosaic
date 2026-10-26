@@ -17,10 +17,10 @@ import subprocess
 import sys
 import time
 
-VERSION = "protenix-endpoint-precision-plan-v1"
+VERSION = "protenix-endpoint-precision-plan-v2"
 BASE = Path("/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01")
-ROOT = BASE / "protenix-endpoint-fix-02"
-SOURCE = BASE / "protenix-endpoint-fix-release-02/source"
+ROOT = BASE / "protenix-endpoint-fix-03"
+SOURCE = BASE / "protenix-endpoint-fix-release-03/source"
 FORENSICS = BASE / "protenix-endpoint-forensics-release-01/source"
 FORENSICS_PIN = "d127d6abe87307a5d305edb6d04e3a32e3545c508e58b82ce45290e0f3fc03d8"
 FORENSICS_PLAN_SHA = "14d0cf5b03af73ee5d87ece55b8c48616897521c50bbb40e8f76b6a9bb8f5861"
@@ -186,6 +186,27 @@ def audit_jaxpr(closed):
             "aval_counts": dict(counts), "narrow_float_avals": wrong, "nested_graphs": len(visited)}
 
 
+def current_fp32_measurements(fields):
+    """Qualify current execution; historical computed bits are observations."""
+    import numpy as np
+    require(all(v.dtype == np.float32 and np.isfinite(v).all() for v in fields.values()),
+            "Production FP32 path changed/nonfinite")
+    require(fields['primal'].shape == fields['ad_value'].shape == (3,), "Three independent baseline measurements required")
+    scalar_spread = float(max(fields['primal'].max(), fields['ad_value'].max())
+                          - min(fields['primal'].min(), fields['ad_value'].min()))
+    require(scalar_spread <= 2e-5, "Current independent FP32 primal/AD parity or repeat stability failed")
+    differences = {}
+    for name in ('X', 'E_upper'):
+        values = fields['gradient_' + name]
+        require(values.shape == (3, *fields[name].shape), "Current gradient repeat shape changed")
+        differences[name] = float(np.max(np.abs(values - values[0])))
+        require(differences[name] <= 2e-5, "Current FP32 gradient repeats unstable")
+        require(float(np.max(values.max(-1) - values.min(-1))) > 1e-7, "Current FP32 raw field has no nonzero contrast")
+    return {'status':'passed_current_authenticated_FP32_baseline','scalar_spread':scalar_spread,
+            'gradient_repeat_maximum_differences':differences,'historical_computed_bits_used_as_gate':False,
+            'does_not_establish_derivative_correctness':True}
+
+
 def _production(plan, output, lifecycle, protected):
     native, prior, arm, hooks, failed, ready, before = verify(plan, output)
     protected.update(before)
@@ -199,28 +220,41 @@ def _production(plan, output, lifecycle, protected):
     historical = read(plan["prior_forensic_report"]["path"])
     baseline_evaluations = historical["points"][0]["evaluations"]
     require(len(baseline_evaluations) == 3, "Prior FP32 baseline repetition count changed")
+    comparison = []
     for actual, expected in zip(evaluations, baseline_evaluations):
-        require(float(actual["primal"]) == expected["primal"] and float(actual["ad_value"]) == expected["ad_value"],
-                "Fresh FP32 scalar differs from authenticated prior forensic path")
+        row = {'primal':float(actual['primal']), 'historical_primal':expected['primal'],
+               'AD_scalar':float(actual['ad_value']), 'historical_AD_scalar':expected['ad_value'],
+               'scalar_bits_equal':bool(float(actual['primal']) == expected['primal']
+                                         and float(actual['ad_value']) == expected['ad_value']), 'gradients':{}}
         for field in ("X", "E_upper"):
             gradient = np.asarray(actual["gradients"][field])
             previous = expected["gradients"][field]
-            require(str(gradient.dtype) == previous["dtype"] and list(gradient.shape) == previous["shape"]
-                    and hashlib.sha256(gradient.tobytes()).hexdigest() == previous["sha256"],
-                    "Fresh FP32 gradient differs from authenticated prior forensic path")
+            row['gradients'][field] = {'dtype':str(gradient.dtype),'shape':list(gradient.shape),
+                'sha256':hashlib.sha256(gradient.tobytes()).hexdigest(),'historical':previous,
+                'exact_equal':bool(str(gradient.dtype) == previous['dtype'] and list(gradient.shape) == previous['shape']
+                                  and hashlib.sha256(gradient.tobytes()).hexdigest() == previous['sha256'])}
+        comparison.append(row)
     fields = {**values, "primal": np.asarray([e["primal"] for e in evaluations]),
               "ad_value": np.asarray([e["ad_value"] for e in evaluations])}
     for field in values:
         fields["gradient_" + field] = np.stack([e["gradients"][field] for e in evaluations])
-    require(all(v.dtype == np.float32 and np.isfinite(v).all() for v in fields.values()), "Production FP32 path changed/nonfinite")
+    # Persist actual bytes and verbatim historical comparison before any current
+    # measurement gate. A failure must not discard the values that caused it.
     with (directory / "production.npz").open("xb") as stream:
         np.savez(stream, **fields)
+    write(directory/'historical-replay.json', {'status':'historical_observations_preserved',
+        'rows':comparison,'can_certify_original_study':False,'current_derivative_gate_passed':False,
+        'prior_forensic_report':plan['prior_forensic_report']})
+    current = current_fp32_measurements(fields)
+    write(directory/'current-baseline.json',current)
     require(frozen() == lifecycle["frozen_before"], "Production frozen identity changed")
     write(directory / "protected-after.json", preserved(before))
     write(directory / "assessment.json", {"status": "passed_fp32_measurements", "updates": 0,
           "original_frozen": frozen(), "data": binding(directory / "production.npz"),
           "production_x64_enabled": False, "separate_process": True,
-          "baseline_scope": "exact authenticated prior forensic FP32 highest-matmul scorer path",
+          "baseline_scope": "fresh_authenticated_current_FP32_baseline_v2; historical comparison preserved separately",
+          "current_baseline":binding(directory/'current-baseline.json'),
+          "historical_observations":binding(directory/'historical-replay.json'),
           "prior_forensic_report": plan["prior_forensic_report"]})
 
 
@@ -464,6 +498,10 @@ def verified_worker(output, worker):
     if worker == "fp32":
         require(assessment.get("production_x64_enabled") is False and assessment.get("separate_process") is True,
                 "Production FP32 reference execution changed")
+        for key in ('current_baseline','historical_observations'):
+            require(binding(assessment[key]['path']) == assessment[key], 'Current/historical baseline proof differs')
+        require(read(assessment['current_baseline']['path'])['status']=='passed_current_authenticated_FP32_baseline',
+                'Current FP32 baseline was not qualified')
     else:
         require(assessment.get("original_results_changed") is False
                 and assessment.get("can_certify_or_restart_original_study") is False,

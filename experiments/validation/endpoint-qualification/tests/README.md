@@ -20,3 +20,13 @@ clones, lossless promotion/dtype audits, positive/adversarial endpoint policies,
 metadata startup/preservation and one-shot CPU/GPU dispatch. Execute only in the
 new immutable allocated CPU capsule, never locally. Toy/reference fixtures alone
 cannot qualify the pretrained Protenix endpoint.
+
+Repair06 CPU29820662 passed223 rawcases:19diagnostic/50admission/49driver/
+100controller/5current-capacity. Pro03 CPU29820595 passed278:89reference/
+30precision-policy/82native-harness/72controller/5capacity, all0fail/error/skip.
+The old low-signal linear toy uses stronger fixture-only coefficients to remain
+informative under the tighter precision rule. Original production coefficients
+are unchanged. Hand-calculable saved-row intervals stay noncertifying and wrong
+zero/sign/1.5x gradients remain rejected. Current baseline tests cannot certify
+native correctness. Both complete suites and actual startups ran allocatedHPC;
+no fixtures/scientific arrays executed locally. Native GPU results stillpending.

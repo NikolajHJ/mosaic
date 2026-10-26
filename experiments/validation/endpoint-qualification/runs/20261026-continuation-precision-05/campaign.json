@@ -1,0 +1,15 @@
+{
+  "status": "CPU_fixture_failed_wrong_name_mutation_no_native",
+  "CPU_job": "29820647",
+  "after_CPU_job": "29820648",
+  "passed_cases": 222,
+  "failed_cases": 1,
+  "native_or_optimizer_submitted": false,
+  "source_manifest_sha256": "2204b526a4b1fe45b1356840a5c8e7018327042a9b92eb66ec02d0bcb8d7a4f2",
+  "source_files": 16,
+  "source_archive_sha256": "a4e28ab2d3e080342f2e79766c6de999cd8b90bda819dc635ab25e02ef66fa00",
+  "original_results_changed": false,
+  "optimization_settings_changed": false,
+  "failure_preserved": true,
+  "monitor_resumed": false
+}

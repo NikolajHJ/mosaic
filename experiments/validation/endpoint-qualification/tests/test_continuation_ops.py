@@ -19,8 +19,12 @@ PIN = "a" * 64
 
 
 @pytest.fixture(autouse=True)
-def allocated_only():
+def allocated_only(monkeypatch):
     assert os.environ.get("LSB_JOBID"), "Controller contracts execute only on allocated HPC"
+    # Isolate original controller unit budgets. Separate capacity fixtures and
+    # actual allocated startup invoke the complete authenticated new guard.
+    monkeypatch.setattr(ops, 'current_capacity_gate', lambda *args: {
+        'status':'passed','required_bytes':0,'available_bytes':10**30})
 
 
 @pytest.fixture
@@ -41,11 +45,11 @@ def save(path, value):
 
 
 def plan():
-    return {"version": ops.PLAN_VERSION, "admission_policy": "prospective-endpoint-admission-v1",
+    return {"version": ops.PLAN_VERSION, "admission_policy": "prospective-endpoint-admission-v2",
             "user_authorized_prospective_checks_before_children": True, "original_failures_preserved": True,
             "optimization_settings_changed": False, "monitor_remains_paused": True,
             "matrix_stride": 20, "loss_stride": 1, "dispatch_arms": list(ops.DISPATCH_ARMS),
-            "blocked_arms": copy.deepcopy(ops.BLOCKED_ARMS), "control_root": str(ops.ROOT), "source_root": str(ops.SOURCE), "arms": [
+            "blocked_arms": copy.deepcopy(ops.BLOCKED_ARMS), "root":str(ops.ROOT), "control_root": str(ops.ROOT), "source_root": str(ops.SOURCE), "arms": [
         {"id": name, "offsets": list(values["offsets"]), "segment_steps": values["segment_steps"],
          "global_target": values["global_target"], "rate": values["rate"],
          "source": {"path": str(ops.BASE / ops.ORIGINALS[name]["release"]), "manifest_sha256": ops.ORIGINALS[name]["manifest"], "files": ops.ORIGINALS[name]["files"]},
@@ -59,7 +63,12 @@ def scheduler(status="DONE", job="111", queue="hpc"):
     return {"job_id": job, "returncode": 0, "stdout": "Job <" + job + ">, Status <" + status + ">, Queue <" + queue + ">", "stderr": ""}
 
 
-def lsf(job="111", name="mosaic-endpoint02-cpu", queue="hpc", status="Done"):
+def test_scientific_root_alias_cannot_point_to_predecessor():
+    value=plan();value['root']=str(ops.ROOT)+'-predecessor'
+    with pytest.raises(ValueError,match='scientific/control/source'):ops.validate_plan(value)
+
+
+def lsf(job="111", name="mosaic-endpoint06-cpu", queue="hpc", status="Done"):
     return ("Subject: Job " + job + ": <" + name + "> in cluster <dcc> " + status
             + "\nJob was executed in queue <" + queue + ">.\nSuccessfully completed.\n")
 
@@ -96,7 +105,7 @@ def valid_result(owned, arm="boltz", phase="validate", offset=10000):
               "source_manifest_sha256": PIN, "plan_sha256": ops.sha(source / "plan.json"),
               "config_sha256": row["config"]["sha256"], "original_results_changed": False,
               "frozen_unchanged": True, "checks": dict.fromkeys(ops.CHECKS, True), "proofs": [original],
-              "original_failed_parent_preserved": True, "endpoint_policy": "prospective-endpoint-admission-v1",
+              "original_failed_parent_preserved": True, "endpoint_policy": "prospective-endpoint-admission-v2",
               "scientific_source_manifest_sha256": row["source"]["manifest_sha256"],
               "applicability": {"pilot_high": "not_applicable_chemistry_disabled",
                                 "terminal_admission": "not_applicable_validation_phase" if phase == "validate" else "required",
@@ -222,8 +231,8 @@ def test_scheduler_failures_identity_and_query_errors_fail_closed(change):
 
 
 def test_lsf_wraps_whitespace_without_losing_exact_job_name():
-    raw = lsf().replace("mosaic-endpoint02-cpu", "mosaic-endpoint02-\n cpu")
-    assert ops.lsf_success(raw, "111", "mosaic-endpoint02-cpu", "hpc")
+    raw = lsf().replace("mosaic-endpoint06-cpu", "mosaic-endpoint06-\n cpu")
+    assert ops.lsf_success(raw, "111", "mosaic-endpoint06-cpu", "hpc")
 
 
 @pytest.mark.parametrize("change", ["wrong_job", "wrong_name", "wrong_queue", "duplicate_subject", "fake_done_suffix", "no_success"])
@@ -232,7 +241,7 @@ def test_lsf_failure_does_not_become_a_success(change):
     if change == "wrong_job":
         raw = raw.replace("111", "112")
     elif change == "wrong_name":
-        raw = raw.replace("endpoint02", "endpoint03")
+        raw = raw.replace("mosaic-", "wrong-mosaic-", 1)
     elif change == "wrong_queue":
         raw = raw.replace("hpc", "gpul40s")
     elif change == "duplicate_subject":
@@ -241,8 +250,9 @@ def test_lsf_failure_does_not_become_a_success(change):
         raw = raw.replace("Done\n", "DoneInvalid\n")
     else:
         raw = raw.replace("Successfully completed.", "Exited with exit code 1.")
+    assert raw != lsf(), "Negative control must actually mutate the raw LSF proof"
     with pytest.raises(ValueError):
-        ops.lsf_success(raw, "111", "mosaic-endpoint02-cpu", "hpc")
+        ops.lsf_success(raw, "111", "mosaic-endpoint06-cpu", "hpc")
 
 
 def test_raw_xml_counts_actual_rows_and_exact_modules(owned):
@@ -610,7 +620,7 @@ def test_cpu_callback_rejects_incomplete_or_changed_worker_proofs(owned, monkeyp
         ops.startup_proofs(value, current)
 
 
-@pytest.mark.parametrize("change", ["none", "manifest_missing", "proof_missing", "passed", "can_admit", "certify_old", "frozen_changed", "bond_passed"])
+@pytest.mark.parametrize("change", ["none", "manifest_missing", "proof_missing", "passed", "can_admit", "certify_old", "frozen_changed", "bond_passed", "wrong_historical_version"])
 def test_rejected_original_protenix_admission_stays_file_bound_and_failed(monkeypatch, change):
     current = plan()
     blocked = ops.BLOCKED_ARMS["protenix"]["source01_admission"]
@@ -632,6 +642,8 @@ def test_rejected_original_protenix_admission_stays_file_bound_and_failed(monkey
         observation["frozen_unchanged"] = False
     elif change == "bond_passed":
         observation["field_outcomes"]["E_upper"]["passed"] = True
+    elif change == "wrong_historical_version":
+        observation["version"] = "prospective-endpoint-admission-v2"
     seen = []
     def check(row):
         seen.append(row)

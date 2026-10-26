@@ -15,7 +15,7 @@ import json
 import os
 
 
-VERSION = "prospective-endpoint-admission-v1"
+VERSION = "prospective-endpoint-admission-v2"
 ORIGINAL_EPSILONS = (0.01, 0.003, 0.001)
 LOCAL_EPSILONS = (0.001, 0.0003, 0.0001, 0.00003)
 REPEATS = 3
@@ -25,6 +25,7 @@ GRADIENT_REPEAT_ATOL = 2e-5
 MINIMUM_TANGENT = 1e-7
 ULP_MULTIPLIER = 8.0
 SPREAD_MULTIPLIER = 4.0
+SIGNAL_TO_FLOOR = 2.0 / RELATIVE_TOLERANCE
 GEOMETRY_ROWS = 4
 SCOPES = ("saved_failed_endpoint", "original_probe_not_reached", "not_preexisting_at_new_endpoint")
 
@@ -156,7 +157,9 @@ def plan(values, original_directions, *, original_direction_scope="saved_failed_
                          "repeats": REPEATS, "relative_tolerance": RELATIVE_TOLERANCE,
                          "scalar_parity_atol": PARITY_ATOL, "gradient_repeat_atol": GRADIENT_REPEAT_ATOL,
                          "minimum_tangent": MINIMUM_TANGENT, "ulp_multiplier": ULP_MULTIPLIER,
-                         "spread_multiplier": SPREAD_MULTIPLIER, "geometry_rows": GEOMETRY_ROWS},
+                         "spread_multiplier": SPREAD_MULTIPLIER, "geometry_rows": GEOMETRY_ROWS,
+                         "signal_to_floor": SIGNAL_TO_FLOOR,
+                         "uncertainty_inside_relative_tolerance": True},
               "directions": [], "selection": "geometry_points_before_any_evaluator; precision_pair_before_perturbed_forwards"}
     epsilons = list(ORIGINAL_EPSILONS) + [value for value in LOCAL_EPSILONS if value not in ORIGINAL_EPSILONS]
     for field, values in arrays.items():
@@ -246,7 +249,7 @@ def _eligibility(saved_plan, gradients, gradient_repeats, floor, baseline_eviden
                                      for value in probe["baseline_displacements"]]
             eligible = bool(probe["local_scale"] and expected is not None and stable
                             and abs(tangent) > MINIMUM_TANGENT and predicted_signals
-                            and all(signal > floor for signal in predicted_signals))
+                            and all(signal > SIGNAL_TO_FLOOR * floor for signal in predicted_signals))
             probes.append({"epsilon": probe["epsilon"], "predicted_scalar_difference": expected,
                            "predicted_endpoint_signals": predicted_signals, "precision_eligible": eligible})
         by_epsilon = {probe["epsilon"]: probe for probe in probes}
@@ -259,11 +262,29 @@ def _eligibility(saved_plan, gradients, gradient_repeats, floor, baseline_eviden
                      "probes": probes, "selected_local_pair": selected})
     result = {"version": VERSION, "plan_sha256": saved_plan["plan_sha256"],
               "baseline_evidence_sha256": baseline_evidence_sha256,
-              "selection_rule": "finest_adjacent_fixed_local_pair_with_both_predicted_endpoint_signals_above_baseline_resolution_floor",
+              "selection_rule": "finest_adjacent_fixed_local_pair_with_both_signals_above_predeclared_precision_budget",
               "baseline_resolution_floor": floor, "local_epsilons": list(LOCAL_EPSILONS), "directions": rows,
               "selection_uses_perturbed_values": False, "pair_fallback_after_FD": False}
     result["eligibility_sha256"] = _seal(result)
     return result
+
+
+def agreement(observed, predicted, uncertainty):
+    """Charge uncertainty inside tolerance; unresolved is never agreement."""
+    _require(all(type(value) in (int, float) for value in (observed, predicted, uncertainty))
+             and uncertainty >= 0, "Finite scalar interval required")
+    import math
+    _require(all(math.isfinite(value) for value in (observed, predicted, uncertainty)), "Nonfinite interval")
+    residual = abs(observed - predicted)
+    low = max(max(0.0, abs(observed) - uncertainty), abs(predicted))
+    high = max(abs(observed) + uncertainty, abs(predicted))
+    same_sign = abs(observed) > uncertainty and observed * predicted > 0
+    passed = bool(same_sign and residual + uncertainty <= RELATIVE_TOLERANCE * low)
+    wrong = bool(max(0.0, residual - uncertainty) > RELATIVE_TOLERANCE * high)
+    return {"agrees": passed, "comparison_resolved": bool(passed or wrong),
+            "relative_error": residual / max(abs(observed), abs(predicted)) if max(abs(observed), abs(predicted)) else None,
+            "absolute_residual": residual, "uncertainty_charged_inside_tolerance": uncertainty,
+            "outcome": "agreement" if passed else "resolved_disagreement" if wrong else "unresolved_precision"}
 
 
 def evaluate(saved_plan, primal, autodiff, frozen_identity, *, seal_callback=None):
@@ -368,17 +389,13 @@ def evaluate(saved_plan, primal, autodiff, frozen_identity, *, seal_callback=Non
                                                   for values in endpoints])
                     endpoint_ulp = max(ulp, *[value["resolution_ulp"] for values in endpoints for value in values])
                     resolution = ULP_MULTIPLIER * endpoint_ulp + SPREAD_MULTIPLIER * endpoint_spread
-                    resolved = bool(max(abs(actual), abs(expected)) > resolution)
-                    denominator = max(abs(actual), abs(expected))
-                    relative = abs(actual - expected) / denominator if denominator else None
-                    agrees = bool(resolved and actual * expected > 0 and relative <= RELATIVE_TOLERANCE)
-                    measurement.update(evaluated=True, comparison_resolved=resolved, agrees=agrees,
+                    interval = agreement(actual, expected, resolution)
+                    measurement.update(evaluated=True, **interval,
                         endpoint_primal_repeats=endpoints, observed_scalar_difference=actual,
                         actual_FP32_displacement_JVP=expected, effective_step=probe["effective_step"],
                         observed_derivative=actual / probe["effective_step"],
-                        represented_derivative=expected / probe["effective_step"], relative_error=relative,
-                        resolution_floor=resolution, endpoint_repeat_spread=endpoint_spread,
-                        outcome="agreement" if agrees else "resolved_disagreement" if resolved else "unresolved_precision")
+                        represented_derivative=expected / probe["effective_step"],
+                        resolution_floor=resolution, endpoint_repeat_spread=endpoint_spread)
                 observed["probes"].append(measurement)
             pair = selected["selected_local_pair"]
             by_epsilon = {probe["epsilon"]: probe for probe in observed["probes"]}
