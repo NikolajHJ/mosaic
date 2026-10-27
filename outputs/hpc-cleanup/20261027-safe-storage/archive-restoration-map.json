@@ -1,0 +1,10 @@
+{
+  "status": "verified_exact_local_restore_copy",
+  "remote_original": "/work3/s234818/latentmol/cache/boltz2/mols.tar.gz",
+  "local": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-cleanup\\20261027-safe-storage\\restore\\mols.tar.gz",
+  "sha256": "d1e4f47aa69824d37641e70cc60ebae582ccfe6e99d6b4868d791b8e9bc41116",
+  "bytes": 406779014,
+  "retained_native_tar": "/work3/s234818/latentmol/cache/boltz2/mols.tar",
+  "retained_native_tar_sha256": "39e076d96dbec6b4e86982bbda16f3a53a2a60c9bdc17828d88f6f9a0c7d1fd7",
+  "restore_command": "scp -o BatchMode=yes C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-cleanup\\20261027-safe-storage\\restore\\mols.tar.gz dtu-hpc:/work3/s234818/latentmol/cache/boltz2/mols.tar.gz"
+}

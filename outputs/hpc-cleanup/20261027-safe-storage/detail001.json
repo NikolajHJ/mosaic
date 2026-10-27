@@ -1,0 +1,2498 @@
+{
+  "time": "2026-10-27 12:25:42 CET",
+  "groups": {
+    "cache": {
+      "totals": {
+        "tmp/uv-setuptools-30de73c6c087790d.lock": {
+          "files": 1,
+          "logical": 0,
+          "allocated": 0
+        },
+        "tmp/uv-setuptools-fcef4302808e0029.lock": {
+          "files": 1,
+          "logical": 0,
+          "allocated": 0
+        },
+        "tmp/uv-setuptools-6de88ea173631f25.lock": {
+          "files": 1,
+          "logical": 0,
+          "allocated": 0
+        },
+        "tmp/uv-setuptools-a4286d4595ac4ed2.lock": {
+          "files": 1,
+          "logical": 0,
+          "allocated": 0
+        },
+        "tmp/uv-setuptools-024b4b98161d47b6.lock": {
+          "files": 1,
+          "logical": 0,
+          "allocated": 0
+        },
+        "tmp/tmphng6xb7q": {
+          "files": 2,
+          "logical": 5155,
+          "allocated": 5632
+        },
+        "tmp/tmpepx57t98": {
+          "files": 2,
+          "logical": 5155,
+          "allocated": 5632
+        },
+        "tmp/pytest-of-s234818": {
+          "files": 8491,
+          "logical": 78341120,
+          "allocated": 81104384
+        },
+        "tmp/tmpdimeh1zf": {
+          "files": 2,
+          "logical": 5155,
+          "allocated": 5632
+        },
+        "tmp/tmpyp87b4oc": {
+          "files": 2,
+          "logical": 5155,
+          "allocated": 5632
+        },
+        "tmp/tmppg1i2a8q": {
+          "files": 2,
+          "logical": 5155,
+          "allocated": 5632
+        },
+        "matplotlib/fontlist-v390.json": {
+          "files": 1,
+          "logical": 108211,
+          "allocated": 108544
+        },
+        "defog-official-guacamol/guacamol.ckpt": {
+          "files": 1,
+          "logical": 255167415,
+          "allocated": 255167488
+        },
+        "defog-official-guacamol/resolved-requirements.txt": {
+          "files": 1,
+          "logical": 1521,
+          "allocated": 1536
+        },
+        "defog-official-guacamol/DeFoG": {
+          "files": 139,
+          "logical": 7159095,
+          "allocated": 7196160
+        },
+        "boltz2/boltz2_conf.ckpt": {
+          "files": 1,
+          "logical": 2286561469,
+          "allocated": 2286561792
+        },
+        "boltz2/environment-freeze.txt": {
+          "files": 1,
+          "logical": 1727,
+          "allocated": 2048
+        },
+        "boltz2/boltz2_aff.ckpt": {
+          "files": 1,
+          "logical": 2062139170,
+          "allocated": 2062139392
+        },
+        "boltz2/mols.tar.gz": {
+          "files": 1,
+          "logical": 406779014,
+          "allocated": 406779392
+        },
+        "boltz2/mols.tar": {
+          "files": 1,
+          "logical": 1855662080,
+          "allocated": 1855662080
+        },
+        "boltz2/mols": {
+          "files": 45227,
+          "logical": 1820698819,
+          "allocated": 1832502272
+        }
+      },
+      "largest": [
+        {
+          "path": "/work3/s234818/latentmol/cache/boltz2/boltz2_conf.ckpt",
+          "bytes": 2286561469,
+          "allocated": 2286561792,
+          "nlink": 1,
+          "mtime_ns": 1790518391000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/cache/boltz2/boltz2_aff.ckpt",
+          "bytes": 2062139170,
+          "allocated": 2062139392,
+          "nlink": 1,
+          "mtime_ns": 1790518306000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/cache/boltz2/mols.tar",
+          "bytes": 1855662080,
+          "allocated": 1855662080,
+          "nlink": 1,
+          "mtime_ns": 1792384563000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/cache/boltz2/mols.tar.gz",
+          "bytes": 406779014,
+          "allocated": 406779392,
+          "nlink": 1,
+          "mtime_ns": 1790518463000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/cache/defog-official-guacamol/guacamol.ckpt",
+          "bytes": 255167415,
+          "allocated": 255167488,
+          "nlink": 1,
+          "mtime_ns": 1790597770000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/cache/boltz2/mols/IR0.pkl",
+          "bytes": 2991290,
+          "allocated": 2991616,
+          "nlink": 1,
+          "mtime_ns": 1739571560000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/cache/defog-official-guacamol/DeFoG/.git/objects/pack/pack-c6ba172935f2346aae48090776733bcad662b7e2.pack",
+          "bytes": 2938912,
+          "allocated": 2939392,
+          "nlink": 1,
+          "mtime_ns": 1790598033000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/cache/tmp/pytest-of-s234818/pytest-169/test_guarded_restart_requires_4/stability/fixture/updates.jsonl",
+          "bytes": 1916392,
+          "allocated": 1916416,
+          "nlink": 1,
+          "mtime_ns": 1793099525000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/cache/tmp/pytest-of-s234818/pytest-169/test_rebound_hashes_cannot_hid7/stability/fixture/updates.jsonl",
+          "bytes": 1916392,
+          "allocated": 1916416,
+          "nlink": 1,
+          "mtime_ns": 1793099535000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/cache/tmp/pytest-of-s234818/pytest-169/test_guarded_restart_requires_8/stability/fixture/updates.jsonl",
+          "bytes": 1916392,
+          "allocated": 1916416,
+          "nlink": 1,
+          "mtime_ns": 1793099527000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/cache/tmp/pytest-of-s234818/pytest-169/test_guarded_restart_requires_0/stability/fixture/updates.jsonl",
+          "bytes": 1916392,
+          "allocated": 1916416,
+          "nlink": 1,
+          "mtime_ns": 1793099522000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/cache/tmp/pytest-of-s234818/pytest-169/test_guarded_restart_requires_1/stability/fixture/updates.jsonl",
+          "bytes": 1916392,
+          "allocated": 1916416,
+          "nlink": 1,
+          "mtime_ns": 1793099523000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/cache/tmp/pytest-of-s234818/pytest-169/test_old_proof_cannot_claim_an0/stability/fixture/updates.jsonl",
+          "bytes": 1916392,
+          "allocated": 1916416,
+          "nlink": 1,
+          "mtime_ns": 1793099536000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/cache/tmp/pytest-of-s234818/pytest-169/test_guarded_restart_requires_6/stability/fixture/updates.jsonl",
+          "bytes": 1916109,
+          "allocated": 1916416,
+          "nlink": 1,
+          "mtime_ns": 1793099526000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/cache/tmp/pytest-of-s234818/pytest-169/test_guarded_restart_requires_7/stability/fixture/updates.jsonl",
+          "bytes": 1916391,
+          "allocated": 1916416,
+          "nlink": 1,
+          "mtime_ns": 1793099526000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/cache/tmp/pytest-of-s234818/pytest-169/test_rebound_hashes_cannot_hid6/stability/fixture/updates.jsonl",
+          "bytes": 1916392,
+          "allocated": 1916416,
+          "nlink": 1,
+          "mtime_ns": 1793099534000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/cache/tmp/pytest-of-s234818/pytest-169/test_guarded_restart_requires_3/stability/fixture/updates.jsonl",
+          "bytes": 1916392,
+          "allocated": 1916416,
+          "nlink": 1,
+          "mtime_ns": 1793099524000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/cache/tmp/pytest-of-s234818/pytest-169/test_stronger_weight_still_req0/stability/fixture/updates.jsonl",
+          "bytes": 1916392,
+          "allocated": 1916416,
+          "nlink": 1,
+          "mtime_ns": 1793099533000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/cache/tmp/pytest-of-s234818/pytest-169/test_guarded_restart_requires_5/stability/fixture/updates.jsonl",
+          "bytes": 1916392,
+          "allocated": 1916416,
+          "nlink": 1,
+          "mtime_ns": 1793099525000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/cache/tmp/pytest-of-s234818/pytest-169/test_guarded_restart_requires_2/stability/fixture/updates.jsonl",
+          "bytes": 1916392,
+          "allocated": 1916416,
+          "nlink": 1,
+          "mtime_ns": 1793099523000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/cache/tmp/pytest-of-s234818/pytest-169/test_rebound_hashes_cannot_hid8/stability/fixture/updates.jsonl",
+          "bytes": 1916392,
+          "allocated": 1916416,
+          "nlink": 1,
+          "mtime_ns": 1793099535000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/cache/tmp/pytest-of-s234818/pytest-169/test_rebound_hashes_cannot_hid9/stability/fixture/updates.jsonl",
+          "bytes": 1916392,
+          "allocated": 1916416,
+          "nlink": 1,
+          "mtime_ns": 1793099536000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/cache/boltz2/mols/T8W.pkl",
+          "bytes": 1434959,
+          "allocated": 1435136,
+          "nlink": 1,
+          "mtime_ns": 1739583415000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/cache/boltz2/mols/JSG.pkl",
+          "bytes": 1428337,
+          "allocated": 1428480,
+          "nlink": 1,
+          "mtime_ns": 1739575934000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/cache/defog-official-guacamol/DeFoG/images/defog.pdf",
+          "bytes": 1333672,
+          "allocated": 1333760,
+          "nlink": 1,
+          "mtime_ns": 1790598033000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/cache/tmp/pytest-of-s234818/pytest-169/test_rebound_hashes_cannot_hid0/stability/fixture/updates.jsonl",
+          "bytes": 1208892,
+          "allocated": 1209344,
+          "nlink": 1,
+          "mtime_ns": 1793099519000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/cache/tmp/pytest-of-s234818/pytest-169/test_rebound_hashes_cannot_hid5/stability/fixture/updates.jsonl",
+          "bytes": 1208892,
+          "allocated": 1209344,
+          "nlink": 1,
+          "mtime_ns": 1793099522000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/cache/tmp/pytest-of-s234818/pytest-169/test_rebound_hashes_cannot_hid2/stability/fixture/updates.jsonl",
+          "bytes": 1208892,
+          "allocated": 1209344,
+          "nlink": 1,
+          "mtime_ns": 1793099520000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/cache/tmp/pytest-of-s234818/pytest-169/test_rebound_hashes_cannot_hid4/stability/fixture/updates.jsonl",
+          "bytes": 1208886,
+          "allocated": 1209344,
+          "nlink": 1,
+          "mtime_ns": 1793099521000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/cache/tmp/pytest-of-s234818/pytest-169/test_full2500_disposable_proof1/stability/fixture/updates.jsonl",
+          "bytes": 1208892,
+          "allocated": 1209344,
+          "nlink": 1,
+          "mtime_ns": 1793099519000000000,
+          "uid": 306121
+        }
+      ],
+      "files": 53880
+    },
+    "submissions": {
+      "totals": {
+        "root-files": {
+          "files": 211,
+          "logical": 2315669,
+          "allocated": 2376704
+        },
+        "source055-corrected-attempt001": {
+          "files": 7,
+          "logical": 12660,
+          "allocated": 14848
+        },
+        "source114-boltz-defog-500-attempt001": {
+          "files": 7,
+          "logical": 16069,
+          "allocated": 17408
+        },
+        "source123-retirement-confirmation-001": {
+          "files": 8,
+          "logical": 30814,
+          "allocated": 32768
+        },
+        "source100-triangle-auto-continuation-attempt001": {
+          "files": 18,
+          "logical": 22950,
+          "allocated": 28672
+        },
+        "source095-large-triangle-prepare-benchmark": {
+          "files": 1,
+          "logical": 2070,
+          "allocated": 2560
+        },
+        "source125-failure-speed-attempt001": {
+          "files": 3,
+          "logical": 30925,
+          "allocated": 31232
+        },
+        "source085-charge-interface-attempt001": {
+          "files": 9,
+          "logical": 17375,
+          "allocated": 19968
+        },
+        "source071-search-decoder-attempt001": {
+          "files": 8,
+          "logical": 39037,
+          "allocated": 40960
+        },
+        "source082-decoder-causal-attempt001": {
+          "files": 9,
+          "logical": 21557,
+          "allocated": 24576
+        },
+        "source102-structural-loss-diagnostic-attempt001": {
+          "files": 8,
+          "logical": 38395,
+          "allocated": 40960
+        },
+        "storage-cleanup-20261022-datasets-001": {
+          "files": 3,
+          "logical": 841135,
+          "allocated": 841728
+        },
+        "verified-capsule-offload-20261017-001": {
+          "files": 1,
+          "logical": 643,
+          "allocated": 1024
+        },
+        "source069-ramped-random-attempt001": {
+          "files": 21,
+          "logical": 118062,
+          "allocated": 124928
+        },
+        "source138-context-restore-20261023": {
+          "files": 4,
+          "logical": 18547425,
+          "allocated": 18548736
+        },
+        "source109a002-pointwise-gradient-attempt002": {
+          "files": 22,
+          "logical": 370266,
+          "allocated": 375808
+        },
+        "source106-trajectory-diagnostic-attempt002": {
+          "files": 13,
+          "logical": 217681,
+          "allocated": 221184
+        },
+        "source117-chemistry-speed-selection-attempt001": {
+          "files": 16,
+          "logical": 96296,
+          "allocated": 97280
+        },
+        "status-20261007T073227Z": {
+          "files": 5,
+          "logical": 8452738,
+          "allocated": 8454656
+        },
+        "historical-repair-archive-20261016-v2-plan.json.artifacts": {
+          "files": 2,
+          "logical": 26661,
+          "allocated": 27136
+        },
+        "source109-pointwise-gradient-attempt001": {
+          "files": 17,
+          "logical": 328694,
+          "allocated": 332288
+        },
+        "source121a002-chemistry-16core-24h-attempt002": {
+          "files": 75,
+          "logical": 652302,
+          "allocated": 671744
+        },
+        "source101-affinity-head-metadata-recovery-attempt001": {
+          "files": 8,
+          "logical": 37996,
+          "allocated": 40448
+        },
+        "source078-dense-100epoch-attempt002": {
+          "files": 56,
+          "logical": 130329,
+          "allocated": 142848
+        },
+        "source098-large-triangle-evaluator-recovery": {
+          "files": 1,
+          "logical": 3229,
+          "allocated": 3584
+        },
+        "source067-defog-repair-attempt002": {
+          "files": 9,
+          "logical": 80294,
+          "allocated": 82944
+        },
+        "source103-contact-boundary-diagnostic-attempt001": {
+          "files": 8,
+          "logical": 39706,
+          "allocated": 41984
+        },
+        "source115-chemistry-runtime-budget-attempt001": {
+          "files": 3,
+          "logical": 8964,
+          "allocated": 9728
+        },
+        "source138-epoch36-embedding-comparison-attempt001": {
+          "files": 3,
+          "logical": 9923,
+          "allocated": 10752
+        },
+        "source093-defog-pilot-replay-attempt001": {
+          "files": 8,
+          "logical": 14268,
+          "allocated": 16896
+        },
+        "source078-dense-100epoch-attempt001": {
+          "files": 10,
+          "logical": 1922300,
+          "allocated": 1925120
+        },
+        "source130-short-baseline-valid-self-attempt001": {
+          "files": 5,
+          "logical": 520965,
+          "allocated": 522240
+        },
+        "source055-full-attempt001": {
+          "files": 5,
+          "logical": 11427,
+          "allocated": 13312
+        },
+        "source060-gradient-cpu-retry001": {
+          "files": 3,
+          "logical": 1299,
+          "allocated": 2048
+        },
+        "source073-budget-recovery-attempt001": {
+          "files": 28,
+          "logical": 20774637,
+          "allocated": 20783616
+        },
+        "source122-best-trial-cpu-attempt003": {
+          "files": 8,
+          "logical": 75937,
+          "allocated": 77824
+        },
+        "source061-local-fd-validation-attempt001": {
+          "files": 10,
+          "logical": 442981,
+          "allocated": 445952
+        },
+        "source124-deterministic-events-attempt001": {
+          "files": 3,
+          "logical": 12508,
+          "allocated": 12800
+        },
+        "source059-diagnostics-attempt001": {
+          "files": 119,
+          "logical": 1686851,
+          "allocated": 1718784
+        },
+        "source098-gated-training-launch": {
+          "files": 8,
+          "logical": 10553,
+          "allocated": 12800
+        },
+        "source111-chemistry-search-acceleration-attempt001": {
+          "files": 2,
+          "logical": 8954,
+          "allocated": 9728
+        },
+        "source091-defog-matched-pilot-attempt001": {
+          "files": 13,
+          "logical": 29839,
+          "allocated": 33792
+        },
+        "historical-repair-archive-20261016-v4-plan.json.artifacts": {
+          "files": 108,
+          "logical": 1744082,
+          "allocated": 1767424
+        },
+        "source107-json-config-chemistry-attempt001": {
+          "files": 1,
+          "logical": 5184,
+          "allocated": 5632
+        },
+        "source134-bond-weighted-chemistry-attempt002": {
+          "files": 6,
+          "logical": 30348314,
+          "allocated": 30349312
+        },
+        "source122-best-trial-cpu-attempt002": {
+          "files": 9,
+          "logical": 77780,
+          "allocated": 79872
+        },
+        "source106-parent-metadata-attempt002": {
+          "files": 5,
+          "logical": 10247,
+          "allocated": 11776
+        },
+        "source104-chemistry-continuation-attempt002": {
+          "files": 1,
+          "logical": 5080,
+          "allocated": 5120
+        },
+        "source080-failed-gate-attribution-attempt001": {
+          "files": 8,
+          "logical": 16844,
+          "allocated": 19456
+        },
+        "source096-operation-boundary-attempt001": {
+          "files": 9,
+          "logical": 41053,
+          "allocated": 44032
+        },
+        "source120a002-boltz-defog-staged-24h-attempt002": {
+          "files": 2,
+          "logical": 6468,
+          "allocated": 7168
+        },
+        "source056-random-attempt001": {
+          "files": 3,
+          "logical": 4203,
+          "allocated": 5120
+        },
+        "source085-charge-interface-attempt002": {
+          "files": 9,
+          "logical": 17386,
+          "allocated": 19968
+        },
+        "status-20261006T074143Z": {
+          "files": 52,
+          "logical": 7248237,
+          "allocated": 7259648
+        },
+        "source076-defog-mps-attempt001": {
+          "files": 26,
+          "logical": 98116,
+          "allocated": 107008
+        },
+        "source078-single-seed17-attempt001": {
+          "files": 57,
+          "logical": 74912,
+          "allocated": 93696
+        },
+        "source110-chemistry-resume-attempt001": {
+          "files": 4,
+          "logical": 22335,
+          "allocated": 23040
+        },
+        "source123-retirement-confirmation-002": {
+          "files": 9,
+          "logical": 38574,
+          "allocated": 40960
+        },
+        "source106-parent-metadata-attempt001": {
+          "files": 4,
+          "logical": 3976,
+          "allocated": 5120
+        },
+        "source104-chemistry-continuation-attempt001": {
+          "files": 6,
+          "logical": 47760121,
+          "allocated": 47760896
+        },
+        "source062-step-control-attempt001": {
+          "files": 10,
+          "logical": 327615,
+          "allocated": 330240
+        },
+        "source060-gradient-cpu-attempt001": {
+          "files": 4,
+          "logical": 5081,
+          "allocated": 6144
+        },
+        "source088-affinity-decoder-attempt001": {
+          "files": 10,
+          "logical": 23880,
+          "allocated": 27136
+        },
+        "source138-epoch36-embedding-comparison-attempt002": {
+          "files": 3,
+          "logical": 9924,
+          "allocated": 10752
+        },
+        "source086-precision-head-attempt001": {
+          "files": 9,
+          "logical": 22689,
+          "allocated": 26112
+        },
+        "storage-cleanup-20261022-datasets-002": {
+          "files": 3,
+          "logical": 1771610,
+          "allocated": 1772032
+        },
+        "source120-boltz-defog-staged-24h-attempt001": {
+          "files": 9,
+          "logical": 78562,
+          "allocated": 80896
+        },
+        "source104-chemistry-continuation-attempt004": {
+          "files": 1,
+          "logical": 5080,
+          "allocated": 5120
+        },
+        "historical-repair-archive-20261016-v3-plan.json.artifacts": {
+          "files": 46,
+          "logical": 714421,
+          "allocated": 723456
+        },
+        "source129-chemistry-validity-runtime-diagnostic-attempt001": {
+          "files": 4,
+          "logical": 496424,
+          "allocated": 497152
+        },
+        "source083-head-causal-attempt001": {
+          "files": 9,
+          "logical": 21980,
+          "allocated": 24576
+        },
+        "allocation-policy-24h-20261017": {
+          "files": 2,
+          "logical": 408,
+          "allocated": 1024
+        },
+        "source065-dbmol-attempt001": {
+          "files": 95,
+          "logical": 3435952,
+          "allocated": 3461120
+        },
+        "release-cache-cleanup-20261020-001": {
+          "files": 5,
+          "logical": 17030756,
+          "allocated": 17032192
+        },
+        "source079-defog-contract-attempt001": {
+          "files": 21,
+          "logical": 150822,
+          "allocated": 158208
+        },
+        "source121-chemistry-16core-24h-attempt001": {
+          "files": 7,
+          "logical": 41407,
+          "allocated": 44544
+        },
+        "source087-affinity-causal-attempt001": {
+          "files": 10,
+          "logical": 23941,
+          "allocated": 27136
+        },
+        "source138-epoch36-embedding-comparison-attempt005": {
+          "files": 3,
+          "logical": 9924,
+          "allocated": 10752
+        },
+        "source118-chemistry-speed-selection-attempt001": {
+          "files": 15,
+          "logical": 95820,
+          "allocated": 96768
+        },
+        "source071-actual-checkpoint-cpu-probe-attempt001": {
+          "files": 4,
+          "logical": 14308,
+          "allocated": 15872
+        },
+        "source077-dense-chemistry-attempt001": {
+          "files": 20,
+          "logical": 32681,
+          "allocated": 37888
+        },
+        "source057-panel-attempt001": {
+          "files": 27,
+          "logical": 1837017,
+          "allocated": 1845248
+        },
+        "hpc-space-cleanup-20261010": {
+          "files": 21,
+          "logical": 119378542,
+          "allocated": 119384064
+        },
+        "allocation-policy-24h-20261017-attempt003": {
+          "files": 10,
+          "logical": 2604,
+          "allocated": 6144
+        },
+        "source138-epoch36-embedding-comparison-attempt003": {
+          "files": 6,
+          "logical": 20032,
+          "allocated": 22016
+        },
+        "source063-stability-attempt001": {
+          "files": 18,
+          "logical": 45084,
+          "allocated": 49664
+        },
+        "source135-epoch36-valid-reference-attempt001": {
+          "files": 6,
+          "logical": 8923286,
+          "allocated": 8924160
+        },
+        "source138-epoch36-embedding-comparison-attempt006": {
+          "files": 5,
+          "logical": 17912,
+          "allocated": 19456
+        },
+        "source058-retention-attempt001": {
+          "files": 11,
+          "logical": 115382,
+          "allocated": 119296
+        },
+        "verified-capsule-offload-20261017-002": {
+          "files": 11,
+          "logical": 31362,
+          "allocated": 35328
+        },
+        "source123-storage-offload-001": {
+          "files": 6,
+          "logical": 140738,
+          "allocated": 141824
+        },
+        "source089-defog-minimal-smoke-attempt001": {
+          "files": 11,
+          "logical": 19532,
+          "allocated": 22528
+        },
+        "source124-cold-offload-001": {
+          "files": 6,
+          "logical": 449013,
+          "allocated": 450560
+        },
+        "unused-boltz312-cleanup-20261018-001": {
+          "files": 8,
+          "logical": 12737196,
+          "allocated": 12739584
+        },
+        "source104-chemistry-continuation-attempt005": {
+          "files": 7,
+          "logical": 48507712,
+          "allocated": 48508928
+        },
+        "source116-chemistry-speed-selection-attempt001": {
+          "files": 17,
+          "logical": 97532,
+          "allocated": 98816
+        },
+        "source059-gradient-followup": {
+          "files": 3,
+          "logical": 342897,
+          "allocated": 343552
+        },
+        "source133-valid-self-strength-attempt001": {
+          "files": 4,
+          "logical": 495989,
+          "allocated": 496640
+        },
+        "historical-json-archive-20261018-v3-plan.json.artifacts": {
+          "files": 254,
+          "logical": 103973775,
+          "allocated": 104036864
+        },
+        "source132-epoch36-collapse-step-self-attempt001": {
+          "files": 5,
+          "logical": 521033,
+          "allocated": 522240
+        },
+        "source140-epoch40-to45-continuation-attempt001": {
+          "files": 5,
+          "logical": 513275,
+          "allocated": 514048
+        },
+        "source126-loss-validation-speed-attempt001": {
+          "files": 3,
+          "logical": 49051,
+          "allocated": 49664
+        },
+        "source134-bond-weighted-chemistry-attempt001": {
+          "files": 5,
+          "logical": 30216898,
+          "allocated": 30218240
+        },
+        "source139-epoch36-embedding-gradient-diagnostic-attempt001": {
+          "files": 6,
+          "logical": 20310,
+          "allocated": 22528
+        },
+        "source087-affinity-causal-attempt002": {
+          "files": 10,
+          "logical": 23990,
+          "allocated": 27136
+        },
+        "source120a003-boltz-defog-staged-24h-attempt003": {
+          "files": 9,
+          "logical": 80760,
+          "allocated": 83456
+        },
+        "source108-additive-gradient-attempt002": {
+          "files": 16,
+          "logical": 125873,
+          "allocated": 130560
+        },
+        "source123-failed-repair-suite-attempt003": {
+          "files": 3,
+          "logical": 12127,
+          "allocated": 12800
+        },
+        "source123-failed-repair-unit-attempt001": {
+          "files": 9,
+          "logical": 21133,
+          "allocated": 23040
+        },
+        "source070-decoder-validity-attempt001": {
+          "files": 8,
+          "logical": 38298,
+          "allocated": 40448
+        },
+        "verified-capsule-offload-20261018-001": {
+          "files": 11,
+          "logical": 27593,
+          "allocated": 31232
+        },
+        "source085-charge-interface-attempt004": {
+          "files": 7,
+          "logical": 14699,
+          "allocated": 16896
+        },
+        "source104-chemistry-continuation-attempt003": {
+          "files": 1,
+          "logical": 5080,
+          "allocated": 5120
+        },
+        "source099-affinity-head-isolation-attempt001": {
+          "files": 8,
+          "logical": 37692,
+          "allocated": 40448
+        },
+        "source123-failed-repair-suite-attempt004": {
+          "files": 3,
+          "logical": 12127,
+          "allocated": 12800
+        },
+        "source082-decoder-causal-attempt002": {
+          "files": 9,
+          "logical": 21700,
+          "allocated": 24576
+        },
+        "source120a004-boltz-defog-staged-24h-attempt004": {
+          "files": 59,
+          "logical": 544690,
+          "allocated": 560640
+        },
+        "random-status-20261007T080355Z": {
+          "files": 4,
+          "logical": 164627,
+          "allocated": 165888
+        },
+        "source081-attention-causal-attempt001": {
+          "files": 8,
+          "logical": 17304,
+          "allocated": 19968
+        },
+        "source072-search-checkpoint-probe-attempt001": {
+          "files": 6,
+          "logical": 620902,
+          "allocated": 622592
+        },
+        "storage-cleanup-20261021-002": {
+          "files": 3,
+          "logical": 2124813,
+          "allocated": 2125824
+        },
+        "source094-large-triangle-first-suite": {
+          "files": 1,
+          "logical": 883,
+          "allocated": 1024
+        },
+        "source137-epoch36-boltz-embedding-bridge-attempt001": {
+          "files": 3,
+          "logical": 9973,
+          "allocated": 10752
+        },
+        "source063-stability-attempt002": {
+          "files": 21,
+          "logical": 135643,
+          "allocated": 141312
+        },
+        "source113-repair-speed-loss-parity-attempt001": {
+          "files": 2,
+          "logical": 3067,
+          "allocated": 3584
+        },
+        "source068-defog-repair-attempt003": {
+          "files": 10,
+          "logical": 49387,
+          "allocated": 52224
+        },
+        "source090-defog-matched-pilot-attempt001": {
+          "files": 12,
+          "logical": 26084,
+          "allocated": 29696
+        },
+        "source093-large-triangle-first-suite": {
+          "files": 1,
+          "logical": 883,
+          "allocated": 1024
+        },
+        "source137-epoch36-boltz-embedding-bridge-attempt002": {
+          "files": 6,
+          "logical": 20052,
+          "allocated": 22016
+        },
+        "allocation-policy-24h-20261017-attempt002": {
+          "files": 5,
+          "logical": 1399,
+          "allocated": 3072
+        },
+        "source085-charge-interface-attempt003": {
+          "files": 8,
+          "logical": 7808,
+          "allocated": 10752
+        },
+        "source124-deterministic-events-attempt002": {
+          "files": 3,
+          "logical": 12558,
+          "allocated": 13312
+        },
+        "storage-cleanup-20261023-retired-repository-001": {
+          "files": 3,
+          "logical": 809132,
+          "allocated": 809472
+        },
+        "source066-defog-repair-attempt001": {
+          "files": 4,
+          "logical": 5224,
+          "allocated": 6656
+        },
+        "source131-short-callback-result-attempt001": {
+          "files": 5,
+          "logical": 517970,
+          "allocated": 519168
+        },
+        "source112-chemistry-search-acceleration-attempt001": {
+          "files": 2,
+          "logical": 8954,
+          "allocated": 9728
+        },
+        "source119-boltz-defog-500-attempt001": {
+          "files": 14,
+          "logical": 131098,
+          "allocated": 135680
+        },
+        "source075-search-full-attempt001": {
+          "files": 11,
+          "logical": 53153,
+          "allocated": 56320
+        },
+        "source121-failed-cpu-retirement-20261017": {
+          "files": 9,
+          "logical": 2476,
+          "allocated": 5120
+        },
+        "source138-vae-cli-startup-fix-attempt001": {
+          "files": 13,
+          "logical": 540265,
+          "allocated": 543232
+        },
+        "__pycache__": {
+          "files": 2,
+          "logical": 30304,
+          "allocated": 31232
+        },
+        "source097-operation-boundary-recovery-attempt001": {
+          "files": 9,
+          "logical": 41404,
+          "allocated": 44544
+        },
+        "source127-bond6-runtime-continuation-attempt001": {
+          "files": 3,
+          "logical": 36529,
+          "allocated": 36864
+        },
+        "source136-valid-reference-epoch40-continuation-attempt001": {
+          "files": 4,
+          "logical": 503388,
+          "allocated": 504320
+        },
+        "source128-corrected-chemistry-guarded-restart-attempt001": {
+          "files": 4,
+          "logical": 496004,
+          "allocated": 496640
+        },
+        "source105a002-contact-fix-attempt002": {
+          "files": 20,
+          "logical": 79137,
+          "allocated": 83968
+        },
+        "source084-repair-telemetry-attempt001": {
+          "files": 7,
+          "logical": 12429,
+          "allocated": 14336
+        }
+      },
+      "largest": [
+        {
+          "path": "/work3/s234818/latentmol/submissions/hpc-space-cleanup-20261010/inventory-before.json",
+          "bytes": 92522860,
+          "allocated": 92523008,
+          "nlink": 1,
+          "mtime_ns": 1791631382000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/submissions/source104-chemistry-continuation-attempt001/parent.pt",
+          "bytes": 47613642,
+          "allocated": 47613952,
+          "nlink": 1,
+          "mtime_ns": 1791911709000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/submissions/source104-chemistry-continuation-attempt005/parent.pt",
+          "bytes": 47613642,
+          "allocated": 47613952,
+          "nlink": 1,
+          "mtime_ns": 1791924864000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/submissions/source134-bond-weighted-chemistry-attempt002/source133-saved-outcomes.json",
+          "bytes": 29719141,
+          "allocated": 29719552,
+          "nlink": 1,
+          "mtime_ns": 1792657910000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/submissions/source134-bond-weighted-chemistry-attempt001/source133-saved-outcomes.json",
+          "bytes": 29719141,
+          "allocated": 29719552,
+          "nlink": 1,
+          "mtime_ns": 1792656588000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/submissions/hpc-space-cleanup-20261010/runs-inventory.json",
+          "bytes": 25694025,
+          "allocated": 25694208,
+          "nlink": 1,
+          "mtime_ns": 1791631299000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/submissions/source138-context-restore-20261023/source056-prepared-contexts-exact-restore.tar.gz",
+          "bytes": 18476907,
+          "allocated": 18477056,
+          "nlink": 1,
+          "mtime_ns": 1792783823000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/submissions/source073-budget-recovery-attempt001/status-evidence003.tar.gz",
+          "bytes": 18454565,
+          "allocated": 18455040,
+          "nlink": 1,
+          "mtime_ns": 1791444828000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/submissions/release-cache-cleanup-20261020-001/journal.jsonl",
+          "bytes": 8710039,
+          "allocated": 8710144,
+          "nlink": 1,
+          "mtime_ns": 1792511951000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/submissions/source135-epoch36-valid-reference-attempt001/source134-terminal-evidence.json",
+          "bytes": 8418776,
+          "allocated": 8418816,
+          "nlink": 1,
+          "mtime_ns": 1792664486000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/submissions/status-20261007T073227Z/results.tar.gz",
+          "bytes": 8305272,
+          "allocated": 8305664,
+          "nlink": 1,
+          "mtime_ns": 1791358351000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/submissions/status-20261006T074143Z/panel-summary.json",
+          "bytes": 5252429,
+          "allocated": 5252608,
+          "nlink": 1,
+          "mtime_ns": 1791272503000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/submissions/unused-boltz312-cleanup-20261018-001/unlinks.jsonl",
+          "bytes": 4569945,
+          "allocated": 4570112,
+          "nlink": 1,
+          "mtime_ns": 1792317722000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/submissions/unused-boltz312-cleanup-20261018-001/intent.json",
+          "bytes": 4552327,
+          "allocated": 4552704,
+          "nlink": 1,
+          "mtime_ns": 1792317710000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/submissions/release-cache-cleanup-20261020-001/inventory.json",
+          "bytes": 4314775,
+          "allocated": 4315136,
+          "nlink": 1,
+          "mtime_ns": 1792511937000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/submissions/release-cache-cleanup-20261020-001/completion.json",
+          "bytes": 3973507,
+          "allocated": 3973632,
+          "nlink": 1,
+          "mtime_ns": 1792511952000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/submissions/unused-boltz312-cleanup-20261018-001/audit.json",
+          "bytes": 3436553,
+          "allocated": 3437056,
+          "nlink": 1,
+          "mtime_ns": 1792317458000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/submissions/source073-budget-recovery-attempt001/parent_metrics.jsonl",
+          "bytes": 2244024,
+          "allocated": 2244096,
+          "nlink": 1,
+          "mtime_ns": 1791389574000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/submissions/storage-cleanup-20261021-002/intent.json",
+          "bytes": 2005537,
+          "allocated": 2006016,
+          "nlink": 1,
+          "mtime_ns": 1792608353000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/submissions/storage-cleanup-20261022-datasets-002/intent.json",
+          "bytes": 1175438,
+          "allocated": 1175552,
+          "nlink": 1,
+          "mtime_ns": 1792691195000000000,
+          "uid": 306121
+        }
+      ],
+      "files": 2198
+    },
+    "transfers": {
+      "totals": {
+        "root-files": {
+          "files": 9,
+          "logical": 14733036,
+          "allocated": 14735872
+        }
+      },
+      "largest": [
+        {
+          "path": "/work3/s234818/latentmol/transfers/full-training-preflight-20260927.tar.gz",
+          "bytes": 12179295,
+          "allocated": 12179456,
+          "nlink": 1,
+          "mtime_ns": 1790533390000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/transfers/full-training-first-epoch-20260927.tar.gz",
+          "bytes": 1133920,
+          "allocated": 1134080,
+          "nlink": 1,
+          "mtime_ns": 1790534032000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/transfers/source014-failure-evidence.tar.gz",
+          "bytes": 1085445,
+          "allocated": 1085952,
+          "nlink": 1,
+          "mtime_ns": 1790533494000000000,
+          "uid": 306121
+        }
+      ],
+      "files": 9
+    },
+    "exports": {
+      "totals": {
+        "source073-074-recovery-evidence001": {
+          "files": 38,
+          "logical": 2535305,
+          "allocated": 2546688
+        },
+        "source073-status-evidence002": {
+          "files": 17,
+          "logical": 14466420,
+          "allocated": 14470656
+        }
+      },
+      "largest": [
+        {
+          "path": "/work3/s234818/latentmol/exports/source073-status-evidence002/recovery/segment-0/cases.json",
+          "bytes": 6968503,
+          "allocated": 6968832,
+          "nlink": 1,
+          "mtime_ns": 1791403744000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/exports/source073-status-evidence002/original.json",
+          "bytes": 6598957,
+          "allocated": 6599168,
+          "nlink": 1,
+          "mtime_ns": 1791403744000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/exports/source073-074-recovery-evidence001/receipts/parent_metrics.jsonl",
+          "bytes": 2244024,
+          "allocated": 2244096,
+          "nlink": 1,
+          "mtime_ns": 1791391353000000000,
+          "uid": 306121
+        }
+      ],
+      "files": 55
+    },
+    "test-artifacts": {
+      "totals": {
+        "tests-29503897": {
+          "files": 319,
+          "logical": 20024210,
+          "allocated": 20107776
+        },
+        "tests-29503855": {
+          "files": 214,
+          "logical": 11861709,
+          "allocated": 11904000
+        }
+      },
+      "largest": [],
+      "files": 533
+    },
+    "diagnostics": {
+      "totals": {
+        "root-files": {
+          "files": 2,
+          "logical": 3594,
+          "allocated": 4096
+        },
+        "candidate-panel-050": {
+          "files": 2,
+          "logical": 1210,
+          "allocated": 2048
+        },
+        "stable-deep-047": {
+          "files": 7,
+          "logical": 6176,
+          "allocated": 6656
+        },
+        "nonfinite-044": {
+          "files": 2,
+          "logical": 6488,
+          "allocated": 6656
+        },
+        "wide-vae-continuation-048": {
+          "files": 2,
+          "logical": 1476,
+          "allocated": 2048
+        },
+        "nonfinite-046": {
+          "files": 3,
+          "logical": 17864562,
+          "allocated": 17865216
+        },
+        "candidate-panel-049": {
+          "files": 2,
+          "logical": 1201,
+          "allocated": 2048
+        },
+        "nonfinite-045": {
+          "files": 2,
+          "logical": 16842,
+          "allocated": 17408
+        },
+        "graded-quality-051": {
+          "files": 2,
+          "logical": 372630,
+          "allocated": 373248
+        }
+      },
+      "largest": [
+        {
+          "path": "/work3/s234818/latentmol/diagnostics/nonfinite-046/failing-batch.pt",
+          "bytes": 17847334,
+          "allocated": 17847808,
+          "nlink": 1,
+          "mtime_ns": 1790776832000000000,
+          "uid": 306121
+        }
+      ],
+      "files": 24
+    },
+    "raw": {
+      "totals": {
+        "root-files": {
+          "files": 3,
+          "logical": 107089822,
+          "allocated": 107090944
+        }
+      },
+      "largest": [
+        {
+          "path": "/work3/s234818/latentmol/raw/moses-v1-dd7ed6ab38e2.csv",
+          "bytes": 84482588,
+          "allocated": 84483072,
+          "nlink": 1,
+          "mtime_ns": 1791672184000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/raw/zinc250k.csv",
+          "bytes": 22606589,
+          "allocated": 22606848,
+          "nlink": 1,
+          "mtime_ns": 1790437224000000000,
+          "uid": 306121
+        }
+      ],
+      "files": 3
+    },
+    "releases": {
+      "totals": {
+        "root-files": {
+          "files": 166,
+          "logical": 378924116,
+          "allocated": 378968064
+        },
+        "source-082-decoder-causal-attempt002": {
+          "files": 431,
+          "logical": 4248177,
+          "allocated": 4354048
+        },
+        "source-072-search-checkpoint-probe-attempt001": {
+          "files": 375,
+          "logical": 3456350,
+          "allocated": 3549696
+        },
+        "source-138-vae-cli-startup-fix-attempt001": {
+          "files": 778,
+          "logical": 12722735,
+          "allocated": 12915712
+        },
+        "source-061-local-fd-validation-attempt001": {
+          "files": 289,
+          "logical": 2532764,
+          "allocated": 2605568
+        },
+        "source-113-repair-speed-loss-parity-attempt001": {
+          "files": 514,
+          "logical": 5824952,
+          "allocated": 5953536
+        },
+        "source-033-carbon-local-start-rescue": {
+          "files": 98,
+          "logical": 532055,
+          "allocated": 555008
+        },
+        "source-080-failed-gate-attribution-attempt001": {
+          "files": 423,
+          "logical": 4049127,
+          "allocated": 4152320
+        },
+        "source-058-fresh-trajectory-attempt001": {
+          "files": 271,
+          "logical": 2320298,
+          "allocated": 2386944
+        },
+        "source-013-full": {
+          "files": 72,
+          "logical": 8666803,
+          "allocated": 8684544
+        },
+        "source-078-dense-100epoch-attempt001": {
+          "files": 415,
+          "logical": 3814315,
+          "allocated": 3916800
+        },
+        "source-120-boltz-defog-staged-24h-attempt001": {
+          "files": 542,
+          "logical": 6582918,
+          "allocated": 6720000
+        },
+        "source-115-chemistry-runtime-budget-attempt001": {
+          "files": 513,
+          "logical": 5798788,
+          "allocated": 5925888
+        },
+        "source-059-diagnostics-attempt001": {
+          "files": 281,
+          "logical": 2421622,
+          "allocated": 2493440
+        },
+        "source-106-trajectory-additive-diagnostic-attempt001": {
+          "files": 504,
+          "logical": 5598209,
+          "allocated": 5723648
+        },
+        "source-138-epoch36-embedding-comparison-attempt006": {
+          "files": 610,
+          "logical": 6433151,
+          "allocated": 6593024
+        },
+        "source-087-affinity-causal-attempt001": {
+          "files": 448,
+          "logical": 4571464,
+          "allocated": 4681728
+        },
+        "source-140-epoch40-to45-continuation-attempt001": {
+          "files": 790,
+          "logical": 12962138,
+          "allocated": 13157376
+        },
+        "source-063-stability-attempt001": {
+          "files": 308,
+          "logical": 2761597,
+          "allocated": 2839040
+        },
+        "source-123-failed-repair-unit-attempt001": {
+          "files": 542,
+          "logical": 6034294,
+          "allocated": 6164992
+        },
+        "source-119-boltz-defog-500-bookkeeping-attempt001": {
+          "files": 538,
+          "logical": 6488333,
+          "allocated": 6624256
+        },
+        "source-104-atom-preserving-chemistry-attempt004": {
+          "files": 500,
+          "logical": 5639403,
+          "allocated": 5763584
+        },
+        "source-070-decoder-validity-attempt001": {
+          "files": 364,
+          "logical": 3343811,
+          "allocated": 3434496
+        },
+        "source-103-contact-boundary-diagnostic-attempt001": {
+          "files": 492,
+          "logical": 5454370,
+          "allocated": 5576704
+        },
+        "source-048-wide-vae-continuation": {
+          "files": 169,
+          "logical": 9449169,
+          "allocated": 9492992
+        },
+        "source-032-carbon-native-rescore": {
+          "files": 96,
+          "logical": 498713,
+          "allocated": 521216
+        },
+        "source-118-chemistry-speed-selection-attempt001": {
+          "files": 532,
+          "logical": 5924456,
+          "allocated": 6054400
+        },
+        "source-120-boltz-defog-staged-24h-attempt004": {
+          "files": 542,
+          "logical": 6589585,
+          "allocated": 6726656
+        },
+        "source-122-best-trial-policy-attempt003": {
+          "files": 602,
+          "logical": 8188141,
+          "allocated": 8338432
+        },
+        "source-024-denoiser-repair": {
+          "files": 84,
+          "logical": 413158,
+          "allocated": 432640
+        },
+        "source-102-structural-loss-diagnostic-attempt001": {
+          "files": 486,
+          "logical": 5392446,
+          "allocated": 5512704
+        },
+        "source-030-defog-gradient-diagnostic": {
+          "files": 94,
+          "logical": 480783,
+          "allocated": 502272
+        },
+        "source-038-fixed-z-architecture-diagnostics": {
+          "files": 151,
+          "logical": 9370671,
+          "allocated": 9409024
+        },
+        "source-074-pilot-dependency-attempt002": {
+          "files": 385,
+          "logical": 3526942,
+          "allocated": 3621888
+        },
+        "source-133-valid-self-strength-attempt001": {
+          "files": 729,
+          "logical": 11502130,
+          "allocated": 11680768
+        },
+        "source-109-pointwise-native-gradient-validation-attempt001": {
+          "files": 521,
+          "logical": 5913619,
+          "allocated": 6044160
+        },
+        "source-100-triangle-auto-continuation-attempt001": {
+          "files": 8,
+          "logical": 675091,
+          "allocated": 677376
+        },
+        "source-065-dbmol-objective-attempt001": {
+          "files": 324,
+          "logical": 2900632,
+          "allocated": 2981888
+        },
+        "source-060-gradient-cpu-attempt001": {
+          "files": 284,
+          "logical": 2470234,
+          "allocated": 2542080
+        },
+        "source-003": {
+          "files": 41,
+          "logical": 8359373,
+          "allocated": 8370176
+        },
+        "source-056-random-starts": {
+          "files": 249,
+          "logical": 2120592,
+          "allocated": 2182656
+        },
+        "source-126-loss-validation-speed-attempt001": {
+          "files": 635,
+          "logical": 8711064,
+          "allocated": 8866304
+        },
+        "source-131-short-callback-result-attempt001": {
+          "files": 702,
+          "logical": 10888459,
+          "allocated": 11061248
+        },
+        "source-008": {
+          "files": 59,
+          "logical": 8482548,
+          "allocated": 8497152
+        },
+        "source-107-chemistry-json-config-recovery-attempt001": {
+          "files": 500,
+          "logical": 5660206,
+          "allocated": 5784576
+        },
+        "source-114-boltz-defog-500-attempt001": {
+          "files": 538,
+          "logical": 6412090,
+          "allocated": 6547456
+        },
+        "source-134-bond-weighted-chemistry-attempt002": {
+          "files": 745,
+          "logical": 11852595,
+          "allocated": 12035072
+        },
+        "source-111-chemistry-search-acceleration-attempt001": {
+          "files": 511,
+          "logical": 5787962,
+          "allocated": 5915136
+        },
+        "source-010": {
+          "files": 59,
+          "logical": 8513359,
+          "allocated": 8527872
+        },
+        "source-122-best-trial-policy-attempt002": {
+          "files": 602,
+          "logical": 8171944,
+          "allocated": 8321536
+        },
+        "source-036-atom-pair-architecture": {
+          "files": 149,
+          "logical": 9343593,
+          "allocated": 9381376
+        },
+        "source-011-data": {
+          "files": 13,
+          "logical": 56488,
+          "allocated": 60416
+        },
+        "source-001": {
+          "files": 30,
+          "logical": 8285300,
+          "allocated": 8293376
+        },
+        "source-022-denoiser-pilot": {
+          "files": 82,
+          "logical": 396066,
+          "allocated": 414720
+        },
+        "source-081-attention-causal-attempt001": {
+          "files": 427,
+          "logical": 4126203,
+          "allocated": 4230656
+        },
+        "source-138-epoch36-embedding-comparison-attempt003": {
+          "files": 589,
+          "logical": 6213466,
+          "allocated": 6365696
+        },
+        "source-015-full": {
+          "files": 72,
+          "logical": 8681969,
+          "allocated": 8699392
+        },
+        "source-039-architecture-followups": {
+          "files": 154,
+          "logical": 9388814,
+          "allocated": 9427456
+        },
+        "source-117-chemistry-speed-selection-attempt001": {
+          "files": 532,
+          "logical": 5924242,
+          "allocated": 6054400
+        },
+        "source-031-carbon-anchor-pilot": {
+          "files": 94,
+          "logical": 483829,
+          "allocated": 505856
+        },
+        "source-051-graded-quality": {
+          "files": 199,
+          "logical": 9637560,
+          "allocated": 9687552
+        },
+        "source-134-bond-weighted-chemistry-attempt001": {
+          "files": 745,
+          "logical": 11842353,
+          "allocated": 12024832
+        },
+        "source-005": {
+          "files": 45,
+          "logical": 8384732,
+          "allocated": 8395776
+        },
+        "source-110-chemistry-resume-device-recovery-attempt001": {
+          "files": 501,
+          "logical": 5678371,
+          "allocated": 5803008
+        },
+        "source-054-active-set-review": {
+          "files": 236,
+          "logical": 1939671,
+          "allocated": 1998336
+        },
+        "source-094-triangle-gate-recovery-attempt001": {
+          "files": 474,
+          "logical": 5059841,
+          "allocated": 5176832
+        },
+        "source-093-first-suite-attempt001": {
+          "files": 474,
+          "logical": 5051024,
+          "allocated": 5168128
+        },
+        "source-090-defog-matched-pilot-attempt001": {
+          "files": 460,
+          "logical": 4785264,
+          "allocated": 4898304
+        },
+        "diagnostic-045-activation-growth": {
+          "files": 1,
+          "logical": 10916,
+          "allocated": 11264
+        },
+        "source-082-decoder-causal-attempt001": {
+          "files": 431,
+          "logical": 4240136,
+          "allocated": 4345856
+        },
+        "source-087-affinity-causal-attempt002": {
+          "files": 448,
+          "logical": 4604442,
+          "allocated": 4714496
+        },
+        "source-104-atom-preserving-chemistry-attempt001": {
+          "files": 499,
+          "logical": 5627685,
+          "allocated": 5751296
+        },
+        "source-026-defog-interface": {
+          "files": 91,
+          "logical": 467522,
+          "allocated": 488960
+        },
+        "source-019-chemical-audit": {
+          "files": 75,
+          "logical": 362813,
+          "allocated": 379904
+        },
+        "source-027-carbon-seed": {
+          "files": 92,
+          "logical": 474493,
+          "allocated": 496128
+        },
+        "source-050-next-test-plumbing-fix": {
+          "files": 161,
+          "logical": 686440,
+          "allocated": 724992
+        },
+        "source-004": {
+          "files": 42,
+          "logical": 8373394,
+          "allocated": 8384000
+        },
+        "source-129-chemistry-validity-runtime-diagnostic-attempt001": {
+          "files": 675,
+          "logical": 10285667,
+          "allocated": 10449920
+        },
+        "source-006": {
+          "files": 56,
+          "logical": 8459162,
+          "allocated": 8473088
+        },
+        "source-040-global-bond-context": {
+          "files": 162,
+          "logical": 9410644,
+          "allocated": 9451008
+        },
+        "source-137-epoch36-boltz-embedding-bridge-attempt001": {
+          "files": 574,
+          "logical": 6012677,
+          "allocated": 6161408
+        },
+        "source-088-affinity-decoder-attempt001": {
+          "files": 450,
+          "logical": 4663842,
+          "allocated": 4774912
+        },
+        "source-049-next-test-plumbing": {
+          "files": 159,
+          "logical": 684515,
+          "allocated": 722432
+        },
+        "source-089-defog-minimal-smoke-attempt001": {
+          "files": 454,
+          "logical": 4697856,
+          "allocated": 4809728
+        },
+        "source-079-defog-contract-recovery-attempt001": {
+          "files": 419,
+          "logical": 3943650,
+          "allocated": 4046336
+        },
+        "source-014-full": {
+          "files": 71,
+          "logical": 8673880,
+          "allocated": 8690688
+        },
+        "source-064-stability-fixture-repair-attempt001": {
+          "files": 308,
+          "logical": 2771114,
+          "allocated": 2848256
+        },
+        "source-138-epoch36-embedding-comparison-attempt001": {
+          "files": 590,
+          "logical": 6213586,
+          "allocated": 6366208
+        },
+        "source-124-deterministic-chemistry-events-attempt001": {
+          "files": 555,
+          "logical": 6197497,
+          "allocated": 6330880
+        },
+        "source-101-affinity-head-metadata-recovery-attempt001": {
+          "files": 482,
+          "logical": 5330625,
+          "allocated": 5449728
+        },
+        "source-042-wide-global-bond": {
+          "files": 166,
+          "logical": 9441491,
+          "allocated": 9484288
+        },
+        "source-091-defog-matched-pilot-attempt001": {
+          "files": 460,
+          "logical": 4807147,
+          "allocated": 4920320
+        },
+        "source-071-search-decoder-attempt001": {
+          "files": 372,
+          "logical": 3440487,
+          "allocated": 3531776
+        },
+        "source-097-operation-boundary-recovery-attempt001": {
+          "files": 479,
+          "logical": 5233791,
+          "allocated": 5352448
+        },
+        "source-104-atom-preserving-chemistry-attempt002": {
+          "files": 500,
+          "logical": 5637667,
+          "allocated": 5762048
+        },
+        "source-047-stable-deep-pair": {
+          "files": 176,
+          "logical": 9507465,
+          "allocated": 9551360
+        },
+        "source-112-chemistry-search-acceleration-attempt001": {
+          "files": 511,
+          "logical": 5789536,
+          "allocated": 5916672
+        },
+        "source-108-additive-native-gradient-validation-attempt002": {
+          "files": 512,
+          "logical": 5771931,
+          "allocated": 5900800
+        },
+        "source-120-boltz-defog-staged-24h-attempt003": {
+          "files": 542,
+          "logical": 6589199,
+          "allocated": 6726144
+        },
+        "source-127-authorized-chemistry-runtime-attempt001": {
+          "files": 569,
+          "logical": 6397124,
+          "allocated": 6534144
+        },
+        "source-099-affinity-head-isolation-attempt001": {
+          "files": 482,
+          "logical": 5325813,
+          "allocated": 5445120
+        },
+        "source-035-frozen-score-contract-fix": {
+          "files": 106,
+          "logical": 566532,
+          "allocated": 591360
+        },
+        "source-098-triangle-evaluator-recovery-attempt001": {
+          "files": 514,
+          "logical": 6140961,
+          "allocated": 6267904
+        },
+        "source-062-step-control-attempt001": {
+          "files": 297,
+          "logical": 2613399,
+          "allocated": 2688512
+        },
+        "source-138-epoch36-embedding-comparison-attempt005": {
+          "files": 687,
+          "logical": 8653744,
+          "allocated": 8830464
+        },
+        "source-130-short-baseline-valid-self-attempt001": {
+          "files": 702,
+          "logical": 10881391,
+          "allocated": 11052544
+        },
+        "source-069-ramped-defog-random-attempt001": {
+          "files": 350,
+          "logical": 3172833,
+          "allocated": 3258880
+        },
+        "source-068-defog-repair-guidance-attempt003": {
+          "files": 342,
+          "logical": 3080722,
+          "allocated": 3165696
+        },
+        "source-025-stochastic-bridge": {
+          "files": 86,
+          "logical": 444990,
+          "allocated": 464896
+        },
+        "source-041-global-bond-followups": {
+          "files": 162,
+          "logical": 9425119,
+          "allocated": 9466368
+        },
+        "source-105-contact-precision-branch-validation-attempt002": {
+          "files": 502,
+          "logical": 5582655,
+          "allocated": 5708288
+        },
+        "source-017-stage2": {
+          "files": 69,
+          "logical": 330987,
+          "allocated": 346624
+        },
+        "source-116-chemistry-speed-selection-attempt001": {
+          "files": 532,
+          "logical": 5920613,
+          "allocated": 6050816
+        },
+        "source-012-full": {
+          "files": 71,
+          "logical": 8652870,
+          "allocated": 8670720
+        },
+        "source-096-operation-boundary-attempt001": {
+          "files": 479,
+          "logical": 5206814,
+          "allocated": 5324800
+        },
+        "source-002": {
+          "files": 40,
+          "logical": 8343140,
+          "allocated": 8353280
+        },
+        "source-020-training-support": {
+          "files": 78,
+          "logical": 372745,
+          "allocated": 390656
+        },
+        "source-034-frozen-score-contract": {
+          "files": 106,
+          "logical": 565864,
+          "allocated": 590336
+        },
+        "source-132-epoch36-collapse-step-self-attempt001": {
+          "files": 719,
+          "logical": 11364976,
+          "allocated": 11542016
+        },
+        "source-075-search-full-attempt001": {
+          "files": 394,
+          "logical": 3599078,
+          "allocated": 3697152
+        },
+        "source-021-training-support-verified": {
+          "files": 78,
+          "logical": 375199,
+          "allocated": 392704
+        },
+        "source-139-epoch36-embedding-gradient-diagnostic-attempt001": {
+          "files": 599,
+          "logical": 6334887,
+          "allocated": 6490624
+        },
+        "source-109-pointwise-native-gradient-validation-attempt002": {
+          "files": 521,
+          "logical": 5914704,
+          "allocated": 6044672
+        },
+        "source-073-decoder-budget-attempt002": {
+          "files": 384,
+          "logical": 3518440,
+          "allocated": 3613696
+        },
+        "source-124-deterministic-chemistry-events-attempt002": {
+          "files": 621,
+          "logical": 8416852,
+          "allocated": 8567296
+        },
+        "source-007": {
+          "files": 56,
+          "logical": 8460772,
+          "allocated": 8474624
+        },
+        "source-055-fd-diagnostic": {
+          "files": 239,
+          "logical": 1986446,
+          "allocated": 2046464
+        },
+        "source-085-charge-interface-attempt002": {
+          "files": 441,
+          "logical": 4415541,
+          "allocated": 4524544
+        },
+        "source-121-chemistry-16core-24h-attempt002": {
+          "files": 538,
+          "logical": 5970529,
+          "allocated": 6100480
+        },
+        "source-086-precision-head-attempt001": {
+          "files": 446,
+          "logical": 4503986,
+          "allocated": 4613632
+        },
+        "source-123-failed-repair-suite-attempt004": {
+          "files": 553,
+          "logical": 6162582,
+          "allocated": 6295552
+        },
+        "source-128-corrected-chemistry-guarded-restart-attempt001": {
+          "files": 580,
+          "logical": 7069141,
+          "allocated": 7209472
+        },
+        "source-083-head-causal-attempt001": {
+          "files": 433,
+          "logical": 4294735,
+          "allocated": 4400640
+        },
+        "source-078-dense-100epoch-attempt002": {
+          "files": 417,
+          "logical": 3859487,
+          "allocated": 3962368
+        },
+        "source-067-defog-repair-guidance-attempt002": {
+          "files": 342,
+          "logical": 3076798,
+          "allocated": 3161600
+        },
+        "diagnostic-044-nonfinite-replay": {
+          "files": 1,
+          "logical": 9779,
+          "allocated": 10240
+        },
+        "diagnostic-046-failure-snapshot": {
+          "files": 1,
+          "logical": 12365,
+          "allocated": 12800
+        },
+        "source-095-triangle-prepare-benchmark-attempt001": {
+          "files": 476,
+          "logical": 5137143,
+          "allocated": 5253632
+        },
+        "source-137-epoch36-boltz-embedding-bridge-attempt002": {
+          "files": 575,
+          "logical": 6021154,
+          "allocated": 6170112
+        },
+        "source-136-valid-reference-epoch40-continuation-attempt001": {
+          "files": 774,
+          "logical": 12568293,
+          "allocated": 12758016
+        },
+        "source-018-native": {
+          "files": 72,
+          "logical": 349821,
+          "allocated": 366080
+        },
+        "source-135-epoch36-valid-reference-attempt001": {
+          "files": 763,
+          "logical": 12315769,
+          "allocated": 12503040
+        },
+        "source-084-repair-telemetry-attempt001": {
+          "files": 434,
+          "logical": 4322880,
+          "allocated": 4429824
+        },
+        "source-123-failed-repair-suite-attempt003": {
+          "files": 553,
+          "logical": 6160373,
+          "allocated": 6293504
+        },
+        "source-077-dense-chemistry-attempt001": {
+          "files": 405,
+          "logical": 3728279,
+          "allocated": 3828736
+        },
+        "source-121-chemistry-16core-24h-attempt001": {
+          "files": 538,
+          "logical": 5970523,
+          "allocated": 6100480
+        },
+        "source-066-defog-repair-guidance-attempt001": {
+          "files": 342,
+          "logical": 3072412,
+          "allocated": 3157504
+        },
+        "source-028-defog-audited-load": {
+          "files": 92,
+          "logical": 475830,
+          "allocated": 497152
+        },
+        "source-023-denoiser-failure-audit": {
+          "files": 84,
+          "logical": 406252,
+          "allocated": 425472
+        },
+        "source-138-epoch36-embedding-comparison-attempt002": {
+          "files": 589,
+          "logical": 6213466,
+          "allocated": 6365696
+        },
+        "source-104-atom-preserving-chemistry-attempt003": {
+          "files": 500,
+          "logical": 5639110,
+          "allocated": 5763072
+        },
+        "source-125-failure-guidance-speed-attempt001": {
+          "files": 561,
+          "logical": 6257415,
+          "allocated": 6392320
+        },
+        "source-076-defog-mps-recovery-attempt001": {
+          "files": 397,
+          "logical": 3653819,
+          "allocated": 3751424
+        },
+        "source-085-charge-interface-attempt001": {
+          "files": 441,
+          "logical": 4405718,
+          "allocated": 4514304
+        },
+        "source-037-atom-pair-test-fix": {
+          "files": 149,
+          "logical": 9346800,
+          "allocated": 9384960
+        },
+        "source-074-pilot-dependency-attempt003": {
+          "files": 385,
+          "logical": 3527317,
+          "allocated": 3622400
+        },
+        "source-009": {
+          "files": 59,
+          "logical": 8496397,
+          "allocated": 8510464
+        },
+        "source-016-stage1": {
+          "files": 63,
+          "logical": 294213,
+          "allocated": 308736
+        },
+        "source-029-chain-native-prep": {
+          "files": 94,
+          "logical": 479771,
+          "allocated": 501248
+        },
+        "source-043-wide-bond-followups": {
+          "files": 166,
+          "logical": 9448475,
+          "allocated": 9490944
+        },
+        "source-057-protein-panel": {
+          "files": 258,
+          "logical": 2199274,
+          "allocated": 2262528
+        }
+      },
+      "largest": [
+        {
+          "path": "/work3/s234818/latentmol/releases/source-051-graded-quality.tar.gz",
+          "bytes": 8396541,
+          "allocated": 8396800,
+          "nlink": 1,
+          "mtime_ns": 1790849319000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/releases/source-047-stable-deep-pair.tar.gz",
+          "bytes": 8360045,
+          "allocated": 8360448,
+          "nlink": 1,
+          "mtime_ns": 1790776658000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/releases/source-043-wide-bond-followups.tar.gz",
+          "bytes": 8343082,
+          "allocated": 8343552,
+          "nlink": 1,
+          "mtime_ns": 1790617690000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/releases/source-048-wide-vae-continuation.tar.gz",
+          "bytes": 8342191,
+          "allocated": 8342528,
+          "nlink": 1,
+          "mtime_ns": 1790845823000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/releases/source-042-wide-global-bond.tar.gz",
+          "bytes": 8341370,
+          "allocated": 8341504,
+          "nlink": 1,
+          "mtime_ns": 1790617445000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/releases/source-041-global-bond-followups.tar.gz",
+          "bytes": 8337940,
+          "allocated": 8338432,
+          "nlink": 1,
+          "mtime_ns": 1790616465000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/releases/source-040-global-bond-context.tar.gz",
+          "bytes": 8334000,
+          "allocated": 8334336,
+          "nlink": 1,
+          "mtime_ns": 1790616058000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/releases/source-039-architecture-followups.tar.gz",
+          "bytes": 8329569,
+          "allocated": 8329728,
+          "nlink": 1,
+          "mtime_ns": 1790613640000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/releases/latentmol-source-039-architecture-followups.tar.gz",
+          "bytes": 8329569,
+          "allocated": 8329728,
+          "nlink": 1,
+          "mtime_ns": 1790613558000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/releases/source-038-fixed-z-architecture-diagnostics.tar.gz",
+          "bytes": 8324896,
+          "allocated": 8325120,
+          "nlink": 1,
+          "mtime_ns": 1790612868000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/releases/source-037-atom-pair-test-fix.tar.gz",
+          "bytes": 8318376,
+          "allocated": 8318464,
+          "nlink": 1,
+          "mtime_ns": 1790609650000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/releases/source-036-atom-pair-architecture.tar.gz",
+          "bytes": 8317305,
+          "allocated": 8317440,
+          "nlink": 1,
+          "mtime_ns": 1790609472000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/releases/source-015-full.tar.gz",
+          "bytes": 8121379,
+          "allocated": 8121856,
+          "nlink": 1,
+          "mtime_ns": 1790533565000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/releases/source-014-full.tar.gz",
+          "bytes": 8118869,
+          "allocated": 8119296,
+          "nlink": 1,
+          "mtime_ns": 1790533303000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/releases/source-013-full.tar.gz",
+          "bytes": 8116656,
+          "allocated": 8116736,
+          "nlink": 1,
+          "mtime_ns": 1790532915000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/releases/source-012-full.tar.gz",
+          "bytes": 8112142,
+          "allocated": 8112640,
+          "nlink": 1,
+          "mtime_ns": 1790532675000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/releases/source-010.tar.gz",
+          "bytes": 8070782,
+          "allocated": 8071168,
+          "nlink": 1,
+          "mtime_ns": 1790520182000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/releases/source-009.tar.gz",
+          "bytes": 8065635,
+          "allocated": 8066048,
+          "nlink": 1,
+          "mtime_ns": 1790519702000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/releases/source-008.tar.gz",
+          "bytes": 8061895,
+          "allocated": 8061952,
+          "nlink": 1,
+          "mtime_ns": 1790519328000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/releases/source-007.tar.gz",
+          "bytes": 8054507,
+          "allocated": 8054784,
+          "nlink": 1,
+          "mtime_ns": 1790519067000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/releases/source-006.tar.gz",
+          "bytes": 8054031,
+          "allocated": 8054272,
+          "nlink": 1,
+          "mtime_ns": 1790518826000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/releases/source-005.tar.gz",
+          "bytes": 8032061,
+          "allocated": 8032256,
+          "nlink": 1,
+          "mtime_ns": 1790518050000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/releases/source-004.tar.gz",
+          "bytes": 8028303,
+          "allocated": 8028672,
+          "nlink": 1,
+          "mtime_ns": 1790517600000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/releases/source-003.tar.gz",
+          "bytes": 8023829,
+          "allocated": 8024064,
+          "nlink": 1,
+          "mtime_ns": 1790517055000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/releases/source-002.tar.gz",
+          "bytes": 8018362,
+          "allocated": 8018432,
+          "nlink": 1,
+          "mtime_ns": 1790516744000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/releases/source-001.tar.gz",
+          "bytes": 7999801,
+          "allocated": 8000000,
+          "nlink": 1,
+          "mtime_ns": 1790437475000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/releases/source-013-full/docs/DBMol.pdf",
+          "bytes": 7502536,
+          "allocated": 7502848,
+          "nlink": 1,
+          "mtime_ns": 1790279011000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/releases/source-048-wide-vae-continuation/docs/DBMol.pdf",
+          "bytes": 7502536,
+          "allocated": 7502848,
+          "nlink": 1,
+          "mtime_ns": 1790279011000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/releases/source-038-fixed-z-architecture-diagnostics/docs/DBMol.pdf",
+          "bytes": 7502536,
+          "allocated": 7502848,
+          "nlink": 1,
+          "mtime_ns": 1790279011000000000,
+          "uid": 306121
+        },
+        {
+          "path": "/work3/s234818/latentmol/releases/source-003/docs/DBMol.pdf",
+          "bytes": 7502536,
+          "allocated": 7502848,
+          "nlink": 1,
+          "mtime_ns": 1790279011000000000,
+          "uid": 306121
+        }
+      ],
+      "files": 58008
+    }
+  },
+  "errors": [],
+  "live_jobs": {
+    "returncode": 0,
+    "stdout": "{\n  \"COMMAND\":\"bjobs\",\n  \"JOBS\":9,\n  \"RECORDS\":[\n    {\n      \"JOBID\":\"29796558\",\n      \"STAT\":\"PEND\",\n      \"JOB_NAME\":\"mosaic-lrboost-analysis-combined-report\",\n      \"COMMAND\":\"bash -l \\/work3\\/s234818\\/mosaic\\/runs\\/20261022-brd4-jq1-lrboost-analysis-01\\/lrreset-analysis-release-03\\/source\\/scripts\\/hpc\\/jq1_lrboost_analysis_stage.lsf \\/work3\\/s234818\\/mosaic\\/runs\\/20261022-brd4-jq1-lrboost-analysis-01\\/lrreset-analysis-release-03\\/source \\/work3\\/s234818\\/mosaic\\/runs\\/20261022-brd4-jq1-lrboost-analysis-01\\/lrreset-analysis-03 8e3045ddfd44a701127deb7af7a163536dfbf699123ba883f98207d6d57b95d5 final none \\/work3\\/s234818\\/mosaic\\/runs\\/20261022-brd4-jq1-lrboost-analysis-01\\/lrreset-analysis-03\\/combined-report\"\n    },\n    {\n      \"JOBID\":\"29829703\",\n      \"STAT\":\"PEND\",\n      \"JOB_NAME\":\"mosaic-endpoint08-dbmol-validate-05000\",\n      \"COMMAND\":\"bash -l \\/work3\\/s234818\\/mosaic\\/runs\\/20261022-brd4-jq1-lrboost-analysis-01\\/nonchem-endpoint-release-08\\/source\\/scripts\\/continuation_stage.lsf \\/work3\\/s234818\\/mosaic\\/runs\\/20261022-brd4-jq1-lrboost-analysis-01\\/nonchem-endpoint-release-08\\/source 3ba7a6b30e6671076fee73910a06a622757734a43d30a589b9a89dd2b92c6877 validate dbmol 5000\"\n    },\n    {\n      \"JOBID\":\"29829704\",\n      \"STAT\":\"PEND\",\n      \"JOB_NAME\":\"mosaic-endpoint08-dbmol-after-validate-05000\",\n      \"COMMAND\":\"bash -l \\/work3\\/s234818\\/mosaic\\/runs\\/20261022-brd4-jq1-lrboost-analysis-01\\/nonchem-endpoint-release-08\\/source\\/scripts\\/continuation_stage.lsf \\/work3\\/s234818\\/mosaic\\/runs\\/20261022-brd4-jq1-lrboost-analysis-01\\/nonchem-endpoint-release-08\\/source 3ba7a6b30e6671076fee73910a06a622757734a43d30a589b9a89dd2b92c6877 after-validate dbmol 5000\"\n    },\n    {\n      \"JOBID\":\"29829828\",\n      \"STAT\":\"PEND\",\n      \"JOB_NAME\":\"source138-epoch36-embedding-comparison-attempt006-gpu\",\n      \"COMMAND\":\"#!\\/bin\\/bash;set -euo pipefail;cd \\/work3\\/s234818\\/latentmol\\/releases\\/source-138-epoch36-embedding-comparison-attempt006;exec env PYTHONDONTWRITEBYTECODE=1 LATENTMOL_SOURCE_ARCHIVE=\\/work3\\/s234818\\/latentmol\\/releases\\/source-138-epoch36-embedding-comparison-attempt006.tar.gz bash scripts\\/hpc\\/boltz_run.sh python scripts\\/hpc\\/embedding_comparison_operator.py verify-run --stage gpu --release \\/work3\\/s234818\\/latentmol\\/releases\\/source-138-epoch36-embedding-comparison-attempt006 --archive-sha256 456c8cc8ae0fbc2d84dcdadddd7734f879cefc9db4204275b8bcd0525ec62acb --plan-sha256 58b47026f175622992c8ea1e257e02d1836387c752aa024bb2fcc0201e886802 --campaign \\/work3\\/s234818\\/latentmol\\/runs\\/source138-epoch36-embedding-comparison-attempt006\"\n    },\n    {\n      \"JOBID\":\"29829875\",\n      \"STAT\":\"PEND\",\n      \"JOB_NAME\":\"source104-chemistry-segment-001\",\n      \"COMMAND\":\"env LATENTMOL_SOURCE_ARCHIVE=\\/work3\\/s234818\\/latentmol\\/releases\\/source-140-epoch40-to45-continuation-attempt001.tar.gz LATENTMOL_WORK_ROOT=\\/work3\\/s234818\\/latentmol bash scripts\\/hpc\\/boltz_run.sh env OMP_NUM_THREADS=4 MKL_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 python scripts\\/verify_stability_release.py --archive-sha256 3fd30b055b078a44c247779966e6c353cf6b66279b9740655e70294766c695f8 --manifest-sha256 514a5c5c521510eb09556861542d8733ba91b13afb3a7491c397fec58bd0ba86 -- python -m latentmol.experiments --run-root \\/work3\\/s234818\\/latentmol\\/runs\\/source140-epoch40-to45-continuation-attempt001\\/allocations --name source104-chemistry-segment-001 -- python scripts\\/hpc\\/chemistry_epoch45_worker.py --plan \\/work3\\/s234818\\/latentmol\\/submissions\\/source140-epoch40-to45-continuation-attempt001\\/source140-epoch40-to45-continuation-attempt001.json --plan-sha256 934764491608b7f354bf5d47aec0f72f014a66d845f3c3ff76589d71c2ee3fb8 --segment 1 -- python -m latentmol.chemistry_continuation train --plan \\/work3\\/s234818\\/latentmol\\/submissions\\/source140-epoch40-to45-continuation-attempt001\\/source140-epoch40-to45-continuation-attempt001.json --plan-sha256 934764491608b7f354bf5d47aec0f72f014a66d845f3c3ff76589d71c2ee3fb8 --benchmark-gate-sha256 e1c2c7e296165855e2b57a6071251db4f5dde6267296cab690d5f1cc35c7c7a3 --failure-readiness-sha256 20e1543aad3f0a8594d38ba2d8c796b617262c1f41326b3a1562a8cd4892bbe5 --segment 1 --resume \\/work3\\/s234818\\/latentmol\\/runs\\/source138-vae-cli-startup-fix-attempt001\\/segments\\/004\\/20261026T230230Z_chemistry-train_e9f28b40\\/epoch_0040.pt --resume-sha256 31af05597dbd176b02a8108651db0d6b33bb3a8883f69ecf354a4465ed18787e\"\n    },\n    {\n      \"JOBID\":\"29829876\",\n      \"STAT\":\"PEND\",\n      \"JOB_NAME\":\"source104-chemistry-after-segment-001\",\n      \"COMMAND\":\"env PYTHONPATH=\\/work3\\/s234818\\/latentmol\\/releases\\/source-140-epoch40-to45-continuation-attempt001\\/src \\/work3\\/s234818\\/latentmol\\/env\\/boltz311\\/bin\\/python scripts\\/hpc\\/chemistry_epoch45_campaign.py --plan \\/work3\\/s234818\\/latentmol\\/submissions\\/source140-epoch40-to45-continuation-attempt001\\/source140-epoch40-to45-continuation-attempt001.json --plan-sha256 934764491608b7f354bf5d47aec0f72f014a66d845f3c3ff76589d71c2ee3fb8 --mode advance --after-stage segment-001\"\n    },\n    {\n      \"JOBID\":\"29829894\",\n      \"STAT\":\"PEND\",\n      \"JOB_NAME\":\"mosaic-pro-precision07-gpu\",\n      \"COMMAND\":\"bash -l \\/work3\\/s234818\\/mosaic\\/runs\\/20261022-brd4-jq1-lrboost-analysis-01\\/protenix-endpoint-fix-release-07\\/source\\/scripts\\/protenix_precision_stage.lsf \\/work3\\/s234818\\/mosaic\\/runs\\/20261022-brd4-jq1-lrboost-analysis-01\\/protenix-endpoint-fix-release-07\\/source 63db0a002c8aca2a282d50f9e7227d57b69ac6820b8ae0e06287ec95770dd8a3 gpu\"\n    },\n    {\n      \"JOBID\":\"29829934\",\n      \"STAT\":\"PEND\",\n      \"JOB_NAME\":\"mosaic-endpoint09-boltz-validate-10000\",\n      \"COMMAND\":\"bash -l \\/work3\\/s234818\\/mosaic\\/runs\\/20261022-brd4-jq1-lrboost-analysis-01\\/nonchem-endpoint-release-09\\/source\\/scripts\\/continuation_stage.lsf \\/work3\\/s234818\\/mosaic\\/runs\\/20261022-brd4-jq1-lrboost-analysis-01\\/nonchem-endpoint-release-09\\/source f15443b51c5197b95205bf59c90e05192f9ceabb955e6006cccfbbdff257fc9b validate boltz 10000\"\n    },\n    {\n      \"JOBID\":\"29829935\",\n      \"STAT\":\"PEND\",\n      \"JOB_NAME\":\"mosaic-endpoint09-boltz-after-validate-10000\",\n      \"COMMAND\":\"bash -l \\/work3\\/s234818\\/mosaic\\/runs\\/20261022-brd4-jq1-lrboost-analysis-01\\/nonchem-endpoint-release-09\\/source\\/scripts\\/continuation_stage.lsf \\/work3\\/s234818\\/mosaic\\/runs\\/20261022-brd4-jq1-lrboost-analysis-01\\/nonchem-endpoint-release-09\\/source f15443b51c5197b95205bf59c90e05192f9ceabb955e6006cccfbbdff257fc9b after-validate boltz 10000\"\n    }\n  ]\n}\n",
+    "stderr": ""
+  }
+}

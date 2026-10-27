@@ -1,0 +1,73 @@
+{
+  "entries": [
+    "/work3/s234818/latentmol/env/boltz311/lib/python3.11/site-packages/boltz",
+    "/work3/s234818/latentmol/env/boltz311/lib/python3.11/site-packages/boltz-2.2.1.dist-info"
+  ],
+  "sources": {
+    "/work3/s234818/latentmol/env/boltz311/lib/python3.11/site-packages/boltz/main.py": {
+      "lines": [
+        [
+          37,
+          "from boltz.data.parse.yaml import parse_yaml\nfrom boltz.data.types import MSA, Manifest, Record\nfrom boltz.data.write.writer import BoltzAffinityWriter, BoltzWriter\nfrom boltz.model.models.boltz1 import Boltz1\nfrom boltz.model.models.boltz2 import Boltz2\n\nCCD_URL = \"https://huggingface.co/boltz-community/boltz-1/resolve/main/ccd.pkl\"\nMOL_URL = \"https://huggingface.co/boltz-community/boltz-2/resolve/main/mols.tar\"\n\nBOLTZ1_URL_WITH_FALLBACK = [\n    \"https://model-gateway.boltz.bio/boltz1_conf.ckpt\",\n    \"https://huggingface.co/boltz-community/boltz-1/resolve/main/boltz1_conf.ckpt\",\n]\n\nBOLTZ2_URL_WITH_FALLBACK = [\n    \"https://model-gateway.boltz.bio/boltz2_conf.ckpt\",\n    \"https://huggingface.co/boltz-community/boltz-2/resolve/main/boltz2_conf.ckpt\",\n]\n\nBOLTZ2_AFFINITY_URL_WITH_FALLBACK = [\n    \"https://model-gateway.boltz.bio/boltz2_aff.ckpt\",\n    \"https://huggingface.co/boltz-community/boltz-2/resolve/main/boltz2_aff.ckpt\","
+        ],
+        [
+          64,
+          "    \"\"\"Processed input data.\"\"\"\n\n    manifest: Manifest\n    targets_dir: Path\n    msa_dir: Path\n    constraints_dir: Optional[Path] = None\n    template_dir: Optional[Path] = None\n    extra_mols_dir: Optional[Path] = None\n\n\n@dataclass\nclass PairformerArgs:\n    \"\"\"Pairformer arguments.\"\"\"\n\n    num_blocks: int = 48\n    num_heads: int = 16\n    dropout: float = 0.0\n    activation_checkpointing: bool = False\n    offload_to_cpu: bool = False\n    v2: bool = False\n\n"
+        ],
+        [
+          161,
+          "    fk_resampling_interval: int = 3\n    physical_guidance_update: bool = False\n    contact_guidance_update: bool = True\n    num_gd_steps: int = 20\n\n\n@rank_zero_only\ndef download_boltz1(cache: Path) -> None:\n    \"\"\"Download all the required data.\n\n    Parameters\n    ----------\n    cache : Path\n        The cache directory.\n\n    \"\"\"\n    # Download CCD\n    ccd = cache / \"ccd.pkl\"\n    if not ccd.exists():\n        click.echo(\n            f\"Downloading the CCD dictionary to {ccd}. You may \"\n            \"change the cache directory with the --cache flag.\""
+        ],
+        [
+          198,
+          "                if i == len(BOLTZ1_URL_WITH_FALLBACK) - 1:\n                    msg = f\"Failed to download model from all URLs. Last error: {e}\"\n                    raise RuntimeError(msg) from e\n                continue\n\n\n@rank_zero_only\ndef download_boltz2(cache: Path) -> None:\n    \"\"\"Download all the required data.\n\n    Parameters\n    ----------\n    cache : Path\n        The cache directory.\n\n    \"\"\"\n    # Download CCD\n    mols = cache / \"mols\"\n    tar_mols = cache / \"mols.tar\"\n    if not tar_mols.exists():\n        click.echo(\n            f\"Downloading the CCD data to {tar_mols}. \""
+        ],
+        [
+          209,
+          "    ----------\n    cache : Path\n        The cache directory.\n\n    \"\"\"\n    # Download CCD\n    mols = cache / \"mols\"\n    tar_mols = cache / \"mols.tar\"\n    if not tar_mols.exists():\n        click.echo(\n            f\"Downloading the CCD data to {tar_mols}. \"\n            \"This may take a bit of time. You may change the cache directory \"\n            \"with the --cache flag.\"\n        )\n        urllib.request.urlretrieve(MOL_URL, str(tar_mols))  # noqa: S310\n    if not mols.exists():\n        click.echo(\n            f\"Extracting the CCD data to {mols}. \"\n            \"This may take a bit of time. You may change the cache directory \"\n            \"with the --cache flag.\"\n        )\n        with tarfile.open(str(tar_mols), \"r\") as tar:"
+        ],
+        [
+          542,
+          "    msa_server_password: Optional[str],\n    api_key_header: Optional[str],\n    api_key_value: Optional[str],\n    max_msa_seqs: int,\n    processed_msa_dir: Path,\n    processed_constraints_dir: Path,\n    processed_templates_dir: Path,\n    processed_mols_dir: Path,\n    structure_dir: Path,\n    records_dir: Path,\n) -> None:\n    try:\n        # Parse data\n        if path.suffix.lower() in (\".fa\", \".fas\", \".fasta\"):\n            target = parse_fasta(path, ccd, mol_dir, boltz2)\n        elif path.suffix.lower() in (\".yml\", \".yaml\"):\n            target = parse_yaml(path, ccd, mol_dir, boltz2)\n        elif path.is_dir():\n            msg = f\"Found directory {path} instead of .fasta or .yaml, skipping.\"\n            raise RuntimeError(msg)  # noqa: TRY301\n        else:\n            msg = ("
+        ],
+        [
+          646,
+          "\n        # Dump constraints\n        constraints_path = processed_constraints_dir / f\"{target.record.id}.npz\"\n        target.residue_constraints.dump(constraints_path)\n\n        # Dump extra molecules\n        Chem.SetDefaultPickleProperties(Chem.PropertyPickleOptions.AllProps)\n        with (processed_mols_dir / f\"{target.record.id}.pkl\").open(\"wb\") as f:\n            pickle.dump(target.extra_mols, f)\n\n        # Dump structure\n        struct_path = structure_dir / f\"{target.record.id}.npz\"\n        target.structure.dump(struct_path)\n\n        # Dump record\n        record_path = records_dir / f\"{target.record.id}.json\"\n        target.record.dump(record_path)\n\n    except Exception as e:  # noqa: BLE001\n        import traceback\n\n        traceback.print_exc()"
+        ],
+        [
+          751,
+          "    # Create output directories\n    msa_dir = out_dir / \"msa\"\n    records_dir = out_dir / \"processed\" / \"records\"\n    structure_dir = out_dir / \"processed\" / \"structures\"\n    processed_msa_dir = out_dir / \"processed\" / \"msa\"\n    processed_constraints_dir = out_dir / \"processed\" / \"constraints\"\n    processed_templates_dir = out_dir / \"processed\" / \"templates\"\n    processed_mols_dir = out_dir / \"processed\" / \"mols\"\n    predictions_dir = out_dir / \"predictions\"\n\n    out_dir.mkdir(parents=True, exist_ok=True)\n    msa_dir.mkdir(parents=True, exist_ok=True)\n    records_dir.mkdir(parents=True, exist_ok=True)\n    structure_dir.mkdir(parents=True, exist_ok=True)\n    processed_msa_dir.mkdir(parents=True, exist_ok=True)\n    processed_constraints_dir.mkdir(parents=True, exist_ok=True)\n    processed_templates_dir.mkdir(parents=True, exist_ok=True)\n    processed_mols_dir.mkdir(parents=True, exist_ok=True)\n    predictions_dir.mkdir(parents=True, exist_ok=True)\n\n    # Load CCD\n    if boltz2:"
+        ],
+        [
+          761,
+          "    out_dir.mkdir(parents=True, exist_ok=True)\n    msa_dir.mkdir(parents=True, exist_ok=True)\n    records_dir.mkdir(parents=True, exist_ok=True)\n    structure_dir.mkdir(parents=True, exist_ok=True)\n    processed_msa_dir.mkdir(parents=True, exist_ok=True)\n    processed_constraints_dir.mkdir(parents=True, exist_ok=True)\n    processed_templates_dir.mkdir(parents=True, exist_ok=True)\n    processed_mols_dir.mkdir(parents=True, exist_ok=True)\n    predictions_dir.mkdir(parents=True, exist_ok=True)\n\n    # Load CCD\n    if boltz2:\n        ccd = load_canonicals(mol_dir)\n    else:\n        with ccd_path.open(\"rb\") as file:\n            ccd = pickle.load(file)  # noqa: S301\n\n    # Create partial function\n    process_input_partial = partial(\n        process_input,\n        ccd=ccd,\n        msa_dir=msa_dir,"
+        ],
+        [
+          789,
+          "        msa_server_password=msa_server_password,\n        api_key_header=api_key_header,\n        api_key_value=api_key_value,\n        max_msa_seqs=max_msa_seqs,\n        processed_msa_dir=processed_msa_dir,\n        processed_constraints_dir=processed_constraints_dir,\n        processed_templates_dir=processed_templates_dir,\n        processed_mols_dir=processed_mols_dir,\n        structure_dir=structure_dir,\n        records_dir=records_dir,\n    )\n\n    # Parse input data\n    preprocessing_threads = min(preprocessing_threads, len(data))\n    click.echo(f\"Processing {len(data)} inputs with {preprocessing_threads} threads.\")\n\n    if preprocessing_threads > 1 and len(data) > 1:\n        with Pool(preprocessing_threads) as pool:\n            list(tqdm(pool.imap(process_input_partial, data), total=len(data)))\n    else:\n        for path in tqdm(data):\n            process_input_partial(path)"
+        ],
+        [
+          1139,
+          "    data = Path(data).expanduser()\n    out_dir = Path(out_dir).expanduser()\n    out_dir = out_dir / f\"boltz_results_{data.stem}\"\n    out_dir.mkdir(parents=True, exist_ok=True)\n\n    # Download necessary data and model\n    if model == \"boltz1\":\n        download_boltz1(cache)\n    elif model == \"boltz2\":\n        download_boltz2(cache)\n    else:\n        msg = f\"Model {model} not supported. Supported: boltz1, boltz2.\"\n        raise ValueError(f\"Model {model} not supported.\")\n\n    # Validate inputs\n    data = check_inputs(data)\n\n    # Check method\n    if method is not None:\n        if model == \"boltz1\":\n            msg = \"Method conditioning is not supported for Boltz-1.\"\n            raise ValueError(msg)"
+        ],
+        [
+          1141,
+          "    out_dir = out_dir / f\"boltz_results_{data.stem}\"\n    out_dir.mkdir(parents=True, exist_ok=True)\n\n    # Download necessary data and model\n    if model == \"boltz1\":\n        download_boltz1(cache)\n    elif model == \"boltz2\":\n        download_boltz2(cache)\n    else:\n        msg = f\"Model {model} not supported. Supported: boltz1, boltz2.\"\n        raise ValueError(f\"Model {model} not supported.\")\n\n    # Validate inputs\n    data = check_inputs(data)\n\n    # Check method\n    if method is not None:\n        if model == \"boltz1\":\n            msg = \"Method conditioning is not supported for Boltz-1.\"\n            raise ValueError(msg)\n        if method.lower() not in const.method_types_ids:\n            method_names = list(const.method_types_ids.keys())"
+        ],
+        [
+          1205,
+          "            else None\n        ),\n        template_dir=(\n            (processed_dir / \"templates\")\n            if (processed_dir / \"templates\").exists()\n            else None\n        ),\n        extra_mols_dir=(\n            (processed_dir / \"mols\") if (processed_dir / \"mols\").exists() else None\n        ),\n    )\n\n    # Set up trainer\n    strategy = \"auto\"\n    if (isinstance(devices, int) and devices > 1) or (\n        isinstance(devices, list) and len(devices) > 1\n    ):\n        start_method = \"fork\" if platform.system() != \"win32\" and platform.system() != \"Windows\" else \"spawn\"\n        strategy = DDPStrategy(start_method=start_method)\n        if len(filtered_manifest.records) < devices:\n            msg = (\n                \"Number of requested devices is greater \""
+        ],
+        [
+          1280,
+          "                manifest=processed.manifest,\n                target_dir=processed.targets_dir,\n                msa_dir=processed.msa_dir,\n                mol_dir=mol_dir,\n                num_workers=num_workers,\n                constraints_dir=processed.constraints_dir,\n                template_dir=processed.template_dir,\n                extra_mols_dir=processed.extra_mols_dir,\n                override_method=method,\n            )\n        else:\n            data_module = BoltzInferenceDataModule(\n                manifest=processed.manifest,\n                target_dir=processed.targets_dir,\n                msa_dir=processed.msa_dir,\n                num_workers=num_workers,\n                constraints_dir=processed.constraints_dir,\n            )\n\n        # Load model\n        if checkpoint is None:\n            if model == \"boltz2\":"
+        ],
+        [
+          1367,
+          "            manifest=manifest_filtered,\n            target_dir=out_dir / \"predictions\",\n            msa_dir=processed.msa_dir,\n            mol_dir=mol_dir,\n            num_workers=num_workers,\n            constraints_dir=processed.constraints_dir,\n            template_dir=processed.template_dir,\n            extra_mols_dir=processed.extra_mols_dir,\n            override_method=\"other\",\n            affinity=True,\n        )\n\n        predict_affinity_args = {\n            \"recycling_steps\": 5,\n            \"sampling_steps\": sampling_steps_affinity,\n            \"diffusion_samples\": diffusion_samples_affinity,\n            \"max_parallel_samples\": 1,\n            \"write_confidence_summary\": False,\n            \"write_full_pae\": False,\n            \"write_full_pde\": False,\n        }\n"
+        ]
+      ]
+    },
+    "/work3/s234818/latentmol/env/boltz311/lib/python3.11/site-packages/boltz-2.2.1.dist-info/direct_url.json": "{\"url\":\"https://github.com/jwohlwend/boltz.git\",\"vcs_info\":{\"vcs\":\"git\",\"commit_id\":\"b1ebfc46ecf57f5414e0d1a6f9027bbb122c53bc\",\"requested_revision\":\"b1ebfc46ecf57f5414e0d1a6f9027bbb122c53bc\"}}"
+  }
+}

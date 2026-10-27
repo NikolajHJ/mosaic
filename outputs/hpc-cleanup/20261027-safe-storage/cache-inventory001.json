@@ -1,0 +1,8 @@
+{
+  "candidate_allocated_bytes": 44749824,
+  "candidate_files": 1310,
+  "control": "/work3/s234818/latentmol/submissions/storage-cleanup-20261027-safe001/generated-cache-plan-receipts",
+  "plan": "/work3/s234818/latentmol/submissions/storage-cleanup-20261027-safe001/generated-cache-plan.json",
+  "plan_sha256": "95c5647607bcef456c3f3306fef433fdc8efd01887f0d31e3ad23157da016e5e",
+  "status": "inventory_only_no_deletions"
+}

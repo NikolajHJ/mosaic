@@ -1,0 +1,18 @@
+{
+  "completion_sha256": "83495c8d9bf93e4bf35417d7d42b1658c1cd2c158f7a104b1b16ee795ba7b75a",
+  "local_restore_copy": {
+    "bytes": 406779014,
+    "local": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-cleanup\\20261027-safe-storage\\restore\\mols.tar.gz",
+    "remote_original": "/work3/s234818/latentmol/cache/boltz2/mols.tar.gz",
+    "restore_command": "scp -o BatchMode=yes C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-cleanup\\20261027-safe-storage\\restore\\mols.tar.gz dtu-hpc:/work3/s234818/latentmol/cache/boltz2/mols.tar.gz",
+    "retained_native_tar": "/work3/s234818/latentmol/cache/boltz2/mols.tar",
+    "retained_native_tar_sha256": "39e076d96dbec6b4e86982bbda16f3a53a2a60c9bdc17828d88f6f9a0c7d1fd7",
+    "sha256": "d1e4f47aa69824d37641e70cc60ebae582ccfe6e99d6b4868d791b8e9bc41116",
+    "status": "verified_exact_local_restore_copy"
+  },
+  "protected_hashes": 138,
+  "removed_allocated_bytes": 406779392,
+  "status": "passed_independent_archive_verification",
+  "target_absent": true,
+  "utc": "2026-10-27T11:42:55.609825+00:00"
+}

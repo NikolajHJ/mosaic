@@ -1,0 +1,74 @@
+{
+  "status": "completed_verified_narrow_hpc_cleanup",
+  "remote_root": "/work3/s234818/latentmol",
+  "removed_archive_files": 1,
+  "removed_generated_cache_files": 1310,
+  "skipped_cache_files": 0,
+  "reclaimed_allocated_bytes": 451529216,
+  "reclaimed_mib": 430.61181640625,
+  "reclaimed_gib": 0.4205193519592285,
+  "archive_reclaimed_allocated_bytes": 406779392,
+  "cache_reclaimed_allocated_bytes": 44749824,
+  "protected_hashes_verified": 138,
+  "all_selected_paths_absent": true,
+  "local_restore_copy_verified_again": {
+    "status": "verified_exact_local_restore_copy",
+    "remote_original": "/work3/s234818/latentmol/cache/boltz2/mols.tar.gz",
+    "local": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-cleanup\\20261027-safe-storage\\restore\\mols.tar.gz",
+    "sha256": "d1e4f47aa69824d37641e70cc60ebae582ccfe6e99d6b4868d791b8e9bc41116",
+    "bytes": 406779014,
+    "retained_native_tar": "/work3/s234818/latentmol/cache/boltz2/mols.tar",
+    "retained_native_tar_sha256": "39e076d96dbec6b4e86982bbda16f3a53a2a60c9bdc17828d88f6f9a0c7d1fd7",
+    "restore_command": "scp -o BatchMode=yes C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-cleanup\\20261027-safe-storage\\restore\\mols.tar.gz dtu-hpc:/work3/s234818/latentmol/cache/boltz2/mols.tar.gz"
+  },
+  "extracted_molecules_unchanged": {
+    "files": 45227,
+    "logical_bytes": 1820698819
+  },
+  "quota_observed_time": "2026-10-27 12:44:20 CET",
+  "official_work3_used_gib": 45.73,
+  "official_work3_free_gib": 54.27,
+  "quota_note": "Account-wide concurrent observation; exact selected allocated bytes above are the cleanup measure.",
+  "no_checkpoints_scientific_results_environment_model_weights_or_jobs_modified": true,
+  "remote_evidence": {
+    "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-cleanup\\20261027-safe-storage\\completed-remote",
+    "integrity": {
+      "archive-audit.json": {
+        "sha256": "3af76ea2c918a61c4b4a90c0c269e1406014e8fb08a64a7af73f1c3ef444612d",
+        "bytes": 54734
+      },
+      "archive-audit-v2.json": {
+        "sha256": "83f90cfa0c0f294cb55663a87fc1f0acc6406334b331acd165a8355cfbad6bce",
+        "bytes": 54734
+      },
+      "archive-intent-v2.json": {
+        "sha256": "ef2465c4f09da8c980dfa96d53d7ce282fe1bce59d1995ae34da5aeea13a89bd",
+        "bytes": 54438
+      },
+      "archive-completion-v2.json": {
+        "sha256": "83495c8d9bf93e4bf35417d7d42b1658c1cd2c158f7a104b1b16ee795ba7b75a",
+        "bytes": 27672
+      },
+      "archive-verification-v2.json": {
+        "sha256": "76c8dd50f333c0b390ae7edcf420c25989ddcde690d5930b7674535dd097732f",
+        "bytes": 1115
+      },
+      "generated-cache-plan-receipts/intent.json": {
+        "sha256": "f60ccfed92fa1897ac2aa52a8db862fd07637c49f8f2e826b3b713de3b3425ea",
+        "bytes": 52015
+      },
+      "generated-cache-plan-receipts/journal.jsonl": {
+        "sha256": "2c521bc64d00b95289b4ad96c7fddda950851094227c2e02f24e9ff83b129590",
+        "bytes": 1088727
+      },
+      "generated-cache-plan-receipts/completion.json": {
+        "sha256": "f93ba49841974d8284612136969ca8191f66ce8c61936afcbeb5116baf9d30f1",
+        "bytes": 259882
+      },
+      "generated-cache-plan-receipts/verification.json": {
+        "sha256": "73e8698c5802f9c5203ac119f889b59d9aa7d09193ed19d92ea891937cc3fb44",
+        "bytes": 25679
+      }
+    }
+  }
+}

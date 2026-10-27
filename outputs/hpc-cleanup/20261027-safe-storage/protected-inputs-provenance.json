@@ -1,0 +1,631 @@
+{
+  "conflicts": [],
+  "created_utc": "2026-10-27T11:27:53.286529+00:00",
+  "group_counts": {
+    "historical_51": {
+      "new_unique_paths": 51,
+      "total_after": 51
+    },
+    "restored_and_verified_context_bank_all_50": {
+      "new_unique_paths": 49,
+      "total_after": 136
+    },
+    "source137-epoch36-boltz-embedding-bridge-attempt002_sealed_assets": {
+      "new_unique_paths": 0,
+      "total_after": 83
+    },
+    "source138-epoch36-embedding-comparison-attempt006_sealed_assets": {
+      "new_unique_paths": 15,
+      "total_after": 83
+    },
+    "source139-epoch36-embedding-gradient-diagnostic-attempt001_sealed_assets": {
+      "new_unique_paths": 4,
+      "total_after": 87
+    },
+    "source140_exact_manifest_bytes": {
+      "new_unique_paths": 1,
+      "total_after": 68
+    },
+    "source140_plan_recursive_bindings": {
+      "new_unique_paths": 7,
+      "total_after": 61
+    },
+    "source140_preflight_27": {
+      "new_unique_paths": 3,
+      "total_after": 54
+    },
+    "source140_staged_files": {
+      "new_unique_paths": 6,
+      "total_after": 67
+    }
+  },
+  "local_writes": [
+    "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-cleanup\\20261027-safe-storage\\protected-inputs.json",
+    "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-cleanup\\20261027-safe-storage\\protected-inputs-provenance.json"
+  ],
+  "models_imported": false,
+  "path_sources": {
+    "/work3/s234818/latentmol/boltz-preparation/source054-active-set-attempt001/count-11/prepared.pt": [
+      "outputs/hpc-submissions/source138-context-restore-20261023/independent-verification.json:stdout:$[2].path"
+    ],
+    "/work3/s234818/latentmol/boltz-preparation/source054-active-set-attempt001/count-12/prepared.pt": [
+      "outputs/hpc-submissions/source138-context-restore-20261023/independent-verification.json:stdout:$[3].path"
+    ],
+    "/work3/s234818/latentmol/boltz-preparation/source054-active-set-attempt001/count-13/input/carbon_chain_13.yaml": [
+      "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source138-epoch36-embedding-comparison-attempt006\\source138-epoch36-embedding-comparison-attempt006.tar.gz!configs/epoch36_embedding_comparison.json:$.native_template.path",
+      "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source139-epoch36-embedding-gradient-diagnostic-attempt001\\source139-epoch36-embedding-gradient-diagnostic-attempt001.tar.gz!configs/epoch36_embedding_gradient_diagnostic.json:$.native_template.path"
+    ],
+    "/work3/s234818/latentmol/boltz-preparation/source054-active-set-attempt001/count-13/prepared.pt": [
+      "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source138-epoch36-embedding-comparison-attempt006\\source138-epoch36-embedding-comparison-attempt006.tar.gz!configs/epoch36_embedding_comparison.json:$.prepared.path",
+      "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source137-epoch36-boltz-embedding-bridge-attempt002\\source137-epoch36-boltz-embedding-bridge-attempt002.tar.gz!configs/epoch36_boltz_embedding_bridge.json:$.prepared.path",
+      "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source139-epoch36-embedding-gradient-diagnostic-attempt001\\source139-epoch36-embedding-gradient-diagnostic-attempt001.tar.gz!configs/epoch36_embedding_gradient_diagnostic.json:$.prepared.path",
+      "outputs/hpc-submissions/source138-context-restore-20261023/independent-verification.json:stdout:$[4].path"
+    ],
+    "/work3/s234818/latentmol/boltz-preparation/source054-active-set-attempt001/count-14/prepared.pt": [
+      "outputs/hpc-submissions/source138-context-restore-20261023/independent-verification.json:stdout:$[5].path"
+    ],
+    "/work3/s234818/latentmol/boltz-preparation/source054-active-set-attempt001/count-15/prepared.pt": [
+      "outputs/hpc-submissions/source138-context-restore-20261023/independent-verification.json:stdout:$[6].path"
+    ],
+    "/work3/s234818/latentmol/cache/boltz2/boltz2_aff.ckpt": [
+      "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source138-epoch36-embedding-comparison-attempt006\\source138-epoch36-embedding-comparison-attempt006.tar.gz!configs/epoch36_embedding_comparison.json:$.affinity.path",
+      "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source137-epoch36-boltz-embedding-bridge-attempt002\\source137-epoch36-boltz-embedding-bridge-attempt002.tar.gz!configs/epoch36_boltz_embedding_bridge.json:$.affinity.path",
+      "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source139-epoch36-embedding-gradient-diagnostic-attempt001\\source139-epoch36-embedding-gradient-diagnostic-attempt001.tar.gz!configs/epoch36_embedding_gradient_diagnostic.json:$.affinity.path"
+    ],
+    "/work3/s234818/latentmol/cache/boltz2/boltz2_conf.ckpt": [
+      "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source138-epoch36-embedding-comparison-attempt006\\source138-epoch36-embedding-comparison-attempt006.tar.gz!configs/epoch36_embedding_comparison.json:$.dbmol.confidence_checkpoint.path",
+      "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source137-epoch36-boltz-embedding-bridge-attempt002\\source137-epoch36-boltz-embedding-bridge-attempt002.tar.gz!configs/epoch36_boltz_embedding_bridge.json:$.dbmol.confidence_checkpoint.path",
+      "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source139-epoch36-embedding-gradient-diagnostic-attempt001\\source139-epoch36-embedding-gradient-diagnostic-attempt001.tar.gz!configs/epoch36_embedding_gradient_diagnostic.json:$.dbmol.confidence_checkpoint.path"
+    ],
+    "/work3/s234818/latentmol/data/source095-moses-triangle-v2/manifest.json": [
+      "outputs/hpc-results/storage-cleanup-20261023-001/completed-remote001/intent.json:$",
+      "outputs/hpc-submissions/source140-epoch40-to45-continuation-attempt001.json:$.readiness_artifacts",
+      "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source138-epoch36-embedding-comparison-attempt006\\source138-epoch36-embedding-comparison-attempt006.tar.gz!configs/epoch36_embedding_comparison.json:$.dataset_manifest.path",
+      "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source137-epoch36-boltz-embedding-bridge-attempt002\\source137-epoch36-boltz-embedding-bridge-attempt002.tar.gz!configs/epoch36_boltz_embedding_bridge.json:$.dataset_manifest.path",
+      "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source139-epoch36-embedding-gradient-diagnostic-attempt001\\source139-epoch36-embedding-gradient-diagnostic-attempt001.tar.gz!configs/epoch36_embedding_gradient_diagnostic.json:$.dataset_manifest.path"
+    ],
+    "/work3/s234818/latentmol/releases/source-124-deterministic-chemistry-events-attempt002/src/latentmol/repair_failure_guidance.py": [
+      "outputs/hpc-submissions/source140-epoch40-to45-continuation-attempt001.json:$.loss_v1_reference.module"
+    ],
+    "/work3/s234818/latentmol/releases/source-135-epoch36-valid-reference-attempt001.tar.gz": [
+      "outputs/hpc-results/storage-cleanup-20261023-001/completed-remote001/intent.json:$"
+    ],
+    "/work3/s234818/latentmol/releases/source-135-epoch36-valid-reference-attempt001/release_manifest.json": [
+      "outputs/hpc-results/storage-cleanup-20261023-001/completed-remote001/intent.json:$"
+    ],
+    "/work3/s234818/latentmol/releases/source-136-valid-reference-epoch40-continuation-attempt001.tar.gz": [
+      "outputs/hpc-results/storage-cleanup-20261023-001/completed-remote001/intent.json:$"
+    ],
+    "/work3/s234818/latentmol/releases/source-136-valid-reference-epoch40-continuation-attempt001/release_manifest.json": [
+      "outputs/hpc-results/storage-cleanup-20261023-001/completed-remote001/intent.json:$"
+    ],
+    "/work3/s234818/latentmol/releases/source-137-epoch36-boltz-embedding-bridge-attempt002.tar.gz": [
+      "outputs/hpc-results/storage-cleanup-20261023-001/completed-remote001/intent.json:$",
+      "outputs/hpc-submissions/source137-epoch36-boltz-embedding-bridge-attempt002/seal.json"
+    ],
+    "/work3/s234818/latentmol/releases/source-137-epoch36-boltz-embedding-bridge-attempt002/configs/epoch36_boltz_embedding_bridge.json": [
+      "outputs/hpc-results/storage-cleanup-20261023-001/completed-remote001/intent.json:$",
+      "outputs/hpc-submissions/source137-epoch36-boltz-embedding-bridge-attempt002/seal.json"
+    ],
+    "/work3/s234818/latentmol/releases/source-137-epoch36-boltz-embedding-bridge-attempt002/embedding-release-manifest.json": [
+      "outputs/hpc-results/storage-cleanup-20261023-001/completed-remote001/intent.json:$",
+      "outputs/hpc-submissions/source137-epoch36-boltz-embedding-bridge-attempt002/seal.json"
+    ],
+    "/work3/s234818/latentmol/releases/source-138-epoch36-embedding-comparison-attempt003/configs/epoch36_embedding_comparison.json": [
+      "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source138-epoch36-embedding-comparison-attempt006\\source138-epoch36-embedding-comparison-attempt006.tar.gz!configs/epoch36_embedding_comparison.json:$.precision_correction.parent_plan.path"
+    ],
+    "/work3/s234818/latentmol/releases/source-138-epoch36-embedding-comparison-attempt006.tar.gz": [
+      "outputs/hpc-submissions/source138-epoch36-embedding-comparison-attempt006/seal.json"
+    ],
+    "/work3/s234818/latentmol/releases/source-138-epoch36-embedding-comparison-attempt006/configs/epoch36_embedding_comparison.json": [
+      "outputs/hpc-submissions/source138-epoch36-embedding-comparison-attempt006/seal.json"
+    ],
+    "/work3/s234818/latentmol/releases/source-138-epoch36-embedding-comparison-attempt006/embedding-release-manifest.json": [
+      "outputs/hpc-submissions/source138-epoch36-embedding-comparison-attempt006/seal.json"
+    ],
+    "/work3/s234818/latentmol/releases/source-139-epoch36-embedding-gradient-diagnostic-attempt001.tar.gz": [
+      "outputs/hpc-submissions/source139-epoch36-embedding-gradient-diagnostic-attempt001/seal.json"
+    ],
+    "/work3/s234818/latentmol/releases/source-139-epoch36-embedding-gradient-diagnostic-attempt001/configs/epoch36_embedding_gradient_diagnostic.json": [
+      "outputs/hpc-submissions/source139-epoch36-embedding-gradient-diagnostic-attempt001/seal.json"
+    ],
+    "/work3/s234818/latentmol/releases/source-139-epoch36-embedding-gradient-diagnostic-attempt001/embedding-release-manifest.json": [
+      "outputs/hpc-submissions/source139-epoch36-embedding-gradient-diagnostic-attempt001/seal.json"
+    ],
+    "/work3/s234818/latentmol/releases/source-140-epoch40-to45-continuation-attempt001.tar.gz": [
+      "outputs/hpc-submissions/source140-epoch40-to45-continuation-attempt001-stage-and-queue-001-output.json:$[0].path"
+    ],
+    "/work3/s234818/latentmol/releases/source-140-epoch40-to45-continuation-attempt001/release_manifest.json": [
+      "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\source-releases\\source-140-epoch40-to45-continuation-attempt001.tar.gz!release_manifest.json"
+    ],
+    "/work3/s234818/latentmol/runs/20261001T001617Z_vae-train_c008c090/best_validity.pt": [
+      "outputs/hpc-results/storage-cleanup-20261023-001/completed-remote001/intent.json:$"
+    ],
+    "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/contexts.json": [
+      "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source138-epoch36-embedding-comparison-attempt006\\source138-epoch36-embedding-comparison-attempt006.tar.gz!configs/epoch36_embedding_comparison.json:$.context_manifest.path",
+      "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source139-epoch36-embedding-gradient-diagnostic-attempt001\\source139-epoch36-embedding-gradient-diagnostic-attempt001.tar.gz!configs/epoch36_embedding_gradient_diagnostic.json:$.context_manifest.path"
+    ],
+    "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-01/prepared.pt": [
+      "outputs/hpc-submissions/source138-context-restore-20261023/independent-verification.json:stdout:$[0].path"
+    ],
+    "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-02/prepared.pt": [
+      "outputs/hpc-submissions/source138-context-restore-20261023/independent-verification.json:stdout:$[11].path"
+    ],
+    "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-03/prepared.pt": [
+      "outputs/hpc-submissions/source138-context-restore-20261023/independent-verification.json:stdout:$[22].path"
+    ],
+    "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-04/prepared.pt": [
+      "outputs/hpc-submissions/source138-context-restore-20261023/independent-verification.json:stdout:$[33].path"
+    ],
+    "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-05/prepared.pt": [
+      "outputs/hpc-submissions/source138-context-restore-20261023/independent-verification.json:stdout:$[44].path"
+    ],
+    "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-06/prepared.pt": [
+      "outputs/hpc-submissions/source138-context-restore-20261023/independent-verification.json:stdout:$[46].path"
+    ],
+    "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-07/prepared.pt": [
+      "outputs/hpc-submissions/source138-context-restore-20261023/independent-verification.json:stdout:$[47].path"
+    ],
+    "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-08/prepared.pt": [
+      "outputs/hpc-submissions/source138-context-restore-20261023/independent-verification.json:stdout:$[48].path"
+    ],
+    "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-09/prepared.pt": [
+      "outputs/hpc-submissions/source138-context-restore-20261023/independent-verification.json:stdout:$[49].path"
+    ],
+    "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-10/prepared.pt": [
+      "outputs/hpc-submissions/source138-context-restore-20261023/independent-verification.json:stdout:$[1].path"
+    ],
+    "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-16/prepared.pt": [
+      "outputs/hpc-submissions/source138-context-restore-20261023/independent-verification.json:stdout:$[7].path"
+    ],
+    "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-17/prepared.pt": [
+      "outputs/hpc-submissions/source138-context-restore-20261023/independent-verification.json:stdout:$[8].path"
+    ],
+    "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-18/prepared.pt": [
+      "outputs/hpc-submissions/source138-context-restore-20261023/independent-verification.json:stdout:$[9].path"
+    ],
+    "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-19/prepared.pt": [
+      "outputs/hpc-submissions/source138-context-restore-20261023/independent-verification.json:stdout:$[10].path"
+    ],
+    "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-20/prepared.pt": [
+      "outputs/hpc-submissions/source138-context-restore-20261023/independent-verification.json:stdout:$[12].path"
+    ],
+    "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-21/prepared.pt": [
+      "outputs/hpc-submissions/source138-context-restore-20261023/independent-verification.json:stdout:$[13].path"
+    ],
+    "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-22/prepared.pt": [
+      "outputs/hpc-submissions/source138-context-restore-20261023/independent-verification.json:stdout:$[14].path"
+    ],
+    "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-23/prepared.pt": [
+      "outputs/hpc-submissions/source138-context-restore-20261023/independent-verification.json:stdout:$[15].path"
+    ],
+    "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-24/prepared.pt": [
+      "outputs/hpc-submissions/source138-context-restore-20261023/independent-verification.json:stdout:$[16].path"
+    ],
+    "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-25/prepared.pt": [
+      "outputs/hpc-submissions/source138-context-restore-20261023/independent-verification.json:stdout:$[17].path"
+    ],
+    "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-26/prepared.pt": [
+      "outputs/hpc-submissions/source138-context-restore-20261023/independent-verification.json:stdout:$[18].path"
+    ],
+    "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-27/prepared.pt": [
+      "outputs/hpc-submissions/source138-context-restore-20261023/independent-verification.json:stdout:$[19].path"
+    ],
+    "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-28/prepared.pt": [
+      "outputs/hpc-submissions/source138-context-restore-20261023/independent-verification.json:stdout:$[20].path"
+    ],
+    "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-29/prepared.pt": [
+      "outputs/hpc-submissions/source138-context-restore-20261023/independent-verification.json:stdout:$[21].path"
+    ],
+    "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-30/prepared.pt": [
+      "outputs/hpc-submissions/source138-context-restore-20261023/independent-verification.json:stdout:$[23].path"
+    ],
+    "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-31/prepared.pt": [
+      "outputs/hpc-submissions/source138-context-restore-20261023/independent-verification.json:stdout:$[24].path"
+    ],
+    "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-32/prepared.pt": [
+      "outputs/hpc-submissions/source138-context-restore-20261023/independent-verification.json:stdout:$[25].path"
+    ],
+    "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-33/prepared.pt": [
+      "outputs/hpc-submissions/source138-context-restore-20261023/independent-verification.json:stdout:$[26].path"
+    ],
+    "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-34/prepared.pt": [
+      "outputs/hpc-submissions/source138-context-restore-20261023/independent-verification.json:stdout:$[27].path"
+    ],
+    "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-35/prepared.pt": [
+      "outputs/hpc-submissions/source138-context-restore-20261023/independent-verification.json:stdout:$[28].path"
+    ],
+    "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-36/prepared.pt": [
+      "outputs/hpc-submissions/source138-context-restore-20261023/independent-verification.json:stdout:$[29].path"
+    ],
+    "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-37/prepared.pt": [
+      "outputs/hpc-submissions/source138-context-restore-20261023/independent-verification.json:stdout:$[30].path"
+    ],
+    "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-38/prepared.pt": [
+      "outputs/hpc-submissions/source138-context-restore-20261023/independent-verification.json:stdout:$[31].path"
+    ],
+    "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-39/prepared.pt": [
+      "outputs/hpc-submissions/source138-context-restore-20261023/independent-verification.json:stdout:$[32].path"
+    ],
+    "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-40/prepared.pt": [
+      "outputs/hpc-submissions/source138-context-restore-20261023/independent-verification.json:stdout:$[34].path"
+    ],
+    "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-41/prepared.pt": [
+      "outputs/hpc-submissions/source138-context-restore-20261023/independent-verification.json:stdout:$[35].path"
+    ],
+    "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-42/prepared.pt": [
+      "outputs/hpc-submissions/source138-context-restore-20261023/independent-verification.json:stdout:$[36].path"
+    ],
+    "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-43/prepared.pt": [
+      "outputs/hpc-submissions/source138-context-restore-20261023/independent-verification.json:stdout:$[37].path"
+    ],
+    "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-44/prepared.pt": [
+      "outputs/hpc-submissions/source138-context-restore-20261023/independent-verification.json:stdout:$[38].path"
+    ],
+    "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-45/prepared.pt": [
+      "outputs/hpc-submissions/source138-context-restore-20261023/independent-verification.json:stdout:$[39].path"
+    ],
+    "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-46/prepared.pt": [
+      "outputs/hpc-submissions/source138-context-restore-20261023/independent-verification.json:stdout:$[40].path"
+    ],
+    "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-47/prepared.pt": [
+      "outputs/hpc-submissions/source138-context-restore-20261023/independent-verification.json:stdout:$[41].path"
+    ],
+    "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-48/prepared.pt": [
+      "outputs/hpc-submissions/source138-context-restore-20261023/independent-verification.json:stdout:$[42].path"
+    ],
+    "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-49/prepared.pt": [
+      "outputs/hpc-submissions/source138-context-restore-20261023/independent-verification.json:stdout:$[43].path"
+    ],
+    "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-50/prepared.pt": [
+      "outputs/hpc-submissions/source138-context-restore-20261023/independent-verification.json:stdout:$[45].path"
+    ],
+    "/work3/s234818/latentmol/runs/source094-large-triangle-first-suite/inventory/inventory.json": [
+      "outputs/hpc-results/storage-cleanup-20261023-001/completed-remote001/intent.json:$",
+      "outputs/hpc-submissions/source140-epoch40-to45-continuation-attempt001.json:$.readiness_artifacts"
+    ],
+    "/work3/s234818/latentmol/runs/source094-large-triangle-first-suite/receipts/inventory-intent.json": [
+      "outputs/hpc-results/storage-cleanup-20261023-001/completed-remote001/intent.json:$",
+      "outputs/hpc-submissions/source140-epoch40-to45-continuation-attempt001.json:$.readiness_artifacts"
+    ],
+    "/work3/s234818/latentmol/runs/source094-large-triangle-first-suite/receipts/inventory-receipt.json": [
+      "outputs/hpc-results/storage-cleanup-20261023-001/completed-remote001/intent.json:$",
+      "outputs/hpc-submissions/source140-epoch40-to45-continuation-attempt001.json:$.readiness_artifacts"
+    ],
+    "/work3/s234818/latentmol/runs/source094-large-triangle-first-suite/stage-completions/inventory.json": [
+      "outputs/hpc-results/storage-cleanup-20261023-001/completed-remote001/intent.json:$",
+      "outputs/hpc-submissions/source140-epoch40-to45-continuation-attempt001.json:$.readiness_artifacts"
+    ],
+    "/work3/s234818/latentmol/runs/source095-large-triangle-prepare-benchmark/receipts/prepare-intent.json": [
+      "outputs/hpc-results/storage-cleanup-20261023-001/completed-remote001/intent.json:$",
+      "outputs/hpc-submissions/source140-epoch40-to45-continuation-attempt001.json:$.readiness_artifacts"
+    ],
+    "/work3/s234818/latentmol/runs/source095-large-triangle-prepare-benchmark/receipts/prepare-receipt.json": [
+      "outputs/hpc-results/storage-cleanup-20261023-001/completed-remote001/intent.json:$",
+      "outputs/hpc-submissions/source140-epoch40-to45-continuation-attempt001.json:$.readiness_artifacts"
+    ],
+    "/work3/s234818/latentmol/runs/source095-large-triangle-prepare-benchmark/stage-completions/prepare.json": [
+      "outputs/hpc-results/storage-cleanup-20261023-001/completed-remote001/intent.json:$",
+      "outputs/hpc-submissions/source140-epoch40-to45-continuation-attempt001.json:$.readiness_artifacts"
+    ],
+    "/work3/s234818/latentmol/runs/source098-large-triangle-evaluator-recovery/benchmark/passed.json": [
+      "outputs/hpc-results/storage-cleanup-20261023-001/completed-remote001/intent.json:$",
+      "outputs/hpc-submissions/source140-epoch40-to45-continuation-attempt001.json:$.readiness_artifacts"
+    ],
+    "/work3/s234818/latentmol/runs/source121a002-chemistry-16core-24h-attempt002/variants/r2_async_w12_m128_h24/segment-001-completion.json": [
+      "outputs/hpc-submissions/source140-epoch40-to45-continuation-attempt001.json:$.starting_checkpoint.completion"
+    ],
+    "/work3/s234818/latentmol/runs/source121a002-chemistry-16core-24h-attempt002/variants/r2_async_w12_m128_h24/segments/001/20261018T175254Z_chemistry-train_89b58520/epoch_0036.pt": [
+      "outputs/hpc-results/storage-cleanup-20261023-001/completed-remote001/intent.json:$",
+      "outputs/hpc-results/source140-epoch40-to45-continuation-attempt001/preflight001.json:$",
+      "outputs/hpc-submissions/source140-epoch40-to45-continuation-attempt001.json:$.starting_checkpoint.path",
+      "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source138-epoch36-embedding-comparison-attempt006\\source138-epoch36-embedding-comparison-attempt006.tar.gz!configs/epoch36_embedding_comparison.json:$.vae.path",
+      "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source137-epoch36-boltz-embedding-bridge-attempt002\\source137-epoch36-boltz-embedding-bridge-attempt002.tar.gz!configs/epoch36_boltz_embedding_bridge.json:$.vae.path",
+      "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source139-epoch36-embedding-gradient-diagnostic-attempt001\\source139-epoch36-embedding-gradient-diagnostic-attempt001.tar.gz!configs/epoch36_embedding_gradient_diagnostic.json:$.vae.path"
+    ],
+    "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/after-cpu-decision.json": [
+      "outputs/hpc-results/storage-cleanup-20261023-001/completed-remote001/intent.json:$",
+      "outputs/hpc-results/source140-epoch40-to45-continuation-attempt001/preflight001.json:$",
+      "outputs/hpc-submissions/source140-epoch40-to45-continuation-attempt001.json:$.valid_reference_adoption.artifacts"
+    ],
+    "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/allocations/20261022T102132Z_guarded-chemistry-cpu_b50fa68e/run.json": [
+      "outputs/hpc-results/storage-cleanup-20261023-001/completed-remote001/intent.json:$",
+      "outputs/hpc-results/source140-epoch40-to45-continuation-attempt001/preflight001.json:$",
+      "outputs/hpc-submissions/source140-epoch40-to45-continuation-attempt001.json:$.valid_reference_adoption.artifacts"
+    ],
+    "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/allocations/20261022T102658Z_independent-valid-self-test_c80f275d/run.json": [
+      "outputs/hpc-results/storage-cleanup-20261023-001/completed-remote001/intent.json:$",
+      "outputs/hpc-results/source140-epoch40-to45-continuation-attempt001/preflight001.json:$",
+      "outputs/hpc-submissions/source140-epoch40-to45-continuation-attempt001.json:$.valid_reference_adoption.artifacts"
+    ],
+    "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/benchmark_gate.json": [
+      "outputs/hpc-results/storage-cleanup-20261023-001/completed-remote001/intent.json:$",
+      "outputs/hpc-results/source140-epoch40-to45-continuation-attempt001/preflight001.json:$",
+      "outputs/hpc-submissions/source140-epoch40-to45-continuation-attempt001.json:$.valid_reference_adoption.artifacts"
+    ],
+    "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/cpu_gate.json": [
+      "outputs/hpc-results/storage-cleanup-20261023-001/completed-remote001/intent.json:$",
+      "outputs/hpc-results/source140-epoch40-to45-continuation-attempt001/preflight001.json:$",
+      "outputs/hpc-submissions/source140-epoch40-to45-continuation-attempt001.json:$.valid_reference_adoption.artifacts"
+    ],
+    "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/early-health-baseline.json": [
+      "outputs/hpc-results/storage-cleanup-20261023-001/completed-remote001/intent.json:$",
+      "outputs/hpc-results/source140-epoch40-to45-continuation-attempt001/preflight001.json:$",
+      "outputs/hpc-submissions/source140-epoch40-to45-continuation-attempt001.json:$.valid_reference_adoption.artifacts"
+    ],
+    "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/failure_readiness.json": [
+      "outputs/hpc-results/storage-cleanup-20261023-001/completed-remote001/intent.json:$",
+      "outputs/hpc-results/source140-epoch40-to45-continuation-attempt001/preflight001.json:$",
+      "outputs/hpc-submissions/source140-epoch40-to45-continuation-attempt001.json:$.valid_reference_adoption.artifacts"
+    ],
+    "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/guarded-cpu-pytest.xml": [
+      "outputs/hpc-results/storage-cleanup-20261023-001/completed-remote001/intent.json:$",
+      "outputs/hpc-results/source140-epoch40-to45-continuation-attempt001/preflight001.json:$",
+      "outputs/hpc-submissions/source140-epoch40-to45-continuation-attempt001.json:$.valid_reference_adoption.artifacts"
+    ],
+    "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/independent-self-cuda-pytest.xml": [
+      "outputs/hpc-results/storage-cleanup-20261023-001/completed-remote001/intent.json:$",
+      "outputs/hpc-results/source140-epoch40-to45-continuation-attempt001/preflight001.json:$",
+      "outputs/hpc-submissions/source140-epoch40-to45-continuation-attempt001.json:$.valid_reference_adoption.artifacts"
+    ],
+    "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/receipts/after-cpu-intent.json": [
+      "outputs/hpc-results/storage-cleanup-20261023-001/completed-remote001/intent.json:$",
+      "outputs/hpc-results/source140-epoch40-to45-continuation-attempt001/preflight001.json:$",
+      "outputs/hpc-submissions/source140-epoch40-to45-continuation-attempt001.json:$.valid_reference_adoption.artifacts"
+    ],
+    "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/receipts/after-cpu-receipt.json": [
+      "outputs/hpc-results/storage-cleanup-20261023-001/completed-remote001/intent.json:$",
+      "outputs/hpc-results/source140-epoch40-to45-continuation-attempt001/preflight001.json:$",
+      "outputs/hpc-submissions/source140-epoch40-to45-continuation-attempt001.json:$.valid_reference_adoption.artifacts"
+    ],
+    "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/receipts/cpu-intent.json": [
+      "outputs/hpc-results/storage-cleanup-20261023-001/completed-remote001/intent.json:$",
+      "outputs/hpc-results/source140-epoch40-to45-continuation-attempt001/preflight001.json:$",
+      "outputs/hpc-submissions/source140-epoch40-to45-continuation-attempt001.json:$.valid_reference_adoption.artifacts"
+    ],
+    "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/receipts/cpu-receipt.json": [
+      "outputs/hpc-results/storage-cleanup-20261023-001/completed-remote001/intent.json:$",
+      "outputs/hpc-results/source140-epoch40-to45-continuation-attempt001/preflight001.json:$",
+      "outputs/hpc-submissions/source140-epoch40-to45-continuation-attempt001.json:$.valid_reference_adoption.artifacts"
+    ],
+    "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/receipts/independent-self-test-intent.json": [
+      "outputs/hpc-results/storage-cleanup-20261023-001/completed-remote001/intent.json:$",
+      "outputs/hpc-results/source140-epoch40-to45-continuation-attempt001/preflight001.json:$",
+      "outputs/hpc-submissions/source140-epoch40-to45-continuation-attempt001.json:$.valid_reference_adoption.artifacts"
+    ],
+    "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/receipts/independent-self-test-receipt.json": [
+      "outputs/hpc-results/storage-cleanup-20261023-001/completed-remote001/intent.json:$",
+      "outputs/hpc-results/source140-epoch40-to45-continuation-attempt001/preflight001.json:$",
+      "outputs/hpc-submissions/source140-epoch40-to45-continuation-attempt001.json:$.valid_reference_adoption.artifacts"
+    ],
+    "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/repair_profile.json": [
+      "outputs/hpc-results/storage-cleanup-20261023-001/completed-remote001/intent.json:$",
+      "outputs/hpc-results/source140-epoch40-to45-continuation-attempt001/preflight001.json:$",
+      "outputs/hpc-submissions/source140-epoch40-to45-continuation-attempt001.json:$.valid_reference_adoption.artifacts"
+    ],
+    "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/stability/20261022T105758Z_guarded-chemistry-stability_ddb64372/run.json": [
+      "outputs/hpc-results/storage-cleanup-20261023-001/completed-remote001/intent.json:$",
+      "outputs/hpc-results/source140-epoch40-to45-continuation-attempt001/preflight001.json:$",
+      "outputs/hpc-submissions/source140-epoch40-to45-continuation-attempt001.json:$.valid_reference_adoption.artifacts"
+    ],
+    "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/stability_gate.json": [
+      "outputs/hpc-results/storage-cleanup-20261023-001/completed-remote001/intent.json:$",
+      "outputs/hpc-results/source140-epoch40-to45-continuation-attempt001/preflight001.json:$",
+      "outputs/hpc-submissions/source140-epoch40-to45-continuation-attempt001.json:$.valid_reference_adoption.artifacts"
+    ],
+    "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/training_composition.json": [
+      "outputs/hpc-results/storage-cleanup-20261023-001/completed-remote001/intent.json:$",
+      "outputs/hpc-results/source140-epoch40-to45-continuation-attempt001/preflight001.json:$",
+      "outputs/hpc-submissions/source140-epoch40-to45-continuation-attempt001.json:$.valid_reference_adoption.artifacts"
+    ],
+    "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/valid_reference_probe.json": [
+      "outputs/hpc-results/storage-cleanup-20261023-001/completed-remote001/intent.json:$",
+      "outputs/hpc-results/source140-epoch40-to45-continuation-attempt001/preflight001.json:$",
+      "outputs/hpc-submissions/source140-epoch40-to45-continuation-attempt001.json:$.valid_reference_adoption.artifacts"
+    ],
+    "/work3/s234818/latentmol/runs/source135-epoch36-valid-reference-attempt001/valid_reference_probe/20261022T103244Z_chemistry-valid-reference-probe_609f2c03/run.json": [
+      "outputs/hpc-results/storage-cleanup-20261023-001/completed-remote001/intent.json:$",
+      "outputs/hpc-results/source140-epoch40-to45-continuation-attempt001/preflight001.json:$",
+      "outputs/hpc-submissions/source140-epoch40-to45-continuation-attempt001.json:$.valid_reference_adoption.artifacts"
+    ],
+    "/work3/s234818/latentmol/runs/source137-epoch36-boltz-embedding-bridge-attempt002/gpu/fit/best-bridge.pt": [
+      "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source138-epoch36-embedding-comparison-attempt006\\source138-epoch36-embedding-comparison-attempt006.tar.gz!configs/epoch36_embedding_comparison.json:$.bridge.path",
+      "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source139-epoch36-embedding-gradient-diagnostic-attempt001\\source139-epoch36-embedding-gradient-diagnostic-attempt001.tar.gz!configs/epoch36_embedding_gradient_diagnostic.json:$.bridge.path"
+    ],
+    "/work3/s234818/latentmol/runs/source137-epoch36-boltz-embedding-bridge-attempt002/gpu/paired-data/manifest.json": [
+      "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source138-epoch36-embedding-comparison-attempt006\\source138-epoch36-embedding-comparison-attempt006.tar.gz!configs/epoch36_embedding_comparison.json:$.start_data_manifest.path",
+      "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source139-epoch36-embedding-gradient-diagnostic-attempt001\\source139-epoch36-embedding-gradient-diagnostic-attempt001.tar.gz!configs/epoch36_embedding_gradient_diagnostic.json:$.start_data_manifest.path"
+    ],
+    "/work3/s234818/latentmol/runs/source137-epoch36-boltz-embedding-bridge-attempt002/gpu/paired-data/samples.pt": [
+      "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source138-epoch36-embedding-comparison-attempt006\\source138-epoch36-embedding-comparison-attempt006.tar.gz!configs/epoch36_embedding_comparison.json:$.start_samples.path",
+      "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source139-epoch36-embedding-gradient-diagnostic-attempt001\\source139-epoch36-embedding-gradient-diagnostic-attempt001.tar.gz!configs/epoch36_embedding_gradient_diagnostic.json:$.start_samples.path"
+    ],
+    "/work3/s234818/latentmol/runs/source138-epoch36-embedding-comparison-attempt003/cpu/starts.pt": [
+      "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source138-epoch36-embedding-comparison-attempt006\\source138-epoch36-embedding-comparison-attempt006.tar.gz!configs/epoch36_embedding_comparison.json:$.precision_correction.parent_starts.path",
+      "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source139-epoch36-embedding-gradient-diagnostic-attempt001\\source139-epoch36-embedding-gradient-diagnostic-attempt001.tar.gz!configs/epoch36_embedding_gradient_diagnostic.json:$.diagnostic_parent_starts.path"
+    ],
+    "/work3/s234818/latentmol/runs/source138-epoch36-embedding-comparison-attempt003/gpu/case-003/relaxed-start-gate.json": [
+      "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source139-epoch36-embedding-gradient-diagnostic-attempt001\\source139-epoch36-embedding-gradient-diagnostic-attempt001.tar.gz!configs/epoch36_embedding_gradient_diagnostic.json:$.diagnostic_parent_gate.path"
+    ],
+    "/work3/s234818/latentmol/runs/source138-vae-cli-startup-fix-attempt001/bounded-branch-completion.json": [
+      "outputs/hpc-results/source140-epoch40-to45-continuation-attempt001/preflight001.json:$",
+      "outputs/hpc-submissions/source140-epoch40-to45-continuation-attempt001.json:$.epoch45_extension.branch"
+    ],
+    "/work3/s234818/latentmol/runs/source138-vae-cli-startup-fix-attempt001/segment-004-completion.json": [
+      "outputs/hpc-results/source140-epoch40-to45-continuation-attempt001/preflight001.json:$",
+      "outputs/hpc-submissions/source140-epoch40-to45-continuation-attempt001.json:$.epoch45_extension.completion"
+    ],
+    "/work3/s234818/latentmol/runs/source138-vae-cli-startup-fix-attempt001/segments/004/20261026T230230Z_chemistry-train_e9f28b40/epoch_0040.pt": [
+      "outputs/hpc-results/source140-epoch40-to45-continuation-attempt001/preflight001.json:$",
+      "outputs/hpc-submissions/source140-epoch40-to45-continuation-attempt001.json:$.epoch45_extension.checkpoint"
+    ],
+    "/work3/s234818/latentmol/runs/source139-epoch36-embedding-gradient-diagnostic-attempt001/gpu/diagnostic.json": [
+      "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source138-epoch36-embedding-comparison-attempt006\\source138-epoch36-embedding-comparison-attempt006.tar.gz!configs/epoch36_embedding_comparison.json:$.precision_correction.diagnostic.path"
+    ],
+    "/work3/s234818/latentmol/runs/source139-epoch36-embedding-gradient-diagnostic-attempt001/gpu/result.json": [
+      "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source138-epoch36-embedding-comparison-attempt006\\source138-epoch36-embedding-comparison-attempt006.tar.gz!configs/epoch36_embedding_comparison.json:$.precision_correction.diagnostic_result.path"
+    ],
+    "/work3/s234818/latentmol/submissions/source094-large-triangle-first-suite/bindings.json": [
+      "outputs/hpc-results/storage-cleanup-20261023-001/completed-remote001/intent.json:$",
+      "outputs/hpc-submissions/source140-epoch40-to45-continuation-attempt001.json:$.readiness_artifacts"
+    ],
+    "/work3/s234818/latentmol/submissions/source095-large-triangle-prepare-benchmark/bindings.json": [
+      "outputs/hpc-results/storage-cleanup-20261023-001/completed-remote001/intent.json:$",
+      "outputs/hpc-submissions/source140-epoch40-to45-continuation-attempt001.json:$.readiness_artifacts"
+    ],
+    "/work3/s234818/latentmol/submissions/source098-large-triangle-evaluator-recovery/bindings.json": [
+      "outputs/hpc-results/storage-cleanup-20261023-001/completed-remote001/intent.json:$",
+      "outputs/hpc-submissions/source140-epoch40-to45-continuation-attempt001.json:$.readiness_artifacts"
+    ],
+    "/work3/s234818/latentmol/submissions/source104-chemistry-continuation-attempt005/parent-config.json": [
+      "outputs/hpc-submissions/source140-epoch40-to45-continuation-attempt001.json:$.config"
+    ],
+    "/work3/s234818/latentmol/submissions/source104-chemistry-continuation-attempt005/parent-latest_epoch.json": [
+      "outputs/hpc-results/storage-cleanup-20261023-001/completed-remote001/intent.json:$",
+      "outputs/hpc-submissions/source140-epoch40-to45-continuation-attempt001.json:$.readiness_artifacts"
+    ],
+    "/work3/s234818/latentmol/submissions/source104-chemistry-continuation-attempt005/parent-metrics.jsonl": [
+      "outputs/hpc-results/storage-cleanup-20261023-001/completed-remote001/intent.json:$",
+      "outputs/hpc-submissions/source140-epoch40-to45-continuation-attempt001.json:$.readiness_artifacts"
+    ],
+    "/work3/s234818/latentmol/submissions/source104-chemistry-continuation-attempt005/parent-run.json": [
+      "outputs/hpc-submissions/source140-epoch40-to45-continuation-attempt001.json:$.parent_run_record"
+    ],
+    "/work3/s234818/latentmol/submissions/source104-chemistry-continuation-attempt005/parent.pt": [
+      "outputs/hpc-results/storage-cleanup-20261023-001/completed-remote001/intent.json:$",
+      "outputs/hpc-results/source140-epoch40-to45-continuation-attempt001/preflight001.json:$",
+      "outputs/hpc-submissions/source140-epoch40-to45-continuation-attempt001.json:$.parent_checkpoint"
+    ],
+    "/work3/s234818/latentmol/submissions/source121a002-chemistry-16core-24h-attempt002/plans/r2_async_w12_m128_h24.json": [
+      "outputs/hpc-submissions/source140-epoch40-to45-continuation-attempt001.json:$.starting_checkpoint.source_plan"
+    ],
+    "/work3/s234818/latentmol/submissions/source134-bond-weighted-chemistry-attempt002/source133-saved-outcomes.json": [
+      "outputs/hpc-results/storage-cleanup-20261023-001/completed-remote001/intent.json:$",
+      "outputs/hpc-submissions/source140-epoch40-to45-continuation-attempt001.json:$.readiness_artifacts",
+      "outputs/hpc-submissions/source140-epoch40-to45-continuation-attempt001.json:$.superseded_failed_candidate.evidence"
+    ],
+    "/work3/s234818/latentmol/submissions/source134-bond-weighted-chemistry-attempt002/source134-attempt001-cpu-failure.json": [
+      "outputs/hpc-results/storage-cleanup-20261023-001/completed-remote001/intent.json:$",
+      "outputs/hpc-submissions/source140-epoch40-to45-continuation-attempt001.json:$.readiness_artifacts",
+      "outputs/hpc-submissions/source140-epoch40-to45-continuation-attempt001.json:$.superseded_failed_fixture_attempt.evidence"
+    ],
+    "/work3/s234818/latentmol/submissions/source135-epoch36-valid-reference-attempt001/saved-mechanism-review.json": [
+      "outputs/hpc-results/storage-cleanup-20261023-001/completed-remote001/intent.json:$",
+      "outputs/hpc-submissions/source140-epoch40-to45-continuation-attempt001.json:$.readiness_artifacts",
+      "outputs/hpc-submissions/source140-epoch40-to45-continuation-attempt001.json:$.valid_reference_mechanism_evidence.saved_artifacts[1].remote"
+    ],
+    "/work3/s234818/latentmol/submissions/source135-epoch36-valid-reference-attempt001/source127-terminal-evidence.json": [
+      "outputs/hpc-submissions/source140-epoch40-to45-continuation-attempt001.json:$.stopped_predecessor.terminal_evidence"
+    ],
+    "/work3/s234818/latentmol/submissions/source135-epoch36-valid-reference-attempt001/source134-terminal-evidence.json": [
+      "outputs/hpc-results/storage-cleanup-20261023-001/completed-remote001/intent.json:$",
+      "outputs/hpc-submissions/source140-epoch40-to45-continuation-attempt001.json:$.readiness_artifacts",
+      "outputs/hpc-submissions/source140-epoch40-to45-continuation-attempt001.json:$.valid_reference_mechanism_evidence.saved_artifacts[0].remote"
+    ],
+    "/work3/s234818/latentmol/submissions/source135-epoch36-valid-reference-attempt001/source135-epoch36-valid-reference-attempt001.json": [
+      "outputs/hpc-results/storage-cleanup-20261023-001/completed-remote001/intent.json:$",
+      "outputs/hpc-results/source140-epoch40-to45-continuation-attempt001/preflight001.json:$",
+      "outputs/hpc-submissions/source140-epoch40-to45-continuation-attempt001.json:$.valid_reference_adoption.source_plan",
+      "outputs/hpc-submissions/source140-epoch40-to45-continuation-attempt001.json:$.valid_reference_adoption.artifacts"
+    ],
+    "/work3/s234818/latentmol/submissions/source136-valid-reference-epoch40-continuation-attempt001/source136-valid-reference-epoch40-continuation-attempt001.json": [
+      "outputs/hpc-results/storage-cleanup-20261023-001/completed-remote001/intent.json:$"
+    ],
+    "/work3/s234818/latentmol/submissions/source138-vae-cli-startup-fix-attempt001/source138-vae-cli-startup-fix-attempt001.json": [
+      "outputs/hpc-submissions/source140-epoch40-to45-continuation-attempt001.json:$.epoch45_extension.source_plan"
+    ],
+    "/work3/s234818/latentmol/submissions/source140-epoch40-to45-continuation-attempt001/preflight001.json": [
+      "outputs/hpc-submissions/source140-epoch40-to45-continuation-attempt001-stage-and-queue-001-output.json:$[5].path"
+    ],
+    "/work3/s234818/latentmol/submissions/source140-epoch40-to45-continuation-attempt001/preparation.json": [
+      "outputs/hpc-submissions/source140-epoch40-to45-continuation-attempt001-stage-and-queue-001-output.json:$[2].path"
+    ],
+    "/work3/s234818/latentmol/submissions/source140-epoch40-to45-continuation-attempt001/source127-terminal-evidence.json": [
+      "outputs/hpc-submissions/source140-epoch40-to45-continuation-attempt001-stage-and-queue-001-output.json:$[4].path"
+    ],
+    "/work3/s234818/latentmol/submissions/source140-epoch40-to45-continuation-attempt001/source140-epoch40-to45-continuation-attempt001.json": [
+      "outputs/hpc-submissions/source140-epoch40-to45-continuation-attempt001-stage-and-queue-001-output.json:$[1].path"
+    ],
+    "/work3/s234818/latentmol/submissions/source140-epoch40-to45-continuation-attempt001/stage.py": [
+      "outputs/hpc-submissions/source140-epoch40-to45-continuation-attempt001-stage-and-queue-001-output.json:$[3].path"
+    ]
+  },
+  "protected_count": 136,
+  "protected_inputs_sha256": "3398df8a5bdbfa00803fa235db1e8f7c1ec41e0e138119696ec3c491cf713d69",
+  "protected_prefix_count": 17,
+  "remote_operations": false,
+  "sources": [
+    {
+      "bytes": 783328,
+      "local": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-results\\storage-cleanup-20261023-001\\completed-remote001\\intent.json",
+      "sha256": "95b8f10d057646a058fd78d5f1399167efd80d5f67efb14822efc54bc569b965"
+    },
+    {
+      "bytes": 9053,
+      "local": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-results\\source140-epoch40-to45-continuation-attempt001\\preflight001.json",
+      "sha256": "016f3c084acec79e84617801a04782f6e4f3ccd415ad3b8800bc75c6e39cf422"
+    },
+    {
+      "bytes": 2890,
+      "local": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source140-epoch40-to45-continuation-attempt001-preparation.json",
+      "sha256": "93819caa47b932e1970390eaf65d7ce713275d9c0536f85a1973d4557e5b69b9"
+    },
+    {
+      "bytes": 32696,
+      "local": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source140-epoch40-to45-continuation-attempt001.json",
+      "sha256": "934764491608b7f354bf5d47aec0f72f014a66d845f3c3ff76589d71c2ee3fb8"
+    },
+    {
+      "bytes": 7022,
+      "local": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source140-epoch40-to45-continuation-attempt001-stage-and-queue-001-output.json",
+      "sha256": "8a0dd3a1b113ddea62c948dd6155f8c80acd2b2b1979d4c07fb8ff7b24ee61eb"
+    },
+    {
+      "bytes": 2320208,
+      "local": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\source-releases\\source-140-epoch40-to45-continuation-attempt001.tar.gz",
+      "sha256": "3fd30b055b078a44c247779966e6c353cf6b66279b9740655e70294766c695f8"
+    },
+    {
+      "bytes": 881,
+      "local": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source138-epoch36-embedding-comparison-attempt006\\seal.json",
+      "sha256": "3f87194a8e305e83e32fa2462a0356741585b051d6ccd4e689d825c1bb791eaa"
+    },
+    {
+      "bytes": 1639499,
+      "local": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source138-epoch36-embedding-comparison-attempt006\\source138-epoch36-embedding-comparison-attempt006.tar.gz",
+      "sha256": "456c8cc8ae0fbc2d84dcdadddd7734f879cefc9db4204275b8bcd0525ec62acb"
+    },
+    {
+      "bytes": 819,
+      "local": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source137-epoch36-boltz-embedding-bridge-attempt002\\seal.json",
+      "sha256": "94ba80eced64038b1c6b7549ab71f0e6c20c35010831ed751f20fbe63a2fd56e"
+    },
+    {
+      "bytes": 1542210,
+      "local": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source137-epoch36-boltz-embedding-bridge-attempt002\\source137-epoch36-boltz-embedding-bridge-attempt002.tar.gz",
+      "sha256": "8209d548ec0420fce5a850bae4d1a900cfda6fee7d7c4672cec35e460dd08923"
+    },
+    {
+      "bytes": 924,
+      "local": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source139-epoch36-embedding-gradient-diagnostic-attempt001\\seal.json",
+      "sha256": "5297b8b62fb3d5f3735eca25e95ab5573323a7d1cae50a20f3449b88c9b1b92f"
+    },
+    {
+      "bytes": 1615076,
+      "local": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source139-epoch36-embedding-gradient-diagnostic-attempt001\\source139-epoch36-embedding-gradient-diagnostic-attempt001.tar.gz",
+      "sha256": "bd677171c8890c888191e1280ed62c8b84bb622d6b8e8b0f13cdbe5656ac8740"
+    },
+    {
+      "bytes": 9235,
+      "local": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\configs\\epoch36_embedding_comparison.json",
+      "matches_sealed_comparison006": true,
+      "sha256": "58b47026f175622992c8ea1e257e02d1836387c752aa024bb2fcc0201e886802"
+    },
+    {
+      "bytes": 14116,
+      "local": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source138-context-restore-20261023\\independent-verification.json",
+      "sha256": "8579cd9e41ad6a2695b05b210d8f213d7e71b44f7a07ff1598e518a978acf9d8"
+    }
+  ],
+  "version": "dbmol-safe-storage-protection-provenance-v1"
+}

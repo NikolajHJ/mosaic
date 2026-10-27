@@ -1,0 +1,5 @@
+{
+  "returncode": 0,
+  "stdout": "{\"candidate_allocated_bytes\": 44749824, \"candidate_files\": 1310, \"control\": \"/work3/s234818/latentmol/submissions/storage-cleanup-20261027-safe001/generated-cache-plan-receipts\", \"plan\": \"/work3/s234818/latentmol/submissions/storage-cleanup-20261027-safe001/generated-cache-plan.json\", \"plan_sha256\": \"95c5647607bcef456c3f3306fef433fdc8efd01887f0d31e3ad23157da016e5e\", \"status\": \"inventory_only_no_deletions\"}\n",
+  "stderr": "\nWhen connecting from _outside_ of DTU (and not using DTU-VPN) one is \nrequired to authenticate with a ssh-key + ssh-key-keyphrase + DTU-password.\n\nFrom inside of DTU (or connecting via DTU-VPN) one can also connect \nwith password or ssh-key.\n\nInfo page on SSH: https://www.hpc.dtu.dk/?page_id=4317\n\n---\nFor ThinLinc users: \nPlease make sure that your TL client is at least version 4.16 - else you \ncannot connect to this system!\n\nThis is not an error-message, it's just a way to give you some information. \nClick 'Close' to continue ...\n---\n\nInfo page on the system update 08/2024: https://www.hpc.dtu.dk/?page_id=5209\n\n---\n\n"
+}
