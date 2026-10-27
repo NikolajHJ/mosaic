@@ -43,3 +43,10 @@ Boltz/DBMol numerical correction is selected without the current raw FD reports.
 test_saved_gradient_forensics.py adds eight allocated CPU controls for exact component matching, softmax chain rules and negative recomposition controls. They are not native readiness tests and are never executed locally.
 
 Measurement07 adds14 local-logit controls,10 component-resolution controls, actual JAX adapter-entry coverage and strict dispatch-negative fixtures. The declared full seven-module suite is258 cases, pending allocated raw XML verification. No native pass follows from toys or preparation.
+
+
+`test_chemistry_endpoint_diagnostic.py` and `test_chemistry_endpoint_ops.py`
+add33 allocated controls for saved-gradient decomposition, frozen-input scope,
+exclusive evidence writes, declared resources and rejection of optimizer
+dispatch. Numerical fixtures run only on allocated HPC, not the laptop;
+actual native diagnostics are separate from these fixture outcomes.

@@ -1,0 +1,61 @@
+{
+  "status": "actual_stage_and_submissions_verified_not_CPU_pass",
+  "manifest_sha256": "c94314f0370e792f26ebd3958bc08b398b39cb525a995dcd65b063a74d120223",
+  "archive_sha256": "b4bb95a9d7e2370d03fb672fcae36a2d6c3621989b359d1f7b1f801963bbb38a",
+  "source_files": 10,
+  "external_sources": [
+    {
+      "files": 643,
+      "manifest_sha256": "da9db6821d26b884ca1749303fc8e0b0095bd9ee7cbd1b427cdcf1b22eec6562",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source"
+    },
+    {
+      "files": 34,
+      "manifest_sha256": "ab875927a328c34650d2e43baf6dfbe323e8f9bcf5600f39bac78f3ccdfb5d8c",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-release-05/source"
+    },
+    {
+      "files": 635,
+      "manifest_sha256": "c214bccf2c94ac6829996bc0ca7d6415d3c19549be4fe7f874cba2b433901cc6",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-release-03/source"
+    },
+    {
+      "files": 30,
+      "manifest_sha256": "05e316a7b1bcceaf286b03231200a2d1f66e3f6a7ce927d4c1e73f08a24f86f9",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-release-02/source"
+    },
+    {
+      "files": 19,
+      "manifest_sha256": "f15443b51c5197b95205bf59c90e05192f9ceabb955e6006cccfbbdff257fc9b",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-release-09/source"
+    },
+    {
+      "files": 14,
+      "manifest_sha256": "c73796b041d8432ef1634e8c56920006170a094d3bdc74867c08f3b5415126d7",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-release-03/source"
+    }
+  ],
+  "protected_inputs": 3230,
+  "jobs": {
+    "cpu": "29830639",
+    "after-cpu": "29830640"
+  },
+  "CPU_latest_state": "RUN",
+  "GPU_pass": false,
+  "optimizer_submission": false,
+  "full_storage": {
+    "status": "passed",
+    "required_bytes": 50288442193,
+    "available_bytes": 51817618305,
+    "reserve_bytes": 4294967296,
+    "file_reserve": 100000,
+    "additional_complete_group_cap_bytes": 603979776,
+    "entire_current_tree_stale_charge_bytes": 1106911
+  },
+  "local_scope": "stdlib AST/byte/JSON only; all numerical work allocated",
+  "settings_changed": false,
+  "saved_results_changed": false,
+  "stage_receipt_sha256": "ed021af9e4158ccdfa8cc072f085f142838928df6d938621464070f67079e579",
+  "observation_sha256": "484c0319214093f9839ede2082e78e265dfe95208d64e1be146a03b0d3cdd983",
+  "prior_local_audit_error": "Windows Path used for a POSIX expected argv string; corrected only local comparison, no remote change"
+}

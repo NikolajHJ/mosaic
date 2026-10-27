@@ -1,0 +1,45 @@
+#!/bin/bash
+set -euo pipefail
+[[ $# == 3 && -n "${LSB_JOBID:-}" ]]
+source_root=$1
+pin=$2
+phase=$3
+module load python3/3.12.11
+python=/work3/s234818/mosaic/envs/protenix-tiny/bin/python
+export PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+"$python" - "$source_root" "$pin" <<'VERIFY'
+import hashlib,json,sys
+from pathlib import Path,PurePosixPath
+def verify(source,pin,count=None):
+ source=Path(source);assert not source.is_symlink()
+ raw=(source/'source_manifest.json').read_bytes();assert hashlib.sha256(raw).hexdigest()==pin
+ m=json.loads(raw);assert count is None or len(m['files'])==count
+ assert {p.relative_to(source).as_posix() for p in source.rglob('*') if p.is_file() or p.is_symlink()}==set(m['files'])|{'source_manifest.json'}
+ for name,digest in m['files'].items():
+  rel=PurePosixPath(name);assert not rel.is_absolute() and '..' not in rel.parts and '\\' not in name
+  path=source/name;assert path.is_file() and not path.is_symlink()
+  with path.open('rb') as stream:assert hashlib.file_digest(stream,'sha256').hexdigest()==digest
+ return m
+m=verify(sys.argv[1],sys.argv[2])
+for row in m['parent_sources']:verify(row['path'],row['manifest_sha256'],row['files'])
+VERIFY
+base=/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01
+science="$base/protenix-extended-release-03/source"
+export OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 MKL_NUM_THREADS=4 NUMEXPR_NUM_THREADS=4
+export HF_HUB_OFFLINE=1 HF_HUB_DISABLE_TELEMETRY=1
+export JAX_ENABLE_X64=0 JAX_PLATFORMS=cpu
+if [[ "$phase" == gpu-* ]]; then
+ [[ "$LSB_QUEUE" == gpul40s ]]
+ module load cuda/12.9.1 cudnn/v9.13.0.50-prod-cuda-12.X
+ if [[ "$phase" == gpu-protenix ]]; then
+  export JAX_PLATFORMS=cuda,cpu XLA_PYTHON_CLIENT_PREALLOCATE=false
+  export XLA_FLAGS=--xla_gpu_autotune_level=0
+ fi
+else
+ [[ "$LSB_QUEUE" == hpc ]]
+ export CUDA_VISIBLE_DEVICES=''
+fi
+source "$science/scripts/hpc/boltz_node_tmpdir.sh"
+export PYTHONPATH="$source_root/scripts"
+cd "$source_root"
+"$python" -u "$source_root/scripts/chemistry_endpoint_ops.py" --pin "$pin" --phase "$phase"

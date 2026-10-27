@@ -1,0 +1,54 @@
+{
+  "cpu_counts": {
+    "test_chemistry_endpoint_diagnostic.ChemistryEndpointDiagnosticTests": 16,
+    "test_chemistry_endpoint_ops.ChemistryEndpointOpsTests": 16
+  },
+  "diagnostic_only": true,
+  "files": {
+    "README.md": "22b4f0ce455361e932b1e48d11efc5c0af87430b99b2a2d52f03b5eb4f1f2a01",
+    "plan.json": "f8ae251451c370d1492bc2305aba482482c2cf7c2ad2cfd3ebf4d31adb7ba3e4",
+    "protocol.md": "1c9c7962ae74bcf097616d0a29f35282d1a44aa841ea49343ace6c6e8be8aa4e",
+    "scripts/README.md": "52c1a74dffbe807aaa2d94e724c271ca8b0312130d7f9d5e8fbf3dfb9b1774a3",
+    "scripts/chemistry_endpoint_diagnostic.py": "66ca35491399168081ab31aa19c7859f42f385deb54e99e3cea3aad00dad48d7",
+    "scripts/chemistry_endpoint_ops.py": "ca25dd19f8097140065f4495fa933db9a735094d16c7bde9bb9bae2e016cf3d3",
+    "scripts/chemistry_endpoint_stage.lsf": "f25945893e759ff447835523ec88517f5609f0cc97ab5fe51002227624e8cab7",
+    "tests/README.md": "46467ff2d24c97087ee85bafa9cfe51dcd1c3c431304210cfb74659bfedd02a8",
+    "tests/test_chemistry_endpoint_diagnostic.py": "9d8cded4b7a116c89dfc3d31f0561f90e97a1960097e41f4c6100629c4f9f23d",
+    "tests/test_chemistry_endpoint_ops.py": "5f7e26e0ba13b9af55f2752f07670380a7a14a5f80cafd11f23fffb875da46bb"
+  },
+  "optimizer_updates": 0,
+  "original_results_changed": false,
+  "parent_sources": [
+    {
+      "files": 643,
+      "manifest_sha256": "da9db6821d26b884ca1749303fc8e0b0095bd9ee7cbd1b427cdcf1b22eec6562",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source"
+    },
+    {
+      "files": 34,
+      "manifest_sha256": "ab875927a328c34650d2e43baf6dfbe323e8f9bcf5600f39bac78f3ccdfb5d8c",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-release-05/source"
+    },
+    {
+      "files": 635,
+      "manifest_sha256": "c214bccf2c94ac6829996bc0ca7d6415d3c19549be4fe7f874cba2b433901cc6",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-release-03/source"
+    },
+    {
+      "files": 30,
+      "manifest_sha256": "05e316a7b1bcceaf286b03231200a2d1f66e3f6a7ce927d4c1e73f08a24f86f9",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-release-02/source"
+    },
+    {
+      "files": 19,
+      "manifest_sha256": "f15443b51c5197b95205bf59c90e05192f9ceabb955e6006cccfbbdff257fc9b",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-release-09/source"
+    },
+    {
+      "files": 14,
+      "manifest_sha256": "c73796b041d8432ef1634e8c56920006170a094d3bdc74867c08f3b5415126d7",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-release-03/source"
+    }
+  ],
+  "version": "chemistry-endpoint-diagnostic-source-v1"
+}

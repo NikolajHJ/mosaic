@@ -1,0 +1,43 @@
+{
+  "status": "original_overall_CPU_failure_preserved",
+  "job_id": "29830639",
+  "raw_fixture_cases_passed": 32,
+  "raw_fails_errors_skips": 0,
+  "actual_module_counts": {
+    "tests.test_chemistry_endpoint_ops.ChemistryEndpointOpsTests": 16,
+    "tests.test_chemistry_endpoint_diagnostic.ChemistryEndpointDiagnosticTests": 16
+  },
+  "overall_terminal": "EXIT1",
+  "reason": "Wrong declared module-name prefix rejected by metadata guard after fixtures passed",
+  "proofs": [
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-01/cpu/submission.json",
+      "bytes": 1180,
+      "sha256": "2c3860f17e1fe9e85586c36bd050528cdb97308495a9cfb0bd67bbc59aeef787"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-01/cpu/stdout.29830639.log",
+      "bytes": 2004,
+      "sha256": "b06721b211199106c810eb566212bc1c4972404130f79cb03ef77e54bccf13cf"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-01/cpu/stderr.29830639.log",
+      "bytes": 1617,
+      "sha256": "b3a8e94d1c4fd13961603a4d15a7cbf7686cc4a01a58a3e3d4e6156b42ac87e9"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-01/cpu/payload/tests.xml",
+      "bytes": 4943,
+      "sha256": "a7ac76cc66f2b44b623b03bf28e307bdd537b6eede3dc58d1dc29cf1991dd764"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-01/cpu/payload/tests.log",
+      "bytes": 99,
+      "sha256": "ed22746f3461d980805cabf18f13f223d39f7f30ccdef814f28803def533baaf"
+    }
+  ],
+  "saved_analysis_completed": false,
+  "native_GPU_jobs_submitted": false,
+  "original_scientific_results_changed": false,
+  "callback_terminal_evidence_scope": "Remote retry input collector authenticated same-job EXIT1 and exact two-job map; raw callback LSF bytes remain remote"
+}

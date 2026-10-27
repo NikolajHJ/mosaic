@@ -8310,3 +8310,84 @@ Exact observations/proofs: endpoint-qualification/runs/20261027-continuation-
 measurement-09/status-20261027T113237Z.json and results/hpc/20261027-all-run-
 status/113234Z/verification.json. Chemistry03/04 current campaign records now
 reflect these terminal outcomes; immutable sources/results stay unchanged.
+
+
+## 2026-10-27 — Separate chemistry endpoint recovery investigation authorized
+
+The user authorized investigation/correction of both chemistry gradient blockers
+and submission of continuations only after all checks pass, preserving settings
+and saved studies. New chemistry-endpoint-recovery01 is diagnostic-only: original
+Pro03 first10k and failed boundary29821558, Bol04 first10k/failed terminal29825209
+are authenticated with3230exact protected file bindings. CPU saved-probe
+decomposition precedes two separate native L40S diagnostics; no optimizer or
+original-recertification dispatch branch exists. Original scales plus fixed
+supplementary diagnostic-only0.0003/0.0001 are declared before model evaluation.
+Pro compares original/accelerated chemistry at exactly the same fixed teacher;
+Bol measures both actual failed native directions. All originals/futures and
+4GiB/100kreserves retained, newgroup576MiB plus entire newtree stalecharge.
+
+Prepared10files/11archive members, manifest
+c94314f0370e792f26ebd3958bc08b398b39cb525a995dcd65b063a74d120223,
+archive169387bytes SHAb4bb95a9d7e2370d03fb672fcae36a2d6c3621989b359d1f7b1f801963bbb38a.
+LocalstdlibAST/byte/safe-member audit only;32allocated fixtures/startups/native
+findings are not yet established. No scientific settings/results/paused monitor
+change. Newrun record is endpoint-qualification/runs/20261027-chemistry-endpoint-
+recovery-01. No numerical work ran locally.
+
+
+### Chemistry diagnostic01 actual allocated CPU submission
+
+At27October12:56:06UTC source10files was staged/authenticated read-only;
+whole current futures plus complete576MiB diagnostic cap passed
+50,288,442,193required/51,817,618,305available bytes/4GiB/100000files,
+entire newtree conservatively subtracted. CPU29830639/ownendedcallback
+29830640 actuallysubmitted; firstCPU RUN/callbackPEND.32controls, startup,
+saveddecomposition and native findings not yet established. Callback may
+submit only two separate diagnosticGPU jobs after every allocatedCPU proof;
+there is no optimizer branch. Exact stage/submissions/resources independently
+byte/JSON audited. Original3230saved/proof bindings/settings/pausedmonitor intact.
+
+
+### Chemistry01 failed attribution guard preserved; immutable02 prepared
+
+CPU29830639 actualEXIT1 despite32actual fixture passes/zero fail/error/skip
+and all3actual startups. Declared classnames omitted actual `tests.` prefix;
+certifier correctlyblocked savedanalysis/native dispatch. Callback29830640
+actualEXIT1/noGPU authenticated before retry. Originalsource01 staysfailed.
+New02 fixes only generated attribution/ownmetadata, adds one sealed-manifest
+regression, charges entire failed01metadata/source bytes, and repeats33cases.
+Numerical diagnostic bytes equal01 after only outputroot reversal. Newsource
+10files manifestd3d8678542db3cf6100006f8f9dbd3ce761f169bd904ddcae3d4525a53252f51,
+archive170677bytes SHAa3d2448a4ab199e4cabeb65610900c72245b18fbd6f7ad88fc563278eeb44ce6.
+3251protected original/failedproof bindings authenticated. No new pass or
+submission from localAST/byte preparation; no scientific/results/gate change.
+
+
+### Chemistry diagnostic02 actual revalidation submission
+
+At2026-10-27T13:04:50.843473+00:00 new02CPU29830696/owncallback29830697 actually
+submitted after fresh whole storage passed50288442193required/51814937535available
+bytes, unchanged4GiB/100000files/full576MiBdiagnostics and both failed01/new02
+entire current trees charged. LatestCPU RUN/callbackPEND,33actualcases and
+native diagnostics notyetverified; nooptimizerchild. Scope/settings/results/
+all original failures preserved, paused monitor unchanged.
+
+
+### Chemistry02 latest observation limited by SSH255 timeout
+
+Exact original01 CPU/LSF/rawXML audit confirms32actual fixture passes, nofail/
+error/skip, followed by the preserved overall attribution failure. Numerical
+diagnostic source02 remains exact01 except its outputroot; metadata-only
+class-prefix correction and33rd generated-manifest regression are declared.
+New02CPU29830696 was last actualRUN, owncallback29830697 PEND; latestsingle
+SSH attempt returned255connectiontimeout, so no later fullCPU33/native pass
+or actualGPU IDs are established. Do not duplicate callback/native/unknown
+markers. Existing callback may submit only two diagnostic jobs after full
+CPU/startup/saved-analysis/source/storage proofs; no optimizer branch.
+
+Full storage previouslypassed50,288,442,193required/51,814,937,535available
+bytes with all forecasts/reserves retained. Preserved3251saved/input/failure
+proof bindings, unchanged settings/results and paused monitor. No numerical
+fix or chemistry continuation is claimed. Next action after access recovers:
+inspect exact02jobs/assessments/rawXML/LSF, complete native diagnosis, then
+validate a demonstrated correction and separately guarded continuations.

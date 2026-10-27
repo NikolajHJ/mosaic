@@ -1,0 +1,37 @@
+{
+  "archive_bytes": 169387,
+  "archive_sha256": "b4bb95a9d7e2370d03fb672fcae36a2d6c3621989b359d1f7b1f801963bbb38a",
+  "callback_job": "29830640",
+  "cpu_cases": 32,
+  "cpu_counts": {
+    "test_chemistry_endpoint_diagnostic.ChemistryEndpointDiagnosticTests": 16,
+    "test_chemistry_endpoint_ops.ChemistryEndpointOpsTests": 16
+  },
+  "cpu_job": "29830639",
+  "files": 10,
+  "manifest_sha256": "c94314f0370e792f26ebd3958bc08b398b39cb525a995dcd65b063a74d120223",
+  "monitor_resumed": false,
+  "optimizer_jobs_submitted": false,
+  "plan_sha256": "f8ae251451c370d1492bc2305aba482482c2cf7c2ad2cfd3ebf4d31adb7ba3e4",
+  "protected_input_files": 3230,
+  "remote_source_staged": true,
+  "saved_results_changed": false,
+  "settings_changed": false,
+  "status": "failed_CPU_attribution_guard_after32_actual_fixture_passes_no_saved_analysis_or_GPU",
+  "full_storage": {
+    "status": "passed",
+    "required_bytes": 50288442193,
+    "available_bytes": 51817618305,
+    "reserve_bytes": 4294967296,
+    "file_reserve": 100000,
+    "additional_complete_group_cap_bytes": 603979776,
+    "entire_current_tree_stale_charge_bytes": 1106911
+  },
+  "stage_verification_sha256": "7e49ccd37ddf4c57c6753f3369b0cb2ec63b96b019a16da392c7cf290ba6af04",
+  "CPU_cases_actual": 32,
+  "CPU_fixture_failures": 0,
+  "CPU_raw_class_prefix": "tests.",
+  "CPU_guard_error": "Exact CPU counts/attribution required",
+  "callback_status": "EXIT1_authenticated_by_retry_input_collection",
+  "native_jobs_submitted": false
+}

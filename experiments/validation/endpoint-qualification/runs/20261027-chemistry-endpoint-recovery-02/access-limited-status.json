@@ -1,0 +1,28 @@
+{
+  "status": "latest_observation_inaccessible_no_later_job_state_established",
+  "receipt": {
+    "ended_utc": "2026-10-27T13:09:15.417371+00:00",
+    "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "program_sha256": "9dfd5e968ab829e12e38d89e03af254aecc3443c2bc896ab2f08ec7f098759e2",
+    "returncode": 255,
+    "started_utc": "2026-10-27T13:09:00.311353+00:00",
+    "status": "unknown_inspect_before_recovery"
+  },
+  "error": "SSH255 connection timeout",
+  "one_connection_attempt": true,
+  "retry_performed_after_inaccessible_attempt": false,
+  "last_verified_jobs": {
+    "cpu": "29830696",
+    "after-cpu": "29830697"
+  },
+  "last_verified_states": {
+    "29830696": "RUN",
+    "29830697": "PEND"
+  },
+  "CPU33_full_pass": false,
+  "CPU33_full_pass_scope": "not yet authenticated, not a claim of failure",
+  "native_submissions": "unknown_after_last_observation; read jobs/submission markers before any recovery",
+  "optimizer_continuations_submitted": false,
+  "original_saved_results_changed": false,
+  "monitor_resumed": false
+}

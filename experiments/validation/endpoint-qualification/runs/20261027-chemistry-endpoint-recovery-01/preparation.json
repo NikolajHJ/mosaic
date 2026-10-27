@@ -1,0 +1,14 @@
+{
+  "archive_bytes": 169387,
+  "archive_sha256": "b4bb95a9d7e2370d03fb672fcae36a2d6c3621989b359d1f7b1f801963bbb38a",
+  "cpu_cases": 32,
+  "cpu_counts": {
+    "test_chemistry_endpoint_diagnostic.ChemistryEndpointDiagnosticTests": 16,
+    "test_chemistry_endpoint_ops.ChemistryEndpointOpsTests": 16
+  },
+  "files": 10,
+  "manifest_sha256": "c94314f0370e792f26ebd3958bc08b398b39cb525a995dcd65b063a74d120223",
+  "plan_sha256": "f8ae251451c370d1492bc2305aba482482c2cf7c2ad2cfd3ebf4d31adb7ba3e4",
+  "protected_input_files": 3230,
+  "status": "prepared_not_validated"
+}

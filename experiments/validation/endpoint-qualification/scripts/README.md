@@ -81,3 +81,11 @@ CPU261/startup/callback passed; GPU29829934 PEND. Continuation08DBMol29829703
 PEND remainsauthoritative; no duplicate. Precision07CPU301/startup/callback
 passed; GPU29829894 PEND. No blockedoptimizer started. Scientific settings and
 saved results unchanged. Canonical continuation package/stage targetsONLY09.
+
+
+`chemistry_endpoint_diagnostic.py`, `chemistry_endpoint_ops.py` and
+`chemistry_endpoint_stage.lsf` own the separate fixed-input chemistry endpoint
+measurements. `manage_chemistry_endpoint.py` is their account-bound stdlib
+prepare/stage/observe operator. The immutable attempt and commands/resources
+are recorded under runs/20261027-chemistry-endpoint-recovery-02. This capsule
+never dispatches optimizer continuations or certifies an original failed run.

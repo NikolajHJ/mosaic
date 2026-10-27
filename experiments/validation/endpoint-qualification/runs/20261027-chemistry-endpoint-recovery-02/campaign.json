@@ -1,0 +1,73 @@
+{
+  "archive_bytes": 170677,
+  "archive_sha256": "a3d2448a4ab199e4cabeb65610900c72245b18fbd6f7ad88fc563278eeb44ce6",
+  "callback_job": "29830697",
+  "cpu_cases": 33,
+  "cpu_counts": {
+    "tests.test_chemistry_endpoint_diagnostic.ChemistryEndpointDiagnosticTests": 16,
+    "tests.test_chemistry_endpoint_ops.ChemistryEndpointOpsTests": 17
+  },
+  "cpu_job": "29830696",
+  "files": 10,
+  "manifest_sha256": "d3d8678542db3cf6100006f8f9dbd3ce761f169bd904ddcae3d4525a53252f51",
+  "monitor_resumed": false,
+  "optimizer_jobs_submitted": false,
+  "plan_sha256": "282415d97a5446b319aace837b4cc9ef5e868e757daedbb2ea9c39c4a8bd02c5",
+  "protected_input_files": 3251,
+  "remote_source_staged": true,
+  "saved_results_changed": false,
+  "settings_changed": false,
+  "status": "revalidation_submitted_latest_observation_SSH_timeout_no_native_pass_yet_verified",
+  "stage_verification": {
+    "status": "actual_metadata_stage_submission_verified_not_CPU_pass",
+    "jobs": {
+      "cpu": "29830696",
+      "after-cpu": "29830697"
+    },
+    "submitted_utc": "2026-10-27T13:04:50.843473+00:00",
+    "source_manifest_sha256": "d3d8678542db3cf6100006f8f9dbd3ce761f169bd904ddcae3d4525a53252f51",
+    "whole_storage": {
+      "status": "passed",
+      "required_bytes": 50288442193,
+      "available_bytes": 51814937535,
+      "reserve_bytes": 4294967296,
+      "file_reserve": 100000,
+      "additional_complete_group_cap_bytes": 603979776,
+      "entire_current_tree_stale_charge_bytes": 2447296
+    },
+    "CPU_fixture_pass_not_yet_verified": 33,
+    "native_pass": false,
+    "optimizer_submission": false,
+    "settings_changed": false,
+    "saved_results_changed": false
+  },
+  "latest_access": {
+    "status": "latest_observation_inaccessible_no_later_job_state_established",
+    "receipt": {
+      "ended_utc": "2026-10-27T13:09:15.417371+00:00",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "program_sha256": "9dfd5e968ab829e12e38d89e03af254aecc3443c2bc896ab2f08ec7f098759e2",
+      "returncode": 255,
+      "started_utc": "2026-10-27T13:09:00.311353+00:00",
+      "status": "unknown_inspect_before_recovery"
+    },
+    "error": "SSH255 connection timeout",
+    "one_connection_attempt": true,
+    "retry_performed_after_inaccessible_attempt": false,
+    "last_verified_jobs": {
+      "cpu": "29830696",
+      "after-cpu": "29830697"
+    },
+    "last_verified_states": {
+      "29830696": "RUN",
+      "29830697": "PEND"
+    },
+    "CPU33_full_pass": false,
+    "CPU33_full_pass_scope": "not yet authenticated, not a claim of failure",
+    "native_submissions": "unknown_after_last_observation; read jobs/submission markers before any recovery",
+    "optimizer_continuations_submitted": false,
+    "original_saved_results_changed": false,
+    "monitor_resumed": false
+  },
+  "original_failure_audit_sha256": "c84cdfba3b226aba8d72b1457e84c1f0573b9b8d60aca0c3ba2c4669c527e85f"
+}

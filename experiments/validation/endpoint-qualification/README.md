@@ -172,3 +172,12 @@ CPU261/startup/callback passed; GPU29829934 PEND. Continuation08DBMol29829703
 PEND remainsauthoritative; no duplicate. Precision07CPU301/startup/callback
 passed; GPU29829894 PEND. No blockedoptimizer started. Scientific settings and
 saved results unchanged. Canonical continuation package/stage targetsONLY09.
+
+
+27October: the user authorized investigation and correction of both blocked
+chemistry continuations without changing settings or saved studies.
+[Chemistry endpoint recovery02](runs/20261027-chemistry-endpoint-recovery-02/README.md)
+first runs allocated saved-Protenix decomposition and separate native Pro/Bol
+cohorts. It is explicitly diagnostic-only, preserves both original failures and
+has no optimizer dispatch branch. A demonstrated correction and prospective
+continuation still need their own full qualification; preparation is not a pass.

@@ -1,0 +1,10 @@
+{
+  "status": "local_stdlib_AST_bytes_passed_not_allocated_tests",
+  "files": 10,
+  "members": 11,
+  "numerical_diagnostic_exact_source01_except_own_output_root": true,
+  "source01_failure_preserved": true,
+  "CPU_cases_required": 33,
+  "manifest_sha256": "d3d8678542db3cf6100006f8f9dbd3ce761f169bd904ddcae3d4525a53252f51",
+  "protected_input_files": 3251
+}
