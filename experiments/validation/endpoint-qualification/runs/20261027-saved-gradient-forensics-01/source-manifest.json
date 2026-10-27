@@ -1,0 +1,19 @@
+{
+  "files": {
+    "plan.json": "e9c07a3fc95050dfe69ccbf370bdbc78a36cfdf157f47c1a172c1e9bd9e256e4",
+    "protocol.md": "3728fa837e27af285ede12dbb9a2369d5ce44a8b14cf3ddda98224ad3c4c506d",
+    "scripts/saved_gradient_forensics.py": "5b4681c44fb2325796cc3639615bcabbae4ed0feb09aad2f6852f749ddc1cc24",
+    "stage.lsf": "5ebcc16c58263d3920e79d28c3386d9af2abd726472fecb257223c87c80ba61c",
+    "tests/test_saved_gradient_forensics.py": "ffedb5ee264bdcf61176745ed0c23a2c6e71509ae9ccdb29654b81645a68bb85"
+  },
+  "optimizer_updates": 0,
+  "parent_source": {
+    "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-release-06/source",
+    "sha256": "1519d5761069f73fb6659bc1740cb04c155a04bc3218f143a3f28a73e65a1f69"
+  },
+  "precision_guard": {
+    "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-release-05/source",
+    "sha256": "65b4bd350386a8550c3b588eb7de2b0f6084b32ad790a907851c632dba0f023e"
+  },
+  "version": "saved-gradient-forensics-source-v1"
+}

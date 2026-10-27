@@ -361,15 +361,17 @@ def test_failed_result_preserves_primary_without_inventing_missing_later_failure
 
 def test_hook_restores_original_checker_on_failure(monkeypatch):
     original = lambda *args: None
-    module = SimpleNamespace(check_affinity_gradients=original)
+    module = SimpleNamespace(check_affinity_gradients=original, check_combined_directions=original)
     monkeypatch.setattr(d.importlib, "import_module", lambda name: module)
     adapted = lambda *args: True
-    state = SimpleNamespace(name="boltz", simple=lambda function, kind: adapted)
+    state = SimpleNamespace(name="boltz", simple=lambda function, kind: adapted, combined=lambda function: adapted)
     with pytest.raises(RuntimeError):
         with d.install_hooks(state):
             assert module.check_affinity_gradients is adapted
+            assert module.check_combined_directions is adapted
             raise RuntimeError("failed admission")
     assert module.check_affinity_gradients is original
+    assert module.check_combined_directions is original
 
 
 def test_boundary_replay_requires_exact_all_five_saved_arrays(tmp_path):
@@ -439,14 +441,14 @@ def test_raw_points_preserve_original_per_leaf_devices_without_default_placement
 
 
 def test_driver_metadata_binds_its_actual_policy_version(monkeypatch):
-    value=SimpleNamespace(__file__=str(PATH.with_name('admission.py')),VERSION='prospective-endpoint-admission-v2')
+    value=SimpleNamespace(__file__=str(PATH.with_name('admission.py')),VERSION='prospective-endpoint-admission-v3')
     monkeypatch.setitem(sys.modules,'admission',value)
     assert d.endpoint_policy_version()==value.VERSION
 
 
 @pytest.mark.parametrize('field,value', [('__file__','/other/admission.py'),('VERSION','prospective-endpoint-admission-v1')])
 def test_driver_rejects_wrong_policy_origin_or_version(monkeypatch,field,value):
-    row={'__file__':str(PATH.with_name('admission.py')),'VERSION':'prospective-endpoint-admission-v2'};row[field]=value
+    row={'__file__':str(PATH.with_name('admission.py')),'VERSION':'prospective-endpoint-admission-v3'};row[field]=value
     monkeypatch.setitem(sys.modules,'admission',SimpleNamespace(**row))
     with pytest.raises(ValueError):d.endpoint_policy_version()
 
@@ -460,3 +462,44 @@ def test_result_and_invocation_labels_are_not_stale_policy_literals():
                 fields.append(value)
                 assert not isinstance(value,ast.Constant)
     assert len(fields)>=4
+
+
+def test_component_resolution_pack_requires_all_native_addends():
+    with pytest.raises(ValueError):d.component_resolved_scalar(1.,{'dbmol_affinity_loss':1.})
+
+
+def test_component_resolution_pack_preserves_native_scalar_values():
+    import numpy as np
+    value=np.float64(.3);aux={k:np.float64(v) for k,v in [('dbmol_affinity_loss',-3.),('dbmol_contact_loss',1.2),('dbmol_confidence_loss',.12)]}
+    out=d.component_resolved_scalar(value,aux)
+    assert out['value'] is value and out['native_components']['affinity'] is aux['dbmol_affinity_loss']
+
+
+def test_combined_hook_runs_real_JAX_logit_points_and_retains_original_failure(tmp_path,monkeypatch):
+    import numpy as np
+    import jax
+    import jax.numpy as jnp
+    import equinox as eqx
+    monkeypatch.syspath_prepend(str(PATH.parent))
+    class Logits(eqx.Module):
+        atoms:jax.Array
+        bonds:jax.Array
+        def graph(self):return SimpleNamespace(X=jax.nn.softmax(self.atoms),E_upper=jax.nn.softmax(self.bonds))
+    logits=Logits(jnp.zeros((4,3),jnp.float32),jnp.zeros((6,5),jnp.float32))
+    weights=Logits(jnp.tile(jnp.arange(3,dtype=jnp.float32),(4,1)),jnp.tile(jnp.arange(5,dtype=jnp.float32),(6,1)))
+    def evaluate(loss,state,prepared,spec,reference,*,key,config):
+        scalar=jnp.sum(state.atoms*weights.atoms)+jnp.sum(state.bonds*weights.bonds)
+        return SimpleNamespace(value=scalar,primal=scalar,gradients=weights,native=SimpleNamespace(evaluation=SimpleNamespace(aux={})))
+    fake=SimpleNamespace(evaluate_combined=evaluate)
+    monkeypatch.setitem(sys.modules,'mosaic.small_molecule.chemistry.trajectory',fake)
+    state=d.EndpointHooks({},'boltz',tmp_path/'study',10000)
+    monkeypatch.setattr(state,'_frozen',lambda *args,**kw:lambda:{'model':'fixed','context':'fixed','key':17})
+    def coarse(loss,evaluation,prepared,spec,reference,*,key,config,directory):
+        directory.mkdir(parents=True);(directory/'report.json').write_text(json.dumps({'status':'failed','error':'original FD failure'}))
+        raise AssertionError('Combined frozen-reference bonds derivative check failed')
+    config={'repair_weight':0.,'element_js_weight':0.};before=np.asarray(logits.atoms).copy()
+    rows=state.combined(coarse)(None,SimpleNamespace(logits=logits),SimpleNamespace(identity='fixed-preparation'),None,None,
+                              key=jax.random.key(17),config=config,directory=state.output/'early_pilot/combined_initial_checks')
+    assert len(rows)==2 and all(r['pair_passed'] for r in rows) and np.array_equal(np.asarray(logits.atoms),before)
+    assert config=={'repair_weight':0.,'element_js_weight':0.} and state.logit_records[0]['status']=='passed'
+    assert json.loads(Path(state.logit_records[0]['original_coarse_report']['path']).read_bytes())['status']=='failed'

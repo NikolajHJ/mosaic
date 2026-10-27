@@ -1,0 +1,23 @@
+{
+  "status": "AST_declaration_from_authenticated223case_base_no_collection_or_test_execution_locally",
+  "counts": {
+    "tests.test_admission": 50,
+    "tests.test_continuation_driver": 56,
+    "tests.test_continuation_ops": 104,
+    "tests.test_current_capacity": 5,
+    "tests.test_qualification": 19,
+    "tests.test_logit_admission": 14,
+    "tests.test_measurement_resolution": 10
+  },
+  "added_to_base": {
+    "tests.test_admission": 0,
+    "tests.test_continuation_driver": 7,
+    "tests.test_continuation_ops": 4,
+    "tests.test_current_capacity": 0,
+    "tests.test_qualification": 0
+  },
+  "declared_total": 258,
+  "removed_old_test_functions": 0,
+  "existing_parametrizations_changed": false,
+  "scientific_arms_byte_metadata_unchanged": true
+}

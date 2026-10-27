@@ -39,3 +39,7 @@ Four new continuation-driver tests cover actual v2 policy identity and reject
 stale labels or wrong module origins; they have not been executed. Static AST
 reversal confirms that this driver edit changes no numerical behavior. No
 Boltz/DBMol numerical correction is selected without the current raw FD reports.
+
+test_saved_gradient_forensics.py adds eight allocated CPU controls for exact component matching, softmax chain rules and negative recomposition controls. They are not native readiness tests and are never executed locally.
+
+Measurement07 adds14 local-logit controls,10 component-resolution controls, actual JAX adapter-entry coverage and strict dispatch-negative fixtures. The declared full seven-module suite is258 cases, pending allocated raw XML verification. No native pass follows from toys or preparation.

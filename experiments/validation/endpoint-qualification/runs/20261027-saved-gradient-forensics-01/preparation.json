@@ -1,0 +1,9 @@
+{
+  "archive_bytes": 8374,
+  "archive_sha256": "3531326e2f373d746b0c787888891241468635cc524b520b350324d75e9f498d",
+  "cpu_cases": 8,
+  "files": 5,
+  "manifest_sha256": "bbe1404ac893e6cfeef11d6905978a219941dfec3d17024d39ae51348f6421a5",
+  "plan_sha256": "e9c07a3fc95050dfe69ccbf370bdbc78a36cfdf157f47c1a172c1e9bd9e256e4",
+  "status": "prepared_not_validated"
+}

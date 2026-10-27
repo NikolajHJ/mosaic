@@ -132,3 +132,19 @@ staged but failed preflight before any CPU submission, even after bounded
 verified inactive offload. Approximately1.08GB additional conservative headroom
 is still needed for the checker group. No FP64/reference pass established.
 Detailed evidence in investigation07; source04/05 failures preserved.
+
+27October: exact duplicate source consolidation preserved all131 source
+manifests/paths and allowed full unchanged storage admission. Precision05
+CPU29826029/callback29826030 actualDONE,286 raw cases/actual startup passed;
+GPU29826052 lastPEND. No native FP64 or Protenix continuation pass.
+[Saved forensics01](runs/20261027-saved-gradient-forensics-01/README.md) CPU
+29826033 DONE/8controls/exact17inputs preserved: correct Boltz softmax pullback
+but sharp native derivative variation; DBMol recomposition matches with
+underestimated assembled-scalar resolution. Original failures stay failed.
+[Measurement07](runs/20261027-continuation-measurement-07/README.md) introduces
+prospective rawv3/component precision and pilot-logitv1 with unchanged science.
+CPU29826125 lastRUN/callback29826126PEND;258 raw cases not yet authenticated.
+A stale metadata fixture expectation is corrected canonically; sealed07 stays
+unchanged and [08](runs/20261027-continuation-measurement-08/README.md) is only
+a planned future immutable retry. SSH255 timeout blocked terminal collection.
+No new optimizer ID established, no old job replay or monitor resumption.

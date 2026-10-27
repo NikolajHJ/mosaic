@@ -1,0 +1,413 @@
+{
+  "status": "completed_diagnostics_original_failures_still_failed",
+  "job_id": "29826033",
+  "verification": {
+    "status": "independent_byte_XML_actual_LSF_input_preservation_and_matched_frozen_identity_verification_passed",
+    "job_id": "29826033",
+    "actual_cases": 8,
+    "failures_errors_skips": 0,
+    "inputs": 17,
+    "assessment_sha256": "bdae0652a02458d40fab71da6217617a1bb67b77a123cccd81e6bc713c3385aa",
+    "packet_sha256": "5e797e40d5fbe88948a1bce1a812cca43fe847f5acc29a488e5409f0532992b2",
+    "all_four_DBMol_frozen_identities_match": true,
+    "can_certify_or_restart_original_study": false,
+    "original_scientific_failures_preserved": true
+  },
+  "Boltz_bond_evidence": {
+    "field": "bonds",
+    "row": 132,
+    "source": 1,
+    "destination": 0,
+    "observations": [
+      {
+        "epsilon": 0.01,
+        "original_agrees": false,
+        "baseline_AD": 0.8688704371452332,
+        "recorded_secant": 3.6884605884552,
+        "reconstructed_nominal_secant": 3.6884605884552,
+        "actual_represented_logit_step": 0.019999980926513672,
+        "represented_secant": 3.688464106048685,
+        "endpoint_AD_average": 2.5260295048356056,
+        "points": [
+          {
+            "sign": -1,
+            "loss": 0.658903181552887,
+            "affinity_primal": 0.658903181552887,
+            "directional_AD": -0.7226447314023972,
+            "raw_to_logit_chain_max_error": 1.1358691875962279e-08,
+            "raw_to_logit_chain_direction": -0.7226447148968839,
+            "contrast_coordinate": 0.40565061569213867
+          },
+          {
+            "sign": 1,
+            "loss": 0.732672393321991,
+            "affinity_primal": 0.732672393321991,
+            "directional_AD": 5.774703741073608,
+            "raw_to_logit_chain_max_error": 2.8721779177232065e-07,
+            "raw_to_logit_chain_direction": 5.774703975910322,
+            "contrast_coordinate": 0.42565059661865234
+          }
+        ]
+      },
+      {
+        "epsilon": 0.003,
+        "original_agrees": false,
+        "baseline_AD": 0.8688704371452332,
+        "recorded_secant": 1.7388761043548584,
+        "reconstructed_nominal_secant": 1.7388761043548584,
+        "actual_represented_logit_step": 0.006000041961669922,
+        "represented_secant": 1.7388639434157196,
+        "endpoint_AD_average": 3.3015838861465454,
+        "points": [
+          {
+            "sign": -1,
+            "loss": 0.6489159464836121,
+            "affinity_primal": 0.6489159464836121,
+            "directional_AD": -2.101722240447998,
+            "raw_to_logit_chain_max_error": 3.657969283032969e-08,
+            "raw_to_logit_chain_direction": -2.101722272735416,
+            "contrast_coordinate": 0.41265058517456055
+          },
+          {
+            "sign": 1,
+            "loss": 0.6593492031097412,
+            "affinity_primal": 0.6593492031097412,
+            "directional_AD": 8.704890012741089,
+            "raw_to_logit_chain_max_error": 3.3405437438460694e-07,
+            "raw_to_logit_chain_direction": 8.70489026783828,
+            "contrast_coordinate": 0.41865062713623047
+          }
+        ]
+      },
+      {
+        "epsilon": 0.001,
+        "original_agrees": true,
+        "baseline_AD": 0.8688704371452332,
+        "recorded_secant": 0.9298324584960938,
+        "reconstructed_nominal_secant": 0.9298324584960938,
+        "actual_represented_logit_step": 0.001999974250793457,
+        "represented_secant": 0.9298444298742325,
+        "endpoint_AD_average": 1.1555690243840218,
+        "points": [
+          {
+            "sign": -1,
+            "loss": 0.6454068422317505,
+            "affinity_primal": 0.6454068422317505,
+            "directional_AD": -0.8491406887769699,
+            "raw_to_logit_chain_max_error": 4.526947150473859e-09,
+            "raw_to_logit_chain_direction": -0.8491406844864741,
+            "contrast_coordinate": 0.4146506190299988
+          },
+          {
+            "sign": 1,
+            "loss": 0.6472665071487427,
+            "affinity_primal": 0.6472665071487427,
+            "directional_AD": 3.1602787375450134,
+            "raw_to_logit_chain_max_error": 1.024533982096898e-07,
+            "raw_to_logit_chain_direction": 3.1602786140474155,
+            "contrast_coordinate": 0.41665059328079224
+          }
+        ]
+      }
+    ]
+  },
+  "DBMol_recomposition_and_component_resolution": {
+    "baseline_scalar_recomposition": {
+      "maximum_absolute_difference": 4.440892098500626e-16,
+      "total_max_abs": 0.30576066832691184,
+      "recomposed_max_abs": 0.3057606683269123
+    },
+    "baseline_gradient_recomposition": {
+      "X": {
+        "maximum_absolute_difference": 1.387670636177063e-07,
+        "total_max_abs": 0.599582314491272,
+        "recomposed_max_abs": 0.599582377821207
+      },
+      "E_upper": {
+        "maximum_absolute_difference": 1.8477439880371094e-06,
+        "total_max_abs": 0.7950636148452759,
+        "recomposed_max_abs": 0.795063104480505
+      }
+    },
+    "matched_failed_directions": [
+      {
+        "field": "X",
+        "row": 1,
+        "source": 0,
+        "target": 4,
+        "epsilon": 0.01,
+        "original_outcome": "agreement",
+        "original_agrees": true,
+        "selected_local_pair": [
+          0.0001,
+          3e-05
+        ],
+        "exact_component_points_matched": true,
+        "endpoint_scalar_recomposition": [
+          {
+            "maximum_absolute_difference": 0.0,
+            "total_max_abs": 0.30687757790705295,
+            "recomposed_max_abs": 0.30687757790705295
+          },
+          {
+            "maximum_absolute_difference": 0.0,
+            "total_max_abs": 0.30460966337658757,
+            "recomposed_max_abs": 0.30460966337658757
+          }
+        ],
+        "component_observed_differences": {
+          "dbmol_affinity_loss": -0.0008133649826049805,
+          "dbmol_contact_loss": -0.00021477441661732488,
+          "dbmol_confidence_loss": -0.00036704540252674445
+        },
+        "component_baseline_JVP": {
+          "dbmol_affinity_loss": -0.0008141040705427205,
+          "dbmol_contact_loss": -0.00021420575837501066,
+          "dbmol_confidence_loss": -0.00036735215857991443
+        },
+        "total_observed_difference": -0.002267914530465376,
+        "total_baseline_JVP": -0.002267999989830294,
+        "recomposed_observed_difference": -0.002267914530465154,
+        "recomposed_baseline_JVP": -0.0022679988629300332,
+        "difference_cancellation_ratio": 0.9999999999999021,
+        "original_total_resolution_floor": 2.384185791015625e-07,
+        "weighted_component_resolution_floor": 2.7418136596679688e-06,
+        "original_tolerance_budget": 0.00034019999847454405,
+        "diagnostic_only_not_new_acceptance": true
+      },
+      {
+        "field": "X",
+        "row": 1,
+        "source": 0,
+        "target": 4,
+        "epsilon": 0.003,
+        "original_outcome": "agreement",
+        "original_agrees": true,
+        "selected_local_pair": [
+          0.0001,
+          3e-05
+        ],
+        "exact_component_points_matched": true,
+        "endpoint_scalar_recomposition": [
+          {
+            "maximum_absolute_difference": 4.440892098500626e-16,
+            "total_max_abs": 0.30609954954287844,
+            "recomposed_max_abs": 0.306099549542878
+          },
+          {
+            "maximum_absolute_difference": 4.440892098500626e-16,
+            "total_max_abs": 0.3054183119405791,
+            "recomposed_max_abs": 0.30541831194057956
+          }
+        ],
+        "component_observed_differences": {
+          "dbmol_affinity_loss": -0.00024506449699401855,
+          "dbmol_contact_loss": -6.406951906878788e-05,
+          "dbmol_confidence_loss": -0.0001103997230529341
+        },
+        "component_baseline_JVP": {
+          "dbmol_affinity_loss": -0.00024423304586984607,
+          "dbmol_contact_loss": -6.426169831295903e-05,
+          "dbmol_confidence_loss": -0.000110205691323223
+        },
+        "total_observed_difference": -0.0006812376022993227,
+        "total_baseline_JVP": -0.0006804018580304216,
+        "recomposed_observed_difference": -0.0006812376022983235,
+        "recomposed_baseline_JVP": -0.0006804015199603011,
+        "difference_cancellation_ratio": 0.9999999999985333,
+        "original_total_resolution_floor": 2.384185791015625e-07,
+        "weighted_component_resolution_floor": 2.7418136596679688e-06,
+        "original_tolerance_budget": 0.0001021856403448984,
+        "diagnostic_only_not_new_acceptance": true
+      },
+      {
+        "field": "X",
+        "row": 1,
+        "source": 0,
+        "target": 4,
+        "epsilon": 0.001,
+        "original_outcome": "agreement",
+        "original_agrees": true,
+        "selected_local_pair": [
+          0.0001,
+          3e-05
+        ],
+        "exact_component_points_matched": true,
+        "endpoint_scalar_recomposition": [
+          {
+            "maximum_absolute_difference": 4.440892098500626e-16,
+            "total_max_abs": 0.3058751609162589,
+            "recomposed_max_abs": 0.3058751609162593
+          },
+          {
+            "maximum_absolute_difference": 4.440892098500626e-16,
+            "total_max_abs": 0.3056464483457688,
+            "recomposed_max_abs": 0.30564644834576926
+          }
+        ],
+        "component_observed_differences": {
+          "dbmol_affinity_loss": -8.338689804077148e-05,
+          "dbmol_contact_loss": -2.1336321760045962e-05,
+          "dbmol_confidence_loss": -3.6793947219671e-05
+        },
+        "component_baseline_JVP": {
+          "dbmol_affinity_loss": -8.141240650449966e-05,
+          "dbmol_contact_loss": -2.142044709764479e-05,
+          "dbmol_confidence_loss": -3.673511570778665e-05
+        },
+        "total_observed_difference": -0.00022871257049006388,
+        "total_baseline_JVP": -0.00022680142620767896,
+        "recomposed_observed_difference": -0.00022871257049006388,
+        "recomposed_baseline_JVP": -0.00022680131351807825,
+        "difference_cancellation_ratio": 1.0,
+        "original_total_resolution_floor": 2.384185791015625e-07,
+        "weighted_component_resolution_floor": 2.7418136596679688e-06,
+        "original_tolerance_budget": 3.4306885573509584e-05,
+        "diagnostic_only_not_new_acceptance": true
+      },
+      {
+        "field": "X",
+        "row": 1,
+        "source": 0,
+        "target": 4,
+        "epsilon": 0.0003,
+        "original_outcome": "agreement",
+        "original_agrees": true,
+        "selected_local_pair": [
+          0.0001,
+          3e-05
+        ],
+        "exact_component_points_matched": true,
+        "endpoint_scalar_recomposition": [
+          {
+            "maximum_absolute_difference": 0.0,
+            "total_max_abs": 0.30579387380127354,
+            "recomposed_max_abs": 0.30579387380127354
+          },
+          {
+            "maximum_absolute_difference": 4.440892098500626e-16,
+            "total_max_abs": 0.3057261305691479,
+            "recomposed_max_abs": 0.30572613056914744
+          }
+        ],
+        "component_observed_differences": {
+          "dbmol_affinity_loss": -2.41696834564209e-05,
+          "dbmol_contact_loss": -6.301232288341563e-06,
+          "dbmol_confidence_loss": -1.112818717952102e-05
+        },
+        "component_baseline_JVP": {
+          "dbmol_affinity_loss": -2.4425546658379815e-05,
+          "dbmol_contact_loss": -6.426104929749266e-06,
+          "dbmol_confidence_loss": -1.1020578461584662e-05
+        },
+        "total_observed_difference": -6.774323212566102e-05,
+        "total_baseline_JVP": -6.804228894363717e-05,
+        "recomposed_observed_difference": -6.774323212607736e-05,
+        "recomposed_baseline_JVP": -6.804225513671464e-05,
+        "difference_cancellation_ratio": 1.0000000000061458,
+        "original_total_resolution_floor": 2.384185791015625e-07,
+        "weighted_component_resolution_floor": 2.7418136596679688e-06,
+        "original_tolerance_budget": 1.0206343341545575e-05,
+        "diagnostic_only_not_new_acceptance": true
+      },
+      {
+        "field": "X",
+        "row": 1,
+        "source": 0,
+        "target": 4,
+        "epsilon": 0.0001,
+        "original_outcome": "agreement",
+        "original_agrees": true,
+        "selected_local_pair": [
+          0.0001,
+          3e-05
+        ],
+        "exact_component_points_matched": true,
+        "endpoint_scalar_recomposition": [
+          {
+            "maximum_absolute_difference": 8.881784197001252e-16,
+            "total_max_abs": 0.3057717380210372,
+            "recomposed_max_abs": 0.3057717380210363
+          },
+          {
+            "maximum_absolute_difference": 0.0,
+            "total_max_abs": 0.30574888640664355,
+            "recomposed_max_abs": 0.30574888640664355
+          }
+        ],
+        "component_observed_differences": {
+          "dbmol_affinity_loss": -7.808208465576172e-06,
+          "dbmol_contact_loss": -2.411281362135753e-06,
+          "dbmol_confidence_loss": -3.606081009022155e-06
+        },
+        "component_baseline_JVP": {
+          "dbmol_affinity_loss": -8.143240100677573e-06,
+          "dbmol_contact_loss": -2.1419159699082035e-06,
+          "dbmol_confidence_loss": -3.673411420573869e-06
+        },
+        "total_observed_difference": -2.2851614393637476e-05,
+        "total_baseline_JVP": -2.268156984541747e-05,
+        "recomposed_observed_difference": -2.2851614393470943e-05,
+        "recomposed_baseline_JVP": -2.2681558576882754e-05,
+        "difference_cancellation_ratio": 0.9999999999927124,
+        "original_total_resolution_floor": 2.384185791015625e-07,
+        "weighted_component_resolution_floor": 2.7418136596679688e-06,
+        "original_tolerance_budget": 3.427742159045621e-06,
+        "diagnostic_only_not_new_acceptance": true
+      },
+      {
+        "field": "X",
+        "row": 1,
+        "source": 0,
+        "target": 4,
+        "epsilon": 3e-05,
+        "original_outcome": "resolved_disagreement",
+        "original_agrees": false,
+        "selected_local_pair": [
+          0.0001,
+          3e-05
+        ],
+        "exact_component_points_matched": true,
+        "endpoint_scalar_recomposition": [
+          {
+            "maximum_absolute_difference": 0.0,
+            "total_max_abs": 0.3057644017417296,
+            "recomposed_max_abs": 0.3057644017417296
+          },
+          {
+            "maximum_absolute_difference": 0.0,
+            "total_max_abs": 0.3057552810898083,
+            "recomposed_max_abs": 0.3057552810898083
+          }
+        ],
+        "component_observed_differences": {
+          "dbmol_affinity_loss": -3.7848949432373047e-06,
+          "dbmol_contact_loss": -9.5413082440432e-07,
+          "dbmol_confidence_loss": -1.180171966819188e-06
+        },
+        "component_baseline_JVP": {
+          "dbmol_affinity_loss": -2.4398952300774823e-06,
+          "dbmol_contact_loss": -6.42711096524029e-07,
+          "dbmol_confidence_loss": -1.1020829368824092e-06
+        },
+        "total_observed_difference": -9.120651921268319e-06,
+        "total_baseline_JVP": -6.8018836945071826e-06,
+        "recomposed_observed_difference": -9.120651921296075e-06,
+        "recomposed_baseline_JVP": -6.801880313593578e-06,
+        "difference_cancellation_ratio": 1.0000000000030431,
+        "original_total_resolution_floor": 2.384185791015625e-07,
+        "weighted_component_resolution_floor": 2.7418136596679688e-06,
+        "original_tolerance_budget": 1.3680977881902477e-06,
+        "diagnostic_only_not_new_acceptance": true
+      }
+    ],
+    "original_status": "failed",
+    "new_admission_authorized": false
+  },
+  "limits": [
+    "No native model was evaluated in this saved-probe CPU analysis",
+    "Correct raw-to-logit pullback does not establish the complete native Jacobian",
+    "Component ULP floors are measurement estimates, not rigorous whole-trunk error bounds",
+    "No original failure is recertified and no optimizer continuation follows from this diagnostic alone"
+  ]
+}

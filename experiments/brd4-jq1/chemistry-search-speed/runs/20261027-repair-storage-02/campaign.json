@@ -1,0 +1,49 @@
+{
+  "status": "physical_duplication_reclaimed_all_source_bytes_paths_preserved",
+  "physical_duplicate_bytes": 2727058970,
+  "replaced_regular_paths": 819,
+  "source_manifests_verified": 131,
+  "laptop_content_addressed_backup": {
+    "status": "every_unique_blob_and_every_path_mapping_verified",
+    "plan_sha256": "70e34db2d061f2f4917a24ca7dd8dc87884c9d4d88527fa2f2c68364f3432b3d",
+    "archive_bytes": 38901357,
+    "archive_sha256": "7184c0f71ddac153754da0f3c4f14c91a5ab75739f6d923051fc9740b73e45a3",
+    "groups": 15,
+    "paths": 834
+  },
+  "audit": {
+    "status": "every_inode_replacement_reconciled_to_exact_verified_laptop_blob_and_original_path",
+    "replaced_paths": 819,
+    "sources_rehashed_remotely": 131,
+    "unique_blob_bytes": 43291665,
+    "physical_duplicates_removed_bytes": 2727058970,
+    "logical_source_bytes_unchanged": true,
+    "current_bound_proofs_rehashed": 32,
+    "journal_sha256": "da3e37dadcee6c65b1e5b2da25320282b492327f979727be88f659c45cba2ae2",
+    "plan_sha256": "70e34db2d061f2f4917a24ca7dd8dc87884c9d4d88527fa2f2c68364f3432b3d",
+    "deduplicated_logical_content_bytes": 2727058970,
+    "byte_counter_scope": "Sum of original st_size for redundant singly linked copies. Exact allocated disk blocks were not measured; fresh quota and full-capacity admissions are separate actual evidence."
+  },
+  "precision05_full_storage_pass": true,
+  "scientific_tests_run_locally": false,
+  "optimization_settings_changed": false,
+  "saved_scientific_values_changed": false,
+  "monitor_resumed": false,
+  "precision05_storage": {
+    "status": "passed",
+    "required_bytes": 49855387400,
+    "available_bytes": 50922367418,
+    "reserve_bytes": 4294967296,
+    "file_reserve": 100000
+  },
+  "precision05_cpu": "29826029",
+  "precision05_callback": "29826030",
+  "deduplicated_logical_content_bytes": 2727058970,
+  "metric_scope": "Sum of original st_size for redundant singly linked copies. Exact allocated disk blocks were not measured; fresh quota and full-capacity admissions are separate actual evidence.",
+  "raw_quota_before": "48.31 GiB /100",
+  "raw_quota_at_readmission": [
+    "46.28 GiB /100",
+    "46.29 GiB /100"
+  ],
+  "other_account_activity_concurrent": true
+}

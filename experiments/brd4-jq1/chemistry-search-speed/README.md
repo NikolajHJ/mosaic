@@ -149,3 +149,12 @@ and offloaded175MB of previously approved inactive trial copies, but separate
 plain Protenix checker05 still cannot meet its full future budget. Existing
 randomPro03 first10k remains passed; its next boundary check failed and was
 not restarted. Monitor remains paused, saved scientific values/settings unchanged.
+
+27October storage readmission: [deduplication02](runs/20261027-repair-storage-02/README.md)
+backed up every unique blob/path mapping before atomically consolidating819
+identical read-only source copies. All131 full manifests/paths/bytes/modes remain
+exact; duplicate content totals2.727GB (not exact allocated-block measurement).
+Fresh full precision05 admission passed49.855GBrequired/50.922GBavailable with
+all futures/4GiB/100k reserves retained. Boltz chemistry29825209 lastRUN2445
+updates at00:17UTC; its running chain was untouched. No further cleanup or
+monitor resumption. Endpoint checker jobs/results belong to endpoint-qualification.

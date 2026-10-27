@@ -134,3 +134,5 @@ audit under repair-storage01. Every existing phase refuses replay/unknown marker
 These are byte/metadata operators only, never native calculations. Do not rerun
 completed operations. Production04 CPU122/native entry pass and Boltz29825209
 are current; no new Protenix chain is allowed in that source.
+
+repair_storage_inventory02.py records a bounded read-only current inventory. repair_source_dedup.py preserves all sealed source bytes/pathnames while consolidating identical read-only physical copies only after verified content-addressed laptop backup; its unique operations must not be replayed. Exact audit belongs to runs/20261027-repair-storage-02.

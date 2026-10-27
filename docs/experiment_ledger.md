@@ -8108,3 +8108,60 @@ source05 numerical AST/bytes identical to04 except output/job roots, with every
 old failure/source preserved. Exact current outcomes and cleanup proof hashes
 are recorded in canonical run campaigns; unrelated PDF/OneNote/other owners
 remain excluded. Monitor remains paused.
+
+## 2026-10-27 — Exact physical storage recovery and fresh blocked-checker admissions
+
+User renewed safe storage recovery, Protenix FP64 validation and resolution of
+plain Boltz/DBMol continuation checks, keeping settings and saved values exact.
+All work remained in Mosaic; no DBMol/latentmol/other-project mutation, no local
+numerical execution, and the monitor stays paused.
+
+- Physical source consolidation: laptop backup38,901,357bytes
+  SHA7184c0f71ddac153754da0f3c4f14c91a5ab75739f6d923051fc9740b73e45a3
+  verified every unique blob and834 exact path mappings. Replaced819 redundant
+  read-only inode copies by identical ordinary hardlinks, consolidating duplicates
+  of2,727,058,970 logical bytes while preserving EVERY source path/content/mode.
+  Exact allocated blocks were not measured; actual quota48.31->46.28/46.29GiB
+  changed during concurrent account activity, with fresh full gates passed.
+  All131 complete manifests and current bound inputs rehashed before/after;
+  full journal reconciled independently. No saved study value, environment or
+  model-cache bytes changed; logical tree/future budget charges were not reduced.
+  Run: experiments/brd4-jq1/chemistry-search-speed/runs/20261027-repair-storage-02.
+- Exact source05 readmission preserved its failed preflight: full unchanged
+  required49,855,387,400/available50,922,367,418bytes,4GiB/100000 reserves passed.
+  CPU29826029 and callback29826030 actualDONE/hpc/same-jobLSFsuccess, raw286
+  cases5+30+82+72+97 passed, zero fail/error/skip; real startup passed. Independent
+  XML/byte/LSF audit and certificate66ce5a0b7c73359508ba940d714425e1a8249ed9275e57b4150f3b9f77185ea9.
+  GPU29826052 actually submitted, lastPEND00:50:03UTC. No native FP64 agreement
+  pass or Protenix optimizer continuation established. Source05 remains exact
+  manifest65b4bd350386a8550c3b588eb7de2b0f6084b32ad790a907851c632dba0f023e.
+- Separate saved-probe forensic CPU29826033 actualDONE/LSFsuccess,8 controls,
+  actual startup and17 immutable input preservation passed. Source5files
+  bbe1404ac893e6cfeef11d6905978a219941dfec3d17024d39ae51348f6421a5;
+  assessmentbdae0652a02458d40fab71da6217617a1bb67b77a123cccd81e6bc713c3385aa.
+  Boltz pullback matches saved raw derivatives, but native directional gradients
+  vary sharply over failed logit intervals. DBMol component scalar/gradient
+  recomposition matches; a weighted component resolution estimate exceeds the
+  old assembled-total-only floor at its failing tiny point. No unique internal
+  Boltz branch or rigorous whole-trunk error bound claimed; original failures
+  remain failed, no optimizer/model execution in this CPU analysis.
+- Fresh measurement07: source19files, manifest26c6f0390125c9108f9777e83387b56aea2cc932507c52f039d56aa6a056c7b1,
+  archive107280bytes SHA3e09ed84aca5212af3028a0fae3e8d5fdb879ee95ca89a99dd5b511eeddb9e08.
+  New prospective rawv3 component-resolved precision plus fixed-reference logitv1
+  checker; same15percent tolerance/uncertainty-inside budget, original scales,
+  original old failures, no observed-FD scale choice, unchanged all arm settings.
+  Full storage passed; CPU29826125/callback29826126 actualsubmitted, latest
+  CPU RUN/callback PEND00:51:26UTC. Declared258 cases are NOT yet verified.
+  Static review found one stale expected coarse-local metadata list in the
+  sealed07 test; canonical expectation corrected locally, source07 untouched.
+  A planned08 fixture-only retry is unsealed/unstaged/unsubmitted; first collect
+  exact07 full XML/LSF/callback/jobs and preserve actual outcome.
+- Latest status02 SSH255 connection timeout interrupted collection; it proves
+  no later scheduler/scientific state. No repeated connection after inaccessible
+  attempt, no duplicate/unknown-job replay and no new optimization ID established.
+  Existing Boltz chemistry29825209 was last actualRUN2445updates/2446states at
+  00:17:28UTC; its chain, original randomPro10k and all saved results unchanged.
+
+Current actions/proof hashes live in the three new dated run records and
+precision05 campaign/readmission. Complete native/CPU/pilot/runtime/terminal/
+frozen/startup/full-capacity qualification remains required before continuations.

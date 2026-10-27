@@ -25,8 +25,8 @@ VERSION = "endpoint-aware-continuation-source-v1"
 PLAN_VERSION = "endpoint-aware-continuation-plan-v1"
 RESULT_VERSION = "endpoint-aware-continuation-result-v1"
 BASE = Path("/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01")
-ROOT = BASE / "nonchem-endpoint-continuation-06"
-SOURCE = BASE / "nonchem-endpoint-release-06/source"
+ROOT = BASE / "nonchem-endpoint-continuation-07"
+SOURCE = BASE / "nonchem-endpoint-release-07/source"
 ADMISSION = BASE / "nonchem-stride20-startup-release-03/source"
 ADMISSION_SHA = "704fab033d97342a14dc12b58dc32df44874232c5c30aad47c4d02041a502aab"
 PYTHON = "/work3/s234818/mosaic/envs/protenix-tiny/bin/python"
@@ -145,7 +145,8 @@ def verify(source, pin):
 
 def validate_plan(plan):
     require(isinstance(plan, dict) and plan.get("version") == PLAN_VERSION, "Wrong continuation plan schema")
-    require(plan.get("admission_policy") == "prospective-endpoint-admission-v2"
+    require(plan.get("admission_policy") == "prospective-endpoint-admission-v3"
+            and plan.get('logit_policy')=='prospective-fixed-reference-logit-admission-v1'
             and plan.get("user_authorized_prospective_checks_before_children") is True
             and plan.get("original_failures_preserved") is True
             and plan.get("optimization_settings_changed") is False
@@ -216,7 +217,7 @@ def argv(phase, pin, arm="all", offset=0, dependency=None):
     else:
         require(dependency is None, "Scientific/CPU phases have no interarm dependencies")
     parent = ROOT / name
-    command = ["bsub", *resources(phase), "-J", "mosaic-endpoint06-" + name,
+    command = ["bsub", *resources(phase), "-J", "mosaic-endpoint07-" + name,
                "-oo", str(parent / "stdout.%J.log"), "-eo", str(parent / "stderr.%J.log")]
     if dependency is not None:
         command += ["-w", dependency]
@@ -297,7 +298,7 @@ def terminal(parent, queue):
             break
         require(index < 20, "Terminal LSF output unavailable")
         time.sleep(1)
-    lsf_success(path.read_text(), job, "mosaic-endpoint06-" + parent.name, queue)
+    lsf_success(path.read_text(), job, "mosaic-endpoint07-" + parent.name, queue)
     proofs.append(binding(path))
     return proofs
 
@@ -717,9 +718,27 @@ def verify_result(plan, pin, phase, arm, offset):
     require(result.get("original_results_changed") is False and result.get("frozen_unchanged") is True,
             "Original results or frozen identities changed")
     require(result.get("original_failed_parent_preserved") is True
-            and result.get("endpoint_policy") == "prospective-endpoint-admission-v2"
+            and result.get("endpoint_policy") == "prospective-endpoint-admission-v3"
             and result.get("scientific_source_manifest_sha256") == row["source"]["manifest_sha256"],
             "Prospective policy/original failure/source scope differs")
+    logit_records=result.get('logit_records')
+    require(isinstance(logit_records,list) and (arm!='boltz' or bool(logit_records)),
+            'Mandatory Boltz pilot logit qualification records missing')
+    for item in logit_records:
+        require(item.get('status')=='passed' and item.get('version')=='prospective-fixed-reference-logit-admission-v1',
+                'New pilot logit measurement is not qualified')
+        proof=check_binding(item['report']);check_binding(item['original_coarse_report'])
+        require(Path(proof['path']).is_relative_to(parent/'payload/study'),'Logit proof outside own scientific producer')
+        observed=read(proof['path'])
+        require(observed.get('version')==item['version'] and observed.get('status')=='passed'
+                and observed.get('can_admit_new_child') is True and observed.get('frozen_unchanged') is True
+                and observed.get('can_certify_original_study') is False
+                and observed.get('original_failure_preserved') is True
+                and observed.get('selection_before_perturbed_forwards') is True
+                and isinstance(observed.get('directions'),list)
+                and {r.get('field') for r in observed['directions']}=={'atoms','bonds'}
+                and all(r.get('pair_passed') is True and r.get('finer_resolved_disagreements')==[] for r in observed['directions']),
+                'Complete independently measured pilot logit proof missing')
     expected_applicability = {"pilot_high": "not_applicable_chemistry_disabled",
                               "terminal_admission": "not_applicable_validation_phase" if phase == "validate" else "required",
                               "case_jsonl": "not_applicable_validation_phase" if phase == "validate" else "required",

@@ -106,7 +106,7 @@ def test_all_points_and_fixed_ladders_are_sealed_before_any_callback():
     planned = admission.plan(values, originals())
     assert planned == admission.plan(values, originals())
     assert planned["policy"]["original_epsilons"] == [0.01, 0.003, 0.001]
-    assert planned["policy"]["local_epsilons"] == [0.001, 0.0003, 0.0001, 0.00003]
+    assert planned["policy"]["local_epsilons"] == [0.003, 0.001, 0.0003, 0.0001, 0.00003]
     assert all(np.array_equal(values[field], before[field]) for field in values)
     for direction in planned["directions"]:
         assert [value["epsilon"] for value in direction["probes"]] == [0.01, 0.003, 0.001, 0.0003, 0.0001, 0.00003]
@@ -295,7 +295,7 @@ def test_central_curvature_at_coarse_scale_is_reported_without_relabeling_origin
     report = admission.evaluate(admission.plan(values, originals()), nonlinear, autodiff, frozen)
     assert report["can_admit_new_child"]
     direction = next(value for value in report["directions"] if value["field"] == "X" and value["row"] == 0)
-    assert direction["coarser_local_resolved_disagreements"] == [0.001]
+    assert direction["coarser_local_resolved_disagreements"] == [0.003, 0.001]
     assert any(value["original_scale"] and not value["agrees"] for value in direction["probes"])
     assert not direction["coarse_observations_replace_original_gate"] and report["original_run_failed_preserved"]
 

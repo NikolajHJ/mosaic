@@ -1,0 +1,21 @@
+{
+  "status": "completed_diagnostics_original_failures_still_failed",
+  "source_manifest_sha256": "bbe1404ac893e6cfeef11d6905978a219941dfec3d17024d39ae51348f6421a5",
+  "cpu_cases": 8,
+  "verification": {
+    "status": "independent_byte_XML_actual_LSF_input_preservation_and_matched_frozen_identity_verification_passed",
+    "job_id": "29826033",
+    "actual_cases": 8,
+    "failures_errors_skips": 0,
+    "inputs": 17,
+    "assessment_sha256": "bdae0652a02458d40fab71da6217617a1bb67b77a123cccd81e6bc713c3385aa",
+    "packet_sha256": "5e797e40d5fbe88948a1bce1a812cca43fe847f5acc29a488e5409f0532992b2",
+    "all_four_DBMol_frozen_identities_match": true,
+    "can_certify_or_restart_original_study": false,
+    "original_scientific_failures_preserved": true
+  },
+  "source_inputs_changed": false,
+  "optimizer_updates": 0,
+  "can_certify_or_restart_original_study": false,
+  "diagnostic_cpu_job_id": "29826033"
+}

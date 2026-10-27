@@ -45,7 +45,8 @@ def save(path, value):
 
 
 def plan():
-    return {"version": ops.PLAN_VERSION, "admission_policy": "prospective-endpoint-admission-v2",
+    return {"version": ops.PLAN_VERSION, "admission_policy": "prospective-endpoint-admission-v3",
+            'logit_policy':'prospective-fixed-reference-logit-admission-v1',
             "user_authorized_prospective_checks_before_children": True, "original_failures_preserved": True,
             "optimization_settings_changed": False, "monitor_remains_paused": True,
             "matrix_stride": 20, "loss_stride": 1, "dispatch_arms": list(ops.DISPATCH_ARMS),
@@ -68,7 +69,7 @@ def test_scientific_root_alias_cannot_point_to_predecessor():
     with pytest.raises(ValueError,match='scientific/control/source'):ops.validate_plan(value)
 
 
-def lsf(job="111", name="mosaic-endpoint06-cpu", queue="hpc", status="Done"):
+def lsf(job="111", name="mosaic-endpoint07-cpu", queue="hpc", status="Done"):
     return ("Subject: Job " + job + ": <" + name + "> in cluster <dcc> " + status
             + "\nJob was executed in queue <" + queue + ">.\nSuccessfully completed.\n")
 
@@ -105,13 +106,22 @@ def valid_result(owned, arm="boltz", phase="validate", offset=10000):
               "source_manifest_sha256": PIN, "plan_sha256": ops.sha(source / "plan.json"),
               "config_sha256": row["config"]["sha256"], "original_results_changed": False,
               "frozen_unchanged": True, "checks": dict.fromkeys(ops.CHECKS, True), "proofs": [original],
-              "original_failed_parent_preserved": True, "endpoint_policy": "prospective-endpoint-admission-v2",
+              "original_failed_parent_preserved": True, "endpoint_policy": "prospective-endpoint-admission-v3",
               "scientific_source_manifest_sha256": row["source"]["manifest_sha256"],
               "applicability": {"pilot_high": "not_applicable_chemistry_disabled",
                                 "terminal_admission": "not_applicable_validation_phase" if phase == "validate" else "required",
                                 "case_jsonl": "not_applicable_validation_phase" if phase == "validate" else "required",
                                 "fp32_boundary": "required", "null_controls": "typed_bonds_required_nonnull" if arm == "boltz" else "original_null_controls"},
               "input_snapshot": snapshot, "projections": {"maximum_pilot_update_bytes": 2000}}
+    result['logit_records']=[]
+    if arm=='boltz':
+        directory=ops.parent_path(phase,arm,offset)/'payload/study/pilot-logit'
+        report=save(directory/'report.json',{'version':'prospective-fixed-reference-logit-admission-v1','status':'passed',
+            'can_admit_new_child':True,'frozen_unchanged':True,'can_certify_original_study':False,
+            'original_failure_preserved':True,'selection_before_perturbed_forwards':True,
+            'directions':[{'field':f,'pair_passed':True,'finer_resolved_disagreements':[]} for f in ('atoms','bonds')]})
+        coarse=save(directory/'original-coarse/report.json',{'status':'failed','scope':'original failure retained'})
+        result['logit_records']=[{'report':report,'original_coarse_report':coarse,'status':'passed','version':'prospective-fixed-reference-logit-admission-v1'}]
     if phase == "segment":
         result["terminal_snapshot"] = save(root / "new-endpoint.json", {"new": "exact"})
     path = ops.parent_path(phase, arm, offset) / "payload/assessment.json"
@@ -120,6 +130,28 @@ def valid_result(owned, arm="boltz", phase="validate", offset=10000):
                                                                  "original_results_changed": False})
     save(path, result)
     return current_plan, result, path
+
+
+def test_boltz_cannot_dispatch_without_pilot_logit_qualification(owned):
+    p,r,path=valid_result(owned);r['logit_records']=[];save(path,r)
+    with pytest.raises(ValueError,match='logit'):ops.verify_result(p,PIN,'validate','boltz',10000)
+
+
+def test_boltz_cannot_dispatch_with_wrong_pilot_policy(owned):
+    p,r,path=valid_result(owned);r['logit_records'][0]['version']='legacy';save(path,r)
+    with pytest.raises(ValueError,match='logit'):ops.verify_result(p,PIN,'validate','boltz',10000)
+
+
+def test_finer_resolved_pilot_contradiction_blocks_even_with_selected_pair_pass(owned):
+    p,r,path=valid_result(owned);record=r['logit_records'][0];proof=Path(record['report']['path']);body=ops.read(proof)
+    body['directions'][0]['finer_resolved_disagreements']=[.00003];save(proof,body);record['report']=ops.binding(proof);save(path,r)
+    with pytest.raises(ValueError,match='logit'):ops.verify_result(p,PIN,'validate','boltz',10000)
+
+
+def test_pilot_proof_cannot_claim_original_recertification(owned):
+    p,r,path=valid_result(owned);record=r['logit_records'][0];proof=Path(record['report']['path']);body=ops.read(proof)
+    body['can_certify_original_study']=True;save(proof,body);record['report']=ops.binding(proof);save(path,r)
+    with pytest.raises(ValueError,match='logit'):ops.verify_result(p,PIN,'validate','boltz',10000)
 
 
 @pytest.mark.parametrize("arm", ["boltz", "dbmol"])
@@ -231,8 +263,8 @@ def test_scheduler_failures_identity_and_query_errors_fail_closed(change):
 
 
 def test_lsf_wraps_whitespace_without_losing_exact_job_name():
-    raw = lsf().replace("mosaic-endpoint06-cpu", "mosaic-endpoint06-\n cpu")
-    assert ops.lsf_success(raw, "111", "mosaic-endpoint06-cpu", "hpc")
+    raw = lsf().replace("mosaic-endpoint07-cpu", "mosaic-endpoint07-\n cpu")
+    assert ops.lsf_success(raw, "111", "mosaic-endpoint07-cpu", "hpc")
 
 
 @pytest.mark.parametrize("change", ["wrong_job", "wrong_name", "wrong_queue", "duplicate_subject", "fake_done_suffix", "no_success"])
@@ -252,7 +284,7 @@ def test_lsf_failure_does_not_become_a_success(change):
         raw = raw.replace("Successfully completed.", "Exited with exit code 1.")
     assert raw != lsf(), "Negative control must actually mutate the raw LSF proof"
     with pytest.raises(ValueError):
-        ops.lsf_success(raw, "111", "mosaic-endpoint06-cpu", "hpc")
+        ops.lsf_success(raw, "111", "mosaic-endpoint07-cpu", "hpc")
 
 
 def test_raw_xml_counts_actual_rows_and_exact_modules(owned):
@@ -643,7 +675,7 @@ def test_rejected_original_protenix_admission_stays_file_bound_and_failed(monkey
     elif change == "bond_passed":
         observation["field_outcomes"]["E_upper"]["passed"] = True
     elif change == "wrong_historical_version":
-        observation["version"] = "prospective-endpoint-admission-v2"
+        observation["version"] = "prospective-endpoint-admission-v3"
     seen = []
     def check(row):
         seen.append(row)

@@ -56,3 +56,7 @@ FRESH` collects both current exact sources in one read-only connection, includin
 nested chemistry JSONL prefixes and failed preflight metadata; absent jobs.json
 is explicit, never a fabricated empty successful job map. `verify_protenix_precision_delivery.py` authenticates exact unique job/name/queue terminal LSF
 with the actual submitted versioned job name. No FP64/native pass yet.
+
+The explicit one-shot source05 readmission operator is readmit_protenix_precision05.py; it preserves its failed preflight and admits only after the exact original guard passes. saved_gradient_forensics.py and manage_saved_gradient_forensics.py own separate allocated-only saved Boltz/DBMol diagnostics; there is no optimizer branch or new acceptance rule.
+
+Continuation measurement07 is a new candidate: admission.py v3 propagates native weighted-component resolution and preselects informative original/local scales; logit_admission.py measures live fixed-reference pilot derivatives. Source06/old failed checks stay immutable. Canonical continuation packaging/staging now accepts only the explicit fresh07 attempt; CPU258 and actual native/terminal/storage gates remain mandatory before any child.

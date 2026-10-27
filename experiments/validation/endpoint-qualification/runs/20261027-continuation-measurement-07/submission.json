@@ -1,0 +1,456 @@
+{
+  "status": "cpu_and_callback_submitted_not_passed",
+  "manifest_sha256": "26c6f0390125c9108f9777e83387b56aea2cc932507c52f039d56aa6a056c7b1",
+  "plan_sha256": "d33951ba04b3c9a7c1a7fd0ee8120da3f1a82bcd82db0c5e7f3b46741f67f209",
+  "files": 19,
+  "archive_bytes": 107280,
+  "archive_sha256": "3e09ed84aca5212af3028a0fae3e8d5fdb879ee95ca89a99dd5b511eeddb9e08",
+  "cpu": {
+    "status": "submitted",
+    "phase": "cpu",
+    "arm": "all",
+    "offset": 0,
+    "argv": [
+      "bsub",
+      "-q",
+      "hpc",
+      "-n",
+      "4",
+      "-R",
+      "span[hosts=1]",
+      "-R",
+      "rusage[mem=4GB]",
+      "-W",
+      "01:00",
+      "-J",
+      "mosaic-endpoint07-cpu",
+      "-oo",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-07/cpu/stdout.%J.log",
+      "-eo",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-07/cpu/stderr.%J.log",
+      "bash",
+      "-l",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-release-07/source/scripts/continuation_stage.lsf",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-release-07/source",
+      "26c6f0390125c9108f9777e83387b56aea2cc932507c52f039d56aa6a056c7b1",
+      "cpu",
+      "all",
+      "0"
+    ],
+    "dependency": null,
+    "source_manifest_sha256": "26c6f0390125c9108f9777e83387b56aea2cc932507c52f039d56aa6a056c7b1",
+    "submitted_utc": "2026-10-27T00:50:16.007160+00:00",
+    "returncode": 0,
+    "stdout": "Job <29826125> is submitted to queue <hpc>.\n",
+    "stderr": "",
+    "job_id": "29826125"
+  },
+  "after_cpu": {
+    "status": "submitted",
+    "phase": "after-cpu",
+    "arm": "all",
+    "offset": 0,
+    "argv": [
+      "bsub",
+      "-q",
+      "hpc",
+      "-n",
+      "1",
+      "-R",
+      "span[hosts=1]",
+      "-R",
+      "rusage[mem=2GB]",
+      "-W",
+      "00:20",
+      "-J",
+      "mosaic-endpoint07-after-cpu",
+      "-oo",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-07/after-cpu/stdout.%J.log",
+      "-eo",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-07/after-cpu/stderr.%J.log",
+      "-w",
+      "ended(29826125)",
+      "bash",
+      "-l",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-release-07/source/scripts/continuation_stage.lsf",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-release-07/source",
+      "26c6f0390125c9108f9777e83387b56aea2cc932507c52f039d56aa6a056c7b1",
+      "after-cpu",
+      "all",
+      "0"
+    ],
+    "dependency": "ended(29826125)",
+    "source_manifest_sha256": "26c6f0390125c9108f9777e83387b56aea2cc932507c52f039d56aa6a056c7b1",
+    "submitted_utc": "2026-10-27T00:50:16.431141+00:00",
+    "returncode": 0,
+    "stdout": "Job <29826126> is submitted to queue <hpc>.\n",
+    "stderr": "",
+    "job_id": "29826126"
+  },
+  "storage": {
+    "status": "passed",
+    "whole_original_gate": {
+      "status": "passed",
+      "phase": "preflight",
+      "version": "selected-nonchem-full-storage-v1",
+      "scope": "All selected full remaining projections; deferred chemistry gets no execution/future admission; every existing byte retained",
+      "reserve_bytes": 4294967296,
+      "file_reserve": 100000,
+      "full_selected_production_admission": true,
+      "matrix_stride": 20,
+      "loss_stride": 1,
+      "historical_failed_gates_changed": false,
+      "deferred_arms": [
+        {
+          "profile": "boltz30k",
+          "arm": "boltz2_chemistry",
+          "future_admission": false,
+          "production_absent": true,
+          "terminal_callback": {
+            "job_id": "29805959",
+            "status": "Done",
+            "proof": {
+              "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/boltz2_chemistry-after-native-0000/stdout.29805959.log",
+              "bytes": 2330,
+              "sha256": "b1aaa8a04bf290bcb2efbc8d3e0e7bfab9ca77b636073b7d547ca09ae5bbecc7"
+            },
+            "scheduler_state_invented": false
+          }
+        },
+        {
+          "profile": "protenix50k40k",
+          "arm": "random",
+          "future_admission": false,
+          "production_absent": true,
+          "terminal_callback": {
+            "job_id": "29806665",
+            "status": "Exited",
+            "proof": {
+              "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/random-after-native-0000/stdout.29806665.log",
+              "bytes": 2320,
+              "sha256": "09a63bb6cd921b6d77b70a4acdc6e7a5d92f8daf044b977b5b72d81cce254f44"
+            },
+            "scheduler_state_invented": false
+          }
+        }
+      ],
+      "selected": {
+        "boltz30k": {
+          "full": 3319422138,
+          "current": 119387010,
+          "remaining": 3200035128,
+          "unit_bytes": 32537
+        },
+        "dbmol10k": {
+          "full": 4337027072,
+          "current": 86352736,
+          "remaining": 4250674336,
+          "unit_bytes": 41074
+        },
+        "protenix50k40k": {
+          "full": 4388251664,
+          "current": 426230196,
+          "remaining": 3962021468,
+          "unit_bytes": 23182
+        }
+      },
+      "historical_remaining": {
+        "protenix": 1445537029,
+        "boltz2": 1727509804,
+        "boltz2_chemistry": 3585573363
+      },
+      "metadata_controls": {
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-pro02-adoption-04": 288301,
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-pro02-adoption-06": 317785,
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-selected-01": 205456,
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-01": 204608,
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-02": 304598
+      },
+      "noise_caps": {
+        "/work3/s234818/mosaic/runs/20261023-protenix-noisy-01": 4955,
+        "/work3/s234818/mosaic/runs/20261025-protenix-noisy-05": 314090599
+      },
+      "retired_noise_current_bytes": 1826,
+      "retired_noise_future_admission": false,
+      "retained_learned_prior_allowance_bytes": 1073741824,
+      "new_metadata_release_allowance_bytes": 1073741824,
+      "external_capsules": [
+        {
+          "path": "/work3/s234818/mosaic/runs/20261023-protenix-noisy-01",
+          "bytes": 4955
+        },
+        {
+          "path": "/work3/s234818/mosaic/runs/20261024-protenix-noisy-04",
+          "bytes": 1826
+        },
+        {
+          "path": "/work3/s234818/mosaic/runs/20261025-protenix-noisy-05",
+          "bytes": 314090599
+        },
+        {
+          "path": "/work3/s234818/mosaic/releases/20261023-protenix-noisy-01",
+          "bytes": 47431694
+        }
+      ],
+      "projected_bytes": 30203965802,
+      "work3": {
+        "status": "passed",
+        "filesystem": "work3",
+        "raw_quota": "HPE-Storage-Servers (disks, storagepool 1): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nHPE-Storage-Servers (NVME, storagepool 2): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (disks, storagepool 3): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks, storagepool 4): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks added in 2024, storagepool 5): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (NVMEs added in 2024, storagepool 6): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||   46.42 GiB|  100.00 GiB||   341795| 20000000\n\n",
+        "quota": {
+          "finite_pools": [
+            {
+              "used_bytes_upper": 50465865728,
+              "hard_bytes_lower": 107374182400,
+              "remaining_bytes": 56908316672,
+              "remaining_files": 19658205
+            }
+          ],
+          "available_bytes_lower": 56908316672,
+          "available_files_lower": 19658205
+        },
+        "projected_bytes": 30203965802,
+        "stale_bytes_subtracted": 5983826721,
+        "disk_free_bytes": 548459728338944,
+        "available_bytes_conservative": 50924489951,
+        "required_bytes": 34498933098,
+        "reserve_bytes": 4294967296,
+        "file_reserve": 100000,
+        "filesystem_inode_observation": {
+          "f_files": 0,
+          "f_ffree": 0,
+          "f_favail": 0
+        },
+        "available_files_lower": 19658205,
+        "filesystem_inode_reporting": "unreported_all_zero",
+        "file_headroom_scope": "Mandatory minimum of all authenticated finite user-quota pools",
+        "inode_limitation": "All-zero statvfs tuple supplies no independent filesystem inode proof",
+        "limitation": "Observations are conservative budget checks, not storage reservations"
+      },
+      "limitation": "Fresh conservative observation, not a reservation; all-zero filesystem inode counters remain unreported supplemental evidence"
+    },
+    "projection_excess": {},
+    "positive_projection_excess_bytes": 0,
+    "additional_allowance_bytes": 4563402752,
+    "required_bytes": 49844557549,
+    "available_bytes": 50910316795,
+    "reserve_bytes": 4294967296,
+    "file_reserve": 100000,
+    "original_gate_changed": false,
+    "scope": "Whole original forecasts plus report1GiB/chemistry2GiB/diagnostics768MiB/newcontrol512MiB and positive empirical excess",
+    "new_metadata_bytes": 568791,
+    "current_chemistry_and_new_scopes": {
+      "status": "passed",
+      "original_gate_changed": false,
+      "parent_gate": {
+        "status": "passed",
+        "original_gate_changed": false,
+        "parent_gate": {
+          "status": "passed",
+          "parent_gate": {
+            "status": "passed",
+            "whole_original_gate": {
+              "status": "passed",
+              "phase": "precision",
+              "version": "selected-nonchem-full-storage-v1",
+              "scope": "All selected full remaining projections; deferred chemistry gets no execution/future admission; every existing byte retained",
+              "reserve_bytes": 4294967296,
+              "file_reserve": 100000,
+              "full_selected_production_admission": true,
+              "matrix_stride": 20,
+              "loss_stride": 1,
+              "historical_failed_gates_changed": false,
+              "deferred_arms": [
+                {
+                  "profile": "boltz30k",
+                  "arm": "boltz2_chemistry",
+                  "future_admission": false,
+                  "production_absent": true,
+                  "terminal_callback": {
+                    "job_id": "29805959",
+                    "status": "Done",
+                    "proof": {
+                      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/boltz2_chemistry-after-native-0000/stdout.29805959.log",
+                      "bytes": 2330,
+                      "sha256": "b1aaa8a04bf290bcb2efbc8d3e0e7bfab9ca77b636073b7d547ca09ae5bbecc7"
+                    },
+                    "scheduler_state_invented": false
+                  }
+                },
+                {
+                  "profile": "protenix50k40k",
+                  "arm": "random",
+                  "future_admission": false,
+                  "production_absent": true,
+                  "terminal_callback": {
+                    "job_id": "29806665",
+                    "status": "Exited",
+                    "proof": {
+                      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/random-after-native-0000/stdout.29806665.log",
+                      "bytes": 2320,
+                      "sha256": "09a63bb6cd921b6d77b70a4acdc6e7a5d92f8daf044b977b5b72d81cce254f44"
+                    },
+                    "scheduler_state_invented": false
+                  }
+                }
+              ],
+              "selected": {
+                "boltz30k": {
+                  "full": 3319422138,
+                  "current": 119387010,
+                  "remaining": 3200035128,
+                  "unit_bytes": 32537
+                },
+                "dbmol10k": {
+                  "full": 4337027072,
+                  "current": 86352736,
+                  "remaining": 4250674336,
+                  "unit_bytes": 41074
+                },
+                "protenix50k40k": {
+                  "full": 4388251664,
+                  "current": 426230196,
+                  "remaining": 3962021468,
+                  "unit_bytes": 23182
+                }
+              },
+              "historical_remaining": {
+                "protenix": 1445537029,
+                "boltz2": 1727509804,
+                "boltz2_chemistry": 3585573363
+              },
+              "metadata_controls": {
+                "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-pro02-adoption-04": 288301,
+                "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-pro02-adoption-06": 317785,
+                "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-selected-01": 205456,
+                "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-01": 204608,
+                "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-02": 304598
+              },
+              "noise_caps": {
+                "/work3/s234818/mosaic/runs/20261023-protenix-noisy-01": 4955,
+                "/work3/s234818/mosaic/runs/20261025-protenix-noisy-05": 314090599
+              },
+              "retired_noise_current_bytes": 1826,
+              "retired_noise_future_admission": false,
+              "retained_learned_prior_allowance_bytes": 1073741824,
+              "new_metadata_release_allowance_bytes": 1073741824,
+              "external_capsules": [
+                {
+                  "path": "/work3/s234818/mosaic/runs/20261023-protenix-noisy-01",
+                  "bytes": 4955
+                },
+                {
+                  "path": "/work3/s234818/mosaic/runs/20261024-protenix-noisy-04",
+                  "bytes": 1826
+                },
+                {
+                  "path": "/work3/s234818/mosaic/runs/20261025-protenix-noisy-05",
+                  "bytes": 314090599
+                },
+                {
+                  "path": "/work3/s234818/mosaic/releases/20261023-protenix-noisy-01",
+                  "bytes": 47431694
+                }
+              ],
+              "projected_bytes": 30203965802,
+              "work3": {
+                "status": "passed",
+                "filesystem": "work3",
+                "raw_quota": "HPE-Storage-Servers (disks, storagepool 1): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nHPE-Storage-Servers (NVME, storagepool 2): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (disks, storagepool 3): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks, storagepool 4): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks added in 2024, storagepool 5): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (NVMEs added in 2024, storagepool 6): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||   46.42 GiB|  100.00 GiB||   341796| 20000000\n\n",
+                "quota": {
+                  "finite_pools": [
+                    {
+                      "used_bytes_upper": 50465865728,
+                      "hard_bytes_lower": 107374182400,
+                      "remaining_bytes": 56908316672,
+                      "remaining_files": 19658204
+                    }
+                  ],
+                  "available_bytes_lower": 56908316672,
+                  "available_files_lower": 19658204
+                },
+                "projected_bytes": 30203965802,
+                "stale_bytes_subtracted": 5984064056,
+                "disk_free_bytes": 548456053080064,
+                "available_bytes_conservative": 50924252616,
+                "required_bytes": 34498933098,
+                "reserve_bytes": 4294967296,
+                "file_reserve": 100000,
+                "filesystem_inode_observation": {
+                  "f_files": 0,
+                  "f_ffree": 0,
+                  "f_favail": 0
+                },
+                "available_files_lower": 19658204,
+                "filesystem_inode_reporting": "unreported_all_zero",
+                "file_headroom_scope": "Mandatory minimum of all authenticated finite user-quota pools",
+                "inode_limitation": "All-zero statvfs tuple supplies no independent filesystem inode proof",
+                "limitation": "Observations are conservative budget checks, not storage reservations"
+              },
+              "limitation": "Fresh conservative observation, not a reservation; all-zero filesystem inode counters remain unreported supplemental evidence"
+            },
+            "projection_excess": {},
+            "positive_projection_excess_bytes": 0,
+            "additional_allowance_bytes": 4563402752,
+            "required_bytes": 39062335850,
+            "available_bytes": 50924252616,
+            "reserve_bytes": 4294967296,
+            "file_reserve": 100000,
+            "original_gate_changed": false,
+            "scope": "Whole original forecasts plus report1GiB/chemistry2GiB/diagnostics768MiB/newcontrol512MiB and positive empirical excess",
+            "new_metadata_bytes": 23955490
+          },
+          "original_gate_changed": false,
+          "output_cap_bytes": 268435456,
+          "metadata_cap_bytes": 16777216,
+          "additional_allowance_bytes": 285212672,
+          "required_bytes": 39347548522,
+          "available_bytes": 50910316795,
+          "extra_conservative_current_tree_charge": {
+            "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-forensics-01": 13171166,
+            "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-forensics-release-01": 216883,
+            "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-02": 269347,
+            "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-release-02": 278425
+          },
+          "reserve_bytes": 4294967296,
+          "file_reserve": 100000,
+          "output_bytes": 35278,
+          "metadata_bytes": 512494
+        },
+        "reserve_bytes": 4294967296,
+        "file_reserve": 100000,
+        "available_bytes": 50910316795,
+        "adopted_full_production": true,
+        "metadata_bytes": 353490,
+        "metadata_full_cap": 67108864,
+        "preserved_chemistry03_control_bytes": 330242,
+        "preserved_chemistry03_control_full_cap": 67108864,
+        "chemistry": {
+          "protenix": {
+            "full": 6481848120,
+            "current": 715850006,
+            "remaining": 5765998114,
+            "budget_root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-03/protenix"
+          },
+          "boltz": {
+            "full": 3832633038,
+            "current": 57239705,
+            "remaining": 3775393333,
+            "budget_root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-04/boltz"
+          }
+        },
+        "additional_remaining_bytes": 9674925443,
+        "required_bytes": 49022473965
+      },
+      "required_bytes": 49844557549,
+      "available_bytes": 50910316795,
+      "reserve_bytes": 4294967296,
+      "file_reserve": 100000,
+      "new_group_allowance_bytes": 822083584,
+      "additional_projection_excess_bytes": 0,
+      "scope": "Whole existing Pro03/new Bol04/old budgets plus new continuation512MiB and precision272MiB; no forecast/reserve removed"
+    }
+  },
+  "original_results_changed": false,
+  "captured_utc": "2026-10-27T00:50:16.732612+00:00"
+}

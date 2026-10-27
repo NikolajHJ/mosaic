@@ -15,9 +15,9 @@ import json
 import os
 
 
-VERSION = "prospective-endpoint-admission-v2"
+VERSION = "prospective-endpoint-admission-v3"
 ORIGINAL_EPSILONS = (0.01, 0.003, 0.001)
-LOCAL_EPSILONS = (0.001, 0.0003, 0.0001, 0.00003)
+LOCAL_EPSILONS = (0.003, 0.001, 0.0003, 0.0001, 0.00003)
 REPEATS = 3
 RELATIVE_TOLERANCE = 0.15
 PARITY_ATOL = 2e-5
@@ -206,14 +206,30 @@ def plan(values, original_directions, *, original_direction_scope="saved_failed_
 
 def _scalar(value):
     np = _numpy()
+    components = None
+    if isinstance(value, dict):
+        _require(set(value) == {'value', 'native_components'}, 'Malformed component-resolved scalar')
+        components = value['native_components']; value = value['value']
+        _require(isinstance(components, dict) and set(components) == {'affinity', 'contact', 'confidence'},
+                 'All three declared native DBMol components required')
     array = np.asarray(value)
     _require(array.shape == () and array.dtype in (np.dtype("float32"), np.dtype("float64"))
              and np.isfinite(array), "Evaluator must return one finite FP32/FP64 scalar")
     fp32 = np.float32(array)
     _require(np.isfinite(fp32), "Native scalar is not FP32 representable")
     # A Python/FP64 wrapper cannot manufacture precision absent from native FP32.
-    return {"value": float(array), "dtype": str(array.dtype),
-            "resolution_ulp": max(float(abs(np.spacing(array))), float(abs(np.spacing(fp32))))}
+    record = {"value": float(array), "dtype": str(array.dtype),
+              "resolution_ulp": max(float(abs(np.spacing(array))), float(abs(np.spacing(fp32))))}
+    if components is not None:
+        parts = {name: _scalar(components[name]) for name in ('affinity', 'contact', 'confidence')}
+        weights = {'affinity': 1., 'contact': 2.5, 'confidence': 2.5}
+        recomposed = sum(weights[k] * v['value'] for k, v in parts.items())
+        _require(abs(recomposed-float(array)) <= PARITY_ATOL, 'Independent total/component scalar parity failed')
+        propagated = sum(weights[k] * v['resolution_ulp'] for k, v in parts.items())
+        record.update(resolution_ulp=max(record['resolution_ulp'], propagated), native_components=parts,
+                      component_weights=weights, recomposed_value=recomposed,
+                      resolution_scope='Weighted native component resolution; full-FP64 trunk is not claimed')
+    return record
 
 
 def _invoke(callback, arrays):

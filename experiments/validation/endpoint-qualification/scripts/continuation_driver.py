@@ -1,8 +1,8 @@
 """Explicit prospective endpoint hooks around authenticated original drivers.
 
 Private allocated process only. Original optimizer/model/source/config/saved
-results are not edited. Only the raw-FD loop and its explicit readiness predicate
-are replaced by the separately versioned prospective admission policy. All other
+results are not edited. Raw-FD and fixed-reference pilot logit measurements use
+separately versioned prospective policies with original coarse failures retained. All other
 original checker statements (including nulls and component transports) remain.
 """
 from __future__ import annotations
@@ -16,6 +16,7 @@ import importlib
 import inspect
 import json
 import os
+import re
 from pathlib import Path, PurePosixPath
 import runpy
 import subprocess
@@ -326,10 +327,19 @@ def restore_point_placement(values, template, graph_type, device_put):
                       device_put(values["E_upper"], template.E_upper.device))
 
 
+def component_resolved_scalar(value, auxiliary):
+    """Carry actual native addends into measurement, without changing the loss."""
+    names={'affinity':'dbmol_affinity_loss','contact':'dbmol_contact_loss','confidence':'dbmol_confidence_loss'}
+    require(isinstance(auxiliary,dict) and all(k in auxiliary for k in names.values()),
+            'Independent DBMol primitive resolution metadata missing')
+    return {'value':value,'native_components':{name:auxiliary[key] for name,key in names.items()}}
+
+
 class EndpointHooks:
     def __init__(self, arm, arm_name, output, offset):
         self.arm, self.name, self.output, self.offset = arm, arm_name, Path(output), offset
         self.records = []
+        self.logit_records = []
         self.transforms = []
 
     def _scope(self, directory):
@@ -360,7 +370,7 @@ class EndpointHooks:
         return admission.plan(point["values"], original,
                               original_direction_scope=scope)
 
-    def _callbacks(self, loss, key, directory, frozen, template):
+    def _callbacks(self, loss, key, directory, frozen, template, objective=None):
         import jax
         import numpy as np
         from mosaic.small_molecule.state import RelaxedGraph
@@ -376,13 +386,15 @@ class EndpointHooks:
             return restore_point_placement(values, template, RelaxedGraph, jax.device_put)
         def primal(values):
             number = counters["primal"]; counters["primal"] += 1
-            value = _value(loss, graph(values), key, directory / f"primal-{number:04d}.npz", compact=True, logits=False)
-            return np.float64(value) if self.name == "dbmol" else np.float32(value)
+            value, aux = _value(loss, graph(values), key, directory / f"primal-{number:04d}.npz", return_aux=True, compact=True, logits=False)
+            value = np.float64(value) if self.name == "dbmol" else np.float32(value)
+            return component_resolved_scalar(value, aux) if objective == 'dbmol_total_loss' else value
         def ad(values):
             number = counters["ad"]; counters["ad"] += 1
             value = evaluate_graph(loss, graph(values), key)
             _save_evaluation(directory / f"autodiff-{number:04d}.npz", value, compact=True, logits=False)
-            return np.asarray(value.value), {"X": np.asarray(value.gradients.X), "E_upper": np.asarray(value.gradients.E_upper)}
+            scalar = component_resolved_scalar(np.asarray(value.value), value.aux) if objective == 'dbmol_total_loss' else np.asarray(value.value)
+            return scalar, {"X": np.asarray(value.gradients.X), "E_upper": np.asarray(value.gradients.E_upper)}
         return primal, ad, frozen
 
     def _frozen(self, loss, worker=None, directory=None):
@@ -502,6 +514,56 @@ class EndpointHooks:
             return result
         return wrapped
 
+    def combined(self, original):
+        """Fixed-reference local logit measurement for new nonchemistry children."""
+        def wrapped(loss, evaluation, prepared, spec, reference, *, key, config, directory=None):
+            import numpy as np
+            import jax
+            import equinox as eqx
+            import logit_admission
+            from mosaic.small_molecule.chemistry.trajectory import evaluate_combined
+            require(self.name in ('boltz','dbmol') and directory is not None
+                    and config['repair_weight']==0 and config['element_js_weight']==0,
+                    'Prospective nonchemistry logit hook cannot change chemistry/coefficients')
+            directory=Path(directory);require(directory.is_relative_to(self.output),'Pilot output escaped own child')
+            directory.mkdir(parents=True,exist_ok=False)
+            values={f:np.asarray(getattr(evaluation.logits,f)).copy() for f in ('atoms','bonds')}
+            frozen=self._frozen(loss,directory=directory);counter=0
+            def evaluate(point):
+                nonlocal counter
+                state=evaluation.logits
+                for f in ('atoms','bonds'):
+                    state=eqx.tree_at(lambda v:getattr(v,f),state,jax.device_put(point[f],getattr(evaluation.logits,f).device))
+                value=evaluate_combined(loss,state,prepared,spec,reference,key=key,config=config)
+                scalar=np.float64(value.primal) if self.name=='dbmol' else np.float32(value.primal)
+                ad_scalar=np.float64(value.value) if self.name=='dbmol' else np.float32(value.value)
+                aux=value.native.evaluation.aux
+                gradients={f:np.asarray(getattr(value.gradients,f)) for f in ('atoms','bonds')}
+                graph=state.graph()
+                np.savez_compressed(directory/f'point-{counter:04d}.npz',atom_logits=point['atoms'],bond_logits=point['bonds'],
+                    X=np.asarray(graph.X),E_upper=np.asarray(graph.E_upper),primal=scalar,AD_value=ad_scalar,
+                    gradient_atom_logits=gradients['atoms'],gradient_bond_logits=gradients['bonds'],key_data=np.asarray(jax.random.key_data(key)))
+                counter+=1
+                if self.name=='dbmol':scalar=component_resolved_scalar(scalar,aux);ad_scalar=component_resolved_scalar(ad_scalar,aux)
+                return scalar,ad_scalar,gradients
+            result=logit_admission.evaluate(values,lambda v:evaluate(v)[0],lambda v:(lambda r:(r[1],r[2]))(evaluate(v)),
+                frozen,seal_callback=lambda seal:write(directory/'pair-seal.json',seal))
+            result.update(preparation_identity=prepared.identity,repair_weight=0.,original_optimizer_or_reference_changed=False)
+            write(directory/'report.json',result)
+            # Original observations stay separate and cannot select a new pair.
+            legacy=directory/'original-coarse'
+            try:original(loss,evaluation,prepared,spec,reference,key=key,config=config,directory=legacy)
+            except AssertionError as error:
+                require(re.fullmatch(r'Combined frozen-reference (atoms|bonds) derivative check failed',str(error)) is not None,
+                        'Unexpected original checker failure is not a coarse derivative observation')
+            record={'report':binding(directory/'report.json'),'status':result['status'],'version':logit_admission.VERSION,
+                    'original_coarse_report':binding(legacy/'report.json')}
+            self.logit_records.append(record)
+            require(result['status']=='passed' and result['can_admit_new_child'] is True and result['frozen_unchanged'] is True,
+                    'Prospective fixed-reference pilot logit check failed')
+            return result['directions']
+        return wrapped
+
     def dbmol(self, module, original):
         """Retain native oracle/component transport/recomposition/null/frozen code."""
         def wrapped(worker, graph, key, directory, *, hard_graph, make_loss):
@@ -531,7 +593,7 @@ class EndpointHooks:
             require(changed == {"policy": 1, "flag": 1}, "DBMol validator policy shape changed")
             def raw(primal, x, e, gx, ge, *, objective):
                 sub = prospective_root / objective
-                callbacks = self._callbacks(make_loss(objective), key, sub, self._frozen(None, worker, sub), graph)
+                callbacks = self._callbacks(make_loss(objective), key, sub, self._frozen(None, worker, sub), graph, objective=objective)
                 # Independent native primal retains the original caller's exact
                 # objective/graph identity checks; save its typed scalar as FP64.
                 primal_count = 0
@@ -539,10 +601,17 @@ class EndpointHooks:
                     nonlocal primal_count
                     import numpy as np
                     value = np.float64(primal(values["X"], values["E_upper"]))
+                    metric_values = None
+                    if objective == 'dbmol_total_loss':
+                        from dbmol_bridge import METRICS
+                        metrics, _, _ = worker.evaluate_metrics(values['X'], values['E_upper'], gradient=False, objective=objective)
+                        metric_values = dict(zip(METRICS, metrics))
+                        require(np.asarray(metrics).dtype == np.float64 and np.isfinite(metrics).all()
+                                and float(metric_values[objective]) == float(value), 'Independent native metrics/total parity changed')
                     np.savez_compressed(sub / f"primal-{primal_count:04d}.npz",
-                                        X=values["X"], E_upper=values["E_upper"], loss=value)
+                                        X=values["X"], E_upper=values["E_upper"], loss=value, **(metric_values or {}))
                     primal_count += 1
-                    return value
+                    return component_resolved_scalar(value, metric_values) if metric_values is not None else value
                 callbacks = (independent, callbacks[1], callbacks[2])
                 original_raw = module.check_raw_finite_differences
                 holder = {}
@@ -630,6 +699,11 @@ def install_hooks(state):
             module = importlib.import_module(name); original = getattr(module, attr)
             setattr(module, attr, state.simple(original, kind=state.name))
             patched.append((module, attr, original))
+        if state.name in ('boltz','dbmol'):
+            module=importlib.import_module('mosaic.small_molecule.chemistry.checks')
+            original=module.check_combined_directions
+            module.check_combined_directions=state.combined(original)
+            patched.append((module,'check_combined_directions',original))
         yield
     finally:
         for module, attr, original in reversed(patched):
@@ -648,7 +722,7 @@ def endpoint_policy_version():
     policy = importlib.import_module('admission')
     require(Path(policy.__file__).resolve() == Path(__file__).with_name('admission.py').resolve(),
             'Endpoint policy was imported outside the authenticated driver capsule')
-    require(policy.VERSION == 'prospective-endpoint-admission-v2', 'Undeclared prospective endpoint policy')
+    require(policy.VERSION == 'prospective-endpoint-admission-v3', 'Undeclared prospective endpoint policy')
     return policy.VERSION
 
 
@@ -723,6 +797,7 @@ def assessment(state, plan, pin, phase, offset, output, snapshot, ready, error=N
               "endpoint_policy": endpoint_policy_version(), "driver_hook": HOOK_VERSION,
               "readiness_adapter": READINESS_VERSION if state.name == "dbmol" else "original_metadata_checks_with_explicit_new_endpoint_report",
               "endpoint_records": state.records, "original_summary": binding(output / "summary.json"),
+              "logit_records":state.logit_records,
               "projections": {"maximum_pilot_update_bytes": validation["storage_projection"]["maximum_pilot_update_bytes"],
                               "bytes_per_update": validation["storage_projection"]["maximum_pilot_update_bytes"]},
               "proofs": [binding(path) for path in sorted(output.rglob("*")) if path.is_file() and not path.is_symlink()]

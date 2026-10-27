@@ -47,3 +47,31 @@ optimizer readiness result. Preserve every failed receipt and immutable source.
 Do not replay stage/bootstrap; any future admission needs a fresh explicit
 operation after full capacity is actually available, with original286 tests/
 startups/native policy and all reserves/forecasts retained.
+
+The renewed user request authorizes an explicit one-shot admission recovery,
+`scripts/readmit_protenix_precision05.py`, using the SAME sealed16-file source05
+and original286 cases. It first reauthenticates the exact failed gateSHA450240...
+and asserts root entries are preflight only, with no CPU/jobs/unknown markers.
+It authenticates all external proofs, creates a unique admission-recovery-01,
+repeats the entire unmodified storage guard, then calls only original CPU and
+own-ended callback submit APIs. This is not stage/bootstrap replay, no failed
+gate is overwritten, and no optimizer branch is available. No admission or
+test pass is established by preparing the operator.
+
+## Actual readmission after exact physical storage recovery
+
+The exact original guard passed49,855,387,400required versus50,922,367,418
+available bytes, retaining every future forecast and4GiB/100000 reserves.
+CPU29826029 and own-ended callback29826030 actually submitted; at00:31UTC
+CPU RUN, callback PEND normally. Original source05 remains exact16files with
+manifest65b4bd350386a8550c3b588eb7de2b0f6084b32ad790a907851c632dba0f023e.
+Its failed preflight gate is unchanged. All286 cases and GPU result remain
+pending until actual evidence; no optimization branch/submission.
+
+CPU29826029 actualDONE/hpc/LSFsuccess, all286 raw cases passed5+30+82+72+97
+with zero errors/failures/skips, real startup passed. Independent byte/XML/LSF
+audit and certificateSHA66ce5a0b7c73359508ba940d714425e1a8249ed9275e57b4150f3b9f77185ea9
+verified. Callback29826030 actualDONE/LSFsuccess and fresh storage passed; GPU
+29826052 actually submitted, lastPEND at00:50:03UTC27October. No native
+FP64 pass or optimizer continuation established. Later SSH timeout is access
+limitation, not a GPU result; inspect original actual receipts before recovery.
