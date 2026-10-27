@@ -1,0 +1,285 @@
+{
+  "status": "passed_independent_delivery_byte_XML_LSF_schema_audit",
+  "source_manifest_sha256": "d3d8678542db3cf6100006f8f9dbd3ce761f169bd904ddcae3d4525a53252f51",
+  "jobs": {
+    "cpu": "29830696",
+    "after-cpu": "29830697",
+    "gpu-protenix": "29830750",
+    "gpu-boltz": "29830751"
+  },
+  "files": 53,
+  "cpu_cases": 33,
+  "original_accelerated_protenix_records_exactly_equal": true,
+  "original_failure_status_preserved": true,
+  "optimizer_continuations_submitted": false,
+  "native_point_NPZ_files_downloaded": false,
+  "scope": "Compact metadata only; raw point bytes require separate inventory authentication",
+  "observation_sha256": "cd9218111ba453f8eb5a454697b364ebce61df3df21d90f7096464429e7e2cab",
+  "bindings": {
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/cpu/continuation-storage-chem-diag-entry.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/cpu/continuation-storage-chem-diag-entry.json",
+      "bytes": 19045,
+      "sha256": "a45966c9c1cee07579a9b9a2d20839f26ec39e00f985cd8b360161082af0416c"
+    },
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/cpu/submission.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/cpu/submission.json",
+      "bytes": 1180,
+      "sha256": "9cdb070f4b827b6421a4c2e04f0326e1c5cf8a158f0e9065ae883a59602938b7"
+    },
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/cpu/chemistry-diagnostic-storage-entry.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/cpu/chemistry-diagnostic-storage-entry.json",
+      "bytes": 20114,
+      "sha256": "669871a9d82dba0c96dd2832eca637ecbfe41c46311b178c4e1f12bfd379c28c"
+    },
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/cpu/submission-started.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/cpu/submission-started.json",
+      "bytes": 1058,
+      "sha256": "e3cc05bcb2f03c08a6a373c079a534c8590b652534b48c123b5e046f7f39b4eb"
+    },
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/cpu/stderr.29830696.log": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/cpu/stderr.29830696.log",
+      "bytes": 233,
+      "sha256": "7d57e9e44355166e210a310a2b90b7d8543b85c5ffbb82276c701f4dd1f23271"
+    },
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/cpu/stdout.29830696.log": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/cpu/stdout.29830696.log",
+      "bytes": 2002,
+      "sha256": "1933f7f954fad90edde650e76bf49a058459dc86215b942a3405fb6b3bede3ec"
+    },
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/cpu/payload/assessment.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/cpu/payload/assessment.json",
+      "bytes": 186,
+      "sha256": "ca43e3e4c83b252806d95731260c882217d365daa58c61163bde1775fe54f696"
+    },
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/cpu/payload/saved/assessment.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/cpu/payload/saved/assessment.json",
+      "bytes": 3917,
+      "sha256": "ef1fb2e7d5bfecedda005c9788d8fed021afd0c9f5fc055076480d64c0815e97"
+    },
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/cpu/payload/startup-protenix/startup.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/cpu/payload/startup-protenix/startup.json",
+      "bytes": 96,
+      "sha256": "1d867bef9cc4bdffd080b3ba8d345a8023afcbeef15600021207f8c32a4d92aa"
+    },
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/cpu/payload/startup-saved/startup.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/cpu/payload/startup-saved/startup.json",
+      "bytes": 96,
+      "sha256": "1d867bef9cc4bdffd080b3ba8d345a8023afcbeef15600021207f8c32a4d92aa"
+    },
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/cpu/payload/startup-boltz/startup.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/cpu/payload/startup-boltz/startup.json",
+      "bytes": 96,
+      "sha256": "1d867bef9cc4bdffd080b3ba8d345a8023afcbeef15600021207f8c32a4d92aa"
+    },
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/cpu/payload/startup-invocation-0.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/cpu/payload/startup-invocation-0.json",
+      "bytes": 665,
+      "sha256": "0c9ea7b4112ec0d9ae9970ec6288b49d3c7fdb49689165ff94cef9a13121476e"
+    },
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/cpu/payload/startup-invocation-2.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/cpu/payload/startup-invocation-2.json",
+      "bytes": 665,
+      "sha256": "be1f6ad5e5d9265bd7ef9ecf463fcb73b222a963ce09b1a7e7cd50efefe27147"
+    },
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/cpu/payload/startup-invocation-1.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/cpu/payload/startup-invocation-1.json",
+      "bytes": 671,
+      "sha256": "1540284c1fda3d34747c13658dd389e905716b257bf0da91baa2bcd20dda8621"
+    },
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/cpu/payload/tests.xml": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/cpu/payload/tests.xml",
+      "bytes": 5107,
+      "sha256": "c1745510764723559ed6fa5e60f6d0990c2c078a9e42b30a61e399b8e7934651"
+    },
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/cpu/payload/saved-analysis.log": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/cpu/payload/saved-analysis.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/cpu/payload/tests.log": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/cpu/payload/tests.log",
+      "bytes": 99,
+      "sha256": "6198426267195f0e847b68afd9160de733f202e75756c405816959635e44d574"
+    },
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/after-cpu/chemistry-diagnostic-storage-dispatch.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/after-cpu/chemistry-diagnostic-storage-dispatch.json",
+      "bytes": 20117,
+      "sha256": "772f05e5067db2c8899a0af2f238f5bfcc31fa078d96aa2347efe33c84661409"
+    },
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/after-cpu/continuation-storage-chem-diag-entry.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/after-cpu/continuation-storage-chem-diag-entry.json",
+      "bytes": 19045,
+      "sha256": "f22d69ac339264c2169312275882d09e69bbbb6c18e109e5c8e1904120f887bf"
+    },
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/after-cpu/cpu-terminal-00.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/after-cpu/cpu-terminal-00.json",
+      "bytes": 3678,
+      "sha256": "0669f3824cb95ecdd9fe21c08ee7fd8865cfbb4a9006c48a172e10791c544d99"
+    },
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/after-cpu/continuation-storage-chem-diag-dispatch.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/after-cpu/continuation-storage-chem-diag-dispatch.json",
+      "bytes": 19048,
+      "sha256": "b1e8d3ae090cc6c6ec2c2533e435283b2f5d52ee63d303c5a743aa82f195e511"
+    },
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/after-cpu/submission.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/after-cpu/submission.json",
+      "bytes": 1256,
+      "sha256": "7fec22d3060c2d3443c43ca1b522ec4a996790234eda8e3b58d6ebf2b2b18b72"
+    },
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/after-cpu/chemistry-diagnostic-storage-entry.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/after-cpu/chemistry-diagnostic-storage-entry.json",
+      "bytes": 20114,
+      "sha256": "3a3068edd3e21b0e709730d684cf55d808a8e4057e26c3596f4c72933b01392f"
+    },
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/after-cpu/submission-started.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/after-cpu/submission-started.json",
+      "bytes": 1134,
+      "sha256": "f80a9a979bbdfbf354fe602046e104ac089ecbd7888dd7715dfdecf5ede4623c"
+    },
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/after-cpu/stderr.29830697.log": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/after-cpu/stderr.29830697.log",
+      "bytes": 233,
+      "sha256": "7d57e9e44355166e210a310a2b90b7d8543b85c5ffbb82276c701f4dd1f23271"
+    },
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/after-cpu/stdout.29830697.log": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/after-cpu/stdout.29830697.log",
+      "bytes": 2021,
+      "sha256": "fcda9d6e6bd88e5125c931282c58ee0ec6b680e1b73698d7f52cd2e838b35e93"
+    },
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/after-cpu/payload/assessment.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/after-cpu/payload/assessment.json",
+      "bytes": 96,
+      "sha256": "981719e5c75a32af2bbc59366841d6947d6a64cb7592e7686e4f74dfa3e71954"
+    },
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/gpu-protenix/submission-started.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/gpu-protenix/submission-started.json",
+      "bytes": 1155,
+      "sha256": "5a1e165bc04915fcc52a6f2f48d77853bbbed6452fb9e0a51304826ea6cb12f5"
+    },
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/gpu-protenix/submission.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/gpu-protenix/submission.json",
+      "bytes": 1281,
+      "sha256": "3d0f572656e2cb17a03a1e6473eb9e9d790326ad44b5663e636ad1b91cf9c5bd"
+    },
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/gpu-protenix/chemistry-diagnostic-storage-entry.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/gpu-protenix/chemistry-diagnostic-storage-entry.json",
+      "bytes": 20410,
+      "sha256": "aa965096d0adeae804ca61c475d3f37ae6550b535ab7120fba3283e4320ce0a4"
+    },
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/gpu-protenix/continuation-storage-chem-diag-entry.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/gpu-protenix/continuation-storage-chem-diag-entry.json",
+      "bytes": 19319,
+      "sha256": "2e478574b795b9284be9673257d571286a7ef4e376777a2cf70c5c83a71f51ca"
+    },
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/gpu-protenix/stdout.29830750.log": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/gpu-protenix/stdout.29830750.log",
+      "bytes": 2142,
+      "sha256": "43be21a5f25e51865fee53c6a1596bb00412a7c9983fdfcc5d02ef672b4f9e01"
+    },
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/gpu-protenix/stderr.29830750.log": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/gpu-protenix/stderr.29830750.log",
+      "bytes": 260,
+      "sha256": "e88d7498b24f9dd51983e7779ddc9995dcd041200de7e81cbed8ed71a1d6c842"
+    },
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/gpu-protenix/payload/assessment.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/gpu-protenix/payload/assessment.json",
+      "bytes": 493,
+      "sha256": "c3f037e5fa856939b59d0154dfdb9a263a4be8512560baa27b77609251fa67ad"
+    },
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/gpu-protenix/payload/native/assessment.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/gpu-protenix/payload/native/assessment.json",
+      "bytes": 14400,
+      "sha256": "725a97998726f81ac024152f204a21ba86466fdc0d86d8ea4e0b7775919e8076"
+    },
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/gpu-protenix/payload/native/frozen-before.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/gpu-protenix/payload/native/frozen-before.json",
+      "bytes": 177,
+      "sha256": "3211f9d322c1f9f6b59d9b490ec60a57aab27cd0804d7f20782c8180149e747d"
+    },
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/gpu-protenix/payload/native/frozen-after.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/gpu-protenix/payload/native/frozen-after.json",
+      "bytes": 177,
+      "sha256": "3211f9d322c1f9f6b59d9b490ec60a57aab27cd0804d7f20782c8180149e747d"
+    },
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/gpu-protenix/payload/native-invocation.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/gpu-protenix/payload/native-invocation.json",
+      "bytes": 648,
+      "sha256": "5a8884a260c29f9bed2f768b69e8f527a2cb795cea5432ad0cb50a1ccac08683"
+    },
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/gpu-protenix/payload/native.log": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/gpu-protenix/payload/native.log",
+      "bytes": 107,
+      "sha256": "95724ae2e8b840f0a2176d3b63db4d475c86c91f86b81c7378c626fa7ee0c56d"
+    },
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/gpu-boltz/submission-started.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/gpu-boltz/submission-started.json",
+      "bytes": 1140,
+      "sha256": "a3063d952b11e404515668e1860570a2e7bc5fbfc0cfc2bfcba546528a0b5afa"
+    },
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/gpu-boltz/submission.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/gpu-boltz/submission.json",
+      "bytes": 1266,
+      "sha256": "6895fe9e4e424c5ed090788d05916e8ba16817893c4a6c6e486c3223fb4c0d20"
+    },
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/gpu-boltz/chemistry-diagnostic-storage-entry.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/gpu-boltz/chemistry-diagnostic-storage-entry.json",
+      "bytes": 20680,
+      "sha256": "b19c33d768400581c0bb8a54beeffed283ef18d05f2d5f36bc5d3fba02333ab2"
+    },
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/gpu-boltz/continuation-storage-chem-diag-entry.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/gpu-boltz/continuation-storage-chem-diag-entry.json",
+      "bytes": 19569,
+      "sha256": "8bdab365a06e486207e62921a954db22d06c4d4b662049d09b5e7be0ff7f1ca8"
+    },
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/gpu-boltz/stderr.29830751.log": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/gpu-boltz/stderr.29830751.log",
+      "bytes": 260,
+      "sha256": "e88d7498b24f9dd51983e7779ddc9995dcd041200de7e81cbed8ed71a1d6c842"
+    },
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/gpu-boltz/stdout.29830751.log": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/gpu-boltz/stdout.29830751.log",
+      "bytes": 2126,
+      "sha256": "0b282f78581f50ab6ecdc2c99c92593585b2facdf42988aea906169cfe7e291c"
+    },
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/gpu-boltz/payload/assessment.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/gpu-boltz/payload/assessment.json",
+      "bytes": 489,
+      "sha256": "e098e56f92a974ec74ffbce0de4f099ae5fcf24164fba47ada1ca134e44ff5c5"
+    },
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/gpu-boltz/payload/native/assessment.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/gpu-boltz/payload/native/assessment.json",
+      "bytes": 7125,
+      "sha256": "060f37d1d0d4ec9a61ccc196bf98ec6253d5ddd0a277a4611053a6e5da10d1ee"
+    },
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/gpu-boltz/payload/native/frozen-before.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/gpu-boltz/payload/native/frozen-before.json",
+      "bytes": 177,
+      "sha256": "2f34dda9ab65f1ba3258d5eafda5df95b7a54e67f91000236a85bdd3cbb9a1bf"
+    },
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/gpu-boltz/payload/native/frozen-after.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/gpu-boltz/payload/native/frozen-after.json",
+      "bytes": 177,
+      "sha256": "2f34dda9ab65f1ba3258d5eafda5df95b7a54e67f91000236a85bdd3cbb9a1bf"
+    },
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/gpu-boltz/payload/native-invocation.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/gpu-boltz/payload/native-invocation.json",
+      "bytes": 642,
+      "sha256": "3b57be99d51c576c961d48c6be88438ad13d41d331c4819796291f1882524c6a"
+    },
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/gpu-boltz/payload/native.log": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/gpu-boltz/payload/native.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/jobs.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/jobs.json",
+      "bytes": 108,
+      "sha256": "5c72b4caa07bf4867ee13ae0c67476b238957fb642bc40a5c54edde58584e6bc"
+    },
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/cpu-certificate.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-02/cpu-certificate.json",
+      "bytes": 2259,
+      "sha256": "8014b20a4b0f47150092a61d04c65cb17258bca1e7b9fffab1a7b75d666c1863"
+    }
+  }
+}

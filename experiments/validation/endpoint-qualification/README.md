@@ -181,3 +181,15 @@ first runs allocated saved-Protenix decomposition and separate native Pro/Bol
 cohorts. It is explicitly diagnostic-only, preserves both original failures and
 has no optimizer dispatch branch. A demonstrated correction and prospective
 continuation still need their own full qualification; preparation is not a pass.
+
+
+27October20:21CET: chemistry diagnostic02 CPU33 and both separate GPU jobs
+29830750/29830751 completed. Independent byte/XML/LSF audit passed53compact
+files; original/accelerated Pro records match exactly, all saved results
+remain unchanged. These are diagnostics, not continuation qualification.
+[Native qualification03](runs/20261027-chemistry-native-qualification-03/README.md)
+now tests unchanged rawv3 Bol and separate fullFP64 Pro policies at the exact
+chemistry10k boundaries. Its result is native-component-only: combined
+low/high/actual-coefficient checks and BOTHtenpilots still precede continuations.
+No optimizer branch or scientific setting change exists in this intermediate
+capsule; original failures stay failed. Read actual campaign receipts.

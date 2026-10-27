@@ -48,3 +48,10 @@ CPU261/startup/callback passed; GPU29829934 PEND. Continuation08DBMol29829703
 PEND remainsauthoritative; no duplicate. Precision07CPU301/startup/callback
 passed; GPU29829894 PEND. No blockedoptimizer started. Scientific settings and
 saved results unchanged. Canonical continuation package/stage targetsONLY09.
+
+
+- [Chemistry diagnostic02](20261027-chemistry-endpoint-recovery-02/README.md):
+  CPU33 and both separate native diagnostics completed, originals preserved.
+- [Chemistry native qualification03](20261027-chemistry-native-qualification-03/README.md):
+  unchanged rawv3 Bol/fullFP64 Pro candidate; stage SSH255/reset, remote outcome
+  unknown. Inspect exact markers before recovery; no optimizer branch/pass.

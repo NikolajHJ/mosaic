@@ -89,3 +89,12 @@ measurements. `manage_chemistry_endpoint.py` is their account-bound stdlib
 prepare/stage/observe operator. The immutable attempt and commands/resources
 are recorded under runs/20261027-chemistry-endpoint-recovery-02. This capsule
 never dispatches optimizer continuations or certifies an original failed run.
+
+
+Chemistry endpoint follow-up: `verify_chemistry_endpoint_delivery.py` performs
+only local stdlib byte/XML/LSF/schema checks. `chemistry_native_qualification.py`
+executes the existing native raw/FP64 policies on allocated HPC;
+`chemistry_qualification_ops.py` adopts immutable diagnostic02 metadata in a new
+namespace; `manage_chemistry_qualification.py` owns separate03 packaging,
+one-shot staging and read-only observation. It has no optimizer dispatch.
+Exact protocol/commands/status are in the03 run record.

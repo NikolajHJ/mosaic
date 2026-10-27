@@ -72,3 +72,17 @@ proof bindings, unchanged settings/results and paused monitor. No numerical
 fix or chemistry continuation is claimed. Next action after access recovers:
 inspect exact02jobs/assessments/rawXML/LSF, complete native diagnosis, then
 validate a demonstrated correction and separately guarded continuations.
+
+
+## Completed observation27October20:21CET
+
+CPU29830696 and callback29830697 completed14:08:04/14:11:15CET. Native Pro
+29830750 ran18:17:02–18:21:13 and Bol29830751 ran18:21:14–18:24:31CET; all
+actual same-job LSFsuccess, no scheduler state fabricated after aging out.
+CPU33 cases/no fail/error/skip, all startups and both native preservation
+assessments independently byte/XML/schema verified from53compact files.
+Native input/point NPZs were rehashed remotely for3398total subsequent protected
+bindings; their large raw bytes were not downloaded by this compact delivery.
+Original/accelerated Pro eleven-point records are exactly equal. Both original
+failures remain failed, no continuation admission or optimizer submission.
+Follow-up native-component qualification is a distinct immutable03 capsule.

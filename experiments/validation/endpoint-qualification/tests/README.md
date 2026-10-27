@@ -50,3 +50,9 @@ add33 allocated controls for saved-gradient decomposition, frozen-input scope,
 exclusive evidence writes, declared resources and rejection of optimizer
 dispatch. Numerical fixtures run only on allocated HPC, not the laptop;
 actual native diagnostics are separate from these fixture outcomes.
+
+
+`test_chemistry_native_qualification.py` has24allocated controls for real
+startup/source/root/queue/dtype identities, unchanged policy constants, positive
+raw-gradient controls and zero/reversed/scaled rejection. CPU passes do not
+establish native or combined chemistry admission. No numerical tests locally.

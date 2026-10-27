@@ -1,0 +1,71 @@
+{
+  "can_submit_continuation": false,
+  "cpu_counts": {
+    "tests.test_chemistry_native_qualification.ChemistryNativeQualificationTests": 24
+  },
+  "diagnostic_only": true,
+  "files": {
+    "README.md": "99b6b1deb06e502a5891fec5f6ef2352fcff9036d2f94a285e9f74075a281bdc",
+    "plan.json": "4809075544e82edb2005fba031fc643dda463b45ef59cff709a70f087b0f8fca",
+    "protocol.md": "48ae0ec084117719f14781e72ef984cf84d54d4a55df3736b9d9655af86a00cc",
+    "scripts/README.md": "99b6b1deb06e502a5891fec5f6ef2352fcff9036d2f94a285e9f74075a281bdc",
+    "scripts/admission.py": "9e0592b2ee72db60469fd7ecf50b21720caa98ded319b027e705137cbcdc1896",
+    "scripts/chemistry_endpoint_stage.lsf": "46c63f66003deb15a38cd2064ca8e017b9f3c4081d6bfa0d6b0b05f021453e81",
+    "scripts/chemistry_native_qualification.py": "2ea8e4aacff33c3de641fa1d0ce4aa27a4678be8e09dafbc8277f82d2aa3c038",
+    "scripts/chemistry_qualification_ops.py": "192e04243bfebf822b9e8846829725b16f8ea037d505db35be6f48ac12003eaa",
+    "scripts/protenix_precision_admission.py": "ae549f19a8af11453b0bb01154bde61cd63f4fa8ad1676759c7427e9049ddf68",
+    "scripts/protenix_precision_reference.py": "fd6c0623de4d830488556c187cbcd78c0bb1b671227c90fa7471646f3434bcb4",
+    "tests/README.md": "99b6b1deb06e502a5891fec5f6ef2352fcff9036d2f94a285e9f74075a281bdc",
+    "tests/test_chemistry_native_qualification.py": "d04d6592a8cb6cd69df3f58d0ed64beb76a7b6412e8786b5d7ececcc3b0153fe"
+  },
+  "optimizer_updates": 0,
+  "original_results_changed": false,
+  "parent_sources": [
+    {
+      "files": 643,
+      "manifest_sha256": "da9db6821d26b884ca1749303fc8e0b0095bd9ee7cbd1b427cdcf1b22eec6562",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source"
+    },
+    {
+      "files": 34,
+      "manifest_sha256": "ab875927a328c34650d2e43baf6dfbe323e8f9bcf5600f39bac78f3ccdfb5d8c",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-release-05/source"
+    },
+    {
+      "files": 635,
+      "manifest_sha256": "c214bccf2c94ac6829996bc0ca7d6415d3c19549be4fe7f874cba2b433901cc6",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-release-03/source"
+    },
+    {
+      "files": 30,
+      "manifest_sha256": "05e316a7b1bcceaf286b03231200a2d1f66e3f6a7ce927d4c1e73f08a24f86f9",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-release-02/source"
+    },
+    {
+      "files": 19,
+      "manifest_sha256": "f15443b51c5197b95205bf59c90e05192f9ceabb955e6006cccfbbdff257fc9b",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-release-09/source"
+    },
+    {
+      "files": 14,
+      "manifest_sha256": "c73796b041d8432ef1634e8c56920006170a094d3bdc74867c08f3b5415126d7",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-release-03/source"
+    },
+    {
+      "files": 10,
+      "manifest_sha256": "c94314f0370e792f26ebd3958bc08b398b39cb525a995dcd65b063a74d120223",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-release-01/source"
+    },
+    {
+      "files": 10,
+      "manifest_sha256": "d3d8678542db3cf6100006f8f9dbd3ce761f169bd904ddcae3d4525a53252f51",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-endpoint-recovery-release-02/source"
+    },
+    {
+      "files": 18,
+      "manifest_sha256": "63db0a002c8aca2a282d50f9e7227d57b69ac6820b8ae0e06287ec95770dd8a3",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-release-07/source"
+    }
+  ],
+  "version": "chemistry-native-qualification-source-v1"
+}

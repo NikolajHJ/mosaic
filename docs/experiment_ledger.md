@@ -8391,3 +8391,61 @@ proof bindings, unchanged settings/results and paused monitor. No numerical
 fix or chemistry continuation is claimed. Next action after access recovers:
 inspect exact02jobs/assessments/rawXML/LSF, complete native diagnosis, then
 validate a demonstrated correction and separately guarded continuations.
+
+
+### 2026-10-27 — Chemistry diagnostic02 completed; separate native qualification03 prepared
+
+Access recovered at19:21UTC. Actual persisted same-job LSF proves CPU29830696,
+afterCPU29830697, ProGPU29830750 and BolGPU29830751 all successfully completed.
+Live scheduler records aged out; no DONE state is invented. CPU33cases/no failures,
+errors/skips, all3actual startups, exact CPUcertificate/proofs and both native
+assessments independently verified from53compact files. Pro ran18:17:02–18:21:13CET,
+Bol18:21:14–18:24:31CET. Both diagnostics preserved3251original saved/input/proof bindings; new03
+additionally authenticates3398total bindings including their completed rawpoints.
+No optimizer ran or settings changed.
+
+Original and accelerated Pro records are exactly identical at all11points;
+weighted chemistry is constant across the original failing contrast. The native
+AD changes sign over the negative perturbations, with finer forward differences
+limited by FP32 resolution. Bol's original bond AD3.075040102 varies sharply
+across the coarse perturbation interval. These observations do not constitute
+combined chemistry admission, a unique causal proof, or original recertification.
+
+New native-qualification03 is an intermediate candidate: unchanged rawv3 for Bol
+and separate fullFP64 reference for Pro, exact saved10k boundaries, unchanged
+15%/locality/negative/frozen/finite gates. Its12files/13safe members passed local
+stdlib AST/bytes only;24allocated controls/startups/native passes notyetestablished.
+It retains all futures/reserves plus1088MiB and entire diagnostic02/newtree charges.
+No optimizer dispatch branch; full combined low/high/actual coefficient checks,
+BOTHtenpilots/runtime/startup/wholequota remain before any continuation.
+See endpoint-qualification/runs/20261027-chemistry-native-qualification-03.
+Pausedmonitor and all saved results stay unchanged.
+
+
+### Chemistry native qualification03 staging outcome unknown after connection reset
+
+Package12files manifest966034fd61600cca47f30fb0e939671bd678490a8fcdf4960d2d570b080d0b9e,
+archive194556bytes SHAd6ca08f70b561355e27855853d2d059404e9be45e9ba6c43894ad36add95f5dd,
+plan4809075544e82edb2005fba031fc643dda463b45ef59cff709a70f087b0f8fca.
+All adopted policy/reference bytes matched immutable parents; exact3398protected
+original/diagnostic point bindings authenticated remotely at preparation.
+Local safe13-member/AST/byte audit passed; no numerical work locally.
+
+Staging connection19:28:50–19:30:38UTC returnedSSH255connectionreset with zero
+stdout. Source/output/job outcomes are UNKNOWN, not confirmed absent; no second
+connection attempt after this outage and no bootstrap/retry/duplicate. Preserve
+exact program/stdout/stderr/receipt and inspect03paths/source seals/jobs/submission
+markers first after access recovers. The new read-only `inspect --label UNIQUE`
+handles absent/partially staged roots and requires the local expected seal.
+No new24CPU/native/fullstorage pass or actual jobID is established. No optimizer
+branch exists in this capsule; neither chemistry continuation is verified submitted.
+Original results/settings/all failures/pausedmonitor unchanged.
+
+
+Local full layout audit ran (stdlib only) and remains failed on migration
+inventory/default discovery differences and historical receipt directories
+missing READMEs outside this change. Scoped path audit confirms the new24-case
+module is reached exactly once by the existing experiments discovery root and
+the sole new run directory has its README. No global discovery/receipt history
+was rewritten and no numerical tests ran locally. Exact source executable index
+bytes still match the prepared capsule; remote staging remains unknown.
