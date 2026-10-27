@@ -1,0 +1,13 @@
+{
+  "archive_bytes": 198060,
+  "archive_sha256": "7fe735f2c3908056ab4783b455d0db365f7d31301a3567576aed18e8064269fa",
+  "cpu_cases": 29,
+  "cpu_counts": {
+    "tests.test_chemistry_native_qualification.ChemistryNativeQualificationTests": 29
+  },
+  "files": 12,
+  "manifest_sha256": "5d8f4ef0f8bb820e76d2e92442492f604393e79b58725fd01f9bb042b3114863",
+  "plan_sha256": "9dd4160aa18e40c74927e3b71c1459850fd7d332eec53b9866b5ad862576c0d6",
+  "protected_input_files": 3430,
+  "status": "prepared_not_validated"
+}

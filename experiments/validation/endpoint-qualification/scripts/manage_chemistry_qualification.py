@@ -1,4 +1,4 @@
-"""Stdlib operator for the distinct chemistry native-qualification03 capsule."""
+"""Stdlib operator for the distinct chemistry native-qualification04 capsule."""
 import argparse
 import ast
 import base64
@@ -11,12 +11,12 @@ import tarfile
 
 REPO=Path(__file__).resolve().parents[4]
 OWNER=REPO/'experiments/validation/endpoint-qualification'
-TAG='20261027-chemistry-native-qualification-03'
+TAG='20261027-chemistry-native-qualification-04'
 LOCAL=REPO/'results/hpc'/TAG
 RUN=OWNER/'runs'/TAG
 BASE='/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01'
-ROOT=BASE+'/chemistry-native-qualification-03'
-SOURCE=BASE+'/chemistry-native-qualification-release-03/source'
+ROOT=BASE+'/chemistry-native-qualification-04'
+SOURCE=BASE+'/chemistry-native-qualification-release-04/source'
 PARENT=BASE+'/chemistry-endpoint-recovery-release-02/source'
 PIN='d3d8678542db3cf6100006f8f9dbd3ce761f169bd904ddcae3d4525a53252f51'
 PRECISION=BASE+'/protenix-endpoint-fix-release-07/source'
@@ -61,9 +61,22 @@ for name,source in [('admission.py',base/'nonchem-endpoint-release-09/source'),
  adoption['scripts/'+name]=binding(source/'scripts'/name)
 parents=plan['parent_sources']+[{'path':str(parent),'manifest_sha256':sha(parent/'source_manifest.json'),'files':10},
  {'path':str(precision),'manifest_sha256':sha(precision/'source_manifest.json'),'files':18}]
+failed=base/'chemistry-native-qualification-03';failed_source=base/'chemistry-native-qualification-release-03/source'
+verify(failed_source,'966034fd61600cca47f30fb0e939671bd678490a8fcdf4960d2d570b080d0b9e',12)
+assert json.loads((failed/'jobs.json').read_bytes())=={'cpu':'29833834','after-cpu':'29833835'}
+for phase,job in [('cpu','29833834'),('after-cpu','29833835')]:
+ text=''.join((failed/phase/('stdout.'+job+'.log')).read_text().split())
+ assert text.count('Subject:Job'+job+':')==1 and 'Exitedwithexitcode1.' in text
+assert not (failed/'cpu/payload').exists() and not (failed/'gpu-protenix').exists() and not (failed/'gpu-boltz').exists()
+for p in failed.rglob('*'):
+ assert not p.is_symlink() and (p.is_file() or p.is_dir())
+ if p.is_file():protected[str(p)]=binding(p)
+parents.append({'path':str(failed_source),'manifest_sha256':sha(failed_source/'source_manifest.json'),'files':12})
+
 plan.update(output_root=NEWROOT,protected_inputs=list(protected.values()),parent_sources=parents,
  qualification_version='chemistry-native-component-qualification-v1',can_submit_continuation=False,
- diagnostic_source=parents[-2],precision_source=parents[-1],adopted_files=adoption,
+ diagnostic_source=parents[-3],precision_source=parents[-2],adopted_files=adoption,
+ prior_failed_qualification=parents[-1],inventory_retry_policy='exact-observed-atomic-temp-full-gate-three-attempts-v1',
  native_component_only=True,combined_chemistry_admission=False,original_failures_preserved=True,
  max_native_bytes=512*1024**2,internal_seconds=5300)
 print(json.dumps({'status':'originals_and_complete_diagnostic_point_inventory_authenticated','plan':plan}))
@@ -89,7 +102,7 @@ print(json.dumps({'status':'originals_and_complete_diagnostic_point_inventory_au
         if isinstance(c,ast.ClassDef):
             count=sum(isinstance(n,ast.FunctionDef) and n.name.startswith('test_') for n in c.body)
             if count:counts['tests.test_chemistry_native_qualification.'+c.name]=count
-    assert sum(counts.values())==24
+    assert sum(counts.values())==29
     manifest={'version':'chemistry-native-qualification-source-v1','files':{k:sha(v) for k,v in sorted(members.items())},
         'parent_sources':plan['parent_sources'],'cpu_counts':counts,'diagnostic_only':True,
         'optimizer_updates':0,'original_results_changed':False,'can_submit_continuation':False}
@@ -102,7 +115,7 @@ print(json.dumps({'status':'originals_and_complete_diagnostic_point_inventory_au
     archive=buffer.getvalue();(out/'source.tar.gz').write_bytes(archive)
     prep={'status':'prepared_not_validated','files':len(manifest['files']),'manifest_sha256':sha(members['source_manifest.json']),
         'archive_bytes':len(archive),'archive_sha256':sha(archive),'plan_sha256':sha(members['plan.json']),
-        'protected_input_files':len(plan['protected_inputs']),'cpu_counts':counts,'cpu_cases':24}
+        'protected_input_files':len(plan['protected_inputs']),'cpu_counts':counts,'cpu_cases':29}
     (out/'preparation.json').write_bytes(raw(prep));(RUN/'preparation.json').write_bytes(raw(prep))
     (RUN/'source-manifest.json').write_bytes(members['source_manifest.json'])
     (RUN/'campaign.json').write_bytes(raw({**prep,'optimizer_jobs_submitted':False,'settings_changed':False,

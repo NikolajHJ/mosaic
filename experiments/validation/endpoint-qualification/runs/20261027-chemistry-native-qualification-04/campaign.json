@@ -1,0 +1,46 @@
+{
+  "archive_bytes": 198060,
+  "archive_sha256": "7fe735f2c3908056ab4783b455d0db365f7d31301a3567576aed18e8064269fa",
+  "callback_job": "29834576",
+  "cpu_cases": 29,
+  "cpu_counts": {
+    "tests.test_chemistry_native_qualification.ChemistryNativeQualificationTests": 29
+  },
+  "cpu_job": "29834574",
+  "files": 12,
+  "manifest_sha256": "5d8f4ef0f8bb820e76d2e92442492f604393e79b58725fd01f9bb042b3114863",
+  "monitor_resumed": false,
+  "optimizer_jobs_submitted": false,
+  "plan_sha256": "9dd4160aa18e40c74927e3b71c1459850fd7d332eec53b9866b5ad862576c0d6",
+  "protected_input_files": 3430,
+  "remote_source_staged": true,
+  "saved_results_changed": false,
+  "settings_changed": false,
+  "status": "CPU29_and_callback_verified_actual_DONE_two_native_checks_queued",
+  "jobs": {
+    "cpu": "29834574",
+    "after-cpu": "29834576",
+    "gpu-protenix": "29834600",
+    "gpu-boltz": "29834601"
+  },
+  "CPU_cases_verified": 29,
+  "CPU_certificate_sha256": "510ed796b65e74267964f47a13dad186085e687ada836001ace510f12b424349",
+  "independent_CPU_dispatch_verification_sha256": "729ea370c4ae770fb2776c497ac9f5e3a9bfc3117fb7f760946318ad085dcd26",
+  "whole_dispatch_storage": {
+    "status": "passed",
+    "required_bytes": 50825313105,
+    "available_bytes": 56915979015,
+    "reserve_bytes": 4294967296,
+    "file_reserve": 100000,
+    "new_group_cap_bytes": 1140850688
+  },
+  "last_observation_utc": "2026-10-27T21:30:57.570805+00:00",
+  "last_actual_scheduler_states": {
+    "29834600": "PEND",
+    "29834601": "PEND",
+    "29834574": "DONE",
+    "29834576": "DONE"
+  },
+  "native_component_pass": false,
+  "combined_chemistry_pass": false
+}

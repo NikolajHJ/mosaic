@@ -1,0 +1,29 @@
+{
+  "status": "CPU29_and_callback_verified_actual_DONE_two_native_checks_queued",
+  "observed_utc": "2026-10-27T21:30:57.570805+00:00",
+  "source_manifest_sha256": "5d8f4ef0f8bb820e76d2e92442492f604393e79b58725fd01f9bb042b3114863",
+  "jobs": {
+    "cpu": "29834574",
+    "after-cpu": "29834576",
+    "gpu-protenix": "29834600",
+    "gpu-boltz": "29834601"
+  },
+  "states": {
+    "29834600": "PEND",
+    "29834601": "PEND",
+    "29834574": "DONE",
+    "29834576": "DONE"
+  },
+  "CPU_certificate_sha256": "510ed796b65e74267964f47a13dad186085e687ada836001ace510f12b424349",
+  "independent_verification_sha256": "729ea370c4ae770fb2776c497ac9f5e3a9bfc3117fb7f760946318ad085dcd26",
+  "whole_dispatch_storage": {
+    "status": "passed",
+    "required_bytes": 50825313105,
+    "available_bytes": 56915979015,
+    "reserve_bytes": 4294967296,
+    "file_reserve": 100000,
+    "new_group_cap_bytes": 1140850688
+  },
+  "native_pass": false,
+  "optimizer_submission": false
+}

@@ -8449,3 +8449,56 @@ module is reached exactly once by the existing experiments discovery root and
 the sole new run directory has its README. No global discovery/receipt history
 was rewritten and no numerical tests ran locally. Exact source executable index
 bytes still match the prepared capsule; remote staging remains unknown.
+
+
+### 2026-10-27 — Chemistry03 staging resolved: actual CPU failed storage inventory race
+
+Fresh read-only inspection21:18:23UTC authenticated exact source03seal and actual
+CPU29833834/callback29833835 submissions20:30:21CET. Both persisted same-job LSF
+EXIT1; CPU failed20:31:10 before payload/tests/model/native because an atomic
+plain-Boltz latest-reference.json.tmp vanished during original full inventory.
+Callback correctlyfailed20:33:23/noGPU/nooptimizer. Preflight had passed
+50,825,313,105required/56,998,952,335available; entry did not pass. Preserve failed
+source/jobs/gates and earlier SSH255unknown evidence, now resolved by actualproof.
+
+New immutable qualification04 fixes metadata only: maximum3attempts of the WHOLE
+original gate in fresh scopes for that exact owned atomic tempfile; preserve
+failed attempts, no skippedfiles/partialtotals/reserve reduction. Othermissing
+inputs/capacityfailures/exhaustion failclosed. Five extra allocated regressions
+make29cases. Numeric source equal03 after only outputroot reversal, original
+rawv3/fullFP64 policies exact. All original futures plus entirefailed03/diag02/new04
+bytes charged. Preparation does not establish CPU/native/continuationpass; no
+optimizer branch, settings/results/pausedmonitor unchanged.
+
+
+### Chemistry qualification04 actual CPU29 pass, full storage pass and native submissions
+
+Immutable12-file source04 manifest5d8f4ef0f8bb820e76d2e92442492f604393e79b58725fd01f9bb042b3114863,
+archive198060bytes SHA7fe735f2c3908056ab4783b455d0db365f7d31301a3567576aed18e8064269fa,
+plan9dd4160aa18e40c74927e3b71c1459850fd7d332eec53b9866b5ad862576c0d6
+staged read-only/all3430protected bindings verified. Numerical module equals03
+after outputroot reversal; exact policy/reference parents unchanged.
+
+CPU29834574 actualDONE/hpc/LSF:29raw cases,0fail/errors/skips, all3actualstartup
+commands and savedanalysis/inputpreservation passed. CPUcertificate510ed796b65e74267964f47a13dad186085e687ada836001ace510f12b424349.
+Owncallback29834576 actualDONE/hpc/LSF, repeated completefullstorage passed
+50,825,313,105required/56,915,979,015available bytes,1088MiBnewgroup and unchanged
+4GiB/100000files/allfutures. This is a current observation, not reservation.
+Independent stdlib byte/XML/LSF/source/command/resource/schema audit passed71
+compact files, SHA729ea370c4ae770fb2776c497ac9f5e3a9bfc3117fb7f760946318ad085dcd26. No numerical work locally.
+
+Actual two independent native validations submitted Pro29834600/Bol29834601;
+BOTH PEND at2026-10-27T21:30:57.570805+00:00. Exact allocated resources/source/ownCPU/whole
+storage pins verified. No native component/full combined chemistry pass or
+optimizer continuation established. Do not duplicate. Original first10kdata/
+failed checks/chemistry settings and pausedmonitor unchanged. Native component
+pass still precedes combined low/high/actualcoefficient/BOTHtenpilots/runtime/
+startup/fullstorage and only then new child continuations.
+
+
+Scoped local AST/index-byte/source checks passed; full stdlib layout audit
+retains the same21outside-scope errors (legacy discovery inventory and historical
+receipt folders missing README). New04 run README exists and its canonical test
+module is discovered exactly once; no scientific/numerical work ran locally.
+IndependentCPU29 audit additionally verified actual liveCPU/callbackDONE and
+persisted same-CPU DONE/hpc raw scheduler, with exact same verificationbytes.

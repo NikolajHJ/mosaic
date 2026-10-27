@@ -1,0 +1,176 @@
+{
+  "status": "verified_actual_failed_staging_outcome",
+  "source_manifest_sha256": "966034fd61600cca47f30fb0e939671bd678490a8fcdf4960d2d570b080d0b9e",
+  "jobs": {
+    "cpu": "29833834",
+    "after-cpu": "29833835"
+  },
+  "files": {
+    "jobs.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-native-qualification-03/jobs.json",
+      "bytes": 51,
+      "sha256": "769a129ce1295125c9bf0d077d5605a75d981b313e9bc244681472a131ad3419"
+    },
+    "preflight/qualification-storage-preflight.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-native-qualification-03/preflight/qualification-storage-preflight.json",
+      "bytes": 21797,
+      "sha256": "1b2b5f4a90a09990e2f96c61047079596ff829320d2c8678955fa707cfabcb56"
+    },
+    "preflight/chemistry-diagnostic-storage-preflight.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-native-qualification-03/preflight/chemistry-diagnostic-storage-preflight.json",
+      "bytes": 20685,
+      "sha256": "186cbf1b82acbac60b94fdaf68db4304ec88422049537cdde84508b39abdaab1"
+    },
+    "preflight/continuation-storage-chem-diag-preflight.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-native-qualification-03/preflight/continuation-storage-chem-diag-preflight.json",
+      "bytes": 19573,
+      "sha256": "a0dc8d69c5226288a12765da73c76ad135dd8fddc73a888e930ce00474c192a6"
+    },
+    "after-cpu/cpu-terminal-00.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-native-qualification-03/after-cpu/cpu-terminal-00.json",
+      "bytes": 3772,
+      "sha256": "d4d447d1eb6a7b0cb7454cef572684bc09b0d44b0c7cdcc6279512a4c3491d5e"
+    },
+    "after-cpu/qualification-storage-entry.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-native-qualification-03/after-cpu/qualification-storage-entry.json",
+      "bytes": 21793,
+      "sha256": "d35b5155c887a4623e8fd58b442fd52dff127552b9a6846f022b590ceb3a3b80"
+    },
+    "after-cpu/stderr.29833835.log": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-native-qualification-03/after-cpu/stderr.29833835.log",
+      "bytes": 1659,
+      "sha256": "a44cc38c40fd219ce1da38a962529d0f9f43c88a3a17be49f83d74372777dbfb"
+    },
+    "after-cpu/submission-started.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-native-qualification-03/after-cpu/submission-started.json",
+      "bytes": 1151,
+      "sha256": "c64f2e55377bfdb10f8737dbb4ebcf03fecc3244ead5954f7fc85a12f59ae847"
+    },
+    "after-cpu/chemistry-diagnostic-storage-entry.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-native-qualification-03/after-cpu/chemistry-diagnostic-storage-entry.json",
+      "bytes": 20681,
+      "sha256": "136562eb18311020b008b7912332d3ae8a3b19c8b0d2cec9a5e7f36d138b0895"
+    },
+    "after-cpu/stdout.29833835.log": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-native-qualification-03/after-cpu/stdout.29833835.log",
+      "bytes": 2043,
+      "sha256": "4694df0e1c9b9601bbe593c5f480730520b5db65301617936b79f290c8481ec1"
+    },
+    "after-cpu/submission.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-native-qualification-03/after-cpu/submission.json",
+      "bytes": 1273,
+      "sha256": "77116bb5b16f47d9b0fa7a33e6088e2a0e1bc6a06aa29b3aa236581532f0d84d"
+    },
+    "after-cpu/continuation-storage-chem-diag-entry.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-native-qualification-03/after-cpu/continuation-storage-chem-diag-entry.json",
+      "bytes": 19569,
+      "sha256": "f6b590198d48f9435871ae2695c1259cf98feab15a66b6f3aaf2afe556c815a2"
+    },
+    "cpu/submission-started.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-native-qualification-03/cpu/submission-started.json",
+      "bytes": 1075,
+      "sha256": "3900f6670235ed1fe8c5ac99bbcff8ff4d2daed22503a249469ccb3587924394"
+    },
+    "cpu/stderr.29833834.log": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-native-qualification-03/cpu/stderr.29833834.log",
+      "bytes": 3625,
+      "sha256": "7f5d62d297c1c205eedb79fae9b9f87ef8d2cc338c213b2f8f853e47458395e3"
+    },
+    "cpu/submission.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-native-qualification-03/cpu/submission.json",
+      "bytes": 1197,
+      "sha256": "53d88cfcfc63ba7d7f11b496f0ef131d8239fdd139b7b8d344b750f8820ff5c3"
+    },
+    "cpu/stdout.29833834.log": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-native-qualification-03/cpu/stdout.29833834.log",
+      "bytes": 2021,
+      "sha256": "6d65db1d0f4a6201b12d249364e881e83ab4fdb37c78976071fb1708ae2d1ddd"
+    },
+    "preflight/selected-storage-chem-diag-preflight/gate.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-native-qualification-03/preflight/selected-storage-chem-diag-preflight/gate.json",
+      "bytes": 6886,
+      "sha256": "86d487a6cee9e93d151140b7b332d60874d783c26945c091e129ac529c3de8fe"
+    },
+    "preflight/current-chemistry-capacity-chem-diag-preflight/invocation.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-native-qualification-03/preflight/current-chemistry-capacity-chem-diag-preflight/invocation.json",
+      "bytes": 1454,
+      "sha256": "b52bec09a0fb76ab7c5a8a47d0091b38ba31cb7f16319ed3abc5633dbb498133"
+    },
+    "preflight/current-chemistry-capacity-chem-diag-preflight/assessment.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-native-qualification-03/preflight/current-chemistry-capacity-chem-diag-preflight/assessment.json",
+      "bytes": 10892,
+      "sha256": "68a970287bc254d348f445060f4e4094b45cf898bde0eda2cb2c5b2feedc9d7b"
+    },
+    "preflight/current-chemistry-capacity-chem-diag-preflight/production-storage-entry.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-native-qualification-03/preflight/current-chemistry-capacity-chem-diag-preflight/production-storage-entry.json",
+      "bytes": 10074,
+      "sha256": "01e62ea76e4afed557d7e65d7505909f5d8b73cc9492f64b1817c08877c2a399"
+    },
+    "preflight/current-chemistry-capacity-chem-diag-preflight/inherited-storage-entry/precision-storage-entry.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-native-qualification-03/preflight/current-chemistry-capacity-chem-diag-preflight/inherited-storage-entry/precision-storage-entry.json",
+      "bytes": 8811,
+      "sha256": "e169c698c3a967aff8239d9f7c62b8e49254c7a3c38918a1d668c158bc17649c"
+    },
+    "preflight/current-chemistry-capacity-chem-diag-preflight/inherited-storage-entry/continuation-storage-precision.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-native-qualification-03/preflight/current-chemistry-capacity-chem-diag-preflight/inherited-storage-entry/continuation-storage-precision.json",
+      "bytes": 7643,
+      "sha256": "78e309a6ae99b16c5c33e121e1cb43e8d138e4c0bf4a7434d43bfb000c402559"
+    },
+    "preflight/current-chemistry-capacity-chem-diag-preflight/inherited-storage-entry/selected-storage-precision/gate.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-native-qualification-03/preflight/current-chemistry-capacity-chem-diag-preflight/inherited-storage-entry/selected-storage-precision/gate.json",
+      "bytes": 6876,
+      "sha256": "85b777218f99ffb6aac8c48ac62f021e333d7906e0c2fc45bad152f1a038e093"
+    },
+    "after-cpu/selected-storage-chem-diag-entry/gate.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-native-qualification-03/after-cpu/selected-storage-chem-diag-entry/gate.json",
+      "bytes": 6882,
+      "sha256": "8da663b156a14fd54bafdbe41a1442e84816c5b4b27647cd05419c3a1bab61a9"
+    },
+    "after-cpu/current-chemistry-capacity-chem-diag-entry/invocation.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-native-qualification-03/after-cpu/current-chemistry-capacity-chem-diag-entry/invocation.json",
+      "bytes": 1450,
+      "sha256": "1f3587a6fda6acc287d9c996e7ee9380c89fe490e5ea41f3dbb743705949c881"
+    },
+    "after-cpu/current-chemistry-capacity-chem-diag-entry/production-storage-entry.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-native-qualification-03/after-cpu/current-chemistry-capacity-chem-diag-entry/production-storage-entry.json",
+      "bytes": 10074,
+      "sha256": "c78bb6d392b9abf1b27c9b5de26f2d514b60ec6103dfe5678e2392fbd7ad3df3"
+    },
+    "after-cpu/current-chemistry-capacity-chem-diag-entry/assessment.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-native-qualification-03/after-cpu/current-chemistry-capacity-chem-diag-entry/assessment.json",
+      "bytes": 10892,
+      "sha256": "5b3afa7b313d9f19bd5b289c6dabb41f90b7c3da62e8db66f036bb2f5defe4f3"
+    },
+    "after-cpu/current-chemistry-capacity-chem-diag-entry/inherited-storage-entry/continuation-storage-precision.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-native-qualification-03/after-cpu/current-chemistry-capacity-chem-diag-entry/inherited-storage-entry/continuation-storage-precision.json",
+      "bytes": 7643,
+      "sha256": "4868e48c41e8826111ce3f8171ae31baf13f5cf577766ecc69ea2dfdf211a191"
+    },
+    "after-cpu/current-chemistry-capacity-chem-diag-entry/inherited-storage-entry/precision-storage-entry.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-native-qualification-03/after-cpu/current-chemistry-capacity-chem-diag-entry/inherited-storage-entry/precision-storage-entry.json",
+      "bytes": 8811,
+      "sha256": "5ed252c5dc725aa2512cecde7cc6d7dce6315188b906d625dae744db01cade7e"
+    },
+    "after-cpu/current-chemistry-capacity-chem-diag-entry/inherited-storage-entry/selected-storage-precision/gate.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-native-qualification-03/after-cpu/current-chemistry-capacity-chem-diag-entry/inherited-storage-entry/selected-storage-precision/gate.json",
+      "bytes": 6876,
+      "sha256": "86dd9177cb08a9b81d5a40300bbfc26e37c0021520110e5955ed075147d10ae8"
+    },
+    "cpu/selected-storage-chem-diag-entry/gate.json": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-native-qualification-03/cpu/selected-storage-chem-diag-entry/gate.json",
+      "bytes": 3568,
+      "sha256": "e9df878c0c994371aeaf30794d273b349d610e4475808f2cef454f5bcbdae417"
+    }
+  },
+  "CPU_tests_started": false,
+  "GPU_jobs_submitted": false,
+  "optimizer_submitted": false,
+  "failure": "Atomic latest-reference.json.tmp vanished during whole storage scan",
+  "preflight": {
+    "status": "passed",
+    "required_bytes": 50825313105,
+    "available_bytes": 56998952335,
+    "reserve_bytes": 4294967296,
+    "file_reserve": 100000
+  }
+}

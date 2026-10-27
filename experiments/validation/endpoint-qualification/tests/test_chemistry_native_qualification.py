@@ -4,6 +4,7 @@ import os
 from pathlib import Path
 import sys
 import unittest
+import tempfile
 
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scripts'))
 import chemistry_native_qualification as q
@@ -27,7 +28,7 @@ class ChemistryNativeQualificationTests(unittest.TestCase):
         self.assertEqual(a[a.index('-n')+1],'4');self.assertNotIn('-w',a)
     def test_new_command_points_to_new_source(self):
         a=ops.inherited().command('gpu-protenix','a'*64)
-        self.assertEqual(a[a.index('-J')+1],'mosaic-chem-qualification03-gpu-protenix')
+        self.assertEqual(a[a.index('-J')+1],'mosaic-chem-qualification04-gpu-protenix')
         self.assertIn(str(ops.SOURCE),a)
     def test_no_optimizer_phase(self):
         with self.assertRaises(ValueError):ops.inherited().command('segment','a'*64)
@@ -93,7 +94,50 @@ class ChemistryNativeQualificationTests(unittest.TestCase):
         self.assertFalse(p['can_certify_or_restart_original_study'])
     def test_new_suite_exact_dynamic_attribution(self):
         p=q.read(Path(__file__).resolve().parents[1]/'source_manifest.json')
-        self.assertEqual(p['cpu_counts'],{'tests.test_chemistry_native_qualification.ChemistryNativeQualificationTests':24})
+        self.assertEqual(p['cpu_counts'],{'tests.test_chemistry_native_qualification.ChemistryNativeQualificationTests':29})
+
+    def test_atomic_race_repeats_whole_gate_and_preserves_attempt(self):
+        with tempfile.TemporaryDirectory(dir=os.environ['TMPDIR']) as directory:
+            parent=Path(directory);calls=[];records={}
+            def operation(path,phase):
+                calls.append((path,phase))
+                if len(calls)==1:raise FileNotFoundError(2,'racing atomic reference',str(ops.ATOMIC_REFERENCE))
+                return {'status':'passed','complete':True}
+            result=ops.complete_inventory(operation,parent,'entry',lambda path,row:records.update({str(path):row}))
+            self.assertEqual(result,{'status':'passed','complete':True});self.assertEqual(len(calls),2)
+            self.assertNotEqual(calls[0][0],calls[1][0]);self.assertEqual(len(records),2)
+            self.assertTrue(any(r.get('status')=='failed_incomplete_inventory_not_admission' for r in records.values()))
+
+    def test_missing_protected_input_is_not_retried(self):
+        with tempfile.TemporaryDirectory(dir=os.environ['TMPDIR']) as directory:
+            calls=[]
+            def operation(path,phase):
+                calls.append(path);raise FileNotFoundError(2,'missing protected checkpoint','/work3/required-checkpoint.npz')
+            with self.assertRaises(FileNotFoundError):ops.complete_inventory(operation,Path(directory),'entry',lambda *x:None)
+            self.assertEqual(len(calls),1)
+
+    def test_atomic_race_exhaustion_fails_closed(self):
+        with tempfile.TemporaryDirectory(dir=os.environ['TMPDIR']) as directory:
+            calls=[];records=[]
+            def operation(path,phase):
+                calls.append(path);raise FileNotFoundError(2,'racing atomic reference',str(ops.ATOMIC_REFERENCE))
+            with self.assertRaises(FileNotFoundError):
+                ops.complete_inventory(operation,Path(directory),'entry',lambda path,row:records.append(row))
+            self.assertEqual(len(calls),3);self.assertEqual(len(records),3)
+            self.assertTrue(all(r['partial_totals_used'] is False for r in records))
+
+    def test_capacity_rejection_is_not_retried(self):
+        with tempfile.TemporaryDirectory(dir=os.environ['TMPDIR']) as directory:
+            calls=[]
+            def operation(path,phase):
+                calls.append(path);raise ValueError('Full budget does not fit')
+            with self.assertRaises(ValueError):ops.complete_inventory(operation,Path(directory),'entry',lambda *x:None)
+            self.assertEqual(len(calls),1)
+
+    def test_failed_complete_result_is_not_admitted(self):
+        with tempfile.TemporaryDirectory(dir=os.environ['TMPDIR']) as directory:
+            with self.assertRaises(ValueError):
+                ops.complete_inventory(lambda *x:{'status':'failed'},Path(directory),'entry',lambda *x:None)
 
 
 if __name__=='__main__':unittest.main()

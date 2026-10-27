@@ -15,9 +15,40 @@ import sys
 BASE=Path('/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01')
 PARENT=BASE/'chemistry-endpoint-recovery-release-02/source'
 PARENT_PIN='d3d8678542db3cf6100006f8f9dbd3ce761f169bd904ddcae3d4525a53252f51'
-ROOT=BASE/'chemistry-native-qualification-03'
-SOURCE=BASE/'chemistry-native-qualification-release-03/source'
+ROOT=BASE/'chemistry-native-qualification-04'
+SOURCE=BASE/'chemistry-native-qualification-release-04/source'
 CAP=2*512*1024**2+64*1024**2
+ATOMIC_REFERENCE=BASE/'nonchem-endpoint-continuation-09/boltz-segment-10000/payload/study/case-0/references/latest-reference.json.tmp'
+INVENTORY_ATTEMPTS=3
+
+
+def complete_inventory(operation,parent,phase,write):
+    """Retry the WHOLE unchanged gate after one authenticated atomic-file race.
+
+    Never skip a file, reuse an incomplete total, overwrite a failed attempt,
+    retry capacity rejection, or suppress a missing protected input. Each new
+    attempt obtains a fresh quota and complete inventory through the original
+    operation. Only the exact observed owned atomic temp path is retryable.
+    """
+    for number in range(1,INVENTORY_ATTEMPTS+1):
+        attempt=Path(parent)/f'complete-inventory-{phase}-{number:02d}'
+        attempt.mkdir(exist_ok=False)
+        try:
+            value=operation(attempt,phase)
+        except FileNotFoundError as error:
+            if error.filename is None or Path(error.filename)!=ATOMIC_REFERENCE:raise
+            write(attempt/'incomplete-inventory.json',{'status':'failed_incomplete_inventory_not_admission',
+                'missing_path':error.filename,'error':repr(error),'attempt':number,
+                'next_action':'repeat_entire_original_gate' if number<INVENTORY_ATTEMPTS else 'fail_closed',
+                'files_skipped':False,'partial_totals_used':False})
+            if number==INVENTORY_ATTEMPTS:raise
+        else:
+            if not isinstance(value,dict) or value.get('status')!='passed':
+                raise ValueError('A complete passed original storage gate is required')
+            write(Path(parent)/('complete-storage-'+phase+'.json'),{'status':'passed_complete_inventory',
+                'successful_attempt':number,'scope':str(attempt),'whole_gate':value,
+                'files_skipped':False,'partial_totals_used':False})
+            return value
 
 
 def inherited():
@@ -30,14 +61,15 @@ def inherited():
     original_command=op.command
     def command(phase,pin,dependency=None):
         argv=original_command(phase,pin,dependency)
-        argv[argv.index('-J')+1]='mosaic-chem-qualification03-'+phase
+        argv[argv.index('-J')+1]='mosaic-chem-qualification04-'+phase
         return argv
     op.command=command
     oldstorage=op.storage
-    def storage(parent,phase):
+    def entire_storage(parent,phase):
         value=oldstorage(parent,phase)
         prior=0
-        for root in (BASE/'chemistry-endpoint-recovery-02',PARENT.parent):
+        for root in (BASE/'chemistry-endpoint-recovery-02',PARENT.parent,
+                     BASE/'chemistry-native-qualification-03',BASE/'chemistry-native-qualification-release-03'):
             for p in root.rglob('*'):
                 op.require(not p.is_symlink() and (p.is_file() or p.is_dir()),'Prior diagnostic linked/special output')
                 if p.is_file():prior+=p.stat().st_size
@@ -50,7 +82,7 @@ def inherited():
             result['status']='passed'
         finally:op.write(parent/('qualification-storage-'+phase+'.json'),result)
         return result
-    op.storage=storage
+    op.storage=lambda parent,phase:complete_inventory(entire_storage,parent,phase,op.write)
     return op
 
 

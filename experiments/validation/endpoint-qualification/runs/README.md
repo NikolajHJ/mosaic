@@ -55,3 +55,8 @@ saved results unchanged. Canonical continuation package/stage targetsONLY09.
 - [Chemistry native qualification03](20261027-chemistry-native-qualification-03/README.md):
   unchanged rawv3 Bol/fullFP64 Pro candidate; stage SSH255/reset, remote outcome
   unknown. Inspect exact markers before recovery; no optimizer branch/pass.
+
+
+- [Qualification04](20261027-chemistry-native-qualification-04/README.md):
+  preserves03 storage-race failure, CPU29/fullstorage/owncallback passed; actual
+  native Pro29834600/Bol29834601queued, no chemistry optimizer submitted.

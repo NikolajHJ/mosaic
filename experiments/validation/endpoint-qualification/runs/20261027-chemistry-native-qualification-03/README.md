@@ -87,3 +87,15 @@ stage/prepare. First recovery command is read-only `inspect --label UNIQUE`;
 it authenticates the expected seal and actual jobs/markers before any action.
 No repeated connection after the outage. Original settings/results preserved;
 no optimizer dispatch branch exists. Exact stage-access-failure.json is retained.
+
+
+## Actual outcome resolved27October22:18CET
+
+The immutable12-file source did stage and submit CPU29833834/callback29833835.
+CPU actualEXIT1 at20:31:10CET before tests/payload/model on a disappeared atomic
+plain-Boltz latest-reference.json.tmp during full storage inventory. Callback
+actualEXIT1 at20:33:23/no native submissions. Preflightpassed50,825,313,105required/
+56,998,952,335available; entry did not pass. Same-job LSF, source seal and all
+compact metadata bytes independently authenticated in failure-verification.json.
+Do not replay03. Retry04 is metadata-only whole-inventory retry, preserves this
+failure, and repeats all29new controls/startups before any native qualification.

@@ -193,3 +193,10 @@ chemistry10k boundaries. Its result is native-component-only: combined
 low/high/actual-coefficient checks and BOTHtenpilots still precede continuations.
 No optimizer branch or scientific setting change exists in this intermediate
 capsule; original failures stay failed. Read actual campaign receipts.
+
+
+[Qualification04](runs/20261027-chemistry-native-qualification-04/README.md)
+fixes03's complete-storage inventory race without skipping files or partial
+totals. Actual CPU29/LSF/startups/whole dispatch capacity passed; native Pro
+29834600 and Bol29834601 are queued. Native/combined qualification and both
+chemistry continuations remain pending, with all settings/results unchanged.

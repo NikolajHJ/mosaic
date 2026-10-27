@@ -13,7 +13,7 @@
   "protected_input_files": 3398,
   "saved_results_changed": false,
   "settings_changed": false,
-  "status": "staging_outcome_unknown_SSH255_reset_inspect_before_recovery",
+  "status": "staged_actual_CPU_and_callback_EXIT1_storage_walk_race_before_tests",
   "stage_receipt": {
     "ended_utc": "2026-10-27T19:30:38.565182+00:00",
     "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -22,10 +22,19 @@
     "started_utc": "2026-10-27T19:28:50.016659+00:00",
     "status": "unknown_inspect_before_recovery"
   },
-  "remote_source_staged": "unknown",
-  "cpu_job": "unknown",
-  "callback_job": "unknown",
-  "native_jobs": "unknown_inspect_actual_markers",
+  "remote_source_staged": true,
+  "cpu_job": "29833834",
+  "callback_job": "29833835",
+  "native_jobs": {},
   "new_native_pass_established": false,
-  "whole_new_storage_gate_established": false
+  "whole_new_storage_gate_established": false,
+  "CPU_tests_started": false,
+  "whole_preflight_verified": {
+    "status": "passed",
+    "required_bytes": 50825313105,
+    "available_bytes": 56998952335,
+    "reserve_bytes": 4294967296,
+    "file_reserve": 100000
+  },
+  "failure_verification_sha256": "a9d29c1fe94535156b10cbf6b93b49ed077dfec991acc5dea42502d752169337"
 }

@@ -98,3 +98,10 @@ executes the existing native raw/FP64 policies on allocated HPC;
 namespace; `manage_chemistry_qualification.py` owns separate03 packaging,
 one-shot staging and read-only observation. It has no optimizer dispatch.
 Exact protocol/commands/status are in the03 run record.
+
+
+Current chemistry native qualification operator targetsONLY04. It preserves
+failed03 and retries the entire unchanged gate at most3times for the exact
+observed atomic reference temp path. `verify_chemistry_qualification_cpu.py`
+independently audits actual CPU29/dispatch XML/LSF/bytes/schema with stdlib only.
+The native evaluator has no optimizer dispatch; read actual04jobs before recovery.

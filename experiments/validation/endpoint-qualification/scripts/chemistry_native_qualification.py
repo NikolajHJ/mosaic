@@ -15,7 +15,7 @@ import sys
 import time
 
 BASE=Path('/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01')
-ROOT=BASE/'chemistry-native-qualification-03'
+ROOT=BASE/'chemistry-native-qualification-04'
 VERSION='chemistry-native-component-qualification-v1'
 CAP=512*1024**2
 

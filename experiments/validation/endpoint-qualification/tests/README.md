@@ -56,3 +56,9 @@ actual native diagnostics are separate from these fixture outcomes.
 startup/source/root/queue/dtype identities, unchanged policy constants, positive
 raw-gradient controls and zero/reversed/scaled rejection. CPU passes do not
 establish native or combined chemistry admission. No numerical tests locally.
+
+
+Qualification04 now requires29allocated cases: original24 plus whole-inventory
+retry, protected input failure, bounded exhaustion, capacity rejection and
+failed-result rejection. Actual CPU29834574 passed all29/no skips/errors/failures.
+Native/combined loss validation remains separate; no numerical tests locally.
