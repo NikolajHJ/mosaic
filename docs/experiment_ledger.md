@@ -8284,3 +8284,29 @@ no blockedoptimizercontinuation submitted yet. Callbacks remain conditional on
 all native/pilot/runtime/frozen/startup/wholefuturestorage gates; Pro precision
 capsule validation-only stillneeds separate validated continuationintegration.
 All savedsettings/results/otherproject changes/pausedmonitor preserved.
+
+
+## 2026-10-27 — Read-only full Mosaic arm status at11:32:37UTC
+
+One successful bounded metadata query (after preserving a read-only collector
+size-cap failure) verified229complete compact files, actual current scheduler records and
+the account queue. No job/settings/result or paused-monitor changes.
+Pro07GPU29829894/Bol09GPU29829934/DBMol08GPU29829703 remainPEND on physical
+GPU resources;301/261/258 CPU/startup passes remain valid, no blockedoptimizer
+child submitted. Current account queue has9PEND/0RUN:6Mosaic jobs and3other-
+project entries; other-project scientific artifacts were not inspected.
+
+New chemistry outcome: Boltz04job29825209 ended27October05:28:31CET/LSFexit1
+after10000contiguous saved updates/10001states. Original terminal atom probes
+pass but all3bond probes fail; report is `Native affinity E_upper finite
+differences failed`. Callback29825210 correctlyexited/no successor; no changed
+saved data or terminal recertification. RandomPro03 first10k remains passed,
+next boundary29821558 failed combined frozen-reference atom derivatives,
+callback29821559 exited/no successor. Aged-out originals use actual same-job
+persisted LSF+assessments, never fabricated live states. Large arrays remain
+remote; local work was stdlib bytes/JSON/scalar-index/schema only.
+
+Exact observations/proofs: endpoint-qualification/runs/20261027-continuation-
+measurement-09/status-20261027T113237Z.json and results/hpc/20261027-all-run-
+status/113234Z/verification.json. Chemistry03/04 current campaign records now
+reflect these terminal outcomes; immutable sources/results stay unchanged.

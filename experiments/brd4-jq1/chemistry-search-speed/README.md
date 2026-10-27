@@ -158,3 +158,11 @@ Fresh full precision05 admission passed49.855GBrequired/50.922GBavailable with
 all futures/4GiB/100k reserves retained. Boltz chemistry29825209 lastRUN2445
 updates at00:17UTC; its running chain was untouched. No further cleanup or
 monitor resumption. Endpoint checker jobs/results belong to endpoint-qualification.
+
+
+27October11:32:37UTC: Boltz chemistry04 has now saved its first10000updates/
+10001states, but ended05:28:31CET at the original terminal bond FD gate; no
+successor. Random Pro03 remains10000/50000, first segment passed and next
+combined atom boundary check failed. Both scientific chains are stopped;
+original settings/results/failed gates and paused monitor remain unchanged.
+Current campaigns and endpoint09 status-20261027T113237Z bind exact proofs.

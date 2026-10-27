@@ -1,0 +1,238 @@
+{
+  "status": "read_only_status_metadata_verified",
+  "captured_utc": "2026-10-27T11:32:37.183632+00:00",
+  "source_packet": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261027-all-run-status\\113234Z\\raw.json",
+  "source_packet_bytes": 2139737,
+  "source_packet_sha256": "218dcc5d91d7ab896fa002ad6978a8a0c1a9f9598aeb89377499b82816963b7c",
+  "complete_compact_files_verified": 229,
+  "large_scientific_arrays_downloaded": false,
+  "settings_changed": false,
+  "saved_results_changed": false,
+  "jobs_submitted": false,
+  "monitor_resumed": false,
+  "current_arms": [
+    {
+      "arm": "protenix_contact",
+      "saved_updates": 20000,
+      "target_updates": 50000,
+      "progress_scope": "previously_verified_saved_endpoint; current validation has not run",
+      "status": "GPU_validation_pending",
+      "validation_job": "29829894",
+      "CPU_cases_passed": 301,
+      "optimizer_continuation_submitted": false
+    },
+    {
+      "arm": "boltz_affinity",
+      "saved_updates": 10000,
+      "target_updates": 30000,
+      "progress_scope": "previously_verified_saved_endpoint; current validation has not run",
+      "status": "GPU_validation_pending",
+      "validation_job": "29829934",
+      "CPU_cases_passed": 261,
+      "optimizer_continuation_submitted": false
+    },
+    {
+      "arm": "boltz_DBMol_composite",
+      "saved_updates": 5000,
+      "target_updates": 10000,
+      "progress_scope": "previously_verified_saved_endpoint; current validation has not run",
+      "status": "GPU_validation_pending",
+      "validation_job": "29829703",
+      "CPU_cases_passed": 258,
+      "optimizer_continuation_submitted": false
+    },
+    {
+      "arm": "random_protenix_delayed_chemistry",
+      "saved_updates": 10000,
+      "saved_states": 10001,
+      "target_updates": 50000,
+      "status": "first_segment_passed_next_boundary_validation_failed",
+      "segment_job": "29820255",
+      "failed_validation_job": "29821558",
+      "error": "AssertionError: Combined frozen-reference atoms derivative check failed",
+      "successor_submitted": false
+    },
+    {
+      "arm": "boltz_delayed_chemistry",
+      "saved_updates": 10000,
+      "saved_states": 10001,
+      "target_updates": 30000,
+      "status": "full_first_segment_budget_saved_terminal_validation_failed",
+      "segment_job": "29825209",
+      "failed_callback": "29825210",
+      "actual_end_CET": "2026-10-27 05:28:31",
+      "error": "AssertionError: Native affinity E_upper finite differences failed",
+      "atom_terminal_probes_passed": true,
+      "bond_terminal_probes_agree": [
+        false,
+        false,
+        false
+      ],
+      "successor_submitted": false
+    }
+  ],
+  "account_queue": [
+    {
+      "job_id": "29796558",
+      "state": "PEND",
+      "queue": "hpc",
+      "job_name": "mosaic-lrboost-analysis-combined-report                                                   "
+    },
+    {
+      "job_id": "29829703",
+      "state": "PEND",
+      "queue": "gpul40s",
+      "job_name": "mosaic-endpoint08-dbmol-validate-05000                                                    "
+    },
+    {
+      "job_id": "29829704",
+      "state": "PEND",
+      "queue": "hpc",
+      "job_name": "mosaic-endpoint08-dbmol-after-validate-05000                                              "
+    },
+    {
+      "job_id": "29829828",
+      "state": "PEND",
+      "queue": "gpua100",
+      "job_name": "source138-epoch36-embedding-comparison-attempt006-gpu                                     "
+    },
+    {
+      "job_id": "29829875",
+      "state": "PEND",
+      "queue": "gpua100",
+      "job_name": "source104-chemistry-segment-001                                                           "
+    },
+    {
+      "job_id": "29829876",
+      "state": "PEND",
+      "queue": "hpc",
+      "job_name": "source104-chemistry-after-segment-001                                                     "
+    },
+    {
+      "job_id": "29829894",
+      "state": "PEND",
+      "queue": "gpul40s",
+      "job_name": "mosaic-pro-precision07-gpu                                                                "
+    },
+    {
+      "job_id": "29829934",
+      "state": "PEND",
+      "queue": "gpul40s",
+      "job_name": "mosaic-endpoint09-boltz-validate-10000                                                    "
+    },
+    {
+      "job_id": "29829935",
+      "state": "PEND",
+      "queue": "hpc",
+      "job_name": "mosaic-endpoint09-boltz-after-validate-10000                                              "
+    }
+  ],
+  "current_scheduler_states": {
+    "29829703": "PEND",
+    "29829704": "PEND",
+    "29829894": "PEND",
+    "29829934": "PEND",
+    "29829935": "PEND",
+    "29829679": "DONE",
+    "29829680": "DONE",
+    "29829701": "EXIT",
+    "29829702": "EXIT",
+    "29829842": "DONE",
+    "29829843": "DONE",
+    "29829907": "DONE",
+    "29829908": "DONE"
+  },
+  "actual_terminal_proofs": [
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-03/protenix/random-segment-0000/submission.json",
+      "bytes": 1339,
+      "sha256": "42927004fa71664bb3be1fd09364723b7eaabc5ff667bedb28a8ab6511db89e3"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-03/protenix/random-segment-0000/payload/assessment.json",
+      "bytes": 10444,
+      "sha256": "82dcd6bb334ca6482349b01c7fa5984552c947c83008573875826844de0659e2"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-03/protenix/random-segment-0000/stdout.29820255.log",
+      "bytes": 2072,
+      "sha256": "20e585ebde4b26872663e13769b09f845c96a3933b3425d772118cfa0ff4d01e"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-03/protenix/random-native-0001/submission.json",
+      "bytes": 1334,
+      "sha256": "d2ca38707c23f383f24b427a9744d082e86b0dd8362a5b4eceb617af0db8b48c"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-03/protenix/random-native-0001/payload/assessment.json",
+      "bytes": 10540,
+      "sha256": "9c3e673a3412c8f531171dab108fb9350002fe3a36fe2ec6bc59999cc5af8f1b"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-03/protenix/random-native-0001/stdout.29821558.log",
+      "bytes": 2066,
+      "sha256": "d04bacbe7b480e100e5fa85f9b8ca821f6cffc1730e209f9e4d7abdc203a8933"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-03/protenix/random-after-native-0001/submission.json",
+      "bytes": 1354,
+      "sha256": "39513fcaf44c0c6f01481af9c660a525d1d6b30096abb498467c65b1a1eeabf9"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-03/protenix/random-after-native-0001/payload/assessment.json",
+      "bytes": 10504,
+      "sha256": "ad515db865ebe6473d79e1192d3048da5bf000384d01f43eda0e1446dd750625"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-03/protenix/random-after-native-0001/stdout.29821559.log",
+      "bytes": 2073,
+      "sha256": "ddba23498ef8fa3eff665a2bda47816a602ad8070b101c9571dc05365e1e3188"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-04/boltz/boltz2_chemistry-segment-0000/submission.json",
+      "bytes": 1366,
+      "sha256": "fd810562e3db4eb0c85a11dba23492d80e5920432128a9bd89f62265bdbe3f40"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-04/boltz/boltz2_chemistry-segment-0000/payload/assessment.json",
+      "bytes": 10889,
+      "sha256": "9945c819e7738bdc5f867dd5048d71b432b9c1d2e35e462231099f60b9b0c1e0"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-04/boltz/boltz2_chemistry-segment-0000/stdout.29825209.log",
+      "bytes": 2093,
+      "sha256": "61e0780e9e6f96a08eac3546891faf84b711af1ceddd8a1355b158567b7949f4"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-04/boltz/boltz2_chemistry-after-segment-0000/submission.json",
+      "bytes": 1374,
+      "sha256": "67d151b976c9b88cac4f904209fb712df58f59bcf568962c0125c9fe733a559a"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-04/boltz/boltz2_chemistry-after-segment-0000/payload/assessment.json",
+      "bytes": 10857,
+      "sha256": "b85bf6b53f7d69456f00fad73031bd57bf0cd781bc06d6156bc532885704c74c"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-04/boltz/boltz2_chemistry-after-segment-0000/stdout.29825210.log",
+      "bytes": 2097,
+      "sha256": "08fef7bf9c6eeafec8a97b27b6779df4dab0e66beea6e0b06ba668b5cca35a9a"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-03/protenix/random-native-0001/payload/study/early_pilot/combined_initial_checks/report.json",
+      "bytes": 1808,
+      "sha256": "16770561334f8426454cb3893c43144c3b31cff0acb5fbf6068578e38ceea49b"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-04/boltz/boltz2_chemistry-segment-0000/payload/study/terminal_gradient_checks/report.json",
+      "bytes": 2085,
+      "sha256": "d39ed2a9d29c8f9799083bcfb61961f78ad06588768e0f458c7caff4bf7ddddd"
+    }
+  ],
+  "limitations": [
+    "Aged-out original chemistry records use actual persisted same-job LSF and assessments, never fabricated live scheduler states.",
+    "JSONL scalar index/prefix observation is metadata; no local array or scientific recomputation.",
+    "Other-project job names are scheduler observations only; their scientific artifacts were not inspected.",
+    "An earlier read-only collector exceeded its metadata cap; its failed receipt remains preserved."
+  ]
+}

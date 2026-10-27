@@ -1,5 +1,5 @@
 {
-  "status": "allocated_CPU122_passed_and_Boltz_chemistry_running",
+  "status": "first_10000_updates_saved_terminal_bond_derivative_failed_no_successor",
   "active_local_package": "source03",
   "preparation": {
     "allocated_CPU_pass": false,
@@ -73,14 +73,14 @@
   },
   "current_observation": {
     "job_id": "29825209",
-    "actual_status": "RUN",
+    "actual_status": "FAILED_PERSISTED",
     "source_manifest_sha256": "01e2de2a3413bd903590dd331c5cedf6b756e856a83df2b73ad65e02b9f9fceb",
     "CPU_cases_passed": 122,
     "CPU_job": "29825202",
     "callback": "29825203",
     "original_native_and_combined_entry_checks": "passed",
-    "saved_committed_updates": 686,
-    "saved_committed_states": 687,
+    "saved_committed_updates": 10000,
+    "saved_committed_states": 10001,
     "target_updates": 30000,
     "rate": 0.0025,
     "proofs": [
@@ -102,5 +102,27 @@
     ],
     "terminal_success_established": false
   },
-  "independent_verification_sha256": "abce64f2cbff70e824f1482e37c3006a84267394b2b16d5a99b4ee75e0364d4c"
+  "independent_verification_sha256": "abce64f2cbff70e824f1482e37c3006a84267394b2b16d5a99b4ee75e0364d4c",
+  "latest_observed_utc": "2026-10-27T11:32:37.183632+00:00",
+  "latest_observation": {
+    "source_packet": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261027-all-run-status\\113234Z\\raw.json",
+    "verification_sha256": "634f0a140e47652cebda69fe30ba6c2a66eb0baf9c2098ecf27354fe092d18d1",
+    "segment_job": "29825209",
+    "terminal": "FAILED_PERSISTED",
+    "raw_same_job_LSF_sha256": "61e0780e9e6f96a08eac3546891faf84b711af1ceddd8a1355b158567b7949f4",
+    "updates": 10000,
+    "states": 10001,
+    "target": 30000,
+    "terminal_gradient_status": "failed",
+    "terminal_gradient_error": "AssertionError: Native affinity E_upper finite differences failed",
+    "terminal_gradient_report": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-04/boltz/boltz2_chemistry-segment-0000/payload/study/terminal_gradient_checks/report.json",
+      "bytes": 2085,
+      "sha256": "d39ed2a9d29c8f9799083bcfb61961f78ad06588768e0f458c7caff4bf7ddddd"
+    },
+    "callback_job": "29825210",
+    "callback_status": "FAILED_PERSISTED",
+    "successor_submitted": false,
+    "saved_results_changed": false
+  }
 }

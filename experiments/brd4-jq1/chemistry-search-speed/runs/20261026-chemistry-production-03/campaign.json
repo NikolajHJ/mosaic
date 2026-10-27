@@ -45,7 +45,7 @@
   },
   "plan_sha256": "053daea8fdda1a684d7d98c9253ff8e0e0f5999262745c365c378a2f700e0f4f",
   "production_readiness_passed": true,
-  "status": "Pro_random_10000_passed_next_native_queued_Bol_startup_failed",
+  "status": "Pro_random_first10000_passed_next_boundary_derivative_failed",
   "CPU_job": "29820218",
   "after_CPU_job": "29820219",
   "jobs": {
@@ -108,7 +108,7 @@
     "boltz": false
   },
   "final_queue_sha256": "1c5803bdb995dd7a6904d501fc76fe8be84611c6e23de37ac13612e58a2c220e",
-  "latest_observed_utc": "2026-10-26T21:40:18.245483+00:00",
+  "latest_observed_utc": "2026-10-27T11:32:37.183632+00:00",
   "latest_independent_verification": {
     "path": "status-20261026-evening-verification.json",
     "sha256": "a2ffcd77e49b015955ae5773fe56b9f163b54c08d05c017612810ea5ce0e383a",
@@ -169,14 +169,17 @@
   },
   "latest_scientific_progress": {
     "protenix_random": {
-      "status": "first_10000_segment_passed_next_boundary_validation_pending",
+      "status": "first_10000_segment_passed_next_boundary_derivative_failed",
       "updates": 10000,
       "states": 10001,
       "target": 50000,
       "certificate_sha256": "2e790bc79426c45aaee0548daaf134cf471aaff4978db7aeb4ef4ed68d903823",
       "next_native_job": "29821558",
       "next_callback": "29821559",
-      "original_native_big_arrays_downloaded": false
+      "original_native_big_arrays_downloaded": false,
+      "native_terminal": "FAILED_PERSISTED",
+      "native_error": "AssertionError: Combined frozen-reference atoms derivative check failed",
+      "successor_submitted": false
     },
     "boltz_chemistry": {
       "status": "failed_startup_before_study",

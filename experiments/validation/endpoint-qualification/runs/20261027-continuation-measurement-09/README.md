@@ -32,3 +32,13 @@ XML/LSF/source/startup audit plus fullcertificateproofchain verified. Onlynew
 BoltzGPU29829934/own-endedcallback29829935 actuallysubmitted; bothPEND
 11:25:42UTC. ProGPU29829894 and existingDBMol29829703 alsoPEND. No native
 agreement or optimizerpass/start yet. ExistingDBMol source08 is unchanged.
+
+
+27 October 11:32:37 UTC read-only account/arm status: Boltz09 GPU29829934,
+DBMol08 GPU29829703 and Pro07 GPU29829894 all PEND for physical GPU resources;
+no new native pass or blocked optimizer child. All three prior CPU/startup
+passes remain valid. Chemistry04 saved a complete first10k prefix but its
+original terminal bond FD failed; random Pro03 stays10k with the next combined
+atom boundary gate failed. Exact same-job LSF/assessments, contiguous scalar
+prefixes and nine-pending/zero-running account queue are recorded in
+[the status receipt](status-20261027T113237Z.json). No settings/results/job changes.

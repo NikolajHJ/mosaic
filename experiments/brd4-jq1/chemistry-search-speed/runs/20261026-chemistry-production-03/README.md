@@ -69,3 +69,11 @@ See campaign.json and status-20261026-evening-verification.json. This status
 check changed no runtime code, settings or saved results, submitted no jobs and
 left the monitor paused. Existing automated successor submissions above belong
 to the original controller. Local stdlib bytes/JSON/LSF/schema checks only.
+
+
+Read-only27 October11:32:37UTC reconfirmed original first10k passed and
+next boundary29821558 failed the combined frozen-reference atom derivative
+check; callback29821559 exited and no successor exists. Exact same-job
+persisted LSF/assessments and contiguous10k/10001 scalar prefixes were
+verified; aged-out live entries were not converted into new failures.
+Settings, original studies and paused monitor remain unchanged.

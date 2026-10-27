@@ -99,3 +99,13 @@ Exact local independent delivery verificationSHA
 abce64f2cbff70e824f1482e37c3006a84267394b2b16d5a99b4ee75e0364d4c,
 current-verification.json, raw CPU/startup/source/LSF metadata and actual submission
 vectors preserved. No local numerical work, monitor still paused.
+
+
+Read-only27 October11:32:37UTC: job29825209 actually ended05:28:31CET with
+LSFexit1 after10000contiguous updates/10001states. Original terminal atom
+probes pass, but all three E_upper probes fail; original report says
+`Native affinity E_upper finite differences failed`. Callback29825210 exited
+and submitted no successor. This supersedes the earlier running prefix,
+without changing the study or relabelling the terminal failure. Exact compact
+proof hashes are in campaign.json latest_observation and the endpoint09
+status-20261027T113237Z receipt. Original large scientific files stay remote.
