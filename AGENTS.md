@@ -1,5 +1,19 @@
 # Active project instructions
 
+**Independent DiffSBDD / epoch-39 study, 27 October 2026:** the user authorized
+implementation, mapping training and alternating-loop tests in this DBMol
+repository on a separate branch, only after required checks pass, preserving
+existing VAE training and every other experiment. This managed worktree is
+`codex/diffsbdd-vae-alternation-hpc`; its frozen epoch39 pin does not change the
+original36 scope of historical studies below. Initial read-only storage
+admission failed before staging/submission: conservative available
+50,748,885,086 bytes versus62,569,364,305 required, preserving active Mosaic
+forecasts/reserves, own2GiB and additional10GiB. No new runtime, job, model load,
+numerical fixture, mapping update or loop trajectory exists for this study.
+Keep all authored code unvalidated until allocated gates pass. Do not bypass
+admission, lower another campaign's forecasts, clean up unrelated data or infer
+a pass from local AST checks. See docs80 and the exact failed-admission receipt.
+
 **Independent frozen epoch-36 embedding prototype, 2026-10-23:** the user
 authorized implementation, supervised mapping training and HPC submission on
 `codex/epoch36-boltz-embedding-bridge`, while leaving the existing VAE

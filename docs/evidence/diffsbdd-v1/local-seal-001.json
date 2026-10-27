@@ -1,0 +1,14 @@
+{
+  "archive_bytes": 22298467,
+  "archive_sha256": "d63b914a414de3d764717ae38e98fea84a193d19b24e376bf12edb54bc4477de",
+  "campaign": "diffsbdd-vae-alternation-v1-attempt001",
+  "config_sha256": "1ea848311d287ccc4e82d2414737bce8aed3fe9a109e4cab97259a766d7a41ff",
+  "configuration": "C:\\Users\\nikol\\.codex\\worktrees\\diffsbdd-vae-alternation\\DBMol_exploratory\\configs\\diffsbdd_vae_alternation_v1.json",
+  "jobs_submitted": false,
+  "models_loaded": false,
+  "numerical_tests_run": false,
+  "source_bytes": 29291600,
+  "source_manifest_sha256": "0138868abae498c7cb57a82b610fe35ddadbd45188fb9cc3164f108f0fa3f108",
+  "source_members": 312,
+  "version": "diffsbdd-local-seal-v1"
+}

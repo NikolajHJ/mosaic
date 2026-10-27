@@ -1,5 +1,58 @@
 # Experiment ledger
 
+## 2026-10-27 — Independent DiffSBDD / frozen epoch39 implementation; storage blocked
+
+User-authorized implementation, mapping training and alternating-loop tests are
+isolated in managed worktree
+`C:\Users\nikol\.codex\worktrees\diffsbdd-vae-alternation\DBMol_exploratory`,
+branch `codex/diffsbdd-vae-alternation-hpc`. Existing DBMol and Mosaic checkouts,
+VAE continuation, all other experiments/jobs/settings and protected checkpoints
+were not modified. The plan stays pinned to completed epoch39 SHA
+`e5d7f99b9eb0fe04cd8b6b800e4bd90b6f1c24a65368216ce384a95061a7f3b0`,
+even though the independent bounded VAE continuation has now completed epoch40.
+
+Implemented new modular constrained mapping/data/training, strict native
+DiffSBDD loader/replay, crystal-pocket/VAE atom codec, T1/T2 pose transport,
+fresh supplied-pose Boltz scorer/gates, alternating/cohort drivers and independent
+fresh-pose native confirmation, with immutable transport/operator contracts.
+The public upstream source is commit
+`5d0d38d16c8932a0339fd2ce3f67ade98bbdff27`; locally downloaded public weights
+match MD5`166b0c056b31ffdf31d489a63e91e05b`, SHA256
+`07f86764bf569aafbc40a9c15fc02de8e2550437dd0f17f657eab3abe66c372c`.
+No model was loaded locally. The actual protocol is
+`configs/diffsbdd_vae_alternation_v1.json`; authored tests remain unexecuted.
+
+Read-only HPC admission at **11:00:54 UTC** failed before any remote write:
+available50,748,885,086 bytes; preserved active Mosaic whole-campaign forecast
+and reserves49,684,462,417; own2,147,483,648 plus additional unreserved
+10,737,418,240 requires62,569,364,305; shortfall11,820,479,219 bytes (~11.01GiB).
+The fresh raw quota lower bound57,885,421,731 also does not fit. The other
+forecast is bound to SHA
+`77361ec42751d1fd2fa4e53dd529839aabe41e7c6b501b2513a9b459f30ecd30`.
+New runtime provisioning, source staging, all numerical checks, mapping training
+and alternating tests remain **not started**; no new HPC jobs were submitted.
+No cleanup/reserve waiver was performed. Runtime footprint must also be measured
+before later provisioning and may require a larger immutable capacity plan.
+
+Exact inputs, interpretation limits, commands and durable evidence are in
+[docs80](80_diffsbdd_vae_alternation.md) and
+[storage-admission-001.json](evidence/diffsbdd-v1/storage-admission-001.json).
+Earlier histories below are preserved and retain their own checkpoint/scientific
+scopes. This entry does not promote a static implementation to a native pass.
+
+**Local seal and actual staging boundary, 11:31:14 UTC:**312 source/asset members,
+29,291,600 unpacked bytes,22,298,467-byte archive; manifestSHA
+`0138868abae498c7cb57a82b610fe35ddadbd45188fb9cc3164f108f0fa3f108`,
+configSHA`1ea848311d287ccc4e82d2414737bce8aed3fe9a109e4cab97259a766d7a41ff`,
+archiveSHA`d63b914a414de3d764717ae38e98fea84a193d19b24e376bf12edb54bc4477de`.
+The actual stage CLI returned nonzero, `blocked_storage_before_any_remote_write`,
+with the same conservative11,820,479,219-byte shortfall. It created no remote
+namespace, copied no files to HPC and submitted no jobs. The durable
+[blocked staging receipt](evidence/diffsbdd-v1/staging-blocked-001.json) binds
+this seal and fresh raw quota lower bound57,799,522,385 bytes. Final source-only
+inspection parsed35 Python files/counts133 test definitions; no fixtures/models
+ran. Runtime provisioning and every numerical stage remain not started.
+
 Created 2026-09-26. Owner: documentation and experiment-history agent; HPC
 execution is coordinated by the root agent.
 

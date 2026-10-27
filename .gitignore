@@ -11,4 +11,9 @@ logs/
 *.pt
 *.npz
 .DS_Store
+# Independent DiffSBDD public assets and immutable transport bundles (receipts
+# remain versioned under docs/evidence/diffsbdd-v1).
+outputs/diffsbdd-assets/
+outputs/diffsbdd-releases/
+outputs/hpc-submissions/diffsbdd-vae-alternation/
 

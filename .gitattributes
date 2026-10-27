@@ -1,2 +1,4 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+experiments/diffsbdd-vae-alternation/inputs/3MXF.pdb -text -diff
+experiments/diffsbdd-vae-alternation/hpc/*.sh text eol=lf

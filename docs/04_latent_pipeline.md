@@ -1,5 +1,14 @@
 # Molecular graph AE/VAE and frozen-Boltz2 latent optimization
 
+**Independent DiffSBDD / frozen epoch39 implementation, 27 October 2026:**
+new branch `codex/diffsbdd-vae-alternation-hpc` owns the constrained mapping,
+native state/pose transport, fresh crystal-pose scorer and matched loop arms.
+The original DBMol/Mosaic checkouts, VAE continuation and other experiments are
+preserved. Initial storage admission failed before staging or submission;
+no numerical checks, mapping fit or alternating trajectory has run. Authored
+fixtures/AST checks do not validate the experiment. See
+[scope, source/checkpoint identities and failed admission](80_diffsbdd_vae_alternation.md).
+
 Status: active implementation plan; first draft 2026-09-26.
 
 **Separate frozen epoch-36 embedding prototype, 23 October 2026:** the user

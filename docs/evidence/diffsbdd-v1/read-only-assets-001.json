@@ -1,0 +1,66 @@
+{
+  "assets": {
+    "boltz_affinity": {
+      "exists": true,
+      "path": "/work3/s234818/latentmol/cache/boltz2/boltz2_aff.ckpt",
+      "size_bytes": 2062139170
+    },
+    "boltz_confidence": {
+      "exists": true,
+      "path": "/work3/s234818/latentmol/cache/boltz2/boltz2_conf.ckpt",
+      "size_bytes": 2286561469
+    },
+    "dataset_manifest": {
+      "exists": true,
+      "path": "/work3/s234818/latentmol/data/source095-moses-triangle-v2/manifest.json",
+      "sha256": "f246cc93805b73a557cd0c09a78891ac8410c465192db615ce0b6709218c8c0e",
+      "size_bytes": 7777
+    },
+    "vae39": {
+      "exists": true,
+      "path": "/work3/s234818/latentmol/runs/source138-vae-cli-startup-fix-attempt001/segments/003/20261026T040252Z_chemistry-train_40cdfc66/epoch_0039.pt",
+      "sha256": "e5d7f99b9eb0fe04cd8b6b800e4bd90b6f1c24a65368216ce384a95061a7f3b0",
+      "size_bytes": 47675166
+    }
+  },
+  "commands": {
+    "home_quota": {
+      "argv": [
+        "getquota_zhome.sh"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "You are using 21.19G of 30.00G quota\n\n(Information updated ca. every 240 minutes. Last Update: 2026-10-27 10:04:16)\n\n"
+    },
+    "own_jobs": {
+      "argv": [
+        "bjobs",
+        "-a",
+        "-noheader",
+        "-o",
+        "jobid stat queue job_name",
+        "-u",
+        "s234818"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "29829679 RUN hpc mosaic-endpoint08-cpu\n29796558 PEND hpc mosaic-lrboost-analysis-combined-report\n29829680 PEND hpc mosaic-endpoint08-after-cpu\n29822674 DONE gpua100 source104-chemistry-segment-004\n29822675 DONE hpc source104-chemistry-after-segment-004\n"
+    },
+    "work_quota": {
+      "argv": [
+        "getquota_work3.sh"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "HPE-Storage-Servers (disks, storagepool 1): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nHPE-Storage-Servers (NVME, storagepool 2): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (disks, storagepool 3): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks, storagepool 4): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks added in 2024, storagepool 5): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (NVMEs added in 2024, storagepool 6): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||   46.18 GiB|  100.00 GiB||   342989| 20000000\n\n"
+    }
+  },
+  "env_candidates": {
+    "/work3/s234818/latentmol/env/ae/bin/python": true,
+    "/work3/s234818/latentmol/env/boltz311/bin/python": true,
+    "/work3/s234818/latentmol/env/diffsbdd/bin/python": false,
+    "/work3/s234818/mosaic/envs/protenix-tiny/bin/python": true
+  },
+  "observation_utc": "2026-10-27T10:50:45.498863+00:00",
+  "scope": "read-only metadata and bytes; no model imports or job mutation"
+}

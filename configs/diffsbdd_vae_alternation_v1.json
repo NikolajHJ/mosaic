@@ -1,0 +1,140 @@
+{
+  "version": "diffsbdd-vae-alternation-protocol-v1",
+  "campaign": "diffsbdd-vae-alternation-v1-attempt001",
+  "run_root": "/work3/s234818/latentmol/runs/diffsbdd-vae-alternation-v1-attempt001",
+  "release_root": "/work3/s234818/latentmol/releases/diffsbdd-vae-alternation-v1-attempt001/source",
+  "runtime": "/work3/s234818/latentmol/env/diffsbdd-v1-attempt001/bin/python",
+  "reference_runtime": "/work3/s234818/latentmol/env/diffsbdd-native-v1-attempt001/bin/python",
+  "upstream": {
+    "commit": "5d0d38d16c8932a0339fd2ce3f67ade98bbdff27",
+    "source_relative": "assets/DiffSBDD",
+    "source_manifest_sha256": "e588fcb52a90335f5aeccb12c5d20e2f841cf9bfccc799c7dabd14dee7155de8",
+    "checkpoint_relative": "assets/crossdocked_fullatom_cond.ckpt",
+    "checkpoint_sha256": "07f86764bf569aafbc40a9c15fc02de8e2550437dd0f17f657eab3abe66c372c",
+    "timesteps": 500,
+    "joint_nf": 128,
+    "norm_values": [1, 4]
+  },
+  "vae": {
+    "epoch": 39,
+    "path": "/work3/s234818/latentmol/runs/source138-vae-cli-startup-fix-attempt001/segments/003/20261026T040252Z_chemistry-train_40cdfc66/epoch_0039.pt",
+    "sha256": "e5d7f99b9eb0fe04cd8b6b800e4bd90b6f1c24a65368216ce384a95061a7f3b0",
+    "latent": 256,
+    "atom_hidden": 96,
+    "max_nodes": 50
+  },
+  "dataset": {
+    "path": "/work3/s234818/latentmol/data/source095-moses-triangle-v2",
+    "manifest_sha256": "f246cc93805b73a557cd0c09a78891ac8410c465192db615ce0b6709218c8c0e",
+    "require_checkpoint_dataset_and_split_lineage": true,
+    "requested_sources": 20000,
+    "maximum_source_attempts": 100000,
+    "allowed_source_atom_counts": [1, 50],
+    "views": ["posterior_mean", "posterior_1", "posterior_2", "local_rms_0.02", "local_rms_0.05"],
+    "grouping": "union_source_identity_decoded_identity_and_Murcko_scaffold_before_hash_80_10_10",
+    "seed": 17,
+    "minimum_distinct_audit_identities": 200,
+    "native_conformers_per_identity": 2
+  },
+  "fitting": {
+    "calibrate_runtime": true,
+    "steps": 10000,
+    "batch_size": 128,
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "evaluate_every": 250,
+    "seed": 17,
+    "times": [0.0, 0.04, 0.1, 0.2],
+    "hidden_width": 96,
+    "width": 128,
+    "variance_floor": 0.0001,
+    "min_atom_agreement": 0.995,
+    "max_embedding_nrmse": 0.05,
+    "max_denoiser_nrmse": 0.05,
+    "max_denoiser_p95_nrmse": 0.1,
+    "desired_scores_are_labels": false
+  },
+  "pocket": {
+    "receptor_relative": "inputs/3MXF.pdb",
+    "receptor_sha256": "534dcb8ea9fa29956249b5133b22187c3867363b16a6b98dd8219c18c5d3250f",
+    "protein_chain": "A",
+    "reference_ligand": "JQ1",
+    "radius_angstrom": 6.0,
+    "author_anchors": [81, 140],
+    "sequence_anchors": [40, 99],
+    "sequence_required": [56],
+    "atom_count": 25,
+    "elements": ["C", "N", "O", "S", "F", "Cl"],
+    "neutral": true,
+    "connected": true,
+    "msa_policy": "new_query_only_A3M_matching_exact_crystal_chain_sequence"
+  },
+  "boltz": {
+    "commit": "b1ebfc46ecf57f5414e0d1a6f9027bbb122c53bc",
+    "affinity": {"path": "/work3/s234818/latentmol/cache/boltz2/boltz2_aff.ckpt", "sha256": "dcc5cd3722b1c9eaa34267e4ae32f55cbbf1963f4c19319381ccfa30fdd2ca9e"},
+    "confidence": {"path": "/work3/s234818/latentmol/cache/boltz2/boltz2_conf.ckpt", "sha256": "090e82ac8c92f5e943fa1b39e7410a44027bea7243c0bbb3caa67a77fc1428e1"},
+    "molecule_dir": "/work3/s234818/latentmol/cache/boltz2/mols",
+    "mols_tar": "/work3/s234818/latentmol/cache/boltz2/mols.tar",
+    "objective_arithmetic": "contact_head_and_assembly_float64_v1",
+    "recycling_steps": 0,
+    "fresh_pose_seeds": [17, 23],
+    "fresh_pose_prediction": {
+      "recycling_steps": 3,
+      "sampling_steps": 200,
+      "diffusion_samples": 1,
+      "sampling_steps_affinity": 200,
+      "diffusion_samples_affinity": 5,
+      "max_msa_seqs": 8192
+    },
+    "inherited_independent_AD_gate_unchanged": true
+  },
+  "loop": {
+    "step_size": 0.25,
+    "gradient_denominator_floor": 1.0,
+    "trust_radius": 1.0,
+    "max_row_tv": 0.02,
+    "maximum_halvings": 7,
+    "uff_max_iterations": 50,
+    "uff_max_displacement_angstrom": 0.5,
+    "uff_force_constant": 10.0,
+    "smoke_seeds": [17, 23, 29],
+    "smoke_arrival_levels": [75, 50, 25],
+    "smoke_updates": 5,
+    "pilot_seeds": [31, 32, 33, 34, 35, 36, 37, 38],
+    "pilot_arrival_levels": [20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1],
+    "arms": ["D", "H0", "S", "A1", "A5", "A5-exact"],
+    "sequential_blocks": 20,
+    "FD_scales": [0.01, 0.003, 0.001],
+    "FD_atol": 0.000001,
+    "FD_rtol": 0.02,
+    "FD_required_adjacent_resolved_scales": 2
+  },
+  "storage": {
+    "own_initial_cap_bytes": 2147483648,
+    "additional_unreserved_headroom_bytes": 10737418240,
+    "other_campaign_capacity_path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-08/after-cpu/continuation-storage-entry.json",
+    "never_reduce_existing_forecasts_or_reserves": true
+  },
+  "followup": {
+    "bootstrap_forecast": {
+      "mode": "bounded_first_case_then_measured_forecast",
+      "initial_case_seconds": 3300,
+      "factor": 1.5,
+      "retain_all_prespecified_memberships": true
+    }
+  },
+  "stages": {
+    "cpu": {"queue": "hpc", "slots": 4, "wall_minutes": 45, "internal_seconds": 2400},
+    "native": {"queue": "gpua100", "slots": 4, "wall_minutes": 60, "internal_seconds": 3300},
+    "scorer": {"queue": "gpua100", "slots": 4, "wall_minutes": 120, "internal_seconds": 6600},
+    "fit": {"queue": "gpua100", "slots": 4, "wall_minutes": 240, "internal_seconds": 13800},
+    "audit": {"queue": "gpua100", "slots": 4, "wall_minutes": 120, "internal_seconds": 6600},
+    "smoke": {"queue": "gpua100", "slots": 4, "wall_minutes": 240, "internal_seconds": 13800},
+    "pilot": {"queue": "gpua100", "slots": 4, "wall_minutes": 1440, "internal_seconds": 82800},
+    "followup": {"queue": "gpua100", "slots": 4, "wall_minutes": 1440, "internal_seconds": 82800}
+  },
+  "runtime_forecast_factor": 1.5,
+  "failure_policy": "preserve_every_failure_stop_before_successor_no_waivers_or_seed_replacement",
+  "scope": "frozen_epoch39_exploratory_one_pocket_feasibility_not_binding_affinity_evidence",
+  "existing_campaign_mutations": "none"
+}

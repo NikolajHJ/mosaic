@@ -1,0 +1,16 @@
+{
+  "checkpoint_bytes": 17861341,
+  "checkpoint_md5": "166b0c056b31ffdf31d489a63e91e05b",
+  "checkpoint_name": "crossdocked_fullatom_cond.ckpt",
+  "checkpoint_sha256": "07f86764bf569aafbc40a9c15fc02de8e2550437dd0f17f657eab3abe66c372c",
+  "checkpoint_url": "https://zenodo.org/api/records/8183747/files/crossdocked_fullatom_cond.ckpt/content",
+  "models_loaded": false,
+  "numerical_work": false,
+  "receptor_sha256": "534dcb8ea9fa29956249b5133b22187c3867363b16a6b98dd8219c18c5d3250f",
+  "record_sha256": "65fd5506ba06e1c0964c1ba5deff7ae80e40b59656dcf2570157b4f31f174439",
+  "record_url": "https://zenodo.org/api/records/8183747",
+  "remote_staging": false,
+  "source_manifest_sha256": "e588fcb52a90335f5aeccb12c5d20e2f841cf9bfccc799c7dabd14dee7155de8",
+  "upstream_commit": "5d0d38d16c8932a0339fd2ce3f67ade98bbdff27",
+  "version": "diffsbdd-public-assets-v1"
+}
