@@ -35,6 +35,7 @@ def owned(tmp_path, monkeypatch):
     root.mkdir()
     monkeypatch.setattr(ops, "SOURCE", source)
     monkeypatch.setattr(ops, "ROOT", root)
+    monkeypatch.setattr(ops, "EXISTING_ROOT", tmp_path / "existing-source08")
     return source, root
 
 
@@ -49,7 +50,7 @@ def plan():
             'logit_policy':'prospective-fixed-reference-logit-admission-v1',
             "user_authorized_prospective_checks_before_children": True, "original_failures_preserved": True,
             "optimization_settings_changed": False, "monitor_remains_paused": True,
-            "matrix_stride": 20, "loss_stride": 1, "dispatch_arms": list(ops.DISPATCH_ARMS),
+            "matrix_stride": 20, "loss_stride": 1, "dispatch_arms": list(ops.DISPATCH_ARMS), "automatic_dispatch_arms":list(ops.AUTOMATIC_ARMS),
             "blocked_arms": copy.deepcopy(ops.BLOCKED_ARMS), "root":str(ops.ROOT), "control_root": str(ops.ROOT), "source_root": str(ops.SOURCE), "arms": [
         {"id": name, "offsets": list(values["offsets"]), "segment_steps": values["segment_steps"],
          "global_target": values["global_target"], "rate": values["rate"],
@@ -69,7 +70,7 @@ def test_scientific_root_alias_cannot_point_to_predecessor():
     with pytest.raises(ValueError,match='scientific/control/source'):ops.validate_plan(value)
 
 
-def lsf(job="111", name="mosaic-endpoint07-cpu", queue="hpc", status="Done"):
+def lsf(job="111", name="mosaic-endpoint09-cpu", queue="hpc", status="Done"):
     return ("Subject: Job " + job + ": <" + name + "> in cluster <dcc> " + status
             + "\nJob was executed in queue <" + queue + ">.\nSuccessfully completed.\n")
 
@@ -263,8 +264,8 @@ def test_scheduler_failures_identity_and_query_errors_fail_closed(change):
 
 
 def test_lsf_wraps_whitespace_without_losing_exact_job_name():
-    raw = lsf().replace("mosaic-endpoint07-cpu", "mosaic-endpoint07-\n cpu")
-    assert ops.lsf_success(raw, "111", "mosaic-endpoint07-cpu", "hpc")
+    raw = lsf().replace("mosaic-endpoint09-cpu", "mosaic-endpoint09-\n cpu")
+    assert ops.lsf_success(raw, "111", "mosaic-endpoint09-cpu", "hpc")
 
 
 @pytest.mark.parametrize("change", ["wrong_job", "wrong_name", "wrong_queue", "duplicate_subject", "fake_done_suffix", "no_success"])
@@ -284,7 +285,7 @@ def test_lsf_failure_does_not_become_a_success(change):
         raw = raw.replace("Successfully completed.", "Exited with exit code 1.")
     assert raw != lsf(), "Negative control must actually mutate the raw LSF proof"
     with pytest.raises(ValueError):
-        ops.lsf_success(raw, "111", "mosaic-endpoint07-cpu", "hpc")
+        ops.lsf_success(raw, "111", "mosaic-endpoint09-cpu", "hpc")
 
 
 def test_raw_xml_counts_actual_rows_and_exact_modules(owned):
@@ -689,3 +690,18 @@ def test_rejected_original_protenix_admission_stays_file_bound_and_failed(monkey
     else:
         with pytest.raises(ValueError):
             ops.blocked_admission(manifest, current)
+
+
+def test_recovery_submit_rejects_duplicate_existing_DBMol_before_files_or_bsub(owned):
+    with pytest.raises(ValueError,match="must never be duplicated"):
+        ops.submit("validate",PIN,"dbmol",5000)
+
+
+def test_recovery_plan_cannot_enable_automatic_DBMol(owned):
+    value=plan();value["automatic_dispatch_arms"]=["boltz","dbmol"]
+    with pytest.raises(ValueError,match="Boltz only"):ops.validate_plan(value)
+
+
+def test_recovery_plan_cannot_drop_Boltz_or_restore_Protenix(owned):
+    value=plan();value["automatic_dispatch_arms"]=["protenix"]
+    with pytest.raises(ValueError,match="Boltz only"):ops.validate_plan(value)

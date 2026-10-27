@@ -1,0 +1,686 @@
+{
+  "arm": {
+    "config": {
+      "bytes": 1733,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source/examples/configs/extended_continuation.json",
+      "sha256": "f91c90770fe907c00e081f3ed28b46071ac35cc3f869edae504cf8cc16f6b445"
+    },
+    "expected": {
+      "original_native_report": {
+        "acceptance_policy": "best_primal",
+        "artifact_policy": "compact",
+        "artifact_scope": "all graphs/raw gradients/scalars/RNG; logits at initial/final/probes; no persisted trunk tensors",
+        "bond_order_null_absolute_scalar_difference": 0.0,
+        "bond_order_null_comparison": "standalone primal versus standalone primal",
+        "bond_order_null_max_gradient_difference": 0.0,
+        "bond_order_null_max_output_difference": 0.0,
+        "bond_order_null_output_atol": 2e-05,
+        "bond_order_null_same_atom_and_existence_inputs": true,
+        "bond_order_null_scalar_atol": 2e-05,
+        "directions": [
+          {
+            "autodiff": 0.0102313794195652,
+            "destination": 2,
+            "field": "X",
+            "gradient_norm": 0.03449278123409062,
+            "row": 23,
+            "source": 4,
+            "sweep": [
+              {
+                "absolute_error": 1.73225998878479e-06,
+                "agrees": true,
+                "epsilon": 0.01,
+                "finite_difference": 0.010229647159576416,
+                "minus_loss": -0.1779223531484604,
+                "plus_loss": -0.17771776020526886,
+                "relative_error": 0.0001693085475329196,
+                "same_sign": true
+              },
+              {
+                "absolute_error": 1.3168901205062866e-05,
+                "agrees": true,
+                "epsilon": 0.003,
+                "finite_difference": 0.010244548320770264,
+                "minus_loss": -0.1778566837310791,
+                "plus_loss": -0.17779521644115448,
+                "relative_error": 0.0012854545454545454,
+                "same_sign": true
+              },
+              {
+                "absolute_error": 1.73225998878479e-06,
+                "agrees": true,
+                "epsilon": 0.001,
+                "finite_difference": 0.010229647159576416,
+                "minus_loss": -0.17783679068088531,
+                "plus_loss": -0.17781633138656616,
+                "relative_error": 0.0001693085475329196,
+                "same_sign": true
+              }
+            ]
+          },
+          {
+            "autodiff": 0.0034544626250863075,
+            "destination": 0,
+            "field": "E_upper",
+            "gradient_norm": 0.011438282489079056,
+            "row": 130,
+            "source": 1,
+            "sweep": [
+              {
+                "absolute_error": 3.351829946041107e-06,
+                "agrees": true,
+                "epsilon": 0.01,
+                "finite_difference": 0.0034578144550323486,
+                "minus_loss": -0.17785975337028503,
+                "plus_loss": -0.1777905970811844,
+                "relative_error": 0.0009693492781728076,
+                "same_sign": true
+              },
+              {
+                "absolute_error": 2.2474986811478644e-05,
+                "agrees": true,
+                "epsilon": 0.003,
+                "finite_difference": 0.003476937611897786,
+                "minus_loss": -0.17783699929714203,
+                "plus_loss": -0.17781613767147064,
+                "relative_error": 0.006464017857142774,
+                "same_sign": true
+              },
+              {
+                "absolute_error": 1.2294389307498932e-05,
+                "agrees": true,
+                "epsilon": 0.001,
+                "finite_difference": 0.0034421682357788086,
+                "minus_loss": -0.17783014476299286,
+                "plus_loss": -0.1778232604265213,
+                "relative_error": 0.003558987501620969,
+                "same_sign": true
+              }
+            ]
+          }
+        ],
+        "final_loss": -0.17807969450950623,
+        "final_primal_loss": -0.17807970941066742,
+        "finite_difference_policy": {
+          "absolute_tolerance": 0.002,
+          "acceptance": "same sign, relative error <= rtol, and absolute+relative tolerance; two adjacent scales",
+          "epsilons": [
+            0.01,
+            0.003,
+            0.001
+          ],
+          "minimum_tangent": 1e-07,
+          "relative_error_denominator": "max(abs(FD), abs(autodiff))",
+          "relative_tolerance": 0.15
+        },
+        "initial_loss": -0.17782661318778992,
+        "initial_primal_loss": -0.1778266280889511,
+        "policy_segments": [
+          {
+            "first_update": 1,
+            "last_update": 1,
+            "policy": "best_primal"
+          }
+        ],
+        "primal_autodiff_parity": {
+          "absolute_scalar_difference": 1.4901161193847656e-08,
+          "autodiff_loss": -0.17782661318778992,
+          "logit_interpretation": "compilation-path diagnostic; null invariance compares standalone primal with standalone primal",
+          "max_logit_difference": 0.00020599365234375,
+          "primal_loss": -0.1778266280889511,
+          "raw_artifact": "baseline-primal.npz",
+          "scalar_atol": 2e-05
+        },
+        "primal_descent_minimum_decrease": null,
+        "primal_every_step": true,
+        "record_readouts": false,
+        "requested_updates": 1,
+        "status": "passed",
+        "updates": [
+          {
+            "acceptance_policy": "best_primal",
+            "accepted_step_size": 0.3,
+            "after": -0.17807969450950623,
+            "attempts": [
+              {
+                "loss": -0.17807969450950623,
+                "passes_strict_threshold": true,
+                "primal_loss": -0.17807970941066742,
+                "projection_residuals": {
+                  "E_upper": 0.001534577243032136,
+                  "X": 0.006347440048214824
+                },
+                "step_size": 0.3
+              }
+            ],
+            "before": -0.17782661318778992,
+            "delta_E_upper": 0.0030692233704030514,
+            "delta_X": 0.008172400295734406,
+            "fallback_used": false,
+            "primal_after": -0.17807970941066742,
+            "primal_before": -0.1778266280889511,
+            "primal_increased": false,
+            "selected_trial": 0,
+            "step": 0
+          }
+        ]
+      },
+      "original_terminal_report": {
+        "acceptance_policy": "best_primal",
+        "artifact_policy": "compact",
+        "artifact_scope": "all graphs/raw gradients/scalars/RNG; logits at initial/final/probes; no persisted trunk tensors",
+        "directions": [
+          {
+            "autodiff": 0.08608892560005188,
+            "destination": 2,
+            "field": "X",
+            "gradient_norm": 0.11101075102291362,
+            "row": 3,
+            "source": 1,
+            "sweep": []
+          }
+        ],
+        "error": "ValueError: Predeclared epsilon leaves the simplex interior",
+        "finite_difference_policy": {
+          "absolute_tolerance": 0.002,
+          "acceptance": "same sign, relative error <= rtol, and absolute+relative tolerance; two adjacent scales",
+          "epsilons": [
+            0.01,
+            0.003,
+            0.001
+          ],
+          "minimum_tangent": 1e-07,
+          "relative_error_denominator": "max(abs(FD), abs(autodiff))",
+          "relative_tolerance": 0.15
+        },
+        "initial_loss": -0.22756804525852203,
+        "initial_primal_loss": -0.22756801545619965,
+        "policy_segments": [
+          {
+            "first_update": 1,
+            "last_update": 1,
+            "policy": "best_primal"
+          }
+        ],
+        "primal_autodiff_parity": {
+          "absolute_scalar_difference": 2.9802322387695312e-08,
+          "autodiff_loss": -0.22756804525852203,
+          "logit_interpretation": "compilation-path diagnostic; null invariance compares standalone primal with standalone primal",
+          "max_logit_difference": 0.0002307891845703125,
+          "primal_loss": -0.22756801545619965,
+          "raw_artifact": "baseline-primal.npz",
+          "scalar_atol": 2e-05
+        },
+        "primal_every_step": true,
+        "record_readouts": false,
+        "requested_updates": 1,
+        "status": "failed",
+        "updates": []
+      },
+      "parent_committed_states": 10001,
+      "parent_committed_updates": 10000,
+      "saved_parent_scientific_status": "failed"
+    },
+    "failed_parent": {
+      "endpoint": {
+        "bytes": 14284,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-segment-0000/payload/study/case-0/snapshots/step-10000.npz",
+        "sha256": "6be2b3868d58162d4aa3cc9d960cfb85a84d4078748f0b24d50b138ae3e47dbd"
+      },
+      "job_id": "29809291",
+      "parent": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-segment-0000",
+      "states": {
+        "bytes": 10528552,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-segment-0000/payload/study/case-0/states.jsonl",
+        "sha256": "f24feed2906ff2307fb07d72c05cda4c17b0894f1515c7b566b921d2a0c5a5fb"
+      },
+      "stderr": {
+        "bytes": 750208,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-segment-0000/stderr.29809291.log",
+        "sha256": "12b4a4011c8d0a7de4c4c63f6b172d987de90f50e41d8425e41acc63b9e5b52f"
+      },
+      "stdout": {
+        "bytes": 1229018,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-segment-0000/stdout.29809291.log",
+        "sha256": "e87b2e9640768fb2c8d0ae064030f9e646d1820b4f55bea44bb10ff92ac7fa92"
+      },
+      "submission": {
+        "bytes": 1430,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-segment-0000/submission.json",
+        "sha256": "dd10718a178003e80a77ed37725a7c4e12b15fa55090bd4b63258ab72574878d"
+      },
+      "summary": {
+        "bytes": 37975078,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-segment-0000/payload/study/summary.json",
+        "sha256": "99d63960395797f0884140101afc012fd3335ed0edff80e6ef5d669549ea8285"
+      },
+      "terminal": {
+        "bytes": 1599,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-segment-0000/payload/study/terminal_gradient_checks/report.json",
+        "sha256": "1506e7ed0d6d4e56b62a72097133bcf4832493fa2f9a6365967ca4eafcdf26c0"
+      },
+      "updates": {
+        "bytes": 8634606,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-segment-0000/payload/study/case-0/updates.jsonl",
+        "sha256": "ba72dc41ed84a221e4d7711ca8054438d2e75496f32fe042f436e16fb3373075"
+      }
+    },
+    "future_endpoint_direction_scope": "not_preexisting_at_new_endpoint",
+    "global_start": 20000,
+    "global_target": 50000,
+    "id": "protenix",
+    "inputs": {
+      "cpu_certificate": {
+        "bytes": 4869,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/cpu-certificate.json",
+        "sha256": "ab3148ea6dd8d25361f85e9d8283578e0cf4429844d820a4dab6b03673ef577b"
+      },
+      "original_driver_argv": [
+        "/work3/s234818/mosaic/envs/protenix-tiny/bin/python",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source/examples/brd4_25_atoms.py",
+        "--mode",
+        "run",
+        "--config",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source/examples/configs/extended_continuation.json",
+        "--output",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-segment-0000/payload/study",
+        "--manifest",
+        "da9db6821d26b884ca1749303fc8e0b0095bd9ee7cbd1b427cdcf1b22eec6562",
+        "--cpu-certificate",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/cpu-certificate.json",
+        "--cpu-certificate-sha256",
+        "ab3148ea6dd8d25361f85e9d8283578e0cf4429844d820a4dab6b03673ef577b",
+        "--reference",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/cpu/payload/composition_reference.json",
+        "--pocket",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/cpu/payload/pocket_definition.json",
+        "--pocket-sha256",
+        "9376c715eaf5b48689fb3e995b00d7820601a7776970df66bd7e7cff3b13ee43",
+        "--offset",
+        "10000",
+        "--segment-steps",
+        "10000",
+        "--resume-snapshot",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-protenix/payload/study/case-0/snapshots/step-10000.npz",
+        "--resume-sha256",
+        "edf15f06ba1b6591d62cbc3e04e19ecd93b553a0627da38c370fdeed3c1b780f",
+        "--ready",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/assessment.json",
+        "--ready-sha256",
+        "edd616ca16b1d7bd4882ca4f395b8a4375387cffff5f4124f5fbb071ff02e81d"
+      ],
+      "original_driver_invocation": {
+        "bytes": 1910,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-segment-0000/payload/driver-invocation.json",
+        "sha256": "81bf732e0f37fa514380e71b8d78c12a280c3a32c62a587251bdca283f0ae363"
+      },
+      "original_native_report": {
+        "bytes": 5101,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-segment-0000/payload/study/native_gradient_checks/report.json",
+        "sha256": "4b736d6e0576a472d01cc1fe8b62a50e1c72a473980873e1ae074bacb00273ec"
+      },
+      "pocket": {
+        "bytes": 3948,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/cpu/payload/pocket_definition.json",
+        "sha256": "9376c715eaf5b48689fb3e995b00d7820601a7776970df66bd7e7cff3b13ee43"
+      },
+      "ready": {
+        "bytes": 22361,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/assessment.json",
+        "sha256": "edd616ca16b1d7bd4882ca4f395b8a4375387cffff5f4124f5fbb071ff02e81d"
+      },
+      "reference": {
+        "bytes": 2087,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/cpu/payload/composition_reference.json",
+        "sha256": "37b34a2ba7be47886936df48faaabdeac20481e5a9cebca9bafab831c07868eb"
+      }
+    },
+    "label": "Protenix native-only continuation",
+    "offsets": [
+      20000,
+      30000,
+      40000
+    ],
+    "original_argv": [
+      "/work3/s234818/mosaic/envs/protenix-tiny/bin/python",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source/examples/brd4_25_atoms.py",
+      "--mode",
+      "run",
+      "--config",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source/examples/configs/extended_continuation.json",
+      "--output",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-segment-0000/payload/study",
+      "--manifest",
+      "da9db6821d26b884ca1749303fc8e0b0095bd9ee7cbd1b427cdcf1b22eec6562",
+      "--cpu-certificate",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/cpu-certificate.json",
+      "--cpu-certificate-sha256",
+      "ab3148ea6dd8d25361f85e9d8283578e0cf4429844d820a4dab6b03673ef577b",
+      "--reference",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/cpu/payload/composition_reference.json",
+      "--pocket",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/cpu/payload/pocket_definition.json",
+      "--pocket-sha256",
+      "9376c715eaf5b48689fb3e995b00d7820601a7776970df66bd7e7cff3b13ee43",
+      "--offset",
+      "10000",
+      "--segment-steps",
+      "10000",
+      "--resume-snapshot",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-protenix/payload/study/case-0/snapshots/step-10000.npz",
+      "--resume-sha256",
+      "edf15f06ba1b6591d62cbc3e04e19ecd93b553a0627da38c370fdeed3c1b780f",
+      "--ready",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/assessment.json",
+      "--ready-sha256",
+      "edd616ca16b1d7bd4882ca4f395b8a4375387cffff5f4124f5fbb071ff02e81d"
+    ],
+    "original_direction_limits": "Authentic terminal observations only; fields not reached remain explicit empty",
+    "original_direction_scope": "saved_failed_endpoint",
+    "original_directions": {
+      "E_upper": [],
+      "X": [
+        {
+          "row": 3,
+          "source": 1,
+          "target": 2
+        }
+      ]
+    },
+    "parent_snapshot": {
+      "bytes": 14284,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-segment-0000/payload/study/case-0/snapshots/step-10000.npz",
+      "sha256": "6be2b3868d58162d4aa3cc9d960cfb85a84d4078748f0b24d50b138ae3e47dbd"
+    },
+    "rate": 0.3,
+    "segment_steps": 10000,
+    "segment_updates": 10000,
+    "source": {
+      "files": 643,
+      "manifest_sha256": "da9db6821d26b884ca1749303fc8e0b0095bd9ee7cbd1b427cdcf1b22eec6562",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source"
+    },
+    "start_global": 20000,
+    "target_global": 50000
+  },
+  "can_certify_or_restart_original_study": false,
+  "cap_bytes": 268435456,
+  "cohort": "authentic original X plus two baseline-reference-AD-ranked distinct meaningful rows per field, sealed before FD",
+  "compiler_context_source": {
+    "files": 34,
+    "manifest_sha256": "ab875927a328c34650d2e43baf6dfbe323e8f9bcf5600f39bac78f3ccdfb5d8c",
+    "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-release-05/source"
+  },
+  "continuation_authorization_not_executed": "Only after actual allocated/native/other original pilot/runtime/storage/startup checks; this capsule cannot launch optimization.",
+  "control_root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-06",
+  "engineering_predecessor": {
+    "failure_preserved": "Reference dtype audit rejected integer-charge arcsinh narrowing before FD comparison",
+    "proofs": [
+      {
+        "bytes": 1212,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-03/gpu/submission.json",
+        "sha256": "89ae3820a49f9d77f95c1ba8f805235435322d314303c3f7173765b14e945546"
+      },
+      {
+        "bytes": 2086,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-03/gpu/stdout.29820643.log",
+        "sha256": "9f842faf715762f367bbc57948e711d921718b6772262495790b16a0d9bb2474"
+      },
+      {
+        "bytes": 896,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-03/gpu/post-execution-preservation.json",
+        "sha256": "c46ade711e24d2eaa87a371c6cf911bbbae6c72ea3d873680bd6d73e2fd3b6d2"
+      },
+      {
+        "bytes": 11930,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-03/gpu/payload/fp64-final-preservation.json",
+        "sha256": "47a4426fe605c47577886e3705bcf774d928f9b7625ce59f5750231ef8959203"
+      },
+      {
+        "bytes": 1548,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-03/gpu/payload/production/assessment.json",
+        "sha256": "0833ea1268d75e6b60e2472c180e7f2ff71ad8602d82ad5171e88a3c4f7ac159"
+      },
+      {
+        "bytes": 690,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-03/gpu/payload/assessment.json",
+        "sha256": "7323e1d887a8e2c16329cf78ac499647db69f1d9609bdda19f798c46cc8f670c"
+      }
+    ],
+    "source": {
+      "files": 16,
+      "manifest_sha256": "a701b12bd1e69f5aa7169ad5339f2456c3d728b855257b4270437d37f9da68f3",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-release-03/source"
+    }
+  },
+  "epsilon_ladder": [
+    0.003,
+    0.001,
+    0.0003,
+    0.0001,
+    3e-05
+  ],
+  "internal_seconds": 5400,
+  "max_bytes": 268435456,
+  "metadata_cap_bytes": 16777216,
+  "monitor_remains_paused": true,
+  "negative_controls": [
+    "zero production gradients",
+    "reversed production gradients",
+    "1.5x production gradients"
+  ],
+  "optimization_settings_changed": false,
+  "original_directions": {
+    "E_upper": [],
+    "X": [
+      {
+        "row": 3,
+        "source": 1,
+        "target": 2
+      }
+    ]
+  },
+  "original_forensics_plan": {
+    "bytes": 20700,
+    "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-forensics-release-01/source/plan.json",
+    "sha256": "14d0cf5b03af73ee5d87ece55b8c48616897521c50bbb40e8f76b6a9bb8f5861"
+  },
+  "original_results_changed": false,
+  "output": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-06/gpu/payload",
+  "prior_forensic_report": {
+    "bytes": 7849579,
+    "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-forensics-01/gpu/payload/forensics/report.json",
+    "sha256": "acbb5273e0c794d5719067210e27a8031717fb8a51a21dc0eb19988881ee8359"
+  },
+  "production_precision": "Original FP32 raw saved endpoint and exact original-class logit replay; qualified compiler autotune0 inherited before fresh workers; no probability substitution or tolerance change",
+  "prospective_policy": "protenix-separate-precision-admission-v1",
+  "reference_precision": "losslessly promoted original weights/context/raw probabilities; isolated four AST-pinned precision casts; every nested forward floating JAXPR aval must be float64",
+  "replay_context_scope": "Authenticate complete replay02 cohort and sealed full-model05 CPU adoption; this different endpoint requires fresh exact replay/FP64/native gates, never inherits native acceptance",
+  "replay_predecessor": {
+    "proofs": [
+      {
+        "bytes": 5455,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-05/gpu/stderr.29826052.log",
+        "sha256": "e1d2636bb675ada982c52d5ebec664ac1d2092c32e7d20bec19320570b99d45d"
+      },
+      {
+        "bytes": 7643,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-05/gpu/continuation-storage-precision.json",
+        "sha256": "45b9d30261c9f0e5b7401f3269633592eb1959cfc9790d214a598e836bc16f75"
+      },
+      {
+        "bytes": 896,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-05/gpu/post-execution-preservation.json",
+        "sha256": "ba62157b00bb937e04efd5180429d197ddc63e76cc611fbcb05be641e170d680"
+      },
+      {
+        "bytes": 20158,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-05/gpu/precision-storage-entry.json",
+        "sha256": "c58ba34becb460cbc04b47d6dae132f1e3a9cabc2cb22281415d26dbc5d94ce1"
+      },
+      {
+        "bytes": 1212,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-05/gpu/submission.json",
+        "sha256": "250e56aeeeaef626d8c5583f99b09c1cdc15f8657001a0495235f8cfd70fa568"
+      },
+      {
+        "bytes": 2079,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-05/gpu/stdout.29826052.log",
+        "sha256": "ba7c12f89efa2b9041259419ffb26b8a1631a7544c6655ba7b57f5f80fd28532"
+      },
+      {
+        "bytes": 697,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-05/gpu/native-invocation.json",
+        "sha256": "1c52883757e2bcef6c6be84f3d1dc7ac5420b34e99f1b79ac5980221a1eec1c9"
+      },
+      {
+        "bytes": 1086,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-05/gpu/submission-started.json",
+        "sha256": "1feacf3e221ed9f5108a80f3ec99ccf578bd171386fe7b5f51036dba9cf65362"
+      },
+      {
+        "bytes": 697,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-05/gpu/payload/fp32-invocation.json",
+        "sha256": "97c889400c6097a96ffb987c27f46c8a0e5b0d2bbf67370fd674132323619d6d"
+      },
+      {
+        "bytes": 12723,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-05/gpu/payload/fp32-final-preservation.json",
+        "sha256": "2e08ec40ebb0bf64d8d5fdc0221ea7c66973399c4cb646bc37d58f1e4da19223"
+      },
+      {
+        "bytes": 10235,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-05/gpu/payload/protected-before.json",
+        "sha256": "8c6ae27e62bbb6986a3a4b6c0257c9f8455a4b819161ec82c54800cfc1b20770"
+      },
+      {
+        "bytes": 689,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-05/gpu/payload/assessment.json",
+        "sha256": "18fae4b892ebc7eeb87fc274803d9a22908fc49ccaf3585f1db242e8366e17b6"
+      },
+      {
+        "bytes": 10235,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-05/gpu/payload/protected-after.json",
+        "sha256": "cf864c0d6496487eac11fffcf266a4048dc7cdea5c48008a56c68121994d0670"
+      },
+      {
+        "bytes": 10892,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-05/gpu/current-chemistry-capacity-entry/assessment.json",
+        "sha256": "565c85fb7fac31da57d973cb9aeffeb5ed27a9c0704b4ac97724760daf4fe547"
+      },
+      {
+        "bytes": 10074,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-05/gpu/current-chemistry-capacity-entry/production-storage-entry.json",
+        "sha256": "6efa155d7b83ed4cb5415835de9831e1cf96521e068cd127f281439396c655af"
+      },
+      {
+        "bytes": 1425,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-05/gpu/current-chemistry-capacity-entry/invocation.json",
+        "sha256": "5021eeaa343f01d29e48f0967e193607fb88d8cf77229509750f269de954b2f4"
+      },
+      {
+        "bytes": 6876,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-05/gpu/selected-storage-precision/gate.json",
+        "sha256": "77234e6b232a807b6fb127541445c8acd08a8e59cd79aff0390304afad971f44"
+      },
+      {
+        "bytes": 177,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-05/gpu/payload/production/frozen-before.json",
+        "sha256": "3211f9d322c1f9f6b59d9b490ec60a57aab27cd0804d7f20782c8180149e747d"
+      },
+      {
+        "bytes": 132,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-05/gpu/payload/production/model-loaded.json",
+        "sha256": "390cf6770997e3cd85083ff685fed9f9907e3d598f5a36b5319d7b4109c1196f"
+      },
+      {
+        "bytes": 7643,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-05/gpu/current-chemistry-capacity-entry/inherited-storage-entry/continuation-storage-precision.json",
+        "sha256": "f7cba9291a71d81886c2e67fd85ff4c27b7dfc4e961c18fc69ba36483bb1a3d6"
+      },
+      {
+        "bytes": 8811,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-05/gpu/current-chemistry-capacity-entry/inherited-storage-entry/precision-storage-entry.json",
+        "sha256": "5dcb2b31a4069ea2ab3888defdb429a8dffee6559b919a9dd2150fa7b970312d"
+      },
+      {
+        "bytes": 6876,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-05/gpu/current-chemistry-capacity-entry/inherited-storage-entry/selected-storage-precision/gate.json",
+        "sha256": "0e07d0981d2dc8c3591d7d489219420cd96dda4003c235a9de5978f1765416e2"
+      },
+      {
+        "bytes": 2559,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-05/cpu-certificate.json",
+        "sha256": "66ce5a0b7c73359508ba940d714425e1a8249ed9275e57b4150f3b9f77185ea9"
+      }
+    ],
+    "source": {
+      "files": 16,
+      "manifest_sha256": "65b4bd350386a8550c3b588eb7de2b0f6084b32ad790a907851c632dba0f023e",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-release-05/source"
+    },
+    "status": "FP32_exact_restore_failed_before_FP64_original_saved_inputs_unchanged"
+  },
+  "resource_predecessor": {
+    "numerical_source_changed": false,
+    "proofs": [
+      {
+        "bytes": 1156,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-04/cpu/submission.json",
+        "sha256": "5b05effe9ace48ee0fcd293275199e0c3ff810030ccd2a1ee09053483ceb6df0"
+      },
+      {
+        "bytes": 1986,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-04/cpu/stdout.29825222.log",
+        "sha256": "f8f6bc2e137288b5807f45ffbfb98648936c599aa29af61174a53472f70ec974"
+      },
+      {
+        "bytes": 2151,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-04/cpu/stderr.29825222.log",
+        "sha256": "aa90ff2ca72f7b17a437a09e6cd076b912c888cab063452b4dd7ca236731106b"
+      },
+      {
+        "bytes": 8807,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-04/cpu/precision-storage-entry.json",
+        "sha256": "6515fae2d8123446a813ebefdc14fbcd1b93cf3382257a7d3916ac2aef088106"
+      },
+      {
+        "bytes": 1232,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-04/after-cpu/submission.json",
+        "sha256": "3315b2cd843c568ea446d521b7e3122461e6aec914c426790ba99e3bd26f40e7"
+      },
+      {
+        "bytes": 2005,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-04/after-cpu/stdout.29825223.log",
+        "sha256": "f80c8840d3594dd6faf7d7a26a5ef71e7f2b1c77c126b1c31cc23d4d4dc243b1"
+      }
+    ],
+    "source": {
+      "files": 16,
+      "manifest_sha256": "af2393345d9f284fb395eacf809cdf56ccfcdfdc6938dd7f4747feb728db310f",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-release-04/source"
+    },
+    "status": "CPU_and_callback_failed_full_storage_before_any_fixtures_or_model"
+  },
+  "runtime_files": [
+    {
+      "bytes": 50244,
+      "path": "/work3/s234818/mosaic/envs/protenix-tiny/lib/python3.12/site-packages/jax/_src/nn/functions.py",
+      "sha256": "12e8ef763d56f4cc92189101b0b01e1a458042f851274a5d3f4ad3042430536b"
+    },
+    {
+      "bytes": 82950,
+      "path": "/work3/s234818/mosaic/envs/protenix-tiny/lib/python3.12/site-packages/protenix/protenij.py",
+      "sha256": "37f337839034afd2a814c1ed6b76867b67918f73dd56cdd365e67b8fed882a6d"
+    },
+    {
+      "bytes": 11130,
+      "path": "/work3/s234818/mosaic/envs/protenix-tiny/lib/python3.12/site-packages/protenix/backend.py",
+      "sha256": "fb0bf601239eef711081d4e254f06208bcb36002d4e57a50b5a54135948fd12c"
+    }
+  ],
+  "selection": "finest adjacent pair with feasible geometry and baseline predicted FP64 signal >32*declared resolution/repeat floor; no after-result fallback",
+  "source_root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-release-06/source",
+  "validation_only_no_optimizer": true,
+  "version": "protenix-endpoint-precision-plan-v2"
+}

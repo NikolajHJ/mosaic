@@ -20,7 +20,7 @@ def encoded(value):
 def main():
     parser=argparse.ArgumentParser()
     parser.add_argument('--counts',type=Path,required=True)
-    parser.add_argument('--attempt',choices=('07',),default='07')
+    parser.add_argument('--attempt',choices=('09',),default='09')
     args=parser.parse_args()
     global RUN,LOCAL
     if args.attempt=='02':
@@ -31,9 +31,9 @@ def main():
         RUN=HERE/'runs/20261026-continuation-precision-06'
         LOCAL=REPO/'results/hpc/20261026-endpoint-repair-03/continuation06'
         LOCAL.mkdir(parents=True,exist_ok=True)
-    if args.attempt=='07':
-        RUN=HERE/'runs/20261027-continuation-measurement-07'
-        LOCAL=REPO/'results/hpc/20261027-continuation-measurement-07';LOCAL.mkdir(parents=True,exist_ok=True)
+    if args.attempt in ('07','08','09'):
+        RUN=HERE/('runs/20261027-continuation-measurement-'+args.attempt)
+        LOCAL=REPO/('results/hpc/20261027-continuation-measurement-'+args.attempt);LOCAL.mkdir(parents=True,exist_ok=True)
     counts=json.loads(args.counts.read_bytes())
     assert set(counts)=={'tests.test_qualification','tests.test_admission',
                          'tests.test_continuation_driver','tests.test_continuation_ops','tests.test_current_capacity',
@@ -48,7 +48,7 @@ def main():
     if args.attempt in ('03','04','05','06'):
         parents += [{'path':plan['control_root'].rsplit('/',1)[0]+'/nonchem-endpoint-release-02/source','files':14,'manifest_sha256':'88372f92b6349e6c34c542fb84fb39482c4c340568431d1499ebc166a1e1e7fa'}, {'path':plan['control_root'].rsplit('/',1)[0]+'/chemistry-production-release-03/source','files':14,'manifest_sha256':'c73796b041d8432ef1634e8c56920006170a094d3bdc74867c08f3b5415126d7'}]
     proofs={}
-    if args.attempt=='07':
+    if args.attempt in ('07','08','09'):
         old=json.loads((REPO/'results/hpc/20261026-endpoint-repair-03/continuation06/source01/source_manifest.json').read_bytes())
         parents=list(old['parent_sources'])+[
             {'path':plan['control_root'].rsplit('/',1)[0]+'/nonchem-endpoint-release-06/source','files':16,'manifest_sha256':'1519d5761069f73fb6659bc1740cb04c155a04bc3218f143a3f28a73e65a1f69'},
@@ -56,6 +56,11 @@ def main():
             {'path':plan['control_root'].rsplit('/',1)[0]+'/saved-gradient-forensics-release-01/source','files':5,'manifest_sha256':'bbe1404ac893e6cfeef11d6905978a219941dfec3d17024d39ae51348f6421a5'}]
         for row in old['preserved_proofs']:proofs[row['path']]=row
         for row in json.loads((RUN/'failure-adoption.json').read_bytes())['proofs']:proofs[row['path']]=row
+        if args.attempt in ('08','09'):
+            parents.append({'path':plan['control_root'].rsplit('/',1)[0]+'/nonchem-endpoint-release-07/source',
+                            'files':19,'manifest_sha256':'26c6f0390125c9108f9777e83387b56aea2cc932507c52f039d56aa6a056c7b1'})
+    if args.attempt=='09':
+        parents.append({'path':plan['control_root'].rsplit('/',1)[0]+'/nonchem-endpoint-release-08/source','files':19,'manifest_sha256':'3ba7a6b30e6671076fee73910a06a622757734a43d30a589b9a89dd2b92c6877'})
     for arm in plan['arms']:
         for group in (arm['inputs'],arm['failed_parent']):
             for row in group.values():
@@ -78,7 +83,7 @@ def main():
         if name.endswith('.py'):ast.parse(content,filename=name)
         members[name]=content
     members['plan.json']=(RUN/'plan.json').read_bytes()
-    policy=RUN/'prospective-policy.md' if args.attempt in ('03','04','05','06','07') else HERE/'runs/20261025-continuation-admission-01/prospective-policy.md'
+    policy=RUN/'prospective-policy.md' if args.attempt in ('03','04','05','06','07','08','09') else HERE/'runs/20261025-continuation-admission-01/prospective-policy.md'
     members['prospective-policy.md']=policy.read_bytes().replace(b'\r\n',b'\n')
     manifest={'version':'endpoint-aware-continuation-source-v1',
               'files':{name:hashlib.sha256(data).hexdigest() for name,data in sorted(members.items())},
@@ -87,7 +92,7 @@ def main():
               'original_failures_preserved':True,'original_results_changed':False,
               'policy_scope':'Explicit prospective child admission; original failed studies remain failed',
               'monitor_remains_paused':True,'optimization_settings_changed':False}
-    if args.attempt in ('02','03','04','05','06','07'):
+    if args.attempt in ('02','03','04','05','06','07','08','09'):
         manifest['dispatch_arms']=plan['dispatch_arms']
         manifest['blocked_arms']=plan['blocked_arms']
     members['source_manifest.json']=encoded(manifest)

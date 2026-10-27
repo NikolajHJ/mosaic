@@ -31,3 +31,20 @@ an original failed run into a pass or authorize a gate waiver.
   detailed actual FD collection blocked. No numerical waiver or new retry.
 
 - [27October precision resource retry05](20261027-protenix-endpoint-fix-05/README.md): identical numerical source staged; full preflight failed, no CPU/GPU submitted.
+
+- [measurement07](20261027-continuation-measurement-07/README.md):257/258CPU
+  passed; stale metadata fixture failed; callback blocked, no native.
+- [measurement08](20261027-continuation-measurement-08/README.md):258CPU
+  passed, fresh Boltz29829701/DBMol29829703 native checks queued.
+- [precision06](20261027-protenix-endpoint-fix-06/README.md):compiler-context
+  candidate,301declared CPU cases pending; no native or optimizer acceptance.
+
+- [precision07](20261027-protenix-endpoint-fix-07/README.md):fixture-only retry
+  after06CPU4originfixturefailures; freshfullstoragepass/readmittedCPU29829842,
+  callback29829843.301cases pending; exactreplay/fullFP64/optimizer stillblocked.
+
+Latest27October11:25:42UTC: continuation09 is Boltz-only resource retry,
+CPU261/startup/callback passed; GPU29829934 PEND. Continuation08DBMol29829703
+PEND remainsauthoritative; no duplicate. Precision07CPU301/startup/callback
+passed; GPU29829894 PEND. No blockedoptimizer started. Scientific settings and
+saved results unchanged. Canonical continuation package/stage targetsONLY09.

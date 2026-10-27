@@ -60,3 +60,24 @@ with the actual submitted versioned job name. No FP64/native pass yet.
 The explicit one-shot source05 readmission operator is readmit_protenix_precision05.py; it preserves its failed preflight and admits only after the exact original guard passes. saved_gradient_forensics.py and manage_saved_gradient_forensics.py own separate allocated-only saved Boltz/DBMol diagnostics; there is no optimizer branch or new acceptance rule.
 
 Continuation measurement07 is a new candidate: admission.py v3 propagates native weighted-component resolution and preselects informative original/local scales; logit_admission.py measures live fixed-reference pilot derivatives. Source06/old failed checks stay immutable. Canonical continuation packaging/staging now accepts only the explicit fresh07 attempt; CPU258 and actual native/terminal/storage gates remain mandatory before any child.
+
+Current27October operator selection: continuation package/stage acceptsONLY08;
+observe_continuation supports historical07/current08. Precision manager targets
+ONLY06; never replay its existing staging. protenix_replay_context.py is a
+read-only authenticated dependency on sealed full-model05 metadata/replay02
+proofs, adds only qualified compiler flags before fresh precision workers, and
+cannot certify saved studies. observe_blocked_checks.py records a single compact
+read-only observation of historical07/precision05 outcomes; no model evaluation.
+
+Latestprecision operator now targetsONLY07. Source06 preserved301/297passed/
+4fixtureorigin failures;07 changes only fixture helper transport and ownmetadata.
+07stagingalreadyexists/failedstorage beforejobs; readmit_protenix_precision07.py
+completed one exact-source admission after verifiedarchiveoffload/freshfullgate.
+Never replay eitheroperation. Currentcompact observe_blocked_checks --current
+uses precision07 andcontinuation08 in oneconnection; no scientific evaluation.
+
+Latest27October11:25:42UTC: continuation09 is Boltz-only resource retry,
+CPU261/startup/callback passed; GPU29829934 PEND. Continuation08DBMol29829703
+PEND remainsauthoritative; no duplicate. Precision07CPU301/startup/callback
+passed; GPU29829894 PEND. No blockedoptimizer started. Scientific settings and
+saved results unchanged. Canonical continuation package/stage targetsONLY09.

@@ -8165,3 +8165,122 @@ numerical execution, and the monitor stays paused.
 Current actions/proof hashes live in the three new dated run records and
 precision05 campaign/readmission. Complete native/CPU/pilot/runtime/terminal/
 frozen/startup/full-capacity qualification remains required before continuations.
+
+## 2026-10-27 — Reconnected blocked validations and fixture-only retry08 prepared
+
+Read-only10:47:23UTC observation authenticated110 compact files. Source07 CPU
+29826125 actualLSF EXIT1:258 cases/257passed/exactly one stale synthetic expected
+coarse-local metadata list; callback29826126 correctlyEXIT/no native or child.
+Source07 remains immutable. New08 fixes only that expected list and own roots/job
+prefix; byte reversal proves numerical/driver/current-capacity code exact07.
+Full258/startup/native/pilot/runtime/frozen/full storage remain required.
+Protenix05 GPU29826052 actualLSF EXIT1 at06:50:15CET before FP64: authenticated
+original restore_logits rejects514/1500 bond probability differences, maximum
+1.1920929e-7. Original protected hashes match before/after, zero updates.
+No native precision pass or continuation is claimed; replay placement is under
+investigation without relaxing exact equality or changing saved inputs/settings.
+Monitor remains paused; no local scientific evaluation.
+
+### Protenix precision06 compiler-context candidate prepared
+
+Read existing chemistry replay02/full-model05 proof history: qualifiedautotune0
+context is stable in all22controls/eightpoint cohort and passed new full-model
+pilot. Newprecision06 adopts only its authenticated metadata/environment with
+301declared allocatedCPU controls (286unchanged+15new). Exact saved20k replay,
+fullFP64 and original tolerance/science/frozen/runtime/storage still mandatory.
+No native result for this endpoint follows; no optimizer branch. Separate
+Boltz/DBMol08 full unchanged storage passed and CPU29829679/callback29829680
+actuallysubmitted10:50:22UTC; latestCPU RUN10:51:48UTC, not yet a pass.
+
+### Actual revalidation submissions and CPU258 pass
+
+Continuation08 CPU29829679/callback29829680 actualDONE/hpc/same-jobLSFsuccess:
+258cases passed,0failure/error/skip, actual generated and worker startups passed.
+Independent50file/XML/LSF/certificate/submission audit passed, certificate
+9f8c12f5527972a743df2556eec77d45e1784c33baa437b6e5790b9070870530.
+Native Boltz29829701/callback29829702 and DBMol29829703/callback29829704 actually
+submitted, allPEND10:56:02UTC. No new native pass or optimizer child established.
+Proprecision06 source18files manifest424be33d17c16ce2581a36348bf929f9a9db358de717f712f43f51bd2a2bb736
+was authenticated/stagedreadonly. Full unchanged storage required49,684,462,417/
+available50,748,431,794bytes/4GiB+100k reserves passed before CPU29829737 and
+callback29829738 actual10:57:35UTC submissions. Latest11:00:31UTC CPU RUN,
+callbackPEND;301cases/native stillunverified. Its isolated candidate changes
+only authenticated compiler environment, never math/settings/saved values or
+exact replay tolerance. Context qualification reauthenticates source34/CPU408/
+source11/CPU67/full22controls and originalLSF receipts; fresh endpoint gates
+remain mandatory, and validation-only capsule cannot launch optimization.
+
+### Protenix context fixture failure preserved; immutable07 prepared
+
+Precision06 actualCPU29829737/callback29829738 EXIT1;301rawcases/297passed
+with four synthetic coordinator fixture-origin failures, not native gradients.
+Real generated startup/context authentication passed; noGPU submitted. Fixed
+only coordinator fixture helper transport, preserving runtime origin checks.
+New07 binds complete failed06 proofs/source18 and repeats all301/actualstartup/
+FP32 exact replay/fullFP64/native/frozen/runtime/storage; runtime bytes equal06
+except ownmetadata. Local static only; no scientific/settings/result change.
+
+### Precision07 preflight failed; narrow inactive upload backup prepared
+
+FreshPro07 source18 sealed/authenticated, manifest63db0a002c8aca2a282d50f9e7227d57b69ac6820b8ae0e06287ec95770dd8a3.
+Whole current futures49,684,462,417required vs49,673,907,580available:10,554,837
+short. Stagingstopped beforejobs; rootonlypreflight/noCPU. Preservefailedgate.
+Userauthorizedinactivearchiveoffload: one19OctMosaic sourceupload39,162,508bytes,
+351safemembers; no runtime manifest reference. Exactlaptopbackup/memberverification
+required before singlearchive removal; source/proof/study/otherproject untouched.
+No new storagepass or deletion claimed at preparation.
+
+### Exact inactive archive offload completed; Pro07 readmission prepared
+
+One19OctMosaicsourceupload39,162,508logicalbytes retired11:11:55UTC, after
+laptoparchiveSHA2ad6b888163ff3123da400066a5a053ac90029bcf22dcbe33ef0b93b5902aa55
+and all351safe members matched remote index. Both otherreleasefiles preserved
+exactly; no savedstudy/currentruntime/source/environment/otherproject change.
+NewexplicitPro07 admission invokes same sealed18files/301cases and freshwhole
+storage, preserves originalfailedgate and forbids existing/unknown jobs.
+
+### Exact source07 readmission submitted after storage recovery
+
+One-off coldarchivebackup+351memberverification completed before exact39,162,508
+byte unlink; original source/proof/study/model/settings unchanged. Freshsame
+wholegatepassed 49684462417required/50747513279available bytes/4GiB/100k
+reserves. Exactsource07 CPU29829842/callback29829843 actuallysubmitted;301
+cases/startup/GPU remainunverified. Originalfailedpreflight untouched, no
+bootstrapreplay/duplicate source/current optimizer. Globalstdlib layoutcheck
+retains previous discovery-registry and oldmissingREADME issues; scopednew
+archive/member/AST/fixture-reversal validation passed, no localnumericaltests.
+
+### Boltz08 resource-entry failure preserved; Boltz-only09 prepared
+
+BoltzGPU29829701/callback29829702 actualEXIT1 beforemodel/driver/study at
+fullentryquota, notgradientfailure. DBMol29829703 PEND remainsunchanged.
+New09same numerical/driver/policy bytes+ownmetadata, explicitautomaticBoltz-only
+mask/duplicateDBMolnegativechecks and additive existing08 forecast excess.
+261allocatedCPU/startup beforefreshBolGPU; no scientific/gate/settings change.
+No original outcome overwritten and no DBMolduplicate submitted.
+
+### Protenix301 CPU pass and Boltz-only09 actual CPU submission
+
+Pro07 CPU29829842/callback29829843 actualDONE/LSFsuccess,301rawcases passed
+5+30+82+72+97+15/zero failure/error/skip and realstartup passed. Independent
+23file/XML/LSF/source/startup audit passed; GPU29829894 actuallyqueued. No
+nativeFP64 or optimizer acceptance yet. Exactarchiveoffload/completion journal/
+remoteabsence+other2releasefiles independently reconciled; no furthercleanup.
+Bol09source19 manifestf15443b51c5197b95205bf59c90e05192f9ceabb955e6006cccfbbdff257fc9b
+fullstorage passed beforeCPU29829907/callback29829908 actual11:21:55UTC
+submission.261declaredcases pending; onlyBoltzretry automatically dispatchable,
+existingDBMol29829703 kept. No savedscience/settings/pausedmonitor change.
+
+### Final verified queued validation handoff27October11:25:42UTC
+
+Boltz-only09 CPU29829907/callback29829908 actualDONE/hpc/samejobLSFsuccess:
+261actualcases passed50+56+107+5+19+14+10,0failure/error/skip, generated and
+workerstartups passed. Independent37file/XML/LSF/source/startup/certificate
+proofchain and actualonlyBoltzsubmission/resources verified. NewBoltzGPU29829934/
+callback29829935 actualPEND; old08Boltz29829701/02 resourcefailures preserved.
+DBMol08GPU29829703/callback29829704 PEND retained; no duplicate. Pro07CPU301/
+startup/callback passed; GPU29829894 PEND. No new nativegradient/FP64 pass and
+no blockedoptimizercontinuation submitted yet. Callbacks remain conditional on
+all native/pilot/runtime/frozen/startup/wholefuturestorage gates; Pro precision
+capsule validation-only stillneeds separate validated continuationintegration.
+All savedsettings/results/otherproject changes/pausedmonitor preserved.

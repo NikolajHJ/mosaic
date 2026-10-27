@@ -1,5 +1,5 @@
 {
-  "status": "286CPU_passed_callback_DONE_actual_GPU29826052_last_PEND",
+  "status": "actual_failed_evidence_collected",
   "source_manifest_sha256": "65b4bd350386a8550c3b588eb7de2b0f6084b32ad790a907851c632dba0f023e",
   "cpu": {
     "status": "submitted",
@@ -142,7 +142,15 @@
     "stderr": "",
     "job_id": "29826052"
   },
-  "latest_verified_utc": "2026-10-27T00:50:03.134412+00:00",
+  "latest_verified_utc": "2026-10-27T10:47:23.402475+00:00",
   "native_FP64_pass_established": false,
-  "blocked_Protenix_continuation_submitted": false
+  "blocked_Protenix_continuation_submitted": false,
+  "terminal_verification": {
+    "GPU_job": "29826052",
+    "native_status": "failed_before_FP64",
+    "protected_inputs_unchanged": true,
+    "updates": 0,
+    "cause": "Exact FP32 restored graph differs at original restore_logits before precision evaluation; max absolute discrepancy in error1.1920929e-7"
+  },
+  "verification_sha256": "4c5f8e499056223e667184d15edf25d630595024474ae804bbe9e6b919d85fb0"
 }

@@ -1,0 +1,7 @@
+{
+  "status": "stdlib_archive_manifest_AST_current_bytes_and_fixture_reversal_passed",
+  "files": 18,
+  "source_manifest_sha256": "63db0a002c8aca2a282d50f9e7227d57b69ac6820b8ae0e06287ec95770dd8a3",
+  "numerical_tests_locally": false,
+  "global_layout_check": "failed: pre-existing discovery registry and missing historical README entries; scoped capsule checks passed"
+}

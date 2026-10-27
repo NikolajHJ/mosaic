@@ -1,0 +1,6 @@
+{
+  "status": "stdlib_safe_archive_manifest_AST_and_current_byte_verification_passed",
+  "files": 19,
+  "source_manifest_sha256": "3ba7a6b30e6671076fee73910a06a622757734a43d30a589b9a89dd2b92c6877",
+  "local_numerical_tests": false
+}

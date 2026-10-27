@@ -1,0 +1,20 @@
+{
+  "status": "laptop_archive_and_every_member_verified",
+  "archive": {
+    "path": "/work3/s234818/mosaic/releases/20261019-brd4-chemistry-02/source.tar.gz",
+    "bytes": 39162508,
+    "sha256": "2ad6b888163ff3123da400066a5a053ac90029bcf22dcbe33ef0b93b5902aa55",
+    "identity": [
+      1048654,
+      9226554623544723013,
+      1792367034000000000,
+      39162508
+    ],
+    "uid": 306121,
+    "parent_mode": 493
+  },
+  "backup": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261027-repair-storage-03\\backup-source.tar.gz",
+  "members": 351,
+  "index_sha256": "b298a8bc5ba2262a565372b14bb10260a71a80ebaa87a0b067cb0472cc90f6e8",
+  "numerical_work": false
+}

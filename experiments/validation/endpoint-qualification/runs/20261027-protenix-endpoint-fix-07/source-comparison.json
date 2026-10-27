@@ -1,0 +1,59 @@
+{
+  "status": "passed_stdlib_AST_byte_reversal",
+  "changes": "coordinator_setup fixture only; new roots/job prefix",
+  "runtime_science_changed": false,
+  "files": {
+    "scripts/current_capacity.py": {
+      "unchanged_after_declared_metadata_or_fixture_reversal": true,
+      "sha256": "8b60a89518712f13e4fc8eb58c93724c3dc821b11bc9cbc3ec89b4b2a0439c2c"
+    },
+    "scripts/protenix_precision_admission.py": {
+      "unchanged_after_declared_metadata_or_fixture_reversal": true,
+      "sha256": "ae549f19a8af11453b0bb01154bde61cd63f4fa8ad1676759c7427e9049ddf68"
+    },
+    "scripts/protenix_precision_native.py": {
+      "unchanged_after_declared_metadata_or_fixture_reversal": true,
+      "sha256": "41866e5f9a6e93faf1a293c5a6cb391ec116bd98897b98f744719538b389af78"
+    },
+    "scripts/protenix_precision_ops.py": {
+      "unchanged_after_declared_metadata_or_fixture_reversal": true,
+      "sha256": "94b1ba68909d89fc97cf4d40b73e96edd6b9da9b45c8e036d49de57ab131cb88"
+    },
+    "scripts/protenix_precision_reference.py": {
+      "unchanged_after_declared_metadata_or_fixture_reversal": true,
+      "sha256": "fd6c0623de4d830488556c187cbcd78c0bb1b671227c90fa7471646f3434bcb4"
+    },
+    "scripts/protenix_precision_stage.lsf": {
+      "unchanged_after_declared_metadata_or_fixture_reversal": true,
+      "sha256": "5278fa98adb69832f8aa0cfded99accc343b0de4db599ee14da20881c008accd"
+    },
+    "scripts/protenix_replay_context.py": {
+      "unchanged_after_declared_metadata_or_fixture_reversal": true,
+      "sha256": "b99bd43fea16accc928829c4d251802873c6ea6462d01cf9de9315ab12346cb1"
+    },
+    "tests/test_current_capacity.py": {
+      "unchanged_after_declared_metadata_or_fixture_reversal": true,
+      "sha256": "3e1d247a605ac72b0eb767ac1b355c6932716b31cf506cb17b401a0bad017ff8"
+    },
+    "tests/test_protenix_precision_admission.py": {
+      "unchanged_after_declared_metadata_or_fixture_reversal": true,
+      "sha256": "66e51816c376d51a804b0307c412a7934e2dd60020f6bb83eefdadf262a1f1e4"
+    },
+    "tests/test_protenix_precision_native.py": {
+      "unchanged_after_declared_metadata_or_fixture_reversal": true,
+      "sha256": "0a5c2305a7c35e70927688287fc456ffd82bd1cdfb3f0182d06ce7a1f2a7c82f"
+    },
+    "tests/test_protenix_precision_ops.py": {
+      "unchanged_after_declared_metadata_or_fixture_reversal": true,
+      "sha256": "7b1d1b314adb6495e35fcad9c8671084cf1164a58a51643d89966a4edafe4d65"
+    },
+    "tests/test_protenix_precision_reference.py": {
+      "unchanged_after_declared_metadata_or_fixture_reversal": true,
+      "sha256": "92c9f771dbce10b97fe8c0c09deeb8541b539f193647b9e7952db8487ffc06df"
+    },
+    "tests/test_protenix_replay_context.py": {
+      "unchanged_after_declared_metadata_or_fixture_reversal": true,
+      "sha256": "c400e1933ccaf23a035bf53c945b7ae81b31f8bc0a6891a3da2cef3626f0baff"
+    }
+  }
+}

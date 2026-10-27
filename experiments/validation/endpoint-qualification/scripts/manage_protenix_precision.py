@@ -18,12 +18,12 @@ import tarfile
 
 REPO = Path(__file__).resolve().parents[4]
 OWNER = REPO / 'experiments/validation/endpoint-qualification'
-TAG = '20261027-protenix-endpoint-fix-05'
+TAG = '20261027-protenix-endpoint-fix-07'
 RUN = OWNER / 'runs' / TAG
 LOCAL = REPO / 'results/hpc' / TAG
 BASE = '/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01'
-SOURCE = BASE + '/protenix-endpoint-fix-release-05/source'
-ROOT = BASE + '/protenix-endpoint-fix-05'
+SOURCE = BASE + '/protenix-endpoint-fix-release-07/source'
+ROOT = BASE + '/protenix-endpoint-fix-07'
 PYTHON = '/work3/s234818/mosaic/envs/protenix-tiny/bin/python'
 
 
@@ -58,7 +58,7 @@ def command(program, name, timeout=180):
 def prepare(counts_path):
     counts = json.loads(Path(counts_path).read_bytes())
     assert set(counts) == {'tests.test_protenix_precision_reference', 'tests.test_protenix_precision_admission',
-                           'tests.test_protenix_precision_native', 'tests.test_protenix_precision_ops','tests.test_current_capacity'}
+                           'tests.test_protenix_precision_native', 'tests.test_protenix_precision_ops','tests.test_current_capacity','tests.test_protenix_replay_context'}
     assert all(type(v) is int and v > 0 for v in counts.values())
     plan = json.loads((RUN/'plan.json').read_bytes())
     forensic = json.loads((OWNER/'runs/20261025-protenix-endpoint-forensics-01/source-manifest.json').read_bytes())
@@ -68,16 +68,17 @@ def prepare(counts_path):
     parents.append({'path':BASE+'/chemistry-production-release-03/source','files':14,'manifest_sha256':'c73796b041d8432ef1634e8c56920006170a094d3bdc74867c08f3b5415126d7'})
     parents.append({'path':BASE+'/chemistry-production-release-04/source','files':17,'manifest_sha256':'01e2de2a3413bd903590dd331c5cedf6b756e856a83df2b73ad65e02b9f9fceb'})
     proofs = list(forensic['preserved_proofs']) + [plan['original_forensics_plan'], plan['prior_forensic_report']]
-    for key in ('engineering_predecessor','resource_predecessor'):
+    for key in ('engineering_predecessor','resource_predecessor','replay_predecessor','fixture_predecessor'):
         predecessor=plan.get(key)
         if predecessor:
             parents += [predecessor['source']]
             proofs += predecessor['proofs']
     proofs = list({v['path']:v for v in proofs}.values())
+    parents.append(plan['compiler_context_source'])
     names = ['README.md','scripts/README.md','tests/README.md',
              'scripts/protenix_precision_admission.py','scripts/protenix_precision_reference.py',
              'scripts/protenix_precision_native.py','scripts/protenix_precision_ops.py',
-             'scripts/protenix_precision_stage.lsf','scripts/current_capacity.py','tests/test_current_capacity.py','tests/test_protenix_precision_admission.py',
+             'scripts/protenix_precision_stage.lsf','scripts/protenix_replay_context.py','tests/test_protenix_replay_context.py','scripts/current_capacity.py','tests/test_current_capacity.py','tests/test_protenix_precision_admission.py',
              'tests/test_protenix_precision_reference.py','tests/test_protenix_precision_native.py',
              'tests/test_protenix_precision_ops.py']
     members = {}
@@ -121,7 +122,7 @@ def stage():
 import base64,hashlib,io,json,os,sys,tarfile
 from pathlib import Path,PurePosixPath
 base=Path('/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01')
-source=base/'protenix-endpoint-fix-release-05/source';root=base/'protenix-endpoint-fix-05'
+source=base/'protenix-endpoint-fix-release-07/source';root=base/'protenix-endpoint-fix-07'
 assert not root.exists() and not source.parent.exists(),'Existing/unknown outcome; inspect, never replay'
 data=base64.b64decode(ARCHIVE,validate=True)
 assert len(data)==PREP['archive_bytes'] and hashlib.sha256(data).hexdigest()==PREP['archive_sha256']

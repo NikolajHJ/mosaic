@@ -1,5 +1,5 @@
 {
-  "status": "fresh_CPU_recheck_submitted_latest_RUN_access_lost_before_terminal_collection",
+  "status": "actual_failed_evidence_collected",
   "source_manifest_sha256": "26c6f0390125c9108f9777e83387b56aea2cc932507c52f039d56aa6a056c7b1",
   "files": 19,
   "cpu": {
@@ -115,5 +115,13 @@
   "optimization_settings_changed": false,
   "saved_results_changed": false,
   "known_static_fixture_correction": "canonical test_admission expected coarser-local metadata includes original .003 as declared in v3; sealed source07 remains untouched",
-  "next_action": "Collect source07 actual full XML/LSF/callback/jobs. Preserve outcome. Prepare fresh immutable08 fixture-only retry only after actual outcome reconciliation; no source07 replay."
+  "next_action": "Collect source07 actual full XML/LSF/callback/jobs. Preserve outcome. Prepare fresh immutable08 fixture-only retry only after actual outcome reconciliation; no source07 replay.",
+  "latest_verified_utc": "2026-10-27T10:47:23.402475+00:00",
+  "terminal_verification": {
+    "cases": 258,
+    "passed": 257,
+    "failed": 1,
+    "native_or_optimizer_submitted": false
+  },
+  "verification_sha256": "4c5f8e499056223e667184d15edf25d630595024474ae804bbe9e6b919d85fb0"
 }

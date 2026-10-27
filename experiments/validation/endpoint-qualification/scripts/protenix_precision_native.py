@@ -19,8 +19,8 @@ import time
 
 VERSION = "protenix-endpoint-precision-plan-v2"
 BASE = Path("/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01")
-ROOT = BASE / "protenix-endpoint-fix-05"
-SOURCE = BASE / "protenix-endpoint-fix-release-05/source"
+ROOT = BASE / "protenix-endpoint-fix-07"
+SOURCE = BASE / "protenix-endpoint-fix-release-07/source"
 FORENSICS = BASE / "protenix-endpoint-forensics-release-01/source"
 FORENSICS_PIN = "d127d6abe87307a5d305edb6d04e3a32e3545c508e58b82ce45290e0f3fc03d8"
 FORENSICS_PLAN_SHA = "14d0cf5b03af73ee5d87ece55b8c48616897521c50bbb40e8f76b6a9bb8f5861"
@@ -128,6 +128,11 @@ def local_module(name):
     value = __import__(name)
     require(Path(value.__file__).resolve() == expected.resolve(), "Precision policy/reference module origin changed: " + name)
     return value
+
+
+def replay_context():
+    ops = local_module("protenix_precision_ops")
+    return local_module("protenix_replay_context").qualify(ops.verify)
 
 
 def preserved(before):
@@ -528,7 +533,9 @@ def main(argv=None):
     if args.startup_only:
         require(args.worker is None and os.environ.get("LSB_QUEUE") == "hpc", "CPU metadata startup only")
         verify(plan, args.output, True)
+        qualified = replay_context()
         args.output.mkdir(exist_ok=False)
+        write(args.output / "qualified-context.json", qualified)
         value = {"status": "passed_metadata_only", "numerical_setup_entered": False, "updates": 0,
                  "plan_sha256": args.plan_sha256, "job_id": os.environ["LSB_JOBID"]}
         write(args.output / "endpoint-startup.json", value)
@@ -548,14 +555,19 @@ def main(argv=None):
         "can_certify_or_restart_original_study": False, "production_optimizer_executed": False}
     started = time.monotonic()
     error = None
+    qualified = None
     worker_proofs = {}
     preservation_errors = []
     try:
+        qualified = replay_context()
+        write(args.output / "qualified-context.json", qualified)
         for worker in ("fp32", "fp64"):
             command = worker_command(args.plan, args.plan_sha256, args.output, worker)
             env = dict(os.environ, JAX_ENABLE_X64="0" if worker == "fp32" else "1")
+            env = local_module("protenix_replay_context").environment(env, qualified)
             write(args.output / (worker + "-invocation.json"), {"argv": command, "JAX_ENABLE_X64": env["JAX_ENABLE_X64"],
-                  "previous_worker_exited_before_start": True, "updates": 0})
+                  "previous_worker_exited_before_start": True, "updates": 0,
+                  "XLA_FLAGS":env.get("XLA_FLAGS"), "qualified_context":binding(args.output / "qualified-context.json")})
             timeout = 5400 - (time.monotonic() - started)
             require(timeout > 0, "Shared reference runtime exhausted before next isolated worker")
             run = subprocess.run(command, env=env, timeout=timeout)
@@ -569,6 +581,10 @@ def main(argv=None):
         assessment["error"] = type(caught).__name__ + ": " + str(caught)
     finally:
         try:
+            if qualified is not None:
+                context_after = replay_context()
+                require(context_after == qualified, "Authenticated replay-context proofs changed")
+                write(args.output / "qualified-context-after.json", context_after)
             write(args.output / "protected-after.json", preserved(before))
             require(output_bytes(args.output) < CAP, "Persistent output budget exceeded")
         except BaseException as caught:

@@ -1,0 +1,25 @@
+{
+  "status": "independent_byte_XML_LSF_CPU258_startup_and_native_submission_verification_passed",
+  "captured_utc": "2026-10-27T10:56:02.534875+00:00",
+  "packet_sha256": "0e46b9d4224d0e5699e683efa8287e27fc1715cfea3a55233335451e88061f0e",
+  "files_verified": 50,
+  "module_counts": {
+    "tests.test_admission": 50,
+    "tests.test_continuation_driver": 56,
+    "tests.test_continuation_ops": 104,
+    "tests.test_current_capacity": 5,
+    "tests.test_logit_admission": 14,
+    "tests.test_measurement_resolution": 10,
+    "tests.test_qualification": 19
+  },
+  "cpu_certificate_sha256": "9f8c12f5527972a743df2556eec77d45e1784c33baa437b6e5790b9070870530",
+  "native_jobs": {
+    "boltz-validate-10000": "29829701",
+    "boltz-after-validate-10000": "29829702",
+    "dbmol-validate-05000": "29829703",
+    "dbmol-after-validate-05000": "29829704"
+  },
+  "native_pass_established": false,
+  "optimization_submitted": false,
+  "settings_or_saved_results_changed": false
+}

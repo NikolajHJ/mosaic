@@ -1,0 +1,19 @@
+{
+  "status": "independent_CPU261_XML_LSF_source_startup_byte_verification_passed",
+  "captured_utc": "2026-10-27T11:24:43.185219+00:00",
+  "files_verified": 37,
+  "cases": 261,
+  "module_counts": {
+    "tests.test_admission": 50,
+    "tests.test_continuation_driver": 56,
+    "tests.test_continuation_ops": 107,
+    "tests.test_current_capacity": 5,
+    "tests.test_logit_admission": 14,
+    "tests.test_measurement_resolution": 10,
+    "tests.test_qualification": 19
+  },
+  "source_manifest_sha256": "f15443b51c5197b95205bf59c90e05192f9ceabb955e6006cccfbbdff257fc9b",
+  "native_pass_established": false,
+  "optimizer_submitted": false,
+  "DBMol_existing_job_preserved": "29829703"
+}

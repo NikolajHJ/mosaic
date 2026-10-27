@@ -75,3 +75,11 @@ verified. Callback29826030 actualDONE/LSFsuccess and fresh storage passed; GPU
 29826052 actually submitted, lastPEND at00:50:03UTC27October. No native
 FP64 pass or optimizer continuation established. Later SSH timeout is access
 limitation, not a GPU result; inspect original actual receipts before recovery.
+
+## Actual GPU failure27October
+
+Same-job LSF29826052 EXIT1 at06:50:15CET, captured10:47:23UTC. Exact
+FP32 restore_logits failed514/1500 bond probabilities before FP64, reportedmax
+1.1920929e-7. Protected before/after hashes match and updates0; no FP64/native
+pass. Saved study unchanged. New06 investigates the independently qualified
+autotune0 compiler context, retaining exact equality and every numerical gate.

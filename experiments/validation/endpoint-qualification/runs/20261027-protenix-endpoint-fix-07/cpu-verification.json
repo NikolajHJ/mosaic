@@ -1,0 +1,24 @@
+{
+  "status": "independently_verified_cpu_pass",
+  "captured_utc": "2026-10-27T11:22:43.752317+00:00",
+  "cpu_job_id": "29829842",
+  "scheduler_status": "DONE",
+  "source_manifest_sha256": "63db0a002c8aca2a282d50f9e7227d57b69ac6820b8ae0e06287ec95770dd8a3",
+  "files_byte_verified": 23,
+  "cases": 301,
+  "module_counts": {
+    "tests.test_current_capacity": 5,
+    "tests.test_protenix_precision_admission": 30,
+    "tests.test_protenix_precision_native": 82,
+    "tests.test_protenix_precision_ops": 72,
+    "tests.test_protenix_precision_reference": 97,
+    "tests.test_protenix_replay_context": 15
+  },
+  "failed_cases": [],
+  "actual_startup_passed_metadata_only": true,
+  "native_result_established": false,
+  "optimizer_updates": 0,
+  "observation_sha256": "1825a974ffafc0655212493a187d4ab0912f4d31f104aa51e20b351f7caae2f0",
+  "original_results_changed": false,
+  "local_scientific_calculations": false
+}

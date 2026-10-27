@@ -148,3 +148,27 @@ A stale metadata fixture expectation is corrected canonically; sealed07 stays
 unchanged and [08](runs/20261027-continuation-measurement-08/README.md) is only
 a planned future immutable retry. SSH255 timeout blocked terminal collection.
 No new optimizer ID established, no old job replay or monitor resumption.
+
+
+27October10:56UTC: [measurement08](runs/20261027-continuation-measurement-08/README.md)
+passed258allocated CPU cases and actual startup/worker checks; new Boltz29829701
+and DBMol29829703 native GPU checks actuallyqueued. Their continuations are
+conditional on full native/pilot/runtime/frozen/startup/current-storage gates.
+Original07 failed exactly one stale fixture and stays immutable. Pro05 failed
+exact FP32 checkpoint replay before FP64; [precision06](runs/20261027-protenix-endpoint-fix-06/README.md)
+adopts independently qualified compiler context as a candidate, requires fresh
+exact replay/fullFP64, and has no optimizer branch. Saved results/settings remain
+unchanged; paused monitor unchanged. Local work is static/bytes only.
+
+Precision06 realstartup passed but4/301coordinatorfixture origin tests failed;
+failedsourcepreserved. [Precision07](runs/20261027-protenix-endpoint-fix-07/README.md)
+is a fixture-only retry with identicalruntime math/contextandstrictreplay.
+Initialfullstorage failed by10.55MB; oneinactiveupload39.16MB was backedup
+and351members verifiedbefore removal. Exactsource07 freshadmission fullgate
+passed;CPU29829842/callback29829843 submitted. No nativeoroptimizerpass yet.
+
+Latest27October11:25:42UTC: continuation09 is Boltz-only resource retry,
+CPU261/startup/callback passed; GPU29829934 PEND. Continuation08DBMol29829703
+PEND remainsauthoritative; no duplicate. Precision07CPU301/startup/callback
+passed; GPU29829894 PEND. No blockedoptimizer started. Scientific settings and
+saved results unchanged. Canonical continuation package/stage targetsONLY09.

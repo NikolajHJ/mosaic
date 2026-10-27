@@ -34,7 +34,8 @@ def verify(observation, source, submission):
     compact = "".join(log.split())
     name=own['argv'][own['argv'].index('-J')+1]
     assert name in ('mosaic-pro-precision-cpu','mosaic-pro-precision02-cpu',
-                    'mosaic-pro-precision03-cpu','mosaic-pro-precision04-cpu','mosaic-pro-precision05-cpu')
+                    'mosaic-pro-precision03-cpu','mosaic-pro-precision04-cpu','mosaic-pro-precision05-cpu',
+                    'mosaic-pro-precision06-cpu','mosaic-pro-precision07-cpu')
     assert compact.count("Subject:Job") == 1 and re.findall(
         r'Subject:Job(\d+):<([^>]+)>incluster<([^>]+)>(Done|Exited)',compact)==[(job,name,'dcc','Done' if states==['DONE'] else 'Exited')]
     assert compact.count("inqueue<hpc>") == 1

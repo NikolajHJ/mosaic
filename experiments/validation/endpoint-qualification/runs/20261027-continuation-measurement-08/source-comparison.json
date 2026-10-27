@@ -1,0 +1,64 @@
+{
+  "status": "passed_static_byte_reversal",
+  "original": "immutable07",
+  "changes": "one metadata expectation; own root/job identities only",
+  "files": {
+    "scripts/admission.py": {
+      "unchanged_after_declared_fixture_and_metadata_reversal": true,
+      "sha256": "9e0592b2ee72db60469fd7ecf50b21720caa98ded319b027e705137cbcdc1896"
+    },
+    "scripts/continuation_driver.py": {
+      "unchanged_after_declared_fixture_and_metadata_reversal": true,
+      "sha256": "6d83c424d084f50b56574801552ecddaa39148316e0578b31d46961e28783a7e"
+    },
+    "scripts/continuation_ops.py": {
+      "unchanged_after_declared_fixture_and_metadata_reversal": true,
+      "sha256": "1f5342fd6ec29bbb8508ae73d3245ff2f20e25efb3144518efe569be084874f5"
+    },
+    "scripts/continuation_stage.lsf": {
+      "unchanged_after_declared_fixture_and_metadata_reversal": true,
+      "sha256": "4b0513a30281564bca5ff877cf4b26d4889f29020dd4b78e8f8332e342a1e7ff"
+    },
+    "scripts/current_capacity.py": {
+      "unchanged_after_declared_fixture_and_metadata_reversal": true,
+      "sha256": "8b60a89518712f13e4fc8eb58c93724c3dc821b11bc9cbc3ec89b4b2a0439c2c"
+    },
+    "scripts/logit_admission.py": {
+      "unchanged_after_declared_fixture_and_metadata_reversal": true,
+      "sha256": "788fd62532ac450db57be1b771d27957712844bf36bc85f5f7c98fc381ea171b"
+    },
+    "scripts/qualification.py": {
+      "unchanged_after_declared_fixture_and_metadata_reversal": true,
+      "sha256": "6c869379cea7c58eb0ae6a7b9aaa7edf180576fa6420a0922132fd09dcdccbdc"
+    },
+    "tests/test_admission.py": {
+      "unchanged_after_declared_fixture_and_metadata_reversal": true,
+      "sha256": "d9ed10ae4d58ee0c08c7ae7169651ecba4a9c84ad159cadfec465aadeae971d0"
+    },
+    "tests/test_continuation_driver.py": {
+      "unchanged_after_declared_fixture_and_metadata_reversal": true,
+      "sha256": "b9b090940731a6321bb9c94c4003ef05f891a4451cc37eb7cb3121d61c3883cb"
+    },
+    "tests/test_continuation_ops.py": {
+      "unchanged_after_declared_fixture_and_metadata_reversal": true,
+      "sha256": "c56ffaa2ecaee61bd7b4b0713e705a07f8273420e75c9aafc6b926f3d97626e0"
+    },
+    "tests/test_current_capacity.py": {
+      "unchanged_after_declared_fixture_and_metadata_reversal": true,
+      "sha256": "3e1d247a605ac72b0eb767ac1b355c6932716b31cf506cb17b401a0bad017ff8"
+    },
+    "tests/test_logit_admission.py": {
+      "unchanged_after_declared_fixture_and_metadata_reversal": true,
+      "sha256": "f1a9d1afaeacb48073a6fb94b3cd5662be3e4a10a6bd2ab7696678c286d1f0ea"
+    },
+    "tests/test_measurement_resolution.py": {
+      "unchanged_after_declared_fixture_and_metadata_reversal": true,
+      "sha256": "addf3fe3872b5d44b22257814352faaf90bcbf3cedfa39698dca2b59687fc791"
+    },
+    "tests/test_qualification.py": {
+      "unchanged_after_declared_fixture_and_metadata_reversal": true,
+      "sha256": "da5450bb0af5ff1a533d00f5cfc77d06f424c705e45cd60dd3c1d0eeaaa40213"
+    }
+  },
+  "local_numerical_tests": false
+}

@@ -34,6 +34,15 @@ def save(path, value):
     return n.binding(path)
 
 
+def context_fixture(proofs):
+    return {'qualification':{'version':'isolated-replay-context-qualification-v1',
+        'selected_policy':'autotune0','selected_environment':{'XLA_FLAGS':'--xla_gpu_autotune_level=0'},
+        'native_gradient_passed':False,'original_scientific_gate_reclassified':False,
+        'saved_probability_substitution':False,'can_certify_or_restart_original_study':False,
+        'fresh_full_model_validation_required':True},'original_failure_reclassified':False,
+        'native_gradient_passed':False,'proofs':proofs}
+
+
 @pytest.fixture
 def owned(tmp_path, monkeypatch):
     root, source, forensic = tmp_path / "new-run", tmp_path / "new-release/source", tmp_path / "old/source"
@@ -165,6 +174,7 @@ def test_actual_startup_command_accepts_metadata_then_stops_before_numerical_imp
         assert "jax" not in sys.modules or not getattr(sys.modules["jax"], "_model_loaded_for_this_fixture", False)
         return (None,) * 7
     monkeypatch.setattr(n, "verify", checked)
+    monkeypatch.setattr(n, "replay_context", lambda:context_fixture([save(root/'context.json',{'toy':True})]))
     monkeypatch.setenv("LSB_JOBID", "111"); monkeypatch.setenv("LSB_QUEUE", "hpc")
     result = n.main(arguments(owned, startup=True))
     assert calls == [(root / "cpu/payload/native-startup", True)]
@@ -387,6 +397,16 @@ def coordinator_setup(owned, monkeypatch):
     native = SimpleNamespace(allocated_environment=lambda env: None)
     monkeypatch.setattr(n, "original", lambda: native)
     monkeypatch.setattr(n, "verify", lambda *a, **k: (native, None, None, None, None, None, {row["path"]: row}))
+    monkeypatch.setattr(n, "replay_context", lambda:context_fixture([row]))
+    # This coordinator fixture deliberately remaps SOURCE to an empty temporary
+    # capsule. Supply the real pure environment helper without pretending its
+    # repository path belongs to that fake capsule; native startup authenticates
+    # the actual module origin separately before any pretrained computation.
+    context_spec = importlib.util.spec_from_file_location("coordinator_context_fixture", PATH.parent / "protenix_replay_context.py")
+    context_module = importlib.util.module_from_spec(context_spec)
+    context_spec.loader.exec_module(context_module)
+    original_loader = n.local_module
+    monkeypatch.setattr(n, "local_module", lambda name: context_module if name == "protenix_replay_context" else original_loader(name))
     monkeypatch.setenv("LSB_JOBID", "111"); monkeypatch.setenv("LSB_QUEUE", "gpul40s")
     return root
 
@@ -397,6 +417,7 @@ def test_coordinator_separates_fp32_fp64_processes_with_verified_exit_between_th
     def run(command, **kwargs):
         worker = command[-1]
         assert kwargs["env"]["JAX_ENABLE_X64"] == ("0" if worker == "fp32" else "1")
+        assert '--xla_gpu_autotune_level=0' in kwargs['env']['XLA_FLAGS']
         assert 0 < kwargs["timeout"] <= 5400
         if worker == "fp64": assert len(calls) == 1 and calls[0] == "fp32"
         fake_worker_artifacts(root / "gpu/payload", worker)

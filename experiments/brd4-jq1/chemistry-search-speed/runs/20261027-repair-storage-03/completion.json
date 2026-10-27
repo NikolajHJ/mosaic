@@ -1,0 +1,36 @@
+{
+  "status": "one_exact_backed_up_inactive_upload_removed",
+  "removed_files": 1,
+  "logical_bytes": 39162508,
+  "archive": {
+    "path": "/work3/s234818/mosaic/releases/20261019-brd4-chemistry-02/source.tar.gz",
+    "bytes": 39162508,
+    "sha256": "2ad6b888163ff3123da400066a5a053ac90029bcf22dcbe33ef0b93b5902aa55",
+    "identity": [
+      1048654,
+      9226554623544723013,
+      1792367034000000000,
+      39162508
+    ],
+    "uid": 306121,
+    "parent_mode": 493
+  },
+  "backup": {
+    "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261027-repair-storage-03\\backup-source.tar.gz",
+    "sha256": "2ad6b888163ff3123da400066a5a053ac90029bcf22dcbe33ef0b93b5902aa55",
+    "verification_sha256": "41856ccfe1b56fdece63c88d6f26907732af90be2c3121a04f3ec1d7d1001105"
+  },
+  "preserved_other_files": {
+    "/work3/s234818/mosaic/releases/20261019-brd4-chemistry-02/submit_chemistry_readiness.sh": {
+      "bytes": 1013,
+      "sha256": "af8be632de5e3383acfe231e33e771f62bbc8bd55e7f8b4389a4a16309d0f4d1"
+    },
+    "/work3/s234818/mosaic/releases/20261019-brd4-chemistry-02/source_manifest.json": {
+      "bytes": 40888,
+      "sha256": "6ed656d054902b440fe777b4bd1630ceb52b63bfdb706f842d5d097437aaa763"
+    }
+  },
+  "completed_utc": "2026-10-27T11:11:55.233890+00:00",
+  "scientific_results_or_settings_changed": false,
+  "quota_reservation": false
+}

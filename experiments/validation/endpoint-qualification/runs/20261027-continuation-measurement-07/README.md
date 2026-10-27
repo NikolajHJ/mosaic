@@ -52,3 +52,11 @@ Collect full actual source07 XML/LSF/callback/jobs first. If it fails, preserve
 the evidence and prepare a NEW immutable fixture-only08 retry, full258 rerun.
 No gate is weakened and no mathematical/optimizer source change is implied by
 correcting this metadata expectation. Native qualification remains unproven.
+
+## Actual terminal evidence27October10:47UTC
+
+CPU29826125 and callback29826126 actualLSF EXIT1. Full XML258cases:257passed
+and exactly one stale expected coarse-local list assertion; no other failure/
+error/skip and no native/optimization submitted. All110 compact packet files
+bytechecked; original source07 remains immutable. Fresh08 corrects this fixture
+only plus ownmetadata; numerical/driver/current-capacity byte reversal passed.

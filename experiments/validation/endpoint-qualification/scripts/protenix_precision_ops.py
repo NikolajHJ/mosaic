@@ -21,8 +21,8 @@ import xml.etree.ElementTree as ET
 VERSION = "protenix-endpoint-precision-source-v2"
 PLAN_VERSION = "protenix-endpoint-precision-plan-v2"
 BASE = Path("/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01")
-SOURCE = BASE / "protenix-endpoint-fix-release-05/source"
-ROOT = BASE / "protenix-endpoint-fix-05"
+SOURCE = BASE / "protenix-endpoint-fix-release-07/source"
+ROOT = BASE / "protenix-endpoint-fix-07"
 PARENT_SOURCE = BASE / "nonchem-endpoint-release-02/source"
 PARENT_PIN = "88372f92b6349e6c34c542fb84fb39482c4c340568431d1499ebc166a1e1e7fa"
 PARENT_FILES = 14
@@ -187,7 +187,7 @@ def argv(phase, pin, dependency=None):
     else:
         require(dependency is None, "Native/CPU job must be independent")
     parent = ROOT / phase
-    command = ["bsub", *resources(phase), "-J", "mosaic-pro-precision05-" + phase,
+    command = ["bsub", *resources(phase), "-J", "mosaic-pro-precision07-" + phase,
                "-oo", str(parent / "stdout.%J.log"), "-eo", str(parent / "stderr.%J.log")]
     if dependency is not None: command += ["-w", dependency]
     return command + ["bash", "-l", str(SOURCE / "scripts/protenix_precision_stage.lsf"), str(SOURCE), pin, phase]
@@ -263,7 +263,7 @@ def terminal_cpu():
     for number in range(21):
         if path.exists() and "Successfullycompleted." in "".join(path.read_text().split()): break
         require(number < 20, "Actual CPU terminal LSF unavailable"); time.sleep(1)
-    lsf_success(path.read_text(), job, "mosaic-pro-precision05-cpu", "hpc")
+    lsf_success(path.read_text(), job, "mosaic-pro-precision07-cpu", "hpc")
     return proofs + [binding(path)]
 
 
@@ -380,7 +380,7 @@ def certificate(pin, manifest):
     require(xml_cases(ROOT / "cpu/payload/tests.xml", manifest["cpu_counts"]) == value["cases"], "Raw CPU cases changed")
     verify_startup(read(ROOT / "cpu/payload/assessment.json")["actual_native_startup"])
     sub = read(ROOT / "cpu/submission.json")
-    lsf_success((ROOT / "cpu" / ("stdout." + sub["job_id"] + ".log")).read_text(), sub["job_id"], "mosaic-pro-precision05-cpu", "hpc")
+    lsf_success((ROOT / "cpu" / ("stdout." + sub["job_id"] + ".log")).read_text(), sub["job_id"], "mosaic-pro-precision07-cpu", "hpc")
     return value
 
 

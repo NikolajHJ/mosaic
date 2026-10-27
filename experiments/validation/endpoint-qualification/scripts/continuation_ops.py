@@ -25,8 +25,8 @@ VERSION = "endpoint-aware-continuation-source-v1"
 PLAN_VERSION = "endpoint-aware-continuation-plan-v1"
 RESULT_VERSION = "endpoint-aware-continuation-result-v1"
 BASE = Path("/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01")
-ROOT = BASE / "nonchem-endpoint-continuation-07"
-SOURCE = BASE / "nonchem-endpoint-release-07/source"
+ROOT = BASE / "nonchem-endpoint-continuation-09"
+SOURCE = BASE / "nonchem-endpoint-release-09/source"
 ADMISSION = BASE / "nonchem-stride20-startup-release-03/source"
 ADMISSION_SHA = "704fab033d97342a14dc12b58dc32df44874232c5c30aad47c4d02041a502aab"
 PYTHON = "/work3/s234818/mosaic/envs/protenix-tiny/bin/python"
@@ -56,6 +56,8 @@ ORIGINALS = {
               "config_sha256": "b3b56f409a59b3b1d00228bb7dcd3f74fc08f17fdf06facfc1469922778d5497", "job_id": "29810971"},
 }
 DISPATCH_ARMS = ("boltz", "dbmol")
+AUTOMATIC_ARMS = ("boltz",)
+EXISTING_ROOT = BASE / "nonchem-endpoint-continuation-08"
 BLOCKED_ARMS = {"protenix": {"status": "blocked_failed_endpoint_admission", "source01_admission": {
     "path": str(BASE / "nonchem-endpoint-continuation-01/protenix-validate-20000/payload/study/native_gradient_checks-prospective/admission.json"),
     "bytes": 2531142,
@@ -158,6 +160,7 @@ def validate_plan(plan):
             and plan.get("source_root") == str(SOURCE), "Own scientific/control/source scope changed")
     require(plan.get("dispatch_arms") == list(DISPATCH_ARMS) and plan.get("blocked_arms") == BLOCKED_ARMS,
             "Only Boltz and DBMol may dispatch; original Protenix admission remains blocked")
+    require(plan.get("automatic_dispatch_arms") == list(AUTOMATIC_ARMS), "Recovery automatic scope must be Boltz only")
     arms = plan.get("arms")
     require(isinstance(arms, list) and len(arms) == len(ARMS)
             and {row.get("id") for row in arms} == set(ARMS), "Require exact three distinct continuation arms")
@@ -217,7 +220,7 @@ def argv(phase, pin, arm="all", offset=0, dependency=None):
     else:
         require(dependency is None, "Scientific/CPU phases have no interarm dependencies")
     parent = ROOT / name
-    command = ["bsub", *resources(phase), "-J", "mosaic-endpoint07-" + name,
+    command = ["bsub", *resources(phase), "-J", "mosaic-endpoint09-" + name,
                "-oo", str(parent / "stdout.%J.log"), "-eo", str(parent / "stderr.%J.log")]
     if dependency is not None:
         command += ["-w", dependency]
@@ -225,6 +228,7 @@ def argv(phase, pin, arm="all", offset=0, dependency=None):
 
 
 def submit(phase, pin, arm="all", offset=0, dependency=None):
+    require(phase in ("cpu", "after-cpu") or arm in AUTOMATIC_ARMS, "Existing DBMol check must never be duplicated")
     parent = parent_path(phase, arm, offset)
     command = argv(phase, pin, arm, offset, dependency)
     parent.mkdir(exist_ok=False)
@@ -298,7 +302,7 @@ def terminal(parent, queue):
             break
         require(index < 20, "Terminal LSF output unavailable")
         time.sleep(1)
-    lsf_success(path.read_text(), job, "mosaic-endpoint07-" + parent.name, queue)
+    lsf_success(path.read_text(), job, "mosaic-endpoint09-" + parent.name, queue)
     proofs.append(binding(path))
     return proofs
 
@@ -441,6 +445,10 @@ def storage(parent, phase):
     old = storage_gate(parent, phase)
     projections = read(ROOT / "projections.json") if (ROOT / "projections.json").exists() else {}
     excess, details = projection_excess(old, projections)
+    foreign = read(EXISTING_ROOT / "projections.json") if (EXISTING_ROOT / "projections.json").exists() else {}
+    extra, foreign_details = projection_excess(old, foreign)
+    excess += extra
+    details["existing_source08_positive_excess"] = foreign_details
     work3 = old["work3"]
     record = {"status": "failed", "whole_original_gate": old, "projection_excess": details,
               "positive_projection_excess_bytes": excess, "additional_allowance_bytes": ADDITIONAL,
@@ -886,10 +894,10 @@ def execute(pin, phase, arm="all", offset=0):
             write(ROOT / "cpu-certificate.json", {"status": "passed", "cases": cases, "source_manifest_sha256": pin,
                                                     "plan_sha256": sha(SOURCE / "plan.json"), "proofs": proofs,
                                                     "original_scientific_cpu_replaced": False})
-            for item in DISPATCH_ARMS:
+            for item in AUTOMATIC_ARMS:
                 require(not parent_path("validate", item, ARMS[item]["offsets"][0]).exists(), "Existing/unknown validation must not be duplicated")
             require(time.monotonic() < phase_deadline, "CPU callback metadata runtime exhausted")
-            for item in DISPATCH_ARMS:
+            for item in AUTOMATIC_ARMS:
                 _pair("validate", pin, item, ARMS[item]["offsets"][0])
             return
         certificate(pin, manifest)

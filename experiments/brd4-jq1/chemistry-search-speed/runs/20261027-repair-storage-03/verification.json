@@ -1,0 +1,9 @@
+{
+  "status": "independent_laptop351member_backup_and_remote_absence_journal_preservation_verified",
+  "completion_sha256": "74c069fd5678e312276e44269b29a768b40dcf9cdded7fb309d2569c89f773bc",
+  "archive_sha256": "2ad6b888163ff3123da400066a5a053ac90029bcf22dcbe33ef0b93b5902aa55",
+  "removed_files": 1,
+  "logical_bytes": 39162508,
+  "other_release_files_preserved": true,
+  "scientific_results_changed": false
+}

@@ -13,10 +13,10 @@ LOCAL=REPO/'results/hpc/20261025-continuation-admission-01'
 
 def main():
     parser=argparse.ArgumentParser();parser.add_argument('--name',required=True)
-    parser.add_argument('--attempt',choices=('01','02','07'),default='07');args=parser.parse_args()
+    parser.add_argument('--attempt',choices=('01','02','07','08','09'),default='09');args=parser.parse_args()
     global LOCAL
     if args.attempt=='02':LOCAL=REPO/'results/hpc/20261025-continuation-worker-fix-02'
-    if args.attempt=='07':LOCAL=REPO/'results/hpc/20261027-continuation-measurement-07'
+    if args.attempt in ('07','08','09'):LOCAL=REPO/('results/hpc/20261027-continuation-measurement-'+args.attempt)
     assert args.name.replace('-','').isalnum()
     out=LOCAL/args.name;out.mkdir(exist_ok=False)
     program='ATTEMPT='+repr(args.attempt)+'\n'+r'''
