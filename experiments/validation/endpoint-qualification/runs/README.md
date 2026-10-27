@@ -60,3 +60,6 @@ saved results unchanged. Canonical continuation package/stage targetsONLY09.
 - [Qualification04](20261027-chemistry-native-qualification-04/README.md):
   preserves03 storage-race failure, CPU29/fullstorage/owncallback passed; actual
   native Pro29834600/Bol29834601queued, no chemistry optimizer submitted.
+
+
+Latest scoped recovery: [Protenix08](20261027-protenix-endpoint-fix-08/README.md) CPU324 passed/native29834817 queued; [DBMol10](20261027-dbmol-endpoint-recovery-10/README.md) CPU32 passed/native29834830 queued. Both are separate measurement qualification, not submitted optimizer continuations; originalPro07/DBMol7500 failures are preserved.

@@ -1,60 +1,5 @@
 {
-  "status": "CPU301_actual_DONE_verified_GPU29829894_queued",
-  "preparation": {
-    "archive_bytes": 78265,
-    "archive_sha256": "c6dd1d87efcb8f24246620dc6494aa5ce78e3e5aceb6ccbca0eb09697bf5e127",
-    "cpu_counts": {
-      "tests.test_current_capacity": 5,
-      "tests.test_protenix_precision_admission": 30,
-      "tests.test_protenix_precision_native": 82,
-      "tests.test_protenix_precision_ops": 72,
-      "tests.test_protenix_precision_reference": 97,
-      "tests.test_protenix_replay_context": 15
-    },
-    "files": 18,
-    "manifest_sha256": "63db0a002c8aca2a282d50f9e7227d57b69ac6820b8ae0e06287ec95770dd8a3",
-    "plan_sha256": "02b63070b034b245d2a974de9182b39a27c3ce74321edbc18290c3a5892f9a08",
-    "status": "prepared_not_validated"
-  },
-  "cpu": {
-    "status": "submitted",
-    "phase": "cpu",
-    "argv": [
-      "bsub",
-      "-q",
-      "hpc",
-      "-n",
-      "4",
-      "-R",
-      "span[hosts=1]",
-      "-R",
-      "rusage[mem=4GB]",
-      "-W",
-      "01:00",
-      "-J",
-      "mosaic-pro-precision07-cpu",
-      "-oo",
-      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-07/cpu/stdout.%J.log",
-      "-eo",
-      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-07/cpu/stderr.%J.log",
-      "bash",
-      "-l",
-      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-release-07/source/scripts/protenix_precision_stage.lsf",
-      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-release-07/source",
-      "63db0a002c8aca2a282d50f9e7227d57b69ac6820b8ae0e06287ec95770dd8a3",
-      "cpu"
-    ],
-    "dependency": null,
-    "source_manifest_sha256": "63db0a002c8aca2a282d50f9e7227d57b69ac6820b8ae0e06287ec95770dd8a3",
-    "submitted_utc": "2026-10-27T11:13:44.689753+00:00",
-    "returncode": 0,
-    "stdout": "Job <29829842> is submitted to queue <hpc>.\n",
-    "stderr": "",
-    "job_id": "29829842"
-  },
   "after_cpu": {
-    "status": "submitted",
-    "phase": "after-cpu",
     "argv": [
       "bsub",
       "-q",
@@ -83,33 +28,60 @@
       "after-cpu"
     ],
     "dependency": "ended(29829842)",
-    "source_manifest_sha256": "63db0a002c8aca2a282d50f9e7227d57b69ac6820b8ae0e06287ec95770dd8a3",
-    "submitted_utc": "2026-10-27T11:13:45.103005+00:00",
+    "job_id": "29829843",
+    "phase": "after-cpu",
     "returncode": 0,
-    "stdout": "Job <29829843> is submitted to queue <hpc>.\n",
-    "stderr": "",
-    "job_id": "29829843"
-  },
-  "storage": {
-    "status": "passed",
-    "required_bytes": 49684462417,
-    "available_bytes": 50747513279,
-    "reserve_bytes": 4294967296,
-    "file_reserve": 100000
-  },
-  "old_failed_preflight_preserved": true,
-  "original_results_changed": false,
-  "optimization_settings_changed": false,
-  "native_pass_established": false,
-  "optimizer_submitted": false,
-  "cpu_verification": {
-    "status": "independently_verified_cpu_pass",
-    "captured_utc": "2026-10-27T11:22:43.752317+00:00",
-    "cpu_job_id": "29829842",
-    "scheduler_status": "DONE",
     "source_manifest_sha256": "63db0a002c8aca2a282d50f9e7227d57b69ac6820b8ae0e06287ec95770dd8a3",
-    "files_byte_verified": 23,
+    "status": "submitted",
+    "stderr": "",
+    "stdout": "Job <29829843> is submitted to queue <hpc>.\n",
+    "submitted_utc": "2026-10-27T11:13:45.103005+00:00"
+  },
+  "cpu": {
+    "argv": [
+      "bsub",
+      "-q",
+      "hpc",
+      "-n",
+      "4",
+      "-R",
+      "span[hosts=1]",
+      "-R",
+      "rusage[mem=4GB]",
+      "-W",
+      "01:00",
+      "-J",
+      "mosaic-pro-precision07-cpu",
+      "-oo",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-07/cpu/stdout.%J.log",
+      "-eo",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-07/cpu/stderr.%J.log",
+      "bash",
+      "-l",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-release-07/source/scripts/protenix_precision_stage.lsf",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-release-07/source",
+      "63db0a002c8aca2a282d50f9e7227d57b69ac6820b8ae0e06287ec95770dd8a3",
+      "cpu"
+    ],
+    "dependency": null,
+    "job_id": "29829842",
+    "phase": "cpu",
+    "returncode": 0,
+    "source_manifest_sha256": "63db0a002c8aca2a282d50f9e7227d57b69ac6820b8ae0e06287ec95770dd8a3",
+    "status": "submitted",
+    "stderr": "",
+    "stdout": "Job <29829842> is submitted to queue <hpc>.\n",
+    "submitted_utc": "2026-10-27T11:13:44.689753+00:00"
+  },
+  "cpu_certificate_sha256": "97a3dd3048fc5269f18b72e156a5dd4a843728533b40aa2f4fdcb9e8f8fa6735",
+  "cpu_verification": {
+    "actual_startup_passed_metadata_only": true,
+    "captured_utc": "2026-10-27T11:22:43.752317+00:00",
     "cases": 301,
+    "cpu_job_id": "29829842",
+    "failed_cases": [],
+    "files_byte_verified": 23,
+    "local_scientific_calculations": false,
     "module_counts": {
       "tests.test_current_capacity": 5,
       "tests.test_protenix_precision_admission": 30,
@@ -118,18 +90,15 @@
       "tests.test_protenix_precision_reference": 97,
       "tests.test_protenix_replay_context": 15
     },
-    "failed_cases": [],
-    "actual_startup_passed_metadata_only": true,
     "native_result_established": false,
-    "optimizer_updates": 0,
     "observation_sha256": "1825a974ffafc0655212493a187d4ab0912f4d31f104aa51e20b351f7caae2f0",
+    "optimizer_updates": 0,
     "original_results_changed": false,
-    "local_scientific_calculations": false
+    "scheduler_status": "DONE",
+    "source_manifest_sha256": "63db0a002c8aca2a282d50f9e7227d57b69ac6820b8ae0e06287ec95770dd8a3",
+    "status": "independently_verified_cpu_pass"
   },
-  "cpu_certificate_sha256": "97a3dd3048fc5269f18b72e156a5dd4a843728533b40aa2f4fdcb9e8f8fa6735",
   "gpu": {
-    "status": "submitted",
-    "phase": "gpu",
     "argv": [
       "bsub",
       "-q",
@@ -158,12 +127,54 @@
       "gpu"
     ],
     "dependency": null,
-    "source_manifest_sha256": "63db0a002c8aca2a282d50f9e7227d57b69ac6820b8ae0e06287ec95770dd8a3",
-    "submitted_utc": "2026-10-27T11:20:01.895451+00:00",
+    "job_id": "29829894",
+    "phase": "gpu",
     "returncode": 0,
-    "stdout": "Job <29829894> is submitted to queue <gpul40s>.\n",
+    "source_manifest_sha256": "63db0a002c8aca2a282d50f9e7227d57b69ac6820b8ae0e06287ec95770dd8a3",
+    "status": "submitted",
     "stderr": "",
-    "job_id": "29829894"
+    "stdout": "Job <29829894> is submitted to queue <gpul40s>.\n",
+    "submitted_utc": "2026-10-27T11:20:01.895451+00:00"
   },
-  "last_observed_utc": "2026-10-27T11:22:43.752317+00:00"
+  "last_observed_utc": "2026-10-27T11:22:43.752317+00:00",
+  "latest_terminal_observation": {
+    "ended_local": "2026-10-27T18:03:53+01:00",
+    "exit_code": 1,
+    "job": "29829894",
+    "original_results_changed": false,
+    "production_FP32_replay": "passed",
+    "reference_result": "failed_dtype_audit_before_reference_FD",
+    "scheduler_scope": "authenticated_persisted_same_job_LSF_not_invented_live_state",
+    "started_local": "2026-10-27T17:59:55+01:00",
+    "successor_qualification": "20261027-protenix-endpoint-fix-08"
+  },
+  "native_pass_established": false,
+  "old_failed_preflight_preserved": true,
+  "optimization_settings_changed": false,
+  "optimizer_submitted": false,
+  "original_results_changed": false,
+  "preparation": {
+    "archive_bytes": 78265,
+    "archive_sha256": "c6dd1d87efcb8f24246620dc6494aa5ce78e3e5aceb6ccbca0eb09697bf5e127",
+    "cpu_counts": {
+      "tests.test_current_capacity": 5,
+      "tests.test_protenix_precision_admission": 30,
+      "tests.test_protenix_precision_native": 82,
+      "tests.test_protenix_precision_ops": 72,
+      "tests.test_protenix_precision_reference": 97,
+      "tests.test_protenix_replay_context": 15
+    },
+    "files": 18,
+    "manifest_sha256": "63db0a002c8aca2a282d50f9e7227d57b69ac6820b8ae0e06287ec95770dd8a3",
+    "plan_sha256": "02b63070b034b245d2a974de9182b39a27c3ce74321edbc18290c3a5892f9a08",
+    "status": "prepared_not_validated"
+  },
+  "status": "CPU301_passed_GPU29829894_failed_reference_geometry_charge_FP32",
+  "storage": {
+    "available_bytes": 50747513279,
+    "file_reserve": 100000,
+    "required_bytes": 49684462417,
+    "reserve_bytes": 4294967296,
+    "status": "passed"
+  }
 }

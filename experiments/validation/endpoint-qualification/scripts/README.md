@@ -105,3 +105,6 @@ failed03 and retries the entire unchanged gate at most3times for the exact
 observed atomic reference temp path. `verify_chemistry_qualification_cpu.py`
 independently audits actual CPU29/dispatch XML/LSF/bytes/schema with stdlib only.
 The native evaluator has no optimizer dispatch; read actual04jobs before recovery.
+
+
+Precision recovery operators: `manage_protenix_precision.py` currently packages only the immutable08 correction; `manage_dbmol_recovery.py` packages independent10. `dbmol_reference.py` is the separate Torch precision worker, `dbmol_endpoint_precision.py` coordinates preserved production/reference evidence, and `dbmol_recovery_ops.py`/`dbmol_recovery_stage.lsf` enforce CPU/native-only phases. `recovery_capacity.py` retains all existing futures plus the new scopes. Neither controller has an optimizer branch. Run records bind actual commands, source identities and allocated evidence.

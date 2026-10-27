@@ -200,3 +200,6 @@ fixes03's complete-storage inventory race without skipping files or partial
 totals. Actual CPU29/LSF/startups/whole dispatch capacity passed; native Pro
 29834600 and Bol29834601 are queued. Native/combined qualification and both
 chemistry continuations remain pending, with all settings/results unchanged.
+
+
+27October23:08Paris: [Protenix08](runs/20261027-protenix-endpoint-fix-08/README.md) fixes the separate reference geometry-wrapper charge cast;324allocated CPUcases passed, GPU29834817 queued. [DBMol10](runs/20261027-dbmol-endpoint-recovery-10/README.md) preserves the failed7500 endpoint and validates an independently promoted fullFP64 affinity reference;32allocated CPUcases passed, GPU29834830 queued. Neither native check has passed or submitted a continuation. Existing settings, saved results and original failures remain unchanged.

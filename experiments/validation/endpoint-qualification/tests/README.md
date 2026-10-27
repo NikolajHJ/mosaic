@@ -62,3 +62,6 @@ Qualification04 now requires29allocated cases: original24 plus whole-inventory
 retry, protected input failure, bounded exhaustion, capacity rejection and
 failed-result rejection. Actual CPU29834574 passed all29/no skips/errors/failures.
 Native/combined loss validation remains separate; no numerical tests locally.
+
+
+Recovery controls `test_dbmol_reference.py`, `test_dbmol_endpoint_precision.py` and `test_recovery_capacity.py` run only on allocated HPC. They exercise full-precision operation auditing, original scalar/gradient transport, wrong-gradient rejection, preserved source inputs and complete budgets. CPU fixture passes do not certify pretrained native gradients or authorize child optimization.

@@ -1,0 +1,39 @@
+{
+  "callback_job": "29834822",
+  "cpu_job": "29834821",
+  "monitor_remains_paused": true,
+  "native_job": "29834830",
+  "native_pass_established": false,
+  "observed_utc": "2026-10-27T22:08:15.029471+00:00",
+  "optimization_settings_changed": false,
+  "optimizer_jobs_submitted": false,
+  "original_results_changed": false,
+  "preparation": {
+    "archive_bytes": 117993,
+    "archive_sha256": "5d47bc3e0d2e378c61f98cd66f3d68dde903cfa6f1f37ec64a72c4204b69391e",
+    "cpu_counts": {
+      "tests.test_dbmol_endpoint_precision": 10,
+      "tests.test_dbmol_reference": 12,
+      "tests.test_recovery_capacity": 10
+    },
+    "files": 13,
+    "manifest_sha256": "6c989d82e3d05a1b287c5092d7591f1a14c0a17739ece5885f5ac6a165d66259",
+    "plan_sha256": "72370c6fd6ad0bd13898a69a6c14e7d2f8a8d9457e9202a3824ff73c1ecd4a49",
+    "status": "prepared_not_validated"
+  },
+  "status": "CPU32_and_callbacks_verified_GPU29834830_pending",
+  "verification": {
+    "available_bytes": 56898330134,
+    "cases": 32,
+    "certificate_proofs_verified": 27,
+    "cpu_certificate_sha256": "f75716628a1421b1324762105de5414dfe35cfb89d21802a1cebf4e44c44b0f9",
+    "files_verified": 74,
+    "native_job": "29834830",
+    "native_pass_established": false,
+    "native_scheduler_state": "PEND",
+    "optimizer_jobs_submitted": false,
+    "required_bytes": 51647396689,
+    "source_manifest_sha256": "6c989d82e3d05a1b287c5092d7591f1a14c0a17739ece5885f5ac6a165d66259",
+    "status": "passed_independent_CPU32_certificate_XML_LSF_source_resources_storage_audit"
+  }
+}

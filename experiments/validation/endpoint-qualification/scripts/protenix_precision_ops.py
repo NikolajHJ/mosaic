@@ -21,8 +21,8 @@ import xml.etree.ElementTree as ET
 VERSION = "protenix-endpoint-precision-source-v2"
 PLAN_VERSION = "protenix-endpoint-precision-plan-v2"
 BASE = Path("/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01")
-SOURCE = BASE / "protenix-endpoint-fix-release-07/source"
-ROOT = BASE / "protenix-endpoint-fix-07"
+SOURCE = BASE / "protenix-endpoint-fix-release-08/source"
+ROOT = BASE / "protenix-endpoint-fix-08"
 PARENT_SOURCE = BASE / "nonchem-endpoint-release-02/source"
 PARENT_PIN = "88372f92b6349e6c34c542fb84fb39482c4c340568431d1499ebc166a1e1e7fa"
 PARENT_FILES = 14
@@ -187,7 +187,7 @@ def argv(phase, pin, dependency=None):
     else:
         require(dependency is None, "Native/CPU job must be independent")
     parent = ROOT / phase
-    command = ["bsub", *resources(phase), "-J", "mosaic-pro-precision07-" + phase,
+    command = ["bsub", *resources(phase), "-J", "mosaic-pro-precision08-" + phase,
                "-oo", str(parent / "stdout.%J.log"), "-eo", str(parent / "stderr.%J.log")]
     if dependency is not None: command += ["-w", dependency]
     return command + ["bash", "-l", str(SOURCE / "scripts/protenix_precision_stage.lsf"), str(SOURCE), pin, phase]
@@ -263,7 +263,7 @@ def terminal_cpu():
     for number in range(21):
         if path.exists() and "Successfullycompleted." in "".join(path.read_text().split()): break
         require(number < 20, "Actual CPU terminal LSF unavailable"); time.sleep(1)
-    lsf_success(path.read_text(), job, "mosaic-pro-precision07-cpu", "hpc")
+    lsf_success(path.read_text(), job, "mosaic-pro-precision08-cpu", "hpc")
     return proofs + [binding(path)]
 
 
@@ -295,7 +295,7 @@ def owned_bytes(root, excluded=()):
     return total
 
 
-def storage(parent, phase="entry"):
+def _storage_once(parent, phase="entry"):
     require(phase in ("preflight", "entry", "dispatch"), "Unknown storage phase")
     prior = parent_ops().storage(parent, "precision")
     # The pinned parent already charges containing BASE in full for stale quota.
@@ -329,8 +329,35 @@ def storage(parent, phase="entry"):
     return record
 
 
+def storage(parent, phase="entry"):
+    """Repeat the entire guard only for the already observed owned temp race."""
+    require(phase in ("preflight", "entry", "dispatch"), "Unknown storage phase")
+    atomic_reference = BASE / "nonchem-endpoint-continuation-09/boltz-segment-10000/payload/study/case-0/references/latest-reference.json.tmp"
+    for number in range(1, 4):
+        attempt = Path(parent) / ("whole-inventory-" + phase + "-" + str(number))
+        attempt.mkdir(exist_ok=False)
+        try:
+            result = _storage_once(attempt, phase)
+        except FileNotFoundError as error:
+            if error.filename is None or Path(error.filename) != atomic_reference:
+                raise
+            write(attempt / "incomplete-inventory.json", {
+                "status": "failed_incomplete_inventory_not_admission", "missing_path": error.filename,
+                "files_skipped": False, "partial_totals_used": False, "attempt": number})
+            if number == 3:
+                raise
+        else:
+            write(Path(parent) / ("precision-storage-" + phase + ".json"), result)
+            return result
+        finally:
+            failed = attempt / ("precision-storage-" + phase + ".json")
+            target = Path(parent) / ("precision-storage-" + phase + ".json")
+            if failed.exists() and not target.exists() and read(failed).get("status") == "failed":
+                write(target, read(failed))
+
+
 def current_capacity_gate(parent, phase):
-    from current_capacity import gate
+    from recovery_capacity import gate
     return gate(parent, phase)
 
 
@@ -380,7 +407,7 @@ def certificate(pin, manifest):
     require(xml_cases(ROOT / "cpu/payload/tests.xml", manifest["cpu_counts"]) == value["cases"], "Raw CPU cases changed")
     verify_startup(read(ROOT / "cpu/payload/assessment.json")["actual_native_startup"])
     sub = read(ROOT / "cpu/submission.json")
-    lsf_success((ROOT / "cpu" / ("stdout." + sub["job_id"] + ".log")).read_text(), sub["job_id"], "mosaic-pro-precision07-cpu", "hpc")
+    lsf_success((ROOT / "cpu" / ("stdout." + sub["job_id"] + ".log")).read_text(), sub["job_id"], "mosaic-pro-precision08-cpu", "hpc")
     return value
 
 

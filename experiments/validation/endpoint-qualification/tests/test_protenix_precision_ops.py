@@ -74,7 +74,7 @@ def plan(owned, monkeypatch):
             "monitor_remains_paused": True}
 
 
-def good_lsf(job="111", name="mosaic-pro-precision07-cpu", queue="hpc"):
+def good_lsf(job="111", name="mosaic-pro-precision08-cpu", queue="hpc"):
     return ("Subject: Job " + job + ": <" + name + "> in cluster <dcc> Done\n"
             "Job was executed in queue <" + queue + ">.\nSuccessfully completed.\n")
 
@@ -211,7 +211,7 @@ def subprocess_timeout():
 
 def test_lsf_accepts_wrapped_identity_without_changing_raw_bytes():
     raw = good_lsf().replace("precision-cpu", "precision-\n    cpu").replace("queue <hpc>", "queue <\n hpc>")
-    assert ops.lsf_success(raw, "111", "mosaic-pro-precision07-cpu", "hpc")
+    assert ops.lsf_success(raw, "111", "mosaic-pro-precision08-cpu", "hpc")
 
 
 @pytest.mark.parametrize("change", ["job", "name", "queue", "duplicate", "exit", "missing_success"])
@@ -230,7 +230,7 @@ def test_lsf_rejects_wrong_or_ambiguous_terminal_evidence(change):
     else:
         raw = raw.replace("Successfully completed.", "")
     with pytest.raises(ValueError, match="LSF success"):
-        ops.lsf_success(raw, "111", "mosaic-pro-precision07-cpu", "hpc")
+        ops.lsf_success(raw, "111", "mosaic-pro-precision08-cpu", "hpc")
 
 
 def make_xml(path, child="", duplicate=False, omitted=False):
@@ -434,3 +434,34 @@ def test_stage_wrapper_preserves_scientific_source_and_separates_cpu_and_gpu():
     assert "cuda/12.9.1 cudnn/v9.13.0.50-prod-cuda-12.X" in text
     assert "protenix-extended-release-03/source" in text
     assert "protenix_precision_ops.py" in text
+
+
+def test_atomic_inventory_race_repeats_entire_guard_without_skipping(tmp_path, monkeypatch):
+    calls = []
+    missing = ops.BASE / 'nonchem-endpoint-continuation-09/boltz-segment-10000/payload/study/case-0/references/latest-reference.json.tmp'
+    def operation(parent, phase):
+        calls.append(parent)
+        if len(calls) == 1: raise FileNotFoundError(2, 'vanished atomic reference', str(missing))
+        return {'status': 'passed', 'whole_original_gate': True}
+    monkeypatch.setattr(ops, '_storage_once', operation)
+    assert ops.storage(tmp_path)['status'] == 'passed'
+    assert len(calls) == 2 and calls[0] != calls[1]
+    assert ops.read(calls[0] / 'incomplete-inventory.json')['files_skipped'] is False
+
+
+def test_inventory_race_has_finite_retries(tmp_path, monkeypatch):
+    missing = ops.BASE / 'nonchem-endpoint-continuation-09/boltz-segment-10000/payload/study/case-0/references/latest-reference.json.tmp'
+    def operation(*args): raise FileNotFoundError(2, 'race', str(missing))
+    monkeypatch.setattr(ops, '_storage_once', operation)
+    with pytest.raises(FileNotFoundError): ops.storage(tmp_path)
+    assert len(list(tmp_path.glob('whole-inventory-*'))) == 3
+
+
+@pytest.mark.parametrize('error', [FileNotFoundError(2, 'protected input missing', '/other/file'),
+                                 ValueError('capacity rejection')])
+def test_inventory_does_not_retry_unrelated_failures(tmp_path, monkeypatch, error):
+    calls = []
+    def operation(*args): calls.append(1); raise error
+    monkeypatch.setattr(ops, '_storage_once', operation)
+    with pytest.raises(type(error)): ops.storage(tmp_path)
+    assert len(calls) == 1

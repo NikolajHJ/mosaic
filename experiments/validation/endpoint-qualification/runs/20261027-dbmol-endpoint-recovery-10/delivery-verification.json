@@ -1,0 +1,14 @@
+{
+  "status": "passed_independent_CPU32_certificate_XML_LSF_source_resources_storage_audit",
+  "files_verified": 74,
+  "certificate_proofs_verified": 27,
+  "cases": 32,
+  "cpu_certificate_sha256": "f75716628a1421b1324762105de5414dfe35cfb89d21802a1cebf4e44c44b0f9",
+  "source_manifest_sha256": "6c989d82e3d05a1b287c5092d7591f1a14c0a17739ece5885f5ac6a165d66259",
+  "native_job": "29834830",
+  "native_scheduler_state": "PEND",
+  "native_pass_established": false,
+  "optimizer_jobs_submitted": false,
+  "required_bytes": 51647396689,
+  "available_bytes": 56898330134
+}

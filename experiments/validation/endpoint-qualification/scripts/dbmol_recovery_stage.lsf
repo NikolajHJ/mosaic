@@ -1,0 +1,35 @@
+#!/bin/bash
+set -euo pipefail
+[[ $# == 3 && -n "${LSB_JOBID:-}" ]]
+source_root=$1
+pin=$2
+phase=$3
+module load python3/3.12.11
+export PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+export OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 MKL_NUM_THREADS=4 NUMEXPR_NUM_THREADS=4
+export HF_HUB_OFFLINE=1 HF_HUB_DISABLE_TELEMETRY=1 JAX_ENABLE_X64=1 JAX_PLATFORMS=cpu
+base=/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01
+science="$base/boltz-dbmol-pilot-release-02/source"
+python=/work3/s234818/mosaic/envs/protenix-tiny/bin/python
+"$python" - "$source_root" "$pin" <<'VERIFY'
+import hashlib,json,sys
+from pathlib import Path,PurePosixPath
+source=Path(sys.argv[1]);raw=(source/'source_manifest.json').read_bytes()
+assert hashlib.sha256(raw).hexdigest()==sys.argv[2]
+m=json.loads(raw)
+assert {p.relative_to(source).as_posix() for p in source.rglob('*') if p.is_file()}==set(m['files'])|{'source_manifest.json'}
+for name,sha in m['files'].items():
+ p=PurePosixPath(name);assert not p.is_absolute() and '..' not in p.parts
+ assert not (source/name).is_symlink() and hashlib.sha256((source/name).read_bytes()).hexdigest()==sha
+VERIFY
+if [[ "$phase" == gpu ]]; then
+ [[ "$LSB_QUEUE" == gpul40s ]]
+ module load cuda/12.9.1
+else
+ [[ "$LSB_QUEUE" == hpc ]]
+ export CUDA_VISIBLE_DEVICES=''
+fi
+source "$science/scripts/hpc/boltz_node_tmpdir.sh"
+export PYTHONPATH="$source_root/scripts:$science/src:$science/scripts"
+cd "$source_root"
+"$python" -u "$source_root/scripts/dbmol_recovery_ops.py" --phase "$phase" --pin "$pin"

@@ -1,0 +1,18 @@
+{
+  "status": "passed_CPU324_byte_XML_LSF_certificate_audit",
+  "files_verified": 22,
+  "cases": 324,
+  "module_counts": {
+    "tests.test_current_capacity": 5,
+    "tests.test_protenix_precision_admission": 30,
+    "tests.test_protenix_precision_native": 82,
+    "tests.test_protenix_precision_ops": 76,
+    "tests.test_protenix_precision_reference": 106,
+    "tests.test_protenix_replay_context": 15,
+    "tests.test_recovery_capacity": 10
+  },
+  "source_manifest_sha256": "7082a76a2da1849cfdf377735ebd7ccbc77e298395c7f2f154f18904a1db6856",
+  "cpu_certificate_sha256": "2a8162e1d4099ce73cb53e35b6aaf5acdba88849d96e618588664110001fe397",
+  "native_job_id": "29834817",
+  "native_pass_established": false
+}

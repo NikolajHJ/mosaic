@@ -1,0 +1,12 @@
+{
+  "status": "passed_independent_CPU32_raw_XML_LSF_startup_byte_audit",
+  "files_verified": 45,
+  "cases": 32,
+  "module_counts": {
+    "tests.test_dbmol_reference": 12,
+    "tests.test_dbmol_endpoint_precision": 10,
+    "tests.test_recovery_capacity": 10
+  },
+  "native_pass_established": false,
+  "optimizer_jobs_submitted": false
+}

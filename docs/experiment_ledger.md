@@ -8502,3 +8502,65 @@ receipt folders missing README). New04 run README exists and its canonical test
 module is discovered exactly once; no scientific/numerical work ran locally.
 IndependentCPU29 audit additionally verified actual liveCPU/callbackDONE and
 persisted same-CPU DONE/hpc raw scheduler, with exact same verificationbytes.
+
+
+### 2026-10-27 — Protenix08 geometry-wrapper precision correction prepared
+
+User authorized fixing Pro FP64/DBMol terminal failure and submitting child
+continuations only after all checks, with settings/results unchanged. Pro07
+GPU29829894 actualEXIT1 at18:03:53CET: production FP32 replaypassed but
+geometry-masked wrapper retained integer arcsinh FP32 inside reference.
+New08 changes its one authenticated operand in separate FP64 reference only;
+all5 precision expressions/restoration/actualwrapper controls plus324allocated
+CPUcases and native saved20k checks required. All102 oldproofs adopted.
+Full inherited futures/chemistry04 plus new272MiBPro/512MiBDB scopes and
+4GiB/100000 reserves retained; no optimizer branch in this qualification.
+Local AST/byte/package checks only; no allocated pass or job yet. Source07
+and DBMol saved7500 failure remain failed; no savedresult/settings changed.
+See endpoint-qualification/runs/20261027-protenix-endpoint-fix-08.
+
+
+### 2026-10-27 — Protenix08 CPU324 passed; DBMol7500 precision recovery prepared
+
+Pro08 CPU29834738 actualDONE/hpc/LSF,324raw cases/no failures/errors/skips
+verified independently from22compact files and CPUcertificate. AfterCPU29834739
+actuallysubmitted GPU29834817, PEND at21:58:59UTC; no nativeprecision pass
+or optimizer child. Fullpreflight51,647,396,689required/56,907,761,326available
+bytes passed, including unchanged completefutures/4GiB/100000 reserves, notreservation.
+
+DBMol source08 GPU29830999 ran18:27:20–21:33:11CET, applied2500 newupdates
+(savedabsolute7500), thenEXIT1 on terminal affinity v3contrastXrow1/0->4.
+Selected.001/.0003 pairpassed; finer.0001 rejected with observed delta
+3.5017728805541992e-6 vsADprediction5.902876527241752e-6. Original failure
+preserved. New13file recovery10 prepares independent fullFP64 native affinity
+reference, exact original FP64scalar/FP32gradient production transport, unchanged
+15percent FD/parity/locality/presealedpairs/nonzero/frozen/negatives. It cannot
+submit optimization; allother component/pilot/runtime/startup/fullstorage gates
+remain mandatory before prospective7500->10000.32allocated CPUcases/actualstartup
+then boundedL40S reference awaitexecution. Source/point/config/savedbytes adopted.
+Local AST/JSON/byte packaging only; no numericaltest locally, no DBnewjob yet.
+Monitor/settings/savedresults/oldfailures unchanged.
+
+
+### 2026-10-27 — Both recovery CPU suites passed; exact native checks queued
+
+DBMol10 source13files manifest6c989d82e3d05a1b287c5092d7591f1a14c0a17739ece5885f5ac6a165d66259, archive117993bytes SHA5d47bc3e0d2e378c61f98cd66f3d68dde903cfa6f1f37ec64a72c4204b69391e.
+Source/control staged read-only;2390protected originalinput/state/failedproof
+bindings authenticated. CPU29834821/afterCPU29834822 actualDONE/hpc/LSFsuccess,
+32rawcases(12Torch/10policy/10capacity), nofailures/errors/skips; bothactual
+metadata startupcommands passed. Independent74file audit verified all27CPU
+certificateproofs/XML/samejobLSF/actualGPUresourcevector/completefullstorage.
+CPUcertificateSHAf75716628a1421b1324762105de5414dfe35cfb89d21802a1cebf4e44c44b0f9.
+Full dispatch51,647,396,689required/56,898,330,134availablebytes/4GiB/100000
+reserves passed, observation notreservation; no forecast reduction or cleanup.
+Onlynew native affinity reference29834830 submitted, PEND22:08:15UTC.
+Pro08GPU29834817 alsoPEND, CPU324/owncallbackDONE. No new nativepass,
+fullcontinuation readiness or optimizer submission established. Both capsules
+qualify native measurements only; all component/null/parity/pilot/runtime/
+startup/fullstorage gates and tested childintegration remain before children.
+SavedPro20k/DB7500/chemistry10kresults and all settings/failures stayunchanged;
+monitorpaused. No local scientific calculations.
+
+Local fullstdliblayout audit retains the same21outside-scope errors (historical
+discoveryinventory and20receiptfolders missingREADMEs). BothnewrunREADMEs exist,
+newtests resolveonce; no waiver or unrelatedlayout edits.

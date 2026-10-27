@@ -1,0 +1,13 @@
+{
+  "archive_bytes": 117993,
+  "archive_sha256": "5d47bc3e0d2e378c61f98cd66f3d68dde903cfa6f1f37ec64a72c4204b69391e",
+  "cpu_counts": {
+    "tests.test_dbmol_endpoint_precision": 10,
+    "tests.test_dbmol_reference": 12,
+    "tests.test_recovery_capacity": 10
+  },
+  "files": 13,
+  "manifest_sha256": "6c989d82e3d05a1b287c5092d7591f1a14c0a17739ece5885f5ac6a165d66259",
+  "plan_sha256": "72370c6fd6ad0bd13898a69a6c14e7d2f8a8d9457e9202a3824ff73c1ecd4a49",
+  "status": "prepared_not_validated"
+}

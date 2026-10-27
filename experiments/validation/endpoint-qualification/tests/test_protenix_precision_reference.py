@@ -341,19 +341,97 @@ def test_changed_native_mask_function_is_rejected(name):
 
 def test_native_source_and_hook_restoration_are_authenticated(x64):
     native, originals = native_functions()
+    from mosaic.small_molecule import native_hook
+    geometry_original = native_hook.GeometryMaskedAtomInput.__call__
     audit = r.authenticate_native_runtime()
     assert audit["native_sha256"] == r.NATIVE_SHA256
     assert len(audit["mask_functions"]) == 2
     with pytest.raises(RuntimeError, match="fixture interruption"):
         with r.native_precision_context() as active:
-            assert active["changed_expressions"] == 4
+            assert active["changed_expressions"] == 5
             assert native.average_over_atoms is not originals["average_over_atoms"]
             assert native.OuterProductMean.__call__ is not originals["OuterProductMean.__call__"]
             assert native.AtomAttentionEncoder.__call__ is not originals["AtomAttentionEncoder.__call__"]
+            assert native_hook.GeometryMaskedAtomInput.__call__ is not geometry_original
             raise RuntimeError("fixture interruption")
     assert native.average_over_atoms is originals["average_over_atoms"]
     assert native.OuterProductMean.__call__ is originals["OuterProductMean.__call__"]
     assert native.AtomAttentionEncoder.__call__ is originals["AtomAttentionEncoder.__call__"]
+    assert native_hook.GeometryMaskedAtomInput.__call__ is geometry_original
+
+
+def test_geometry_charge_clone_authenticates_actual_wrapper():
+    from mosaic.small_molecule.native_hook import GeometryMaskedAtomInput
+    _, audit = r.clone_geometry_charge_function(inspect.getsource(GeometryMaskedAtomInput.__call__))
+    assert audit["original_ast_sha256"] == r.GEOMETRY_CHARGE_AST_SHA256
+    assert audit["changed_expressions"] == 1
+    assert audit["integer_metadata_changed"] is False
+    assert audit["optimization_execution_changed"] is False
+
+
+@pytest.mark.parametrize("before,after", [
+    ('jnp.arcsinh', 'jnp.sinh'),
+    ('features["ref_charge"]', 'features["other_charge"]'),
+    ('position * geometry', 'position + geometry'),
+])
+def test_geometry_charge_clone_rejects_any_other_wrapper_change(before, after):
+    from mosaic.small_molecule.native_hook import GeometryMaskedAtomInput
+    source = inspect.getsource(GeometryMaskedAtomInput.__call__)
+    assert before in source
+    with pytest.raises(ValueError, match="Unauthenticated geometry-masked encoder AST"):
+        r.clone_geometry_charge_function(source.replace(before, after, 1))
+
+
+@pytest.mark.parametrize("dtype", ["float32", "float64"])
+@pytest.mark.parametrize("batched", [False, True])
+def test_actual_geometry_charge_prefix_parity_dtype_and_derivative(x64, dtype, batched):
+    import jax.numpy as jnp
+    import numpy as np
+    from mosaic.small_molecule import native_hook
+    original = native_hook.GeometryMaskedAtomInput.__call__
+    code, audit = r.clone_geometry_charge_function(inspect.getsource(original))
+    namespace = dict(original.__globals__); exec(code, namespace)
+    def prefix(source):
+        tree = ast.parse(__import__('textwrap').dedent(source)); fn = tree.body[0]
+        end = next(i for i, node in enumerate(fn.body) if isinstance(node, ast.AugAssign)
+                   and isinstance(node.value, ast.Call) and isinstance(node.value.func, ast.Attribute)
+                   and node.value.func.attr == "linear_no_bias_ref_charge")
+        fn.body = fn.body[:end + 1] + [ast.Return(ast.Name("c_l", ast.Load()))]
+        ast.fix_missing_locations(tree)
+        values = dict(original.__globals__); exec(compile(tree, '<actual-geometry-charge-prefix>', 'exec'), values)
+        return values['__call__']
+    class Linear:
+        def __init__(self, weight): self.weight = weight
+        def __call__(self, value): return value @ self.weight.T
+    kind = getattr(jnp, dtype); charge = jnp.asarray([-2, -1, 0, 1, 2], dtype=jnp.int32)
+    if batched: charge = jnp.stack([charge, charge])
+    features = {'ref_charge': charge, 'ref_pos': jnp.zeros((*charge.shape, 3), dtype=kind),
+                'ref_mask': jnp.ones(charge.shape, dtype=kind),
+                'ref_space_uid': jnp.zeros(charge.shape, dtype=jnp.int32),
+                'atom_to_token_idx': jnp.zeros(charge.shape, dtype=jnp.int32),
+                native_hook.GEOMETRY_FEATURE: jnp.ones(charge.shape, dtype=kind)}
+    encoder = SimpleNamespace(has_coords=False, input_feature_keys_ordered=[],
+        linear_no_bias_ref_pos=Linear(jnp.zeros((2, 3), dtype=kind)),
+        linear_no_bias_ref_charge=Linear(jnp.ones((2, 1), dtype=kind)))
+    layer = SimpleNamespace(native=encoder)
+    cloned = prefix(audit['reference_source']); result = cloned(layer, features)
+    expected = jnp.arcsinh(charge.astype(kind))[..., None] * jnp.ones((2,), dtype=kind)
+    np.testing.assert_array_equal(np.asarray(result), np.asarray(expected))
+    np.testing.assert_array_equal(np.asarray(features['ref_charge']), np.asarray(charge))
+    assert str(result.dtype) == dtype
+    if dtype == 'float32':
+        np.testing.assert_array_equal(np.asarray(prefix(inspect.getsource(original))(layer, features)), np.asarray(result))
+    else:
+        graph = x64.make_jaxpr(lambda q: cloned(layer, dict(features, ref_charge=q)))(charge)
+        assert __import__('protenix_precision_native').audit_jaxpr(graph)['floating_operations_float64']
+        def score(position): return jnp.sum(cloned(layer, dict(features, ref_pos=position)))
+        assert str(x64.grad(score)(features['ref_pos']).dtype) == 'float64'
+
+
+def test_geometry_runtime_source_pin_is_mandatory(x64, monkeypatch):
+    monkeypatch.setattr(r, 'GEOMETRY_SHA256', '0' * 64)
+    with pytest.raises(ValueError, match='Unauthenticated geometry-masked encoder source bytes'):
+        r.authenticate_geometry_runtime()
 
 
 @pytest.mark.parametrize("masked", [False, True])

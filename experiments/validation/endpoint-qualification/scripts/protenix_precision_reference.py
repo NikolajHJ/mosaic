@@ -18,13 +18,15 @@ from pathlib import Path
 import textwrap
 
 
-VERSION = "protenix-separate-fp64-reference-v2"
+VERSION = "protenix-separate-fp64-reference-v3"
 JAX_VERSION = "0.11.1"
 FUNCTIONS_SHA256 = "12e8ef763d56f4cc92189101b0b01e1a458042f851274a5d3f4ad3042430536b"
 CORE_AST_SHA256 = "24bcb2fa8e3ad101b0896972da1e9704c52ce702e82719323366ee45d1a894ae"
 CORE_NAME = "_dot_product_attention_core"
 NATIVE_SHA256 = "37f337839034afd2a814c1ed6b76867b67918f73dd56cdd365e67b8fed882a6d"
 CHARGE_AST_SHA256 = "acec16e3de87879f2ea772deb29ce9157125f5f81632846c478da394925419e0"
+GEOMETRY_SHA256 = "73390e37a857420caa7630c2ae4bca29dfdcd9b6635bea5335c39ba6c22f9835"
+GEOMETRY_CHARGE_AST_SHA256 = "c5a90b0d6e6fe9a547e6ecb446f11f5775d9882d38464d4e73dda82578e77245"
 NATIVE_CASTS = {
     "OuterProductMean.__call__": {
         "ast_sha256": "7d8f95ca77f6e672cbb0b72cd1fc1aa61d4858188eb5063c73883d6042123283",
@@ -197,6 +199,53 @@ def authenticate_native_runtime():
             "mask_functions": rows, "charge_function": charge}
 
 
+def clone_geometry_charge_function(source):
+    """Promote the charge operand in the actual geometry-masked encoder only.
+
+    Mosaic's wrapper implements its own charge projection, so patching the
+    upstream encoder cannot affect this path. Authenticate the complete wrapper
+    and prove by reversal that only this one reference operand changes.
+    """
+    tree = ast.parse(textwrap.dedent(source))
+    _require(_ast_digest(tree) == GEOMETRY_CHARGE_AST_SHA256,
+             "Unauthenticated geometry-masked encoder AST")
+    original = deepcopy(tree)
+    expected = ast.parse('features["ref_charge"]', mode="eval").body
+    calls = [node for node in ast.walk(tree) if isinstance(node, ast.Call)
+             and isinstance(node.func, ast.Attribute) and node.func.attr == "arcsinh"
+             and isinstance(node.func.value, ast.Name) and node.func.value.id == "jnp"
+             and len(node.args) == 1 and not node.keywords
+             and ast.dump(node.args[0]) == ast.dump(expected)]
+    _require(len(calls) == 1, "Exactly one geometry charge operand required")
+    calls[0].args[0] = ast.Call(
+        func=ast.Attribute(value=deepcopy(expected), attr="astype", ctx=ast.Load()),
+        args=[ast.parse("encoder.linear_no_bias_ref_charge.weight.dtype", mode="eval").body], keywords=[])
+    restored = deepcopy(tree)
+    reverse = [node for node in ast.walk(restored) if isinstance(node, ast.Call)
+               and isinstance(node.func, ast.Attribute) and node.func.attr == "arcsinh"]
+    _require(len(reverse) == 1, "Unexpected geometry charge clone")
+    reverse[0].args[0] = deepcopy(expected)
+    _require(ast.dump(restored) == ast.dump(original), "Geometry reference changed another executable node")
+    ast.fix_missing_locations(tree)
+    return compile(tree, "<authenticated-mosaic-reference-charge>", "exec"), {
+        "name": "GeometryMaskedAtomInput.__call__", "original_ast_sha256": GEOMETRY_CHARGE_AST_SHA256,
+        "reference_ast_sha256": _ast_digest(tree), "changed_expressions": 1,
+        "reference_source": ast.unparse(tree), "integer_metadata_changed": False,
+        "optimization_execution_changed": False}
+
+
+def authenticate_geometry_runtime():
+    _allocated()
+    from mosaic.small_molecule import native_hook
+    path = Path(native_hook.__file__).resolve()
+    _require(hashlib.sha256(path.read_bytes()).hexdigest() == GEOMETRY_SHA256,
+             "Unauthenticated geometry-masked encoder source bytes")
+    function = native_hook.GeometryMaskedAtomInput.__call__
+    _require(function.__globals__ is native_hook.__dict__, "Geometry encoder globals differ")
+    _, audit = clone_geometry_charge_function(inspect.getsource(function))
+    return {"file": str(path), "sha256": GEOMETRY_SHA256, "charge_function": audit}
+
+
 def assert_reference_process():
     """The caller must use a fresh process, separately from production FP32."""
     _allocated()
@@ -242,7 +291,7 @@ def attention_precision_context():
 
 @contextmanager
 def native_precision_context():
-    """Compose four fixed precision expressions in the separate FP64 reference.
+    """Compose five fixed precision expressions in the separate FP64 reference.
 
     Authenticate/configure original assets with bootstrap_native_assets before
     entering, and enter before loading/forward-tracing FrozenProtenixTiny. The
@@ -253,11 +302,14 @@ def native_precision_context():
     assert_reference_process()
     _require(not _NATIVE_ACTIVE, "Nested/concurrent native precision hooks are forbidden")
     audit = authenticate_native_runtime()
+    geometry_audit = authenticate_geometry_runtime()
     import jax
     import protenix.protenij as native
+    from mosaic.small_molecule import native_hook
     original_mean = native.average_over_atoms
     original_outer = native.OuterProductMean.__call__
     original_encoder = native.AtomAttentionEncoder.__call__
+    original_geometry = native_hook.GeometryMaskedAtomInput.__call__
     replacements = []
     for name, function in (("average_over_atoms", original_mean),
                            ("OuterProductMean.__call__", original_outer)):
@@ -272,27 +324,37 @@ def native_precision_context():
     exec(code, namespace)
     charge_replacement = namespace["__call__"]
     charge_replacement.__qualname__ = original_encoder.__qualname__
+    geometry_namespace = dict(original_geometry.__globals__)
+    code, _ = clone_geometry_charge_function(inspect.getsource(original_geometry))
+    exec(code, geometry_namespace)
+    geometry_replacement = geometry_namespace["__call__"]
+    geometry_replacement.__qualname__ = original_geometry.__qualname__
     jax.clear_caches()
     _NATIVE_ACTIVE = True
     native.average_over_atoms = replacements[0]
     native.OuterProductMean.__call__ = replacements[1]
     native.AtomAttentionEncoder.__call__ = charge_replacement
+    native_hook.GeometryMaskedAtomInput.__call__ = geometry_replacement
     try:
         with attention_precision_context() as attention:
-            yield {**audit, "attention": attention, "changed_expressions": 4,
+            yield {**audit, "geometry": geometry_audit, "attention": attention, "changed_expressions": 5,
                    "optimization_execution_changed": False}
     finally:
         changed = (native.average_over_atoms is not replacements[0]
                    or native.OuterProductMean.__call__ is not replacements[1]
-                   or native.AtomAttentionEncoder.__call__ is not charge_replacement)
+                   or native.AtomAttentionEncoder.__call__ is not charge_replacement
+                   or native_hook.GeometryMaskedAtomInput.__call__ is not geometry_replacement)
         native.average_over_atoms = original_mean
         native.OuterProductMean.__call__ = original_outer
         native.AtomAttentionEncoder.__call__ = original_encoder
+        native_hook.GeometryMaskedAtomInput.__call__ = original_geometry
         _NATIVE_ACTIVE = False
         jax.clear_caches()
         _require(not changed, "Native precision hooks changed during their scope")
         _require(hashlib.sha256(Path(native.__file__).read_bytes()).hexdigest() == NATIVE_SHA256,
                  "Installed native source changed during reference evaluation")
+        _require(hashlib.sha256(Path(native_hook.__file__).read_bytes()).hexdigest() == GEOMETRY_SHA256,
+                 "Installed geometry source changed during reference evaluation")
 
 
 def _array_record(value):
