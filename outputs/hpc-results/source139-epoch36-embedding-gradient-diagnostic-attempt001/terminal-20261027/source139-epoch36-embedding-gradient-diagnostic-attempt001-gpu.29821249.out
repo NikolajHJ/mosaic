@@ -1,0 +1,48 @@
+JOB=29821249 HOST=n-62-18-12 SOURCE=/work3/s234818/latentmol/releases/source-139-epoch36-embedding-gradient-diagnostic-attempt001
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@hpc.dtu.dk>
+Subject: Job 29821249: <source139-epoch36-embedding-gradient-diagnostic-attempt001-gpu> in cluster <dcc> Done
+
+Job <source139-epoch36-embedding-gradient-diagnostic-attempt001-gpu> was submitted from host <hpclogin1> by user <s234818> in cluster <dcc> at Mon Oct 26 13:49:29 2026
+Job was executed on host(s) <4*n-62-18-12>, in queue <gpua100>, as user <s234818> in cluster <dcc> at Mon Oct 26 23:31:48 2026
+</zhome/95/e/206121> was used as the home directory.
+</zhome/95/e/206121> was used as the working directory.
+Started at Mon Oct 26 23:31:48 2026
+Terminated at Mon Oct 26 23:34:47 2026
+Results reported at Mon Oct 26 23:34:47 2026
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/bash
+set -euo pipefail
+cd /work3/s234818/latentmol/releases/source-139-epoch36-embedding-gradient-diagnostic-attempt001
+exec env PYTHONDONTWRITEBYTECODE=1 LATENTMOL_SOURCE_ARCHIVE=/work3/s234818/latentmol/releases/source-139-epoch36-embedding-gradient-diagnostic-attempt001.tar.gz bash scripts/hpc/boltz_run.sh python scripts/hpc/embedding_gradient_operator.py verify-run --stage gpu --release /work3/s234818/latentmol/releases/source-139-epoch36-embedding-gradient-diagnostic-attempt001 --archive-sha256 bd677171c8890c888191e1280ed62c8b84bb622d6b8e8b0f13cdbe5656ac8740 --plan-sha256 517d1086d9eb69c9ea101cb1125f8d87e31ee2341fc6e053b5e989467ac3df7a --campaign /work3/s234818/latentmol/runs/source139-epoch36-embedding-gradient-diagnostic-attempt001
+
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   193.00 sec.
+    Max Memory :                                 6663 MB
+    Average Memory :                             4508.67 MB
+    Total Requested Memory :                     65536.00 MB
+    Delta Memory :                               58873.00 MB
+    Max Swap :                                   -
+    Max Processes :                              4
+    Max Threads :                                16
+    Run time :                                   179 sec.
+    Turnaround time :                            35118 sec.
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file </work3/s234818/latentmol/logs/source139-epoch36-embedding-gradient-diagnostic-attempt001-gpu.29821249.err> for stderr output of this job.
+

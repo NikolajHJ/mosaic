@@ -1,0 +1,38 @@
+{
+  "/work3/s234818/latentmol/runs/source138-embedding-cpu-kernel-probe002/result.json": {
+    "sha256": "497c6cebeed1c52ea070a44dca1226638c3d23f9939a5eb3795a27215655fdfb",
+    "bytes": 7134
+  },
+  "/work3/s234818/latentmol/runs/source138-embedding-cpu-kernel-probe002/baseline_four_threads.xml": {
+    "sha256": "f8fed0c80aba8d20d29af4ef9c97302245f8b748cf9b6c633e647488fcbd2d99",
+    "bytes": 45386
+  },
+  "/work3/s234818/latentmol/runs/source138-embedding-cpu-kernel-probe002/portable_single_thread.xml": {
+    "sha256": "e0ca03bbce1e62d96c7490a72fbcdab43310233038fb13a244fe2c6ca6945e99",
+    "bytes": 39722
+  },
+  "/work3/s234818/latentmol/runs/source138-embedding-cpu-kernel-probe002/compatible_four_threads.xml": {
+    "sha256": "0cd34e016a7387829bfbaa4cffdfdcf81a8a08c4cc7721338be9c80a682639ac",
+    "bytes": 39723
+  },
+  "/work3/s234818/latentmol/runs/source138-embedding-cpu-kernel-probe002/baseline_one_thread.xml": {
+    "sha256": "980117433792d69e43b55c1800649dce4798a74a127aaf01360b4f6ae91ee44c",
+    "bytes": 45386
+  },
+  "/work3/s234818/latentmol/runs/source138-embedding-cpu-kernel-probe002/compatible_four_threads.log": {
+    "sha256": "e8aaee05ba58f8cbca2b198ac46022ec9f8e21b8b90ad375c7912ac7beee184c",
+    "bytes": 463
+  },
+  "/work3/s234818/latentmol/runs/source138-embedding-cpu-kernel-probe002/baseline_four_threads.log": {
+    "sha256": "fce8554e48f71aa7abb9e3c89085d6896f132248ed871c9981797370db492913",
+    "bytes": 4935
+  },
+  "/work3/s234818/latentmol/runs/source138-embedding-cpu-kernel-probe002/baseline_one_thread.log": {
+    "sha256": "94bba0fe70114f6c455a76559b44fc9cc0d1bab3e4d85040f1b75c8a1c0070be",
+    "bytes": 4933
+  },
+  "/work3/s234818/latentmol/runs/source138-embedding-cpu-kernel-probe002/portable_single_thread.log": {
+    "sha256": "7456f8c9d8075c7938a9e225a1b74d7a5c57791eda0af20b4499ee50bab45a38",
+    "bytes": 462
+  }
+}

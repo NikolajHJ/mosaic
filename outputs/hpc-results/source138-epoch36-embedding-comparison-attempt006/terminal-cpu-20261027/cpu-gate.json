@@ -1,0 +1,79 @@
+{
+  "decoder_output_bitwise_parity": true,
+  "epoch": 36,
+  "feature_dimensions": {
+    "atom_hidden": [
+      2,
+      50,
+      96
+    ],
+    "bond_input": [
+      2,
+      50,
+      50,
+      336
+    ],
+    "charge_input": [
+      2,
+      50,
+      192
+    ],
+    "pair_hidden": [
+      2,
+      50,
+      50,
+      48
+    ]
+  },
+  "junit": {
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0,
+    "tests": 283
+  },
+  "junit_sha256": "7546e2e93baf5a704f902c1188b1a7f9c5453522740b0b30540d12a592fec4b7",
+  "model_config": {
+    "attention_heads": 4,
+    "decoder_variant": "triangle_refine",
+    "encoder_residual_layers": 2,
+    "global_hidden": 320,
+    "hidden": 96,
+    "latent": 256,
+    "layers": 4,
+    "pair_hidden": 48,
+    "refinement_rounds": 4,
+    "triangle_hidden": 24,
+    "trunk_hidden": null
+  },
+  "status": "passed",
+  "test_command": [
+    "/work3/s234818/latentmol/env/boltz311/bin/python",
+    "-m",
+    "pytest",
+    "-q",
+    "tests/test_decoder_features.py",
+    "tests/test_refined_decoder.py",
+    "tests/test_boltz_embedding_bridge.py",
+    "tests/test_boltz_embedding_injection.py",
+    "tests/test_boltz_embedding_training.py",
+    "tests/test_embedding_experiment.py",
+    "tests/test_embedding_validation.py",
+    "tests/test_boltz_adapter.py",
+    "tests/test_boltz_scoring.py",
+    "tests/test_dbmol_objective.py",
+    "tests/test_embedding_operator.py",
+    "tests/test_embedding_comparison.py",
+    "tests/test_embedding_comparison_validation.py",
+    "tests/test_embedding_comparison_rescore.py",
+    "tests/test_embedding_comparison_experiment.py",
+    "tests/test_boltz_step_control.py",
+    "tests/test_embedding_comparison_policy.py",
+    "tests/test_embedding_comparison_correction.py",
+    "tests/test_embedding_gradient_diagnostic.py",
+    "tests/test_embedding_comparison_cpu_profile.py",
+    "--junitxml=/work3/s234818/latentmol/runs/source138-epoch36-embedding-comparison-attempt006/cpu/cpu-tests.xml"
+  ],
+  "test_returncode": 0,
+  "vae_sha256": "3179ef01f84a2c714ee031bc3e6a6a4dc2cedc767d30e700c887aab1abbd706f",
+  "vae_state_sha256": "bca36c9c7dcad67fa7eed8c2996f9304032738cfd5a3b8957147e99c3cde2bec"
+}

@@ -1,0 +1,15 @@
+{
+  "command": [
+    "ssh",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=15",
+    "dtu-hpc",
+    "bash -lc '/work3/s234818/latentmol/env/boltz311/bin/python -'"
+  ],
+  "returncode": 0,
+  "stdout": "{\"returncode\": 0, \"stdout\": \"Job <29829748> is submitted to queue <hpc>.\\n\", \"stderr\": \"\", \"script_sha256\": \"f47fb82cab39b7e9b903cf110ed164bfc17d40a1aaf4553653fad130179c9cfe\", \"command\": [\"bsub\", \"-J\", \"source138-embedding-cpu-kernel-probe001\", \"-q\", \"hpc\", \"-n\", \"4\", \"-m\", \"n-62-28-35\", \"-R\", \"rusage[mem=8GB]\", \"-R\", \"span[hosts=1]\", \"-W\", \"0:10\", \"-oo\", \"/work3/s234818/latentmol/logs/source138-embedding-cpu-kernel-probe001.%J.out\", \"-eo\", \"/work3/s234818/latentmol/logs/source138-embedding-cpu-kernel-probe001.%J.err\"]}\n",
+  "stderr": "\nWhen connecting from _outside_ of DTU (and not using DTU-VPN) one is \nrequired to authenticate with a ssh-key + ssh-key-keyphrase + DTU-password.\n\nFrom inside of DTU (or connecting via DTU-VPN) one can also connect \nwith password or ssh-key.\n\nInfo page on SSH: https://www.hpc.dtu.dk/?page_id=4317\n\n---\nFor ThinLinc users: \nPlease make sure that your TL client is at least version 4.16 - else you \ncannot connect to this system!\n\nThis is not an error-message, it's just a way to give you some information. \nClick 'Close' to continue ...\n---\n\nInfo page on the system update 08/2024: https://www.hpc.dtu.dk/?page_id=5209\n\n---\n\n",
+  "script_sha256": "f47fb82cab39b7e9b903cf110ed164bfc17d40a1aaf4553653fad130179c9cfe"
+}

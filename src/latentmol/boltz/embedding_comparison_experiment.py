@@ -18,7 +18,7 @@ from types import SimpleNamespace
 from .embedding_experiment import (cpu_stage, load_native, load_vae, verified, write)
 
 
-VERSION = "epoch36-matched-embedding-comparison-experiment-v1"
+VERSION = "epoch36-matched-embedding-comparison-experiment-v2"
 BRIDGE_SHA = "013834958d52f7aee999ca4c39496e14fc5333d69eb697d47433821f48290343"
 
 
@@ -162,6 +162,15 @@ def gpu_stage(config, output, deadline):
             or file_sha256(cpu_root / "cpu-tests.xml") != cpu["junit_sha256"]
             or file_sha256(cpu_root / "starts.pt") != cpu["starts"]["starts_sha256"]):
         raise ValueError("Matched GPU requires exact-release CPU pass and authenticated shared starts")
+    from .embedding_comparison_correction import verify_correction, CPU_ENVIRONMENT, CPU_KERNEL_PROFILE
+    from .embedding_comparison_policy import policy_binding
+    correction = verify_correction(config)
+    graph_policy = config["comparison_graph_policy"]
+    if (cpu.get("precision_correction", {}).get("policy") != graph_policy
+            or not cpu["precision_correction"].get("all_three_parent_starts_exact")
+            or cpu.get("cpu_execution", {}).get("profile") != CPU_KERNEL_PROFILE
+            or cpu["cpu_execution"].get("environment") != CPU_ENVIRONMENT):
+        raise ValueError("Matched GPU requires original shared-start precision readiness")
     if not torch.cuda.is_available():
         raise RuntimeError("No allocated usable CUDA device")
     torch.backends.cuda.matmul.allow_tf32 = torch.backends.cudnn.allow_tf32 = False
@@ -189,16 +198,22 @@ def gpu_stage(config, output, deadline):
         oracle = native_gate(scorer, prepared, bank, vae, directory / "native-oracle.json",
                              config["native_tolerances"], deadline=deadline)
         reports = {path: learned_start_gate(scorer, prepared, bridge, vae, z,
-                   directory / (path + "-start-gate.json"), deadline, scoring_path=path)
+                   directory / (path + "-start-gate.json"), deadline, scoring_path=path,
+                   comparison_graph_policy=graph_policy)
                    for path in ("relaxed", "learned")}
         from latentmol.multimodel.study import tensor_digest
-        objective = FrozenComparisonObjective(scorer, prepared, bridge, vae, bank=bank, deadline=deadline)
+        objective = FrozenComparisonObjective(scorer, prepared, bridge, vae, bank=bank, deadline=deadline,
+                                              comparison_graph_policy=graph_policy)
         production_binding = {}
         for path in ("relaxed", "learned"):
             evaluated = objective.evaluate(path, z, require_gradient=True)
             matched = (evaluated["scores"] == reports[path]["baseline_scores"]
-                       and tensor_digest({"gradient": evaluated["gradient"]}) == reports[path]["production_gradient_sha256"])
-            production_binding[path] = dict(passed=matched, gradient_sha256=tensor_digest({"gradient": evaluated["gradient"]}))
+                       and tensor_digest({"gradient": evaluated["gradient"]}) == reports[path]["production_gradient_sha256"]
+                       and evaluated["comparison_graph_policy_sha256"]
+                       == reports[path]["comparison_graph_policy_sha256"] == policy_binding(graph_policy))
+            production_binding[path] = dict(passed=matched,
+                comparison_graph_policy_sha256=policy_binding(graph_policy),
+                gradient_sha256=tensor_digest({"gradient": evaluated["gradient"]}))
             write(directory / "production-binding.json", production_binding)
             if not matched:
                 raise ValueError("Trajectory objective does not exactly match its start derivative certificate")
@@ -209,7 +224,8 @@ def gpu_stage(config, output, deadline):
         write(output / "start-gates.json", dict(status="gating_not_optimized", cases=gate_reports))
     members, summary = [], []
     for record, prepared, z, directory in cases:
-        objective = FrozenComparisonObjective(scorer, prepared, bridge, vae, bank=bank, deadline=deadline)
+        objective = FrozenComparisonObjective(scorer, prepared, bridge, vae, bank=bank, deadline=deadline,
+                                              comparison_graph_policy=graph_policy)
         result = run_matched_optimization({record["case_id"]: z}, objective, directory / "optimization",
             **config["optimization"], control=StepControl.from_mapping(config["step_control"]), deadline=deadline)
         members.extend(native_members(record["case_id"], result))
@@ -244,6 +260,7 @@ def gpu_stage(config, output, deadline):
         native_followup=followup, start_gates=gate_reports,
         comparison_scope="three paired starts; fixed-pose DBMol optimization; fresh-pose ordinary native affinity confirmation",
         learned_mapping=config["bridge"], existing_vae_continuation="untouched",
+        precision_correction=correction,
         cpu_result_sha256=file_sha256(cpu_root / "result.json"))
 
 
@@ -255,12 +272,15 @@ def main():
     args = parser.parse_args()
     if not os.environ.get("LSB_JOBID") or not os.environ.get("LATENTMOL_SOURCE_SHA256"):
         raise RuntimeError("Matched comparison numerical work requires a sealed LSF allocation")
-    import torch
-    from latentmol.experiments import file_sha256
-    torch.set_num_threads(min(4, int(os.environ.get("LSB_DJOB_NUMPROC", "4"))))
     config = json.loads(args.plan.read_text())
     if config["version"] != VERSION:
         raise ValueError("Unknown matched comparison plan")
+    from .embedding_comparison_correction import verify_correction, verify_retry_starts, cpu_environment_receipt
+    verify_correction(config)
+    cpu_execution = cpu_environment_receipt(config, os.environ) if args.stage == "cpu" else None
+    import torch
+    from latentmol.experiments import file_sha256
+    torch.set_num_threads(min(4, int(os.environ.get("LSB_DJOB_NUMPROC", "4"))))
     config["_plan_sha256"] = file_sha256(args.plan)
     args.output.mkdir(parents=True, exist_ok=False)
     started = time.monotonic()
@@ -268,12 +288,16 @@ def main():
     provenance = dict(version=VERSION, stage=args.stage, job_id=os.environ["LSB_JOBID"],
         hostname=socket.gethostname(), plan_sha256=config["_plan_sha256"],
         source_sha256=os.environ["LATENTMOL_SOURCE_SHA256"], vae_checkpoint=config["vae"],
-        learned_mapping=config["bridge"], existing_vae_continuation="untouched")
+        learned_mapping=config["bridge"], existing_vae_continuation="untouched",
+        comparison_graph_policy=config["comparison_graph_policy"],
+        cpu_execution=cpu_execution,
+        precision_correction=config["precision_correction"])
     write(args.output / "result.json", {**provenance, "status": "running_not_passed"})
     try:
         if args.stage == "cpu":
             result = cpu_stage(config, args.output, deadline)
             result["starts"] = prepare_starts(config, args.output)
+            result["precision_correction"] = verify_retry_starts(config, args.output)
         else:
             result = gpu_stage(config, args.output, deadline)
     except BaseException as error:

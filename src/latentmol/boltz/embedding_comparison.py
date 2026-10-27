@@ -21,10 +21,11 @@ import torch
 from torch import Tensor
 
 from latentmol.chemistry_classification import classify_repair_graph
-from latentmol.graph_policy import fixed_occupancy_graph
 from latentmol.optimization import NonfiniteObjective, StepControl, backtracking_step
 from latentmol.train import state_digest
 from .adapter import adapt_graph
+from .embedding_comparison_policy import (DEFAULT_POLICY, comparison_graph,
+                                          policy_binding, policy_record, validate_policy)
 from .embedding_injection import inject_native_embeddings
 from .embedding_training import conditioned_hard
 from .provenance import context_digest
@@ -93,12 +94,16 @@ class FrozenComparisonObjective:
     cheap version checks and context identity also protect individual calls.
     """
 
-    def __init__(self, scorer, prepared, bridge, vae, *, bank=None, deadline=None):
+    def __init__(self, scorer, prepared, bridge, vae, *, bank=None, deadline=None,
+                 comparison_graph_policy=DEFAULT_POLICY):
         prepared.validate()
         if vae.spec != prepared.spec:
             raise ValueError("Comparison VAE/prepared graph schemas differ")
         self.scorer, self.prepared, self.bridge, self.vae = scorer, prepared, bridge, vae
         self.bank, self.deadline = bank, deadline
+        self.comparison_graph_policy = validate_policy(comparison_graph_policy)
+        self.comparison_graph_policy_record = policy_record(comparison_graph_policy)
+        self.comparison_graph_policy_sha256 = policy_binding(comparison_graph_policy)
         self.modules = dict(scorer=scorer, bridge=bridge, vae=vae)
         if bank is not None:
             self.modules["bank"] = bank
@@ -112,6 +117,9 @@ class FrozenComparisonObjective:
             forward_by_boundary={key: 0 for key in (*PATHS, "hard")})
 
     def assert_unchanged(self, *, full=False):
+        if (policy_binding(self.comparison_graph_policy) != self.comparison_graph_policy_sha256
+                or policy_record(self.comparison_graph_policy) != self.comparison_graph_policy_record):
+            raise ValueError("Comparison graph arithmetic policy changed")
         versions_ok = _versions(self.modules) == self.versions
         context_now = context_digest(self.prepared)
         context_ok = context_now == self.context_sha256
@@ -121,6 +129,8 @@ class FrozenComparisonObjective:
             raise ValueError("Frozen comparison model or fixed context changed")
         return dict(frozen_versions_unchanged=versions_ok, context_unchanged=context_ok,
             context_sha256=context_now, full_state_check=full,
+            comparison_graph_policy=dict(self.comparison_graph_policy_record),
+            comparison_graph_policy_sha256=self.comparison_graph_policy_sha256,
             frozen_state_sha256=self.state_digests if full else None,
             frozen_state_unchanged=states_ok)
 
@@ -154,7 +164,8 @@ class FrozenComparisonObjective:
             point = z.detach().clone().requires_grad_(require_gradient)
             if path == "relaxed":
                 decoded = self._decode(point)
-                graph = fixed_occupancy_graph(decoded, self.prepared.active, self.prepared.spec, 1.0)
+                graph = comparison_graph(decoded, self.prepared.active, self.prepared.spec,
+                    policy=self.comparison_graph_policy)
                 features, bonds = adapt_graph(graph, self.prepared)
                 scores = self._forward(path, features, bonds)
                 values = _scalars(scores)
@@ -176,6 +187,8 @@ class FrozenComparisonObjective:
             loss_dtype=str(scores["dbmol_total_loss"].dtype),
             gradient=None if gradient is None else gradient.detach(),
             gradient_norm=None if gradient is None else float(gradient.double().norm()),
+            comparison_graph_policy=dict(self.comparison_graph_policy_record),
+            comparison_graph_policy_sha256=self.comparison_graph_policy_sha256,
             context_sha256=self.context_sha256, injection_receipt=injection)
         if include_hard_score:
             with torch.no_grad():
@@ -213,11 +226,14 @@ class FrozenComparisonObjective:
                                   self.prepared.active, hidden.charge_input)
         with inject_native_embeddings(self.scorer, self.prepared, predictions) as receipt:
             learned_scores = _scalars(self._forward("learned", features, bonds))
-        graph = fixed_occupancy_graph(decoded, self.prepared.active, self.prepared.spec, 1.0)
+        graph = comparison_graph(decoded, self.prepared.active, self.prepared.spec,
+            policy=self.comparison_graph_policy)
         features, bonds = adapt_graph(graph, self.prepared)
         relaxed_scores = _scalars(self._forward("relaxed", features, bonds))
         upper = torch.triu(torch.ones_like(hard.bonds, dtype=torch.bool), diagonal=1)
         record = dict(context_sha256=self.context_sha256, classifications=classifications,
+            comparison_graph_policy=dict(self.comparison_graph_policy_record),
+            comparison_graph_policy_sha256=self.comparison_graph_policy_sha256,
             canonical_identities={name: value["smiles"] for name, value in classifications.items()},
             scores=dict(hard_fixed_context=hard_scores, relaxed=relaxed_scores, learned=learned_scores),
             learned_minus_hard_total_loss=learned_scores["dbmol_total_loss"] - hard_scores["dbmol_total_loss"],
@@ -272,6 +288,8 @@ def run_matched_optimization(starts, objective, output, *, steps, learning_rate,
     output = Path(output)
     output.mkdir(parents=True, exist_ok=False)
     report = dict(version=VERSION, status="running_not_passed", step_control=control.record(),
+        comparison_graph_policy=getattr(objective, "comparison_graph_policy_record", None),
+        comparison_graph_policy_sha256=getattr(objective, "comparison_graph_policy_sha256", None),
         steps_requested=steps, paths=list(paths), learning_rate=learning_rate,
         max_gradient_norm=max_gradient_norm, trust_radius=trust_radius, starts={}, runs=[],
         claim="matched update budgets at one fixed context; objective totals are boundary-specific",
@@ -313,6 +331,11 @@ def run_matched_optimization(starts, objective, output, *, steps, learning_rate,
                         stream.write(json.dumps({**row, "status": "attempted"}, allow_nan=False) + "\n")
                     try:
                         result = objective.evaluate(path, candidate, require_gradient=gradient)
+                        expected_policy = report["comparison_graph_policy_sha256"]
+                        if expected_policy is not None and (
+                                result.get("comparison_graph_policy_sha256") != expected_policy
+                                or result.get("comparison_graph_policy") != report["comparison_graph_policy"]):
+                            raise ValueError("Optimization callback changed the bound graph arithmetic policy")
                         if (type(result.get("loss")) not in (int, float)
                                 or not math.isfinite(result["loss"])):
                             raise NonfiniteObjective("Comparison callback returned nonfinite scalar")
@@ -353,6 +376,11 @@ def run_matched_optimization(starts, objective, output, *, steps, learning_rate,
                     try:
                         # Audit forwards are included in actual_model_calls.
                         audit = objective.audit(point)
+                        expected_policy = report["comparison_graph_policy_sha256"]
+                        if expected_policy is not None and (
+                                audit["record"].get("comparison_graph_policy_sha256") != expected_policy
+                                or audit["record"].get("comparison_graph_policy") != report["comparison_graph_policy"]):
+                            raise ValueError("Checkpoint audit changed the bound graph arithmetic policy")
                     except BaseException as error:
                         record.update(status="failed_audit_not_passed", error_type=type(error).__name__, error=str(error))
                         _write(directory / f"checkpoint-{update:04d}.json", record)

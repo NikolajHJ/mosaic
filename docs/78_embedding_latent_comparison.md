@@ -1,5 +1,205 @@
 # Matched latent optimization: learned embeddings versus relaxed chemistry
 
+## Attempt006 full CPU readiness passed; GPU queued, 27 October 2026 12:13 CET
+
+The [actual CPU terminal snapshot](../outputs/hpc-results/source138-epoch36-embedding-comparison-attempt006/status-1793099462736059700.json)
+records **29829824 DONE**, **12:10:00–12:10:50 CET** on n-62-11-63. **All 283
+fixtures passed**, zero failures/errors/skips; JUnit31.595s, full runner
+**41.6918s**. The declared CPU-only `mkl_compatible_four_threads_v1` profile
+covered fixtures and actual readiness; native GPU arithmetic/settings are
+unchanged. Original36 default decoder outputs matched bitwise and frozen
+VAE state was unchanged. [Exact CPU terminal copies and integrity](../outputs/hpc-results/source138-epoch36-embedding-comparison-attempt006/terminal-cpu-20261027/integrity.json)
+preserve the complete pass and readiness receipts.
+
+All three parent starts' **latents, masks, dtypes, records and hard identities
+matched exactly**. `starts.pt` retained the parent's SHA256
+**`832592de7183b51ac22542ead558bc453006d3d349d942e2933dd1a52fb40ebd`**.
+The new final-policy FP64/cast-back calculation changed probabilities by at
+most **`1.7881393432617188e-7`**, with hard identities preserved. This is CPU
+candidate readiness, **not a native correction pass**; all fresh native and
+derivative/production-binding gates remain mandatory before optimization.
+
+The [guarded GPU submission](../outputs/hpc-submissions/source138-epoch36-embedding-comparison-attempt006/submit-gpu-1793099470162269900.json)
+returned zero: **29829828 submitted at 12:11:13 CET**, one exclusive80GB A100,
+four slots, 24-hour walltime/23-hour internal cap, `submitted_not_passed`.
+Fresh quota was **47.01/100 GiB used, 52.99 GiB free**. The
+[12:11:25 scheduler/artifact snapshot](../outputs/hpc-results/source138-epoch36-embedding-comparison-attempt006/status-1793099485493670200.json)
+confirms **PEND**, a new job waiting for scheduling, with no GPU artifacts,
+native gates or optimization updates. The [latest 12:13:50 read](../outputs/hpc-results/source138-epoch36-embedding-comparison-attempt006/status-1793099630900207300.json)
+still records **PEND**, now reporting job-slot limits on four hosts, with
+157 eligible seconds and zero ineligible seconds. There is no reliable ETA. All earlier failures
+remain preserved; independent VAE/epoch45 work is unchanged by this comparison.
+
+## CPU kernel controls completed; profiled attempt006 submitted
+
+The [complete kernel-probe002 result](../outputs/hpc-submissions/source138-embedding-cpu-kernel-probe002/terminal/result.json)
+records **29829777 DONE**, **27 October 12:04:00–12:07:01 CET** on n-62-29-11.
+The unchanged 268-fixture suite reproduced both inherited exactness failures
+with four baseline threads and with one baseline thread. With
+**`MKL_CBWR=COMPATIBLE` and four threads, all 268 passed** in 47.96s; portable
+one-thread mode with the same MKL setting and `ATEN_CPU_CAPABILITY=default`
+also passed all 268 in 36.59s. All modes retained zero errors/skips and unchanged
+assertions. [Exact terminal logs/JUnit integrity](../outputs/hpc-submissions/source138-embedding-cpu-kernel-probe002/terminal/integrity.json)
+preserves both failed controls and successful runtime modes. This remains a
+kernel diagnostic, not full readiness or a native GPU pass.
+
+The original pinned probe001 **29829748** was still pending and was canceled
+as redundant only after checking its exact job ID/name;
+[its status/cancellation receipt](../outputs/hpc-submissions/source138-embedding-cpu-kernel-probe001/redundant-probe-status.json)
+is preserved. No independent VAE or other campaign job was changed.
+
+New independent
+`source138-epoch36-embedding-comparison-attempt006`
+[seal](../outputs/hpc-submissions/source138-epoch36-embedding-comparison-attempt006/seal.json)
+contains **603 members**; upload/authenticated staging returned zero. Its
+[actual CPU submission](../outputs/hpc-submissions/source138-epoch36-embedding-comparison-attempt006/submit-cpu-1793099397004767200.json)
+returned zero, submitting **29829824**, four slots, `rusage[mem=8GB]`, one host,
+45 minutes, initially `submitted_not_passed`. At this preparation snapshot,
+full readiness and all **283 expected fixtures**, including 15 new profile
+fixtures, were pending and no GPU was submitted. The completed readiness and
+subsequent guarded GPU submission above supersede that initial status.
+
+| Attempt006 binding | SHA256 |
+| --- | --- |
+| Source archive | `456c8cc8ae0fbc2d84dcdadddd7734f879cefc9db4204275b8bcd0525ec62acb` |
+| Release manifest | `aedc247e662a9faa974f90f55173f383c3b93128dbab9c5a7d15681b739919b8` |
+| Comparison plan | `58b47026f175622992c8ea1e257e02d1836387c752aa024bb2fcc0201e886802` |
+
+The explicit **`mkl_compatible_four_threads_v1` CPU-only profile** is applied
+before importing torch to both fixture execution and actual original-model
+parity/shared-start preparation. It preserves every assertion and tolerance and
+changes no native GPU setting. The [static protected-source audit](../outputs/hpc-submissions/source138-epoch36-embedding-comparison-attempt006/static-audit.json)
+confirms shared VAE model, graph policy, representation, native/bridge and
+optimizer bytes unchanged. The broad archive also includes unused concurrent
+chemistry epoch45/continuation files and earlier Protenix changes; this chat did
+not modify that independent work. All failed attempts and baseline controls
+remain preserved; no native correction or optimization success follows from
+this CPU submission.
+
+## Attempt005 CPU gate failed; unchanged-assertion kernel diagnostic queued
+
+The [terminal attempt005 snapshot](../outputs/hpc-results/source138-epoch36-embedding-comparison-attempt005/status-1793098651622031600.json)
+records **CPU 29829719 EXIT1 at 27 October 11:57:15 CET**, n-62-28-35.
+**266/268 fixtures passed**, two failures, zero errors/skips, pytest34.14s /
+JUnit34.036s. **All 45 new correction/policy fixtures passed**. The two
+inherited failures were raw decoder bond-head **bitwise symmetry** and bridge
+atom-head **exact permutation equality**, the latter's maximum discrepancy
+`5.960464477539063e-8`. Their strict assertions and failed evidence are preserved.
+Attempt005's full CPU readiness **did not pass** and stopped before actual
+original36 loading/shared-start preparation; **no GPU was released**.
+
+A separate [kernel diagnostic submission](../outputs/hpc-submissions/source138-embedding-cpu-kernel-probe001/submit.json)
+returned zero: **29829748**, pinned to the same failed host **n-62-28-35**,
+four CPU slots, ten minutes. It authenticates the unchanged attempt005 release
+and reruns the full **268-fixture suite without assertion changes** under three
+modes: baseline four threads, four threads with `MKL_CBWR=COMPATIBLE`, and
+baseline one thread. The [first status receipt](../outputs/hpc-submissions/source138-embedding-cpu-kernel-probe001/status001.json)
+records **PEND**, with the host reporting a recently started job and no result
+yet. This is **diagnostic only**, not a CPU readiness pass or permission to
+promote a failed attempt. No model, fixture tolerance, scientific setting or
+VAE continuation was changed.
+
+## Corrected retry attempt005 authenticated; CPU running, 27 October 2026
+
+The new independent
+`source138-epoch36-embedding-comparison-attempt005`
+[seal](../outputs/hpc-submissions/source138-epoch36-embedding-comparison-attempt005/seal.json)
+contains **596 members**; upload/authenticated staging returned zero. The
+[actual CPU submission](../outputs/hpc-submissions/source138-epoch36-embedding-comparison-attempt005/submit-cpu-1793098587111580600.json)
+returned zero and submitted **29829719 at 11:56:29 CET**: four slots,
+`rusage[mem=8GB]`, one host, 45-minute walltime, `submitted_not_passed`.
+The [saved scheduler/artifact snapshot](../outputs/hpc-results/source138-epoch36-embedding-comparison-attempt005/status-1793098606989962400.json)
+confirms **RUN since 11:56:30 on n-62-28-35**. CPU readiness remains pending;
+**no GPU is submitted and no numerical correction pass is established**.
+Fresh submission quota reported **53.94 GiB free**.
+
+| Attempt005 binding | SHA256 |
+| --- | --- |
+| Source archive | `2de705ee8d88c4699d1f12c105553b1111bf7a82c49e88611750339c9d2e6be1` |
+| Release manifest | `83fafc94636921348d140ce1b7bbb6bb4c6dca57e6224e90ed7095d8d5519975` |
+| Corrected comparison plan | `3b26ae0dd1303d5a39cd42ef79f59fa088380dcc867ac57db9ee91cc85e8323d` |
+
+The [static audit](../outputs/hpc-submissions/source138-epoch36-embedding-comparison-attempt005/static-audit.json)
+confirms unchanged shared graph policy, representation, adapter, native models,
+objective, bridge and production optimizer. Only the comparison uses the new
+final-policy precision candidate; the broad archive also snapshots unused
+concurrent Protenix changes. Static byte checks do not establish native success.
+
+[Attempt004's preserved not-promoted receipt](../outputs/hpc-submissions/source138-epoch36-embedding-comparison-attempt004/not-promoted.json)
+records a locally sealed candidate that was **never staged, submitted or
+promoted**. Final review added explicit equality of the original parent `z` and
+active-mask dtypes in readiness and two fixtures, so a new immutable attempt005
+was used. **Attempt004 had no numerical failure.** All earlier actual failures
+remain preserved; the same original36/bridge/three starts/settings/tolerances
+and fresh full gates remain mandatory. VAE continuation is unchanged by this
+work.
+
+## Diagnostic completed; final-policy precision candidate selected, 27 October 2026
+
+The [terminal snapshot](../outputs/hpc-results/source139-epoch36-embedding-gradient-diagnostic-attempt001/status-1793097916707003400.json)
+confirms **GPU 29821249 DONE**, **26 October 23:31:48–23:34:47 CET** on
+n-62-18-12, 179s allocated/159.643s runner elapsed. Its live scheduler record
+has aged out; saved LSF completion and the structured result establish success
+of the diagnostic execution, `completed_diagnostic_no_fix_selected`. No
+optimization ran.
+
+Complete terminal copies were authenticated against the original remote sizes
+and hashes in the [integrity receipt](../outputs/hpc-results/source139-epoch36-embedding-gradient-diagnostic-attempt001/terminal-20261027/integrity.json):
+
+| Verified terminal artifact | SHA256 |
+| --- | --- |
+| [Native diagnostic, 40,418 bytes](../outputs/hpc-results/source139-epoch36-embedding-gradient-diagnostic-attempt001/terminal-20261027/gpu-diagnostic.json) | `be2403a9616a3345791e748747b9e2ca99fb55a0bab5641e506a473b2e48d9f9` |
+| [GPU result, 40,727 bytes](../outputs/hpc-results/source139-epoch36-embedding-gradient-diagnostic-attempt001/terminal-20261027/gpu-result.json) | `e3cbd22abe80329424c8484592c734881d9d2df3c135701acc2ad4d8cd537f36` |
+
+The diagnostic reproduced case003's exact parent **scores, production gradient
+and tested direction**. Full-forward values and every cut's primal tensors
+matched exactly. The decoder, graph-policy and adapter replays retained the
+complete captured cotangents: each replay's full input VJP tensor matched the
+captured production VJP bitwise, not merely its scalar contraction. Native
+oracle validation passed; frozen VAE, scorer, projection bank, point and context
+identities/versions remained unchanged.
+
+For the total-loss directional contraction, the local forward/reverse errors
+were:
+
+| Replayed boundary | Absolute error |
+| --- | ---: |
+| Decoder | `4.641983438261055e-10` |
+| Final relaxed-graph policy | `3.4772080571556993e-6` |
+| Native-chemistry adapter | `5.792675367155553e-15` |
+
+This localizes the reproduced mismatch to the final graph-policy calculation
+for this state/direction. The original full-path error and failed decision
+remain unchanged. A control evaluating **only the final policy in float64,
+then casting its outputs back**, reduced the fixed-cotangent total error to
+**`5.071365666818595e-10`**. It held the original native graph cotangent fixed;
+no native score was evaluated at the slightly changed primal. Maximum graph
+changes were about 1.19e-7 for atoms and 5.96e-8 for bonds. This control is **not
+a passed native correction or full comparison gate**. The uncheckpointed
+64-block scorer control was explicitly not run because it exceeded the bounded
+80GB diagnostic design; complete captured-cut replays supplied the attribution.
+
+Under the standing correction/resubmission authorization, the selected smallest
+candidate is **comparison-specific float64 arithmetic for the final graph
+policy, followed by a cast back to the original dtype**. Shared VAE/bridge/native
+models, default VAE training/decoding and the independent continuation remain
+unchanged. Preserve the exact same three starts, objective, update/step settings,
+budgets and tolerances; fresh complete native/derivative/production-binding
+gates for all starts must pass before optimization. Comparison attempt004 is
+**not yet sealed or submitted**, and the candidate has no native pass yet.
+
+## Access recovered; diagnostic still queued, 26 October 2026 22:39 CET
+
+The [fresh successful read](../outputs/hpc-results/source139-epoch36-embedding-gradient-diagnostic-attempt001/status-1793050788490890700.json)
+confirms that SSH access has recovered. **GPU 29821249 is still PEND**:
+four CPU slots are reserved on **n-62-18-8**, while physical GPU availability
+(`ngpus_physical`) blocks execution. Reservation is not execution. No GPU
+launch artifacts, logs or native diagnostic result exists, and there is no
+reliable start estimate. The CPU scheduler record has aged out; its saved
+full-stage pass, **223 fixture passes** and original36 parity remain valid.
+The numerical correction and full comparison retry still await native evidence.
+This read changed no runtime code, settings, jobs or VAE continuation.
+
 ## Later collection blocked by SSH timeouts; last-known GPU status remains pending
 
 The [last successful snapshot, 26 October 13:52:49 CET](../outputs/hpc-results/source139-epoch36-embedding-gradient-diagnostic-attempt001/status-1793019169106562100.json)

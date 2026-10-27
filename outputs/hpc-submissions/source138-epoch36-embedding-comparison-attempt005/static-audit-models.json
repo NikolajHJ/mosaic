@@ -1,0 +1,11 @@
+{
+  "status": "passed_byte_identity",
+  "frozen_model_source_members": {
+    "src/latentmol/models/__init__.py": true,
+    "src/latentmol/models/autoencoder.py": true,
+    "src/latentmol/models/decoder.py": true,
+    "src/latentmol/models/encoder.py": true,
+    "src/latentmol/models/refined_decoder.py": true,
+    "src/latentmol/models/triangle.py": true
+  }
+}

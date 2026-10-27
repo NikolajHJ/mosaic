@@ -1,0 +1,14 @@
+{
+  "command": [
+    "scp",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=15",
+    "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source138-epoch36-embedding-comparison-attempt005\\source138-epoch36-embedding-comparison-attempt005.tar.gz",
+    "dtu-hpc:/work3/s234818/latentmol/releases/source-138-epoch36-embedding-comparison-attempt005.tar.gz"
+  ],
+  "returncode": 0,
+  "stderr": "\nWhen connecting from _outside_ of DTU (and not using DTU-VPN) one is \nrequired to authenticate with a ssh-key + ssh-key-keyphrase + DTU-password.\n\nFrom inside of DTU (or connecting via DTU-VPN) one can also connect \nwith password or ssh-key.\n\nInfo page on SSH: https://www.hpc.dtu.dk/?page_id=4317\n\n---\nFor ThinLinc users: \nPlease make sure that your TL client is at least version 4.16 - else you \ncannot connect to this system!\n\nThis is not an error-message, it's just a way to give you some information. \nClick 'Close' to continue ...\n---\n\nInfo page on the system update 08/2024: https://www.hpc.dtu.dk/?page_id=5209\n\n---\n\n",
+  "stdout": ""
+}

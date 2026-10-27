@@ -1,0 +1,26 @@
+{
+  "/work3/s234818/latentmol/runs/source138-epoch36-embedding-comparison-attempt006/cpu/result.json": {
+    "bytes": 9008,
+    "sha256": "0ef4f09a47ab2b8165e98e8c7c564d7f95f2532e523c241d44556fdda178fd76"
+  },
+  "/work3/s234818/latentmol/runs/source138-epoch36-embedding-comparison-attempt006/cpu/cpu-gate.json": {
+    "bytes": 2158,
+    "sha256": "0f4fdd94c6a54ec1801a767cab6719a08e53d2840ddd9b47211459308747fe2d"
+  },
+  "/work3/s234818/latentmol/runs/source138-epoch36-embedding-comparison-attempt006/cpu/cpu-tests.xml": {
+    "bytes": 42339,
+    "sha256": "7546e2e93baf5a704f902c1188b1a7f9c5453522740b0b30540d12a592fec4b7"
+  },
+  "/work3/s234818/latentmol/runs/source138-epoch36-embedding-comparison-attempt006/cpu/cpu-tests.log": {
+    "bytes": 463,
+    "sha256": "1ece7d47d302334d06dfd6459355cf3022e7310ac07500b7b7ee0ee8dea8d374"
+  },
+  "/work3/s234818/latentmol/runs/source138-epoch36-embedding-comparison-attempt006/cpu/starts.json": {
+    "bytes": 3461,
+    "sha256": "22faa10f9b1d45ddc4b88c8d4c25777067dabadd9c1caa92e9270432f08d87b8"
+  },
+  "/work3/s234818/latentmol/runs/source138-epoch36-embedding-comparison-attempt006/cpu/precision-correction.json": {
+    "bytes": 1771,
+    "sha256": "5d4738ec71fac3fecaf22bd2939f81fdae2e4f804c99634b584a2a633375e9e7"
+  }
+}

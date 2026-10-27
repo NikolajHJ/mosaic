@@ -19,11 +19,12 @@ from pathlib import Path
 import torch
 
 from latentmol.chemistry_classification import classify_repair_graph
-from latentmol.graph_policy import fixed_occupancy_graph
 from latentmol.multimodel.study import tensor_digest
 from .adapter import adapt_graph
 from . import additive_fd
 from .dbmol_objective import COMPONENT_OUTPUTS, CONTACT_HEAD64_ARITHMETIC
+from .embedding_comparison_policy import (DEFAULT_POLICY, comparison_graph,
+                                          policy_binding, policy_record, validate_policy)
 from .embedding_injection import inject_native_embeddings
 from .embedding_training import conditioned_hard
 from .embedding_validation import (_comparison, _deadline, _frozen_versions,
@@ -48,10 +49,12 @@ def _grouped(scores, config, key):
 
 
 @contextmanager
-def _local_scores(scorer, prepared, bridge, vae, point, features, bonds, scoring_path="learned"):
+def _local_scores(scorer, prepared, bridge, vae, point, features, bonds, scoring_path="learned",
+                  comparison_graph_policy=DEFAULT_POLICY):
     """Keep hooks alive through reverse AD and activation recomputation."""
     if scoring_path == "relaxed":
-        graph = fixed_occupancy_graph(vae.decode(point), prepared.active, prepared.spec)
+        graph = comparison_graph(vae.decode(point), prepared.active, prepared.spec,
+                                 policy=comparison_graph_policy)
         native_features, native_bonds = adapt_graph(graph, prepared)
         yield scorer(native_features, native_bonds, prepared.coordinates), None
         return
@@ -66,8 +69,10 @@ def _receipt(receipt):
     return receipt.record() if receipt is not None else {"scoring_path": "relaxed", "injection_used": False}
 
 
-def score_relaxed_path(scorer, prepared, vae, z, *, require_gradient=False, deadline=None):
-    """Unchanged fixed-occupancy relaxed graph route with a detached score record."""
+def score_relaxed_path(scorer, prepared, vae, z, *, require_gradient=False, deadline=None,
+                       comparison_graph_policy=DEFAULT_POLICY):
+    """Declared fixed-occupancy final arithmetic with detached score records."""
+    comparison_graph_policy = validate_policy(comparison_graph_policy)
     _deadline(deadline)
     prepared.validate()
     if vae.spec != prepared.spec or z.shape != (1, vae.config.latent):
@@ -77,7 +82,7 @@ def score_relaxed_path(scorer, prepared, vae, z, *, require_gradient=False, dead
     with torch.enable_grad() if require_gradient else torch.no_grad():
         point = z.detach().clone().requires_grad_(require_gradient)
         decoded = vae.decode(point)
-        graph = fixed_occupancy_graph(decoded, prepared.active, prepared.spec)
+        graph = comparison_graph(decoded, prepared.active, prepared.spec, policy=comparison_graph_policy)
         features, bonds = adapt_graph(graph, prepared)
         _deadline(deadline)
         scores = scorer(features, bonds, prepared.coordinates)
@@ -97,6 +102,8 @@ def score_relaxed_path(scorer, prepared, vae, z, *, require_gradient=False, dead
         hard_classification=assessment, canonical_smiles=assessment["smiles"],
         gradient_norm=None if gradient is None else float(gradient.double().norm()),
         frozen_modules_unchanged=unchanged, context_unchanged=context_unchanged,
+        comparison_graph_policy=policy_record(comparison_graph_policy),
+        comparison_graph_policy_sha256=policy_binding(comparison_graph_policy),
         scope="same-hard-identity-fixed-context-relaxed-path")
 
 
@@ -115,7 +122,8 @@ def _directions(point, gradient):
     return result
 
 
-def learned_start_gate(scorer, prepared, bridge, vae, z, output, deadline=None, *, scoring_path="learned"):
+def learned_start_gate(scorer, prepared, bridge, vae, z, output, deadline=None, *, scoring_path="learned",
+                        comparison_graph_policy=DEFAULT_POLICY):
     """Write a fresh start certificate; return it only after all mandatory checks.
 
     Exact scalar/reverse/JVP recomposition applies to the inherited contact-head
@@ -128,11 +136,15 @@ def learned_start_gate(scorer, prepared, bridge, vae, z, output, deadline=None, 
     """
     if scoring_path not in ("learned", "relaxed"):
         raise ValueError("Comparison gate scoring_path must be learned or relaxed")
+    comparison_graph_policy = validate_policy(comparison_graph_policy)
     path = Path(output)
     path.parent.mkdir(parents=True, exist_ok=True)
     if path.exists():
         raise FileExistsError("Learned start gate requires a fresh result path")
     report = dict(version=VERSION, scoring_path=scoring_path, passed=False, status="running_not_passed", stage="initializing",
+        comparison_graph_policy=policy_record(comparison_graph_policy),
+        comparison_graph_policy_sha256=policy_binding(comparison_graph_policy),
+        graph_policy_binding_required=True,
         point_sha256=tensor_digest({"z": z}), direction_seed=DIRECTION_SEED,
         contract="pointwise_native_ad_v4_extension_for_frozen_learned_embedding",
         scope="pointwise implementation consistency at this start only",
@@ -158,13 +170,20 @@ def learned_start_gate(scorer, prepared, bridge, vae, z, output, deadline=None, 
 
     def production_score(candidate, require_gradient=False):
         if scoring_path == "learned":
-            return score_learned_bridge(scorer, prepared, bridge, vae, candidate,
+            result = score_learned_bridge(scorer, prepared, bridge, vae, candidate,
                 require_gradient=require_gradient, deadline=deadline, include_hard_score=False)
+            # The selected final categorical policy belongs to the paired
+            # comparison; this injected boundary does not execute that policy.
+            result.update(comparison_graph_policy=policy_record(comparison_graph_policy),
+                          comparison_graph_policy_sha256=policy_binding(comparison_graph_policy))
+            return result
         return score_relaxed_path(scorer, prepared, vae, candidate,
-            require_gradient=require_gradient, deadline=deadline)
+            require_gradient=require_gradient, deadline=deadline,
+            comparison_graph_policy=comparison_graph_policy)
 
     def local_scores(candidate):
-        return _local_scores(scorer, prepared, bridge, vae, candidate, features, bonds, scoring_path)
+        return _local_scores(scorer, prepared, bridge, vae, candidate, features, bonds, scoring_path,
+                             comparison_graph_policy=comparison_graph_policy)
 
     save()
     try:
@@ -192,6 +211,9 @@ def learned_start_gate(scorer, prepared, bridge, vae, z, output, deadline=None, 
         forward()
         report["calls"]["reverse_attempted"] += 1
         production = production_score(point, require_gradient=True)
+        if (production.get("comparison_graph_policy_sha256") != report["comparison_graph_policy_sha256"]
+                or production.get("comparison_graph_policy") != report["comparison_graph_policy"]):
+            raise ValueError("Production start score changed the declared graph arithmetic policy")
         supplied_gradient = production["gradient"]
         report["production_gradient_sha256"] = tensor_digest({"gradient": supplied_gradient})
         norm = float(supplied_gradient.double().norm())

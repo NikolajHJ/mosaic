@@ -1,0 +1,49 @@
+{
+  "all_three_parent_starts_exact": true,
+  "cases": [
+    {
+      "case_id": "case-001",
+      "hard_identity_unchanged": true,
+      "maximum_probability_change": {
+        "atoms": 1.7881393432617188e-07,
+        "bonds": 5.960464477539063e-08,
+        "charges": 6.661338147750939e-16
+      }
+    },
+    {
+      "case_id": "case-002",
+      "hard_identity_unchanged": true,
+      "maximum_probability_change": {
+        "atoms": 1.1920928955078125e-07,
+        "bonds": 1.1920928955078125e-07,
+        "charges": 1.0842021724855044e-18
+      }
+    },
+    {
+      "case_id": "case-003",
+      "hard_identity_unchanged": true,
+      "maximum_probability_change": {
+        "atoms": 1.7881393432617188e-07,
+        "bonds": 5.960464477539063e-08,
+        "charges": 3.552713678800501e-15
+      }
+    }
+  ],
+  "claim": "CPU candidate readiness only; fresh native gates remain mandatory",
+  "diagnostic": {
+    "path": "/work3/s234818/latentmol/runs/source139-epoch36-embedding-gradient-diagnostic-attempt001/gpu/diagnostic.json",
+    "sha256": "be2403a9616a3345791e748747b9e2ca99fb55a0bab5641e506a473b2e48d9f9"
+  },
+  "frozen_vae_unchanged": true,
+  "parent_plan": {
+    "path": "/work3/s234818/latentmol/releases/source-138-epoch36-embedding-comparison-attempt003/configs/epoch36_embedding_comparison.json",
+    "sha256": "60f555eb6193b804d8446dc864a57c52662e4c146be424b8f7cc118f6d6ecd6c"
+  },
+  "parent_starts": {
+    "path": "/work3/s234818/latentmol/runs/source138-epoch36-embedding-comparison-attempt003/cpu/starts.pt",
+    "sha256": "832592de7183b51ac22542ead558bc453006d3d349d942e2933dd1a52fb40ebd"
+  },
+  "policy": "final_float64_cast_back_v1",
+  "status": "authenticated_candidate_not_native_pass",
+  "version": "epoch36-final-policy-precision-correction-v1"
+}

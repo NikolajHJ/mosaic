@@ -1,0 +1,22 @@
+{
+  "/work3/s234818/latentmol/runs/source138-epoch36-embedding-comparison-attempt005/cpu/result.json": {
+    "sha256": "0dcc8b9f9d3fa30cdb25cb62e47677fdc37c0903f0a36e2fb7f4b06968782216",
+    "bytes": 2779,
+    "local": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-results\\source138-epoch36-embedding-comparison-attempt005\\terminal-20261027\\result.json"
+  },
+  "/work3/s234818/latentmol/runs/source138-epoch36-embedding-comparison-attempt005/cpu/cpu-gate.json": {
+    "sha256": "3ac789ee1b254a1c9136ac24179c052d1fcd4f6b296f894a67560708c0f2a57e",
+    "bytes": 1213,
+    "local": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-results\\source138-epoch36-embedding-comparison-attempt005\\terminal-20261027\\cpu-gate.json"
+  },
+  "/work3/s234818/latentmol/runs/source138-epoch36-embedding-comparison-attempt005/cpu/cpu-tests.xml": {
+    "sha256": "4942341e0326b35738985c4a85f37088a95aa0ef912154b2f84a9b797a3505e1",
+    "bytes": 45386,
+    "local": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-results\\source138-epoch36-embedding-comparison-attempt005\\terminal-20261027\\cpu-tests.xml"
+  },
+  "/work3/s234818/latentmol/runs/source138-epoch36-embedding-comparison-attempt005/cpu/cpu-tests.log": {
+    "sha256": "0e62bc87dee277ddafccbd1cbe75e78f43c85ad380db548bf14a2524246c2cf7",
+    "bytes": 4937,
+    "local": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-results\\source138-epoch36-embedding-comparison-attempt005\\terminal-20261027\\cpu-tests.log"
+  }
+}

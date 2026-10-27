@@ -1,0 +1,45 @@
+{
+  "status": "passed_static_bytes_only",
+  "members": 596,
+  "archive_manifest_exact": true,
+  "protected_members_unchanged": {
+    "src/latentmol/graph_policy.py": true,
+    "src/latentmol/representation.py": true,
+    "src/latentmol/boltz/adapter.py": true,
+    "src/latentmol/boltz/model.py": true,
+    "src/latentmol/boltz/dbmol_model.py": true,
+    "src/latentmol/boltz/dbmol_objective.py": true,
+    "src/latentmol/boltz/embedding_bridge.py": true,
+    "src/latentmol/boltz/embedding_injection.py": true,
+    "src/latentmol/boltz/embedding_training.py": true,
+    "src/latentmol/boltz/embedding_validation.py": true,
+    "src/latentmol/optimization.py": true
+  },
+  "changed_parent_members": [
+    "configs/epoch36_embedding_comparison.json",
+    "scripts/hpc/embedding_comparison_operator.py",
+    "src/latentmol/boltz/embedding_comparison.py",
+    "src/latentmol/boltz/embedding_comparison_experiment.py",
+    "src/latentmol/boltz/embedding_comparison_validation.py",
+    "src/latentmol/protenix_occupancy/study.py",
+    "tests/test_embedding_comparison_validation.py"
+  ],
+  "added_parent_members": [
+    "scripts/embedding_gradient_campaign.py",
+    "scripts/hpc/embedding_gradient_operator.py",
+    "scripts/hpc/protenix_deletion_stage.py",
+    "src/latentmol/boltz/embedding_comparison_correction.py",
+    "src/latentmol/boltz/embedding_comparison_policy.py",
+    "src/latentmol/boltz/embedding_gradient_diagnostic.py",
+    "src/latentmol/protenix_occupancy/deletion_prepare.py",
+    "src/latentmol/protenix_occupancy/deletion_study.py",
+    "src/latentmol/protenix_occupancy/selection.py",
+    "tests/test_embedding_comparison_correction.py",
+    "tests/test_embedding_comparison_policy.py",
+    "tests/test_embedding_gradient_diagnostic.py",
+    "tests/test_protenix_deletion_prepare.py",
+    "tests/test_protenix_selection.py"
+  ],
+  "numerical_tests": "not_run_locally",
+  "source_archive_sha256": "2de705ee8d88c4699d1f12c105553b1111bf7a82c49e88611750339c9d2e6be1"
+}

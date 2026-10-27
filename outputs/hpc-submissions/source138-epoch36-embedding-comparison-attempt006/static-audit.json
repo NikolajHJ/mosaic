@@ -1,0 +1,44 @@
+{
+  "status": "passed_static_bytes_only",
+  "archive_manifest_exact": true,
+  "protected_model_native_bridge_optimizer_unchanged": {
+    "src/latentmol/boltz/adapter.py": true,
+    "src/latentmol/boltz/dbmol_model.py": true,
+    "src/latentmol/boltz/dbmol_objective.py": true,
+    "src/latentmol/boltz/embedding_bridge.py": true,
+    "src/latentmol/boltz/embedding_injection.py": true,
+    "src/latentmol/boltz/embedding_training.py": true,
+    "src/latentmol/boltz/embedding_validation.py": true,
+    "src/latentmol/boltz/model.py": true,
+    "src/latentmol/graph_policy.py": true,
+    "src/latentmol/models/__init__.py": true,
+    "src/latentmol/models/autoencoder.py": true,
+    "src/latentmol/models/decoder.py": true,
+    "src/latentmol/models/encoder.py": true,
+    "src/latentmol/models/refined_decoder.py": true,
+    "src/latentmol/models/triangle.py": true,
+    "src/latentmol/optimization.py": true,
+    "src/latentmol/representation.py": true
+  },
+  "changed_since005": [
+    "configs/epoch36_embedding_comparison.json",
+    "scripts/hpc/chemistry_campaign.py",
+    "scripts/hpc/chemistry_valid_reference_campaign.py",
+    "scripts/hpc/embedding_comparison_operator.py",
+    "src/latentmol/boltz/embedding_comparison_correction.py",
+    "src/latentmol/boltz/embedding_comparison_experiment.py",
+    "src/latentmol/chemistry_continuation.py",
+    "src/latentmol/chemistry_short_continuation.py",
+    "src/latentmol/chemistry_valid_reference_adoption.py",
+    "tests/test_embedding_comparison_correction.py"
+  ],
+  "added_since005": [
+    "scripts/hpc/chemistry_epoch45_campaign.py",
+    "scripts/hpc/chemistry_epoch45_worker.py",
+    "src/latentmol/chemistry_epoch45_extension.py",
+    "src/latentmol/chemistry_epoch45_generation.py",
+    "tests/test_chemistry_epoch45_extension.py",
+    "tests/test_chemistry_epoch45_generation.py",
+    "tests/test_embedding_comparison_cpu_profile.py"
+  ]
+}

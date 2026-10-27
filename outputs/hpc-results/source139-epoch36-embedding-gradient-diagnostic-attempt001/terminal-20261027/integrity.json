@@ -1,0 +1,27 @@
+{
+  "/work3/s234818/latentmol/runs/source139-epoch36-embedding-gradient-diagnostic-attempt001/gpu/diagnostic.json": {
+    "sha256": "be2403a9616a3345791e748747b9e2ca99fb55a0bab5641e506a473b2e48d9f9",
+    "bytes": 40418,
+    "local": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-results\\source139-epoch36-embedding-gradient-diagnostic-attempt001\\terminal-20261027\\gpu-diagnostic.json"
+  },
+  "/work3/s234818/latentmol/runs/source139-epoch36-embedding-gradient-diagnostic-attempt001/gpu/result.json": {
+    "sha256": "e3cbd22abe80329424c8484592c734881d9d2df3c135701acc2ad4d8cd537f36",
+    "bytes": 40727,
+    "local": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-results\\source139-epoch36-embedding-gradient-diagnostic-attempt001\\terminal-20261027\\gpu-result.json"
+  },
+  "/work3/s234818/latentmol/runs/source139-epoch36-embedding-gradient-diagnostic-attempt001/cpu/result.json": {
+    "sha256": "48d99210b8aac0d04ee127a7f2f7e47e78a0cf5879626bc31e6a36f859ec4d7a",
+    "bytes": 7080,
+    "local": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-results\\source139-epoch36-embedding-gradient-diagnostic-attempt001\\terminal-20261027\\cpu-result.json"
+  },
+  "/work3/s234818/latentmol/logs/source139-epoch36-embedding-gradient-diagnostic-attempt001-gpu.29821249.out": {
+    "sha256": "bbb4f3de92f09c90079426eafd1c9248fbc55103e906abbe4076aadb4e0598d2",
+    "bytes": 2622,
+    "local": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-results\\source139-epoch36-embedding-gradient-diagnostic-attempt001\\terminal-20261027\\source139-epoch36-embedding-gradient-diagnostic-attempt001-gpu.29821249.out"
+  },
+  "/work3/s234818/latentmol/logs/source139-epoch36-embedding-gradient-diagnostic-attempt001-gpu.29821249.err": {
+    "sha256": "8f0cce56101bae0d4a84bdf24a54d4bbc8f55fab0242cd8cee6b9ab331a4e88d",
+    "bytes": 470,
+    "local": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-results\\source139-epoch36-embedding-gradient-diagnostic-attempt001\\terminal-20261027\\source139-epoch36-embedding-gradient-diagnostic-attempt001-gpu.29821249.err"
+  }
+}

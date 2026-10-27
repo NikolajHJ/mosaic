@@ -1,0 +1,13 @@
+{
+  "query": {
+    "returncode": 0,
+    "stdout": "29829748 PEND source138-embedding-cpu-kernel-probe001                                                             \n",
+    "stderr": ""
+  },
+  "cancel": {
+    "returncode": 0,
+    "stdout": "Job <29829748> is being terminated\n",
+    "stderr": ""
+  },
+  "reason": "Redundant queued pinned-host probe; completed independent probe002 reproduced failures and established compatible profile without assertion changes."
+}

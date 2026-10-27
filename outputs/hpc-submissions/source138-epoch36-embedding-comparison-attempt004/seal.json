@@ -1,0 +1,12 @@
+{
+  "archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source138-epoch36-embedding-comparison-attempt004\\source138-epoch36-embedding-comparison-attempt004.tar.gz",
+  "archive_sha256": "f3bf2a8aa08326557d35578c6eee92eb7d4bafb1b85e4179bf8b911307814b13",
+  "campaign": "/work3/s234818/latentmol/runs/source138-epoch36-embedding-comparison-attempt004",
+  "label": "source138-epoch36-embedding-comparison-attempt004",
+  "manifest_sha256": "f2fd168cc21a9d5355228c78bd42d08da4f36b1cc3e9b6819f05b9c7a88b8b95",
+  "members": 596,
+  "operator_relative": "scripts/hpc/embedding_comparison_operator.py",
+  "plan_sha256": "3b26ae0dd1303d5a39cd42ef79f59fa088380dcc867ac57db9ee91cc85e8323d",
+  "release": "/work3/s234818/latentmol/releases/source-138-epoch36-embedding-comparison-attempt004",
+  "status": "sealed_not_submitted"
+}
