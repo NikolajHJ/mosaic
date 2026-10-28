@@ -1,5 +1,13 @@
 # Short continuation segments and CUDA ownership, 28 October 2026
 
+**Superseded by the user's full-remaining allocation preference:**
+[attempt17](../20261028-precision-continuation-17/README.md) replaces the artificial
+small chunks. All four pending16 GPU validators/callbacks were intentionally
+retired before model/study entry; actual EXIT and absence of optimizer children
+were independently authenticated. CPU785 remains a passed historical result.
+Do not replay16 staging, controller or dispatch. Source and old observations below
+remain immutable historical provenance; saved scientific runs were not changed.
+
 The user authorized fixing the blocked launches and storage admission, using
 shorter runs while retaining the total update targets, optimization settings,
 checks and saved results. This is a new immutable engineering attempt; source15

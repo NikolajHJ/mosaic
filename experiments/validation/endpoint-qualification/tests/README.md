@@ -1,4 +1,17 @@
-# Allocated CPU controls
+# Portable metadata and allocated CPU controls
+
+Explicit portable exception: `test_runtime_reservations.py` (28 pure metadata
+cases), `test_segment_capacity.py` (60 schema/accounting cases), and ten
+file-count/content-identity cases selected by `scripts/local_metadata_preflight.py` can run
+locally. The runner uses no model/scientific library or fake allocation. Keep
+other allocated guards intact; these 98 cases still participate in the complete
+HPC release suite and cannot establish native/gradient readiness.
+
+All 98 portable cases passed locally in 0.94 seconds on 28 October. The isolated
+pytest environment had no NumPy, JAX, Torch, Equinox or Mosaic installation.
+Actual CPU release and native CUDA/FP64/gradient/pilot checks remain mandatory.
+See [resource candidate19](../runs/20261028-precision-continuation-19/README.md)
+for exact evidence and preserved earlier Windows metadata failures.
 
 Current short-continuation16 suite has785 allocated cases. New metadata-only
 controls cover two concurrent CUDA-client orchestration (`test_cuda_ownership`),

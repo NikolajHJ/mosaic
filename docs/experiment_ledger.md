@@ -9237,3 +9237,102 @@ CPU29841063 and controller29841064 actualDONE/LSF success. All785 allocated case
 New independent actual L40S MPS validations Pro29841081/callback29841082 and DBMol29841083/callback29841084 submitted14:47:38CET, allPEND at13:48:47UTC. No actual CUDA/native pass or optimizer continuation yet. Conditional callbacks retain every full scientific/pilot/replay/frozen/terminal/storage check; Pro2500 chunks to50k and DB1250 to10k, unchanged settings/saved results.
 PlainBol20k persistent opposite-sign AD/FD remains a scientific blocker. Prochem04 nested logs isolate stale FP64 integer-charge/asinh reference downcast; corrected reference09 adoption05 is local preparation only, not passed/submitted, and complete chemistry admission is still needed. Existing DeFoG/job/settings and paused monitor unchanged.
 Owner: experiments/validation/endpoint-qualification/runs/20261028-precision-continuation-16/.
+
+
+### 2026-10-28T14:16:14.073813+00:00 — Full remaining work preferred over fixed small chunks
+
+The user clarified that each allocation should run as much remaining work as
+possible, with an appropriate measured reservation. New immutable precision17
+therefore requests Protenix20k→50k (30,000 updates, LR0.3) and DBMol7,500→10k
+(2,500 updates, LR0.0025) in one job each if complete measured admission fits.
+Walltime projects the full update budget plus measured complete validation/setup
+with conservative margins and upward15-minute rounding; reference timeout ceilings
+are not automatically reserved as actual elapsed work. All scientific checks,
+original settings, exact boundary/RNG and retention remain unchanged. Oversized
+horizons must preserve failure/max-safe proposals before a new immutable plan;
+no silent shortening, fallback or gate waiver.
+
+All four old source16 GPU validators/dispatch callbacks were verified PEND and
+never entered a study before user-directed bkill. Actual later scheduler EXIT
+was authenticated for29841081/82/83/84, with zero optimizer children/studies;
+source16 CPU29841063/controller29841064 remain DONE with785 cases passed.
+Retirement assessment SHA 2cf56b547d388d102c85573d03305f61f8ea8694b5ba9f0970e6ca88e84a4207 preserved; no original
+result or independent DeFoG job was changed. New17 preparation requires807
+allocated cases, real MPS/native/reference/pilot/startup/runtime/storage checks.
+The41-file local17 package is prepared; no stage/pass/job is established yet.
+An initial independent metadata auditor tried to reserialize sorted transport
+JSON and failed its byte assertion. Original raw bytes were then downloaded,
+rehash-verified and compared semantically; the failed assertion is preserved.
+No source, numerical gate or saved result changed. Monitor remains paused.
+Owner: experiments/validation/endpoint-qualification/runs/20261028-precision-continuation-17/.
+
+
+### 2026-10-28T14:46:08.526942+00:00 — Portable metadata preflight and full-horizon resource correction
+
+The user asked whether tests could run locally.95 explicitly portable runtime,
+storage-ledger and three-stream file-budget cases passed locally in1.56s, using
+an isolated pytest-only environment with no scientific/model imports or fake
+LSF allocation. Full allocated/native checks remain mandatory. Initial local
+run had60 passes and28 tmp_path setup errors on an existing protected external
+pytest temp directory; a fresh workspace basetemp corrected the caller, preserving
+failed XML without permission changes.
+
+Attempt17 CPU29841248/controller29841249 actually EXIT1: Torch17 passed; JAX789
+passed/one negative fixture expected a later duration message although strictJSON
+correctly rejected Infinity first. No GPU/optimizer was submitted. Original
+failure proof SHA 17ae15f2f278793da732a6a5f49eab4ed2cef158646c3ea1a67d62c8929a712a preserved.
+New18 corrects that fixture and moves28 resource-only cases to the portable
+module;71 integration cases keep their allocated guard. No numerical gate changes.
+A separate confirmed accounting defect underfunded30k retained files: three
+streams need4502 before diagnostics versus17cap4500.18 reserves3*ceil(updates/20)
+plus max(3000,twice completed-validation file count+100), with immutable actual
+validation-inventory binding and live rechecks. Byte projection and4GiB/file
+reserves unchanged.
+
+Full remaining Pro20k→50k/30000/LR0.3 and DB7,500→10k/2500/LR0.0025 remain
+one job each if measured time/storage fit. Old16/17 sources/failures and every
+saved result remain unchanged.817 full allocated cases and actual MPS/native/
+pilot/replay/frozen/runtime/storage gates still precede submission. At this
+preparation event no18 source seal or job is established. Monitor paused.
+Owner: experiments/validation/endpoint-qualification/runs/20261028-precision-continuation-18/.
+
+
+### 2026-10-28T15:29:13.274106+00:00 — Full-budget18 submitted; local metadata98 passed; follow-up SSH denied
+
+Immutable18 was staged with42 files, manifest
+15fb307c704a0f460f882c701df6eec0655d678554c56f3abb581cbacf6a4b0e,
+archive329,913 bytes SHA
+84a9828ccce289a424bb95abd77d4585e5cde3ac2e2ed31598dbf508c6287c5f.
+Actual CPU29841471/controller29841472 were submitted after storage passed:
+11,670,735,360 required /44,955,207,680 conservatively available bytes.
+Full remaining Protenix30,000/DBMol2,500 updates and existing goals, rates,
+losses, retention and checks remain. No cleanup occurred.
+The single later status fetch at2026-10-28T15:18:18.106960+00:00 returned
+SSH255/Permission denied. Later CPU outcomes, GPU/optimizer submissions and
+saved prefixes are not established. Do not duplicate jobs or claim completion.
+The monitor remains paused.
+
+The user asked about local tests. All98 portable resource/runtime/content-identity
+cases passed locally in0.94s (2.125s runner), without scientific libraries or
+a fabricated allocation. Initial temporary-directory permissions and Windows
+metadata API failures were preserved, then corrected with fresh owned temporary
+storage, portable open flags and Windows ctime handling. POSIX race checks remain.
+The full allocated suite and native gates are still mandatory. The command is
+documented in AGENTS.md and the owner's scripts guide. Raw XML, source hashes
+and the isolated test environment are recorded in run19.
+
+Unsealed resource candidate19 uses relative path/type/length/content-SHA identity
+instead of host device/inode/block fields. Bounded complete inventory retries
+apply only to recognized owned atomic-file races; no partial totals or skipped
+files are used. Scientific model code is unchanged;827 allocated cases are
+planned, with no19 package, staging or job. Authenticate every actual18 outcome
+and handle existing jobs safely before recovery. Saved originals and independent
+work remain unchanged.
+Owner: experiments/validation/endpoint-qualification/runs/20261028-precision-continuation-19/.
+
+Independent read-only review confirmed all98 selected call paths are metadata-only
+and the Windows handling retains Linux safeguards. A subsequent runner hardening
+binds source hashes before and after testing, including the preflight itself;
+the unchanged98 cases passed again in1.23s (2.578s runner), with exact before/after
+byte equality. Both raw XML records and earlier failed local attempts remain
+preserved. No HPC connection, numerical gate or saved result changed.

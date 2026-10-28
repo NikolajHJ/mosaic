@@ -1,0 +1,19 @@
+{
+  "tests.test_admission": 50,
+  "tests.test_continuation_driver": 56,
+  "tests.test_continuation_ops": 107,
+  "tests.test_current_capacity": 5,
+  "tests.test_logit_admission": 14,
+  "tests.test_measurement_resolution": 10,
+  "tests.test_qualification": 19,
+  "tests.test_precision_continuation_driver": 99,
+  "tests.test_precision_continuation_hooks": 57,
+  "tests.test_precision_continuation_ops": 130,
+  "tests.test_protenix_reference_worker": 58,
+  "tests.test_dbmol_reference": 17,
+  "tests.test_dbmol_endpoint_precision": 36,
+  "tests.test_recovery_capacity": 11,
+  "tests.test_cuda_ownership": 42,
+  "tests.test_segment_capacity": 60,
+  "tests.test_rolling_capacity": 36
+}

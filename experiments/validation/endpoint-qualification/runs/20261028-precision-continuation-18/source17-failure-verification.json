@@ -1,0 +1,24 @@
+{
+  "status": "passed_independent_original_failure_byte_XML_schema_audit",
+  "assessment": {
+    "bytes": 23448,
+    "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision17-fixture-failure-proof-01/assessment.json",
+    "sha256": "17ae15f2f278793da732a6a5f49eab4ed2cef158646c3ea1a67d62c8929a712a"
+  },
+  "raw_counts": {
+    "jax": {
+      "cases": 790,
+      "failures": 1,
+      "passed": 789
+    },
+    "torch": {
+      "cases": 17,
+      "failures": 0,
+      "passed": 17
+    }
+  },
+  "native_jobs_submitted": false,
+  "optimizer_jobs_submitted": false,
+  "original_failure_preserved": true,
+  "source_or_scientific_guard_changed": false
+}

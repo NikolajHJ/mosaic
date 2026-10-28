@@ -94,8 +94,8 @@ def plan():
 
 
 @pytest.mark.parametrize("arm,offsets,rate,target,steps", [
-    ("protenix", list(range(20000, 50000, 2500)), .3, 50000, 2500),
-    ("dbmol", [7500, 8750], .0025, 10000, 1250)])
+    ("protenix", [20000], .3, 50000, 30000),
+    ("dbmol", [7500], .0025, 10000, 2500)])
 def test_exact_two_arm_range_rate_and_immediate_saved_boundary(arm, offsets, rate, target, steps):
     current = plan()
     row = o.arm_plan(current, arm)
@@ -149,23 +149,24 @@ def test_actual_resources_wrapper_and_dependency_are_declared(phase):
 
 def test_segment_budget_delegates_to_exact_own_complete_qualification(owned, monkeypatch):
     calls = []
-    expected = measured_budget('dbmol', 8750)
+    expected = measured_budget('dbmol', 7500)
     def budget(path, arm):
         calls.append((path, arm))
         return expected
     monkeypatch.setattr(o, '_module', lambda path, name: SimpleNamespace(runtime_budget=budget))
-    assert REAL_SEGMENT_BUDGET('dbmol', 8750) is expected
-    assert calls == [(o.parent_path('validate', 'dbmol', 8750) / 'payload/study/summary.json', 'dbmol')]
+    assert REAL_SEGMENT_BUDGET('dbmol', 7500) is expected
+    assert calls == [(o.parent_path('validate', 'dbmol', 7500) / 'payload/study/summary.json', 'dbmol')]
 
 
-@pytest.mark.parametrize('arm,offset', [('boltz', 10000), ('dbmol', 5000), ('dbmol', 10000), ('protenix', 21000)])
+@pytest.mark.parametrize('arm,offset', [('boltz', 10000), ('dbmol', 5000), ('dbmol', 8750), ('dbmol', 10000),
+                                      ('protenix', 21000), ('protenix', 22500), ('protenix', 30000), ('protenix', 50000)])
 def test_segment_budget_cannot_measure_old_completed_or_undeclared_range(owned, monkeypatch, arm, offset):
     def forbidden(*args): raise AssertionError('Undeclared source must not import')
     monkeypatch.setattr(o, '_module', forbidden)
     with pytest.raises(ValueError): REAL_SEGMENT_BUDGET(arm, offset)
 
 
-def test_actual_segment_submission_keeps_exact_measured_receipt_and_short_walltime(owned, monkeypatch):
+def test_actual_segment_submission_keeps_exact_measured_receipt_and_complete_remaining_budget(owned, monkeypatch):
     calls = []
     def submitted(command, **kwargs):
         calls.append(command)
@@ -444,20 +445,21 @@ def test_initial_checkpoint_is_immediate7500_failed_parent(owned):
     with pytest.raises(ValueError): o.input_snapshot(current, "dbmol", 5000)
 
 
-def test_later_pro_checkpoint_requires_own_passed_parent_certificate(owned):
+@pytest.mark.parametrize('offset', [22500, 30000, 40000, 50000])
+def test_no_intermediate_Pro_child_can_be_invented_even_with_passed_partial_certificate(owned, offset):
     source, root = owned
     current = plan()
     save(source / "plan.json", current)
     save(source / "source_manifest.json", {"files": {"plan.json": o.sha(source / "plan.json")}})
     cert_path = root / (o.label("segment", "protenix", 20000) + "-certificate.json")
-    save(cert_path, {"status": "failed", "arm": "protenix", "global_end": 22500})
-    with pytest.raises(ValueError, match="not certified"): o.input_snapshot(current, "protenix", 22500)
+    save(cert_path, {"status": "failed", "arm": "protenix", "global_end": offset})
+    with pytest.raises(ValueError, match="Undeclared input boundary"): o.input_snapshot(current, "protenix", offset)
     proof = save(root / "parent-proof.json", {"status": "passed_new_child"})
-    terminal = save(root / "terminal22500.json", {"exact": "new_child_endpoint"})
-    save(cert_path, {"status": "passed", "arm": "protenix", "global_end": 22500,
+    terminal = save(root / ("terminal" + str(offset) + ".json"), {"exact": "partial_or_completed_endpoint"})
+    save(cert_path, {"status": "passed", "arm": "protenix", "global_end": offset,
                      "source_manifest_sha256": o.sha(source / "source_manifest.json"),
                      "plan_sha256": o.sha(source / "plan.json"), "proofs": [proof], "terminal_snapshot": terminal})
-    assert o.input_snapshot(current, "protenix", 22500) == terminal
+    with pytest.raises(ValueError, match="Undeclared input boundary"): o.input_snapshot(current, "protenix", offset)
 
 
 @pytest.mark.parametrize("failure", ["version", "status", "certify", "changed", "unbound"])
@@ -660,7 +662,7 @@ def test_storage_adds_all_twelve_reference_caps_control_and_entire_new_tree_char
 
 def test_actual_storage_funds_fresh_pilot_positive_excess_without_borrowing_old_future(owned, monkeypatch):
     parent, prior, calls, gate = capacity_fixture(owned, monkeypatch)
-    save(owned[1] / "projections.json", {"dbmol": {"unit_bytes": 20000000, "remaining_offsets": [7500, 8750]}})
+    save(owned[1] / "projections.json", {"dbmol": {"unit_bytes": 20000000, "remaining_offsets": [7500]}})
     excess, details = o.projection_excess_from_gate(prior)
     assert excess > 0
     result = o.legacy_storage(parent, "dispatch")
@@ -671,7 +673,7 @@ def test_actual_storage_funds_fresh_pilot_positive_excess_without_borrowing_old_
 
 
 def test_projection_uses_smallest_authenticated_inherited_remaining_budget(owned):
-    save(owned[1] / "projections.json", {"dbmol": {"unit_bytes": 20000000, "remaining_offsets": [7500, 8750]}})
+    save(owned[1] / "projections.json", {"dbmol": {"unit_bytes": 20000000, "remaining_offsets": [7500]}})
     gates = {"one": {"version": "selected-nonchem-full-storage-v1", "selected": {
         "protenix50k40k": {"remaining": 9 * o.GIB}, "dbmol10k": {"remaining": 5 * o.GIB}}},
         "two": [{"version": "selected-nonchem-full-storage-v1", "selected": {
@@ -743,16 +745,16 @@ def test_inventory_retry_never_skips_unrelated_files_or_retries_other_failures(o
 
 def test_projection_only_adds_positive_fresh_pilot_excess_and_never_reduces_old_future():
     original = {"selected": {"protenix50k40k": {"remaining": 3 * o.GIB}, "dbmol10k": {"remaining": o.GIB}}}
-    forecast = {"dbmol": {"unit_bytes": 20, "remaining_offsets": [7500, 8750]}}
+    forecast = {"dbmol": {"unit_bytes": 20, "remaining_offsets": [7500]}}
     extra, details = o.projection_excess(original, forecast)
     assert extra >= 0 and original["selected"]["dbmol10k"]["remaining"] == o.GIB
     forecast["dbmol"]["unit_bytes"] = 100000000
     larger, details = o.projection_excess(original, forecast)
     assert larger > extra and larger == details["dbmol"]["positive_excess_bytes"]
-    assert details["dbmol"]["remaining_offsets"] == [7500, 8750]
+    assert details["dbmol"]["remaining_offsets"] == [7500]
 
 
-@pytest.mark.parametrize("offsets", [[5000, 7500], [7500, 5000], [], [9999]])
+@pytest.mark.parametrize("offsets", [[5000, 7500], [7500, 5000], [], [9999], [7500, 8750], [8750]])
 def test_dbmol_projection_suffix_cannot_restore_completed_or_invented_updates(offsets):
     with pytest.raises(ValueError):
         o.projection_excess({"selected": {"dbmol10k": {"remaining": 1}}},

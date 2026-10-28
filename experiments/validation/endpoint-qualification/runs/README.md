@@ -4,6 +4,18 @@ Dated records bind exact saved inputs, original failures, prospective check
 policies and actual allocated outcomes. A record or diagnostic does not convert
 an original failed run into a pass or authorize a gate waiver.
 
+Latest records:
+
+- [Full-budget17](20261028-precision-continuation-17/README.md): preserved CPU
+  fixture assertion failure,806 passes/one failure; no GPU or optimizer children.
+- [Full-budget18](20261028-precision-continuation-18/README.md): corrected three-stream
+  file allowance; actual CPU29841471/controller29841472 submitted. Follow-up SSH
+  authentication failed, so later outcomes are unknown. Never replay staging.
+- [Resource candidate19](20261028-precision-continuation-19/README.md): unsealed
+  portable content identity and bounded complete-inventory retries; no jobs.
+  All98 local metadata cases passed in0.94s; allocated scientific checks still
+  mandatory. Preserve the user's full-remaining-job preference and paused monitor.
+
 - `20261025-continuation-admission-01`: prospective endpoint protocol; CPU171
   passed, Protenix native admission rejected and both Boltz workers failed import.
 - `20261025-continuation-worker-fix-02`: restricted worker-path/error-reporting

@@ -68,6 +68,36 @@ def test_independent_job_id_without_exact_command_is_rejected():
                         [{'job_id': '1', 'command': r.c.ROOT + '/original'}], set(), '/own')
 
 
+def validator_group(source_manifest=None):
+    source = str(Path((source_manifest or {'path': r.c.ROOT + '/releases/source16/source/source_manifest.json'})['path']).parent)
+    return {'job_id': '16', 'command': 'bash ' + source + '/stage.lsf ' + source + ' validate protenix 20000',
+            'additional_jobs': [{'job_id': '18', 'command': 'bash ' + source + '/stage.lsf ' + source + ' validate dbmol 7500'}],
+            'root': r.c.ROOT + '/runs/source16', 'cap_bytes': 2 * 1024**3, 'cap_files': 30000,
+            'role': 'validation', 'release_root': None, 'release_cap_bytes': None, 'release_cap_files': None,
+            'source_manifest': source_manifest or {'path': source + '/source_manifest.json', 'bytes': 10, 'sha256': 'a' * 64}}
+
+
+def test_two_exact_old_validator_jobs_share_one_bounded_source_owned_tree():
+    group = validator_group()
+    value = basic_policy()
+    value['known_mosaic_jobs'] = [group]
+    assert r.policy({'rolling_storage_policy': value}) == value
+    rows = [scheduler(job['job_id'], 'RUN', job['command']) for job in r.allocation_jobs(group)]
+    actual, external = r.classify_jobs(rows, [group], set(), '/new-source')
+    assert set(actual) == {'16', '18'} and external == []
+
+
+def test_grouped_validator_identity_cannot_be_duplicated_or_added_implicitly():
+    group = validator_group()
+    value = basic_policy()
+    value['known_mosaic_jobs'] = [group]
+    group['additional_jobs'].append({'job_id': '16', 'command': group['command']})
+    with pytest.raises(ValueError, match='Duplicate/invalid'):
+        r.policy({'rolling_storage_policy': value})
+    with pytest.raises(ValueError, match='Unknown nonterminal Mosaic'):
+        r.classify_jobs([scheduler('99', 'PEND', group['command'])], [group], set(), '/new-source')
+
+
 @pytest.mark.parametrize('key,bad', [('version', 'legacy'), ('control_cap_bytes', 1),
     ('control_cap_files', 1), ('release_cap_bytes', 1), ('release_cap_files', 1),
     ('known_mosaic_jobs', None), ('deferred_goals', None)])
@@ -114,6 +144,10 @@ def prepare_ready(op, arm='protenix', offset=20000):
     path.write_text('{"status":"passed"}\n')
     (op.ROOT / 'projections.json').write_text(json.dumps({arm: {
         'unit_bytes': 19, 'remaining_offsets': op.ARMS[arm]['offsets']}}) + '\n')
+    study = op.parent_path('validate', arm, offset) / 'payload/study'
+    study.mkdir(parents=True)
+    (study / 'summary.json').write_text('{"status":"passed"}\n')
+    (study / 'raw-proof.json').write_text('{"separate_reference":"complete"}\n')
     return path
 
 
@@ -129,6 +163,130 @@ def test_after_actual_new_validation_proposes_only_own_next_segment(tmp_path, mo
     assert goals[1]['next_updates'] == 0
     assert len([s for s in scopes if s['state'] == 'requested']) == 1
     assert not (op.ROOT / 'storage-claims').exists()  # Building is not admission.
+
+
+def test_full_remaining_in_one_job_uses_actual_dynamic_steps_without_small_chunk_limit(tmp_path, monkeypatch):
+    op, plan, pin = fixture_op(tmp_path, monkeypatch)
+    op.ARMS['protenix'].update(offsets=[20000], segment_steps=30000, global_target=50000)
+    op.ARMS['dbmol'].update(offsets=[7500], segment_steps=2500, global_target=10000)
+    prepare_ready(op)
+    scopes, goals, claim = r.build_scopes(op, plan, pin, 'dispatch',
+        op.parent_path('after-validate', 'protenix', 20000), r.binding(op.SOURCE / 'plan.json'), {})
+    assert claim['updates'] == 30000
+    assert claim['cap_bytes'] == r.c.sparse_segment_cap(19, 30000)
+    assert claim['cap_files'] == 7500
+    assert claim['file_capacity']['retained_streams'] == 3
+    assert claim['validation_inventory']['actual_files'] == 2
+    assert goals[0]['saved_updates'] == 20000 and goals[0]['next_updates'] == 30000
+    assert goals[0]['target_updates'] == 50000 and goals[0]['later_updates_deferred'] == 0
+    assert goals[1]['saved_updates'] == 7500 and goals[1]['later_updates_deferred'] == 2500
+    assert len([s for s in scopes if s['role'] == 'segment']) == 2
+
+
+def test_old_validator_group_budget_is_paid_once_and_both_jobs_recognized(tmp_path, monkeypatch):
+    op, plan, pin = fixture_op(tmp_path, monkeypatch)
+    manifest = tmp_path / 'releases/source16/source/source_manifest.json'
+    manifest.parent.mkdir(parents=True)
+    manifest.write_text('{}\n')
+    group = validator_group(r.binding(manifest))
+    plan['rolling_storage_policy']['known_mosaic_jobs'] = [group]
+    observed = {job['job_id']: scheduler(job['job_id'], 'RUN', job['command']) for job in r.allocation_jobs(group)}
+    scopes, _, claim = r.build_scopes(op, plan, pin, 'preflight', op.ROOT / 'preflight',
+                                     r.binding(op.SOURCE / 'plan.json'), observed)
+    old = [s for s in scopes if s['role'] == 'validation']
+    assert claim is None and len(old) == 1
+    assert old[0]['cap_bytes'] == 2 * 1024**3 and old[0]['state'] == 'active'
+
+
+@pytest.mark.parametrize('updates', [30000, 30001])
+def test_file_capacity_funds_all_three_actual_retained_file_streams(updates):
+    # Independent metadata enumeration of the authenticated retention contract:
+    # snapshot/reference(step), trial(update+1), true initial/final boundaries.
+    retained_steps = {0, updates, *range(20, updates + 1, 20)}
+    snapshots = {'snapshots/step-' + str(step) + '.npz' for step in retained_steps}
+    references = {'references/step-' + str(step) + '.json' for step in retained_steps}
+    trials = {'trials/step-' + str(step - 1) + '.npz' for step in retained_steps if step > 0}
+    count = len(snapshots | references | trials)
+    capacity = r.segment_file_capacity(updates, 2)
+    assert count == 3 * ((updates + 19) // 20) + 2
+    assert capacity['cap_files'] - count == 2998
+    if updates == 30000:
+        assert count == 4502 and capacity['cap_files'] == 7500
+        assert count > (updates + 19) // 20 + 3000  # Preserved source17 defect.
+
+
+def test_large_verified_validation_cohort_expands_fixed_boundary_allowance():
+    capacity = r.segment_file_capacity(30000, 2000)
+    assert capacity['fixed_boundary_and_metadata_files'] == 4100
+    assert capacity['cap_files'] == 8600
+    assert capacity['policy'] == r.FILE_CAPACITY_POLICY
+
+
+@pytest.mark.parametrize('updates,validation_files', [(0, 1), (True, 1), (30000, 0), (30000, False)])
+def test_file_capacity_requires_finite_complete_new_validation_count(updates, validation_files):
+    with pytest.raises(ValueError):
+        r.segment_file_capacity(updates, validation_files)
+
+
+def test_missing_passed_validation_tree_cannot_supply_file_cap_basis(tmp_path, monkeypatch):
+    op, _, _ = fixture_op(tmp_path, monkeypatch)
+    with pytest.raises(ValueError, match='study tree missing'):
+        r.validation_inventory(op, 'protenix', 20000)
+
+
+def test_completed_validation_identity_survives_different_host_device_inode_and_blocks(tmp_path, monkeypatch):
+    op, _, _ = fixture_op(tmp_path, monkeypatch)
+    prepare_ready(op)
+    before = r.validation_inventory(op, 'protenix', 20000)
+    old_lstat, old_fstat = Path.lstat, r.os.fstat
+    def other_host(info):
+        names = ('st_mode', 'st_size', 'st_mtime_ns', 'st_ctime_ns', 'st_dev', 'st_ino')
+        value = {key: getattr(info, key) for key in names}
+        value.update(st_dev=value['st_dev'] + 1234567, st_ino=value['st_ino'] + 7654321,
+                     st_blocks=999999999, st_atime_ns=1)
+        return SimpleNamespace(**value)
+    monkeypatch.setattr(Path, 'lstat', lambda path, *args, **kwargs: other_host(old_lstat(path, *args, **kwargs)))
+    monkeypatch.setattr(r.os, 'fstat', lambda descriptor: other_host(old_fstat(descriptor)))
+    after = r.validation_inventory(op, 'protenix', 20000)
+    assert after == before
+    assert before['identity_policy'] == r.VALIDATION_INVENTORY_POLICY
+    assert all(set(row) == {'path', 'type', 'bytes', 'sha256'} for row in before['entries'])
+
+
+def test_windows_handle_ctime_difference_does_not_weaken_posix_race_checks():
+    before = SimpleNamespace(st_dev=1, st_ino=2, st_mode=0o100644, st_size=35, st_mtime_ns=4, st_ctime_ns=5)
+    opened = SimpleNamespace(**{**before.__dict__, 'st_ctime_ns': 6})
+    assert r._local_file_signature(before, windows=True) == r._local_file_signature(opened, windows=True)
+    assert r._local_file_signature(before, windows=False) != r._local_file_signature(opened, windows=False)
+    opened.st_mtime_ns = 7
+    assert r._local_file_signature(before, windows=True) != r._local_file_signature(opened, windows=True)
+
+
+def test_completed_validation_identity_rejects_same_length_content_or_path_change(tmp_path, monkeypatch):
+    op, _, _ = fixture_op(tmp_path, monkeypatch)
+    prepare_ready(op)
+    before = r.validation_inventory(op, 'protenix', 20000)
+    study = op.parent_path('validate', 'protenix', 20000) / 'payload/study'
+    old = study / 'raw-proof.json'
+    data = old.read_bytes()
+    old.write_bytes(b'X' * len(data))
+    content = r.validation_inventory(op, 'protenix', 20000)
+    assert content['actual_files'] == before['actual_files'] and content['actual_bytes'] == before['actual_bytes']
+    assert content['semantic_rows_sha256'] != before['semantic_rows_sha256']
+    old.write_bytes(data)
+    old.rename(study / 'renamed-proof.json')
+    renamed = r.validation_inventory(op, 'protenix', 20000)
+    assert renamed['actual_files'] == before['actual_files']
+    assert renamed['semantic_rows_sha256'] != before['semantic_rows_sha256']
+
+
+def test_completed_validation_missing_or_linked_input_is_not_a_retry(tmp_path, monkeypatch):
+    op, _, _ = fixture_op(tmp_path, monkeypatch)
+    prepare_ready(op)
+    study = op.parent_path('validate', 'protenix', 20000) / 'payload/study'
+    (study / 'linked.json').symlink_to(study / 'summary.json')
+    with pytest.raises(ValueError, match='linked/special'):
+        r.validation_inventory(op, 'protenix', 20000)
 
 
 def test_after_segment_only_next_validation_not_optimizer_is_admitted(tmp_path, monkeypatch):
@@ -230,6 +388,73 @@ def live_fixture(tmp_path, monkeypatch):
     return op, plan, pin
 
 
+def retry_scope(op, state='admitted'):
+    return {'id': 'protenix-segment-20000',
+            'root': str(op.parent_path('segment', 'protenix', 20000) / 'payload/study'),
+            'excluded_roots': [], 'state': state, 'role': 'segment'}
+
+
+def test_disappearing_owned_atomic_file_restarts_entire_inventory_without_partial_totals(tmp_path, monkeypatch):
+    op, _, _ = live_fixture(tmp_path, monkeypatch)
+    attempt = op.ROOT / 'retry'
+    attempt.mkdir()
+    scope = retry_scope(op)
+    missing = Path(scope['root']) / 'case-0/references/latest-reference.json.tmp'
+    calls = []
+    def inventory(scopes, *, timeout):
+        calls.append(list(scopes))
+        if len(calls) == 1:
+            raise FileNotFoundError(2, 'atomic rename', str(missing))
+        return [{'complete': True, 'actual_bytes': 123, 'actual_files': 4}]
+    monkeypatch.setattr(r, 'inventory_selections', inventory)
+    result = r.complete_capacity_inventory(op, [scope], attempt)
+    assert len(calls) == 2 and calls[0] == calls[1] == [scope]
+    assert result == [{'complete': True, 'actual_bytes': 123, 'actual_files': 4}]
+    failed = r.read(attempt / 'incomplete-capacity-inventory-01.json')
+    assert failed['recognized_owned_atomic_temporary'] is True and failed['retry_will_occur'] is True
+    assert failed['partial_totals_used'] is False and failed['files_skipped'] is False
+
+
+@pytest.mark.parametrize('state,name', [('terminal', 'report.json.tmp'), ('retained', 'report.json.tmp'),
+    ('admitted', 'summary.json'), ('admitted', 'unknown.tmp')])
+def test_missing_immutable_or_unrecognized_file_is_fatal_without_retry(tmp_path, monkeypatch, state, name):
+    op, _, _ = live_fixture(tmp_path, monkeypatch)
+    attempt = op.ROOT / 'retry'
+    attempt.mkdir()
+    scope = retry_scope(op, state)
+    missing = Path(scope['root']) / name
+    calls = []
+    def inventory(scopes, *, timeout):
+        calls.append(1)
+        raise FileNotFoundError(2, 'not an owned atomic temporary', str(missing))
+    monkeypatch.setattr(r, 'inventory_selections', inventory)
+    with pytest.raises(FileNotFoundError):
+        r.complete_capacity_inventory(op, [scope], attempt)
+    assert len(calls) == 1
+    failed = r.read(attempt / 'incomplete-capacity-inventory-01.json')
+    assert failed['retry_will_occur'] is False and failed['files_skipped'] is False
+
+
+def test_repeated_owned_atomic_race_stops_at_three_full_failed_attempts(tmp_path, monkeypatch):
+    op, _, _ = live_fixture(tmp_path, monkeypatch)
+    attempt = op.ROOT / 'retry'
+    attempt.mkdir()
+    scope = retry_scope(op)
+    missing = Path(scope['root']) / 'case-0/best-observed.partial'
+    calls = []
+    def inventory(scopes, *, timeout):
+        calls.append(1)
+        raise FileNotFoundError(2, 'atomic rename', str(missing))
+    monkeypatch.setattr(r, 'inventory_selections', inventory)
+    with pytest.raises(FileNotFoundError):
+        r.complete_capacity_inventory(op, [scope], attempt)
+    assert len(calls) == 3
+    records = sorted(attempt.glob('incomplete-capacity-inventory-*.json'))
+    assert len(records) == 3
+    assert r.read(records[-1])['retry_will_occur'] is False
+    assert all(r.read(path)['partial_totals_used'] is False for path in records)
+
+
 def test_live_preflight_has_fresh_raw_inventory_quota_and_no_optimizer_claim(tmp_path, monkeypatch):
     op, _, _ = live_fixture(tmp_path, monkeypatch)
     parent = op.ROOT / 'preflight'
@@ -255,6 +480,8 @@ def test_live_dispatch_claim_is_immutable_and_periodic_uses_unique_receipts(tmp_
     assert first['status'] == 'passed' and claim['updates'] == 2500
     assert claim['admission_policy'] == r.c.VERSION
     assert r.binding(claim['admission_receipt']['path']) == claim['admission_receipt']
+    assert r.binding(claim['validation_inventory_evidence']['path']) == claim['validation_inventory_evidence']
+    assert r.read(claim['validation_inventory_evidence']['path']) == claim['validation_inventory']
     one = r.storage(op, parent, 'periodic')
     two = r.storage(op, parent, 'periodic')
     assert one['status'] == two['status'] == 'passed'
@@ -276,3 +503,27 @@ def test_live_capacity_failure_preserves_exact_receipt_and_submits_nothing(tmp_p
     assert r.read(attempts[0] / 'assessment.json')['status'] == 'failed'
     assert r.read(attempts[0] / 'failure.json')['partial_inventory_used'] is False
     assert not (op.ROOT / 'storage-claims').exists()
+
+
+def test_admitted_file_cap_rejects_changed_completed_validation_inventory(tmp_path, monkeypatch):
+    op, _, _ = live_fixture(tmp_path, monkeypatch)
+    prepare_ready(op)
+    parent = op.parent_path('after-validate', 'protenix', 20000)
+    parent.mkdir()
+    r.storage(op, parent, 'dispatch')
+    study = op.parent_path('validate', 'protenix', 20000) / 'payload/study'
+    (study / 'unexpected-after-admission.json').write_text('{}\n')
+    with pytest.raises(ValueError, match='file-cap basis changed'):
+        r.storage(op, parent, 'periodic')
+
+
+def test_admitted_file_cap_rejects_changed_immutable_inventory_evidence(tmp_path, monkeypatch):
+    op, _, _ = live_fixture(tmp_path, monkeypatch)
+    prepare_ready(op)
+    parent = op.parent_path('after-validate', 'protenix', 20000)
+    parent.mkdir()
+    r.storage(op, parent, 'dispatch')
+    claim = r.read(op.ROOT / 'storage-claims/protenix-segment-20000.json')
+    Path(claim['validation_inventory_evidence']['path']).write_text('{"changed":true}\n')
+    with pytest.raises(ValueError, match='Metadata proof changed'):
+        r.storage(op, parent, 'periodic')

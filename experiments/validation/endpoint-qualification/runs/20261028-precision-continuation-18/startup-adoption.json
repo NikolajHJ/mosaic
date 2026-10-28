@@ -1,0 +1,24 @@
+{
+  "scripts/dbmol_reference.py": {
+    "AST_reversal_exact": true,
+    "changed_literals": {
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-13/cpu/payload/reference-startup.json": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-18/cpu/payload/dbmol-reference-startup.json"
+    },
+    "new_sha256": "98ad046746a935ee38bfe4ffb887bc3d8121b9516efe68877ad874b438407076",
+    "numerical_AST_unchanged": true,
+    "old_sha256": "107ecf733ca69a6ff3ed68a9b978d3a98445065681b4b6179e1a1d2b1ac09d3c",
+    "status": "exact_startup_metadata_AST_adoption"
+  },
+  "tests/test_dbmol_reference.py": {
+    "AST_reversal_exact": true,
+    "changed_literals": {
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-13/gpu/payload/reference-startup.json": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-18/gpu/payload/dbmol-reference-startup.json",
+      "cpu/payload/reference-startup.json": "cpu/payload/dbmol-reference-startup.json",
+      "dbmol-endpoint-recovery-13": "nonchem-precision-continuation-18"
+    },
+    "new_sha256": "9218a9dc7af8b5e15d90be80a7d8e6ba4615d16c9c99652a0f374b6b3f80d7d8",
+    "numerical_AST_unchanged": true,
+    "old_sha256": "e9420a52caef8d7d21e70d3824743aeed0a81570360c89341618485447337904",
+    "status": "exact_startup_metadata_AST_adoption"
+  }
+}

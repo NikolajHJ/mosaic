@@ -211,7 +211,13 @@ def test_actual_entry_adapter_restores_private_metadata_and_factory_after_error(
             assert driver.VERSION == d.RESULT_VERSION
             assert driver.endpoint_policy_version() == d.POLICY_VERSION
             assert driver.EndpointHooks == "reference-factory"
-            assert driver.SOURCES["protenix"][5] == 2500 and driver.SOURCES["dbmol"][5] == 1250
+            assert driver.SOURCES["protenix"][5] == 30000 and driver.SOURCES["dbmol"][5] == 2500
+            budget = {"status": "failed", "requested_updates": 30000, "maximum_safe_updates": 16307}
+            failed = driver.failed_assessment(SimpleNamespace(name="protenix"), plan, "f" * 64,
+                "validate", 20000, tmp_path, {}, d.RuntimeBudgetExceeded(budget))
+            assert failed["precision_runtime_budget"] == budget
+            assert failed["runtime_admission_status"] == "failed_full_horizon_no_automatic_shortening"
+            assert failed["precision_child_admission_complete"] is False
             raise RuntimeError("original native failure")
     assert driver.__dict__ == originals
 
@@ -268,7 +274,8 @@ def passed_result_fixture(tmp_path):
     endpoint = {"stage": "native_gradient_checks", "objective": "protenix_contact_loss",
                 "endpoint_policy": d.PRO_POLICY, "path": binding["path"], "status": "passed",
                 "can_admit_new_child": True, **record}
-    summary = put(output / "summary.json", {"status": "passed", "job_id": "42", "runtime_gate": pro_runtime(10000)})
+    summary = put(output / "summary.json", {"status": "passed", "job_id": "42", "runtime_gate": pro_runtime(10000),
+                                            "elapsed_seconds": 600})
     raw_proofs = d._raw_reference_points(record["reference_session"], output)[1]
     proofs = [binding, summary, *record["reference_session"].values(), *raw_proofs]
     snapshot = {"path": "/preserved/checkpoint.npz", "bytes": 12, "sha256": "e" * 64}
@@ -307,82 +314,14 @@ def test_controller_precision_result_rejects_incomplete_or_wrong_boundary_admiss
         d.verify_precision_result(result, plan, "f" * 64, "validate", "protenix", 20000, snapshot)
 
 
-@pytest.mark.parametrize("projection", [0, False, float("inf"), float("nan"), 82800, 90000])
-def test_reference_runtime_is_reserved_without_reducing_original_guard(tmp_path, projection):
-    path = tmp_path / "summary.json"
-    # Nonfinite test documents are deliberately malformed input metadata.
-    runtime = pro_runtime(projection) if type(projection) in (int, float) else {"status": "passed", "conservative_projected_seconds": projection}
-    path.write_text(json.dumps({"runtime_gate": runtime}), encoding="utf8")
-    with pytest.raises(ValueError): d.runtime_budget(path, "protenix")
-
-
-def test_reference_runtime_budget_preserves_both_endpoint_allowances(tmp_path):
-    path = tmp_path / "summary.json"
-    put(path, {"runtime_gate": pro_runtime(50000)})
-    value = d.runtime_budget(path, "protenix")
-    assert value["original_projected_seconds"] == 50000
-    assert value["bounded_segment_projected_seconds"] == 13850
-    assert value["required_total_seconds"] == 25250 and value["reference_seconds"] == 10800
-    assert value["walltime"] == "07:15" and value["walltime_seconds"] == 26100
-    assert value["limit_seconds"] == 25500 and value["original_runtime_guard_changed"] is False
-
-
-def test_dbmol_runtime_keeps_all_measured_fixed_overhead(tmp_path):
-    path = tmp_path / "summary.json"
-    put(path, {"runtime_gate": {"status": "passed", "mean_update_seconds": 2,
-        "conservative_projected_seconds": 6850, "segment_updates": 1250,
-        "observed_startup_entry_check_seconds": 1000, "observed_native_check_seconds": 200,
-        "terminal_check_safety_factor": 1.5, "update_safety_factor": 1.5, "reserve_seconds": 1800}})
-    value = d.runtime_budget(path, "dbmol")
-    assert value["bounded_segment_projected_seconds"] == 6850
-    assert value["required_total_seconds"] == 18250
-    assert value["walltime"] == "05:15" and value["limit_seconds"] == 18300
-
-
-def test_dbmol_segment_still_rejects_two_reference_checks_beyond_maximum_walltime(tmp_path):
-    path = tmp_path / "summary.json"
-    # The inherited 23-hour check passes; the complete two-reference budget does
-    # not. Shorter production intervals cannot scale away this measured cost.
-    put(path, {"runtime_gate": {"status": "passed", "mean_update_seconds": 2,
-        "conservative_projected_seconds": 75000, "segment_updates": 1250,
-        "observed_startup_entry_check_seconds": 69150, "observed_native_check_seconds": 200,
-        "terminal_check_safety_factor": 1.5, "update_safety_factor": 1.5, "reserve_seconds": 1800}})
-    with pytest.raises(ValueError): d.runtime_budget(path, "dbmol")
-
-
-@pytest.mark.parametrize("change", ["status", "missing_means", "different_formula", "nonfinite_mean", "unknown_arm"])
-def test_segment_walltime_never_comes_from_unpassed_or_incomplete_measurements(tmp_path, change):
-    runtime = pro_runtime(50000)
-    if change == "status": runtime["status"] = "failed"
-    elif change == "missing_means": del runtime["mean_update_seconds"]
-    elif change == "different_formula": runtime["mean_update_seconds"] = [1]
-    elif change == "nonfinite_mean": runtime["mean_update_seconds"] = [float("inf")]
-    path = tmp_path / "summary.json"
-    path.write_text(json.dumps({"runtime_gate": runtime}), encoding="utf8")
-    with pytest.raises(ValueError): d.runtime_budget(path, "missing" if change == "unknown_arm" else "protenix")
-
-
-@pytest.mark.parametrize("field", ["segment_updates", "terminal_check_safety_factor", "update_safety_factor", "reserve_seconds",
-                                   "observed_startup_entry_check_seconds", "observed_native_check_seconds", "conservative_projected_seconds"])
-def test_dbmol_runtime_rejects_incomplete_or_rescaled_fixed_terms(tmp_path, field):
-    runtime = {"status": "passed", "mean_update_seconds": 2, "conservative_projected_seconds": 6850,
-               "segment_updates": 1250, "observed_startup_entry_check_seconds": 1000,
-               "observed_native_check_seconds": 200, "terminal_check_safety_factor": 1.5,
-               "update_safety_factor": 1.5, "reserve_seconds": 1800}
-    runtime[field] = 0
-    path = tmp_path / "summary.json"
-    put(path, {"runtime_gate": runtime})
-    with pytest.raises(ValueError): d.runtime_budget(path, "dbmol")
-
-
 def test_shorter_segments_cover_only_requested_unsaved_future_once(tmp_path):
     plan = plan_for(tmp_path)
     for arm in plan["arms"]:
         intervals = [(offset, offset + arm["segment_updates"]) for offset in arm["offsets"]]
         assert intervals[0][0] == arm["start_global"] and intervals[-1][1] == arm["target_global"]
         assert all(left[1] == right[0] for left, right in zip(intervals, intervals[1:]))
-    assert d.BOUNDARIES["protenix"] == (20000, 50000, 2500, list(range(20000, 50000, 2500)))
-    assert d.BOUNDARIES["dbmol"] == (7500, 10000, 1250, [7500, 8750])
+    assert d.BOUNDARIES["protenix"] == (20000, 50000, 30000, [20000])
+    assert d.BOUNDARIES["dbmol"] == (7500, 10000, 2500, [7500])
 
 
 def test_private_source_step_override_restores_exact_original_science_even_on_failure():
@@ -390,21 +329,21 @@ def test_private_source_step_override_restores_exact_original_science_even_on_fa
     original = driver.SOURCES
     with pytest.raises(RuntimeError):
         with d.short_segment_sources(driver):
-            assert driver.SOURCES["protenix"] == (*original["protenix"][:5], 2500, 50000)
-            assert driver.SOURCES["dbmol"] == (*original["dbmol"][:5], 1250, 10000)
+            assert driver.SOURCES["protenix"] == (*original["protenix"][:5], 30000, 50000)
+            assert driver.SOURCES["dbmol"] == (*original["dbmol"][:5], 2500, 10000)
             assert driver.SOURCES["boltz"] is original["boltz"]
             raise RuntimeError("preserved original error")
     assert driver.SOURCES is original
 
 
 PRO_MAIN = '''def main():
-    result = original_optimizer(loss, initial, steps=args.segment_steps, rate=0.3)
+    result = run_chemical_updates(loss, initial, steps=args.segment_steps if extended else 10000, rate=0.3)
     if result["status"] != "passed" or len(result["updates"]) != 10000 or [r["step"] for r in result["states"]] != list(range(10001)):
         raise ValueError("Incomplete declared 10,000-update budget")
     terminal_gradient_checks(result)
 '''
 DB_MAIN = '''def main():
-    case = original_optimizer(loss, initial, steps=a.segment_steps, rate=0.0025)
+    case = run_chemical_updates(loss, initial, steps=a.segment_steps, rate=0.0025)
     if case['status'] != 'passed' or len(case['updates']) != a.segment_steps or len(case['states']) != a.segment_steps+1:
         raise ValueError("Incomplete declared segment")
     terminal_gradient_checks(case)
@@ -453,13 +392,16 @@ def test_cpu_startup_and_production_compile_use_same_audited_completion_adapter(
         assert calls == [(str(filename), 'protenix'), (str(filename), 'protenix')]
 
 
-@pytest.mark.parametrize("failure", ["different_count", "duplicate_guard", "missing_terminal_count", "different_db_guard"])
+@pytest.mark.parametrize("failure", ["different_count", "duplicate_guard", "missing_terminal_count", "different_db_guard",
+                                    "hardcoded_production_steps", "hardcoded_db_production_steps"])
 def test_short_segment_driver_rejects_unexpected_original_completion_shape(failure):
     raw, arm = PRO_MAIN, "protenix"
     if failure == "different_count": raw = raw.replace("!= 10000", "!= 9999")
     elif failure == "duplicate_guard": raw += "\n" + PRO_MAIN.replace("def main():", "def another():")
     elif failure == "missing_terminal_count": raw = raw.replace("range(10001)", "range(10000)")
-    else: raw, arm = DB_MAIN.replace("len(case['states']) != a.segment_steps+1", "len(case['states']) != a.segment_steps"), "dbmol"
+    elif failure == "different_db_guard": raw, arm = DB_MAIN.replace("len(case['states']) != a.segment_steps+1", "len(case['states']) != a.segment_steps"), "dbmol"
+    elif failure == "hardcoded_production_steps": raw = PRO_MAIN.replace('steps=args.segment_steps if extended else 10000', 'steps=10000')
+    else: raw, arm = DB_MAIN.replace('steps=a.segment_steps', 'steps=1250'), "dbmol"
     with pytest.raises(ValueError): d.short_segment_driver_tree(raw, "original.py", arm)
 
 
@@ -500,19 +442,21 @@ def test_protocol_shortening_keeps_config_constant_exact_predecessor_target_and_
     module = SimpleNamespace(segment_scope=segment_scope, require_boundary=require_boundary)
     with d.short_segment_protocol(module, "protenix"):
         config = {'extension': {'start_global_update': 10000, 'segment_updates': 10000}}
-        assert module.segment_scope(config, 22500, 2500, 'exact', 'digest')['end'] == 25000
+        assert module.segment_scope(config, 20000, 30000, 'exact', 'digest')['end'] == 50000
         assert config['extension']['segment_updates'] == 10000
-        for offset, steps, snapshot in [(20000, 10000, 'exact'), (21000, 2500, 'exact'), (47500, 5000, 'exact'), (20000, 2500, None)]:
+        for offset, steps, snapshot in [(20000, 10000, 'exact'), (10000, 30000, 'exact'),
+                                         (40000, 30000, 'exact'), (20000, 30000, None)]:
             with pytest.raises(ValueError): module.segment_scope(config, offset, steps, snapshot, 'digest')
-        with pytest.raises(ValueError): module.require_boundary({'extended_execution': {'updates': 2500, 'target': 50000}})
-        summary = {'extended_execution': {'updates': 2500, 'target': 50000}, 'exact_boundary_replay': 'passed'}
+        with pytest.raises(ValueError): module.require_boundary({'extended_execution': {'updates': 30000, 'target': 50000}})
+        summary = {'extended_execution': {'updates': 30000, 'target': 50000}, 'exact_boundary_replay': 'passed'}
         assert module.require_boundary(summary) == summary['extended_execution']
         with pytest.raises(ValueError): module.require_boundary(summary, {'extended_execution': {'updates': 10000}})
     assert module.segment_scope is segment_scope and module.require_boundary is require_boundary
     db = SimpleNamespace(scope=scope, SEGMENT=SEGMENT)
     with d.short_segment_protocol(db, "dbmol"):
-        assert db.SEGMENT == 2500 and db.scope(8750, 1250, 'exact', 'digest')['end'] == 10000
-        for offset, steps, snapshot in [(7500, 2500, 'exact'), (8000, 1250, 'exact'), (8750, 1250, None)]:
+        assert db.SEGMENT == 2500 and db.scope(7500, 2500, 'exact', 'digest')['end'] == 10000
+        for offset, steps, snapshot in [(7500, 1250, 'exact'), (8750, 1250, 'exact'),
+                                         (5000, 2500, 'exact'), (7500, 2500, None)]:
             with pytest.raises(ValueError): db.scope(offset, steps, snapshot, 'digest')
     assert db.scope is scope
 

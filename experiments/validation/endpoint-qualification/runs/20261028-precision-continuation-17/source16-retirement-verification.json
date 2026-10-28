@@ -1,0 +1,32 @@
+{
+  "status": "passed_independent_retirement_byte_schema_audit",
+  "assessment": {
+    "bytes": 24510,
+    "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision16-retirement-full-remaining-01/assessment.json",
+    "sha256": "2cf56b547d388d102c85573d03305f61f8ea8694b5ba9f0970e6ca88e84a4207"
+  },
+  "jobs": {
+    "after-cpu": "29841064",
+    "cpu": "29841063",
+    "dbmol-after-validate-07500": "29841084",
+    "dbmol-validate-07500": "29841083",
+    "protenix-after-validate-20000": "29841082",
+    "protenix-validate-20000": "29841081"
+  },
+  "actual_states": {
+    "cpu": "DONE",
+    "after-cpu": "DONE",
+    "protenix-validate-20000": "EXIT",
+    "protenix-after-validate-20000": "EXIT",
+    "dbmol-validate-07500": "EXIT",
+    "dbmol-after-validate-07500": "EXIT"
+  },
+  "optimizer_children": [],
+  "validation_study_presence": {
+    "dbmol-validate-07500": false,
+    "protenix-validate-20000": false
+  },
+  "original_results_changed": false,
+  "source16_CPU_785_pass_preserved": true,
+  "native_failures_invented": false
+}

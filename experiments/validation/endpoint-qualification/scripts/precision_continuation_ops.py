@@ -27,8 +27,8 @@ VERSION = "precision-reference-continuation-source-v1"
 PLAN_VERSION = "precision-reference-continuation-plan-v1"
 RESULT_VERSION = "precision-reference-continuation-result-v1"
 BASE = Path("/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01")
-ROOT = BASE / "nonchem-precision-continuation-16"
-SOURCE = BASE / "nonchem-precision-release-16/source"
+ROOT = BASE / "nonchem-precision-continuation-18"
+SOURCE = BASE / "nonchem-precision-release-18/source"
 ADMISSION = BASE / "nonchem-stride20-startup-release-03/source"
 ADMISSION_SHA = "704fab033d97342a14dc12b58dc32df44874232c5c30aad47c4d02041a502aab"
 PYTHON = "/work3/s234818/mosaic/envs/protenix-tiny/bin/python"
@@ -36,11 +36,11 @@ GIB = 1024**3
 CONTROL_CAP = 512 * 1024**2
 ADDITIONAL = GIB + 2 * GIB + 768 * 1024**2 + CONTROL_CAP
 ARMS = {
-    "protenix": {"offsets": list(range(20000, 50000, 2500)), "segment_steps": 2500,
+    "protenix": {"offsets": [20000], "segment_steps": 30000,
                  "global_target": 50000, "rate": 0.3, "old_profile": "protenix50k40k"},
     "boltz": {"offsets": [10000, 20000], "segment_steps": 10000,
               "global_target": 30000, "rate": 0.0025, "old_profile": "boltz30k"},
-    "dbmol": {"offsets": [7500, 8750], "segment_steps": 1250,
+    "dbmol": {"offsets": [7500], "segment_steps": 2500,
               "global_target": 10000, "rate": 0.0025, "old_profile": "dbmol10k"},
 }
 ORIGINALS = {
@@ -268,7 +268,7 @@ def argv(phase, pin, arm="all", offset=0, dependency=None):
         require(dependency is None, "Scientific/CPU phases have no interarm dependencies")
     parent = ROOT / name
     budget = segment_budget(arm, offset) if phase == "segment" else None
-    command = ["bsub", *resources(phase, budget), "-J", "mosaic-precision16-" + name,
+    command = ["bsub", *resources(phase, budget), "-J", "mosaic-precision18-" + name,
                "-oo", str(parent / "stdout.%J.log"), "-eo", str(parent / "stderr.%J.log")]
     if dependency is not None:
         command += ["-w", dependency]
@@ -352,7 +352,7 @@ def terminal(parent, queue):
             break
         require(index < 20, "Terminal LSF output unavailable")
         time.sleep(1)
-    lsf_success(path.read_text(), job, "mosaic-precision16-" + parent.name, queue)
+    lsf_success(path.read_text(), job, "mosaic-precision18-" + parent.name, queue)
     proofs.append(binding(path))
     return proofs
 
@@ -604,6 +604,48 @@ def external(manifest, plan):
         raw = "".join((parent / ("stdout." + job + ".log")).read_text().split())
         require(raw.count("Subject:Job" + job + ":") == 1 and "Exitedwithexitcode1." in raw
                 and "inqueue<gpul40s>" in raw, "Original same-job source15 failed LSF missing")
+    allocation = plan.get("superseded_allocation_plan")
+    require(isinstance(allocation, dict) and allocation.get("source") == {
+        "path": str(BASE / "nonchem-precision-release-16/source"), "files": 41,
+        "manifest_sha256": "cd75d01b41520f7af916ff4fa824f7059d7eb4713d9c611e24d00e0cd12444f2"}
+        and allocation.get("CPU_pass_preserved") is True and allocation.get("original_results_changed") is False,
+        "Superseded small-allocation source/evidence missing")
+    retired = read(check_binding(allocation["retirement_assessment"])["path"])
+    require(retired.get("status") == "superseded_unstarted_native_jobs_and_dispatchers_intentionally_retired"
+            and retired.get("source") == allocation["source"] and retired.get("optimizer_children") == []
+            and retired.get("original_results_changed") is False
+            and retired.get("validation_study_presence") == {"protenix-validate-20000": False, "dbmol-validate-07500": False},
+            "Old small-chunk execution not safely retired before new admission")
+    for proof in retired["proofs"]:
+        check_binding(proof)
+    expected_retired = {"cpu": "29841063", "after-cpu": "29841064", "protenix-validate-20000": "29841081",
+                        "protenix-after-validate-20000": "29841082", "dbmol-validate-07500": "29841083",
+                        "dbmol-after-validate-07500": "29841084"}
+    require(retired.get("jobs") == expected_retired and len(retired.get("actual_scheduler", [])) == 6,
+            "Superseded job inventory changed")
+    for observed in retired["actual_scheduler"]:
+        name, job = observed["name"], observed["job_id"]
+        raw = "".join(observed["stdout"].split())
+        expected_state = "DONE" if name in ("cpu", "after-cpu") else "EXIT"
+        require(expected_retired.get(name) == job and observed["returncode"] == 0
+                and re.findall(r"Job<([^>]+)>", raw) == [job]
+                and re.findall(r"Status<([^>]+)>", raw) == [expected_state]
+                and observed["state"] == expected_state, "Actual original retirement scheduler proof differs")
+    previous = plan.get("engineering_fixture_predecessor")
+    require(isinstance(previous, dict) and previous.get("source") == {
+        "path": str(BASE / "nonchem-precision-release-17/source"), "files": 41,
+        "manifest_sha256": "4d29d85856e696d7fc096dc5f12bd54ed51d64fc2032946be2b51a8d5b4c480c"},
+        "Source17 fixture failure provenance missing")
+    failure = read(check_binding(previous["assessment"])["path"])
+    require(failure.get("status") == "preserved_CPU_fixture_message_failure_no_native_or_optimizer_submitted"
+            and failure.get("source") == previous["source"]
+            and failure.get("jobs") == {"cpu": "29841248", "after-cpu": "29841249"}
+            and failure.get("raw_counts") == {"torch": {"cases": 17, "passed": 17, "failures": 0},
+                                               "jax": {"cases": 790, "passed": 789, "failures": 1}}
+            and failure.get("native_jobs_submitted") is False and failure.get("optimizer_jobs_submitted") is False,
+            "Original source17 fixture failure was changed or relabeled")
+    for proof in failure["proofs"]:
+        check_binding(proof)
     preserved_failed_admission(manifest, plan)
     qualified = qualified_admissions(plan)
     adoption = {}

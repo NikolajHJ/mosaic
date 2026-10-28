@@ -134,3 +134,30 @@ Chemistry qualification's canonical05 candidate is currently unsealed and fails
 closed before preparation/staging until its new writer admission is integrated.
 It adopts only the corrected reference machinery and device placement; it cannot
 dispatch an optimizer. The older current04 wording above is historical.
+
+## Fast local metadata preflight
+
+Before packaging launch/resource changes, run the portable subset locally:
+
+```text
+<python-with-pytest> experiments/validation/endpoint-qualification/scripts/local_metadata_preflight.py --output results/local-metadata-NEW
+```
+
+Or invoke the script with another Python and pass `--python PATH_TO_PYTEST_PYTHON`.
+Its explicit allowlist covers runtime reservations, storage-ledger schemas,
+three-stream file counts and portable content identity. Plugin autoload, conftests and bytecode/cache writing
+are disabled; temporary files use a fresh owned directory under the requested
+workspace output. No LSF allocation is faked. All 98 current cases passed locally
+in 0.94 seconds; model libraries were not installed in the isolated test environment.
+This is not native/scientific readiness. All remaining integration fixtures and
+the full allocated CPU suite, actual CUDA/model/FP64/gradient/pilot checks still
+run on HPC before any optimizer submission.
+
+The latest actual full-budget capsule is [continuation18](../runs/20261028-precision-continuation-18/README.md):
+CPU29841471/controller29841472 were submitted after a passed storage preflight.
+The later status query failed SSH authentication, so subsequent CPU/GPU/optimizer
+outcomes are unknown. Do not replay prepared18 or infer an optimization start.
+Canonical resource helpers now include the unsealed [candidate19](../runs/20261028-precision-continuation-19/README.md),
+which has no package or jobs. Authenticate all18 outcomes before assigning a new
+namespace or changing any launch. Historical16 small-chunk jobs were intentionally
+retired unstarted;17 failed one fixture message assertion, with no GPU children.

@@ -37,9 +37,9 @@ POLICIES = {
     "dbmol": {"dbmol_affinity_loss": DB_POLICY, "dbmol_contact_loss": RAW_POLICY,
               "dbmol_confidence_loss": RAW_POLICY, "dbmol_total_loss": RAW_POLICY},
 }
-BOUNDARIES = {"protenix": (20000, 50000, 2500, list(range(20000, 50000, 2500))),
-              "dbmol": (7500, 10000, 1250, [7500, 8750])}
-SEGMENT_POLICY = "precision-bounded-continuation-segments-v1"
+BOUNDARIES = {"protenix": (20000, 50000, 30000, [20000]),
+              "dbmol": (7500, 10000, 2500, [7500])}
+SEGMENT_POLICY = "precision-remaining-budget-continuation-segment-v2"
 CHECKS = {"entry_admission", "hard_parity", "null_controls", "native_components",
           "pilot_early", "pilot_high", "runtime", "terminal_admission", "case_jsonl", "fp32_boundary"}
 REFERENCE_RUNTIME_SECONDS = 2 * 5400
@@ -53,6 +53,16 @@ WALLTIME_QUANTUM_SECONDS = 900
 def require(value, message):
     if not value:
         raise ValueError(message)
+
+
+class RuntimeBudgetExceeded(ValueError):
+    """A complete measured horizon does not fit; this is never a fallback."""
+    def __init__(self, budget):
+        self.budget = deepcopy(budget)
+        super().__init__("Full remaining horizon does not fit the measured allocation; "
+                         f"requested_updates={budget['requested_updates']}; "
+                         f"maximum_safe_updates={budget['maximum_safe_updates']}; "
+                         "a new immutable largest-fitting plan and complete checks are required")
 
 
 def read(path):
@@ -96,23 +106,32 @@ def check_child_proof(row, output):
 def runtime_budget(validation_summary, arm):
     """Derive an upward-rounded allocation from a complete, passed pilot.
 
-    Only the measured per-update Protenix term is shortened. Its original
-    1,800-second reserve and DBMol's measured startup/entry/terminal terms are
-    retained in full, in addition to both bounded precision references.
+    The requested remaining update budget is evaluated in full. Twice the
+    complete measured validation duration funds startup and both endpoint
+    cohorts, including references. Per-reference timeout ceilings remain hard
+    bounds, but are not reported as measured work or reserved elapsed time.
     """
     require(arm in BOUNDARIES, "Unknown bounded runtime arm")
     path = Path(validation_summary)
-    runtime = read(path).get("runtime_gate", {})
+    summary = read(path)
+    runtime = summary.get("runtime_gate", {})
     original = runtime.get("conservative_projected_seconds")
     require(runtime.get("status") == "passed" and type(original) in (int, float)
             and math.isfinite(original) and original > 0, "Original validated conservative runtime missing")
+    elapsed = summary.get("elapsed_seconds")
+    require(type(elapsed) in (int, float) and math.isfinite(elapsed) and elapsed > 0,
+            "Complete measured validation setup/check duration missing")
+    measured_fixed = 2 * elapsed + 1800
     if arm == "protenix":
         means = runtime.get("mean_update_seconds")
         require(isinstance(means, list) and means and all(type(value) in (int, float)
                 and math.isfinite(value) and value > 0 for value in means), "Complete measured Protenix pilot runtime missing")
         require(math.isclose(original, 1.5 * max(means) * 10000 + 1800, rel_tol=1e-12, abs_tol=1e-9),
                 "Original Protenix runtime formula differs")
-        projected = 1.5 * max(means) * BOUNDARIES[arm][2] + 1800
+        update_seconds = 1.5 * max(means)
+        original_fixed = 1800
+        fixed_seconds = measured_fixed
+        projected = update_seconds * BOUNDARIES[arm][2] + fixed_seconds
     else:
         keys = ("mean_update_seconds", "observed_startup_entry_check_seconds", "observed_native_check_seconds")
         require(all(type(runtime.get(key)) in (int, float) and math.isfinite(runtime[key])
@@ -125,23 +144,42 @@ def runtime_budget(validation_summary, arm):
                     + runtime["observed_startup_entry_check_seconds"]
                     + 1.5 * runtime["observed_native_check_seconds"] + 1800)
         require(math.isclose(original, expected, rel_tol=1e-12, abs_tol=1e-9), "Original DBMol runtime formula differs")
-        projected = original
-    # The inherited full-pilot guard remains mandatory even for shorter jobs.
+        update_seconds = 1.5 * runtime["mean_update_seconds"]
+        original_fixed = (runtime["observed_startup_entry_check_seconds"]
+                          + 1.5 * runtime["observed_native_check_seconds"] + 1800)
+        fixed_seconds = max(original_fixed, measured_fixed)
+        projected = update_seconds * BOUNDARIES[arm][2] + fixed_seconds
+    # The inherited full-pilot guard remains mandatory for this new horizon.
     require(original < SEGMENT_WALLTIME_SECONDS, "Original validated runtime guard failed")
-    required = projected + REFERENCE_RUNTIME_SECONDS + ORCHESTRATION_SECONDS
+    required = projected + ORCHESTRATION_SECONDS
     walltime = math.ceil((required + SCHEDULER_MARGIN_SECONDS) / WALLTIME_QUANTUM_SECONDS) * WALLTIME_QUANTUM_SECONDS
     internal = walltime - SCHEDULER_MARGIN_SECONDS
-    require(walltime <= SEGMENT_WALLTIME_SECONDS and required <= internal <= SEGMENT_INTERNAL_SECONDS,
-            "Measured segment plus both bounded reference checks exceeds runtime")
-    return {"version": SEGMENT_POLICY, "status": "passed", "arm": arm,
+    maximum = max(0, min(BOUNDARIES[arm][2], math.floor((SEGMENT_INTERNAL_SECONDS - fixed_seconds
+                      - ORCHESTRATION_SECONDS) / update_seconds)))
+    budget = {"version": SEGMENT_POLICY, "status": "passed", "arm": arm,
+            "requested_updates": BOUNDARIES[arm][2], "maximum_safe_updates": maximum,
             "segment_updates": BOUNDARIES[arm][2], "original_projected_seconds": original,
             "bounded_segment_projected_seconds": projected,
-            "reference_seconds": REFERENCE_RUNTIME_SECONDS, "required_total_seconds": required,
+            "conservative_seconds_per_update": update_seconds, "fixed_original_seconds": original_fixed,
+            "fixed_measured_seconds": measured_fixed, "fixed_charged_seconds": fixed_seconds,
+            "observed_validation_elapsed_seconds": elapsed,
+            "reference_timeout_ceiling_seconds_each": REFERENCE_RUNTIME_SECONDS // 2,
+            "reference_timeout_ceilings_reserved_as_elapsed": False,
+            "endpoint_setup_budget_basis": "twice_complete_validation_elapsed_including_reference_and_pilot",
+            "measurement_scope": "empirical pilots and complete validation; not a worst-case guarantee",
+            "required_total_seconds": required,
             "orchestration_seconds": ORCHESTRATION_SECONDS, "scheduler_margin_seconds": SCHEDULER_MARGIN_SECONDS,
             "walltime_quantum_seconds": WALLTIME_QUANTUM_SECONDS, "walltime_seconds": walltime,
             "walltime": f"{walltime // 3600:02d}:{walltime % 3600 // 60:02d}",
             "limit_seconds": internal, "original_runtime_guard_changed": False,
+            "maximum_internal_seconds": SEGMENT_INTERNAL_SECONDS,
+            "maximum_walltime_seconds": SEGMENT_WALLTIME_SECONDS,
+            "automatic_shortening_or_fallback": False,
             "validation_summary": {"path": str(path), "bytes": path.stat().st_size, "sha256": sha(path)}}
+    if not (walltime <= SEGMENT_WALLTIME_SECONDS and required <= internal <= SEGMENT_INTERNAL_SECONDS):
+        budget["status"] = "failed"
+        raise RuntimeBudgetExceeded(budget)
+    return budget
 
 
 def _module(path, name):
@@ -177,6 +215,12 @@ def short_segment_driver_tree(raw, filename, arm):
     tree = ast.parse(raw, filename=filename)
     mains = [node for node in tree.body if isinstance(node, ast.FunctionDef) and node.name == "main"]
     require(len(mains) == 1, "Original short-segment main shape differs")
+    expected_steps = ast.dump(ast.parse("args.segment_steps if extended else 10000" if arm == "protenix"
+                                       else "a.segment_steps", mode="eval").body)
+    production_calls = [node for node in ast.walk(mains[0]) if isinstance(node, ast.Call)
+                        and isinstance(node.func, ast.Name) and node.func.id == "run_chemical_updates"
+                        and any(keyword.arg == "steps" and ast.dump(keyword.value) == expected_steps for keyword in node.keywords)]
+    require(len(production_calls) == 1, "Original production optimizer does not execute the declared full remaining steps")
     if arm == "protenix":
         old = 'result["status"] != "passed" or len(result["updates"]) != 10000 or [r["step"] for r in result["states"]] != list(range(10001))'
         new = 'result["status"] != "passed" or len(result["updates"]) != args.segment_steps or [r["step"] for r in result["states"]] != list(range(args.segment_steps + 1))'
@@ -200,13 +244,13 @@ def short_segment_protocol_function(function, arm, name):
     steps = BOUNDARIES[arm][2]
     if (arm, name) == ("protenix", "segment_scope"):
         tree = _replace_expression(tree, "steps != 10000", f"steps != {steps}")
-        tree = _replace_expression(tree, "range(start, 50000, 10000)", f"range(start, 50000, {steps})")
+        tree = _replace_expression(tree, "range(start, 50000, 10000)", repr(tuple(BOUNDARIES[arm][3])))
     elif (arm, name) == ("protenix", "require_boundary"):
         tree = _replace_expression(tree, "execution.get('updates') != 10000", f"execution.get('updates') != {steps}")
     elif (arm, name) == ("dbmol", "scope"):
         # Leave protocol.SEGMENT and config25 untouched: the original config
         # still has its original segment metadata and scientific parameters.
-        tree = _replace_expression(tree, "range(0, TARGET, SEGMENT)", f"range(0, TARGET, {steps})")
+        tree = _replace_expression(tree, "range(0, TARGET, SEGMENT)", repr(tuple(BOUNDARIES[arm][3])))
         tree = _replace_expression(tree, "steps == SEGMENT", f"steps == {steps}")
     else:
         raise ValueError("Undeclared segment metadata adaptation")
@@ -602,6 +646,9 @@ def adapted_driver(driver, plan, hooks):
                      policy_by_objective=deepcopy(POLICIES[state.name]),
                      base_driver=deepcopy(plan["base_driver"]), precision_policy_records=[],
                      precision_child_admission_complete=False)
+        if isinstance(error, RuntimeBudgetExceeded):
+            value["precision_runtime_budget"] = deepcopy(error.budget)
+            value["runtime_admission_status"] = "failed_full_horizon_no_automatic_shortening"
         return value
     try:
         driver.VERSION = RESULT_VERSION

@@ -21,8 +21,8 @@ import time
 
 VERSION = "protenix-generic-fp64-reference-rpc-v1"
 BASE = Path("/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01")
-ROOT = BASE / "nonchem-precision-continuation-16"
-SOURCE = BASE / "nonchem-precision-release-16/source"
+ROOT = BASE / "nonchem-precision-continuation-18"
+SOURCE = BASE / "nonchem-precision-release-18/source"
 QUALIFIED = BASE / "protenix-endpoint-fix-release-09/source"
 QUALIFIED_PIN = "f2043af74b8fa9ff485a44b80fcf96454bf8585868859389828c37f0073a3664"
 SCIENCE = BASE / "protenix-extended-release-03/source"

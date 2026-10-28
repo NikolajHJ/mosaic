@@ -434,5 +434,24 @@
       "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-16/bootstrap-complete.json",
       "sha256": "de94140830507803ac84c9d99169ab15966fa453ec4ed4a86586cbf92fe38b15"
     }
-  ]
+  ],
+  "supersession": {
+    "reason": "User prefers maximum remaining updates per allocation instead of fixed small chunks",
+    "assessment": {
+      "bytes": 24510,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision16-retirement-full-remaining-01/assessment.json",
+      "sha256": "2cf56b547d388d102c85573d03305f61f8ea8694b5ba9f0970e6ca88e84a4207"
+    },
+    "actual_retired_jobs": {
+      "cpu": "DONE",
+      "after-cpu": "DONE",
+      "protenix-validate-20000": "EXIT",
+      "protenix-after-validate-20000": "EXIT",
+      "dbmol-validate-07500": "EXIT",
+      "dbmol-after-validate-07500": "EXIT"
+    },
+    "no_optimizer_children": true,
+    "saved_results_edited": false,
+    "historical_CPU_785_pass_preserved": true
+  }
 }

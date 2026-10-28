@@ -1,5 +1,21 @@
 # Prospective endpoint qualification diagnostics
 
+Latest 28 October handoff: [full-budget18](runs/20261028-precision-continuation-18/README.md)
+was staged and submitted CPU29841471/controller29841472. A subsequent status
+query failed SSH authentication; no later CPU/GPU/optimizer outcome is verified.
+Do not duplicate those jobs or replay staging. The requested horizons are the
+full remaining Protenix30k and DBMol2.5k, with measured reservations and unchanged
+settings, saved results and scientific checks. Historical16's unstarted small-chunk
+jobs were intentionally retired;17's one fixture assertion failure is preserved.
+
+The explicit [local metadata preflight](scripts/local_metadata_preflight.py)
+passed all98 cases in0.94s without scientific libraries or a fabricated allocation.
+Use it before packaging resource/runtime changes. It does not replace allocated
+CPU/native/model/gradient checks. Canonical resource helpers contain an
+[unsealed19 candidate](runs/20261028-precision-continuation-19/README.md), with no
+package or jobs; authenticate18's actual outcomes before further launch work.
+The monitor remains paused. Older dated status paragraphs below are historical.
+
 Current28October10:32CET: [portable continuation15](runs/20261028-precision-continuation-15/README.md) passed all592 allocated CPU cases and seven actual startup routes, independently verified. Fresh full-model GPU validations Pro29839086 andDB29839088 plus own-ended callbacks are queued; optimizer continuations await their complete gates. Original saved20k/7500 states, settings and failed outcomes remain unchanged.
 
 Latest 28 October 2026: [Pro09](runs/20261028-protenix-endpoint-fix-09/README.md) native29838596 and [DB13](runs/20261028-dbmol-endpoint-recovery-13/README.md) native29838712 passed independently verified separate endpoint qualification. Original failures remain failed. [Continuation14](runs/20261028-precision-continuation-14/README.md) integrates these checkers with the original full-model drivers, pilots, runtime and whole-storage guards; its 590-case CPU suite and native integration are separate required gates before any optimizer child. Read its actual receipts for submission state.

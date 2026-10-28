@@ -1,0 +1,33 @@
+{
+  "status": "preserved_CPU_fixture_message_failure_no_native_or_optimizer_submitted",
+  "source": {
+    "files": 41,
+    "manifest_sha256": "4d29d85856e696d7fc096dc5f12bd54ed51d64fc2032946be2b51a8d5b4c480c",
+    "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-release-17/source"
+  },
+  "jobs": {
+    "after-cpu": "29841249",
+    "cpu": "29841248"
+  },
+  "raw_counts": {
+    "jax": {
+      "cases": 790,
+      "failures": 1,
+      "passed": 789
+    },
+    "torch": {
+      "cases": 17,
+      "failures": 0,
+      "passed": 17
+    }
+  },
+  "original_results_changed": false,
+  "assessment": {
+    "bytes": 23448,
+    "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision17-fixture-failure-proof-01/assessment.json",
+    "sha256": "17ae15f2f278793da732a6a5f49eab4ed2cef158646c3ea1a67d62c8929a712a"
+  },
+  "native_jobs_submitted": false,
+  "optimizer_jobs_submitted": false,
+  "superseded_by": "20261028-precision-continuation-18"
+}

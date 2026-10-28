@@ -1,0 +1,686 @@
+{
+  "after_cpu": {
+    "argv": [
+      "bsub",
+      "-q",
+      "hpc",
+      "-n",
+      "1",
+      "-R",
+      "span[hosts=1]",
+      "-R",
+      "rusage[mem=2GB]",
+      "-W",
+      "00:20",
+      "-J",
+      "mosaic-precision17-after-cpu",
+      "-oo",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-17/after-cpu/stdout.%J.log",
+      "-eo",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-17/after-cpu/stderr.%J.log",
+      "-w",
+      "ended(29841248)",
+      "bash",
+      "-l",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-release-17/source/scripts/precision_continuation_stage.lsf",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-release-17/source",
+      "4d29d85856e696d7fc096dc5f12bd54ed51d64fc2032946be2b51a8d5b4c480c",
+      "after-cpu",
+      "all",
+      "0"
+    ],
+    "arm": "all",
+    "dependency": "ended(29841248)",
+    "job_id": "29841249",
+    "offset": 0,
+    "phase": "after-cpu",
+    "returncode": 0,
+    "source_manifest_sha256": "4d29d85856e696d7fc096dc5f12bd54ed51d64fc2032946be2b51a8d5b4c480c",
+    "status": "submitted",
+    "stderr": "",
+    "stdout": "Job <29841249> is submitted to queue <hpc>.\n",
+    "submitted_utc": "2026-10-28T14:20:03.333037+00:00"
+  },
+  "cpu": {
+    "argv": [
+      "bsub",
+      "-q",
+      "hpc",
+      "-n",
+      "4",
+      "-R",
+      "span[hosts=1]",
+      "-R",
+      "rusage[mem=4GB]",
+      "-W",
+      "01:00",
+      "-J",
+      "mosaic-precision17-cpu",
+      "-oo",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-17/cpu/stdout.%J.log",
+      "-eo",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-17/cpu/stderr.%J.log",
+      "bash",
+      "-l",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-release-17/source/scripts/precision_continuation_stage.lsf",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-release-17/source",
+      "4d29d85856e696d7fc096dc5f12bd54ed51d64fc2032946be2b51a8d5b4c480c",
+      "cpu",
+      "all",
+      "0"
+    ],
+    "arm": "all",
+    "dependency": null,
+    "job_id": "29841248",
+    "offset": 0,
+    "phase": "cpu",
+    "returncode": 0,
+    "source_manifest_sha256": "4d29d85856e696d7fc096dc5f12bd54ed51d64fc2032946be2b51a8d5b4c480c",
+    "status": "submitted",
+    "stderr": "",
+    "stdout": "Job <29841248> is submitted to queue <hpc>.\n",
+    "submitted_utc": "2026-10-28T14:20:02.958648+00:00"
+  },
+  "monitor_remains_paused": true,
+  "optimization_settings_changed": false,
+  "original_results_changed": false,
+  "preparation": {
+    "archive_bytes": 327350,
+    "archive_sha256": "c20a2ae2f78a9b19c742689e72c481d8ade21a4b8e15c5f8b8f7c75aea3488b7",
+    "cpu_counts": {
+      "tests.test_admission": 50,
+      "tests.test_continuation_driver": 56,
+      "tests.test_continuation_ops": 107,
+      "tests.test_cuda_ownership": 42,
+      "tests.test_current_capacity": 5,
+      "tests.test_dbmol_endpoint_precision": 36,
+      "tests.test_dbmol_reference": 17,
+      "tests.test_logit_admission": 14,
+      "tests.test_measurement_resolution": 10,
+      "tests.test_precision_continuation_driver": 99,
+      "tests.test_precision_continuation_hooks": 57,
+      "tests.test_precision_continuation_ops": 130,
+      "tests.test_protenix_reference_worker": 58,
+      "tests.test_qualification": 19,
+      "tests.test_recovery_capacity": 11,
+      "tests.test_rolling_capacity": 36,
+      "tests.test_segment_capacity": 60
+    },
+    "files": 41,
+    "jobs_submitted": false,
+    "manifest_sha256": "4d29d85856e696d7fc096dc5f12bd54ed51d64fc2032946be2b51a8d5b4c480c",
+    "optimization_settings_changed": false,
+    "original_results_changed": false,
+    "plan_sha256": "87b19b37147af451ed4cbee3e8d0bc276d3f4838abd27a1cb2da35717e0b0b00",
+    "status": "prepared_not_validated_not_staged"
+  },
+  "qualified_adoption": {
+    "arms": {
+      "dbmol": {
+        "endpoint": {
+          "bytes": 26782,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-08/dbmol-segment-05000/payload/study/case-0/snapshots/step-2500.npz",
+          "sha256": "c11bd0ac8f38d651cc4d98ca11958f7454eeee5ab8512eca1e3ff3e1d29485bb"
+        },
+        "original_gate_replaced": false,
+        "original_scientific_status": "failed",
+        "status": "failed_original_artifact_adopted"
+      },
+      "protenix": {
+        "endpoint": {
+          "bytes": 14284,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-segment-0000/payload/study/case-0/snapshots/step-10000.npz",
+          "sha256": "6be2b3868d58162d4aa3cc9d960cfb85a84d4078748f0b24d50b138ae3e47dbd"
+        },
+        "original_gate_replaced": false,
+        "original_scientific_status": "failed",
+        "status": "failed_original_artifact_adopted"
+      }
+    },
+    "original_results_changed": false,
+    "qualified_native_components": {
+      "arms": {
+        "dbmol": {
+          "assessment": {
+            "bytes": 357,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-13/gpu/payload/assessment.json",
+            "sha256": "633ea391b44332c1a04182aafb4e692a01a0dba3583f88ab8f5e06d91ec7c0e1"
+          },
+          "full_continuation_admission_established": false,
+          "job_id": "29838712",
+          "native_policy": "dbmol-separate-precision-finer-admission-v1",
+          "source": {
+            "files": 14,
+            "manifest_sha256": "0f82d44bbb65ea957a7e5faa9e9837aba7fc1f2256f7344a96606b11ef3d664d",
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-release-13/source"
+          },
+          "status": "passed_native_component_qualification_only"
+        },
+        "protenix": {
+          "assessment": {
+            "bytes": 2133,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/assessment.json",
+            "sha256": "bb4ed22fb92d25e5c8de46ea3c4d68a8ed2162d5621b136966da37d36b42e82b"
+          },
+          "full_continuation_admission_established": false,
+          "job_id": "29838596",
+          "native_policy": "protenix-separate-precision-admission-v1",
+          "source": {
+            "files": 20,
+            "manifest_sha256": "f2043af74b8fa9ff485a44b80fcf96454bf8585868859389828c37f0073a3664",
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-release-09/source"
+          },
+          "status": "passed_native_component_qualification_only"
+        }
+      },
+      "full_continuation_admission_established": false,
+      "original_results_changed": false,
+      "status": "passed_readonly_native_qualification_adoption"
+    },
+    "status": "read_only_failed_artifact_adoption"
+  },
+  "status": "allocated_cpu_submitted_native_and_optimizer_not_established",
+  "storage": {
+    "adapter_version": "mosaic-rolling-work3-adapter-v1",
+    "all_retained_mosaic_bytes_charged_once": true,
+    "available_bytes": 45124486144,
+    "available_files": 19428089,
+    "byte_margin": 33287229952,
+    "entire_tree_stale_charge_bytes": 16078797824,
+    "entire_tree_stale_charge_files": 191709,
+    "file_headroom_scope": "No independent filesystem inode evidence; finite account quota remains mandatory",
+    "file_margin": 19233395,
+    "file_reserve": 130000,
+    "filesystem_free_bytes": 543881154789376,
+    "filesystem_inode_observation": {
+      "f_favail": 0,
+      "f_ffree": 0,
+      "f_files": 0
+    },
+    "filesystem_inode_reporting": "unreported_all_zero",
+    "future_admitted_bytes": 7542288896,
+    "future_admitted_files": 64694,
+    "historical_gate_results_changed": false,
+    "historical_lifetime_allowance_chain_used": false,
+    "inventory_proof": {
+      "bytes": 5694,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-17/preflight/rolling-capacity-preflight-1793197163336432479/inventory.json",
+      "sha256": "60a4cf22a4cc8ffa60cbcd45a0d82871e55a7f3215c75ba7d60ea8776cf7bb22"
+    },
+    "later_segments_admitted": false,
+    "ledger": {
+      "account": {
+        "id": 306121,
+        "name": "s234818"
+      },
+      "filesystem": "work3",
+      "goals": [
+        {
+          "id": "protenix",
+          "later_updates_deferred": 30000,
+          "next_scope_id": null,
+          "next_updates": 0,
+          "readmission_before_later_execution": true,
+          "saved_updates": 20000,
+          "target_updates": 50000
+        },
+        {
+          "id": "dbmol",
+          "later_updates_deferred": 2500,
+          "next_scope_id": null,
+          "next_updates": 0,
+          "readmission_before_later_execution": true,
+          "saved_updates": 7500,
+          "target_updates": 10000
+        },
+        {
+          "id": "plain-boltz",
+          "later_updates_deferred": 10000,
+          "next_scope_id": null,
+          "next_updates": 0,
+          "readmission_before_later_execution": true,
+          "saved_updates": 20000,
+          "target_updates": 30000
+        },
+        {
+          "id": "protenix-chemistry",
+          "later_updates_deferred": 40000,
+          "next_scope_id": null,
+          "next_updates": 0,
+          "readmission_before_later_execution": true,
+          "saved_updates": 10000,
+          "target_updates": 50000
+        },
+        {
+          "id": "boltz-chemistry",
+          "later_updates_deferred": 20000,
+          "next_scope_id": null,
+          "next_updates": 0,
+          "readmission_before_later_execution": true,
+          "saved_updates": 10000,
+          "target_updates": 30000
+        }
+      ],
+      "observation": {
+        "complete": true,
+        "inventory_proof": {
+          "bytes": 5694,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-17/preflight/rolling-capacity-preflight-1793197163336432479/inventory.json",
+          "sha256": "60a4cf22a4cc8ffa60cbcd45a0d82871e55a7f3215c75ba7d60ea8776cf7bb22"
+        },
+        "nofollow": true,
+        "scheduler_proof": {
+          "bytes": 7304,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-17/preflight/rolling-capacity-preflight-1793197163336432479/scheduler.json",
+          "sha256": "9c3ebe2bfdc3410cbe738803877ff880cab12d0393c7f5b6d9ce6f2a3174d25c"
+        },
+        "untracked_mosaic_writers": []
+      },
+      "phase": "preflight",
+      "scopes": [
+        {
+          "actual_bytes": 14896934400,
+          "actual_files": 170403,
+          "cap_bytes": null,
+          "cap_files": null,
+          "excluded_roots": [
+            "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-17",
+            "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-release-17",
+            "/work3/s234818/mosaic/runs/20261028-protenix-defog-30000-time-ramp-01",
+            "/work3/s234818/mosaic/releases/20261028-protenix-defog-30000-time-ramp-01",
+            "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/lrreset-analysis-03/combined-report"
+          ],
+          "id": "retained-mosaic",
+          "inventory_proof": {
+            "bytes": 5694,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-17/preflight/rolling-capacity-preflight-1793197163336432479/inventory.json",
+            "sha256": "60a4cf22a4cc8ffa60cbcd45a0d82871e55a7f3215c75ba7d60ea8776cf7bb22"
+          },
+          "liveness_proof": {
+            "bytes": 7304,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-17/preflight/rolling-capacity-preflight-1793197163336432479/scheduler.json",
+            "sha256": "9c3ebe2bfdc3410cbe738803877ff880cab12d0393c7f5b6d9ce6f2a3174d25c"
+          },
+          "quota_inclusion_proof": null,
+          "role": "history",
+          "root": "/work3/s234818/mosaic",
+          "state": "retained"
+        },
+        {
+          "actual_bytes": 7680,
+          "actual_files": 1,
+          "cap_bytes": 2147483648,
+          "cap_files": 30000,
+          "excluded_roots": [
+            "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-17/protenix-segment-20000/payload/study",
+            "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-17/dbmol-segment-07500/payload/study"
+          ],
+          "id": "own-control",
+          "inventory_proof": {
+            "bytes": 5694,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-17/preflight/rolling-capacity-preflight-1793197163336432479/inventory.json",
+            "sha256": "60a4cf22a4cc8ffa60cbcd45a0d82871e55a7f3215c75ba7d60ea8776cf7bb22"
+          },
+          "liveness_proof": {
+            "bytes": 164449,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-release-17/source/plan.json",
+            "sha256": "87b19b37147af451ed4cbee3e8d0bc276d3f4838abd27a1cb2da35717e0b0b00"
+          },
+          "quota_inclusion_proof": null,
+          "role": "control",
+          "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-17",
+          "state": "admitted"
+        },
+        {
+          "actual_bytes": 2240512,
+          "actual_files": 43,
+          "cap_bytes": 67108864,
+          "cap_files": 3000,
+          "excluded_roots": [],
+          "id": "own-release",
+          "inventory_proof": {
+            "bytes": 5694,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-17/preflight/rolling-capacity-preflight-1793197163336432479/inventory.json",
+            "sha256": "60a4cf22a4cc8ffa60cbcd45a0d82871e55a7f3215c75ba7d60ea8776cf7bb22"
+          },
+          "liveness_proof": {
+            "bytes": 960225,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-release-17/source/source_manifest.json",
+            "sha256": "4d29d85856e696d7fc096dc5f12bd54ed51d64fc2032946be2b51a8d5b4c480c"
+          },
+          "quota_inclusion_proof": null,
+          "role": "release",
+          "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-release-17",
+          "state": "admitted"
+        },
+        {
+          "actual_bytes": 1143774208,
+          "actual_files": 21076,
+          "cap_bytes": 4294967296,
+          "cap_files": 30000,
+          "excluded_roots": [],
+          "id": "independent-29839884",
+          "inventory_proof": {
+            "bytes": 5694,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-17/preflight/rolling-capacity-preflight-1793197163336432479/inventory.json",
+            "sha256": "60a4cf22a4cc8ffa60cbcd45a0d82871e55a7f3215c75ba7d60ea8776cf7bb22"
+          },
+          "liveness_proof": {
+            "bytes": 7304,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-17/preflight/rolling-capacity-preflight-1793197163336432479/scheduler.json",
+            "sha256": "9c3ebe2bfdc3410cbe738803877ff880cab12d0393c7f5b6d9ce6f2a3174d25c"
+          },
+          "quota_inclusion_proof": null,
+          "role": "defog",
+          "root": "/work3/s234818/mosaic/runs/20261028-protenix-defog-30000-time-ramp-01",
+          "state": "active"
+        },
+        {
+          "actual_bytes": 35834880,
+          "actual_files": 183,
+          "cap_bytes": 67108864,
+          "cap_files": 3000,
+          "excluded_roots": [],
+          "id": "independent-29839884-release",
+          "inventory_proof": {
+            "bytes": 5694,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-17/preflight/rolling-capacity-preflight-1793197163336432479/inventory.json",
+            "sha256": "60a4cf22a4cc8ffa60cbcd45a0d82871e55a7f3215c75ba7d60ea8776cf7bb22"
+          },
+          "liveness_proof": {
+            "bytes": 21782,
+            "path": "/work3/s234818/mosaic/releases/20261028-protenix-defog-30000-time-ramp-01/source_manifest.json",
+            "sha256": "a15c8bb2a8ac7e9e12a65c54079e14c994e53b119b9a59e1a9788b5044d8686f"
+          },
+          "quota_inclusion_proof": null,
+          "role": "release",
+          "root": "/work3/s234818/mosaic/releases/20261028-protenix-defog-30000-time-ramp-01",
+          "state": "admitted"
+        },
+        {
+          "actual_bytes": 6144,
+          "actual_files": 3,
+          "cap_bytes": 2147483648,
+          "cap_files": 20000,
+          "excluded_roots": [],
+          "id": "independent-29796558",
+          "inventory_proof": {
+            "bytes": 5694,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-17/preflight/rolling-capacity-preflight-1793197163336432479/inventory.json",
+            "sha256": "60a4cf22a4cc8ffa60cbcd45a0d82871e55a7f3215c75ba7d60ea8776cf7bb22"
+          },
+          "liveness_proof": {
+            "bytes": 7304,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-17/preflight/rolling-capacity-preflight-1793197163336432479/scheduler.json",
+            "sha256": "9c3ebe2bfdc3410cbe738803877ff880cab12d0393c7f5b6d9ce6f2a3174d25c"
+          },
+          "quota_inclusion_proof": null,
+          "role": "cache",
+          "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/lrreset-analysis-03/combined-report",
+          "state": "admitted"
+        },
+        {
+          "actual_bytes": 0,
+          "actual_files": 0,
+          "cap_bytes": null,
+          "cap_files": null,
+          "excluded_roots": [],
+          "id": "protenix-segment-20000",
+          "inventory_proof": {
+            "bytes": 5694,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-17/preflight/rolling-capacity-preflight-1793197163336432479/inventory.json",
+            "sha256": "60a4cf22a4cc8ffa60cbcd45a0d82871e55a7f3215c75ba7d60ea8776cf7bb22"
+          },
+          "liveness_proof": {
+            "bytes": 164449,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-release-17/source/plan.json",
+            "sha256": "87b19b37147af451ed4cbee3e8d0bc276d3f4838abd27a1cb2da35717e0b0b00"
+          },
+          "quota_inclusion_proof": null,
+          "role": "segment",
+          "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-17/protenix-segment-20000/payload/study",
+          "state": "deferred"
+        },
+        {
+          "actual_bytes": 0,
+          "actual_files": 0,
+          "cap_bytes": null,
+          "cap_files": null,
+          "excluded_roots": [],
+          "id": "dbmol-segment-7500",
+          "inventory_proof": {
+            "bytes": 5694,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-17/preflight/rolling-capacity-preflight-1793197163336432479/inventory.json",
+            "sha256": "60a4cf22a4cc8ffa60cbcd45a0d82871e55a7f3215c75ba7d60ea8776cf7bb22"
+          },
+          "liveness_proof": {
+            "bytes": 164449,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-release-17/source/plan.json",
+            "sha256": "87b19b37147af451ed4cbee3e8d0bc276d3f4838abd27a1cb2da35717e0b0b00"
+          },
+          "quota_inclusion_proof": null,
+          "role": "segment",
+          "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-17/dbmol-segment-07500/payload/study",
+          "state": "deferred"
+        }
+      ],
+      "shared_account": {
+        "entry_and_periodic_recheck_required": true,
+        "non_mosaic_job_ids": [
+          "29838737",
+          "29838765",
+          "29838766",
+          "29839755",
+          "29839756"
+        ],
+        "their_future_bytes_reserved": false,
+        "whole_account_reservation": false
+      },
+      "source_manifest_sha256": "4d29d85856e696d7fc096dc5f12bd54ed51d64fc2032946be2b51a8d5b4c480c",
+      "version": "mosaic-rolling-segment-capacity-v1"
+    },
+    "lifetime_targets_preserved": true,
+    "limitation": "Fresh scoped admission observation, not an account reservation; unrelated jobs can consume capacity; entry and periodic rechecks mandatory",
+    "phase": "preflight",
+    "quota": {
+      "available_bytes_lower": 61203283968,
+      "available_files_lower": 19619798,
+      "pools": [
+        {
+          "hard_bytes_lower": null,
+          "hard_files": null,
+          "hard_reported": "unlimited",
+          "used_bytes_upper": null,
+          "used_files": 0,
+          "used_reported": "0 Byte"
+        },
+        {
+          "hard_bytes_lower": null,
+          "hard_files": null,
+          "hard_reported": "unlimited",
+          "used_bytes_upper": null,
+          "used_files": 0,
+          "used_reported": "0 Byte"
+        },
+        {
+          "hard_bytes_lower": null,
+          "hard_files": null,
+          "hard_reported": "unlimited",
+          "used_bytes_upper": null,
+          "used_files": 0,
+          "used_reported": "0 Byte"
+        },
+        {
+          "hard_bytes_lower": null,
+          "hard_files": null,
+          "hard_reported": "unlimited",
+          "used_bytes_upper": null,
+          "used_files": 0,
+          "used_reported": "0 Byte"
+        },
+        {
+          "hard_bytes_lower": null,
+          "hard_files": null,
+          "hard_reported": "unlimited",
+          "used_bytes_upper": null,
+          "used_files": 0,
+          "used_reported": "0 Byte"
+        },
+        {
+          "hard_bytes_lower": 107374182400,
+          "hard_files": 20000000,
+          "hard_reported": "100.00 GiB",
+          "remaining_bytes": 61203283968,
+          "remaining_files": 19619798,
+          "used_bytes_upper": 46170898432,
+          "used_files": 380202,
+          "used_reported": "42.38 GiB"
+        }
+      ],
+      "raw_sha256": "9c77303d388f75db555743ef8d094513b873319d95404c4a83da790e3fe77b66",
+      "rounding": "each finite used quota rounded up and hard quota down to whole GiB"
+    },
+    "raw_quota_command": {
+      "bytes": 2134,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-17/preflight/rolling-capacity-preflight-1793197163336432479/quota.json",
+      "sha256": "72697abb3b4cefc77539ded6fa6313bdbe7be8ba2135e10b3308840cae56ee5a"
+    },
+    "required_bytes": 11837256192,
+    "required_files": 194694,
+    "reserve_bytes": 4294967296,
+    "saved_results_changed": false,
+    "scheduler_proof": {
+      "bytes": 7304,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-17/preflight/rolling-capacity-preflight-1793197163336432479/scheduler.json",
+      "sha256": "9c3ebe2bfdc3410cbe738803877ff880cab12d0393c7f5b6d9ce6f2a3174d25c"
+    },
+    "scientific_settings_or_guards_changed": false,
+    "scope": "All explicitly inventoried Mosaic active/admitted/requested bounded scopes; deferred targets must re-admit",
+    "scope_accounting": [
+      {
+        "actual_bytes": 14896934400,
+        "actual_files": 170403,
+        "entire_mutable_or_unproven_tree_stale_charge_bytes": 14896934400,
+        "entire_mutable_or_unproven_tree_stale_charge_files": 170403,
+        "excluded_roots": [
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-17",
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-release-17",
+          "/work3/s234818/mosaic/runs/20261028-protenix-defog-30000-time-ramp-01",
+          "/work3/s234818/mosaic/releases/20261028-protenix-defog-30000-time-ramp-01",
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/lrreset-analysis-03/combined-report"
+        ],
+        "id": "retained-mosaic",
+        "quota_inclusion_proved": false,
+        "remaining_admitted_cap_bytes": 0,
+        "remaining_admitted_cap_files": 0,
+        "role": "history",
+        "root": "/work3/s234818/mosaic",
+        "state": "retained"
+      },
+      {
+        "actual_bytes": 7680,
+        "actual_files": 1,
+        "entire_mutable_or_unproven_tree_stale_charge_bytes": 7680,
+        "entire_mutable_or_unproven_tree_stale_charge_files": 1,
+        "excluded_roots": [
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-17/protenix-segment-20000/payload/study",
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-17/dbmol-segment-07500/payload/study"
+        ],
+        "id": "own-control",
+        "quota_inclusion_proved": false,
+        "remaining_admitted_cap_bytes": 2147475968,
+        "remaining_admitted_cap_files": 29999,
+        "role": "control",
+        "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-17",
+        "state": "admitted"
+      },
+      {
+        "actual_bytes": 2240512,
+        "actual_files": 43,
+        "entire_mutable_or_unproven_tree_stale_charge_bytes": 2240512,
+        "entire_mutable_or_unproven_tree_stale_charge_files": 43,
+        "excluded_roots": [],
+        "id": "own-release",
+        "quota_inclusion_proved": false,
+        "remaining_admitted_cap_bytes": 64868352,
+        "remaining_admitted_cap_files": 2957,
+        "role": "release",
+        "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-release-17",
+        "state": "admitted"
+      },
+      {
+        "actual_bytes": 1143774208,
+        "actual_files": 21076,
+        "entire_mutable_or_unproven_tree_stale_charge_bytes": 1143774208,
+        "entire_mutable_or_unproven_tree_stale_charge_files": 21076,
+        "excluded_roots": [],
+        "id": "independent-29839884",
+        "quota_inclusion_proved": false,
+        "remaining_admitted_cap_bytes": 3151193088,
+        "remaining_admitted_cap_files": 8924,
+        "role": "defog",
+        "root": "/work3/s234818/mosaic/runs/20261028-protenix-defog-30000-time-ramp-01",
+        "state": "active"
+      },
+      {
+        "actual_bytes": 35834880,
+        "actual_files": 183,
+        "entire_mutable_or_unproven_tree_stale_charge_bytes": 35834880,
+        "entire_mutable_or_unproven_tree_stale_charge_files": 183,
+        "excluded_roots": [],
+        "id": "independent-29839884-release",
+        "quota_inclusion_proved": false,
+        "remaining_admitted_cap_bytes": 31273984,
+        "remaining_admitted_cap_files": 2817,
+        "role": "release",
+        "root": "/work3/s234818/mosaic/releases/20261028-protenix-defog-30000-time-ramp-01",
+        "state": "admitted"
+      },
+      {
+        "actual_bytes": 6144,
+        "actual_files": 3,
+        "entire_mutable_or_unproven_tree_stale_charge_bytes": 6144,
+        "entire_mutable_or_unproven_tree_stale_charge_files": 3,
+        "excluded_roots": [],
+        "id": "independent-29796558",
+        "quota_inclusion_proved": false,
+        "remaining_admitted_cap_bytes": 2147477504,
+        "remaining_admitted_cap_files": 19997,
+        "role": "cache",
+        "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/lrreset-analysis-03/combined-report",
+        "state": "admitted"
+      },
+      {
+        "actual_bytes": 0,
+        "actual_files": 0,
+        "entire_mutable_or_unproven_tree_stale_charge_bytes": 0,
+        "entire_mutable_or_unproven_tree_stale_charge_files": 0,
+        "excluded_roots": [],
+        "id": "protenix-segment-20000",
+        "quota_inclusion_proved": false,
+        "remaining_admitted_cap_bytes": 0,
+        "remaining_admitted_cap_files": 0,
+        "role": "segment",
+        "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-17/protenix-segment-20000/payload/study",
+        "state": "deferred"
+      },
+      {
+        "actual_bytes": 0,
+        "actual_files": 0,
+        "entire_mutable_or_unproven_tree_stale_charge_bytes": 0,
+        "entire_mutable_or_unproven_tree_stale_charge_files": 0,
+        "excluded_roots": [],
+        "id": "dbmol-segment-7500",
+        "quota_inclusion_proved": false,
+        "remaining_admitted_cap_bytes": 0,
+        "remaining_admitted_cap_files": 0,
+        "role": "segment",
+        "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-17/dbmol-segment-07500/payload/study",
+        "state": "deferred"
+      }
+    ],
+    "source_manifest_sha256": "4d29d85856e696d7fc096dc5f12bd54ed51d64fc2032946be2b51a8d5b4c480c",
+    "status": "passed",
+    "version": "mosaic-rolling-segment-capacity-v1"
+  }
+}

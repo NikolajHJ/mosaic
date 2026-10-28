@@ -1,0 +1,7 @@
+{
+  "status": "failed_local_metadata_reserialization_assertion_preserved",
+  "reason": "A metadata auditor tried to reserialize the original retirement JSON to verify its bytes. Canonical transport had reordered object keys; original file bytes must be downloaded and checked directly.",
+  "source_or_scientific_gate_changed": false,
+  "new_jobs_or_saved_results_changed": false,
+  "resolution": "Read original raw bytes, verify exact path/length/SHA and JSON equality against the returned metadata; retain this failed assertion."
+}

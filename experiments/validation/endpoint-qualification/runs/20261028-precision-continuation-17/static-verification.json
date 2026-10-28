@@ -1,0 +1,29 @@
+{
+  "status": "passed_static_only_not_allocated_validation",
+  "files": 41,
+  "safe_members": 42,
+  "cpu_declared_cases": 807,
+  "manifest_sha256": "4d29d85856e696d7fc096dc5f12bd54ed51d64fc2032946be2b51a8d5b4c480c",
+  "archive_sha256": "c20a2ae2f78a9b19c742689e72c481d8ade21a4b8e15c5f8b8f7c75aea3488b7",
+  "archive_bytes": 327350,
+  "short_segments": {
+    "protenix": {
+      "offsets": [
+        20000
+      ],
+      "segment_steps": 30000,
+      "global_target": 50000,
+      "rate": 0.3
+    },
+    "dbmol": {
+      "offsets": [
+        7500
+      ],
+      "segment_steps": 2500,
+      "global_target": 10000,
+      "rate": 0.0025
+    }
+  },
+  "scientific_or_numerical_evaluation": false,
+  "remote_staging_or_submission": false
+}

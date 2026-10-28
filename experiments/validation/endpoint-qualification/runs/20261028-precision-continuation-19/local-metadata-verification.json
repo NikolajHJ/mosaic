@@ -1,0 +1,109 @@
+{
+  "status": "passed_local_metadata_only",
+  "cases": 98,
+  "pytest_body_seconds": 0.94,
+  "assessment": {
+    "status": "passed",
+    "cases": 98,
+    "expected_cases": 98,
+    "elapsed_seconds": 2.125,
+    "argv": [
+      "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261028-precision-continuation-18\\local-metadata-venv\\Scripts\\python.exe",
+      "-I",
+      "-B",
+      "-m",
+      "pytest",
+      "-p",
+      "no:cacheprovider",
+      "--noconftest",
+      "--import-mode=importlib",
+      "--rootdir",
+      "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\validation\\endpoint-qualification",
+      "-o",
+      "addopts=",
+      "-o",
+      "pythonpath=",
+      "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\validation\\endpoint-qualification\\tests\\test_runtime_reservations.py",
+      "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\validation\\endpoint-qualification\\tests\\test_segment_capacity.py",
+      "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\validation\\endpoint-qualification\\tests\\test_rolling_capacity.py::test_file_capacity_funds_all_three_actual_retained_file_streams",
+      "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\validation\\endpoint-qualification\\tests\\test_rolling_capacity.py::test_large_verified_validation_cohort_expands_fixed_boundary_allowance",
+      "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\validation\\endpoint-qualification\\tests\\test_rolling_capacity.py::test_file_capacity_requires_finite_complete_new_validation_count",
+      "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\validation\\endpoint-qualification\\tests\\test_rolling_capacity.py::test_completed_validation_identity_survives_different_host_device_inode_and_blocks",
+      "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\validation\\endpoint-qualification\\tests\\test_rolling_capacity.py::test_completed_validation_identity_rejects_same_length_content_or_path_change",
+      "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\validation\\endpoint-qualification\\tests\\test_rolling_capacity.py::test_windows_handle_ctime_difference_does_not_weaken_posix_race_checks",
+      "-q",
+      "--tb=short",
+      "--basetemp",
+      "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261028-precision-continuation-18\\local-metadata-06\\tmp",
+      "--junitxml=C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261028-precision-continuation-18\\local-metadata-06\\tests.xml"
+    ],
+    "returncode": 0,
+    "source_proofs": [
+      {
+        "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\validation\\endpoint-qualification\\tests\\test_rolling_capacity.py",
+        "bytes": 26990,
+        "sha256": "2391723cbc85792edf6eac6e4b52c322db6b18aa299a9bf68953d83c58e44eda"
+      },
+      {
+        "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\validation\\endpoint-qualification\\tests\\test_runtime_reservations.py",
+        "bytes": 8828,
+        "sha256": "802256fad766d36d95e119ff09d74c9570d0aecec661612f6338bdce358d702f"
+      },
+      {
+        "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\validation\\endpoint-qualification\\tests\\test_segment_capacity.py",
+        "bytes": 13766,
+        "sha256": "abf55907c58bd5dd060d48a661cc394492c1a9c615008c558793a9e421b5c305"
+      },
+      {
+        "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\validation\\endpoint-qualification\\scripts\\precision_continuation_driver.py",
+        "bytes": 43292,
+        "sha256": "ba7f36a81c847fe9576d30f60d6056313d04ea9f01b9f232e5c7a9cef2ce6120"
+      },
+      {
+        "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\validation\\endpoint-qualification\\scripts\\segment_capacity.py",
+        "bytes": 17276,
+        "sha256": "2c56718ed5a825b18f198bbc44eab6b2d442c215ea5e2772a30f41a75d153156"
+      },
+      {
+        "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\validation\\endpoint-qualification\\scripts\\rolling_capacity.py",
+        "bytes": 36195,
+        "sha256": "953a4cc65c429984b7d20387b8434886142d117b431d499e20aa0b06915886e5"
+      }
+    ],
+    "scope": "portable resource/runtime metadata only",
+    "scientific_evaluation": false,
+    "allocation_fabricated": false,
+    "HPC_full_suite_still_required": true,
+    "native_or_gradient_readiness_established": false,
+    "external_temp_permissions_or_files_changed": false
+  },
+  "raw_XML_sha256": "2045974de0112ef9f59e6f602ce5b6eb18d438cc1e4feffb692fc3ba1bce2ea1",
+  "scientific_libraries_absent": {
+    "numpy": true,
+    "jax": true,
+    "torch": true,
+    "equinox": true,
+    "mosaic": true
+  },
+  "test_environment_packages": [
+    "colorama==0.4.6",
+    "iniconfig==2.3.1",
+    "packaging==26.3",
+    "pluggy==1.7.0",
+    "Pygments==2.21.0",
+    "pytest==9.2.0"
+  ],
+  "allocation_fabricated": false,
+  "scientific_or_native_readiness_established": false,
+  "full_allocated_suite_still_required": true,
+  "candidate19_packaged_or_submitted": false,
+  "prior_local_attempts_preserved": {
+    "01": "60 pass/28 external-temp setup errors",
+    "02": "88 pass",
+    "03": "95 pass",
+    "04": "95 pass/2 Windows O_NONBLOCK failures",
+    "05": "96 pass/1 Windows stat/fstat ctime failure",
+    "06": "98 pass; portable flags/ctime handling corrected, POSIX checks retained"
+  },
+  "raw_XML_repository_path": "experiments/validation/endpoint-qualification/runs/20261028-precision-continuation-19/local-metadata-tests.xml"
+}

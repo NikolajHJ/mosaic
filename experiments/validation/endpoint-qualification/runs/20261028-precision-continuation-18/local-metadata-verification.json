@@ -1,0 +1,80 @@
+{
+  "status": "passed_portable_metadata_only",
+  "cases": 95,
+  "raw_xml_sha256": "a502c1ee85a063247bb1df3fe121b79f85c69e898c0f2cda9ba8537017860043",
+  "assessment_sha256": "a4a7389ed18e7e82c8d20398c98f2ae8d2242db39962dc69e891204155f042d2",
+  "assessment": {
+    "status": "passed",
+    "cases": 95,
+    "expected_cases": 95,
+    "elapsed_seconds": 3.2189999998081475,
+    "argv": [
+      "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261028-precision-continuation-18\\local-metadata-venv\\Scripts\\python.exe",
+      "-I",
+      "-m",
+      "pytest",
+      "--noconftest",
+      "--import-mode=importlib",
+      "--rootdir",
+      "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\validation\\endpoint-qualification",
+      "-o",
+      "addopts=",
+      "-o",
+      "pythonpath=",
+      "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\validation\\endpoint-qualification\\tests\\test_runtime_reservations.py",
+      "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\validation\\endpoint-qualification\\tests\\test_segment_capacity.py",
+      "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\validation\\endpoint-qualification\\tests\\test_rolling_capacity.py::test_file_capacity_funds_all_three_actual_retained_file_streams",
+      "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\validation\\endpoint-qualification\\tests\\test_rolling_capacity.py::test_large_verified_validation_cohort_expands_fixed_boundary_allowance",
+      "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\validation\\endpoint-qualification\\tests\\test_rolling_capacity.py::test_file_capacity_requires_finite_complete_new_validation_count",
+      "-q",
+      "--tb=short",
+      "--basetemp",
+      "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261028-precision-continuation-18\\local-metadata-03\\tmp",
+      "--junitxml=C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261028-precision-continuation-18\\local-metadata-03\\tests.xml"
+    ],
+    "returncode": 0,
+    "source_proofs": [
+      {
+        "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\validation\\endpoint-qualification\\tests\\test_rolling_capacity.py",
+        "bytes": 20711,
+        "sha256": "63dfa38e33a0e58f2fd0d81b06c52ea39580175f3a4c14816cad23eb952dd7d7"
+      },
+      {
+        "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\validation\\endpoint-qualification\\tests\\test_runtime_reservations.py",
+        "bytes": 8828,
+        "sha256": "802256fad766d36d95e119ff09d74c9570d0aecec661612f6338bdce358d702f"
+      },
+      {
+        "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\validation\\endpoint-qualification\\tests\\test_segment_capacity.py",
+        "bytes": 13766,
+        "sha256": "abf55907c58bd5dd060d48a661cc394492c1a9c615008c558793a9e421b5c305"
+      },
+      {
+        "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\validation\\endpoint-qualification\\scripts\\precision_continuation_driver.py",
+        "bytes": 43292,
+        "sha256": "ba7f36a81c847fe9576d30f60d6056313d04ea9f01b9f232e5c7a9cef2ce6120"
+      },
+      {
+        "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\validation\\endpoint-qualification\\scripts\\segment_capacity.py",
+        "bytes": 17276,
+        "sha256": "2c56718ed5a825b18f198bbc44eab6b2d442c215ea5e2772a30f41a75d153156"
+      },
+      {
+        "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\validation\\endpoint-qualification\\scripts\\rolling_capacity.py",
+        "bytes": 28144,
+        "sha256": "29fb13d1747738414a3975fd6ba9e0256761fcdb7feb34972c6d4de1ca38aef5"
+      }
+    ],
+    "scope": "portable resource/runtime metadata only",
+    "scientific_evaluation": false,
+    "allocation_fabricated": false,
+    "HPC_full_suite_still_required": true,
+    "native_or_gradient_readiness_established": false,
+    "external_temp_permissions_or_files_changed": false
+  },
+  "initial_local_attempt": {
+    "storage_passed": 60,
+    "runtime_setup_errors": 28,
+    "reason": "Existing default external pytest temp directory denied access; caller switched to a fresh scoped workspace basetemp. Original XML retained; external permissions/files not changed."
+  }
+}

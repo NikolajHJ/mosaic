@@ -33,6 +33,23 @@ or resuming the paused monitor.
 
 ## Experiment organization and run history — required
 
+For compute allocations, prefer completing the largest remaining authorized
+update budget that fits one job. Do not introduce arbitrary small update chunks
+just to request a shorter walltime. Base reservations on complete measured pilot
+speed, model/check/setup costs and documented safety margins, respecting the
+scheduler limit and concurrent storage needs. If the full remainder cannot fit,
+use the largest justified bounded job while preserving the total target. Keep
+optimization settings, saved results and scientific checks unchanged. This user
+preference supersedes the historical fixed-small-chunk allocation plan.
+
+Run explicitly portable metadata checks locally before packaging where possible.
+For endpoint launch/resource work, use
+`experiments/validation/endpoint-qualification/scripts/local_metadata_preflight.py`
+with a pytest Python and a fresh output under `results/`. It selects only resource,
+runtime and file-count contracts; it loads no scientific model and must never
+fabricate `LSB_JOBID`. Do not bypass allocated guards on other tests. Local passes
+do not replace the full allocated release suite or native/GPU/gradient checks.
+
 Before creating, changing, running or submitting experiment scripts, read:
 
 1. [Experiment folder policy and inventory](experiments/README.md).

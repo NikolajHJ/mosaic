@@ -18,12 +18,12 @@ import tarfile
 
 REPO = Path(__file__).resolve().parents[4]
 OWNER = REPO / "experiments/validation/endpoint-qualification"
-TAG = "20261028-precision-continuation-16"
+TAG = "20261028-precision-continuation-18"
 RUN = OWNER / "runs" / TAG
 LOCAL = REPO / "results/hpc" / TAG
 BASE = "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01"
-ROOT = BASE + "/nonchem-precision-continuation-16"
-SOURCE = BASE + "/nonchem-precision-release-16/source"
+ROOT = BASE + "/nonchem-precision-continuation-18"
+SOURCE = BASE + "/nonchem-precision-release-18/source"
 PYTHON = "/work3/s234818/mosaic/envs/protenix-tiny/bin/python"
 TORCH_PYTHON = "/work3/s234818/latentmol/env/boltz311/bin/python"
 BASE_TAG = "20261027-continuation-measurement-09"
@@ -168,13 +168,13 @@ def _scientific_argv(argv):
 def make_plan(base_members, pro_members, pro_source, db_members, db_source, metadata):
     old = json.loads(base_members["plan.json"]); db_qualified = json.loads(db_members["plan.json"])
     pro = deepcopy(next(arm for arm in old["arms"] if arm["id"] == "protenix"))
-    pro.update(segment_updates=2500, segment_steps=2500, offsets=list(range(20000, 50000, 2500)))
+    pro.update(segment_updates=30000, segment_steps=30000, offsets=[20000])
     db = deepcopy(db_qualified["original_arm"])
     require(metadata["failed_parent"]["endpoint"] == db_qualified["boundary"]
             and _scientific_argv(metadata["inputs"]["original_driver_argv"]) == _scientific_argv(db["original_argv"]),
             "Saved7500 boundary or original scientific command changed")
     db.update(start_global=7500, global_start=7500, target_global=10000, global_target=10000,
-              segment_updates=1250, segment_steps=1250, offsets=[7500, 8750],
+              segment_updates=2500, segment_steps=2500, offsets=[7500],
               parent_snapshot=deepcopy(db_qualified["boundary"]), failed_parent=metadata["failed_parent"])
     # The original scientific invocation has the established {'args': ...}
     # receipt consumed by the unchanged driver. The immediate parent wrapper's
@@ -236,8 +236,9 @@ def make_plan(base_members, pro_members, pro_source, db_members, db_source, meta
         "metadata_observed_utc": metadata["observed_utc"],
         "engineering_predecessor": metadata["engineering_predecessor"],
         "scope": "Fresh complete entry/nonraw/null/component/pilot/runtime/live-reference/startup/storage before child; original failures remain failed"}
-    current = read(LOCAL / "current-metadata01/observation.json")
-    details = read(LOCAL / "current-metadata02/observation.json")
+    previous = REPO / "results/hpc/20261028-precision-continuation-16"
+    current = read(previous / "current-metadata01/observation.json")
+    details = read(previous / "current-metadata02/observation.json")
     for packet, field in ((current, "source15_proofs"), (current, "teacher_records"), (details, "records")):
         for record in packet[field]:
             data = record["text"].encode("utf8")
@@ -253,6 +254,17 @@ def make_plan(base_members, pro_members, pro_source, db_members, db_source, meta
         "failed_jobs": {"protenix": "29839086", "dbmol": "29839088"},
         "proofs": [row["binding"] for row in current["source15_proofs"] if row["binding"]["bytes"] > 0],
         "original_results_changed": False, "failures_preserved": True}
+    retired = read(REPO / "results/hpc/20261028-precision-continuation-17/retirement-proof01/observation.json")["assessment"]
+    require(retired["value"]["status"] == "superseded_unstarted_native_jobs_and_dispatchers_intentionally_retired"
+            and retired["value"]["optimizer_children"] == []
+            and all(not p for p in retired["value"]["validation_study_presence"].values()),
+            "Old small-chunk dispatch or native work is not safely retired")
+    plan["superseded_allocation_plan"] = {"source": retired["value"]["source"],
+        "retirement_assessment": retired["binding"], "original_results_changed": False,
+        "CPU_pass_preserved": True, "reason": "User prefers full remaining work with measured reservations"}
+    failed17 = read(LOCAL / "failure17-01/observation.json")
+    plan["engineering_fixture_predecessor"] = {"source": failed17["value"]["source"],
+        "assessment": failed17["assessment"]["binding"], "original_results_changed": False}
     def deferred(name, saved, target):
         return {"id": name, "saved_updates": saved, "target_updates": target, "next_updates": 0,
                 "next_scope_id": None, "later_updates_deferred": target - saved,
@@ -281,7 +293,7 @@ def startup_adoption(source, *, tests=False):
     replacements = {old_root + "/cpu/payload/reference-startup.json": ROOT + "/cpu/payload/dbmol-reference-startup.json"}
     if tests:
         replacements = {"cpu/payload/reference-startup.json": "cpu/payload/dbmol-reference-startup.json",
-            "dbmol-endpoint-recovery-13": "nonchem-precision-continuation-16",
+            "dbmol-endpoint-recovery-13": "nonchem-precision-continuation-18",
             old_root + "/gpu/payload/reference-startup.json": ROOT + "/gpu/payload/dbmol-reference-startup.json"}
     class Change(ast.NodeTransformer):
         def visit_Constant(self, node):
@@ -320,7 +332,7 @@ def prepare(counts_path, metadata_path=None):
         "scripts/recovery_capacity.py", "tests/test_precision_continuation_driver.py", "tests/test_precision_continuation_hooks.py",
         "tests/test_precision_continuation_ops.py", "tests/test_protenix_reference_worker.py", "tests/test_recovery_capacity.py",
         "scripts/cuda_ownership.py", "tests/test_cuda_ownership.py", "scripts/segment_capacity.py", "tests/test_segment_capacity.py",
-        "scripts/rolling_capacity.py", "tests/test_rolling_capacity.py"]
+        "scripts/rolling_capacity.py", "tests/test_rolling_capacity.py", "tests/test_runtime_reservations.py"]
     for name in new_files: members[name] = (OWNER / name).read_bytes().replace(b"\r\n", b"\n")
     for name in ("scripts/dbmol_endpoint_precision.py", "tests/test_dbmol_endpoint_precision.py"):
         members[name] = db_members[name]
@@ -344,11 +356,14 @@ def prepare(counts_path, metadata_path=None):
     proofs.append(plan["base_driver"])
     proofs += plan["engineering_predecessor"]["proofs"]
     proofs += plan["launch_predecessor"]["proofs"]
+    proofs.append(plan["superseded_allocation_plan"]["retirement_assessment"])
+    proofs.append(plan["engineering_fixture_predecessor"]["assessment"])
     proofs += [row["source_manifest"] for row in plan["rolling_storage_policy"]["known_mosaic_jobs"]]
     for row in plan["qualified_admissions"].values(): proofs += row["proofs"]
     parents = deduplicate(list(base_manifest["parent_sources"]) + list(pro_manifest["parent_sources"])
         + list(db_manifest["parent_sources"]) + [base_source, pro_source, db_source, plan["engineering_predecessor"]["source"],
-                                               plan["launch_predecessor"]["source"]])
+                                               plan["launch_predecessor"]["source"], plan["superseded_allocation_plan"]["source"],
+                                               plan["engineering_fixture_predecessor"]["source"]])
     manifest = {"version": "precision-reference-continuation-source-v1", "files": {name: sha(data) for name, data in sorted(members.items())},
         "cpu_counts": counts, "parent_sources": parents, "preserved_proofs": deduplicate(proofs),
         "preserved_failed_admissions": plan["preserved_failed_admissions"], "dispatch_arms": plan["dispatch_arms"],

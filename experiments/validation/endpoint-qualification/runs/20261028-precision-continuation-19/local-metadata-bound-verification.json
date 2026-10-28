@@ -1,0 +1,123 @@
+{
+  "status": "passed",
+  "cases": 98,
+  "expected_cases": 98,
+  "elapsed_seconds": 2.577999999979511,
+  "argv": [
+    "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261028-precision-continuation-18\\local-metadata-venv\\Scripts\\python.exe",
+    "-I",
+    "-B",
+    "-m",
+    "pytest",
+    "-p",
+    "no:cacheprovider",
+    "--noconftest",
+    "--import-mode=importlib",
+    "--rootdir",
+    "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\validation\\endpoint-qualification",
+    "-o",
+    "addopts=",
+    "-o",
+    "pythonpath=",
+    "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\validation\\endpoint-qualification\\tests\\test_runtime_reservations.py",
+    "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\validation\\endpoint-qualification\\tests\\test_segment_capacity.py",
+    "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\validation\\endpoint-qualification\\tests\\test_rolling_capacity.py::test_file_capacity_funds_all_three_actual_retained_file_streams",
+    "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\validation\\endpoint-qualification\\tests\\test_rolling_capacity.py::test_large_verified_validation_cohort_expands_fixed_boundary_allowance",
+    "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\validation\\endpoint-qualification\\tests\\test_rolling_capacity.py::test_file_capacity_requires_finite_complete_new_validation_count",
+    "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\validation\\endpoint-qualification\\tests\\test_rolling_capacity.py::test_completed_validation_identity_survives_different_host_device_inode_and_blocks",
+    "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\validation\\endpoint-qualification\\tests\\test_rolling_capacity.py::test_completed_validation_identity_rejects_same_length_content_or_path_change",
+    "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\validation\\endpoint-qualification\\tests\\test_rolling_capacity.py::test_windows_handle_ctime_difference_does_not_weaken_posix_race_checks",
+    "-q",
+    "--tb=short",
+    "--basetemp",
+    "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261028-precision-continuation-18\\local-metadata-07\\tmp",
+    "--junitxml=C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261028-precision-continuation-18\\local-metadata-07\\tests.xml"
+  ],
+  "returncode": 0,
+  "source_proofs": [
+    {
+      "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\validation\\endpoint-qualification\\tests\\test_rolling_capacity.py",
+      "bytes": 26990,
+      "sha256": "2391723cbc85792edf6eac6e4b52c322db6b18aa299a9bf68953d83c58e44eda"
+    },
+    {
+      "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\validation\\endpoint-qualification\\tests\\test_runtime_reservations.py",
+      "bytes": 8828,
+      "sha256": "802256fad766d36d95e119ff09d74c9570d0aecec661612f6338bdce358d702f"
+    },
+    {
+      "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\validation\\endpoint-qualification\\tests\\test_segment_capacity.py",
+      "bytes": 13766,
+      "sha256": "abf55907c58bd5dd060d48a661cc394492c1a9c615008c558793a9e421b5c305"
+    },
+    {
+      "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\validation\\endpoint-qualification\\scripts\\precision_continuation_driver.py",
+      "bytes": 43292,
+      "sha256": "ba7f36a81c847fe9576d30f60d6056313d04ea9f01b9f232e5c7a9cef2ce6120"
+    },
+    {
+      "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\validation\\endpoint-qualification\\scripts\\segment_capacity.py",
+      "bytes": 17276,
+      "sha256": "2c56718ed5a825b18f198bbc44eab6b2d442c215ea5e2772a30f41a75d153156"
+    },
+    {
+      "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\validation\\endpoint-qualification\\scripts\\rolling_capacity.py",
+      "bytes": 36195,
+      "sha256": "953a4cc65c429984b7d20387b8434886142d117b431d499e20aa0b06915886e5"
+    },
+    {
+      "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\validation\\endpoint-qualification\\scripts\\local_metadata_preflight.py",
+      "bytes": 5518,
+      "sha256": "c75b5cd0eac45ca0bce2a43a73dc3813624da6d601277c39b5e61dc2087f0a78"
+    }
+  ],
+  "source_proofs_after": [
+    {
+      "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\validation\\endpoint-qualification\\tests\\test_rolling_capacity.py",
+      "bytes": 26990,
+      "sha256": "2391723cbc85792edf6eac6e4b52c322db6b18aa299a9bf68953d83c58e44eda"
+    },
+    {
+      "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\validation\\endpoint-qualification\\tests\\test_runtime_reservations.py",
+      "bytes": 8828,
+      "sha256": "802256fad766d36d95e119ff09d74c9570d0aecec661612f6338bdce358d702f"
+    },
+    {
+      "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\validation\\endpoint-qualification\\tests\\test_segment_capacity.py",
+      "bytes": 13766,
+      "sha256": "abf55907c58bd5dd060d48a661cc394492c1a9c615008c558793a9e421b5c305"
+    },
+    {
+      "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\validation\\endpoint-qualification\\scripts\\precision_continuation_driver.py",
+      "bytes": 43292,
+      "sha256": "ba7f36a81c847fe9576d30f60d6056313d04ea9f01b9f232e5c7a9cef2ce6120"
+    },
+    {
+      "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\validation\\endpoint-qualification\\scripts\\segment_capacity.py",
+      "bytes": 17276,
+      "sha256": "2c56718ed5a825b18f198bbc44eab6b2d442c215ea5e2772a30f41a75d153156"
+    },
+    {
+      "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\validation\\endpoint-qualification\\scripts\\rolling_capacity.py",
+      "bytes": 36195,
+      "sha256": "953a4cc65c429984b7d20387b8434886142d117b431d499e20aa0b06915886e5"
+    },
+    {
+      "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\validation\\endpoint-qualification\\scripts\\local_metadata_preflight.py",
+      "bytes": 5518,
+      "sha256": "c75b5cd0eac45ca0bce2a43a73dc3813624da6d601277c39b5e61dc2087f0a78"
+    }
+  ],
+  "source_unchanged_during_tests": true,
+  "scope": "portable resource/runtime metadata only",
+  "scientific_evaluation": false,
+  "allocation_fabricated": false,
+  "HPC_full_suite_still_required": true,
+  "native_or_gradient_readiness_established": false,
+  "external_temp_permissions_or_files_changed": false,
+  "raw_XML_repository_path": "experiments/validation/endpoint-qualification/runs/20261028-precision-continuation-19/local-metadata-bound-tests.xml",
+  "raw_XML_sha256": "d7f262b58fa42b84e99658b439de8a79d5f17b151adbb53b58aa3cb477af5cee",
+  "pytest_body_seconds": 1.23,
+  "prior_98_case_proof_preserved": "local-metadata-verification.json",
+  "candidate_packaged_or_submitted": false
+}
