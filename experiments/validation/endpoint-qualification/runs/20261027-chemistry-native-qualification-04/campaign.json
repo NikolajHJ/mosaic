@@ -1,46 +1,91 @@
 {
+  "CPU_cases_verified": 29,
+  "CPU_certificate_sha256": "510ed796b65e74267964f47a13dad186085e687ada836001ace510f12b424349",
   "archive_bytes": 198060,
   "archive_sha256": "7fe735f2c3908056ab4783b455d0db365f7d31301a3567576aed18e8064269fa",
   "callback_job": "29834576",
+  "combined_chemistry_pass": false,
   "cpu_cases": 29,
   "cpu_counts": {
     "tests.test_chemistry_native_qualification.ChemistryNativeQualificationTests": 29
   },
   "cpu_job": "29834574",
   "files": 12,
+  "independent_CPU_dispatch_verification_sha256": "729ea370c4ae770fb2776c497ac9f5e3a9bfc3117fb7f760946318ad085dcd26",
+  "jobs": {
+    "after-cpu": "29834576",
+    "cpu": "29834574",
+    "gpu-boltz": "29834601",
+    "gpu-protenix": "29834600"
+  },
+  "last_actual_scheduler_states": {
+    "29834574": "DONE",
+    "29834576": "DONE",
+    "29834600": "PEND",
+    "29834601": "PEND"
+  },
+  "last_observation_utc": "2026-10-27T21:30:57.570805+00:00",
+  "last_observed_utc": "2026-10-28T09:37:08.344748+00:00",
+  "latest_job_evidence_states": {
+    "29834600": "FAILED_PERSISTED",
+    "29834601": "SUCCESS_PERSISTED"
+  },
+  "latest_status_20261028": {
+    "current": {
+      "boltz": {
+        "assessment": {
+          "bytes": 538,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-native-qualification-04/gpu-boltz/payload/assessment.json",
+          "sha256": "5261dc108955a483a967870d9a3cc8689031e8a836b0c95eb70117c317f9b82d"
+        },
+        "combined_chemistry_or_continuation_admission": false,
+        "job_id": "29834601",
+        "native_component_qualified": true,
+        "optimizer_updates": 0,
+        "terminal": "SUCCESS_PERSISTED"
+      },
+      "protenix": {
+        "LSF": {
+          "bytes": 2165,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-native-qualification-04/gpu-protenix/stdout.29834600.log",
+          "sha256": "1a3de5d4d0e5bdd046a2592018303bb5d3c4aadcf3293a4dfeda8d1673bddbf0"
+        },
+        "assessment_present": false,
+        "exit_code": 1,
+        "job_id": "29834600",
+        "root_cause": "not established; assessment absent",
+        "terminal": "FAILED_PERSISTED"
+      }
+    },
+    "new_jobs_submitted_by_observation": false,
+    "observed_utc": "2026-10-28T09:37:08.344748+00:00",
+    "optimization_settings_changed": false,
+    "original_results_changed": false,
+    "verification": {
+      "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261028-all-Mosaic-run-status\\verification.json",
+      "sha256": "bf7fdb8bba275180751b94027721f2b97bbc3ac9cfea1b83da1954110a0e8d56"
+    }
+  },
+  "latest_status_verification_sha256": "bf7fdb8bba275180751b94027721f2b97bbc3ac9cfea1b83da1954110a0e8d56",
   "manifest_sha256": "5d8f4ef0f8bb820e76d2e92442492f604393e79b58725fd01f9bb042b3114863",
   "monitor_resumed": false,
+  "native_component_pass": {
+    "boltz": true,
+    "protenix": false
+  },
   "optimizer_jobs_submitted": false,
   "plan_sha256": "9dd4160aa18e40c74927e3b71c1459850fd7d332eec53b9866b5ad862576c0d6",
   "protected_input_files": 3430,
   "remote_source_staged": true,
   "saved_results_changed": false,
   "settings_changed": false,
-  "status": "CPU29_and_callback_verified_actual_DONE_two_native_checks_queued",
-  "jobs": {
-    "cpu": "29834574",
-    "after-cpu": "29834576",
-    "gpu-protenix": "29834600",
-    "gpu-boltz": "29834601"
-  },
-  "CPU_cases_verified": 29,
-  "CPU_certificate_sha256": "510ed796b65e74267964f47a13dad186085e687ada836001ace510f12b424349",
-  "independent_CPU_dispatch_verification_sha256": "729ea370c4ae770fb2776c497ac9f5e3a9bfc3117fb7f760946318ad085dcd26",
+  "status": "Pro_native_EXIT_no_assessment_Bol_native_component_qualified_only_no_optimizer",
   "whole_dispatch_storage": {
-    "status": "passed",
-    "required_bytes": 50825313105,
     "available_bytes": 56915979015,
-    "reserve_bytes": 4294967296,
     "file_reserve": 100000,
-    "new_group_cap_bytes": 1140850688
-  },
-  "last_observation_utc": "2026-10-27T21:30:57.570805+00:00",
-  "last_actual_scheduler_states": {
-    "29834600": "PEND",
-    "29834601": "PEND",
-    "29834574": "DONE",
-    "29834576": "DONE"
-  },
-  "native_component_pass": false,
-  "combined_chemistry_pass": false
+    "new_group_cap_bytes": 1140850688,
+    "required_bytes": 50825313105,
+    "reserve_bytes": 4294967296,
+    "status": "passed"
+  }
 }

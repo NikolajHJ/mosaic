@@ -1,0 +1,30 @@
+{
+  "current": {
+    "assessment": {
+      "bytes": 687984,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-09/boltz-segment-10000/payload/assessment.json",
+      "sha256": "4a190368533b40a5719a03f96887b1bf5e0ed8ede0eb262f504eb30d918900d0"
+    },
+    "error": "ValueError('Prospective endpoint admission failed; original coarse observations preserved')",
+    "job_id": "29832964",
+    "preservation": {
+      "bytes": 1525,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-09/boltz-segment-10000/post-execution-preservation.json",
+      "sha256": "7d0853f53c66401338609e4cbbb55c73c2bf687790cf868954c01c95c7165962"
+    },
+    "saved_global_updates": 20000,
+    "segment_states": 10001,
+    "segment_updates": 10000,
+    "successor_submitted": false,
+    "target": 30000,
+    "terminal": "FAILED_PERSISTED"
+  },
+  "new_jobs_submitted_by_observation": false,
+  "observed_utc": "2026-10-28T09:37:08.344748+00:00",
+  "optimization_settings_changed": false,
+  "original_results_changed": false,
+  "verification": {
+    "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261028-all-Mosaic-run-status\\verification.json",
+    "sha256": "bf7fdb8bba275180751b94027721f2b97bbc3ac9cfea1b83da1954110a0e8d56"
+  }
+}

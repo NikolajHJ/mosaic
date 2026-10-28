@@ -8790,3 +8790,26 @@ No fullnative integration or optimizercontinuation pass/start claimed.
 Conditionalcontrollers retain everyoriginalcheck plus exactliveGPUreference
 replay/fullruntime/fullremainingquota before Pro20k->50k andDB7500->10k.
 Settings/savedresults/originalfailures intact; monitorpaused; no localnumerics.
+
+
+### 2026-10-28 — All Mosaic read-only status: plain Boltz20k; chemistry component outcomes
+
+Observed09:37:08UTC from one compact query; local stdlib byte/JSON/LSF/scheduler/
+prefix-schema audit verified5campaigns/28actualjobs. Plain Boltz29832964 saved
+global20,000/30,000 (10k/10001states in this segment), then exited00:01:44CET
+on prospective terminal admission. Callback29832965 failed; no successor.
+Original results/settings/coarse failures remain unchanged, not30k success.
+
+Chemistry qualification Pro29834600 exited1 at03:53:51CET; assessment absent,
+cause not established. Bol29834601 same-jobLSFsuccess04:05:53CET, assessment
+native_component_qualified_not_continuation_admission,0optimizerupdates and
+frozen/protected inputs unchanged. Combined low/high/actual chemistry, BOTH
+pilots/runtime/startup/freshcapacity still precede children. Existing random
+Prochem10k/50k and Bolchem10k/30k unchanged. New15Pro29839086/DB29839088 and
+callbacks29839087/89 actualPEND; no integrationpass/optimizerstart claimed.
+
+Exact owningrun status files and results/hpc/20261028-all-Mosaic-run-status/
+verification.json bind every delivered file. Scheduler255 is exactly22agedout
+IDs; historical states use authentic persisted LSF, never invented scheduler.
+Only metadata/prefix schema audited locally; full scientific bytes remain
+remote. No jobs, cleanup, scientific changes or local numerics.

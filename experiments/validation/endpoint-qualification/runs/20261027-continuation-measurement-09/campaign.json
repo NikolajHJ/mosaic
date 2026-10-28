@@ -1,70 +1,5 @@
 {
-  "status": "CPU261_and_callback_DONE_Boltz_only_GPU29829934_queued",
-  "preparation": {
-    "archive_bytes": 113021,
-    "archive_sha256": "80fe1b71b75ea88331c2e78f0a65426a41b41dabbc46664ff93c78614de050aa",
-    "cpu_counts": {
-      "tests.test_admission": 50,
-      "tests.test_continuation_driver": 56,
-      "tests.test_continuation_ops": 107,
-      "tests.test_current_capacity": 5,
-      "tests.test_logit_admission": 14,
-      "tests.test_measurement_resolution": 10,
-      "tests.test_qualification": 19
-    },
-    "files": 19,
-    "jobs_submitted": false,
-    "manifest_sha256": "f15443b51c5197b95205bf59c90e05192f9ceabb955e6006cccfbbdff257fc9b",
-    "plan_sha256": "1c313f542f5f357dbc5cd45f1c6e59f76e756c0e027d0e65730dad9b971f3eef",
-    "scientific_source_changed": false,
-    "status": "prepared_not_validated",
-    "version": "endpoint-aware-continuation-source-v1"
-  },
-  "cpu": {
-    "status": "submitted",
-    "phase": "cpu",
-    "arm": "all",
-    "offset": 0,
-    "argv": [
-      "bsub",
-      "-q",
-      "hpc",
-      "-n",
-      "4",
-      "-R",
-      "span[hosts=1]",
-      "-R",
-      "rusage[mem=4GB]",
-      "-W",
-      "01:00",
-      "-J",
-      "mosaic-endpoint09-cpu",
-      "-oo",
-      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-09/cpu/stdout.%J.log",
-      "-eo",
-      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-09/cpu/stderr.%J.log",
-      "bash",
-      "-l",
-      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-release-09/source/scripts/continuation_stage.lsf",
-      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-release-09/source",
-      "f15443b51c5197b95205bf59c90e05192f9ceabb955e6006cccfbbdff257fc9b",
-      "cpu",
-      "all",
-      "0"
-    ],
-    "dependency": null,
-    "source_manifest_sha256": "f15443b51c5197b95205bf59c90e05192f9ceabb955e6006cccfbbdff257fc9b",
-    "submitted_utc": "2026-10-27T11:21:54.525154+00:00",
-    "returncode": 0,
-    "stdout": "Job <29829907> is submitted to queue <hpc>.\n",
-    "stderr": "",
-    "job_id": "29829907"
-  },
   "after_cpu": {
-    "status": "submitted",
-    "phase": "after-cpu",
-    "arm": "all",
-    "offset": 0,
     "argv": [
       "bsub",
       "-q",
@@ -94,29 +29,64 @@
       "all",
       "0"
     ],
+    "arm": "all",
     "dependency": "ended(29829907)",
-    "source_manifest_sha256": "f15443b51c5197b95205bf59c90e05192f9ceabb955e6006cccfbbdff257fc9b",
-    "submitted_utc": "2026-10-27T11:21:54.888099+00:00",
+    "job_id": "29829908",
+    "offset": 0,
+    "phase": "after-cpu",
     "returncode": 0,
-    "stdout": "Job <29829908> is submitted to queue <hpc>.\n",
+    "source_manifest_sha256": "f15443b51c5197b95205bf59c90e05192f9ceabb955e6006cccfbbdff257fc9b",
+    "status": "submitted",
     "stderr": "",
-    "job_id": "29829908"
+    "stdout": "Job <29829908> is submitted to queue <hpc>.\n",
+    "submitted_utc": "2026-10-27T11:21:54.888099+00:00"
   },
-  "storage": {
-    "status": "passed",
-    "required_bytes": 49684462417,
-    "available_bytes": 50746382678,
-    "reserve_bytes": 4294967296,
-    "file_reserve": 100000
+  "cpu": {
+    "argv": [
+      "bsub",
+      "-q",
+      "hpc",
+      "-n",
+      "4",
+      "-R",
+      "span[hosts=1]",
+      "-R",
+      "rusage[mem=4GB]",
+      "-W",
+      "01:00",
+      "-J",
+      "mosaic-endpoint09-cpu",
+      "-oo",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-09/cpu/stdout.%J.log",
+      "-eo",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-09/cpu/stderr.%J.log",
+      "bash",
+      "-l",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-release-09/source/scripts/continuation_stage.lsf",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-release-09/source",
+      "f15443b51c5197b95205bf59c90e05192f9ceabb955e6006cccfbbdff257fc9b",
+      "cpu",
+      "all",
+      "0"
+    ],
+    "arm": "all",
+    "dependency": null,
+    "job_id": "29829907",
+    "offset": 0,
+    "phase": "cpu",
+    "returncode": 0,
+    "source_manifest_sha256": "f15443b51c5197b95205bf59c90e05192f9ceabb955e6006cccfbbdff257fc9b",
+    "status": "submitted",
+    "stderr": "",
+    "stdout": "Job <29829907> is submitted to queue <hpc>.\n",
+    "submitted_utc": "2026-10-27T11:21:54.525154+00:00"
   },
-  "existing_DBMol_job_unchanged": "29829703",
-  "scientific_settings_changed": false,
-  "saved_results_changed": false,
+  "cpu_certificate_sha256": "89994c7f2118c3449179b1e80219a3560904362dee5c2183c6b7f5de78187346",
   "cpu_verification": {
-    "status": "independent_CPU261_XML_LSF_source_startup_byte_verification_passed",
+    "DBMol_existing_job_preserved": "29829703",
     "captured_utc": "2026-10-27T11:24:43.185219+00:00",
-    "files_verified": 37,
     "cases": 261,
+    "files_verified": 37,
     "module_counts": {
       "tests.test_admission": 50,
       "tests.test_continuation_driver": 56,
@@ -126,23 +96,62 @@
       "tests.test_measurement_resolution": 10,
       "tests.test_qualification": 19
     },
-    "source_manifest_sha256": "f15443b51c5197b95205bf59c90e05192f9ceabb955e6006cccfbbdff257fc9b",
     "native_pass_established": false,
     "optimizer_submitted": false,
-    "DBMol_existing_job_preserved": "29829703"
+    "source_manifest_sha256": "f15443b51c5197b95205bf59c90e05192f9ceabb955e6006cccfbbdff257fc9b",
+    "status": "independent_CPU261_XML_LSF_source_startup_byte_verification_passed"
   },
-  "cpu_certificate_sha256": "89994c7f2118c3449179b1e80219a3560904362dee5c2183c6b7f5de78187346",
+  "existing_DBMol_job_unchanged": "29829703",
   "jobs": {
-    "cpu": "29829907",
     "after-cpu": "29829908",
+    "boltz-after-validate-10000": "29829935",
     "boltz-validate-10000": "29829934",
-    "boltz-after-validate-10000": "29829935"
+    "cpu": "29829907"
   },
+  "last_observed_utc": "2026-10-28T09:37:08.344748+00:00",
+  "latest_packet_sha256": "5c7c82bae2a1e95c505f3c3ae8d5b1a07ba834bbdc56b697aed1f13eee2ea62c",
+  "latest_saved_progress": {
+    "boltz": {
+      "global_updates": 20000,
+      "job_id": "29832964",
+      "successor_submitted": false,
+      "target": 30000,
+      "terminal": "FAILED_PERSISTED"
+    }
+  },
+  "latest_status_20261028": {
+    "current": {
+      "assessment": {
+        "bytes": 687984,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-09/boltz-segment-10000/payload/assessment.json",
+        "sha256": "4a190368533b40a5719a03f96887b1bf5e0ed8ede0eb262f504eb30d918900d0"
+      },
+      "error": "ValueError('Prospective endpoint admission failed; original coarse observations preserved')",
+      "job_id": "29832964",
+      "preservation": {
+        "bytes": 1525,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-09/boltz-segment-10000/post-execution-preservation.json",
+        "sha256": "7d0853f53c66401338609e4cbbb55c73c2bf687790cf868954c01c95c7165962"
+      },
+      "saved_global_updates": 20000,
+      "segment_states": 10001,
+      "segment_updates": 10000,
+      "successor_submitted": false,
+      "target": 30000,
+      "terminal": "FAILED_PERSISTED"
+    },
+    "new_jobs_submitted_by_observation": false,
+    "observed_utc": "2026-10-28T09:37:08.344748+00:00",
+    "optimization_settings_changed": false,
+    "original_results_changed": false,
+    "verification": {
+      "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261028-all-Mosaic-run-status\\verification.json",
+      "sha256": "bf7fdb8bba275180751b94027721f2b97bbc3ac9cfea1b83da1954110a0e8d56"
+    }
+  },
+  "latest_status_verification_sha256": "bf7fdb8bba275180751b94027721f2b97bbc3ac9cfea1b83da1954110a0e8d56",
+  "native_pass_established": false,
   "native_submission": {
-    "status": "submitted",
-    "phase": "validate",
-    "arm": "boltz",
-    "offset": 10000,
     "argv": [
       "bsub",
       "-q",
@@ -172,16 +181,47 @@
       "boltz",
       "10000"
     ],
+    "arm": "boltz",
     "dependency": null,
-    "source_manifest_sha256": "f15443b51c5197b95205bf59c90e05192f9ceabb955e6006cccfbbdff257fc9b",
-    "submitted_utc": "2026-10-27T11:25:06.355971+00:00",
+    "job_id": "29829934",
+    "offset": 10000,
+    "phase": "validate",
     "returncode": 0,
-    "stdout": "Job <29829934> is submitted to queue <gpul40s>.\n",
+    "source_manifest_sha256": "f15443b51c5197b95205bf59c90e05192f9ceabb955e6006cccfbbdff257fc9b",
+    "status": "submitted",
     "stderr": "",
-    "job_id": "29829934"
+    "stdout": "Job <29829934> is submitted to queue <gpul40s>.\n",
+    "submitted_utc": "2026-10-27T11:25:06.355971+00:00"
   },
-  "last_observed_utc": "2026-10-27T11:25:42.551422+00:00",
-  "latest_packet_sha256": "5c7c82bae2a1e95c505f3c3ae8d5b1a07ba834bbdc56b697aed1f13eee2ea62c",
-  "native_pass_established": false,
-  "optimizer_submitted": false
+  "optimizer_submitted": false,
+  "preparation": {
+    "archive_bytes": 113021,
+    "archive_sha256": "80fe1b71b75ea88331c2e78f0a65426a41b41dabbc46664ff93c78614de050aa",
+    "cpu_counts": {
+      "tests.test_admission": 50,
+      "tests.test_continuation_driver": 56,
+      "tests.test_continuation_ops": 107,
+      "tests.test_current_capacity": 5,
+      "tests.test_logit_admission": 14,
+      "tests.test_measurement_resolution": 10,
+      "tests.test_qualification": 19
+    },
+    "files": 19,
+    "jobs_submitted": false,
+    "manifest_sha256": "f15443b51c5197b95205bf59c90e05192f9ceabb955e6006cccfbbdff257fc9b",
+    "plan_sha256": "1c313f542f5f357dbc5cd45f1c6e59f76e756c0e027d0e65730dad9b971f3eef",
+    "scientific_source_changed": false,
+    "status": "prepared_not_validated",
+    "version": "endpoint-aware-continuation-source-v1"
+  },
+  "saved_results_changed": false,
+  "scientific_settings_changed": false,
+  "status": "plain_Boltz_saved_global20000_of30000_terminal_admission_failed_no_successor",
+  "storage": {
+    "available_bytes": 50746382678,
+    "file_reserve": 100000,
+    "required_bytes": 49684462417,
+    "reserve_bytes": 4294967296,
+    "status": "passed"
+  }
 }
