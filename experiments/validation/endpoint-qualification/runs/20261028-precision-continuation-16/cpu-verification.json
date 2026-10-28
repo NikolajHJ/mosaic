@@ -1,0 +1,220 @@
+{
+  "status": "passed_independent_stdlib_byte_XML_schema_audit",
+  "cpu_job_id": "29841063",
+  "cases": 785,
+  "raw_groups": {
+    "torch": {
+      "cases": 17,
+      "modules": {
+        "tests.test_dbmol_reference": 17
+      }
+    },
+    "jax": {
+      "cases": 768,
+      "modules": {
+        "tests.test_admission": 50,
+        "tests.test_continuation_driver": 56,
+        "tests.test_continuation_ops": 107,
+        "tests.test_cuda_ownership": 42,
+        "tests.test_current_capacity": 5,
+        "tests.test_dbmol_endpoint_precision": 36,
+        "tests.test_logit_admission": 14,
+        "tests.test_measurement_resolution": 10,
+        "tests.test_precision_continuation_driver": 90,
+        "tests.test_precision_continuation_hooks": 57,
+        "tests.test_precision_continuation_ops": 121,
+        "tests.test_protenix_reference_worker": 58,
+        "tests.test_qualification": 19,
+        "tests.test_recovery_capacity": 11,
+        "tests.test_rolling_capacity": 32,
+        "tests.test_segment_capacity": 60
+      }
+    },
+    "merged": {
+      "cases": 785,
+      "modules": {
+        "tests.test_dbmol_reference": 17,
+        "tests.test_admission": 50,
+        "tests.test_continuation_driver": 56,
+        "tests.test_continuation_ops": 107,
+        "tests.test_cuda_ownership": 42,
+        "tests.test_current_capacity": 5,
+        "tests.test_dbmol_endpoint_precision": 36,
+        "tests.test_logit_admission": 14,
+        "tests.test_measurement_resolution": 10,
+        "tests.test_precision_continuation_driver": 90,
+        "tests.test_precision_continuation_hooks": 57,
+        "tests.test_precision_continuation_ops": 121,
+        "tests.test_protenix_reference_worker": 58,
+        "tests.test_qualification": 19,
+        "tests.test_recovery_capacity": 11,
+        "tests.test_rolling_capacity": 32,
+        "tests.test_segment_capacity": 60
+      }
+    }
+  },
+  "source_manifest_sha256": "cd75d01b41520f7af916ff4fa824f7059d7eb4713d9c611e24d00e0cd12444f2",
+  "actual_cpu_scheduler_DONE": true,
+  "actual_same_job_LSF_success": true,
+  "actual_startup_routes": 7,
+  "full_native_readiness_or_optimizer_established": false,
+  "preflight_storage": {
+    "required_bytes": 12060653056,
+    "available_bytes": 45350945792,
+    "reserve_bytes": 4294967296,
+    "file_reserve": 130000,
+    "byte_margin": 33290292736
+  },
+  "proofs": [
+    {
+      "bytes": 1217,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-16/cpu/submission.json",
+      "sha256": "bcc679d988d44242a60d6cc2a863e0b7c7862be84e9aa1f0a61d7111c0fa4ab7"
+    },
+    {
+      "bytes": 1989,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-16/cpu/stdout.29841063.log",
+      "sha256": "09ab8fe46ada9a81e3bc07874b8c4ce91b4b4f5cdd7117e097eb23bec69fa2b8"
+    },
+    {
+      "bytes": 233,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-16/cpu/stderr.29841063.log",
+      "sha256": "7d57e9e44355166e210a310a2b90b7d8543b85c5ffbb82276c701f4dd1f23271"
+    },
+    {
+      "bytes": 755,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-16/cpu/payload/protenix-reference-startup-invocation.json",
+      "sha256": "2122ae6a0229c57cc4fedffabeac89f0e460f74a84f0ee94a5fd198e9e70de44"
+    },
+    {
+      "bytes": 808,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-16/cpu/payload/tests-torch-command.json",
+      "sha256": "b0fc09662c414cf22c753d5f9384386a9c51015184350d00c619b36b96b6613f"
+    },
+    {
+      "bytes": 3066,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-16/cpu/payload/tests-torch.xml",
+      "sha256": "ff88854ff850089e52e3e699ccb7c00694d101773803dcc52f1975acdee92910"
+    },
+    {
+      "bytes": 118631,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-16/cpu/payload/tests.xml",
+      "sha256": "0e21ce63cf394957b6c54f4392a3cb8670de40aa68094a8328fe818a92d7b1c9"
+    },
+    {
+      "bytes": 365,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-16/cpu/payload/protenix-reference-startup.json",
+      "sha256": "b0e8a0701fa1c0935a5daf405e5ef7611491b89f8788ae9ab11868680346ddc2"
+    },
+    {
+      "bytes": 5354,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-16/cpu/payload/actual-startup-checks.json",
+      "sha256": "3ac634264c9384375bfb10416e8bacd46571addb9dc14924e8efc4f0a043d60e"
+    },
+    {
+      "bytes": 880,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-16/cpu/payload/dbmol-reference-startup-invocation.json",
+      "sha256": "10489f413c434f74f40e31ab7db0738e63897dd92f73bdfb07d2e2016292f2c1"
+    },
+    {
+      "bytes": 114,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-16/cpu/payload/dbmol-reference-startup.json",
+      "sha256": "ca55222805fbc52360e911fd49320e3e1b1a2691715d371ff8399722e6d7005f"
+    },
+    {
+      "bytes": 250,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-16/cpu/payload/tests-torch.log",
+      "sha256": "3c30163e99a5c0f420db4f153b2240a32efa2cf9a6d4be743f38121d12b7f55b"
+    },
+    {
+      "bytes": 6717,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-16/cpu/payload/assessment.json",
+      "sha256": "26041e5ff1e78b8b64d7d092fd54c8788efdd5789f3f86ff21666ec58565133d"
+    },
+    {
+      "bytes": 901,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-16/cpu/payload/tests-jax.log",
+      "sha256": "b3f35d37df7efdd8cca49f757988bf0d696a9ae183f440a3b8eb5e050db18f45"
+    },
+    {
+      "bytes": 115647,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-16/cpu/payload/tests-jax.xml",
+      "sha256": "4489dc583a7a66ddd6dce9bce6b99a40136876837a768c07a029a8c5553130cb"
+    },
+    {
+      "bytes": 2940,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-16/cpu/payload/tests-jax-command.json",
+      "sha256": "8dc7c0a0267e80e40a450f82139c7c8b0283b63673ec837d231f23ab4269d48f"
+    },
+    {
+      "bytes": 1564,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-16/cpu/payload/startup-protenix-segment/invocation.json",
+      "sha256": "fd745d74ceeef15a841d1dbb0125fcdae748ad06b901b6f435fa911f68528779"
+    },
+    {
+      "bytes": 2546,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-16/cpu/payload/startup-protenix-segment/endpoint-startup.json",
+      "sha256": "b79c5fba9de9eeb7bf42fa8a9a10977560c7aca88d3728d65a9b824050e05a31"
+    },
+    {
+      "bytes": 1555,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-16/cpu/payload/startup-dbmol-segment/invocation.json",
+      "sha256": "1d80632e6b93e3cb511382c52f074cd3b51dc079094658b2d4926c57a9fe291e"
+    },
+    {
+      "bytes": 2807,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-16/cpu/payload/startup-dbmol-segment/endpoint-startup.json",
+      "sha256": "8f4a164ac8aafb8f565ea50558f1bd7be5df3801f9b061b9f7ec93a6ee7a6d09"
+    },
+    {
+      "bytes": 2038,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-16/cpu/payload/startup-protenix-validate/endpoint-startup.json",
+      "sha256": "06591f213d17ac94a61ef1698f05e86caba2cf711a6d14e0bfe7ca033bb73781"
+    },
+    {
+      "bytes": 1280,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-16/cpu/payload/startup-protenix-validate/invocation.json",
+      "sha256": "61856d678c51cfdd17a377994e918bdfaf5c18938be3fec65d3d3b161d4024b3"
+    },
+    {
+      "bytes": 2313,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-16/cpu/payload/startup-dbmol-validate/endpoint-startup.json",
+      "sha256": "4ebb660e531061b252aeda4ac33c9e0b2bd9c7b84a822e9bd6af342d35fb3455"
+    },
+    {
+      "bytes": 1278,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-16/cpu/payload/startup-dbmol-validate/invocation.json",
+      "sha256": "aba0b49d5e476dfb7eabf293e01f187a2c392d9ce364fcfc93f566e7adeb6ce5"
+    },
+    {
+      "bytes": 1244,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-16/cpu/payload/worker-startup-dbmol/invocation.json",
+      "sha256": "0cfae3525a634538b80d77bbde4f893374c5f09b0812431794a95d6fdc6dee94"
+    },
+    {
+      "bytes": 5226,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-16/cpu/payload/worker-startup-dbmol/worker-startup.json",
+      "sha256": "e73cd539d629fde8fb2ffcd5c2f6f97ab69afd1f25aa8b2c19a10c1c17dc8706"
+    },
+    {
+      "bytes": 1293,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-16/after-cpu/submission.json",
+      "sha256": "eff33848d135ff759f6bf0d213f45526dd8728e9bf352e15c9ff08d3cd9e24b9"
+    },
+    {
+      "bytes": 0,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-16/after-cpu/stdout.29841064.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 233,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-16/after-cpu/stderr.29841064.log",
+      "sha256": "7d57e9e44355166e210a310a2b90b7d8543b85c5ffbb82276c701f4dd1f23271"
+    },
+    {
+      "bytes": 53871,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-16/bootstrap-complete.json",
+      "sha256": "de94140830507803ac84c9d99169ab15966fa453ec4ed4a86586cbf92fe38b15"
+    }
+  ]
+}

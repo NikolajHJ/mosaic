@@ -11,9 +11,11 @@ import argparse
 import hashlib
 import importlib.util
 import json
+import math
 import os
 from pathlib import Path, PurePosixPath
 import re
+import signal
 import stat
 import subprocess
 import sys
@@ -25,8 +27,8 @@ VERSION = "precision-reference-continuation-source-v1"
 PLAN_VERSION = "precision-reference-continuation-plan-v1"
 RESULT_VERSION = "precision-reference-continuation-result-v1"
 BASE = Path("/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01")
-ROOT = BASE / "nonchem-precision-continuation-15"
-SOURCE = BASE / "nonchem-precision-release-15/source"
+ROOT = BASE / "nonchem-precision-continuation-16"
+SOURCE = BASE / "nonchem-precision-release-16/source"
 ADMISSION = BASE / "nonchem-stride20-startup-release-03/source"
 ADMISSION_SHA = "704fab033d97342a14dc12b58dc32df44874232c5c30aad47c4d02041a502aab"
 PYTHON = "/work3/s234818/mosaic/envs/protenix-tiny/bin/python"
@@ -34,11 +36,11 @@ GIB = 1024**3
 CONTROL_CAP = 512 * 1024**2
 ADDITIONAL = GIB + 2 * GIB + 768 * 1024**2 + CONTROL_CAP
 ARMS = {
-    "protenix": {"offsets": [20000, 30000, 40000], "segment_steps": 10000,
+    "protenix": {"offsets": list(range(20000, 50000, 2500)), "segment_steps": 2500,
                  "global_target": 50000, "rate": 0.3, "old_profile": "protenix50k40k"},
     "boltz": {"offsets": [10000, 20000], "segment_steps": 10000,
               "global_target": 30000, "rate": 0.0025, "old_profile": "boltz30k"},
-    "dbmol": {"offsets": [7500], "segment_steps": 2500,
+    "dbmol": {"offsets": [7500, 8750], "segment_steps": 1250,
               "global_target": 10000, "rate": 0.0025, "old_profile": "dbmol10k"},
 }
 ORIGINALS = {
@@ -136,6 +138,12 @@ def check_preserved_binding(row):
 def check_generated_proof(row):
     if isinstance(row, dict) and row.get("bytes") == 0:
         path = Path(row.get("path", ""))
+        probe_roots = [parent_path(phase, arm, offset) / "cuda-ownership"
+                       for phase in ("validate", "segment") for arm in DISPATCH_ARMS for offset in ARMS[arm]["offsets"]]
+        if path.parent in probe_roots and path.name in ("production_fp32.stderr.log", "reference_fp64.stderr.log"):
+            require(binding(path) == row and row["sha256"] == hashlib.sha256(b"").hexdigest(),
+                    "Owned CUDA smoke empty stderr identity differs")
+            return row
         studies = [parent_path(phase, arm, offset) / "payload/study"
                    for phase in ("validate", "segment") for arm in DISPATCH_ARMS for offset in ARMS[arm]["offsets"]]
         study = next((root for root in studies if path.is_relative_to(root)), None)
@@ -232,11 +240,19 @@ def parent_path(phase, arm="all", offset=0):
     return ROOT / label(phase, arm, offset)
 
 
-def resources(phase):
+def segment_budget(arm, offset):
+    """Use the actual complete qualification; never guess a shorter walltime."""
+    require(arm in DISPATCH_ARMS and offset in ARMS[arm]["offsets"], "Undeclared runtime boundary")
+    adapter = _module(SOURCE / "scripts/precision_continuation_driver.py", "_precision_measured_runtime")
+    summary = parent_path("validate", arm, offset) / "payload/study/summary.json"
+    return adapter.runtime_budget(summary, arm)
+
+
+def resources(phase, budget=None):
     require(phase in PHASES, "Undeclared resources")
     if phase in ("validate", "segment"):
         return ["-q", "gpul40s", "-n", "4", "-R", "span[hosts=1]", "-R", "rusage[mem=8GB]",
-                "-gpu", "num=1:mode=exclusive_process", "-W", "02:00" if phase == "validate" else "23:00"]
+                "-gpu", "num=1:mode=exclusive_process:mps=yes", "-W", "02:00" if phase == "validate" else budget["walltime"]]
     return ["-q", "hpc", "-n", "4" if phase == "cpu" else "1", "-R", "span[hosts=1]",
             "-R", "rusage[mem=4GB]" if phase == "cpu" else "rusage[mem=2GB]",
             "-W", "01:00" if phase == "cpu" else "00:20"]
@@ -251,7 +267,8 @@ def argv(phase, pin, arm="all", offset=0, dependency=None):
     else:
         require(dependency is None, "Scientific/CPU phases have no interarm dependencies")
     parent = ROOT / name
-    command = ["bsub", *resources(phase), "-J", "mosaic-precision15-" + name,
+    budget = segment_budget(arm, offset) if phase == "segment" else None
+    command = ["bsub", *resources(phase, budget), "-J", "mosaic-precision16-" + name,
                "-oo", str(parent / "stdout.%J.log"), "-eo", str(parent / "stderr.%J.log")]
     if dependency is not None:
         command += ["-w", dependency]
@@ -266,6 +283,8 @@ def submit(phase, pin, arm="all", offset=0, dependency=None):
     record = {"status": "unknown", "phase": phase, "arm": arm, "offset": offset, "argv": command,
               "dependency": dependency, "source_manifest_sha256": pin,
               "submitted_utc": datetime.now(timezone.utc).isoformat()}
+    if phase == "segment":
+        record["runtime_budget"] = segment_budget(arm, offset)
     write(parent / "submission-started.json", record)
     try:
         result = subprocess.run(command, capture_output=True, text=True, timeout=60)
@@ -333,7 +352,7 @@ def terminal(parent, queue):
             break
         require(index < 20, "Terminal LSF output unavailable")
         time.sleep(1)
-    lsf_success(path.read_text(), job, "mosaic-precision15-" + parent.name, queue)
+    lsf_success(path.read_text(), job, "mosaic-precision16-" + parent.name, queue)
     proofs.append(binding(path))
     return proofs
 
@@ -566,6 +585,25 @@ def external(manifest, plan):
     for row in manifest["preserved_proofs"]:
         check_preserved_binding(row)
     validate_plan(plan)
+    predecessor = plan.get("launch_predecessor")
+    require(isinstance(predecessor, dict) and predecessor.get("source") == {
+        "path": str(BASE / "nonchem-precision-release-15/source"), "files": 35,
+        "manifest_sha256": "5448503965365f4db726d558df4ac91a41a7f711366b6ae47ae936993fd0c8bb"}
+        and predecessor.get("failed_jobs") == {"protenix": "29839086", "dbmol": "29839088"}
+        and predecessor.get("failures_preserved") is True and predecessor.get("original_results_changed") is False,
+        "Source15 failed engineering evidence must remain explicit")
+    for proof in predecessor["proofs"]:
+        check_binding(proof)
+    failed_root = BASE / "nonchem-precision-continuation-15"
+    for arm, job in predecessor["failed_jobs"].items():
+        offset = 20000 if arm == "protenix" else 7500
+        parent = failed_root / (arm + "-validate-" + str(offset).zfill(5))
+        submitted = read(parent / "submission.json")
+        require(submitted.get("job_id") == job and submitted.get("source_manifest_sha256") == predecessor["source"]["manifest_sha256"],
+                "Failed source15 job identity differs")
+        raw = "".join((parent / ("stdout." + job + ".log")).read_text().split())
+        require(raw.count("Subject:Job" + job + ":") == 1 and "Exitedwithexitcode1." in raw
+                and "inqueue<gpul40s>" in raw, "Original same-job source15 failed LSF missing")
     preserved_failed_admission(manifest, plan)
     qualified = qualified_admissions(plan)
     adoption = {}
@@ -693,7 +731,7 @@ def owned_bytes(root):
     return total
 
 
-def storage(parent, phase):
+def legacy_storage(parent, phase):
     """Complete inherited futures plus every new boundary-reference proof budget."""
     require(phase in ("entry", "dispatch", "preflight"), "Unknown full precision storage phase")
     parent = Path(parent)
@@ -742,6 +780,14 @@ def storage(parent, phase):
                 "status": "failed_incomplete_inventory_not_admission", "path": error.filename,
                 "partial_totals_used": False, "files_skipped": False, "attempt": number})
             if number == 3: raise
+
+
+def storage(parent, phase):
+    """New user-authorized rolling admission; historical guard remains intact."""
+    capacity = _module(SOURCE / "scripts/rolling_capacity.py", "_rolling_precision_capacity")
+    receipt = capacity.storage(sys.modules[__name__], parent, phase)
+    require(receipt.get("status") == "passed", "Rolling segment capacity failed")
+    return receipt
 
 
 def current_capacity_gate(parent, phase, excess=0):
@@ -1138,6 +1184,7 @@ def certify_producer(plan, pin, phase, arm, offset):
     parent = parent_path(phase, arm, offset)
     proofs = terminal(parent, "gpul40s")
     result = verify_result(plan, pin, phase, arm, offset)
+    proofs += cuda_probe_proofs(parent, pin, plan, arm)
     proofs += [binding(parent / "payload/assessment.json"), binding(parent / "post-execution-preservation.json"), *result["proofs"]]
     value = {"status": "passed", "arm": arm, "offset": offset, "global_end": result["global_end"],
              "source_manifest_sha256": pin, "plan_sha256": sha(SOURCE / "plan.json"),
@@ -1149,19 +1196,81 @@ def certify_producer(plan, pin, phase, arm, offset):
     return result
 
 
+def cuda_probe_proofs(parent, pin, plan, arm):
+    """A CPU startup pass never substitutes for real concurrent CUDA clients."""
+    parent = Path(parent)
+    source = _module(SOURCE / "scripts/cuda_ownership.py", "_precision_cuda_probe_verify")
+    value = read(parent / "cuda-ownership/assessment.json")
+    submitted = read(parent / "submission.json")
+    identities = {"source_manifest": binding(SOURCE / "source_manifest.json"),
+                  "plan": binding(SOURCE / "plan.json"),
+                  "context_identity": plan["qualified_admissions"][arm]["assessment"]}
+    require(value.get("version") == source.VERSION and value.get("status") == "passed_two_client_cuda_ownership"
+            and value.get("job_id") == submitted["job_id"] and value.get("error") is None
+            and value.get("input_bindings") == identities == value.get("input_bindings_after")
+            and value.get("submission") == binding(parent / "submission.json")
+            and value.get("optimizer_updates") == 0 and value.get("native_or_gradient_gate_replaced") is False
+            and value.get("scientific_results_changed") is False, "Actual two-client CUDA smoke did not pass")
+    require(len(value.get("cleanup", [])) == 2 and all(row.get("reaped") is True
+            and row.get("forced_termination") is False and row.get("error") is None for row in value["cleanup"]),
+            "CUDA smoke process cleanup incomplete")
+    allocation = value["allocation"]
+    require(allocation.get("job_id") == submitted["job_id"] and allocation.get("queue") == "gpul40s"
+            and allocation.get("cpu_slots") == 4 and re.fullmatch(r"(?:[0-9]+|GPU-[A-Za-z0-9-]+)", allocation.get("cuda_visible_devices", "")),
+            "Actual CUDA probe allocation differs")
+    source._submission(parent / "submission.json", allocation, identities)
+    invocation = read(parent / "cuda-ownership/invocation.json")
+    nonce = invocation["nonce"]
+    require(invocation.get("allocation") == allocation and invocation.get("input_bindings") == identities
+            and invocation.get("gpu_request") == source.GPU_REQUEST, "CUDA probe invocation differs")
+    require(set(value.get("records", {})) == set(source.ROLES), "Both actual CUDA probe roles required")
+    for role in source.ROLES:
+        rows = value["records"][role]
+        require(len(rows) == 3, "Both CUDA repeat measurements required")
+        for sequence, item in enumerate(rows):
+            source._validate_message(item, allocation, role, nonce, sequence, rows[0] if sequence else None)
+    require(value["records"][source.ROLES[0]][0]["pid"] != value["records"][source.ROLES[1]][0]["pid"],
+            "Distinct concurrently measured CUDA children required")
+    return [binding(p) for p in sorted((parent / "cuda-ownership").iterdir()) if p.is_file()]
+
+
 def run_child(command, timeout, parent, manifest, plan, pin):
-    """Retain child errors and rehash originals even after failure or timeout."""
+    """Supervise only the owned child group; recheck live capacity periodically."""
     record = {"execution_status": "unknown", "preservation_status": "failed", "source_manifest_sha256": pin,
               "original_results_changed": None, "argv": command}
+    child = None
     try:
-        result = subprocess.run(command, timeout=timeout)
-        record.update(execution_status="returned", returncode=result.returncode)
-        return result
+        require(type(timeout) in (int, float) and math.isfinite(timeout) and timeout > 0,
+                "Finite positive native/segment child deadline required")
+        deadline = time.monotonic() + timeout
+        child = subprocess.Popen(command, start_new_session=True)
+        record["owned_process_group"] = child.pid
+        next_gate = time.monotonic() + 300
+        while child.poll() is None:
+            require(time.monotonic() < deadline, "Allocated native/segment child deadline exhausted")
+            if time.monotonic() >= next_gate:
+                gate = storage(parent, "periodic")
+                require(gate.get("status") == "passed", "Periodic bounded output admission failed")
+                require(time.monotonic() < deadline, "Periodic metadata exhausted child deadline")
+                next_gate = time.monotonic() + 300
+            time.sleep(min(5, max(.01, deadline - time.monotonic())))
+        require(time.monotonic() < deadline, "Native/segment child completed outside its internal deadline")
+        record.update(execution_status="returned", returncode=child.returncode)
+        return subprocess.CompletedProcess(command, child.returncode)
     except BaseException as error:
         record["execution_error"] = repr(error)
         raise
     finally:
         try:
+            if child is not None and child.poll() is None:
+                try: os.killpg(child.pid, signal.SIGTERM)
+                except ProcessLookupError: pass
+                try: child.wait(timeout=15)
+                except subprocess.TimeoutExpired:
+                    try: os.killpg(child.pid, signal.SIGKILL)
+                    except ProcessLookupError: pass
+                    child.wait(timeout=15)
+                record["owned_process_group_reaped"] = True
             verify(SOURCE, pin)
             external(manifest, plan)
             record.update(preservation_status="passed", original_results_changed=False)
@@ -1173,11 +1282,15 @@ def run_child(command, timeout, parent, manifest, plan, pin):
 
 
 def execute(pin, phase, arm="all", offset=0):
-    phase_deadline = time.monotonic() + (3300 if phase == "cpu" else 6900 if phase == "validate" else 82200 if phase == "segment" else 1080)
+    started = time.monotonic()
     manifest = verify(SOURCE, pin)
     plan = validate_plan(read(SOURCE / "plan.json"))
     require(manifest.get("version") == VERSION and manifest["files"].get("plan.json") == sha(SOURCE / "plan.json"), "Plan not bound by own manifest")
-    own(phase, pin, arm, offset)
+    submitted = own(phase, pin, arm, offset)
+    budget = segment_budget(arm, offset) if phase == "segment" else None
+    if budget is not None:
+        require(submitted.get("runtime_budget") == budget, "Actual measured runtime receipt differs")
+    phase_deadline = started + (3300 if phase == "cpu" else 6900 if phase == "validate" else budget["limit_seconds"] if phase == "segment" else 1080)
     parent = parent_path(phase, arm, offset)
     adoption = external(manifest, plan)
     storage(parent, "entry")
@@ -1197,6 +1310,13 @@ def execute(pin, phase, arm="all", offset=0):
         if phase == "segment":
             verify_ready(plan, pin, arm, offset)
             verify_segment_startup(plan, pin, arm, offset)
+        probe = _module(SOURCE / "scripts/cuda_ownership.py", "_precision_cuda_ownership")
+        probe.run_probe(parent / "cuda-ownership", submission=parent / "submission.json",
+                        expected_job_id=os.environ["LSB_JOBID"],
+                        input_bindings={"source_manifest": binding(SOURCE / "source_manifest.json"),
+                                        "plan": binding(SOURCE / "plan.json"),
+                                        "context_identity": plan["qualified_admissions"][arm]["assessment"]},
+                        deadline=phase_deadline)
         command = driver_argv(plan, pin, phase, arm, offset)
         write(parent / "driver-invocation.json", {"argv": command, "original_results_changed": False})
         remaining = phase_deadline - time.monotonic()

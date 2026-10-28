@@ -77,3 +77,13 @@ Protenix reference placement09 keeps old failures and production path intact; de
 Latest28October: Pro09 native29838596 and DB13 native29838712 passed fixed-endpoint qualification (zero optimizer updates). [Separate-reference continuation14](20261028-precision-continuation-14/README.md) is the new two-arm integration/conditional-continuation attempt. Its full gates are independent; old failures and the plain Boltz/chemistry/VAE jobs remain unchanged.
 
 [Portable continuation15](20261028-precision-continuation-15/README.md) preserves14CPU startup failure, corrects POSIX declarations, and repeats592 cases. ActualCPU29839033/controller29839034 submitted; optimizer admission remains pending fullchecks.
+
+Latest engineering retry: [short continuation16](20261028-precision-continuation-16/README.md).
+Its785 allocated cases passed; full rolling storage passed. Protenix29841081 and
+DBMol29841083 GPU validations are queued, with conditional shorter continuations
+and unchanged total targets/settings/results. Source15's real failures remain.
+
+[Chemistry reference05](20261028-chemistry-native-qualification-05/README.md) is
+local preparation only: corrected precision09 reference and same-device placement,
+40 fixtures planned, no package/pass/job. Current writer admission still needs
+integration before staging; no optimizer branch exists.

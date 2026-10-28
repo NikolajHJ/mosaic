@@ -1,5 +1,14 @@
 # Allocated CPU controls
 
+Current short-continuation16 suite has785 allocated cases. New metadata-only
+controls cover two concurrent CUDA-client orchestration (`test_cuda_ownership`),
+closed rolling ledgers (`test_segment_capacity`) and live inventory/claims
+(`test_rolling_capacity`). The actual tiny CUDA calculation runs later on its
+allocated GPU; fake transport fixtures cannot certify GPU/native readiness.
+Short segment/runtime and owned-child periodic admission controls belong to the
+precision driver/controller tests. Chemistry reference05 separately plans40 cases
+and is not yet packaged or allocated-tested.
+
 `test_qualification.py` tests smooth agreement, deliberate gradient errors,
 boundary-infeasible original probes, FP32 signal loss and scale-dependent
 curvature/nonsmoothness, plus planning/evidence/frozen-identity protections.

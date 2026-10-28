@@ -119,3 +119,18 @@ Protenix reference placement09 keeps old failures and production path intact; de
 Separate-reference continuation14: `precision_continuation_driver.py` authenticates and delegates the original scientific driver; `precision_continuation_hooks.py` supplies independent FP64 references with exact production replay and raw-point evidence; `protenix_reference_worker.py` is the bounded generic Pro reference. `precision_continuation_ops.py` owns conditional CPU/native/segment orchestration; `manage_precision_continuation.py` prepares only, and `stage_precision_continuation.py` performs one-shot authenticated staging and CPU submission. Only exact Pro20k->50k and DB7500->10k may dispatch. All numerical work remains allocated HPC and every original result/failure remains immutable. Read run14 receipts before recovery.
 
 Canonical precision continuation prepare/stage commands now target15. Source14 failed on cross-platform declaration paths before numerical setup and is immutable. Source15 fixes only portable metadata paths/ownedroot, repeats all592 cases/startups and full native admission.
+
+**Current28October execution:** canonical precision prepare/stage now target16,
+with785 allocated cases passed and actual queued native checks29841081/29841083.
+Read [run16](../runs/20261028-precision-continuation-16/README.md) before any action;
+never repeat its stage or controller. `cuda_ownership.py` provides the real bounded
+two-client MPS startup probe. `segment_capacity.py` validates the closed resource
+ledger, and `rolling_capacity.py` inventories current roots and admits only bounded
+next segments while retaining active scopes and reserves. Scientific checks and
+total update targets are unchanged. Historical capacity functions remain named
+`legacy_storage` for their original fixtures/evidence and are not production entry.
+
+Chemistry qualification's canonical05 candidate is currently unsealed and fails
+closed before preparation/staging until its new writer admission is integrated.
+It adopts only the corrected reference machinery and device placement; it cannot
+dispatch an optimizer. The older current04 wording above is historical.

@@ -18,12 +18,12 @@ import tarfile
 
 REPO = Path(__file__).resolve().parents[4]
 OWNER = REPO / "experiments/validation/endpoint-qualification"
-TAG = "20261028-precision-continuation-15"
+TAG = "20261028-precision-continuation-16"
 RUN = OWNER / "runs" / TAG
 LOCAL = REPO / "results/hpc" / TAG
 BASE = "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01"
-ROOT = BASE + "/nonchem-precision-continuation-15"
-SOURCE = BASE + "/nonchem-precision-release-15/source"
+ROOT = BASE + "/nonchem-precision-continuation-16"
+SOURCE = BASE + "/nonchem-precision-release-16/source"
 PYTHON = "/work3/s234818/mosaic/envs/protenix-tiny/bin/python"
 TORCH_PYTHON = "/work3/s234818/latentmol/env/boltz311/bin/python"
 BASE_TAG = "20261027-continuation-measurement-09"
@@ -168,12 +168,13 @@ def _scientific_argv(argv):
 def make_plan(base_members, pro_members, pro_source, db_members, db_source, metadata):
     old = json.loads(base_members["plan.json"]); db_qualified = json.loads(db_members["plan.json"])
     pro = deepcopy(next(arm for arm in old["arms"] if arm["id"] == "protenix"))
+    pro.update(segment_updates=2500, segment_steps=2500, offsets=list(range(20000, 50000, 2500)))
     db = deepcopy(db_qualified["original_arm"])
     require(metadata["failed_parent"]["endpoint"] == db_qualified["boundary"]
             and _scientific_argv(metadata["inputs"]["original_driver_argv"]) == _scientific_argv(db["original_argv"]),
             "Saved7500 boundary or original scientific command changed")
     db.update(start_global=7500, global_start=7500, target_global=10000, global_target=10000,
-              segment_updates=2500, segment_steps=2500, offsets=[7500],
+              segment_updates=1250, segment_steps=1250, offsets=[7500, 8750],
               parent_snapshot=deepcopy(db_qualified["boundary"]), failed_parent=metadata["failed_parent"])
     # The original scientific invocation has the established {'args': ...}
     # receipt consumed by the unchanged driver. The immediate parent wrapper's
@@ -235,6 +236,41 @@ def make_plan(base_members, pro_members, pro_source, db_members, db_source, meta
         "metadata_observed_utc": metadata["observed_utc"],
         "engineering_predecessor": metadata["engineering_predecessor"],
         "scope": "Fresh complete entry/nonraw/null/component/pilot/runtime/live-reference/startup/storage before child; original failures remain failed"}
+    current = read(LOCAL / "current-metadata01/observation.json")
+    details = read(LOCAL / "current-metadata02/observation.json")
+    for packet, field in ((current, "source15_proofs"), (current, "teacher_records"), (details, "records")):
+        for record in packet[field]:
+            data = record["text"].encode("utf8")
+            require(len(data) == record["binding"]["bytes"] and sha(data) == record["binding"]["sha256"],
+                    "Completed read-only metadata packet text differs from its byte binding")
+    rows = json.loads(current["commands"][0]["stdout"])["RECORDS"]
+    teacher = next(row for row in rows if row["JOBID"] == "29839884")
+    report = next(row for row in rows if row["JOBID"] == "29796558")
+    teacher_manifest = next(row["binding"] for row in current["teacher_records"]
+                            if row["binding"]["sha256"] == "a15c8bb2a8ac7e9e12a65c54079e14c994e53b119b9a59e1a9788b5044d8686f")
+    plan["launch_predecessor"] = {"source": {"path": BASE + "/nonchem-precision-release-15/source", "files": 35,
+        "manifest_sha256": current["source15_manifest"]["sha256"]},
+        "failed_jobs": {"protenix": "29839086", "dbmol": "29839088"},
+        "proofs": [row["binding"] for row in current["source15_proofs"] if row["binding"]["bytes"] > 0],
+        "original_results_changed": False, "failures_preserved": True}
+    def deferred(name, saved, target):
+        return {"id": name, "saved_updates": saved, "target_updates": target, "next_updates": 0,
+                "next_scope_id": None, "later_updates_deferred": target - saved,
+                "readmission_before_later_execution": True}
+    plan["rolling_storage_policy"] = {"version": "mosaic-rolling-work3-adapter-v1",
+        "control_cap_bytes": 2 * 1024**3, "control_cap_files": 30000,
+        "release_cap_bytes": 64 * 1024**2, "release_cap_files": 3000,
+        "known_mosaic_jobs": [
+            {"job_id": "29839884", "command": teacher["COMMAND"],
+             "root": "/work3/s234818/mosaic/runs/20261028-protenix-defog-30000-time-ramp-01",
+             "cap_bytes": 4 * 1024**3, "cap_files": 30000, "role": "defog",
+             "release_root": "/work3/s234818/mosaic/releases/20261028-protenix-defog-30000-time-ramp-01",
+             "release_cap_bytes": 64 * 1024**2, "release_cap_files": 3000, "source_manifest": teacher_manifest},
+            {"job_id": "29796558", "command": report["COMMAND"], "root": BASE + "/lrreset-analysis-03/combined-report",
+             "cap_bytes": 2 * 1024**3, "cap_files": 20000, "role": "cache", "release_root": None,
+             "release_cap_bytes": None, "release_cap_files": None, "source_manifest": details["records"][0]["binding"]}],
+        "deferred_goals": [deferred("plain-boltz", 20000, 30000), deferred("protenix-chemistry", 10000, 50000),
+                           deferred("boltz-chemistry", 10000, 30000)]}
     return plan
 
 
@@ -245,7 +281,7 @@ def startup_adoption(source, *, tests=False):
     replacements = {old_root + "/cpu/payload/reference-startup.json": ROOT + "/cpu/payload/dbmol-reference-startup.json"}
     if tests:
         replacements = {"cpu/payload/reference-startup.json": "cpu/payload/dbmol-reference-startup.json",
-            "dbmol-endpoint-recovery-13": "nonchem-precision-continuation-15",
+            "dbmol-endpoint-recovery-13": "nonchem-precision-continuation-16",
             old_root + "/gpu/payload/reference-startup.json": ROOT + "/gpu/payload/dbmol-reference-startup.json"}
     class Change(ast.NodeTransformer):
         def visit_Constant(self, node):
@@ -282,7 +318,9 @@ def prepare(counts_path, metadata_path=None):
     new_files = ["scripts/precision_continuation_driver.py", "scripts/precision_continuation_hooks.py",
         "scripts/precision_continuation_ops.py", "scripts/precision_continuation_stage.lsf", "scripts/protenix_reference_worker.py",
         "scripts/recovery_capacity.py", "tests/test_precision_continuation_driver.py", "tests/test_precision_continuation_hooks.py",
-        "tests/test_precision_continuation_ops.py", "tests/test_protenix_reference_worker.py", "tests/test_recovery_capacity.py"]
+        "tests/test_precision_continuation_ops.py", "tests/test_protenix_reference_worker.py", "tests/test_recovery_capacity.py",
+        "scripts/cuda_ownership.py", "tests/test_cuda_ownership.py", "scripts/segment_capacity.py", "tests/test_segment_capacity.py",
+        "scripts/rolling_capacity.py", "tests/test_rolling_capacity.py"]
     for name in new_files: members[name] = (OWNER / name).read_bytes().replace(b"\r\n", b"\n")
     for name in ("scripts/dbmol_endpoint_precision.py", "tests/test_dbmol_endpoint_precision.py"):
         members[name] = db_members[name]
@@ -305,9 +343,12 @@ def prepare(counts_path, metadata_path=None):
             proofs += [row for row in group.values() if isinstance(row, dict) and set(row) == {"path", "bytes", "sha256"}]
     proofs.append(plan["base_driver"])
     proofs += plan["engineering_predecessor"]["proofs"]
+    proofs += plan["launch_predecessor"]["proofs"]
+    proofs += [row["source_manifest"] for row in plan["rolling_storage_policy"]["known_mosaic_jobs"]]
     for row in plan["qualified_admissions"].values(): proofs += row["proofs"]
     parents = deduplicate(list(base_manifest["parent_sources"]) + list(pro_manifest["parent_sources"])
-        + list(db_manifest["parent_sources"]) + [base_source, pro_source, db_source, plan["engineering_predecessor"]["source"]])
+        + list(db_manifest["parent_sources"]) + [base_source, pro_source, db_source, plan["engineering_predecessor"]["source"],
+                                               plan["launch_predecessor"]["source"]])
     manifest = {"version": "precision-reference-continuation-source-v1", "files": {name: sha(data) for name, data in sorted(members.items())},
         "cpu_counts": counts, "parent_sources": parents, "preserved_proofs": deduplicate(proofs),
         "preserved_failed_admissions": plan["preserved_failed_admissions"], "dispatch_arms": plan["dispatch_arms"],

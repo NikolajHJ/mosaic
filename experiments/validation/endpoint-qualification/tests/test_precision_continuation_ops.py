@@ -18,11 +18,26 @@ o = importlib.util.module_from_spec(SPEC)
 sys.modules[SPEC.name] = o
 SPEC.loader.exec_module(o)
 PIN = "a" * 64
+REAL_SEGMENT_BUDGET = o.segment_budget
+
+
+def measured_budget(arm, offset):
+    assert arm in o.DISPATCH_ARMS and offset in o.ARMS[arm]["offsets"]
+    walltime, seconds = ("07:15", 26100) if arm == "protenix" else ("05:15", 18900)
+    return {"version": "precision-bounded-continuation-segments-v1", "status": "passed", "arm": arm,
+            "segment_updates": o.ARMS[arm]["segment_steps"], "walltime": walltime,
+            "walltime_seconds": seconds, "limit_seconds": seconds - 600,
+            "required_total_seconds": seconds - 850, "reference_seconds": 10800,
+            "validation_summary": {"path": str(o.parent_path('validate', arm, offset) / 'payload/study/summary.json'),
+                                   "bytes": 100, "sha256": PIN}}
 
 
 @pytest.fixture(autouse=True)
-def allocated_only():
+def allocated_only(monkeypatch):
     assert os.environ.get("LSB_JOBID"), "Controller fixtures require allocated DTU HPC"
+    # These are resource/provenance controls, not measured native pilot results.
+    # Native qualification separately supplies the real immutable measurement.
+    monkeypatch.setattr(o, 'segment_budget', measured_budget)
 
 
 @pytest.fixture
@@ -79,7 +94,8 @@ def plan():
 
 
 @pytest.mark.parametrize("arm,offsets,rate,target,steps", [
-    ("protenix", [20000, 30000, 40000], .3, 50000, 10000), ("dbmol", [7500], .0025, 10000, 2500)])
+    ("protenix", list(range(20000, 50000, 2500)), .3, 50000, 2500),
+    ("dbmol", [7500, 8750], .0025, 10000, 1250)])
 def test_exact_two_arm_range_rate_and_immediate_saved_boundary(arm, offsets, rate, target, steps):
     current = plan()
     row = o.arm_plan(current, arm)
@@ -125,10 +141,273 @@ def test_actual_resources_wrapper_and_dependency_are_declared(phase):
     assert str(o.SOURCE / "scripts/precision_continuation_stage.lsf") in argv
     assert argv[argv.index("-n") + 1] == ("4" if phase in ("cpu", "validate", "segment") else "1")
     assert argv[argv.index("-q") + 1] == ("gpul40s" if phase in ("validate", "segment") else "hpc")
-    assert ("num=1:mode=exclusive_process" in argv) is (phase in ("validate", "segment"))
+    assert ("num=1:mode=exclusive_process:mps=yes" in argv) is (phase in ("validate", "segment"))
     assert ("-w" in argv) is callback
-    assert argv[argv.index("-W") + 1] == ("23:00" if phase == "segment" else "02:00" if phase == "validate"
+    assert argv[argv.index("-W") + 1] == (measured_budget(arm, offset)["walltime"] if phase == "segment" else "02:00" if phase == "validate"
                                           else "01:00" if phase == "cpu" else "00:20")
+
+
+def test_segment_budget_delegates_to_exact_own_complete_qualification(owned, monkeypatch):
+    calls = []
+    expected = measured_budget('dbmol', 8750)
+    def budget(path, arm):
+        calls.append((path, arm))
+        return expected
+    monkeypatch.setattr(o, '_module', lambda path, name: SimpleNamespace(runtime_budget=budget))
+    assert REAL_SEGMENT_BUDGET('dbmol', 8750) is expected
+    assert calls == [(o.parent_path('validate', 'dbmol', 8750) / 'payload/study/summary.json', 'dbmol')]
+
+
+@pytest.mark.parametrize('arm,offset', [('boltz', 10000), ('dbmol', 5000), ('dbmol', 10000), ('protenix', 21000)])
+def test_segment_budget_cannot_measure_old_completed_or_undeclared_range(owned, monkeypatch, arm, offset):
+    def forbidden(*args): raise AssertionError('Undeclared source must not import')
+    monkeypatch.setattr(o, '_module', forbidden)
+    with pytest.raises(ValueError): REAL_SEGMENT_BUDGET(arm, offset)
+
+
+def test_actual_segment_submission_keeps_exact_measured_receipt_and_short_walltime(owned, monkeypatch):
+    calls = []
+    def submitted(command, **kwargs):
+        calls.append(command)
+        return SimpleNamespace(returncode=0, stdout='Job <111> is submitted to queue <gpul40s>.', stderr='')
+    monkeypatch.setattr(o.subprocess, 'run', submitted)
+    result = o.submit('segment', PIN, 'dbmol', 7500)
+    assert result['runtime_budget'] == measured_budget('dbmol', 7500)
+    assert result['argv'][result['argv'].index('-W') + 1] == '05:15'
+    assert result['argv'][result['argv'].index('-gpu') + 1] == 'num=1:mode=exclusive_process:mps=yes'
+    assert result['argv'] == calls[0]
+    parent = o.parent_path('segment', 'dbmol', 7500)
+    assert o.read(parent / 'submission.json') == result
+    assert o.read(parent / 'submission-started.json')['runtime_budget'] == result['runtime_budget']
+
+
+@pytest.mark.parametrize('failure', ['old_walltime', 'missing_mps', 'other_job'])
+def test_own_startup_rejects_unmeasured_walltime_or_missing_gpu_sharing(owned, monkeypatch, failure):
+    monkeypatch.setenv('LSB_QUEUE', 'gpul40s')
+    monkeypatch.setenv('LSB_DJOB_NUMPROC', '4')
+    command = o.argv('segment', PIN, 'dbmol', 7500)
+    sub = {'status': 'submitted', 'job_id': os.environ['LSB_JOBID'], 'source_manifest_sha256': PIN,
+           'argv': command, 'dependency': None, 'runtime_budget': measured_budget('dbmol', 7500)}
+    if failure == 'old_walltime': command[command.index('-W') + 1] = '23:00'
+    elif failure == 'missing_mps': command[command.index('-gpu') + 1] = 'num=1:mode=exclusive_process'
+    else: sub['job_id'] = '99999999'
+    save(o.parent_path('segment', 'dbmol', 7500) / 'submission.json', sub)
+    with pytest.raises(ValueError): o.own('segment', PIN, 'dbmol', 7500)
+
+
+def execution_fixture(owned, monkeypatch, phase):
+    source, root = owned
+    current = plan()
+    current['qualified_admissions'] = {name: {'assessment': save(root / (name + '-qualified.json'), {'status': 'passed'})}
+                                       for name in o.DISPATCH_ARMS}
+    save(source / 'plan.json', current)
+    manifest = {'version': o.VERSION, 'files': {'plan.json': o.sha(source / 'plan.json')}}
+    save(source / 'source_manifest.json', manifest)
+    parent = o.parent_path(phase, 'dbmol', 7500)
+    save(parent / 'submission.json', {'status': 'submitted', 'job_id': os.environ['LSB_JOBID']})
+    events = []
+    monkeypatch.setattr(o, 'verify', lambda *args: manifest)
+    monkeypatch.setattr(o, 'own', lambda *args: {'runtime_budget': measured_budget('dbmol', 7500)})
+    monkeypatch.setattr(o, 'external', lambda *args: events.append('external') or {})
+    monkeypatch.setattr(o, 'storage', lambda *args: events.append('storage') or {'status': 'passed'})
+    monkeypatch.setattr(o, 'certificate', lambda *args: events.append('cpu_certificate'))
+    monkeypatch.setattr(o, 'verify_ready', lambda *args: events.append('ready'))
+    monkeypatch.setattr(o, 'verify_segment_startup', lambda *args: events.append('actual_startup'))
+    def probe(output, **kwargs):
+        events.append('cuda_probe')
+        assert output == parent / 'cuda-ownership'
+        assert kwargs['submission'] == parent / 'submission.json'
+        assert kwargs['expected_job_id'] == os.environ['LSB_JOBID']
+        assert set(kwargs['input_bindings']) == {'source_manifest', 'plan', 'context_identity'}
+        return {'status': 'passed'}
+    monkeypatch.setattr(o, '_module', lambda *args: SimpleNamespace(run_probe=probe))
+    monkeypatch.setattr(o, 'driver_argv', lambda *args: events.append('build_driver') or ['bound_driver'])
+    def child(command, timeout, *args):
+        events.append('driver')
+        assert command == ['bound_driver']
+        assert 0 < timeout <= (measured_budget('dbmol', 7500)['limit_seconds'] if phase == 'segment' else 6900)
+        return SimpleNamespace(returncode=0)
+    monkeypatch.setattr(o, 'run_child', child)
+    monkeypatch.setattr(o, 'verify_result', lambda *args: events.append('verify_result'))
+    return events, parent
+
+
+@pytest.mark.parametrize('phase', ['validate', 'segment'])
+def test_real_two_client_cuda_probe_precedes_driver_with_shared_measured_deadline(owned, monkeypatch, phase):
+    events, parent = execution_fixture(owned, monkeypatch, phase)
+    o.execute(PIN, phase, 'dbmol', 7500)
+    assert events.index('storage') < events.index('cuda_probe') < events.index('build_driver') < events.index('driver')
+    assert events[-1] == 'verify_result'
+    assert o.read(parent / 'driver-invocation.json')['argv'] == ['bound_driver']
+
+
+@pytest.mark.parametrize('phase', ['validate', 'segment'])
+def test_cuda_ownership_failure_blocks_driver_and_preserves_original_failure(owned, monkeypatch, phase):
+    events, parent = execution_fixture(owned, monkeypatch, phase)
+    def failed(*args, **kwargs):
+        raise ValueError('Actual two-client CUDA ownership failed')
+    monkeypatch.setattr(o, '_module', lambda *args: SimpleNamespace(run_probe=failed))
+    with pytest.raises(ValueError, match='two-client'): o.execute(PIN, phase, 'dbmol', 7500)
+    assert 'build_driver' not in events and 'driver' not in events
+    assert not (parent / 'driver-invocation.json').exists()
+
+
+@pytest.mark.parametrize('changed', ['missing', 'different_limit', 'changed_measurement'])
+def test_entry_rejects_changed_or_missing_measured_runtime_receipt_before_any_execution(owned, monkeypatch, changed):
+    events, parent = execution_fixture(owned, monkeypatch, 'segment')
+    receipt = measured_budget('dbmol', 7500)
+    if changed == 'different_limit': receipt['limit_seconds'] += 900
+    elif changed == 'changed_measurement': receipt['validation_summary']['sha256'] = 'b' * 64
+    monkeypatch.setattr(o, 'own', lambda *args: {} if changed == 'missing' else {'runtime_budget': receipt})
+    with pytest.raises(ValueError, match='runtime receipt'): o.execute(PIN, 'segment', 'dbmol', 7500)
+    assert events == [] and not (parent / 'driver-invocation.json').exists()
+
+
+def supervised_child_fixture(owned, monkeypatch, *, finish=650, returncode=0, ignore_term=False):
+    parent = owned[1] / 'supervised-child'
+    parent.mkdir()
+    clock = {'now': 0.0}
+    events, launches, signals = [], [], []
+    class Child:
+        pid = 43210
+        def __init__(self):
+            self.returncode = None
+            self.waits = []
+        def poll(self):
+            if self.returncode is None and clock['now'] >= finish:
+                self.returncode = returncode
+            return self.returncode
+        def wait(self, timeout):
+            self.waits.append(timeout)
+            if self.returncode is None:
+                raise o.subprocess.TimeoutExpired(['owned-driver'], timeout)
+            return self.returncode
+    child = Child()
+    def popen(command, **kwargs):
+        launches.append((command, kwargs))
+        return child
+    def signal_group(group, value):
+        signals.append((group, value))
+        assert group == child.pid
+        if value == o.signal.SIGKILL or not ignore_term:
+            child.returncode = -value
+    def gate(path, phase):
+        events.append(('storage', clock['now'], Path(path), phase))
+        return {'status': 'passed'}
+    monkeypatch.setattr(o.time, 'monotonic', lambda: clock['now'])
+    monkeypatch.setattr(o.time, 'sleep', lambda seconds: clock.__setitem__('now', clock['now'] + seconds))
+    monkeypatch.setattr(o.subprocess, 'Popen', popen)
+    monkeypatch.setattr(o.os, 'killpg', signal_group)
+    monkeypatch.setattr(o, 'storage', gate)
+    monkeypatch.setattr(o, 'verify', lambda *args: events.append(('verify', clock['now'])))
+    monkeypatch.setattr(o, 'external', lambda *args: events.append(('external', clock['now'])))
+    return parent, child, clock, events, launches, signals
+
+
+def test_live_child_uses_owned_session_and_periodic_capacity_without_restarting_driver(owned, monkeypatch):
+    parent, child, clock, events, launches, signals = supervised_child_fixture(owned, monkeypatch)
+    result = o.run_child(['owned-driver'], 1000, parent, {}, {}, PIN)
+    assert result.args == ['owned-driver'] and result.returncode == 0
+    assert launches == [(['owned-driver'], {'start_new_session': True})]
+    checks = [row for row in events if row[0] == 'storage']
+    assert [(row[1], row[2], row[3]) for row in checks] == [(300, parent, 'periodic'), (600, parent, 'periodic')]
+    assert signals == [] and child.waits == []
+    receipt = o.read(parent / 'post-execution-preservation.json')
+    assert receipt['execution_status'] == 'returned' and receipt['returncode'] == 0
+    assert receipt['preservation_status'] == 'passed' and receipt['original_results_changed'] is False
+    assert receipt['owned_process_group'] == child.pid
+
+
+@pytest.mark.parametrize('failure', ['capacity_status', 'capacity_exception', 'deadline'])
+def test_capacity_or_runtime_failure_terminates_only_owned_group_and_preserves_evidence(owned, monkeypatch, failure):
+    parent, child, clock, events, launches, signals = supervised_child_fixture(owned, monkeypatch, finish=float('inf'))
+    if failure != 'deadline':
+        def rejected(*args):
+            if failure == 'capacity_exception': raise ValueError('Actual current quota unavailable')
+            return {'status': 'failed'}
+        monkeypatch.setattr(o, 'storage', rejected)
+    with pytest.raises(ValueError):
+        o.run_child(['owned-driver'], 12 if failure == 'deadline' else 1000, parent, {}, {}, PIN)
+    assert signals == [(child.pid, o.signal.SIGTERM)] and child.waits == [15]
+    receipt = o.read(parent / 'post-execution-preservation.json')
+    assert receipt['owned_process_group_reaped'] is True and receipt['execution_status'] == 'unknown'
+    assert 'execution_error' in receipt and receipt['preservation_status'] == 'passed'
+    assert receipt['original_results_changed'] is False
+    assert [row[0] for row in events][-2:] == ['verify', 'external']
+    if failure == 'deadline': assert clock['now'] == 12
+
+
+def test_unresponsive_owned_group_is_killed_after_bounded_grace_and_reaped(owned, monkeypatch):
+    parent, child, clock, events, launches, signals = supervised_child_fixture(owned, monkeypatch,
+                                                                          finish=float('inf'), ignore_term=True)
+    with pytest.raises(ValueError, match='deadline'):
+        o.run_child(['owned-driver'], 12, parent, {}, {}, PIN)
+    assert signals == [(child.pid, o.signal.SIGTERM), (child.pid, o.signal.SIGKILL)]
+    assert child.waits == [15, 15]
+    assert o.read(parent / 'post-execution-preservation.json')['owned_process_group_reaped'] is True
+
+
+@pytest.mark.parametrize('timeout', [0, -1, True, float('inf'), float('nan')])
+def test_invalid_runtime_budget_cannot_spawn_a_driver(owned, monkeypatch, timeout):
+    parent, child, clock, events, launches, signals = supervised_child_fixture(owned, monkeypatch)
+    with pytest.raises(ValueError, match='Finite positive'):
+        o.run_child(['owned-driver'], timeout, parent, {}, {}, PIN)
+    assert launches == signals == []
+    receipt = o.read(parent / 'post-execution-preservation.json')
+    assert 'execution_error' in receipt and receipt['preservation_status'] == 'passed'
+
+
+def test_periodic_metadata_cannot_consume_internal_budget_and_admit_a_late_child(owned, monkeypatch):
+    parent, child, clock, events, launches, signals = supervised_child_fixture(owned, monkeypatch, finish=320)
+    def slow_scan(*args):
+        clock['now'] += 40
+        return {'status': 'passed'}
+    monkeypatch.setattr(o, 'storage', slow_scan)
+    with pytest.raises(ValueError, match='Periodic metadata exhausted'):
+        o.run_child(['owned-driver'], 330, parent, {}, {}, PIN)
+    assert clock['now'] == 340 and signals == []
+    receipt = o.read(parent / 'post-execution-preservation.json')
+    assert receipt['execution_status'] == 'unknown' and 'execution_error' in receipt
+
+
+def test_child_finishing_exactly_at_internal_cap_is_rejected_without_unowned_cleanup(owned, monkeypatch):
+    parent, child, clock, events, launches, signals = supervised_child_fixture(owned, monkeypatch, finish=12)
+    with pytest.raises(ValueError, match='outside its internal deadline'):
+        o.run_child(['owned-driver'], 12, parent, {}, {}, PIN)
+    assert clock['now'] == 12 and signals == [] and child.returncode == 0
+    receipt = o.read(parent / 'post-execution-preservation.json')
+    assert receipt['execution_status'] == 'unknown' and receipt['preservation_status'] == 'passed'
+
+
+def test_nonzero_child_result_is_preserved_without_masquerading_as_success(owned, monkeypatch):
+    parent, child, clock, events, launches, signals = supervised_child_fixture(owned, monkeypatch, finish=5, returncode=7)
+    result = o.run_child(['owned-driver'], 1000, parent, {}, {}, PIN)
+    assert result.returncode == 7 and signals == []
+    receipt = o.read(parent / 'post-execution-preservation.json')
+    assert receipt['returncode'] == 7 and receipt['execution_status'] == 'returned'
+    assert receipt['preservation_status'] == 'passed' and receipt['original_results_changed'] is False
+
+
+def test_popen_failure_has_no_unowned_cleanup_and_still_authenticates_saved_inputs(owned, monkeypatch):
+    parent, child, clock, events, launches, signals = supervised_child_fixture(owned, monkeypatch)
+    def failed(*args, **kwargs): raise OSError('Process creation failed')
+    monkeypatch.setattr(o.subprocess, 'Popen', failed)
+    with pytest.raises(OSError, match='creation failed'):
+        o.run_child(['owned-driver'], 1000, parent, {}, {}, PIN)
+    assert signals == [] and [row[0] for row in events] == ['verify', 'external']
+    receipt = o.read(parent / 'post-execution-preservation.json')
+    assert 'execution_error' in receipt and receipt['preservation_status'] == 'passed'
+
+
+def test_postexecution_input_change_is_failed_and_retained_even_after_child_returns(owned, monkeypatch):
+    parent, child, clock, events, launches, signals = supervised_child_fixture(owned, monkeypatch, finish=5)
+    def changed(*args): raise ValueError('Protected source bytes changed')
+    monkeypatch.setattr(o, 'verify', changed)
+    with pytest.raises(ValueError, match='source bytes changed'):
+        o.run_child(['owned-driver'], 1000, parent, {}, {}, PIN)
+    receipt = o.read(parent / 'post-execution-preservation.json')
+    assert receipt['execution_status'] == 'returned' and receipt['preservation_status'] == 'failed'
+    assert receipt['original_results_changed'] is None and 'preservation_error' in receipt
 
 
 @pytest.mark.parametrize("phase,dependency", [("validate", "ended(111)"), ("segment", "done(111)"),
@@ -171,14 +450,14 @@ def test_later_pro_checkpoint_requires_own_passed_parent_certificate(owned):
     save(source / "plan.json", current)
     save(source / "source_manifest.json", {"files": {"plan.json": o.sha(source / "plan.json")}})
     cert_path = root / (o.label("segment", "protenix", 20000) + "-certificate.json")
-    save(cert_path, {"status": "failed", "arm": "protenix", "global_end": 30000})
-    with pytest.raises(ValueError, match="not certified"): o.input_snapshot(current, "protenix", 30000)
+    save(cert_path, {"status": "failed", "arm": "protenix", "global_end": 22500})
+    with pytest.raises(ValueError, match="not certified"): o.input_snapshot(current, "protenix", 22500)
     proof = save(root / "parent-proof.json", {"status": "passed_new_child"})
-    terminal = save(root / "terminal30000.json", {"exact": "new_child_endpoint"})
-    save(cert_path, {"status": "passed", "arm": "protenix", "global_end": 30000,
+    terminal = save(root / "terminal22500.json", {"exact": "new_child_endpoint"})
+    save(cert_path, {"status": "passed", "arm": "protenix", "global_end": 22500,
                      "source_manifest_sha256": o.sha(source / "source_manifest.json"),
                      "plan_sha256": o.sha(source / "plan.json"), "proofs": [proof], "terminal_snapshot": terminal})
-    assert o.input_snapshot(current, "protenix", 30000) == terminal
+    assert o.input_snapshot(current, "protenix", 22500) == terminal
 
 
 @pytest.mark.parametrize("failure", ["version", "status", "certify", "changed", "unbound"])
@@ -344,9 +623,30 @@ def capacity_fixture(owned, monkeypatch, available=80 * 1024**3):
     return parent, prior, calls, gate
 
 
+@pytest.mark.parametrize('status', ['passed', 'failed'])
+def test_production_storage_delegates_only_to_new_rolling_gate(owned, monkeypatch, status):
+    parent = owned[1] / 'new-entry'
+    parent.mkdir()
+    calls = []
+    receipt = {'status': status, 'reserve_bytes': 4 * o.GIB, 'file_reserve': 100000}
+    def gate(controller, current_parent, phase):
+        calls.append((controller, current_parent, phase))
+        return receipt
+    modules = []
+    def module(path, name):
+        modules.append(path)
+        return SimpleNamespace(storage=gate)
+    monkeypatch.setattr(o, '_module', module)
+    if status == 'passed': assert o.storage(parent, 'entry') is receipt
+    else:
+        with pytest.raises(ValueError, match='Rolling'): o.storage(parent, 'entry')
+    assert calls == [(o, parent, 'entry')]
+    assert modules == [o.SOURCE / 'scripts/rolling_capacity.py']
+
+
 def test_storage_adds_all_twelve_reference_caps_control_and_entire_new_tree_charge(owned, monkeypatch):
     parent, prior, calls, gate = capacity_fixture(owned, monkeypatch)
-    result = o.storage(parent, "dispatch")
+    result = o.legacy_storage(parent, "dispatch")
     assert result["status"] == "passed" and len(calls) == 1
     assert result["required_bytes"] == prior["required_bytes"] + 1280 * 1024**2
     assert result["available_bytes"] == prior["available_bytes"] - 700
@@ -360,10 +660,10 @@ def test_storage_adds_all_twelve_reference_caps_control_and_entire_new_tree_char
 
 def test_actual_storage_funds_fresh_pilot_positive_excess_without_borrowing_old_future(owned, monkeypatch):
     parent, prior, calls, gate = capacity_fixture(owned, monkeypatch)
-    save(owned[1] / "projections.json", {"dbmol": {"unit_bytes": 20000000, "remaining_offsets": [7500]}})
+    save(owned[1] / "projections.json", {"dbmol": {"unit_bytes": 20000000, "remaining_offsets": [7500, 8750]}})
     excess, details = o.projection_excess_from_gate(prior)
     assert excess > 0
-    result = o.storage(parent, "dispatch")
+    result = o.legacy_storage(parent, "dispatch")
     assert result["required_bytes"] == prior["required_bytes"] + 1280 * 1024**2 + excess
     assert result["additional_positive_pilot_projection_bytes"] == excess
     assert result["new_pilot_projection_details"] == details
@@ -371,7 +671,7 @@ def test_actual_storage_funds_fresh_pilot_positive_excess_without_borrowing_old_
 
 
 def test_projection_uses_smallest_authenticated_inherited_remaining_budget(owned):
-    save(owned[1] / "projections.json", {"dbmol": {"unit_bytes": 20000000, "remaining_offsets": [7500]}})
+    save(owned[1] / "projections.json", {"dbmol": {"unit_bytes": 20000000, "remaining_offsets": [7500, 8750]}})
     gates = {"one": {"version": "selected-nonchem-full-storage-v1", "selected": {
         "protenix50k40k": {"remaining": 9 * o.GIB}, "dbmol10k": {"remaining": 5 * o.GIB}}},
         "two": [{"version": "selected-nonchem-full-storage-v1", "selected": {
@@ -395,7 +695,7 @@ def test_fresh_projection_cannot_use_missing_or_nonfinite_inherited_full_budget(
 def test_inherited_storage_or_reserve_failure_cannot_be_waived(owned, monkeypatch, field, value):
     parent, prior, calls, gate = capacity_fixture(owned, monkeypatch)
     prior[field] = value
-    with pytest.raises(ValueError): o.storage(parent, "entry")
+    with pytest.raises(ValueError): o.legacy_storage(parent, "entry")
     assert len(calls) == 1
 
 
@@ -405,7 +705,7 @@ def test_new_full_storage_failure_is_preserved_without_retry(owned, monkeypatch,
     if failure == "control_cap":
         prior["available_bytes"] = 80 * o.GIB
         monkeypatch.setattr(o, "metadata_bytes", lambda: o.CONTROL_CAP + 1)
-    with pytest.raises(ValueError): o.storage(parent, "entry")
+    with pytest.raises(ValueError): o.legacy_storage(parent, "entry")
     assert len(calls) == 1
     failure_path = parent / "whole-precision-entry-1/full-precision-storage.json"
     assert failure_path.is_file() and o.read(failure_path)["status"] == "failed"
@@ -421,7 +721,7 @@ def test_exact_owned_atomic_race_retries_whole_inventory_and_keeps_failed_attemp
         if len(attempts) == 1: raise FileNotFoundError(errno.ENOENT, "owned atomic reference replaced", str(atomic))
         return deepcopy(prior)
     monkeypatch.setattr(o, "_module", lambda *args: SimpleNamespace(gate=racing))
-    assert o.storage(parent, "dispatch")["status"] == "passed"
+    assert o.legacy_storage(parent, "dispatch")["status"] == "passed"
     assert len(attempts) == 2
     incomplete = o.read(attempts[0] / "incomplete-owned-atomic-inventory.json")
     assert incomplete["partial_totals_used"] is incomplete["files_skipped"] is False
@@ -437,19 +737,19 @@ def test_inventory_retry_never_skips_unrelated_files_or_retries_other_failures(o
         if kind == "capacity": raise ValueError("no capacity")
         raise FileNotFoundError(errno.ENOENT, "missing", str(atomic if kind == "exhausted_atomic" else parent / "unrelated-proof"))
     monkeypatch.setattr(o, "_module", lambda *args: SimpleNamespace(gate=failing))
-    with pytest.raises((ValueError, FileNotFoundError)): o.storage(parent, "entry")
+    with pytest.raises((ValueError, FileNotFoundError)): o.legacy_storage(parent, "entry")
     assert len(attempts) == (3 if kind == "exhausted_atomic" else 1)
 
 
 def test_projection_only_adds_positive_fresh_pilot_excess_and_never_reduces_old_future():
     original = {"selected": {"protenix50k40k": {"remaining": 3 * o.GIB}, "dbmol10k": {"remaining": o.GIB}}}
-    forecast = {"dbmol": {"unit_bytes": 20, "remaining_offsets": [7500]}}
+    forecast = {"dbmol": {"unit_bytes": 20, "remaining_offsets": [7500, 8750]}}
     extra, details = o.projection_excess(original, forecast)
     assert extra >= 0 and original["selected"]["dbmol10k"]["remaining"] == o.GIB
     forecast["dbmol"]["unit_bytes"] = 100000000
     larger, details = o.projection_excess(original, forecast)
     assert larger > extra and larger == details["dbmol"]["positive_excess_bytes"]
-    assert details["dbmol"]["remaining_offsets"] == [7500]
+    assert details["dbmol"]["remaining_offsets"] == [7500, 8750]
 
 
 @pytest.mark.parametrize("offsets", [[5000, 7500], [7500, 5000], [], [9999]])

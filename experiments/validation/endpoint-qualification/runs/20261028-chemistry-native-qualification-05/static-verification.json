@@ -1,0 +1,12 @@
+{
+  "status": "static_only_not_packaged_or_validated",
+  "cpu_cases": 40,
+  "query_path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261028-chemistry-native-qualification-05\\static-preparation01\\prepare-metadata-query.py",
+  "query_bytes": 23419,
+  "query_sha256": "58b327ec80d3e274ccfa0800ef4751a80dfe8766c71007e66e497d0ab1920115",
+  "production_setup_raw_direction_ASTs_identical_to04": true,
+  "reference_policy_bytes_equal09": true,
+  "capacity_admission_implemented": false,
+  "numerical_tests_run": false,
+  "new_jobs": false
+}

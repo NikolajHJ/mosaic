@@ -15,11 +15,24 @@ import sys
 BASE=Path('/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01')
 PARENT=BASE/'chemistry-endpoint-recovery-release-02/source'
 PARENT_PIN='d3d8678542db3cf6100006f8f9dbd3ce761f169bd904ddcae3d4525a53252f51'
-ROOT=BASE/'chemistry-native-qualification-04'
-SOURCE=BASE/'chemistry-native-qualification-release-04/source'
+ROOT=BASE/'chemistry-native-qualification-05'
+SOURCE=BASE/'chemistry-native-qualification-release-05/source'
 CAP=2*512*1024**2+64*1024**2
+NATIVE_ARMS=('protenix',)
+# Bound only after current cross-campaign resource16 is sealed and05's writer
+# descriptor is validated. Never stage/admit with qualification04's old scope.
+CURRENT_CAPACITY_SOURCE=None
 ATOMIC_REFERENCE=BASE/'nonchem-endpoint-continuation-09/boltz-segment-10000/payload/study/case-0/references/latest-reference.json.tmp'
 INVENTORY_ATTEMPTS=3
+
+
+def current_capacity(parent,phase):
+    """Intentional fail-closed boundary until resource16 adoption is implemented.
+
+    Binding a source dictionary alone cannot admit a job. Root must wire the
+    actual validated current-scope operation and05 writer descriptor here.
+    """
+    raise ValueError('Current cross-campaign admission is not implemented for qualification05; no stage or job is permitted')
 
 
 def complete_inventory(operation,parent,phase,write):
@@ -61,15 +74,18 @@ def inherited():
     original_command=op.command
     def command(phase,pin,dependency=None):
         argv=original_command(phase,pin,dependency)
-        argv[argv.index('-J')+1]='mosaic-chem-qualification04-'+phase
+        argv[argv.index('-J')+1]='mosaic-chem-qualification05-'+phase
         return argv
     op.command=command
     oldstorage=op.storage
     def entire_storage(parent,phase):
+        current_capacity(parent,phase)
         value=oldstorage(parent,phase)
         prior=0
         for root in (BASE/'chemistry-endpoint-recovery-02',PARENT.parent,
-                     BASE/'chemistry-native-qualification-03',BASE/'chemistry-native-qualification-release-03'):
+                     BASE/'chemistry-native-qualification-03',BASE/'chemistry-native-qualification-release-03',
+                     BASE/'chemistry-native-qualification-04',BASE/'chemistry-native-qualification-release-04',
+                     BASE/'protenix-endpoint-fix-09',BASE/'protenix-endpoint-fix-release-09'):
             for p in root.rglob('*'):
                 op.require(not p.is_symlink() and (p.is_file() or p.is_dir()),'Prior diagnostic linked/special output')
                 if p.is_file():prior+=p.stat().st_size
@@ -88,12 +104,15 @@ def inherited():
 
 def execute(phase,pin):
     op=inherited();manifest=op.verify(SOURCE,pin);plan=op.external(manifest);parent=op.own(phase,pin)
+    op.require(phase in ('cpu','after-cpu','gpu-protenix'),'05 may only requalify the failed Protenix native component')
+    op.require(CURRENT_CAPACITY_SOURCE is not None,'Current cross-campaign capacity source and05 writer are not yet declared')
     op.storage(parent,'entry');payload=parent/'payload';payload.mkdir(exist_ok=False)
     if phase=='after-cpu':
         certificate=op.cpu_pass(pin,manifest);op.write(ROOT/'cpu-certificate.json',certificate)
         op.storage(parent,'dispatch')
-        for arm in ('protenix','boltz'):op.submit('gpu-'+arm,pin)
-        op.write(payload/'assessment.json',{'status':'passed_CPU_and_two_native_component_checks_submitted',
+        for arm in NATIVE_ARMS:op.submit('gpu-'+arm,pin)
+        op.write(payload/'assessment.json',{'status':'passed_CPU_and_Pro_native_component_check_submitted',
+            'native_arms':list(NATIVE_ARMS),'Boltz04_qualified_evidence_preserved':True,
             'optimizer_jobs_submitted':False});return
     base=[op.PYTHON,str(SOURCE/'scripts/chemistry_native_qualification.py'),'--plan',str(SOURCE/'plan.json'),
           '--plan-sha256',op.sha(SOURCE/'plan.json')]
@@ -126,7 +145,7 @@ def execute(phase,pin):
 
 def main():
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--pin',required=True)
-    p.add_argument('--phase',choices=('cpu','after-cpu','gpu-protenix','gpu-boltz'),required=True)
+    p.add_argument('--phase',choices=('cpu','after-cpu','gpu-protenix'),required=True)
     a=p.parse_args();execute(a.phase,a.pin)
 
 

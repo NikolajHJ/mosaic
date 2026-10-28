@@ -1,4 +1,4 @@
-"""Stdlib operator for the distinct chemistry native-qualification04 capsule."""
+"""Stdlib operator for the distinct reference-only qualification05 capsule."""
 import argparse
 import ast
 import base64
@@ -11,16 +11,23 @@ import tarfile
 
 REPO=Path(__file__).resolve().parents[4]
 OWNER=REPO/'experiments/validation/endpoint-qualification'
-TAG='20261027-chemistry-native-qualification-04'
+TAG='20261028-chemistry-native-qualification-05'
 LOCAL=REPO/'results/hpc'/TAG
 RUN=OWNER/'runs'/TAG
 BASE='/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01'
-ROOT=BASE+'/chemistry-native-qualification-04'
-SOURCE=BASE+'/chemistry-native-qualification-release-04/source'
+ROOT=BASE+'/chemistry-native-qualification-05'
+SOURCE=BASE+'/chemistry-native-qualification-release-05/source'
 PARENT=BASE+'/chemistry-endpoint-recovery-release-02/source'
 PIN='d3d8678542db3cf6100006f8f9dbd3ce761f169bd904ddcae3d4525a53252f51'
-PRECISION=BASE+'/protenix-endpoint-fix-release-07/source'
-PRECISION_PIN='63db0a002c8aca2a282d50f9e7227d57b69ac6820b8ae0e06287ec95770dd8a3'
+PRECISION=BASE+'/protenix-endpoint-fix-release-09/source'
+PRECISION_PIN='f2043af74b8fa9ff485a44b80fcf96454bf8585868859389828c37f0073a3664'
+PRIOR=BASE+'/chemistry-native-qualification-04'
+PRIOR_SOURCE=BASE+'/chemistry-native-qualification-release-04/source'
+PRIOR_PIN='5d8f4ef0f8bb820e76d2e92442492f604393e79b58725fd01f9bb042b3114863'
+# Root binds an actual sealed current-capacity source and bounded05 writer.
+# None is an intentional preparation/staging stop, not a storage admission.
+CURRENT_CAPACITY_SOURCE=None
+CPU_CASES=40
 
 
 def transport():
@@ -35,55 +42,75 @@ def raw(v):return (json.dumps(v,indent=2,sort_keys=True,allow_nan=False)+'\n').e
 def sha(v):return hashlib.sha256(v).hexdigest()
 
 
-def prepare():
+def preparation_code():
+    """Metadata-only query root can combine with its next authenticated session."""
     m=transport()
-    code=m.HEADER+'NEWROOT='+repr(ROOT)+'\nNEWSOURCE='+repr(SOURCE)+'\nPRECISION='+repr(PRECISION)+'\n'+r'''
+    native=json.loads((OWNER/'runs/20261028-protenix-endpoint-fix-09/native-verification.json').read_bytes())
+    assert native['job_id']=='29838596' and native['optimizer_updates']==0
+    code=m.HEADER+'NEWROOT='+repr(ROOT)+'\nNEWSOURCE='+repr(SOURCE)+'\nPRECISION='+repr(PRECISION)+'\n'
+    code+='PRIOR='+repr(PRIOR)+'\nPRIOR_SOURCE='+repr(PRIOR_SOURCE)+'\nNATIVE09_PROOFS='+repr(native['proofs'])+'\n'+r'''
 assert not Path(NEWROOT).exists() and not Path(NEWSOURCE).parent.exists(),'Existing/unknown candidate; inspect before preparation'
-parent=Path(SOURCE);pm=verify(parent,'d3d8678542db3cf6100006f8f9dbd3ce761f169bd904ddcae3d4525a53252f51',10)
-plan=json.loads((parent/'plan.json').read_bytes());protected={r['path']:r for r in plan['protected_inputs']}
+prior_source=Path(PRIOR_SOURCE);verify(prior_source,'5d8f4ef0f8bb820e76d2e92442492f604393e79b58725fd01f9bb042b3114863',12)
+plan=json.loads((prior_source/'plan.json').read_bytes());protected={r['path']:r for r in plan['protected_inputs']}
 for r in protected.values():assert binding(r['path'])==r
-prior=Path(ROOT)
-assert json.loads((prior/'jobs.json').read_bytes())=={'cpu':'29830696','after-cpu':'29830697','gpu-protenix':'29830750','gpu-boltz':'29830751'}
-for phase,job in json.loads((prior/'jobs.json').read_bytes()).items():
- text=(prior/phase/('stdout.'+job+'.log')).read_text();text=''.join(text.split())
- assert text.count('Subject:Job'+job+':')==1 and 'Successfullycompleted.' in text and 'Exitedwithexit' not in text
-for arm in ('protenix','boltz'):
- result=json.loads((prior/('gpu-'+arm)/'payload/native/assessment.json').read_bytes())
- assert result['status']=='diagnostics_completed_original_failure_preserved' and result['protected_inputs_unchanged'] and result['frozen_unchanged']
- assert result['can_certify_or_restart_original_study'] is False
+prior=Path(PRIOR)
+jobs={'cpu':'29834574','after-cpu':'29834576','gpu-protenix':'29834600','gpu-boltz':'29834601'}
+assert json.loads((prior/'jobs.json').read_bytes())==jobs
+for phase,job in jobs.items():
+ text=''.join((prior/phase/('stdout.'+job+'.log')).read_text().split())
+ assert text.count('Subject:Job'+job+':')==1
+ assert ('Exitedwithexitcode1.' in text) if phase=='gpu-protenix' else ('Successfullycompleted.' in text and 'Exitedwithexit' not in text)
+failed=prior/'gpu-protenix/payload/native'
+production=json.loads((failed/'production/assessment.json').read_bytes())
+reference=json.loads((failed/'reference/assessment.json').read_bytes())
+assert production['status']=='production_measurements_complete' and production['frozen_unchanged'] and production['protected_inputs_unchanged']
+assert reference['status']=='failed' and reference['frozen_unchanged'] and reference['protected_inputs_unchanged']
+assert binding(failed/'reference.log')['sha256']=='b06d8e9c637734289784706a1731ce7fbe8f9a0544443c2883cb9aa20787b38d'
+assert not (prior/'gpu-protenix/payload/assessment.json').exists()
+boltz=json.loads((prior/'gpu-boltz/payload/assessment.json').read_bytes())
+assert boltz['status']=='native_component_qualified_not_continuation_admission' and boltz['optimizer_updates']==0 and boltz['can_submit_continuation'] is False
 for p in prior.rglob('*'):
  assert not p.is_symlink() and (p.is_dir() or p.is_file())
  if p.is_file():protected[str(p)]=binding(p)
-precision=Path(PRECISION);pr=verify(precision,'63db0a002c8aca2a282d50f9e7227d57b69ac6820b8ae0e06287ec95770dd8a3',18)
+precision=Path(PRECISION);pr=verify(precision,'f2043af74b8fa9ff485a44b80fcf96454bf8585868859389828c37f0073a3664',20)
+for row in NATIVE09_PROOFS:
+ assert binding(row['path'])==row
+ protected[row['path']]=row
+qualified=base/'protenix-endpoint-fix-09/gpu/payload/assessment.json'
+q=json.loads(qualified.read_bytes())
+assert q['status']=='prospective_precision_gate_passed_original_failures_preserved' and q['updates']==0
 adoption={}
 for name,source in [('admission.py',base/'nonchem-endpoint-release-09/source'),
  ('protenix_precision_reference.py',precision),('protenix_precision_admission.py',precision)]:
  adoption['scripts/'+name]=binding(source/'scripts'/name)
-parents=plan['parent_sources']+[{'path':str(parent),'manifest_sha256':sha(parent/'source_manifest.json'),'files':10},
- {'path':str(precision),'manifest_sha256':sha(precision/'source_manifest.json'),'files':18}]
-failed=base/'chemistry-native-qualification-03';failed_source=base/'chemistry-native-qualification-release-03/source'
-verify(failed_source,'966034fd61600cca47f30fb0e939671bd678490a8fcdf4960d2d570b080d0b9e',12)
-assert json.loads((failed/'jobs.json').read_bytes())=={'cpu':'29833834','after-cpu':'29833835'}
-for phase,job in [('cpu','29833834'),('after-cpu','29833835')]:
- text=''.join((failed/phase/('stdout.'+job+'.log')).read_text().split())
- assert text.count('Subject:Job'+job+':')==1 and 'Exitedwithexitcode1.' in text
-assert not (failed/'cpu/payload').exists() and not (failed/'gpu-protenix').exists() and not (failed/'gpu-boltz').exists()
-for p in failed.rglob('*'):
- assert not p.is_symlink() and (p.is_file() or p.is_dir())
- if p.is_file():protected[str(p)]=binding(p)
-parents.append({'path':str(failed_source),'manifest_sha256':sha(failed_source/'source_manifest.json'),'files':12})
+precision_source={'path':str(precision),'manifest_sha256':sha(precision/'source_manifest.json'),'files':20}
+parents=plan['parent_sources']+[{'path':str(prior_source),'manifest_sha256':sha(prior_source/'source_manifest.json'),'files':12},precision_source]
 
 plan.update(output_root=NEWROOT,protected_inputs=list(protected.values()),parent_sources=parents,
  qualification_version='chemistry-native-component-qualification-v1',can_submit_continuation=False,
- diagnostic_source=parents[-3],precision_source=parents[-2],adopted_files=adoption,
- prior_failed_qualification=parents[-1],inventory_retry_policy='exact-observed-atomic-temp-full-gate-three-attempts-v1',
+ precision_source=precision_source,adopted_files=adoption,
+ prior_failed_qualification=parents[-2],inventory_retry_policy='exact-observed-atomic-temp-full-gate-three-attempts-v1',
+ native_arms=['protenix'],Boltz04_native_component=protected[str(prior/'gpu-boltz/payload/assessment.json')],
+ reference09_qualified_nonchem_endpoint_not_chemistry_admission=binding(qualified),
  native_component_only=True,combined_chemistry_admission=False,original_failures_preserved=True,
  max_native_bytes=512*1024**2,internal_seconds=5300)
 print(json.dumps({'status':'originals_and_complete_diagnostic_point_inventory_authenticated','plan':plan}))
 '''
+    ast.parse(code)
+    return code
+
+
+def require_current_scope():
+    if CURRENT_CAPACITY_SOURCE is None:
+        raise ValueError('Current sealed cross-campaign capacity source and bounded05 writer are not declared; preparation/staging blocked')
+
+
+def prepare():
+    require_current_scope()
+    m=transport();code=preparation_code()
     packet=m.connect(code,'inputs01',300);plan=packet['plan'];members={}
     names=('scripts/chemistry_native_qualification.py','scripts/chemistry_qualification_ops.py',
-           'tests/test_chemistry_native_qualification.py','scripts/admission.py',
+           'scripts/manage_chemistry_qualification.py','tests/test_chemistry_native_qualification.py','scripts/admission.py',
            'scripts/protenix_precision_reference.py','scripts/protenix_precision_admission.py')
     for name in names:
         content=(OWNER/name).read_bytes().replace(b'\r\n',b'\n');ast.parse(content,filename=name)
@@ -102,7 +129,7 @@ print(json.dumps({'status':'originals_and_complete_diagnostic_point_inventory_au
         if isinstance(c,ast.ClassDef):
             count=sum(isinstance(n,ast.FunctionDef) and n.name.startswith('test_') for n in c.body)
             if count:counts['tests.test_chemistry_native_qualification.'+c.name]=count
-    assert sum(counts.values())==29
+    assert sum(counts.values())==CPU_CASES
     manifest={'version':'chemistry-native-qualification-source-v1','files':{k:sha(v) for k,v in sorted(members.items())},
         'parent_sources':plan['parent_sources'],'cpu_counts':counts,'diagnostic_only':True,
         'optimizer_updates':0,'original_results_changed':False,'can_submit_continuation':False}
@@ -115,7 +142,7 @@ print(json.dumps({'status':'originals_and_complete_diagnostic_point_inventory_au
     archive=buffer.getvalue();(out/'source.tar.gz').write_bytes(archive)
     prep={'status':'prepared_not_validated','files':len(manifest['files']),'manifest_sha256':sha(members['source_manifest.json']),
         'archive_bytes':len(archive),'archive_sha256':sha(archive),'plan_sha256':sha(members['plan.json']),
-        'protected_input_files':len(plan['protected_inputs']),'cpu_counts':counts,'cpu_cases':29}
+        'protected_input_files':len(plan['protected_inputs']),'cpu_counts':counts,'cpu_cases':CPU_CASES}
     (out/'preparation.json').write_bytes(raw(prep));(RUN/'preparation.json').write_bytes(raw(prep))
     (RUN/'source-manifest.json').write_bytes(members['source_manifest.json'])
     (RUN/'campaign.json').write_bytes(raw({**prep,'optimizer_jobs_submitted':False,'settings_changed':False,
@@ -124,6 +151,7 @@ print(json.dumps({'status':'originals_and_complete_diagnostic_point_inventory_au
 
 
 def stage():
+    require_current_scope()
     m=transport();out=LOCAL/'source01';prep=json.loads((out/'preparation.json').read_bytes())
     data=(out/'source.tar.gz').read_bytes();assert len(data)==prep['archive_bytes'] and sha(data)==prep['archive_sha256']
     code=m.HEADER.replace('ROOT='+repr(BASE+'/chemistry-endpoint-recovery-02'),'ROOT='+repr(ROOT))
@@ -188,7 +216,7 @@ value={'status':'read_only_unknown_stage_inspection','root_exists':root.exists()
 if source.exists():
  manifest=json.loads((source/'source_manifest.json').read_bytes()) if (source/'source_manifest.json').is_file() else None
  if manifest:
-  verify(source,EXPECTED_PIN,12);value['source_verified']=True
+  verify(source,EXPECTED_PIN,13);value['source_verified']=True
   value['source_manifest_sha256']=sha(source/'source_manifest.json')
 if root.exists():
  for p in root.rglob('*'):

@@ -5,6 +5,7 @@ from pathlib import Path
 import sys
 import unittest
 import tempfile
+from unittest import mock
 
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scripts'))
 import chemistry_native_qualification as q
@@ -28,7 +29,7 @@ class ChemistryNativeQualificationTests(unittest.TestCase):
         self.assertEqual(a[a.index('-n')+1],'4');self.assertNotIn('-w',a)
     def test_new_command_points_to_new_source(self):
         a=ops.inherited().command('gpu-protenix','a'*64)
-        self.assertEqual(a[a.index('-J')+1],'mosaic-chem-qualification04-gpu-protenix')
+        self.assertEqual(a[a.index('-J')+1],'mosaic-chem-qualification05-gpu-protenix')
         self.assertIn(str(ops.SOURCE),a)
     def test_no_optimizer_phase(self):
         with self.assertRaises(ValueError):ops.inherited().command('segment','a'*64)
@@ -94,7 +95,8 @@ class ChemistryNativeQualificationTests(unittest.TestCase):
         self.assertFalse(p['can_certify_or_restart_original_study'])
     def test_new_suite_exact_dynamic_attribution(self):
         p=q.read(Path(__file__).resolve().parents[1]/'source_manifest.json')
-        self.assertEqual(p['cpu_counts'],{'tests.test_chemistry_native_qualification.ChemistryNativeQualificationTests':29})
+        count=sum(name.startswith('test_') and callable(getattr(type(self),name)) for name in dir(type(self)))
+        self.assertEqual(p['cpu_counts'],{'tests.test_chemistry_native_qualification.ChemistryNativeQualificationTests':count})
 
     def test_atomic_race_repeats_whole_gate_and_preserves_attempt(self):
         with tempfile.TemporaryDirectory(dir=os.environ['TMPDIR']) as directory:
@@ -138,6 +140,122 @@ class ChemistryNativeQualificationTests(unittest.TestCase):
         with tempfile.TemporaryDirectory(dir=os.environ['TMPDIR']) as directory:
             with self.assertRaises(ValueError):
                 ops.complete_inventory(lambda *x:{'status':'failed'},Path(directory),'entry',lambda *x:None)
+
+    def reference_helpers(self):
+        plan=q.read(Path(__file__).resolve().parents[1]/'plan.json')
+        source=Path(plan['precision_source']['path'])
+        self.assertEqual(plan['precision_source']['manifest_sha256'],'f2043af74b8fa9ff485a44b80fcf96454bf8585868859389828c37f0073a3664')
+        science=Path(plan['arms']['protenix']['science_source']['path'])
+        sys.path.insert(0,str(science/'src'))
+        self.addCleanup(lambda:sys.path.remove(str(science/'src')))
+        return q.module(source/'scripts/protenix_precision_native.py','_chem05_placement_fixture')
+
+    def placed_inputs(self,helpers=None):
+        import jax
+        import numpy as np
+        previous=bool(jax.config.jax_enable_x64);jax.config.update('jax_enable_x64',True)
+        self.addCleanup(lambda:jax.config.update('jax_enable_x64',previous))
+        helpers=helpers or self.reference_helpers()
+        model={'weight':np.asarray([.25,.5],np.float64),'static':'unchanged'}
+        context={'coords':np.asarray([[1.,2.,3.]],np.float64),'ids':np.asarray([1],np.int32)}
+        fields={'X':np.full((25,6),1/6,np.float32),'E_upper':np.full((300,5),.2,np.float32)}
+        return q.place_reference_inputs(helpers,model,context,jax.random.key(17),fields,jax.devices('cpu')[0]),fields
+
+    def test_reference09_exact_source_is_adopted_not_its_other_endpoint_pass(self):
+        plan=q.read(Path(__file__).resolve().parents[1]/'plan.json')
+        self.assertEqual(plan['precision_source']['files'],20)
+        self.assertEqual(plan['precision_source']['manifest_sha256'],'f2043af74b8fa9ff485a44b80fcf96454bf8585868859389828c37f0073a3664')
+        self.assertIn('/protenix-endpoint-fix-09/gpu/payload/',plan['reference09_qualified_nonchem_endpoint_not_chemistry_admission']['path'])
+        self.assertFalse(plan['can_submit_continuation'])
+
+    def test_Boltz04_pass_is_preserved_and_only_failed_Pro_is_dispatched(self):
+        plan=q.read(Path(__file__).resolve().parents[1]/'plan.json')
+        self.assertEqual(ops.NATIVE_ARMS,('protenix',));self.assertEqual(plan['native_arms'],['protenix'])
+        proof=plan['Boltz04_native_component'];self.assertEqual(q.binding(proof['path']),proof)
+        value=q.read(proof['path']);self.assertEqual(value['status'],'native_component_qualified_not_continuation_admission')
+        self.assertFalse(value['can_submit_continuation']);self.assertEqual(value['optimizer_updates'],0)
+
+    def test_production_fp32_AST_is_identical_to_preserved04(self):
+        plan=q.read(Path(__file__).resolve().parents[1]/'plan.json')
+        prior=Path(plan['prior_failed_qualification']['path'])/'scripts/chemistry_native_qualification.py'
+        def function(path):
+            return next(node for node in ast.parse(path.read_bytes()).body if isinstance(node,ast.FunctionDef) and node.name=='fp32')
+        self.assertEqual(ast.dump(function(prior)),ast.dump(function(Path(q.__file__))))
+
+    def test_reference_model_context_key_graph_have_one_device_and_preserve_bits(self):
+        import jax
+        import numpy as np
+        (model,context,key,fields,receipt),original=self.placed_inputs()
+        device=jax.devices('cpu')[0]
+        for value in (model['weight'],context['coords'],context['ids'],key,*fields.values()):self.assertEqual(value.devices(),{device})
+        for field in original:
+            self.assertEqual(np.asarray(fields[field]).dtype,np.float64)
+            self.assertEqual(np.asarray(fields[field]).astype(np.float32).tobytes(),original[field].tobytes())
+        self.assertEqual(model['static'],'unchanged');self.assertEqual(context['ids'].dtype,np.int32)
+        self.assertTrue(receipt['frozen_transfer_bits_unchanged']);self.assertFalse(receipt['production_execution_changed'])
+        np.testing.assert_array_equal(np.asarray(jax.random.key_data(key)),np.asarray(jax.random.key_data(jax.random.key(17))))
+
+    def test_actual_jitted_reference_graph_primal_AD_stays_FP64(self):
+        import jax
+        import jax.numpy as jnp
+        import numpy as np
+        (_,_,_,fields,_),_=self.placed_inputs()
+        value,gradient=jax.jit(jax.value_and_grad(lambda v:jnp.sum(jnp.sin(v['X']))+jnp.sum(v['E_upper']**2)))(fields)
+        self.assertEqual(value.dtype,np.float64)
+        for field in fields:self.assertEqual(gradient[field].dtype,np.float64)
+
+    def test_changed_reference_model_placement_is_rejected(self):
+        helpers=self.reference_helpers();original=helpers.place_reference_tree
+        def corrupt(tree,device):
+            value,audit=original(tree,device)
+            if 'weight' in value:value['weight']=value['weight'].at[0].add(.125)
+            return value,audit
+        with mock.patch.object(helpers,'place_reference_tree',side_effect=corrupt):
+            with self.assertRaisesRegex(ValueError,'changed promoted'):self.placed_inputs(helpers)
+
+    def test_changed_reference_key_bits_are_rejected(self):
+        import jax
+        original=jax.device_put
+        def corrupt(value,device):
+            if str(getattr(value,'dtype','')).startswith('key<'):value=jax.random.fold_in(value,1)
+            return original(value,device)
+        with mock.patch.object(jax,'device_put',side_effect=corrupt):
+            with self.assertRaisesRegex(ValueError,'changed promoted'):self.placed_inputs()
+
+    def test_narrowed_reference_graph_is_rejected(self):
+        import jax
+        import jax.numpy as jnp
+        original=jax.device_put
+        def narrow(value,device):
+            result=original(value,device)
+            return result.astype(jnp.float32) if result.shape==(25,6) else result
+        with mock.patch.object(jax,'device_put',side_effect=narrow):
+            with self.assertRaisesRegex(ValueError,'precision or shape'):self.placed_inputs()
+
+    def test_reference_moves_inputs_before_loss_and_has_no_CPU_graph_branch(self):
+        tree=ast.parse(Path(q.__file__).read_bytes())
+        reference=next(n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name=='reference')
+        calls=[n for n in ast.walk(reference) if isinstance(n,ast.Call)]
+        place=next(n for n in calls if ast.unparse(n.func)=='place_reference_inputs')
+        build=next(n for n in calls if ast.unparse(n.func)=='model.build_loss')
+        self.assertLess(place.lineno,build.lineno)
+        self.assertFalse(any(ast.unparse(n.func)=='jax.devices' and n.args and isinstance(n.args[0],ast.Constant) and n.args[0].value=='cpu' for n in calls))
+        self.assertIn("audit_module.reference_graph_arrays",ast.unparse(reference))
+
+    def test_serial_production_exits_before_reference_start(self):
+        tree=ast.parse(Path(q.__file__).read_bytes())
+        main=next(n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name=='main')
+        text=ast.unparse(main)
+        self.assertIn("for worker in ('production', 'reference')",text)
+        self.assertIn('subprocess.run(command',text);self.assertNotIn('subprocess.Popen',text)
+
+    def test_preparation_stops_without_current_resource_scope_before_SSH(self):
+        import importlib.util
+        path=Path(__file__).resolve().parents[1]/'scripts/manage_chemistry_qualification.py'
+        self.assertTrue(path.is_file(),'Actual preparation operator must be in new immutable source')
+        spec=importlib.util.spec_from_file_location('_chem05_manager_fixture',path);manager=importlib.util.module_from_spec(spec);spec.loader.exec_module(manager)
+        with mock.patch.object(manager,'CURRENT_CAPACITY_SOURCE',None),mock.patch.object(manager,'transport',side_effect=AssertionError('Unexpected SSH path')):
+            with self.assertRaisesRegex(ValueError,'preparation/staging blocked'):manager.prepare()
 
 
 if __name__=='__main__':unittest.main()

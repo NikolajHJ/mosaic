@@ -1,0 +1,8 @@
+{
+  "status": "failed_local_metadata_audit_assertion_preserved",
+  "reason": "Auditor expected two separate worker startups; unchanged launcher explicitly has only DBMol's separate worker route. Four driver startup routes plus one DBMol worker plus two reference routes equals seven.",
+  "allocated_suite_changed": false,
+  "allocated_case_count": 785,
+  "scientific_gate_or_settings_changed": false,
+  "resolution": "Correct metadata auditor to verify exact declared worker identity and seven routes; repeat independent stdlib byte/XML/schema audit."
+}

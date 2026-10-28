@@ -1,0 +1,14 @@
+{
+  "global_status": "failed",
+  "global_error_count": 21,
+  "global_output_sha256": "06787e938b1806153f83a2b5ce9b3e09470263ee29d21f4279eb76befee475a1",
+  "new_task_scope_errors": [],
+  "scope_status": "passed_for_new_files_and_directories",
+  "global_failures_preserved_not_modified": true,
+  "examples": [
+    "Default discovery does not reach each canonical test module exactly once",
+    "Experiment folder lacks README: C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\brd4-jq1\\boltz-dbmol\\runs\\20261024-dbmol-pro02-adoption-06\\observer-failure-02",
+    "Experiment folder lacks README: C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\brd4-jq1\\boltz-dbmol\\runs\\20261024-dbmol-pro02-adoption-06\\observer-failure-02\\observe-0001",
+    "Experiment folder lacks README: C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\experiments\\brd4-jq1\\boltz-lr0025\\runs\\20261024-boltz-pro02-adoption-04\\observer-failure-02"
+  ]
+}

@@ -8,14 +8,19 @@ Numerical code is imported only by its real allocated execution path.
 """
 from contextlib import contextmanager
 from copy import deepcopy
+import ast
 import hashlib
+import importlib
 import importlib.util
+import inspect
 import json
 import math
 import os
 from pathlib import Path, PurePosixPath
 import re
 import sys
+import textwrap
+from types import SimpleNamespace
 
 
 ADAPTER_VERSION = "precision-reference-continuation-adapter-v1"
@@ -32,12 +37,17 @@ POLICIES = {
     "dbmol": {"dbmol_affinity_loss": DB_POLICY, "dbmol_contact_loss": RAW_POLICY,
               "dbmol_confidence_loss": RAW_POLICY, "dbmol_total_loss": RAW_POLICY},
 }
-BOUNDARIES = {"protenix": (20000, 50000, 10000, [20000, 30000, 40000]),
-              "dbmol": (7500, 10000, 2500, [7500])}
+BOUNDARIES = {"protenix": (20000, 50000, 2500, list(range(20000, 50000, 2500))),
+              "dbmol": (7500, 10000, 1250, [7500, 8750])}
+SEGMENT_POLICY = "precision-bounded-continuation-segments-v1"
 CHECKS = {"entry_admission", "hard_parity", "null_controls", "native_components",
           "pilot_early", "pilot_high", "runtime", "terminal_admission", "case_jsonl", "fp32_boundary"}
 REFERENCE_RUNTIME_SECONDS = 2 * 5400
 SEGMENT_INTERNAL_SECONDS = 82200
+SEGMENT_WALLTIME_SECONDS = 82800
+ORCHESTRATION_SECONDS = 600
+SCHEDULER_MARGIN_SECONDS = 600
+WALLTIME_QUANTUM_SECONDS = 900
 
 
 def require(value, message):
@@ -83,17 +93,54 @@ def check_child_proof(row, output):
     return bound(row)
 
 
-def runtime_budget(validation_summary):
+def runtime_budget(validation_summary, arm):
+    """Derive an upward-rounded allocation from a complete, passed pilot.
+
+    Only the measured per-update Protenix term is shortened. Its original
+    1,800-second reserve and DBMol's measured startup/entry/terminal terms are
+    retained in full, in addition to both bounded precision references.
+    """
+    require(arm in BOUNDARIES, "Unknown bounded runtime arm")
     path = Path(validation_summary)
     runtime = read(path).get("runtime_gate", {})
     original = runtime.get("conservative_projected_seconds")
     require(runtime.get("status") == "passed" and type(original) in (int, float)
             and math.isfinite(original) and original > 0, "Original validated conservative runtime missing")
-    required = original + REFERENCE_RUNTIME_SECONDS
-    require(required < SEGMENT_INTERNAL_SECONDS, "Original full segment plus both bounded reference checks exceeds runtime")
-    return {"status": "passed", "original_projected_seconds": original,
+    if arm == "protenix":
+        means = runtime.get("mean_update_seconds")
+        require(isinstance(means, list) and means and all(type(value) in (int, float)
+                and math.isfinite(value) and value > 0 for value in means), "Complete measured Protenix pilot runtime missing")
+        require(math.isclose(original, 1.5 * max(means) * 10000 + 1800, rel_tol=1e-12, abs_tol=1e-9),
+                "Original Protenix runtime formula differs")
+        projected = 1.5 * max(means) * BOUNDARIES[arm][2] + 1800
+    else:
+        keys = ("mean_update_seconds", "observed_startup_entry_check_seconds", "observed_native_check_seconds")
+        require(all(type(runtime.get(key)) in (int, float) and math.isfinite(runtime[key])
+                and runtime[key] > 0 for key in keys)
+                and runtime.get("segment_updates") == BOUNDARIES[arm][2]
+                and runtime.get("terminal_check_safety_factor") == 1.5
+                and runtime.get("update_safety_factor") == 1.5 and runtime.get("reserve_seconds") == 1800,
+                "Complete measured DBMol segment/check runtime missing")
+        expected = (1.5 * runtime["mean_update_seconds"] * BOUNDARIES[arm][2]
+                    + runtime["observed_startup_entry_check_seconds"]
+                    + 1.5 * runtime["observed_native_check_seconds"] + 1800)
+        require(math.isclose(original, expected, rel_tol=1e-12, abs_tol=1e-9), "Original DBMol runtime formula differs")
+        projected = original
+    # The inherited full-pilot guard remains mandatory even for shorter jobs.
+    require(original < SEGMENT_WALLTIME_SECONDS, "Original validated runtime guard failed")
+    required = projected + REFERENCE_RUNTIME_SECONDS + ORCHESTRATION_SECONDS
+    walltime = math.ceil((required + SCHEDULER_MARGIN_SECONDS) / WALLTIME_QUANTUM_SECONDS) * WALLTIME_QUANTUM_SECONDS
+    internal = walltime - SCHEDULER_MARGIN_SECONDS
+    require(walltime <= SEGMENT_WALLTIME_SECONDS and required <= internal <= SEGMENT_INTERNAL_SECONDS,
+            "Measured segment plus both bounded reference checks exceeds runtime")
+    return {"version": SEGMENT_POLICY, "status": "passed", "arm": arm,
+            "segment_updates": BOUNDARIES[arm][2], "original_projected_seconds": original,
+            "bounded_segment_projected_seconds": projected,
             "reference_seconds": REFERENCE_RUNTIME_SECONDS, "required_total_seconds": required,
-            "limit_seconds": SEGMENT_INTERNAL_SECONDS, "original_runtime_guard_changed": False,
+            "orchestration_seconds": ORCHESTRATION_SECONDS, "scheduler_margin_seconds": SCHEDULER_MARGIN_SECONDS,
+            "walltime_quantum_seconds": WALLTIME_QUANTUM_SECONDS, "walltime_seconds": walltime,
+            "walltime": f"{walltime // 3600:02d}:{walltime % 3600 // 60:02d}",
+            "limit_seconds": internal, "original_runtime_guard_changed": False,
             "validation_summary": {"path": str(path), "bytes": path.stat().st_size, "sha256": sha(path)}}
 
 
@@ -104,6 +151,101 @@ def _module(path, name):
     sys.modules[name] = module
     spec.loader.exec_module(module)
     return module
+
+
+def _replace_expression(tree, old, new, expected=1):
+    """Replace one declared metadata expression, failing on source drift."""
+    original = ast.dump(ast.parse(old, mode="eval").body)
+    replacement = ast.parse(new, mode="eval").body
+    found = 0
+    class Replace(ast.NodeTransformer):
+        def visit(self, node):
+            nonlocal found
+            if isinstance(node, ast.expr) and ast.dump(node) == original:
+                found += 1
+                return ast.copy_location(deepcopy(replacement), node)
+            return super().visit(node)
+    result = Replace().visit(deepcopy(tree))
+    require(found == expected, "Declared short-segment metadata AST differs: " + old)
+    ast.fix_missing_locations(result)
+    return result
+
+
+def short_segment_driver_tree(raw, filename, arm):
+    """Preserve original computation; change only its completion-count guard."""
+    require(arm in BOUNDARIES, "Unknown short-segment driver")
+    tree = ast.parse(raw, filename=filename)
+    mains = [node for node in tree.body if isinstance(node, ast.FunctionDef) and node.name == "main"]
+    require(len(mains) == 1, "Original short-segment main shape differs")
+    if arm == "protenix":
+        old = 'result["status"] != "passed" or len(result["updates"]) != 10000 or [r["step"] for r in result["states"]] != list(range(10001))'
+        new = 'result["status"] != "passed" or len(result["updates"]) != args.segment_steps or [r["step"] for r in result["states"]] != list(range(args.segment_steps + 1))'
+        tree = _replace_expression(tree, old, new)
+    else:
+        # DBMol already uses the actual segment argument for every completion
+        # count. Require that exact guard rather than weakening or duplicating it.
+        expected = ast.dump(ast.parse("case['status'] != 'passed' or len(case['updates']) != a.segment_steps or len(case['states']) != a.segment_steps + 1", mode="eval").body)
+        require(sum(isinstance(node, ast.expr) and ast.dump(node) == expected for node in ast.walk(mains[0])) == 1,
+                "Original DBMol dynamic completion guard differs")
+    return tree
+
+
+def short_segment_protocol_function(function, arm, name):
+    """Compile only the original metadata function's declared range/count edit."""
+    require(arm in BOUNDARIES and function.__name__ == name, "Wrong original segment metadata function")
+    tree = ast.parse(textwrap.dedent(inspect.getsource(function)))
+    require(len(tree.body) == 1 and isinstance(tree.body[0], ast.FunctionDef)
+            and tree.body[0].name == name and not tree.body[0].decorator_list,
+            "Original segment metadata function shape differs")
+    steps = BOUNDARIES[arm][2]
+    if (arm, name) == ("protenix", "segment_scope"):
+        tree = _replace_expression(tree, "steps != 10000", f"steps != {steps}")
+        tree = _replace_expression(tree, "range(start, 50000, 10000)", f"range(start, 50000, {steps})")
+    elif (arm, name) == ("protenix", "require_boundary"):
+        tree = _replace_expression(tree, "execution.get('updates') != 10000", f"execution.get('updates') != {steps}")
+    elif (arm, name) == ("dbmol", "scope"):
+        # Leave protocol.SEGMENT and config25 untouched: the original config
+        # still has its original segment metadata and scientific parameters.
+        tree = _replace_expression(tree, "range(0, TARGET, SEGMENT)", f"range(0, TARGET, {steps})")
+        tree = _replace_expression(tree, "steps == SEGMENT", f"steps == {steps}")
+    else:
+        raise ValueError("Undeclared segment metadata adaptation")
+    namespace = {}
+    exec(compile(tree, function.__code__.co_filename + "[bounded-segment-metadata-only]", "exec"),
+         dict(function.__globals__), namespace)
+    return namespace[name]
+
+
+@contextmanager
+def short_segment_protocol(module, arm):
+    names = ("segment_scope", "require_boundary") if arm == "protenix" else ("scope",)
+    originals = {name: getattr(module, name) for name in names}
+    replacements = {name: short_segment_protocol_function(function, arm, name) for name, function in originals.items()}
+    try:
+        for name, value in replacements.items():
+            setattr(module, name, value)
+        yield module
+    finally:
+        for name, value in originals.items():
+            setattr(module, name, value)
+
+
+@contextmanager
+def short_segment_sources(driver):
+    """Change only private per-job lengths; preserve every scientific source pin."""
+    original = driver.SOURCES
+    replacement = dict(original)
+    for arm, (_, target, steps, _) in BOUNDARIES.items():
+        row = original[arm]
+        require(isinstance(row, tuple) and len(row) == 7 and row[6] == target
+                and row[5] == (10000 if arm == "protenix" else 2500),
+                "Original authenticated source/segment declaration differs")
+        replacement[arm] = (*row[:5], steps, row[6])
+    try:
+        driver.SOURCES = replacement
+        yield driver
+    finally:
+        driver.SOURCES = original
 
 
 def validate_adapter_plan(plan):
@@ -120,7 +262,9 @@ def validate_adapter_plan(plan):
             and len(plan["arms"]) == 2, "Only exact Protenix/DBMol arms may dispatch")
     for row in plan["arms"]:
         start, target, segment, offsets = BOUNDARIES[row["id"]]
-        require(row.get("start_global") == start and row.get("target_global") == target
+        require(all(type(row.get(key)) is int for key in ("start_global", "target_global", "segment_updates"))
+                and isinstance(row.get("offsets"), list) and all(type(value) is int for value in row["offsets"])
+                and row.get("start_global") == start and row.get("target_global") == target
                 and row.get("segment_updates") == segment and row.get("offsets") == offsets,
                 "Saved boundary, segment or target differs: " + row["id"])
     config = plan.get("reference_configuration")
@@ -161,7 +305,9 @@ def _own_plan():
 def build_original_argv(plan, name, phase, offset, output, snapshot, ready=None):
     """Metadata alias used by actual-command CPU and pre-submission checks."""
     validate_adapter_plan(plan)
-    return load_base(plan).build_original_argv(plan, name, phase, offset, output, snapshot, ready)
+    base = load_base(plan)
+    with short_segment_sources(base):
+        return base.build_original_argv(plan, name, phase, offset, output, snapshot, ready)
 
 
 def worker_environment(source):
@@ -370,7 +516,7 @@ def verify_precision_result(result, plan, pin, phase, arm, offset, snapshot=None
     output = Path(result["original_summary"]["path"]).parent
     expected_validation = (output / "summary.json" if phase == "validate" else Path(plan["root"]) /
                            (arm + "-validate-" + str(offset).zfill(5)) / "payload/study/summary.json")
-    require(result.get("precision_runtime_budget") == runtime_budget(expected_validation),
+    require(result.get("precision_runtime_budget") == runtime_budget(expected_validation, arm),
             "Whole original segment and both reference runtime budgets differ")
     record_plan = {**plan, "_sha256": plan_sha, "_manifest": pin}
     normalized = policy_records(result.get("endpoint_records"), arm, output, record_plan)
@@ -407,10 +553,36 @@ def adapted_driver(driver, plan, hooks):
     """Restore every private metadata symbol even after startup/native failure."""
     validate_adapter_plan(plan)
     names = ("VERSION", "HOOK_VERSION", "READINESS_VERSION", "endpoint_policy_version",
-             "verify_dbmol_native_report", "assessment", "failed_assessment")
+             "verify_dbmol_native_report", "assessment", "failed_assessment", "startup_tree", "execution_context", "runpy")
     originals = {name: getattr(driver, name) for name in names}
     original_assessment = driver.assessment
     original_failed = driver.failed_assessment
+    def source_arm(source):
+        matches = [row["id"] for row in plan["arms"] if Path(row["source"]["path"]) == Path(source)]
+        require(len(matches) == 1, "Original execution source is not an exact declared arm")
+        return matches[0]
+    @contextmanager
+    def execution_context(source, argv):
+        arm = source_arm(source)
+        with originals["execution_context"](source, argv):
+            protocol = importlib.import_module("extended_protocol" if arm == "protenix" else "dbmol_protocol")
+            with short_segment_protocol(protocol, arm):
+                yield
+    def startup_tree(raw, filename, *, defer_ready=False):
+        arm = source_arm(Path(filename).parents[1])
+        tree = short_segment_driver_tree(raw, filename, arm)
+        return originals["startup_tree"](ast.unparse(tree), filename, defer_ready=defer_ready)
+    def run_path(filename, *, run_name):
+        require(run_name == "prospective_original_driver", "Undeclared original driver execution")
+        arm = source_arm(Path(filename).parents[1])
+        tree = short_segment_driver_tree(Path(filename).read_bytes(), filename, arm)
+        namespace = {"__name__": run_name, "__file__": str(filename), "__package__": "",
+                     "__loader__": None, "__spec__": None, "__cached__": None}
+        # The inherited frozen-worker hook authenticates the original main
+        # frame by its exact filename. Metadata AST edits must preserve that
+        # execution identity as well as __file__ and the source bytes.
+        exec(compile(tree, str(filename), "exec"), namespace)
+        return namespace
     def assessment(state, current_plan, pin, phase, offset, output, snapshot, ready, error=None):
         value = original_assessment(state, current_plan, pin, phase, offset, output, snapshot, ready, error)
         value.update(precision_adapter_version=ADAPTER_VERSION, readiness_adapter=READINESS_VERSION,
@@ -418,7 +590,7 @@ def adapted_driver(driver, plan, hooks):
                      base_driver=deepcopy(plan["base_driver"]),
                      precision_policy_records=policy_records(state.records, state.name, output, plan))
         validated_summary = Path(output) / "summary.json" if phase == "validate" else Path(ready["path"]).with_name("summary.json")
-        value["precision_runtime_budget"] = runtime_budget(validated_summary)
+        value["precision_runtime_budget"] = runtime_budget(validated_summary, state.name)
         runtime_proof = value["precision_runtime_budget"]["validation_summary"]
         if runtime_proof["path"] not in {proof["path"] for proof in value["proofs"]}:
             value["proofs"].append(runtime_proof)
@@ -439,8 +611,12 @@ def adapted_driver(driver, plan, hooks):
         driver.verify_dbmol_native_report = verify_dbmol_native_report
         driver.assessment = assessment
         driver.failed_assessment = failed
-        with hooks.install_precision_hooks(driver, plan, plan["reference_configuration"]):
-            yield driver
+        driver.startup_tree = startup_tree
+        driver.execution_context = execution_context
+        driver.runpy = SimpleNamespace(run_path=run_path)
+        with short_segment_sources(driver):
+            with hooks.install_precision_hooks(driver, plan, plan["reference_configuration"]):
+                yield driver
     finally:
         for name, value in originals.items():
             setattr(driver, name, value)

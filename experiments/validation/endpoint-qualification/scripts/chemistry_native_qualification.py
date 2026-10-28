@@ -15,7 +15,7 @@ import sys
 import time
 
 BASE=Path('/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01')
-ROOT=BASE/'chemistry-native-qualification-04'
+ROOT=BASE/'chemistry-native-qualification-05'
 VERSION='chemistry-native-component-qualification-v1'
 CAP=512*1024**2
 
@@ -72,6 +72,22 @@ def size(output):
         if p.is_file():total+=p.stat().st_size
     require(total<CAP-2*1024**2,'Qualification output cap exhausted')
     return total
+
+
+def place_reference_inputs(helpers,model,context,key,values,gpu):
+    """Reuse qualified09 placement; never change production arrays or arithmetic."""
+    import jax
+    from mosaic.small_molecule.gradient_checks import array_digest
+    before={'model':array_digest(model),'context':array_digest(context),'key':array_digest(jax.random.key_data(key))}
+    model,ma=helpers.place_reference_tree(model,gpu)
+    context,ca=helpers.place_reference_tree(context,gpu)
+    key=jax.device_put(key,gpu);helpers.require_reference_device(key,gpu)
+    arrays,ga=helpers.reference_graph_arrays(values,gpu)
+    require({'model':array_digest(model),'context':array_digest(context),'key':array_digest(jax.random.key_data(key))}==before,
+        'Reference device placement changed promoted model/context/key bits')
+    return model,context,key,arrays,{'status':'passed','reference_only':True,
+        'production_execution_changed':False,'model':ma,'context':ca,'graph':ga,
+        'key':helpers.reference_device_identity(gpu),'frozen_transfer_bits_unchanged':True}
 
 
 def setup(plan,arm,output,life):
@@ -139,7 +155,6 @@ def reference(plan,arm,output,life):
     d=inherited(plan);source=Path(arm['science_source']['path'])
     sys.path[:0]=[str(source/'src'),str(source/'scripts')]
     import jax
-    import jax.numpy as jnp
     import numpy as np
     import equinox as eqx
     from mosaic.small_molecule.protenix import FrozenProtenixTiny
@@ -174,10 +189,16 @@ def reference(plan,arm,output,life):
         identity={'model':array_digest(model),'context':array_digest(context)}
         life['frozen']=lambda:{'model':array_digest(model),'context':array_digest(context)};life['frozen_before']=identity
         precision.floating_dtype_audit(model);precision.floating_dtype_audit(context)
-        loss=model.build_loss(context=context,loss=NativeContactLoss(8.0,map_protenix_pocket(context,read(arm['pocket']['path']))))
-        key=jax.random.key(17);devices={'X':jax.devices('cpu')[0],'E_upper':jax.devices('gpu')[0]}
-        def graph(v):return RelaxedGraph(**{f:jax.device_put(jnp.asarray(v[f],dtype=jnp.float64),devices[f]) for f in devices})
         audit_module=module(Path(plan['precision_source']['path'])/'scripts/protenix_precision_native.py','_chem_native_dtype_audit')
+        gpu=jax.devices('gpu')[0];fields=('X','E_upper')
+        model,context,key,_,placement=place_reference_inputs(audit_module,model,context,jax.random.key(17),
+            {f:fp[f] for f in fields},gpu)
+        require(life['frozen']()==identity,'Reference placement changed promoted frozen inputs')
+        write(output/'device-placement.json',placement)
+        loss=model.build_loss(context=context,loss=NativeContactLoss(8.0,map_protenix_pocket(context,read(arm['pocket']['path']))))
+        def graph(v):
+            arrays,_=audit_module.reference_graph_arrays({f:v[f] for f in fields},gpu)
+            return RelaxedGraph(**arrays)
         dtype_audit=audit_module.audit_jaxpr(eqx.filter_make_jaxpr(lambda g:loss(g,key=key))(graph(fp))[0])
         write(output/'native-dtype-audit.json',dtype_audit)
         points=[];cache={};cursor=Counter()
@@ -185,31 +206,32 @@ def reference(plan,arm,output,life):
             size(output);g=graph(v);primal,aux=loss(g,key=key);ad=evaluate_graph(loss,g,key)
             require(not _nonfinite_paths((primal,aux,ad)),'Nonfinite FP64 reference')
             row={'primal':np.asarray(primal),'ad_value':np.asarray(ad.value),
-                 'gradients':{f:np.asarray(getattr(ad.gradients,f)) for f in devices}}
+                 'gradients':{f:np.asarray(getattr(ad.gradients,f)) for f in fields}}
             require(row['primal'].dtype==np.float64 and all(x.dtype==np.float64 for x in row['gradients'].values()),'Reference dtype differs')
             path=output/f'point-{len(points):04d}.npz'
-            np.savez_compressed(path,**{f:np.asarray(v[f],np.float64) for f in devices},
+            np.savez_compressed(path,**{f:np.asarray(v[f],np.float64) for f in fields},
                 primal=row['primal'],ad_value=row['ad_value'],**{'gradient_'+f:x for f,x in row['gradients'].items()})
             points.append(binding(path));return row
-        baseline={f:fp[f].astype(np.float64) for f in devices}
+        baseline={f:fp[f].astype(np.float64) for f in fields}
         def ref(v,kind):
-            digest=hashlib.sha256(b''.join(v[f].tobytes() for f in devices)).hexdigest()
-            if digest not in cache:cache[digest]=[compute(v) for _ in range(3 if all(np.array_equal(v[f],baseline[f]) for f in devices) else 1)]
+            digest=hashlib.sha256(b''.join(v[f].tobytes() for f in fields)).hexdigest()
+            if digest not in cache:cache[digest]=[compute(v) for _ in range(3 if all(np.array_equal(v[f],baseline[f]) for f in fields) else 1)]
             i=cursor[(digest,kind)];cursor[(digest,kind)]+=1;r=cache[digest][i%len(cache[digest])]
             return r['primal'] if kind=='primal' else (r['ad_value'],r['gradients'])
         def prodcall(v,kind):
-            for f in devices:np.testing.assert_array_equal(v[f],fp[f])
+            for f in fields:np.testing.assert_array_equal(v[f],fp[f])
             i=cursor[('production',kind)]%3;cursor[('production',kind)]+=1
-            return fp['primal'][i] if kind=='primal' else (fp['ad_value'][i],{f:fp['gradient_'+f][i] for f in devices})
+            return fp['primal'][i] if kind=='primal' else (fp['ad_value'][i],{f:fp['gradient_'+f][i] for f in fields})
         metadata={'full_model_float64':True,'parameters_float64':True,'native_features_float64':True,
             'native_operations_float64':True,'final_reduction_only':False,'validation_only':True,
-            'dtype_audit':binding(output/'native-dtype-audit.json'),'promotion':binding(output/'promotion.json')}
+            'dtype_audit':binding(output/'native-dtype-audit.json'),'promotion':binding(output/'promotion.json'),
+            'device_placement':binding(output/'device-placement.json')}
         def run(label,factor=1.):
             cursor.clear()
             def ad(v):
                 scalar,g=prodcall(v,'ad');return scalar,{f:(x*np.float32(factor)).astype(np.float32) for f,x in g.items()}
             directions,scope=raw_directions(arm)
-            return policy.evaluate({f:fp[f] for f in devices},lambda v:prodcall(v,'primal'),ad,
+            return policy.evaluate({f:fp[f] for f in fields},lambda v:prodcall(v,'primal'),ad,
                 lambda v:ref(v,'primal'),lambda v:ref(v,'ad'),life['frozen'],original_directions=directions,
                 scope=scope,reference_precision=metadata,original_observations=arm['failed_report'],
                 seal_callback=lambda v:write(output/(label+'-selected-before-FD.json'),v))

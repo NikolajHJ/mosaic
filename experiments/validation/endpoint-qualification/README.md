@@ -218,3 +218,21 @@ chemistry continuations remain pending, with all settings/results unchanged.
 Current DB finer retry is [13](runs/20261028-dbmol-endpoint-recovery-13/README.md): retry12 actualstartup rejected historicalroot10 before model/fixtures, callbackblocked GPU. Retry13 changes only own startup path, with96allocated cases/actualcommands required; source12 and all original failures remain preserved.
 
 Current portable integration: [attempt15](runs/20261028-precision-continuation-15/README.md), CPU29839033/controller29839034 submitted after fullstorage;592 CPU cases/startups/native integration remain required. Attempt14 metadata startup failure is preserved.
+
+Current engineering retry is [attempt16](runs/20261028-precision-continuation-16/README.md).
+It preserves source15's real CUDA-ownership and storage failures, requests
+same-job MPS, checks two actual CUDA clients before model loading, uses shorter
+2,500/1,250-update Protenix/DBMol segments with measured full-check walltimes,
+and replaces lifetime reservations with explicit rolling admission for new jobs.
+CPU29841063 passed785 allocated cases; independent raw XML/LSF/byte verification
+passed. New storage admission passed with45.35GB conservatively available versus
+12.06GB required. Full native/reference/pilot checks still precede continuation;
+no existing result or original scientific failure was changed.
+
+[Chemistry reference repair05](runs/20261028-chemistry-native-qualification-05/README.md)
+is a separate unsealed local preparation. The actual nested04 reference log
+identified stale FP32 charge operations inside its FP64 reference; production
+replay passed. Exact reference09 machinery and one-device placement are adopted
+as a candidate, with40 allocated fixtures planned. Its staging deliberately
+fails closed until a declared current cross-campaign writer/admission contract
+is connected. No05 numerical pass, package, GPU or optimizer job is implied.

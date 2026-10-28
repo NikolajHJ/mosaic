@@ -1,0 +1,3274 @@
+{
+  "admission_policy": "precision-reference-continuation-policy-v1",
+  "arms": [
+    {
+      "config": {
+        "bytes": 1733,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source/examples/configs/extended_continuation.json",
+        "sha256": "f91c90770fe907c00e081f3ed28b46071ac35cc3f869edae504cf8cc16f6b445"
+      },
+      "expected": {
+        "original_native_report": {
+          "acceptance_policy": "best_primal",
+          "artifact_policy": "compact",
+          "artifact_scope": "all graphs/raw gradients/scalars/RNG; logits at initial/final/probes; no persisted trunk tensors",
+          "bond_order_null_absolute_scalar_difference": 0.0,
+          "bond_order_null_comparison": "standalone primal versus standalone primal",
+          "bond_order_null_max_gradient_difference": 0.0,
+          "bond_order_null_max_output_difference": 0.0,
+          "bond_order_null_output_atol": 2e-05,
+          "bond_order_null_same_atom_and_existence_inputs": true,
+          "bond_order_null_scalar_atol": 2e-05,
+          "directions": [
+            {
+              "autodiff": 0.0102313794195652,
+              "destination": 2,
+              "field": "X",
+              "gradient_norm": 0.03449278123409062,
+              "row": 23,
+              "source": 4,
+              "sweep": [
+                {
+                  "absolute_error": 1.73225998878479e-06,
+                  "agrees": true,
+                  "epsilon": 0.01,
+                  "finite_difference": 0.010229647159576416,
+                  "minus_loss": -0.1779223531484604,
+                  "plus_loss": -0.17771776020526886,
+                  "relative_error": 0.0001693085475329196,
+                  "same_sign": true
+                },
+                {
+                  "absolute_error": 1.3168901205062866e-05,
+                  "agrees": true,
+                  "epsilon": 0.003,
+                  "finite_difference": 0.010244548320770264,
+                  "minus_loss": -0.1778566837310791,
+                  "plus_loss": -0.17779521644115448,
+                  "relative_error": 0.0012854545454545454,
+                  "same_sign": true
+                },
+                {
+                  "absolute_error": 1.73225998878479e-06,
+                  "agrees": true,
+                  "epsilon": 0.001,
+                  "finite_difference": 0.010229647159576416,
+                  "minus_loss": -0.17783679068088531,
+                  "plus_loss": -0.17781633138656616,
+                  "relative_error": 0.0001693085475329196,
+                  "same_sign": true
+                }
+              ]
+            },
+            {
+              "autodiff": 0.0034544626250863075,
+              "destination": 0,
+              "field": "E_upper",
+              "gradient_norm": 0.011438282489079056,
+              "row": 130,
+              "source": 1,
+              "sweep": [
+                {
+                  "absolute_error": 3.351829946041107e-06,
+                  "agrees": true,
+                  "epsilon": 0.01,
+                  "finite_difference": 0.0034578144550323486,
+                  "minus_loss": -0.17785975337028503,
+                  "plus_loss": -0.1777905970811844,
+                  "relative_error": 0.0009693492781728076,
+                  "same_sign": true
+                },
+                {
+                  "absolute_error": 2.2474986811478644e-05,
+                  "agrees": true,
+                  "epsilon": 0.003,
+                  "finite_difference": 0.003476937611897786,
+                  "minus_loss": -0.17783699929714203,
+                  "plus_loss": -0.17781613767147064,
+                  "relative_error": 0.006464017857142774,
+                  "same_sign": true
+                },
+                {
+                  "absolute_error": 1.2294389307498932e-05,
+                  "agrees": true,
+                  "epsilon": 0.001,
+                  "finite_difference": 0.0034421682357788086,
+                  "minus_loss": -0.17783014476299286,
+                  "plus_loss": -0.1778232604265213,
+                  "relative_error": 0.003558987501620969,
+                  "same_sign": true
+                }
+              ]
+            }
+          ],
+          "final_loss": -0.17807969450950623,
+          "final_primal_loss": -0.17807970941066742,
+          "finite_difference_policy": {
+            "absolute_tolerance": 0.002,
+            "acceptance": "same sign, relative error <= rtol, and absolute+relative tolerance; two adjacent scales",
+            "epsilons": [
+              0.01,
+              0.003,
+              0.001
+            ],
+            "minimum_tangent": 1e-07,
+            "relative_error_denominator": "max(abs(FD), abs(autodiff))",
+            "relative_tolerance": 0.15
+          },
+          "initial_loss": -0.17782661318778992,
+          "initial_primal_loss": -0.1778266280889511,
+          "policy_segments": [
+            {
+              "first_update": 1,
+              "last_update": 1,
+              "policy": "best_primal"
+            }
+          ],
+          "primal_autodiff_parity": {
+            "absolute_scalar_difference": 1.4901161193847656e-08,
+            "autodiff_loss": -0.17782661318778992,
+            "logit_interpretation": "compilation-path diagnostic; null invariance compares standalone primal with standalone primal",
+            "max_logit_difference": 0.00020599365234375,
+            "primal_loss": -0.1778266280889511,
+            "raw_artifact": "baseline-primal.npz",
+            "scalar_atol": 2e-05
+          },
+          "primal_descent_minimum_decrease": null,
+          "primal_every_step": true,
+          "record_readouts": false,
+          "requested_updates": 1,
+          "status": "passed",
+          "updates": [
+            {
+              "acceptance_policy": "best_primal",
+              "accepted_step_size": 0.3,
+              "after": -0.17807969450950623,
+              "attempts": [
+                {
+                  "loss": -0.17807969450950623,
+                  "passes_strict_threshold": true,
+                  "primal_loss": -0.17807970941066742,
+                  "projection_residuals": {
+                    "E_upper": 0.001534577243032136,
+                    "X": 0.006347440048214824
+                  },
+                  "step_size": 0.3
+                }
+              ],
+              "before": -0.17782661318778992,
+              "delta_E_upper": 0.0030692233704030514,
+              "delta_X": 0.008172400295734406,
+              "fallback_used": false,
+              "primal_after": -0.17807970941066742,
+              "primal_before": -0.1778266280889511,
+              "primal_increased": false,
+              "selected_trial": 0,
+              "step": 0
+            }
+          ]
+        },
+        "original_terminal_report": {
+          "acceptance_policy": "best_primal",
+          "artifact_policy": "compact",
+          "artifact_scope": "all graphs/raw gradients/scalars/RNG; logits at initial/final/probes; no persisted trunk tensors",
+          "directions": [
+            {
+              "autodiff": 0.08608892560005188,
+              "destination": 2,
+              "field": "X",
+              "gradient_norm": 0.11101075102291362,
+              "row": 3,
+              "source": 1,
+              "sweep": []
+            }
+          ],
+          "error": "ValueError: Predeclared epsilon leaves the simplex interior",
+          "finite_difference_policy": {
+            "absolute_tolerance": 0.002,
+            "acceptance": "same sign, relative error <= rtol, and absolute+relative tolerance; two adjacent scales",
+            "epsilons": [
+              0.01,
+              0.003,
+              0.001
+            ],
+            "minimum_tangent": 1e-07,
+            "relative_error_denominator": "max(abs(FD), abs(autodiff))",
+            "relative_tolerance": 0.15
+          },
+          "initial_loss": -0.22756804525852203,
+          "initial_primal_loss": -0.22756801545619965,
+          "policy_segments": [
+            {
+              "first_update": 1,
+              "last_update": 1,
+              "policy": "best_primal"
+            }
+          ],
+          "primal_autodiff_parity": {
+            "absolute_scalar_difference": 2.9802322387695312e-08,
+            "autodiff_loss": -0.22756804525852203,
+            "logit_interpretation": "compilation-path diagnostic; null invariance compares standalone primal with standalone primal",
+            "max_logit_difference": 0.0002307891845703125,
+            "primal_loss": -0.22756801545619965,
+            "raw_artifact": "baseline-primal.npz",
+            "scalar_atol": 2e-05
+          },
+          "primal_every_step": true,
+          "record_readouts": false,
+          "requested_updates": 1,
+          "status": "failed",
+          "updates": []
+        },
+        "parent_committed_states": 10001,
+        "parent_committed_updates": 10000,
+        "saved_parent_scientific_status": "failed"
+      },
+      "failed_parent": {
+        "endpoint": {
+          "bytes": 14284,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-segment-0000/payload/study/case-0/snapshots/step-10000.npz",
+          "sha256": "6be2b3868d58162d4aa3cc9d960cfb85a84d4078748f0b24d50b138ae3e47dbd"
+        },
+        "job_id": "29809291",
+        "parent": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-segment-0000",
+        "states": {
+          "bytes": 10528552,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-segment-0000/payload/study/case-0/states.jsonl",
+          "sha256": "f24feed2906ff2307fb07d72c05cda4c17b0894f1515c7b566b921d2a0c5a5fb"
+        },
+        "stderr": {
+          "bytes": 750208,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-segment-0000/stderr.29809291.log",
+          "sha256": "12b4a4011c8d0a7de4c4c63f6b172d987de90f50e41d8425e41acc63b9e5b52f"
+        },
+        "stdout": {
+          "bytes": 1229018,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-segment-0000/stdout.29809291.log",
+          "sha256": "e87b2e9640768fb2c8d0ae064030f9e646d1820b4f55bea44bb10ff92ac7fa92"
+        },
+        "submission": {
+          "bytes": 1430,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-segment-0000/submission.json",
+          "sha256": "dd10718a178003e80a77ed37725a7c4e12b15fa55090bd4b63258ab72574878d"
+        },
+        "summary": {
+          "bytes": 37975078,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-segment-0000/payload/study/summary.json",
+          "sha256": "99d63960395797f0884140101afc012fd3335ed0edff80e6ef5d669549ea8285"
+        },
+        "terminal": {
+          "bytes": 1599,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-segment-0000/payload/study/terminal_gradient_checks/report.json",
+          "sha256": "1506e7ed0d6d4e56b62a72097133bcf4832493fa2f9a6365967ca4eafcdf26c0"
+        },
+        "updates": {
+          "bytes": 8634606,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-segment-0000/payload/study/case-0/updates.jsonl",
+          "sha256": "ba72dc41ed84a221e4d7711ca8054438d2e75496f32fe042f436e16fb3373075"
+        }
+      },
+      "future_endpoint_direction_scope": "not_preexisting_at_new_endpoint",
+      "global_start": 20000,
+      "global_target": 50000,
+      "id": "protenix",
+      "inputs": {
+        "cpu_certificate": {
+          "bytes": 4869,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/cpu-certificate.json",
+          "sha256": "ab3148ea6dd8d25361f85e9d8283578e0cf4429844d820a4dab6b03673ef577b"
+        },
+        "original_driver_argv": [
+          "/work3/s234818/mosaic/envs/protenix-tiny/bin/python",
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source/examples/brd4_25_atoms.py",
+          "--mode",
+          "run",
+          "--config",
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source/examples/configs/extended_continuation.json",
+          "--output",
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-segment-0000/payload/study",
+          "--manifest",
+          "da9db6821d26b884ca1749303fc8e0b0095bd9ee7cbd1b427cdcf1b22eec6562",
+          "--cpu-certificate",
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/cpu-certificate.json",
+          "--cpu-certificate-sha256",
+          "ab3148ea6dd8d25361f85e9d8283578e0cf4429844d820a4dab6b03673ef577b",
+          "--reference",
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/cpu/payload/composition_reference.json",
+          "--pocket",
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/cpu/payload/pocket_definition.json",
+          "--pocket-sha256",
+          "9376c715eaf5b48689fb3e995b00d7820601a7776970df66bd7e7cff3b13ee43",
+          "--offset",
+          "10000",
+          "--segment-steps",
+          "10000",
+          "--resume-snapshot",
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-protenix/payload/study/case-0/snapshots/step-10000.npz",
+          "--resume-sha256",
+          "edf15f06ba1b6591d62cbc3e04e19ecd93b553a0627da38c370fdeed3c1b780f",
+          "--ready",
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/assessment.json",
+          "--ready-sha256",
+          "edd616ca16b1d7bd4882ca4f395b8a4375387cffff5f4124f5fbb071ff02e81d"
+        ],
+        "original_driver_invocation": {
+          "bytes": 1910,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-segment-0000/payload/driver-invocation.json",
+          "sha256": "81bf732e0f37fa514380e71b8d78c12a280c3a32c62a587251bdca283f0ae363"
+        },
+        "original_native_report": {
+          "bytes": 5101,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-segment-0000/payload/study/native_gradient_checks/report.json",
+          "sha256": "4b736d6e0576a472d01cc1fe8b62a50e1c72a473980873e1ae074bacb00273ec"
+        },
+        "pocket": {
+          "bytes": 3948,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/cpu/payload/pocket_definition.json",
+          "sha256": "9376c715eaf5b48689fb3e995b00d7820601a7776970df66bd7e7cff3b13ee43"
+        },
+        "ready": {
+          "bytes": 22361,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/assessment.json",
+          "sha256": "edd616ca16b1d7bd4882ca4f395b8a4375387cffff5f4124f5fbb071ff02e81d"
+        },
+        "reference": {
+          "bytes": 2087,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/cpu/payload/composition_reference.json",
+          "sha256": "37b34a2ba7be47886936df48faaabdeac20481e5a9cebca9bafab831c07868eb"
+        }
+      },
+      "label": "Protenix native-only continuation",
+      "offsets": [
+        20000,
+        22500,
+        25000,
+        27500,
+        30000,
+        32500,
+        35000,
+        37500,
+        40000,
+        42500,
+        45000,
+        47500
+      ],
+      "original_argv": [
+        "/work3/s234818/mosaic/envs/protenix-tiny/bin/python",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source/examples/brd4_25_atoms.py",
+        "--mode",
+        "run",
+        "--config",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source/examples/configs/extended_continuation.json",
+        "--output",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-segment-0000/payload/study",
+        "--manifest",
+        "da9db6821d26b884ca1749303fc8e0b0095bd9ee7cbd1b427cdcf1b22eec6562",
+        "--cpu-certificate",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/cpu-certificate.json",
+        "--cpu-certificate-sha256",
+        "ab3148ea6dd8d25361f85e9d8283578e0cf4429844d820a4dab6b03673ef577b",
+        "--reference",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/cpu/payload/composition_reference.json",
+        "--pocket",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/cpu/payload/pocket_definition.json",
+        "--pocket-sha256",
+        "9376c715eaf5b48689fb3e995b00d7820601a7776970df66bd7e7cff3b13ee43",
+        "--offset",
+        "10000",
+        "--segment-steps",
+        "10000",
+        "--resume-snapshot",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-protenix/payload/study/case-0/snapshots/step-10000.npz",
+        "--resume-sha256",
+        "edf15f06ba1b6591d62cbc3e04e19ecd93b553a0627da38c370fdeed3c1b780f",
+        "--ready",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-native-0000/payload/study/assessment.json",
+        "--ready-sha256",
+        "edd616ca16b1d7bd4882ca4f395b8a4375387cffff5f4124f5fbb071ff02e81d"
+      ],
+      "original_direction_limits": "Authentic terminal observations only; fields not reached remain explicit empty",
+      "original_direction_scope": "saved_failed_endpoint",
+      "original_directions": {
+        "E_upper": [],
+        "X": [
+          {
+            "row": 3,
+            "source": 1,
+            "target": 2
+          }
+        ]
+      },
+      "parent_snapshot": {
+        "bytes": 14284,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-segment-0000/payload/study/case-0/snapshots/step-10000.npz",
+        "sha256": "6be2b3868d58162d4aa3cc9d960cfb85a84d4078748f0b24d50b138ae3e47dbd"
+      },
+      "rate": 0.3,
+      "segment_steps": 2500,
+      "segment_updates": 2500,
+      "source": {
+        "files": 643,
+        "manifest_sha256": "da9db6821d26b884ca1749303fc8e0b0095bd9ee7cbd1b427cdcf1b22eec6562",
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source"
+      },
+      "start_global": 20000,
+      "target_global": 50000
+    },
+    {
+      "config": {
+        "bytes": 1816,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-release-02/source/examples/configs/dbmol_pilot.json",
+        "sha256": "b3b56f409a59b3b1d00228bb7dcd3f74fc08f17fdf06facfc1469922778d5497"
+      },
+      "expected": {
+        "historical_5000_expectations_preserved": {
+          "original_native_report": {
+            "all_components_and_total_raw_fd_passed": true,
+            "can_recertify_saved_failed_run": false,
+            "components": {
+              "dbmol_affinity_loss": {
+                "baseline": 5.6122400760650635,
+                "epsilons": [
+                  0.01,
+                  0.003,
+                  0.001
+                ],
+                "independent_primal": true,
+                "objective": "dbmol_affinity_loss",
+                "production_jax_transport": "passed",
+                "raw_unclipped_gradients": true,
+                "relative_tolerance": 0.15,
+                "required_adjacent_passes": 2,
+                "rows": [
+                  {
+                    "analytic": 0.9448727369308472,
+                    "field": "X",
+                    "probes": [
+                      {
+                        "agrees": true,
+                        "analytic": 0.9448727369308472,
+                        "endpoint_graph_sha256": [
+                          "1b045eb3fcbbeb5d3bd4a120371697bd139eecbe6494303ba9788e0b15bf2725",
+                          "d9a15204ef6486cb8a11e54ee8098abc8ffc1f6f27da60be2af05d5298c1ee21"
+                        ],
+                        "epsilon": 0.01,
+                        "finite_difference": 0.9488195180892944,
+                        "primal_endpoints": [
+                          5.602688491344452,
+                          5.621664881706238
+                        ]
+                      },
+                      {
+                        "agrees": true,
+                        "analytic": 0.9448727369308472,
+                        "endpoint_graph_sha256": [
+                          "c41e7552ea3304c7a479753e4622a3493655da94bd279807da91cb4f96fe79d1",
+                          "27839713225fed161db08f6fa515dcd109db8bd37518691e907c41431e52cc3f"
+                        ],
+                        "epsilon": 0.003,
+                        "finite_difference": 0.9458661079406738,
+                        "primal_endpoints": [
+                          5.609397530555725,
+                          5.615072727203369
+                        ]
+                      },
+                      {
+                        "agrees": true,
+                        "analytic": 0.9448727369308472,
+                        "endpoint_graph_sha256": [
+                          "06f68e324e6cd765b9ef460f9642c80f89bbee9fa750805b8c193227af804fd1",
+                          "37719eaf66d0e5f5cdcaa3110e54d76862cd75a303fd91ba837250b56eda1071"
+                        ],
+                        "epsilon": 0.001,
+                        "finite_difference": 0.9450912475585938,
+                        "primal_endpoints": [
+                          5.6112977266311646,
+                          5.613187909126282
+                        ]
+                      }
+                    ],
+                    "row": 15,
+                    "source": 1,
+                    "target": 4
+                  },
+                  {
+                    "analytic": 1.0737534761428833,
+                    "field": "E_upper",
+                    "probes": [
+                      {
+                        "agrees": true,
+                        "analytic": 1.0737534761428833,
+                        "endpoint_graph_sha256": [
+                          "adb28951e7cd3694e9cf0874e16d1825e33473c1a5daca3dd9e3a237ab3246bb",
+                          "a43610ecd91f215c2a4c56a62f1711b08d5b803ef0fe84b19616610484f6f0c2"
+                        ],
+                        "epsilon": 0.01,
+                        "finite_difference": 1.0866284370422363,
+                        "primal_endpoints": [
+                          5.600180387496948,
+                          5.621912956237793
+                        ]
+                      },
+                      {
+                        "agrees": true,
+                        "analytic": 1.0737534761428833,
+                        "endpoint_graph_sha256": [
+                          "7afb9c7bb990773019860f4385117307bf1df4a23f78ef31ae680774a91babfc",
+                          "65c3b5daa4bbe2ac11997a0ff9f806cce2d15a81415152f26faa0b9b410bae62"
+                        ],
+                        "epsilon": 0.003,
+                        "finite_difference": 1.0747512181599934,
+                        "primal_endpoints": [
+                          5.6089091300964355,
+                          5.6153576374053955
+                        ]
+                      },
+                      {
+                        "agrees": true,
+                        "analytic": 1.0737534761428833,
+                        "endpoint_graph_sha256": [
+                          "a25011567c811a35dd1d0167f170846cc545f55009da490beafd9bf5760b52a7",
+                          "f11ad9f64ccf4d0a6296d428f1037749d50650524e790f3a7982adb932300d2d"
+                        ],
+                        "epsilon": 0.001,
+                        "finite_difference": 1.0729432106018066,
+                        "primal_endpoints": [
+                          5.611155271530151,
+                          5.613301157951355
+                        ]
+                      }
+                    ],
+                    "row": 253,
+                    "source": 4,
+                    "target": 0
+                  }
+                ],
+                "status": "passed",
+                "typed_bond_contrast_nonzero": true,
+                "typed_bond_maximum_contrast": 0.310907244682312
+              },
+              "dbmol_confidence_loss": {
+                "baseline": -0.9731878250837326,
+                "epsilons": [
+                  0.01,
+                  0.003,
+                  0.001
+                ],
+                "independent_primal": true,
+                "objective": "dbmol_confidence_loss",
+                "production_jax_transport": "passed",
+                "raw_unclipped_gradients": true,
+                "relative_tolerance": 0.15,
+                "required_adjacent_passes": 2,
+                "rows": [
+                  {
+                    "analytic": 0.03754480928182602,
+                    "field": "X",
+                    "probes": [
+                      {
+                        "agrees": true,
+                        "analytic": 0.03754480928182602,
+                        "endpoint_graph_sha256": [
+                          "e2f3076d09628ab225725b3307c5c0290b174ff1cc0086cc84edfe2bc2005fd4",
+                          "1384aa6a434394f988d28bec98fc293205f653dfea1f73b8ca297938c7273fa5"
+                        ],
+                        "epsilon": 0.01,
+                        "finite_difference": 0.03531128168105524,
+                        "primal_endpoints": [
+                          -0.9735618710517883,
+                          -0.9728556454181672
+                        ]
+                      },
+                      {
+                        "agrees": true,
+                        "analytic": 0.03754480928182602,
+                        "endpoint_graph_sha256": [
+                          "a3e2dbc279520690642445c6462f759bf2afe57d1e9c905292df514f2ea093fc",
+                          "9ceb4b4d22505f3a6555a3e5baef9944b1de585cd8d0e5b58b56e0e3075b98a2"
+                        ],
+                        "epsilon": 0.003,
+                        "finite_difference": 0.03756036361057813,
+                        "primal_endpoints": [
+                          -0.9733003586530684,
+                          -0.9730749964714049
+                        ]
+                      },
+                      {
+                        "agrees": true,
+                        "analytic": 0.03754480928182602,
+                        "endpoint_graph_sha256": [
+                          "f1944f5fdd8246ccdb4784cd8f12b048815c31e5419749637fd8a11a12dc14ea",
+                          "3a3bf89770bc9e5f4eb074edf939431e7825e037cdd0b843a15eebcc849a9050"
+                        ],
+                        "epsilon": 0.001,
+                        "finite_difference": 0.037631392478809644,
+                        "primal_endpoints": [
+                          -0.9732253551483152,
+                          -0.9731500923633576
+                        ]
+                      }
+                    ],
+                    "row": 1,
+                    "source": 4,
+                    "target": 0
+                  },
+                  {
+                    "analytic": 0.03470941632986069,
+                    "field": "E_upper",
+                    "probes": [
+                      {
+                        "agrees": true,
+                        "analytic": 0.03470941632986069,
+                        "endpoint_graph_sha256": [
+                          "115e2c6372912a33e388349b5d82eb714fc51557112efcd77a7f36cda6e46a56",
+                          "1a864bef765e4801b972fc409bfa9b3ee7820e885c565b8f151aea584e2e4558"
+                        ],
+                        "epsilon": 0.01,
+                        "finite_difference": 0.03470122814178689,
+                        "primal_endpoints": [
+                          -0.973534044623375,
+                          -0.9728400200605393
+                        ]
+                      },
+                      {
+                        "agrees": true,
+                        "analytic": 0.03470941632986069,
+                        "endpoint_graph_sha256": [
+                          "218b5625266db58e2a4444ac2c93bd9999ccdc831c1d15718147aee03ffac78b",
+                          "2119b33f1db92bda454a6e2675c38bbb1d5d8632d582c90aee810ce9ab6b692e"
+                        ],
+                        "epsilon": 0.003,
+                        "finite_difference": 0.03473907709126515,
+                        "primal_endpoints": [
+                          -0.9732919037342073,
+                          -0.9730834692716597
+                        ]
+                      },
+                      {
+                        "agrees": true,
+                        "analytic": 0.03470941632986069,
+                        "endpoint_graph_sha256": [
+                          "43822168fc1e475d3276139b45bbed1b113e729217e148946e00233c27238e52",
+                          "fe5cf4a03693f6b8b1ec4efb36d6e00294beaab3368e67cce097b55f98563fce"
+                        ],
+                        "epsilon": 0.001,
+                        "finite_difference": 0.0346928834914495,
+                        "primal_endpoints": [
+                          -0.9732224434614181,
+                          -0.9731530576944352
+                        ]
+                      }
+                    ],
+                    "row": 49,
+                    "source": 1,
+                    "target": 0
+                  }
+                ],
+                "status": "passed",
+                "typed_bond_contrast_nonzero": true,
+                "typed_bond_maximum_contrast": 0.025955339893698692
+              },
+              "dbmol_contact_loss": {
+                "baseline": 0.9077205052619564,
+                "epsilons": [
+                  0.01,
+                  0.003,
+                  0.001
+                ],
+                "independent_primal": true,
+                "objective": "dbmol_contact_loss",
+                "production_jax_transport": "passed",
+                "raw_unclipped_gradients": true,
+                "relative_tolerance": 0.15,
+                "required_adjacent_passes": 2,
+                "rows": [
+                  {
+                    "analytic": 0.10424034297466278,
+                    "field": "X",
+                    "probes": [
+                      {
+                        "agrees": true,
+                        "analytic": 0.10424034297466278,
+                        "endpoint_graph_sha256": [
+                          "300a556e822084ee94dae1704f2a4bcc2e9b65255bd72d83ef792bd121acb99b",
+                          "d01a0ad6a1642b429f0fc293d762df6bc983323e919fefa9cc2cdf5635b98e70"
+                        ],
+                        "epsilon": 0.01,
+                        "finite_difference": 0.10228277003054287,
+                        "primal_endpoints": [
+                          0.9066659993507257,
+                          0.9087116547513365
+                        ]
+                      },
+                      {
+                        "agrees": true,
+                        "analytic": 0.10424034297466278,
+                        "endpoint_graph_sha256": [
+                          "aab823e64ebf1fb7226914ab41e426510762c821cb34dc88162ffe96df51979f",
+                          "a01e7065f377b653a578ae9b1dfe8dd4c5dcebe276a97d54eb0cc01224176f19"
+                        ],
+                        "epsilon": 0.003,
+                        "finite_difference": 0.10304236418462454,
+                        "primal_endpoints": [
+                          0.9074063237098244,
+                          0.9080245778949322
+                        ]
+                      },
+                      {
+                        "agrees": true,
+                        "analytic": 0.10424034297466278,
+                        "endpoint_graph_sha256": [
+                          "ddef5908d74132d38429a555beb8f78e43bd9ba9e548407631e8fb6fca7136f0",
+                          "ae058c5b0bc11af62b9a0c17197260ab5e4b17cb3fe2fe197f1d6a55102616ab"
+                        ],
+                        "epsilon": 0.001,
+                        "finite_difference": 0.10430442686848451,
+                        "primal_endpoints": [
+                          0.9076160222810696,
+                          0.9078246311348066
+                        ]
+                      }
+                    ],
+                    "row": 10,
+                    "source": 2,
+                    "target": 0
+                  },
+                  {
+                    "analytic": 0.09207170456647873,
+                    "field": "E_upper",
+                    "probes": [
+                      {
+                        "agrees": true,
+                        "analytic": 0.09207170456647873,
+                        "endpoint_graph_sha256": [
+                          "5383bd56bae2f20ddd2a1f7a4acdb8ac79a6eb2f2a2f00b4d89962a3e723d568",
+                          "a13cd00a738c0ca17ee7886cc959d06ed7d2c03713aad1ffdbe51b54a12daa3e"
+                        ],
+                        "epsilon": 0.01,
+                        "finite_difference": 0.09232495917909089,
+                        "primal_endpoints": [
+                          0.9067403884604743,
+                          0.9085868876440562
+                        ]
+                      },
+                      {
+                        "agrees": true,
+                        "analytic": 0.09207170456647873,
+                        "endpoint_graph_sha256": [
+                          "f49702974409a60f229403496750d5d4eaf58df1f0f425b4003dedd744a5e225",
+                          "13b7c5182b468600b74a097ba7bd63bc43efbc5bf610a15464a66f24b239f99e"
+                        ],
+                        "epsilon": 0.003,
+                        "finite_difference": 0.092057270524822,
+                        "primal_endpoints": [
+                          0.9074391816045765,
+                          0.9079915252277254
+                        ]
+                      },
+                      {
+                        "agrees": true,
+                        "analytic": 0.09207170456647873,
+                        "endpoint_graph_sha256": [
+                          "1e97c75403e112abb59f229fb8940fdaba1b43c976b0d185294c461b8ad919d3",
+                          "ebd6be7915f10b6fe60276a0288b0354e3f6eb2bb72f95ae464e969cc73e82e2"
+                        ],
+                        "epsilon": 0.001,
+                        "finite_difference": 0.09197042024239321,
+                        "primal_endpoints": [
+                          0.9076277828868894,
+                          0.9078117237273742
+                        ]
+                      }
+                    ],
+                    "row": 210,
+                    "source": 1,
+                    "target": 0
+                  }
+                ],
+                "status": "passed",
+                "typed_bond_contrast_nonzero": true,
+                "typed_bond_maximum_contrast": 0.028982050716876984
+              },
+              "dbmol_total_loss": {
+                "baseline": 5.448571776510622,
+                "epsilons": [
+                  0.01,
+                  0.003,
+                  0.001
+                ],
+                "independent_primal": true,
+                "objective": "dbmol_total_loss",
+                "production_jax_transport": "passed",
+                "raw_unclipped_gradients": true,
+                "relative_tolerance": 0.15,
+                "required_adjacent_passes": 2,
+                "rows": [
+                  {
+                    "analytic": 1.0042071342468262,
+                    "field": "X",
+                    "probes": [
+                      {
+                        "agrees": true,
+                        "analytic": 1.0042071342468262,
+                        "endpoint_graph_sha256": [
+                          "1b045eb3fcbbeb5d3bd4a120371697bd139eecbe6494303ba9788e0b15bf2725",
+                          "d9a15204ef6486cb8a11e54ee8098abc8ffc1f6f27da60be2af05d5298c1ee21"
+                        ],
+                        "epsilon": 0.01,
+                        "finite_difference": 1.010027130047142,
+                        "primal_endpoints": [
+                          5.438360306266517,
+                          5.45856084886746
+                        ]
+                      },
+                      {
+                        "agrees": true,
+                        "analytic": 1.0042071342468262,
+                        "endpoint_graph_sha256": [
+                          "c41e7552ea3304c7a479753e4622a3493655da94bd279807da91cb4f96fe79d1",
+                          "27839713225fed161db08f6fa515dcd109db8bd37518691e907c41431e52cc3f"
+                        ],
+                        "epsilon": 0.003,
+                        "finite_difference": 1.0066408685311206,
+                        "primal_endpoints": [
+                          5.445542315646024,
+                          5.45158216085721
+                        ]
+                      },
+                      {
+                        "agrees": true,
+                        "analytic": 1.0042071342468262,
+                        "endpoint_graph_sha256": [
+                          "06f68e324e6cd765b9ef460f9642c80f89bbee9fa750805b8c193227af804fd1",
+                          "37719eaf66d0e5f5cdcaa3110e54d76862cd75a303fd91ba837250b56eda1071"
+                        ],
+                        "epsilon": 0.001,
+                        "finite_difference": 1.0046441346589496,
+                        "primal_endpoints": [
+                          5.447569762912298,
+                          5.449579051181616
+                        ]
+                      }
+                    ],
+                    "row": 15,
+                    "source": 1,
+                    "target": 4
+                  },
+                  {
+                    "analytic": 1.023102879524231,
+                    "field": "E_upper",
+                    "probes": [
+                      {
+                        "agrees": true,
+                        "analytic": 1.023102879524231,
+                        "endpoint_graph_sha256": [
+                          "adb28951e7cd3694e9cf0874e16d1825e33473c1a5daca3dd9e3a237ab3246bb",
+                          "a43610ecd91f215c2a4c56a62f1711b08d5b803ef0fe84b19616610484f6f0c2"
+                        ],
+                        "epsilon": 0.01,
+                        "finite_difference": 1.035182026858461,
+                        "primal_endpoints": [
+                          5.437087087758323,
+                          5.4577907282954925
+                        ]
+                      },
+                      {
+                        "agrees": true,
+                        "analytic": 1.023102879524231,
+                        "endpoint_graph_sha256": [
+                          "7afb9c7bb990773019860f4385117307bf1df4a23f78ef31ae680774a91babfc",
+                          "65c3b5daa4bbe2ac11997a0ff9f806cce2d15a81415152f26faa0b9b410bae62"
+                        ],
+                        "epsilon": 0.003,
+                        "finite_difference": 1.0242013267691696,
+                        "primal_endpoints": [
+                          5.4453978614144205,
+                          5.4515430693750355
+                        ]
+                      },
+                      {
+                        "agrees": true,
+                        "analytic": 1.023102879524231,
+                        "endpoint_graph_sha256": [
+                          "a25011567c811a35dd1d0167f170846cc545f55009da490beafd9bf5760b52a7",
+                          "f11ad9f64ccf4d0a6296d428f1037749d50650524e790f3a7982adb932300d2d"
+                        ],
+                        "epsilon": 0.001,
+                        "finite_difference": 1.0225837949171535,
+                        "primal_endpoints": [
+                          5.447537759186094,
+                          5.449582926775928
+                        ]
+                      }
+                    ],
+                    "row": 253,
+                    "source": 4,
+                    "target": 0
+                  }
+                ],
+                "status": "passed",
+                "typed_bond_contrast_nonzero": true,
+                "typed_bond_maximum_contrast": 0.3235163986682892
+              }
+            },
+            "frozen_after": {
+              "affinity_model_digest": "395876da13ab6d5d175e6603db2118a82954c7c06484842fe2314dbd77a31a16",
+              "checkpoint_sha256": "dcc5cd3722b1c9eaa34267e4ae32f55cbbf1963f4c19319381ccfa30fdd2ca9e",
+              "context_digest": "fd04211da8e22eccd97ecedd96dd59cf4fb2d80aab6a397fa662af8eb92bbad4",
+              "context_file_sha256": "a18a331269170aac3281b0a2ecad313aab81756c9b77e048d7e2cbaa4d8f1093",
+              "full_context_digest": "73b9438f667b0239755ae886cb110b96cb61870c4fc4084f01c8eef141305e30",
+              "model_digest": "7c90f5dd617310781780a8abe5f225f220f6586d4e2d910e67cbfcb8a4470044",
+              "structural_checkpoint_sha256": "090e82ac8c92f5e943fa1b39e7410a44027bea7243c0bbb3caa67a77fc1428e1",
+              "structural_model_digest": "7a3c34ea2b6ee79728e6232d9755d260cafd9ea8a524edd737f2e28c8581e8f1"
+            },
+            "frozen_before": {
+              "affinity_model_digest": "395876da13ab6d5d175e6603db2118a82954c7c06484842fe2314dbd77a31a16",
+              "checkpoint_sha256": "dcc5cd3722b1c9eaa34267e4ae32f55cbbf1963f4c19319381ccfa30fdd2ca9e",
+              "context_digest": "fd04211da8e22eccd97ecedd96dd59cf4fb2d80aab6a397fa662af8eb92bbad4",
+              "context_file_sha256": "a18a331269170aac3281b0a2ecad313aab81756c9b77e048d7e2cbaa4d8f1093",
+              "full_context_digest": "73b9438f667b0239755ae886cb110b96cb61870c4fc4084f01c8eef141305e30",
+              "model_digest": "7c90f5dd617310781780a8abe5f225f220f6586d4e2d910e67cbfcb8a4470044",
+              "structural_checkpoint_sha256": "090e82ac8c92f5e943fa1b39e7410a44027bea7243c0bbb3caa67a77fc1428e1",
+              "structural_model_digest": "7a3c34ea2b6ee79728e6232d9755d260cafd9ea8a524edd737f2e28c8581e8f1"
+            },
+            "frozen_unchanged": true,
+            "hard_graph_sha256": "4524dc0b7c6577bc929016a98027ae59bb21984d4f3d7a533155fd65c48ff765",
+            "hard_native_parity": {
+              "absolute_differences": {
+                "affinity_logits_binary": 0.0,
+                "affinity_pred_value": 0.0,
+                "affinity_probability_binary": 0.0,
+                "complex_ipde": 0.0,
+                "complex_iplddt": 0.0,
+                "complex_pde": 0.0,
+                "complex_plddt": 0.0,
+                "confidence_score": 0.0,
+                "dbmol_affinity_loss": 0.0,
+                "dbmol_confidence_loss": 0.0,
+                "dbmol_contact_anchor_loss": 0.0,
+                "dbmol_contact_loss": 0.0,
+                "dbmol_contact_pocket_loss": 0.0,
+                "dbmol_total_loss": 0.0,
+                "dbmol_weighted_affinity_loss": 0.0,
+                "dbmol_weighted_confidence_loss": 0.0,
+                "dbmol_weighted_contact_loss": 0.0,
+                "iptm": 0.0,
+                "ptm": 0.0
+              },
+              "atol": 2e-05,
+              "status": "passed"
+            },
+            "input_graph_sha256": "1f2fa6bead2acc724aff20670420d0adca67f0ef66fa3baddc27b439b43addc0",
+            "key_and_logit_row_shift_nulls": "passed",
+            "live_primitive_recomposition": "passed_exact_scalar_and_raw_gradients",
+            "policy": "dbmol-native-raw-fd-v1",
+            "scope": "fixed occupied graph/pose/context; no diffusion or optimizer update",
+            "status": "passed",
+            "worker_identity": {
+              "affinity_model_digest": "395876da13ab6d5d175e6603db2118a82954c7c06484842fe2314dbd77a31a16",
+              "affinity_mw_correction": false,
+              "checkpoint_sha256": "dcc5cd3722b1c9eaa34267e4ae32f55cbbf1963f4c19319381ccfa30fdd2ca9e",
+              "confidence_signed_weights": {
+                "complex_ipde": 0.3,
+                "complex_iplddt": -0.3,
+                "complex_pde": 0.1,
+                "confidence_score": -0.3,
+                "iptm": -1.0,
+                "ptm": -0.1
+              },
+              "confidence_weight": 2.5,
+              "contact_weight": 2.5,
+              "context_digest": "fd04211da8e22eccd97ecedd96dd59cf4fb2d80aab6a397fa662af8eb92bbad4",
+              "context_file_sha256": "a18a331269170aac3281b0a2ecad313aab81756c9b77e048d7e2cbaa4d8f1093",
+              "diffusion_gradient": false,
+              "full_context_digest": "73b9438f667b0239755ae886cb110b96cb61870c4fc4084f01c8eef141305e30",
+              "gradient_dtype": "float32",
+              "graph_dtype": "float32",
+              "metric_order": [
+                "dbmol_total_loss",
+                "dbmol_affinity_loss",
+                "dbmol_contact_loss",
+                "dbmol_confidence_loss",
+                "dbmol_weighted_affinity_loss",
+                "dbmol_weighted_contact_loss",
+                "dbmol_weighted_confidence_loss",
+                "affinity_pred_value",
+                "affinity_probability_binary",
+                "affinity_logits_binary",
+                "dbmol_contact_pocket_loss",
+                "dbmol_contact_anchor_loss",
+                "complex_plddt",
+                "iptm",
+                "complex_iplddt",
+                "complex_ipde",
+                "complex_pde",
+                "confidence_score",
+                "ptm"
+              ],
+              "model_digest": "7c90f5dd617310781780a8abe5f225f220f6586d4e2d910e67cbfcb8a4470044",
+              "n_atoms": 25,
+              "native_pocket_token_indices": [
+                39,
+                40,
+                41,
+                43,
+                44,
+                45,
+                46,
+                50,
+                51,
+                52,
+                55,
+                93,
+                94,
+                97,
+                98,
+                102,
+                103,
+                104,
+                107
+              ],
+              "objective_arithmetic": "contact_head_and_assembly_float64_v1",
+              "optimized_output": "dbmol_total_loss",
+              "physical_trunks_per_forward": 2,
+              "pocket_definition_sha256": "9376c715eaf5b48689fb3e995b00d7820601a7776970df66bd7e7cff3b13ee43",
+              "pose_policy": "fixed original predicted pose; detached; no diffusion call",
+              "profile": "mosaic-dbmol-fixed-jq1-v1",
+              "protocol": "mosaic-boltz-dbmol-v1",
+              "recycling_steps": 0,
+              "scalar_dtype": "float64",
+              "source": "b1ebfc46ecf57f5414e0d1a6f9027bbb122c53bc",
+              "status": "ready",
+              "structural_checkpoint_sha256": "090e82ac8c92f5e943fa1b39e7410a44027bea7243c0bbb3caa67a77fc1428e1",
+              "structural_model_digest": "7a3c34ea2b6ee79728e6232d9755d260cafd9ea8a524edd737f2e28c8581e8f1",
+              "supported_objectives": [
+                "dbmol_total_loss",
+                "dbmol_affinity_loss",
+                "dbmol_contact_loss",
+                "dbmol_confidence_loss",
+                "dbmol_weighted_affinity_loss",
+                "dbmol_weighted_contact_loss",
+                "dbmol_weighted_confidence_loss",
+                "affinity_pred_value",
+                "affinity_logits_binary",
+                "dbmol_contact_pocket_loss",
+                "dbmol_contact_anchor_loss",
+                "complex_plddt",
+                "iptm",
+                "complex_iplddt",
+                "complex_ipde",
+                "complex_pde",
+                "confidence_score",
+                "ptm"
+              ]
+            }
+          },
+          "original_terminal_report": {
+            "can_recertify_saved_failed_run": false,
+            "components": {
+              "dbmol_affinity_loss": {
+                "baseline": 1.6345166563987732,
+                "epsilons": [
+                  0.01,
+                  0.003,
+                  0.001
+                ],
+                "independent_primal": true,
+                "objective": "dbmol_affinity_loss",
+                "production_jax_transport": "passed",
+                "raw_unclipped_gradients": true,
+                "relative_tolerance": 0.15,
+                "required_adjacent_passes": 2,
+                "rows": [
+                  {
+                    "analytic": 0.6000285148620605,
+                    "field": "X",
+                    "probes": [
+                      {
+                        "agrees": true,
+                        "analytic": 0.6000285148620605,
+                        "endpoint_graph_sha256": [
+                          "f8afe9c5583aaf9d5dce93465115d0ac02d028b389e86ed17ca3dded8e065ca4",
+                          "d5fe994f0f0a88892835ac31ac08ae034b805d2d80c64a1236e0846ff899a195"
+                        ],
+                        "epsilon": 0.01,
+                        "finite_difference": 0.5946949124336243,
+                        "primal_endpoints": [
+                          1.6285383701324463,
+                          1.6404322683811188
+                        ]
+                      },
+                      {
+                        "agrees": true,
+                        "analytic": 0.6000285148620605,
+                        "endpoint_graph_sha256": [
+                          "a0fbee8195c5b49b6771dc59f933846d7280ce9c52132078f3af8717466f89a3",
+                          "d2f14a1ed87f223b1d78b83c29e8ebb2874dc3bed619406479805a31022b9539"
+                        ],
+                        "epsilon": 0.003,
+                        "finite_difference": 0.6002684434254965,
+                        "primal_endpoints": [
+                          1.6327182352542877,
+                          1.6363198459148407
+                        ]
+                      },
+                      {
+                        "agrees": true,
+                        "analytic": 0.6000285148620605,
+                        "endpoint_graph_sha256": [
+                          "3e2454380ff21d06d1ff0cfe2e9ccbd5feda0b46983f354601de7a7660a1e49b",
+                          "e43e5ea6730bb15180e3c0fcae314c2fdf7b558637f7bf4e75a4f79c8afdb2f6"
+                        ],
+                        "epsilon": 0.001,
+                        "finite_difference": 0.5998462438583374,
+                        "primal_endpoints": [
+                          1.6339176297187805,
+                          1.6351173222064972
+                        ]
+                      }
+                    ],
+                    "row": 12,
+                    "source": 3,
+                    "target": 4
+                  },
+                  {
+                    "analytic": 2.379676103591919,
+                    "field": "E_upper",
+                    "probes": [
+                      {
+                        "agrees": false,
+                        "analytic": 2.379676103591919,
+                        "endpoint_graph_sha256": [
+                          "e57c27527c400f9001d549626e1d22b06c38bea2acf25dd97325de705ae1d4be",
+                          "3adc67ca89f2bb1fb36314da9fe9bdef543d40b7f3761f7c47436c3554bb78ac"
+                        ],
+                        "epsilon": 0.01,
+                        "finite_difference": 1.835082471370697,
+                        "primal_endpoints": [
+                          1.687770813703537,
+                          1.724472463130951
+                        ]
+                      },
+                      {
+                        "agrees": true,
+                        "analytic": 2.379676103591919,
+                        "endpoint_graph_sha256": [
+                          "497231a62088a75b42f4f4642a86074e503b1316c81b4f48efc06906d43e17ee",
+                          "a21f48485569341f14ea911ca2f770f0c5cf7ddea3617c3e5b3dc9b65d4fdfed"
+                        ],
+                        "epsilon": 0.003,
+                        "finite_difference": 2.028112610181173,
+                        "primal_endpoints": [
+                          1.6404053568840027,
+                          1.6525740325450897
+                        ]
+                      },
+                      {
+                        "agrees": true,
+                        "analytic": 2.379676103591919,
+                        "endpoint_graph_sha256": [
+                          "c9706c7bb9bbbca824d4514c09853f212bbb9a4db98943dd3f1ae7de1ec6b0b4",
+                          "147a61b884d18433748ecadbbafc51dd2ce9b4e6b7992d620a4ac2587d7ffce6"
+                        ],
+                        "epsilon": 0.001,
+                        "finite_difference": 2.3580193519592285,
+                        "primal_endpoints": [
+                          1.6336610615253448,
+                          1.6383771002292633
+                        ]
+                      }
+                    ],
+                    "row": 247,
+                    "source": 0,
+                    "target": 1
+                  }
+                ],
+                "status": "passed",
+                "typed_bond_contrast_nonzero": true,
+                "typed_bond_maximum_contrast": 0.6189390420913696
+              },
+              "dbmol_contact_loss": {
+                "epsilons": [
+                  0.01,
+                  0.003,
+                  0.001
+                ],
+                "error": "AssertionError: DBMol dbmol_contact_loss raw E_upper finite differences failed",
+                "independent_primal": true,
+                "objective": "dbmol_contact_loss",
+                "raw_unclipped_gradients": true,
+                "relative_tolerance": 0.15,
+                "required_adjacent_passes": 2,
+                "rows": [
+                  {
+                    "analytic": 0.3546760082244873,
+                    "field": "X",
+                    "probes": [
+                      {
+                        "agrees": true,
+                        "analytic": 0.3546760082244873,
+                        "endpoint_graph_sha256": [
+                          "0d8345c42de6de7a426f66076a8dc56bd4fa04cd2dea83576c240208ecc67e61",
+                          "9de0da0b2a8cb173b7512d31d3ae6a48f98d5782d3108e76032fcf69467d7408"
+                        ],
+                        "epsilon": 0.01,
+                        "finite_difference": 0.3550802639683409,
+                        "primal_endpoints": [
+                          0.4376101067598164,
+                          0.4447117120391832
+                        ]
+                      },
+                      {
+                        "agrees": true,
+                        "analytic": 0.3546760082244873,
+                        "endpoint_graph_sha256": [
+                          "ae29dc1c9f2224caa594977528486b71963d8f6da8bd6d0d7871b1889d9824a3",
+                          "519566244cf3a8a9bca3b416220f7e0db153ff53e70e5187f58a30f4990819de"
+                        ],
+                        "epsilon": 0.003,
+                        "finite_difference": 0.35469979381543465,
+                        "primal_endpoints": [
+                          0.4400701538525261,
+                          0.44219835261541873
+                        ]
+                      },
+                      {
+                        "agrees": true,
+                        "analytic": 0.3546760082244873,
+                        "endpoint_graph_sha256": [
+                          "7173608fa80f6ce461275f0556954dc05b3a1b11c3ebe5b046571374e9f67261",
+                          "96f2ea960eb5c433bb0ed8a496b7ca3f46f7929c3bc1f814b989b73014c6a97c"
+                        ],
+                        "epsilon": 0.001,
+                        "finite_difference": 0.3547323507339939,
+                        "primal_endpoints": [
+                          0.44077702801510493,
+                          0.4414864927165729
+                        ]
+                      }
+                    ],
+                    "row": 10,
+                    "source": 2,
+                    "target": 0
+                  },
+                  {
+                    "analytic": 2.210824966430664,
+                    "field": "E_upper",
+                    "probes": [
+                      {
+                        "agrees": false,
+                        "analytic": 2.210824966430664,
+                        "endpoint_graph_sha256": [
+                          "f324f983881c3d5b913b7920e8c8fbc6ca423573e21367a26cc8f482bd67331a",
+                          "bc1f890e77e8aeec67186e1dd46d135bd81224991827c2448d1bcdb0f668f2ae"
+                        ],
+                        "epsilon": 0.01,
+                        "finite_difference": 0.028807906776809333,
+                        "primal_endpoints": [
+                          0.45526344004294,
+                          0.4558395981784762
+                        ]
+                      },
+                      {
+                        "agrees": false,
+                        "analytic": 2.210824966430664,
+                        "endpoint_graph_sha256": [
+                          "7177208fde88a88711508eebde2fe20d8f9f9606887e06a3cb5e4017afe06f05",
+                          "7bf4cce6844b31762704187cd980c4bc6eaa9b8a917982001c020ff7e237b57a"
+                        ],
+                        "epsilon": 0.003,
+                        "finite_difference": 1.1752846994800652,
+                        "primal_endpoints": [
+                          0.43865984448209155,
+                          0.44571155267897195
+                        ]
+                      },
+                      {
+                        "agrees": true,
+                        "analytic": 2.210824966430664,
+                        "endpoint_graph_sha256": [
+                          "60d50876940ffe6d1442f6959ab27a02bc56f4a65f5567db6d0ded0126391e5b",
+                          "5bd116f689629420db864bba9edb640db9d1f1df3630d9f3dc7e2092d2130170"
+                        ],
+                        "epsilon": 0.001,
+                        "finite_difference": 2.0989864729711036,
+                        "primal_endpoints": [
+                          0.4388330784483178,
+                          0.44303105139426
+                        ]
+                      }
+                    ],
+                    "row": 248,
+                    "source": 0,
+                    "target": 1
+                  }
+                ],
+                "status": "failed"
+              }
+            },
+            "error": "DerivativeCheckError: DBMol dbmol_contact_loss raw E_upper finite differences failed",
+            "frozen_before": {
+              "affinity_model_digest": "395876da13ab6d5d175e6603db2118a82954c7c06484842fe2314dbd77a31a16",
+              "checkpoint_sha256": "dcc5cd3722b1c9eaa34267e4ae32f55cbbf1963f4c19319381ccfa30fdd2ca9e",
+              "context_digest": "fd04211da8e22eccd97ecedd96dd59cf4fb2d80aab6a397fa662af8eb92bbad4",
+              "context_file_sha256": "a18a331269170aac3281b0a2ecad313aab81756c9b77e048d7e2cbaa4d8f1093",
+              "full_context_digest": "73b9438f667b0239755ae886cb110b96cb61870c4fc4084f01c8eef141305e30",
+              "model_digest": "7c90f5dd617310781780a8abe5f225f220f6586d4e2d910e67cbfcb8a4470044",
+              "structural_checkpoint_sha256": "090e82ac8c92f5e943fa1b39e7410a44027bea7243c0bbb3caa67a77fc1428e1",
+              "structural_model_digest": "7a3c34ea2b6ee79728e6232d9755d260cafd9ea8a524edd737f2e28c8581e8f1"
+            },
+            "hard_graph_sha256": "4524dc0b7c6577bc929016a98027ae59bb21984d4f3d7a533155fd65c48ff765",
+            "hard_native_parity": {
+              "absolute_differences": {
+                "affinity_logits_binary": 0.0,
+                "affinity_pred_value": 0.0,
+                "affinity_probability_binary": 0.0,
+                "complex_ipde": 0.0,
+                "complex_iplddt": 0.0,
+                "complex_pde": 0.0,
+                "complex_plddt": 0.0,
+                "confidence_score": 0.0,
+                "dbmol_affinity_loss": 0.0,
+                "dbmol_confidence_loss": 0.0,
+                "dbmol_contact_anchor_loss": 0.0,
+                "dbmol_contact_loss": 0.0,
+                "dbmol_contact_pocket_loss": 0.0,
+                "dbmol_total_loss": 0.0,
+                "dbmol_weighted_affinity_loss": 0.0,
+                "dbmol_weighted_confidence_loss": 0.0,
+                "dbmol_weighted_contact_loss": 0.0,
+                "iptm": 0.0,
+                "ptm": 0.0
+              },
+              "atol": 2e-05,
+              "status": "passed"
+            },
+            "input_graph_sha256": "1b05479e5472f5e1d374aabab7c456ce2ad7d3400c0a574a762db714a4ba885b",
+            "policy": "dbmol-native-raw-fd-v1",
+            "scope": "fixed occupied graph/pose/context; no diffusion or optimizer update",
+            "status": "failed",
+            "worker_identity": {
+              "affinity_model_digest": "395876da13ab6d5d175e6603db2118a82954c7c06484842fe2314dbd77a31a16",
+              "affinity_mw_correction": false,
+              "checkpoint_sha256": "dcc5cd3722b1c9eaa34267e4ae32f55cbbf1963f4c19319381ccfa30fdd2ca9e",
+              "confidence_signed_weights": {
+                "complex_ipde": 0.3,
+                "complex_iplddt": -0.3,
+                "complex_pde": 0.1,
+                "confidence_score": -0.3,
+                "iptm": -1.0,
+                "ptm": -0.1
+              },
+              "confidence_weight": 2.5,
+              "contact_weight": 2.5,
+              "context_digest": "fd04211da8e22eccd97ecedd96dd59cf4fb2d80aab6a397fa662af8eb92bbad4",
+              "context_file_sha256": "a18a331269170aac3281b0a2ecad313aab81756c9b77e048d7e2cbaa4d8f1093",
+              "diffusion_gradient": false,
+              "full_context_digest": "73b9438f667b0239755ae886cb110b96cb61870c4fc4084f01c8eef141305e30",
+              "gradient_dtype": "float32",
+              "graph_dtype": "float32",
+              "metric_order": [
+                "dbmol_total_loss",
+                "dbmol_affinity_loss",
+                "dbmol_contact_loss",
+                "dbmol_confidence_loss",
+                "dbmol_weighted_affinity_loss",
+                "dbmol_weighted_contact_loss",
+                "dbmol_weighted_confidence_loss",
+                "affinity_pred_value",
+                "affinity_probability_binary",
+                "affinity_logits_binary",
+                "dbmol_contact_pocket_loss",
+                "dbmol_contact_anchor_loss",
+                "complex_plddt",
+                "iptm",
+                "complex_iplddt",
+                "complex_ipde",
+                "complex_pde",
+                "confidence_score",
+                "ptm"
+              ],
+              "model_digest": "7c90f5dd617310781780a8abe5f225f220f6586d4e2d910e67cbfcb8a4470044",
+              "n_atoms": 25,
+              "native_pocket_token_indices": [
+                39,
+                40,
+                41,
+                43,
+                44,
+                45,
+                46,
+                50,
+                51,
+                52,
+                55,
+                93,
+                94,
+                97,
+                98,
+                102,
+                103,
+                104,
+                107
+              ],
+              "objective_arithmetic": "contact_head_and_assembly_float64_v1",
+              "optimized_output": "dbmol_total_loss",
+              "physical_trunks_per_forward": 2,
+              "pocket_definition_sha256": "9376c715eaf5b48689fb3e995b00d7820601a7776970df66bd7e7cff3b13ee43",
+              "pose_policy": "fixed original predicted pose; detached; no diffusion call",
+              "profile": "mosaic-dbmol-fixed-jq1-v1",
+              "protocol": "mosaic-boltz-dbmol-v1",
+              "recycling_steps": 0,
+              "scalar_dtype": "float64",
+              "source": "b1ebfc46ecf57f5414e0d1a6f9027bbb122c53bc",
+              "status": "ready",
+              "structural_checkpoint_sha256": "090e82ac8c92f5e943fa1b39e7410a44027bea7243c0bbb3caa67a77fc1428e1",
+              "structural_model_digest": "7a3c34ea2b6ee79728e6232d9755d260cafd9ea8a524edd737f2e28c8581e8f1",
+              "supported_objectives": [
+                "dbmol_total_loss",
+                "dbmol_affinity_loss",
+                "dbmol_contact_loss",
+                "dbmol_confidence_loss",
+                "dbmol_weighted_affinity_loss",
+                "dbmol_weighted_contact_loss",
+                "dbmol_weighted_confidence_loss",
+                "affinity_pred_value",
+                "affinity_logits_binary",
+                "dbmol_contact_pocket_loss",
+                "dbmol_contact_anchor_loss",
+                "complex_plddt",
+                "iptm",
+                "complex_iplddt",
+                "complex_ipde",
+                "complex_pde",
+                "confidence_score",
+                "ptm"
+              ]
+            }
+          },
+          "parent_committed_states": 2501,
+          "parent_committed_updates": 2500,
+          "saved_parent_scientific_status": "failed"
+        },
+        "original_terminal_report": {
+          "can_recertify_saved_failed_run": false,
+          "components": {
+            "dbmol_affinity_loss": {
+              "epsilons": [
+                0.01,
+                0.003,
+                0.001
+              ],
+              "error": "ValueError: Prospective endpoint admission failed; original coarse observations preserved",
+              "independent_primal": true,
+              "objective": "dbmol_affinity_loss",
+              "raw_unclipped_gradients": true,
+              "relative_tolerance": 0.15,
+              "required_adjacent_passes": 2,
+              "rows": [],
+              "status": "failed"
+            }
+          },
+          "error": "DerivativeCheckError: Prospective endpoint admission failed; original coarse observations preserved",
+          "frozen_before": {
+            "affinity_model_digest": "395876da13ab6d5d175e6603db2118a82954c7c06484842fe2314dbd77a31a16",
+            "checkpoint_sha256": "dcc5cd3722b1c9eaa34267e4ae32f55cbbf1963f4c19319381ccfa30fdd2ca9e",
+            "context_digest": "fd04211da8e22eccd97ecedd96dd59cf4fb2d80aab6a397fa662af8eb92bbad4",
+            "context_file_sha256": "a18a331269170aac3281b0a2ecad313aab81756c9b77e048d7e2cbaa4d8f1093",
+            "full_context_digest": "73b9438f667b0239755ae886cb110b96cb61870c4fc4084f01c8eef141305e30",
+            "model_digest": "7c90f5dd617310781780a8abe5f225f220f6586d4e2d910e67cbfcb8a4470044",
+            "structural_checkpoint_sha256": "090e82ac8c92f5e943fa1b39e7410a44027bea7243c0bbb3caa67a77fc1428e1",
+            "structural_model_digest": "7a3c34ea2b6ee79728e6232d9755d260cafd9ea8a524edd737f2e28c8581e8f1"
+          },
+          "hard_graph_sha256": "4524dc0b7c6577bc929016a98027ae59bb21984d4f3d7a533155fd65c48ff765",
+          "hard_native_parity": {
+            "absolute_differences": {
+              "affinity_logits_binary": 0.0,
+              "affinity_pred_value": 0.0,
+              "affinity_probability_binary": 0.0,
+              "complex_ipde": 0.0,
+              "complex_iplddt": 0.0,
+              "complex_pde": 0.0,
+              "complex_plddt": 0.0,
+              "confidence_score": 0.0,
+              "dbmol_affinity_loss": 0.0,
+              "dbmol_confidence_loss": 0.0,
+              "dbmol_contact_anchor_loss": 0.0,
+              "dbmol_contact_loss": 0.0,
+              "dbmol_contact_pocket_loss": 0.0,
+              "dbmol_total_loss": 0.0,
+              "dbmol_weighted_affinity_loss": 0.0,
+              "dbmol_weighted_confidence_loss": 0.0,
+              "dbmol_weighted_contact_loss": 0.0,
+              "iptm": 0.0,
+              "ptm": 0.0
+            },
+            "atol": 2e-05,
+            "status": "passed"
+          },
+          "input_graph_sha256": "b442154211cfdd3d3a54cf247cccd356a3e436bb2aeaf641e82e007d14154fc6",
+          "policy": "dbmol-prospective-endpoint-v1",
+          "scope": "fixed occupied graph/pose/context; no diffusion or optimizer update",
+          "status": "failed",
+          "worker_identity": {
+            "affinity_model_digest": "395876da13ab6d5d175e6603db2118a82954c7c06484842fe2314dbd77a31a16",
+            "affinity_mw_correction": false,
+            "checkpoint_sha256": "dcc5cd3722b1c9eaa34267e4ae32f55cbbf1963f4c19319381ccfa30fdd2ca9e",
+            "confidence_signed_weights": {
+              "complex_ipde": 0.3,
+              "complex_iplddt": -0.3,
+              "complex_pde": 0.1,
+              "confidence_score": -0.3,
+              "iptm": -1.0,
+              "ptm": -0.1
+            },
+            "confidence_weight": 2.5,
+            "contact_weight": 2.5,
+            "context_digest": "fd04211da8e22eccd97ecedd96dd59cf4fb2d80aab6a397fa662af8eb92bbad4",
+            "context_file_sha256": "a18a331269170aac3281b0a2ecad313aab81756c9b77e048d7e2cbaa4d8f1093",
+            "diffusion_gradient": false,
+            "full_context_digest": "73b9438f667b0239755ae886cb110b96cb61870c4fc4084f01c8eef141305e30",
+            "gradient_dtype": "float32",
+            "graph_dtype": "float32",
+            "metric_order": [
+              "dbmol_total_loss",
+              "dbmol_affinity_loss",
+              "dbmol_contact_loss",
+              "dbmol_confidence_loss",
+              "dbmol_weighted_affinity_loss",
+              "dbmol_weighted_contact_loss",
+              "dbmol_weighted_confidence_loss",
+              "affinity_pred_value",
+              "affinity_probability_binary",
+              "affinity_logits_binary",
+              "dbmol_contact_pocket_loss",
+              "dbmol_contact_anchor_loss",
+              "complex_plddt",
+              "iptm",
+              "complex_iplddt",
+              "complex_ipde",
+              "complex_pde",
+              "confidence_score",
+              "ptm"
+            ],
+            "model_digest": "7c90f5dd617310781780a8abe5f225f220f6586d4e2d910e67cbfcb8a4470044",
+            "n_atoms": 25,
+            "native_pocket_token_indices": [
+              39,
+              40,
+              41,
+              43,
+              44,
+              45,
+              46,
+              50,
+              51,
+              52,
+              55,
+              93,
+              94,
+              97,
+              98,
+              102,
+              103,
+              104,
+              107
+            ],
+            "objective_arithmetic": "contact_head_and_assembly_float64_v1",
+            "optimized_output": "dbmol_total_loss",
+            "physical_trunks_per_forward": 2,
+            "pocket_definition_sha256": "9376c715eaf5b48689fb3e995b00d7820601a7776970df66bd7e7cff3b13ee43",
+            "pose_policy": "fixed original predicted pose; detached; no diffusion call",
+            "profile": "mosaic-dbmol-fixed-jq1-v1",
+            "protocol": "mosaic-boltz-dbmol-v1",
+            "recycling_steps": 0,
+            "scalar_dtype": "float64",
+            "source": "b1ebfc46ecf57f5414e0d1a6f9027bbb122c53bc",
+            "status": "ready",
+            "structural_checkpoint_sha256": "090e82ac8c92f5e943fa1b39e7410a44027bea7243c0bbb3caa67a77fc1428e1",
+            "structural_model_digest": "7a3c34ea2b6ee79728e6232d9755d260cafd9ea8a524edd737f2e28c8581e8f1",
+            "supported_objectives": [
+              "dbmol_total_loss",
+              "dbmol_affinity_loss",
+              "dbmol_contact_loss",
+              "dbmol_confidence_loss",
+              "dbmol_weighted_affinity_loss",
+              "dbmol_weighted_contact_loss",
+              "dbmol_weighted_confidence_loss",
+              "affinity_pred_value",
+              "affinity_logits_binary",
+              "dbmol_contact_pocket_loss",
+              "dbmol_contact_anchor_loss",
+              "complex_plddt",
+              "iptm",
+              "complex_iplddt",
+              "complex_ipde",
+              "complex_pde",
+              "confidence_score",
+              "ptm"
+            ]
+          }
+        },
+        "parent_absolute_step": 7500,
+        "saved_parent_scientific_status": "failed"
+      },
+      "failed_parent": {
+        "endpoint": {
+          "bytes": 26782,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-08/dbmol-segment-05000/payload/study/case-0/snapshots/step-2500.npz",
+          "sha256": "c11bd0ac8f38d651cc4d98ca11958f7454eeee5ab8512eca1e3ff3e1d29485bb"
+        },
+        "job_id": "29830999",
+        "parent": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-08/dbmol-segment-05000",
+        "states": {
+          "bytes": 4441745,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-08/dbmol-segment-05000/payload/study/case-0/states.jsonl",
+          "sha256": "8fdec6fb6d23b1b0ac671bd412056b40bd6e79317d9de29b2e7922ed67bb6225"
+        },
+        "stderr": {
+          "bytes": 4966,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-08/dbmol-segment-05000/stderr.29830999.log",
+          "sha256": "ba1ce89ca838769fd43cb7763b1d8ad4b426aba4a27bf7257a2ebf1dc6e0b03a"
+        },
+        "stdout": {
+          "bytes": 315256,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-08/dbmol-segment-05000/stdout.29830999.log",
+          "sha256": "def798945b422a68ae9ab9bbd2b044671aa1906e1aeb915f84e94618cf410dcd"
+        },
+        "submission": {
+          "bytes": 1324,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-08/dbmol-segment-05000/submission.json",
+          "sha256": "a8572cc8645b1550096bc716875cf3e5013c5ab17004112bbe14ede4a076c731"
+        },
+        "summary": {
+          "bytes": 26328368,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-08/dbmol-segment-05000/payload/study/summary.json",
+          "sha256": "0f83fe29c6869c54e78977fd7a236bccc31b9a93cee18c1a8678009dda456319"
+        },
+        "terminal": {
+          "bytes": 5579,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-08/dbmol-segment-05000/payload/study/terminal_gradient_checks/report.json",
+          "sha256": "a1f651d7b894b29780984ac79420eab829f4ec23b584c8027eeae5fdb6c66693"
+        },
+        "updates": {
+          "bytes": 4121638,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-08/dbmol-segment-05000/payload/study/case-0/updates.jsonl",
+          "sha256": "a835f740e4ecd806b09dc3e0c53e1b48c3c201a2f4b0a5a50b82b90c4b49b44d"
+        }
+      },
+      "future_endpoint_direction_scope": "not_preexisting_at_new_endpoint",
+      "global_start": 7500,
+      "global_target": 10000,
+      "id": "dbmol",
+      "immediate_parent_ancestry": {
+        "driver_argv": [
+          "/work3/s234818/mosaic/envs/protenix-tiny/bin/python",
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-release-02/source/scripts/dbmol_driver.py",
+          "--config",
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-release-02/source/examples/configs/dbmol_pilot.json",
+          "--manifest",
+          "600ecc3b33135141a57c029a28a2c72f29e788e3ecf5cb2dac1761146d1d6eed",
+          "--cpu-certificate",
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/cpu-certificate.json",
+          "--cpu-certificate-sha256",
+          "387070e8fe56b17ddbd7c8e0b82d2d6a44d9aa99e7015d3fbe4757ce82c0819b",
+          "--reference",
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/cpu-05/payload/composition_reference.json",
+          "--pocket",
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/cpu-05/payload/pocket_definition.json",
+          "--pocket-sha256",
+          "9376c715eaf5b48689fb3e995b00d7820601a7776970df66bd7e7cff3b13ee43",
+          "--prepared",
+          "/zhome/95/e/206121/mosaic-runs/20261021-brd4-jq1-25-01/prepare/payload/prepared",
+          "--context-sha256",
+          "a18a331269170aac3281b0a2ecad313aab81756c9b77e048d7e2cbaa4d8f1093",
+          "--worker-python",
+          "/work3/s234818/latentmol/env/boltz311/bin/python",
+          "--mode",
+          "run",
+          "--output",
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-08/dbmol-segment-05000/payload/study",
+          "--offset",
+          "5000",
+          "--segment-steps",
+          "2500",
+          "--resume-snapshot",
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-segment-0001/payload/study/case-0/snapshots/step-2500.npz",
+          "--resume-sha256",
+          "dd0b183c77c1e75404c206fe325fcf0c9aec59976264b53b11ba00b1263a64fb",
+          "--ready",
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-08/dbmol-validate-05000/payload/study/assessment.json",
+          "--ready-sha256",
+          "ea762ea6cd9a4d8aa2d82a60edcd8e557f7c3eebf92342ece623fbb38c6c28a4"
+        ],
+        "driver_invocation": {
+          "bytes": 2492,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-08/dbmol-segment-05000/payload/endpoint-driver-invocation.json",
+          "sha256": "842bdb77e5859149f0fd81f73a26e20f4fd54647f7ca83ab64437093e9ab6a8f"
+        },
+        "native_report": {
+          "bytes": 11515424,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-08/dbmol-segment-05000/payload/study/native_gradient_checks/report.json",
+          "sha256": "aecf2d73fcd0dcb547c55116fa4e88627f2a1a4831fc8048af2a6ca70599fece"
+        }
+      },
+      "inputs": {
+        "cpu_certificate": {
+          "bytes": 24559,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/cpu-certificate.json",
+          "sha256": "387070e8fe56b17ddbd7c8e0b82d2d6a44d9aa99e7015d3fbe4757ce82c0819b"
+        },
+        "original_driver_argv": [
+          "/work3/s234818/mosaic/envs/protenix-tiny/bin/python",
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-release-02/source/scripts/dbmol_driver.py",
+          "--mode",
+          "run",
+          "--config",
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-release-02/source/examples/configs/dbmol_pilot.json",
+          "--output",
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-segment-0001/payload/study",
+          "--manifest",
+          "600ecc3b33135141a57c029a28a2c72f29e788e3ecf5cb2dac1761146d1d6eed",
+          "--cpu-certificate",
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/cpu-certificate.json",
+          "--cpu-certificate-sha256",
+          "387070e8fe56b17ddbd7c8e0b82d2d6a44d9aa99e7015d3fbe4757ce82c0819b",
+          "--reference",
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/cpu-05/payload/composition_reference.json",
+          "--pocket",
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/cpu-05/payload/pocket_definition.json",
+          "--pocket-sha256",
+          "9376c715eaf5b48689fb3e995b00d7820601a7776970df66bd7e7cff3b13ee43",
+          "--prepared",
+          "/zhome/95/e/206121/mosaic-runs/20261021-brd4-jq1-25-01/prepare/payload/prepared",
+          "--context-sha256",
+          "a18a331269170aac3281b0a2ecad313aab81756c9b77e048d7e2cbaa4d8f1093",
+          "--worker-python",
+          "/work3/s234818/latentmol/env/boltz311/bin/python",
+          "--offset",
+          "2500",
+          "--segment-steps",
+          "2500",
+          "--resume-snapshot",
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-segment-0000/payload/study/case-0/snapshots/step-2500.npz",
+          "--resume-sha256",
+          "40b8c6983bdbefec35b0aba16233281f630a46614ef091683d26b917dfd3913f",
+          "--ready",
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-native-0001/payload/study/assessment.json",
+          "--ready-sha256",
+          "9e10b8d79735e8f14b98d78ce8663b3aabb7897c4a87907a1faeccd12aae8218"
+        ],
+        "original_driver_invocation": {
+          "bytes": 2500,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-segment-0001/payload/driver-invocation.json",
+          "sha256": "f25972fa5c2ccb7f4b2fed7c63a1dfcc5c0604567dfff3b54e094c1592bb0d9e"
+        },
+        "original_native_report": {
+          "bytes": 22580,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-segment-0001/payload/study/native_gradient_checks/report.json",
+          "sha256": "33d42155034370a361b1ed79f98d10425adadcaee93b21d4fd4e30d6f7c80eee"
+        },
+        "pocket": {
+          "bytes": 3948,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/cpu-05/payload/pocket_definition.json",
+          "sha256": "9376c715eaf5b48689fb3e995b00d7820601a7776970df66bd7e7cff3b13ee43"
+        },
+        "ready": {
+          "bytes": 19102,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-native-0001/payload/study/assessment.json",
+          "sha256": "9e10b8d79735e8f14b98d78ce8663b3aabb7897c4a87907a1faeccd12aae8218"
+        },
+        "reference": {
+          "bytes": 2087,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/cpu-05/payload/composition_reference.json",
+          "sha256": "37b34a2ba7be47886936df48faaabdeac20481e5a9cebca9bafab831c07868eb"
+        }
+      },
+      "label": "Boltz-2 DBMol binding objective, planned10k",
+      "offsets": [
+        7500,
+        8750
+      ],
+      "original_argv": [
+        "/work3/s234818/mosaic/envs/protenix-tiny/bin/python",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-release-02/source/scripts/dbmol_driver.py",
+        "--mode",
+        "run",
+        "--config",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-release-02/source/examples/configs/dbmol_pilot.json",
+        "--output",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-segment-0001/payload/study",
+        "--manifest",
+        "600ecc3b33135141a57c029a28a2c72f29e788e3ecf5cb2dac1761146d1d6eed",
+        "--cpu-certificate",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/cpu-certificate.json",
+        "--cpu-certificate-sha256",
+        "387070e8fe56b17ddbd7c8e0b82d2d6a44d9aa99e7015d3fbe4757ce82c0819b",
+        "--reference",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/cpu-05/payload/composition_reference.json",
+        "--pocket",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/cpu-05/payload/pocket_definition.json",
+        "--pocket-sha256",
+        "9376c715eaf5b48689fb3e995b00d7820601a7776970df66bd7e7cff3b13ee43",
+        "--prepared",
+        "/zhome/95/e/206121/mosaic-runs/20261021-brd4-jq1-25-01/prepare/payload/prepared",
+        "--context-sha256",
+        "a18a331269170aac3281b0a2ecad313aab81756c9b77e048d7e2cbaa4d8f1093",
+        "--worker-python",
+        "/work3/s234818/latentmol/env/boltz311/bin/python",
+        "--offset",
+        "2500",
+        "--segment-steps",
+        "2500",
+        "--resume-snapshot",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-segment-0000/payload/study/case-0/snapshots/step-2500.npz",
+        "--resume-sha256",
+        "40b8c6983bdbefec35b0aba16233281f630a46614ef091683d26b917dfd3913f",
+        "--ready",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-native-0001/payload/study/assessment.json",
+        "--ready-sha256",
+        "9e10b8d79735e8f14b98d78ce8663b3aabb7897c4a87907a1faeccd12aae8218"
+      ],
+      "original_direction_limits": "Authentic terminal observations only; fields not reached remain explicit empty",
+      "original_direction_scope": "saved_failed_endpoint",
+      "original_directions": {
+        "dbmol_affinity_loss": {
+          "E_upper": [],
+          "X": [
+            {
+              "row": 1,
+              "source": 0,
+              "target": 4
+            }
+          ]
+        },
+        "dbmol_confidence_loss": {
+          "E_upper": [],
+          "X": []
+        },
+        "dbmol_contact_loss": {
+          "E_upper": [],
+          "X": []
+        },
+        "dbmol_total_loss": {
+          "E_upper": [],
+          "X": []
+        }
+      },
+      "parent_snapshot": {
+        "bytes": 26782,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-08/dbmol-segment-05000/payload/study/case-0/snapshots/step-2500.npz",
+        "sha256": "c11bd0ac8f38d651cc4d98ca11958f7454eeee5ab8512eca1e3ff3e1d29485bb"
+      },
+      "rate": 0.0025,
+      "segment_steps": 1250,
+      "segment_updates": 1250,
+      "source": {
+        "files": 657,
+        "manifest_sha256": "600ecc3b33135141a57c029a28a2c72f29e788e3ecf5cb2dac1761146d1d6eed",
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-release-02/source"
+      },
+      "start_global": 7500,
+      "target_global": 10000
+    }
+  ],
+  "automatic_dispatch_arms": [
+    "protenix",
+    "dbmol"
+  ],
+  "base_driver": {
+    "bytes": 59427,
+    "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-release-09/source/scripts/continuation_driver.py",
+    "sha256": "6d83c424d084f50b56574801552ecddaa39148316e0578b31d46961e28783a7e"
+  },
+  "control_root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-16",
+  "dispatch_arms": [
+    "protenix",
+    "dbmol"
+  ],
+  "engineering_predecessor": {
+    "controller_job_id": "29838956",
+    "cpu_job_id": "29838955",
+    "failure": {
+      "binding": {
+        "bytes": 1956,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-14/cpu/payload/protenix-reference-startup-invocation.json",
+        "sha256": "0b8da51a8fcabaeb94ecb0296e857f644e194299e8557870744bd0660ea103ba"
+      },
+      "value": {
+        "argv": [
+          "/work3/s234818/mosaic/envs/protenix-tiny/bin/python",
+          "-u",
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-release-14/source/scripts/protenix_reference_worker.py",
+          "--reference-plan",
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-release-14/source/plan.json",
+          "--reference-plan-sha256",
+          "099111e2dd879af85f288c262a0884eedbcfcdb7a2776af0d15c997e144e1d46",
+          "--startup-only",
+          "--startup-output",
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-14/cpu/payload/protenix-reference-startup.json"
+        ],
+        "numerical_evaluations": 0,
+        "returncode": 1,
+        "stderr": "Traceback (most recent call last):\n  File \"/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-release-14/source/scripts/protenix_reference_worker.py\", line 504, in <module>\n    if __name__ == \"__main__\": main()\n                               ^^^^^^\n  File \"/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-release-14/source/scripts/protenix_reference_worker.py\", line 495, in main\n    metadata = validate_metadata(args.reference_plan, args.reference_plan_sha256)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-release-14/source/scripts/protenix_reference_worker.py\", line 164, in validate_metadata\n    require(_raw(plan.get(\"protenix_reference\")) == _raw(reference_spec()), \"Closed Protenix reference specification differs\")\n  File \"/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-release-14/source/scripts/protenix_reference_worker.py\", line 44, in require\n    raise ValueError(message)\nValueError: Closed Protenix reference specification differs\n",
+        "stdout": ""
+      }
+    },
+    "native_or_optimizer_submitted": false,
+    "proofs": [
+      {
+        "bytes": 3750,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-14/cpu/terminal-query-000.json",
+        "sha256": "f718964f6124da7d64e979a56dfa3a7aa01092b9e1a7160b2c820f80c053c39c"
+      },
+      {
+        "bytes": 24507,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-14/cpu/continuation-storage-entry.json",
+        "sha256": "3b61e9fe491928c1cfbaf5bd3037ba6193b269b41c50fe7120dbce39c910699b"
+      },
+      {
+        "bytes": 1217,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-14/cpu/submission.json",
+        "sha256": "ac68d1ce0f0d6ee975d40e1fa994f025f3435723e62fdc90a75fcba636c6ec69"
+      },
+      {
+        "bytes": 1792,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-14/cpu/stderr.29838955.log",
+        "sha256": "3a29e01f87ed3ec0fd9cd10258877833e0300d9cb704528748dc17dbc4b7098e"
+      },
+      {
+        "bytes": 1989,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-14/cpu/stdout.29838955.log",
+        "sha256": "58c05b677706f61f1f1682b72f62177a0b116c7aed20d009ba3894c3cac9c666"
+      },
+      {
+        "bytes": 1095,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-14/cpu/submission-started.json",
+        "sha256": "96e42615ddb538e86100c4fec2805fa0d7ca0b22cd078377f9082c9a7cb0d752"
+      },
+      {
+        "bytes": 1956,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-14/cpu/payload/protenix-reference-startup-invocation.json",
+        "sha256": "0b8da51a8fcabaeb94ecb0296e857f644e194299e8557870744bd0660ea103ba"
+      },
+      {
+        "bytes": 24507,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-14/cpu/whole-precision-entry-1/full-precision-storage.json",
+        "sha256": "3b61e9fe491928c1cfbaf5bd3037ba6193b269b41c50fe7120dbce39c910699b"
+      },
+      {
+        "bytes": 22952,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-14/cpu/whole-precision-entry-1/recovery-capacity-entry.json",
+        "sha256": "0edc3efaab8ba2fca2e04b2be6735749d9b2b630c6e1baaefb559a25020b8bd3"
+      },
+      {
+        "bytes": 22925,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-14/cpu/whole-precision-entry-1/complete-storage-entry.json",
+        "sha256": "75b8c51e4a46d70f714a91f107c4155e8525f554515feef1fa2d3409bc55ff46"
+      },
+      {
+        "bytes": 2807,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-14/cpu/payload/startup-dbmol-segment/endpoint-startup.json",
+        "sha256": "d6c43a0baf64d47df75182a9c4f1bc254ac1f44cf8ce7f6c04f739bbba72537d"
+      },
+      {
+        "bytes": 1555,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-14/cpu/payload/startup-dbmol-segment/invocation.json",
+        "sha256": "662e0cb67edf64f988eba7d685c96c690fa3d77e4993d784b692bd492e726a6b"
+      },
+      {
+        "bytes": 1564,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-14/cpu/payload/startup-protenix-segment/invocation.json",
+        "sha256": "ecf2d2b558862fab68a481164ad2c17bf6b4d510805985bca4758725745b0012"
+      },
+      {
+        "bytes": 2547,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-14/cpu/payload/startup-protenix-segment/endpoint-startup.json",
+        "sha256": "4a44e4937724546543c265a968d69d61d463e575ef0539f2059b8cc464823c16"
+      },
+      {
+        "bytes": 2039,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-14/cpu/payload/startup-protenix-validate/endpoint-startup.json",
+        "sha256": "8141ae36f68a623d7c1d1ec94cb219e1d1ed25aec0c41313baf812860446d8f4"
+      },
+      {
+        "bytes": 1280,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-14/cpu/payload/startup-protenix-validate/invocation.json",
+        "sha256": "59e15ea4fd23dbf5a8d5eb765cab8a878df5c0cba6abe908a9f51cd14ac44042"
+      },
+      {
+        "bytes": 5226,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-14/cpu/payload/worker-startup-dbmol/worker-startup.json",
+        "sha256": "88e9096fdfc4a29b521c5c2b9cb4ef8e59fef19f67ea6f7897e9ed21dfa7def9"
+      },
+      {
+        "bytes": 1244,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-14/cpu/payload/worker-startup-dbmol/invocation.json",
+        "sha256": "6596823956c2351535002fd58eb49d34f8601cc979935604326ed12798e77ef7"
+      },
+      {
+        "bytes": 2313,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-14/cpu/payload/startup-dbmol-validate/endpoint-startup.json",
+        "sha256": "7dcca058c98fc85dcb50fc83715a8d89b77efe16e6b0c6d525ddbe737e89ccc4"
+      },
+      {
+        "bytes": 1278,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-14/cpu/payload/startup-dbmol-validate/invocation.json",
+        "sha256": "9cc02ffe39aef924bcb63d59503a4c942a8c158c0d21b3e652fe4259fad563d7"
+      },
+      {
+        "bytes": 20682,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-14/cpu/whole-precision-entry-1/complete-inventory-entry-01/chemistry-diagnostic-storage-entry.json",
+        "sha256": "b20a132e6d2955d42d0d97b987dd4ecf68c704e3f5adc2ee49537b9d3fefaf58"
+      },
+      {
+        "bytes": 19569,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-14/cpu/whole-precision-entry-1/complete-inventory-entry-01/continuation-storage-chem-diag-entry.json",
+        "sha256": "faff7e561549d57b29db26a4557753375856c67e01d25cbf8c235d8a7ad0b5f7"
+      },
+      {
+        "bytes": 21794,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-14/cpu/whole-precision-entry-1/complete-inventory-entry-01/qualification-storage-entry.json",
+        "sha256": "a6cb3a0b5e0561d4852f3592e364ec9872e271836dfe0c055053d8fbcf6cd679"
+      },
+      {
+        "bytes": 6882,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-14/cpu/whole-precision-entry-1/complete-inventory-entry-01/selected-storage-chem-diag-entry/gate.json",
+        "sha256": "66c11c86412225dd863c083eb9e5a296572bcae9d28113b5bcce8f44d3a9c301"
+      },
+      {
+        "bytes": 10074,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-14/cpu/whole-precision-entry-1/complete-inventory-entry-01/current-chemistry-capacity-chem-diag-entry/production-storage-entry.json",
+        "sha256": "363c695bb731a7591ba934cab1b838bfbc6c6f1cda2a321f6a5b68ceeac949ac"
+      },
+      {
+        "bytes": 10892,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-14/cpu/whole-precision-entry-1/complete-inventory-entry-01/current-chemistry-capacity-chem-diag-entry/assessment.json",
+        "sha256": "44abb492a75c463ff0c71c149ee014bc44b22045df34ecb0334fd131749c2aee"
+      },
+      {
+        "bytes": 1496,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-14/cpu/whole-precision-entry-1/complete-inventory-entry-01/current-chemistry-capacity-chem-diag-entry/invocation.json",
+        "sha256": "f11ac3738554d405a8c41bd7899fbddd935c59f4b95659441dc0bd706480bebc"
+      },
+      {
+        "bytes": 7643,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-14/cpu/whole-precision-entry-1/complete-inventory-entry-01/current-chemistry-capacity-chem-diag-entry/inherited-storage-entry/continuation-storage-precision.json",
+        "sha256": "29509fa7e0dd2c523d31a1d7ecc6c53dc154ab698fc2f31ed5785d5b9c0dafd8"
+      },
+      {
+        "bytes": 8811,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-14/cpu/whole-precision-entry-1/complete-inventory-entry-01/current-chemistry-capacity-chem-diag-entry/inherited-storage-entry/precision-storage-entry.json",
+        "sha256": "cea50f8ca595536e2d93938b3a13c27af723876d8120d47cf3c276bd47f8e68c"
+      },
+      {
+        "bytes": 6876,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-14/cpu/whole-precision-entry-1/complete-inventory-entry-01/current-chemistry-capacity-chem-diag-entry/inherited-storage-entry/selected-storage-precision/gate.json",
+        "sha256": "34c20be25fd4be505215690771b0bddd77419d96afa80b1ecc0a5cfa168ec48d"
+      },
+      {
+        "bytes": 51,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-14/jobs.json",
+        "sha256": "1c13727c83f811b887f9ba9c834bf1ff446eb2d7f56e1b566fbd3684b106e593"
+      },
+      {
+        "bytes": 1735,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-14/after-cpu/stderr.29838956.log",
+        "sha256": "d7b56b814e99c4dc139abf6d0038d9d3557a77fee7770c98cd6154be3eaed8b7"
+      },
+      {
+        "bytes": 2009,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-14/after-cpu/stdout.29838956.log",
+        "sha256": "63e33ab95c941823c6c7413dfd9108e064b6729cf119108d502606a2c458c1f9"
+      },
+      {
+        "bytes": 1293,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-14/after-cpu/submission.json",
+        "sha256": "bc1486f0e06c6ee394ec8891eff33dc8c84382ecf3818c6bb7668dff98031371"
+      }
+    ],
+    "source": {
+      "files": 35,
+      "manifest_sha256": "4c3f74166a57f35bd7c4eca8ffa58e53c0a12e7d232553acb70133d283d099ab",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-release-14/source"
+    }
+  },
+  "launch_predecessor": {
+    "failed_jobs": {
+      "dbmol": "29839088",
+      "protenix": "29839086"
+    },
+    "failures_preserved": true,
+    "original_results_changed": false,
+    "proofs": [
+      {
+        "bytes": 221,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-15/jobs.json",
+        "sha256": "d64689a43a586cda4b786aaa79a081c093691a7809bcc5d6ddad093e4b3cfc34"
+      },
+      {
+        "bytes": 7413,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-15/cpu-certificate.json",
+        "sha256": "e1c2b9dba7cd35c7abb360e2c12aa725129311bd10fc9d9deb88a22e7e916bbd"
+      },
+      {
+        "bytes": 1217,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-15/cpu/submission.json",
+        "sha256": "0e9f206556661f3565d925ab2771087c4186d769956fd59614d788fbd8b4fda5"
+      },
+      {
+        "bytes": 1986,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-15/cpu/stdout.29839033.log",
+        "sha256": "8e0755b494d8d997f7ea8c18e929cb291dcc5aa3fe363423cc3b43deee4e6f03"
+      },
+      {
+        "bytes": 233,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-15/cpu/stderr.29839033.log",
+        "sha256": "7d57e9e44355166e210a310a2b90b7d8543b85c5ffbb82276c701f4dd1f23271"
+      },
+      {
+        "bytes": 1293,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-15/after-cpu/submission.json",
+        "sha256": "747a8739e1c1cca105521c403736bc59c4efd9a2edb21a4e53fc557b806166ca"
+      },
+      {
+        "bytes": 2006,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-15/after-cpu/stdout.29839034.log",
+        "sha256": "981fb77421aa36e5fa705a2984e641f2ef94f51869aadbd5c974f161c6566d29"
+      },
+      {
+        "bytes": 233,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-15/after-cpu/stderr.29839034.log",
+        "sha256": "7d57e9e44355166e210a310a2b90b7d8543b85c5ffbb82276c701f4dd1f23271"
+      },
+      {
+        "bytes": 1361,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-15/protenix-validate-20000/submission.json",
+        "sha256": "7847d82f80a5ae7d3b60a2423d6e40ba8dd7aa2f40fd180f9a25a4ccbd321d44"
+      },
+      {
+        "bytes": 2158,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-15/protenix-validate-20000/stdout.29839086.log",
+        "sha256": "2cfd988c34600228d030cc0bd63239dd64ff8c9fbf205edef36ce8ee53116446"
+      },
+      {
+        "bytes": 5121,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-15/protenix-validate-20000/stderr.29839086.log",
+        "sha256": "cc5f618b022a004b7dfac4409ce39b4254055ad5658f42549c871c18e20aa4c3"
+      },
+      {
+        "bytes": 1381,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-15/protenix-after-validate-20000/submission.json",
+        "sha256": "1fb2bde5983e6a2e6a8e61f5cd62ac194ea98bc3c54dc19eb125adaa7537ef72"
+      },
+      {
+        "bytes": 2167,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-15/protenix-after-validate-20000/stdout.29839087.log",
+        "sha256": "c2d322be59cf26208bdbfd55a5bb30a5ac61d5bed09ac6230328390f96abd9e2"
+      },
+      {
+        "bytes": 2039,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-15/protenix-after-validate-20000/stderr.29839087.log",
+        "sha256": "9ab3238628736617c9aa033c21be9d8bf6d7c3fcf3c6c6218862a4ef510b2bfb"
+      },
+      {
+        "bytes": 1344,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-15/dbmol-validate-07500/submission.json",
+        "sha256": "042b76accc51446742a5a491fd17a33090fe329e332d5c0287856dadf8a6d6d7"
+      },
+      {
+        "bytes": 2138,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-15/dbmol-validate-07500/stdout.29839088.log",
+        "sha256": "64b594b02316f298eb5d54a113134bf19a80ceaeb7565a288e84da58dd2c4011"
+      },
+      {
+        "bytes": 1413,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-15/dbmol-validate-07500/stderr.29839088.log",
+        "sha256": "a3ec08a14c586d0aa5f7d59f49ce6f9554f58fb0cc9fc26674063afa5831d6c7"
+      },
+      {
+        "bytes": 1364,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-15/dbmol-after-validate-07500/submission.json",
+        "sha256": "11bad889b208700204701ff5ece8a0d44f73e18160bf138a2847b57e1bd3ba8b"
+      },
+      {
+        "bytes": 2154,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-15/dbmol-after-validate-07500/stdout.29839089.log",
+        "sha256": "e37b556e894668235988c94990efea49137f4e731996cc3a5d1571a1fe30e572"
+      },
+      {
+        "bytes": 1878,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-15/dbmol-after-validate-07500/stderr.29839089.log",
+        "sha256": "ec3fe0d65c2eebabd708b79d87ff67ec7c547c34e28a2c0ccc8bd126f628d956"
+      },
+      {
+        "bytes": 3531,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-15/protenix-validate-20000/payload/study/native_gradient_checks-prospective/reference-session/stderr.log",
+        "sha256": "b266ac1f73ddaf9706a06b6e76ec5e7c4e6f63f4a0432ca7c01a4155cb301ed1"
+      },
+      {
+        "bytes": 24822,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-15/dbmol-validate-07500/whole-precision-entry-1/full-precision-storage.json",
+        "sha256": "3ca94b7fda87dce411c85e121c24a761f00ac872741271ff4d31534ce9891a1e"
+      }
+    ],
+    "source": {
+      "files": 35,
+      "manifest_sha256": "5448503965365f4db726d558df4ac91a41a7f711366b6ae47ae936993fd0c8bb",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-release-15/source"
+    }
+  },
+  "logit_policy": "prospective-fixed-reference-logit-admission-v1",
+  "loss_stride": 1,
+  "matrix_stride": 20,
+  "metadata_observed_utc": "2026-10-28T09:21:30.166800+00:00",
+  "monitor_remains_paused": true,
+  "optimization_settings_changed": false,
+  "original_failures_preserved": true,
+  "original_results_changed": false,
+  "precision_adapter_version": "precision-reference-continuation-adapter-v1",
+  "precision_policy_by_arm": {
+    "dbmol": {
+      "dbmol_affinity_loss": "dbmol-separate-precision-finer-admission-v1",
+      "dbmol_confidence_loss": "prospective-endpoint-admission-v3",
+      "dbmol_contact_loss": "prospective-endpoint-admission-v3",
+      "dbmol_total_loss": "prospective-endpoint-admission-v3"
+    },
+    "protenix": {
+      "protenix_contact_loss": "protenix-separate-precision-admission-v1"
+    }
+  },
+  "preserved_failed_admissions": {
+    "protenix": {
+      "source01_admission": {
+        "bytes": 2531142,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-01/protenix-validate-20000/payload/study/native_gradient_checks-prospective/admission.json",
+        "sha256": "3b4e6c14aa21aed083594ab040a7faf4a50f93b4adce5a4fa679108bc531aaf1"
+      },
+      "status": "blocked_failed_endpoint_admission"
+    }
+  },
+  "protenix_reference": {
+    "graph_transport": {
+      "E_upper": [
+        300,
+        5
+      ],
+      "X": [
+        25,
+        6
+      ],
+      "digest": "SHA256_concatenated_C_order_X_then_E_upper",
+      "dtype": "float64"
+    },
+    "internal_seconds": 5400,
+    "key_transport": {
+      "dtype": "uint32",
+      "implementation": "threefry2x32",
+      "original_seed_provenance": 17,
+      "selection": "actual_live_caller_per_request",
+      "shape": [
+        2
+      ]
+    },
+    "max_bytes": 67108864,
+    "max_request_line_bytes": 262144,
+    "max_requests": 128,
+    "objective": {
+      "coefficient": 1.0,
+      "cutoff": 8.0,
+      "geometry": "off",
+      "native_name": "contact",
+      "scope": "unchanged_JQ1_pocket_contact"
+    },
+    "optimizer_updates": 0,
+    "original_context_digest": "b28dfad8e5ede565071c70a61695f6a38f5cb6bd591705e32979e59050ff5ce4",
+    "original_model_digest": "8d6926d5390fe682e193089f790ce53aa4011a6d5509ddb452a55db3d89b0ab2",
+    "pocket_definition_sha256": "9376c715eaf5b48689fb3e995b00d7820601a7776970df66bd7e7cff3b13ee43",
+    "production_execution_changed": false,
+    "qualified_CPU": {
+      "bytes": 2559,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/cpu-certificate.json",
+      "sha256": "338b236d46b7510955195c022308a058913cbe97102823c55b23d7819f671ffd"
+    },
+    "qualified_LSF": {
+      "bytes": 2079,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/stdout.29838596.log",
+      "sha256": "e91efc831eaed697db7724570fb3954ea509c4659544414f3c614ada45e3b8e7"
+    },
+    "qualified_native": {
+      "bytes": 2133,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/assessment.json",
+      "sha256": "bb4ed22fb92d25e5c8de46ea3c4d68a8ed2162d5621b136966da37d36b42e82b"
+    },
+    "qualified_plan": {
+      "bytes": 86914,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-release-09/source/plan.json",
+      "sha256": "7adf251df61bc8de66711769df417eed5d8ac9ca57d9686baf4011df9f7d09bf"
+    },
+    "qualified_source": {
+      "files": 20,
+      "manifest_sha256": "f2043af74b8fa9ff485a44b80fcf96454bf8585868859389828c37f0073a3664",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-release-09/source"
+    },
+    "science_source": {
+      "files": 643,
+      "manifest_sha256": "da9db6821d26b884ca1749303fc8e0b0095bd9ee7cbd1b427cdcf1b22eec6562",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source"
+    },
+    "version": "protenix-generic-fp64-reference-rpc-v1"
+  },
+  "qualified_admissions": {
+    "dbmol": {
+      "assessment": {
+        "bytes": 357,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-13/gpu/payload/assessment.json",
+        "sha256": "633ea391b44332c1a04182aafb4e692a01a0dba3583f88ab8f5e06d91ec7c0e1"
+      },
+      "job_id": "29838712",
+      "proofs": [
+        {
+          "bytes": 20682,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-13/gpu/complete-inventory-entry-01/chemistry-diagnostic-storage-entry.json",
+          "sha256": "c9d1362e0203b17473dc1955c3c22828f4856f1007ffd51c8addb8d7d07e0585"
+        },
+        {
+          "bytes": 19569,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-13/gpu/complete-inventory-entry-01/continuation-storage-chem-diag-entry.json",
+          "sha256": "706416c9cf3ea5ceb391d81f5e5e6f1c22066754f831afcf70175d5346e94d2e"
+        },
+        {
+          "bytes": 10892,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-13/gpu/complete-inventory-entry-01/current-chemistry-capacity-chem-diag-entry/assessment.json",
+          "sha256": "c3669029878cebf024af6b8e7f327f0b6ec28e5359d48721787415a342d794ea"
+        },
+        {
+          "bytes": 7643,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-13/gpu/complete-inventory-entry-01/current-chemistry-capacity-chem-diag-entry/inherited-storage-entry/continuation-storage-precision.json",
+          "sha256": "2d6808bcd2ea119a77a8af87d73a9b88b6c8f70f94e59bf9858e22f0ecd91e27"
+        },
+        {
+          "bytes": 8811,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-13/gpu/complete-inventory-entry-01/current-chemistry-capacity-chem-diag-entry/inherited-storage-entry/precision-storage-entry.json",
+          "sha256": "b5d6423c970d4a4edc5aba3c4af421f1c17a653252b00d0187298f33b0f03ad6"
+        },
+        {
+          "bytes": 6876,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-13/gpu/complete-inventory-entry-01/current-chemistry-capacity-chem-diag-entry/inherited-storage-entry/selected-storage-precision/gate.json",
+          "sha256": "8f3c3344c769edb927a1e0f4d2d58c3effc428e5097a85222e663dd3348ca96e"
+        },
+        {
+          "bytes": 1465,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-13/gpu/complete-inventory-entry-01/current-chemistry-capacity-chem-diag-entry/invocation.json",
+          "sha256": "e33abfc5fe1114e6cc89384489f1aaf77b263d541db23122012a4a27345113f0"
+        },
+        {
+          "bytes": 10074,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-13/gpu/complete-inventory-entry-01/current-chemistry-capacity-chem-diag-entry/production-storage-entry.json",
+          "sha256": "fd04fbc6c24bde263680d4c500e8058c456d50a2014d65c828f26d79b94051f2"
+        },
+        {
+          "bytes": 21794,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-13/gpu/complete-inventory-entry-01/qualification-storage-entry.json",
+          "sha256": "05d30378f1aa4ea5082eec63d17767259cc221bf29a48cb76ff3e00ad0c3d717"
+        },
+        {
+          "bytes": 6882,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-13/gpu/complete-inventory-entry-01/selected-storage-chem-diag-entry/gate.json",
+          "sha256": "5c7d3e8ff9a07e1da38d6814341eab5207af9b31eb21734b2778b0e911a30899"
+        },
+        {
+          "bytes": 22894,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-13/gpu/complete-storage-entry.json",
+          "sha256": "ee0123e95cf76a34f73315ea41d790665055f420542375666e3b359c40532d32"
+        },
+        {
+          "bytes": 357,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-13/gpu/payload/assessment.json",
+          "sha256": "633ea391b44332c1a04182aafb4e692a01a0dba3583f88ab8f5e06d91ec7c0e1"
+        },
+        {
+          "bytes": 259,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-13/gpu/payload/native/assessment.json",
+          "sha256": "8d0364569abaf042123111123b9f74dd9eec8358b6d3e714efd7634186cc0758"
+        },
+        {
+          "bytes": 1597846,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-13/gpu/payload/native/native-admission.json",
+          "sha256": "3c62ee235dd6a3bb8ee1fdad4d77a5343e27aae3672b44da1890f7f7fec3a0f7"
+        },
+        {
+          "bytes": 981628,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-13/gpu/payload/native/native-selection.json",
+          "sha256": "895b70050074670e12089db3626c5eaaeb2b6d69b5e6b0f9cc15608a41060043"
+        },
+        {
+          "bytes": 7269,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-13/gpu/payload/native/oracle-points.json",
+          "sha256": "ac8f9adc35d8f7fd07ee055d60459100d56d4cc39ed2032b2bd74d2289cc3ee3"
+        },
+        {
+          "bytes": 1329,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-13/gpu/payload/native/precision-policy-derivation.json",
+          "sha256": "46e442e5bd89b0e0fdbba148fcdaa1b391cd77875d1ce8ba35023d3d7c4fb16e"
+        },
+        {
+          "bytes": 2611630,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-13/gpu/payload/native/preservation.json",
+          "sha256": "37d955ac2f122a4a4247ab5268a916cb189f3031fcda52087c50e6a455970b4c"
+        },
+        {
+          "bytes": 13381,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-13/gpu/payload/native/production-0.npz",
+          "sha256": "97112ddb617952ea819656528881c3b685b951d96fff40f784ee9d6e3754b962"
+        },
+        {
+          "bytes": 13381,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-13/gpu/payload/native/production-1.npz",
+          "sha256": "97112ddb617952ea819656528881c3b685b951d96fff40f784ee9d6e3754b962"
+        },
+        {
+          "bytes": 13381,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-13/gpu/payload/native/production-2.npz",
+          "sha256": "97112ddb617952ea819656528881c3b685b951d96fff40f784ee9d6e3754b962"
+        },
+        {
+          "bytes": 839,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-13/gpu/payload/native/production-frozen-after.json",
+          "sha256": "64e8edf427d2f891ce59365abaf7e1be1dadcbf8a5c2b6cc63981a14e39edaac"
+        },
+        {
+          "bytes": 2874,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-13/gpu/payload/native/production-identity.json",
+          "sha256": "96730cb4233c837ddcda6432734a6c608661f27439c34f10ee6b60fa599c2d97"
+        },
+        {
+          "bytes": 241,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-13/gpu/payload/native/production.log",
+          "sha256": "473f5a6a323b23aa22046bc4458d50eb18ecf9b68c4a0cf5b305f215628eb30b"
+        },
+        {
+          "bytes": 20576,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-13/gpu/payload/native/reference-0003.npz",
+          "sha256": "251d4fed9c040ebabcc75c8869d77b03910187fe5b1837cc4c8effdc38c7c5d8"
+        },
+        {
+          "bytes": 20576,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-13/gpu/payload/native/reference-0004.npz",
+          "sha256": "251d4fed9c040ebabcc75c8869d77b03910187fe5b1837cc4c8effdc38c7c5d8"
+        },
+        {
+          "bytes": 20576,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-13/gpu/payload/native/reference-0005.npz",
+          "sha256": "251d4fed9c040ebabcc75c8869d77b03910187fe5b1837cc4c8effdc38c7c5d8"
+        },
+        {
+          "bytes": 20582,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-13/gpu/payload/native/reference-0006.npz",
+          "sha256": "a1c468bc311de19ab2489a3acf996e9dd18106606be1c241a40e5d81be28ddb1"
+        },
+        {
+          "bytes": 20566,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-13/gpu/payload/native/reference-0007.npz",
+          "sha256": "ec3ed6e01c3740d21f048a125ff8f648731e0e4a5c0f15f179539875b526a98d"
+        },
+        {
+          "bytes": 20577,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-13/gpu/payload/native/reference-0008.npz",
+          "sha256": "0e89f5c48b61700a5381708b9a269aab3be7d6921f81c7b8e2516f4189bed696"
+        },
+        {
+          "bytes": 20565,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-13/gpu/payload/native/reference-0009.npz",
+          "sha256": "b552735f91e4afebc3e134b6403a718bf1093848e43c8c042879095abe3925f2"
+        },
+        {
+          "bytes": 20580,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-13/gpu/payload/native/reference-0010.npz",
+          "sha256": "8924125f59717572a53929659e1cb2b5b577905689c73e9a8655dfe096dab7bb"
+        },
+        {
+          "bytes": 20577,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-13/gpu/payload/native/reference-0011.npz",
+          "sha256": "0f01eca3d59b3a3de41b2899facabdf1e87861c4fab06022357cdf672b02ec3a"
+        },
+        {
+          "bytes": 20578,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-13/gpu/payload/native/reference-0012.npz",
+          "sha256": "5dbf51267c99688924cd712a407ebe0daf58bea605871022523d2ea16a0ba5e2"
+        },
+        {
+          "bytes": 20577,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-13/gpu/payload/native/reference-0013.npz",
+          "sha256": "733ec7fedf28de755dd2bee1c604965c45070b4a82535320cb4203b2d384520a"
+        },
+        {
+          "bytes": 20576,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-13/gpu/payload/native/reference-0014.npz",
+          "sha256": "268afbcb8628bfbd867c3ad90d9680796a6942058f8f260930579880844b481d"
+        },
+        {
+          "bytes": 20582,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-13/gpu/payload/native/reference-0015.npz",
+          "sha256": "ab6de246ea5c0c1c80113afd75c6be6ee4d398558422a06e5c00293c2721e5ee"
+        },
+        {
+          "bytes": 20569,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-13/gpu/payload/native/reference-0016.npz",
+          "sha256": "ceede70a0325a81c3abe728044dcbc1d3963ed89c353074e10edf1691c65993c"
+        },
+        {
+          "bytes": 20580,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-13/gpu/payload/native/reference-0017.npz",
+          "sha256": "583bb8da55213810e5841a77c900c9b4edc976c509101c19421dad50da707a20"
+        },
+        {
+          "bytes": 20580,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-13/gpu/payload/native/reference-0018.npz",
+          "sha256": "095be6d873d1c177bbbb67729a8eec213af23661cb569e556adc13ba73c0db89"
+        },
+        {
+          "bytes": 20571,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-13/gpu/payload/native/reference-0019.npz",
+          "sha256": "9e07c23426117c9ee2a24b84392e036da5415e85ae2a9b46ef06ea75d680159c"
+        },
+        {
+          "bytes": 20578,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-13/gpu/payload/native/reference-0020.npz",
+          "sha256": "6e7dc4256f3a2ca3441b8e34946c83e41d958b651ef5fcd53d79c321414a0ee3"
+        },
+        {
+          "bytes": 20572,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-13/gpu/payload/native/reference-0021.npz",
+          "sha256": "ff4feaecc605f571418c080dab3b711cc37f0b9588b5c2906a5c079527376503"
+        },
+        {
+          "bytes": 20575,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-13/gpu/payload/native/reference-0022.npz",
+          "sha256": "af74eb00cd9a04b40760cd1b6e6126d99d210a4ce08121c7187abcfa9eda5e6e"
+        },
+        {
+          "bytes": 20566,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-13/gpu/payload/native/reference-0023.npz",
+          "sha256": "45239b181d85bee6baad7b5276afee1543d1a75c569d66be2ab5b5b2a9986e21"
+        },
+        {
+          "bytes": 20577,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-13/gpu/payload/native/reference-0024.npz",
+          "sha256": "35ae887513df6f49b531366e6713b03cc41536267e5faa4e2268e98342dde926"
+        },
+        {
+          "bytes": 20582,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-13/gpu/payload/native/reference-0025.npz",
+          "sha256": "d8e92d1178e2dfbbd475c9698fa2a748edfe40653ef357d3518e5535a5413eb6"
+        },
+        {
+          "bytes": 1199500,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-13/gpu/payload/native/reference-identity.json",
+          "sha256": "3ba936b272d28b532a7577b955f99592121de5c3e1dcacd4076c790a38d997f7"
+        },
+        {
+          "bytes": 3415,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-13/gpu/payload/native/reference-operation-audit.json",
+          "sha256": "9b24a2f89865080801e7368190dbd83a421761f07e7cf7b53abfc4f6efb32774"
+        },
+        {
+          "bytes": 241,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-13/gpu/payload/native/reference.log",
+          "sha256": "473f5a6a323b23aa22046bc4458d50eb18ecf9b68c4a0cf5b305f215628eb30b"
+        },
+        {
+          "bytes": 1598302,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-13/gpu/payload/native/reversed-admission.json",
+          "sha256": "84bac5ed385d8b20120f1aff9a9fe215a14a8cabadb0dacd5060e190478ce146"
+        },
+        {
+          "bytes": 981627,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-13/gpu/payload/native/reversed-selection.json",
+          "sha256": "393ce0584b1e395e15e8e0068fffb22a34fa81c097cd44dc579337118e0dd3de"
+        },
+        {
+          "bytes": 1598302,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-13/gpu/payload/native/scaled-admission.json",
+          "sha256": "34c93c5ebe9d7a39e4cdf8868a6a8aca89897bdaef57764c66b84b6dd947dc0a"
+        },
+        {
+          "bytes": 981628,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-13/gpu/payload/native/scaled-selection.json",
+          "sha256": "ff2c31d7d1cde32749342b40799798ebb72a1f26d400dd2d9c7c138442c464cf"
+        },
+        {
+          "bytes": 114472,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-13/gpu/payload/native/zero-admission.json",
+          "sha256": "8255114c62a96271d6dcf18a0b6cb8109afb0fc2b7c672c6fed8e1629f2f00e0"
+        },
+        {
+          "bytes": 593,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-13/gpu/payload/native-command.json",
+          "sha256": "c3a85c7cc3f4d7d0583361f21103afec819cb6953b8350d70d01e2a0b191ef48"
+        },
+        {
+          "bytes": 0,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-13/gpu/payload/native.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "bytes": 22952,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-13/gpu/recovery-capacity-entry.json",
+          "sha256": "969d69e992a335ba95aedc70adb8a65299bfcad04b65d2e6e9ea72d8e3223899"
+        },
+        {
+          "bytes": 260,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-13/gpu/stderr.29838712.log",
+          "sha256": "e88d7498b24f9dd51983e7779ddc9995dcd041200de7e81cbed8ed71a1d6c842"
+        },
+        {
+          "bytes": 2088,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-13/gpu/stdout.29838712.log",
+          "sha256": "1f23e3d36e6c8ea268efe27b0288f9cc02fcea71e5136447e96b3370dde4d219"
+        },
+        {
+          "bytes": 1092,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-13/gpu/submission-started.json",
+          "sha256": "c3e6b88a0080264acea58d3d0a463bc666d90dcef2fe9010770d5362ce862ce9"
+        },
+        {
+          "bytes": 1218,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-13/gpu/submission.json",
+          "sha256": "295e3924f63c9a8c15b6eb3d71b251d3d4de7fb83c342bcf53c43d0da3ef1ba2"
+        },
+        {
+          "bytes": 7739,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-13/cpu-certificate.json",
+          "sha256": "f0aabd9b79f70269baa0adf9f5d6cd360431bd6cc713aca3e2618f194f5af262"
+        },
+        {
+          "bytes": 72,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-13/jobs.json",
+          "sha256": "8e7d92a1d133b9a7ea5503d40b5117d08fdb136ae904c3bf4ce523128033c70d"
+        }
+      ],
+      "source": {
+        "files": 14,
+        "manifest_sha256": "0f82d44bbb65ea957a7e5faa9e9837aba7fc1f2256f7344a96606b11ef3d664d",
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-release-13/source"
+      },
+      "stdout": {
+        "bytes": 2088,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-13/gpu/stdout.29838712.log",
+        "sha256": "1f23e3d36e6c8ea268efe27b0288f9cc02fcea71e5136447e96b3370dde4d219"
+      },
+      "submission": {
+        "bytes": 1218,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-13/gpu/submission.json",
+        "sha256": "295e3924f63c9a8c15b6eb3d71b251d3d4de7fb83c342bcf53c43d0da3ef1ba2"
+      }
+    },
+    "protenix": {
+      "assessment": {
+        "bytes": 2133,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/assessment.json",
+        "sha256": "bb4ed22fb92d25e5c8de46ea3c4d68a8ed2162d5621b136966da37d36b42e82b"
+      },
+      "job_id": "29838596",
+      "proofs": [
+        {
+          "bytes": 697,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/native-invocation.json",
+          "sha256": "6db03f04da246534ddfb1fecfe0cb0139636397597d3ac7f6ee9172e4dc6240f"
+        },
+        {
+          "bytes": 2133,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/assessment.json",
+          "sha256": "bb4ed22fb92d25e5c8de46ea3c4d68a8ed2162d5621b136966da37d36b42e82b"
+        },
+        {
+          "bytes": 10705,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/fp32-final-preservation.json",
+          "sha256": "1eb6172210f50845257059629e2443604c23b1877c9a2e47939744797b3752b8"
+        },
+        {
+          "bytes": 1013,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/fp32-invocation.json",
+          "sha256": "1873d0e86a248bf4120bf5ac89e900e0bf11a6a5b172d77fb789e0f0b2afb859"
+        },
+        {
+          "bytes": 10693,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/fp64-final-preservation.json",
+          "sha256": "7aab500cd2e14bd8893221bd8c4b9a717943e1923f13ab2cb85bbf04dec03307"
+        },
+        {
+          "bytes": 1013,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/fp64-invocation.json",
+          "sha256": "e1b36735dbfe073261757e2f8e0ddcff9b95fc4824607e87e364eb1467205b3c"
+        },
+        {
+          "bytes": 1548,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/production/assessment.json",
+          "sha256": "5f7450227140792c37ac58151946919805c0ff26a48251c519cfa2d90d367416"
+        },
+        {
+          "bytes": 288,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/production/current-baseline.json",
+          "sha256": "7028897ca5bbc43f55daaf88f35f15218645d8d727cbd1a9ee9c46c0627d2ac8"
+        },
+        {
+          "bytes": 177,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/production/frozen-before.json",
+          "sha256": "3211f9d322c1f9f6b59d9b490ec60a57aab27cd0804d7f20782c8180149e747d"
+        },
+        {
+          "bytes": 30600,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/production/historical-replay.json",
+          "sha256": "2c5fbf0db9f6d063b2924c8afd27b6d86dda993db7605eec7a727155ff92a45b"
+        },
+        {
+          "bytes": 132,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/production/model-loaded.json",
+          "sha256": "390cf6770997e3cd85083ff685fed9f9907e3d598f5a36b5319d7b4109c1196f"
+        },
+        {
+          "bytes": 2196,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/production/native-identity.json",
+          "sha256": "a97a24b5b0fa62bee6fd9e6ad97b55d9f7958983fb31eb5c7ab8106a32258e25"
+        },
+        {
+          "bytes": 27934,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/production/production.npz",
+          "sha256": "73c0cebaf17bc492def6792888e45a247b03402df6532724e97f0129f3436d9e"
+        },
+        {
+          "bytes": 9877,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/production/protected-after.json",
+          "sha256": "a2b57a5afc127d62530e19692ecb152e8382c40c2c796d5cde70f9786e4bd9f0"
+        },
+        {
+          "bytes": 10235,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/protected-after.json",
+          "sha256": "f7dc54e760cada824ae51c9b3e2eff7e74ed21c911097a048b08b6343219964b"
+        },
+        {
+          "bytes": 10235,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/protected-before.json",
+          "sha256": "71da31f50ae45e119913869650fb508c62544e78061fa51355e0e04c1cdc4615"
+        },
+        {
+          "bytes": 14852,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/qualified-context-after.json",
+          "sha256": "429d26b0b54d3241c70cac5096e0e27c5ee6bc34d9089144845667b8c9de5978"
+        },
+        {
+          "bytes": 14852,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/qualified-context.json",
+          "sha256": "429d26b0b54d3241c70cac5096e0e27c5ee6bc34d9089144845667b8c9de5978"
+        },
+        {
+          "bytes": 1189305,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/reference/admission.json",
+          "sha256": "b737ec63fea305ef27d3206104d6913f1188cbbb96c0ea6de6761a824fb202ce"
+        },
+        {
+          "bytes": 699,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/reference/assessment.json",
+          "sha256": "e52b727176830d884d6aff2e164c062192fd616ab782d5252891f6f121175d43"
+        },
+        {
+          "bytes": 1494,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/reference/device-placement.json",
+          "sha256": "5218d7fe5997ddc3a40baa33fb7b084e98a360ee0ddbaea68d0c75bf88211ea5"
+        },
+        {
+          "bytes": 249,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/reference/native-dtype-audit.json",
+          "sha256": "87c12c8388a63e3d9db454b8ddad655b7227153d1ac596de63c310b680d60a2c"
+        },
+        {
+          "bytes": 605016,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/reference/native-selection.json",
+          "sha256": "e86f491932536f2debac1a85186f1517b1ede9e2af88ea793970d6db29b8af39"
+        },
+        {
+          "bytes": 17137,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/reference/oracle-points.json",
+          "sha256": "5d449f88cdbd584d28ec5380951be4f562e7cc9c21e9b18c0528869612805e0b"
+        },
+        {
+          "bytes": 27926,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/reference/point-0000.npz",
+          "sha256": "03b5c2f51e2d9e877f3be36a9b09ff0bf34b3736c545e402c94e38c43523fd9b"
+        },
+        {
+          "bytes": 27926,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/reference/point-0001.npz",
+          "sha256": "03b5c2f51e2d9e877f3be36a9b09ff0bf34b3736c545e402c94e38c43523fd9b"
+        },
+        {
+          "bytes": 27926,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/reference/point-0002.npz",
+          "sha256": "03b5c2f51e2d9e877f3be36a9b09ff0bf34b3736c545e402c94e38c43523fd9b"
+        },
+        {
+          "bytes": 27926,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/reference/point-0003.npz",
+          "sha256": "d7026e5eaae8c928a2e271bc2948207f15e5350cf69b1782520193e6e1084fa8"
+        },
+        {
+          "bytes": 27926,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/reference/point-0004.npz",
+          "sha256": "a9e8d61471097d90820d2ffe9073025778c588350799a5bcf52679f2f0ab34cf"
+        },
+        {
+          "bytes": 27926,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/reference/point-0005.npz",
+          "sha256": "60b7dbe14887f01a763cccec8bf0c0c26a9fa87ed2fb7fbdbd2eab9d85f13e36"
+        },
+        {
+          "bytes": 27926,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/reference/point-0006.npz",
+          "sha256": "a88001597e8a048f5b745cf43a5912de69530ee0cc66cd0683173b851f754e4a"
+        },
+        {
+          "bytes": 27926,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/reference/point-0007.npz",
+          "sha256": "ca0d687ca642c733b2d425f0456d53b0da435430f2dd691b496c8dbfdd6fc459"
+        },
+        {
+          "bytes": 27926,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/reference/point-0008.npz",
+          "sha256": "73e20ac2cce26bd0b378792465d4d0a6008ce08550c2608adf22d885689971cb"
+        },
+        {
+          "bytes": 27926,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/reference/point-0009.npz",
+          "sha256": "f691e7ca516616a9d6ad596878f675f0ea60a71667f7bcf96331dfbfd3f7e825"
+        },
+        {
+          "bytes": 27926,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/reference/point-0010.npz",
+          "sha256": "e3e3f123cea5b71980f0d21ec009735dc6dbe645c1393c6a2e788b49a9ce13bc"
+        },
+        {
+          "bytes": 27926,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/reference/point-0011.npz",
+          "sha256": "f296f97bd8a25b5bc0d7528c2f335e6ee527681c92c0ebb59ebc6a8cc5fffddb"
+        },
+        {
+          "bytes": 27926,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/reference/point-0012.npz",
+          "sha256": "d967568935835710edc2f0c885a54271cc36776f8e1b89cf4aedc2ca89989e7c"
+        },
+        {
+          "bytes": 27926,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/reference/point-0013.npz",
+          "sha256": "7053e3e720324d3ebda90656cd93599fc3b62e26ffaac5d75bf75ce678159b63"
+        },
+        {
+          "bytes": 27926,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/reference/point-0014.npz",
+          "sha256": "6483704c4952048f6fbd6b8400871750e0a3f967e89f9a162499ebe032584646"
+        },
+        {
+          "bytes": 27926,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/reference/point-0015.npz",
+          "sha256": "b93c03abb67bae598b7ea9dc2667d7f3a24254105fe8f76c98e18b7f207911f9"
+        },
+        {
+          "bytes": 27926,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/reference/point-0016.npz",
+          "sha256": "8e98fd41e0d7f85927345d857f82cee284a482f1e4ecc42bf24a7dfbcaaadc06"
+        },
+        {
+          "bytes": 27926,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/reference/point-0017.npz",
+          "sha256": "2c2314bf518883e8d4b837fe0e9b373e9c2ec264adab044a05e1fc82bc5fb6ab"
+        },
+        {
+          "bytes": 27926,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/reference/point-0018.npz",
+          "sha256": "73ebcfb8fa86c31d7a9f4433674c99f0129dbaae465142c005ba2390765a5e79"
+        },
+        {
+          "bytes": 834796,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/reference/promotion.json",
+          "sha256": "74a0b7fddf73e4867d1c10b0557588d636dd9ca034f2f1dae177eca27e6873f4"
+        },
+        {
+          "bytes": 9877,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/reference/protected-after.json",
+          "sha256": "a2b57a5afc127d62530e19692ecb152e8382c40c2c796d5cde70f9786e4bd9f0"
+        },
+        {
+          "bytes": 1189677,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/reference/reversed-control.json",
+          "sha256": "8759762211aac6d87d9b78e12c86d50c485d67ee1af75c03374a1fdc381b9452"
+        },
+        {
+          "bytes": 605016,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/reference/reversed-selection.json",
+          "sha256": "93e42573a469fb04af8d6ef0f102b05fcdb806003c7ec9988263c20808b0d7a4"
+        },
+        {
+          "bytes": 1189662,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/reference/scaled-control.json",
+          "sha256": "391cfeef986c45439e91267ff44ce2fdb5e459e0dd36a21a95f8c40650722fd4"
+        },
+        {
+          "bytes": 605014,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/reference/scaled-selection.json",
+          "sha256": "3b77a1bc1d191b30bbce777859d1a4583a17f64df045b03bc569ca8061f370d3"
+        },
+        {
+          "bytes": 115296,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/reference/zero-control.json",
+          "sha256": "56813907cdcca749e59ee871819d04118a0773738d754315fb9949ab7bb166d1"
+        },
+        {
+          "bytes": 802,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/post-execution-preservation.json",
+          "sha256": "f44287f422f83f7fc6a3dfa500afb1b4547d9d1331d70249da41483700c8f293"
+        },
+        {
+          "bytes": 32638,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/precision-storage-entry.json",
+          "sha256": "e654967ee071f942d65cddf92b7c84bf609108b071a62bcb5b9e79119fac9f77"
+        },
+        {
+          "bytes": 260,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/stderr.29838596.log",
+          "sha256": "e88d7498b24f9dd51983e7779ddc9995dcd041200de7e81cbed8ed71a1d6c842"
+        },
+        {
+          "bytes": 2079,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/stdout.29838596.log",
+          "sha256": "e91efc831eaed697db7724570fb3954ea509c4659544414f3c614ada45e3b8e7"
+        },
+        {
+          "bytes": 1086,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/submission-started.json",
+          "sha256": "2e5d63f2bec91938c5a0b1bbc280744870d0ffeda56a36edf4b04bc2eaf3bf81"
+        },
+        {
+          "bytes": 1212,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/submission.json",
+          "sha256": "718d44a5f05127137386e59abe416e4a2bc66e2fc5e0c96f5d7e842935177a5e"
+        },
+        {
+          "bytes": 20682,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/whole-inventory-entry-1/complete-inventory-entry-01/chemistry-diagnostic-storage-entry.json",
+          "sha256": "f5b4825247f1de37e9bef4839416dc984ebcea25bb43aadbda5e14913e84a059"
+        },
+        {
+          "bytes": 19569,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/whole-inventory-entry-1/complete-inventory-entry-01/continuation-storage-chem-diag-entry.json",
+          "sha256": "df09026b4c9f425a78d7ba569c79b18161cc8c8db2ee38b928da9c6d04479108"
+        },
+        {
+          "bytes": 10892,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/whole-inventory-entry-1/complete-inventory-entry-01/current-chemistry-capacity-chem-diag-entry/assessment.json",
+          "sha256": "2a5cfba5913a5d0045ea0fdd173262d05746af6a51bad53ed170d3b6ca40c77e"
+        },
+        {
+          "bytes": 7643,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/whole-inventory-entry-1/complete-inventory-entry-01/current-chemistry-capacity-chem-diag-entry/inherited-storage-entry/continuation-storage-precision.json",
+          "sha256": "85692e7cd370fa1063cb66b46e9115159cfad8f49d336445fb295ece7e5c1f02"
+        },
+        {
+          "bytes": 8811,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/whole-inventory-entry-1/complete-inventory-entry-01/current-chemistry-capacity-chem-diag-entry/inherited-storage-entry/precision-storage-entry.json",
+          "sha256": "74fd5ba9742e579758477eb56f4f163bbf6598698da5cc7c6097e6028386d5d9"
+        },
+        {
+          "bytes": 6876,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/whole-inventory-entry-1/complete-inventory-entry-01/current-chemistry-capacity-chem-diag-entry/inherited-storage-entry/selected-storage-precision/gate.json",
+          "sha256": "835b917242a5b092d28a01f29835be8b770278a8c7e10d17bae17887960373f0"
+        },
+        {
+          "bytes": 1487,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/whole-inventory-entry-1/complete-inventory-entry-01/current-chemistry-capacity-chem-diag-entry/invocation.json",
+          "sha256": "9c2a2d4bfd7fba3fbd687ed3b6998bd9fa476a66dfff6a163c14be528c788d99"
+        },
+        {
+          "bytes": 10074,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/whole-inventory-entry-1/complete-inventory-entry-01/current-chemistry-capacity-chem-diag-entry/production-storage-entry.json",
+          "sha256": "81648ea906691095503ad3dc4b74f7c70820cd15be36229ce2d5daef6f84f1c3"
+        },
+        {
+          "bytes": 21794,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/whole-inventory-entry-1/complete-inventory-entry-01/qualification-storage-entry.json",
+          "sha256": "8fd76ad1282f2de2d361eb6a03caa62236d18d14621e06fdf85ea060b2b8ec6b"
+        },
+        {
+          "bytes": 6882,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/whole-inventory-entry-1/complete-inventory-entry-01/selected-storage-chem-diag-entry/gate.json",
+          "sha256": "841d7a8bec7c7b9819c6a5305dde3888219f4de001539ea6c1b23f0e37948d61"
+        },
+        {
+          "bytes": 22916,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/whole-inventory-entry-1/complete-storage-entry.json",
+          "sha256": "68140ff633c4e4fc12a04a46bef6f138b01518e382f8a2cc788e9bff53240479"
+        },
+        {
+          "bytes": 7643,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/whole-inventory-entry-1/continuation-storage-precision.json",
+          "sha256": "4f52a2d5143e5efef8fa7ba69c4b00522538ab08796ab9e13cc2dd325a7ef6cc"
+        },
+        {
+          "bytes": 32638,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/whole-inventory-entry-1/precision-storage-entry.json",
+          "sha256": "e654967ee071f942d65cddf92b7c84bf609108b071a62bcb5b9e79119fac9f77"
+        },
+        {
+          "bytes": 22952,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/whole-inventory-entry-1/recovery-capacity-entry.json",
+          "sha256": "79a7301f8afeaef6d1b52dfa4389290a573c78b6c4fd0725ffe3d0229e9d38a2"
+        },
+        {
+          "bytes": 6876,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/whole-inventory-entry-1/selected-storage-precision/gate.json",
+          "sha256": "54e92de39e2d6a653cba9ba7eda8dca2d794ea38deffa544fed067e745f7816e"
+        },
+        {
+          "bytes": 2559,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/cpu-certificate.json",
+          "sha256": "338b236d46b7510955195c022308a058913cbe97102823c55b23d7819f671ffd"
+        },
+        {
+          "bytes": 72,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/jobs.json",
+          "sha256": "524bb4b7536389363e9dcff357cd7122626cadefd6ca69c7fc56b2d75f7cda37"
+        }
+      ],
+      "source": {
+        "files": 20,
+        "manifest_sha256": "f2043af74b8fa9ff485a44b80fcf96454bf8585868859389828c37f0073a3664",
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-release-09/source"
+      },
+      "stdout": {
+        "bytes": 2079,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/stdout.29838596.log",
+        "sha256": "e91efc831eaed697db7724570fb3954ea509c4659544414f3c614ada45e3b8e7"
+      },
+      "submission": {
+        "bytes": 1212,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/submission.json",
+        "sha256": "718d44a5f05127137386e59abe416e4a2bc66e2fc5e0c96f5d7e842935177a5e"
+      }
+    }
+  },
+  "reference_configuration": {
+    "arms": {
+      "dbmol": {
+        "co_residency_required": true,
+        "command_prefix": [
+          "/work3/s234818/latentmol/env/boltz311/bin/python",
+          "-u",
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-release-16/source/scripts/dbmol_reference.py",
+          "--context",
+          "/zhome/95/e/206121/mosaic-runs/20261021-brd4-jq1-25-01/prepare/payload/prepared/context.pt",
+          "--context-sha256",
+          "a18a331269170aac3281b0a2ecad313aab81756c9b77e048d7e2cbaa4d8f1093",
+          "--checkpoint",
+          "/work3/s234818/latentmol/cache/boltz2/boltz2_aff.ckpt",
+          "--model-digest",
+          "395876da13ab6d5d175e6603db2118a82954c7c06484842fe2314dbd77a31a16"
+        ],
+        "environment": {
+          "PYTHONDONTWRITEBYTECODE": "1",
+          "PYTHONPATH": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-release-02/source/src:/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-release-02/source/scripts"
+        },
+        "expected_identity": {
+          "promotion": {
+            "original_digest": "395876da13ab6d5d175e6603db2118a82954c7c06484842fe2314dbd77a31a16"
+          }
+        },
+        "historical_failure": {
+          "bytes": 2456116,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-08/dbmol-segment-05000/payload/study/terminal_gradient_checks-prospective/dbmol_affinity_loss/admission.json",
+          "sha256": "2404e72e85ba16f22499f9c2728e4a0b59aba9d26692bb871d63072386fba529"
+        },
+        "historical_global": 7500,
+        "historical_original_directions": {
+          "E_upper": [],
+          "X": [
+            {
+              "row": 1,
+              "source": 0,
+              "target": 4
+            }
+          ]
+        },
+        "max_session_bytes": 67108864,
+        "policy_kind": "dbmol-finer-fp64-affinity",
+        "policy_module": {
+          "bytes": 18955,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-release-13/source/scripts/dbmol_endpoint_precision.py",
+          "sha256": "58d1ccaff14007171fe8a226b0b01a9ce83ec9073f036355f8eb75adb7f379b7"
+        },
+        "precision_policy": {
+          "after_result_fallback": false,
+          "changed_engine_fields": [
+            "VERSION",
+            "EPSILONS"
+          ],
+          "epsilons": [
+            0.003,
+            0.001,
+            0.0003,
+            0.0001,
+            3e-05,
+            1e-05,
+            3e-06,
+            1e-06
+          ],
+          "locality_tolerance": 0.15,
+          "original_epsilons": [
+            0.01,
+            0.003,
+            0.001
+          ],
+          "original_failed_outcomes_preserved": true,
+          "parent_policy_source_sha256": "ae549f19a8af11453b0bb01154bde61cd63f4fa8ad1676759c7427e9049ddf68",
+          "relative_tolerance": 0.15,
+          "required_adjacent_passes": 2,
+          "selection": "finest_geometry_and_baseline_signal_pair_before_perturbed_callbacks",
+          "version": "dbmol-separate-precision-finer-admission-v1"
+        },
+        "runtime_fallback_allowed": false,
+        "timeout_seconds": 5400
+      },
+      "protenix": {
+        "co_residency_required": true,
+        "command_prefix": [
+          "/work3/s234818/mosaic/envs/protenix-tiny/bin/python",
+          "-u",
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-release-16/source/scripts/protenix_reference_worker.py",
+          "--reference-plan",
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-release-16/source/plan.json",
+          "--reference-plan-sha256",
+          "${OWN_PLAN_SHA256}"
+        ],
+        "environment": {
+          "JAX_ENABLE_X64": "1",
+          "JAX_PLATFORMS": "cuda,cpu",
+          "PYTHONDONTWRITEBYTECODE": "1",
+          "XLA_FLAGS": "--xla_gpu_autotune_level=0",
+          "XLA_PYTHON_CLIENT_PREALLOCATE": "false"
+        },
+        "expected_identity": {
+          "identity": {
+            "context_digest": "b28dfad8e5ede565071c70a61695f6a38f5cb6bd591705e32979e59050ff5ce4",
+            "device": {
+              "id": 0,
+              "kind": "NVIDIA L40S",
+              "platform": "gpu"
+            },
+            "model_digest": "8d6926d5390fe682e193089f790ce53aa4011a6d5509ddb452a55db3d89b0ab2",
+            "pocket_definition_sha256": "9376c715eaf5b48689fb3e995b00d7820601a7776970df66bd7e7cff3b13ee43",
+            "qualified_source_manifest_sha256": "f2043af74b8fa9ff485a44b80fcf96454bf8585868859389828c37f0073a3664",
+            "scientific_source_manifest_sha256": "da9db6821d26b884ca1749303fc8e0b0095bd9ee7cbd1b427cdcf1b22eec6562"
+          }
+        },
+        "historical_failure": {
+          "bytes": 1599,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-segment-0000/payload/study/terminal_gradient_checks/report.json",
+          "sha256": "1506e7ed0d6d4e56b62a72097133bcf4832493fa2f9a6365967ca4eafcdf26c0"
+        },
+        "historical_global": 20000,
+        "historical_original_directions": {
+          "E_upper": [],
+          "X": [
+            {
+              "row": 3,
+              "source": 1,
+              "target": 2
+            }
+          ]
+        },
+        "max_session_bytes": 67108864,
+        "policy_kind": "protenix-original-fp64",
+        "policy_module": {
+          "bytes": 25953,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-release-09/source/scripts/protenix_precision_admission.py",
+          "sha256": "ae549f19a8af11453b0bb01154bde61cd63f4fa8ad1676759c7427e9049ddf68"
+        },
+        "runtime_fallback_allowed": false,
+        "timeout_seconds": 5400
+      }
+    }
+  },
+  "rolling_storage_policy": {
+    "control_cap_bytes": 2147483648,
+    "control_cap_files": 30000,
+    "deferred_goals": [
+      {
+        "id": "plain-boltz",
+        "later_updates_deferred": 10000,
+        "next_scope_id": null,
+        "next_updates": 0,
+        "readmission_before_later_execution": true,
+        "saved_updates": 20000,
+        "target_updates": 30000
+      },
+      {
+        "id": "protenix-chemistry",
+        "later_updates_deferred": 40000,
+        "next_scope_id": null,
+        "next_updates": 0,
+        "readmission_before_later_execution": true,
+        "saved_updates": 10000,
+        "target_updates": 50000
+      },
+      {
+        "id": "boltz-chemistry",
+        "later_updates_deferred": 20000,
+        "next_scope_id": null,
+        "next_updates": 0,
+        "readmission_before_later_execution": true,
+        "saved_updates": 10000,
+        "target_updates": 30000
+      }
+    ],
+    "known_mosaic_jobs": [
+      {
+        "cap_bytes": 4294967296,
+        "cap_files": 30000,
+        "command": "bash -l /work3/s234818/mosaic/releases/20261028-protenix-defog-30000-time-ramp-01/experiments/learned-prior/protenix-defog-30000-time-ramp/hpc/run.sh /work3/s234818/mosaic/releases/20261028-protenix-defog-30000-time-ramp-01 a15c8bb2a8ac7e9e12a65c54079e14c994e53b119b9a59e1a9788b5044d8686f /work3/s234818/mosaic/runs/20261028-protenix-defog-30000-time-ramp-01 gpu 96cabd24ba9e376c53007a3bf5cd5fa95d941e4a4a963a0e14ef9b3a80aacd4a",
+        "job_id": "29839884",
+        "release_cap_bytes": 67108864,
+        "release_cap_files": 3000,
+        "release_root": "/work3/s234818/mosaic/releases/20261028-protenix-defog-30000-time-ramp-01",
+        "role": "defog",
+        "root": "/work3/s234818/mosaic/runs/20261028-protenix-defog-30000-time-ramp-01",
+        "source_manifest": {
+          "bytes": 21782,
+          "path": "/work3/s234818/mosaic/releases/20261028-protenix-defog-30000-time-ramp-01/source_manifest.json",
+          "sha256": "a15c8bb2a8ac7e9e12a65c54079e14c994e53b119b9a59e1a9788b5044d8686f"
+        }
+      },
+      {
+        "cap_bytes": 2147483648,
+        "cap_files": 20000,
+        "command": "bash -l /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/lrreset-analysis-release-03/source/scripts/hpc/jq1_lrboost_analysis_stage.lsf /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/lrreset-analysis-release-03/source /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/lrreset-analysis-03 8e3045ddfd44a701127deb7af7a163536dfbf699123ba883f98207d6d57b95d5 final none /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/lrreset-analysis-03/combined-report",
+        "job_id": "29796558",
+        "release_cap_bytes": null,
+        "release_cap_files": null,
+        "release_root": null,
+        "role": "cache",
+        "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/lrreset-analysis-03/combined-report",
+        "source_manifest": {
+          "bytes": 2452,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/lrreset-analysis-release-03/source/source_manifest.json",
+          "sha256": "8e3045ddfd44a701127deb7af7a163536dfbf699123ba883f98207d6d57b95d5"
+        }
+      }
+    ],
+    "release_cap_bytes": 67108864,
+    "release_cap_files": 3000,
+    "version": "mosaic-rolling-work3-adapter-v1"
+  },
+  "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-16",
+  "scope": "Fresh complete entry/nonraw/null/component/pilot/runtime/live-reference/startup/storage before child; original failures remain failed",
+  "source_root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-release-16/source",
+  "user_authorized_prospective_checks_before_children": true,
+  "version": "precision-reference-continuation-plan-v1"
+}
