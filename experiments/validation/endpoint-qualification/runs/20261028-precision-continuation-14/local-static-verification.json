@@ -1,0 +1,10 @@
+{
+  "status": "passed_stdlib_static_byte_schema_only",
+  "files": 35,
+  "members": 36,
+  "manifest_sha256": "4c3f74166a57f35bd7c4eca8ffa58e53c0a12e7d232553acb70133d283d099ab",
+  "archive_sha256": "20d3b5b7047c4a54ea815f2048cbf2e5ec72bffddae1be081374298b156cf647",
+  "preserved_bindings": 2948,
+  "numerical_tests_run_locally": false,
+  "optimizer_submitted": false
+}

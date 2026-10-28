@@ -1,5 +1,7 @@
 # Prospective endpoint qualification diagnostics
 
+Latest 28 October 2026: [Pro09](runs/20261028-protenix-endpoint-fix-09/README.md) native29838596 and [DB13](runs/20261028-dbmol-endpoint-recovery-13/README.md) native29838712 passed independently verified separate endpoint qualification. Original failures remain failed. [Continuation14](runs/20261028-precision-continuation-14/README.md) integrates these checkers with the original full-model drivers, pilots, runtime and whole-storage guards; its 590-case CPU suite and native integration are separate required gates before any optimizer child. Read its actual receipts for submission state.
+
 This experiment investigates whether a failed categorical endpoint probe is an
 infeasible simplex perturbation, a resolved numerical disagreement, or an
 unresolved precision measurement. It preserves every original failure and does
@@ -203,3 +205,12 @@ chemistry continuations remain pending, with all settings/results unchanged.
 
 
 27October23:08Paris: [Protenix08](runs/20261027-protenix-endpoint-fix-08/README.md) fixes the separate reference geometry-wrapper charge cast;324allocated CPUcases passed, GPU29834817 queued. [DBMol10](runs/20261027-dbmol-endpoint-recovery-10/README.md) preserves the failed7500 endpoint and validates an independently promoted fullFP64 affinity reference;32allocated CPUcases passed, GPU29834830 queued. Neither native check has passed or submitted a continuation. Existing settings, saved results and original failures remain unchanged.
+
+
+28October: [reference placement09](runs/20261028-protenix-endpoint-fix-09/README.md) retains source08 failedJIT/dtype/production proofs; separate reference-only GPU placement and full allocated checks precede any continuation. New preparation is not a native pass or optimizer submission.
+
+
+28October: the user approved [DB finer-scale12](runs/20261028-dbmol-endpoint-recovery-12/README.md) with a fixed pre-forward8-scale ladder and unchanged15percent/two-adjacent/locality guards; the original reference10 failure remains failed. Source11 staging failed only on strict empty-lock metadata before any job and stays preserved. [Pro09](runs/20261028-protenix-endpoint-fix-09/README.md) CPU336 passed; its native common-device reference result remains required. Neither capsule can submit optimization; full reference-aware continuation integration/pilots/runtime/startup/storage remain.
+
+
+Current DB finer retry is [13](runs/20261028-dbmol-endpoint-recovery-13/README.md): retry12 actualstartup rejected historicalroot10 before model/fixtures, callbackblocked GPU. Retry13 changes only own startup path, with96allocated cases/actualcommands required; source12 and all original failures remain preserved.

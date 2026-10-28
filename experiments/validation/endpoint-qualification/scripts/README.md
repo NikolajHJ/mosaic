@@ -108,3 +108,12 @@ The native evaluator has no optimizer dispatch; read actual04jobs before recover
 
 
 Precision recovery operators: `manage_protenix_precision.py` currently packages only the immutable08 correction; `manage_dbmol_recovery.py` packages independent10. `dbmol_reference.py` is the separate Torch precision worker, `dbmol_endpoint_precision.py` coordinates preserved production/reference evidence, and `dbmol_recovery_ops.py`/`dbmol_recovery_stage.lsf` enforce CPU/native-only phases. `recovery_capacity.py` retains all existing futures plus the new scopes. Neither controller has an optimizer branch. Run records bind actual commands, source identities and allocated evidence.
+
+
+Protenix reference placement09 keeps old failures and production path intact; details in the owning run20261028-protenix-endpoint-fix-09. No local numerical execution.
+
+
+`verify_precision_recovery_cpu.py --kind protenix|dbmol --observation PACKET --source LOCAL_SOURCE --submission ACTUAL_INITIAL_RECEIPT --output FRESH` independently rehashes compact text/base64 deliveries, all source members, allocated raw XML/fixture and actual startup commands, CPU/callback same-job LSF/scheduler, certificate proofs, whole-future storage/reserves and optional native submission resources. It uses only the standard library, never imports a model/runtime, and never establishes a native-gradient or optimizer pass. Remote identities derive from the authenticated source plan and actual initial receipt; old immutable outcomes are not rewritten.
+
+
+Separate-reference continuation14: `precision_continuation_driver.py` authenticates and delegates the original scientific driver; `precision_continuation_hooks.py` supplies independent FP64 references with exact production replay and raw-point evidence; `protenix_reference_worker.py` is the bounded generic Pro reference. `precision_continuation_ops.py` owns conditional CPU/native/segment orchestration; `manage_precision_continuation.py` prepares only, and `stage_precision_continuation.py` performs one-shot authenticated staging and CPU submission. Only exact Pro20k->50k and DB7500->10k may dispatch. All numerical work remains allocated HPC and every original result/failure remains immutable. Read run14 receipts before recovery.

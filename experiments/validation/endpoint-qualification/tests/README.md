@@ -65,3 +65,9 @@ Native/combined loss validation remains separate; no numerical tests locally.
 
 
 Recovery controls `test_dbmol_reference.py`, `test_dbmol_endpoint_precision.py` and `test_recovery_capacity.py` run only on allocated HPC. They exercise full-precision operation auditing, original scalar/gradient transport, wrong-gradient rejection, preserved source inputs and complete budgets. CPU fixture passes do not certify pretrained native gradients or authorize child optimization.
+
+
+Protenix reference placement09 keeps old failures and production path intact; details in the owning run20261028-protenix-endpoint-fix-09. No local numerical execution.
+
+
+Continuation14 declares 590 allocated CPU cases across14 modules: original261 plus new driver64/hooks57/controller88/Pro-reference56/DB-reference17/DB-finer36/recovery11. Torch reference fixtures run in the original Torch interpreter and other fixtures in the Protenix interpreter; original raw JUnit rows from both runs must exactly equal the merged case inventory. Preparation is not a fixture/native pass. Real metadata startup commands precede GPU integration and full-model pilots.

@@ -63,3 +63,15 @@ saved results unchanged. Canonical continuation package/stage targetsONLY09.
 
 
 Latest scoped recovery: [Protenix08](20261027-protenix-endpoint-fix-08/README.md) CPU324 passed/native29834817 queued; [DBMol10](20261027-dbmol-endpoint-recovery-10/README.md) CPU32 passed/native29834830 queued. Both are separate measurement qualification, not submitted optimizer continuations; originalPro07/DBMol7500 failures are preserved.
+
+
+Protenix reference placement09 keeps old failures and production path intact; details in the owning run20261028-protenix-endpoint-fix-09. No local numerical execution.
+
+
+28October: [Pro placement09](20261028-protenix-endpoint-fix-09/README.md), [DB finer11 staging failure](20261028-dbmol-endpoint-recovery-11/README.md), and [DB finer12 metadata fix](20261028-dbmol-endpoint-recovery-12/README.md). Each preserves old scientific settings/results and requires actual new allocated native admission before optimizer integration.
+
+
+[DB finer13 startup-path correction](20261028-dbmol-endpoint-recovery-13/README.md) supersedes failed12 without changing native numerical code or savedresults. Full96CPU/realstartup precedes native measurement; Pro09 GPU29838596 queued.
+
+
+Latest28October: Pro09 native29838596 and DB13 native29838712 passed fixed-endpoint qualification (zero optimizer updates). [Separate-reference continuation14](20261028-precision-continuation-14/README.md) is the new two-arm integration/conditional-continuation attempt. Its full gates are independent; old failures and the plain Boltz/chemistry/VAE jobs remain unchanged.

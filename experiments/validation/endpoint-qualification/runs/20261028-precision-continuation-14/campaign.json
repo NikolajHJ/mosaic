@@ -1,0 +1,61 @@
+{
+  "status": "allocated_cpu_submitted_native_and_optimizer_not_established",
+  "preparation": {
+    "archive_bytes": 276888,
+    "archive_sha256": "20d3b5b7047c4a54ea815f2048cbf2e5ec72bffddae1be081374298b156cf647",
+    "cpu_counts": {
+      "tests.test_admission": 50,
+      "tests.test_continuation_driver": 56,
+      "tests.test_continuation_ops": 107,
+      "tests.test_current_capacity": 5,
+      "tests.test_dbmol_endpoint_precision": 36,
+      "tests.test_dbmol_reference": 17,
+      "tests.test_logit_admission": 14,
+      "tests.test_measurement_resolution": 10,
+      "tests.test_precision_continuation_driver": 64,
+      "tests.test_precision_continuation_hooks": 57,
+      "tests.test_precision_continuation_ops": 88,
+      "tests.test_protenix_reference_worker": 56,
+      "tests.test_qualification": 19,
+      "tests.test_recovery_capacity": 11
+    },
+    "files": 35,
+    "jobs_submitted": false,
+    "manifest_sha256": "4c3f74166a57f35bd7c4eca8ffa58e53c0a12e7d232553acb70133d283d099ab",
+    "optimization_settings_changed": false,
+    "original_results_changed": false,
+    "plan_sha256": "099111e2dd879af85f288c262a0884eedbcfcdb7a2776af0d15c997e144e1d46",
+    "status": "prepared_not_validated_not_staged"
+  },
+  "local_static_verification": {
+    "status": "passed_stdlib_static_byte_schema_only",
+    "files": 35,
+    "members": 36,
+    "manifest_sha256": "4c3f74166a57f35bd7c4eca8ffa58e53c0a12e7d232553acb70133d283d099ab",
+    "archive_sha256": "20d3b5b7047c4a54ea815f2048cbf2e5ec72bffddae1be081374298b156cf647",
+    "preserved_bindings": 2948,
+    "numerical_tests_run_locally": false,
+    "optimizer_submitted": false
+  },
+  "optimizer_submitted": false,
+  "original_results_changed": false,
+  "monitor_remains_paused": true,
+  "cpu_job_id": "29838955",
+  "controller_job_id": "29838956",
+  "storage_preflight": {
+    "status": "passed",
+    "required_bytes": 53811657553,
+    "available_bytes": 56719589707,
+    "reserve_bytes": 4294967296,
+    "file_reserve": 100000
+  },
+  "native_integration_passed": false,
+  "submission_sha256": "9aa8a7fe30e32af4f9182ed8564529015faef5815ce80929c91d4e58c5801d19",
+  "last_observed": {
+    "utc": "2026-10-28T09:17:33.651559+00:00",
+    "cpu": "RUN",
+    "controller": "PEND",
+    "native_integration_passed": false,
+    "optimizer_submitted": false
+  }
+}
