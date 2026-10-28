@@ -1,0 +1,16 @@
+{
+  "command": [
+    "ssh",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=15",
+    "-o",
+    "ConnectionAttempts=1",
+    "dtu-hpc",
+    "bash -lc '/work3/s234818/latentmol/env/boltz311/bin/python /work3/s234818/latentmol/releases/source-142-epoch36-guarded-embedding-long-attempt001/scripts/hpc/embedding_long_campaign.py submit-initial --release /work3/s234818/latentmol/releases/source-142-epoch36-guarded-embedding-long-attempt001 --archive-sha256 d2ac85ad644a94f3b5967537f1c777bb7318faf2a8507038888bc32728a0d805 --manifest-sha256 89dd0f43752a417cb4a4ab0658a4fba294eba72eb65fd5899036a42d8207c4f2 --plan-sha256 35adaf248e9011ce81a5bcd165d1897e97901864695a10d56fad70eebe63f70e --campaign /work3/s234818/latentmol/runs/source142-epoch36-guarded-embedding-long-attempt001'"
+  ],
+  "returncode": 0,
+  "stderr": "\nWhen connecting from _outside_ of DTU (and not using DTU-VPN) one is \nrequired to authenticate with a ssh-key + ssh-key-keyphrase + DTU-password.\n\nFrom inside of DTU (or connecting via DTU-VPN) one can also connect \nwith password or ssh-key.\n\nInfo page on SSH: https://www.hpc.dtu.dk/?page_id=4317\n\n---\nFor ThinLinc users: \nPlease make sure that your TL client is at least version 4.16 - else you \ncannot connect to this system!\n\nThis is not an error-message, it's just a way to give you some information. \nClick 'Close' to continue ...\n---\n\nInfo page on the system update 08/2024: https://www.hpc.dtu.dk/?page_id=5209\n\n---\n\n",
+  "stdout": "{\"worker\": {\"status\": \"submitted_not_passed\", \"returncode\": 0, \"stdout\": \"Job <29839742> is submitted to queue <hpc>.\\n\", \"stderr\": \"\", \"job_id\": \"29839742\", \"intent_sha256\": \"ae9ecb125827286223847c77f3857b0030741fc3350d9e466e02bb2ba51fc6b3\"}, \"callback\": {\"status\": \"submitted_not_passed\", \"returncode\": 0, \"stdout\": \"Job <29839743> is submitted to queue <hpc>.\\n\", \"stderr\": \"\", \"job_id\": \"29839743\", \"intent_sha256\": \"165edada6f17d9fb9fb72d7654871ac7d636ad99f906527597d523254aba1d5e\"}}\n"
+}

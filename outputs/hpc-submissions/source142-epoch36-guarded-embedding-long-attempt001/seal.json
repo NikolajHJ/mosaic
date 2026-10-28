@@ -1,0 +1,12 @@
+{
+  "archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source142-epoch36-guarded-embedding-long-attempt001\\source142-epoch36-guarded-embedding-long-attempt001.tar.gz",
+  "archive_sha256": "d2ac85ad644a94f3b5967537f1c777bb7318faf2a8507038888bc32728a0d805",
+  "campaign": "/work3/s234818/latentmol/runs/source142-epoch36-guarded-embedding-long-attempt001",
+  "label": "source142-epoch36-guarded-embedding-long-attempt001",
+  "manifest_sha256": "89dd0f43752a417cb4a4ab0658a4fba294eba72eb65fd5899036a42d8207c4f2",
+  "members": 621,
+  "operator_relative": "scripts/hpc/embedding_long_campaign.py",
+  "plan_sha256": "35adaf248e9011ce81a5bcd165d1897e97901864695a10d56fad70eebe63f70e",
+  "release": "/work3/s234818/latentmol/releases/source-142-epoch36-guarded-embedding-long-attempt001",
+  "status": "sealed_not_submitted"
+}

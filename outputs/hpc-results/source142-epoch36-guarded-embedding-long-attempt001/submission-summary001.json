@@ -1,0 +1,36 @@
+{
+  "case_count": 3,
+  "checked_snapshot": "outputs\\hpc-results\\source142-epoch36-guarded-embedding-long-attempt001\\status-1793183344713502400.json",
+  "cpu_callback_job_id": "29839743",
+  "cpu_elapsed_seconds": 71.15532363997772,
+  "cpu_integrity": "cpu-verified/download-integrity.json",
+  "cpu_job_id": "29839742",
+  "cpu_result_sha256": "2618aadbbcf8e3d74b3cad114c2c7b508f87c183c4f09e548d67be38090eb040",
+  "cpu_tests": {
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0,
+    "tests": 450
+  },
+  "existing_VAE_continuation": "unchanged",
+  "gpu_fit_callback_job_id": "29839756",
+  "gpu_fit_job_id": "29839755",
+  "gpu_fit_or_pilot_or_optimization_pass": false,
+  "gpu_fit_state": "PEND",
+  "observation_every": 10,
+  "source": {
+    "archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source142-epoch36-guarded-embedding-long-attempt001\\source142-epoch36-guarded-embedding-long-attempt001.tar.gz",
+    "archive_sha256": "d2ac85ad644a94f3b5967537f1c777bb7318faf2a8507038888bc32728a0d805",
+    "campaign": "/work3/s234818/latentmol/runs/source142-epoch36-guarded-embedding-long-attempt001",
+    "label": "source142-epoch36-guarded-embedding-long-attempt001",
+    "manifest_sha256": "89dd0f43752a417cb4a4ab0658a4fba294eba72eb65fd5899036a42d8207c4f2",
+    "members": 621,
+    "operator_relative": "scripts/hpc/embedding_long_campaign.py",
+    "plan_sha256": "35adaf248e9011ce81a5bcd165d1897e97901864695a10d56fad70eebe63f70e",
+    "release": "/work3/s234818/latentmol/releases/source-142-epoch36-guarded-embedding-long-attempt001",
+    "status": "sealed_not_submitted"
+  },
+  "status": "cpu_passed_gpu_fit_submitted_not_started",
+  "total_target_iterations": 30000,
+  "updates_per_case": 10000
+}

@@ -1,0 +1,53 @@
+{
+  "changed_common_parent_members": [
+    "scripts/hpc/chemistry_epoch45_campaign.py",
+    "scripts/hpc/chemistry_epoch45_worker.py",
+    "src/latentmol/boltz/embedding_comparison_experiment.py",
+    "src/latentmol/boltz/embedding_comparison_rescore.py",
+    "src/latentmol/chemistry_epoch45_extension.py",
+    "src/latentmol/chemistry_epoch45_generation.py",
+    "tests/test_chemistry_epoch45_extension.py",
+    "tests/test_chemistry_epoch45_generation.py",
+    "tests/test_embedding_comparison_experiment.py",
+    "tests/test_embedding_comparison_rescore.py"
+  ],
+  "new_long_run_members": {
+    "configs/epoch36_embedding_long.json": "35adaf248e9011ce81a5bcd165d1897e97901864695a10d56fad70eebe63f70e",
+    "scripts/embedding_long_campaign.py": "95f555f41a99472420962dffa43be31a3b831755d16c4c11931f9eda89af622b",
+    "scripts/hpc/embedding_long_campaign.py": "3b6f53f4ee1fc0841eda8b50d7feb5597ce0703d74fec1794b8981f6c932f136",
+    "src/latentmol/boltz/embedding_long_experiment.py": "fbd4febe85dbe556d061334f99696008cef38e391e8f70bae205a73878f0a587",
+    "src/latentmol/boltz/embedding_long_optimization.py": "a9a5dc0fd0f048c97bbc762483c53947bdc7063dcf7249e29c21a36e107243c3",
+    "src/latentmol/boltz/embedding_long_training.py": "a6d8d4c02bd2b9fcec29b78a90889aa23618e6a088fc1cc6c68a912036c41511",
+    "tests/test_embedding_long_campaign.py": "da5d15d10a7ee0cb0034b984631af8a0f30a7af900894298d8790eb0da51c35b",
+    "tests/test_embedding_long_experiment.py": "a93f7104ca8bd2e9525205cb4a866f57bd418ab9a8e89c9180c6351af4e6c063",
+    "tests/test_embedding_long_native.py": "6381cbb6d1c8dfe3d2003606edd7e1f585d90e25551d63098c79c39add7e59b6",
+    "tests/test_embedding_long_optimization.py": "fa41d5bee4dd7293fd65f40c25678099bedf9bcfaf198cb6b933111693cfea43",
+    "tests/test_embedding_long_training.py": "f14ac757b81243c910cb2862ec38360f68647bbb483abb70ca11022ec0b60bf1"
+  },
+  "parent_VAE_default_and_Boltz_scoring_sources_unchanged": true,
+  "parent_comparison": {
+    "archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source138-epoch36-embedding-comparison-attempt006\\source138-epoch36-embedding-comparison-attempt006.tar.gz",
+    "archive_sha256": "456c8cc8ae0fbc2d84dcdadddd7734f879cefc9db4204275b8bcd0525ec62acb",
+    "campaign": "/work3/s234818/latentmol/runs/source138-epoch36-embedding-comparison-attempt006",
+    "label": "source138-epoch36-embedding-comparison-attempt006",
+    "manifest_sha256": "aedc247e662a9faa974f90f55173f383c3b93128dbab9c5a7d15681b739919b8",
+    "members": 603,
+    "operator_relative": "scripts/hpc/embedding_comparison_operator.py",
+    "plan_sha256": "58b47026f175622992c8ea1e257e02d1836387c752aa024bb2fcc0201e886802",
+    "release": "/work3/s234818/latentmol/releases/source-138-epoch36-embedding-comparison-attempt006",
+    "status": "sealed_not_submitted"
+  },
+  "seal": {
+    "archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source142-epoch36-guarded-embedding-long-attempt001\\source142-epoch36-guarded-embedding-long-attempt001.tar.gz",
+    "archive_sha256": "d2ac85ad644a94f3b5967537f1c777bb7318faf2a8507038888bc32728a0d805",
+    "campaign": "/work3/s234818/latentmol/runs/source142-epoch36-guarded-embedding-long-attempt001",
+    "label": "source142-epoch36-guarded-embedding-long-attempt001",
+    "manifest_sha256": "89dd0f43752a417cb4a4ab0658a4fba294eba72eb65fd5899036a42d8207c4f2",
+    "members": 621,
+    "operator_relative": "scripts/hpc/embedding_long_campaign.py",
+    "plan_sha256": "35adaf248e9011ce81a5bcd165d1897e97901864695a10d56fad70eebe63f70e",
+    "release": "/work3/s234818/latentmol/releases/source-142-epoch36-guarded-embedding-long-attempt001",
+    "status": "sealed_not_submitted"
+  },
+  "status": "local_AST_JSON_bytes_only_not_numerical_validation"
+}

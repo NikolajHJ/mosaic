@@ -1,0 +1,649 @@
+{
+  "campaign": "/work3/s234818/latentmol/runs/source142-epoch36-guarded-embedding-long-attempt001",
+  "control_inventory": {
+    "advance-after-cpu.json": {
+      "bytes": 482,
+      "sha256": "067a7006ddaf868996f80471ebfff86297f78fe00fc9a9a8f184f61dd4d22440"
+    },
+    "cpu-callback-intent.json": {
+      "bytes": 3604,
+      "sha256": "165edada6f17d9fb9fb72d7654871ac7d636ad99f906527597d523254aba1d5e"
+    },
+    "cpu-callback-receipt.json": {
+      "bytes": 246,
+      "sha256": "89ff227cf080c385067fabe8a5c99259d3a58a806852a9616a420cccf16e2a31"
+    },
+    "cpu-execution.json": {
+      "bytes": 556,
+      "sha256": "ea3a3b2412df5ba8d5f081bf7df7560464b41fc27ab9b43f56b6e1889dadab7c"
+    },
+    "cpu-intent.json": {
+      "bytes": 3847,
+      "sha256": "ae9ecb125827286223847c77f3857b0030741fc3350d9e466e02bb2ba51fc6b3"
+    },
+    "cpu-launch-quota.json": {
+      "bytes": 2122,
+      "sha256": "72b7ef2320571cad0ffefe21e728fcb0b0b8c64f8c994baebb246791b5a040f1"
+    },
+    "cpu-receipt.json": {
+      "bytes": 246,
+      "sha256": "e7631f46b02c0475eb48730708043ab88e4db485a7e58dc02b7f01dfdcfa31a9"
+    },
+    "fit-callback-intent.json": {
+      "bytes": 3605,
+      "sha256": "3c702617e4feaee518297d1c0dd6f72b809b87bf01728d68e89f8960bcdeb430"
+    },
+    "fit-callback-receipt.json": {
+      "bytes": 246,
+      "sha256": "3caf531812b2a9980d4a53c616a4fbe82d21c274f03b3dd507c265edf9e47fdf"
+    },
+    "fit-intent.json": {
+      "bytes": 4014,
+      "sha256": "6c071537aad4298830bc6525eadd0ed8c3640c2643af23d8dcdced9255c6a255"
+    },
+    "fit-receipt.json": {
+      "bytes": 250,
+      "sha256": "5e5aa3f61f6af48f87ba57d3f86c7c2834ed15db2f5038f7765c4d0e0b7b62af"
+    }
+  },
+  "files": {
+    "advance-after-cpu.json": {
+      "identity": {
+        "manifest_sha256": "89dd0f43752a417cb4a4ab0658a4fba294eba72eb65fd5899036a42d8207c4f2",
+        "plan_sha256": "35adaf248e9011ce81a5bcd165d1897e97901864695a10d56fad70eebe63f70e",
+        "source_sha256": "d2ac85ad644a94f3b5967537f1c777bb7318faf2a8507038888bc32728a0d805"
+      },
+      "next_node": "fit",
+      "predecessor": "cpu",
+      "predecessor_result_sha256": "2618aadbbcf8e3d74b3cad114c2c7b508f87c183c4f09e548d67be38090eb040",
+      "status": "transition_attempted_not_passed"
+    },
+    "cpu-callback-intent.json": {
+      "arguments": [
+        "bsub",
+        "-J",
+        "source142-epoch36-guarded-embedding-long-attempt001-cpu-after",
+        "-q",
+        "hpc",
+        "-n",
+        "1",
+        "-W",
+        "0:30",
+        "-R",
+        "rusage[mem=2GB]",
+        "-R",
+        "span[hosts=1]",
+        "-w",
+        "ended(29839742)",
+        "-oo",
+        "/work3/s234818/latentmol/logs/source142-epoch36-guarded-embedding-long-attempt001-cpu-after.%J.out",
+        "-eo",
+        "/work3/s234818/latentmol/logs/source142-epoch36-guarded-embedding-long-attempt001-cpu-after.%J.err"
+      ],
+      "command": [
+        "python",
+        "scripts/hpc/embedding_long_campaign.py",
+        "advance",
+        "--release",
+        "/work3/s234818/latentmol/releases/source-142-epoch36-guarded-embedding-long-attempt001",
+        "--campaign",
+        "/work3/s234818/latentmol/runs/source142-epoch36-guarded-embedding-long-attempt001",
+        "--archive-sha256",
+        "d2ac85ad644a94f3b5967537f1c777bb7318faf2a8507038888bc32728a0d805",
+        "--manifest-sha256",
+        "89dd0f43752a417cb4a4ab0658a4fba294eba72eb65fd5899036a42d8207c4f2",
+        "--plan-sha256",
+        "35adaf248e9011ce81a5bcd165d1897e97901864695a10d56fad70eebe63f70e",
+        "--after",
+        "cpu"
+      ],
+      "fresh_quota": {
+        "minimum_free_gib": 58.5,
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "HPE-Storage-Servers (disks, storagepool 1): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nHPE-Storage-Servers (NVME, storagepool 2): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (disks, storagepool 3): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks, storagepool 4): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks added in 2024, storagepool 5): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (NVMEs added in 2024, storagepool 6): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||   41.50 GiB|  100.00 GiB||   363743| 20000000\n\n"
+      },
+      "identity": {
+        "manifest_sha256": "89dd0f43752a417cb4a4ab0658a4fba294eba72eb65fd5899036a42d8207c4f2",
+        "plan_sha256": "35adaf248e9011ce81a5bcd165d1897e97901864695a10d56fad70eebe63f70e",
+        "source_sha256": "d2ac85ad644a94f3b5967537f1c777bb7318faf2a8507038888bc32728a0d805"
+      },
+      "predecessor_job_id": "29839742"
+    },
+    "cpu-callback-receipt.json": {
+      "intent_sha256": "165edada6f17d9fb9fb72d7654871ac7d636ad99f906527597d523254aba1d5e",
+      "job_id": "29839743",
+      "returncode": 0,
+      "status": "submitted_not_passed",
+      "stderr": "",
+      "stdout": "Job <29839743> is submitted to queue <hpc>.\n"
+    },
+    "cpu-execution.json": {
+      "error": null,
+      "finished_unix": 1793183311.5364685,
+      "identity": {
+        "manifest_sha256": "89dd0f43752a417cb4a4ab0658a4fba294eba72eb65fd5899036a42d8207c4f2",
+        "plan_sha256": "35adaf248e9011ce81a5bcd165d1897e97901864695a10d56fad70eebe63f70e",
+        "source_sha256": "d2ac85ad644a94f3b5967537f1c777bb7318faf2a8507038888bc32728a0d805"
+      },
+      "job_id": "29839742",
+      "node": "cpu",
+      "result_sha256": "2618aadbbcf8e3d74b3cad114c2c7b508f87c183c4f09e548d67be38090eb040",
+      "returncode": 0,
+      "started_unix": 1793183234.7301383,
+      "status": "completed"
+    },
+    "cpu-intent.json": {
+      "arguments": [
+        "bsub",
+        "-J",
+        "source142-epoch36-guarded-embedding-long-attempt001-cpu",
+        "-q",
+        "hpc",
+        "-n",
+        "4",
+        "-R",
+        "span[hosts=1]",
+        "-R",
+        "rusage[mem=8GB]",
+        "-W",
+        "0:45",
+        "-oo",
+        "/work3/s234818/latentmol/logs/source142-epoch36-guarded-embedding-long-attempt001-cpu.%J.out",
+        "-eo",
+        "/work3/s234818/latentmol/logs/source142-epoch36-guarded-embedding-long-attempt001-cpu.%J.err"
+      ],
+      "campaign": "/work3/s234818/latentmol/runs/source142-epoch36-guarded-embedding-long-attempt001",
+      "command": [
+        "python",
+        "scripts/hpc/embedding_long_campaign.py",
+        "run-stage",
+        "--release",
+        "/work3/s234818/latentmol/releases/source-142-epoch36-guarded-embedding-long-attempt001",
+        "--campaign",
+        "/work3/s234818/latentmol/runs/source142-epoch36-guarded-embedding-long-attempt001",
+        "--archive-sha256",
+        "d2ac85ad644a94f3b5967537f1c777bb7318faf2a8507038888bc32728a0d805",
+        "--manifest-sha256",
+        "89dd0f43752a417cb4a4ab0658a4fba294eba72eb65fd5899036a42d8207c4f2",
+        "--plan-sha256",
+        "35adaf248e9011ce81a5bcd165d1897e97901864695a10d56fad70eebe63f70e",
+        "--node",
+        "cpu"
+      ],
+      "dependencies": {},
+      "fresh_quota": {
+        "minimum_free_gib": 58.37,
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "HPE-Storage-Servers (disks, storagepool 1): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nHPE-Storage-Servers (NVME, storagepool 2): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (disks, storagepool 3): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks, storagepool 4): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks added in 2024, storagepool 5): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (NVMEs added in 2024, storagepool 6): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||   41.63 GiB|  100.00 GiB||   363739| 20000000\n\n"
+      },
+      "identity": {
+        "manifest_sha256": "89dd0f43752a417cb4a4ab0658a4fba294eba72eb65fd5899036a42d8207c4f2",
+        "plan_sha256": "35adaf248e9011ce81a5bcd165d1897e97901864695a10d56fad70eebe63f70e",
+        "source_sha256": "d2ac85ad644a94f3b5967537f1c777bb7318faf2a8507038888bc32728a0d805"
+      },
+      "label": "source142-epoch36-guarded-embedding-long-attempt001-cpu",
+      "node": "cpu",
+      "release": "/work3/s234818/latentmol/releases/source-142-epoch36-guarded-embedding-long-attempt001",
+      "request": {}
+    },
+    "cpu-launch-quota.json": {
+      "minimum_free_gib": 58.37,
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "HPE-Storage-Servers (disks, storagepool 1): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nHPE-Storage-Servers (NVME, storagepool 2): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (disks, storagepool 3): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks, storagepool 4): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks added in 2024, storagepool 5): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (NVMEs added in 2024, storagepool 6): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||   41.63 GiB|  100.00 GiB||   363747| 20000000\n\n"
+    },
+    "cpu-receipt.json": {
+      "intent_sha256": "ae9ecb125827286223847c77f3857b0030741fc3350d9e466e02bb2ba51fc6b3",
+      "job_id": "29839742",
+      "returncode": 0,
+      "status": "submitted_not_passed",
+      "stderr": "",
+      "stdout": "Job <29839742> is submitted to queue <hpc>.\n"
+    },
+    "fit-callback-intent.json": {
+      "arguments": [
+        "bsub",
+        "-J",
+        "source142-epoch36-guarded-embedding-long-attempt001-fit-after",
+        "-q",
+        "hpc",
+        "-n",
+        "1",
+        "-W",
+        "0:30",
+        "-R",
+        "rusage[mem=2GB]",
+        "-R",
+        "span[hosts=1]",
+        "-w",
+        "ended(29839755)",
+        "-oo",
+        "/work3/s234818/latentmol/logs/source142-epoch36-guarded-embedding-long-attempt001-fit-after.%J.out",
+        "-eo",
+        "/work3/s234818/latentmol/logs/source142-epoch36-guarded-embedding-long-attempt001-fit-after.%J.err"
+      ],
+      "command": [
+        "python",
+        "scripts/hpc/embedding_long_campaign.py",
+        "advance",
+        "--release",
+        "/work3/s234818/latentmol/releases/source-142-epoch36-guarded-embedding-long-attempt001",
+        "--campaign",
+        "/work3/s234818/latentmol/runs/source142-epoch36-guarded-embedding-long-attempt001",
+        "--archive-sha256",
+        "d2ac85ad644a94f3b5967537f1c777bb7318faf2a8507038888bc32728a0d805",
+        "--manifest-sha256",
+        "89dd0f43752a417cb4a4ab0658a4fba294eba72eb65fd5899036a42d8207c4f2",
+        "--plan-sha256",
+        "35adaf248e9011ce81a5bcd165d1897e97901864695a10d56fad70eebe63f70e",
+        "--after",
+        "fit"
+      ],
+      "fresh_quota": {
+        "minimum_free_gib": 54.96,
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "HPE-Storage-Servers (disks, storagepool 1): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nHPE-Storage-Servers (NVME, storagepool 2): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (disks, storagepool 3): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks, storagepool 4): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks added in 2024, storagepool 5): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (NVMEs added in 2024, storagepool 6): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||   45.04 GiB|  100.00 GiB||   358308| 20000000\n\n"
+      },
+      "identity": {
+        "manifest_sha256": "89dd0f43752a417cb4a4ab0658a4fba294eba72eb65fd5899036a42d8207c4f2",
+        "plan_sha256": "35adaf248e9011ce81a5bcd165d1897e97901864695a10d56fad70eebe63f70e",
+        "source_sha256": "d2ac85ad644a94f3b5967537f1c777bb7318faf2a8507038888bc32728a0d805"
+      },
+      "predecessor_job_id": "29839755"
+    },
+    "fit-callback-receipt.json": {
+      "intent_sha256": "3c702617e4feaee518297d1c0dd6f72b809b87bf01728d68e89f8960bcdeb430",
+      "job_id": "29839756",
+      "returncode": 0,
+      "status": "submitted_not_passed",
+      "stderr": "",
+      "stdout": "Job <29839756> is submitted to queue <hpc>.\n"
+    },
+    "fit-intent.json": {
+      "arguments": [
+        "bsub",
+        "-J",
+        "source142-epoch36-guarded-embedding-long-attempt001-fit",
+        "-q",
+        "gpua100",
+        "-n",
+        "4",
+        "-R",
+        "span[hosts=1]",
+        "-R",
+        "rusage[mem=16GB]",
+        "-W",
+        "4:00",
+        "-oo",
+        "/work3/s234818/latentmol/logs/source142-epoch36-guarded-embedding-long-attempt001-fit.%J.out",
+        "-eo",
+        "/work3/s234818/latentmol/logs/source142-epoch36-guarded-embedding-long-attempt001-fit.%J.err",
+        "-R",
+        "select[gpu80gb]",
+        "-gpu",
+        "num=1:mode=exclusive_process"
+      ],
+      "campaign": "/work3/s234818/latentmol/runs/source142-epoch36-guarded-embedding-long-attempt001",
+      "command": [
+        "python",
+        "scripts/hpc/embedding_long_campaign.py",
+        "run-stage",
+        "--release",
+        "/work3/s234818/latentmol/releases/source-142-epoch36-guarded-embedding-long-attempt001",
+        "--campaign",
+        "/work3/s234818/latentmol/runs/source142-epoch36-guarded-embedding-long-attempt001",
+        "--archive-sha256",
+        "d2ac85ad644a94f3b5967537f1c777bb7318faf2a8507038888bc32728a0d805",
+        "--manifest-sha256",
+        "89dd0f43752a417cb4a4ab0658a4fba294eba72eb65fd5899036a42d8207c4f2",
+        "--plan-sha256",
+        "35adaf248e9011ce81a5bcd165d1897e97901864695a10d56fad70eebe63f70e",
+        "--node",
+        "fit"
+      ],
+      "dependencies": {
+        "cpu": "2618aadbbcf8e3d74b3cad114c2c7b508f87c183c4f09e548d67be38090eb040"
+      },
+      "fresh_quota": {
+        "minimum_free_gib": 54.96,
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "HPE-Storage-Servers (disks, storagepool 1): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nHPE-Storage-Servers (NVME, storagepool 2): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (disks, storagepool 3): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks, storagepool 4): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks added in 2024, storagepool 5): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (NVMEs added in 2024, storagepool 6): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||   45.04 GiB|  100.00 GiB||   358306| 20000000\n\n"
+      },
+      "identity": {
+        "manifest_sha256": "89dd0f43752a417cb4a4ab0658a4fba294eba72eb65fd5899036a42d8207c4f2",
+        "plan_sha256": "35adaf248e9011ce81a5bcd165d1897e97901864695a10d56fad70eebe63f70e",
+        "source_sha256": "d2ac85ad644a94f3b5967537f1c777bb7318faf2a8507038888bc32728a0d805"
+      },
+      "label": "source142-epoch36-guarded-embedding-long-attempt001-fit",
+      "node": "fit",
+      "release": "/work3/s234818/latentmol/releases/source-142-epoch36-guarded-embedding-long-attempt001",
+      "request": {}
+    },
+    "fit-receipt.json": {
+      "intent_sha256": "6c071537aad4298830bc6525eadd0ed8c3640c2643af23d8dcdced9255c6a255",
+      "job_id": "29839755",
+      "returncode": 0,
+      "status": "submitted_not_passed",
+      "stderr": "",
+      "stdout": "Job <29839755> is submitted to queue <gpua100>.\n"
+    }
+  },
+  "identity": {
+    "manifest_sha256": "89dd0f43752a417cb4a4ab0658a4fba294eba72eb65fd5899036a42d8207c4f2",
+    "plan_sha256": "35adaf248e9011ce81a5bcd165d1897e97901864695a10d56fad70eebe63f70e",
+    "source_sha256": "d2ac85ad644a94f3b5967537f1c777bb7318faf2a8507038888bc32728a0d805"
+  },
+  "scheduler": {
+    "job_ids": [
+      "29839742",
+      "29839743",
+      "29839755",
+      "29839756"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "\nJob <29839755>, Job Name <source142-epoch36-guarded-embedding-long-attempt001-f\n                          it>, User <s234818>, Project <default>, Status <PEND>\n                          , Queue <gpua100>, Command <#!/bin/bash;set -euo pipe\n                          fail;cd /work3/s234818/latentmol/releases/source-142-\n                          epoch36-guarded-embedding-long-attempt001;exec env PY\n                          THONDONTWRITEBYTECODE=1 LATENTMOL_SOURCE_ARCHIVE=/wor\n                          k3/s234818/latentmol/releases/source-142-epoch36-guar\n                          ded-embedding-long-attempt001.tar.gz bash scripts/hpc\n                          /boltz_run.sh python scripts/hpc/embedding_long_campa\n                          ign.py run-stage --release /work3/s234818/latentmol/r\n                          eleases/source-142-epoch36-guarded-embedding-long-att\n                          empt001 --campaign /work3/s234818/latentmol/runs/sour\n                          ce142-epoch36-guarded-embedding-long-attempt001 --arc\n                          hive-sha256 d2ac85ad644a94f3b5967537f1c777bb7318faf2a\n                          8507038888bc32728a0d805 --manifest-sha256 89dd0f43752\n                          a417cb4a4ab0658a4fba294eba72eb65fd5899036a42d8207c4f2\n                           --plan-sha256 35adaf248e9011ce81a5bcd165d1897e979018\n                          64695a10d56fad70eebe63f70e --node fit>, Share group c\n                          harged </s234818>, Esub <dcc>\nWed Oct 28 11:28:36 2026: Submitted from host <n-62-11-60>, CWD </work3/s234818\n                          /latentmol/releases/source-142-epoch36-guarded-embedd\n                          ing-long-attempt001>, Output File (overwrite) </work3\n                          /s234818/latentmol/logs/source142-epoch36-guarded-emb\n                          edding-long-attempt001-fit.29839755.out>, Error File \n                          (overwrite) </work3/s234818/latentmol/logs/source142-\n                          epoch36-guarded-embedding-long-attempt001-fit.2983975\n                          5.err>, 4 Task(s), Requested Resources < select[gpu80\n                          gb] rusage[mem=16384.00] span[hosts=1]>, Requested GP\n                          U <num=1:mode=exclusive_process>;\nWed Oct 28 11:28:38 2026: Reserved <4> job slots on host(s) <4*n-62-18-12> for \n                          <4> tasks;\n PENDING REASONS:\n New job is waiting for scheduling;\n\n RUNLIMIT                \n 240.0 min\n\n MEMLIMIT\n     16 G \n\n PENDING TIME DETAILS:\n Eligible pending time (seconds):\t31\n Ineligible pending time (seconds):\t0\n\n SCHEDULING PARAMETERS:\n           r15s   r1m  r15m   ut      pg    io   ls    it    tmp    swp    mem\n loadSched   -     -     -     -       -     -    -     -     -      -      -  \n loadStop    -     -     -     -       -     -    -     -     -      -      -  \n\n RESOURCE REQUIREMENT DETAILS:\n Job-level:  select[gpu80gb] rusage[mem=16384.00] span[hosts=1]\n App-level: -\n Queue-level: same[type:model] affinity[core] cu[type=enclosure:maxcus=1]\n Combined: select[((gpu80gb) && (ngpus>0)) && (type == any)] order[-slots:-maxs\n                          lots] rusage[mem=16384.00:ngpus_physical=1.00] span[h\n                          osts=1] same[type:model] cu[pref=config:maxcus=1:type\n                          =enclosure] affinity[core(1)*1]\n Effective: -\n\n GPU REQUIREMENT DETAILS:\n Combined: num=1:mode=exclusive_process:mps=no:j_exclusive=yes:aff=no:gvendor=n\n                          vidia\n Effective: -\n------------------------------------------------------------------------------\n\nJob <29839756>, Job Name <source142-epoch36-guarded-embedding-long-attempt001-f\n                          it-after>, User <s234818>, Project <default>, Service\n                           Class <sc_hpc1>, Status <PEND>, Queue <hpc>, Command\n                           <#!/bin/bash;set -euo pipefail;cd /work3/s234818/lat\n                          entmol/releases/source-142-epoch36-guarded-embedding-\n                          long-attempt001;exec env PYTHONDONTWRITEBYTECODE=1 LA\n                          TENTMOL_SOURCE_ARCHIVE=/work3/s234818/latentmol/relea\n                          ses/source-142-epoch36-guarded-embedding-long-attempt\n                          001.tar.gz bash scripts/hpc/boltz_run.sh python scrip\n                          ts/hpc/embedding_long_campaign.py advance --release /\n                          work3/s234818/latentmol/releases/source-142-epoch36-g\n                          uarded-embedding-long-attempt001 --campaign /work3/s2\n                          34818/latentmol/runs/source142-epoch36-guarded-embedd\n                          ing-long-attempt001 --archive-sha256 d2ac85ad644a94f3\n                          b5967537f1c777bb7318faf2a8507038888bc32728a0d805 --ma\n                          nifest-sha256 89dd0f43752a417cb4a4ab0658a4fba294eba72\n                          eb65fd5899036a42d8207c4f2 --plan-sha256 35adaf248e901\n                          1ce81a5bcd165d1897e97901864695a10d56fad70eebe63f70e -\n                          -after fit>, Esub <dcc>\nWed Oct 28 11:28:38 2026: Submitted from host <n-62-11-60>, CWD </work3/s234818\n                          /latentmol/releases/source-142-epoch36-guarded-embedd\n                          ing-long-attempt001>, Output File (overwrite) </work3\n                          /s234818/latentmol/logs/source142-epoch36-guarded-emb\n                          edding-long-attempt001-fit-after.29839756.out>, Error\n                           File (overwrite) </work3/s234818/latentmol/logs/sour\n                          ce142-epoch36-guarded-embedding-long-attempt001-fit-a\n                          fter.29839756.err>, Requested Resources <{select[seri\n                          al_] rusage[mem=2048.00] span[hosts=1]} || {select[!s\n                          erial_] rusage[mem=2048.00] span[hosts=1]}>, Dependen\n                          cy Condition <ended(29839755)>;\n PENDING REASONS:\n Job dependency condition not satisfied;\n\n RUNLIMIT                \n 30.0 min\n\n MEMLIMIT\n      2 G \n\n PENDING TIME DETAILS:\n Eligible pending time (seconds):\t0\n Ineligible pending time (seconds):\t29\n\n SCHEDULING PARAMETERS:\n           r15s   r1m  r15m   ut      pg    io   ls    it    tmp    swp    mem\n loadSched   -     -     -     -       -     -    -     -     -      -      -  \n loadStop    -     -     -     -       -     -    -     -     -      -      -  \n\n RESOURCE REQUIREMENT DETAILS:\n Job-level: {select[serial_] rusage[mem=2048.00] span[hosts=1]} || {select[!ser\n                          ial_] rusage[mem=2048.00] span[hosts=1]}\n App-level: -\n Queue-level: same[type:model] affinity[core] cu[type=enclosure:maxcus=1]\n Combined: {select[(serial_) && (type == any)] order[-slots:-maxslots] rusage[m\n                          em=2048.00] span[hosts=1] cu[pref=config:maxcus=1:typ\n                          e=enclosure] affinity[core(1)*1]} || {select[(!serial\n                          _) && (type == any)] order[-slots:-maxslots] rusage[m\n                          em=2048.00] span[hosts=1] cu[pref=config:maxcus=1:typ\n                          e=enclosure] affinity[core(1)*1]}\n Effective: -\n------------------------------------------------------------------------------\n\nJob <29839742>, Job Name <source142-epoch36-guarded-embedding-long-attempt001-c\n                          pu>, User <s234818>, Project <default>, Service Class\n                           <sc_hpc1>, Status <DONE>, Queue <hpc>, Command <#!/b\n                          in/bash;set -euo pipefail;cd /work3/s234818/latentmol\n                          /releases/source-142-epoch36-guarded-embedding-long-a\n                          ttempt001;exec env PYTHONDONTWRITEBYTECODE=1 LATENTMO\n                          L_SOURCE_ARCHIVE=/work3/s234818/latentmol/releases/so\n                          urce-142-epoch36-guarded-embedding-long-attempt001.ta\n                          r.gz bash scripts/hpc/boltz_run.sh python scripts/hpc\n                          /embedding_long_campaign.py run-stage --release /work\n                          3/s234818/latentmol/releases/source-142-epoch36-guard\n                          ed-embedding-long-attempt001 --campaign /work3/s23481\n                          8/latentmol/runs/source142-epoch36-guarded-embedding-\n                          long-attempt001 --archive-sha256 d2ac85ad644a94f3b596\n                          7537f1c777bb7318faf2a8507038888bc32728a0d805 --manife\n                          st-sha256 89dd0f43752a417cb4a4ab0658a4fba294eba72eb65\n                          fd5899036a42d8207c4f2 --plan-sha256 35adaf248e9011ce8\n                          1a5bcd165d1897e97901864695a10d56fad70eebe63f70e --nod\n                          e cpu>, Share group charged </s234818>, Esub <dcc>\nWed Oct 28 11:27:09 2026: Submitted from host <hpclogin1>, CWD <$HOME>, Output \n                          File (overwrite) </work3/s234818/latentmol/logs/sourc\n                          e142-epoch36-guarded-embedding-long-attempt001-cpu.29\n                          839742.out>, Error File (overwrite) </work3/s234818/l\n                          atentmol/logs/source142-epoch36-guarded-embedding-lon\n                          g-attempt001-cpu.29839742.err>, 4 Task(s), Requested \n                          Resources <{select[shortparallel_] rusage[mem=8192.00\n                          ] span[hosts=1]} || {select[!shortparallel_] rusage[m\n                          em=8192.00] span[hosts=1]}>;\nWed Oct 28 11:27:10 2026: Started 4 Task(s) on Host(s) <4*n-62-30-24>, Allocate\n                          d 4 Slot(s) on Host(s) <4*n-62-30-24>, Execution Home\n                           </zhome/95/e/206121>, Execution CWD </zhome/95/e/206\n                          121>;\nWed Oct 28 11:28:31 2026: Done successfully. The CPU time used is 65.0 seconds.\n\n RUNLIMIT                \n 45.0 min\n\n MEMLIMIT\n      8 G \n\n MEMORY USAGE:\n MAX MEM: 705 Mbytes;  AVG MEM: 597 Mbytes; MEM Efficiency: 2.15%\n\n CPU USAGE:\n CPU PEAK: 0.79 ;  CPU PEAK DURATION: 81 second(s)\n CPU AVERAGE EFFICIENCY: 19.75% ;  CPU PEAK EFFICIENCY: 19.75%\n\n PENDING TIME DETAILS:\n Eligible pending time (seconds):\t1\n Ineligible pending time (seconds):\t0\n\n SCHEDULING PARAMETERS:\n           r15s   r1m  r15m   ut      pg    io   ls    it    tmp    swp    mem\n loadSched   -     -     -     -       -     -    -     -     -      -      -  \n loadStop    -     -     -     -       -     -    -     -     -      -      -  \n\n RESOURCE REQUIREMENT DETAILS:\n Job-level: {select[shortparallel_] rusage[mem=8192.00] span[hosts=1]} || {sele\n                          ct[!shortparallel_] rusage[mem=8192.00] span[hosts=1]\n                          }\n App-level: -\n Queue-level: same[type:model] affinity[core] cu[type=enclosure:maxcus=1]\n Combined: {select[(shortparallel_) && (type == any)] order[-slots:-maxslots] r\n                          usage[mem=8192.00] span[hosts=1] cu[pref=config:maxcu\n                          s=1:type=enclosure] affinity[core(1)*1]} || {select[(\n                          !shortparallel_) && (type == any)] order[-slots:-maxs\n                          lots] rusage[mem=8192.00] span[hosts=1] cu[pref=confi\n                          g:maxcus=1:type=enclosure] affinity[core(1)*1]}\n Effective: select[((shortparallel_) && (type == any))] order[-slots:-maxslots]\n                           rusage[mem=8192.00] span[hosts=1] cu[type=enclosure:\n                          maxcus=1:pref=config] affinity[core(1)*1] \n------------------------------------------------------------------------------\n\nJob <29839743>, Job Name <source142-epoch36-guarded-embedding-long-attempt001-c\n                          pu-after>, User <s234818>, Project <default>, Service\n                           Class <sc_hpc1>, Status <DONE>, Queue <hpc>, Command\n                           <#!/bin/bash;set -euo pipefail;cd /work3/s234818/lat\n                          entmol/releases/source-142-epoch36-guarded-embedding-\n                          long-attempt001;exec env PYTHONDONTWRITEBYTECODE=1 LA\n                          TENTMOL_SOURCE_ARCHIVE=/work3/s234818/latentmol/relea\n                          ses/source-142-epoch36-guarded-embedding-long-attempt\n                          001.tar.gz bash scripts/hpc/boltz_run.sh python scrip\n                          ts/hpc/embedding_long_campaign.py advance --release /\n                          work3/s234818/latentmol/releases/source-142-epoch36-g\n                          uarded-embedding-long-attempt001 --campaign /work3/s2\n                          34818/latentmol/runs/source142-epoch36-guarded-embedd\n                          ing-long-attempt001 --archive-sha256 d2ac85ad644a94f3\n                          b5967537f1c777bb7318faf2a8507038888bc32728a0d805 --ma\n                          nifest-sha256 89dd0f43752a417cb4a4ab0658a4fba294eba72\n                          eb65fd5899036a42d8207c4f2 --plan-sha256 35adaf248e901\n                          1ce81a5bcd165d1897e97901864695a10d56fad70eebe63f70e -\n                          -after cpu>, Share group charged </s234818>, Esub <dc\n                          c>\nWed Oct 28 11:27:11 2026: Submitted from host <hpclogin1>, CWD <$HOME>, Output \n                          File (overwrite) </work3/s234818/latentmol/logs/sourc\n                          e142-epoch36-guarded-embedding-long-attempt001-cpu-af\n                          ter.29839743.out>, Error File (overwrite) </work3/s23\n                          4818/latentmol/logs/source142-epoch36-guarded-embeddi\n                          ng-long-attempt001-cpu-after.29839743.err>, Requested\n                           Resources <{select[serial_] rusage[mem=2048.00] span\n                          [hosts=1]} || {select[!serial_] rusage[mem=2048.00] s\n                          pan[hosts=1]}>, Dependency Condition <ended(29839742)\n                          >;\nWed Oct 28 11:28:32 2026: Started 1 Task(s) on Host(s) <n-62-11-60>, Allocated \n                          1 Slot(s) on Host(s) <n-62-11-60>, Execution Home </z\n                          home/95/e/206121>, Execution CWD </zhome/95/e/206121>\n                          ;\nWed Oct 28 11:28:38 2026: Done successfully. The CPU time used is 2.9 seconds.\n\n RUNLIMIT                \n 30.0 min\n\n MEMLIMIT\n      2 G \n\n MEMORY USAGE:\n MEM Efficiency: 0.00%\n\n CPU USAGE:\n CPU PEAK: 0.00 ;  CPU PEAK DURATION: 0 second(s)\n CPU AVERAGE EFFICIENCY: 0.00% ;  CPU PEAK EFFICIENCY: 0.00%\n\n PENDING TIME DETAILS:\n Eligible pending time (seconds):\t1\n Ineligible pending time (seconds):\t80\n\n SCHEDULING PARAMETERS:\n           r15s   r1m  r15m   ut      pg    io   ls    it    tmp    swp    mem\n loadSched   -     -     -     -       -     -    -     -     -      -      -  \n loadStop    -     -     -     -       -     -    -     -     -      -      -  \n\n RESOURCE REQUIREMENT DETAILS:\n Job-level: {select[serial_] rusage[mem=2048.00] span[hosts=1]} || {select[!ser\n                          ial_] rusage[mem=2048.00] span[hosts=1]}\n App-level: -\n Queue-level: same[type:model] affinity[core] cu[type=enclosure:maxcus=1]\n Combined: {select[(serial_) && (type == any)] order[-slots:-maxslots] rusage[m\n                          em=2048.00] span[hosts=1] cu[pref=config:maxcus=1:typ\n                          e=enclosure] affinity[core(1)*1]} || {select[(!serial\n                          _) && (type == any)] order[-slots:-maxslots] rusage[m\n                          em=2048.00] span[hosts=1] cu[pref=config:maxcus=1:typ\n                          e=enclosure] affinity[core(1)*1]}\n Effective: select[((serial_) && (type == any))] order[-slots:-maxslots] rusage\n                          [mem=2048.00] span[hosts=1] cu[type=enclosure:maxcus=\n                          1:pref=config] affinity[core(1)*1] \n\n"
+  },
+  "stage_result_count": 1,
+  "stage_results": {
+    "cpu": {
+      "artifacts": {
+        "junit": {
+          "path": "/work3/s234818/latentmol/runs/source142-epoch36-guarded-embedding-long-attempt001/cpu/cpu-tests.xml",
+          "sha256": "db0fb9a2ad77a8f7a7e4a20de631b0872285daecc00ba2662e2de73a25c11c87"
+        },
+        "starts": {
+          "path": "/work3/s234818/latentmol/runs/source142-epoch36-guarded-embedding-long-attempt001/cpu/starts.pt",
+          "sha256": "832592de7183b51ac22542ead558bc453006d3d349d942e2933dd1a52fb40ebd"
+        }
+      },
+      "cpu_execution": {
+        "environment": {
+          "MKL_CBWR": "COMPATIBLE",
+          "MKL_NUM_THREADS": "4",
+          "OMP_NUM_THREADS": "4"
+        },
+        "profile": "mkl_compatible_four_threads_v1",
+        "scope": "CPU readiness only; native GPU arithmetic unchanged"
+      },
+      "cpu_gate": {
+        "decoder_output_bitwise_parity": true,
+        "epoch": 36,
+        "feature_dimensions": {
+          "atom_hidden": [
+            2,
+            50,
+            96
+          ],
+          "bond_input": [
+            2,
+            50,
+            50,
+            336
+          ],
+          "charge_input": [
+            2,
+            50,
+            192
+          ],
+          "pair_hidden": [
+            2,
+            50,
+            50,
+            48
+          ]
+        },
+        "junit": {
+          "errors": 0,
+          "failures": 0,
+          "skipped": 0,
+          "tests": 450
+        },
+        "junit_sha256": "db0fb9a2ad77a8f7a7e4a20de631b0872285daecc00ba2662e2de73a25c11c87",
+        "model_config": {
+          "attention_heads": 4,
+          "decoder_variant": "triangle_refine",
+          "encoder_residual_layers": 2,
+          "global_hidden": 320,
+          "hidden": 96,
+          "latent": 256,
+          "layers": 4,
+          "pair_hidden": 48,
+          "refinement_rounds": 4,
+          "triangle_hidden": 24,
+          "trunk_hidden": null
+        },
+        "status": "passed",
+        "test_command": [
+          "/work3/s234818/latentmol/env/boltz311/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "tests/test_decoder_features.py",
+          "tests/test_refined_decoder.py",
+          "tests/test_boltz_embedding_bridge.py",
+          "tests/test_boltz_embedding_injection.py",
+          "tests/test_boltz_embedding_training.py",
+          "tests/test_embedding_experiment.py",
+          "tests/test_embedding_validation.py",
+          "tests/test_boltz_adapter.py",
+          "tests/test_boltz_scoring.py",
+          "tests/test_dbmol_objective.py",
+          "tests/test_embedding_operator.py",
+          "tests/test_embedding_comparison.py",
+          "tests/test_embedding_comparison_validation.py",
+          "tests/test_embedding_comparison_rescore.py",
+          "tests/test_embedding_comparison_experiment.py",
+          "tests/test_boltz_step_control.py",
+          "tests/test_embedding_comparison_policy.py",
+          "tests/test_embedding_comparison_correction.py",
+          "tests/test_embedding_gradient_diagnostic.py",
+          "tests/test_embedding_comparison_cpu_profile.py",
+          "tests/test_cuda_process.py",
+          "tests/test_embedding_long_training.py",
+          "tests/test_embedding_long_optimization.py",
+          "tests/test_embedding_long_campaign.py",
+          "tests/test_embedding_long_experiment.py",
+          "tests/test_embedding_long_native.py",
+          "--junitxml=/work3/s234818/latentmol/runs/source142-epoch36-guarded-embedding-long-attempt001/cpu/cpu-tests.xml"
+        ],
+        "test_returncode": 0,
+        "vae_sha256": "3179ef01f84a2c714ee031bc3e6a6a4dc2cedc767d30e700c887aab1abbd706f",
+        "vae_state_sha256": "bca36c9c7dcad67fa7eed8c2996f9304032738cfd5a3b8957147e99c3cde2bec"
+      },
+      "elapsed_seconds": 71.15532363997772,
+      "existing_vae_continuation": "untouched",
+      "frozen_identities": {
+        "affinity": "dcc5cd3722b1c9eaa34267e4ae32f55cbbf1963f4c19319381ccfa30fdd2ca9e",
+        "bridge": "013834958d52f7aee999ca4c39496e14fc5333d69eb697d47433821f48290343",
+        "context_manifest": "a0ebed8bd67358b4027999901a8cb9e5be12731b4d77d68c6b9154513b2261eb",
+        "starts": "832592de7183b51ac22542ead558bc453006d3d349d942e2933dd1a52fb40ebd",
+        "structure": "090e82ac8c92f5e943fa1b39e7410a44027bea7243c0bbb3caa67a77fc1428e1",
+        "vae": "3179ef01f84a2c714ee031bc3e6a6a4dc2cedc767d30e700c887aab1abbd706f"
+      },
+      "host": "n-62-30-24",
+      "job_id": "29839742",
+      "manifest_sha256": "89dd0f43752a417cb4a4ab0658a4fba294eba72eb65fd5899036a42d8207c4f2",
+      "plan_sha256": "35adaf248e9011ce81a5bcd165d1897e97901864695a10d56fad70eebe63f70e",
+      "source_sha256": "d2ac85ad644a94f3b5967537f1c777bb7318faf2a8507038888bc32728a0d805",
+      "stage": "cpu",
+      "starts": {
+        "cases": [
+          {
+            "active_slots": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24
+            ],
+            "bound_context_sha256": "62b0b7808e48b5789793b0709e1795e53bfce1b19b8871e6630fc8671d1c5406",
+            "case_id": "case-001",
+            "context_asset": {
+              "path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-25/prepared.pt",
+              "sha256": "84a0d35dbb565a535a18a7ef04bda5fbd7ab589c4e1ea2ac30d3e3437130e9cb"
+            },
+            "group": "source:e17c55a24cf815fb3d94b2556caf4fd558b576d9caf6cf41cd02b2ab88db64d2",
+            "identity": "CCNC(=O)c1ccc(NC(=O)c2ccc(OC)cc2OC)c(C)c1",
+            "occupied_slots": 25,
+            "origin": "posterior_mean",
+            "sample_index": 0,
+            "source_split": "audit"
+          },
+          {
+            "active_slots": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18
+            ],
+            "bound_context_sha256": "ab4e79af3669a49f26ef9676bd0794fbf200488d738824c6be5b1e0f16b591a9",
+            "case_id": "case-002",
+            "context_asset": {
+              "path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-19/prepared.pt",
+              "sha256": "492fae1ec092ad6667433bd88b28e3b4ce869a42f4755ea5479a64daba78ae91"
+            },
+            "group": "source:badebb169b590e37cbdcb84613cd71e246c9a0d5719383bf8a562894e753fec9",
+            "identity": "CC1(C)OCC(C(CC#N)OCc2ccccc2)O1",
+            "occupied_slots": 19,
+            "origin": "posterior_mean",
+            "sample_index": 3,
+            "source_split": "audit"
+          },
+          {
+            "active_slots": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18
+            ],
+            "bound_context_sha256": "ab4e79af3669a49f26ef9676bd0794fbf200488d738824c6be5b1e0f16b591a9",
+            "case_id": "case-003",
+            "context_asset": {
+              "path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-19/prepared.pt",
+              "sha256": "492fae1ec092ad6667433bd88b28e3b4ce869a42f4755ea5479a64daba78ae91"
+            },
+            "group": "source:5a8c39b7b6d3d33750845d441c445dba7fcc4af293948fc15da734f16cde3565",
+            "identity": "Cc1ccc(NC(=O)C(C)OCCC(C)C)c(O)c1",
+            "occupied_slots": 19,
+            "origin": "posterior_mean",
+            "sample_index": 6,
+            "source_split": "audit"
+          }
+        ],
+        "context_manifest_sha256": "a0ebed8bd67358b4027999901a8cb9e5be12731b4d77d68c6b9154513b2261eb",
+        "frozen_vae_state_sha256": "bca36c9c7dcad67fa7eed8c2996f9304032738cfd5a3b8957147e99c3cde2bec",
+        "selection": "first three distinct audit group and decoded identity posterior_mean rows in authenticated stored order; no score filtering or replacement",
+        "start_samples_sha256": "e412a26a39ffd3c44c0ba0cf957fc611444add9842d583e3739948ceaa99b34f",
+        "starts_sha256": "832592de7183b51ac22542ead558bc453006d3d349d942e2933dd1a52fb40ebd",
+        "status": "prepared_shared_starts_not_optimized"
+      },
+      "starts_readiness": {
+        "all_three_parent_starts_exact": true,
+        "cases": [
+          {
+            "case_id": "case-001",
+            "hard_identity_unchanged": true,
+            "maximum_probability_change": {
+              "atoms": 1.7881393432617188e-07,
+              "bonds": 5.960464477539063e-08,
+              "charges": 6.661338147750939e-16
+            }
+          },
+          {
+            "case_id": "case-002",
+            "hard_identity_unchanged": true,
+            "maximum_probability_change": {
+              "atoms": 1.1920928955078125e-07,
+              "bonds": 1.1920928955078125e-07,
+              "charges": 1.0842021724855044e-18
+            }
+          },
+          {
+            "case_id": "case-003",
+            "hard_identity_unchanged": true,
+            "maximum_probability_change": {
+              "atoms": 1.7881393432617188e-07,
+              "bonds": 5.960464477539063e-08,
+              "charges": 3.552713678800501e-15
+            }
+          }
+        ],
+        "claim": "CPU candidate readiness only; fresh native gates remain mandatory",
+        "diagnostic": {
+          "path": "/work3/s234818/latentmol/runs/source139-epoch36-embedding-gradient-diagnostic-attempt001/gpu/diagnostic.json",
+          "sha256": "be2403a9616a3345791e748747b9e2ca99fb55a0bab5641e506a473b2e48d9f9"
+        },
+        "frozen_vae_unchanged": true,
+        "parent_plan": {
+          "path": "/work3/s234818/latentmol/releases/source-138-epoch36-embedding-comparison-attempt003/configs/epoch36_embedding_comparison.json",
+          "sha256": "60f555eb6193b804d8446dc864a57c52662e4c146be424b8f7cc118f6d6ecd6c"
+        },
+        "parent_starts": {
+          "path": "/work3/s234818/latentmol/runs/source138-epoch36-embedding-comparison-attempt003/cpu/starts.pt",
+          "sha256": "832592de7183b51ac22542ead558bc453006d3d349d942e2933dd1a52fb40ebd"
+        },
+        "policy": "final_float64_cast_back_v1",
+        "status": "authenticated_candidate_not_native_pass",
+        "version": "epoch36-final-policy-precision-correction-v1"
+      },
+      "status": "passed",
+      "tests_passed": 450,
+      "version": "epoch36-guarded-embedding-long-experiment-v1"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "files": {
+    "cpu-gate.json": {
+      "bytes": 2423,
+      "sha256": "e7ed16e7cc97a8ba3275cb248dfc20a9a9a5fc05be701ac48b3269d4dfd0a636"
+    },
+    "cpu-tests.log": {
+      "bytes": 705,
+      "sha256": "4130f06c28b12112561bb2037a68b07cce212edfeba5f36089d0d4f252237f11"
+    },
+    "cpu-tests.xml": {
+      "bytes": 67579,
+      "sha256": "db0fb9a2ad77a8f7a7e4a20de631b0872285daecc00ba2662e2de73a25c11c87"
+    },
+    "result.json": {
+      "bytes": 9986,
+      "sha256": "2618aadbbcf8e3d74b3cad114c2c7b508f87c183c4f09e548d67be38090eb040"
+    },
+    "starts.json": {
+      "bytes": 3461,
+      "sha256": "22faa10f9b1d45ddc4b88c8d4c25777067dabadd9c1caa92e9270432f08d87b8"
+    }
+  },
+  "status": "verified_remote_SHA_and_size"
+}
