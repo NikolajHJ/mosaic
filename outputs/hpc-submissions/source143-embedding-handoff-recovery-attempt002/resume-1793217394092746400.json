@@ -1,0 +1,16 @@
+{
+  "command": [
+    "ssh",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=15",
+    "-o",
+    "ConnectionAttempts=1",
+    "dtu-hpc",
+    "bash -lc '/work3/s234818/latentmol/env/boltz311/bin/python -'"
+  ],
+  "returncode": 0,
+  "stderr": "\nWhen connecting from _outside_ of DTU (and not using DTU-VPN) one is \nrequired to authenticate with a ssh-key + ssh-key-keyphrase + DTU-password.\n\nFrom inside of DTU (or connecting via DTU-VPN) one can also connect \nwith password or ssh-key.\n\nInfo page on SSH: https://www.hpc.dtu.dk/?page_id=4317\n\n---\nFor ThinLinc users: \nPlease make sure that your TL client is at least version 4.16 - else you \ncannot connect to this system!\n\nThis is not an error-message, it's just a way to give you some information. \nClick 'Close' to continue ...\n---\n\nInfo page on the system update 08/2024: https://www.hpc.dtu.dk/?page_id=5209\n\n---\n\n",
+  "stdout": "{\"command\": [\"/work3/s234818/latentmol/env/boltz311/bin/python\", \"/work3/s234818/latentmol/releases/source-143-embedding-handoff-recovery-attempt002/scripts/hpc/embedding_handoff_recovery.py\", \"advance\", \"--after\", \"fit\", \"--release\", \"/work3/s234818/latentmol/releases/source-142-epoch36-guarded-embedding-long-attempt001\", \"--campaign\", \"/work3/s234818/latentmol/runs/source142-epoch36-guarded-embedding-long-attempt001\", \"--archive-sha256\", \"d2ac85ad644a94f3b5967537f1c777bb7318faf2a8507038888bc32728a0d805\", \"--manifest-sha256\", \"89dd0f43752a417cb4a4ab0658a4fba294eba72eb65fd5899036a42d8207c4f2\", \"--plan-sha256\", \"35adaf248e9011ce81a5bcd165d1897e97901864695a10d56fad70eebe63f70e\", \"--repair-release\", \"/work3/s234818/latentmol/releases/source-143-embedding-handoff-recovery-attempt002\", \"--repair-archive-sha256\", \"6e851def4a043df774bb259fc5a16c84ca9faada85c4616c99d65b5c6a092d41\", \"--repair-manifest-sha256\", \"57469430d6e13a8708fb593d5433b454a867cd0109c62a8355dfde3d7107077f\", \"--repair-plan-sha256\", \"fe14de14231cb395bcb0781419c4d2b536772a82f9cde5c44ee097768cb0571c\", \"--readiness\", \"/work3/s234818/latentmol/runs/source143-embedding-handoff-recovery-attempt002/readiness/readiness.json\", \"--readiness-sha256\", \"2470071046d191334a8e89bc1de63c203ae8614609c399d83d9f68736de07674\"], \"returncode\": 0, \"stdout\": \"{\\\"worker\\\": {\\\"status\\\": \\\"submitted_not_passed\\\", \\\"returncode\\\": 0, \\\"stdout\\\": \\\"Job <29845020> is submitted to queue <gpua100>.\\\\n\\\", \\\"stderr\\\": \\\"\\\", \\\"job_id\\\": \\\"29845020\\\", \\\"intent_sha256\\\": \\\"c090534cc7696615f668351b29d5f0127501da95ea0d33270add2d1bf13e67c3\\\"}, \\\"callback\\\": {\\\"status\\\": \\\"submitted_not_passed\\\", \\\"returncode\\\": 0, \\\"stdout\\\": \\\"Job <29845021> is submitted to queue <hpc>.\\\\n\\\", \\\"stderr\\\": \\\"\\\", \\\"job_id\\\": \\\"29845021\\\", \\\"intent_sha256\\\": \\\"0a28431fc18fe6ea876835d41b201026500eb8b49408a4a88656208ed70ac022\\\"}}\\n\", \"stderr\": \"\"}\n"
+}

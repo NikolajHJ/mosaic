@@ -1,0 +1,12 @@
+{
+  "archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source143-embedding-handoff-recovery-attempt002\\source143-embedding-handoff-recovery-attempt002.tar.gz",
+  "archive_sha256": "6e851def4a043df774bb259fc5a16c84ca9faada85c4616c99d65b5c6a092d41",
+  "campaign": "/work3/s234818/latentmol/runs/source143-embedding-handoff-recovery-attempt002",
+  "label": "source143-embedding-handoff-recovery-attempt002",
+  "manifest_sha256": "57469430d6e13a8708fb593d5433b454a867cd0109c62a8355dfde3d7107077f",
+  "members": 626,
+  "operator_relative": "scripts/hpc/embedding_handoff_recovery.py",
+  "plan_sha256": "fe14de14231cb395bcb0781419c4d2b536772a82f9cde5c44ee097768cb0571c",
+  "release": "/work3/s234818/latentmol/releases/source-143-embedding-handoff-recovery-attempt002",
+  "status": "sealed_not_submitted"
+}

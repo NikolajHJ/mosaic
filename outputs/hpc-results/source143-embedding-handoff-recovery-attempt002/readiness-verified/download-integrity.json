@@ -1,0 +1,35 @@
+{
+  "files": {
+    "cpu-tests.log": {
+      "bytes": 306,
+      "path": "/work3/s234818/latentmol/runs/source143-embedding-handoff-recovery-attempt002/readiness/cpu-tests.log",
+      "sha256": "dc09fa23453137128dd387db58de0065185661c530f8f7d201d815d43233e860"
+    },
+    "cpu-tests.xml": {
+      "bytes": 13415,
+      "path": "/work3/s234818/latentmol/runs/source143-embedding-handoff-recovery-attempt002/readiness/cpu-tests.xml",
+      "sha256": "27b1cceef206913259da58eac89a7e8bc87f1f79d1cb5afeac70c610886d1317"
+    },
+    "lsf.err": {
+      "bytes": 229,
+      "path": "/work3/s234818/latentmol/logs/source143-embedding-handoff-recovery-attempt002-cpu.29845008.err",
+      "sha256": "efb049873a6fbfb44db5ef7989bc451ee810f0dae5e4efb9acc6dd8dedf05643"
+    },
+    "lsf.out": {
+      "bytes": 9790,
+      "path": "/work3/s234818/latentmol/logs/source143-embedding-handoff-recovery-attempt002-cpu.29845008.out",
+      "sha256": "f67295235ca0c88d94fd052a740f2689c1ae017cd0e0e4985d2b3458d0aead15"
+    },
+    "pilot-cli.json": {
+      "bytes": 1759,
+      "path": "/work3/s234818/latentmol/runs/source143-embedding-handoff-recovery-attempt002/readiness/pilot-cli.json",
+      "sha256": "3954b8b371bee65dba3777d4ddd8aefea90b1bf70c77e37bf71cadd870dc034c"
+    },
+    "readiness.json": {
+      "bytes": 8026,
+      "path": "/work3/s234818/latentmol/runs/source143-embedding-handoff-recovery-attempt002/readiness/readiness.json",
+      "sha256": "2470071046d191334a8e89bc1de63c203ae8614609c399d83d9f68736de07674"
+    }
+  },
+  "status": "verified_remote_SHA_and_size"
+}

@@ -1,0 +1,54 @@
+{
+  "parent": {
+    "artifacts": {
+      "calibration": {
+        "path": "/work3/s234818/latentmol/runs/source142-epoch36-guarded-embedding-long-attempt001/fit/fit/calibration.json",
+        "sha256": "1c436618bc6dc26dfb049908b11477afc5f2e7b291132db4577a99631f0c69f8"
+      },
+      "checkpoint": {
+        "path": "/work3/s234818/latentmol/runs/source142-epoch36-guarded-embedding-long-attempt001/fit/fit/best-bridge.pt",
+        "sha256": "c8d86551849c7f7e1de5218b7121cbecacb7f9dbc9ee11a5aea5972187a81551"
+      },
+      "cpu_execution": {
+        "path": "/work3/s234818/latentmol/submissions/source142-epoch36-guarded-embedding-long-attempt001/cpu-execution.json",
+        "sha256": "ea3a3b2412df5ba8d5f081bf7df7560464b41fc27ab9b43f56b6e1889dadab7c"
+      },
+      "cpu_junit": {
+        "path": "/work3/s234818/latentmol/runs/source142-epoch36-guarded-embedding-long-attempt001/cpu/cpu-tests.xml",
+        "sha256": "db0fb9a2ad77a8f7a7e4a20de631b0872285daecc00ba2662e2de73a25c11c87"
+      },
+      "cpu_result": {
+        "path": "/work3/s234818/latentmol/runs/source142-epoch36-guarded-embedding-long-attempt001/cpu/result.json",
+        "sha256": "2618aadbbcf8e3d74b3cad114c2c7b508f87c183c4f09e548d67be38090eb040"
+      },
+      "fit_execution": {
+        "path": "/work3/s234818/latentmol/submissions/source142-epoch36-guarded-embedding-long-attempt001/fit-execution.json",
+        "sha256": "6b54b2c7cfbe733a3fffa20eb723fb375a6ddf568ff94081cff9e6c10734833d"
+      },
+      "fit_result": {
+        "path": "/work3/s234818/latentmol/runs/source142-epoch36-guarded-embedding-long-attempt001/fit/result.json",
+        "sha256": "d14ef4d6adc31939e13bd92ae06d3af83db64cc91fbc57aeb5c7729414492327"
+      },
+      "fit_terminal": {
+        "path": "/work3/s234818/latentmol/logs/source142-epoch36-guarded-embedding-long-attempt001-fit.29839755.out",
+        "sha256": "72b264eed6071be32a0c2963e7c2f3b0740e684ed350e81c9fb469d9305ed925"
+      }
+    },
+    "campaign": "/work3/s234818/latentmol/runs/source142-epoch36-guarded-embedding-long-attempt001",
+    "controller_sha256": "3b6f53f4ee1fc0841eda8b50d7feb5597ce0703d74fec1794b8981f6c932f136",
+    "fit_job_id": "29839755",
+    "manifest_sha256": "89dd0f43752a417cb4a4ab0658a4fba294eba72eb65fd5899036a42d8207c4f2",
+    "plan_sha256": "35adaf248e9011ce81a5bcd165d1897e97901864695a10d56fad70eebe63f70e",
+    "release": "/work3/s234818/latentmol/releases/source-142-epoch36-guarded-embedding-long-attempt001",
+    "source_sha256": "d2ac85ad644a94f3b5967537f1c777bb7318faf2a8507038888bc32728a0d805"
+  },
+  "readiness": {
+    "cpu_tests": [
+      "tests/test_embedding_handoff_recovery.py",
+      "tests/test_embedding_handoff_readiness.py"
+    ]
+  },
+  "scheduler_policy": "lsf-json-exact-error-and-terminal-v1",
+  "scope": "Controller-only scheduler handoff repair; original trained mapping and all scientific workers/plan/source142 bindings unchanged. No refit and no VAE continuation changes.",
+  "version": "embedding-handoff-recovery-v1"
+}

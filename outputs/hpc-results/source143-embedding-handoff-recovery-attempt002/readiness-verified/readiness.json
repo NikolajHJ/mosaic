@@ -1,0 +1,168 @@
+{
+  "actual_pilot_cli": {
+    "actual_worker_sha256": "fbd4febe85dbe556d061334f99696008cef38e391e8f70bae205a73878f0a587",
+    "argv": [
+      "/work3/s234818/latentmol/env/boltz311/bin/python",
+      "-m",
+      "latentmol.boltz.embedding_long_experiment",
+      "--stage",
+      "pilot",
+      "--config",
+      "/work3/s234818/latentmol/releases/source-142-epoch36-guarded-embedding-long-attempt001/configs/epoch36_embedding_long.json",
+      "--plan-sha256",
+      "35adaf248e9011ce81a5bcd165d1897e97901864695a10d56fad70eebe63f70e",
+      "--source-sha256",
+      "d2ac85ad644a94f3b5967537f1c777bb7318faf2a8507038888bc32728a0d805",
+      "--manifest-sha256",
+      "89dd0f43752a417cb4a4ab0658a4fba294eba72eb65fd5899036a42d8207c4f2",
+      "--output",
+      "/work3/s234818/latentmol/runs/source142-epoch36-guarded-embedding-long-attempt001/pilot",
+      "--campaign",
+      "/work3/s234818/latentmol/runs/source142-epoch36-guarded-embedding-long-attempt001",
+      "--seconds",
+      "13800",
+      "--bridge",
+      "/work3/s234818/latentmol/runs/source142-epoch36-guarded-embedding-long-attempt001/fit/fit/best-bridge.pt",
+      "--bridge-sha256",
+      "c8d86551849c7f7e1de5218b7121cbecacb7f9dbc9ee11a5aea5972187a81551",
+      "--calibration",
+      "/work3/s234818/latentmol/runs/source142-epoch36-guarded-embedding-long-attempt001/fit/fit/calibration.json",
+      "--calibration-sha256",
+      "1c436618bc6dc26dfb049908b11477afc5f2e7b291132db4577a99631f0c69f8"
+    ],
+    "cpu_module_imports": [
+      "numpy",
+      "torch"
+    ],
+    "cuda_initializations": 0,
+    "cuda_initialized_after": false,
+    "cuda_initialized_before": false,
+    "cuda_visible_devices": "",
+    "job_submissions": 0,
+    "native_model_loads": 0,
+    "parent_writes": 0,
+    "reached": "native_smoke",
+    "status": "passed",
+    "stop": "before_cuda_or_model_setup",
+    "updates": 0
+  },
+  "actual_pilot_cli_asset": {
+    "path": "/work3/s234818/latentmol/runs/source143-embedding-handoff-recovery-attempt002/readiness/pilot-cli.json",
+    "sha256": "3954b8b371bee65dba3777d4ddd8aefea90b1bf70c77e37bf71cadd870dc034c"
+  },
+  "calibration_changed": false,
+  "existing_vae_continuation": "untouched",
+  "job_id": "29845008",
+  "junit": {
+    "errors": 0,
+    "failures": 0,
+    "path": "/work3/s234818/latentmol/runs/source143-embedding-handoff-recovery-attempt002/readiness/cpu-tests.xml",
+    "sha256": "27b1cceef206913259da58eac89a7e8bc87f1f79d1cb5afeac70c610886d1317",
+    "skipped": 0,
+    "tests": 85
+  },
+  "manifest_sha256": "57469430d6e13a8708fb593d5433b454a867cd0109c62a8355dfde3d7107077f",
+  "model_training": "not_run",
+  "optimization": "not_run",
+  "original_controller_sha256": "3b6f53f4ee1fc0841eda8b50d7feb5597ce0703d74fec1794b8981f6c932f136",
+  "original_identity": {
+    "manifest_sha256": "89dd0f43752a417cb4a4ab0658a4fba294eba72eb65fd5899036a42d8207c4f2",
+    "plan_sha256": "35adaf248e9011ce81a5bcd165d1897e97901864695a10d56fad70eebe63f70e",
+    "source_sha256": "d2ac85ad644a94f3b5967537f1c777bb7318faf2a8507038888bc32728a0d805"
+  },
+  "parent": {
+    "model_identity": {
+      "calibration_sha256": "1c436618bc6dc26dfb049908b11477afc5f2e7b291132db4577a99631f0c69f8",
+      "checkpoint_sha256": "c8d86551849c7f7e1de5218b7121cbecacb7f9dbc9ee11a5aea5972187a81551"
+    },
+    "new_calibration": false,
+    "optimization": "not_run",
+    "original_artifacts": {
+      "calibration": {
+        "path": "/work3/s234818/latentmol/runs/source142-epoch36-guarded-embedding-long-attempt001/fit/fit/calibration.json",
+        "sha256": "1c436618bc6dc26dfb049908b11477afc5f2e7b291132db4577a99631f0c69f8"
+      },
+      "checkpoint": {
+        "path": "/work3/s234818/latentmol/runs/source142-epoch36-guarded-embedding-long-attempt001/fit/fit/best-bridge.pt",
+        "sha256": "c8d86551849c7f7e1de5218b7121cbecacb7f9dbc9ee11a5aea5972187a81551"
+      },
+      "cpu_execution": {
+        "path": "/work3/s234818/latentmol/submissions/source142-epoch36-guarded-embedding-long-attempt001/cpu-execution.json",
+        "sha256": "ea3a3b2412df5ba8d5f081bf7df7560464b41fc27ab9b43f56b6e1889dadab7c"
+      },
+      "cpu_junit": {
+        "path": "/work3/s234818/latentmol/runs/source142-epoch36-guarded-embedding-long-attempt001/cpu/cpu-tests.xml",
+        "sha256": "db0fb9a2ad77a8f7a7e4a20de631b0872285daecc00ba2662e2de73a25c11c87"
+      },
+      "cpu_result": {
+        "path": "/work3/s234818/latentmol/runs/source142-epoch36-guarded-embedding-long-attempt001/cpu/result.json",
+        "sha256": "2618aadbbcf8e3d74b3cad114c2c7b508f87c183c4f09e548d67be38090eb040"
+      },
+      "fit_execution": {
+        "path": "/work3/s234818/latentmol/submissions/source142-epoch36-guarded-embedding-long-attempt001/fit-execution.json",
+        "sha256": "6b54b2c7cfbe733a3fffa20eb723fb375a6ddf568ff94081cff9e6c10734833d"
+      },
+      "fit_result": {
+        "path": "/work3/s234818/latentmol/runs/source142-epoch36-guarded-embedding-long-attempt001/fit/result.json",
+        "sha256": "d14ef4d6adc31939e13bd92ae06d3af83db64cc91fbc57aeb5c7729414492327"
+      },
+      "fit_terminal": {
+        "path": "/work3/s234818/latentmol/logs/source142-epoch36-guarded-embedding-long-attempt001-fit.29839755.out",
+        "sha256": "72b264eed6071be32a0c2963e7c2f3b0740e684ed350e81c9fb469d9305ed925"
+      }
+    },
+    "original_controller_sha256": "3b6f53f4ee1fc0841eda8b50d7feb5597ce0703d74fec1794b8981f6c932f136",
+    "original_cpu_junit": {
+      "errors": 0,
+      "failures": 0,
+      "skipped": 0,
+      "tests": 450
+    },
+    "original_identity": {
+      "manifest_sha256": "89dd0f43752a417cb4a4ab0658a4fba294eba72eb65fd5899036a42d8207c4f2",
+      "plan_sha256": "35adaf248e9011ce81a5bcd165d1897e97901864695a10d56fad70eebe63f70e",
+      "source_sha256": "d2ac85ad644a94f3b5967537f1c777bb7318faf2a8507038888bc32728a0d805"
+    },
+    "original_stage_artifacts": {
+      "cpu": {
+        "junit": {
+          "path": "/work3/s234818/latentmol/runs/source142-epoch36-guarded-embedding-long-attempt001/cpu/cpu-tests.xml",
+          "sha256": "db0fb9a2ad77a8f7a7e4a20de631b0872285daecc00ba2662e2de73a25c11c87"
+        },
+        "starts": {
+          "path": "/work3/s234818/latentmol/runs/source142-epoch36-guarded-embedding-long-attempt001/cpu/starts.pt",
+          "sha256": "832592de7183b51ac22542ead558bc453006d3d349d942e2933dd1a52fb40ebd"
+        }
+      },
+      "fit": {
+        "audit": {
+          "path": "/work3/s234818/latentmol/runs/source142-epoch36-guarded-embedding-long-attempt001/fit/fit/audit.json",
+          "sha256": "e04ca339521f164ddeef88040962d4a5b358e64c04b937a539fbd333f1aa0f3d"
+        },
+        "calibration": {
+          "path": "/work3/s234818/latentmol/runs/source142-epoch36-guarded-embedding-long-attempt001/fit/fit/calibration.json",
+          "sha256": "1c436618bc6dc26dfb049908b11477afc5f2e7b291132db4577a99631f0c69f8"
+        },
+        "checkpoint": {
+          "path": "/work3/s234818/latentmol/runs/source142-epoch36-guarded-embedding-long-attempt001/fit/fit/best-bridge.pt",
+          "sha256": "c8d86551849c7f7e1de5218b7121cbecacb7f9dbc9ee11a5aea5972187a81551"
+        },
+        "paired_data_manifest": {
+          "path": "/work3/s234818/latentmol/runs/source142-epoch36-guarded-embedding-long-attempt001/fit/paired-data/manifest.json",
+          "sha256": "0a19c2edb82812857c83506980a9d53092820bdf660bf2c7f75eee4ca5cdc240"
+        },
+        "training_plan": {
+          "path": "/work3/s234818/latentmol/runs/source142-epoch36-guarded-embedding-long-attempt001/fit/fit/training-plan.json",
+          "sha256": "f2fd68e8ebac5d2fa3fe61ffaae577e8f89cf961edb17815daf5ab501c1977cc"
+        }
+      }
+    },
+    "refit": false,
+    "status": "passed",
+    "tensor_semantics": "Exact tensor-file SHA authenticated; inherited CPU450/fit proof adopted, no unpickling"
+  },
+  "plan_sha256": "fe14de14231cb395bcb0781419c4d2b536772a82f9cde5c44ee097768cb0571c",
+  "source_sha256": "6e851def4a043df774bb259fc5a16c84ca9faada85c4616c99d65b5c6a092d41",
+  "status": "passed",
+  "version": "embedding-handoff-readiness-v2"
+}

@@ -1,0 +1,34 @@
+{
+  "calibration_sha256": "1c436618bc6dc26dfb049908b11477afc5f2e7b291132db4577a99631f0c69f8",
+  "changed_common_members_vs_failed001": [
+    "scripts/hpc/embedding_handoff_readiness.py",
+    "scripts/hpc/embedding_handoff_recovery.py",
+    "tests/test_embedding_handoff_readiness.py",
+    "tests/test_embedding_handoff_recovery.py"
+  ],
+  "readiness_v2": "authenticCPUimports; zeroCUDA/modelsetup/mainwrites/submissions/updates; exactrealpilotargv",
+  "repair_members": {
+    "configs/embedding_handoff_recovery.json": "fe14de14231cb395bcb0781419c4d2b536772a82f9cde5c44ee097768cb0571c",
+    "scripts/embedding_handoff_campaign.py": "b7d79c1c3f71a44568108b129c2891ccb82cd68d038f8575fa48e436ee91b565",
+    "scripts/hpc/embedding_handoff_readiness.py": "f8a398b1506660fce96e9a491d53934fe8464bdacbb35e52f52b87c834c36a75",
+    "scripts/hpc/embedding_handoff_recovery.py": "f5549584376926c9e564d10ae972c9967b6a50cabbe367567fe1c83abcfcdd71",
+    "tests/test_embedding_handoff_readiness.py": "172443e0527dbd046027df12052e45d362cf4b92c3f33e0484e5474588638dae",
+    "tests/test_embedding_handoff_recovery.py": "cae21394aa76943a5a55f66185af8b90bd0df6564a0806631be4353e68af0c5f"
+  },
+  "scientific_worker": "original source142 immutable release and exact original plan",
+  "seal": {
+    "archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source143-embedding-handoff-recovery-attempt002\\source143-embedding-handoff-recovery-attempt002.tar.gz",
+    "archive_sha256": "6e851def4a043df774bb259fc5a16c84ca9faada85c4616c99d65b5c6a092d41",
+    "campaign": "/work3/s234818/latentmol/runs/source143-embedding-handoff-recovery-attempt002",
+    "label": "source143-embedding-handoff-recovery-attempt002",
+    "manifest_sha256": "57469430d6e13a8708fb593d5433b454a867cd0109c62a8355dfde3d7107077f",
+    "members": 626,
+    "operator_relative": "scripts/hpc/embedding_handoff_recovery.py",
+    "plan_sha256": "fe14de14231cb395bcb0781419c4d2b536772a82f9cde5c44ee097768cb0571c",
+    "release": "/work3/s234818/latentmol/releases/source-143-embedding-handoff-recovery-attempt002",
+    "status": "sealed_not_submitted"
+  },
+  "selected_checkpoint_sha256": "c8d86551849c7f7e1de5218b7121cbecacb7f9dbc9ee11a5aea5972187a81551",
+  "status": "local_AST_JSON_bytes_only_not_allocated_validation",
+  "unchanged_VAE_continuation": true
+}

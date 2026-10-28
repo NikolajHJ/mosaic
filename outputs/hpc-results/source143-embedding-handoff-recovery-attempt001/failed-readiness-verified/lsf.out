@@ -1,0 +1,48 @@
+JOB=29844977 HOST=n-62-31-16 SOURCE=/work3/s234818/latentmol/releases/source-143-embedding-handoff-recovery-attempt001
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@hpc.dtu.dk>
+Subject: Job 29844977: <source143-embedding-handoff-recovery-attempt001-cpu> in cluster <dcc> Exited
+
+Job <source143-embedding-handoff-recovery-attempt001-cpu> was submitted from host <hpclogin1> by user <s234818> in cluster <dcc> at Wed Oct 28 20:47:01 2026
+Job was executed on host(s) <4*n-62-31-16>, in queue <hpc>, as user <s234818> in cluster <dcc> at Wed Oct 28 20:47:02 2026
+</zhome/95/e/206121> was used as the home directory.
+</zhome/95/e/206121> was used as the working directory.
+Started at Wed Oct 28 20:47:02 2026
+Terminated at Wed Oct 28 20:47:34 2026
+Results reported at Wed Oct 28 20:47:34 2026
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/bash
+set -euo pipefail
+cd /work3/s234818/latentmol/releases/source-143-embedding-handoff-recovery-attempt001
+exec env PYTHONDONTWRITEBYTECODE=1 LATENTMOL_SOURCE_ARCHIVE=/work3/s234818/latentmol/releases/source-143-embedding-handoff-recovery-attempt001.tar.gz bash scripts/hpc/boltz_run.sh /work3/s234818/latentmol/env/boltz311/bin/python /work3/s234818/latentmol/releases/source-143-embedding-handoff-recovery-attempt001/scripts/hpc/embedding_handoff_readiness.py --config /work3/s234818/latentmol/releases/source-143-embedding-handoff-recovery-attempt001/configs/embedding_handoff_recovery.json --source-sha256 6f3bcaea485793844579694d371c06c9f7c93d392444404dfce43fa6ef361754 --manifest-sha256 03d063ed9eeb6ffac70bf7affb7cf7151796c68b5d6efe58d185937360030c13 --plan-sha256 fe14de14231cb395bcb0781419c4d2b536772a82f9cde5c44ee097768cb0571c --output /work3/s234818/latentmol/runs/source143-embedding-handoff-recovery-attempt001/readiness --seconds 2400
+
+------------------------------------------------------------
+
+Exited with exit code 1.
+
+Resource usage summary:
+
+    CPU time :                                   12.33 sec.
+    Max Memory :                                 57 MB
+    Average Memory :                             57.00 MB
+    Total Requested Memory :                     32768.00 MB
+    Delta Memory :                               32711.00 MB
+    Max Swap :                                   -
+    Max Processes :                              5
+    Max Threads :                                6
+    Run time :                                   32 sec.
+    Turnaround time :                            33 sec.
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file </work3/s234818/latentmol/logs/source143-embedding-handoff-recovery-attempt001-cpu.29844977.err> for stderr output of this job.
+

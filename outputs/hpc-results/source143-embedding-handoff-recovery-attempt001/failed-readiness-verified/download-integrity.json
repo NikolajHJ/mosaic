@@ -1,0 +1,26 @@
+{
+  "files": {
+    "cpu-tests.log": {
+      "bytes": 306,
+      "path": "/work3/s234818/latentmol/runs/source143-embedding-handoff-recovery-attempt001/readiness/cpu-tests.log",
+      "sha256": "e519c27edaca07670d1c1b98d6397417f029f147fb62babb94860c61f6e70f79"
+    },
+    "cpu-tests.xml": {
+      "bytes": 11765,
+      "path": "/work3/s234818/latentmol/runs/source143-embedding-handoff-recovery-attempt001/readiness/cpu-tests.xml",
+      "sha256": "fc09156753560b607d58e4ee6ca146e9617032bc04bf9b4eb297e3a474783014"
+    },
+    "lsf.err": {
+      "bytes": 2943,
+      "path": "/work3/s234818/latentmol/logs/source143-embedding-handoff-recovery-attempt001-cpu.29844977.err",
+      "sha256": "6394ca80dce25720fbdeedfae44e1ef663e4f17630c54c474f66732940183503"
+    },
+    "lsf.out": {
+      "bytes": 2769,
+      "path": "/work3/s234818/latentmol/logs/source143-embedding-handoff-recovery-attempt001-cpu.29844977.out",
+      "sha256": "9ab2b45f61848a77601ee6e4253038ee985999b7cb141687fd44a709a127d529"
+    }
+  },
+  "not_promoted": "75fixtures passed, real pre-model dispatch failed on eager CPU Torch import",
+  "status": "verified_remote_SHA_and_size"
+}

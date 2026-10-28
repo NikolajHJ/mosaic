@@ -1,0 +1,91 @@
+{
+  "actual-pilot-cli.log": null,
+  "cpu-tests.log": "....................................................",
+  "cpu_err": "Loaded dependency [python3/3.11.9]: sqlite3/3.45.3\nLoaded dependency [python3/3.11.9]: gcc/12.3.0-binutils-2.40\nLoaded module: python3/3.11.9\n\nLoading python3/3.11.9\n  Loading requirement: sqlite3/3.45.3 gcc/12.3.0-binutils-2.40\n",
+  "cpu_out": "JOB=29844977 HOST=n-62-31-16 SOURCE=/work3/s234818/latentmol/releases/source-143-embedding-handoff-recovery-attempt001\n",
+  "cpu_scheduler": {
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "{\n  \"COMMAND\":\"bjobs\",\n  \"JOBS\":1,\n  \"RECORDS\":[\n    {\n      \"JOBID\":\"29844977\",\n      \"STAT\":\"RUN\",\n      \"JOB_NAME\":\"source143-embedding-handoff-recovery-attempt001-cpu\"\n    }\n  ]\n}\n"
+  },
+  "files": {
+    "readiness-cpu-intent.json": {
+      "bsub": [
+        "bsub",
+        "-J",
+        "source143-embedding-handoff-recovery-attempt001-cpu",
+        "-q",
+        "hpc",
+        "-n",
+        "4",
+        "-W",
+        "0:45",
+        "-R",
+        "rusage[mem=8GB]",
+        "-R",
+        "span[hosts=1]",
+        "-oo",
+        "/work3/s234818/latentmol/logs/source143-embedding-handoff-recovery-attempt001-cpu.%J.out",
+        "-eo",
+        "/work3/s234818/latentmol/logs/source143-embedding-handoff-recovery-attempt001-cpu.%J.err"
+      ],
+      "command": [
+        "/work3/s234818/latentmol/env/boltz311/bin/python",
+        "/work3/s234818/latentmol/releases/source-143-embedding-handoff-recovery-attempt001/scripts/hpc/embedding_handoff_readiness.py",
+        "--config",
+        "/work3/s234818/latentmol/releases/source-143-embedding-handoff-recovery-attempt001/configs/embedding_handoff_recovery.json",
+        "--source-sha256",
+        "6f3bcaea485793844579694d371c06c9f7c93d392444404dfce43fa6ef361754",
+        "--manifest-sha256",
+        "03d063ed9eeb6ffac70bf7affb7cf7151796c68b5d6efe58d185937360030c13",
+        "--plan-sha256",
+        "fe14de14231cb395bcb0781419c4d2b536772a82f9cde5c44ee097768cb0571c",
+        "--output",
+        "/work3/s234818/latentmol/runs/source143-embedding-handoff-recovery-attempt001/readiness",
+        "--seconds",
+        "2400"
+      ],
+      "fresh_quota": {
+        "minimum_free_gib": 57.11,
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "HPE-Storage-Servers (disks, storagepool 1): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nHPE-Storage-Servers (NVME, storagepool 2): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (disks, storagepool 3): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks, storagepool 4): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks added in 2024, storagepool 5): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (NVMEs added in 2024, storagepool 6): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||   42.89 GiB|  100.00 GiB||   390530| 20000000\n\n"
+      },
+      "identity": {
+        "archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source143-embedding-handoff-recovery-attempt001\\source143-embedding-handoff-recovery-attempt001.tar.gz",
+        "archive_sha256": "6f3bcaea485793844579694d371c06c9f7c93d392444404dfce43fa6ef361754",
+        "campaign": "/work3/s234818/latentmol/runs/source143-embedding-handoff-recovery-attempt001",
+        "label": "source143-embedding-handoff-recovery-attempt001",
+        "manifest_sha256": "03d063ed9eeb6ffac70bf7affb7cf7151796c68b5d6efe58d185937360030c13",
+        "members": 626,
+        "operator_relative": "scripts/hpc/embedding_handoff_recovery.py",
+        "plan_sha256": "fe14de14231cb395bcb0781419c4d2b536772a82f9cde5c44ee097768cb0571c",
+        "release": "/work3/s234818/latentmol/releases/source-143-embedding-handoff-recovery-attempt001",
+        "status": "sealed_not_submitted"
+      },
+      "script": "#!/bin/bash\nset -euo pipefail\ncd /work3/s234818/latentmol/releases/source-143-embedding-handoff-recovery-attempt001\nexec env PYTHONDONTWRITEBYTECODE=1 LATENTMOL_SOURCE_ARCHIVE=/work3/s234818/latentmol/releases/source-143-embedding-handoff-recovery-attempt001.tar.gz bash scripts/hpc/boltz_run.sh /work3/s234818/latentmol/env/boltz311/bin/python /work3/s234818/latentmol/releases/source-143-embedding-handoff-recovery-attempt001/scripts/hpc/embedding_handoff_readiness.py --config /work3/s234818/latentmol/releases/source-143-embedding-handoff-recovery-attempt001/configs/embedding_handoff_recovery.json --source-sha256 6f3bcaea485793844579694d371c06c9f7c93d392444404dfce43fa6ef361754 --manifest-sha256 03d063ed9eeb6ffac70bf7affb7cf7151796c68b5d6efe58d185937360030c13 --plan-sha256 fe14de14231cb395bcb0781419c4d2b536772a82f9cde5c44ee097768cb0571c --output /work3/s234818/latentmol/runs/source143-embedding-handoff-recovery-attempt001/readiness --seconds 2400\n",
+      "status": "intent_not_submitted"
+    },
+    "readiness-cpu-receipt.json": {
+      "intent_sha256": "9e45550419e82eeb071f025ca6ee5962ad431d09eea30f8605e906fc66b1a775",
+      "job_id": "29844977",
+      "returncode": 0,
+      "status": "submitted_not_passed",
+      "stderr": "",
+      "stdout": "Job <29844977> is submitted to queue <hpc>.\n"
+    }
+  },
+  "identity": {
+    "archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source143-embedding-handoff-recovery-attempt001\\source143-embedding-handoff-recovery-attempt001.tar.gz",
+    "archive_sha256": "6f3bcaea485793844579694d371c06c9f7c93d392444404dfce43fa6ef361754",
+    "campaign": "/work3/s234818/latentmol/runs/source143-embedding-handoff-recovery-attempt001",
+    "label": "source143-embedding-handoff-recovery-attempt001",
+    "manifest_sha256": "03d063ed9eeb6ffac70bf7affb7cf7151796c68b5d6efe58d185937360030c13",
+    "members": 626,
+    "operator_relative": "scripts/hpc/embedding_handoff_recovery.py",
+    "plan_sha256": "fe14de14231cb395bcb0781419c4d2b536772a82f9cde5c44ee097768cb0571c",
+    "release": "/work3/s234818/latentmol/releases/source-143-embedding-handoff-recovery-attempt001",
+    "status": "sealed_not_submitted"
+  },
+  "readiness": null
+}
