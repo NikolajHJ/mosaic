@@ -38,3 +38,19 @@ def test_junit_counts_actual_rows(tmp_path):
 def test_duplicate_junit_is_failure(tmp_path):
     path=tmp_path/'raw.xml';path.write_text('<testsuite><testcase classname="a" name="b"/><testcase classname="a" name="b"/></testsuite>')
     with pytest.raises(ValueError):ops.xml_counts(path)
+
+
+def test_report_budget_adds_its_full_allowance_without_borrowing_current_futures():
+    prior={'status':'passed','required_bytes':50*ops.GIB,'available_bytes':60*ops.GIB,
+           'reserve_bytes':4*ops.GIB,'file_reserve':100000,'forecasts_removed':False,'original_gate_changed':False}
+    gate=ops.report_budget(prior,1234)
+    assert gate['required_bytes']==51*ops.GIB and gate['available_bytes']==60*ops.GIB-1234
+    assert gate['reserve_bytes']==4*ops.GIB and gate['file_reserve']==100000 and gate['forecasts_removed'] is False
+
+
+@pytest.mark.parametrize('change',[{'status':'failed'},{'forecasts_removed':True}])
+def test_report_cannot_adopt_a_failed_or_reduced_current_campaign_gate(change):
+    prior={'status':'passed','required_bytes':50*ops.GIB,'available_bytes':60*ops.GIB,
+           'reserve_bytes':4*ops.GIB,'file_reserve':100000,'forecasts_removed':False,'original_gate_changed':False}
+    prior.update(change)
+    with pytest.raises(ValueError):ops.report_budget(prior,0)

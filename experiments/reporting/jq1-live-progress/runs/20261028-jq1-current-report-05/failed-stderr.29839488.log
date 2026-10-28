@@ -1,0 +1,14 @@
+Loaded dependency [python3/3.12.11]: sqlite3/3.50.1
+Loaded dependency [python3/3.12.11]: gcc/14.3.0-binutils-2.44
+Loaded module: python3/3.12.11
+
+Loading python3/3.12.11
+  Loading requirement: sqlite3/3.50.1 gcc/14.3.0-binutils-2.44
+Traceback (most recent call last):
+  File "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-release-05/source/scripts/report_ops.py", line 292, in <module>
+    execute(*sys.argv[1:])
+  File "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-release-05/source/scripts/report_ops.py", line 248, in execute
+    subprocess.run(command,env=env,cwd=SOURCE,stdout=stream,stderr=subprocess.STDOUT,check=True,timeout=2400)
+  File "/appl9/python/3.12.11/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/work3/s234818/mosaic/envs/protenix-tiny/bin/python', '-m', 'pytest', '/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-release-05/source/tests/test_qualification.py', '/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-release-05/source/tests/test_report_data.py', '/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-release-05/source/tests/test_report_ops.py', '/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-release-05/source/tests/test_viewer.py', '--rootdir', '/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-release-05/source', '--import-mode=importlib', '-o', 'addopts=', '-o', 'cache_dir=/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-05/cpu/cache', '--basetemp', '/tmp/mosaic-boltz.29839488.v8NVcI/report-tests', '--junitxml', '/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-05/cpu/tests.xml', '-q']' returned non-zero exit status 1.

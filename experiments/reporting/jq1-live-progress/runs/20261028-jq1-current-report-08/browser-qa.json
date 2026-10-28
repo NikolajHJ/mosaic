@@ -1,0 +1,44 @@
+{
+  "status": "passed_actual_browser_presentation_QA",
+  "edition": "edition-0004",
+  "url": "http://127.0.0.1:8780/report.html",
+  "browser": "iab",
+  "tab": "1",
+  "source_manifest_sha256": "2fa4fdc68dda5d04a7519c64c8550b44135678e85dba489d35d3e741d1ec5c11",
+  "checks": {
+    "all_six_experiment_selectors": true,
+    "cohort_header_correct": true,
+    "protenix_numeric_15020": true,
+    "protenix_previous_15000": true,
+    "unsaved_15021_scalar_available_graph_and_heatmaps_empty": true,
+    "unsaved_graph_child_count": 0,
+    "latest_protenix_20000_and_25_atom_300_pair_heatmaps": true,
+    "actual_boltz_slider_drag_20000_to_11200": true,
+    "boltz_previous_19980_next_20000": true,
+    "playback_observed_0_to_180": true,
+    "manual_numeric_12340_pauses_and_remains_stable": true,
+    "latest_boltz_20000": true,
+    "dbmol_latest_7500_and_three_weighted_components": true,
+    "noisy_protenix_1000_completed": true,
+    "protenix_chemistry_latest_10000_contact_and_saved_chemistry": true,
+    "boltz_chemistry_latest_10000_affinity_and_saved_chemistry": true,
+    "original_failed_and_partial_statuses_visible": true,
+    "raw_invalid_and_sanitized_graphs_visible": true,
+    "stable_refresh_preserves_selection": true,
+    "no_browser_console_errors_or_warnings": true
+  },
+  "notes": [
+    "DOM fill did not commit a change in this automation path; real native typing plus Tab was used and verified. No report code change was needed.",
+    "Browser checks inspect existing presentation only; no scientific model or array calculation was run locally."
+  ],
+  "boltz_chemistry_presentation": {
+    "arm": "boltz_chemistry",
+    "chemistryLegend": "Saved chemistry loss",
+    "componentHidden": false,
+    "primary": "Native affinity objective · original optimized direction ↓",
+    "statuses": "Scientific: Terminal check failedPresentation: Saved data verifiedProgress: PartialContinuation: Blocked",
+    "step": "10000",
+    "title": "Boltz-2 + chemistry"
+  },
+  "screenshot": "results/hpc/20261025-jq1-live-report-01/report-preview-current-04.jpg"
+}

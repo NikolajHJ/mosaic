@@ -1,0 +1,22 @@
+{
+  "archive_bytes": 65830,
+  "archive_sha256": "25c52cdbda4624d17cd71797ede4766cb65610648b8da88623a3b6cc085a9e8b",
+  "cpu_counts": {
+    "tests.test_qualification": 19,
+    "tests.test_report_data": 73,
+    "tests.test_report_ops": 16,
+    "tests.test_viewer": 40
+  },
+  "edition": "edition-0004",
+  "files": 17,
+  "generation": "07",
+  "manifest_bytes": 33604,
+  "manifest_sha256": "7e19c46a1b1a062710f44d994f33cb57ced0a484c709ae320503503ebd24008d",
+  "monitor_remains_paused": true,
+  "optimizer_submission": false,
+  "plan_bytes": 34680,
+  "plan_sha256": "664dfe12b1d7ad12dd31a71f74a05821cdce99d158c6d3f07456180033d6b4e4",
+  "program_bytes": 91634,
+  "program_sha256": "a8232ef47b4b89ffb64b157cb1a82d380a09cd0f8ea5ebd9e101e1e74d6fcc5a",
+  "status": "prepared_not_submitted"
+}

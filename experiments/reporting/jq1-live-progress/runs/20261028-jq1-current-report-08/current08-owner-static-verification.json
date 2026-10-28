@@ -1,0 +1,22 @@
+{
+  "status": "passed_report_owner_static_AST_byte_layout",
+  "sealed_source08_current_runtime_files": [
+    "scripts/report_data.py",
+    "scripts/report_ops.py",
+    "scripts/report_stage.lsf",
+    "templates/report.html",
+    "tests/test_report_data.py",
+    "tests/test_report_ops.py",
+    "tests/test_viewer.py"
+  ],
+  "python_files_parsed": 16,
+  "all_owned_directories_have_README": true,
+  "declared_separately_maintained_local_delivery_helpers": [
+    "scripts/observe.py",
+    "scripts/publish.py",
+    "scripts/verify_http.py"
+  ],
+  "prior_static_attempts": "Overbroad comparisons of historical documentation and intentionally separate local observe helper failed; all seven active render/runtime/test/template files retain mandatory exact equality",
+  "repository_wide_layout_check": "failed pre-existing outside-owner README/discovery issues; not modified",
+  "local_numerical_tests": false
+}

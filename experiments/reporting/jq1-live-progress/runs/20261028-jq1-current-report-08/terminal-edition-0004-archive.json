@@ -1,0 +1,13 @@
+{
+  "status": "passed_saved_only_presentation",
+  "job_id": "29839701",
+  "manifest_sha256": "2fa4fdc68dda5d04a7519c64c8550b44135678e85dba489d35d3e741d1ec5c11",
+  "archive": {
+    "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-08/edition-0004.tar.gz",
+    "bytes": 70185471,
+    "sha256": "2e8330d343bfc69c15e673f51e42750c057a6201a37d92d97ec4f96e910d5631"
+  },
+  "receipt_sha256": "7442f8ceb9bb3b29484cffd057a1120b66b8330cd0b02a180c6540139c5d82b3",
+  "cpu_certificate_sha256": "c17140e8a83fb1c4d63612c0c10d4ad73bc0ada32357f94cb74f5e6968a826be",
+  "scientific_success_claim": false
+}

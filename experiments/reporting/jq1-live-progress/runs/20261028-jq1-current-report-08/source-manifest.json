@@ -1,0 +1,1039 @@
+{
+  "cpu_counts": {
+    "tests.test_qualification": 19,
+    "tests.test_report_data": 73,
+    "tests.test_report_ops": 16,
+    "tests.test_viewer": 41
+  },
+  "endpoint_policy_scope": "Allocated toy diagnostics only; no native endpoint qualification or production gate replacement",
+  "files": {
+    "README.md": "4d84d9a9e5f0f53d075534d63819f579a90f3e28f51ed3bbbb1ee7eee41036b4",
+    "endpoint-policy.md": "e85b554b8c2724b71325d2578cf58a87f55892cf5937b8f3c2e23c2d6a88cddf",
+    "plan.json": "664dfe12b1d7ad12dd31a71f74a05821cdce99d158c6d3f07456180033d6b4e4",
+    "plans-readme.md": "6b2ee43afa4a9e70fc39e8db3f8ed20191200658fa943aa7d2f78ee4e48beb7b",
+    "scripts/README.md": "1432fca1a9195d6f596ef29ecae5cc910f490684f7e05c21d98cc7adfedfa042",
+    "scripts/observe.py": "088d8be4bd247d0fe6fbe2ea935881fd0f15c695a5fd648488f6cab73fecf010",
+    "scripts/qualification.py": "6c869379cea7c58eb0ae6a7b9aaa7edf180576fa6420a0922132fd09dcdccbdc",
+    "scripts/report_data.py": "346eda6860d0a7b2ba02992b669e16cc0d9f4a751b26ed105573d8bc449822e7",
+    "scripts/report_ops.py": "1de85ccf929a0f29d18d1de994f58b8394036f691e1028b18a44680963d6f348",
+    "scripts/report_stage.lsf": "a3da60e7adaa47ebf1cec91434c235b35fd3a7875246e30cb0ccc99bf05710b8",
+    "templates/README.md": "134b8bd00a0c82b89ca5dcc519bfcfa4c5a0e8bbf97961ea52808dc93c92e848",
+    "templates/report.html": "f98467ac2d5f623f9e448308f2a54c8f3b9610ef87391034661297cea76a8727",
+    "tests/README.md": "0be44a42d0149a7084d1e547bc343fd0532e0f857d2755a07b353662218797c8",
+    "tests/test_qualification.py": "da5450bb0af5ff1a533d00f5cfc77d06f424c705e45cd60dd3c1d0eeaaa40213",
+    "tests/test_report_data.py": "e0c6b8f35b872cb4d446c27e1da49d3b4053ac7bb9e44a8ea8da22f25266fd28",
+    "tests/test_report_ops.py": "ed554145abf5c500e2a3258d5b5612e531c6085a7bc22fa3fa9c5b4f65bfbe4b",
+    "tests/test_viewer.py": "1fc5208f038e55bcba9b9e117cad3f30c515c1bc2b3d994cdd974d741cdd0322"
+  },
+  "historical_failure": {
+    "cpu_job_id": "29812027",
+    "new_release_change": "Declare exact tests.-qualified raw JUnit module names; repeat allocated suite",
+    "preserved": true,
+    "raw_fixture_passes": 121,
+    "scientific_render_pass": false,
+    "status": "failed_module_attribution_metadata"
+  },
+  "historical_visual_failure": {
+    "browser_QA": "failed_progress_bar_inline_layout",
+    "data_presentation_assessment": "passed",
+    "new_release_change": "Block-level5px progress bars and bounded visible primary metrics; all scalar assets unchanged",
+    "publication": "edition-0001_preserved",
+    "render_job_id": "29812097",
+    "saved_scientific_data_changed": false,
+    "source_generation": "02"
+  },
+  "monitor_remains_paused": true,
+  "parent_sources": [
+    {
+      "files": 643,
+      "manifest_sha256": "da9db6821d26b884ca1749303fc8e0b0095bd9ee7cbd1b427cdcf1b22eec6562",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source"
+    },
+    {
+      "files": 635,
+      "manifest_sha256": "c214bccf2c94ac6829996bc0ca7d6415d3c19549be4fe7f874cba2b433901cc6",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-release-03/source"
+    },
+    {
+      "files": 657,
+      "manifest_sha256": "600ecc3b33135141a57c029a28a2c72f29e788e3ecf5cb2dac1761146d1d6eed",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-release-02/source"
+    },
+    {
+      "files": 642,
+      "manifest_sha256": "7bb970f48f6f907b7dc05e74a9bc2645a313addf814f08a0eeca11582f3b84ef",
+      "path": "/work3/s234818/mosaic/releases/20261023-protenix-noisy-01/source"
+    },
+    {
+      "files": 12,
+      "manifest_sha256": "704fab033d97342a14dc12b58dc32df44874232c5c30aad47c4d02041a502aab",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-startup-release-03/source"
+    },
+    {
+      "files": 12,
+      "manifest_sha256": "f3be7c2f85d495ae042ee8092eecb5274c6298cc8f12907a7ba9ba6d8fb740db",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-release-02/source"
+    },
+    {
+      "files": 17,
+      "manifest_sha256": "856f788c5959c6fe5239374d3141808ec011907f4e092deb78a65f28ef9b196d",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-release-04/source"
+    },
+    {
+      "files": 35,
+      "manifest_sha256": "5448503965365f4db726d558df4ac91a41a7f711366b6ae47ae936993fd0c8bb",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-release-15/source"
+    },
+    {
+      "files": 17,
+      "manifest_sha256": "3933f22fe049ee7a1af854bb94d7d1caca5824969e978c53dd44717a1e327423",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-release-05/source"
+    },
+    {
+      "files": 17,
+      "manifest_sha256": "7e19c46a1b1a062710f44d994f33cb57ced0a484c709ae320503503ebd24008d",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-release-07/source"
+    }
+  ],
+  "persistent_cap_bytes": 1073741824,
+  "presentation_redesign": {
+    "declared_changed_members": [
+      "scripts/report_data.py",
+      "templates/report.html",
+      "tests/test_report_data.py",
+      "tests/test_viewer.py",
+      "scripts/report_ops.py",
+      "plan.json"
+    ],
+    "edition": "edition-0003",
+    "graph_geometry_scope": "Deterministic display-only coordinates; every raw atom/edge retained",
+    "optimizer_submission": false,
+    "original_scientific_results_changed": false,
+    "prior_manifest_sha256": "ee69381d752bf32f3ae55cf76f69ae1330acf5b20c52ddc7c9ee3cd7f711218c",
+    "same_saved_capture": true,
+    "version": "jq1-refined-presentation-v1"
+  },
+  "proofs": [
+    {
+      "bytes": 1326,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-09/boltz-segment-10000/submission.json",
+      "sha256": "c0a2770a70a7dc3e87eedb97d3a340720513e60eb5e0b8ebe1281ab7ccf18aa9"
+    },
+    {
+      "bytes": 687984,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-09/boltz-segment-10000/payload/assessment.json",
+      "sha256": "4a190368533b40a5719a03f96887b1bf5e0ed8ede0eb262f504eb30d918900d0"
+    },
+    {
+      "bytes": 1324,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-08/dbmol-segment-05000/submission.json",
+      "sha256": "a8572cc8645b1550096bc716875cf3e5013c5ab17004112bbe14ede4a076c731"
+    },
+    {
+      "bytes": 696926,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-08/dbmol-segment-05000/payload/assessment.json",
+      "sha256": "d66020d97060711c43c6e7c312066b6b42c3a7510ae6bef59b16b0ad960f9657"
+    },
+    {
+      "bytes": 1339,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-03/protenix/random-segment-0000/submission.json",
+      "sha256": "42927004fa71664bb3be1fd09364723b7eaabc5ff667bedb28a8ab6511db89e3"
+    },
+    {
+      "bytes": 10444,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-03/protenix/random-segment-0000/payload/assessment.json",
+      "sha256": "82dcd6bb334ca6482349b01c7fa5984552c947c83008573875826844de0659e2"
+    },
+    {
+      "bytes": 1366,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-04/boltz/boltz2_chemistry-segment-0000/submission.json",
+      "sha256": "fd810562e3db4eb0c85a11dba23492d80e5920432128a9bd89f62265bdbe3f40"
+    },
+    {
+      "bytes": 10889,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-04/boltz/boltz2_chemistry-segment-0000/payload/assessment.json",
+      "sha256": "9945c819e7738bdc5f867dd5048d71b432b9c1d2e35e462231099f60b9b0c1e0"
+    },
+    {
+      "bytes": 10528552,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-segment-0000/payload/study/case-0/states.jsonl",
+      "sha256": "f24feed2906ff2307fb07d72c05cda4c17b0894f1515c7b566b921d2a0c5a5fb"
+    },
+    {
+      "bytes": 8634606,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-segment-0000/payload/study/case-0/updates.jsonl",
+      "sha256": "ba72dc41ed84a221e4d7711ca8054438d2e75496f32fe042f436e16fb3373075"
+    },
+    {
+      "bytes": 37975078,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-segment-0000/payload/study/summary.json",
+      "sha256": "99d63960395797f0884140101afc012fd3335ed0edff80e6ef5d669549ea8285"
+    },
+    {
+      "bytes": 1733,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source/examples/configs/extended_continuation.json",
+      "sha256": "f91c90770fe907c00e081f3ed28b46071ac35cc3f869edae504cf8cc16f6b445"
+    },
+    {
+      "bytes": 32327926,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-segment-0000/payload/study/case-0/report.json",
+      "sha256": "e10c5337c24a7e1e1e034c5af01799a24e090a651cd8677e68bb1db292eb1ebf"
+    },
+    {
+      "bytes": 99547,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-segment-0000/payload/study/case-0/retained-frames.json",
+      "sha256": "e998b40afe3aba111ef625d39b1afcd65609b38738626f7483cd258f9e45be6a"
+    },
+    {
+      "bytes": 1229018,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-segment-0000/stdout.29809291.log",
+      "sha256": "e87b2e9640768fb2c8d0ae064030f9e646d1820b4f55bea44bb10ff92ac7fa92"
+    },
+    {
+      "bytes": 750208,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-segment-0000/stderr.29809291.log",
+      "sha256": "12b4a4011c8d0a7de4c4c63f6b172d987de90f50e41d8425e41acc63b9e5b52f"
+    },
+    {
+      "bytes": 11279759,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/boltz2-segment-0000/payload/study/case-0/states.jsonl",
+      "sha256": "a04bf28626d5b908229e4e9eeefa07ab4571240d2063820fd59fe888e9b24025"
+    },
+    {
+      "bytes": 9993988,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/boltz2-segment-0000/payload/study/case-0/updates.jsonl",
+      "sha256": "8101acc4f0fc0c103c5201547c425c1d47ac15e4fc8952ac86368c6c14cf5284"
+    },
+    {
+      "bytes": 40923777,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/boltz2-segment-0000/payload/study/summary.json",
+      "sha256": "3be92e7592273f4fc9d1d17ca1be9541d7fa03046e20edd76e48acc34168e986"
+    },
+    {
+      "bytes": 1698,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-release-03/source/examples/configs/boltz_serial_boltz2.json",
+      "sha256": "ecdf8a4103291f2f3a7bc7197dd394f03a46c3ccc74c72eb42dfc2b76eb13124"
+    },
+    {
+      "bytes": 35038573,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/boltz2-segment-0000/payload/study/case-0/report.json",
+      "sha256": "6ac46db39fd5f6e97d425a8c4f0757c153eff3e7eb77db187e8fe4c1cb49ab8c"
+    },
+    {
+      "bytes": 98991,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/boltz2-segment-0000/payload/study/case-0/retained-frames.json",
+      "sha256": "ab6f49b928bd2b736c0640937a747b8db7d24c71271400f639f597e8e36342a0"
+    },
+    {
+      "bytes": 1206610,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/boltz2-segment-0000/stdout.29809297.log",
+      "sha256": "f69cba5b2eba11c73db75175493dcf7bd5e97d7b4e8c1c4907d735b387e7117a"
+    },
+    {
+      "bytes": 5477,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/boltz2-segment-0000/stderr.29809297.log",
+      "sha256": "b7cac4f74d0fd40ab67568f865cb6e8365901b9bf385abd95b2216b1684b4887"
+    },
+    {
+      "bytes": 11343735,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-09/boltz-segment-10000/payload/study/case-0/states.jsonl",
+      "sha256": "3b1419a11de1dc0fb66ab6a262a8862d9f9886569d321e9e1dd854e1c96fae52"
+    },
+    {
+      "bytes": 10078398,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-09/boltz-segment-10000/payload/study/case-0/updates.jsonl",
+      "sha256": "be35db492c71306f3eed1f02a1cb96358071dec0bd93c94ecdd6687d689b661e"
+    },
+    {
+      "bytes": 43673066,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-09/boltz-segment-10000/payload/study/summary.json",
+      "sha256": "63c67f516c110ea0d4d61fb7f50a272e831508e4849880e151ec4761ccb1497d"
+    },
+    {
+      "bytes": 35207241,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-09/boltz-segment-10000/payload/study/case-0/report.json",
+      "sha256": "c9cddd1706843cd4e5900a68202c731426085ae208d64b6a2b36374e8c0e41c4"
+    },
+    {
+      "bytes": 99547,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-09/boltz-segment-10000/payload/study/case-0/retained-frames.json",
+      "sha256": "f656e155a8a8a46382a10c2f23748d742ed5996aaaa83da161a7e1a799481a5a"
+    },
+    {
+      "bytes": 1220518,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-09/boltz-segment-10000/stdout.29832964.log",
+      "sha256": "4a8cb333f9fccbbd4467470b91a18f127b9039c573711cd688930249a20d9bb5"
+    },
+    {
+      "bytes": 3683,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-09/boltz-segment-10000/stderr.29832964.log",
+      "sha256": "0b12641cd32d09c428f2d861074139b811fe6cc0011f2e510b4baf653386d146"
+    },
+    {
+      "bytes": 4384512,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-segment-0000/payload/study/case-0/states.jsonl",
+      "sha256": "32918efa47338d07dbb94f12ceb31fd8ca49706b24555de96bdca5539227313c"
+    },
+    {
+      "bytes": 4059759,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-segment-0000/payload/study/case-0/updates.jsonl",
+      "sha256": "f8683d8722d78c1eeda816b2f51ec8b950c0354b7f304983ea7c9bbdeacf0dbf"
+    },
+    {
+      "bytes": 14547372,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-segment-0000/payload/study/summary.json",
+      "sha256": "2a0dd16e2210943903140897076605b9c1ad9dc349c2235efb15faf8ec3c9538"
+    },
+    {
+      "bytes": 1816,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-release-02/source/examples/configs/dbmol_pilot.json",
+      "sha256": "b3b56f409a59b3b1d00228bb7dcd3f74fc08f17fdf06facfc1469922778d5497"
+    },
+    {
+      "bytes": 12658054,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-segment-0000/payload/study/case-0/report.json",
+      "sha256": "b1bbb5b879027e352b2012f9863a54e629aefcde304dcc19eb7f617dc3d90895"
+    },
+    {
+      "bytes": 25111,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-segment-0000/payload/study/case-0/retained-frames.json",
+      "sha256": "0f4445b146cf952f4022b2d59d67401fd261cd4cef35573aff358745e03877af"
+    },
+    {
+      "bytes": 305579,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-segment-0000/stdout.29809294.log",
+      "sha256": "8b785675b89398d6dfef726d6fd05b28dff4909fed106b50448fd666c9b70d84"
+    },
+    {
+      "bytes": 260,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-segment-0000/stderr.29809294.log",
+      "sha256": "e88d7498b24f9dd51983e7779ddc9995dcd041200de7e81cbed8ed71a1d6c842"
+    },
+    {
+      "bytes": 4406776,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-segment-0001/payload/study/case-0/states.jsonl",
+      "sha256": "584f0819022936b368099b979f1626958561c94b8d4ffe50f22338bbda293a51"
+    },
+    {
+      "bytes": 4082222,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-segment-0001/payload/study/case-0/updates.jsonl",
+      "sha256": "03ac0f707fcdd0bfc5c0cf0d1542e0aa05cb45ce2cdedc43a3136f511b51ef40"
+    },
+    {
+      "bytes": 14568511,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-segment-0001/payload/study/summary.json",
+      "sha256": "eb2b72e51c4a80c32a70229e2eb49adadad5addf71bc7ed91a9c80ea16399285"
+    },
+    {
+      "bytes": 12702784,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-segment-0001/payload/study/case-0/report.json",
+      "sha256": "f8d4c77a40e69966841048d55be4871671bb3d6598aa4ecddd955d34d9f87aa5"
+    },
+    {
+      "bytes": 25167,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-segment-0001/payload/study/case-0/retained-frames.json",
+      "sha256": "8b3223061928c7b757d7534ea1c57318aa800c6451451c3d3ddcbc56ba510917"
+    },
+    {
+      "bytes": 307626,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-segment-0001/stdout.29810971.log",
+      "sha256": "48c2404f121fbbc03c952436bf13fb7042598dcebbe1a375c40c20924e518a00"
+    },
+    {
+      "bytes": 6946,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-segment-0001/stderr.29810971.log",
+      "sha256": "7a3108464fb096183e50a7112dd877eb05c972ebf1af1d148e9a94813d6380ed"
+    },
+    {
+      "bytes": 4441745,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-08/dbmol-segment-05000/payload/study/case-0/states.jsonl",
+      "sha256": "8fdec6fb6d23b1b0ac671bd412056b40bd6e79317d9de29b2e7922ed67bb6225"
+    },
+    {
+      "bytes": 4121638,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-08/dbmol-segment-05000/payload/study/case-0/updates.jsonl",
+      "sha256": "a835f740e4ecd806b09dc3e0c53e1b48c3c201a2f4b0a5a50b82b90c4b49b44d"
+    },
+    {
+      "bytes": 26328368,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-08/dbmol-segment-05000/payload/study/summary.json",
+      "sha256": "0f83fe29c6869c54e78977fd7a236bccc31b9a93cee18c1a8678009dda456319"
+    },
+    {
+      "bytes": 12869158,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-08/dbmol-segment-05000/payload/study/case-0/report.json",
+      "sha256": "da05f1dcd377828b2a27ddf0472f68ebb5c499352eae2f8e242979df381b4364"
+    },
+    {
+      "bytes": 25167,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-08/dbmol-segment-05000/payload/study/case-0/retained-frames.json",
+      "sha256": "ef5f97059f0624d675e4ef6c5911d96a3a2f7abe67f13749ebabf6cb0c25ced6"
+    },
+    {
+      "bytes": 315256,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-08/dbmol-segment-05000/stdout.29830999.log",
+      "sha256": "def798945b422a68ae9ab9bbd2b044671aa1906e1aeb915f84e94618cf410dcd"
+    },
+    {
+      "bytes": 4966,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-08/dbmol-segment-05000/stderr.29830999.log",
+      "sha256": "ba1ce89ca838769fd43cb7763b1d8ad4b426aba4a27bf7257a2ebf1dc6e0b03a"
+    },
+    {
+      "bytes": 607787,
+      "path": "/work3/s234818/mosaic/runs/20261025-protenix-noisy-05/gpu/trajectory/states.jsonl",
+      "sha256": "03f9771f6d0bc99a2f9b589b81465cdfd820bb155375ef5f399b9676ec679b86"
+    },
+    {
+      "bytes": 339424,
+      "path": "/work3/s234818/mosaic/runs/20261025-protenix-noisy-05/gpu/trajectory/updates.jsonl",
+      "sha256": "5c96c91d91a135ee8a2878211b59247d0ef9c8fbae67c3e9164fdcbc2068cc6b"
+    },
+    {
+      "bytes": 27324,
+      "path": "/work3/s234818/mosaic/runs/20261025-protenix-noisy-05/gpu/summary.json",
+      "sha256": "5d5aa5afcb0e12b724955448d6f7fd134f6f92af1f44f37bae6aeecd4e62f6c2"
+    },
+    {
+      "bytes": 493,
+      "path": "/work3/s234818/mosaic/releases/20261023-protenix-noisy-01/source/experiments/brd4-jq1/protenix-noisy-1000/runs/20261023-protenix-noisy-01/config.json",
+      "sha256": "ba9253d44c74542333da39b7d973fb2907366bcb85bab5fb40a03d0e8f867309"
+    },
+    {
+      "bytes": 10897,
+      "path": "/work3/s234818/mosaic/runs/20261025-protenix-noisy-05/gpu/trajectory/retained-frames.json",
+      "sha256": "e27fd2150ddb0cbe3a7ecf318bb8c757b75ad5d6db9dfc0ba8fe009c252cfe51"
+    },
+    {
+      "bytes": 55778,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-02/noise-gpu/stdout.29809228.log",
+      "sha256": "2b375ee7952a46dd45c3f987274f1d26a2f6053f8efcc4731230aaeb5c2d10fa"
+    },
+    {
+      "bytes": 73777,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-02/noise-gpu/stderr.29809228.log",
+      "sha256": "12938d2fb89ee50f440cfeca468331e4596356d159972961ab4f5174026f640f"
+    },
+    {
+      "bytes": 14176264,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-03/protenix/random-segment-0000/payload/study/case-0/states.jsonl",
+      "sha256": "2180dd0dbbab54045fff2278404fdf83cb0b8fcde2e264b260447c604559c0f3"
+    },
+    {
+      "bytes": 10827306,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-03/protenix/random-segment-0000/payload/study/case-0/updates.jsonl",
+      "sha256": "6cae3e0609313279ef746d639edf7e9cb601fbec526f5696cac9a3c8e9cb2d65"
+    },
+    {
+      "bytes": 47001479,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-03/protenix/random-segment-0000/payload/study/summary.json",
+      "sha256": "afc86c37067c8251c05d52de190ea2d172c336d7b00d738e0a751804dc48b32c"
+    },
+    {
+      "bytes": 1890,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source/examples/configs/extended_random.json",
+      "sha256": "d4993743e7f4e6b0f559e3da0c264c2a8b3969c8d113f5defba397350f3e5749"
+    },
+    {
+      "bytes": 40428603,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-03/protenix/random-segment-0000/payload/study/case-0/report.json",
+      "sha256": "0bad4fe5e6fcc5f7f9b36ea6c53dd19c65a323683bcee3b202847d78106a89a5"
+    },
+    {
+      "bytes": 98991,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-03/protenix/random-segment-0000/payload/study/case-0/retained-frames.json",
+      "sha256": "dc0f80c58fc2fc8e3dd6cfcce59a32869b674389cbe6788811528f784f0feedc"
+    },
+    {
+      "bytes": 2072,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-03/protenix/random-segment-0000/stdout.29820255.log",
+      "sha256": "20e585ebde4b26872663e13769b09f845c96a3933b3425d772118cfa0ff4d01e"
+    },
+    {
+      "bytes": 260,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-03/protenix/random-segment-0000/stderr.29820255.log",
+      "sha256": "e88d7498b24f9dd51983e7779ddc9995dcd041200de7e81cbed8ed71a1d6c842"
+    },
+    {
+      "bytes": 14649325,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-04/boltz/boltz2_chemistry-segment-0000/payload/study/case-0/states.jsonl",
+      "sha256": "6ecd128b720c1071d8d4bb107c14e14e8a4aef04e7ec51054e60de5bb41faa17"
+    },
+    {
+      "bytes": 11979532,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-04/boltz/boltz2_chemistry-segment-0000/payload/study/case-0/updates.jsonl",
+      "sha256": "dae6aae99623e8e89341082c7d5edb6f983b9c9a77b78fae45b7487294562d81"
+    },
+    {
+      "bytes": 49459431,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-04/boltz/boltz2_chemistry-segment-0000/payload/study/summary.json",
+      "sha256": "0e1d15e3066682679a03df801e316352d0734bad48c0e4d30bbde703e0e48a9a"
+    },
+    {
+      "bytes": 1854,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-release-03/source/examples/configs/boltz_serial_boltz2_chemistry.json",
+      "sha256": "3b3bc33d087f0c03a48c6bf89f03bc707d236ca0f64a95ba5ae2159d1918737c"
+    },
+    {
+      "bytes": 42653960,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-04/boltz/boltz2_chemistry-segment-0000/payload/study/case-0/report.json",
+      "sha256": "c0494e474c2748e884af65cdbb5f1b66f1061f967778bb26ce793c0e3d3ef92c"
+    },
+    {
+      "bytes": 98991,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-04/boltz/boltz2_chemistry-segment-0000/payload/study/case-0/retained-frames.json",
+      "sha256": "f435566608c7d9c19058ebcff2cc1747268ba3490689e66af9f580f4cee52605"
+    },
+    {
+      "bytes": 2093,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-04/boltz/boltz2_chemistry-segment-0000/stdout.29825209.log",
+      "sha256": "61e0780e9e6f96a08eac3546891faf84b711af1ceddd8a1355b158567b7949f4"
+    },
+    {
+      "bytes": 1553,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-04/boltz/boltz2_chemistry-segment-0000/stderr.29825209.log",
+      "sha256": "26934c678ddf558b9f0ae190e66dc431481a3eb67b9ea0782aea69f54717d07c"
+    },
+    {
+      "bytes": 1160,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-05/cpu/command.json",
+      "sha256": "7487a8688ad734443645dc4428cef0bca9d463135423fae0062ea4d4e7e6a8ab"
+    },
+    {
+      "bytes": 24731,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-05/cpu/current-full-cpu/continuation-storage-entry.json",
+      "sha256": "dd21e7a5ee8ec1082cb7f5285db3c70b7f744cf551081a3edd8f01a096e57747"
+    },
+    {
+      "bytes": 20682,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-05/cpu/current-full-cpu/whole-precision-entry-1/complete-inventory-entry-01/chemistry-diagnostic-storage-entry.json",
+      "sha256": "741b0386793a8a86616ee860ca74e8d7a54c6303453d66d674bce8c7a6cee4c4"
+    },
+    {
+      "bytes": 19569,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-05/cpu/current-full-cpu/whole-precision-entry-1/complete-inventory-entry-01/continuation-storage-chem-diag-entry.json",
+      "sha256": "83c761358887904cea10d9a9564e8eeb81ad708807b8f616f66cf0833a876c1d"
+    },
+    {
+      "bytes": 10892,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-05/cpu/current-full-cpu/whole-precision-entry-1/complete-inventory-entry-01/current-chemistry-capacity-chem-diag-entry/assessment.json",
+      "sha256": "6fe2bb4258be3e0bb20bfb3b01efe051e0b004fbff289ddc29e9d27f7afb06b7"
+    },
+    {
+      "bytes": 7643,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-05/cpu/current-full-cpu/whole-precision-entry-1/complete-inventory-entry-01/current-chemistry-capacity-chem-diag-entry/inherited-storage-entry/continuation-storage-precision.json",
+      "sha256": "113acdac1872edd8d83dfee8bca1fb5786a852a786dfc7b593f754b03ce4dee7"
+    },
+    {
+      "bytes": 8811,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-05/cpu/current-full-cpu/whole-precision-entry-1/complete-inventory-entry-01/current-chemistry-capacity-chem-diag-entry/inherited-storage-entry/precision-storage-entry.json",
+      "sha256": "f3c945023ec394f59492795d4dae76f6356a7af1c2232958fd4f0e6bee52e42c"
+    },
+    {
+      "bytes": 6876,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-05/cpu/current-full-cpu/whole-precision-entry-1/complete-inventory-entry-01/current-chemistry-capacity-chem-diag-entry/inherited-storage-entry/selected-storage-precision/gate.json",
+      "sha256": "d0b2a5110f0982a0f1e9fe50e3d65fb3897e2ac1913116afdd069a14da2ed2ad"
+    },
+    {
+      "bytes": 1502,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-05/cpu/current-full-cpu/whole-precision-entry-1/complete-inventory-entry-01/current-chemistry-capacity-chem-diag-entry/invocation.json",
+      "sha256": "a7e01b089ba6c5e2d9c163912c086cf80b8f902652eee34a96ca370fd1cf4991"
+    },
+    {
+      "bytes": 10074,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-05/cpu/current-full-cpu/whole-precision-entry-1/complete-inventory-entry-01/current-chemistry-capacity-chem-diag-entry/production-storage-entry.json",
+      "sha256": "697d4dd33ba3af7829232cd62d5da51a7cb0d542cd3e6884f2546a3508d6bdf0"
+    },
+    {
+      "bytes": 21794,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-05/cpu/current-full-cpu/whole-precision-entry-1/complete-inventory-entry-01/qualification-storage-entry.json",
+      "sha256": "6b6acee7746f5124dbbf8dd3d3294553d1e5c15fa54f8d1f7336a9ef60f6fdf7"
+    },
+    {
+      "bytes": 6882,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-05/cpu/current-full-cpu/whole-precision-entry-1/complete-inventory-entry-01/selected-storage-chem-diag-entry/gate.json",
+      "sha256": "ec0692477daff9e9ead7483279e81323e17c69508e07a4aeb85498d553cafe88"
+    },
+    {
+      "bytes": 22931,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-05/cpu/current-full-cpu/whole-precision-entry-1/complete-storage-entry.json",
+      "sha256": "33804a689458509bc7acd7d2656e72a35aa771187c22972c4b8e9c5076250206"
+    },
+    {
+      "bytes": 24731,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-05/cpu/current-full-cpu/whole-precision-entry-1/full-precision-storage.json",
+      "sha256": "dd21e7a5ee8ec1082cb7f5285db3c70b7f744cf551081a3edd8f01a096e57747"
+    },
+    {
+      "bytes": 22952,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-05/cpu/current-full-cpu/whole-precision-entry-1/recovery-capacity-entry.json",
+      "sha256": "926a410ca2a0e26b19308922e31b3212b883bb8498b01830c8e8684222fd9a44"
+    },
+    {
+      "bytes": 25897,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-05/cpu/report-storage-cpu.json",
+      "sha256": "a4396e7a144385ec0cf26d7e0b69543e8f763b2c656aac9ff9a8722c7c65d699"
+    },
+    {
+      "bytes": 1988,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-05/cpu/stderr.29839488.log",
+      "sha256": "ebad2d3bac129b95430ee0a8052ebce6b6735aa9c58dc2d099ff38a0bf78d570"
+    },
+    {
+      "bytes": 1962,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-05/cpu/stdout.29839488.log",
+      "sha256": "d8617745afc36648e591dc567eef3a8db0affd1b8b122ee550cc76b2d8020691"
+    },
+    {
+      "bytes": 1005,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-05/cpu/submission-started.json",
+      "sha256": "b094c8b7e305a44760b3fec96df3c83b582cd383f4a68da73562969c9227e015"
+    },
+    {
+      "bytes": 1127,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-05/cpu/submission.json",
+      "sha256": "c0f53b6c466d1b5e2ed6222b61710b789155d29371066ed5cbf9681b075d238a"
+    },
+    {
+      "bytes": 1524,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-05/cpu/tests.log",
+      "sha256": "ccf98faecefa36dbd568a8e4174817faf02182ca5367a0bfa377ad81f800c796"
+    },
+    {
+      "bytes": 21255,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-05/cpu/tests.xml",
+      "sha256": "86e0fda31b4244375444682f0486653f756c61a7b3316949f48f08efee0541d3"
+    },
+    {
+      "bytes": 59,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/after-cpu/assessment.json",
+      "sha256": "58acaf42248d078d251f3d91f7e547f6bde6bc7b81fcd216f582b61ddbec8807"
+    },
+    {
+      "bytes": 24731,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/after-cpu/current-full-after-cpu/continuation-storage-entry.json",
+      "sha256": "9a4a7bf5e3778c74d2073b50b52ff49086addc774fe25afb9f1f0aec946579ff"
+    },
+    {
+      "bytes": 20682,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/after-cpu/current-full-after-cpu/whole-precision-entry-1/complete-inventory-entry-01/chemistry-diagnostic-storage-entry.json",
+      "sha256": "6448c992e7af6913042a4857ae48ac3773d929996049bdd317ea88c7130490d2"
+    },
+    {
+      "bytes": 19569,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/after-cpu/current-full-after-cpu/whole-precision-entry-1/complete-inventory-entry-01/continuation-storage-chem-diag-entry.json",
+      "sha256": "6c9e6406db6cf784f66ed56929d1533a64610a88dccf55ca97774bd53a22d067"
+    },
+    {
+      "bytes": 10892,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/after-cpu/current-full-after-cpu/whole-precision-entry-1/complete-inventory-entry-01/current-chemistry-capacity-chem-diag-entry/assessment.json",
+      "sha256": "6d08f10203f896741838f5ae3ef6e0691695123d37e2f8b3a6cbe38de44350fe"
+    },
+    {
+      "bytes": 7643,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/after-cpu/current-full-after-cpu/whole-precision-entry-1/complete-inventory-entry-01/current-chemistry-capacity-chem-diag-entry/inherited-storage-entry/continuation-storage-precision.json",
+      "sha256": "fffb554a8e38cbbab9832fc7df46fa8ed6d7fd48faa1150af517107e8b1b98d4"
+    },
+    {
+      "bytes": 8811,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/after-cpu/current-full-after-cpu/whole-precision-entry-1/complete-inventory-entry-01/current-chemistry-capacity-chem-diag-entry/inherited-storage-entry/precision-storage-entry.json",
+      "sha256": "04995d4937bb54335d36958d1f4c3b498c4a25fbfd7e8eed8fade9e8e84d7b15"
+    },
+    {
+      "bytes": 6876,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/after-cpu/current-full-after-cpu/whole-precision-entry-1/complete-inventory-entry-01/current-chemistry-capacity-chem-diag-entry/inherited-storage-entry/selected-storage-precision/gate.json",
+      "sha256": "be9ce47271a59613fecfe7c1b31c545f897cb7cc1a39490e77ee0ff0f94bfd65"
+    },
+    {
+      "bytes": 1514,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/after-cpu/current-full-after-cpu/whole-precision-entry-1/complete-inventory-entry-01/current-chemistry-capacity-chem-diag-entry/invocation.json",
+      "sha256": "fa38f72319b4d63259dd8d38e9d6b18b6a2d40a15ab52e1d1e1f5578011048d7"
+    },
+    {
+      "bytes": 10074,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/after-cpu/current-full-after-cpu/whole-precision-entry-1/complete-inventory-entry-01/current-chemistry-capacity-chem-diag-entry/production-storage-entry.json",
+      "sha256": "8639b2f3acf965024a1da38d3c0594fe539ecd0e2b0b9240cd7f8691085d0713"
+    },
+    {
+      "bytes": 21794,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/after-cpu/current-full-after-cpu/whole-precision-entry-1/complete-inventory-entry-01/qualification-storage-entry.json",
+      "sha256": "ad91cbd710d7083c61f52164172f18c60ebf76188f1cc941f62aceabecbd7092"
+    },
+    {
+      "bytes": 6882,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/after-cpu/current-full-after-cpu/whole-precision-entry-1/complete-inventory-entry-01/selected-storage-chem-diag-entry/gate.json",
+      "sha256": "18c77b9823a04e796fde970d1885e77c3cee0948bcfe73dee42576b561188909"
+    },
+    {
+      "bytes": 22943,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/after-cpu/current-full-after-cpu/whole-precision-entry-1/complete-storage-entry.json",
+      "sha256": "d923f63cd1beebaaab1c37b8477f4228755bdb4e0c488769122afea568a45580"
+    },
+    {
+      "bytes": 24731,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/after-cpu/current-full-after-cpu/whole-precision-entry-1/full-precision-storage.json",
+      "sha256": "9a4a7bf5e3778c74d2073b50b52ff49086addc774fe25afb9f1f0aec946579ff"
+    },
+    {
+      "bytes": 22952,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/after-cpu/current-full-after-cpu/whole-precision-entry-1/recovery-capacity-entry.json",
+      "sha256": "7ebc7ae7dd0405e15ed58f973466af82ef6795bbf4f1ba9d1819a4ab5870582f"
+    },
+    {
+      "bytes": 25898,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/after-cpu/report-storage-after-cpu.json",
+      "sha256": "dc2fc99a13c17044f52af779a996b58b20673ba2316f2db105a8f0218344c677"
+    },
+    {
+      "bytes": 233,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/after-cpu/stderr.29839542.log",
+      "sha256": "7d57e9e44355166e210a310a2b90b7d8543b85c5ffbb82276c701f4dd1f23271"
+    },
+    {
+      "bytes": 1980,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/after-cpu/stdout.29839542.log",
+      "sha256": "1186c78b0d1520ba4a546aa7ad364f2d027a0b299d5f3473cf13c84d113b897d"
+    },
+    {
+      "bytes": 1081,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/after-cpu/submission-started.json",
+      "sha256": "54de914de68ef423c4dc98804d73058ecb54649533392a9717c46554ce0a936d"
+    },
+    {
+      "bytes": 1203,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/after-cpu/submission.json",
+      "sha256": "d5123d94a9570d2dbd3634dae27602b273ced0e566b0453deaa3f25655a03d8f"
+    },
+    {
+      "bytes": 3605,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/after-cpu/terminal-query-000.json",
+      "sha256": "fdc8e16055dd569248b033c4c306ecbc790ae08347a6aa74fe3f121721cf6d47"
+    },
+    {
+      "bytes": 413,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/cpu/assessment.json",
+      "sha256": "5c3ebc5f2187a21373b8ba4f88e33557cdb1f3f839b587a068ed91e827c45ada"
+    },
+    {
+      "bytes": 1160,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/cpu/command.json",
+      "sha256": "b9b214545b791df685f2ef6d92799201083e24bf169de75953332f959943feba"
+    },
+    {
+      "bytes": 24731,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/cpu/current-full-cpu/continuation-storage-entry.json",
+      "sha256": "48e15c56549de262b58b0853a821e34110052fd55dc8182ab5d109199f5e3586"
+    },
+    {
+      "bytes": 20682,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/cpu/current-full-cpu/whole-precision-entry-1/complete-inventory-entry-01/chemistry-diagnostic-storage-entry.json",
+      "sha256": "7f2eb62c5d2da3a934918ceca751339ed97c54bcd79f3d62874d349143ef674b"
+    },
+    {
+      "bytes": 19569,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/cpu/current-full-cpu/whole-precision-entry-1/complete-inventory-entry-01/continuation-storage-chem-diag-entry.json",
+      "sha256": "6f3d4f35d13eb9624df6ff83245019a8bbefc776f856160d9a53b76122f02f82"
+    },
+    {
+      "bytes": 10892,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/cpu/current-full-cpu/whole-precision-entry-1/complete-inventory-entry-01/current-chemistry-capacity-chem-diag-entry/assessment.json",
+      "sha256": "2758e61cf0153be4e0a89bff7090dd7092dcf974c2ce2a762bce68be7212db6b"
+    },
+    {
+      "bytes": 7643,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/cpu/current-full-cpu/whole-precision-entry-1/complete-inventory-entry-01/current-chemistry-capacity-chem-diag-entry/inherited-storage-entry/continuation-storage-precision.json",
+      "sha256": "fa72b2881397900b275ec7220a474f248cf440a6e09bcc221aca1f28b3172e2e"
+    },
+    {
+      "bytes": 8811,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/cpu/current-full-cpu/whole-precision-entry-1/complete-inventory-entry-01/current-chemistry-capacity-chem-diag-entry/inherited-storage-entry/precision-storage-entry.json",
+      "sha256": "09d89e51c562ff17985f0591325c6c5373b63263e0cdd1cd2d35b84623750edf"
+    },
+    {
+      "bytes": 6876,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/cpu/current-full-cpu/whole-precision-entry-1/complete-inventory-entry-01/current-chemistry-capacity-chem-diag-entry/inherited-storage-entry/selected-storage-precision/gate.json",
+      "sha256": "0fefb2ee70a31aa22f9f3181b3ce7fceb76311b10e171567b1a08a91c2080515"
+    },
+    {
+      "bytes": 1502,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/cpu/current-full-cpu/whole-precision-entry-1/complete-inventory-entry-01/current-chemistry-capacity-chem-diag-entry/invocation.json",
+      "sha256": "849517ce1d670598fa48d1f09d89d901dd72c52ee7f3675346fcc948ada14161"
+    },
+    {
+      "bytes": 10074,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/cpu/current-full-cpu/whole-precision-entry-1/complete-inventory-entry-01/current-chemistry-capacity-chem-diag-entry/production-storage-entry.json",
+      "sha256": "31ca402850cdcc54a12aaaf3ee08f28fe82e99c83b185ecfb994b6efd5d0952d"
+    },
+    {
+      "bytes": 21794,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/cpu/current-full-cpu/whole-precision-entry-1/complete-inventory-entry-01/qualification-storage-entry.json",
+      "sha256": "e41730e52c6d5ae5a346664faf685da3b49a91ae910d87a9d018c416eb3765cb"
+    },
+    {
+      "bytes": 6882,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/cpu/current-full-cpu/whole-precision-entry-1/complete-inventory-entry-01/selected-storage-chem-diag-entry/gate.json",
+      "sha256": "ce838fd751d552762f58b089d7f22cc4bd7c56a21977ef0e5158e3a8fe6ff85c"
+    },
+    {
+      "bytes": 22931,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/cpu/current-full-cpu/whole-precision-entry-1/complete-storage-entry.json",
+      "sha256": "62be5ba3fa1ec22477828ccfb2232707e6999b06227c63a51edafc940b381472"
+    },
+    {
+      "bytes": 24731,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/cpu/current-full-cpu/whole-precision-entry-1/full-precision-storage.json",
+      "sha256": "48e15c56549de262b58b0853a821e34110052fd55dc8182ab5d109199f5e3586"
+    },
+    {
+      "bytes": 22952,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/cpu/current-full-cpu/whole-precision-entry-1/recovery-capacity-entry.json",
+      "sha256": "6ac67f8aca49478e41acb8368e865f553e0ca34e5e8493544a2338f93c5a64e1"
+    },
+    {
+      "bytes": 25898,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/cpu/report-storage-cpu.json",
+      "sha256": "5bd134cdea2ba048739359126af1a91c72e2eeae827c869cb5dbc21f406c48df"
+    },
+    {
+      "bytes": 233,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/cpu/stderr.29839541.log",
+      "sha256": "7d57e9e44355166e210a310a2b90b7d8543b85c5ffbb82276c701f4dd1f23271"
+    },
+    {
+      "bytes": 1960,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/cpu/stdout.29839541.log",
+      "sha256": "891b7f8dd3b3de311fa695b7e9896b6aab7cc96f4022bf9d98e895012f013611"
+    },
+    {
+      "bytes": 1005,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/cpu/submission-started.json",
+      "sha256": "a2f60365d80e1c957ff07a58d065b85b8f45c04a3d1c5a745e56910b17db0941"
+    },
+    {
+      "bytes": 1127,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/cpu/submission.json",
+      "sha256": "ea3db58cd967215fff8a68ad859c8d7744af84d4dcc4f2393544febc0b06e8f2"
+    },
+    {
+      "bytes": 260,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/cpu/tests.log",
+      "sha256": "d5b3d152f5832b151870fa1bb03b953a0334f0bbf1f5a8d2507b840dacfb170b"
+    },
+    {
+      "bytes": 19948,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/cpu/tests.xml",
+      "sha256": "8f6263c7833f041a26bc68cb377c3300fd9ff12deca999f966c2d39feaa84fdb"
+    },
+    {
+      "bytes": 2010,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/cpu-certificate.json",
+      "sha256": "be2c87c9962ff041c1d2985cae26da06db5394de0eefe7750705659ee2150882"
+    },
+    {
+      "bytes": 630,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/edition-0004-archive.json",
+      "sha256": "7ff62eb5c4f67cbb21358491618c713310661afd068f44d1ba0c453c4b698113"
+    },
+    {
+      "bytes": 2628,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/initial-submissions.json",
+      "sha256": "a1fc1f29e861e26f06b3e853da338125b55176cf040be993aa98948cba67dcdb"
+    },
+    {
+      "bytes": 75,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/jobs.json",
+      "sha256": "0a0fe846e134a7673ef52bc57e5353b219c2c53e0dff94a4e2d5b19b4ba3f578"
+    },
+    {
+      "bytes": 24731,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/preflight/current-full-preflight/continuation-storage-entry.json",
+      "sha256": "c7f8b2ac10e118add99110220784615890594d206ac155630bb8519137cff740"
+    },
+    {
+      "bytes": 20682,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/preflight/current-full-preflight/whole-precision-entry-1/complete-inventory-entry-01/chemistry-diagnostic-storage-entry.json",
+      "sha256": "d86af879d64ccbfc2cb54b60e4c78e632222634a26088e1893998c7663706579"
+    },
+    {
+      "bytes": 19569,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/preflight/current-full-preflight/whole-precision-entry-1/complete-inventory-entry-01/continuation-storage-chem-diag-entry.json",
+      "sha256": "d630b6b65dd97b70c7066ada086e2a66712f2f76b0ba6e08bd3334adced04d27"
+    },
+    {
+      "bytes": 10892,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/preflight/current-full-preflight/whole-precision-entry-1/complete-inventory-entry-01/current-chemistry-capacity-chem-diag-entry/assessment.json",
+      "sha256": "3218f8f0c4bf04a56ab2ff1909fd74d63fa0eb70fa5020b0df28ee298ed4fc5e"
+    },
+    {
+      "bytes": 7643,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/preflight/current-full-preflight/whole-precision-entry-1/complete-inventory-entry-01/current-chemistry-capacity-chem-diag-entry/inherited-storage-entry/continuation-storage-precision.json",
+      "sha256": "c3dd2696a10316d5f16cd597a6d59d5db20f94f72edf5dfaed54435f276740b0"
+    },
+    {
+      "bytes": 8811,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/preflight/current-full-preflight/whole-precision-entry-1/complete-inventory-entry-01/current-chemistry-capacity-chem-diag-entry/inherited-storage-entry/precision-storage-entry.json",
+      "sha256": "f918af2d80fc42f1c2a084387c23c0ab843ea8e7376b3f9b7671cf70ab58edb7"
+    },
+    {
+      "bytes": 6876,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/preflight/current-full-preflight/whole-precision-entry-1/complete-inventory-entry-01/current-chemistry-capacity-chem-diag-entry/inherited-storage-entry/selected-storage-precision/gate.json",
+      "sha256": "b1d25c1a991b39b3612cb7d07aaa8bc0cee1d2273fe59105cefa385b910575f1"
+    },
+    {
+      "bytes": 1514,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/preflight/current-full-preflight/whole-precision-entry-1/complete-inventory-entry-01/current-chemistry-capacity-chem-diag-entry/invocation.json",
+      "sha256": "6fe5b9e77d3abf60c80f8d7760f8d8ca18bf33669106625c88df9ecb51f6c921"
+    },
+    {
+      "bytes": 10074,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/preflight/current-full-preflight/whole-precision-entry-1/complete-inventory-entry-01/current-chemistry-capacity-chem-diag-entry/production-storage-entry.json",
+      "sha256": "be9fe58627e1eb869197f25ef986ca745c5e580f76d1a8d6618ae0bdbe56ca66"
+    },
+    {
+      "bytes": 21794,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/preflight/current-full-preflight/whole-precision-entry-1/complete-inventory-entry-01/qualification-storage-entry.json",
+      "sha256": "a3561299c689a6b2dc29d9a2947bf196ba6d45f6df45d0a4b815d99efc615c01"
+    },
+    {
+      "bytes": 6882,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/preflight/current-full-preflight/whole-precision-entry-1/complete-inventory-entry-01/selected-storage-chem-diag-entry/gate.json",
+      "sha256": "312a010f5dc6b19c877eb4dd05e5e359dd17078055e6e03c05c5daacab870ac3"
+    },
+    {
+      "bytes": 22943,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/preflight/current-full-preflight/whole-precision-entry-1/complete-storage-entry.json",
+      "sha256": "12f84c8a4f8791a1d6f21ed7ffcda8477729cdffa78ae8348dbff0d690b3e5c1"
+    },
+    {
+      "bytes": 24731,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/preflight/current-full-preflight/whole-precision-entry-1/full-precision-storage.json",
+      "sha256": "c7f8b2ac10e118add99110220784615890594d206ac155630bb8519137cff740"
+    },
+    {
+      "bytes": 22952,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/preflight/current-full-preflight/whole-precision-entry-1/recovery-capacity-entry.json",
+      "sha256": "092ed8099cfa9bfec2809f96386ffb9fc38ff24dfed31327602b720e28c72c59"
+    },
+    {
+      "bytes": 25898,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/preflight/report-storage-preflight.json",
+      "sha256": "ea70745fd7f5e704bcf2972fe133a4a5e399161ed41e6bec39fa98b703811611"
+    },
+    {
+      "bytes": 258,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/render/assessment.json",
+      "sha256": "e6ba9d058a2d7cb26db651291608b0175c6e1f0f9af9f506579fd4b9e5069e80"
+    },
+    {
+      "bytes": 24731,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/render/current-full-render/continuation-storage-entry.json",
+      "sha256": "56937e66098d54dc518ca3cb6f5bd71bfc6b0daaf5a5f238f92e9021c6fc6056"
+    },
+    {
+      "bytes": 20682,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/render/current-full-render/whole-precision-entry-1/complete-inventory-entry-01/chemistry-diagnostic-storage-entry.json",
+      "sha256": "2a0d4c0a57b2d9c1ce625479246620e47c82714e49f64f0acddf56cb1e9fbe99"
+    },
+    {
+      "bytes": 19569,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/render/current-full-render/whole-precision-entry-1/complete-inventory-entry-01/continuation-storage-chem-diag-entry.json",
+      "sha256": "8a729ce550ab4e9fddf395853784f9af3253227285fc24dfdb09247c07b2b10e"
+    },
+    {
+      "bytes": 10892,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/render/current-full-render/whole-precision-entry-1/complete-inventory-entry-01/current-chemistry-capacity-chem-diag-entry/assessment.json",
+      "sha256": "59c5178c92b02f9ead4ad86d891a6a4c54f95ce10d2f88694cfd809c68cc2fc3"
+    },
+    {
+      "bytes": 7643,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/render/current-full-render/whole-precision-entry-1/complete-inventory-entry-01/current-chemistry-capacity-chem-diag-entry/inherited-storage-entry/continuation-storage-precision.json",
+      "sha256": "238cf041184024e5c3f796bd6ce3b463769b019f4f33acdf0d92a52e04567721"
+    },
+    {
+      "bytes": 8811,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/render/current-full-render/whole-precision-entry-1/complete-inventory-entry-01/current-chemistry-capacity-chem-diag-entry/inherited-storage-entry/precision-storage-entry.json",
+      "sha256": "26f0067392d15192ae5e731da8a54bb704114031278518d26168822d16274d3f"
+    },
+    {
+      "bytes": 6876,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/render/current-full-render/whole-precision-entry-1/complete-inventory-entry-01/current-chemistry-capacity-chem-diag-entry/inherited-storage-entry/selected-storage-precision/gate.json",
+      "sha256": "5a1caf224bee4a47e32f27aa0e4618ea49135c6e47195b408164860754501d86"
+    },
+    {
+      "bytes": 1508,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/render/current-full-render/whole-precision-entry-1/complete-inventory-entry-01/current-chemistry-capacity-chem-diag-entry/invocation.json",
+      "sha256": "92dbea37f451f745f35dbd327f892f49359f578d3f5261a0bb842ad5d25bc31c"
+    },
+    {
+      "bytes": 10074,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/render/current-full-render/whole-precision-entry-1/complete-inventory-entry-01/current-chemistry-capacity-chem-diag-entry/production-storage-entry.json",
+      "sha256": "b36b6579d54391ac8107cb294253d2fa873c856231b55595cf396882cc5f00d5"
+    },
+    {
+      "bytes": 21794,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/render/current-full-render/whole-precision-entry-1/complete-inventory-entry-01/qualification-storage-entry.json",
+      "sha256": "3d51627cba77ad512cf69857de63754fd9788b53e758e29ae2926c52e5bf528f"
+    },
+    {
+      "bytes": 6882,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/render/current-full-render/whole-precision-entry-1/complete-inventory-entry-01/selected-storage-chem-diag-entry/gate.json",
+      "sha256": "04e102685257d8cf2e23e38d2f81a32a14323df1f76b51243ba861410c56e40c"
+    },
+    {
+      "bytes": 22937,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/render/current-full-render/whole-precision-entry-1/complete-storage-entry.json",
+      "sha256": "6c6bd04221c591c186245c958132a3a3f58c980dfefd9a30e06a339ad8fab4d2"
+    },
+    {
+      "bytes": 24731,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/render/current-full-render/whole-precision-entry-1/full-precision-storage.json",
+      "sha256": "56937e66098d54dc518ca3cb6f5bd71bfc6b0daaf5a5f238f92e9021c6fc6056"
+    },
+    {
+      "bytes": 22952,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/render/current-full-render/whole-precision-entry-1/recovery-capacity-entry.json",
+      "sha256": "21d4429c7396ab7e4a71019d2f4f4fb8682f3c9b48f29f9363c1fa946ac5dac5"
+    },
+    {
+      "bytes": 25898,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/render/report-storage-render.json",
+      "sha256": "e0fd0c1927e0d6a60d5374689f651ac2a3a50891d5a7545f3f59ef6dbcd051ee"
+    },
+    {
+      "bytes": 233,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/render/stderr.29839564.log",
+      "sha256": "7d57e9e44355166e210a310a2b90b7d8543b85c5ffbb82276c701f4dd1f23271"
+    },
+    {
+      "bytes": 1977,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/render/stdout.29839564.log",
+      "sha256": "7de59ad592e6412830850284584b1a36aa48ed8aa6ef6de72d9f2862c08caf8d"
+    },
+    {
+      "bytes": 1116,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/render/submission-started.json",
+      "sha256": "9c26f44102786b4a62b1ac3a6154fac978442d20566cb8f31f3a7cb98bb80bb2"
+    },
+    {
+      "bytes": 1238,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/render/submission.json",
+      "sha256": "37caeaa832eef3405830ebff9a8fc75774705f4fe44d87b7660a905a53ec38c8"
+    },
+    {
+      "bytes": 70185498,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/edition-0004.tar.gz",
+      "sha256": "5bbaffc5a6fbcfd9bb1e851155b9b6e5058c2a64d80d7b479c1374e98fb139a0"
+    }
+  ],
+  "refresh_capsule": {
+    "changes": "Latest saved segments; two chemistry arms; continuation labels; full current independent storage; retained refined layout",
+    "edition": "edition-0004",
+    "generation": "08",
+    "monitor_remains_paused": true,
+    "optimizer_submission": false,
+    "original_results_changed": false,
+    "version": "jq1-six-arm-current-update-v1"
+  },
+  "scientific_results_changed": false,
+  "version": "jq1-live-report-source-v1"
+}

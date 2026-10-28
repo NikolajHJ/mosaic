@@ -17,8 +17,8 @@ import xml.etree.ElementTree as ET
 
 VERSION = 'jq1-live-report-source-v1'
 BASE = Path('/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01')
-ROOT = BASE/'nonchem-live-report-04'
-SOURCE = BASE/'nonchem-live-report-release-04/source'
+ROOT = BASE/'nonchem-live-report-08'
+SOURCE = BASE/'nonchem-live-report-release-08/source'
 ADMISSION = BASE/'nonchem-stride20-startup-release-03/source'
 ADMISSION_SHA = '704fab033d97342a14dc12b58dc32df44874232c5c30aad47c4d02041a502aab'
 PYTHON = '/work3/s234818/mosaic/envs/protenix-tiny/bin/python'
@@ -98,7 +98,8 @@ def external(manifest):
 
 def own_bytes():
     total=0
-    for root in (ROOT,SOURCE.parent):
+    for root in (ROOT,SOURCE.parent,BASE/'nonchem-live-report-05',BASE/'nonchem-live-report-release-05',
+                 BASE/'nonchem-live-report-07',BASE/'nonchem-live-report-release-07'):
         if not root.exists(): continue
         for directory,dirs,files in os.walk(root,followlinks=False):
             for name in dirs+files:
@@ -112,23 +113,37 @@ def own_bytes():
     return total
 
 
+def report_budget(prior, charged):
+    require(prior.get('status')=='passed' and prior.get('reserve_bytes')==4*GIB and prior.get('file_reserve')==100000
+            and prior.get('forecasts_removed') is False and prior.get('original_gate_changed') is False,
+            'Complete current futures/reserves must pass')
+    require(type(charged) is int and 0<=charged<CAP
+            and all(type(prior.get(k)) is int for k in ('required_bytes','available_bytes')),
+            'Whole report bytes must be finite integers within its independent cap')
+    return {'status':'failed','inherited_current_gate':prior,'additional_report_allowance_bytes':CAP,
+            'required_bytes':prior['required_bytes']+CAP,'available_bytes':prior['available_bytes']-charged,
+            'reserve_bytes':4*GIB,'file_reserve':100000,'new_owned_bytes':charged,'forecasts_removed':False}
+
+
 def storage(parent, phase):
-    verify(ADMISSION,ADMISSION_SHA)
-    sys.path.insert(0,str(ADMISSION))
-    from selected_storage import storage_gate
-    old=storage_gate(parent,phase)
-    # Independent report 1GiB, full-model chemistry group 2GiB, prospective
-    # separate endpoint diagnostics 768MiB. Never borrow the 4GiB reserve.
-    additional=CAP+2*GIB+768*1024**2
-    gate={'status':'failed','original_gate':old,'additional_allowance_bytes':additional,
-          'required_bytes':old['work3']['required_bytes']+additional,
-          'available_bytes':old['work3']['available_bytes_conservative'],
-          'reserve_bytes':4*GIB,'file_reserve':100000,'new_owned_bytes':own_bytes()}
+    """Retain the complete current continuation guard plus a separate report cap."""
+    current = BASE / 'nonchem-precision-release-15/source'
+    pin = '5448503965365f4db726d558df4ac91a41a7f711366b6ae47ae936993fd0c8bb'
+    require(len(verify(current, pin)['files']) == 35, 'Current complete admission source changed')
+    spec = importlib.util.spec_from_file_location('_current_complete_report_admission', current/'scripts/precision_continuation_ops.py')
+    op = importlib.util.module_from_spec(spec);sys.modules[spec.name]=op;spec.loader.exec_module(op)
+    inherited = Path(parent)/('current-full-'+phase);inherited.mkdir(exist_ok=False)
+    prior = op.storage(inherited, 'entry')
+    upload = BASE/'nonchem-live-report-release-08.tar.gz'
+    old_upload=BASE/'nonchem-live-report-release-05.tar.gz'
+    predecessor_upload=BASE/'nonchem-live-report-release-07.tar.gz'
+    charged=own_bytes()+sum(p.stat().st_size for p in (upload,old_upload,predecessor_upload) if p.exists())
+    gate=report_budget(prior,charged)
     try:
-        require(gate['new_owned_bytes']<CAP,'New report cap exhausted')
-        require(gate['available_bytes']>=gate['required_bytes'],'Entire campaign plus separate report allowance does not fit')
+        require(charged<CAP,'Independent report cap exhausted')
+        require(gate['available_bytes']>=gate['required_bytes'],'Whole campaign plus independent report does not fit')
         gate['status']='passed'
-    finally: write(Path(parent)/('report-storage-'+phase+'.json'),gate)
+    finally:write(Path(parent)/('report-storage-'+phase+'.json'),gate)
     return gate
 
 
@@ -138,7 +153,7 @@ def argv(phase,pin,dependency=None):
     parent=ROOT/phase
     args=['bsub','-q','hpc','-n','1' if phase=='after-cpu' else '4',
           '-R','span[hosts=1]','-R','rusage[mem=4GB]','-W','00:20' if phase=='after-cpu' else '01:00',
-          '-J','mosaic-live-report04-'+phase,'-oo',str(parent/'stdout.%J.log'),'-eo',str(parent/'stderr.%J.log')]
+          '-J','mosaic-live-report08-'+phase,'-oo',str(parent/'stdout.%J.log'),'-eo',str(parent/'stderr.%J.log')]
     if dependency is not None:
         require(phase=='after-cpu' and re.fullmatch(r'ended\([1-9]\d*\)',dependency),'Wrong own-ended dependency')
         args+=['-w',dependency]
@@ -184,7 +199,7 @@ def success_lsf(parent,job,phase):
         time.sleep(1)
     raw=path.read_text();text=''.join(raw.split())
     require(text.count('Subject:Job')==1 and 'Subject:Job'+job+':' in text
-            and '<mosaic-live-report04-'+phase+'>incluster<dcc>Done' in text
+            and '<mosaic-live-report08-'+phase+'>incluster<dcc>Done' in text
             and 'inqueue<hpc>' in text and text.count('Successfullycompleted.')==1,
             'Actual same-job/name/hpc LSF success missing')
     return binding(path)
@@ -263,16 +278,16 @@ def execute(pin,phase):
                  'files':{path.relative_to(output).as_posix():{'bytes':path.stat().st_size,'sha256':sha(path)} for path in sorted(output.rglob('*')) if path.is_file()},
                  'original_results_changed':False,'scientific_success_claim':False}
         write(output/'report-receipt.json',receipt)
-        archive=ROOT/'edition-0003.tar.gz'
+        archive=ROOT/'edition-0004.tar.gz'
         with tarfile.open(archive,'x:gz') as target:
             for path in sorted(output.rglob('*')):
                 if path.is_file():target.add(path,arcname=path.relative_to(output).as_posix(),recursive=False)
         require(own_bytes()<CAP,'New report cap exceeded')
-        write(ROOT/'edition-0003-archive.json',{'status':'passed_saved_only_presentation','job_id':sub['job_id'],
+        write(ROOT/'edition-0004-archive.json',{'status':'passed_saved_only_presentation','job_id':sub['job_id'],
               'manifest_sha256':pin,'archive':binding(archive),'receipt_sha256':sha(output/'report-receipt.json'),
               'cpu_certificate_sha256':sha(ROOT/'cpu-certificate.json'),'scientific_success_claim':False})
         write(parent/'assessment.json',{'status':'passed_saved_only_presentation','job_id':sub['job_id'],
-              'manifest_sha256':pin,'archive_receipt_sha256':sha(ROOT/'edition-0003-archive.json')})
+              'manifest_sha256':pin,'archive_receipt_sha256':sha(ROOT/'edition-0004-archive.json')})
 
 
 if __name__=='__main__':

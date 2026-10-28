@@ -1,0 +1,15 @@
+{
+  "status": "submitted_cpu_observed_running",
+  "actual_jobs": {
+    "cpu": "29839663",
+    "after-cpu": "29839664"
+  },
+  "source_manifest_sha256": "2fa4fdc68dda5d04a7519c64c8550b44135678e85dba489d35d3e741d1ec5c11",
+  "preflight_required_bytes": 54885399377,
+  "preflight_available_bytes": 55777650794,
+  "reserve_bytes": 4294967296,
+  "file_reserve": 100000,
+  "forecasts_removed": false,
+  "optimizer_submitted": false,
+  "saved_results_changed": false
+}

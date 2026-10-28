@@ -1,0 +1,18 @@
+........................................................................ [ 48%]
+........................................................................ [ 97%]
+F...                                                                     [100%]
+=================================== FAILURES ===================================
+__ test_primary_objective_is_fixed_to_real_arm_metric_with_no_choice_control ___
+
+javascript = '\n"use strict";\n(() => {\n const SVG="http://www.w3.org/2000/svg", config=JSON.parse(document.getElementById("report...tURL,statusClass,currentRange,scalarAt,pause,selection:()=>({arm:arm?.id,step})};\n start().catch(showError);\n})();\n'
+document = <tests.test_viewer.Document object at 0x7fb648d5c5c0>
+
+    def test_primary_objective_is_fixed_to_real_arm_metric_with_no_choice_control(javascript, document):
+        assert 'arm.id==="dbmol"?{key:"dbmol_total_loss"' in javascript
+>       assert 'arm.id==="boltz"?{key:"affinity_loss"' in javascript
+E       assert 'arm.id==="boltz"?{key:"affinity_loss"' in '\n"use strict";\n(() => {\n const SVG="http://www.w3.org/2000/svg", config=JSON.parse(document.getElementById("report...tURL,statusClass,currentRange,scalarAt,pause,selection:()=>({arm:arm?.id,step})};\n start().catch(showError);\n})();\n'
+
+tests/test_viewer.py:277: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_viewer.py::test_primary_objective_is_fixed_to_real_arm_metric_with_no_choice_control
+1 failed, 147 passed in 3.96s

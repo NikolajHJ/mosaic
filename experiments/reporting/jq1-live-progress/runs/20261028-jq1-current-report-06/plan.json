@@ -1,0 +1,637 @@
+{
+  "arms": [
+    {
+      "continuation_status": "validation_queued",
+      "expected_committed_updates": 10000,
+      "expected_counts": {
+        "committed_updates": 10000,
+        "latest_global_step": 20000,
+        "retained_frames": 501,
+        "scalar_states": 10001
+      },
+      "expected_retained_frames": 501,
+      "global_start": 10000,
+      "global_target": 50000,
+      "id": "protenix",
+      "kind": "fixed",
+      "label": "Protenix native-only continuation",
+      "metric_labels": {},
+      "rate": 0.3,
+      "scientific_status": "failed",
+      "segments": [
+        {
+          "anchor_directory": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-segment-0000/payload/study/case-0",
+          "case_directory": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-segment-0000/payload/study/case-0",
+          "case_report": {
+            "bytes": 32327926,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-segment-0000/payload/study/case-0/report.json",
+            "sha256": "e10c5337c24a7e1e1e034c5af01799a24e090a651cd8677e68bb1db292eb1ebf"
+          },
+          "config": {
+            "bytes": 1733,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source/examples/configs/extended_continuation.json",
+            "sha256": "f91c90770fe907c00e081f3ed28b46071ac35cc3f869edae504cf8cc16f6b445"
+          },
+          "expected_counts": {
+            "committed_updates": 10000,
+            "retained_frames": 501,
+            "scalar_states": 10001
+          },
+          "global_offset": 10000,
+          "id": "continuation-segment-0000",
+          "job_id": "29809291",
+          "requested_updates": 10000,
+          "retained_index": {
+            "bytes": 99547,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-segment-0000/payload/study/case-0/retained-frames.json",
+            "sha256": "e998b40afe3aba111ef625d39b1afcd65609b38738626f7483cd258f9e45be6a"
+          },
+          "scientific_status": "failed",
+          "source_manifest_sha256": "da9db6821d26b884ca1749303fc8e0b0095bd9ee7cbd1b427cdcf1b22eec6562",
+          "states": {
+            "bytes": 10528552,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-segment-0000/payload/study/case-0/states.jsonl",
+            "sha256": "f24feed2906ff2307fb07d72c05cda4c17b0894f1515c7b566b921d2a0c5a5fb"
+          },
+          "stderr": {
+            "bytes": 750208,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-segment-0000/stderr.29809291.log",
+            "sha256": "12b4a4011c8d0a7de4c4c63f6b172d987de90f50e41d8425e41acc63b9e5b52f"
+          },
+          "stdout": {
+            "bytes": 1229018,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-segment-0000/stdout.29809291.log",
+            "sha256": "e87b2e9640768fb2c8d0ae064030f9e646d1820b4f55bea44bb10ff92ac7fa92"
+          },
+          "summary": {
+            "bytes": 37975078,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-segment-0000/payload/study/summary.json",
+            "sha256": "99d63960395797f0884140101afc012fd3335ed0edff80e6ef5d669549ea8285"
+          },
+          "updates": {
+            "bytes": 8634606,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-segment-0000/payload/study/case-0/updates.jsonl",
+            "sha256": "ba72dc41ed84a221e4d7711ca8054438d2e75496f32fe042f436e16fb3373075"
+          }
+        }
+      ],
+      "status_detail": "Absolute 20,000 saved updates (10,000 shown since the saved10,000 parent). Original terminal validation failed. Separate FP64 endpoint qualification passed; full-model continuation validation is submitted.",
+      "target_updates": 50000
+    },
+    {
+      "continuation_status": "blocked",
+      "expected_committed_updates": 20000,
+      "expected_counts": {
+        "committed_updates": 20000,
+        "latest_global_step": 20000,
+        "retained_frames": 1001,
+        "scalar_states": 20001
+      },
+      "expected_retained_frames": 1001,
+      "global_start": 0,
+      "global_target": 30000,
+      "id": "boltz",
+      "kind": "fixed",
+      "label": "Boltz-2 affinity, planned30k",
+      "metric_labels": {},
+      "rate": 0.0025,
+      "scientific_status": "failed",
+      "segments": [
+        {
+          "anchor_directory": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/boltz2-segment-0000/payload/study/case-0",
+          "case_directory": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/boltz2-segment-0000/payload/study/case-0",
+          "case_report": {
+            "bytes": 35038573,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/boltz2-segment-0000/payload/study/case-0/report.json",
+            "sha256": "6ac46db39fd5f6e97d425a8c4f0757c153eff3e7eb77db187e8fe4c1cb49ab8c"
+          },
+          "config": {
+            "bytes": 1698,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-release-03/source/examples/configs/boltz_serial_boltz2.json",
+            "sha256": "ecdf8a4103291f2f3a7bc7197dd394f03a46c3ccc74c72eb42dfc2b76eb13124"
+          },
+          "expected_counts": {
+            "committed_updates": 10000,
+            "retained_frames": 501,
+            "scalar_states": 10001
+          },
+          "global_offset": 0,
+          "id": "boltz2-segment-0000",
+          "job_id": "29809297",
+          "requested_updates": 10000,
+          "retained_index": {
+            "bytes": 98991,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/boltz2-segment-0000/payload/study/case-0/retained-frames.json",
+            "sha256": "ab6f49b928bd2b736c0640937a747b8db7d24c71271400f639f597e8e36342a0"
+          },
+          "scientific_status": "failed",
+          "source_manifest_sha256": "c214bccf2c94ac6829996bc0ca7d6415d3c19549be4fe7f874cba2b433901cc6",
+          "states": {
+            "bytes": 11279759,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/boltz2-segment-0000/payload/study/case-0/states.jsonl",
+            "sha256": "a04bf28626d5b908229e4e9eeefa07ab4571240d2063820fd59fe888e9b24025"
+          },
+          "stderr": {
+            "bytes": 5477,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/boltz2-segment-0000/stderr.29809297.log",
+            "sha256": "b7cac4f74d0fd40ab67568f865cb6e8365901b9bf385abd95b2216b1684b4887"
+          },
+          "stdout": {
+            "bytes": 1206610,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/boltz2-segment-0000/stdout.29809297.log",
+            "sha256": "f69cba5b2eba11c73db75175493dcf7bd5e97d7b4e8c1c4907d735b387e7117a"
+          },
+          "summary": {
+            "bytes": 40923777,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/boltz2-segment-0000/payload/study/summary.json",
+            "sha256": "3be92e7592273f4fc9d1d17ca1be9541d7fa03046e20edd76e48acc34168e986"
+          },
+          "updates": {
+            "bytes": 9993988,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/boltz2-segment-0000/payload/study/case-0/updates.jsonl",
+            "sha256": "8101acc4f0fc0c103c5201547c425c1d47ac15e4fc8952ac86368c6c14cf5284"
+          }
+        },
+        {
+          "anchor_directory": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-09/boltz-segment-10000/payload/study/case-0",
+          "case_directory": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-09/boltz-segment-10000/payload/study/case-0",
+          "case_report": {
+            "bytes": 35207241,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-09/boltz-segment-10000/payload/study/case-0/report.json",
+            "sha256": "c9cddd1706843cd4e5900a68202c731426085ae208d64b6a2b36374e8c0e41c4"
+          },
+          "config": {
+            "bytes": 1698,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-release-03/source/examples/configs/boltz_serial_boltz2.json",
+            "sha256": "ecdf8a4103291f2f3a7bc7197dd394f03a46c3ccc74c72eb42dfc2b76eb13124"
+          },
+          "expected_counts": {
+            "committed_updates": 10000,
+            "retained_frames": 501,
+            "scalar_states": 10001
+          },
+          "global_offset": 10000,
+          "id": "nonchem-endpoint-continuation-09-boltz-segment-10000",
+          "job_id": "29832964",
+          "requested_updates": 10000,
+          "retained_index": {
+            "bytes": 99547,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-09/boltz-segment-10000/payload/study/case-0/retained-frames.json",
+            "sha256": "f656e155a8a8a46382a10c2f23748d742ed5996aaaa83da161a7e1a799481a5a"
+          },
+          "scientific_status": "failed",
+          "source_manifest_sha256": "c214bccf2c94ac6829996bc0ca7d6415d3c19549be4fe7f874cba2b433901cc6",
+          "states": {
+            "bytes": 11343735,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-09/boltz-segment-10000/payload/study/case-0/states.jsonl",
+            "sha256": "3b1419a11de1dc0fb66ab6a262a8862d9f9886569d321e9e1dd854e1c96fae52"
+          },
+          "stderr": {
+            "bytes": 3683,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-09/boltz-segment-10000/stderr.29832964.log",
+            "sha256": "0b12641cd32d09c428f2d861074139b811fe6cc0011f2e510b4baf653386d146"
+          },
+          "stdout": {
+            "bytes": 1220518,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-09/boltz-segment-10000/stdout.29832964.log",
+            "sha256": "4a8cb333f9fccbbd4467470b91a18f127b9039c573711cd688930249a20d9bb5"
+          },
+          "summary": {
+            "bytes": 43673066,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-09/boltz-segment-10000/payload/study/summary.json",
+            "sha256": "63c67f516c110ea0d4d61fb7f50a272e831508e4849880e151ec4761ccb1497d"
+          },
+          "updates": {
+            "bytes": 10078398,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-09/boltz-segment-10000/payload/study/case-0/updates.jsonl",
+            "sha256": "be35db492c71306f3eed1f02a1cb96358071dec0bd93c94ecdd6687d689b661e"
+          }
+        }
+      ],
+      "status_detail": "20,000 saved updates. The new terminal endpoint check failed after the second segment; continuation to 30,000 is blocked. Original failures remain preserved.",
+      "target_updates": 30000
+    },
+    {
+      "continuation_status": "validation_queued",
+      "expected_committed_updates": 7500,
+      "expected_counts": {
+        "committed_updates": 7500,
+        "latest_global_step": 7500,
+        "retained_frames": 376,
+        "scalar_states": 7501
+      },
+      "expected_retained_frames": 376,
+      "global_start": 0,
+      "global_target": 10000,
+      "id": "dbmol",
+      "kind": "fixed",
+      "label": "Boltz-2 DBMol binding objective, planned10k",
+      "metric_labels": {},
+      "rate": 0.0025,
+      "scientific_status": "failed",
+      "segments": [
+        {
+          "anchor_directory": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-segment-0000/payload/study/case-0",
+          "case_directory": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-segment-0000/payload/study/case-0",
+          "case_report": {
+            "bytes": 12658054,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-segment-0000/payload/study/case-0/report.json",
+            "sha256": "b1bbb5b879027e352b2012f9863a54e629aefcde304dcc19eb7f617dc3d90895"
+          },
+          "config": {
+            "bytes": 1816,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-release-02/source/examples/configs/dbmol_pilot.json",
+            "sha256": "b3b56f409a59b3b1d00228bb7dcd3f74fc08f17fdf06facfc1469922778d5497"
+          },
+          "expected_counts": {
+            "committed_updates": 2500,
+            "retained_frames": 126,
+            "scalar_states": 2501
+          },
+          "global_offset": 0,
+          "id": "pilot-segment-0000",
+          "job_id": "29809294",
+          "requested_updates": 2500,
+          "retained_index": {
+            "bytes": 25111,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-segment-0000/payload/study/case-0/retained-frames.json",
+            "sha256": "0f4445b146cf952f4022b2d59d67401fd261cd4cef35573aff358745e03877af"
+          },
+          "scientific_status": "passed",
+          "source_manifest_sha256": "600ecc3b33135141a57c029a28a2c72f29e788e3ecf5cb2dac1761146d1d6eed",
+          "states": {
+            "bytes": 4384512,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-segment-0000/payload/study/case-0/states.jsonl",
+            "sha256": "32918efa47338d07dbb94f12ceb31fd8ca49706b24555de96bdca5539227313c"
+          },
+          "stderr": {
+            "bytes": 260,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-segment-0000/stderr.29809294.log",
+            "sha256": "e88d7498b24f9dd51983e7779ddc9995dcd041200de7e81cbed8ed71a1d6c842"
+          },
+          "stdout": {
+            "bytes": 305579,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-segment-0000/stdout.29809294.log",
+            "sha256": "8b785675b89398d6dfef726d6fd05b28dff4909fed106b50448fd666c9b70d84"
+          },
+          "summary": {
+            "bytes": 14547372,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-segment-0000/payload/study/summary.json",
+            "sha256": "2a0dd16e2210943903140897076605b9c1ad9dc349c2235efb15faf8ec3c9538"
+          },
+          "updates": {
+            "bytes": 4059759,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-segment-0000/payload/study/case-0/updates.jsonl",
+            "sha256": "f8683d8722d78c1eeda816b2f51ec8b950c0354b7f304983ea7c9bbdeacf0dbf"
+          }
+        },
+        {
+          "anchor_directory": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-segment-0001/payload/study/case-0",
+          "case_directory": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-segment-0001/payload/study/case-0",
+          "case_report": {
+            "bytes": 12702784,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-segment-0001/payload/study/case-0/report.json",
+            "sha256": "f8d4c77a40e69966841048d55be4871671bb3d6598aa4ecddd955d34d9f87aa5"
+          },
+          "config": {
+            "bytes": 1816,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-release-02/source/examples/configs/dbmol_pilot.json",
+            "sha256": "b3b56f409a59b3b1d00228bb7dcd3f74fc08f17fdf06facfc1469922778d5497"
+          },
+          "expected_counts": {
+            "committed_updates": 2500,
+            "retained_frames": 126,
+            "scalar_states": 2501
+          },
+          "global_offset": 2500,
+          "id": "pilot-segment-0001",
+          "job_id": "29810971",
+          "requested_updates": 2500,
+          "retained_index": {
+            "bytes": 25167,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-segment-0001/payload/study/case-0/retained-frames.json",
+            "sha256": "8b3223061928c7b757d7534ea1c57318aa800c6451451c3d3ddcbc56ba510917"
+          },
+          "scientific_status": "failed",
+          "source_manifest_sha256": "600ecc3b33135141a57c029a28a2c72f29e788e3ecf5cb2dac1761146d1d6eed",
+          "states": {
+            "bytes": 4406776,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-segment-0001/payload/study/case-0/states.jsonl",
+            "sha256": "584f0819022936b368099b979f1626958561c94b8d4ffe50f22338bbda293a51"
+          },
+          "stderr": {
+            "bytes": 6946,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-segment-0001/stderr.29810971.log",
+            "sha256": "7a3108464fb096183e50a7112dd877eb05c972ebf1af1d148e9a94813d6380ed"
+          },
+          "stdout": {
+            "bytes": 307626,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-segment-0001/stdout.29810971.log",
+            "sha256": "48c2404f121fbbc03c952436bf13fb7042598dcebbe1a375c40c20924e518a00"
+          },
+          "summary": {
+            "bytes": 14568511,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-segment-0001/payload/study/summary.json",
+            "sha256": "eb2b72e51c4a80c32a70229e2eb49adadad5addf71bc7ed91a9c80ea16399285"
+          },
+          "updates": {
+            "bytes": 4082222,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-segment-0001/payload/study/case-0/updates.jsonl",
+            "sha256": "03ac0f707fcdd0bfc5c0cf0d1542e0aa05cb45ce2cdedc43a3136f511b51ef40"
+          }
+        },
+        {
+          "anchor_directory": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-08/dbmol-segment-05000/payload/study/case-0",
+          "case_directory": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-08/dbmol-segment-05000/payload/study/case-0",
+          "case_report": {
+            "bytes": 12869158,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-08/dbmol-segment-05000/payload/study/case-0/report.json",
+            "sha256": "da05f1dcd377828b2a27ddf0472f68ebb5c499352eae2f8e242979df381b4364"
+          },
+          "config": {
+            "bytes": 1816,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-release-02/source/examples/configs/dbmol_pilot.json",
+            "sha256": "b3b56f409a59b3b1d00228bb7dcd3f74fc08f17fdf06facfc1469922778d5497"
+          },
+          "expected_counts": {
+            "committed_updates": 2500,
+            "retained_frames": 126,
+            "scalar_states": 2501
+          },
+          "global_offset": 5000,
+          "id": "nonchem-endpoint-continuation-08-dbmol-segment-05000",
+          "job_id": "29830999",
+          "requested_updates": 2500,
+          "retained_index": {
+            "bytes": 25167,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-08/dbmol-segment-05000/payload/study/case-0/retained-frames.json",
+            "sha256": "ef5f97059f0624d675e4ef6c5911d96a3a2f7abe67f13749ebabf6cb0c25ced6"
+          },
+          "scientific_status": "failed",
+          "source_manifest_sha256": "600ecc3b33135141a57c029a28a2c72f29e788e3ecf5cb2dac1761146d1d6eed",
+          "states": {
+            "bytes": 4441745,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-08/dbmol-segment-05000/payload/study/case-0/states.jsonl",
+            "sha256": "8fdec6fb6d23b1b0ac671bd412056b40bd6e79317d9de29b2e7922ed67bb6225"
+          },
+          "stderr": {
+            "bytes": 4966,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-08/dbmol-segment-05000/stderr.29830999.log",
+            "sha256": "ba1ce89ca838769fd43cb7763b1d8ad4b426aba4a27bf7257a2ebf1dc6e0b03a"
+          },
+          "stdout": {
+            "bytes": 315256,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-08/dbmol-segment-05000/stdout.29830999.log",
+            "sha256": "def798945b422a68ae9ab9bbd2b044671aa1906e1aeb915f84e94618cf410dcd"
+          },
+          "summary": {
+            "bytes": 26328368,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-08/dbmol-segment-05000/payload/study/summary.json",
+            "sha256": "0f83fe29c6869c54e78977fd7a236bccc31b9a93cee18c1a8678009dda456319"
+          },
+          "updates": {
+            "bytes": 4121638,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-08/dbmol-segment-05000/payload/study/case-0/updates.jsonl",
+            "sha256": "a835f740e4ecd806b09dc3e0c53e1b48c3c201a2f4b0a5a50b82b90c4b49b44d"
+          }
+        }
+      ],
+      "status_detail": "7,500 saved updates. Original terminal validation failed. Separate finer-scale qualification passed; new full-model continuation validation is submitted. The original scientific failures remain failed.",
+      "target_updates": 10000
+    },
+    {
+      "continuation_status": "completed",
+      "expected_committed_updates": 1000,
+      "expected_counts": {
+        "committed_updates": 1000,
+        "latest_global_step": 1000,
+        "retained_frames": 51,
+        "scalar_states": 1001
+      },
+      "expected_retained_frames": 51,
+      "global_start": 0,
+      "global_target": 1000,
+      "id": "protenix_noisy",
+      "kind": "noisy",
+      "label": "Protenix noisy-logit1k pilot",
+      "metric_labels": {},
+      "rate": 0.3,
+      "scientific_status": "passed",
+      "segments": [
+        {
+          "anchor_directory": "/work3/s234818/mosaic/runs/20261025-protenix-noisy-05/gpu",
+          "case_directory": "/work3/s234818/mosaic/runs/20261025-protenix-noisy-05/gpu/trajectory",
+          "config": {
+            "bytes": 493,
+            "path": "/work3/s234818/mosaic/releases/20261023-protenix-noisy-01/source/experiments/brd4-jq1/protenix-noisy-1000/runs/20261023-protenix-noisy-01/config.json",
+            "sha256": "ba9253d44c74542333da39b7d973fb2907366bcb85bab5fb40a03d0e8f867309"
+          },
+          "expected_counts": {
+            "committed_updates": 1000,
+            "retained_frames": 51,
+            "scalar_states": 1001
+          },
+          "global_offset": 0,
+          "id": "noisy-1000",
+          "job_id": "29809228",
+          "requested_updates": 1000,
+          "retained_index": {
+            "bytes": 10897,
+            "path": "/work3/s234818/mosaic/runs/20261025-protenix-noisy-05/gpu/trajectory/retained-frames.json",
+            "sha256": "e27fd2150ddb0cbe3a7ecf318bb8c757b75ad5d6db9dfc0ba8fe009c252cfe51"
+          },
+          "scientific_status": "passed",
+          "source_manifest_sha256": "7bb970f48f6f907b7dc05e74a9bc2645a313addf814f08a0eeca11582f3b84ef",
+          "states": {
+            "bytes": 607787,
+            "path": "/work3/s234818/mosaic/runs/20261025-protenix-noisy-05/gpu/trajectory/states.jsonl",
+            "sha256": "03f9771f6d0bc99a2f9b589b81465cdfd820bb155375ef5f399b9676ec679b86"
+          },
+          "stderr": {
+            "bytes": 73777,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-02/noise-gpu/stderr.29809228.log",
+            "sha256": "12938d2fb89ee50f440cfeca468331e4596356d159972961ab4f5174026f640f"
+          },
+          "stdout": {
+            "bytes": 55778,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-02/noise-gpu/stdout.29809228.log",
+            "sha256": "2b375ee7952a46dd45c3f987274f1d26a2f6053f8efcc4731230aaeb5c2d10fa"
+          },
+          "summary": {
+            "bytes": 27324,
+            "path": "/work3/s234818/mosaic/runs/20261025-protenix-noisy-05/gpu/summary.json",
+            "sha256": "5d5aa5afcb0e12b724955448d6f7fd134f6f92af1f44f37bae6aeecd4e62f6c2"
+          },
+          "updates": {
+            "bytes": 339424,
+            "path": "/work3/s234818/mosaic/runs/20261025-protenix-noisy-05/gpu/trajectory/updates.jsonl",
+            "sha256": "5c96c91d91a135ee8a2878211b59247d0ef9c8fbae67c3e9164fdcbc2068cc6b"
+          }
+        }
+      ],
+      "status_detail": "Completed1,000 updates; original initial/terminal raw and logit checks passed. Independent pilot, not the50k random chemistry run.",
+      "target_updates": 1000
+    },
+    {
+      "continuation_status": "blocked",
+      "expected_committed_updates": 10000,
+      "expected_counts": {
+        "committed_updates": 10000,
+        "latest_global_step": 10000,
+        "retained_frames": 501,
+        "scalar_states": 10001
+      },
+      "expected_retained_frames": 501,
+      "global_start": 0,
+      "global_target": 50000,
+      "id": "protenix_chemistry",
+      "kind": "fixed",
+      "label": "Random Protenix + delayed chemistry",
+      "metric_labels": {},
+      "rate": 0.3,
+      "scientific_status": "partial",
+      "segments": [
+        {
+          "anchor_directory": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-03/protenix/random-segment-0000/payload/study/case-0",
+          "case_directory": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-03/protenix/random-segment-0000/payload/study/case-0",
+          "case_report": {
+            "bytes": 40428603,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-03/protenix/random-segment-0000/payload/study/case-0/report.json",
+            "sha256": "0bad4fe5e6fcc5f7f9b36ea6c53dd19c65a323683bcee3b202847d78106a89a5"
+          },
+          "config": {
+            "bytes": 1890,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source/examples/configs/extended_random.json",
+            "sha256": "d4993743e7f4e6b0f559e3da0c264c2a8b3969c8d113f5defba397350f3e5749"
+          },
+          "expected_counts": {
+            "committed_updates": 10000,
+            "retained_frames": 501,
+            "scalar_states": 10001
+          },
+          "global_offset": 0,
+          "id": "protenix-random-segment-0000",
+          "job_id": "29820255",
+          "requested_updates": 10000,
+          "retained_index": {
+            "bytes": 98991,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-03/protenix/random-segment-0000/payload/study/case-0/retained-frames.json",
+            "sha256": "dc0f80c58fc2fc8e3dd6cfcce59a32869b674389cbe6788811528f784f0feedc"
+          },
+          "scientific_status": "passed",
+          "source_manifest_sha256": "da9db6821d26b884ca1749303fc8e0b0095bd9ee7cbd1b427cdcf1b22eec6562",
+          "states": {
+            "bytes": 14176264,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-03/protenix/random-segment-0000/payload/study/case-0/states.jsonl",
+            "sha256": "2180dd0dbbab54045fff2278404fdf83cb0b8fcde2e264b260447c604559c0f3"
+          },
+          "stderr": {
+            "bytes": 260,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-03/protenix/random-segment-0000/stderr.29820255.log",
+            "sha256": "e88d7498b24f9dd51983e7779ddc9995dcd041200de7e81cbed8ed71a1d6c842"
+          },
+          "stdout": {
+            "bytes": 2072,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-03/protenix/random-segment-0000/stdout.29820255.log",
+            "sha256": "20e585ebde4b26872663e13769b09f845c96a3933b3425d772118cfa0ff4d01e"
+          },
+          "summary": {
+            "bytes": 47001479,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-03/protenix/random-segment-0000/payload/study/summary.json",
+            "sha256": "afc86c37067c8251c05d52de190ea2d172c336d7b00d738e0a751804dc48b32c"
+          },
+          "updates": {
+            "bytes": 10827306,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-03/protenix/random-segment-0000/payload/study/case-0/updates.jsonl",
+            "sha256": "6cae3e0609313279ef746d639edf7e9cb601fbec526f5696cac9a3c8e9cb2d65"
+          }
+        }
+      ],
+      "status_detail": "First 10,000-update segment passed. The next boundary combined-gradient check and later separate revalidation failed; continuation is blocked. Chemistry rises from0.001 after 5,000 toward 100 at 50,000.",
+      "target_updates": 50000
+    },
+    {
+      "continuation_status": "blocked",
+      "expected_committed_updates": 10000,
+      "expected_counts": {
+        "committed_updates": 10000,
+        "latest_global_step": 10000,
+        "retained_frames": 501,
+        "scalar_states": 10001
+      },
+      "expected_retained_frames": 501,
+      "global_start": 0,
+      "global_target": 30000,
+      "id": "boltz_chemistry",
+      "kind": "fixed",
+      "label": "Boltz-2 + delayed chemistry",
+      "metric_labels": {},
+      "rate": 0.0025,
+      "scientific_status": "failed",
+      "segments": [
+        {
+          "anchor_directory": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-04/boltz/boltz2_chemistry-segment-0000/payload/study/case-0",
+          "case_directory": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-04/boltz/boltz2_chemistry-segment-0000/payload/study/case-0",
+          "case_report": {
+            "bytes": 42653960,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-04/boltz/boltz2_chemistry-segment-0000/payload/study/case-0/report.json",
+            "sha256": "c0494e474c2748e884af65cdbb5f1b66f1061f967778bb26ce793c0e3d3ef92c"
+          },
+          "config": {
+            "bytes": 1854,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-release-03/source/examples/configs/boltz_serial_boltz2_chemistry.json",
+            "sha256": "3b3bc33d087f0c03a48c6bf89f03bc707d236ca0f64a95ba5ae2159d1918737c"
+          },
+          "expected_counts": {
+            "committed_updates": 10000,
+            "retained_frames": 501,
+            "scalar_states": 10001
+          },
+          "global_offset": 0,
+          "id": "boltz-boltz2_chemistry-segment-0000",
+          "job_id": "29825209",
+          "requested_updates": 10000,
+          "retained_index": {
+            "bytes": 98991,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-04/boltz/boltz2_chemistry-segment-0000/payload/study/case-0/retained-frames.json",
+            "sha256": "f435566608c7d9c19058ebcff2cc1747268ba3490689e66af9f580f4cee52605"
+          },
+          "scientific_status": "failed",
+          "source_manifest_sha256": "c214bccf2c94ac6829996bc0ca7d6415d3c19549be4fe7f874cba2b433901cc6",
+          "states": {
+            "bytes": 14649325,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-04/boltz/boltz2_chemistry-segment-0000/payload/study/case-0/states.jsonl",
+            "sha256": "6ecd128b720c1071d8d4bb107c14e14e8a4aef04e7ec51054e60de5bb41faa17"
+          },
+          "stderr": {
+            "bytes": 1553,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-04/boltz/boltz2_chemistry-segment-0000/stderr.29825209.log",
+            "sha256": "26934c678ddf558b9f0ae190e66dc431481a3eb67b9ea0782aea69f54717d07c"
+          },
+          "stdout": {
+            "bytes": 2093,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-04/boltz/boltz2_chemistry-segment-0000/stdout.29825209.log",
+            "sha256": "61e0780e9e6f96a08eac3546891faf84b711af1ceddd8a1355b158567b7949f4"
+          },
+          "summary": {
+            "bytes": 49459431,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-04/boltz/boltz2_chemistry-segment-0000/payload/study/summary.json",
+            "sha256": "0e1d15e3066682679a03df801e316352d0734bad48c0e4d30bbde703e0e48a9a"
+          },
+          "updates": {
+            "bytes": 11979532,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-04/boltz/boltz2_chemistry-segment-0000/payload/study/case-0/updates.jsonl",
+            "sha256": "dae6aae99623e8e89341082c7d5edb6f983b9c9a77b78fae45b7487294562d81"
+          }
+        }
+      ],
+      "status_detail": "10,000 saved updates; terminal bond-gradient validation failed. Separate native-component recheck passed; combined-loss checks and pilots are still required before continuation. Chemistry rises from0.001 after 5,000 toward 100 at 30,000.",
+      "target_updates": 30000
+    }
+  ],
+  "automatic_optimizer_submission": false,
+  "captured_at": "2026-10-28T09:54:35.772697+00:00",
+  "edition": "edition-0004",
+  "monitor_remains_paused": true,
+  "version": "jq1-live-saved-report-v1"
+}

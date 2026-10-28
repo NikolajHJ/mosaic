@@ -1,0 +1,18 @@
+{
+  "status": "passed_final_saved_only_report_delivery",
+  "edition": "edition-0004",
+  "url": "http://127.0.0.1:8780/report.html",
+  "source_manifest_sha256": "2fa4fdc68dda5d04a7519c64c8550b44135678e85dba489d35d3e741d1ec5c11",
+  "report_manifest_sha256": "f9208665148f862aa4cc0a2d9a9f03d94e60b8aacaf4bd6ea052c3c62766ca1b",
+  "report_archive_sha256": "2e8330d343bfc69c15e673f51e42750c057a6201a37d92d97ec4f96e910d5631",
+  "delivery_verification_sha256": "285fa557cf4a9036d8d9133f3f8059d829229dd0a405ecb8afeca634c54edc65",
+  "http_verification_sha256": "1f1536856f80df686d1ed00077a443a586e87cd2c19fcb2a8ff4a4d635549ad3",
+  "browser_qa_sha256": "c951627ca4da6737b9bfae8199838ed0b5772b55098bf42db217686d3bdae343",
+  "preview_sha256": "30a0f19a73506ed4bd3c338a5a158cfc4a6fd95eae428b748853e430aa55b85b",
+  "older_edition_member_bytes_preserved": 75,
+  "original_scientific_results_changed": false,
+  "scientific_success_claim": false,
+  "optimizer_job_submitted": false,
+  "monitor_remains_paused": true,
+  "finished_utc": "2026-10-28T10:34:21.090175+00:00"
+}

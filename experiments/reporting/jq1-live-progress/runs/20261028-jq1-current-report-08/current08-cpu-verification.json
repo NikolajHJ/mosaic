@@ -1,0 +1,18 @@
+{
+  "status": "passed_raw_CPU149_XML_schema",
+  "assessment": {
+    "status": "passed",
+    "job_id": "29839663",
+    "manifest_sha256": "2fa4fdc68dda5d04a7519c64c8550b44135678e85dba489d35d3e741d1ec5c11",
+    "cpu_counts": {
+      "tests.test_qualification": 19,
+      "tests.test_report_data": 73,
+      "tests.test_report_ops": 16,
+      "tests.test_viewer": 41
+    },
+    "xml_sha256": "744dca73302ce26c0265b460e567cf91ec9834d34fc18e7a28193583dd238bd7",
+    "original_results_changed": false
+  },
+  "source_manifest_sha256": "2fa4fdc68dda5d04a7519c64c8550b44135678e85dba489d35d3e741d1ec5c11",
+  "local_scientific_work": false
+}

@@ -1,0 +1,8 @@
+{
+  "status": "passed_stdlib_source_byte_AST_schema_audit",
+  "source_manifest_sha256": "2fa4fdc68dda5d04a7519c64c8550b44135678e85dba489d35d3e741d1ec5c11",
+  "members": 18,
+  "scientific_saved_data_renderer_exact_source07": true,
+  "template_delta": "One stale fixed-count header replaced with cohort-agnostic text",
+  "local_numerical_tests": false
+}

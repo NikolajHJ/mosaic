@@ -163,7 +163,10 @@ def main():
     expected={'protenix':(10000,50000,'failed',501),'boltz':(10000,30000,'failed',501),'dbmol':(5000,10000,'failed',251),'protenix_noisy':(1000,1000,'passed',51)}
     if args.generation!='03':
         planned=json.loads((package/'plan.json').read_bytes())
-        assert {arm['id'] for arm in planned['arms']}==set(expected)
+        planned_ids={arm['id'] for arm in planned['arms']}
+        assert planned_ids in (set(expected),set(expected)|{'protenix_chemistry','boltz_chemistry'})
+        assert len(planned_ids)==len(planned['arms'])==len(report['arms'])
+        assert {arm['id'] for arm in report['arms']}==planned_ids
         expected={arm['id']:(arm['expected_committed_updates'],arm['global_target'],arm['scientific_status'],arm['expected_retained_frames']) for arm in planned['arms']}
     for arm in report['arms']:
         count,target,status,frames=expected[arm['id']]

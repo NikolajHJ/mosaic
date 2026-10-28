@@ -597,6 +597,7 @@ def collect_arm(arm, output):
         "committed_updates": applied, "latest_global_step": current_end,
         "scientific_status": actual_status, "presentation_status": "saved_prefix_verified",
         "status_detail": arm.get("status_detail", ""), "metric_labels": arm.get("metric_labels", {}),
+        "continuation_status": arm.get("continuation_status", "not_recorded"),
         "rate": arm["rate"], "atom_categories": list(ATOMS), "bond_categories": list(BONDS),
         "scalars": {**asset_binding(scalar_path, root), "count": len(scalar_rows)},
         "frames": {"count": len(frames), "steps": [row["global_step"] for row in frames], "chunks": chunks},
@@ -612,7 +613,7 @@ def render(plan, output):
     require(re.fullmatch(r"edition-[0-9]{4}|edition-final", plan.get("edition", "")) is not None, "Unsafe immutable edition")
     require(isinstance(plan.get("captured_at"), str), "Capture time must be explicit")
     arms = plan.get("arms")
-    require(isinstance(arms, list) and len(arms) == 4
+    require(isinstance(arms, list) and len(arms) in (4, 6)
             and len({arm["id"] for arm in arms}) == len(arms), "Duplicate/missing report arms")
     output = Path(output)
     output.mkdir(exist_ok=False)

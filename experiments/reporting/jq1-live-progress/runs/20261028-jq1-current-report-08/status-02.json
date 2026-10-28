@@ -1,0 +1,12 @@
+{
+  "status": "CPU149_passed_render_RUNNING",
+  "actual_jobs": {
+    "cpu": "29839663",
+    "after-cpu": "29839664",
+    "render": "29839701"
+  },
+  "cpu_certificate_sha256": "c17140e8a83fb1c4d63612c0c10d4ad73bc0ada32357f94cb74f5e6968a826be",
+  "source_manifest_sha256": "2fa4fdc68dda5d04a7519c64c8550b44135678e85dba489d35d3e741d1ec5c11",
+  "local_scientific_work": false,
+  "original_results_changed": false
+}

@@ -1,0 +1,48 @@
+{
+  "status": "passed",
+  "manifest_sha256": "2fa4fdc68dda5d04a7519c64c8550b44135678e85dba489d35d3e741d1ec5c11",
+  "cpu_job_id": "29839663",
+  "cpu_counts": {
+    "tests.test_qualification": 19,
+    "tests.test_report_data": 73,
+    "tests.test_report_ops": 16,
+    "tests.test_viewer": 41
+  },
+  "proofs": [
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-08/after-cpu/terminal-query-000.json",
+      "bytes": 3605,
+      "sha256": "353a179f3b486a0de8f63797271f7ea925a42149d5a1d1936effdae6f726daa9"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-08/cpu/stdout.29839663.log",
+      "bytes": 1960,
+      "sha256": "8d77f5cae8840fb1888fa79af70c4bcd127434930dd5b603a665c6fc09e3ef0a"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-08/cpu/submission.json",
+      "bytes": 1127,
+      "sha256": "404c55c2cac1560a77a829a3b3997df2d0e8a7eb18ff4ee9b72c9b54c194a5bc"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-08/cpu/assessment.json",
+      "bytes": 413,
+      "sha256": "71705f9a0dff1eede17193dd42aa276c8f5b2e929ef6acecda4431692fe6b132"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-08/cpu/tests.xml",
+      "bytes": 20083,
+      "sha256": "744dca73302ce26c0265b460e567cf91ec9834d34fc18e7a28193583dd238bd7"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-08/cpu/tests.log",
+      "bytes": 260,
+      "sha256": "7e7f763627d2fddc991989f03c8485eced077570def9eafe23f011775359b74d"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-08/cpu/command.json",
+      "bytes": 1160,
+      "sha256": "18037754e004b4a68e07388adbd15a8a6f1e128d30e1a508c87a5a10124716fb"
+    }
+  ]
+}

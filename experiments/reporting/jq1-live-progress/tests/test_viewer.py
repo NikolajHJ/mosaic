@@ -127,6 +127,19 @@ def test_four_arm_manifest_keeps_presentation_and_scientific_outcomes_separate(j
     assert 'statusClass(arm.scientific_status)==="failed"' in javascript
 
 
+def test_six_arm_refresh_uses_affinity_for_both_boltz_arms(javascript):
+    assert 'value.arms.length===6' in javascript
+    assert 'arm.id==="boltz"||arm.id==="boltz_chemistry"' in javascript
+    assert 'protenix_chemistry:"Random Protenix + chemistry"' in javascript
+    assert 'boltz_chemistry:"Boltz-2 + chemistry"' in javascript
+
+
+def test_continuation_blocker_is_separate_from_saved_scientific_and_presentation_status(javascript):
+    assert 'pill("Continuation",arm.continuation_status||"not recorded")' in javascript
+    assert 'blocked:"Blocked"' in javascript and 'validation_queued:"Validation submitted"' in javascript
+    assert 's.includes("blocked")' in javascript
+
+
 def test_unsaved_global_step_clears_every_previous_molecule_view(document, javascript):
     start = javascript.index('function clearFrame(')
     end = javascript.index('function validateFrame(', start)
@@ -261,7 +274,7 @@ def test_refined_layout_has_two_primary_panels_and_secondary_data_closed(documen
 
 def test_primary_objective_is_fixed_to_real_arm_metric_with_no_choice_control(javascript, document):
     assert 'arm.id==="dbmol"?{key:"dbmol_total_loss"' in javascript
-    assert 'arm.id==="boltz"?{key:"affinity_loss"' in javascript
+    assert '(arm.id==="boltz"||arm.id==="boltz_chemistry")?{key:"affinity_loss"' in javascript
     assert '{key:"contact_loss",label:"Pocket contact loss"' in javascript
     assert 'metric-select' not in javascript
     assert [attrs['id'] for tag, attrs in document.tags if tag == 'select'] == ['arm-select']
@@ -293,3 +306,8 @@ def test_bond_aware_geometry_preserves_aspect_and_readout_without_repair(javascr
     assert 'frame.readout||{}' in javascript
     assert 'readout.canonical_smiles||""' in javascript
     assert 'readout.sanitized?' in javascript and 'readout.disconnected?' in javascript
+
+
+def test_header_describes_saved_trajectories_without_a_stale_fixed_arm_count(source):
+    assert 'Independent saved trajectories. Original results, including failed terminal checks.' in source
+    assert 'Four independent runs.' not in source

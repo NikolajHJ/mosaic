@@ -91,3 +91,32 @@ refreshes require generation05 or higher. The historical source03 launch prefix
 is separately authenticated and rewritten to the new generation; source04
 controller constants use a separate04-to-new-generation mapping. The immutable
 refined template and graph geometry are therefore retained by future refreshes.
+
+## Current six-arm update (28 October)
+
+`capture_current.py` collected the exact terminal saved segments for the current
+six-arm cohort using one read-only metadata query. Its completed capture is bound
+under `results/hpc/20261028-jq1-current-report-05/capture01/`; do not replay that
+one-shot capture or its old root-absence guard. `prepare_current.py` authenticates
+that capture and source04, adds the two chemistry selectors, current continuation
+labels and the current full-campaign storage guard. It performs stdlib packaging
+only. The source08 package is already staged and submitted: **do not rerun its
+starter, callback or claim**. Its exact commands and outcomes belong to
+[run08](../runs/20261028-jq1-current-report-08/README.md).
+
+Source05 failed one obsolete viewer literal fixture (147 passes); no renderer
+ran. Source06 is a preserved local-only draft. Source07 corrects the fixture and
+explicitly charges the failed05 upload along with every owned source/root byte.
+Source07 passed all148 allocated cases and rendering, but final review found a
+stale four-run heading. Source08 preserves07, charges all its terminal bytes and
+uses cohort-agnostic wording with an additional viewer fixture. It repeats all149
+allocated cases:19 qualification,73 data,16 orchestration and41 viewer contracts.
+Existing scientific frame/transition/boundary checks remain
+unchanged. The independent report allowance is1GiB, in addition to all current
+experiment forecasts and the unchanged4GiB/100,000-file reserves.
+
+Use fresh observation names with `--generation 08 --edition edition-0004`.
+`publish.py` accepts only the exact planned four- or six-arm cohort and validates
+the new allocated CPU/render proofs, archive and every member before publishing.
+The older display-only equality audit applies only to generation04. Updating
+this report never submits a scientific run or resumes the paused monitor.

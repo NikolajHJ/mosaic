@@ -1,0 +1,17 @@
+{
+  "status": "failed_CPU_viewer_literal_fixture_before_render",
+  "cpu_job_id": "29839488",
+  "callback_job_id": "29839489",
+  "source_manifest_sha256": "3933f22fe049ee7a1af854bb94d7d1caca5824969e978c53dd44717a1e327423",
+  "archive_sha256": "b68163651ee9fa2aeb7f53acf8bcfc0b80c987778044158e672f39854208804e",
+  "CPU_cases_required": 148,
+  "saved_results_changed": false,
+  "optimizer_submission": false,
+  "monitor_remains_paused": true,
+  "edition": "edition-0004",
+  "stable_url": "http://127.0.0.1:8780/report.html",
+  "CPU_passed": 147,
+  "CPU_failed": 1,
+  "report_rendered": false,
+  "report_published": false
+}

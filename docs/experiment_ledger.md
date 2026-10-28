@@ -8813,3 +8813,108 @@ verification.json bind every delivered file. Scheduler255 is exactly22agedout
 IDs; historical states use authentic persisted LSF, never invented scheduler.
 Only metadata/prefix schema audited locally; full scientific bytes remain
 remote. No jobs, cleanup, scientific changes or local numerics.
+
+
+### 2026-10-28 — Current saved report update05 preparation
+
+Human requested updatingexistingreport. Newedition0004 planned onstable8780
+viewer with6currentarms, latestsavedsegments and explicit originalfailures/
+continuationblockers. Preserve refinedlayout andeveryoldedition, allscalarvalues
+andonlyretainedmatrices; fullallocatedCPU/rawframe checks andwholecurrent
+capacity before publication. No model/optimizer/newscience or localnumerics.
+Preparationonly; monitorpaused.
+
+
+### 2026-10-28 — Six-run report05 allocatedCPU actually submitted
+
+ActualCPU29839488/ownendedcallback29839489 submitted11:03:26Paris after
+fullcurrentcampaign+independent1GiBreport preflight passed.17files source
+manifest3933f22fe049ee7a1af854bb94d7d1caca5824969e978c53dd44717a1e327423, archive64513bytes
+SHAb68163651ee9fa2aeb7f53acf8bcfc0b80c987778044158e672f39854208804e. Plan6arms/2931original
+retainedframes/58500update records; full148allocatedfixtures andsamejob
+LSF/render/source/input/archive/HTTP/browserproofs required beforedelivery.
+Older report8780edition0003 remains historicalcurrentuntilverifiednewedition.
+No model,optimizer,scientificsettings or savedresult changes; monitorpaused.
+
+
+### 2026-10-28 — Six-arm report05 failure preserved;07 CPU148 passed, renderer running
+
+Report05 CPU29839488 exited after147passes/oneobsolete viewer literal fixture;
+callback correctly blocked rendering. The fixture assumed affinity belonged only
+to plainBoltz, while the declared six-arm view also includes Boltzchemistry.
+Full failure XML/log/source preserved. Local06draft was neverstaged/submitted.
+New immutable07 additionally charges the failed05upload explicitly; every old
+scientific/frame check and wholecampaign forecast remains unchanged.
+
+Source07 manifest7e19c46a1b1a062710f44d994f33cb57ced0a484c709ae320503503ebd24008d,
+archive65830bytes SHA25c52cdbda4624d17cd71797ede4766cb65610648b8da88623a3b6cc085a9e8b.
+ActualCPU29839541 andownendedcallback29839542 submitted10:09:36–37UTC. Both
+actualDONE/hpc/LSFsuccess;148rawcases19+73+16+40passed, zeroerrors/failures/skips.
+Independent localstdlibXML/LSF/hash/schema verificatione952e974668188e104145ca5232198836ec6f5246895e61ef36b3bedd4238e98.
+Renderer29839564 actualRUN inallocatedhpc; no publication yet. Fullcurrent
+forecasts plus independent1GiBreport/4GiB100000reserve retained. No scientific
+job/settings/savedresult changes; localmetadata/bytes only; monitorpaused.
+
+
+### 2026-10-28 — Report07 render passed;08 presentation wording correction prepared
+
+Report07 renderer29839564 actualDONE/hpc/samejobLSFsuccess with saved-only
+assessment/archive; notpublished because localpresentationreview found a stale
+Four-independent-runs heading in six-armview. All07source/proofs/output preserved.
+New08 changes that heading to cohort-agnostic wording, adds one requiredfixture,
+updates ownedpaths and charges entireterminal07root/source/upload inaddition
+to05/currentfullforecasts. Exact07saved-data renderer, scientificchecks andplan
+bytes unchanged. Source17files manifest2fa4fdc68dda5d04a7519c64c8550b44135678e85dba489d35d3e741d1ec5c11,
+archive70049bytes SHA77461bdcb6d5cbc0a13887f64cef0eaf495566fdde61e1b7bdf4b6ea253956c9.
+Full149allocatedcases plus render/archive/HTTP/browserchecks precede publication;
+preparationonly, no localnumerics/scientificchanges/optimizerjobs, monitorpaused.
+
+
+### 2026-10-28 — Report08 full-capacity admission passed; CPU/controller submitted
+
+Immutable17-file source08 authenticated and staged read-only. Whole current
+experiment forecasts plus independent1GiBreport required54885399377
+versus conservative available55777650794bytes,4GiB100000reserves
+retained; entire old07/05/currentreport bytes charged, noforecastremoved.
+ActualCPU29839663/ownendedcallback29839664 submitted10:18:30UTC. CPUobserved
+RUN/hpc;149cases/render/archive/deliverychecks stillrequired, no publication
+yet. No model/optimizer/scientific changes; savedresults/pausedmonitor intact.
+
+
+### 2026-10-28 — Report08 CPU149/certificate passed; saved-only renderer running
+
+CPU29839663 andcallback29839664 actualDONE/hpc/samejobLSFsuccess. Raw149cases
+19qualification+73data+16ops+41viewer allpassed/noerrors/failures/skips.
+Original proofbindings and CPUcertificatec17140e8a83fb1c4d63612c0c10d4ad73bc0ada32357f94cb74f5e6968a826be
+authenticated locally with stdlib bytes/XML/schema only. Saved-only renderer
+29839701 actualRUN/hpc. No scientificsuccess/publication claimed; exactarchive/
+members/HTTP/browserQA pending. Allsavedresults/settings/oldeditions unchanged.
+
+
+### 2026-10-28 — Current six-arm report edition0004 verified, published and browser-QA passed
+
+Actual report08 CPU29839663/callback29839664/render29839701 allDONE/hpc/
+samejobLSFsuccess. Full149rawfixtures and allocated saved-only scientific-frame
+validation passed:58500update records/2931retainedframes across six trajectories.
+Capture09:54:35UTC: Proabsolute20k/50k, plainBoltz20k/30k, DB7500/10k, noisyPro
+1000/1000, randomProchem10k/50k andBolchem10k/30k. Original failed/partial
+scientific outcomes and continuation blockers remain separate from presentation.
+
+Published10:26:29UTC toexisting http://127.0.0.1:8780/report.html, immutable
+edition0004. Archive70185471bytes SHA2e8330d343bfc69c15e673f51e42750c057a6201a37d92d97ec4f96e910d5631,
+all46members safeextracted/hashed, independent byte/XML/schema verification
+285fa557cf4a9036d8d9133f3f8059d829229dd0a405ecb8afeca634c54edc65. All130HTTPservedfiles exact, proof
+1f1536856f80df686d1ed00077a443a586e87cd2c19fcb2a8ff4a4d635549ad3. BrowserQAc951627ca4da6737b9bfae8199838ed0b5772b55098bf42db217686d3bdae343
+exercised all6selectors, numeric/arrows/actualsliderdrag11200/playback0to180/
+manualpause12340/unsaved15021clear/latest/heatmaps/chemcurves/DBcomponents.
+Raw invalid/sanitized graphs preserved; no browsererrors/warnings.
+
+All75oldeditionmemberbytes still match original receipts. Localhidden
+server54708 restored only after old34336/8780listener absence, olderportservers
+untouched. Stablepointerchecks every60s, noHPCpolling or optimizer submission.
+Oldreport05fixturefailure/06localdraft/07passedrenderheadingdefect preserved;
+no sealedsource rewrite or scientificgatewaiver. Globalstaticlayoutcheck has
+existing outside-owner errors; scopedownerAST/README/runtimebytes passed.
+Onlyrendered assets downloaded; original big summaries/NPZs remain HPC refs.
+Exact provenance in experiments/reporting/jq1-live-progress/runs/20261028-jq1-current-report-08/.
+No settings/savedresults/model/optimization changes; monitorpaused.

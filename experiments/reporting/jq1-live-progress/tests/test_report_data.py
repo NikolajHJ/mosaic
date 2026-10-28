@@ -417,6 +417,26 @@ def test_render_produces_four_saved_only_arms_and_failed_verdict_separately(tmp_
     assert assessment["all_scalar_records_retained"] and not assessment["native_inference_executed"]
 
 
+def test_six_saved_arms_preserve_each_scientific_verdict_and_continuation_state(tmp_path):
+    original, _, _, _ = make_segment(tmp_path)
+    arms = []
+    for name in ("protenix", "boltz", "dbmol", "protenix_noisy", "protenix_chemistry", "boltz_chemistry"):
+        arm = deepcopy(original)
+        arm.update(id=name, continuation_status="blocked")
+        arms.append(arm)
+    result = data.render({"version": data.VERSION, "edition": "edition-0004", "captured_at": "2026-10-28T00:00:00Z", "arms": arms}, tmp_path / "six")
+    assert len(result["arms"]) == 6
+    assert all(arm["scientific_status"] == "failed" and arm["continuation_status"] == "blocked" for arm in result["arms"])
+    assert all(arm["scalars"]["count"] == 21 and arm["frames"]["count"] == 2 for arm in result["arms"])
+
+
+def test_six_arm_refresh_rejects_duplicate_identity_before_creating_output(tmp_path):
+    arms = [{"id": "duplicate"} for _ in range(6)]
+    with pytest.raises(ValueError, match="Duplicate"):
+        data.render({"version": data.VERSION, "edition": "edition-0004", "captured_at": "2026-10-28T00:00:00Z", "arms": arms}, tmp_path / "duplicate")
+    assert not (tmp_path / "duplicate").exists()
+
+
 def layout_nodes():
     return [{"id": index, "element": "C" if index % 3 else "Cl", "original_marker": index}
             for index in range(25)]

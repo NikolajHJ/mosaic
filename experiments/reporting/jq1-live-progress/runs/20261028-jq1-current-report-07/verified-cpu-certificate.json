@@ -1,0 +1,48 @@
+{
+  "status": "passed",
+  "manifest_sha256": "7e19c46a1b1a062710f44d994f33cb57ced0a484c709ae320503503ebd24008d",
+  "cpu_job_id": "29839541",
+  "cpu_counts": {
+    "tests.test_qualification": 19,
+    "tests.test_report_data": 73,
+    "tests.test_report_ops": 16,
+    "tests.test_viewer": 40
+  },
+  "proofs": [
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/after-cpu/terminal-query-000.json",
+      "bytes": 3605,
+      "sha256": "fdc8e16055dd569248b033c4c306ecbc790ae08347a6aa74fe3f121721cf6d47"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/cpu/stdout.29839541.log",
+      "bytes": 1960,
+      "sha256": "891b7f8dd3b3de311fa695b7e9896b6aab7cc96f4022bf9d98e895012f013611"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/cpu/submission.json",
+      "bytes": 1127,
+      "sha256": "ea3db58cd967215fff8a68ad859c8d7744af84d4dcc4f2393544febc0b06e8f2"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/cpu/assessment.json",
+      "bytes": 413,
+      "sha256": "5c3ebc5f2187a21373b8ba4f88e33557cdb1f3f839b587a068ed91e827c45ada"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/cpu/tests.xml",
+      "bytes": 19948,
+      "sha256": "8f6263c7833f041a26bc68cb377c3300fd9ff12deca999f966c2d39feaa84fdb"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/cpu/tests.log",
+      "bytes": 260,
+      "sha256": "d5b3d152f5832b151870fa1bb03b953a0334f0bbf1f5a8d2507b840dacfb170b"
+    },
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-live-report-07/cpu/command.json",
+      "bytes": 1160,
+      "sha256": "b9b214545b791df685f2ef6d92799201083e24bf169de75953332f959943feba"
+    }
+  ]
+}

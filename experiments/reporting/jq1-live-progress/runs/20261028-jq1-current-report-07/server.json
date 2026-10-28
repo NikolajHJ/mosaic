@@ -1,0 +1,21 @@
+{
+  "scientific_computation": false,
+  "port": 8780,
+  "pid": 54708,
+  "executable": "C:\\Users\\nikol\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+  "argv": [
+    "-X",
+    "utf8",
+    "-m",
+    "http.server",
+    "8780",
+    "--bind",
+    "127.0.0.1"
+  ],
+  "previous_server_pid": 34336,
+  "cwd": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261025-jq1-live-report-01\\viewer",
+  "previous_process_and_listener_absent": true,
+  "bind": "127.0.0.1",
+  "started_utc": "2026-10-28T10:13:36.1984799Z",
+  "status": "started_local_presentation_server"
+}
