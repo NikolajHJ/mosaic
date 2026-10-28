@@ -15,6 +15,15 @@ Reviewed 22 October 2026. For another operator, begin with
 
 ## Maintained guides, protocols and evidence
 
+For creating/updating saved optimization reports, start with the
+[default report command](../scripts/reporting/README.md) and its
+[canonical owner](../experiments/reporting/jq1-live-progress/README.md).
+Select runs with `--run` or a small `--runs` JSON file; reuse the existing
+qualified engine and cache for ordinary data updates. Historical campaign report
+launchers below are evidence and specialist references, not the default refresh
+path. Current supported schemas and the account-bound profile are explicit in
+the guide.
+
 | Document | Role |
 | --- | --- |
 | [DOCUMENTATION_AUDIT.md](DOCUMENTATION_AUDIT.md) | Findings, source checks and remaining portability work. |

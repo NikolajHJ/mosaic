@@ -9106,3 +9106,32 @@ terminalJQ1N25fixed/noisystride20schema limitations documented. Localworkonly
 stdlibmetadata/AST/XML/byte/packaging/transfers/publication/HTTP/browser. Global
 layoutcheck retains preexisting outside-owner README/discovery errors; scoped
 checks passed. Unrelated PDF/OneNote/learned-prior working changes preserved.
+
+
+### 2026-10-28T12:47:08.183295+00:00 — Default reusable report guidance prepared
+
+User requested making the one-command saved-result report workflow the default
+for this and future agents. Documentation-only scope: root AGENTS.md, root README,
+documentation/reporting indexes and reporting guides/run index. Select runs with
+python scripts/reporting/report.py using --run or --runs; reuse the qualified
+engine/cache for data-only refreshes. Preserve supported-schema/account-profile
+limits and all existing scientific/provenance/storage checks. No code, scientific
+settings, saved results, published report, HPC job, numerical tests or monitor
+action changed. Owner: experiments/reporting/jq1-live-progress/runs/20261028-report-default-guidance-01/.
+
+
+### 2026-10-28T12:48:16.241966+00:00 — Default reusable report guidance completed
+
+Root AGENTS.md now directs future agents to the existing reusable report command
+by default; root README, documentation/reporting indexes, public guide, canonical
+owner and run index expose the same workflow. Data-only changes select paths or
+segments and reuse qualification/cache; new executable/template/profile changes
+or unsupported schemas require canonical extension and validation. Local stdlib
+checks passed for eight documents and 10 new local links; all ten runtime/template/
+test/selection/profile files and qualified engine c223e33d56b79b8f8ecd9f58a8c697dab4aa24b24faf21e3ab8bcdd6e8facbb1 unchanged.
+Initial local checker expected a CLI literal even in a link-only index; its
+assertion failure was preserved and the checker corrected to accept a direct
+guide link. No runtime or scientific validation gate changed. No HPC connection,
+job, numerical test, rendering, publication, cleanup or monitor action occurred.
+Verification: experiments/reporting/jq1-live-progress/runs/20261028-report-default-guidance-01/verification.json.
+Unrelated working changes preserved; documentation-only task complete.

@@ -60,6 +60,11 @@ browser presentation QA. The source caps, full existing experiment projections,
 
 ## Updating
 
+**This is the default report workflow for supported saved trajectories.** Agents
+should select runs and reuse this engine for data-only updates. Historical manual
+capsules are preserved evidence; a new renderer/release/fixture cycle is needed
+only when executable/template/runtime-profile changes actually require it.
+
 Use the reusable entry point from the repository root:
 
 ```powershell

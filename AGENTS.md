@@ -1,5 +1,36 @@
 # Agent instructions for Mosaic
 
+## Saved-result reports — default workflow
+
+For requests to create or update saved optimization reports, **use the existing
+reusable report command by default**. Read the
+[report command guide](scripts/reporting/README.md) and
+[canonical reporting home](experiments/reporting/jq1-live-progress/README.md),
+then select the saved runs:
+
+```powershell
+python scripts/reporting/report.py --run protenix --run boltz --run dbmol
+python scripts/reporting/report.py --runs my-runs.json
+```
+
+No arguments selects the six current trajectories. Inspect the existing viewer,
+selection/profile and recorded request before updating or recovering it. For a
+data-only refresh, change run paths/ordered segments in the selection and use
+this command; reuse the qualified engine, cache and atomic publication workflow.
+Do not create a new renderer/controller, copy an old campaign contract, rebuild
+a source release or rerun the fixture suite for every run-list/data update.
+Do not use `--force` routinely; unchanged input should return the existing report.
+
+Current support is terminal JQ1 N25 fixed-step/noisy trajectories, including
+chemistry and stride20 matrices. For an unsupported schema or a required code/UI
+change, extend the canonical implementation and validate the changed immutable
+engine; document the concrete gap instead of silently starting another pipeline.
+Keep scientific failures, saved results and old editions intact. All scientific
+frame checks/rendering remain on allocated HPC CPU with the existing resource
+and provenance gates. The supplied DTU profile is account-bound; follow the guide
+for another operator. Report work does not authorize optimizer restarts, cleanup
+or resuming the paused monitor.
+
 ## Experiment organization and run history — required
 
 Before creating, changing, running or submitting experiment scripts, read:

@@ -1,0 +1,73 @@
+{
+  "documents": {
+    "AGENTS.md": "beadcb15881d6c6d8a19656a4e36831817bb1393b8583eddfd04492a4f5d3f3a",
+    "README.md": "9c2f8c39a3930dc6f63bc5b238d9b72e9a41f05c892abe5c472588db00b9e9a3",
+    "docs/README.md": "f315e4a77cba831cae1f694f783c9ab16f6b2ed1fa8619e989ffabccc3f4d64e",
+    "experiments/reporting/README.md": "c163c70cb660dbcf6058b19324d41adc052e1fcfe5353e75faefad2c48f4836c",
+    "experiments/reporting/jq1-live-progress/README.md": "9e81a386464acf57881954a82939d9647a3589a729152ab1564352c8b2152a95",
+    "experiments/reporting/jq1-live-progress/runs/20261028-report-default-guidance-01/README.md": "73ac77c048f61e948f2e3baa671c9d465c1bf824761af38707097ccc64594836",
+    "experiments/reporting/jq1-live-progress/runs/README.md": "091321d997452241f392c9fe8d31a84fd63247843ec92baaac7df9eba66fefcb",
+    "scripts/reporting/README.md": "285ed0d108cd8e60e68dad2533ae9a92198c2a7306d410174a053c5bff27a2e1"
+  },
+  "initial_link_only_index_assertion_failure_preserved": "results\\static\\20261028-report-default-guidance-01\\initial-check-failure.json",
+  "new_local_links_checked": [
+    {
+      "document": "AGENTS.md",
+      "target": "scripts/reporting/README.md"
+    },
+    {
+      "document": "AGENTS.md",
+      "target": "experiments/reporting/jq1-live-progress/README.md"
+    },
+    {
+      "document": "README.md",
+      "target": "scripts/reporting/README.md"
+    },
+    {
+      "document": "docs/README.md",
+      "target": "../scripts/reporting/README.md"
+    },
+    {
+      "document": "docs/README.md",
+      "target": "../experiments/reporting/jq1-live-progress/README.md"
+    },
+    {
+      "document": "experiments/reporting/README.md",
+      "target": "../../scripts/reporting/README.md"
+    },
+    {
+      "document": "experiments/reporting/jq1-live-progress/runs/README.md",
+      "target": "20261028-reusable-report-01/README.md"
+    },
+    {
+      "document": "experiments/reporting/jq1-live-progress/runs/README.md",
+      "target": "20261028-report-default-guidance-01/README.md"
+    },
+    {
+      "document": "experiments/reporting/jq1-live-progress/runs/20261028-report-default-guidance-01/README.md",
+      "target": "../../../../../AGENTS.md"
+    },
+    {
+      "document": "experiments/reporting/jq1-live-progress/runs/20261028-report-default-guidance-01/README.md",
+      "target": "../20261028-reusable-report-01/README.md"
+    }
+  ],
+  "no_HPC_connections_jobs_tests_or_rendering": true,
+  "qualified_engine_pin_unchanged": "c223e33d56b79b8f8ecd9f58a8c697dab4aa24b24faf21e3ab8bcdd6e8facbb1",
+  "runtime_template_tests_selection_profile_unchanged": [
+    "scripts/reporting/report.py",
+    "experiments\\reporting\\jq1-live-progress\\scripts\\report.py",
+    "experiments\\reporting\\jq1-live-progress\\scripts\\quick_inputs.py",
+    "experiments\\reporting\\jq1-live-progress\\scripts\\quick_runtime.py",
+    "experiments\\reporting\\jq1-live-progress\\scripts\\offload_report_assets.py",
+    "experiments\\reporting\\jq1-live-progress\\configs\\dtu-current.json",
+    "experiments\\reporting\\jq1-live-progress\\configs\\current-runs.json",
+    "experiments\\reporting\\jq1-live-progress\\templates\\report.html",
+    "experiments\\reporting\\jq1-live-progress\\tests\\test_quick_report.py",
+    "experiments\\reporting\\jq1-live-progress\\tests\\test_viewer.py"
+  ],
+  "scientific_results_or_published_editions_changed": false,
+  "scope": "local standard-library documentation/links/byte/packaging only",
+  "status": "passed_documentation_links_and_byte_checks",
+  "utc": "2026-10-28T12:48:16.239972+00:00"
+}

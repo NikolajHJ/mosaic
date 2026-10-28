@@ -16,6 +16,12 @@ For cluster setup, use [DTU HPC for your own account](docs/HPC_GUIDE.md).
 The [documentation index and audit](docs/README.md) distinguish reusable guides
 from dated protocols, private operator paths and imported reference material.
 
+For saved optimization reports, the default is the
+[one-command reporting workflow](scripts/reporting/README.md):
+`python scripts/reporting/report.py --runs my-runs.json`.
+It reuses the qualified engine and verified assets; no arguments updates the six
+current trajectories. Check the guide for supported saved formats and profiles.
+
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23193038.svg)](https://doi.org/10.5281/zenodo.23193038)
 
 > **WARNING**: Unlike [BindCraft](https://www.nature.com/articles/s41586-025-09429-6) (which is a well-tested and well-tuned method for generic binder design), `mosaic` may require substantial hand-holding (tuning learning rates, etc), often produces proteins that fail simple in-silico tests, should be combined with standard filtering methods, etc. This is not for the faint of heart: the intent is to provide a framework in which to implement custom objective functions and optimization algorithms for your application. You can read about some applications in [our blog](https://blog.escalante.bio).
