@@ -25,8 +25,8 @@ VERSION = "precision-reference-continuation-source-v1"
 PLAN_VERSION = "precision-reference-continuation-plan-v1"
 RESULT_VERSION = "precision-reference-continuation-result-v1"
 BASE = Path("/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01")
-ROOT = BASE / "nonchem-precision-continuation-14"
-SOURCE = BASE / "nonchem-precision-release-14/source"
+ROOT = BASE / "nonchem-precision-continuation-15"
+SOURCE = BASE / "nonchem-precision-release-15/source"
 ADMISSION = BASE / "nonchem-stride20-startup-release-03/source"
 ADMISSION_SHA = "704fab033d97342a14dc12b58dc32df44874232c5c30aad47c4d02041a502aab"
 PYTHON = "/work3/s234818/mosaic/envs/protenix-tiny/bin/python"
@@ -251,7 +251,7 @@ def argv(phase, pin, arm="all", offset=0, dependency=None):
     else:
         require(dependency is None, "Scientific/CPU phases have no interarm dependencies")
     parent = ROOT / name
-    command = ["bsub", *resources(phase), "-J", "mosaic-precision14-" + name,
+    command = ["bsub", *resources(phase), "-J", "mosaic-precision15-" + name,
                "-oo", str(parent / "stdout.%J.log"), "-eo", str(parent / "stderr.%J.log")]
     if dependency is not None:
         command += ["-w", dependency]
@@ -333,7 +333,7 @@ def terminal(parent, queue):
             break
         require(index < 20, "Terminal LSF output unavailable")
         time.sleep(1)
-    lsf_success(path.read_text(), job, "mosaic-precision14-" + parent.name, queue)
+    lsf_success(path.read_text(), job, "mosaic-precision15-" + parent.name, queue)
     proofs.append(binding(path))
     return proofs
 
@@ -711,7 +711,8 @@ def storage(parent, phase):
             # Three Pro validators+six Pro entry/terminal references, one DB
             # validator+two DB entry/terminal references; no old scope removed.
             refs = 12 * 64 * 1024**2
-            own = {str(path): owned_bytes(path) for path in (ROOT, SOURCE.parent)}
+            own = {str(path): owned_bytes(path) for path in (ROOT, SOURCE.parent,
+                BASE / "nonchem-precision-continuation-14", BASE / "nonchem-precision-release-14")}
             excess, details = projection_excess_from_gate(prior)
             result = {"status": "failed", "inherited_gate": prior,
                       "additional_complete_reference_and_control_bytes": refs + CONTROL_CAP,

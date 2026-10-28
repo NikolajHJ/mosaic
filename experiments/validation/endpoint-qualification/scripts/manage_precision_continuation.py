@@ -18,12 +18,12 @@ import tarfile
 
 REPO = Path(__file__).resolve().parents[4]
 OWNER = REPO / "experiments/validation/endpoint-qualification"
-TAG = "20261028-precision-continuation-14"
+TAG = "20261028-precision-continuation-15"
 RUN = OWNER / "runs" / TAG
 LOCAL = REPO / "results/hpc" / TAG
 BASE = "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01"
-ROOT = BASE + "/nonchem-precision-continuation-14"
-SOURCE = BASE + "/nonchem-precision-release-14/source"
+ROOT = BASE + "/nonchem-precision-continuation-15"
+SOURCE = BASE + "/nonchem-precision-release-15/source"
 PYTHON = "/work3/s234818/mosaic/envs/protenix-tiny/bin/python"
 TORCH_PYTHON = "/work3/s234818/latentmol/env/boltz311/bin/python"
 BASE_TAG = "20261027-continuation-measurement-09"
@@ -109,6 +109,19 @@ assert summary['status']=='failed' and summary['job_id']=='29830999'
 lsf=(parent/'stdout.29830999.log').read_text();compact=''.join(lsf.split())
 assert 'Subject:Job29830999:' in compact and 'Exitedwithexitcode1.' in compact and 'inqueue<gpul40s>' in compact
 terminal=saved(study/'terminal_gradient_checks/report.json')
+failed14=base/'nonchem-precision-continuation-14';source14=base/'nonchem-precision-release-14/source'
+assert binding(source14/'source_manifest.json')['sha256']=='4c3f74166a57f35bd7c4eca8ffa58e53c0a12e7d232553acb70133d283d099ab'
+jobs14=json.loads((failed14/'jobs.json').read_bytes());assert jobs14=={'cpu':'29838955','after-cpu':'29838956'}
+assert not list(failed14.glob('*validate*')) and not list(failed14.glob('*segment*'))
+lsf14=''.join((failed14/'cpu/stdout.29838955.log').read_text().split())
+assert 'Subject:Job29838955:' in lsf14 and 'Exitedwithexitcode1.' in lsf14
+failure14=saved(failed14/'cpu/payload/protenix-reference-startup-invocation.json')
+assert failure14['value']['returncode']==1 and 'Closed Protenix reference specification differs' in failure14['value']['stderr']
+proofs14=[binding(p) for p in (failed14/'cpu').rglob('*') if p.is_file()]
+proofs14.append(binding(failed14/'jobs.json'))
+for p in (failed14/'after-cpu').glob('*.log'):
+ if p.stat().st_size:proofs14.append(binding(p))
+proofs14.append(binding(failed14/'after-cpu/submission.json'))
 failed={'job_id':'29830999','parent':str(parent),'endpoint':binding(study/'case-0/snapshots/step-2500.npz'),
  'summary':binding(study/'summary.json'),'stdout':binding(parent/'stdout.29830999.log'),'stderr':binding(parent/'stderr.29830999.log'),
  'states':binding(study/'case-0/states.jsonl'),'updates':binding(study/'case-0/updates.jsonl'),
@@ -121,7 +134,10 @@ for flag in ('--cpu-certificate','--reference','--pocket','--ready'):
 for flag,key in (('--cpu-certificate-sha256','cpu_certificate'),('--pocket-sha256','pocket'),('--ready-sha256','ready')):
  assert argv[argv.index(flag)+1]==inputs[key]['sha256']
 print(json.dumps({'observed_utc':datetime.now(timezone.utc).isoformat(),'failed_parent':failed,'inputs':inputs,
- 'terminal':terminal,'invocation':invocation,'submission':submission},allow_nan=False))
+ 'terminal':terminal,'invocation':invocation,'submission':submission,
+ 'engineering_predecessor':{'source':{'path':str(source14),'files':35,'manifest_sha256':binding(source14/'source_manifest.json')['sha256']},
+ 'cpu_job_id':'29838955','controller_job_id':'29838956','proofs':proofs14,'failure':failure14,
+ 'native_or_optimizer_submitted':False}},allow_nan=False))
 '''
 
 
@@ -217,6 +233,7 @@ def make_plan(base_members, pro_members, pro_source, db_members, db_source, meta
             "protenix": qualified(PRO_TAG, pro_source, "29838596", "/gpu/payload/assessment.json"),
             "dbmol": qualified(DB_TAG, db_source, "29838712", "/gpu/payload/assessment.json")},
         "metadata_observed_utc": metadata["observed_utc"],
+        "engineering_predecessor": metadata["engineering_predecessor"],
         "scope": "Fresh complete entry/nonraw/null/component/pilot/runtime/live-reference/startup/storage before child; original failures remain failed"}
     return plan
 
@@ -228,7 +245,7 @@ def startup_adoption(source, *, tests=False):
     replacements = {old_root + "/cpu/payload/reference-startup.json": ROOT + "/cpu/payload/dbmol-reference-startup.json"}
     if tests:
         replacements = {"cpu/payload/reference-startup.json": "cpu/payload/dbmol-reference-startup.json",
-            "dbmol-endpoint-recovery-13": "nonchem-precision-continuation-14",
+            "dbmol-endpoint-recovery-13": "nonchem-precision-continuation-15",
             old_root + "/gpu/payload/reference-startup.json": ROOT + "/gpu/payload/dbmol-reference-startup.json"}
     class Change(ast.NodeTransformer):
         def visit_Constant(self, node):
@@ -287,9 +304,10 @@ def prepare(counts_path, metadata_path=None):
         for group in (arm["inputs"], arm["failed_parent"], arm.get("immediate_parent_ancestry", {})):
             proofs += [row for row in group.values() if isinstance(row, dict) and set(row) == {"path", "bytes", "sha256"}]
     proofs.append(plan["base_driver"])
+    proofs += plan["engineering_predecessor"]["proofs"]
     for row in plan["qualified_admissions"].values(): proofs += row["proofs"]
     parents = deduplicate(list(base_manifest["parent_sources"]) + list(pro_manifest["parent_sources"])
-        + list(db_manifest["parent_sources"]) + [base_source, pro_source, db_source])
+        + list(db_manifest["parent_sources"]) + [base_source, pro_source, db_source, plan["engineering_predecessor"]["source"]])
     manifest = {"version": "precision-reference-continuation-source-v1", "files": {name: sha(data) for name, data in sorted(members.items())},
         "cpu_counts": counts, "parent_sources": parents, "preserved_proofs": deduplicate(proofs),
         "preserved_failed_admissions": plan["preserved_failed_admissions"], "dispatch_arms": plan["dispatch_arms"],

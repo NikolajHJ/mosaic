@@ -1,0 +1,11 @@
+{
+  "status": "passed_stdlib_AST_archive_portable_path_and_settings_audit",
+  "manifest_sha256": "5448503965365f4db726d558df4ac91a41a7f711366b6ae47ae936993fd0c8bb",
+  "archive_sha256": "676950b688ff296a2bc8a2c3d65a7e3b9083c72686632e34e671ca721f565218",
+  "files": 35,
+  "members": 36,
+  "declared_CPU_cases": 592,
+  "native_function_ASTs_unchanged": true,
+  "pro_reference_declaration_only_changed": true,
+  "scientific_tests_locally": false
+}

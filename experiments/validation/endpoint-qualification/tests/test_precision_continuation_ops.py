@@ -349,7 +349,8 @@ def test_storage_adds_all_twelve_reference_caps_control_and_entire_new_tree_char
     result = o.storage(parent, "dispatch")
     assert result["status"] == "passed" and len(calls) == 1
     assert result["required_bytes"] == prior["required_bytes"] + 1280 * 1024**2
-    assert result["available_bytes"] == prior["available_bytes"] - 300
+    assert result["available_bytes"] == prior["available_bytes"] - 700
+    assert len(result["entire_new_tree_stale_charge"]) == 4  # Failed14 and current15 remain fully charged.
     assert result["additional_complete_reference_and_control_bytes"] == 1280 * 1024**2
     assert result["reference_sessions"] == 12 and result["reference_session_cap"] == 64 * 1024**2
     assert result["forecasts_removed"] is result["original_gate_changed"] is False

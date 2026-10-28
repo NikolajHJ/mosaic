@@ -214,3 +214,5 @@ chemistry continuations remain pending, with all settings/results unchanged.
 
 
 Current DB finer retry is [13](runs/20261028-dbmol-endpoint-recovery-13/README.md): retry12 actualstartup rejected historicalroot10 before model/fixtures, callbackblocked GPU. Retry13 changes only own startup path, with96allocated cases/actualcommands required; source12 and all original failures remain preserved.
+
+Current portable integration: [attempt15](runs/20261028-precision-continuation-15/README.md), CPU29839033/controller29839034 submitted after fullstorage;592 CPU cases/startups/native integration remain required. Attempt14 metadata startup failure is preserved.

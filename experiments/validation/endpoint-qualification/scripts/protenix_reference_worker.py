@@ -21,8 +21,8 @@ import time
 
 VERSION = "protenix-generic-fp64-reference-rpc-v1"
 BASE = Path("/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01")
-ROOT = BASE / "nonchem-precision-continuation-14"
-SOURCE = BASE / "nonchem-precision-release-14/source"
+ROOT = BASE / "nonchem-precision-continuation-15"
+SOURCE = BASE / "nonchem-precision-release-15/source"
 QUALIFIED = BASE / "protenix-endpoint-fix-release-09/source"
 QUALIFIED_PIN = "f2043af74b8fa9ff485a44b80fcf96454bf8585868859389828c37f0073a3664"
 SCIENCE = BASE / "protenix-extended-release-03/source"
@@ -48,16 +48,16 @@ def reference_spec():
     """Closed stdlib-only declaration for the new continuation plan builder."""
     prior = BASE / "protenix-endpoint-fix-09"
     return {"version": VERSION,
-        "qualified_source": {"path": str(QUALIFIED), "files": 20, "manifest_sha256": QUALIFIED_PIN},
-        "qualified_plan": {"path": str(QUALIFIED / "plan.json"), "bytes": 86914,
+        "qualified_source": {"path": QUALIFIED.as_posix(), "files": 20, "manifest_sha256": QUALIFIED_PIN},
+        "qualified_plan": {"path": (QUALIFIED / "plan.json").as_posix(), "bytes": 86914,
             "sha256": "7adf251df61bc8de66711769df417eed5d8ac9ca57d9686baf4011df9f7d09bf"},
-        "qualified_native": {"path": str(prior / "gpu/payload/assessment.json"), "bytes": 2133,
+        "qualified_native": {"path": (prior / "gpu/payload/assessment.json").as_posix(), "bytes": 2133,
             "sha256": "bb4ed22fb92d25e5c8de46ea3c4d68a8ed2162d5621b136966da37d36b42e82b"},
-        "qualified_LSF": {"path": str(prior / "gpu/stdout.29838596.log"), "bytes": 2079,
+        "qualified_LSF": {"path": (prior / "gpu/stdout.29838596.log").as_posix(), "bytes": 2079,
             "sha256": "e91efc831eaed697db7724570fb3954ea509c4659544414f3c614ada45e3b8e7"},
-        "qualified_CPU": {"path": str(prior / "cpu-certificate.json"), "bytes": 2559,
+        "qualified_CPU": {"path": (prior / "cpu-certificate.json").as_posix(), "bytes": 2559,
             "sha256": "338b236d46b7510955195c022308a058913cbe97102823c55b23d7819f671ffd"},
-        "science_source": {"path": str(SCIENCE), "files": 643, "manifest_sha256": SCIENCE_PIN},
+        "science_source": {"path": SCIENCE.as_posix(), "files": 643, "manifest_sha256": SCIENCE_PIN},
         "original_model_digest": MODEL, "original_context_digest": CONTEXT,
         "pocket_definition_sha256": POCKET,
         "objective": {"native_name": "contact", "cutoff": 8.0, "geometry": "off",

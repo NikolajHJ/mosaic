@@ -1,5 +1,5 @@
 {
-  "status": "allocated_cpu_submitted_native_and_optimizer_not_established",
+  "status": "failed_actual_reference_metadata_startup_before_fixtures_or_models",
   "preparation": {
     "archive_bytes": 276888,
     "archive_sha256": "20d3b5b7047c4a54ea815f2048cbf2e5ec72bffddae1be081374298b156cf647",
@@ -57,5 +57,7 @@
     "controller": "PEND",
     "native_integration_passed": false,
     "optimizer_submitted": false
-  }
+  },
+  "failed_source_preserved": true,
+  "failure_evidence": "results/hpc/20261028-precision-continuation-14/startup-failure01/stdout.json"
 }

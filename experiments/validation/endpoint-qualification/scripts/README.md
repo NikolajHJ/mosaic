@@ -117,3 +117,5 @@ Protenix reference placement09 keeps old failures and production path intact; de
 
 
 Separate-reference continuation14: `precision_continuation_driver.py` authenticates and delegates the original scientific driver; `precision_continuation_hooks.py` supplies independent FP64 references with exact production replay and raw-point evidence; `protenix_reference_worker.py` is the bounded generic Pro reference. `precision_continuation_ops.py` owns conditional CPU/native/segment orchestration; `manage_precision_continuation.py` prepares only, and `stage_precision_continuation.py` performs one-shot authenticated staging and CPU submission. Only exact Pro20k->50k and DB7500->10k may dispatch. All numerical work remains allocated HPC and every original result/failure remains immutable. Read run14 receipts before recovery.
+
+Canonical precision continuation prepare/stage commands now target15. Source14 failed on cross-platform declaration paths before numerical setup and is immutable. Source15 fixes only portable metadata paths/ownedroot, repeats all592 cases/startups and full native admission.

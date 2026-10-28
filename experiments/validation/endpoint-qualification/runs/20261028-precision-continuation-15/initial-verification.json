@@ -1,0 +1,9 @@
+{
+  "status": "passed_stdlib_initial_submission_source_and_storage_audit",
+  "actual_cpu": "29839033",
+  "actual_controller": "29839034",
+  "source_manifest_sha256": "5448503965365f4db726d558df4ac91a41a7f711366b6ae47ae936993fd0c8bb",
+  "cpu_pass_established": false,
+  "native_integration_pass_established": false,
+  "optimizer_submitted": false
+}

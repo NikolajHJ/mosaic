@@ -38,3 +38,10 @@ Full storage preflight53811657553required/56719589707available bytes, unchanged
 4GiB/100000reserves and all inherited futures plus12x64MiB references/512MiB
 controls. Actual original input/native qualification adoption passed before
 newsource/root creation. Exact actual job vectors and gate in submission.json.
+
+
+Actual CPU29838955 EXIT1: four original CLI routes and DB producer metadata
+startup passed, then Pro reference metadata specification rejected Windows
+path separators from local preparation. No fixtures, model, GPU validation or
+optimizer executed. Failed35file source remains unchanged; new15 corrects
+only portable declaration serialization and repeats full592 cases/startups.

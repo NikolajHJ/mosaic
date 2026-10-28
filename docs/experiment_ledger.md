@@ -8750,3 +8750,29 @@ CPU29838955 and ownended controller29838956 actuallysubmitted.590fixtures/
 realstartup/fullmodelco-residency/pilots/runtime remain required before conditional
 newPro20k->50k and DB7500->10k optimizer children. Settings/results unchanged;
 no CPU/native pass or optimizer submission claimed. Monitor remainspaused.
+
+
+### 2026-10-28 — Continuation14 startup path failure preserved;15 prepared
+
+CPU29838955actualEXIT1 beforefixtures/model: locallyserialized Pro reference
+specification used Windows separators, rejected by exact HPC declaration guard.
+No native/optimizer branch submitted; original saved scientific results intact.
+All raw startup/LSF/source14 failureproofs preserved and adopted by new15.
+New15 normalizes six declaration paths with as_posix, adds two platform-path
+controls, changes own outputpaths only; numerical/runtime functions AST exact.
+Source35files manifest5448503965365f4db726d558df4ac91a41a7f711366b6ae47ae936993fd0c8bb, full592CPUcases required.
+Same unused reference futures plus all old14/new15 actualbytes and unchanged
+wholecampaign/reserves. No passed gate waived and no local numerical work.
+
+
+### 2026-10-28 — Portable-reference15 CPU/controller actually submitted
+
+Read-only35file source manifest5448503965365f4db726d558df4ac91a41a7f711366b6ae47ae936993fd0c8bb, archive281417bytes
+SHA676950b688ff296a2bc8a2c3d65a7e3b9083c72686632e34e671ca721f565218. Source14failedCPU/startup proofs preserved;
+all2948earlier+new14exactfailureinputs authenticated before remote staging.
+Fullstorage53811657553required/56714184067availablebytes passed, allfutures
+plus same unspent12reference scopes/512MiBcontrol, entirefailed14+current15
+actualbytes charged and4GiB100000reserve unchanged. ActualCPU29839033 and
+ownendedcontroller29839034 submitted. Full592/startup/native/pilot/runtime
+checks precede any conditional optimizer submission; none claimed yet.
+Savedscientificresults/settings untouched, no local numerics, monitorpaused.

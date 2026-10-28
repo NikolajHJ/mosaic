@@ -71,3 +71,5 @@ Protenix reference placement09 keeps old failures and production path intact; de
 
 
 Continuation14 declares 590 allocated CPU cases across14 modules: original261 plus new driver64/hooks57/controller88/Pro-reference56/DB-reference17/DB-finer36/recovery11. Torch reference fixtures run in the original Torch interpreter and other fixtures in the Protenix interpreter; original raw JUnit rows from both runs must exactly equal the merged case inventory. Preparation is not a fixture/native pass. Real metadata startup commands precede GPU integration and full-model pilots.
+
+Portable integration15 repeats the full suite with two additional PurePosixPath/PureWindowsPath declaration controls:592 allocated cases. No gate reduced; source14 failed before fixtures and remains failed.

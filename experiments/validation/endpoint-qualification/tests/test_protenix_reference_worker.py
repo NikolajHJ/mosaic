@@ -10,7 +10,7 @@ import importlib.util
 import io
 import json
 import os
-from pathlib import Path
+from pathlib import Path, PurePosixPath, PureWindowsPath
 import sys
 
 import pytest
@@ -46,6 +46,29 @@ def test_spec_declares_qualified_copy_not_saved_endpoint_or_optimizer():
     assert spec["key_transport"]["selection"] == "actual_live_caller_per_request"
     assert "endpoint" not in spec and "snapshot" not in spec and "key_data" not in spec
     assert "step-10000.npz" not in json.dumps(spec)
+
+
+@pytest.mark.parametrize("path_type", [PurePosixPath, PureWindowsPath])
+def test_closed_remote_spec_is_identical_for_POSIX_and_Windows_plan_builders(monkeypatch, path_type):
+    base = "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01"
+    for name, suffix in (("BASE", ""), ("QUALIFIED", "/protenix-endpoint-fix-release-09/source"),
+                         ("SCIENCE", "/protenix-extended-release-03/source")):
+        monkeypatch.setattr(r, name, PurePosixPath(base + suffix))
+    expected = r.reference_spec()
+    expected_paths = {
+        "qualified_source": base + "/protenix-endpoint-fix-release-09/source",
+        "qualified_plan": base + "/protenix-endpoint-fix-release-09/source/plan.json",
+        "qualified_native": base + "/protenix-endpoint-fix-09/gpu/payload/assessment.json",
+        "qualified_LSF": base + "/protenix-endpoint-fix-09/gpu/stdout.29838596.log",
+        "qualified_CPU": base + "/protenix-endpoint-fix-09/cpu-certificate.json",
+        "science_source": base + "/protenix-extended-release-03/source"}
+    for name, suffix in (("BASE", ""), ("QUALIFIED", "/protenix-endpoint-fix-release-09/source"),
+                         ("SCIENCE", "/protenix-extended-release-03/source")):
+        monkeypatch.setattr(r, name, path_type(base + suffix))
+    observed = r.reference_spec()
+    assert observed == expected
+    assert {name: observed[name]["path"] for name in expected_paths} == expected_paths
+    assert all("\\" not in observed[name]["path"] for name in expected_paths)
 
 
 @pytest.mark.parametrize("key", [[0, 17], [91, 3355], [4294967295, 0]])
