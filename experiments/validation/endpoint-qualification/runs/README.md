@@ -6,6 +6,16 @@ an original failed run into a pass or authorize a gate waiver.
 
 Latest records:
 
+- [Shared-account21](20261028-precision-continuation-21/README.md): full storage,
+  CPU879/controller passed; native Pro29845087/DB29845089 queued. Optimizer
+  submissions await all own native/runtime/storage gates. Settings/results intact.
+
+- [Shared-account20](20261028-precision-continuation-20/README.md): exact VAE
+  headroom and authenticated terminated-scope retention; full preflight passed,
+  CPU29845010/controller29845011 submitted. All861 allocated/native gates remain.
+- [Shared-account19](20261028-precision-continuation-19/README.md): VAE metadata
+  authenticated; preflight file-cap failure before any job, preserved unchanged.
+
 - [Full-budget17](20261028-precision-continuation-17/README.md): preserved CPU
   fixture assertion failure,806 passes/one failure; no GPU or optimizer children.
 - [Full-budget18](20261028-precision-continuation-18/README.md): corrected three-stream

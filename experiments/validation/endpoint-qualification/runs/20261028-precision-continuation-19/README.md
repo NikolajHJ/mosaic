@@ -1,4 +1,39 @@
-# Portable resource evidence candidate: unsealed, no jobs
+# Explicit concurrent VAE accounting and full remaining continuations
+
+Preserved outcome: this44-file source was staged, then preflight failed before
+any CPU/GPU/optimizer submission. The old DeFoG output had30,099 files under an
+unretired30,000-file execution allowance. VAE authentication succeeded. All
+failure/source receipts remain unchanged; [attempt20](../20261028-precision-continuation-20/README.md)
+adds authenticated terminal-scope retention. Never replay or relabel this stage.
+
+Current authorized protocol,28October: authenticate the unchanged running VAE
+source140 attempt002 and its plan/archive/source-manifest identities. Its original
+quota-before001 and inherited launcher require10GiB headroom. Reserve a held
+whole-campaign empirical growth allowance of10GiB plus30,000 files above the
+complete observed76-file/84,849,111-byte baseline. This is an output forecast
+checked by Mosaic admission, not a hard limit added to the VAE or an account
+reservation. Actual current VAE bytes are charged once and only the remaining
+forecast is added; retain Mosaic's separate4GiB/100,000-file reserves.
+
+Only the exact sealed VAE GPU/controller command family receives this budget.
+Serial index and owned authenticated-resume fields may vary; release, plan,
+objective, queue and all other arguments stay fixed. Unknown active account
+writers still block admission. Rehash the complete VAE source and pinned inputs,
+and inventory its dedicated output without following links at every Mosaic
+entry/dispatch/periodic observation. Failed/partial inventories never pass.
+The VAE's jobs, settings, files and checks are never modified.
+
+User-approved continuations remain Pro20k→50k/30,000 additional updates/LR0.3
+and DBMol7500→10k/2,500 additional/LR0.0025, one job each if measured runtime
+fits. Preserve stride20 matrices/all scalar rows, exact saved endpoints/RNG,
+every native/FP64/component/FD/null/pilot/frozen/runtime/terminal gate and old
+failed studies. All856 allocated CPU cases, actual startup and fresh full-model
+validation must pass before conditional optimizer submission. The existing
+paused monitor is not resumed. Current source19 has no seal, stage or job yet;
+actual outcomes will be appended below. Local VAE metadata28 tests passed after
+preserved portability/temp caller failures; these do not establish native pass.
+
+Historical unsealed-inventory preparation and earlier prerequisite state follow.
 
 Latest prerequisite outcome: source18 CPU passed817 cases, but both GPU validators
 exited before model loading because another active account job29838765 lacked an

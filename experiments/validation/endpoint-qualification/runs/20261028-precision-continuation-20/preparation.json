@@ -1,0 +1,32 @@
+{
+  "archive_bytes": 340243,
+  "archive_sha256": "9257bc67796091aac6ad82a75ea881a2914bc2721f97811ff1280b99cd3ca64f",
+  "cpu_counts": {
+    "tests.test_admission": 50,
+    "tests.test_continuation_driver": 56,
+    "tests.test_continuation_ops": 107,
+    "tests.test_cuda_ownership": 42,
+    "tests.test_current_capacity": 5,
+    "tests.test_dbmol_endpoint_precision": 36,
+    "tests.test_dbmol_reference": 17,
+    "tests.test_logit_admission": 14,
+    "tests.test_measurement_resolution": 10,
+    "tests.test_precision_continuation_driver": 71,
+    "tests.test_precision_continuation_hooks": 57,
+    "tests.test_precision_continuation_ops": 130,
+    "tests.test_protenix_reference_worker": 58,
+    "tests.test_qualification": 19,
+    "tests.test_recovery_capacity": 11,
+    "tests.test_rolling_capacity": 62,
+    "tests.test_runtime_reservations": 28,
+    "tests.test_segment_capacity": 60,
+    "tests.test_vae_shared_capacity": 28
+  },
+  "files": 44,
+  "jobs_submitted": false,
+  "manifest_sha256": "0f5411bb45c408a0591ff8c985460398ee7196b27759b2eaf66c909712eab9d6",
+  "optimization_settings_changed": false,
+  "original_results_changed": false,
+  "plan_sha256": "9aa083e6de5944a3c779ecbf6e1b90ffa4ff011f76537147954c7538b800feb1",
+  "status": "prepared_not_validated_not_staged"
+}

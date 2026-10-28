@@ -1,5 +1,22 @@
 # Prospective endpoint qualification diagnostics
 
+Current28October21:14:02 Paris: [attempt21](runs/20261028-precision-continuation-21/README.md)
+fixes VAE accounting, terminated-scope retention and the exact HOME-only report
+reader. Whole storage and all879 allocated CPU cases/controller passed. Native
+Pro29845087 and DBMol29845089, with own callbacks29845088/29845090, are PEND.
+No optimizer started; controllers submit full Pro30k/DB2500 only after all own
+scientific/runtime/fresh-storage gates pass. Settings/results unchanged. Monitor
+paused. Never repeat staging or dispatch; old18/19/20 outcomes below are historical.
+
+Latest authorized repair: [attempt20](runs/20261028-precision-continuation-20/README.md)
+accounts for the running, unchanged VAE source140 attempt002 and authenticates
+terminal DeFoG retention. Its full storage preflight passed19.39GB required/
+43.41GB conservative available. Actual CPU29845010/controller29845011 submitted;
+full861 allocated fixtures and new native gates remain required before the
+conditional full Pro20k→50k and DB7500→10k optimizer jobs. No saved result or
+scientific setting changed. Never repeat staging; inspect actual receipts.
+The paused monitor stays paused. The dated18/19 outcomes below remain historical.
+
 Latest verified28October20:23:42 Paris: [full-budget18](runs/20261028-precision-continuation-18/README.md)
 passed all817 allocated CPU cases. Both native validators29841507/29841511
 exited before model loading because active account job29838765 lacked a bounded

@@ -27,8 +27,8 @@ VERSION = "precision-reference-continuation-source-v1"
 PLAN_VERSION = "precision-reference-continuation-plan-v1"
 RESULT_VERSION = "precision-reference-continuation-result-v1"
 BASE = Path("/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01")
-ROOT = BASE / "nonchem-precision-continuation-18"
-SOURCE = BASE / "nonchem-precision-release-18/source"
+ROOT = BASE / "nonchem-precision-continuation-21"
+SOURCE = BASE / "nonchem-precision-release-21/source"
 ADMISSION = BASE / "nonchem-stride20-startup-release-03/source"
 ADMISSION_SHA = "704fab033d97342a14dc12b58dc32df44874232c5c30aad47c4d02041a502aab"
 PYTHON = "/work3/s234818/mosaic/envs/protenix-tiny/bin/python"
@@ -268,7 +268,7 @@ def argv(phase, pin, arm="all", offset=0, dependency=None):
         require(dependency is None, "Scientific/CPU phases have no interarm dependencies")
     parent = ROOT / name
     budget = segment_budget(arm, offset) if phase == "segment" else None
-    command = ["bsub", *resources(phase, budget), "-J", "mosaic-precision18-" + name,
+    command = ["bsub", *resources(phase, budget), "-J", "mosaic-precision21-" + name,
                "-oo", str(parent / "stdout.%J.log"), "-eo", str(parent / "stderr.%J.log")]
     if dependency is not None:
         command += ["-w", dependency]
@@ -352,7 +352,7 @@ def terminal(parent, queue):
             break
         require(index < 20, "Terminal LSF output unavailable")
         time.sleep(1)
-    lsf_success(path.read_text(), job, "mosaic-precision18-" + parent.name, queue)
+    lsf_success(path.read_text(), job, "mosaic-precision21-" + parent.name, queue)
     proofs.append(binding(path))
     return proofs
 
@@ -645,6 +645,45 @@ def external(manifest, plan):
             and failure.get("native_jobs_submitted") is False and failure.get("optimizer_jobs_submitted") is False,
             "Original source17 fixture failure was changed or relabeled")
     for proof in failure["proofs"]:
+        check_binding(proof)
+    shared = plan.get("shared_vae")
+    require(type(shared) is dict and shared.get("version") == "mosaic-authenticated-vae-shared-quota-v1"
+            and shared.get("growth_bytes") == 10 * GIB and shared.get("growth_files") == 30000,
+            "Authenticated concurrent VAE accounting missing")
+    for key in ("plan", "archive", "manifest", "quota_before"):
+        check_binding(shared[key])
+    resource = plan.get("resource_failure_predecessor")
+    require(type(resource) is dict and resource.get("source") == {
+        "path": str(BASE / "nonchem-precision-release-18/source"), "files": 42,
+        "manifest_sha256": "15fb307c704a0f460f882c701df6eec0655d678554c56f3abb581cbacf6a4b0e"},
+        "Source18 resource failure evidence missing")
+    preserved18 = read(check_binding(resource["assessment"])["path"])
+    require(preserved18.get("status") == "preserved_CPU817_pass_native_entry_resource_failures_no_models_or_optimizers"
+            and preserved18.get("CPU_cases") == 817 and preserved18.get("native_models_invoked") is False
+            and preserved18.get("optimizer_jobs_submitted") is False,
+            "Source18 resource failures were relabeled")
+    for proof in preserved18["proofs"]:
+        check_binding(proof)
+    preflight = plan.get("preflight_file_predecessor")
+    require(type(preflight) is dict and preflight.get("source") == {
+        "path": str(BASE / "nonchem-precision-release-19/source"), "files": 44,
+        "manifest_sha256": "a428f807f566b0a4e765178d8699e501691d8d6b97c7cc08227c0768ecff3dda"},
+        "Source19 preflight failure missing")
+    preserved19 = read(check_binding(preflight["assessment"])["path"])
+    require(preserved19.get("status") == "preserved_preflight_file_cap_failure_before_any_CPU_or_native_submission"
+            and preserved19.get("jobs_submitted") is False, "Source19 failed preflight was relabeled")
+    for proof in preserved19["proofs"]:
+        check_binding(proof)
+    conflict = plan.get("report_conflict_predecessor")
+    require(type(conflict) is dict and conflict.get("source") == {
+        "path": str(BASE / "nonchem-precision-release-20/source"), "files": 44,
+        "manifest_sha256": "0f5411bb45c408a0591ff8c985460398ee7196b27759b2eaf66c909712eab9d6"},
+        "Source20 reader-conflict evidence missing")
+    preserved20 = read(check_binding(conflict["assessment"])["path"])
+    require(preserved20.get("status") == "preserved_CPU861_pass_callback_reader_classification_failure_before_any_native_or_optimizer"
+            and preserved20.get("CPU_cases") == 861 and preserved20.get("native_or_optimizer_submitted") is False,
+            "Source20 CPU pass or failed callback was changed")
+    for proof in preserved20["proofs"]:
         check_binding(proof)
     preserved_failed_admission(manifest, plan)
     qualified = qualified_admissions(plan)

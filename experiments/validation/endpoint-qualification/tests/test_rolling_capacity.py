@@ -62,6 +62,41 @@ def test_queued_external_jobs_are_disclosed_and_terminal_jobs_need_no_cap():
     assert r.classify_jobs(rows, [], set(), '/own') == ({}, ['1'])
 
 
+def terminal_fixture(tmp_path, monkeypatch):
+    path = tmp_path/'gpu.out'
+    path.write_text('Subject: Job 14: old\n in queue <gpul40s>\n Exited with exit code 1.\n')
+    row = {'job_id':'14','root':r.c.ROOT+'/runs/old','source_manifest':{'sha256':'a'*64},
+           'terminal_proof':{'path':r.c.ROOT+'/proof.json','bytes':1,'sha256':'b'*64}}
+    value={'status':'terminal_job_no_unspent_future_execution_retained_files_preserved','job_id':'14',
+           'output_root':row['root'],'source_manifest_sha256':'a'*64,'files_deleted_or_modified':False,
+           'proofs':[{'path':path.as_posix(),'bytes':path.stat().st_size,'sha256':'c'*64}]}
+    monkeypatch.setattr(r,'check_binding',lambda p:p)
+    monkeypatch.setattr(r,'read',lambda p:value)
+    return row,value,path
+
+
+def test_actual_terminal_proof_can_retire_only_the_unspent_execution_allowance(tmp_path,monkeypatch):
+    row,_,_=terminal_fixture(tmp_path,monkeypatch)
+    assert r.independent_terminal(row)==row['terminal_proof']
+
+
+@pytest.mark.parametrize('bad',['job','root','source','lsf'])
+def test_terminal_scope_requires_original_owner_source_and_same_job_lsf(tmp_path,monkeypatch,bad):
+    row,value,path=terminal_fixture(tmp_path,monkeypatch)
+    if bad=='job':value['job_id']='15'
+    if bad=='root':value['output_root']+='/other'
+    if bad=='source':value['source_manifest_sha256']='d'*64
+    if bad=='lsf':path.write_text('other job, no terminal evidence')
+    with pytest.raises(ValueError):r.independent_terminal(row)
+
+
+def test_only_freshly_authenticated_foreign_family_ids_receive_shared_budget_exemption():
+    vae = scheduler('11','RUN','exact authenticated VAE family command')
+    assert r.classify_jobs([vae],[],set(),'/own',accounted_external={'11'}) == ({},[])
+    with pytest.raises(ValueError,match='Unrelated active account writer'):
+        r.classify_jobs([vae,scheduler('12','RUN','unknown foreign writer')],[],set(),'/own',accounted_external={'11'})
+
+
 def test_independent_job_id_without_exact_command_is_rejected():
     with pytest.raises(ValueError, match='command changed'):
         r.classify_jobs([scheduler('1', 'RUN', r.c.ROOT + '/changed')],

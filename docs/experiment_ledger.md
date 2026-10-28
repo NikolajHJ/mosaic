@@ -9366,3 +9366,139 @@ writers, before fresh immutable admission. Do not simply remove the guard,
 replay source18 or blindly submit candidate19. Candidate19 remains local and
 unsealed; its portable-inventory work does not resolve this external-writer gate.
 Owner: experiments/validation/endpoint-qualification/runs/20261028-precision-continuation-18/.
+
+
+### 2026-10-28T19:48:14.785992+00:00 — Explicit running-VAE budget; immutable19 prepared
+
+The user authorized fixing concurrent VAE accounting and conditionally resubmitting
+the full remaining Protenix30k/DBMol2.5k jobs with settings/results/checks unchanged.
+The first SSH attempt was denied; after the user's explicit retry, access recovered.
+Actual VAE29838765RUN/callback29838766PEND authenticate source140 attempt002,
+archive375272634d1836625e3d9a2bb8548e93f4cf4ac982ad1853fd0c621af8a344ef,
+source ac6b06edeff9ce6d35413d84890ee3738a68f517230ac06bd6345f6f86ca4d65,
+plan a794d3f7a9b3bcbcdc357aadb6feade06806a4692b08a65e7c3a0e8e0a9420f6.
+The dedicated output inventory completed:76 files/84,849,111 logical bytes.
+Original VAE quota-before001 and launcher require10GiB free headroom. New19
+holds10GiB empirical growth plus30k files above that entire baseline, rechecks
+the complete source/plan/archive/commands and inventory at every Mosaic phase,
+and keeps current+remaining charges equal to the whole forecast once. This is
+not a VAE hard limit/account reservation; no VAE job, source or setting changed.
+Unknown active writers still fail; original Mosaic4GiB/file reserves remain.
+
+All original arm/input dictionaries exactly equal18; production driver/hooks
+are byte-identical and Pro reference only changes namespace. Local98 existing
+metadata cases and29 targeted VAE/exemption cases passed. Earlier generic28-case
+prototype, Windows path and missing-owned-temp failures are preserved locally;
+only the targeted VAE helper is packaged. Old18 CPU817/pass and native entry
+failures are preserved in immutable assessment SHA
+e8478ba4f3e5d26875ce701875afe2fa2b417b9dd2dd8ce01411ae91914e5813.
+The44-file source19 package requires856 allocated cases, actual startup and all
+fresh model/gradient/FP64/pilot/runtime/storage checks before any optimizer.
+At this event no19 stage/job/pass exists. Monitor remains paused.
+Source19 manifest a428f807f566b0a4e765178d8699e501691d8d6b97c7cc08227c0768ecff3dda, archive340055 bytes SHA f7325f042cadc553126055b25714dff7b66ccae614777de49f68726ef64f5d85.
+Owner: experiments/validation/endpoint-qualification/runs/20261028-precision-continuation-19/.
+
+
+### 2026-10-28T19:53:57.544955+00:00 — Source20 preserves failed19 and authenticates terminated-scope retention
+
+Source19 fully authenticated the original running VAE and reached full preflight,
+but no CPU/native/optimizer jobs were submitted: terminated DeFoG29839884 had
+30,099 retained files versus its old30,000 active allowance. Source19 failure,
+source44/manifest a428f807f566b0a4e765178d8699e501691d8d6b97c7cc08227c0768ecff3dda
+and immutable failure proof3925485129210a874808bd59f576286bcfad9f3092cda41682387e0e47294f48
+are preserved. This was not a byte-quota shortage or a native gradient failure.
+Actual same-job gpul40s LSFexit1 establishes that independent job terminated;
+retention proof484313b5a916b97a5acafdef1794facd381b99b27222f62e98fd7be491f9cdfc
+preserves its scientific failure and every file. New20 retires only its unspent
+execution/release allowances and still charges its complete retained trees.
+
+New20 preserves source19 VAE accounting, all scientific arm/input dictionaries,
+exact20k/7500 saved endpoints and all rates/objectives/RNG/retention/gates.
+Production driver/hooks are byte-identical to18. Local98 prior metadata cases,
+29VAE/classifier cases and5same-job terminal positive/negative cases passed.
+Full861 allocated cases/startups and fresh independent full-model gradient/FP64/
+pilot/frozen/runtime/whole-storage checks remain mandatory before conditional
+fullPro30k and DB2500 continuations. VAE jobs/settings and saved results are
+unchanged; no cleanup and no monitor resume occurred. At this preparation event
+source20 has no staging, allocated pass or job.
+Source20 manifest 0f5411bb45c408a0591ff8c985460398ee7196b27759b2eaf66c909712eab9d6, archive340243 bytes SHA 9257bc67796091aac6ad82a75ea881a2914bc2721f97811ff1280b99cd3ca64f.
+Owner: experiments/validation/endpoint-qualification/runs/20261028-precision-continuation-20/.
+
+
+### 2026-10-28T19:56:15.593228+00:00 — Corrected whole-account preflight passed; CPU861 actually submitted
+
+Source20 staged44 files read-only. Its actual complete storage gate passed:
+19,388,904,908 required /43,412,647,925 conservatively available bytes, separate
+4GiB and100k-file reserve, exact original VAE10GiB allowance and all current
+Mosaic future scopes. VAE source/plan/archive were fully authenticated; only
+the exact GPU/controller family was accounted. Terminated DeFoG retained all
+30,099 files and actual bytes, with zero unspent execution allowance. No cleanup,
+VAE setting/job change, scientific gate waiver or saved-result edit occurred.
+ActualCPU29845010/controller29845011 submitted. Full861 CPU cases and actual
+startup commands remain pending; fresh GPU checks and optimizer IDs are not
+established at this event. Conditional controllers may submit full remaining
+Pro30k/LR0.3 and DB2500/LR0.0025 only after every own mandatory gate passes.
+Monitor remains paused. Actual submission/storage/source receipts are adjacent.
+Owner: experiments/validation/endpoint-qualification/runs/20261028-precision-continuation-20/.
+
+
+### 2026-10-28T20:08:12.725737+00:00 — CPU861 pass preserved; exact HOME report classified as WORK3 reader
+
+Source20 full storage passed and CPU29845010 actually DONE/LSF success,861 raw
+cases17Torch+844JAX/no failures/errors/skips, independently byte/XML verified.
+Controller29845011 EXIT1 before native submission because HOME report29845015
+uses the WORK3 interpreter and was classified as an unknown WORK3 writer.
+Preserve original20 source, CPU pass and failed callback; immutable proof SHA
+ac69970f028533062198709687563ccb01d0cf7a9fce8fb4facb26691520e026.
+Read-only authentication confirms the report engine4db7ca7c58a8481cd4e17c4f8a2df4aafad3e94e190408a2a4c0db30da168165
+has exact source bytes, passed allocated208-case qualification and actual HOME
+request/submission ownership. Profile places all outputs on HOME, with its own
+quota/caps/reserve; zero new WORK3 output. New21 exempts only that exact engine's
+HOME validate/render commands after live proof checks. Unknown actual writers
+still fail.18new local metadata controls passed; total150 portable controls.
+
+New21 preserves all20 VAE/terminal-lifecycle accounting,4GiB/file reserves and
+every scientific setting/saved input. Production driver/hooks remain byte-identical
+to18; only reference namespace changes. Full879 allocated CPU/startup checks and
+fresh own native/FP64/FD/null/component/pilot/frozen/runtime/storage checks precede
+conditional fullPro30k and DB2500 submissions. No VAE/report/scientific job or
+saved file was altered. At preparation no21 allocated pass/job is established.
+Monitor remains paused.
+Source21 manifest 930a1ed9c75456fbf2c986f904b4016a73ed8d0d4d49544f6837e6e9cb86e060, archive342730 bytes SHA 773213bdd3dda7936c8760d438a4aabd56e5d63aed33452b1cd9d94dc4d1c257.
+Owner: experiments/validation/endpoint-qualification/runs/20261028-precision-continuation-21/.
+
+
+### 2026-10-28T20:09:55.422892+00:00 — Source21 whole-storage passed and CPU879 submitted
+
+Whole preflight passed: 19382868820 required /43403642749 conservatively available bytes,4GiB/file reserves and held VAE allowance intact. Qualified HOME report IDs[] are authenticated readers with zero WORK3 output; HOME guard remains independent. Actual CPU29845073/controller29845074 submitted. All879 allocated cases/startups and new native checks remain pending before full remaining optimizer submissions. No scientific/input/result/job changes outside these authorized launches, no cleanup/monitor resume.
+Owner: experiments/validation/endpoint-qualification/runs/20261028-precision-continuation-21/.
+
+
+### 2026-10-28T20:13:23.896604+00:00 — Source21 CPU879 independently passed; controller running
+
+ActualCPU29845073DONE/hpc/same-job LSF success. Raw17Torch+862JAX rows exactly
+equal merged879 and all20 module counts, no failures/errors/skips. Every46 source
+member and compact proof byte hash matched. Actual controller29845074RUN at
+20:12:57UTC; no native/optimizer ID yet established. The exact historical HOME
+render command was separately replayed through metadata authentication only,
+passing engine/source/profile/CPU208/XML/actual request/submission checks; no
+model evaluation or current scheduler state was invented. Source21 entry and
+whole-storage passed; native/full remaining continuations remain conditional on
+all required own gates. VAE/report jobs and all saved results/settings unchanged.
+Owner: experiments/validation/endpoint-qualification/runs/20261028-precision-continuation-21/.
+
+
+### 2026-10-28T20:15:18.956495+00:00 — Source21 CPU879 and controller passed; native validations actually queued
+
+ActualCPU29845073 and controller29845074 DONE/hpc/same-job LSF success. Full
+879 raw cases17Torch+862JAX/all20 module counts, no failures/errors/skips;
+independent byte/XML/source/LSF/actual-command audit passed. CPU certificate
+is authenticated in verification.json. Actual native Pro29845087/callback
+29845088 and DBMol29845089/callback29845090 submitted; all4PEND at20:14:02UTC.
+Exact gpul40s/4CPU/8GiBslot/one exclusive L40S MPS/2h and own ended dependencies
+matched actual submissions. No native readiness pass or optimizer ID established.
+HPC controllers remain armed to submit full remainingPro30k/DB2500 only after
+all own native/precision/pilot/runtime/fresh-whole-storage gates pass. Original
+settings, saved endpoints and VAE/report jobs remain unchanged. Monitor paused.
+Source19/20 failures preserved; only source21 is current. No extra cleanup occurred.
+Owner: experiments/validation/endpoint-qualification/runs/20261028-precision-continuation-21/.

@@ -13,6 +13,16 @@ Actual CPU release and native CUDA/FP64/gradient/pilot checks remain mandatory.
 See [resource candidate19](../runs/20261028-precision-continuation-19/README.md)
 for exact evidence and preserved earlier Windows metadata failures.
 
+Attempt19 adds28 explicitly portable VAE shared-quota tests and one portable
+foreign-family classification case, passed locally in0.26s. They use only
+metadata/AST/JSON/temporary files and synthetic command strings. They neither
+load the VAE nor establish actual external-job provenance or scientific readiness.
+Five additional same-job terminal-lifecycle controls passed locally, keeping all
+retained files charged after an execution allowance is retired. The complete
+immutable879-case allocated suite includes18 HOME-reader classification controls;
+all879 passed allocated CPU before new native checks were queued. Local150
+metadata cases cannot replace those native/model/FP64/gradient checks.
+
 Current short-continuation16 suite has785 allocated cases. New metadata-only
 controls cover two concurrent CUDA-client orchestration (`test_cuda_ownership`),
 closed rolling ledgers (`test_segment_capacity`) and live inventory/claims

@@ -1,0 +1,45 @@
+{
+  "status": "passed_static_bytes_AST_only",
+  "source": {
+    "archive_bytes": 340055,
+    "archive_sha256": "f7325f042cadc553126055b25714dff7b66ccae614777de49f68726ef64f5d85",
+    "cpu_counts": {
+      "tests.test_admission": 50,
+      "tests.test_continuation_driver": 56,
+      "tests.test_continuation_ops": 107,
+      "tests.test_cuda_ownership": 42,
+      "tests.test_current_capacity": 5,
+      "tests.test_dbmol_endpoint_precision": 36,
+      "tests.test_dbmol_reference": 17,
+      "tests.test_logit_admission": 14,
+      "tests.test_measurement_resolution": 10,
+      "tests.test_precision_continuation_driver": 71,
+      "tests.test_precision_continuation_hooks": 57,
+      "tests.test_precision_continuation_ops": 130,
+      "tests.test_protenix_reference_worker": 58,
+      "tests.test_qualification": 19,
+      "tests.test_recovery_capacity": 11,
+      "tests.test_rolling_capacity": 57,
+      "tests.test_runtime_reservations": 28,
+      "tests.test_segment_capacity": 60,
+      "tests.test_vae_shared_capacity": 28
+    },
+    "files": 44,
+    "jobs_submitted": false,
+    "manifest_sha256": "a428f807f566b0a4e765178d8699e501691d8d6b97c7cc08227c0768ecff3dda",
+    "optimization_settings_changed": false,
+    "original_results_changed": false,
+    "plan_sha256": "6c6ff380cc3f453d94b7051fa92d95a40f6b8073eeb5cf1709e03966067d1a41",
+    "status": "prepared_not_validated_not_staged"
+  },
+  "all_original_arm_settings_and_inputs_exactly_equal_source18": true,
+  "production_driver_and_reference_hooks_byte_identical_to_source18": true,
+  "Pro_reference_worker_only_namespace_changed": true,
+  "local_metadata_cases": {
+    "prior_portable": 98,
+    "new_shared_VAE_and_exemption": 29
+  },
+  "VAE_model_or_settings_changed": false,
+  "scientific_or_native_pass_established": false,
+  "jobs_submitted": false
+}

@@ -1,0 +1,28 @@
+{
+  "status": "passed_local_metadata_only",
+  "total_cases": 132,
+  "proofs": [
+    {
+      "path": "experiments/validation/endpoint-qualification/runs/20261028-precision-continuation-20/local-existing98.xml",
+      "bytes": 14904,
+      "sha256": "bfbb47fcc67e9149d12bb01ff13a994d08dddb0aad20c6ef795eaa9dbde833ac",
+      "cases": 98
+    },
+    {
+      "path": "experiments/validation/endpoint-qualification/runs/20261028-precision-continuation-20/local-shared29.xml",
+      "bytes": 5627,
+      "sha256": "1c8f85aa938814cde791c3ed744b58316be5ce6b6610f6fa9675a47923997f39",
+      "cases": 29
+    },
+    {
+      "path": "experiments/validation/endpoint-qualification/runs/20261028-precision-continuation-20/local-terminal5.xml",
+      "bytes": 1212,
+      "sha256": "a5a7e6ac6b2ac4888714eb5d911a2dfb772e8a4d614d9313758c614d9aceecd6",
+      "cases": 5
+    }
+  ],
+  "scientific_or_model_evaluation": false,
+  "allocation_fabricated": false,
+  "full_allocated_CPU861_and_native_gates_still_required": true,
+  "old_failed_local_prototype_and_portability_attempts_preserved": true
+}

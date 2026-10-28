@@ -1,0 +1,47 @@
+{
+  "capacity_admission_granted": false,
+  "current_scheduler_state_inferred": false,
+  "historical_scheduler_proof": {
+    "bytes": 8423,
+    "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-20/after-cpu/rolling-capacity-entry-1793217568754256480/scheduler.json",
+    "sha256": "457800e08a3c41fbf5c0147aaab0c10abff328a404da58ae88464e9178df3f7d"
+  },
+  "models_or_tests_executed": false,
+  "remote_mutations": false,
+  "status": "passed_actual_historical_command_and_live_immutable_metadata_authentication",
+  "value": {
+    "HOME_capacity_and_publication_still_required": true,
+    "proofs": [
+      {
+        "bytes": 2416,
+        "path": "/zhome/95/e/206121/mosaic-runs/reusable-saved-report-v2/engines/4db7ca7c58a8481cd4e17c4f8a2df4aafad3e94e190408a2a4c0db30da168165/source/engine-manifest.json",
+        "sha256": "4db7ca7c58a8481cd4e17c4f8a2df4aafad3e94e190408a2a4c0db30da168165"
+      },
+      {
+        "bytes": 3800,
+        "path": "/zhome/95/e/206121/mosaic-runs/reusable-saved-report-v2/engines/4db7ca7c58a8481cd4e17c4f8a2df4aafad3e94e190408a2a4c0db30da168165/source/profile.json",
+        "sha256": "8cc45a3b4442a84f4fa058d925ac30e183340e88474063e83a3391c4ea900bec"
+      },
+      {
+        "bytes": 2369,
+        "path": "/zhome/95/e/206121/mosaic-runs/reusable-saved-report-v2/engines/4db7ca7c58a8481cd4e17c4f8a2df4aafad3e94e190408a2a4c0db30da168165/validation-certificate.json",
+        "sha256": "73723dac3b373c1ed29b11607b7d3d137b890df3b1d00cc7cdfa78bdb2af4eb5"
+      },
+      {
+        "bytes": 10250,
+        "path": "/zhome/95/e/206121/mosaic-runs/reusable-saved-report-v2/requests/request-20261028T195359Z-f09a6376/request.json",
+        "sha256": "ed41cc60c2bcaac15fcc9a014d1f0d109c65cd8f9db9000db7124e840f0160fc"
+      },
+      {
+        "bytes": 1172,
+        "path": "/zhome/95/e/206121/mosaic-runs/reusable-saved-report-v2/requests/request-20261028T195359Z-f09a6376/submission.json",
+        "sha256": "66751d02ff3bc48d8cd624e1f6203015cc69f9bb6bdc40374b30cc51028ed6e2"
+      }
+    ],
+    "report_jobs_or_inputs_changed": false,
+    "work3_output_bytes_requested": 0,
+    "work3_read_only_job_ids": [
+      "29845015"
+    ]
+  }
+}

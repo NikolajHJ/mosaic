@@ -1,0 +1,45 @@
+{
+  "status": "passed_independent_byte_XML_LSF_source_submission_audit",
+  "captured_utc": "2026-10-28T20:12:57.609940+00:00",
+  "source_files": 46,
+  "source_manifest_sha256": "930a1ed9c75456fbf2c986f904b4016a73ed8d0d4d49544f6837e6e9cb86e060",
+  "CPU_cases": 879,
+  "torch_cases": 17,
+  "jax_cases": 862,
+  "failures": 0,
+  "errors": 0,
+  "skips": 0,
+  "captured_files": 31,
+  "jobs": {
+    "after-cpu": {
+      "job_id": "29845074",
+      "actual_states": [
+        "RUN"
+      ],
+      "actual_submission": {
+        "bytes": 1293,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-21/after-cpu/submission.json",
+        "sha256": "9599615d0a82aa3961720bbfa4acc23653f003aa6a6a44e19bc00d8d71f93715"
+      }
+    },
+    "cpu": {
+      "job_id": "29845073",
+      "actual_states": [
+        "DONE"
+      ],
+      "actual_submission": {
+        "bytes": 1217,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-21/cpu/submission.json",
+        "sha256": "381620f5b69f267da392d9504db9ed10950dd471b72f079f82f543d42a545a3d"
+      }
+    }
+  },
+  "CPU_LSF_success": {
+    "bytes": 1986,
+    "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-21/cpu/stdout.29845073.log",
+    "sha256": "1c2980c2de1527c9c9ccbb1c048af3a533943f23a491331ce2f81beb13959c20"
+  },
+  "CPU_certificate": null,
+  "native_or_optimizer_pass_established": false,
+  "saved_results_changed": false
+}

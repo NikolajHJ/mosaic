@@ -153,6 +153,28 @@ This is not native/scientific readiness. All remaining integration fixtures and
 the full allocated CPU suite, actual CUDA/model/FP64/gradient/pilot checks still
 run on HPC before any optimizer submission.
 
+`vae_shared_capacity.py` is the account-bound read-only adapter for the exact
+source140 attempt002 VAE sharing WORK3. It authenticates the full original
+source/plan/archive, recognizes only its unchanged GPU/controller argv family,
+and holds its original10GiB quota headroom plus the declared file-growth forecast.
+Current bytes and only remaining growth are charged once; unknown active writers
+still fail. It changes no VAE job, training setting or output file. The footprint
+is a checked empirical forecast, not a new VAE hard output cap or reservation.
+`test_vae_shared_capacity.py` has28 portable metadata cases; the single foreign
+family classification test in `test_rolling_capacity.py` is also portable. These
+29 cases passed locally and still belong to the full allocated879-case release,
+along with five portable terminal-lifecycle controls. The current prepare/stage
+namespace was20; its preserved outcome is in [attempt20](../runs/20261028-precision-continuation-20/README.md).
+never replay old stages or infer a native pass from metadata checks.
+
+Current namespace is21; read [its actual receipts](../runs/20261028-precision-continuation-21/README.md).
+Full879 CPU/controller passed and new native29845087/29845089 are queued.
+`home_report_reader.py` authenticates only the exact qualified HOME engine4db7...
+and its real request/submission ownership as zero-WORK3-output. The WORK3 Python
+interpreter path alone is not an output scope. Its18 portable controls passed;
+the same cases remain in the full allocated suite. Other writer families and
+new engine pins are not exempt without a new authenticated immutable adoption.
+
 The latest actual full-budget capsule is [continuation18](../runs/20261028-precision-continuation-18/README.md):
 CPU29841471/controller29841472 passed all817 allocated cases and startup commands.
 Both GPU validators29841507/29841511 subsequently exited before models because

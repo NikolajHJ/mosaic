@@ -18,12 +18,12 @@ import tarfile
 
 REPO = Path(__file__).resolve().parents[4]
 OWNER = REPO / "experiments/validation/endpoint-qualification"
-TAG = "20261028-precision-continuation-18"
+TAG = "20261028-precision-continuation-21"
 RUN = OWNER / "runs" / TAG
 LOCAL = REPO / "results/hpc" / TAG
 BASE = "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01"
-ROOT = BASE + "/nonchem-precision-continuation-18"
-SOURCE = BASE + "/nonchem-precision-release-18/source"
+ROOT = BASE + "/nonchem-precision-continuation-21"
+SOURCE = BASE + "/nonchem-precision-release-21/source"
 PYTHON = "/work3/s234818/mosaic/envs/protenix-tiny/bin/python"
 TORCH_PYTHON = "/work3/s234818/latentmol/env/boltz311/bin/python"
 BASE_TAG = "20261027-continuation-measurement-09"
@@ -262,9 +262,13 @@ def make_plan(base_members, pro_members, pro_source, db_members, db_source, meta
     plan["superseded_allocation_plan"] = {"source": retired["value"]["source"],
         "retirement_assessment": retired["binding"], "original_results_changed": False,
         "CPU_pass_preserved": True, "reason": "User prefers full remaining work with measured reservations"}
-    failed17 = read(LOCAL / "failure17-01/observation.json")
+    failed17 = read(REPO / "results/hpc/20261028-precision-continuation-18/failure17-01/observation.json")
     plan["engineering_fixture_predecessor"] = {"source": failed17["value"]["source"],
         "assessment": failed17["assessment"]["binding"], "original_results_changed": False}
+    failed18 = read(LOCAL / "failure18-proof01/observation.json")
+    plan["resource_failure_predecessor"] = {"source": failed18["value"]["source"],
+        "assessment": failed18["assessment"]["binding"], "original_results_changed": False}
+    plan["shared_vae"] = read(LOCAL / "shared-vae-profile.json")
     def deferred(name, saved, target):
         return {"id": name, "saved_updates": saved, "target_updates": target, "next_updates": 0,
                 "next_scope_id": None, "later_updates_deferred": target - saved,
@@ -283,6 +287,13 @@ def make_plan(base_members, pro_members, pro_source, db_members, db_source, meta
              "release_cap_bytes": None, "release_cap_files": None, "source_manifest": details["records"][0]["binding"]}],
         "deferred_goals": [deferred("plain-boltz", 20000, 30000), deferred("protenix-chemistry", 10000, 50000),
                            deferred("boltz-chemistry", 10000, 30000)]}
+    terminal = read(REPO / "results/hpc/20261028-precision-continuation-19/terminal-proof01/observation.json")
+    plan["rolling_storage_policy"]["known_mosaic_jobs"][0]["terminal_proof"] = terminal["terminal_defog"]["binding"]
+    plan["preflight_file_predecessor"] = {"source": terminal["failure19"]["value"]["source"],
+        "assessment": terminal["failure19"]["binding"]}
+    conflict = read(REPO / "results/hpc/20261028-precision-continuation-20/reader-conflict-proof01/observation.json")
+    plan["home_report_reader_pin"] = "4db7ca7c58a8481cd4e17c4f8a2df4aafad3e94e190408a2a4c0db30da168165"
+    plan["report_conflict_predecessor"] = {"source": conflict["value"]["source"], "assessment": conflict["assessment"]["binding"]}
     return plan
 
 
@@ -293,7 +304,7 @@ def startup_adoption(source, *, tests=False):
     replacements = {old_root + "/cpu/payload/reference-startup.json": ROOT + "/cpu/payload/dbmol-reference-startup.json"}
     if tests:
         replacements = {"cpu/payload/reference-startup.json": "cpu/payload/dbmol-reference-startup.json",
-            "dbmol-endpoint-recovery-13": "nonchem-precision-continuation-18",
+            "dbmol-endpoint-recovery-13": "nonchem-precision-continuation-21",
             old_root + "/gpu/payload/reference-startup.json": ROOT + "/gpu/payload/dbmol-reference-startup.json"}
     class Change(ast.NodeTransformer):
         def visit_Constant(self, node):
@@ -332,7 +343,7 @@ def prepare(counts_path, metadata_path=None):
         "scripts/recovery_capacity.py", "tests/test_precision_continuation_driver.py", "tests/test_precision_continuation_hooks.py",
         "tests/test_precision_continuation_ops.py", "tests/test_protenix_reference_worker.py", "tests/test_recovery_capacity.py",
         "scripts/cuda_ownership.py", "tests/test_cuda_ownership.py", "scripts/segment_capacity.py", "tests/test_segment_capacity.py",
-        "scripts/rolling_capacity.py", "tests/test_rolling_capacity.py", "tests/test_runtime_reservations.py"]
+        "scripts/rolling_capacity.py", "tests/test_rolling_capacity.py", "tests/test_runtime_reservations.py", "scripts/vae_shared_capacity.py", "tests/test_vae_shared_capacity.py", "scripts/home_report_reader.py", "tests/test_home_report_reader.py"]
     for name in new_files: members[name] = (OWNER / name).read_bytes().replace(b"\r\n", b"\n")
     for name in ("scripts/dbmol_endpoint_precision.py", "tests/test_dbmol_endpoint_precision.py"):
         members[name] = db_members[name]
@@ -358,12 +369,17 @@ def prepare(counts_path, metadata_path=None):
     proofs += plan["launch_predecessor"]["proofs"]
     proofs.append(plan["superseded_allocation_plan"]["retirement_assessment"])
     proofs.append(plan["engineering_fixture_predecessor"]["assessment"])
+    proofs.append(plan["resource_failure_predecessor"]["assessment"])
+    proofs.append(plan["preflight_file_predecessor"]["assessment"])
+    proofs.append(plan["report_conflict_predecessor"]["assessment"])
+    proofs += [row["terminal_proof"] for row in plan["rolling_storage_policy"]["known_mosaic_jobs"] if "terminal_proof" in row]
+    proofs += [plan["shared_vae"][key] for key in ("plan", "archive", "manifest", "quota_before")]
     proofs += [row["source_manifest"] for row in plan["rolling_storage_policy"]["known_mosaic_jobs"]]
     for row in plan["qualified_admissions"].values(): proofs += row["proofs"]
     parents = deduplicate(list(base_manifest["parent_sources"]) + list(pro_manifest["parent_sources"])
         + list(db_manifest["parent_sources"]) + [base_source, pro_source, db_source, plan["engineering_predecessor"]["source"],
                                                plan["launch_predecessor"]["source"], plan["superseded_allocation_plan"]["source"],
-                                               plan["engineering_fixture_predecessor"]["source"]])
+                                               plan["engineering_fixture_predecessor"]["source"], plan["resource_failure_predecessor"]["source"], plan["preflight_file_predecessor"]["source"], plan["report_conflict_predecessor"]["source"]])
     manifest = {"version": "precision-reference-continuation-source-v1", "files": {name: sha(data) for name, data in sorted(members.items())},
         "cpu_counts": counts, "parent_sources": parents, "preserved_proofs": deduplicate(proofs),
         "preserved_failed_admissions": plan["preserved_failed_admissions"], "dispatch_arms": plan["dispatch_arms"],

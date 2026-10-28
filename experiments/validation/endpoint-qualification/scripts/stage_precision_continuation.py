@@ -11,7 +11,7 @@ from pathlib import Path
 
 OWNER = Path(__file__).resolve().parents[1]
 REPO = OWNER.parents[2]
-TAG = "20261028-precision-continuation-18"
+TAG = "20261028-precision-continuation-21"
 RUN = OWNER / "runs" / TAG
 LOCAL = REPO / "results/hpc" / TAG
 
@@ -27,7 +27,7 @@ def main():
 import base64,hashlib,io,json,os,sys,tarfile,types,subprocess
 from pathlib import Path,PurePosixPath
 base=Path('/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01')
-root=base/'nonchem-precision-continuation-18';source=base/'nonchem-precision-release-18/source'
+root=base/'nonchem-precision-continuation-21';source=base/'nonchem-precision-release-21/source'
 assert not root.exists() and not source.parent.exists(),'Existing/unknown attempt: inspect actual receipts, never repeat staging'
 data=base64.b64decode(ARCHIVE,validate=True)
 assert len(data)==PREP['archive_bytes'] and hashlib.sha256(data).hexdigest()==PREP['archive_sha256']

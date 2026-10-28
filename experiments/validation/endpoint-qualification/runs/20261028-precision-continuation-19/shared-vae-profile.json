@@ -1,0 +1,31 @@
+{
+  "version": "mosaic-authenticated-vae-shared-quota-v1",
+  "plan": {
+    "bytes": 32696,
+    "path": "/work3/s234818/latentmol/submissions/source140-epoch40-to45-continuation-attempt002/source140-epoch40-to45-continuation-attempt002.json",
+    "sha256": "a794d3f7a9b3bcbcdc357aadb6feade06806a4692b08a65e7c3a0e8e0a9420f6"
+  },
+  "archive": {
+    "path": "/work3/s234818/latentmol/releases/source-140-epoch40-to45-continuation-attempt002.tar.gz",
+    "bytes": 2337692,
+    "sha256": "375272634d1836625e3d9a2bb8548e93f4cf4ac982ad1853fd0c621af8a344ef"
+  },
+  "manifest": {
+    "bytes": 66976,
+    "path": "/work3/s234818/latentmol/releases/source-140-epoch40-to45-continuation-attempt002/release_manifest.json",
+    "sha256": "1f1fb2c31d974276605e1f5bc5f968f5aebd264a4f1acfc94d68d0e19dbf7863"
+  },
+  "quota_before": {
+    "bytes": 2180,
+    "path": "/work3/s234818/latentmol/runs/source140-epoch40-to45-continuation-attempt002/quota-before-001.json",
+    "sha256": "ecdce9a990cf2abdde97bf38e98d8fde731107b37c11c5f77f4e4593e87f4cac"
+  },
+  "baseline_bytes": 84849111,
+  "baseline_files": 76,
+  "growth_bytes": 10737418240,
+  "growth_files": 30000,
+  "job_templates": {
+    "gpu": "env LATENTMOL_SOURCE_ARCHIVE=/work3/s234818/latentmol/releases/source-140-epoch40-to45-continuation-attempt002.tar.gz LATENTMOL_WORK_ROOT=/work3/s234818/latentmol bash scripts/hpc/boltz_run.sh env OMP_NUM_THREADS=4 MKL_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 python scripts/verify_stability_release.py --archive-sha256 375272634d1836625e3d9a2bb8548e93f4cf4ac982ad1853fd0c621af8a344ef --manifest-sha256 ac6b06edeff9ce6d35413d84890ee3738a68f517230ac06bd6345f6f86ca4d65 -- python -m latentmol.experiments --run-root /work3/s234818/latentmol/runs/source140-epoch40-to45-continuation-attempt002/allocations --name source104-chemistry-segment-001 -- python scripts/hpc/chemistry_epoch45_worker.py --plan /work3/s234818/latentmol/submissions/source140-epoch40-to45-continuation-attempt002/source140-epoch40-to45-continuation-attempt002.json --plan-sha256 a794d3f7a9b3bcbcdc357aadb6feade06806a4692b08a65e7c3a0e8e0a9420f6 --segment 1 -- python -m latentmol.chemistry_continuation train --plan /work3/s234818/latentmol/submissions/source140-epoch40-to45-continuation-attempt002/source140-epoch40-to45-continuation-attempt002.json --plan-sha256 a794d3f7a9b3bcbcdc357aadb6feade06806a4692b08a65e7c3a0e8e0a9420f6 --benchmark-gate-sha256 fbc2de758ec115417440d77be8ec1efaac5433e6d258044d597c3b5b985ce0a4 --failure-readiness-sha256 94341dabd9fcbb85b08055f42dc90a0beb79ce8fdaa73a4ffca00cb7d86a9cd5 --segment 1 --resume /work3/s234818/latentmol/runs/source138-vae-cli-startup-fix-attempt001/segments/004/20261026T230230Z_chemistry-train_e9f28b40/epoch_0040.pt --resume-sha256 31af05597dbd176b02a8108651db0d6b33bb3a8883f69ecf354a4465ed18787e",
+    "callback": "env PYTHONPATH=/work3/s234818/latentmol/releases/source-140-epoch40-to45-continuation-attempt002/src /work3/s234818/latentmol/env/boltz311/bin/python scripts/hpc/chemistry_epoch45_campaign.py --plan /work3/s234818/latentmol/submissions/source140-epoch40-to45-continuation-attempt002/source140-epoch40-to45-continuation-attempt002.json --plan-sha256 a794d3f7a9b3bcbcdc357aadb6feade06806a4692b08a65e7c3a0e8e0a9420f6 --mode advance --after-stage segment-001"
+  }
+}

@@ -87,7 +87,10 @@ def policy(plan):
         c.require(type(row) is dict, 'Independent allocation must be a closed object')
         expected = ('job_id', 'command', 'root', 'cap_bytes', 'cap_files', 'role',
                     'release_root', 'release_cap_bytes', 'release_cap_files', 'source_manifest')
-        c.fields(row, expected + (('additional_jobs',) if 'additional_jobs' in row else ()), 'Independent allocation')
+        optional = (('additional_jobs',) if 'additional_jobs' in row else ()) + (('terminal_proof',) if 'terminal_proof' in row else ())
+        c.fields(row, expected + optional, 'Independent allocation')
+        if 'terminal_proof' in row:
+            c.proof(row['terminal_proof'], 'Authenticated independent terminal evidence')
         c.proof(row['source_manifest'], 'Independent source manifest')
         c.path(row['root'], 'Independent output root')
         for job in allocation_jobs(row):
@@ -137,7 +140,7 @@ def parse_scheduler(raw):
     return rows
 
 
-def classify_jobs(rows, known_jobs, own_jobs, source):
+def classify_jobs(rows, known_jobs, own_jobs, source, accounted_external=()):
     """Unknown Mosaic queued/running writes and unbounded external RUN fail."""
     known = {job['job_id']: job for row in known_jobs for job in allocation_jobs(row)}
     observed, external, unknown = {}, [], []
@@ -150,6 +153,9 @@ def classify_jobs(rows, known_jobs, own_jobs, source):
             observed[jid] = row
         elif str(source) in command and jid in own_jobs:
             observed[jid] = row
+        elif jid in accounted_external:
+            # Only observe()'s freshly authenticated exact VAE family enters here.
+            continue
         elif c.ROOT in command:
             unknown.append(jid)
         else:
@@ -164,6 +170,28 @@ def _scope(sid, root, state, role, liveness, *, cap=None, files=None):
     return {'id': sid, 'root': str(root), 'excluded_roots': [], 'state': state, 'role': role,
             'actual_bytes': 0, 'actual_files': 0, 'cap_bytes': cap, 'cap_files': files,
             'inventory_proof': None, 'liveness_proof': liveness, 'quota_inclusion_proof': None}
+
+
+def independent_terminal(row):
+    if 'terminal_proof' not in row:
+        return None
+    proof = check_binding(row['terminal_proof'])
+    value = read(proof['path'])
+    c.require(value.get('status') == 'terminal_job_no_unspent_future_execution_retained_files_preserved'
+              and value.get('job_id') == row['job_id'] and value.get('output_root') == row['root']
+              and value.get('source_manifest_sha256') == row['source_manifest']['sha256']
+              and value.get('files_deleted_or_modified') is False,
+              'Independent terminal identity or preservation differs')
+    lsf = []
+    for pin in value['proofs']:
+        check_binding(pin)
+        if pin['path'].endswith('/gpu.out'):
+            lsf.append(''.join(Path(pin['path']).read_text().split()))
+    c.require(len(lsf) == 1 and lsf[0].count('Subject:Job' + row['job_id'] + ':') == 1
+              and 'inqueue<gpul40s>' in lsf[0]
+              and (('Successfullycompleted.' in lsf[0]) != ('Exitedwithexitcode1.' in lsf[0])),
+              'Actual independent same-job terminal LSF proof missing')
+    return proof
 
 
 def segment_file_capacity(updates, validation_files):
@@ -312,15 +340,21 @@ def build_scopes(op, plan, pin, phase, parent, scheduler_proof, observed):
     retained['excluded_roots'] += [str(op.ROOT), str(op.SOURCE.parent)]
     for row in p['known_mosaic_jobs']:
         check_binding(row['source_manifest'])
-        state = 'active' if any(job['job_id'] in observed and observed[job['job_id']]['STAT'] == 'RUN'
-                                for job in allocation_jobs(row)) else 'admitted'
+        terminal = independent_terminal(row)
+        if terminal is not None:
+            c.require(all(job['job_id'] not in observed for job in allocation_jobs(row)),
+                      'Independent terminal proof conflicts with actual nonterminal job')
+            state = 'terminal'
+        else:
+            state = 'active' if any(job['job_id'] in observed and observed[job['job_id']]['STAT'] == 'RUN'
+                                    for job in allocation_jobs(row)) else 'admitted'
         sid = 'independent-' + row['job_id']
-        scopes.append(_scope(sid, row['root'], state, row['role'], scheduler_proof,
-                             cap=row['cap_bytes'], files=row['cap_files']))
+        scopes.append(_scope(sid, row['root'], state, row['role'], terminal or scheduler_proof,
+                             cap=None if terminal else row['cap_bytes'], files=None if terminal else row['cap_files']))
         retained['excluded_roots'].append(row['root'])
         if row['release_root'] is not None:
-            scopes.append(_scope(sid + '-release', row['release_root'], 'admitted', 'release', row['source_manifest'],
-                                 cap=row['release_cap_bytes'], files=row['release_cap_files']))
+            scopes.append(_scope(sid + '-release', row['release_root'], 'terminal' if terminal else 'admitted', 'release', row['source_manifest'],
+                                 cap=None if terminal else row['release_cap_bytes'], files=None if terminal else row['release_cap_files']))
             retained['excluded_roots'].append(row['release_root'])
     candidate = candidate_from_parent(op, Path(parent), phase)
     new_claim, goals = None, []
@@ -571,7 +605,22 @@ def _storage(op, parent, phase, attempt):
         sub = op.read(op.ROOT / name / 'submission.json')
         c.require(sub.get('status') == 'submitted' and sub.get('job_id') == jid,
                   'Own job registry/submission identity differs')
-    observed, external = classify_jobs(rows, p['known_mosaic_jobs'], set(own.values()), op.SOURCE)
+    shared = None
+    readers = {'work3_read_only_job_ids':[]}
+    if plan.get('home_report_reader_pin'):
+        spec = importlib.util.spec_from_file_location('_home_report_reader', Path(__file__).with_name('home_report_reader.py'))
+        reader = importlib.util.module_from_spec(spec); spec.loader.exec_module(reader)
+        c.require(plan['home_report_reader_pin'] == reader.PIN, 'HOME reader policy pin changed')
+        readers = reader.observe(rows)
+        op.write(attempt / 'home-report-readonly-observation.json', readers)
+    if 'shared_vae' in plan:
+        spec = importlib.util.spec_from_file_location('_shared_vae_capacity', Path(__file__).with_name('vae_shared_capacity.py'))
+        module = importlib.util.module_from_spec(spec); spec.loader.exec_module(module)
+        shared = module.observe(plan['shared_vae'], rows, on_inventory_failure=lambda n, value:
+            op.write(attempt / ('incomplete-vae-inventory-' + str(n).zfill(2) + '.json'), value))
+        op.write(attempt / 'shared-vae-observation.json', shared)
+    observed, external = classify_jobs(rows, p['known_mosaic_jobs'], set(own.values()), op.SOURCE,
+                                       set(shared['accounted_job_ids'] if shared is not None else ()) | set(readers['work3_read_only_job_ids']))
     scopes, goals, claim = build_scopes(op, plan, pin, phase, parent, scheduler_proof, observed)
     if claim is not None:
         basis_path = attempt / ('completed-validation-inventory-' + claim['arm'] + '-' + str(claim['offset']) + '.json')
@@ -598,9 +647,13 @@ def _storage(op, parent, phase, attempt):
               'shared_account': {'non_mosaic_job_ids': external, 'their_future_bytes_reserved': False,
                                  'whole_account_reservation': False, 'entry_and_periodic_recheck_required': True}}
     result = c.assess(ledger, quota['stdout'], fs.f_bavail * fs.f_frsize, inode)
+    if shared is not None:
+        result = module.augment(result, shared)
+        result['shared_vae_evidence'] = binding(attempt / 'shared-vae-observation.json')
     result.update(adapter_version=VERSION, raw_quota_command=binding(attempt / 'quota.json'),
                   all_retained_mosaic_bytes_charged_once=True, historical_lifetime_allowance_chain_used=False,
                   inventory_proof=inventory_proof, scheduler_proof=scheduler_proof)
+    result['home_report_readonly'] = readers
     if claim is not None:
         result['proposed_segment_claim_basis'] = dict(claim)
     op.write(attempt / 'assessment.json', result)
