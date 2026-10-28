@@ -1,0 +1,80 @@
+{
+  "version": "mosaic-report-selection-v1",
+  "runs": [
+    {
+      "id": "protenix",
+      "label": "Protenix native-only continuation",
+      "status_detail": "Absolute 20,000 saved updates (10,000 shown since the saved10,000 parent). Original terminal validation failed. Separate FP64 endpoint qualification passed; full-model continuation validation is submitted.",
+      "continuation_status": "validation_queued",
+      "segments": [
+        {
+          "run": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-segment-0000/payload/study"
+        }
+      ]
+    },
+    {
+      "id": "boltz",
+      "label": "Boltz-2 affinity, planned30k",
+      "status_detail": "20,000 saved updates. The new terminal endpoint check failed after the second segment; continuation to 30,000 is blocked. Original failures remain preserved.",
+      "continuation_status": "blocked",
+      "segments": [
+        {
+          "run": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/boltz2-segment-0000/payload/study"
+        },
+        {
+          "run": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-09/boltz-segment-10000/payload/study"
+        }
+      ]
+    },
+    {
+      "id": "dbmol",
+      "label": "Boltz-2 DBMol binding objective, planned10k",
+      "status_detail": "7,500 saved updates. Original terminal validation failed. Separate finer-scale qualification passed; new full-model continuation validation is submitted. The original scientific failures remain failed.",
+      "continuation_status": "validation_queued",
+      "segments": [
+        {
+          "run": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-segment-0000/payload/study"
+        },
+        {
+          "run": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-segment-0001/payload/study"
+        },
+        {
+          "run": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-08/dbmol-segment-05000/payload/study"
+        }
+      ]
+    },
+    {
+      "id": "protenix_noisy",
+      "label": "Protenix noisy-logit1k pilot",
+      "status_detail": "Completed1,000 updates; original initial/terminal raw and logit checks passed. Independent pilot, not the50k random chemistry run.",
+      "continuation_status": "completed",
+      "segments": [
+        {
+          "run": "/work3/s234818/mosaic/runs/20261025-protenix-noisy-05/gpu"
+        }
+      ]
+    },
+    {
+      "id": "protenix_chemistry",
+      "label": "Random Protenix + delayed chemistry",
+      "status_detail": "First 10,000-update segment passed. The next boundary combined-gradient check and later separate revalidation failed; continuation is blocked. Chemistry rises from0.001 after 5,000 toward 100 at 50,000.",
+      "continuation_status": "blocked",
+      "segments": [
+        {
+          "run": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-03/protenix/random-segment-0000/payload/study"
+        }
+      ]
+    },
+    {
+      "id": "boltz_chemistry",
+      "label": "Boltz-2 + delayed chemistry",
+      "status_detail": "10,000 saved updates; terminal bond-gradient validation failed. Separate native-component recheck passed; combined-loss checks and pilots are still required before continuation. Chemistry rises from0.001 after 5,000 toward 100 at 30,000.",
+      "continuation_status": "blocked",
+      "segments": [
+        {
+          "run": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-04/boltz/boltz2_chemistry-segment-0000/payload/study"
+        }
+      ]
+    }
+  ]
+}

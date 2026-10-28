@@ -1,0 +1,59 @@
+{
+  "HTTP": {
+    "files": 48,
+    "status": "passed_all_new_edition_HTTP_bytes",
+    "url": "http://127.0.0.1:8780/report.html"
+  },
+  "avoided_local_asset_transfer_bytes": 394221518,
+  "cached_render_seconds": 31.103487804997712,
+  "capacity": {
+    "available_bytes": 55021254106,
+    "file_reserve": 100000,
+    "required_bytes": 54885399377,
+    "reserve_bytes": 4294967296
+  },
+  "case_modules": {
+    "tests.test_qualification": 19,
+    "tests.test_quick_report": 37,
+    "tests.test_report_data": 73,
+    "tests.test_report_ops": 16,
+    "tests.test_viewer": 41
+  },
+  "cpu_cases": 186,
+  "cpu_job_id": "29840548",
+  "delta_bytes": 29775,
+  "delta_members": 6,
+  "delta_sha256": "70dedc4774a788254c25e047b67b44036074a2918699747f1c6865473bafb0b5",
+  "edition": "edition-0005",
+  "engine_pin": "c223e33d56b79b8f8ecd9f58a8c697dab4aa24b24faf21e3ab8bcdd6e8facbb1",
+  "no_local_numerical_work": true,
+  "offload": [
+    {
+      "allocated_removed_bytes_nlink1": 394231296,
+      "journal_sha256": "f3a0dc6e1776e8f4daf42b0bad171db5184032140458a6f3a124e87fcaa66672",
+      "logical_removed_bytes": 394221846,
+      "removed_files": 40
+    },
+    {
+      "allocated_removed_bytes_nlink1": 355379200,
+      "journal_sha256": "755407f3caee0ba1f8ed9b4af7c6cbf0617c6deae9fc7ef76aec0ec6bb3e6ccd",
+      "logical_removed_bytes": 355074786,
+      "removed_files": 812
+    },
+    {
+      "allocated_removed_bytes_nlink1": 70185472,
+      "journal_sha256": "9a59b2174c5cc9369923215aa21aa504fa42cbcf6b92319479475d83623f2e8e",
+      "logical_removed_bytes": 70185471,
+      "removed_files": 1
+    }
+  ],
+  "proof_files": 14,
+  "refresh_total_seconds": 153.3279999999795,
+  "render_job_id": "29840605",
+  "report_files": 46,
+  "six_original_counts_and_scientific_outcomes_unchanged": true,
+  "status": "passed_independent_stdlib_byte_XML_schema_audit",
+  "unchanged_original_data_assets": 40,
+  "unchanged_recheck_no_submission_marker": true,
+  "unchanged_recheck_seconds": 33.218000000109896
+}

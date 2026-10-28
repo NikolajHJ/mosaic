@@ -5,7 +5,86 @@ CPU jobs. Source/input/proof bindings, raw fixture XML, actual scheduler/LSF and
 archive/member bytes are authenticated before immutable publication. No model,
 optimization, gradient evaluation, repair or resampling belongs to this renderer.
 
-## Preparing a later report
+## One-command reports
+
+The public entry point is `python scripts/reporting/report.py` from the repository
+root. It forwards here without duplicating report logic. With no options it
+updates the six current trajectories at http://127.0.0.1:8780/report.html.
+
+```powershell
+python scripts/reporting/report.py --run protenix --run boltz --run dbmol
+python scripts/reporting/report.py --run /absolute/HPC/study-a --run /absolute/HPC/study-b --output results/hpc/my-report --port 8781
+python scripts/reporting/report.py --runs my-runs.json
+```
+
+An input can be a study directory, a job parent or its terminal summary. A JSON
+file supports simple paths or explicitly grouped continuation segments:
+
+```json
+{
+  "version": "mosaic-report-selection-v1",
+  "runs": [
+    "/absolute/HPC/study-a",
+    {
+      "id": "continued-boltz",
+      "label": "Boltz continuation",
+      "segments": [
+        {"run": "/absolute/HPC/segment-0000/payload/study"},
+        {"run": "/absolute/HPC/segment-10000/payload/study"}
+      ]
+    }
+  ]
+}
+```
+
+Run IDs must be unique. One to24 runs are supported. Terminal saved JQ1 N25
+fixed-step/noisy formats and stride20 matrices are supported; queued/running
+segments without a terminal summary are rejected. Original scientific failures
+remain visible. Config/rate/range/input/job provenance is discovered rather than
+copied into the selection. Presentation annotations are optional historical
+notes, not an automatic account-wide scheduler monitor.
+
+`report.py` handles local stdlib metadata, transfers, byte verification, atomic
+publication and localhost delivery. `quick_inputs.py` authenticates saved inputs
+and cache keys. `quick_runtime.py` provides only allocated CPU validation/render
+phases. Its immutable content-addressed engine gets the full fixture suite once
+per exact code/template/runtime-profile hash. Run selection changes do not change
+that hash. Subsequent reports reuse the certificate, rehash original inputs and
+retained matrices, validate changed arms with the unchanged scientific renderer,
+and download only missing assets. Verified reports register themselves as future
+cache sources. If nothing changed, no render job is submitted.
+
+The command waits for actual same-job DONE/hpc/LSF success and validates raw CPU
+XML, proof/source pins, archive and every reconstructed member before publication.
+Full experiment projections, independent report caps,4GiB reserve and100,000-file
+headroom remain mandatory. It does not call a model, optimizer or cleanup tool.
+`offload_report_assets.py` is a separate operator-only backup/verification helper;
+the report command never invokes it.
+
+Useful options:
+
+- `--dry-run`: print selection/output without SSH or submission.
+- `--setup-only`: qualify/install the exact engine without rendering data.
+- `--force`: deliberately publish a fresh edition even if data is unchanged.
+- `--output PATH --port PORT`: keep a separate report at a separate localhost port.
+- `--no-serve`: publish files without starting/checking a localhost server.
+- `--profile PATH`: use an explicit account/runtime/capacity profile.
+- `--resume PATH`: resume the exact recorded request printed by the command.
+
+Every request records source, submissions, proofs, transfers and publication in
+`results/hpc/20261028-reusable-report-01/requests/`, plus a compact owner journal
+and experiment-ledger events. Never delete a request lock or submission marker to
+retry an unknown outcome. Inspect the recorded evidence and use `--resume` with
+the same profile/output/serving options. The engine does not schedule recurring
+updates; the experiment monitor remains paused. The browser only checks the
+published latest pointer every60seconds.
+
+The supplied profile and base-source archive describe this existing DTU account.
+Other accounts need their own authenticated profile/guard/runtime; changing an
+SSH environment variable is not a supported migration. Keep the pinned local
+base-source archive available for deterministic engine packaging.
+
+## Historical manual preparation
 
 `refresh_capsule.py` is a local standard-library preparation tool. It does not
 connect to HPC, submit a job, poll results, or publish a report. It authenticates

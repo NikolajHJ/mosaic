@@ -1,0 +1,27 @@
+{
+  "actual_slider_drag_result": 11480,
+  "all_six_selectors": true,
+  "boltz_latest": 20000,
+  "boltz_manual_navigation_paused_playback": 321,
+  "both_chemistry_latest_and_saved_chemistry_curves": 10000,
+  "browser_warning_error_entries": 0,
+  "dbmol_latest_and_three_component_curves": 7500,
+  "edition": "edition-0005",
+  "heatmaps_atoms": 25,
+  "heatmaps_unordered_pairs": 300,
+  "next_retained": 15020,
+  "noisy_latest": 1000,
+  "original_results_changed": false,
+  "preview": {
+    "bytes": 92828,
+    "path": "results\\hpc\\20261028-reusable-report-01\\report-preview.png",
+    "sha256": "eb0693b8e308bd9c1bf1fc1efa75a604e8dfb8cc9d9f9aad4fe01a3f0b6bbaa6"
+  },
+  "previous_retained": 15000,
+  "protenix_numeric": 15000,
+  "raw_invalid_and_sanitized_observations_preserved": true,
+  "status": "passed_actual_browser_interactions",
+  "unsaved_step_explicitly_empty": 15001,
+  "url": "http://127.0.0.1:8780/report.html",
+  "utc": "2026-10-28T12:25:26.900642+00:00"
+}

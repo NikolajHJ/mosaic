@@ -1,16 +1,26 @@
-# Shared reporting tools
+# Saved-result report entry point
 
-Generic saved Protenix trajectory renderer, raw-graph depictions, SVG display and localhost serving. Used by graph controls and BRD4 reports. Rendering still requires its existing allocated-HPC conditions.
+`report.py` forwards to the single canonical implementation in
+`experiments/reporting/jq1-live-progress/scripts/report.py`; no report logic is
+duplicated here. This entry point serves saved Protenix, Boltz, DBMol and delayed
+chemistry trajectories supported by that experiment's saved-data schema.
 
-These are shared dependencies, not independent scientific experiments. [Experiment inventory](../../experiments/INDEX.md) lists their consumers.
+From the repository root:
 
-| Canonical file | Role | Legacy compatibility path |
-| --- | --- | --- |
-| [render_protenix_trajectory.py](render_protenix_trajectory.py) | Plot and depict saved relaxed trajectories on allocated DTU HPC only. | `scripts/render_protenix_trajectory.py` |
-| [protenix_trajectory_depiction.py](protenix_trajectory_depiction.py) | Probability-weighted raw graph depictions for the detached HPC report. | `scripts/protenix_trajectory_depiction.py` |
-| [protenix_trajectory_svg.py](protenix_trajectory_svg.py) | Fast SVG for saved graphs, using the report's fixed probability size rules. | `scripts/protenix_trajectory_svg.py` |
-| [serve_protenix_report.py](serve_protenix_report.py) | Serve an existing report on loopback, independently of the launching chat. | `scripts/serve_protenix_report.py` |
-| [render_protenix_trajectory.lsf](render_protenix_trajectory.lsf) | Allocated execution/collection launcher; arguments and resource guards remain in source. | `scripts/hpc/render_protenix_trajectory.lsf` |
-| [protenix_trajectory_report.html](protenix_trajectory_report.html) | Saved-artifact report template; rendering changes no scientific outcome. | `scripts/templates/protenix_trajectory_report.html` |
+```powershell
+python scripts/reporting/report.py
+python scripts/reporting/report.py --run protenix --run boltz --run dbmol
+python scripts/reporting/report.py --run /absolute/HPC/run-a --run /absolute/HPC/run-b
+python scripts/reporting/report.py --runs my-runs.json --output results/hpc/my-report
+```
 
-Use canonical paths for new work. Old Python/shell paths forward to these files; retained declarative files are checked against their canonical owner. All original numerical/allocation/scientific guards apply. No model, numerical test or scheduler command was run for this migration.
+The default selection is the six current trajectories. A JSON selection can group
+ordered continuation segments. See the canonical experiment's README and configs.
+Connection/storage settings are explicit profiles; the supplied DTU profile is
+account-bound, not portable by changing environment variables.
+
+All scientific frame validation/rendering and fixtures run on allocated HPC CPU.
+The local command performs metadata/byte handling and publication. It cannot
+submit model/optimizer jobs. Unchanged data reuses the existing report; changed
+data gets one render job using a previously qualified engine and verified cache.
+Historical editions and scientific outcomes remain unchanged.
