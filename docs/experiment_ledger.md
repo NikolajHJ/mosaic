@@ -8564,3 +8564,33 @@ monitorpaused. No local scientific calculations.
 Local fullstdliblayout audit retains the same21outside-scope errors (historical
 discoveryinventory and20receiptfolders missingREADMEs). BothnewrunREADMEs exist,
 newtests resolveonce; no waiver or unrelatedlayout edits.
+
+
+### 2026-10-28 — Protenix08 and DBMol10 native terminal outcomes authenticated
+
+Read-only observation08:08:02UTC recovered access and rehashed84 compact files.
+Actual same-job gpul40s LSF: Pro29834817 ran04:58:17–05:14:59CET, DB29834830
+ran05:06:29–05:17:16CET, bothEXIT1. Live records aged out, represented only as
+FAILED_PERSISTED; not fabricated schedulerEXIT. Both full entry storage gates
+passed; this is validation failure, not pending capacity or a new storage failure.
+
+Pro originalFP32 replay/measurement and full9651-float64-operation dtype audit
+passed. The reference then failed before any completed gradient comparison on
+CPU X versus GPU promoted model/context in actual JIT. Charge precision fix
+passed its native dtype audit, but full reference qualification remains failed.
+All protected inputs/model/context remained exact, zero optimizer updates.
+
+DB fullFP64 reference/operation audit passed. Original atomXrow1/0->4 and every
+selected FD/production-referenceAD comparison passed. Remaining mandatory bond
+Erow248/0->1 fails endpoint-locality at preselectedepsilon0.0001;0.00003
+localitypasses, so required adjacentpair fails. This is sharp endpoint derivative
+variation evidence, not established wrong autodiff; do not weaken/localitywaive
+or replace selectedscales after results. All2390 originalbindings and frozen
+identities preserved. Original7500 terminalfailure staysfailed.
+
+No new optimizer branch or continuation submitted. Saved Pro20k/50k and DB7500/10k
+unchanged. Exact source/ownsubmission/resources/LSF/proof hashes and failure scopes
+in eachrun terminal-verification-20261028.json; heavy combinedstatus is
+results/hpc/20261027-protenix-dbmol-recovery-01/status-20261028-01. Only stdlib
+byte/JSON/schema/proof validation locally; no numerical/model tests or settings
+changes. Existing source08/source10 and all historical failed evidence preserved.

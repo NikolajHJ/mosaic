@@ -35,3 +35,6 @@ paused. Current status: preparation, no allocated pass or new submission yet.
 
 
 Actual source20files manifest7082a76a2da1849cfdf377735ebd7ccbc77e298395c7f2f154f18904a1db6856, archive94126bytes SHA8be7014f643993ac91eb7894b10ab55706c7a8bcdac28187ae9b42129c178fe7. CPU29834738 actualDONE/LSF324passes; independent rawXML/22file audit passed. Owncallback29834739 submitted GPU29834817, PEND21:58:59UTC. No nativepass/optimizer. Exact CPU audit in cpu-verification.json.
+
+
+28 October 09:08 Paris: original same-job gpul40s LSF establishes GPU29834817 EXIT1, Wed Oct 28 04:58:17 2026 through Wed Oct 28 05:14:59 2026 CET; live scheduler record aged out. Separate reference graph X is on CPU while promoted model/context are on GPU; actual JIT rejects mixed devices. No optimizer continuation was submitted. Original settings/results and frozen identities preserved. Compact byte/LSF/schema audit: terminal-verification-20261028.json. No numerical work locally.

@@ -1,0 +1,241 @@
+{
+  "allocated_CPU_cases_previously_verified": 32,
+  "delivery": {
+    "bytes": 14553798,
+    "files_rehashed": 84,
+    "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261027-protenix-dbmol-recovery-01\\status-20261028-01\\stdout.json",
+    "scope": "Collected compact bytes, own submission/resources, original same-job LSF, assessments and preservation metadata; no local numerical calculation and no claim all native NPZ/input bytes downloaded.",
+    "sha256": "7d1e04cee6758acf6d6d80a628ab35254e6bb3cfa22a64e30b881679fb407818"
+  },
+  "details": {
+    "all_selected_reference_FD_and_production_reference_AD": "passed",
+    "blocker": "Bond E_upper row248 0->1 fails unchanged endpoint-locality guard at epsilon0.0001; epsilon0.00003 locality passes. Adjacent preselected pair therefore does not qualify.",
+    "failed_direction": {
+      "field": "E_upper",
+      "row": 248,
+      "selected_pair": [
+        0.0001,
+        3e-05
+      ],
+      "source": 0,
+      "target": 1
+    },
+    "frozen_unchanged": true,
+    "full_FP64_reference_dtype_audit": "passed",
+    "native_reference_result_does_not_erase_original_failures": true,
+    "original_atom_X_row1_contrast": "passed",
+    "protected_original_bindings_preserved": 2390
+  },
+  "job_id": "29834830",
+  "live_scheduler_state": "not_found_aged_out",
+  "lsf_ended_Paris": "Wed Oct 28 05:17:16 2026 CET",
+  "lsf_exit_code": 1,
+  "lsf_started_Paris": "Wed Oct 28 05:06:29 2026 CET",
+  "native_pass_established": false,
+  "native_state": "FAILED_PERSISTED",
+  "observed_utc": "2026-10-28T08:08:02.342237+00:00",
+  "optimization_settings_changed": false,
+  "optimizer_jobs_submitted": false,
+  "optimizer_updates_in_validation": 0,
+  "original_results_changed": false,
+  "proofs": [
+    {
+      "bytes": 1238,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-10/after-cpu/submission.json",
+      "sha256": "60f2b38f6f1b7651d55801db7b980fed10fb096b21cef29f2755690303a875de"
+    },
+    {
+      "bytes": 26960,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-10/bootstrap-complete.json",
+      "sha256": "9263d05367da3c5052ad90dc9e746f407322f88df7eb08da36fa7802489f0937"
+    },
+    {
+      "bytes": 1162,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-10/cpu/submission.json",
+      "sha256": "78f1258c1376e99942db898891640deee11d2e1eca9c42a2801eca4f13ef6977"
+    },
+    {
+      "bytes": 7737,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-10/cpu-certificate.json",
+      "sha256": "f75716628a1421b1324762105de5414dfe35cfb89d21802a1cebf4e44c44b0f9"
+    },
+    {
+      "bytes": 20682,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-10/gpu/complete-inventory-entry-01/chemistry-diagnostic-storage-entry.json",
+      "sha256": "90eb99e102ff8d4f587a14c71ef0ede4fcaf44e9aea481c1a2b79425b8179c93"
+    },
+    {
+      "bytes": 19569,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-10/gpu/complete-inventory-entry-01/continuation-storage-chem-diag-entry.json",
+      "sha256": "d8a7638c71525a98793a810ef87f64d81c637a64a2303ff55ae142ebe33f775a"
+    },
+    {
+      "bytes": 10892,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-10/gpu/complete-inventory-entry-01/current-chemistry-capacity-chem-diag-entry/assessment.json",
+      "sha256": "9533426c87e4e1a970b4b9941f9aad9341fcd4fd5aca6146ad0e9a67df4fc9f4"
+    },
+    {
+      "bytes": 7643,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-10/gpu/complete-inventory-entry-01/current-chemistry-capacity-chem-diag-entry/inherited-storage-entry/continuation-storage-precision.json",
+      "sha256": "2f616c5fdb857201eaf4dbff39eb0f2da2c7e05548d2c371b626ebd8e8987041"
+    },
+    {
+      "bytes": 8811,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-10/gpu/complete-inventory-entry-01/current-chemistry-capacity-chem-diag-entry/inherited-storage-entry/precision-storage-entry.json",
+      "sha256": "0d9643c61652e6c93ec3f6c25d47a9bf5f9c01bf90c1679815c7fd7e2295c942"
+    },
+    {
+      "bytes": 6876,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-10/gpu/complete-inventory-entry-01/current-chemistry-capacity-chem-diag-entry/inherited-storage-entry/selected-storage-precision/gate.json",
+      "sha256": "5c0099c3e87956fb6c9d80c59aa661954079ac2bc7fc99b56551bb10650c019d"
+    },
+    {
+      "bytes": 1465,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-10/gpu/complete-inventory-entry-01/current-chemistry-capacity-chem-diag-entry/invocation.json",
+      "sha256": "19b749eb4699edc6529847ceb6cf5835b8251792e337401106ed66f10eaf2f01"
+    },
+    {
+      "bytes": 10074,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-10/gpu/complete-inventory-entry-01/current-chemistry-capacity-chem-diag-entry/production-storage-entry.json",
+      "sha256": "cf21a66660553ac9a34799ae17eabf5a46d44777026760f2a8f8dd4f586e77d3"
+    },
+    {
+      "bytes": 21794,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-10/gpu/complete-inventory-entry-01/qualification-storage-entry.json",
+      "sha256": "cc0d963b757a53e87e0f1a4bb89e68db0274baf1bb9d2b36cd48f6856322b7b5"
+    },
+    {
+      "bytes": 6882,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-10/gpu/complete-inventory-entry-01/selected-storage-chem-diag-entry/gate.json",
+      "sha256": "ee7c63c0f9b01eadebec289483835d8b6b915c675a0d01a96377f31f28269a7e"
+    },
+    {
+      "bytes": 22894,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-10/gpu/complete-storage-entry.json",
+      "sha256": "ca10591ab162a7bd93698ee4c27073b0d92c5a36b9be61e468a13999f533a183"
+    },
+    {
+      "bytes": 305,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-10/gpu/payload/native/assessment.json",
+      "sha256": "fbbd818218c6881f72be1e26c30e18fe6bb8e3d65b8dd230a2f7f33379bf6db9"
+    },
+    {
+      "bytes": 1249704,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-10/gpu/payload/native/native-admission.json",
+      "sha256": "7c5c86f74d8014c075318a6b690512fea432abf9de2ba3fb7e8272a78fa784fc"
+    },
+    {
+      "bytes": 634557,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-10/gpu/payload/native/native-selection.json",
+      "sha256": "7f0707dfcb62bd9aa3e828da1628b6770e1c003bc6bd5b10b5d409cf98de6d13"
+    },
+    {
+      "bytes": 7269,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-10/gpu/payload/native/oracle-points.json",
+      "sha256": "09f3ee57073fed62cbc68eee5cdd4f4b9b29cfbad24cb6f81ec491df8e52ba83"
+    },
+    {
+      "bytes": 2459306,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-10/gpu/payload/native/preservation.json",
+      "sha256": "dd3a5731c956258abf7bf94a07a3bde7d46d1d274b30b3226fdf541cb70a91e6"
+    },
+    {
+      "bytes": 839,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-10/gpu/payload/native/production-frozen-after.json",
+      "sha256": "7f160df56421a71d5429af117ff98034f5528716214cced0f80992c811396ab1"
+    },
+    {
+      "bytes": 2874,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-10/gpu/payload/native/production-identity.json",
+      "sha256": "96730cb4233c837ddcda6432734a6c608661f27439c34f10ee6b60fa599c2d97"
+    },
+    {
+      "bytes": 241,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-10/gpu/payload/native/production.log",
+      "sha256": "473f5a6a323b23aa22046bc4458d50eb18ecf9b68c4a0cf5b305f215628eb30b"
+    },
+    {
+      "bytes": 1199500,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-10/gpu/payload/native/reference-identity.json",
+      "sha256": "3ba936b272d28b532a7577b955f99592121de5c3e1dcacd4076c790a38d997f7"
+    },
+    {
+      "bytes": 3415,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-10/gpu/payload/native/reference-operation-audit.json",
+      "sha256": "9b24a2f89865080801e7368190dbd83a421761f07e7cf7b53abfc4f6efb32774"
+    },
+    {
+      "bytes": 241,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-10/gpu/payload/native/reference.log",
+      "sha256": "473f5a6a323b23aa22046bc4458d50eb18ecf9b68c4a0cf5b305f215628eb30b"
+    },
+    {
+      "bytes": 1250073,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-10/gpu/payload/native/reversed-admission.json",
+      "sha256": "1b7946920bd92e2c5a12b5d3033b22aeb54a8ac643254c6e052ccf9ae6b376bb"
+    },
+    {
+      "bytes": 634556,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-10/gpu/payload/native/reversed-selection.json",
+      "sha256": "74997ed583cea8c70215cbdabfe3c3df6b5d08c816e6177dc37f9f7ebe9a6795"
+    },
+    {
+      "bytes": 1250076,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-10/gpu/payload/native/scaled-admission.json",
+      "sha256": "a2fac0fb90829c081478526512d31aee4d08580b7cce09d7f5440047934ec5c9"
+    },
+    {
+      "bytes": 634557,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-10/gpu/payload/native/scaled-selection.json",
+      "sha256": "01bfeee3341972c4759a06b909af792e9f864bc2843139a08e0ab920138bc061"
+    },
+    {
+      "bytes": 114430,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-10/gpu/payload/native/zero-admission.json",
+      "sha256": "e5fcda414bf5b88e300f23e399e7dd82ee33953bf80e21aa6442544108012109"
+    },
+    {
+      "bytes": 593,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-10/gpu/payload/native-command.json",
+      "sha256": "df1c9dd2a22311a763c8efa39e3801a84bc5e81ea4fc4a640894d155ab2332bc"
+    },
+    {
+      "bytes": 1352,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-10/gpu/payload/native.log",
+      "sha256": "9b7bf121a63f10d537e2db679b10d5fb8b4b0aa838603f39933f7fa1e771bf48"
+    },
+    {
+      "bytes": 22950,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-10/gpu/recovery-capacity-entry.json",
+      "sha256": "ef0aaf42d4657951b70e4d1b0bb9fee7acaebf9463a8cdf927d00ab578fd5443"
+    },
+    {
+      "bytes": 1886,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-10/gpu/stderr.29834830.log",
+      "sha256": "1038e27e63cd60ead8357bfb5660953c9a223deb7c74477001b2e0176f35c54a"
+    },
+    {
+      "bytes": 2093,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-10/gpu/stdout.29834830.log",
+      "sha256": "113bc47becd5977d556efdcc24461b73807d03543fd3c137bcc745e0600d5ef2"
+    },
+    {
+      "bytes": 1092,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-10/gpu/submission-started.json",
+      "sha256": "28ecaa50fc5852276283f970d9ed5b85282e09717925a72dea9e1312c234ee8b"
+    },
+    {
+      "bytes": 1218,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-10/gpu/submission.json",
+      "sha256": "12015ccc7b00d8baae1e527ca3e2298dd0a138c1d50e4745d108ab33f064b477"
+    },
+    {
+      "bytes": 72,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-10/jobs.json",
+      "sha256": "0fa93124e4afed4a3212be122b8e2c2434438579885e36e0f5cf1d01cc2cf7d0"
+    }
+  ],
+  "source_files": 13,
+  "source_manifest_sha256": "6c989d82e3d05a1b287c5092d7591f1a14c0a17739ece5885f5ac6a165d66259",
+  "status": "verified_failed_native_validation_originals_preserved"
+}

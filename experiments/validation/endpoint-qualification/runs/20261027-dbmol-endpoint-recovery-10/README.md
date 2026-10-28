@@ -47,3 +47,6 @@ paused. Current status: preparation only, no allocated pass/new job yet.
 
 
 Source13files manifest6c989d82e3d05a1b287c5092d7591f1a14c0a17739ece5885f5ac6a165d66259, archive117993bytes SHA5d47bc3e0d2e378c61f98cd66f3d68dde903cfa6f1f37ec64a72c4204b69391e. CPU29834821/callback29834822 actualDONE/LSF32passes and bothactualstartup commands passed. Independent74file/XML/source/resource/storage/certificate audit in delivery-verification.json. GPU29834830 PEND22:08:15UTC; no nativepass or optimizer. All2390originalproofbindings preserved.
+
+
+28 October 09:08 Paris: original same-job gpul40s LSF establishes GPU29834830 EXIT1, Wed Oct 28 05:06:29 2026 through Wed Oct 28 05:17:16 2026 CET; live scheduler record aged out. Bond E_upper row248 0->1 fails unchanged endpoint-locality guard at epsilon0.0001; epsilon0.00003 locality passes. Adjacent preselected pair therefore does not qualify. No optimizer continuation was submitted. Original settings/results and frozen identities preserved. Compact byte/LSF/schema audit: terminal-verification-20261028.json. No numerical work locally.

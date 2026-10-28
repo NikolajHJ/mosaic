@@ -22,7 +22,8 @@
   "monitor_remains_paused": true,
   "native_job": "29834817",
   "native_pass_established": false,
-  "observed_utc": "2026-10-27T22:08:15.739813+00:00",
+  "native_state": "FAILED_PERSISTED",
+  "observed_utc": "2026-10-28T08:08:02.342237+00:00",
   "optimization_settings_changed": false,
   "optimizer_jobs_submitted": false,
   "original_results_changed": false,
@@ -43,5 +44,17 @@
     "plan_sha256": "41523b29f94e6d8f65b9bc4ee76a0be32980dba15f2368f1f493db61a4e62cc5",
     "status": "prepared_not_validated"
   },
-  "status": "CPU324_verified_GPU29834817_pending"
+  "status": "native_GPU_failed_originals_preserved_no_optimizer",
+  "terminal_details": {
+    "blocker": "Separate reference graph X is on CPU while promoted model/context are on GPU; actual JIT rejects mixed devices.",
+    "original_cast_correction_dtype_audit_passed": true,
+    "production_FP32_measurement": "passed",
+    "protected_inputs_and_frozen_state_preserved": true,
+    "reference_full_FP64_dtype_audit": "passed",
+    "reference_gradient_comparison": "not_reached"
+  },
+  "terminal_verification": {
+    "path": "terminal-verification-20261028.json",
+    "sha256": "a5196c4f9d6cedb539b3c6266f12b8f45de92a1a376a1b9156d3cebacdf42263"
+  }
 }

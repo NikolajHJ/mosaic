@@ -4,7 +4,8 @@
   "monitor_remains_paused": true,
   "native_job": "29834830",
   "native_pass_established": false,
-  "observed_utc": "2026-10-27T22:08:15.029471+00:00",
+  "native_state": "FAILED_PERSISTED",
+  "observed_utc": "2026-10-28T08:08:02.342237+00:00",
   "optimization_settings_changed": false,
   "optimizer_jobs_submitted": false,
   "original_results_changed": false,
@@ -21,7 +22,30 @@
     "plan_sha256": "72370c6fd6ad0bd13898a69a6c14e7d2f8a8d9457e9202a3824ff73c1ecd4a49",
     "status": "prepared_not_validated"
   },
-  "status": "CPU32_and_callbacks_verified_GPU29834830_pending",
+  "status": "native_GPU_failed_originals_preserved_no_optimizer",
+  "terminal_details": {
+    "all_selected_reference_FD_and_production_reference_AD": "passed",
+    "blocker": "Bond E_upper row248 0->1 fails unchanged endpoint-locality guard at epsilon0.0001; epsilon0.00003 locality passes. Adjacent preselected pair therefore does not qualify.",
+    "failed_direction": {
+      "field": "E_upper",
+      "row": 248,
+      "selected_pair": [
+        0.0001,
+        3e-05
+      ],
+      "source": 0,
+      "target": 1
+    },
+    "frozen_unchanged": true,
+    "full_FP64_reference_dtype_audit": "passed",
+    "native_reference_result_does_not_erase_original_failures": true,
+    "original_atom_X_row1_contrast": "passed",
+    "protected_original_bindings_preserved": 2390
+  },
+  "terminal_verification": {
+    "path": "terminal-verification-20261028.json",
+    "sha256": "cd8ab5b2d6e1266d9def6a2f58d22711ae8baff6cd8626956301c52444f4327d"
+  },
   "verification": {
     "available_bytes": 56898330134,
     "cases": 32,
