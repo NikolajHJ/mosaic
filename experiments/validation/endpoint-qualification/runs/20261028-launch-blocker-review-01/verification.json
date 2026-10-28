@@ -1,0 +1,89 @@
+{
+  "CPU_startup_coverage_did_not_test_two_real_CUDA_clients": true,
+  "H100_and_inspected_special_queues_user_not_listed": true,
+  "current_code_matches_failed_sealed_source": {
+    "experiments\\validation\\endpoint-qualification\\scripts\\precision_continuation_driver.py": "82bdfe0d1d32f7abaa91abdeffdcce94c100f66efeaa916d3006fe7d67f1112c",
+    "experiments\\validation\\endpoint-qualification\\scripts\\precision_continuation_hooks.py": "85a75cbdc9fd81a6f798eac84ddf99c318cc11f331056249f5605af45976416f",
+    "experiments\\validation\\endpoint-qualification\\scripts\\precision_continuation_ops.py": "e841c1451cb12f30bcba007bd95af36e1f32b9073c743dddfea449f92e4bb777",
+    "experiments\\validation\\endpoint-qualification\\scripts\\protenix_reference_worker.py": "6f7e54f91d3f47703c9edc70201edecd50ba12210cb4ae202c4970e8b7405853"
+  },
+  "evidence": {
+    "results\\hpc\\20261028-launch-blocker-review-01\\alternate-queues\\observation.json": {
+      "bytes": 11996,
+      "sha256": "2cc77ac808ba5d34a2b42bfcc50de778d1f084fd6c23c9ab996809abe05e9f18"
+    },
+    "results\\hpc\\20261028-launch-blocker-review-01\\joint-scope\\observation.json": {
+      "bytes": 1323,
+      "sha256": "864ca959931dec026df53ff2b816b1bcad3bf4853daf6a473acdd6ce61a5750a"
+    },
+    "results\\hpc\\20261028-launch-blocker-review-01\\observation.json": {
+      "bytes": 97380,
+      "sha256": "f7900b3c58fd0356c1b93081070cd1fba58cced78cbbc0e3369971bc6830af58"
+    }
+  },
+  "existing_jobs_settings_results_changed": false,
+  "fresh_source15_only_guard_passed": {
+    "available_bytes": 55100648609,
+    "file_reserve": 100000,
+    "required_bytes": 53811657553,
+    "reserve_bytes": 4294967296
+  },
+  "known_joint_scope_review_not_production_admission": {
+    "available_bytes": 54700257989,
+    "file_floor_preserved": 130000,
+    "new_report_entire_tree_stale_charge": 400081714,
+    "required_bytes": 58173733713,
+    "reserve_bytes_preserved": 4294967296,
+    "shortfall_bytes": 3473475724,
+    "teacher_full_cap_retained": 4294967296,
+    "teacher_release_allowance_retained": 67108864
+  },
+  "monitor_resumed": false,
+  "new_jobs_or_numerical_tests_or_cleanup": false,
+  "observed_utc": "2026-10-28T13:13:30.766452+00:00",
+  "official_multitask_GPU_reference": "https://www.hpc.dtu.dk/?page_id=5150",
+  "old_DB_admission_failed": {
+    "available_bytes": 53631344950,
+    "required_bytes": 53811657553
+  },
+  "ownership_diagnosis": "Strongly supported exclusive_process versus simultaneous second CUDA reference process; no independent allocated ownership probe yet",
+  "pending_jobs": {
+    "gpua10": 64,
+    "gpua100": 339,
+    "gpua40": 70,
+    "gpuh100": 21,
+    "gpul40s": 73,
+    "gpuv100": 400
+  },
+  "queue_swap_alone_not_validated_or_sufficient": true,
+  "sampled_GPU_capacity": {
+    "gpua10": {
+      "devices": 2,
+      "free": 0,
+      "nodes": 1
+    },
+    "gpua100": {
+      "devices": 20,
+      "free": 0,
+      "nodes": 10
+    },
+    "gpuh100": {
+      "devices": 8,
+      "free": 0,
+      "nodes": 4
+    },
+    "gpul40s": {
+      "devices": 12,
+      "free": 0,
+      "nodes": 6
+    },
+    "gpuv100": {
+      "devices": 38,
+      "free": 0,
+      "nodes": 16
+    }
+  },
+  "source15_manifest_sha256": "5448503965365f4db726d558df4ac91a41a7f711366b6ae47ae936993fd0c8bb",
+  "status": "passed_readonly_source_queue_capacity_metadata_review",
+  "unconditional_23h_segments_can_be_right_sized_only_after_measured_full_bound": true
+}

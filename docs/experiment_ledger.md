@@ -9158,3 +9158,50 @@ Separate untracked learned-prior implementation remains untouched.
 The reusable report selection now marks the two continuations blocked for future
 updates, with dated error details. This changes presentation annotations only;
 no published edition or scientific settings changed and no report was rendered.
+
+
+### 2026-10-28T13:08:16.997609+00:00 — Launch blockers and alternative GPU queues review prepared
+
+User requested queue/blocker/submission-script diagnosis. Read-only parallel
+reviews cover source15 Protenix CUDA ownership, GPU portability, and storage/
+chemistry prerequisites. Collect current scheduler/quota metadata and a fresh
+source-authenticated full-capacity receipt in a new audit directory only. No
+optimizer, model, numerical test, queue migration, job cancellation/resubmission,
+cleanup or monitor resumption authorized by this inspection. Saved runs and
+failed sources/proofs stay unchanged. Owner: experiments/validation/endpoint-qualification/runs/20261028-launch-blocker-review-01/.
+
+
+### 2026-10-28T13:19:15.173352+00:00 — Launch/queue blocker review completed; no resubmission
+
+Source15 Pro requests exclusive_process GPU ownership but starts a second live
+FP64 CUDA process; actual worker dies during CUDA initialization before reference
+model/derivatives. This strongly supports an integration ownership conflict, not
+a newly measured gradient mismatch. CPU startups disableCUDA and ToySession does
+not prove actual GPU co-residency; source09handoff already warned about it. DTU
+documents exclusive-jobMPS as a candidate; real allocated ownership/memory/native/
+replay/pilot gates are still required in a new immutable fix. No fix validated here.
+
+Source15 oldDB gate53811657553required/53631344950available failed; fresh exact
+guard passes53811657553/55100648609 after later offload. It omits the newer RUN
+DeFoG future and newreport cache. Conservative explicit joint review retains the
+4GiBteacher cap/64MiBrelease, baseline/reserve once,130kfiles, entire newreport
+400081714bytes plus review308906bytes charged:58173733713required/54700257989available,
+3473475724bytes short. This is a diagnostic known-scope review, not a new production
+admission or proof of physical quota exhaustion. Teacher log/control/stalequota
+visibility need explicit treatment; no running study was changed.
+
+At14:09Paris actualPJOBS:L40S73/A100339/V100400/A1064/A4070/H10021; every
+sampled regularbatch GPU is busy. H100 and inspected empty department/course
+queues restrict access; this account is absent from expanded allowed lists.
+No reliable queueETA. Source15 hardpinsL40S; otherGPUclasses need exact native/
+replay/runtime/memory validation. Segmentrequests always23h; safe measured-bound
+walltimes could improvebackfill, but no successful source15 result yet supports
+shortening. Validation2h and10800s fullsegment entry+terminal references are not
+a demonstrated deadlinebug. Chemistry qualification has no optimizerbranch and
+still needscombinedchecks/bothpilots; plainBol20k terminalfailure blocks successor.
+
+Read-only parallelagent/source/SSHmetadata/official-doc review only. No job or
+GPUprobe/model/numericaltest/cleanup/sourcechange/monitorresumption. Findings:
+experiments/validation/endpoint-qualification/runs/20261028-launch-blocker-review-01/.
+Rawmetadata underresults/hpc/20261028-launch-blocker-review-01/. Priorfailures,
+settings and saved results preserved; onlydated findings/guidance were added.
