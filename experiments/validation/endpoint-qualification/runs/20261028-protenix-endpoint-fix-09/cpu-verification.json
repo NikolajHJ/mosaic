@@ -1,0 +1,90 @@
+{
+  "actual_fixture_commands": [
+    [
+      "/work3/s234818/mosaic/envs/protenix-tiny/bin/python",
+      "-m",
+      "pytest",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-release-09/source/tests",
+      "--rootdir",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-release-09/source",
+      "--import-mode=importlib",
+      "-o",
+      "addopts=",
+      "-o",
+      "cache_dir=/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/cpu/payload/cache",
+      "--basetemp",
+      "/tmp/mosaic-boltz.29838510.oiNRc3/protenix-precision-fixtures",
+      "-q",
+      "--junitxml=/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/cpu/payload/tests.xml"
+    ]
+  ],
+  "actual_startup_commands": [
+    [
+      "/work3/s234818/mosaic/envs/protenix-tiny/bin/python",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-release-09/source/scripts/protenix_precision_native.py",
+      "--plan",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-release-09/source/plan.json",
+      "--plan-sha256",
+      "7adf251df61bc8de66711769df417eed5d8ac9ca57d9686baf4011df9f7d09bf",
+      "--output",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/cpu/payload/native-startup",
+      "--startup-only"
+    ]
+  ],
+  "callback": {
+    "job_id": "29838511",
+    "live_scheduler_status": "DONE",
+    "lsf_sha256": "ad839834ecb195e0d39ecb82821f1b88ee26403281e204b7f4fa0266e4b938b5",
+    "persisted_scheduler_proofs": [],
+    "terminal_evidence": "actual_scheduler_DONE_and_LSF"
+  },
+  "cases": 336,
+  "certificate_proofs_verified": 9,
+  "cpu": {
+    "job_id": "29838510",
+    "live_scheduler_status": "DONE",
+    "lsf_sha256": "889e7630d591027722f4df3e2bf6da92496412ff91cde86a43a91f43f0cfb225",
+    "persisted_scheduler_proofs": [
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/cpu/terminal-query-000.json"
+    ],
+    "terminal_evidence": "actual_scheduler_DONE_and_LSF"
+  },
+  "cpu_certificate_sha256": "338b236d46b7510955195c022308a058913cbe97102823c55b23d7819f671ffd",
+  "files_byte_verified": 22,
+  "initial_submission_sha256": "efb76bcdf5c80bcdd0c0450448692fdbbfa43b1eb5f32b6e2411629b905d5fca",
+  "kind": "protenix",
+  "local_scientific_calculations": false,
+  "module_counts": {
+    "tests.test_current_capacity": 5,
+    "tests.test_protenix_precision_admission": 30,
+    "tests.test_protenix_precision_native": 93,
+    "tests.test_protenix_precision_ops": 76,
+    "tests.test_protenix_precision_reference": 106,
+    "tests.test_protenix_replay_context": 15,
+    "tests.test_recovery_capacity": 11
+  },
+  "native_pass_established": false,
+  "native_submission": {
+    "actual_resources_verified": true,
+    "job_id": "29838596",
+    "live_scheduler_status": "PEND",
+    "native_pass_established": false,
+    "optimizer_jobs_submitted": false
+  },
+  "observation_sha256": "8954526f23da98737fe1bb5b257b4f5828780c3b4704250482425afe9edc7d22",
+  "observed_utc": "2026-10-28T08:28:37.796440+00:00",
+  "optimizer_jobs_submitted": false,
+  "original_results_changed": false,
+  "plan_sha256": "7adf251df61bc8de66711769df417eed5d8ac9ca57d9686baf4011df9f7d09bf",
+  "source_manifest_sha256": "f2043af74b8fa9ff485a44b80fcf96454bf8585868859389828c37f0073a3664",
+  "source_members_verified": 20,
+  "status": "passed_independent_CPU_certificate_startup_storage_delivery_audit",
+  "storage": {
+    "available_bytes": 56768938968,
+    "file_reserve": 100000,
+    "required_bytes": 52469480273,
+    "reserve_bytes": 4294967296,
+    "scope": "Authenticated unchanged full-future guard; capacity observation, not reservation"
+  },
+  "storage_gate": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/after-cpu/dispatch-storage/precision-storage-dispatch.json"
+}

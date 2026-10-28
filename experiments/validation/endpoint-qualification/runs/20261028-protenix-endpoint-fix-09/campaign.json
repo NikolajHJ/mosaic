@@ -1,0 +1,75 @@
+{
+  "callback_job": "29838511",
+  "cpu_early_verification": {
+    "CPU_job": "29838510",
+    "callback_job": "29838511",
+    "cases": 336,
+    "files_rehashed": 16,
+    "module_counts": {
+      "tests.test_current_capacity": 5,
+      "tests.test_protenix_precision_admission": 30,
+      "tests.test_protenix_precision_native": 93,
+      "tests.test_protenix_precision_ops": 76,
+      "tests.test_protenix_precision_reference": 106,
+      "tests.test_protenix_replay_context": 15,
+      "tests.test_recovery_capacity": 11
+    },
+    "native_pass_established": false,
+    "no_local_numerical_work": true,
+    "observed_utc": "2026-10-28T08:24:04.361140+00:00",
+    "optimizer_jobs_submitted": false,
+    "status": "raw_CPU336_pass_verified_callback_certificate_pending"
+  },
+  "cpu_job": "29838510",
+  "cpu_verification": {
+    "cases": 336,
+    "certificate_sha256": "338b236d46b7510955195c022308a058913cbe97102823c55b23d7819f671ffd",
+    "path": "cpu-verification.json",
+    "sha256": "46c63795c623c101207529cd31c9c816295da65d40c6a00617cf4a01c1750554",
+    "status": "passed_independent_CPU_certificate_startup_storage_delivery_audit"
+  },
+  "full_continuation_admission_established": false,
+  "monitor_remains_paused": true,
+  "native_actual_ended_Paris": "Wed Oct 28 09:39:38 2026 CET",
+  "native_actual_started_Paris": "Wed Oct 28 09:32:01 2026 CET",
+  "native_job": "29838596",
+  "native_pass_established": true,
+  "native_qualification_scope": "Original frozen saved endpoint only; no optimization executed or original failed run recertified.",
+  "native_state": "DONE_same_job_LSF_authenticated",
+  "native_verification": {
+    "files_byte_verified": 73,
+    "path": "native-verification.json",
+    "saved_NPZ_files_byte_verified": 20,
+    "sha256": "93c72923ad521ee80af71fb77e4d0ec5b9996e33b9701152e4afdc2b6713464e",
+    "status": "verified_native_separate_FP64_qualification_pass_original_failures_preserved"
+  },
+  "observed_utc": "2026-10-28T08:43:57.547935+00:00",
+  "optimization_settings_changed": false,
+  "optimizer_jobs_submitted": false,
+  "original_results_changed": false,
+  "preparation": {
+    "archive_bytes": 101915,
+    "archive_sha256": "0a94e3edb989f34527268a39ece932a7ce13d2fc4b89fe8c18b78fda33151ba1",
+    "cpu_counts": {
+      "tests.test_current_capacity": 5,
+      "tests.test_protenix_precision_admission": 30,
+      "tests.test_protenix_precision_native": 93,
+      "tests.test_protenix_precision_ops": 76,
+      "tests.test_protenix_precision_reference": 106,
+      "tests.test_protenix_replay_context": 15,
+      "tests.test_recovery_capacity": 11
+    },
+    "files": 20,
+    "manifest_sha256": "f2043af74b8fa9ff485a44b80fcf96454bf8585868859389828c37f0073a3664",
+    "plan_sha256": "7adf251df61bc8de66711769df417eed5d8ac9ca57d9686baf4011df9f7d09bf",
+    "status": "prepared_not_validated"
+  },
+  "status": "native_fixed_endpoint_qualification_passed_integration_pending_no_optimizer",
+  "storage": {
+    "available_bytes": 56768938968,
+    "file_reserve": 100000,
+    "required_bytes": 52469480273,
+    "reserve_bytes": 4294967296,
+    "scope": "Authenticated unchanged full-future guard; capacity observation, not reservation"
+  }
+}

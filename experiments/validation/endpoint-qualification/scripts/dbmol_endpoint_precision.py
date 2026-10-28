@@ -1,6 +1,8 @@
 """Allocated independent affinity reference at the untouched saved7500 endpoint."""
 import argparse
+import ast
 from collections import Counter
+from copy import deepcopy
 import hashlib
 import json
 import os
@@ -9,10 +11,126 @@ import selectors
 import signal
 import subprocess
 import sys
+import types
 
 BASE = Path('/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01')
-ROOT = BASE / 'dbmol-endpoint-recovery-10'
+ROOT = BASE / 'dbmol-endpoint-recovery-13'
 CAP = 448 * 1024**2
+POLICY_SOURCE = BASE / 'protenix-endpoint-fix-release-07/source/scripts/protenix_precision_admission.py'
+POLICY_SOURCE_SHA256 = 'ae549f19a8af11453b0bb01154bde61cd63f4fa8ad1676759c7427e9049ddf68'
+POLICY_PARENT_VERSION = 'protenix-separate-precision-admission-v1'
+POLICY_PARENT_EPSILONS = (.003, .001, .0003, .0001, .00003)
+FINER_POLICY_VERSION = 'dbmol-separate-precision-finer-admission-v1'
+FINER_EPSILONS = (.003, .001, .0003, .0001, .00003, .00001, .000003, .000001)
+
+
+def finer_policy_spec():
+    """Closed, predeclared policy; this function performs no numerical work."""
+    return {'version': FINER_POLICY_VERSION, 'epsilons': list(FINER_EPSILONS),
+            'original_epsilons': [.01, .003, .001], 'relative_tolerance': .15,
+            'locality_tolerance': .15, 'required_adjacent_passes': 2,
+            'selection': 'finest_geometry_and_baseline_signal_pair_before_perturbed_callbacks',
+            'after_result_fallback': False, 'original_failed_outcomes_preserved': True,
+            'parent_policy_source_sha256': POLICY_SOURCE_SHA256,
+            'changed_engine_fields': ['VERSION', 'EPSILONS']}
+
+
+def _policy_json(value):
+    return json.dumps(value, sort_keys=True, separators=(',', ':'), allow_nan=False)
+
+
+def validate_finer_policy(plan):
+    require(_policy_json(plan.get('precision_policy')) == _policy_json(finer_policy_spec()),
+            'Closed predeclared finer precision policy differs')
+
+
+def _clone_policy_source(source, filename):
+    """Clone authenticated code, proving only the version and ladder changed.
+
+    The immutable parent source is never written or monkey-patched. All original
+    geometry, signal, FD, parity, locality, nonzero and frozen checks execute in
+    the new private namespace, including the original two-adjacent-pair selector.
+    """
+    require(hashlib.sha256(source).hexdigest() == POLICY_SOURCE_SHA256,
+            'Original precision policy source bytes differ')
+    original = ast.parse(source, filename=filename)
+    changed = deepcopy(original)
+    replacements = {'VERSION': FINER_POLICY_VERSION, 'EPSILONS': FINER_EPSILONS}
+    expected = {'VERSION': POLICY_PARENT_VERSION, 'EPSILONS': POLICY_PARENT_EPSILONS}
+    old = {}; counts = Counter()
+    for node in changed.body:
+        if isinstance(node, ast.Assign) and len(node.targets) == 1 and isinstance(node.targets[0], ast.Name):
+            name = node.targets[0].id
+            if name in replacements:
+                require(ast.literal_eval(node.value) == expected[name], 'Parent policy declaration differs: ' + name)
+                counts[name] += 1; old[name] = deepcopy(node.value)
+                node.value = ast.parse(repr(replacements[name]), mode='eval').body
+    require(counts == Counter({'VERSION': 1, 'EPSILONS': 1}), 'Unique policy declarations required')
+    restored = deepcopy(changed)
+    for node in restored.body:
+        if isinstance(node, ast.Assign) and len(node.targets) == 1 and isinstance(node.targets[0], ast.Name):
+            if node.targets[0].id in old: node.value = deepcopy(old[node.targets[0].id])
+    require(ast.dump(restored, include_attributes=False) == ast.dump(original, include_attributes=False),
+            'Policy transformation changed more than the declared version and epsilon tuple')
+    private = types.ModuleType('_dbmol_finer_precision_private')
+    private.__file__ = filename
+    exec(compile(ast.fix_missing_locations(changed), filename + ':finer-private', 'exec'), private.__dict__)
+    scalar = private._scalar
+    def observed_scalar(value, dtype):
+        # Identical DBMol transport adapter to the authenticated original wrapper:
+        # the real production scalar is FP64 while production raw gradients stay FP32.
+        return scalar(value, 'float64' if dtype == 'float32' else dtype)
+    private._scalar = observed_scalar
+    derivation = {'status': 'authenticated_two_assignment_AST_clone',
+                  'parent_path': filename, 'parent_sha256': POLICY_SOURCE_SHA256,
+                  'changed_assignments': ['VERSION', 'EPSILONS'], 'AST_reversal_exact': True,
+                  'private_AST_sha256': hashlib.sha256(ast.dump(changed, include_attributes=False).encode()).hexdigest(),
+                  'production_scalar_transport': 'original_FP64_scalar_FP32_raw_gradients',
+                  'parent_source_modified': False, 'spec': finer_policy_spec()}
+    return private, derivation
+
+
+class FinerPolicy:
+    """Guard the predeclared private policy before and after each evaluation."""
+    def __init__(self, plan, original):
+        validate_finer_policy(plan)
+        require(Path(original.__file__) == POLICY_SOURCE and not POLICY_SOURCE.is_symlink(),
+                'Authenticated original precision policy location differs')
+        require(original.VERSION == POLICY_PARENT_VERSION and original.EPSILONS == POLICY_PARENT_EPSILONS,
+                'Original policy namespace already mutated')
+        self._plan = plan; self._plan_policy = _policy_json(plan['precision_policy'])
+        self._original = original
+        self._module, self.derivation = _clone_policy_source(POLICY_SOURCE.read_bytes(), str(POLICY_SOURCE))
+        self._constants = {name: deepcopy(value) for name, value in vars(self._module).items()
+                           if name.isupper() or name in ('_FIELDS', '_PRECISION')}
+        self._functions = {name: (value, value.__code__) for name, value in vars(self._module).items()
+                           if isinstance(value, types.FunctionType)}
+
+    def _guard(self):
+        validate_finer_policy(self._plan)
+        require(_policy_json(self._plan['precision_policy']) == self._plan_policy,
+                'Finer policy plan mutated after construction')
+        require(self._original.VERSION == POLICY_PARENT_VERSION
+                and self._original.EPSILONS == POLICY_PARENT_EPSILONS,
+                'Original policy namespace changed')
+        require(hashlib.sha256(POLICY_SOURCE.read_bytes()).hexdigest() == POLICY_SOURCE_SHA256,
+                'Original policy file changed during evaluation')
+        for name, value in self._constants.items():
+            current = getattr(self._module, name)
+            require(type(current) is type(value) and _policy_json(current) == _policy_json(value),
+                    'Private finer policy constant mutated: ' + name)
+        for name, (function, code) in self._functions.items():
+            require(getattr(self._module, name) is function and function.__code__ is code,
+                    'Private finer policy function mutated: ' + name)
+
+    def evaluate(self, *args, **kwargs):
+        self._guard()
+        result = self._module.evaluate(*args, **kwargs)
+        self._guard()
+        require(result['version'] == FINER_POLICY_VERSION
+                and result['policy']['epsilons'] == list(FINER_EPSILONS),
+                'Finer evaluation receipt identifies a different policy')
+        return result
 
 
 def require(value, message):
@@ -31,9 +149,10 @@ def write(path, value):
 
 
 def verify(plan, output, startup=False):
-    require(plan.get('version') == 'dbmol-separate-affinity-reference-v1'
+    require(plan.get('version') == 'dbmol-separate-affinity-reference-finer-v1'
             and plan.get('root') == str(ROOT) and plan.get('optimizer_updates') == 0
             and plan.get('original_results_changed') is False, 'Closed recovery plan identity differs')
+    validate_finer_policy(plan)
     expected = ROOT / ('cpu/payload/startup' if startup else 'gpu/payload/native')
     require(Path(output) == expected, 'Output escapes new owned scope')
     for row in plan['protected_inputs']: require(binding(row['path']) == row, 'Protected input changed')
@@ -115,7 +234,8 @@ def run(plan, output):
         production.close(); production = None
         ref = ReferenceClient(plan['reference_argv'], output / 'reference.log')
         write(output / 'reference-identity.json', ref.identity)
-        policy = reference.original_metadata(); cache = {}; cursor = Counter()
+        policy = FinerPolicy(plan, reference.original_metadata()); cache = {}; cursor = Counter()
+        write(output / 'precision-policy-derivation.json', policy.derivation)
         def native(values64):
             require(sum(p.stat().st_size for p in output.rglob('*') if p.is_file()) < CAP - 8 * 1024**2,
                     'Reference persistent output cap exhausted')

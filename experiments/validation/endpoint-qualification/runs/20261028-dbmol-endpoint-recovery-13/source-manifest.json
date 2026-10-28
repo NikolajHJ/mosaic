@@ -1,0 +1,125 @@
+{
+  "cpu_counts": {
+    "tests.test_dbmol_endpoint_precision": 36,
+    "tests.test_dbmol_recovery_ops": 32,
+    "tests.test_dbmol_reference": 17,
+    "tests.test_recovery_capacity": 11
+  },
+  "files": {
+    "README.md": "bb3820527252a79b2b46ca624d787fa5f6ae4beb1e9bde107adeddc662ff6fd1",
+    "plan.json": "a1ebbdaa8c15cf31a8a28c062151b7328b39639dc1c565fb0777945b3d96957d",
+    "protocol.md": "432d9dcceb56f257ad08aee853f1a122e977284277416c110388741cca15858d",
+    "scripts/README.md": "f043c514a9a2d9f0070b70ebe54507b1314798ab7ada52dc0a66e406b2290c71",
+    "scripts/dbmol_endpoint_precision.py": "58d1ccaff14007171fe8a226b0b01a9ce83ec9073f036355f8eb75adb7f379b7",
+    "scripts/dbmol_recovery_ops.py": "02f0e93fd64207d14722524c262e22f25719900ea1af34213e1f69602b9986f4",
+    "scripts/dbmol_recovery_stage.lsf": "e8ba972a49bdb7ba691ebafcaa00a8de846ba5ee397b8d367a947df1942f1b61",
+    "scripts/dbmol_reference.py": "107ecf733ca69a6ff3ed68a9b978d3a98445065681b4b6179e1a1d2b1ac09d3c",
+    "scripts/recovery_capacity.py": "b702a7755c56859db26a3beff58277ce57e3f39a7ca14ffc9175a08bdc90b61c",
+    "tests/README.md": "5737357a8a649fe6ce8338400604af3717bfb125c55aed6b83317332733fdfee",
+    "tests/test_dbmol_endpoint_precision.py": "4bb251d7725ec2e95d6551de68af420b72eb0d8362676d6356a1e7ffdf8b0105",
+    "tests/test_dbmol_recovery_ops.py": "434ede25d47cf1cbe4dfe338f294218ec759951040abd71e5f975eae3d655ddb",
+    "tests/test_dbmol_reference.py": "e9420a52caef8d7d21e70d3824743aeed0a81570360c89341618485447337904",
+    "tests/test_recovery_capacity.py": "7b30c0fdb1426a399ae27a61fb695deec29e9277d35bed69656ec11d0f7503e2"
+  },
+  "optimization_settings_changed": false,
+  "optimizer_updates": 0,
+  "original_results_changed": false,
+  "parent_sources": [
+    {
+      "files": 643,
+      "manifest_sha256": "da9db6821d26b884ca1749303fc8e0b0095bd9ee7cbd1b427cdcf1b22eec6562",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source"
+    },
+    {
+      "files": 635,
+      "manifest_sha256": "c214bccf2c94ac6829996bc0ca7d6415d3c19549be4fe7f874cba2b433901cc6",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-release-03/source"
+    },
+    {
+      "files": 657,
+      "manifest_sha256": "600ecc3b33135141a57c029a28a2c72f29e788e3ecf5cb2dac1761146d1d6eed",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-release-02/source"
+    },
+    {
+      "files": 12,
+      "manifest_sha256": "704fab033d97342a14dc12b58dc32df44874232c5c30aad47c4d02041a502aab",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-startup-release-03/source"
+    },
+    {
+      "files": 12,
+      "manifest_sha256": "f3be7c2f85d495ae042ee8092eecb5274c6298cc8f12907a7ba9ba6d8fb740db",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-release-02/source"
+    },
+    {
+      "files": 14,
+      "manifest_sha256": "08e53ba66312b06e5f1c2836a3863479ceb85e11e9364c23026079301d2cd713",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-release-01/source"
+    },
+    {
+      "files": 14,
+      "manifest_sha256": "88372f92b6349e6c34c542fb84fb39482c4c340568431d1499ebc166a1e1e7fa",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-release-02/source"
+    },
+    {
+      "files": 14,
+      "manifest_sha256": "c73796b041d8432ef1634e8c56920006170a094d3bdc74867c08f3b5415126d7",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-release-03/source"
+    },
+    {
+      "files": 16,
+      "manifest_sha256": "1519d5761069f73fb6659bc1740cb04c155a04bc3218f143a3f28a73e65a1f69",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-release-06/source"
+    },
+    {
+      "files": 17,
+      "manifest_sha256": "01e2de2a3413bd903590dd331c5cedf6b756e856a83df2b73ad65e02b9f9fceb",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-release-04/source"
+    },
+    {
+      "files": 5,
+      "manifest_sha256": "bbe1404ac893e6cfeef11d6905978a219941dfec3d17024d39ae51348f6421a5",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/saved-gradient-forensics-release-01/source"
+    },
+    {
+      "files": 19,
+      "manifest_sha256": "26c6f0390125c9108f9777e83387b56aea2cc932507c52f039d56aa6a056c7b1",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-release-07/source"
+    },
+    {
+      "files": 19,
+      "manifest_sha256": "3ba7a6b30e6671076fee73910a06a622757734a43d30a589b9a89dd2b92c6877",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-release-08/source"
+    },
+    {
+      "files": 18,
+      "manifest_sha256": "63db0a002c8aca2a282d50f9e7227d57b69ac6820b8ae0e06287ec95770dd8a3",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-release-07/source"
+    },
+    {
+      "files": 20,
+      "manifest_sha256": "7082a76a2da1849cfdf377735ebd7ccbc77e298395c7f2f154f18904a1db6856",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-release-08/source"
+    },
+    {
+      "files": 12,
+      "manifest_sha256": "5d8f4ef0f8bb820e76d2e92442492f604393e79b58725fd01f9bb042b3114863",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-native-qualification-release-04/source"
+    },
+    {
+      "files": 13,
+      "manifest_sha256": "6c989d82e3d05a1b287c5092d7591f1a14c0a17739ece5885f5ac6a165d66259",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-release-10/source"
+    },
+    {
+      "files": 13,
+      "manifest_sha256": "3dc3ba4a8e860379275c615db87000ccbc45ddf2e6796cc2b187e6a234a2c898",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-release-11/source"
+    },
+    {
+      "files": 14,
+      "manifest_sha256": "2a15a6a550ffe4b4c07d4088d28f13a7f16ef628e56cd569491de31445d92d59",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-release-12/source"
+    }
+  ],
+  "version": "dbmol-separate-affinity-reference-finer-source-v1"
+}

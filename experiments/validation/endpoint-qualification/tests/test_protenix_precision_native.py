@@ -274,6 +274,102 @@ def test_actual_nested_cpu_jaxpr_accepts_float64_and_rejects_downcast():
     with pytest.raises(ValueError, match="non-FP64"): n.audit_jaxpr(narrow)
 
 
+def reference_fields():
+    import numpy as np
+    return {"X": np.asarray([[.25, .5, .25], [.5, .25, .25]], dtype=np.float32),
+            "E_upper": np.full((4, 2), .5, dtype=np.float32)}
+
+
+def test_reference_graph_fields_share_real_device_and_survive_actual_jitted_AD():
+    # CPU-only readiness for the actual placement helper; full model/GPU proof
+    # remains mandatory in the later native allocation.
+    import jax
+    import jax.numpy as jnp
+    import numpy as np
+    assert jax.config.jax_enable_x64
+    device = jax.devices("cpu")[0]
+    values = reference_fields()
+    original = {field: value.tobytes() for field, value in values.items()}
+    graph, receipt = n.reference_graph_arrays(values, device)
+    value, gradient = jax.jit(jax.value_and_grad(
+        lambda fields: jnp.sum(jnp.sin(fields["X"])) + jnp.sum(fields["E_upper"] ** 2)))(graph)
+    assert value.dtype == np.float64 and receipt["device"] == n.reference_device_identity(device)
+    for field in values:
+        assert graph[field].devices() == {device} and gradient[field].devices() == {device}
+        assert graph[field].dtype == gradient[field].dtype == np.float64
+        assert np.asarray(graph[field]).astype(np.float32).tobytes() == original[field]
+        assert values[field].tobytes() == original[field]
+        assert receipt["fields"][field]["transfer_bits_unchanged"]
+    assert receipt["production_execution_changed"] is False
+
+
+@pytest.mark.parametrize("field", ["X", "E_upper"])
+def test_reference_graph_rejects_transfer_that_changes_probability_bits(monkeypatch, field):
+    import jax
+    values = reference_fields()
+    original = jax.device_put
+    def corrupted(value, device):
+        result = original(value, device)
+        return result.at[0, 0].add(.001) if result.shape == values[field].shape else result
+    monkeypatch.setattr(jax, "device_put", corrupted)
+    with pytest.raises(ValueError, match="changed probability bits"):
+        n.reference_graph_arrays(values, jax.devices("cpu")[0])
+
+
+@pytest.mark.parametrize("field", ["X", "E_upper"])
+def test_reference_graph_rejects_transfer_that_narrows_precision(monkeypatch, field):
+    import jax
+    import jax.numpy as jnp
+    values = reference_fields()
+    original = jax.device_put
+    def narrowed(value, device):
+        result = original(value, device)
+        return result.astype(jnp.float32) if result.shape == values[field].shape else result
+    monkeypatch.setattr(jax, "device_put", narrowed)
+    with pytest.raises(ValueError, match="changed precision or shape"):
+        n.reference_graph_arrays(values, jax.devices("cpu")[0])
+
+
+@pytest.mark.parametrize("devices", [(), ("CPU0",), ("GPU1",), ("GPU0", "GPU1")])
+def test_reference_single_device_contract_rejects_missing_wrong_or_sharded_device(devices):
+    value = SimpleNamespace(devices=lambda: devices)
+    with pytest.raises(ValueError, match="declared single execution device"):
+        n.require_reference_device(value, "GPU0")
+
+
+def test_reference_tree_placement_preserves_static_and_integer_leaves():
+    import jax
+    import numpy as np
+    tree = {"weights": np.asarray([.25, .5], dtype=np.float64),
+            "integer_ids": np.asarray([1, 2], dtype=np.int32), "label": "unchanged", "count": 2}
+    before = {name: tree[name].tobytes() for name in ("weights", "integer_ids")}
+    device = jax.devices("cpu")[0]
+    placed, receipt = n.place_reference_tree(tree, device)
+    for name in before:
+        assert np.asarray(placed[name]).tobytes() == before[name] == tree[name].tobytes()
+        assert np.asarray(placed[name]).dtype == tree[name].dtype
+        assert placed[name].devices() == {device}
+    assert placed["label"] == tree["label"] and placed["count"] == tree["count"]
+    assert receipt["arrays"] == 2 and receipt["status"] == "passed_single_device_placement"
+
+
+def test_actual_reference_places_all_inputs_before_native_call_and_production_stays_separate():
+    tree = ast.parse(PATH.read_bytes())
+    reference = next(node for node in tree.body if isinstance(node, ast.FunctionDef) and node.name == "_reference")
+    production = next(node for node in tree.body if isinstance(node, ast.FunctionDef) and node.name == "_production")
+    calls = [node for node in ast.walk(reference) if isinstance(node, ast.Call)]
+    placements = [node for node in calls if ast.unparse(node.func) == "place_reference_tree"]
+    build_loss = next(node for node in calls if ast.unparse(node.func) == "model.build_loss")
+    assert len(placements) == 2 and all(node.lineno < build_loss.lineno for node in placements)
+    assert "reference_graph_arrays(values, gpu)" in ast.unparse(reference)
+    assert not any(ast.unparse(node.func) == "jax.devices" and node.args
+                   and isinstance(node.args[0], ast.Constant) and node.args[0].value == "cpu"
+                   for node in calls)
+    assert not any(isinstance(node, ast.Name) and node.id in
+                   {"place_reference_tree", "reference_graph_arrays", "require_reference_device"}
+                   for node in ast.walk(production))
+
+
 def test_preservation_rehashes_exact_originals_and_detects_changed_bytes(owned):
     root, _, _, _, _ = owned
     original = root / "original.json"

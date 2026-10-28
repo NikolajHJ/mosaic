@@ -16,14 +16,16 @@ import time
 import xml.etree.ElementTree as ET
 
 BASE = Path('/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01')
-ROOT = BASE / 'dbmol-endpoint-recovery-10'
-SOURCE = BASE / 'dbmol-endpoint-recovery-release-10/source'
+ROOT = BASE / 'dbmol-endpoint-recovery-13'
+SOURCE = BASE / 'dbmol-endpoint-recovery-release-13/source'
 PARENT = BASE / 'protenix-endpoint-fix-release-08/source'
 PARENT_PIN = '7082a76a2da1849cfdf377735ebd7ccbc77e298395c7f2f154f18904a1db6856'
 PYTHON = '/work3/s234818/mosaic/envs/protenix-tiny/bin/python'
 TORCH = '/work3/s234818/latentmol/env/boltz311/bin/python'
-COUNTS = {'tests.test_dbmol_reference': 12, 'tests.test_dbmol_endpoint_precision': 10,
-          'tests.test_recovery_capacity': 10}
+COUNTS = {'tests.test_dbmol_reference': 17, 'tests.test_dbmol_endpoint_precision': 36,
+          'tests.test_recovery_capacity': 11, 'tests.test_dbmol_recovery_ops': 32}
+HISTORICAL_EMPTY_LOCK = str(BASE / 'dbmol-endpoint-recovery-10/jobs.lock')
+EMPTY_SHA256 = 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
 
 
 def helpers():
@@ -35,15 +37,37 @@ def helpers():
     return m
 
 
+def check_preserved_binding(op, row):
+    """Adopt the one authenticated historical empty lock without a broad bypass.
+
+    All positive proofs retain the inherited validator. The sole zero-byte
+    exception is the already completed source10 coordinator's ordinary lock;
+    its exact original metadata and current absolute regular-file binding must
+    match. Nothing creates, empties, follows links to, or rewrites that file.
+    """
+    if isinstance(row, dict) and row.get('bytes') == 0:
+        op.require(set(row) == {'path', 'bytes', 'sha256'}
+                   and row['path'] == HISTORICAL_EMPTY_LOCK
+                   and type(row['bytes']) is int and row['bytes'] == 0
+                   and row['sha256'] == EMPTY_SHA256,
+                   'Only the exact authenticated historical empty jobs.lock is admissible')
+        op.require(op.binding(row['path']) == row, 'Historical empty lock is changed, linked or nonregular')
+        return row
+    return op.check_binding(row)
+
+
 def external(op, pin):
     m = op.verify(SOURCE, pin); plan = op.read(SOURCE / 'plan.json')
-    op.require(plan['version'] == 'dbmol-separate-affinity-reference-v1' and plan['root'] == str(ROOT)
+    op.require(plan['version'] == 'dbmol-separate-affinity-reference-finer-v1' and plan['root'] == str(ROOT)
                and plan['original_results_changed'] is False and plan['optimizer_updates'] == 0,
                'New DBMol reference scope differs')
+    from dbmol_endpoint_precision import finer_policy_spec
+    op.require(m.get('version') == 'dbmol-separate-affinity-reference-finer-source-v1'
+               and plan.get('precision_policy') == finer_policy_spec(), 'Authorized fixed finer protocol differs')
     op.require(m['cpu_counts'] == COUNTS, 'Closed exact CPU counts differ')
     for row in m['parent_sources']:
         op.require(len(op.verify(row['path'], row['manifest_sha256'])['files']) == row['files'], 'Original source scope changed')
-    for row in plan['protected_inputs']: op.check_binding(row)
+    for row in plan['protected_inputs']: check_preserved_binding(op, row)
     return m, plan
 
 
@@ -51,7 +75,7 @@ def argv(phase, pin, dependency=None):
     op = helpers(); op.require(phase in ('cpu', 'after-cpu', 'gpu'), 'No continuation/optimizer phase exists')
     if phase == 'after-cpu': op.require(bool(re.fullmatch(r'ended\([1-9][0-9]*\)', dependency or '')), 'Exact own-ended dependency required')
     else: op.require(dependency is None, 'CPU/native phase must be independent')
-    return ['bsub', *op.resources(phase), '-J', 'mosaic-dbmol-reference10-' + phase,
+    return ['bsub', *op.resources(phase), '-J', 'mosaic-dbmol-reference13-' + phase,
             '-oo', str(ROOT / phase / 'stdout.%J.log'), '-eo', str(ROOT / phase / 'stderr.%J.log'),
             *(['-w', dependency] if dependency else []), 'bash', '-l', str(SOURCE / 'scripts/dbmol_recovery_stage.lsf'),
             str(SOURCE), pin, phase]
@@ -110,7 +134,8 @@ def execute(phase, pin):
         startup = plan['reference_argv'] + ['--startup-only', '--startup-output', str(payload / 'reference-startup.json')]
         op.write(payload / 'reference-startup-command.json', {'argv': startup}); subprocess.run(startup, check=True, timeout=180)
         for python, names, label in ((TORCH, ['test_dbmol_reference.py'], 'torch'),
-                (PYTHON, ['test_dbmol_endpoint_precision.py', 'test_recovery_capacity.py'], 'policy')):
+                (PYTHON, ['test_dbmol_endpoint_precision.py', 'test_recovery_capacity.py',
+                          'test_dbmol_recovery_ops.py'], 'policy')):
             args = [python, '-m', 'pytest', *[str(SOURCE / 'tests' / n) for n in names],
                 '--rootdir', str(SOURCE), '--import-mode=importlib', '-q', '-o', 'addopts=', '-p', 'no:cacheprovider',
                 '--junitxml=' + str(payload / ('tests-' + label + '.xml'))]
@@ -128,7 +153,7 @@ def execute(phase, pin):
         op.require(q.returncode == 0 and compact.count('Job<' + job + '>,') == 1
                    and re.findall(r'Status<([^>]+)>', compact) == ['DONE'], 'Actual CPU scheduler success missing')
         op.lsf_success((ROOT / 'cpu' / ('stdout.' + job + '.log')).read_text(), job,
-                       'mosaic-dbmol-reference10-cpu', 'hpc')
+                       'mosaic-dbmol-reference13-cpu', 'hpc')
         op.require(op.read(ROOT / 'cpu/payload/assessment.json')['status'] == 'passed', 'CPU assessment failed')
         proofs = [op.binding(p) for p in (ROOT / 'cpu').rglob('*') if p.is_file() and p.name.endswith(('.json', '.xml', '.log'))]
         op.write(ROOT / 'cpu-certificate.json', {'status': 'passed', 'cases': cpu_cases(op),

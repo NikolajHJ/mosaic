@@ -1,0 +1,33 @@
+{
+  "callback_job": "29838585",
+  "cpu_job": "29838584",
+  "failure": "Reference worker startup-output guard still pinned source10 output instead of new12; actual startup test rejects before model load.",
+  "monitor_remains_paused": true,
+  "native_pass_established": false,
+  "observed_utc": "2026-10-28T08:30:33.868247+00:00",
+  "optimization_settings_changed": false,
+  "optimizer_jobs_submitted": false,
+  "original_results_changed": false,
+  "preparation": {
+    "archive_bytes": 130621,
+    "archive_sha256": "1322b6b51bc320f5bc8d9ce7808febd0ceae5ead0149615f9511bbcb9e507682",
+    "cpu_counts": {
+      "tests.test_dbmol_endpoint_precision": 36,
+      "tests.test_dbmol_recovery_ops": 32,
+      "tests.test_dbmol_reference": 12,
+      "tests.test_recovery_capacity": 11
+    },
+    "files": 14,
+    "manifest_sha256": "2a15a6a550ffe4b4c07d4088d28f13a7f16ef628e56cd569491de31445d92d59",
+    "plan_sha256": "d1f30db4a1393ce08b4913feaf9a877d8ac427a09dff89fc46d6ec013e29cfb9",
+    "status": "prepared_not_validated"
+  },
+  "status": "CPU_startup_EXIT_before_fixture_or_model_execution_callback_EXIT_noGPU",
+  "storage": {
+    "available_bytes": 56768061463,
+    "file_reserve": 100000,
+    "required_bytes": 52469480273,
+    "reserve_bytes": 4294967296,
+    "status": "passed"
+  }
+}

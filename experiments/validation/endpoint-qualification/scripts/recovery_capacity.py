@@ -15,10 +15,14 @@ import sys
 BASE = Path('/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01')
 SOURCE = BASE / 'chemistry-native-qualification-release-04/source'
 PIN = '5d8f4ef0f8bb820e76d2e92442492f604393e79b58725fd01f9bb042b3114863'
-EXTRA = (272 + 512) * 1024**2
+EXTRA = (272 + 512 + 272 + 512) * 1024**2
 CHARGED = ('protenix-endpoint-fix-07', 'protenix-endpoint-fix-release-07',
            'protenix-endpoint-fix-08', 'protenix-endpoint-fix-release-08',
-           'dbmol-endpoint-recovery-10', 'dbmol-endpoint-recovery-release-10')
+           'dbmol-endpoint-recovery-10', 'dbmol-endpoint-recovery-release-10',
+           'protenix-endpoint-fix-09', 'protenix-endpoint-fix-release-09',
+           'dbmol-endpoint-recovery-11', 'dbmol-endpoint-recovery-release-11',
+           'dbmol-endpoint-recovery-12', 'dbmol-endpoint-recovery-release-12',
+           'dbmol-endpoint-recovery-13', 'dbmol-endpoint-recovery-release-13')
 
 
 def require(value, message):

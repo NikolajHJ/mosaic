@@ -81,3 +81,26 @@ def test_double_native_style_linear_gradient_matches_independent_forwards(scale)
             finite = (scale * model(x.detach() + epsilon * direction).sum()
                       - scale * model(x.detach() - epsilon * direction).sum()) / (2 * epsilon)
             assert torch.allclose(finite, gradient @ direction, atol=1e-10, rtol=1e-8)
+
+
+def test_actual_plan_and_reference_startup_have_identical_owned_output():
+    import json
+    from pathlib import Path
+    plan = json.loads((Path(__file__).resolve().parents[1] / 'plan.json').read_bytes())
+    assert r.startup_output_path() == Path(plan['root']) / 'cpu/payload/reference-startup.json'
+    assert 'dbmol-endpoint-recovery-13' in str(r.startup_output_path())
+
+
+@pytest.mark.parametrize('wrong', [
+    '/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-10/cpu/payload/reference-startup.json',
+    '/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-12/cpu/payload/reference-startup.json',
+    'reference-startup.json',
+    '/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-13/gpu/payload/reference-startup.json'])
+def test_actual_startup_parser_rejects_wrong_owned_output_before_loading_models(monkeypatch, wrong):
+    import sys
+    monkeypatch.setenv('LSB_JOBID', '123')
+    monkeypatch.setattr(sys, 'argv', ['reference', '--context', 'not-opened',
+        '--context-sha256', '0' * 64, '--checkpoint', 'not-opened',
+        '--model-digest', '0' * 64, '--startup-only', '--startup-output', wrong])
+    with pytest.raises(ValueError, match='Closed startup output scope differs'):
+        r.main()

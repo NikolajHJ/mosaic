@@ -1,0 +1,17 @@
+{
+  "callback_job": "29838665",
+  "cases": 96,
+  "cpu_job": "29838664",
+  "files_rehashed": 59,
+  "module_counts": {
+    "tests.test_dbmol_endpoint_precision": 36,
+    "tests.test_dbmol_recovery_ops": 32,
+    "tests.test_dbmol_reference": 17,
+    "tests.test_recovery_capacity": 11
+  },
+  "native_pass_established": false,
+  "no_local_numerical_work": true,
+  "observed_utc": "2026-10-28T08:38:59.677123+00:00",
+  "optimizer_jobs_submitted": false,
+  "status": "raw_CPU96_and_actual_startups_passed_callback_pending"
+}

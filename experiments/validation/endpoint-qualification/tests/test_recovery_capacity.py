@@ -15,7 +15,7 @@ def prior():
 
 def test_recovery_adds_both_entire_caps_and_stale_bytes():
     result = r.validate(prior(), 123, 456)
-    assert result['required_bytes'] == prior()['required_bytes'] + (272 + 512) * 1024**2 + 456
+    assert result['required_bytes'] == prior()['required_bytes'] + (272 + 512 + 272 + 512) * 1024**2 + 456
     assert result['available_bytes'] == prior()['available_bytes'] - 123
     assert result['forecasts_removed'] is False
 
@@ -35,3 +35,16 @@ def test_recovery_rejects_capacity_shortfall():
 @pytest.mark.parametrize('charged,excess', [(-1, 0), (0, -1), (False, 0)])
 def test_recovery_rejects_partial_or_invalid_totals(charged, excess):
     with pytest.raises(ValueError): r.validate(prior(), charged, excess)
+
+
+def test_all_old_and_new_recovery_roots_and_future_caps_remain_charged():
+    assert r.EXTRA == (272 + 512 + 272 + 512) * 1024**2
+    assert len(r.CHARGED) == len(set(r.CHARGED))
+    assert all(name in r.CHARGED for name in (
+        'protenix-endpoint-fix-07', 'protenix-endpoint-fix-release-07',
+        'protenix-endpoint-fix-08', 'protenix-endpoint-fix-release-08',
+        'protenix-endpoint-fix-09', 'protenix-endpoint-fix-release-09',
+        'dbmol-endpoint-recovery-10', 'dbmol-endpoint-recovery-release-10',
+        'dbmol-endpoint-recovery-11', 'dbmol-endpoint-recovery-release-11',
+        'dbmol-endpoint-recovery-12', 'dbmol-endpoint-recovery-release-12',
+        'dbmol-endpoint-recovery-13', 'dbmol-endpoint-recovery-release-13'))

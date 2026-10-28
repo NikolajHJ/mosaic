@@ -1,0 +1,20 @@
+{
+  "CPU_job": "29838510",
+  "callback_job": "29838511",
+  "cases": 336,
+  "files_rehashed": 16,
+  "module_counts": {
+    "tests.test_current_capacity": 5,
+    "tests.test_protenix_precision_admission": 30,
+    "tests.test_protenix_precision_native": 93,
+    "tests.test_protenix_precision_ops": 76,
+    "tests.test_protenix_precision_reference": 106,
+    "tests.test_protenix_replay_context": 15,
+    "tests.test_recovery_capacity": 11
+  },
+  "native_pass_established": false,
+  "no_local_numerical_work": true,
+  "observed_utc": "2026-10-28T08:24:04.361140+00:00",
+  "optimizer_jobs_submitted": false,
+  "status": "raw_CPU336_pass_verified_callback_certificate_pending"
+}

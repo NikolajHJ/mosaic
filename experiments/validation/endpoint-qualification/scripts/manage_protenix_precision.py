@@ -18,12 +18,12 @@ import tarfile
 
 REPO = Path(__file__).resolve().parents[4]
 OWNER = REPO / 'experiments/validation/endpoint-qualification'
-TAG = '20261027-protenix-endpoint-fix-08'
+TAG = '20261028-protenix-endpoint-fix-09'
 RUN = OWNER / 'runs' / TAG
 LOCAL = REPO / 'results/hpc' / TAG
 BASE = '/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01'
-SOURCE = BASE + '/protenix-endpoint-fix-release-08/source'
-ROOT = BASE + '/protenix-endpoint-fix-08'
+SOURCE = BASE + '/protenix-endpoint-fix-release-09/source'
+ROOT = BASE + '/protenix-endpoint-fix-09'
 PYTHON = '/work3/s234818/mosaic/envs/protenix-tiny/bin/python'
 
 
@@ -68,7 +68,7 @@ def prepare(counts_path):
     parents.append({'path':BASE+'/chemistry-production-release-03/source','files':14,'manifest_sha256':'c73796b041d8432ef1634e8c56920006170a094d3bdc74867c08f3b5415126d7'})
     parents.append({'path':BASE+'/chemistry-production-release-04/source','files':17,'manifest_sha256':'01e2de2a3413bd903590dd331c5cedf6b756e856a83df2b73ad65e02b9f9fceb'})
     proofs = list(forensic['preserved_proofs']) + [plan['original_forensics_plan'], plan['prior_forensic_report']]
-    for key in ('engineering_predecessor','resource_predecessor','replay_predecessor','fixture_predecessor','native_predecessor'):
+    for key in ('engineering_predecessor','resource_predecessor','replay_predecessor','fixture_predecessor','native_predecessor','device_predecessor'):
         predecessor=plan.get(key)
         if predecessor:
             parents += [predecessor['source']]
@@ -123,7 +123,7 @@ def stage():
 import base64,hashlib,io,json,os,sys,tarfile
 from pathlib import Path,PurePosixPath
 base=Path('/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01')
-source=base/'protenix-endpoint-fix-release-08/source';root=base/'protenix-endpoint-fix-08'
+source=base/'protenix-endpoint-fix-release-09/source';root=base/'protenix-endpoint-fix-09'
 assert not root.exists() and not source.parent.exists(),'Existing/unknown outcome; inspect, never replay'
 data=base64.b64decode(ARCHIVE,validate=True)
 assert len(data)==PREP['archive_bytes'] and hashlib.sha256(data).hexdigest()==PREP['archive_sha256']

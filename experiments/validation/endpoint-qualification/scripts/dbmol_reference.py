@@ -165,6 +165,10 @@ def worker(args):
     raise ValueError('Reference closed without an explicit frozen/audit handshake')
 
 
+def startup_output_path():
+    return Path('/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-13/cpu/payload/reference-startup.json')
+
+
 def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--context', required=True); p.add_argument('--context-sha256', required=True)
@@ -173,7 +177,7 @@ def main():
     args = p.parse_args()
     if args.startup_only:
         require(str(os.environ.get('LSB_JOBID', '')).isdigit(), 'Actual allocated startup required')
-        expected = Path('/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-endpoint-recovery-10/cpu/payload/reference-startup.json')
+        expected = startup_output_path()
         require(args.startup_output == str(expected), 'Closed startup output scope differs')
         with Path(args.context).open('rb') as f: digest = hashlib.file_digest(f, 'sha256').hexdigest()
         require(digest == args.context_sha256 and Path(args.checkpoint).is_file(), 'Native startup inputs differ')

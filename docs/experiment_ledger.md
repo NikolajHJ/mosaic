@@ -8594,3 +8594,132 @@ in eachrun terminal-verification-20261028.json; heavy combinedstatus is
 results/hpc/20261027-protenix-dbmol-recovery-01/status-20261028-01. Only stdlib
 byte/JSON/schema/proof validation locally; no numerical/model tests or settings
 changes. Existing source08/source10 and all historical failed evidence preserved.
+
+
+### 2026-10-28 — Reference placement09 and finer-scale DBMol protocol authorized
+
+Human requested fix/resubmit with unchanged saved results/optimization, then
+explicitly approved a NEW predeclared finer-scale DBMol checker and submission
+only after all checks. OriginalDB10 failed locality remains failed; no adaptive
+scale selection or gate waiver. Pro09 fixes reference-only mixed devices after
+source08 fullFP64 dtype/production replay passed. New actual-placement controls
+and unchanged full CPU/native checks required. Full inheritedfutures/oldcaps
+plus new272MiBPro09 proof allowance/stale roots/4GiB100000reserve retained.
+New source packaging not yet sealed/staged/passed/submitted. No optimizer or
+scientific changes locally; original Pro20k and DB7500 savedbytes intact.
+
+
+### 2026-10-28 — DB finer11 staging metadata failure preserved; retry12 prepared
+
+Source11 immutable13files manifest3dc3ba4a8e860379275c615db87000ccbc45ddf2e6796cc2b187e6a234a2c898
+staged, then strictpositive proofvalidation rejected exactly old10/jobs.lock
+zero bytes. Actualreadonly09:21Parisrootjobs{} files[] authenticates NOCPU/
+native/optimizer submission. Not a scientific failure or gradient pass.
+New12 preserves11source and exactemptyroot/nojob state. Explicit onlythat
+emptyordinarylock identity/zeroSHA validates; otherproofs stillpositive.
+Same unspent oneDBfuture512MiB cap is adopted, no abandoned11nativeexists;
+allold11/current12bytes stalecharged and reserve/fullfutures unchanged.
+Numerical engine12 equals11 except owned outputroot. Allocated tests remain
+required. Pro09CPU29838510actualRUN at08:21:53UTC/callback29838511PEND.
+No optimizer started, no local numerical work, savedscientificresults intact.
+
+
+### 2026-10-28 — Pro09 CPU336 passed; DB12 CPU91 actually submitted
+
+Pro09source20files manifestf2043af74b8fa9ff485a44b80fcf96454bf8585868859389828c37f0073a3664,
+archive101915bytes SHA0a94e3edb989f34527268a39ece932a7ce13d2fc4b89fe8c18b78fda33151ba1.
+ActualCPU29838510DONE/hpc/sameLSF336rawcases/noerrors/failures/skips; newreference
+common-device/copybits/JITcontrols passed. Native/source checks NOTCPUclaim.
+Owncallback29838511RUN08:26:38UTC, CPUcertificate336passed; freshfullstorage
+precedes native submission. Preflight52469480273required/56774197177available
+bytes, unchanged4GiB/100000reserves and full experiment futures, notreservation.
+
+DB12source14files manifest2a15a6a550ffe4b4c07d4088d28f13a7f16ef628e56cd569491de31445d92d59,
+archive130621bytes SHA1322b6b51bc320f5bc8d9ce7808febd0ceae5ead0149615f9511bbcb9e507682.
+ActualCPU29838584/callback29838585submitted after fullstorage passed
+52469480273required/56768061463availablebytes.91actualcases expected, notyet
+validated. New32metadata controls retain exacthistoricalemptylock only; finer
+engine AST equalssealed11 after ownedroot reversal, originalnative FP64reference
+bytes and saved7500/settings exact. All2523protectedbindings retained.
+
+Independent local source/archive/AST/settings/byte checks passed; no numerical
+work locally. Fullstdliblayout audit stillhas same21outside-scope errors
+(stale defaultinventory and20historical folders missingREADME); no newrun
+README omission, no claim of full layoutpass. New verifier audits actualCPU/
+callbackLSF/XML/startup/certificate/storage bytes separately from nativepass.
+Neither optimizer continuation submitted. Oldresults/failures/source11
+staging failure preserved, monitorpaused.
+
+
+### 2026-10-28 — DB12 actual startup-path failure; new immutable13 prepared
+
+DB12CPU29838584 actualEXIT109:27:59CET before model/fixtures; reference startup
+retained oldroot10 output literal, while coordinator passed newroot12. Callback
+29838585 actualEXIT correctlyblocked GPU. SamejobLSF/byteproofs preserved.
+Pro09CPU336/callback bothactualDONE; newGPU29838596actuallyPEND08:28:37UTC.
+
+NewDB13 only aligns reference metadata startup to ownplan/root, plus5newactual
+plan/wrongpath controls and full96CPU recheck. Numerical reference/worker and
+fixedfiner engine unchanged after ownedroot reversal. Adopt source12/failure
+CPU+callback proofsets, no moving/deleting old bytes. Same unused singleDB
+qualification512MiB future fullyretained; old12rootbytes charged additionally,
+all otherfutures/reserves unchanged. No optimization or local numericalwork.
+
+
+### 2026-10-28 — Pro09 independently verified and native GPU actually queued
+
+CPU29838510/callback29838511 actualDONE/hpc/sameLSFsuccess/full336passes.
+Independent22file/9certificateproof/rawXML/source/actualstartup/command/resource/
+wholequotaaudit passed. Certificate338b236d46b7510955195c022308a058913cbe97102823c55b23d7819f671ffd.
+Native29838596 actuallysubmitted/PEND08:28:37UTC with1exclusiveL40S/4CPU/
+8GiBslot/2h. Dispatchfullquota52469480273required/56768938968available,
+4GiB/100000reserves unchanged. Not a GPU pass or optimizer submission.
+DB13 metadata-only startupcorrection source14files/preparationfull96case
+required, samefinerprotocol and original nativeworker ASTs preserved. Current
+original scientific checkpoints and optimization settings remain exact.
+
+
+### 2026-10-28 — DB13 CPU96/actualstartup passed, native dispatch pending
+
+ImmutableDB13source14files manifest0f82d44bbb65ea957a7e5faa9e9837aba7fc1f2256f7344a96606b11ef3d664d, archive133575bytes
+SHA6eac1ff61bb5996689c9f8393c3aba5f218ad142fd22f7132b0f9867d70bf291; original numerical referencefunctionsAST exact and
+finerengine unchanged to12 after ownedroot reversal.2561protectedbindings.
+CPU29838664 actualDONE/hpc/sameLSF with17Torch+79policy/metadata=96rawcases,
+zeroerrors/failures/skips; bothrealstartup commands passed. Callback29838665
+RUN08:38:59UTC; no native/optimizerpass claimed. Fullpreflight retained
+52469480273required/56764227501availablebytes/4GiB100000reserve.
+
+Pro09native29838596previouslyPEND; no optimizer for eitherarm. Scope/handoff
+notes explicitly preserve full remaining continuation integration/pilot/runtime/
+storage gates and exclusive-GPU serialization; no olddriverblindunblock.
+Localstdlibbytes/XML/ASTonly; originalstates/weights/settings/failures unchanged.
+
+
+### 2026-10-28 — Both independent fixed-endpoint FP64 native qualifications passed
+
+Pro09 GPU29838596 actualDONE/gpul40s/same-jobLSFsuccess09:32:01–09:39:38CET.
+Original FP32 replay, completeFP64 trace/device placement/reference FD/parity/
+locality/original contrasts/negative controls and frozen/input preservation passed.
+Independent localstdlib delivery audit rehashed73files including20actualNPZs and
+matched43embeddedartifact bindings. Source20manifestf2043af74b8fa9ff485a44b80fcf96454bf8585868859389828c37f0073a3664,
+allocatedCPU336pass. Original source08 failure remainsfailed and unchanged.
+
+DB13 GPU29838712 actualDONE/gpul40s/same-jobLSFsuccess09:40:55–09:52:27CET.
+Separately human-authorized fixed finer-scale checker passed all five mandatory
+atom/bond contrasts with pre-forward selected3e-6/1e-6pair. Original15percent
+FD/production-referenceparity/locality, nonzero, negative and frozen checks all
+retained. FullFP64 operation audit passed;2561protectedbindings unchanged.
+Independent localstdlib audit rehashed64files including26actualNPZs and matched
+27embeddedartifactbindings. Source14manifest0f82d44bbb65ea957a7e5faa9e9837aba7fc1f2256f7344a96606b11ef3d664d,
+allocatedCPU96pass. Original10scientificfailure and11/12metadata/startup failures
+remain preserved and are not relabeled.
+
+Both qualifications executed ZERO optimizer updates and cannot dispatch child
+optimization. SavedPro20k/50k and DB7500/10k unchanged. Continuation integration14
+remains pending its own full allocatedCPU/actualstartup/GPUco-residency/remaining
+components/nonraw/pilots/runtime/freshwholequota checks before conditional child
+submission. No new optimizer IDs, saved-result or optimization setting changes.
+Exact native delivery/LSF/source/proof hashes are in each owningrun
+native-verification.json; these are fixed-endpoint qualification passes only.
+All scientific evaluations were allocatedHPC; local work was stdlib byte/JSON/
+schema authentication only. Pausedmonitor unchanged.

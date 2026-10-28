@@ -1,0 +1,62 @@
+{
+  "callback_job": "29838665",
+  "cpu_early_verification": {
+    "callback_job": "29838665",
+    "cases": 96,
+    "cpu_job": "29838664",
+    "files_rehashed": 59,
+    "module_counts": {
+      "tests.test_dbmol_endpoint_precision": 36,
+      "tests.test_dbmol_recovery_ops": 32,
+      "tests.test_dbmol_reference": 17,
+      "tests.test_recovery_capacity": 11
+    },
+    "native_pass_established": false,
+    "no_local_numerical_work": true,
+    "observed_utc": "2026-10-28T08:38:59.677123+00:00",
+    "optimizer_jobs_submitted": false,
+    "status": "raw_CPU96_and_actual_startups_passed_callback_pending"
+  },
+  "cpu_job": "29838664",
+  "full_continuation_admission_established": false,
+  "monitor_remains_paused": true,
+  "native_actual_ended_Paris": "Wed Oct 28 09:52:27 2026 CET",
+  "native_actual_started_Paris": "Wed Oct 28 09:40:55 2026 CET",
+  "native_job": "29838712",
+  "native_pass_established": true,
+  "native_qualification_scope": "Original frozen saved endpoint only; no optimization executed or original failed run recertified.",
+  "native_state": "DONE_same_job_LSF_authenticated",
+  "native_verification": {
+    "files_byte_verified": 64,
+    "path": "native-verification.json",
+    "saved_NPZ_files_byte_verified": 26,
+    "sha256": "a6412c0b807dc51d8bbc1fe082ccd4a4fe0bce4375d6935a842bf063dd265166",
+    "status": "verified_native_finer_FP64_affinity_reference_pass_original_failures_preserved"
+  },
+  "observed_utc": "2026-10-28T08:54:43.892493+00:00",
+  "optimization_settings_changed": false,
+  "optimizer_jobs_submitted": false,
+  "original_results_changed": false,
+  "preparation": {
+    "archive_bytes": 133575,
+    "archive_sha256": "6eac1ff61bb5996689c9f8393c3aba5f218ad142fd22f7132b0f9867d70bf291",
+    "cpu_counts": {
+      "tests.test_dbmol_endpoint_precision": 36,
+      "tests.test_dbmol_recovery_ops": 32,
+      "tests.test_dbmol_reference": 17,
+      "tests.test_recovery_capacity": 11
+    },
+    "files": 14,
+    "manifest_sha256": "0f82d44bbb65ea957a7e5faa9e9837aba7fc1f2256f7344a96606b11ef3d664d",
+    "plan_sha256": "a1ebbdaa8c15cf31a8a28c062151b7328b39639dc1c565fb0777945b3d96957d",
+    "status": "prepared_not_validated"
+  },
+  "status": "native_fixed_endpoint_qualification_passed_integration_pending_no_optimizer",
+  "storage": {
+    "available_bytes": 56764227501,
+    "file_reserve": 100000,
+    "required_bytes": 52469480273,
+    "reserve_bytes": 4294967296,
+    "status": "passed"
+  }
+}

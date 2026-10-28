@@ -10,14 +10,14 @@ import tarfile
 
 OWNER = Path(__file__).resolve().parents[1]
 REPO = OWNER.parents[2]
-TAG = '20261027-dbmol-endpoint-recovery-10'
+TAG = '20261028-dbmol-endpoint-recovery-13'
 RUN = OWNER / 'runs' / TAG
 LOCAL = REPO / 'results/hpc' / TAG
 BASE = '/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01'
-ROOT = BASE + '/dbmol-endpoint-recovery-10'
-SOURCE = BASE + '/dbmol-endpoint-recovery-release-10/source'
-COUNTS = {'tests.test_dbmol_reference': 12, 'tests.test_dbmol_endpoint_precision': 10,
-          'tests.test_recovery_capacity': 10}
+ROOT = BASE + '/dbmol-endpoint-recovery-13'
+SOURCE = BASE + '/dbmol-endpoint-recovery-release-13/source'
+COUNTS = {'tests.test_dbmol_reference': 17, 'tests.test_dbmol_endpoint_precision': 36,
+          'tests.test_recovery_capacity': 11, 'tests.test_dbmol_recovery_ops': 32}
 
 
 def raw(value): return (json.dumps(value, indent=2, sort_keys=True, allow_nan=False) + '\n').encode()
@@ -33,11 +33,12 @@ def connection(program, name, timeout=180):
 
 
 def prepare():
-    program = r'''
+    from dbmol_endpoint_precision import finer_policy_spec
+    program = 'FINE_POLICY=' + repr(finer_policy_spec()) + '\n' + r'''
 import hashlib,json
 from pathlib import Path
 base=Path('/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01')
-assert not (base/'dbmol-endpoint-recovery-10').exists() and not (base/'dbmol-endpoint-recovery-release-10').exists(),'Existing/unknown new outcome; inspect before staging'
+assert not (base/'dbmol-endpoint-recovery-13').exists() and not (base/'dbmol-endpoint-recovery-release-13').exists(),'Existing/unknown new outcome; inspect before staging'
 def binding(p):
  p=Path(p);assert p.is_file() and not p.is_symlink()
  with p.open('rb') as f:sha=hashlib.file_digest(f,'sha256').hexdigest()
@@ -66,14 +67,48 @@ assert binding(context)['sha256']==context_pin;protected[context]=binding(contex
 checkpoint='/work3/s234818/latentmol/cache/boltz2/boltz2_aff.ckpt';structure='/work3/s234818/latentmol/cache/boltz2/boltz2_conf.ckpt'
 for p in (checkpoint,structure):protected[p]=binding(p)
 production=[python,'-u',str(science/'scripts/dbmol_worker.py'),'--context',context,'--context-sha256',context_pin,'--checkpoint',checkpoint,'--structure-checkpoint',structure]
-reference=[python,'-u',str(base/'dbmol-endpoint-recovery-release-10/source/scripts/dbmol_reference.py'),'--context',context,'--context-sha256',context_pin,'--checkpoint',checkpoint,'--model-digest','395876da13ab6d5d175e6603db2118a82954c7c06484842fe2314dbd77a31a16']
+reference=[python,'-u',str(base/'dbmol-endpoint-recovery-release-13/source/scripts/dbmol_reference.py'),'--context',context,'--context-sha256',context_pin,'--checkpoint',checkpoint,'--model-digest','395876da13ab6d5d175e6603db2118a82954c7c06484842fe2314dbd77a31a16']
 parents=m['parent_sources']+[{'path':str(old),'files':19,'manifest_sha256':binding(old/'source_manifest.json')['sha256']},
  {'path':str(base/'protenix-endpoint-fix-release-07/source'),'files':18,'manifest_sha256':'63db0a002c8aca2a282d50f9e7227d57b69ac6820b8ae0e06287ec95770dd8a3'},
  {'path':str(base/'protenix-endpoint-fix-release-08/source'),'files':20,'manifest_sha256':'7082a76a2da1849cfdf377735ebd7ccbc77e298395c7f2f154f18904a1db6856'},
  {'path':str(base/'chemistry-native-qualification-release-04/source'),'files':12,'manifest_sha256':'5d8f4ef0f8bb820e76d2e92442492f604393e79b58725fd01f9bb042b3114863'}]
+# Adopt the entire unchanged failed reference10 evidence before any new probes.
+prior=base/'dbmol-endpoint-recovery-release-10/source'
+assert binding(prior/'source_manifest.json')['sha256']=='6c989d82e3d05a1b287c5092d7591f1a14c0a17739ece5885f5ac6a165d66259'
+pm=json.loads((prior/'source_manifest.json').read_bytes());assert len(pm['files'])==13
+for name,digest in pm['files'].items():assert binding(prior/name)['sha256']==digest
+priorroot=base/'dbmol-endpoint-recovery-10'
+assert json.loads((priorroot/'gpu/payload/native/assessment.json').read_bytes())['status']=='failed'
+lsf=''.join((priorroot/'gpu/stdout.29834830.log').read_text().split())
+assert lsf.count('Subject:Job29834830:')==1 and 'Exitedwithexitcode1.' in lsf
+for p in priorroot.rglob('*'):
+ assert not p.is_symlink() and (p.is_dir() or p.is_file())
+ if p.is_file():protected[str(p)]=binding(p)
+parents.append({'path':str(prior),'files':13,'manifest_sha256':binding(prior/'source_manifest.json')['sha256']})
+failedstage=base/'dbmol-endpoint-recovery-release-11/source'
+assert binding(failedstage/'source_manifest.json')['sha256']=='3dc3ba4a8e860379275c615db87000ccbc45ddf2e6796cc2b187e6a234a2c898'
+sm=json.loads((failedstage/'source_manifest.json').read_bytes());assert len(sm['files'])==13
+for name,digest in sm['files'].items():assert binding(failedstage/name)['sha256']==digest
+stageroot=base/'dbmol-endpoint-recovery-11'
+assert stageroot.is_dir() and not list(stageroot.iterdir()),'Priorfailedstage noCPU/native/unknownsubmission must remainempty'
+parents.append({'path':str(failedstage),'files':13,'manifest_sha256':binding(failedstage/'source_manifest.json')['sha256']})
+startupold=base/'dbmol-endpoint-recovery-release-12/source'
+assert binding(startupold/'source_manifest.json')['sha256']=='2a15a6a550ffe4b4c07d4088d28f13a7f16ef628e56cd569491de31445d92d59'
+xm=json.loads((startupold/'source_manifest.json').read_bytes());assert len(xm['files'])==14
+for name,digest in xm['files'].items():assert binding(startupold/name)['sha256']==digest
+startuproot=base/'dbmol-endpoint-recovery-12'
+assert not (startuproot/'gpu').exists(),'Priorstartupfailure must have no native outcome'
+for job,phase in [('29838584','cpu'),('29838585','after-cpu')]:
+ lsf=''.join((startuproot/phase/('stdout.'+job+'.log')).read_text().split())
+ assert lsf.count('Subject:Job'+job+':')==1 and 'Exitedwithexitcode1.' in lsf
+ for p in (startuproot/phase).rglob('*'):
+  assert not p.is_symlink() and (p.is_dir() or p.is_file())
+  if p.is_file():protected[str(p)]=binding(p)
+for name in ('jobs.json','bootstrap-complete.json'):protected[str(startuproot/name)]=binding(startuproot/name)
+parents.append({'path':str(startupold),'files':14,'manifest_sha256':binding(startupold/'source_manifest.json')['sha256']})
 parents=list({p['path']:p for p in parents}.values())
-plan={'version':'dbmol-separate-affinity-reference-v1','root':str(base/'dbmol-endpoint-recovery-10'),
- 'boundary':boundary,'original_admission':admission,'original_arm':arm,'science_source':arm['source'],
+plan={'version':'dbmol-separate-affinity-reference-finer-v1','root':str(base/'dbmol-endpoint-recovery-13'),
+ 'precision_policy':FINE_POLICY,'boundary':boundary,'original_admission':admission,'original_arm':arm,'science_source':arm['source'],
  'protected_inputs':list(protected.values()),'production_argv':production,'reference_argv':reference,
  'original_directions':{'X':[{'row':1,'source':0,'target':4}],'E_upper':[]},'global_step':7500,
  'target_global':10000,'rate':.0025,'original_results_changed':False,'optimizer_updates':0,
@@ -85,13 +120,13 @@ print(json.dumps({'plan':plan,'parent_sources':parents}))
     names = ['README.md', 'scripts/README.md', 'tests/README.md',
              'scripts/dbmol_reference.py', 'scripts/dbmol_endpoint_precision.py',
              'scripts/dbmol_recovery_ops.py', 'scripts/dbmol_recovery_stage.lsf', 'scripts/recovery_capacity.py',
-             'tests/test_dbmol_reference.py', 'tests/test_dbmol_endpoint_precision.py', 'tests/test_recovery_capacity.py']
+             'tests/test_dbmol_reference.py', 'tests/test_dbmol_endpoint_precision.py', 'tests/test_dbmol_recovery_ops.py', 'tests/test_recovery_capacity.py']
     for name in names:
         content = (OWNER / name).read_bytes().replace(b'\r\n', b'\n')
         if name.endswith('.py'): ast.parse(content, filename=name)
         members[name] = content
     members['plan.json'] = raw(inputs['plan']); members['protocol.md'] = (RUN / 'README.md').read_bytes().replace(b'\r\n', b'\n')
-    m = {'version': 'dbmol-separate-affinity-reference-source-v1', 'files': {n: sha(b) for n, b in members.items()},
+    m = {'version': 'dbmol-separate-affinity-reference-finer-source-v1', 'files': {n: sha(b) for n, b in members.items()},
          'parent_sources': inputs['parent_sources'], 'cpu_counts': COUNTS,
          'original_results_changed': False, 'optimization_settings_changed': False, 'optimizer_updates': 0}
     members['source_manifest.json'] = raw(m); folder = LOCAL / 'source01'; folder.mkdir(exist_ok=False)
@@ -115,7 +150,7 @@ def stage():
     program = 'PREP=' + repr(prep) + '\nARCHIVE=' + repr(base64.b64encode(archive).decode()) + '\n' + r'''
 import base64,hashlib,io,json,sys,tarfile,subprocess
 from pathlib import Path,PurePosixPath
-base=Path('/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01');root=base/'dbmol-endpoint-recovery-10';source=base/'dbmol-endpoint-recovery-release-10/source'
+base=Path('/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01');root=base/'dbmol-endpoint-recovery-13';source=base/'dbmol-endpoint-recovery-release-13/source'
 assert not root.exists() and not source.parent.exists(),'Existing/unknown staging; inspect rather than repeat'
 data=base64.b64decode(ARCHIVE);assert hashlib.sha256(data).hexdigest()==PREP['archive_sha256']
 members={}

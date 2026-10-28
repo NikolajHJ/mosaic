@@ -1,0 +1,518 @@
+{
+  "delivery_sha256": "1b3118940f257237a6bd3c961362ab60a1fc1d1a8d7e0d6fa0b2af8c00f57f96",
+  "external_original_proof_reference_count": 313,
+  "files_byte_verified": 73,
+  "full_continuation_admission_established": false,
+  "job_id": "29838596",
+  "matched_embedded_artifact_bindings": 43,
+  "negative_controls_rejected": [
+    "zero",
+    "reversed",
+    "scaled"
+  ],
+  "observed_utc": "2026-10-28T08:43:57.547935+00:00",
+  "optimization_settings_changed": false,
+  "optimizer_jobs_submitted": false,
+  "optimizer_updates": 0,
+  "original_results_changed": false,
+  "proofs": [
+    {
+      "bytes": 697,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/native-invocation.json",
+      "sha256": "6db03f04da246534ddfb1fecfe0cb0139636397597d3ac7f6ee9172e4dc6240f"
+    },
+    {
+      "bytes": 2133,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/assessment.json",
+      "sha256": "bb4ed22fb92d25e5c8de46ea3c4d68a8ed2162d5621b136966da37d36b42e82b"
+    },
+    {
+      "bytes": 10705,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/fp32-final-preservation.json",
+      "sha256": "1eb6172210f50845257059629e2443604c23b1877c9a2e47939744797b3752b8"
+    },
+    {
+      "bytes": 1013,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/fp32-invocation.json",
+      "sha256": "1873d0e86a248bf4120bf5ac89e900e0bf11a6a5b172d77fb789e0f0b2afb859"
+    },
+    {
+      "bytes": 10693,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/fp64-final-preservation.json",
+      "sha256": "7aab500cd2e14bd8893221bd8c4b9a717943e1923f13ab2cb85bbf04dec03307"
+    },
+    {
+      "bytes": 1013,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/fp64-invocation.json",
+      "sha256": "e1b36735dbfe073261757e2f8e0ddcff9b95fc4824607e87e364eb1467205b3c"
+    },
+    {
+      "bytes": 1548,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/production/assessment.json",
+      "sha256": "5f7450227140792c37ac58151946919805c0ff26a48251c519cfa2d90d367416"
+    },
+    {
+      "bytes": 288,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/production/current-baseline.json",
+      "sha256": "7028897ca5bbc43f55daaf88f35f15218645d8d727cbd1a9ee9c46c0627d2ac8"
+    },
+    {
+      "bytes": 177,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/production/frozen-before.json",
+      "sha256": "3211f9d322c1f9f6b59d9b490ec60a57aab27cd0804d7f20782c8180149e747d"
+    },
+    {
+      "bytes": 30600,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/production/historical-replay.json",
+      "sha256": "2c5fbf0db9f6d063b2924c8afd27b6d86dda993db7605eec7a727155ff92a45b"
+    },
+    {
+      "bytes": 132,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/production/model-loaded.json",
+      "sha256": "390cf6770997e3cd85083ff685fed9f9907e3d598f5a36b5319d7b4109c1196f"
+    },
+    {
+      "bytes": 2196,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/production/native-identity.json",
+      "sha256": "a97a24b5b0fa62bee6fd9e6ad97b55d9f7958983fb31eb5c7ab8106a32258e25"
+    },
+    {
+      "bytes": 27934,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/production/production.npz",
+      "sha256": "73c0cebaf17bc492def6792888e45a247b03402df6532724e97f0129f3436d9e"
+    },
+    {
+      "bytes": 9877,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/production/protected-after.json",
+      "sha256": "a2b57a5afc127d62530e19692ecb152e8382c40c2c796d5cde70f9786e4bd9f0"
+    },
+    {
+      "bytes": 10235,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/protected-after.json",
+      "sha256": "f7dc54e760cada824ae51c9b3e2eff7e74ed21c911097a048b08b6343219964b"
+    },
+    {
+      "bytes": 10235,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/protected-before.json",
+      "sha256": "71da31f50ae45e119913869650fb508c62544e78061fa51355e0e04c1cdc4615"
+    },
+    {
+      "bytes": 14852,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/qualified-context-after.json",
+      "sha256": "429d26b0b54d3241c70cac5096e0e27c5ee6bc34d9089144845667b8c9de5978"
+    },
+    {
+      "bytes": 14852,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/qualified-context.json",
+      "sha256": "429d26b0b54d3241c70cac5096e0e27c5ee6bc34d9089144845667b8c9de5978"
+    },
+    {
+      "bytes": 1189305,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/reference/admission.json",
+      "sha256": "b737ec63fea305ef27d3206104d6913f1188cbbb96c0ea6de6761a824fb202ce"
+    },
+    {
+      "bytes": 699,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/reference/assessment.json",
+      "sha256": "e52b727176830d884d6aff2e164c062192fd616ab782d5252891f6f121175d43"
+    },
+    {
+      "bytes": 1494,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/reference/device-placement.json",
+      "sha256": "5218d7fe5997ddc3a40baa33fb7b084e98a360ee0ddbaea68d0c75bf88211ea5"
+    },
+    {
+      "bytes": 249,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/reference/native-dtype-audit.json",
+      "sha256": "87c12c8388a63e3d9db454b8ddad655b7227153d1ac596de63c310b680d60a2c"
+    },
+    {
+      "bytes": 605016,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/reference/native-selection.json",
+      "sha256": "e86f491932536f2debac1a85186f1517b1ede9e2af88ea793970d6db29b8af39"
+    },
+    {
+      "bytes": 17137,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/reference/oracle-points.json",
+      "sha256": "5d449f88cdbd584d28ec5380951be4f562e7cc9c21e9b18c0528869612805e0b"
+    },
+    {
+      "bytes": 27926,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/reference/point-0000.npz",
+      "sha256": "03b5c2f51e2d9e877f3be36a9b09ff0bf34b3736c545e402c94e38c43523fd9b"
+    },
+    {
+      "bytes": 27926,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/reference/point-0001.npz",
+      "sha256": "03b5c2f51e2d9e877f3be36a9b09ff0bf34b3736c545e402c94e38c43523fd9b"
+    },
+    {
+      "bytes": 27926,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/reference/point-0002.npz",
+      "sha256": "03b5c2f51e2d9e877f3be36a9b09ff0bf34b3736c545e402c94e38c43523fd9b"
+    },
+    {
+      "bytes": 27926,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/reference/point-0003.npz",
+      "sha256": "d7026e5eaae8c928a2e271bc2948207f15e5350cf69b1782520193e6e1084fa8"
+    },
+    {
+      "bytes": 27926,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/reference/point-0004.npz",
+      "sha256": "a9e8d61471097d90820d2ffe9073025778c588350799a5bcf52679f2f0ab34cf"
+    },
+    {
+      "bytes": 27926,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/reference/point-0005.npz",
+      "sha256": "60b7dbe14887f01a763cccec8bf0c0c26a9fa87ed2fb7fbdbd2eab9d85f13e36"
+    },
+    {
+      "bytes": 27926,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/reference/point-0006.npz",
+      "sha256": "a88001597e8a048f5b745cf43a5912de69530ee0cc66cd0683173b851f754e4a"
+    },
+    {
+      "bytes": 27926,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/reference/point-0007.npz",
+      "sha256": "ca0d687ca642c733b2d425f0456d53b0da435430f2dd691b496c8dbfdd6fc459"
+    },
+    {
+      "bytes": 27926,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/reference/point-0008.npz",
+      "sha256": "73e20ac2cce26bd0b378792465d4d0a6008ce08550c2608adf22d885689971cb"
+    },
+    {
+      "bytes": 27926,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/reference/point-0009.npz",
+      "sha256": "f691e7ca516616a9d6ad596878f675f0ea60a71667f7bcf96331dfbfd3f7e825"
+    },
+    {
+      "bytes": 27926,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/reference/point-0010.npz",
+      "sha256": "e3e3f123cea5b71980f0d21ec009735dc6dbe645c1393c6a2e788b49a9ce13bc"
+    },
+    {
+      "bytes": 27926,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/reference/point-0011.npz",
+      "sha256": "f296f97bd8a25b5bc0d7528c2f335e6ee527681c92c0ebb59ebc6a8cc5fffddb"
+    },
+    {
+      "bytes": 27926,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/reference/point-0012.npz",
+      "sha256": "d967568935835710edc2f0c885a54271cc36776f8e1b89cf4aedc2ca89989e7c"
+    },
+    {
+      "bytes": 27926,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/reference/point-0013.npz",
+      "sha256": "7053e3e720324d3ebda90656cd93599fc3b62e26ffaac5d75bf75ce678159b63"
+    },
+    {
+      "bytes": 27926,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/reference/point-0014.npz",
+      "sha256": "6483704c4952048f6fbd6b8400871750e0a3f967e89f9a162499ebe032584646"
+    },
+    {
+      "bytes": 27926,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/reference/point-0015.npz",
+      "sha256": "b93c03abb67bae598b7ea9dc2667d7f3a24254105fe8f76c98e18b7f207911f9"
+    },
+    {
+      "bytes": 27926,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/reference/point-0016.npz",
+      "sha256": "8e98fd41e0d7f85927345d857f82cee284a482f1e4ecc42bf24a7dfbcaaadc06"
+    },
+    {
+      "bytes": 27926,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/reference/point-0017.npz",
+      "sha256": "2c2314bf518883e8d4b837fe0e9b373e9c2ec264adab044a05e1fc82bc5fb6ab"
+    },
+    {
+      "bytes": 27926,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/reference/point-0018.npz",
+      "sha256": "73ebcfb8fa86c31d7a9f4433674c99f0129dbaae465142c005ba2390765a5e79"
+    },
+    {
+      "bytes": 834796,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/reference/promotion.json",
+      "sha256": "74a0b7fddf73e4867d1c10b0557588d636dd9ca034f2f1dae177eca27e6873f4"
+    },
+    {
+      "bytes": 9877,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/reference/protected-after.json",
+      "sha256": "a2b57a5afc127d62530e19692ecb152e8382c40c2c796d5cde70f9786e4bd9f0"
+    },
+    {
+      "bytes": 1189677,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/reference/reversed-control.json",
+      "sha256": "8759762211aac6d87d9b78e12c86d50c485d67ee1af75c03374a1fdc381b9452"
+    },
+    {
+      "bytes": 605016,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/reference/reversed-selection.json",
+      "sha256": "93e42573a469fb04af8d6ef0f102b05fcdb806003c7ec9988263c20808b0d7a4"
+    },
+    {
+      "bytes": 1189662,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/reference/scaled-control.json",
+      "sha256": "391cfeef986c45439e91267ff44ce2fdb5e459e0dd36a21a95f8c40650722fd4"
+    },
+    {
+      "bytes": 605014,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/reference/scaled-selection.json",
+      "sha256": "3b77a1bc1d191b30bbce777859d1a4583a17f64df045b03bc569ca8061f370d3"
+    },
+    {
+      "bytes": 115296,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/payload/reference/zero-control.json",
+      "sha256": "56813907cdcca749e59ee871819d04118a0773738d754315fb9949ab7bb166d1"
+    },
+    {
+      "bytes": 802,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/post-execution-preservation.json",
+      "sha256": "f44287f422f83f7fc6a3dfa500afb1b4547d9d1331d70249da41483700c8f293"
+    },
+    {
+      "bytes": 32638,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/precision-storage-entry.json",
+      "sha256": "e654967ee071f942d65cddf92b7c84bf609108b071a62bcb5b9e79119fac9f77"
+    },
+    {
+      "bytes": 260,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/stderr.29838596.log",
+      "sha256": "e88d7498b24f9dd51983e7779ddc9995dcd041200de7e81cbed8ed71a1d6c842"
+    },
+    {
+      "bytes": 2079,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/stdout.29838596.log",
+      "sha256": "e91efc831eaed697db7724570fb3954ea509c4659544414f3c614ada45e3b8e7"
+    },
+    {
+      "bytes": 1086,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/submission-started.json",
+      "sha256": "2e5d63f2bec91938c5a0b1bbc280744870d0ffeda56a36edf4b04bc2eaf3bf81"
+    },
+    {
+      "bytes": 1212,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/submission.json",
+      "sha256": "718d44a5f05127137386e59abe416e4a2bc66e2fc5e0c96f5d7e842935177a5e"
+    },
+    {
+      "bytes": 20682,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/whole-inventory-entry-1/complete-inventory-entry-01/chemistry-diagnostic-storage-entry.json",
+      "sha256": "f5b4825247f1de37e9bef4839416dc984ebcea25bb43aadbda5e14913e84a059"
+    },
+    {
+      "bytes": 19569,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/whole-inventory-entry-1/complete-inventory-entry-01/continuation-storage-chem-diag-entry.json",
+      "sha256": "df09026b4c9f425a78d7ba569c79b18161cc8c8db2ee38b928da9c6d04479108"
+    },
+    {
+      "bytes": 10892,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/whole-inventory-entry-1/complete-inventory-entry-01/current-chemistry-capacity-chem-diag-entry/assessment.json",
+      "sha256": "2a5cfba5913a5d0045ea0fdd173262d05746af6a51bad53ed170d3b6ca40c77e"
+    },
+    {
+      "bytes": 7643,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/whole-inventory-entry-1/complete-inventory-entry-01/current-chemistry-capacity-chem-diag-entry/inherited-storage-entry/continuation-storage-precision.json",
+      "sha256": "85692e7cd370fa1063cb66b46e9115159cfad8f49d336445fb295ece7e5c1f02"
+    },
+    {
+      "bytes": 8811,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/whole-inventory-entry-1/complete-inventory-entry-01/current-chemistry-capacity-chem-diag-entry/inherited-storage-entry/precision-storage-entry.json",
+      "sha256": "74fd5ba9742e579758477eb56f4f163bbf6598698da5cc7c6097e6028386d5d9"
+    },
+    {
+      "bytes": 6876,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/whole-inventory-entry-1/complete-inventory-entry-01/current-chemistry-capacity-chem-diag-entry/inherited-storage-entry/selected-storage-precision/gate.json",
+      "sha256": "835b917242a5b092d28a01f29835be8b770278a8c7e10d17bae17887960373f0"
+    },
+    {
+      "bytes": 1487,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/whole-inventory-entry-1/complete-inventory-entry-01/current-chemistry-capacity-chem-diag-entry/invocation.json",
+      "sha256": "9c2a2d4bfd7fba3fbd687ed3b6998bd9fa476a66dfff6a163c14be528c788d99"
+    },
+    {
+      "bytes": 10074,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/whole-inventory-entry-1/complete-inventory-entry-01/current-chemistry-capacity-chem-diag-entry/production-storage-entry.json",
+      "sha256": "81648ea906691095503ad3dc4b74f7c70820cd15be36229ce2d5daef6f84f1c3"
+    },
+    {
+      "bytes": 21794,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/whole-inventory-entry-1/complete-inventory-entry-01/qualification-storage-entry.json",
+      "sha256": "8fd76ad1282f2de2d361eb6a03caa62236d18d14621e06fdf85ea060b2b8ec6b"
+    },
+    {
+      "bytes": 6882,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/whole-inventory-entry-1/complete-inventory-entry-01/selected-storage-chem-diag-entry/gate.json",
+      "sha256": "841d7a8bec7c7b9819c6a5305dde3888219f4de001539ea6c1b23f0e37948d61"
+    },
+    {
+      "bytes": 22916,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/whole-inventory-entry-1/complete-storage-entry.json",
+      "sha256": "68140ff633c4e4fc12a04a46bef6f138b01518e382f8a2cc788e9bff53240479"
+    },
+    {
+      "bytes": 7643,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/whole-inventory-entry-1/continuation-storage-precision.json",
+      "sha256": "4f52a2d5143e5efef8fa7ba69c4b00522538ab08796ab9e13cc2dd325a7ef6cc"
+    },
+    {
+      "bytes": 32638,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/whole-inventory-entry-1/precision-storage-entry.json",
+      "sha256": "e654967ee071f942d65cddf92b7c84bf609108b071a62bcb5b9e79119fac9f77"
+    },
+    {
+      "bytes": 22952,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/whole-inventory-entry-1/recovery-capacity-entry.json",
+      "sha256": "79a7301f8afeaef6d1b52dfa4389290a573c78b6c4fd0725ffe3d0229e9d38a2"
+    },
+    {
+      "bytes": 6876,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/gpu/whole-inventory-entry-1/selected-storage-precision/gate.json",
+      "sha256": "54e92de39e2d6a653cba9ba7eda8dca2d794ea38deffa544fed067e745f7816e"
+    },
+    {
+      "bytes": 2559,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/cpu-certificate.json",
+      "sha256": "338b236d46b7510955195c022308a058913cbe97102823c55b23d7819f671ffd"
+    },
+    {
+      "bytes": 72,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-fix-09/jobs.json",
+      "sha256": "524bb4b7536389363e9dcff357cd7122626cadefd6ca69c7fc56b2d75f7cda37"
+    }
+  ],
+  "reference_device_placement": {
+    "context": {
+      "arrays": 71,
+      "device": {
+        "id": 0,
+        "kind": "NVIDIA L40S",
+        "platform": "gpu"
+      },
+      "status": "passed_single_device_placement"
+    },
+    "frozen_transfer_bits_unchanged": true,
+    "graph": {
+      "arrays": 2,
+      "device": {
+        "id": 0,
+        "kind": "NVIDIA L40S",
+        "platform": "gpu"
+      },
+      "fields": {
+        "E_upper": {
+          "device": {
+            "id": 0,
+            "kind": "NVIDIA L40S",
+            "platform": "gpu"
+          },
+          "dtype": "float64",
+          "sha256": "320b7e2e4fbd5d3441f8c7d1ef54d8d69eaf9cf556b01feb1906486d22a89108",
+          "shape": [
+            300,
+            5
+          ],
+          "transfer_bits_unchanged": true
+        },
+        "X": {
+          "device": {
+            "id": 0,
+            "kind": "NVIDIA L40S",
+            "platform": "gpu"
+          },
+          "dtype": "float64",
+          "sha256": "e82d49b713ce694444720757d7b2a2f78f14090429696b36e750ee589767dae8",
+          "shape": [
+            25,
+            6
+          ],
+          "transfer_bits_unchanged": true
+        }
+      },
+      "production_execution_changed": false,
+      "status": "passed_single_device_placement"
+    },
+    "key": {
+      "id": 0,
+      "kind": "NVIDIA L40S",
+      "platform": "gpu"
+    },
+    "model": {
+      "arrays": 742,
+      "device": {
+        "id": 0,
+        "kind": "NVIDIA L40S",
+        "platform": "gpu"
+      },
+      "status": "passed_single_device_placement"
+    },
+    "production_execution_changed": false,
+    "reference_only": true,
+    "status": "passed"
+  },
+  "reference_direction_results": [
+    {
+      "field": "X",
+      "passed": true,
+      "row": 3,
+      "selected_pair": [
+        0.0001,
+        3e-05
+      ],
+      "source": 1,
+      "target": 2
+    },
+    {
+      "field": "X",
+      "passed": true,
+      "row": 7,
+      "selected_pair": [
+        0.0001,
+        3e-05
+      ],
+      "source": 3,
+      "target": 5
+    },
+    {
+      "field": "E_upper",
+      "passed": true,
+      "row": 130,
+      "selected_pair": [
+        0.0001,
+        3e-05
+      ],
+      "source": 0,
+      "target": 1
+    },
+    {
+      "field": "E_upper",
+      "passed": true,
+      "row": 3,
+      "selected_pair": [
+        0.0001,
+        3e-05
+      ],
+      "source": 0,
+      "target": 1
+    }
+  ],
+  "reference_precision": {
+    "aval_counts": {
+      "bool": 170,
+      "float64": 9651,
+      "int32": 617,
+      "int64": 435,
+      "key<fry>": 56,
+      "uint32": 6
+    },
+    "floating_operations_float64": true,
+    "narrow_float_avals": [],
+    "nested_graphs": 62,
+    "status": "passed"
+  },
+  "saved_NPZ_files_byte_verified": 20,
+  "scope": "Local stdlib exact bytes/JSON/schema/own LSF/source pins and native NPZ bindings only. All numerical evaluation was allocated HPC; no local array calculations.",
+  "source_manifest_sha256": "f2043af74b8fa9ff485a44b80fcf96454bf8585868859389828c37f0073a3664",
+  "status": "verified_native_separate_FP64_qualification_pass_original_failures_preserved"
+}

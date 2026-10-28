@@ -19,8 +19,8 @@ import time
 
 VERSION = "protenix-endpoint-precision-plan-v2"
 BASE = Path("/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01")
-ROOT = BASE / "protenix-endpoint-fix-08"
-SOURCE = BASE / "protenix-endpoint-fix-release-08/source"
+ROOT = BASE / "protenix-endpoint-fix-09"
+SOURCE = BASE / "protenix-endpoint-fix-release-09/source"
 FORENSICS = BASE / "protenix-endpoint-forensics-release-01/source"
 FORENSICS_PIN = "d127d6abe87307a5d305edb6d04e3a32e3545c508e58b82ce45290e0f3fc03d8"
 FORENSICS_PLAN_SHA = "14d0cf5b03af73ee5d87ece55b8c48616897521c50bbb40e8f76b6a9bb8f5861"
@@ -263,6 +263,55 @@ def _production(plan, output, lifecycle, protected):
           "prior_forensic_report": plan["prior_forensic_report"]})
 
 
+def reference_device_identity(device):
+    return {"platform": str(device.platform), "id": int(device.id),
+            "kind": str(device.device_kind)}
+
+
+def require_reference_device(value, device):
+    """A committed reference input must use the same single execution device."""
+    query = getattr(value, "devices", None)
+    require(callable(query), "Reference array has no explicit execution device")
+    devices = tuple(query())
+    require(len(devices) == 1 and devices[0] == device,
+            "Reference array does not share the declared single execution device")
+
+
+def place_reference_tree(tree, device):
+    """Place a separate reference copy; static leaves and numeric bits stay exact."""
+    import jax
+    import equinox as eqx
+    placed = jax.tree_util.tree_map(
+        lambda value: jax.device_put(value, device) if eqx.is_array(value) else value, tree)
+    arrays = 0
+    for value in jax.tree_util.tree_leaves(placed):
+        if eqx.is_array(value):
+            require_reference_device(value, device)
+            arrays += 1
+    require(arrays > 0, "Reference placement found no arrays")
+    return placed, {"status": "passed_single_device_placement", "arrays": arrays,
+                    "device": reference_device_identity(device)}
+
+
+def reference_graph_arrays(values, device):
+    """Losslessly promote graph fields and commit both to the reference device."""
+    import numpy as np
+    require(set(values) == {"X", "E_upper"}, "Reference graph field scope differs")
+    expected = {field: np.asarray(values[field], dtype=np.float64) for field in ("X", "E_upper")}
+    placed, audit = place_reference_tree(expected, device)
+    rows = {}
+    for field in ("X", "E_upper"):
+        actual = np.asarray(placed[field])
+        require(actual.dtype == np.float64 and actual.shape == expected[field].shape,
+                "Reference graph transfer changed precision or shape: " + field)
+        require(actual.tobytes(order="C") == expected[field].tobytes(order="C"),
+                "Reference graph transfer changed probability bits: " + field)
+        rows[field] = {"dtype": str(actual.dtype), "shape": list(actual.shape),
+                       "sha256": hashlib.sha256(actual.tobytes(order="C")).hexdigest(),
+                       "device": reference_device_identity(device), "transfer_bits_unchanged": True}
+    return placed, {**audit, "fields": rows, "production_execution_changed": False}
+
+
 def _reference(plan, output, lifecycle, protected):
     native, prior, arm, hooks, failed, ready, before = verify(plan, output)
     protected.update(before)
@@ -313,19 +362,30 @@ def _reference(plan, output, lifecycle, protected):
         lifecycle.update(model_frozen=lambda: {"model": array_digest(model), "context": array_digest(context)},
                          model_before=promoted_before)
         del original_model, original_context
+        gpu = jax.devices("gpu")[0]
+        model, model_placement = place_reference_tree(model, gpu)
+        context, context_placement = place_reference_tree(context, gpu)
+        require({"model": array_digest(model), "context": array_digest(context)} == promoted_before,
+                "Reference device transfer changed promoted frozen values")
         write(directory / "promotion.json", {"model": model_audit, "context": context_audit})
         precision.floating_dtype_audit(model)
         precision.floating_dtype_audit(context)
         pocket = read(native.bound(arm["inputs"]["pocket"]))
         tokens = map_protenix_pocket(context, pocket)
         loss = model.build_loss(context=context, loss=NativeContactLoss(8.0, tokens))
-        key = jax.random.key(17)
-        gpu = jax.devices("gpu")[0]
-        # Match the original atom CPU/bond GPU placement, without changing values.
-        devices = {"X": jax.devices("cpu")[0], "E_upper": gpu}
+        key = jax.device_put(jax.random.key(17), gpu)
+        require_reference_device(key, gpu)
+        # The reference uses one device; the separate FP32 production placement
+        # remains untouched. Mixed committed CPU/GPU arguments cannot enter JIT.
         def graph(values):
-            return RelaxedGraph(**{f: jax.device_put(jnp.asarray(values[f], dtype=jnp.float64), devices[f]) for f in ("X", "E_upper")})
+            arrays, _ = reference_graph_arrays(values, gpu)
+            return RelaxedGraph(**arrays)
         baseline = {f: fp32[f].astype(np.float64) for f in ("X", "E_upper")}
+        _, graph_placement = reference_graph_arrays(baseline, gpu)
+        write(directory / "device-placement.json", {"status": "passed", "reference_only": True,
+              "production_execution_changed": False, "model": model_placement,
+              "context": context_placement, "graph": graph_placement,
+              "key": reference_device_identity(gpu), "frozen_transfer_bits_unchanged": True})
         tree = eqx.filter_make_jaxpr(lambda g: loss(g, key=key))(graph(baseline))[0]
         dtype_audit = audit_jaxpr(tree)
         write(directory / "native-dtype-audit.json", dtype_audit)
@@ -377,7 +437,8 @@ def _reference(plan, output, lifecycle, protected):
         metadata = {"full_model_float64": True, "parameters_float64": True, "native_features_float64": True,
                     "native_operations_float64": True, "final_reduction_only": False,
                     "dtype_audit": binding(directory / "native-dtype-audit.json"),
-                    "promotion": binding(directory / "promotion.json"), "validation_only": True}
+                    "promotion": binding(directory / "promotion.json"),
+                    "device_placement": binding(directory / "device-placement.json"), "validation_only": True}
         directions = plan["original_directions"]
         def run_policy(label, factor=1.0):
             cursor.clear()
