@@ -8776,3 +8776,17 @@ actualbytes charged and4GiB100000reserve unchanged. ActualCPU29839033 and
 ownendedcontroller29839034 submitted. Full592/startup/native/pilot/runtime
 checks precede any conditional optimizer submission; none claimed yet.
 Savedscientificresults/settings untouched, no local numerics, monitorpaused.
+
+
+### 2026-10-28 — Continuation15 fullCPU592/startup passed; two native validations queued
+
+CPU29839033 andcontroller29839034 actualDONE/hpc/sameLSFsuccess. Raw575Jax+
+17Torch=592cases/14modules, zeroerrors/failures/skips; exact mergedXML and
+actualfouroriginalCLI+DBproducer+bothreference startupcommands passed.
+CPUcertificatee1c2b9dba7cd35c7abb360e2c12aa725129311bd10fc9d9deb88a22e7e916bbd.
+Fullnative Pro29839086/ownendedcallback29839087 andDB29839088/callback29839089
+actuallyPEND10:29:57CET, declaredexclusiveL40S4CPU8GiBslot2h/nointerarmdependency.
+No fullnative integration or optimizercontinuation pass/start claimed.
+Conditionalcontrollers retain everyoriginalcheck plus exactliveGPUreference
+replay/fullruntime/fullremainingquota before Pro20k->50k andDB7500->10k.
+Settings/savedresults/originalfailures intact; monitorpaused; no localnumerics.

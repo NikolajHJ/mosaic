@@ -1,0 +1,131 @@
+{
+  "CPU": {
+    "actual_driver_startups": 4,
+    "actual_original_producer_startups": 1,
+    "actual_reference_startups": 2,
+    "cases": 592,
+    "certificate": {
+      "bytes": 7413,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-15/cpu-certificate.json",
+      "sha256": "e1c2b9dba7cd35c7abb360e2c12aa725129311bd10fc9d9deb88a22e7e916bbd"
+    },
+    "certificate_proofs_verified": 26,
+    "errors": 0,
+    "failures": 0,
+    "job_id": "29839033",
+    "merged_XML_exact_raw_union": true,
+    "module_counts": {
+      "tests.test_admission": 50,
+      "tests.test_continuation_driver": 56,
+      "tests.test_continuation_ops": 107,
+      "tests.test_current_capacity": 5,
+      "tests.test_dbmol_endpoint_precision": 36,
+      "tests.test_dbmol_reference": 17,
+      "tests.test_logit_admission": 14,
+      "tests.test_measurement_resolution": 10,
+      "tests.test_precision_continuation_driver": 64,
+      "tests.test_precision_continuation_hooks": 57,
+      "tests.test_precision_continuation_ops": 88,
+      "tests.test_protenix_reference_worker": 58,
+      "tests.test_qualification": 19,
+      "tests.test_recovery_capacity": 11
+    },
+    "raw_XML_counts": {
+      "jax": 575,
+      "merged": 592,
+      "torch": 17
+    },
+    "same_job_LSF_success": true,
+    "skips": 0,
+    "state": "DONE"
+  },
+  "actual_jobs": {
+    "after-cpu": "29839034",
+    "cpu": "29839033",
+    "dbmol-after-validate-07500": "29839089",
+    "dbmol-validate-07500": "29839088",
+    "protenix-after-validate-20000": "29839087",
+    "protenix-validate-20000": "29839086"
+  },
+  "all_six_actual_submission_resource_command_dependency_vectors_verified": true,
+  "callback": {
+    "dependency": "ended(29839033)",
+    "job_id": "29839034",
+    "same_job_LSF_success": true,
+    "state": "DONE"
+  },
+  "limitations": [
+    "Prior qualified/native and original saved scientific bytes are remote source-bound references, not all contained in this packet.",
+    "Actual CPU startup is metadata-only; new GPU co-residency/full native admission remains pending."
+  ],
+  "native_integration_pass_established": false,
+  "native_states_at_observation": {
+    "29839086": "PEND",
+    "29839087": "PEND",
+    "29839088": "PEND",
+    "29839089": "PEND"
+  },
+  "not_a_storage_reservation": true,
+  "observed_utc": "2026-10-28T09:29:57.004665+00:00",
+  "optimizer_submitted": false,
+  "original_failures_preserved": true,
+  "original_settings_and_results_changed": false,
+  "packet": {
+    "bytes": 336914,
+    "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261028-precision-continuation-15\\cpu-delivery01\\stdout.json",
+    "sha256": "4f382b142a36c916d3ba0f837efc37736a8546ea7cdc4713ba12c754c7b158ff"
+  },
+  "packet_files_verified": 38,
+  "scope": "Local stdlib byte/hash/AST/JSON/XML/archive/schema only; no numerical tests/model imports/SSH",
+  "source": {
+    "archive": {
+      "bytes": 281417,
+      "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261028-precision-continuation-15\\source01\\source.tar.gz",
+      "sha256": "676950b688ff296a2bc8a2c3d65a7e3b9083c72686632e34e671ca721f565218"
+    },
+    "files_verified": 35,
+    "manifest": {
+      "bytes": 952238,
+      "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261028-precision-continuation-15\\source01\\source_manifest.json",
+      "sha256": "5448503965365f4db726d558df4ac91a41a7f711366b6ae47ae936993fd0c8bb"
+    },
+    "plan": {
+      "bytes": 153686,
+      "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261028-precision-continuation-15\\source01\\plan.json",
+      "sha256": "a89b801a52669d01e77b1b7413c6657b298123de0d08a6303a489949262490ef"
+    },
+    "safe_archive_members_verified": 36
+  },
+  "status": "passed_independent_stdlib_CPU_source_XML_startup_scheduler_submission_whole_storage_audit",
+  "verified_utc": "2026-10-28T09:33:47.745170+00:00",
+  "whole_storage_gates": [
+    {
+      "available_bytes": 56713688327,
+      "file_reserve": 100000,
+      "finite_user_file_headroom": 19637607,
+      "full_inherited_forecasts_preserved": true,
+      "physical_FS_inode_reporting": "unreported_all_zero",
+      "proof": {
+        "bytes": 24731,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-15/cpu/continuation-storage-entry.json",
+        "sha256": "420fdaf42b2c5fa3eb175ffd5f644d398aa65bde4b71af048bab554f35b6127e"
+      },
+      "required_bytes": 53811657553,
+      "reserve_bytes": 4294967296
+    },
+    {
+      "available_bytes": 56712684305,
+      "file_reserve": 100000,
+      "finite_user_file_headroom": 19637559,
+      "full_inherited_forecasts_preserved": true,
+      "physical_FS_inode_reporting": "unreported_all_zero",
+      "proof": {
+        "bytes": 24731,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-15/after-cpu/continuation-storage-entry.json",
+        "sha256": "c34109b807163dad65db8f7d48b3634765f23594104d1670410a521cd49663c6"
+      },
+      "required_bytes": 53811657553,
+      "reserve_bytes": 4294967296
+    }
+  ]
+}

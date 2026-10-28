@@ -1,5 +1,5 @@
 {
-  "status": "allocated_cpu_submitted_native_and_optimizer_not_established",
+  "status": "cpu_592_and_actual_startups_passed_full_native_validations_queued",
   "preparation": {
     "archive_bytes": 281417,
     "archive_sha256": "676950b688ff296a2bc8a2c3d65a7e3b9083c72686632e34e671ca721f565218",
@@ -45,5 +45,24 @@
   "storage_required_bytes": 53811657553,
   "storage_available_bytes": 56714184067,
   "native_integration_passed": false,
-  "original_results_changed": false
+  "original_results_changed": false,
+  "cpu_pass_established": true,
+  "cpu_cases": 592,
+  "last_observed_utc": "2026-10-28T09:32:01.201615+00:00",
+  "cpu_certificate_sha256": "e1c2b9dba7cd35c7abb360e2c12aa725129311bd10fc9d9deb88a22e7e916bbd",
+  "jobs": {
+    "cpu": "29839033",
+    "after-cpu": "29839034",
+    "protenix-validate-20000": "29839086",
+    "protenix-after-validate-20000": "29839087",
+    "dbmol-validate-07500": "29839088",
+    "dbmol-after-validate-07500": "29839089"
+  },
+  "independent_cpu_verification_sha256": "fe307ba33753fc6ff946a34e9dc8d2cda5696841b64f8ba7a8b1bfa1b4a4cfbd",
+  "native_jobs_last_status": {
+    "29839086": "PEND",
+    "29839087": "PEND",
+    "29839088": "PEND",
+    "29839089": "PEND"
+  }
 }

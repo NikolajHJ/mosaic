@@ -1,0 +1,33 @@
+{
+  "status": "passed_independent_stdlib_CPU_XML_LSF_reference_startup_audit",
+  "job_id": "29839033",
+  "cases": 592,
+  "raw_cases": {
+    "jax": 575,
+    "torch": 17
+  },
+  "modules": {
+    "tests.test_admission": 50,
+    "tests.test_continuation_driver": 56,
+    "tests.test_continuation_ops": 107,
+    "tests.test_current_capacity": 5,
+    "tests.test_dbmol_endpoint_precision": 36,
+    "tests.test_dbmol_reference": 17,
+    "tests.test_logit_admission": 14,
+    "tests.test_measurement_resolution": 10,
+    "tests.test_precision_continuation_driver": 64,
+    "tests.test_precision_continuation_hooks": 57,
+    "tests.test_precision_continuation_ops": 88,
+    "tests.test_protenix_reference_worker": 58,
+    "tests.test_qualification": 19,
+    "tests.test_recovery_capacity": 11
+  },
+  "failures": 0,
+  "errors": 0,
+  "skips": 0,
+  "source_manifest_sha256": "5448503965365f4db726d558df4ac91a41a7f711366b6ae47ae936993fd0c8bb",
+  "observed_utc": "2026-10-28T09:28:25.404630+00:00",
+  "observation_sha256": "79d1a07b87b6132d861901c73ac78140c319521ea67e36e6e05a67f797caba79",
+  "native_integration_pass_established": false,
+  "optimizer_submitted": false
+}

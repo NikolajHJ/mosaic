@@ -1,5 +1,7 @@
 # Prospective endpoint qualification diagnostics
 
+Current28October10:32CET: [portable continuation15](runs/20261028-precision-continuation-15/README.md) passed all592 allocated CPU cases and seven actual startup routes, independently verified. Fresh full-model GPU validations Pro29839086 andDB29839088 plus own-ended callbacks are queued; optimizer continuations await their complete gates. Original saved20k/7500 states, settings and failed outcomes remain unchanged.
+
 Latest 28 October 2026: [Pro09](runs/20261028-protenix-endpoint-fix-09/README.md) native29838596 and [DB13](runs/20261028-dbmol-endpoint-recovery-13/README.md) native29838712 passed independently verified separate endpoint qualification. Original failures remain failed. [Continuation14](runs/20261028-precision-continuation-14/README.md) integrates these checkers with the original full-model drivers, pilots, runtime and whole-storage guards; its 590-case CPU suite and native integration are separate required gates before any optimizer child. Read its actual receipts for submission state.
 
 This experiment investigates whether a failed categorical endpoint probe is an
