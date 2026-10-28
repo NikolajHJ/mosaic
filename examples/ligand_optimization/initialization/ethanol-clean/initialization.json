@@ -1,0 +1,19 @@
+{
+  "schema": "mosaic-ligand-initialization-v1",
+  "graph_file": "initial_graph.npz",
+  "graph_sha256": "fbaba688714896c37c21dd1c2b5a485c8853036523d3ba88e655f5b9c6c58e78",
+  "smiles": "CCO",
+  "canonical_smiles": "CCO",
+  "elements_in_atom_order": [
+    "C",
+    "C",
+    "O"
+  ],
+  "heavy_atoms": 3,
+  "noise": {
+    "atom": 0.0,
+    "bond": 0.0
+  },
+  "seed": 17,
+  "noise_policy": "independent uniform probability rows blended with the hard graph"
+}
