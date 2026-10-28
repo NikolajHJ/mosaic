@@ -9135,3 +9135,26 @@ guide link. No runtime or scientific validation gate changed. No HPC connection,
 job, numerical test, rendering, publication, cleanup or monitor action occurred.
 Verification: experiments/reporting/jq1-live-progress/runs/20261028-report-default-guidance-01/verification.json.
 Unrelated working changes preserved; documentation-only task complete.
+
+
+### 2026-10-28T13:02:13.329323+00:00 — Current Mosaic run status: DeFoG running, continuation15 terminal failures
+
+Read-only scheduler/artifact observation13:00UTC confirms separate Protenix+DeFoG
+30k29839884 RUN (GPUstart12:37:40CET, optimization12:44:02CET), savedsummary10900
+and10905committedupdates of30000. Native continuation15 Pro29839086 ran then
+EXIT1 because its separate FP64 reference could not initialize CUDA; DB29839088
+EXIT1 at unchanged full-storage entry before native evaluation. Both callbacks
+EXIT1/submitted no optimizer; current15jobs exactlysix, no segment or savednew
+optimizerprefix. Actual old LSF proof authenticates aged-out records; never
+fabricated live EXIT/DONE. No new Pro50k/DB10k continuation is currently queued.
+PlainBol saved20k/30k and bothchem saved10k unchanged.
+
+Verification: experiments/validation/endpoint-qualification/runs/20261028-precision-continuation-15/status-20261028T130047Z.json.
+Full packet: results\hpc\20261028-all-Mosaic-run-status\observation-20261028T125858Z. All compact file bindings, ownjobLSF/exit1/
+submission identities and running/progress metadata rechecked locally with stdlib.
+No new jobs, tests, fixes, cleanup, saved-result changes or monitor resumption.
+Separate untracked learned-prior implementation remains untouched.
+
+The reusable report selection now marks the two continuations blocked for future
+updates, with dated error details. This changes presentation annotations only;
+no published edition or scientific settings changed and no report was rendered.

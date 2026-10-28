@@ -46,3 +46,22 @@ vectors authenticated. VerificationSHA
 fe307ba33753fc6ff946a34e9dc8d2cda5696841b64f8ba7a8b1bfa1b4a4cfbd.
 Latest10:32:01CET all4native/callback jobs PEND; no optimizer child or full
 native integration pass established.
+
+
+Latest read-only observation28October14:00Paris: original native Pro29839086
+ran11:25:00--11:33:07CET and EXIT1; its FP64 reference process could not
+initialize CUDA (CUDA_ERROR_DEVICE_UNAVAILABLE), before admission/pilots.
+DB29839088 ran11:26:17--11:28:16CET and EXIT1 at full-storage entry before
+native evaluation. Both own callbacks EXIT1 and submitted no optimizer child.
+Live records aged out; these failures are authenticated original same-job LSF,
+not fabricated live EXIT states. The root still has exactly the six original
+CPU/native/callback submissions, no segment and no saved new optimizer prefix.
+No continuation is currently queued from15. Original saved Pro20k/DB7500 and
+scientific settings remain unchanged. Detailed proof bindings and independently
+verified observation: status-20261028T130047Z.json.
+
+The same account has a separate learned-prior Protenix+DeFoG30k job29839884
+RUN since12:37:40CET, actual optimization since12:44:02CET; saved summary10900,
+newline-committed updates10905 at14:00:47CET. This is separate from this
+non-chemistry continuation. Status-only collection submitted/cancelled no jobs,
+performed no local numerical work and did not resume the paused monitor.

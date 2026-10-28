@@ -1,0 +1,76 @@
+{
+  "chemistry_saved_updates_each": 10000,
+  "compact_file_bindings_verified": 106,
+  "dbmol_error": "Full campaign/reference-proof storage entry admission failed before native evaluation",
+  "evidence": "results\\hpc\\20261028-all-Mosaic-run-status\\observation-20261028T125858Z",
+  "monitor_resumed": false,
+  "new_jobs_submitted_by_observation": false,
+  "nonchem15_jobs": {
+    "29839086": {
+      "LSF": {
+        "bytes": 2158,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-15/protenix-validate-20000/stdout.29839086.log",
+        "sha256": "2cfd988c34600228d030cc0bd63239dd64ff8c9fbf205edef36ce8ee53116446"
+      },
+      "ended_scheduler_local": "Wed Oct 28 11:33:07 2026",
+      "exit_code": 1,
+      "name": "protenix-validate-20000",
+      "started_scheduler_local": "Wed Oct 28 11:25:00 2026",
+      "status": "FAILED_PERSISTED"
+    },
+    "29839087": {
+      "LSF": {
+        "bytes": 2167,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-15/protenix-after-validate-20000/stdout.29839087.log",
+        "sha256": "c2d322be59cf26208bdbfd55a5bb30a5ac61d5bed09ac6230328390f96abd9e2"
+      },
+      "ended_scheduler_local": "Wed Oct 28 11:35:00 2026",
+      "exit_code": 1,
+      "name": "protenix-after-validate-20000",
+      "started_scheduler_local": "Wed Oct 28 11:33:09 2026",
+      "status": "FAILED_PERSISTED"
+    },
+    "29839088": {
+      "LSF": {
+        "bytes": 2138,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-15/dbmol-validate-07500/stdout.29839088.log",
+        "sha256": "64b594b02316f298eb5d54a113134bf19a80ceaeb7565a288e84da58dd2c4011"
+      },
+      "ended_scheduler_local": "Wed Oct 28 11:28:16 2026",
+      "exit_code": 1,
+      "name": "dbmol-validate-07500",
+      "started_scheduler_local": "Wed Oct 28 11:26:17 2026",
+      "status": "FAILED_PERSISTED"
+    },
+    "29839089": {
+      "LSF": {
+        "bytes": 2154,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-15/dbmol-after-validate-07500/stdout.29839089.log",
+        "sha256": "e37b556e894668235988c94990efea49137f4e731996cc3a5d1571a1fe30e572"
+      },
+      "ended_scheduler_local": "Wed Oct 28 11:30:06 2026",
+      "exit_code": 1,
+      "name": "dbmol-after-validate-07500",
+      "started_scheduler_local": "Wed Oct 28 11:28:18 2026",
+      "status": "FAILED_PERSISTED"
+    }
+  },
+  "nonchem15_optimizer_submitted": false,
+  "nonchem15_optimizer_updates": 0,
+  "observed_utc": "2026-10-28T13:00:47.550325+00:00",
+  "other_running_Mosaic_job": {
+    "GPU_started_Paris": "2026-10-28T12:37:40+01:00",
+    "job_id": "29839884",
+    "name": "Protenix + DeFoG 30k time ramp",
+    "newline_committed_update_records": 10905,
+    "optimization_started_utc": "2026-10-28T11:44:02.852978+00:00",
+    "runtime_and_output_projection_passed": true,
+    "saved_summary_updates": 10900,
+    "state": "RUN",
+    "target_updates": 30000
+  },
+  "plain_Boltz_saved_updates": 20000,
+  "protenix_error": "FP64 reference subprocess could not initialize CUDA: CUDA_ERROR_DEVICE_UNAVAILABLE",
+  "source_or_saved_results_mutated": false,
+  "status": "passed_readonly_scheduler_LSF_metadata_verification"
+}

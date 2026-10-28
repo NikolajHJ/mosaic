@@ -1,5 +1,5 @@
 {
-  "status": "cpu_592_and_actual_startups_passed_full_native_validations_queued",
+  "status": "native_checks_failed_reference_CUDA_and_storage_no_optimizer",
   "preparation": {
     "archive_bytes": 281417,
     "archive_sha256": "676950b688ff296a2bc8a2c3d65a7e3b9083c72686632e34e671ca721f565218",
@@ -28,15 +28,15 @@
     "status": "prepared_not_validated_not_staged"
   },
   "local_static_verification": {
-    "status": "passed_stdlib_AST_archive_portable_path_and_settings_audit",
-    "manifest_sha256": "5448503965365f4db726d558df4ac91a41a7f711366b6ae47ae936993fd0c8bb",
     "archive_sha256": "676950b688ff296a2bc8a2c3d65a7e3b9083c72686632e34e671ca721f565218",
-    "files": 35,
-    "members": 36,
     "declared_CPU_cases": 592,
+    "files": 35,
+    "manifest_sha256": "5448503965365f4db726d558df4ac91a41a7f711366b6ae47ae936993fd0c8bb",
+    "members": 36,
     "native_function_ASTs_unchanged": true,
     "pro_reference_declaration_only_changed": true,
-    "scientific_tests_locally": false
+    "scientific_tests_locally": false,
+    "status": "passed_stdlib_AST_archive_portable_path_and_settings_audit"
   },
   "optimizer_submitted": false,
   "monitor_remains_paused": true,
@@ -48,21 +48,23 @@
   "original_results_changed": false,
   "cpu_pass_established": true,
   "cpu_cases": 592,
-  "last_observed_utc": "2026-10-28T09:32:01.201615+00:00",
+  "last_observed_utc": "2026-10-28T13:00:47.550325+00:00",
   "cpu_certificate_sha256": "e1c2b9dba7cd35c7abb360e2c12aa725129311bd10fc9d9deb88a22e7e916bbd",
   "jobs": {
-    "cpu": "29839033",
     "after-cpu": "29839034",
-    "protenix-validate-20000": "29839086",
-    "protenix-after-validate-20000": "29839087",
+    "cpu": "29839033",
+    "dbmol-after-validate-07500": "29839089",
     "dbmol-validate-07500": "29839088",
-    "dbmol-after-validate-07500": "29839089"
+    "protenix-after-validate-20000": "29839087",
+    "protenix-validate-20000": "29839086"
   },
   "independent_cpu_verification_sha256": "fe307ba33753fc6ff946a34e9dc8d2cda5696841b64f8ba7a8b1bfa1b4a4cfbd",
   "native_jobs_last_status": {
-    "29839086": "PEND",
-    "29839087": "PEND",
-    "29839088": "PEND",
-    "29839089": "PEND"
-  }
+    "29839086": "FAILED_PERSISTED",
+    "29839087": "FAILED_PERSISTED",
+    "29839088": "FAILED_PERSISTED",
+    "29839089": "FAILED_PERSISTED"
+  },
+  "latest_observation": "status-20261028T130047Z.json",
+  "latest_observation_verification_sha256": "15ceb16f681d6e80e8d202a968b318d87efb1a0f929952fbfb88342465fd07e1"
 }
