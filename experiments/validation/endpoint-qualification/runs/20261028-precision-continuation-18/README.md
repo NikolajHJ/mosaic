@@ -1,5 +1,15 @@
 # Full remaining budgets: resource-count correction and portable checks
 
+Latest verified 28 October20:23:42 Paris: all817 allocated CPU cases and actual
+startup commands passed, with same-job LSF success. Protenix29841507 and
+DBMol29841511 validators both EXIT1 before model loading: the entry storage guard
+found active account job29838765 without an authenticated output budget. Their
+callbacks29841509/12 also exited; no optimizer continuation was submitted.
+This is a resource-accounting blocker, not a fresh gradient failure or proven
+byte shortage. Saved20k/7500 endpoints remain unchanged. Exact raw XML/LSF/source
+and submission verification is in `status-20261028-192342.json`. The old access
+limit below is historical; access recovered for this single read-only query.
+
 This retry preserves the user's preference for one full remaining Protenix job
 (20k→50k,30,000 updates, LR0.3) and one full remaining DBMol-objective job
 (7,500→10k,2,500 updates, LR0.0025), subject to complete measured admission.
@@ -48,7 +58,7 @@ CPU29841471 and own-ended controller29841472 were actually submitted after
 fresh storage passed:11,670,735,360 required versus44,955,207,680 conservatively
 available bytes, retaining reserves. No additional cleanup occurred.
 
-The single later status query failed SSH authentication at15:18:18 UTC. No18 CPU
+The first later status query failed SSH authentication at15:18:18 UTC. At that time no18 CPU
 pass, GPU readiness, optimizer submission or progress can be claimed from that
 failed observation. Inspect actual remote jobs before recovery; do not repeat
 the stage/controller or manufacture states. A separate

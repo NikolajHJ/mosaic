@@ -1,8 +1,10 @@
 # Prospective endpoint qualification diagnostics
 
-Latest 28 October handoff: [full-budget18](runs/20261028-precision-continuation-18/README.md)
-was staged and submitted CPU29841471/controller29841472. A subsequent status
-query failed SSH authentication; no later CPU/GPU/optimizer outcome is verified.
+Latest verified28October20:23:42 Paris: [full-budget18](runs/20261028-precision-continuation-18/README.md)
+passed all817 allocated CPU cases. Both native validators29841507/29841511
+exited before model loading because active account job29838765 lacked a bounded
+output declaration. Their callbacks exited too; no optimizer was submitted.
+This is resource admission, not a new gradient failure or proven byte shortage.
 Do not duplicate those jobs or replay staging. The requested horizons are the
 full remaining Protenix30k and DBMol2.5k, with measured reservations and unchanged
 settings, saved results and scientific checks. Historical16's unstarted small-chunk
@@ -13,7 +15,9 @@ passed all98 cases in0.94s without scientific libraries or a fabricated allocati
 Use it before packaging resource/runtime changes. It does not replace allocated
 CPU/native/model/gradient checks. Canonical resource helpers contain an
 [unsealed19 candidate](runs/20261028-precision-continuation-19/README.md), with no
-package or jobs; authenticate18's actual outcomes before further launch work.
+package or jobs. Its portable-inventory changes do not resolve the active
+external-writer gate; authenticate that job's output budget or terminal state
+and every remaining writer before further launch work.
 The monitor remains paused. Older dated status paragraphs below are historical.
 
 Current28October10:32CET: [portable continuation15](runs/20261028-precision-continuation-15/README.md) passed all592 allocated CPU cases and seven actual startup routes, independently verified. Fresh full-model GPU validations Pro29839086 andDB29839088 plus own-ended callbacks are queued; optimizer continuations await their complete gates. Original saved20k/7500 states, settings and failed outcomes remain unchanged.

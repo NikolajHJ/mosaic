@@ -9,8 +9,9 @@ Latest records:
 - [Full-budget17](20261028-precision-continuation-17/README.md): preserved CPU
   fixture assertion failure,806 passes/one failure; no GPU or optimizer children.
 - [Full-budget18](20261028-precision-continuation-18/README.md): corrected three-stream
-  file allowance; actual CPU29841471/controller29841472 submitted. Follow-up SSH
-  authentication failed, so later outcomes are unknown. Never replay staging.
+  file allowance; allocated CPU817 passed. Both GPU validators exited before
+  models because active account job29838765 had no authenticated output budget;
+  no optimizer continuation was submitted. Never replay staging.
 - [Resource candidate19](20261028-precision-continuation-19/README.md): unsealed
   portable content identity and bounded complete-inventory retries; no jobs.
   All98 local metadata cases passed in0.94s; allocated scientific checks still

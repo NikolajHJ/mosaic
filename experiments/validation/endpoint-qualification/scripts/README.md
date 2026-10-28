@@ -154,10 +154,14 @@ the full allocated CPU suite, actual CUDA/model/FP64/gradient/pilot checks still
 run on HPC before any optimizer submission.
 
 The latest actual full-budget capsule is [continuation18](../runs/20261028-precision-continuation-18/README.md):
-CPU29841471/controller29841472 were submitted after a passed storage preflight.
-The later status query failed SSH authentication, so subsequent CPU/GPU/optimizer
-outcomes are unknown. Do not replay prepared18 or infer an optimization start.
+CPU29841471/controller29841472 passed all817 allocated cases and startup commands.
+Both GPU validators29841507/29841511 subsequently exited before models because
+active account job29838765 lacked an authenticated output budget. Their callbacks
+exited and no optimizer was submitted. Access recovered for the read-only query;
+the earlier authentication failure remains preserved. Do not replay prepared18.
 Canonical resource helpers now include the unsealed [candidate19](../runs/20261028-precision-continuation-19/README.md),
-which has no package or jobs. Authenticate all18 outcomes before assigning a new
-namespace or changing any launch. Historical16 small-chunk jobs were intentionally
+which has no package or jobs. Its portability patch does not resolve the external
+writer gate: authenticate that job's output budget or terminal state and all
+remaining account writers before assigning a new namespace or changing a launch.
+Historical16 small-chunk jobs were intentionally
 retired unstarted;17 failed one fixture message assertion, with no GPU children.

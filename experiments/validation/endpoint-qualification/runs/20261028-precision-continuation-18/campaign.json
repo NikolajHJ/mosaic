@@ -1,5 +1,5 @@
 {
-  "status": "allocated_CPU_submitted_followup_authentication_blocked",
+  "status": "CPU817_passed_native_validators_EXIT_before_models_on_external_writer_accounting",
   "source": {
     "archive_bytes": 329913,
     "archive_sha256": "84a9828ccce289a424bb95abd77d4585e5cde3ac2e2ed31598dbf508c6287c5f",
@@ -129,9 +129,79 @@
     "returncode": 255,
     "status": "returned"
   },
-  "actual_CPU_pass_established": false,
-  "current_GPU_jobs_or_state": null,
-  "current_optimizer_jobs_or_state": null,
+  "actual_CPU_pass_established": true,
+  "current_GPU_jobs_or_state": {
+    "cpu": {
+      "job_id": "29841471",
+      "state": "SUCCESS_PERSISTED",
+      "queue": "hpc",
+      "LSF": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-18/cpu/stdout.29841471.log",
+        "bytes": 1989,
+        "sha256": "7980ab65fdfbbee051506c34116468c5bc7ae96f8e39bab1c2f3a4b98cb3f90c"
+      },
+      "submitted_utc": "2026-10-28T14:48:36.515794+00:00"
+    },
+    "after-cpu": {
+      "job_id": "29841472",
+      "state": "SUCCESS_PERSISTED",
+      "queue": "hpc",
+      "LSF": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-18/after-cpu/stdout.29841472.log",
+        "bytes": 2005,
+        "sha256": "5d23f101359cefdda49f128c629a1d191590aea18b7442c9b2b2a079c8ad2478"
+      },
+      "submitted_utc": "2026-10-28T14:48:36.987581+00:00"
+    },
+    "protenix-validate-20000": {
+      "job_id": "29841507",
+      "state": "FAILED_PERSISTED",
+      "queue": "gpul40s",
+      "LSF": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-18/protenix-validate-20000/stdout.29841507.log",
+        "bytes": 2150,
+        "sha256": "1ca5c8ef8162897a863265342a901612504d5c7fa6232f7c58a8a8c625cdb6c2"
+      },
+      "submitted_utc": "2026-10-28T14:52:18.988973+00:00"
+    },
+    "protenix-after-validate-20000": {
+      "job_id": "29841509",
+      "state": "FAILED_PERSISTED",
+      "queue": "hpc",
+      "LSF": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-18/protenix-after-validate-20000/stdout.29841509.log",
+        "bytes": 2166,
+        "sha256": "0db4caf15ca340c9a7687e38edc1fd92783f19ef64ac1696c258098f6a54ddb6"
+      },
+      "submitted_utc": "2026-10-28T14:52:19.224545+00:00"
+    },
+    "dbmol-validate-07500": {
+      "job_id": "29841511",
+      "state": "FAILED_PERSISTED",
+      "queue": "gpul40s",
+      "LSF": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-18/dbmol-validate-07500/stdout.29841511.log",
+        "bytes": 2138,
+        "sha256": "cdf905cc2cc46c008ffe8ca8dbcbeab41ecb9940b5bd59b710ca2625c339a4b7"
+      },
+      "submitted_utc": "2026-10-28T14:52:19.661361+00:00"
+    },
+    "dbmol-after-validate-07500": {
+      "job_id": "29841512",
+      "state": "FAILED_PERSISTED",
+      "queue": "hpc",
+      "LSF": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-18/dbmol-after-validate-07500/stdout.29841512.log",
+        "bytes": 2154,
+        "sha256": "391028d80c217ca424473f10edc0a8fa74aa51ab0682cfb0dd30a5b9d60c11ba"
+      },
+      "submitted_utc": "2026-10-28T14:52:20.161528+00:00"
+    }
+  },
+  "current_optimizer_jobs_or_state": {
+    "submitted": false,
+    "updates": 0
+  },
   "unknown_remote_outcomes_must_not_be_duplicated": true,
   "full_remaining_jobs": {
     "protenix": {
@@ -150,5 +220,10 @@
   "original_saved_results_edited": false,
   "scientific_gates_waived": false,
   "monitor_remains_paused": true,
-  "unsealed_resource_candidate": "20261028-precision-continuation-19"
+  "unsealed_resource_candidate": "20261028-precision-continuation-19",
+  "current_resource_blocker": "Active account job29838765 lacked authenticated bounded output declaration at entry",
+  "current_observed_utc": "2026-10-28T19:23:42.420215+00:00",
+  "current_status_record": "status-20261028-192342.json",
+  "GPU_checks_reached_model_or_gradients": false,
+  "old_failed_summaries_preserved": true
 }

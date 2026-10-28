@@ -1,11 +1,18 @@
 # Portable resource evidence candidate: unsealed, no jobs
 
+Latest prerequisite outcome: source18 CPU passed817 cases, but both GPU validators
+exited before model loading because another active account job29838765 lacked an
+authenticated bounded output declaration. No optimizer was submitted. The source18
+status record now authenticates those terminal outcomes. This candidate's inventory
+portability changes do not fix that external-writer gate: authenticate its budget
+or terminal state and all remaining writers before preparing any new launch.
+
 This local candidate preserves the full remaining Protenix30k and DBMol2.5k
 budgets, existing rates/losses/retention and every scientific check. It has not
 been packaged, staged, allocated-tested or submitted. Do not label it a pass or
 modify source18's read-only release.
 
-Source18 was actually staged with42 files; CPU29841471/controller29841472 were
+Historical initial handoff: source18 was staged with42 files; CPU29841471/controller29841472 were
 submitted. A later single follow-up SSH attempt returned255/Permission denied
 at2026-10-28T15:18:18Z. Their subsequent states and any GPU submissions are not
 established locally. Restore access and inspect all actual18 jobs, exclusive
