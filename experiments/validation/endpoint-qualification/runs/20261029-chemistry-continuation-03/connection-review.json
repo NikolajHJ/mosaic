@@ -1,0 +1,35 @@
+{
+  "verified_UTC": "2026-10-29T20:28:47Z",
+  "connection": {
+    "remote_exec_returncode": 0,
+    "stderr_canary_preserved": true,
+    "helper_executable_sha256": "beebe7f5d2a33ade37cfea1b040e2e3ff0d571dee5d9313d71d3b4011d4da3e3",
+    "commands_read_only": true,
+    "jobs_submitted_or_modified": false,
+    "authenticated_host": "hpclogin1",
+    "authenticated_user": "s234818",
+    "scheduler_read_passed": true,
+    "remote_exit_7_preserved": true,
+    "binary_roundtrip_2048_bytes_exact": true,
+    "binary_payload_sha256": "10fc3c51a152e90e5b90319b601d92ccf37290ef53c35ff92507687d8a911a08",
+    "status": "passed"
+  },
+  "local_transport_adaptation": {
+    "status": "passed_stdlib_AST_only",
+    "old_local_transport_sha256": "f6df1bada25ca1f2316acbcdcc2c146f0b339e01f6b3a256affce03a40d657bc",
+    "new_local_transport_sha256": "6f84dfbf01bd4e6e86bb5bbeb1f964a69815c568c070c86e51a1edfcdfdf91bd",
+    "remote_program_bytes_unchanged": true,
+    "remote_program_sha256": "f30c8f4980af3f20479a817aa3b2995ab305a1bd6e7862d489f3438233b9e80c",
+    "source_capsules_or_scientific_code_changed": false,
+    "only_local_transport_and_timeout_changed": true,
+    "helper_timeout_seconds": 300,
+    "caller_timeout_seconds": 330,
+    "staging_or_submission_executed": false
+  },
+  "helper": "C:\\Users\\nikol\\DTU-HPC\\helper-v1\\dtu-hpc.exe",
+  "HPC_access_blocker_resolved": true,
+  "experiment_submission_results_reconciled_in_this_review": false,
+  "scientific_jobs_submitted_or_changed": false,
+  "monitor_resumed": false,
+  "raw_evidence": "results/hpc/connection-review/20261029T202847Z"
+}

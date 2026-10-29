@@ -90,10 +90,13 @@ def main():
     request=json.dumps({'preparation':receipt,'archive':base64.b64encode(archive).decode()}).encode()
     # -c leaves stdin exclusively for the closed JSON transfer, not shell text.
     command='/work3/s234818/mosaic/envs/protenix-tiny/bin/python -B -c '+shlex.quote(PROGRAM)
-    argv=['ssh','-T','-o','BatchMode=yes','-o','ConnectTimeout=15','-o','ConnectionAttempts=1','dtu-hpc','bash -l -c '+shlex.quote(command)]
+    # Workstation default: pinned key + Credential Manager through the installed
+    # helper. Plain BatchMode SSH cannot supply this external-login password.
+    helper=r'C:\Users\nikol\DTU-HPC\helper-v1\dtu-hpc.exe'
+    argv=[helper,'exec','--timeout','300','bash -l -c '+shlex.quote(command)]
     (output/'started.json').write_text(json.dumps({'status':'outcome_unknown_until_receipt','source':receipt},indent=2)+'\n',encoding='utf8')
     try:
-        run=subprocess.run(argv,input=request,capture_output=True,timeout=300)
+        run=subprocess.run(argv,input=request,capture_output=True,timeout=330)
         (output/'stdout.json').write_bytes(run.stdout);(output/'stderr.txt').write_bytes(run.stderr)
         (output/'transport.json').write_text(json.dumps({'returncode':run.returncode},indent=2)+'\n',encoding='utf8')
         print(output);print(run.stdout.decode());print(run.stderr.decode())
