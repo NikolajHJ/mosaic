@@ -7,42 +7,32 @@
     "tests.test_chemistry_native_qualification.ChemistryNativeQualificationTests": 43
   },
   "cpu_job": "29847843",
-  "files": 13,
-  "manifest_sha256": "82eb292f66ee8f8dcd86d9480775c480c1b086a1192d6ac724fbdd771a08438e",
-  "monitor_resumed": false,
-  "optimizer_jobs_submitted": false,
-  "plan_sha256": "9364e9e4a743da5549452c01b290960c9e64a636b4fd72fe9921caec8c95f100",
-  "protected_input_files": 3953,
-  "remote_source_staged": true,
-  "saved_results_changed": false,
-  "settings_changed": false,
-  "status": "CPU43_controller_passed_native_component_job_submitted_pending_own_gates",
-  "jobs": {
-    "cpu": "29847843",
-    "after-cpu": "29847844",
-    "gpu-protenix": "29847869"
-  },
   "cpu_verification": {
-    "status": "passed_independent_scoped_chemistry_CPU_source_byte_XML_LSF_startup_dispatch_audit",
-    "cases": 43,
-    "files_verified": 61,
-    "CPU_job": "29847843",
-    "controller_job": "29847844",
-    "actual_native_job": "29847869",
-    "source_manifest_sha256": "82eb292f66ee8f8dcd86d9480775c480c1b086a1192d6ac724fbdd771a08438e",
     "CPU_certificate_sha256": "c951d07506eb11862032e80d087f7374d95db2173601e8074199a82fdd29b443",
-    "whole_dispatch_storage": {
-      "required_bytes": 43290287329,
-      "available_bytes": 43642676128,
-      "reserve_bytes": 4294967296,
-      "file_reserve": 130000
-    },
+    "CPU_job": "29847843",
+    "actual_native_job": "29847869",
+    "cases": 43,
+    "controller_job": "29847844",
+    "files_verified": 61,
+    "local_scientific_evaluation": false,
     "native_pass_established": false,
     "optimizer_jobs_submitted": false,
     "saved_results_changed": false,
-    "local_scientific_evaluation": false
+    "source_manifest_sha256": "82eb292f66ee8f8dcd86d9480775c480c1b086a1192d6ac724fbdd771a08438e",
+    "status": "passed_independent_scoped_chemistry_CPU_source_byte_XML_LSF_startup_dispatch_audit",
+    "whole_dispatch_storage": {
+      "available_bytes": 43642676128,
+      "file_reserve": 130000,
+      "required_bytes": 43290287329,
+      "reserve_bytes": 4294967296
+    }
   },
-  "last_observed_utc": "2026-10-29T11:02:36.995698+00:00",
+  "files": 13,
+  "jobs": {
+    "after-cpu": "29847844",
+    "cpu": "29847843",
+    "gpu-protenix": "29847869"
+  },
   "last_actual_states": {
     "29847807": "DONE",
     "29847808": "DONE",
@@ -54,6 +44,46 @@
     "29847844": "DONE",
     "29847869": "PEND"
   },
+  "last_observed_utc": "2026-10-29T11:02:36.995698+00:00",
+  "latest_failure": {
+    "evidence": "results/hpc/20261029-mosaic-heartbeat/20261029T220614Z",
+    "observed_utc": "2026-10-29T22:06:15.395378+00:00",
+    "proofs": [
+      {
+        "bytes": 445,
+        "json": {
+          "allocation_environment": {
+            "CUDA_MPS_LOG_DIRECTORY": "/tmp",
+            "CUDA_VISIBLE_DEVICES": "0",
+            "CUDA_VISIBLE_DEVICES1": "0",
+            "CUDA_VISIBLE_DEVICES2": "0",
+            "CUDA_VISIBLE_DEVICES3": "0",
+            "CUDA_VISIBLE_DEVICES4": "0",
+            "LSB_DJOB_NUMPROC": "4",
+            "LSB_JOBID": "29847869",
+            "LSB_QUEUE": "gpul40s"
+          },
+          "error": "ValueError('LSF MPS task mappings are missing, conflicting or not single GPU')",
+          "status": "failed"
+        },
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-25/chemistry-native-qualification-08/gpu-protenix/payload/cuda-routing-failure.json",
+        "sha256": "2d60c22a7061d4b8785afd2996168c2c794180d209c459c7ee4643f7f38ea962"
+      }
+    ],
+    "replacement": "20261029-chemistry-native-qualification-09",
+    "saved_results_changed": false,
+    "scientific_optimization_entered": false,
+    "status": "native_Pro_EXIT_before_models_one_based_LSF_mapping_bug"
+  },
+  "manifest_sha256": "82eb292f66ee8f8dcd86d9480775c480c1b086a1192d6ac724fbdd771a08438e",
+  "monitor_resumed": false,
+  "native_or_combined_pass_established": false,
   "new_optimizer_ids": [],
-  "native_or_combined_pass_established": false
+  "optimizer_jobs_submitted": false,
+  "plan_sha256": "9364e9e4a743da5549452c01b290960c9e64a636b4fd72fe9921caec8c95f100",
+  "protected_input_files": 3953,
+  "remote_source_staged": true,
+  "saved_results_changed": false,
+  "settings_changed": false,
+  "status": "native_Pro_EXIT_before_models_one_based_LSF_mapping_bug"
 }

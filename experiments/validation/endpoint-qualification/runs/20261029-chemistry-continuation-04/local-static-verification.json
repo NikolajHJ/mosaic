@@ -1,0 +1,24 @@
+{
+  "status": "passed_stdlib_all_members_source_AST_scope_audit",
+  "manifest_sha256": "0b30a7c94e34ae6ae858cf5f3903ab98ae3743fb0abbb95a1ac7640381ab6eb9",
+  "files": 10,
+  "allocated_cases_required": 997,
+  "local_metadata_cases_passed": 39,
+  "original_driver_hooks_stage_identical_to03": [
+    "scripts/chemistry_continuation_hooks.py",
+    "scripts/chemistry_continuation_driver.py",
+    "scripts/chemistry_continuation_stage.lsf"
+  ],
+  "only_changed_reference_functions": {
+    "scripts/chemistry_reference_worker.py": [
+      "validate_output"
+    ],
+    "scripts/chemistry_cuda_ownership.py": [
+      "resolve_visibility"
+    ]
+  },
+  "all_original_arms_settings_inputs_exact": true,
+  "new_native_component_job": "29851319",
+  "scientific_evaluation_local": false,
+  "new_allocated_pass_established": false
+}

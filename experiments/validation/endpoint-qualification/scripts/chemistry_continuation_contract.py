@@ -8,12 +8,12 @@ from pathlib import Path
 import re
 
 BASE = Path('/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01')
-SCOPE = BASE/'nonchem-precision-continuation-25'
-ROOT = SCOPE/'chemistry-continuation-03'
-OUTPUTS = BASE/'chemistry-continuation-03'
-SOURCE = SCOPE/'chemistry-continuation-release-03/source'
-CURRENT = BASE/'nonchem-precision-release-25/source'
-CURRENT_PIN = '62a3db1b97b81dd0ef6911ee93f11eb1379da794e01f86f035c0c036e1822f8b'
+SCOPE = BASE/'nonchem-precision-continuation-26'
+ROOT = SCOPE/'chemistry-continuation-04'
+OUTPUTS = BASE/'chemistry-continuation-04'
+SOURCE = SCOPE/'chemistry-continuation-release-04/source'
+CURRENT = BASE/'nonchem-precision-release-26/source'
+CURRENT_PIN = '8324c1d312adeaa4c67c475c01ef1217df6f3ad4044b997d1b73e168325412d3'
 PYTHON = '/work3/s234818/mosaic/envs/protenix-tiny/bin/python'
 VERSION = 'chemistry-reference-continuation-v1'
 GIB = 1024**3
@@ -114,6 +114,17 @@ def allocation(phase):
     slots=8 if gpu else (4 if phase in ('cpu','after-segment') else 1)
     return {'queue':'gpul40s' if gpu else 'hpc','slots':slots,
             'memory_per_slot':'4GB' if slots in (4,8) else '2GB'}
+
+
+def output_projection(unit,updates,actual_bytes=0):
+    """Exact qualified stride20 forecast, never a reduced quota/reserve gate."""
+    require(type(unit) is int and unit>0 and type(updates) is int and updates in (20000,40000)
+            and type(actual_bytes) is int and actual_bytes>=0,'Exact full chemistry horizon/byte observation required')
+    full=2*unit*((updates+19)//20+3)+GIB
+    require(actual_bytes<=full,'Actual scientific output exceeds the admitted complete cap')
+    return {'full_bytes':full,'remaining_growth_bytes':full-actual_bytes,
+            'matrix_bundles':(updates+19)//20+3,'text_allowance_bytes':GIB,
+            'loss_stride':1,'matrix_stride':20,'safety_factor':2,'updates':updates}
 
 
 def runtime(summary, arm):

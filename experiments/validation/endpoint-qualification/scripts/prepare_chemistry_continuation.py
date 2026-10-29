@@ -23,16 +23,20 @@ def replace(text,before,after,count=1):
 
 
 def main():
-    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--draft',choices=('source01','source02'),default='source02')
+    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--draft',choices=('source01','source02'),default='source01')
     args=parser.parse_args()
-    output=REPO/'results/hpc/20261029-chemistry-continuation-03'/args.draft
+    output=REPO/'results/hpc/20261029-chemistry-continuation-04'/args.draft
     if output.exists():raise ValueError('Immutable local draft already exists; inspect before a new attempt')
-    prior=REPO/'results/hpc/20261029-precision-continuation-25/source01'
+    prior=REPO/'results/hpc/20261029-precision-continuation-26/source01'
     original=prior/'source'
     if not original.exists():original=prior
     old_manifest=read(original/'source_manifest.json')
-    if digest((original/'source_manifest.json').read_bytes())!=c.CURRENT_PIN:raise ValueError('Original25 source pin differs')
-    qual=read(REPO/'results/hpc/20261029-chemistry-native-qualification-08/source01/plan.json')
+    if digest((original/'source_manifest.json').read_bytes())!=c.CURRENT_PIN:raise ValueError('Current26 source pin differs')
+    qualifier_run=OWNER/'runs/20261029-chemistry-native-qualification-09'
+    qualification=read(qualifier_run/'cpu-verification.json')
+    if qualification['status']!='passed_independent_scoped_chemistry_CPU_source_byte_XML_LSF_startup_dispatch_audit':
+        raise ValueError('Actual native09 CPU/controller/submission audit required before sealing')
+    qual=read(REPO/'results/hpc/20261029-chemistry-native-qualification-09/source01/plan.json')
     capture=read(REPO/'results/hpc/20261029-chemistry-continuation-preparation/20261029T123449Z/raw.json')
     current=read(original/'plan.json');plan={
         'version':c.VERSION,'root':c.ROOT.as_posix(),'source_root':c.SOURCE.as_posix(),
@@ -47,8 +51,8 @@ def main():
                 'boltz':{'arm':'boltz','environment':{},'scientific_settings_changed':False}},
         'retention_source':{'path':(c.BASE/'nonchem-stride20-startup-release-03/source').as_posix(),
             'manifest_sha256':'704fab033d97342a14dc12b58dc32df44874232c5c30aad47c4d02041a502aab'},
-        'components':{'protenix':{'parent':(c.SCOPE/'chemistry-native-qualification-08/gpu-protenix').as_posix(),
-              'job_id':'29847869','manifest_sha256':'82eb292f66ee8f8dcd86d9480775c480c1b086a1192d6ac724fbdd771a08438e'},
+        'components':{'protenix':{'parent':(c.SCOPE/'chemistry-native-qualification-09/gpu-protenix').as_posix(),
+              'job_id':qualification['actual_native_job'],'manifest_sha256':qualification['source_manifest_sha256']},
             'boltz':{'parent':(c.BASE/'chemistry-native-qualification-04/gpu-boltz').as_posix(),
               'job_id':'29834601','manifest_sha256':'5d8f4ef0f8bb820e76d2e92442492f604393e79b58725fd01f9bb042b3114863'}}}
     input_metadata=read(REPO/'results/hpc/20261029-chemistry-continuation-preparation/original-input-metadata/raw.json')
@@ -97,11 +101,11 @@ def main():
         files['scripts/'+name]=(OWNER/'scripts'/name).read_bytes().replace(b'\r\n',b'\n')
     worker=(original/'scripts/protenix_reference_worker.py').read_bytes()
     if digest(worker)!=old_manifest['files']['scripts/protenix_reference_worker.py']:raise ValueError('Reference source bytes changed')
-    text=worker.decode();text=replace(text,'ROOT = BASE / "nonchem-precision-continuation-25"','ROOT = BASE / "nonchem-precision-continuation-25/chemistry-continuation-03"')
-    text=replace(text,'SOURCE = BASE / "nonchem-precision-release-25/source"','SOURCE = BASE / "nonchem-precision-continuation-25/chemistry-continuation-release-03/source"')
+    text=worker.decode();text=replace(text,'ROOT = BASE / "nonchem-precision-continuation-26"','ROOT = BASE / "nonchem-precision-continuation-26/chemistry-continuation-04"')
+    text=replace(text,'SOURCE = BASE / "nonchem-precision-release-26/source"','SOURCE = BASE / "nonchem-precision-continuation-26/chemistry-continuation-release-04/source"')
     text=replace(text,'scripts/protenix_reference_worker.py','scripts/chemistry_reference_worker.py',2)
     text=replace(text,'declared == "4"','declared == ("4" if startup else "8")')
-    text=replace(text,'path.is_relative_to(ROOT)','(path.is_relative_to(ROOT) or path.is_relative_to(BASE / "chemistry-continuation-03"))')
+    text=replace(text,'path.is_relative_to(ROOT)','(path.is_relative_to(ROOT) or path.is_relative_to(BASE / "chemistry-continuation-04"))')
     files['scripts/chemistry_reference_worker.py']=text.encode()
     cuda=(original/'scripts/cuda_ownership.py').read_bytes()
     if digest(cuda)!=old_manifest['files']['scripts/cuda_ownership.py']:raise ValueError('CUDA source bytes changed')
@@ -111,20 +115,20 @@ def main():
     text=replace(text,'rusage[mem=8GB]','rusage[mem=4GB]')
     files['scripts/chemistry_cuda_ownership.py']=text.encode()
     files['tests/test_chemistry_continuation.py']=(OWNER/'tests/test_chemistry_continuation.py').read_bytes().replace(b'\r\n',b'\n')
-    files['README.md']=(OWNER/'runs/20261029-chemistry-continuation-03/README.md').read_bytes().replace(b'\r\n',b'\n')
+    files['README.md']=(OWNER/'runs/20261029-chemistry-continuation-04/README.md').read_bytes().replace(b'\r\n',b'\n')
     files['plan.json']=raw(plan)
     for name,data in files.items():
         if name.endswith('.py'):ast.parse(data,filename=name)
     parents={r['path']:r for r in qual['parent_sources']}
     parents[c.CURRENT.as_posix()]={'path':c.CURRENT.as_posix(),'files':50,'manifest_sha256':c.CURRENT_PIN}
-    qualifier=c.SCOPE/'chemistry-native-qualification-release-08/source'
-    parents[qualifier.as_posix()]={'path':qualifier.as_posix(),'files':13,'manifest_sha256':'82eb292f66ee8f8dcd86d9480775c480c1b086a1192d6ac724fbdd771a08438e'}
-    previous=c.SCOPE/'chemistry-continuation-release-02/source'
+    qualifier=c.SCOPE/'chemistry-native-qualification-release-09/source'
+    parents[qualifier.as_posix()]={'path':qualifier.as_posix(),'files':13,'manifest_sha256':qualification['source_manifest_sha256']}
+    previous=c.BASE/'nonchem-precision-continuation-25/chemistry-continuation-release-02/source'
     parents[previous.as_posix()]={'path':previous.as_posix(),'files':10,
             'manifest_sha256':'d87701b3eb422d3e1c1f9255eb61607011b96eb621a67d286ceefe961e36c250'}
     manifest={'version':c.VERSION,'files':{name:digest(data) for name,data in files.items()},
               'parent_sources':list(parents.values()),'capacity_source':parents[c.CURRENT.as_posix()],
-              'cpu_counts':{'tests.test_chemistry_continuation':34},'original_results_changed':False}
+              'cpu_counts':{'tests.test_chemistry_continuation':39},'original_results_changed':False}
     output.mkdir(parents=True)
     for name,data in files.items():
         path=output/'source'/name;path.parent.mkdir(parents=True,exist_ok=True);path.write_bytes(data)

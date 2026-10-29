@@ -20,11 +20,11 @@ from pathlib import Path,PurePosixPath
 import base64,hashlib,io,json,os,stat,subprocess,sys,tarfile
 request=json.loads(sys.stdin.buffer.read());p=request['preparation']
 source=Path(p['source_root']);root=Path(p['root']);scope=root.parent
-assert scope==Path('/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-25')
-assert source==scope/'chemistry-continuation-release-03/source' and root==scope/'chemistry-continuation-03'
+assert scope==Path('/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26')
+assert source==scope/'chemistry-continuation-release-04/source' and root==scope/'chemistry-continuation-04'
 assert scope.is_dir() and all(not x.is_symlink() for x in (scope,*scope.parents))
 assert not source.parent.exists() and not root.exists(),'Existing/unknown stage outcome; inspect receipts'
-previous=scope/'chemistry-continuation-02'
+previous=scope.parent/'nonchem-precision-continuation-25/chemistry-continuation-02'
 previous_pin='d87701b3eb422d3e1c1f9255eb61607011b96eb621a67d286ceefe961e36c250'
 # Read actual previous outcomes BEFORE staging or deciding whether a native
 # validator must be reused. Never race an old still-running dispatcher.
@@ -81,11 +81,11 @@ print(json.dumps(result))
 
 
 def main():
-    package=REPO/'results/hpc/20261029-chemistry-continuation-03/source02'
+    package=REPO/'results/hpc/20261029-chemistry-continuation-04/source01'
     receipt=json.loads((package/'preparation.json').read_bytes());archive=(package/'source.tar.gz').read_bytes()
     if len(archive)!=receipt['archive_bytes'] or hashlib.sha256(archive).hexdigest()!=receipt['archive_sha256']:
         raise ValueError('Local sealed archive differs')
-    output=REPO/'results/hpc/20261029-chemistry-continuation-03'/datetime.now(timezone.utc).strftime('stage-%Y%m%dT%H%M%SZ')
+    output=REPO/'results/hpc/20261029-chemistry-continuation-04'/datetime.now(timezone.utc).strftime('stage-%Y%m%dT%H%M%SZ')
     output.mkdir();(output/'remote-program.py').write_text(PROGRAM,encoding='utf8')
     request=json.dumps({'preparation':receipt,'archive':base64.b64encode(archive).decode()}).encode()
     # -c leaves stdin exclusively for the closed JSON transfer, not shell text.

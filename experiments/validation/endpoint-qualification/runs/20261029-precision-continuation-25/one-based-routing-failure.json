@@ -1,0 +1,78 @@
+{
+  "evidence": "results/hpc/20261029-mosaic-heartbeat/20261029T220614Z",
+  "observed_utc": "2026-10-29T22:06:15.395378+00:00",
+  "proofs": [
+    {
+      "bytes": 1112,
+      "json": {
+        "allocation": {},
+        "allocation_environment_before_resolution": {
+          "CUDA_MPS_LOG_DIRECTORY": "/tmp",
+          "CUDA_MPS_PIPE_DIRECTORY": "/tmp/.mps-dcc-job-29847826-3741015-1793286457-n-62-13-16",
+          "CUDA_VISIBLE_DEVICES1": "GPU-03707fec-d0a3-ca02-fead-55cb65bd9d14",
+          "CUDA_VISIBLE_DEVICES2": "GPU-03707fec-d0a3-ca02-fead-55cb65bd9d14",
+          "CUDA_VISIBLE_DEVICES3": "GPU-03707fec-d0a3-ca02-fead-55cb65bd9d14",
+          "CUDA_VISIBLE_DEVICES4": "GPU-03707fec-d0a3-ca02-fead-55cb65bd9d14",
+          "LSB_DJOB_NUMPROC": "4",
+          "LSB_JOBID": "29847826",
+          "LSB_QUEUE": "gpul40s"
+        },
+        "cleanup": [],
+        "elapsed_seconds": 0.0025175469927489758,
+        "error": "ValueError: LSF MPS task mappings are missing, conflicting or not single GPU",
+        "input_bindings": {},
+        "input_bindings_after": {},
+        "job_id": "29847826",
+        "mps_daemon_or_compute_mode_changed": false,
+        "native_or_gradient_gate_replaced": false,
+        "optimizer_updates": 0,
+        "records": {},
+        "scientific_results_changed": false,
+        "status": "failed",
+        "submission": null,
+        "version": "two-client-jax-cuda-ownership-v1",
+        "visibility_resolution": null
+      },
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-25/protenix-validate-20000/cuda-ownership/assessment.json",
+      "sha256": "d47c70c65bc5926053e3ab36ac6a9ec4e3244f5cf2f8722cd5cdf46f4ee1554d"
+    },
+    {
+      "bytes": 1112,
+      "json": {
+        "allocation": {},
+        "allocation_environment_before_resolution": {
+          "CUDA_MPS_LOG_DIRECTORY": "/tmp",
+          "CUDA_MPS_PIPE_DIRECTORY": "/tmp/.mps-dcc-job-29847828-2564409-1793290501-n-62-13-19",
+          "CUDA_VISIBLE_DEVICES1": "GPU-6281c285-8309-85e7-f867-2eb85b974927",
+          "CUDA_VISIBLE_DEVICES2": "GPU-6281c285-8309-85e7-f867-2eb85b974927",
+          "CUDA_VISIBLE_DEVICES3": "GPU-6281c285-8309-85e7-f867-2eb85b974927",
+          "CUDA_VISIBLE_DEVICES4": "GPU-6281c285-8309-85e7-f867-2eb85b974927",
+          "LSB_DJOB_NUMPROC": "4",
+          "LSB_JOBID": "29847828",
+          "LSB_QUEUE": "gpul40s"
+        },
+        "cleanup": [],
+        "elapsed_seconds": 0.0025000220630317926,
+        "error": "ValueError: LSF MPS task mappings are missing, conflicting or not single GPU",
+        "input_bindings": {},
+        "input_bindings_after": {},
+        "job_id": "29847828",
+        "mps_daemon_or_compute_mode_changed": false,
+        "native_or_gradient_gate_replaced": false,
+        "optimizer_updates": 0,
+        "records": {},
+        "scientific_results_changed": false,
+        "status": "failed",
+        "submission": null,
+        "version": "two-client-jax-cuda-ownership-v1",
+        "visibility_resolution": null
+      },
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-25/dbmol-validate-07500/cuda-ownership/assessment.json",
+      "sha256": "8fe32fa21a056ae6d983fb37848d6298d8fc44a7bdc690b681a2ac4cf2a8f825"
+    }
+  ],
+  "replacement": "20261029-precision-continuation-26",
+  "saved_results_changed": false,
+  "scientific_optimization_entered": false,
+  "status": "native_jobs_EXIT_before_models_one_based_LSF_mapping_bug"
+}

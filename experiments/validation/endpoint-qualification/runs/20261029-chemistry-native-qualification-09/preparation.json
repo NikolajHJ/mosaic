@@ -1,0 +1,14 @@
+{
+  "archive_bytes": 224432,
+  "archive_sha256": "85342bef9bffc9236208f23d5deb45a3bf3e8493e24665b60a9f1551c777d22c",
+  "cpu_cases": 43,
+  "files": 13,
+  "manifest_sha256": "47332fefc2f33a4055874d8fc8e33c9cda94a4253135349b7381e1488474b11f",
+  "plan_sha256": "d17ef69110dcd25212671b96a53e55cbf82787f963336e8bf1ee62af599dbaba",
+  "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/chemistry-native-qualification-09",
+  "saved_results_changed": false,
+  "settings_changed": false,
+  "source": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/chemistry-native-qualification-release-09/source",
+  "status": "prepared_not_allocated_pass",
+  "tag": "20261029-chemistry-native-qualification-09"
+}

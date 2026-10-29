@@ -92,6 +92,19 @@ def test_full_horizon_certificate_has_host_memory_without_reserving_gpu(phase,qu
     assert c.allocation(phase)=={'queue':queue,'slots':slots,'memory_per_slot':memory}
 
 
+@pytest.mark.parametrize('updates',[20000,40000])
+def test_complete_stride20_projection_preserves_loss_and_remaining_byte_budget(updates):
+    forecast=c.output_projection(123456,updates,1000)
+    assert forecast['full_bytes']==2*123456*((updates+19)//20+3)+1024**3
+    assert forecast['remaining_growth_bytes']+1000==forecast['full_bytes']
+    assert forecast['loss_stride']==1 and forecast['matrix_stride']==20 and forecast['safety_factor']==2
+
+
+@pytest.mark.parametrize('unit,updates,actual',[(0,40000,0),(100,10000,0),(100,20000,10**15)])
+def test_projection_rejects_partial_horizon_or_exceeded_cap(unit,updates,actual):
+    with pytest.raises(ValueError):c.output_projection(unit,updates,actual)
+
+
 @pytest.mark.parametrize('means',([1],[],[1,float('nan')],[-1,2]))
 def test_complete_two_pilot_timings_required(means):
     with pytest.raises(ValueError):c.runtime({'runtime_gate':{'status':'passed','mean_update_seconds':means},'elapsed_seconds':120},'boltz')

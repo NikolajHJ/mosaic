@@ -39,13 +39,13 @@ def command(program, name, timeout=180):
     out = LOCAL / name
     out.mkdir(exist_ok=False)
     (out / 'program.py').write_text(program, encoding='utf8', newline='\n')
-    argv = ['ssh','-T','-o','BatchMode=yes','-o','ConnectTimeout=15',
-            '-o','ConnectionAttempts=1','dtu-hpc','bash -l -c ' + shlex.quote(PYTHON + ' -')]
+    argv = [r'C:\Users\nikol\DTU-HPC\helper-v1\dtu-hpc.exe','exec','--timeout',str(timeout),
+            'bash -l -c ' + shlex.quote(PYTHON + ' -')]
     receipt = {'started_utc':datetime.now(timezone.utc).isoformat(), 'argv':argv,
                'program_sha256':sha(program.encode()), 'status':'unknown'}
     try:
         with (out/'stdout.json').open('xb') as stdout, (out/'stderr.txt').open('xb') as stderr:
-            result = subprocess.run(argv, input=program.encode(), stdout=stdout, stderr=stderr, timeout=timeout)
+            result = subprocess.run(argv, input=program.encode(), stdout=stdout, stderr=stderr, timeout=timeout+30)
         receipt.update(status='returned', returncode=result.returncode)
     finally:
         receipt['ended_utc'] = datetime.now(timezone.utc).isoformat()

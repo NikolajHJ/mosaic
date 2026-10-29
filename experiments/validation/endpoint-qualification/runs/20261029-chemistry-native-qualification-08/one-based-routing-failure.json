@@ -1,0 +1,30 @@
+{
+  "evidence": "results/hpc/20261029-mosaic-heartbeat/20261029T220614Z",
+  "observed_utc": "2026-10-29T22:06:15.395378+00:00",
+  "proofs": [
+    {
+      "bytes": 445,
+      "json": {
+        "allocation_environment": {
+          "CUDA_MPS_LOG_DIRECTORY": "/tmp",
+          "CUDA_VISIBLE_DEVICES": "0",
+          "CUDA_VISIBLE_DEVICES1": "0",
+          "CUDA_VISIBLE_DEVICES2": "0",
+          "CUDA_VISIBLE_DEVICES3": "0",
+          "CUDA_VISIBLE_DEVICES4": "0",
+          "LSB_DJOB_NUMPROC": "4",
+          "LSB_JOBID": "29847869",
+          "LSB_QUEUE": "gpul40s"
+        },
+        "error": "ValueError('LSF MPS task mappings are missing, conflicting or not single GPU')",
+        "status": "failed"
+      },
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-25/chemistry-native-qualification-08/gpu-protenix/payload/cuda-routing-failure.json",
+      "sha256": "2d60c22a7061d4b8785afd2996168c2c794180d209c459c7ee4643f7f38ea962"
+    }
+  ],
+  "replacement": "20261029-chemistry-native-qualification-09",
+  "saved_results_changed": false,
+  "scientific_optimization_entered": false,
+  "status": "native_Pro_EXIT_before_models_one_based_LSF_mapping_bug"
+}

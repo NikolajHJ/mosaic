@@ -21,8 +21,8 @@ import xml.etree.ElementTree as ET
 import chemistry_continuation_contract as c
 import chemistry_continuation_driver as driver
 
-PREVIOUS_ROOT=c.SCOPE/'chemistry-continuation-02'
-PREVIOUS_SOURCE=c.SCOPE/'chemistry-continuation-release-02/source'
+PREVIOUS_ROOT=c.BASE/'nonchem-precision-continuation-25/chemistry-continuation-02'
+PREVIOUS_SOURCE=c.BASE/'nonchem-precision-continuation-25/chemistry-continuation-release-02/source'
 PREVIOUS_PIN='d87701b3eb422d3e1c1f9255eb61607011b96eb621a67d286ceefe961e36c250'
 
 
@@ -146,12 +146,19 @@ def storage(directory,phase,plan,full=False):
     prior=op.storage(attempt,'entry' if phase=='entry' else 'dispatch')
     actual,nfiles=inventory(c.OUTPUTS);projection={};extra=0;extra_files=0
     if full:
+        retained=plan['retention_source']
+        op.verify(Path(retained['path']),retained['manifest_sha256'])
+        retention=module(Path(retained['path'])/'retention.py','_chemistry_qualified_projection')
+        c.require(retention.policy()['matrix_stride']==20 and retention.policy()['loss_stride']==1,
+                  'Original qualified persistence policy changed')
         for arm,row in plan['arms'].items():
             ready=c.read(c.ROOT/(arm+'-ready.json'));unit=ready['maximum_pilot_update_bytes']
-            # Retain the original conservative full-update projection. Stride20
-            # is not used to shrink this empirical scientific-output bound.
-            cap=2*unit*row['remaining']+c.GIB;projection[arm]=cap
-            extra+=cap;extra_files+=4*row['remaining']+5000
+            current,files=inventory(c.OUTPUTS/c.label('segment',arm))
+            forecast=c.output_projection(unit,row['remaining'],current)
+            c.require(forecast['full_bytes']==retention.full_projection(unit,row['remaining'],1),
+                      'Exact original stride20 physical projection differs')
+            projection[arm]=forecast
+            extra+=forecast['remaining_growth_bytes'];extra_files+=max(0,4*row['remaining']+5000-files)
     result={'status':'passed','version':c.VERSION,'prior_full_current_gate':prior,
             'available_bytes':prior['available_bytes']-actual,'required_bytes':prior['required_bytes']+extra,
             'available_files':prior['available_files']-nfiles,'required_files':prior['required_files']+extra_files,

@@ -1,0 +1,46 @@
+{
+  "archive_bytes": 222267,
+  "archive_sha256": "75a1dfcc4d0011bf125e4e96f484146faf470d11ea63b6e7413b19321546ffd9",
+  "callback_job": "29851327",
+  "cpu_cases_required": 997,
+  "cpu_job": "29851326",
+  "cpu_verification": {
+    "CPU_certificate_sha256": "b7e6dbb7fc599a586a545d391e78436bcd8af6122b8a7dfed6acd21a0a826f92",
+    "cases": 997,
+    "files_verified": 37,
+    "jobs": {
+      "after-cpu": "29851327",
+      "boltz-after-validate": "29851339",
+      "boltz-validate": "29851338",
+      "cpu": "29851326",
+      "protenix-after-validate": "29851337",
+      "protenix-validate": "29851336"
+    },
+    "local_scientific_evaluation": false,
+    "modules": 23,
+    "native_pass_established": false,
+    "observed_utc": "2026-10-29T22:36:21.351553+00:00",
+    "optimizer_jobs_submitted": false,
+    "saved_results_changed": false,
+    "source_manifest_sha256": "0b30a7c94e34ae6ae858cf5f3903ab98ae3743fb0abbb95a1ac7640381ab6eb9",
+    "status": "passed_independent_complete_chemistry_CPU_byte_XML_LSF_startup_submission_audit"
+  },
+  "files": 10,
+  "jobs": {
+    "after-cpu": "29851327",
+    "boltz-after-validate": "29851339",
+    "boltz-validate": "29851338",
+    "cpu": "29851326",
+    "protenix-after-validate": "29851337",
+    "protenix-validate": "29851336"
+  },
+  "manifest_sha256": "0b30a7c94e34ae6ae858cf5f3903ab98ae3743fb0abbb95a1ac7640381ab6eb9",
+  "plan_sha256": "8fb3a86acde92de57e8dc14bcd9b7732d74713af5f9ef535c5a6d459671c52c7",
+  "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/chemistry-continuation-04",
+  "saved_results_changed": false,
+  "settings_changed": false,
+  "source_root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/chemistry-continuation-release-04/source",
+  "stage_delivery_sha256": "82d44c0ca20e5a8c0763903937337d3f49e18aef25214b567921ecbc42db5c35",
+  "status": "CPU997_controller_passed_combined_validators_submitted_not_passed",
+  "tag": "20261029-chemistry-continuation-04"
+}

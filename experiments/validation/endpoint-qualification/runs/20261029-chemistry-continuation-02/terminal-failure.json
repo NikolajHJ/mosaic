@@ -1,0 +1,21 @@
+{
+  "CPU_tests_executed": false,
+  "blocked_on_job": "29848323",
+  "evidence": "results/hpc/20261029-mosaic-heartbeat/20261029T220614Z",
+  "job_ids": [
+    "29848319",
+    "29848320"
+  ],
+  "log_text_hashes": {
+    "nonchem-precision-continuation-25/chemistry-continuation-02/after-cpu/stderr.29848320.log": "e93375bddfc4c2963f7fd6accdb0c1637886b60e48d615bf8932ab1cacfd2ea0",
+    "nonchem-precision-continuation-25/chemistry-continuation-02/after-cpu/stdout.29848320.log": "72782e1edb9c3861a92f0852c93dbf5d32225e66c823c5b83c23e703a44d8221",
+    "nonchem-precision-continuation-25/chemistry-continuation-02/cpu/stderr.29848319.log": "e93375bddfc4c2963f7fd6accdb0c1637886b60e48d615bf8932ab1cacfd2ea0",
+    "nonchem-precision-continuation-25/chemistry-continuation-02/cpu/stdout.29848319.log": "bfce4b988dec69d99bc3c830ee3bb8e3e78d734379179dc67bf184c327b83469"
+  },
+  "native_or_optimizer_submissions": false,
+  "observed_utc": "2026-10-29T22:06:15.395378+00:00",
+  "original_settings_or_saved_results_changed": false,
+  "raw_query_sha256": "8b4159ef9d151cc7c0510b492435e89c5bb5923bd3a6b8ca913abb1390a5b9d1",
+  "replacement": "20261029-chemistry-continuation-04",
+  "status": "CPU_and_controller_EXIT_before_tests_on_undeclared_concurrent_writer"
+}

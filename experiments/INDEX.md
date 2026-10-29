@@ -57,3 +57,9 @@ Shared tools: [releases](../scripts/releases/README.md), [evidence](../scripts/e
 [Chemistry preparation speed study](brd4-jq1/chemistry-search-speed/README.md) compares exact native-fact caching, invariant cost reuse and ordered candidate parallelism on saved N25 inputs, independently of current runs.
 
 29October chemistry continuation integration: [prepared03 and actual02 receipts](validation/endpoint-qualification/runs/20261029-chemistry-continuation-03/README.md) distinguish actual CPU submissions, the response-contract correction, local34-case metadata proof and blocked HPC verification. No new optimizer or native pass is implied.
+
+
+29October22:36UTC [routing repair26](validation/endpoint-qualification/runs/20261029-precision-continuation-26/README.md) passed958allocated cases; Pro/DB nativechecks RUN with real two-client CUDA smoke passes. [Chemistry native09](validation/endpoint-qualification/runs/20261029-chemistry-native-qualification-09/README.md) CPU43 passed/componentRUN. [Complete chemistry04](validation/endpoint-qualification/runs/20261029-chemistry-continuation-04/README.md) CPU997 independently passed; both combined validators ACTUALLYqueued. Preserve old pre-model routing/writer failures and all scientific settings/results; no optimizer starts or native passes implied.
+
+
+22:40UTC update: main26 Protenix full native/pilot/runtime admission PASSED; actual full30k remaining continuation29851346 toward50k queued with04:45 measured wall. Prochem native09 component passed; combinedchemistry checks remain queued, DBMolcheckRUN, plainBoltz20kblocked. Original failed results/settings preserved.

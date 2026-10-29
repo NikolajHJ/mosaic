@@ -108,3 +108,9 @@ Portable integration15 repeats the full suite with two additional PurePosixPath/
 
 
 `test_chemistry_continuation.py` contains34 explicitly portable metadata/AST cases: unchanged two-arm settings/schedules/retention, full measured horizons and fail-closed runtime, actual-coefficient cohort insertion, original optimizer count AST, exact original command preservation, authenticated empty metadata, original worker frozen-response semantics and host-memory allocations. These import no scientific array/model library. They passed locally and MUST repeat with the full944 inherited allocated cases before03 dispatch. Source02's24-case version was submitted with those944 tests; its actual outcome is unverified after SSH denial. No local pass certifies native gradients, chemistry, replay or optimization.
+
+
+29October: `test_cuda_visibility.py` contains14 explicitly portable scheduler-metadata cases for complete unanimous one-based4/8-slot task maps and malformed/partial/conflicting/multiple-GPU rejection. Those function ASTs are included in immutable main26's existing CUDA module, so full958 allocated rows/startups repeated and independently passed; no native GPU inference follows. `test_chemistry_continuation.py` now contains39 portable metadata/AST cases, adding exact qualified stride20 full40k/20k forecast/current-byte/overrun controls to the previous34. Local39 passed; actual integration04 CPU29851326 repeats958+39=997 on allocated HPC. Original model/native/gradient checks and saved inputs/settings remain unchanged.
+
+
+Latest22:36UTC: integration04 CPU29851326/controller29851327 DONE; all997 allocated cases/startups independently passed. New combined Pro29851336 and Bolchem29851338 validators with own callbacks are submitted/PEND; no native pass or optimizer ID yet. [Current run04](../runs/20261029-chemistry-continuation-04/README.md) binds exact evidence.

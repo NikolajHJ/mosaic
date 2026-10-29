@@ -1,0 +1,21 @@
+{
+  "CPU_certificate_sha256": "b7e6dbb7fc599a586a545d391e78436bcd8af6122b8a7dfed6acd21a0a826f92",
+  "cases": 997,
+  "files_verified": 37,
+  "jobs": {
+    "after-cpu": "29851327",
+    "boltz-after-validate": "29851339",
+    "boltz-validate": "29851338",
+    "cpu": "29851326",
+    "protenix-after-validate": "29851337",
+    "protenix-validate": "29851336"
+  },
+  "local_scientific_evaluation": false,
+  "modules": 23,
+  "native_pass_established": false,
+  "observed_utc": "2026-10-29T22:36:21.351553+00:00",
+  "optimizer_jobs_submitted": false,
+  "saved_results_changed": false,
+  "source_manifest_sha256": "0b30a7c94e34ae6ae858cf5f3903ab98ae3743fb0abbb95a1ac7640381ab6eb9",
+  "status": "passed_independent_complete_chemistry_CPU_byte_XML_LSF_startup_submission_audit"
+}

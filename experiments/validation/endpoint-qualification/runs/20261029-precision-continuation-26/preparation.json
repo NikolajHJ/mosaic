@@ -1,0 +1,14 @@
+{
+  "archive_bytes": 365074,
+  "archive_sha256": "abf01d54419ea925a74bd28a078c1627143cb899662d86242b1b75923f1a40ce",
+  "cpu_cases": 958,
+  "files": 50,
+  "manifest_sha256": "8324c1d312adeaa4c67c475c01ef1217df6f3ad4044b997d1b73e168325412d3",
+  "plan_sha256": "2503d1d120f98e1e9b44a14408c486efc34bc91446a6fdc177031e9b627758ca",
+  "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26",
+  "saved_results_changed": false,
+  "settings_changed": false,
+  "source": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-release-26/source",
+  "status": "prepared_not_allocated_pass",
+  "tag": "20261029-precision-continuation-26"
+}

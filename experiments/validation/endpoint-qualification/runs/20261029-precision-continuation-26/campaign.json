@@ -1,0 +1,69 @@
+{
+  "archive_bytes": 365074,
+  "archive_sha256": "abf01d54419ea925a74bd28a078c1627143cb899662d86242b1b75923f1a40ce",
+  "callback_job": "29851295",
+  "cpu_cases": 958,
+  "cpu_job": "29851294",
+  "files": 50,
+  "manifest_sha256": "8324c1d312adeaa4c67c475c01ef1217df6f3ad4044b997d1b73e168325412d3",
+  "plan_sha256": "2503d1d120f98e1e9b44a14408c486efc34bc91446a6fdc177031e9b627758ca",
+  "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26",
+  "saved_results_changed": false,
+  "settings_changed": false,
+  "source": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-release-26/source",
+  "status": "Protenix_native_passed_full30k_continuation_submitted_DBMol_validation_RUNNING",
+  "tag": "20261029-precision-continuation-26",
+  "jobs": {
+    "after-cpu": "29851295",
+    "chemistry-continuation-04/after-cpu": "29851327",
+    "chemistry-continuation-04/boltz-after-validate": "29851339",
+    "chemistry-continuation-04/boltz-validate": "29851338",
+    "chemistry-continuation-04/cpu": "29851326",
+    "chemistry-continuation-04/protenix-after-validate": "29851337",
+    "chemistry-continuation-04/protenix-validate": "29851336",
+    "chemistry-native-qualification-09/after-cpu": "29851310",
+    "chemistry-native-qualification-09/cpu": "29851309",
+    "chemistry-native-qualification-09/gpu-protenix": "29851319",
+    "cpu": "29851294",
+    "dbmol-after-validate-07500": "29851305",
+    "dbmol-validate-07500": "29851304",
+    "protenix-after-validate-20000": "29851303",
+    "protenix-validate-20000": "29851302",
+    "protenix-segment-20000": "29851346",
+    "protenix-after-segment-20000": "29851347"
+  },
+  "cpu_verification": {
+    "status": "passed_independent_source_byte_XML_LSF_actual_submission_audit",
+    "observed_utc": "2026-10-29T22:24:13.726309+00:00",
+    "files_verified": 46,
+    "source_files_verified": 50,
+    "cases": 958,
+    "modules": 22,
+    "failures_errors_skips": 0,
+    "CPU_job": "29851294",
+    "controller_job": "29851295",
+    "CPU_certificate": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/cpu-certificate.json",
+      "bytes": 7416,
+      "sha256": "30b94f4816074dd7e10edc9a8e52723438fa75146d1ecd6b018cd4ad3179816e"
+    },
+    "actual_native_jobs": {
+      "protenix-validate-20000": "29851302",
+      "protenix-after-validate-20000": "29851303",
+      "dbmol-validate-07500": "29851304",
+      "dbmol-after-validate-07500": "29851305"
+    },
+    "controller_entry_storage": {
+      "phase": "entry",
+      "required_bytes": 38832228567,
+      "available_bytes": 41805949846,
+      "reserve_bytes": 4294967296,
+      "file_reserve": 100000
+    },
+    "native_pass_established": false,
+    "optimizer_job_submitted": false,
+    "saved_results_changed": false,
+    "local_scientific_evaluation": false
+  },
+  "native_delivery_verification_sha256": "ea0728ed11efa3a856f9c588c037fa353d6eee33118dfbd87b654ba948985f23"
+}

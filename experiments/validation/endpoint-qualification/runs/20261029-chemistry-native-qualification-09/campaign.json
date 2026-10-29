@@ -1,0 +1,42 @@
+{
+  "archive_bytes": 224432,
+  "archive_sha256": "85342bef9bffc9236208f23d5deb45a3bf3e8493e24665b60a9f1551c777d22c",
+  "callback_job": "29851310",
+  "cpu_cases": 43,
+  "cpu_job": "29851309",
+  "files": 13,
+  "manifest_sha256": "47332fefc2f33a4055874d8fc8e33c9cda94a4253135349b7381e1488474b11f",
+  "plan_sha256": "d17ef69110dcd25212671b96a53e55cbf82787f963336e8bf1ee62af599dbaba",
+  "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/chemistry-native-qualification-09",
+  "saved_results_changed": false,
+  "settings_changed": false,
+  "source": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/chemistry-native-qualification-release-09/source",
+  "status": "Protenix_native_component_passed_combined_checks_still_required",
+  "tag": "20261029-chemistry-native-qualification-09",
+  "jobs": {
+    "cpu": "29851309",
+    "after-cpu": "29851310",
+    "gpu-protenix": "29851319"
+  },
+  "cpu_verification": {
+    "status": "passed_independent_scoped_chemistry_CPU_source_byte_XML_LSF_startup_dispatch_audit",
+    "cases": 43,
+    "files_verified": 66,
+    "CPU_job": "29851309",
+    "controller_job": "29851310",
+    "actual_native_job": "29851319",
+    "source_manifest_sha256": "47332fefc2f33a4055874d8fc8e33c9cda94a4253135349b7381e1488474b11f",
+    "CPU_certificate_sha256": "cf533ab2493691d465273a65d7cf9eedeb49a9d6761e2ca4fe50514ed43dec11",
+    "whole_dispatch_storage": {
+      "required_bytes": 38818201954,
+      "available_bytes": 40718181409,
+      "reserve_bytes": 4294967296,
+      "file_reserve": 100000
+    },
+    "native_pass_established": false,
+    "optimizer_jobs_submitted": false,
+    "saved_results_changed": false,
+    "local_scientific_evaluation": false
+  },
+  "native_delivery_verification_sha256": "ea0728ed11efa3a856f9c588c037fa353d6eee33118dfbd87b654ba948985f23"
+}

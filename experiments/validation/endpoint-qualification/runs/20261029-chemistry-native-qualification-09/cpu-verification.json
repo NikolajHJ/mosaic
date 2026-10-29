@@ -1,0 +1,20 @@
+{
+  "status": "passed_independent_scoped_chemistry_CPU_source_byte_XML_LSF_startup_dispatch_audit",
+  "cases": 43,
+  "files_verified": 66,
+  "CPU_job": "29851309",
+  "controller_job": "29851310",
+  "actual_native_job": "29851319",
+  "source_manifest_sha256": "47332fefc2f33a4055874d8fc8e33c9cda94a4253135349b7381e1488474b11f",
+  "CPU_certificate_sha256": "cf533ab2493691d465273a65d7cf9eedeb49a9d6761e2ca4fe50514ed43dec11",
+  "whole_dispatch_storage": {
+    "required_bytes": 38818201954,
+    "available_bytes": 40718181409,
+    "reserve_bytes": 4294967296,
+    "file_reserve": 100000
+  },
+  "native_pass_established": false,
+  "optimizer_jobs_submitted": false,
+  "saved_results_changed": false,
+  "local_scientific_evaluation": false
+}

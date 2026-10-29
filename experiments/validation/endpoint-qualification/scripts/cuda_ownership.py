@@ -42,8 +42,10 @@ def resolve_visibility(environment):
     """Resolve LSF's non-MPI MPS task mapping without guessing a GPU ordinal.
 
     LSF documents CUDA_VISIBLE_DEVICES<number> task variables for MPS. A plain
-    Python entrypoint does not get the MPI translation. Require task zero and
-    unanimous single-device task mappings; conflicting/non-single values fail.
+    Python entrypoint does not get the MPI translation. Preserve the original
+    zero-based route; also accept a COMPLETE one-based map for the declared
+    number of slots, as emitted by the actual failed allocations. Every value
+    must name the same single device; conflicting/non-single values still fail.
     Actual CUDA device count/kind and both concurrent precision clients still
     have to pass after this metadata translation.
     """
@@ -54,11 +56,20 @@ def resolve_visibility(environment):
     require(original in (None, "") or isinstance(original, str) and re.fullmatch(single, original),
             "CUDA direct visibility is malformed or not a single GPU")
     if tasks:
-        require("CUDA_VISIBLE_DEVICES0" in tasks and all(isinstance(v, str) and re.fullmatch(single, v) for v in tasks.values())
+        require(all(isinstance(v, str) and re.fullmatch(single, v) for v in tasks.values())
                 and len(set(tasks.values())) == 1, "LSF MPS task mappings are missing, conflicting or not single GPU")
-        selected = tasks["CUDA_VISIBLE_DEVICES0"]
+        if 'CUDA_VISIBLE_DEVICES0' in tasks:
+            selected = tasks['CUDA_VISIBLE_DEVICES0']
+            origin = 'LSF_MPS_task_zero_unanimous_mapping'
+        else:
+            slots=environment.get('LSB_DJOB_NUMPROC','')
+            require(isinstance(slots,str) and re.fullmatch(r'[1-9][0-9]*',slots) and int(slots)<=512,
+                    'One-based task mapping requires the actual positive allocated slot count')
+            require(set(tasks)=={'CUDA_VISIBLE_DEVICES'+str(i) for i in range(1,int(slots)+1)},
+                    'One-based task map must cover every allocated slot exactly')
+            selected=tasks['CUDA_VISIBLE_DEVICES1']
+            origin='LSF_MPS_complete_one_based_unanimous_mapping'
         require(original in (None, "", selected), "Direct and LSF MPS task GPU mappings conflict")
-        origin = "LSF_MPS_task_zero_unanimous_mapping"
     else:
         require(isinstance(original, str) and re.fullmatch(single, original),
                 "CUDA smoke requires exactly one explicitly visible GPU")
