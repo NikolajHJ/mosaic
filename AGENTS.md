@@ -1,5 +1,22 @@
 # Active project instructions
 
+**Fixed-step runtime probe queued,29 October2026 10:41CET:** user selected
+most recent direct Boltz step size: LR0.0025, one candidate, no search. Historical
+Mosaic L40S affinity/DBMol timings1.724877/3.515263s per update excluding first10;
+different contexts/software, affinity terminal failed remains failed. Source144
+attempt002 archive29c17cb7e64d9b78f9c342e309401525e247ab75d5e3613ae613eaedcf848435,
+manifest1f7b5c9b19f05e1077f8b1f83ae8632f0981ccc827c2d35824a53b01b9a9beec,
+plan3f89c017315e6537b4352c550fdac3e1ee2bfb9cf0549e681b10bade52facfbe.
+CPU29846941 DONE21passed/0failures/errors/skips; L40S GPU29846982 PEND physical
+GPU availability4hosts. Uses exact frozen36/trainedmapc8d865/cal1c4366/original
+142 modules/context and start+saved277; same-device exact primal/gradient gates
+required, cross-device A100 certificate differences report-only/no adoption.
+No GPU timings or causal VAE overhead measured yet. Only unstarted exact-name
+A100 diagnostic29846866 retired after PEND/nooutput/replacementCPU checks;
+no production stop. Source142long29846090 and VAE29845931 independently RUN;
+settings/state unchanged. Failed first retirement preflight retained (wrong
+local CPU status spelling; no mutation). Docs83 and source144a002 status-summary001.
+
 **Independent frozen epoch-36 embedding prototype, 2026-10-23:** the user
 authorized implementation, supervised mapping training and HPC submission on
 `codex/epoch36-boltz-embedding-bridge`, while leaving the existing VAE

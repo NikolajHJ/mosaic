@@ -1,0 +1,26 @@
+{
+  "verified": [
+    {
+      "relative": "cpu/cpu-tests.log",
+      "bytes": 216,
+      "sha256": "28a3805eac52763bb210926b86d950153e00d3689c673df2dcb32f26e1e9bf97"
+    },
+    {
+      "relative": "cpu/cpu-tests.xml",
+      "bytes": 3247,
+      "sha256": "dd96bda0b5ab0303672f17e8ed16d7b7b49918288f61f24b02539c1e503a0e00"
+    },
+    {
+      "relative": "cpu/result.json",
+      "bytes": 670,
+      "sha256": "e36bc8350d68c82da378032de2f16daeb3682f42c013399b6b54b46ea7588dcc"
+    }
+  ],
+  "scheduler": {
+    "returncode": 0,
+    "stdout": "{\n  \"COMMAND\":\"bjobs\",\n  \"JOBS\":3,\n  \"RECORDS\":[\n    {\n      \"JOBID\":\"29846982\",\n      \"STAT\":\"PEND\",\n      \"JOB_NAME\":\"source144-embedding-runtime-probe-attempt002-gpu\"\n    },\n    {\n      \"JOBID\":\"29846090\",\n      \"STAT\":\"RUN\",\n      \"JOB_NAME\":\"source142-epoch36-guarded-embedding-long-attempt001-case-001-segment-0001\"\n    },\n    {\n      \"JOBID\":\"29845931\",\n      \"STAT\":\"RUN\",\n      \"JOB_NAME\":\"source104-chemistry-segment-002\"\n    }\n  ]\n}\n",
+    "stderr": ""
+  },
+  "scope": "Raw output bytes checked against remote SHA256 and size",
+  "production_changed": false
+}

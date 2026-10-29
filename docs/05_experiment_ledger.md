@@ -8,6 +8,33 @@ This file is the human-readable history for the active
 executed, observed, failed, and decided. It must not turn a planned experiment
 into a completed result or omit unsuccessful attempts.
 
+## Fixed-step runtime probe CPU passed; L40S GPU queued,29 October2026 10:41 CET
+
+The user specified the latest direct Boltz experiment step size and no multiple
+candidate search, while preserving the current experiment. Read-only Mosaic
+history confirms LR0.0025 and one candidate. Recorded warmed means are1.724877s
+for affinity-only and3.515263s for DBMol, both on L40S with25 ligand atoms;
+these are different target/context/software runs. The failed affinity terminal
+outcome remains failed. Current source142 saved277 audit shows15.52 trials,
+8.92 candidate Boltz calls/update and29.329s mean warmed state intervals. These
+counts identify extra work but do not isolate VAE cost.
+
+Independent source144 attempt002 CPU29846941 passed21 fixtures with zero
+failures/errors/skips. GPU29846982 is PEND for physical L40S availability; no
+native timing/parity result exists. It uses the original142 numerical modules,
+frozen36, trained mapping and calibrated guards at exact original/saved277
+latents. The probe compares matched direct/native and VAE/mapping derivatives,
+bookkeeping, guards, fixed single-candidate calls and I/O. Same-device parity
+is mandatory; A100 certificate differences are explicitly reported across
+hardware and cannot waive production checks.
+
+Only still-PEND A100 diagnostic29846866 was retired after confirming no GPU
+output and passed replacement CPU readiness. A failed initial retirement
+preflight (incorrect local CPU status spelling) mutated nothing and is retained.
+Current long optimization29846090 and VAE29845931 remain RUN and unchanged.
+See [probe protocol and source seals](83_embedding_runtime_probe.md) and
+[authenticated dispatch summary](../outputs/hpc-results/source144-embedding-runtime-probe-attempt002/status-summary001.json).
+
 ## Protenix attempt007 status unchanged, 23 October 2026 10:48 DTU-local
 
 The [read-only third collection](../outputs/hpc-submissions/source135-protenix-occupancy-native-attempt007-collect-003.json)

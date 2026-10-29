@@ -1,0 +1,20 @@
+{
+  "elapsed_seconds": 12.04298380704131,
+  "job_id": "29846941",
+  "junit": {
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0,
+    "tests": 21
+  },
+  "junit_asset": {
+    "path": "/work3/s234818/latentmol/runs/source144-embedding-runtime-probe-attempt002/cpu/cpu-tests.xml",
+    "sha256": "dd96bda0b5ab0303672f17e8ed16d7b7b49918288f61f24b02539c1e503a0e00"
+  },
+  "numerical_models": "not_loaded",
+  "plan_sha256": "3f89c017315e6537b4352c550fdac3e1ee2bfb9cf0549e681b10bade52facfbe",
+  "source_sha256": "29c17cb7e64d9b78f9c342e309401525e247ab75d5e3613ae613eaedcf848435",
+  "stage": "cpu",
+  "status": "passed",
+  "version": "embedding-runtime-fixed-step-probe-v2"
+}
