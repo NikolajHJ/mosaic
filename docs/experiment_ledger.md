@@ -9742,3 +9742,61 @@ Main Pro29847826/DB29847828 and own callbacks were last verifiedPEND; original
 20k/7500/chem10k/10k remain unchanged. No further cleanup since exact9974-copy
 offload, physical988,036,096bytes and all backup members/journal verified.
 Owner: experiments/validation/endpoint-qualification/runs/20261029-chemistry-native-qualification-08/.
+
+
+### 2026-10-29T11:32:27Z — Opt-in bounded-slope confidence comparison prepared
+
+User authorized implementing/testing weak valid-source confidence guidance
+against current chemistry, composition off and saved runs unchanged. Added
+optional valid-confidence-huber-v1: weight0.01, log-odds margin0.2, slope cap1;
+valid source masks/labels detached and fixed for every trial, no live valence
+mixture or repair-ramp multiplication. Absent opt-in preserves old objective.
+Unchanged loss/preparation source bytes and archived prechange trajectory bound
+in146-file manifest e4a4f072ffaa804ec5805dbef1cb2d48111ff06c8ea59947f665d584b6736802;
+archive413388bytes 978295c45ebad9cd4d885936d8612c5b4f6d5453db5b16759b84f1fe68cbf76e.
+Only local stdlib AST/byte packaging ran; no numerical pass yet. Planned actual
+allocated CPU35fixtures plus24paired chemistry-only pilots, no native binding
+claim. New source/output node-local and streamed to laptop, no current run,
+scientific setting, job or persistent WORK3/HOME writer changed. General monitor
+remains paused. Initial local CLI filename shadowing operator stdlib corrected
+before any package or allocation; no scientific failure or gate waiver.
+Owner: experiments/brd4/chemistry-confidence/runs/20261029-chemistry-confidence-01/.
+
+
+### 2026-10-29T11:53:23Z — Bounded-slope confidence guidance CPU validated; opt-in only
+
+Implemented optional valid-confidence-huber-v1, coefficient0.01/margin0.2/
+slope cap1.0. All atom/bond labels and validity/occupancy masks come from the
+detached authenticated source preparation, fixed during each step/trial; target
+refresh only between updates. Invalid source rows and confident decisions have
+zero margin. Composition remains off; no live atom-valence mixture, repair-ramp
+multiplier or optimizer-gradient clipping. Existing failure-aware repair and
+default objective remain unchanged, with bitwise prechange-control checks.
+
+Source001/002 pre-submit queue rejections and003 actual29848043 EXIT1 at the
+node-local scratch guard before numerical imports remain preserved.004 CPU
+29848047 actualDONE/35pass/12matched pairs passed, then child TMPDIR locality
+was strengthened in005;004's numerical pass is not relabelled. Exact142
+scientific/test/control/compare files are unchanged between004/005.
+
+Final005 CPU29848105 actualDONE/hpcint/n-62-29-6,12:50:51--12:53:18Paris,
+35rawcases/zero failures/errors/skips in21.14seconds. Twelve matched pairs,
+24chemistry-only128-update trajectories,3seeds/4starts and72raw sample archives
+completed. Independent stdlib146source/82evidence-member/rawXML/scheduler/LSF/
+schema audit passed. Source manifestdf24a831267b9303748c228fb2aa9d9e31bb471bc0b615946de72a4d2a0716b7,
+source archive405849bytes SHA564d994e2cd336cf4ef20d502794e00a1b70f4cea856335edb2ef6c0f87ae58c;
+returned339473bytes SHA2b971b0a7e67c36e586b35e5e1cae477ca5cc450a01a09b95814d3813e6884b8.
+Both source/output/cache and actual verified child temp paths are node-local;
+raw proof/arrays streamed to laptop, no saved-run writes/restarts or current
+scientific setting/job changes. General monitor remains paused.
+
+Sampled strict validity improved only0--4/256 in small uncertain cases, was
+unchanged for15atoms/3sulfurs and confident controls. C->O integration fixture
+passed, but paired chemistry-only runs do not establish exploration under real
+binding gradients. Native models/weights/pockets were not evaluated or changed,
+VAE training unchanged; no native binding/runtime benefit or production
+promotion claimed. Keep experimental/opt-in pending matched full-model evidence.
+Own metadata/AST/byte checks passed; full legacy layout audit still reports
+preexisting unregistered modules and historical missing READMEs, not a global
+layout pass. New shared test has a canonical self-entry, no legacy alias.
+Owner: experiments/brd4/chemistry-confidence/runs/20261029-chemistry-confidence-05/.

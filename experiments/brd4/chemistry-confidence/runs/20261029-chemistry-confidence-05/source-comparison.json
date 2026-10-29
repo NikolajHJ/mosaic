@@ -1,0 +1,8 @@
+{
+  "status": "passed",
+  "scope": "stdlib source-byte identity, no scientific recalculation",
+  "unchanged_scientific_and_test_files": 142,
+  "original_passed_source": "48017afdc792ec5e2f6e181c49e3eb4cee2e910671e88ac9b1cb0f1e950f9afd",
+  "new_source": "df24a831267b9303748c228fb2aa9d9e31bb471bc0b615946de72a4d2a0716b7",
+  "shared_storage_environment_fix_only": true
+}

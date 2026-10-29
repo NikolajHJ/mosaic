@@ -1,5 +1,10 @@
 # Experiment index
 
+Added29October2026: [brd4/chemistry-confidence](brd4/chemistry-confidence/README.md)
+implements an opt-in valid-source bounded-slope margin with composition off.
+Allocated CPU35checks and12matched chemistry-only pairs passed; native binding
+benefit remains untested and existing saved runs/VAE training are unchanged.
+
 Migrated working-source homes, 22 October 2026. Historical runs and sealed releases are preserved; scientific results are not revalidated by this index.
 
 | Experiment | Question | Owned files | Preserved dated attempts |

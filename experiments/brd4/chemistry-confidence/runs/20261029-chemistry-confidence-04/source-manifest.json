@@ -1,0 +1,602 @@
+{
+  "control_trajectory_sha256": "797cdda82d17b4b65ed3f182fa90d984d91247ed28d0a429f1c7460298b617a1",
+  "expected_paired_rows": 24,
+  "expected_tests": 35,
+  "files": {
+    "controls/trajectory.py": {
+      "bytes": 19897,
+      "sha256": "797cdda82d17b4b65ed3f182fa90d984d91247ed28d0a429f1c7460298b617a1"
+    },
+    "experiments/brd4/chemistry-confidence/README.md": {
+      "bytes": 6387,
+      "sha256": "fbc05386b669130768120ab4623036a45c4fca7a78fbd720e0a6356f515af03f"
+    },
+    "experiments/brd4/chemistry-confidence/scripts/README.md": {
+      "bytes": 419,
+      "sha256": "f8d19778be5c7243a72290c69c6b5c8bb65f613ceb77a4d2ca3264fe1a65c832"
+    },
+    "experiments/brd4/chemistry-confidence/scripts/compare.py": {
+      "bytes": 11385,
+      "sha256": "e1b69ea6feed9242f94d3b6ab504eaa6b99a3ae58418c4acc8fe3e72c845a299"
+    },
+    "experiments/brd4/chemistry-confidence/scripts/confidence_operator.py": {
+      "bytes": 16898,
+      "sha256": "7180c01bb9ed9098f382e33855bd6ffb13c46daeefb821868a9af0fa47482cc8"
+    },
+    "src/mosaic/__init__.py": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "src/mosaic/alphafold/__init__.py": {
+      "bytes": 677,
+      "sha256": "d7c1bc44e94a81e07b8889ce3ac3d96694d8dbf7a4ab43eb2591b9815028ede1"
+    },
+    "src/mosaic/alphafold/common/__init__.py": {
+      "bytes": 669,
+      "sha256": "84a78674484dc5b0ea37d047b494df1f3a67f8cacec41134263eaf255b17d804"
+    },
+    "src/mosaic/alphafold/common/confidence.py": {
+      "bytes": 8206,
+      "sha256": "42c3a10bacca0386ac344fbc53b0852ef68162d25fb32b696d1e9f30f6dfbf2b"
+    },
+    "src/mosaic/alphafold/common/mmcif_metadata.py": {
+      "bytes": 7767,
+      "sha256": "443d3e893660726a373bd7b39d3ce11a18f616858e90de07febe00a082748f4c"
+    },
+    "src/mosaic/alphafold/common/protein.py": {
+      "bytes": 21288,
+      "sha256": "f30d10427a4363ab45d32261b81e0e58ae47d99369389be3b46563bdd25460e9"
+    },
+    "src/mosaic/alphafold/common/residue_constants.py": {
+      "bytes": 36552,
+      "sha256": "0261bd078dfaa80c3a6da56fe7b492cbb52966e4371968867e637357241f3aa6"
+    },
+    "src/mosaic/alphafold/data/__init__.py": {
+      "bytes": 648,
+      "sha256": "50f7bf29fe75438ef7ed801d25be92b8d91ee432262f54a63a844264adca18ed"
+    },
+    "src/mosaic/alphafold/data/feature_processing.py": {
+      "bytes": 8780,
+      "sha256": "540c512019951b69ce550392d2f91c37d671af8b8d1caf1d1895dd6ae3df51a7"
+    },
+    "src/mosaic/alphafold/data/mmcif_parsing.py": {
+      "bytes": 14609,
+      "sha256": "143486d04d7d6b2cd779c09dfd4a8564c4ba8b8b6b66e8efcd2ef80a81d0b281"
+    },
+    "src/mosaic/alphafold/data/msa_identifiers.py": {
+      "bytes": 3056,
+      "sha256": "d988883b6a982e2bc66953c5888dfa94527fe7570bb8f94d3ddb41e0b739a08f"
+    },
+    "src/mosaic/alphafold/data/msa_pairing.py": {
+      "bytes": 17645,
+      "sha256": "c759afdf4bb1dadb00b8fc20d7ad5e8d02e6af69ab079b97edf0e1a11f74479e"
+    },
+    "src/mosaic/alphafold/data/parsers.py": {
+      "bytes": 22010,
+      "sha256": "3936a26c2e22990e9eb0234794c7b6243167f3f4c38f0cdbd659c11699fdcb85"
+    },
+    "src/mosaic/alphafold/data/pipeline.py": {
+      "bytes": 10370,
+      "sha256": "ebe2f124d93010d0f76b6ca738e5f6585ff54aa12d2d402b6d802c230006a448"
+    },
+    "src/mosaic/alphafold/data/pipeline_multimer.py": {
+      "bytes": 11299,
+      "sha256": "bd8ef741b0febc84cf32d7e04df6f8ab29d0e2b459c231f3374d840355a1b69b"
+    },
+    "src/mosaic/alphafold/data/templates.py": {
+      "bytes": 41654,
+      "sha256": "2041446ad37585b30abada6283f108e443c8944f3adfeafa0fe74c0446ea304f"
+    },
+    "src/mosaic/alphafold/model/__init__.py": {
+      "bytes": 631,
+      "sha256": "d2e6f4a763dc68b7fd7288149fb80ece46f7657ca45b970e9237f9b709e7983d"
+    },
+    "src/mosaic/alphafold/model/all_atom.py": {
+      "bytes": 48642,
+      "sha256": "4299c184f822e3fe9f9f6c1c73ed70d2609e602c7bb16774cb67a3abef4e2394"
+    },
+    "src/mosaic/alphafold/model/all_atom_multimer.py": {
+      "bytes": 41089,
+      "sha256": "9f9f2a0bb2b4e9ae84f27cb76a8248edfad6bbe81cf1ce85dce520bd152b2c6e"
+    },
+    "src/mosaic/alphafold/model/all_atom_test.py": {
+      "bytes": 4841,
+      "sha256": "618b392fd252f9826eb427ba5882f7b994acdaa71d30c7d76da5fdaee498fadc"
+    },
+    "src/mosaic/alphafold/model/common_modules.py": {
+      "bytes": 6600,
+      "sha256": "732c12539a6b74f472d440f8bbaf4c4682fd67d4a1078b8d52c9bc2864783e45"
+    },
+    "src/mosaic/alphafold/model/config.py": {
+      "bytes": 27505,
+      "sha256": "ee4cfe4b932328a92b883055145dfaeecdbb2599cdaa042de89793523bcc52d1"
+    },
+    "src/mosaic/alphafold/model/data.py": {
+      "bytes": 1122,
+      "sha256": "8a697e0aa5ec7e1f46fd43c39769a41c3edb936a53e92459cc1ceda5e04826d0"
+    },
+    "src/mosaic/alphafold/model/features.py": {
+      "bytes": 3796,
+      "sha256": "1f8c790e344452009dcb5a07439534bee23fb1bd868cff583a3a9fc2527d6808"
+    },
+    "src/mosaic/alphafold/model/folding.py": {
+      "bytes": 38458,
+      "sha256": "fb0da20287b178a326d70d477e2752bb8e03adee2595d4fc6d0f958c4491f404"
+    },
+    "src/mosaic/alphafold/model/folding_multimer.py": {
+      "bytes": 43534,
+      "sha256": "6b8d3140e0636ce07959b8e0c4d4368dbf1527a68eb44b84e01b51f033dd8623"
+    },
+    "src/mosaic/alphafold/model/geometry/__init__.py": {
+      "bytes": 1111,
+      "sha256": "908664e4fb96d9e5823a15bb2fb32caf9a9c4934e97c303d6558c13c7c4bfb82"
+    },
+    "src/mosaic/alphafold/model/geometry/rigid_matrix_vector.py": {
+      "bytes": 4157,
+      "sha256": "864ee5a00163c870017f47b829255491b2dcaaff20a1c9a0c7c91f721ad5ab5f"
+    },
+    "src/mosaic/alphafold/model/geometry/rotation_matrix.py": {
+      "bytes": 5811,
+      "sha256": "b8f9b9f749d3dfc3d2b307df2bd5ebe8cdf688bd25fcdf072889136e058c69e9"
+    },
+    "src/mosaic/alphafold/model/geometry/struct_of_array.py": {
+      "bytes": 7965,
+      "sha256": "5f846bacb90749560de5864c8930b5dcddae44cc888eb7de907fd891bf46aaf1"
+    },
+    "src/mosaic/alphafold/model/geometry/utils.py": {
+      "bytes": 876,
+      "sha256": "50b8ea365e9803309ec977aa9a8575d5b8f8c41c632807d9e80741a64f8c9042"
+    },
+    "src/mosaic/alphafold/model/geometry/vector.py": {
+      "bytes": 7053,
+      "sha256": "37097752b33e01995a07e04c5bc55bb9204f999b46080f517f763b502d36de4e"
+    },
+    "src/mosaic/alphafold/model/layer_stack.py": {
+      "bytes": 9408,
+      "sha256": "624620806a949b9540403a3fa40bbf7852ff7b90f75572ae88865068299d756f"
+    },
+    "src/mosaic/alphafold/model/layer_stack_test.py": {
+      "bytes": 10650,
+      "sha256": "9281cf6c6560282f1ea2a38fcac61908a833e4a154969edd0d5cc32e8ab61eec"
+    },
+    "src/mosaic/alphafold/model/lddt.py": {
+      "bytes": 3593,
+      "sha256": "6fd568824dc0452eef5cd60a53fb0a8c213a2901970614d0a9c5508e865d8872"
+    },
+    "src/mosaic/alphafold/model/lddt_test.py": {
+      "bytes": 2463,
+      "sha256": "60777430ae1b3e04ad6dc432c269ae3748ff0c853f8af61f10cfd65d480a95dc"
+    },
+    "src/mosaic/alphafold/model/mapping.py": {
+      "bytes": 8147,
+      "sha256": "eb96641d9b21d7bf71bf81c1c48eb87e6a4b11ff2efaed6fab6101cbce2a4746"
+    },
+    "src/mosaic/alphafold/model/modules.py": {
+      "bytes": 69922,
+      "sha256": "cb9136e1b82532352f5e3e3a73221c185ada539e7fb4ab841e7b8716d455b869"
+    },
+    "src/mosaic/alphafold/model/modules_multimer.py": {
+      "bytes": 34612,
+      "sha256": "bd25c3f9a8799420c89ef709f8232a2f9e1893b8168a4d09363a69499bd002c8"
+    },
+    "src/mosaic/alphafold/model/prng.py": {
+      "bytes": 2047,
+      "sha256": "4de5d9b8b08a08654a7e3dc3a2824111eb31c44945e621472b195bc2c2f07dfe"
+    },
+    "src/mosaic/alphafold/model/quat_affine.py": {
+      "bytes": 17847,
+      "sha256": "f2910720f097178665e67cb0b6582c606b41b8f86d2ab6fdeda1044425382bab"
+    },
+    "src/mosaic/alphafold/model/r3.py": {
+      "bytes": 11241,
+      "sha256": "997844b1ac4664b5788215c3328f23bb88fdc86e6a3de62483367ee293bc5f96"
+    },
+    "src/mosaic/alphafold/model/state.py": {
+      "bytes": 287,
+      "sha256": "06eec1e7e5c1768298afd0f9dd3b64c9850076dc7f48106155f1d08b3ce237d0"
+    },
+    "src/mosaic/alphafold/model/tf/__init__.py": {
+      "bytes": 647,
+      "sha256": "4bd8c1a15d37f07d42d6044435d1dbd315b5f43744b2ae7e939f4694f517fd8a"
+    },
+    "src/mosaic/alphafold/model/tf/data_transforms.py": {
+      "bytes": 21977,
+      "sha256": "27715334e3ba6a2a8694f90b2457e04c6004c391eed47474c714630f269e9e5d"
+    },
+    "src/mosaic/alphafold/model/tf/input_pipeline.py": {
+      "bytes": 5523,
+      "sha256": "3bd9d0087492613a6ab52df695f3d386c01ff79c94616356e12491f8efcd1c53"
+    },
+    "src/mosaic/alphafold/model/tf/protein_features.py": {
+      "bytes": 5180,
+      "sha256": "1efeae8a3203ec395eab78fcaf484c6dc542660df1a5bd6b0aba6056a855391d"
+    },
+    "src/mosaic/alphafold/model/tf/protein_features_test.py": {
+      "bytes": 1876,
+      "sha256": "0a1826719575dcd4dede1e9e43fe11906d97db9ddd33d9c158dd9a128df29377"
+    },
+    "src/mosaic/alphafold/model/tf/proteins_dataset.py": {
+      "bytes": 6510,
+      "sha256": "78929c30f8049ff6f929a5526033a69c106697a9a93b36be3656b1fc89ea2162"
+    },
+    "src/mosaic/alphafold/model/tf/shape_helpers.py": {
+      "bytes": 1462,
+      "sha256": "4756971b13f65cc1f8b9d4c6e1243d4f26b0ecf7ffbf6e160c0c9db7acb87f07"
+    },
+    "src/mosaic/alphafold/model/tf/shape_helpers_test.py": {
+      "bytes": 1360,
+      "sha256": "6552afd37176a197cfd9d6a0c2dd43738df141e592bd045614e6141277fb2fb9"
+    },
+    "src/mosaic/alphafold/model/tf/shape_placeholders.py": {
+      "bytes": 832,
+      "sha256": "508b11c7e45f9fdfb609d3064812428c7d163f15dbbb5a68c8c4758fad4c061c"
+    },
+    "src/mosaic/alphafold/model/tf/utils.py": {
+      "bytes": 1323,
+      "sha256": "5f76c18271cf8c7a298ff310e224f6ab8b7c0bd1a384f8a51c45ffb77f232c6e"
+    },
+    "src/mosaic/alphafold/model/utils.py": {
+      "bytes": 5634,
+      "sha256": "9646c35aa6e7b946d2eff34aa21dbc5668e4292c08ab99a508b8bea1616bb42a"
+    },
+    "src/mosaic/alphafold/version.py": {
+      "bytes": 691,
+      "sha256": "0cec6c0eb04e20d2fc0b73e62aecded0dad5be2d181b36a5284412e681710d1e"
+    },
+    "src/mosaic/biohub.py": {
+      "bytes": 10624,
+      "sha256": "f5c5f73289759ba3607b5139a699f8906ff745013d7a927bd602a2e20466841a"
+    },
+    "src/mosaic/cache.py": {
+      "bytes": 890,
+      "sha256": "ab94aaaa31b07d46f27ccf541258810dfde50c7cb13ec06dae2b61bf7968da69"
+    },
+    "src/mosaic/common.py": {
+      "bytes": 2098,
+      "sha256": "06a68da538eced149111d76a314af461816cab5ee17733a3c8f0fdbbc5cb50cb"
+    },
+    "src/mosaic/data/__init__.py": {
+      "bytes": 84,
+      "sha256": "9ad268375336137168bdc28b09635e6fda888eb883b2f8b7c82e5dc687d8900d"
+    },
+    "src/mosaic/losses/ablang.py": {
+      "bytes": 2348,
+      "sha256": "55b3475d8404748b5adb792b39d999ea137e4d91175a29c210c73e0ca4fae851"
+    },
+    "src/mosaic/losses/ablang2.py": {
+      "bytes": 4730,
+      "sha256": "11ee27c3d2db4faaade13d5d5027b01f387cd08580c5986fa52de765beefd379"
+    },
+    "src/mosaic/losses/atom37.py": {
+      "bytes": 2222,
+      "sha256": "96e0a5b879dbe7efff53385dc4a1ae1661254c08d5c96c52978f43f846509ce6"
+    },
+    "src/mosaic/losses/boltz.py": {
+      "bytes": 17303,
+      "sha256": "f1e76de6951371c870b764b49318b738550186190ccb683973ce7580e560aa3e"
+    },
+    "src/mosaic/losses/boltz2.py": {
+      "bytes": 16629,
+      "sha256": "18b03c09d6ff9e820b92691ab150fbfe9d28a300ab3e8639ac15b0c3b241d16b"
+    },
+    "src/mosaic/losses/confidence_metrics.py": {
+      "bytes": 3588,
+      "sha256": "cc6be0daa3be60523bd0cffde949f0177f5f70d04a48641ba376b2296fed31e4"
+    },
+    "src/mosaic/losses/esm.py": {
+      "bytes": 3595,
+      "sha256": "2e2a19d7f2d586bfc77f03f40e6de98f80c8cd30f9311efb14b272b5be0e550b"
+    },
+    "src/mosaic/losses/esmc.py": {
+      "bytes": 9091,
+      "sha256": "f067f7008ade380473e9cc61c60008a0abb87984e6323256080fa8531bcb3801"
+    },
+    "src/mosaic/losses/esmfold2.py": {
+      "bytes": 40580,
+      "sha256": "d296f2b8d0b50fabb5f4f7d5d0972cd359a1d5b1d9a16439b881edcf82dc5957"
+    },
+    "src/mosaic/losses/of3.py": {
+      "bytes": 8110,
+      "sha256": "e1fd146c3ef34f1020c16c6f29b475af91db79114002a86d7cae6f417a9c0b76"
+    },
+    "src/mosaic/losses/opendde.py": {
+      "bytes": 27004,
+      "sha256": "c9b069860b956e79346f6dc79ccb8963a7344080677a7b4385c3186a2710c50c"
+    },
+    "src/mosaic/losses/promera.py": {
+      "bytes": 17815,
+      "sha256": "04675e96d9c681492228bfac8deb6310f8f2603dd5234b4e9ffed8c521e5c540"
+    },
+    "src/mosaic/losses/protein_mpnn.py": {
+      "bytes": 14323,
+      "sha256": "c3c1a9f1f843dd5ba8b028608cf1b7f274915d026d0e78e64232ba22286a9aa3"
+    },
+    "src/mosaic/losses/proteina.py": {
+      "bytes": 9617,
+      "sha256": "9b59a5eaef2efe624d8da2f911936238c821d3c85f608d3cb2ce739da034be1e"
+    },
+    "src/mosaic/losses/protenix.py": {
+      "bytes": 10979,
+      "sha256": "21de0628bbd211b3e666afd6fc4272d5e9dc19293a94630f4dc396898566541a"
+    },
+    "src/mosaic/losses/stability.py": {
+      "bytes": 2020,
+      "sha256": "487e4ace9142ecb4d1985b4cc7978e70d5fc5f483341b5e1d708ff85584827fd"
+    },
+    "src/mosaic/losses/structure_prediction.py": {
+      "bytes": 27393,
+      "sha256": "2ae182b7c7a3ad0afc569ef8f21d5b9d57e40d49727a2c5e7974b6ee0381835a"
+    },
+    "src/mosaic/losses/transformations.py": {
+      "bytes": 9969,
+      "sha256": "7e1acf74f5fce51e9f7e04414be678814e2e7e6b3679a7112ff816cdcba6c666"
+    },
+    "src/mosaic/losses/trigram.py": {
+      "bytes": 5063,
+      "sha256": "079350d876a66eda798d7258a8992691e8993077cde42f9c852388d99cb31dbf"
+    },
+    "src/mosaic/models/af2.py": {
+      "bytes": 19747,
+      "sha256": "69a68db56281861d5f4d506321d1e6549dd06bd8695f3dd399d26781c1152369"
+    },
+    "src/mosaic/models/boltz1.py": {
+      "bytes": 4243,
+      "sha256": "af83d9bc5c780d5125fda0a91f6bbb403ebf5020533aec14396779bf77eb7724"
+    },
+    "src/mosaic/models/boltz2.py": {
+      "bytes": 6396,
+      "sha256": "e0b3e4f2e71a65f16dc570077db4baa7639966036c7c78d0eccdc9acdb1c8c8a"
+    },
+    "src/mosaic/models/boltzgen.py": {
+      "bytes": 18269,
+      "sha256": "53873a6c6834fdc4c6e4011533471f8aa5e7363a707c34c5b7cc88445293c713"
+    },
+    "src/mosaic/models/esmc.py": {
+      "bytes": 5087,
+      "sha256": "4a5a54908cc1b396c37fe01f736d66411701e8874f0427594e64bb5a00116c7c"
+    },
+    "src/mosaic/models/esmfold2.py": {
+      "bytes": 28861,
+      "sha256": "686fe5ab64c00125870eedf66b6a235fa6cd7ceb04a873abcd5a6441db392652"
+    },
+    "src/mosaic/models/of3.py": {
+      "bytes": 22964,
+      "sha256": "a0ed859aa5cc1cd417cb7d50f616dc25e344618cac5ecf5e5f7d4ff56284d5e1"
+    },
+    "src/mosaic/models/opendde.py": {
+      "bytes": 24124,
+      "sha256": "6a789386f12c83fa17a429e5a0934a2cb4cc8fcb62c8efbebeaee0c872309950"
+    },
+    "src/mosaic/models/promera.py": {
+      "bytes": 6418,
+      "sha256": "c58ace905f6c6311b755175dd4d4fb7e3c4ce5256315c490ad4000628174d891"
+    },
+    "src/mosaic/models/proteina.py": {
+      "bytes": 6660,
+      "sha256": "0e5ebedbdf361b00d772a4f774bea1b6015c61eeef659a83e64213dcde9e1266"
+    },
+    "src/mosaic/models/protenix.py": {
+      "bytes": 6174,
+      "sha256": "c030276e0da5cc9b59b76862053c71d6d5e5a590e1ae0abd3594e860c7d75e0f"
+    },
+    "src/mosaic/notebook_utils.py": {
+      "bytes": 1402,
+      "sha256": "4cb2f94cdc54ef7bc0be2c4a662225efdb43b36e0dc960a5530a12cffa8532c7"
+    },
+    "src/mosaic/optimizers.py": {
+      "bytes": 31612,
+      "sha256": "4f8751dfcf7299c2d6b30cc4f52ff1e7c6161d8c0aefe4eea65ff0256e9a7312"
+    },
+    "src/mosaic/proteinmpnn/mpnn.py": {
+      "bytes": 20450,
+      "sha256": "01d8b110c99bdf0f71e6dfcc56fb07dafc43a5fbbeb81895639310f659369267"
+    },
+    "src/mosaic/proteinmpnn/torch_mpnn.py": {
+      "bytes": 21616,
+      "sha256": "25e7b343c6cacf096fcbd81e6251e960dac3d51f2d77e2368647f5898b29f311"
+    },
+    "src/mosaic/small_molecule/__init__.py": {
+      "bytes": 1328,
+      "sha256": "74026e3b79f7a9444ad67113ae79c48e48179f63c97e598df50a60ac91a7f108"
+    },
+    "src/mosaic/small_molecule/boltz2/__init__.py": {
+      "bytes": 239,
+      "sha256": "61efb867b40d172abbebb41576b5535b82a7ce2c346fc719dc203ba73aad7aad"
+    },
+    "src/mosaic/small_molecule/boltz2/bridge.py": {
+      "bytes": 6056,
+      "sha256": "7565fa7a0a98412ecb4cdc51b683b7241e621c180acda9d6dcb802f46c98f6e8"
+    },
+    "src/mosaic/small_molecule/boltz2/checks.py": {
+      "bytes": 4011,
+      "sha256": "825e6f8ecd708e331b5e432d32b5426db2ed8713da485ac2a32308f8feb959f5"
+    },
+    "src/mosaic/small_molecule/boltz2/dbmol.py": {
+      "bytes": 23538,
+      "sha256": "00f2d23b01c5b773d677c1d003dd3fa6724ed07f6b67d16b640f62d32af2aba6"
+    },
+    "src/mosaic/small_molecule/boltz2/native.py": {
+      "bytes": 12115,
+      "sha256": "24fe23e58e92b9b85f5b4d5f20610e497dec644c4e782648c8842ef6989ef1a8"
+    },
+    "src/mosaic/small_molecule/boltz2/prepare.py": {
+      "bytes": 9707,
+      "sha256": "108e2090231f1969835ac87849129be8fe3dbddf69fdc2c31ee1f76c6eb0fa77"
+    },
+    "src/mosaic/small_molecule/boltz2/worker.py": {
+      "bytes": 6642,
+      "sha256": "d6673ec4a5296a54c147b7aae0c758a80fd7452c147e88d2f2deddbbf36e2de7"
+    },
+    "src/mosaic/small_molecule/chemistry/__init__.py": {
+      "bytes": 634,
+      "sha256": "e4a92187df48bdb2ef2ad8503cf0fcaa479cb03eb30944cc9a51f419d3b113f2"
+    },
+    "src/mosaic/small_molecule/chemistry/_reference/__init__.py": {
+      "bytes": 82,
+      "sha256": "2b680048a46babc473c399702bebc80ce0b1bdfe70515230abc17047502a5b1f"
+    },
+    "src/mosaic/small_molecule/chemistry/_reference/atom_preserving_chemistry.py": {
+      "bytes": 8316,
+      "sha256": "9cd7d072ad8b5edc7ca63dd38550b742d80cbc792690ad6752b7d7c6db2971c5"
+    },
+    "src/mosaic/small_molecule/chemistry/_reference/chemistry.py": {
+      "bytes": 9757,
+      "sha256": "173ee26bb429bac433a8b37db660dd5b2b7f08c08edd6cda59123c2c872b7571"
+    },
+    "src/mosaic/small_molecule/chemistry/_reference/chemistry_regularization.py": {
+      "bytes": 1007,
+      "sha256": "8e9c8d5b1eaae3c52afef3483c52e4f800a0dc57f08c47ba5a2c40f6872550a0"
+    },
+    "src/mosaic/small_molecule/chemistry/_reference/probability_repair.py": {
+      "bytes": 6968,
+      "sha256": "51e9ec9ef97e15400c0c8c3d47c90a9dac510a8c77f36343dc944683d350475d"
+    },
+    "src/mosaic/small_molecule/chemistry/_reference/quality.py": {
+      "bytes": 9013,
+      "sha256": "ae2d5a06f38ef7a86c261a813654b1273b032176c816cf4c58e79b18a19d3e29"
+    },
+    "src/mosaic/small_molecule/chemistry/_reference/repair_progress.py": {
+      "bytes": 12250,
+      "sha256": "6ea26624d390c5ba0afa312fca55bee8ca740f7d4efed25a5b217ee071cbe15d"
+    },
+    "src/mosaic/small_molecule/chemistry/_reference/repair_search.py": {
+      "bytes": 9272,
+      "sha256": "03acf32c747e0064a00e85eb0ab7e4d9137cc7799e03bd263640fb48b7ec4c50"
+    },
+    "src/mosaic/small_molecule/chemistry/_reference/representation.py": {
+      "bytes": 1973,
+      "sha256": "450b891019456beca8329d71a39f1e964312a9cf97fa557b2cc7c97c5c428302"
+    },
+    "src/mosaic/small_molecule/chemistry/_reference/source_manifest.json": {
+      "bytes": 3028,
+      "sha256": "295c44903fbb7cf27d5c3827b1cc1e2f4159d471c3d55e742d90c6b14203520e"
+    },
+    "src/mosaic/small_molecule/chemistry/checks.py": {
+      "bytes": 6362,
+      "sha256": "67434fc889aa31bb3b609d67976483504f9b927df106c1a3500078241abb0242"
+    },
+    "src/mosaic/small_molecule/chemistry/confidence.py": {
+      "bytes": 4571,
+      "sha256": "7d2941de939655cb2ca054f2d8d2f645f5b8f2761a17870524a623c24d35a0ad"
+    },
+    "src/mosaic/small_molecule/chemistry/initialization.py": {
+      "bytes": 1461,
+      "sha256": "d36755252aadb264f821c9185bf26a3df13a493d33adb79fcb6a61a0d54cd6fd"
+    },
+    "src/mosaic/small_molecule/chemistry/loss.py": {
+      "bytes": 8775,
+      "sha256": "9ed3d8a5b609f7f1ecff432ed8186e452071ebfb8e3ed32ac903088427463c4b"
+    },
+    "src/mosaic/small_molecule/chemistry/native_only.py": {
+      "bytes": 1217,
+      "sha256": "f1bf4a73473a1beb075aeb1b2b693edd12852d4d5c1bd47451148a8d182bbe57"
+    },
+    "src/mosaic/small_molecule/chemistry/preparation.py": {
+      "bytes": 12842,
+      "sha256": "f3759601c39748bf7b28e63b9fa6b1532a92e19c5dfeccbb7ad49ebeb1a9ac6d"
+    },
+    "src/mosaic/small_molecule/chemistry/schedule.py": {
+      "bytes": 2003,
+      "sha256": "d38e7ae3514e5367242c9516d5983e5e024e6cc455c1f1e389f4df45999b5df9"
+    },
+    "src/mosaic/small_molecule/chemistry/state.py": {
+      "bytes": 3885,
+      "sha256": "92424901ae178e749ec9bc86ab89ee8ab50b9413a8325b9c0fb82ca74005bf0d"
+    },
+    "src/mosaic/small_molecule/chemistry/trajectory.py": {
+      "bytes": 21255,
+      "sha256": "11cf2d5594938b33f29257938b722f44a792368b50b3553b25a69ec8ebff59bf"
+    },
+    "src/mosaic/small_molecule/contracts.py": {
+      "bytes": 7183,
+      "sha256": "f576b55b1bc373e502b60604785679a1f2c79fd70834cdb04d6229044fc86ae4"
+    },
+    "src/mosaic/small_molecule/experiment.py": {
+      "bytes": 7421,
+      "sha256": "502f4bc15f773580a5b8e11e77d378fe25965eb756ffe3d3d3bac27702cdbfbd"
+    },
+    "src/mosaic/small_molecule/features.py": {
+      "bytes": 17983,
+      "sha256": "c28f21e49deda00479af4476f33f3d1d98405ebcc873dc6f735e08643bc5a8a5"
+    },
+    "src/mosaic/small_molecule/gradient_checks.py": {
+      "bytes": 19612,
+      "sha256": "6f3592375f9076c32b8a14b64ab2b6ac08afca6927d33e1e25054305a2f3a5da"
+    },
+    "src/mosaic/small_molecule/gradient_resume.py": {
+      "bytes": 9256,
+      "sha256": "4a3b49e2a6287e734f0ea56f575dcaef44c5be61b3236cfe455acd6e7a840a70"
+    },
+    "src/mosaic/small_molecule/gradient_trajectory.py": {
+      "bytes": 5521,
+      "sha256": "dd631b045d34ba5a7856de3a2f2024c45dcc6ceab2671fde0fb2aa3eba3c1542"
+    },
+    "src/mosaic/small_molecule/io.py": {
+      "bytes": 29068,
+      "sha256": "2478611048259e4580fc8ac2d73bf7273e12b0e5d63a5b89036ac055cbab7ebc"
+    },
+    "src/mosaic/small_molecule/losses.py": {
+      "bytes": 9661,
+      "sha256": "0a6a264bbff6b8e9b7834aeec0ae357aedd1d3d772198785fc2e1a184b0657b5"
+    },
+    "src/mosaic/small_molecule/native_hook.py": {
+      "bytes": 8676,
+      "sha256": "73390e37a857420caa7630c2ae4bca29dfdcd9b6635bea5335c39ba6c22f9835"
+    },
+    "src/mosaic/small_molecule/optimizers.py": {
+      "bytes": 8493,
+      "sha256": "d2a138a5c30860f128f2ee61b1ec93bd27b6965195d28447586b470dbe5b2d0c"
+    },
+    "src/mosaic/small_molecule/pocket.py": {
+      "bytes": 9699,
+      "sha256": "f809886ef6ff073da7916d5a616cf4db7d9afb6954584bda07ec310e5355200b"
+    },
+    "src/mosaic/small_molecule/protenix.py": {
+      "bytes": 9005,
+      "sha256": "092e1434721e5d26d85b2f80003b8ba4993fedb45f9a91b0a5ff8234ee64d69c"
+    },
+    "src/mosaic/small_molecule/provenance.py": {
+      "bytes": 3126,
+      "sha256": "977d73938ec13e7fcb39e129baaad78292fa50239676378fa603b7fe020d7ffe"
+    },
+    "src/mosaic/small_molecule/state.py": {
+      "bytes": 10134,
+      "sha256": "7fc6fc41a06d07ea3b75f9ca354d9f7a8937ecc07233a8e24f4bc231820f926d"
+    },
+    "src/mosaic/small_molecule/validation.py": {
+      "bytes": 39234,
+      "sha256": "bd4d207738d9c70927d998a9fb5718ebc692128b44f721cdfb5966c7387703ea"
+    },
+    "src/mosaic/stability_model/train.py": {
+      "bytes": 4481,
+      "sha256": "e2d8c7358ac51b873de38dbb017d73416e098b7f61f401a05ac384009bdac3aa"
+    },
+    "src/mosaic/structure_prediction.py": {
+      "bytes": 2995,
+      "sha256": "b2a1681edb9e1b3626b31048675a07d305c4178ce058137cb6d89c8804911369"
+    },
+    "src/mosaic/util.py": {
+      "bytes": 6620,
+      "sha256": "fae8e763031051b0272c0dc6416d0cb10c9a645cb6b5b7e28f299ff1d58c2fe1"
+    },
+    "tests/small_molecule/test_chemistry_confidence.py": {
+      "bytes": 12338,
+      "sha256": "7de7e7539f43e080027d55d02afcbebe389a4240c074f6fbe5adf31f4051712b"
+    }
+  },
+  "native_models_evaluated": false,
+  "prepared_utc": "2026-10-29T11:36:46.443634+00:00",
+  "saved_runs_written": false,
+  "source_scope": "library plus bounded CPU comparison",
+  "unchanged_repair": {
+    "src/mosaic/small_molecule/chemistry/loss.py": {
+      "archive_sha256": "9ed3d8a5b609f7f1ecff432ed8186e452071ebfb8e3ed32ac903088427463c4b",
+      "git_sha256": "9ed3d8a5b609f7f1ecff432ed8186e452071ebfb8e3ed32ac903088427463c4b"
+    },
+    "src/mosaic/small_molecule/chemistry/preparation.py": {
+      "archive_sha256": "f3759601c39748bf7b28e63b9fa6b1532a92e19c5dfeccbb7ad49ebeb1a9ac6d",
+      "git_sha256": "f3759601c39748bf7b28e63b9fa6b1532a92e19c5dfeccbb7ad49ebeb1a9ac6d"
+    }
+  },
+  "version": "chemistry-confidence-source-v1"
+}

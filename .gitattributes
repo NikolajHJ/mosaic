@@ -112,3 +112,6 @@ experiments/brd4-jq1/boltz-lr0025/runs/20261024-storage-offload-01/* -text -eol
 # Dated chemistry dispatch/cleanup evidence must retain its audited exact bytes.
 experiments/brd4-jq1/chemistry-search-speed/runs/20261026-chemistry-production-03/*.json -text -eol
 experiments/brd4-jq1/chemistry-search-speed/runs/20261026-chemistry-storage-recovery-01/*.json -text -eol
+
+# Raw scheduler evidence includes authenticated padding; preserve its exact bytes.
+experiments/brd4/chemistry-confidence/runs/**/terminal-scheduler.txt -text -diff

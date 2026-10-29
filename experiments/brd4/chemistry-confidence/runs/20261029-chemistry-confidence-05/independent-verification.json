@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "scope": "independent stdlib byte/XML/JSON/scheduler/schema audit; no local scientific array calculations",
+  "job_id": "29848105",
+  "source_manifest_sha256": "df24a831267b9303748c228fb2aa9d9e31bb471bc0b615946de72a4d2a0716b7",
+  "evidence_archive_sha256": "2b971b0a7e67c36e586b35e5e1cae477ca5cc450a01a09b95814d3813e6884b8",
+  "source_files": 146,
+  "verified_evidence_members": 82,
+  "actual_test_cases": 35,
+  "matched_pairs": 12,
+  "trajectories": 24,
+  "sample_archives": 72,
+  "saved_results_changed": false,
+  "native_binding_validated": false
+}

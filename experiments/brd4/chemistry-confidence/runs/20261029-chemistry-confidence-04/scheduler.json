@@ -1,0 +1,52 @@
+{
+  "actual_job_ids": [
+    "29848047"
+  ],
+  "bsub_argv": [
+    "bsub",
+    "-I",
+    "-q",
+    "hpcint",
+    "-n",
+    "4",
+    "-R",
+    "span[hosts=1]",
+    "-R",
+    "rusage[mem=2GB]",
+    "-J",
+    "chem-confidence-node-local-cpu",
+    "timeout",
+    "--signal=TERM",
+    "--kill-after=15",
+    "840s",
+    "bash",
+    "-l",
+    "-c",
+    "read -r executor; exec \"$executor\" -B -u -"
+  ],
+  "bsub_returncode": 0,
+  "proofs": [
+    {
+      "argv": [
+        "bjobs",
+        "-l",
+        "29848047"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "\nJob <29848047>, Job Name <chem-confidence-node-local-cpu>, User <s234818>, Proj\n                          ect <default>, Status <DONE>, Queue <hpcint>, Interac\n                          tive mode, Command <timeout --signal=TERM --kill-afte\n                          r=15 840s bash -l -c 'read -r executor; exec \"$execut\n                          or\" -B -u -'>, Share group charged </s234818>, Esub <\n                          dcc>\nThu Oct 29 12:36:50 2026: Submitted from host <hpclogin1>, CWD <$HOME>, 4 Task(\n                          s), Requested Resources < rusage[mem=2048.00] span[ho\n                          sts=1]>;\nThu Oct 29 12:36:51 2026: Started 4 Task(s) on Host(s) <4*n-62-29-6>, Allocated\n                           4 Slot(s) on Host(s) <4*n-62-29-6>;\nThu Oct 29 12:39:18 2026: Done successfully. The CPU time used is 220.1 seconds\n                          .\n\n RUNLIMIT                \n 15.0 min\n\n MEMLIMIT\n      2 G \n\n MEMORY USAGE:\n MAX MEM: 744 Mbytes;  AVG MEM: 634 Mbytes; MEM Efficiency: 9.08%\n\n CPU USAGE:\n CPU PEAK: 1.50 ;  CPU PEAK DURATION: 147 second(s)\n CPU AVERAGE EFFICIENCY: 37.41% ;  CPU PEAK EFFICIENCY: 37.41%\n\n PENDING TIME DETAILS:\n Eligible pending time (seconds):\t1\n Ineligible pending time (seconds):\t0\n\n SCHEDULING PARAMETERS:\n           r15s   r1m  r15m   ut      pg    io   ls    it    tmp    swp    mem\n loadSched   -     -     -     -       -     -    -     -     -      -      -  \n loadStop    -     -     -     -       -     -    -     -     -      -      -  \n\n RESOURCE REQUIREMENT DETAILS:\n Job-level:  rusage[mem=2048.00] span[hosts=1]\n App-level: -\n Queue-level: -\n Combined: select[type == local] order[-slots:-maxslots] rusage[mem=2048.00] sp\n                          an[hosts=1]\n Effective: select[type == local] order[-slots:-maxslots] rusage[mem=2048.00] s\n                          pan[hosts=1] \n\n"
+    },
+    {
+      "argv": [
+        "bjobs",
+        "-json",
+        "-o",
+        "jobid stat queue exit_code",
+        "29848047"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\n  \"COMMAND\":\"bjobs\",\n  \"JOBS\":1,\n  \"RECORDS\":[\n    {\n      \"JOBID\":\"29848047\",\n      \"STAT\":\"DONE\",\n      \"QUEUE\":\"hpcint\",\n      \"EXIT_CODE\":\"\"\n    }\n  ]\n}\n"
+    }
+  ]
+}

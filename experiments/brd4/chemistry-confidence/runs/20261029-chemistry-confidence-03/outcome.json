@@ -1,0 +1,59 @@
+{
+  "status": "actual_exit1_before_numerical_imports",
+  "raw_stdout_sha256": "adf5e1c79389b1dcafe618658d0ffe2ee4fed74b91a6fcae1c1d410202163289",
+  "raw_stderr_sha256": "3950a1dc4534dfb21542ab1546e55ec69f2c591571ca8c09b141c12744d3944f",
+  "scheduler_submission": {
+    "actual_job_ids": [
+      "29848043"
+    ],
+    "bsub_argv": [
+      "bsub",
+      "-I",
+      "-q",
+      "hpcint",
+      "-n",
+      "4",
+      "-R",
+      "span[hosts=1]",
+      "-R",
+      "rusage[mem=2GB]",
+      "-J",
+      "chem-confidence-node-local-cpu",
+      "timeout",
+      "--signal=TERM",
+      "--kill-after=15",
+      "1700s",
+      "bash",
+      "-l",
+      "-c",
+      "read -r executor; exec \"$executor\" -B -u -"
+    ],
+    "bsub_returncode": 1,
+    "proofs": [
+      {
+        "argv": [
+          "bjobs",
+          "-l",
+          "29848043"
+        ],
+        "returncode": 0,
+        "stdout": "\nJob <29848043>, Job Name <chem-confidence-node-local-cpu>, User <s234818>, Proj\n                          ect <default>, Status <PEND>, Queue <hpcint>, Interac\n                          tive mode, Command <timeout --signal=TERM --kill-afte\n                          r=15 1700s bash -l -c 'read -r executor; exec \"$execu\n                          tor\" -B -u -'>, Esub <dcc>\nThu Oct 29 12:35:30 2026: Submitted from host <hpclogin1>, CWD <$HOME>, 4 Task(\n                          s), Requested Resources < rusage[mem=2048.00] span[ho\n                          sts=1]>;\n PENDING REASONS:\n New job is waiting for scheduling;\n\n RUNLIMIT                \n 15.0 min of hpclogin1\n\n MEMLIMIT\n      2 G \n\n PENDING TIME DETAILS:\n Eligible pending time (seconds):\t0\n Ineligible pending time (seconds):\t0\n\n SCHEDULING PARAMETERS:\n           r15s   r1m  r15m   ut      pg    io   ls    it    tmp    swp    mem\n loadSched   -     -     -     -       -     -    -     -     -      -      -  \n loadStop    -     -     -     -       -     -    -     -     -      -      -  \n\n RESOURCE REQUIREMENT DETAILS:\n Job-level:  rusage[mem=2048.00] span[hosts=1]\n App-level: -\n Queue-level: -\n Combined: -\n Effective: -\n\n",
+        "stderr": ""
+      },
+      {
+        "argv": [
+          "bjobs",
+          "-json",
+          "-o",
+          "jobid stat queue exit_code",
+          "29848043"
+        ],
+        "returncode": 0,
+        "stdout": "{\n  \"COMMAND\":\"bjobs\",\n  \"JOBS\":1,\n  \"RECORDS\":[\n    {\n      \"JOBID\":\"29848043\",\n      \"STAT\":\"PEND\",\n      \"QUEUE\":\"hpcint\",\n      \"EXIT_CODE\":\"\"\n    }\n  ]\n}\n",
+        "stderr": ""
+      }
+    ]
+  },
+  "source_qualified": false,
+  "terminal_proof_sha256": "70369a23de2e033c4a07c762a9d1c3c11babd9ccf7216d122476446c8c80983b"
+}

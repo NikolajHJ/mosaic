@@ -6,6 +6,13 @@ Use default pytest discovery or select this directory in an allocated DTU HPC
 job. Local layout verification parses source only and is not a numerical pass.
 Shared fixtures remain under [tests/data](../data/).
 
+`test_chemistry_confidence.py` checks the opt-in bounded-slope, valid-source
+margin. Run its qualified capsule through the
+[confidence experiment](../../experiments/brd4/chemistry-confidence/README.md);
+the bitwise prechange-control cases require the exact archived trajectory path
+in `MOSAIC_CONTROL_TRAJECTORY`. This is a CPU implementation check, not a native
+binding-model or VAE-training qualification.
+
 ## Files
 
 - [test_pocket_boltz.py](test_pocket_boltz.py)

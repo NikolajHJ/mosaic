@@ -116,6 +116,13 @@
     "tests/test_protenix_lr03_storage.py": "scripts/compat/tests/test_protenix_lr03_storage.py"
   },
   "shared_tests": {
+    "tests/small_molecule/test_chemistry_confidence.py": {
+      "path": "tests/small_molecule/test_chemistry_confidence.py",
+      "owner": "shared:tests/small_molecule",
+      "after_sha256": "7de7e7539f43e080027d55d02afcbebe389a4240c074f6fbe5adf31f4051712b",
+      "compatibility": "new canonical test; no legacy alias or historical predecessor",
+      "introduced": "2026-10-29"
+    },
     "tests/test_ablang2_loss.py": {
       "path": "tests/models/test_ablang2_loss.py",
       "owner": "shared:tests/models",

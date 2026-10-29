@@ -1,0 +1,10 @@
+{
+  "archive_bytes": 413388,
+  "archive_sha256": "978295c45ebad9cd4d885936d8612c5b4f6d5453db5b16759b84f1fe68cbf76e",
+  "files": 146,
+  "local_checks": "stdlib AST/byte checks only",
+  "manifest_sha256": "e4a4f072ffaa804ec5805dbef1cb2d48111ff06c8ea59947f665d584b6736802",
+  "saved_results_changed": false,
+  "status": "prepared_not_numerically_validated",
+  "utc": "2026-10-29T11:32:27.339002+00:00"
+}

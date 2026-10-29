@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "scope": "local stdlib AST/JSON/path/README/source-byte metadata only",
+  "python_files_checked": 6,
+  "every_new_experiment_directory_has_readme": true,
+  "new_test_registered_without_legacy_alias": true,
+  "numerical_tests_local": false,
+  "saved_runs_changed": false,
+  "global_layout_pass_claimed": false
+}

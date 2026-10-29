@@ -1,0 +1,51 @@
+
+Job <29848043>, Job Name <chem-confidence-node-local-cpu>, User <s234818>, Proj
+                          ect <default>, Status <EXIT>, Queue <hpcint>, Interac
+                          tive mode, Command <timeout --signal=TERM --kill-afte
+                          r=15 1700s bash -l -c 'read -r executor; exec "$execu
+                          tor" -B -u -'>, Share group charged </s234818>, Esub 
+                          <dcc>
+Thu Oct 29 12:35:30 2026: Submitted from host <hpclogin1>, CWD <$HOME>, 4 Task(
+                          s), Requested Resources < rusage[mem=2048.00] span[ho
+                          sts=1]>;
+Thu Oct 29 12:35:32 2026: Started 4 Task(s) on Host(s) <4*n-62-29-6>, Allocated
+                           4 Slot(s) on Host(s) <4*n-62-29-6>;
+Thu Oct 29 12:35:41 2026: Exited with exit code 1. The CPU time used is 1.0 sec
+                          onds.
+Thu Oct 29 12:35:41 2026: Completed <exit>.
+
+ RUNLIMIT                
+ 15.0 min
+
+ MEMLIMIT
+      2 G 
+
+ MEMORY USAGE:
+ MEM Efficiency: 0.00%
+
+ CPU USAGE:
+ CPU PEAK: 0.00 ;  CPU PEAK DURATION: 0 second(s)
+ CPU AVERAGE EFFICIENCY: 0.00% ;  CPU PEAK EFFICIENCY: 0.00%
+
+ PENDING TIME DETAILS:
+ Eligible pending time (seconds):	2
+ Ineligible pending time (seconds):	0
+
+ SCHEDULING PARAMETERS:
+           r15s   r1m  r15m   ut      pg    io   ls    it    tmp    swp    mem
+ loadSched   -     -     -     -       -     -    -     -     -      -      -  
+ loadStop    -     -     -     -       -     -    -     -     -      -      -  
+
+ RESOURCE REQUIREMENT DETAILS:
+ Job-level:  rusage[mem=2048.00] span[hosts=1]
+ App-level: -
+ Queue-level: -
+ Combined: select[type == local] order[-slots:-maxslots] rusage[mem=2048.00] sp
+                          an[hosts=1]
+ Effective: select[type == local] order[-slots:-maxslots] rusage[mem=2048.00] s
+                          pan[hosts=1] 
+
+JOBID      USER    STAT  QUEUE      FROM_HOST   EXEC_HOST   JOB_NAME   SUBMIT_TIME
+29847826 s234818 PEND  gpul40s    n-62-31-21     -        mosaic-precision25-protenix-validate-20000 Oct 29 11:45
+29847828 s234818 PEND  gpul40s    n-62-31-21     -        mosaic-precision25-dbmol-validate-07500 Oct 29 11:45
+29847869 s234818 PEND  gpul40s    n-62-31-21     -        mosaic-chem-qualification08-gpu-protenix Oct 29 11:52

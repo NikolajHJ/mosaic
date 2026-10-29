@@ -110,13 +110,33 @@ def evaluate_combined(
             raise ValueError("Native observation reuse changed graph or RNG")
     prepared.verify(spec)
 
+    # Explicit research opt-in only. Absent configuration preserves the exact
+    # historical repair/composition path and component schema.
+    confidence = config.get("confidence_margin")
+    if confidence is not None:
+        from .confidence import ConfidenceMarginConfig, valid_confidence_margin
+
+        if config["element_js_weight"] != 0:
+            raise ValueError("Confidence comparison requires composition guidance off")
+        confidence = ConfidenceMarginConfig(**confidence)
+        if config.get("objective_mode", "native_plus_chemistry") != "native_plus_chemistry":
+            raise ValueError("Confidence guidance requires the explicit chemistry objective")
+
     def chemical(value):
         decoded = value.decoded()
         loss, terms = failure_aware_repair_loss(decoded, prepared, spec, config["loss"])
         stats = composition_statistics(decoded)
         js = population_js(stats["elements"], reference)
         terms = {**terms, "chemistry_loss": loss, "element_js": js}
-        return config["repair_weight"] * loss + config["element_js_weight"] * js, terms
+        total = config["repair_weight"] * loss + config["element_js_weight"] * js
+        if confidence is not None:
+            margin, diagnostics = valid_confidence_margin(decoded, prepared, spec, confidence)
+            total = total + confidence.weight * margin
+            terms = {
+                **terms, **diagnostics, "confidence_margin_loss": margin,
+                "confidence_weighted_loss": confidence.weight * margin,
+            }
+        return total, terms
 
     mode = config.get("objective_mode", "native_plus_chemistry")
     if mode == "native_only":
@@ -311,6 +331,11 @@ def run_chemical_updates(
         },
     }
     evaluation = None
+    if config.get("confidence_margin") is not None:
+        # Record the exact opt-in policy; old reports retain their old schema.
+        from .confidence import ConfidenceMarginConfig
+
+        report["confidence_margin"] = ConfidenceMarginConfig(**config["confidence_margin"]).record()
     try:
         reference = jnp.asarray(reference, dtype=initial.atoms.dtype)
         if (

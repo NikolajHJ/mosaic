@@ -1,0 +1,31 @@
+{
+  "status": "rejected_before_submission",
+  "raw_stdout_sha256": "05a6103d783855e733b704d295835b628559b7e127295d4854bb73396cb7101f",
+  "raw_stderr_sha256": "973e3f8b38242b45feb1f97e2b949e95230f85145d4d4a3b5ed9c72dcde8abd7",
+  "scheduler_submission": {
+    "actual_job_ids": [],
+    "bsub_argv": [
+      "bsub",
+      "-I",
+      "-q",
+      "hpcint",
+      "-n",
+      "4",
+      "-R",
+      "span[hosts=1]",
+      "-R",
+      "rusage[mem=2GB]",
+      "-W",
+      "00:30",
+      "-J",
+      "chem-confidence-node-local-cpu",
+      "bash",
+      "-l",
+      "-c",
+      "read -r executor; exec \"$executor\" -B -u -"
+    ],
+    "bsub_returncode": 255,
+    "proofs": []
+  },
+  "source_qualified": false
+}

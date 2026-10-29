@@ -1,0 +1,25 @@
+{
+  "actual_cases": 35,
+  "archive_bytes": 339200,
+  "archive_sha256": "f6e9e1590c97d37ff9b527c572246469ecdf289aac3301ac316dd54810b696ab",
+  "assessment": {
+    "elapsed_seconds": 141.03834378300235,
+    "job_id": "29848047",
+    "native_binding_validated": false,
+    "paired_rows": 24,
+    "saved_results_changed": false,
+    "scope": "CPU implementation/gradient validation and chemistry-only paired measurements; not native binding efficacy",
+    "source_manifest_sha256": "48017afdc792ec5e2f6e181c49e3eb4cee2e910671e88ac9b1cb0f1e950f9afd",
+    "status": "passed",
+    "tests_passed": 35
+  },
+  "errors": 0,
+  "failures": 0,
+  "job_id": "29848047",
+  "native_binding_validated": false,
+  "saved_results_changed": false,
+  "skips": 0,
+  "status": "passed_allocated_cpu_and_byte_verified_not_native_binding_validation",
+  "utc": "2026-10-29T11:39:22.703399+00:00",
+  "verified_members": 81
+}
