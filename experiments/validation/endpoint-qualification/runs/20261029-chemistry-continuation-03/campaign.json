@@ -1,0 +1,30 @@
+{
+  "general_monitor_resumed": false,
+  "local_package": "results\\hpc\\20261029-chemistry-continuation-03\\source02",
+  "local_portable_metadata_cases": 34,
+  "next_action": "Restore authenticated HPC access; inspect exact source02 CPU/callback/native submissions before staging; reuse existing native validators through authenticated captures, never duplicate unknown jobs",
+  "optimization_settings_changed": false,
+  "original_saved_results_changed": false,
+  "planned_full_allocated_cases": 978,
+  "preparation": {
+    "archive_bytes": 221475,
+    "archive_sha256": "2599f0891ad8809f3bb647ef8b8d3cfd119bbacf7b54f4b866013df370f180f5",
+    "files": 10,
+    "manifest_sha256": "e706db8c67e6ec8fee1aa462909c8e5c430222072cb2ba3fec2f22a83407cbfa",
+    "plan_sha256": "271ad7dc88e153816428da5f87572463df01beffa0f5e457b1903fe72e447f0a",
+    "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-25/chemistry-continuation-03",
+    "source_root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-25/chemistry-continuation-release-03/source",
+    "status": "local_stdlib_preparation_only_not_allocated_pass"
+  },
+  "status": "local_prepared_only_access_blocked_no_staging_or_jobs_established",
+  "superseded_local_draft": {
+    "archive_bytes": 220922,
+    "archive_sha256": "4116e698ec05c44dfefc032cdf527ee9bb30d474ab40764d9948ce350bca7eb0",
+    "files": 10,
+    "manifest_sha256": "89aba1ad43ef84421c650cbe773a55840e859b3da7d916ab7f6fa28be533743f",
+    "plan_sha256": "271ad7dc88e153816428da5f87572463df01beffa0f5e457b1903fe72e447f0a",
+    "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-25/chemistry-continuation-03",
+    "source_root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-25/chemistry-continuation-release-03/source",
+    "status": "local_stdlib_preparation_only_not_allocated_pass"
+  }
+}

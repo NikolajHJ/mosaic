@@ -1,0 +1,30 @@
+{
+  "CPU_pass_established": false,
+  "actual_callback_job": "29848320",
+  "actual_cpu_job": "29848319",
+  "candidate_successor": "20261029-chemistry-continuation-03",
+  "expected_full_CPU_cases": 968,
+  "general_monitor_resumed": false,
+  "known_static_callback_defect": "Boltz transport response wrongly compared to two-field digest dictionary; original worker verifier required",
+  "last_followup": {
+    "error": "Permission denied (password)",
+    "evidence": "results/hpc/20261029-chemistry-continuation-02/status-20261029T183648Z",
+    "new_native_or_optimizer_IDs_established": false,
+    "time_UTC": "2026-10-29T18:36:48Z",
+    "transport_returncode": 255
+  },
+  "local_package": "results\\hpc\\20261029-chemistry-continuation-02\\source01",
+  "optimization_settings_changed": false,
+  "original_saved_results_changed": false,
+  "preparation": {
+    "archive_bytes": 218563,
+    "archive_sha256": "4d328fd5d2f421049223660d66d3b552c9510ee7a7edf1036bc1461de24ebeca",
+    "files": 10,
+    "manifest_sha256": "d87701b3eb422d3e1c1f9255eb61607011b96eb621a67d286ceefe961e36c250",
+    "plan_sha256": "85b5bd415c4d245abee2fb07b9009cb727913507152bad8dac72ba1d755306f9",
+    "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-25/chemistry-continuation-02",
+    "source_root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-25/chemistry-continuation-release-02/source",
+    "status": "local_stdlib_preparation_only_not_allocated_pass"
+  },
+  "status": "CPU_and_callback_submitted_later_outcomes_unverified"
+}

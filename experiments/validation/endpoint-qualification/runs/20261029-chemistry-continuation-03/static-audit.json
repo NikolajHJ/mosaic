@@ -1,0 +1,47 @@
+{
+  "all_archive_members_verified": true,
+  "local_model_or_array_evaluations": false,
+  "numerical_definitions_unchanged": {
+    "chemistry_cuda_ownership.py": [
+      "allocation_environment",
+      "resolve_visibility",
+      "submission_environment",
+      "require",
+      "_write",
+      "binding",
+      "_bindings",
+      "worker_command",
+      "worker_environment",
+      "_budget",
+      "_receive",
+      "_validate_message",
+      "_send",
+      "_cleanup",
+      "run_probe",
+      "_worker"
+    ],
+    "chemistry_reference_worker.py": [
+      "require",
+      "reference_spec",
+      "_raw",
+      "_read",
+      "decode_json",
+      "_write",
+      "binding",
+      "bound",
+      "verify_source",
+      "Protocol",
+      "decode_graph",
+      "_module",
+      "_size",
+      "NativeRuntime",
+      "serve",
+      "worker",
+      "main"
+    ]
+  },
+  "source02_unchanged_driver_hooks_CUDA_bytes_verified": true,
+  "source_files": 10,
+  "source_manifest_sha256": "e706db8c67e6ec8fee1aa462909c8e5c430222072cb2ba3fec2f22a83407cbfa",
+  "status": "passed_local_stdlib_only_not_allocated_scientific_readiness"
+}

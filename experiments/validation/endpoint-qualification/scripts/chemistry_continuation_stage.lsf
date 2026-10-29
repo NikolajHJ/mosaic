@@ -1,0 +1,50 @@
+#!/bin/bash
+set -euo pipefail
+[[ $# == 6 && -n "${LSB_JOBID:-}" ]]
+source_root=$1
+manifest=$2
+phase=$3
+arm=$4
+[[ "$5" == --capacity-source ]]
+capacity_source=$6
+module load python3/3.12.11
+python=/work3/s234818/mosaic/envs/protenix-tiny/bin/python
+export PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+"$python" - "$source_root" "$manifest" "$capacity_source" <<'VERIFY'
+import hashlib,json,stat,sys
+from pathlib import Path,PurePosixPath
+def verify(root,pin):
+ root=Path(root);assert root.is_absolute() and all(not p.is_symlink() for p in (root,*root.parents))
+ raw=(root/'source_manifest.json').read_bytes();assert hashlib.sha256(raw).hexdigest()==pin
+ value=json.loads(raw);files=value['files'];actual=set()
+ for p in root.rglob('*'):
+  assert not p.is_symlink() and (p.is_file() or p.is_dir())
+  if p.is_file():actual.add(p.relative_to(root).as_posix())
+ assert actual==set(files)|{'source_manifest.json'}
+ for name,digest in files.items():
+  rel=PurePosixPath(name);assert not rel.is_absolute() and '..' not in rel.parts and '\\' not in name
+  with (root/name).open('rb') as stream:assert hashlib.file_digest(stream,'sha256').hexdigest()==digest
+ return value
+own=verify(sys.argv[1],sys.argv[2])
+assert sys.argv[3]==own['capacity_source']['path']
+for p in own['parent_sources']:
+ value=verify(p['path'],p['manifest_sha256']);assert len(value['files'])==p['files']
+VERIFY
+base=/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01
+export HF_HUB_OFFLINE=1 HF_HUB_DISABLE_TELEMETRY=1
+export OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 MKL_NUM_THREADS=4 NUMEXPR_NUM_THREADS=4
+export JAX_PLATFORMS=cpu JAX_ENABLE_X64=0
+if [[ "$phase" == validate || "$phase" == segment ]]; then
+  [[ "$LSB_QUEUE" == gpul40s && "$LSB_DJOB_NUMPROC" == 8 ]]
+  module load cuda/12.9.1 cudnn/v9.13.0.50-prod-cuda-12.X
+  if [[ "$arm" == protenix ]]; then
+    export JAX_PLATFORMS=cuda,cpu XLA_PYTHON_CLIENT_PREALLOCATE=false
+  fi
+else
+  [[ "$LSB_QUEUE" == hpc ]]
+  export CUDA_VISIBLE_DEVICES=''
+fi
+source "$base/protenix-extended-release-03/source/scripts/hpc/boltz_node_tmpdir.sh"
+export PYTHONPATH="$source_root/scripts"
+cd "$source_root"
+"$python" -u "$source_root/scripts/chemistry_continuation_ops.py" --pin "$manifest" --phase "$phase" --arm "$arm"

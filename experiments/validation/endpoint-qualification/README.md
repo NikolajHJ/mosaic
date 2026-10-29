@@ -320,3 +320,6 @@ fails closed until a declared current cross-campaign writer/admission contract
 is connected. No05 numerical pass, package, GPU or optimizer job is implied.
 
 29October11:53Paris: chemistry08 CPU43/controller passed; corrected ProchemGPU29847869 is queued under25. Independent61-file audit/fullstorage passed, no new native or combinedchemistry acceptance/optimizer. All three new GPUchecks await actual results.
+
+
+29October chemistry continuation integration: see [03](runs/20261029-chemistry-continuation-03/README.md) and its campaign. A missing combined-loss/continuation dispatch path was implemented with unchanged original chemistry/science, original failures preserved and whole measured remaining horizons. Attempt01 stopped before CPU on authenticated empty metadata. Attempt02 staged10files and actually submitted CPU29848319/callback29848320; subsequent pass/native IDs are UNVERIFIED after SSH authentication rejection. Static review found its Boltz response-schema callback defect. Corrected03 is LOCAL ONLY,34 portable metadata passes, planned full978 allocated cases; it reuses any authentic passed02 native work through conditional captures and refuses unknown or already submitted optimizer outcomes. No source03 GPU/optimizer pass/submission is implied. Restore authenticated access and inspect02 before any staging; the general monitor stays paused.

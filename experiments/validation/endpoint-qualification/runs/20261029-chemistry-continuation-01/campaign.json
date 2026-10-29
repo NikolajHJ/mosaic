@@ -1,0 +1,26 @@
+{
+  "failure": {
+    "error": "Exact proof binding required: previously authenticated empty historical metadata file",
+    "evidence": "results\\hpc\\20261029-chemistry-continuation-01\\stage-20261029T124717Z",
+    "stderr_sha256": "3afadae5e423f548cbef0b94f8beae72d9f0eb91b4c9f1a17900520ca819ebcc",
+    "superseded_by": "20261029-chemistry-continuation-02",
+    "transport": {
+      "returncode": 1
+    }
+  },
+  "general_monitor_resumed": false,
+  "local_package": "results\\hpc\\20261029-chemistry-continuation-01\\source01",
+  "optimization_settings_changed": false,
+  "original_saved_results_changed": false,
+  "preparation": {
+    "archive_bytes": 218599,
+    "archive_sha256": "b03cfda71d71c507422dfb409a017655f76def4bf27afc7b9918e9df40fcb65c",
+    "files": 10,
+    "manifest_sha256": "215ccd98525e505e62ffcf0abb06b731aec1c5b831895373fad4625e9a696077",
+    "plan_sha256": "d7987f92adef000f04aca900ef5faee99d4e57ffdb967116761f2aee7ff6af80",
+    "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-25/chemistry-continuation-01",
+    "source_root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-25/chemistry-continuation-release-01/source",
+    "status": "local_stdlib_preparation_only_not_allocated_pass"
+  },
+  "status": "failed_before_storage_CPU_or_submissions"
+}

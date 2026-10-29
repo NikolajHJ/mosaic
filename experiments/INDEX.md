@@ -55,3 +55,5 @@ Shared tools: [releases](../scripts/releases/README.md), [evidence](../scripts/e
 ## Chemistry search acceleration
 
 [Chemistry preparation speed study](brd4-jq1/chemistry-search-speed/README.md) compares exact native-fact caching, invariant cost reuse and ordered candidate parallelism on saved N25 inputs, independently of current runs.
+
+29October chemistry continuation integration: [prepared03 and actual02 receipts](validation/endpoint-qualification/runs/20261029-chemistry-continuation-03/README.md) distinguish actual CPU submissions, the response-contract correction, local34-case metadata proof and blocked HPC verification. No new optimizer or native pass is implied.
