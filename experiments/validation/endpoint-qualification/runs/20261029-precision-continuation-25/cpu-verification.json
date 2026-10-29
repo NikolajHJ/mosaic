@@ -1,0 +1,33 @@
+{
+  "status": "passed_independent_source_byte_XML_LSF_actual_submission_audit",
+  "observed_utc": "2026-10-29T10:46:07.486083+00:00",
+  "files_verified": 47,
+  "source_files_verified": 50,
+  "cases": 944,
+  "modules": 22,
+  "failures_errors_skips": 0,
+  "CPU_job": "29847807",
+  "controller_job": "29847808",
+  "CPU_certificate": {
+    "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-25/cpu-certificate.json",
+    "bytes": 7416,
+    "sha256": "fad4519e158a729eebba339f1c666791155cdfb5f3bf1fe5c478c89ed26c31a1"
+  },
+  "actual_native_jobs": {
+    "protenix-validate-20000": "29847826",
+    "protenix-after-validate-20000": "29847827",
+    "dbmol-validate-07500": "29847828",
+    "dbmol-after-validate-07500": "29847829"
+  },
+  "controller_entry_storage": {
+    "phase": "entry",
+    "required_bytes": 43348610259,
+    "available_bytes": 44774740882,
+    "reserve_bytes": 4294967296,
+    "file_reserve": 130000
+  },
+  "native_pass_established": false,
+  "optimizer_job_submitted": false,
+  "saved_results_changed": false,
+  "local_scientific_evaluation": false
+}

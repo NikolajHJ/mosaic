@@ -1,5 +1,26 @@
 # Prospective endpoint qualification diagnostics
 
+Latest29October11:46Paris: [shared repair25](runs/20261029-precision-continuation-25/README.md)
+passed complete shared storage and all944allocated CPU cases/actual startups.
+CPU29847807/controller29847808 actualDONE; independent47-file byte/XML/LSF/source/
+vector audit passed. New ProGPU29847826 and DBGPU29847828 and own callbacks
+29847827/29847829 are PEND. No new native pass or optimizer. Targets remain
+Pro20k->50k / DB7500->10k, all settings/results/checks unchanged. Chemistry
+reference08 is being staged under25's same funded control budget; its component
+qualification and full combined gates remain required. Monitor stays paused.
+Never replay25 staging or obsolete22/23/24 attempts.
+
+Writer29846882 and source144's exact probe now have authenticated accounting.
+Superseded never-started report29796558 with invalid dependencies was retired
+to actualEXIT, retaining all files; only its unused2GiB forecast is removed.
+[Inactive-copy offload](runs/20261029-shared-writer-offload-24/README.md) preserves
+9974files in a fully byte-verified laptop archive/restore map. Actual physical
+reclaim988036096bytes versus2599249408logical bytes: shared hard-link payloads
+remain with current sources. Current38required source roots, inputs/results/
+models/envs and other jobs are intact. Old10--19Oct payloads need restoration
+from that map before replay; retained manifests alone are not installed-source
+integrity. Historical failures follow.
+
 Latest29October10:54:35Paris: source22 Pro29846764/DB29846766 and chemistry06
 Pro29846795 obtained GPUs, then actualEXIT1 before CUDA/models/gradient checks.
 The shared-storage guard rejected new balancedDeFoG job29846882 as an unknown
@@ -297,3 +318,5 @@ replay passed. Exact reference09 machinery and one-device placement are adopted
 as a candidate, with40 allocated fixtures planned. Its staging deliberately
 fails closed until a declared current cross-campaign writer/admission contract
 is connected. No05 numerical pass, package, GPU or optimizer job is implied.
+
+29October11:53Paris: chemistry08 CPU43/controller passed; corrected ProchemGPU29847869 is queued under25. Independent61-file audit/fullstorage passed, no new native or combinedchemistry acceptance/optimizer. All three new GPUchecks await actual results.

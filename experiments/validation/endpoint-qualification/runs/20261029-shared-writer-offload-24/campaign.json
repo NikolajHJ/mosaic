@@ -1,0 +1,18 @@
+{
+  "status": "exact_inactive_copies_offloaded_after_verified_laptop_backup",
+  "files": 9974,
+  "logical_bytes": 2599249408,
+  "physical_bytes_reclaimed": 988036096,
+  "archive": {
+    "archive": "C:\\Users\\nikol\\HPC_Archives\\Mosaic\\2026-10-29\\shared-writer-24\\data.tar.gz",
+    "archive_bytes": 1767669566,
+    "archive_sha256": "4b8fa929b2048d3ef216ea60fa4978a2812d013ee3de0be43da15c3e1f5d8153",
+    "files": 9974,
+    "logical_bytes": 2599249408,
+    "status": "all_laptop_archive_members_verified"
+  },
+  "journal_sha256": "5ae6c0b78279cffeebf5e0383d951c0ffec8302f215782ab4040f085940a7567",
+  "current_inputs_sources_results_reauthenticated": true,
+  "saved_native_results_changed": false,
+  "external_jobs_changed": false
+}

@@ -87,7 +87,7 @@ def policy(plan):
         c.require(type(row) is dict, 'Independent allocation must be a closed object')
         expected = ('job_id', 'command', 'root', 'cap_bytes', 'cap_files', 'role',
                     'release_root', 'release_cap_bytes', 'release_cap_files', 'source_manifest')
-        optional = (('additional_jobs',) if 'additional_jobs' in row else ()) + (('terminal_proof',) if 'terminal_proof' in row else ())
+        optional = tuple(k for k in ('additional_jobs', 'terminal_proof', 'declared_budget') if k in row)
         c.fields(row, expected + optional, 'Independent allocation')
         if 'terminal_proof' in row:
             c.proof(row['terminal_proof'], 'Authenticated independent terminal evidence')
@@ -114,6 +114,9 @@ def policy(plan):
             c.require(row['release_cap_bytes'] == RELEASE_CAP and row['release_cap_files'] == RELEASE_FILES,
                       'Independent sealed release allowance differs')
         if row['role'] == 'defog':
+            if row['job_id'] == '29846882':
+                balanced_budget(row)
+                continue
             c.require(row['job_id'] == '29839884' and row['cap_bytes'] == 4 * c.GIB
                       and row['cap_files'] >= 30000 and row['release_root'] is not None
                       and len(allocation_jobs(row)) == 1
@@ -121,6 +124,65 @@ def policy(plan):
                       'Original independent DeFoG allocation/cap/source pin differs')
     c.require(type(value['deferred_goals']) is list, 'Explicit other authorized deferred targets required')
     return value
+
+
+def balanced_budget(row, *, authenticate=False):
+    """Exact concurrent producer's declared budget; no producer code is imported."""
+    tag = '20261029-protenix-defog-balanced-30000-01'
+    source = c.ROOT + '/releases/' + tag
+    root = c.ROOT + '/runs/' + tag
+    c.require(row['job_id'] == '29846882' and row['root'] == root and row['release_root'] == source
+              and row['cap_bytes'] == 4*c.GIB and row['cap_files'] == 40000
+              and len(allocation_jobs(row)) == 1
+              and row['source_manifest']['path'] == source + '/source_manifest.json'
+              and row['source_manifest']['sha256'] == 'c9db75b43d85547f2f1a0390fa9ee2427ff13874e78e5b4ce128bedec3614b75',
+              'Balanced DeFoG exact job/source/output allowance differs')
+    expected_command = ('bash -l ' + source + '/experiments/learned-prior/protenix-defog-balanced-30000/hpc/run.sh '
+                        + source + ' ' + row['source_manifest']['sha256'] + ' ' + root
+                        + ' gpu 2e27df1f1bc1d0d7e51850c2fbcdf85f09527e3946ec55007405fde890f4db72')
+    c.require(row['command'] == expected_command, 'Balanced DeFoG actual command differs')
+    budget = row.get('declared_budget')
+    c.fields(budget, ('storage', 'cpu_certificate', 'cpu_proof', 'inherited_xml', 'submission'), 'Balanced budget evidence')
+    for proof in budget.values(): c.proof(proof, 'Balanced producer proof')
+    c.require(budget['storage']['path'] == source + '/experiments/learned-prior/protenix-defog-balanced-30000/configs/storage.json'
+              and budget['cpu_certificate']['path'] == root + '/cpu/certificate.json'
+              and budget['cpu_certificate']['sha256'] == '2e27df1f1bc1d0d7e51850c2fbcdf85f09527e3946ec55007405fde890f4db72'
+              and budget['cpu_proof']['path'] == root + '/cpu/proof.json'
+              and budget['inherited_xml']['path'] == root + '/inherited-junit.xml'
+              and budget['submission']['path'] == root + '/gpu-submission.json', 'Balanced proof paths/pins differ')
+    if not authenticate: return budget
+    for proof in [row['source_manifest'], *budget.values()]: check_binding(proof)
+    manifest = read(row['source_manifest']['path'])
+    c.require(len(manifest['files']) == 183, 'Balanced full source inventory differs')
+    for name, digest in manifest['files'].items():
+        relative = Path(name)
+        c.require(not relative.is_absolute() and '..' not in relative.parts and '\\' not in name,
+                  'Balanced source member unsafe')
+        c.require(binding(Path(source)/name)['sha256'] == digest, 'Balanced source member changed')
+    storage = read(budget['storage']['path'])
+    c.require(storage['new_run_cap_bytes'] == row['cap_bytes']
+              and storage['new_release_allowance_bytes'] == row['release_cap_bytes']
+              and storage['minimum_available_files'] == 130000, 'Balanced producer declared storage changed')
+    cpu = read(budget['cpu_certificate']['path'])
+    c.require(cpu['status'] == 'passed' and cpu['cpu_job'] == '29846868' and cpu['own_cases'] == 17
+              and cpu['inherited_cases'] == 74 and cpu['source_manifest_sha256'] == row['source_manifest']['sha256']
+              and cpu['own_preflight_sha256'] == budget['cpu_proof']['sha256']
+              and cpu['inherited_xml_sha256'] == budget['inherited_xml']['sha256'], 'Balanced CPU certificate differs')
+    balanced_submission(read(budget['submission']['path']), row)
+    return budget
+
+
+def balanced_submission(sub, row):
+    """Producer records raw bsub output/argv, without an invented job_id field."""
+    c.require(sub.get('returncode') == 0 and re.findall(r'Job <([1-9]\d*)> is submitted to queue <gpul40s>\.', sub.get('stdout','')) == [row['job_id']]
+              and sub.get('stderr') == '' and sub.get('certificate_sha256') == row['declared_budget']['cpu_certificate']['sha256'],
+              'Balanced actual submission identity differs')
+    argv = sub.get('argv')
+    c.require(type(argv) is list and argv.count('bash') == 1
+              and ' '.join(argv[argv.index('bash'):]) == row['command']
+              and argv[argv.index('-q')+1] == 'gpul40s' and argv[argv.index('-W')+1] == '08:00'
+              and argv[argv.index('-w')+1] == 'done(29846868)', 'Balanced actual submission command differs')
+    return True
 
 
 def parse_scheduler(raw):
@@ -174,6 +236,18 @@ def _scope(sid, root, state, role, liveness, *, cap=None, files=None):
 
 def independent_terminal(row):
     if 'terminal_proof' not in row:
+        if row['job_id'] == '29846882':
+            path = Path(row['root'])/'gpu.out'
+            if not path.exists(): return None
+            text = ''.join(path.read_text().split())
+            if 'Subject:Job' not in text: return None
+            subject = 'Subject:Job29846882:<protenix-defog-balanced-30000>incluster<dcc>'
+            success = subject+'Done' in text and text.count('Successfullycompleted.') == 1
+            failure = subject+'Exited' in text and len(re.findall(r'Exitedwithexitcode[0-9]+\.', text)) == 1
+            c.require(text.count('Subject:Job') == 1 and text.count('inqueue<gpul40s>') == 1
+                      and success != failure and not (success and 'Exitedwithexit' in text)
+                      and not (failure and 'Successfullycompleted.' in text), 'Balanced DeFoG terminal LSF ambiguous')
+            return binding(path)
         return None
     proof = check_binding(row['terminal_proof'])
     value = read(proof['path'])
@@ -182,6 +256,8 @@ def independent_terminal(row):
               and value.get('source_manifest_sha256') == row['source_manifest']['sha256']
               and value.get('files_deleted_or_modified') is False,
               'Independent terminal identity or preservation differs')
+    if row.get('role') == 'cache':
+        return retired_report_terminal(row, value, proof)
     lsf = []
     for pin in value['proofs']:
         check_binding(pin)
@@ -191,6 +267,32 @@ def independent_terminal(row):
               and 'inqueue<gpul40s>' in lsf[0]
               and (('Successfullycompleted.' in lsf[0]) != ('Exitedwithexitcode1.' in lsf[0])),
               'Actual independent same-job terminal LSF proof missing')
+    return proof
+
+
+def retired_report_terminal(row, value, proof):
+    """Release only the exact superseded request's never-executed allowance."""
+    c.require(row['job_id']=='29796558' and row['root']==c.ROOT+'/runs/20261022-brd4-jq1-lrboost-analysis-01/lrreset-analysis-03/combined-report'
+              and row['source_manifest']['sha256']=='8e3045ddfd44a701127deb7af7a163536dfbf699123ba883f98207d6d57b95d5'
+              and value.get('never_started') is True, 'Unstarted report retirement identity differs')
+    for pin in value['proofs']: check_binding(pin)
+    before,after=read(value['before_proof']['path']),read(value['after_proof']['path'])
+    expected=['bjobs','-json','-o','jobid stat queue start_time command','29796558']
+    for raw,state in ((before,'PEND'),(after,'EXIT')):
+        c.require(raw['argv']==expected and raw['returncode']==0, 'Report original scheduler command failed')
+        rows=json.loads(raw['stdout'])['RECORDS']
+        c.require(len(rows)==1 and rows[0]['JOBID']==row['job_id'] and rows[0]['STAT']==state
+                  and rows[0]['QUEUE']=='hpc' and rows[0]['START_TIME']==''
+                  and rows[0]['COMMAND']==row['command'], 'Report actual terminal/nonexecution differs')
+    sub=read(value['submission']['path'])
+    c.require(sub['outcome']=='submitted' and sub['returncode']==0 and sub['job_id']==row['job_id']
+              and ' '.join(sub['args'][sub['args'].index('bash'):])==row['command'], 'Report original submission differs')
+    details=[read(p['path']) for p in value['proofs'] if p['path'].endswith('/detail-before.json')]
+    kills=[read(p['path']) for p in value['proofs'] if p['path'].endswith('/bkill.json')]
+    c.require(len(details)==len(kills)==1 and details[0]['returncode']==0
+              and 'Dependency condition invalid or never satisfied' in details[0]['stdout']
+              and kills[0]['argv']==['bkill',row['job_id']] and kills[0]['returncode']==0,
+              'Report obsolete dependency/retirement evidence missing')
     return proof
 
 
@@ -340,6 +442,7 @@ def build_scopes(op, plan, pin, phase, parent, scheduler_proof, observed):
     retained['excluded_roots'] += [str(op.ROOT), str(op.SOURCE.parent)]
     for row in p['known_mosaic_jobs']:
         check_binding(row['source_manifest'])
+        if 'declared_budget' in row: balanced_budget(row, authenticate=True)
         terminal = independent_terminal(row)
         if terminal is not None:
             c.require(all(job['job_id'] not in observed for job in allocation_jobs(row)),
@@ -537,7 +640,7 @@ def owned_atomic_temporary(op, scopes, value):
         return atomic_io and any((op.parent_path('validate', arm, offset) / 'payload/study') in path.parents
                                  for arm in op.DISPATCH_ARMS for offset in op.ARMS[arm]['offsets'])
     if owner['role'] == 'defog':
-        return owner['id'] == 'independent-29839884' and path.name.endswith('.json.tmp') \
+        return owner['id'] in ('independent-29839884', 'independent-29846882') and path.name.endswith('.json.tmp') \
             and (Path(owner['root']) / 'pilot') in path.parents
     if owner['role'] == 'validation':
         relative = path.relative_to(Path(owner['root'])).parts
@@ -625,9 +728,16 @@ def _storage(op, parent, phase, attempt):
         embedding_module = importlib.util.module_from_spec(spec); spec.loader.exec_module(embedding_module)
         embedding = embedding_module.observe(plan['shared_embedding'], rows)
         op.write(attempt / 'shared-embedding-observation.json', embedding)
+    probe = None
+    if 'shared_runtime_probe' in plan:
+        spec = importlib.util.spec_from_file_location('_shared_probe_capacity', Path(__file__).with_name('probe_shared_capacity.py'))
+        probe_module = importlib.util.module_from_spec(spec); spec.loader.exec_module(probe_module)
+        probe = probe_module.observe(plan['shared_runtime_probe'], rows)
+        op.write(attempt / 'shared-runtime-probe-observation.json', probe)
     observed, external = classify_jobs(rows, p['known_mosaic_jobs'], set(own.values()), op.SOURCE,
                                        set(shared['accounted_job_ids'] if shared is not None else ()) | set(readers['work3_read_only_job_ids'])
-                                       | set(embedding['accounted_job_ids'] if embedding is not None else ()))
+                                       | set(embedding['accounted_job_ids'] if embedding is not None else ())
+                                       | set(probe['accounted_job_ids'] if probe is not None else ()))
     scopes, goals, claim = build_scopes(op, plan, pin, phase, parent, scheduler_proof, observed)
     if claim is not None:
         basis_path = attempt / ('completed-validation-inventory-' + claim['arm'] + '-' + str(claim['offset']) + '.json')
@@ -660,6 +770,9 @@ def _storage(op, parent, phase, attempt):
     if embedding is not None:
         result = embedding_module.augment(result, embedding)
         result['shared_embedding_evidence'] = binding(attempt / 'shared-embedding-observation.json')
+    if probe is not None:
+        result = probe_module.augment(result, probe)
+        result['shared_runtime_probe_evidence'] = binding(attempt / 'shared-runtime-probe-observation.json')
     result.update(adapter_version=VERSION, raw_quota_command=binding(attempt / 'quota.json'),
                   all_retained_mosaic_bytes_charged_once=True, historical_lifetime_allowance_chain_used=False,
                   inventory_proof=inventory_proof, scheduler_proof=scheduler_proof)

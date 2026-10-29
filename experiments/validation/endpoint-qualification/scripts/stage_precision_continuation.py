@@ -11,7 +11,7 @@ from pathlib import Path
 
 OWNER = Path(__file__).resolve().parents[1]
 REPO = OWNER.parents[2]
-TAG = "20261029-precision-continuation-22"
+TAG = "20261029-precision-continuation-25"
 RUN = OWNER / "runs" / TAG
 LOCAL = REPO / "results/hpc" / TAG
 
@@ -27,7 +27,7 @@ def main():
 import base64,hashlib,io,json,os,sys,tarfile,types,subprocess
 from pathlib import Path,PurePosixPath
 base=Path('/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01')
-root=base/'nonchem-precision-continuation-22';source=base/'nonchem-precision-release-22/source'
+root=base/'nonchem-precision-continuation-25';source=base/'nonchem-precision-release-25/source'
 assert not root.exists() and not source.parent.exists(),'Existing/unknown attempt: inspect actual receipts, never repeat staging'
 data=base64.b64decode(ARCHIVE,validate=True)
 assert len(data)==PREP['archive_bytes'] and hashlib.sha256(data).hexdigest()==PREP['archive_sha256']
@@ -77,6 +77,11 @@ print(json.dumps(result,allow_nan=False))
 '''
     result = helper.command(program, "stage01", 480)
     with (RUN / "submission.json").open("xb") as stream: stream.write(helper.raw(result))
+    campaign=json.loads((RUN/'campaign.json').read_bytes())
+    campaign.update(status=result['status'],cpu_job=result['cpu']['job_id'],controller_job=result['after_cpu']['job_id'],
+        storage_required=result['storage']['required_bytes'],storage_available=result['storage']['available_bytes'],
+        optimizer_jobs_submitted=False,original_results_changed=False,monitor_resumed=False)
+    (RUN/'campaign.json').write_bytes(helper.raw(campaign))
     print(json.dumps({"status": result["status"], "cpu": result["cpu"]["job_id"],
                       "after_cpu": result["after_cpu"]["job_id"],
                       "storage_required": result["storage"]["required_bytes"],

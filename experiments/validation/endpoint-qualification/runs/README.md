@@ -133,3 +133,7 @@ and unchanged total targets/settings/results. Source15's real failures remain.
 local preparation only: corrected precision09 reference and same-device placement,
 40 fixtures planned, no package/pass/job. Current writer admission still needs
 integration before staging; no optimizer branch exists.
+
+[Shared repair25](20261029-precision-continuation-25/README.md):944allocated CPUcases/actualstartups/fullstorage passed, Pro29847826/DB29847828 nativechecks queued. [Chemistry08](20261029-chemistry-native-qualification-08/README.md) is the current component retry. [Verified inactive-copy offload](20261029-shared-writer-offload-24/README.md) preserves all9974 exact laptop members; current science/results untouched.23/24 failures and07unsubmitted draft remain historical.
+
+29Oct11:53: [Chemistry08](20261029-chemistry-native-qualification-08/README.md) CPU29847843/controller29847844 DONE/43cases+fullstorage; nativePro29847869 queued, combinedchemistry admission/optimizer pending.

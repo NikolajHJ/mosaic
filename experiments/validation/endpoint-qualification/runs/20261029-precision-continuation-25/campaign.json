@@ -1,0 +1,91 @@
+{
+  "archive_bytes": 363337,
+  "archive_sha256": "5017fbbcb63870456d349dbfcbc6512b4b95f7e14b00a833a3b865ec26c24eb8",
+  "cpu_counts": {
+    "tests.test_admission": 50,
+    "tests.test_continuation_driver": 56,
+    "tests.test_continuation_ops": 107,
+    "tests.test_cuda_ownership": 55,
+    "tests.test_current_capacity": 5,
+    "tests.test_dbmol_endpoint_precision": 36,
+    "tests.test_dbmol_reference": 17,
+    "tests.test_embedding_shared_capacity": 13,
+    "tests.test_home_report_reader": 18,
+    "tests.test_logit_admission": 14,
+    "tests.test_measurement_resolution": 10,
+    "tests.test_precision_continuation_driver": 71,
+    "tests.test_precision_continuation_hooks": 57,
+    "tests.test_precision_continuation_ops": 131,
+    "tests.test_probe_shared_capacity": 11,
+    "tests.test_protenix_reference_worker": 58,
+    "tests.test_qualification": 19,
+    "tests.test_recovery_capacity": 11,
+    "tests.test_rolling_capacity": 89,
+    "tests.test_runtime_reservations": 28,
+    "tests.test_segment_capacity": 60,
+    "tests.test_vae_shared_capacity": 28
+  },
+  "files": 50,
+  "jobs_submitted": false,
+  "manifest_sha256": "62a3db1b97b81dd0ef6911ee93f11eb1379da794e01f86f035c0c036e1822f8b",
+  "optimization_settings_changed": false,
+  "original_results_changed": false,
+  "plan_sha256": "363b2428153a6e5d96539215ac7f6381388b59eddcf2a89d9a4100ff7d341dfc",
+  "status": "CPU_and_controller_passed_native_jobs_submitted_pending_own_gates",
+  "monitor_resumed": false,
+  "jobs": {
+    "after-cpu": "29847808",
+    "cpu": "29847807",
+    "dbmol-after-validate-07500": "29847829",
+    "dbmol-validate-07500": "29847828",
+    "protenix-after-validate-20000": "29847827",
+    "protenix-validate-20000": "29847826"
+  },
+  "cpu_verification": {
+    "status": "passed_independent_source_byte_XML_LSF_actual_submission_audit",
+    "observed_utc": "2026-10-29T10:46:07.486083+00:00",
+    "files_verified": 47,
+    "source_files_verified": 50,
+    "cases": 944,
+    "modules": 22,
+    "failures_errors_skips": 0,
+    "CPU_job": "29847807",
+    "controller_job": "29847808",
+    "CPU_certificate": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-25/cpu-certificate.json",
+      "bytes": 7416,
+      "sha256": "fad4519e158a729eebba339f1c666791155cdfb5f3bf1fe5c478c89ed26c31a1"
+    },
+    "actual_native_jobs": {
+      "protenix-validate-20000": "29847826",
+      "protenix-after-validate-20000": "29847827",
+      "dbmol-validate-07500": "29847828",
+      "dbmol-after-validate-07500": "29847829"
+    },
+    "controller_entry_storage": {
+      "phase": "entry",
+      "required_bytes": 43348610259,
+      "available_bytes": 44774740882,
+      "reserve_bytes": 4294967296,
+      "file_reserve": 130000
+    },
+    "native_pass_established": false,
+    "optimizer_job_submitted": false,
+    "saved_results_changed": false,
+    "local_scientific_evaluation": false
+  },
+  "last_observed_utc": "2026-10-29T11:02:36.995698+00:00",
+  "last_actual_states": {
+    "29847807": "DONE",
+    "29847808": "DONE",
+    "29847826": "PEND",
+    "29847827": "PEND",
+    "29847828": "PEND",
+    "29847829": "PEND",
+    "29847843": "DONE",
+    "29847844": "DONE",
+    "29847869": "PEND"
+  },
+  "new_optimizer_ids": [],
+  "native_or_combined_pass_established": false
+}

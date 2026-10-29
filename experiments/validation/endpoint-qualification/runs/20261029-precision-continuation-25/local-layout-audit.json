@@ -1,0 +1,15 @@
+{
+  "status": "broad_layout_audit_failed_on_existing_repository_gaps",
+  "created_utc": "2026-10-29T11:01:59.071128+00:00",
+  "scope": "stdlib AST/layout only",
+  "errors": [
+    "Migration discovery map82modules versus147currently discovered",
+    "Preexisting historical artifact directories lack README",
+    "Endpoint .pytest_cache from28October lacks README in its internal cache folders"
+  ],
+  "new_owned_directories_have_README": true,
+  "new_owned_Python_JSON_static_checks_passed": true,
+  "full_allocated_CPU_tests_passed": 944,
+  "local_numerical_work": false,
+  "unrelated_files_modified": false
+}

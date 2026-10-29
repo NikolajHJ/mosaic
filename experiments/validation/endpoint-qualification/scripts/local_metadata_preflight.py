@@ -26,8 +26,18 @@ SELECTION = (
     "tests/test_rolling_capacity.py::test_completed_validation_identity_survives_different_host_device_inode_and_blocks",
     "tests/test_rolling_capacity.py::test_completed_validation_identity_rejects_same_length_content_or_path_change",
     "tests/test_rolling_capacity.py::test_windows_handle_ctime_difference_does_not_weaken_posix_race_checks",
+    "tests/test_rolling_capacity.py::test_balanced_defog_declared_budget_can_be_classified_without_importing_producer",
+    "tests/test_rolling_capacity.py::test_balanced_defog_changed_identity_or_reduced_allowance_is_rejected",
+    "tests/test_rolling_capacity.py::test_balanced_raw_bsub_receipt_needs_no_synthetic_job_id",
+    "tests/test_rolling_capacity.py::test_balanced_changed_raw_submission_receipt_is_not_authenticated",
+    "tests/test_rolling_capacity.py::test_unstarted_obsolete_report_releases_only_its_unspent_cap",
+    "tests/test_rolling_capacity.py::test_report_retirement_cannot_hide_execution_or_unknown_identity",
+    "tests/test_rolling_capacity.py::test_balanced_actual_terminal_lsf_releases_future_not_current_bytes",
+    "tests/test_rolling_capacity.py::test_balanced_ambiguous_or_wrong_job_terminal_output_blocks",
+    "tests/test_rolling_capacity.py::test_active_balanced_stdout_is_not_terminal_evidence",
+    "tests/test_probe_shared_capacity.py",
 )
-EXPECTED_CASES = 98
+EXPECTED_CASES = 136
 FORBIDDEN = {"numpy", "jax", "torch", "equinox", "mosaic"}
 
 
@@ -43,7 +53,7 @@ def main():
         raise ValueError("Use a fresh unlinked output directory within this repository's results/")
     tests = sorted({row.split("::")[0] for row in SELECTION})
     dependencies = tests + ["scripts/precision_continuation_driver.py", "scripts/segment_capacity.py",
-                            "scripts/rolling_capacity.py", "scripts/local_metadata_preflight.py"]
+                            "scripts/rolling_capacity.py", "scripts/probe_shared_capacity.py", "scripts/local_metadata_preflight.py"]
     def proofs():
         rows = []
         for name in dependencies:

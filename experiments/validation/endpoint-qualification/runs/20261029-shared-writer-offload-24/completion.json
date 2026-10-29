@@ -1,0 +1,24 @@
+{
+  "allocated_bytes_nlink1": 988036096,
+  "current_inputs_sources_results_reauthenticated": true,
+  "external_jobs_changed": false,
+  "files": 9974,
+  "journal_sha256": "5ae6c0b78279cffeebf5e0383d951c0ffec8302f215782ab4040f085940a7567",
+  "laptop": {
+    "archive": "C:\\Users\\nikol\\HPC_Archives\\Mosaic\\2026-10-29\\shared-writer-24\\data.tar.gz",
+    "archive_bytes": 1767669566,
+    "archive_sha256": "4b8fa929b2048d3ef216ea60fa4978a2812d013ee3de0be43da15c3e1f5d8153",
+    "files": 9974,
+    "logical_bytes": 2599249408,
+    "status": "all_laptop_archive_members_verified"
+  },
+  "logical_bytes": 2599249408,
+  "quota": {
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "HPE-Storage-Servers (disks, storagepool 1): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nHPE-Storage-Servers (NVME, storagepool 2): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (disks, storagepool 3): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks, storagepool 4): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks added in 2024, storagepool 5): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (NVMEs added in 2024, storagepool 6): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||   43.79 GiB|  100.00 GiB||   390534| 20000000\n\n"
+  },
+  "saved_native_results_changed": false,
+  "status": "exact_inactive_copies_offloaded_after_verified_laptop_backup",
+  "utc": "2026-10-29T10:35:55.278492+00:00"
+}

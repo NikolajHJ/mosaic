@@ -1,0 +1,41 @@
+{
+  "observed_utc": "2026-10-29T11:02:36.995698+00:00",
+  "states": {
+    "29847807": "DONE",
+    "29847808": "DONE",
+    "29847826": "PEND",
+    "29847827": "PEND",
+    "29847828": "PEND",
+    "29847829": "PEND",
+    "29847843": "DONE",
+    "29847844": "DONE",
+    "29847869": "PEND"
+  },
+  "optimizer_ids": [],
+  "entry_presence": {
+    "protenix-validate-20000": {
+      "study_exists": false,
+      "driver_invocation_exists": false,
+      "cuda_probe_exists": false,
+      "native_component_assessment_exists": false
+    },
+    "dbmol-validate-07500": {
+      "study_exists": false,
+      "driver_invocation_exists": false,
+      "cuda_probe_exists": false,
+      "native_component_assessment_exists": false
+    },
+    "chemistry-native-qualification-08/gpu-protenix": {
+      "study_exists": false,
+      "driver_invocation_exists": false,
+      "cuda_probe_exists": false,
+      "native_component_assessment_exists": false
+    }
+  },
+  "status": "all_three_repaired_native_checks_queued_no_new_optimizer",
+  "cpu_cases": 944,
+  "chemistry_cpu_cases": 43,
+  "scientific_or_native_pass_established": false,
+  "saved_results_changed": false,
+  "monitor_resumed": false
+}

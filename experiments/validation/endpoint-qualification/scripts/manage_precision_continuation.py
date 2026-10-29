@@ -18,12 +18,12 @@ import tarfile
 
 REPO = Path(__file__).resolve().parents[4]
 OWNER = REPO / "experiments/validation/endpoint-qualification"
-TAG = "20261029-precision-continuation-22"
+TAG = "20261029-precision-continuation-25"
 RUN = OWNER / "runs" / TAG
 LOCAL = REPO / "results/hpc" / TAG
 BASE = "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01"
-ROOT = BASE + "/nonchem-precision-continuation-22"
-SOURCE = BASE + "/nonchem-precision-release-22/source"
+ROOT = BASE + "/nonchem-precision-continuation-25"
+SOURCE = BASE + "/nonchem-precision-release-25/source"
 PYTHON = "/work3/s234818/mosaic/envs/protenix-tiny/bin/python"
 TORCH_PYTHON = "/work3/s234818/latentmol/env/boltz311/bin/python"
 BASE_TAG = "20261027-continuation-measurement-09"
@@ -304,7 +304,7 @@ def startup_adoption(source, *, tests=False):
     replacements = {old_root + "/cpu/payload/reference-startup.json": ROOT + "/cpu/payload/dbmol-reference-startup.json"}
     if tests:
         replacements = {"cpu/payload/reference-startup.json": "cpu/payload/dbmol-reference-startup.json",
-            "dbmol-endpoint-recovery-13": "nonchem-precision-continuation-22",
+            "dbmol-endpoint-recovery-13": "nonchem-precision-continuation-25",
             old_root + "/gpu/payload/reference-startup.json": ROOT + "/gpu/payload/dbmol-reference-startup.json"}
     class Change(ast.NodeTransformer):
         def visit_Constant(self, node):
@@ -412,36 +412,51 @@ def _prepare_legacy(counts_path, metadata_path=None):
 
 
 def prepare(counts_path, metadata_path=None):
-    """New22 engineering successor of exact sealed21, no scientific rebuild."""
-    require(metadata_path is None, "22 adopts exact verified21 inputs; no replacement metadata")
+    """Resource-only successor24 adopts exact source22 science and all failures."""
+    require(metadata_path is None, "24 adopts exact verified22 inputs; no replacement metadata")
     require((RUN / "README.md").is_file() and not (LOCAL / "source01").exists()
-            and not (RUN / "plan.json").exists(), "Write fresh22 record; never repeat preparation")
-    prior = REPO / "results/hpc/20261028-precision-continuation-21/source01"
+            and not (RUN / "plan.json").exists(), "Write fresh24 record; never repeat preparation")
+    prior = REPO / "results/hpc/20261029-precision-continuation-22/source01"
     manifest_raw = (prior / "source_manifest.json").read_bytes()
-    require(sha(manifest_raw) == "930a1ed9c75456fbf2c986f904b4016a73ed8d0d4d49544f6837e6e9cb86e060", "Exact21 predecessor differs")
+    require(sha(manifest_raw) == "f930989518b848f4247b77977a4258a66a278ce0ac17521bea3bf19c676bbc8b", "Exact22 predecessor differs")
     previous = json.loads(manifest_raw)
     members = {name:(prior/name).read_bytes() for name in previous["files"]}
-    require(all(sha(data)==previous["files"][name] for name,data in members.items()), "Cached21 member bytes differ")
+    require(all(sha(data)==previous["files"][name] for name,data in members.items()), "Cached22 member bytes differ")
     def address(data):
-        return data.replace(b"nonchem-precision-continuation-21",b"nonchem-precision-continuation-22").replace(
-            b"nonchem-precision-release-21",b"nonchem-precision-release-22")
+        return data.replace(b"nonchem-precision-continuation-22",b"nonchem-precision-continuation-25").replace(
+            b"nonchem-precision-release-22",b"nonchem-precision-release-25")
     plan = json.loads(address(members["plan.json"]))
-    packet = REPO / "results/hpc/20261029-cuda-startup-repair-22"
-    baseline = read(packet / "embedding-baseline01/observation.json")
-    actual = read(packet / "external-writer01/observation.json")
+    packet = REPO / "results/hpc/20261029-shared-writer-repair-23"
+    actual = metadata_file(packet / "producer-proofs03/stdout.json")
+    old = metadata_file(packet / "writer-budget01/stdout.json")
+    probe = metadata_file(packet / "probe-budget05/stdout.json")
     records = json.loads(actual["scheduler"]["stdout"])["RECORDS"]
-    profile = {k:baseline[k] for k in ("proofs","source_manifests","baseline","growth_bytes")}
-    profile.update(version="mosaic-authenticated-embedding-shared-quota-v1",growth_files=150000,
-        job_templates={"gpu":next(r["COMMAND"] for r in records if r["JOBID"]=="29846090"),
-                       "callback":next(r["COMMAND"] for r in records if r["JOBID"]=="29846091")})
-    module(OWNER / "scripts/embedding_shared_capacity.py", "_embedding_profile22").validate_profile(profile)
-    plan["shared_embedding"] = profile
+    proofs = {r['path']:{k:r[k] for k in ('path','bytes','sha256')} for r in old['records']+actual['records']}
+    defog_source='/work3/s234818/mosaic/releases/20261029-protenix-defog-balanced-30000-01'
+    defog_root='/work3/s234818/mosaic/runs/20261029-protenix-defog-balanced-30000-01'
+    plan['rolling_storage_policy']['known_mosaic_jobs'].append({
+        'job_id':'29846882','command':next(r['COMMAND'] for r in records if r['JOBID']=='29846882'),
+        'root':defog_root,'cap_bytes':4*1024**3,'cap_files':40000,'role':'defog',
+        'release_root':defog_source,'release_cap_bytes':64*1024**2,'release_cap_files':3000,
+        'source_manifest':proofs[defog_source+'/source_manifest.json'],
+        'declared_budget':{'storage':proofs[defog_source+'/experiments/learned-prior/protenix-defog-balanced-30000/configs/storage.json'],
+            'cpu_certificate':proofs[defog_root+'/cpu/certificate.json'],'cpu_proof':proofs[defog_root+'/cpu/proof.json'],
+            'inherited_xml':proofs[defog_root+'/inherited-junit.xml'],'submission':proofs[defog_root+'/gpu-submission.json']}})
+    plan['shared_runtime_probe']={'version':'mosaic-authenticated-runtime-probe-quota-v1',
+        'proofs':[{k:r[k] for k in ('path','bytes','sha256')} for r in probe['records']],
+        'baseline':probe['baseline'],'growth_bytes':512*1024**2,'growth_files':3000,'job_id':'29846982',
+        'command':next(r['COMMAND'] for r in records if r['JOBID']=='29846982')}
+    retired=metadata_file(packet/'obsolete-report-retire13/stdout.json')
+    require(retired['status']=='obsolete_unstarted_report_actually_EXIT_retained_all_files', 'Obsolete report retirement not authenticated')
+    report=next(r for r in plan['rolling_storage_policy']['known_mosaic_jobs'] if r['job_id']=='29796558')
+    report['terminal_proof']=retired['binding']
+    module(OWNER/'scripts/rolling_capacity.py','_rolling_policy23').policy(plan)
+    module(OWNER/'scripts/probe_shared_capacity.py','_probe_profile23').validate_profile(plan['shared_runtime_probe'])
     # Same exact scientific arm dictionaries after own-address normalization.
     require(plan["arms"] == json.loads(address(members["plan.json"]))["arms"], "Scientific arm settings changed")
-    changed = ("scripts/cuda_ownership.py", "tests/test_cuda_ownership.py", "scripts/precision_continuation_ops.py",
-               "tests/test_precision_continuation_ops.py", "scripts/precision_continuation_stage.lsf",
-               "scripts/protenix_reference_worker.py", "tests/test_protenix_reference_worker.py",
-               "scripts/rolling_capacity.py", "scripts/embedding_shared_capacity.py", "tests/test_embedding_shared_capacity.py")
+    changed = ("scripts/precision_continuation_ops.py", "scripts/protenix_reference_worker.py",
+               "scripts/rolling_capacity.py", "tests/test_rolling_capacity.py",
+               "scripts/probe_shared_capacity.py", "tests/test_probe_shared_capacity.py")
     for name in changed: members[name]=(OWNER/name).read_bytes().replace(b"\r\n",b"\n")
     db_members, _, _ = local_capsule(DB_TAG, BASE + "/dbmol-endpoint-recovery-release-13/source")
     audit = {}
@@ -452,21 +467,35 @@ def prepare(counts_path, metadata_path=None):
     members["README.md"] = (RUN / "README.md").read_bytes().replace(b"\r\n",b"\n")
     counts = read(counts_path)
     modules = {"tests."+Path(n).stem for n in members if n.startswith("tests/test_") and n.endswith(".py")}
-    require(set(counts)==modules and all(type(n) is int and n>0 for n in counts.values()), "Exact22 module counts differ")
+    require(set(counts)==modules and all(type(n) is int and n>0 for n in counts.values()), "Exact23 module counts differ")
     manifest = deepcopy(previous)
     manifest["files"] = {n:sha(data) for n,data in sorted(members.items())}
     manifest["cpu_counts"] = counts
     manifest["startup_adoption"] = audit
-    manifest["parent_sources"] += [{"path":BASE+"/nonchem-precision-release-21/source", "files":46,
+    manifest["parent_sources"] += [{"path":BASE+"/nonchem-precision-release-22/source", "files":48,
                                      "manifest_sha256":sha(manifest_raw)}]
-    failed = read(REPO / "results/hpc/20261028-precision-continuation-21/20261029-status01/observation.json")
+    failed = read(OWNER/'runs/20261029-precision-continuation-22/status-20261029-095400.json')
     require(failed["studies"] and all(not v["exists"] and not v["driver_invocation_exists"] for v in failed["studies"].values()),
-            "Failed21 scientific execution is not absent")
-    manifest["preserved_proofs"] = deduplicate(manifest["preserved_proofs"] + [r["binding"] for r in failed["evidence"]])
-    manifest["startup21_failure_preserved"] = True
-    manifest["scientific_driver_hooks_exact21"] = all(members[n] == (prior/n).read_bytes() for n in
+            "Failed22 scientific execution is not absent")
+    manifest["preserved_proofs"] = deduplicate(manifest["preserved_proofs"] + failed['proof_bindings'])
+    preflight_failure = metadata_file(packet/'source23-failure06/stdout.json')
+    require(preflight_failure['status']=='source23_preflight_receipt_schema_failure_no_jobs'
+            and preflight_failure['jobs_submitted'] is False, 'Source23 outcome is unknown')
+    manifest['parent_sources'].append({'path':BASE+'/nonchem-precision-release-23/source','files':50,
+        'manifest_sha256':'7b91c7c6885bb0694fe688e5c089994c157d745d1d8b93ea22b22302be2f4c0d'})
+    manifest['preserved_proofs']=deduplicate(manifest['preserved_proofs']+preflight_failure['proofs'])
+    manifest['source23_receipt_schema_failure_preserved']=True
+    capacity_failure=metadata_file(packet/'capacity24-07/stdout.json')
+    require(capacity_failure['status']=='resource_capacity_failed_before_any_submission' and capacity_failure['jobs_submitted'] is False,
+            'Source24 actual preflight/submission outcome unknown')
+    manifest['parent_sources'].append({'path':BASE+'/nonchem-precision-release-24/source','files':50,
+        'manifest_sha256':'4c2a86ec4a8f65aa37d35df94416fe6d8995e74d666d26f186629287f7ee725b'})
+    manifest['preserved_proofs']=deduplicate(manifest['preserved_proofs']+[r['binding'] for r in capacity_failure['records']]+[retired['binding']])
+    manifest['source24_capacity_failure_preserved']=True
+    manifest["startup22_failure_preserved"] = True
+    manifest["scientific_driver_hooks_exact22"] = all(members[n] == (prior/n).read_bytes() for n in
         ("scripts/precision_continuation_driver.py","scripts/precision_continuation_hooks.py"))
-    require(manifest["scientific_driver_hooks_exact21"], "Production driver/hooks changed")
+    require(manifest["scientific_driver_hooks_exact22"], "Production driver/hooks changed")
     for name,data in members.items():
         if name.endswith(".py"):ast.parse(data,filename=name)
     members["source_manifest.json"] = raw(manifest)

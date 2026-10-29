@@ -29,7 +29,7 @@ class ChemistryNativeQualificationTests(unittest.TestCase):
         self.assertEqual(a[a.index('-n')+1],'4');self.assertNotIn('-w',a)
     def test_new_command_points_to_new_source(self):
         a=ops.inherited().command('gpu-protenix','a'*64)
-        self.assertEqual(a[a.index('-J')+1],'mosaic-chem-qualification06-gpu-protenix')
+        self.assertEqual(a[a.index('-J')+1],'mosaic-chem-qualification08-gpu-protenix')
         self.assertIn(str(ops.SOURCE),a)
     def test_no_optimizer_phase(self):
         with self.assertRaises(ValueError):ops.inherited().command('segment','a'*64)
@@ -259,14 +259,14 @@ class ChemistryNativeQualificationTests(unittest.TestCase):
 
 
     def test_resource_source_and_child_are_in_one_funded_control_tree(self):
-        parent=ops.BASE/'nonchem-precision-continuation-22'
+        parent=ops.BASE/'nonchem-precision-continuation-25'
         self.assertEqual(ops.ROOT.parent,parent)
         self.assertEqual(ops.SOURCE.parent.parent,parent)
-        self.assertEqual(ops.CURRENT_CAPACITY_SOURCE['files'],48)
+        self.assertEqual(ops.CURRENT_CAPACITY_SOURCE['files'],50)
 
     def test_actual_commands_carry_current_capacity_identity(self):
         argv=ops.inherited().command('gpu-protenix','a'*64)
-        self.assertEqual(argv[-2:],["--capacity-source",str(ops.BASE/'nonchem-precision-release-22/source')])
+        self.assertEqual(argv[-2:],["--capacity-source",str(ops.BASE/'nonchem-precision-release-25/source')])
         self.assertEqual(argv.count('-env'),1)
         self.assertIn('~CUDA_VISIBLE_DEVICES',argv[argv.index('-env')+1])
 

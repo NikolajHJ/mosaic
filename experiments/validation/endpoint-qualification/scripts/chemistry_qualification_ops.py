@@ -15,13 +15,13 @@ import sys
 BASE=Path('/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01')
 PARENT=BASE/'chemistry-endpoint-recovery-release-02/source'
 PARENT_PIN='d3d8678542db3cf6100006f8f9dbd3ce761f169bd904ddcae3d4525a53252f51'
-ROOT=Path('/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-22/chemistry-native-qualification-06')
-SOURCE=Path('/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-22/chemistry-native-qualification-release-06/source')
+ROOT=Path('/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-25/chemistry-native-qualification-08')
+SOURCE=Path('/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-25/chemistry-native-qualification-release-08/source')
 CAP=2*512*1024**2+64*1024**2
 NATIVE_ARMS=('protenix',)
 # Bound only after current cross-campaign resource16 is sealed and05's writer
 # descriptor is validated. Never stage/admit with qualification04's old scope.
-CURRENT_CAPACITY_SOURCE={'path':str(BASE/'nonchem-precision-release-22/source'),'manifest_sha256':'f930989518b848f4247b77977a4258a66a278ce0ac17521bea3bf19c676bbc8b','files':48}
+CURRENT_CAPACITY_SOURCE={'path':str(BASE/'nonchem-precision-release-25/source'),'manifest_sha256':'62a3db1b97b81dd0ef6911ee93f11eb1379da794e01f86f035c0c036e1822f8b','files':50}
 ATOMIC_REFERENCE=BASE/'nonchem-endpoint-continuation-09/boltz-segment-10000/payload/study/case-0/references/latest-reference.json.tmp'
 INVENTORY_ATTEMPTS=3
 
@@ -33,7 +33,7 @@ def capacity_operator():
     spec=importlib.util.spec_from_file_location('_chem06_current_capacity',source/'scripts/precision_continuation_ops.py')
     op=importlib.util.module_from_spec(spec);sys.modules[spec.name]=op;spec.loader.exec_module(op)
     manifest=op.verify(source,CURRENT_CAPACITY_SOURCE['manifest_sha256'])
-    op.require(len(manifest['files'])==48,'Current resource source48 required')
+    op.require(len(manifest['files'])==50,'Current resource source50 required')
     op.certificate(CURRENT_CAPACITY_SOURCE['manifest_sha256'],manifest)
     op.require(ROOT.parent==op.ROOT and SOURCE.parent.parent==op.ROOT,
                'Chemistry controls/source must be inside the funded2GiB current control tree')
@@ -101,9 +101,9 @@ def inherited():
     original_command=op.command
     def command(phase,pin,dependency=None):
         argv=original_command(phase,pin,dependency)
-        argv[argv.index('-J')+1]='mosaic-chem-qualification06-'+phase
+        argv[argv.index('-J')+1]='mosaic-chem-qualification08-'+phase
         argv[1:1]=['-env','all,~CUDA_VISIBLE_DEVICES,~CUDA_MPS_PIPE_DIRECTORY,~CUDA_MPS_LOG_DIRECTORY,~CUDA_MPS_ACTIVE_THREAD_PERCENTAGE']
-        argv+=['--capacity-source',str(BASE/'nonchem-precision-release-22/source')]
+        argv+=['--capacity-source',str(BASE/'nonchem-precision-release-25/source')]
         return argv
     op.command=command
     original_submit=op.submit

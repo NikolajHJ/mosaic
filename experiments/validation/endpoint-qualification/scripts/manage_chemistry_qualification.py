@@ -11,12 +11,12 @@ import tarfile
 
 REPO=Path(__file__).resolve().parents[4]
 OWNER=REPO/'experiments/validation/endpoint-qualification'
-TAG='20261029-chemistry-native-qualification-06'
+TAG='20261029-chemistry-native-qualification-08'
 LOCAL=REPO/'results/hpc'/TAG
 RUN=OWNER/'runs'/TAG
 BASE='/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01'
-ROOT='/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-22/chemistry-native-qualification-06'
-SOURCE='/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-22/chemistry-native-qualification-release-06/source'
+ROOT='/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-25/chemistry-native-qualification-08'
+SOURCE='/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-25/chemistry-native-qualification-release-08/source'
 PARENT=BASE+'/chemistry-endpoint-recovery-release-02/source'
 PIN='d3d8678542db3cf6100006f8f9dbd3ce761f169bd904ddcae3d4525a53252f51'
 PRECISION=BASE+'/protenix-endpoint-fix-release-09/source'
@@ -26,7 +26,7 @@ PRIOR_SOURCE=BASE+'/chemistry-native-qualification-release-04/source'
 PRIOR_PIN='5d8f4ef0f8bb820e76d2e92442492f604393e79b58725fd01f9bb042b3114863'
 # Root binds an actual sealed current-capacity source and bounded05 writer.
 # None is an intentional preparation/staging stop, not a storage admission.
-CURRENT_CAPACITY_SOURCE={'path':BASE+'/nonchem-precision-release-22/source','manifest_sha256':'f930989518b848f4247b77977a4258a66a278ce0ac17521bea3bf19c676bbc8b','files':48}
+CURRENT_CAPACITY_SOURCE={'path':BASE+'/nonchem-precision-release-25/source','manifest_sha256':'62a3db1b97b81dd0ef6911ee93f11eb1379da794e01f86f035c0c036e1822f8b','files':50}
 CPU_CASES=43
 
 
@@ -111,7 +111,7 @@ def prepare():
     packet=m.connect(code,'inputs01',300);plan=packet['plan'];members={}
     plan['parent_sources'].append(CURRENT_CAPACITY_SOURCE)
     plan['current_capacity_source']=CURRENT_CAPACITY_SOURCE
-    plan['current_control_cap_scope']='Inside22 entire funded2GiB control tree; no optimizer admission'
+    plan['current_control_cap_scope']='Inside25 entire funded2GiB control tree; no optimizer admission'
     names=('scripts/chemistry_native_qualification.py','scripts/chemistry_qualification_ops.py',
            'scripts/manage_chemistry_qualification.py','tests/test_chemistry_native_qualification.py','scripts/admission.py',
            'scripts/protenix_precision_reference.py','scripts/protenix_precision_admission.py')

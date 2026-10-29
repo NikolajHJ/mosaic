@@ -27,8 +27,8 @@ VERSION = "precision-reference-continuation-source-v1"
 PLAN_VERSION = "precision-reference-continuation-plan-v1"
 RESULT_VERSION = "precision-reference-continuation-result-v1"
 BASE = Path("/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01")
-ROOT = BASE / "nonchem-precision-continuation-22"
-SOURCE = BASE / "nonchem-precision-release-22/source"
+ROOT = BASE / "nonchem-precision-continuation-25"
+SOURCE = BASE / "nonchem-precision-release-25/source"
 ADMISSION = BASE / "nonchem-stride20-startup-release-03/source"
 ADMISSION_SHA = "704fab033d97342a14dc12b58dc32df44874232c5c30aad47c4d02041a502aab"
 PYTHON = "/work3/s234818/mosaic/envs/protenix-tiny/bin/python"
@@ -269,7 +269,7 @@ def argv(phase, pin, arm="all", offset=0, dependency=None):
     parent = ROOT / name
     budget = segment_budget(arm, offset) if phase == "segment" else None
     from cuda_ownership import SUBMISSION_ENV
-    command = ["bsub", "-env", SUBMISSION_ENV, *resources(phase, budget), "-J", "mosaic-precision22-" + name,
+    command = ["bsub", "-env", SUBMISSION_ENV, *resources(phase, budget), "-J", "mosaic-precision25-" + name,
                "-oo", str(parent / "stdout.%J.log"), "-eo", str(parent / "stderr.%J.log")]
     if dependency is not None:
         command += ["-w", dependency]
@@ -354,7 +354,7 @@ def terminal(parent, queue):
             break
         require(index < 20, "Terminal LSF output unavailable")
         time.sleep(1)
-    lsf_success(path.read_text(), job, "mosaic-precision22-" + parent.name, queue)
+    lsf_success(path.read_text(), job, "mosaic-precision25-" + parent.name, queue)
     proofs.append(binding(path))
     return proofs
 

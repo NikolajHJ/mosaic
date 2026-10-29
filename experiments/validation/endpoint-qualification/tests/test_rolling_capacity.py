@@ -26,6 +26,112 @@ def basic_policy():
             'release_cap_files': r.RELEASE_FILES, 'known_mosaic_jobs': [], 'deferred_goals': []}
 
 
+def balanced_row():
+    source=r.c.ROOT+'/releases/20261029-protenix-defog-balanced-30000-01'
+    root=r.c.ROOT+'/runs/20261029-protenix-defog-balanced-30000-01'
+    pin='c9db75b43d85547f2f1a0390fa9ee2427ff13874e78e5b4ce128bedec3614b75'
+    proof=lambda path,sha='a'*64:{'path':path,'bytes':1,'sha256':sha}
+    return {'job_id':'29846882','command':'bash -l '+source+'/experiments/learned-prior/protenix-defog-balanced-30000/hpc/run.sh '+source+' '+pin+' '+root+' gpu 2e27df1f1bc1d0d7e51850c2fbcdf85f09527e3946ec55007405fde890f4db72',
+            'root':root,'cap_bytes':4*r.c.GIB,'cap_files':40000,'role':'defog','release_root':source,
+            'release_cap_bytes':r.RELEASE_CAP,'release_cap_files':r.RELEASE_FILES,
+            'source_manifest':proof(source+'/source_manifest.json',pin),
+            'declared_budget':{'storage':proof(source+'/experiments/learned-prior/protenix-defog-balanced-30000/configs/storage.json'),
+               'cpu_certificate':proof(root+'/cpu/certificate.json','2e27df1f1bc1d0d7e51850c2fbcdf85f09527e3946ec55007405fde890f4db72'),
+               'cpu_proof':proof(root+'/cpu/proof.json'),'inherited_xml':proof(root+'/inherited-junit.xml'),
+               'submission':proof(root+'/gpu-submission.json')}}
+
+
+def test_balanced_defog_declared_budget_can_be_classified_without_importing_producer():
+    row=balanced_row();v=basic_policy();v['known_mosaic_jobs']=[row]
+    assert r.policy({'rolling_storage_policy':v})==v
+    actual,external=r.classify_jobs([scheduler(row['job_id'],'RUN',row['command'])],[row],set(),'/own')
+    assert set(actual)=={'29846882'} and not external
+
+
+@pytest.mark.parametrize('key,value',[('job_id','999'),('command','other'),('cap_bytes',1),('cap_files',1),('root',r.c.ROOT+'/other')])
+def test_balanced_defog_changed_identity_or_reduced_allowance_is_rejected(key,value):
+    row=balanced_row();row[key]=value
+    with pytest.raises(ValueError):r.balanced_budget(row)
+
+
+def balanced_submission_fixture():
+    row=balanced_row()
+    value={'argv':['bsub','-q','gpul40s','-W','08:00','-w','done(29846868)',*row['command'].split()],
+           'returncode':0,'stdout':'Job <29846882> is submitted to queue <gpul40s>.\n','stderr':'',
+           'certificate_sha256':row['declared_budget']['cpu_certificate']['sha256']}
+    return row,value
+
+
+def test_balanced_raw_bsub_receipt_needs_no_synthetic_job_id():
+    row,value=balanced_submission_fixture();assert 'job_id' not in value
+    assert r.balanced_submission(value,row)
+
+
+@pytest.mark.parametrize('key,bad',[('returncode',1),('stdout','Job <9> is submitted to queue <gpul40s>.'),('certificate_sha256','0'*64),('argv',['bsub'])])
+def test_balanced_changed_raw_submission_receipt_is_not_authenticated(key,bad):
+    row,value=balanced_submission_fixture();value[key]=bad
+    with pytest.raises(ValueError):r.balanced_submission(value,row)
+
+
+def retired_report_fixture(monkeypatch):
+    root=r.c.ROOT+'/runs/20261022-brd4-jq1-lrboost-analysis-01/lrreset-analysis-03/combined-report'
+    proof=lambda name:{'path':r.c.ROOT+'/report-retirement/'+name,'bytes':1,'sha256':'a'*64}
+    row={'job_id':'29796558','root':root,'role':'cache','command':'bash original report',
+         'source_manifest':{'sha256':'8e3045ddfd44a701127deb7af7a163536dfbf699123ba883f98207d6d57b95d5'}}
+    pins=[proof(n) for n in ('before.json','after.json','submission.json','detail-before.json','bkill.json')]
+    value={'never_started':True,'proofs':pins,'before_proof':pins[0],'after_proof':pins[1],'submission':pins[2]}
+    records={}
+    for pin,state in ((pins[0],'PEND'),(pins[1],'EXIT')):
+        records[pin['path']]={'argv':['bjobs','-json','-o','jobid stat queue start_time command','29796558'],
+          'returncode':0,'stdout':json.dumps({'RECORDS':[{'JOBID':'29796558','STAT':state,'QUEUE':'hpc','START_TIME':'','COMMAND':row['command']}]})}
+    records[pins[2]['path']]={'outcome':'submitted','returncode':0,'job_id':'29796558','args':['bsub','bash','original','report']}
+    records[pins[3]['path']]={'returncode':0,'stdout':'Dependency condition invalid or never satisfied'}
+    records[pins[4]['path']]={'argv':['bkill','29796558'],'returncode':0}
+    monkeypatch.setattr(r,'check_binding',lambda p:p);monkeypatch.setattr(r,'read',lambda p:records[p])
+    return row,value,pins,records
+
+
+def test_unstarted_obsolete_report_releases_only_its_unspent_cap(monkeypatch):
+    row,value,pins,_=retired_report_fixture(monkeypatch)
+    assert r.retired_report_terminal(row,value,pins[0])==pins[0]
+
+
+@pytest.mark.parametrize('bad',['running','started','queue','job','command','submission','never_started'])
+def test_report_retirement_cannot_hide_execution_or_unknown_identity(monkeypatch,bad):
+    row,value,pins,records=retired_report_fixture(monkeypatch)
+    if bad in ('running','started','queue','job','command'):
+        raw=records[pins[1]['path']];v=json.loads(raw['stdout']);v['RECORDS'][0][{'running':'STAT','started':'START_TIME','queue':'QUEUE','job':'JOBID','command':'COMMAND'}[bad]]={
+            'running':'RUN','started':'Oct 29','queue':'gpul40s','job':'99','command':'other'}[bad];raw['stdout']=json.dumps(v)
+    if bad=='submission':records[pins[2]['path']]['outcome']='unknown'
+    if bad=='never_started':value['never_started']=False
+    with pytest.raises(ValueError):r.retired_report_terminal(row,value,pins[0])
+
+
+@pytest.mark.parametrize('outcome',['Done','Exited'])
+def test_balanced_actual_terminal_lsf_releases_future_not_current_bytes(tmp_path,outcome):
+    text='Subject: Job 29846882: <protenix-defog-balanced-30000> in cluster <dcc> '+outcome+'\n in queue <gpul40s>\n'
+    text+='Successfully completed.\n' if outcome=='Done' else 'Exited with exit code 1.\n'
+    (tmp_path/'gpu.out').write_text(text)
+    assert r.independent_terminal({'job_id':'29846882','root':str(tmp_path)})==r.binding(tmp_path/'gpu.out')
+
+
+@pytest.mark.parametrize('bad',['wrongjob','wrongqueue','duplicate','contradictory','malformed'])
+def test_balanced_ambiguous_or_wrong_job_terminal_output_blocks(tmp_path,bad):
+    text='Subject:Job29846882:<protenix-defog-balanced-30000>incluster<dcc>Done\ninqueue<gpul40s>\nSuccessfullycompleted.'
+    if bad=='wrongjob':text=text.replace('29846882','99')
+    if bad=='wrongqueue':text=text.replace('gpul40s','hpc')
+    if bad=='duplicate':text+='Subject:Job999:other'
+    if bad=='contradictory':text+='Exitedwithexitcode1.'
+    if bad=='malformed':text='Subject:Job29846882: incomplete'
+    (tmp_path/'gpu.out').write_text(text)
+    with pytest.raises(ValueError):r.independent_terminal({'job_id':'29846882','root':str(tmp_path)})
+
+
+def test_active_balanced_stdout_is_not_terminal_evidence(tmp_path):
+    (tmp_path/'gpu.out').write_text('Native checks in progress\n')
+    assert r.independent_terminal({'job_id':'29846882','root':str(tmp_path)}) is None
+
+
 def test_parse_actual_complete_scheduler_json_and_unique_ids():
     rows = [scheduler('1'), scheduler('2', 'RUN', r.c.ROOT + '/own')]
     assert r.parse_scheduler(raw_scheduler(rows)) == rows

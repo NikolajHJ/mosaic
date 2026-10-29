@@ -1,0 +1,7 @@
+{
+  "status": "local_verifier_path_assumption_corrected_no_experiment_change",
+  "error": "Expected a dispatch-named gate; actual immutable controller authenticates entry scope before native submission",
+  "corrected_protocol": "Validate the actual entry-phase receipt with all source/reserve/margin checks unchanged",
+  "final_verification": "cpu-verification.json",
+  "HPC_source_or_scientific_checks_changed": false
+}

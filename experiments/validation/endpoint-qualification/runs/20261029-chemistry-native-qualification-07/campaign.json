@@ -1,0 +1,18 @@
+{
+  "archive_bytes": 224226,
+  "archive_sha256": "559b5bac6a42056b34f44fb6933b48c5a9fa4a1a8649d6010585bbdb27c17ef2",
+  "cpu_cases": 43,
+  "cpu_counts": {
+    "tests.test_chemistry_native_qualification.ChemistryNativeQualificationTests": 43
+  },
+  "files": 13,
+  "manifest_sha256": "0ce13d3d377e1c6d8e889cb6d23e0d4905362e4639f4c9633dde66feca5c0a66",
+  "monitor_resumed": false,
+  "optimizer_jobs_submitted": false,
+  "plan_sha256": "a6b8ba158e1a2ef5120e37488e3bf9a25513200a811e2f4210606901d02faf41",
+  "protected_input_files": 3953,
+  "saved_results_changed": false,
+  "settings_changed": false,
+  "status": "local_unsubmitted_draft_superseded_by08_capacity25",
+  "jobs_submitted": false
+}

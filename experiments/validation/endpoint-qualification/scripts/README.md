@@ -209,3 +209,7 @@ writer gate: authenticate that job's output budget or terminal state and all
 remaining account writers before assigning a new namespace or changing a launch.
 Historical16 small-chunk jobs were intentionally
 retired unstarted;17 failed one fixture message assertion, with no GPU children.
+
+Current29Oct: shared repair25 owns944allocated CPU/startup cases and current full storage; native29847826/29847828 queued. `probe_shared_capacity.py` authenticates only the exact source144 timing probe; `rolling_capacity.py` binds balancedDeFoG budget/actual terminalLSF and the strictly never-started retired report. `repair_shared_offload.py` is one-shot exact laptop-backup/retirement, not routine polling. `retire_obsolete_report.py` already retired29796558; never replay it. `collect_precision_cpu.py` and `verify_precision_capsule_cpu.py` independently collect/audit exact capsule metadata without model evaluation.136portable controls pass; full944HPC cases passed. See current run records before any operation; all old gated failures are retained.
+
+`verify_scoped_chemistry_cpu.py` audits the nested source08 CPU43/callback/actualnative submission against the declared current source25 capacity pins; it imports no model. Native GPU29847869 is pending, not scientifically passed.

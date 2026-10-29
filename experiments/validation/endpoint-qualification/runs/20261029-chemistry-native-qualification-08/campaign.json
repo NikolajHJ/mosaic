@@ -1,0 +1,59 @@
+{
+  "archive_bytes": 224224,
+  "archive_sha256": "0472dd49ce6246b856a762a30854d5848f742abfd5c23d8d37f251dbf8ad42f9",
+  "callback_job": "29847844",
+  "cpu_cases": 43,
+  "cpu_counts": {
+    "tests.test_chemistry_native_qualification.ChemistryNativeQualificationTests": 43
+  },
+  "cpu_job": "29847843",
+  "files": 13,
+  "manifest_sha256": "82eb292f66ee8f8dcd86d9480775c480c1b086a1192d6ac724fbdd771a08438e",
+  "monitor_resumed": false,
+  "optimizer_jobs_submitted": false,
+  "plan_sha256": "9364e9e4a743da5549452c01b290960c9e64a636b4fd72fe9921caec8c95f100",
+  "protected_input_files": 3953,
+  "remote_source_staged": true,
+  "saved_results_changed": false,
+  "settings_changed": false,
+  "status": "CPU43_controller_passed_native_component_job_submitted_pending_own_gates",
+  "jobs": {
+    "cpu": "29847843",
+    "after-cpu": "29847844",
+    "gpu-protenix": "29847869"
+  },
+  "cpu_verification": {
+    "status": "passed_independent_scoped_chemistry_CPU_source_byte_XML_LSF_startup_dispatch_audit",
+    "cases": 43,
+    "files_verified": 61,
+    "CPU_job": "29847843",
+    "controller_job": "29847844",
+    "actual_native_job": "29847869",
+    "source_manifest_sha256": "82eb292f66ee8f8dcd86d9480775c480c1b086a1192d6ac724fbdd771a08438e",
+    "CPU_certificate_sha256": "c951d07506eb11862032e80d087f7374d95db2173601e8074199a82fdd29b443",
+    "whole_dispatch_storage": {
+      "required_bytes": 43290287329,
+      "available_bytes": 43642676128,
+      "reserve_bytes": 4294967296,
+      "file_reserve": 130000
+    },
+    "native_pass_established": false,
+    "optimizer_jobs_submitted": false,
+    "saved_results_changed": false,
+    "local_scientific_evaluation": false
+  },
+  "last_observed_utc": "2026-10-29T11:02:36.995698+00:00",
+  "last_actual_states": {
+    "29847807": "DONE",
+    "29847808": "DONE",
+    "29847826": "PEND",
+    "29847827": "PEND",
+    "29847828": "PEND",
+    "29847829": "PEND",
+    "29847843": "DONE",
+    "29847844": "DONE",
+    "29847869": "PEND"
+  },
+  "new_optimizer_ids": [],
+  "native_or_combined_pass_established": false
+}

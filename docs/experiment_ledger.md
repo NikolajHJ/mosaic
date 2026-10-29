@@ -9645,3 +9645,100 @@ updates. CPU906/43 passes and original saved20k/7500/10k/10k remain unchanged.
 Independent byte/LSF/schema proof audit preserved; no source/job/settings/
 cleanup/monitor changes by this status check. Never replay sealed22/06.
 Owner: experiments/validation/endpoint-qualification/runs/20261029-precision-continuation-22/.
+
+### 2026-10-29 — Shared writer repair23 prepared without changing scientific work
+
+User directed fixing all remaining blockers. Preserve source22/chemistry06
+entry failures before models: balanced DeFoG29846882 lacked a resource row.
+New50-file23 authenticates its declared4GiB/64MiB budget,91-case CPU chain,
+183source files and exact scheduler command. Separate runtime probe29846982
+also gets a pinned629-file metadata forecast512MiB/3000files above baseline;
+no foreign module/model imported or external job/source changed. Original
+VAE/embedding allowances,4GiB/130k current reserve and all science remain.
+115 portable metadata cases passed; broader Windows metadata attempt retained
+14 nonportable POSIX/path fixture failures, not an allocated/scientific result.
+Source23 manifest7b91c7c6885bb0694fe688e5c089994c157d745d1d8b93ea22b22302be2f4c0d,
+archive87571e1d72748a36d65c58536de627cffebed7b122615c4327dce37e68cd4f77.
+Full923allocated cases/startup/current capacity/native gates remain required.
+Original saved20k/7500/10k/10k unchanged, monitor paused, no cleanup/newjob yet.
+Owner: experiments/validation/endpoint-qualification/runs/20261029-precision-continuation-23/.
+
+### 2026-10-29 — Receipt parser corrected in new immutable24
+
+Source23 preflight failed before anyCPU/GPU submission: its resource adapter
+expected a job_id field absent from the actual balancedDeFoG rawbsub receipt.
+Independent read-only inspection authenticated all50source files, failedgate,
+absence of jobs/CPU/bootstrap and original results unchanged.24 preserves23,
+authenticates unique rawaccepted ID/queue, exactargv/dependency/certificate and
+adds five regression cases.120portablemetadata cases passed; no localnumerics.
+Full928allocated cases/actualstartup/native gates remain mandatory. Exact
+manifest4c2a86ec4a8f65aa37d35df94416fe6d8995e74d666d26f186629287f7ee725b;
+archive0f6e02ef7933f5081b036560bf346a6ab01478ecb036af9ff82005db7e8a1b2a.
+Scientific drivers/hooks remain exact22; external jobs/results/settings and
+all original budgets/reserves remain unchanged. Monitor paused/no cleanup.
+Owner: experiments/validation/endpoint-qualification/runs/20261029-precision-continuation-24/.
+
+### 2026-10-29 — Shared writer/resource repair25 prepared after verified offload
+
+User requested fixing all remaining launch blockers while retaining settings,
+checks and saved results. Source23 receipt parsing/preflight failure and24
+correct capacity rejection remain preserved; neither submittedCPU/native jobs.
+Byte-verified laptop archive4b8fa929b2048d3ef216ea60fa4978a2812d013ee3de0be43da15c3e1f5d8153
+preserves all9974inactive release/report copies before exact remoteoffload.
+Logical2599249408bytes; actualexclusive physical988036096bytes, with current
+shared hardlink data retained. All current inputs/sources/results reauthenticated.
+No native trajectory/scalar/checkpoint or external job was changed. Old report
+29796558 verifiedPEND/neverstarted/invaliddependencies since23Oct, intentionally
+retired to actualEXIT with all original files retained; strict rawproof releases
+only its obsolete2GiB future allowance.25 also retires DeFoG unspent future
+budget only after authentic same-job terminalLSF/no liveconflict, while charging
+all current bytes.136portablemetadata controls passed; full944allocated cases,
+actualstartups/native/FP64/gradient/pilot/storage gates remain mandatory.
+Source50 manifest62a3db1b97b81dd0ef6911ee93f11eb1379da794e01f86f035c0c036e1822f8b;
+archive5017fbbcb63870456d349dbfcbc6512b4b95f7e14b00a833a3b865ec26c24eb8.
+Scientific driver/hooks exact22, Pro20k->50k/DB7500->10k unchanged. Monitor paused.
+Owner: experiments/validation/endpoint-qualification/runs/20261029-precision-continuation-25/.
+
+### 2026-10-29T10:46:07Z — Resource repair25 CPU944 and startup gates passed; native checks queued
+
+Complete preflight43,388,007,914required/44,814,138,537availablebytes passed.
+CPU29847807/controller29847808 actualDONE/hpc/same-jobLSFsuccess;944rawcases
+(17Torch+927JAX) across22modules, nofailure/error/skip, exactmergedXML/rawgroups,
+four generated coordinator commands and worker startup allpassed. Independent
+47-file source/byte/XML/LSF/actualsubmission audit passed; certificate
+fad4519e158a729eebba339f1c666791155cdfb5f3bf1fe5c478c89ed26c31a1.
+Controllerentry gate43,348,610,259required/44,774,740,882available,4GiB/130k
+reserves passed before native submissions. Pro29847826/callback29847827 and
+DB29847828/callback29847829 actualPEND. No new native/gradient pass or optimizer.
+Current20k/7500/chemistry10k/10k and scientific settings/checks unchanged.
+Chemistry08 source13 prepared against25 with43allocated cases stillpending.
+Prior23parser/24capacity failures and alloldhistory remain preserved. Source25
+adopts source22 production drivers/hooks exactly; monitor remains paused.
+Offload journal9974intents/removals and sixrawaudit files independently verified,
+journal5ae6c0b78279cffeebf5e0383d951c0ffec8302f215782ab4040f085940a7567.
+No native state/loss/checkpoint was deleted. Actual physical988,036,096bytes
+reclaimed, logical2,599,249,408bytes backedup; shared linked data retained.
+Owner: experiments/validation/endpoint-qualification/runs/20261029-precision-continuation-25/.
+
+### 2026-10-29T10:53:11Z — Chemistry08 CPU43/full storage passed; corrected Pro native check queued
+
+Immutable13-file08 manifest82eb292f66ee8f8dcd86d9480775c480c1b086a1192d6ac724fbdd771a08438e,
+archive0472dd49ce6246b856a762a30854d5848f742abfd5c23d8d37f251dbf8ad42f9.
+CPU29847843/controller29847844 actualDONE/hpc/same-jobLSFsuccess,43rawcases,
+noerrors/failures/skips, three actual generatedstartups and complete original
+saved-input byte audit passed. Independent61-file source/byte/XML/LSF/argv/
+certificate/fullscope audit passed; CPUcertificate
+c951d07506eb11862032e80d087f7374d95db2173601e8074199a82fdd29b443.
+Full dispatch43,290,287,329required/43,642,676,128availablebytes,4GiB/130k
+reserves passed. This is a fresh admission observation, not a reservation;
+allGPUentries repeat current shared accounting. Corrected ProchemGPU29847869
+actualPEND, gpul40s/4CPU/8GiBslot/exclusiveGPU/2h, nested inside25's existing
+funded2GiBcontrols, no extra optimizer allowance. Original Bolnative04component
+pass retained. No new GPU/native/combinedchemistry pass or optimizer update.
+Both chemistry continuations still require combined low/high/actual-coefficient
+gradients/BOTHpilots/runtime/storage after component qualification; no waived
+check, changed setting or savedresult. General monitor remains paused.
+Main Pro29847826/DB29847828 and own callbacks were last verifiedPEND; original
+20k/7500/chem10k/10k remain unchanged. No further cleanup since exact9974-copy
+offload, physical988,036,096bytes and all backup members/journal verified.
+Owner: experiments/validation/endpoint-qualification/runs/20261029-chemistry-native-qualification-08/.
