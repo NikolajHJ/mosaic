@@ -1,0 +1,45 @@
+{
+  "CPU_cases_required": 1005,
+  "archive_bytes": 223231,
+  "archive_sha256": "0dba60ca84e240491166f02a1114bdd2f59485296c2614c6f10ad9e33d6f6a49",
+  "cpu_verification": {
+    "CPU_certificate_sha256": "9857dc838f9c7d1c9c2095f3e6d72b1569aa5a19f353e3647940c163c3361126",
+    "cases": 1005,
+    "files_verified": 37,
+    "jobs": {
+      "after-cpu": "29851424",
+      "boltz-after-validate": "29851429",
+      "boltz-validate": "29851428",
+      "cpu": "29851423",
+      "protenix-after-validate": "29851427",
+      "protenix-validate": "29851426"
+    },
+    "local_scientific_evaluation": false,
+    "modules": 23,
+    "native_pass_established": false,
+    "observed_utc": "2026-10-29T23:15:21.175417+00:00",
+    "optimizer_jobs_submitted": false,
+    "saved_results_changed": false,
+    "source_manifest_sha256": "2b0356e63e74de8c1e112c47b8aedfdad9eaea70b66bf6a790abee29488718d4",
+    "status": "passed_independent_complete_chemistry_CPU_byte_XML_LSF_startup_submission_audit"
+  },
+  "files": 10,
+  "jobs": {
+    "after-cpu": "29851424",
+    "boltz-after-validate": "29851429",
+    "boltz-validate": "29851428",
+    "cpu": "29851423",
+    "protenix-after-validate": "29851427",
+    "protenix-validate": "29851426"
+  },
+  "manifest_sha256": "2b0356e63e74de8c1e112c47b8aedfdad9eaea70b66bf6a790abee29488718d4",
+  "plan_sha256": "846b8a45680a6f38229306e6c9f0b4e7051fbce571b7712a88a7304029c52b17",
+  "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/chemistry-continuation-05",
+  "saved_results_changed": false,
+  "settings_changed": false,
+  "source_root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/chemistry-continuation-release-05/source",
+  "status": "CPU1005_controller_passed_combined_validators_submitted_not_passed",
+  "tag": "20261030-chemistry-continuation-05",
+  "cpu_job": "29851423",
+  "callback_job": "29851424"
+}

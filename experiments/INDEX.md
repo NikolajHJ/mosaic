@@ -63,3 +63,6 @@ Shared tools: [releases](../scripts/releases/README.md), [evidence](../scripts/e
 
 
 22:40UTC update: main26 Protenix full native/pilot/runtime admission PASSED; actual full30k remaining continuation29851346 toward50k queued with04:45 measured wall. Prochem native09 component passed; combinedchemistry checks remain queued, DBMolcheckRUN, plainBoltz20kblocked. Original failed results/settings preserved.
+
+
+30October [chemistry05](validation/endpoint-qualification/runs/20261030-chemistry-continuation-05/README.md) fixes04plan-hash/resource startup issues, CPU1005passed, freshProGPUcheckRUN/BolchemPEND. Main26Prochild andDBtotal gates failed before new updates, preserved; [read-only failure diagnostics01](validation/endpoint-qualification/runs/20261030-continuation-failure-diagnostics-01/README.md) CPU8/savedanalysis passed and separateProGPU29851459queued, no admission/optimizer branch.

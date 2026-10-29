@@ -85,7 +85,8 @@ def verify(local,label,run):
         assert not any(list(xml.iter(k)) for k in ('failure','error','skipped'))
         return [(r.get('classname'),r.get('name')) for r in xml.iter('testcase')]
     merged=rows('tests.xml');original=rows('torch.xml')+rows('jax.xml')+rows('chemistry.xml')
-    assert len(merged)==len(set(merged))==sum(expected.values())==cert['cases']==997
+    count=1005 if root.name=='chemistry-continuation-05' else 997
+    assert len(merged)==len(set(merged))==sum(expected.values())==cert['cases']==count
     assert Counter(merged)==Counter(original)
     attributed=Counter()
     for name,_ in merged:
@@ -108,7 +109,7 @@ def verify(local,label,run):
         assert text.count('Subject: Job '+jid+':')==1 and 'queue <hpc>' in text
         assert text.count('Successfully completed.')==1 and 'Exited with exit code' not in text
     assessment=data('cpu/payload/assessment.json')
-    assert assessment['status']=='passed' and assessment['cases']==997 and assessment['job_id']==jobs['cpu']
+    assert assessment['status']=='passed' and assessment['cases']==count and assessment['job_id']==jobs['cpu']
     assert data('cpu/payload/actual-startups.json')['status']=='passed_metadata_only'
     for arm in ('protenix','boltz'):
         for phase in ('validate','segment'):
@@ -119,7 +120,9 @@ def verify(local,label,run):
         native=data(arm+'-validate/submission.json');callback=data(arm+'-after-validate/submission.json')
         assert native['job_id']==jobs[arm+'-validate'] and native['source_manifest_sha256']==pin
         argv=native['argv'];assert argv[argv.index('-q')+1]=='gpul40s' and argv[argv.index('-n')+1]=='8'
-        assert 'rusage[mem=4GB]' in argv and argv[argv.index('-gpu')+1]=='num=1:mode=exclusive_process:mps=yes'
+        gpu_request=('num=1:mode=shared:j_exclusive=yes:mps=no' if count==1005 and arm=='boltz'
+                     else 'num=1:mode=exclusive_process:mps=yes')
+        assert 'rusage[mem=4GB]' in argv and argv[argv.index('-gpu')+1]==gpu_request
         dep='ended('+plan['components']['protenix']['job_id']+')' if arm=='protenix' else None
         assert native['dependency']==dep and callback['dependency']=='ended('+native['job_id']+')'
         assert argv[argv.index('-W')+1]=='02:00'
@@ -130,18 +133,18 @@ def verify(local,label,run):
     assert len(gates)==1 and gates[0]['status']=='passed' and gates[0]['reserve_bytes']==4*1024**3
     assert gates[0]['available_bytes']>=gates[0]['required_bytes'] and gates[0]['available_files']>=gates[0]['required_files']
     result={'status':'passed_independent_complete_chemistry_CPU_byte_XML_LSF_startup_submission_audit',
-        'observed_utc':value['observed_utc'],'cases':997,'modules':len(expected),'files_verified':len(records),
+        'observed_utc':value['observed_utc'],'cases':count,'modules':len(expected),'files_verified':len(records),
         'source_manifest_sha256':pin,'CPU_certificate_sha256':sha(records[str(root/'cpu-certificate.json')][1]),
         'jobs':jobs,'native_pass_established':False,'optimizer_jobs_submitted':False,
         'saved_results_changed':False,'local_scientific_evaluation':False}
     with (run/'cpu-verification.json').open('xb') as f:f.write(raw(result))
-    campaign=read(run/'campaign.json');campaign.update(status='CPU997_controller_passed_combined_validators_submitted_not_passed',jobs=jobs,cpu_verification=result)
+    campaign=read(run/'campaign.json');campaign.update(status='CPU'+str(count)+'_controller_passed_combined_validators_submitted_not_passed',jobs=jobs,cpu_verification=result)
     (run/'campaign.json').write_bytes(raw(campaign));print(json.dumps(result,indent=2))
 
 
 def main():
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('action',choices=('collect','verify'))
-    p.add_argument('--tag',default='20261029-chemistry-continuation-04');p.add_argument('--label',required=True);a=p.parse_args()
+    p.add_argument('--tag',default='20261030-chemistry-continuation-05');p.add_argument('--label',required=True);a=p.parse_args()
     assert a.tag.replace('-','').isalnum() and a.label.replace('-','').isalnum()
     local=REPO/'results/hpc'/a.tag
     if a.action=='collect':collect(local,a.label)

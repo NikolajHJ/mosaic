@@ -11,7 +11,7 @@
   "saved_results_changed": false,
   "settings_changed": false,
   "source": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-release-26/source",
-  "status": "Protenix_native_passed_full30k_continuation_submitted_DBMol_validation_RUNNING",
+  "status": "failed_before_new_updates_Pro_replay_and_DBtotal_under_separate_diagnostics",
   "tag": "20261029-precision-continuation-26",
   "jobs": {
     "after-cpu": "29851295",
@@ -65,5 +65,117 @@
     "saved_results_changed": false,
     "local_scientific_evaluation": false
   },
-  "native_delivery_verification_sha256": "ea0728ed11efa3a856f9c588c037fa353d6eee33118dfbd87b654ba948985f23"
+  "native_delivery_verification_sha256": "ea0728ed11efa3a856f9c588c037fa353d6eee33118dfbd87b654ba948985f23",
+  "latest_terminal_failures": {
+    "status": "verified_actual_failures_preserved_no_new_optimization_steps",
+    "observed_utc": "2026-10-29T23:03:05.085470+00:00",
+    "terminal_jobs": [
+      {
+        "label": "dbmol-validate-07500",
+        "job_id": "29851304",
+        "state": "EXIT",
+        "LSF_proof": {
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/dbmol-validate-07500/stdout.29851304.log",
+          "bytes": 2146,
+          "sha256": "62782598f0302cd5bd5480cb95922b93e20c93194eb67cf15bea768ba03d2bfc"
+        }
+      },
+      {
+        "label": "dbmol-after-validate-07500",
+        "job_id": "29851305",
+        "state": "EXIT",
+        "LSF_proof": {
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/dbmol-after-validate-07500/stdout.29851305.log",
+          "bytes": 2153,
+          "sha256": "6fdd8463a2ddb1a8cd2f9a189fa9bf4f6ccde4fdf8b57b4962603cca8f2bf717"
+        }
+      },
+      {
+        "label": "protenix-segment-20000",
+        "job_id": "29851346",
+        "state": "EXIT",
+        "LSF_proof": {
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/protenix-segment-20000/stdout.29851346.log",
+          "bytes": 2154,
+          "sha256": "4688d20935c31a202b6455ee6ad70f2a8daca1d9c52b20a1fa44c50fee78013b"
+        }
+      },
+      {
+        "label": "protenix-after-segment-20000",
+        "job_id": "29851347",
+        "state": "EXIT",
+        "LSF_proof": {
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/protenix-after-segment-20000/stdout.29851347.log",
+          "bytes": 2162,
+          "sha256": "9fb140cc4b65a3299b359f71e2fd86d0529d594b1d5187ec65f9c35ea8095b28"
+        }
+      },
+      {
+        "label": "chemistry-continuation-04/protenix-validate",
+        "job_id": "29851336",
+        "state": "EXIT",
+        "LSF_proof": {
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/chemistry-continuation-04/protenix-validate/stdout.29851336.log",
+          "bytes": 2402,
+          "sha256": "3753c0897628357ad1c8ef230244bcbdbfce75e59d929e5f7f371a39016cb81c"
+        }
+      },
+      {
+        "label": "chemistry-continuation-04/protenix-after-validate",
+        "job_id": "29851337",
+        "state": "EXIT",
+        "LSF_proof": {
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/chemistry-continuation-04/protenix-after-validate/stdout.29851337.log",
+          "bytes": 2411,
+          "sha256": "8daad745e4c21a589753f4614556ce547714183de3f7589c162dc1e3a949f522"
+        }
+      },
+      {
+        "label": "chemistry-continuation-04/boltz-validate",
+        "job_id": "29851338",
+        "state": "EXIT",
+        "LSF_proof": {
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/chemistry-continuation-04/boltz-validate/stdout.29851338.log",
+          "bytes": 2386,
+          "sha256": "e932429383f900bbdc933dd324c6af66efc503e0797f48a83cf484de8ae6fd25"
+        }
+      },
+      {
+        "label": "chemistry-continuation-04/boltz-after-validate",
+        "job_id": "29851339",
+        "state": "EXIT",
+        "LSF_proof": {
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/chemistry-continuation-04/boltz-after-validate/stdout.29851339.log",
+          "bytes": 2399,
+          "sha256": "a819e8bf6b239693f121be6d43b75719a6c79e83d8986c356189ade02deb544a"
+        }
+      }
+    ],
+    "Protenix_failure": "Exact live production measurements changed during separate FP64 reference co-residency; no committed child states/updates",
+    "DBMol_failure": "Affinity independent-reference cohort passed; unchanged raw-v3 total-loss bond-direction contradictions blocked new child",
+    "chemistry_Pro_failure": "Authenticated owning-plan hash was not propagated into the private reference session",
+    "chemistry_Bol_failure": "Declared MPS allocation conflicts with the original qualified mixed Torch/JAX adapter shared-compute/job-exclusive/no-MPS contract",
+    "original_failed_gates_relabelled": false,
+    "original_results_changed": false,
+    "Protenix_committed_prefix": {
+      "study_exists": true,
+      "job_id": "29851346",
+      "streams": {
+        "states": {
+          "committed_rows": 0,
+          "exists": false
+        },
+        "updates": {
+          "committed_rows": 0,
+          "exists": false
+        }
+      }
+    },
+    "byte_verified_files": 135,
+    "read_only_snapshot_sha256": "7182812a21da7571523288c620cddecd961234f555ff0470a37c2d6c11c51e7e",
+    "next_scopes": {
+      "chemistry": "20261030-chemistry-continuation-05",
+      "separate_diagnostics": "20261030-continuation-failure-diagnostics-01"
+    }
+  }
 }

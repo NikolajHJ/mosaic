@@ -114,3 +114,6 @@ Portable integration15 repeats the full suite with two additional PurePosixPath/
 
 
 Latest22:36UTC: integration04 CPU29851326/controller29851327 DONE; all997 allocated cases/startups independently passed. New combined Pro29851336 and Bolchem29851338 validators with own callbacks are submitted/PEND; no native pass or optimizer ID yet. [Current run04](../runs/20261029-chemistry-continuation-04/README.md) binds exact evidence.
+
+
+Chemistry05 adds8 portable regression cases (47total): verified-plan hash propagation/changed-plan rejection and the original qualified Boltz scheduler parser accepting shared/j_exclusive/noMPS and rejecting ProMPS. Local47 and full1005allocatedCPU cases passed. `test_continuation_failure_diagnostics.py` has8controls:2portable metadata passed locally; all8including6numerical controls subsequently passed allocatedHPC CPU29851450 with no errors/failures/skips. No local model/array/numerical execution. Neither fixture result grants scientific admission.

@@ -1,0 +1,42 @@
+#!/bin/bash
+set -euo pipefail
+[[ $# == 5 && -n "${LSB_JOBID:-}" && "$4" == --capacity-source ]]
+source_root=$1
+pin=$2
+phase=$3
+capacity_source=$5
+module load python3/3.12.11
+python=/work3/s234818/mosaic/envs/protenix-tiny/bin/python
+export PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+"$python" - "$source_root" "$pin" "$capacity_source" <<'VERIFY'
+import hashlib,json,sys
+from pathlib import Path
+def verify(root,pin):
+ root=Path(root);assert root.is_absolute() and not any(p.is_symlink() for p in (root,*root.parents))
+ raw=(root/'source_manifest.json').read_bytes();assert hashlib.sha256(raw).hexdigest()==pin
+ value=json.loads(raw)
+ assert {p.relative_to(root).as_posix() for p in root.rglob('*') if p.is_file()}==set(value['files'])|{'source_manifest.json'}
+ for name,digest in value['files'].items():
+  p=root/name;assert not p.is_symlink() and '..' not in Path(name).parts
+  with p.open('rb') as f:assert hashlib.file_digest(f,'sha256').hexdigest()==digest
+ return value
+m=verify(sys.argv[1],sys.argv[2]);assert m['capacity_source']['path']==sys.argv[3]
+for row in m['parent_sources']:verify(row['path'],row['manifest_sha256'])
+VERIFY
+export OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 MKL_NUM_THREADS=4
+export JAX_ENABLE_X64=0 XLA_PYTHON_CLIENT_PREALLOCATE=false
+export HF_HUB_OFFLINE=1 HF_HUB_DISABLE_TELEMETRY=1
+export JAX_PLATFORMS=cpu
+if [[ "$phase" == gpu ]]; then
+  [[ "$LSB_QUEUE" == gpul40s && "$LSB_DJOB_NUMPROC" == 4 ]]
+  module load cuda/12.9.1 cudnn/v9.13.0.50-prod-cuda-12.X
+  export JAX_PLATFORMS=cuda,cpu XLA_FLAGS=--xla_gpu_autotune_level=0
+else
+  [[ "$LSB_QUEUE" == hpc ]]
+  export CUDA_VISIBLE_DEVICES=''
+fi
+base=/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01
+source "$base/protenix-extended-release-03/source/scripts/hpc/boltz_node_tmpdir.sh"
+export PYTHONPATH="$source_root/scripts"
+cd "$source_root"
+"$python" -u "$source_root/scripts/failure_diagnostic_ops.py" --phase "$phase" --pin "$pin"

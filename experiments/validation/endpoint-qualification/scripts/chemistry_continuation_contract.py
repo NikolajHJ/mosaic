@@ -9,9 +9,9 @@ import re
 
 BASE = Path('/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01')
 SCOPE = BASE/'nonchem-precision-continuation-26'
-ROOT = SCOPE/'chemistry-continuation-04'
-OUTPUTS = BASE/'chemistry-continuation-04'
-SOURCE = SCOPE/'chemistry-continuation-release-04/source'
+ROOT = SCOPE/'chemistry-continuation-05'
+OUTPUTS = BASE/'chemistry-continuation-05'
+SOURCE = SCOPE/'chemistry-continuation-release-05/source'
 CURRENT = BASE/'nonchem-precision-release-26/source'
 CURRENT_PIN = '8324c1d312adeaa4c67c475c01ef1217df6f3ad4044b997d1b73e168325412d3'
 PYTHON = '/work3/s234818/mosaic/envs/protenix-tiny/bin/python'
@@ -114,6 +114,13 @@ def allocation(phase):
     slots=8 if gpu else (4 if phase in ('cpu','after-segment') else 1)
     return {'queue':'gpul40s' if gpu else 'hpc','slots':slots,
             'memory_per_slot':'4GB' if slots in (4,8) else '2GB'}
+
+
+def gpu_request(arm):
+    """Preserve each original multi-process adapter's qualified GPU ownership."""
+    require(arm in ARMS,'Unknown chemistry GPU allocation arm')
+    return ('num=1:mode=exclusive_process:mps=yes' if arm=='protenix'
+            else 'num=1:mode=shared:j_exclusive=yes:mps=no')
 
 
 def output_projection(unit,updates,actual_bytes=0):

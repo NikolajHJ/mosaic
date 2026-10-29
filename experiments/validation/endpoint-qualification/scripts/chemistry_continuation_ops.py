@@ -63,7 +63,7 @@ def command(phase,pin,arm='all',dependency=None,budget=None):
           '-R','span[hosts=1]','-R','rusage[mem='+allocation['memory_per_slot']+']',
           '-W',wall,'-J','mosaic-chem-complete01-'+label,'-o',str(parent(phase,arm)/'stdout.%J.log'),
           '-e',str(parent(phase,arm)/'stderr.%J.log')]
-    if gpu:argv+=['-gpu','num=1:mode=exclusive_process:mps=yes']
+    if gpu:argv+=['-gpu',c.gpu_request(arm)]
     if dependency:argv+=['-w',dependency]
     return argv+['bash','-l',str(c.SOURCE/'scripts/chemistry_continuation_stage.lsf'),str(c.SOURCE),pin,phase,arm,
                  '--capacity-source',str(c.CURRENT)]
@@ -435,6 +435,10 @@ def execute(phase,pin,arm):
         return
     component(plan,arm)
     routing=module(c.SOURCE/'scripts/chemistry_cuda_ownership.py','_chemistry_cuda_ownership')
+    # The helper authenticates this declared arm's actual request and still runs
+    # BOTH CUDA clients. Boltz's original Torch+JAX adapter forbids MPS and
+    # independently requires shared compute plus whole-job GPU exclusivity.
+    routing.GPU_REQUEST=c.gpu_request(arm)
     identity=plan['arms'][arm].get('context_ready',plan['arms'][arm].get('context'))
     c.bound(identity)
     routing.run_probe(directory/'cuda-ownership',submission=directory/'submission.json',expected_job_id=sub['job_id'],

@@ -29,6 +29,13 @@ def modules():
     return base,precision
 
 
+def authenticated_plan(path,pin):
+    """Carry the verified owning hash into the existing reference expansion."""
+    c.require(c.sha(path)==pin,'Owning plan digest changed')
+    plan=c.validate_plan(c.read(path));plan['_sha256']=pin
+    return plan
+
+
 def argv(plan,arm,phase,output,ready=None):
     row=c.configured_arm(plan,arm);old=row['original_argv'];result=old[:2]
     replaced={'--mode','--output','--offset','--segment-steps','--resume-snapshot','--resume-sha256','--ready','--ready-sha256'}
@@ -128,8 +135,7 @@ def main():
     p.add_argument('--arm',choices=tuple(c.ARMS),required=True);p.add_argument('--phase',choices=('validate','segment'),required=True)
     p.add_argument('--output',type=Path,required=True);p.add_argument('--ready');p.add_argument('--ready-sha256')
     p.add_argument('--startup-only',action='store_true');p.add_argument('--startup-defer-ready',action='store_true')
-    a=p.parse_args();c.require(c.sha(a.plan)==a.plan_sha256,'Owning plan digest changed')
-    plan=c.validate_plan(c.read(a.plan));ready=None
+    a=p.parse_args();plan=authenticated_plan(a.plan,a.plan_sha256);ready=None
     if a.ready:
         ready={'path':a.ready,'sha256':a.ready_sha256,'bytes':Path(a.ready).stat().st_size};c.bound(ready)
     execute(plan,a.arm,a.phase,a.output,ready,a.startup_only,a.startup_defer_ready)

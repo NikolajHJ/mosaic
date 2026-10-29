@@ -1,0 +1,13 @@
+{
+  "proof": {
+    "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/chemistry-continuation-05/after-cpu/whole-capacity-dispatch-1793315515588017422/chemistry-assessment.json",
+    "bytes": 387864,
+    "sha256": "74107a2d3bb0fa515a8dc9803412a4619dae16d7c80924782415dd6aa415bd81"
+  },
+  "status": "passed",
+  "required_bytes": 39731353759,
+  "available_bytes": 40487692872,
+  "required_files": 319341,
+  "available_files": 19352873,
+  "reserve_bytes": 4294967296
+}

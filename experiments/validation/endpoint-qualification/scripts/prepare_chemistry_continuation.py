@@ -25,7 +25,7 @@ def replace(text,before,after,count=1):
 def main():
     parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--draft',choices=('source01','source02'),default='source01')
     args=parser.parse_args()
-    output=REPO/'results/hpc/20261029-chemistry-continuation-04'/args.draft
+    output=REPO/'results/hpc/20261030-chemistry-continuation-05'/args.draft
     if output.exists():raise ValueError('Immutable local draft already exists; inspect before a new attempt')
     prior=REPO/'results/hpc/20261029-precision-continuation-26/source01'
     original=prior/'source'
@@ -101,11 +101,11 @@ def main():
         files['scripts/'+name]=(OWNER/'scripts'/name).read_bytes().replace(b'\r\n',b'\n')
     worker=(original/'scripts/protenix_reference_worker.py').read_bytes()
     if digest(worker)!=old_manifest['files']['scripts/protenix_reference_worker.py']:raise ValueError('Reference source bytes changed')
-    text=worker.decode();text=replace(text,'ROOT = BASE / "nonchem-precision-continuation-26"','ROOT = BASE / "nonchem-precision-continuation-26/chemistry-continuation-04"')
-    text=replace(text,'SOURCE = BASE / "nonchem-precision-release-26/source"','SOURCE = BASE / "nonchem-precision-continuation-26/chemistry-continuation-release-04/source"')
+    text=worker.decode();text=replace(text,'ROOT = BASE / "nonchem-precision-continuation-26"','ROOT = BASE / "nonchem-precision-continuation-26/chemistry-continuation-05"')
+    text=replace(text,'SOURCE = BASE / "nonchem-precision-release-26/source"','SOURCE = BASE / "nonchem-precision-continuation-26/chemistry-continuation-release-05/source"')
     text=replace(text,'scripts/protenix_reference_worker.py','scripts/chemistry_reference_worker.py',2)
     text=replace(text,'declared == "4"','declared == ("4" if startup else "8")')
-    text=replace(text,'path.is_relative_to(ROOT)','(path.is_relative_to(ROOT) or path.is_relative_to(BASE / "chemistry-continuation-04"))')
+    text=replace(text,'path.is_relative_to(ROOT)','(path.is_relative_to(ROOT) or path.is_relative_to(BASE / "chemistry-continuation-05"))')
     files['scripts/chemistry_reference_worker.py']=text.encode()
     cuda=(original/'scripts/cuda_ownership.py').read_bytes()
     if digest(cuda)!=old_manifest['files']['scripts/cuda_ownership.py']:raise ValueError('CUDA source bytes changed')
@@ -115,7 +115,7 @@ def main():
     text=replace(text,'rusage[mem=8GB]','rusage[mem=4GB]')
     files['scripts/chemistry_cuda_ownership.py']=text.encode()
     files['tests/test_chemistry_continuation.py']=(OWNER/'tests/test_chemistry_continuation.py').read_bytes().replace(b'\r\n',b'\n')
-    files['README.md']=(OWNER/'runs/20261029-chemistry-continuation-04/README.md').read_bytes().replace(b'\r\n',b'\n')
+    files['README.md']=(OWNER/'runs/20261030-chemistry-continuation-05/README.md').read_bytes().replace(b'\r\n',b'\n')
     files['plan.json']=raw(plan)
     for name,data in files.items():
         if name.endswith('.py'):ast.parse(data,filename=name)
@@ -126,9 +126,12 @@ def main():
     previous=c.BASE/'nonchem-precision-continuation-25/chemistry-continuation-release-02/source'
     parents[previous.as_posix()]={'path':previous.as_posix(),'files':10,
             'manifest_sha256':'d87701b3eb422d3e1c1f9255eb61607011b96eb621a67d286ceefe961e36c250'}
+    failed=c.SCOPE/'chemistry-continuation-release-04/source'
+    parents[failed.as_posix()]={'path':failed.as_posix(),'files':10,
+            'manifest_sha256':'0b30a7c94e34ae6ae858cf5f3903ab98ae3743fb0abbb95a1ac7640381ab6eb9'}
     manifest={'version':c.VERSION,'files':{name:digest(data) for name,data in files.items()},
               'parent_sources':list(parents.values()),'capacity_source':parents[c.CURRENT.as_posix()],
-              'cpu_counts':{'tests.test_chemistry_continuation':39},'original_results_changed':False}
+              'cpu_counts':{'tests.test_chemistry_continuation':47},'original_results_changed':False}
     output.mkdir(parents=True)
     for name,data in files.items():
         path=output/'source'/name;path.parent.mkdir(parents=True,exist_ok=True);path.write_bytes(data)

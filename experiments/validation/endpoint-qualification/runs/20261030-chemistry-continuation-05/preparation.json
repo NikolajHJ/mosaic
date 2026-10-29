@@ -1,0 +1,10 @@
+{
+  "archive_bytes": 223231,
+  "archive_sha256": "0dba60ca84e240491166f02a1114bdd2f59485296c2614c6f10ad9e33d6f6a49",
+  "files": 10,
+  "manifest_sha256": "2b0356e63e74de8c1e112c47b8aedfdad9eaea70b66bf6a790abee29488718d4",
+  "plan_sha256": "846b8a45680a6f38229306e6c9f0b4e7051fbce571b7712a88a7304029c52b17",
+  "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/chemistry-continuation-05",
+  "source_root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/chemistry-continuation-release-05/source",
+  "status": "local_stdlib_preparation_only_not_allocated_pass"
+}

@@ -1,0 +1,36 @@
+{
+  "can_admit_new_child": false,
+  "capacity_source": {
+    "files": 50,
+    "manifest_sha256": "8324c1d312adeaa4c67c475c01ef1217df6f3ad4044b997d1b73e168325412d3",
+    "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-release-26/source"
+  },
+  "cpu_cases": 8,
+  "files": {
+    "README.md": "ba037863de795e03697c5fb3cb7e21283012ef848a81d93ae8edc4d9e7d6464d",
+    "plan.json": "c24841058d8a8edabc37aadffd4f08e532669ee17e14efd4febe43aa007a1c0b",
+    "scripts/continuation_failure_diagnostics.py": "0c7a91a76298d22033760588d968f4ab9e7ec204be4739befdad1f8ac30b6565",
+    "scripts/failure_diagnostic_ops.py": "21c2ce0b6d6721334c2ad4f5a45cd089d2442a16ee48eaafa4c8db51029f8efd",
+    "scripts/failure_diagnostic_stage.lsf": "5e24326e215026773791f99842ba3e00372d57db88d9b9edf5ef49dddf00a455",
+    "tests/test_continuation_failure_diagnostics.py": "085b53965436a6f6992aecd776632de8e2f76334950017e43f68454d0102f905"
+  },
+  "optimizer_updates": 0,
+  "parent_sources": [
+    {
+      "files": 50,
+      "manifest_sha256": "8324c1d312adeaa4c67c475c01ef1217df6f3ad4044b997d1b73e168325412d3",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-release-26/source"
+    },
+    {
+      "files": 13,
+      "manifest_sha256": "d127d6abe87307a5d305edb6d04e3a32e3545c508e58b82ce45290e0f3fc03d8",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-forensics-release-01/source"
+    },
+    {
+      "files": 643,
+      "manifest_sha256": "da9db6821d26b884ca1749303fc8e0b0095bd9ee7cbd1b427cdcf1b22eec6562",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source"
+    }
+  ],
+  "version": "read-only-continuation-failure-diagnostics-v1"
+}

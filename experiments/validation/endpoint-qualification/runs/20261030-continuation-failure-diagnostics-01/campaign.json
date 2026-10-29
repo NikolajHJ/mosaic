@@ -1,0 +1,65 @@
+{
+  "archive_bytes": 9933,
+  "archive_sha256": "700a82ea35a554892d24f53d2f0c6f7ac7e1181ef5c5b848303b6380301f7e06",
+  "files": 6,
+  "jobs": {
+    "cpu": "29851450",
+    "after-cpu": "29851451",
+    "gpu": "29851459"
+  },
+  "manifest_sha256": "c8eab7543024793ed1992417f5859e9f72e561d72fb7a86a9416bdcb9d14c537",
+  "optimizer_updates": 0,
+  "plan_sha256": "c24841058d8a8edabc37aadffd4f08e532669ee17e14efd4febe43aa007a1c0b",
+  "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/boundary-diagnostics-01",
+  "source": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/boundary-diagnostics-release-01/source",
+  "status": "CPU8_saved_analysis_and_controller_passed_Pro_GPU_diagnostic_submitted_pending",
+  "tag": "20261030-continuation-failure-diagnostics-01",
+  "cpu_verification": {
+    "status": "passed_independent_CPU8_byte_XML_LSF_saved_analysis_audit",
+    "observed_utc": "2026-10-29T23:17:59.113720+00:00",
+    "CPU_job": "29851450",
+    "controller_job": "29851451",
+    "controller_state": "RUN",
+    "GPU_submission_established": false,
+    "cases": 8,
+    "saved_probe_observations": 48,
+    "original_failures": [
+      "Resolved local contradiction in noncertifying direction: 0",
+      "Preselected local pair/finer resolved comparison failed: 1",
+      "Resolved local contradiction in noncertifying direction: 2"
+    ],
+    "assessment": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/boundary-diagnostics-01/cpu/payload/analysis/assessment.json",
+      "bytes": 32601,
+      "sha256": "2e37e56822820f793497d4d55263eba621c816c2f83d6f41a894f947a0c8e0a2"
+    },
+    "optimizer_updates": 0,
+    "can_admit_new_child": false,
+    "local_numerical_work": false
+  },
+  "dispatch_verification": {
+    "status": "passed_independent_CPU8_LSF_source_startup_saved_analysis_GPU_submission_audit",
+    "observed_utc": "2026-10-29T23:20:46.733296+00:00",
+    "cases": 8,
+    "source_files": 6,
+    "jobs": {
+      "cpu": "29851450",
+      "after-cpu": "29851451",
+      "gpu": "29851459"
+    },
+    "GPU_status": "PEND",
+    "GPU_diagnostic_pass_established": false,
+    "optimizer_jobs": [],
+    "can_admit_new_child": false,
+    "can_certify_or_restart_original_study": false,
+    "input_and_source_preservation": true,
+    "whole_dispatch_storage": {
+      "required_bytes": 39725039263,
+      "available_bytes": 40481378376,
+      "reserve_bytes": 4294967296,
+      "file_reserve": 100000
+    },
+    "assessment_sha256": "2e37e56822820f793497d4d55263eba621c816c2f83d6f41a894f947a0c8e0a2",
+    "local_numerical_work": false
+  }
+}

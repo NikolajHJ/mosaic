@@ -30,6 +30,47 @@ def plan():
 def test_closed_original_scope():assert c.validate_plan(plan())['arms']['protenix']['remaining']==40000
 
 
+@pytest.mark.parametrize('embedded',[None,'untrusted'])
+def test_authenticated_owning_hash_reaches_reference_expansion(tmp_path,embedded):
+    p=plan()
+    if embedded is not None:p['_sha256']=embedded
+    path=tmp_path/'plan.json';path.write_bytes(c.raw(p));pin=c.sha(path)
+    loaded=d.authenticated_plan(path,pin)
+    assert loaded['_sha256']==pin and path.read_bytes()==c.raw(p)
+
+
+def test_changed_owning_plan_cannot_supply_reference_hash(tmp_path):
+    path=tmp_path/'plan.json';path.write_bytes(c.raw(plan()));pin=c.sha(path)
+    path.write_bytes(path.read_bytes()+b' ')
+    with pytest.raises(ValueError,match='digest changed'):d.authenticated_plan(path,pin)
+
+
+@pytest.mark.parametrize('arm,expected',[('protenix','num=1:mode=exclusive_process:mps=yes'),
+    ('boltz','num=1:mode=shared:j_exclusive=yes:mps=no')])
+def test_arm_allocation_matches_original_process_ownership(arm,expected):
+    assert c.gpu_request(arm)==expected
+
+
+def test_unknown_gpu_arm_is_not_guessed():
+    with pytest.raises(ValueError):c.gpu_request('other')
+
+
+@pytest.mark.parametrize('use_correct_request',[True,False])
+def test_original_Boltz_adapter_accepts_declared_resource_and_rejects_MPS(use_correct_request):
+    # Original allocated adapter is stdlib-only at import. Do not import a model
+    # or fabricate a scheduler allocation; exercise only its captured-text parser.
+    if (c.SOURCE/'plan.json').is_file():
+        p=Path(c.read(c.SOURCE/'plan.json')['arms']['boltz']['adapter_source']['path'])/'scripts/gpu_process_admission.py'
+    else:p=OWNER.parents[2]/'experiments/brd4-jq1/chemistry-search-speed/scripts/gpu_process_admission.py'
+    spec=importlib.util.spec_from_file_location('_original_chemistry_gpu_resource_metadata',p)
+    adapter=importlib.util.module_from_spec(spec);spec.loader.exec_module(adapter)
+    request=c.gpu_request('boltz') if use_correct_request else c.gpu_request('protenix')
+    text='Job <123> Status <RUN> Queue <gpul40s> GPU REQUIREMENT DETAILS: Combined: '+request+' Effective: '+request
+    if use_correct_request:assert adapter.scheduler_gpu_contract(text,'123')['effective']['j_exclusive']=='yes'
+    else:
+        with pytest.raises(ValueError):adapter.scheduler_gpu_contract(text,'123')
+
+
 def test_exact_empty_metadata_proof_is_not_a_missing_or_changed_file(tmp_path):
     path=tmp_path/'preserved-native.log';path.write_bytes(b'')
     proof=c.binding(path);assert proof['bytes']==0 and c.bound(proof)==path

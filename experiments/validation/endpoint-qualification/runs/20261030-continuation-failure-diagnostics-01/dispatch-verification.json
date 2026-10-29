@@ -1,0 +1,25 @@
+{
+  "status": "passed_independent_CPU8_LSF_source_startup_saved_analysis_GPU_submission_audit",
+  "observed_utc": "2026-10-29T23:20:46.733296+00:00",
+  "cases": 8,
+  "source_files": 6,
+  "jobs": {
+    "cpu": "29851450",
+    "after-cpu": "29851451",
+    "gpu": "29851459"
+  },
+  "GPU_status": "PEND",
+  "GPU_diagnostic_pass_established": false,
+  "optimizer_jobs": [],
+  "can_admit_new_child": false,
+  "can_certify_or_restart_original_study": false,
+  "input_and_source_preservation": true,
+  "whole_dispatch_storage": {
+    "required_bytes": 39725039263,
+    "available_bytes": 40481378376,
+    "reserve_bytes": 4294967296,
+    "file_reserve": 100000
+  },
+  "assessment_sha256": "2e37e56822820f793497d4d55263eba621c816c2f83d6f41a894f947a0c8e0a2",
+  "local_numerical_work": false
+}

@@ -1,0 +1,21 @@
+{
+  "status": "passed_stdlib_tar_all_members_AST_settings_audit",
+  "manifest_sha256": "2b0356e63e74de8c1e112c47b8aedfdad9eaea70b66bf6a790abee29488718d4",
+  "source_files": 10,
+  "local_metadata_cases": 47,
+  "allocated_cases_required": 1005,
+  "driver_changed_functions": {
+    "scripts/chemistry_reference_worker.py": [
+      "validate_output"
+    ],
+    "scripts/chemistry_continuation_driver.py": [
+      "authenticated_plan",
+      "main"
+    ]
+  },
+  "all_original_arm_settings_inputs_and_prerequisites_exact": true,
+  "original_hooks_and_CUDA_numerical_implementation_identical": true,
+  "allocated_CPU_pass_established": false,
+  "saved_results_changed": false,
+  "local_numerical_work": false
+}

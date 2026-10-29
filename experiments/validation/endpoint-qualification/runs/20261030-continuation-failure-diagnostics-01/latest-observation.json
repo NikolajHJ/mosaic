@@ -1,0 +1,11 @@
+{
+  "observed_utc": "2026-10-29T23:20:46.733296+00:00",
+  "states": {
+    "29851450": "DONE",
+    "29851451": "DONE",
+    "29851459": "PEND"
+  },
+  "new_optimizer_updates_established": false,
+  "saved_results_changed": false,
+  "evidence": "results/hpc/20261030-mosaic-heartbeat/status03"
+}

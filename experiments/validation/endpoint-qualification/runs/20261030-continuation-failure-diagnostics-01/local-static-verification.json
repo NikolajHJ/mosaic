@@ -1,0 +1,10 @@
+{
+  "status": "passed_stdlib_tar_source_plan_AST_audit",
+  "files": 6,
+  "local_metadata_passes": 2,
+  "numerical_controls_pending_allocated": 6,
+  "native_loader_reused_unchanged": "11523a3e8e3543fa763260398c8897a78e8889e4ac615ca7e88dfdd8d487e387",
+  "optimizer_updates": 0,
+  "can_admit_new_child": false,
+  "saved_results_changed": false
+}

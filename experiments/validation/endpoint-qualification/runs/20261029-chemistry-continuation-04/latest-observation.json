@@ -1,17 +1,12 @@
 {
-  "observed_utc": "2026-10-29T22:40:12.177784+00:00",
+  "observed_utc": "2026-10-29T23:20:46.733296+00:00",
   "states": {
-    "29851336": "PEND",
-    "29851337": "PEND",
-    "29851338": "PEND",
-    "29851339": "PEND"
+    "29851336": "EXIT",
+    "29851337": "EXIT",
+    "29851338": "EXIT",
+    "29851339": "EXIT"
   },
-  "native_pass_by_scope": {
-    "protenix": false,
-    "boltz": false
-  },
-  "new_optimizer_committed_steps_established": false,
+  "new_optimizer_updates_established": false,
   "saved_results_changed": false,
-  "evidence": "results/hpc/20261029-mosaic-heartbeat/native-delivery02",
-  "independent_verification_sha256": "ea0728ed11efa3a856f9c588c037fa353d6eee33118dfbd87b654ba948985f23"
+  "evidence": "results/hpc/20261030-mosaic-heartbeat/status03"
 }

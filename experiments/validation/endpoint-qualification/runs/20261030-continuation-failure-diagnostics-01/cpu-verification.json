@@ -1,0 +1,23 @@
+{
+  "status": "passed_independent_CPU8_byte_XML_LSF_saved_analysis_audit",
+  "observed_utc": "2026-10-29T23:17:59.113720+00:00",
+  "CPU_job": "29851450",
+  "controller_job": "29851451",
+  "controller_state": "RUN",
+  "GPU_submission_established": false,
+  "cases": 8,
+  "saved_probe_observations": 48,
+  "original_failures": [
+    "Resolved local contradiction in noncertifying direction: 0",
+    "Preselected local pair/finer resolved comparison failed: 1",
+    "Resolved local contradiction in noncertifying direction: 2"
+  ],
+  "assessment": {
+    "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/boundary-diagnostics-01/cpu/payload/analysis/assessment.json",
+    "bytes": 32601,
+    "sha256": "2e37e56822820f793497d4d55263eba621c816c2f83d6f41a894f947a0c8e0a2"
+  },
+  "optimizer_updates": 0,
+  "can_admit_new_child": false,
+  "local_numerical_work": false
+}
