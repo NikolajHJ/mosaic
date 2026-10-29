@@ -1,0 +1,109 @@
+{
+  "fixed_learning_rate": 0.0025,
+  "gpu_profile": "l40s48",
+  "historical_baselines": {
+    "boltz": {
+      "config_asset": {
+        "bytes": 1698,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-release-03/source/examples/configs/boltz_serial_boltz2.json",
+        "sha256": "ecdf8a4103291f2f3a7bc7197dd394f03a46c3ccc74c72eb42dfc2b76eb13124"
+      },
+      "gpu": "NVIDIA L40S, 615.71.09",
+      "job_id": "29809297",
+      "mean_candidates": 1,
+      "mean_update_seconds": 1.7248767627474575,
+      "median_update_seconds": 1.6676598225021735,
+      "n_atoms": 25,
+      "objective": "Fresh Boltz-2 LR0.0025 / quantitative affinity only /30000updates",
+      "p90_update_seconds": 1.863029834930785,
+      "rate": 0.0025,
+      "runtime_scope": "Historical saved timings; preserve terminal scientific status; different target/context/software/hardware may contribute",
+      "scientific_status": "failed",
+      "selection_policy": "fixed_step",
+      "source_manifest_sha256": "c214bccf2c94ac6829996bc0ca7d6415d3c19549be4fe7f874cba2b433901cc6",
+      "summary_asset": {
+        "bytes": 40923777,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/boltz2-segment-0000/payload/study/summary.json",
+        "sha256": "3be92e7592273f4fc9d1d17ca1be9541d7fa03046e20edd76e48acc34168e986"
+      },
+      "summary_elapsed_seconds": 18020.831737022963,
+      "updates": 10000,
+      "updates_asset": {
+        "bytes": 9993988,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/boltz2-segment-0000/payload/study/case-0/updates.jsonl",
+        "sha256": "8101acc4f0fc0c103c5201547c425c1d47ac15e4fc8952ac86368c6c14cf5284"
+      },
+      "warmup_excluded": 10
+    },
+    "dbmol": {
+      "config_asset": {
+        "bytes": 1816,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-release-02/source/examples/configs/dbmol_pilot.json",
+        "sha256": "b3b56f409a59b3b1d00228bb7dcd3f74fc08f17fdf06facfc1469922778d5497"
+      },
+      "gpu": "NVIDIA L40S, 615.71.09",
+      "job_id": "29809294",
+      "mean_candidates": 1,
+      "mean_update_seconds": 3.5152634234874545,
+      "median_update_seconds": 3.5849368184572086,
+      "n_atoms": 25,
+      "objective": "JQ125 / DBMol binding-only / fixedLR0.0025 / fresh10000",
+      "p90_update_seconds": 3.6579518949147314,
+      "rate": 0.0025,
+      "runtime_scope": "Historical saved timings; preserve terminal scientific status; different target/context/software/hardware may contribute",
+      "scientific_status": "passed",
+      "selection_policy": "fixed_step",
+      "source_manifest_sha256": "600ecc3b33135141a57c029a28a2c72f29e788e3ecf5cb2dac1761146d1d6eed",
+      "summary_asset": {
+        "bytes": 14547372,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-segment-0000/payload/study/summary.json",
+        "sha256": "2a0dd16e2210943903140897076605b9c1ad9dc349c2235efb15faf8ec3c9538"
+      },
+      "summary_elapsed_seconds": 9118.239091373049,
+      "updates": 2500,
+      "updates_asset": {
+        "bytes": 4059759,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-segment-0000/payload/study/case-0/updates.jsonl",
+        "sha256": "f8683d8722d78c1eeda816b2f51ec8b950c0354b7f304983ea7c9bbdeacf0dbf"
+      },
+      "warmup_excluded": 10
+    }
+  },
+  "line_search": false,
+  "live_campaign_policy": "Observe only; do not stop/change original VAE continuation or running long optimization. Probe outputs never promoted to production states.",
+  "parent": {
+    "artifacts": {
+      "fit_result": {
+        "path": "/work3/s234818/latentmol/runs/source142-epoch36-guarded-embedding-long-attempt001/fit/result.json",
+        "sha256": "d14ef4d6adc31939e13bd92ae06d3af83db64cc91fbc57aeb5c7729414492327"
+      },
+      "gate_binding": {
+        "path": "/work3/s234818/latentmol/runs/source142-epoch36-guarded-embedding-long-attempt001/pilot/gates/case-001/binding.json",
+        "sha256": "d875139bc406bdde19a541c1d5359bae6602a8fb234b4f839c976e03098c9a17"
+      },
+      "starts": {
+        "path": "/work3/s234818/latentmol/runs/source142-epoch36-guarded-embedding-long-attempt001/cpu/starts.pt",
+        "sha256": "832592de7183b51ac22542ead558bc453006d3d349d942e2933dd1a52fb40ebd"
+      },
+      "state277": {
+        "path": "/work3/s234818/latentmol/runs/source142-epoch36-guarded-embedding-long-attempt001/trajectories/case-001/states/state-000277.pt",
+        "sha256": "e719a222ed5fafa424807ae2eb8f09cdb9b4eef4146e6d00c93af63f6c9e6009"
+      },
+      "trajectory_manifest": {
+        "path": "/work3/s234818/latentmol/runs/source142-epoch36-guarded-embedding-long-attempt001/trajectories/case-001/manifest.json",
+        "sha256": "59944938e055f245e6d0e3f68c8581007c434972cfb8d29e74308247ed4e1055"
+      }
+    },
+    "campaign": "/work3/s234818/latentmol/runs/source142-epoch36-guarded-embedding-long-attempt001",
+    "manifest_sha256": "89dd0f43752a417cb4a4ab0658a4fba294eba72eb65fd5899036a42d8207c4f2",
+    "plan_sha256": "35adaf248e9011ce81a5bcd165d1897e97901864695a10d56fad70eebe63f70e",
+    "release": "/work3/s234818/latentmol/releases/source-142-epoch36-guarded-embedding-long-attempt001",
+    "source_sha256": "d2ac85ad644a94f3b5967537f1c777bb7318faf2a8507038888bc32728a0d805"
+  },
+  "reference_policy": "same-device-exact-original-A100-certificate-reported",
+  "repeats": 5,
+  "resource_rationale": "Production uses14.1GB maximum GPU memory per LSF; separate48GB L40S queue avoids occupied A100 queue limit, matches historicalGPUclass. No live experiment stopped. Cross-device production certificate is reported only; same-device raw/direct primal/gradient parity remains exact.",
+  "step_candidates": 1,
+  "version": "embedding-runtime-fixed-step-probe-v2",
+  "warmups": 2
+}

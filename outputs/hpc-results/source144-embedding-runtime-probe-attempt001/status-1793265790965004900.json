@@ -1,0 +1,189 @@
+{
+  "control": {
+    "cpu-intent.json": {
+      "bsub": [
+        "bsub",
+        "-J",
+        "source144-embedding-runtime-probe-attempt001-cpu",
+        "-q",
+        "hpc",
+        "-n",
+        "4",
+        "-R",
+        "span[hosts=1]",
+        "-R",
+        "rusage[mem=8GB]",
+        "-W",
+        "0:45",
+        "-oo",
+        "/work3/s234818/latentmol/logs/source144-embedding-runtime-probe-attempt001-cpu.%J.out",
+        "-eo",
+        "/work3/s234818/latentmol/logs/source144-embedding-runtime-probe-attempt001-cpu.%J.err"
+      ],
+      "command": [
+        "/work3/s234818/latentmol/env/boltz311/bin/python",
+        "/work3/s234818/latentmol/releases/source-144-embedding-runtime-probe-attempt001/scripts/hpc/embedding_runtime_probe.py",
+        "cpu",
+        "--config",
+        "/work3/s234818/latentmol/releases/source-144-embedding-runtime-probe-attempt001/configs/embedding_runtime_probe.json",
+        "--source-sha256",
+        "009233fce84e8f4b06079334bbe53aed3e51a3cbbb42d5022f1d023abaac55b9",
+        "--plan-sha256",
+        "f96e8e1ae42dfd52eda691a2694b6c8529ac5f6937d914ed4f00f15a19946dc5",
+        "--output",
+        "/work3/s234818/latentmol/runs/source144-embedding-runtime-probe-attempt001/cpu"
+      ],
+      "dependency": null,
+      "fresh_quota": {
+        "minimum_free_gib": 56.27,
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "HPE-Storage-Servers (disks, storagepool 1): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nHPE-Storage-Servers (NVME, storagepool 2): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (disks, storagepool 3): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks, storagepool 4): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks added in 2024, storagepool 5): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (NVMEs added in 2024, storagepool 6): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||   43.73 GiB|  100.00 GiB||   392350| 20000000\n\n"
+      },
+      "identity": {
+        "archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source144-embedding-runtime-probe-attempt001\\source144-embedding-runtime-probe-attempt001.tar.gz",
+        "archive_sha256": "009233fce84e8f4b06079334bbe53aed3e51a3cbbb42d5022f1d023abaac55b9",
+        "campaign": "/work3/s234818/latentmol/runs/source144-embedding-runtime-probe-attempt001",
+        "label": "source144-embedding-runtime-probe-attempt001",
+        "manifest_sha256": "e12f9737844fe7b7c81f2b8d78bd5858ce8048e39e54b585b1f059a261b5af85",
+        "members": 629,
+        "operator_relative": "scripts/hpc/embedding_runtime_probe.py",
+        "plan_sha256": "f96e8e1ae42dfd52eda691a2694b6c8529ac5f6937d914ed4f00f15a19946dc5",
+        "release": "/work3/s234818/latentmol/releases/source-144-embedding-runtime-probe-attempt001",
+        "status": "sealed_not_submitted"
+      },
+      "stage": "cpu"
+    },
+    "cpu-receipt.json": {
+      "intent_sha256": "da7c396c26b7ae85c44b3a788990b8d89363824edb8aa18c7aa07de0858897e7",
+      "job_id": "29846860",
+      "returncode": 0,
+      "status": "submitted_not_passed",
+      "stderr": "",
+      "stdout": "Job <29846860> is submitted to queue <hpc>.\n"
+    },
+    "gpu-intent.json": {
+      "bsub": [
+        "bsub",
+        "-J",
+        "source144-embedding-runtime-probe-attempt001-gpu",
+        "-q",
+        "gpua100",
+        "-n",
+        "4",
+        "-R",
+        "span[hosts=1]",
+        "-R",
+        "rusage[mem=16GB]",
+        "-W",
+        "1:00",
+        "-oo",
+        "/work3/s234818/latentmol/logs/source144-embedding-runtime-probe-attempt001-gpu.%J.out",
+        "-eo",
+        "/work3/s234818/latentmol/logs/source144-embedding-runtime-probe-attempt001-gpu.%J.err",
+        "-R",
+        "select[gpu80gb]",
+        "-gpu",
+        "num=1:mode=exclusive_process"
+      ],
+      "command": [
+        "/work3/s234818/latentmol/env/boltz311/bin/python",
+        "/work3/s234818/latentmol/releases/source-144-embedding-runtime-probe-attempt001/scripts/hpc/embedding_runtime_probe.py",
+        "gpu",
+        "--config",
+        "/work3/s234818/latentmol/releases/source-144-embedding-runtime-probe-attempt001/configs/embedding_runtime_probe.json",
+        "--source-sha256",
+        "009233fce84e8f4b06079334bbe53aed3e51a3cbbb42d5022f1d023abaac55b9",
+        "--plan-sha256",
+        "f96e8e1ae42dfd52eda691a2694b6c8529ac5f6937d914ed4f00f15a19946dc5",
+        "--output",
+        "/work3/s234818/latentmol/runs/source144-embedding-runtime-probe-attempt001/gpu",
+        "--cpu-sha256",
+        "cc74436769fe4073cfd6e8891016312298125070a95e8829056ce4db74d1d2b3"
+      ],
+      "dependency": {
+        "cpu_job_id": "29846860",
+        "cpu_result_sha256": "cc74436769fe4073cfd6e8891016312298125070a95e8829056ce4db74d1d2b3",
+        "scheduler": {
+          "returncode": 0,
+          "stderr": "",
+          "stdout": "{\n  \"COMMAND\":\"bjobs\",\n  \"JOBS\":1,\n  \"RECORDS\":[\n    {\n      \"JOBID\":\"29846860\",\n      \"STAT\":\"DONE\",\n      \"JOB_NAME\":\"source144-embedding-runtime-probe-attempt001-cpu\"\n    }\n  ]\n}\n"
+        }
+      },
+      "fresh_quota": {
+        "minimum_free_gib": 56.33,
+        "returncode": 0,
+        "stderr": "",
+        "stdout": "HPE-Storage-Servers (disks, storagepool 1): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nHPE-Storage-Servers (NVME, storagepool 2): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (disks, storagepool 3): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks, storagepool 4): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (big disks added in 2024, storagepool 5): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||      0 Byte|   unlimited||        0|unlimited\n\nLenovo-Storage-Servers (NVMEs added in 2024, storagepool 6): \n      user/group     ||           size          ||    chunk files    \n     name     |  id  ||    used    |    hard    ||  used   |  hard   \n--------------|------||------------|------------||---------|---------\n       s234818|306121||   43.67 GiB|  100.00 GiB||   391701| 20000000\n\n"
+      },
+      "identity": {
+        "archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source144-embedding-runtime-probe-attempt001\\source144-embedding-runtime-probe-attempt001.tar.gz",
+        "archive_sha256": "009233fce84e8f4b06079334bbe53aed3e51a3cbbb42d5022f1d023abaac55b9",
+        "campaign": "/work3/s234818/latentmol/runs/source144-embedding-runtime-probe-attempt001",
+        "label": "source144-embedding-runtime-probe-attempt001",
+        "manifest_sha256": "e12f9737844fe7b7c81f2b8d78bd5858ce8048e39e54b585b1f059a261b5af85",
+        "members": 629,
+        "operator_relative": "scripts/hpc/embedding_runtime_probe.py",
+        "plan_sha256": "f96e8e1ae42dfd52eda691a2694b6c8529ac5f6937d914ed4f00f15a19946dc5",
+        "release": "/work3/s234818/latentmol/releases/source-144-embedding-runtime-probe-attempt001",
+        "status": "sealed_not_submitted"
+      },
+      "stage": "gpu"
+    },
+    "gpu-receipt.json": {
+      "intent_sha256": "8234ddac3e59428113a29436fe060e5ebc1f81359b1c57758ebed6ae16ab0efd",
+      "job_id": "29846866",
+      "returncode": 0,
+      "status": "submitted_not_passed",
+      "stderr": "",
+      "stdout": "Job <29846866> is submitted to queue <gpua100>.\n"
+    }
+  },
+  "identity": {
+    "archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source144-embedding-runtime-probe-attempt001\\source144-embedding-runtime-probe-attempt001.tar.gz",
+    "archive_sha256": "009233fce84e8f4b06079334bbe53aed3e51a3cbbb42d5022f1d023abaac55b9",
+    "campaign": "/work3/s234818/latentmol/runs/source144-embedding-runtime-probe-attempt001",
+    "label": "source144-embedding-runtime-probe-attempt001",
+    "manifest_sha256": "e12f9737844fe7b7c81f2b8d78bd5858ce8048e39e54b585b1f059a261b5af85",
+    "members": 629,
+    "operator_relative": "scripts/hpc/embedding_runtime_probe.py",
+    "plan_sha256": "f96e8e1ae42dfd52eda691a2694b6c8529ac5f6937d914ed4f00f15a19946dc5",
+    "release": "/work3/s234818/latentmol/releases/source-144-embedding-runtime-probe-attempt001",
+    "status": "sealed_not_submitted"
+  },
+  "logs": {
+    "cpu-tests.log": ".....................                                                    [100%]\n- generated xml file: /work3/s234818/latentmol/runs/source144-embedding-runtime-probe-attempt001/cpu/cpu-tests.xml -\n21 passed in 10.00s\n",
+    "cpu.err": "Loaded dependency [python3/3.11.9]: sqlite3/3.45.3\nLoaded dependency [python3/3.11.9]: gcc/12.3.0-binutils-2.40\nLoaded module: python3/3.11.9\n\nLoading python3/3.11.9\n  Loading requirement: sqlite3/3.45.3 gcc/12.3.0-binutils-2.40\n",
+    "cpu.out": "JOB=29846860 HOST=n-62-30-23 SOURCE=/work3/s234818/latentmol/releases/source-144-embedding-runtime-probe-attempt001\n\n------------------------------------------------------------\nSender: LSF System <lsfadmin@hpc.dtu.dk>\nSubject: Job 29846860: <source144-embedding-runtime-probe-attempt001-cpu> in cluster <dcc> Done\n\nJob <source144-embedding-runtime-probe-attempt001-cpu> was submitted from host <hpclogin1> by user <s234818> in cluster <dcc> at Thu Oct 29 10:21:04 2026\nJob was executed on host(s) <4*n-62-30-23>, in queue <hpc>, as user <s234818> in cluster <dcc> at Thu Oct 29 10:21:05 2026\n</zhome/95/e/206121> was used as the home directory.\n</zhome/95/e/206121> was used as the working directory.\nStarted at Thu Oct 29 10:21:05 2026\nTerminated at Thu Oct 29 10:21:23 2026\nResults reported at Thu Oct 29 10:21:23 2026\n\nYour job looked like:\n\n------------------------------------------------------------\n# LSBATCH: User input\n#!/bin/bash\nset -euo pipefail\ncd /work3/s234818/latentmol/releases/source-144-embedding-runtime-probe-attempt001\nexec env PYTHONDONTWRITEBYTECODE=1 LATENTMOL_SOURCE_ARCHIVE=/work3/s234818/latentmol/releases/source-144-embedding-runtime-probe-attempt001.tar.gz bash scripts/hpc/boltz_run.sh /work3/s234818/latentmol/env/boltz311/bin/python /work3/s234818/latentmol/releases/source-144-embedding-runtime-probe-attempt001/scripts/hpc/embedding_runtime_probe.py cpu --config /work3/s234818/latentmol/releases/source-144-embedding-runtime-probe-attempt001/configs/embedding_runtime_probe.json --source-sha256 009233fce84e8f4b06079334bbe53aed3e51a3cbbb42d5022f1d023abaac55b9 --plan-sha256 f96e8e1ae42dfd52eda691a2694b6c8529ac5f6937d914ed4f00f15a19946dc5 --output /work3/s234818/latentmol/runs/source144-embedding-runtime-probe-attempt001/cpu\n\n------------------------------------------------------------\n\nSuccessfully completed.\n\nResource usage summary:\n\n    CPU time :                                   6.94 sec.\n    Max Memory :                                 239 MB\n    Average Memory :                             239.00 MB\n    Total Requested Memory :                     32768.00 MB\n    Delta Memory :                               32529.00 MB\n    Max Swap :                                   -\n    Max Processes :                              5\n    Max Threads :                                6\n    Run time :                                   18 sec.\n    Turnaround time :                            19 sec.\n\nThe output (if any) is above this job summary.\n\n\n\nPS:\n\nRead file </work3/s234818/latentmol/logs/source144-embedding-runtime-probe-attempt001-cpu.29846860.err> for stderr output of this job.\n\n",
+    "gpu.err": null,
+    "gpu.out": null
+  },
+  "results": {
+    "cpu": {
+      "elapsed_seconds": 15.006474673049524,
+      "job_id": "29846860",
+      "junit": {
+        "errors": 0,
+        "failures": 0,
+        "skipped": 0,
+        "tests": 21
+      },
+      "junit_asset": {
+        "path": "/work3/s234818/latentmol/runs/source144-embedding-runtime-probe-attempt001/cpu/cpu-tests.xml",
+        "sha256": "6e2edd6d0e32d4d3ce1be22752ba907be519fbf81bb7db0f43641464cdf10e2a"
+      },
+      "numerical_models": "not_loaded",
+      "plan_sha256": "f96e8e1ae42dfd52eda691a2694b6c8529ac5f6937d914ed4f00f15a19946dc5",
+      "source_sha256": "009233fce84e8f4b06079334bbe53aed3e51a3cbbb42d5022f1d023abaac55b9",
+      "stage": "cpu",
+      "status": "passed",
+      "version": "embedding-runtime-fixed-step-probe-v1"
+    },
+    "gpu": null
+  },
+  "scheduler": {
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "{\n  \"COMMAND\":\"bjobs\",\n  \"JOBS\":2,\n  \"RECORDS\":[\n    {\n      \"JOBID\":\"29846860\",\n      \"STAT\":\"DONE\",\n      \"JOB_NAME\":\"source144-embedding-runtime-probe-attempt001-cpu\"\n    },\n    {\n      \"JOBID\":\"29846866\",\n      \"STAT\":\"PEND\",\n      \"JOB_NAME\":\"source144-embedding-runtime-probe-attempt001-gpu\"\n    }\n  ]\n}\n"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source144-embedding-runtime-probe-attempt001\\source144-embedding-runtime-probe-attempt001.tar.gz",
+  "archive_sha256": "009233fce84e8f4b06079334bbe53aed3e51a3cbbb42d5022f1d023abaac55b9",
+  "campaign": "/work3/s234818/latentmol/runs/source144-embedding-runtime-probe-attempt001",
+  "label": "source144-embedding-runtime-probe-attempt001",
+  "manifest_sha256": "e12f9737844fe7b7c81f2b8d78bd5858ce8048e39e54b585b1f059a261b5af85",
+  "members": 629,
+  "operator_relative": "scripts/hpc/embedding_runtime_probe.py",
+  "plan_sha256": "f96e8e1ae42dfd52eda691a2694b6c8529ac5f6937d914ed4f00f15a19946dc5",
+  "release": "/work3/s234818/latentmol/releases/source-144-embedding-runtime-probe-attempt001",
+  "status": "sealed_not_submitted"
+}
