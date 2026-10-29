@@ -1,5 +1,5 @@
 {
-  "status": "CPU879_and_controller_DONE_native_validations_PEND_no_optimizer_yet",
+  "status": "CPU879_pass_storage_entries_pass_native_CUDA_visibility_failure_before_models_no_continuations",
   "source": {
     "archive_bytes": 342730,
     "archive_sha256": "773213bdd3dda7936c8760d438a4aabd56e5d63aed33452b1cd9d94dc4d1c257",
@@ -544,7 +544,7 @@
       }
     }
   },
-  "last_observed_utc": "2026-10-28T20:14:02.833311+00:00",
+  "last_observed_utc": "2026-10-29T08:46:14.804683+00:00",
   "CPU_certificate": {
     "bytes": 7415,
     "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-21/cpu-certificate.json",
@@ -557,5 +557,67 @@
   "native_callback_ids": [
     "29845088",
     "29845090"
-  ]
+  ],
+  "native_outcomes": {
+    "after-cpu": {
+      "job_id": "29845074",
+      "state": "SUCCESS_PERSISTED",
+      "LSF": {
+        "bytes": 2004,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-21/after-cpu/stdout.29845074.log",
+        "sha256": "debbd12a2e86d7d50ea8f7280d3702eb8a3a30bbf5aa25d691454fe0668307e3"
+      }
+    },
+    "cpu": {
+      "job_id": "29845073",
+      "state": "SUCCESS_PERSISTED",
+      "LSF": {
+        "bytes": 1986,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-21/cpu/stdout.29845073.log",
+        "sha256": "1c2980c2de1527c9c9ccbb1c048af3a533943f23a491331ce2f81beb13959c20"
+      }
+    },
+    "dbmol-after-validate-07500": {
+      "job_id": "29845090",
+      "state": "EXIT1_PERSISTED",
+      "LSF": {
+        "bytes": 2152,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-21/dbmol-after-validate-07500/stdout.29845090.log",
+        "sha256": "e72cfb8e7351f1cbbf543d195c7db20aa9dedcedfc88caa285b32566736b9db9"
+      }
+    },
+    "dbmol-validate-07500": {
+      "job_id": "29845089",
+      "state": "EXIT1_PERSISTED",
+      "LSF": {
+        "bytes": 2135,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-21/dbmol-validate-07500/stdout.29845089.log",
+        "sha256": "17bad4017b541e473745e9dd8aff6d6046d0ed307405039211e6160b44853d24"
+      }
+    },
+    "protenix-after-validate-20000": {
+      "job_id": "29845088",
+      "state": "EXIT1_PERSISTED",
+      "LSF": {
+        "bytes": 2163,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-21/protenix-after-validate-20000/stdout.29845088.log",
+        "sha256": "4273db2594d1adbbe49801683e714af477682f81da21442977a93644e1fa46ca"
+      }
+    },
+    "protenix-validate-20000": {
+      "job_id": "29845087",
+      "state": "EXIT1_PERSISTED",
+      "LSF": {
+        "bytes": 2149,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-21/protenix-validate-20000/stdout.29845087.log",
+        "sha256": "f4ea8216e2219f4b9cf605f26b38d600753a06d7474e4b6edc2dbc3e4ac0f8d7"
+      }
+    }
+  },
+  "native_gradient_checks_executed": false,
+  "saved_endpoints": {
+    "protenix": 20000,
+    "dbmol": 7500
+  },
+  "current_status_record": "status-20261029-084614.json"
 }

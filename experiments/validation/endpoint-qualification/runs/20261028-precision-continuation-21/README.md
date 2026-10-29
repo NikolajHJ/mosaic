@@ -1,12 +1,17 @@
 # Shared-account continuation and qualified HOME-reader classification
 
-Latest verified28October21:14:02 Paris: full879 allocated CPU cases and controller
-DONE/LSF success, independently byte/XML/source/provenance verified. Actual GPU
-Pro29845087/callback29845088 and DBMol29845089/callback29845090 submitted,
-allPEND. Whole storage passed19,382,868,820 required/43,403,642,749 conservative
-available bytes. No native readiness pass or optimizer ID yet; conditional
-controllers submit only after every required own gate passes. Saved inputs,
-settings and VAE/report jobs remain unchanged. Do not repeat stage/dispatch.
+Latest verified29October09:46:14 Paris: both GPU validators actually exited1
+before model loading. Pro29845087 and DBMol29845089 passed their entry storage
+gates, then rejected CUDA visibility: the smoke precheck requires exactly one
+explicitly visible GPU. No CUDA worker, model, gradient check or optimizer ran;
+own callbacks29845088/29845090 correctly refused the failed predecessors.
+Full879 allocated CPU cases and controller success remain independently verified.
+No continuation was submitted; saved Pro20k/DB7500 endpoints and all settings
+remain unchanged. Live records aged out; original same-job LSF authenticates
+the terminal outcomes. See [the byte/proof audit](status-20261029-084614.json).
+The rejected CUDA_VISIBLE_DEVICES value was not captured, so the exact
+environment-wiring cause remains unverified. No new fix or job was submitted
+by this read-only status check. Preserve sealed21; do not repeat stage/dispatch.
 
 User-authorized goals remain Protenix20k→50k/30,000 additional/LR0.3 and
 DBMol7500→10k/2500 additional/LR0.0025, one full remaining job if measured

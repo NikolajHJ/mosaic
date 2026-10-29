@@ -1,12 +1,14 @@
 # Prospective endpoint qualification diagnostics
 
-Current28October21:14:02 Paris: [attempt21](runs/20261028-precision-continuation-21/README.md)
-fixes VAE accounting, terminated-scope retention and the exact HOME-only report
-reader. Whole storage and all879 allocated CPU cases/controller passed. Native
-Pro29845087 and DBMol29845089, with own callbacks29845088/29845090, are PEND.
-No optimizer started; controllers submit full Pro30k/DB2500 only after all own
-scientific/runtime/fresh-storage gates pass. Settings/results unchanged. Monitor
-paused. Never repeat staging or dispatch; old18/19/20 outcomes below are historical.
+Current29October09:46:14 Paris: [attempt21](runs/20261028-precision-continuation-21/README.md)
+passed whole storage, both native entry storage gates and all879 allocated CPU
+cases/controller. Native Pro29845087 and DBMol29845089 then exited1 at the CUDA
+visibility precheck, before any worker/model/gradient evaluation. Their own
+callbacks also exited; no optimizer continuation was submitted. Saved endpoints
+remain Pro20k/DB7500 with unchanged settings/results. Exact rejected GPU visibility
+was not captured, so no wiring fix is established. Original same-job LSF proves
+the failures despite aged-out live records. Monitor remains paused; never replay
+sealed21 or old18/19/20 staging/dispatch.
 
 Latest authorized repair: [attempt20](runs/20261028-precision-continuation-20/README.md)
 accounts for the running, unchanged VAE source140 attempt002 and authenticates

@@ -7,8 +7,9 @@ an original failed run into a pass or authorize a gate waiver.
 Latest records:
 
 - [Shared-account21](20261028-precision-continuation-21/README.md): full storage,
-  CPU879/controller passed; native Pro29845087/DB29845089 queued. Optimizer
-  submissions await all own native/runtime/storage gates. Settings/results intact.
+  CPU879/controller and both native entry storage gates passed. Native
+  Pro29845087/DB29845089 exited1 at CUDA visibility before models/gradients;
+  callbacks refused continuation. No optimizer jobs; saved20k/7500 intact.
 
 - [Shared-account20](20261028-precision-continuation-20/README.md): exact VAE
   headroom and authenticated terminated-scope retention; full preflight passed,
