@@ -12,6 +12,14 @@ Chemistry06 registers exact bounded validation jobs inside22's existing funded
 control tree and requires its actual CPU certificate/current whole quota gate.
 It has no optimizer branch. Scientific models/tests remain allocated HPC only.
 
+Queue tuning: inspect actual pending reasons and compatible hardware before
+choosing a queue; see [the29October audit](../runs/20261029-queue-optimization-01/README.md).
+DTU rejected in-place job modifications as administrator-only. Do not repeat
+that edit or circumvent the restriction. For a NEW immutable launch, include
+a conservative scheduling runtime estimate before submission/actual-command
+validation; retain measured hard limits and complete scientific gates. Current
+queued source22/chemistry06 jobs are unchanged and must not be replayed.
+
 `qualification.py` constructs loss-independent FP32 perturbation plans and
 evaluates them with caller-supplied independent-primal, AD and frozen-identity
 hooks. Numerical calls require an allocated HPC job. It neither loads a model

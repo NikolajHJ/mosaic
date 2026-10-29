@@ -6,6 +6,13 @@ an original failed run into a pass or authorize a gate waiver.
 
 Latest records:
 
+- [Queue audit](20261029-queue-optimization-01/README.md): all three validators
+  still eligiblePEND/physicalGPU waits,120min hardcaps. DTU rejected the first
+  in-place scheduling-estimate edit because bmod is administrator-only; no
+  jobs changed. Retain current L40S positions. Future new capsules should
+  include realistic runtime estimates before submission and validate actual
+  argv. Optimizer walltime already derives from full measured pilots/setup.
+
 - [CUDA mapping22](20261029-precision-continuation-22/README.md): full906 allocated
   CPU/startup cases passed; Pro29846764/DB29846766 native checks queued with
   conditional continuation callbacks. Whole shared storage passed, no new

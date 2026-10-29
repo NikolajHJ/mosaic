@@ -1,0 +1,18 @@
+{
+  "status": "verified_site_rejection_no_job_change",
+  "observed_utc": "2026-10-29T09:32:03.597341+00:00",
+  "requested_estimates_minutes": {"29846764": 60, "29846766": 60, "29846795": 45},
+  "first_operation_returncode": 255,
+  "site_rejection": "Only administrators can run bmod! Request aborted by esub. Job not modified.",
+  "remaining_estimate_operations_not_attempted": true,
+  "actual_hard_walltime_minutes": {"29846764": 120, "29846766": 120, "29846795": 120},
+  "actual_job_states": {"29846764": "PEND", "29846766": "PEND", "29846795": "PEND"},
+  "queue_preserved": "gpul40s",
+  "original_ids_and_submit_times_retained": true,
+  "jobs_resubmitted_or_cancelled": false,
+  "science_settings_or_saved_results_changed": false,
+  "monitor_resumed": false,
+  "source_or_controller_code_changed": false,
+  "local_numerical_work": false,
+  "evidence": "results/hpc/20261029-queue-optimization-01/after-rejection01/observation.json"
+}

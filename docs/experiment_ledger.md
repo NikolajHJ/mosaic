@@ -9596,3 +9596,37 @@ retained. Both chemistry continuations still need complete combined checks/
 BOTHpilots/runtime/storage; native-component qualification does not waive them.
 No cleanup, external job/source change or monitor resume.
 Owner: experiments/validation/endpoint-qualification/runs/20261029-chemistry-native-qualification-06/.
+
+
+### 2026-10-29 — Queue audit and conservative runtime estimates prepared
+
+User requested compatible faster queues and appropriate walltimes. Live audit
+finds physicalL40S waits only, all12GPUs occupied; A100/A40/A10 also occupied.
+SomeV100s free, but currentcuDNN9.13matrix excludesVolta and immutable workers
+requireL40S. No blindqueue switch or changedruntime. Successful componenttiming
+priors457sPro/692sDB/1012sBolchem do not measure complete new validations.
+Prepare scheduling estimates60minPro/DB,45minProchem, retaining120minhardcaps
+and every check/cleanup deadline, originalIDs/age/argv. Actualfutureoptimizer
+walltime already uses1.5x measuredstepcost plus completeendpoint/setup/reserve,
+rounded15min;23h is ceiling, not blanketrequest. No job mutation at preparation.
+No tests/models/cleanup/monitor changes; reversible metadata only.
+Owner: experiments/validation/endpoint-qualification/runs/20261029-queue-optimization-01/.
+
+
+### 2026-10-29T09:32:03Z — Queue audit; DTU rejected in-place estimate change
+
+Current validators29846764/29846766/29846795 remain PEND with120min hard
+limits, eligible physicalGPU waits/CPUslots reserved/noETA. All12L40S busy;
+A100/A40/A10 also busy; someV100free but pinnedcuDNN9.13 excludesVolta.
+L40S lightest observed pending-core count; counts are not reliable waittimes.
+Successful component timing priors457sPro/692sDB/1012sBolchem do not measure
+complete new validation. Prepared60minPro/DB and45minchem scheduling estimates
+for BACKFILL while retaining hardchecks. First edit on29846764 rejected by
+siteesub255: onlyadministrators may usebmod; jobnotmodified. Other requests
+notattempted, failure/evidence preserved; no workaround, cancellation, requeue,
+source or scientific changes. OriginalIDs/submit times/hardlimits retained.
+Keep current L40S positions; future new capsules should declare conservative
+scheduling estimates before submission and actual-command validation.
+Optimizer walltime already rounds measured fullpilots/setup/endpoint/reserve
+upward15min;23h is a ceiling. No numericalwork/tests/cleanup/newjob/monitorresume.
+Owner: experiments/validation/endpoint-qualification/runs/20261029-queue-optimization-01/.
