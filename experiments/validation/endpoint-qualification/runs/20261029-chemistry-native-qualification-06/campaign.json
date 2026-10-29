@@ -16,7 +16,7 @@
   "remote_source_staged": true,
   "saved_results_changed": false,
   "settings_changed": false,
-  "status": "CPU43_controller_DONE_corrected_Pro_chemistry_native_GPU_queued_no_optimizer",
+  "status": "native_GPU_entry_failed_unregistered_shared_writer_before_models_no_continuation",
   "CPU_verification": {
     "status": "passed_independent_CPU_byte_XML_source_certificate_LSF_audit",
     "CPU_cases": 43,
@@ -36,7 +36,7 @@
     "optimizer_submitted": false,
     "saved_results_or_settings_changed": false
   },
-  "last_observed_utc": "2026-10-29T09:16:29.346198+00:00",
+  "last_observed_utc": "2026-10-29T09:54:35.034324+00:00",
   "jobs": {
     "cpu": "29846779",
     "after-cpu": "29846780",
@@ -79,5 +79,9 @@
     "combined_chemistry_admission_pass_yet": false,
     "optimizer_submitted": false,
     "saved_results_or_settings_changed": false
-  }
+  },
+  "latest_failure": "Unknown nonterminal Mosaic allocation(s): 29846882",
+  "failure_record": "../20261029-precision-continuation-22/status-20261029-095400.json",
+  "native_gradient_checks_executed": false,
+  "optimizer_submitted": false
 }

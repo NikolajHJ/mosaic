@@ -51,3 +51,10 @@ this same funded2GiB group. Its actual submissions are also recorded under
 the locked22 jobs registry, with exact capacity-source arguments; these are
 validation jobs and never optimizer children or new external output allowances.
 No saved results, scientific settings, VAE/embedding jobs or monitor were changed.
+
+
+Latest29October10:54:35Paris: GPU entry actually ran, then EXIT1 before CUDA/
+models/gradients because new shared writer29846882 was not in the authenticated
+storage declaration. Source22 and chemistry06 failures remain preserved; no
+optimizer continuation or added update. See ../20261029-precision-continuation-22/
+status-20261029-095400.json. CPU passes remain valid; never replay staging.

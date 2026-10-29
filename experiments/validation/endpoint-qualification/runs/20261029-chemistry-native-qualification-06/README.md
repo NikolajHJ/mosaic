@@ -46,3 +46,10 @@ cases and actual startup checks independently verified. Corrected Protenix
 chemistryGPU29846795 actuallysubmitted and PEND, exact vector and whole storage
 gates authenticated in dispatch-verification.json. No native/combined pass or
 optimizer submission yet; both original10k saved results remain unchanged.
+
+
+Latest29October10:54:35Paris: GPU entry actually ran, then EXIT1 before CUDA/
+models/gradients because new shared writer29846882 was not in the authenticated
+storage declaration. Source22 and chemistry06 failures remain preserved; no
+optimizer continuation or added update. See ../20261029-precision-continuation-22/
+status-20261029-095400.json. CPU passes remain valid; never replay staging.

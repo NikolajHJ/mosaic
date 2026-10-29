@@ -1,5 +1,15 @@
 # Prospective endpoint qualification diagnostics
 
+Latest29October10:54:35Paris: source22 Pro29846764/DB29846766 and chemistry06
+Pro29846795 obtained GPUs, then actualEXIT1 before CUDA/models/gradient checks.
+The shared-storage guard rejected new balancedDeFoG job29846882 as an unknown
+writer. No byte-capacity shortage was proved; its output budget is not adopted.
+Both main callbacks exited; no optimizer continuation or saved update exists.
+CPU906/43 passes and saved20k/7500/chemistry10k/10k remain intact. Separate
+balancedDeFoG is actualRUN; its scientific progress was not checked here.
+See [the failure audit](runs/20261029-precision-continuation-22/status-20261029-095400.json).
+Preserve failures and do not replay22/06. General monitor remains paused.
+
 Current29October10:16 Paris: [CUDA repair22](runs/20261029-precision-continuation-22/README.md)
 passed whole shared storage and all906 allocated CPU/startup cases. Actual new
 Protenix29846764/DBMol29846766 and own callbacks are queued; no new native pass

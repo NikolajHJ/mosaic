@@ -1,5 +1,5 @@
 {
-  "status": "CPU906_controller_DONE_native_validators_and_callbacks_queued_optimizer_pending_own_gates",
+  "status": "native_GPU_entry_failed_unregistered_shared_writer_before_models_no_continuation",
   "source": {
     "archive_bytes": 351839,
     "archive_sha256": "d53848744b9375015cbf1f340c509de8027429b0fa75838f6cce2a24fccf24fd",
@@ -53,7 +53,7 @@
     "protenix-after-validate-20000": "29846765",
     "protenix-validate-20000": "29846764"
   },
-  "last_observed_utc": "2026-10-29T09:16:29.346198+00:00",
+  "last_observed_utc": "2026-10-29T09:54:35.034324+00:00",
   "cpu_verification": {
     "status": "passed_independent_source_byte_XML_LSF_actual_submission_audit",
     "observed_utc": "2026-10-29T09:07:59.729650+00:00",
@@ -82,5 +82,9 @@
     "chemistry-native-qualification-06/after-cpu": "29846780",
     "chemistry-native-qualification-06/cpu": "29846779",
     "chemistry-native-qualification-06/gpu-protenix": "29846795"
-  }
+  },
+  "latest_failure": "Unknown nonterminal Mosaic allocation(s): 29846882",
+  "failure_record": "../20261029-precision-continuation-22/status-20261029-095400.json",
+  "native_gradient_checks_executed": false,
+  "optimizer_submitted": false
 }

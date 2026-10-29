@@ -9630,3 +9630,18 @@ scheduling estimates before submission and actual-command validation.
 Optimizer walltime already rounds measured fullpilots/setup/endpoint/reserve
 upward15min;23h is a ceiling. No numericalwork/tests/cleanup/newjob/monitorresume.
 Owner: experiments/validation/endpoint-qualification/runs/20261029-queue-optimization-01/.
+
+
+### 2026-10-29T09:54:35Z — All three GPU entries ran but shared-writer admission failed
+
+ActualGPU Pro29846764/DB29846766/chemPro29846795 started10:33:50/10:35:30/
+10:36:10Paris, then same-jobLSFexit1 before CUDA smoke/models/gradients. Both
+own main callbacks also EXIT1. Guard rejected unknown nonterminal Mosaic
+writer29846882, the separate balancedProtenixDeFoG30k job, now actualRUN.
+Its optimization progress was not checked. No actual byte-capacity shortage
+was established; this is a missing authenticated shared-output declaration.
+All three study/driver/CUDAprobe paths absent; no optimizer children or added
+updates. CPU906/43 passes and original saved20k/7500/10k/10k remain unchanged.
+Independent byte/LSF/schema proof audit preserved; no source/job/settings/
+cleanup/monitor changes by this status check. Never replay sealed22/06.
+Owner: experiments/validation/endpoint-qualification/runs/20261029-precision-continuation-22/.

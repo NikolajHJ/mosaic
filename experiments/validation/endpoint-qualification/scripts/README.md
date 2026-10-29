@@ -7,7 +7,9 @@ Both are already staged/submitted; never replay prepare/stage or old callbacks.
 translating documented LSF MPS task-zero mapping for non-MPI entrypoints.
 `embedding_shared_capacity.py` authenticates the exact142/143 external command
 family and holds complete measured growth; it changes no external job or file.
-Continuation22 passed906 allocated cases; new native checks remain queued.
+Continuation22 passed906 allocated cases. Its native GPU entries and chemistry06
+GPU now exited before models on unknown shared writer29846882. Preserve their
+failure evidence; no continuation/gradient pass or added update exists.
 Chemistry06 registers exact bounded validation jobs inside22's existing funded
 control tree and requires its actual CPU certificate/current whole quota gate.
 It has no optimizer branch. Scientific models/tests remain allocated HPC only.

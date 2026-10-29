@@ -6,6 +6,12 @@ an original failed run into a pass or authorize a gate waiver.
 
 Latest records:
 
+- Latest29October10:54Paris:22 Pro/DB and06chemistryPro GPU entries all exited1
+  before models on unregistered shared writer29846882 (separate balancedDeFoG,
+  actualRUN). No continuation or gradient execution; saved results unchanged.
+  [Exact failure record](20261029-precision-continuation-22/status-20261029-095400.json).
+  Earlier queued snapshots below are historical; do not replay those releases.
+
 - [Queue audit](20261029-queue-optimization-01/README.md): all three validators
   still eligiblePEND/physicalGPU waits,120min hardcaps. DTU rejected the first
   in-place scheduling-estimate edit because bmod is administrator-only; no
