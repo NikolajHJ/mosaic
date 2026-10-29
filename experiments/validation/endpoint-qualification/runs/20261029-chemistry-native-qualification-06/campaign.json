@@ -1,0 +1,83 @@
+{
+  "archive_bytes": 224505,
+  "archive_sha256": "edc6c04fe409c53e057fb59e5100537397ac6c55714a426785ed51e63e66afba",
+  "callback_job": "29846780",
+  "cpu_cases": 43,
+  "cpu_counts": {
+    "tests.test_chemistry_native_qualification.ChemistryNativeQualificationTests": 43
+  },
+  "cpu_job": "29846779",
+  "files": 13,
+  "manifest_sha256": "e3109a3bcdc1a9d055d2a82bb6a6a1a81f3b11019672c71852cc5f91e828014b",
+  "monitor_resumed": false,
+  "optimizer_jobs_submitted": false,
+  "plan_sha256": "a75c2bc7989060b4afb344adf598e985d6716edb2d809ac2ac85a4abff525030",
+  "protected_input_files": 3953,
+  "remote_source_staged": true,
+  "saved_results_changed": false,
+  "settings_changed": false,
+  "status": "CPU43_controller_DONE_corrected_Pro_chemistry_native_GPU_queued_no_optimizer",
+  "CPU_verification": {
+    "status": "passed_independent_CPU_byte_XML_source_certificate_LSF_audit",
+    "CPU_cases": 43,
+    "files_verified": 29,
+    "CPU_job": "29846779",
+    "CPU_state": "DONE",
+    "callback_job": "29846780",
+    "callback_state": "RUN",
+    "observed_utc": "2026-10-29T09:14:01.279305+00:00",
+    "CPU_certificate": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-22/chemistry-native-qualification-06/cpu-certificate.json",
+      "bytes": 2555,
+      "sha256": "7e208f72895ac0584b70a487a7acddc475fdd3fbf8b848a15d1827cd4bd4ef08"
+    },
+    "native_protenix_chemistry_pass": false,
+    "combined_chemistry_pass": false,
+    "optimizer_submitted": false,
+    "saved_results_or_settings_changed": false
+  },
+  "last_observed_utc": "2026-10-29T09:16:29.346198+00:00",
+  "jobs": {
+    "cpu": "29846779",
+    "after-cpu": "29846780",
+    "gpu-protenix": "29846795"
+  },
+  "dispatch_verification": {
+    "status": "passed_independent_byte_LSF_GPU_submission_shared_registry_full_storage_audit",
+    "observed_utc": "2026-10-29T09:16:29.346198+00:00",
+    "files_verified": 7,
+    "CPU_cases_passed": 43,
+    "CPU_job": "29846779",
+    "controller_job": "29846780",
+    "controller_state": "DONE",
+    "GPU_job": "29846795",
+    "GPU_state": "PEND",
+    "storage_gates": [
+      {
+        "required_bytes": 41294537068,
+        "available_bytes": 42929551915,
+        "reserve_bytes": 4294967296
+      },
+      {
+        "required_bytes": 41295488611,
+        "available_bytes": 42930503458,
+        "reserve_bytes": 4294967296
+      }
+    ],
+    "current_shared_registry": {
+      "after-cpu": "29846751",
+      "chemistry-native-qualification-06/after-cpu": "29846780",
+      "chemistry-native-qualification-06/cpu": "29846779",
+      "chemistry-native-qualification-06/gpu-protenix": "29846795",
+      "cpu": "29846750",
+      "dbmol-after-validate-07500": "29846767",
+      "dbmol-validate-07500": "29846766",
+      "protenix-after-validate-20000": "29846765",
+      "protenix-validate-20000": "29846764"
+    },
+    "native_component_pass_yet": false,
+    "combined_chemistry_admission_pass_yet": false,
+    "optimizer_submitted": false,
+    "saved_results_or_settings_changed": false
+  }
+}

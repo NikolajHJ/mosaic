@@ -1,5 +1,17 @@
 # Prospective endpoint qualification diagnostics
 
+Current29October10:16 Paris: [CUDA repair22](runs/20261029-precision-continuation-22/README.md)
+passed whole shared storage and all906 allocated CPU/startup cases. Actual new
+Protenix29846764/DBMol29846766 and own callbacks are queued; no new native pass
+or optimizer continuation is established. The settings and20k/7500 endpoints
+remain unchanged. [Chemistry reference06](runs/20261029-chemistry-native-qualification-06/README.md)
+passed43 allocated cases/actual startups and CPU29846779/callback29846780.
+Corrected Protenix chemistryFP64 GPU29846795 is actually submitted and queued
+under22's funded control scope and current storage guard. Boltz04's
+native-component pass is retained. Both chemistry saved prefixes remain10k;
+combined chemistry admission/pilots still precede any continuation. Monitor
+paused. Do not repeat either package/staging operation or duplicate unknown jobs.
+
 Current29October09:46:14 Paris: [attempt21](runs/20261028-precision-continuation-21/README.md)
 passed whole storage, both native entry storage gates and all879 allocated CPU
 cases/controller. Native Pro29845087 and DBMol29845089 then exited1 at the CUDA

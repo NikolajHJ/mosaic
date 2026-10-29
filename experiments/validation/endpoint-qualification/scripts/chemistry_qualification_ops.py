@@ -15,24 +15,51 @@ import sys
 BASE=Path('/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01')
 PARENT=BASE/'chemistry-endpoint-recovery-release-02/source'
 PARENT_PIN='d3d8678542db3cf6100006f8f9dbd3ce761f169bd904ddcae3d4525a53252f51'
-ROOT=BASE/'chemistry-native-qualification-05'
-SOURCE=BASE/'chemistry-native-qualification-release-05/source'
+ROOT=Path('/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-22/chemistry-native-qualification-06')
+SOURCE=Path('/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-22/chemistry-native-qualification-release-06/source')
 CAP=2*512*1024**2+64*1024**2
 NATIVE_ARMS=('protenix',)
 # Bound only after current cross-campaign resource16 is sealed and05's writer
 # descriptor is validated. Never stage/admit with qualification04's old scope.
-CURRENT_CAPACITY_SOURCE=None
+CURRENT_CAPACITY_SOURCE={'path':str(BASE/'nonchem-precision-release-22/source'),'manifest_sha256':'f930989518b848f4247b77977a4258a66a278ce0ac17521bea3bf19c676bbc8b','files':48}
 ATOMIC_REFERENCE=BASE/'nonchem-endpoint-continuation-09/boltz-segment-10000/payload/study/case-0/references/latest-reference.json.tmp'
 INVENTORY_ATTEMPTS=3
 
 
-def current_capacity(parent,phase):
-    """Intentional fail-closed boundary until resource16 adoption is implemented.
+def capacity_operator():
+    """Authenticate the already sealed/passed current ledger, never its old gates."""
+    if CURRENT_CAPACITY_SOURCE is None:raise ValueError('Current scoped capacity source missing')
+    source=Path(CURRENT_CAPACITY_SOURCE['path'])
+    spec=importlib.util.spec_from_file_location('_chem06_current_capacity',source/'scripts/precision_continuation_ops.py')
+    op=importlib.util.module_from_spec(spec);sys.modules[spec.name]=op;spec.loader.exec_module(op)
+    manifest=op.verify(source,CURRENT_CAPACITY_SOURCE['manifest_sha256'])
+    op.require(len(manifest['files'])==48,'Current resource source48 required')
+    op.certificate(CURRENT_CAPACITY_SOURCE['manifest_sha256'],manifest)
+    op.require(ROOT.parent==op.ROOT and SOURCE.parent.parent==op.ROOT,
+               'Chemistry controls/source must be inside the funded2GiB current control tree')
+    return op
 
-    Binding a source dictionary alone cannot admit a job. Root must wire the
-    actual validated current-scope operation and05 writer descriptor here.
-    """
-    raise ValueError('Current cross-campaign admission is not implemented for qualification05; no stage or job is permitted')
+
+def current_capacity(parent,phase):
+    op=capacity_operator()
+    value=op.storage(parent,phase)
+    op.require(value['status']=='passed' and value['reserve_bytes']==4*1024**3,
+               'Current shared VAE/embedding/own controls/remaining segment budgets must pass')
+    return value
+
+
+def register_shared_job(op,phase,record):
+    """Exact nested writer under existing group cap; no new scientific allocation."""
+    import fcntl,json
+    scope=capacity_operator();name=(ROOT/phase).relative_to(scope.ROOT).as_posix()
+    op.require(record['status']=='submitted' and record['argv']==op.command(phase,record['source_manifest_sha256'],record.get('dependency')),
+               'Only exact authenticated chemistry commands may enter current group registry')
+    with (scope.ROOT/'jobs.lock').open('a') as lock:
+        fcntl.flock(lock,fcntl.LOCK_EX)
+        path=scope.ROOT/'jobs.json';jobs=scope.read(path)
+        op.require(name not in jobs,'Existing/unknown chemistry registry cannot be replaced')
+        jobs[name]=record['job_id'];temporary=path.with_suffix('.partial')
+        scope.write(temporary,jobs);temporary.replace(path)
 
 
 def complete_inventory(operation,parent,phase,write):
@@ -74,31 +101,19 @@ def inherited():
     original_command=op.command
     def command(phase,pin,dependency=None):
         argv=original_command(phase,pin,dependency)
-        argv[argv.index('-J')+1]='mosaic-chem-qualification05-'+phase
+        argv[argv.index('-J')+1]='mosaic-chem-qualification06-'+phase
+        argv[1:1]=['-env','all,~CUDA_VISIBLE_DEVICES,~CUDA_MPS_PIPE_DIRECTORY,~CUDA_MPS_LOG_DIRECTORY,~CUDA_MPS_ACTIVE_THREAD_PERCENTAGE']
+        argv+=['--capacity-source',str(BASE/'nonchem-precision-release-22/source')]
         return argv
     op.command=command
-    oldstorage=op.storage
-    def entire_storage(parent,phase):
-        current_capacity(parent,phase)
-        value=oldstorage(parent,phase)
-        prior=0
-        for root in (BASE/'chemistry-endpoint-recovery-02',PARENT.parent,
-                     BASE/'chemistry-native-qualification-03',BASE/'chemistry-native-qualification-release-03',
-                     BASE/'chemistry-native-qualification-04',BASE/'chemistry-native-qualification-release-04',
-                     BASE/'protenix-endpoint-fix-09',BASE/'protenix-endpoint-fix-release-09'):
-            for p in root.rglob('*'):
-                op.require(not p.is_symlink() and (p.is_file() or p.is_dir()),'Prior diagnostic linked/special output')
-                if p.is_file():prior+=p.stat().st_size
-        result={'status':'failed','inherited_gate':value,'required_bytes':value['required_bytes'],
-            'available_bytes':value['available_bytes']-prior,'entire_diagnostic02_stale_charge':prior,
-            'reserve_bytes':4*1024**3,'file_reserve':100000,'new_group_cap_bytes':CAP,
-            'forecasts_removed':False,'original_gate_changed':False}
-        try:
-            op.require(result['available_bytes']>=result['required_bytes'],'Whole native qualification does not fit')
-            result['status']='passed'
-        finally:op.write(parent/('qualification-storage-'+phase+'.json'),result)
-        return result
-    op.storage=lambda parent,phase:complete_inventory(entire_storage,parent,phase,op.write)
+    original_submit=op.submit
+    def submit(phase,pin,dependency=None):
+        record=original_submit(phase,pin,dependency)
+        register_shared_job(op,phase,record)
+        return record
+    op.submit=submit
+    op.storage=lambda parent,phase:current_capacity(parent,phase)
+
     return op
 
 
@@ -131,6 +146,17 @@ def execute(phase,pin):
     cert=op.read(ROOT/'cpu-certificate.json')
     op.require(cert['status']=='passed' and cert['source_manifest_sha256']==pin,'New allocated CPU required')
     for b in cert['proofs']:op.require(op.binding(b['path'])==b,'CPU evidence changed')
+    scope=capacity_operator()
+    probe_spec=importlib.util.spec_from_file_location('_chem06_gpu_mapping',scope.SOURCE/'scripts/cuda_ownership.py')
+    routing=importlib.util.module_from_spec(probe_spec);probe_spec.loader.exec_module(routing)
+    before=routing.allocation_environment(os.environ)
+    try:
+        resolved=routing.resolve_visibility(os.environ)
+        os.environ['CUDA_VISIBLE_DEVICES']=resolved['selected_cuda_visible_devices']
+    except BaseException as error:
+        op.write(payload/'cuda-routing-failure.json',{'status':'failed','allocation_environment':before,'error':repr(error)})
+        raise
+    op.write(payload/'cuda-routing.json',{'status':'resolved_explicit_single_mapping','allocation_environment':before,'resolution':resolved})
     arm=phase.removeprefix('gpu-');argv=base+['--arm',arm,'--output',str(payload/'native')]
     op.write(payload/'native-invocation.json',{'argv':argv})
     with (payload/'native.log').open('x') as stream:

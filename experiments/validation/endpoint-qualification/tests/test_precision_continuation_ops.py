@@ -888,3 +888,9 @@ def test_no_scientific_import_or_optimizer_entry_exists_in_controller():
     assert not top & {"numpy", "jax", "torch", "equinox", "mosaic"}
     assert o.DISPATCH_ARMS == ("protenix", "dbmol") and o.AUTOMATIC_ARMS == o.DISPATCH_ARMS
     assert o.SOURCE != o.BASE / "nonchem-endpoint-release-09/source"
+
+
+def test_gpu_argv_removes_inherited_callback_visibility():
+    from cuda_ownership import SUBMISSION_ENV
+    command = o.argv("validate", PIN, "protenix", 20000)
+    assert command.count("-env") == 1 and command[command.index("-env")+1] == SUBMISSION_ENV

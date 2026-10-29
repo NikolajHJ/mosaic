@@ -1,0 +1,19 @@
+{
+  "status": "passed_independent_CPU_byte_XML_source_certificate_LSF_audit",
+  "CPU_cases": 43,
+  "files_verified": 29,
+  "CPU_job": "29846779",
+  "CPU_state": "DONE",
+  "callback_job": "29846780",
+  "callback_state": "RUN",
+  "observed_utc": "2026-10-29T09:14:01.279305+00:00",
+  "CPU_certificate": {
+    "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-22/chemistry-native-qualification-06/cpu-certificate.json",
+    "bytes": 2555,
+    "sha256": "7e208f72895ac0584b70a487a7acddc475fdd3fbf8b848a15d1827cd4bd4ef08"
+  },
+  "native_protenix_chemistry_pass": false,
+  "combined_chemistry_pass": false,
+  "optimizer_submitted": false,
+  "saved_results_or_settings_changed": false
+}

@@ -9529,3 +9529,70 @@ Do not guess GPU0, bypass the one-GPU/co-residency gates, change MPS modes or
 blindly resubmit. No fix, new allocation or job mutation was performed by this
 status query. Monitor remains paused. Exact evidence is status-20261029-084614.json.
 Owner: experiments/validation/endpoint-qualification/runs/20261028-precision-continuation-21/.
+
+
+### 2026-10-29 — CUDA mapping repair22 prepared, chemistry blockers inspected
+
+Source21 storage/CPU879 passed but both native entries failed before models.
+New48-file22 keeps original scientific drivers/hooks and20k/7500 inputs exact.
+Drops inherited CPU CUDA/MPS routes and translates only unanimous explicit LSF
+MPS task-zero mapping; captures whitelisted failure routing, guesses no GPU.
+Full906 allocated cases, real two-client CUDA and all native/pilot/runtime/
+storage gates remain mandatory. Local111 portable metadata cases passed; no
+local models or scientific arrays. Exact new independent embedding142/143
+sources/pilot/command family now have held22.160GB full-horizon growth plus
+complete baseline/file allowances; VAE allowance and4GiB/100k reserves intact.
+Chemistry saved prefixes remain10k/10k. Bol component qualification passed;
+Pro FP64 reference candidate05 is not staged and still lacks current-capacity
+adoption. Combined chemistry admission/pilots remain required for either child.
+User explicitly authorized repairing chemistry errors too. No old results or
+settings changed, monitor paused. No new job at this preparation checkpoint.
+Owner: experiments/validation/endpoint-qualification/runs/20261029-precision-continuation-22/.
+
+
+### 2026-10-29T09:07:59Z — Source22 CPU906 independently passed; repaired GPU validations resubmitted
+
+ActualCPU29846750/controller29846751 DONE/hpc/same-jobLSFsuccess. Raw906cases
+across21modules/zero failures/errors/skips,37deliveredproofs and full certificate
+bindings independently byte/XML/vector verified. Whole shared storage passed
+41,310,991,971required/42,946,006,818available bytes including VAE/embedding
+forecasts,4GiB/100k reserves. Actual new Pro29846764/callback29846765 and
+DBMol29846766/callback29846767 PEND, unchanged scientific settings/checks.
+No new GPU readiness or optimizer pass; saved endpoints remain20k/7500.
+Conditional controllers require all own gates before full remaining children.
+No cleanup, external job/result change or monitor resume.
+Owner: experiments/validation/endpoint-qualification/runs/20261029-precision-continuation-22/.
+
+
+### 2026-10-29 — Chemistry reference06 scoped startup repair submitted
+
+User explicitly requested fixing chemistry errors too. Original Pro/Bol saved
+10k endpoints and failed outcomes remain untouched; Boltz native04 component
+qualification retained. New immutable13-file06 adopts the exact Proreference09
+FP64 integer-charge/geometry promotion/ownedGPU helpers for the actualchem10k
+graph, leaving productionFP32 unchanged. Namespace is nested inside22 funded
+2GiBcontrol tree; actual locked registry tracks its commands/capacity-source.
+It reauthenticates source22/CPU906/current whole quota at each entry, with VAE/
+embedding forecasts and4GiB/100k reserves intact; no old lifetime gate replay.
+Preflight passed; CPU29846779/callback29846780 submitted for43 allocatedcases
+and actualstartups before one corrected Pro native check. No new native pass,
+combined chemistry admission, optimizer or result/settings/monitor change.
+Bol and Pro combined low/high/actual gradient checks/BOTHpilots remain mandatory.
+Owner: experiments/validation/endpoint-qualification/runs/20261029-chemistry-native-qualification-06/.
+
+
+### 2026-10-29T09:16:29Z — Chemistry06 CPU43 and controller passed; corrected Protenix GPU submitted
+
+CPU29846779 and callback29846780 actualDONE/hpc/same-jobLSFsuccess. All43
+rawcases/startups/preservation/source checks passed; independent29-file CPU
+certificate/XML/byte audit and fresh dispatch proof audit passed. Whole shared
+entry/dispatch storage passed with VAE/embedding forecasts, complete retained
+bytes and4GiB/100k reserves. Corrected chemistry ProGPU29846795 actuallysubmitted
+exclusiveL40S/4CPU/8GiBslot/2h and PEND; registered as bounded22 control writer.
+Existing main Pro29846764/DB29846766 and own callbacks still PEND. No new GPU
+check, combinedchemistry admission or optimizer result. Original plain20k/7500
+and chemistry10k/10k/settings remain unchanged, Bolnative04 component pass
+retained. Both chemistry continuations still need complete combined checks/
+BOTHpilots/runtime/storage; native-component qualification does not waive them.
+No cleanup, external job/source change or monitor resume.
+Owner: experiments/validation/endpoint-qualification/runs/20261029-chemistry-native-qualification-06/.

@@ -1,0 +1,11 @@
+{
+  "status": "passed_local_AST_byte_archive_scientific_identity_audit",
+  "members": 49,
+  "source_manifest_sha256": "f930989518b848f4247b77977a4258a66a278ce0ac17521bea3bf19c676bbc8b",
+  "scientific_driver_hooks_exact21": true,
+  "local_metadata_cases_passed": 111,
+  "allocated_cases_required": 906,
+  "scientific_evaluation": false,
+  "native_readiness_established": false,
+  "jobs_submitted": false
+}

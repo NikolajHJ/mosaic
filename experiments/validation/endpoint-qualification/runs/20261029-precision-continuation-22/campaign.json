@@ -1,0 +1,86 @@
+{
+  "status": "CPU906_controller_DONE_native_validators_and_callbacks_queued_optimizer_pending_own_gates",
+  "source": {
+    "archive_bytes": 351839,
+    "archive_sha256": "d53848744b9375015cbf1f340c509de8027429b0fa75838f6cce2a24fccf24fd",
+    "cpu_counts": {
+      "tests.test_admission": 50,
+      "tests.test_continuation_driver": 56,
+      "tests.test_continuation_ops": 107,
+      "tests.test_cuda_ownership": 55,
+      "tests.test_current_capacity": 5,
+      "tests.test_dbmol_endpoint_precision": 36,
+      "tests.test_dbmol_reference": 17,
+      "tests.test_embedding_shared_capacity": 13,
+      "tests.test_home_report_reader": 18,
+      "tests.test_logit_admission": 14,
+      "tests.test_measurement_resolution": 10,
+      "tests.test_precision_continuation_driver": 71,
+      "tests.test_precision_continuation_hooks": 57,
+      "tests.test_precision_continuation_ops": 131,
+      "tests.test_protenix_reference_worker": 58,
+      "tests.test_qualification": 19,
+      "tests.test_recovery_capacity": 11,
+      "tests.test_rolling_capacity": 62,
+      "tests.test_runtime_reservations": 28,
+      "tests.test_segment_capacity": 60,
+      "tests.test_vae_shared_capacity": 28
+    },
+    "files": 48,
+    "jobs_submitted": false,
+    "manifest_sha256": "f930989518b848f4247b77977a4258a66a278ce0ac17521bea3bf19c676bbc8b",
+    "optimization_settings_changed": false,
+    "original_results_changed": false,
+    "plan_sha256": "a1c5188f2023a2b977534cc12a3b579e8f4db8560fe20dab807a1b8d358e5d62",
+    "status": "prepared_not_validated_not_staged"
+  },
+  "targets": {
+    "protenix": 50000,
+    "dbmol": 10000
+  },
+  "saved_endpoints": {
+    "protenix": 20000,
+    "dbmol": 7500
+  },
+  "optimization_settings_changed": false,
+  "saved_results_changed": false,
+  "monitor_remains_paused": true,
+  "jobs": {
+    "after-cpu": "29846751",
+    "cpu": "29846750",
+    "dbmol-after-validate-07500": "29846767",
+    "dbmol-validate-07500": "29846766",
+    "protenix-after-validate-20000": "29846765",
+    "protenix-validate-20000": "29846764"
+  },
+  "last_observed_utc": "2026-10-29T09:16:29.346198+00:00",
+  "cpu_verification": {
+    "status": "passed_independent_source_byte_XML_LSF_actual_submission_audit",
+    "observed_utc": "2026-10-29T09:07:59.729650+00:00",
+    "files_verified": 37,
+    "cases": 906,
+    "modules": 21,
+    "failures_errors_skips": 0,
+    "CPU_job": "29846750",
+    "controller_job": "29846751",
+    "actual_native_jobs": {
+      "dbmol-after-validate-07500": "29846767",
+      "dbmol-validate-07500": "29846766",
+      "protenix-after-validate-20000": "29846765",
+      "protenix-validate-20000": "29846764"
+    },
+    "CPU_certificate": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-22/cpu-certificate.json",
+      "bytes": 7416,
+      "sha256": "173a7d3c86ace923cdb1185fbde17396a242c676b73d4a645571575acb5058a2"
+    },
+    "native_pass_established": false,
+    "optimizer_job_submitted": false,
+    "saved_results_changed": false
+  },
+  "registered_bounded_chemistry_jobs": {
+    "chemistry-native-qualification-06/after-cpu": "29846780",
+    "chemistry-native-qualification-06/cpu": "29846779",
+    "chemistry-native-qualification-06/gpu-protenix": "29846795"
+  }
+}

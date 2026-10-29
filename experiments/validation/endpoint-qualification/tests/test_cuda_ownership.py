@@ -117,7 +117,7 @@ def probe_inputs(tmp_path, monkeypatch):
     submission = tmp_path / "submission.json"
     row = {"status": "submitted", "returncode": 0, "job_id": "123456",
            "source_manifest_sha256": identities["source_manifest"]["sha256"],
-           "argv": ["bsub", "-q", "gpul40s", "-n", "4", "-R", "span[hosts=1]", "-R", "rusage[mem=8GB]",
+           "argv": ["bsub", "-env", c.SUBMISSION_ENV, "-q", "gpul40s", "-n", "4", "-R", "span[hosts=1]", "-R", "rusage[mem=8GB]",
                     "-gpu", c.GPU_REQUEST, "-W", "02:00", "bash", "/sealed/stage.lsf"]}
     submission.write_text(json.dumps(row) + "\n", encoding="utf8")
     return tmp_path, identities, submission, row
@@ -210,3 +210,46 @@ def test_output_budget_and_shared_deadline_are_mandatory(probe_inputs):
     output = root / "oversize"; output.mkdir()
     with (output / "large.log").open("wb") as stream: stream.truncate(c.MAX_BYTES + 1)
     with pytest.raises(ValueError, match="output budget"): c._budget(output)
+
+
+@pytest.mark.parametrize("direct", [None, "", "2"])
+def test_mps_task_zero_visibility_translation_without_guessing(direct):
+    env = environment(); env["CUDA_VISIBLE_DEVICES0"] = "2"
+    if direct is None: env.pop("CUDA_VISIBLE_DEVICES")
+    else: env["CUDA_VISIBLE_DEVICES"] = direct
+    proof = c.resolve_visibility(env)
+    assert proof["selected_cuda_visible_devices"] == "2" and proof["guessed_device"] is False
+    assert env.get("CUDA_VISIBLE_DEVICES") == direct
+
+
+@pytest.mark.parametrize("tasks,direct", [({}, ""), ({"CUDA_VISIBLE_DEVICES1":"2"}, ""),
+    ({"CUDA_VISIBLE_DEVICES0":"0,1"}, ""), ({"CUDA_VISIBLE_DEVICES0":"-1"}, ""),
+    ({"CUDA_VISIBLE_DEVICES0":"0", "CUDA_VISIBLE_DEVICES1":"1"}, ""),
+    ({"CUDA_VISIBLE_DEVICES0":"0"}, "1"), ({"CUDA_VISIBLE_DEVICES0":"0"}, "all")])
+def test_invalid_or_conflicting_scheduler_mappings_fail_closed(tasks, direct):
+    with pytest.raises(ValueError): c.resolve_visibility(dict(environment(), CUDA_VISIBLE_DEVICES=direct, **tasks))
+
+
+def test_direct_scheduler_mapping_remains_exact():
+    proof = c.resolve_visibility(environment())
+    assert proof["selected_cuda_visible_devices"] == "GPU-abc123" and proof["task_mappings"] == {}
+
+
+def test_callback_submission_drops_old_gpu_masks_and_mps_routes_only():
+    env = dict(environment(), CUDA_VISIBLE_DEVICES0="2", CUDA_MPS_PIPE_DIRECTORY="old", PATH="keep", SECRET="private")
+    clean = c.submission_environment(env)
+    assert clean["PATH"] == "keep" and clean["SECRET"] == "private"
+    assert not any(k.startswith(("CUDA_VISIBLE_DEVICES", "CUDA_MPS_")) for k in clean)
+    assert env["CUDA_VISIBLE_DEVICES0"] == "2"
+
+
+def test_failure_receipt_retains_whitelisted_rejected_mapping(probe_inputs, monkeypatch):
+    root, identities, submission, _ = probe_inputs
+    monkeypatch.setenv("CUDA_VISIBLE_DEVICES", "0,1")
+    monkeypatch.setenv("SECRET", "must-not-be-recorded")
+    output = root / "bad-routing"
+    with pytest.raises(ValueError):
+        c.run_probe(output, submission=submission, expected_job_id="123456", input_bindings=identities, deadline=time.monotonic()+30)
+    value = json.loads((output / "assessment.json").read_bytes())
+    assert value["allocation_environment_before_resolution"]["CUDA_VISIBLE_DEVICES"] == "0,1"
+    assert "SECRET" not in value["allocation_environment_before_resolution"] and value["records"] == {}

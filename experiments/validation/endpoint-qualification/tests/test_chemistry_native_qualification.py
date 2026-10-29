@@ -29,7 +29,7 @@ class ChemistryNativeQualificationTests(unittest.TestCase):
         self.assertEqual(a[a.index('-n')+1],'4');self.assertNotIn('-w',a)
     def test_new_command_points_to_new_source(self):
         a=ops.inherited().command('gpu-protenix','a'*64)
-        self.assertEqual(a[a.index('-J')+1],'mosaic-chem-qualification05-gpu-protenix')
+        self.assertEqual(a[a.index('-J')+1],'mosaic-chem-qualification06-gpu-protenix')
         self.assertIn(str(ops.SOURCE),a)
     def test_no_optimizer_phase(self):
         with self.assertRaises(ValueError):ops.inherited().command('segment','a'*64)
@@ -256,6 +256,27 @@ class ChemistryNativeQualificationTests(unittest.TestCase):
         spec=importlib.util.spec_from_file_location('_chem05_manager_fixture',path);manager=importlib.util.module_from_spec(spec);spec.loader.exec_module(manager)
         with mock.patch.object(manager,'CURRENT_CAPACITY_SOURCE',None),mock.patch.object(manager,'transport',side_effect=AssertionError('Unexpected SSH path')):
             with self.assertRaisesRegex(ValueError,'preparation/staging blocked'):manager.prepare()
+
+
+    def test_resource_source_and_child_are_in_one_funded_control_tree(self):
+        parent=ops.BASE/'nonchem-precision-continuation-22'
+        self.assertEqual(ops.ROOT.parent,parent)
+        self.assertEqual(ops.SOURCE.parent.parent,parent)
+        self.assertEqual(ops.CURRENT_CAPACITY_SOURCE['files'],48)
+
+    def test_actual_commands_carry_current_capacity_identity(self):
+        argv=ops.inherited().command('gpu-protenix','a'*64)
+        self.assertEqual(argv[-2:],["--capacity-source",str(ops.BASE/'nonchem-precision-release-22/source')])
+        self.assertEqual(argv.count('-env'),1)
+        self.assertIn('~CUDA_VISIBLE_DEVICES',argv[argv.index('-env')+1])
+
+    def test_old_lifetime_storage_is_not_executed_as_current_admission(self):
+        tree=ast.parse(Path(ops.__file__).read_bytes())
+        function=next(n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name=='inherited')
+        text=ast.unparse(function)
+        self.assertNotIn('oldstorage',text)
+        self.assertIn('current_capacity(parent, phase)',text)
+        self.assertIn('register_shared_job(op, phase, record)',text)
 
 
 if __name__=='__main__':unittest.main()

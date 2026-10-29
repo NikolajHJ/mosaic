@@ -22,11 +22,57 @@ import uuid
 
 VERSION = "two-client-jax-cuda-ownership-v1"
 GPU_REQUEST = "num=1:mode=exclusive_process:mps=yes"
+SUBMISSION_ENV = "all,~CUDA_VISIBLE_DEVICES,~CUDA_MPS_PIPE_DIRECTORY,~CUDA_MPS_LOG_DIRECTORY,~CUDA_MPS_ACTIVE_THREAD_PERCENTAGE"
 MAX_SECONDS = 240
 MAX_LINE = 16384
 MAX_STDERR = 128 * 1024
 MAX_BYTES = 1024 * 1024
 ROLES = ("production_fp32", "reference_fp64")
+
+
+def allocation_environment(environment):
+    """Only GPU/scheduler routing metadata, never arbitrary environment values."""
+    names = {"LSB_JOBID", "LSB_QUEUE", "LSB_DJOB_NUMPROC", "CUDA_VISIBLE_DEVICES",
+             "CUDA_MPS_PIPE_DIRECTORY", "CUDA_MPS_LOG_DIRECTORY", "CUDA_MPS_ACTIVE_THREAD_PERCENTAGE"}
+    return {key: value for key, value in environment.items()
+            if key in names or re.fullmatch(r"CUDA_VISIBLE_DEVICES\d+", key)}
+
+
+def resolve_visibility(environment):
+    """Resolve LSF's non-MPI MPS task mapping without guessing a GPU ordinal.
+
+    LSF documents CUDA_VISIBLE_DEVICES<number> task variables for MPS. A plain
+    Python entrypoint does not get the MPI translation. Require task zero and
+    unanimous single-device task mappings; conflicting/non-single values fail.
+    Actual CUDA device count/kind and both concurrent precision clients still
+    have to pass after this metadata translation.
+    """
+    single = r"(?:[0-9]+|GPU-[A-Za-z0-9-]+)"
+    original = environment.get("CUDA_VISIBLE_DEVICES")
+    tasks = {key: value for key, value in environment.items()
+             if re.fullmatch(r"CUDA_VISIBLE_DEVICES\d+", key)}
+    require(original in (None, "") or isinstance(original, str) and re.fullmatch(single, original),
+            "CUDA direct visibility is malformed or not a single GPU")
+    if tasks:
+        require("CUDA_VISIBLE_DEVICES0" in tasks and all(isinstance(v, str) and re.fullmatch(single, v) for v in tasks.values())
+                and len(set(tasks.values())) == 1, "LSF MPS task mappings are missing, conflicting or not single GPU")
+        selected = tasks["CUDA_VISIBLE_DEVICES0"]
+        require(original in (None, "", selected), "Direct and LSF MPS task GPU mappings conflict")
+        origin = "LSF_MPS_task_zero_unanimous_mapping"
+    else:
+        require(isinstance(original, str) and re.fullmatch(single, original),
+                "CUDA smoke requires exactly one explicitly visible GPU")
+        selected, origin = original, "scheduler_direct_single_mapping"
+    return {"original_cuda_visible_devices": original, "task_mappings": tasks,
+            "selected_cuda_visible_devices": selected, "origin": origin,
+            "guessed_device": False}
+
+
+def submission_environment(environment):
+    """Do not propagate a CPU callback mask or old MPS/task routing to a job."""
+    return {key: value for key, value in environment.items()
+            if not re.fullmatch(r"CUDA_VISIBLE_DEVICES\d*", key)
+            and key not in ("CUDA_MPS_PIPE_DIRECTORY", "CUDA_MPS_LOG_DIRECTORY", "CUDA_MPS_ACTIVE_THREAD_PERCENTAGE")}
 
 
 def require(condition, message):
@@ -100,6 +146,8 @@ def _submission(path, own, identities):
                 and command[command.index(flag) + 1] == value, "CUDA smoke resource mismatch: " + flag)
     require(command.count("span[hosts=1]") == 1 and command.count("rusage[mem=8GB]") == 1,
             "CUDA smoke host or memory resources changed")
+    require(command.count("-env") == 1 and command[command.index("-env") + 1] == SUBMISSION_ENV,
+            "CUDA submission must exclude inherited CPU masks and MPS routes")
     return proof
 
 
@@ -221,7 +269,10 @@ def run_probe(directory, *, submission, expected_job_id, input_bindings, deadlin
     directory.mkdir(exist_ok=False)
     children, records, error, cleanup = [], {}, None, []
     own, identities, identities_after, submission_proof = {}, {}, {}, None
+    raw_environment, resolution = allocation_environment(os.environ), None
     try:
+        resolution = resolve_visibility(os.environ)
+        os.environ["CUDA_VISIBLE_DEVICES"] = resolution["selected_cuda_visible_devices"]
         own = allocation(os.environ, expected_job_id)
         identities = _bindings(input_bindings)
         submission_proof = _submission(submission, own, identities)
@@ -280,6 +331,7 @@ def run_probe(directory, *, submission, expected_job_id, input_bindings, deadlin
             except BaseException as exc:
                 error = (error + "; " if error else "") + "Input preservation failed: " + type(exc).__name__ + ": " + str(exc)
         receipt = {"version": VERSION, "status": "failed" if error else "passed_two_client_cuda_ownership",
+                   "allocation_environment_before_resolution": raw_environment, "visibility_resolution": resolution,
                    "error": error, "job_id": str(expected_job_id), "allocation": own, "submission": submission_proof,
                    "input_bindings": identities, "input_bindings_after": identities_after, "records": records, "cleanup": cleanup,
                    "elapsed_seconds": time.monotonic() - started, "optimizer_updates": 0,

@@ -1,0 +1,9 @@
+{
+  "status": "passed_local_AST_byte_audit",
+  "members_checked": {
+    "20261029-precision-continuation-22": 48,
+    "20261029-chemistry-native-qualification-06": 13
+  },
+  "scientific_evaluation": false,
+  "generated_wrapper": "Canonical chemistry_endpoint_stage transformed only to qualification op,5argument capacity identity, preserving other bytes"
+}

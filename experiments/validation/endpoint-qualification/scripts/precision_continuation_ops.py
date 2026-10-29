@@ -27,8 +27,8 @@ VERSION = "precision-reference-continuation-source-v1"
 PLAN_VERSION = "precision-reference-continuation-plan-v1"
 RESULT_VERSION = "precision-reference-continuation-result-v1"
 BASE = Path("/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01")
-ROOT = BASE / "nonchem-precision-continuation-21"
-SOURCE = BASE / "nonchem-precision-release-21/source"
+ROOT = BASE / "nonchem-precision-continuation-22"
+SOURCE = BASE / "nonchem-precision-release-22/source"
 ADMISSION = BASE / "nonchem-stride20-startup-release-03/source"
 ADMISSION_SHA = "704fab033d97342a14dc12b58dc32df44874232c5c30aad47c4d02041a502aab"
 PYTHON = "/work3/s234818/mosaic/envs/protenix-tiny/bin/python"
@@ -268,7 +268,8 @@ def argv(phase, pin, arm="all", offset=0, dependency=None):
         require(dependency is None, "Scientific/CPU phases have no interarm dependencies")
     parent = ROOT / name
     budget = segment_budget(arm, offset) if phase == "segment" else None
-    command = ["bsub", *resources(phase, budget), "-J", "mosaic-precision21-" + name,
+    from cuda_ownership import SUBMISSION_ENV
+    command = ["bsub", "-env", SUBMISSION_ENV, *resources(phase, budget), "-J", "mosaic-precision22-" + name,
                "-oo", str(parent / "stdout.%J.log"), "-eo", str(parent / "stderr.%J.log")]
     if dependency is not None:
         command += ["-w", dependency]
@@ -287,7 +288,8 @@ def submit(phase, pin, arm="all", offset=0, dependency=None):
         record["runtime_budget"] = segment_budget(arm, offset)
     write(parent / "submission-started.json", record)
     try:
-        result = subprocess.run(command, capture_output=True, text=True, timeout=60)
+        from cuda_ownership import submission_environment
+        result = subprocess.run(command, capture_output=True, text=True, timeout=60, env=submission_environment(os.environ))
         record.update(returncode=result.returncode, stdout=result.stdout, stderr=result.stderr)
         jobs = re.findall(r"Job <([1-9]\d*)> is submitted", result.stdout)
         if result.returncode == 0 and len(jobs) == 1:
@@ -352,7 +354,7 @@ def terminal(parent, queue):
             break
         require(index < 20, "Terminal LSF output unavailable")
         time.sleep(1)
-    lsf_success(path.read_text(), job, "mosaic-precision21-" + parent.name, queue)
+    lsf_success(path.read_text(), job, "mosaic-precision22-" + parent.name, queue)
     proofs.append(binding(path))
     return proofs
 
@@ -1296,6 +1298,10 @@ def cuda_probe_proofs(parent, pin, plan, arm):
             and row.get("forced_termination") is False and row.get("error") is None for row in value["cleanup"]),
             "CUDA smoke process cleanup incomplete")
     allocation = value["allocation"]
+    routing = source.resolve_visibility(value.get("allocation_environment_before_resolution", {}))
+    require(value.get("visibility_resolution") == routing
+            and routing["selected_cuda_visible_devices"] == allocation.get("cuda_visible_devices"),
+            "Actual scheduler CUDA visibility translation is not authenticated")
     require(allocation.get("job_id") == submitted["job_id"] and allocation.get("queue") == "gpul40s"
             and allocation.get("cpu_slots") == 4 and re.fullmatch(r"(?:[0-9]+|GPU-[A-Za-z0-9-]+)", allocation.get("cuda_visible_devices", "")),
             "Actual CUDA probe allocation differs")

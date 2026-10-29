@@ -619,8 +619,15 @@ def _storage(op, parent, phase, attempt):
         shared = module.observe(plan['shared_vae'], rows, on_inventory_failure=lambda n, value:
             op.write(attempt / ('incomplete-vae-inventory-' + str(n).zfill(2) + '.json'), value))
         op.write(attempt / 'shared-vae-observation.json', shared)
+    embedding = None
+    if 'shared_embedding' in plan:
+        spec = importlib.util.spec_from_file_location('_shared_embedding_capacity', Path(__file__).with_name('embedding_shared_capacity.py'))
+        embedding_module = importlib.util.module_from_spec(spec); spec.loader.exec_module(embedding_module)
+        embedding = embedding_module.observe(plan['shared_embedding'], rows)
+        op.write(attempt / 'shared-embedding-observation.json', embedding)
     observed, external = classify_jobs(rows, p['known_mosaic_jobs'], set(own.values()), op.SOURCE,
-                                       set(shared['accounted_job_ids'] if shared is not None else ()) | set(readers['work3_read_only_job_ids']))
+                                       set(shared['accounted_job_ids'] if shared is not None else ()) | set(readers['work3_read_only_job_ids'])
+                                       | set(embedding['accounted_job_ids'] if embedding is not None else ()))
     scopes, goals, claim = build_scopes(op, plan, pin, phase, parent, scheduler_proof, observed)
     if claim is not None:
         basis_path = attempt / ('completed-validation-inventory-' + claim['arm'] + '-' + str(claim['offset']) + '.json')
@@ -650,6 +657,9 @@ def _storage(op, parent, phase, attempt):
     if shared is not None:
         result = module.augment(result, shared)
         result['shared_vae_evidence'] = binding(attempt / 'shared-vae-observation.json')
+    if embedding is not None:
+        result = embedding_module.augment(result, embedding)
+        result['shared_embedding_evidence'] = binding(attempt / 'shared-embedding-observation.json')
     result.update(adapter_version=VERSION, raw_quota_command=binding(attempt / 'quota.json'),
                   all_retained_mosaic_bytes_charged_once=True, historical_lifetime_allowance_chain_used=False,
                   inventory_proof=inventory_proof, scheduler_proof=scheduler_proof)

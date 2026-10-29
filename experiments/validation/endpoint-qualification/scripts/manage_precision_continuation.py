@@ -18,12 +18,12 @@ import tarfile
 
 REPO = Path(__file__).resolve().parents[4]
 OWNER = REPO / "experiments/validation/endpoint-qualification"
-TAG = "20261028-precision-continuation-21"
+TAG = "20261029-precision-continuation-22"
 RUN = OWNER / "runs" / TAG
 LOCAL = REPO / "results/hpc" / TAG
 BASE = "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01"
-ROOT = BASE + "/nonchem-precision-continuation-21"
-SOURCE = BASE + "/nonchem-precision-release-21/source"
+ROOT = BASE + "/nonchem-precision-continuation-22"
+SOURCE = BASE + "/nonchem-precision-release-22/source"
 PYTHON = "/work3/s234818/mosaic/envs/protenix-tiny/bin/python"
 TORCH_PYTHON = "/work3/s234818/latentmol/env/boltz311/bin/python"
 BASE_TAG = "20261027-continuation-measurement-09"
@@ -304,7 +304,7 @@ def startup_adoption(source, *, tests=False):
     replacements = {old_root + "/cpu/payload/reference-startup.json": ROOT + "/cpu/payload/dbmol-reference-startup.json"}
     if tests:
         replacements = {"cpu/payload/reference-startup.json": "cpu/payload/dbmol-reference-startup.json",
-            "dbmol-endpoint-recovery-13": "nonchem-precision-continuation-21",
+            "dbmol-endpoint-recovery-13": "nonchem-precision-continuation-22",
             old_root + "/gpu/payload/reference-startup.json": ROOT + "/gpu/payload/dbmol-reference-startup.json"}
     class Change(ast.NodeTransformer):
         def visit_Constant(self, node):
@@ -325,7 +325,7 @@ def startup_adoption(source, *, tests=False):
                      "changed_literals": replacements, "AST_reversal_exact": True, "numerical_AST_unchanged": True}
 
 
-def prepare(counts_path, metadata_path=None):
+def _prepare_legacy(counts_path, metadata_path=None):
     require((RUN / "README.md").is_file(), "Write the new run record before preparation")
     require(not (LOCAL / "source01").exists() and not (RUN / "plan.json").exists()
             and not (RUN / "source-manifest.json").exists() and not (RUN / "preparation.json").exists(),
@@ -408,6 +408,86 @@ def prepare(counts_path, metadata_path=None):
                        ("preparation.json", raw(preparation)), ("startup-adoption.json", members["startup-adoption.json"])):
         with (RUN / name).open("xb") as stream: stream.write(data)
     print(json.dumps(preparation, indent=2))
+
+
+
+def prepare(counts_path, metadata_path=None):
+    """New22 engineering successor of exact sealed21, no scientific rebuild."""
+    require(metadata_path is None, "22 adopts exact verified21 inputs; no replacement metadata")
+    require((RUN / "README.md").is_file() and not (LOCAL / "source01").exists()
+            and not (RUN / "plan.json").exists(), "Write fresh22 record; never repeat preparation")
+    prior = REPO / "results/hpc/20261028-precision-continuation-21/source01"
+    manifest_raw = (prior / "source_manifest.json").read_bytes()
+    require(sha(manifest_raw) == "930a1ed9c75456fbf2c986f904b4016a73ed8d0d4d49544f6837e6e9cb86e060", "Exact21 predecessor differs")
+    previous = json.loads(manifest_raw)
+    members = {name:(prior/name).read_bytes() for name in previous["files"]}
+    require(all(sha(data)==previous["files"][name] for name,data in members.items()), "Cached21 member bytes differ")
+    def address(data):
+        return data.replace(b"nonchem-precision-continuation-21",b"nonchem-precision-continuation-22").replace(
+            b"nonchem-precision-release-21",b"nonchem-precision-release-22")
+    plan = json.loads(address(members["plan.json"]))
+    packet = REPO / "results/hpc/20261029-cuda-startup-repair-22"
+    baseline = read(packet / "embedding-baseline01/observation.json")
+    actual = read(packet / "external-writer01/observation.json")
+    records = json.loads(actual["scheduler"]["stdout"])["RECORDS"]
+    profile = {k:baseline[k] for k in ("proofs","source_manifests","baseline","growth_bytes")}
+    profile.update(version="mosaic-authenticated-embedding-shared-quota-v1",growth_files=150000,
+        job_templates={"gpu":next(r["COMMAND"] for r in records if r["JOBID"]=="29846090"),
+                       "callback":next(r["COMMAND"] for r in records if r["JOBID"]=="29846091")})
+    module(OWNER / "scripts/embedding_shared_capacity.py", "_embedding_profile22").validate_profile(profile)
+    plan["shared_embedding"] = profile
+    # Same exact scientific arm dictionaries after own-address normalization.
+    require(plan["arms"] == json.loads(address(members["plan.json"]))["arms"], "Scientific arm settings changed")
+    changed = ("scripts/cuda_ownership.py", "tests/test_cuda_ownership.py", "scripts/precision_continuation_ops.py",
+               "tests/test_precision_continuation_ops.py", "scripts/precision_continuation_stage.lsf",
+               "scripts/protenix_reference_worker.py", "tests/test_protenix_reference_worker.py",
+               "scripts/rolling_capacity.py", "scripts/embedding_shared_capacity.py", "tests/test_embedding_shared_capacity.py")
+    for name in changed: members[name]=(OWNER/name).read_bytes().replace(b"\r\n",b"\n")
+    db_members, _, _ = local_capsule(DB_TAG, BASE + "/dbmol-endpoint-recovery-release-13/source")
+    audit = {}
+    for name in ("scripts/dbmol_reference.py", "tests/test_dbmol_reference.py"):
+        members[name], audit[name] = startup_adoption(db_members[name], tests=name.startswith("tests/"))
+    members["startup-adoption.json"] = raw(audit)
+    members["plan.json"] = raw(plan)
+    members["README.md"] = (RUN / "README.md").read_bytes().replace(b"\r\n",b"\n")
+    counts = read(counts_path)
+    modules = {"tests."+Path(n).stem for n in members if n.startswith("tests/test_") and n.endswith(".py")}
+    require(set(counts)==modules and all(type(n) is int and n>0 for n in counts.values()), "Exact22 module counts differ")
+    manifest = deepcopy(previous)
+    manifest["files"] = {n:sha(data) for n,data in sorted(members.items())}
+    manifest["cpu_counts"] = counts
+    manifest["startup_adoption"] = audit
+    manifest["parent_sources"] += [{"path":BASE+"/nonchem-precision-release-21/source", "files":46,
+                                     "manifest_sha256":sha(manifest_raw)}]
+    failed = read(REPO / "results/hpc/20261028-precision-continuation-21/20261029-status01/observation.json")
+    require(failed["studies"] and all(not v["exists"] and not v["driver_invocation_exists"] for v in failed["studies"].values()),
+            "Failed21 scientific execution is not absent")
+    manifest["preserved_proofs"] = deduplicate(manifest["preserved_proofs"] + [r["binding"] for r in failed["evidence"]])
+    manifest["startup21_failure_preserved"] = True
+    manifest["scientific_driver_hooks_exact21"] = all(members[n] == (prior/n).read_bytes() for n in
+        ("scripts/precision_continuation_driver.py","scripts/precision_continuation_hooks.py"))
+    require(manifest["scientific_driver_hooks_exact21"], "Production driver/hooks changed")
+    for name,data in members.items():
+        if name.endswith(".py"):ast.parse(data,filename=name)
+    members["source_manifest.json"] = raw(manifest)
+    buffer=io.BytesIO()
+    with tarfile.open(fileobj=buffer,mode="w:gz") as archive:
+        for name,data in sorted(members.items()):
+            info=tarfile.TarInfo(name);info.mode=0o444;info.size=len(data);info.mtime=0
+            archive.addfile(info,io.BytesIO(data))
+    compressed=buffer.getvalue()
+    preparation={"status":"prepared_not_validated_not_staged", "files":len(manifest["files"]),
+        "manifest_sha256":sha(members["source_manifest.json"]),"plan_sha256":sha(members["plan.json"]),
+        "archive_bytes":len(compressed),"archive_sha256":sha(compressed),"cpu_counts":counts,
+        "jobs_submitted":False,"optimization_settings_changed":False,"original_results_changed":False}
+    out=LOCAL/"source01";out.mkdir(parents=True,exist_ok=False)
+    for name,data in members.items():
+        target=out/name;target.parent.mkdir(parents=True,exist_ok=True);target.write_bytes(data)
+    (out/"source.tar.gz").write_bytes(compressed);(out/"preparation.json").write_bytes(raw(preparation))
+    for name,data in (("plan.json",members["plan.json"]),("source-manifest.json",members["source_manifest.json"]),
+                      ("preparation.json",raw(preparation)),("startup-adoption.json",members["startup-adoption.json"])):
+        with (RUN/name).open("xb") as f:f.write(data)
+    print(json.dumps(preparation,indent=2))
 
 
 def main():

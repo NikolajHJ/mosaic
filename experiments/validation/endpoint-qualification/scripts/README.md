@@ -1,5 +1,17 @@
 # Endpoint diagnostic policy
 
+Current operators target only [continuation22](../runs/20261029-precision-continuation-22/README.md)
+and [chemistry qualification06](../runs/20261029-chemistry-native-qualification-06/README.md).
+Both are already staged/submitted; never replay prepare/stage or old callbacks.
+`cuda_ownership.py` preserves strict one-device/two-client admission while
+translating documented LSF MPS task-zero mapping for non-MPI entrypoints.
+`embedding_shared_capacity.py` authenticates the exact142/143 external command
+family and holds complete measured growth; it changes no external job or file.
+Continuation22 passed906 allocated cases; new native checks remain queued.
+Chemistry06 registers exact bounded validation jobs inside22's existing funded
+control tree and requires its actual CPU certificate/current whole quota gate.
+It has no optimizer branch. Scientific models/tests remain allocated HPC only.
+
 `qualification.py` constructs loss-independent FP32 perturbation plans and
 evaluates them with caller-supplied independent-primal, AD and frozen-identity
 hooks. Numerical calls require an allocated HPC job. It neither loads a model

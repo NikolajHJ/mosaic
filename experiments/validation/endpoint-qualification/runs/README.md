@@ -6,6 +6,15 @@ an original failed run into a pass or authorize a gate waiver.
 
 Latest records:
 
+- [CUDA mapping22](20261029-precision-continuation-22/README.md): full906 allocated
+  CPU/startup cases passed; Pro29846764/DB29846766 native checks queued with
+  conditional continuation callbacks. Whole shared storage passed, no new
+  optimizer or GPU readiness yet; saved20k/7500/settings intact.
+- [Chemistry reference06](20261029-chemistry-native-qualification-06/README.md):
+  inherited FP64 correction plus current22 scoped storage; CPU29846779/80
+  passed43 cases/startups and submitted Protenix chemistryGPU29846795 (PEND).
+  Boltz component pass retained; neither chemistry continuation is admitted yet.
+
 - [Shared-account21](20261028-precision-continuation-21/README.md): full storage,
   CPU879/controller and both native entry storage gates passed. Native
   Pro29845087/DB29845089 exited1 at CUDA visibility before models/gradients;

@@ -1,0 +1,3681 @@
+{
+  "callback": {
+    "argv": [
+      "bsub",
+      "-env",
+      "all,~CUDA_VISIBLE_DEVICES,~CUDA_MPS_PIPE_DIRECTORY,~CUDA_MPS_LOG_DIRECTORY,~CUDA_MPS_ACTIVE_THREAD_PERCENTAGE",
+      "-q",
+      "hpc",
+      "-n",
+      "1",
+      "-R",
+      "span[hosts=1]",
+      "-R",
+      "rusage[mem=2GB]",
+      "-W",
+      "00:20",
+      "-J",
+      "mosaic-chem-qualification06-after-cpu",
+      "-oo",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-22/chemistry-native-qualification-06/after-cpu/stdout.%J.log",
+      "-eo",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-22/chemistry-native-qualification-06/after-cpu/stderr.%J.log",
+      "-w",
+      "ended(29846779)",
+      "bash",
+      "-l",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-22/chemistry-native-qualification-release-06/source/scripts/chemistry_endpoint_stage.lsf",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-22/chemistry-native-qualification-release-06/source",
+      "e3109a3bcdc1a9d055d2a82bb6a6a1a81f3b11019672c71852cc5f91e828014b",
+      "after-cpu",
+      "--capacity-source",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-release-22/source"
+    ],
+    "dependency": "ended(29846779)",
+    "job_id": "29846780",
+    "phase": "after-cpu",
+    "returncode": 0,
+    "source_manifest_sha256": "e3109a3bcdc1a9d055d2a82bb6a6a1a81f3b11019672c71852cc5f91e828014b",
+    "status": "submitted",
+    "stderr": "",
+    "stdout": "Job <29846780> is submitted to queue <hpc>.\n",
+    "submitted_utc": "2026-10-29T09:09:47.644426+00:00"
+  },
+  "cpu": {
+    "argv": [
+      "bsub",
+      "-env",
+      "all,~CUDA_VISIBLE_DEVICES,~CUDA_MPS_PIPE_DIRECTORY,~CUDA_MPS_LOG_DIRECTORY,~CUDA_MPS_ACTIVE_THREAD_PERCENTAGE",
+      "-q",
+      "hpc",
+      "-n",
+      "4",
+      "-R",
+      "span[hosts=1]",
+      "-R",
+      "rusage[mem=4GB]",
+      "-W",
+      "01:00",
+      "-J",
+      "mosaic-chem-qualification06-cpu",
+      "-oo",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-22/chemistry-native-qualification-06/cpu/stdout.%J.log",
+      "-eo",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-22/chemistry-native-qualification-06/cpu/stderr.%J.log",
+      "bash",
+      "-l",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-22/chemistry-native-qualification-release-06/source/scripts/chemistry_endpoint_stage.lsf",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-22/chemistry-native-qualification-release-06/source",
+      "e3109a3bcdc1a9d055d2a82bb6a6a1a81f3b11019672c71852cc5f91e828014b",
+      "cpu",
+      "--capacity-source",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-release-22/source"
+    ],
+    "dependency": null,
+    "job_id": "29846779",
+    "phase": "cpu",
+    "returncode": 0,
+    "source_manifest_sha256": "e3109a3bcdc1a9d055d2a82bb6a6a1a81f3b11019672c71852cc5f91e828014b",
+    "status": "submitted",
+    "stderr": "",
+    "stdout": "Job <29846779> is submitted to queue <hpc>.\n",
+    "submitted_utc": "2026-10-29T09:09:46.754701+00:00"
+  },
+  "status": "CPU_and_own_callback_submitted_not_passed",
+  "whole_storage": {
+    "adapter_version": "mosaic-rolling-work3-adapter-v1",
+    "all_retained_mosaic_bytes_charged_once": true,
+    "available_bytes": 42934732751,
+    "available_files": 19406181,
+    "byte_margin": 1635014847,
+    "entire_tree_stale_charge_bytes": 16638381568,
+    "entire_tree_stale_charge_files": 201430,
+    "file_headroom_scope": "No independent filesystem inode evidence; finite account quota remains mandatory",
+    "file_margin": 19073448,
+    "file_reserve": 100000,
+    "filesystem_free_bytes": 543827422609408,
+    "filesystem_inode_observation": {
+      "f_favail": 0,
+      "f_ffree": 0,
+      "f_files": 0
+    },
+    "filesystem_inode_reporting": "unreported_all_zero",
+    "future_admitted_bytes": 4356648448,
+    "future_admitted_files": 52851,
+    "historical_gate_results_changed": false,
+    "historical_lifetime_allowance_chain_used": false,
+    "home_report_readonly": {
+      "proofs": [],
+      "work3_output_bytes_requested": 0,
+      "work3_read_only_job_ids": []
+    },
+    "inventory_proof": {
+      "bytes": 5701,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-22/chemistry-native-qualification-06/preflight/rolling-capacity-preflight-1793264937632682883/inventory.json",
+      "sha256": "1213e62d0c4e94bf0fd6f45db98f90e8b8c0d1c9cf6bcfa47e4082cf37214f96"
+    },
+    "later_segments_admitted": false,
+    "ledger": {
+      "account": {
+        "id": 306121,
+        "name": "s234818"
+      },
+      "filesystem": "work3",
+      "goals": [
+        {
+          "id": "protenix",
+          "later_updates_deferred": 30000,
+          "next_scope_id": null,
+          "next_updates": 0,
+          "readmission_before_later_execution": true,
+          "saved_updates": 20000,
+          "target_updates": 50000
+        },
+        {
+          "id": "dbmol",
+          "later_updates_deferred": 2500,
+          "next_scope_id": null,
+          "next_updates": 0,
+          "readmission_before_later_execution": true,
+          "saved_updates": 7500,
+          "target_updates": 10000
+        },
+        {
+          "id": "plain-boltz",
+          "later_updates_deferred": 10000,
+          "next_scope_id": null,
+          "next_updates": 0,
+          "readmission_before_later_execution": true,
+          "saved_updates": 20000,
+          "target_updates": 30000
+        },
+        {
+          "id": "protenix-chemistry",
+          "later_updates_deferred": 40000,
+          "next_scope_id": null,
+          "next_updates": 0,
+          "readmission_before_later_execution": true,
+          "saved_updates": 10000,
+          "target_updates": 50000
+        },
+        {
+          "id": "boltz-chemistry",
+          "later_updates_deferred": 20000,
+          "next_scope_id": null,
+          "next_updates": 0,
+          "readmission_before_later_execution": true,
+          "saved_updates": 10000,
+          "target_updates": 30000
+        }
+      ],
+      "observation": {
+        "complete": true,
+        "inventory_proof": {
+          "bytes": 5701,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-22/chemistry-native-qualification-06/preflight/rolling-capacity-preflight-1793264937632682883/inventory.json",
+          "sha256": "1213e62d0c4e94bf0fd6f45db98f90e8b8c0d1c9cf6bcfa47e4082cf37214f96"
+        },
+        "nofollow": true,
+        "scheduler_proof": {
+          "bytes": 9680,
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-22/chemistry-native-qualification-06/preflight/rolling-capacity-preflight-1793264937632682883/scheduler.json",
+          "sha256": "3c5b0a389d1ec034c5d38ad56ac6125bff75561e2892974da4871a0a045a19d4"
+        },
+        "untracked_mosaic_writers": []
+      },
+      "phase": "preflight",
+      "scopes": [
+        {
+          "actual_bytes": 14911983104,
+          "actual_files": 170999,
+          "cap_bytes": null,
+          "cap_files": null,
+          "excluded_roots": [
+            "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-22",
+            "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-release-22",
+            "/work3/s234818/mosaic/runs/20261028-protenix-defog-30000-time-ramp-01",
+            "/work3/s234818/mosaic/releases/20261028-protenix-defog-30000-time-ramp-01",
+            "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/lrreset-analysis-03/combined-report"
+          ],
+          "id": "retained-mosaic",
+          "inventory_proof": {
+            "bytes": 5701,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-22/chemistry-native-qualification-06/preflight/rolling-capacity-preflight-1793264937632682883/inventory.json",
+            "sha256": "1213e62d0c4e94bf0fd6f45db98f90e8b8c0d1c9cf6bcfa47e4082cf37214f96"
+          },
+          "liveness_proof": {
+            "bytes": 9680,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-22/chemistry-native-qualification-06/preflight/rolling-capacity-preflight-1793264937632682883/scheduler.json",
+            "sha256": "3c5b0a389d1ec034c5d38ad56ac6125bff75561e2892974da4871a0a045a19d4"
+          },
+          "quota_inclusion_proof": null,
+          "role": "history",
+          "root": "/work3/s234818/mosaic",
+          "state": "retained"
+        },
+        {
+          "actual_bytes": 3053056,
+          "actual_files": 96,
+          "cap_bytes": 2147483648,
+          "cap_files": 30000,
+          "excluded_roots": [
+            "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-22/protenix-segment-20000/payload/study",
+            "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-22/dbmol-segment-07500/payload/study"
+          ],
+          "id": "own-control",
+          "inventory_proof": {
+            "bytes": 5701,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-22/chemistry-native-qualification-06/preflight/rolling-capacity-preflight-1793264937632682883/inventory.json",
+            "sha256": "1213e62d0c4e94bf0fd6f45db98f90e8b8c0d1c9cf6bcfa47e4082cf37214f96"
+          },
+          "liveness_proof": {
+            "bytes": 176673,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-release-22/source/plan.json",
+            "sha256": "a1c5188f2023a2b977534cc12a3b579e8f4db8560fe20dab807a1b8d358e5d62"
+          },
+          "quota_inclusion_proof": null,
+          "role": "control",
+          "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-22",
+          "state": "admitted"
+        },
+        {
+          "actual_bytes": 2368512,
+          "actual_files": 50,
+          "cap_bytes": 67108864,
+          "cap_files": 3000,
+          "excluded_roots": [],
+          "id": "own-release",
+          "inventory_proof": {
+            "bytes": 5701,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-22/chemistry-native-qualification-06/preflight/rolling-capacity-preflight-1793264937632682883/inventory.json",
+            "sha256": "1213e62d0c4e94bf0fd6f45db98f90e8b8c0d1c9cf6bcfa47e4082cf37214f96"
+          },
+          "liveness_proof": {
+            "bytes": 978756,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-release-22/source/source_manifest.json",
+            "sha256": "f930989518b848f4247b77977a4258a66a278ce0ac17521bea3bf19c676bbc8b"
+          },
+          "quota_inclusion_proof": null,
+          "role": "release",
+          "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-release-22",
+          "state": "admitted"
+        },
+        {
+          "actual_bytes": 1685135872,
+          "actual_files": 30099,
+          "cap_bytes": null,
+          "cap_files": null,
+          "excluded_roots": [],
+          "id": "independent-29839884",
+          "inventory_proof": {
+            "bytes": 5701,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-22/chemistry-native-qualification-06/preflight/rolling-capacity-preflight-1793264937632682883/inventory.json",
+            "sha256": "1213e62d0c4e94bf0fd6f45db98f90e8b8c0d1c9cf6bcfa47e4082cf37214f96"
+          },
+          "liveness_proof": {
+            "bytes": 1167,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/defog29839884-terminal-retention-proof-01/assessment.json",
+            "sha256": "484313b5a916b97a5acafdef1794facd381b99b27222f62e98fd7be491f9cdfc"
+          },
+          "quota_inclusion_proof": null,
+          "role": "defog",
+          "root": "/work3/s234818/mosaic/runs/20261028-protenix-defog-30000-time-ramp-01",
+          "state": "terminal"
+        },
+        {
+          "actual_bytes": 35834880,
+          "actual_files": 183,
+          "cap_bytes": null,
+          "cap_files": null,
+          "excluded_roots": [],
+          "id": "independent-29839884-release",
+          "inventory_proof": {
+            "bytes": 5701,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-22/chemistry-native-qualification-06/preflight/rolling-capacity-preflight-1793264937632682883/inventory.json",
+            "sha256": "1213e62d0c4e94bf0fd6f45db98f90e8b8c0d1c9cf6bcfa47e4082cf37214f96"
+          },
+          "liveness_proof": {
+            "bytes": 21782,
+            "path": "/work3/s234818/mosaic/releases/20261028-protenix-defog-30000-time-ramp-01/source_manifest.json",
+            "sha256": "a15c8bb2a8ac7e9e12a65c54079e14c994e53b119b9a59e1a9788b5044d8686f"
+          },
+          "quota_inclusion_proof": null,
+          "role": "release",
+          "root": "/work3/s234818/mosaic/releases/20261028-protenix-defog-30000-time-ramp-01",
+          "state": "terminal"
+        },
+        {
+          "actual_bytes": 6144,
+          "actual_files": 3,
+          "cap_bytes": 2147483648,
+          "cap_files": 20000,
+          "excluded_roots": [],
+          "id": "independent-29796558",
+          "inventory_proof": {
+            "bytes": 5701,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-22/chemistry-native-qualification-06/preflight/rolling-capacity-preflight-1793264937632682883/inventory.json",
+            "sha256": "1213e62d0c4e94bf0fd6f45db98f90e8b8c0d1c9cf6bcfa47e4082cf37214f96"
+          },
+          "liveness_proof": {
+            "bytes": 9680,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-22/chemistry-native-qualification-06/preflight/rolling-capacity-preflight-1793264937632682883/scheduler.json",
+            "sha256": "3c5b0a389d1ec034c5d38ad56ac6125bff75561e2892974da4871a0a045a19d4"
+          },
+          "quota_inclusion_proof": null,
+          "role": "cache",
+          "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/lrreset-analysis-03/combined-report",
+          "state": "admitted"
+        },
+        {
+          "actual_bytes": 0,
+          "actual_files": 0,
+          "cap_bytes": null,
+          "cap_files": null,
+          "excluded_roots": [],
+          "id": "protenix-segment-20000",
+          "inventory_proof": {
+            "bytes": 5701,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-22/chemistry-native-qualification-06/preflight/rolling-capacity-preflight-1793264937632682883/inventory.json",
+            "sha256": "1213e62d0c4e94bf0fd6f45db98f90e8b8c0d1c9cf6bcfa47e4082cf37214f96"
+          },
+          "liveness_proof": {
+            "bytes": 176673,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-release-22/source/plan.json",
+            "sha256": "a1c5188f2023a2b977534cc12a3b579e8f4db8560fe20dab807a1b8d358e5d62"
+          },
+          "quota_inclusion_proof": null,
+          "role": "segment",
+          "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-22/protenix-segment-20000/payload/study",
+          "state": "deferred"
+        },
+        {
+          "actual_bytes": 0,
+          "actual_files": 0,
+          "cap_bytes": null,
+          "cap_files": null,
+          "excluded_roots": [],
+          "id": "dbmol-segment-7500",
+          "inventory_proof": {
+            "bytes": 5701,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-22/chemistry-native-qualification-06/preflight/rolling-capacity-preflight-1793264937632682883/inventory.json",
+            "sha256": "1213e62d0c4e94bf0fd6f45db98f90e8b8c0d1c9cf6bcfa47e4082cf37214f96"
+          },
+          "liveness_proof": {
+            "bytes": 176673,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-release-22/source/plan.json",
+            "sha256": "a1c5188f2023a2b977534cc12a3b579e8f4db8560fe20dab807a1b8d358e5d62"
+          },
+          "quota_inclusion_proof": null,
+          "role": "segment",
+          "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-22/dbmol-segment-07500/payload/study",
+          "state": "deferred"
+        }
+      ],
+      "shared_account": {
+        "entry_and_periodic_recheck_required": true,
+        "non_mosaic_job_ids": [
+          "29846730"
+        ],
+        "their_future_bytes_reserved": false,
+        "whole_account_reservation": false
+      },
+      "source_manifest_sha256": "f930989518b848f4247b77977a4258a66a278ce0ac17521bea3bf19c676bbc8b",
+      "version": "mosaic-rolling-segment-capacity-v1"
+    },
+    "lifetime_targets_preserved": true,
+    "limitation": "Fresh scoped admission observation, not an account reservation; unrelated jobs can consume capacity; entry and periodic rechecks mandatory",
+    "phase": "preflight",
+    "quota": {
+      "available_bytes_lower": 60129542144,
+      "available_files_lower": 19608361,
+      "pools": [
+        {
+          "hard_bytes_lower": null,
+          "hard_files": null,
+          "hard_reported": "unlimited",
+          "used_bytes_upper": null,
+          "used_files": 0,
+          "used_reported": "0 Byte"
+        },
+        {
+          "hard_bytes_lower": null,
+          "hard_files": null,
+          "hard_reported": "unlimited",
+          "used_bytes_upper": null,
+          "used_files": 0,
+          "used_reported": "0 Byte"
+        },
+        {
+          "hard_bytes_lower": null,
+          "hard_files": null,
+          "hard_reported": "unlimited",
+          "used_bytes_upper": null,
+          "used_files": 0,
+          "used_reported": "0 Byte"
+        },
+        {
+          "hard_bytes_lower": null,
+          "hard_files": null,
+          "hard_reported": "unlimited",
+          "used_bytes_upper": null,
+          "used_files": 0,
+          "used_reported": "0 Byte"
+        },
+        {
+          "hard_bytes_lower": null,
+          "hard_files": null,
+          "hard_reported": "unlimited",
+          "used_bytes_upper": null,
+          "used_files": 0,
+          "used_reported": "0 Byte"
+        },
+        {
+          "hard_bytes_lower": 107374182400,
+          "hard_files": 20000000,
+          "hard_reported": "100.00 GiB",
+          "remaining_bytes": 60129542144,
+          "remaining_files": 19608361,
+          "used_bytes_upper": 47244640256,
+          "used_files": 391639,
+          "used_reported": "43.47 GiB"
+        }
+      ],
+      "raw_sha256": "ca203940568d036bc6bbc6f37ed11687c5d342dbdbbbfa111fb62b705f3dede0",
+      "rounding": "each finite used quota rounded up and hard quota down to whole GiB"
+    },
+    "raw_quota_command": {
+      "bytes": 2134,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-22/chemistry-native-qualification-06/preflight/rolling-capacity-preflight-1793264937632682883/quota.json",
+      "sha256": "dab32746b9ffa30d2de01bae691bcc4deb48c09a3ecd53788cfc8a19309f51aa"
+    },
+    "required_bytes": 41299717904,
+    "required_files": 332733,
+    "reserve_bytes": 4294967296,
+    "saved_results_changed": false,
+    "scheduler_proof": {
+      "bytes": 9680,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-22/chemistry-native-qualification-06/preflight/rolling-capacity-preflight-1793264937632682883/scheduler.json",
+      "sha256": "3c5b0a389d1ec034c5d38ad56ac6125bff75561e2892974da4871a0a045a19d4"
+    },
+    "scientific_settings_or_guards_changed": false,
+    "scope": "All explicitly inventoried Mosaic active/admitted/requested bounded scopes; deferred targets must re-admit",
+    "scope_accounting": [
+      {
+        "actual_bytes": 14911983104,
+        "actual_files": 170999,
+        "entire_mutable_or_unproven_tree_stale_charge_bytes": 14911983104,
+        "entire_mutable_or_unproven_tree_stale_charge_files": 170999,
+        "excluded_roots": [
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-22",
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-release-22",
+          "/work3/s234818/mosaic/runs/20261028-protenix-defog-30000-time-ramp-01",
+          "/work3/s234818/mosaic/releases/20261028-protenix-defog-30000-time-ramp-01",
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/lrreset-analysis-03/combined-report"
+        ],
+        "id": "retained-mosaic",
+        "quota_inclusion_proved": false,
+        "remaining_admitted_cap_bytes": 0,
+        "remaining_admitted_cap_files": 0,
+        "role": "history",
+        "root": "/work3/s234818/mosaic",
+        "state": "retained"
+      },
+      {
+        "actual_bytes": 3053056,
+        "actual_files": 96,
+        "entire_mutable_or_unproven_tree_stale_charge_bytes": 3053056,
+        "entire_mutable_or_unproven_tree_stale_charge_files": 96,
+        "excluded_roots": [
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-22/protenix-segment-20000/payload/study",
+          "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-22/dbmol-segment-07500/payload/study"
+        ],
+        "id": "own-control",
+        "quota_inclusion_proved": false,
+        "remaining_admitted_cap_bytes": 2144430592,
+        "remaining_admitted_cap_files": 29904,
+        "role": "control",
+        "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-22",
+        "state": "admitted"
+      },
+      {
+        "actual_bytes": 2368512,
+        "actual_files": 50,
+        "entire_mutable_or_unproven_tree_stale_charge_bytes": 2368512,
+        "entire_mutable_or_unproven_tree_stale_charge_files": 50,
+        "excluded_roots": [],
+        "id": "own-release",
+        "quota_inclusion_proved": false,
+        "remaining_admitted_cap_bytes": 64740352,
+        "remaining_admitted_cap_files": 2950,
+        "role": "release",
+        "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-release-22",
+        "state": "admitted"
+      },
+      {
+        "actual_bytes": 1685135872,
+        "actual_files": 30099,
+        "entire_mutable_or_unproven_tree_stale_charge_bytes": 1685135872,
+        "entire_mutable_or_unproven_tree_stale_charge_files": 30099,
+        "excluded_roots": [],
+        "id": "independent-29839884",
+        "quota_inclusion_proved": false,
+        "remaining_admitted_cap_bytes": 0,
+        "remaining_admitted_cap_files": 0,
+        "role": "defog",
+        "root": "/work3/s234818/mosaic/runs/20261028-protenix-defog-30000-time-ramp-01",
+        "state": "terminal"
+      },
+      {
+        "actual_bytes": 35834880,
+        "actual_files": 183,
+        "entire_mutable_or_unproven_tree_stale_charge_bytes": 35834880,
+        "entire_mutable_or_unproven_tree_stale_charge_files": 183,
+        "excluded_roots": [],
+        "id": "independent-29839884-release",
+        "quota_inclusion_proved": false,
+        "remaining_admitted_cap_bytes": 0,
+        "remaining_admitted_cap_files": 0,
+        "role": "release",
+        "root": "/work3/s234818/mosaic/releases/20261028-protenix-defog-30000-time-ramp-01",
+        "state": "terminal"
+      },
+      {
+        "actual_bytes": 6144,
+        "actual_files": 3,
+        "entire_mutable_or_unproven_tree_stale_charge_bytes": 6144,
+        "entire_mutable_or_unproven_tree_stale_charge_files": 3,
+        "excluded_roots": [],
+        "id": "independent-29796558",
+        "quota_inclusion_proved": false,
+        "remaining_admitted_cap_bytes": 2147477504,
+        "remaining_admitted_cap_files": 19997,
+        "role": "cache",
+        "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/lrreset-analysis-03/combined-report",
+        "state": "admitted"
+      },
+      {
+        "actual_bytes": 0,
+        "actual_files": 0,
+        "entire_mutable_or_unproven_tree_stale_charge_bytes": 0,
+        "entire_mutable_or_unproven_tree_stale_charge_files": 0,
+        "excluded_roots": [],
+        "id": "protenix-segment-20000",
+        "quota_inclusion_proved": false,
+        "remaining_admitted_cap_bytes": 0,
+        "remaining_admitted_cap_files": 0,
+        "role": "segment",
+        "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-22/protenix-segment-20000/payload/study",
+        "state": "deferred"
+      },
+      {
+        "actual_bytes": 0,
+        "actual_files": 0,
+        "entire_mutable_or_unproven_tree_stale_charge_bytes": 0,
+        "entire_mutable_or_unproven_tree_stale_charge_files": 0,
+        "excluded_roots": [],
+        "id": "dbmol-segment-7500",
+        "quota_inclusion_proved": false,
+        "remaining_admitted_cap_bytes": 0,
+        "remaining_admitted_cap_files": 0,
+        "role": "segment",
+        "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-22/dbmol-segment-07500/payload/study",
+        "state": "deferred"
+      }
+    ],
+    "shared_embedding_accounting": {
+      "accounted_job_ids": [
+        "29846090",
+        "29846091"
+      ],
+      "actual_bytes": 230293063,
+      "actual_files": 579,
+      "external_files_jobs_settings_changed": false,
+      "forecast_held_until_Mosaic_work_ends": true,
+      "inventories": [
+        {
+          "actual_bytes": 230210226,
+          "actual_files": 544,
+          "complete": true,
+          "nofollow": true,
+          "root": "/work3/s234818/latentmol/runs/source142-epoch36-guarded-embedding-long-attempt001",
+          "rows": [
+            {
+              "bytes": 241,
+              "path": "case-001-segment-0001/cuda-child.log"
+            },
+            {
+              "bytes": 0,
+              "path": "case-001-segment-0001/worker.stderr.log"
+            },
+            {
+              "bytes": 0,
+              "path": "case-001-segment-0001/worker.stdout.log"
+            },
+            {
+              "bytes": 2423,
+              "path": "cpu/cpu-gate.json"
+            },
+            {
+              "bytes": 705,
+              "path": "cpu/cpu-tests.log"
+            },
+            {
+              "bytes": 67579,
+              "path": "cpu/cpu-tests.xml"
+            },
+            {
+              "bytes": 1771,
+              "path": "cpu/precision-correction.json"
+            },
+            {
+              "bytes": 9986,
+              "path": "cpu/result.json"
+            },
+            {
+              "bytes": 3461,
+              "path": "cpu/starts.json"
+            },
+            {
+              "bytes": 7102,
+              "path": "cpu/starts.pt"
+            },
+            {
+              "bytes": 0,
+              "path": "cpu/worker.stderr.log"
+            },
+            {
+              "bytes": 0,
+              "path": "cpu/worker.stdout.log"
+            },
+            {
+              "bytes": 567220,
+              "path": "fit/child-result.json"
+            },
+            {
+              "bytes": 1365,
+              "path": "fit/cuda-child-process.json"
+            },
+            {
+              "bytes": 241,
+              "path": "fit/cuda-child.log"
+            },
+            {
+              "bytes": 494289,
+              "path": "fit/fit/audit.json"
+            },
+            {
+              "bytes": 1156176,
+              "path": "fit/fit/best-bridge.pt"
+            },
+            {
+              "bytes": 484554,
+              "path": "fit/fit/calibration.json"
+            },
+            {
+              "bytes": 447788,
+              "path": "fit/fit/history.jsonl"
+            },
+            {
+              "bytes": 1277,
+              "path": "fit/fit/training-plan.json"
+            },
+            {
+              "bytes": 530581,
+              "path": "fit/fit/training-result.json"
+            },
+            {
+              "bytes": 11096,
+              "path": "fit/fit/warm-start-dev.json"
+            },
+            {
+              "bytes": 17853,
+              "path": "fit/native-oracle.json"
+            },
+            {
+              "bytes": 9910172,
+              "path": "fit/paired-data/attempts.jsonl"
+            },
+            {
+              "bytes": 85768,
+              "path": "fit/paired-data/manifest.json"
+            },
+            {
+              "bytes": 62962632,
+              "path": "fit/paired-data/samples.pt"
+            },
+            {
+              "bytes": 567220,
+              "path": "fit/result.json"
+            },
+            {
+              "bytes": 0,
+              "path": "fit/worker.stderr.log"
+            },
+            {
+              "bytes": 0,
+              "path": "fit/worker.stdout.log"
+            },
+            {
+              "bytes": 19152,
+              "path": "pilot/case-001-state.pt"
+            },
+            {
+              "bytes": 19152,
+              "path": "pilot/case-002-state.pt"
+            },
+            {
+              "bytes": 19152,
+              "path": "pilot/case-003-state.pt"
+            },
+            {
+              "bytes": 16270,
+              "path": "pilot/child-result.json"
+            },
+            {
+              "bytes": 95,
+              "path": "pilot/cuda-child-probe.json"
+            },
+            {
+              "bytes": 1140,
+              "path": "pilot/cuda-child-probe.log"
+            },
+            {
+              "bytes": 1830,
+              "path": "pilot/cuda-child-process.json"
+            },
+            {
+              "bytes": 241,
+              "path": "pilot/cuda-child.log"
+            },
+            {
+              "bytes": 1175,
+              "path": "pilot/cuda-ownership-gate.json"
+            },
+            {
+              "bytes": 1820,
+              "path": "pilot/gates/case-001/binding.json"
+            },
+            {
+              "bytes": 209263,
+              "path": "pilot/gates/case-001/learned.json"
+            },
+            {
+              "bytes": 17786,
+              "path": "pilot/gates/case-001/native.json"
+            },
+            {
+              "bytes": 655,
+              "path": "pilot/gates/case-001/production-binding.json"
+            },
+            {
+              "bytes": 202933,
+              "path": "pilot/gates/case-001/relaxed.json"
+            },
+            {
+              "bytes": 5122,
+              "path": "pilot/gates/case-001/start-eligibility.json"
+            },
+            {
+              "bytes": 1817,
+              "path": "pilot/gates/case-002/binding.json"
+            },
+            {
+              "bytes": 209426,
+              "path": "pilot/gates/case-002/learned.json"
+            },
+            {
+              "bytes": 17969,
+              "path": "pilot/gates/case-002/native.json"
+            },
+            {
+              "bytes": 655,
+              "path": "pilot/gates/case-002/production-binding.json"
+            },
+            {
+              "bytes": 203302,
+              "path": "pilot/gates/case-002/relaxed.json"
+            },
+            {
+              "bytes": 5053,
+              "path": "pilot/gates/case-002/start-eligibility.json"
+            },
+            {
+              "bytes": 1816,
+              "path": "pilot/gates/case-003/binding.json"
+            },
+            {
+              "bytes": 209227,
+              "path": "pilot/gates/case-003/learned.json"
+            },
+            {
+              "bytes": 17969,
+              "path": "pilot/gates/case-003/native.json"
+            },
+            {
+              "bytes": 655,
+              "path": "pilot/gates/case-003/production-binding.json"
+            },
+            {
+              "bytes": 203168,
+              "path": "pilot/gates/case-003/relaxed.json"
+            },
+            {
+              "bytes": 5066,
+              "path": "pilot/gates/case-003/start-eligibility.json"
+            },
+            {
+              "bytes": 1034,
+              "path": "pilot/native-smoke-gate.json"
+            },
+            {
+              "bytes": 1627,
+              "path": "pilot/native-smoke/audit.log"
+            },
+            {
+              "bytes": 987,
+              "path": "pilot/native-smoke/expected.json"
+            },
+            {
+              "bytes": 6011,
+              "path": "pilot/native-smoke/identity.json"
+            },
+            {
+              "bytes": 5147,
+              "path": "pilot/native-smoke/native.log"
+            },
+            {
+              "bytes": 4832,
+              "path": "pilot/native-smoke/prediction/boltz_results_r_992fdb34e15c23ba5d45cbbb/lightning_logs/version_0/hparams.yaml"
+            },
+            {
+              "bytes": 311,
+              "path": "pilot/native-smoke/prediction/boltz_results_r_992fdb34e15c23ba5d45cbbb/predictions/r_992fdb34e15c23ba5d45cbbb/affinity_r_992fdb34e15c23ba5d45cbbb.json"
+            },
+            {
+              "bytes": 657,
+              "path": "pilot/native-smoke/prediction/boltz_results_r_992fdb34e15c23ba5d45cbbb/predictions/r_992fdb34e15c23ba5d45cbbb/confidence_r_992fdb34e15c23ba5d45cbbb_model_0.json"
+            },
+            {
+              "bytes": 596092,
+              "path": "pilot/native-smoke/prediction/boltz_results_r_992fdb34e15c23ba5d45cbbb/predictions/r_992fdb34e15c23ba5d45cbbb/pae_r_992fdb34e15c23ba5d45cbbb_model_0.npz"
+            },
+            {
+              "bytes": 595570,
+              "path": "pilot/native-smoke/prediction/boltz_results_r_992fdb34e15c23ba5d45cbbb/predictions/r_992fdb34e15c23ba5d45cbbb/pde_r_992fdb34e15c23ba5d45cbbb_model_0.npz"
+            },
+            {
+              "bytes": 1652,
+              "path": "pilot/native-smoke/prediction/boltz_results_r_992fdb34e15c23ba5d45cbbb/predictions/r_992fdb34e15c23ba5d45cbbb/plddt_r_992fdb34e15c23ba5d45cbbb_model_0.npz"
+            },
+            {
+              "bytes": 79856,
+              "path": "pilot/native-smoke/prediction/boltz_results_r_992fdb34e15c23ba5d45cbbb/predictions/r_992fdb34e15c23ba5d45cbbb/pre_affinity_r_992fdb34e15c23ba5d45cbbb.npz"
+            },
+            {
+              "bytes": 265105,
+              "path": "pilot/native-smoke/prediction/boltz_results_r_992fdb34e15c23ba5d45cbbb/predictions/r_992fdb34e15c23ba5d45cbbb/r_992fdb34e15c23ba5d45cbbb_model_0.cif"
+            },
+            {
+              "bytes": 3665,
+              "path": "pilot/native-smoke/prediction/boltz_results_r_992fdb34e15c23ba5d45cbbb/processed/constraints/r_992fdb34e15c23ba5d45cbbb.npz"
+            },
+            {
+              "bytes": 716,
+              "path": "pilot/native-smoke/prediction/boltz_results_r_992fdb34e15c23ba5d45cbbb/processed/manifest.json"
+            },
+            {
+              "bytes": 1976,
+              "path": "pilot/native-smoke/prediction/boltz_results_r_992fdb34e15c23ba5d45cbbb/processed/mols/r_992fdb34e15c23ba5d45cbbb.pkl"
+            },
+            {
+              "bytes": 23984,
+              "path": "pilot/native-smoke/prediction/boltz_results_r_992fdb34e15c23ba5d45cbbb/processed/msa/r_992fdb34e15c23ba5d45cbbb_0.npz"
+            },
+            {
+              "bytes": 701,
+              "path": "pilot/native-smoke/prediction/boltz_results_r_992fdb34e15c23ba5d45cbbb/processed/records/r_992fdb34e15c23ba5d45cbbb.json"
+            },
+            {
+              "bytes": 8577,
+              "path": "pilot/native-smoke/prediction/boltz_results_r_992fdb34e15c23ba5d45cbbb/processed/structures/r_992fdb34e15c23ba5d45cbbb.npz"
+            },
+            {
+              "bytes": 662,
+              "path": "pilot/native-smoke/r_992fdb34e15c23ba5d45cbbb.yaml"
+            },
+            {
+              "bytes": 9314,
+              "path": "pilot/native-smoke/result.json"
+            },
+            {
+              "bytes": 16509,
+              "path": "pilot/result.json"
+            },
+            {
+              "bytes": 409,
+              "path": "pilot/smoke-request.json"
+            },
+            {
+              "bytes": 0,
+              "path": "pilot/worker.stderr.log"
+            },
+            {
+              "bytes": 2545,
+              "path": "pilot/worker.stdout.log"
+            },
+            {
+              "bytes": 45188,
+              "path": "trajectories/case-001/best/best-000000.pt"
+            },
+            {
+              "bytes": 1171,
+              "path": "trajectories/case-001/hard-cache/255950360553b60c82f2d952523ee6a151ea2a8a132ab31c7ea5b916da1a35cb.json"
+            },
+            {
+              "bytes": 234,
+              "path": "trajectories/case-001/hard-cache/index.jsonl"
+            },
+            {
+              "bytes": 5554,
+              "path": "trajectories/case-001/manifest.json"
+            },
+            {
+              "bytes": 8486,
+              "path": "trajectories/case-001/observations/update-000000.json"
+            },
+            {
+              "bytes": 98872,
+              "path": "trajectories/case-001/observations/update-000000.pt"
+            },
+            {
+              "bytes": 8556,
+              "path": "trajectories/case-001/observations/update-000010.json"
+            },
+            {
+              "bytes": 98872,
+              "path": "trajectories/case-001/observations/update-000010.pt"
+            },
+            {
+              "bytes": 8564,
+              "path": "trajectories/case-001/observations/update-000020.json"
+            },
+            {
+              "bytes": 98872,
+              "path": "trajectories/case-001/observations/update-000020.pt"
+            },
+            {
+              "bytes": 8568,
+              "path": "trajectories/case-001/observations/update-000030.json"
+            },
+            {
+              "bytes": 98872,
+              "path": "trajectories/case-001/observations/update-000030.pt"
+            },
+            {
+              "bytes": 8559,
+              "path": "trajectories/case-001/observations/update-000040.json"
+            },
+            {
+              "bytes": 98872,
+              "path": "trajectories/case-001/observations/update-000040.pt"
+            },
+            {
+              "bytes": 8564,
+              "path": "trajectories/case-001/observations/update-000050.json"
+            },
+            {
+              "bytes": 98872,
+              "path": "trajectories/case-001/observations/update-000050.pt"
+            },
+            {
+              "bytes": 8562,
+              "path": "trajectories/case-001/observations/update-000060.json"
+            },
+            {
+              "bytes": 98872,
+              "path": "trajectories/case-001/observations/update-000060.pt"
+            },
+            {
+              "bytes": 8558,
+              "path": "trajectories/case-001/observations/update-000070.json"
+            },
+            {
+              "bytes": 98872,
+              "path": "trajectories/case-001/observations/update-000070.pt"
+            },
+            {
+              "bytes": 8568,
+              "path": "trajectories/case-001/observations/update-000080.json"
+            },
+            {
+              "bytes": 98872,
+              "path": "trajectories/case-001/observations/update-000080.pt"
+            },
+            {
+              "bytes": 8562,
+              "path": "trajectories/case-001/observations/update-000090.json"
+            },
+            {
+              "bytes": 98872,
+              "path": "trajectories/case-001/observations/update-000090.pt"
+            },
+            {
+              "bytes": 8565,
+              "path": "trajectories/case-001/observations/update-000100.json"
+            },
+            {
+              "bytes": 98872,
+              "path": "trajectories/case-001/observations/update-000100.pt"
+            },
+            {
+              "bytes": 8565,
+              "path": "trajectories/case-001/observations/update-000110.json"
+            },
+            {
+              "bytes": 98872,
+              "path": "trajectories/case-001/observations/update-000110.pt"
+            },
+            {
+              "bytes": 8565,
+              "path": "trajectories/case-001/observations/update-000120.json"
+            },
+            {
+              "bytes": 98872,
+              "path": "trajectories/case-001/observations/update-000120.pt"
+            },
+            {
+              "bytes": 8555,
+              "path": "trajectories/case-001/observations/update-000130.json"
+            },
+            {
+              "bytes": 98872,
+              "path": "trajectories/case-001/observations/update-000130.pt"
+            },
+            {
+              "bytes": 8562,
+              "path": "trajectories/case-001/observations/update-000140.json"
+            },
+            {
+              "bytes": 98872,
+              "path": "trajectories/case-001/observations/update-000140.pt"
+            },
+            {
+              "bytes": 8566,
+              "path": "trajectories/case-001/observations/update-000150.json"
+            },
+            {
+              "bytes": 98872,
+              "path": "trajectories/case-001/observations/update-000150.pt"
+            },
+            {
+              "bytes": 8564,
+              "path": "trajectories/case-001/observations/update-000160.json"
+            },
+            {
+              "bytes": 98872,
+              "path": "trajectories/case-001/observations/update-000160.pt"
+            },
+            {
+              "bytes": 8569,
+              "path": "trajectories/case-001/observations/update-000170.json"
+            },
+            {
+              "bytes": 98872,
+              "path": "trajectories/case-001/observations/update-000170.pt"
+            },
+            {
+              "bytes": 8562,
+              "path": "trajectories/case-001/observations/update-000180.json"
+            },
+            {
+              "bytes": 98872,
+              "path": "trajectories/case-001/observations/update-000180.pt"
+            },
+            {
+              "bytes": 8560,
+              "path": "trajectories/case-001/observations/update-000190.json"
+            },
+            {
+              "bytes": 98872,
+              "path": "trajectories/case-001/observations/update-000190.pt"
+            },
+            {
+              "bytes": 8567,
+              "path": "trajectories/case-001/observations/update-000200.json"
+            },
+            {
+              "bytes": 98872,
+              "path": "trajectories/case-001/observations/update-000200.pt"
+            },
+            {
+              "bytes": 8561,
+              "path": "trajectories/case-001/observations/update-000210.json"
+            },
+            {
+              "bytes": 98872,
+              "path": "trajectories/case-001/observations/update-000210.pt"
+            },
+            {
+              "bytes": 8557,
+              "path": "trajectories/case-001/observations/update-000220.json"
+            },
+            {
+              "bytes": 98872,
+              "path": "trajectories/case-001/observations/update-000220.pt"
+            },
+            {
+              "bytes": 8565,
+              "path": "trajectories/case-001/observations/update-000230.json"
+            },
+            {
+              "bytes": 98872,
+              "path": "trajectories/case-001/observations/update-000230.pt"
+            },
+            {
+              "bytes": 8558,
+              "path": "trajectories/case-001/observations/update-000240.json"
+            },
+            {
+              "bytes": 98872,
+              "path": "trajectories/case-001/observations/update-000240.pt"
+            },
+            {
+              "bytes": 8564,
+              "path": "trajectories/case-001/observations/update-000250.json"
+            },
+            {
+              "bytes": 98872,
+              "path": "trajectories/case-001/observations/update-000250.pt"
+            },
+            {
+              "bytes": 8569,
+              "path": "trajectories/case-001/observations/update-000260.json"
+            },
+            {
+              "bytes": 98872,
+              "path": "trajectories/case-001/observations/update-000260.pt"
+            },
+            {
+              "bytes": 8568,
+              "path": "trajectories/case-001/observations/update-000270.json"
+            },
+            {
+              "bytes": 98872,
+              "path": "trajectories/case-001/observations/update-000270.pt"
+            },
+            {
+              "bytes": 8550,
+              "path": "trajectories/case-001/observations/update-000280.json"
+            },
+            {
+              "bytes": 98872,
+              "path": "trajectories/case-001/observations/update-000280.pt"
+            },
+            {
+              "bytes": 8561,
+              "path": "trajectories/case-001/observations/update-000290.json"
+            },
+            {
+              "bytes": 98872,
+              "path": "trajectories/case-001/observations/update-000290.pt"
+            },
+            {
+              "bytes": 8559,
+              "path": "trajectories/case-001/observations/update-000300.json"
+            },
+            {
+              "bytes": 98872,
+              "path": "trajectories/case-001/observations/update-000300.pt"
+            },
+            {
+              "bytes": 8566,
+              "path": "trajectories/case-001/observations/update-000310.json"
+            },
+            {
+              "bytes": 98872,
+              "path": "trajectories/case-001/observations/update-000310.pt"
+            },
+            {
+              "bytes": 1919,
+              "path": "trajectories/case-001/production-binding.json"
+            },
+            {
+              "bytes": 6388512,
+              "path": "trajectories/case-001/segments/from-000000/calls.jsonl"
+            },
+            {
+              "bytes": 5240,
+              "path": "trajectories/case-001/segments/from-000000/commits.jsonl"
+            },
+            {
+              "bytes": 3414,
+              "path": "trajectories/case-001/segments/from-000000/completion.json"
+            },
+            {
+              "bytes": 160,
+              "path": "trajectories/case-001/segments/from-000000/intent.json"
+            },
+            {
+              "bytes": 777729,
+              "path": "trajectories/case-001/segments/from-000000/updates.jsonl"
+            },
+            {
+              "bytes": 107493937,
+              "path": "trajectories/case-001/segments/from-000020/calls.jsonl"
+            },
+            {
+              "bytes": 72711,
+              "path": "trajectories/case-001/segments/from-000020/commits.jsonl"
+            },
+            {
+              "bytes": 366,
+              "path": "trajectories/case-001/segments/from-000020/intent.json"
+            },
+            {
+              "bytes": 12517519,
+              "path": "trajectories/case-001/segments/from-000020/updates.jsonl"
+            },
+            {
+              "bytes": 18640,
+              "path": "trajectories/case-001/states/state-000000.pt"
+            },
+            {
+              "bytes": 18640,
+              "path": "trajectories/case-001/states/state-000001.pt"
+            },
+            {
+              "bytes": 18640,
+              "path": "trajectories/case-001/states/state-000002.pt"
+            },
+            {
+              "bytes": 18640,
+              "path": "trajectories/case-001/states/state-000003.pt"
+            },
+            {
+              "bytes": 18640,
+              "path": "trajectories/case-001/states/state-000004.pt"
+            },
+            {
+              "bytes": 18640,
+              "path": "trajectories/case-001/states/state-000005.pt"
+            },
+            {
+              "bytes": 18640,
+              "path": "trajectories/case-001/states/state-000006.pt"
+            },
+            {
+              "bytes": 18640,
+              "path": "trajectories/case-001/states/state-000007.pt"
+            },
+            {
+              "bytes": 18640,
+              "path": "trajectories/case-001/states/state-000008.pt"
+            },
+            {
+              "bytes": 18640,
+              "path": "trajectories/case-001/states/state-000009.pt"
+            },
+            {
+              "bytes": 19152,
+              "path": "trajectories/case-001/states/state-000010.pt"
+            },
+            {
+              "bytes": 19152,
+              "path": "trajectories/case-001/states/state-000011.pt"
+            },
+            {
+              "bytes": 19152,
+              "path": "trajectories/case-001/states/state-000012.pt"
+            },
+            {
+              "bytes": 19152,
+              "path": "trajectories/case-001/states/state-000013.pt"
+            },
+            {
+              "bytes": 19152,
+              "path": "trajectories/case-001/states/state-000014.pt"
+            },
+            {
+              "bytes": 19152,
+              "path": "trajectories/case-001/states/state-000015.pt"
+            },
+            {
+              "bytes": 19152,
+              "path": "trajectories/case-001/states/state-000016.pt"
+            },
+            {
+              "bytes": 19152,
+              "path": "trajectories/case-001/states/state-000017.pt"
+            },
+            {
+              "bytes": 19152,
+              "path": "trajectories/case-001/states/state-000018.pt"
+            },
+            {
+              "bytes": 19152,
+              "path": "trajectories/case-001/states/state-000019.pt"
+            },
+            {
+              "bytes": 19152,
+              "path": "trajectories/case-001/states/state-000020.pt"
+            },
+            {
+              "bytes": 19152,
+              "path": "trajectories/case-001/states/state-000021.pt"
+            },
+            {
+              "bytes": 19152,
+              "path": "trajectories/case-001/states/state-000022.pt"
+            },
+            {
+              "bytes": 19152,
+              "path": "trajectories/case-001/states/state-000023.pt"
+            },
+            {
+              "bytes": 19152,
+              "path": "trajectories/case-001/states/state-000024.pt"
+            },
+            {
+              "bytes": 19152,
+              "path": "trajectories/case-001/states/state-000025.pt"
+            },
+            {
+              "bytes": 19152,
+              "path": "trajectories/case-001/states/state-000026.pt"
+            },
+            {
+              "bytes": 19152,
+              "path": "trajectories/case-001/states/state-000027.pt"
+            },
+            {
+              "bytes": 19152,
+              "path": "trajectories/case-001/states/state-000028.pt"
+            },
+            {
+              "bytes": 19152,
+              "path": "trajectories/case-001/states/state-000029.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000030.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000031.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000032.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000033.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000034.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000035.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000036.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000037.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000038.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000039.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000040.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000041.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000042.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000043.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000044.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000045.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000046.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000047.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000048.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000049.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000050.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000051.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000052.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000053.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000054.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000055.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000056.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000057.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000058.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000059.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000060.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000061.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000062.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000063.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000064.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000065.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000066.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000067.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000068.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000069.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000070.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000071.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000072.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000073.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000074.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000075.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000076.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000077.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000078.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000079.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000080.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000081.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000082.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000083.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000084.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000085.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000086.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000087.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000088.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000089.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000090.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000091.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000092.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000093.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000094.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000095.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000096.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000097.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000098.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000099.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000100.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000101.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000102.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000103.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000104.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000105.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000106.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000107.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000108.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000109.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000110.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000111.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000112.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000113.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000114.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000115.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000116.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000117.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000118.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000119.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000120.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000121.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000122.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000123.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000124.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000125.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000126.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000127.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000128.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000129.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000130.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000131.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000132.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000133.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000134.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000135.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000136.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000137.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000138.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000139.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000140.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000141.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000142.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000143.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000144.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000145.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000146.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000147.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000148.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000149.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000150.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000151.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000152.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000153.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000154.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000155.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000156.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000157.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000158.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000159.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000160.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000161.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000162.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000163.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000164.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000165.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000166.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000167.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000168.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000169.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000170.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000171.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000172.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000173.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000174.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000175.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000176.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000177.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000178.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000179.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000180.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000181.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000182.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000183.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000184.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000185.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000186.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000187.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000188.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000189.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000190.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000191.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000192.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000193.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000194.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000195.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000196.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000197.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000198.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000199.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000200.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000201.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000202.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000203.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000204.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000205.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000206.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000207.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000208.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000209.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000210.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000211.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000212.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000213.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000214.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000215.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000216.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000217.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000218.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000219.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000220.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000221.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000222.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000223.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000224.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000225.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000226.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000227.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000228.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000229.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000230.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000231.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000232.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000233.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000234.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000235.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000236.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000237.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000238.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000239.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000240.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000241.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000242.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000243.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000244.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000245.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000246.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000247.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000248.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000249.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000250.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000251.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000252.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000253.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000254.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000255.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000256.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000257.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000258.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000259.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000260.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000261.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000262.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000263.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000264.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000265.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000266.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000267.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000268.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000269.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000270.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000271.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000272.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000273.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000274.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000275.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000276.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000277.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000278.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000279.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000280.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000281.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000282.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000283.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000284.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000285.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000286.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000287.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000288.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000289.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000290.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000291.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000292.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000293.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000294.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000295.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000296.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000297.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000298.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000299.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000300.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000301.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000302.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000303.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000304.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000305.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000306.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000307.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000308.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000309.pt"
+            },
+            {
+              "bytes": 19216,
+              "path": "trajectories/case-001/states/state-000310.pt"
+            },
+            {
+              "bytes": 45188,
+              "path": "trajectories/case-002/best/best-000000.pt"
+            },
+            {
+              "bytes": 1169,
+              "path": "trajectories/case-002/hard-cache/8d703cf2381b6fd07478456a15332e99c5e5c06963e6bd122279a8c3ea132d8d.json"
+            },
+            {
+              "bytes": 234,
+              "path": "trajectories/case-002/hard-cache/index.jsonl"
+            },
+            {
+              "bytes": 5551,
+              "path": "trajectories/case-002/manifest.json"
+            },
+            {
+              "bytes": 8419,
+              "path": "trajectories/case-002/observations/update-000000.json"
+            },
+            {
+              "bytes": 98872,
+              "path": "trajectories/case-002/observations/update-000000.pt"
+            },
+            {
+              "bytes": 8412,
+              "path": "trajectories/case-002/observations/update-000010.json"
+            },
+            {
+              "bytes": 98872,
+              "path": "trajectories/case-002/observations/update-000010.pt"
+            },
+            {
+              "bytes": 8396,
+              "path": "trajectories/case-002/observations/update-000020.json"
+            },
+            {
+              "bytes": 98872,
+              "path": "trajectories/case-002/observations/update-000020.pt"
+            },
+            {
+              "bytes": 1916,
+              "path": "trajectories/case-002/production-binding.json"
+            },
+            {
+              "bytes": 6819744,
+              "path": "trajectories/case-002/segments/from-000000/calls.jsonl"
+            },
+            {
+              "bytes": 5240,
+              "path": "trajectories/case-002/segments/from-000000/commits.jsonl"
+            },
+            {
+              "bytes": 3404,
+              "path": "trajectories/case-002/segments/from-000000/completion.json"
+            },
+            {
+              "bytes": 160,
+              "path": "trajectories/case-002/segments/from-000000/intent.json"
+            },
+            {
+              "bytes": 546842,
+              "path": "trajectories/case-002/segments/from-000000/updates.jsonl"
+            },
+            {
+              "bytes": 18640,
+              "path": "trajectories/case-002/states/state-000000.pt"
+            },
+            {
+              "bytes": 18640,
+              "path": "trajectories/case-002/states/state-000001.pt"
+            },
+            {
+              "bytes": 18640,
+              "path": "trajectories/case-002/states/state-000002.pt"
+            },
+            {
+              "bytes": 18640,
+              "path": "trajectories/case-002/states/state-000003.pt"
+            },
+            {
+              "bytes": 18640,
+              "path": "trajectories/case-002/states/state-000004.pt"
+            },
+            {
+              "bytes": 18640,
+              "path": "trajectories/case-002/states/state-000005.pt"
+            },
+            {
+              "bytes": 18640,
+              "path": "trajectories/case-002/states/state-000006.pt"
+            },
+            {
+              "bytes": 18640,
+              "path": "trajectories/case-002/states/state-000007.pt"
+            },
+            {
+              "bytes": 18640,
+              "path": "trajectories/case-002/states/state-000008.pt"
+            },
+            {
+              "bytes": 18640,
+              "path": "trajectories/case-002/states/state-000009.pt"
+            },
+            {
+              "bytes": 19152,
+              "path": "trajectories/case-002/states/state-000010.pt"
+            },
+            {
+              "bytes": 19152,
+              "path": "trajectories/case-002/states/state-000011.pt"
+            },
+            {
+              "bytes": 19152,
+              "path": "trajectories/case-002/states/state-000012.pt"
+            },
+            {
+              "bytes": 19152,
+              "path": "trajectories/case-002/states/state-000013.pt"
+            },
+            {
+              "bytes": 19152,
+              "path": "trajectories/case-002/states/state-000014.pt"
+            },
+            {
+              "bytes": 19152,
+              "path": "trajectories/case-002/states/state-000015.pt"
+            },
+            {
+              "bytes": 19152,
+              "path": "trajectories/case-002/states/state-000016.pt"
+            },
+            {
+              "bytes": 19152,
+              "path": "trajectories/case-002/states/state-000017.pt"
+            },
+            {
+              "bytes": 19152,
+              "path": "trajectories/case-002/states/state-000018.pt"
+            },
+            {
+              "bytes": 19152,
+              "path": "trajectories/case-002/states/state-000019.pt"
+            },
+            {
+              "bytes": 19152,
+              "path": "trajectories/case-002/states/state-000020.pt"
+            },
+            {
+              "bytes": 45188,
+              "path": "trajectories/case-003/best/best-000000.pt"
+            },
+            {
+              "bytes": 1171,
+              "path": "trajectories/case-003/hard-cache/d3d8d19f2035db5aad2fc9c71fbb6bf5b49af29d477ec9ea6ffaf18a61b53ae4.json"
+            },
+            {
+              "bytes": 234,
+              "path": "trajectories/case-003/hard-cache/index.jsonl"
+            },
+            {
+              "bytes": 5550,
+              "path": "trajectories/case-003/manifest.json"
+            },
+            {
+              "bytes": 8427,
+              "path": "trajectories/case-003/observations/update-000000.json"
+            },
+            {
+              "bytes": 98872,
+              "path": "trajectories/case-003/observations/update-000000.pt"
+            },
+            {
+              "bytes": 8436,
+              "path": "trajectories/case-003/observations/update-000010.json"
+            },
+            {
+              "bytes": 98872,
+              "path": "trajectories/case-003/observations/update-000010.pt"
+            },
+            {
+              "bytes": 8434,
+              "path": "trajectories/case-003/observations/update-000020.json"
+            },
+            {
+              "bytes": 98872,
+              "path": "trajectories/case-003/observations/update-000020.pt"
+            },
+            {
+              "bytes": 1915,
+              "path": "trajectories/case-003/production-binding.json"
+            },
+            {
+              "bytes": 3431868,
+              "path": "trajectories/case-003/segments/from-000000/calls.jsonl"
+            },
+            {
+              "bytes": 5240,
+              "path": "trajectories/case-003/segments/from-000000/commits.jsonl"
+            },
+            {
+              "bytes": 3403,
+              "path": "trajectories/case-003/segments/from-000000/completion.json"
+            },
+            {
+              "bytes": 160,
+              "path": "trajectories/case-003/segments/from-000000/intent.json"
+            },
+            {
+              "bytes": 776182,
+              "path": "trajectories/case-003/segments/from-000000/updates.jsonl"
+            },
+            {
+              "bytes": 18640,
+              "path": "trajectories/case-003/states/state-000000.pt"
+            },
+            {
+              "bytes": 18640,
+              "path": "trajectories/case-003/states/state-000001.pt"
+            },
+            {
+              "bytes": 18640,
+              "path": "trajectories/case-003/states/state-000002.pt"
+            },
+            {
+              "bytes": 18640,
+              "path": "trajectories/case-003/states/state-000003.pt"
+            },
+            {
+              "bytes": 18640,
+              "path": "trajectories/case-003/states/state-000004.pt"
+            },
+            {
+              "bytes": 18640,
+              "path": "trajectories/case-003/states/state-000005.pt"
+            },
+            {
+              "bytes": 18640,
+              "path": "trajectories/case-003/states/state-000006.pt"
+            },
+            {
+              "bytes": 18640,
+              "path": "trajectories/case-003/states/state-000007.pt"
+            },
+            {
+              "bytes": 18640,
+              "path": "trajectories/case-003/states/state-000008.pt"
+            },
+            {
+              "bytes": 18640,
+              "path": "trajectories/case-003/states/state-000009.pt"
+            },
+            {
+              "bytes": 19152,
+              "path": "trajectories/case-003/states/state-000010.pt"
+            },
+            {
+              "bytes": 19152,
+              "path": "trajectories/case-003/states/state-000011.pt"
+            },
+            {
+              "bytes": 19152,
+              "path": "trajectories/case-003/states/state-000012.pt"
+            },
+            {
+              "bytes": 19152,
+              "path": "trajectories/case-003/states/state-000013.pt"
+            },
+            {
+              "bytes": 19152,
+              "path": "trajectories/case-003/states/state-000014.pt"
+            },
+            {
+              "bytes": 19152,
+              "path": "trajectories/case-003/states/state-000015.pt"
+            },
+            {
+              "bytes": 19152,
+              "path": "trajectories/case-003/states/state-000016.pt"
+            },
+            {
+              "bytes": 19152,
+              "path": "trajectories/case-003/states/state-000017.pt"
+            },
+            {
+              "bytes": 19152,
+              "path": "trajectories/case-003/states/state-000018.pt"
+            },
+            {
+              "bytes": 19152,
+              "path": "trajectories/case-003/states/state-000019.pt"
+            },
+            {
+              "bytes": 19152,
+              "path": "trajectories/case-003/states/state-000020.pt"
+            }
+          ]
+        },
+        {
+          "actual_bytes": 23506,
+          "actual_files": 4,
+          "complete": true,
+          "nofollow": true,
+          "root": "/work3/s234818/latentmol/runs/source143-embedding-handoff-recovery-attempt002",
+          "rows": [
+            {
+              "bytes": 306,
+              "path": "readiness/cpu-tests.log"
+            },
+            {
+              "bytes": 13415,
+              "path": "readiness/cpu-tests.xml"
+            },
+            {
+              "bytes": 1759,
+              "path": "readiness/pilot-cli.json"
+            },
+            {
+              "bytes": 8026,
+              "path": "readiness/readiness.json"
+            }
+          ]
+        },
+        {
+          "actual_bytes": 47923,
+          "actual_files": 26,
+          "complete": true,
+          "nofollow": true,
+          "root": "/work3/s234818/latentmol/submissions/source142-epoch36-guarded-embedding-long-attempt001",
+          "rows": [
+            {
+              "bytes": 482,
+              "path": "advance-after-cpu.json"
+            },
+            {
+              "bytes": 484,
+              "path": "advance-after-fit.json"
+            },
+            {
+              "bytes": 502,
+              "path": "advance-after-pilot.json"
+            },
+            {
+              "bytes": 4411,
+              "path": "case-001-segment-0001-callback-intent.json"
+            },
+            {
+              "bytes": 246,
+              "path": "case-001-segment-0001-callback-receipt.json"
+            },
+            {
+              "bytes": 5651,
+              "path": "case-001-segment-0001-intent.json"
+            },
+            {
+              "bytes": 2122,
+              "path": "case-001-segment-0001-launch-quota.json"
+            },
+            {
+              "bytes": 250,
+              "path": "case-001-segment-0001-receipt.json"
+            },
+            {
+              "bytes": 3604,
+              "path": "cpu-callback-intent.json"
+            },
+            {
+              "bytes": 246,
+              "path": "cpu-callback-receipt.json"
+            },
+            {
+              "bytes": 556,
+              "path": "cpu-execution.json"
+            },
+            {
+              "bytes": 3847,
+              "path": "cpu-intent.json"
+            },
+            {
+              "bytes": 2122,
+              "path": "cpu-launch-quota.json"
+            },
+            {
+              "bytes": 246,
+              "path": "cpu-receipt.json"
+            },
+            {
+              "bytes": 3605,
+              "path": "fit-callback-intent.json"
+            },
+            {
+              "bytes": 246,
+              "path": "fit-callback-receipt.json"
+            },
+            {
+              "bytes": 556,
+              "path": "fit-execution.json"
+            },
+            {
+              "bytes": 4014,
+              "path": "fit-intent.json"
+            },
+            {
+              "bytes": 2122,
+              "path": "fit-launch-quota.json"
+            },
+            {
+              "bytes": 250,
+              "path": "fit-receipt.json"
+            },
+            {
+              "bytes": 4347,
+              "path": "pilot-callback-intent.json"
+            },
+            {
+              "bytes": 246,
+              "path": "pilot-callback-receipt.json"
+            },
+            {
+              "bytes": 557,
+              "path": "pilot-execution.json"
+            },
+            {
+              "bytes": 4839,
+              "path": "pilot-intent.json"
+            },
+            {
+              "bytes": 2122,
+              "path": "pilot-launch-quota.json"
+            },
+            {
+              "bytes": 250,
+              "path": "pilot-receipt.json"
+            }
+          ]
+        },
+        {
+          "actual_bytes": 11408,
+          "actual_files": 5,
+          "complete": true,
+          "nofollow": true,
+          "root": "/work3/s234818/latentmol/submissions/source143-embedding-handoff-recovery-attempt002",
+          "rows": [
+            {
+              "bytes": 5276,
+              "path": "readiness-cpu-intent.json"
+            },
+            {
+              "bytes": 246,
+              "path": "readiness-cpu-receipt.json"
+            },
+            {
+              "bytes": 3697,
+              "path": "scheduler/fit-1793217422854020757-terminal.json"
+            },
+            {
+              "bytes": 1063,
+              "path": "scheduler/fit-1793217422854020757.json"
+            },
+            {
+              "bytes": 1126,
+              "path": "scheduler/pilot-1793256075835102231.json"
+            }
+          ]
+        }
+      ],
+      "remaining_bytes": 22151969571,
+      "remaining_files": 149977,
+      "source_files_authenticated": 1247,
+      "version": "mosaic-authenticated-embedding-shared-quota-v1"
+    },
+    "shared_embedding_evidence": {
+      "bytes": 66543,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-22/chemistry-native-qualification-06/preflight/rolling-capacity-preflight-1793264937632682883/shared-embedding-observation.json",
+      "sha256": "3636b4a9d208f493f0f8812d19aac990192b53b7e47e2552cc59b545dccb004e"
+    },
+    "shared_vae_accounting": {
+      "VAE_hard_output_cap_added": false,
+      "VAE_jobs_or_settings_changed": false,
+      "accounted_job_ids": [
+        "29845931",
+        "29845932"
+      ],
+      "authentication": {
+        "VAE_jobs_or_settings_changed": false,
+        "original_minimum_free_gib": 10,
+        "source_files": 585,
+        "source_sha256": "ac6b06edeff9ce6d35413d84890ee3738a68f517230ac06bd6345f6f86ca4d65"
+      },
+      "cap_bytes": 10822267351,
+      "cap_files": 30076,
+      "forecast_held_until_Mosaic_work_ends": true,
+      "inventory": {
+        "actual_bytes": 326134762,
+        "actual_files": 171,
+        "complete": true,
+        "nofollow": true,
+        "root": "/work3/s234818/latentmol/runs/source140-epoch40-to45-continuation-attempt002",
+        "rows": [
+          {
+            "bytes": 46,
+            "path": "active-phase.json"
+          },
+          {
+            "bytes": 4830,
+            "path": "adoption.json"
+          },
+          {
+            "bytes": 404,
+            "path": "advance-after-benchmark-intent.json"
+          },
+          {
+            "bytes": 965,
+            "path": "advance-after-benchmark.json"
+          },
+          {
+            "bytes": 406,
+            "path": "advance-after-segment-001-intent.json"
+          },
+          {
+            "bytes": 967,
+            "path": "advance-after-segment-001.json"
+          },
+          {
+            "bytes": 4538,
+            "path": "allocations/20261028T083830Z_guarded-chemistry-cpu_e7bf12d2/command.log"
+          },
+          {
+            "bytes": 72119,
+            "path": "allocations/20261028T083830Z_guarded-chemistry-cpu_e7bf12d2/run.json"
+          },
+          {
+            "bytes": 965,
+            "path": "allocations/20261028T152051Z_source104-chemistry-segment-001_7463dd7f/command.log"
+          },
+          {
+            "bytes": 72844,
+            "path": "allocations/20261028T152051Z_source104-chemistry-segment-001_7463dd7f/run.json"
+          },
+          {
+            "bytes": 0,
+            "path": "allocations/20261029T060225Z_source104-chemistry-segment-002_34ddabf5/command.log"
+          },
+          {
+            "bytes": 72776,
+            "path": "allocations/20261029T060225Z_source104-chemistry-segment-002_34ddabf5/run.json"
+          },
+          {
+            "bytes": 5742240,
+            "path": "benchmark_gate.json"
+          },
+          {
+            "bytes": 4137,
+            "path": "cpu_gate.json"
+          },
+          {
+            "bytes": 1604,
+            "path": "cuda-ownership-segment-001.json"
+          },
+          {
+            "bytes": 1604,
+            "path": "cuda-ownership-segment-002.json"
+          },
+          {
+            "bytes": 355,
+            "path": "cuda-ownership/segment-001/probe-001.json"
+          },
+          {
+            "bytes": 355,
+            "path": "cuda-ownership/segment-001/probe-002.json"
+          },
+          {
+            "bytes": 355,
+            "path": "cuda-ownership/segment-002/probe-001.json"
+          },
+          {
+            "bytes": 355,
+            "path": "cuda-ownership/segment-002/probe-002.json"
+          },
+          {
+            "bytes": 2919737,
+            "path": "early-health-baseline.json"
+          },
+          {
+            "bytes": 591,
+            "path": "epoch40-handoff.json"
+          },
+          {
+            "bytes": 71845,
+            "path": "failure_readiness.json"
+          },
+          {
+            "bytes": 547,
+            "path": "generation-segment-001.json"
+          },
+          {
+            "bytes": 32185,
+            "path": "generation/epoch0040/metrics.json"
+          },
+          {
+            "bytes": 303662,
+            "path": "generation/epoch0040/prior-seed-140041.jsonl.gz"
+          },
+          {
+            "bytes": 301804,
+            "path": "generation/epoch0040/prior-seed-140042.jsonl.gz"
+          },
+          {
+            "bytes": 32095,
+            "path": "generation/epoch0041/metrics.json"
+          },
+          {
+            "bytes": 302899,
+            "path": "generation/epoch0041/prior-seed-140041.jsonl.gz"
+          },
+          {
+            "bytes": 304283,
+            "path": "generation/epoch0041/prior-seed-140042.jsonl.gz"
+          },
+          {
+            "bytes": 392787,
+            "path": "guarded-cpu-pytest.xml"
+          },
+          {
+            "bytes": 2177,
+            "path": "initial_quota.json"
+          },
+          {
+            "bytes": 1574,
+            "path": "launch-command-001.json"
+          },
+          {
+            "bytes": 1586,
+            "path": "launch-command-002.json"
+          },
+          {
+            "bytes": 207,
+            "path": "observation-receipts/epoch0041.json"
+          },
+          {
+            "bytes": 0,
+            "path": "phase-logs/segment-001-baseline.log"
+          },
+          {
+            "bytes": 0,
+            "path": "phase-logs/segment-001-observe-epoch0041.log"
+          },
+          {
+            "bytes": 0,
+            "path": "phase-logs/segment-001-ownership-probe-001.log"
+          },
+          {
+            "bytes": 0,
+            "path": "phase-logs/segment-001-ownership-probe-002.log"
+          },
+          {
+            "bytes": 4675005,
+            "path": "phase-logs/segment-001-trainer.log"
+          },
+          {
+            "bytes": 0,
+            "path": "phase-logs/segment-002-ownership-probe-001.log"
+          },
+          {
+            "bytes": 0,
+            "path": "phase-logs/segment-002-ownership-probe-002.log"
+          },
+          {
+            "bytes": 1341199,
+            "path": "phase-logs/segment-002-trainer.log"
+          },
+          {
+            "bytes": 1197,
+            "path": "predecessor-stop-29838695.json"
+          },
+          {
+            "bytes": 1197,
+            "path": "predecessor-stop-29838696.json"
+          },
+          {
+            "bytes": 1197,
+            "path": "predecessor-stop-29838766.json"
+          },
+          {
+            "bytes": 1197,
+            "path": "predecessor-stop-initial.json"
+          },
+          {
+            "bytes": 2180,
+            "path": "quota-before-001.json"
+          },
+          {
+            "bytes": 2180,
+            "path": "quota-before-002.json"
+          },
+          {
+            "bytes": 1318,
+            "path": "receipts/after-cpu-intent.json"
+          },
+          {
+            "bytes": 1455,
+            "path": "receipts/after-cpu-receipt.json"
+          },
+          {
+            "bytes": 99,
+            "path": "receipts/after-cpu-reply.json"
+          },
+          {
+            "bytes": 1366,
+            "path": "receipts/after-segment-001-intent.json"
+          },
+          {
+            "bytes": 1503,
+            "path": "receipts/after-segment-001-receipt.json"
+          },
+          {
+            "bytes": 99,
+            "path": "receipts/after-segment-001-reply.json"
+          },
+          {
+            "bytes": 1366,
+            "path": "receipts/after-segment-002-intent.json"
+          },
+          {
+            "bytes": 1503,
+            "path": "receipts/after-segment-002-receipt.json"
+          },
+          {
+            "bytes": 99,
+            "path": "receipts/after-segment-002-reply.json"
+          },
+          {
+            "bytes": 1893,
+            "path": "receipts/cpu-intent.json"
+          },
+          {
+            "bytes": 2026,
+            "path": "receipts/cpu-receipt.json"
+          },
+          {
+            "bytes": 99,
+            "path": "receipts/cpu-reply.json"
+          },
+          {
+            "bytes": 352,
+            "path": "receipts/identity.json"
+          },
+          {
+            "bytes": 2582,
+            "path": "receipts/segment-001-intent.json"
+          },
+          {
+            "bytes": 2723,
+            "path": "receipts/segment-001-receipt.json"
+          },
+          {
+            "bytes": 103,
+            "path": "receipts/segment-001-reply.json"
+          },
+          {
+            "bytes": 2588,
+            "path": "receipts/segment-002-intent.json"
+          },
+          {
+            "bytes": 2729,
+            "path": "receipts/segment-002-receipt.json"
+          },
+          {
+            "bytes": 103,
+            "path": "receipts/segment-002-reply.json"
+          },
+          {
+            "bytes": 25353,
+            "path": "repair_profile.json"
+          },
+          {
+            "bytes": 686,
+            "path": "segment-001-completion.json"
+          },
+          {
+            "bytes": 686,
+            "path": "segments/001/20261028T152712Z_chemistry-train_10e3082e/completion.json"
+          },
+          {
+            "bytes": 2911783,
+            "path": "segments/001/20261028T152712Z_chemistry-train_10e3082e/early_health/update_000263856.json"
+          },
+          {
+            "bytes": 2912084,
+            "path": "segments/001/20261028T152712Z_chemistry-train_10e3082e/early_health/update_000263956.json"
+          },
+          {
+            "bytes": 2913157,
+            "path": "segments/001/20261028T152712Z_chemistry-train_10e3082e/early_health/update_000264056.json"
+          },
+          {
+            "bytes": 2914108,
+            "path": "segments/001/20261028T152712Z_chemistry-train_10e3082e/early_health/update_000264156.json"
+          },
+          {
+            "bytes": 2913273,
+            "path": "segments/001/20261028T152712Z_chemistry-train_10e3082e/early_health/update_000264256.json"
+          },
+          {
+            "bytes": 2907892,
+            "path": "segments/001/20261028T152712Z_chemistry-train_10e3082e/early_health/update_000264356.json"
+          },
+          {
+            "bytes": 2908969,
+            "path": "segments/001/20261028T152712Z_chemistry-train_10e3082e/early_health/update_000264456.json"
+          },
+          {
+            "bytes": 2909009,
+            "path": "segments/001/20261028T152712Z_chemistry-train_10e3082e/early_health/update_000264556.json"
+          },
+          {
+            "bytes": 2909289,
+            "path": "segments/001/20261028T152712Z_chemistry-train_10e3082e/early_health/update_000264656.json"
+          },
+          {
+            "bytes": 2910950,
+            "path": "segments/001/20261028T152712Z_chemistry-train_10e3082e/early_health/update_000264756.json"
+          },
+          {
+            "bytes": 2911404,
+            "path": "segments/001/20261028T152712Z_chemistry-train_10e3082e/early_health/update_000264856.json"
+          },
+          {
+            "bytes": 2912443,
+            "path": "segments/001/20261028T152712Z_chemistry-train_10e3082e/early_health/update_000264956.json"
+          },
+          {
+            "bytes": 2912920,
+            "path": "segments/001/20261028T152712Z_chemistry-train_10e3082e/early_health/update_000265056.json"
+          },
+          {
+            "bytes": 2911958,
+            "path": "segments/001/20261028T152712Z_chemistry-train_10e3082e/early_health/update_000265156.json"
+          },
+          {
+            "bytes": 2911885,
+            "path": "segments/001/20261028T152712Z_chemistry-train_10e3082e/early_health/update_000265256.json"
+          },
+          {
+            "bytes": 2911606,
+            "path": "segments/001/20261028T152712Z_chemistry-train_10e3082e/early_health/update_000265356.json"
+          },
+          {
+            "bytes": 2912121,
+            "path": "segments/001/20261028T152712Z_chemistry-train_10e3082e/early_health/update_000265456.json"
+          },
+          {
+            "bytes": 2911625,
+            "path": "segments/001/20261028T152712Z_chemistry-train_10e3082e/early_health/update_000265556.json"
+          },
+          {
+            "bytes": 2911667,
+            "path": "segments/001/20261028T152712Z_chemistry-train_10e3082e/early_health/update_000265656.json"
+          },
+          {
+            "bytes": 2912632,
+            "path": "segments/001/20261028T152712Z_chemistry-train_10e3082e/early_health/update_000265756.json"
+          },
+          {
+            "bytes": 3635772,
+            "path": "segments/001/20261028T152712Z_chemistry-train_10e3082e/early_health/update_000265856.json"
+          },
+          {
+            "bytes": 2910845,
+            "path": "segments/001/20261028T152712Z_chemistry-train_10e3082e/early_health/update_000265956.json"
+          },
+          {
+            "bytes": 2912891,
+            "path": "segments/001/20261028T152712Z_chemistry-train_10e3082e/early_health/update_000266056.json"
+          },
+          {
+            "bytes": 2913044,
+            "path": "segments/001/20261028T152712Z_chemistry-train_10e3082e/early_health/update_000266156.json"
+          },
+          {
+            "bytes": 2910768,
+            "path": "segments/001/20261028T152712Z_chemistry-train_10e3082e/early_health/update_000266256.json"
+          },
+          {
+            "bytes": 2911258,
+            "path": "segments/001/20261028T152712Z_chemistry-train_10e3082e/early_health/update_000266356.json"
+          },
+          {
+            "bytes": 2914376,
+            "path": "segments/001/20261028T152712Z_chemistry-train_10e3082e/early_health/update_000266456.json"
+          },
+          {
+            "bytes": 2911773,
+            "path": "segments/001/20261028T152712Z_chemistry-train_10e3082e/early_health/update_000266556.json"
+          },
+          {
+            "bytes": 2913434,
+            "path": "segments/001/20261028T152712Z_chemistry-train_10e3082e/early_health/update_000266656.json"
+          },
+          {
+            "bytes": 2909740,
+            "path": "segments/001/20261028T152712Z_chemistry-train_10e3082e/early_health/update_000266756.json"
+          },
+          {
+            "bytes": 2912337,
+            "path": "segments/001/20261028T152712Z_chemistry-train_10e3082e/early_health/update_000266856.json"
+          },
+          {
+            "bytes": 2913170,
+            "path": "segments/001/20261028T152712Z_chemistry-train_10e3082e/early_health/update_000266956.json"
+          },
+          {
+            "bytes": 2914926,
+            "path": "segments/001/20261028T152712Z_chemistry-train_10e3082e/early_health/update_000267056.json"
+          },
+          {
+            "bytes": 2912724,
+            "path": "segments/001/20261028T152712Z_chemistry-train_10e3082e/early_health/update_000267156.json"
+          },
+          {
+            "bytes": 2913946,
+            "path": "segments/001/20261028T152712Z_chemistry-train_10e3082e/early_health/update_000267256.json"
+          },
+          {
+            "bytes": 2911173,
+            "path": "segments/001/20261028T152712Z_chemistry-train_10e3082e/early_health/update_000267356.json"
+          },
+          {
+            "bytes": 2909524,
+            "path": "segments/001/20261028T152712Z_chemistry-train_10e3082e/early_health/update_000267456.json"
+          },
+          {
+            "bytes": 2909768,
+            "path": "segments/001/20261028T152712Z_chemistry-train_10e3082e/early_health/update_000267556.json"
+          },
+          {
+            "bytes": 2910110,
+            "path": "segments/001/20261028T152712Z_chemistry-train_10e3082e/early_health/update_000267656.json"
+          },
+          {
+            "bytes": 2911478,
+            "path": "segments/001/20261028T152712Z_chemistry-train_10e3082e/early_health/update_000267756.json"
+          },
+          {
+            "bytes": 2908384,
+            "path": "segments/001/20261028T152712Z_chemistry-train_10e3082e/early_health/update_000267856.json"
+          },
+          {
+            "bytes": 2913665,
+            "path": "segments/001/20261028T152712Z_chemistry-train_10e3082e/early_health/update_000267956.json"
+          },
+          {
+            "bytes": 2914560,
+            "path": "segments/001/20261028T152712Z_chemistry-train_10e3082e/early_health/update_000268056.json"
+          },
+          {
+            "bytes": 2912978,
+            "path": "segments/001/20261028T152712Z_chemistry-train_10e3082e/early_health/update_000268156.json"
+          },
+          {
+            "bytes": 2909750,
+            "path": "segments/001/20261028T152712Z_chemistry-train_10e3082e/early_health/update_000268256.json"
+          },
+          {
+            "bytes": 2912465,
+            "path": "segments/001/20261028T152712Z_chemistry-train_10e3082e/early_health/update_000268356.json"
+          },
+          {
+            "bytes": 2909877,
+            "path": "segments/001/20261028T152712Z_chemistry-train_10e3082e/early_health/update_000268456.json"
+          },
+          {
+            "bytes": 2913744,
+            "path": "segments/001/20261028T152712Z_chemistry-train_10e3082e/early_health/update_000268556.json"
+          },
+          {
+            "bytes": 2911945,
+            "path": "segments/001/20261028T152712Z_chemistry-train_10e3082e/early_health/update_000268656.json"
+          },
+          {
+            "bytes": 2915107,
+            "path": "segments/001/20261028T152712Z_chemistry-train_10e3082e/early_health/update_000268756.json"
+          },
+          {
+            "bytes": 2913589,
+            "path": "segments/001/20261028T152712Z_chemistry-train_10e3082e/early_health/update_000268856.json"
+          },
+          {
+            "bytes": 2907332,
+            "path": "segments/001/20261028T152712Z_chemistry-train_10e3082e/early_health/update_000268956.json"
+          },
+          {
+            "bytes": 2911904,
+            "path": "segments/001/20261028T152712Z_chemistry-train_10e3082e/early_health/update_000269056.json"
+          },
+          {
+            "bytes": 4355114,
+            "path": "segments/001/20261028T152712Z_chemistry-train_10e3082e/early_health/update_000269156.json"
+          },
+          {
+            "bytes": 2910676,
+            "path": "segments/001/20261028T152712Z_chemistry-train_10e3082e/early_health/update_000269256.json"
+          },
+          {
+            "bytes": 2908684,
+            "path": "segments/001/20261028T152712Z_chemistry-train_10e3082e/early_health/update_000269356.json"
+          },
+          {
+            "bytes": 2911606,
+            "path": "segments/001/20261028T152712Z_chemistry-train_10e3082e/early_health/update_000269456.json"
+          },
+          {
+            "bytes": 2915153,
+            "path": "segments/001/20261028T152712Z_chemistry-train_10e3082e/early_health/update_000269556.json"
+          },
+          {
+            "bytes": 2909224,
+            "path": "segments/001/20261028T152712Z_chemistry-train_10e3082e/early_health/update_000269656.json"
+          },
+          {
+            "bytes": 2910484,
+            "path": "segments/001/20261028T152712Z_chemistry-train_10e3082e/early_health/update_000269756.json"
+          },
+          {
+            "bytes": 2911282,
+            "path": "segments/001/20261028T152712Z_chemistry-train_10e3082e/early_health/update_000269856.json"
+          },
+          {
+            "bytes": 2912149,
+            "path": "segments/001/20261028T152712Z_chemistry-train_10e3082e/early_health/update_000269956.json"
+          },
+          {
+            "bytes": 2909250,
+            "path": "segments/001/20261028T152712Z_chemistry-train_10e3082e/early_health/update_000270056.json"
+          },
+          {
+            "bytes": 2911094,
+            "path": "segments/001/20261028T152712Z_chemistry-train_10e3082e/early_health/update_000270156.json"
+          },
+          {
+            "bytes": 2910356,
+            "path": "segments/001/20261028T152712Z_chemistry-train_10e3082e/early_health/update_000270256.json"
+          },
+          {
+            "bytes": 2909688,
+            "path": "segments/001/20261028T152712Z_chemistry-train_10e3082e/early_health/update_000270356.json"
+          },
+          {
+            "bytes": 2909433,
+            "path": "segments/001/20261028T152712Z_chemistry-train_10e3082e/early_health/update_000270436.json"
+          },
+          {
+            "bytes": 47676766,
+            "path": "segments/001/20261028T152712Z_chemistry-train_10e3082e/epoch_0041.pt"
+          },
+          {
+            "bytes": 25623,
+            "path": "segments/001/20261028T152712Z_chemistry-train_10e3082e/latest_epoch.json"
+          },
+          {
+            "bytes": 4671362,
+            "path": "segments/001/20261028T152712Z_chemistry-train_10e3082e/metrics.jsonl"
+          },
+          {
+            "bytes": 2171464,
+            "path": "segments/001/20261028T152712Z_chemistry-train_10e3082e/optimizer-steps-epoch-041.jsonl"
+          },
+          {
+            "bytes": 132819,
+            "path": "segments/001/20261028T152712Z_chemistry-train_10e3082e/run.json"
+          },
+          {
+            "bytes": 3079,
+            "path": "segments/001/20261028T152712Z_chemistry-train_10e3082e/worker-startup.json"
+          },
+          {
+            "bytes": 2910727,
+            "path": "segments/002/20261029T060320Z_chemistry-train_c3f4a7c8/early_health/update_000270456.json"
+          },
+          {
+            "bytes": 2910091,
+            "path": "segments/002/20261029T060320Z_chemistry-train_c3f4a7c8/early_health/update_000270556.json"
+          },
+          {
+            "bytes": 2910275,
+            "path": "segments/002/20261029T060320Z_chemistry-train_c3f4a7c8/early_health/update_000270656.json"
+          },
+          {
+            "bytes": 2908364,
+            "path": "segments/002/20261029T060320Z_chemistry-train_c3f4a7c8/early_health/update_000270756.json"
+          },
+          {
+            "bytes": 2910648,
+            "path": "segments/002/20261029T060320Z_chemistry-train_c3f4a7c8/early_health/update_000270856.json"
+          },
+          {
+            "bytes": 2911137,
+            "path": "segments/002/20261029T060320Z_chemistry-train_c3f4a7c8/early_health/update_000270956.json"
+          },
+          {
+            "bytes": 2908994,
+            "path": "segments/002/20261029T060320Z_chemistry-train_c3f4a7c8/early_health/update_000271056.json"
+          },
+          {
+            "bytes": 2911122,
+            "path": "segments/002/20261029T060320Z_chemistry-train_c3f4a7c8/early_health/update_000271156.json"
+          },
+          {
+            "bytes": 2908002,
+            "path": "segments/002/20261029T060320Z_chemistry-train_c3f4a7c8/early_health/update_000271256.json"
+          },
+          {
+            "bytes": 2906370,
+            "path": "segments/002/20261029T060320Z_chemistry-train_c3f4a7c8/early_health/update_000271356.json"
+          },
+          {
+            "bytes": 2908171,
+            "path": "segments/002/20261029T060320Z_chemistry-train_c3f4a7c8/early_health/update_000271456.json"
+          },
+          {
+            "bytes": 2910136,
+            "path": "segments/002/20261029T060320Z_chemistry-train_c3f4a7c8/early_health/update_000271556.json"
+          },
+          {
+            "bytes": 2910170,
+            "path": "segments/002/20261029T060320Z_chemistry-train_c3f4a7c8/early_health/update_000271656.json"
+          },
+          {
+            "bytes": 2909725,
+            "path": "segments/002/20261029T060320Z_chemistry-train_c3f4a7c8/early_health/update_000271756.json"
+          },
+          {
+            "bytes": 2909024,
+            "path": "segments/002/20261029T060320Z_chemistry-train_c3f4a7c8/early_health/update_000271856.json"
+          },
+          {
+            "bytes": 2909942,
+            "path": "segments/002/20261029T060320Z_chemistry-train_c3f4a7c8/early_health/update_000271956.json"
+          },
+          {
+            "bytes": 2910993,
+            "path": "segments/002/20261029T060320Z_chemistry-train_c3f4a7c8/early_health/update_000272056.json"
+          },
+          {
+            "bytes": 2911707,
+            "path": "segments/002/20261029T060320Z_chemistry-train_c3f4a7c8/early_health/update_000272156.json"
+          },
+          {
+            "bytes": 2910920,
+            "path": "segments/002/20261029T060320Z_chemistry-train_c3f4a7c8/early_health/update_000272256.json"
+          },
+          {
+            "bytes": 1340607,
+            "path": "segments/002/20261029T060320Z_chemistry-train_c3f4a7c8/metrics.jsonl"
+          },
+          {
+            "bytes": 603754,
+            "path": "segments/002/20261029T060320Z_chemistry-train_c3f4a7c8/optimizer-steps-epoch-042.jsonl"
+          },
+          {
+            "bytes": 132525,
+            "path": "segments/002/20261029T060320Z_chemistry-train_c3f4a7c8/run.json"
+          },
+          {
+            "bytes": 3076,
+            "path": "segments/002/20261029T060320Z_chemistry-train_c3f4a7c8/worker-startup.json"
+          },
+          {
+            "bytes": 3733,
+            "path": "stability_gate.json"
+          },
+          {
+            "bytes": 2190,
+            "path": "training-launch-cuda-gate.json"
+          },
+          {
+            "bytes": 110324,
+            "path": "training-launch-cuda-pytest.xml"
+          },
+          {
+            "bytes": 1670,
+            "path": "training_composition.json"
+          }
+        ]
+      },
+      "remaining_bytes": 10496132589,
+      "remaining_files": 29905,
+      "version": "mosaic-authenticated-vae-shared-quota-v1",
+      "whole_account_reservation": false
+    },
+    "shared_vae_evidence": {
+      "bytes": 22239,
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-22/chemistry-native-qualification-06/preflight/rolling-capacity-preflight-1793264937632682883/shared-vae-observation.json",
+      "sha256": "ac606eec3433d59925390bf0057d0d88775d2200e097677dcc8f9814722e2f23"
+    },
+    "source_manifest_sha256": "f930989518b848f4247b77977a4258a66a278ce0ac17521bea3bf19c676bbc8b",
+    "status": "passed",
+    "version": "mosaic-rolling-segment-capacity-v1"
+  }
+}

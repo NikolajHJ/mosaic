@@ -1,0 +1,38 @@
+{
+  "status": "passed_independent_byte_LSF_GPU_submission_shared_registry_full_storage_audit",
+  "observed_utc": "2026-10-29T09:16:29.346198+00:00",
+  "files_verified": 7,
+  "CPU_cases_passed": 43,
+  "CPU_job": "29846779",
+  "controller_job": "29846780",
+  "controller_state": "DONE",
+  "GPU_job": "29846795",
+  "GPU_state": "PEND",
+  "storage_gates": [
+    {
+      "required_bytes": 41294537068,
+      "available_bytes": 42929551915,
+      "reserve_bytes": 4294967296
+    },
+    {
+      "required_bytes": 41295488611,
+      "available_bytes": 42930503458,
+      "reserve_bytes": 4294967296
+    }
+  ],
+  "current_shared_registry": {
+    "after-cpu": "29846751",
+    "chemistry-native-qualification-06/after-cpu": "29846780",
+    "chemistry-native-qualification-06/cpu": "29846779",
+    "chemistry-native-qualification-06/gpu-protenix": "29846795",
+    "cpu": "29846750",
+    "dbmol-after-validate-07500": "29846767",
+    "dbmol-validate-07500": "29846766",
+    "protenix-after-validate-20000": "29846765",
+    "protenix-validate-20000": "29846764"
+  },
+  "native_component_pass_yet": false,
+  "combined_chemistry_admission_pass_yet": false,
+  "optimizer_submitted": false,
+  "saved_results_or_settings_changed": false
+}
