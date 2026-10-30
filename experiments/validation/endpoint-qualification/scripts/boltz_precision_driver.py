@@ -102,7 +102,7 @@ def main():
             prepared.verify(spec)
             return float(scalar),{f:np.asarray(getattr(gradient,f)) for f in ('atoms','bonds')}
         def measure(values,reference,gradient=True,use_cache=True):
-            manager=jax.experimental.enable_x64() if reference else nullcontext()
+            manager=jax.enable_x64(True) if reference else nullcontext()
             with manager:
                 dtype=jnp.float64 if reference else jnp.float32
                 state=GraphLogits(jnp.asarray(values['atom_logits'],dtype=dtype),jnp.asarray(values['bond_logits'],dtype=dtype))

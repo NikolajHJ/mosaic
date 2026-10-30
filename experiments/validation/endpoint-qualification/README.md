@@ -428,3 +428,6 @@ current campaign before assuming an optimizer exists.
 
 
 Current metadata handoff repair is [production03](runs/20261030-protenix-runtime-production-03/README.md). Production02 CPU1035/actual segment/reference startups passed, but its controller expected a nonexistent readiness object instead of checking original_argv. New03 verifies the real unique ready/SHA/snapshot/offset/step arguments in CPU and controller;32portable controls and1037allocated cases precede any optimizer. Source02/failed callback and all saved results remain preserved; actual campaign determines status.
+
+
+Current30October09:42UTC: [Boltz objective reference04](runs/20261030-boltz-objective-precision-04/README.md) fixes the obsolete scoped JAX precision API, preserving original math/settings/failures.03CPU ran51cases:48pass/3exact API failures; no GPU.04source13 is staged/byte-audited but fresh full capacity is863,903,549bytes short, so NO04CPU/GPU/optimizer job exists. Original full projections/4GiB/100000file gates remain; current campaign/receipts override older queued prose.

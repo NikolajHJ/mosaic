@@ -8,9 +8,12 @@
   "plan_sha256": "1c947be79e1d4a464ed5ac1a0327eec5f2f9e157750914e31a83d3f469011aae",
   "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/runtime-production-03/boltz-precision-02",
   "source": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/boltz-precision-release-02/source",
-  "status": "source02_staged_sources_inputs_verified_preflight_short_then_new_unknown_writer_no_jobs",
+  "status": "verified_same_job_resource_ENTRY_EXIT_before_fixtures_models_or_GPU_dispatch",
   "tag": "20261030-boltz-objective-precision-02",
-  "jobs": {},
+  "jobs": {
+    "cpu": "29852844",
+    "after-cpu": "29852847"
+  },
   "resource_block": {
     "status": "source02_staged_sources_inputs_verified_preflight_short_then_new_unknown_writer_no_jobs",
     "gates": [
@@ -37,5 +40,44 @@
     },
     "source_audit": "status01/verification.json",
     "settings_saved_results_and_checks_unchanged": true
+  },
+  "latest_full_storage": {
+    "required_bytes": 39420225462,
+    "available_bytes": 39630063737,
+    "reserve_bytes": 4294967296,
+    "file_reserve": 100000
+  },
+  "terminal_verification": {
+    "status": "verified_same_job_resource_ENTRY_EXIT_before_fixtures_models_or_GPU_dispatch",
+    "observed_utc": "2026-10-30T09:16:36.434434+00:00",
+    "jobs": {
+      "after-cpu": "29852847",
+      "cpu": "29852844"
+    },
+    "source_manifest_sha256": "3c9805af9891a8c140fa36976f3f19293814ad1e47ea7e9be8ccfc47388ae209",
+    "actual_numerical_cases": 0,
+    "scientific_outputs": 0,
+    "GPU_jobs": [],
+    "LSF": [
+      {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/runtime-production-03/boltz-precision-02/after-cpu/stdout.29852847.log",
+        "bytes": 2238,
+        "sha256": "c5c263a3f5bc5d783c122dc2d67891930fe5778832bc9d86e0d7cfaa04b68e67"
+      },
+      {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/runtime-production-03/boltz-precision-02/cpu/stdout.29852844.log",
+        "bytes": 2217,
+        "sha256": "8cf2734f8e83e9702293c54a8be848f523e205d0dfd33daab3575582aae23df9"
+      }
+    ],
+    "error": "Unrelated active account writer has no authenticated bounded declaration: 29852804",
+    "initial_FULL_storage_pass": {
+      "required_bytes": 39420225462,
+      "available_bytes": 39630063737,
+      "reserve_bytes": 4294967296,
+      "file_reserve": 100000
+    },
+    "packet_sha256": "f75a5f1e66e9c0e3c4a599801720da35d07bcb62880504db36da1bacf89cde85",
+    "old_failed_preflights_preserved": true
   }
 }

@@ -1,0 +1,153 @@
+{
+  "all_cpu_counts": {
+    "tests.test_boltz_precision_portable": 11,
+    "tests.test_boltz_reference_jax": 3,
+    "tests.test_boltz_reference_torch": 8,
+    "tests.test_boltz_resource_retry": 4,
+    "tests.test_dbmol_reference": 17,
+    "tests.test_qualification_writer_capacity": 8
+  },
+  "files": {
+    "README.md": "750a9e5cfc03f476025d56b304c0e63424fdc77237d88d6dca1be7786c3092e4",
+    "plan.json": "f923acf4f745d81d102af733fb3a0b8863c091d81f3a2eb447e9320c34ea543c",
+    "scripts/boltz_objective_reference.py": "023848909d3c07cd6344f645a77417f101d2991f62ab32af4702240436e252e5",
+    "scripts/boltz_precision_driver.py": "0237b744c447d33de146412e17f244161c52d05e6d17b3cd325ce9f03ae6ee40",
+    "scripts/boltz_precision_ops.py": "73274aa4ed075c3c717bfaaa237dc45397b7ceeb4825954f80a6b84b2ce9afab",
+    "scripts/boltz_precision_server.py": "9d1e0eecd86eb4d0ce8e808b57fd5d975cab4585b85b08905371ae2b046b80ed",
+    "scripts/boltz_precision_stage.lsf": "57d681ad98a03f588776aad81fdf15647103e05339190f3f582d748198050c2c",
+    "scripts/qualification_writer_capacity.py": "2ce52bb21320ebec9405859790170c0758b75c241d84329e14f64a5b739a5916",
+    "tests/test_boltz_precision_portable.py": "864e28d50d837549b3ed0de7daeac115b8da41028981e7b46a9a5d4269f0cbbb",
+    "tests/test_boltz_reference_jax.py": "38c83af0fa5cb1e838996f06557214873bcabcf1b31ed834d47fa0a1378733c5",
+    "tests/test_boltz_reference_torch.py": "7f173ebe1cc3ce7e7f157c92b05698d85321c5e8324cf667ae039bd09e49f705",
+    "tests/test_boltz_resource_retry.py": "78f819e0c8548c1716a4cdb75b7fdcfaa00a38155e5746945037f0e749dc0b22",
+    "tests/test_qualification_writer_capacity.py": "4a2e8e2de1763446c771f0456eb1f715987a5b416ad050528083b735269fcfbe"
+  },
+  "jax_cpu_counts": {
+    "tests.test_boltz_precision_portable": 11,
+    "tests.test_boltz_reference_jax": 3,
+    "tests.test_boltz_resource_retry": 4,
+    "tests.test_qualification_writer_capacity": 8
+  },
+  "optimizer_submission_allowed": false,
+  "parent_sources": [
+    {
+      "files": 50,
+      "manifest_sha256": "8324c1d312adeaa4c67c475c01ef1217df6f3ad4044b997d1b73e168325412d3",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-release-26/source"
+    },
+    {
+      "files": 13,
+      "manifest_sha256": "d127d6abe87307a5d305edb6d04e3a32e3545c508e58b82ce45290e0f3fc03d8",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-forensics-release-01/source"
+    },
+    {
+      "files": 643,
+      "manifest_sha256": "da9db6821d26b884ca1749303fc8e0b0095bd9ee7cbd1b427cdcf1b22eec6562",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source"
+    },
+    {
+      "files": 10,
+      "manifest_sha256": "2b0356e63e74de8c1e112c47b8aedfdad9eaea70b66bf6a790abee29488718d4",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/chemistry-continuation-release-05/source"
+    },
+    {
+      "files": 6,
+      "manifest_sha256": "6c2f080b5355d2526d690a48e80aad4c65fc6af7bb60f39c2e7b0dc6b12f8879",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/boundary-diagnostics-release-02/source"
+    },
+    {
+      "files": 6,
+      "manifest_sha256": "c9ee1b491f6e292032662b4fe0a957a66ff71e121a6805fc40c5a0a134b1baec",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/boundary-diagnostics-release-03/source"
+    },
+    {
+      "files": 6,
+      "manifest_sha256": "54463071451fdc728fc23d7e9d226b7ffee6bef7f8edb931bb1bd3f163df3d9e",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/boundary-diagnostics-release-04/source"
+    },
+    {
+      "files": 6,
+      "manifest_sha256": "c30234e4a9a8bef64ec58577d2bf9f8a745121bb46b9978051c7c75e2b016943",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/boundary-diagnostics-release-05/source"
+    },
+    {
+      "files": 6,
+      "manifest_sha256": "2c52935397059e8684d7ae4b1d084b7d5b4a563266f7cd929077052c9354c594",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/boundary-diagnostics-release-06/source"
+    },
+    {
+      "files": 6,
+      "manifest_sha256": "263dd96fc1dd5fc2ddcabf559c2d402f6d35b8393cc249cef31884206cd9b3d2",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/boundary-diagnostics-release-07/source"
+    },
+    {
+      "files": 6,
+      "manifest_sha256": "4d7e7d932aa147dc8303f808eb02c888e511a3640a31c4352c6bab7c5fe31faf",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/boundary-diagnostics-release-08/source"
+    },
+    {
+      "files": 6,
+      "manifest_sha256": "cda9744858ff674bc4755bf5af76b9f8c78ac24747ff72165f4e2b2627ca4b28",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/boundary-diagnostics-release-09/source"
+    },
+    {
+      "files": 6,
+      "manifest_sha256": "38bdf38decb4c3d96ad270e24d6b9c1a1d6a81980020d474db6adbbf70270d22",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/boundary-diagnostics-release-10/source"
+    },
+    {
+      "files": 6,
+      "manifest_sha256": "9108a418953a4ee7f4d481667ac4a5035402c96f10179f1e8a44c3358af965ab",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/runtime-qualification-release-01/source"
+    },
+    {
+      "files": 7,
+      "manifest_sha256": "443b4c098bf859163a1fd16ee70bfc7d8ab7b9fbf730c2b32ac19c285155ceda",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/runtime-production-release-01/source"
+    },
+    {
+      "files": 7,
+      "manifest_sha256": "69029fea3bdce08737d9f67e11edcbf6e36594266f2b4518f1c34d0da42f6bb1",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/runtime-production-release-02/source"
+    },
+    {
+      "files": 7,
+      "manifest_sha256": "6356f3a7068658e17b25b5bdcc5239feb5cfc51e6cdeb1894e47e4752a86e0f8",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/runtime-production-release-03/source"
+    },
+    {
+      "files": 657,
+      "manifest_sha256": "600ecc3b33135141a57c029a28a2c72f29e788e3ecf5cb2dac1761146d1d6eed",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-release-02/source"
+    },
+    {
+      "files": 635,
+      "manifest_sha256": "c214bccf2c94ac6829996bc0ca7d6415d3c19549be4fe7f874cba2b433901cc6",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-release-03/source"
+    },
+    {
+      "files": 30,
+      "manifest_sha256": "05e316a7b1bcceaf286b03231200a2d1f66e3f6a7ce927d4c1e73f08a24f86f9",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-release-02/source"
+    },
+    {
+      "files": 12,
+      "manifest_sha256": "3c9805af9891a8c140fa36976f3f19293814ad1e47ea7e9be8ccfc47388ae209",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/boltz-precision-release-02/source"
+    },
+    {
+      "files": 34,
+      "manifest_sha256": "ab875927a328c34650d2e43baf6dfbe323e8f9bcf5600f39bac78f3ccdfb5d8c",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-release-05/source"
+    }
+  ],
+  "shared_capacity": {
+    "files": 7,
+    "manifest_sha256": "6356f3a7068658e17b25b5bdcc5239feb5cfc51e6cdeb1894e47e4752a86e0f8",
+    "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/runtime-production-release-03/source"
+  },
+  "torch_cpu_counts": {
+    "tests.test_boltz_reference_torch": 8
+  },
+  "version": "complete-boltz-objective-reference-diagnostic-v1"
+}

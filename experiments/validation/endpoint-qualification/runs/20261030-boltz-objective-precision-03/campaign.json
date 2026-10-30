@@ -1,0 +1,61 @@
+{
+  "CPU_cases": 51,
+  "archive_bytes": 27374,
+  "archive_sha256": "16fc375f43545ad8474c1343c592604f785f8bcfefd2e75c8d8896905c722445",
+  "files": 13,
+  "jobs": {
+    "after-cpu": "29852950",
+    "cpu": "29852949"
+  },
+  "manifest_sha256": "a9b2bb83254e4c05b914f53bdabdf88436bc3c8330498f7ca0206f522036fe1d",
+  "optimizer_jobs": [],
+  "plan_sha256": "f923acf4f745d81d102af733fb3a0b8863c091d81f3a2eb447e9320c34ea543c",
+  "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/runtime-production-03/boltz-precision-03",
+  "source": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/boltz-precision-release-03/source",
+  "status": "independent_rawXML51_48passed_3obsolete_JAX_API_failures_preserved",
+  "tag": "20261030-boltz-objective-precision-03",
+  "terminal_verification": {
+    "status": "independent_rawXML51_48passed_3obsolete_JAX_API_failures_preserved",
+    "observed_utc": "2026-10-30T09:27:05.553283+00:00",
+    "cases": 51,
+    "passed": 48,
+    "failures": [
+      {
+        "module": "tests.test_boltz_reference_jax",
+        "name": "test_reference_precision_context_restores_production_configuration",
+        "message": "AttributeError: module 'jax.experimental' has no attribute 'enable_x64'"
+      },
+      {
+        "module": "tests.test_boltz_reference_jax",
+        "name": "test_probability_to_logit_chain_matches_independent_AD",
+        "message": "AttributeError: module 'jax.experimental' has no attribute 'enable_x64'"
+      },
+      {
+        "module": "tests.test_boltz_reference_jax",
+        "name": "test_fixed_target_gradient_flows_without_target_refresh",
+        "message": "AttributeError: module 'jax.experimental' has no attribute 'enable_x64'"
+      }
+    ],
+    "XML": [
+      {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/runtime-production-03/boltz-precision-03/cpu/payload/original-Torch.xml",
+        "bytes": 3065,
+        "sha256": "74b04ee2f15894df488cccc446883b643f186dc141d067cfcda672d6bfd33a1c"
+      },
+      {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/runtime-production-03/boltz-precision-03/cpu/payload/new-Torch.xml",
+        "bytes": 1326,
+        "sha256": "ecaaa0c8a89bacd84b1e20eed2f442ae3213fbbd467fb63283f242f46f58c930"
+      },
+      {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/runtime-production-03/boltz-precision-03/cpu/payload/new-JAX.xml",
+        "bytes": 5347,
+        "sha256": "277a9b1a725a9699f253209afa99a0ad328e8b45384bf0b95f0faac3239713f1"
+      }
+    ],
+    "pretrained_models_constructed": 0,
+    "GPU_jobs": [],
+    "optimizer_jobs": [],
+    "controller_failed_entry_capacity": true
+  }
+}

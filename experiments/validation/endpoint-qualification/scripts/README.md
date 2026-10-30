@@ -290,3 +290,6 @@ retain the original scientific source/plan, qualify the real segment startup,
 replace only readiness/summary/claim ownership paths, use the existing full
 shared capacity algorithm and held receipt-before-release submission protocol.
 Read the current production run record before any action; never replay stages.
+
+
+`manage_boltz_precision.py` currently targets staged immutable04; never replay prepare/stage. `boltz_objective_reference.py`, `boltz_precision_{driver,server,ops}.py` and `qualification_writer_capacity.py` implement a three-arm read-only full-objective reference comparison with no optimizer branch.04 repairs the public scoped JAX precision API; full allocated51cases/three actualstartups and three GPU comparisons remain blocked before submission by full storage. Read current04run before reconciliation.

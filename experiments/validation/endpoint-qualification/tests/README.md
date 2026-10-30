@@ -169,3 +169,6 @@ test_protenix_runtime_qualification.py contains24portable metadata/CLI/runtime c
 for the fresh single-arm production launcher. It loads no scientific arrays or
 models and never fabricates an allocation. The full inherited1005 fixtures,
 actual ready-bound segment/reference startups and GPU gates remain allocated.
+
+
+Boltz complete-objective reference04 requires51allocated cases: originalTorch17,newTorch8,JAX3,portable11,external-accounting8,predecessor4. Only the23explicit metadata cases may run locally; numerical Torch/JAX fixtures remain allocated HPC. `test_boltz_resource_retry.py` authenticates exact prior03obsoleteAPI failure/zero native execution and rejects numerical/unknown outcomes; it does not waive checks.04has NO allocated CPU pass yet.

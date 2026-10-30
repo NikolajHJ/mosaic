@@ -10611,3 +10611,71 @@ migration claimed. No allocated numerical tests, GPU jobs or cleanup occurred.
 Active hourlymonitor updated with exact pending source02/resource blockers,
 Pro03actualEXIT/zero new updates, source/input preservation and no-duplicate
 reconciliation/complete-gate requirements; targets remain incomplete.
+
+
+30October2026 heartbeat actual09:07--09:16UTC: source02full storage freshly
+PASSED39420225462required/39630063737available with unchanged4GiB100000reserves,
+all original current/future scopes/source146forecast. Reconciled zero old jobs,
+actual held+released CPU29852844/controller29852847 submitted. BOTH laterEXIT1
+at mandatory ENTRY unknown-writer guard on newly started HOME FP64 diagnostic
+29852804; zero fixture/numerical/model/startup/NPZ/GPU outputs. Independent raw
+same-jobLSF/source/input/command/held-release audit preserved. HOMEdiagnostics
+29852804 and29852812 subsequently actualschedulerDONE; their scientific outcome
+is not claimed or modified here. No foreign job/cache/source/settings mutation.
+
+NEW resource-only retry03 preserves failed02 and reauthenticates exact two
+failed own jobs/LSF/absence of numerical outputs before each phase. Same four
+reference/driver/server/wrapper numerical files byte-identical02, no scientific
+policy/settings/threshold change. Adds4portable predecessor controls, local23
+andresource136pass, newfull51allocated cases/startups/GPUobservations required.
+Preparedsource13pina9b2bb83254e4c05b914f53bdabdf88436bc3c8330498f7ca0206f522036fe1d,
+planf923acf4f745d81d102af733fb3a0b8863c091d81f3a2eb447e9320c34ea543c,
+archive27374B/SHA16fc375f43545ad8474c1343c592604f785f8bcfefd2e75c8d8896905c722445.
+Current shared full-capacity guard still mandatory; no future projection,
+reserve, filepool or unknown-writer exclusion reduced. No cleanup or optimizer
+branch. Preparation is not a numerical pass or new job.
+
+
+30October2026 actual09:27UTC: resource-only retry03 source13 staged; fresh
+full preflight PASSED39411902918required/39621741193available with original
+4GiB100000reserves. CPU29852949 ran51actualcases:48PASS, exactly3newJAXfixture
+FAILURES on AttributeError jax.experimental.enable_x64 removed in installed
+JAX0.11.1; no native/real-model/startup/GPU branch. OriginalTorch17/newTorch8
+and23portable controls passed. Controller29852950 separatelyEXIT at full ENTRY
+byte-capacity guard. Both failed originalrawXML/LSF/source preserved, no GPU.
+
+New immutable engineeringfix04 updates driver and3fixtures to the installed
+public scoped jax.enable_x64(True), maintaining reference64 only/producer32
+restored. Installedsource inspected asbytes/AST only, noJAXimport outside
+allocation. Exact reverse AST transformation matches BOTH oldfiles completely
+(one driver/three test API calls), no mathematical/FD/LR/loss/model/key change.
+Authenticates actual51oldcases/48pass/3exactAPIerrors/source/LSF/no native outputs
+before fresh qualification. Local23portable checks passed; fresh all51allocated
+cases/3actualstartup bodies/whole-sharedcapacity/GPU observations stillrequired.
+Source13pinfbf0420bb985d0ed57788ba086224131d4d1858e0c03ff1ea0472d919f8b0704,
+plan4f777f42d97aecb53f207951634a5b3b272ef354eb59e21eac709c57821d9d63,
+archive29079B/SHA1746b358409dfc5af364c65929e80418e24adbd3f81bb3c58c4f3ce124e6462f.
+Savedruns/settings/scientific failures unchanged, no cleanup or optimizer branch.
+
+
+30October2026 actual09:42UTC: engineeringfix04 source13 staged readonly,
+API-only exact reverseAST/current11executable+test/archive14member audit passed;
+23portable metadata controls passed locally, no fixed04 numerical execution.
+Fresh full preflight FAILED39405196725required/38541293176available, short
+863903549bytes with4GiB100000file reserves/ALL original futures unchanged.
+Independent24compactfile/all parent-source/input byte audit and registry prove
+NO04accepted or unknown CPU/controller/GPU/submission markers. Never restage.
+Current packetSHA35689c45a9ef0b77e104853a58b533426364175f5cf2f8af7b99a1753b70cd47.
+Prior03CPU51cases48pass/3obsoleteJAXAPI failures and separate controller capacity
+failure remain failed; correction uses publicscopedjax.enable_x64(True), still
+requires full51allocated cases/3actualstartups/3GPUobservations before any later
+prospective admission. No optimizer queued/new committed data/settings changes.
+
+Read-only inactive diagnostic/reference inventory found mostly small proof data;
+859010567bytes entire sampled oldercontinuation+diagnostic roots also INCLUDE
+required sources/saved trajectories, so this is NOT a reclaimable-byte estimate.
+Additional sampled older endpoint/native allocations are only small proof sets.
+No archive/deletion occurred and no spacefreed claim. Prior6archive/1288already
+absentasset scan was NOT repeated. Currentmodels/caches/envs/savedtrajectories/
+requiredsources/proofs and all unrelated jobs stay untouched. Fullresourceguard
+still blocks numerical qualification; no original scientific gate waived.

@@ -72,3 +72,6 @@ portable11 and new accounting8; actual generated parser/provenance startups for
 all3 arms run before conditional GPU dispatch. No optimizer submission branch.
 
 Current actual outcome: source12 staged and independently byte audited; both preflights blocked before ANY submission. Full capacity short863903549bytes, then newly active HOME job29852743 unaccounted. No allocated fixture/native pass or optimizer job exists. Read campaign/resource-block-verification; never replay staging. Fresh, reconciled admission needs changed external state/capacity and exact absence of submission markers. Backup audit removed zero files:1288 candidate derived copies already absent.
+
+
+Overriding actual30October09:16UTC: changed account/capacity state permitted a fresh reconciled full gate, then actualCPU29852844/controller29852847 were submitted held/released. BOTH EXIT1 at entry when HOMEwriter29852804 started; zero tests/native/GPU work. The earlier no-jobs paragraph is historical. Current campaign/submission/terminal-verification bind this failed attempt; never replay02.

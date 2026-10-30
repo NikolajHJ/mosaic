@@ -1,0 +1,40 @@
+{
+  "CPU_cases": 51,
+  "archive_bytes": 29079,
+  "archive_sha256": "1746b358409dfc5af364c65929e80418e24adbd3f81bb3c58c4f3ce124e6462f",
+  "files": 13,
+  "manifest_sha256": "fbf0420bb985d0ed57788ba086224131d4d1858e0c03ff1ea0472d919f8b0704",
+  "optimizer_jobs": [],
+  "plan_sha256": "4f777f42d97aecb53f207951634a5b3b272ef354eb59e21eac709c57821d9d63",
+  "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/runtime-production-03/boltz-precision-04",
+  "source": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/boltz-precision-release-04/source",
+  "status": "sealed04_API_fix_sources_inputs_verified_full_preflight_capacity_failed_no_submission",
+  "tag": "20261030-boltz-objective-precision-04",
+  "actual_allocated_CPU_cases": 0,
+  "jobs": {},
+  "resource_block": {
+    "status": "sealed04_API_fix_sources_inputs_verified_full_preflight_capacity_failed_no_submission",
+    "observed_utc": "2026-10-30T09:42:18.670647+00:00",
+    "source_manifest_sha256": "fbf0420bb985d0ed57788ba086224131d4d1858e0c03ff1ea0472d919f8b0704",
+    "packet_sha256": "35689c45a9ef0b77e104853a58b533426364175f5cf2f8af7b99a1753b70cd47",
+    "gates": [
+      {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/runtime-production-03/boltz-precision-04/preflight/rolling-capacity-preflight-1793352998301931058/assessment.json",
+        "bytes": 365721,
+        "sha256": "4b5e6a901cbbd517a503f3ff91e349e0add63ba590368ec30bb60c919bf6bfdb",
+        "status": "failed",
+        "required_bytes": 39405196725,
+        "available_bytes": 38541293176,
+        "byte_margin": -863903549,
+        "reserve_bytes": 4294967296,
+        "file_reserve": 100000
+      }
+    ],
+    "allocated_CPU_cases": 0,
+    "jobs": {},
+    "GPU_jobs": [],
+    "optimizer_jobs": [],
+    "saved_results_settings_and_scientific_gates_unchanged": true,
+    "remote_files_removed": 0
+  }
+}

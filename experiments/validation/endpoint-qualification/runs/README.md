@@ -233,3 +233,6 @@ optimizer start.
 
 
 Current metadata handoff repair is [production03](20261030-protenix-runtime-production-03/README.md). Production02 CPU1035/actual segment/reference startups passed, but its controller expected a nonexistent readiness object instead of checking original_argv. New03 verifies the real unique ready/SHA/snapshot/offset/step arguments in CPU and controller;32portable controls and1037allocated cases precede any optimizer. Source02/failed callback and all saved results remain preserved; actual campaign determines status.
+
+
+Current [complete-objective reference04](20261030-boltz-objective-precision-04/README.md) retains02entry-writer failures and03CPU48pass/3JAXAPI failures plus controller capacity failure. Public scoped API fix is sealed/byte-reviewed, but full preflight short863,903,549bytes means no04jobs/numerical pass/optimizer. No settings/saved results/gates changed; actual current campaign is authoritative.

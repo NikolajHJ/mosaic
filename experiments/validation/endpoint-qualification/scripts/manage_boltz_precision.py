@@ -10,12 +10,13 @@ from pathlib import Path
 import shlex
 import subprocess
 import tarfile
+import xml.etree.ElementTree as ET
 
 OWNER=Path(__file__).resolve().parents[1];REPO=OWNER.parents[2]
-TAG='20261030-boltz-objective-precision-02';LOCAL=REPO/'results/hpc'/TAG;RUN=OWNER/'runs'/TAG
+TAG='20261030-boltz-objective-precision-04';LOCAL=REPO/'results/hpc'/TAG;RUN=OWNER/'runs'/TAG
 INPUT_LOCAL=REPO/'results/hpc/20261030-boltz-objective-precision-01'
 BASE='/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01';SCOPE=BASE+'/nonchem-precision-continuation-26'
-ROOT=SCOPE+'/runtime-production-03/boltz-precision-02';SOURCE=SCOPE+'/boltz-precision-release-02/source'
+ROOT=SCOPE+'/runtime-production-03/boltz-precision-04';SOURCE=SCOPE+'/boltz-precision-release-04/source'
 SHARED=BASE+'/runtime-production-release-03/source';PIN='6356f3a7068658e17b25b5bdcc5239feb5cfc51e6cdeb1894e47e4752a86e0f8'
 def raw(x):return (json.dumps(x,indent=2,sort_keys=True,allow_nan=False)+'\n').encode()
 def sha(x):return hashlib.sha256(x).hexdigest()
@@ -80,24 +81,51 @@ def prepare():
     plan['identical_scientific_modules']={n:v['dbmol'] for n,v in comparison.items() if not n.endswith('/trajectory.py')}
     assert len(plan['identical_scientific_modules'])==19 and all(v['equal'] for n,v in comparison.items() if not n.endswith('/trajectory.py'))
     unique={p['path']:p for p in plan['inputs']};plan['inputs']=list(unique.values())
+    terminal=json.loads((REPO/'results/hpc/20261030-boltz-objective-precision-03/status02/stdout.json').read_bytes())
+    previous_root=SCOPE+'/runtime-production-03/boltz-precision-03'
+    assert set(terminal['submissions'])=={'cpu','after-cpu'} and not terminal['binary_bindings_remote_only']
+    assert not any(n.endswith('/tests.xml') for n in terminal['files'])
+    previous={'root':previous_root,'source':{'path':SCOPE+'/boltz-precision-release-03/source','files':13,
+        'manifest_sha256':'a9b2bb83254e4c05b914f53bdabdf88436bc3c8330498f7ca0206f522036fe1d'},'status':'fixture_API_ERROR_before_native_startup',
+        'job_ids':{'cpu':'29852949','after-cpu':'29852950'},'actual_numerical_cases':51,'passed_cases':48,
+        'scientific_outputs':0,'GPU_jobs':[],'pretrained_models_constructed':0,'failures':[]}
+    for phase,jid in previous['job_ids'].items():
+        for rel in ('submission.json','stdout.'+jid+'.log','stderr.'+jid+'.log'):
+            r=terminal['files'][previous_root+'/'+phase+'/'+rel];b=base64.b64decode(r['base64'],validate=True)
+            assert sha(b)==r['sha256'] and len(b)==r['bytes'];plan['inputs'].append({k:r[k] for k in ('path','bytes','sha256')})
+            if rel.startswith('stdout.'):
+                text=''.join(b.decode().split());assert text.count('Subject:Job'+jid+':')==1 and text.count('Exitedwithexitcode1.')==1 and 'Successfullycompleted.' not in text
+    plan['failed_predecessor']=previous
+    cases=[]
+    for group in ('original-Torch','new-Torch','new-JAX'):
+        r=terminal['files'][previous_root+'/cpu/payload/'+group+'.xml'];b=base64.b64decode(r['base64'],validate=True)
+        assert sha(b)==r['sha256'];plan['inputs'].append({k:r[k] for k in ('path','bytes','sha256')})
+        cases+=list(ET.fromstring(b).iter('testcase'))
+    assert len(cases)==51 and not any(r.find('error') is not None or r.find('skipped') is not None for r in cases)
+    previous['failures']=[{'module':r.get('classname'),'name':r.get('name'),'message':r.find('failure').get('message','')}
+        for r in cases if r.find('failure') is not None]
+    assert len(previous['failures'])==3
+    api=json.loads((REPO/'results/hpc/20261030-boltz-objective-precision-03/jax-API-metadata01/stdout.json').read_bytes())
+    for r in api['files'].values():plan['inputs'].append({k:r[k] for k in ('path','bytes','sha256')})
+    plan['precision_context_API']='jax.enable_x64(True), scoped and restored; producer remains FP32'
     external=json.loads((INPUT_LOCAL/'foreign-writer02/stdout.json').read_bytes())
     observed=json.loads((INPUT_LOCAL/'reconcile01/stdout.json').read_bytes())
     account=json.loads(observed['commands'][0]['stdout'])['RECORDS']
     command=next(r['COMMAND'] for r in account if r['JOBID']=='29852732')
     plan['shared_source146']={k:external[k] for k in ('baseline','proofs','source_files_authenticated','growth_bytes','growth_files')}
     plan['shared_source146'].update(job_id='29852732',command=command)
-    parents=old['parent_sources']+[plan['shared_capacity'],science,bolscience,chemistry['adapter_source']]
+    parents=old['parent_sources']+[plan['shared_capacity'],science,bolscience,chemistry['adapter_source'],previous['source']]
     # The exact original complete cleanup helper is used by the existing05 source.
     cp=read(SCOPE+'/chemistry-continuation-release-05/source/plan.json')['arms']['protenix']['adapter_source']
     if cp['path'] not in {p['path'] for p in parents}:parents.append(cp)
     names={**{'scripts/'+n+'.py':'scripts/'+n+'.py' for n in ('boltz_objective_reference','boltz_precision_driver','boltz_precision_server','boltz_precision_ops','qualification_writer_capacity')},
         'scripts/boltz_precision_stage.lsf':'scripts/boltz_precision_stage.lsf',
-        **{'tests/'+n+'.py':'tests/'+n+'.py' for n in ('test_boltz_precision_portable','test_boltz_reference_torch','test_boltz_reference_jax','test_qualification_writer_capacity')}}
+        **{'tests/'+n+'.py':'tests/'+n+'.py' for n in ('test_boltz_precision_portable','test_boltz_reference_torch','test_boltz_reference_jax','test_qualification_writer_capacity','test_boltz_resource_retry')}}
     members={name:(OWNER/local).read_bytes().replace(b'\r\n',b'\n') for name,local in names.items()}
     members['plan.json']=raw(plan);members['README.md']=(RUN/'README.md').read_bytes().replace(b'\r\n',b'\n')
     for name,data in members.items():
         if name.endswith('.py'):ast.parse(data,filename=name)
-    tc={'tests.test_boltz_reference_torch':8};jc={'tests.test_boltz_precision_portable':11,'tests.test_boltz_reference_jax':3,'tests.test_qualification_writer_capacity':8}
+    tc={'tests.test_boltz_reference_torch':8};jc={'tests.test_boltz_precision_portable':11,'tests.test_boltz_reference_jax':3,'tests.test_qualification_writer_capacity':8,'tests.test_boltz_resource_retry':4}
     m={'version':plan['version'],'files':{n:sha(b) for n,b in members.items()},'parent_sources':parents,
         'shared_capacity':plan['shared_capacity'],'torch_cpu_counts':tc,'jax_cpu_counts':jc,
         'all_cpu_counts':{'tests.test_dbmol_reference':17,**tc,**jc},'optimizer_submission_allowed':False}
@@ -109,7 +137,7 @@ def prepare():
     data=buffer.getvalue();(output/'source.tar.gz').write_bytes(data)
     value={'status':'prepared_not_allocated_pass','tag':TAG,'root':ROOT,'source':SOURCE,'files':len(m['files']),
         'manifest_sha256':sha(members['source_manifest.json']),'plan_sha256':sha(members['plan.json']),
-        'archive_bytes':len(data),'archive_sha256':sha(data),'CPU_cases':47,'optimizer_jobs':[]}
+        'archive_bytes':len(data),'archive_sha256':sha(data),'CPU_cases':51,'optimizer_jobs':[]}
     for name,data in [('preparation.json',raw(value)),('source-manifest.json',members['source_manifest.json']),('campaign.json',raw(value))]:(RUN/name).write_bytes(data)
     (output/'preparation.json').write_bytes(raw(value));print(json.dumps(value))
 
@@ -118,7 +146,7 @@ from pathlib import Path,PurePosixPath
 import base64,hashlib,io,json,subprocess,sys,tarfile
 request=json.loads(sys.stdin.buffer.read());p=request['preparation'];root=Path(p['root']);source=Path(p['source'])
 scope=Path('/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26')
-assert root==scope/'runtime-production-03/boltz-precision-02' and source==scope/'boltz-precision-release-02/source'
+assert root==scope/'runtime-production-03/boltz-precision-04' and source==scope/'boltz-precision-release-04/source'
 assert not root.exists() and not source.parent.exists(),'Existing or unknown stage; do not repeat'
 data=base64.b64decode(request['archive'],validate=True);assert len(data)==p['archive_bytes'] and hashlib.sha256(data).hexdigest()==p['archive_sha256']
 members={}

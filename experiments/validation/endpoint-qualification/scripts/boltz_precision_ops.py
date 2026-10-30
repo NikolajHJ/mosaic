@@ -14,8 +14,8 @@ BASE=Path('/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01')
 SCOPE=BASE/'nonchem-precision-continuation-26'
 SHARED=BASE/'runtime-production-release-03/source'
 SHARED_PIN='6356f3a7068658e17b25b5bdcc5239feb5cfc51e6cdeb1894e47e4752a86e0f8'
-ROOT=SCOPE/'runtime-production-03/boltz-precision-02'
-SOURCE=SCOPE/'boltz-precision-release-02/source'
+ROOT=SCOPE/'runtime-production-03/boltz-precision-04'
+SOURCE=SCOPE/'boltz-precision-release-04/source'
 CAP=256*1024**2
 PYTHON='/work3/s234818/mosaic/envs/protenix-tiny/bin/python'
 
@@ -29,6 +29,18 @@ def sha(p):
 def binding(p):return {'path':str(p),'bytes':Path(p).stat().st_size,'sha256':sha(p)}
 def module(path,name):
     spec=importlib.util.spec_from_file_location(name,path);value=importlib.util.module_from_spec(spec);sys.modules[name]=value;spec.loader.exec_module(value);return value
+
+def predecessor_check(value):
+    require(value['job_ids']=={'cpu':'29852949','after-cpu':'29852950'} and value['status']=='fixture_API_ERROR_before_native_startup',
+            'Exact failed fixture/API predecessor required')
+    require(value['actual_numerical_cases']==51 and value['passed_cases']==48 and value['scientific_outputs']==0
+            and value['GPU_jobs']==[] and value['pretrained_models_constructed']==0,'Unexpected numerical/native execution cannot be retried')
+    expected={'test_reference_precision_context_restores_production_configuration',
+        'test_probability_to_logit_chain_matches_independent_AD','test_fixed_target_gradient_flows_without_target_refresh'}
+    require(len(value['failures'])==3 and {r['name'] for r in value['failures']}==expected
+        and all(r['module']=='tests.test_boltz_reference_jax'
+            and "module 'jax.experimental' has no attribute 'enable_x64'" in r['message'] for r in value['failures']),
+        'Only the authenticated obsolete JAX API fixture failure is repaired')
 
 # The shell authenticates the shared owner and every parent before importing it.
 sys.path.insert(1,str(SHARED/'scripts'))
@@ -46,6 +58,22 @@ def context(pin):
             and plan['optimizer_updates']==0 and plan['can_admit_new_child'] is False,'Closed bounded diagnostic owner required')
     for row in manifest['parent_sources']:op.verify(Path(row['path']),row['manifest_sha256'])
     for row in plan['inputs']:op.check_binding(row)
+    previous=plan['failed_predecessor'];predecessor_check(previous)
+    for phase,jid in previous['job_ids'].items():
+        parent=Path(previous['root'])/phase;sub=read(parent/'submission.json')
+        require(sub['job_id']==jid,'Failed predecessor job identity differs')
+        text=''.join((parent/('stdout.'+jid+'.log')).read_text().split())
+        require(text.count('Subject:Job'+jid+':')==1 and text.count('Exitedwithexitcode1.')==1
+            and 'Successfullycompleted.' not in text,'Actual failed same-job LSF required')
+    require(not list(Path(previous['root']).rglob('*.npz')) and not (Path(previous['root'])/'cpu/payload/tests.xml').exists(),
+            'Failed predecessor unexpectedly contains native/GPU or merged-success output')
+    cases=[]
+    for group in ('original-Torch','new-Torch','new-JAX'):
+        cases+=list(ET.parse(Path(previous['root'])/'cpu/payload'/(group+'.xml')).getroot().iter('testcase'))
+    failures=[{'module':r.get('classname'),'name':r.get('name'),'message':r.find('failure').get('message','')}
+              for r in cases if r.find('failure') is not None]
+    require(len(cases)==51 and failures==previous['failures'] and not any(r.find('error') is not None or r.find('skipped') is not None for r in cases),
+            'Original fixture failures/raw XML differ')
     for source in {p['source']['path'] for p in plan['arms'].values()}:
         for name,digest in plan['identical_scientific_modules'].items():
             require(sha(Path(source)/name)==digest,'Shared native/chemistry mathematics differ between original arms')
@@ -77,7 +105,7 @@ def argv(phase,pin,dependency=None):
     gpu=phase.startswith('gpu-');slots=8 if gpu else 1 if phase=='after-cpu' else 4;parent=ROOT/phase
     values=['bsub','-H','-env','all,~CUDA_VISIBLE_DEVICES,~CUDA_MPS_PIPE_DIRECTORY,~CUDA_MPS_LOG_DIRECTORY,~CUDA_MPS_ACTIVE_THREAD_PERCENTAGE',
         '-q','gpul40s' if gpu else 'hpc','-n',str(slots),'-R','span[hosts=1]','-R','rusage[mem='+('2GB' if slots==1 else '4GB')+']',
-        '-W','02:00' if gpu else '00:30' if slots==1 else '01:00','-J','mosaic-boltz-precision02-'+phase,
+        '-W','02:00' if gpu else '00:30' if slots==1 else '01:00','-J','mosaic-boltz-precision04-'+phase,
         '-o',str(parent/'stdout.%J.log'),'-e',str(parent/'stderr.%J.log')]
     if gpu:values+=['-gpu','num=1:mode=shared:j_exclusive=yes:mps=no']
     if dependency:values+=['-w',dependency]
