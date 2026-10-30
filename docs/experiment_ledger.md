@@ -10812,3 +10812,28 @@ subject to its supported saved schemas and scientific-status separation.
 Automationmosaic1 remainsACTIVE/hourly and updated to exactnewjobs/pins/chemistry
 priority and DB30ktarget. Global layout check retains23preexisting discovery/
 historicalREADME errors, with no new owned directory errors; no globalpassclaim.
+
+
+## 2026-10-30T11:38:11UTC — DBMol full-objective diagnostic completed; chemistry GPU checks remain queued
+
+ActualDBMol29853438 DONE/gpul40s/same-jobLSFsuccess; independent terminal
+byte/schema/CPU82/source/input/frozen/FP64operation/close proof passed.156rawnative
+requests/159referenced NPZ bindings remotely rehashed, no large arrays downloaded
+or evaluated locally. PacketSHA3adc67bd491f64ceee03a5dd16a20a92a1a07b1b31b8b76e5968b722c1dfb93e.
+Original resultstatus complete_objective_precision_observations_not_admission,
+optimizer_updates0/can_admit_new_child=false, all predeclared cohorts retained.
+No new derivative admission/continuation, no local numerical classification.
+ActualLSFpowerwarning retained without causal hardwareclaim.
+
+At11:37:23UTC plainPro29853431 healthyRUN/6931newcontiguousupdates/6932states,
+total26931/50000. Prochem29853622/Bolchem29853621 and Prochem capture29853624
+remainPEND; no new chemistry numerical pass/optimizer established. No jobs
+modified/submitted/duplicated/cleaned up by this heartbeat.
+
+Independent static review mapped next full-objective session+producer+reader
+changes and DBMol22500remaining/30ktarget metadata in run05qualification-followup.
+Old affinity-only routing/reader and2500remaining runtime cannot admit newTOTAL
+or30ktarget. Prochem production also requires a new independent reference reader;
+current outer can_submit_optimizer=false stays. Reader implementation and
+regressions are being prepared separately, not numerical validation/adoption.
+Automation remainsACTIVE/hourly and updated to actual terminal/prospective scope.

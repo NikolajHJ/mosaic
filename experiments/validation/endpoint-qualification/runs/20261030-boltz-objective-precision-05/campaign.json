@@ -17,10 +17,10 @@
   "source": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/boltz-precision-release-05/source",
   "status": "allocated_CPU_and_real_startups_passed_actual_GPU_jobs_submitted",
   "tag": "20261030-boltz-objective-precision-05",
-  "current_observed_utc": "2026-10-30T10:54:51.178855+00:00",
+  "current_observed_utc": "2026-10-30T11:38:11.351995+00:00",
   "scheduler_states": {
     "after-cpu": "terminal_same_job_LSF",
-    "gpu-dbmol": "RUN_last_observed_11:23UTC",
+    "gpu-dbmol": "DONE_verified_same_job_LSF",
     "cpu": "terminal_same_job_LSF",
     "gpu-boltz_chemistry": "EXIT_verified_same_job_LSF",
     "gpu-boltz": "DONE_verified_same_job_LSF"
@@ -73,6 +73,22 @@
       "source_manifest_sha256": "9f562f02918f02bdc2a5e732ab4a3f74b4752ade0935c7894aba6530fb0fba1c",
       "packet_sha256": "bc338d71e5556e94285b5989ee270421f8677d0bbed3f37697e01d13ddf6cda0",
       "observed_utc": "2026-10-30T11:06:58.754637+00:00"
+    },
+    "dbmol": {
+      "status": "independent_terminal_Diagnostic_byte_schema_CPU82_LSF_frozen_raw_NPZ_preservation_verified",
+      "arm": "dbmol",
+      "job_id": "29853438",
+      "raw_native_requests": 156,
+      "raw_NPZ_bindings_verified": 159,
+      "all_predeclared_cohorts_retained": true,
+      "optimizer_updates": 0,
+      "can_admit_new_child": false,
+      "can_certify_or_restart_original_study": false,
+      "original_failures_preserved": true,
+      "scientific_gradient_agreement_not_classified_locally": true,
+      "source_manifest_sha256": "9f562f02918f02bdc2a5e732ab4a3f74b4752ade0935c7894aba6530fb0fba1c",
+      "packet_sha256": "3adc67bd491f64ceee03a5dd16a20a92a1a07b1b31b8b76e5968b722c1dfb93e",
+      "observed_utc": "2026-10-30T11:38:11.351995+00:00"
     }
   },
   "scientific_derivative_admission": false,
