@@ -1,0 +1,155 @@
+{
+  "status": "passed_submission_source_CPU_controls_and_startup_only",
+  "job_id": "29857358",
+  "raw_packet_sha256": "f462dfa7b8b5334a12bafd4e4ad4a97537bf6b138a35429c275354a125f6f5cc",
+  "actual_submission": {
+    "argv": [
+      "bsub",
+      "-H",
+      "-q",
+      "gpuv100",
+      "-J",
+      "mosaic-chemnoise02-protenix_chemistry",
+      "-n",
+      "8",
+      "-R",
+      "span[hosts=1]",
+      "-R",
+      "rusage[mem=4096]",
+      "-W",
+      "18:00",
+      "-gpu",
+      "num=1:mode=shared:j_exclusive=yes:mps=no:gmem=30G",
+      "-env",
+      "all,~CUDA_VISIBLE_DEVICES,~CUDA_MPS_PIPE_DIRECTORY,~CUDA_MPS_LOG_DIRECTORY,~CUDA_MPS_ACTIVE_THREAD_PERCENTAGE",
+      "-o",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-chemistry-noise-20261030-01/retry01/protenix_chemistry/stdout.%J.log",
+      "-e",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-chemistry-noise-20261030-01/retry01/protenix_chemistry/stderr.%J.log",
+      "bash",
+      "-l",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-chemistry-noise-20261030-01/source03/exploratory_continuation_stage.sh",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-chemistry-noise-20261030-01/source03",
+      "protenix_chemistry",
+      "run",
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-chemistry-noise-20261030-01/source03/plan.json"
+    ],
+    "job_name": "mosaic-chemnoise02-protenix_chemistry",
+    "created_utc": "2026-10-30T18:54:43.465286+00:00",
+    "research_profile": "exploratory",
+    "plan": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-chemistry-noise-20261030-01/source03/plan.json",
+      "bytes": 5612,
+      "sha256": "2e09cca979893dd496a26db6f1e7ff07752a8c64a02874b306fee34c1b743713"
+    },
+    "status": "submitted",
+    "job_id": "29857358",
+    "dispatch_state": "held"
+  },
+  "held_proof": [
+    {
+      "JOBID": "29857358",
+      "USER": "s234818",
+      "STAT": "PEND",
+      "JOB_NAME": "mosaic-chemnoise02-protenix_chemistry"
+    },
+    {
+      "JOBID": "29857358",
+      "USER": "s234818",
+      "STAT": "PEND",
+      "JOB_NAME": "mosaic-chemnoise02-protenix_chemistry"
+    },
+    {
+      "JOBID": "29857358",
+      "USER": "s234818",
+      "STAT": "PEND",
+      "JOB_NAME": "mosaic-chemnoise02-protenix_chemistry"
+    },
+    {
+      "JOBID": "29857358",
+      "USER": "s234818",
+      "STAT": "PSUSP",
+      "JOB_NAME": "mosaic-chemnoise02-protenix_chemistry"
+    }
+  ],
+  "release": {
+    "job_id": "29857358",
+    "returncode": 0,
+    "stdout": "Job <29857358> is being resumed\n",
+    "stderr": ""
+  },
+  "dispatch_capacity": {
+    "version": "mosaic-exploratory-storage-v1",
+    "research_profile": "exploratory",
+    "status": "passed",
+    "available_bytes": 55031668736,
+    "required_bytes": 2362232013,
+    "byte_margin": 52669436723,
+    "available_files": 19544105,
+    "required_files": 11000,
+    "file_margin": 19533105,
+    "reserve_bytes": 214748365,
+    "file_reserve": 1000,
+    "single_quota_burst_allowance_bytes": 0,
+    "unprofiled_writer_ids": [],
+    "unprofiled_writer_allowance_bytes": 0,
+    "external_remaining_budgets": [],
+    "future_bytes": 2147483648,
+    "future_files": 10000,
+    "existing_bytes_recharged": 0,
+    "existing_files_recharged": 0,
+    "warnings": [],
+    "filesystem_inode_reporting": "unreported_all_zero",
+    "quota_observation": "reported",
+    "not_a_whole_account_reservation": true,
+    "entry_and_periodic_checks_required": false,
+    "scientific_settings_changed": false,
+    "phase": "dispatch",
+    "actual": {
+      "protenix_chemistry": {
+        "bytes": 0,
+        "files": 0
+      }
+    }
+  },
+  "source_hashes": {
+    "adapters/protenix/scripts/exact_reuse.py": "b9ecf079d9697fb9efc650f0bbd944b726c2df0d2fcd3b908d9e221f2d565d88",
+    "adapters/protenix/scripts/full_model_context.py": "7ad7a723d67567c2b85532bdefb7d7ddbf09c183abc5a95e8d7a1e342f71fb9a",
+    "adapters/protenix/scripts/full_model_contract.py": "d6cc337345c1e88a8f83ab668f33cbecd5a0baacaa7c30b56d72c65628fe4b08",
+    "adapters/protenix/scripts/full_model_ops.py": "8a69fa5d471e36285fe289523e26a6711c64eb6c9c1fb494e7b60af45193d5d4",
+    "adapters/protenix/scripts/full_model_pilot.py": "1dea64afe9e81db8389b7249c0b9470ec1b2b3212c30b663dd73d5fb44a1a4ca",
+    "adapters/protenix/scripts/gpu_local_bridge.py": "0274405c45d4d5e6abc0d1525219dcd5dbffc7b2385078e213a26d4260168cfd",
+    "adapters/protenix/scripts/gpu_local_worker.py": "b5c8a90e95ab35f5747d17ff11a069e5166ce0ca7ab526102eac04741e0e2bce",
+    "adapters/protenix/scripts/gpu_matrix.py": "772e3ea5a691b4aaf8432040ee0066e429e4f6ddd092ed17a2efb917647f3ef3",
+    "adapters/protenix/scripts/gpu_process_admission.py": "9351bf442dbe94500d186081d9358ac5c7708946a841db63b8aa914788ae1775",
+    "adapters/protenix/scripts/hybrid_search.py": "4bed62f1f3be9aaa96ead9ef79e00840762fd28dd0b9430f6b4b08e5ab60eda8",
+    "adapters/protenix/scripts/parallel_search.py": "137d5bb6cab95ad3263090eb9b017efa1a78ed42543afe713c7fa654d3628170",
+    "adapters/protenix/scripts/profile_oracle.py": "7cb0989fda0713b78598eff489b35b5b39cc1a2d6f608eff215cec590dd126c1",
+    "adapters/protenix/scripts/replay_context_qualification.py": "b9152f91ab5dd75edef09c978e0db40baf9e37ba4121bf5582ba832029f03152",
+    "adapters/protenix/scripts/round2_data.py": "7d6ca6168b77fa96f30d3696ed57c24805cde9669f2083793f1458ab0d23ab31",
+    "exploratory_continuation.py": "e9cc7f822e3988726270f0c4c20b5cf21d9ee36116509695748f45abdc6f0be9",
+    "exploratory_continuation_stage.sh": "153df88685aec172eb72e9bf30668053964e5920be34d1cbfa608c74c7c051ca",
+    "gpu_policy.py": "3883a97d0f06e93ca38105484c387ab7334138238ffd86d8f6b55a6ba4f05fe7",
+    "gradient_scaled_noise.py": "e11d0f5fccc73767734eead3e0aeae560aea4d2b54609429fed034f793c75338",
+    "launch_exploratory_continuations.py": "9131ed2da36bb736f0003ac77df268a1c6960c8ebd9df9b6cb62e0a37ee95269",
+    "plan.json": "2e09cca979893dd496a26db6f1e7ff07752a8c64a02874b306fee34c1b743713",
+    "storage_accounting.py": "2d936e09e7d3de6d825eb61e658ace565c66a8c007e662cfe66a91f457b43ed1",
+    "test_gradient_scaled_noise.py": "9914797ba8d6b970d9bd7c42c9a3f63ac787c81460c1999ffb77bd0cef713690"
+  },
+  "CPU_XML_sha256": "d320b927df6573b7fb0868681eca49882f2527a1337f7133505e42c3d5412a31",
+  "CPU_LSF_sha256": "ce277e6fe84c17f4123d060919e01dceec8426b3b43cac1c2c6c40b00174ea62",
+  "old_retirement": {
+    "scheduler": {
+      "JOBID": "29857341",
+      "USER": "s234818",
+      "STAT": "EXIT",
+      "QUEUE": "gpuv100",
+      "JOB_NAME": "mosaic-chemnoise01-protenix_chemistry",
+      "COMMAND": "bash -l /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-chemistry-noise-20261030-01/source02/exploratory_continuation_stage.sh /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-chemistry-noise-20261030-01/source02 protenix_chemistry run /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-chemistry-noise-20261030-01/source02/plan.json"
+    },
+    "updates": 0,
+    "models_loaded": false,
+    "source_unchanged": true
+  },
+  "native_GPU_result_established": false
+}

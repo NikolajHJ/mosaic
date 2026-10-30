@@ -59,7 +59,13 @@ def validate(row):
     require(row['name'] in ('protenix','protenix_chemistry','boltz','boltz_chemistry','dbmol'),'Unknown arm')
     pro=row['name'].startswith('protenix');chem=row['name'].endswith('_chemistry')
     require(row['rate']==(.3 if pro else .0025) and row['target']==(50000 if pro else 30000),'Changed rate/target')
-    require(type(row['start']) is int and 0<row['start']<row['target'] and row['steps']==row['target']-row['start'],'Whole remaining budget required')
+    fresh_noise = row.get('logit_noise') is not None
+    if fresh_noise:
+        from gradient_scaled_noise import validate as validate_noise
+        validate_noise(row['logit_noise'])
+        require(row['name']=='protenix_chemistry' and row['start']==0,'Noise arm is a fresh chemistry comparison')
+    require(type(row['start']) is int and (0<=row['start'] if fresh_noise else 0<row['start'])
+        and row['start']<row['target'] and row['steps']==row['target']-row['start'],'Whole remaining budget required')
     require(row['chemistry']==chem and row['matrix_stride']==20 and row['loss_stride']==1,'Changed chemistry/retention')
     require(row['acceptance_policy']=='fixed_step' and row['max_backtracks']==1,'Exactly one fixed candidate required')
     return row
@@ -234,6 +240,10 @@ def run(plan,row,output,smoke_updates=None):
             if directory:Path(directory).mkdir(parents=True,exist_ok=False);write(Path(directory)/'report.json',value)
             return value
         trajectory.check_combined_directions=smoke
+        if row.get('logit_noise') is not None:
+            noise = module(Path(plan['source_root'])/'gradient_scaled_noise.py','_exploratory_binding_noise')
+            noise.install(trajectory,row['logit_noise'])
+            report['logit_noise']=row['logit_noise']
         retention=module(Path(plan['retention_source'])/'retention.py','_exploratory_retention')
         retention.install_trajectory(trajectory,output)
         spec=mosaic_spec(25);chem=row['chemistry']

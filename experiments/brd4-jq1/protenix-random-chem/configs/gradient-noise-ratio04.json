@@ -1,0 +1,8 @@
+{
+  "version": "binding-logit-gradient-relative-noise-v1",
+  "ratio": 0.4,
+  "seed": 230017,
+  "scope": "native_binding_logit_gradient_per_block",
+  "row_centered": true,
+  "annealing": "none"
+}

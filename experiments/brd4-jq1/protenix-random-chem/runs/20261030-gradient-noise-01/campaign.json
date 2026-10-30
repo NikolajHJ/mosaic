@@ -1,0 +1,63 @@
+{
+  "status": "submitted_queued_exploratory",
+  "observed_utc": "2026-10-30T18:57:10.345551+00:00",
+  "job_id": "29857358",
+  "scheduler": "PEND",
+  "queue": "gpuv100",
+  "GPU": "one32GiBV100",
+  "walltime": "18:00",
+  "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-chemistry-noise-20261030-01/retry01",
+  "source_root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-chemistry-noise-20261030-01/source03",
+  "source_archive_bytes": 75739,
+  "source_archive_sha256": "7a2979c95f8ce97523ce7ba5e40a73286b0b2cdcfb8f24b224d7210780de3bc6",
+  "source_checksums_sha256": "85c7b50d54b87d00639aefc3a93f68ca3c35c379b141287bda941909c4727d9e",
+  "source_files": 23,
+  "plan_sha256": "2e09cca979893dd496a26db6f1e7ff07752a8c64a02874b306fee34c1b743713",
+  "output": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-chemistry-noise-20261030-01/retry01/protenix_chemistry/payload/study",
+  "settings": {
+    "updates": 50000,
+    "LR": 0.3,
+    "chemistry_schedule": {
+      "final": 100.0,
+      "hold_updates": 5000,
+      "initial": 0.001,
+      "total_updates": 50000,
+      "version": "delayed-geometric-v1"
+    },
+    "composition_weight": 0,
+    "margin": false,
+    "model_key": 17,
+    "noise_ratio": 0.4,
+    "noise_seed": 230017
+  },
+  "initial_snapshot": {
+    "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-03/protenix/random-segment-0000/payload/study/case-0/snapshots/step-0000.npz",
+    "bytes": 23019,
+    "sha256": "5c6dce3e6958a773b6b06ced9e010e7f438c515d61452886d2f333e2bc25fdc8"
+  },
+  "logit_noise": {
+    "version": "binding-logit-gradient-relative-noise-v1",
+    "ratio": 0.4,
+    "seed": 230017,
+    "scope": "native_binding_logit_gradient_per_block",
+    "row_centered": true,
+    "annealing": "none"
+  },
+  "CPU_controls": {
+    "job_id": "29857352",
+    "scheduler": "DONE",
+    "cases": 13,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "models_loaded": false
+  },
+  "new_updates": 0,
+  "derivative_qualified": false,
+  "scientific_settings_other_than_noise_unchanged": true,
+  "original_saved_results_changed": false,
+  "old_own_unstarted_job_retired": "29857341",
+  "other_jobs_modified": false,
+  "monitor": "mosaic1 updated to six experiments, schedule unchanged",
+  "raw_evidence": "results\\hpc\\20261030-protenix-chemistry-noise-01\\status-02\\stdout.json"
+}

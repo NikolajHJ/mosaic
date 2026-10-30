@@ -36,4 +36,11 @@ fi
 if [[ "$mode" == smoke ]]; then
   exec "$python" -u exploratory_continuation.py --plan "$plan" --arm "$arm" --smoke-updates 3
 fi
+if [[ -f "$source_root/test_gradient_scaled_noise.py" ]]; then
+  tests=$($python -c 'import json,sys;from pathlib import Path;print(Path(json.load(open(sys.argv[1]))["root"])/sys.argv[2]/"noise-unit-tests")' "$plan" "$arm")
+  mkdir "$tests"
+  env JAX_PLATFORMS=cpu CUDA_VISIBLE_DEVICES='' "$python" -m pytest \
+    "$source_root/test_gradient_scaled_noise.py" -q -o addopts= -p no:cacheprovider \
+    --junitxml="$tests/tests.xml" >"$tests/stdout.log" 2>&1
+fi
 exec "$python" -u exploratory_continuation.py --plan "$plan" --arm "$arm"

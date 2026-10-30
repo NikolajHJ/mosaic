@@ -55,3 +55,6 @@ are not portable account defaults.
 [50000 updates and a stretched ramp](../protenix-extended-50000/README.md).
 Actual native29796780/callback29796781 intentionally retired before execution;
 source631/CPU776 pass remain historical. No10000-update optimization was submitted.
+
+
+30October2026: a separate fresh50k matched arm with per-step binding-gradient-relative noise is queued as29857358 on32GBV100. Ratio0.4 per logit block, LR included, separate noise seed230017; same delayed chemistry ramp, composition off, model/input settings and frozen within-step targets. Existing jobs and saved results stay unchanged. [Current protocol/submission](runs/20261030-gradient-noise-01/README.md). This arm uses the current exploratory policy; historical strict campaign receipts retain their original meanings.
