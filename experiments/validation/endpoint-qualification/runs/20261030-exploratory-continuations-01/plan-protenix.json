@@ -1,0 +1,412 @@
+{
+  "version": "mosaic-exploratory-continuations-v1",
+  "research_profile": "exploratory",
+  "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01",
+  "source_root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/source",
+  "retention_source": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-stride20-startup-release-03/source",
+  "routing_source": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-release-26/source",
+  "arms": {
+    "protenix_chemistry": {
+      "config": {
+        "bytes": 1890,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source/examples/configs/extended_random.json",
+        "sha256": "d4993743e7f4e6b0f559e3da0c264c2a8b3969c8d113f5defba397350f3e5749"
+      },
+      "science_source": {
+        "files": 643,
+        "manifest_sha256": "da9db6821d26b884ca1749303fc8e0b0095bd9ee7cbd1b427cdcf1b22eec6562",
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source"
+      },
+      "reference": {
+        "bytes": 2087,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/cpu/payload/composition_reference.json",
+        "sha256": "37b34a2ba7be47886936df48faaabdeac20481e5a9cebca9bafab831c07868eb"
+      },
+      "pocket": {
+        "bytes": 3948,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/cpu/payload/pocket_definition.json",
+        "sha256": "9376c715eaf5b48689fb3e995b00d7820601a7776970df66bd7e7cff3b13ee43"
+      },
+      "frozen_identity": {
+        "context_digest": "b28dfad8e5ede565071c70a61695f6a38f5cb6bd591705e32979e59050ff5ce4",
+        "model_digest": "8d6926d5390fe682e193089f790ce53aa4011a6d5509ddb452a55db3d89b0ab2"
+      },
+      "adapter_source": {
+        "files": 34,
+        "manifest_sha256": "ab875927a328c34650d2e43baf6dfbe323e8f9bcf5600f39bac78f3ccdfb5d8c",
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-release-05/source"
+      },
+      "repair_schedule": {
+        "final": 100.0,
+        "hold_updates": 5000,
+        "initial": 0.001,
+        "total_updates": 50000,
+        "version": "delayed-geometric-v1"
+      },
+      "snapshot": {
+        "bytes": 23166,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-03/protenix/random-segment-0000/payload/study/case-0/snapshots/step-10000.npz",
+        "sha256": "2d7b4ae6dde1eb451e51822ad6d000bdf5a5e0db35c072eb475d1263736428d5"
+      },
+      "start": 10000,
+      "target": 50000,
+      "rate": 0.3,
+      "chemistry": true,
+      "acceleration_profile": "protenix-random50k",
+      "context_ready": {
+        "bytes": 21266,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/assessment.json",
+        "sha256": "9674aacd7c8601f755fcad31df6efb9877dc39cd5114d9b1fe3ee867c1dc55dd"
+      },
+      "name": "protenix_chemistry",
+      "research_profile": "exploratory",
+      "steps": 40000,
+      "acceptance_policy": "fixed_step",
+      "max_backtracks": 1,
+      "matrix_stride": 20,
+      "loss_stride": 1,
+      "output_cap_bytes": 2147483648,
+      "file_cap": 12000,
+      "slots": 8,
+      "memory_per_slot_mb": 4096,
+      "timing_basis": {
+        "count": 10000,
+        "mean_all": 0.9995505822696956,
+        "mean_last1000": 0.9850721190451878,
+        "max_last1000": 3.6153106089914218,
+        "median_last1000": 0.9631206259364262,
+        "metadata_path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-03/protenix/random-segment-0000/payload/study/case-0/updates.jsonl"
+      },
+      "walltime": "14:15",
+      "internal_seconds": 50700,
+      "gpu_request": "num=1:mode=exclusive_process:mps=yes",
+      "warnings": [
+        "Exploratory continuation: finite backward smoke, not derivative/native qualification.",
+        "Original failed terminal/FD/replay evidence remains unchanged.",
+        "Noisy/inconclusive FD, flat components, validity drops and nonmonotone loss are recorded findings.",
+        "Repeated independent primals omitted; original backward/objective/update expressions are unchanged."
+      ]
+    },
+    "boltz_chemistry": {
+      "config": {
+        "bytes": 1854,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-release-03/source/examples/configs/boltz_serial_boltz2_chemistry.json",
+        "sha256": "3b3bc33d087f0c03a48c6bf89f03bc707d236ca0f64a95ba5ae2159d1918737c"
+      },
+      "science_source": {
+        "files": 635,
+        "manifest_sha256": "c214bccf2c94ac6829996bc0ca7d6415d3c19549be4fe7f874cba2b433901cc6",
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-release-03/source"
+      },
+      "reference": {
+        "bytes": 2087,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/cpu/payload/composition_reference.json",
+        "sha256": "37b34a2ba7be47886936df48faaabdeac20481e5a9cebca9bafab831c07868eb"
+      },
+      "pocket": {
+        "bytes": 3948,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/cpu/payload/pocket_definition.json",
+        "sha256": "9376c715eaf5b48689fb3e995b00d7820601a7776970df66bd7e7cff3b13ee43"
+      },
+      "frozen_identity": {
+        "context_digest": "fd04211da8e22eccd97ecedd96dd59cf4fb2d80aab6a397fa662af8eb92bbad4",
+        "model_digest": "395876da13ab6d5d175e6603db2118a82954c7c06484842fe2314dbd77a31a16"
+      },
+      "adapter_source": {
+        "files": 30,
+        "manifest_sha256": "05e316a7b1bcceaf286b03231200a2d1f66e3f6a7ce927d4c1e73f08a24f86f9",
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-release-02/source"
+      },
+      "repair_schedule": {
+        "final": 100.0,
+        "hold_updates": 5000,
+        "initial": 0.001,
+        "total_updates": 30000,
+        "version": "delayed-geometric-v1"
+      },
+      "snapshot": {
+        "bytes": 26506,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-04/boltz/boltz2_chemistry-segment-0000/payload/study/case-0/snapshots/step-10000.npz",
+        "sha256": "41f21e926e3dead1adbad55aab2df03c97e70373cd345f14337471d10986cd03"
+      },
+      "start": 10000,
+      "target": 30000,
+      "rate": 0.0025,
+      "chemistry": true,
+      "acceleration_profile": "boltz-chem30k",
+      "name": "boltz_chemistry",
+      "research_profile": "exploratory",
+      "steps": 20000,
+      "acceptance_policy": "fixed_step",
+      "max_backtracks": 1,
+      "matrix_stride": 20,
+      "loss_stride": 1,
+      "output_cap_bytes": 2147483648,
+      "file_cap": 12000,
+      "slots": 8,
+      "memory_per_slot_mb": 4096,
+      "timing_basis": {
+        "count": 10000,
+        "mean_all": 1.88716748115269,
+        "mean_last1000": 1.8836352262808942,
+        "max_last1000": 2.5597340520471334,
+        "median_last1000": 1.8200542040285654,
+        "metadata_path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-04/boltz/boltz2_chemistry-segment-0000/payload/study/case-0/updates.jsonl"
+      },
+      "walltime": "13:30",
+      "internal_seconds": 48000,
+      "gpu_request": "num=1:mode=shared:j_exclusive=yes:mps=no",
+      "context": {
+        "bytes": 16063255,
+        "path": "/zhome/95/e/206121/mosaic-runs/20261021-brd4-jq1-25-01/prepare/payload/prepared/context.pt",
+        "sha256": "a18a331269170aac3281b0a2ecad313aab81756c9b77e048d7e2cbaa4d8f1093"
+      },
+      "worker_python": "/work3/s234818/latentmol/env/boltz311/bin/python",
+      "checkpoints": [
+        {
+          "bytes": 2062139170,
+          "path": "/work3/s234818/latentmol/cache/boltz2/boltz2_aff.ckpt",
+          "sha256": "dcc5cd3722b1c9eaa34267e4ae32f55cbbf1963f4c19319381ccfa30fdd2ca9e"
+        }
+      ],
+      "warnings": [
+        "Exploratory continuation: finite backward smoke, not derivative/native qualification.",
+        "Original failed terminal/FD/replay evidence remains unchanged.",
+        "Noisy/inconclusive FD, flat components, validity drops and nonmonotone loss are recorded findings.",
+        "Repeated independent primals omitted; original backward/objective/update expressions are unchanged."
+      ]
+    },
+    "protenix": {
+      "config": {
+        "bytes": 1733,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source/examples/configs/extended_continuation.json",
+        "sha256": "f91c90770fe907c00e081f3ed28b46071ac35cc3f869edae504cf8cc16f6b445"
+      },
+      "science_source": {
+        "files": 643,
+        "manifest_sha256": "da9db6821d26b884ca1749303fc8e0b0095bd9ee7cbd1b427cdcf1b22eec6562",
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source"
+      },
+      "reference": {
+        "bytes": 2087,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/cpu/payload/composition_reference.json",
+        "sha256": "37b34a2ba7be47886936df48faaabdeac20481e5a9cebca9bafab831c07868eb"
+      },
+      "pocket": {
+        "bytes": 3948,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/cpu/payload/pocket_definition.json",
+        "sha256": "9376c715eaf5b48689fb3e995b00d7820601a7776970df66bd7e7cff3b13ee43"
+      },
+      "frozen_identity": {
+        "context_digest": "b28dfad8e5ede565071c70a61695f6a38f5cb6bd591705e32979e59050ff5ce4",
+        "model_digest": "8d6926d5390fe682e193089f790ce53aa4011a6d5509ddb452a55db3d89b0ab2"
+      },
+      "snapshot": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/runtime-production-05/gpu-plain/payload/replay/plain/payload/study/case-0/latest-state.npz",
+        "bytes": 14362,
+        "sha256": "8b6de512167dad1ef5e8e9f843e163b34a199985c97fabbd58236d45671e0b31"
+      },
+      "start": 27175,
+      "target": 50000,
+      "rate": 0.3,
+      "chemistry": false,
+      "context_ready": {
+        "bytes": 21266,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/assessment.json",
+        "sha256": "9674aacd7c8601f755fcad31df6efb9877dc39cd5114d9b1fe3ee867c1dc55dd"
+      },
+      "predecessor_job_ids": [
+        "29853431"
+      ],
+      "name": "protenix",
+      "research_profile": "exploratory",
+      "steps": 22825,
+      "acceptance_policy": "fixed_step",
+      "max_backtracks": 1,
+      "matrix_stride": 20,
+      "loss_stride": 1,
+      "output_cap_bytes": 2147483648,
+      "file_cap": 12000,
+      "slots": 4,
+      "memory_per_slot_mb": 8192,
+      "timing_basis": {
+        "count": 7175,
+        "mean_all": 0.30620422620942833,
+        "mean_last1000": 0.3063028419669718,
+        "max_last1000": 0.5154518210329115,
+        "median_last1000": 0.3016306379577145,
+        "metadata_path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/runtime-production-05/gpu-plain/payload/replay/plain/payload/study/case-0/updates.jsonl"
+      },
+      "walltime": "02:45",
+      "internal_seconds": 9300,
+      "gpu_request": "num=1:mode=exclusive_process:mps=yes",
+      "warnings": [
+        "Exploratory continuation: finite backward smoke, not derivative/native qualification.",
+        "Original failed terminal/FD/replay evidence remains unchanged.",
+        "Noisy/inconclusive FD, flat components, validity drops and nonmonotone loss are recorded findings.",
+        "Repeated independent primals omitted; original backward/objective/update expressions are unchanged."
+      ]
+    },
+    "boltz": {
+      "config": {
+        "bytes": 1698,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-release-03/source/examples/configs/boltz_serial_boltz2.json",
+        "sha256": "ecdf8a4103291f2f3a7bc7197dd394f03a46c3ccc74c72eb42dfc2b76eb13124"
+      },
+      "science_source": {
+        "files": 635,
+        "manifest_sha256": "c214bccf2c94ac6829996bc0ca7d6415d3c19549be4fe7f874cba2b433901cc6",
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-release-03/source"
+      },
+      "snapshot": {
+        "bytes": 26669,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-09/boltz-segment-10000/payload/study/case-0/snapshots/step-10000.npz",
+        "sha256": "df87a65befbf80781b4bd3a731a32ff855ea515458b510c9d9c8523b8bc78a5f"
+      },
+      "start": 20000,
+      "target": 30000,
+      "rate": 0.0025,
+      "chemistry": false,
+      "reference": {
+        "bytes": 2087,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/cpu/payload/composition_reference.json",
+        "sha256": "37b34a2ba7be47886936df48faaabdeac20481e5a9cebca9bafab831c07868eb"
+      },
+      "pocket": {
+        "bytes": 3948,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/cpu/payload/pocket_definition.json",
+        "sha256": "9376c715eaf5b48689fb3e995b00d7820601a7776970df66bd7e7cff3b13ee43"
+      },
+      "frozen_identity": {
+        "context_digest": "fd04211da8e22eccd97ecedd96dd59cf4fb2d80aab6a397fa662af8eb92bbad4",
+        "model_digest": "395876da13ab6d5d175e6603db2118a82954c7c06484842fe2314dbd77a31a16"
+      },
+      "name": "boltz",
+      "research_profile": "exploratory",
+      "steps": 10000,
+      "acceptance_policy": "fixed_step",
+      "max_backtracks": 1,
+      "matrix_stride": 20,
+      "loss_stride": 1,
+      "output_cap_bytes": 2147483648,
+      "file_cap": 12000,
+      "slots": 4,
+      "memory_per_slot_mb": 8192,
+      "timing_basis": {
+        "count": 10000,
+        "mean_all": 1.8442127919806632,
+        "mean_last1000": 1.8396670350838686,
+        "max_last1000": 40.33031275996473,
+        "median_last1000": 1.6975013375049457,
+        "metadata_path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-09/boltz-segment-10000/payload/study/case-0/updates.jsonl"
+      },
+      "walltime": "06:45",
+      "internal_seconds": 23700,
+      "gpu_request": "num=1:mode=shared:j_exclusive=yes:mps=no",
+      "context": {
+        "bytes": 16063255,
+        "path": "/zhome/95/e/206121/mosaic-runs/20261021-brd4-jq1-25-01/prepare/payload/prepared/context.pt",
+        "sha256": "a18a331269170aac3281b0a2ecad313aab81756c9b77e048d7e2cbaa4d8f1093"
+      },
+      "worker_python": "/work3/s234818/latentmol/env/boltz311/bin/python",
+      "checkpoints": [
+        {
+          "bytes": 2062139170,
+          "path": "/work3/s234818/latentmol/cache/boltz2/boltz2_aff.ckpt",
+          "sha256": "dcc5cd3722b1c9eaa34267e4ae32f55cbbf1963f4c19319381ccfa30fdd2ca9e"
+        }
+      ],
+      "warnings": [
+        "Exploratory continuation: finite backward smoke, not derivative/native qualification.",
+        "Original failed terminal/FD/replay evidence remains unchanged.",
+        "Noisy/inconclusive FD, flat components, validity drops and nonmonotone loss are recorded findings.",
+        "Repeated independent primals omitted; original backward/objective/update expressions are unchanged."
+      ]
+    },
+    "dbmol": {
+      "config": {
+        "bytes": 1816,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-release-02/source/examples/configs/dbmol_pilot.json",
+        "sha256": "b3b56f409a59b3b1d00228bb7dcd3f74fc08f17fdf06facfc1469922778d5497"
+      },
+      "science_source": {
+        "files": 657,
+        "manifest_sha256": "600ecc3b33135141a57c029a28a2c72f29e788e3ecf5cb2dac1761146d1d6eed",
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-release-02/source"
+      },
+      "snapshot": {
+        "bytes": 26782,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-08/dbmol-segment-05000/payload/study/case-0/snapshots/step-2500.npz",
+        "sha256": "c11bd0ac8f38d651cc4d98ca11958f7454eeee5ab8512eca1e3ff3e1d29485bb"
+      },
+      "start": 7500,
+      "target": 30000,
+      "rate": 0.0025,
+      "chemistry": false,
+      "reference": {
+        "bytes": 2087,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/cpu-05/payload/composition_reference.json",
+        "sha256": "37b34a2ba7be47886936df48faaabdeac20481e5a9cebca9bafab831c07868eb"
+      },
+      "pocket": {
+        "bytes": 3948,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/cpu/payload/pocket_definition.json",
+        "sha256": "9376c715eaf5b48689fb3e995b00d7820601a7776970df66bd7e7cff3b13ee43"
+      },
+      "frozen_identity": {
+        "model_digest": "7c90f5dd617310781780a8abe5f225f220f6586d4e2d910e67cbfcb8a4470044",
+        "context_digest": "fd04211da8e22eccd97ecedd96dd59cf4fb2d80aab6a397fa662af8eb92bbad4"
+      },
+      "name": "dbmol",
+      "research_profile": "exploratory",
+      "steps": 22500,
+      "acceptance_policy": "fixed_step",
+      "max_backtracks": 1,
+      "matrix_stride": 20,
+      "loss_stride": 1,
+      "output_cap_bytes": 2147483648,
+      "file_cap": 12000,
+      "slots": 4,
+      "memory_per_slot_mb": 8192,
+      "timing_basis": {
+        "count": 2500,
+        "mean_all": 3.6324895155775825,
+        "mean_last1000": 3.725886089121224,
+        "max_last1000": 74.16028230299708,
+        "median_last1000": 3.5268767939996906,
+        "metadata_path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-08/dbmol-segment-05000/payload/study/case-0/updates.jsonl"
+      },
+      "walltime": "23:00",
+      "internal_seconds": 82200,
+      "gpu_request": "num=1:mode=shared:j_exclusive=yes:mps=no",
+      "context": {
+        "bytes": 16063255,
+        "path": "/zhome/95/e/206121/mosaic-runs/20261021-brd4-jq1-25-01/prepare/payload/prepared/context.pt",
+        "sha256": "a18a331269170aac3281b0a2ecad313aab81756c9b77e048d7e2cbaa4d8f1093"
+      },
+      "worker_python": "/work3/s234818/latentmol/env/boltz311/bin/python",
+      "checkpoints": [
+        {
+          "bytes": 2062139170,
+          "path": "/work3/s234818/latentmol/cache/boltz2/boltz2_aff.ckpt",
+          "sha256": "dcc5cd3722b1c9eaa34267e4ae32f55cbbf1963f4c19319381ccfa30fdd2ca9e"
+        },
+        {
+          "bytes": 2286561469,
+          "path": "/work3/s234818/latentmol/cache/boltz2/boltz2_conf.ckpt",
+          "sha256": "090e82ac8c92f5e943fa1b39e7410a44027bea7243c0bbb3caa67a77fc1428e1"
+        }
+      ],
+      "warnings": [
+        "Exploratory continuation: finite backward smoke, not derivative/native qualification.",
+        "Original failed terminal/FD/replay evidence remains unchanged.",
+        "Noisy/inconclusive FD, flat components, validity drops and nonmonotone loss are recorded findings.",
+        "Repeated independent primals omitted; original backward/objective/update expressions are unchanged.",
+        "Historical TOTAL bond secant contradictions209/195/264 remain unresolved qualification findings; target extended explicitly to30000."
+      ]
+    }
+  },
+  "original_results_changed": false,
+  "optimization_settings_changed": false,
+  "policy_change_authorized": "User explicitly requests exploratory admission for blocked continuations on30October2026."
+}

@@ -10858,3 +10858,39 @@ and fresh full production integration remain required before adoption. Current
 queued Prochem03/Bolchem06 sources are unchanged; no optimizer permission follows
 from this draft reader. DBMol30k objective session/producer/reader integration
 remains the documented follow-up, not an implemented or qualified continuation.
+
+
+## 2026-10-30T12:12:36UTC — User-authorized exploratory continuations actually queued, chemistry first
+
+Applied the newly adopted exploratory policy in fresh children, retaining exact
+saved inputs, original objectives/rates/chemistry ramps and one finite fixed step.
+Five actual optimizer jobs are released/PEND: Prochem29853757(10k->50k),
+Bolchem29853831(10k->30k), Pro29853759(27175->50k), Bol29853833(20k->30k),
+DBMol29853835(7500->30k). No old qualification dependency or new CPU campaign.
+No native/model backward smoke or new applied update is claimed yet. Run record:
+experiments/validation/endpoint-qualification/runs/20261030-exploratory-continuations-01.
+
+Finite/input/mapping/frozen/output/writer/resource safety checks remain; noisy FD,
+flat components and nonmonotone/negative quality findings no longer force a new
+qualification chain. Historical failures remain failed. Two redundant independent
+forwards are omitted explicitly; backward/update math is unchanged and report
+scope is primal_from_backward_call/derivative_qualified=false. Original hybrid/
+matrix acceleration, composition0/no margin, key17/N25/T1, global0.001->100 ramp,
+all scalar losses and stride20 matrices/latest/best remain.
+
+Fresh own-capacity admission passed57.04GBavailable/11.01GBrequired. Five small
+local metadata/AST regressions passed; actual5 metadata CLIs and replacement3
+child-origin probes passed.74compact delivery files/source/receipts/commands/held
+release/resource vectors independently byte-verified, packet
+aea004354bacdae80cd05fb0523b571a846fbd42bf7019df4c691e1bf9f5ccd0.
+
+Found earlier Pro29853431 EXIT at27175: old periodic account guard rejected
+unrelated pending DeFoG29853638 despite capacity pass. All7175new applied updates
+and the exact latest checkpoint retained; no restart from20000. New Pro resumes
+that state. After a new child-import defect was detected before execution, site
+bmod rejected pending-command repair. Only exact new owned unstarted
+29853758/29853760/29853761 were verified never dispatched/no payload then retired;
+new immutable source03 replacements above preserve all settings/results. Two Pro
+jobs, older queued diagnostics/callbacks and foreign projects remained untouched.
+No cleanup. Hourly/cadence monitor was updated to these exact exploratory jobs,
+keeping the existing actual two-hour schedule and quiet unchanged-state behavior.

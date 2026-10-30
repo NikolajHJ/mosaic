@@ -1,0 +1,73 @@
+{
+  "status": "verified_five_actual_exploratory_optimizer_submissions_pending_GPU",
+  "observed_utc": "2026-10-30T12:12:36.103752+00:00",
+  "packet_sha256": "aea004354bacdae80cd05fb0523b571a846fbd42bf7019df4c691e1bf9f5ccd0",
+  "delivered_compact_files": 74,
+  "jobs": {
+    "protenix_chemistry": {
+      "job_id": "29853757",
+      "scheduler": "PEND",
+      "start": 10000,
+      "target": 50000,
+      "updates": 40000,
+      "rate": 0.3,
+      "source": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/source",
+      "walltime": "14:15",
+      "no_qualification_dependency": true
+    },
+    "protenix": {
+      "job_id": "29853759",
+      "scheduler": "PEND",
+      "start": 27175,
+      "target": 50000,
+      "updates": 22825,
+      "rate": 0.3,
+      "source": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/source",
+      "walltime": "02:45",
+      "no_qualification_dependency": true
+    },
+    "boltz_chemistry": {
+      "job_id": "29853831",
+      "scheduler": "PEND",
+      "start": 10000,
+      "target": 30000,
+      "updates": 20000,
+      "rate": 0.0025,
+      "source": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/source03",
+      "walltime": "13:30",
+      "no_qualification_dependency": true
+    },
+    "boltz": {
+      "job_id": "29853833",
+      "scheduler": "PEND",
+      "start": 20000,
+      "target": 30000,
+      "updates": 10000,
+      "rate": 0.0025,
+      "source": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/source03",
+      "walltime": "06:45",
+      "no_qualification_dependency": true
+    },
+    "dbmol": {
+      "job_id": "29853835",
+      "scheduler": "PEND",
+      "start": 7500,
+      "target": 30000,
+      "updates": 22500,
+      "rate": 0.0025,
+      "source": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/source03",
+      "walltime": "23:00",
+      "no_qualification_dependency": true
+    }
+  },
+  "model_or_gradient_smoke_has_executed": false,
+  "no_new_optimizer_updates_yet": true,
+  "original_saved_results_changed": false,
+  "retired_only_exact_own_unstarted_jobs": [
+    "29853758",
+    "29853760",
+    "29853761"
+  ],
+  "source02_bmod_rejected_by_site_policy": true,
+  "new_numerical_or_native_qualification_claimed": false
+}

@@ -203,3 +203,10 @@ and missing/mutated/nonfinite/key/source/teacher evidence. Wrong-gradient cases
 mutate a complete78-point positive witness, so missing producer output cannot
 accidentally satisfy the negative test. These tests are not native qualification
 or optimizer admission and must not run on the laptop.
+
+`test_exploratory_continuation.py` has5 small local stdlib metadata/AST controls:
+five authorized scopes, changed settings/budget rejection, exact two-forward-only
+AST adaptation/reversal, unexpected source-shape rejection and native child path
+inheritance. They load no numerical backend, fabricate no allocation and are not
+native/gradient qualification. The real CLI metadata and child import-origin
+checks are recorded with the exploratory run.

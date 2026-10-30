@@ -1,0 +1,33 @@
+#!/bin/bash
+set -euo pipefail
+source_root=$1
+arm=$2
+mode=${3:-run}
+module load python3/3.12.11
+unset PYTHONHOME
+export PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+export OMP_NUM_THREADS=4 MKL_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4
+export HF_HUB_OFFLINE=1 HF_HUB_DISABLE_TELEMETRY=1
+export XLA_PYTHON_CLIENT_PREALLOCATE=false JAX_ENABLE_COMPILATION_CACHE=false
+export JAX_PLATFORMS=cpu JAX_ENABLE_X64=0
+if [[ "$mode" == run ]]; then
+  [[ "${LSB_QUEUE:-}" == gpul40s ]]
+  module load cuda/12.9.1 cudnn/v9.13.0.50-prod-cuda-12.X
+  case "$arm" in
+    protenix*)
+      export JAX_PLATFORMS=cuda,cpu
+      export XLA_FLAGS='--xla_gpu_autotune_level=0 --xla_gpu_exclude_nondeterministic_ops=true' ;;
+    dbmol) export JAX_ENABLE_X64=1 ;;
+  esac
+fi
+base=/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01
+if [[ "$mode" == run ]]; then
+  source "$base/protenix-extended-release-03/source/scripts/hpc/boltz_node_tmpdir.sh"
+fi
+export PYTHONPATH="$source_root"
+python=/work3/s234818/mosaic/envs/protenix-tiny/bin/python
+cd "$source_root"
+if [[ "$mode" == startup ]]; then
+  exec "$python" -u exploratory_continuation.py --plan "$source_root/plan.json" --arm "$arm" --startup-only
+fi
+exec "$python" -u exploratory_continuation.py --plan "$source_root/plan.json" --arm "$arm"

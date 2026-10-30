@@ -1,0 +1,779 @@
+{
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/protenix_chemistry/release.json": {
+    "bytes": 111,
+    "sha256": "38f2841943b07a28528763b5cacce829244651c122de2511bebd317e30d1bb62",
+    "value": {
+      "job_id": "29853757",
+      "returncode": 0,
+      "stdout": "Job <29853757> is being resumed\n",
+      "stderr": ""
+    }
+  },
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/protenix_chemistry/held-proof.json": {
+    "bytes": 266,
+    "sha256": "f5dcc44b4edcdd7194ffc46bf0a78598422929855cdeeeba4fc9cbef1c56a67f",
+    "value": [
+      {
+        "JOBID": "29853757",
+        "USER": "s234818",
+        "STAT": "PEND",
+        "JOB_NAME": "mosaic-explore01-protenix_chemistry"
+      },
+      {
+        "JOBID": "29853757",
+        "USER": "s234818",
+        "STAT": "PSUSP",
+        "JOB_NAME": "mosaic-explore01-protenix_chemistry"
+      }
+    ]
+  },
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/protenix_chemistry/submission.json": {
+    "bytes": 1517,
+    "sha256": "057a1308b0369f2c8e414670485d0a860e2a73afa2c4c23aa548b8305b6876cd",
+    "value": {
+      "argv": [
+        "bsub",
+        "-H",
+        "-q",
+        "gpul40s",
+        "-J",
+        "mosaic-explore01-protenix_chemistry",
+        "-n",
+        "8",
+        "-R",
+        "span[hosts=1]",
+        "-R",
+        "rusage[mem=4096]",
+        "-W",
+        "14:15",
+        "-gpu",
+        "num=1:mode=exclusive_process:mps=yes",
+        "-env",
+        "all,~CUDA_VISIBLE_DEVICES,~CUDA_MPS_PIPE_DIRECTORY,~CUDA_MPS_LOG_DIRECTORY,~CUDA_MPS_ACTIVE_THREAD_PERCENTAGE",
+        "-o",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/protenix_chemistry/stdout.%J.log",
+        "-e",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/protenix_chemistry/stderr.%J.log",
+        "bash",
+        "-l",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/source/exploratory_continuation_stage.sh",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/source",
+        "protenix_chemistry",
+        "run"
+      ],
+      "job_name": "mosaic-explore01-protenix_chemistry",
+      "created_utc": "2026-10-30T12:05:25.743727+00:00",
+      "research_profile": "exploratory",
+      "plan": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/source/plan.json",
+        "bytes": 19908,
+        "sha256": "baaee1056ab4a2cf9611b0b88ca4c14a4c43486e20b9bf6f1848250820e1eb19"
+      },
+      "status": "submitted",
+      "job_id": "29853757",
+      "dispatch_state": "held"
+    }
+  },
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/protenix/held-proof.json": {
+    "bytes": 367,
+    "sha256": "10bd9d326a2166ebb45fb49523a8a1b25a908c3ced80b94ee15045dadb417c0a",
+    "value": [
+      {
+        "JOBID": "29853759",
+        "USER": "s234818",
+        "STAT": "PEND",
+        "JOB_NAME": "mosaic-explore01-protenix"
+      },
+      {
+        "JOBID": "29853759",
+        "USER": "s234818",
+        "STAT": "PEND",
+        "JOB_NAME": "mosaic-explore01-protenix"
+      },
+      {
+        "JOBID": "29853759",
+        "USER": "s234818",
+        "STAT": "PSUSP",
+        "JOB_NAME": "mosaic-explore01-protenix"
+      }
+    ]
+  },
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/protenix/release.json": {
+    "bytes": 111,
+    "sha256": "a3ba11f983f0c07511c95b28b1fc77c819954f98abe173dd90014251008ae1be",
+    "value": {
+      "job_id": "29853759",
+      "returncode": 0,
+      "stdout": "Job <29853759> is being resumed\n",
+      "stderr": ""
+    }
+  },
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/protenix/submission.json": {
+    "bytes": 1467,
+    "sha256": "ba55f41434d7c721abf1d4365f476ba9225e141e4963bf57bb3bdb2d2efdbc02",
+    "value": {
+      "argv": [
+        "bsub",
+        "-H",
+        "-q",
+        "gpul40s",
+        "-J",
+        "mosaic-explore01-protenix",
+        "-n",
+        "4",
+        "-R",
+        "span[hosts=1]",
+        "-R",
+        "rusage[mem=8192]",
+        "-W",
+        "02:45",
+        "-gpu",
+        "num=1:mode=exclusive_process:mps=yes",
+        "-env",
+        "all,~CUDA_VISIBLE_DEVICES,~CUDA_MPS_PIPE_DIRECTORY,~CUDA_MPS_LOG_DIRECTORY,~CUDA_MPS_ACTIVE_THREAD_PERCENTAGE",
+        "-o",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/protenix/stdout.%J.log",
+        "-e",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/protenix/stderr.%J.log",
+        "bash",
+        "-l",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/source/exploratory_continuation_stage.sh",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/source",
+        "protenix",
+        "run"
+      ],
+      "job_name": "mosaic-explore01-protenix",
+      "created_utc": "2026-10-30T12:05:47.135309+00:00",
+      "research_profile": "exploratory",
+      "plan": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/source/plan.json",
+        "bytes": 19908,
+        "sha256": "baaee1056ab4a2cf9611b0b88ca4c14a4c43486e20b9bf6f1848250820e1eb19"
+      },
+      "status": "submitted",
+      "job_id": "29853759",
+      "dispatch_state": "held"
+    }
+  },
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/retry02/boltz_chemistry/release.json": {
+    "bytes": 111,
+    "sha256": "0e4fdb65a76da61c0ede70a17117b0f76a2e11fc5d66faddb3f5be07ecbbf312",
+    "value": {
+      "job_id": "29853831",
+      "returncode": 0,
+      "stdout": "Job <29853831> is being resumed\n",
+      "stderr": ""
+    }
+  },
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/retry02/boltz_chemistry/held-proof.json": {
+    "bytes": 388,
+    "sha256": "48892a200dc80bb15d4be594f01ad660dae6d8f9baf3270060949390c7e6e6ae",
+    "value": [
+      {
+        "JOBID": "29853831",
+        "USER": "s234818",
+        "STAT": "PEND",
+        "JOB_NAME": "mosaic-explore01-boltz_chemistry"
+      },
+      {
+        "JOBID": "29853831",
+        "USER": "s234818",
+        "STAT": "PEND",
+        "JOB_NAME": "mosaic-explore01-boltz_chemistry"
+      },
+      {
+        "JOBID": "29853831",
+        "USER": "s234818",
+        "STAT": "PSUSP",
+        "JOB_NAME": "mosaic-explore01-boltz_chemistry"
+      }
+    ]
+  },
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/retry02/boltz_chemistry/submission.json": {
+    "bytes": 1528,
+    "sha256": "c33d0266db307404fdc3944d4cb89f5badd72f8489b6471b40652084aeb567cb",
+    "value": {
+      "argv": [
+        "bsub",
+        "-H",
+        "-q",
+        "gpul40s",
+        "-J",
+        "mosaic-explore01-boltz_chemistry",
+        "-n",
+        "8",
+        "-R",
+        "span[hosts=1]",
+        "-R",
+        "rusage[mem=4096]",
+        "-W",
+        "13:30",
+        "-gpu",
+        "num=1:mode=shared:j_exclusive=yes:mps=no",
+        "-env",
+        "all,~CUDA_VISIBLE_DEVICES,~CUDA_MPS_PIPE_DIRECTORY,~CUDA_MPS_LOG_DIRECTORY,~CUDA_MPS_ACTIVE_THREAD_PERCENTAGE",
+        "-o",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/retry02/boltz_chemistry/stdout.%J.log",
+        "-e",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/retry02/boltz_chemistry/stderr.%J.log",
+        "bash",
+        "-l",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/source03/exploratory_continuation_stage.sh",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/source03",
+        "boltz_chemistry",
+        "run"
+      ],
+      "job_name": "mosaic-explore01-boltz_chemistry",
+      "created_utc": "2026-10-30T12:10:44.752346+00:00",
+      "research_profile": "exploratory",
+      "plan": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/source03/plan.json",
+        "bytes": 12824,
+        "sha256": "a6f2e00ba6672fe8cb1bc1d0a8bb74091ad0692f88bf55f25180206d8d933eb4"
+      },
+      "status": "submitted",
+      "job_id": "29853831",
+      "dispatch_state": "held"
+    }
+  },
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/retry02/boltz/submission.json": {
+    "bytes": 1478,
+    "sha256": "c615a4b7ca3653ccd6f65ce44b95a502e7cdecb2b6959961cfd1483d7ea12bb8",
+    "value": {
+      "argv": [
+        "bsub",
+        "-H",
+        "-q",
+        "gpul40s",
+        "-J",
+        "mosaic-explore01-boltz",
+        "-n",
+        "4",
+        "-R",
+        "span[hosts=1]",
+        "-R",
+        "rusage[mem=8192]",
+        "-W",
+        "06:45",
+        "-gpu",
+        "num=1:mode=shared:j_exclusive=yes:mps=no",
+        "-env",
+        "all,~CUDA_VISIBLE_DEVICES,~CUDA_MPS_PIPE_DIRECTORY,~CUDA_MPS_LOG_DIRECTORY,~CUDA_MPS_ACTIVE_THREAD_PERCENTAGE",
+        "-o",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/retry02/boltz/stdout.%J.log",
+        "-e",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/retry02/boltz/stderr.%J.log",
+        "bash",
+        "-l",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/source03/exploratory_continuation_stage.sh",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/source03",
+        "boltz",
+        "run"
+      ],
+      "job_name": "mosaic-explore01-boltz",
+      "created_utc": "2026-10-30T12:10:56.357577+00:00",
+      "research_profile": "exploratory",
+      "plan": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/source03/plan.json",
+        "bytes": 12824,
+        "sha256": "a6f2e00ba6672fe8cb1bc1d0a8bb74091ad0692f88bf55f25180206d8d933eb4"
+      },
+      "status": "submitted",
+      "job_id": "29853833",
+      "dispatch_state": "held"
+    }
+  },
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/retry02/boltz/held-proof.json": {
+    "bytes": 476,
+    "sha256": "3f0689fd8c3574c06444701c1a3d99dead65073656d5b8f6932365620bdba094",
+    "value": [
+      {
+        "JOBID": "29853833",
+        "USER": "s234818",
+        "STAT": "PEND",
+        "JOB_NAME": "mosaic-explore01-boltz"
+      },
+      {
+        "JOBID": "29853833",
+        "USER": "s234818",
+        "STAT": "PEND",
+        "JOB_NAME": "mosaic-explore01-boltz"
+      },
+      {
+        "JOBID": "29853833",
+        "USER": "s234818",
+        "STAT": "PEND",
+        "JOB_NAME": "mosaic-explore01-boltz"
+      },
+      {
+        "JOBID": "29853833",
+        "USER": "s234818",
+        "STAT": "PSUSP",
+        "JOB_NAME": "mosaic-explore01-boltz"
+      }
+    ]
+  },
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/retry02/boltz/release.json": {
+    "bytes": 111,
+    "sha256": "1948d74debd602ef0bdeb44abace58b640d7e4e3b2b2cb5ee7a9c84dde4c0718",
+    "value": {
+      "job_id": "29853833",
+      "returncode": 0,
+      "stdout": "Job <29853833> is being resumed\n",
+      "stderr": ""
+    }
+  },
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/retry02/dbmol/submission.json": {
+    "bytes": 1478,
+    "sha256": "f44a71c8261c1a45a20854bcad083a9cd21527edb5f901050c745bbb09a32854",
+    "value": {
+      "argv": [
+        "bsub",
+        "-H",
+        "-q",
+        "gpul40s",
+        "-J",
+        "mosaic-explore01-dbmol",
+        "-n",
+        "4",
+        "-R",
+        "span[hosts=1]",
+        "-R",
+        "rusage[mem=8192]",
+        "-W",
+        "23:00",
+        "-gpu",
+        "num=1:mode=shared:j_exclusive=yes:mps=no",
+        "-env",
+        "all,~CUDA_VISIBLE_DEVICES,~CUDA_MPS_PIPE_DIRECTORY,~CUDA_MPS_LOG_DIRECTORY,~CUDA_MPS_ACTIVE_THREAD_PERCENTAGE",
+        "-o",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/retry02/dbmol/stdout.%J.log",
+        "-e",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/retry02/dbmol/stderr.%J.log",
+        "bash",
+        "-l",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/source03/exploratory_continuation_stage.sh",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/source03",
+        "dbmol",
+        "run"
+      ],
+      "job_name": "mosaic-explore01-dbmol",
+      "created_utc": "2026-10-30T12:11:12.818104+00:00",
+      "research_profile": "exploratory",
+      "plan": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/source03/plan.json",
+        "bytes": 12824,
+        "sha256": "a6f2e00ba6672fe8cb1bc1d0a8bb74091ad0692f88bf55f25180206d8d933eb4"
+      },
+      "status": "submitted",
+      "job_id": "29853835",
+      "dispatch_state": "held"
+    }
+  },
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/retry02/dbmol/held-proof.json": {
+    "bytes": 358,
+    "sha256": "487ad706ed99c861a5174189691ddb395d7cf732b28bd381a6bcf23795608383",
+    "value": [
+      {
+        "JOBID": "29853835",
+        "USER": "s234818",
+        "STAT": "PEND",
+        "JOB_NAME": "mosaic-explore01-dbmol"
+      },
+      {
+        "JOBID": "29853835",
+        "USER": "s234818",
+        "STAT": "PEND",
+        "JOB_NAME": "mosaic-explore01-dbmol"
+      },
+      {
+        "JOBID": "29853835",
+        "USER": "s234818",
+        "STAT": "PSUSP",
+        "JOB_NAME": "mosaic-explore01-dbmol"
+      }
+    ]
+  },
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/retry02/dbmol/release.json": {
+    "bytes": 111,
+    "sha256": "099a832864b8927d70e6e5b1059b5c976254152f31d1a250dde6e651161d8486",
+    "value": {
+      "job_id": "29853835",
+      "returncode": 0,
+      "stdout": "Job <29853835> is being resumed\n",
+      "stderr": ""
+    }
+  },
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/boltz_chemistry/release.json": {
+    "bytes": 111,
+    "sha256": "1df6c9137bc3ac331a617350090dec0710ff1f5f3ca2c0dbdf14d14e62924d48",
+    "value": {
+      "job_id": "29853758",
+      "returncode": 0,
+      "stdout": "Job <29853758> is being resumed\n",
+      "stderr": ""
+    }
+  },
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/boltz_chemistry/command-repair-02.json": {
+    "bytes": 1719,
+    "sha256": "45491e9d4d258ba534b6c2d723ce849a2dbafb2c871075a5809c7ee4fdd977fe",
+    "value": {
+      "arm": "boltz_chemistry",
+      "native_import_metadata": "{\"mosaic_origin\": \"/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-release-03/source/src/mosaic/__init__.py\"}\n",
+      "models_imported": false,
+      "job_id": "29853758",
+      "before": {
+        "JOBID": "29853758",
+        "USER": "s234818",
+        "STAT": "PEND",
+        "JOB_NAME": "mosaic-explore01-boltz_chemistry",
+        "COMMAND": "bash -l /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/source/exploratory_continuation_stage.sh /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/source boltz_chemistry run"
+      },
+      "new_command": [
+        "bash",
+        "-l",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/source02/exploratory_continuation_stage.sh",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/source02",
+        "boltz_chemistry",
+        "run"
+      ],
+      "scientific_settings_changed": false,
+      "output_changed": false,
+      "held": {
+        "JOBID": "29853758",
+        "USER": "s234818",
+        "STAT": "PSUSP",
+        "JOB_NAME": "mosaic-explore01-boltz_chemistry",
+        "COMMAND": "bash -l /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/source/exploratory_continuation_stage.sh /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/source boltz_chemistry run"
+      },
+      "bmod": {
+        "returncode": 255,
+        "stdout": "",
+        "stderr": "bsub error: Only administrators can run bmod!\nRequest aborted by esub. Job not modified.\n"
+      }
+    }
+  },
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/boltz_chemistry/held-proof.json": {
+    "bytes": 516,
+    "sha256": "3f6428becdeba63c2b4de4f0fa3618090e895162bcf818045df6672b70bc5af2",
+    "value": [
+      {
+        "JOBID": "29853758",
+        "USER": "s234818",
+        "STAT": "PEND",
+        "JOB_NAME": "mosaic-explore01-boltz_chemistry"
+      },
+      {
+        "JOBID": "29853758",
+        "USER": "s234818",
+        "STAT": "PEND",
+        "JOB_NAME": "mosaic-explore01-boltz_chemistry"
+      },
+      {
+        "JOBID": "29853758",
+        "USER": "s234818",
+        "STAT": "PEND",
+        "JOB_NAME": "mosaic-explore01-boltz_chemistry"
+      },
+      {
+        "JOBID": "29853758",
+        "USER": "s234818",
+        "STAT": "PSUSP",
+        "JOB_NAME": "mosaic-explore01-boltz_chemistry"
+      }
+    ]
+  },
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/boltz_chemistry/retirement.json": {
+    "bytes": 2672,
+    "sha256": "579f9e56ec699033169744b13f09932e5d880232f896da2d8463e9d787e74c43",
+    "value": {
+      "job_id": "29853758",
+      "arm": "boltz_chemistry",
+      "before": {
+        "JOBID": "29853758",
+        "USER": "s234818",
+        "STAT": "PSUSP",
+        "JOB_NAME": "mosaic-explore01-boltz_chemistry"
+      },
+      "history_before": "\nJob <29853758>, Job Name <mosaic-explore01-boltz_chemistry>, User <s234818>, Pr\n                          oject <default>, Command <bash -l /work3/s234818/mosa\n                          ic/runs/20261022-brd4-jq1-lrboost-analysis-01/explora\n                          tory-continuations-20261030-01/source/exploratory_con\n                          tinuation_stage.sh /work3/s234818/mosaic/runs/2026102\n                          2-brd4-jq1-lrboost-analysis-01/exploratory-continuati\n                          ons-20261030-01/source boltz_chemistry run>, Esub <dc\n                          c>\nFri Oct 30 13:05:31 2026: Submitted from host <hpclogin1> with hold, to Queue <\n                          gpul40s>, CWD <$HOME>, Output File </work3/s234818/mo\n                          saic/runs/20261022-brd4-jq1-lrboost-analysis-01/explo\n                          ratory-continuations-20261030-01/boltz_chemistry/stdo\n                          ut.%J.log>, Error File </work3/s234818/mosaic/runs/20\n                          261022-brd4-jq1-lrboost-analysis-01/exploratory-conti\n                          nuations-20261030-01/boltz_chemistry/stderr.%J.log>, \n                          8 Task(s), Requested Resources < rusage[mem=4096] spa\n                          n[hosts=1]>, Requested GPU <num=1:mode=shared:mps=no:\n                          j_exclusive=yes>;\nFri Oct 30 13:05:46 2026: Signal <CONT> requested by user or administrator <s23\n                          4818> from host <hpclogin1>;\nFri Oct 30 13:05:46 2026: Pending: Waiting for scheduling after resumed by admi\n                          nistrator or user;\nFri Oct 30 13:08:09 2026: Signal <STOP> requested by user or administrator <s23\n                          4818> from host <hpclogin1>;\nFri Oct 30 13:08:09 2026: Suspended by the user while pending;\n\n RUNLIMIT                \n 810.0 min of hpclogin1\n\n MEMLIMIT\n      4 G \n\nSummary of time in seconds spent in various states by  Fri Oct 30 13:09:31 2026\n  PEND     PSUSP    RUN      USUSP    SSUSP    UNKWN    TOTAL\n  143      97       0        0        0        0        240         \n\n",
+      "reason": "Confirmed unstarted child-import launch defect; bmod rejected by site policy; settings/results unchanged.",
+      "bkill": {
+        "returncode": 0,
+        "stdout": "Job <29853758> is being terminated\n",
+        "stderr": ""
+      },
+      "after": {
+        "JOBID": "29853758",
+        "STAT": "EXIT"
+      },
+      "optimizer_updates": 0
+    }
+  },
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/boltz_chemistry/submission.json": {
+    "bytes": 1506,
+    "sha256": "082542c2b8f986074668ebebcee86cf6a9d8e8d6d6f723094a491e412ee073ac",
+    "value": {
+      "argv": [
+        "bsub",
+        "-H",
+        "-q",
+        "gpul40s",
+        "-J",
+        "mosaic-explore01-boltz_chemistry",
+        "-n",
+        "8",
+        "-R",
+        "span[hosts=1]",
+        "-R",
+        "rusage[mem=4096]",
+        "-W",
+        "13:30",
+        "-gpu",
+        "num=1:mode=shared:j_exclusive=yes:mps=no",
+        "-env",
+        "all,~CUDA_VISIBLE_DEVICES,~CUDA_MPS_PIPE_DIRECTORY,~CUDA_MPS_LOG_DIRECTORY,~CUDA_MPS_ACTIVE_THREAD_PERCENTAGE",
+        "-o",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/boltz_chemistry/stdout.%J.log",
+        "-e",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/boltz_chemistry/stderr.%J.log",
+        "bash",
+        "-l",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/source/exploratory_continuation_stage.sh",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/source",
+        "boltz_chemistry",
+        "run"
+      ],
+      "job_name": "mosaic-explore01-boltz_chemistry",
+      "created_utc": "2026-10-30T12:05:31.402819+00:00",
+      "research_profile": "exploratory",
+      "plan": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/source/plan.json",
+        "bytes": 19908,
+        "sha256": "baaee1056ab4a2cf9611b0b88ca4c14a4c43486e20b9bf6f1848250820e1eb19"
+      },
+      "status": "submitted",
+      "job_id": "29853758",
+      "dispatch_state": "held"
+    }
+  },
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/boltz/submission.json": {
+    "bytes": 1456,
+    "sha256": "12f9f4194091b329c09cdd38611ece5d03ac1e5b139edcf026792c00d97dac82",
+    "value": {
+      "argv": [
+        "bsub",
+        "-H",
+        "-q",
+        "gpul40s",
+        "-J",
+        "mosaic-explore01-boltz",
+        "-n",
+        "4",
+        "-R",
+        "span[hosts=1]",
+        "-R",
+        "rusage[mem=8192]",
+        "-W",
+        "06:45",
+        "-gpu",
+        "num=1:mode=shared:j_exclusive=yes:mps=no",
+        "-env",
+        "all,~CUDA_VISIBLE_DEVICES,~CUDA_MPS_PIPE_DIRECTORY,~CUDA_MPS_LOG_DIRECTORY,~CUDA_MPS_ACTIVE_THREAD_PERCENTAGE",
+        "-o",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/boltz/stdout.%J.log",
+        "-e",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/boltz/stderr.%J.log",
+        "bash",
+        "-l",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/source/exploratory_continuation_stage.sh",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/source",
+        "boltz",
+        "run"
+      ],
+      "job_name": "mosaic-explore01-boltz",
+      "created_utc": "2026-10-30T12:05:57.864975+00:00",
+      "research_profile": "exploratory",
+      "plan": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/source/plan.json",
+        "bytes": 19908,
+        "sha256": "baaee1056ab4a2cf9611b0b88ca4c14a4c43486e20b9bf6f1848250820e1eb19"
+      },
+      "status": "submitted",
+      "job_id": "29853760",
+      "dispatch_state": "held"
+    }
+  },
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/boltz/held-proof.json": {
+    "bytes": 476,
+    "sha256": "13df887293623da679e1718d801394ff0bc2bcfd86c73f93a4cbb6d17051191b",
+    "value": [
+      {
+        "JOBID": "29853760",
+        "USER": "s234818",
+        "STAT": "PEND",
+        "JOB_NAME": "mosaic-explore01-boltz"
+      },
+      {
+        "JOBID": "29853760",
+        "USER": "s234818",
+        "STAT": "PEND",
+        "JOB_NAME": "mosaic-explore01-boltz"
+      },
+      {
+        "JOBID": "29853760",
+        "USER": "s234818",
+        "STAT": "PEND",
+        "JOB_NAME": "mosaic-explore01-boltz"
+      },
+      {
+        "JOBID": "29853760",
+        "USER": "s234818",
+        "STAT": "PSUSP",
+        "JOB_NAME": "mosaic-explore01-boltz"
+      }
+    ]
+  },
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/boltz/release.json": {
+    "bytes": 111,
+    "sha256": "de0164e8ae48da9374e3959e0d776441895504963708d4afd2d48e51a37f8ee4",
+    "value": {
+      "job_id": "29853760",
+      "returncode": 0,
+      "stdout": "Job <29853760> is being resumed\n",
+      "stderr": ""
+    }
+  },
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/boltz/retirement.json": {
+    "bytes": 2354,
+    "sha256": "dd8f771f51304316a288fbe4ba1c73839e5642b135af25599f5aab0c2bf641d5",
+    "value": {
+      "job_id": "29853760",
+      "arm": "boltz",
+      "before": {
+        "JOBID": "29853760",
+        "USER": "s234818",
+        "STAT": "PEND",
+        "JOB_NAME": "mosaic-explore01-boltz"
+      },
+      "history_before": "\nJob <29853760>, Job Name <mosaic-explore01-boltz>, User <s234818>, Project <def\n                          ault>, Command <bash -l /work3/s234818/mosaic/runs/20\n                          261022-brd4-jq1-lrboost-analysis-01/exploratory-conti\n                          nuations-20261030-01/source/exploratory_continuation_\n                          stage.sh /work3/s234818/mosaic/runs/20261022-brd4-jq1\n                          -lrboost-analysis-01/exploratory-continuations-202610\n                          30-01/source boltz run>, Esub <dcc>\nFri Oct 30 13:05:58 2026: Submitted from host <hpclogin1> with hold, to Queue <\n                          gpul40s>, CWD <$HOME>, Output File </work3/s234818/mo\n                          saic/runs/20261022-brd4-jq1-lrboost-analysis-01/explo\n                          ratory-continuations-20261030-01/boltz/stdout.%J.log>\n                          , Error File </work3/s234818/mosaic/runs/20261022-brd\n                          4-jq1-lrboost-analysis-01/exploratory-continuations-2\n                          0261030-01/boltz/stderr.%J.log>, 4 Task(s), Requested\n                           Resources < rusage[mem=8192] span[hosts=1]>, Request\n                          ed GPU <num=1:mode=shared:mps=no:j_exclusive=yes>;\nFri Oct 30 13:06:13 2026: Signal <CONT> requested by user or administrator <s23\n                          4818> from host <hpclogin1>;\nFri Oct 30 13:06:13 2026: Pending: Waiting for scheduling after resumed by admi\n                          nistrator or user;\n\n RUNLIMIT                \n 405.0 min of hpclogin1\n\n MEMLIMIT\n      8 G \n\nSummary of time in seconds spent in various states by  Fri Oct 30 13:09:42 2026\n  PEND     PSUSP    RUN      USUSP    SSUSP    UNKWN    TOTAL\n  209      15       0        0        0        0        224         \n\n",
+      "reason": "Confirmed unstarted child-import launch defect; bmod rejected by site policy; settings/results unchanged.",
+      "bkill": {
+        "returncode": 0,
+        "stdout": "Job <29853760> is being terminated\n",
+        "stderr": ""
+      },
+      "after": {
+        "JOBID": "29853760",
+        "STAT": "EXIT"
+      },
+      "optimizer_updates": 0
+    }
+  },
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/dbmol/submission.json": {
+    "bytes": 1456,
+    "sha256": "eba5a6f75a8dc3f5c8443316582c926de2fcc48621f5b40b8ea827e6697af678",
+    "value": {
+      "argv": [
+        "bsub",
+        "-H",
+        "-q",
+        "gpul40s",
+        "-J",
+        "mosaic-explore01-dbmol",
+        "-n",
+        "4",
+        "-R",
+        "span[hosts=1]",
+        "-R",
+        "rusage[mem=8192]",
+        "-W",
+        "23:00",
+        "-gpu",
+        "num=1:mode=shared:j_exclusive=yes:mps=no",
+        "-env",
+        "all,~CUDA_VISIBLE_DEVICES,~CUDA_MPS_PIPE_DIRECTORY,~CUDA_MPS_LOG_DIRECTORY,~CUDA_MPS_ACTIVE_THREAD_PERCENTAGE",
+        "-o",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/dbmol/stdout.%J.log",
+        "-e",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/dbmol/stderr.%J.log",
+        "bash",
+        "-l",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/source/exploratory_continuation_stage.sh",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/source",
+        "dbmol",
+        "run"
+      ],
+      "job_name": "mosaic-explore01-dbmol",
+      "created_utc": "2026-10-30T12:06:13.654534+00:00",
+      "research_profile": "exploratory",
+      "plan": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/source/plan.json",
+        "bytes": 19908,
+        "sha256": "baaee1056ab4a2cf9611b0b88ca4c14a4c43486e20b9bf6f1848250820e1eb19"
+      },
+      "status": "submitted",
+      "job_id": "29853761",
+      "dispatch_state": "held"
+    }
+  },
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/dbmol/held-proof.json": {
+    "bytes": 358,
+    "sha256": "7d2065d0cb1a40d9b390f3b39240221c01cae60d66974cb26e7e8a8c97b2aca6",
+    "value": [
+      {
+        "JOBID": "29853761",
+        "USER": "s234818",
+        "STAT": "PEND",
+        "JOB_NAME": "mosaic-explore01-dbmol"
+      },
+      {
+        "JOBID": "29853761",
+        "USER": "s234818",
+        "STAT": "PEND",
+        "JOB_NAME": "mosaic-explore01-dbmol"
+      },
+      {
+        "JOBID": "29853761",
+        "USER": "s234818",
+        "STAT": "PSUSP",
+        "JOB_NAME": "mosaic-explore01-dbmol"
+      }
+    ]
+  },
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/dbmol/release.json": {
+    "bytes": 111,
+    "sha256": "9177791b10010be5e47f70c3934aefaf775335941c78d2a0180ee367e2af9ad9",
+    "value": {
+      "job_id": "29853761",
+      "returncode": 0,
+      "stdout": "Job <29853761> is being resumed\n",
+      "stderr": ""
+    }
+  },
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/dbmol/retirement.json": {
+    "bytes": 2355,
+    "sha256": "6d805674e2a877f394e78b55bc2ff13404fafb4f1dbe643e4aea1fb828ea3e5c",
+    "value": {
+      "job_id": "29853761",
+      "arm": "dbmol",
+      "before": {
+        "JOBID": "29853761",
+        "USER": "s234818",
+        "STAT": "PEND",
+        "JOB_NAME": "mosaic-explore01-dbmol"
+      },
+      "history_before": "\nJob <29853761>, Job Name <mosaic-explore01-dbmol>, User <s234818>, Project <def\n                          ault>, Command <bash -l /work3/s234818/mosaic/runs/20\n                          261022-brd4-jq1-lrboost-analysis-01/exploratory-conti\n                          nuations-20261030-01/source/exploratory_continuation_\n                          stage.sh /work3/s234818/mosaic/runs/20261022-brd4-jq1\n                          -lrboost-analysis-01/exploratory-continuations-202610\n                          30-01/source dbmol run>, Esub <dcc>\nFri Oct 30 13:06:13 2026: Submitted from host <hpclogin1> with hold, to Queue <\n                          gpul40s>, CWD <$HOME>, Output File </work3/s234818/mo\n                          saic/runs/20261022-brd4-jq1-lrboost-analysis-01/explo\n                          ratory-continuations-20261030-01/dbmol/stdout.%J.log>\n                          , Error File </work3/s234818/mosaic/runs/20261022-brd\n                          4-jq1-lrboost-analysis-01/exploratory-continuations-2\n                          0261030-01/dbmol/stderr.%J.log>, 4 Task(s), Requested\n                           Resources < rusage[mem=8192] span[hosts=1]>, Request\n                          ed GPU <num=1:mode=shared:mps=no:j_exclusive=yes>;\nFri Oct 30 13:06:24 2026: Signal <CONT> requested by user or administrator <s23\n                          4818> from host <hpclogin1>;\nFri Oct 30 13:06:24 2026: Pending: Waiting for scheduling after resumed by admi\n                          nistrator or user;\n\n RUNLIMIT                \n 1380.0 min of hpclogin1\n\n MEMLIMIT\n      8 G \n\nSummary of time in seconds spent in various states by  Fri Oct 30 13:09:55 2026\n  PEND     PSUSP    RUN      USUSP    SSUSP    UNKWN    TOTAL\n  211      11       0        0        0        0        222         \n\n",
+      "reason": "Confirmed unstarted child-import launch defect; bmod rejected by site policy; settings/results unchanged.",
+      "bkill": {
+        "returncode": 0,
+        "stdout": "Job <29853761> is being terminated\n",
+        "stderr": ""
+      },
+      "after": {
+        "JOBID": "29853761",
+        "STAT": "EXIT"
+      },
+      "optimizer_updates": 0
+    }
+  }
+}

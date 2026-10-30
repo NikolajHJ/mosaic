@@ -330,3 +330,14 @@ Before adoption: bind exact chemistry source roles, obtain the missing prepared
 target snapshot (an exact-identity allocated reconstruction is allowed), run its
 allocated regressions and integrate it with full qualification in a fresh release.
 No current queued job imports this draft; no source/job/result was changed.
+
+The user subsequently authorized a faster path for the blocked continuations:
+`exploratory_continuation.py`, `exploratory_continuation_stage.sh` and
+`launch_exploratory_continuations.py`. Read
+`../runs/20261030-exploratory-continuations-01/README.md` before acting. These reuse
+the original fixed-step math/scorers/teachers and acceleration, request finite
+backward smoke rather than FD qualification, and enforce own-output capacity.
+They do not label old failures passed. Five actual optimizer jobs are already
+submitted; never replay launchers/intents or duplicate active writers. Old
+qualified controllers and the prepared compatibility reader are optional evidence
+paths, not prerequisites for these explicitly exploratory children.
