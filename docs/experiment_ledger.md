@@ -10527,3 +10527,87 @@ or saved result/settings/scientific tolerance changes. Chemistry full qualifier
 still failed low-coefficient logit precision pair; DBMol/plainBoltz/Bolchem
 original blockers unchanged, not mislabeled queued. All code/proofs through
 CPU1037 were pushedbcac06e; this actual new admission recorded separately.
+
+
+Prepared30October2026: user explicitly requested repair of plain Boltz,
+Boltz+chemistry and DBMol derivative blockers. NEW separate complete-objective
+reference candidate20261030-boltz-objective-precision-01, no optimizer branch.
+Original FP32 producer, settings, saved results/failed gates unchanged; independent
+lossless fullFP64 reference extends DBMol affinity-only coverage to both original
+trunks/contact/confidence/total. Plain affinity remains quantitative head0,
+DBMol separate composite definition retained. Original chemistry teacher rebuilt
+once from authenticated failed assay; exact preparation identity and original
+low.001 combinedscalar/gradient replay mandatory, targets fixed thereafter.
+All original and predeclared fine logit scales retained; no passing-scale/tolerance
+selection. Native/chemistry19 original modules equal across science657/635;
+trajectory difference is not used. Portable11/resource136 passed locally, no
+numerical/model work. Allocated CPU39/rawXML/startups plus three bounded2h GPU
+diagnostics remain required; even completed observations cannot admit/restart
+any optimizer. Full production03 shared capacity owner invoked at every entry/
+periodic300s,256MiB/2048file complete group funded inside original2GiB control,
+full remaining projections/4GiB+100000reserves unchanged, no cleanup.
+Source10pin54ce332ce61bbcde03e186f7c3f6005497623a92467403c9df16fd590f7206ac,
+planc07b0a9c827574b70e67ad7b1e69a4b403db67b559a8a9f1b2cbcb1579093c8c,
+archive21333B/SHAb95571b1b836d058e20359d67d9b8e946857b9907109d8a92c170d70ef05d06c.
+Preparation is not an allocated/native pass or optimizer submission.
+Separate Pro29852586/capture29852587 observedEXIT; original periodic storage
+receipt required38904959951 versus38585040018available, following entrypass.
+Original errors/results/source preserved, no blind rerun; committed prefix not
+yet independently collected. This is separate from Boltz/DB gradient work.
+
+
+30October2026: Boltz complete-objective candidate01 preflight FAILED before
+any submission: newly active foreign source146 V100 qualification29852732
+unrecognized by original shared writer accounting. Exact accepted foreign
+scheduler/CPU38/archive/plan/intent/receipt and638source member hashes collected
+READ-ONLY. No01 submission markers/jobs. New immutable candidate02 keeps all
+reference/model/chemistry/point code byte-identical, adds only own authenticated
+full foreign current-byte+baseline512MiB/3000file forecast composition around
+unchanged shared assessor. Foreign jobs/files/settings untouched; unknown or
+excess writers still block. Portable19/newaccount8 plus resource136 passed;
+full47allocated cases/all3actualstartup bodies still required. Source12pin
+3c9805af9891a8c140fa36976f3f19293814ad1e47ea7e9be8ccfc47388ae209,
+plan1c947be79e1d4a464ed5ac1a0327eec5f2f9e157750914e31a83d3f469011aae,
+archive25706B/SHAffe6ee203f94a0245c71c2e429fa80537fd0ad3a2a6143a228f301b1dfb3d9dc.
+No numerical/native pass, optimizer submission, saved result/setting change,
+cleanup or foreign mutation follows from preparation. Shared2GiBcontrol256MiB
+own group/full original projections/4GiB100000reserves remain mandatory.
+
+
+Verified30October2026 08:58:37UTC: NEW complete-objective Boltz candidate02
+source12 staged read-only, all21 parent sources and original input bytes rehashed;
+independent stdlib source/member/manifest/metadata audit passed. NO CPU/controller/
+GPU/optimizer submission markers or jobs. First full preflight passed source146
+read-only accounting but failed39428377452required/38564473903available bytes
+(short863903549), files adequate19024703margin. Reconciled no-submission retry
+kept every original gate; another newly active HOME DeFoG diagnostic29852743
+was rejected as unaccounted. Its source/command collected read-only, not yet
+adopted as WORK3read-only or bounded; no foreign mutation/bypass. Source146
+accounting remains newly qualified metadata candidate, NOT an allocated pass.
+All47allocated fixtures/actual3startups and all3GPU comparisons remain pending.
+No checker/optimizer/gate tolerance change was adopted for a saved run.
+
+Actual capacity need prompted a narrowly scoped backup audit, no deletion:
+all6 existing report archives/every member rehashed locally; all1288 candidate
+remote derived report assets were ALREADYABSENT. No old cleanup repeated, no
+additional history/source/cache/model/result files removed or changed.
+
+Separate plainPro29852586 and capture29852587 actualEXIT1: independent same-job
+LSF/source16/input62/failed periodic storage receipt verified. Entry had passed,
+periodic required38904959951 versus38585040018available. Child saved ONLY exact
+initial global20000 state, no updates JSONL/zero committed new updates. Original
+qualified runtime/native evidence stays passed; this new allocation is a real
+resource failure, not a gradient pass/target completion. No blind retry, source
+edit or saved-state change. Original20k/50k target remains incomplete.
+Existing reports unchanged because no new applied optimizer data. Monitor
+remains active for changed external state/capacity and subsequent validation;
+no optimizer resubmission is claimed.
+
+Local static closeout30October2026: owned source/JSON/AST/archive/index audits
+passed; all10 sealed source02 executable/test Git-index bytes exactly match
+manifest. Global layout check still FAILED pre-existing discovery/catalog and
+historical missingREADME/.pytest_cache drift; no full-layout pass or unrelated
+migration claimed. No allocated numerical tests, GPU jobs or cleanup occurred.
+Active hourlymonitor updated with exact pending source02/resource blockers,
+Pro03actualEXIT/zero new updates, source/input preservation and no-duplicate
+reconciliation/complete-gate requirements; targets remain incomplete.

@@ -1,5 +1,12 @@
 # Endpoint admission investigations
 
+Latest30October09UTC: [Boltz reference02](20261030-boltz-objective-precision-02/README.md)
+is prepared/staged but full storage/unknown-writer checks blocked before ANY
+submission. Local19/resource136 passed; allocated47/native results pending.
+[Attempt01](20261030-boltz-objective-precision-01/README.md) remains failed
+preflight with no jobs. Saved runs/settings/failures remain unchanged. Plain
+Pro production03 separately failed periodic storage with zero new updates.
+
 Dated records bind exact saved inputs, original failures, prospective check
 policies and actual allocated outcomes. A record or diagnostic does not convert
 an original failed run into a pass or authorize a gate waiver.

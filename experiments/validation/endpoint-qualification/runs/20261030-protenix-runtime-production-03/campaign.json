@@ -16,7 +16,7 @@
   "plan_sha256": "1f0b24c506a62b6ebcd51c5fb9f71131a595ff33f1b66548894ec51d1015de15",
   "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/runtime-production-03",
   "source": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/runtime-production-release-03/source",
-  "status": "full_CPU_startup_runtime_storage_passed_full30k_Protenix_optimizer_submitted_queued",
+  "status": "optimizer_EXIT1_periodic_storage_guard_no_committed_child_update",
   "tag": "20261030-protenix-runtime-production-03",
   "latest_observed_utc": "2026-10-30T07:49:27.347854+00:00",
   "CPU_verification": "CPU-verification.json",
@@ -33,5 +33,32 @@
   "actual_GPU_status": "PEND",
   "actual_capture_status": "PEND",
   "production_entry_gate_verified": false,
-  "new_committed_updates": 0
+  "new_committed_updates": 0,
+  "terminal_verification": {
+    "status": "independent_byte_LSF_and_failed_periodic_capacity_verification_no_committed_child_updates",
+    "observed_utc": "2026-10-30T08:58:37.941535+00:00",
+    "jobs": {
+      "cpu": "29852581",
+      "after-cpu": "29852582",
+      "gpu-plain": "29852586",
+      "after-plain": "29852587"
+    },
+    "source_manifest_sha256": "6356f3a7068658e17b25b5bdcc5239feb5cfc51e6cdeb1894e47e4752a86e0f8",
+    "failed_storage": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/runtime-production-03/gpu-plain/rolling-capacity-periodic-1793348210390800183/assessment.json",
+      "bytes": 363715,
+      "sha256": "2d50774b643239505c2c431167a49f4668e0a6bac5aa4c82a6c2256b6c2cec00",
+      "required_bytes": 38904959951,
+      "available_bytes": 38585040018
+    },
+    "committed_child_updates": 0,
+    "committed_child_states": 1,
+    "global_state": 20000,
+    "packet_sha256": "9fbe677b0a3eab6b754b4ec7d2ed925458b3eb1db1cc4ed79a5c9bb46940023b",
+    "optimizer_completion": false,
+    "all_inputs_rehashed": 62,
+    "parent_sources_rehashed": 16,
+    "historical_successes_preserved": true,
+    "original_saved_results_changed": false
+  }
 }

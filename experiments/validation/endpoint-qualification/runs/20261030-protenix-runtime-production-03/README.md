@@ -20,3 +20,5 @@ gradient protocol. Actual campaign/submission/release/LSF evidence determines
 status; preparation is not a new optimizer submission.
 
 Verified07:49:27UTC: CPU29852581/controller29852582 DONE,1037rawcases/startups and full dispatch storage passed. Full30000-update optimizer29852586 and ownended capture29852587 ACTUALLYPEND; no entry/committed updates yet. Independent109file/all4vectors/16source/62input/LSF/held-release audit passed. See dispatch-verification.json; never duplicate jobs.
+
+OVERRIDING actual30October08:58UTC: GPU29852586/capture29852587 bothEXIT1. Mandatory periodic capacity failed after entrypass. Exactly initial global20000 child state only; zero committed updates. Read terminal-verification/campaign; no completion, new retry or changed source/results.

@@ -1,0 +1,16 @@
+{
+  "CPU_cases": 39,
+  "archive_bytes": 21333,
+  "archive_sha256": "b95571b1b836d058e20359d67d9b8e946857b9907109d8a92c170d70ef05d06c",
+  "files": 10,
+  "manifest_sha256": "54ce332ce61bbcde03e186f7c3f6005497623a92467403c9df16fd590f7206ac",
+  "optimizer_jobs": [],
+  "plan_sha256": "c07b0a9c827574b70e67ad7b1e69a4b403db67b559a8a9f1b2cbcb1579093c8c",
+  "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/runtime-production-03/boltz-precision-01",
+  "source": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/boltz-precision-release-01/source",
+  "status": "staged_preflight_failed_unknown_active_writer_no_submissions",
+  "tag": "20261030-boltz-objective-precision-01",
+  "unknown_writer": "29852732",
+  "submission_markers": [],
+  "failure_evidence": "results/hpc/20261030-boltz-objective-precision-01/reconcile01/stdout.json"
+}

@@ -1,0 +1,27 @@
+{
+  "status": "source02_staged_sources_inputs_verified_preflight_short_then_new_unknown_writer_no_jobs",
+  "gates": [
+    {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/runtime-production-03/boltz-precision-02/preflight/rolling-capacity-preflight-1793350058526033154/assessment.json",
+      "bytes": 364946,
+      "sha256": "406d9238d18e1816377dee8332c7836580cb1442f21b512d5f58dbdc90032338",
+      "status": "failed",
+      "required_bytes": 39428377452,
+      "available_bytes": 38564473903,
+      "byte_margin": -863903549
+    }
+  ],
+  "actual_allocated_CPU_cases": 0,
+  "actual_CPU_job_ids": [],
+  "actual_GPU_job_ids": [],
+  "reconciled_retry_error": "Unrelated active account writer has no authenticated bounded declaration: 29852743",
+  "new_writer_command": "bash -l /zhome/95/e/206121/mosaic-runs/defog-composition-20261030-01/gpu.sh",
+  "archive_backup_audit": {
+    "local_archives": 6,
+    "candidate_files": 1288,
+    "remote_already_absent": 1288,
+    "remote_removed": 0
+  },
+  "source_audit": "status01/verification.json",
+  "settings_saved_results_and_checks_unchanged": true
+}

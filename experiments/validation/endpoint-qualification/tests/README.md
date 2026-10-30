@@ -1,5 +1,12 @@
 # Portable metadata and allocated CPU controls
 
+`test_boltz_precision_portable.py` and `test_qualification_writer_capacity.py`
+are19 portable AST/identity/forecast cases with no arrays or model setup.
+`test_boltz_reference_{torch,jax}.py` require real allocated CPU jobs before
+importing numerical libraries. The separate candidate02 suite includes17
+original Torch controls plus22 numerical/metadata cases and8 external-account
+controls:47 total. None establishes native admission or optimizer permission.
+
 Explicit portable exception: `test_runtime_reservations.py` (28 pure metadata
 cases), `test_segment_capacity.py` (60 schema/accounting cases), and ten
 file-count/content-identity cases selected by `scripts/local_metadata_preflight.py` can run

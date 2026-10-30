@@ -1,5 +1,14 @@
 # Endpoint diagnostic policy
 
+`manage_boltz_precision.py` currently targets the immutable complete-objective
+candidate02; read its run record before any action and never repeat staging.
+`boltz_objective_reference.py` provides separate whole-model FP64 references;
+`boltz_precision_{server,driver,ops}.py` and its stage wrapper retain exact
+production replay and predeclared diagnostic cohorts. No optimizer branch.
+`qualification_writer_capacity.py` authenticates/charges the separate source146
+job read-only, composing additional current/future bytes around the original
+shared assessor. The full allocated CPU/GPU checks remain pending storage.
+
 Current operators target only [continuation22](../runs/20261029-precision-continuation-22/README.md)
 and [chemistry qualification06](../runs/20261029-chemistry-native-qualification-06/README.md).
 Both are already staged/submitted; never replay prepare/stage or old callbacks.

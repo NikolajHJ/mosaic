@@ -1,5 +1,18 @@
 # Prospective endpoint qualification diagnostics
 
+Current30October09UTC: [Boltz whole-objective reference candidate02](runs/20261030-boltz-objective-precision-02/README.md)
+addresses plain Boltz, Boltz+chemistry and DBMol derivative blockers without
+changing production or saved results. Source12 is staged/byte audited;19 portable
+controls and136 resource contracts passed locally. Full47 allocated cases,
+three actual startup commands and three full-model precision observations have
+NOT run: full storage was short863903549bytes, then a new active account job
+failed the unknown-writer guard. No candidate CPU/GPU/optimizer jobs exist.
+Read its campaign/resource-block-verification; never replay staging.
+Plain Pro production03 separately EXIT1 on periodic storage, initial20k state
+only/zero new updates, preserving prior successful native qualification.
+All original failed scientific checks remain failed and all intended targets
+remain incomplete. Current receipts override older queued descriptions below.
+
 Latest30October01:59UTC: diagnostic03 failed because the plain FP64 worker
 requires4slots, not the chemistry allocation8. One baseline measurement only;
 no optimizer. [Diagnostic04](runs/20261030-continuation-failure-diagnostics-04/README.md)
