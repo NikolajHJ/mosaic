@@ -53,8 +53,8 @@ def test_capacity_patch_inventory_contains_only_namespace_or_registration(name):
 def test_source_scope_is_distinct_from_shared_control():
     tree=ast.parse((HERE/'scripts/runtime_production_ops.py').read_text())
     defs={n.targets[0].id:ast.unparse(n.value) for n in tree.body if isinstance(n,ast.Assign) and isinstance(n.targets[0],ast.Name)}
-    assert defs['SOURCE']=="BASE / 'runtime-production-release-03/source'"
-    assert defs['ROOT']=="SCOPE / 'runtime-production-03'"
+    assert defs['SOURCE']=="BASE / 'runtime-production-release-05/source'"
+    assert defs['ROOT']=="SCOPE / 'runtime-production-05'"
 
 @pytest.mark.parametrize('needle', ["'05:30'","'num=1:mode=exclusive_process:mps=yes'","'8GB'","'19800'","'19200'"])
 def test_full_measured_remaining_horizon_resources(needle):

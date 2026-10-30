@@ -20,3 +20,12 @@ The shared [pre-model startup checker](startup/README.md) serves the fresh
 Boltz30k comparison and independent DBMol pilot. It tests actual generated
 driver startup in allocated CPU callbacks; its receipt is separate from native
 gradient readiness and never changes saved scientific results.
+
+
+Default storage admission for new releases is now documented in
+[HPC_STORAGE_POLICY.md](../../docs/HPC_STORAGE_POLICY.md) and implemented by
+[storage_accounting.py](storage_accounting.py). It uses exact live quota once,
+remaining writes once, measured remaining-update forecasts and explicit reserves.
+The endpoint owner provides authenticated experiment integration.28portable
+shared regression cases live in tests/core/test_storage_accounting.py. Old
+sealed resource policies remain historical and must not be edited in place.

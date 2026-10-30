@@ -121,3 +121,17 @@ instructions or current implementation status. Link corrected current guidance
 and record discrepancies in the audit/logbook. For local mechanical review use
 `py -3.13 scripts/layout/audit_documentation.py --root . --output
 results/static/documentation-audit.json`; it performs no HPC or numerical work.
+
+
+## Shared HPC storage policy â€” required for new launches
+
+Use the [common storage accounting policy](docs/HPC_STORAGE_POLICY.md) and
+`scripts/hpc/storage_accounting.py` by default. Query exact live quota, count
+existing bytes once and budget only remaining writes. Do not recharge entire
+historical/current trees against live quota or stack full-lifetime/pilot safety
+multipliers. Use measured growth, explicit margins, shared concurrent-writer
+forecasts and reserves of 4 GiB and 100,000 files per filesystem. Preserve periodic checks,
+scientific gates, saved results and sealed sources. New resource-policy adoption
+needs a new release and actual startup/integration validation; it is not a waiver
+or permission to replay unknown submissions. This user-authorized policy
+supersedes historical whole-tree stale charges and double-pilot forecasts.

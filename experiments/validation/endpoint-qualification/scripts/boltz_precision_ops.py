@@ -12,10 +12,10 @@ import xml.etree.ElementTree as ET
 
 BASE=Path('/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01')
 SCOPE=BASE/'nonchem-precision-continuation-26'
-SHARED=BASE/'runtime-production-release-03/source'
-SHARED_PIN='6356f3a7068658e17b25b5bdcc5239feb5cfc51e6cdeb1894e47e4752a86e0f8'
-ROOT=SCOPE/'runtime-production-03/boltz-precision-04'
-SOURCE=SCOPE/'boltz-precision-release-04/source'
+SHARED=BASE/'runtime-production-release-05/source'
+SHARED_PIN='36e1bfcd9acb864a557e3cf2c317334626fd596337d39306b352c1b0131da11f'
+ROOT=SCOPE/'runtime-production-05/boltz-precision-05'
+SOURCE=SCOPE/'boltz-precision-release-05/source'
 CAP=256*1024**2
 PYTHON='/work3/s234818/mosaic/envs/protenix-tiny/bin/python'
 
@@ -94,10 +94,10 @@ def storage(op,parent,phase):
     require(owner.metadata_bytes()+CAP-budget(plan)<=2*1024**3,'New diagnostic group cannot fit original shared2GiB control cap')
     rolling=module(shared.CAPACITY/'scripts/rolling_capacity.py','_unchanged_complete_shared_storage')
     proxy.configure(rolling,owner,current)
-    import qualification_writer_capacity as foreign
-    foreign.install(rolling,plan['shared_source146'],parent)
-    # Same complete original assessor/forecasts/reserves, PLUS source146's whole
-    # authenticated current bytes and512MiB remaining forecast. No foreign edits.
+    import storage_policy_adapter
+    storage_policy_adapter.install(rolling,plan,parent,plan['shared_source146'])
+    # Explicit newly qualified live-quota/remaining-write resource policy.
+    # No scientific or saved-result change; all inventories and caps remain.
     return rolling.storage(owner,parent,phase)
 
 def argv(phase,pin,dependency=None):
@@ -105,7 +105,7 @@ def argv(phase,pin,dependency=None):
     gpu=phase.startswith('gpu-');slots=8 if gpu else 1 if phase=='after-cpu' else 4;parent=ROOT/phase
     values=['bsub','-H','-env','all,~CUDA_VISIBLE_DEVICES,~CUDA_MPS_PIPE_DIRECTORY,~CUDA_MPS_LOG_DIRECTORY,~CUDA_MPS_ACTIVE_THREAD_PERCENTAGE',
         '-q','gpul40s' if gpu else 'hpc','-n',str(slots),'-R','span[hosts=1]','-R','rusage[mem='+('2GB' if slots==1 else '4GB')+']',
-        '-W','02:00' if gpu else '00:30' if slots==1 else '01:00','-J','mosaic-boltz-precision04-'+phase,
+        '-W','02:00' if gpu else '00:30' if slots==1 else '01:00','-J','mosaic-boltz-precision05-'+phase,
         '-o',str(parent/'stdout.%J.log'),'-e',str(parent/'stderr.%J.log')]
     if gpu:values+=['-gpu','num=1:mode=shared:j_exclusive=yes:mps=no']
     if dependency:values+=['-w',dependency]

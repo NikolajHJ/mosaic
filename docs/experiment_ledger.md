@@ -10708,3 +10708,48 @@ Original sparse stride20/all-scalar policy and every gate remain unchanged.
 Exact compact breakdown/current gate path in owning04run; new raw evidence
 results/hpc/20261030-storage-explanation-01. No original failed source/result
 was changed or recertified.
+
+
+30October2026 user authorizes practical shared storage policy (live exact quota,
+existing bytes once, remaining future writes, evidence-based embedding forecast)
+and explicitly extends DBMol to30000TOTAL at unchangedLR.0025. NewProproduction04
+preserves failed03zero updates and the exact20k snapshot; same full30k remainder,
+qualified deterministic runtime and all scientific/startup/terminal guards.
+New shared metadata implementation passed25core +3integration controls locally
+(after one fixture-only patch-order error preserved); full1065allocated suite
+and real startup commands still required. No saved result/model/loss/check/LR
+change, cleanup or foreign-job mutation. Preparation is not a new optimizer ID.
+
+
+30October2026 actual storage-policy execution: new resource accounting queries
+all6BeeGFS pools in exact bytes, retaining complete inventory/caps, finitefile
+andFSchecks,4GiB/100000file reserve and one1GiB burst allowance. Existing files
+are not charged twice. Embedding remaining forecast now13,665,801,783bytes vs
+old21,464,045,096, using completed1899/20/20, max(pilot,current-growth) and one25%
+margin plus1GiB controls. No foreign settings/jobs changed or data deleted.
+Fresh full Pro05gate PASSED29,906,585,711required/56,685,248,512available (24.94GiB
+margin). ActualCPU29853415/controller29853416 submitted held/receipt/released.
+CPU1068 and actual ready-bound original SEGMENT+FP64startup now observed passed;
+independent rawXML/module/LSF/source/command audit verifies1068cases/26modules.
+Callback stillRUN at10:46:56UTC; optimizer ID not yet established at thatcapture.
+Boltz reference05 fresh gate PASSED30,437,335,847/56,414,228,480; actualCPU29853424
+and controller29853425 submitted. CPU82 cases/3actualstartups/GPU outcomes pending.
+Pro04failed before jobs on WindowsPath parent in Linux plan;05fixed PurePosixPath
+and recursive plan validation, local63metadata cases passed. Failed source04,
+rawerror and previous reports remain intact. DBMol30kTOTAL user target recorded,
+LR.0025/saved7500 untouched; no fabricated optimizer admission or gradientpass.
+
+
+30October2026 actual10:54UTC: Pro05CPU29853415/controller29853416 actualDONE,
+1068rawcases in26modules/zero failureerror skips and actual SEGMENT+reference
+startup independently audited. Full shared dispatch/entry passed newpolicy.
+Actual full30000-update optimizer29853431/capture29853432 submitted andRUN/PEND.
+GPUentry and both sequentialCUDAclients passed; original driver invoked at20k,
+no new committed update verified at10:54. Original 03failure remains failed.
+Boltz05CPU29853424/controller29853425 actualDONE82rawcases/8modules/zero failures
+errorsskips/all3 actualstartupcommands independently audited. Actual diagnostic
+GPUs29853436plainBoltz/29853437Bolchem/29853438DBMol submitted (RUN/PEND/PEND at
+10:56:47), not optimizer jobs. These read-only full-objective comparisons must
+establish a solution before fresh complete prospective admission. No changing
+saved runs/FDcriteria to force passes. DBMol target30k/LR.0025/7500saved retained.
+Commonpolicy rootAGENTS/docs/sharedimplementation recorded. No cleanup required.

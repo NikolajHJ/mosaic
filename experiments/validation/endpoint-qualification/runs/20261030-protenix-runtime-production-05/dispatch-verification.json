@@ -1,0 +1,58 @@
+{
+  "status": "independent_source_bytes_raw_XML1068_actual_startups_submission_hold_release_and_LSF_passed",
+  "cases": 1068,
+  "modules": {
+    "tests.test_admission": 50,
+    "tests.test_chemistry_continuation": 47,
+    "tests.test_continuation_driver": 56,
+    "tests.test_continuation_ops": 107,
+    "tests.test_cuda_ownership": 69,
+    "tests.test_current_capacity": 5,
+    "tests.test_dbmol_endpoint_precision": 36,
+    "tests.test_dbmol_reference": 17,
+    "tests.test_embedding_shared_capacity": 13,
+    "tests.test_home_report_reader": 18,
+    "tests.test_logit_admission": 14,
+    "tests.test_measurement_resolution": 10,
+    "tests.test_precision_continuation_driver": 71,
+    "tests.test_precision_continuation_hooks": 57,
+    "tests.test_precision_continuation_ops": 131,
+    "tests.test_probe_shared_capacity": 11,
+    "tests.test_protenix_reference_worker": 58,
+    "tests.test_qualification": 19,
+    "tests.test_recovery_capacity": 11,
+    "tests.test_rolling_capacity": 89,
+    "tests.test_runtime_production": 32,
+    "tests.test_runtime_reservations": 28,
+    "tests.test_segment_capacity": 60,
+    "tests.test_storage_accounting": 28,
+    "tests.test_storage_policy_adapter": 3,
+    "tests.test_vae_shared_capacity": 28
+  },
+  "jobs": {
+    "after-cpu": "29853416",
+    "after-plain": "29853432",
+    "cpu": "29853415",
+    "gpu-plain": "29853431"
+  },
+  "source_manifest_sha256": "36e1bfcd9acb864a557e3cf2c317334626fd596337d39306b352c1b0131da11f",
+  "optimizer_admission": false,
+  "scientific_GPU_result_verified": false,
+  "delivered_files": 313,
+  "packet_sha256": "b3aaf69300f8162bff4a256dce16a93db0bc1285006c02f3a7ed3eebe1a4fb6c",
+  "observed_utc": "2026-10-30T10:54:24.323672+00:00",
+  "actual_controller_LSF_success": true,
+  "registered_job_ids": {
+    "after-cpu": "29853416",
+    "after-plain": "29853432",
+    "cpu": "29853415",
+    "gpu-plain": "29853431"
+  },
+  "current_scheduler_states": {
+    "after-cpu": "terminal_same_job_LSF",
+    "after-plain": "PEND",
+    "cpu": "terminal_same_job_LSF",
+    "gpu-plain": "RUN"
+  },
+  "not_a_terminal_scientific_pass": true
+}

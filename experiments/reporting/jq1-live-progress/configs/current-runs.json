@@ -28,8 +28,8 @@
     },
     {
       "id": "dbmol",
-      "label": "Boltz-2 DBMol binding objective, planned10k",
-      "status_detail": "7,500 saved updates. Original terminal validation failed. Separate finer-scale qualification passed; full-model validation 29839088 later stopped at its full-storage entry gate before native evaluation. No new optimization continuation was submitted. Original failures remain failed. Status observed 28 October 2026 at 14:00 Paris.",
+      "label": "Boltz-2 DBMol binding objective, planned30k",
+      "status_detail": "7,500 saved updates; authorized total target is now 30,000 at LR0.0025. Saved results and original terminal failures remain unchanged. New complete-objective reference validation is being submitted under the corrected shared storage policy; it must pass full gradient, pilot and runtime admission before continuation.",
       "continuation_status": "blocked",
       "segments": [
         {

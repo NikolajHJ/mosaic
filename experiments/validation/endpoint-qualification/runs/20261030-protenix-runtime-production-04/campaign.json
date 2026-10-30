@@ -1,0 +1,15 @@
+{
+  "CPU_cases": 1065,
+  "archive_bytes": 58566,
+  "archive_sha256": "2cc63a530f52dd4a5fce02027f85d08ef3bd9f47ca03561559a2d1b6e9256a27",
+  "files": 11,
+  "manifest_sha256": "702fb3aef811b130c989cec49ba35c1f43966a1919addec8ab40b72c8bbfc653",
+  "optimizer_jobs": [],
+  "plan_sha256": "645ab11fe6fe95c35f42ea36f0a7d5ad68341541ffc5e19b5e31dfe4ed37e6c5",
+  "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/runtime-production-04",
+  "source": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/runtime-production-release-04/source",
+  "status": "staged_pre_model_context_failed_windows_path_no_submission",
+  "tag": "20261030-protenix-runtime-production-04",
+  "jobs": {},
+  "error": "Windows Path parent produced backslashes for Linux predecessor case;05 uses PurePosixPath and validates plan recursively"
+}

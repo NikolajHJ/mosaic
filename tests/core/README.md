@@ -18,3 +18,10 @@ Shared fixtures remain under [tests/data](../data/).
 
 See the [test index](../README.md), [experiment index](../../experiments/INDEX.md)
 and [nested layout map](../../experiments/folder-layout.json).
+
+
+Shared HPC capacity metadata: `test_storage_accounting.py` covers exact live
+BeeGFS CSV, all finite pools, existing bytes counted once, remaining writes,
+embedding growth/remaining updates, reserves, malformed metadata and POSIX launch
+paths. All28cases are explicitly portable and import no scientific libraries.
+They do not replace allocated startup/integration/native validation.

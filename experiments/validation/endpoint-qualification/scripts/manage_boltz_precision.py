@@ -13,11 +13,11 @@ import tarfile
 import xml.etree.ElementTree as ET
 
 OWNER=Path(__file__).resolve().parents[1];REPO=OWNER.parents[2]
-TAG='20261030-boltz-objective-precision-04';LOCAL=REPO/'results/hpc'/TAG;RUN=OWNER/'runs'/TAG
+TAG='20261030-boltz-objective-precision-05';LOCAL=REPO/'results/hpc'/TAG;RUN=OWNER/'runs'/TAG
 INPUT_LOCAL=REPO/'results/hpc/20261030-boltz-objective-precision-01'
 BASE='/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01';SCOPE=BASE+'/nonchem-precision-continuation-26'
-ROOT=SCOPE+'/runtime-production-03/boltz-precision-04';SOURCE=SCOPE+'/boltz-precision-release-04/source'
-SHARED=BASE+'/runtime-production-release-03/source';PIN='6356f3a7068658e17b25b5bdcc5239feb5cfc51e6cdeb1894e47e4752a86e0f8'
+ROOT=SCOPE+'/runtime-production-05/boltz-precision-05';SOURCE=SCOPE+'/boltz-precision-release-05/source'
+SHARED=BASE+'/runtime-production-release-05/source';PIN='36e1bfcd9acb864a557e3cf2c317334626fd596337d39306b352c1b0131da11f'
 def raw(x):return (json.dumps(x,indent=2,sort_keys=True,allow_nan=False)+'\n').encode()
 def sha(x):return hashlib.sha256(x).hexdigest()
 
@@ -29,6 +29,9 @@ def prepare():
             if 'base64' in row:
                 data=base64.b64decode(row['base64'],validate=True);assert sha(data)==row['sha256'] and len(data)==row['bytes']
             files[name]=row
+    for name in ('source_manifest.json','plan.json'):
+        b=(REPO/'results/hpc/20261030-protenix-runtime-production-05/source01'/name).read_bytes()
+        files[SHARED+'/'+name]={'path':SHARED+'/'+name,'bytes':len(b),'sha256':sha(b),'base64':base64.b64encode(b).decode()}
     def row(path):return {k:files[path][k] for k in ('path','bytes','sha256')}
     def read(path):return json.loads(base64.b64decode(files[path]['base64']))
     old=read(SHARED+'/source_manifest.json');assert files[SHARED+'/source_manifest.json']['sha256']==PIN
@@ -54,7 +57,7 @@ def prepare():
     assert checkpoints['boltz2_conf.ckpt']['sha256']=='090e82ac8c92f5e943fa1b39e7410a44027bea7243c0bbb3caa67a77fc1428e1'
     science=db['source'];bolscience=chemistry['science_source']
     plan={'version':'complete-boltz-objective-reference-diagnostic-v1','root':ROOT,'source_root':SOURCE,
-        'shared_capacity':{'path':SHARED,'files':7,'manifest_sha256':PIN},
+        'shared_capacity':{'path':SHARED,'files':11,'manifest_sha256':PIN},
         'capacity_science':{'path':BASE+'/nonchem-precision-release-26/source','files':50,'manifest_sha256':'8324c1d312adeaa4c67c475c01ef1217df6f3ad4044b997d1b73e168325412d3'},
         'science':science,'chemistry_source':{'path':SCOPE+'/chemistry-continuation-release-05/source','files':10,
             'manifest_sha256':'2b0356e63e74de8c1e112c47b8aedfdad9eaea70b66bf6a790abee29488718d4'},
@@ -69,12 +72,14 @@ def prepare():
                     'adapter_source':chemistry['adapter_source'],'preparation_identity':chem_report['preparation_identity'],
                     'point_scope':'original_failed_invalid_assay_not_a_modified_saved_molecule'},
                 'dbmol':{'point':db['parent_snapshot'],'source':science,'config':db['config'],'directions':dd,
-                         'saved_updates':7500,'target_updates':10000}},
+                         'saved_updates':7500,'target_updates':30000}},
         'inputs':list(checkpoints.values())+[chemistry['context'],row(plain+'/terminal_gradient_checks/report.json'),
             row(chem_study+'/low_coupled_checks/report.json'),row(SCOPE+'/dbmol-validate-07500/payload/study/native_gradient_checks-prospective/dbmol_total_loss/admission.json')],
         'optimizer_updates':0,'can_admit_new_child':False,'output_cap_bytes':256*1024**2,'file_cap':2048,
         'fixed_original_chemistry_teacher_identity_required':True,'full_original_qualification_still_required':True,
-        'production_optimizer_settings_changed':False,'acceptance_tolerances_changed':False}
+        'production_optimizer_settings_changed':False,'acceptance_tolerances_changed':False,
+        'storage_policy':{'version':'mosaic-live-quota-remaining-writes-v2','quota_burst_bytes':1024**3,'unprofiled_writer_bytes':2*1024**3},
+        'authorized_target_updates':{'dbmol':30000},'resource_policy_change_authorized':True}
     for arm in plan['arms'].values():plan['inputs']+=[arm['point'],arm['config']]
     # Only these identical immutable modules are shared by all arm loaders.
     comparison=packets[-1]['common_source_comparison']
@@ -118,14 +123,16 @@ def prepare():
     # The exact original complete cleanup helper is used by the existing05 source.
     cp=read(SCOPE+'/chemistry-continuation-release-05/source/plan.json')['arms']['protenix']['adapter_source']
     if cp['path'] not in {p['path'] for p in parents}:parents.append(cp)
-    names={**{'scripts/'+n+'.py':'scripts/'+n+'.py' for n in ('boltz_objective_reference','boltz_precision_driver','boltz_precision_server','boltz_precision_ops','qualification_writer_capacity')},
+    names={**{'scripts/'+n+'.py':'scripts/'+n+'.py' for n in ('boltz_objective_reference','boltz_precision_driver','boltz_precision_server','boltz_precision_ops','qualification_writer_capacity','storage_policy_adapter')},
         'scripts/boltz_precision_stage.lsf':'scripts/boltz_precision_stage.lsf',
-        **{'tests/'+n+'.py':'tests/'+n+'.py' for n in ('test_boltz_precision_portable','test_boltz_reference_torch','test_boltz_reference_jax','test_qualification_writer_capacity','test_boltz_resource_retry')}}
+        **{'tests/'+n+'.py':'tests/'+n+'.py' for n in ('test_boltz_precision_portable','test_boltz_reference_torch','test_boltz_reference_jax','test_qualification_writer_capacity','test_boltz_resource_retry','test_storage_policy_adapter')}}
     members={name:(OWNER/local).read_bytes().replace(b'\r\n',b'\n') for name,local in names.items()}
+    members['scripts/storage_accounting.py']=(REPO/'scripts/hpc/storage_accounting.py').read_bytes().replace(b'\r\n',b'\n')
+    members['tests/test_storage_accounting.py']=(REPO/'tests/core/test_storage_accounting.py').read_bytes().replace(b'\r\n',b'\n')
     members['plan.json']=raw(plan);members['README.md']=(RUN/'README.md').read_bytes().replace(b'\r\n',b'\n')
     for name,data in members.items():
         if name.endswith('.py'):ast.parse(data,filename=name)
-    tc={'tests.test_boltz_reference_torch':8};jc={'tests.test_boltz_precision_portable':11,'tests.test_boltz_reference_jax':3,'tests.test_qualification_writer_capacity':8,'tests.test_boltz_resource_retry':4}
+    tc={'tests.test_boltz_reference_torch':8};jc={'tests.test_boltz_precision_portable':11,'tests.test_boltz_reference_jax':3,'tests.test_qualification_writer_capacity':8,'tests.test_boltz_resource_retry':4,'tests.test_storage_accounting':28,'tests.test_storage_policy_adapter':3}
     m={'version':plan['version'],'files':{n:sha(b) for n,b in members.items()},'parent_sources':parents,
         'shared_capacity':plan['shared_capacity'],'torch_cpu_counts':tc,'jax_cpu_counts':jc,
         'all_cpu_counts':{'tests.test_dbmol_reference':17,**tc,**jc},'optimizer_submission_allowed':False}
@@ -137,7 +144,7 @@ def prepare():
     data=buffer.getvalue();(output/'source.tar.gz').write_bytes(data)
     value={'status':'prepared_not_allocated_pass','tag':TAG,'root':ROOT,'source':SOURCE,'files':len(m['files']),
         'manifest_sha256':sha(members['source_manifest.json']),'plan_sha256':sha(members['plan.json']),
-        'archive_bytes':len(data),'archive_sha256':sha(data),'CPU_cases':51,'optimizer_jobs':[]}
+        'archive_bytes':len(data),'archive_sha256':sha(data),'CPU_cases':82,'optimizer_jobs':[]}
     for name,data in [('preparation.json',raw(value)),('source-manifest.json',members['source_manifest.json']),('campaign.json',raw(value))]:(RUN/name).write_bytes(data)
     (output/'preparation.json').write_bytes(raw(value));print(json.dumps(value))
 
@@ -146,7 +153,7 @@ from pathlib import Path,PurePosixPath
 import base64,hashlib,io,json,subprocess,sys,tarfile
 request=json.loads(sys.stdin.buffer.read());p=request['preparation'];root=Path(p['root']);source=Path(p['source'])
 scope=Path('/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26')
-assert root==scope/'runtime-production-03/boltz-precision-04' and source==scope/'boltz-precision-release-04/source'
+assert root==scope/'runtime-production-05/boltz-precision-05' and source==scope/'boltz-precision-release-05/source'
 assert not root.exists() and not source.parent.exists(),'Existing or unknown stage; do not repeat'
 data=base64.b64decode(request['archive'],validate=True);assert len(data)==p['archive_bytes'] and hashlib.sha256(data).hexdigest()==p['archive_sha256']
 members={}

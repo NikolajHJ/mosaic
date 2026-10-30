@@ -1,5 +1,14 @@
 # Portable metadata and allocated CPU controls
 
+`test_precision_continuation_hooks.py` and
+`test_precision_continuation_driver.py` cover prospective numerical replay and
+historical byte-contract verification, including rounding, wrong sign/material
+drift, exact frozen identity and forged comparison witnesses. They remain
+allocated tests. The shared gradient-policy tests live in
+`tests/small_molecule/test_small_molecule_gradient_policy.py`; the
+[cross-repository validation](../runs/20261030-gradient-policy-01/README.md)
+records their actual results.
+
 `test_boltz_precision_portable.py` and `test_qualification_writer_capacity.py`
 are19 portable AST/identity/forecast cases with no arrays or model setup.
 `test_boltz_reference_{torch,jax}.py` require real allocated CPU jobs before
@@ -172,3 +181,6 @@ actual ready-bound segment/reference startups and GPU gates remain allocated.
 
 
 Boltz complete-objective reference04 requires51allocated cases: originalTorch17,newTorch8,JAX3,portable11,external-accounting8,predecessor4. Only the23explicit metadata cases may run locally; numerical Torch/JAX fixtures remain allocated HPC. `test_boltz_resource_retry.py` authenticates exact prior03obsoleteAPI failure/zero native execution and rejects numerical/unknown outcomes; it does not waive checks.04has NO allocated CPU pass yet.
+
+
+New resource-policy integration adds3portable `test_storage_policy_adapter.py` cases plus28shared storage controls. Protenix production05 repeats1068allocated cases/real startup commands; Boltz reference05 repeats82cases/three actual startups. Canonical old numerical fixtures remain allocated only. Source04premodel path failure is preserved; shared POSIX-plan controls now reject that host-path error before sealing.

@@ -1,0 +1,60 @@
+{
+  "CPU_cases": 82,
+  "archive_bytes": 34509,
+  "archive_sha256": "6c76686532a2c9750e17660624010f8c5d387c6693ffbccaa2b7de679e35c83e",
+  "files": 17,
+  "jobs": {
+    "after-cpu": "29853425",
+    "gpu-dbmol": "29853438",
+    "cpu": "29853424",
+    "gpu-boltz_chemistry": "29853437",
+    "gpu-boltz": "29853436"
+  },
+  "manifest_sha256": "9f562f02918f02bdc2a5e732ab4a3f74b4752ade0935c7894aba6530fb0fba1c",
+  "optimizer_jobs": [],
+  "plan_sha256": "7ce396b24f56d87d4152e10f41fb1683e1054c137ca657ae0002e0af44186151",
+  "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/runtime-production-05/boltz-precision-05",
+  "source": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/boltz-precision-release-05/source",
+  "status": "allocated_CPU_and_real_startups_passed_actual_GPU_jobs_submitted",
+  "tag": "20261030-boltz-objective-precision-05",
+  "current_observed_utc": "2026-10-30T10:54:51.178855+00:00",
+  "scheduler_states": {
+    "after-cpu": "terminal_same_job_LSF",
+    "gpu-dbmol": "PEND",
+    "cpu": "terminal_same_job_LSF",
+    "gpu-boltz_chemistry": "PEND",
+    "gpu-boltz": "PEND"
+  },
+  "CPU_verification": {
+    "status": "independent_source_bytes_raw_XML82_actual_startups_submission_hold_release_and_LSF_passed",
+    "cases": 82,
+    "modules": {
+      "tests.test_boltz_precision_portable": 11,
+      "tests.test_boltz_reference_jax": 3,
+      "tests.test_boltz_reference_torch": 8,
+      "tests.test_boltz_resource_retry": 4,
+      "tests.test_dbmol_reference": 17,
+      "tests.test_qualification_writer_capacity": 8,
+      "tests.test_storage_accounting": 28,
+      "tests.test_storage_policy_adapter": 3
+    },
+    "jobs": {
+      "after-cpu": "29853425",
+      "gpu-dbmol": "29853438",
+      "cpu": "29853424",
+      "gpu-boltz_chemistry": "29853437",
+      "gpu-boltz": "29853436"
+    },
+    "source_manifest_sha256": "9f562f02918f02bdc2a5e732ab4a3f74b4752ade0935c7894aba6530fb0fba1c",
+    "optimizer_admission": false,
+    "scientific_GPU_result_verified": false,
+    "delivered_files": 132,
+    "packet_sha256": "069822fe8da0c13c4cee2db3fbca515d352a129d170f9f9712f7faa87408a8b0",
+    "observed_utc": "2026-10-30T10:54:51.178855+00:00"
+  },
+  "diagnostic_jobs": {
+    "gpu-dbmol": "29853438",
+    "gpu-boltz_chemistry": "29853437",
+    "gpu-boltz": "29853436"
+  }
+}

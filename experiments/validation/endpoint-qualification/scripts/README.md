@@ -1,5 +1,17 @@
 # Endpoint diagnostic policy
 
+`production_reproducibility.py` is the shared stdlib producer/reader comparison
+owner for computed scalar/gradient replay. New hook-v2 records explicit
+dtype-relative bounds, exact hashes and represented values; independent readers
+recompute the comparison. Frozen/input identity stays exact. Explicit legacy
+byte replay remains available. Follow the
+[common gradient policy](../../../../docs/GRADIENT_VALIDATION_POLICY.md).
+
+`gradient_policy_validation.py` executes a sealed two-repository CPU test plan
+only inside an actual DTU allocation. It verifies source hashes before/after,
+retains both stage logs/JUnit results, and never submits production or successors.
+See the [regression run record](../runs/20261030-gradient-policy-01/README.md).
+
 `manage_boltz_precision.py` currently targets the immutable complete-objective
 candidate02; read its run record before any action and never repeat staging.
 `boltz_objective_reference.py` provides separate whole-model FP64 references;
@@ -293,3 +305,6 @@ Read the current production run record before any action; never replay stages.
 
 
 `manage_boltz_precision.py` currently targets staged immutable04; never replay prepare/stage. `boltz_objective_reference.py`, `boltz_precision_{driver,server,ops}.py` and `qualification_writer_capacity.py` implement a three-arm read-only full-objective reference comparison with no optimizer branch.04 repairs the public scoped JAX precision API; full allocated51cases/three actualstartups and three GPU comparisons remain blocked before submission by full storage. Read current04run before reconciliation.
+
+
+Shared storage integration: `storage_policy_adapter.py` authenticates live quota, old scope caps and external writer inputs while calling the common scripts/hpc/storage_accounting.py policy. New Protenix production05 and Boltz reference05 are ALREADY staged; never replay managers. Resource policy changes are explicit, source/version pinned and separately tested; all scientific/terminal checks remain.

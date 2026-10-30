@@ -1,5 +1,11 @@
 # Prospective endpoint qualification diagnostics
 
+For future gradient-check changes use the
+[common policy](../../../docs/GRADIENT_VALIDATION_POLICY.md).
+[The cross-repository regression attempt](runs/20261030-gradient-policy-01/README.md)
+validates prospective checker defaults separately from all current campaigns.
+It adopts no code into a running job.
+
 Current30October09UTC: [Boltz whole-objective reference candidate02](runs/20261030-boltz-objective-precision-02/README.md)
 addresses plain Boltz, Boltz+chemistry and DBMol derivative blockers without
 changing production or saved results. Source12 is staged/byte audited;19 portable
@@ -431,3 +437,6 @@ Current metadata handoff repair is [production03](runs/20261030-protenix-runtime
 
 
 Current30October09:42UTC: [Boltz objective reference04](runs/20261030-boltz-objective-precision-04/README.md) fixes the obsolete scoped JAX precision API, preserving original math/settings/failures.03CPU ran51cases:48pass/3exact API failures; no GPU.04source13 is staged/byte-audited but fresh full capacity is863,903,549bytes short, so NO04CPU/GPU/optimizer job exists. Original full projections/4GiB/100000file gates remain; current campaign/receipts override older queued prose.
+
+
+Current30October: user-authorized [shared live-quota policy](../../../docs/HPC_STORAGE_POLICY.md) replaces whole-tree stale charges and stacked embedding forecasts in NEW [Protenix production05](runs/20261030-protenix-runtime-production-05/README.md) and [Boltz objective reference05](runs/20261030-boltz-objective-precision-05/README.md). Both fresh full storage gates passed with about24–25GiBheadroom, preserving4GiB/100000files. Actual ProCPU29853415/controller29853416 and BolCPU29853424/controller29853425 submitted; read latest receipts for pass/GPU status. Pro04was pre-submit POSIX-path failure and remains preserved;05includes regression coverage. DBMol target now30kTOTAL from7500/LR.0025. No scientific gate or saved result changed.

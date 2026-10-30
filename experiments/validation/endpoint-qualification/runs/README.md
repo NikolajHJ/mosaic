@@ -1,5 +1,10 @@
 # Endpoint admission investigations
 
+- [Common gradient policy CPU regressions,30October2026](20261030-gradient-policy-01/README.md):
+  prospective checker/default-policy changes in both repositories; separate
+  validation with no live-campaign adoption. Follow the run record for actual
+  submission/results rather than treating preparation as a pass.
+
 Latest30October09UTC: [Boltz reference02](20261030-boltz-objective-precision-02/README.md)
 is prepared/staged but full storage/unknown-writer checks blocked before ANY
 submission. Local19/resource136 passed; allocated47/native results pending.
@@ -236,3 +241,6 @@ Current metadata handoff repair is [production03](20261030-protenix-runtime-prod
 
 
 Current [complete-objective reference04](20261030-boltz-objective-precision-04/README.md) retains02entry-writer failures and03CPU48pass/3JAXAPI failures plus controller capacity failure. Public scoped API fix is sealed/byte-reviewed, but full preflight short863,903,549bytes means no04jobs/numerical pass/optimizer. No settings/saved results/gates changed; actual current campaign is authoritative.
+
+
+Current [Protenix production05](20261030-protenix-runtime-production-05/README.md) and [Boltz reference05](20261030-boltz-objective-precision-05/README.md) adopt common live-quota/remaining-write policy with full fresh capacity passed. ProCPU29853415/controller29853416 and BolCPU29853424/controller29853425 are actual submitted IDs; campaign/actual receipts determine later statuses. Original studies/failures remain unchanged, and DBMol target is now30kTOTAL. Failed pre-submit production04 remains preserved.

@@ -48,7 +48,7 @@ def test_predeclared_diagnostic_has_no_passing_pair_selection():
 def test_actual_shared_gate_is_unconditionally_executed():
     source=(OWNER/'scripts/boltz_precision_ops.py').read_text()
     assert "rolling.storage(owner,parent,phase)" in source and 'owner.metadata_bytes()+CAP-budget(plan)<=2*1024**3' in source
-    assert "foreign.install(rolling,plan['shared_source146'],parent)" in source
+    assert "storage_policy_adapter.install(rolling,plan,parent,plan['shared_source146'])" in source
     assert 'SHARED_PIN' in source and "plan['shared_capacity']['manifest_sha256']==SHARED_PIN" in source
 
 def test_plain_quantitative_head_is_not_replaced_by_DBMol_objective():

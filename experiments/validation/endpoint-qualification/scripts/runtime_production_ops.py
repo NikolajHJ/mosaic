@@ -11,8 +11,8 @@ import time
 
 BASE=Path('/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01')
 SCOPE=BASE/'nonchem-precision-continuation-26'
-ROOT=SCOPE/'runtime-production-03'
-SOURCE=BASE/'runtime-production-release-03/source'
+ROOT=SCOPE/'runtime-production-05'
+SOURCE=BASE/'runtime-production-release-05/source'
 QUALIFIED=SCOPE/'runtime-qualification-release-01/source'
 QP='9108a418953a4ee7f4d481667ac4a5035402c96f10179f1e8a44c3358af965ab'
 
@@ -72,6 +72,14 @@ def context(pin):
     for row in manifest['parent_sources']:op.verify(Path(row['path']),row['manifest_sha256'])
     for proof in plan['inputs']:op.check_binding(proof)
     verify_qualified(op,plan)
+    old=plan['failed_production_predecessor']
+    for row in old['proofs']:op.check_binding(row)
+    for phase,jid in old['jobs'].items():
+        text=''.join((Path(old['root'])/phase/('stdout.'+jid+'.log')).read_text().split())
+        require(text.count('Subject:Job'+jid+':')==1 and text.count('Exitedwithexitcode1.')==1,'Exact failed prior production proof required')
+    case=Path(old['case']);states=(case/'states.jsonl').read_bytes()
+    require(states.endswith(b'\n') and len(states.splitlines())==1 and json.loads(states)['global_step']==20000
+        and not (case/'updates.jsonl').exists(),'Prior child unexpectedly made scientific progress')
     return op,plan
 
 
@@ -81,7 +89,7 @@ def argv(phase,pin,dependency=None):
     result=['bsub','-H','-env','all,~CUDA_VISIBLE_DEVICES,~CUDA_MPS_PIPE_DIRECTORY,~CUDA_MPS_LOG_DIRECTORY,~CUDA_MPS_ACTIVE_THREAD_PERCENTAGE',
         '-q','gpul40s' if gpu else 'hpc','-n',str(slots),'-R','span[hosts=1]','-R',
         'rusage[mem='+('8GB' if gpu else '2GB' if slots==1 else '4GB')+']','-W','05:30' if gpu else '00:30' if slots==1 else '01:00',
-        '-J','mosaic-runtime-production03-'+phase,'-o',str(parent/'stdout.%J.log'),'-e',str(parent/'stderr.%J.log')]
+        '-J','mosaic-runtime-production05-'+phase,'-o',str(parent/'stdout.%J.log'),'-e',str(parent/'stderr.%J.log')]
     if gpu:result+=['-gpu','num=1:mode=exclusive_process:mps=yes']
     if dependency:result+=['-w',dependency]
     return result+['bash','-l',str(SOURCE/'scripts/runtime_production_stage.lsf'),str(SOURCE),pin,phase,'--capacity-source',str(CAPACITY)]
@@ -100,6 +108,8 @@ def storage(op,parent,phase):
     result=verify_qualified(op,plan);owner=proxy(op,plan,SOURCE,ROOT,ready_envelope(op,plan,pin),result)
     rolling=module(CAPACITY/'scripts/rolling_capacity.py','_new_production_complete_rolling_capacity')
     configure(rolling,owner,plan)
+    import storage_policy_adapter
+    storage_policy_adapter.install(rolling,plan,parent)
     return rolling.storage(owner,parent,phase)
 
 

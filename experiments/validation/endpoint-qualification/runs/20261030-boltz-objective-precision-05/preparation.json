@@ -1,0 +1,13 @@
+{
+  "CPU_cases": 82,
+  "archive_bytes": 34509,
+  "archive_sha256": "6c76686532a2c9750e17660624010f8c5d387c6693ffbccaa2b7de679e35c83e",
+  "files": 17,
+  "manifest_sha256": "9f562f02918f02bdc2a5e732ab4a3f74b4752ade0935c7894aba6530fb0fba1c",
+  "optimizer_jobs": [],
+  "plan_sha256": "7ce396b24f56d87d4152e10f41fb1683e1054c137ca657ae0002e0af44186151",
+  "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/runtime-production-05/boltz-precision-05",
+  "source": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/boltz-precision-release-05/source",
+  "status": "prepared_not_allocated_pass",
+  "tag": "20261030-boltz-objective-precision-05"
+}

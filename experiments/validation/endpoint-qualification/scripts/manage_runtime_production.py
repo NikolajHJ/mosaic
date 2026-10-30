@@ -6,15 +6,15 @@ from datetime import datetime,timezone
 import hashlib
 import io
 import json
-from pathlib import Path
+from pathlib import Path,PurePosixPath
 import shlex
 import subprocess
 import tarfile
 
 OWNER=Path(__file__).resolve().parents[1];REPO=OWNER.parents[2]
-TAG='20261030-protenix-runtime-production-03';LOCAL=REPO/'results/hpc'/TAG;RUN=OWNER/'runs'/TAG
+TAG='20261030-protenix-runtime-production-05';LOCAL=REPO/'results/hpc'/TAG;RUN=OWNER/'runs'/TAG
 BASE='/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01'
-SCOPE=BASE+'/nonchem-precision-continuation-26';ROOT=SCOPE+'/runtime-production-03';SOURCE=BASE+'/runtime-production-release-03/source'
+SCOPE=BASE+'/nonchem-precision-continuation-26';ROOT=SCOPE+'/runtime-production-05';SOURCE=BASE+'/runtime-production-release-05/source'
 QROOT=SCOPE+'/chemistry-continuation-05/runtime-qualification-01';QSOURCE=SCOPE+'/runtime-qualification-release-01/source'
 QP='9108a418953a4ee7f4d481667ac4a5035402c96f10179f1e8a44c3358af965ab'
 def raw(value):return (json.dumps(value,indent=2,sort_keys=True,allow_nan=False)+'\n').encode()
@@ -49,6 +49,17 @@ def prepare():
         runtime_budget=result['precision_runtime_budget'],
         production_policy={'arm':'protenix','phase':'segment','offset':20000,'updates':30000,'global_target':50000,
             'learning_rate':0.3,'matrix_stride':20,'replicas_per_native_checkpoint':16})
+    plan['storage_policy']={'version':'mosaic-live-quota-remaining-writes-v2','quota_burst_bytes':1024**3,'unprofiled_writer_bytes':2*1024**3}
+    prior=json.loads((REPO/'results/hpc/20261030-protenix-runtime-production-03/status04/stdout.json').read_bytes())
+    priorroot=SCOPE+'/runtime-production-03';proofs=[]
+    for phase,jid in [('gpu-plain','29852586'),('after-plain','29852587')]:
+        row=prior['files'][priorroot+'/'+phase+'/stdout.'+jid+'.log']
+        b=base64.b64decode(row['base64'],validate=True);assert sha(b)==row['sha256'] and b'Exited with exit code 1.' in b
+        proofs.append({k:row[k] for k in ('path','bytes','sha256')})
+    obs=prior['committed_prefixes']['states'];assert obs['committed_newline_records']==1 and obs['last']['global_step']==20000
+    proofs.append({'path':obs['path'],'bytes':obs['bytes_read'],'sha256':obs['sha256_of_read_bytes']})
+    plan['failed_production_predecessor']={'root':priorroot,'jobs':{'gpu-plain':'29852586','after-plain':'29852587'},'proofs':proofs,'case':str(PurePosixPath(obs['path']).parent)}
+    plan['inputs']+=proofs
     plan['inputs']+=list(pins.values())
     for suffix in ('/cpu/payload/tests.xml','/cpu/payload/torch.xml','/cpu/payload/jax.xml',
                    '/cpu/payload/chemistry.xml','/cpu/payload/qualification.xml','/cpu/payload/startup/assessment.json',
@@ -76,22 +87,28 @@ def prepare():
         plan['inputs'].append({k:row[k] for k in ('path','bytes','sha256')})
     goals=plan['rolling_storage_policy']['deferred_goals']
     assert not any(r['id']=='dbmol' for r in goals)
-    goals.append({'id':'dbmol','saved_updates':7500,'target_updates':10000,'next_updates':0,'next_scope_id':None,
-        'later_updates_deferred':2500,'readmission_before_later_execution':True})
+    goals.append({'id':'dbmol','saved_updates':7500,'target_updates':30000,'next_updates':0,'next_scope_id':None,
+        'later_updates_deferred':22500,'readmission_before_later_execution':True})
     assert sum(json.loads((original/'source_manifest.json').read_bytes())['cpu_counts'].values())==958
     chem=REPO/'results/hpc/20261030-chemistry-continuation-05/source01/source'
     inherited={**json.loads((original/'source_manifest.json').read_bytes())['cpu_counts'],
         **json.loads((chem/'source_manifest.json').read_bytes())['cpu_counts']}
-    own={'tests.test_runtime_production':32};counts={**inherited,**own};assert sum(counts.values())==1037
-    names={**{'scripts/'+name+'.py':'scripts/'+name+'.py' for name in ('runtime_production_driver','runtime_production_capacity','runtime_production_ops')},
-        'scripts/runtime_production_stage.lsf':'scripts/runtime_production_stage.lsf','tests/test_runtime_production.py':'tests/test_runtime_production.py'}
+    own={'tests.test_runtime_production':32,'tests.test_storage_accounting':28,'tests.test_storage_policy_adapter':3};counts={**inherited,**own};assert sum(counts.values())==1068
+    names={**{'scripts/'+name+'.py':'scripts/'+name+'.py' for name in ('runtime_production_driver','runtime_production_capacity','runtime_production_ops','storage_policy_adapter')},
+        'scripts/runtime_production_stage.lsf':'scripts/runtime_production_stage.lsf','tests/test_runtime_production.py':'tests/test_runtime_production.py','tests/test_storage_policy_adapter.py':'tests/test_storage_policy_adapter.py'}
     members={name:(OWNER/local).read_bytes().replace(b'\r\n',b'\n') for name,local in names.items()}
+    members['scripts/storage_accounting.py']=(REPO/'scripts/hpc/storage_accounting.py').read_bytes().replace(b'\r\n',b'\n')
+    members['tests/test_storage_accounting.py']=(REPO/'tests/core/test_storage_accounting.py').read_bytes().replace(b'\r\n',b'\n')
+    import importlib.util
+    policy_spec=importlib.util.spec_from_file_location('_new_portable_storage',REPO/'scripts/hpc/storage_accounting.py')
+    policy=importlib.util.module_from_spec(policy_spec);policy_spec.loader.exec_module(policy);policy.validate_remote_paths(plan)
     members['plan.json']=raw(plan);members['README.md']=(RUN/'README.md').read_bytes().replace(b'\r\n',b'\n')
     for name,data in members.items():
         if name.endswith('.py'):ast.parse(data,filename=name)
     parents=old['parent_sources']+[{'path':QSOURCE,'manifest_sha256':QP,'files':6},
         {'path':BASE+'/runtime-production-release-01/source','manifest_sha256':'443b4c098bf859163a1fd16ee70bfc7d8ab7b9fbf730c2b32ac19c285155ceda','files':7},
         {'path':BASE+'/runtime-production-release-02/source','manifest_sha256':'69029fea3bdce08737d9f67e11edcbf6e36594266f2b4518f1c34d0da42f6bb1','files':7}]
+    parents.append({'path':BASE+'/runtime-production-release-03/source','manifest_sha256':'6356f3a7068658e17b25b5bdcc5239feb5cfc51e6cdeb1894e47e4752a86e0f8','files':7})
     manifest={'version':plan['version'],'files':{name:sha(data) for name,data in members.items()},'parent_sources':parents,
         'capacity_source':plan['capacity_source'],'cpu_counts':own,'all_cpu_counts':counts,
         'optimization_targets':{'protenix':50000},'original_failures_preserved':True}
@@ -112,12 +129,15 @@ def prepare():
 
 
 STAGE=r'''
-from pathlib import Path,PurePosixPath
+from pathlib import Path,PurePosixPath,PurePosixPath
 import base64,hashlib,io,json,subprocess,sys,tarfile
 request=json.loads(sys.stdin.buffer.read());p=request['preparation'];root=Path(p['root']);source=Path(p['source'])
 base=Path('/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01')
-assert root==base/'nonchem-precision-continuation-26/runtime-production-03' and source==base/'runtime-production-release-03/source'
+assert root==base/'nonchem-precision-continuation-26/runtime-production-05' and source==base/'runtime-production-release-05/source'
 assert not root.exists() and not source.parent.exists(),'Existing or unknown production stage; never replay'
+old=base/'nonchem-precision-continuation-26/runtime-production-04'
+assert old.exists() and not list(old.rglob('submission*.json')),'Prior04 has an unknown accepted outcome'
+assert not any(k.startswith('runtime-production-04/') for k in json.loads((base/'nonchem-precision-continuation-26/jobs.json').read_bytes()))
 data=base64.b64decode(request['archive'],validate=True);assert len(data)==p['archive_bytes'] and hashlib.sha256(data).hexdigest()==p['archive_sha256']
 members={}
 with tarfile.open(fileobj=io.BytesIO(data),mode='r:gz') as archive:
