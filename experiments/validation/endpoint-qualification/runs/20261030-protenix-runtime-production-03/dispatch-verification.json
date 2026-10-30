@@ -1,0 +1,90 @@
+{
+  "status": "passed_independent_CPU1037_controller_full30k_dispatch_storage_actual_GPU_and_capture_submission_held_release_audit",
+  "observed_utc": "2026-10-30T07:49:27.347854+00:00",
+  "files_verified": 109,
+  "source_manifest_sha256": "6356f3a7068658e17b25b5bdcc5239feb5cfc51e6cdeb1894e47e4752a86e0f8",
+  "source_manifests_rehashed": 16,
+  "inputs_rehashed": 62,
+  "CPU_cases": 1037,
+  "module_counts": {
+    "tests.test_admission": 50,
+    "tests.test_chemistry_continuation": 47,
+    "tests.test_continuation_driver": 56,
+    "tests.test_continuation_ops": 107,
+    "tests.test_cuda_ownership": 69,
+    "tests.test_current_capacity": 5,
+    "tests.test_dbmol_endpoint_precision": 36,
+    "tests.test_dbmol_reference": 17,
+    "tests.test_embedding_shared_capacity": 13,
+    "tests.test_home_report_reader": 18,
+    "tests.test_logit_admission": 14,
+    "tests.test_measurement_resolution": 10,
+    "tests.test_precision_continuation_driver": 71,
+    "tests.test_precision_continuation_hooks": 57,
+    "tests.test_precision_continuation_ops": 131,
+    "tests.test_probe_shared_capacity": 11,
+    "tests.test_protenix_reference_worker": 58,
+    "tests.test_qualification": 19,
+    "tests.test_recovery_capacity": 11,
+    "tests.test_rolling_capacity": 89,
+    "tests.test_runtime_production": 32,
+    "tests.test_runtime_reservations": 28,
+    "tests.test_segment_capacity": 60,
+    "tests.test_vae_shared_capacity": 28
+  },
+  "actual_segment_startup": true,
+  "readiness_deferred": false,
+  "actual_original_reference_startup": true,
+  "scheduler": {
+    "29852581": "DONE",
+    "29852582": "DONE",
+    "29852586": "PEND",
+    "29852587": "PEND"
+  },
+  "jobs": {
+    "cpu": "29852581",
+    "after-cpu": "29852582",
+    "gpu-plain": "29852586",
+    "after-plain": "29852587"
+  },
+  "optimizer_started": false,
+  "local_arrays_or_models_used": false,
+  "controller_samejob_LSF_success": true,
+  "full_remaining_updates": 30000,
+  "target_updates": 50000,
+  "whole_storage": {
+    "required_bytes": 38987823764,
+    "available_bytes": 39741645655,
+    "reserve_bytes": 4294967296,
+    "file_reserve": 100000
+  },
+  "future_scientific_scope": {
+    "id": "protenix-segment-20000",
+    "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/runtime-production-03/gpu-plain/payload/replay/plain/payload/study",
+    "excluded_roots": [],
+    "state": "requested",
+    "role": "segment",
+    "actual_bytes": 0,
+    "actual_files": 0,
+    "cap_bytes": 1143583228,
+    "cap_files": 7500,
+    "inventory_proof": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/runtime-production-03/after-cpu/rolling-capacity-dispatch-1793346454817370259/inventory.json",
+      "bytes": 6337,
+      "sha256": "4d116a4b3cbf660e5b780aad17c72afeaa52a3b5779fe3039874d289549c7c89"
+    },
+    "liveness_proof": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/runtime-production-03/qualified-ready.json",
+      "bytes": 3653,
+      "sha256": "d9603f5f72d2c20ac712e5f28a6e2089a6414742ff839e54b57f7c5da9fc1cd5"
+    },
+    "quota_inclusion_proof": null
+  },
+  "optimizer_job": "29852586",
+  "capture_job": "29852587",
+  "GPU_walltime": "05:30",
+  "production_entry_gate_verified": false,
+  "committed_optimizer_prefix": {},
+  "original_saved_results_changed": false,
+  "original_scientific_failures_preserved": true
+}

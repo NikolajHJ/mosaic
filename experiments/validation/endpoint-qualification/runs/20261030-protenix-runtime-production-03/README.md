@@ -18,3 +18,5 @@ production flags, original FP64 environment, all native/terminal/frozen checks,
 admission remain. This is an immutable metadata-handoff repair, not a changed
 gradient protocol. Actual campaign/submission/release/LSF evidence determines
 status; preparation is not a new optimizer submission.
+
+Verified07:49:27UTC: CPU29852581/controller29852582 DONE,1037rawcases/startups and full dispatch storage passed. Full30000-update optimizer29852586 and ownended capture29852587 ACTUALLYPEND; no entry/committed updates yet. Independent109file/all4vectors/16source/62input/LSF/held-release audit passed. See dispatch-verification.json; never duplicate jobs.

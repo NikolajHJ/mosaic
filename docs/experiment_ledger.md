@@ -10506,3 +10506,24 @@ source03pin6356f3a7068658e17b25b5bdcc5239feb5cfc51e6cdeb1894e47e4752a86e0f8.
 No cleanup/settings/scientific-tolerance/saved-result changes; no report refresh
 without new committed optimizer data. Global layout check still fails pre-existing
 discovery/catalog/historical README drift, not a new full-layout pass.
+
+
+Verified30October07:49:27UTC: production03 CPU29852581 and controller29852582
+ACTUALDONE/hpc/samejobLSFsuccess,1037actual CPUcases/startups. Independent109
+compact-file/16source/62input/XML/LSF/all4actual submission vectors/held receipt
+before release audit passed. FULL scoped dispatch storage PASSED38987823764
+required/39741645655available bytes,4GiB/100000files; exactly one NEW requested
+Pro30k science future under runtime-production03, old failed files retained,
+original shared future/control/release accounting preserved. Actual full30000
+Protenix continuation SUBMITTED29852586, ownended capture29852587, bothPEND.
+GPUoneexclusiveL40S/MPS/4CPU/8GiBslot/05:30 measured wall, offset20k->50k/LR.3
+and qualified deterministic runtime profile unchanged. GPU has no inter-arm
+or callback dependency; capture waits ended(29852586). Actual owned release
+receipts and raw bresume accepted; earlier instantaneousPSUSP snapshot was
+held-release propagation, lateractualPEND verified, no extra resume/cancel.
+No GPUentry/native execution/committed new prefix yet; entry must repeat all
+fresh original scientific/initialization/runtime/whole shared gates. No cleanup
+or saved result/settings/scientific tolerance changes. Chemistry full qualifier
+still failed low-coefficient logit precision pair; DBMol/plainBoltz/Bolchem
+original blockers unchanged, not mislabeled queued. All code/proofs through
+CPU1037 were pushedbcac06e; this actual new admission recorded separately.
