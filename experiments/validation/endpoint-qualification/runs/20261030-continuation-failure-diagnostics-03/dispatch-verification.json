@@ -1,0 +1,28 @@
+{
+  "status": "passed_independent_CPU12_actual_startups_LSF_source_vectors_whole_dispatch_and_GPU_submission_audit",
+  "observed_utc": "2026-10-30T01:10:48.061272+00:00",
+  "files_verified": 82,
+  "cases": 12,
+  "actual_original_startups_passed": 2,
+  "source_manifest_sha256": "c9ee1b491f6e292032662b4fe0a957a66ff71e121a6805fc40c5a0a134b1baec",
+  "jobs": {
+    "after-cpu": "29851660",
+    "cpu": "29851659",
+    "gpu": "29851676"
+  },
+  "scheduler": {
+    "29851660": "DONE",
+    "29851659": "DONE",
+    "29851676": "RUN"
+  },
+  "whole_dispatch_storage": {
+    "required_bytes": 39670413471,
+    "available_bytes": 40426752584,
+    "reserve_bytes": 4294967296,
+    "file_reserve": 100000
+  },
+  "GPU_diagnostic_complete": false,
+  "optimizer_jobs": [],
+  "can_admit_new_child": false,
+  "local_numerical_evaluation": false
+}

@@ -16,8 +16,8 @@ BASE=Path('/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01')
 CAPACITY=BASE/'nonchem-precision-release-26/source'
 CAPACITY_PIN='8324c1d312adeaa4c67c475c01ef1217df6f3ad4044b997d1b73e168325412d3'
 SCOPE=BASE/'nonchem-precision-continuation-26'
-ROOT=SCOPE/'boundary-diagnostics-02'
-SOURCE=SCOPE/'boundary-diagnostics-release-02/source'
+ROOT=SCOPE/'boundary-diagnostics-03'
+SOURCE=SCOPE/'boundary-diagnostics-release-03/source'
 PYTHON='/work3/s234818/mosaic/envs/protenix-tiny/bin/python'
 
 
@@ -51,7 +51,7 @@ def argv(phase,pin,dependency=None):
     a=['bsub','-env','all,~CUDA_VISIBLE_DEVICES,~CUDA_MPS_PIPE_DIRECTORY,~CUDA_MPS_LOG_DIRECTORY,~CUDA_MPS_ACTIVE_THREAD_PERCENTAGE',
        '-q','gpul40s' if gpu else 'hpc','-n',str(slots),'-R','span[hosts=1]','-R',
        'rusage[mem='+('2GB' if slots==1 else '4GB')+']','-W','02:00' if gpu else '00:20' if slots==1 else '01:00',
-       '-J','mosaic-boundary-diagnostics02-'+phase,'-o',str(p/'stdout.%J.log'),'-e',str(p/'stderr.%J.log')]
+       '-J','mosaic-boundary-diagnostics03-'+phase,'-o',str(p/'stdout.%J.log'),'-e',str(p/'stderr.%J.log')]
     if gpu:a+=['-gpu','num=1:mode=exclusive_process:mps=yes']
     if dependency:a+=['-w',dependency]
     return a+['bash','-l',str(SOURCE/'scripts/failure_diagnostic_stage.lsf'),str(SOURCE),pin,phase,'--capacity-source',str(CAPACITY)]
@@ -85,14 +85,27 @@ def execute(phase,pin):
         sub=read(ROOT/'cpu/submission.json');text=' '.join((ROOT/'cpu'/('stdout.'+sub['job_id']+'.log')).read_text().split())
         require(text.count('Subject: Job '+sub['job_id']+':')==1 and 'queue <hpc>' in text and 'Successfully completed.' in text and 'Exited with exit code' not in text,'Actual same CPU LSF success required')
         rows=list(ET.parse(ROOT/'cpu/payload/tests.xml').getroot().iter('testcase'))
-        require(len(rows)==10 and all(not list(r) for r in rows),'All10 allocated fixtures must pass')
+        require(len(rows)==12 and all(not list(r) for r in rows),'All12 allocated fixtures must pass')
         require(read(ROOT/'cpu/payload/analysis/assessment.json')['status']=='diagnostics_completed_original_failures_preserved','Saved-probe CPU analysis incomplete')
+        startup=read(ROOT/'cpu/payload/startup/assessment.json')
+        require(startup['status']=='passed_actual_original_pre_model_startups' and startup['model_constructed'] is False
+                and startup['optimizer_updates']==0 and startup['can_admit_new_child'] is False
+                and [r['arm'] for r in startup['startups']]==['plain','chemistry'],
+                'Both actual original startup commands must pass before GPU submission')
+        for row in startup['startups']:
+            value=row['startup']
+            require(value['status']=='passed_metadata_only' and value['numerical_setup_entered'] is False
+                    and value['updates']==0 and value['job_id']==sub['job_id'], 'Actual CPU startup identity differs')
         storage(op,parent,'dispatch');gpu=submit('gpu',pin)
-        write(payload/'assessment.json',{'status':'CPU10_and_saved_analysis_passed_GPU_diagnostic_submitted','gpu':gpu,'optimizer_jobs':[]});return
+        write(payload/'assessment.json',{'status':'CPU12_actual_startups_and_saved_analysis_passed_GPU_diagnostic_submitted','gpu':gpu,'optimizer_jobs':[]});return
     if phase=='cpu':
         command=[PYTHON,'-m','pytest',str(SOURCE/'tests'),'-q','--rootdir',str(SOURCE),'--import-mode=importlib','-o','addopts=','-p','no:cacheprovider',
                  '--basetemp',str(Path(os.environ['TMPDIR'])/'boundary-diagnostics'),'--junitxml='+str(payload/'tests.xml')]
         with (payload/'tests.log').open('x') as f:subprocess.run(command,check=True,stdout=f,stderr=subprocess.STDOUT,timeout=600)
+        startup=[PYTHON,str(SOURCE/'scripts/continuation_failure_diagnostics.py'),'--plan',str(SOURCE/'plan.json'),
+                 '--pin',op.sha(SOURCE/'plan.json'),'--mode','startup','--output',str(payload/'startup')]
+        write(payload/'actual-startup-command.json',{'argv':startup,'model_execution_authorized':False})
+        with (payload/'startup.log').open('x') as f:subprocess.run(startup,check=True,stdout=f,stderr=subprocess.STDOUT,timeout=600)
     else:
         routing=module(Path(plan['chemistry_source']['path'])/'scripts/chemistry_cuda_ownership.py','_same_qualified_eight_slot_cuda_routing')
         routing.run_probe(parent/'cuda-ownership',submission=parent/'submission.json',expected_job_id=own['job_id'],

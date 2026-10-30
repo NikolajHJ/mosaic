@@ -58,3 +58,11 @@ Full dispatch gate39,675,834,527required/40,432,173,640available bytes retains
 Read dispatch-verification/campaign before recovery; never duplicate thesejobs.
 The hourly handoff was updated through the automation tool, preserving cadence
 and quiet-on-unchanged intent. All numerical controls ran allocatedHPC only.
+
+
+Verified30October01:01:25UTC: GPU29851586 actuallyEXIT1 before model loading.
+Plain child output missed the original required payload level; no native
+measurements were captured and chemistry was not attempted. Original source/
+LSF/assessment remain failed. New separate03 fixes only the owned output path
+and requires both ACTUAL original CPU startup commands before another GPU.
+No scientific settings, saved data, admission interval or threshold changed.

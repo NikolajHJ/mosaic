@@ -241,3 +241,6 @@ optimizer calls. It is packaged as continuation_failure_diagnostics.py in02;
 canonical original same-named file remains the preserved simple01 implementation.
 Neither diagnostic admits continuation. Original chemistry05 tests now failed
 numerical guards, so its old queued status above is historical.
+
+
+Current diagnostic operators target immutable03, ALREADY staged CPU29851659/controller29851660. Output layout now retains original payload/study scope. The allocatedCPU gate adds both actual original startup commands before GPU. Never replay manage_failure_diagnostics prepare/stage; read diagnostic03 receipts.

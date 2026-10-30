@@ -125,3 +125,6 @@ controls restricted to allocatedHPC. Its archive alias is
 tests/test_continuation_failure_diagnostics.py. The full10-caseCPU gate remains
 mandatory before its separate GPU observation; this never grants optimization
 admission or reinterprets an original failed gradient/replay gate.
+
+
+test_production_boundary_diagnostics.py now has12cases:10portable metadata (including exact owned payload/study scopes) plus2allocated capture controls. Both real original CPU startup sentinels are separately mandatory before diagnostics03 GPU dispatch; fixtures alone cannot certify scientific admission.

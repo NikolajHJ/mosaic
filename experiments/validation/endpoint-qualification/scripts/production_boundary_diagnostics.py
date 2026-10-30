@@ -6,7 +6,7 @@ Stop immediately after entry qualification if it returns, before any pilot.
 """
 import argparse
 import ast
-from contextlib import contextmanager
+from contextlib import contextmanager, nullcontext
 from copy import deepcopy
 import hashlib
 import importlib.util
@@ -107,6 +107,17 @@ def expected_observation(error):
     return str(error) == STOP or type(error) is ValueError and str(error) in EXPECTED
 
 
+def study_path(plan, output):
+    """Use the original driver's payload/study layout inside exact own scopes."""
+    root, output = Path(plan['root']), Path(output)
+    allowed = {root / phase / 'payload' / section / arm
+               for phase, section in (('cpu', 'startup'), ('gpu', 'replay'))
+               for arm in ('plain', 'chemistry')}
+    require(root.is_absolute() and output in allowed and '..' not in output.parts,
+            'Exact owned diagnostic startup/replay output scope required')
+    return output / 'payload' / 'study'
+
+
 @contextmanager
 def captured_measurements(precision, output):
     """Save the original call's arrays; preserve its exact digest comparison."""
@@ -151,7 +162,7 @@ def captured_measurements(precision, output):
         precision._measurement = original
 
 
-def plain(plan, output):
+def plain(plan, output, *, startup=False):
     current = Path(plan['capacity_source']['path'])
     sys.path.insert(0, str(current / 'scripts'))
     adapter = module(current / 'scripts/precision_continuation_driver.py', '_diagnostic_actual_adapter')
@@ -162,13 +173,17 @@ def plain(plan, output):
     base = adapter.load_base(original)
     precision = module(current / 'scripts/precision_continuation_hooks.py', '_diagnostic_actual_precision')
     arm = next(row for row in original['arms'] if row['id'] == 'protenix')
+    study = study_path(plan, output)
     old_argv = sys.argv[:]
     sys.argv = [str(current / 'scripts/continuation_driver.py'), '--plan', str(current / 'plan.json'),
         '--plan-sha256', original['_sha256'], '--manifest', original['_manifest'], '--arm', 'protenix',
-        '--phase', 'validate', '--offset', '20000', '--output', str(output / 'study'),
+        '--phase', 'validate', '--offset', '20000', '--output', str(study),
         '--snapshot', arm['parent_snapshot']['path'], '--snapshot-sha256', arm['parent_snapshot']['sha256']]
+    if startup:
+        sys.argv.append('--startup-only')
     try:
-        with captured_measurements(precision, output / 'measurements') as records:
+        capture = nullcontext([]) if startup else captured_measurements(precision, output / 'measurements')
+        with capture as records:
             with adapter.adapted_driver(base, original, precision):
                 def run_path(filename, *, run_name):
                     require(Path(filename) == Path(arm['source']['path']) / 'examples/brd4_25_atoms.py'
@@ -182,14 +197,18 @@ def plain(plan, output):
                 try:
                     base.main()
                 except BaseException as error:
+                    if startup:
+                        raise
                     require(expected_observation(error), 'New diagnostic execution error: ' + repr(error))
                     return records, str(error)
+                if startup:
+                    return read(study.parent / 'endpoint-startup.json')
     finally:
         sys.argv = old_argv
     raise ValueError('Actual checker did not reach its bounded diagnostic stop')
 
 
-def chemistry(plan, output):
+def chemistry(plan, output, *, startup=False):
     source = Path(plan['chemistry_source']['path'])
     sys.path.insert(0, str(source / 'scripts'))
     driver = module(source / 'scripts/chemistry_continuation_driver.py', '_diagnostic_actual_chemistry')
@@ -200,13 +219,37 @@ def chemistry(plan, output):
     driver.actual_coefficient_tree = lambda tree: stopped_tree(old_tree(tree))
     # Unknown update names are also unreachable after the mandatory sentinel.
     # A removed known update name would fail before evaluation of its arguments.
-    with captured_measurements(precision, output / 'measurements') as records:
+    study = study_path(plan, output)
+    study.parent.mkdir(exist_ok=False)
+    capture = nullcontext([]) if startup else captured_measurements(precision, output / 'measurements')
+    with capture as records:
         try:
-            driver.execute(original, 'protenix', 'validate', output / 'study')
+            driver.execute(original, 'protenix', 'validate', study, startup=startup)
         except BaseException as error:
+            if startup:
+                raise
             require(expected_observation(error), 'New diagnostic execution error: ' + repr(error))
             return records, str(error)
+        if startup:
+            return read(study.parent / 'endpoint-startup.json')
     raise ValueError('Actual chemistry checker did not reach its bounded diagnostic stop')
+
+
+def premodel(plan, output):
+    """Execute both original argparse/metadata sentinels on allocated CPU."""
+    require(os.environ.get('LSB_QUEUE') == 'hpc', 'Actual allocated CPU startup checks required')
+    output.mkdir()
+    rows = []
+    for kind, action in (('plain', plain), ('chemistry', chemistry)):
+        child = output / kind
+        child.mkdir()
+        value = action(plan, child, startup=True)
+        require(value['status'] == 'passed_metadata_only' and value['numerical_setup_entered'] is False
+                and value['updates'] == 0, 'Actual original pre-model startup sentinel failed')
+        rows.append({'arm': kind, 'startup': value})
+    write(output / 'assessment.json', {'status': 'passed_actual_original_pre_model_startups',
+        'startups': rows, 'optimizer_updates': 0, 'model_constructed': False,
+        'can_admit_new_child': False})
 
 
 def child(plan, output, kind):
@@ -257,7 +300,7 @@ def main():
     parser.add_argument('--plan', required=True)
     parser.add_argument('--pin', required=True)
     parser.add_argument('--output', type=Path, required=True)
-    parser.add_argument('--mode', choices=('cpu', 'gpu', 'plain', 'chemistry'), required=True)
+    parser.add_argument('--mode', choices=('cpu', 'gpu', 'startup', 'plain', 'chemistry'), required=True)
     args = parser.parse_args()
     require(sha(args.plan) == args.pin and os.environ.get('LSB_JOBID', '').isdigit(),
             'Actual allocation and authenticated plan required')
@@ -276,6 +319,8 @@ def main():
         write(args.output / 'assessment.json', {'status': 'diagnostics_completed_original_failures_preserved',
             'observations': rows, 'original_error': report['error'], 'optimizer_updates': 0,
             'can_admit_new_child': False, 'can_certify_or_restart_original_study': False})
+    elif args.mode == 'startup':
+        premodel(plan, args.output)
     elif args.mode == 'gpu':
         gpu(plan, args.output)
     else:

@@ -160,3 +160,12 @@ CPU29851548 RUN/controller29851549 PEND, no new optimizer. Read actual receipts.
 Latest00:15UTC: diagnostics02 CPU10/controller passed; actualGPU29851586 RUN,
 no diagnostic finding or optimizer admission yet. Original chemistry05/main26
 failures stay failed. See its dispatch-verification.json.
+
+
+Current30October01:06UTC: diagnostic02 EXIT on pre-model output layout, no findings. Separate [diagnostics03](20261030-continuation-failure-diagnostics-03/README.md) fixes owned output paths, CPU29851659 RUN/controller29851660 PEND, actual original startup checks required. No optimizer queued.
+
+
+Latest01:10UTC: diagnostic03 CPU12/controller and both real startup commands
+passed; GPU29851676 RUN, no native finding or optimizer admission. See actual
+dispatch-verification.json. Earlier diagnostic02 output-layout failure remains
+failed and source/saved runs unchanged.

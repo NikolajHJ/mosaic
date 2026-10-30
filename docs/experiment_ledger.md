@@ -9905,3 +9905,59 @@ Full dispatch gate39,675,834,527required/40,432,173,640available bytes retains
 Read dispatch-verification/campaign before recovery; never duplicate thesejobs.
 The hourly handoff was updated through the automation tool, preserving cadence
 and quiet-on-unchanged intent. All numerical controls ran allocatedHPC only.
+
+
+## 2026-10-30T01:01:25Z — Diagnostic output layout repaired; actual CPU startup commands now gate GPU
+
+Read-only installed-helper scheduler/LSF/source/input collection confirms
+diagnostic02 GPU29851586 EXIT1 before any model/gradient call. The private
+diagnostic output ended plain/study, whereas the unchanged original driver's
+scope guard requires payload/study. No captured native measurements; chemistry
+child never attempted. Its actual CUDA smoke and CPU10 passes remain distinct
+historical evidence; no original scientific failure was erased. Independent
+77compact-file byte/schema/LSF audit preserves the primary failure and confirms
+zero new committed Pro child states/updates. Other-project VAE/embedding remain
+queued; DeFoG diagnostic PSUSP left unchanged. No cleanup or other-project action.
+
+New immutable read-only diagnostics03 changes only owned diagnostic output layout
+and adds actual original pre-model startup commands for BOTH plain and chemistry
+Pro paths to the allocatedCPU gate. Original scope guard stays unchanged; exact
+owned startup/replay roots required. Original native/raw/FP64/logit checks,
+measurement capture, scalar/gradient digest comparisons and no-update sentinel
+arithmetic remain unchanged. No new optimizer or scientific-policy branch.
+CPU12 tests include10portable metadata plus2allocated capture controls; actual
+parser/metadata sentinels must also pass with matching real CPUjob ID before GPU.
+The initial local portable run retained8passes/2fixture setup errors on Windows
+pytest-temp permission. Removing unnecessary tmp-directory allocation from two
+path-only metadata fixtures yielded10passes in0.14s; no local array/model work.
+
+Source6 manifestc9ee1b491f6e292032662b4fe0a957a66ff71e121a6805fc40c5a0a134b1baec,
+plan0b0976ada7481efe8ac6468f732eecadca76c5321d49a41c7876cc54b92d9539,
+archive13196B/SHA8267a7ca3a4ede59ed60a24760fb7bfa35b6d36795f62f1066b56e4fd864836d.
+All source/tar/member/AST and unchanged capture/stop-function audits passed
+locally. All actual numerical tests still require allocatedHPC. Stage submitted
+CPU29851659/controller29851660 once; at01:06:56UTC CPU RUN/controller PEND,
+no new GPU ID/pass/optimizer yet. Full initial capacity39,673,634,463required/
+40,429,973,576available bytes retains4GiB/100000files and128MiB funded control
+cap. Exact receipts in diagnostic03 campaign; never duplicate stage/unknowns.
+Saved original runs/settings/source02/chemistry05 and every failed gate intact.
+No new report without new committed optimizer prefixes.
+
+
+Verified30October01:10:48UTC: CPU29851659/controller29851660 ACTUALDONE/hpc/
+samejobLSFsuccess; all12rawfixture cases and BOTH actual original startup
+commands passed, zero failures/errors/skips, no model/numerical setup or updates.
+Both actual original --output arguments now end in owned payload/study.
+Independent82compact-file/source/LSF/XML/all3exact command-resource-dependency
+audit passed. Actual newGPUdiagnostic29851676 RUN/gpul40s; no finding or native
+admission established. Full dispatch39,670,413,471required/40,426,752,584available
+bytes keeps4GiB/100000files; no cleanup or reserve reduction. Current saved
+prefixes Pro20k/DB7500/plainBol20k/chem10k10k remain unchanged. No optimizer
+continuation is queued/running. All original replay/derivative failures remain
+failed; the current diagnostic cannot admit a new child.
+
+Global layout verification remains failed on pre-existing catalog/discovery and
+historical missingREADME drift; new owned03 run hasREADME and package/static
+audits passed. Do not count a numerical array_equal flag as byte identity: the
+actual original measurement digests and raw NPZ bindings remain authoritative.
+No scientific threshold/FD interval/optimization setting or saved result changed.

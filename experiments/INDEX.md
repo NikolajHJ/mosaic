@@ -69,3 +69,6 @@ Shared tools: [releases](../scripts/releases/README.md), [evidence](../scripts/e
 
 
 30October2026 actual-producer endpoint follow-up: [diagnostics02](validation/endpoint-qualification/runs/20261030-continuation-failure-diagnostics-02/README.md) captures the full original Pro startup/reference path after the simple replay test did not reproduce current failures. No optimizer branch or saved-result changes.
+
+
+30October2026 endpoint diagnostic startup repair: [diagnostics03](validation/endpoint-qualification/runs/20261030-continuation-failure-diagnostics-03/README.md) retains the original payload/study guard, qualifies BOTH actual CPU startup commands, then observes the full original entry paths without optimizer updates. CPU12 passed and GPU29851676 is running; no new scientific admission.

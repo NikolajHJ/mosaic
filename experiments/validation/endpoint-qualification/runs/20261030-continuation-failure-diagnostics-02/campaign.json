@@ -12,7 +12,7 @@
   "plan_sha256": "b06905f635d1def1ec82aa669a1c4cc09763def7655d53fe02999b2293118ca6",
   "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/boundary-diagnostics-02",
   "source": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/boundary-diagnostics-release-02/source",
-  "status": "CPU10_controller_passed_actual_producer_GPU_diagnostic_RUNNING_not_complete",
+  "status": "GPU_EXIT1_pre_model_diagnostic_output_layout_bug_no_gradient_findings",
   "tag": "20261030-continuation-failure-diagnostics-02",
   "latest_observed_utc": "2026-10-30T00:15:23.377464+00:00",
   "latest_scheduler": {
@@ -66,5 +66,35 @@
       "file_reserve": 100000
     },
     "all_three_exact_source_command_resource_and_dependency_vectors_verified": true
+  },
+  "terminal_verification": {
+    "status": "verified_diagnostic_tooling_failure_before_model_loading",
+    "observed_utc": "2026-10-30T01:01:25.289829+00:00",
+    "job_id": "29851586",
+    "files_verified": 77,
+    "source_manifest_verified": true,
+    "source_pin": "6c2f080b5355d2526d690a48e80aad4c65fc6af7bb60f39c2e7b0dc6b12f8879",
+    "primary_error": "Output outside declared new scientific/startup scope",
+    "plain_measurements": 0,
+    "chemistry_child": "not_attempted",
+    "optimizer_updates": 0,
+    "can_admit_new_child": false,
+    "saved_prefixes": {
+      "protenix-segment-20000": {
+        "job_id": "29851346",
+        "study_exists": true,
+        "streams": {
+          "states": {
+            "committed_rows": 0,
+            "exists": false
+          },
+          "updates": {
+            "committed_rows": 0,
+            "exists": false
+          }
+        }
+      }
+    },
+    "local_scientific_work": false
   }
 }

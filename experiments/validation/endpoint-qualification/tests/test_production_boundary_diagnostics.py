@@ -48,6 +48,25 @@ def test_metadata_capture_is_not_a_continuation_dispatch():
     assert d.CAP == 128 * 1024**2
 
 
+def test_metadata_exact_owned_payload_study_outputs_for_both_actual_startup_commands():
+    root = Path(__file__).resolve().parent / 'metadata-only-root'
+    plan = {'root': str(root)}
+    for phase, section in (('cpu', 'startup'), ('gpu', 'replay')):
+        for arm in ('plain', 'chemistry'):
+            output = root / phase / 'payload' / section / arm
+            study = d.study_path(plan, output)
+            assert study == output / 'payload' / 'study'
+            assert study.parent.name == 'payload' and study.name == 'study'
+
+
+def test_metadata_foreign_sibling_and_traversing_output_scopes_are_rejected():
+    root = Path(__file__).resolve().parent / 'metadata-only-root'
+    for path in (root / 'elsewhere', root.parent / 'foreign',
+                 root / 'gpu/payload/replay/plain/../chemistry'):
+        with pytest.raises(ValueError, match='Exact owned'):
+            d.study_path({'root': str(root)}, path)
+
+
 @pytest.mark.parametrize('change', [False, True])
 def test_measurement_capture_retains_actual_callback_counts_and_exact_original_result(tmp_path, change):
     np = d.numpy()

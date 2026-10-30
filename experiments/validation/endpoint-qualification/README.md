@@ -1,5 +1,16 @@
 # Prospective endpoint qualification diagnostics
 
+Latest30October01:10UTC: [diagnostics03](runs/20261030-continuation-failure-diagnostics-03/README.md)
+passed CPU12, both actual original startup commands and full shared storage.
+Actual GPU29851676 RUN; no gradient finding or optimizer admission yet. Original
+scientific failures, saved results and settings remain unchanged.
+
+Latest30October01:06UTC: diagnostic02 failed before models because its output
+missed the required payload level. New [diagnostics03](runs/20261030-continuation-failure-diagnostics-03/README.md)
+keeps the original scope guard and adds BOTH actual CPU startup commands before
+GPU submission. CPU29851659 RUN/controller29851660 PEND; no new optimizer or
+gradient finding. All saved data/settings/failed scientific gates unchanged.
+
 Latest30October00:04UTC: chemistry05 startup repaired but both native validations
 failed numerical guards; no new optimizer. Separate replay01 DONE with12 exact
 measurements did not reproduce actual whole-checker behavior. Read
