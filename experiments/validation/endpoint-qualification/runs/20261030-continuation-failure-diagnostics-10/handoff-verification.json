@@ -1,0 +1,15 @@
+{
+  "status": "verified_active_hourly_monitor_new_prompt_after_tool_trims_terminal_newline",
+  "automation_id": "mosaic1",
+  "rrule": "RRULE:FREQ=MINUTELY;INTERVAL=60",
+  "target_thread_id": "01a12559-3f58-74f0-9943-a66e2ba71a54",
+  "prompt_sha256": "1df736c7fcc81608ab2fbaec2071a2490ab186145fac416550c911334a94d0eb",
+  "current_run": "20261030-continuation-failure-diagnostics-10",
+  "CPU_job": "29852155",
+  "controller_job": "29852156",
+  "GPU_diagnostic_job": "29852164",
+  "last_observed_utc": "2026-10-30T05:07:48.899717+00:00",
+  "GPU_state": "PEND",
+  "optimizer_jobs": [],
+  "implementation_commit": "d53a8cd"
+}

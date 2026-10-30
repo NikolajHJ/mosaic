@@ -10321,3 +10321,19 @@ portable controls passed. Global layout still fails pre-existing discovery/
 catalog/historicalmissingREADME drift; no global pass claimed. No cleanup,
 optimizer submission or saved-result change. Own campaign/actual receipts
 supersede old09RUN descriptions.
+
+
+Verified30October05:07:48UTC: repaired10 CPU29852155 and controller29852156
+ACTUALDONE/hpc/same-jobLSFsuccess;49rawcases/all4actualstartups/flag support,
+independent57compactfile/source/byte/XML/LSF/all3actual command-resource vectors
+and accepted-held receipt-before-release audit passed. ONE chemistryGPU
+29852164 ACTUALLYPEND/gpul40s after exact owned release; no GPU10 entry gate,
+numerical result or optimizer admission yet. Full dispatch39,395,817,631required/
+40,152,156,744available bytes retains4GiB/100000files and original complete
+shared forecast; explicit256MiB diagnostic fits original2GiB control cap.
+Plain09 completed, not repeated. Source10 remains sealed/read-only; all4
+executable Gitindex bytes matched packaged source. No old source/failed gate/
+saved input/output/scientific setting/other-project job changed or cleanup.
+No optimizer continuation queued/running/new committed prefix. Actual current10
+campaign/dispatch-verification and own submission/release override stale09RUN
+or10unsubmitted descriptions. Monitor remains hourly/quiet unchanged.
