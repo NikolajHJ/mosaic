@@ -10923,3 +10923,16 @@ original unstarted jobs were verified held/retired, never running jobs. Prochem
 PEND/L40S toward30k because the whole V100 remainder projects35h41 >24h queue limit.
 Saved settings/results remain unchanged; no cleanup. Current exact proof and source
 records are in runs/20261030-v100-default-01. Monitor follows actual five producers.
+
+### 30 October 2026 13:56 UTC — both Boltz continuations now applying updates
+
+Actual V100 Bolchem29855330 and plainBol29855430 are RUN with committed contiguous
+prefixes through10123/30000 and20205/30000. Prochem29853757 RUN/L40S reaches at
+least12549/50000; plainPro29855339 RUN/V100 reaches at least30274/50000. DBMol
+29853835 remainsPEND/L40S at7500/30000. Four current capacity receipts passed;
+no new runtime errors, job modifications or resubmissions. RDKit valence warnings
+are recorded as observations, not an exploratory abort. Current report selection
+status notes were corrected, preserving historical segments. The canonical report
+adapter still requires terminal summaries, so new live-v2 frames were not
+published; that format gap must be handled by the canonical owner, without an
+optimizer rerun. Exact packet and counts in run latest-observation.json.

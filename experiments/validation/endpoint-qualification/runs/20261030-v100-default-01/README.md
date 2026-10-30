@@ -3,14 +3,14 @@
 New Mosaic exploratory submissions prefer **32 GB V100**, with explicit L40S
 fallback. See the [common GPU policy](../../../../../docs/GPU_POLICY.md).
 
-Verified 30 October 2026 13:43 UTC:
+Verified 30 October 2026 13:56 UTC:
 
 | Run | Actual job | GPU queue | State | Confirmed updates / target |
 | --- | --- | --- | --- | --- |
-| Protenix + chemistry | 29853757 | gpul40s | RUN, kept unchanged | 11,510 / 50,000 |
-| Plain Protenix | 29855339 | gpuv100 | RUN, migrated | 28,347 / 50,000 |
-| Boltz + chemistry | 29855330 | gpuv100 | PEND, migrated | 10,000 / 30,000 |
-| Plain Boltz | 29855430 | gpuv100 | PEND, migrated | 20,000 / 30,000 |
+| Protenix + chemistry | 29853757 | gpul40s | RUN, kept unchanged | 12,549 / 50,000 |
+| Plain Protenix | 29855339 | gpuv100 | RUN, migrated | 30,274 / 50,000 |
+| Boltz + chemistry | 29855330 | gpuv100 | RUN, committed | 10,123 / 30,000 |
+| Plain Boltz | 29855430 | gpuv100 | RUN, committed | 20,205 / 30,000 |
 | DBMol native composite | 29853835 | gpul40s | PEND, retained | 7,500 / 30,000 |
 
 Protenix + chemistry started during the comparison and was left running. DBMol's
@@ -84,3 +84,13 @@ Source01's graph replay field `byte_equal` uses numeric NumPy array equality and
 does not distinguish signed zeros; do not treat that field as byte proof. Raw NPZ
 hashes are the input byte bindings. Cross-device FP32 replay has its predeclared
 32eps-relative /32-smallest-subnormal floor, with actual differences recorded.
+
+### Live report adapter gap
+
+The canonical report command currently requires terminal summaries and cannot
+yet capture these running exploratory-v2 prefixes. New scalar/retained-matrix
+outputs are present; this is a report-format gap, not an optimizer blocker.
+Current selection metadata now records live status while retaining explicitly
+historical terminal segments. The historical viewer was not republished by this
+poll. Extend the canonical adapter before showing new live frames; no cloned
+renderer, new qualification campaign or optimizer rerun is needed.

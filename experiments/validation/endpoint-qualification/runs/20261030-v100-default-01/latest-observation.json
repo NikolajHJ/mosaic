@@ -1,0 +1,61 @@
+{
+  "observed_utc": "2026-10-30T13:56:15.373310+00:00",
+  "packet_sha256": "62fb8e21f70cbcaa29df3f00e700d0060dea37d0a3367ccd5cfc000ffc36cbd6",
+  "status": "both_Boltz_optimizers_started_committed_four_arms_running_DBMol_queued",
+  "active_optimizers": {
+    "protenix_chemistry": {
+      "job_id": "29853757",
+      "scheduler": "RUN",
+      "queue": "gpul40s",
+      "confirmed_global_step_at_least": 12549,
+      "target": 50000,
+      "new_applied_updates_at_least": 2549,
+      "study": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/protenix_chemistry/payload/study"
+    },
+    "boltz_chemistry": {
+      "job_id": "29855330",
+      "scheduler": "RUN",
+      "queue": "gpuv100",
+      "confirmed_global_step_at_least": 10123,
+      "target": 30000,
+      "new_applied_updates_at_least": 123,
+      "study": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/production/boltz_chemistry/payload/study"
+    },
+    "protenix": {
+      "job_id": "29855339",
+      "scheduler": "RUN",
+      "queue": "gpuv100",
+      "confirmed_global_step_at_least": 30274,
+      "target": 50000,
+      "new_applied_updates_at_least": 3099,
+      "study": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/production/protenix/payload/study"
+    },
+    "boltz": {
+      "job_id": "29855430",
+      "scheduler": "RUN",
+      "queue": "gpuv100",
+      "confirmed_global_step_at_least": 20205,
+      "target": 30000,
+      "new_applied_updates_at_least": 205,
+      "study": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/production/boltz/payload/study"
+    },
+    "dbmol": {
+      "job_id": "29853835",
+      "scheduler": "PEND",
+      "queue": "gpul40s",
+      "confirmed_global_step_at_least": 7500,
+      "target": 30000,
+      "new_applied_updates_at_least": 0,
+      "study": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/retry02/dbmol/payload/study"
+    }
+  },
+  "quality_observations": [
+    "RDKit emitted valence warnings during Protenix evaluations; these are recorded observations, not runtime/numerical failures or a reason to stop the bounded runs. No new validity claim is inferred from the warnings alone."
+  ],
+  "reporting": {
+    "live_exploratory_adapter_ready": false,
+    "evidence": "canonical quick_inputs.study_path/_segment and scripts/reporting/README.md require terminal saved summaries; active v2 studies have none yet",
+    "action": "Keep historical viewer intact; extend canonical saved-data adapter for live/unqualified prefixes before presenting their new frames. Never rerun optimizers to obtain a report."
+  },
+  "jobs_or_settings_modified_by_poll": false
+}

@@ -1,41 +1,41 @@
 {
-  "status": "v100_default_adopted_three_migrated_two_optimizers_running_others_queued",
-  "observed_utc": "2026-10-30T13:43:23.618322+00:00",
+  "status": "both_Boltz_optimizers_started_committed_four_arms_running_DBMol_queued",
+  "observed_utc": "2026-10-30T13:56:15.373310+00:00",
   "active_optimizers": {
     "protenix_chemistry": {
       "job_id": "29853757",
       "scheduler": "RUN",
       "queue": "gpul40s",
-      "confirmed_global_step_at_least": 11510,
+      "confirmed_global_step_at_least": 12549,
       "target": 50000,
-      "new_applied_updates_at_least": 1510,
+      "new_applied_updates_at_least": 2549,
       "study": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/protenix_chemistry/payload/study"
     },
     "boltz_chemistry": {
       "job_id": "29855330",
-      "scheduler": "PEND",
+      "scheduler": "RUN",
       "queue": "gpuv100",
-      "confirmed_global_step_at_least": 10000,
+      "confirmed_global_step_at_least": 10123,
       "target": 30000,
-      "new_applied_updates_at_least": 0,
+      "new_applied_updates_at_least": 123,
       "study": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/production/boltz_chemistry/payload/study"
     },
     "protenix": {
       "job_id": "29855339",
       "scheduler": "RUN",
       "queue": "gpuv100",
-      "confirmed_global_step_at_least": 28347,
+      "confirmed_global_step_at_least": 30274,
       "target": 50000,
-      "new_applied_updates_at_least": 1172,
+      "new_applied_updates_at_least": 3099,
       "study": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/production/protenix/payload/study"
     },
     "boltz": {
       "job_id": "29855430",
-      "scheduler": "PEND",
+      "scheduler": "RUN",
       "queue": "gpuv100",
-      "confirmed_global_step_at_least": 20000,
+      "confirmed_global_step_at_least": 20205,
       "target": 30000,
-      "new_applied_updates_at_least": 0,
+      "new_applied_updates_at_least": 205,
       "study": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/production/boltz/payload/study"
     },
     "dbmol": {
@@ -106,5 +106,6 @@
   },
   "saved_results_changed": false,
   "settings_changed": false,
-  "verification": "completion-verification.json"
+  "verification": "completion-verification.json",
+  "latest_observation": "latest-observation.json"
 }

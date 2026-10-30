@@ -4,8 +4,8 @@
     {
       "id": "protenix",
       "label": "Protenix native-only continuation",
-      "status_detail": "Absolute 20,000 saved updates (10,000 shown since the saved 10,000 parent). Original terminal validation failed. Separate FP64 endpoint qualification passed; full-model validation 29839086 later failed because its reference worker could not initialize CUDA. No new optimization continuation was submitted. Status observed 28 October 2026 at 14:00 Paris.",
-      "continuation_status": "blocked",
+      "status_detail": "Exploratory continuation 29855339 is running on gpuv100, with at least 30,274/50,000 saved global updates (30 October 2026 13:56 UTC). Original validation failures remain preserved; derivative qualification is not claimed. This selection currently displays historical terminal data through 20,000; the live exploratory-v2 frame adapter is not yet attached.",
+      "continuation_status": "running",
       "segments": [
         {
           "run": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-segment-0000/payload/study"
@@ -15,8 +15,8 @@
     {
       "id": "boltz",
       "label": "Boltz-2 affinity, planned30k",
-      "status_detail": "20,000 saved updates. The new terminal endpoint check failed after the second segment; continuation to 30,000 is blocked. Original failures remain preserved.",
-      "continuation_status": "blocked",
+      "status_detail": "Exploratory continuation 29855430 is running on gpuv100, with at least 20,205/30,000 saved global updates (30 October 2026 13:56 UTC). Original validation failures remain preserved; derivative qualification is not claimed. This selection currently displays historical terminal data through 20,000; the live exploratory-v2 frame adapter is not yet attached.",
+      "continuation_status": "running",
       "segments": [
         {
           "run": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/boltz2-segment-0000/payload/study"
@@ -29,8 +29,8 @@
     {
       "id": "dbmol",
       "label": "Boltz-2 DBMol binding objective, planned30k",
-      "status_detail": "7,500 saved updates; authorized total target is now 30,000 at LR0.0025. Saved results and original terminal failures remain unchanged. New complete-objective reference validation is being submitted under the corrected shared storage policy; it must pass full gradient, pilot and runtime admission before continuation.",
-      "continuation_status": "blocked",
+      "status_detail": "Exploratory continuation 29853835 is queued on gpul40s, with at least 7,500/30,000 saved global updates (30 October 2026 13:56 UTC). Original validation failures remain preserved; derivative qualification is not claimed. This selection currently displays historical terminal data through 7,500; the live exploratory-v2 frame adapter is not yet attached.",
+      "continuation_status": "queued",
       "segments": [
         {
           "run": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-segment-0000/payload/study"
@@ -57,8 +57,8 @@
     {
       "id": "protenix_chemistry",
       "label": "Random Protenix + delayed chemistry",
-      "status_detail": "First 10,000-update segment passed. The next boundary combined-gradient check and later separate revalidation failed; continuation is blocked. Chemistry rises from0.001 after 5,000 toward 100 at 50,000.",
-      "continuation_status": "blocked",
+      "status_detail": "Exploratory continuation 29853757 is running on gpul40s, with at least 12,549/50,000 saved global updates (30 October 2026 13:56 UTC). Original validation failures remain preserved; derivative qualification is not claimed. This selection currently displays historical terminal data through 10,000; the live exploratory-v2 frame adapter is not yet attached.",
+      "continuation_status": "running",
       "segments": [
         {
           "run": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-03/protenix/random-segment-0000/payload/study"
@@ -68,8 +68,8 @@
     {
       "id": "boltz_chemistry",
       "label": "Boltz-2 + delayed chemistry",
-      "status_detail": "10,000 saved updates; terminal bond-gradient validation failed. Separate native-component recheck passed; combined-loss checks and pilots are still required before continuation. Chemistry rises from0.001 after 5,000 toward 100 at 30,000.",
-      "continuation_status": "blocked",
+      "status_detail": "Exploratory continuation 29855330 is running on gpuv100, with at least 10,123/30,000 saved global updates (30 October 2026 13:56 UTC). Original validation failures remain preserved; derivative qualification is not claimed. This selection currently displays historical terminal data through 10,000; the live exploratory-v2 frame adapter is not yet attached.",
+      "continuation_status": "running",
       "segments": [
         {
           "run": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-04/boltz/boltz2_chemistry-segment-0000/payload/study"
