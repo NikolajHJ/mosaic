@@ -36,5 +36,32 @@
     "optimizer_jobs": [],
     "saved_results_settings_and_scientific_gates_unchanged": true,
     "remote_files_removed": 0
+  },
+  "latest_readonly_observation": {
+    "status": "read_only_source_input_and_zero_submission_observation_verified",
+    "observed_utc": "2026-10-30T10:04:50.421990+00:00",
+    "packet_sha256": "e1fa6c2b1a43caaf6fe1587b26b02c5e9c5458c4a956efe9fca8902e52360875",
+    "source_manifest_sha256": "fbf0420bb985d0ed57788ba086224131d4d1858e0c03ff1ea0472d919f8b0704",
+    "jobs": {},
+    "allocated_fixed04_CPU_cases": 0,
+    "new_GPU_results": false,
+    "optimizer_jobs": [],
+    "fresh_capacity_assessment_performed": false,
+    "last_capacity_observation_utc": "2026-10-30T09:37:25.420444+00:00",
+    "last_capacity_shortfall_bytes": 863903549,
+    "last_capacity_gate_not_a_new_measurement": true,
+    "other_account_job_states_readonly": {
+      "29849760": "RUN",
+      "29846730": "PSUSP",
+      "29849761": "PEND",
+      "29851407": "PEND",
+      "29851408": "PEND",
+      "29853158": "PEND"
+    },
+    "other_HOME_pending_command": "bash -l /zhome/95/e/206121/mosaic-runs/defog-composition-production-20261030-04/source/experiments/learned-prior/protenix-defog-composition-30000/hpc/run.sh /zhome/95/e/206121/mosaic-runs/defog-composition-production-20261030-04/source 4d79ff21029d206ef4b385e1ed2b9a046c2c87662705b2418501e8e7577e0c93 /zhome/95/e/206121/mosaic-runs/defog-composition-production-20261030-04/run gpu 8758cb1ef323fff85f49fb2b8a1f002b5a581d8c6cf17a2f1e737a52916d74a4",
+    "foreign_jobs_modified": false,
+    "scientific_settings_saved_results_gates_changed": false,
+    "no_new_experiment_or_cleanup": true,
+    "notification": "quiet_unchanged_owned_resource_block"
   }
 }
