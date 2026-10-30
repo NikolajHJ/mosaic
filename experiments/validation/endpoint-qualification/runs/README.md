@@ -191,3 +191,9 @@ admission branch or changed numerical/capture/optimization/saved-result bytes.
 
 
 Verified07 at02:35:45UTC: CPU29851801/controller29851802 DONE,30rawcases/all4 actual startups passed. PlainGPUdiagnostic29851806 RUN/chemistry29851809 PEND. No optimizer admission or saved update; exact current07 campaign/dispatch-verification required.
+
+
+[Unchanged-runtime repeat diagnostics08](20261030-continuation-failure-diagnostics-08/README.md) follows verified07 terminal findings: plain native/FP64 replay stable; chemistry native atom-gradient replay varied9.3e-10 before coupled chemistry checks. Exactly16 raw diagnostic replicas per native measurement; original guard always receives replica0, no stable-repeat selection or runtime flag change. CPU34/all4actualstartups verified, actual GPU IDs/outcomes require current08 campaign. No optimizer admission.
+
+
+Verified08 at03:18:58UTC: CPU29851857/controller29851858 DONE/34cases/all4actualstartups, repeat GPUs29851862/29851866 bothRUN, full dispatch/entry storage passed. No result or optimizer admission yet; exact current08 campaign/dispatch-verification authoritative.

@@ -134,3 +134,6 @@ remain unchanged. No cleanup, scientific settings, tolerance/FD or source waiver
 Current run07 campaign/dispatch-verification is authoritative over earlier prose.
 Hourly handoff must follow actual07 receipts, original raw digests/NPZ bindings;
 a diagnostic can never admit a new optimizer child. No new report without data.
+
+
+Actual02:57:44UTC both GPU29851806/29851809 DONE/LSFsuccess and full terminal byte/schema/raw-point/source/input audit passed. Plain full native/FP64+negative controls passed/stable3 measurements; chemistry reproduced native atom-gradient replay difference9.313225746154785e-10 during reference co-residency, before combined chemistry checks. Both are read-only evidence, not original recertification or optimizer admission. See terminal-verification.json and follow-up08.

@@ -16,8 +16,8 @@ BASE=Path('/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01')
 CAPACITY=BASE/'nonchem-precision-release-26/source'
 CAPACITY_PIN='8324c1d312adeaa4c67c475c01ef1217df6f3ad4044b997d1b73e168325412d3'
 SCOPE=BASE/'nonchem-precision-continuation-26'
-ROOT=SCOPE/'chemistry-continuation-05/boundary-diagnostics-07'
-SOURCE=SCOPE/'boundary-diagnostics-release-07/source'
+ROOT=SCOPE/'chemistry-continuation-05/boundary-diagnostics-08'
+SOURCE=SCOPE/'boundary-diagnostics-release-08/source'
 PYTHON='/work3/s234818/mosaic/envs/protenix-tiny/bin/python'
 
 
@@ -51,7 +51,7 @@ def argv(phase,pin,dependency=None):
     a=['bsub','-H','-env','all,~CUDA_VISIBLE_DEVICES,~CUDA_MPS_PIPE_DIRECTORY,~CUDA_MPS_LOG_DIRECTORY,~CUDA_MPS_ACTIVE_THREAD_PERCENTAGE',
        '-q','gpul40s' if gpu else 'hpc','-n',str(slots),'-R','span[hosts=1]','-R',
        'rusage[mem='+('8GB' if phase=='gpu-plain' else '2GB' if slots==1 else '4GB')+']','-W','01:00' if gpu else '00:30' if slots==1 else '01:00',
-       '-J','mosaic-boundary-diagnostics07-'+phase,'-o',str(p/'stdout.%J.log'),'-e',str(p/'stderr.%J.log')]
+       '-J','mosaic-boundary-diagnostics08-'+phase,'-o',str(p/'stdout.%J.log'),'-e',str(p/'stderr.%J.log')]
     if gpu:a+=['-gpu','num=1:mode=exclusive_process:mps=yes']
     if dependency:a+=['-w',dependency]
     return a+['bash','-l',str(SOURCE/'scripts/failure_diagnostic_stage.lsf'),str(SOURCE),pin,phase,'--capacity-source',str(CAPACITY)]
@@ -127,7 +127,7 @@ def execute(phase,pin):
         sub=read(ROOT/'cpu/submission.json');text=' '.join((ROOT/'cpu'/('stdout.'+sub['job_id']+'.log')).read_text().split())
         require(text.count('Subject: Job '+sub['job_id']+':')==1 and 'queue <hpc>' in text and 'Successfully completed.' in text and 'Exited with exit code' not in text,'Actual same CPU LSF success required')
         rows=list(ET.parse(ROOT/'cpu/payload/tests.xml').getroot().iter('testcase'))
-        require(len(rows)==30 and all(not list(r) for r in rows),'All30 allocated fixtures must pass')
+        require(len(rows)==34 and all(not list(r) for r in rows),'All34 allocated fixtures must pass')
         require(read(ROOT/'cpu/payload/analysis/assessment.json')['status']=='diagnostics_completed_original_failures_preserved','Saved-probe CPU analysis incomplete')
         startup=read(ROOT/'cpu/payload/startup/assessment.json')
         require(startup['status']=='passed_actual_original_pre_model_startups' and startup['model_constructed'] is False
@@ -153,7 +153,7 @@ def execute(phase,pin):
                     'Proposed GPU allocation differs from unchanged actual reference worker predicate')
         storage(op,parent,'dispatch')
         gpus={kind:submit('gpu-'+kind,pin) for kind in ('plain','chemistry')}
-        write(payload/'assessment.json',{'status':'CPU30_actual_startups_reference_metadata_passed_GPU_diagnostics_submitted',
+        write(payload/'assessment.json',{'status':'CPU34_actual_startups_reference_metadata_passed_GPU_diagnostics_submitted',
               'gpus':gpus,'optimizer_jobs':[]});return
     if phase=='cpu':
         command=[PYTHON,'-m','pytest',str(SOURCE/'tests'),'-q','--rootdir',str(SOURCE),'--import-mode=importlib','-o','addopts=','-p','no:cacheprovider',

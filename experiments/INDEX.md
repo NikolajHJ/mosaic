@@ -80,3 +80,6 @@ GPU29851770 EXIT before models and05 preflight failure; no optimizer admission.
 
 
 [Endpoint diagnostic07](validation/endpoint-qualification/runs/20261030-continuation-failure-diagnostics-07/README.md) adds bounded actual held-state settling after preserved06 unstarted retirement. No optimizer admission.
+
+
+[Endpoint repeat diagnostics08](validation/endpoint-qualification/runs/20261030-continuation-failure-diagnostics-08/README.md): unchanged-runtime16replicas with replica0 retained by original guard, after07 localized tiny native atom-gradient variation. Read-only/no continuation admission.

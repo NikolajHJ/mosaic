@@ -143,6 +143,36 @@ def test_metadata_hold_must_settle_on_exact_owned_job_before_release(state,ident
     else:assert namespace['held_observation'](0,line,'123','exact-own-name') is expected
 
 
+def test_metadata_diagnostic_replicas_have_exact_predeclared_count():
+    assert d.REPEATS == 16
+
+
+def test_metadata_replicas_return_first_even_when_all_later_results_differ():
+    results=[]
+    def evaluate():
+        value={'replica':len(results)};results.append(value);return value
+    result=d.repeat_first(evaluate)
+    assert len(results)==16 and result is results[0] and result['replica']==0
+
+
+def test_metadata_replicas_do_not_hide_later_execution_error_with_first_result():
+    calls=[]
+    def evaluate():
+        calls.append(len(calls))
+        if len(calls)==2:raise ValueError('actual later error')
+        return {'first':'success'}
+    with pytest.raises(ValueError,match='actual later error'):d.repeat_first(evaluate)
+    assert calls==[0,1]
+
+
+def test_metadata_replication_does_not_add_optimizer_or_compiler_flag_changes():
+    nodes=[n for n in ast.parse(P.read_bytes()).body if isinstance(n,ast.FunctionDef)
+           and n.name in ('repeat_first','repeated_measurements')]
+    text='\n'.join(ast.unparse(n) for n in nodes)
+    assert len(nodes)==2
+    assert not any(word in text for word in ('XLA_FLAGS','CUBLAS_WORKSPACE_CONFIG','run_updates','run_chemical_updates'))
+
+
 @pytest.mark.parametrize('change', [False, True])
 def test_measurement_capture_retains_actual_callback_counts_and_exact_original_result(tmp_path, change):
     np = d.numpy()

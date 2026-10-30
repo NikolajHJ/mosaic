@@ -147,3 +147,6 @@ It preserves04 receipt failure,05 preflight failure and06 unstarted held CPU
 retirement. Bounded same-job PEND-to-PSUSP settling precedes any owned release;
 CPU30/all four actual startups and full shared gates still required. No optimizer
 admission branch or changed numerical/capture/optimization/saved-result bytes.
+
+
+[Unchanged-runtime repeat diagnostics08](../runs/20261030-continuation-failure-diagnostics-08/README.md) follows verified07 terminal findings: plain native/FP64 replay stable; chemistry native atom-gradient replay varied9.3e-10 before coupled chemistry checks. Exactly16 raw diagnostic replicas per native measurement; original guard always receives replica0, no stable-repeat selection or runtime flag change. CPU34/all4actualstartups verified, actual GPU IDs/outcomes require current08 campaign. No optimizer admission.

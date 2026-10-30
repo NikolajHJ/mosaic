@@ -10097,3 +10097,83 @@ remain unchanged. No cleanup, scientific settings, tolerance/FD or source waiver
 Current run07 campaign/dispatch-verification is authoritative over earlier prose.
 Hourly handoff must follow actual07 receipts, original raw digests/NPZ bindings;
 a diagnostic can never admit a new optimizer child. No new report without data.
+
+
+## 2026-10-30T02:57:44Z — Whole-checker diagnostics completed; native atom-gradient replay variation localized
+
+Actual07 plainGPU29851806 and chemistryGPU29851809 both DONE/gpul40s/same-job
+LSFsuccess. Independent176compact-file byte/schema/source/LSF audit passed;
+all9parent source manifests/files and19input bindings rehashed remotely, all129
+raw NPZ files rehashed remotely,121referenced NPZ and69scientific JSON bindings
+matched. Original large arrays were not downloaded or evaluated locally.
+
+Plain Pro20k actual full entry reached the intentional post-native sentinel;
+all3 original primal/AD/atom/bond/frozen measurement dictionaries and raw NPZ
+hashes matched exactly. Full native/FP64/parity/locality checks passed, zero/
+reversed/scaled negative controls all rejected,38original reference requests
+and fullFP64dtype/close audit passed. Private summary failed only because of the
+intentional diagnostic stop; this is NOT original-study recertification or
+optimizer admission, and no pilot/update ran.
+
+Chemistry Pro10k reproduced the original DURING-reference exact replay failure.
+Original native binding atom-gradient digest changed; allocated max absolute
+change9.313225746154785e-10. Primal/AD scalar/bond-gradient and measured model/
+context digests stayed equal; saved inputs/source preservation passed. This is
+a true small numerical difference, not merely signedzero. The after-exit replay
+was not reached. It occurs in the NATIVE binding checker before any combined
+chemistry-coefficient/pilot check, so is not evidence that repair targets or
+chemistry coefficients changed. All original failures remain failed. No optimizer
+is queued/running, no saved prefix changed, no report refresh or cleanup.
+
+## 2026-10-30T03:14:56Z — Predeclared unchanged-runtime repeat diagnostic08 CPU qualified
+
+New immutable08 asks whether the observed native variation already exists on
+repeated calls before reference loading or only during co-residency. Exactly16
+unchanged callback evaluations per original _measurement checkpoint, all raw
+captures/groups retained; original guard always receives replica0 unchanged,
+never an average or chosen stable replica. Any later unexpected execution error
+propagates. Explicitly additional DIAGNOSTIC model evaluations, not optimizer/
+pilot/repair/diffusion steps. Original strict guards/runtime/autotune0/kernel
+flags/sources/context/key/objective/settings remain unchanged. No new epsilon,
+tolerance, normalization, compiler profile or continuation admission branch.
+All old outcomes and original negative controls remain intact. Official OpenXLA/
+NVIDIA reproducibility documentation supports a hypothesis only; no particular
+kernel cause is established and no deterministic context is adopted.
+
+Source6 manifest4d7e7d932aa147dc8303f808eb02c888e511a3640a31c4352c6bab7c5fe31faf,
+planc6614ac6ad8b3e418b3fabbe19d5d086042fdaeb4ffb117da6fee32002cdf239,
+archive19507B/SHA0149adc45c4116c74816845a58a9e3e63ed2ea90773ff20cd890111ed5638291.
+All safe-member/AST/byte audits and ten unchanged original capture/entry/control
+function ASTs passed;32portable metadata tests passed locally. Full allocated
+CPU29851857 ACTUALDONE/hpc/LSFsuccess,34rawcases/zero fails/errors/skips, both
+original producer and both actual reference CLI startups passed on realCPUjob.
+Independent44compact-file/source/XML/LSF/held receipt-before-release audit passed.
+Controller29851858 RUN at03:14:56UTC; no GPU08 ID/pass established at this capture.
+Never duplicate prepare/stage/controller or unknown markers.
+
+Initial full storage39,593,701,535required/40,350,040,648available bytes; CPUentry
+39,592,614,047/40,348,953,160 and controllerentry39,591,520,415/40,347,859,528,
+each4GiB/100000files. Exact4/8CPU and8/4GiBslot GPUjobs remain conditional on all
+CPU/startup/whole gates,1h/2500s child/2700s coordinator/<=600s entry,128MiB funded
+complete group output cap and nonce cleanup. No cleanup/full optimizer admission
+or scientific pass implied. Original plainPro20k/DB7500/plainBol20k/chem10k10k
+prefixes and settings remain unchanged. Diagnostic08 cannot launch a continuation.
+
+
+Verified30October03:18:58UTC:08 CPU29851857/controller29851858 ACTUALDONE/hpc/
+same-jobLSFsuccess,34actual rawfixtures/zero fail/error/skip and BOTH original
+producer plus BOTH actual reference CLI startup bodies passed. Independent88
+compactfile/source/bytes/XML/LSF/all4command-resource-dependency vectors/held
+receipt-before-release audit passed. ACTUAL repeat GPUdiagnostics plain29851862
+and chemistry29851866 both RUN/gpul40s; no numerical findings/completion yet.
+All full shared dispatch and both actual GPUentry byte/file/reserve gates passed:
+dispatch39,590,457,503required/40,346,796,616available; plainentry39,589,038,751/
+40,345,377,864; chemistryentry39,588,207,775/40,344,546,888 bytes.4GiB/100000files
+remain mandatory each; no whole optimizer admission/reservation is implied.
+No new optimizer/pilot/update, loss/LR/model/context/flag/FD/tolerance change,
+cleanup or original failure relabel. Never duplicate08 stage/controller/GPUs.
+Read current campaign/dispatch-verification and actual root/phase receipts.
+Original07 numerical findings are preserved independently;08 tests16repeats with
+original guard always seeing replica0, not selection of a favourable result.
+No new report without changed saved optimizer prefixes. Other-project jobs
+remain read-only. Hourly monitoring continues only meaningful verified changes.

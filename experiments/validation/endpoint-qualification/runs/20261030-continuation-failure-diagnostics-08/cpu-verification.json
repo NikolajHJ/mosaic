@@ -1,0 +1,35 @@
+{
+  "status": "passed_independent_CPU34_source_XML_LSF_four_actual_startups_and_hold_release_provenance",
+  "observed_utc": "2026-10-30T03:14:56.527838+00:00",
+  "files_verified": 44,
+  "source_manifest_sha256": "4d7e7d932aa147dc8303f808eb02c888e511a3640a31c4352c6bab7c5fe31faf",
+  "jobs": {
+    "cpu": "29851857",
+    "after-cpu": "29851858"
+  },
+  "scheduler": {
+    "29851857": "DONE",
+    "29851858": "RUN"
+  },
+  "gates": {
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/chemistry-continuation-05/boundary-diagnostics-08/cpu/continuation-storage-entry.json": {
+      "status": "passed",
+      "required_bytes": 39592614047,
+      "available_bytes": 40348953160,
+      "reserve_bytes": 4294967296,
+      "file_reserve": 100000
+    },
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/chemistry-continuation-05/boundary-diagnostics-08/after-cpu/continuation-storage-entry.json": {
+      "status": "passed",
+      "required_bytes": 39591520415,
+      "available_bytes": 40347859528,
+      "reserve_bytes": 4294967296,
+      "file_reserve": 100000
+    }
+  },
+  "optimizer_updates": 0,
+  "can_admit_new_child": false,
+  "local_scientific_work": false,
+  "CPU_cases": 34,
+  "actual_original_startups": 4
+}

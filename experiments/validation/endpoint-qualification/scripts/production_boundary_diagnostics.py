@@ -18,6 +18,7 @@ import sys
 from types import SimpleNamespace
 
 CAP = 128 * 1024**2
+REPEATS = 16
 STOP = 'READ_ONLY_DIAGNOSTIC_NATIVE_BOUNDARY_REACHED'
 EXPECTED = {
     'Live production changed while the FP64 GPU process coexisted',
@@ -161,6 +162,49 @@ def captured_measurements(precision, output):
         precision._measurement = original
 
 
+def repeat_first(evaluate):
+    """Predeclared diagnostics only: keep the first result, never select a pass."""
+    require(REPEATS == 16, 'Exactly16 predeclared diagnostic replicas required')
+    first = None
+    for index in range(REPEATS):
+        result = evaluate()
+        if index == 0:
+            first = result
+    return first
+
+
+@contextmanager
+def repeated_measurements(precision, output):
+    """Measure repeated existing callbacks with unchanged graph/key/runtime.
+
+    This intentionally adds diagnostic evaluations; none is an optimizer step.
+    All replicas pass through the existing raw capture. The original check uses
+    replica0 even if subsequent replicas differ, and unexpected errors propagate.
+    """
+    output.mkdir()
+    original = precision._measurement
+    groups = []
+    def repeated(callbacks, values):
+        replicas = []
+        def evaluate():
+            result = original(callbacks, values)
+            replicas.append(result)
+            return result
+        first = repeat_first(evaluate)
+        row = {'native_measurement_index': len(groups), 'replicas': replicas,
+               'replicas_requested': REPEATS, 'replicas_completed': len(replicas),
+               'original_gate_uses_replica': 0, 'selected_for_agreement': False,
+               'optimizer_updates': 0, 'can_admit_new_child': False}
+        write(output / ('group-' + str(len(groups)).zfill(3) + '.json'), row)
+        groups.append(row)
+        return first
+    precision._measurement = repeated
+    try:
+        yield groups
+    finally:
+        precision._measurement = original
+
+
 def plain(plan, output, *, startup=False):
     current = Path(plan['capacity_source']['path'])
     sys.path.insert(0, str(current / 'scripts'))
@@ -182,7 +226,8 @@ def plain(plan, output, *, startup=False):
         sys.argv.append('--startup-only')
     try:
         capture = nullcontext([]) if startup else captured_measurements(precision, output / 'measurements')
-        with capture as records:
+        repeats = nullcontext([]) if startup else repeated_measurements(precision, output / 'repeat-groups')
+        with capture as records, repeats:
             with adapter.adapted_driver(base, original, precision):
                 def run_path(filename, *, run_name):
                     require(Path(filename) == Path(arm['source']['path']) / 'examples/brd4_25_atoms.py'
@@ -221,7 +266,8 @@ def chemistry(plan, output, *, startup=False):
     study = study_path(plan, output)
     study.parent.mkdir(exist_ok=False)
     capture = nullcontext([]) if startup else captured_measurements(precision, output / 'measurements')
-    with capture as records:
+    repeats = nullcontext([]) if startup else repeated_measurements(precision, output / 'repeat-groups')
+    with capture as records, repeats:
         try:
             driver.execute(original, 'protenix', 'validate', study, startup=startup)
         except BaseException as error:
