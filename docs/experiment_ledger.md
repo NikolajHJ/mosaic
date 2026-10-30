@@ -10936,3 +10936,10 @@ status notes were corrected, preserving historical segments. The canonical repor
 adapter still requires terminal summaries, so new live-v2 frames were not
 published; that format gap must be handled by the canonical owner, without an
 optimizer rerun. Exact packet and counts in run latest-observation.json.
+
+
+### 2026-10-30 20:17 UTC - completed Boltz 30k added to the saved report
+
+Boltz 29855430 actual DONE: global 20000 to 30000, 10000 applied updates/10001 contiguous states, frozen model/context unchanged, unqualified exploratory scope. Canonical report 29857654 DONE published edition 0009 at http://127.0.0.1:8780/report.html; all 85 HTTP files and nine-panel browser QA passed. Eight panels cached; only the completed Boltz continuation was newly rendered (all scalar records/501 molecule frames). Engine CPU 29857649 passed 225 cases. Cache-version dispatch and HOME existing-byte double charging were repaired with focused controls and the shared exploratory storage policy. Original renderer, results, settings and failures preserved; no optimizer resubmitted or files deleted. Proof: experiments/reporting/jq1-live-progress/runs/20261030-exploratory-completions-01/publication-0009.json.
+
+Actual 20:05 UTC observation: Prochem 29853757 RUN 35900/50000; Bolchem 29855330 RUN 19501/30000; DBMol 29853835 and noise 29857358 PEND; plain Pro 29855339 completed 50000.

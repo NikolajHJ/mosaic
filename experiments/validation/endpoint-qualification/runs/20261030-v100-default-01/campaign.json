@@ -1,41 +1,42 @@
 {
-  "status": "both_Boltz_optimizers_started_committed_four_arms_running_DBMol_queued",
-  "observed_utc": "2026-10-30T13:56:15.373310+00:00",
+  "status": "plain_Protenix_50k_and_Boltz_30k_completed_reported_two_chemistry_RUNNING_DBMol_and_noise_queued",
+  "observed_utc": "2026-10-30T20:05:18.658073+00:00",
   "active_optimizers": {
     "protenix_chemistry": {
       "job_id": "29853757",
       "scheduler": "RUN",
       "queue": "gpul40s",
-      "confirmed_global_step_at_least": 12549,
+      "confirmed_global_step_at_least": 35900,
       "target": 50000,
-      "new_applied_updates_at_least": 2549,
+      "new_applied_updates_at_least": 25900,
       "study": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/protenix_chemistry/payload/study"
     },
     "boltz_chemistry": {
       "job_id": "29855330",
       "scheduler": "RUN",
       "queue": "gpuv100",
-      "confirmed_global_step_at_least": 10123,
+      "confirmed_global_step_at_least": 19501,
       "target": 30000,
-      "new_applied_updates_at_least": 123,
+      "new_applied_updates_at_least": 9501,
       "study": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/production/boltz_chemistry/payload/study"
     },
     "protenix": {
       "job_id": "29855339",
-      "scheduler": "RUN",
+      "scheduler": "DONE_PERSISTED",
       "queue": "gpuv100",
-      "confirmed_global_step_at_least": 30274,
+      "confirmed_global_step_at_least": 50000,
       "target": 50000,
-      "new_applied_updates_at_least": 3099,
-      "study": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/production/protenix/payload/study"
+      "new_applied_updates_at_least": 22825,
+      "study": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/production/protenix/payload/study",
+      "state_evidence": "persisted completed summary and prior authenticated DONE; live row aged out"
     },
     "boltz": {
       "job_id": "29855430",
-      "scheduler": "RUN",
+      "scheduler": "DONE",
       "queue": "gpuv100",
-      "confirmed_global_step_at_least": 20205,
+      "confirmed_global_step_at_least": 30000,
       "target": 30000,
-      "new_applied_updates_at_least": 205,
+      "new_applied_updates_at_least": 10000,
       "study": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/production/boltz/payload/study"
     },
     "dbmol": {
@@ -46,6 +47,15 @@
       "target": 30000,
       "new_applied_updates_at_least": 0,
       "study": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/retry02/dbmol/payload/study"
+    },
+    "protenix_chemistry_noise": {
+      "job_id": "29857358",
+      "scheduler": "PEND",
+      "queue": "gpuv100",
+      "confirmed_global_step_at_least": 0,
+      "target": 50000,
+      "new_applied_updates_at_least": 0,
+      "study": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-chemistry-noise-20261030-01/retry01/protenix_chemistry/payload/study"
     }
   },
   "v100_device_comparison": {
@@ -107,5 +117,22 @@
   "saved_results_changed": false,
   "settings_changed": false,
   "verification": "completion-verification.json",
-  "latest_observation": "latest-observation.json"
+  "latest_observation": "status-20261030T200518Z.json",
+  "completed_results_report": {
+    "url": "http://127.0.0.1:8780/report.html",
+    "edition": "edition-0009",
+    "job_id": "29857654",
+    "protenix_global_target": 50000,
+    "protenix_panel_range": [
+      27175,
+      50000
+    ],
+    "scientific_scope": "unqualified exploratory; prior failures preserved",
+    "proof": "../../../../reporting/jq1-live-progress/runs/20261030-exploratory-completions-01/publication-0009.json",
+    "boltz_global_target": 30000,
+    "boltz_panel_range": [
+      20000,
+      30000
+    ]
+  }
 }

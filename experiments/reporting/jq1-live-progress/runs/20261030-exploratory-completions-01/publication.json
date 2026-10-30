@@ -1,0 +1,60 @@
+{
+  "status": "published_verified_saved_report",
+  "publication": {
+    "automatic_optimizer_submission": false,
+    "edition": "edition-0008",
+    "engine_pin": "931a3fcd4be1093d9b7285405c897f711138b81949e9e8084ca225a25849e494",
+    "manifest_sha256": "6d1eee20b8cf15924ac41b6d34e74d5bf012fc82e38a0bf40f0d2640163c4a10",
+    "published_utc": "2026-10-30T16:54:24.488718+00:00",
+    "report_url": "editions/edition-0008/report.html",
+    "version": "jq1-live-publication-v1"
+  },
+  "HTTP": {
+    "files": 78,
+    "status": "passed_all_new_edition_HTTP_bytes",
+    "url": "http://127.0.0.1:8780/report.html"
+  },
+  "report_job": "29856757",
+  "CPU_job": "29856729",
+  "CPU_cases": 218,
+  "assessment": {
+    "all_original_input_and_snapshot_hashes_rechecked": true,
+    "all_scalar_records_retained": true,
+    "cached_arms": [
+      "protenix",
+      "boltz",
+      "dbmol",
+      "protenix_noisy",
+      "protenix_chemistry",
+      "boltz_chemistry",
+      "protenix_defog"
+    ],
+    "edition": "edition-0008",
+    "newly_validated_arms": [
+      "protenix50k"
+    ],
+    "no_interpolation": true,
+    "original_results_changed": false,
+    "scientific_success_claim": false,
+    "status": "passed_saved_only_render"
+  },
+  "result_path": "results\\hpc\\20261028-reusable-report-01\\requests\\request-20261030T164856Z-31fdc9a3\\result.json",
+  "result_sha256": "6ec5bb4adca20b48c0745b99f55a2b533eb16ce7e055e47084f00aedc7958023",
+  "delivery_evidence_sha256": "86374ca27cd80c93fbe4a9c97aebc0ca645e95495a2242075663b107f5c96569",
+  "delta_bytes": 20357697,
+  "delta_sha256": "62c667ac7e1833d65a6c25e08fa2a50919e40b605b45743eb42e44eda8f71f75",
+  "browser_QA": {
+    "status": "passed_actual_browser",
+    "tab_id": "2",
+    "edition": "edition-0008",
+    "selectors": 8,
+    "numeric_interior": 39995,
+    "next": 40015,
+    "manual_pause": 39975,
+    "slider_home_right": 27195,
+    "latest": 50000,
+    "matrices": "25 atom rows and300 pair rows rendered",
+    "warnings": "invalid/disconnected raw readout visible; unqualified science scope preserved"
+  },
+  "preview_sha256": "a8dba17f99bbcbf09b8c477bc85fe3da3d0ae0e2700dde02cc4ecf8076acc8f5"
+}

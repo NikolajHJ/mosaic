@@ -1,0 +1,24 @@
+{
+  "observed_utc": "2026-10-30T16:48:53.280685+00:00",
+  "job_id": "29855339",
+  "scheduler_state": "DONE",
+  "status": "completed_exploratory_updates",
+  "global_start": 27175,
+  "global_end": 50000,
+  "applied_updates": 22825,
+  "states": 22826,
+  "derivative_qualified": false,
+  "frozen_preserved": true,
+  "source_packet": "results\\hpc\\20261030-v100-default\\completion-check-20261030T164849Z\\stdout.json",
+  "source_packet_sha256": "6591a231c5bd6f06d2703403d03cec264b469ca073026184f46cb0db17a4d355",
+  "report_CPU_job": "29856729",
+  "report_CPU_cases": 218,
+  "engine_pin": "931a3fcd4be1093d9b7285405c897f711138b81949e9e8084ca225a25849e494",
+  "report_job": "29856757",
+  "request": "request-20261030T164856Z-31fdc9a3",
+  "publication": {
+    "edition": "edition-0008",
+    "url": "http://127.0.0.1:8780/report.html",
+    "verified": true
+  }
+}

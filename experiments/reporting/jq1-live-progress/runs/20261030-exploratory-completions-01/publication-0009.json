@@ -1,0 +1,74 @@
+{
+  "status": "published_verified_saved_report",
+  "publication": {
+    "automatic_optimizer_submission": false,
+    "edition": "edition-0009",
+    "engine_pin": "5f614e79eccbdf4fe118826a99b176856b11ee6a0c99c87025d57ce6743887d8",
+    "manifest_sha256": "2bc6e198ceab4931026a76a01bf9172e634808167579abfcc163143de1dcd097",
+    "published_utc": "2026-10-30T20:17:43.523825+00:00",
+    "report_url": "editions/edition-0009/report.html",
+    "version": "jq1-live-publication-v1"
+  },
+  "HTTP": {
+    "files": 85,
+    "status": "passed_all_new_edition_HTTP_bytes",
+    "url": "http://127.0.0.1:8780/report.html"
+  },
+  "report_job": "29857654",
+  "CPU_job": "29857649",
+  "CPU_cases": 225,
+  "assessment": {
+    "all_original_input_and_snapshot_hashes_rechecked": true,
+    "all_scalar_records_retained": true,
+    "cached_arms": [
+      "protenix50k",
+      "protenix",
+      "boltz",
+      "dbmol",
+      "protenix_noisy",
+      "protenix_chemistry",
+      "boltz_chemistry",
+      "protenix_defog"
+    ],
+    "edition": "edition-0009",
+    "newly_validated_arms": [
+      "boltz30k"
+    ],
+    "no_interpolation": true,
+    "original_results_changed": false,
+    "scientific_success_claim": false,
+    "status": "passed_saved_only_render"
+  },
+  "result_path": "results/hpc/20261028-reusable-report-01/requests/request-20261030T201139Z-a6e15165/result.json",
+  "result_sha256": "1054ed1cbe5a159b684d22e9ee5c6fac1c2d65b7beca35f0f7bcc42161c3db11",
+  "delivery_evidence_sha256": "b6b451ae4ffbc18c7d0143d01a1cf6783424cb3cdb15a8159a2afdb59d868829",
+  "delta_bytes": 13336668,
+  "delta_sha256": "f7149b81a02f20ce3ca5e02b23173f5e68ab05ee822db30435b7e7d4e3fe9989",
+  "browser_QA": {
+    "status": "passed_actual_browser",
+    "tab_id": "3",
+    "edition": "edition-0009",
+    "selectors": 9,
+    "numeric_interior": 25000,
+    "next": 25020,
+    "previous": 25000,
+    "slider_home_right": 20020,
+    "playback_observed": 20280,
+    "manual_pause_and_stable": 25040,
+    "latest": 30000,
+    "matrices": "saved atom and bond probability heatmaps rendered",
+    "warnings": "unqualified exploratory scope; original failures, separate contact/affinity/binder metrics and raw readouts retained"
+  },
+  "preview_sha256": "60022525ec495ea246187a5a3cf1c875fe81cde0310ff1cd606cf9b4cd916acf",
+  "independent_verification": "results/hpc/20261030-exploratory-report-02/verification-0009.json",
+  "independent_verification_sha256": "1969338be062e93893e690e321e1c135faf9a85bc8731e5542c3598b730113e5",
+  "report_only_repairs": {
+    "cached_exploratory_wrapper_version_preserved": true,
+    "shared_exploratory_storage_existing_bytes_charged_once": true,
+    "failed_pre_submission_requests_preserved": [
+      "request-20261030T200610Z-2dd2a7d6",
+      "request-20261030T200823Z-eacf4710"
+    ],
+    "optimizer_runs_or_settings_changed": false
+  }
+}

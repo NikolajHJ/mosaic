@@ -1,0 +1,20 @@
+{
+  "status": "verified_completed_exploratory_updates",
+  "observed_utc": "2026-10-30T20:05:18.658073+00:00",
+  "job_id": "29855430",
+  "scheduler_state": "DONE",
+  "global_start": 20000,
+  "global_end": 30000,
+  "global_target": 30000,
+  "applied_updates": 10000,
+  "states": 10001,
+  "updates": 10000,
+  "contiguous": true,
+  "derivative_qualified": false,
+  "frozen_preserved": true,
+  "source_packet": "results\\hpc\\20261030-v100-default\\heartbeat-20261030T200513Z\\stdout.json",
+  "source_packet_sha256": "98e91b8d35a91308b3960ace398d3435219d802f6d41960c3463fb324a7873e1",
+  "completion_proof": "results/hpc/20261030-exploratory-report-02/completion-proof.json",
+  "completion_proof_sha256": "0509d196cfeb0b5f78d6692ed3de6661519d6ce71114f1e238f42cfdd88e2300",
+  "settings_or_saved_results_changed": false
+}
