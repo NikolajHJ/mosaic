@@ -12,7 +12,7 @@
   "plan_sha256": "c24841058d8a8edabc37aadffd4f08e532669ee17e14efd4febe43aa007a1c0b",
   "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/boundary-diagnostics-01",
   "source": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/boundary-diagnostics-release-01/source",
-  "status": "CPU8_saved_analysis_and_controller_passed_Pro_GPU_diagnostic_submitted_pending",
+  "status": "GPU_diagnostic_completed_12_exact_replays_original_failures_preserved",
   "tag": "20261030-continuation-failure-diagnostics-01",
   "cpu_verification": {
     "status": "passed_independent_CPU8_byte_XML_LSF_saved_analysis_audit",
@@ -61,5 +61,34 @@
     },
     "assessment_sha256": "2e37e56822820f793497d4d55263eba621c816c2f83d6f41a894f947a0c8e0a2",
     "local_numerical_work": false
+  },
+  "latest_observed_utc": "2026-10-30T00:04:06.927916+00:00",
+  "terminal_verification": {
+    "status": "passed_independent_terminal_source_byte_LSF_metadata_and_remote_raw_hash_audit",
+    "observed_utc": "2026-10-30T00:04:06.927916+00:00",
+    "files_verified": 366,
+    "diagnostic_job": "29851459",
+    "diagnostic_measurements": 12,
+    "measurements_exact": true,
+    "raw_point_files_verified": 18,
+    "can_admit_new_child": false,
+    "local_array_work": false,
+    "chemistry_validation_jobs_failed": [
+      "29851426",
+      "29851428"
+    ],
+    "optimizer_submitted": false,
+    "source_pins": {
+      "chemistry-continuation-release-05": {
+        "sha256": "2b0356e63e74de8c1e112c47b8aedfdad9eaea70b66bf6a790abee29488718d4",
+        "files": 10,
+        "verified": true
+      },
+      "boundary-diagnostics-release-01": {
+        "sha256": "c8eab7543024793ed1992417f5859e9f72e561d72fb7a86a9416bdcb9d14c537",
+        "files": 6,
+        "verified": true
+      }
+    }
   }
 }

@@ -66,3 +66,6 @@ Shared tools: [releases](../scripts/releases/README.md), [evidence](../scripts/e
 
 
 30October [chemistry05](validation/endpoint-qualification/runs/20261030-chemistry-continuation-05/README.md) fixes04plan-hash/resource startup issues, CPU1005passed, freshProGPUcheckRUN/BolchemPEND. Main26Prochild andDBtotal gates failed before new updates, preserved; [read-only failure diagnostics01](validation/endpoint-qualification/runs/20261030-continuation-failure-diagnostics-01/README.md) CPU8/savedanalysis passed and separateProGPU29851459queued, no admission/optimizer branch.
+
+
+30October2026 actual-producer endpoint follow-up: [diagnostics02](validation/endpoint-qualification/runs/20261030-continuation-failure-diagnostics-02/README.md) captures the full original Pro startup/reference path after the simple replay test did not reproduce current failures. No optimizer branch or saved-result changes.

@@ -13,13 +13,13 @@ import tarfile
 
 OWNER=Path(__file__).resolve().parents[1]
 REPO=OWNER.parents[2]
-TAG='20261030-continuation-failure-diagnostics-01'
+TAG='20261030-continuation-failure-diagnostics-02'
 LOCAL=REPO/'results/hpc'/TAG
 RUN=OWNER/'runs'/TAG
 BASE='/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01'
 SCOPE=BASE+'/nonchem-precision-continuation-26'
-ROOT=SCOPE+'/boundary-diagnostics-01'
-SOURCE=SCOPE+'/boundary-diagnostics-release-01/source'
+ROOT=SCOPE+'/boundary-diagnostics-02'
+SOURCE=SCOPE+'/boundary-diagnostics-release-02/source'
 
 
 def raw(v):return (json.dumps(v,indent=2,sort_keys=True,allow_nan=False)+'\n').encode()
@@ -28,34 +28,39 @@ def sha(b):return hashlib.sha256(b).hexdigest()
 
 def prepare():
     out=LOCAL/'source01';assert not out.exists(),'Existing immutable local package'
-    captured=json.loads((REPO/'results/hpc/20261030-mosaic-heartbeat/failure-details01/stdout.json').read_bytes())['files']
+    observations=REPO/'results/hpc/20261030-mosaic-heartbeat/20261030T000404Z'
+    verification=json.loads((observations/'terminal-verification.json').read_bytes())
+    assert verification['status']=='passed_independent_terminal_source_byte_LSF_metadata_and_remote_raw_hash_audit'
+    captured=json.loads((observations/'stdout.json').read_bytes())['files']
     def proof(suffix):
         rows=[r for n,r in captured.items() if n.endswith(suffix)];assert len(rows)==1
         r=rows[0];b=base64.b64decode(r['base64'],validate=True);assert len(b)==r['bytes'] and sha(b)==r['sha256']
         return {k:r[k] for k in ('path','bytes','sha256')}
-    capacity={'path':BASE+'/nonchem-precision-release-26/source','manifest_sha256':'8324c1d312adeaa4c67c475c01ef1217df6f3ad4044b997d1b73e168325412d3','files':50}
-    forensic={'path':BASE+'/protenix-endpoint-forensics-release-01/source','manifest_sha256':'d127d6abe87307a5d305edb6d04e3a32e3545c508e58b82ce45290e0f3fc03d8','files':13}
-    loader=(OWNER/'scripts/protenix_forensics_native.py').read_bytes().replace(b'\r\n',b'\n')
-    assert sha(loader)=='11523a3e8e3543fa763260398c8897a78e8889e4ac615ca7e88dfdd8d487e387'
-    native={'path':forensic['path']+'/scripts/protenix_forensics_native.py','bytes':len(loader),'sha256':sha(loader)}
-    context={'path':BASE+'/restart-lrreset-04/validate-protenix/payload/study/assessment.json','bytes':21266,'sha256':'9674aacd7c8601f755fcad31df6efb9877dc39cd5114d9b1fe3ee867c1dc55dd'}
-    old=json.loads((REPO/'results/hpc/20261029-precision-continuation-26/source01/plan.json').read_bytes())
-    arm=next(r for r in old['arms'] if r['id']=='protenix')
-    db=proof('/dbmol_total_loss/admission.json');pro=proof('/protenix-segment-20000/payload/assessment.json')
-    plan={'version':'read-only-continuation-failure-diagnostics-v1','root':ROOT,'source_root':SOURCE,
-          'capacity_source':capacity,'native_loader':native,'context_ready':context,'dbmol_failure':db,
-          'inputs':[db,pro,native,context,arm['parent_snapshot'],arm['config'],arm['inputs']['pocket']],
-          'optimizer_updates':0,'can_admit_new_child':False,'can_certify_or_restart_original_study':False,
-          'production_environment':{'XLA_FLAGS':'--xla_gpu_autotune_level=0'},'max_bytes':128*1024**2}
-    parents=[capacity,forensic,arm['source']]
-    members={}
-    for name in ('scripts/continuation_failure_diagnostics.py','scripts/failure_diagnostic_ops.py','scripts/failure_diagnostic_stage.lsf','tests/test_continuation_failure_diagnostics.py'):
-        members[name]=(OWNER/name).read_bytes().replace(b'\r\n',b'\n')
+    previous=REPO/'results/hpc/20261030-continuation-failure-diagnostics-01/source01'
+    plan=json.loads((previous/'plan.json').read_bytes())
+    chemistry={'path':SCOPE+'/chemistry-continuation-release-05/source',
+               'manifest_sha256':'2b0356e63e74de8c1e112c47b8aedfdad9eaea70b66bf6a790abee29488718d4','files':10}
+    logit=proof('/chemistry-continuation-05/boltz-validate/payload/study/low_coupled_checks/report.json')
+    diagnostics=proof('/boundary-diagnostics-01/gpu/payload/replay/assessment.json')
+    plan.update(version='read-only-actual-producer-boundary-diagnostics-v2',root=ROOT,source_root=SOURCE,
+                chemistry_source=chemistry,boltz_logit_failure=logit,previous_simple_diagnostic=diagnostics)
+    plan['inputs'] += [logit,diagnostics]
+    for arm,jid in [('protenix','29851426'),('boltz','29851428')]:
+        plan['inputs'] += [proof('/chemistry-continuation-05/'+arm+'-validate/stdout.'+jid+'.log'),
+                           proof('/chemistry-continuation-05/'+arm+'-validate/payload/driver.log')]
+    capacity=plan['capacity_source']
+    old_manifest=json.loads((previous/'source_manifest.json').read_bytes())
+    parents=old_manifest['parent_sources']+[chemistry]
+    names={'scripts/continuation_failure_diagnostics.py':'scripts/production_boundary_diagnostics.py',
+           'scripts/failure_diagnostic_ops.py':'scripts/failure_diagnostic_ops.py',
+           'scripts/failure_diagnostic_stage.lsf':'scripts/failure_diagnostic_stage.lsf',
+           'tests/test_continuation_failure_diagnostics.py':'tests/test_production_boundary_diagnostics.py'}
+    members={n:(OWNER/local).read_bytes().replace(b'\r\n',b'\n') for n,local in names.items()}
     members['plan.json']=raw(plan);members['README.md']=(RUN/'README.md').read_bytes().replace(b'\r\n',b'\n')
     for n,b in members.items():
         if n.endswith('.py'):ast.parse(b,filename=n)
     manifest={'version':plan['version'],'files':{n:sha(b) for n,b in members.items()},'parent_sources':parents,
-              'capacity_source':capacity,'cpu_cases':8,'optimizer_updates':0,'can_admit_new_child':False}
+              'capacity_source':capacity,'cpu_cases':10,'optimizer_updates':0,'can_admit_new_child':False}
     members['source_manifest.json']=raw(manifest);out.mkdir(parents=True)
     buf=io.BytesIO()
     with tarfile.open(fileobj=buf,mode='w:gz') as t:
@@ -74,7 +79,7 @@ from pathlib import Path,PurePosixPath
 import base64,hashlib,io,json,subprocess,sys,tarfile
 request=json.loads(sys.stdin.buffer.read());p=request['preparation'];root=Path(p['root']);source=Path(p['source'])
 scope=Path('/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26')
-assert root==scope/'boundary-diagnostics-01' and source==scope/'boundary-diagnostics-release-01/source'
+assert root==scope/'boundary-diagnostics-02' and source==scope/'boundary-diagnostics-release-02/source'
 assert not root.exists() and not source.parent.exists(),'Existing or unknown diagnostic stage; never replay'
 data=base64.b64decode(request['archive'],validate=True);assert len(data)==p['archive_bytes'] and hashlib.sha256(data).hexdigest()==p['archive_sha256']
 members={}

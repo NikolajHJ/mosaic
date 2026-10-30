@@ -41,3 +41,12 @@ Preparation is not a CPU/native pass or optimizer submission.
 
 
 ActualCPU29851423/controller29851424 DONE/hpc/LSFsuccess; independent37-file byte/XML/source/resource/startup audit passed1005actualcases/23modules/zero failures/errors/skips. CertificateSHA9857dc838f9c7d1c9c2095f3e6d72b1569aa5a19f353e3647940c163c3361126. Source10 manifest2b0356e63e74de8c1e112c47b8aedfdad9eaea70b66bf6a790abee29488718d4/archive223231SHA0dba60ca84e240491166f02a1114bdd2f59485296c2614c6f10ad9e33d6f6a49/plan846b8a45680a6f38229306e6c9f0b4e7051fbce571b7712a88a7304029c52b17. Actual newPro29851426/callback29851427 andBolchem29851428/callback29851429 submitted. At23:17:59UTC ProGPUcheckRUN, BolPEND; no native/combined pass or optimizer IDs. Later measured full production-storage gate still required. All47local portable metadata cases passed; original numerical hooks and CUDA helpers remain byte-identical to04, driver adds only authenticated-plan propagation.
+
+
+Actual30October00:04:06UTC: both combined validators29851426/29851428 and
+own callbacks EXIT1. Startup fixes worked; new numerical guards now block. Pro
+failed exact live replay AFTER its full reference cohort; Bol raw native passed
+but low-weight frozen-target logit bond pair was unresolved/agreement, not two
+passes. Atom pair passed. No optimizer/committed continuation update exists.
+All original sources/settings/results/failures remain. See terminal-failure
+receipt; new read-only actual-producer diagnostics02 capture the missing evidence.

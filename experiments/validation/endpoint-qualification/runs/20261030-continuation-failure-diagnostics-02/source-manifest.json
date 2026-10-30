@@ -1,0 +1,41 @@
+{
+  "can_admit_new_child": false,
+  "capacity_source": {
+    "files": 50,
+    "manifest_sha256": "8324c1d312adeaa4c67c475c01ef1217df6f3ad4044b997d1b73e168325412d3",
+    "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-release-26/source"
+  },
+  "cpu_cases": 10,
+  "files": {
+    "README.md": "d76259e5c08d56eb0d05892dcee9f26851a565bd803264722bc55d8cbb096616",
+    "plan.json": "b06905f635d1def1ec82aa669a1c4cc09763def7655d53fe02999b2293118ca6",
+    "scripts/continuation_failure_diagnostics.py": "d34aa2414dd3a04b52b459eb60377cecfd6023a15e95b2d39f4698cc6a7aa1a8",
+    "scripts/failure_diagnostic_ops.py": "8754ff51c9c1d85921c3e2c45ea1c3d28536178c5f1f7a5682f5554aa76d7fd9",
+    "scripts/failure_diagnostic_stage.lsf": "2d5b9c659bf660ab38cbd6bdf9d6973af6b35e89c0be1110830f433ba0327900",
+    "tests/test_continuation_failure_diagnostics.py": "2fd913e67f222abf2f657418ff27db6970b7fd12b78d011256e483933e915c00"
+  },
+  "optimizer_updates": 0,
+  "parent_sources": [
+    {
+      "files": 50,
+      "manifest_sha256": "8324c1d312adeaa4c67c475c01ef1217df6f3ad4044b997d1b73e168325412d3",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-release-26/source"
+    },
+    {
+      "files": 13,
+      "manifest_sha256": "d127d6abe87307a5d305edb6d04e3a32e3545c508e58b82ce45290e0f3fc03d8",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-forensics-release-01/source"
+    },
+    {
+      "files": 643,
+      "manifest_sha256": "da9db6821d26b884ca1749303fc8e0b0095bd9ee7cbd1b427cdcf1b22eec6562",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source"
+    },
+    {
+      "files": 10,
+      "manifest_sha256": "2b0356e63e74de8c1e112c47b8aedfdad9eaea70b66bf6a790abee29488718d4",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/chemistry-continuation-release-05/source"
+    }
+  ],
+  "version": "read-only-actual-producer-boundary-diagnostics-v2"
+}

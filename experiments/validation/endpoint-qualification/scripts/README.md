@@ -231,3 +231,13 @@ Latest22:36UTC: integration04 CPU29851326/controller29851327 DONE; all997 alloca
 Current chemistry operators target immutable05, already staged: `inspect_complete_chemistry.py` defaults to20261030-chemistry-continuation-05; never replay staging. CPU1005 passed; actualcombinedGPUchecks29851426/29851428 submitted. `_driver.authenticated_plan` binds the verified owning hash; `_contract.gpu_request` preserves ProMPS versus original Bolshared/j_exclusive/noMPS resources, with actual original parser regression coverage.
 
 `manage_failure_diagnostics.py` prepares/stages one read-only separate capsule; its CPU8/controller are already submitted, so inspect campaign first. `failure_diagnostic_ops.py` has ONLYcpu/after-cpu/gpu phases and no optimizer branch. `continuation_failure_diagnostics.py` analyzes saved DBMol component traces on allocatedCPU, then uses the unchanged qualified Pro native loader and separate FP64 session for bounded before/during/after replay. It never changes admission thresholds or old results.
+
+
+Current30October: manage_failure_diagnostics.py now owns immutable02 and is
+ALREADY staged (CPU29851548/controller29851549). Never replay prepare/stage.
+production_boundary_diagnostics.py captures the actual main26/chemistry05 Pro
+entry paths, leaves exact guards unchanged, stops before pilots and blocks
+optimizer calls. It is packaged as continuation_failure_diagnostics.py in02;
+canonical original same-named file remains the preserved simple01 implementation.
+Neither diagnostic admits continuation. Original chemistry05 tests now failed
+numerical guards, so its old queued status above is historical.

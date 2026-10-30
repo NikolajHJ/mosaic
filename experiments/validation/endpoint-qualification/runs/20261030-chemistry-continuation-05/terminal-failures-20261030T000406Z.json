@@ -1,0 +1,62 @@
+{
+  "observed_utc": "2026-10-30T00:04:06.927916+00:00",
+  "verification": {
+    "status": "passed_independent_terminal_source_byte_LSF_metadata_and_remote_raw_hash_audit",
+    "observed_utc": "2026-10-30T00:04:06.927916+00:00",
+    "files_verified": 366,
+    "diagnostic_job": "29851459",
+    "diagnostic_measurements": 12,
+    "measurements_exact": true,
+    "raw_point_files_verified": 18,
+    "can_admit_new_child": false,
+    "local_array_work": false,
+    "chemistry_validation_jobs_failed": [
+      "29851426",
+      "29851428"
+    ],
+    "optimizer_submitted": false,
+    "source_pins": {
+      "chemistry-continuation-release-05": {
+        "sha256": "2b0356e63e74de8c1e112c47b8aedfdad9eaea70b66bf6a790abee29488718d4",
+        "files": 10,
+        "verified": true
+      },
+      "boundary-diagnostics-release-01": {
+        "sha256": "c8eab7543024793ed1992417f5859e9f72e561d72fb7a86a9416bdcb9d14c537",
+        "files": 6,
+        "verified": true
+      }
+    }
+  },
+  "protenix": {
+    "job_id": "29851426",
+    "callback": "29851427",
+    "status": "EXIT1",
+    "cause": "Exact production scalar/gradient/frozen/input replay changed after reference exit",
+    "stage": "native_gradient_checks",
+    "optimizer_updates": 0
+  },
+  "boltz": {
+    "job_id": "29851428",
+    "callback": "29851429",
+    "status": "EXIT1",
+    "cause": "Prospective fixed-reference pilot logit check failed",
+    "cohort": "low",
+    "coefficient": 0.001,
+    "raw_native_admission": "passed",
+    "atom_logit_pair": "passed",
+    "bond_row": 132,
+    "bond_logit_pair": [
+      0.0003,
+      0.0001
+    ],
+    "bond_logit_outcomes": [
+      "unresolved_precision",
+      "agreement"
+    ],
+    "optimizer_updates": 0
+  },
+  "new_optimizer_jobs": [],
+  "original_failures_preserved": true,
+  "thresholds_changed": false
+}

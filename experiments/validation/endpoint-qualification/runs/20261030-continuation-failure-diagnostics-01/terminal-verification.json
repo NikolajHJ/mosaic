@@ -1,0 +1,28 @@
+{
+  "status": "passed_independent_terminal_source_byte_LSF_metadata_and_remote_raw_hash_audit",
+  "observed_utc": "2026-10-30T00:04:06.927916+00:00",
+  "files_verified": 366,
+  "diagnostic_job": "29851459",
+  "diagnostic_measurements": 12,
+  "measurements_exact": true,
+  "raw_point_files_verified": 18,
+  "can_admit_new_child": false,
+  "local_array_work": false,
+  "chemistry_validation_jobs_failed": [
+    "29851426",
+    "29851428"
+  ],
+  "optimizer_submitted": false,
+  "source_pins": {
+    "chemistry-continuation-release-05": {
+      "sha256": "2b0356e63e74de8c1e112c47b8aedfdad9eaea70b66bf6a790abee29488718d4",
+      "files": 10,
+      "verified": true
+    },
+    "boundary-diagnostics-release-01": {
+      "sha256": "c8eab7543024793ed1992417f5859e9f72e561d72fb7a86a9416bdcb9d14c537",
+      "files": 6,
+      "verified": true
+    }
+  }
+}

@@ -117,3 +117,11 @@ Latest22:36UTC: integration04 CPU29851326/controller29851327 DONE; all997 alloca
 
 
 Chemistry05 adds8 portable regression cases (47total): verified-plan hash propagation/changed-plan rejection and the original qualified Boltz scheduler parser accepting shared/j_exclusive/noMPS and rejecting ProMPS. Local47 and full1005allocatedCPU cases passed. `test_continuation_failure_diagnostics.py` has8controls:2portable metadata passed locally; all8including6numerical controls subsequently passed allocatedHPC CPU29851450 with no errors/failures/skips. No local model/array/numerical execution. Neither fixture result grants scientific admission.
+
+
+test_production_boundary_diagnostics.py adds10 controls for read-only actual
+entry diagnostics02:8portable metadata locally passed and2capture numerical
+controls restricted to allocatedHPC. Its archive alias is
+tests/test_continuation_failure_diagnostics.py. The full10-caseCPU gate remains
+mandatory before its separate GPU observation; this never grants optimization
+admission or reinterprets an original failed gradient/replay gate.

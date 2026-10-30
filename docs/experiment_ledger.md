@@ -9851,3 +9851,57 @@ Both chemistry04 GPUvalidators/callbacks also actualEXIT1 before optimization: P
 Separate read-only failure-diagnostics01 has NO optimizer/continuation/admission branch. Source6 manifestc8eab7543024793ed1992417f5859e9f72e561d72fb7a86a9416bdcb9d14c537, archive9933B/SHA700a82ea35a554892d24f53d2f0c6f7ac7e1181ef5c5b848303b6380301f7e06, planc24841058d8a8edabc37aadffd4f08e532669ee17e14efd4febe43aa007a1c0b. CPU29851450/controller29851451 actualDONE/LSF8controls/no errors/failures/skips; allocated analysis retained all48saved DBMol secants and original failure reasons. Independent source/bytes/XML/LSF/actualcommand/whole-storage audit passed. Separate native Protenix GPUdiagnostic29851459 ACTUALLYsubmitted/PEND. It reuses byteexact original native loader11523a3e8e3543fa763260398c8897a78e8889e4ac615ca7e88dfdd8d487e387 at original20k/key17/context, saves3measurements each before/duringloadedFP64/after2referencecalls/afterexit, and reports exact differences without changing the exact guard or certifying originals. Fixed128MiB existing-control allowance/2hGPU/90mininternal, no optimizer/diffusion/repair/resampling. Dispatch39,725,039,263required/40,481,378,376available bytes retains4GiB/100000files; no cleanup or reserve reduction. Local2metadata controls passed; remaining6numerical controls ran only on allocatedCPU, never laptop.
 
 Other-project account context was readonly: embeddingfirstjob29846090 nowDONE/nextcase29851407PEND; no scientificcompletion claim from scheduler alone, no mutations. VAE29849760PEND; independentDeFoGdiagnostic29846730PSUSP left unchanged. Report not regenerated: no new committed optimization prefix; existing engine/viewer/savedresults remain. Raw evidence under results/hpc/20261030-mosaic-heartbeat and both newtag artifacts; exact terminal/source/CPU/submission/dispatch records in endpoint-qualification run folders. No saved result/scientific setting edit, no sealed-source patch, no new cleanup, no other-project mutation.
+
+
+## 2026-10-30T00:04:06Z — Actual chemistry numerical blockers; simple replay diagnostic completed
+
+Installed-helper account/receipt collection authenticates both chemistry05
+validators29851426/29851428 and callbacks EXIT1 before optimization. Owning-plan
+SHA and arm GPU allocation repairs worked. Pro failed exact production replay
+after the independent FP64 cohort. Bol raw native admission passed, atom logit
+pair passed, but low-coefficient0.001 bond row132 selected0.0003/0.0001 yielded
+unresolved_precision/agreement, so the unchanged pair gate correctly rejected.
+No optimizer/new committed data, no scientific tolerance/interval/settings change.
+
+Separate diagnostic29851459 actuallyDONE/gpul40s/same-jobLSFsuccess, all12 native
+measurements exactly equal before/during/two-reference-calls/after. Original
+frozen/source/input preservation passed. Independent366compact-file byte/schema/
+LSF audit plus18 original raw-point/reference hashes rechecked remotely, with
+no local arrays/inference. This simpler test does not reproduce or overrule
+actual production failures. PlainPro20k, DB7500, plainBol20k and chemistry10k/10k
+remain their last saved prefixes; no nonchem optimizer is queued. Other-project
+VAE/embedding are queued, DeFoG diagnostic PSUSP left unchanged.
+
+Prepared separate immutable actual-producer diagnostics02: actual main26 Pro20k
+and chemistry05 Pro10k entry/wholeFP64 paths, original exact comparisons, raw
+measurement capture without added model calls. Fail-closed post-native sentinel
+and independent blocked optimizer calls prevent all updates/pilots. CPU analysis
+only copies original failed Bol logit observations. All8 portable metadata
+controls passed locally;2 numerical controls require allocatedCPU (10 total).
+Full shared storage and128MiB funded control cap remain; no cleanup. Stage/CPU/
+GPU actual outcomes belong to its campaign/receipts and must be verified.
+No new report is needed without new saved optimizer prefixes.
+
+
+Actual30October00:12:32UTC: newdiagnostics02 CPU29851548 RUN and own-ended
+controller29851549 PEND. Six-file immutable source manifest
+6c2f080b5355d2526d690a48e80aad4c65fc6af7bb60f39c2e7b0dc6b12f8879,
+planb06905f635d1def1ec82aa669a1c4cc09763def7655d53fe02999b2293118ca6,
+archive12216B/SHAf61dc2c8d7b5e91a7e3cbd282c78fccce2ae25f01d6ec8475e5b506be9b0bd3c.
+Initial full capacity passed39,679,043,231required/40,435,382,344available
+bytes with4GiB/100000files. All8 portable metadata controls passed locally,
+not a fullCPU/native pass. The unchanged global layout check still fails on
+pre-existing discovery catalog/historical missingREADME drift; owned newrun has
+README and capsule/AST/every-file hash audits passed. No new optimizer job or
+saved update; never duplicate stage/controller/unknown GPU submissions.
+
+
+Verified00:15:23UTC30October: CPU29851548/controller29851549 ACTUALDONE/hpc/
+same-jobLSFsuccess,10actual rawcases/zero failures/errors/skips. Independent
+63compactfile/source/XML/LSF/actualsource-command-resource-dependency audits
+passed. GPUdiagnostic29851586 ACTUALRUN/gpul40s, not a finding or optimizer.
+Full dispatch gate39,675,834,527required/40,432,173,640available bytes retains
+4GiB/100000files. No cleanup, settings change or new saved optimizer prefix.
+Read dispatch-verification/campaign before recovery; never duplicate thesejobs.
+The hourly handoff was updated through the automation tool, preserving cadence
+and quiet-on-unchanged intent. All numerical controls ran allocatedHPC only.

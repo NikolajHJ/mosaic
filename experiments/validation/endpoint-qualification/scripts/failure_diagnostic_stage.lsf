@@ -28,7 +28,7 @@ export JAX_ENABLE_X64=0 XLA_PYTHON_CLIENT_PREALLOCATE=false
 export HF_HUB_OFFLINE=1 HF_HUB_DISABLE_TELEMETRY=1
 export JAX_PLATFORMS=cpu
 if [[ "$phase" == gpu ]]; then
-  [[ "$LSB_QUEUE" == gpul40s && "$LSB_DJOB_NUMPROC" == 4 ]]
+  [[ "$LSB_QUEUE" == gpul40s && "$LSB_DJOB_NUMPROC" == 8 ]]
   module load cuda/12.9.1 cudnn/v9.13.0.50-prod-cuda-12.X
   export JAX_PLATFORMS=cuda,cpu XLA_FLAGS=--xla_gpu_autotune_level=0
 else

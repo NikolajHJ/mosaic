@@ -149,3 +149,14 @@ Latest verified22:40:12UTC: Pro29851302/callback29851303 ACTUALDONE and full nat
 
 
 Current30October: [chemistry05](20261030-chemistry-continuation-05/README.md) CPU1005 passed and freshGPUPro29851426RUN/Bolchem29851428PEND; original numerical settings/checks unchanged. Main26 Pro child29851346 failed entry replay before updates; DBMol29851304 failed total-loss guards. [Read-only diagnostic01](20261030-continuation-failure-diagnostics-01/README.md) CPU8/saved-probe analysis passed, GPU handoff conditional; no optimizer branch. Preserve all old actual failures and saved results.
+
+
+Current30October00:12UTC: chemistry05 validators bothEXIT at numerical guards;
+simple diagnostic01 DONE/exact12 replays cannot admit continuation. New
+[actual-producer diagnostic02](20261030-continuation-failure-diagnostics-02/README.md)
+CPU29851548 RUN/controller29851549 PEND, no new optimizer. Read actual receipts.
+
+
+Latest00:15UTC: diagnostics02 CPU10/controller passed; actualGPU29851586 RUN,
+no diagnostic finding or optimizer admission yet. Original chemistry05/main26
+failures stay failed. See its dispatch-verification.json.

@@ -16,8 +16,8 @@ BASE=Path('/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01')
 CAPACITY=BASE/'nonchem-precision-release-26/source'
 CAPACITY_PIN='8324c1d312adeaa4c67c475c01ef1217df6f3ad4044b997d1b73e168325412d3'
 SCOPE=BASE/'nonchem-precision-continuation-26'
-ROOT=SCOPE/'boundary-diagnostics-01'
-SOURCE=SCOPE/'boundary-diagnostics-release-01/source'
+ROOT=SCOPE/'boundary-diagnostics-02'
+SOURCE=SCOPE/'boundary-diagnostics-release-02/source'
 PYTHON='/work3/s234818/mosaic/envs/protenix-tiny/bin/python'
 
 
@@ -47,11 +47,11 @@ def context(pin):
     return op,plan
 def argv(phase,pin,dependency=None):
     require(phase in ('cpu','after-cpu','gpu'),'Unknown diagnostic phase')
-    gpu=phase=='gpu';slots=1 if phase=='after-cpu' else 4;p=ROOT/phase
+    gpu=phase=='gpu';slots=8 if gpu else 1 if phase=='after-cpu' else 4;p=ROOT/phase
     a=['bsub','-env','all,~CUDA_VISIBLE_DEVICES,~CUDA_MPS_PIPE_DIRECTORY,~CUDA_MPS_LOG_DIRECTORY,~CUDA_MPS_ACTIVE_THREAD_PERCENTAGE',
        '-q','gpul40s' if gpu else 'hpc','-n',str(slots),'-R','span[hosts=1]','-R',
-       'rusage[mem='+('8GB' if gpu else '2GB' if slots==1 else '4GB')+']','-W','02:00' if gpu else '00:20' if slots==1 else '01:00',
-       '-J','mosaic-boundary-diagnostics01-'+phase,'-o',str(p/'stdout.%J.log'),'-e',str(p/'stderr.%J.log')]
+       'rusage[mem='+('2GB' if slots==1 else '4GB')+']','-W','02:00' if gpu else '00:20' if slots==1 else '01:00',
+       '-J','mosaic-boundary-diagnostics02-'+phase,'-o',str(p/'stdout.%J.log'),'-e',str(p/'stderr.%J.log')]
     if gpu:a+=['-gpu','num=1:mode=exclusive_process:mps=yes']
     if dependency:a+=['-w',dependency]
     return a+['bash','-l',str(SOURCE/'scripts/failure_diagnostic_stage.lsf'),str(SOURCE),pin,phase,'--capacity-source',str(CAPACITY)]
@@ -79,22 +79,22 @@ def execute(phase,pin):
         if (parent/'submission.json').exists():break
         time.sleep(1)
     own=read(parent/'submission.json');require(own['job_id']==os.environ.get('LSB_JOBID') and own['argv']==argv(phase,pin,own['dependency']),'Exact own allocation/source differs')
-    require(os.environ.get('LSB_QUEUE')==('gpul40s' if phase=='gpu' else 'hpc') and os.environ.get('LSB_DJOB_NUMPROC')==('1' if phase=='after-cpu' else '4'),'Actual diagnostic queue/slots differ')
+    require(os.environ.get('LSB_QUEUE')==('gpul40s' if phase=='gpu' else 'hpc') and os.environ.get('LSB_DJOB_NUMPROC')==('8' if phase=='gpu' else '1' if phase=='after-cpu' else '4'),'Actual diagnostic queue/slots differ')
     storage(op,parent,'entry');payload=parent/'payload';payload.mkdir()
     if phase=='after-cpu':
         sub=read(ROOT/'cpu/submission.json');text=' '.join((ROOT/'cpu'/('stdout.'+sub['job_id']+'.log')).read_text().split())
         require(text.count('Subject: Job '+sub['job_id']+':')==1 and 'queue <hpc>' in text and 'Successfully completed.' in text and 'Exited with exit code' not in text,'Actual same CPU LSF success required')
         rows=list(ET.parse(ROOT/'cpu/payload/tests.xml').getroot().iter('testcase'))
-        require(len(rows)==8 and all(not list(r) for r in rows),'All8 allocated fixtures must pass')
+        require(len(rows)==10 and all(not list(r) for r in rows),'All10 allocated fixtures must pass')
         require(read(ROOT/'cpu/payload/analysis/assessment.json')['status']=='diagnostics_completed_original_failures_preserved','Saved-probe CPU analysis incomplete')
         storage(op,parent,'dispatch');gpu=submit('gpu',pin)
-        write(payload/'assessment.json',{'status':'CPU8_and_saved_analysis_passed_GPU_diagnostic_submitted','gpu':gpu,'optimizer_jobs':[]});return
+        write(payload/'assessment.json',{'status':'CPU10_and_saved_analysis_passed_GPU_diagnostic_submitted','gpu':gpu,'optimizer_jobs':[]});return
     if phase=='cpu':
         command=[PYTHON,'-m','pytest',str(SOURCE/'tests'),'-q','--rootdir',str(SOURCE),'--import-mode=importlib','-o','addopts=','-p','no:cacheprovider',
                  '--basetemp',str(Path(os.environ['TMPDIR'])/'boundary-diagnostics'),'--junitxml='+str(payload/'tests.xml')]
         with (payload/'tests.log').open('x') as f:subprocess.run(command,check=True,stdout=f,stderr=subprocess.STDOUT,timeout=600)
     else:
-        routing=module(CAPACITY/'scripts/cuda_ownership.py','_same_qualified_cuda_routing')
+        routing=module(Path(plan['chemistry_source']['path'])/'scripts/chemistry_cuda_ownership.py','_same_qualified_eight_slot_cuda_routing')
         routing.run_probe(parent/'cuda-ownership',submission=parent/'submission.json',expected_job_id=own['job_id'],
             input_bindings={'source_manifest':op.binding(SOURCE/'source_manifest.json'),'plan':op.binding(SOURCE/'plan.json'),'context_identity':plan['context_ready']},deadline=time.monotonic()+600)
     mode='gpu' if phase=='gpu' else 'cpu';target=payload/('replay' if phase=='gpu' else 'analysis')

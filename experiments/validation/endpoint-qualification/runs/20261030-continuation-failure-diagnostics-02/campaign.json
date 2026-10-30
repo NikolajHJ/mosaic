@@ -1,0 +1,70 @@
+{
+  "archive_bytes": 12216,
+  "archive_sha256": "f61dc2c8d7b5e91a7e3cbd282c78fccce2ae25f01d6ec8475e5b506be9b0bd3c",
+  "files": 6,
+  "jobs": {
+    "after-cpu": "29851549",
+    "gpu": "29851586",
+    "cpu": "29851548"
+  },
+  "manifest_sha256": "6c2f080b5355d2526d690a48e80aad4c65fc6af7bb60f39c2e7b0dc6b12f8879",
+  "optimizer_updates": 0,
+  "plan_sha256": "b06905f635d1def1ec82aa669a1c4cc09763def7655d53fe02999b2293118ca6",
+  "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/boundary-diagnostics-02",
+  "source": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/boundary-diagnostics-release-02/source",
+  "status": "CPU10_controller_passed_actual_producer_GPU_diagnostic_RUNNING_not_complete",
+  "tag": "20261030-continuation-failure-diagnostics-02",
+  "latest_observed_utc": "2026-10-30T00:15:23.377464+00:00",
+  "latest_scheduler": {
+    "29851549": "DONE",
+    "29851586": "RUN",
+    "29851548": "DONE"
+  },
+  "can_admit_new_child": false,
+  "cpu_verification": {
+    "status": "passed_independent_CPU10_actual_LSF_XML_source_and_saved_failure_metadata_audit",
+    "observed_utc": "2026-10-30T00:13:48.391849+00:00",
+    "CPU_job": "29851548",
+    "controller_job": "29851549",
+    "controller_state": "RUN",
+    "source_manifest_sha256": "6c2f080b5355d2526d690a48e80aad4c65fc6af7bb60f39c2e7b0dc6b12f8879",
+    "files_verified": 48,
+    "cases": 10,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "GPU_job_established": false,
+    "optimizer_jobs": [],
+    "local_array_calculation": false,
+    "can_admit_new_child": false,
+    "analysis": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/boundary-diagnostics-02/cpu/payload/analysis/assessment.json",
+      "bytes": 4135,
+      "sha256": "990cf59ee931ca2fcb6fd6bf35823121011aa53e4c16a521422bc508e3a6d2cb"
+    }
+  },
+  "dispatch_verification": {
+    "status": "passed_independent_CPU10_controller_LSF_source_submission_and_whole_storage_audit",
+    "observed_utc": "2026-10-30T00:15:23.377464+00:00",
+    "files_verified": 63,
+    "cases": 10,
+    "source_manifest_sha256": "6c2f080b5355d2526d690a48e80aad4c65fc6af7bb60f39c2e7b0dc6b12f8879",
+    "jobs": {
+      "after-cpu": "29851549",
+      "gpu": "29851586",
+      "cpu": "29851548"
+    },
+    "GPU_status": "RUN",
+    "GPU_diagnostic_complete": false,
+    "optimizer_jobs": [],
+    "can_admit_new_child": false,
+    "local_array_calculation": false,
+    "whole_dispatch_storage": {
+      "required_bytes": 39675834527,
+      "available_bytes": 40432173640,
+      "reserve_bytes": 4294967296,
+      "file_reserve": 100000
+    },
+    "all_three_exact_source_command_resource_and_dependency_vectors_verified": true
+  }
+}

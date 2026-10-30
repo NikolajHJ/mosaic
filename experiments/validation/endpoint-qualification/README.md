@@ -1,5 +1,12 @@
 # Prospective endpoint qualification diagnostics
 
+Latest30October00:04UTC: chemistry05 startup repaired but both native validations
+failed numerical guards; no new optimizer. Separate replay01 DONE with12 exact
+measurements did not reproduce actual whole-checker behavior. Read
+[runs/20261030-continuation-failure-diagnostics-02/README.md](runs/20261030-continuation-failure-diagnostics-02/README.md)
+for the bounded actual-producer follow-up. All saved results/settings/failures
+and scientific/runtime/full-storage gates remain unchanged.
+
 Latest29October11:46Paris: [shared repair25](runs/20261029-precision-continuation-25/README.md)
 passed complete shared storage and all944allocated CPU cases/actual startups.
 CPU29847807/controller29847808 actualDONE; independent47-file byte/XML/LSF/source/

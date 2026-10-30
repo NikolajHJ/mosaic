@@ -37,3 +37,13 @@ Actual initialCPU29851450/controller29851451 submitted after full storage39,729,
 
 
 Latest23:20:46UTC: CPU29851450/controller29851451 ACTUALDONE; independent byte/XML/LSF/source/resource/startup audit passed8fixtures and saved-analysis handoff. Actual separate ProGPUdiagnostic29851459 submitted/PEND. No optimizer branch or diagnostic finding yet. Full dispatch39,725,039,263required/40,481,378,376available bytes retains4GiB/100000files; no deletion or reserve reduction. Read dispatch-verification.json and actual GPU receipts before any next action.
+
+
+ActualGPU29851459 DONE/gpul40s/same-jobLSFsuccess00:35:32CET. All12
+measurements were exactly equal before/loaded/two-reference-calls/after-exit;
+frozen state/source/input preservation passed. Independent366compact-file
+byte/metadata/LSF audit and18 raw-point remote rehashes passed. Large originals
+were not downloaded. This simpler two-call diagnostic did NOT reproduce the
+actual whole-checker failure and cannot admit/restart a child. Original failures
+remain failed. Actual-producer follow-up02 executes the full entry path with
+additional capture and an unconditional stop before any optimization pilot.

@@ -38,8 +38,11 @@
   "saved_results_changed": false,
   "settings_changed": false,
   "source_root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/chemistry-continuation-release-05/source",
-  "status": "CPU1005_controller_passed_combined_validators_submitted_not_passed",
+  "status": "both_combined_validations_failed_before_optimization_actual_numerical_guards",
   "tag": "20261030-chemistry-continuation-05",
   "cpu_job": "29851423",
-  "callback_job": "29851424"
+  "callback_job": "29851424",
+  "latest_observed_utc": "2026-10-30T00:04:06.927916+00:00",
+  "optimizer_jobs": [],
+  "terminal_failure_receipt": "terminal-failures-20261030T000406Z.json"
 }
