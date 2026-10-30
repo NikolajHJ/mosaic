@@ -72,3 +72,11 @@ Shared tools: [releases](../scripts/releases/README.md), [evidence](../scripts/e
 
 
 30October2026 endpoint diagnostic startup repair: [diagnostics03](validation/endpoint-qualification/runs/20261030-continuation-failure-diagnostics-03/README.md) retains the original payload/study guard, qualifies BOTH actual CPU startup commands, then observes the full original entry paths without optimizer updates. CPU12 passed and GPU29851676 is running; no new scientific admission.
+
+
+Endpoint diagnostic06: immutable held-submission ordering repair after04 accepted
+GPU29851770 EXIT before models and05 preflight failure; no optimizer admission.
+[Run06](validation/endpoint-qualification/runs/20261030-continuation-failure-diagnostics-06/README.md).
+
+
+[Endpoint diagnostic07](validation/endpoint-qualification/runs/20261030-continuation-failure-diagnostics-07/README.md) adds bounded actual held-state settling after preserved06 unstarted retirement. No optimizer admission.

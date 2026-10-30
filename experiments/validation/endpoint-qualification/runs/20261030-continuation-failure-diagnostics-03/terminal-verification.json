@@ -1,0 +1,31 @@
+{
+  "status": "verified_reference_allocation_mismatch_before_FP64_model",
+  "observed_utc": "2026-10-30T01:59:17.555654+00:00",
+  "job_id": "29851676",
+  "files_verified": 95,
+  "source_pin": "c9ee1b491f6e292032662b4fe0a957a66ff71e121a6805fc40c5a0a134b1baec",
+  "actual_CPU_slots": 8,
+  "unchanged_plain_reference_requires_slots": 4,
+  "plain_production_measurements": 1,
+  "chemistry_child": "not_attempted",
+  "production_input_and_source_preservation": "passed",
+  "optimizer_updates": 0,
+  "can_admit_new_child": false,
+  "local_scientific_work": false,
+  "saved_prefixes": {
+    "protenix-segment-20000": {
+      "job_id": "29851346",
+      "study_exists": true,
+      "streams": {
+        "states": {
+          "committed_rows": 0,
+          "exists": false
+        },
+        "updates": {
+          "committed_rows": 0,
+          "exists": false
+        }
+      }
+    }
+  }
+}

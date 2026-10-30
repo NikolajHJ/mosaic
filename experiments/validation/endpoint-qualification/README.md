@@ -1,5 +1,12 @@
 # Prospective endpoint qualification diagnostics
 
+Latest30October01:59UTC: diagnostic03 failed because the plain FP64 worker
+requires4slots, not the chemistry allocation8. One baseline measurement only;
+no optimizer. [Diagnostic04](runs/20261030-continuation-failure-diagnostics-04/README.md)
+keeps original4/8-slot and reference ownership guards, with actual producer and
+reference CPU startup checks before separate GPU submissions. Saved results,
+settings and failed scientific gates are unchanged.
+
 Latest30October01:10UTC: [diagnostics03](runs/20261030-continuation-failure-diagnostics-03/README.md)
 passed CPU12, both actual original startup commands and full shared storage.
 Actual GPU29851676 RUN; no gradient finding or optimizer admission yet. Original
@@ -353,3 +360,22 @@ Latest verified22:40:12UTC: Pro29851302/callback29851303 ACTUALDONE and full nat
 
 
 30October00:18CET actual update: main26 Pro continuation29851346 failed exact live-production replay during FP64 co-residency before new updates; DBMol29851304 failed unchanged total-loss derivative guards. Earlier Pro validation pass remains historical, and both new failures are preserved. [Read-only failure diagnostics01](runs/20261030-continuation-failure-diagnostics-01/README.md) has CPU8/saved-probe analysis passed, separate GPU diagnostic conditional/pending. [Chemistry05](runs/20261030-chemistry-continuation-05/README.md) fixes04's missing owning-plan propagation and wrong Boltz GPU ownership request. CPU1005 independently passed; new Pro29851426 GPUcheckRUN/Bolchem29851428PEND at23:17UTC. No chemistry optimizer or new nonchem optimization step established. See actual campaign/terminal evidence, not old queued prose.
+
+
+Current read-only diagnostic attempt06 supersedes04 receipt-race failure and05
+preflight-only failure. See runs/20261030-continuation-failure-diagnostics-06/README.md.
+CPU26 includes24 portable metadata controls plus2 allocated capture controls;
+all four actual producer/reference startups gate GPU. Held submissions persist
+receipt/registry before exact owned release; no original numerical/optimizer
+settings, saved result, guard or unrelated suspended job is changed. Actual
+allocation/outcome requires the current campaign; never replay unknown markers.
+
+
+Latest diagnostic is [attempt07](runs/20261030-continuation-failure-diagnostics-07/README.md).
+It preserves04 receipt failure,05 preflight failure and06 unstarted held CPU
+retirement. Bounded same-job PEND-to-PSUSP settling precedes any owned release;
+CPU30/all four actual startups and full shared gates still required. No optimizer
+admission branch or changed numerical/capture/optimization/saved-result bytes.
+
+
+Verified07 at02:35:45UTC: CPU29851801/controller29851802 DONE,30rawcases/all4 actual startups passed. PlainGPUdiagnostic29851806 RUN/chemistry29851809 PEND. No optimizer admission or saved update; exact current07 campaign/dispatch-verification required.

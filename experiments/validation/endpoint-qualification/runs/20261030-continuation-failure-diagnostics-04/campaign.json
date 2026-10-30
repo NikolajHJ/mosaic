@@ -1,0 +1,73 @@
+{
+  "archive_bytes": 15677,
+  "archive_sha256": "9beab965f8492c97075faa20c54963bc4d06e94684ffbe527d4b07f7650af980",
+  "files": 6,
+  "jobs": {
+    "cpu": "29851757",
+    "after-cpu": "29851758",
+    "gpu-plain": "29851770"
+  },
+  "manifest_sha256": "54463071451fdc728fc23d7e9d226b7ffee6bef7f8edb931bb1bd3f163df3d9e",
+  "optimizer_updates": 0,
+  "plan_sha256": "5410f6e145ec97bed71d097ff2b35586e0852ff69d42753714f4f99fe507d0c0",
+  "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/chemistry-continuation-05/boundary-diagnostics-04",
+  "source": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/boundary-diagnostics-release-04/source",
+  "status": "CPU17_four_startups_passed_controller_TIMEOUT_accepted_GPU_EXIT_pre_model",
+  "tag": "20261030-continuation-failure-diagnostics-04",
+  "cpu_verification": {
+    "status": "passed_independent_CPU17_LSF_XML_four_actual_CLI_startups_reference_metadata_and_resource_contract_audit",
+    "observed_utc": "2026-10-30T02:15:03.757085+00:00",
+    "files_verified": 60,
+    "cases": 17,
+    "actual_producer_startups_passed": 2,
+    "actual_reference_CLI_startups_passed": 2,
+    "native_GPU_CPU_slots": {
+      "plain": 4,
+      "chemistry": 8
+    },
+    "original_reference_output_guards_passed": true,
+    "historical_startup_receipts_unchanged": true,
+    "source_manifest_sha256": "54463071451fdc728fc23d7e9d226b7ffee6bef7f8edb931bb1bd3f163df3d9e",
+    "jobs": {
+      "after-cpu": "29851758",
+      "cpu": "29851757"
+    },
+    "scheduler": {
+      "29851758": "RUN",
+      "29851757": "DONE"
+    },
+    "GPU_job_ids_established": false,
+    "optimizer_jobs": [],
+    "can_admit_new_child": false,
+    "local_scientific_work": false,
+    "startup_assessment": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/chemistry-continuation-05/boundary-diagnostics-04/cpu/payload/startup/assessment.json",
+      "bytes": 8977,
+      "sha256": "9fd6b7d648b8baf342f6e041f98cd779dc53d795ba676299b5eb42719f2c782e"
+    }
+  },
+  "latest_observed_utc": "2026-10-30T02:15:03.757085+00:00",
+  "terminal_verification": {
+    "status": "verified_actual_accepted_EXIT1_missing_receipt_before_models_no_chemistry_submission",
+    "observed_utc": "2026-10-30T02:23:56.064394+00:00",
+    "job_id": "29851770",
+    "all_delivered_files_verified": 6,
+    "command_returncode": null,
+    "scheduler_acceptance_verified": true,
+    "original_unknown_marker_preserved": true,
+    "canonical_submission": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/chemistry-continuation-05/boundary-diagnostics-04/gpu-plain/submission.json",
+      "bytes": 2012,
+      "sha256": "fe15816aa781e6225ae200810840e86efe0467d75bff6168df30486a79ac5ea6"
+    },
+    "reconciliation": {
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/chemistry-continuation-05/boundary-diagnostics-04/gpu-plain/submission-reconciled.json",
+      "bytes": 3631,
+      "sha256": "8074a15b143b5fbd4bbc3bba10e6fc1b5e3302cfa3b2410988aabcad0fe6fb0f"
+    },
+    "no_scientific_measurements": true,
+    "optimizer_updates": 0,
+    "can_admit_new_child": false,
+    "saved_results_changed": false
+  }
+}

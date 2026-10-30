@@ -169,3 +169,25 @@ Latest01:10UTC: diagnostic03 CPU12/controller and both real startup commands
 passed; GPU29851676 RUN, no native finding or optimizer admission. See actual
 dispatch-verification.json. Earlier diagnostic02 output-layout failure remains
 failed and source/saved runs unchanged.
+
+
+Latest30October01:59UTC: diagnostic03 EXIT on plain reference4-slot requirement after receiving8. One baseline only, no new optimizer. Separate [diagnostics04](20261030-continuation-failure-diagnostics-04/README.md) retains original allocation/output guards and qualifies separate role-specific GPU allocations with actual CPU startup checks.
+
+
+Current read-only diagnostic attempt06 supersedes04 receipt-race failure and05
+preflight-only failure. See 20261030-continuation-failure-diagnostics-06/README.md.
+CPU26 includes24 portable metadata controls plus2 allocated capture controls;
+all four actual producer/reference startups gate GPU. Held submissions persist
+receipt/registry before exact owned release; no original numerical/optimizer
+settings, saved result, guard or unrelated suspended job is changed. Actual
+allocation/outcome requires the current campaign; never replay unknown markers.
+
+
+Latest diagnostic is [attempt07](20261030-continuation-failure-diagnostics-07/README.md).
+It preserves04 receipt failure,05 preflight failure and06 unstarted held CPU
+retirement. Bounded same-job PEND-to-PSUSP settling precedes any owned release;
+CPU30/all four actual startups and full shared gates still required. No optimizer
+admission branch or changed numerical/capture/optimization/saved-result bytes.
+
+
+Verified07 at02:35:45UTC: CPU29851801/controller29851802 DONE,30rawcases/all4 actual startups passed. PlainGPUdiagnostic29851806 RUN/chemistry29851809 PEND. No optimizer admission or saved update; exact current07 campaign/dispatch-verification required.

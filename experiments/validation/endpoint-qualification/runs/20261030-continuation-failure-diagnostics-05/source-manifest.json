@@ -1,0 +1,56 @@
+{
+  "can_admit_new_child": false,
+  "capacity_source": {
+    "files": 50,
+    "manifest_sha256": "8324c1d312adeaa4c67c475c01ef1217df6f3ad4044b997d1b73e168325412d3",
+    "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-release-26/source"
+  },
+  "cpu_cases": 25,
+  "files": {
+    "README.md": "9d7f40d3d4d40e15289ecc94fd9916ceb8d2a839f4d4e34d84e6d56169df876c",
+    "plan.json": "64b4bdd18d87435ed5508f25bc60bb8893941e67cb8362f5c7754269f87c44d9",
+    "scripts/continuation_failure_diagnostics.py": "3c06035a3256a5aa24025f53b2df0f8e1b653afc7f1954bc4da483c644cb120a",
+    "scripts/failure_diagnostic_ops.py": "8a56d4c52f363a90ff9352b35c6ebe1f59e105a497a4b6127b23b5a353f826aa",
+    "scripts/failure_diagnostic_stage.lsf": "ce7a439021baed9831d2c0614b2751563e707e4758b5f16086213c7efe134412",
+    "tests/test_continuation_failure_diagnostics.py": "55122da7f7e8b36778b4a41f51f38bf3ff32f189aaafa96e74dc67634f240902"
+  },
+  "optimizer_updates": 0,
+  "parent_sources": [
+    {
+      "files": 50,
+      "manifest_sha256": "8324c1d312adeaa4c67c475c01ef1217df6f3ad4044b997d1b73e168325412d3",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-release-26/source"
+    },
+    {
+      "files": 13,
+      "manifest_sha256": "d127d6abe87307a5d305edb6d04e3a32e3545c508e58b82ce45290e0f3fc03d8",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-endpoint-forensics-release-01/source"
+    },
+    {
+      "files": 643,
+      "manifest_sha256": "da9db6821d26b884ca1749303fc8e0b0095bd9ee7cbd1b427cdcf1b22eec6562",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source"
+    },
+    {
+      "files": 10,
+      "manifest_sha256": "2b0356e63e74de8c1e112c47b8aedfdad9eaea70b66bf6a790abee29488718d4",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/chemistry-continuation-release-05/source"
+    },
+    {
+      "files": 6,
+      "manifest_sha256": "6c2f080b5355d2526d690a48e80aad4c65fc6af7bb60f39c2e7b0dc6b12f8879",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/boundary-diagnostics-release-02/source"
+    },
+    {
+      "files": 6,
+      "manifest_sha256": "c9ee1b491f6e292032662b4fe0a957a66ff71e121a6805fc40c5a0a134b1baec",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/boundary-diagnostics-release-03/source"
+    },
+    {
+      "files": 6,
+      "manifest_sha256": "54463071451fdc728fc23d7e9d226b7ffee6bef7f8edb931bb1bd3f163df3d9e",
+      "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/boundary-diagnostics-release-04/source"
+    }
+  ],
+  "version": "read-only-actual-producer-boundary-diagnostics-v5"
+}

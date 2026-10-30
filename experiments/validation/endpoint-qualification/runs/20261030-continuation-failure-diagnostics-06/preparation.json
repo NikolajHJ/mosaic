@@ -1,0 +1,12 @@
+{
+  "archive_bytes": 18415,
+  "archive_sha256": "d0578b976392d102af29667a0fd097eebc4f6c16177c5ba5a110f251c2b5134d",
+  "files": 6,
+  "manifest_sha256": "2c52935397059e8684d7ae4b1d084b7d5b4a563266f7cd929077052c9354c594",
+  "optimizer_updates": 0,
+  "plan_sha256": "a97d04e58f763ba73dafd3f698cfca207a94bd0a0b6631527e96297bb54f9ff6",
+  "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/chemistry-continuation-05/boundary-diagnostics-06",
+  "source": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/boundary-diagnostics-release-06/source",
+  "status": "prepared_not_allocated_pass",
+  "tag": "20261030-continuation-failure-diagnostics-06"
+}

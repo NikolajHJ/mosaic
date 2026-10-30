@@ -13,13 +13,13 @@ import tarfile
 
 OWNER=Path(__file__).resolve().parents[1]
 REPO=OWNER.parents[2]
-TAG='20261030-continuation-failure-diagnostics-03'
+TAG='20261030-continuation-failure-diagnostics-07'
 LOCAL=REPO/'results/hpc'/TAG
 RUN=OWNER/'runs'/TAG
 BASE='/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01'
 SCOPE=BASE+'/nonchem-precision-continuation-26'
-ROOT=SCOPE+'/boundary-diagnostics-03'
-SOURCE=SCOPE+'/boundary-diagnostics-release-03/source'
+ROOT=SCOPE+'/chemistry-continuation-05/boundary-diagnostics-07'
+SOURCE=SCOPE+'/boundary-diagnostics-release-07/source'
 
 
 def raw(v):return (json.dumps(v,indent=2,sort_keys=True,allow_nan=False)+'\n').encode()
@@ -42,14 +42,14 @@ def prepare():
                'manifest_sha256':'2b0356e63e74de8c1e112c47b8aedfdad9eaea70b66bf6a790abee29488718d4','files':10}
     logit=proof('/chemistry-continuation-05/boltz-validate/payload/study/low_coupled_checks/report.json')
     diagnostics=proof('/boundary-diagnostics-01/gpu/payload/replay/assessment.json')
-    plan.update(version='read-only-actual-producer-boundary-diagnostics-v3',root=ROOT,source_root=SOURCE,
+    plan.update(version='read-only-actual-producer-boundary-diagnostics-v7',root=ROOT,source_root=SOURCE,
                 chemistry_source=chemistry,boltz_logit_failure=logit,previous_simple_diagnostic=diagnostics)
     plan['inputs'] += [logit,diagnostics]
-    recovery=REPO/'results/hpc/20261030-mosaic-heartbeat/20261030T010123Z'
+    recovery=REPO/'results/hpc/20261030-mosaic-heartbeat/20261030T015916Z'
     failure=json.loads((recovery/'terminal-verification.json').read_bytes())
-    assert failure['job_id']=='29851586' and failure['status']=='verified_diagnostic_tooling_failure_before_model_loading'
+    assert failure['job_id']=='29851676' and failure['status']=='verified_reference_allocation_mismatch_before_FP64_model'
     failed_records=json.loads((recovery/'stdout.json').read_bytes())['files']
-    for suffix in ('/gpu/stdout.29851586.log','/gpu/payload/replay/plain/assessment.json'):
+    for suffix in ('/gpu/stdout.29851676.log','/gpu/payload/replay/plain/assessment.json'):
         candidates=[r for path,r in failed_records.items() if path.endswith(suffix)];assert len(candidates)==1
         row=candidates[0];content=base64.b64decode(row['base64'],validate=True)
         assert len(content)==row['bytes'] and sha(content)==row['sha256']
@@ -57,11 +57,45 @@ def prepare():
     for arm,jid in [('protenix','29851426'),('boltz','29851428')]:
         plan['inputs'] += [proof('/chemistry-continuation-05/'+arm+'-validate/stdout.'+jid+'.log'),
                            proof('/chemistry-continuation-05/'+arm+'-validate/payload/driver.log')]
+    reconciled=REPO/'results/hpc/20261030-continuation-failure-diagnostics-04/reconciled-accepted-01/stdout.json'
+    accepted=json.loads(reconciled.read_bytes())
+    receipt=accepted['value']
+    assert receipt['job_id']=='29851770' and receipt['status']=='accepted_submission_reconciled_terminal_EXIT_before_model'
+    assert receipt['actual_exit_code']==1 and receipt['model_loaded'] is False and receipt['chemistry_submission_attempted'] is False
+    for record in accepted['files'].values():
+        content=base64.b64decode(record['base64'],validate=True)
+        assert len(content)==record['bytes'] and sha(content)==record['sha256']
+    plan['inputs'].append(accepted['receipt'])
+    retired=json.loads((REPO/'results/hpc/20261030-continuation-failure-diagnostics-06/retire-unstarted01/stdout.json').read_bytes())
+    assert retired['value']['job_id']=='29851792' and retired['value']['model_loaded'] is False
+    retirement_bytes=base64.b64decode(retired['base64'],validate=True)
+    assert len(retirement_bytes)==retired['receipt']['bytes'] and sha(retirement_bytes)==retired['receipt']['sha256']
+    plan['inputs'].append(retired['receipt'])
+
+    canonical=json.loads((REPO/'results/hpc/20261030-continuation-failure-diagnostics-04/reconciled-canonical-01/stdout.json').read_bytes())
+    assert canonical['value']['returncode'] is None and canonical['value']['scheduler_accepted'] is True
+    plan['inputs'].append(canonical['canonical_submission'])
+    assert len(canonical['failed05'])==1
+    failed_path,failed_text=canonical['failed05'][0]
+    plan['inputs'].append({'path':failed_path,'bytes':len(failed_text.encode()),'sha256':sha(failed_text.encode())})
+
+    plan['held_submission_protocol']={'version':'persist-before-release-v1','bsub_option':'-H',
+        'receipt_and_registry_before_bresume':True,'unknown_outcome_forbids_retry':True}
+    plan['native_GPU_CPU_slots']={'plain':4,'chemistry':8}
+    plan['diagnostic_runtime']={'wall_seconds':3600,'entry_seconds':600,'child_seconds':2500,'coordinator_seconds':2700}
     capacity=plan['capacity_source']
     old_manifest=json.loads((previous/'source_manifest.json').read_bytes())
     parents=old_manifest['parent_sources']+[chemistry,{
         'path':SCOPE+'/boundary-diagnostics-release-02/source',
-        'manifest_sha256':'6c2f080b5355d2526d690a48e80aad4c65fc6af7bb60f39c2e7b0dc6b12f8879','files':6}]
+        'manifest_sha256':'6c2f080b5355d2526d690a48e80aad4c65fc6af7bb60f39c2e7b0dc6b12f8879','files':6},{
+        'path':SCOPE+'/boundary-diagnostics-release-03/source',
+        'manifest_sha256':'c9ee1b491f6e292032662b4fe0a957a66ff71e121a6805fc40c5a0a134b1baec','files':6},{
+        'path':SCOPE+'/boundary-diagnostics-release-04/source',
+        'manifest_sha256':'54463071451fdc728fc23d7e9d226b7ffee6bef7f8edb931bb1bd3f163df3d9e','files':6},{
+        'path':SCOPE+'/boundary-diagnostics-release-05/source',
+        'manifest_sha256':'c30234e4a9a8bef64ec58577d2bf9f8a745121bb46b9978051c7c75e2b016943','files':6},{
+        'path':SCOPE+'/boundary-diagnostics-release-06/source',
+        'manifest_sha256':'2c52935397059e8684d7ae4b1d084b7d5b4a563266f7cd929077052c9354c594','files':6}]
     names={'scripts/continuation_failure_diagnostics.py':'scripts/production_boundary_diagnostics.py',
            'scripts/failure_diagnostic_ops.py':'scripts/failure_diagnostic_ops.py',
            'scripts/failure_diagnostic_stage.lsf':'scripts/failure_diagnostic_stage.lsf',
@@ -71,7 +105,7 @@ def prepare():
     for n,b in members.items():
         if n.endswith('.py'):ast.parse(b,filename=n)
     manifest={'version':plan['version'],'files':{n:sha(b) for n,b in members.items()},'parent_sources':parents,
-              'capacity_source':capacity,'cpu_cases':12,'optimizer_updates':0,'can_admit_new_child':False}
+              'capacity_source':capacity,'cpu_cases':30,'optimizer_updates':0,'can_admit_new_child':False}
     members['source_manifest.json']=raw(manifest);out.mkdir(parents=True)
     buf=io.BytesIO()
     with tarfile.open(fileobj=buf,mode='w:gz') as t:
@@ -90,7 +124,7 @@ from pathlib import Path,PurePosixPath
 import base64,hashlib,io,json,subprocess,sys,tarfile
 request=json.loads(sys.stdin.buffer.read());p=request['preparation'];root=Path(p['root']);source=Path(p['source'])
 scope=Path('/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26')
-assert root==scope/'boundary-diagnostics-03' and source==scope/'boundary-diagnostics-release-03/source'
+assert root==scope/'chemistry-continuation-05/boundary-diagnostics-07' and source==scope/'boundary-diagnostics-release-07/source'
 assert not root.exists() and not source.parent.exists(),'Existing or unknown diagnostic stage; never replay'
 data=base64.b64decode(request['archive'],validate=True);assert len(data)==p['archive_bytes'] and hashlib.sha256(data).hexdigest()==p['archive_sha256']
 members={}
@@ -122,8 +156,8 @@ def stage():
     assert sha(archive)==p['archive_sha256'];out=LOCAL/datetime.now(timezone.utc).strftime('stage-%Y%m%dT%H%M%SZ');out.mkdir()
     (out/'program.py').write_bytes(STAGE.encode());(out/'started.json').write_bytes(raw({'status':'unknown_until_actual_receipt','preparation':p}))
     command='/work3/s234818/mosaic/envs/protenix-tiny/bin/python -B -c '+shlex.quote(STAGE)
-    r=subprocess.run([r'C:\Users\nikol\DTU-HPC\helper-v1\dtu-hpc.exe','exec','--timeout','300','bash -lc '+shlex.quote(command)],
-        input=raw({'preparation':p,'archive':base64.b64encode(archive).decode()}),capture_output=True,timeout=330)
+    r=subprocess.run([r'C:\Users\nikol\DTU-HPC\helper-v1\dtu-hpc.exe','exec','--timeout','1600','bash -lc '+shlex.quote(command)],
+        input=raw({'preparation':p,'archive':base64.b64encode(archive).decode()}),capture_output=True,timeout=1630)
     (out/'stdout.json').write_bytes(r.stdout);(out/'stderr.txt').write_bytes(r.stderr);(out/'transport.json').write_bytes(raw({'returncode':r.returncode}))
     print(out)
     if r.returncode:print(r.stderr.decode());raise SystemExit(r.returncode)

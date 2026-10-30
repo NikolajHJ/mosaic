@@ -110,9 +110,8 @@ def expected_observation(error):
 def study_path(plan, output):
     """Use the original driver's payload/study layout inside exact own scopes."""
     root, output = Path(plan['root']), Path(output)
-    allowed = {root / phase / 'payload' / section / arm
-               for phase, section in (('cpu', 'startup'), ('gpu', 'replay'))
-               for arm in ('plain', 'chemistry')}
+    allowed = {root / 'cpu/payload/startup' / arm for arm in ('plain', 'chemistry')}
+    allowed.update(root / ('gpu-' + arm) / 'payload/replay' / arm for arm in ('plain', 'chemistry'))
     require(root.is_absolute() and output in allowed and '..' not in output.parts,
             'Exact owned diagnostic startup/replay output scope required')
     return output / 'payload' / 'study'
@@ -247,9 +246,71 @@ def premodel(plan, output):
         require(value['status'] == 'passed_metadata_only' and value['numerical_setup_entered'] is False
                 and value['updates'] == 0, 'Actual original pre-model startup sentinel failed')
         rows.append({'arm': kind, 'startup': value})
+    references = []
+    for kind in ('plain', 'chemistry'):
+        source = Path(plan['capacity_source' if kind == 'plain' else 'chemistry_source']['path'])
+        filename = 'protenix_reference_worker.py' if kind == 'plain' else 'chemistry_reference_worker.py'
+        path = source / 'scripts' / filename
+        expected = read(source / 'source_manifest.json')['files']['scripts/' + filename]
+        require(sha(path) == expected, 'Original reference worker source changed')
+        worker = module(path, '_actual_reference_metadata_' + kind)
+        slots = native_reference_slots(path.read_text(), kind)
+        metadata = worker.validate_metadata(source / 'plan.json', sha(source / 'plan.json'))
+        parent = output / ('reference-' + kind) / 'reference-session'
+        parent.mkdir(parents=True)
+        native_output = parent / 'worker'
+        require(worker.validate_output(native_output) == native_output,
+                'Actual original reference output ownership rejected')
+        owner = read(source / 'plan.json')
+        precision = module(Path(plan['capacity_source']['path']) / 'scripts/precision_continuation_hooks.py',
+                           '_diagnostic_reference_premodel_expansion_' + kind)
+        command = precision.expanded_command(owner['reference_configuration']['arms']['protenix'],
+                                             sha(source / 'plan.json'))
+        require(command[:3] == [sys.executable, '-u', str(path)], 'Actual original reference CLI differs')
+        old_output = worker.ROOT / 'cpu/payload/protenix-reference-startup.json'
+        before = old_output.read_bytes() if old_output.exists() else None
+        new_output = parent.parent / 'reference-startup.json'
+        original_write = worker._write
+        def isolated_receipt(destination, value):
+            require(Path(destination) == old_output and value.get('status') == 'passed_metadata_only'
+                    and value.get('numerical_setup_entered') is False and value.get('optimizer_updates') == 0,
+                    'Only the original expected pre-model metadata receipt may be redirected')
+            write(new_output, value)
+        command += ['--startup-only', '--startup-output', str(old_output)]
+        worker._write = isolated_receipt
+        try:
+            worker.main(command[3:])
+        finally:
+            worker._write = original_write
+        require((old_output.read_bytes() if old_output.exists() else None) == before,
+                'Historical reference startup receipt changed')
+        startup = read(new_output)
+        require(startup['job_id'] == os.environ['LSB_JOBID'], 'Actual reference CPU startup identity differs')
+        references.append({'arm': kind, 'native_GPU_CPU_slots': slots,
+            'worker': {'path': str(path), 'bytes': path.stat().st_size, 'sha256': expected},
+            'native_output': str(native_output), 'owner_plan_sha256': sha(source / 'plan.json'),
+            'actual_reference_metadata_passed': bool(metadata), 'model_constructed': False,
+            'startup_command': command, 'actual_worker_startup': startup,
+            'single_startup_metadata_receipt_redirected_before_write': True,
+            'historical_receipt_preserved': True})
     write(output / 'assessment.json', {'status': 'passed_actual_original_pre_model_startups',
         'startups': rows, 'optimizer_updates': 0, 'model_constructed': False,
-        'can_admit_new_child': False})
+        'can_admit_new_child': False, 'reference_metadata': references})
+
+
+def native_reference_slots(source, kind):
+    """Read the actual immutable worker's closed native allocation predicate."""
+    require(kind in ('plain', 'chemistry'), 'Unknown reference kind')
+    tree = ast.parse(source)
+    functions = [n for n in tree.body if isinstance(n, ast.FunctionDef) and n.name == 'allocated_environment']
+    require(len(functions) == 1, 'One original allocated_environment function required')
+    nodes = [n for n in ast.walk(functions[0]) if isinstance(n, ast.Compare)
+             and isinstance(n.left, ast.Name) and n.left.id == 'declared']
+    expected = ast.parse('declared == "4"' if kind == 'plain'
+                         else 'declared == ("4" if startup else "8")', mode='eval').body
+    require(len(nodes) == 1 and ast.dump(nodes[0]) == ast.dump(expected),
+            'Original reference native slot predicate differs')
+    return 4 if kind == 'plain' else 8
 
 
 def child(plan, output, kind):
@@ -271,7 +332,7 @@ def child(plan, output, kind):
         write(output / 'assessment.json', result)
 
 
-def gpu(plan, output):
+def gpu(plan, output, kind):
     output.mkdir()
     chemistry_plan = read(Path(plan['chemistry_source']['path']) / 'plan.json')
     adapter = Path(chemistry_plan['arms']['protenix']['adapter_source']['path'])
@@ -279,14 +340,14 @@ def gpu(plan, output):
     pilot = module(adapter / 'scripts/full_model_pilot.py', '_owned_diagnostic_process_cleanup')
     pilot.OUTPUT_CAP = CAP
     rows = []
-    for kind in ('plain', 'chemistry'):
+    for kind in (kind,):
         command = [sys.executable, str(Path(__file__).resolve()), '--plan', plan['_path'], '--pin',
                    plan['_pin'], '--mode', kind, '--output', str(output / kind)]
         write(output / (kind + '-command.json'), {'argv': command, 'optimizer_updates': 0})
         with (output / (kind + '.log')).open('x') as stream:
             with pilot._parent_sigterm_cleanup():
                 execution = pilot.run_isolated_child(command, Path(__file__).resolve().parents[1],
-                    dict(os.environ), stream, 2500, output)
+                    dict(os.environ), stream, 2500, Path(plan['root']))
             write(output / (kind + '-execution.json'), execution)
         rows.append(read(output / kind / 'assessment.json'))
         bounded(output)
@@ -300,7 +361,7 @@ def main():
     parser.add_argument('--plan', required=True)
     parser.add_argument('--pin', required=True)
     parser.add_argument('--output', type=Path, required=True)
-    parser.add_argument('--mode', choices=('cpu', 'gpu', 'startup', 'plain', 'chemistry'), required=True)
+    parser.add_argument('--mode', choices=('cpu', 'gpu-plain', 'gpu-chemistry', 'startup', 'plain', 'chemistry'), required=True)
     args = parser.parse_args()
     require(sha(args.plan) == args.pin and os.environ.get('LSB_JOBID', '').isdigit(),
             'Actual allocation and authenticated plan required')
@@ -321,8 +382,8 @@ def main():
             'can_admit_new_child': False, 'can_certify_or_restart_original_study': False})
     elif args.mode == 'startup':
         premodel(plan, args.output)
-    elif args.mode == 'gpu':
-        gpu(plan, args.output)
+    elif args.mode.startswith('gpu-'):
+        gpu(plan, args.output, args.mode.removeprefix('gpu-'))
     else:
         child(plan, args.output, args.mode)
 

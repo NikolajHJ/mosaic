@@ -1,6 +1,7 @@
 """Portable control-flow contracts plus allocated numerical capture controls."""
 import ast
 import importlib.util
+import subprocess
 from pathlib import Path
 from types import SimpleNamespace
 import pytest
@@ -51,8 +52,10 @@ def test_metadata_capture_is_not_a_continuation_dispatch():
 def test_metadata_exact_owned_payload_study_outputs_for_both_actual_startup_commands():
     root = Path(__file__).resolve().parent / 'metadata-only-root'
     plan = {'root': str(root)}
-    for phase, section in (('cpu', 'startup'), ('gpu', 'replay')):
+    for phase, section in (('cpu', 'startup'), ('gpu-plain', 'replay'), ('gpu-chemistry', 'replay')):
         for arm in ('plain', 'chemistry'):
+            if phase.startswith('gpu-') and phase != 'gpu-' + arm:
+                continue
             output = root / phase / 'payload' / section / arm
             study = d.study_path(plan, output)
             assert study == output / 'payload' / 'study'
@@ -65,6 +68,79 @@ def test_metadata_foreign_sibling_and_traversing_output_scopes_are_rejected():
                  root / 'gpu/payload/replay/plain/../chemistry'):
         with pytest.raises(ValueError, match='Exact owned'):
             d.study_path({'root': str(root)}, path)
+
+
+@pytest.mark.parametrize('kind,predicate,expected', [
+    ('plain', 'declared == "4"', 4),
+    ('chemistry', 'declared == ("4" if startup else "8")', 8)])
+def test_metadata_actual_reference_predicate_requires_its_own_native_slot_count(kind, predicate, expected):
+    text = 'def allocated_environment(startup=False):\n    require(' + predicate + ', "slots")'
+    assert d.native_reference_slots(text, kind) == expected
+
+
+@pytest.mark.parametrize('kind,predicate', [
+    ('plain', 'declared == "8"'), ('chemistry', 'declared == "4"'),
+    ('chemistry', 'declared == ("8" if startup else "4")')])
+def test_metadata_mismatched_or_reversed_reference_allocations_are_rejected(kind, predicate):
+    text = 'def allocated_environment(startup=False):\n    require(' + predicate + ', "slots")'
+    with pytest.raises(ValueError, match='slot predicate'):
+        d.native_reference_slots(text, kind)
+
+
+def _submission_controls():
+    path=P.with_name('failure_diagnostic_ops.py')
+    names={'require','release_argv','captured_command','held_observation'}
+    tree=ast.Module(body=[n for n in ast.parse(path.read_bytes()).body
+                         if isinstance(n,ast.FunctionDef) and n.name in names],type_ignores=[])
+    namespace={'subprocess':subprocess}
+    exec(compile(tree,str(path),'exec'),namespace)
+    return namespace
+
+
+def test_metadata_only_exact_persisted_registered_held_job_can_be_released():
+    namespace=_submission_controls()
+    row={'status':'submitted','dispatch_state':'held','returncode':0,'job_id':'123','argv':['bsub','-H','actual-source']}
+    assert namespace['release_argv'](row,row['argv'],dict(row),'123')==['bresume','123']
+
+
+@pytest.mark.parametrize('change',['persisted','status','returncode','job_id','held','registered','dispatch_state'])
+def test_metadata_unknown_foreign_unheld_or_unpersisted_jobs_cannot_be_released(change):
+    namespace=_submission_controls()
+    row={'status':'submitted','dispatch_state':'held','returncode':0,'job_id':'123','argv':['bsub','-H','actual-source']}
+    persisted=dict(row);expected=list(row['argv']);registered='123'
+    if change=='persisted':persisted['other']='different'
+    elif change=='status':row['status']=persisted['status']='unknown_after_timeout'
+    elif change=='returncode':row['returncode']=persisted['returncode']=None
+    elif change=='job_id':row['job_id']=persisted['job_id']='123;other'
+    elif change=='held':expected=row['argv']=persisted['argv']=['bsub','actual-source']
+    elif change=='registered':registered='999'
+    elif change=='dispatch_state':row['dispatch_state']=persisted['dispatch_state']='released'
+    with pytest.raises(ValueError):
+        namespace['release_argv'](row,expected,persisted,registered)
+
+
+def test_metadata_submission_timeout_records_unknown_and_never_retries_or_releases():
+    namespace=_submission_controls();calls=[];writes=[]
+    def timeout(argv,**kwargs):
+        calls.append(argv)
+        raise subprocess.TimeoutExpired(argv,300,output=b'partial response',stderr=b'error')
+    namespace['subprocess']=SimpleNamespace(run=timeout,TimeoutExpired=subprocess.TimeoutExpired)
+    namespace['write']=lambda output,value:writes.append((output,value))
+    with pytest.raises(subprocess.TimeoutExpired):
+        namespace['captured_command'](['bsub','-H','actual-source'],'receipt')
+    assert calls==[['bsub','-H','actual-source']]
+    assert len(writes)==1 and writes[0][0]=='receipt'
+    assert writes[0][1]['status']=='unknown_after_timeout_do_not_retry'
+    assert writes[0][1]['returncode'] is None and writes[0][1]['stdout']=='partial response'
+
+
+@pytest.mark.parametrize('state,identity,expected',[
+    ('PSUSP','123',True),('PEND','123',False),('RUN','123','reject'),('PSUSP','999','reject')])
+def test_metadata_hold_must_settle_on_exact_owned_job_before_release(state,identity,expected):
+    namespace=_submission_controls();line=f'{identity} {state} s234818 exact-own-name\n'
+    if expected=='reject':
+        with pytest.raises(ValueError):namespace['held_observation'](0,line,'123','exact-own-name')
+    else:assert namespace['held_observation'](0,line,'123','exact-own-name') is expected
 
 
 @pytest.mark.parametrize('change', [False, True])

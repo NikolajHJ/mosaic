@@ -1,0 +1,23 @@
+{
+  "status": "verified_actual_accepted_EXIT1_missing_receipt_before_models_no_chemistry_submission",
+  "observed_utc": "2026-10-30T02:23:56.064394+00:00",
+  "job_id": "29851770",
+  "all_delivered_files_verified": 6,
+  "command_returncode": null,
+  "scheduler_acceptance_verified": true,
+  "original_unknown_marker_preserved": true,
+  "canonical_submission": {
+    "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/chemistry-continuation-05/boundary-diagnostics-04/gpu-plain/submission.json",
+    "bytes": 2012,
+    "sha256": "fe15816aa781e6225ae200810840e86efe0467d75bff6168df30486a79ac5ea6"
+  },
+  "reconciliation": {
+    "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/chemistry-continuation-05/boundary-diagnostics-04/gpu-plain/submission-reconciled.json",
+    "bytes": 3631,
+    "sha256": "8074a15b143b5fbd4bbc3bba10e6fc1b5e3302cfa3b2410988aabcad0fe6fb0f"
+  },
+  "no_scientific_measurements": true,
+  "optimizer_updates": 0,
+  "can_admit_new_child": false,
+  "saved_results_changed": false
+}

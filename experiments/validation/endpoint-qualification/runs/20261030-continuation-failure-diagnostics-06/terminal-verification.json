@@ -1,0 +1,13 @@
+{
+  "status": "verified_intentional_retirement_only_owned_unstarted_PSUSP_CPU",
+  "job_id": "29851792",
+  "receipt": {
+    "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/chemistry-continuation-05/boundary-diagnostics-06/retirement-reconciliation.json",
+    "bytes": 3877,
+    "sha256": "371e9c1c5c7247bf1efd19f152ce6ecb84de3b05b2bbc0a4024209980989e92b"
+  },
+  "model_loaded": false,
+  "optimizer_updates": 0,
+  "callback_or_GPU_submitted": false,
+  "other_jobs_changed": false
+}

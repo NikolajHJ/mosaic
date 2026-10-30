@@ -244,3 +244,22 @@ numerical guards, so its old queued status above is historical.
 
 
 Current diagnostic operators target immutable03, ALREADY staged CPU29851659/controller29851660. Output layout now retains original payload/study scope. The allocatedCPU gate adds both actual original startup commands before GPU. Never replay manage_failure_diagnostics prepare/stage; read diagnostic03 receipts.
+
+
+Current diagnostic operators target immutable04. Plain/chemistry GPU diagnostics are separate phases gpu-plain/gpu-chemistry with original4/8CPUslots and corresponding unchanged CUDA probes. ROOT04 is a new child under chemistry05 so both original reference output guards accept it. CPU17 plus both actual producer/reference startups and resource predicates precede submission. Never replay prepare/stage once markers exist.
+
+
+Current read-only diagnostic attempt06 supersedes04 receipt-race failure and05
+preflight-only failure. See ../runs/20261030-continuation-failure-diagnostics-06/README.md.
+CPU26 includes24 portable metadata controls plus2 allocated capture controls;
+all four actual producer/reference startups gate GPU. Held submissions persist
+receipt/registry before exact owned release; no original numerical/optimizer
+settings, saved result, guard or unrelated suspended job is changed. Actual
+allocation/outcome requires the current campaign; never replay unknown markers.
+
+
+Latest diagnostic is [attempt07](../runs/20261030-continuation-failure-diagnostics-07/README.md).
+It preserves04 receipt failure,05 preflight failure and06 unstarted held CPU
+retirement. Bounded same-job PEND-to-PSUSP settling precedes any owned release;
+CPU30/all four actual startups and full shared gates still required. No optimizer
+admission branch or changed numerical/capture/optimization/saved-result bytes.

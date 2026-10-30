@@ -9961,3 +9961,139 @@ historical missingREADME drift; new owned03 run hasREADME and package/static
 audits passed. Do not count a numerical array_equal flag as byte identity: the
 actual original measurement digests and raw NPZ bindings remain authoritative.
 No scientific threshold/FD interval/optimization setting or saved result changed.
+
+
+## 2026-10-30T01:59:17Z — Diagnostic reference allocation mismatch repaired without weakening original guards
+
+Installed-helper account/saved-evidence query confirms diagnostic03 GPU29851676
+EXIT1. Plain FP32 Protenix loaded and saved one baseline measurement; its
+unchanged FP64 reference rejected8slots because it requires4, before FP64 model
+loading. Chemistry child not attempted. Original source/input preservation passed
+and no new optimizer states/updates exist. Independent95compact-file byte/schema/
+source/LSF audit preserves this engineering failure, not a derivative finding.
+
+Static review also found chemistry's reference output must remain below its
+original chemistry05 owner. New immutable read-only diagnostic04 puts its fresh
+control/output child BELOW chemistry05, itself inside main26; neither original
+reference ownership guard is modified. No old file/study/proof is overwritten.
+Two independent finite GPU observations now request original resources: plain
+4CPU/8GiBslot, chemistry8CPU/4GiBslot, each one exclusiveL40S/MPS/1h. Each keeps
+2500s native child, <=600s entry/smoke and2700s coordinator budget, with cleanup
+margin. The full04 group remains128MiB within the existing2GiB control cap; global
+owned-process monitoring and all full shared byte/file/4GiB/100000 guards remain.
+
+CPU17 fixtures include15portable metadata passes locally and2capture numerical
+controls restricted to allocatedHPC. Fresh allocatedCPU must execute both actual
+producer pre-model CLI startups, both actual reference CLI startup bodies with
+strict single-receipt metadata redirection before any historical write, actual
+reference provenance/native-output validation, and compare proposed GPU slots
+with each unchanged worker's exact allocated_environment predicate (4/8). No
+fabricated LSB environment, modified reference or model setup in these probes.
+Original historical CPU startup receipt bytes must remain unchanged.
+
+Source6 manifest54463071451fdc728fc23d7e9d226b7ffee6bef7f8edb931bb1bd3f163df3d9e,
+plan5410f6e145ec97bed71d097ff2b35586e0852ff69d42753714f4f99fe507d0c0,
+archive15677B/SHA9beab965f8492c97075faa20c54963bc4d06e94684ffbe527d4b07f7650af980.
+Tar/every-member/AST audits preserve unchanged original producer entry functions,
+raw capture, stop guards and all numerical/scientific arithmetic. Actual stage
+was invoked once; submission/result requires its exact receipt, never a retry
+after unknown response. No new numerical finding or optimizer admission follows
+from preparation. Original nonchem/chemistry failures and saved settings remain.
+No cleanup, other-project action or report refresh (no new saved prefix).
+
+
+## 2026-10-30T02:24:00Z — Reconcile accepted diagnostic submission; hold until provenance is persisted
+
+Diagnostic04 CPU29851757 passed17 cases plus both actual producer and both
+actual reference startup commands on real allocatedCPU. Its controller29851758
+then timed out90s receiving the first GPU bsub response. Actual scheduler/history
+and same-job LSF prove plain GPU29851770 was accepted and later EXIT1 before
+model loading, because its submission receipt was missing. No chemistry GPU was
+attempted, no new diagnostic measurement or optimizer state exists. Independent
+six-file reconciliation plus source/argv/LSF audit preserves the original unknown
+bsub return (null), registers the exact accepted ID and writes its canonical
+accepted/terminal receipt. No return0, successful gradient result or continuation
+admission is fabricated. Original started marker, failed source and logs remain.
+
+Immutable diagnostic05 staged but failed mandatory preflight before CPU because
+that accepted registry ID lacked its canonical submission record. Preserve the
+failed gate/source; never replay05. New immutable06 retains original shared
+capacity's submitted status with a separate held dispatch_state. Every new
+allocation uses bsub -H, persists its exact receipt and registry, authenticates
+actual same-ID/user/name PSUSP, then releases ONLY that new owned job. Partial
+stdout/stderr/timeouts are recorded and prohibit blind retry; unrelated suspended
+jobs remain untouched. Full4/8-slot native resource vectors,128MiB group cap,
+shared storage/4GiB/100000-file reserves and original scientific guards remain.
+
+CPU26 requires24 portable metadata controls (passed locally in0.08s), two capture
+controls ONLY allocatedCPU, all four original actual startup probes and native
+reference ownership/allocation checks. The entire capture/actual-producer/stop
+implementation is byte-identical to04: no arithmetic, additional model calls,
+optimizer branch or saved-result changes. Source6 manifest
+2c52935397059e8684d7ae4b1d084b7d5b4a563266f7cd929077052c9354c594,
+plana97d04e58f763ba73dafd3f698cfca207a94bd0a0b6631527e96297bb54f9ff6,
+archive18415B/SHAd0578b976392d102af29667a0fd097eebc4f6c16177c5ba5a110f251c2b5134d.
+Every safe archive member/AST/hash and original capture equality passed locally.
+Actual stage was invoked once; inspect current06 campaign/receipts before any
+recovery. No new optimizer continuation or report refresh without new saved data.
+
+
+## 2026-10-30T02:30:00Z — Preserve held-state race and qualify bounded scheduler settling
+
+Diagnostic06 CPU29851792 was actually submitted with -H. The immediate formatted
+bjobs row returned PEND; its strict release guard rejected before any bresume.
+Later same-job bjobs/bhist authenticated PSUSP, with-hold, zero execution. Only
+that owned unstarted obsolete CPU was intentionally retired with exact receipts;
+no tests/model/GPU/callback/update06 existed. This is a metadata settling race,
+not a numerical failure. All original records and source06 remain preserved.
+
+New immutable diagnostic07 adds at most12 same-ID/user/name observations five
+seconds apart, and releases ONLY after actual PSUSP. PEND permits waiting only;
+RUN/foreign/ambiguous/error rows fail. The held receipt and registry are already
+persisted before any release. All timeout/unknown guards remain, with30min
+controller wall to fund both complete bounded submissions/status checks. No
+unrelated suspended job is touched. Previous04 accepted/EXIT,05 preflight failure
+and06 unstarted retirement are authenticated source/input dependencies.
+
+CPU30 requires28 portable metadata cases (passed locally0.14s) plus2capture
+controls ONLY allocatedHPC and BOTH actual producer/reference CLI startup pairs.
+Full native capture/actual-checker/no-update implementation is byte-identical
+04; original4/8 CPUslots/fullFP64 resource guards,128MiB group cap/funded control
+allowance and full shared byte/file/4GiB/100000 gates remain. Source6 manifest
+263dd96fc1dd5fc2ddcabf559c2d402f6d35b8393cc249cef31884206cd9b3d2,
+plan78cf3e3995fa92caec4a2158303ebcfa5a8eef48b0eb0abefcd833a12e99b5c7,
+archive19210B/SHAe04d74f5d91ab0b93fdaf39a238c52d9c066fafb58e17e31f998af76ba20a073.
+All tar/safe-member/AST/byte audits passed locally; numerical/model evaluations
+still allocated only. Stage07 invoked once; actual jobs/outcomes require its
+own receipts, never replay stage/controller. No optimizer continuation or new
+saved prefix/report, no cleanup, scientific settings or original gate changes.
+
+
+Verified30October02:33:03UTC: diagnostic07 CPU29851801 ACTUALDONE/hpc/same-job
+LSFsuccess,30actual rawXMLcases/zero failures/errors/skips. Both actual original
+producer and both actual reference CLI startup bodies passed on the realCPUjob
+with no models/numerical setup/updates and unchanged historical receipt bytes.
+Independent42compact-file/source/bytes/XML/LSF/exact allocation vectors and actual
+held-release proofs passed. Controller29851802 is RUN, no GPU07 ID established
+at this capture. Initial whole capacity39,651,681,439required/40,408,020,552
+available; CPU entry39,650,593,951/40,406,933,064 bytes, each4GiB/100000files.
+Read own actual receipts before any recovery; never replay dispatch/stage.
+No new optimizer admission/update/report, no original failure erased.
+
+
+Verified30October02:35:45UTC: diagnostic07 CPU29851801 and controller29851802
+ACTUALDONE/hpc/same-jobLSFsuccess; all30rawcases and all four actual original
+producer/reference startups passed. Independent73compactfile/source/bytes/XML/
+LSF/all4exact command-resource-dependency vectors plus actual held-state and
+receipt-before-release evidence passed. ACTUAL GPUdiagnostics plain29851806 RUN
+and chemistry29851809 PEND, separate4/8CPUslots,8/4GiBslot,oneexclusiveL40S/MPS/
+1h each. These exact jobs already exist; never duplicate stage/controller/GPU.
+Full dispatch39,648,437,407required/40,404,776,520available bytes; plainGPUentry
+39,647,345,823/40,403,684,936 bytes. Each preserves4GiB/100000files and complete
+shared accounting; no reservation/full optimizer admission is implied.
+No GPU diagnostic finding or optimizer continuation/update established. Original
+Pro20k/DB7500/plainBol20k/Prochem10k/Bolchem10k and all derivative/replay failures
+remain unchanged. No cleanup, scientific settings, tolerance/FD or source waiver.
+Current run07 campaign/dispatch-verification is authoritative over earlier prose.
+Hourly handoff must follow actual07 receipts, original raw digests/NPZ bindings;
+a diagnostic can never admit a new optimizer child. No new report without data.

@@ -1,0 +1,103 @@
+{
+  "archive_bytes": 19210,
+  "archive_sha256": "e04d74f5d91ab0b93fdaf39a238c52d9c066fafb58e17e31f998af76ba20a073",
+  "files": 6,
+  "jobs": {
+    "cpu": "29851801",
+    "after-cpu": "29851802",
+    "gpu-plain": "29851806",
+    "gpu-chemistry": "29851809"
+  },
+  "manifest_sha256": "263dd96fc1dd5fc2ddcabf559c2d402f6d35b8393cc249cef31884206cd9b3d2",
+  "optimizer_updates": 0,
+  "plan_sha256": "78cf3e3995fa92caec4a2158303ebcfa5a8eef48b0eb0abefcd833a12e99b5c7",
+  "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/chemistry-continuation-05/boundary-diagnostics-07",
+  "source": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/boundary-diagnostics-release-07/source",
+  "status": "CPU30_four_startups_controller_passed_plain_GPU_RUN_chemistry_GPU_PEND",
+  "tag": "20261030-continuation-failure-diagnostics-07",
+  "cpu_verification": {
+    "status": "passed_independent_CPU30_source_XML_LSF_four_actual_startups_and_hold_release_provenance",
+    "observed_utc": "2026-10-30T02:33:03.142291+00:00",
+    "files_verified": 42,
+    "source_manifest_sha256": "263dd96fc1dd5fc2ddcabf559c2d402f6d35b8393cc249cef31884206cd9b3d2",
+    "jobs": {
+      "cpu": "29851801",
+      "after-cpu": "29851802"
+    },
+    "scheduler": {
+      "29851801": "DONE",
+      "29851802": "RUN"
+    },
+    "gates": {
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/chemistry-continuation-05/boundary-diagnostics-07/cpu/continuation-storage-entry.json": {
+        "status": "passed",
+        "required_bytes": 39650593951,
+        "available_bytes": 40406933064,
+        "reserve_bytes": 4294967296,
+        "file_reserve": 100000
+      }
+    },
+    "optimizer_updates": 0,
+    "can_admit_new_child": false,
+    "local_scientific_work": false,
+    "CPU_cases": 30,
+    "actual_original_startups": 4
+  },
+  "latest_observed_utc": "2026-10-30T02:35:45.353514+00:00",
+  "dispatch_verification": {
+    "status": "passed_independent_CPU30_controller_LSF_actual_two_GPU_submissions_held_release_and_full_storage_audit",
+    "observed_utc": "2026-10-30T02:35:45.353514+00:00",
+    "files_verified": 73,
+    "source_manifest_sha256": "263dd96fc1dd5fc2ddcabf559c2d402f6d35b8393cc249cef31884206cd9b3d2",
+    "jobs": {
+      "cpu": "29851801",
+      "after-cpu": "29851802",
+      "gpu-plain": "29851806",
+      "gpu-chemistry": "29851809"
+    },
+    "scheduler": {
+      "29851801": "DONE",
+      "29851802": "DONE",
+      "29851806": "RUN",
+      "29851809": "PEND"
+    },
+    "gates": {
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/chemistry-continuation-05/boundary-diagnostics-07/cpu/continuation-storage-entry.json": {
+        "status": "passed",
+        "required_bytes": 39650593951,
+        "available_bytes": 40406933064,
+        "reserve_bytes": 4294967296,
+        "file_reserve": 100000
+      },
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/chemistry-continuation-05/boundary-diagnostics-07/after-cpu/continuation-storage-dispatch.json": {
+        "status": "passed",
+        "required_bytes": 39648437407,
+        "available_bytes": 40404776520,
+        "reserve_bytes": 4294967296,
+        "file_reserve": 100000
+      },
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/chemistry-continuation-05/boundary-diagnostics-07/after-cpu/continuation-storage-entry.json": {
+        "status": "passed",
+        "required_bytes": 39649500319,
+        "available_bytes": 40405839432,
+        "reserve_bytes": 4294967296,
+        "file_reserve": 100000
+      },
+      "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/chemistry-continuation-05/boundary-diagnostics-07/gpu-plain/continuation-storage-entry.json": {
+        "status": "passed",
+        "required_bytes": 39647345823,
+        "available_bytes": 40403684936,
+        "reserve_bytes": 4294967296,
+        "file_reserve": 100000
+      }
+    },
+    "optimizer_updates": 0,
+    "can_admit_new_child": false,
+    "local_scientific_work": false,
+    "CPU_cases": 30,
+    "actual_original_startups": 4,
+    "controller_LSF_success": true,
+    "GPU_diagnostic_findings_verified": false,
+    "optimizer_jobs": []
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "status": "passed_independent_CPU17_LSF_XML_four_actual_CLI_startups_reference_metadata_and_resource_contract_audit",
+  "observed_utc": "2026-10-30T02:15:03.757085+00:00",
+  "files_verified": 60,
+  "cases": 17,
+  "actual_producer_startups_passed": 2,
+  "actual_reference_CLI_startups_passed": 2,
+  "native_GPU_CPU_slots": {
+    "plain": 4,
+    "chemistry": 8
+  },
+  "original_reference_output_guards_passed": true,
+  "historical_startup_receipts_unchanged": true,
+  "source_manifest_sha256": "54463071451fdc728fc23d7e9d226b7ffee6bef7f8edb931bb1bd3f163df3d9e",
+  "jobs": {
+    "after-cpu": "29851758",
+    "cpu": "29851757"
+  },
+  "scheduler": {
+    "29851758": "RUN",
+    "29851757": "DONE"
+  },
+  "GPU_job_ids_established": false,
+  "optimizer_jobs": [],
+  "can_admit_new_child": false,
+  "local_scientific_work": false,
+  "startup_assessment": {
+    "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/chemistry-continuation-05/boundary-diagnostics-04/cpu/payload/startup/assessment.json",
+    "bytes": 8977,
+    "sha256": "9fd6b7d648b8baf342f6e041f98cd779dc53d795ba676299b5eb42719f2c782e"
+  }
+}

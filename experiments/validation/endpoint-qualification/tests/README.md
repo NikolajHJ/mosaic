@@ -128,3 +128,22 @@ admission or reinterprets an original failed gradient/replay gate.
 
 
 test_production_boundary_diagnostics.py now has12cases:10portable metadata (including exact owned payload/study scopes) plus2allocated capture controls. Both real original CPU startup sentinels are separately mandatory before diagnostics03 GPU dispatch; fixtures alone cannot certify scientific admission.
+
+
+test_production_boundary_diagnostics.py now has17cases:15portable metadata and2allocated numerical capture controls. Five metadata regressions cover exact original plain4/chemistry8 native reference slot predicates and wrong/reversed declarations. Actual worker CLI startup, provenance and native-output guard probes are additionally mandatory on allocatedCPU before diagnostic04 GPU dispatch.
+
+
+Current read-only diagnostic attempt06 supersedes04 receipt-race failure and05
+preflight-only failure. See ../runs/20261030-continuation-failure-diagnostics-06/README.md.
+CPU26 includes24 portable metadata controls plus2 allocated capture controls;
+all four actual producer/reference startups gate GPU. Held submissions persist
+receipt/registry before exact owned release; no original numerical/optimizer
+settings, saved result, guard or unrelated suspended job is changed. Actual
+allocation/outcome requires the current campaign; never replay unknown markers.
+
+
+Latest diagnostic is [attempt07](../runs/20261030-continuation-failure-diagnostics-07/README.md).
+It preserves04 receipt failure,05 preflight failure and06 unstarted held CPU
+retirement. Bounded same-job PEND-to-PSUSP settling precedes any owned release;
+CPU30/all four actual startups and full shared gates still required. No optimizer
+admission branch or changed numerical/capture/optimization/saved-result bytes.

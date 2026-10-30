@@ -56,3 +56,11 @@ historical missingREADME drift; new owned03 run hasREADME and package/static
 audits passed. Do not count a numerical array_equal flag as byte identity: the
 actual original measurement digests and raw NPZ bindings remain authoritative.
 No scientific threshold/FD interval/optimization setting or saved result changed.
+
+
+Verified30October01:59UTC: GPU29851676 actuallyEXIT1. Plain producer loaded
+and one measurement was captured, then the ORIGINAL reference refused8slots
+(requires4). FP64 model was not loaded; chemistry unattempted. Input/source
+preservation passed, no optimizer updates. Keep original failure and partial
+evidence; CPU12/startup passes do not erase this allocation-contract bug.
+New04 matches separate4/8-slot allocations and both original output-owner roots.
