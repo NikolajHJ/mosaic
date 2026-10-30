@@ -318,3 +318,15 @@ Protenix chemistry precision qualification: `protenix_combined_reference.py` pro
 
 
 Current chemistry-priority owners: `manage_protenix_combined_reference.py` targets complete reference qualification03 (actual current campaign required). `manage_boltz_chemistry_reference_retry.py` targets only failed Boltz chemistry transport06; plain/DB diagnostics from05 are not repeated. The latter adds actual allocated matrix-child dependency startup and private config class regressions. Original settings and saved studies unchanged.
+
+`combined_reference_contract.py` is a prepared, unvalidated compatibility reader
+for the explicitly named source03 combined logit-v1 contract. It reconstructs
+numerical witnesses from bound raw points instead of trusting producer flags,
+and checks transport, key, coefficient, fixed-target identity and reference
+operation/close evidence. It does not independently recompute chemistry values
+or VJPs. It requires a real allocated CPU job before importing NumPy, always
+returns `can_submit_optimizer=false`, and is not the common prospective checker.
+Before adoption: bind exact chemistry source roles, obtain the missing prepared
+target snapshot (an exact-identity allocated reconstruction is allowed), run its
+allocated regressions and integrate it with full qualification in a fresh release.
+No current queued job imports this draft; no source/job/result was changed.

@@ -1,0 +1,38 @@
+{
+  "version": "prepared-combined-reader-review-v1",
+  "observed_utc": "2026-10-30T11:52:39.561601+00:00",
+  "status": "static_preparation_only_not_numerically_validated_or_adopted",
+  "files": [
+    {
+      "path": "experiments/validation/endpoint-qualification/scripts/combined_reference_contract.py",
+      "bytes": 26745,
+      "sha256": "c674cd4b8368434fe3619fffdfc2bbdf6ed736380521024d59a40c763ca54590",
+      "ast_nodes": 5919
+    },
+    {
+      "path": "experiments/validation/endpoint-qualification/tests/test_combined_reference_contract.py",
+      "bytes": 13130,
+      "sha256": "aa1e8070e11c89fb533fcb215d3cf78a7b7dc40c022f4dc87478bbf1f449ec2a",
+      "ast_nodes": 2964
+    }
+  ],
+  "prepared_allocated_regression_cases": 18,
+  "executed_numerical_cases": 0,
+  "models_loaded": false,
+  "HPC_jobs_submitted": false,
+  "running_or_pending_sources_changed": false,
+  "saved_results_changed": false,
+  "scope": "Compatibility reader for explicit source03 combined logit-v1 witnesses; not the common prospective default. Chemistry values/VJPs depend on authenticated original execution.",
+  "independent_static_review": {
+    "actual_session_worker_protocol": "matched request IDs/order/raw fields/key/audit names",
+    "scalar_parity_gap": "fixed existing 2e-5 production/reference check plus constant-offset negative",
+    "zero_gradient_negative": "fixed to mutate complete positive78-point evidence",
+    "followup_review": "no further static regression found"
+  },
+  "required_before_adoption": [
+    "explicit production/private chemistry source-role bindings",
+    "bound exact-identity prepared-target snapshot or allocated deterministic reconstruction",
+    "allocated positive/negative coefficient/VJP and producer/reader regressions",
+    "fresh full qualification and new production integration; no optimizer permission from reader alone"
+  ]
+}

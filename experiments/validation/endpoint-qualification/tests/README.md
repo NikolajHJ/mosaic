@@ -194,3 +194,12 @@ New resource-policy integration adds3portable `test_storage_policy_adapter.py` c
 
 
 Current Prochem reference suite is17newcases (11portable,6allocated numerical), plus1029 inherited. Actual FP64 typed resolution is distinguished from FP32-wrapped values; all existing comparison criteria stay. Boltz reference06 has84rawcases including two new portable child-import/config boundaries and the actual allocated matrix import startup.
+
+`test_combined_reference_contract.py` prepares18 synthetic allocated-CPU
+producer/reader regressions; none has run yet. They cover complete positive
+evidence, a flat chemistry component, forged policies, coherent zero/reversed/
+scaled production gradients, a constant scalar offset despite exact repeats,
+and missing/mutated/nonfinite/key/source/teacher evidence. Wrong-gradient cases
+mutate a complete78-point positive witness, so missing producer output cannot
+accidentally satisfy the negative test. These tests are not native qualification
+or optimizer admission and must not run on the laptop.

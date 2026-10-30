@@ -10837,3 +10837,24 @@ or30ktarget. Prochem production also requires a new independent reference reader
 current outer can_submit_optimizer=false stays. Reader implementation and
 regressions are being prepared separately, not numerical validation/adoption.
 Automation remainsACTIVE/hourly and updated to actual terminal/prospective scope.
+
+
+## 2026-10-30T11:55UTC — Prepared independent combined-reference witness reader; no experiment ran
+
+Added combined_reference_contract.py and18 synthetic allocated-only regressions
+for future adoption of the explicitly named source03 chemistry logit-v1 contract.
+Static independent review matched actual Session/worker wire fields and fixed two
+reader/test gaps before any numerical execution: enforce original2e-5 combined
+scalar parity, and mutate complete78-point witnesses for erased/reversed/scaled
+gradient negatives. A constant-offset scalar control preserves exact repeats.
+Standard-library AST/byte review passed; NO numerical tests/models/SSH/submission
+or source/job/result changes occurred in this preparation. Exact hashes/status
+are in run05/prepared-reader-review.json.
+
+This is numerical-witness verification, not independent chemistry implementation
+recomputation or a new default checker. Explicit chemistry source-role bindings,
+target snapshot or exact-identity allocated reconstruction, allocated regressions
+and fresh full production integration remain required before adoption. Current
+queued Prochem03/Bolchem06 sources are unchanged; no optimizer permission follows
+from this draft reader. DBMol30k objective session/producer/reader integration
+remains the documented follow-up, not an implemented or qualified continuation.

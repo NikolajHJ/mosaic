@@ -39,6 +39,19 @@ operation audit before production adoption. The historical chemistry reader
 checks flags only; current outer can_submit_optimizer=false prevents direct
 adoption. A separate new reader is being prepared and is not yet validated.
 
+The draft is now combined_reference_contract.py with18 prepared allocated CPU
+regressions. Independent static review verified the real Session/worker wire
+schema and identified two gaps, corrected before testing: the reader now repeats
+the original2e-5 production/reference combined scalar parity; erased-gradient
+negatives now mutate a complete positive witness rather than fail fixture setup.
+Only standard-library AST/hash inspection ran; no numerical pass or adoption.
+The reader independently reconstructs numerical witness arithmetic, not the
+chemistry implementation itself. Full adoption still requires exact chemistry
+source-role pins and coefficient/VJP regressions. Current03 omitted the prepared
+arrays snapshot: a separately allocated deterministic reconstruction at the exact
+cohort inputs may supply it only if preparation_identity matches exactly. This
+does not require altering/restarting the queued GPU job just for metadata.
+
 Bolchem06's weighted derivative order is a static risk, not an observed failure:
 its diagnostic differentiates unweighted repair then multiplies, while original
 production differentiates weight*repair+0*composition. If actual byte replay
