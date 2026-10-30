@@ -269,3 +269,6 @@ admission branch or changed numerical/capture/optimization/saved-result bytes.
 
 
 [Deterministic execution candidate09](../runs/20261030-continuation-failure-diagnostics-09/README.md) follows verified08 pre-reference atom-gradient variation. An explicit extra XLA deterministic-op flag changes only candidate production kernel selection; original independent FP64 environment, models/inputs/loss/LR and every exact/native gate remain. No optimizer admission or saved-result change. CPU40/flag support/all4startups/full storage precede read-only GPUs; actual current campaign required.
+
+
+Full deterministic-profile Protenix validation: protenix_runtime_qualification.py and protenix_runtime_qualification_ops.py, packaged/staged ONCE with manage_runtime_qualification.py; canonical run20261030-protenix-runtime-qualification-01. No production/optimizer submission branch. Original diagnostics10 remain separate and unchanged.

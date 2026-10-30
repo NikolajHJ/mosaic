@@ -103,3 +103,22 @@ saved input/output/scientific setting/other-project job changed or cleanup.
 No optimizer continuation queued/running/new committed prefix. Actual current10
 campaign/dispatch-verification and own submission/release override stale09RUN
 or10unsubmitted descriptions. Monitor remains hourly/quiet unchanged.
+
+
+Verified30October06:01:06UTC: repaired chemistry diagnostic10 GPU29852164
+ACTUALDONE/gpul40s/samejobLSFsuccess. Complete original native/fullFP64/parity/
+null/locality/frozen checks passed,38reference requests/fullFP64close audit,
+zero/reversed/scaled controls rejected. All48 original measurement dictionaries
+EXACTLY stable across3x16 before/during/after groups under candidate; original
+reference env0 retained. Independent269compactfiles/12parent-source/37input/
+266remoteNPZ/124referencedNPZ/47scientificJSON byte-schema audit passed.80complete
+metadata budget receipts verified, max75,594,087bytes within explicit128MiB,
+complete child105,822,827 within256MiB. Input/source preservation passed. No
+binaryNPZ downloaded/numerical work locally. Private summary failure is exactly
+intentional post-native sentinel; original scientific failures stayFAILED. No
+coupled chemistry/pilots/optimizer step or continuation admission. Initial local
+verifier incorrectly expected plain private assessment path; failure preserved,
+then authenticated chemistry summary/prospective-evidence schema validated with
+exact sentinel/empty combined records; no scientific requirement relaxed.
+Current10 terminal-verification and campaign bind exact evidence. Next is FULL
+fresh prospective validation, not replay of failed producers/automatic restart.

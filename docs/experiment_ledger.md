@@ -10337,3 +10337,74 @@ saved input/output/scientific setting/other-project job changed or cleanup.
 No optimizer continuation queued/running/new committed prefix. Actual current10
 campaign/dispatch-verification and own submission/release override stale09RUN
 or10unsubmitted descriptions. Monitor remains hourly/quiet unchanged.
+
+
+Verified30October06:01:06UTC: repaired chemistry diagnostic10 GPU29852164
+ACTUALDONE/gpul40s/samejobLSFsuccess. Complete original native/fullFP64/parity/
+null/locality/frozen checks passed,38reference requests/fullFP64close audit,
+zero/reversed/scaled controls rejected. All48 original measurement dictionaries
+EXACTLY stable across3x16 before/during/after groups under candidate; original
+reference env0 retained. Independent269compactfiles/12parent-source/37input/
+266remoteNPZ/124referencedNPZ/47scientificJSON byte-schema audit passed.80complete
+metadata budget receipts verified, max75,594,087bytes within explicit128MiB,
+complete child105,822,827 within256MiB. Input/source preservation passed. No
+binaryNPZ downloaded/numerical work locally. Private summary failure is exactly
+intentional post-native sentinel; original scientific failures stayFAILED. No
+coupled chemistry/pilots/optimizer step or continuation admission. Initial local
+verifier incorrectly expected plain private assessment path; failure preserved,
+then authenticated chemistry summary/prospective-evidence schema validated with
+exact sentinel/empty combined records; no scientific requirement relaxed.
+Current10 terminal-verification and campaign bind exact evidence. Next is FULL
+fresh prospective validation, not replay of failed producers/automatic restart.
+
+
+Prepared30October fresh complete runtime qualification01 after independently
+verified complete10 chemistry native pass. New plain/chemistry Pro VALIDATE
+entrypoints retain original arithmetic, args/saved inputs/FD/digest/combined
+coefficients/BOTH pilots/runtime; remove diagnostic stop only. No production
+branch, no optimizer admission from old diagnostics. Explicit candidate profile,
+original FP64env0,128MiB metadata/512MiB group inside original2GiB/full shared
+4GiB/100000files.21portable controls passed;1026allocated fullcases plus actual
+flag support/fouractualCLIs required before two GPUvalidators. No old source/
+result/settings changed; no cleanup. Preparation not pass/submission.
+See experiments/validation/endpoint-qualification/runs/20261030-protenix-runtime-qualification-01.
+
+
+Verified30October06:22:04UTC: full runtime qualification01 CPU29852397
+ACTUALDONE/hpc/samejobLSFsuccess,1029actualcases across24modules(958main26+
+47chem05+24new), zero failures/errors/skips, actual4producer/reference startup
+bodies and installed CPUflag probe passed. Independent56compactfile/source/
+byte/XML/module-count/LSF/exactvector/heldrelease audit passed. Controller
+29852398 ACTUALRUN; no nativeGPUqualification IDs established in this capture.
+New sealed6file source manifest9108a418953a4ee7f4d481667ac4a5035402c96f10179f1e8a44c3358af965ab,
+plana1375a2b8f33f573a693a16a86eb763aa2c93e98c54e2ae68fd372a8a022371c,
+archive18328B/SHA10acc5fb0c708ca62c5d23c4b66020eea76d349cee5c1912ba790eb892d32e61.
+ActiveLOCALsource02; initial local source01 draft preserved/unsubmitted and its
+6900schild+entry accounting corrected to6600s total plus600s wrap/cleanup reserve
+before remote stage.24ownportable and136resource portable tests locally passed;
+all1005inherited scientific/array fixtures allocatedCPU only. Actual initial
+storage39,287,443,103required/40,043,782,216available; CPUentry39,286,355,615/
+40,042,694,728bytes,4GiB/100000files. Complete512MiB qualification funded within
+oldcontrol2GiB, all shared native horizons retained. No reservation/full native
+pass/optimizer admission. Four executable Gitindex bytes match sealed source02.
+No saved original input/result/settings/failed gate changed, no cleanup/other
+project mutation. Upcoming full validation must include coupled chemistry/
+low-high-actual coefficient/BOTHtenpilots/runtime, then independent sameGPUjob
+scheduler/LSF/proof audit; callbacks alone cannot authorize production.
+
+
+Verified30October06:24:53UTC: full runtime qualification01 CPU29852397 and
+controller29852398 ACTUALDONE/hpc/samejobLSFsuccess. All1029actual CPUcases/
+24modules, zero failures/errors/skips, original/new actual4CLIstartups and CPU
+flag support independently verified.97compactfile/source/byte/XML/LSF/all6
+actual command-resource-dependency vectors/acceptedheld receipt-before-release
+proof audit passed. Full Pro validators ACTUALLY submitted: plain29852401/
+callback29852403, chemistry29852404/callback29852405. All4PEND; bothGPU requests
+oneexclusiveL40S+MPS/2h, plain4CPU8GiBslot, chemistry8CPU4GiBslot; own-ended
+capture callbacks4CPU4GiBslot. Full dispatch39,283,880,095required/
+40,040,219,208available bytes,4GiB/100000files. Complete512MiB group funded
+inside original2GiB control cap. No GPUentry/fullcoupled/pilot/runtime pass yet;
+these are full validation jobs, not optimizer continuations. Original settings,
+saved runs and failed admissions unchanged; complete native10 pass not automatic
+production admission. Current source/campaign/own submissions/releases are
+immutable authoritative; never repeat stage/controller/any acceptedjob.

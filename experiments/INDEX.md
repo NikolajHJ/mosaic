@@ -91,3 +91,6 @@ GPU29851770 EXIT before models and05 preflight failure; no optimizer admission.
 30October: endpoint diagnostic10 repairs09 chemistry metadata admission only;
 49allocated cases/four actual startups/whole capacity precede one read-only
 chemistryGPU. No optimizer pass or saved update. [Run](validation/endpoint-qualification/runs/20261030-continuation-failure-diagnostics-10/README.md).
+
+
+30October: complete10 native diagnostics passed; [fresh Pro runtime qualification01](validation/endpoint-qualification/runs/20261030-protenix-runtime-qualification-01/README.md) CPU1029/all4actualstartups passed, two full GPU validations conditional. No optimizer admission or new saved update.

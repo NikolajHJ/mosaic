@@ -397,3 +397,9 @@ Current read-only metadata repair is [attempt10](runs/20261030-continuation-fail
 
 
 Verified10 at05:07:48UTC: CPU29852155/controller29852156 DONE/49cases/all4actualstartups; independent57file/source/LSF/heldrelease/fullstorage audit passed. ONLY chemistry diagnostic29852164 PEND, no native finding/optimizer. Original09plain complete/chemistrycap failure retained. Read10campaign; never duplicate.
+
+
+Fresh FULL validation after complete10 native pass: [runtime qualification01](runs/20261030-protenix-runtime-qualification-01/README.md), original1005+21new CPUcases/all4actualCLIs before two Pro GPUvalidators, including coupled chemistry and BOTHpilots/runtime. No optimizer branch. Current campaign required.
+
+
+Verified06:24:53UTC: fresh runtime qualification01 CPU29852397/controller29852398 DONE/1029cases/all4actualstartups, independent97file/LSF/6vectors/heldrelease/fullstorage audit passed. FULL Pro plain29852401/capture29852403 and Prochem29852404/capture29852405 PEND, no GPUresult/optimizer. Native10 DONE/48stable/fullreference; keep original failures. Read current runtime qualification01campaign, no duplicate stage.

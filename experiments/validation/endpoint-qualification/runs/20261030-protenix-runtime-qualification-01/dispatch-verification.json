@@ -1,0 +1,59 @@
+{
+  "status": "passed_independent_CPU1029_controller_LSF_actual_two_full_validation_GPUs_and_two_captures_held_release_and_full_storage_audit",
+  "observed_utc": "2026-10-30T06:24:53.852969+00:00",
+  "files_verified": 97,
+  "source_manifest_sha256": "9108a418953a4ee7f4d481667ac4a5035402c96f10179f1e8a44c3358af965ab",
+  "jobs": {
+    "cpu": "29852397",
+    "after-cpu": "29852398",
+    "gpu-plain": "29852401",
+    "gpu-chemistry": "29852404",
+    "after-plain": "29852403",
+    "after-chemistry": "29852405"
+  },
+  "scheduler": {
+    "29852397": "DONE",
+    "29852398": "DONE",
+    "29852401": "PEND",
+    "29852404": "PEND",
+    "29852403": "PEND",
+    "29852405": "PEND"
+  },
+  "gates": {
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/chemistry-continuation-05/runtime-qualification-01/cpu/continuation-storage-entry.json": {
+      "status": "passed",
+      "required_bytes": 39286355615,
+      "available_bytes": 40042694728,
+      "reserve_bytes": 4294967296,
+      "file_reserve": 100000
+    },
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/chemistry-continuation-05/runtime-qualification-01/after-cpu/continuation-storage-dispatch.json": {
+      "status": "passed",
+      "required_bytes": 39283880095,
+      "available_bytes": 40040219208,
+      "reserve_bytes": 4294967296,
+      "file_reserve": 100000
+    },
+    "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/chemistry-continuation-05/runtime-qualification-01/after-cpu/continuation-storage-entry.json": {
+      "status": "passed",
+      "required_bytes": 39284944031,
+      "available_bytes": 40041283144,
+      "reserve_bytes": 4294967296,
+      "file_reserve": 100000
+    }
+  },
+  "optimizer_updates": 0,
+  "can_admit_new_child": false,
+  "local_scientific_work": false,
+  "candidate_flag_CPU_supported_not_GPU_qualified": {
+    "XLA_FLAGS": "--xla_gpu_autotune_level=0 --xla_gpu_exclude_nondeterministic_ops=true",
+    "jax_version": "0.11.1",
+    "CPU_devices": 1,
+    "GPU_initialized": false
+  },
+  "CPU_cases": 1029,
+  "actual_original_startups": 4,
+  "controller_LSF_success": true,
+  "GPU_diagnostic_findings_verified": false,
+  "optimizer_jobs": []
+}

@@ -1,0 +1,17 @@
+{
+  "status": "verified_active_hourly_handoff_to_full_runtime_qualification01",
+  "automation_id": "mosaic1",
+  "rrule": "RRULE:FREQ=MINUTELY;INTERVAL=60",
+  "target_thread_id": "01a12559-3f58-74f0-9943-a66e2ba71a54",
+  "prompt_sha256": "a155cdb1a6e8e83860646a4fe5a159752063420540cf2c8f93827df62029a6df",
+  "latest_observed_utc": "2026-10-30T06:24:53.852969+00:00",
+  "jobs": {
+    "cpu": "29852397",
+    "controller": "29852398",
+    "plain_GPU": "29852401",
+    "plain_capture": "29852403",
+    "chemistry_GPU": "29852404",
+    "chemistry_capture": "29852405"
+  },
+  "optimizer_jobs": []
+}
