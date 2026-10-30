@@ -83,3 +83,6 @@ GPU29851770 EXIT before models and05 preflight failure; no optimizer admission.
 
 
 [Endpoint repeat diagnostics08](validation/endpoint-qualification/runs/20261030-continuation-failure-diagnostics-08/README.md): unchanged-runtime16replicas with replica0 retained by original guard, after07 localized tiny native atom-gradient variation. Read-only/no continuation admission.
+
+
+[Endpoint deterministic-execution candidate09](validation/endpoint-qualification/runs/20261030-continuation-failure-diagnostics-09/README.md) follows verified08 native gradient variation before reference loading. New declared compiler profile is diagnostic only, never original recertification or optimizer admission.

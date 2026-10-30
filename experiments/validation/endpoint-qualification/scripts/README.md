@@ -266,3 +266,6 @@ admission branch or changed numerical/capture/optimization/saved-result bytes.
 
 
 [Unchanged-runtime repeat diagnostics08](../runs/20261030-continuation-failure-diagnostics-08/README.md) follows verified07 terminal findings: plain native/FP64 replay stable; chemistry native atom-gradient replay varied9.3e-10 before coupled chemistry checks. Exactly16 raw diagnostic replicas per native measurement; original guard always receives replica0, no stable-repeat selection or runtime flag change. CPU34/all4actualstartups verified, actual GPU IDs/outcomes require current08 campaign. No optimizer admission.
+
+
+[Deterministic execution candidate09](../runs/20261030-continuation-failure-diagnostics-09/README.md) follows verified08 pre-reference atom-gradient variation. An explicit extra XLA deterministic-op flag changes only candidate production kernel selection; original independent FP64 environment, models/inputs/loss/LR and every exact/native gate remain. No optimizer admission or saved-result change. CPU40/flag support/all4startups/full storage precede read-only GPUs; actual current campaign required.

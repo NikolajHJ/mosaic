@@ -16,8 +16,8 @@ BASE=Path('/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01')
 CAPACITY=BASE/'nonchem-precision-release-26/source'
 CAPACITY_PIN='8324c1d312adeaa4c67c475c01ef1217df6f3ad4044b997d1b73e168325412d3'
 SCOPE=BASE/'nonchem-precision-continuation-26'
-ROOT=SCOPE/'chemistry-continuation-05/boundary-diagnostics-08'
-SOURCE=SCOPE/'boundary-diagnostics-release-08/source'
+ROOT=SCOPE/'chemistry-continuation-05/boundary-diagnostics-09'
+SOURCE=SCOPE/'boundary-diagnostics-release-09/source'
 PYTHON='/work3/s234818/mosaic/envs/protenix-tiny/bin/python'
 
 
@@ -51,7 +51,7 @@ def argv(phase,pin,dependency=None):
     a=['bsub','-H','-env','all,~CUDA_VISIBLE_DEVICES,~CUDA_MPS_PIPE_DIRECTORY,~CUDA_MPS_LOG_DIRECTORY,~CUDA_MPS_ACTIVE_THREAD_PERCENTAGE',
        '-q','gpul40s' if gpu else 'hpc','-n',str(slots),'-R','span[hosts=1]','-R',
        'rusage[mem='+('8GB' if phase=='gpu-plain' else '2GB' if slots==1 else '4GB')+']','-W','01:00' if gpu else '00:30' if slots==1 else '01:00',
-       '-J','mosaic-boundary-diagnostics08-'+phase,'-o',str(p/'stdout.%J.log'),'-e',str(p/'stderr.%J.log')]
+       '-J','mosaic-boundary-diagnostics09-'+phase,'-o',str(p/'stdout.%J.log'),'-e',str(p/'stderr.%J.log')]
     if gpu:a+=['-gpu','num=1:mode=exclusive_process:mps=yes']
     if dependency:a+=['-w',dependency]
     return a+['bash','-l',str(SOURCE/'scripts/failure_diagnostic_stage.lsf'),str(SOURCE),pin,phase,'--capacity-source',str(CAPACITY)]
@@ -127,7 +127,13 @@ def execute(phase,pin):
         sub=read(ROOT/'cpu/submission.json');text=' '.join((ROOT/'cpu'/('stdout.'+sub['job_id']+'.log')).read_text().split())
         require(text.count('Subject: Job '+sub['job_id']+':')==1 and 'queue <hpc>' in text and 'Successfully completed.' in text and 'Exited with exit code' not in text,'Actual same CPU LSF success required')
         rows=list(ET.parse(ROOT/'cpu/payload/tests.xml').getroot().iter('testcase'))
-        require(len(rows)==34 and all(not list(r) for r in rows),'All34 allocated fixtures must pass')
+        require(len(rows)==40 and all(not list(r) for r in rows),'All40 allocated fixtures must pass')
+        profile=read(ROOT/'cpu/payload/candidate-runtime-probe.json')
+        require(profile['status']=='supported_by_installed_CPU_backend_not_GPU_qualified'
+                and profile['models_loaded'] is False and profile['optimizer_updates']==0
+                and profile['job_id']==sub['job_id']
+                and profile['runtime']['XLA_FLAGS']==plan['execution_profile']['production_XLA_FLAGS'],
+                'Actual installed-runtime candidate flag probe required before GPU submission')
         require(read(ROOT/'cpu/payload/analysis/assessment.json')['status']=='diagnostics_completed_original_failures_preserved','Saved-probe CPU analysis incomplete')
         startup=read(ROOT/'cpu/payload/startup/assessment.json')
         require(startup['status']=='passed_actual_original_pre_model_startups' and startup['model_constructed'] is False
@@ -153,17 +159,21 @@ def execute(phase,pin):
                     'Proposed GPU allocation differs from unchanged actual reference worker predicate')
         storage(op,parent,'dispatch')
         gpus={kind:submit('gpu-'+kind,pin) for kind in ('plain','chemistry')}
-        write(payload/'assessment.json',{'status':'CPU34_actual_startups_reference_metadata_passed_GPU_diagnostics_submitted',
+        write(payload/'assessment.json',{'status':'CPU40_actual_startups_reference_metadata_passed_GPU_diagnostics_submitted',
               'gpus':gpus,'optimizer_jobs':[]});return
     if phase=='cpu':
         command=[PYTHON,'-m','pytest',str(SOURCE/'tests'),'-q','--rootdir',str(SOURCE),'--import-mode=importlib','-o','addopts=','-p','no:cacheprovider',
                  '--basetemp',str(Path(os.environ['TMPDIR'])/'boundary-diagnostics'),'--junitxml='+str(payload/'tests.xml')]
         with (payload/'tests.log').open('x') as f:subprocess.run(command,check=True,stdout=f,stderr=subprocess.STDOUT,timeout=600)
+        diagnostic=module(SOURCE/'scripts/continuation_failure_diagnostics.py','_candidate_runtime_probe')
+        diagnostic.probe_runtime_flag(payload/'candidate-runtime-probe.json')
         startup=[PYTHON,str(SOURCE/'scripts/continuation_failure_diagnostics.py'),'--plan',str(SOURCE/'plan.json'),
                  '--pin',op.sha(SOURCE/'plan.json'),'--mode','startup','--output',str(payload/'startup')]
         write(payload/'actual-startup-command.json',{'argv':startup,'model_execution_authorized':False})
         with (payload/'startup.log').open('x') as f:subprocess.run(startup,check=True,stdout=f,stderr=subprocess.STDOUT,timeout=600)
     else:
+        require(os.environ.get('XLA_FLAGS')==plan['execution_profile']['production_XLA_FLAGS'],
+                'Explicit candidate production profile differs before model execution')
         routing_path=(CAPACITY/'scripts/cuda_ownership.py' if phase=='gpu-plain'
                       else Path(plan['chemistry_source']['path'])/'scripts/chemistry_cuda_ownership.py')
         routing=module(routing_path,'_same_qualified_role_specific_cuda_routing')

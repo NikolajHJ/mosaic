@@ -13,7 +13,7 @@
   "plan_sha256": "c6614ac6ad8b3e418b3fabbe19d5d086042fdaeb4ffb117da6fee32002cdf239",
   "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/chemistry-continuation-05/boundary-diagnostics-08",
   "source": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/boundary-diagnostics-release-08/source",
-  "status": "CPU34_four_startups_controller_passed_both_repeat_GPU_diagnostics_RUN",
+  "status": "both_repeat_diagnostics_DONE_atom_gradient_variation_before_reference_original_failures_preserved",
   "tag": "20261030-continuation-failure-diagnostics-08",
   "cpu_verification": {
     "status": "passed_independent_CPU34_source_XML_LSF_four_actual_startups_and_hold_release_provenance",
@@ -50,7 +50,7 @@
     "CPU_cases": 34,
     "actual_original_startups": 4
   },
-  "latest_observed_utc": "2026-10-30T03:18:58.552197+00:00",
+  "latest_observed_utc": "2026-10-30T04:01:24.582164+00:00",
   "dispatch_verification": {
     "status": "passed_independent_CPU34_controller_LSF_actual_two_GPU_submissions_held_release_and_full_storage_audit",
     "observed_utc": "2026-10-30T03:18:58.552197+00:00",
@@ -113,5 +113,6 @@
     "controller_LSF_success": true,
     "GPU_diagnostic_findings_verified": false,
     "optimizer_jobs": []
-  }
+  },
+  "terminal_verification": "terminal-verification.json"
 }

@@ -19,6 +19,7 @@ from types import SimpleNamespace
 
 CAP = 128 * 1024**2
 REPEATS = 16
+CANDIDATE_FLAGS = '--xla_gpu_autotune_level=0 --xla_gpu_exclude_nondeterministic_ops=true'
 STOP = 'READ_ONLY_DIAGNOSTIC_NATIVE_BOUNDARY_REACHED'
 EXPECTED = {
     'Live production changed while the FP64 GPU process coexisted',
@@ -45,6 +46,53 @@ def write(path, value):
 def sha(path):
     with Path(path).open('rb') as stream:
         return hashlib.file_digest(stream, 'sha256').hexdigest()
+
+
+def candidate_environment(inherited):
+    """Closed, explicit candidate execution profile; never an implicit fallback."""
+    result = dict(inherited)
+    require(result.get('XLA_FLAGS', '').strip() in ('', '--xla_gpu_autotune_level=0', CANDIDATE_FLAGS),
+            'Conflicting or undeclared inherited compiler profile')
+    result['XLA_FLAGS'] = CANDIDATE_FLAGS
+    return result
+
+
+def guard_candidate_environment(environment):
+    require(environment.get('XLA_FLAGS') == CANDIDATE_FLAGS,
+            'Actual production candidate flags changed or were not applied')
+
+
+def probe_runtime_flag(output):
+    """Allocated CPU backend recognizes the flag; no model or GPU setup."""
+    require(os.environ.get('LSB_JOBID', '').isdigit() and os.environ.get('LSB_QUEUE') == 'hpc',
+            'Actual allocated CPU runtime-flag probe required')
+    environment = candidate_environment(os.environ)
+    environment.update(CUDA_VISIBLE_DEVICES='', JAX_PLATFORMS='cpu', JAX_ENABLE_X64='0')
+    code = ('import os,json,jax; devices=jax.devices("cpu"); '
+            'assert devices and all(d.platform=="cpu" for d in devices); '
+            'print(json.dumps({"XLA_FLAGS":os.environ["XLA_FLAGS"],'
+            '"jax_version":jax.__version__,"CPU_devices":len(devices),"GPU_initialized":False}))')
+    command = [sys.executable, '-B', '-c', code]
+    try:
+        run = subprocess.run(command, env=environment, capture_output=True, text=True, timeout=120)
+    except subprocess.TimeoutExpired as error:
+        decoded = lambda value: value.decode(errors='replace') if isinstance(value, bytes) else value or ''
+        write(output, {'status': 'failed_flag_probe_timeout', 'argv': command, 'returncode': None,
+                       'stdout': decoded(error.stdout), 'stderr': decoded(error.stderr),
+                       'optimizer_updates': 0, 'can_admit_new_child': False})
+        raise
+    value = {'status': 'failed', 'job_id': os.environ['LSB_JOBID'], 'argv': command,
+             'returncode': run.returncode, 'stdout': run.stdout, 'stderr': run.stderr,
+             'models_loaded': False, 'optimizer_updates': 0, 'can_admit_new_child': False}
+    write(Path(output).with_suffix('.raw.json'), value)
+    if run.returncode == 0:
+        proof = json.loads(run.stdout)
+        guard_candidate_environment(proof)
+        require(proof['CPU_devices'] > 0 and proof['GPU_initialized'] is False, 'CPU-only flag probe differs')
+        value.update(status='supported_by_installed_CPU_backend_not_GPU_qualified', runtime=proof)
+    write(output, value)
+    require(run.returncode == 0, 'Candidate flag unsupported; preserve failure without fallback')
+    return value
 
 
 def module(path, name):
@@ -185,6 +233,7 @@ def repeated_measurements(precision, output):
     original = precision._measurement
     groups = []
     def repeated(callbacks, values):
+        guard_candidate_environment(os.environ)
         replicas = []
         def evaluate():
             result = original(callbacks, values)
@@ -194,6 +243,8 @@ def repeated_measurements(precision, output):
         row = {'native_measurement_index': len(groups), 'replicas': replicas,
                'replicas_requested': REPEATS, 'replicas_completed': len(replicas),
                'original_gate_uses_replica': 0, 'selected_for_agreement': False,
+               'production_execution_profile': CANDIDATE_FLAGS,
+               'profile_adopted_for_saved_runs': False,
                'optimizer_updates': 0, 'can_admit_new_child': False}
         write(output / ('group-' + str(len(groups)).zfill(3) + '.json'), row)
         groups.append(row)

@@ -35,7 +35,8 @@ if [[ "$phase" == gpu-* ]]; then
   esac
   [[ "$LSB_QUEUE" == gpul40s && "$LSB_DJOB_NUMPROC" == "$expected_slots" ]]
   module load cuda/12.9.1 cudnn/v9.13.0.50-prod-cuda-12.X
-  export JAX_PLATFORMS=cuda,cpu XLA_FLAGS=--xla_gpu_autotune_level=0
+  export JAX_PLATFORMS=cuda,cpu
+  export XLA_FLAGS='--xla_gpu_autotune_level=0 --xla_gpu_exclude_nondeterministic_ops=true'
 else
   [[ "$LSB_QUEUE" == hpc ]]
   export CUDA_VISIBLE_DEVICES=''

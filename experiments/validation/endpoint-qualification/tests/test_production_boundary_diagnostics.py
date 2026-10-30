@@ -173,6 +173,34 @@ def test_metadata_replication_does_not_add_optimizer_or_compiler_flag_changes():
     assert not any(word in text for word in ('XLA_FLAGS','CUBLAS_WORKSPACE_CONFIG','run_updates','run_chemical_updates'))
 
 
+def test_metadata_candidate_flags_are_closed_and_do_not_mutate_inherited_mapping():
+    original={'XLA_FLAGS':'--xla_gpu_autotune_level=0','other':'kept'}
+    result=d.candidate_environment(original)
+    assert result['XLA_FLAGS']==d.CANDIDATE_FLAGS and result['other']=='kept'
+    assert original['XLA_FLAGS']=='--xla_gpu_autotune_level=0'
+
+
+@pytest.mark.parametrize('flags',[
+    '--xla_gpu_autotune_level=1',
+    '--xla_gpu_autotune_level=0 --xla_gpu_exclude_nondeterministic_ops=true --xla_gpu_exclude_nondeterministic_ops=true',
+    '--some_undeclared_flag=true'])
+def test_metadata_conflicting_duplicate_or_unknown_candidate_flags_are_rejected(flags):
+    with pytest.raises(ValueError,match='compiler profile'):d.candidate_environment({'XLA_FLAGS':flags})
+
+
+def test_metadata_actual_candidate_profile_cannot_silently_revert_to_original():
+    d.guard_candidate_environment({'XLA_FLAGS':d.CANDIDATE_FLAGS})
+    with pytest.raises(ValueError,match='not applied'):
+        d.guard_candidate_environment({'XLA_FLAGS':'--xla_gpu_autotune_level=0'})
+
+
+def test_allocated_candidate_flag_parses_in_installed_CPU_runtime_without_models(tmp_path):
+    proof=d.probe_runtime_flag(tmp_path/'candidate-flag.json')
+    assert proof['status']=='supported_by_installed_CPU_backend_not_GPU_qualified'
+    assert proof['runtime']['GPU_initialized'] is False and proof['models_loaded'] is False
+    assert proof['optimizer_updates']==0 and proof['can_admit_new_child'] is False
+
+
 @pytest.mark.parametrize('change', [False, True])
 def test_measurement_capture_retains_actual_callback_counts_and_exact_original_result(tmp_path, change):
     np = d.numpy()

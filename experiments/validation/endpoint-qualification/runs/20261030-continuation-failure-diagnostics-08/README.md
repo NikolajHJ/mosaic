@@ -77,3 +77,6 @@ Original07 numerical findings are preserved independently;08 tests16repeats with
 original guard always seeing replica0, not selection of a favourable result.
 No new report without changed saved optimizer prefixes. Other-project jobs
 remain read-only. Hourly monitoring continues only meaningful verified changes.
+
+
+Actual04:01:24UTC bothGPU29851862/29851866 DONE/LSFsuccess. Full terminal source/bytes/group/rawNPZ/schema audit passed: plain48stable/fullnativeFP64controls pass; chemistry3atom-gradient digests BEFORE reference and4DURING, each16replicas, same scalars/bond/frozen digests. Original guard rejected during replay; no optimizer admission. See terminal-verification.json. Candidate09 explicitly tests an additional deterministic execution flag without adopting it or changing any saved run.

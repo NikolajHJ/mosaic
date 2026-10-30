@@ -1,0 +1,316 @@
+{
+  "status": "passed_independent_repeat_diagnostic_terminal_LSF_bytes_schema_digests_groups_raw_binding_source_input_audit",
+  "observed_utc": "2026-10-30T04:01:24.582164+00:00",
+  "source_manifest_sha256": "4d7e7d932aa147dc8303f808eb02c888e511a3640a31c4352c6bab7c5fe31faf",
+  "compact_files_verified": 257,
+  "parent_source_manifests_rehashed_remotely": 10,
+  "input_bindings_rehashed_remotely": 25,
+  "all_raw_NPZ_files_rehashed_remotely": 354,
+  "referenced_NPZ_bindings_verified": 286,
+  "referenced_scientific_JSON_bindings_verified": 69,
+  "delivery_bytes": {
+    "path": "results\\hpc\\20261030-continuation-failure-diagnostics-08\\status03\\stdout.json",
+    "bytes": 20844633,
+    "sha256": "20bd1fbeba6b2d30145d1b2862df2fbbd48a6eb058bf92ad72e08b48d2cc476c"
+  },
+  "findings": {
+    "plain": {
+      "job_id": "29851862",
+      "status": "all48_raw_replicas_stable_full_native_FP64_controls_passed_not_admission",
+      "observed_boundary_outcome": "READ_ONLY_DIAGNOSTIC_NATIVE_BOUNDARY_REACHED",
+      "raw_measurements": 48,
+      "groups": [
+        {
+          "phase": "before_reference",
+          "native_measurement_index": 0,
+          "replicas_verified": 16,
+          "original_gate_uses_replica": 0,
+          "unique_digest_counts": {
+            "primal": 1,
+            "autodiff_scalar": 1,
+            "X": 1,
+            "E_upper": 1
+          },
+          "first_record": {
+            "index": 0,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/chemistry-continuation-05/boundary-diagnostics-08/gpu-plain/payload/replay/plain/measurements/measurement-000.npz",
+            "bytes": 6389,
+            "sha256": "c78f79645b0094b94c421e4bc446817114d9ab4657e8461bb99369f20dac6b37",
+            "measurement": {
+              "primal": {
+                "dtype": "float32",
+                "shape": [],
+                "sha256": "e79bda0713f21d6ce051fb91e887e8e5df57ea8de1254467dd511e40cf04891d"
+              },
+              "autodiff_scalar": {
+                "dtype": "float32",
+                "shape": [],
+                "sha256": "2398dac9c67605b10d0f909225215aebb486e4544783f5fa3d7d8b2fd536d6cb"
+              },
+              "gradients": {
+                "X": {
+                  "dtype": "float32",
+                  "shape": [
+                    25,
+                    6
+                  ],
+                  "sha256": "67b694bced6e18b5cc961977e130faef7d910d6134834418e782e44010346270"
+                },
+                "E_upper": {
+                  "dtype": "float32",
+                  "shape": [
+                    300,
+                    5
+                  ],
+                  "sha256": "73efbbf348376f68ba3acf41c571de84887b70d837ec22d2577fc8476fff6041"
+                }
+              },
+              "frozen": {
+                "context_digest": "b28dfad8e5ede565071c70a61695f6a38f5cb6bd591705e32979e59050ff5ce4",
+                "model_digest": "8d6926d5390fe682e193089f790ce53aa4011a6d5509ddb452a55db3d89b0ab2"
+              }
+            }
+          }
+        },
+        {
+          "phase": "during_reference",
+          "native_measurement_index": 1,
+          "replicas_verified": 16,
+          "original_gate_uses_replica": 0,
+          "unique_digest_counts": {
+            "primal": 1,
+            "autodiff_scalar": 1,
+            "X": 1,
+            "E_upper": 1
+          },
+          "first_record": {
+            "index": 16,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/chemistry-continuation-05/boundary-diagnostics-08/gpu-plain/payload/replay/plain/measurements/measurement-016.npz",
+            "bytes": 6389,
+            "sha256": "c78f79645b0094b94c421e4bc446817114d9ab4657e8461bb99369f20dac6b37",
+            "measurement": {
+              "primal": {
+                "dtype": "float32",
+                "shape": [],
+                "sha256": "e79bda0713f21d6ce051fb91e887e8e5df57ea8de1254467dd511e40cf04891d"
+              },
+              "autodiff_scalar": {
+                "dtype": "float32",
+                "shape": [],
+                "sha256": "2398dac9c67605b10d0f909225215aebb486e4544783f5fa3d7d8b2fd536d6cb"
+              },
+              "gradients": {
+                "X": {
+                  "dtype": "float32",
+                  "shape": [
+                    25,
+                    6
+                  ],
+                  "sha256": "67b694bced6e18b5cc961977e130faef7d910d6134834418e782e44010346270"
+                },
+                "E_upper": {
+                  "dtype": "float32",
+                  "shape": [
+                    300,
+                    5
+                  ],
+                  "sha256": "73efbbf348376f68ba3acf41c571de84887b70d837ec22d2577fc8476fff6041"
+                }
+              },
+              "frozen": {
+                "context_digest": "b28dfad8e5ede565071c70a61695f6a38f5cb6bd591705e32979e59050ff5ce4",
+                "model_digest": "8d6926d5390fe682e193089f790ce53aa4011a6d5509ddb452a55db3d89b0ab2"
+              }
+            }
+          }
+        },
+        {
+          "phase": "after_reference_exit",
+          "native_measurement_index": 2,
+          "replicas_verified": 16,
+          "original_gate_uses_replica": 0,
+          "unique_digest_counts": {
+            "primal": 1,
+            "autodiff_scalar": 1,
+            "X": 1,
+            "E_upper": 1
+          },
+          "first_record": {
+            "index": 32,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/chemistry-continuation-05/boundary-diagnostics-08/gpu-plain/payload/replay/plain/measurements/measurement-032.npz",
+            "bytes": 6389,
+            "sha256": "c78f79645b0094b94c421e4bc446817114d9ab4657e8461bb99369f20dac6b37",
+            "measurement": {
+              "primal": {
+                "dtype": "float32",
+                "shape": [],
+                "sha256": "e79bda0713f21d6ce051fb91e887e8e5df57ea8de1254467dd511e40cf04891d"
+              },
+              "autodiff_scalar": {
+                "dtype": "float32",
+                "shape": [],
+                "sha256": "2398dac9c67605b10d0f909225215aebb486e4544783f5fa3d7d8b2fd536d6cb"
+              },
+              "gradients": {
+                "X": {
+                  "dtype": "float32",
+                  "shape": [
+                    25,
+                    6
+                  ],
+                  "sha256": "67b694bced6e18b5cc961977e130faef7d910d6134834418e782e44010346270"
+                },
+                "E_upper": {
+                  "dtype": "float32",
+                  "shape": [
+                    300,
+                    5
+                  ],
+                  "sha256": "73efbbf348376f68ba3acf41c571de84887b70d837ec22d2577fc8476fff6041"
+                }
+              },
+              "frozen": {
+                "context_digest": "b28dfad8e5ede565071c70a61695f6a38f5cb6bd591705e32979e59050ff5ce4",
+                "model_digest": "8d6926d5390fe682e193089f790ce53aa4011a6d5509ddb452a55db3d89b0ab2"
+              }
+            }
+          }
+        }
+      ],
+      "measured_frozen_model_context_unchanged": true,
+      "source_inputs_preserved": true,
+      "optimizer_updates": 0,
+      "can_admit_new_child": false,
+      "can_certify_or_restart_original_study": false,
+      "reference_requests": 38
+    },
+    "chemistry": {
+      "job_id": "29851866",
+      "status": "native_atom_gradient_variation_already_before_FP64_reference",
+      "observed_boundary_outcome": "Live production changed while the FP64 GPU process coexisted",
+      "raw_measurements": 32,
+      "groups": [
+        {
+          "phase": "before_reference",
+          "native_measurement_index": 0,
+          "replicas_verified": 16,
+          "original_gate_uses_replica": 0,
+          "unique_digest_counts": {
+            "primal": 1,
+            "autodiff_scalar": 1,
+            "X": 3,
+            "E_upper": 1
+          },
+          "first_record": {
+            "index": 0,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/chemistry-continuation-05/boundary-diagnostics-08/gpu-chemistry/payload/replay/chemistry/measurements/measurement-000.npz",
+            "bytes": 9305,
+            "sha256": "c105a3d4b8bb0e5cdffd9798dff9323ec49e890e6b476ee4fb3e6e07cf912293",
+            "measurement": {
+              "primal": {
+                "dtype": "float32",
+                "shape": [],
+                "sha256": "a8a0663b4ce46231c26e3f272aea174aa80391fd4074eb752abbfedd09a01f2a"
+              },
+              "autodiff_scalar": {
+                "dtype": "float32",
+                "shape": [],
+                "sha256": "0858013e6355ed039dff2f5167a7fac0d6a337de451e5778687976eafc1ad332"
+              },
+              "gradients": {
+                "X": {
+                  "dtype": "float32",
+                  "shape": [
+                    25,
+                    6
+                  ],
+                  "sha256": "5ff9a26c4d53a2e8ccfe376f1cc32e9e8badb7d3807f471b47375ef75f78e31f"
+                },
+                "E_upper": {
+                  "dtype": "float32",
+                  "shape": [
+                    300,
+                    5
+                  ],
+                  "sha256": "cda8e0ba2ad23a74c0a202f9f1fa0ced0dd773b55957b06b1a383b5f642ef2eb"
+                }
+              },
+              "frozen": {
+                "context_digest": "b28dfad8e5ede565071c70a61695f6a38f5cb6bd591705e32979e59050ff5ce4",
+                "model_digest": "8d6926d5390fe682e193089f790ce53aa4011a6d5509ddb452a55db3d89b0ab2"
+              }
+            }
+          }
+        },
+        {
+          "phase": "during_reference",
+          "native_measurement_index": 1,
+          "replicas_verified": 16,
+          "original_gate_uses_replica": 0,
+          "unique_digest_counts": {
+            "primal": 1,
+            "autodiff_scalar": 1,
+            "X": 4,
+            "E_upper": 1
+          },
+          "first_record": {
+            "index": 16,
+            "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/chemistry-continuation-05/boundary-diagnostics-08/gpu-chemistry/payload/replay/chemistry/measurements/measurement-016.npz",
+            "bytes": 9305,
+            "sha256": "cbbb345be67cb4cda20d8524df98968fd70ad20706fbf1d5d71793ed70d3ccd8",
+            "measurement": {
+              "primal": {
+                "dtype": "float32",
+                "shape": [],
+                "sha256": "a8a0663b4ce46231c26e3f272aea174aa80391fd4074eb752abbfedd09a01f2a"
+              },
+              "autodiff_scalar": {
+                "dtype": "float32",
+                "shape": [],
+                "sha256": "0858013e6355ed039dff2f5167a7fac0d6a337de451e5778687976eafc1ad332"
+              },
+              "gradients": {
+                "X": {
+                  "dtype": "float32",
+                  "shape": [
+                    25,
+                    6
+                  ],
+                  "sha256": "ed8b31ded37be6ebb1974989ba4f4053f060b7337f4556da8a26946043fa263c"
+                },
+                "E_upper": {
+                  "dtype": "float32",
+                  "shape": [
+                    300,
+                    5
+                  ],
+                  "sha256": "cda8e0ba2ad23a74c0a202f9f1fa0ced0dd773b55957b06b1a383b5f642ef2eb"
+                }
+              },
+              "frozen": {
+                "context_digest": "b28dfad8e5ede565071c70a61695f6a38f5cb6bd591705e32979e59050ff5ce4",
+                "model_digest": "8d6926d5390fe682e193089f790ce53aa4011a6d5509ddb452a55db3d89b0ab2"
+              }
+            }
+          }
+        }
+      ],
+      "measured_frozen_model_context_unchanged": true,
+      "source_inputs_preserved": true,
+      "optimizer_updates": 0,
+      "can_admit_new_child": false,
+      "can_certify_or_restart_original_study": false,
+      "first_changed_pre_reference_replica": 3,
+      "example_allocated_maximum_absolute_difference": 9.313225746154785e-10,
+      "reference_not_necessary_to_trigger_observed_variation": true,
+      "specific_kernel_cause_proven": false,
+      "combined_chemistry_checks_reached": false
+    }
+  },
+  "local_numerical_arrays_or_models_used": false,
+  "NPZ_binaries_downloaded": false,
+  "optimizer_updates": 0,
+  "optimizer_jobs": [],
+  "can_admit_new_child": false,
+  "original_scientific_failures_preserved": true
+}

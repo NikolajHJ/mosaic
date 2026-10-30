@@ -10177,3 +10177,96 @@ Original07 numerical findings are preserved independently;08 tests16repeats with
 original guard always seeing replica0, not selection of a favourable result.
 No new report without changed saved optimizer prefixes. Other-project jobs
 remain read-only. Hourly monitoring continues only meaningful verified changes.
+
+
+## 2026-10-30T04:01:24Z — Repeats localize native atom-gradient variability before reference loading
+
+Repeat08 plainGPU29851862 and chemistryGPU29851866 ACTUALDONE/gpul40s/same-job
+LSFsuccess. Independent257compact-file byte/schema/group/digest/LSF audit passed,
+all10parent source manifests/files and25inputs rehashed remotely, all354NPZ files
+rehashed remotely,286referencedNPZ and69scientificJSON bindings matched. Binary
+NPZ/large trajectories remain HPC; JSON proof may contain recorded numerical
+values, inspected locally only as bytes/schema/hash metadata, no array/model work.
+Every declared native measurement group completed16replicas, all retained; the
+original guard received replica0 unchanged, without selection/averaging/fallback.
+
+Plain20k: all48measurements exactly stable across3before/during/after groups;
+native/FP64/locality/parity checks passed, all zero/reversed/scaled controls
+rejected and38reference requests/close audit passed. Diagnostic sentinel then
+stopped before pilots/optimizer. Chemistry10k:3atom-gradient digests in16BEFORE
+reference evaluations,4digests in16DURING. Primal/ADscalar/bond-gradient and all
+measured frozen model/context hashes stayed equal; source/saved-input checks
+passed. First changed pre-reference replica3 has allocated difference
+9.313225746154785e-10. Reference co-residency is not necessary to trigger this
+observed variation. Specific kernel is not proven. Original exactguard correctly
+rejects during replay; no original failure recertified/optimizer admitted.
+The discrepancy is native binding before combined chemistry checks/targets.
+
+Prepared NEW immutable candidate09 rather than changing08 or weakening checks.
+Explicit production GPUcompiler profile adds
+--xla_gpu_exclude_nondeterministic_ops=true while retaining autotune0. Official
+OpenXLA documents deterministic lowerings and potential unsupported-op failures/
+runtime cost (https://openxla.org/xla/determinism, reviewed30October). This is a
+candidate EXECUTION context change, not an established fix or optimization
+adoption. Loss/LR/dtype/key/model/context inputs/objectives/optimizer stay the
+same; kernel rounding/runtime may differ. Original independent FP64 reference
+keeps exact old env/source. Existing environment composer supports inherited
+flags; it/its guards and all scientific algorithms remain unmodified. New09
+checks actual effective flags at every native group, failing on reset/absence.
+
+Keep16fixed raw replicas/first-result guard, complete original native/fullFP64/
+FD/parity/nonzero/null/locality/frozen/negativecontrols, post-native stop and
+independent optimizer blockers. No tolerance/epsilon/clipping/normalization or
+mode/daemon change. No fallback if flag unsupported. CPU40 planned:37portable
+metadata passed locally plus2allocated capture controls+1allocated CPU-backend
+flag-support control. Actual phase additionally saves raw/parsed flag probe,
+GPUhidden/CPUbackend only/no models/realLSFjob. All4original actualstartup
+commands/output/native4/8slot predicates and fresh whole storage still gate GPUs.
+
+Source6 manifestcda9744858ff674bc4755bf5af76b9f8c78ac24747ff72165f4e2b2627ca4b28,
+plan9a04ce774905ff14507d1076ff9a9633d7b031d5884a444814733040b2592f11,
+archive21592B/SHAab01128194b7d5cb15457d22b7c5f1b196c6789d1875dac13c5683d54cdca60f.
+Safe archive/everymember/AST/hash and11unchanged capture/stop/entry/control
+function audits passed locally. Stage09 invoked ONCE; actual jobs require own
+receipts, never replay after unknown outcome. Both endpoint diagnostics remain
+1h/4CPU8GiBslot or8CPU4GiBslot/exclusiveL40S/MPS,2500s child/2700s coordinator/
+<=600s entry; complete128MiB funded control cap/full shared4GiB/100000files
+unchanged. No saved optimizer update, originalresult/settings edit, reportrefresh
+or cleanup. Any stable candidate still requires separate COMPLETE fresh coupled/
+pilot/runtime/storage qualification before an optimizer may be submitted.
+
+
+Verified30October04:16:06UTC: candidate09 CPU29851950 ACTUALDONE/hpc/same-job
+LSFsuccess,40actual rawcases/zero failures/errors/skips plus all4actual original
+producer/reference startup bodies passed. Independent47compactfile/source/XML/
+LSF/exactvector/held receipt-before-release audit passed. Actual installedJAX
+0.11.1 CPUbackend recognized exact candidate flags; GPUhidden/CPUdevice1/no
+models/updates. Raw command return0 and parsed JSON support proof verified.
+The .raw.json status is a prevalidation fail-closed placeholder; parsed proof
+status supported_by_installed_CPU_backend_not_GPU_qualified is authoritative.
+This support is NOT actualGPUlowering/nativegradient acceptance. Controller
+29851954 RUN, no GPU09 ID established at this capture; never duplicate stage.
+Initial full capacity39,533,375,647required/40,289,714,760available; CPUentry
+39,532,286,623/40,288,625,736bytes with4GiB/100000files. No reservation/full
+production admission or original failure reclassification. All saved runs and
+optimization defaults remain unchanged; candidate compiler context is explicit.
+
+
+Verified30October04:18:51UTC: candidate09 CPU29851950 and controller29851954
+ACTUALDONE/hpc/same-jobLSFsuccess,40rawcases/all4original actualCLIstartups and
+actual installedCPU-backend flag support passed. Independent76compact-file/
+source/bytes/XML/LSF/all4exact command-resource-dependency vectors/held release
+proof audit passed. ACTUAL candidate GPUdiagnostics plain29851956 and chemistry
+29851957 bothRUN/gpul40s; no GPU/native finding or diagnostic completion yet.
+Full dispatch39,530,124,447required/40,286,463,560available, plainGPUentry
+39,528,706,719/40,285,045,832bytes,4GiB/100000files. Chemistry entry pass not yet
+established in this capture. These are no reservations/full optimizer admission.
+No optimizer continuation queued or saved update, no defaults adopted. Candidate
+changes production compiler profile explicitly, original FP64 reference and all
+scientific guards/settings/data remain. Unsupported/ineffective profile fails
+without fallback or favourable-repeat selection. Current09 campaign/dispatch-
+verification and exact own submitted/released jobs are authoritative; never
+repeat stage/controller/GPUs. All original08/07 findings and failures preserved.
+No cleanup, report force/newrenderer or other-project mutation. Hourly monitor
+continues only for meaningful verified outcomes; complete qualification still
+required before any future optimizer dispatch.

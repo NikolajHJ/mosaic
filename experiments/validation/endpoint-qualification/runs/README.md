@@ -197,3 +197,9 @@ Verified07 at02:35:45UTC: CPU29851801/controller29851802 DONE,30rawcases/all4 ac
 
 
 Verified08 at03:18:58UTC: CPU29851857/controller29851858 DONE/34cases/all4actualstartups, repeat GPUs29851862/29851866 bothRUN, full dispatch/entry storage passed. No result or optimizer admission yet; exact current08 campaign/dispatch-verification authoritative.
+
+
+[Deterministic execution candidate09](20261030-continuation-failure-diagnostics-09/README.md) follows verified08 pre-reference atom-gradient variation. An explicit extra XLA deterministic-op flag changes only candidate production kernel selection; original independent FP64 environment, models/inputs/loss/LR and every exact/native gate remain. No optimizer admission or saved-result change. CPU40/flag support/all4startups/full storage precede read-only GPUs; actual current campaign required.
+
+
+Verified09 at04:18:51UTC: CPU29851950/controller29851954 DONE/40cases/all4actualstartups/flag support; candidate GPUdiagnostics29851956/29851957 bothRUN. No native outcome or optimizer admission. Original FP64 env/guards remain; explicit production kernel profile is candidate-only. Exact current09 campaign/dispatch-verification required.
