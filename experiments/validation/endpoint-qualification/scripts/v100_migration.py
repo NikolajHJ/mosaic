@@ -11,6 +11,7 @@ import json
 import math
 import os
 from pathlib import Path
+import re
 import shlex
 import subprocess
 import threading
@@ -103,17 +104,36 @@ def unstarted(plan,arm,job):
     require(shlex.split(r['COMMAND'])==old['command'],'Original job command differs')
     history=command(['bhist','-l',job]);require(history['returncode']==0,'No trustworthy job history')
     text=history['stdout']
-    require(not any(token in text for token in ('Dispatched to','Started on','Running with','Done successfully','Exited with')),'Original job has executed')
+    require(not any(token in text for token in ('Dispatched','Started on','Running with','Done successfully','Exited with')),'Original job has executed')
     require(not (Path(old['parent'])/'payload').exists(),'Original output exists; keep saved progress')
     return r,history
+
+
+def lsf_completed(text,submission):
+    # Actual site LSF headers put the job NAME inside Job <...>; the numeric
+    # identity is in Subject. Do not invent a numeric Job <ID> header.
+    expression=r'^Subject: Job '+re.escape(submission['job_id'])+r': <'+re.escape(submission['job_name'])+r'> in cluster <[^>]+> Done$'
+    return len(re.findall(expression,text,re.M))==1 and 'Successfully completed.' in text
+
+
+def wait_comparison(root,submission):
+    observations=[];lsf=root/'gpu'/('stdout.'+submission['job_id']+'.log')
+    for _ in range(12):
+        actual=observed_job(submission['job_id']);observations.append(actual)
+        write(root/'comparison-scheduler-admission02.json',observations)
+        require(actual['JOBID']==submission['job_id'] and actual['USER']=='s234818'
+            and actual['QUEUE']=='gpuv100' and actual['JOB_NAME']==submission['job_name'],'Comparison identity changed')
+        require(actual['STAT'] in ('RUN','DONE'),'Comparison did not finish successfully')
+        if actual['STAT']=='DONE' and lsf.exists() and lsf_completed(lsf.read_text(),submission):return
+        # ended() dispatch and the CLI/footer can briefly disagree at exit.
+        time.sleep(5)
+    raise RuntimeError('Successful comparison state/footer did not settle; preserved observations')
 
 
 def migrate(plan,source):
     root=Path(plan['root']);comparison=read(root/'comparison.json');submission=read(root/'gpu/submission.json')
     require(comparison['job_id']==submission['job_id'],'Comparison job differs')
-    actual=observed_job(submission['job_id']);require(actual['STAT']=='DONE' and actual['QUEUE']=='gpuv100' and actual['USER']=='s234818','Comparison must actually finish')
-    lsf=(root/'gpu'/('stdout.'+submission['job_id']+'.log')).read_text()
-    require('Successfully completed.' in lsf and 'Job <'+submission['job_id']+'>' in lsf,'Same-job successful LSF required')
+    wait_comparison(root,submission)
     decisions={};production=Path(plan['production_root']);production.mkdir(exist_ok=True)
     for arm,row in plan['arms'].items():
         decision=eligible(row,comparison['results'][arm]);decisions[arm]=decision

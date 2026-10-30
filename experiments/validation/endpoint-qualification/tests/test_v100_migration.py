@@ -11,6 +11,7 @@ ROOT=Path(__file__).resolve().parents[4]
 sys.path[:0]=[str(ROOT/'scripts/hpc'),str(Path(__file__).resolve().parents[1]/'scripts')]
 import gpu_policy as gpu
 import v100_migration as migration
+from launch_exploratory_continuations import command_owns_output
 
 
 class Policy(unittest.TestCase):
@@ -55,6 +56,36 @@ class Migration(unittest.TestCase):
     def test_frozen_writes_not_a_pass(self):
         value=self.smoke();value['summary']['frozen_after']={'model':'changed'}
         with self.assertRaises(ValueError):migration.eligible({'steps':10},value)
+
+
+class Handoff(unittest.TestCase):
+    def submission(self):return {'job_id':'123','job_name':'mosaic-v100-gpu01'}
+    def footer(self):return 'Subject: Job 123: <mosaic-v100-gpu01> in cluster <dcc> Done\nJob <mosaic-v100-gpu01> was submitted\nSuccessfully completed.\n'
+    def test_actual_name_header_and_numeric_subject(self):
+        self.assertTrue(migration.lsf_completed(self.footer(),self.submission()))
+    def test_foreign_or_failed_lsf_not_accepted(self):
+        for text in (self.footer().replace('123','124'),self.footer().replace('mosaic-v100-gpu01','other'),self.footer().replace('Successfully completed.','Exited with exit code 1.')):
+            self.assertFalse(migration.lsf_completed(text,self.submission()))
+    def test_duplicate_subject_rejected(self):
+        self.assertFalse(migration.lsf_completed(self.footer()+self.footer(),self.submission()))
+    def test_ended_dependency_cli_lag_is_bounded(self):
+        row={'JOBID':'123','USER':'s234818','QUEUE':'gpuv100','JOB_NAME':'mosaic-v100-gpu01','STAT':'DONE'}
+        with patch.object(migration,'observed_job',side_effect=[{**row,'STAT':'RUN'},row]),patch.object(migration,'write'),patch.object(migration.time,'sleep') as sleep,patch.object(Path,'exists',return_value=True),patch.object(Path,'read_text',return_value=self.footer()):
+            migration.wait_comparison(Path('fixture'),self.submission());sleep.assert_called_once_with(5)
+    def test_real_terminal_failure_is_not_waited_away(self):
+        row={'JOBID':'123','USER':'s234818','QUEUE':'gpuv100','JOB_NAME':'mosaic-v100-gpu01','STAT':'EXIT'}
+        with patch.object(migration,'observed_job',return_value=row),patch.object(migration,'write'),patch.object(migration.time,'sleep') as sleep:
+            with self.assertRaises(ValueError):migration.wait_comparison(Path('fixture'),self.submission())
+            sleep.assert_not_called()
+
+
+class OutputOwnership(unittest.TestCase):
+    def test_neighboring_arm_is_not_a_writer(self):
+        for suffix in ('_chemistry','_chemistry-plan.json','-plan.json'):
+            self.assertFalse(command_owns_output('bash /production/boltz'+suffix,Path('/production/boltz')))
+    def test_exact_directory_and_children_are_writers(self):
+        for command in ('run /production/boltz','run --output=/production/boltz','run /production/boltz/payload/study'):
+            self.assertTrue(command_owns_output(command,Path('/production/boltz')))
 
 
 if __name__=='__main__':unittest.main()

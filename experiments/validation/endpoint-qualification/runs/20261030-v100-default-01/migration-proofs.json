@@ -1,0 +1,4524 @@
+{
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/smoke/migration-protenix/startup.json": {
+    "bytes": 1969,
+    "sha256": "a0d5d19ebc417fd989a4079111589e9695433a8629238e4cb4a43f346c914256",
+    "json": {
+      "argv": [
+        "bash",
+        "-l",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/source/exploratory_continuation_stage.sh",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/source",
+        "protenix",
+        "startup",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/production/protenix-plan.json"
+      ],
+      "returncode": 0,
+      "stdout": "{\"status\": \"metadata_startup_passed_no_models\", \"name\": \"protenix\", \"capacity\": {\"version\": \"mosaic-exploratory-storage-v1\", \"research_profile\": \"exploratory\", \"status\": \"passed\", \"available_bytes\": 56289370112, \"required_bytes\": 11005848503, \"byte_margin\": 45283521609, \"available_files\": 19553766, \"required_files\": 60994, \"file_margin\": 19492772, \"reserve_bytes\": 268435456, \"file_reserve\": 1000, \"single_quota_burst_allowance_bytes\": 0, \"unprofiled_writer_ids\": [], \"unprofiled_writer_allowance_bytes\": 0, \"external_remaining_budgets\": [], \"future_bytes\": 10737413047, \"future_files\": 59994, \"existing_bytes_recharged\": 0, \"existing_files_recharged\": 0, \"warnings\": [], \"filesystem_inode_reporting\": \"unreported_all_zero\", \"quota_observation\": \"reported\", \"not_a_whole_account_reservation\": true, \"entry_and_periodic_checks_required\": false, \"scientific_settings_changed\": false, \"phase\": \"entry\", \"actual\": {\"protenix_chemistry\": {\"bytes\": 0, \"files\": 0}, \"boltz_chemistry\": {\"bytes\": 5193, \"files\": 6}, \"protenix\": {\"bytes\": 0, \"files\": 0}, \"boltz\": {\"bytes\": 0, \"files\": 0}, \"dbmol\": {\"bytes\": 0, \"files\": 0}}}}\n",
+      "stderr": "Loaded dependency [python3/3.12.11]: sqlite3/3.50.1\nLoaded dependency [python3/3.12.11]: gcc/14.3.0-binutils-2.44\nLoaded module: python3/3.12.11\n\nLoading python3/3.12.11\n  Loading requirement: sqlite3/3.50.1 gcc/14.3.0-binutils-2.44\n"
+    }
+  },
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/smoke/migration-protenix/retirement-response.json": {
+    "bytes": 135,
+    "sha256": "7ebb120343e0e7be0031d38cb494a95f541b7cf089e6e63cb21420ab30ba7d09",
+    "json": {
+      "argv": [
+        "bkill",
+        "29853759"
+      ],
+      "returncode": 0,
+      "stdout": "Job <29853759> is being terminated\n",
+      "stderr": ""
+    }
+  },
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/smoke/migration-protenix/capacity-before-retirement.json": {
+    "bytes": 1230,
+    "sha256": "9a836fde9b3765aed9ecb9113b4a7376ddb3cfc909ee677cbb06a613932e9335",
+    "json": {
+      "version": "mosaic-exploratory-storage-v1",
+      "research_profile": "exploratory",
+      "status": "passed",
+      "available_bytes": 56289374208,
+      "required_bytes": 11005848503,
+      "byte_margin": 45283525705,
+      "available_files": 19553767,
+      "required_files": 60994,
+      "file_margin": 19492773,
+      "reserve_bytes": 268435456,
+      "file_reserve": 1000,
+      "single_quota_burst_allowance_bytes": 0,
+      "unprofiled_writer_ids": [],
+      "unprofiled_writer_allowance_bytes": 0,
+      "external_remaining_budgets": [],
+      "future_bytes": 10737413047,
+      "future_files": 59994,
+      "existing_bytes_recharged": 0,
+      "existing_files_recharged": 0,
+      "warnings": [],
+      "filesystem_inode_reporting": "unreported_all_zero",
+      "quota_observation": "reported",
+      "not_a_whole_account_reservation": true,
+      "entry_and_periodic_checks_required": false,
+      "scientific_settings_changed": false,
+      "phase": "migration-before-retirement",
+      "actual": {
+        "protenix_chemistry": {
+          "bytes": 0,
+          "files": 0
+        },
+        "boltz_chemistry": {
+          "bytes": 5193,
+          "files": 6
+        },
+        "protenix": {
+          "bytes": 0,
+          "files": 0
+        },
+        "boltz": {
+          "bytes": 0,
+          "files": 0
+        },
+        "dbmol": {
+          "bytes": 0,
+          "files": 0
+        }
+      }
+    }
+  },
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/smoke/migration-protenix/retirement-intent.json": {
+    "bytes": 56,
+    "sha256": "7bdb962f403c840eb00c60880361da97c25833dabb4e42a7d1b85e5afcae08f1",
+    "json": {
+      "job_id": "29853759",
+      "only_if_unstarted": true
+    }
+  },
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/smoke/migration-protenix/unstarted-before.json": {
+    "bytes": 2441,
+    "sha256": "2c53340dd1bbad3fc88a30c3cdd27e0b22ce56badef988cdd7868ad58b272135",
+    "json": {
+      "scheduler": {
+        "JOBID": "29853759",
+        "USER": "s234818",
+        "STAT": "PEND",
+        "QUEUE": "gpul40s",
+        "JOB_NAME": "mosaic-explore01-protenix",
+        "COMMAND": "bash -l /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/source/exploratory_continuation_stage.sh /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/source protenix run"
+      },
+      "history": {
+        "argv": [
+          "bhist",
+          "-l",
+          "29853759"
+        ],
+        "returncode": 0,
+        "stdout": "\nJob <29853759>, Job Name <mosaic-explore01-protenix>, User <s234818>, Project <\n                          default>, Command <bash -l /work3/s234818/mosaic/runs\n                          /20261022-brd4-jq1-lrboost-analysis-01/exploratory-co\n                          ntinuations-20261030-01/source/exploratory_continuati\n                          on_stage.sh /work3/s234818/mosaic/runs/20261022-brd4-\n                          jq1-lrboost-analysis-01/exploratory-continuations-202\n                          61030-01/source protenix run>, Esub <dcc>\nFri Oct 30 13:05:47 2026: Submitted from host <hpclogin1> with hold, to Queue <\n                          gpul40s>, CWD <$HOME>, Output File </work3/s234818/mo\n                          saic/runs/20261022-brd4-jq1-lrboost-analysis-01/explo\n                          ratory-continuations-20261030-01/protenix/stdout.%J.l\n                          og>, Error File </work3/s234818/mosaic/runs/20261022-\n                          brd4-jq1-lrboost-analysis-01/exploratory-continuation\n                          s-20261030-01/protenix/stderr.%J.log>, 4 Task(s), Req\n                          uested Resources < rusage[mem=8192] span[hosts=1]>, R\n                          equested GPU <num=1:mode=exclusive_process:mps=yes>;\nFri Oct 30 13:05:57 2026: Signal <CONT> requested by user or administrator <s23\n                          4818> from host <hpclogin1>;\nFri Oct 30 13:05:57 2026: Pending: Waiting for scheduling after resumed by admi\n                          nistrator or user;\n\n RUNLIMIT                \n 165.0 min of hpclogin1\n\n MEMLIMIT\n      8 G \n\nSummary of time in seconds spent in various states by  Fri Oct 30 14:34:45 2026\n  PEND     PSUSP    RUN      USUSP    SSUSP    UNKWN    TOTAL\n  5328     10       0        0        0        0        5338        \n\n",
+        "stderr": ""
+      }
+    }
+  },
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/smoke/migration-protenix/retired-unstarted.json": {
+    "bytes": 200,
+    "sha256": "a78de5a492657b14b057cdab99439ff3973c3e1a2cae9b1d2de58bc13eec2646",
+    "json": {
+      "job_id": "29853759",
+      "applied_updates": 0,
+      "replacement_plan": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/production/protenix-plan.json"
+    }
+  },
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/smoke/migration-protenix/held-unstarted.json": {
+    "bytes": 2643,
+    "sha256": "026ca35a45844d7183f8ea9061511b450ab806a6cd6f4ecae45287e36e94ce00",
+    "json": {
+      "scheduler": {
+        "JOBID": "29853759",
+        "USER": "s234818",
+        "STAT": "PSUSP",
+        "QUEUE": "gpul40s",
+        "JOB_NAME": "mosaic-explore01-protenix",
+        "COMMAND": "bash -l /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/source/exploratory_continuation_stage.sh /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/source protenix run"
+      },
+      "history": {
+        "argv": [
+          "bhist",
+          "-l",
+          "29853759"
+        ],
+        "returncode": 0,
+        "stdout": "\nJob <29853759>, Job Name <mosaic-explore01-protenix>, User <s234818>, Project <\n                          default>, Command <bash -l /work3/s234818/mosaic/runs\n                          /20261022-brd4-jq1-lrboost-analysis-01/exploratory-co\n                          ntinuations-20261030-01/source/exploratory_continuati\n                          on_stage.sh /work3/s234818/mosaic/runs/20261022-brd4-\n                          jq1-lrboost-analysis-01/exploratory-continuations-202\n                          61030-01/source protenix run>, Esub <dcc>\nFri Oct 30 13:05:47 2026: Submitted from host <hpclogin1> with hold, to Queue <\n                          gpul40s>, CWD <$HOME>, Output File </work3/s234818/mo\n                          saic/runs/20261022-brd4-jq1-lrboost-analysis-01/explo\n                          ratory-continuations-20261030-01/protenix/stdout.%J.l\n                          og>, Error File </work3/s234818/mosaic/runs/20261022-\n                          brd4-jq1-lrboost-analysis-01/exploratory-continuation\n                          s-20261030-01/protenix/stderr.%J.log>, 4 Task(s), Req\n                          uested Resources < rusage[mem=8192] span[hosts=1]>, R\n                          equested GPU <num=1:mode=exclusive_process:mps=yes>;\nFri Oct 30 13:05:57 2026: Signal <CONT> requested by user or administrator <s23\n                          4818> from host <hpclogin1>;\nFri Oct 30 13:05:57 2026: Pending: Waiting for scheduling after resumed by admi\n                          nistrator or user;\nFri Oct 30 14:34:46 2026: Signal <STOP> requested by user or administrator <s23\n                          4818> from host <hpclogin1>;\nFri Oct 30 14:34:46 2026: Suspended by the user while pending;\n\n RUNLIMIT                \n 165.0 min of hpclogin1\n\n MEMLIMIT\n      8 G \n\nSummary of time in seconds spent in various states by  Fri Oct 30 14:34:54 2026\n  PEND     PSUSP    RUN      USUSP    SSUSP    UNKWN    TOTAL\n  5329     18       0        0        0        0        5347        \n\n",
+        "stderr": ""
+      }
+    }
+  },
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/smoke/migration-protenix/stop-response.json": {
+    "bytes": 132,
+    "sha256": "69945a1aba72c6a0812ad642424d10c925310c23d73030158480f823a0571ef8",
+    "json": {
+      "argv": [
+        "bstop",
+        "29853759"
+      ],
+      "returncode": 0,
+      "stdout": "Job <29853759> is being stopped\n",
+      "stderr": ""
+    }
+  },
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/smoke/migration-protenix/decision.json": {
+    "bytes": 343,
+    "sha256": "60f54aab7fdf28544e9941a5ecdbd08d7022fd01db4f8aac449617ef2721622e",
+    "json": {
+      "eligible": true,
+      "reason": "whole remainder fits V100 queue limit",
+      "wall_minutes": 224,
+      "warm_update_seconds": 0.4576788409613073,
+      "measured_setup_seconds": 33.41150914510945,
+      "scope": "three-update timing estimate; future chemistry/runtime may vary",
+      "action": "migrated",
+      "old_job": "29853759",
+      "new_job": "29855339"
+    }
+  },
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/smoke/migration-boltz_chemistry/retired-unstarted.json": {
+    "bytes": 207,
+    "sha256": "e9991b7a8953b2a268b6a56b3726fe0f51400162031cabf8cbff171bdaf7f2ba",
+    "json": {
+      "job_id": "29853831",
+      "applied_updates": 0,
+      "replacement_plan": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/production/boltz_chemistry-plan.json"
+    }
+  },
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/smoke/migration-boltz_chemistry/startup.json": {
+    "bytes": 1987,
+    "sha256": "aed66fba80d05d40560658bfb76014b2ec054d7400bd16ba58311bbdef51b4ca",
+    "json": {
+      "argv": [
+        "bash",
+        "-l",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/source/exploratory_continuation_stage.sh",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/source",
+        "boltz_chemistry",
+        "startup",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/production/boltz_chemistry-plan.json"
+      ],
+      "returncode": 0,
+      "stdout": "{\"status\": \"metadata_startup_passed_no_models\", \"name\": \"boltz_chemistry\", \"capacity\": {\"version\": \"mosaic-exploratory-storage-v1\", \"research_profile\": \"exploratory\", \"status\": \"passed\", \"available_bytes\": 56555524096, \"required_bytes\": 11005853696, \"byte_margin\": 45549670400, \"available_files\": 19553792, \"required_files\": 61000, \"file_margin\": 19492792, \"reserve_bytes\": 268435456, \"file_reserve\": 1000, \"single_quota_burst_allowance_bytes\": 0, \"unprofiled_writer_ids\": [], \"unprofiled_writer_allowance_bytes\": 0, \"external_remaining_budgets\": [], \"future_bytes\": 10737418240, \"future_files\": 60000, \"existing_bytes_recharged\": 0, \"existing_files_recharged\": 0, \"warnings\": [], \"filesystem_inode_reporting\": \"unreported_all_zero\", \"quota_observation\": \"reported\", \"not_a_whole_account_reservation\": true, \"entry_and_periodic_checks_required\": false, \"scientific_settings_changed\": false, \"phase\": \"entry\", \"actual\": {\"protenix_chemistry\": {\"bytes\": 0, \"files\": 0}, \"boltz_chemistry\": {\"bytes\": 0, \"files\": 0}, \"protenix\": {\"bytes\": 0, \"files\": 0}, \"boltz\": {\"bytes\": 0, \"files\": 0}, \"dbmol\": {\"bytes\": 0, \"files\": 0}}}}\n",
+      "stderr": "Loaded dependency [python3/3.12.11]: sqlite3/3.50.1\nLoaded dependency [python3/3.12.11]: gcc/14.3.0-binutils-2.44\nLoaded module: python3/3.12.11\n\nLoading python3/3.12.11\n  Loading requirement: sqlite3/3.50.1 gcc/14.3.0-binutils-2.44\n"
+    }
+  },
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/smoke/migration-boltz_chemistry/retirement-response.json": {
+    "bytes": 135,
+    "sha256": "0c6cfc1cc9df53b290917ea1d0681bde58aea2cc14fc682c231c8dd7cdcc8453",
+    "json": {
+      "argv": [
+        "bkill",
+        "29853831"
+      ],
+      "returncode": 0,
+      "stdout": "Job <29853831> is being terminated\n",
+      "stderr": ""
+    }
+  },
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/smoke/migration-boltz_chemistry/retirement-intent.json": {
+    "bytes": 56,
+    "sha256": "ee17599025bc544612cc40cd4599d45ede1769f1646f0249a3e054dbefbcc7c3",
+    "json": {
+      "job_id": "29853831",
+      "only_if_unstarted": true
+    }
+  },
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/smoke/migration-boltz_chemistry/stop-response.json": {
+    "bytes": 132,
+    "sha256": "ccbd86b49dcd8496f8e4317db0986a4c83ce739859c8d7a1e9c9a8cf3d0e7749",
+    "json": {
+      "argv": [
+        "bstop",
+        "29853831"
+      ],
+      "returncode": 0,
+      "stdout": "Job <29853831> is being stopped\n",
+      "stderr": ""
+    }
+  },
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/smoke/migration-boltz_chemistry/held-unstarted.json": {
+    "bytes": 2769,
+    "sha256": "0a66402a2344b99137e87f492abda1cea2d5a34d77321a89282ecb4122021f10",
+    "json": {
+      "scheduler": {
+        "JOBID": "29853831",
+        "USER": "s234818",
+        "STAT": "PSUSP",
+        "QUEUE": "gpul40s",
+        "JOB_NAME": "mosaic-explore01-boltz_chemistry",
+        "COMMAND": "bash -l /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/source03/exploratory_continuation_stage.sh /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/source03 boltz_chemistry run"
+      },
+      "history": {
+        "argv": [
+          "bhist",
+          "-l",
+          "29853831"
+        ],
+        "returncode": 0,
+        "stdout": "\nJob <29853831>, Job Name <mosaic-explore01-boltz_chemistry>, User <s234818>, Pr\n                          oject <default>, Command <bash -l /work3/s234818/mosa\n                          ic/runs/20261022-brd4-jq1-lrboost-analysis-01/explora\n                          tory-continuations-20261030-01/source03/exploratory_c\n                          ontinuation_stage.sh /work3/s234818/mosaic/runs/20261\n                          022-brd4-jq1-lrboost-analysis-01/exploratory-continua\n                          tions-20261030-01/source03 boltz_chemistry run>, Esub\n                           <dcc>\nFri Oct 30 13:10:44 2026: Submitted from host <hpclogin1> with hold, to Queue <\n                          gpul40s>, CWD <$HOME>, Output File </work3/s234818/mo\n                          saic/runs/20261022-brd4-jq1-lrboost-analysis-01/explo\n                          ratory-continuations-20261030-01/retry02/boltz_chemis\n                          try/stdout.%J.log>, Error File </work3/s234818/mosaic\n                          /runs/20261022-brd4-jq1-lrboost-analysis-01/explorato\n                          ry-continuations-20261030-01/retry02/boltz_chemistry/\n                          stderr.%J.log>, 8 Task(s), Requested Resources < rusa\n                          ge[mem=4096] span[hosts=1]>, Requested GPU <num=1:mod\n                          e=shared:mps=no:j_exclusive=yes>;\nFri Oct 30 13:10:55 2026: Signal <CONT> requested by user or administrator <s23\n                          4818> from host <hpclogin1>;\nFri Oct 30 13:10:55 2026: Pending: Waiting for scheduling after resumed by admi\n                          nistrator or user;\nFri Oct 30 14:34:09 2026: Signal <STOP> requested by user or administrator <s23\n                          4818> from host <hpclogin1>;\nFri Oct 30 14:34:09 2026: Suspended by the user while pending;\n\n RUNLIMIT                \n 810.0 min of hpclogin1\n\n MEMLIMIT\n      4 G \n\nSummary of time in seconds spent in various states by  Fri Oct 30 14:34:15 2026\n  PEND     PSUSP    RUN      USUSP    SSUSP    UNKWN    TOTAL\n  4994     17       0        0        0        0        5011        \n\n",
+        "stderr": ""
+      }
+    }
+  },
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/smoke/migration-boltz_chemistry/capacity-before-retirement.json": {
+    "bytes": 1227,
+    "sha256": "c049d48235e7d11d281a4c1681282d0d30ea741495337a9be45cdac05c01fdca",
+    "json": {
+      "version": "mosaic-exploratory-storage-v1",
+      "research_profile": "exploratory",
+      "status": "passed",
+      "available_bytes": 56555528192,
+      "required_bytes": 11005853696,
+      "byte_margin": 45549674496,
+      "available_files": 19553793,
+      "required_files": 61000,
+      "file_margin": 19492793,
+      "reserve_bytes": 268435456,
+      "file_reserve": 1000,
+      "single_quota_burst_allowance_bytes": 0,
+      "unprofiled_writer_ids": [],
+      "unprofiled_writer_allowance_bytes": 0,
+      "external_remaining_budgets": [],
+      "future_bytes": 10737418240,
+      "future_files": 60000,
+      "existing_bytes_recharged": 0,
+      "existing_files_recharged": 0,
+      "warnings": [],
+      "filesystem_inode_reporting": "unreported_all_zero",
+      "quota_observation": "reported",
+      "not_a_whole_account_reservation": true,
+      "entry_and_periodic_checks_required": false,
+      "scientific_settings_changed": false,
+      "phase": "migration-before-retirement",
+      "actual": {
+        "protenix_chemistry": {
+          "bytes": 0,
+          "files": 0
+        },
+        "boltz_chemistry": {
+          "bytes": 0,
+          "files": 0
+        },
+        "protenix": {
+          "bytes": 0,
+          "files": 0
+        },
+        "boltz": {
+          "bytes": 0,
+          "files": 0
+        },
+        "dbmol": {
+          "bytes": 0,
+          "files": 0
+        }
+      }
+    }
+  },
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/smoke/migration-boltz_chemistry/decision.json": {
+    "bytes": 342,
+    "sha256": "78a6e95c9a57a2858de2d0e344f23db63d0623192fd2f2d6b33c90bf8eee0b6b",
+    "json": {
+      "eligible": true,
+      "reason": "whole remainder fits V100 queue limit",
+      "wall_minutes": 915,
+      "warm_update_seconds": 2.17875532299513,
+      "measured_setup_seconds": 103.35383541806368,
+      "scope": "three-update timing estimate; future chemistry/runtime may vary",
+      "action": "migrated",
+      "old_job": "29853831",
+      "new_job": "29855330"
+    }
+  },
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/smoke/migration-boltz_chemistry/unstarted-before.json": {
+    "bytes": 2567,
+    "sha256": "a239e927031acf63470dde890053577110adae2b7316e74e182db20f4756b82e",
+    "json": {
+      "scheduler": {
+        "JOBID": "29853831",
+        "USER": "s234818",
+        "STAT": "PEND",
+        "QUEUE": "gpul40s",
+        "JOB_NAME": "mosaic-explore01-boltz_chemistry",
+        "COMMAND": "bash -l /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/source03/exploratory_continuation_stage.sh /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/source03 boltz_chemistry run"
+      },
+      "history": {
+        "argv": [
+          "bhist",
+          "-l",
+          "29853831"
+        ],
+        "returncode": 0,
+        "stdout": "\nJob <29853831>, Job Name <mosaic-explore01-boltz_chemistry>, User <s234818>, Pr\n                          oject <default>, Command <bash -l /work3/s234818/mosa\n                          ic/runs/20261022-brd4-jq1-lrboost-analysis-01/explora\n                          tory-continuations-20261030-01/source03/exploratory_c\n                          ontinuation_stage.sh /work3/s234818/mosaic/runs/20261\n                          022-brd4-jq1-lrboost-analysis-01/exploratory-continua\n                          tions-20261030-01/source03 boltz_chemistry run>, Esub\n                           <dcc>\nFri Oct 30 13:10:44 2026: Submitted from host <hpclogin1> with hold, to Queue <\n                          gpul40s>, CWD <$HOME>, Output File </work3/s234818/mo\n                          saic/runs/20261022-brd4-jq1-lrboost-analysis-01/explo\n                          ratory-continuations-20261030-01/retry02/boltz_chemis\n                          try/stdout.%J.log>, Error File </work3/s234818/mosaic\n                          /runs/20261022-brd4-jq1-lrboost-analysis-01/explorato\n                          ry-continuations-20261030-01/retry02/boltz_chemistry/\n                          stderr.%J.log>, 8 Task(s), Requested Resources < rusa\n                          ge[mem=4096] span[hosts=1]>, Requested GPU <num=1:mod\n                          e=shared:mps=no:j_exclusive=yes>;\nFri Oct 30 13:10:55 2026: Signal <CONT> requested by user or administrator <s23\n                          4818> from host <hpclogin1>;\nFri Oct 30 13:10:55 2026: Pending: Waiting for scheduling after resumed by admi\n                          nistrator or user;\n\n RUNLIMIT                \n 810.0 min of hpclogin1\n\n MEMLIMIT\n      4 G \n\nSummary of time in seconds spent in various states by  Fri Oct 30 14:34:08 2026\n  PEND     PSUSP    RUN      USUSP    SSUSP    UNKWN    TOTAL\n  4993     11       0        0        0        0        5004        \n\n",
+        "stderr": ""
+      }
+    }
+  },
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/smoke/migration-protenix_chemistry/decision.json": {
+    "bytes": 335,
+    "sha256": "1100be0b9d85f4c6d5e58b1a3a5e4abc8358e26aeaafc24e95672e9703a99cd8",
+    "json": {
+      "eligible": true,
+      "reason": "whole remainder fits V100 queue limit",
+      "wall_minutes": 849,
+      "warm_update_seconds": 1.0103690000250936,
+      "measured_setup_seconds": 67.79002996493364,
+      "scope": "three-update timing estimate; future chemistry/runtime may vary",
+      "action": "left_original_unchanged",
+      "original_state": "RUN"
+    }
+  },
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/smoke/migration-boltz/stop-response.json": {
+    "bytes": 132,
+    "sha256": "8938cacf40f9433e586b2a2465378eb5ed0a6d0128909fe387a0b2d22c441681",
+    "json": {
+      "argv": [
+        "bstop",
+        "29853833"
+      ],
+      "returncode": 0,
+      "stdout": "Job <29853833> is being stopped\n",
+      "stderr": ""
+    }
+  },
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/smoke/migration-boltz/capacity-before-retirement.json": {
+    "bytes": 1233,
+    "sha256": "9df4d461fb29ad82b9e78b35f0d4e9f630a5beef92e90f66c6e815f8358b73c9",
+    "json": {
+      "version": "mosaic-exploratory-storage-v1",
+      "research_profile": "exploratory",
+      "status": "passed",
+      "available_bytes": 56287027200,
+      "required_bytes": 11005843200,
+      "byte_margin": 45281184000,
+      "available_files": 19553743,
+      "required_files": 60986,
+      "file_margin": 19492757,
+      "reserve_bytes": 268435456,
+      "file_reserve": 1000,
+      "single_quota_burst_allowance_bytes": 0,
+      "unprofiled_writer_ids": [],
+      "unprofiled_writer_allowance_bytes": 0,
+      "external_remaining_budgets": [],
+      "future_bytes": 10737407744,
+      "future_files": 59986,
+      "existing_bytes_recharged": 0,
+      "existing_files_recharged": 0,
+      "warnings": [],
+      "filesystem_inode_reporting": "unreported_all_zero",
+      "quota_observation": "reported",
+      "not_a_whole_account_reservation": true,
+      "entry_and_periodic_checks_required": false,
+      "scientific_settings_changed": false,
+      "phase": "migration-before-retirement",
+      "actual": {
+        "protenix_chemistry": {
+          "bytes": 0,
+          "files": 0
+        },
+        "boltz_chemistry": {
+          "bytes": 5193,
+          "files": 6
+        },
+        "protenix": {
+          "bytes": 5303,
+          "files": 8
+        },
+        "boltz": {
+          "bytes": 0,
+          "files": 0
+        },
+        "dbmol": {
+          "bytes": 0,
+          "files": 0
+        }
+      }
+    }
+  },
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/smoke/migration-boltz/retirement-intent.json": {
+    "bytes": 56,
+    "sha256": "a02681bfdfc01f806b8cafe0668b35e4c596b96ae3f9acd43f5900db0b2e5ed9",
+    "json": {
+      "job_id": "29853833",
+      "only_if_unstarted": true
+    }
+  },
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/smoke/migration-boltz/launch03-result.json": {
+    "bytes": 90,
+    "sha256": "8b17ce01b5bc6dec93c1e0de65428b9282412e426a3741ad6f0f00491c6a8f04",
+    "json": {
+      "status": "submitted_and_released",
+      "job_id": "29855430",
+      "old_job": "29853833"
+    }
+  },
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/smoke/migration-boltz/held-unstarted.json": {
+    "bytes": 2681,
+    "sha256": "b93d8bd60a674590cf6e0fd22a511788c79df22db65756a25eae5099945e05e6",
+    "json": {
+      "scheduler": {
+        "JOBID": "29853833",
+        "USER": "s234818",
+        "STAT": "PSUSP",
+        "QUEUE": "gpul40s",
+        "JOB_NAME": "mosaic-explore01-boltz",
+        "COMMAND": "bash -l /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/source03/exploratory_continuation_stage.sh /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/source03 boltz run"
+      },
+      "history": {
+        "argv": [
+          "bhist",
+          "-l",
+          "29853833"
+        ],
+        "returncode": 0,
+        "stdout": "\nJob <29853833>, Job Name <mosaic-explore01-boltz>, User <s234818>, Project <def\n                          ault>, Command <bash -l /work3/s234818/mosaic/runs/20\n                          261022-brd4-jq1-lrboost-analysis-01/exploratory-conti\n                          nuations-20261030-01/source03/exploratory_continuatio\n                          n_stage.sh /work3/s234818/mosaic/runs/20261022-brd4-j\n                          q1-lrboost-analysis-01/exploratory-continuations-2026\n                          1030-01/source03 boltz run>, Esub <dcc>\nFri Oct 30 13:10:56 2026: Submitted from host <hpclogin1> with hold, to Queue <\n                          gpul40s>, CWD <$HOME>, Output File </work3/s234818/mo\n                          saic/runs/20261022-brd4-jq1-lrboost-analysis-01/explo\n                          ratory-continuations-20261030-01/retry02/boltz/stdout\n                          .%J.log>, Error File </work3/s234818/mosaic/runs/2026\n                          1022-brd4-jq1-lrboost-analysis-01/exploratory-continu\n                          ations-20261030-01/retry02/boltz/stderr.%J.log>, 4 Ta\n                          sk(s), Requested Resources < rusage[mem=8192] span[ho\n                          sts=1]>, Requested GPU <num=1:mode=shared:mps=no:j_ex\n                          clusive=yes>;\nFri Oct 30 13:11:11 2026: Signal <CONT> requested by user or administrator <s23\n                          4818> from host <hpclogin1>;\nFri Oct 30 13:11:11 2026: Pending: Waiting for scheduling after resumed by admi\n                          nistrator or user;\nFri Oct 30 14:35:25 2026: Signal <STOP> requested by user or administrator <s23\n                          4818> from host <hpclogin1>;\nFri Oct 30 14:35:25 2026: Suspended by the user while pending;\n\n RUNLIMIT                \n 405.0 min of hpclogin1\n\n MEMLIMIT\n      8 G \n\nSummary of time in seconds spent in various states by  Fri Oct 30 14:35:33 2026\n  PEND     PSUSP    RUN      USUSP    SSUSP    UNKWN    TOTAL\n  5054     23       0        0        0        0        5077        \n\n",
+        "stderr": ""
+      }
+    }
+  },
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/smoke/migration-boltz/retired-unstarted.json": {
+    "bytes": 197,
+    "sha256": "45783fd38e3e98b4e084c96d6fbc2ab953ca0a176949e138ee7ea594034cc2b8",
+    "json": {
+      "job_id": "29853833",
+      "applied_updates": 0,
+      "replacement_plan": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/production/boltz-plan.json"
+    }
+  },
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/smoke/migration-boltz/launch03-intent.json": {
+    "bytes": 198,
+    "sha256": "51f1a2688fcd7267451dd1b59b435dd3c230dc342d33d4175074b380ea65fe6c",
+    "json": {
+      "original_job": "29853833",
+      "scope": "fix false prefix collision only",
+      "control": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/launch03"
+    }
+  },
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/smoke/migration-boltz/unstarted-before.json": {
+    "bytes": 2479,
+    "sha256": "d3675fc8f372f1184c247be4e2531a983fbdd9b2a82d8f424cfdef9f48384a18",
+    "json": {
+      "scheduler": {
+        "JOBID": "29853833",
+        "USER": "s234818",
+        "STAT": "PEND",
+        "QUEUE": "gpul40s",
+        "JOB_NAME": "mosaic-explore01-boltz",
+        "COMMAND": "bash -l /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/source03/exploratory_continuation_stage.sh /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/source03 boltz run"
+      },
+      "history": {
+        "argv": [
+          "bhist",
+          "-l",
+          "29853833"
+        ],
+        "returncode": 0,
+        "stdout": "\nJob <29853833>, Job Name <mosaic-explore01-boltz>, User <s234818>, Project <def\n                          ault>, Command <bash -l /work3/s234818/mosaic/runs/20\n                          261022-brd4-jq1-lrboost-analysis-01/exploratory-conti\n                          nuations-20261030-01/source03/exploratory_continuatio\n                          n_stage.sh /work3/s234818/mosaic/runs/20261022-brd4-j\n                          q1-lrboost-analysis-01/exploratory-continuations-2026\n                          1030-01/source03 boltz run>, Esub <dcc>\nFri Oct 30 13:10:56 2026: Submitted from host <hpclogin1> with hold, to Queue <\n                          gpul40s>, CWD <$HOME>, Output File </work3/s234818/mo\n                          saic/runs/20261022-brd4-jq1-lrboost-analysis-01/explo\n                          ratory-continuations-20261030-01/retry02/boltz/stdout\n                          .%J.log>, Error File </work3/s234818/mosaic/runs/2026\n                          1022-brd4-jq1-lrboost-analysis-01/exploratory-continu\n                          ations-20261030-01/retry02/boltz/stderr.%J.log>, 4 Ta\n                          sk(s), Requested Resources < rusage[mem=8192] span[ho\n                          sts=1]>, Requested GPU <num=1:mode=shared:mps=no:j_ex\n                          clusive=yes>;\nFri Oct 30 13:11:11 2026: Signal <CONT> requested by user or administrator <s23\n                          4818> from host <hpclogin1>;\nFri Oct 30 13:11:11 2026: Pending: Waiting for scheduling after resumed by admi\n                          nistrator or user;\n\n RUNLIMIT                \n 405.0 min of hpclogin1\n\n MEMLIMIT\n      8 G \n\nSummary of time in seconds spent in various states by  Fri Oct 30 14:35:24 2026\n  PEND     PSUSP    RUN      USUSP    SSUSP    UNKWN    TOTAL\n  5053     15       0        0        0        0        5068        \n\n",
+        "stderr": ""
+      }
+    }
+  },
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/smoke/migration-boltz/startup.json": {
+    "bytes": 1963,
+    "sha256": "ef9bff0179840f2e0c3f9649d6c35c7af77a081e16a56b78d26766300daae501",
+    "json": {
+      "argv": [
+        "bash",
+        "-l",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/source/exploratory_continuation_stage.sh",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/source",
+        "boltz",
+        "startup",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/production/boltz-plan.json"
+      ],
+      "returncode": 0,
+      "stdout": "{\"status\": \"metadata_startup_passed_no_models\", \"name\": \"boltz\", \"capacity\": {\"version\": \"mosaic-exploratory-storage-v1\", \"research_profile\": \"exploratory\", \"status\": \"passed\", \"available_bytes\": 56287023104, \"required_bytes\": 11005843173, \"byte_margin\": 45281179931, \"available_files\": 19553742, \"required_files\": 60986, \"file_margin\": 19492756, \"reserve_bytes\": 268435456, \"file_reserve\": 1000, \"single_quota_burst_allowance_bytes\": 0, \"unprofiled_writer_ids\": [], \"unprofiled_writer_allowance_bytes\": 0, \"external_remaining_budgets\": [], \"future_bytes\": 10737407717, \"future_files\": 59986, \"existing_bytes_recharged\": 0, \"existing_files_recharged\": 0, \"warnings\": [], \"filesystem_inode_reporting\": \"unreported_all_zero\", \"quota_observation\": \"reported\", \"not_a_whole_account_reservation\": true, \"entry_and_periodic_checks_required\": false, \"scientific_settings_changed\": false, \"phase\": \"entry\", \"actual\": {\"protenix_chemistry\": {\"bytes\": 0, \"files\": 0}, \"boltz_chemistry\": {\"bytes\": 5193, \"files\": 6}, \"protenix\": {\"bytes\": 5330, \"files\": 8}, \"boltz\": {\"bytes\": 0, \"files\": 0}, \"dbmol\": {\"bytes\": 0, \"files\": 0}}}}\n",
+      "stderr": "Loaded dependency [python3/3.12.11]: sqlite3/3.50.1\nLoaded dependency [python3/3.12.11]: gcc/14.3.0-binutils-2.44\nLoaded module: python3/3.12.11\n\nLoading python3/3.12.11\n  Loading requirement: sqlite3/3.50.1 gcc/14.3.0-binutils-2.44\n"
+    }
+  },
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/smoke/migration-boltz/retirement-response.json": {
+    "bytes": 135,
+    "sha256": "b4e3d98510a697110a5e06afde21d4a83909ecc8b43887260d9a193cc02073fe",
+    "json": {
+      "argv": [
+        "bkill",
+        "29853833"
+      ],
+      "returncode": 0,
+      "stdout": "Job <29853833> is being terminated\n",
+      "stderr": ""
+    }
+  },
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/smoke/migration-boltz/decision.json": {
+    "bytes": 384,
+    "sha256": "cb1b7ad2888878330b23cc0fb61310df4d65d59ea7b5accebcb79f6a26d27dca",
+    "json": {
+      "eligible": true,
+      "reason": "whole remainder fits V100 queue limit",
+      "wall_minutes": 437,
+      "warm_update_seconds": 2.0639479300007224,
+      "measured_setup_seconds": 81.64584462001221,
+      "scope": "three-update timing estimate; future chemistry/runtime may vary",
+      "action": "needs_reconciliation",
+      "error": "ValueError('Existing active writer')",
+      "original_retired": true
+    }
+  },
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/production/boltz_chemistry/submission-intent.json": {
+    "bytes": 1623,
+    "sha256": "6bcfc2d6a147bae22ad1bf5d9bfd86739346bc417ef625beb97d4721e4e4e431",
+    "json": {
+      "argv": [
+        "bsub",
+        "-H",
+        "-q",
+        "gpuv100",
+        "-J",
+        "mosaic-v10001-boltz_chemistry",
+        "-n",
+        "8",
+        "-R",
+        "span[hosts=1]",
+        "-R",
+        "rusage[mem=4096]",
+        "-W",
+        "15:15",
+        "-gpu",
+        "num=1:mode=shared:j_exclusive=yes:mps=no:gmem=30G",
+        "-env",
+        "all,~CUDA_VISIBLE_DEVICES,~CUDA_MPS_PIPE_DIRECTORY,~CUDA_MPS_LOG_DIRECTORY,~CUDA_MPS_ACTIVE_THREAD_PERCENTAGE",
+        "-o",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/production/boltz_chemistry/stdout.%J.log",
+        "-e",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/production/boltz_chemistry/stderr.%J.log",
+        "bash",
+        "-l",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/source/exploratory_continuation_stage.sh",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/source",
+        "boltz_chemistry",
+        "run",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/production/boltz_chemistry-plan.json"
+      ],
+      "job_name": "mosaic-v10001-boltz_chemistry",
+      "created_utc": "2026-10-30T13:34:26.270737+00:00",
+      "research_profile": "exploratory",
+      "plan": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/production/boltz_chemistry-plan.json",
+        "bytes": 24366,
+        "sha256": "470a2632bd3a602439fe28f45573e4055b3b72d64775ecf5b5882a7a760739e5"
+      },
+      "status": "submission_outcome_unknown_until_receipt"
+    }
+  },
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/production/boltz_chemistry/submission-response.json": {
+    "bytes": 103,
+    "sha256": "bedfcf99adc8f232fefc010169c451e9221fbebf1725b19518118e485e4ecfdb",
+    "json": {
+      "returncode": 0,
+      "stdout": "Job <29855330> is submitted to queue <gpuv100>.\n",
+      "stderr": ""
+    }
+  },
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/production/boltz_chemistry/submission.json": {
+    "bytes": 1644,
+    "sha256": "a1910396004ff1c532612079ede15554b40c08e3d02f58f599a52466acbcdf34",
+    "json": {
+      "argv": [
+        "bsub",
+        "-H",
+        "-q",
+        "gpuv100",
+        "-J",
+        "mosaic-v10001-boltz_chemistry",
+        "-n",
+        "8",
+        "-R",
+        "span[hosts=1]",
+        "-R",
+        "rusage[mem=4096]",
+        "-W",
+        "15:15",
+        "-gpu",
+        "num=1:mode=shared:j_exclusive=yes:mps=no:gmem=30G",
+        "-env",
+        "all,~CUDA_VISIBLE_DEVICES,~CUDA_MPS_PIPE_DIRECTORY,~CUDA_MPS_LOG_DIRECTORY,~CUDA_MPS_ACTIVE_THREAD_PERCENTAGE",
+        "-o",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/production/boltz_chemistry/stdout.%J.log",
+        "-e",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/production/boltz_chemistry/stderr.%J.log",
+        "bash",
+        "-l",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/source/exploratory_continuation_stage.sh",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/source",
+        "boltz_chemistry",
+        "run",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/production/boltz_chemistry-plan.json"
+      ],
+      "job_name": "mosaic-v10001-boltz_chemistry",
+      "created_utc": "2026-10-30T13:34:26.270737+00:00",
+      "research_profile": "exploratory",
+      "plan": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/production/boltz_chemistry-plan.json",
+        "bytes": 24366,
+        "sha256": "470a2632bd3a602439fe28f45573e4055b3b72d64775ecf5b5882a7a760739e5"
+      },
+      "status": "submitted",
+      "job_id": "29855330",
+      "dispatch_state": "held"
+    }
+  },
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/production/boltz/submission.json": {
+    "bytes": 1574,
+    "sha256": "13d0c8d8716b87dd11f3950cc3719bef1011a9ae1cc9db232b985c60a3d72505",
+    "json": {
+      "argv": [
+        "bsub",
+        "-H",
+        "-q",
+        "gpuv100",
+        "-J",
+        "mosaic-v10001-boltz",
+        "-n",
+        "4",
+        "-R",
+        "span[hosts=1]",
+        "-R",
+        "rusage[mem=8192]",
+        "-W",
+        "07:17",
+        "-gpu",
+        "num=1:mode=shared:j_exclusive=yes:mps=no:gmem=30G",
+        "-env",
+        "all,~CUDA_VISIBLE_DEVICES,~CUDA_MPS_PIPE_DIRECTORY,~CUDA_MPS_LOG_DIRECTORY,~CUDA_MPS_ACTIVE_THREAD_PERCENTAGE",
+        "-o",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/production/boltz/stdout.%J.log",
+        "-e",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/production/boltz/stderr.%J.log",
+        "bash",
+        "-l",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/source/exploratory_continuation_stage.sh",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/source",
+        "boltz",
+        "run",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/production/boltz-plan.json"
+      ],
+      "job_name": "mosaic-v10001-boltz",
+      "created_utc": "2026-10-30T13:41:04.142652+00:00",
+      "research_profile": "exploratory",
+      "plan": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/production/boltz-plan.json",
+        "bytes": 24366,
+        "sha256": "b019a4f8fc498fd54e079a0530e002ee15c0b9ba949cc4af91cb50d9fed2c5a9"
+      },
+      "status": "submitted",
+      "job_id": "29855430",
+      "dispatch_state": "held"
+    }
+  },
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/production/boltz/submission-response.json": {
+    "bytes": 103,
+    "sha256": "762baca8a97388b11ec056a403156dd6b457730228e9442e5a8567730aad9523",
+    "json": {
+      "returncode": 0,
+      "stdout": "Job <29855430> is submitted to queue <gpuv100>.\n",
+      "stderr": ""
+    }
+  },
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/production/boltz/submission-intent.json": {
+    "bytes": 1553,
+    "sha256": "911c0fb8ff3a0a446e35916cbf66d44096e061a4ee0fa843a56c412452275dda",
+    "json": {
+      "argv": [
+        "bsub",
+        "-H",
+        "-q",
+        "gpuv100",
+        "-J",
+        "mosaic-v10001-boltz",
+        "-n",
+        "4",
+        "-R",
+        "span[hosts=1]",
+        "-R",
+        "rusage[mem=8192]",
+        "-W",
+        "07:17",
+        "-gpu",
+        "num=1:mode=shared:j_exclusive=yes:mps=no:gmem=30G",
+        "-env",
+        "all,~CUDA_VISIBLE_DEVICES,~CUDA_MPS_PIPE_DIRECTORY,~CUDA_MPS_LOG_DIRECTORY,~CUDA_MPS_ACTIVE_THREAD_PERCENTAGE",
+        "-o",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/production/boltz/stdout.%J.log",
+        "-e",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/production/boltz/stderr.%J.log",
+        "bash",
+        "-l",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/source/exploratory_continuation_stage.sh",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/source",
+        "boltz",
+        "run",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/production/boltz-plan.json"
+      ],
+      "job_name": "mosaic-v10001-boltz",
+      "created_utc": "2026-10-30T13:41:04.142652+00:00",
+      "research_profile": "exploratory",
+      "plan": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/production/boltz-plan.json",
+        "bytes": 24366,
+        "sha256": "b019a4f8fc498fd54e079a0530e002ee15c0b9ba949cc4af91cb50d9fed2c5a9"
+      },
+      "status": "submission_outcome_unknown_until_receipt"
+    }
+  },
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/production/protenix/submission-response.json": {
+    "bytes": 103,
+    "sha256": "666e0a11fe84b337d9a581d1a820a7e0dd53aced4ccd1d6dd3990ab92d335bfb",
+    "json": {
+      "returncode": 0,
+      "stdout": "Job <29855339> is submitted to queue <gpuv100>.\n",
+      "stderr": ""
+    }
+  },
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/production/protenix/submission-intent.json": {
+    "bytes": 1574,
+    "sha256": "9479303b1fb013d91258088d3cb25094b303f2b22ed3f3f0393ca841dc6cf90e",
+    "json": {
+      "argv": [
+        "bsub",
+        "-H",
+        "-q",
+        "gpuv100",
+        "-J",
+        "mosaic-v10001-protenix",
+        "-n",
+        "4",
+        "-R",
+        "span[hosts=1]",
+        "-R",
+        "rusage[mem=8192]",
+        "-W",
+        "03:44",
+        "-gpu",
+        "num=1:mode=shared:j_exclusive=yes:mps=no:gmem=30G",
+        "-env",
+        "all,~CUDA_VISIBLE_DEVICES,~CUDA_MPS_PIPE_DIRECTORY,~CUDA_MPS_LOG_DIRECTORY,~CUDA_MPS_ACTIVE_THREAD_PERCENTAGE",
+        "-o",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/production/protenix/stdout.%J.log",
+        "-e",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/production/protenix/stderr.%J.log",
+        "bash",
+        "-l",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/source/exploratory_continuation_stage.sh",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/source",
+        "protenix",
+        "run",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/production/protenix-plan.json"
+      ],
+      "job_name": "mosaic-v10001-protenix",
+      "created_utc": "2026-10-30T13:35:05.309678+00:00",
+      "research_profile": "exploratory",
+      "plan": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/production/protenix-plan.json",
+        "bytes": 24327,
+        "sha256": "93a19c7332a35154b674aceb5f5d2c2a2fc81402fb33fbbb3599a3400f48dec4"
+      },
+      "status": "submission_outcome_unknown_until_receipt"
+    }
+  },
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/production/protenix/submission.json": {
+    "bytes": 1595,
+    "sha256": "d67d18deb44c7c45dabe64af28172a6a9076141d0589b744922b0d4cb790da37",
+    "json": {
+      "argv": [
+        "bsub",
+        "-H",
+        "-q",
+        "gpuv100",
+        "-J",
+        "mosaic-v10001-protenix",
+        "-n",
+        "4",
+        "-R",
+        "span[hosts=1]",
+        "-R",
+        "rusage[mem=8192]",
+        "-W",
+        "03:44",
+        "-gpu",
+        "num=1:mode=shared:j_exclusive=yes:mps=no:gmem=30G",
+        "-env",
+        "all,~CUDA_VISIBLE_DEVICES,~CUDA_MPS_PIPE_DIRECTORY,~CUDA_MPS_LOG_DIRECTORY,~CUDA_MPS_ACTIVE_THREAD_PERCENTAGE",
+        "-o",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/production/protenix/stdout.%J.log",
+        "-e",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/production/protenix/stderr.%J.log",
+        "bash",
+        "-l",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/source/exploratory_continuation_stage.sh",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/source",
+        "protenix",
+        "run",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/production/protenix-plan.json"
+      ],
+      "job_name": "mosaic-v10001-protenix",
+      "created_utc": "2026-10-30T13:35:05.309678+00:00",
+      "research_profile": "exploratory",
+      "plan": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/production/protenix-plan.json",
+        "bytes": 24327,
+        "sha256": "93a19c7332a35154b674aceb5f5d2c2a2fc81402fb33fbbb3599a3400f48dec4"
+      },
+      "status": "submitted",
+      "job_id": "29855339",
+      "dispatch_state": "held"
+    }
+  },
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/production/boltz_chemistry/held-proof.json": {
+    "bytes": 504,
+    "sha256": "8cf3b77bb858c855a5e23c16b8255f6463884048830bc80e85ac66ddc51cd9eb",
+    "json": [
+      {
+        "JOBID": "29855330",
+        "USER": "s234818",
+        "STAT": "PEND",
+        "JOB_NAME": "mosaic-v10001-boltz_chemistry"
+      },
+      {
+        "JOBID": "29855330",
+        "USER": "s234818",
+        "STAT": "PEND",
+        "JOB_NAME": "mosaic-v10001-boltz_chemistry"
+      },
+      {
+        "JOBID": "29855330",
+        "USER": "s234818",
+        "STAT": "PEND",
+        "JOB_NAME": "mosaic-v10001-boltz_chemistry"
+      },
+      {
+        "JOBID": "29855330",
+        "USER": "s234818",
+        "STAT": "PSUSP",
+        "JOB_NAME": "mosaic-v10001-boltz_chemistry"
+      }
+    ]
+  },
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/production/boltz/held-proof.json": {
+    "bytes": 234,
+    "sha256": "10d20569170decf94f98ec1ee87a74b7b6b82b76431059244a08b6123c8fb953",
+    "json": [
+      {
+        "JOBID": "29855430",
+        "USER": "s234818",
+        "STAT": "PEND",
+        "JOB_NAME": "mosaic-v10001-boltz"
+      },
+      {
+        "JOBID": "29855430",
+        "USER": "s234818",
+        "STAT": "PSUSP",
+        "JOB_NAME": "mosaic-v10001-boltz"
+      }
+    ]
+  },
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/production/protenix/held-proof.json": {
+    "bytes": 476,
+    "sha256": "b1e3a9a2a1f6ba61ef0eb2f2d6b1c74e8b182d096ad474f6e35bd386d2a36cad",
+    "json": [
+      {
+        "JOBID": "29855339",
+        "USER": "s234818",
+        "STAT": "PEND",
+        "JOB_NAME": "mosaic-v10001-protenix"
+      },
+      {
+        "JOBID": "29855339",
+        "USER": "s234818",
+        "STAT": "PEND",
+        "JOB_NAME": "mosaic-v10001-protenix"
+      },
+      {
+        "JOBID": "29855339",
+        "USER": "s234818",
+        "STAT": "PEND",
+        "JOB_NAME": "mosaic-v10001-protenix"
+      },
+      {
+        "JOBID": "29855339",
+        "USER": "s234818",
+        "STAT": "PSUSP",
+        "JOB_NAME": "mosaic-v10001-protenix"
+      }
+    ]
+  },
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/production/boltz_chemistry/release.json": {
+    "bytes": 111,
+    "sha256": "bf949df00e87869ad3bc5301164c258f4811f3c652b442505b97631d893a98c5",
+    "json": {
+      "job_id": "29855330",
+      "returncode": 0,
+      "stdout": "Job <29855330> is being resumed\n",
+      "stderr": ""
+    }
+  },
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/production/boltz/release.json": {
+    "bytes": 111,
+    "sha256": "656ca7bccc81e7c075728844f16083d038731454f3988e6271d3b7c5fd312ad2",
+    "json": {
+      "job_id": "29855430",
+      "returncode": 0,
+      "stdout": "Job <29855430> is being resumed\n",
+      "stderr": ""
+    }
+  },
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/production/protenix/release.json": {
+    "bytes": 111,
+    "sha256": "82ca8fe7e71f1bc7d79ff06a9310203786440071c1322f30b910f330c63709a5",
+    "json": {
+      "job_id": "29855339",
+      "returncode": 0,
+      "stdout": "Job <29855339> is being resumed\n",
+      "stderr": ""
+    }
+  },
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/production/boltz_chemistry/capacity-dispatch.json": {
+    "bytes": 1208,
+    "sha256": "d6554291d926631d5fc210e3b804326f1387b24359ce79e7d6f7176ba21c3da2",
+    "json": {
+      "version": "mosaic-exploratory-storage-v1",
+      "research_profile": "exploratory",
+      "status": "passed",
+      "available_bytes": 56555200512,
+      "required_bytes": 11005853696,
+      "byte_margin": 45549346816,
+      "available_files": 19553783,
+      "required_files": 61000,
+      "file_margin": 19492783,
+      "reserve_bytes": 268435456,
+      "file_reserve": 1000,
+      "single_quota_burst_allowance_bytes": 0,
+      "unprofiled_writer_ids": [],
+      "unprofiled_writer_allowance_bytes": 0,
+      "external_remaining_budgets": [],
+      "future_bytes": 10737418240,
+      "future_files": 60000,
+      "existing_bytes_recharged": 0,
+      "existing_files_recharged": 0,
+      "warnings": [],
+      "filesystem_inode_reporting": "unreported_all_zero",
+      "quota_observation": "reported",
+      "not_a_whole_account_reservation": true,
+      "entry_and_periodic_checks_required": false,
+      "scientific_settings_changed": false,
+      "phase": "dispatch",
+      "actual": {
+        "protenix_chemistry": {
+          "bytes": 0,
+          "files": 0
+        },
+        "boltz_chemistry": {
+          "bytes": 0,
+          "files": 0
+        },
+        "protenix": {
+          "bytes": 0,
+          "files": 0
+        },
+        "boltz": {
+          "bytes": 0,
+          "files": 0
+        },
+        "dbmol": {
+          "bytes": 0,
+          "files": 0
+        }
+      }
+    }
+  },
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/production/boltz/capacity-dispatch.json": {
+    "bytes": 1219,
+    "sha256": "c6f71844fe7ae4979768f3eab3b3937b81e5c4152b5b1bc2879d8459b13f9051",
+    "json": {
+      "version": "mosaic-exploratory-storage-v1",
+      "research_profile": "exploratory",
+      "status": "passed",
+      "available_bytes": 55870783488,
+      "required_bytes": 11000546563,
+      "byte_margin": 44870236925,
+      "available_files": 19553517,
+      "required_files": 60852,
+      "file_margin": 19492665,
+      "reserve_bytes": 268435456,
+      "file_reserve": 1000,
+      "single_quota_burst_allowance_bytes": 0,
+      "unprofiled_writer_ids": [],
+      "unprofiled_writer_allowance_bytes": 0,
+      "external_remaining_budgets": [],
+      "future_bytes": 10732111107,
+      "future_files": 59852,
+      "existing_bytes_recharged": 0,
+      "existing_files_recharged": 0,
+      "warnings": [],
+      "filesystem_inode_reporting": "unreported_all_zero",
+      "quota_observation": "reported",
+      "not_a_whole_account_reservation": true,
+      "entry_and_periodic_checks_required": false,
+      "scientific_settings_changed": false,
+      "phase": "dispatch",
+      "actual": {
+        "protenix_chemistry": {
+          "bytes": 0,
+          "files": 0
+        },
+        "boltz_chemistry": {
+          "bytes": 5193,
+          "files": 6
+        },
+        "protenix": {
+          "bytes": 5301940,
+          "files": 142
+        },
+        "boltz": {
+          "bytes": 0,
+          "files": 0
+        },
+        "dbmol": {
+          "bytes": 0,
+          "files": 0
+        }
+      }
+    }
+  },
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/production/protenix/capacity-dispatch.json": {
+    "bytes": 1211,
+    "sha256": "47b64c9b185a0c13eaca3fcdfa86f5e975e6d82aeecfd6de282d37f703dab5de",
+    "json": {
+      "version": "mosaic-exploratory-storage-v1",
+      "research_profile": "exploratory",
+      "status": "passed",
+      "available_bytes": 56289005568,
+      "required_bytes": 11005848503,
+      "byte_margin": 45283157065,
+      "available_files": 19553755,
+      "required_files": 60994,
+      "file_margin": 19492761,
+      "reserve_bytes": 268435456,
+      "file_reserve": 1000,
+      "single_quota_burst_allowance_bytes": 0,
+      "unprofiled_writer_ids": [],
+      "unprofiled_writer_allowance_bytes": 0,
+      "external_remaining_budgets": [],
+      "future_bytes": 10737413047,
+      "future_files": 59994,
+      "existing_bytes_recharged": 0,
+      "existing_files_recharged": 0,
+      "warnings": [],
+      "filesystem_inode_reporting": "unreported_all_zero",
+      "quota_observation": "reported",
+      "not_a_whole_account_reservation": true,
+      "entry_and_periodic_checks_required": false,
+      "scientific_settings_changed": false,
+      "phase": "dispatch",
+      "actual": {
+        "protenix_chemistry": {
+          "bytes": 0,
+          "files": 0
+        },
+        "boltz_chemistry": {
+          "bytes": 5193,
+          "files": 6
+        },
+        "protenix": {
+          "bytes": 0,
+          "files": 0
+        },
+        "boltz": {
+          "bytes": 0,
+          "files": 0
+        },
+        "dbmol": {
+          "bytes": 0,
+          "files": 0
+        }
+      }
+    }
+  },
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/smoke/migration-summary.json": {
+    "bytes": 2076,
+    "sha256": "7895cedcae1c1a2af5f54579d160a004f642852b8d235dce0b7780c37595b704",
+    "json": {
+      "status": "conditional_migration_finished",
+      "decisions": {
+        "protenix_chemistry": {
+          "eligible": true,
+          "reason": "whole remainder fits V100 queue limit",
+          "wall_minutes": 849,
+          "warm_update_seconds": 1.0103690000250936,
+          "measured_setup_seconds": 67.79002996493364,
+          "scope": "three-update timing estimate; future chemistry/runtime may vary",
+          "action": "left_original_unchanged",
+          "original_state": "RUN"
+        },
+        "boltz_chemistry": {
+          "eligible": true,
+          "reason": "whole remainder fits V100 queue limit",
+          "wall_minutes": 915,
+          "warm_update_seconds": 2.17875532299513,
+          "measured_setup_seconds": 103.35383541806368,
+          "scope": "three-update timing estimate; future chemistry/runtime may vary",
+          "action": "migrated",
+          "old_job": "29853831",
+          "new_job": "29855330"
+        },
+        "protenix": {
+          "eligible": true,
+          "reason": "whole remainder fits V100 queue limit",
+          "wall_minutes": 224,
+          "warm_update_seconds": 0.4576788409613073,
+          "measured_setup_seconds": 33.41150914510945,
+          "scope": "three-update timing estimate; future chemistry/runtime may vary",
+          "action": "migrated",
+          "old_job": "29853759",
+          "new_job": "29855339"
+        },
+        "boltz": {
+          "eligible": true,
+          "reason": "whole remainder fits V100 queue limit",
+          "wall_minutes": 437,
+          "warm_update_seconds": 2.0639479300007224,
+          "measured_setup_seconds": 81.64584462001221,
+          "scope": "three-update timing estimate; future chemistry/runtime may vary",
+          "action": "needs_reconciliation",
+          "error": "ValueError('Existing active writer')",
+          "original_retired": true
+        },
+        "dbmol": {
+          "eligible": false,
+          "reason": "whole remainder exceeds V100 24-hour limit; retain L40S",
+          "wall_minutes": 2141,
+          "warm_update_seconds": 4.550656642008107,
+          "measured_setup_seconds": 130.8736256249831,
+          "scope": "three-update timing estimate; future chemistry/runtime may vary"
+        }
+      },
+      "saved_results_changed": false
+    }
+  },
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/smoke/comparison-scheduler-admission02.json": {
+    "bytes": 400,
+    "sha256": "2bc3f59d298e76158412214dab6b23632f7a97a7412b9eb08cde14cfce0af02e",
+    "json": [
+      {
+        "JOBID": "29855106",
+        "USER": "s234818",
+        "STAT": "DONE",
+        "QUEUE": "gpuv100",
+        "JOB_NAME": "mosaic-v100-gpu01",
+        "COMMAND": "bash -l /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/source/v100_migration_stage.sh /work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/source compare"
+      }
+    ]
+  },
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/smoke/migration-control02-started.json": {
+    "bytes": 209,
+    "sha256": "55ae86b4ff1fa9018cc3ff59cfae73b2f3358d6db5da401ce19276ac38a50273",
+    "json": {
+      "actor": "authenticated_login_helper_metadata_only",
+      "source": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/control02",
+      "comparison_job": "29855106"
+    }
+  },
+  "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/smoke/comparison.json": {
+    "bytes": 73217,
+    "sha256": "223d6c91c3bcaf0141ee1c536c17e93079d1a31c70a3d818970262768eb01f68",
+    "json": {
+      "status": "device_comparison_completed",
+      "job_id": "29855106",
+      "results": {
+        "protenix_chemistry": {
+          "status": "passed_device_smoke",
+          "summary": {
+            "version": "mosaic-exploratory-continuation-v2",
+            "status": "completed_device_smoke",
+            "research_profile": "exploratory",
+            "derivative_qualified": false,
+            "original_failures_preserved": true,
+            "saved_results_changed": false,
+            "job_id": "29855106",
+            "name": "protenix_chemistry",
+            "global_start": 10000,
+            "global_target": 50000,
+            "primal_scope": "primal_from_backward_call",
+            "warnings": [
+              "Exploratory continuation: finite backward smoke, not derivative/native qualification.",
+              "Original failed terminal/FD/replay evidence remains unchanged.",
+              "Noisy/inconclusive FD, flat components, validity drops and nonmonotone loss are recorded findings.",
+              "Repeated independent primals omitted; original backward/objective/update expressions are unchanged."
+            ],
+            "configuration": {
+              "config": {
+                "bytes": 1890,
+                "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source/examples/configs/extended_random.json",
+                "sha256": "d4993743e7f4e6b0f559e3da0c264c2a8b3969c8d113f5defba397350f3e5749"
+              },
+              "science_source": {
+                "files": 643,
+                "manifest_sha256": "da9db6821d26b884ca1749303fc8e0b0095bd9ee7cbd1b427cdcf1b22eec6562",
+                "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source"
+              },
+              "reference": {
+                "bytes": 2087,
+                "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/cpu/payload/composition_reference.json",
+                "sha256": "37b34a2ba7be47886936df48faaabdeac20481e5a9cebca9bafab831c07868eb"
+              },
+              "pocket": {
+                "bytes": 3948,
+                "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/cpu/payload/pocket_definition.json",
+                "sha256": "9376c715eaf5b48689fb3e995b00d7820601a7776970df66bd7e7cff3b13ee43"
+              },
+              "frozen_identity": {
+                "context_digest": "b28dfad8e5ede565071c70a61695f6a38f5cb6bd591705e32979e59050ff5ce4",
+                "model_digest": "8d6926d5390fe682e193089f790ce53aa4011a6d5509ddb452a55db3d89b0ab2"
+              },
+              "adapter_source": {
+                "files": 34,
+                "manifest_sha256": "ab875927a328c34650d2e43baf6dfbe323e8f9bcf5600f39bac78f3ccdfb5d8c",
+                "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-release-05/source"
+              },
+              "repair_schedule": {
+                "final": 100.0,
+                "hold_updates": 5000,
+                "initial": 0.001,
+                "total_updates": 50000,
+                "version": "delayed-geometric-v1"
+              },
+              "snapshot": {
+                "bytes": 23166,
+                "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-03/protenix/random-segment-0000/payload/study/case-0/snapshots/step-10000.npz",
+                "sha256": "2d7b4ae6dde1eb451e51822ad6d000bdf5a5e0db35c072eb475d1263736428d5"
+              },
+              "start": 10000,
+              "target": 50000,
+              "rate": 0.3,
+              "chemistry": true,
+              "acceleration_profile": "protenix-random50k",
+              "context_ready": {
+                "bytes": 21266,
+                "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/assessment.json",
+                "sha256": "9674aacd7c8601f755fcad31df6efb9877dc39cd5114d9b1fe3ee867c1dc55dd"
+              },
+              "name": "protenix_chemistry",
+              "research_profile": "exploratory",
+              "steps": 40000,
+              "acceptance_policy": "fixed_step",
+              "max_backtracks": 1,
+              "matrix_stride": 20,
+              "loss_stride": 1,
+              "output_cap_bytes": 268435456,
+              "file_cap": 2000,
+              "slots": 8,
+              "memory_per_slot_mb": 4096,
+              "timing_basis": {
+                "count": 10000,
+                "mean_all": 0.9995505822696956,
+                "mean_last1000": 0.9850721190451878,
+                "max_last1000": 3.6153106089914218,
+                "median_last1000": 0.9631206259364262,
+                "metadata_path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-03/protenix/random-segment-0000/payload/study/case-0/updates.jsonl"
+              },
+              "walltime": "14:15",
+              "internal_seconds": 500,
+              "gpu_request": "num=1:mode=shared:j_exclusive=yes:mps=no:gmem=30G",
+              "warnings": [
+                "Exploratory continuation: finite backward smoke, not derivative/native qualification.",
+                "Original failed terminal/FD/replay evidence remains unchanged.",
+                "Noisy/inconclusive FD, flat components, validity drops and nonmonotone loss are recorded findings.",
+                "Repeated independent primals omitted; original backward/objective/update expressions are unchanged."
+              ],
+              "gpu_profile": "v100-32gb-v1",
+              "queue": "gpuv100",
+              "gpu_adapter_source": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/source/adapters/protenix"
+            },
+            "gpu_profile": {
+              "id": "v100-32gb-v1",
+              "queue": "gpuv100",
+              "family": "V100",
+              "minimum_memory_MiB": 30000,
+              "resource": "num=1:mode=shared:j_exclusive=yes:mps=no:gmem=30G"
+            },
+            "device_smoke_updates": 3,
+            "device_smoke_states_adopted": false,
+            "CUDA_routing": {
+              "original_cuda_visible_devices": "0",
+              "task_mappings": {
+                "CUDA_VISIBLE_DEVICES8": "0",
+                "CUDA_VISIBLE_DEVICES1": "0",
+                "CUDA_VISIBLE_DEVICES3": "0",
+                "CUDA_VISIBLE_DEVICES2": "0",
+                "CUDA_VISIBLE_DEVICES5": "0",
+                "CUDA_VISIBLE_DEVICES4": "0",
+                "CUDA_VISIBLE_DEVICES7": "0",
+                "CUDA_VISIBLE_DEVICES6": "0"
+              },
+              "selected_cuda_visible_devices": "0",
+              "origin": "LSF_MPS_complete_one_based_unanimous_mapping",
+              "guessed_device": false
+            },
+            "gpu_hardware": {
+              "profile": "v100-32gb-v1",
+              "name": "Tesla V100-SXM2-32GB",
+              "memory_total_MiB": 32768
+            },
+            "initialization_replay": {
+              "scope": "exact_saved_logits_key_dtype_relative_graph_replay",
+              "graph": {
+                "X": {
+                  "byte_equal": true,
+                  "max_absolute_difference": 0.0
+                },
+                "E_upper": {
+                  "byte_equal": true,
+                  "max_absolute_difference": 0.0
+                }
+              },
+              "relative_tolerance": 3.814697265625e-06,
+              "absolute_floor": 4.484155085839415e-44
+            },
+            "frozen_before": {
+              "model_digest": "8d6926d5390fe682e193089f790ce53aa4011a6d5509ddb452a55db3d89b0ab2",
+              "context_digest": "b28dfad8e5ede565071c70a61695f6a38f5cb6bd591705e32979e59050ff5ce4"
+            },
+            "acceleration_source": {
+              "original": {
+                "files": 34,
+                "manifest_sha256": "ab875927a328c34650d2e43baf6dfbe323e8f9bcf5600f39bac78f3ccdfb5d8c",
+                "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-release-05/source"
+              },
+              "device_guard_overlay": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/source/adapters/protenix"
+            },
+            "applied_updates": 3,
+            "update_seconds": [
+              14.697352129034698,
+              1.0103690000250936,
+              0.829113942978438
+            ],
+            "global_end": 10003,
+            "case_report": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/smoke/protenix_chemistry/payload/study/case-0/report.json",
+            "artifact_retention": {
+              "version": "mosaic-loss-every-step-matrices-every20-v1",
+              "matrix_stride": 20,
+              "loss_stride": 1,
+              "initial_terminal_and_segment_boundaries": true,
+              "rolling_latest_and_best_checkpoints": true,
+              "interpolation_or_reconstruction": false,
+              "optimization_arithmetic_changed": false
+            },
+            "frozen_after": {
+              "model_digest": "8d6926d5390fe682e193089f790ce53aa4011a6d5509ddb452a55db3d89b0ab2",
+              "context_digest": "b28dfad8e5ede565071c70a61695f6a38f5cb6bd591705e32979e59050ff5ce4"
+            },
+            "elapsed_seconds": 70.63988190796226
+          },
+          "memory_samples_MiB": [
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              4,
+              32768
+            ],
+            [
+              320,
+              32768
+            ],
+            [
+              322,
+              32768
+            ],
+            [
+              358,
+              32768
+            ],
+            [
+              358,
+              32768
+            ],
+            [
+              358,
+              32768
+            ],
+            [
+              358,
+              32768
+            ],
+            [
+              358,
+              32768
+            ],
+            [
+              582,
+              32768
+            ],
+            [
+              838,
+              32768
+            ],
+            [
+              838,
+              32768
+            ],
+            [
+              838,
+              32768
+            ],
+            [
+              838,
+              32768
+            ],
+            [
+              838,
+              32768
+            ],
+            [
+              838,
+              32768
+            ],
+            [
+              840,
+              32768
+            ],
+            [
+              840,
+              32768
+            ],
+            [
+              840,
+              32768
+            ],
+            [
+              840,
+              32768
+            ],
+            [
+              840,
+              32768
+            ],
+            [
+              840,
+              32768
+            ],
+            [
+              840,
+              32768
+            ],
+            [
+              840,
+              32768
+            ],
+            [
+              840,
+              32768
+            ],
+            [
+              840,
+              32768
+            ],
+            [
+              840,
+              32768
+            ],
+            [
+              840,
+              32768
+            ],
+            [
+              840,
+              32768
+            ],
+            [
+              840,
+              32768
+            ],
+            [
+              840,
+              32768
+            ],
+            [
+              840,
+              32768
+            ],
+            [
+              840,
+              32768
+            ],
+            [
+              840,
+              32768
+            ],
+            [
+              840,
+              32768
+            ],
+            [
+              1364,
+              32768
+            ],
+            [
+              1364,
+              32768
+            ],
+            [
+              1364,
+              32768
+            ],
+            [
+              1364,
+              32768
+            ],
+            [
+              1364,
+              32768
+            ],
+            [
+              1364,
+              32768
+            ],
+            [
+              1364,
+              32768
+            ],
+            [
+              1364,
+              32768
+            ],
+            [
+              1364,
+              32768
+            ],
+            [
+              1364,
+              32768
+            ],
+            [
+              2392,
+              32768
+            ],
+            [
+              2392,
+              32768
+            ],
+            [
+              2392,
+              32768
+            ],
+            [
+              2392,
+              32768
+            ],
+            [
+              2392,
+              32768
+            ],
+            [
+              2392,
+              32768
+            ],
+            [
+              2392,
+              32768
+            ],
+            [
+              2392,
+              32768
+            ],
+            [
+              2392,
+              32768
+            ],
+            [
+              2392,
+              32768
+            ],
+            [
+              2392,
+              32768
+            ],
+            [
+              2394,
+              32768
+            ],
+            [
+              2394,
+              32768
+            ],
+            [
+              2394,
+              32768
+            ],
+            [
+              2394,
+              32768
+            ],
+            [
+              2394,
+              32768
+            ],
+            [
+              2394,
+              32768
+            ],
+            [
+              2394,
+              32768
+            ],
+            [
+              2398,
+              32768
+            ],
+            [
+              2398,
+              32768
+            ],
+            [
+              2400,
+              32768
+            ],
+            [
+              2400,
+              32768
+            ],
+            [
+              2400,
+              32768
+            ],
+            [
+              2400,
+              32768
+            ],
+            [
+              2400,
+              32768
+            ],
+            [
+              2400,
+              32768
+            ],
+            [
+              2400,
+              32768
+            ],
+            [
+              2400,
+              32768
+            ],
+            [
+              2400,
+              32768
+            ],
+            [
+              2400,
+              32768
+            ],
+            [
+              2400,
+              32768
+            ],
+            [
+              2402,
+              32768
+            ],
+            [
+              2402,
+              32768
+            ],
+            [
+              2402,
+              32768
+            ],
+            [
+              2402,
+              32768
+            ],
+            [
+              2402,
+              32768
+            ],
+            [
+              2402,
+              32768
+            ],
+            [
+              2398,
+              32768
+            ],
+            [
+              348,
+              32768
+            ],
+            [
+              348,
+              32768
+            ]
+          ],
+          "memory_headroom_MiB": 30366,
+          "scope": "finite backward/three actual updates; not derivative qualification"
+        },
+        "boltz_chemistry": {
+          "status": "passed_device_smoke",
+          "summary": {
+            "version": "mosaic-exploratory-continuation-v2",
+            "status": "completed_device_smoke",
+            "research_profile": "exploratory",
+            "derivative_qualified": false,
+            "original_failures_preserved": true,
+            "saved_results_changed": false,
+            "job_id": "29855106",
+            "name": "boltz_chemistry",
+            "global_start": 10000,
+            "global_target": 30000,
+            "primal_scope": "primal_from_backward_call",
+            "warnings": [
+              "Exploratory continuation: finite backward smoke, not derivative/native qualification.",
+              "Original failed terminal/FD/replay evidence remains unchanged.",
+              "Noisy/inconclusive FD, flat components, validity drops and nonmonotone loss are recorded findings.",
+              "Repeated independent primals omitted; original backward/objective/update expressions are unchanged."
+            ],
+            "configuration": {
+              "config": {
+                "bytes": 1854,
+                "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-release-03/source/examples/configs/boltz_serial_boltz2_chemistry.json",
+                "sha256": "3b3bc33d087f0c03a48c6bf89f03bc707d236ca0f64a95ba5ae2159d1918737c"
+              },
+              "science_source": {
+                "files": 635,
+                "manifest_sha256": "c214bccf2c94ac6829996bc0ca7d6415d3c19549be4fe7f874cba2b433901cc6",
+                "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-release-03/source"
+              },
+              "reference": {
+                "bytes": 2087,
+                "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/cpu/payload/composition_reference.json",
+                "sha256": "37b34a2ba7be47886936df48faaabdeac20481e5a9cebca9bafab831c07868eb"
+              },
+              "pocket": {
+                "bytes": 3948,
+                "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/cpu/payload/pocket_definition.json",
+                "sha256": "9376c715eaf5b48689fb3e995b00d7820601a7776970df66bd7e7cff3b13ee43"
+              },
+              "frozen_identity": {
+                "context_digest": "fd04211da8e22eccd97ecedd96dd59cf4fb2d80aab6a397fa662af8eb92bbad4",
+                "model_digest": "395876da13ab6d5d175e6603db2118a82954c7c06484842fe2314dbd77a31a16"
+              },
+              "adapter_source": {
+                "files": 30,
+                "manifest_sha256": "05e316a7b1bcceaf286b03231200a2d1f66e3f6a7ce927d4c1e73f08a24f86f9",
+                "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-release-02/source"
+              },
+              "repair_schedule": {
+                "final": 100.0,
+                "hold_updates": 5000,
+                "initial": 0.001,
+                "total_updates": 30000,
+                "version": "delayed-geometric-v1"
+              },
+              "snapshot": {
+                "bytes": 26506,
+                "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-04/boltz/boltz2_chemistry-segment-0000/payload/study/case-0/snapshots/step-10000.npz",
+                "sha256": "41f21e926e3dead1adbad55aab2df03c97e70373cd345f14337471d10986cd03"
+              },
+              "start": 10000,
+              "target": 30000,
+              "rate": 0.0025,
+              "chemistry": true,
+              "acceleration_profile": "boltz-chem30k",
+              "name": "boltz_chemistry",
+              "research_profile": "exploratory",
+              "steps": 20000,
+              "acceptance_policy": "fixed_step",
+              "max_backtracks": 1,
+              "matrix_stride": 20,
+              "loss_stride": 1,
+              "output_cap_bytes": 268435456,
+              "file_cap": 2000,
+              "slots": 8,
+              "memory_per_slot_mb": 4096,
+              "timing_basis": {
+                "count": 10000,
+                "mean_all": 1.88716748115269,
+                "mean_last1000": 1.8836352262808942,
+                "max_last1000": 2.5597340520471334,
+                "median_last1000": 1.8200542040285654,
+                "metadata_path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-04/boltz/boltz2_chemistry-segment-0000/payload/study/case-0/updates.jsonl"
+              },
+              "walltime": "13:30",
+              "internal_seconds": 500,
+              "gpu_request": "num=1:mode=shared:j_exclusive=yes:mps=no:gmem=30G",
+              "context": {
+                "bytes": 16063255,
+                "path": "/zhome/95/e/206121/mosaic-runs/20261021-brd4-jq1-25-01/prepare/payload/prepared/context.pt",
+                "sha256": "a18a331269170aac3281b0a2ecad313aab81756c9b77e048d7e2cbaa4d8f1093"
+              },
+              "worker_python": "/work3/s234818/latentmol/env/boltz311/bin/python",
+              "checkpoints": [
+                {
+                  "bytes": 2062139170,
+                  "path": "/work3/s234818/latentmol/cache/boltz2/boltz2_aff.ckpt",
+                  "sha256": "dcc5cd3722b1c9eaa34267e4ae32f55cbbf1963f4c19319381ccfa30fdd2ca9e"
+                }
+              ],
+              "warnings": [
+                "Exploratory continuation: finite backward smoke, not derivative/native qualification.",
+                "Original failed terminal/FD/replay evidence remains unchanged.",
+                "Noisy/inconclusive FD, flat components, validity drops and nonmonotone loss are recorded findings.",
+                "Repeated independent primals omitted; original backward/objective/update expressions are unchanged."
+              ],
+              "gpu_profile": "v100-32gb-v1",
+              "queue": "gpuv100",
+              "gpu_adapter_source": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/source/adapters/boltz"
+            },
+            "gpu_profile": {
+              "id": "v100-32gb-v1",
+              "queue": "gpuv100",
+              "family": "V100",
+              "minimum_memory_MiB": 30000,
+              "resource": "num=1:mode=shared:j_exclusive=yes:mps=no:gmem=30G"
+            },
+            "device_smoke_updates": 3,
+            "device_smoke_states_adopted": false,
+            "CUDA_routing": {
+              "original_cuda_visible_devices": "0",
+              "task_mappings": {
+                "CUDA_VISIBLE_DEVICES8": "0",
+                "CUDA_VISIBLE_DEVICES1": "0",
+                "CUDA_VISIBLE_DEVICES3": "0",
+                "CUDA_VISIBLE_DEVICES2": "0",
+                "CUDA_VISIBLE_DEVICES5": "0",
+                "CUDA_VISIBLE_DEVICES4": "0",
+                "CUDA_VISIBLE_DEVICES7": "0",
+                "CUDA_VISIBLE_DEVICES6": "0"
+              },
+              "selected_cuda_visible_devices": "0",
+              "origin": "LSF_MPS_complete_one_based_unanimous_mapping",
+              "guessed_device": false
+            },
+            "gpu_hardware": {
+              "profile": "v100-32gb-v1",
+              "name": "Tesla V100-SXM2-32GB",
+              "memory_total_MiB": 32768
+            },
+            "initialization_replay": {
+              "scope": "exact_saved_logits_key_dtype_relative_graph_replay",
+              "graph": {
+                "X": {
+                  "byte_equal": true,
+                  "max_absolute_difference": 0.0
+                },
+                "E_upper": {
+                  "byte_equal": true,
+                  "max_absolute_difference": 0.0
+                }
+              },
+              "relative_tolerance": 3.814697265625e-06,
+              "absolute_floor": 4.484155085839415e-44
+            },
+            "frozen_before": {
+              "model_digest": "395876da13ab6d5d175e6603db2118a82954c7c06484842fe2314dbd77a31a16",
+              "context_digest": "fd04211da8e22eccd97ecedd96dd59cf4fb2d80aab6a397fa662af8eb92bbad4"
+            },
+            "acceleration_source": {
+              "original": {
+                "files": 30,
+                "manifest_sha256": "05e316a7b1bcceaf286b03231200a2d1f66e3f6a7ce927d4c1e73f08a24f86f9",
+                "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-full-model-release-02/source"
+              },
+              "device_guard_overlay": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/source/adapters/boltz"
+            },
+            "applied_updates": 3,
+            "update_seconds": [
+              2.5744859619881026,
+              2.175610294973012,
+              2.17875532299513
+            ],
+            "global_end": 10003,
+            "case_report": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/smoke/boltz_chemistry/payload/study/case-0/report.json",
+            "artifact_retention": {
+              "version": "mosaic-loss-every-step-matrices-every20-v1",
+              "matrix_stride": 20,
+              "loss_stride": 1,
+              "initial_terminal_and_segment_boundaries": true,
+              "rolling_latest_and_best_checkpoints": true,
+              "interpolation_or_reconstruction": false,
+              "optimization_arithmetic_changed": false
+            },
+            "frozen_after": {
+              "model_digest": "395876da13ab6d5d175e6603db2118a82954c7c06484842fe2314dbd77a31a16",
+              "context_digest": "fd04211da8e22eccd97ecedd96dd59cf4fb2d80aab6a397fa662af8eb92bbad4"
+            },
+            "elapsed_seconds": 109.88695635902695
+          },
+          "memory_samples_MiB": [
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              4,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              942,
+              32768
+            ],
+            [
+              2544,
+              32768
+            ],
+            [
+              2544,
+              32768
+            ],
+            [
+              2544,
+              32768
+            ],
+            [
+              2544,
+              32768
+            ],
+            [
+              2544,
+              32768
+            ],
+            [
+              2544,
+              32768
+            ],
+            [
+              2544,
+              32768
+            ],
+            [
+              2544,
+              32768
+            ],
+            [
+              2544,
+              32768
+            ],
+            [
+              2544,
+              32768
+            ],
+            [
+              2544,
+              32768
+            ],
+            [
+              2544,
+              32768
+            ],
+            [
+              2544,
+              32768
+            ],
+            [
+              2544,
+              32768
+            ],
+            [
+              2544,
+              32768
+            ],
+            [
+              2544,
+              32768
+            ],
+            [
+              2854,
+              32768
+            ],
+            [
+              2854,
+              32768
+            ],
+            [
+              2854,
+              32768
+            ],
+            [
+              2854,
+              32768
+            ],
+            [
+              2854,
+              32768
+            ],
+            [
+              2854,
+              32768
+            ],
+            [
+              2854,
+              32768
+            ],
+            [
+              3222,
+              32768
+            ],
+            [
+              3228,
+              32768
+            ],
+            [
+              3232,
+              32768
+            ],
+            [
+              3236,
+              32768
+            ],
+            [
+              2868,
+              32768
+            ],
+            [
+              2868,
+              32768
+            ],
+            [
+              2868,
+              32768
+            ],
+            [
+              2868,
+              32768
+            ],
+            [
+              2868,
+              32768
+            ],
+            [
+              2868,
+              32768
+            ],
+            [
+              2868,
+              32768
+            ],
+            [
+              2868,
+              32768
+            ],
+            [
+              2868,
+              32768
+            ],
+            [
+              2868,
+              32768
+            ],
+            [
+              4010,
+              32768
+            ],
+            [
+              5464,
+              32768
+            ],
+            [
+              5464,
+              32768
+            ],
+            [
+              5556,
+              32768
+            ],
+            [
+              5556,
+              32768
+            ],
+            [
+              5556,
+              32768
+            ],
+            [
+              5556,
+              32768
+            ],
+            [
+              5556,
+              32768
+            ],
+            [
+              5556,
+              32768
+            ],
+            [
+              5556,
+              32768
+            ],
+            [
+              5556,
+              32768
+            ],
+            [
+              5556,
+              32768
+            ],
+            [
+              5556,
+              32768
+            ],
+            [
+              5556,
+              32768
+            ],
+            [
+              5556,
+              32768
+            ],
+            [
+              5556,
+              32768
+            ],
+            [
+              5554,
+              32768
+            ],
+            [
+              5232,
+              32768
+            ],
+            [
+              5232,
+              32768
+            ],
+            [
+              5232,
+              32768
+            ],
+            [
+              5232,
+              32768
+            ],
+            [
+              5232,
+              32768
+            ],
+            [
+              5232,
+              32768
+            ],
+            [
+              5232,
+              32768
+            ],
+            [
+              5232,
+              32768
+            ],
+            [
+              5228,
+              32768
+            ]
+          ],
+          "memory_headroom_MiB": 27212,
+          "scope": "finite backward/three actual updates; not derivative qualification"
+        },
+        "protenix": {
+          "status": "passed_device_smoke",
+          "summary": {
+            "version": "mosaic-exploratory-continuation-v2",
+            "status": "completed_device_smoke",
+            "research_profile": "exploratory",
+            "derivative_qualified": false,
+            "original_failures_preserved": true,
+            "saved_results_changed": false,
+            "job_id": "29855106",
+            "name": "protenix",
+            "global_start": 27175,
+            "global_target": 50000,
+            "primal_scope": "primal_from_backward_call",
+            "warnings": [
+              "Exploratory continuation: finite backward smoke, not derivative/native qualification.",
+              "Original failed terminal/FD/replay evidence remains unchanged.",
+              "Noisy/inconclusive FD, flat components, validity drops and nonmonotone loss are recorded findings.",
+              "Repeated independent primals omitted; original backward/objective/update expressions are unchanged."
+            ],
+            "configuration": {
+              "config": {
+                "bytes": 1733,
+                "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source/examples/configs/extended_continuation.json",
+                "sha256": "f91c90770fe907c00e081f3ed28b46071ac35cc3f869edae504cf8cc16f6b445"
+              },
+              "science_source": {
+                "files": 643,
+                "manifest_sha256": "da9db6821d26b884ca1749303fc8e0b0095bd9ee7cbd1b427cdcf1b22eec6562",
+                "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source"
+              },
+              "reference": {
+                "bytes": 2087,
+                "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/cpu/payload/composition_reference.json",
+                "sha256": "37b34a2ba7be47886936df48faaabdeac20481e5a9cebca9bafab831c07868eb"
+              },
+              "pocket": {
+                "bytes": 3948,
+                "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/cpu/payload/pocket_definition.json",
+                "sha256": "9376c715eaf5b48689fb3e995b00d7820601a7776970df66bd7e7cff3b13ee43"
+              },
+              "frozen_identity": {
+                "context_digest": "b28dfad8e5ede565071c70a61695f6a38f5cb6bd591705e32979e59050ff5ce4",
+                "model_digest": "8d6926d5390fe682e193089f790ce53aa4011a6d5509ddb452a55db3d89b0ab2"
+              },
+              "snapshot": {
+                "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/runtime-production-05/gpu-plain/payload/replay/plain/payload/study/case-0/latest-state.npz",
+                "bytes": 14362,
+                "sha256": "8b6de512167dad1ef5e8e9f843e163b34a199985c97fabbd58236d45671e0b31"
+              },
+              "start": 27175,
+              "target": 50000,
+              "rate": 0.3,
+              "chemistry": false,
+              "context_ready": {
+                "bytes": 21266,
+                "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/validate-protenix/payload/study/assessment.json",
+                "sha256": "9674aacd7c8601f755fcad31df6efb9877dc39cd5114d9b1fe3ee867c1dc55dd"
+              },
+              "predecessor_job_ids": [
+                "29853431"
+              ],
+              "name": "protenix",
+              "research_profile": "exploratory",
+              "steps": 22825,
+              "acceptance_policy": "fixed_step",
+              "max_backtracks": 1,
+              "matrix_stride": 20,
+              "loss_stride": 1,
+              "output_cap_bytes": 268435456,
+              "file_cap": 2000,
+              "slots": 4,
+              "memory_per_slot_mb": 8192,
+              "timing_basis": {
+                "count": 7175,
+                "mean_all": 0.30620422620942833,
+                "mean_last1000": 0.3063028419669718,
+                "max_last1000": 0.5154518210329115,
+                "median_last1000": 0.3016306379577145,
+                "metadata_path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/runtime-production-05/gpu-plain/payload/replay/plain/payload/study/case-0/updates.jsonl"
+              },
+              "walltime": "02:45",
+              "internal_seconds": 500,
+              "gpu_request": "num=1:mode=shared:j_exclusive=yes:mps=no:gmem=30G",
+              "warnings": [
+                "Exploratory continuation: finite backward smoke, not derivative/native qualification.",
+                "Original failed terminal/FD/replay evidence remains unchanged.",
+                "Noisy/inconclusive FD, flat components, validity drops and nonmonotone loss are recorded findings.",
+                "Repeated independent primals omitted; original backward/objective/update expressions are unchanged."
+              ],
+              "gpu_profile": "v100-32gb-v1",
+              "queue": "gpuv100"
+            },
+            "gpu_profile": {
+              "id": "v100-32gb-v1",
+              "queue": "gpuv100",
+              "family": "V100",
+              "minimum_memory_MiB": 30000,
+              "resource": "num=1:mode=shared:j_exclusive=yes:mps=no:gmem=30G"
+            },
+            "device_smoke_updates": 3,
+            "device_smoke_states_adopted": false,
+            "CUDA_routing": {
+              "original_cuda_visible_devices": "0",
+              "task_mappings": {
+                "CUDA_VISIBLE_DEVICES8": "0",
+                "CUDA_VISIBLE_DEVICES1": "0",
+                "CUDA_VISIBLE_DEVICES3": "0",
+                "CUDA_VISIBLE_DEVICES2": "0",
+                "CUDA_VISIBLE_DEVICES5": "0",
+                "CUDA_VISIBLE_DEVICES4": "0",
+                "CUDA_VISIBLE_DEVICES7": "0",
+                "CUDA_VISIBLE_DEVICES6": "0"
+              },
+              "selected_cuda_visible_devices": "0",
+              "origin": "LSF_MPS_complete_one_based_unanimous_mapping",
+              "guessed_device": false
+            },
+            "gpu_hardware": {
+              "profile": "v100-32gb-v1",
+              "name": "Tesla V100-SXM2-32GB",
+              "memory_total_MiB": 32768
+            },
+            "initialization_replay": {
+              "scope": "exact_saved_logits_key_dtype_relative_graph_replay",
+              "graph": {
+                "X": {
+                  "byte_equal": true,
+                  "max_absolute_difference": 0.0
+                },
+                "E_upper": {
+                  "byte_equal": true,
+                  "max_absolute_difference": 0.0
+                }
+              },
+              "relative_tolerance": 3.814697265625e-06,
+              "absolute_floor": 4.484155085839415e-44
+            },
+            "frozen_before": {
+              "model_digest": "8d6926d5390fe682e193089f790ce53aa4011a6d5509ddb452a55db3d89b0ab2",
+              "context_digest": "b28dfad8e5ede565071c70a61695f6a38f5cb6bd591705e32979e59050ff5ce4"
+            },
+            "applied_updates": 3,
+            "update_seconds": [
+              5.096992100006901,
+              0.4576788409613073,
+              0.3651805520057678
+            ],
+            "global_end": 27178,
+            "case_report": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/smoke/protenix/payload/study/case-0/report.json",
+            "artifact_retention": {
+              "version": "mosaic-loss-every-step-matrices-every20-v1",
+              "matrix_stride": 20,
+              "loss_stride": 1,
+              "initial_terminal_and_segment_boundaries": true,
+              "rolling_latest_and_best_checkpoints": true,
+              "interpolation_or_reconstruction": false,
+              "optimization_arithmetic_changed": false
+            },
+            "frozen_after": {
+              "model_digest": "8d6926d5390fe682e193089f790ce53aa4011a6d5509ddb452a55db3d89b0ab2",
+              "context_digest": "b28dfad8e5ede565071c70a61695f6a38f5cb6bd591705e32979e59050ff5ce4"
+            },
+            "elapsed_seconds": 34.69204737903783
+          },
+          "memory_samples_MiB": [
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              322,
+              32768
+            ],
+            [
+              358,
+              32768
+            ],
+            [
+              358,
+              32768
+            ],
+            [
+              358,
+              32768
+            ],
+            [
+              358,
+              32768
+            ],
+            [
+              358,
+              32768
+            ],
+            [
+              582,
+              32768
+            ],
+            [
+              838,
+              32768
+            ],
+            [
+              838,
+              32768
+            ],
+            [
+              838,
+              32768
+            ],
+            [
+              838,
+              32768
+            ],
+            [
+              838,
+              32768
+            ],
+            [
+              838,
+              32768
+            ],
+            [
+              838,
+              32768
+            ],
+            [
+              838,
+              32768
+            ],
+            [
+              838,
+              32768
+            ],
+            [
+              838,
+              32768
+            ],
+            [
+              838,
+              32768
+            ],
+            [
+              838,
+              32768
+            ],
+            [
+              1364,
+              32768
+            ],
+            [
+              1364,
+              32768
+            ],
+            [
+              1364,
+              32768
+            ],
+            [
+              1364,
+              32768
+            ],
+            [
+              1364,
+              32768
+            ],
+            [
+              1364,
+              32768
+            ],
+            [
+              1364,
+              32768
+            ],
+            [
+              1364,
+              32768
+            ],
+            [
+              1364,
+              32768
+            ],
+            [
+              1364,
+              32768
+            ],
+            [
+              2392,
+              32768
+            ],
+            [
+              2392,
+              32768
+            ],
+            [
+              2392,
+              32768
+            ],
+            [
+              2392,
+              32768
+            ],
+            [
+              2392,
+              32768
+            ],
+            [
+              2392,
+              32768
+            ],
+            [
+              2392,
+              32768
+            ],
+            [
+              2398,
+              32768
+            ],
+            [
+              2398,
+              32768
+            ],
+            [
+              2398,
+              32768
+            ],
+            [
+              2398,
+              32768
+            ],
+            [
+              2398,
+              32768
+            ],
+            [
+              2398,
+              32768
+            ],
+            [
+              0,
+              32768
+            ]
+          ],
+          "memory_headroom_MiB": 30370,
+          "scope": "finite backward/three actual updates; not derivative qualification"
+        },
+        "boltz": {
+          "status": "passed_device_smoke",
+          "summary": {
+            "version": "mosaic-exploratory-continuation-v2",
+            "status": "completed_device_smoke",
+            "research_profile": "exploratory",
+            "derivative_qualified": false,
+            "original_failures_preserved": true,
+            "saved_results_changed": false,
+            "job_id": "29855106",
+            "name": "boltz",
+            "global_start": 20000,
+            "global_target": 30000,
+            "primal_scope": "primal_from_backward_call",
+            "warnings": [
+              "Exploratory continuation: finite backward smoke, not derivative/native qualification.",
+              "Original failed terminal/FD/replay evidence remains unchanged.",
+              "Noisy/inconclusive FD, flat components, validity drops and nonmonotone loss are recorded findings.",
+              "Repeated independent primals omitted; original backward/objective/update expressions are unchanged."
+            ],
+            "configuration": {
+              "config": {
+                "bytes": 1698,
+                "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-release-03/source/examples/configs/boltz_serial_boltz2.json",
+                "sha256": "ecdf8a4103291f2f3a7bc7197dd394f03a46c3ccc74c72eb42dfc2b76eb13124"
+              },
+              "science_source": {
+                "files": 635,
+                "manifest_sha256": "c214bccf2c94ac6829996bc0ca7d6415d3c19549be4fe7f874cba2b433901cc6",
+                "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-release-03/source"
+              },
+              "snapshot": {
+                "bytes": 26669,
+                "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-09/boltz-segment-10000/payload/study/case-0/snapshots/step-10000.npz",
+                "sha256": "df87a65befbf80781b4bd3a731a32ff855ea515458b510c9d9c8523b8bc78a5f"
+              },
+              "start": 20000,
+              "target": 30000,
+              "rate": 0.0025,
+              "chemistry": false,
+              "reference": {
+                "bytes": 2087,
+                "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/cpu/payload/composition_reference.json",
+                "sha256": "37b34a2ba7be47886936df48faaabdeac20481e5a9cebca9bafab831c07868eb"
+              },
+              "pocket": {
+                "bytes": 3948,
+                "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/cpu/payload/pocket_definition.json",
+                "sha256": "9376c715eaf5b48689fb3e995b00d7820601a7776970df66bd7e7cff3b13ee43"
+              },
+              "frozen_identity": {
+                "context_digest": "fd04211da8e22eccd97ecedd96dd59cf4fb2d80aab6a397fa662af8eb92bbad4",
+                "model_digest": "395876da13ab6d5d175e6603db2118a82954c7c06484842fe2314dbd77a31a16"
+              },
+              "name": "boltz",
+              "research_profile": "exploratory",
+              "steps": 10000,
+              "acceptance_policy": "fixed_step",
+              "max_backtracks": 1,
+              "matrix_stride": 20,
+              "loss_stride": 1,
+              "output_cap_bytes": 268435456,
+              "file_cap": 2000,
+              "slots": 4,
+              "memory_per_slot_mb": 8192,
+              "timing_basis": {
+                "count": 10000,
+                "mean_all": 1.8442127919806632,
+                "mean_last1000": 1.8396670350838686,
+                "max_last1000": 40.33031275996473,
+                "median_last1000": 1.6975013375049457,
+                "metadata_path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-09/boltz-segment-10000/payload/study/case-0/updates.jsonl"
+              },
+              "walltime": "06:45",
+              "internal_seconds": 500,
+              "gpu_request": "num=1:mode=shared:j_exclusive=yes:mps=no:gmem=30G",
+              "context": {
+                "bytes": 16063255,
+                "path": "/zhome/95/e/206121/mosaic-runs/20261021-brd4-jq1-25-01/prepare/payload/prepared/context.pt",
+                "sha256": "a18a331269170aac3281b0a2ecad313aab81756c9b77e048d7e2cbaa4d8f1093"
+              },
+              "worker_python": "/work3/s234818/latentmol/env/boltz311/bin/python",
+              "checkpoints": [
+                {
+                  "bytes": 2062139170,
+                  "path": "/work3/s234818/latentmol/cache/boltz2/boltz2_aff.ckpt",
+                  "sha256": "dcc5cd3722b1c9eaa34267e4ae32f55cbbf1963f4c19319381ccfa30fdd2ca9e"
+                }
+              ],
+              "warnings": [
+                "Exploratory continuation: finite backward smoke, not derivative/native qualification.",
+                "Original failed terminal/FD/replay evidence remains unchanged.",
+                "Noisy/inconclusive FD, flat components, validity drops and nonmonotone loss are recorded findings.",
+                "Repeated independent primals omitted; original backward/objective/update expressions are unchanged."
+              ],
+              "gpu_profile": "v100-32gb-v1",
+              "queue": "gpuv100"
+            },
+            "gpu_profile": {
+              "id": "v100-32gb-v1",
+              "queue": "gpuv100",
+              "family": "V100",
+              "minimum_memory_MiB": 30000,
+              "resource": "num=1:mode=shared:j_exclusive=yes:mps=no:gmem=30G"
+            },
+            "device_smoke_updates": 3,
+            "device_smoke_states_adopted": false,
+            "CUDA_routing": {
+              "original_cuda_visible_devices": "0",
+              "task_mappings": {
+                "CUDA_VISIBLE_DEVICES8": "0",
+                "CUDA_VISIBLE_DEVICES1": "0",
+                "CUDA_VISIBLE_DEVICES3": "0",
+                "CUDA_VISIBLE_DEVICES2": "0",
+                "CUDA_VISIBLE_DEVICES5": "0",
+                "CUDA_VISIBLE_DEVICES4": "0",
+                "CUDA_VISIBLE_DEVICES7": "0",
+                "CUDA_VISIBLE_DEVICES6": "0"
+              },
+              "selected_cuda_visible_devices": "0",
+              "origin": "LSF_MPS_complete_one_based_unanimous_mapping",
+              "guessed_device": false
+            },
+            "gpu_hardware": {
+              "profile": "v100-32gb-v1",
+              "name": "Tesla V100-SXM2-32GB",
+              "memory_total_MiB": 32768
+            },
+            "initialization_replay": {
+              "scope": "exact_saved_logits_key_dtype_relative_graph_replay",
+              "graph": {
+                "X": {
+                  "byte_equal": true,
+                  "max_absolute_difference": 0.0
+                },
+                "E_upper": {
+                  "byte_equal": true,
+                  "max_absolute_difference": 0.0
+                }
+              },
+              "relative_tolerance": 3.814697265625e-06,
+              "absolute_floor": 4.484155085839415e-44
+            },
+            "frozen_before": {
+              "model_digest": "395876da13ab6d5d175e6603db2118a82954c7c06484842fe2314dbd77a31a16",
+              "context_digest": "fd04211da8e22eccd97ecedd96dd59cf4fb2d80aab6a397fa662af8eb92bbad4"
+            },
+            "applied_updates": 3,
+            "update_seconds": [
+              2.490675785986241,
+              2.062553726020269,
+              2.0639479300007224
+            ],
+            "global_end": 20003,
+            "case_report": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/smoke/boltz/payload/study/case-0/report.json",
+            "artifact_retention": {
+              "version": "mosaic-loss-every-step-matrices-every20-v1",
+              "matrix_stride": 20,
+              "loss_stride": 1,
+              "initial_terminal_and_segment_boundaries": true,
+              "rolling_latest_and_best_checkpoints": true,
+              "interpolation_or_reconstruction": false,
+              "optimization_arithmetic_changed": false
+            },
+            "frozen_after": {
+              "model_digest": "395876da13ab6d5d175e6603db2118a82954c7c06484842fe2314dbd77a31a16",
+              "context_digest": "fd04211da8e22eccd97ecedd96dd59cf4fb2d80aab6a397fa662af8eb92bbad4"
+            },
+            "elapsed_seconds": 87.83629420603393
+          },
+          "memory_samples_MiB": [
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              392,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              426,
+              32768
+            ],
+            [
+              1684,
+              32768
+            ],
+            [
+              2544,
+              32768
+            ],
+            [
+              2544,
+              32768
+            ],
+            [
+              2544,
+              32768
+            ],
+            [
+              2544,
+              32768
+            ],
+            [
+              2544,
+              32768
+            ],
+            [
+              2544,
+              32768
+            ],
+            [
+              2544,
+              32768
+            ],
+            [
+              2544,
+              32768
+            ],
+            [
+              3578,
+              32768
+            ],
+            [
+              5140,
+              32768
+            ],
+            [
+              5140,
+              32768
+            ],
+            [
+              5232,
+              32768
+            ],
+            [
+              5232,
+              32768
+            ],
+            [
+              5232,
+              32768
+            ],
+            [
+              5232,
+              32768
+            ],
+            [
+              5232,
+              32768
+            ],
+            [
+              5232,
+              32768
+            ],
+            [
+              5232,
+              32768
+            ],
+            [
+              5232,
+              32768
+            ],
+            [
+              5232,
+              32768
+            ],
+            [
+              5232,
+              32768
+            ],
+            [
+              5232,
+              32768
+            ],
+            [
+              5232,
+              32768
+            ],
+            [
+              5232,
+              32768
+            ],
+            [
+              5232,
+              32768
+            ],
+            [
+              5232,
+              32768
+            ],
+            [
+              5232,
+              32768
+            ],
+            [
+              5232,
+              32768
+            ],
+            [
+              5228,
+              32768
+            ]
+          ],
+          "memory_headroom_MiB": 27536,
+          "scope": "finite backward/three actual updates; not derivative qualification"
+        },
+        "dbmol": {
+          "status": "passed_device_smoke",
+          "summary": {
+            "version": "mosaic-exploratory-continuation-v2",
+            "status": "completed_device_smoke",
+            "research_profile": "exploratory",
+            "derivative_qualified": false,
+            "original_failures_preserved": true,
+            "saved_results_changed": false,
+            "job_id": "29855106",
+            "name": "dbmol",
+            "global_start": 7500,
+            "global_target": 30000,
+            "primal_scope": "primal_from_backward_call",
+            "warnings": [
+              "Exploratory continuation: finite backward smoke, not derivative/native qualification.",
+              "Original failed terminal/FD/replay evidence remains unchanged.",
+              "Noisy/inconclusive FD, flat components, validity drops and nonmonotone loss are recorded findings.",
+              "Repeated independent primals omitted; original backward/objective/update expressions are unchanged.",
+              "Historical TOTAL bond secant contradictions209/195/264 remain unresolved qualification findings; target extended explicitly to30000."
+            ],
+            "configuration": {
+              "config": {
+                "bytes": 1816,
+                "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-release-02/source/examples/configs/dbmol_pilot.json",
+                "sha256": "b3b56f409a59b3b1d00228bb7dcd3f74fc08f17fdf06facfc1469922778d5497"
+              },
+              "science_source": {
+                "files": 657,
+                "manifest_sha256": "600ecc3b33135141a57c029a28a2c72f29e788e3ecf5cb2dac1761146d1d6eed",
+                "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-release-02/source"
+              },
+              "snapshot": {
+                "bytes": 26782,
+                "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-08/dbmol-segment-05000/payload/study/case-0/snapshots/step-2500.npz",
+                "sha256": "c11bd0ac8f38d651cc4d98ca11958f7454eeee5ab8512eca1e3ff3e1d29485bb"
+              },
+              "start": 7500,
+              "target": 30000,
+              "rate": 0.0025,
+              "chemistry": false,
+              "reference": {
+                "bytes": 2087,
+                "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/cpu-05/payload/composition_reference.json",
+                "sha256": "37b34a2ba7be47886936df48faaabdeac20481e5a9cebca9bafab831c07868eb"
+              },
+              "pocket": {
+                "bytes": 3948,
+                "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/cpu/payload/pocket_definition.json",
+                "sha256": "9376c715eaf5b48689fb3e995b00d7820601a7776970df66bd7e7cff3b13ee43"
+              },
+              "frozen_identity": {
+                "model_digest": "7c90f5dd617310781780a8abe5f225f220f6586d4e2d910e67cbfcb8a4470044",
+                "context_digest": "fd04211da8e22eccd97ecedd96dd59cf4fb2d80aab6a397fa662af8eb92bbad4"
+              },
+              "name": "dbmol",
+              "research_profile": "exploratory",
+              "steps": 22500,
+              "acceptance_policy": "fixed_step",
+              "max_backtracks": 1,
+              "matrix_stride": 20,
+              "loss_stride": 1,
+              "output_cap_bytes": 268435456,
+              "file_cap": 2000,
+              "slots": 4,
+              "memory_per_slot_mb": 8192,
+              "timing_basis": {
+                "count": 2500,
+                "mean_all": 3.6324895155775825,
+                "mean_last1000": 3.725886089121224,
+                "max_last1000": 74.16028230299708,
+                "median_last1000": 3.5268767939996906,
+                "metadata_path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-08/dbmol-segment-05000/payload/study/case-0/updates.jsonl"
+              },
+              "walltime": "23:00",
+              "internal_seconds": 500,
+              "gpu_request": "num=1:mode=shared:j_exclusive=yes:mps=no:gmem=30G",
+              "context": {
+                "bytes": 16063255,
+                "path": "/zhome/95/e/206121/mosaic-runs/20261021-brd4-jq1-25-01/prepare/payload/prepared/context.pt",
+                "sha256": "a18a331269170aac3281b0a2ecad313aab81756c9b77e048d7e2cbaa4d8f1093"
+              },
+              "worker_python": "/work3/s234818/latentmol/env/boltz311/bin/python",
+              "checkpoints": [
+                {
+                  "bytes": 2062139170,
+                  "path": "/work3/s234818/latentmol/cache/boltz2/boltz2_aff.ckpt",
+                  "sha256": "dcc5cd3722b1c9eaa34267e4ae32f55cbbf1963f4c19319381ccfa30fdd2ca9e"
+                },
+                {
+                  "bytes": 2286561469,
+                  "path": "/work3/s234818/latentmol/cache/boltz2/boltz2_conf.ckpt",
+                  "sha256": "090e82ac8c92f5e943fa1b39e7410a44027bea7243c0bbb3caa67a77fc1428e1"
+                }
+              ],
+              "warnings": [
+                "Exploratory continuation: finite backward smoke, not derivative/native qualification.",
+                "Original failed terminal/FD/replay evidence remains unchanged.",
+                "Noisy/inconclusive FD, flat components, validity drops and nonmonotone loss are recorded findings.",
+                "Repeated independent primals omitted; original backward/objective/update expressions are unchanged.",
+                "Historical TOTAL bond secant contradictions209/195/264 remain unresolved qualification findings; target extended explicitly to30000."
+              ],
+              "gpu_profile": "v100-32gb-v1",
+              "queue": "gpuv100"
+            },
+            "gpu_profile": {
+              "id": "v100-32gb-v1",
+              "queue": "gpuv100",
+              "family": "V100",
+              "minimum_memory_MiB": 30000,
+              "resource": "num=1:mode=shared:j_exclusive=yes:mps=no:gmem=30G"
+            },
+            "device_smoke_updates": 3,
+            "device_smoke_states_adopted": false,
+            "CUDA_routing": {
+              "original_cuda_visible_devices": "0",
+              "task_mappings": {
+                "CUDA_VISIBLE_DEVICES8": "0",
+                "CUDA_VISIBLE_DEVICES1": "0",
+                "CUDA_VISIBLE_DEVICES3": "0",
+                "CUDA_VISIBLE_DEVICES2": "0",
+                "CUDA_VISIBLE_DEVICES5": "0",
+                "CUDA_VISIBLE_DEVICES4": "0",
+                "CUDA_VISIBLE_DEVICES7": "0",
+                "CUDA_VISIBLE_DEVICES6": "0"
+              },
+              "selected_cuda_visible_devices": "0",
+              "origin": "LSF_MPS_complete_one_based_unanimous_mapping",
+              "guessed_device": false
+            },
+            "gpu_hardware": {
+              "profile": "v100-32gb-v1",
+              "name": "Tesla V100-SXM2-32GB",
+              "memory_total_MiB": 32768
+            },
+            "initialization_replay": {
+              "scope": "exact_saved_logits_key_dtype_relative_graph_replay",
+              "graph": {
+                "X": {
+                  "byte_equal": true,
+                  "max_absolute_difference": 0.0
+                },
+                "E_upper": {
+                  "byte_equal": true,
+                  "max_absolute_difference": 0.0
+                }
+              },
+              "relative_tolerance": 3.814697265625e-06,
+              "absolute_floor": 4.484155085839415e-44
+            },
+            "frozen_before": {
+              "model_digest": "7c90f5dd617310781780a8abe5f225f220f6586d4e2d910e67cbfcb8a4470044",
+              "context_digest": "fd04211da8e22eccd97ecedd96dd59cf4fb2d80aab6a397fa662af8eb92bbad4"
+            },
+            "applied_updates": 3,
+            "update_seconds": [
+              4.4060477780294605,
+              4.550656642008107,
+              4.159242905967403
+            ],
+            "global_end": 7503,
+            "case_report": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/smoke/dbmol/payload/study/case-0/report.json",
+            "artifact_retention": {
+              "version": "mosaic-loss-every-step-matrices-every20-v1",
+              "matrix_stride": 20,
+              "loss_stride": 1,
+              "initial_terminal_and_segment_boundaries": true,
+              "rolling_latest_and_best_checkpoints": true,
+              "interpolation_or_reconstruction": false,
+              "optimization_arithmetic_changed": false
+            },
+            "frozen_after": {
+              "model_digest": "7c90f5dd617310781780a8abe5f225f220f6586d4e2d910e67cbfcb8a4470044",
+              "context_digest": "fd04211da8e22eccd97ecedd96dd59cf4fb2d80aab6a397fa662af8eb92bbad4"
+            },
+            "elapsed_seconds": 143.98957295098808
+          },
+          "memory_samples_MiB": [
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              0,
+              32768
+            ],
+            [
+              4,
+              32768
+            ],
+            [
+              334,
+              32768
+            ],
+            [
+              334,
+              32768
+            ],
+            [
+              334,
+              32768
+            ],
+            [
+              334,
+              32768
+            ],
+            [
+              334,
+              32768
+            ],
+            [
+              334,
+              32768
+            ],
+            [
+              334,
+              32768
+            ],
+            [
+              334,
+              32768
+            ],
+            [
+              334,
+              32768
+            ],
+            [
+              334,
+              32768
+            ],
+            [
+              334,
+              32768
+            ],
+            [
+              334,
+              32768
+            ],
+            [
+              334,
+              32768
+            ],
+            [
+              334,
+              32768
+            ],
+            [
+              334,
+              32768
+            ],
+            [
+              334,
+              32768
+            ],
+            [
+              334,
+              32768
+            ],
+            [
+              334,
+              32768
+            ],
+            [
+              334,
+              32768
+            ],
+            [
+              334,
+              32768
+            ],
+            [
+              334,
+              32768
+            ],
+            [
+              334,
+              32768
+            ],
+            [
+              334,
+              32768
+            ],
+            [
+              334,
+              32768
+            ],
+            [
+              334,
+              32768
+            ],
+            [
+              334,
+              32768
+            ],
+            [
+              334,
+              32768
+            ],
+            [
+              334,
+              32768
+            ],
+            [
+              334,
+              32768
+            ],
+            [
+              334,
+              32768
+            ],
+            [
+              334,
+              32768
+            ],
+            [
+              334,
+              32768
+            ],
+            [
+              334,
+              32768
+            ],
+            [
+              334,
+              32768
+            ],
+            [
+              334,
+              32768
+            ],
+            [
+              334,
+              32768
+            ],
+            [
+              334,
+              32768
+            ],
+            [
+              334,
+              32768
+            ],
+            [
+              334,
+              32768
+            ],
+            [
+              334,
+              32768
+            ],
+            [
+              334,
+              32768
+            ],
+            [
+              334,
+              32768
+            ],
+            [
+              334,
+              32768
+            ],
+            [
+              334,
+              32768
+            ],
+            [
+              334,
+              32768
+            ],
+            [
+              334,
+              32768
+            ],
+            [
+              334,
+              32768
+            ],
+            [
+              334,
+              32768
+            ],
+            [
+              334,
+              32768
+            ],
+            [
+              334,
+              32768
+            ],
+            [
+              334,
+              32768
+            ],
+            [
+              334,
+              32768
+            ],
+            [
+              334,
+              32768
+            ],
+            [
+              334,
+              32768
+            ],
+            [
+              334,
+              32768
+            ],
+            [
+              1236,
+              32768
+            ],
+            [
+              2476,
+              32768
+            ],
+            [
+              2476,
+              32768
+            ],
+            [
+              2476,
+              32768
+            ],
+            [
+              2476,
+              32768
+            ],
+            [
+              2476,
+              32768
+            ],
+            [
+              2476,
+              32768
+            ],
+            [
+              2476,
+              32768
+            ],
+            [
+              2476,
+              32768
+            ],
+            [
+              2476,
+              32768
+            ],
+            [
+              2476,
+              32768
+            ],
+            [
+              2476,
+              32768
+            ],
+            [
+              2476,
+              32768
+            ],
+            [
+              2476,
+              32768
+            ],
+            [
+              2476,
+              32768
+            ],
+            [
+              2476,
+              32768
+            ],
+            [
+              2476,
+              32768
+            ],
+            [
+              2476,
+              32768
+            ],
+            [
+              2476,
+              32768
+            ],
+            [
+              2476,
+              32768
+            ],
+            [
+              2476,
+              32768
+            ],
+            [
+              2476,
+              32768
+            ],
+            [
+              2476,
+              32768
+            ],
+            [
+              2476,
+              32768
+            ],
+            [
+              2476,
+              32768
+            ],
+            [
+              2476,
+              32768
+            ],
+            [
+              2476,
+              32768
+            ],
+            [
+              2476,
+              32768
+            ],
+            [
+              2476,
+              32768
+            ],
+            [
+              2476,
+              32768
+            ],
+            [
+              2476,
+              32768
+            ],
+            [
+              2476,
+              32768
+            ],
+            [
+              2476,
+              32768
+            ],
+            [
+              2476,
+              32768
+            ],
+            [
+              2476,
+              32768
+            ],
+            [
+              2476,
+              32768
+            ],
+            [
+              2476,
+              32768
+            ],
+            [
+              2476,
+              32768
+            ],
+            [
+              2476,
+              32768
+            ],
+            [
+              2476,
+              32768
+            ],
+            [
+              2476,
+              32768
+            ],
+            [
+              2476,
+              32768
+            ],
+            [
+              2476,
+              32768
+            ],
+            [
+              2476,
+              32768
+            ],
+            [
+              2476,
+              32768
+            ],
+            [
+              4586,
+              32768
+            ],
+            [
+              4656,
+              32768
+            ],
+            [
+              4656,
+              32768
+            ],
+            [
+              4656,
+              32768
+            ],
+            [
+              4656,
+              32768
+            ],
+            [
+              4656,
+              32768
+            ],
+            [
+              4656,
+              32768
+            ],
+            [
+              4656,
+              32768
+            ],
+            [
+              4656,
+              32768
+            ],
+            [
+              4656,
+              32768
+            ],
+            [
+              4656,
+              32768
+            ],
+            [
+              4656,
+              32768
+            ],
+            [
+              4656,
+              32768
+            ],
+            [
+              4656,
+              32768
+            ],
+            [
+              4656,
+              32768
+            ],
+            [
+              4656,
+              32768
+            ],
+            [
+              4656,
+              32768
+            ],
+            [
+              5624,
+              32768
+            ],
+            [
+              8106,
+              32768
+            ],
+            [
+              9004,
+              32768
+            ],
+            [
+              9204,
+              32768
+            ],
+            [
+              9296,
+              32768
+            ],
+            [
+              9296,
+              32768
+            ],
+            [
+              9296,
+              32768
+            ],
+            [
+              9296,
+              32768
+            ],
+            [
+              9296,
+              32768
+            ],
+            [
+              9296,
+              32768
+            ],
+            [
+              9296,
+              32768
+            ],
+            [
+              9296,
+              32768
+            ],
+            [
+              9296,
+              32768
+            ],
+            [
+              9296,
+              32768
+            ],
+            [
+              9296,
+              32768
+            ],
+            [
+              9296,
+              32768
+            ],
+            [
+              9296,
+              32768
+            ],
+            [
+              9296,
+              32768
+            ],
+            [
+              9296,
+              32768
+            ],
+            [
+              9296,
+              32768
+            ],
+            [
+              9296,
+              32768
+            ],
+            [
+              9296,
+              32768
+            ],
+            [
+              9296,
+              32768
+            ],
+            [
+              9296,
+              32768
+            ],
+            [
+              9296,
+              32768
+            ],
+            [
+              9296,
+              32768
+            ],
+            [
+              9296,
+              32768
+            ],
+            [
+              9296,
+              32768
+            ],
+            [
+              9296,
+              32768
+            ],
+            [
+              9296,
+              32768
+            ],
+            [
+              9296,
+              32768
+            ],
+            [
+              9296,
+              32768
+            ],
+            [
+              9296,
+              32768
+            ],
+            [
+              9296,
+              32768
+            ],
+            [
+              9296,
+              32768
+            ],
+            [
+              9296,
+              32768
+            ],
+            [
+              9296,
+              32768
+            ],
+            [
+              9296,
+              32768
+            ],
+            [
+              9296,
+              32768
+            ],
+            [
+              9296,
+              32768
+            ],
+            [
+              0,
+              32768
+            ]
+          ],
+          "memory_headroom_MiB": 23472,
+          "scope": "finite backward/three actual updates; not derivative qualification"
+        }
+      },
+      "saved_results_changed": false,
+      "smoke_states_adopted": false
+    }
+  }
+}

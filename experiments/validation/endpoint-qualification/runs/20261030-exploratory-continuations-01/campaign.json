@@ -74,6 +74,13 @@
     "run": "20261030-v100-default-01",
     "comparison_job": "29855106",
     "callback_job": "29855107",
-    "status": "queued_no_original_job_changed_at_20261030T131545Z"
+    "status": "verified_three_migrations_two_optimizers_running",
+    "current_run": "20261030-v100-default-01",
+    "actual_new_jobs": {
+      "boltz_chemistry": "29855330",
+      "protenix": "29855339",
+      "boltz": "29855430"
+    },
+    "observed_utc": "2026-10-30T13:43:23.618322+00:00"
   }
 }

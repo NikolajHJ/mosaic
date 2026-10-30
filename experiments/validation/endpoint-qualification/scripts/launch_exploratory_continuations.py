@@ -16,6 +16,12 @@ def exclusive(path,value):
     with Path(path).open('x') as stream:json.dump(value,stream,indent=2);stream.write('\n');stream.flush();os.fsync(stream.fileno())
 
 
+def command_owns_output(command,parent):
+    target=Path(parent).as_posix().rstrip('/')
+    paths=[token.split('=',1)[-1] for token in shlex.split(command)]
+    return any(path==target or path.startswith(target+'/') for path in paths)
+
+
 def submit(plan,arm,source,plan_path=None):
     from gpu_policy import selected,resource
     gpu=selected(plan["arms"][arm]);plan_path=Path(plan_path) if plan_path else source/"plan.json"
@@ -29,7 +35,7 @@ def submit(plan,arm,source,plan_path=None):
     live=[r for r in records if r['STAT'] not in ('DONE','EXIT')]
     require(not any(r['JOBID'] in row.get('predecessor_job_ids',[]) for r in live),'Predecessor still active')
     name=plan.get('job_name_prefix','mosaic-explore')+'-'+arm
-    require(not any(r['JOB_NAME']==name or str(parent) in r['COMMAND'] for r in live),'Existing active writer')
+    require(not any(r['JOB_NAME']==name or command_owns_output(r['COMMAND'],parent) for r in live),'Existing active writer')
     gate=capacity(plan,'dispatch');write(parent/'capacity-dispatch.json',gate)
     command=['bash','-l',str(source/'exploratory_continuation_stage.sh'),str(source),arm,'run',str(plan_path)]
     argv=['bsub','-H','-q',gpu['queue'],'-J',name,'-n',str(row['slots']),'-R','span[hosts=1]',

@@ -10908,3 +10908,18 @@ model will measure memory and speed, chemistry first. Only passed, fitting whole
 remainders will replace verified unstarted originals. All five original optimizers
 still PEND; zero jobs migrated/new updates. Saved inputs/settings stay unchanged.
 See `experiments/validation/endpoint-qualification/runs/20261030-v100-default-01`.
+
+### 30 October 2026 13:43 UTC — V100 device tests passed; three continuations moved
+
+All five real scorer/backward paths completed three disposable fixed updates on
+32GB V100 job29855106 DONE, frozen identities preserved; derivative qualification
+is not claimed. Initial callback29855107 failed before mutations. Fresh immutable
+metadata-only control02 fixes scheduler/header handling; launch03 fixes the false
+boltz/boltz_chemistry prefix collision.75 portable metadata cases passed; no GPU
+retest or scientific change. Actual new optimizers: Pro29855339 RUN at least28347/50k,
+Bolchem29855330 PEND toward30k, plainBol29855430 PEND toward30k, allgpuv100. Three
+original unstarted jobs were verified held/retired, never running jobs. Prochem
+29853757 alreadyRUN onL40S at least11510/50k and was left there. DB29853835 remains
+PEND/L40S toward30k because the whole V100 remainder projects35h41 >24h queue limit.
+Saved settings/results remain unchanged; no cleanup. Current exact proof and source
+records are in runs/20261030-v100-default-01. Monitor follows actual five producers.

@@ -1,62 +1,110 @@
 {
-  "status": "v100_default_adopted_device_comparison_and_conditional_migration_queued",
-  "observed_utc": "2026-10-30T13:15:45.664427+00:00",
-  "gpu_comparison": {
-    "job_id": "29855106",
-    "scheduler": "PEND",
-    "updates_per_model": 3,
-    "walltime": "01:00",
-    "scope": "actual finite backward/device-memory/timing; not FD/native qualification"
-  },
-  "migration_callback": {
-    "job_id": "29855107",
-    "scheduler": "PEND",
-    "dependency": "ended(29855106)",
-    "walltime": "00:20"
-  },
-  "original_optimizer_jobs": {
+  "status": "v100_default_adopted_three_migrated_two_optimizers_running_others_queued",
+  "observed_utc": "2026-10-30T13:43:23.618322+00:00",
+  "active_optimizers": {
     "protenix_chemistry": {
       "job_id": "29853757",
-      "scheduler": "PEND"
+      "scheduler": "RUN",
+      "queue": "gpul40s",
+      "confirmed_global_step_at_least": 11510,
+      "target": 50000,
+      "new_applied_updates_at_least": 1510,
+      "study": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/protenix_chemistry/payload/study"
     },
     "boltz_chemistry": {
-      "job_id": "29853831",
-      "scheduler": "PEND"
+      "job_id": "29855330",
+      "scheduler": "PEND",
+      "queue": "gpuv100",
+      "confirmed_global_step_at_least": 10000,
+      "target": 30000,
+      "new_applied_updates_at_least": 0,
+      "study": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/production/boltz_chemistry/payload/study"
     },
     "protenix": {
-      "job_id": "29853759",
-      "scheduler": "PEND"
+      "job_id": "29855339",
+      "scheduler": "RUN",
+      "queue": "gpuv100",
+      "confirmed_global_step_at_least": 28347,
+      "target": 50000,
+      "new_applied_updates_at_least": 1172,
+      "study": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/production/protenix/payload/study"
     },
     "boltz": {
-      "job_id": "29853833",
-      "scheduler": "PEND"
+      "job_id": "29855430",
+      "scheduler": "PEND",
+      "queue": "gpuv100",
+      "confirmed_global_step_at_least": 20000,
+      "target": 30000,
+      "new_applied_updates_at_least": 0,
+      "study": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/production/boltz/payload/study"
     },
     "dbmol": {
       "job_id": "29853835",
-      "scheduler": "PEND"
+      "scheduler": "PEND",
+      "queue": "gpul40s",
+      "confirmed_global_step_at_least": 7500,
+      "target": 30000,
+      "new_applied_updates_at_least": 0,
+      "study": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/retry02/dbmol/payload/study"
     }
   },
-  "production_jobs": {},
-  "saved_results_changed": false,
-  "source_root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/source",
-  "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01",
-  "verification": {
-    "status": "passed_submission_and_metadata_evidence_only",
-    "observed_utc": "2026-10-30T13:15:45.664427+00:00",
-    "packet_sha256": "f83b4bf8c7286b1f9434f73ffa766bdce3a4c814c7de72f51699c11638fb8e5e",
-    "source_archive": {
-      "bytes": 126394,
-      "sha256": "6374acafdf66783fb9f2ab28701833b51cbfdc4abe2dc28f7d037a6bd13b1313"
+  "v100_device_comparison": {
+    "job_id": "29855106",
+    "scheduler": "DONE",
+    "actual_models": 5,
+    "fixed_updates_each": 3,
+    "frozen_model_context_preserved": true,
+    "derivative_qualified": false
+  },
+  "migration": {
+    "completed": {
+      "boltz_chemistry": "29855330",
+      "protenix": "29855339",
+      "boltz": "29855430"
     },
-    "source_checksums_sha256": "af45d6d09d1327483e90e8dec32af03ad8de93f682e837c2a1d668cd6d94842a",
-    "actual_startup_count": 5,
-    "portable_cases_passed": 68,
-    "gpu_result": "not_started",
-    "migrations_completed": 0,
-    "all_old_payloads_absent": true,
-    "jobs": {
-      "gpu": "29855106",
-      "after-gpu": "29855107"
+    "protenix_chemistry": "already_running_on_L40S_left_unchanged",
+    "dbmol": "whole_V100_remainder_estimated_35h41_exceeds24h_retained_L40S"
+  },
+  "failed_callback": {
+    "job_id": "29855107",
+    "scheduler": "EXIT",
+    "zero_migration_mutations": true,
+    "resolved_by": "new_immutable_metadata_only_control02_and_launch03"
+  },
+  "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01",
+  "source_root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/source",
+  "control02": {
+    "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/control02",
+    "archive_bytes": 5305,
+    "archive_sha256": "2309dfa65a5ab3664e1aad2f19f296c964370fc4b883c11d709a7c1ec7af00b9",
+    "source1": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/source",
+    "files": {
+      "run.py": {
+        "bytes": 878,
+        "sha256": "325c8a112a1abe4960e4d1f3b04d2042e6d311c2feeecdbcaf4cac47c6af25f7"
+      },
+      "v100_migration.py": {
+        "bytes": 12229,
+        "sha256": "3430c52d15b9646a9fc0353a0db3f4d86b683010f89c951d493571e4e07daebf"
+      }
     }
-  }
+  },
+  "launch03": {
+    "source": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/launch03",
+    "archive_bytes": 3239,
+    "archive_sha256": "98f58c11569534e4ce8a5e6051e8df629060a8433cb5617c296ea5c92c38db3a",
+    "files": {
+      "launch_exploratory_continuations.py": {
+        "bytes": 5045,
+        "sha256": "9131ed2da36bb736f0003ac77df268a1c6960c8ebd9df9b6cb62e0a37ee95269"
+      },
+      "run.py": {
+        "bytes": 1573,
+        "sha256": "3a34dd6e0d426354cac34c290825feda59aba40035aad3bd4e654cdcb06e83b5"
+      }
+    }
+  },
+  "saved_results_changed": false,
+  "settings_changed": false,
+  "verification": "completion-verification.json"
 }

@@ -1,0 +1,149 @@
+{
+  "status": "verified_five_device_smokes_and_three_actual_migrations",
+  "observed_utc": "2026-10-30T13:43:23.618322+00:00",
+  "packet_sha256": "0dcbe80f1551eb200924f061a969209613d6d140cd026322bff03bf14ad5236f",
+  "all_original_saved_results_unchanged": true,
+  "smoke_states_adopted": false,
+  "portable_cases_passed": 75,
+  "device_comparisons": {
+    "protenix_chemistry": {
+      "status": "passed_device_smoke",
+      "hardware": {
+        "profile": "v100-32gb-v1",
+        "name": "Tesla V100-SXM2-32GB",
+        "memory_total_MiB": 32768
+      },
+      "max_sampled_memory_MiB": 2402,
+      "sampled_headroom_MiB": 30366,
+      "update_seconds": [
+        14.697352129034698,
+        1.0103690000250936,
+        0.829113942978438
+      ],
+      "frozen_model_context_preserved": true,
+      "derivative_qualified": false
+    },
+    "boltz_chemistry": {
+      "status": "passed_device_smoke",
+      "hardware": {
+        "profile": "v100-32gb-v1",
+        "name": "Tesla V100-SXM2-32GB",
+        "memory_total_MiB": 32768
+      },
+      "max_sampled_memory_MiB": 5556,
+      "sampled_headroom_MiB": 27212,
+      "update_seconds": [
+        2.5744859619881026,
+        2.175610294973012,
+        2.17875532299513
+      ],
+      "frozen_model_context_preserved": true,
+      "derivative_qualified": false
+    },
+    "protenix": {
+      "status": "passed_device_smoke",
+      "hardware": {
+        "profile": "v100-32gb-v1",
+        "name": "Tesla V100-SXM2-32GB",
+        "memory_total_MiB": 32768
+      },
+      "max_sampled_memory_MiB": 2398,
+      "sampled_headroom_MiB": 30370,
+      "update_seconds": [
+        5.096992100006901,
+        0.4576788409613073,
+        0.3651805520057678
+      ],
+      "frozen_model_context_preserved": true,
+      "derivative_qualified": false
+    },
+    "boltz": {
+      "status": "passed_device_smoke",
+      "hardware": {
+        "profile": "v100-32gb-v1",
+        "name": "Tesla V100-SXM2-32GB",
+        "memory_total_MiB": 32768
+      },
+      "max_sampled_memory_MiB": 5232,
+      "sampled_headroom_MiB": 27536,
+      "update_seconds": [
+        2.490675785986241,
+        2.062553726020269,
+        2.0639479300007224
+      ],
+      "frozen_model_context_preserved": true,
+      "derivative_qualified": false
+    },
+    "dbmol": {
+      "status": "passed_device_smoke",
+      "hardware": {
+        "profile": "v100-32gb-v1",
+        "name": "Tesla V100-SXM2-32GB",
+        "memory_total_MiB": 32768
+      },
+      "max_sampled_memory_MiB": 9296,
+      "sampled_headroom_MiB": 23472,
+      "update_seconds": [
+        4.4060477780294605,
+        4.550656642008107,
+        4.159242905967403
+      ],
+      "frozen_model_context_preserved": true,
+      "derivative_qualified": false
+    }
+  },
+  "active_optimizers": {
+    "protenix_chemistry": {
+      "job_id": "29853757",
+      "scheduler": "RUN",
+      "queue": "gpul40s",
+      "confirmed_global_step_at_least": 11510,
+      "target": 50000,
+      "new_applied_updates_at_least": 1510,
+      "study": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/protenix_chemistry/payload/study"
+    },
+    "boltz_chemistry": {
+      "job_id": "29855330",
+      "scheduler": "PEND",
+      "queue": "gpuv100",
+      "confirmed_global_step_at_least": 10000,
+      "target": 30000,
+      "new_applied_updates_at_least": 0,
+      "study": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/production/boltz_chemistry/payload/study"
+    },
+    "protenix": {
+      "job_id": "29855339",
+      "scheduler": "RUN",
+      "queue": "gpuv100",
+      "confirmed_global_step_at_least": 28347,
+      "target": 50000,
+      "new_applied_updates_at_least": 1172,
+      "study": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/production/protenix/payload/study"
+    },
+    "boltz": {
+      "job_id": "29855430",
+      "scheduler": "PEND",
+      "queue": "gpuv100",
+      "confirmed_global_step_at_least": 20000,
+      "target": 30000,
+      "new_applied_updates_at_least": 0,
+      "study": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/production/boltz/payload/study"
+    },
+    "dbmol": {
+      "job_id": "29853835",
+      "scheduler": "PEND",
+      "queue": "gpul40s",
+      "confirmed_global_step_at_least": 7500,
+      "target": 30000,
+      "new_applied_updates_at_least": 0,
+      "study": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/retry02/dbmol/payload/study"
+    }
+  },
+  "three_retired_originals_unstarted": true,
+  "original_failed_callback": "29855107",
+  "metadata_repairs": [
+    "control02",
+    "launch03"
+  ],
+  "gradient_certification": false
+}
