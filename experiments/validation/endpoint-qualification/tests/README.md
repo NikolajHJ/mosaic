@@ -9,6 +9,10 @@ allocated tests. The shared gradient-policy tests live in
 [cross-repository validation](../runs/20261030-gradient-policy-01/README.md)
 records their actual results.
 
+`test_gradient_policy_storage.py` has two allocated metadata regressions for
+counting checker-owned internal pytest links once, while retaining strict
+external inventory and escaped/dangling-link rejection.
+
 `test_boltz_precision_portable.py` and `test_qualification_writer_capacity.py`
 are19 portable AST/identity/forecast cases with no arrays or model setup.
 `test_boltz_reference_{torch,jax}.py` require real allocated CPU jobs before
@@ -184,3 +188,9 @@ Boltz complete-objective reference04 requires51allocated cases: originalTorch17,
 
 
 New resource-policy integration adds3portable `test_storage_policy_adapter.py` cases plus28shared storage controls. Protenix production05 repeats1068allocated cases/real startup commands; Boltz reference05 repeats82cases/three actual startups. Canonical old numerical fixtures remain allocated only. Source04premodel path failure is preserved; shared POSIX-plan controls now reject that host-path error before sealing.
+
+
+`test_protenix_combined_reference.py` has9 portable metadata contracts and4 allocated numerical cancellation/wrong-gradient regressions. Full inherited1029 cases plus these13 precede new chemistry qualification; no local scientific calculation.
+
+
+Current Prochem reference suite is17newcases (11portable,6allocated numerical), plus1029 inherited. Actual FP64 typed resolution is distinguished from FP32-wrapped values; all existing comparison criteria stay. Boltz reference06 has84rawcases including two new portable child-import/config boundaries and the actual allocated matrix import startup.

@@ -1,0 +1,25 @@
+{
+  "status": "independent_source_bytes_raw_XML84_actual_startups_submission_hold_release_and_LSF_passed",
+  "cases": 84,
+  "modules": {
+    "tests.test_boltz_precision_portable": 13,
+    "tests.test_boltz_reference_jax": 3,
+    "tests.test_boltz_reference_torch": 8,
+    "tests.test_boltz_resource_retry": 4,
+    "tests.test_dbmol_reference": 17,
+    "tests.test_qualification_writer_capacity": 8,
+    "tests.test_storage_accounting": 28,
+    "tests.test_storage_policy_adapter": 3
+  },
+  "jobs": {
+    "after-cpu": "29853594",
+    "cpu": "29853593",
+    "gpu-boltz_chemistry": "29853621"
+  },
+  "source_manifest_sha256": "5bbe6703aea4517d37da419204972e963224d7b1966cdce1eda9fe9e28dc7737",
+  "optimizer_admission": false,
+  "scientific_GPU_result_verified": false,
+  "delivered_files": 109,
+  "packet_sha256": "cf62c604be0e24f3de7d9aa8505d5a44ba7c45b63598a448315e6ddb4364eeb7",
+  "observed_utc": "2026-10-30T11:32:45.844870+00:00"
+}

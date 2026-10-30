@@ -4,6 +4,7 @@ from contextlib import nullcontext
 import hashlib
 import json
 import os
+import os
 from pathlib import Path
 import selectors
 import subprocess
@@ -14,6 +15,17 @@ EPSILONS=(.01,.003,.001,.0003,.0001,.00003,.00001,.000003,.000001)
 def require(value,message):
     if not value:raise ValueError(message)
 
+
+def chemistry_config(module,fields):
+    """Construct in the owning private module without changing field values."""
+    return module.FailureGuidanceConfig(**fields)
+
+
+def chemistry_worker_environment(science,adapter,current):
+    result=dict(current)
+    result['PYTHONPATH']=os.pathsep.join([str(Path(science)/'src'),str(Path(adapter)/'scripts'),current.get('PYTHONPATH','')])
+    return result
+
 def main():
     parser=argparse.ArgumentParser();parser.add_argument('--pin',required=True);parser.add_argument('--arm',required=True)
     parser.add_argument('--startup-only',action='store_true');args=parser.parse_args()
@@ -22,7 +34,17 @@ def main():
     command=[plan['worker_python'],'-u',str(ops.SOURCE/'scripts/boltz_precision_server.py'),'--pin',args.pin,
              '--arm',args.arm,'--output',str(root/('startup-'+args.arm if args.startup_only else 'native'))]
     if args.startup_only:
-        command+=['--startup-only'];subprocess.run(command,check=True,timeout=600);return
+        command+=['--startup-only'];subprocess.run(command,check=True,timeout=600)
+        if args.arm=='boltz_chemistry':
+            environment=chemistry_worker_environment(plan['science']['path'],case['adapter_source']['path'],os.environ)
+            code="import jax,gpu_local_worker,gpu_matrix;from mosaic.small_molecule.chemistry import loss;assert not jax.config.jax_enable_x64;print('original_matrix_worker_imports_passed_without_model_or_GPU_initialization')"
+            startup=[sys.executable,'-B','-c',code]
+            result=subprocess.run(startup,capture_output=True,text=True,env=environment,timeout=180)
+            ops.write(root/('startup-'+args.arm)/'matrix-worker-import-startup.json',{'argv':startup,
+                'PYTHONPATH':environment['PYTHONPATH'],'returncode':result.returncode,'stdout':result.stdout,'stderr':result.stderr,
+                'job_id':os.environ['LSB_JOBID'],'models_constructed':False,'optimizer_updates':0})
+            require(result.returncode==0,'Actual chemistry matrix worker dependency imports failed')
+        return
     require(os.environ.get('LSB_QUEUE')=='gpul40s','Allocated model/numerical execution required')
     sys.path[:0]=[str(Path(plan['science']['path'])/'src'),str(Path(case['source']['path'])/'scripts')]
     import numpy as np
@@ -83,7 +105,14 @@ def main():
     try:
         identity=receive();require(identity['status']=='ready_complete_objective_reference','Reference startup failed')
         ops.write(root/'native-identity.json',identity)
-        if bridge is not None:bridge.__enter__();bridge_entered=True
+        if bridge is not None:
+            previous=os.environ.get('PYTHONPATH')
+            environment=chemistry_worker_environment(plan['science']['path'],case['adapter_source']['path'],os.environ)
+            try:
+                os.environ['PYTHONPATH']=environment['PYTHONPATH'];bridge.__enter__();bridge_entered=True
+            finally:
+                if previous is None:os.environ.pop('PYTHONPATH',None)
+                else:os.environ['PYTHONPATH']=previous
         def native(values,reference,gradient,use_cache=True):
             nonlocal sequence
             dtype=np.float64 if reference else np.float32;values={f:np.asarray(v,dtype=dtype) for f,v in values.items()}
@@ -97,7 +126,8 @@ def main():
         def chemical(state,reference):
             if prepared is None:return 0.,{'atoms':np.zeros((25,6)), 'bonds':np.zeros((300,5))}
             function=chemical_function if reference else failure_aware_repair_loss
-            def value(point):return function(point.decoded(),prepared,spec,FailureGuidanceConfig(**config['loss']))[0]
+            owner=private if reference else original_chemistry
+            def value(point):return function(point.decoded(),prepared,spec,chemistry_config(owner,config['loss']))[0]
             scalar,gradient=jax.value_and_grad(value)(state)
             prepared.verify(spec)
             return float(scalar),{f:np.asarray(getattr(gradient,f)) for f in ('atoms','bonds')}

@@ -20,10 +20,10 @@
   "current_observed_utc": "2026-10-30T10:54:51.178855+00:00",
   "scheduler_states": {
     "after-cpu": "terminal_same_job_LSF",
-    "gpu-dbmol": "PEND",
+    "gpu-dbmol": "RUN_last_observed_11:23UTC",
     "cpu": "terminal_same_job_LSF",
-    "gpu-boltz_chemistry": "PEND",
-    "gpu-boltz": "PEND"
+    "gpu-boltz_chemistry": "EXIT_verified_same_job_LSF",
+    "gpu-boltz": "DONE_verified_same_job_LSF"
   },
   "CPU_verification": {
     "status": "independent_source_bytes_raw_XML82_actual_startups_submission_hold_release_and_LSF_passed",
@@ -56,5 +56,30 @@
     "gpu-dbmol": "29853438",
     "gpu-boltz_chemistry": "29853437",
     "gpu-boltz": "29853436"
+  },
+  "terminal_byte_verification": {
+    "boltz": {
+      "status": "independent_terminal_Diagnostic_byte_schema_CPU82_LSF_frozen_raw_NPZ_preservation_verified",
+      "arm": "boltz",
+      "job_id": "29853436",
+      "raw_native_requests": 84,
+      "raw_NPZ_bindings_verified": 87,
+      "all_predeclared_cohorts_retained": true,
+      "optimizer_updates": 0,
+      "can_admit_new_child": false,
+      "can_certify_or_restart_original_study": false,
+      "original_failures_preserved": true,
+      "scientific_gradient_agreement_not_classified_locally": true,
+      "source_manifest_sha256": "9f562f02918f02bdc2a5e732ab4a3f74b4752ade0935c7894aba6530fb0fba1c",
+      "packet_sha256": "bc338d71e5556e94285b5989ee270421f8677d0bbed3f37697e01d13ddf6cda0",
+      "observed_utc": "2026-10-30T11:06:58.754637+00:00"
+    }
+  },
+  "scientific_derivative_admission": false,
+  "failed_chemistry_transport": {
+    "job_id": "29853437",
+    "error": "matrix_worker_missing_Mosaic_import_path",
+    "original_results_changed": false,
+    "replacement_run": "20261030-boltz-objective-precision-06"
   }
 }

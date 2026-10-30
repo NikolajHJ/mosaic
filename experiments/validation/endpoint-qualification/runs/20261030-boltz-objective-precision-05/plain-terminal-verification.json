@@ -1,0 +1,16 @@
+{
+  "status": "independent_terminal_Diagnostic_byte_schema_CPU82_LSF_frozen_raw_NPZ_preservation_verified",
+  "arm": "boltz",
+  "job_id": "29853436",
+  "raw_native_requests": 84,
+  "raw_NPZ_bindings_verified": 87,
+  "all_predeclared_cohorts_retained": true,
+  "optimizer_updates": 0,
+  "can_admit_new_child": false,
+  "can_certify_or_restart_original_study": false,
+  "original_failures_preserved": true,
+  "scientific_gradient_agreement_not_classified_locally": true,
+  "source_manifest_sha256": "9f562f02918f02bdc2a5e732ab4a3f74b4752ade0935c7894aba6530fb0fba1c",
+  "packet_sha256": "bc338d71e5556e94285b5989ee270421f8677d0bbed3f37697e01d13ddf6cda0",
+  "observed_utc": "2026-10-30T11:06:58.754637+00:00"
+}

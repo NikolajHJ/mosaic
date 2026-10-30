@@ -1,0 +1,13 @@
+{
+  "CPU_cases": 1046,
+  "archive_bytes": 34937,
+  "archive_sha256": "5a1827495b0b8753339f209c47d22a27a3e504704ef920bf0d167160a97b48d2",
+  "files": 12,
+  "manifest_sha256": "9663e2b8f5fe20ee331e3fd802f760a0ba17a4b11c640c35833bbea5a0a4fe32",
+  "optimizer_jobs": [],
+  "plan_sha256": "42a30b94caaf1f6179e7486d60cb538dc518a28a1b4cb04b25b4a1e2c74ebe5c",
+  "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/chemistry-continuation-05/combined-reference-qualification-03",
+  "source": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/combined-reference-qualification-release-03/source",
+  "status": "prepared_not_numerically_qualified",
+  "tag": "20261030-protenix-combined-reference-03"
+}

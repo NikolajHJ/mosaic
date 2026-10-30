@@ -58,3 +58,27 @@ def test_plain_quantitative_head_is_not_replaced_by_DBMol_objective():
     returned=next(n for n in ast.walk(fn) if isinstance(n,ast.Return))
     assert ast.unparse(returned.value)=='values[0]'
     assert 'private.DBMolScorer' in ast.unparse(cls)
+
+
+def test_private_chemistry_config_uses_own_class_with_identical_fields():
+    from dataclasses import dataclass
+    from types import SimpleNamespace
+    tree=ast.parse((OWNER/'scripts/boltz_precision_driver.py').read_bytes())
+    fn=next(n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name=='chemistry_config')
+    namespace={};exec(compile(ast.Module([fn],[]),'<private-config-only>','exec'),namespace)
+    @dataclass(frozen=True)
+    class Private:weight:float=.1
+    value=namespace['chemistry_config'](SimpleNamespace(FailureGuidanceConfig=Private),{'weight':.7})
+    assert type(value) is Private and vars(value)=={'weight':.7}
+
+
+def test_matrix_worker_environment_retains_exact_science_and_adapter_dependencies():
+    import os
+    from pathlib import Path
+    tree=ast.parse((OWNER/'scripts/boltz_precision_driver.py').read_bytes())
+    fn=next(n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name=='chemistry_worker_environment')
+    namespace={'os':os,'Path':Path};exec(compile(ast.Module([fn],[]),'<actual-child-environment>','exec'),namespace)
+    original={'PYTHONPATH':'existing','JAX_ENABLE_X64':'0'}
+    result=namespace['chemistry_worker_environment']('/science','/adapter',original)
+    assert result['PYTHONPATH'].split(os.pathsep)==[str(Path('/science')/'src'),str(Path('/adapter')/'scripts'),'existing']
+    assert original=={'PYTHONPATH':'existing','JAX_ENABLE_X64':'0'} and result['JAX_ENABLE_X64']=='0'

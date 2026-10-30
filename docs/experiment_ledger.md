@@ -10753,3 +10753,62 @@ GPUs29853436plainBoltz/29853437Bolchem/29853438DBMol submitted (RUN/PEND/PEND at
 establish a solution before fresh complete prospective admission. No changing
 saved runs/FDcriteria to force passes. DBMol target30k/LR.0025/7500saved retained.
 Commonpolicy rootAGENTS/docs/sharedimplementation recorded. No cleanup required.
+
+
+## 2026-10-30 chemistry-priority repairs and actual GPU qualification submissions
+
+User especially prioritizes both chemistry-validity continuations. NewProchem
+combined-reference01 CPU29853536/controller29853540 failed before tests because
+the shared-owner command argument was omitted.02 corrected that ownership wiring,
+then actually ran1029 inherited+15new cases:1043passed/onepositive precision
+regression failed. The legacy scalar adapter imposed FP32 minimum resolution
+even on genuine full-FP64 reference outputs. Both failed releases/LSF/receipts
+are preserved; no model optimization or new saved molecule was created by them.
+
+New03 explicitly declares actual independently authenticated FP64 reference
+measurement precision while retaining the exact original represented FP32 logit
+stencil, epsilon grid, multipliers, finest-eligible-before-FD rule,15% comparison
+and no favorable fallback. FP32-wrapped output remains a different contract.
+Original producer AD, fixed teacher/coefficient and every mathematical optimizer
+setting remain unchanged. Independent original full-double native RPC and private
+original CPU64 chemistry corroborate production contrasts; raw points/replay and
+worker audits are retained.17newcases include wrong-sign/scaled/zero and typed
+precision regressions. Actual CPU29853601/controller29853602 DONE1046cases/25modules,
+zero failures/errors/skips; all4actual original producer/reference CLI startups
+passed. Independent127file/source/input/rawXML/LSF/heldrelease/vector audit passed
+packet0baf3b4be5bf2215a13143c1c0dc92819712342daec4c4522a9cab843aa58eab.
+Full chemistry GPU29853622/capture29853624 actuallySUBMITTED/PEND11:33UTC,
+not optimizer jobs or native/pilot successes. Source12pin9663e2b8f5fe20ee331e3fd802f760a0ba17a4b11c640c35833bbea5a0a4fe32.
+Complete low/high/actual coefficients/BOTHten-update pilots/native/FP64/null/
+frozen/negative/runtime/storage remain mandatory; no production dispatch branch.
+
+Bolchem05 diagnostic29853437 reachedGPU/modelsetup then actualEXIT1 on original
+matrix child missing Mosaic import path: parent sys.path was not inherited.
+New06 supplies authenticated science/src+adapter/scripts through childPYTHONPATH,
+restoring parent environment. It also copies identical config fields into the
+private reference's own dataclass. Actual CPU29853593/controller29853594 DONE84
+rawcases/8modules/zero failures/errors/skips, real server metadata startup plus
+actual original matrix-worker dependency imports passed with CUDA hidden/no models.
+Independent109file/source/rawXML/LSF/actualheldvector audit passed packet
+cf62c604be0e24f3de7d9aa8505d5a44ba7c45b63598a448315e6ddb4364eeb7.
+Only failed Bolchem reference GPU29853621 actuallySUBMITTED/PEND. Source17pin
+5bbe6703aea4517d37da419204972e963224d7b1966cdce1eda9fe9e28dc7737.
+Existing plainBoltz29853436 completed84requests/87NPZbindings; independent byte
+proof passed, gradient agreement/admission not classified locally. DBMol05
+29853438 remainsRUN; neither was repeated or changed. Future DB target30kTOTAL
+LR.0025 remains explicit. All diagnostic capsules have optimizer_updates0/
+can_admit_new_child=false; full prospective qualification precedes continuations.
+
+Common live-quota remaining-writes storage passed for both fresh groups with
+4GiB/100000file reserves and substantial headroom; no cleanup/deletion. Original
+settings remain Prochem10k->50k/LR.3, Bolchem10k->30k/LR.0025, .001throughglobal5k
+geometrically to100at50k/30k, composition0/no margin, N25/key17/T1/onefinite
+candidate/no halving/clipping/normalization; allscalar losses/stride20 matrices.
+
+PlainPro optimizer29853431 actuallyRUN at11:33:31UTC,6335newcontiguous updates,
+6336states global20000..26335, total26335/50000; current periodic storage passed.
+Saved previous runs/sources/settings unchanged. Canonical report refresh remains
+subject to its supported saved schemas and scientific-status separation.
+Automationmosaic1 remainsACTIVE/hourly and updated to exactnewjobs/pins/chemistry
+priority and DB30ktarget. Global layout check retains23preexisting discovery/
+historicalREADME errors, with no new owned directory errors; no globalpassclaim.

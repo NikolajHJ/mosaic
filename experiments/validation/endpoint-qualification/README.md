@@ -440,3 +440,6 @@ Current30October09:42UTC: [Boltz objective reference04](runs/20261030-boltz-obje
 
 
 Current30October: user-authorized [shared live-quota policy](../../../docs/HPC_STORAGE_POLICY.md) replaces whole-tree stale charges and stacked embedding forecasts in NEW [Protenix production05](runs/20261030-protenix-runtime-production-05/README.md) and [Boltz objective reference05](runs/20261030-boltz-objective-precision-05/README.md). Both fresh full storage gates passed with about24–25GiBheadroom, preserving4GiB/100000files. Actual ProCPU29853415/controller29853416 and BolCPU29853424/controller29853425 submitted; read latest receipts for pass/GPU status. Pro04was pre-submit POSIX-path failure and remains preserved;05includes regression coverage. DBMol target now30kTOTAL from7500/LR.0025. No scientific gate or saved result changed.
+
+
+Chemistry priority30October11:33UTC: Prochem complete-reference03 CPU1046/all4actualstartup commands independently passed, GPU29853622/capture29853624 PEND; Bolchem transport06 CPU84/server+actualmatrix startup passed, GPU29853621 PEND. Both are validation/diagnostic jobs, not optimizers. PlainPro29853431RUN has26335/50000savedtotal; DBMol target30k/LR.0025. New common storage policy passed. Read current03/06campaigns; oldstaging/failure receipts remain historical and must not be replayed.

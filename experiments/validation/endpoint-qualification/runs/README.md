@@ -244,3 +244,9 @@ Current [complete-objective reference04](20261030-boltz-objective-precision-04/R
 
 
 Current [Protenix production05](20261030-protenix-runtime-production-05/README.md) and [Boltz reference05](20261030-boltz-objective-precision-05/README.md) adopt common live-quota/remaining-write policy with full fresh capacity passed. ProCPU29853415/controller29853416 and BolCPU29853424/controller29853425 are actual submitted IDs; campaign/actual receipts determine later statuses. Original studies/failures remain unchanged, and DBMol target is now30kTOTAL. Failed pre-submit production04 remains preserved.
+
+
+[Protenix combined reference qualification01](20261030-protenix-combined-reference-01/README.md) addresses low-weight FP32 finite-difference resolution using independent full FP64 combined probes and unchanged production gradients. Full1042 CPU cases, actual startup commands and complete chemistry GPU qualification are mandatory; actual campaign determines submission/result state.
+
+
+Chemistry priority: [Prochem complete reference03](20261030-protenix-combined-reference-03/README.md) preserves01ownership and02typed-resolution failures; [Bolchem transport06](20261030-boltz-objective-precision-06/README.md) preserves05missing-child-import failure. Read actual campaigns/receipts, never replay old stages or duplicate plain/DB jobs.

@@ -18,7 +18,7 @@
   "source": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/runtime-production-release-05/source",
   "status": "allocated_CPU_and_real_startups_passed_actual_GPU_jobs_submitted",
   "tag": "20261030-protenix-runtime-production-05",
-  "current_observed_utc": "2026-10-30T10:54:24.323672+00:00",
+  "current_observed_utc": "2026-10-30T11:33:31.963961+00:00",
   "scheduler_states": {
     "after-cpu": "terminal_same_job_LSF",
     "after-plain": "PEND",
@@ -69,5 +69,20 @@
     "packet_sha256": "b3aaf69300f8162bff4a256dce16a93db0bc1285006c02f3a7ed3eebe1a4fb6c",
     "observed_utc": "2026-10-30T10:54:24.323672+00:00"
   },
-  "committed_prefixes": {}
+  "committed_prefixes": {},
+  "current_committed_prefixes": {
+    "states": {
+      "records": 6336,
+      "first_global": 20000,
+      "last_global": 26335
+    },
+    "updates": {
+      "records": 6335,
+      "first_global": 20000,
+      "last_global": 26334
+    }
+  },
+  "actual_new_applied_updates": 6335,
+  "current_total_updates": 26335,
+  "current_scheduler": "RUN"
 }

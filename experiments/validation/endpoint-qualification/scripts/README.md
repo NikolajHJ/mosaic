@@ -10,6 +10,10 @@ byte replay remains available. Follow the
 `gradient_policy_validation.py` executes a sealed two-repository CPU test plan
 only inside an actual DTU allocation. It verifies source hashes before/after,
 retains both stage logs/JUnit results, and never submits production or successors.
+`gradient_policy_storage.py` uses the common accounting owner for fresh entry
+and terminal checks. Only the isolated checker output scope permits internal
+pytest symlinks; it counts their own storage without following targets and
+rejects escaped, dangling or special targets. Other writer inventories stay strict.
 See the [regression run record](../runs/20261030-gradient-policy-01/README.md).
 
 `manage_boltz_precision.py` currently targets the immutable complete-objective
@@ -308,3 +312,9 @@ Read the current production run record before any action; never replay stages.
 
 
 Shared storage integration: `storage_policy_adapter.py` authenticates live quota, old scope caps and external writer inputs while calling the common scripts/hpc/storage_accounting.py policy. New Protenix production05 and Boltz reference05 are ALREADY staged; never replay managers. Resource policy changes are explicit, source/version pinned and separately tested; all scientific/terminal checks remain.
+
+
+Protenix chemistry precision qualification: `protenix_combined_reference.py` provides independent full combined FP64 probes against unchanged FP32 production AD. `protenix_chemistry_qualification{,_ops}.py` and `manage_protenix_combined_reference.py` reuse complete native, coefficient, two-pilot, runtime and held-submission checks in a fresh owner. Read run20261030-protenix-combined-reference-01 before any action.
+
+
+Current chemistry-priority owners: `manage_protenix_combined_reference.py` targets complete reference qualification03 (actual current campaign required). `manage_boltz_chemistry_reference_retry.py` targets only failed Boltz chemistry transport06; plain/DB diagnostics from05 are not repeated. The latter adds actual allocated matrix-child dependency startup and private config class regressions. Original settings and saved studies unchanged.
