@@ -1,0 +1,290 @@
+{
+  "gpu/submission-intent.json": {
+    "bytes": 1602,
+    "sha256": "7979f651b151d7f58589864da1f68e1e147b2a27a44465ad7152850a6f098ca5",
+    "json": {
+      "argv": [
+        "bsub",
+        "-H",
+        "-q",
+        "gpuv100",
+        "-J",
+        "mosaic-v100-gpu01",
+        "-n",
+        "8",
+        "-R",
+        "span[hosts=1]",
+        "-R",
+        "rusage[mem=4096]",
+        "-W",
+        "01:00",
+        "-gpu",
+        "num=1:mode=shared:j_exclusive=yes:mps=no:gmem=30G",
+        "-env",
+        "all,~CUDA_VISIBLE_DEVICES,~CUDA_MPS_PIPE_DIRECTORY,~CUDA_MPS_LOG_DIRECTORY,~CUDA_MPS_ACTIVE_THREAD_PERCENTAGE",
+        "-o",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/smoke/gpu/stdout.%J.log",
+        "-e",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/smoke/gpu/stderr.%J.log",
+        "bash",
+        "-l",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/source/v100_migration_stage.sh",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/source",
+        "compare"
+      ],
+      "job_name": "mosaic-v100-gpu01",
+      "phase": "gpu",
+      "source_checksums": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/source/checksums.sha256",
+        "bytes": 3657,
+        "sha256": "af45d6d09d1327483e90e8dec32af03ad8de93f682e837c2a1d668cd6d94842a"
+      },
+      "plan": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/source/plan.json",
+        "bytes": 24250,
+        "sha256": "d531975f963821f7c6d170282f31aaa2a31ad1bced436c1dac64a985a917906d"
+      },
+      "created_utc": "2026-10-30T13:13:28.128613+00:00",
+      "status": "unknown_until_receipt"
+    }
+  },
+  "gpu/submission-response.json": {
+    "bytes": 103,
+    "sha256": "7e7d1e962b6a4fbdd130ee036d625e518c2018a8b771ee7e8b5e6bae60eab360",
+    "json": {
+      "returncode": 0,
+      "stdout": "Job <29855106> is submitted to queue <gpuv100>.\n",
+      "stderr": ""
+    }
+  },
+  "gpu/submission.json": {
+    "bytes": 1642,
+    "sha256": "4b24298849e708c03e9d8fbfefe893fa0d012fb21d8af98d99c5d963f3ac0d4f",
+    "json": {
+      "argv": [
+        "bsub",
+        "-H",
+        "-q",
+        "gpuv100",
+        "-J",
+        "mosaic-v100-gpu01",
+        "-n",
+        "8",
+        "-R",
+        "span[hosts=1]",
+        "-R",
+        "rusage[mem=4096]",
+        "-W",
+        "01:00",
+        "-gpu",
+        "num=1:mode=shared:j_exclusive=yes:mps=no:gmem=30G",
+        "-env",
+        "all,~CUDA_VISIBLE_DEVICES,~CUDA_MPS_PIPE_DIRECTORY,~CUDA_MPS_LOG_DIRECTORY,~CUDA_MPS_ACTIVE_THREAD_PERCENTAGE",
+        "-o",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/smoke/gpu/stdout.%J.log",
+        "-e",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/smoke/gpu/stderr.%J.log",
+        "bash",
+        "-l",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/source/v100_migration_stage.sh",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/source",
+        "compare"
+      ],
+      "job_name": "mosaic-v100-gpu01",
+      "phase": "gpu",
+      "source_checksums": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/source/checksums.sha256",
+        "bytes": 3657,
+        "sha256": "af45d6d09d1327483e90e8dec32af03ad8de93f682e837c2a1d668cd6d94842a"
+      },
+      "plan": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/source/plan.json",
+        "bytes": 24250,
+        "sha256": "d531975f963821f7c6d170282f31aaa2a31ad1bced436c1dac64a985a917906d"
+      },
+      "created_utc": "2026-10-30T13:13:28.128613+00:00",
+      "status": "submitted",
+      "job_id": "29855106",
+      "dispatch_state": "held"
+    }
+  },
+  "gpu/held-proof.json": {
+    "bytes": 343,
+    "sha256": "2a23c66a7dc32a87cf990d56f6cb092ea033acadc7df7c81ad91ceb079d0fbf8",
+    "json": [
+      {
+        "JOBID": "29855106",
+        "USER": "s234818",
+        "STAT": "PEND",
+        "JOB_NAME": "mosaic-v100-gpu01"
+      },
+      {
+        "JOBID": "29855106",
+        "USER": "s234818",
+        "STAT": "PEND",
+        "JOB_NAME": "mosaic-v100-gpu01"
+      },
+      {
+        "JOBID": "29855106",
+        "USER": "s234818",
+        "STAT": "PSUSP",
+        "JOB_NAME": "mosaic-v100-gpu01"
+      }
+    ]
+  },
+  "gpu/release.json": {
+    "bytes": 111,
+    "sha256": "5ba1248ce82ec833c45b0820681a8d8b32993d40681b0487640c775782ebe5e3",
+    "json": {
+      "job_id": "29855106",
+      "returncode": 0,
+      "stdout": "Job <29855106> is being resumed\n",
+      "stderr": ""
+    }
+  },
+  "after-gpu/submission-intent.json": {
+    "bytes": 1561,
+    "sha256": "ec985ad8be1551e08cf6ef5fb737f2fa0a78b9b100ff7d900a13786dba49ca69",
+    "json": {
+      "argv": [
+        "bsub",
+        "-H",
+        "-q",
+        "hpc",
+        "-J",
+        "mosaic-v100-after-gpu01",
+        "-n",
+        "1",
+        "-R",
+        "rusage[mem=2048]",
+        "-W",
+        "00:20",
+        "-env",
+        "all,~CUDA_VISIBLE_DEVICES,~CUDA_MPS_PIPE_DIRECTORY,~CUDA_MPS_LOG_DIRECTORY,~CUDA_MPS_ACTIVE_THREAD_PERCENTAGE",
+        "-o",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/smoke/after-gpu/stdout.%J.log",
+        "-e",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/smoke/after-gpu/stderr.%J.log",
+        "-w",
+        "ended(29855106)",
+        "bash",
+        "-l",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/source/v100_migration_stage.sh",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/source",
+        "migrate"
+      ],
+      "job_name": "mosaic-v100-after-gpu01",
+      "phase": "after-gpu",
+      "source_checksums": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/source/checksums.sha256",
+        "bytes": 3657,
+        "sha256": "af45d6d09d1327483e90e8dec32af03ad8de93f682e837c2a1d668cd6d94842a"
+      },
+      "plan": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/source/plan.json",
+        "bytes": 24250,
+        "sha256": "d531975f963821f7c6d170282f31aaa2a31ad1bced436c1dac64a985a917906d"
+      },
+      "created_utc": "2026-10-30T13:13:38.616020+00:00",
+      "status": "unknown_until_receipt"
+    }
+  },
+  "after-gpu/submission-response.json": {
+    "bytes": 99,
+    "sha256": "2e27032f84037ce36f06ca9bf0374b553d857ef42f923389e72b8a840ff176c6",
+    "json": {
+      "returncode": 0,
+      "stdout": "Job <29855107> is submitted to queue <hpc>.\n",
+      "stderr": ""
+    }
+  },
+  "after-gpu/submission.json": {
+    "bytes": 1601,
+    "sha256": "0cdceaf296cd7f7f224befccb633cc9c5f612a5688c8ef87029e17bcf96c7cca",
+    "json": {
+      "argv": [
+        "bsub",
+        "-H",
+        "-q",
+        "hpc",
+        "-J",
+        "mosaic-v100-after-gpu01",
+        "-n",
+        "1",
+        "-R",
+        "rusage[mem=2048]",
+        "-W",
+        "00:20",
+        "-env",
+        "all,~CUDA_VISIBLE_DEVICES,~CUDA_MPS_PIPE_DIRECTORY,~CUDA_MPS_LOG_DIRECTORY,~CUDA_MPS_ACTIVE_THREAD_PERCENTAGE",
+        "-o",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/smoke/after-gpu/stdout.%J.log",
+        "-e",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/smoke/after-gpu/stderr.%J.log",
+        "-w",
+        "ended(29855106)",
+        "bash",
+        "-l",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/source/v100_migration_stage.sh",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/source",
+        "migrate"
+      ],
+      "job_name": "mosaic-v100-after-gpu01",
+      "phase": "after-gpu",
+      "source_checksums": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/source/checksums.sha256",
+        "bytes": 3657,
+        "sha256": "af45d6d09d1327483e90e8dec32af03ad8de93f682e837c2a1d668cd6d94842a"
+      },
+      "plan": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/source/plan.json",
+        "bytes": 24250,
+        "sha256": "d531975f963821f7c6d170282f31aaa2a31ad1bced436c1dac64a985a917906d"
+      },
+      "created_utc": "2026-10-30T13:13:38.616020+00:00",
+      "status": "submitted",
+      "job_id": "29855107",
+      "dispatch_state": "held"
+    }
+  },
+  "after-gpu/held-proof.json": {
+    "bytes": 480,
+    "sha256": "4e9a7e6b3d3a9d2dc8ccc0fd360f1bc59ecc57270cac2edd900f50a3a3e4a17a",
+    "json": [
+      {
+        "JOBID": "29855107",
+        "USER": "s234818",
+        "STAT": "PEND",
+        "JOB_NAME": "mosaic-v100-after-gpu01"
+      },
+      {
+        "JOBID": "29855107",
+        "USER": "s234818",
+        "STAT": "PEND",
+        "JOB_NAME": "mosaic-v100-after-gpu01"
+      },
+      {
+        "JOBID": "29855107",
+        "USER": "s234818",
+        "STAT": "PEND",
+        "JOB_NAME": "mosaic-v100-after-gpu01"
+      },
+      {
+        "JOBID": "29855107",
+        "USER": "s234818",
+        "STAT": "PSUSP",
+        "JOB_NAME": "mosaic-v100-after-gpu01"
+      }
+    ]
+  },
+  "after-gpu/release.json": {
+    "bytes": 111,
+    "sha256": "e8e72c2d90fcaec1879b46afd431a0bfe940dcc409b8ef407e6950ede2d0422d",
+    "json": {
+      "job_id": "29855107",
+      "returncode": 0,
+      "stdout": "Job <29855107> is being resumed\n",
+      "stderr": ""
+    }
+  }
+}

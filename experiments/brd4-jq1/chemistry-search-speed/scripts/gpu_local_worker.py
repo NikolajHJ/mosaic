@@ -1,3 +1,4 @@
+from gpu_process_admission import legacy_adapter_profile
 """Allocated, single-molecule GPU local-risk arithmetic worker; no model/search."""
 import base64
 import hashlib
@@ -26,13 +27,13 @@ def decode(row, dtype, shape):
 
 def main():
     assert not sys.flags.optimize and os.environ.get('LSB_JOBID')
-    assert os.environ.get('LSB_QUEUE') == 'gpul40s'
+    assert os.environ.get('LSB_QUEUE') == legacy_adapter_profile()['queue']
     import jax
     import jax.numpy as jnp
     import numpy as np
     from gpu_matrix import local_valence_matrix, require_backend
     require_backend('gpu')
-    assert len(jax.devices('gpu')) == 1 and 'L40S' in jax.devices('gpu')[0].device_kind
+    assert len(jax.devices('gpu')) == 1 and legacy_adapter_profile()['family'] in jax.devices('gpu')[0].device_kind
     assert not jax.config.jax_enable_x64
     print(json.dumps({'version': VERSION, 'event': 'ready', 'pid': os.getpid(),
                       'device': {'platform': 'gpu', 'kind': jax.devices('gpu')[0].device_kind},

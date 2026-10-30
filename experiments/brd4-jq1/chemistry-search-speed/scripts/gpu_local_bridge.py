@@ -1,3 +1,4 @@
+from gpu_process_admission import legacy_adapter_profile
 """Explicit CPU-JAX to GPU local-risk VJP bridge for the frozen Boltz worker.
 
 The Boltz driver retains its declared CPU optimizer and original CUDA PyTorch
@@ -44,7 +45,7 @@ class LocalGPUClient:
                                             text=True, bufsize=1, env=env)
             self.ready = self._read()
             assert self.ready['version'] == VERSION and self.ready['event'] == 'ready'
-            assert self.ready['device']['platform'] == 'gpu' and 'L40S' in self.ready['device']['kind']
+            assert self.ready['device']['platform'] == 'gpu' and legacy_adapter_profile()['family'] in self.ready['device']['kind']
             assert self.ready['model_or_search_loaded'] is False
             self.coexistence = coexistence_canary(self, directory)
         except BaseException:

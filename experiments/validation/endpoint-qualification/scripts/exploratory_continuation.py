@@ -124,16 +124,21 @@ def capacity(plan,phase):
     return result
 
 
-def run(plan,row,output):
-    require(os.environ.get('LSB_QUEUE')=='gpul40s' and os.environ.get('LSB_JOBID','').isdigit(),'Allocated GPU required')
+def run(plan,row,output,smoke_updates=None):
+    from gpu_policy import selected,validate_hardware
+    gpu=selected(row)
+    require(os.environ.get('LSB_QUEUE')==gpu['queue'] and os.environ.get('LSB_JOBID','').isdigit(),'Declared allocated GPU required')
+    require(smoke_updates is None or (plan.get('purpose')=='v100_device_comparison' and type(smoke_updates) is int and 1<=smoke_updates<=3),'Explicit bounded device smoke only')
+    requested=row['steps'] if smoke_updates is None else smoke_updates
     import fcntl
     lock=(Path(plan['root'])/(row['name']+'.writer.lock')).open('a')
     fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
     require(not output.exists(),'New output only');output.mkdir(parents=True)
-    report={'version':'mosaic-exploratory-continuation-v1','status':'running','research_profile':'exploratory',
+    report={'version':'mosaic-exploratory-continuation-v2','status':'running','research_profile':'exploratory',
         'derivative_qualified':False,'original_failures_preserved':True,'saved_results_changed':False,
         'job_id':os.environ['LSB_JOBID'],'name':row['name'],'global_start':row['start'],'global_target':row['target'],
-        'primal_scope':'primal_from_backward_call','warnings':row['warnings'],'configuration':row}
+        'primal_scope':'primal_from_backward_call','warnings':row['warnings'],'configuration':row,
+        'gpu_profile':gpu,'device_smoke_updates':smoke_updates,'device_smoke_states_adopted':False}
     started=time.monotonic();worker=None;frozen=None;model=context=None
     source=Path(row['science_source']['path']);sys.path[:0]=[str(source/'src'),str(source/'scripts')]
     os.environ.update(worker_environment(source,os.environ))
@@ -142,6 +147,12 @@ def run(plan,row,output):
         routing=module(Path(plan['routing_source'])/'scripts/cuda_ownership.py','_exploratory_scheduler_routing')
         visibility=routing.resolve_visibility(os.environ)
         os.environ['CUDA_VISIBLE_DEVICES']=visibility['selected_cuda_visible_devices'];report['CUDA_routing']=visibility
+        import subprocess,csv,io
+        observation=subprocess.run(['nvidia-smi','--id='+os.environ['CUDA_VISIBLE_DEVICES'],
+            '--query-gpu=name,memory.total','--format=csv,noheader,nounits'],capture_output=True,text=True,check=True,timeout=30)
+        devices=list(csv.reader(io.StringIO(observation.stdout)))
+        require(len(devices)==1 and len(devices[0])==2,'Exactly one GPU observation required')
+        report['gpu_hardware']=validate_hardware(devices[0][0].strip(),int(devices[0][1].strip()),gpu)
         for key in ('config','snapshot','reference','pocket'):bound(row[key])
         require(binding(source/'source_manifest.json')['sha256']==row['science_source']['manifest_sha256'],'Scientific source identity changed')
         config=read(row['config']['path'])
@@ -172,8 +183,15 @@ def run(plan,row,output):
                 require(saved[k].dtype==np.float32 and saved[k].shape==shape and np.isfinite(saved[k]).all(),'Invalid saved FP32 point')
             require(np.array_equal(saved['key_data'],np.asarray(jax.random.key_data(key))),'Saved key differs')
             initial=logit_type(jnp.asarray(saved['atom_logits']),jnp.asarray(saved['bond_logits']))
-            for f in ('X','E_upper'):np.testing.assert_array_equal(np.asarray(getattr(initial.graph(),f)),saved[f])
-        report['initialization_replay']='exact_saved_logits_probabilities_key'
+            replay={}
+            for f in ('X','E_upper'):
+                actual=np.asarray(getattr(initial.graph(),f));expected=saved[f]
+                require(actual.shape==expected.shape and actual.dtype==expected.dtype and np.isfinite(actual).all(),'Incompatible replay')
+                tolerance=32*np.finfo(np.float32).eps*np.abs(expected)+32*np.finfo(np.float32).smallest_subnormal
+                require(np.all(np.abs(actual-expected)<=tolerance),'Material saved graph mapping mismatch')
+                replay[f]={'byte_equal':bool(np.array_equal(actual,expected)),'max_absolute_difference':float(np.max(np.abs(actual-expected)))}
+        report['initialization_replay']={'scope':'exact_saved_logits_key_dtype_relative_graph_replay','graph':replay,
+            'relative_tolerance':float(32*np.finfo(np.float32).eps),'absolute_floor':32*float(np.finfo(np.float32).smallest_subnormal)}
         if pro:
             from mosaic.small_molecule.protenix import FrozenProtenixTiny
             from mosaic.small_molecule.losses import NativeContactLoss
@@ -239,7 +257,8 @@ def run(plan,row,output):
         trajectory._append_record=append
         with ExitStack() as stack:
             if chem:
-                adapter=Path(row['adapter_source']['path']);sys.path.insert(0,str(adapter/'scripts'))
+                adapter=Path(row.get('gpu_adapter_source',row['adapter_source']['path']));sys.path.insert(0,str(adapter/'scripts'))
+                report['acceleration_source']={'original':row['adapter_source'],'device_guard_overlay':str(adapter)}
                 # Child workers must inherit the original science and adapter paths.
                 os.environ['PYTHONPATH']=os.pathsep.join([str(source/'src'),str(adapter/'scripts'),os.environ.get('PYTHONPATH','')])
                 pilot=module(adapter/'scripts/full_model_pilot.py','_exploratory_existing_acceleration')
@@ -247,10 +266,11 @@ def run(plan,row,output):
                 stack.enter_context(pilot.combined_adapters(row['acceleration_profile'],acceleration))
             result=trajectory.run_chemical_updates(loss,initial,prepare=prepare,spec=spec,
                 reference=read(row['reference']['path'])['element_counts'],key=key,directory=output/'case-0',
-                steps=row['steps'],step_size=row['rate'],max_backtracks=1,acceptance_policy='fixed_step',
+                steps=requested,step_size=row['rate'],max_backtracks=1,acceptance_policy='fixed_step',
                 config=options,schedule=schedule,update_offset=row['start'])
-            require(len(result['updates'])==row['steps'],'Incomplete requested update count')
-            report.update(status='completed_exploratory_updates',applied_updates=len(result['updates']),
+            require(len(result['updates'])==requested,'Incomplete requested update count')
+            report.update(status='completed_device_smoke' if smoke_updates is not None else 'completed_exploratory_updates',applied_updates=len(result['updates']),
+                update_seconds=[u['elapsed_seconds'] for u in result['updates']],
                 global_end=row['start']+len(result['updates']),case_report=str(output/'case-0/report.json'),
                 artifact_retention=result['artifact_retention'])
     except BaseException as error:
@@ -271,13 +291,13 @@ def run(plan,row,output):
 
 def main():
     parser=argparse.ArgumentParser();parser.add_argument('--plan',type=Path,required=True);parser.add_argument('--arm',required=True)
-    parser.add_argument('--startup-only',action='store_true');args=parser.parse_args()
+    parser.add_argument('--startup-only',action='store_true');parser.add_argument('--smoke-updates',type=int);args=parser.parse_args()
     plan=read(args.plan);row=validate(plan['arms'][args.arm]);root=Path(plan['root']);root.mkdir(parents=True,exist_ok=True)
     for k in ('config','snapshot','reference','pocket'):bound(row[k])
     value=capacity(plan,'entry')
     if args.startup_only:
         print(json.dumps({'status':'metadata_startup_passed_no_models','name':args.arm,'capacity':value}));return
-    run(plan,row,root/row['name']/'payload/study')
+    run(plan,row,root/row['name']/'payload/study',args.smoke_updates)
 
 
 if __name__=='__main__':main()

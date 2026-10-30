@@ -1,0 +1,162 @@
+{
+  "remote_root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01",
+  "source_root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/source",
+  "files": {
+    "adapter-audit.json": {
+      "bytes": 2326,
+      "sha256": "c8242cea364d6a717bed34f4f2fcd47bc800b92fa0aabf732587b62bbac42fa4"
+    },
+    "adapters/boltz/scripts/exact_reuse.py": {
+      "bytes": 12549,
+      "sha256": "b9ecf079d9697fb9efc650f0bbd944b726c2df0d2fcd3b908d9e221f2d565d88"
+    },
+    "adapters/boltz/scripts/full_model_contract.py": {
+      "bytes": 16818,
+      "sha256": "d6cc337345c1e88a8f83ab668f33cbecd5a0baacaa7c30b56d72c65628fe4b08"
+    },
+    "adapters/boltz/scripts/full_model_ops.py": {
+      "bytes": 36485,
+      "sha256": "fc5c7dc2349737662b09ee9dc1a3b011e1486ffe7001408cb0798736d8bcd96f"
+    },
+    "adapters/boltz/scripts/full_model_pilot.py": {
+      "bytes": 42147,
+      "sha256": "1dea64afe9e81db8389b7249c0b9470ec1b2b3212c30b663dd73d5fb44a1a4ca"
+    },
+    "adapters/boltz/scripts/gpu_local_bridge.py": {
+      "bytes": 8333,
+      "sha256": "0274405c45d4d5e6abc0d1525219dcd5dbffc7b2385078e213a26d4260168cfd"
+    },
+    "adapters/boltz/scripts/gpu_local_worker.py": {
+      "bytes": 3939,
+      "sha256": "b5c8a90e95ab35f5747d17ff11a069e5166ce0ca7ab526102eac04741e0e2bce"
+    },
+    "adapters/boltz/scripts/gpu_matrix.py": {
+      "bytes": 13904,
+      "sha256": "772e3ea5a691b4aaf8432040ee0066e429e4f6ddd092ed17a2efb917647f3ef3"
+    },
+    "adapters/boltz/scripts/gpu_process_admission.py": {
+      "bytes": 13628,
+      "sha256": "9351bf442dbe94500d186081d9358ac5c7708946a841db63b8aa914788ae1775"
+    },
+    "adapters/boltz/scripts/hybrid_search.py": {
+      "bytes": 12954,
+      "sha256": "4bed62f1f3be9aaa96ead9ef79e00840762fd28dd0b9430f6b4b08e5ab60eda8"
+    },
+    "adapters/boltz/scripts/parallel_search.py": {
+      "bytes": 14964,
+      "sha256": "137d5bb6cab95ad3263090eb9b017efa1a78ed42543afe713c7fa654d3628170"
+    },
+    "adapters/boltz/scripts/profile_oracle.py": {
+      "bytes": 2917,
+      "sha256": "7cb0989fda0713b78598eff489b35b5b39cc1a2d6f608eff215cec590dd126c1"
+    },
+    "adapters/boltz/scripts/round2_data.py": {
+      "bytes": 2224,
+      "sha256": "7d6ca6168b77fa96f30d3696ed57c24805cde9669f2083793f1458ab0d23ab31"
+    },
+    "adapters/protenix/scripts/exact_reuse.py": {
+      "bytes": 12549,
+      "sha256": "b9ecf079d9697fb9efc650f0bbd944b726c2df0d2fcd3b908d9e221f2d565d88"
+    },
+    "adapters/protenix/scripts/full_model_context.py": {
+      "bytes": 6964,
+      "sha256": "7ad7a723d67567c2b85532bdefb7d7ddbf09c183abc5a95e8d7a1e342f71fb9a"
+    },
+    "adapters/protenix/scripts/full_model_contract.py": {
+      "bytes": 16818,
+      "sha256": "d6cc337345c1e88a8f83ab668f33cbecd5a0baacaa7c30b56d72c65628fe4b08"
+    },
+    "adapters/protenix/scripts/full_model_ops.py": {
+      "bytes": 38926,
+      "sha256": "8a69fa5d471e36285fe289523e26a6711c64eb6c9c1fb494e7b60af45193d5d4"
+    },
+    "adapters/protenix/scripts/full_model_pilot.py": {
+      "bytes": 42147,
+      "sha256": "1dea64afe9e81db8389b7249c0b9470ec1b2b3212c30b663dd73d5fb44a1a4ca"
+    },
+    "adapters/protenix/scripts/gpu_local_bridge.py": {
+      "bytes": 8333,
+      "sha256": "0274405c45d4d5e6abc0d1525219dcd5dbffc7b2385078e213a26d4260168cfd"
+    },
+    "adapters/protenix/scripts/gpu_local_worker.py": {
+      "bytes": 3939,
+      "sha256": "b5c8a90e95ab35f5747d17ff11a069e5166ce0ca7ab526102eac04741e0e2bce"
+    },
+    "adapters/protenix/scripts/gpu_matrix.py": {
+      "bytes": 13904,
+      "sha256": "772e3ea5a691b4aaf8432040ee0066e429e4f6ddd092ed17a2efb917647f3ef3"
+    },
+    "adapters/protenix/scripts/gpu_process_admission.py": {
+      "bytes": 13628,
+      "sha256": "9351bf442dbe94500d186081d9358ac5c7708946a841db63b8aa914788ae1775"
+    },
+    "adapters/protenix/scripts/hybrid_search.py": {
+      "bytes": 12954,
+      "sha256": "4bed62f1f3be9aaa96ead9ef79e00840762fd28dd0b9430f6b4b08e5ab60eda8"
+    },
+    "adapters/protenix/scripts/parallel_search.py": {
+      "bytes": 14964,
+      "sha256": "137d5bb6cab95ad3263090eb9b017efa1a78ed42543afe713c7fa654d3628170"
+    },
+    "adapters/protenix/scripts/profile_oracle.py": {
+      "bytes": 2917,
+      "sha256": "7cb0989fda0713b78598eff489b35b5b39cc1a2d6f608eff215cec590dd126c1"
+    },
+    "adapters/protenix/scripts/replay_context_qualification.py": {
+      "bytes": 8187,
+      "sha256": "b9152f91ab5dd75edef09c978e0db40baf9e37ba4121bf5582ba832029f03152"
+    },
+    "adapters/protenix/scripts/round2_data.py": {
+      "bytes": 2224,
+      "sha256": "7d6ca6168b77fa96f30d3696ed57c24805cde9669f2083793f1458ab0d23ab31"
+    },
+    "exploratory_continuation.py": {
+      "bytes": 19651,
+      "sha256": "ae97105e4e0253578f8c5cb7f71f15fc1a2f726caecc6534e8cb9220892fc3d8"
+    },
+    "exploratory_continuation_stage.sh": {
+      "bytes": 1728,
+      "sha256": "3b597b18c5838a45a5590cd53047d2a308331199b0bc6e9d90df31eaa6318db6"
+    },
+    "gpu_policy.py": {
+      "bytes": 2047,
+      "sha256": "3883a97d0f06e93ca38105484c387ab7334138238ffd86d8f6b55a6ba4f05fe7"
+    },
+    "launch_exploratory_continuations.py": {
+      "bytes": 4795,
+      "sha256": "974e9f36b3520a6c95468294b8c97c15339b2ed33168ede8891755e15f78b9a0"
+    },
+    "plan.json": {
+      "bytes": 24250,
+      "sha256": "d531975f963821f7c6d170282f31aaa2a31ad1bced436c1dac64a985a917906d"
+    },
+    "storage_accounting.py": {
+      "bytes": 10793,
+      "sha256": "2d936e09e7d3de6d825eb61e658ace565c66a8c007e662cfe66a91f457b43ed1"
+    },
+    "v100_migration.py": {
+      "bytes": 11304,
+      "sha256": "0613ea4477ebdff81ea57ccd71dbb5ccb0b8ed234a4c12c2e667d2c96659f7c2"
+    },
+    "v100_migration_stage.sh": {
+      "bytes": 650,
+      "sha256": "22118a227afefd1c50f8b74901d33c23bb1a6622a72ccf89ea8997fcaad66f7f"
+    }
+  },
+  "owners": {
+    "exploratory_continuation.py": "experiments\\validation\\endpoint-qualification\\scripts\\exploratory_continuation.py",
+    "exploratory_continuation_stage.sh": "experiments\\validation\\endpoint-qualification\\scripts\\exploratory_continuation_stage.sh",
+    "launch_exploratory_continuations.py": "experiments\\validation\\endpoint-qualification\\scripts\\launch_exploratory_continuations.py",
+    "v100_migration.py": "experiments\\validation\\endpoint-qualification\\scripts\\v100_migration.py",
+    "v100_migration_stage.sh": "experiments\\validation\\endpoint-qualification\\scripts\\v100_migration_stage.sh",
+    "gpu_policy.py": "scripts/hpc/gpu_policy.py",
+    "storage_accounting.py": "scripts/hpc/storage_accounting.py"
+  },
+  "archive": {
+    "bytes": 126394,
+    "sha256": "6374acafdf66783fb9f2ab28701833b51cbfdc4abe2dc28f7d037a6bd13b1313"
+  },
+  "portable_cases_passed": 68,
+  "native_device_result": "not_run",
+  "all_original_adapter_function_ASTs_exact_after_reversing_device_guards": true
+}

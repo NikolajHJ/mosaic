@@ -29,3 +29,7 @@ remaining writes once, measured remaining-update forecasts and explicit reserves
 The endpoint owner provides authenticated experiment integration.28portable
 shared regression cases live in tests/core/test_storage_accounting.py. Old
 sealed resource policies remain historical and must not be edited in place.
+
+For new exploratory submissions, prefer the [32 GB V100 profile](../../docs/GPU_POLICY.md)
+in [gpu_policy.py](gpu_policy.py); retain L40S when compatibility, memory or measured
+runtime makes it preferable. This default does not alter existing allocations.

@@ -135,3 +135,7 @@ scientific gates, saved results and sealed sources. New resource-policy adoption
 needs a new release and actual startup/integration validation; it is not a waiver
 or permission to replay unknown submissions. This user-authorized policy
 supersedes historical whole-tree stale charges and double-pilot forecasts.
+
+## Preferred GPU for new exploratory jobs
+
+Prefer 32 GB V100 (`gpuv100`) for new submissions; see [GPU_POLICY.md](docs/GPU_POLICY.md). Use L40S when memory, software or measured runtime makes it preferable. Keep running jobs untouched; migrate existing pending jobs only with explicit authorization and verified replacement readiness.

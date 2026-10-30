@@ -1,0 +1,19 @@
+{
+  "status": "passed_submission_and_metadata_evidence_only",
+  "observed_utc": "2026-10-30T13:15:45.664427+00:00",
+  "packet_sha256": "f83b4bf8c7286b1f9434f73ffa766bdce3a4c814c7de72f51699c11638fb8e5e",
+  "source_archive": {
+    "bytes": 126394,
+    "sha256": "6374acafdf66783fb9f2ab28701833b51cbfdc4abe2dc28f7d037a6bd13b1313"
+  },
+  "source_checksums_sha256": "af45d6d09d1327483e90e8dec32af03ad8de93f682e837c2a1d668cd6d94842a",
+  "actual_startup_count": 5,
+  "portable_cases_passed": 68,
+  "gpu_result": "not_started",
+  "migrations_completed": 0,
+  "all_old_payloads_absent": true,
+  "jobs": {
+    "gpu": "29855106",
+    "after-gpu": "29855107"
+  }
+}

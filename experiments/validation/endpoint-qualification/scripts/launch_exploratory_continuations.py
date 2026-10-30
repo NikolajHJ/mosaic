@@ -16,7 +16,9 @@ def exclusive(path,value):
     with Path(path).open('x') as stream:json.dump(value,stream,indent=2);stream.write('\n');stream.flush();os.fsync(stream.fileno())
 
 
-def submit(plan,arm,source):
+def submit(plan,arm,source,plan_path=None):
+    from gpu_policy import selected,resource
+    gpu=selected(plan["arms"][arm]);plan_path=Path(plan_path) if plan_path else source/"plan.json"
     row=validate(plan['arms'][arm]);root=Path(plan['root']);root.mkdir(parents=True,exist_ok=True)
     parent=root/arm;parent.mkdir(exist_ok=True)
     require(not list(parent.glob('submission*.json')),'Existing or unknown submission; reconcile before retry')
@@ -26,16 +28,16 @@ def submit(plan,arm,source):
     records=json.loads(account.stdout)['RECORDS']
     live=[r for r in records if r['STAT'] not in ('DONE','EXIT')]
     require(not any(r['JOBID'] in row.get('predecessor_job_ids',[]) for r in live),'Predecessor still active')
-    name='mosaic-explore01-'+arm
+    name=plan.get('job_name_prefix','mosaic-explore')+'-'+arm
     require(not any(r['JOB_NAME']==name or str(parent) in r['COMMAND'] for r in live),'Existing active writer')
     gate=capacity(plan,'dispatch');write(parent/'capacity-dispatch.json',gate)
-    command=['bash','-l',str(source/'exploratory_continuation_stage.sh'),str(source),arm,'run']
-    argv=['bsub','-H','-q','gpul40s','-J',name,'-n',str(row['slots']),'-R','span[hosts=1]',
+    command=['bash','-l',str(source/'exploratory_continuation_stage.sh'),str(source),arm,'run',str(plan_path)]
+    argv=['bsub','-H','-q',gpu['queue'],'-J',name,'-n',str(row['slots']),'-R','span[hosts=1]',
         '-R','rusage[mem='+str(row['memory_per_slot_mb'])+']','-W',row['walltime'],
-        '-gpu',row['gpu_request'],'-env','all,~CUDA_VISIBLE_DEVICES,~CUDA_MPS_PIPE_DIRECTORY,~CUDA_MPS_LOG_DIRECTORY,~CUDA_MPS_ACTIVE_THREAD_PERCENTAGE',
+        '-gpu',resource(row),'-env','all,~CUDA_VISIBLE_DEVICES,~CUDA_MPS_PIPE_DIRECTORY,~CUDA_MPS_LOG_DIRECTORY,~CUDA_MPS_ACTIVE_THREAD_PERCENTAGE',
         '-o',str(parent/'stdout.%J.log'),'-e',str(parent/'stderr.%J.log'),*command]
     intent={'argv':argv,'job_name':name,'created_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),
-        'research_profile':'exploratory','plan':binding(source/'plan.json'),'status':'submission_outcome_unknown_until_receipt'}
+        'research_profile':'exploratory','plan':binding(plan_path),'status':'submission_outcome_unknown_until_receipt'}
     exclusive(parent/'submission-intent.json',intent)
     try:r=subprocess.run(argv,capture_output=True,text=True,timeout=90)
     except subprocess.TimeoutExpired as error:
@@ -67,4 +69,4 @@ def submit(plan,arm,source):
 
 if __name__=='__main__':
     parser=argparse.ArgumentParser();parser.add_argument('--plan',type=Path,required=True);parser.add_argument('--arm',required=True)
-    args=parser.parse_args();submit(read(args.plan),args.arm,args.plan.parent)
+    args=parser.parse_args();plan=read(args.plan);submit(plan,args.arm,Path(plan['source_root']),args.plan)

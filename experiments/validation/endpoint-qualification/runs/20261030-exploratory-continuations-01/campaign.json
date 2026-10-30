@@ -69,5 +69,11 @@
     "29853761"
   ],
   "source02_bmod_rejected_by_site_policy": true,
-  "new_numerical_or_native_qualification_claimed": false
+  "new_numerical_or_native_qualification_claimed": false,
+  "v100_migration": {
+    "run": "20261030-v100-default-01",
+    "comparison_job": "29855106",
+    "callback_job": "29855107",
+    "status": "queued_no_original_job_changed_at_20261030T131545Z"
+  }
 }

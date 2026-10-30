@@ -124,3 +124,7 @@ The [Stage 0 usage guide](stage_0_usage.md) has explicit driver commands. Its
 convenience LSF launcher still hard-codes an operator's runtime root; use the
 documented manual route or a separately reviewed port. This guide authorizes
 no new run, retry, cleanup or change to historical evidence.
+
+## Preferred GPU for new exploratory jobs
+
+Prefer 32 GB V100 (`gpuv100`) for new submissions; see [GPU_POLICY.md](GPU_POLICY.md). Use L40S when memory, software or measured runtime makes it preferable. Keep running jobs untouched; migrate existing pending jobs only with explicit authorization and verified replacement readiness.

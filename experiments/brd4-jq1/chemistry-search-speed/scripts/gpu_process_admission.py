@@ -20,6 +20,18 @@ import sys
 import uuid
 
 
+try:
+    from gpu_policy import legacy_adapter_profile
+except ModuleNotFoundError as error:
+    if error.name != 'gpu_policy':raise
+    def legacy_adapter_profile():
+        # Backward compatibility for standalone legacy L40S capsules. A new
+        # explicit profile must have the common helper; never silently fallback.
+        if os.environ.get('MOSAIC_GPU_PROFILE'):
+            raise RuntimeError('Explicit GPU profile requires bundled gpu_policy.py')
+        return {'queue':'gpul40s','family':'L40S','minimum_memory_MiB':45000}
+
+
 VERSION = 'job-exclusive-multi-process-GPU-v1'
 GPU_RESOURCE = 'num=1:mode=shared:j_exclusive=yes:mps=no'
 TORCH_PYTHON = '/work3/s234818/latentmol/env/boltz311/bin/python'
@@ -39,9 +51,9 @@ def _write(path, record):
 def require_allocation(environment):
     job = environment.get('LSB_JOBID', '')
     require(re.fullmatch(r'[1-9]\d*', job) is not None, 'Actual allocated job is required')
-    require(environment.get('LSB_QUEUE') == 'gpul40s'
+    require(environment.get('LSB_QUEUE') == legacy_adapter_profile()['queue']
             and environment.get('LSB_DJOB_NUMPROC') == '8',
-            'Boltz chemistry requires its declared eight-slot L40S allocation')
+            'Boltz chemistry requires its declared eight-slot GPU allocation')
     visible = environment.get('CUDA_VISIBLE_DEVICES', '')
     require(re.fullmatch(r'(?:\d+|GPU-[a-fA-F0-9-]+)', visible) is not None,
             'Require exactly one LSF-selected physical CUDA device')
@@ -53,8 +65,8 @@ def scheduler_gpu_contract(raw, job):
     compact = re.sub(r'\s+', '', raw)
     require(re.findall(r'Job<([1-9]\d*)>', compact) == [job],
             'Actual scheduler proof must identify only this job')
-    require('Status<RUN>' in compact and 'Queue<gpul40s>' in compact,
-            'Actual scheduler proof must show this running L40S job')
+    require('Status<RUN>' in compact and ('Queue<'+legacy_adapter_profile()['queue']+'>') in compact,
+            'Actual scheduler proof must show this running GPU job')
     require(compact.count('GPUREQUIREMENTDETAILS:') == 1,
             'Require one resolved GPU resource section')
     section = compact.split('GPUREQUIREMENTDETAILS:', 1)[1]
@@ -83,8 +95,8 @@ def nvidia_gpu_contract(raw):
     identity, name, memory, compute_mode = (field.strip() for field in rows[0])
     require(re.fullmatch(r'GPU-[a-fA-F0-9-]+', identity) is not None,
             'Selected physical GPU UUID missing')
-    require('L40S' in name and re.fullmatch(r'\d+', memory) is not None
-            and int(memory) >= 45000, 'Require the original 48 GB L40S class')
+    require(legacy_adapter_profile()['family'] in name and re.fullmatch(r'\d+', memory) is not None
+            and int(memory) >= legacy_adapter_profile()['minimum_memory_MiB'], 'Require the declared GPU memory class')
     require(compute_mode == 'Default',
             'NVIDIA compute mode must permit the same job\'s separate CUDA processes')
     return {'uuid': identity, 'name': name, 'memory_total_MiB': int(memory),
@@ -136,8 +148,8 @@ def validate_torch_canary(row, nonce, event):
             and row.get('event') == event, 'Stale or malformed Torch CUDA canary response')
     require(row.get('status') == 'passed' and type(row.get('cuda_device_count')) is int
             and row['cuda_device_count'] == 1
-            and 'L40S' in row.get('device_name', '') and row.get('cuda_forward_backward') is True,
-            'Second process must prove fresh CUDA forward/backward on the allocated L40S')
+            and legacy_adapter_profile()['family'] in row.get('device_name', '') and row.get('cuda_forward_backward') is True,
+            'Second process must prove fresh CUDA forward/backward on the allocated GPU')
     require(type(row.get('pid')) is int and row['pid'] > 0
             and row.get('native_model_loaded') is False and type(row.get('optimizer_updates')) is int
             and row['optimizer_updates'] == 0,
@@ -216,7 +228,7 @@ def torch_canary(nonce):
     torch.backends.cuda.matmul.allow_tf32 = False
     torch.backends.cudnn.allow_tf32 = False
     device_name = torch.cuda.get_device_name(0)
-    require('L40S' in device_name, 'Original GPU class required')
+    require(legacy_adapter_profile()['family'] in device_name, 'Declared GPU class required')
 
     def report(event):
         value = torch.arange(64, dtype=torch.float32, device='cuda', requires_grad=True)

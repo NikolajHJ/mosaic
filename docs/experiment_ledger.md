@@ -10894,3 +10894,17 @@ new immutable source03 replacements above preserve all settings/results. Two Pro
 jobs, older queued diagnostics/callbacks and foreign projects remained untouched.
 No cleanup. Hourly/cadence monitor was updated to these exact exploratory jobs,
 keeping the existing actual two-hour schedule and quiet unchanged-state behavior.
+
+### 30 October 2026 13:15 UTC — V100 default; bounded comparison queued
+
+User requested V100 as the default and sensible migration. New exploratory launches
+prefer 32 GB V100 (`gpuv100`, `gmem=30G`), with explicit L40S fallback. Common GPU
+policy and the canonical exploratory launcher/device guards were updated; sealed
+existing jobs were untouched. 68 portable metadata tests and five actual pre-model
+CLI startups passed. Chemistry adapter arithmetic restores exactly after reversing
+only hardware metadata guards. Device smoke29855106 and ended migration callback
+29855107 are actual PEND jobs, not optimizer progress. Three disposable updates per
+model will measure memory and speed, chemistry first. Only passed, fitting whole
+remainders will replace verified unstarted originals. All five original optimizers
+still PEND; zero jobs migrated/new updates. Saved inputs/settings stay unchanged.
+See `experiments/validation/endpoint-qualification/runs/20261030-v100-default-01`.
