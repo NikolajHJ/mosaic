@@ -16,9 +16,9 @@
   "plan_sha256": "a1375a2b8f33f573a693a16a86eb763aa2c93e98c54e2ae68fd372a8a022371c",
   "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/chemistry-continuation-05/runtime-qualification-01",
   "source": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/runtime-qualification-release-01/source",
-  "status": "CPU1029_controller_passed_both_full_Protenix_GPU_validations_PEND_no_optimizer",
+  "status": "plain_full_qualification_passed_chemistry_combined_loss_qualification_failed",
   "tag": "20261030-protenix-runtime-qualification-01",
-  "latest_observed_utc": "2026-10-30T06:24:53.852969+00:00",
+  "latest_observed_utc": "2026-10-30T07:29:05.988666+00:00",
   "cpu_verification": {
     "status": "passed_independent_CPU1029_source_XML_LSF_four_actual_startups_and_hold_release_provenance",
     "observed_utc": "2026-10-30T06:22:04.559654+00:00",
@@ -118,5 +118,10 @@
     "controller_LSF_success": true,
     "GPU_diagnostic_findings_verified": false,
     "optimizer_jobs": []
-  }
+  },
+  "terminal_verifications": {
+    "plain": "plain-terminal-verification.json",
+    "chemistry": "chemistry-terminal-verification.json"
+  },
+  "optimizer_jobs": []
 }

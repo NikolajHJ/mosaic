@@ -403,3 +403,15 @@ Fresh FULL validation after complete10 native pass: [runtime qualification01](ru
 
 
 Verified06:24:53UTC: fresh runtime qualification01 CPU29852397/controller29852398 DONE/1029cases/all4actualstartups, independent97file/LSF/6vectors/heldrelease/fullstorage audit passed. FULL Pro plain29852401/capture29852403 and Prochem29852404/capture29852405 PEND, no GPUresult/optimizer. Native10 DONE/48stable/fullreference; keep original failures. Read current runtime qualification01campaign, no duplicate stage.
+
+
+30October: full deterministic runtime qualification01 plain passed; chemistry
+failed its low-coefficient coupled logit resolution pair. See actual run audits.
+New [production integration02](runs/20261030-protenix-runtime-production-02/README.md)
+pins the successful plain qualification and repeats real segment startup/full
+CPU/shared storage before the full30k remainder. Failed01 import-path attempt
+is preserved; no scientific tolerance or saved input/result changed. Read
+current campaign before assuming an optimizer exists.
+
+
+Current metadata handoff repair is [production03](runs/20261030-protenix-runtime-production-03/README.md). Production02 CPU1035/actual segment/reference startups passed, but its controller expected a nonexistent readiness object instead of checking original_argv. New03 verifies the real unique ready/SHA/snapshot/offset/step arguments in CPU and controller;32portable controls and1037allocated cases precede any optimizer. Source02/failed callback and all saved results remain preserved; actual campaign determines status.

@@ -1,0 +1,13 @@
+{
+  "CPU_cases": 1035,
+  "archive_bytes": 49416,
+  "archive_sha256": "6d17caf7775c4bc4287a87fe67d3400f1e4aaf39bc845ec81a0db7d657013d38",
+  "files": 7,
+  "manifest_sha256": "69029fea3bdce08737d9f67e11edcbf6e36594266f2b4518f1c34d0da42f6bb1",
+  "optimizer_jobs": [],
+  "plan_sha256": "e130ca263b5456fba8ef0c7801dd47911fd941aafc32c1215fa20d2ec9691be9",
+  "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/runtime-production-02",
+  "source": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/runtime-production-release-02/source",
+  "status": "prepared_not_allocated_pass",
+  "tag": "20261030-protenix-runtime-production-02"
+}

@@ -1,0 +1,11 @@
+{
+  "status": "passed_local_package_AST_byte_manifest_and_portable_metadata_audit_not_HPC_acceptance",
+  "manifest_sha256": "69029fea3bdce08737d9f67e11edcbf6e36594266f2b4518f1c34d0da42f6bb1",
+  "files": 7,
+  "parent_sources": 15,
+  "inputs": 60,
+  "own_portable_cases": 30,
+  "portable_resource_cases": 136,
+  "allocated_cases_required": 1035,
+  "scientific_work_local": false
+}

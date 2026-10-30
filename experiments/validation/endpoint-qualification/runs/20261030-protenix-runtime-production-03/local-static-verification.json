@@ -1,0 +1,11 @@
+{
+  "status": "passed_local_byte_AST_package_and32portable_metadata_controls_only",
+  "manifest_sha256": "6356f3a7068658e17b25b5bdcc5239feb5cfc51e6cdeb1894e47e4752a86e0f8",
+  "files": 7,
+  "parent_sources": 16,
+  "input_bindings": 62,
+  "allocated_CPU_cases_required": 1037,
+  "models_or_arrays_loaded_locally": false,
+  "resource_preflight136": "unchanged contracts passed in production02/resource-preflight01",
+  "global_layout": "preexisting discovery/catalog/historical README drift, not a full layout pass"
+}

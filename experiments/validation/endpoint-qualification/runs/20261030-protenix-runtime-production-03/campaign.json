@@ -1,0 +1,21 @@
+{
+  "CPU_cases": 1037,
+  "archive_bytes": 50063,
+  "archive_sha256": "0f6d7e8780114de4d6168488e25091299ec83979d3b92ad202852dfe5eb3e01d",
+  "files": 7,
+  "jobs": {
+    "after-cpu": "29852582",
+    "cpu": "29852581"
+  },
+  "manifest_sha256": "6356f3a7068658e17b25b5bdcc5239feb5cfc51e6cdeb1894e47e4752a86e0f8",
+  "optimizer_jobs": [],
+  "plan_sha256": "1f0b24c506a62b6ebcd51c5fb9f71131a595ff33f1b66548894ec51d1015de15",
+  "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/runtime-production-03",
+  "source": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/runtime-production-release-03/source",
+  "status": "CPU1037_and_actual_segment_reference_startups_verified_controller_pending",
+  "tag": "20261030-protenix-runtime-production-03",
+  "latest_observed_utc": "2026-10-30T07:46:34.848539+00:00",
+  "CPU_verification": "CPU-verification.json",
+  "actual_CPU_status": "DONE",
+  "actual_controller_status": "PEND"
+}

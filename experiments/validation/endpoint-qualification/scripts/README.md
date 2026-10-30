@@ -272,3 +272,12 @@ admission branch or changed numerical/capture/optimization/saved-result bytes.
 
 
 Full deterministic-profile Protenix validation: protenix_runtime_qualification.py and protenix_runtime_qualification_ops.py, packaged/staged ONCE with manage_runtime_qualification.py; canonical run20261030-protenix-runtime-qualification-01. No production/optimizer submission branch. Original diagnostics10 remain separate and unchanged.
+
+
+`manage_runtime_production.py` prepares/stages a NEW immutable plain Protenix
+production integration after full runtime qualification.
+`runtime_production_{driver,capacity,ops}.py` and `runtime_production_stage.lsf`
+retain the original scientific source/plan, qualify the real segment startup,
+replace only readiness/summary/claim ownership paths, use the existing full
+shared capacity algorithm and held receipt-before-release submission protocol.
+Read the current production run record before any action; never replay stages.

@@ -1,0 +1,128 @@
+{
+  "status": "passed_independent_failed_chemistry_qualification_source_input_raw_binding_LSF_audit",
+  "observed_utc": "2026-10-30T07:29:05.988666+00:00",
+  "source_manifest_sha256": "9108a418953a4ee7f4d481667ac4a5035402c96f10179f1e8a44c3358af965ab",
+  "files_verified": 463,
+  "source_rehashes": 13,
+  "inputs_rehashed": 42,
+  "NPZ_bindings_verified": 124,
+  "JSON_bindings_verified": 49,
+  "native_passed": true,
+  "whole_qualification_status": "failed",
+  "error": "ValueError('Prospective fixed-reference pilot logit check failed')",
+  "repair_weight": 0.001,
+  "error_detail": "AssertionError('Prospective logit derivative pair failed')",
+  "directions": [
+    {
+      "field": "atoms",
+      "row": 1,
+      "source": 5,
+      "destination": 0,
+      "analytic": 0.0028830005321651697,
+      "selected_local_pair": null,
+      "probes": [
+        {
+          "epsilon": 0.01,
+          "outcome": "agreement",
+          "eligible_before_FD": true,
+          "comparison_resolved": true,
+          "agrees": true
+        },
+        {
+          "epsilon": 0.003,
+          "outcome": "agreement",
+          "eligible_before_FD": false,
+          "comparison_resolved": true,
+          "agrees": true
+        },
+        {
+          "epsilon": 0.001,
+          "outcome": "unresolved_precision",
+          "eligible_before_FD": false,
+          "comparison_resolved": false,
+          "agrees": false
+        },
+        {
+          "epsilon": 0.0003,
+          "outcome": "unresolved_precision",
+          "eligible_before_FD": false,
+          "comparison_resolved": false,
+          "agrees": false
+        },
+        {
+          "epsilon": 0.0001,
+          "outcome": "unresolved_precision",
+          "eligible_before_FD": false,
+          "comparison_resolved": false,
+          "agrees": false
+        },
+        {
+          "epsilon": 3e-05,
+          "outcome": "unresolved_precision",
+          "eligible_before_FD": false,
+          "comparison_resolved": false,
+          "agrees": false
+        }
+      ]
+    },
+    {
+      "field": "bonds",
+      "row": 87,
+      "source": 2,
+      "destination": 0,
+      "analytic": 0.0013164100237190723,
+      "selected_local_pair": null,
+      "probes": [
+        {
+          "epsilon": 0.01,
+          "outcome": "agreement",
+          "eligible_before_FD": false,
+          "comparison_resolved": true,
+          "agrees": true
+        },
+        {
+          "epsilon": 0.003,
+          "outcome": "unresolved_precision",
+          "eligible_before_FD": false,
+          "comparison_resolved": false,
+          "agrees": false
+        },
+        {
+          "epsilon": 0.001,
+          "outcome": "unresolved_precision",
+          "eligible_before_FD": false,
+          "comparison_resolved": false,
+          "agrees": false
+        },
+        {
+          "epsilon": 0.0003,
+          "outcome": "unresolved_precision",
+          "eligible_before_FD": false,
+          "comparison_resolved": false,
+          "agrees": false
+        },
+        {
+          "epsilon": 0.0001,
+          "outcome": "unresolved_precision",
+          "eligible_before_FD": false,
+          "comparison_resolved": false,
+          "agrees": false
+        },
+        {
+          "epsilon": 3e-05,
+          "outcome": "unresolved_precision",
+          "eligible_before_FD": false,
+          "comparison_resolved": false,
+          "agrees": false
+        }
+      ]
+    }
+  ],
+  "optimizer_continuation_updates": 0,
+  "optimizer_jobs": [],
+  "scientific_tolerances_changed": false,
+  "arrays_or_models_loaded_locally": false,
+  "top_preservation_receipt_completed": false,
+  "measured_frozen_unchanged": true,
+  "source_inputs_independently_rehashed": true
+}

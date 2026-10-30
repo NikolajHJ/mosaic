@@ -215,3 +215,14 @@ Fresh FULL validation after complete10 native pass: [runtime qualification01](20
 
 
 Verified06:24:53UTC: fresh runtime qualification01 CPU29852397/controller29852398 DONE/1029cases/all4actualstartups, independent97file/LSF/6vectors/heldrelease/fullstorage audit passed. FULL Pro plain29852401/capture29852403 and Prochem29852404/capture29852405 PEND, no GPUresult/optimizer. Native10 DONE/48stable/fullreference; keep original failures. Read current runtime qualification01campaign, no duplicate stage.
+
+
+[Production integration02](20261030-protenix-runtime-production-02/README.md)
+adopts the full qualified deterministic Protenix runtime through a new launcher,
+keeping the30k remainder/settings/results and original gates. Source01 failed
+before fixtures on an omitted sibling import path and remains preserved. Actual
+CPU/controller/GPU/capture status is in02campaign; a CPU submission is not an
+optimizer start.
+
+
+Current metadata handoff repair is [production03](20261030-protenix-runtime-production-03/README.md). Production02 CPU1035/actual segment/reference startups passed, but its controller expected a nonexistent readiness object instead of checking original_argv. New03 verifies the real unique ready/SHA/snapshot/offset/step arguments in CPU and controller;32portable controls and1037allocated cases precede any optimizer. Source02/failed callback and all saved results remain preserved; actual campaign determines status.

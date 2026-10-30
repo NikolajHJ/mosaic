@@ -156,3 +156,9 @@ admission branch or changed numerical/capture/optimization/saved-result bytes.
 
 
 test_protenix_runtime_qualification.py contains24portable metadata/CLI/runtime controls, no scientific arrays. Full runtime qualification additionally repeats1005 inherited allocated cases; raw suite1029/full4actualCLIstartups precedes native/coupled/pilots/runtime validation.
+
+
+`test_runtime_production.py` contains portable AST/namespace/resource controls
+for the fresh single-arm production launcher. It loads no scientific arrays or
+models and never fabricates an allocation. The full inherited1005 fixtures,
+actual ready-bound segment/reference startups and GPU gates remain allocated.

@@ -10408,3 +10408,101 @@ these are full validation jobs, not optimizer continuations. Original settings,
 saved runs and failed admissions unchanged; complete native10 pass not automatic
 production admission. Current source/campaign/own submissions/releases are
 immutable authoritative; never repeat stage/controller/any acceptedjob.
+
+
+Verified30October07:29:05UTC: complete deterministic-profile qualification01
+plainGPU29852401/capture29852403 ACTUALDONE/LSFsuccess, full native/FP64,
+48exact native replay records,38reference requests/negative controls/frozen,
+ten-update pilot and complete remaining30k runtime passed. Independent311
+compact-file/13parent-source/42input/289referencedNPZ/85scientificJSON audit
+passed; all binary arrays remain remote, no local numerical work. Measured
+full30000updates fit05:30 allocation (required18579.440075341612s including
+margins, limit19200s). This is qualification, not an optimizer admission.
+ChemistryGPU29852404/capture29852405 ACTUALEXIT1: native check passed, then
+low0.001 combined-loss fixed-reference logit check had no eligible two-scale
+pair. Atomrow1 5->0 and bondrow87 2->0 report selected_local_pair=null;
+recorded smaller scales are unresolved_precision. Independent463compactfile/
+13source/42input/124NPZ/49JSON/actualsamejobLSF failure audit passed. Frozen
+measurement and independently rehashed source/input identities preserved;
+top-level preservation receipt did not finish. Both pilots/full chemistry
+qualification NOT passed; no chemistry optimizer. No epsilon/tolerance or
+optimizer setting was changed to force agreement.
+
+New production integration01 stages ONLY new plainPro20k->50k LR0.3 under
+qualified deterministic flags, with original50file science/checks and new
+source/output ownership. Source7pin443b4c098bf859163a1fd16ee70bfc7d8ab7b9fbf730c2b32ac19c285155ceda;
+CPU29852547 actuallyEXIT before fixtures/models on omitted authenticated
+chemistry dependency sys.path; callback29852549 RUN07:37:40 but must reject
+failed CPU. No new optimizer. Actual preflight gate37857878583required/
+39755791094available with4GiB/100000files. All old sources/failed outputs
+unchanged. New immutable production02 inserts only the authenticated sibling
+path, executes real SEGMENT+reference metadata startups BEFORE full fixtures,
+then1035allocated cases(1005inherited+30newportable) required.30portable
+metadata tests passed locally; source7pin69029fea3bdce08737d9f67e11edcbf6e36594266f2b4518f1c34d0da42f6bb1,
+plane130ca263b5456fba8ef0c7801dd47911fd941aafc32c1215fa20d2ec9691be9,
+archive49416B/SHA6d17caf7775c4bc4287a87fe67d3400f1e4aaf39bc845ec81a0db7d657013d38.
+Fresh full shared admission/held receipt-before-release protocol precedes
+any new actual job; no02 submission/pass implied by preparation. Complete
+original scope inventory/math/file pools/4GiB+100000reserves retained. One NEW
+future science tree is charged, old failed files retained, same2GiB shared
+control allowance; Pro full30k horizon and05:30 measured allocation unchanged.
+Native+terminal128MiB metadata limits explicitly funded, no scientific
+comparison/config-identity change. No cleanup, saved result/settings/model
+change or unrelated-project mutation. Existing report unchanged (no new
+committed optimizer data). See endpoint-qualification runtime qualification01
+and production01/02 run records and exact campaign receipts.
+
+
+Actual30October07:39:49UTC: production02 source7readonly authenticated,
+CPU29852577 RUN/hpc and conditional controller29852578 PEND. Initial whole
+shared preflight passed37854522271required/39752181854available bytes,
+4GiB/100000file reserves; no optimizer yet. Source15parent manifests/current
+input proofs rehashed,30portable newmetadata and136resource preflight passed
+locally; full1035actual allocated cases, real segment+reference startup and
+fresh dispatch remain required. Source01 CPU29852547 failed before fixtures
+on omitted authenticated import path; oldcallback29852549 stillRUN07:37:40,
+cannot pass failed-CPU LSF, retained namespace/source explicitly accounted.
+Only the new immutable02 namespace fixes the dependency. No cleanup, saved
+state/optimizer/loss/model/tolerance change or report refresh.
+
+
+Verified30October07:43:02UTC: production02 CPU29852577 ACTUALDONE/LSFsuccess,
+1035rawcases across24modules/zero fail-error-skip; actual ready-bound original
+SEGMENT startup (offset20k/30k steps/exact snapshot) and original reference CLI
+passed. Independent80compactfile/15parent-source/60input/XML/LSF/exact2vectors/
+held-release audit passed. Callback29852578 ACTUALEXIT1 before dispatch: it
+expected startup['readiness'], while the unmodified raw original parser receipt
+correctly contains original_argv and readiness_deferred=false. Original CPU
+pass is retained, no readiness field invented or saved receipt changed. Local
+independent audit first exposed this same schema assumption, then flag report
+runtime nesting and Windows POSIX-path comparison; corrected metadata-only
+schema/path handling, raw failures retained, no numerical check relaxed.
+
+New immutable production03 uses check_segment_startup to verify UNIQUE actual
+--ready/--ready-sha256/--offset20000/--segment-steps30000/--resume-sha256/--mode run
+arguments from that raw receipt. The identical validation now runs immediately
+in CPU before fixtures and again in the controller.32portable controls passed;
+full1037allocated cases(1005inherited+32new), actual commands and full shared
+admission remain required. Preparedsource7pin6356f3a7068658e17b25b5bdcc5239feb5cfc51e6cdeb1894e47e4752a86e0f8,
+plan1f0b24c506a62b6ebcd51c5fb9f71131a595ff33f1b66548894ec51d1015de15,
+archive50063B/SHA0f6d7e8780114de4d6168488e25091299ec83979d3b92ad202852dfe5eb3e01d.
+Native/full-runtime qualification stays original successful plainQ; chemistry
+combined-loss failure stays failed. No existing source/result/settings/checker
+change, no optimizer03 pass/submission implied by preparation, no cleanup.
+
+
+Verified30October07:46:34UTC: production03 CPU29852581 ACTUALDONE/hpc/LSFsuccess,
+1037actual rawcases/24modules, zero failures/errors/skips; actual original
+SEGMENT startup validates unique ready path/SHA, exact20k snapshot/key ancestry,
+30000steps and original reference CLI; candidate CPUflag probe passed. Independent
+68compact-file/16parent-source/62input/rawXML/modulecount/LSF/all2exact submission
+vectors/actualheld-release audit passed. Controller29852582 ACTUALPEND awaiting
+CPU end at observation; no GPUoptimizer ID/new committed data yet. Initial
+preflight37848042001required/38671705296available bytes,4GiB/100000files; this is
+NOT full production admission. Existing afterCPU controller must perform fresh
+full scoped30k forecast before exact held GPU/capture submissions. No stage/
+controller replay permitted. All old source01/02 failed evidence preserved;
+source03pin6356f3a7068658e17b25b5bdcc5239feb5cfc51e6cdeb1894e47e4752a86e0f8.
+No cleanup/settings/scientific-tolerance/saved-result changes; no report refresh
+without new committed optimizer data. Global layout check still fails pre-existing
+discovery/catalog/historical README drift, not a new full-layout pass.

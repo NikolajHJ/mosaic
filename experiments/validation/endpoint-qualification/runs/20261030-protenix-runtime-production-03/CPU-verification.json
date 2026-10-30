@@ -1,0 +1,48 @@
+{
+  "status": "passed_independent_production_CPU1037_actual_SEGMENT_reference_startup_source_input_XML_LSF_held_release_audit",
+  "observed_utc": "2026-10-30T07:46:34.848539+00:00",
+  "files_verified": 68,
+  "source_manifest_sha256": "6356f3a7068658e17b25b5bdcc5239feb5cfc51e6cdeb1894e47e4752a86e0f8",
+  "source_manifests_rehashed": 16,
+  "inputs_rehashed": 62,
+  "CPU_cases": 1037,
+  "module_counts": {
+    "tests.test_admission": 50,
+    "tests.test_chemistry_continuation": 47,
+    "tests.test_continuation_driver": 56,
+    "tests.test_continuation_ops": 107,
+    "tests.test_cuda_ownership": 69,
+    "tests.test_current_capacity": 5,
+    "tests.test_dbmol_endpoint_precision": 36,
+    "tests.test_dbmol_reference": 17,
+    "tests.test_embedding_shared_capacity": 13,
+    "tests.test_home_report_reader": 18,
+    "tests.test_logit_admission": 14,
+    "tests.test_measurement_resolution": 10,
+    "tests.test_precision_continuation_driver": 71,
+    "tests.test_precision_continuation_hooks": 57,
+    "tests.test_precision_continuation_ops": 131,
+    "tests.test_probe_shared_capacity": 11,
+    "tests.test_protenix_reference_worker": 58,
+    "tests.test_qualification": 19,
+    "tests.test_recovery_capacity": 11,
+    "tests.test_rolling_capacity": 89,
+    "tests.test_runtime_production": 32,
+    "tests.test_runtime_reservations": 28,
+    "tests.test_segment_capacity": 60,
+    "tests.test_vae_shared_capacity": 28
+  },
+  "actual_segment_startup": true,
+  "readiness_deferred": false,
+  "actual_original_reference_startup": true,
+  "scheduler": {
+    "29852581": "DONE",
+    "29852582": "PEND"
+  },
+  "jobs": {
+    "cpu": "29852581",
+    "after-cpu": "29852582"
+  },
+  "optimizer_started": false,
+  "local_arrays_or_models_used": false
+}

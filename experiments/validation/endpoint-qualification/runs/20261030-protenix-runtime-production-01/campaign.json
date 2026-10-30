@@ -1,0 +1,21 @@
+{
+  "CPU_cases": 1034,
+  "archive_bytes": 49392,
+  "archive_sha256": "c3f7b75cd0535c2e744e8555c851916b30d182d4c5260ff1b8bf40c689e09ccf",
+  "files": 7,
+  "jobs": {
+    "after-cpu": "29852549",
+    "cpu": "29852547"
+  },
+  "manifest_sha256": "443b4c098bf859163a1fd16ee70bfc7d8ab7b9fbf730c2b32ac19c285155ceda",
+  "optimizer_jobs": [],
+  "plan_sha256": "77138f2d9864bc4de5f6f22d2638863e6a6958db696787168d74ac240958e5a6",
+  "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/runtime-production-01",
+  "source": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/runtime-production-release-01/source",
+  "status": "CPU_failed_before_fixtures_on_missing_authenticated_dependency_import_path",
+  "tag": "20261030-protenix-runtime-production-01",
+  "latest_observed_utc": "2026-10-30T07:37:40.282587+00:00",
+  "actual_CPU_status": "EXIT",
+  "actual_callback_status": "RUN",
+  "corrected_new_attempt": "20261030-protenix-runtime-production-02"
+}
