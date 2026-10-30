@@ -10692,3 +10692,19 @@ PEND/unrelatedDeFoG29846730PSUSP untouched. Other-owner status is not new
 continuation admission. No new experiment, cleanup, model/numerical evaluation,
 source/settings/saved-result mutation or report refresh. Same non-actionable
 resource block remains quiet; hourly monitor stays active.
+
+
+30October2026 user storage explanation: read-only raw quota at10:24UTC showed
+WORK3 45.94/100GiB and HOME22.19/30G(last update10:04CET). Fresh full unchanged
+capacity assessment at10:27:01UTC then read WORK3 46.07/100GiB and FAILED:
+39388320557required/38524417008available, same863903549byte shortfall. New exclusive
+storage-explanation parent only; no submission/model/numerical execution or
+cleanup. Admission is shared-account headroom:21464045096embeddingfuture,
+10245440777VAEfuture,2315228668Mosaicfuture/control,535486464runtimeprobe,
+533152256source146,4294967296reserve. They sum exactly39388320557bytes.
+Retained data/stale-quota charges and whole-GiB rounding deliberately discount
+raw freequota; the36.68GiB requirement is not new three-arm molecule output.
+Original sparse stride20/all-scalar policy and every gate remain unchanged.
+Exact compact breakdown/current gate path in owning04run; new raw evidence
+results/hpc/20261030-storage-explanation-01. No original failed source/result
+was changed or recertified.

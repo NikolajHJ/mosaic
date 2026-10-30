@@ -1,0 +1,23 @@
+{
+  "observed_utc": "2026-10-30T10:27:01.819656+00:00",
+  "status": "fresh_full_preflight_failed_metadata_only_no_submission",
+  "gate_path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/runtime-production-03/boltz-precision-04/storage-explanation-20261030T1024Z/rolling-capacity-preflight-1793355974788421616/assessment.json",
+  "packet_sha256": "80a5160fb6e743d06e0bf995410ef0df5238fc5cf98cde5953e9bf270e890d9b",
+  "quota_used_reported": "46.07 GiB",
+  "quota_hard_reported": "100.00 GiB",
+  "conservative_quota_free_bytes": 56908316672,
+  "actual_scoped_current_data_stale_charge_bytes": 16869651456,
+  "conservative_available_bytes": 38524417008,
+  "required_bytes": 39388320557,
+  "shortfall_bytes": 863903549,
+  "required_breakdown_bytes": {
+    "embedding_remaining": 21464045096,
+    "VAE_remaining": 10245440777,
+    "Mosaic_own_remaining": 2315228668,
+    "safety_reserve": 4294967296,
+    "V100_qualification_remaining": 533152256,
+    "runtime_probe_remaining": 535486464
+  },
+  "all_reserves_and_forecasts_unchanged": true,
+  "new_submissions": []
+}
