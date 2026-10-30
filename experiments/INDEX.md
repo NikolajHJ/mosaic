@@ -86,3 +86,8 @@ GPU29851770 EXIT before models and05 preflight failure; no optimizer admission.
 
 
 [Endpoint deterministic-execution candidate09](validation/endpoint-qualification/runs/20261030-continuation-failure-diagnostics-09/README.md) follows verified08 native gradient variation before reference loading. New declared compiler profile is diagnostic only, never original recertification or optimizer admission.
+
+
+30October: endpoint diagnostic10 repairs09 chemistry metadata admission only;
+49allocated cases/four actual startups/whole capacity precede one read-only
+chemistryGPU. No optimizer pass or saved update. [Run](validation/endpoint-qualification/runs/20261030-continuation-failure-diagnostics-10/README.md).

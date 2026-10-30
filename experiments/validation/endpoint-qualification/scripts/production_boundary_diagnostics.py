@@ -10,6 +10,7 @@ from contextlib import contextmanager, nullcontext
 from copy import deepcopy
 import hashlib
 import importlib.util
+import inspect
 import json
 import os
 from pathlib import Path
@@ -17,7 +18,9 @@ import subprocess
 import sys
 from types import SimpleNamespace
 
-CAP = 128 * 1024**2
+CAP = 256 * 1024**2
+REFERENCE_METADATA_CAP = 128 * 1024**2
+INHERITED_REFERENCE_CAP = 64 * 1024**2
 REPEATS = 16
 CANDIDATE_FLAGS = '--xla_gpu_autotune_level=0 --xla_gpu_exclude_nondeterministic_ops=true'
 STOP = 'READ_ONLY_DIAGNOSTIC_NATIVE_BOUNDARY_REACHED'
@@ -256,6 +259,69 @@ def repeated_measurements(precision, output):
         precision._measurement = original
 
 
+def diagnostic_budget_tree(source):
+    """Specialize only the metadata byte ceiling; retain its complete inventory."""
+    tree = ast.parse(source)
+    require(len(tree.body) == 1 and isinstance(tree.body[0], ast.FunctionDef)
+            and tree.body[0].name == '_budget', 'Exact original metadata budget function required')
+    changed = 0
+    class Budget(ast.NodeTransformer):
+        def visit_Compare(self, node):
+            nonlocal changed
+            if ast.dump(node) == ast.dump(ast.parse('total <= SESSION_CAP', mode='eval').body):
+                changed += 1
+                return ast.copy_location(ast.Compare(left=node.left, ops=node.ops,
+                    comparators=[ast.Constant(REFERENCE_METADATA_CAP)]), node)
+            return self.generic_visit(node)
+    tree = Budget().visit(tree)
+    require(changed == 1, 'Exactly one original complete metadata ceiling required')
+    return ast.fix_missing_locations(tree)
+
+
+def diagnostic_budget_scope(directory, study):
+    require(Path(directory) == Path(study) / 'native_gradient_checks-prospective'
+            and '..' not in Path(directory).parts, 'Exact owned native metadata scope required')
+
+
+@contextmanager
+def funded_reference_metadata(precision, plan, study, output):
+    """Private read-only metadata accounting, funded before dispatch; no gate math edits."""
+    policy = plan['diagnostic_storage']
+    require(policy == {'group_cap_bytes': CAP, 'reference_metadata_cap_bytes': REFERENCE_METADATA_CAP,
+                       'inherited_reference_cap_bytes': INHERITED_REFERENCE_CAP,
+                       'all_output_retained': True, 'optimizer_admission_allowed': False},
+            'Exact explicitly funded diagnostic metadata policy required')
+    require(precision.SESSION_CAP == INHERITED_REFERENCE_CAP, 'Inherited metadata ceiling differs')
+    original = precision._budget
+    namespace = dict(original.__globals__)
+    exec(compile(diagnostic_budget_tree(inspect.getsource(original)), original.__code__.co_filename,
+                 'exec'), namespace)
+    inventory = namespace['_budget']
+    receipts = Path(output) / 'reference-budget-checks'
+    receipts.mkdir()
+    count = 0
+    def budget(directory, config):
+        nonlocal count
+        diagnostic_budget_scope(directory, study)
+        total = inventory(directory, config)
+        bounded(Path(plan['root']))
+        write(receipts / ('check-' + str(count).zfill(3) + '.json'), {
+            'status': 'complete_owned_metadata_within_explicit_diagnostic_budget',
+            'directory': str(directory), 'bytes': total,
+            'original_declared_session_cap_bytes': config['max_session_bytes'],
+            'effective_diagnostic_metadata_cap_bytes': REFERENCE_METADATA_CAP,
+            'whole_diagnostic_cap_bytes': CAP, 'all_output_retained': True,
+            'scientific_comparisons_changed': False, 'optimizer_updates': 0,
+            'can_admit_new_child': False})
+        count += 1
+        return total
+    precision._budget = budget
+    try:
+        yield
+    finally:
+        precision._budget = original
+
+
 def plain(plan, output, *, startup=False):
     current = Path(plan['capacity_source']['path'])
     sys.path.insert(0, str(current / 'scripts'))
@@ -318,7 +384,8 @@ def chemistry(plan, output, *, startup=False):
     study.parent.mkdir(exist_ok=False)
     capture = nullcontext([]) if startup else captured_measurements(precision, output / 'measurements')
     repeats = nullcontext([]) if startup else repeated_measurements(precision, output / 'repeat-groups')
-    with capture as records, repeats:
+    budget = nullcontext() if startup else funded_reference_metadata(precision, plan, study, output)
+    with capture as records, repeats, budget:
         try:
             driver.execute(original, 'protenix', 'validate', study, startup=startup)
         except BaseException as error:

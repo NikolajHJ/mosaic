@@ -46,7 +46,9 @@ def test_metadata_unexpected_new_errors_do_not_count_as_observed_original_failur
 def test_metadata_capture_is_not_a_continuation_dispatch():
     calls = {ast.unparse(n.func) for n in ast.walk(ast.parse(P.read_bytes())) if isinstance(n, ast.Call)}
     assert not calls & {'dispatch', 'submit', 'run_updates', 'run_chemical_updates', 'update_parameters'}
-    assert d.CAP == 128 * 1024**2
+    assert d.CAP == 256 * 1024**2
+    assert d.REFERENCE_METADATA_CAP == 128 * 1024**2
+    assert d.INHERITED_REFERENCE_CAP == 64 * 1024**2
 
 
 def test_metadata_exact_owned_payload_study_outputs_for_both_actual_startup_commands():
@@ -192,6 +194,54 @@ def test_metadata_actual_candidate_profile_cannot_silently_revert_to_original():
     d.guard_candidate_environment({'XLA_FLAGS':d.CANDIDATE_FLAGS})
     with pytest.raises(ValueError,match='not applied'):
         d.guard_candidate_environment({'XLA_FLAGS':'--xla_gpu_autotune_level=0'})
+
+
+def test_metadata_private_budget_changes_only_the_complete_byte_ceiling():
+    source = '''def _budget(directory, config):
+    require(config['max_session_bytes'] == SESSION_CAP, 'original configuration')
+    total = directory
+    require(total <= SESSION_CAP, 'complete metadata cap')
+    return total
+'''
+    changed = d.diagnostic_budget_tree(source)
+    expected = source.replace('total <= SESSION_CAP', 'total <= 134217728')
+    assert ast.dump(changed) == ast.dump(ast.parse(expected))
+
+
+@pytest.mark.parametrize('total,passes', [(0, True), (67108865, True),
+                                       (134217728, True), (134217729, False)])
+def test_metadata_explicit_diagnostic_ceiling_is_finite_and_not_a_waiver(total, passes):
+    source = '''def _budget(directory, config):
+    require(config['max_session_bytes'] == SESSION_CAP, 'original configuration')
+    total = directory
+    require(total <= SESSION_CAP, 'complete metadata cap')
+    return total
+'''
+    namespace = {'require': d.require, 'SESSION_CAP': d.INHERITED_REFERENCE_CAP}
+    exec(compile(d.diagnostic_budget_tree(source), '<metadata-budget>', 'exec'), namespace)
+    if passes:
+        assert namespace['_budget'](total, {'max_session_bytes': d.INHERITED_REFERENCE_CAP}) == total
+    else:
+        with pytest.raises(ValueError, match='complete metadata cap'):
+            namespace['_budget'](total, {'max_session_bytes': d.INHERITED_REFERENCE_CAP})
+    with pytest.raises(ValueError, match='original configuration'):
+        namespace['_budget'](0, {'max_session_bytes': d.REFERENCE_METADATA_CAP})
+
+
+@pytest.mark.parametrize('source', ['def other(): pass', 'def _budget(): pass',
+    'def _budget():\n require(total <= SESSION_CAP, "one")\n require(total <= SESSION_CAP, "two")'])
+def test_metadata_unknown_or_duplicate_original_budget_structure_rejected(source):
+    with pytest.raises(ValueError, match='original'):
+        d.diagnostic_budget_tree(source)
+
+
+def test_metadata_supplemental_budget_cannot_apply_to_another_boundary():
+    study = Path(__file__).resolve().parent / 'metadata-only-study'
+    d.diagnostic_budget_scope(study / 'native_gradient_checks-prospective', study)
+    for path in (study / 'foreign', study.parent / 'native_gradient_checks-prospective',
+                 study / 'native_gradient_checks-prospective/../native_gradient_checks-prospective'):
+        with pytest.raises(ValueError, match='Exact owned'):
+            d.diagnostic_budget_scope(path, study)
 
 
 def test_allocated_candidate_flag_parses_in_installed_CPU_runtime_without_models(tmp_path):

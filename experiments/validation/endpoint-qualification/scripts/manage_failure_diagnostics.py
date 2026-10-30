@@ -13,13 +13,13 @@ import tarfile
 
 OWNER=Path(__file__).resolve().parents[1]
 REPO=OWNER.parents[2]
-TAG='20261030-continuation-failure-diagnostics-09'
+TAG='20261030-continuation-failure-diagnostics-10'
 LOCAL=REPO/'results/hpc'/TAG
 RUN=OWNER/'runs'/TAG
 BASE='/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01'
 SCOPE=BASE+'/nonchem-precision-continuation-26'
-ROOT=SCOPE+'/chemistry-continuation-05/boundary-diagnostics-09'
-SOURCE=SCOPE+'/boundary-diagnostics-release-09/source'
+ROOT=SCOPE+'/chemistry-continuation-05/boundary-diagnostics-10'
+SOURCE=SCOPE+'/boundary-diagnostics-release-10/source'
 
 
 def raw(v):return (json.dumps(v,indent=2,sort_keys=True,allow_nan=False)+'\n').encode()
@@ -28,28 +28,34 @@ def sha(b):return hashlib.sha256(b).hexdigest()
 
 def prepare():
     out=LOCAL/'source01';assert not out.exists(),'Existing immutable local package'
-    previous=REPO/'results/hpc/20261030-continuation-failure-diagnostics-08/source01'
-    expected='4d7e7d932aa147dc8303f808eb02c888e511a3640a31c4352c6bab7c5fe31faf'
+    previous=REPO/'results/hpc/20261030-continuation-failure-diagnostics-09/source01'
+    expected='cda9744858ff674bc4755bf5af76b9f8c78ac24747ff72165f4e2b2627ca4b28'
     old_raw=(previous/'source_manifest.json').read_bytes();assert sha(old_raw)==expected
     old_manifest=json.loads(old_raw);plan_raw=(previous/'plan.json').read_bytes()
     assert sha(plan_raw)==old_manifest['files']['plan.json']
     plan=json.loads(plan_raw)
-    delivery=REPO/'results/hpc/20261030-continuation-failure-diagnostics-08/status03'
+    delivery=REPO/'results/hpc/20261030-continuation-failure-diagnostics-09/status04'
     audit=json.loads((delivery/'terminal-verification.json').read_bytes())
-    assert audit['status']=='passed_independent_repeat_diagnostic_terminal_LSF_bytes_schema_digests_groups_raw_binding_source_input_audit'
-    assert audit['findings']['chemistry']['status']=='native_atom_gradient_variation_already_before_FP64_reference'
+    assert audit['status']=='passed_independent_candidate09_terminal_audit_plain_success_chemistry_metadata_cap_failure_preserved'
+    assert audit['findings']['chemistry']['status']=='all48_raw_replicas_stable_native_checks_recorded_but_diagnostic_failed_metadata_cap'
     assert audit['findings']['plain']['status']=='all48_raw_replicas_stable_full_native_FP64_controls_passed_not_admission'
     capture=json.loads((delivery/'stdout.json').read_bytes());proofs=capture['files']
     for kind in ('plain','chemistry'):
-        job=audit['findings'][kind]['job_id'];assert job=={'plain':'29851862','chemistry':'29851866'}[kind]
-        for suffix in ('/gpu-'+kind+'/stdout.'+job+'.log',
-                       '/gpu-'+kind+'/payload/preservation.json',
-                       '/gpu-'+kind+'/payload/replay/'+kind+'/assessment.json'):
+        job=audit['findings'][kind]['job_id'];assert job=={'plain':'29851956','chemistry':'29851957'}[kind]
+        for suffix in (('/gpu-'+kind+'/stdout.'+job+'.log',
+                        '/gpu-'+kind+'/payload/preservation.json',
+                        '/gpu-'+kind+'/payload/replay/'+kind+'/assessment.json') if kind=='plain' else
+                       ('/gpu-'+kind+'/stdout.'+job+'.log',
+                        '/gpu-'+kind+'/payload/replay/'+kind+'/assessment.json',
+                        '/gpu-'+kind+'/payload/replay/'+kind+'/repeat-groups/group-002.json')):
             rows=[r for p,r in proofs.items() if p.endswith(suffix)];assert len(rows)==1
             row=rows[0];content=base64.b64decode(row['base64'],validate=True)
             assert len(content)==row['bytes'] and sha(content)==row['sha256']
             plan['inputs'].append({k:row[k] for k in ('path','bytes','sha256')})
-    plan.update(version='read-only-deterministic-kernel-profile-candidate-v9',root=ROOT,source_root=SOURCE)
+    plan.update(version='read-only-funded-deterministic-profile-diagnostic-v10',root=ROOT,source_root=SOURCE)
+    plan['diagnostic_arms']=['chemistry']
+    plan['diagnostic_storage']={'group_cap_bytes':256*1024**2,'reference_metadata_cap_bytes':128*1024**2,
+        'inherited_reference_cap_bytes':64*1024**2,'all_output_retained':True,'optimizer_admission_allowed':False}
     plan['replication_policy']={'calls_per_native_measurement':16,'original_gate_uses_replica':0,
         'all_replicas_saved':True,'runtime_flags_unchanged':False,'new_optimizer_admission_allowed':False,
         'additional_diagnostic_evaluations_declared':True,'selection_for_agreement_allowed':False}
@@ -57,7 +63,7 @@ def prepare():
         'production_XLA_FLAGS':'--xla_gpu_autotune_level=0 --xla_gpu_exclude_nondeterministic_ops=true',
         'reference_XLA_FLAGS':'--xla_gpu_autotune_level=0','candidate_only':True,
         'fallback_allowed':False,'optimization_defaults_adopted':False,'full_fresh_qualification_required':True}
-    parents=old_manifest['parent_sources']+[{'path':SCOPE+'/boundary-diagnostics-release-08/source',
+    parents=old_manifest['parent_sources']+[{'path':SCOPE+'/boundary-diagnostics-release-09/source',
         'manifest_sha256':expected,'files':6}]
     names={'scripts/continuation_failure_diagnostics.py':'scripts/production_boundary_diagnostics.py',
            'scripts/failure_diagnostic_ops.py':'scripts/failure_diagnostic_ops.py',
@@ -68,7 +74,7 @@ def prepare():
     for n,b in members.items():
         if n.endswith('.py'):ast.parse(b,filename=n)
     manifest={'version':plan['version'],'files':{n:sha(b) for n,b in members.items()},'parent_sources':parents,
-              'capacity_source':plan['capacity_source'],'cpu_cases':40,'optimizer_updates':0,'can_admit_new_child':False}
+              'capacity_source':plan['capacity_source'],'cpu_cases':49,'optimizer_updates':0,'can_admit_new_child':False}
     members['source_manifest.json']=raw(manifest);out.mkdir(parents=True)
     buf=io.BytesIO()
     with tarfile.open(fileobj=buf,mode='w:gz') as t:
@@ -87,7 +93,7 @@ from pathlib import Path,PurePosixPath
 import base64,hashlib,io,json,subprocess,sys,tarfile
 request=json.loads(sys.stdin.buffer.read());p=request['preparation'];root=Path(p['root']);source=Path(p['source'])
 scope=Path('/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26')
-assert root==scope/'chemistry-continuation-05/boundary-diagnostics-09' and source==scope/'boundary-diagnostics-release-09/source'
+assert root==scope/'chemistry-continuation-05/boundary-diagnostics-10' and source==scope/'boundary-diagnostics-release-10/source'
 assert not root.exists() and not source.parent.exists(),'Existing or unknown diagnostic stage; never replay'
 data=base64.b64decode(request['archive'],validate=True);assert len(data)==p['archive_bytes'] and hashlib.sha256(data).hexdigest()==p['archive_sha256']
 members={}

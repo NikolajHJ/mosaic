@@ -203,3 +203,9 @@ Verified08 at03:18:58UTC: CPU29851857/controller29851858 DONE/34cases/all4actual
 
 
 Verified09 at04:18:51UTC: CPU29851950/controller29851954 DONE/40cases/all4actualstartups/flag support; candidate GPUdiagnostics29851956/29851957 bothRUN. No native outcome or optimizer admission. Original FP64 env/guards remain; explicit production kernel profile is candidate-only. Exact current09 campaign/dispatch-verification required.
+
+
+Current read-only metadata repair is [attempt10](20261030-continuation-failure-diagnostics-10/README.md). It retains failed09 and complete plain09 evidence, funds128MiB per-reference/256MiB attempt inside original2GiB control cap, and retries ONLY chemistry after49allocated cases/all4actualstartups/full shared gates. Candidate flags/scientific checks/settings/results remain; no optimizer branch. Actual campaign receipts required.
+
+
+Verified10 at05:07:48UTC: CPU29852155/controller29852156 DONE/49cases/all4actualstartups; independent57file/source/LSF/heldrelease/fullstorage audit passed. ONLY chemistry diagnostic29852164 PEND, no native finding/optimizer. Original09plain complete/chemistrycap failure retained. Read10campaign; never duplicate.

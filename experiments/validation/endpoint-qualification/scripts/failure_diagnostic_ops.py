@@ -16,8 +16,8 @@ BASE=Path('/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01')
 CAPACITY=BASE/'nonchem-precision-release-26/source'
 CAPACITY_PIN='8324c1d312adeaa4c67c475c01ef1217df6f3ad4044b997d1b73e168325412d3'
 SCOPE=BASE/'nonchem-precision-continuation-26'
-ROOT=SCOPE/'chemistry-continuation-05/boundary-diagnostics-09'
-SOURCE=SCOPE/'boundary-diagnostics-release-09/source'
+ROOT=SCOPE/'chemistry-continuation-05/boundary-diagnostics-10'
+SOURCE=SCOPE/'boundary-diagnostics-release-10/source'
 PYTHON='/work3/s234818/mosaic/envs/protenix-tiny/bin/python'
 
 
@@ -51,7 +51,7 @@ def argv(phase,pin,dependency=None):
     a=['bsub','-H','-env','all,~CUDA_VISIBLE_DEVICES,~CUDA_MPS_PIPE_DIRECTORY,~CUDA_MPS_LOG_DIRECTORY,~CUDA_MPS_ACTIVE_THREAD_PERCENTAGE',
        '-q','gpul40s' if gpu else 'hpc','-n',str(slots),'-R','span[hosts=1]','-R',
        'rusage[mem='+('8GB' if phase=='gpu-plain' else '2GB' if slots==1 else '4GB')+']','-W','01:00' if gpu else '00:30' if slots==1 else '01:00',
-       '-J','mosaic-boundary-diagnostics09-'+phase,'-o',str(p/'stdout.%J.log'),'-e',str(p/'stderr.%J.log')]
+       '-J','mosaic-boundary-diagnostics10-'+phase,'-o',str(p/'stdout.%J.log'),'-e',str(p/'stderr.%J.log')]
     if gpu:a+=['-gpu','num=1:mode=exclusive_process:mps=yes']
     if dependency:a+=['-w',dependency]
     return a+['bash','-l',str(SOURCE/'scripts/failure_diagnostic_stage.lsf'),str(SOURCE),pin,phase,'--capacity-source',str(CAPACITY)]
@@ -113,7 +113,7 @@ def submit(phase,pin,dependency=None):
     return row
 def storage(op,parent,phase):
     r=op.storage(parent,phase);cap=read(CAPACITY/'plan.json')['rolling_storage_policy']['control_cap_bytes']
-    require(op.metadata_bytes()+128*1024**2<=cap,'Current funded control scope cannot fit complete128MiB diagnostic')
+    require(op.metadata_bytes()+256*1024**2<=cap,'Current funded control scope cannot fit complete256MiB diagnostic')
     return r
 def execute(phase,pin):
     started=time.monotonic();op,plan=context(pin);parent=ROOT/phase;gpu=phase.startswith('gpu-')
@@ -127,7 +127,7 @@ def execute(phase,pin):
         sub=read(ROOT/'cpu/submission.json');text=' '.join((ROOT/'cpu'/('stdout.'+sub['job_id']+'.log')).read_text().split())
         require(text.count('Subject: Job '+sub['job_id']+':')==1 and 'queue <hpc>' in text and 'Successfully completed.' in text and 'Exited with exit code' not in text,'Actual same CPU LSF success required')
         rows=list(ET.parse(ROOT/'cpu/payload/tests.xml').getroot().iter('testcase'))
-        require(len(rows)==40 and all(not list(r) for r in rows),'All40 allocated fixtures must pass')
+        require(len(rows)==49 and all(not list(r) for r in rows),'All49 allocated fixtures must pass')
         profile=read(ROOT/'cpu/payload/candidate-runtime-probe.json')
         require(profile['status']=='supported_by_installed_CPU_backend_not_GPU_qualified'
                 and profile['models_loaded'] is False and profile['optimizer_updates']==0
@@ -158,8 +158,9 @@ def execute(phase,pin):
             require(int(request[request.index('-n')+1])==row['native_GPU_CPU_slots'],
                     'Proposed GPU allocation differs from unchanged actual reference worker predicate')
         storage(op,parent,'dispatch')
-        gpus={kind:submit('gpu-'+kind,pin) for kind in ('plain','chemistry')}
-        write(payload/'assessment.json',{'status':'CPU40_actual_startups_reference_metadata_passed_GPU_diagnostics_submitted',
+        require(plan['diagnostic_arms']==['chemistry'],'Only incomplete chemistry diagnostic may be retried')
+        gpus={kind:submit('gpu-'+kind,pin) for kind in plan['diagnostic_arms']}
+        write(payload/'assessment.json',{'status':'CPU49_actual_startups_reference_metadata_passed_GPU_diagnostics_submitted',
               'gpus':gpus,'optimizer_jobs':[]});return
     if phase=='cpu':
         command=[PYTHON,'-m','pytest',str(SOURCE/'tests'),'-q','--rootdir',str(SOURCE),'--import-mode=importlib','-o','addopts=','-p','no:cacheprovider',
@@ -183,7 +184,7 @@ def execute(phase,pin):
     mode=phase if gpu else 'cpu';target=payload/('replay' if gpu else 'analysis')
     command=[PYTHON,str(SOURCE/'scripts/continuation_failure_diagnostics.py'),'--plan',str(SOURCE/'plan.json'),'--pin',op.sha(SOURCE/'plan.json'),'--mode',mode,'--output',str(target)]
     with (payload/'execution.log').open('x') as f:subprocess.run(command,check=True,stdout=f,stderr=subprocess.STDOUT,timeout=2700 if gpu else 600)
-    context(pin);require(sum(p.stat().st_size for p in ROOT.rglob('*') if p.is_file())<128*1024**2,'Complete diagnostic tree cap exceeded')
+    context(pin);require(sum(p.stat().st_size for p in ROOT.rglob('*') if p.is_file())<256*1024**2,'Complete diagnostic tree cap exceeded')
     write(payload/'preservation.json',{'status':'inputs_and_sources_preserved','optimizer_updates':0,'can_certify_or_restart_original_study':False})
 
 

@@ -103,3 +103,21 @@ repeat stage/controller/GPUs. All original08/07 findings and failures preserved.
 No cleanup, report force/newrenderer or other-project mutation. Hourly monitor
 continues only for meaningful verified outcomes; complete qualification still
 required before any future optimizer dispatch.
+
+
+Verified30October04:57:47UTC: plainGPU29851956 ACTUALDONE/samejobLSFsuccess;
+chemistryGPU29851957 ACTUALEXIT1 after all48 native measurements and fullFP64
+reference checks, on Complete boundary/reference metadata cap exceeded. The
+64MiB per-reference counter blocked completion; no output was dropped and the
+failed09job remains failed. Independent330compactfile/11parent-source/31input/
+514remoteNPZ/378referencedNPZ/116scientificJSON byte-schema audit passed. Both
+sets of48 original digest dictionaries were EXACTLY stable across all3x16
+before/during/after groups under the candidate profile. Both native/parity/FD/
+residency checks recorded passed,38fullFP64 requests each/closeaudit/frozen passed,
+and zero/reversed/scaled controls rejected. Original reference env stayed0.
+This is evidence for the candidate execution profile, not a completed chemistry
+diagnostic or any optimizer admission. No pilots/updates/saved-result changes.
+Private chemistry preservation receipt did not complete; original sources and
+inputs were independently rehashed remotely and all captured frozen digests
+matched. The existing2GiB whole-control allowance must fund any declared larger
+read-only metadata cap; original scientific comparisons remain unchanged.

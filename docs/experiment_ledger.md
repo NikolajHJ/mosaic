@@ -10270,3 +10270,54 @@ repeat stage/controller/GPUs. All original08/07 findings and failures preserved.
 No cleanup, report force/newrenderer or other-project mutation. Hourly monitor
 continues only for meaningful verified outcomes; complete qualification still
 required before any future optimizer dispatch.
+
+
+Verified30October04:57:47UTC: plainGPU29851956 ACTUALDONE/samejobLSFsuccess;
+chemistryGPU29851957 ACTUALEXIT1 after all48 native measurements and fullFP64
+reference checks, on Complete boundary/reference metadata cap exceeded. The
+64MiB per-reference counter blocked completion; no output was dropped and the
+failed09job remains failed. Independent330compactfile/11parent-source/31input/
+514remoteNPZ/378referencedNPZ/116scientificJSON byte-schema audit passed. Both
+sets of48 original digest dictionaries were EXACTLY stable across all3x16
+before/during/after groups under the candidate profile. Both native/parity/FD/
+residency checks recorded passed,38fullFP64 requests each/closeaudit/frozen passed,
+and zero/reversed/scaled controls rejected. Original reference env stayed0.
+This is evidence for the candidate execution profile, not a completed chemistry
+diagnostic or any optimizer admission. No pilots/updates/saved-result changes.
+Private chemistry preservation receipt did not complete; original sources and
+inputs were independently rehashed remotely and all captured frozen digests
+matched. The existing2GiB whole-control allowance must fund any declared larger
+read-only metadata cap; original scientific comparisons remain unchanged.
+
+
+Prepared30October read-only diagnostic10 after independently verified09 metadata
+cap failure. ONLY incomplete chemistry GPU path will be retried, retaining
+plain09 native result. Explicit128MiB complete reference metadata/256MiB attempt
+is funded within original2GiB control allowance; all full shared byte/file/
+4GiB/100000-file gates retained. Private AST changes exactly metadata ceiling,
+keeps complete ordinary-file inventory/config identity, exact owned scope and
+records original/effective caps. No numerical/checker/FD/digest/LR/loss/model/
+context/optimizer settings or saved results changed. Candidate compiler profile
+unchanged, original FP64 env unchanged.46portable metadata tests passed locally;
+49allocated cases/all4actualstartups/full storage required before ONE chemistry
+GPU diagnostic. Preparation is not a pass/submission/admission. No cleanup.
+See experiments/validation/endpoint-qualification/runs/20261030-continuation-failure-diagnostics-10.
+
+
+Verified30October05:05:27UTC: new10 CPU29852155 ACTUALDONE/hpc/same-jobLSF
+success,49rawcases/all4actualproducer-reference startups/nofail-errors-skips.
+Independent45compactfile/source/byte/XML/actualcommand/heldrelease audit passed;
+installed CPUbackend flag support again passed. Controller29852156 ACTUALRUN,
+no GPU10 ID established at this capture. Staged read-only6file source manifest
+38bdf38decb4c3d96ad270e24d6b9c1a1d6a81980020d474db6adbbf70270d22,
+planbea96cdfbed131d8c16cde82868bb553a959838c758d282627bf671c664d23a2,
+archive23379B/SHA4555adcf844464919f386ab9257030ef03546fc2db999b096d3a556dd30cab0a.
+Full initialstorage39,399,069,343required/40,155,408,456available; CPUentry
+39,397,981,855/40,154,320,968bytes,4GiB/100000files. Not reservation or optimizer
+admission. All four executable Gitindex bytes match sealed source;15original
+capture/control/native functions and6submission/capacity functions unchanged by
+AST, chemistry path differs only explicit metadata accounting context. Local46
+portable controls passed. Global layout still fails pre-existing discovery/
+catalog/historicalmissingREADME drift; no global pass claimed. No cleanup,
+optimizer submission or saved-result change. Own campaign/actual receipts
+supersede old09RUN descriptions.
