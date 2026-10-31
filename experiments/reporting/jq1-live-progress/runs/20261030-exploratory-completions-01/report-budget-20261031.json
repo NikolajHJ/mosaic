@@ -1,0 +1,23 @@
+{
+  "status": "report_only_budget_corrected",
+  "failed_render_job": "29860699",
+  "failed_engine_pin": "8a8fadc66fbb00001bfd875e7424765de92fd3e65c12a0a1b63d60536808a6b8",
+  "measured_complete_output_bytes": 1172625475,
+  "old_cap_bytes": 1073741824,
+  "new_explicit_cap_bytes": 1610612736,
+  "portable_budget_type_and_positive_controls_passed": 18,
+  "fresh_immutable_engine_pin": "3af46190cd58ca713c0da1b2f54305fd279764e1abb65da725254ca92385b418",
+  "allocated_CPU": "29860721",
+  "allocated_actual_fixture_cases": 230,
+  "request": "request-20261031T205019Z-b964a444",
+  "render_job": "29861968",
+  "entry_storage_and_output_caps_retained": true,
+  "existing_data_counted_once": true,
+  "failed_outputs_preserved": true,
+  "scientific_results_changed": false,
+  "scientific_renderer_changed": false,
+  "local_evidence": "results/hpc/20261031-chemistry-completed-report-01/report-cap-controls.json",
+  "prior_DNS_and_capture_reset_requests_preserved": true,
+  "publication_not_yet_claimed_at_repair_record": true,
+  "followup_publication": "publication-0010.json"
+}

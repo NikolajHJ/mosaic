@@ -1,6 +1,6 @@
 {
-  "status": "IO_recovered_continuations_submitted_admin_queues_inactive",
-  "observed_utc": "2026-10-31T12:46:35.247513+00:00",
+  "status": "four_targets_complete_reported_two_running",
+  "observed_utc": "2026-10-31T21:05:16.748001+00:00",
   "active_optimizers": {
     "protenix_chemistry": {
       "job_id": "29853757",
@@ -11,21 +11,22 @@
       "new_applied_updates_at_least": 40000,
       "study": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/protenix_chemistry/payload/study",
       "terminal_evidence": "successful_same_job_LSF_and_complete_summary",
-      "report_state": "queued_report_engine_validation"
+      "report_state": "published_edition_0010_saved_only_verified"
     },
     "boltz_chemistry": {
       "job_id": "29860456",
-      "scheduler": "PEND",
+      "scheduler": "DONE_PERSISTED",
       "queue": "gpuv100",
-      "confirmed_global_step_at_least": 28986,
+      "confirmed_global_step_at_least": 30000,
       "target": 30000,
-      "new_applied_updates_at_least": 0,
+      "new_applied_updates_at_least": 1014,
       "study": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-recovery-20261031-01/boltz_chemistry-output/boltz_chemistry/payload/study",
       "source_start": 28986,
       "source_root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-recovery-20261031-01/source-boltz_chemistry",
       "plan": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-recovery-20261031-01/source-boltz_chemistry/plan.json",
       "walltime": "01:30",
-      "pending_reason": "queue administratively inactive"
+      "terminal_evidence": "same_job_bhist_Done_successfully_original_LSF_and_summary_contiguous1014_updates_frozen",
+      "report_state": "published_edition_0010_saved_only_verified"
     },
     "protenix": {
       "job_id": "29855339",
@@ -48,25 +49,25 @@
     },
     "dbmol": {
       "job_id": "29860458",
-      "scheduler": "PEND",
+      "scheduler": "RUN",
       "queue": "gpul40s",
-      "confirmed_global_step_at_least": 7500,
+      "confirmed_global_step_at_least": 12919,
       "target": 30000,
-      "new_applied_updates_at_least": 0,
+      "new_applied_updates_at_least": 5419,
       "study": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-recovery-20261031-01/dbmol-output/dbmol/payload/study",
       "source_start": 7500,
       "source_root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-recovery-20261031-01/source-dbmol-30h",
       "plan": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-recovery-20261031-01/source-dbmol-30h/plan.json",
       "walltime": "30:00",
-      "pending_reason": "queue administratively inactive"
+      "optimization_started": "verified_saved_updates"
     },
     "protenix_chemistry_noise": {
       "job_id": "29857358",
       "scheduler": "RUN",
       "queue": "gpuv100",
-      "confirmed_global_step_at_least": 672,
+      "confirmed_global_step_at_least": 26250,
       "target": 50000,
-      "new_applied_updates_at_least": 672,
+      "new_applied_updates_at_least": 26250,
       "study": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-chemistry-noise-20261030-01/retry01/protenix_chemistry/payload/study",
       "optimization_started": "verified_saved_updates"
     }
@@ -130,38 +131,50 @@
   "saved_results_changed": false,
   "settings_changed": false,
   "verification": "completion-verification.json",
-  "latest_observation": "recovery-20261031.json",
+  "latest_observation": "status-20261031T210516Z.json",
   "completed_results_report": {
     "url": "http://127.0.0.1:8780/report.html",
-    "edition": "edition-0009",
-    "job_id": "29857654",
+    "edition": "edition-0010",
+    "job_id": "29861968",
     "protenix_global_target": 50000,
     "protenix_panel_range": [
       27175,
       50000
     ],
     "scientific_scope": "unqualified exploratory; prior failures preserved",
-    "proof": "../../../../reporting/jq1-live-progress/runs/20261030-exploratory-completions-01/publication-0009.json",
+    "proof": "../../../../reporting/jq1-live-progress/runs/20261030-exploratory-completions-01/publication-0010.json",
     "boltz_global_target": 30000,
     "boltz_panel_range": [
       20000,
       30000
+    ],
+    "protenix_chemistry_global_target": 50000,
+    "protenix_chemistry_panel_range": [
+      10000,
+      50000
+    ],
+    "boltz_chemistry_global_target": 30000,
+    "boltz_chemistry_panel_range": [
+      28986,
+      30000
     ]
   },
-  "pending_report_request": {
-    "request": "request-20261031T124153Z-03f8102b",
-    "local_controller_PID": 70968,
-    "local_exec_session": 41259,
+  "recovery_record": "recovery-20261031.json",
+  "last_report_request": {
+    "request": "request-20261031T205019Z-b964a444",
+    "local_controller_PID": 37680,
     "do_not_start_second_controller_while_alive": true,
-    "validation_job_id": "29860463",
-    "validation_status": "PEND_admin_inactive",
+    "validation_job_id": "29860721",
+    "validation_status": "DONE_actual230_case_certificate_passed",
     "expected_allocated_fixture_cases": 230,
-    "local_focused_metadata_cases_passed": 5,
-    "render_job_id": null,
+    "engine_pin": "3af46190cd58ca713c0da1b2f54305fd279764e1abb65da725254ca92385b418",
+    "request_cap_bytes": 1610612736,
+    "failed_prior_render": "29860699_1172625475_bytes_exceeded_old1GiB_cap_all_evidence_preserved",
     "latest_published_edition": "edition-0009",
-    "adapter_fix": "Verify original v1 snapshot.json rather than assuming nonexistent checksums.sha256",
-    "preserved_initial_fixture_failure": "Windows shared pytest temporary-directory permission error; rerun fresh owned basetemp passed5 without changing implementation",
-    "source_manifest_adapter_sha256": "960aa8f72dcf18bee3236c95639395457b56f358c3b171062e11464694262609"
-  },
-  "recovery_record": "recovery-20261031.json"
+    "selected_panels": 11,
+    "status": "published_verified_saved_report",
+    "render_job_id": "29861968",
+    "published_edition": "edition-0010",
+    "controller_complete": true
+  }
 }

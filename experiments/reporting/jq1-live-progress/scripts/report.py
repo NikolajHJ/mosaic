@@ -63,7 +63,7 @@ def validate_profile(profile):
     inputs.require(profile.get('allowed_roots') and all(PurePosixPath(p).is_absolute() and len(PurePosixPath(p).parts) >= 3
                    and '..' not in PurePosixPath(p).parts for p in profile['allowed_roots']), 'Declare specific authorized project roots')
     for name in ('request_cap_bytes', 'validation_cap_bytes'):
-        inputs.require(type(profile[name]) is int and 0 < profile[name] <= 1024**3, 'Report caps must be positive and at most1GiB')
+        inputs.require(type(profile[name]) is int and profile[name] > 0, 'Declare a positive integer report cap; capacity is checked before submission and entry')
 
 
 def event(profile, work, status, **details):

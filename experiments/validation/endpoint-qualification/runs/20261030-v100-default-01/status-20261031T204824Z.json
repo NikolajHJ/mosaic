@@ -1,0 +1,96 @@
+{
+  "observed_utc": "2026-10-31T20:48:24.321196+00:00",
+  "evidence": "results\\hpc\\20261031-chemistry-completed-report-01\\news-20261031T204823Z\\stdout.jsonl",
+  "sha256": "4112fcbf430a3122d5f98838919929cb3cbb758da1d2f4edf9a32f48db38cc2d",
+  "active_optimizers": {
+    "protenix_chemistry": {
+      "job_id": "29853757",
+      "scheduler": "DONE_PERSISTED",
+      "queue": "gpul40s",
+      "confirmed_global_step_at_least": 50000,
+      "target": 50000,
+      "new_applied_updates_at_least": 40000,
+      "study": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/protenix_chemistry/payload/study",
+      "terminal_evidence": "successful_same_job_LSF_and_complete_summary",
+      "report_state": "allocated_report_refresh_in_progress"
+    },
+    "boltz_chemistry": {
+      "job_id": "29860456",
+      "scheduler": "DONE_PERSISTED",
+      "queue": "gpuv100",
+      "confirmed_global_step_at_least": 30000,
+      "target": 30000,
+      "new_applied_updates_at_least": 1014,
+      "study": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-recovery-20261031-01/boltz_chemistry-output/boltz_chemistry/payload/study",
+      "source_start": 28986,
+      "source_root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-recovery-20261031-01/source-boltz_chemistry",
+      "plan": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-recovery-20261031-01/source-boltz_chemistry/plan.json",
+      "walltime": "01:30",
+      "terminal_evidence": "same_job_bhist_Done_successfully_original_LSF_and_summary_contiguous1014_updates_frozen",
+      "report_state": "allocated_report_refresh_in_progress"
+    },
+    "protenix": {
+      "job_id": "29855339",
+      "scheduler": "DONE_PERSISTED",
+      "queue": "gpuv100",
+      "confirmed_global_step_at_least": 50000,
+      "target": 50000,
+      "new_applied_updates_at_least": 22825,
+      "study": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/production/protenix/payload/study",
+      "state_evidence": "persisted completed summary and prior authenticated DONE; live row aged out"
+    },
+    "boltz": {
+      "job_id": "29855430",
+      "scheduler": "DONE",
+      "queue": "gpuv100",
+      "confirmed_global_step_at_least": 30000,
+      "target": 30000,
+      "new_applied_updates_at_least": 10000,
+      "study": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/production/boltz/payload/study"
+    },
+    "dbmol": {
+      "job_id": "29860458",
+      "scheduler": "RUN",
+      "queue": "gpul40s",
+      "confirmed_global_step_at_least": 12572,
+      "target": 30000,
+      "new_applied_updates_at_least": 5072,
+      "study": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-recovery-20261031-01/dbmol-output/dbmol/payload/study",
+      "source_start": 7500,
+      "source_root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-recovery-20261031-01/source-dbmol-30h",
+      "plan": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-recovery-20261031-01/source-dbmol-30h/plan.json",
+      "walltime": "30:00",
+      "optimization_started": "verified_saved_updates"
+    },
+    "protenix_chemistry_noise": {
+      "job_id": "29857358",
+      "scheduler": "RUN",
+      "queue": "gpuv100",
+      "confirmed_global_step_at_least": 25568,
+      "target": 50000,
+      "new_applied_updates_at_least": 25568,
+      "study": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-chemistry-noise-20261030-01/retry01/protenix_chemistry/payload/study",
+      "optimization_started": "verified_saved_updates"
+    }
+  },
+  "queues": "all_three_active_at_observation",
+  "saved_results_changed": false,
+  "settings_changed": false,
+  "boltz_chemistry_completion": {
+    "status": "completed_exploratory_budget_verified_metadata",
+    "job_id": "29860456",
+    "global_start": 28986,
+    "global_target": 30000,
+    "applied_updates": 1014,
+    "scalar_states": 1015,
+    "retained_frames": 52,
+    "original_bhist_done_successfully": true,
+    "original_same_job_LSF_success": true,
+    "frozen_before_after_equal": true,
+    "original_partial_prefix_through": 28986,
+    "original_failed_run_preserved": true,
+    "full_saved_frame_validation": "allocated_report_job_pending",
+    "evidence_packet": "results\\hpc\\20261031-chemistry-completed-report-01\\boltz-chemistry-completion-01\\stdout.jsonl",
+    "evidence_sha256": "0c6908918a217a9b22fdb4f918356bbb26f6b1db4ff1e39f60bb3529b1a3c0cb"
+  }
+}

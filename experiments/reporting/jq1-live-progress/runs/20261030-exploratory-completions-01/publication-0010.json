@@ -1,0 +1,164 @@
+{
+  "status": "published_verified_saved_report",
+  "publication": {
+    "automatic_optimizer_submission": false,
+    "edition": "edition-0010",
+    "engine_pin": "3af46190cd58ca713c0da1b2f54305fd279764e1abb65da725254ca92385b418",
+    "manifest_sha256": "162e9010714f7fdc6de2f225d50f57d86572cabff306a815fe0cca6c3eb43117",
+    "published_utc": "2026-10-31T20:58:30.239454+00:00",
+    "report_url": "editions/edition-0010/report.html",
+    "version": "jq1-live-publication-v1"
+  },
+  "HTTP": {
+    "files": 109,
+    "status": "passed_all_new_edition_HTTP_bytes",
+    "url": "http://127.0.0.1:8780/report.html"
+  },
+  "report_job": "29861968",
+  "CPU_job": "29860721",
+  "CPU_cases": 230,
+  "assessment": {
+    "all_original_input_and_snapshot_hashes_rechecked": true,
+    "all_scalar_records_retained": true,
+    "cached_arms": [
+      "protenix",
+      "boltz",
+      "protenix_noisy",
+      "protenix_chemistry",
+      "boltz_chemistry",
+      "protenix_defog"
+    ],
+    "edition": "edition-0010",
+    "newly_validated_arms": [
+      "protenix_chemistry50k",
+      "boltz_chemistry30k",
+      "boltz30k",
+      "protenix50k",
+      "dbmol"
+    ],
+    "no_interpolation": true,
+    "original_results_changed": false,
+    "scientific_success_claim": false,
+    "status": "passed_saved_only_render"
+  },
+  "result_path": "results\\hpc\\20261028-reusable-report-01\\requests\\request-20261031T205019Z-b964a444\\result.json",
+  "result_sha256": "6d3cbaa40c38f69a358c2dbac17d1468a652c9b3d97a5a18669ead09a4f55f30",
+  "delivery_evidence_sha256": "548bfdcf4813b3a833cd9e962b69de70019cbb412ee8a7ce6a10fbfe5a57e924",
+  "delta_bytes": 70598073,
+  "delta_sha256": "e9c33889d265e9877d6db64fd172128f49cb1ad15033af5f923f381686520cf6",
+  "browser_QA": {
+    "edition": "edition-0010",
+    "tab_id": "4",
+    "prochem_numeric": "30000",
+    "prochem_next": "30020",
+    "prochem_previous": "30000",
+    "prochem_slider_home_right": "10020",
+    "prochem_playback": "10040",
+    "manual_pause": "30040",
+    "manual_stayed": "30040",
+    "bolchem_latest": "30000",
+    "bolchem_numeric": "29506",
+    "bolchem_next": "29526",
+    "bolchem_previous": "29506",
+    "selector_checks": [
+      {
+        "id": "protenix_chemistry50k",
+        "latest": "50000"
+      },
+      {
+        "id": "boltz_chemistry30k",
+        "latest": "30000"
+      },
+      {
+        "id": "boltz30k",
+        "latest": "30000",
+        "max": "30000",
+        "title": "Boltz-2 30k - completed latest continuation"
+      },
+      {
+        "id": "protenix50k",
+        "latest": "50000",
+        "max": "50000",
+        "title": "Protenix 50k - completed latest continuation"
+      },
+      {
+        "id": "protenix",
+        "latest": "20000",
+        "max": "20000",
+        "title": "Protenix continuation"
+      },
+      {
+        "id": "boltz",
+        "latest": "20000",
+        "max": "20000",
+        "title": "Boltz-2 affinity"
+      },
+      {
+        "id": "dbmol",
+        "latest": "7500",
+        "max": "7500",
+        "title": "DBMol binding objective"
+      },
+      {
+        "id": "protenix_noisy",
+        "latest": "1000",
+        "max": "1000",
+        "title": "Protenix noisy-logit pilot"
+      },
+      {
+        "id": "protenix_chemistry",
+        "latest": "10000",
+        "max": "10000",
+        "title": "Random Protenix + chemistry"
+      },
+      {
+        "id": "boltz_chemistry",
+        "latest": "10000",
+        "max": "10000",
+        "title": "Boltz-2 + chemistry"
+      },
+      {
+        "id": "protenix_defog",
+        "latest": "30000",
+        "max": "30000",
+        "title": "Protenix + DeFoG \u00b7 scheduled time30k"
+      }
+    ],
+    "prochem_latest": "50000",
+    "status": "passed_actual_browser",
+    "heatmaps": "25 atom rows and300 unordered pairs; saved FP32 probabilities",
+    "plots": "primary contact/affinity and saved chemistry losses, separate binder probability",
+    "raw_readouts": "Prochem final invalid; Bolchem final sanitized; no repair or binding claim",
+    "final_ready": true
+  },
+  "preview_sha256": "76eb7b8fe9df88410ccc2cabf80dab223af862a245fb59fb59d2cebec51bc6f4",
+  "molecule_preview_sha256": "9b9f1e49596737eed3ef9f5c997b1cf1ca47685a694e66dbe18f95f6083ac07e",
+  "independent_verification": "results\\hpc\\20261031-chemistry-completed-report-01\\verification-0010.json",
+  "independent_verification_sha256": "ac860a468622df60bc41499a34d94283e2be250b9df5fe179c65cd484642fa42",
+  "completed_chemistry_panels": {
+    "protenix": {
+      "range": [
+        10000,
+        50000
+      ],
+      "applied_updates": 40000,
+      "retained_frames": 2001
+    },
+    "boltz": {
+      "range": [
+        28986,
+        30000
+      ],
+      "applied_updates": 1014,
+      "retained_frames": 52,
+      "prior_10000_to_28986_wall_limited_segment": "preserved_remotely_not_rendered_in_this_panel"
+    }
+  },
+  "scientific_scope": "Unqualified exploratory completion; original gradient failures and saved graph warnings retained",
+  "report_only_repairs": {
+    "original_v1_source_manifest": "Authenticated snapshot.json instead of requiring nonexistent checksums.sha256",
+    "resource_budget": "Measured1,172,625,475 bytes exceeded old1GiB. Explicit1.5GiB bound passed capacity and output checks;18 portable controls. No arbitrary global1GiB CLI maximum.",
+    "scientific_renderer_unchanged": true,
+    "old_failed_report_and_transport_requests_preserved": true
+  }
+}

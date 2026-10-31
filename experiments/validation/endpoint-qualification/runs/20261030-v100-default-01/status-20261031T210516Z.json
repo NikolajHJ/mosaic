@@ -1,0 +1,80 @@
+{
+  "observed_utc": "2026-10-31T21:05:16.748001+00:00",
+  "evidence": "results\\hpc\\20261031-chemistry-completed-report-01\\news-20261031T210515Z\\stdout.jsonl",
+  "evidence_sha256": "d7901a4c7e9d8e7ca301468ba12c99971c91de6ea4176dae7b2233b98428a2d2",
+  "active_optimizers": {
+    "protenix_chemistry": {
+      "job_id": "29853757",
+      "scheduler": "DONE_PERSISTED",
+      "queue": "gpul40s",
+      "confirmed_global_step_at_least": 50000,
+      "target": 50000,
+      "new_applied_updates_at_least": 40000,
+      "study": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/protenix_chemistry/payload/study",
+      "terminal_evidence": "successful_same_job_LSF_and_complete_summary",
+      "report_state": "published_edition_0010_saved_only_verified"
+    },
+    "boltz_chemistry": {
+      "job_id": "29860456",
+      "scheduler": "DONE_PERSISTED",
+      "queue": "gpuv100",
+      "confirmed_global_step_at_least": 30000,
+      "target": 30000,
+      "new_applied_updates_at_least": 1014,
+      "study": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-recovery-20261031-01/boltz_chemistry-output/boltz_chemistry/payload/study",
+      "source_start": 28986,
+      "source_root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-recovery-20261031-01/source-boltz_chemistry",
+      "plan": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-recovery-20261031-01/source-boltz_chemistry/plan.json",
+      "walltime": "01:30",
+      "terminal_evidence": "same_job_bhist_Done_successfully_original_LSF_and_summary_contiguous1014_updates_frozen",
+      "report_state": "published_edition_0010_saved_only_verified"
+    },
+    "protenix": {
+      "job_id": "29855339",
+      "scheduler": "DONE_PERSISTED",
+      "queue": "gpuv100",
+      "confirmed_global_step_at_least": 50000,
+      "target": 50000,
+      "new_applied_updates_at_least": 22825,
+      "study": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/production/protenix/payload/study",
+      "state_evidence": "persisted completed summary and prior authenticated DONE; live row aged out"
+    },
+    "boltz": {
+      "job_id": "29855430",
+      "scheduler": "DONE",
+      "queue": "gpuv100",
+      "confirmed_global_step_at_least": 30000,
+      "target": 30000,
+      "new_applied_updates_at_least": 10000,
+      "study": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/production/boltz/payload/study"
+    },
+    "dbmol": {
+      "job_id": "29860458",
+      "scheduler": "RUN",
+      "queue": "gpul40s",
+      "confirmed_global_step_at_least": 12919,
+      "target": 30000,
+      "new_applied_updates_at_least": 5419,
+      "study": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-recovery-20261031-01/dbmol-output/dbmol/payload/study",
+      "source_start": 7500,
+      "source_root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-recovery-20261031-01/source-dbmol-30h",
+      "plan": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-recovery-20261031-01/source-dbmol-30h/plan.json",
+      "walltime": "30:00",
+      "optimization_started": "verified_saved_updates"
+    },
+    "protenix_chemistry_noise": {
+      "job_id": "29857358",
+      "scheduler": "RUN",
+      "queue": "gpuv100",
+      "confirmed_global_step_at_least": 26250,
+      "target": 50000,
+      "new_applied_updates_at_least": 26250,
+      "study": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-chemistry-noise-20261030-01/retry01/protenix_chemistry/payload/study",
+      "optimization_started": "verified_saved_updates"
+    }
+  },
+  "published_report": "edition-0010",
+  "publication_proof": "experiments\\reporting\\jq1-live-progress\\runs\\20261030-exploratory-completions-01\\publication-0010.json",
+  "saved_results_changed": false,
+  "settings_changed": false
+}

@@ -29,3 +29,17 @@ py -3.13 scripts/reporting/report.py --profile experiments/reporting/jq1-live-pr
 ```
 
 On 31 October the completed Prochem 50k input exposed an adapter mismatch: its original producer has snapshot.json, not the later checksums.sha256. The adapter now verifies all named original manifest files/driver/plan and binds that actual proof; it writes nothing into the sealed source. Five portable controls passed. New engine CPU validation29860463 is PEND because the hpc queue is administratively inactive; expected230 cases are NOT yet claimed passed. Current request request-20261031T124153Z-03f8102b (local controller PID70968) will continue automatically; do not launch a second controller while it is alive. No render job/new edition yet; edition0009 remains authoritative.
+
+
+### Verified31 October2026,21:05UTC
+
+Edition0010 is published at http://127.0.0.1:8780/report.html; see `publication-0010.json`. Protenix+chemistry completed50,000 total updates (new panel10,000-50,000,40,000 applied,2,001 retained frames). Boltz+chemistry completed30,000 (new panel is the final28,986-30,000 recovery:1,014 applied,52 frames). The earlier wall-limited10,000-28,986 Boltz chemistry prefix remains saved separately and is not rendered in that panel. Old reports and failed checks remain unchanged.
+
+The earlier pending CPU29860463 subsequently passed230 cases. Render29860699 completed its saved-frame audit but failed the old1GiB output budget; measured complete output was1,172,625,475 bytes. The report-only budget is now explicitly1.5GiB, with the same actual-capacity and output checks;18 portable metadata controls passed. Fresh immutable engine3af46190cd58 passed230 allocated cases in CPU29860721; render29861968 actually DONE/hpc/LSF succeeded. All109HTTP files and independent14-proof/XML/archive audits passed. All11 selectors, both new chemistry endpoints, numeric/arrows/slider/playback/manual pause and probability heatmaps passed actual browser checks. A source-manifest adapter authenticates original v1 snapshot.json; no scientific renderer/model evaluation or saved-result change. Interrupted DNS/capture requests and the failed cap evidence remain preserved.
+
+Four requested budgets are now complete. DBMol29860458 is RUN at least12,919/30,000 and noise29857358 RUN at least26,250/50,000 (21:05UTC committed-prefix query). No active producer was restarted or changed. Completion remains exploratory, with original derivative warnings: the saved final Prochem argmax is invalid, while the saved final Bolchem argmax sanitizes; neither proves binding.
+
+Current defaults include the completed chemistry panels. Refresh with the existing engine/cache:
+```powershell
+py -3.13 scripts/reporting/report.py --profile experiments/reporting/jq1-live-progress/configs/dtu-report-home.json
+```
