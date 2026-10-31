@@ -1,0 +1,184 @@
+{
+  "status": "published_verified_saved_report",
+  "publication": {
+    "automatic_optimizer_submission": false,
+    "edition": "edition-0011",
+    "engine_pin": "15afb7d16d5c4c060e008ba335d6b90904371a169d7d0de57454085db1f3dfe8",
+    "manifest_sha256": "ebcb2b97556fce7636d103df303893f3cffae0c6764b2eb6a5415d188a567cbf",
+    "published_utc": "2026-10-31T21:43:37.155159+00:00",
+    "report_url": "editions/edition-0011/report.html",
+    "version": "jq1-live-publication-v1"
+  },
+  "HTTP": {
+    "files": 120,
+    "status": "passed_all_new_edition_HTTP_bytes",
+    "url": "http://127.0.0.1:8780/report.html"
+  },
+  "CPU_job": "29862133",
+  "CPU_cases": 241,
+  "render_job": "29862166",
+  "archive": {
+    "bytes": 99663293,
+    "path": "/zhome/95/e/206121/mosaic-runs/reusable-saved-report-v2/requests/request-20261031T212940Z-ea5f91ce/report-delta.tar.gz",
+    "sha256": "a234477e1159b5c54b7eacf5bdcf3c379c8673a255e9d46d135024497b4c50cd"
+  },
+  "assessment": {
+    "all_original_input_and_snapshot_hashes_rechecked": true,
+    "all_scalar_records_retained": true,
+    "cached_arms": [
+      "dbmol",
+      "protenix_noisy",
+      "protenix_defog"
+    ],
+    "edition": "edition-0011",
+    "newly_validated_arms": [
+      "protenix_chemistry50k",
+      "boltz_chemistry30k",
+      "boltz30k",
+      "protenix50k"
+    ],
+    "no_interpolation": true,
+    "original_results_changed": false,
+    "scientific_success_claim": false,
+    "status": "passed_saved_only_render"
+  },
+  "ranges": {
+    "protenix_chemistry50k": {
+      "start": 0,
+      "committed_updates": 50000,
+      "latest_global_step": 50000,
+      "retained_frames": 2501,
+      "scalar_states": 50001
+    },
+    "boltz_chemistry30k": {
+      "start": 0,
+      "committed_updates": 30000,
+      "latest_global_step": 30000,
+      "retained_frames": 1502,
+      "scalar_states": 30001
+    },
+    "boltz30k": {
+      "start": 0,
+      "committed_updates": 30000,
+      "latest_global_step": 30000,
+      "retained_frames": 1501,
+      "scalar_states": 30001
+    },
+    "protenix50k": {
+      "start": 0,
+      "committed_updates": 50000,
+      "latest_global_step": 50000,
+      "retained_frames": 2502,
+      "scalar_states": 50001
+    },
+    "dbmol": {
+      "start": 0,
+      "committed_updates": 7500,
+      "latest_global_step": 7500,
+      "retained_frames": 376,
+      "scalar_states": 7501
+    },
+    "protenix_noisy": {
+      "start": 0,
+      "committed_updates": 1000,
+      "latest_global_step": 1000,
+      "retained_frames": 51,
+      "scalar_states": 1001
+    },
+    "protenix_defog": {
+      "start": 0,
+      "committed_updates": 30000,
+      "latest_global_step": 30000,
+      "retained_frames": 1501,
+      "scalar_states": 30001
+    }
+  },
+  "result_sha256": "a83240836e96ada0c61d5778c151b8f87564ba65912f1b1882b3d70dd34ebf7e",
+  "delivery_evidence_sha256": "fcf77a57261c29aab78030a866057d837f56102630b7b5b4f6b13b287e520722",
+  "independent_verification_sha256": "fe1e070d76e218da2bf1ee40ed5e85cc7351dad7d0c08fa72eb71577349c94f7",
+  "browser_QA": {
+    "edition": "edition-0011",
+    "tab_id": "5",
+    "ready_zero_checks": [
+      {
+        "id": "protenix50k",
+        "max": "50000",
+        "min": "0",
+        "value": "0",
+        "latest": "50000"
+      },
+      {
+        "id": "protenix_chemistry50k",
+        "max": "50000",
+        "min": "0",
+        "value": "0",
+        "latest": "50000"
+      },
+      {
+        "id": "boltz_chemistry30k",
+        "max": "30000",
+        "min": "0",
+        "value": "0",
+        "latest": "30000"
+      },
+      {
+        "id": "boltz30k",
+        "max": "30000",
+        "min": "0",
+        "value": "0",
+        "latest": "30000"
+      },
+      {
+        "id": "dbmol",
+        "max": "7500",
+        "min": "0",
+        "value": "0",
+        "latest": "7500"
+      },
+      {
+        "id": "protenix_noisy",
+        "max": "1000",
+        "min": "0",
+        "value": "0",
+        "latest": "1000"
+      },
+      {
+        "id": "protenix_defog",
+        "max": "30000",
+        "min": "0",
+        "value": "0",
+        "latest": "30000"
+      }
+    ],
+    "boltz_chemistry_join": {
+      "input": "28986",
+      "next": "29006",
+      "previous": "28986"
+    },
+    "protenix_joins": {
+      "first_join": "10000",
+      "after_first_join": "10020",
+      "interrupted_endpoint": "27175",
+      "after_interrupted_endpoint": "27195",
+      "previous": "27175"
+    },
+    "playback_observed": "700",
+    "manual_pause": {
+      "value": "320",
+      "play_button_visible": true,
+      "stayed": "320"
+    },
+    "heatmaps": "25 atoms and 300 unordered pairs visible",
+    "status": "passed_seven_real_zero_frames_and_full_ranges",
+    "utc": "2026-10-31T21:50:47.571Z",
+    "original_results_changed": false
+  },
+  "browser_QA_sha256": "f8ad3d9509da7badd7b3b708a8bf7024b179bca3b0919cb60333669bc0a40c2a",
+  "preview": "results/hpc/20261031-report-from-zero-01/report-preview-0011.png",
+  "preview_sha256": "80f7fc1a7b187bf8249ffebb62db4dc5a04a9234085ce8eb8d9ce0212f6d2b3f",
+  "restoration_verification_sha256": "beecd633facad09042fe4e8833df0795f86aa79bc567b9f3dcb0d01ae35be94b",
+  "original_results_changed": false,
+  "settings_changed": false,
+  "scientific_success_claim": false,
+  "scientific_renderer_unchanged": true
+}

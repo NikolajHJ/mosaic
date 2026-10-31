@@ -134,47 +134,48 @@
   "latest_observation": "status-20261031T210516Z.json",
   "completed_results_report": {
     "url": "http://127.0.0.1:8780/report.html",
-    "edition": "edition-0010",
-    "job_id": "29861968",
+    "edition": "edition-0011",
+    "job_id": "29862166",
     "protenix_global_target": 50000,
     "protenix_panel_range": [
-      27175,
+      0,
       50000
     ],
     "scientific_scope": "unqualified exploratory; prior failures preserved",
-    "proof": "../../../../reporting/jq1-live-progress/runs/20261030-exploratory-completions-01/publication-0010.json",
+    "proof": "../../../../reporting/jq1-live-progress/runs/20261031-full-trajectories-01/publication-0011.json",
     "boltz_global_target": 30000,
     "boltz_panel_range": [
-      20000,
+      0,
       30000
     ],
     "protenix_chemistry_global_target": 50000,
     "protenix_chemistry_panel_range": [
-      10000,
+      0,
       50000
     ],
     "boltz_chemistry_global_target": 30000,
     "boltz_chemistry_panel_range": [
-      28986,
+      0,
       30000
-    ]
+    ],
+    "all_panels_start_at_real_zero": true
   },
   "recovery_record": "recovery-20261031.json",
   "last_report_request": {
-    "request": "request-20261031T205019Z-b964a444",
-    "local_controller_PID": 37680,
+    "purpose": "Join complete saved histories from actual0, requested by user",
+    "request": "request-20261031T212940Z-ea5f91ce",
+    "local_controller_PID": 57184,
     "do_not_start_second_controller_while_alive": true,
-    "validation_job_id": "29860721",
-    "validation_status": "DONE_actual230_case_certificate_passed",
-    "expected_allocated_fixture_cases": 230,
-    "engine_pin": "3af46190cd58ca713c0da1b2f54305fd279764e1abb65da725254ca92385b418",
-    "request_cap_bytes": 1610612736,
-    "failed_prior_render": "29860699_1172625475_bytes_exceeded_old1GiB_cap_all_evidence_preserved",
-    "latest_published_edition": "edition-0009",
-    "selected_panels": 11,
+    "validation_job_id": "29862133",
+    "validation_status": "DONE_241_actual_cases_verified",
+    "engine_pin": "15afb7d16d5c4c060e008ba335d6b90904371a169d7d0de57454085db1f3dfe8",
+    "render_job_id": "29862166",
+    "latest_published_edition": "edition-0010",
+    "report_record": "experiments\\reporting\\jq1-live-progress\\runs\\20261031-full-trajectories-01\\campaign.json",
     "status": "published_verified_saved_report",
-    "render_job_id": "29861968",
-    "published_edition": "edition-0010",
-    "controller_complete": true
+    "controller_complete": true,
+    "published_edition": "edition-0011",
+    "selected_panels": 7,
+    "all_panels_start_at_real_zero": true
   }
 }

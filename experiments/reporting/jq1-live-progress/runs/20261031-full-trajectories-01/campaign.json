@@ -1,0 +1,82 @@
+{
+  "status": "published_verified_from_real_update_zero",
+  "request": "request-20261031T212940Z-ea5f91ce",
+  "controller_PID": 57184,
+  "do_not_duplicate": true,
+  "engine_pin": "15afb7d16d5c4c060e008ba335d6b90904371a169d7d0de57454085db1f3dfe8",
+  "CPU_job": "29862133",
+  "CPU_actual_cases": 241,
+  "render_job": "29862166",
+  "captured_ranges": {
+    "protenix_chemistry50k": {
+      "start": 0,
+      "committed_updates": 50000,
+      "latest_global_step": 50000,
+      "retained_frames": 2501,
+      "scalar_states": 50001
+    },
+    "boltz_chemistry30k": {
+      "start": 0,
+      "committed_updates": 30000,
+      "latest_global_step": 30000,
+      "retained_frames": 1502,
+      "scalar_states": 30001
+    },
+    "boltz30k": {
+      "start": 0,
+      "committed_updates": 30000,
+      "latest_global_step": 30000,
+      "retained_frames": 1501,
+      "scalar_states": 30001
+    },
+    "protenix50k": {
+      "start": 0,
+      "committed_updates": 50000,
+      "latest_global_step": 50000,
+      "retained_frames": 2502,
+      "scalar_states": 50001
+    },
+    "dbmol": {
+      "start": 0,
+      "committed_updates": 7500,
+      "latest_global_step": 7500,
+      "retained_frames": 376,
+      "scalar_states": 7501
+    },
+    "protenix_noisy": {
+      "start": 0,
+      "committed_updates": 1000,
+      "latest_global_step": 1000,
+      "retained_frames": 51,
+      "scalar_states": 1001
+    },
+    "protenix_defog": {
+      "start": 0,
+      "committed_updates": 30000,
+      "latest_global_step": 30000,
+      "retained_frames": 1501,
+      "scalar_states": 30001
+    }
+  },
+  "restoration_verification_sha256": "beecd633facad09042fe4e8833df0795f86aa79bc567b9f3dcb0d01ae35be94b",
+  "scientific_renderer_unchanged": true,
+  "saved_results_changed": false,
+  "settings_changed": false,
+  "publication": {
+    "automatic_optimizer_submission": false,
+    "edition": "edition-0011",
+    "engine_pin": "15afb7d16d5c4c060e008ba335d6b90904371a169d7d0de57454085db1f3dfe8",
+    "manifest_sha256": "ebcb2b97556fce7636d103df303893f3cffae0c6764b2eb6a5415d188a567cbf",
+    "published_utc": "2026-10-31T21:43:37.155159+00:00",
+    "report_url": "editions/edition-0011/report.html",
+    "version": "jq1-live-publication-v1"
+  },
+  "HTTP": {
+    "files": 120,
+    "status": "passed_all_new_edition_HTTP_bytes",
+    "url": "http://127.0.0.1:8780/report.html"
+  },
+  "publication_proof": "publication-0011.json",
+  "controller_complete": true,
+  "browser_QA_status": "passed_seven_real_zero_frames_and_full_ranges"
+}
