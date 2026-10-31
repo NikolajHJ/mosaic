@@ -1,0 +1,167 @@
+{
+  "observed_utc": "2026-10-31T12:46:35.247513+00:00",
+  "status": "IO_recovered_continuations_submitted_admin_queues_inactive",
+  "source_math_unchanged": true,
+  "prepared": {
+    "boltz_chemistry": {
+      "source": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-recovery-20261031-01/source-boltz_chemistry",
+      "plan": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-recovery-20261031-01/source-boltz_chemistry/plan.json",
+      "plan_sha256": "b800f518995e1fb94721a0530c622322e4ddbe66d8bdd00501774f5d6dcfc227",
+      "source_checksums_sha256": "0c0fe89e91b02513cf45d5a8cafbe9db77b5833a67964f6dde2204ebd4678491",
+      "all_executable_bytes_unchanged": true,
+      "executable_files": 33,
+      "start": 28986,
+      "target": 30000,
+      "steps": 1014,
+      "LR": 0.0025,
+      "walltime": "01:30",
+      "snapshot": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-recovery-20261031-01/source-boltz_chemistry/resume-state.npz",
+        "bytes": 26788,
+        "sha256": "ca6ab2f5c8b207338a167da959aff1836add9abd92ea1b0f5955b2bb14f7387c"
+      }
+    },
+    "dbmol": {
+      "source": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-recovery-20261031-01/source-dbmol-30h",
+      "plan": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-recovery-20261031-01/source-dbmol-30h/plan.json",
+      "plan_sha256": "1b42fb6f4c0b214bb24d41efff7d71b20d6328b5184370c01b86d40c68537891",
+      "source_checksums_sha256": "11a77f9c4f2972577501fa00cb8853ef3cc974811aadfb24ada322c78e587dd9",
+      "all_executable_bytes_unchanged": true,
+      "executable_files": 4,
+      "start": 7500,
+      "target": 30000,
+      "steps": 22500,
+      "LR": 0.0025,
+      "walltime": "30:00",
+      "snapshot": {
+        "bytes": 26782,
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-08/dbmol-segment-05000/payload/study/case-0/snapshots/step-2500.npz",
+        "sha256": "c11bd0ac8f38d651cc4d98ca11958f7454eeee5ab8512eca1e3ff3e1d29485bb"
+      }
+    }
+  },
+  "submissions": {
+    "boltz_chemistry": {
+      "job_id": "29860456",
+      "parent": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-recovery-20261031-01/boltz_chemistry-output/boltz_chemistry",
+      "plan": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-recovery-20261031-01/source-boltz_chemistry/plan.json",
+        "bytes": 5367,
+        "sha256": "b800f518995e1fb94721a0530c622322e4ddbe66d8bdd00501774f5d6dcfc227"
+      },
+      "argv": [
+        "bsub",
+        "-H",
+        "-q",
+        "gpuv100",
+        "-J",
+        "mosaic-recover31-boltz_chemistry",
+        "-n",
+        "8",
+        "-R",
+        "span[hosts=1]",
+        "-R",
+        "rusage[mem=4096]",
+        "-W",
+        "01:30",
+        "-gpu",
+        "num=1:mode=shared:j_exclusive=yes:mps=no:gmem=30G",
+        "-env",
+        "all,~CUDA_VISIBLE_DEVICES,~CUDA_MPS_PIPE_DIRECTORY,~CUDA_MPS_LOG_DIRECTORY,~CUDA_MPS_ACTIVE_THREAD_PERCENTAGE",
+        "-o",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-recovery-20261031-01/boltz_chemistry-output/boltz_chemistry/stdout.%J.log",
+        "-e",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-recovery-20261031-01/boltz_chemistry-output/boltz_chemistry/stderr.%J.log",
+        "bash",
+        "-l",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-recovery-20261031-01/source-boltz_chemistry/exploratory_continuation_stage.sh",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-recovery-20261031-01/source-boltz_chemistry",
+        "boltz_chemistry",
+        "run",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-recovery-20261031-01/source-boltz_chemistry/plan.json"
+      ],
+      "release": {
+        "job_id": "29860456",
+        "returncode": 0,
+        "stdout": "Job <29860456> is being resumed\n",
+        "stderr": ""
+      },
+      "scheduler": "PEND",
+      "pending_reason": "The queue is inactivated by the administrator"
+    },
+    "dbmol": {
+      "job_id": "29860458",
+      "parent": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-recovery-20261031-01/dbmol-output/dbmol",
+      "plan": {
+        "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-recovery-20261031-01/source-dbmol-30h/plan.json",
+        "bytes": 4985,
+        "sha256": "1b42fb6f4c0b214bb24d41efff7d71b20d6328b5184370c01b86d40c68537891"
+      },
+      "argv": [
+        "bsub",
+        "-H",
+        "-q",
+        "gpul40s",
+        "-J",
+        "mosaic-explore01-dbmol",
+        "-n",
+        "4",
+        "-R",
+        "span[hosts=1]",
+        "-R",
+        "rusage[mem=8192]",
+        "-W",
+        "30:00",
+        "-gpu",
+        "num=1:mode=shared:j_exclusive=yes:mps=no",
+        "-env",
+        "all,~CUDA_VISIBLE_DEVICES,~CUDA_MPS_PIPE_DIRECTORY,~CUDA_MPS_LOG_DIRECTORY,~CUDA_MPS_ACTIVE_THREAD_PERCENTAGE",
+        "-o",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-recovery-20261031-01/dbmol-output/dbmol/stdout.%J.log",
+        "-e",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-recovery-20261031-01/dbmol-output/dbmol/stderr.%J.log",
+        "bash",
+        "-l",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-recovery-20261031-01/source-dbmol-30h/exploratory_continuation_stage.sh",
+        "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-recovery-20261031-01/source-dbmol-30h",
+        "dbmol",
+        "run"
+      ],
+      "release": {
+        "job_id": "29860458",
+        "returncode": 0,
+        "stdout": "Job <29860458> is being resumed\n",
+        "stderr": ""
+      },
+      "scheduler": "PEND",
+      "pending_reason": "The queue is inactivated by the administrator"
+    }
+  },
+  "launch_evidence": "results/hpc/20261031-chemistry-completed-report-01/recovery-launch/stdout.jsonl",
+  "launch_evidence_sha256": "dd4053131a4ece5fc22564e76eeaf40cb8b531dbc1baabe276c9c29254603cd0",
+  "noise": {
+    "job_id": "29857358",
+    "scheduler": "RUN",
+    "verified_applied_updates_at_least": 672,
+    "target": 50000,
+    "healthy_producer_unchanged": true,
+    "evidence": "results/hpc/20261031-chemistry-completed-report-01/recovery-20261031T123304Z/stdout.jsonl"
+  },
+  "report": {
+    "request": "request-20261031T124153Z-03f8102b",
+    "local_controller_PID": 70968,
+    "local_exec_session": 41259,
+    "do_not_start_second_controller_while_alive": true,
+    "validation_job_id": "29860463",
+    "validation_status": "PEND_admin_inactive",
+    "expected_allocated_fixture_cases": 230,
+    "local_focused_metadata_cases_passed": 5,
+    "render_job_id": null,
+    "latest_published_edition": "edition-0009",
+    "adapter_fix": "Verify original v1 snapshot.json rather than assuming nonexistent checksums.sha256",
+    "preserved_initial_fixture_failure": "Windows shared pytest temporary-directory permission error; rerun fresh owned basetemp passed5 without changing implementation",
+    "source_manifest_adapter_sha256": "960aa8f72dcf18bee3236c95639395457b56f358c3b171062e11464694262609"
+  },
+  "remaining_external_blocker": "GPU gpuv100/gpul40s and CPU hpc queues Open:Inact_Adm; accepted jobs cannot dispatch until administrator activation",
+  "scientific_settings_and_original_saved_results_changed": false
+}

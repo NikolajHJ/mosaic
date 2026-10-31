@@ -27,3 +27,5 @@ Latest refresh command:
 ```powershell
 py -3.13 scripts/reporting/report.py --profile experiments/reporting/jq1-live-progress/configs/dtu-report-home.json --runs results/hpc/20261030-exploratory-report-02/selection.json
 ```
+
+On 31 October the completed Prochem 50k input exposed an adapter mismatch: its original producer has snapshot.json, not the later checksums.sha256. The adapter now verifies all named original manifest files/driver/plan and binds that actual proof; it writes nothing into the sealed source. Five portable controls passed. New engine CPU validation29860463 is PEND because the hpc queue is administratively inactive; expected230 cases are NOT yet claimed passed. Current request request-20261031T124153Z-03f8102b (local controller PID70968) will continue automatically; do not launch a second controller while it is alive. No render job/new edition yet; edition0009 remains authoritative.
