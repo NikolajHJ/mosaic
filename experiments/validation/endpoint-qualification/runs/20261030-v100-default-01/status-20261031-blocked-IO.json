@@ -1,0 +1,55 @@
+{
+  "observed_utc": "2026-10-31T11:04:15.739952+00:00",
+  "protenix_chemistry": {
+    "job_id": "29853757",
+    "producer_status": "completed_exploratory_updates",
+    "global_end": 50000,
+    "applied_updates": 40000,
+    "same_job_LSF": "Successfully completed;31Oct02:06:52Paris",
+    "frozen_before_after_equal": true,
+    "report_full_frame_validation": "pending",
+    "proof": "results/hpc/20261031-chemistry-completed-report-01/completion-proof.json"
+  },
+  "boltz_chemistry": {
+    "job_id": "29855330",
+    "scheduler_status": "EXIT_TERM_RUNLIMIT",
+    "ended_Paris": "2026-10-31 06:18:39",
+    "last_verified_global_step": 22321,
+    "latest_checkpoint": "not_yet_recovered_directory_listing_times_out",
+    "new_continuation_job": null,
+    "evidence": "results/hpc/20261030-v100-default/bolchem-history-20261031T105924Z/stdout.txt"
+  },
+  "dbmol": {
+    "job_id": "29853835",
+    "scheduler": "RUN",
+    "producer_status": "failed_during_worker_startup",
+    "error": "TimeoutExpired(['/work3/s234818/latentmol/env/boltz311/bin/python', '-u', '/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-release-02/source/scripts/dbmol_worker.py', '--context', '/zhome/95/e/206121/mosaic-runs/20261021-brd4-jq1-25-01/prepare/payload/prepared/context.pt', '--context-sha256', 'a18a331269170aac3281b0a2ecad313aab81756c9b77e048d7e2cbaa4d8f1093', '--checkpoint', '/work3/s234818/latentmol/cache/boltz2/boltz2_aff.ckpt', '--structure-checkpoint', '/work3/s234818/latentmol/cache/boltz2/boltz2_conf.ckpt'], 20)",
+    "global_start": 7500,
+    "new_applied_updates": 0,
+    "target": 30000,
+    "cancellation": "accepted; terminal not confirmed unless current scheduler says EXIT",
+    "retry_job": null,
+    "failure_packet": "results/hpc/20261030-v100-default/startup-review-20261031T104514Z/stdout.jsonl",
+    "retirement_proof": "results/hpc/20261030-v100-default/dbmol-retirement-reconciled-20261031T105646Z/stdout.jsonl"
+  },
+  "noise": {
+    "job_id": "29857358",
+    "scheduler": "RUN",
+    "optimization_progress": "no_new_saved_update_verified",
+    "last_verified_global_step": 0,
+    "target": 50000,
+    "stream_or_saved_results_modified": false
+  },
+  "report": {
+    "latest_verified_edition": "edition-0009",
+    "url": "http://127.0.0.1:8780/report.html",
+    "new_selection": "results/hpc/20261031-chemistry-completed-report-01/selection.json",
+    "request": "request-20261031T105529Z-11728827",
+    "outcome": "failed_before_submission_on_remote_interpreter_timeout",
+    "report_job_id": null,
+    "resume_existing_request_after_service_recovers": true
+  },
+  "blocker": "SSH/LSF reads succeed, but several WORK3 directory/file reads and expected report interpreter stall. No filesystem root cause asserted.",
+  "scientific_settings_and_saved_results_changed": false,
+  "new_optimizer_submissions": []
+}

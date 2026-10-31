@@ -1,8 +1,8 @@
 {
-  "status": "submitted_queued_exploratory",
-  "observed_utc": "2026-10-30T18:57:10.345551+00:00",
+  "status": "GPU_allocated_no_new_saved_updates_verified",
+  "observed_utc": "2026-10-31T11:04:15.739952+00:00",
   "job_id": "29857358",
-  "scheduler": "PEND",
+  "scheduler": "RUN",
   "queue": "gpuv100",
   "GPU": "one32GiBV100",
   "walltime": "18:00",
@@ -59,5 +59,7 @@
   "old_own_unstarted_job_retired": "29857341",
   "other_jobs_modified": false,
   "monitor": "mosaic1 updated to six experiments, schedule unchanged",
-  "raw_evidence": "results\\hpc\\20261030-protenix-chemistry-noise-01\\status-02\\stdout.json"
+  "raw_evidence": "results\\hpc\\20261030-protenix-chemistry-noise-01\\status-02\\stdout.json",
+  "optimization_progress": "not_verified; file reads time out",
+  "latest_monitor_evidence": "experiments/validation/endpoint-qualification/runs/20261030-v100-default-01/status-20261031-blocked-IO.json"
 }
