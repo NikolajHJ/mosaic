@@ -1,0 +1,57 @@
+{
+  "tag": "20261031-protenix-chemistry-strategies-01",
+  "version": "source02",
+  "root": "/work3/s234818/mosaic/runs/20261031-protenix-chemistry-strategies-01/source02/run",
+  "source": "/work3/s234818/mosaic/runs/20261031-protenix-chemistry-strategies-01/source02/source",
+  "archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261031-protenix-chemistry-strategies-01\\source02\\source.tar.gz",
+  "archive_bytes": 433872,
+  "archive_sha256": "522baed56e26184c358844b30d9ab061032fd782bbdb15157a469e6e8b87068e",
+  "files": 152,
+  "arms": 22,
+  "updates_per_arm": 20000,
+  "total_updates": 440000,
+  "checksums_sha256": "9f60ca5e3db7a24785d9d308b8610f37b48d39b06d5825158b8aa73ef8ff8797",
+  "status": "CPU_DONE42pass_22startups_GPU_probe_PEND",
+  "jobs": {
+    "controls": "29862456",
+    "probe": "29862457",
+    "dispatch": "29862459"
+  },
+  "actual_observation": "CPU DONE/hpc/LSF success; GPU probe and dispatcher PEND",
+  "production_jobs_submitted": false,
+  "CPU": {
+    "status": "passed",
+    "CPU_job": "29862456",
+    "raw_cases": 42,
+    "actual_startups": 22,
+    "same_job_LSF_success": true,
+    "source_archive_sha256": "522baed56e26184c358844b30d9ab061032fd782bbdb15157a469e6e8b87068e",
+    "packet_sha256": "0713fdfa310140144b8b289b100dcb0e8b0181d66edca500da970a78a7b9de3f",
+    "GPU_probe": "29862457",
+    "GPU_probe_state": "PEND",
+    "dispatcher": "29862459",
+    "optimizer_jobs_submitted": false
+  },
+  "evidence_packet": "results\\hpc\\20261031-protenix-chemistry-strategies-01\\source02\\status02\\stdout.json",
+  "evidence_sha256": "0713fdfa310140144b8b289b100dcb0e8b0181d66edca500da970a78a7b9de3f",
+  "prior_failed_CPU": "29862450",
+  "retired_unstarted_dependents": [
+    "29862451",
+    "29862452"
+  ],
+  "settings": {
+    "LR": 0.3,
+    "model_key": 17,
+    "seeds": [
+      17,
+      23
+    ],
+    "main_initialization": "sparse random connected tree plus extra edges",
+    "dense_controls": 2,
+    "composition_weight": 0,
+    "confidence_margin": false,
+    "noise": false
+  },
+  "existing_jobs_changed": false,
+  "saved_results_changed": false
+}

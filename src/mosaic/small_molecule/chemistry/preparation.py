@@ -76,7 +76,8 @@ class PreparedFailureGuidance:
 
 
 def prepare_failure_guidance(
-    decoded, spec, *, candidate_ids=None, update=0, search=None, progress_search=None
+    decoded, spec, *, candidate_ids=None, update=0, search=None, progress_search=None,
+    severity_progress=None,
 ):
     """Prepare one complete scheduled batch from its exact original snapshot.
 
@@ -102,6 +103,10 @@ def prepare_failure_guidance(
         raise TypeError("Require explicit repair search configurations")
     if type(update) is not int or update < 0:
         raise ValueError("Invalid source update")
+    if severity_progress is not None:
+        from .severity import severity_config
+
+        severity_progress = severity_config(severity_progress)
     values = [
         np.asarray(v)
         for v in (decoded.atoms, decoded.charges, decoded.symmetric_bond_logits)
@@ -169,9 +174,14 @@ def prepare_failure_guidance(
             raise RuntimeError("Unknown original repair outcome")
         if status in ("censored", "unsupported"):
             arrays["route"][row] = 4
-            if progress_search is not None and active[row].any():
+            if (progress_search is not None or severity_progress is not None) and active[row].any():
                 search_started = time.perf_counter()
-                extra = search_progress_repair(raw, p, spec, progress_search)
+                if severity_progress is None:
+                    extra = search_progress_repair(raw, p, spec, progress_search)
+                else:
+                    from .severity import search_severity_progress
+
+                    extra = search_severity_progress(raw, p, spec, severity_progress)
                 additional_seconds = time.perf_counter() - search_started
                 if extra["status"] not in (
                     "valid",
@@ -201,7 +211,8 @@ def prepare_failure_guidance(
             ):
                 raise ValueError("Target changed charge or occupied slots")
             if (
-                arrays["route"][row] != 2 or not progress_search.allow_atom_edits
+                arrays["route"][row] != 2 or severity_progress is not None
+                or progress_search is None or not progress_search.allow_atom_edits
             ) and not np.array_equal(raw[0], target[0]):
                 raise ValueError("Target changed atom identities")
             if arrays["route"][row] in (1, 2):
@@ -307,6 +318,8 @@ def prepare_failure_guidance(
             "nonempty": "empty fallback rows / all rows",
         },
     }
+    if severity_progress is not None:
+        receipt["severity_progress"] = severity_progress.record()
     payload = {k: v.tolist() for k, v in arrays.items()}
     identity = digest({"arrays": payload, "receipt": receipt})
     materialized = {k: jax.numpy.asarray(v) for k, v in arrays.items()}

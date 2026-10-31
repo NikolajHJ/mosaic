@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "CPU_job": "29862456",
+  "raw_cases": 42,
+  "actual_startups": 22,
+  "same_job_LSF_success": true,
+  "source_archive_sha256": "522baed56e26184c358844b30d9ab061032fd782bbdb15157a469e6e8b87068e",
+  "packet_sha256": "0713fdfa310140144b8b289b100dcb0e8b0181d66edca500da970a78a7b9de3f",
+  "GPU_probe": "29862457",
+  "GPU_probe_state": "PEND",
+  "dispatcher": "29862459",
+  "optimizer_jobs_submitted": false
+}

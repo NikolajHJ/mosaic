@@ -58,3 +58,6 @@ source631/CPU776 pass remain historical. No10000-update optimization was submitt
 
 
 30October2026: a separate fresh50k matched arm with per-step binding-gradient-relative noise is queued as29857358 on32GBV100. Ratio0.4 per logit block, LR included, separate noise seed230017; same delayed chemistry ramp, composition off, model/input settings and frozen within-step targets. Existing jobs and saved results stay unchanged. [Current protocol/submission](runs/20261030-gradient-noise-01/README.md). This arm uses the current exploratory policy; historical strict campaign receipts retain their original meanings.
+
+
+1November2026: [new chemistry strategy comparison](runs/20261031-chemistry-strategies-01/README.md) implements22 paired/random-start20k experiments under the current exploratory policy. This new comparison does not inherit the old strict validation prerequisites described above. Existing jobs/results are unchanged.
