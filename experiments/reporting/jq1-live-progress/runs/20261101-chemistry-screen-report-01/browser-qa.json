@@ -1,0 +1,19 @@
+{
+  "status": "passed_browser_presentation",
+  "edition": "edition-0012",
+  "stable_url": "http://127.0.0.1:8780/report.html",
+  "all_10_selectors_visible": true,
+  "new_3_selectors_opened": true,
+  "new_3_update_zero_and_latest_20000": true,
+  "numeric_and_range_interior": 10000,
+  "next_retained": 20,
+  "previous_retained": 19980,
+  "playback_observed_to": 420,
+  "manual_6000_paused": true,
+  "atom_heatmap_rows": 25,
+  "bond_heatmap_rows": 300,
+  "contact_and_chemistry_plots_visible": true,
+  "raw_invalid_disconnected_graph_preserved": true,
+  "tab_id": "6",
+  "scientific_certification_claim": false
+}

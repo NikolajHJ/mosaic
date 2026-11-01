@@ -10986,3 +10986,8 @@ PriorCPU29862450 retained40pass/two independent-reference test errors caused by 
 All22 chemistry-strategy20k jobs submitted after finite native probe29862457 and dispatcher29862459 completed. Delayed sparse seeds17/23 (29862955/56) and constant-weight1 seed17 (29862957) completed all20,000 updates/20,001states with original frozen identities intact. Zero strict-valid argmax states and0/128 valid terminal samples in each;19other arms queued. Proof: protenix-random-chem/runs/20261031-chemistry-strategies-01/progress-20261101.json.
 
 DBMol29860458 remainsRUN,25,813/30,000 committed at07:58UTC. Noise29857358 hit its18h wall limit after35,300 committed updates (exit140). Added optional bound RNG restoration without changing proposal math;25allocated CPU cases passed29864787. Fresh immutable source04 and job29864788 continue exact snapshot35300/PCG64 state for14,700 remaining updates on V100/10h. Same LR0.3,noise0.4,key17,seed230017,global delayed chemistry and saved results. Proof: protenix-random-chem/runs/20261030-gradient-noise-01/continuation-20261101.json.
+
+
+## 1 November2026 — completed chemistry strategies published
+
+Canonical report edition0012 published at08:24UTC after allocated CPU29864867 passed256 cases and render29864880 completed. Three20k strategy arms added; seven prior trajectories reused. Exact archive/reused assets and156HTTP files/browser controls verified. InitialHOMEcapacity failure29864826 preserved; freshWORK3 remaining-write gate passed52.17GBavailable/2.36GBrequired without cleanup. Scientific warnings remain. Record: experiments/reporting/jq1-live-progress/runs/20261101-chemistry-screen-report-01/campaign.json.
