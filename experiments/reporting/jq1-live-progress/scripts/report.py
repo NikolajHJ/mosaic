@@ -107,7 +107,7 @@ def selection_from_args(args):
     else:
         selection = default
     inputs.require(selection.get('version') == inputs.VERSION and isinstance(selection.get('runs'), list)
-                   and 1 <= len(selection['runs']) <= inputs.MAX_RUNS, 'Choose between1 and24 runs')
+                   and 1 <= len(selection['runs']) <= inputs.MAX_RUNS, 'Choose between1 and32 runs')
     return selection
 
 
@@ -134,9 +134,10 @@ def package_engine(profile):
     # the sole submitted entry point. Keep report_ops only for its existing tests.
     members.pop('scripts/observe.py', None)
     for name in ('scripts/quick_inputs.py', 'scripts/quick_runtime.py', 'scripts/report.py',
-                 'scripts/publish.py', 'tests/test_quick_report.py', 'tests/test_viewer.py', 'templates/report.html'):
+                 'scripts/publish.py', 'scripts/report_chemistry_screen.py', 'tests/test_report_chemistry_screen.py', 'tests/test_quick_report.py', 'tests/test_viewer.py', 'templates/report.html'):
         members[name] = (OWNER / name).read_bytes().replace(b'\r\n', b'\n')
     runtime_profile = {k: v for k, v in profile.items() if k not in LOCAL_ONLY_PROFILE}
+    runtime_profile['chemistry_screen_renderer_sha256'] = hashlib.sha256(members['scripts/report_chemistry_screen.py']).hexdigest()
     members['profile.json'] = inputs.encoded(runtime_profile)
     members['README.md'] = b'# Reusable saved-report engine\n\nCode and fixtures are validated once per exact engine hash. Run selections are separate requests. No model or optimizer phase exists.\n'
     for name, raw in members.items():

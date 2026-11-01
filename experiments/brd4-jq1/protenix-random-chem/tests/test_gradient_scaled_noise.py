@@ -20,6 +20,19 @@ def policy(ratio=.4):
             'row_centered': True, 'annealing': 'none'}
 
 
+def resume_record(measurement=None, global_start=3):
+    if measurement is None:
+        measurement = {'version':noise.VERSION,'ratio':.4,'seed':230017,
+            'step':global_start-1,'rng':'numpy.PCG64','model_key_changed':False,
+            'gradient_normalized_or_clipped':False,'chemistry_weight_used_for_noise_scale':False,
+            'rng_state_after':{'bit_generator':'PCG64','state':{'state':123,'inc':45},
+                               'has_uint32':0,'uinteger':0}}
+    return {'version':noise.RESUME_VERSION,'global_start':global_start,
+            'snapshot_sha256':'a'*64,'predecessor_job_id':'29857358',
+            'committed_update':{'step':measurement['step'],'global_step':global_start-1,
+                                'noise':deepcopy(measurement)}}
+
+
 SOURCE = '''def run(evaluation, rate, step, prepared):
     record = {'preparation_identity': prepared.identity}
     proposal = GraphLogits(
@@ -57,6 +70,31 @@ class Metadata(unittest.TestCase):
         source = SOURCE.replace('proposal = GraphLogits(', 'proposal = type(evaluation.logits)(')
         changed = noise.proposal_tree(source)
         self.assertIn('_binding_gradient_noise(evaluation, rate, step)', ast.unparse(changed))
+
+    def test_committed_stream_metadata_is_copied_without_draws(self):
+        record=resume_record()
+        value=noise.validate_resume(policy(),record,3,'a'*64)
+        self.assertEqual(value,record['committed_update']['noise']['rng_state_after'])
+        value['state']['state']=456
+        self.assertEqual(record['committed_update']['noise']['rng_state_after']['state']['state'],123)
+
+    def test_wrong_checkpoint_or_offset_rejected(self):
+        for start,sha in ((2,'a'*64),(3,'b'*64),(0,'a'*64),(True,'a'*64)):
+            with self.assertRaises(ValueError):noise.validate_resume(policy(),resume_record(),start,sha)
+        for key,value in (('global_step',1),('step',1)):
+            record=resume_record();record['committed_update'][key]=value
+            with self.assertRaises(ValueError):noise.validate_resume(policy(),record,3,'a'*64)
+
+    def test_wrong_noise_policy_and_rng_rejected(self):
+        for key,value in (('ratio',.1),('seed',17),('rng','numpy.Philox'),
+                          ('model_key_changed',True),('global_step',0)):
+            record=resume_record();record['committed_update']['noise'][key]=value
+            with self.assertRaises(ValueError):noise.validate_resume(policy(),record,3,'a'*64)
+        for key,value in (('bit_generator','Philox'),('has_uint32',2),('uinteger',-1)):
+            record=resume_record();record['committed_update']['noise']['rng_state_after'][key]=value
+            with self.assertRaises(ValueError):noise.validate_resume(policy(),record,3,'a'*64)
+        record=resume_record();record['committed_update']['noise']['rng_state_after']['state']['inc']=4
+        with self.assertRaises(ValueError):noise.validate_resume(policy(),record,3,'a'*64)
 
 
 class Numerical(unittest.TestCase):
@@ -157,6 +195,40 @@ class Numerical(unittest.TestCase):
         self.assertEqual(value, ('new helper', 'fixed teacher'))
         self.assertEqual(record['preparation_identity'], 'fixed teacher')
         self.assertEqual(record['noise']['step'], 0)
+
+    def test_saved_rng_restores_exact_next_proposals(self):
+        evaluation,kind=self.evaluation();whole=noise.Proposal(policy(),kind)
+        for step in range(3):_,measurement=whole(evaluation,.3,step)
+        continued=noise.Proposal(policy(),kind,resume=resume_record(measurement),global_start=3)
+        for local in range(4):
+            expected,em=whole(evaluation,.3,local+3)
+            actual,am=continued(evaluation,.3,local)
+            for name in ('atoms','bonds'):
+                self.assertTrue(self.np.array_equal(self.np.asarray(getattr(expected,name)),
+                                                    self.np.asarray(getattr(actual,name))))
+            self.assertEqual(em['rng_state_before'],am['rng_state_before'])
+            self.assertEqual(em['rng_state_after'],am['rng_state_after'])
+            self.assertEqual(am['global_step'],local+3)
+            self.assertEqual(am['step'],local)
+
+    def test_continuation_without_saved_state_is_rejected(self):
+        _,kind=self.evaluation()
+        with self.assertRaises(ValueError):noise.Proposal(policy(),kind,global_start=3)
+        with self.assertRaises(ValueError):noise.Proposal(policy(),kind,global_start=True)
+
+    def test_install_preserves_resumed_stream_and_later_helpers(self):
+        evaluation,kind=self.evaluation();old=noise.Proposal(policy(),kind)
+        for step in range(3):_,measurement=old(evaluation,.3,step)
+        expected,em=old(evaluation,.3,3)
+        namespace={'GraphLogits':kind,'evaluate':lambda candidate,prepared:candidate}
+        exec(SOURCE,namespace)
+        trajectory=SimpleNamespace(GraphLogits=kind,run_chemical_updates=namespace['run'])
+        from unittest.mock import patch
+        with patch.object(noise.inspect,'getsource',return_value=SOURCE):
+            noise.install(trajectory,policy(),resume=resume_record(measurement),global_start=3)
+        actual,record=trajectory.run_chemical_updates(evaluation,.3,0,SimpleNamespace(identity='fixed'))
+        self.assertTrue(self.np.array_equal(self.np.asarray(actual.atoms),self.np.asarray(expected.atoms)))
+        self.assertEqual(record['noise']['rng_state_after'],em['rng_state_after'])
 
 
 if __name__ == '__main__': unittest.main()

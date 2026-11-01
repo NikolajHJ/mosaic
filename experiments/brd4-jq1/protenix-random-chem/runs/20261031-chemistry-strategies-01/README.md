@@ -92,3 +92,7 @@ When results arrive, use the canonical saved-result reporting command/cache.
 Extend its input adapter if necessary; never rerun an optimizer to fit a report.
 Compare validity and valid-contact performance jointly, not minimum chemistry
 loss alone. Two seeds provide an exploratory signal, not a robust efficacy claim.
+
+## 1 November morning outcome
+
+Finite native/timing probe29862457 and dispatcher29862459 completed; all22 whole20k jobs were submitted. Three completed: delayed-s17/29862955, delayed-s23/29862956 and constant1-s17/29862957. Each has20,000 applied updates,20,001 contiguous states, successful same-job LSF and unchanged frozen identities. All three recorded zero strict-valid argmax states and0/128 valid terminal samples. This is an early negative result for these settings, not a conclusion about the19 queued stronger/severity/adaptive/neighbor/temperature/combination arms. Current IDs and exact evidence are in progress-20261101.json.

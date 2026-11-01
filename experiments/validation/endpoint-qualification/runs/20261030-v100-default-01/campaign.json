@@ -1,6 +1,6 @@
 {
-  "status": "four_targets_complete_reported_two_running",
-  "observed_utc": "2026-10-31T21:05:16.748001+00:00",
+  "status": "four_targets_complete_DBMol_running_noise_continuation_queued",
+  "observed_utc": "2026-11-01T08:19:18+00:00",
   "active_optimizers": {
     "protenix_chemistry": {
       "job_id": "29853757",
@@ -51,25 +51,30 @@
       "job_id": "29860458",
       "scheduler": "RUN",
       "queue": "gpul40s",
-      "confirmed_global_step_at_least": 12919,
+      "confirmed_global_step_at_least": 26204,
       "target": 30000,
-      "new_applied_updates_at_least": 5419,
+      "new_applied_updates_at_least": 18704,
       "study": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-recovery-20261031-01/dbmol-output/dbmol/payload/study",
       "source_start": 7500,
       "source_root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-recovery-20261031-01/source-dbmol-30h",
       "plan": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-recovery-20261031-01/source-dbmol-30h/plan.json",
       "walltime": "30:00",
-      "optimization_started": "verified_saved_updates"
+      "optimization_started": "verified_saved_updates",
+      "progress_evidence": "results/hpc/20261101-run-news/20261101T075847Z/stdout.json"
     },
     "protenix_chemistry_noise": {
-      "job_id": "29857358",
-      "scheduler": "RUN",
+      "job_id": "29864788",
+      "scheduler": "PEND",
       "queue": "gpuv100",
-      "confirmed_global_step_at_least": 26250,
+      "confirmed_global_step_at_least": 35300,
       "target": 50000,
-      "new_applied_updates_at_least": 26250,
-      "study": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-chemistry-noise-20261030-01/retry01/protenix_chemistry/payload/study",
-      "optimization_started": "verified_saved_updates"
+      "new_applied_updates_at_least": 0,
+      "study": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-chemistry-noise-20261030-01/continuation-35300-01/protenix_chemistry/payload/study",
+      "optimization_started": "successor not started; original progress and RNG state preserved",
+      "source_start": 35300,
+      "predecessor_job_id": "29857358",
+      "predecessor_state": "TERM_RUNLIMIT exit140;35300 committed updates",
+      "proof": "experiments/brd4-jq1/protenix-random-chem/runs/20261030-gradient-noise-01/continuation-20261101.json"
     }
   },
   "v100_device_comparison": {
@@ -177,5 +182,10 @@
     "published_edition": "edition-0011",
     "selected_panels": 7,
     "all_panels_start_at_real_zero": true
+  },
+  "latest_status_evidence": {
+    "path": "results\\hpc\\20261101-run-news\\final-status-20261101T081917Z\\stdout.json",
+    "bytes": 119657,
+    "sha256": "c97bcadf65e15bf6622972e1e1fe94761f93d3cfa7dfd24c210802b47587b2cf"
   }
 }

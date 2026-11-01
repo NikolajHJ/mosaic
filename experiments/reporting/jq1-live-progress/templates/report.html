@@ -40,7 +40,7 @@
  function require(ok,message){if(!ok)throw new Error(message);}
  function assetURL(path,base){require(typeof path==="string"&&/^[A-Za-z0-9_.\/-]+$/.test(path)&&!path.startsWith("/")&&!path.split("/").includes(".."),"Unsafe report asset path");const url=new URL(path,base);require(url.origin===location.origin,"External report asset refused");return url;}
  function validateManifest(value){
-  require(value&&typeof value.version==="string"&&typeof value.edition==="string"&&Array.isArray(value.arms)&&value.arms.length>=1&&value.arms.length<=24,"Expected between one and24 saved experiments");
+  require(value&&typeof value.version==="string"&&typeof value.edition==="string"&&Array.isArray(value.arms)&&value.arms.length>=1&&value.arms.length<=32,"Expected between one and24 saved experiments");
   const ids=new Set();for(const a of value.arms){require(typeof a.id==="string"&&!ids.has(a.id),"Experiment IDs must be unique");ids.add(a.id);
    for(const name of ["target_updates","global_start","global_target","committed_updates","latest_global_step"])require(integer(a[name])&&a[name]>=0,"Invalid global progress metadata: "+name);
    require(a.global_target===a.target_updates&&a.global_start<=a.global_target&&a.latest_global_step===a.global_start+a.committed_updates&&a.latest_global_step<=a.global_target,"Target and committed progress differ");

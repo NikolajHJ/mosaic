@@ -10979,3 +10979,10 @@ User authorized ideas1,2,3,4,5,7 plus combinations, with sparse random starts pe
 AllocatedCPU29862456 actualDONE/hpc/same-jobLSFsuccess:42 focused cases and22 actual metadata startups passed, zero failures/errors/skips. Source02 archive434kB SHA522baed56e26184c358844b30d9ab061032fd782bbdb15157a469e6e8b87068e;152 bound source files. V100 native/timing probe29862457 and dispatcher29862459 arePEND; no new long optimizer IDs yet. Dispatcher is configured to submit all fitting whole20k arms after the finite implementation probe, with measured warm upper time×1.25+30min, not derivative/FD qualification. Storage12GiBaggregateowncap passed13.15GBrequired/52.68GBavailable.
 
 PriorCPU29862450 retained40pass/two independent-reference test errors caused by tracing concrete sharding metadata; source02 fixes only those reference fixtures, not production math. Unstarted dependents29862451/52 were authenticated and retired. Actualproof/config: experiments/brd4-jq1/protenix-random-chem/runs/20261031-chemistry-strategies-01. No native efficacy or gradient-accuracy pass claimed from CPUchecks.
+
+
+## 1 November2026 — chemistry screen outcomes and noise continuation
+
+All22 chemistry-strategy20k jobs submitted after finite native probe29862457 and dispatcher29862459 completed. Delayed sparse seeds17/23 (29862955/56) and constant-weight1 seed17 (29862957) completed all20,000 updates/20,001states with original frozen identities intact. Zero strict-valid argmax states and0/128 valid terminal samples in each;19other arms queued. Proof: protenix-random-chem/runs/20261031-chemistry-strategies-01/progress-20261101.json.
+
+DBMol29860458 remainsRUN,25,813/30,000 committed at07:58UTC. Noise29857358 hit its18h wall limit after35,300 committed updates (exit140). Added optional bound RNG restoration without changing proposal math;25allocated CPU cases passed29864787. Fresh immutable source04 and job29864788 continue exact snapshot35300/PCG64 state for14,700 remaining updates on V100/10h. Same LR0.3,noise0.4,key17,seed230017,global delayed chemistry and saved results. Proof: protenix-random-chem/runs/20261030-gradient-noise-01/continuation-20261101.json.

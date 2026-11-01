@@ -13,7 +13,7 @@ import re
 import stat
 
 VERSION = 'mosaic-report-selection-v1'
-MAX_RUNS = 24
+MAX_RUNS = 32
 METRICS = {'contact_loss', 'affinity_loss', 'dbmol_total_loss'}
 
 
@@ -72,7 +72,7 @@ def study_path(path):
     require(path.is_absolute() and '..' not in path.parts, 'Run path must be absolute')
     if path.name == 'summary.json':
         return path.parent
-    candidates = [path, path / 'payload/study', path / 'study', path.parent]
+    candidates = [path, path / 'payload/study', path / 'study', path.parent, path / 'payload']
     matches = [p for p in candidates if (p / 'summary.json').is_file()]
     require(matches, 'No saved summary.json found. This version reports terminal saved studies; '
             'a queued/running study without a terminal summary is not yet supported: ' + str(path))
@@ -83,8 +83,11 @@ def science_key(arm, renderer_sha):
     """Display wording is mutable; all scientific input/settings identities are not."""
     fields = ('global_offset', 'requested_updates', 'source_manifest_sha256', 'job_id',
               'scientific_status', 'case_directory', 'anchor_directory', 'states', 'updates',
-              'summary', 'config', 'case_report', 'retained_index', 'stdout', 'stderr')
+              'summary', 'config', 'case_report', 'retained_index', 'stdout', 'stderr', 'input_schema',
+              'producer_plan', 'producer_submission', 'producer_driver', 'producer_checksums',
+              'science_manifest', 'sampled_validity')
     return digest({'renderer_sha256': renderer_sha,
+                   **({'schema_renderer_sha256': arm['schema_renderer_sha256']} if 'schema_renderer_sha256' in arm else {}),
                    'arm': {k: arm[k] for k in ('id', 'kind', 'rate', 'global_start', 'global_target', 'scientific_status')},
                    'segments': [{k: s[k] for k in fields if k in s} for s in arm['segments']]})
 
@@ -228,12 +231,16 @@ def capture_segment(spec, profile, known):
     hint.update({k: v for k, v in spec.items() if k != 'run'})
     summary_binding = binding(study / 'summary.json', profile['allowed_roots'])
     # A byte-identical authenticated seed avoids reparsing a 300MB summary.
-    if original and summary_binding == original[1]['summary']:
+    if (original and summary_binding == original[1]['summary']
+            and original[1].get('input_schema') != 'terminal-chemistry-screen-v1'):
         config_binding = binding(hint['config']['path'] if isinstance(hint['config'], dict) else hint['config'], profile['allowed_roots'])
         summary = {'status': original[1]['scientific_status'], 'source_manifest_sha256': original[1]['source_manifest_sha256'],
                    'config_sha256': original[1]['config']['sha256'], 'job_id': original[1]['job_id'], 'config': load(config_binding['path'])}
     else:
         summary = load(study / 'summary.json')
+    if summary.get('version') == 'protenix-chemistry-screen-v1':
+        import report_chemistry_screen
+        return report_chemistry_screen.capture_segment(spec, profile, study, summary)
     require(summary.get('status') in ('passed', 'failed'), 'A terminal passed/failed summary is required; original status is never invented')
     job = str(summary.get('job_id', ''))
     require(job.isdigit(), 'Original job identity missing')
@@ -281,7 +288,7 @@ def capture_segment(spec, profile, known):
 def capture(selection, profile, additional_seeds=()):
     require(selection.get('version') == VERSION, 'Wrong run-selection version')
     items = selection.get('runs')
-    require(isinstance(items, list) and 1 <= len(items) <= MAX_RUNS, 'Select between1 and24 saved runs')
+    require(isinstance(items, list) and 1 <= len(items) <= MAX_RUNS, 'Select between1 and32 saved runs')
     _, known = seed_catalog(profile)
     for seed in reversed(additional_seeds):
         for arm in seed['plan']['arms']:
@@ -313,7 +320,7 @@ def capture(selection, profile, additional_seeds=()):
                           or 'dbmol' in str(config.get('arm', '')).lower() else
                           'affinity_loss' if str(config.get('arm', '')).startswith('boltz') else 'contact_loss')
         require(metric in METRICS, 'Unsupported primary loss; use contact_loss, affinity_loss or dbmol_total_loss')
-        status = 'failed' if any(s['scientific_status'] == 'failed' for s in segments) else 'passed' if end == target else 'partial'
+        status = 'failed' if any(s['scientific_status'] == 'failed' for s in segments) else 'unqualified' if any(s['scientific_status'] == 'unqualified' for s in segments) else 'passed' if end == target else 'partial'
         frames = sum(s['expected_counts']['retained_frames'] for s in segments) - len(segments) + 1
         arm = {'id': identity, 'label': spec.get('label', config.get('label', identity)), 'kind': kind, 'rate': rate,
                'global_start': start, 'global_target': target, 'target_updates': target, 'segments': segments,
@@ -323,6 +330,10 @@ def capture(selection, profile, additional_seeds=()):
                'expected_counts': {'committed_updates': applied, 'scalar_states': applied + 1,
                                    'retained_frames': frames, 'latest_global_step': end},
                'expected_committed_updates': applied, 'expected_retained_frames': frames}
+        if any(s.get('input_schema') == 'terminal-chemistry-screen-v1' for s in segments):
+            pin = profile.get('chemistry_screen_renderer_sha256', '')
+            require(re.fullmatch('[a-f0-9]{64}', pin) is not None, 'Chemistry screen adapter identity missing')
+            arm['schema_renderer_sha256'] = pin
         arms.append(arm)
     require(len({a['id'] for a in arms}) == len(arms), 'Duplicate report run IDs')
     return {'version': 'jq1-live-saved-report-v1', 'edition': selection['edition'],

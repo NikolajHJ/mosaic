@@ -61,9 +61,15 @@ def validate(row):
     require(row['rate']==(.3 if pro else .0025) and row['target']==(50000 if pro else 30000),'Changed rate/target')
     fresh_noise = row.get('logit_noise') is not None
     if fresh_noise:
-        from gradient_scaled_noise import validate as validate_noise
+        from gradient_scaled_noise import validate as validate_noise, validate_resume
         validate_noise(row['logit_noise'])
-        require(row['name']=='protenix_chemistry' and row['start']==0,'Noise arm is a fresh chemistry comparison')
+        require(row['name']=='protenix_chemistry','Noise belongs to the chemistry comparison')
+        if row['start']:
+            require('noise_resume' in row,'Noise continuation needs the committed stream state')
+            validate_resume(row['logit_noise'],read(bound(row['noise_resume'])),
+                            row['start'],row['snapshot']['sha256'])
+        else:
+            require('noise_resume' not in row,'Fresh noise must start from its declared seed')
     require(type(row['start']) is int and (0<=row['start'] if fresh_noise else 0<row['start'])
         and row['start']<row['target'] and row['steps']==row['target']-row['start'],'Whole remaining budget required')
     require(row['chemistry']==chem and row['matrix_stride']==20 and row['loss_stride']==1,'Changed chemistry/retention')
@@ -242,8 +248,14 @@ def run(plan,row,output,smoke_updates=None):
         trajectory.check_combined_directions=smoke
         if row.get('logit_noise') is not None:
             noise = module(Path(plan['source_root'])/'gradient_scaled_noise.py','_exploratory_binding_noise')
-            noise.install(trajectory,row['logit_noise'])
+            resume = read(bound(row['noise_resume'])) if row.get('noise_resume') else None
+            if resume is not None:
+                noise.validate_resume(row['logit_noise'],resume,row['start'],row['snapshot']['sha256'])
+            noise.install(trajectory,row['logit_noise'],resume=resume,global_start=row['start'])
             report['logit_noise']=row['logit_noise']
+            if resume is not None:
+                report['noise_stream_resume']={'record':row['noise_resume'],'global_start':row['start'],
+                    'source':'last_committed_update_rng_state_after','seed_replayed':False}
         retention=module(Path(plan['retention_source'])/'retention.py','_exploratory_retention')
         retention.install_trajectory(trajectory,output)
         spec=mosaic_spec(25);chem=row['chemistry']
@@ -293,6 +305,7 @@ def run(plan,row,output,smoke_updates=None):
             if frozen is not None:require(after==frozen,'Frozen model/context changed')
             report['frozen_after']=after
             for k in ('config','snapshot','reference','pocket'):bound(row[k])
+            if row.get('noise_resume'):bound(row['noise_resume'])
         except BaseException as error:report.update(status='failed',preservation_error=repr(error));raise
         finally:
             if worker is not None:worker.close()

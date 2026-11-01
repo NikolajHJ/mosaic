@@ -305,6 +305,13 @@ def verify_originals(plan, manifest, output):
             for name in ('states', 'updates', 'config', 'summary', 'case_report', 'retained_index', 'stdout', 'stderr'):
                 if name in segment:
                     data.bound_file(segment[name])
+            for name in ('producer_plan', 'producer_submission', 'producer_driver', 'producer_checksums', 'science_manifest', 'sampled_validity'):
+                if name in segment:
+                    data.bound_file(segment[name])
+        if any(s.get('input_schema') == 'terminal-chemistry-screen-v1' for s in arm['segments']):
+            for proof in next(value for value in manifest['arms'] if value['id'] == arm['id'])['segment_proofs']:
+                for record in proof['sampled_validity']:
+                    data.bound_file(record['raw_samples'])
     for arm in manifest['arms']:
         for chunk in arm['frames']['chunks']:
             for frame in data.load(Path(output) / chunk['path'])['frames']:
@@ -320,7 +327,12 @@ def render_plan(plan, output, renderer_sha, seeds):
     for arm in plan['arms']:
         value = cached_arm(arm, renderer_sha, seeds, output)
         if value is None:
-            value = data.collect_arm(arm, output)
+            if any(s.get('input_schema') == 'terminal-chemistry-screen-v1' for s in arm['segments']):
+                import report_chemistry_screen
+                inputs.require(inputs.sha(Path(__file__).with_name('report_chemistry_screen.py')) == arm['schema_renderer_sha256'], 'Chemistry screen adapter identity changed')
+                value = report_chemistry_screen.collect_arm(arm, output)
+            else:
+                value = data.collect_arm(arm, output)
             fresh.append(arm['id'])
         else:
             hits.append(arm['id'])

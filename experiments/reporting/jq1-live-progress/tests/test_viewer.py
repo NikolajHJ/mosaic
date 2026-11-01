@@ -128,7 +128,7 @@ def test_four_arm_manifest_keeps_presentation_and_scientific_outcomes_separate(j
 
 
 def test_six_arm_refresh_uses_affinity_for_both_boltz_arms(javascript):
-    assert 'value.arms.length<=24' in javascript
+    assert 'value.arms.length<=32' in javascript
     assert 'arm.id==="boltz"||arm.id==="boltz_chemistry"' in javascript
     assert 'protenix_chemistry:"Random Protenix + chemistry"' in javascript
     assert 'boltz_chemistry:"Boltz-2 + chemistry"' in javascript
