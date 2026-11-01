@@ -13,7 +13,7 @@ import re
 import stat
 
 VERSION = 'mosaic-report-selection-v1'
-MAX_RUNS = 32
+MAX_RUNS = 64
 METRICS = {'contact_loss', 'affinity_loss', 'dbmol_total_loss'}
 
 
@@ -285,10 +285,49 @@ def capture_segment(spec, profile, known):
     return row, config, kind
 
 
+def available_items(selection, profile):
+    """Include registered chemistry screens only after their complete summary.
+
+    This is metadata discovery, not admission: the existing capture path still
+    verifies source/input pins, actual submission/LSF and every saved frame.
+    Missing, running and failed candidates remain explicitly deferred. A corrupt
+    purported completion fails rather than being silently omitted.
+    """
+    items = deepcopy(selection.get('runs', []))
+    candidates = selection.get('completed_candidates', [])
+    require(isinstance(items, list) and isinstance(candidates, list) and
+            len(items) + len(candidates) <= MAX_RUNS, 'Too many registered report runs')
+    deferred = []
+    ids = {r.get('id') for r in items if isinstance(r, dict) and r.get('id')}
+    for row in candidates:
+        require(isinstance(row, dict) and isinstance(row.get('run'), str) and
+                re.fullmatch('[a-z][a-z0-9_-]*', row.get('id', '')) is not None,
+                'Completed candidates need an explicit ID and producer payload path')
+        require(row['id'] not in ids, 'Duplicate registered report run ID')
+        ids.add(row['id'])
+        path = Path(row['run'])
+        require(path.is_absolute() and '..' not in path.parts and
+                any(path.is_relative_to(Path(root)) for root in profile['allowed_roots']),
+                'Completed candidate is outside authorized report roots')
+        summary_path = path / 'summary.json'
+        if not summary_path.exists():
+            deferred.append({'id': row['id'], 'run': str(path), 'reason': 'no_terminal_summary'})
+            continue
+        summary = load(regular(summary_path, profile['allowed_roots']))
+        if summary.get('status') != 'completed_exploratory_updates':
+            deferred.append({'id': row['id'], 'run': str(path),
+                             'reason': 'producer_' + str(summary.get('status', 'unknown'))})
+            continue
+        from report_chemistry_screen import header
+        header(summary)
+        items.append(deepcopy(row))
+    return items, deferred
+
+
 def capture(selection, profile, additional_seeds=()):
     require(selection.get('version') == VERSION, 'Wrong run-selection version')
-    items = selection.get('runs')
-    require(isinstance(items, list) and 1 <= len(items) <= MAX_RUNS, 'Select between1 and32 saved runs')
+    items, deferred = available_items(selection, profile)
+    require(1 <= len(items) <= MAX_RUNS, 'Select between1 and64 saved runs')
     _, known = seed_catalog(profile)
     for seed in reversed(additional_seeds):
         for arm in seed['plan']['arms']:
@@ -336,6 +375,9 @@ def capture(selection, profile, additional_seeds=()):
             arm['schema_renderer_sha256'] = pin
         arms.append(arm)
     require(len({a['id'] for a in arms}) == len(arms), 'Duplicate report run IDs')
-    return {'version': 'jq1-live-saved-report-v1', 'edition': selection['edition'],
+    result = {'version': 'jq1-live-saved-report-v1', 'edition': selection['edition'],
             'captured_at': datetime.now(timezone.utc).isoformat(), 'arms': arms,
             'monitor_remains_paused': True, 'automatic_optimizer_submission': False}
+    if 'completed_candidates' in selection:
+        result['deferred_candidates'] = deferred
+    return result

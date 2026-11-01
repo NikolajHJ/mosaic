@@ -11045,3 +11045,23 @@ passed. Independent source153/input5/byte41/XML/LSF/submission/held-release audi
 passed. No native GPU result or chemical/runtime benefit established. Global
 layout check aborts on unrelated non-UTF8 documentation; no global pass claimed.
 [Protocol and actual receipts](../experiments/brd4-jq1/protenix-random-chem/runs/20261101-structural-repair-01/README.md).
+
+
+### 1 November 2026 — completion-aware report, administrative queue blocker
+
+Prepared canonical report update for20 panels:7 existing histories plus13
+completed20k chemistry comparisons. New relative to edition0014:neighbor17,
+adaptive17/23 and temperature2-17. All26 comparison candidates, including the
+four new structural arms, are registered in configs/current-completions.json;
+future refreshes include complete candidates and explicitly defer unfinished
+ones. Added six metadata controls; new immutable engine8456066f6f5b passed262
+actual allocated CPU cases on29870703. Original renderer/viewer/profile bytes
+unchanged. FirstCPU29870693 retained261passes/oneobsolete exact32-panel fixture
+failure, corrected to cover33registered panels under explicit64limit.
+
+Sole render29870705 isPEND because every DTU queue reportsOpen:Inact_Adm
+(The queue is inactivated by the administrator). No active alternate queue;
+no retry, local scientific render or optimizer change. Edition0014 remains
+authoritative; edition0015 publication/HTTP/browser QA are pending. Readable
+producer-reported scalar summary for all13completed comparisons is saved now.
+[Report record, summary and exact resume command](../experiments/reporting/jq1-live-progress/runs/20261101-completed-catalog-03/README.md).

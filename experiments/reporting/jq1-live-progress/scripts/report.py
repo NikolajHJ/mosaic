@@ -98,16 +98,19 @@ def parser():
 
 
 def selection_from_args(args):
-    default = inputs.load(OWNER / 'configs/current-runs.json') if (OWNER / 'configs/current-runs.json').exists() else {'runs': []}
+    catalog = OWNER / 'configs/current-completions.json'
+    if not catalog.exists():
+        catalog = OWNER / 'configs/current-runs.json'
+    default = inputs.load(catalog) if catalog.exists() else {'runs': []}
     if args.runs:
         selection = inputs.load(args.runs)
     elif args.run:
-        named = {a['id']: a for a in default['runs']}
+        named = {a['id']: a for a in default['runs'] + default.get('completed_candidates', [])}
         selection = {'version': inputs.VERSION, 'runs': [named.get(s, s) for s in args.run]}
     else:
         selection = default
     inputs.require(selection.get('version') == inputs.VERSION and isinstance(selection.get('runs'), list)
-                   and 1 <= len(selection['runs']) <= inputs.MAX_RUNS, 'Choose between1 and32 runs')
+                   and 1 <= len(selection['runs']) <= inputs.MAX_RUNS, 'Choose between1 and64 runs')
     return selection
 
 

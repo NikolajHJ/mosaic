@@ -14,6 +14,69 @@ import report_chemistry_screen as adapter
 import quick_inputs as inputs
 import quick_runtime as runtime
 
+
+def completion_summary(**changes):
+    identity = {'model_digest': 'a' * 64, 'context_digest': 'b' * 64}
+    result = {'version': adapter.VERSION, 'status': 'completed_exploratory_updates',
+              'configuration': {'updates': 20000}, 'applied_updates': 20000,
+              'actual_steps': 20000, 'full_budget_complete': True,
+              'probe_not_adopted': False, 'derivative_qualified': False,
+              'original_results_changed': False,
+              'frozen_before': identity, 'frozen_after': identity}
+    result.update(changes)
+    return result
+
+
+def test_registered_candidates_appear_on_later_refresh_without_selection_edits(tmp_path):
+    from copy import deepcopy
+    payload = tmp_path / 'future' / 'payload'
+    row = {'id': 'new_result', 'run': str(payload), 'global_target': 20000}
+    selection = {'runs': [{'id': 'old_result', 'run': str(tmp_path / 'old')}],
+                 'completed_candidates': [row]}
+    original = deepcopy(selection)
+    profile = {'allowed_roots': [str(tmp_path)]}
+    items, deferred = inputs.available_items(selection, profile)
+    assert [r['id'] for r in items] == ['old_result']
+    assert deferred[0]['reason'] == 'no_terminal_summary'
+    payload.mkdir(parents=True)
+    (payload / 'summary.json').write_bytes(inputs.encoded(completion_summary()))
+    items, deferred = inputs.available_items(selection, profile)
+    assert [r['id'] for r in items] == ['old_result', 'new_result'] and not deferred
+    assert selection == original
+
+
+def test_running_or_failed_candidates_are_deferred_not_relabelled_passed(tmp_path):
+    rows = []
+    for state in ('running', 'failed'):
+        parent = tmp_path / state
+        parent.mkdir()
+        (parent / 'summary.json').write_bytes(inputs.encoded(completion_summary(status=state)))
+        rows.append({'id': state, 'run': str(parent)})
+    items, deferred = inputs.available_items({'runs': [], 'completed_candidates': rows},
+                                             {'allowed_roots': [str(tmp_path)]})
+    assert not items and [r['reason'] for r in deferred] == ['producer_running', 'producer_failed']
+
+
+@pytest.mark.parametrize('changes', [
+    {'applied_updates': 19999}, {'probe_not_adopted': True},
+    {'frozen_after': {'model_digest': 'changed'}},
+])
+def test_corrupt_claimed_completion_fails_instead_of_disappearing(tmp_path, changes):
+    (tmp_path / 'summary.json').write_bytes(inputs.encoded(completion_summary(**changes)))
+    with pytest.raises(ValueError):
+        inputs.available_items({'runs': [], 'completed_candidates': [{'id': 'candidate', 'run': str(tmp_path)}]},
+                               {'allowed_roots': [str(tmp_path)]})
+
+
+def test_candidate_scope_and_duplicate_ids_remain_guarded(tmp_path):
+    row = {'id': 'candidate', 'run': str(tmp_path / 'future')}
+    with pytest.raises(ValueError, match='Duplicate'):
+        inputs.available_items({'runs': [], 'completed_candidates': [row, row]},
+                               {'allowed_roots': [str(tmp_path)]})
+    with pytest.raises(ValueError, match='outside authorized'):
+        inputs.available_items({'runs': [], 'completed_candidates': [row]},
+                               {'allowed_roots': [str(tmp_path / 'other')]})
+
 spec = importlib.util.spec_from_file_location('_screen_saved_fixture', Path(__file__).with_name('test_report_data.py'))
 saved = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(saved)
@@ -146,4 +209,4 @@ def test_runtime_routes_screen_and_keeps_original_frame_renderer(tmp_path):
 
 
 def test_screen_suite_and_existing_seven_fit_one_bounded_report():
-    assert 7 + 22 <= inputs.MAX_RUNS == 32
+    assert 7 + 22 + 4 <= inputs.MAX_RUNS == 64

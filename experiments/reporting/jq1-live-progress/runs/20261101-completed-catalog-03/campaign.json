@@ -1,0 +1,107 @@
+{
+  "status": "render_queued_all_DTU_queues_administratively_inactive",
+  "request": "results\\hpc\\20261028-reusable-report-01\\requests\\request-20261101T202542Z-8f626be6",
+  "intended_edition": "edition-0015",
+  "published_edition_unchanged": "edition-0014",
+  "render_job": "29870705",
+  "engine_pin": "8456066f6f5bee1e5187a40fea1926bc955f2859543417f28a53365a222c30f2",
+  "engine_CPU_job": "29870703",
+  "actual_CPU_cases": 262,
+  "selected_panels": 20,
+  "completed_comparison_panels": 13,
+  "registered_future_comparisons": 26,
+  "deferred_candidates": [
+    {
+      "id": "strategy_chemfirst_s17",
+      "reason": "no_terminal_summary",
+      "run": "/work3/s234818/mosaic/runs/20261031-protenix-chemistry-strategies-01/ampere-expansion-20261101-01/a10/run/chemfirst-s17/payload"
+    },
+    {
+      "id": "strategy_chemfirst_s23",
+      "reason": "no_terminal_summary",
+      "run": "/work3/s234818/mosaic/runs/20261031-protenix-chemistry-strategies-01/ampere-expansion-20261101-01/a10/run/chemfirst-s23/payload"
+    },
+    {
+      "id": "strategy_severity_s23",
+      "reason": "no_terminal_summary",
+      "run": "/work3/s234818/mosaic/runs/20261031-protenix-chemistry-strategies-01/ampere-expansion-20261101-01/a40/run/severity-s23/payload"
+    },
+    {
+      "id": "strategy_neighbor_s23",
+      "reason": "no_terminal_summary",
+      "run": "/work3/s234818/mosaic/runs/20261031-protenix-chemistry-strategies-01/source02/run/neighbor-s23/payload"
+    },
+    {
+      "id": "strategy_temperature2_s23",
+      "reason": "no_terminal_summary",
+      "run": "/work3/s234818/mosaic/runs/20261031-protenix-chemistry-strategies-01/source02/run/temperature2-s23/payload"
+    },
+    {
+      "id": "strategy_earlyseverity_s17",
+      "reason": "no_terminal_summary",
+      "run": "/work3/s234818/mosaic/runs/20261031-protenix-chemistry-strategies-01/source02/run/earlyseverity-s17/payload"
+    },
+    {
+      "id": "strategy_earlyseverity_s23",
+      "reason": "no_terminal_summary",
+      "run": "/work3/s234818/mosaic/runs/20261031-protenix-chemistry-strategies-01/source02/run/earlyseverity-s23/payload"
+    },
+    {
+      "id": "strategy_delayed_dense_s17",
+      "reason": "no_terminal_summary",
+      "run": "/work3/s234818/mosaic/runs/20261031-protenix-chemistry-strategies-01/source02/run/delayed-dense-s17/payload"
+    },
+    {
+      "id": "strategy_combined_dense_s17",
+      "reason": "no_terminal_summary",
+      "run": "/work3/s234818/mosaic/runs/20261031-protenix-chemistry-strategies-01/source02/run/combined-dense-s17/payload"
+    },
+    {
+      "id": "structural_beam_s17",
+      "reason": "no_terminal_summary",
+      "run": "/work3/s234818/mosaic/runs/20261101-structural-repair-01/source01/run/beam-s17/payload"
+    },
+    {
+      "id": "structural_beam_s23",
+      "reason": "no_terminal_summary",
+      "run": "/work3/s234818/mosaic/runs/20261101-structural-repair-01/source01/run/beam-s23/payload"
+    },
+    {
+      "id": "structural_structural_s17",
+      "reason": "no_terminal_summary",
+      "run": "/work3/s234818/mosaic/runs/20261101-structural-repair-01/source01/run/structural-s17/payload"
+    },
+    {
+      "id": "structural_structural_s23",
+      "reason": "no_terminal_summary",
+      "run": "/work3/s234818/mosaic/runs/20261101-structural-repair-01/source01/run/structural-s23/payload"
+    }
+  ],
+  "new_completed_panels": [
+    "strategy_neighbor_s17",
+    "strategy_adaptive_s17",
+    "strategy_adaptive_s23",
+    "strategy_temperature2_s17"
+  ],
+  "queue_observed_utc": "2026-11-01T20:36:03.958365+00:00",
+  "queue_states": {
+    "hpc": "Open:Inact_Adm",
+    "gpuv100": "Open:Inact_Adm",
+    "gpua100": "Open:Inact_Adm",
+    "gpua10": "Open:Inact_Adm",
+    "gpua40": "Open:Inact_Adm",
+    "gpul40s": "Open:Inact_Adm"
+  },
+  "blocker": "The queue is inactivated by the administrator",
+  "interactive_publication_complete": false,
+  "HTTP_and_browser_QA_for_new_edition": "pending render completion",
+  "readable_results_report": "results-summary.md",
+  "scientific_renderer_changed": false,
+  "model_or_optimizer_jobs_changed": false,
+  "saved_results_changed": false,
+  "resume_command": ".venv\\Scripts\\python.exe scripts/reporting/report.py --resume results\\hpc\\20261028-reusable-report-01\\requests\\request-20261101T202542Z-8f626be6 --profile experiments/reporting/jq1-live-progress/runs/20261101-completed-catalog-03/profile.json",
+  "request_has_live_owner_lock": true,
+  "normal_future_update_command": ".venv\\Scripts\\python.exe scripts/reporting/report.py --profile experiments/reporting/jq1-live-progress/configs/dtu-report-work3-exploratory.json",
+  "public_news_checked": "https://www.hpc.dtu.dk/?page_id=68",
+  "public_reopening_time_found": false
+}

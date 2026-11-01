@@ -22,8 +22,23 @@ python scripts/reporting/report.py --run /absolute/HPC/run-a --run /absolute/HPC
 python scripts/reporting/report.py --runs my-runs.json --output results/hpc/my-report
 ```
 
-The default selection is the six current trajectories. A JSON selection can group
-ordered continuation segments. See the canonical experiment's README and configs.
+The default selection is `current-completions.json`: the existing trajectory
+histories plus registered chemistry comparisons. Its `completed_candidates`
+entries are included once their complete production summary is available;
+unfinished/failed candidates are explicitly deferred. Completed inputs still
+receive all existing source/LSF/frame validation. Add one candidate row to
+register another chemistry run; no renderer change is needed. A JSON selection
+can also group ordered continuation segments.
+
+For the current workstation and stable report at port8780, repeat:
+
+```powershell
+.venv\Scripts\python.exe scripts/reporting/report.py --profile experiments/reporting/jq1-live-progress/configs/dtu-report-work3-exploratory.json
+```
+
+This picks up newly completed registered runs, preserves existing content and
+reuses the engine/cache. An unchanged selection reuses the published report.
+See `experiments/reporting/jq1-live-progress/configs/current-completions.json`.
 The current engine supports terminal JQ1 N25 fixed-step/noisy saved trajectories,
 including chemistry and stride20 retained matrices. A queued/running segment
 without its original terminal summary is outside this version's supported input.
