@@ -1,17 +1,20 @@
-# A10 and A100 capacity for the chemistry comparison
+# Chemistry comparison across available GPU queues
 
-Use separate available queue allowances to accelerate the existing22-arm comparison. Current account limits observed1November: fourV100, threeL40S, twoA10 and twoA100 GPUs; no global five-job cap reported. Queue slots are not a hardware reservation.
+Run the existing 22-arm comparison through available queue allowances. All arms retain their original 20,000-update target, LR0.3, model/context/key17, initialization seed, objective, chemistry strategy, precision and stride20 matrix retention. No saved results or running producers were changed.
 
-Actual device probes: A10 **29865920**, A100 **29865922**. Own-ended metadata callbacks **29865921/29865923** conditionally migrate chemistry-first seeds17/23 toA10 and combined seeds17/23 toA100. At11:06UTC A100 probe wasRUN, A10 probe and both callbacksPEND; no GPU pass or new optimizer ID yet. Read each remote `run/jobs.json`, `probe/assessment.json`, `migration-summary.json` and actual submission/LSF before recovery. Never replay stage or accepted submissions.
+At 1 November12:48 UTC:
 
-Each probe runs25 disposable updates for chemistry-first and the combined path, records sampled memory/timing and checks original frozen identities/finite attached paths.16 portable metadata/fake-scheduler cases and six real pre-model CLI startups passed. Original allocated42-case controls are reused; no new qualification chain.143 library files and every scientific driver function except metadata entry are byte/AST unchanged. Same model/context/key17, initialization seeds, FP32 native precision, schedules, objectives, detached step targets, LR0.3, all20k updates and stride20 retention.
+| Queue | Arms | Actual optimizer IDs | State |
+|---|---|---|---|
+| A100 | combined seeds17/23 |29865938/29865970|RUN; at least7,631/6,062 committed updates at12:46UTC|
+| A10 | chemistry-first seeds17/23 |29866311/29866312|PEND|
+| A40 | severity seeds17/23 |29866315/29866318|PEND|
+| L40S | adaptive seeds17/23; temperature2 seed17 |29866329/29866333/29866331|PEND|
 
-The callback authenticates its own successful GPUjob and original pending writer/source, measures a full20k budget, performs the actual replacement startup/capacity check, holds/rechecks the never-started predecessor, then retires only that exact job before submitting a successor. If the predecessor starts, keep it; if the probe fails, preserve the V100 job. Disposable probe states are never adopted. Only new immutable source/outputs are used. Device rounding differences remain exploratory findings.
+The user requested direct execution without another test bottleneck. Four unstarted A10/A40 probe/callback jobs were held, authenticated and retired. Seven original unstarted V100 producers were similarly retired with zero updates before unique full-run successors were submitted. Normal production entry and first saved updates retain finite/shape/required-gradient/frozen/input/output/capacity checks. No new test job or qualification chain was added. Whole-run reservations are A10 08:05, A40 08:00, L40S07:50/08:00, based on existing measured timings and conservative overhead. They do not reserve physical hardware before dispatch.
 
-Canonical code remains the existing `chemistry_screen_{control,ops,stage}` and scientific screen runner; profiles are shared in `scripts/hpc/gpu_policy.py`. Source roots and exact hashes/actual IDs are in campaign.json. Future report captures use the existing chemistry-screen adapter and canonical report command; no new renderer.
+Adaptive seed23's first retirement observation timed out after an accepted kill. Its failure and restore attempt remain preserved. A fresh exact EXIT/TERM_OWNER, no-execution, no-payload and no-successor proof allowed the single successor29866333. Never replay these dispatch programs.
 
-## Latest actual outcome1November11:15UTC
+Earlier A100 probe29865922/callback29865923 completed two disposable25-update paths. Warm medians0.586/0.629s versus V1000.796/0.846s; sampled peak2535MiB. This was finite-path/timing evidence, not derivative certification. Its50 smoke states were never adopted. The two full A100 producers remain untouched.
 
-A10029865922 and callback29865923 bothDONE. Both25-update paths completed with unchanged frozen identities. Warm medians0.586s chemistry-first/0.629s combined versus V1000.796/0.846s in the same short probe recipes; approximately25% shorter warm update time, not a full-horizon performance guarantee. Sampled GPU memory peaked2535MiB. Combined seeds17/23 actually submitted **29865938/29865970**, bothPEND, full20k each/06:15 measured wall. Original unstarted29862997/29862998 were held, rechecked, retired with zero updates and preserved proofs before successors were released.
-
-User additionally authorized A40: **probe29866016/callback29866017** submitted, bothPEND. It targets original severity seeds17/23 with the same settings and short-check/conditional-migration rules. A10probe29865920/callback29865921 remainPEND.18 current portable controls and nine actual CLI startups passed. All device namespaces are immutable; no running producer was stopped. Read successor_locations in the original campaign and each device run/jobs.json; the old source02 remote registry remains historical for migrated arms.
+Read campaign.json, direct-production-proof.json and each remote device run/jobs.json plus production/ARM/submission.json/release.json before recovery. Scientific outputs are ROOT/ARM/payload/study; submission receipts are ROOT/production/ARM. The old source02 registry remains historical for migrated arms. Canonical launcher/math/library files were reused; only the new L40S plan differs. Current remaining-output accounting is unchanged; no cleanup occurred. Report updates use the canonical cached engine.

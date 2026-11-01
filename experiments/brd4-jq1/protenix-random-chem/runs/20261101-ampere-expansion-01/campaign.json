@@ -1,6 +1,6 @@
 {
-  "observed_utc": "2026-11-01T11:15:19.722793+00:00",
-  "status": "A100_probe_passed_two_whole_runs_submitted_A10_A40_probes_queued",
+  "observed_utc": "2026-11-01T12:48:37.070979+00:00",
+  "status": "two_A100_producers_running_seven_direct_producers_queued",
   "prepared": {
     "a10": {
       "source": "/work3/s234818/mosaic/runs/20261031-protenix-chemistry-strategies-01/ampere-expansion-20261101-01/a10/source",
@@ -72,12 +72,30 @@
       ],
       "same_original_scientific_function_AST": true,
       "unchanged_library_members": 143
+    },
+    "l40s": {
+      "source": "/work3/s234818/mosaic/runs/20261031-protenix-chemistry-strategies-01/ampere-expansion-20261101-01/l40s/source",
+      "root": "/work3/s234818/mosaic/runs/20261031-protenix-chemistry-strategies-01/ampere-expansion-20261101-01/l40s/run",
+      "plan": "/work3/s234818/mosaic/runs/20261031-protenix-chemistry-strategies-01/ampere-expansion-20261101-01/l40s/source/plan.json",
+      "archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261101-ampere-expansion\\l40s\\source.tar.gz",
+      "bytes": 437686,
+      "sha256": "aeae703da068a7a9d32b17ee263ea6ef98f39b4c41478db62c7cf7c11715584b",
+      "checksums_sha256": "1a9ec6b423baed5225414f6fbe1107d7f40c80f5b32c612064b917b889d8c33f",
+      "production_arms": [
+        "adaptive-s17",
+        "adaptive-s23",
+        "temperature2-s17"
+      ],
+      "direct_no_probe": true,
+      "unchanged_library_members": 143
     }
   },
   "jobs": {
     "a10": {
       "probe": "29865920",
-      "migrate": "29865921"
+      "migrate": "29865921",
+      "chemfirst-s17": "29866311",
+      "chemfirst-s23": "29866312"
     },
     "a100": {
       "probe": "29865922",
@@ -87,67 +105,80 @@
     },
     "a40": {
       "probe": "29866016",
-      "migrate": "29866017"
+      "migrate": "29866017",
+      "severity-s17": "29866315",
+      "severity-s23": "29866318"
+    },
+    "l40s": {
+      "adaptive-s17": "29866329",
+      "temperature2-s17": "29866331",
+      "adaptive-s23": "29866333"
     }
   },
   "current_scheduler": {
-    "COMMAND": "bjobs",
-    "JOBS": 8,
-    "RECORDS": [
+    "observed_utc": "2026-11-01T12:48:37.070979+00:00",
+    "records": [
       {
-        "JOBID": "29865920",
+        "JOBID": "29866311",
         "STAT": "PEND",
         "QUEUE": "gpua10",
-        "JOB_NAME": "mosaic-chemstrategy-ampere01-a10-probe",
+        "JOB_NAME": "mosaic-chemstrategy-ampere01-a10-chemfirst-s17",
         "EXEC_HOST": ""
       },
       {
-        "JOBID": "29865921",
+        "JOBID": "29866312",
         "STAT": "PEND",
-        "QUEUE": "hpc",
-        "JOB_NAME": "mosaic-chemstrategy-ampere01-a10-migrate",
+        "QUEUE": "gpua10",
+        "JOB_NAME": "mosaic-chemstrategy-ampere01-a10-chemfirst-s23",
         "EXEC_HOST": ""
-      },
-      {
-        "JOBID": "29865922",
-        "STAT": "DONE",
-        "QUEUE": "gpua100",
-        "JOB_NAME": "mosaic-chemstrategy-ampere01-a100-probe",
-        "EXEC_HOST": "8*n-62-18-8"
-      },
-      {
-        "JOBID": "29865923",
-        "STAT": "DONE",
-        "QUEUE": "hpc",
-        "JOB_NAME": "mosaic-chemstrategy-ampere01-a100-migrate",
-        "EXEC_HOST": "4*n-62-30-25"
       },
       {
         "JOBID": "29865938",
-        "STAT": "PEND",
+        "STAT": "RUN",
         "QUEUE": "gpua100",
         "JOB_NAME": "mosaic-chemstrategy-ampere01-a100-combined-s17",
-        "EXEC_HOST": ""
+        "EXEC_HOST": "8*n-62-18-8"
       },
       {
         "JOBID": "29865970",
-        "STAT": "PEND",
+        "STAT": "RUN",
         "QUEUE": "gpua100",
         "JOB_NAME": "mosaic-chemstrategy-ampere01-a100-combined-s23",
-        "EXEC_HOST": ""
+        "EXEC_HOST": "8*n-62-12-23"
       },
       {
-        "JOBID": "29866016",
+        "JOBID": "29866315",
         "STAT": "PEND",
         "QUEUE": "gpua40",
-        "JOB_NAME": "mosaic-chemstrategy-ampere01-a40-probe",
+        "JOB_NAME": "mosaic-chemstrategy-ampere01-a40-severity-s17",
         "EXEC_HOST": ""
       },
       {
-        "JOBID": "29866017",
+        "JOBID": "29866318",
         "STAT": "PEND",
-        "QUEUE": "hpc",
-        "JOB_NAME": "mosaic-chemstrategy-ampere01-a40-migrate",
+        "QUEUE": "gpua40",
+        "JOB_NAME": "mosaic-chemstrategy-ampere01-a40-severity-s23",
+        "EXEC_HOST": ""
+      },
+      {
+        "JOBID": "29866329",
+        "STAT": "PEND",
+        "QUEUE": "gpul40s",
+        "JOB_NAME": "mosaic-chemstrategy-direct01-l40s-adaptive-s17",
+        "EXEC_HOST": ""
+      },
+      {
+        "JOBID": "29866331",
+        "STAT": "PEND",
+        "QUEUE": "gpul40s",
+        "JOB_NAME": "mosaic-chemstrategy-direct01-l40s-temperature2-s17",
+        "EXEC_HOST": ""
+      },
+      {
+        "JOBID": "29866333",
+        "STAT": "PEND",
+        "QUEUE": "gpul40s",
+        "JOB_NAME": "mosaic-chemstrategy-direct01-l40s-adaptive-s23",
         "EXEC_HOST": ""
       }
     ]
@@ -173,15 +204,26 @@
       "29865938",
       "29865970"
     ],
-    "a10": [],
-    "a40": []
+    "a10": [
+      "29866311",
+      "29866312"
+    ],
+    "a40": [
+      "29866315",
+      "29866318"
+    ],
+    "l40s": [
+      "29866329",
+      "29866331",
+      "29866333"
+    ]
   },
   "evidence": {
-    "path": "results\\hpc\\20261101-ampere-expansion\\delivery-20261101T111518Z\\stdout.json",
-    "bytes": 65732,
-    "sha256": "d4ae6ad55c80f89b6141a76102f3d2c96d15ab8d48e4a7f8dbc6667079cfdffa"
+    "path": "results/hpc/20261101-ampere-expansion/final-direct-20261101T124835Z/stdout.json",
+    "bytes": 154377,
+    "sha256": "2f999885b7212724f6f6fb39450185cb18840b16cb7bdcfcfac40d54a9d06b5f"
   },
-  "migration_rule": "Only after own successful GPU probe; original must still be authenticated PEND, never executed and have no payload; hold and recheck before retirement. Running originals remain active.",
+  "migration_rule": "Exploratory live checks run within normal production startup and first saved updates; a separate queued probe is optional. Replace only authenticated unstarted zero-output predecessors. Preserve running jobs and all real finite/input/frozen/output guards.",
   "A100_probe": {
     "status": "passed",
     "job_id": "29865922",
@@ -235,5 +277,74 @@
   "current_observer": "results/hpc/20261101-ampere-expansion/observe.py",
   "derivative_qualified": false,
   "smoke_states_adopted": false,
-  "GPU_validation_scope": "Finite attached native and chemistry paths, frozen preservation and sampled timings; no native/FD certification"
+  "GPU_validation_scope": "Finite attached native and chemistry paths, frozen preservation and sampled timings; no native/FD certification",
+  "prior_migration_rule": "Only after own successful GPU probe; original must still be authenticated PEND, never executed and have no payload; hold and recheck before retirement. Running originals remain active.",
+  "new_test_jobs": 0,
+  "retired_unstarted_probe_callback_ids": [
+    "29865920",
+    "29865921",
+    "29866016",
+    "29866017"
+  ],
+  "direct_submissions": {
+    "chemfirst-s17": {
+      "job_id": "29866311",
+      "predecessor": "29862965",
+      "queue": "gpua10",
+      "scheduler": "PEND",
+      "updates_requested": 20000
+    },
+    "chemfirst-s23": {
+      "job_id": "29866312",
+      "predecessor": "29862966",
+      "queue": "gpua10",
+      "scheduler": "PEND",
+      "updates_requested": 20000
+    },
+    "severity-s17": {
+      "job_id": "29866315",
+      "predecessor": "29862967",
+      "queue": "gpua40",
+      "scheduler": "PEND",
+      "updates_requested": 20000
+    },
+    "severity-s23": {
+      "job_id": "29866318",
+      "predecessor": "29862968",
+      "queue": "gpua40",
+      "scheduler": "PEND",
+      "updates_requested": 20000
+    },
+    "adaptive-s17": {
+      "job_id": "29866329",
+      "predecessor": "29862969",
+      "queue": "gpul40s",
+      "scheduler": "PEND",
+      "updates_requested": 20000
+    },
+    "adaptive-s23": {
+      "job_id": "29866333",
+      "predecessor": "29862970",
+      "queue": "gpul40s",
+      "scheduler": "PEND",
+      "updates_requested": 20000
+    },
+    "temperature2-s17": {
+      "job_id": "29866331",
+      "predecessor": "29862973",
+      "queue": "gpul40s",
+      "scheduler": "PEND",
+      "updates_requested": 20000
+    }
+  },
+  "A100_saved_progress": {
+    "observed_utc": "2026-11-01T12:46:27.119405+00:00",
+    "committed_updates": {
+      "combined-s17": 7631,
+      "combined-s23": 6062
+    },
+    "total_target_per_arm": 20000
+  },
+  "adaptive_s23_reconciliation": "Original kill accepted but scheduler settling timed out; failure/restore receipts preserved. Fresh exact EXIT/TERM_OWNER/no-execution/no-payload proof preceded the unique successor29866333.",
+  "direct_proof": "direct-production-proof.json"
 }

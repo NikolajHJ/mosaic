@@ -24,6 +24,14 @@ introduce a full qualification campaign just to select hardware. Finite values,
 attached required paths, input/frozen-model preservation and exclusive output
 ownership still matter. Record floating-point replay differences honestly.
 
+For exploratory work these checks can run during normal production startup and
+the first saved updates. A separate queued probe/controller chain is optional;
+do not make it a prerequisite when the existing runner already checks the live
+paths and the user requests direct execution. Keep those first updates as normal
+results. A failure of a real finite/input/frozen/ownership guard still stops the
+affected run and preserves its evidence. Historical qualified contracts retain
+their original scope.
+
 Changing this default does not migrate existing jobs. With explicit migration
 authorization, prepare the replacement first and replace only an authenticated
 unstarted job. Leave running jobs alone. If the old job starts during a device

@@ -1,0 +1,15 @@
+{
+  "status": "passed_targeted_actual_browser_presentation_QA",
+  "edition": "edition-0013",
+  "tab_id": "6",
+  "checks": [
+    "DBMol30k budget complete with original terminal-failure warning",
+    "numeric0 shows original scalar and raw25-atom chain",
+    "numeric7500 shows segment boundary; next reaches7520",
+    "latest reaches30000/frame1501; retained slider endpoints0 and1500",
+    "total-objective/component plots; binder probability separate",
+    "raw invalid terminal graph retained;25-atom and300-pair matrices",
+    "terminal bond contradictions209/195/264 visibly preserved"
+  ],
+  "scientific_certification": false
+}
