@@ -1,7 +1,12 @@
-"""GPU preference for NEW exploratory jobs; existing allocations are immutable."""
+"""Explicit GPU profiles for queue-distributed exploratory plans.
+
+New batch planners assign compatible profiles under docs/GPU_POLICY.md. This
+module does not discover queues, balance jobs or alter existing allocations.
+"""
 import os
 import re
 
+# Compatibility fallback for older callers; new batch plans declare placements.
 DEFAULT_PROFILE='v100-32gb-v1'
 PROFILES={
     'v100-32gb-v1':{'queue':'gpuv100','family':'V100','minimum_memory_MiB':30000,
@@ -45,7 +50,7 @@ def resource(row):
 
 def legacy_adapter_profile():
     # Standalone historical adapter calls remain explicitly L40S unless a new
-    # launch supplies its profile. New exploratory launchers supply DEFAULT_PROFILE.
+    # launch supplies its assigned per-arm profile through MOSAIC_GPU_PROFILE.
     return profile(os.environ.get('MOSAIC_GPU_PROFILE','l40s-48gb-v1'))
 
 

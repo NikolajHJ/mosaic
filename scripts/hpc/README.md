@@ -30,6 +30,10 @@ The endpoint owner provides authenticated experiment integration.28portable
 shared regression cases live in tests/core/test_storage_accounting.py. Old
 sealed resource policies remain historical and must not be edited in place.
 
-For new exploratory submissions, prefer the [32 GB V100 profile](../../docs/GPU_POLICY.md)
-in [gpu_policy.py](gpu_policy.py); retain L40S when compatibility, memory or measured
-runtime makes it preferable. This default does not alter existing allocations.
+For new exploratory batches, [spread independent runs across compatible GPU
+queues](../../docs/GPU_POLICY.md): V100, L40S, A10, A100 and A40. Use current
+scheduler/account limits and measured completion budgets; keep useful capacity
+busy rather than funneling all arms into one queue. Declare each arm's explicit
+profile from [gpu_policy.py](gpu_policy.py). Normal startup/first-update checks
+are sufficient for exploratory placement. Preserve running jobs; redistribute
+only authenticated, never-started owned jobs without duplicate writers.

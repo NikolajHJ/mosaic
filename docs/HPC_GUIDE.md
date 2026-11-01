@@ -125,6 +125,19 @@ convenience LSF launcher still hard-codes an operator's runtime root; use the
 documented manual route or a separately reviewed port. This guide authorizes
 no new run, retry, cleanup or change to historical evidence.
 
-## Preferred GPU for new exploratory jobs
+## GPU placement for exploratory batches
 
-Prefer 32 GB V100 (`gpuv100`) for new submissions; see [GPU_POLICY.md](GPU_POLICY.md). Use L40S when memory, software or measured runtime makes it preferable. Keep running jobs untouched; migrate existing pending jobs only with explicit authorization and verified replacement readiness.
+Distribute independent runs across compatible V100, L40S, A10, A100 and A40
+queues by default; follow [GPU_POLICY.md](GPU_POLICY.md). Optimize expected
+completion time across the batch using current queue/account limits, available
+capacity, memory/software compatibility and measured whole-run budgets. Do not
+funnel everything into V100 or impose an assumed global five-job limit. Declare
+each arm's GPU profile explicitly before submission.
+
+During authorized run management, reassess safe redistribution of queued,
+never-started arms when other compatible queues offer a clear benefit. Preserve
+settings, snapshots and one writer per arm; authenticate and reconcile the exact
+old job before retiring it and submitting a unique successor. Leave running jobs
+and sealed/live sources untouched. Normal startup/first-update checks are the
+default; do not add a separate queued test campaign just to choose hardware.
+This policy edit changes no existing job.
