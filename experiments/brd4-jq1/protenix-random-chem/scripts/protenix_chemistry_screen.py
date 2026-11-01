@@ -487,9 +487,9 @@ def main(argv=None):
         print(json.dumps({"status": "metadata_startup_passed_no_models", "arm": args.arm,
                           "configuration": config, "new_library_first": str(code_source/"src")}))
         return
-    require(os.environ.get("LSB_JOBID", "").isdigit() and os.environ.get("LSB_QUEUE") in ("gpuv100", "gpul40s"), "Allocated supported GPU required")
     from gpu_policy import selected, validate_hardware
     gpu = selected(row)
+    require(os.environ.get("LSB_JOBID", "").isdigit(), "Allocated supported GPU required")
     require(os.environ["LSB_QUEUE"] == gpu["queue"], "Declared queue differs")
     import csv
     import fcntl

@@ -10991,3 +10991,13 @@ DBMol29860458 remainsRUN,25,813/30,000 committed at07:58UTC. Noise29857358 hit i
 ## 1 November2026 — completed chemistry strategies published
 
 Canonical report edition0012 published at08:24UTC after allocated CPU29864867 passed256 cases and render29864880 completed. Three20k strategy arms added; seven prior trajectories reused. Exact archive/reused assets and156HTTP files/browser controls verified. InitialHOMEcapacity failure29864826 preserved; freshWORK3 remaining-write gate passed52.17GBavailable/2.36GBrequired without cleanup. Scientific warnings remain. Record: experiments/reporting/jq1-live-progress/runs/20261101-chemistry-screen-report-01/campaign.json.
+
+
+## 1 November2026 — A10/A100 chemistry queue expansion
+
+Confirmed independent two-GPU allowances on both Ampere queues.16 portable device/migration controls and six actual metadata CLI startups passed;143 original library files/scientific functions unchanged. Submitted A10 probe29865920/callback29865921 and A100 probe29865922/callback29865923. A100probeRUN, othersPEND at11:06UTC. Callbacks may migrate only authenticated unstarted chemistry-first seeds17/23 toA10 and combined seeds17/23 toA100 after own successful finite/timing probes; same20k budgets/settings and saved results. No new optimizer or GPU pass established yet. Record: experiments/brd4-jq1/protenix-random-chem/runs/20261101-ampere-expansion-01/campaign.json.
+
+
+## 1 November2026 — A100 admitted; A40 added
+
+A100 probe29865922/callback29865923 actualDONE; both25-update paths finite/frozen-preserved, approximately25% shorter warm time than V100. Two original zero-progress pending combined jobs retired with held/history proofs; full20k successors29865938/29865970 released andPEND onA100,06:15 each. A10 probe29865920/callback29865921PEND. User authorized A40; probe29866016/callback29866017 submittedPEND for severity seeds17/23.18 portable metadata controls and nine actual startups passed. Same settings/inputs and saved results; no new scientific certification. Current source/IDs/successor locations: protenix-random-chem/runs/20261101-ampere-expansion-01/campaign.json.

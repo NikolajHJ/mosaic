@@ -1,5 +1,6 @@
 """GPU preference for NEW exploratory jobs; existing allocations are immutable."""
 import os
+import re
 
 DEFAULT_PROFILE='v100-32gb-v1'
 PROFILES={
@@ -7,6 +8,12 @@ PROFILES={
         'resource':'num=1:mode=shared:j_exclusive=yes:mps=no:gmem=30G'},
     'l40s-48gb-v1':{'queue':'gpul40s','family':'L40S','minimum_memory_MiB':45000,
         'resource':'num=1:mode=shared:j_exclusive=yes:mps=no'},
+    'a10-24gb-v1':{'queue':'gpua10','family':'A10','minimum_memory_MiB':22000,
+        'resource':'num=1:mode=shared:j_exclusive=yes:mps=no:gmem=22G'},
+    'a100-40gb-v1':{'queue':'gpua100','family':'A100','minimum_memory_MiB':39000,
+        'resource':'num=1:mode=shared:j_exclusive=yes:mps=no:gmem=38G'},
+    'a40-48gb-v1':{'queue':'gpua40','family':'A40','minimum_memory_MiB':45000,
+        'resource':'num=1:mode=shared:j_exclusive=yes:mps=no:gmem=44G'},
 }
 
 
@@ -44,6 +51,9 @@ def legacy_adapter_profile():
 
 def validate_hardware(name,total_mib,selection=None):
     expected=profile() if selection is None else selection
-    if expected['family'] not in name or int(total_mib)<expected['minimum_memory_MiB']:
+    matches = expected['family'] in name
+    if expected['family'] == 'A10':
+        matches = re.search(r'(?<![A-Za-z0-9])A10(?![A-Za-z0-9])', name) is not None
+    if not matches or int(total_mib)<expected['minimum_memory_MiB']:
         raise ValueError('GPU kind/memory differs from declared profile')
     return {'profile':expected['id'],'name':name,'memory_total_MiB':int(total_mib)}

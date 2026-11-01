@@ -1,0 +1,239 @@
+{
+  "observed_utc": "2026-11-01T11:15:19.722793+00:00",
+  "status": "A100_probe_passed_two_whole_runs_submitted_A10_A40_probes_queued",
+  "prepared": {
+    "a10": {
+      "source": "/work3/s234818/mosaic/runs/20261031-protenix-chemistry-strategies-01/ampere-expansion-20261101-01/a10/source",
+      "root": "/work3/s234818/mosaic/runs/20261031-protenix-chemistry-strategies-01/ampere-expansion-20261101-01/a10/run",
+      "plan": "/work3/s234818/mosaic/runs/20261031-protenix-chemistry-strategies-01/ampere-expansion-20261101-01/a10/source/plan.json",
+      "archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261101-ampere-expansion\\a10\\source.tar.gz",
+      "bytes": 437487,
+      "sha256": "b54c924e21f513652ee8c905aa384d0fc08986d9bbab922a7cff0a898676d7e5",
+      "checksums_sha256": "5e00d59037ca3d11742de1768f42050199c9ec3b18c361a4262c0eea181417eb",
+      "production_arms": [
+        "chemfirst-s17",
+        "chemfirst-s23"
+      ],
+      "probe_arms": [
+        "chemfirst-s17",
+        "combined-s17"
+      ],
+      "same_original_scientific_function_AST": true,
+      "unchanged_library_members": 143,
+      "metadata_changed": [
+        "chemistry_screen_control.py",
+        "chemistry_screen_ops.py",
+        "chemistry_screen_stage.sh",
+        "gpu_policy.py",
+        "protenix_chemistry_screen.py"
+      ]
+    },
+    "a100": {
+      "source": "/work3/s234818/mosaic/runs/20261031-protenix-chemistry-strategies-01/ampere-expansion-20261101-01/a100/source",
+      "root": "/work3/s234818/mosaic/runs/20261031-protenix-chemistry-strategies-01/ampere-expansion-20261101-01/a100/run",
+      "plan": "/work3/s234818/mosaic/runs/20261031-protenix-chemistry-strategies-01/ampere-expansion-20261101-01/a100/source/plan.json",
+      "archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261101-ampere-expansion\\a100\\source.tar.gz",
+      "bytes": 437495,
+      "sha256": "555c914fd1c8edfb4e6d712703218f9044c13dbb6f94f86f5009702089d202e8",
+      "checksums_sha256": "0e11b5288d6665f41cfa8893d6156b392531ba7a9d7d58fc58f5004e0477b30e",
+      "production_arms": [
+        "combined-s17",
+        "combined-s23"
+      ],
+      "probe_arms": [
+        "chemfirst-s17",
+        "combined-s17"
+      ],
+      "same_original_scientific_function_AST": true,
+      "unchanged_library_members": 143,
+      "metadata_changed": [
+        "chemistry_screen_control.py",
+        "chemistry_screen_ops.py",
+        "chemistry_screen_stage.sh",
+        "gpu_policy.py",
+        "protenix_chemistry_screen.py"
+      ]
+    },
+    "a40": {
+      "source": "/work3/s234818/mosaic/runs/20261031-protenix-chemistry-strategies-01/ampere-expansion-20261101-01/a40/source",
+      "root": "/work3/s234818/mosaic/runs/20261031-protenix-chemistry-strategies-01/ampere-expansion-20261101-01/a40/run",
+      "plan": "/work3/s234818/mosaic/runs/20261031-protenix-chemistry-strategies-01/ampere-expansion-20261101-01/a40/source/plan.json",
+      "archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261101-ampere-expansion\\a40\\source.tar.gz",
+      "bytes": 437545,
+      "sha256": "393f836a657b7f25b030a4b34ede656de9492e0b2870d0f654b8a2c60b59fa34",
+      "checksums_sha256": "8709533085312b6d38a7120992f9a1299aec5763c21f9453959f16a6716c3c6f",
+      "production_arms": [
+        "severity-s17",
+        "severity-s23"
+      ],
+      "probe_arms": [
+        "severity-s17",
+        "combined-s17"
+      ],
+      "same_original_scientific_function_AST": true,
+      "unchanged_library_members": 143
+    }
+  },
+  "jobs": {
+    "a10": {
+      "probe": "29865920",
+      "migrate": "29865921"
+    },
+    "a100": {
+      "probe": "29865922",
+      "migrate": "29865923",
+      "combined-s17": "29865938",
+      "combined-s23": "29865970"
+    },
+    "a40": {
+      "probe": "29866016",
+      "migrate": "29866017"
+    }
+  },
+  "current_scheduler": {
+    "COMMAND": "bjobs",
+    "JOBS": 8,
+    "RECORDS": [
+      {
+        "JOBID": "29865920",
+        "STAT": "PEND",
+        "QUEUE": "gpua10",
+        "JOB_NAME": "mosaic-chemstrategy-ampere01-a10-probe",
+        "EXEC_HOST": ""
+      },
+      {
+        "JOBID": "29865921",
+        "STAT": "PEND",
+        "QUEUE": "hpc",
+        "JOB_NAME": "mosaic-chemstrategy-ampere01-a10-migrate",
+        "EXEC_HOST": ""
+      },
+      {
+        "JOBID": "29865922",
+        "STAT": "DONE",
+        "QUEUE": "gpua100",
+        "JOB_NAME": "mosaic-chemstrategy-ampere01-a100-probe",
+        "EXEC_HOST": "8*n-62-18-8"
+      },
+      {
+        "JOBID": "29865923",
+        "STAT": "DONE",
+        "QUEUE": "hpc",
+        "JOB_NAME": "mosaic-chemstrategy-ampere01-a100-migrate",
+        "EXEC_HOST": "4*n-62-30-25"
+      },
+      {
+        "JOBID": "29865938",
+        "STAT": "PEND",
+        "QUEUE": "gpua100",
+        "JOB_NAME": "mosaic-chemstrategy-ampere01-a100-combined-s17",
+        "EXEC_HOST": ""
+      },
+      {
+        "JOBID": "29865970",
+        "STAT": "PEND",
+        "QUEUE": "gpua100",
+        "JOB_NAME": "mosaic-chemstrategy-ampere01-a100-combined-s23",
+        "EXEC_HOST": ""
+      },
+      {
+        "JOBID": "29866016",
+        "STAT": "PEND",
+        "QUEUE": "gpua40",
+        "JOB_NAME": "mosaic-chemstrategy-ampere01-a40-probe",
+        "EXEC_HOST": ""
+      },
+      {
+        "JOBID": "29866017",
+        "STAT": "PEND",
+        "QUEUE": "hpc",
+        "JOB_NAME": "mosaic-chemstrategy-ampere01-a40-migrate",
+        "EXEC_HOST": ""
+      }
+    ]
+  },
+  "portable_metadata_tests": 18,
+  "actual_metadata_startups": 9,
+  "reused_allocated_controls": {
+    "job_id": "29862456",
+    "cases": 42,
+    "scope": "Unchanged original math; not new device qualification"
+  },
+  "protected_scientific_functions_AST_unchanged": true,
+  "unchanged_library_files": 143,
+  "settings_changed": false,
+  "saved_results_changed": false,
+  "GPU_passes_established": {
+    "a100": true,
+    "a10": false,
+    "a40": false
+  },
+  "long_successor_jobs_established": {
+    "a100": [
+      "29865938",
+      "29865970"
+    ],
+    "a10": [],
+    "a40": []
+  },
+  "evidence": {
+    "path": "results\\hpc\\20261101-ampere-expansion\\delivery-20261101T111518Z\\stdout.json",
+    "bytes": 65732,
+    "sha256": "d4ae6ad55c80f89b6141a76102f3d2c96d15ab8d48e4a7f8dbc6667079cfdffa"
+  },
+  "migration_rule": "Only after own successful GPU probe; original must still be authenticated PEND, never executed and have no payload; hold and recheck before retirement. Running originals remain active.",
+  "A100_probe": {
+    "status": "passed",
+    "job_id": "29865922",
+    "results": [
+      {
+        "arm": "chemfirst-s17",
+        "status": "finite_native_probe_completed",
+        "warm_seconds_max": 0.7553926170803607,
+        "warm_seconds_median": 0.5864474630216137,
+        "sampled_peak_memory_MiB": 2517,
+        "memory_observation": "250ms telemetry; not an absolute peak guarantee",
+        "setup_and_probe_seconds": 86.75006603519432,
+        "job_id": "29865922",
+        "derivative_qualified": false,
+        "states_adopted": false
+      },
+      {
+        "arm": "combined-s17",
+        "status": "finite_native_probe_completed",
+        "warm_seconds_max": 0.8279992102179676,
+        "warm_seconds_median": 0.6288416851311922,
+        "sampled_peak_memory_MiB": 2535,
+        "memory_observation": "250ms telemetry; not an absolute peak guarantee",
+        "setup_and_probe_seconds": 102.42017910094,
+        "job_id": "29865922",
+        "derivative_qualified": false,
+        "states_adopted": false
+      }
+    ],
+    "scope": "finite attached implementation paths and timing; not precise derivative, binding or chemical efficacy certification"
+  },
+  "A100_migration": {
+    "status": "conditional_migration_finished",
+    "decisions": {
+      "combined-s17": {
+        "original_job": "29862997",
+        "status": "migrated",
+        "job_id": "29865938",
+        "wall_minutes": 375
+      },
+      "combined-s23": {
+        "original_job": "29862998",
+        "status": "migrated",
+        "job_id": "29865970",
+        "wall_minutes": 375
+      }
+    },
+    "scientific_settings_changed": false,
+    "saved_results_changed": false
+  },
+  "current_observer": "results/hpc/20261101-ampere-expansion/observe.py",
+  "derivative_qualified": false,
+  "smoke_states_adopted": false,
+  "GPU_validation_scope": "Finite attached native and chemistry paths, frozen preservation and sampled timings; no native/FD certification"
+}

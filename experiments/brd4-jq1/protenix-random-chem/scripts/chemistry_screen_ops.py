@@ -57,15 +57,16 @@ def capacity(plan, phase):
     return result
 
 
-def submit(plan_path, kind, arm=None, wall_minutes=None, dependency=None):
+def submit(plan_path, kind, arm=None, wall_minutes=None, dependency=None, dependency_type='done'):
     plan_path = Path(plan_path); plan = read(plan_path)
     root = Path(plan['root']); source = Path(plan['source_root'])
     label = kind if arm is None else arm
     parent = root / ('jobs' if kind != 'run' else 'production') / label
     parent.mkdir(parents=True, exist_ok=True)
     require(not list(parent.glob('submission*.json')), 'Existing/unknown submission requires reconciliation')
-    require(kind in ('controls', 'probe', 'dispatch', 'run'), 'Unknown phase')
+    require(kind in ('controls', 'probe', 'dispatch', 'run', 'migrate'), 'Unknown phase')
     require(kind != 'run' or arm in plan['arms'], 'Unknown strategy arm')
+    require(kind != 'run' or arm in plan.get('production_arms', plan['arms']), 'Probe-only arm cannot launch production')
     require(kind != 'run' or wall_minutes is not None, 'Production needs an explicit measured wall budget')
     if kind == 'run':
         require(not (root / arm / 'payload').exists(), 'Existing scientific output requires a fresh continuation')
@@ -81,7 +82,9 @@ def submit(plan_path, kind, arm=None, wall_minutes=None, dependency=None):
         require(not any(any(v == target or v.startswith(target + '/')
                             for v in shlex.split(r['COMMAND'])) for r in live), 'Duplicate output writer')
     gpu = kind in ('probe', 'run')
-    queue = 'gpuv100' if gpu else 'hpc'
+    from gpu_policy import selected, resource
+    gpu_row = plan['arms'][arm or plan['probe_arms'][0]] if gpu else None
+    queue = selected(gpu_row)['queue'] if gpu else 'hpc'
     wall_minutes = wall_minutes or (90 if kind == 'probe' else 30)
     require(type(wall_minutes) is int and 1 <= wall_minutes <= 1440, 'Unsupported wall budget')
     require(not gpu or wall_minutes > 10, 'GPU budget must include cleanup reserve')
@@ -91,10 +94,11 @@ def submit(plan_path, kind, arm=None, wall_minutes=None, dependency=None):
             '-env', 'all,~CUDA_VISIBLE_DEVICES,~CUDA_MPS_PIPE_DIRECTORY,~CUDA_MPS_LOG_DIRECTORY,~CUDA_MPS_ACTIVE_THREAD_PERCENTAGE',
             '-o', str(parent / 'stdout.%J.log'), '-e', str(parent / 'stderr.%J.log')]
     if gpu:
-        argv += ['-gpu', 'num=1:mode=shared:j_exclusive=yes:mps=no:gmem=30G']
+        argv += ['-gpu', resource(gpu_row)]
     if dependency:
         require(str(dependency).isdigit(), 'Invalid dependency')
-        argv += ['-w', 'done(' + str(dependency) + ')']
+        require(dependency_type in ('done', 'ended'), 'Unknown dependency condition')
+        argv += ['-w', dependency_type + '(' + str(dependency) + ')']
     argv += ['bash', '-l', str(source / 'chemistry_screen_stage.sh'), str(source), kind,
              arm or '-', str(plan_path), str(wall_minutes * 60 - 600 if gpu else wall_minutes * 60 - 60)]
     from protenix_chemistry_screen import binding
@@ -138,11 +142,12 @@ def submit(plan_path, kind, arm=None, wall_minutes=None, dependency=None):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--plan', type=Path, required=True)
-    parser.add_argument('--kind', choices=('controls', 'probe', 'dispatch', 'run'), required=True)
+    parser.add_argument('--kind', choices=('controls', 'probe', 'dispatch', 'run', 'migrate'), required=True)
     parser.add_argument('--arm'); parser.add_argument('--wall-minutes', type=int)
     parser.add_argument('--dependency')
+    parser.add_argument('--dependency-type', choices=('done', 'ended'), default='done')
     args = parser.parse_args()
-    submit(args.plan, args.kind, args.arm, args.wall_minutes, args.dependency)
+    submit(args.plan, args.kind, args.arm, args.wall_minutes, args.dependency, args.dependency_type)
 
 
 if __name__ == '__main__':

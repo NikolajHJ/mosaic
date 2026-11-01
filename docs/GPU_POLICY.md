@@ -9,6 +9,14 @@ does not fit, the software does not support V100, or measured execution time
 makes L40S the better choice. Check eligible queue hosts rather than counting
 idle GPUs outside those host groups. Pending-job counts are not wait estimates.
 
+Explicit Ampere alternatives are available: `a10-24gb-v1` uses `gpua10` with
+`gmem=22G`; `a100-40gb-v1` uses `gpua100` with `gmem=38G` and accepts40GB or80GB
+A100s. They retain CUDA12, the requested scientific precision and job-exclusive
+ownership with shared compute/noMPS. These profiles do not change the V100 default.
+The `a40-48gb-v1` profile uses `gpua40` with `gmem=44G` for48GB A40s.
+Check current per-queue account limits as well as available hardware; distinct
+queue allowances can increase concurrency, but are not a guaranteed start time.
+
 For a new device, use a short allocated smoke of the actual scorer and backward
 path at the saved checkpoint; record memory and a few update timings. Keep the
 objective, precision, seed, chemistry schedule and optimizer settings. Do not

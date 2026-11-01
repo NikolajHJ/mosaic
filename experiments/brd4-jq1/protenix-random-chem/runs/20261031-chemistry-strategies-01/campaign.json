@@ -34,8 +34,8 @@
     "temperature2-s23": "29862974",
     "earlyseverity-s17": "29862975",
     "earlyseverity-s23": "29862996",
-    "combined-s17": "29862997",
-    "combined-s23": "29862998",
+    "combined-s17": "29865938",
+    "combined-s23": "29865970",
     "delayed-dense-s17": "29862999",
     "combined-dense-s17": "29863011"
   },
@@ -132,5 +132,75 @@
     "job_id": "29862457",
     "status": "passed_finite_native_timing_only",
     "derivative_qualified": false
+  },
+  "device_expansion": {
+    "record": "experiments\\brd4-jq1\\protenix-random-chem\\runs\\20261101-ampere-expansion-01\\campaign.json",
+    "probes": {
+      "a10": "29865920",
+      "a100": "29865922",
+      "a40": "29866016"
+    },
+    "callbacks": {
+      "a10": "29865921",
+      "a100": "29865923",
+      "a40": "29866017"
+    },
+    "remote_roots": {
+      "a10": "/work3/s234818/mosaic/runs/20261031-protenix-chemistry-strategies-01/ampere-expansion-20261101-01/a10/run",
+      "a100": "/work3/s234818/mosaic/runs/20261031-protenix-chemistry-strategies-01/ampere-expansion-20261101-01/a100/run",
+      "a40": "/work3/s234818/mosaic/runs/20261031-protenix-chemistry-strategies-01/ampere-expansion-20261101-01/a40/run"
+    },
+    "production_targets": {
+      "a10": [
+        "chemfirst-s17",
+        "chemfirst-s23"
+      ],
+      "a100": [
+        "combined-s17",
+        "combined-s23"
+      ],
+      "a40": [
+        "severity-s17",
+        "severity-s23"
+      ]
+    },
+    "successor_IDs": {
+      "combined-s17": "29865938",
+      "combined-s23": "29865970"
+    },
+    "observed_utc": "2026-11-01T11:15:19.722793+00:00",
+    "original_remote_registry_preserved": true
+  },
+  "successor_locations": {
+    "combined-s17": {
+      "job_id": "29865938",
+      "root": "/work3/s234818/mosaic/runs/20261031-protenix-chemistry-strategies-01/ampere-expansion-20261101-01/a100/run",
+      "source": "/work3/s234818/mosaic/runs/20261031-protenix-chemistry-strategies-01/ampere-expansion-20261101-01/a100/source",
+      "plan": "/work3/s234818/mosaic/runs/20261031-protenix-chemistry-strategies-01/ampere-expansion-20261101-01/a100/source/plan.json",
+      "study": "/work3/s234818/mosaic/runs/20261031-protenix-chemistry-strategies-01/ampere-expansion-20261101-01/a100/run/combined-s17/payload/study",
+      "queue": "gpua100",
+      "scientific_settings_unchanged": true
+    },
+    "combined-s23": {
+      "job_id": "29865970",
+      "root": "/work3/s234818/mosaic/runs/20261031-protenix-chemistry-strategies-01/ampere-expansion-20261101-01/a100/run",
+      "source": "/work3/s234818/mosaic/runs/20261031-protenix-chemistry-strategies-01/ampere-expansion-20261101-01/a100/source",
+      "plan": "/work3/s234818/mosaic/runs/20261031-protenix-chemistry-strategies-01/ampere-expansion-20261101-01/a100/source/plan.json",
+      "study": "/work3/s234818/mosaic/runs/20261031-protenix-chemistry-strategies-01/ampere-expansion-20261101-01/a100/run/combined-s23/payload/study",
+      "queue": "gpua100",
+      "scientific_settings_unchanged": true
+    }
+  },
+  "retired_unstarted_production": {
+    "combined-s17": {
+      "job_id": "29862997",
+      "applied_updates": 0,
+      "status": "retired_after_held_zero_progress_proof"
+    },
+    "combined-s23": {
+      "job_id": "29862998",
+      "applied_updates": 0,
+      "status": "retired_after_held_zero_progress_proof"
+    }
   }
 }
