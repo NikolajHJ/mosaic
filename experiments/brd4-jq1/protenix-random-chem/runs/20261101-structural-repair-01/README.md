@@ -1,15 +1,28 @@
 # Structural target discovery: matched comparison
 
+**Current execution, 1 November20:45UTC:** reuse the completed coefficient1
+controls `constant1-s17/29862957` and `constant1-s23/29862958` at20,000 updates.
+Following the user's request, duplicate controls29870659/29870661 were held,
+rechecked as never started with no outputs, then intentionally retired. The
+structural jobs29870660/29870664 remain unchanged/PEND toward30k. Compare
+validity/contact at the common20k checkpoint; the additional10k is unmatched
+exploration. Archived controls usedV100 and the structural jobs useA100/A40,
+so this is an exploratory cross-device comparison, not a clean same-hardware
+speedup measurement. [Actual retirement/pairing proof](baseline-reuse.json).
+The original four-arm source/plan/receipts below remain immutable history;
+no saved results or experimental settings were changed or restarted.
+
 Question: does constructing a connected repair backbone before the existing
 bounded beam search improve chemical validity, native contact optimization or
 end-to-end runtime? User authorized implementation and fresh HPC comparison on
 1 November 2026. Existing runs, saved results and sealed releases are untouched.
 
-Four fresh 30,000-update Protenix trajectories: beam and structural discovery,
+The initial submission requested four fresh 30,000-update Protenix trajectories: beam and structural discovery,
 each with initialization seeds 17 and 23. Within each seed the initialization,
 GPU family, loss, optimizer and output measurements are matched. Seed 17 uses
 A100; seed 23 uses A40, distributing queue exposure while preserving within-pair
-runtime comparisons. Scientific model key remains 17 for all four arms.
+runtime comparisons. Scientific model key remains 17 for all four original arms.
+The reuse decision above supersedes execution of the two fresh beam controls.
 
 Shared settings match the previous constant1 comparison: 25 occupied neutral
 atoms, the same sparse random tree-plus-extra-edges initialization, frozen

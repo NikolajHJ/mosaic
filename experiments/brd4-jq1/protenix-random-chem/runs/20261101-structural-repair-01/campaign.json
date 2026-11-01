@@ -1,7 +1,7 @@
 {
   "experiment": "matched-structural-target-builder",
-  "status": "four_producers_submitted_pending",
-  "observed_utc": "2026-11-01T20:16:22.871649+00:00",
+  "status": "two_structural_runs_pending_existing_controls_reused",
+  "observed_utc": "2026-11-01T20:45:12.754590+00:00",
   "cpu": {
     "job_id": "29870653",
     "status": "DONE",
@@ -25,7 +25,7 @@
   "arms": {
     "beam-s17": {
       "job_id": "29870659",
-      "state": "PEND",
+      "state": "EXIT",
       "queue": "gpua100",
       "gpu_profile": "a100-40gb-v1",
       "updates": 30000,
@@ -79,11 +79,14 @@
         "job_id": "29870659",
         "dispatch_state": "held"
       },
-      "held_release_verified": true
+      "held_release_verified": true,
+      "retired_unstarted": true,
+      "applied_updates": 0,
+      "retirement_reason": "intentional unstarted retirement, not a scientific failure"
     },
     "beam-s23": {
       "job_id": "29870661",
-      "state": "PEND",
+      "state": "EXIT",
       "queue": "gpua40",
       "gpu_profile": "a40-48gb-v1",
       "updates": 30000,
@@ -137,7 +140,10 @@
         "job_id": "29870661",
         "dispatch_state": "held"
       },
-      "held_release_verified": true
+      "held_release_verified": true,
+      "retired_unstarted": true,
+      "applied_updates": 0,
+      "retirement_reason": "intentional unstarted retirement, not a scientific failure"
     },
     "structural-s17": {
       "job_id": "29870660",
@@ -303,5 +309,117 @@
     "No new GPU execution or chemical benefit is established at this capture.",
     "Native contact is a relaxed fixed-pose proxy; sampled/hard graphs are not native-rescored."
   ],
-  "report_status": "awaiting completed results; canonical scripts/reporting/report.py and existing cache"
+  "report_status": "awaiting completed results; canonical scripts/reporting/report.py and existing cache",
+  "baseline_reuse": {
+    "status": "two_duplicate_controls_retired_unstarted_existing_controls_reused",
+    "observed_utc": "2026-11-01T20:45:12.754590+00:00",
+    "capture_sha256": "0bb4299cb897c605947d308cb7c483976c97825b54168135a231645740d92e3d",
+    "verified_receipts": 15,
+    "retired_controls": {
+      "beam-s17": {
+        "job_id": "29870659",
+        "actual_state": "EXIT",
+        "applied_updates": 0,
+        "reason": "intentional unstarted retirement, not a scientific failure"
+      },
+      "beam-s23": {
+        "job_id": "29870661",
+        "actual_state": "EXIT",
+        "applied_updates": 0,
+        "reason": "intentional unstarted retirement, not a scientific failure"
+      }
+    },
+    "comparison": {
+      "version": "structural-comparison-reused-controls-v1",
+      "common_comparison_update": 20000,
+      "structural_target": 30000,
+      "runtime_comparison": "hardware_confounded_not_clean_speedup",
+      "pairs": {
+        "17": {
+          "baseline": {
+            "job_id": "29862957",
+            "summary_sha256": "f42f7a655b3f0635dd62178dd7b8dfac167368e36c5a8a5e8f52d0e2a5ead852",
+            "updates": 20000,
+            "summary": "/work3/s234818/mosaic/runs/20261031-protenix-chemistry-strategies-01/source02/run/constant1-s17/payload/summary.json",
+            "frozen_and_LSF_verified": true
+          },
+          "baseline_gpu": "V100",
+          "structural_job": "29870660",
+          "structural_study": "/work3/s234818/mosaic/runs/20261101-structural-repair-01/source01/run/structural-s17/payload/study"
+        },
+        "23": {
+          "baseline": {
+            "job_id": "29862958",
+            "summary_sha256": "81a54d0ce56254123acb7676006d36c0a3f902ca8345b94ca840ab8a4a0ec030",
+            "updates": 20000,
+            "summary": "/work3/s234818/mosaic/runs/20261031-protenix-chemistry-strategies-01/source02/run/constant1-s23/payload/summary.json",
+            "frozen_and_LSF_verified": true
+          },
+          "baseline_gpu": "V100",
+          "structural_job": "29870664",
+          "structural_study": "/work3/s234818/mosaic/runs/20261101-structural-repair-01/source01/run/structural-s23/payload/study"
+        }
+      }
+    },
+    "protocol_checks": [
+      {
+        "seed": 17,
+        "unchanged_protocol_fields": [
+          "config",
+          "science_source",
+          "reference",
+          "pocket",
+          "frozen_identity",
+          "adapter_source",
+          "snapshot",
+          "context_ready",
+          "gpu_adapter_source",
+          "rate",
+          "model_key",
+          "composition_weight",
+          "margin",
+          "matrix_stride",
+          "loss_stride"
+        ],
+        "baseline_updates": 20000,
+        "structural_updates": 30000,
+        "intentional_difference": "structural target discovery",
+        "hardware_difference": {
+          "baseline": "v100-32gb-v1",
+          "structural": "a100-40gb-v1"
+        }
+      },
+      {
+        "seed": 23,
+        "unchanged_protocol_fields": [
+          "config",
+          "science_source",
+          "reference",
+          "pocket",
+          "frozen_identity",
+          "adapter_source",
+          "snapshot",
+          "context_ready",
+          "gpu_adapter_source",
+          "rate",
+          "model_key",
+          "composition_weight",
+          "margin",
+          "matrix_stride",
+          "loss_stride"
+        ],
+        "baseline_updates": 20000,
+        "structural_updates": 30000,
+        "intentional_difference": "structural target discovery",
+        "hardware_difference": {
+          "baseline": "v100-32gb-v1",
+          "structural": "a40-48gb-v1"
+        }
+      }
+    ],
+    "structural_jobs_unchanged": true,
+    "saved_results_unchanged": true,
+    "new_submissions": 0,
+    "source_plan_unchanged": true
+  }
 }

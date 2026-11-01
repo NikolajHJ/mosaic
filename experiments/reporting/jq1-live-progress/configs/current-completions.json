@@ -357,40 +357,26 @@
       "status_detail": "Completed exploratory chemistry comparison. All saved results and scientific warnings preserved; changing teachers/weights do not define one fixed objective. No derivative or binding certification."
     },
     {
-      "id": "structural_beam_s17",
-      "label": "Structural comparison - beam s17 (gpua100)",
-      "run": "/work3/s234818/mosaic/runs/20261101-structural-repair-01/source01/run/beam-s17/payload",
-      "global_target": 30000,
-      "primary_metric": "contact_loss",
-      "continuation_status": "completed",
-      "status_detail": "Matched30k old versus structural target discovery, coefficient1. Existing loss and fallbacks retained; no derivative or binding certification."
-    },
-    {
-      "id": "structural_beam_s23",
-      "label": "Structural comparison - beam s23 (gpua40)",
-      "run": "/work3/s234818/mosaic/runs/20261101-structural-repair-01/source01/run/beam-s23/payload",
-      "global_target": 30000,
-      "primary_metric": "contact_loss",
-      "continuation_status": "completed",
-      "status_detail": "Matched30k old versus structural target discovery, coefficient1. Existing loss and fallbacks retained; no derivative or binding certification."
-    },
-    {
       "id": "structural_structural_s17",
-      "label": "Structural comparison - structural s17 (gpua100)",
+      "label": "Structural repair - seed17 (A100)",
       "run": "/work3/s234818/mosaic/runs/20261101-structural-repair-01/source01/run/structural-s17/payload",
       "global_target": 30000,
       "primary_metric": "contact_loss",
       "continuation_status": "completed",
-      "status_detail": "Matched30k old versus structural target discovery, coefficient1. Existing loss and fallbacks retained; no derivative or binding certification."
+      "status_detail": "Compare at update20,000 against the existing constant1 seed17 V100 run. Remaining20k-30k updates are additional unmatched exploration. Loss/fallbacks unchanged; GPU differs, so elapsed times are not a clean speedup measurement. No derivative or binding certification.",
+      "comparison_baseline_id": "strategy_constant1_s17",
+      "comparison_update": 20000
     },
     {
       "id": "structural_structural_s23",
-      "label": "Structural comparison - structural s23 (gpua40)",
+      "label": "Structural repair - seed23 (A40)",
       "run": "/work3/s234818/mosaic/runs/20261101-structural-repair-01/source01/run/structural-s23/payload",
       "global_target": 30000,
       "primary_metric": "contact_loss",
       "continuation_status": "completed",
-      "status_detail": "Matched30k old versus structural target discovery, coefficient1. Existing loss and fallbacks retained; no derivative or binding certification."
+      "status_detail": "Compare at update20,000 against the existing constant1 seed23 V100 run. Remaining20k-30k updates are additional unmatched exploration. Loss/fallbacks unchanged; GPU differs, so elapsed times are not a clean speedup measurement. No derivative or binding certification.",
+      "comparison_baseline_id": "strategy_constant1_s23",
+      "comparison_update": 20000
     }
   ]
 }

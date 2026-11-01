@@ -11065,3 +11065,23 @@ no retry, local scientific render or optimizer change. Edition0014 remains
 authoritative; edition0015 publication/HTTP/browser QA are pending. Readable
 producer-reported scalar summary for all13completed comparisons is saved now.
 [Report record, summary and exact resume command](../experiments/reporting/jq1-live-progress/runs/20261101-completed-catalog-03/README.md).
+
+
+### 1 November 2026 20:45 UTC — reuse existing repair controls
+
+User requested reuse of old-repair tests. Authenticated completed constant1
+seed17/23 controls29862957/29862958:20k each, original same-job LSFsuccess, frozen
+model/context and summary hashes preserved. Scientific config/init/LR/model
+inputs match the new structural arms; compare both methods at20k. Structural
+20k-to30k tails are additional unmatched exploration. Archived controls usedV100;
+new arms A100/A40, so no clean same-hardware speedup claim.
+
+Exact duplicate controls29870659/29870661 verifiedPEND/no dispatch/RUNtime0/no
+outputs, then held/recheckedPSUSP and intentionally retired; actualEXIT/0updates
+confirmed. This is cancellation of unstarted redundant controls, not scientific
+failure. Structural29870660/29870664 remainPEND/unchanged toward30k. No new
+submission, source/plan/model/settings/input/result change. Retained all original
+receipts/registry and added explicit retirement/pairing records. Default report
+catalog now reuses existing controls and excludes retired candidates; pending
+report request snapshots remain untouched.
+[Pairing and retirement proof](../experiments/brd4-jq1/protenix-random-chem/runs/20261101-structural-repair-01/baseline-reuse.json).
