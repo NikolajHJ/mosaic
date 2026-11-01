@@ -1,5 +1,7 @@
 # Chemistry comparison across available GPU queues
 
+Latest1November18:05UTC: both A100 combined arms and A40severity-seed17 completed20,000 updates with original same-job LSF/frozen proofs. L40S adaptive17/23 and temperature2-17 RUN at least8677/8156/8099; V100neighbor17/23 at19484/8166 and newlyRUNtemperature2-23 at937. Across22arms:9complete,6RUN,7PEND; no new experiment failures. A10chemistry-first17/23 and A40severity23 remainPEND. Edition-0014 now includes all nine completed comparison arms. New completed arms recorded zero strict-valid argmax states. See status-20261101T180515Z.json; the12:48 snapshot below is historical.
+
 Run the existing 22-arm comparison through available queue allowances. All arms retain their original 20,000-update target, LR0.3, model/context/key17, initialization seed, objective, chemistry strategy, precision and stride20 matrix retention. No saved results or running producers were changed.
 
 At 1 November12:48 UTC:

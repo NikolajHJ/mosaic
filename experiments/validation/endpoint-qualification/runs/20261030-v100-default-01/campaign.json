@@ -1,6 +1,6 @@
 {
   "status": "DBMol_extended_to60k_queued_four_other_original_targets_complete_noise_last_known_queued",
-  "observed_utc": "2026-11-01T13:01:57.103464+00:00",
+  "observed_utc": "2026-11-01T18:05:15.991421+00:00",
   "active_optimizers": {
     "protenix_chemistry": {
       "job_id": "29853757",
@@ -50,7 +50,7 @@
     "dbmol": {
       "job_id": "29866396",
       "scheduler": "PEND",
-      "observed_utc": "2026-11-01T13:01:57.103464+00:00",
+      "observed_utc": "2026-11-01T18:05:15.991421+00:00",
       "queue": "gpul40s",
       "confirmed_global_step_at_least": 30000,
       "target": 60000,
@@ -64,7 +64,8 @@
       "walltime": "32:15",
       "optimization_started": "queued; no child updates yet",
       "continuation_record": "experiments/brd4-jq1/boltz-dbmol/runs/20261101-native-continuation-60k-01/campaign.json",
-      "report_state": "predecessor0_to30k_published_edition0013"
+      "report_state": "predecessor0_to30k_published_edition0013",
+      "pending_reason": "LSF resource ngpus_physical queue gpul40s default GPU limit3 reached; three chemistry arms currently RUN."
     },
     "protenix_chemistry_noise": {
       "job_id": "29864788",
@@ -78,7 +79,9 @@
       "source_start": 35300,
       "predecessor_job_id": "29857358",
       "predecessor_state": "TERM_RUNLIMIT exit140;35300 committed updates",
-      "proof": "experiments/brd4-jq1/protenix-random-chem/runs/20261030-gradient-noise-01/continuation-20261101.json"
+      "proof": "experiments/brd4-jq1/protenix-random-chem/runs/20261030-gradient-noise-01/continuation-20261101.json",
+      "observed_utc": "2026-11-01T18:05:15.991421+00:00",
+      "pending_reason": "Insufficient processor units for requested affinity, as reported by LSF."
     }
   },
   "v100_device_comparison": {
@@ -143,15 +146,15 @@
   "latest_observation": "status-20261031T210516Z.json",
   "completed_results_report": {
     "url": "http://127.0.0.1:8780/report.html",
-    "edition": "edition-0013",
-    "job_id": "29866319",
+    "edition": "edition-0014",
+    "job_id": "29869332",
     "protenix_global_target": 50000,
     "protenix_panel_range": [
       0,
       50000
     ],
     "scientific_scope": "unqualified exploratory; prior failures preserved",
-    "proof": "experiments/reporting/jq1-live-progress/runs/20261101-dbmol-completion-01/publication.json",
+    "proof": "experiments/reporting/jq1-live-progress/runs/20261101-chemistry-completions-02/publication.json",
     "boltz_global_target": 30000,
     "boltz_panel_range": [
       0,
@@ -168,11 +171,12 @@
       30000
     ],
     "all_panels_start_at_real_zero": true,
-    "dbmol_global_target": 30000,
+    "dbmol_global_target": 60000,
     "dbmol_panel_range": [
       0,
       30000
-    ]
+    ],
+    "dbmol_saved_end": 30000
   },
   "recovery_record": "recovery-20261031.json",
   "last_report_request": {
@@ -216,5 +220,16 @@
       "report_state": "published_edition_0013_saved_only_verified",
       "completion_proof": "experiments/reporting/jq1-live-progress/runs/20261101-dbmol-completion-01/dbmol-completion.json"
     }
+  },
+  "latest_report": {
+    "edition": "edition-0014",
+    "job_id": "29869332",
+    "panels": 16,
+    "new_completed_chemistry_panels": 6,
+    "CPU256": "29869322",
+    "source_profile_only_cap_change": true,
+    "HTTP_verified_files": 240,
+    "browser_QA_passed": true,
+    "record": "experiments/reporting/jq1-live-progress/runs/20261101-chemistry-completions-02"
   }
 }

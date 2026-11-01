@@ -1,6 +1,6 @@
 {
-  "observed_utc": "2026-11-01T12:48:37.070979+00:00",
-  "status": "two_A100_producers_running_seven_direct_producers_queued",
+  "observed_utc": "2026-11-01T18:05:15.991421+00:00",
+  "status": "both_A100_and_one_A40_complete_three_L40S_running_A10_and_second_A40_queued",
   "prepared": {
     "a10": {
       "source": "/work3/s234818/mosaic/runs/20261031-protenix-chemistry-strategies-01/ampere-expansion-20261101-01/a10/source",
@@ -116,10 +116,11 @@
     }
   },
   "current_scheduler": {
-    "observed_utc": "2026-11-01T12:48:37.070979+00:00",
+    "observed_utc": "2026-11-01T17:37:24.597975+00:00",
     "records": [
       {
         "JOBID": "29866311",
+        "USER": "s234818",
         "STAT": "PEND",
         "QUEUE": "gpua10",
         "JOB_NAME": "mosaic-chemstrategy-ampere01-a10-chemfirst-s17",
@@ -127,34 +128,23 @@
       },
       {
         "JOBID": "29866312",
+        "USER": "s234818",
         "STAT": "PEND",
         "QUEUE": "gpua10",
         "JOB_NAME": "mosaic-chemstrategy-ampere01-a10-chemfirst-s23",
         "EXEC_HOST": ""
       },
       {
-        "JOBID": "29865938",
-        "STAT": "RUN",
-        "QUEUE": "gpua100",
-        "JOB_NAME": "mosaic-chemstrategy-ampere01-a100-combined-s17",
-        "EXEC_HOST": "8*n-62-18-8"
-      },
-      {
-        "JOBID": "29865970",
-        "STAT": "RUN",
-        "QUEUE": "gpua100",
-        "JOB_NAME": "mosaic-chemstrategy-ampere01-a100-combined-s23",
-        "EXEC_HOST": "8*n-62-12-23"
-      },
-      {
         "JOBID": "29866315",
-        "STAT": "PEND",
+        "USER": "s234818",
+        "STAT": "DONE",
         "QUEUE": "gpua40",
         "JOB_NAME": "mosaic-chemstrategy-ampere01-a40-severity-s17",
-        "EXEC_HOST": ""
+        "EXEC_HOST": "8*n-62-18-4"
       },
       {
         "JOBID": "29866318",
+        "USER": "s234818",
         "STAT": "PEND",
         "QUEUE": "gpua40",
         "JOB_NAME": "mosaic-chemstrategy-ampere01-a40-severity-s23",
@@ -162,24 +152,35 @@
       },
       {
         "JOBID": "29866329",
-        "STAT": "PEND",
+        "USER": "s234818",
+        "STAT": "RUN",
         "QUEUE": "gpul40s",
         "JOB_NAME": "mosaic-chemstrategy-direct01-l40s-adaptive-s17",
-        "EXEC_HOST": ""
-      },
-      {
-        "JOBID": "29866331",
-        "STAT": "PEND",
-        "QUEUE": "gpul40s",
-        "JOB_NAME": "mosaic-chemstrategy-direct01-l40s-temperature2-s17",
-        "EXEC_HOST": ""
+        "EXEC_HOST": "8*n-62-13-18"
       },
       {
         "JOBID": "29866333",
-        "STAT": "PEND",
+        "USER": "s234818",
+        "STAT": "RUN",
         "QUEUE": "gpul40s",
         "JOB_NAME": "mosaic-chemstrategy-direct01-l40s-adaptive-s23",
-        "EXEC_HOST": ""
+        "EXEC_HOST": "8*n-62-13-19"
+      },
+      {
+        "JOBID": "29866331",
+        "USER": "s234818",
+        "STAT": "RUN",
+        "QUEUE": "gpul40s",
+        "JOB_NAME": "mosaic-chemstrategy-direct01-l40s-temperature2-s17",
+        "EXEC_HOST": "8*n-62-13-17"
+      },
+      {
+        "JOBID": "29865938",
+        "ERROR": "Job <29865938> is not found"
+      },
+      {
+        "JOBID": "29865970",
+        "ERROR": "Job <29865970> is not found"
       }
     ]
   },
@@ -338,13 +339,89 @@
     }
   },
   "A100_saved_progress": {
-    "observed_utc": "2026-11-01T12:46:27.119405+00:00",
+    "observed_utc": "2026-11-01T17:37:24.597975+00:00",
     "committed_updates": {
-      "combined-s17": 7631,
-      "combined-s23": 6062
+      "combined-s17": 20000,
+      "combined-s23": 20000
     },
-    "total_target_per_arm": 20000
+    "total_target_per_arm": 20000,
+    "status": "completed_original_summaries_and_same_job_LSF"
   },
   "adaptive_s23_reconciliation": "Original kill accepted but scheduler settling timed out; failure/restore receipts preserved. Fresh exact EXIT/TERM_OWNER/no-execution/no-payload proof preceded the unique successor29866333.",
-  "direct_proof": "direct-production-proof.json"
+  "direct_proof": "direct-production-proof.json",
+  "current_status": {
+    "chemfirst-s23": {
+      "job_id": "29866312",
+      "scheduler_or_persisted_terminal": "PEND",
+      "queue": "gpua10",
+      "committed_updates_at_least": 0,
+      "global_step_at_least": 0,
+      "target": 20000
+    },
+    "adaptive-s23": {
+      "job_id": "29866333",
+      "scheduler_or_persisted_terminal": "RUN",
+      "queue": "gpul40s",
+      "committed_updates_at_least": 8156,
+      "global_step_at_least": 8156,
+      "target": 20000
+    },
+    "severity-s23": {
+      "job_id": "29866318",
+      "scheduler_or_persisted_terminal": "PEND",
+      "queue": "gpua40",
+      "committed_updates_at_least": 0,
+      "global_step_at_least": 0,
+      "target": 20000
+    },
+    "combined-s17": {
+      "job_id": "29865938",
+      "scheduler_or_persisted_terminal": "DONE_PERSISTED",
+      "queue": "gpua100",
+      "committed_updates_at_least": 20000,
+      "global_step_at_least": 20000,
+      "target": 20000
+    },
+    "temperature2-s17": {
+      "job_id": "29866331",
+      "scheduler_or_persisted_terminal": "RUN",
+      "queue": "gpul40s",
+      "committed_updates_at_least": 8099,
+      "global_step_at_least": 8099,
+      "target": 20000
+    },
+    "adaptive-s17": {
+      "job_id": "29866329",
+      "scheduler_or_persisted_terminal": "RUN",
+      "queue": "gpul40s",
+      "committed_updates_at_least": 8677,
+      "global_step_at_least": 8677,
+      "target": 20000
+    },
+    "chemfirst-s17": {
+      "job_id": "29866311",
+      "scheduler_or_persisted_terminal": "PEND",
+      "queue": "gpua10",
+      "committed_updates_at_least": 0,
+      "global_step_at_least": 0,
+      "target": 20000
+    },
+    "combined-s23": {
+      "job_id": "29865970",
+      "scheduler_or_persisted_terminal": "DONE_PERSISTED",
+      "queue": "gpua100",
+      "committed_updates_at_least": 20000,
+      "global_step_at_least": 20000,
+      "target": 20000
+    },
+    "severity-s17": {
+      "job_id": "29866315",
+      "scheduler_or_persisted_terminal": "DONE",
+      "queue": "gpua40",
+      "committed_updates_at_least": 20000,
+      "global_step_at_least": 20000,
+      "target": 20000
+    }
+  },
+  "current_proof": "status-20261101T180515Z.json"
 }

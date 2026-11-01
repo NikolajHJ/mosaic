@@ -1,0 +1,18 @@
+{
+  "failed_job": "29869264",
+  "failed_request": "results/hpc/20261028-reusable-report-01/requests/request-20261101T173907Z-ef71b55a",
+  "scheduler": "EXIT",
+  "error": "Report output exceeded its declared cap",
+  "passed_saved_data_assessment": true,
+  "measured_phase_bytes_at_observation": 2888389285,
+  "measured_viewer_bytes": 2751013770,
+  "old_cap_bytes": 2147483648,
+  "new_cap_bytes": 4294967296,
+  "source_or_numerical_implementation_changed": false,
+  "old_source_job_and_failed_proofs_preserved": true,
+  "only_terminal_owned_viewer_lock_preserved_elsewhere": "results/hpc/20261028-reusable-report-01/requests/request-20261101T173907Z-ef71b55a/viewer-lock-terminal-EXIT.json",
+  "old_terminal_status_proof": {
+    "path": "results/hpc/20261028-reusable-report-01/requests/request-20261101T173907Z-ef71b55a/ssh-0046-status.stdout",
+    "sha256": "49df4696e5f9675d2eb75ab19cf1b9a00f5c803ff68cfbf9dc3fea1098cd65e6"
+  }
+}

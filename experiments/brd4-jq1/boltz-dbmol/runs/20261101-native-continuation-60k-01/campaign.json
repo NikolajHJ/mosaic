@@ -1,6 +1,6 @@
 {
-  "status": "submitted_queued_exploratory_continuation",
-  "observed_utc": "2026-11-01T13:01:57.103464+00:00",
+  "status": "queued_waiting_L40S_account_three_GPU_limit",
+  "observed_utc": "2026-11-01T18:05:15.991421+00:00",
   "job_id": "29866396",
   "scheduler": "PEND",
   "queue": "gpul40s",
@@ -51,5 +51,17 @@
     "path": "results/hpc/20261101-dbmol-60k-continuation-01/verify-130155/stdout.json",
     "bytes": 14130,
     "sha256": "8c194e2a15de1b271ebd9b1b773de1cfef889f4439c439eff346785f4e65c878"
+  },
+  "confirmed_new_child_updates": 0,
+  "pending_reason": "LSF resource ngpus_physical queue gpul40s default GPU limit3 reached; three chemistry arms currently RUN.",
+  "pending_evidence": {
+    "path": "results/hpc/20261101-run-news/pending-173923/stdout.json",
+    "bytes": 15374,
+    "sha256": "97f119c5c5bc27f219929ab525219991dd64ab2f853feb241436a6222c11630d"
+  },
+  "latest_status_evidence": {
+    "path": "results/hpc/20261101-run-news/current-180514/stdout.json",
+    "bytes": 23467,
+    "sha256": "1843db07d6facf610e995c8103e8db97483cdd2c84ae2a0921030d76b982341d"
   }
 }

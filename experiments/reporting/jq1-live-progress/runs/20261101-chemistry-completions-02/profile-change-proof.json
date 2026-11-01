@@ -1,0 +1,1 @@
+{"status": "only_own_report_byte_cap_changed", "old_engine": "c3854eb73563e39c9c0373b21e771ed2e6c0ea42f92cf85501a2555431744cb4", "new_engine": "61d7ed33fe866ab8d969c993457e403ecaa82470ff7c05813dbc8340fdf428e9", "changed_members": ["profile.json"], "old_cap_bytes": 2147483648, "new_cap_bytes": 4294967296, "all_other_profile_and_code_bytes_unchanged": true}

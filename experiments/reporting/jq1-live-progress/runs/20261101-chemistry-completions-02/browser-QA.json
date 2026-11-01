@@ -1,0 +1,17 @@
+{
+  "status": "passed_actual_browser_presentation_QA",
+  "edition": "edition-0014",
+  "browser": "IAB2",
+  "deliverable_tab": "7",
+  "checks": [
+    "All16 panels present, including six new complete20k trajectories",
+    "A100combined17 numeric0 and1000; next from0 reaches20; latest20000",
+    "Retained slider Home0/End20000;1001 actual saved frames",
+    "Raw atom/bond matrix panels and chunk0010 at endpoint",
+    "A40severity17 loads actual20000 endpoint/contact and chemistry curves/invalid-disconnected graph",
+    "DBMol30k/60k partial/queued; original209/195/264 contradictions visibly preserved",
+    "Visual screenshot of published A100 endpoint and bond-aware raw fragments"
+  ],
+  "scientific_certification": false,
+  "browser_recovery": "Existing legacy tabs could not be claimed; documented same-browser new tab API worked. Numeric keyboard editing/blur used, not synthetic fill event."
+}

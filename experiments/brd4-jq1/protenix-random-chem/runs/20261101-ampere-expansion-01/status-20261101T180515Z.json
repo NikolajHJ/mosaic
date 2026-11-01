@@ -1,0 +1,211 @@
+{
+  "observed_utc": "2026-11-01T18:05:15.991421+00:00",
+  "runs": {
+    "delayed-s17": {
+      "job_id": "29862955",
+      "scheduler_or_persisted_terminal": "DONE_PERSISTED",
+      "queue": "gpuv100",
+      "committed_updates_at_least": 20000,
+      "global_step_at_least": 20000,
+      "target": 20000
+    },
+    "delayed-s23": {
+      "job_id": "29862956",
+      "scheduler_or_persisted_terminal": "DONE_PERSISTED",
+      "queue": "gpuv100",
+      "committed_updates_at_least": 20000,
+      "global_step_at_least": 20000,
+      "target": 20000
+    },
+    "constant1-s17": {
+      "job_id": "29862957",
+      "scheduler_or_persisted_terminal": "DONE_PERSISTED",
+      "queue": "gpuv100",
+      "committed_updates_at_least": 20000,
+      "global_step_at_least": 20000,
+      "target": 20000
+    },
+    "constant1-s23": {
+      "job_id": "29862958",
+      "scheduler_or_persisted_terminal": "DONE_PERSISTED",
+      "queue": "gpuv100",
+      "committed_updates_at_least": 20000,
+      "global_step_at_least": 20000,
+      "target": 20000
+    },
+    "constant10-s17": {
+      "job_id": "29862959",
+      "scheduler_or_persisted_terminal": "DONE_PERSISTED",
+      "queue": "gpuv100",
+      "committed_updates_at_least": 20000,
+      "global_step_at_least": 20000,
+      "target": 20000
+    },
+    "constant10-s23": {
+      "job_id": "29862961",
+      "scheduler_or_persisted_terminal": "DONE_PERSISTED",
+      "queue": "gpuv100",
+      "committed_updates_at_least": 20000,
+      "global_step_at_least": 20000,
+      "target": 20000
+    },
+    "chemfirst-s17": {
+      "job_id": "29866311",
+      "scheduler_or_persisted_terminal": "PEND",
+      "queue": "gpua10",
+      "committed_updates_at_least": 0,
+      "global_step_at_least": 0,
+      "target": 20000
+    },
+    "chemfirst-s23": {
+      "job_id": "29866312",
+      "scheduler_or_persisted_terminal": "PEND",
+      "queue": "gpua10",
+      "committed_updates_at_least": 0,
+      "global_step_at_least": 0,
+      "target": 20000
+    },
+    "severity-s17": {
+      "job_id": "29866315",
+      "scheduler_or_persisted_terminal": "DONE",
+      "queue": "gpua40",
+      "committed_updates_at_least": 20000,
+      "global_step_at_least": 20000,
+      "target": 20000
+    },
+    "severity-s23": {
+      "job_id": "29866318",
+      "scheduler_or_persisted_terminal": "PEND",
+      "queue": "gpua40",
+      "committed_updates_at_least": 0,
+      "global_step_at_least": 0,
+      "target": 20000
+    },
+    "adaptive-s17": {
+      "job_id": "29866329",
+      "scheduler_or_persisted_terminal": "RUN",
+      "queue": "gpul40s",
+      "committed_updates_at_least": 8677,
+      "global_step_at_least": 8677,
+      "target": 20000
+    },
+    "adaptive-s23": {
+      "job_id": "29866333",
+      "scheduler_or_persisted_terminal": "RUN",
+      "queue": "gpul40s",
+      "committed_updates_at_least": 8156,
+      "global_step_at_least": 8156,
+      "target": 20000
+    },
+    "neighbor-s17": {
+      "job_id": "29862971",
+      "scheduler_or_persisted_terminal": "RUN",
+      "queue": "gpuv100",
+      "committed_updates_at_least": 19484,
+      "global_step_at_least": 19484,
+      "target": 20000
+    },
+    "neighbor-s23": {
+      "job_id": "29862972",
+      "scheduler_or_persisted_terminal": "RUN",
+      "queue": "gpuv100",
+      "committed_updates_at_least": 8166,
+      "global_step_at_least": 8166,
+      "target": 20000
+    },
+    "temperature2-s17": {
+      "job_id": "29866331",
+      "scheduler_or_persisted_terminal": "RUN",
+      "queue": "gpul40s",
+      "committed_updates_at_least": 8099,
+      "global_step_at_least": 8099,
+      "target": 20000
+    },
+    "temperature2-s23": {
+      "job_id": "29862974",
+      "scheduler_or_persisted_terminal": "RUN",
+      "queue": "gpuv100",
+      "committed_updates_at_least": 937,
+      "global_step_at_least": 937,
+      "target": 20000
+    },
+    "earlyseverity-s17": {
+      "job_id": "29862975",
+      "scheduler_or_persisted_terminal": "PEND",
+      "queue": "gpuv100",
+      "committed_updates_at_least": 0,
+      "global_step_at_least": 0,
+      "target": 20000
+    },
+    "earlyseverity-s23": {
+      "job_id": "29862996",
+      "scheduler_or_persisted_terminal": "PEND",
+      "queue": "gpuv100",
+      "committed_updates_at_least": 0,
+      "global_step_at_least": 0,
+      "target": 20000
+    },
+    "combined-s17": {
+      "job_id": "29865938",
+      "scheduler_or_persisted_terminal": "DONE_PERSISTED",
+      "queue": "gpua100",
+      "committed_updates_at_least": 20000,
+      "global_step_at_least": 20000,
+      "target": 20000
+    },
+    "combined-s23": {
+      "job_id": "29865970",
+      "scheduler_or_persisted_terminal": "DONE_PERSISTED",
+      "queue": "gpua100",
+      "committed_updates_at_least": 20000,
+      "global_step_at_least": 20000,
+      "target": 20000
+    },
+    "delayed-dense-s17": {
+      "job_id": "29862999",
+      "scheduler_or_persisted_terminal": "PEND",
+      "queue": "gpuv100",
+      "committed_updates_at_least": 0,
+      "global_step_at_least": 0,
+      "target": 20000
+    },
+    "combined-dense-s17": {
+      "job_id": "29863011",
+      "scheduler_or_persisted_terminal": "PEND",
+      "queue": "gpuv100",
+      "committed_updates_at_least": 0,
+      "global_step_at_least": 0,
+      "target": 20000
+    },
+    "dbmol60k": {
+      "job_id": "29866396",
+      "scheduler_or_persisted_terminal": "PEND",
+      "queue": "gpul40s",
+      "committed_updates_at_least": 0,
+      "global_step_at_least": 30000,
+      "target": 60000
+    },
+    "noise50k": {
+      "job_id": "29864788",
+      "scheduler_or_persisted_terminal": "PEND",
+      "queue": "gpuv100",
+      "committed_updates_at_least": 0,
+      "global_step_at_least": 35300,
+      "target": 50000
+    }
+  },
+  "counts": {
+    "screen_completed": 9,
+    "screen_running": 6,
+    "screen_queued": 7
+  },
+  "evidence": {
+    "path": "results/hpc/20261101-run-news/current-180514/stdout.json",
+    "bytes": 23467,
+    "sha256": "1843db07d6facf610e995c8103e8db97483cdd2c84ae2a0921030d76b982341d"
+  },
+  "completion_proofs": "status-20261101T173724Z.json",
+  "new_start": "temperature2-s23 RUN/gpuv100 at least937 updates",
+  "new_failures": false,
+  "optimizer_jobs_changed": false
+}

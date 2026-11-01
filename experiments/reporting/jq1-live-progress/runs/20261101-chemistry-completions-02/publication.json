@@ -1,0 +1,92 @@
+{
+  "HTTP": {
+    "files": 240,
+    "status": "passed_all_new_edition_HTTP_bytes",
+    "url": "http://127.0.0.1:8780/report.html"
+  },
+  "UI_qualification_preview": false,
+  "delta_download_bytes": 137231246,
+  "engine_validation_reused": false,
+  "original_results_changed": false,
+  "publication": {
+    "automatic_optimizer_submission": false,
+    "edition": "edition-0014",
+    "engine_pin": "61d7ed33fe866ab8d969c993457e403ecaa82470ff7c05813dbc8340fdf428e9",
+    "manifest_sha256": "50962969dabf876fc7ec012f5b981e55b985eb2105374546516af855699dbabb",
+    "published_utc": "2026-11-01T18:09:55.713528+00:00",
+    "report_url": "editions/edition-0014/report.html",
+    "version": "jq1-live-publication-v1"
+  },
+  "render_seconds": 613.4289411420468,
+  "reused_local_assets": 160,
+  "runs": {
+    "boltz30k": {
+      "frames": 1501,
+      "updates": 30000
+    },
+    "boltz_chemistry30k": {
+      "frames": 1502,
+      "updates": 30000
+    },
+    "dbmol": {
+      "frames": 1501,
+      "updates": 30000
+    },
+    "protenix50k": {
+      "frames": 2502,
+      "updates": 50000
+    },
+    "protenix_chemistry50k": {
+      "frames": 2501,
+      "updates": 50000
+    },
+    "protenix_defog": {
+      "frames": 1501,
+      "updates": 30000
+    },
+    "protenix_noisy": {
+      "frames": 51,
+      "updates": 1000
+    },
+    "strategy_combined_s17": {
+      "frames": 1001,
+      "updates": 20000
+    },
+    "strategy_combined_s23": {
+      "frames": 1001,
+      "updates": 20000
+    },
+    "strategy_constant10_s17": {
+      "frames": 1001,
+      "updates": 20000
+    },
+    "strategy_constant10_s23": {
+      "frames": 1001,
+      "updates": 20000
+    },
+    "strategy_constant1_s17": {
+      "frames": 1001,
+      "updates": 20000
+    },
+    "strategy_constant1_s23": {
+      "frames": 1001,
+      "updates": 20000
+    },
+    "strategy_delayed_s17": {
+      "frames": 1001,
+      "updates": 20000
+    },
+    "strategy_delayed_s23": {
+      "frames": 1001,
+      "updates": 20000
+    },
+    "strategy_severity_s17": {
+      "frames": 1001,
+      "updates": 20000
+    }
+  },
+  "scientific_success_claim": false,
+  "status": "published_verified_saved_report",
+  "total_seconds": 934.7029999999795,
+  "work": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261028-reusable-report-01\\requests\\request-20261101T175441Z-37c5413b"
+}
