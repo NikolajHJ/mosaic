@@ -1,6 +1,6 @@
 {
-  "status": "five_targets_complete_noise_continuation_last_known_queued",
-  "observed_utc": "2026-11-01T12:35:05.283525+00:00",
+  "status": "DBMol_extended_to60k_queued_four_other_original_targets_complete_noise_last_known_queued",
+  "observed_utc": "2026-11-01T13:01:57.103464+00:00",
   "active_optimizers": {
     "protenix_chemistry": {
       "job_id": "29853757",
@@ -48,22 +48,23 @@
       "study": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/production/boltz/payload/study"
     },
     "dbmol": {
-      "job_id": "29860458",
-      "scheduler": "DONE_PERSISTED",
+      "job_id": "29866396",
+      "scheduler": "PEND",
+      "observed_utc": "2026-11-01T13:01:57.103464+00:00",
       "queue": "gpul40s",
       "confirmed_global_step_at_least": 30000,
-      "target": 30000,
-      "new_applied_updates_at_least": 22500,
-      "study": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-recovery-20261031-01/dbmol-output/dbmol/payload/study",
-      "source_start": 7500,
-      "source_root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-recovery-20261031-01/source-dbmol-30h",
-      "plan": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-recovery-20261031-01/source-dbmol-30h/plan.json",
-      "walltime": "30:00",
-      "optimization_started": "verified_saved_updates",
-      "progress_evidence": "results/hpc/20261101-run-news/20261101T075847Z/stdout.json",
-      "terminal_evidence": "same_job_LSF_complete_summary_contiguous22500_updates_and_frozen_preservation",
-      "report_state": "published_edition_0013_saved_only_verified",
-      "completion_proof": "experiments/reporting/jq1-live-progress/runs/20261101-dbmol-completion-01/dbmol-completion.json"
+      "target": 60000,
+      "new_applied_updates_at_least": 0,
+      "source_start": 30000,
+      "predecessor_job_id": "29860458",
+      "predecessor_target_complete": 30000,
+      "study": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-30000-to60000-20261101-01/run/dbmol/payload/study",
+      "source_root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-30000-to60000-20261101-01/source",
+      "plan": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-30000-to60000-20261101-01/source/plan.json",
+      "walltime": "32:15",
+      "optimization_started": "queued; no child updates yet",
+      "continuation_record": "experiments/brd4-jq1/boltz-dbmol/runs/20261101-native-continuation-60k-01/campaign.json",
+      "report_state": "predecessor0_to30k_published_edition0013"
     },
     "protenix_chemistry_noise": {
       "job_id": "29864788",
@@ -195,5 +196,25 @@
     "path": "results/hpc/20261101-run-news/completion-20261101T123504Z/stdout.json",
     "bytes": 18666,
     "sha256": "abd7cfa1d6e41807ede4d6a51a74bded7ced8edc99903b957bd5b32e64ccf861"
+  },
+  "completed_predecessors": {
+    "dbmol_30000": {
+      "job_id": "29860458",
+      "scheduler": "DONE_PERSISTED",
+      "queue": "gpul40s",
+      "confirmed_global_step_at_least": 30000,
+      "target": 30000,
+      "new_applied_updates_at_least": 22500,
+      "study": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-recovery-20261031-01/dbmol-output/dbmol/payload/study",
+      "source_start": 7500,
+      "source_root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-recovery-20261031-01/source-dbmol-30h",
+      "plan": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-recovery-20261031-01/source-dbmol-30h/plan.json",
+      "walltime": "30:00",
+      "optimization_started": "verified_saved_updates",
+      "progress_evidence": "results/hpc/20261101-run-news/20261101T075847Z/stdout.json",
+      "terminal_evidence": "same_job_LSF_complete_summary_contiguous22500_updates_and_frozen_preservation",
+      "report_state": "published_edition_0013_saved_only_verified",
+      "completion_proof": "experiments/reporting/jq1-live-progress/runs/20261101-dbmol-completion-01/dbmol-completion.json"
+    }
   }
 }

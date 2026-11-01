@@ -1,5 +1,7 @@
 # Boltz-2 fixed-pose DBMol objective pilot
 
+Current1November2026: the exploratory run completed30,000 updates. The user requested another30,000; [continuation29866396](runs/20261101-native-continuation-60k-01/README.md) is queued onL40S toward60,000 with the same objective/settings and preserved saved results. Current exploratory policies apply to this child; dated launch contracts below retain their original scope.
+
 User authorization 23 October 2026: one additional fresh 10,000-update pilot at
 LR0.0025, using the composite binding objective independently of chemistry
 guidance. The parallel 30,000-update affinity-only comparison has a separate

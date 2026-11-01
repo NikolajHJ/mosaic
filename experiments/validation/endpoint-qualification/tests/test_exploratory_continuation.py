@@ -29,6 +29,15 @@ class Tests(unittest.TestCase):
             row=self.row('protenix_chemistry');row[k]=v
             with self.assertRaises(ValueError):tool.validate(row)
 
+    def test_dbmol_can_continue_from_30k_to_60k_without_changing_other_guards(self):
+        row=self.row('dbmol');row.update(start=30000,target=60000,steps=30000)
+        self.assertEqual(tool.validate(row)['steps'],30000)
+        for key,value in [('target',30000),('target',60000.0),('steps',29999),('rate',.005)]:
+            changed=deepcopy(row);changed[key]=value
+            with self.assertRaises(ValueError):tool.validate(changed)
+        other=self.row('boltz');other.update(start=30000,target=60000,steps=30000)
+        with self.assertRaises(ValueError):tool.validate(other)
+
     def test_only_duplicate_forward_assignments_change(self):
         raw='''def evaluate_combined():
     raw = evaluate_graph(loss, graph, key)

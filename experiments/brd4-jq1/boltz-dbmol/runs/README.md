@@ -26,3 +26,6 @@ new authenticated revision manifest. `20261024-boltz-dbmol-storage-05` supplies
 fresh output/history identities and actual generated-command startup checks.
 See its [execution record](20261024-boltz-dbmol-storage-05/run-record.md):
 SSH authentication currently blocks allocated testing and submission.
+
+
+[1November native continuation30k to60k](20261101-native-continuation-60k-01/README.md): actual29866396 queued onL40S, same composite/settings, no new qualification chain.

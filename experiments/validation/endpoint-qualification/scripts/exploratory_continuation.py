@@ -58,7 +58,9 @@ def validate(row):
     require(row['research_profile']=='exploratory','Explicit exploratory profile required')
     require(row['name'] in ('protenix','protenix_chemistry','boltz','boltz_chemistry','dbmol'),'Unknown arm')
     pro=row['name'].startswith('protenix');chem=row['name'].endswith('_chemistry')
-    require(row['rate']==(.3 if pro else .0025) and row['target']==(50000 if pro else 30000),'Changed rate/target')
+    target_allowed = (type(row['target']) is int and type(row['start']) is int
+        and row['target'] > row['start']) if row['name']=='dbmol' else row['target']==(50000 if pro else 30000)
+    require(row['rate']==(.3 if pro else .0025) and target_allowed,'Changed rate/target')
     fresh_noise = row.get('logit_noise') is not None
     if fresh_noise:
         from gradient_scaled_noise import validate as validate_noise, validate_resume
