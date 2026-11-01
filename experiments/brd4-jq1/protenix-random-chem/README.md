@@ -61,3 +61,5 @@ source631/CPU776 pass remain historical. No10000-update optimization was submitt
 
 
 1November2026: [new chemistry strategy comparison](runs/20261031-chemistry-strategies-01/README.md) implements22 paired/random-start20k experiments under the current exploratory policy. This new comparison does not inherit the old strict validation prerequisites described above. Existing jobs/results are unchanged.
+
+1November2026: [structural repair comparison](runs/20261101-structural-repair-01/README.md) adds an opt-in connected-backbone target builder ahead of the existing beam search. Four fresh matched30k trajectories retain the loss/fallbacks and use paired seeds17/23, with same-device comparisons on A100/A40. Earlier runs and saved results remain unchanged.

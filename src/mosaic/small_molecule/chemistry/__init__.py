@@ -8,6 +8,7 @@ adapter explicitly fixes occupancy and neutral charge.
 from .loss import FailureGuidanceConfig, failure_aware_repair_loss
 from .preparation import prepare_failure_guidance
 from .state import DecoderLogits, GraphLogits, mosaic_spec
+from .structural import StructuralRepairConfig
 
 __all__ = [
     "FailureGuidanceConfig",
@@ -16,4 +17,5 @@ __all__ = [
     "DecoderLogits",
     "GraphLogits",
     "mosaic_spec",
+    "StructuralRepairConfig",
 ]

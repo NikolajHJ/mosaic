@@ -65,7 +65,7 @@ def module(path, name):
 def validate_screen(value):
     require(type(value) is dict and set(value) <= {
         "version", "updates", "init_seed", "initialization", "temperature", "chemistry",
-        "binding", "severity_progress", "neighbor_environment", "sampling_interval", "sampling_draws"},
+        "binding", "severity_progress", "neighbor_environment", "structural_repair", "sampling_interval", "sampling_draws"},
         "Unknown screen option")
     require(value["version"] == VERSION, "Unknown screen version")
     require(type(value["updates"]) is int and 1 <= value["updates"] <= 50000,
@@ -381,9 +381,14 @@ def run_loop(loss, initial, prepare, spec, loss_config, key, config, output, *, 
                             "unit_repair": gradient_norm_block(units["chemistry_gradient"], name),
                             "neighbor": gradient_norm_block(units["neighbor_gradient"], name)} for name in ("atoms", "bonds")},
                         "preparation_identity": prepared.identity,
+                        "preparation_seconds": prepared.preparation_seconds,
+                        "target_bond_edits": int(np.count_nonzero(prepared.arrays["changed"])),
                         "neighbor_preparation_identity": None if environment is None else environment.identity,
                         "chemistry_preparation": [{"route": r["route"], "raw_native_valid": r["base"]["raw_valid"],
                             "original_status": r["base"]["status"], "component_count": r["component_count"],
+                            "structural_status": r.get("structural", {}).get("status"),
+                            "structural_checks": r.get("structural", {}).get("checks", 0),
+                            "beam_search_performed": r.get("beam_search_performed", True),
                             "unsupported_local_atoms": r["unsupported_local_atoms"]} for r in rows],
                         "readout": readout, "strict_valid_connected": is_valid,
                         "snapshot_retained": retained, "snapshot": None if selected is None else selected["path"],
@@ -548,7 +553,8 @@ def main(argv=None):
     progress = ProgressSearchConfig(**source_config["progress_search"])
     def prepare(logits, state):
         return prepare_failure_guidance(logits.decoded(), spec, update=state, search=search, progress_search=progress,
-                                        severity_progress=config.get("severity_progress"))
+                                        severity_progress=config.get("severity_progress"),
+                                        structural_repair=config.get("structural_repair"))
     begun, next_check = time.monotonic(), time.monotonic()
     internal_seconds = row["internal_seconds"] if args.internal_seconds is None else args.internal_seconds
     require(type(internal_seconds) is int and 1 <= internal_seconds <= row["internal_seconds"], "Invalid internal deadline override")

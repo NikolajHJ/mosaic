@@ -17,7 +17,9 @@ from chemistry_screen_ops import capacity, read, require, submit, write
 def controls(plan, plan_path):
     root = Path(plan['root']) / 'controls'; root.mkdir(exist_ok=False)
     source = Path(plan['source_root'])
-    names = ['test_protenix_chemistry_screen.py', 'test_chemistry_severity.py']
+    names = plan.get('control_tests', ['test_protenix_chemistry_screen.py', 'test_chemistry_severity.py'])
+    require(names and all(Path(name).name == name and name.endswith('.py') for name in names),
+            'Controls must be named tests inside this source snapshot')
     argv = [sys.executable, '-m', 'pytest', *[str(source / 'tests' / x) for x in names],
             '-q', '-o', 'addopts=', '-p', 'no:cacheprovider', '--junitxml=' + str(root / 'tests.xml')]
     result = subprocess.run(argv, capture_output=True, text=True)

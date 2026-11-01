@@ -77,7 +77,7 @@ class PreparedFailureGuidance:
 
 def prepare_failure_guidance(
     decoded, spec, *, candidate_ids=None, update=0, search=None, progress_search=None,
-    severity_progress=None,
+    severity_progress=None, structural_repair=None,
 ):
     """Prepare one complete scheduled batch from its exact original snapshot.
 
@@ -107,6 +107,10 @@ def prepare_failure_guidance(
         from .severity import severity_config
 
         severity_progress = severity_config(severity_progress)
+    if structural_repair is not None:
+        from .structural import structural_config, search_structural_repair
+
+        structural_repair = structural_config(structural_repair)
     values = [
         np.asarray(v)
         for v in (decoded.atoms, decoded.charges, decoded.symmetric_bond_logits)
@@ -160,7 +164,13 @@ def prepare_failure_guidance(
         raw = (atoms[row], charges[row], bonds[row])
         p = tuple(v[row] for v in probabilities)
         search_started = time.perf_counter()
-        base = search_atom_preserving_repair(raw, p, spec, search)
+        structural = None
+        if structural_repair is not None:
+            structural = search_structural_repair(raw, p, spec, search, structural_repair)
+        if structural is not None and structural["status"] in ("already_valid", "witness_found"):
+            base = structural
+        else:
+            base = search_atom_preserving_repair(raw, p, spec, search)
         original_seconds = time.perf_counter() - search_started
         additional_seconds = 0.0
         status, target, extra = base["status"], None, None
@@ -276,6 +286,9 @@ def prepare_failure_guidance(
                 ),
             }
         )
+        if structural is not None:
+            records[-1]["structural"] = structural
+            records[-1]["beam_search_performed"] = base is not structural
         timings.append((original_seconds, additional_seconds))
     receipt = {
         "version": "mosaic-prepared-failure-guidance-v1",
@@ -320,6 +333,10 @@ def prepare_failure_guidance(
     }
     if severity_progress is not None:
         receipt["severity_progress"] = severity_progress.record()
+    if structural_repair is not None:
+        receipt["structural_repair"] = structural_repair.record()
+        receipt["structural_checks"] = sum(row["structural"]["checks"] for row in records)
+        receipt["beam_checks"] = sum(row["base"]["checks"] for row in records if row["beam_search_performed"])
     payload = {k: v.tolist() for k, v in arrays.items()}
     identity = digest({"arrays": payload, "receipt": receipt})
     materialized = {k: jax.numpy.asarray(v) for k, v in arrays.items()}

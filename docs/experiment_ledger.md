@@ -11027,3 +11027,21 @@ Canonical report added six complete0-to20k trajectories, preserving all previous
 Ten20k comparison arms completed today: delayed17/23,constant1-17/23,constant10-17/23,severity17,neighbor17,combined17/23. All recorded0 strict-valid connected argmax states; every recorded128-draw checkpoint also had0 valid connected molecules. Combined endpoints sanitize but have20/24fragments. Final relaxed contact losses(seed17/23): delayed-.8825/-.6699,constant1-.8738/-.7456,constant10-.7075/-.3667,combined-.1497/-.1092; severity17-.8800,neighbor17-.7372. These are relaxed contact proxies, not hard-molecule binding scores. All completed frozen identities preserved; no new model/chemistry evaluations or experiment changes.
 
 At19:50UTC, running adaptive17/23(~18.6k/18k),neighbor23(14k),temperature2-17/23(~17.8k/8.5k),earlyseverity17(5.5k) still recorded0 strict-valid states/latest128-draw checks. DBMol completed30k today: endpoint composite-9.536507, raw connected graph fails F valence3; historical derivative contradictions remain unresolved. New60k/noise continuations have no completed new result. Exact saved observations/source bindings/LSF dates: experiments/brd4-jq1/protenix-random-chem/runs/20261031-chemistry-strategies-01/results-20261101.json. Report0014 contains the earlier nine comparison completions; neighbor17 finished after its capture.
+
+
+### 1 November 2026 20:16 UTC — structural repair comparison submitted
+
+Implemented opt-in connected-backbone structural target proposals before the
+existing beam search, with fixed atom/charge/occupancy labels and native/schema
+validation. Existing categorical loss is byte-identical; beam/progress/local
+fallbacks and saved runs are unchanged. Fresh matched constant1 Protenix arms
+request30k updates each, initialization seeds17/23, LR.3, composition/margin/noise
+off, all scalar losses and matrices stride20,128 unfiltered samples/1000steps.
+Allocated CPU29870653 DONE:42cases, zero failures/errors/skips, four actual startup
+commands passed. Accepted/released producers: A100 beam17=29870659 and
+structural17=29870660; A40 beam23=29870661 and structural23=29870664, allPEND.
+Measured same-device wall budgets10h/8h45; own4.25GiB remaining-output budget
+passed. Independent source153/input5/byte41/XML/LSF/submission/held-release audit
+passed. No native GPU result or chemical/runtime benefit established. Global
+layout check aborts on unrelated non-UTF8 documentation; no global pass claimed.
+[Protocol and actual receipts](../experiments/brd4-jq1/protenix-random-chem/runs/20261101-structural-repair-01/README.md).
