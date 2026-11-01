@@ -11,7 +11,7 @@
   "updates_per_arm": 20000,
   "total_updates": 440000,
   "checksums_sha256": "9f60ca5e3db7a24785d9d308b8610f37b48d39b06d5825158b8aa73ef8ff8797",
-  "status": "nine_20k_complete_six_running_seven_queued",
+  "status": "ten_20k_complete_six_running_six_queued",
   "jobs": {
     "controls": "29862456",
     "probe": "29862457",
@@ -248,6 +248,23 @@
         "name": "NVIDIA A100-PCIE-40GB",
         "memory_total_MiB": 40960
       }
+    },
+    "neighbor-s17": {
+      "job_id": "29862971",
+      "status": "completed_exploratory_updates",
+      "applied_updates": 20000,
+      "same_job_LSF_success": true,
+      "frozen_preserved": true,
+      "strict_valid_states": 0,
+      "terminal_sampled_valid_connected": 0,
+      "terminal_samples": 128,
+      "summary": {
+        "path": "/work3/s234818/mosaic/runs/20261031-protenix-chemistry-strategies-01/source02/run/neighbor-s17/payload/summary.json",
+        "bytes": 3164,
+        "sha256": "77f27e9339ca08602b7af06219986e12582826f31a510825cebe1392eb1af697"
+      },
+      "states_expected": 20001,
+      "presentation_audit": "Completed after edition0014; next canonical render will verify original frame/state correspondences."
     }
   },
   "current_proof": "experiments/brd4-jq1/protenix-random-chem/runs/20261101-ampere-expansion-01/status-20261101T180515Z.json",
@@ -622,5 +639,8 @@
       "global_step_at_least": 0,
       "target": 20000
     }
-  }
+  },
+  "latest_results_observed_utc": "2026-11-01T19:50:36.597488+00:00",
+  "latest_results_record": "experiments/brd4-jq1/protenix-random-chem/runs/20261031-chemistry-strategies-01/results-20261101.json",
+  "current_results_scope": "Outcome metadata refreshed19:48-19:50UTC; older detailed progress records retain their own capture times."
 }
