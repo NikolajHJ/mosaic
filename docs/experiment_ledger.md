@@ -11146,3 +11146,31 @@ and structural23 for later completion. Default reports use the8GiB WORK3 profile
 DBMol60k still needs its verified continuation history appended on completion.
 See experiments/reporting/jq1-live-progress/runs/20261102-new-completions-01/
 for exact selections, outcome/source/CPU/publication evidence and commands.
+
+
+### 2026-11-02: structural repair/noise interpretation from saved results
+
+Read-only allocated CPU29872685 DONE/hpc in173s summarized23 Protenix chemistry
+trajectories and generated128 matched diagnostic endpoint samples for four
+endpoints. No optimizer/model evaluation or new optimization seed. Source SHA
+8655ffc6753dfa10df097081b040a184de9d5340148ed4afde760a637871e354;
+actual source/submission/held release/LSF/result bytes verified. Fresh sparse
+baseline and structural sample NPZ hashes match their original production files.
+
+At common20k, structural contact -0.84419 versus baseline -0.87378; structural
+30k -0.85460. Structural supplied full valid teachers at all30,001 states but
+never produced valid connected argmax, still needing three bond edits late.
+Median late weighted bond-repair/native gradient norm ratio0.05979 suggests
+weak guidance for remaining edits; full-target averaging/masked fallback terms
+are hypotheses to investigate, not a derivative proof. Dense noise50k contact
+-0.52356 versus non-noisy -0.20776, but both0/128 valid connected endpoint
+samples and zero valid connected recorded states. All-in combinations ended
+in20/24 fragments. These contact scores are relaxed fixed-pose proxies.
+
+Recommended, not launched: keep sparse seed17 fixed; structural constant10,
+then matched structural10 with binding-scaled noise annealed0.4 to0 by20k,
+30k horizon. Existing seed23/chemistry-first work supplies additional evidence;
+no seed grid proposed. If stronger structural guidance fails, investigate
+edited-bond-focused NLL/bounded target margin. All saved results, optimization
+settings, ongoing jobs and report edition0016 unchanged. See
+experiments/brd4-jq1/protenix-random-chem/runs/20261102-results-interpretation-01/.
