@@ -1,0 +1,73 @@
+{
+  "status": "four_exploratory_producers_queued",
+  "observed_utc": "2026-11-02T10:15:11.312775+00:00",
+  "question": "Does structural repair with constant10, with/without annealed binding-gradient noise, yield valid optimized molecules from sparse or chain/uniform starts?",
+  "source": {
+    "path": "/work3/s234818/mosaic/runs/20261102-structural-strong-noise-01/source02/source",
+    "files": 155,
+    "manifest_sha256": "a6093180a42012c2e591443c7074f7721287fdcd8dfc96ddd87fd03c3fc85097",
+    "plan_sha256": "92e00ee228fd8efc65c449cc47a4e365015e1e870138d0fafef3a8884df61e36",
+    "archive_bytes": 446906,
+    "archive_sha256": "45efb87612e729db771ec7cedeaa40ab194a20a455cd52bd2de2d4f71bf8dcdb"
+  },
+  "cpu_job": "29873064",
+  "cpu_cases": 39,
+  "actual_startups": 4,
+  "runs": [
+    {
+      "arm": "structural10-sparse-s17",
+      "job_id": "29873078",
+      "status": "PEND",
+      "queue": "gpua100",
+      "gpu_request": "num=1:mode=exclusive_process:j_exclusive=yes:mps=no:gmem=38G",
+      "wall_minutes": 600,
+      "target": 30000,
+      "study": "/work3/s234818/mosaic/runs/20261102-structural-strong-noise-01/source02/run/structural10-sparse-s17/payload/study",
+      "committed_updates": 0
+    },
+    {
+      "arm": "structural10-noise-sparse-s17",
+      "job_id": "29873081",
+      "status": "PEND",
+      "queue": "gpuv100",
+      "gpu_request": "num=1:mode=exclusive_process:j_exclusive=yes:mps=no:gmem=30G",
+      "wall_minutes": 665,
+      "target": 30000,
+      "study": "/work3/s234818/mosaic/runs/20261102-structural-strong-noise-01/source02/run/structural10-noise-sparse-s17/payload/study",
+      "committed_updates": 0
+    },
+    {
+      "arm": "structural10-chain-s17",
+      "job_id": "29873082",
+      "status": "PEND",
+      "queue": "gpua40",
+      "gpu_request": "num=1:mode=exclusive_process:j_exclusive=yes:mps=no:gmem=44G",
+      "wall_minutes": 525,
+      "target": 30000,
+      "study": "/work3/s234818/mosaic/runs/20261102-structural-strong-noise-01/source02/run/structural10-chain-s17/payload/study",
+      "committed_updates": 0
+    },
+    {
+      "arm": "structural10-noise-chain-s17",
+      "job_id": "29873084",
+      "status": "PEND",
+      "queue": "gpul40s",
+      "gpu_request": "num=1:mode=exclusive_process:j_exclusive=yes:mps=no",
+      "wall_minutes": 600,
+      "target": 30000,
+      "study": "/work3/s234818/mosaic/runs/20261102-structural-strong-noise-01/source02/run/structural10-noise-chain-s17/payload/study",
+      "committed_updates": 0
+    }
+  ],
+  "preserved_predecessor": {
+    "source": "source01",
+    "cpu_job": "29873061",
+    "status": "EXIT",
+    "cases": 39,
+    "passed": 38,
+    "failed": 1,
+    "reason": "Overtight FP32 probability roundtrip fixture; source02 changes only that test and own plan paths"
+  },
+  "original_saved_results_changed": false,
+  "report_candidates_registered": true
+}

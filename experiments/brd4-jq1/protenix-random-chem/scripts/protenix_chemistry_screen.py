@@ -6,6 +6,7 @@ repair loss and accelerated kernels are reused; this module owns the explicitly
 new schedule/temperature/phase experiments, never historical continuations.
 """
 import argparse
+from copy import deepcopy
 from contextlib import ExitStack
 import hashlib
 import importlib.util
@@ -20,6 +21,9 @@ VERSION = "protenix-chemistry-screen-v1"
 SPARSE = {"mode": "sparse_random", "extra_edge_probability": .02,
           "present_probability": .8, "absent_probability": .98,
           "single_bond_probability": .8}
+CHAIN_MIX = {"mode": "carbon_chain_uniform", "uniform_fraction": .5, "logit_noise_std": .05}
+ANNEALED_NOISE = {"version": "binding-logit-noise-linear-v1", "initial_ratio": .4,
+                  "zero_at_update": 20000, "seed": 230017}
 
 
 def require(value, message):
@@ -65,7 +69,7 @@ def module(path, name):
 def validate_screen(value):
     require(type(value) is dict and set(value) <= {
         "version", "updates", "init_seed", "initialization", "temperature", "chemistry",
-        "binding", "severity_progress", "neighbor_environment", "structural_repair", "sampling_interval", "sampling_draws"},
+        "binding", "severity_progress", "neighbor_environment", "structural_repair", "sampling_interval", "sampling_draws", "logit_noise"},
         "Unknown screen option")
     require(value["version"] == VERSION, "Unknown screen version")
     require(type(value["updates"]) is int and 1 <= value["updates"] <= 50000,
@@ -73,7 +77,13 @@ def validate_screen(value):
     require(type(value["init_seed"]) is int and 0 <= value["init_seed"] < 2**32, "Invalid initialization seed")
     require(type(value["temperature"]) in (int, float) and value["temperature"] in (1., 2.), "Declare temperature1 or2")
     init = value["initialization"]
-    require(init == SPARSE or init == {"mode": "dense_original"}, "Unknown initialization recipe")
+    if init.get("mode") == "carbon_chain_uniform":
+        require(set(init) == set(CHAIN_MIX)
+                and type(init["uniform_fraction"]) in (int, float) and 0 < init["uniform_fraction"] <= 1
+                and type(init["logit_noise_std"]) in (int, float) and 0 <= init["logit_noise_std"] <= .5,
+                "Invalid finite chain/uniform initialization")
+    else:
+        require(init == SPARSE or init == {"mode": "dense_original"}, "Unknown initialization recipe")
     if init["mode"] == "dense_original":
         require(value["init_seed"] == 17, "Original dense control uses the authenticated seed17 snapshot")
     chemistry = value["chemistry"]
@@ -100,7 +110,84 @@ def validate_screen(value):
             "Unknown bounded binding phase")
     require(value.get("sampling_interval", 1000) == 1000 and value.get("sampling_draws", 128) == 128,
             "Sampling protocol must remain declared128 draws/1000 steps")
+    if value.get("logit_noise") is not None:
+        validate_noise(value["logit_noise"])
     return value
+
+
+def validate_noise(policy):
+    require(type(policy) is dict and set(policy) == set(ANNEALED_NOISE)
+            and policy["version"] == ANNEALED_NOISE["version"], "Unknown annealed noise policy")
+    require(type(policy["initial_ratio"]) in (int, float) and 0 <= policy["initial_ratio"] <= 1
+            and type(policy["zero_at_update"]) is int and 1 <= policy["zero_at_update"] <= 50000
+            and type(policy["seed"]) is int and 0 <= policy["seed"] < 2**64,
+            "Invalid finite noise scale, horizon or seed")
+    return policy
+
+
+def noise_ratio(policy, update):
+    validate_noise(policy)
+    require(type(update) is int and update >= 0, "Invalid global noise update")
+    return policy["initial_ratio"] * max(0., 1. - update / policy["zero_at_update"])
+
+
+class BindingNoise:
+    """Reuse the original per-block noise math, with a declared global schedule."""
+    def __init__(self, policy, *, start=0, saved=None):
+        import numpy as np
+        self.policy = deepcopy(validate_noise(policy))
+        require(type(start) is int and start >= 0, "Invalid noise stream offset")
+        self.generator = np.random.Generator(np.random.PCG64(policy["seed"]))
+        self.next_update = start
+        if saved is None:
+            require(start == 0, "Continuation needs checkpointed noise stream")
+        else:
+            require(saved["policy"] == policy and saved["next_update"] == start,
+                    "Checkpoint noise policy/offset differs")
+            require(saved["rng_state"]["bit_generator"] == "PCG64", "Unexpected checkpoint RNG")
+            self.generator.bit_generator.state = deepcopy(saved["rng_state"])
+
+    def checkpoint(self):
+        return {"policy": deepcopy(self.policy), "next_update": self.next_update,
+                "rng_state": deepcopy(self.generator.bit_generator.state)}
+
+    def propose(self, logits, gradient, binding_gradient, rate, update):
+        import jax
+        import numpy as np
+        from gradient_scaled_noise import direction_noise
+        require(update == self.next_update, "Exactly one noise proposal per global update required")
+        ratio = noise_ratio(self.policy, update)
+        before = self.checkpoint()
+        # Identical deterministic expression to the original screen runner.
+        base = type(logits)(logits.atoms-rate*gradient.atoms,
+                            logits.bonds-rate*gradient.bonds, logits.temperature)
+        values, metrics = {}, {}
+        for name in ("atoms", "bonds"):
+            deterministic = getattr(base, name)
+            native = np.asarray(getattr(binding_gradient, name))
+            require(native.shape == deterministic.shape, "Binding noise coordinates differ")
+            require(np.isfinite(native).all() and np.isfinite(np.asarray(deterministic)).all(),
+                    "Nonfinite noise proposal input")
+            if ratio > 0:
+                noise, metric = direction_noise(native, rate, ratio, self.generator)
+                value = deterministic + jax.device_put(noise, deterministic.sharding)
+            else:
+                # Exact noiseless settling; no addition and no unused RNG draws.
+                value = deterministic
+                norm = float(np.linalg.norm(native.astype(np.float64)))
+                metric = {"native_logit_gradient_norm": norm, "native_step_norm": rate*norm,
+                          "requested_noise_norm": 0., "noise_norm": 0., "flat_native_block": norm == 0}
+            require(value.dtype == deterministic.dtype and np.isfinite(np.asarray(value)).all(),
+                    "Nonfinite/changed-dtype noisy proposal")
+            metric["realized_FP32_noise_displacement_norm"] = float(np.linalg.norm(
+                np.asarray(value, dtype=np.float64)-np.asarray(deterministic, dtype=np.float64)))
+            values[name], metrics[name] = value, metric
+        self.next_update += 1
+        return type(logits)(values["atoms"], values["bonds"], logits.temperature), {
+            "version": self.policy["version"], "global_step": update, "ratio": ratio,
+            "blocks": metrics, "rng_state_before": before["rng_state"],
+            "rng_state_after": self.checkpoint()["rng_state"], "model_key_changed": False,
+            "chemistry_weight_used_for_noise_scale": False, "gradient_normalized_or_clipped": False}
 
 
 class Policy:
@@ -166,6 +253,20 @@ def initialize(config, snapshot, logit_type):
             atoms, bonds = saved["atom_logits"].copy(), saved["bond_logits"].copy()
         return logit_type(jnp.asarray(atoms), jnp.asarray(bonds), config["temperature"])
     rng = np.random.Generator(np.random.PCG64(config["init_seed"]))
+    if config["initialization"]["mode"] == "carbon_chain_uniform":
+        uniform = config["initialization"]["uniform_fraction"]
+        atoms = np.full((25, 6), uniform/6, dtype=np.float32)
+        atoms[:, 0] += 1-uniform  # C; occupied neutral slots are unchanged.
+        bonds = np.full((300, 5), uniform/5, dtype=np.float32)
+        for row, (i, j) in enumerate((i, j) for i in range(25) for j in range(i+1, 25)):
+            bonds[row, 1 if j == i+1 else 0] += 1-uniform
+        result = []
+        for probabilities in (atoms, bonds):
+            direction = rng.standard_normal(probabilities.shape)
+            direction -= direction.mean(axis=-1, keepdims=True)
+            result.append(jnp.log(jnp.asarray(probabilities)) + jnp.asarray(
+                direction*config["initialization"]["logit_noise_std"], dtype=jnp.float32))
+        return logit_type(*result, config["temperature"])
     atoms = rng.dirichlet(np.ones(6), size=25).astype(np.float32)
     sequence = rng.integers(0, 25, size=23).tolist()
     degree = [1 + sequence.count(i) for i in range(25)]
@@ -339,6 +440,8 @@ def run_loop(loss, initial, prepare, spec, loss_config, key, config, output, *, 
     (output/"references").mkdir()
     policy = Policy(config)
     start=0 if resume is None else resume['offset']
+    noise = (None if config.get("logit_noise") is None else BindingNoise(config["logit_noise"], start=start,
+             saved=None if resume is None else resume["state"]["noise_state"]))
     steps = config["updates"]-start if steps is None else steps
     require(type(steps) is int and 1 <= steps and start+steps <= config["updates"], "Invalid actual loop budget")
     summary = {"version": VERSION, "status": "running", "requested_updates": steps,
@@ -427,6 +530,8 @@ def run_loop(loss, initial, prepare, spec, loss_config, key, config, output, *, 
                         "snapshot_retained": retained, "snapshot": None if selected is None else selected["path"],
                         "snapshot_sha256": None if selected is None else selected["sha256"], "latest_snapshot": latest,
                         "temperature": logits.temperature}
+        if noise is not None:
+            state_record["noise_state"] = noise.checkpoint()
         append(output/"states.jsonl", state_record)
         summary["last_state"] = state_record
         summary["valid_unique_smiles"] = sorted(unique)
@@ -461,7 +566,11 @@ def run_loop(loss, initial, prepare, spec, loss_config, key, config, output, *, 
                 tick(step)
             before, gradient = weighted(units, active)
             logits = units["logits"]
-            proposal = type(logits)(logits.atoms-.3*gradient.atoms, logits.bonds-.3*gradient.bonds, logits.temperature)
+            if noise is None:
+                proposal = type(logits)(logits.atoms-.3*gradient.atoms, logits.bonds-.3*gradient.bonds, logits.temperature)
+                noise_record = None
+            else:
+                proposal, noise_record = noise.propose(logits, gradient, units["binding_gradient"], .3, step)
             # Retain the exact proposed input even if native execution fails.
             with (output/"current-trial.npz").open("wb") as stream:
                 np.savez_compressed(stream, atom_logits=np.asarray(proposal.atoms), bond_logits=np.asarray(proposal.bonds), step=step)
@@ -472,6 +581,8 @@ def run_loop(loss, initial, prepare, spec, loss_config, key, config, output, *, 
                       "contact_before": float(units["native"].value), "contact_after": float(candidate["native"].value),
                       "rate": .3, "candidate_count": 1, **active,
                       "no_op": bool(all(np.array_equal(np.asarray(getattr(logits, n)), np.asarray(getattr(proposal, n))) for n in ("atoms", "bonds")))}
+            if noise_record is not None:
+                record["noise"] = noise_record
             prepared, environment = prepare_step(proposal, step+1)
             units = evaluate_units(loss, proposal, prepared, environment, spec, loss_config, key, native=candidate["native"])
             readout = hard_readout(proposal.graph())
@@ -524,7 +635,7 @@ def main(argv=None):
     require(row["rate"] == .3 and row["model_key"] == 17 and row["matrix_stride"] == 20 and row["loss_stride"] == 1,
             "Changed shared LR/model key/retention")
     require(row.get("composition_weight", 0) == 0 and not row.get("margin", False), "Composition/margin must remain off")
-    require(not row.get("logit_noise"), "Noise not requested in this comparison")
+    require(not row.get("logit_noise"), "Declare noise inside screen configuration, not arm metadata")
     for name in ("config", "snapshot", "reference", "pocket", "context_ready"):
         bound(row[name])
     if row.get('resume') is not None:

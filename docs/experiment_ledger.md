@@ -11174,3 +11174,7 @@ no seed grid proposed. If stronger structural guidance fails, investigate
 edited-bond-focused NLL/bounded target margin. All saved results, optimization
 settings, ongoing jobs and report edition0016 unchanged. See
 experiments/brd4-jq1/protenix-random-chem/runs/20261102-results-interpretation-01/.
+
+## 2November2026: structural10 and annealed-noise initializer comparison
+
+Submitted four fresh30k Protenix chemistry producers after actual CPU29873064 DONE/39 cases and4startup commands: sparse structural10 A10029873078, sparse plus noise V10029873081, chain/uniform structural10 A40 29873082, chain/uniform plus noise L40S29873084. All PEND at10:15:11UTC. LR.3, composition0/no margin, fixed detached teachers, same model/context/key17; noise.4 linearly zero by20k then10k settling, checkpointed PCG64 stream. New source02 preserves source01 fixture failure (38pass/one FP32 roundtrip assertion) and changes no producer math. All held receipts/releases and bounded own-output gates audited; no cleanup or old result edits. Four conditional report candidates registered; no report rebuild for queued jobs. [Protocol and exact campaign](../experiments/brd4-jq1/protenix-random-chem/runs/20261102-structural-strong-noise-01/README.md).

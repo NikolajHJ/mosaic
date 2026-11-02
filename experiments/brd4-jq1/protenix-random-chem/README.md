@@ -67,3 +67,5 @@ source631/CPU776 pass remain historical. No10000-update optimization was submitt
 ## Current recovery after exclusive GPU request
 
 See [2November exclusive-mode recovery](runs/20261102-exclusive-gpu-recovery-01/README.md): ten unfinished Mosaic producers resubmitted, five already committing updates at00:29UTC; completed runs and all saved inputs/results preserved. Actual successors and source/plan bindings override historical RUN/PEND records.
+
+2November2026: [stronger structural guidance and annealed noise](runs/20261102-structural-strong-noise-01/README.md) adds four fresh30k runs: constant10 structural repair with/without binding-gradient noise annealed0.4 to0 by20k, each from sparse seed17 or50% carbon-chain/uniform plus small initial noise. Actual jobs29873078/81/82/84 are queued on A100/V100/A40/L40S; CPU39 and four startups passed. Existing runs/results are unchanged.

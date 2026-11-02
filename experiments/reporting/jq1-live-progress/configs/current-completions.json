@@ -419,6 +419,42 @@
       "status_detail": "Compare at update20,000 against the existing constant1 seed23 V100 run. Remaining20k-30k updates are additional unmatched exploration. Loss/fallbacks unchanged; GPU differs, so elapsed times are not a clean speedup measurement. No derivative or binding certification.",
       "comparison_baseline_id": "strategy_constant1_s23",
       "comparison_update": 20000
+    },
+    {
+      "id": "structural10_sparse_s17",
+      "label": "structural10-sparse - seed17 (gpua100)",
+      "run": "/work3/s234818/mosaic/runs/20261102-structural-strong-noise-01/source02/run/structural10-sparse-s17/payload",
+      "global_target": 30000,
+      "primary_metric": "contact_loss",
+      "continuation_status": "completed",
+      "status_detail": "Structural repair; constant chemistry10; No per-step noise. Existing sparse seeded tree initialization. Composition/margin off. Different GPU families confound runtime comparisons. Exploratory results; no derivative or binding certification."
+    },
+    {
+      "id": "structural10_noise_sparse_s17",
+      "label": "structural10-noise-sparse - seed17 (gpuv100)",
+      "run": "/work3/s234818/mosaic/runs/20261102-structural-strong-noise-01/source02/run/structural10-noise-sparse-s17/payload",
+      "global_target": 30000,
+      "primary_metric": "contact_loss",
+      "continuation_status": "completed",
+      "status_detail": "Structural repair; constant chemistry10; binding-only logit noise0.4 linearly zero by20k, then10k settling. Existing sparse seeded tree initialization. Composition/margin off. Different GPU families confound runtime comparisons. Exploratory results; no derivative or binding certification."
+    },
+    {
+      "id": "structural10_chain_s17",
+      "label": "structural10-chain - seed17 (gpua40)",
+      "run": "/work3/s234818/mosaic/runs/20261102-structural-strong-noise-01/source02/run/structural10-chain-s17/payload",
+      "global_target": 30000,
+      "primary_metric": "contact_loss",
+      "continuation_status": "completed",
+      "status_detail": "Structural repair; constant chemistry10; No per-step noise. 50% chain +50% uniform, initialization logit noise std0.05. Composition/margin off. Different GPU families confound runtime comparisons. Exploratory results; no derivative or binding certification."
+    },
+    {
+      "id": "structural10_noise_chain_s17",
+      "label": "structural10-noise-chain - seed17 (gpul40s)",
+      "run": "/work3/s234818/mosaic/runs/20261102-structural-strong-noise-01/source02/run/structural10-noise-chain-s17/payload",
+      "global_target": 30000,
+      "primary_metric": "contact_loss",
+      "continuation_status": "completed",
+      "status_detail": "Structural repair; constant chemistry10; binding-only logit noise0.4 linearly zero by20k, then10k settling. 50% chain +50% uniform, initialization logit noise std0.05. Composition/margin off. Different GPU families confound runtime comparisons. Exploratory results; no derivative or binding certification."
     }
   ]
 }
