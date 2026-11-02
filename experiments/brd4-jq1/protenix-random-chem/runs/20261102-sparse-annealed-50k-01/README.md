@@ -104,3 +104,21 @@ Read actual `run/jobs.json`, submission/held/release receipts and conditional
 assessment before any recovery. Completion is exploratory, not derivative or
 experimental binding certification. Keep all losses; matrices every20 plus
 endpoints/latest/best,128 unfiltered categorical samples every1000 and endpoint.
+
+
+## Verified completion: 3 November 2026, 00:06 CET
+
+Parent29873389 DONE with actual same-job LSF success, all50,000 updates and
+50,001 contiguous saved states; frozen model/context identities unchanged.
+Final raw argmax is sanitized and connected. The producer reports1,636 valid
+states, two distinct valid argmax identities, and19/128 valid connected endpoint
+samples (four distinct valid sample identities). Final relaxed contact -0.6625105;
+best relaxed contact among valid-argmax states -0.6916510 at47,033. These are
+relaxed scores, not hard-molecule rescoring or binding certification.
+
+All48 DTU queues remain administratively inactive. Conditional callback29873393
+is PEND; its expected outcome is skip if it confirms the saved valid endpoint.
+No20k-tail GPU has been submitted. Existing report request
+request-20261102T170052Z-9d264ce8 already includes this completion candidate;
+CPU29874871 remains PEND, so no new edition is published and no duplicate request
+was created. See [completion evidence](completion-20261103T000614CET.json).

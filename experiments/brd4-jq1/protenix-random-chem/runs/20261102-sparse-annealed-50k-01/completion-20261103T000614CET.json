@@ -1,0 +1,87 @@
+{
+  "version": "saved-completion-metadata-audit-v1",
+  "observed_utc": "2026-11-02T23:06:14.329860+00:00",
+  "job_id": "29873389",
+  "status": "passed",
+  "scope": "Saved metadata/JSONL/source-plan byte bindings and actual same-job LSF; no local molecular conversion or model evaluation",
+  "packet_path": "results/hpc/20261103-queue-check/completion-20261102T230612Z/stdout.json",
+  "packet_sha256": "8acccac881e5424894b45559dc58d06743c2623b28c776d5c003bde548e1be8d",
+  "source_manifest": {
+    "path": "/work3/s234818/mosaic/runs/20261102-sparse-annealed-50k-01/source01/source/checksums.json",
+    "bytes": 17675,
+    "sha256": "57ee35dd1c8ffd062db2a885b76fe8ca220eb7e7548d518522689fac58ecf7a8"
+  },
+  "plan": {
+    "path": "/work3/s234818/mosaic/runs/20261102-sparse-annealed-50k-01/source01/source/plan.json",
+    "bytes": 6385,
+    "sha256": "2d74dc9da705d48ac34af6c74d7c72fa83f53f8c5f46807c03d7c7af8cd4ffca"
+  },
+  "summary": {
+    "path": "/work3/s234818/mosaic/runs/20261102-sparse-annealed-50k-01/source01/run/annealed-sparse-s17/payload/summary.json",
+    "bytes": 4861,
+    "sha256": "6ec4559b699e3d4b134ca175e124ebc4e515ff8e420e45521a36b5edd0f157b3"
+  },
+  "report": {
+    "path": "/work3/s234818/mosaic/runs/20261102-sparse-annealed-50k-01/source01/run/annealed-sparse-s17/payload/study/report.json",
+    "bytes": 11441,
+    "sha256": "3ab7794b14103ba46b6790e3726ed17b4e2e0af38c31487e3f7eaf7420441f18"
+  },
+  "LSF": {
+    "path": "/work3/s234818/mosaic/runs/20261102-sparse-annealed-50k-01/source01/run/production/annealed-sparse-s17/stdout.29873389.log",
+    "tail_sha256": "3a2c5c6dbfde0a26aed3d10912c3a3d3a47b55e3d9c77eddee1218356989d1f5",
+    "same_job_success": true
+  },
+  "applied_updates": 50000,
+  "contiguous_states": 50001,
+  "contiguous_updates": 50000,
+  "frozen_before": {
+    "model_digest": "8d6926d5390fe682e193089f790ce53aa4011a6d5509ddb452a55db3d89b0ab2",
+    "context_digest": "b28dfad8e5ede565071c70a61695f6a38f5cb6bd591705e32979e59050ff5ce4"
+  },
+  "frozen_after": {
+    "model_digest": "8d6926d5390fe682e193089f790ce53aa4011a6d5509ddb452a55db3d89b0ab2",
+    "context_digest": "b28dfad8e5ede565071c70a61695f6a38f5cb6bd591705e32979e59050ff5ce4"
+  },
+  "final_argmax_valid_connected": true,
+  "final_canonical_smiles": "CC(Cl)(CC(F)Cl)CC1(C(N)S)OC(N)(C(F)F)NC(C)(F)C1(C)F",
+  "final_relaxed_contact": -0.6625105142593384,
+  "reported_strict_valid_states": 1636,
+  "reported_unique_valid_argmax_identities": 2,
+  "reported_endpoint_samples": {
+    "step": 50000,
+    "draws": 128,
+    "sanitized": 39,
+    "strict_valid_connected": 19,
+    "unique_valid_smiles": [
+      "CC(Cl)(CC(F)Cl)CC1(C(N)S)OC(N)(C(F)F)NC(C)(F)C1(C)F",
+      "CC(F)C(C)(F)C(CC(C)(Cl)CC(F)Cl)(OC(N)(N)C(F)F)C(N)S",
+      "CC(F)C(C)(F)NC(N)(OC(CC(C)(Cl)CC(F)Cl)C(N)S)C(F)F",
+      "CC(F)NC(N)(OC(CC(C)(Cl)CC(F)Cl)(C(C)F)C(N)S)C(F)F"
+    ],
+    "failure_categories": {
+      "AtomValenceException": 71,
+      "KekulizeException": 12,
+      "disconnected": 20,
+      "AtomKekulizeException": 6
+    },
+    "raw_samples": {
+      "path": "/work3/s234818/mosaic/runs/20261102-sparse-annealed-50k-01/source01/run/annealed-sparse-s17/payload/study/samples/samples-50000.npz",
+      "bytes": 1924,
+      "sha256": "db7475e24e754e5670e0d1792992d88af43f449e9d9910052602e00b92117a87"
+    },
+    "native_model_key_changed": false,
+    "sampling": "Independent PCG64; FP64 inverseCDF scaled by represented row sum; no rejection/repair",
+    "binding_scores_evaluated_for_samples": false
+  },
+  "best_valid_relaxed_contact": {
+    "step": 47033,
+    "loss": -0.6916510462760925,
+    "scope": "same saved relaxed graph native score; hard argmax not rescored"
+  },
+  "derivative_or_binding_certification": false,
+  "conditional_callback": "29873393",
+  "conditional_callback_state": "PEND_admin_inactive",
+  "expected_conditional_outcome": "skip if original allocated callback confirms valid endpoint; callback has not run",
+  "tail_gpu_submitted": false,
+  "report_refresh": "Existing request request-20261102T170052Z-9d264ce8 includes this candidate; CPU29874871 PEND due admin-inactive queue; no new request/render/publication"
+}

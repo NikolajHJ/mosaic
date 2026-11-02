@@ -11242,3 +11242,18 @@ DTU reopens scheduling, with no duplicate. No new report edition is claimed.
 Read-only VAE context:29871778 has original same-job LSF successful completion;
 its follow-up CPU and separate VAE-Protenix pilot remain queued. No foreign
 job/source/checkpoint was modified, and no scientific quality pass is inferred.
+
+
+### 3 November 2026 00:06 CET: annealed sparse chemistry reaches a valid endpoint
+
+Reconnected successfully; all48 queues still administrator-inactive. Parent
+29873389 DONE,50,000 applied updates/50,001 contiguous states, exact source/plan
+bindings and actual same-job LSF success verified; frozen identities unchanged.
+Final raw argmax valid and connected. Saved report records1,636 valid states,
+two distinct valid argmax identities and19/128 valid connected endpoint samples.
+Final relaxed contact -0.6625105; best valid-argmax relaxed contact -0.6916510 at
+47,033, not hard-molecule rescoring or binding certification. Existing report
+request9d264ce8/CPU29874871 and original conditional callback29873393 remain PEND.
+No tail GPU/new request submitted; callback expected to skip on valid endpoint.
+DBMol29871027 still RUN, coherent56,982/60,000. Evidence: experiments/brd4-jq1/
+protenix-random-chem/runs/20261102-sparse-annealed-50k-01/completion-20261103T000614CET.json.
