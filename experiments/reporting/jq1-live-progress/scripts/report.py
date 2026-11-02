@@ -30,7 +30,7 @@ import quick_inputs as inputs
 
 OWNER = Path(__file__).resolve().parents[1]
 REPO = OWNER.parents[2]
-LOCAL_ONLY_PROFILE = {'base_archive', 'default_output', 'artifact_root', 'port', 'ssh_host', 'ledger', 'run_journal'}
+LOCAL_ONLY_PROFILE = {'base_archive', 'default_output', 'artifact_root', 'port', 'ssh_host', 'ledger', 'run_journal','connection_helper'}
 
 
 def write(path, value):
@@ -74,7 +74,7 @@ def event(profile, work, status, **details):
         with path.open('ab') as stream:
             stream.write(inputs.encoded(row))
     if profile.get('ledger'):
-        text = '\n\n### ' + row['utc'] + ' — Reusable saved report: ' + status + '\n\n'
+        text = '\n\n### ' + row['utc'] + ' â€” Reusable saved report: ' + status + '\n\n'
         text += 'Request `' + row['request_id'] + '`; ' + json.dumps(details, sort_keys=True) + '.\n'
         text += 'Evidence `' + str(work) + '`. Report-only metadata/allocated CPU work; scientific settings/results unchanged.\n'
         with profile_path(profile['ledger']).open('a', encoding='utf8', newline='\n') as stream:
@@ -85,10 +85,11 @@ def parser():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--runs', type=Path, help='Small JSON selection, including ordered continuation segments')
     p.add_argument('--run', action='append', default=[], help='Saved study/job path or a name from the default selection; repeat as needed')
-    p.add_argument('--profile', type=Path, default=OWNER / 'configs/dtu-current.json')
+    p.add_argument('--profile', type=Path, default=OWNER / 'configs/dtu-report-home.json')
     p.add_argument('--output', type=Path, help='Existing stable viewer or a new report directory')
     p.add_argument('--port', type=int)
     p.add_argument('--resume', type=Path, help='Resume this exact recorded local request; never resubmit an unknown outcome')
+    p.add_argument('--recover-delivery', action='store_true', help='Deliver an existing completed render using authenticated persisted LSF/history after live scheduler expiry; no submission')
     p.add_argument('--setup-only', action='store_true', help='Install/validate the engine once without rendering data')
     p.add_argument('--force', action='store_true', help='Create a fresh edition even when the saved inputs are unchanged')
     p.add_argument('--no-serve', action='store_true', help='Publish files without starting/checking localhost HTTP')
@@ -137,10 +138,18 @@ def package_engine(profile):
     # the sole submitted entry point. Keep report_ops only for its existing tests.
     members.pop('scripts/observe.py', None)
     for name in ('scripts/quick_inputs.py', 'scripts/quick_runtime.py', 'scripts/report.py',
-                 'scripts/publish.py', 'scripts/report_chemistry_screen.py', 'tests/test_report_chemistry_screen.py', 'tests/test_quick_report.py', 'tests/test_viewer.py', 'templates/report.html'):
+                 'scripts/report_delivery_recovery.py', 'tests/test_report_delivery_recovery.py',
+                 'scripts/report_prefix.py', 'tests/test_report_prefix.py',
+                 'tests/test_report_history_metadata.py',
+                 'scripts/publish.py', 'scripts/report_history.py','tests/test_report_history.py', 'scripts/report_exploratory.py','tests/test_report_exploratory.py', 'scripts/report_chemistry_screen.py', 'tests/test_report_chemistry_screen.py', 'scripts/report_defog.py', 'tests/test_report_defog.py', 'tests/test_quick_report.py', 'tests/test_viewer.py', 'templates/report.html'):
         members[name] = (OWNER / name).read_bytes().replace(b'\r\n', b'\n')
     runtime_profile = {k: v for k, v in profile.items() if k not in LOCAL_ONLY_PROFILE}
-    runtime_profile['chemistry_screen_renderer_sha256'] = hashlib.sha256(members['scripts/report_chemistry_screen.py']).hexdigest()
+    for name in ('chemistry_screen','history','exploratory','defog'):
+        runtime_profile[name+'_renderer_sha256'] = hashlib.sha256(members['scripts/report_'+name+'.py']).hexdigest()
+    members['scripts/storage_accounting.py'] = (REPO / 'scripts/hpc/storage_accounting.py').read_bytes().replace(b'\r\n', b'\n')
+    members['tests/test_report_storage.py'] = (OWNER / 'tests/test_report_storage.py').read_bytes().replace(b'\r\n', b'\n')
+    members['tests/test_report_work3_capacity.py'] = (OWNER / 'tests/test_report_work3_capacity.py').read_bytes().replace(b'\r\n', b'\n')
+    members['tests/test_report_source_proof.py'] = (OWNER / 'tests/test_report_source_proof.py').read_bytes().replace(b'\r\n', b'\n')
     members['profile.json'] = inputs.encoded(runtime_profile)
     members['README.md'] = b'# Reusable saved-report engine\n\nCode and fixtures are validated once per exact engine hash. Run selections are separate requests. No model or optimizer phase exists.\n'
     for name, raw in members.items():
@@ -168,7 +177,10 @@ class Connection:
         self.profile, self.work = profile, Path(work)
         self.counter = len(list(self.work.glob('ssh-*.json')))
 
-    def args(self, command):
+    def args(self, command, timeout=300):
+        if self.profile.get('connection_helper'):
+            return [self.profile['connection_helper'],'exec','--timeout',str(max(30,min(3590,timeout-10))),
+                    'bash -lc '+shlex.quote(command)]
         return ['ssh', '-T', '-o', 'BatchMode=yes', '-o', 'ConnectTimeout=15', '-o', 'ConnectionAttempts=1',
                 self.profile['ssh_host'], 'bash -l -c ' + shlex.quote(command)]
 
@@ -176,7 +188,7 @@ class Connection:
         ast.parse(code, filename=label + '-remote.py')
         self.counter += 1
         root = self.work / ('ssh-' + str(self.counter).zfill(4) + '-' + label)
-        args = self.args(shlex.quote(self.profile['python']) + ' -')
+        args = self.args(shlex.quote(self.profile['python']) + ' -',timeout)
         receipt = {'status': 'unknown', 'label': label, 'program_sha256': hashlib.sha256(code.encode()).hexdigest()}
         write(root.with_suffix('.json'), receipt)
         root.with_suffix('.py').write_text(code, encoding='utf8', newline='\n')
@@ -407,7 +419,11 @@ def main(argv=None):
             result = inputs.load(work / 'result.json')
             print(json.dumps(result, indent=2))
             return result
+        if args.recover_delivery:
+            import report_delivery_recovery
+            return report_delivery_recovery.deliver(sys.modules[__name__], args, profile, work, state)
     else:
+        inputs.require(not args.recover_delivery, 'Delivery recovery requires --resume')
         selection = selection_from_args(args)
         viewer = profile_path(args.output or profile['default_output']).resolve()
         if args.dry_run:
@@ -462,6 +478,7 @@ def main(argv=None):
                 plan = connection.action(source, pin, 'capture', selection)
                 record(work / 'captured-plan.json', plan)
             prior = current_plan(viewer)
+            selection = plan.get('resolved_selection', selection)
             same = prior is not None and inputs.selection_key(prior['arms'], profile['validated_renderer_sha256']) == inputs.selection_key(plan['arms'], profile['validated_renderer_sha256'])
             if same and not args.force:
                 # Verify current assets before reporting an unchanged delivery.

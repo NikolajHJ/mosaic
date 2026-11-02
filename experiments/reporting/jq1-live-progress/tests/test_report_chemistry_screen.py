@@ -1,6 +1,7 @@
 """Saved-array adapter fixtures; execute on allocated report CPU only."""
 from copy import deepcopy
 import importlib.util
+import json
 from pathlib import Path
 import sys
 
@@ -210,3 +211,78 @@ def test_runtime_routes_screen_and_keeps_original_frame_renderer(tmp_path):
 
 def test_screen_suite_and_existing_seven_fit_one_bounded_report():
     assert 7 + 22 + 4 <= inputs.MAX_RUNS == 64
+
+
+def continued_fixture(root):
+    """A failed40-update parent prefix20 followed by20 resumed updates."""
+    a=root/'parent';b=root/'child';a.mkdir();b.mkdir()
+    _,parent,ps,pstates,pupdates=fixture(a)
+    _,child,cs,cstates,cupdates=fixture(b)
+    for seg,summary,states,updates,offset,partial in (
+            (parent,ps,pstates,pupdates,0,True),(child,cs,cstates,cupdates,20,False)):
+        study=Path(seg['anchor_directory']);plan=inputs.load(seg['producer_plan']['path'])
+        config=deepcopy(summary['configuration']);config['updates']=40
+        summary['configuration']=config
+        plan['arms'][summary['arm']]['screen']=config
+        if partial:
+            summary.update(status='failed',error='KeyboardInterrupt()',full_budget_complete=False)
+            summary.pop('report_path',None)
+            Path(seg['stdout']['path']).write_text('Subject: Job 123: <fixture> in cluster <dcc> Exited\nExited with exit code 130.\n')
+        else:
+            checkpoint=inputs.binding(Path(parent['anchor_directory'])/'snapshots/step-0020.npz')
+            reference=Path(parent['anchor_directory'])/'teacher.json';reference.write_text('{}')
+            resume={'offset':20,'snapshot':checkpoint,'reference':inputs.binding(reference),
+                    'parent_job_id':'123','predecessor_study':parent['anchor_directory'],'state':pstates[-1]}
+            summary.update(global_start=20,global_end=40,global_target=40,resume=resume)
+            plan['arms'][summary['arm']]['resume']=resume
+            for state in states:
+                state['global_step']=state['step']+offset
+                if state['snapshot_retained']:
+                    path=Path(state['snapshot'])
+                    with np.load(path) as z:arrays={k:z[k].copy() for k in z.files}
+                    arrays['step']=np.asarray(state['global_step'])
+                    np.savez(path,**arrays);state['snapshot_sha256']=data.sha(path)
+            for update in updates:update['global_step']=update['step']+offset
+            samples=[json.loads(s) for s in (study/'sampled-validity.jsonl').read_text().splitlines()]
+            for sample in samples:sample['step']+=offset
+            saved.save_rows(study/'sampled-validity.jsonl',samples)
+        saved.save_rows(study/'states.jsonl',states);saved.save_rows(study/'updates.jsonl',updates)
+        saved.save(study/'report.json',{**summary,'initial_state':states[0],'last_state':states[-1]})
+        saved.save(study.parent/'summary.json',summary)
+        plan_binding=saved.save(Path(seg['producer_plan']['path']),plan)
+        sub=inputs.load(seg['producer_submission']['path']);sub['plan']=plan_binding
+        saved.save(Path(seg['producer_submission']['path']),sub)
+        checks=inputs.load(seg['producer_checksums']['path']);checks['plan.json']=plan_binding['sha256']
+        saved.save(Path(seg['producer_checksums']['path']),checks)
+    profile={'allowed_roots':[str(root)],'chemistry_screen_renderer_sha256':inputs.sha(SCRIPTS/'report_chemistry_screen.py')}
+    return a,b,profile
+
+
+def test_resumed_screen_automatically_joins_original_prefix_from_zero(tmp_path):
+    a,b,profile=continued_fixture(tmp_path)
+    selection={'version':inputs.VERSION,'edition':'edition-0001','runs':[{'id':'resumed','run':str(b/'run/constant1-s17/payload'),'global_target':40}]}
+    from unittest.mock import patch
+    with patch.object(inputs,'seed_catalog',return_value=([],{})):
+        plan=inputs.capture(selection,profile)
+    arm=plan['arms'][0]
+    assert [s['global_offset'] for s in arm['segments']]==[0,20]
+    assert arm['expected_counts']['committed_updates']==40
+    output=tmp_path/'out';output.mkdir()
+    result=adapter.collect_arm(arm,output)
+    assert result['committed_updates']==40 and result['frames']['steps']==[0,20,40]
+    rows=data.load(output/result['scalars']['path'])['rows']
+    assert [r['global_step'] for r in rows]==list(range(41))
+    assert len(data.load(output/result['scalars']['path'])['boundary_checks'])==1
+    assert result['segment_proofs'][0]['producer_status']=='failed'
+
+
+def test_new_completions_do_not_change_a_queued_resolved_selection(tmp_path):
+    arm,segment,summary,_,_=fixture(tmp_path)
+    profile={'allowed_roots':[str(tmp_path)],'chemistry_screen_renderer_sha256':inputs.sha(SCRIPTS/'report_chemistry_screen.py')}
+    selection={'version':inputs.VERSION,'edition':'edition-0001','runs':[{'id':'fixed','run':str(Path(segment['anchor_directory']).parent),'global_target':20}],
+               'completed_candidates':[{'id':'later','run':str(tmp_path/'missing')}]}
+    from unittest.mock import patch
+    with patch.object(inputs,'seed_catalog',return_value=([],{})):
+        captured=inputs.capture(selection,profile)
+    assert 'completed_candidates' not in captured['resolved_selection']
+    assert [r['id'] for r in captured['resolved_selection']['runs']]==['fixed']

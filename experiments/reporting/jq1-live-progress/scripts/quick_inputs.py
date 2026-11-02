@@ -84,8 +84,8 @@ def science_key(arm, renderer_sha):
     fields = ('global_offset', 'requested_updates', 'source_manifest_sha256', 'job_id',
               'scientific_status', 'case_directory', 'anchor_directory', 'states', 'updates',
               'summary', 'config', 'case_report', 'retained_index', 'stdout', 'stderr', 'input_schema',
-              'producer_plan', 'producer_submission', 'producer_driver', 'producer_checksums',
-              'science_manifest', 'sampled_validity')
+              'producer_plan','producer_submission','producer_driver','producer_checksums','science_manifest',
+              'summary_role','latest_metadata','latest_snapshot','producer_manifest','sampled_validity')
     return digest({'renderer_sha256': renderer_sha,
                    **({'schema_renderer_sha256': arm['schema_renderer_sha256']} if 'schema_renderer_sha256' in arm else {}),
                    'arm': {k: arm[k] for k in ('id', 'kind', 'rate', 'global_start', 'global_target', 'scientific_status')},
@@ -113,7 +113,7 @@ def check_lsf(path, job, status):
                 'Failed summary lacks original nonzero LSF exit')
 
 
-def counts(states, updates, offset, anchor=None, roots=None):
+def counts(states, updates, offset, anchor=None, roots=None, kind=None):
     result = {}
     for field, path in (('states', states), ('updates', updates)):
         n = frames = 0
@@ -122,19 +122,25 @@ def counts(states, updates, offset, anchor=None, roots=None):
                 require(line.endswith(b'\n'), 'Terminal saved input has an incomplete JSONL suffix')
                 row = json.loads(line)
                 require(isinstance(row, dict), 'Saved JSONL row is not an object')
-                index = row.get('step', row.get('update', -1) - 1)
+                index = row.get('state') if kind == 'defog' and field == 'states' else row.get('step', row.get('update', -1) - 1)
                 require(type(index) is int and index == n, 'Saved prefix index is not contiguous')
                 if field == 'states':
                     require(row.get('global_step', offset + n) == offset + n, 'Saved global index differs')
-                    require(type(row.get('snapshot_retained')) is bool, 'Missing retained-frame marker')
-                    frames += int(row['snapshot_retained'])
-                    if anchor is not None and row['snapshot_retained']:
+                    if kind == 'defog':
+                        retained = n == 0 or n % 20 == 0
+                    else:
+                        require(type(row.get('snapshot_retained')) is bool, 'Missing retained-frame marker')
+                        retained = row['snapshot_retained']
+                    frames += int(retained)
+                    if anchor is not None and (kind == 'defog' or retained):
                         part = PurePosixPath(row['snapshot'])
                         require(not part.is_absolute() and '..' not in part.parts and '\\' not in row['snapshot'],
                                 'Unsafe original retained snapshot path')
                         snapshot = regular(Path(anchor).joinpath(*part.parts), roots)
                         require(sha(snapshot) == row['snapshot_sha256'], 'Original retained snapshot bytes changed')
                 n += 1
+        if field == 'states' and kind == 'defog' and n and (n - 1) % 20:
+            frames += 1
         result[field] = n
         if field == 'states':
             result['retained_frames'] = frames
@@ -225,32 +231,40 @@ def source_and_config(summary, hint, profile, study=None):
 
 
 def capture_segment(spec, profile, known):
+    if spec.get('dense_saved') or spec.get('saved_partial'):
+        import report_history
+        return report_history.capture_segment(spec, profile)
     study = study_path(spec['run'])
     original = known.get(str(study))
     hint = deepcopy(original[1]) if original else {}
     hint.update({k: v for k, v in spec.items() if k != 'run'})
     summary_binding = binding(study / 'summary.json', profile['allowed_roots'])
     # A byte-identical authenticated seed avoids reparsing a 300MB summary.
+    # Exploratory wrappers need their real version/configuration for schema
+    # dispatch. The legacy shortcut synthesizes only the old terminal header.
     if (original and summary_binding == original[1]['summary']
-            and original[1].get('input_schema') != 'terminal-chemistry-screen-v1'):
+            and original[1].get('input_schema') not in ('terminal-exploratory-fixed-v1', 'terminal-chemistry-screen-v1')):
         config_binding = binding(hint['config']['path'] if isinstance(hint['config'], dict) else hint['config'], profile['allowed_roots'])
         summary = {'status': original[1]['scientific_status'], 'source_manifest_sha256': original[1]['source_manifest_sha256'],
                    'config_sha256': original[1]['config']['sha256'], 'job_id': original[1]['job_id'], 'config': load(config_binding['path'])}
     else:
         summary = load(study / 'summary.json')
+    if summary.get('version') in ('mosaic-exploratory-continuation-v1','mosaic-exploratory-continuation-v2'):
+        import report_exploratory
+        return report_exploratory.capture_segment(spec,profile,study,summary)
     if summary.get('version') == 'protenix-chemistry-screen-v1':
         import report_chemistry_screen
         return report_chemistry_screen.capture_segment(spec, profile, study, summary)
     require(summary.get('status') in ('passed', 'failed'), 'A terminal passed/failed summary is required; original status is never invented')
-    job = str(summary.get('job_id', ''))
+    job = str(summary.get('job_id', summary.get('job', '')))
     require(job.isdigit(), 'Original job identity missing')
     require(re.fullmatch('[a-f0-9]{64}', summary.get('source_manifest_sha256', '')) is not None, 'Original source pin missing')
     if hint.get('source_manifest_sha256'):
         require(summary['source_manifest_sha256'] == hint['source_manifest_sha256'], 'Declared original source identity changed')
     config_binding = source_and_config(summary, hint, profile, study)
     config = load(config_binding['path'])
-    kind = 'noisy' if 'learning_rate' in config and 'initial_step_size' not in config else 'fixed'
-    case = study / ('trajectory' if kind == 'noisy' else 'case-0')
+    kind = 'defog' if str(config.get('version', '')).startswith('protenix-defog-moving-teacher-') and 'time_ramp' in config.get('teacher', {}) else 'noisy' if 'learning_rate' in config and 'initial_step_size' not in config else 'fixed'
+    case = study if kind == 'defog' else study / ('trajectory' if kind == 'noisy' else 'case-0')
     if hint.get('case_directory'):
         case = Path(hint['case_directory'])
     with (case / 'states.jsonl').open('rb') as stream:
@@ -263,12 +277,12 @@ def capture_segment(spec, profile, known):
         require(offset == execution['start'] and requested == execution['updates'], 'Declared segment scope differs from original execution')
     require(type(offset) is int and offset >= 0 and type(requested) is int and requested > 0, 'Original segment range is missing')
     row = {'id': hint.get('id', study.parent.parent.name + '-' + study.parent.name), 'case_directory': str(case),
-           'anchor_directory': hint.get('anchor_directory', str(study if kind == 'noisy' else case)),
+           'anchor_directory': hint.get('anchor_directory', str(study if kind in ('noisy', 'defog') else case)),
            'global_offset': offset, 'requested_updates': requested, 'source_manifest_sha256': summary['source_manifest_sha256'],
            'job_id': job, 'scientific_status': summary['status'], 'config': config_binding, 'summary': summary_binding}
     for name, path in [('states', case / 'states.jsonl'), ('updates', case / 'updates.jsonl'),
                        ('case_report', case / 'report.json'), ('retained_index', case / 'retained-frames.json')]:
-        if path.exists() or name in ('states', 'updates', 'retained_index'):
+        if path.exists() or name in ('states', 'updates') or (name == 'retained_index' and kind != 'defog'):
             row[name] = binding(path, profile['allowed_roots'])
     for name in ('stdout', 'stderr'):
         explicit = hint.get(name)
@@ -281,7 +295,7 @@ def capture_segment(spec, profile, known):
         row[name] = binding(path, profile['allowed_roots'])
     check_lsf(row['stdout']['path'], job, summary['status'])
     row['expected_counts'] = counts(row['states']['path'], row['updates']['path'], offset,
-                                    row['anchor_directory'], profile['allowed_roots'])
+                                    row['anchor_directory'], profile['allowed_roots'], kind)
     return row, config, kind
 
 
@@ -339,11 +353,31 @@ def capture(selection, profile, additional_seeds=()):
         if 'segments' not in spec:
             spec['segments'] = [{'run': spec.pop('run')}]
         require(spec['segments'] and len(spec['segments']) <= 100, 'Missing or excessive ordered segments')
-        found = [capture_segment(s, profile, known) for s in spec['segments']]
+        def selected_segment(item, chain=()):
+            key=str(item['run'])
+            require(key not in chain and len(chain)<100,'Cyclic/excessive saved checkpoint ancestry')
+            row,config,kind=capture_segment(item,profile,known)
+            preceding=[]
+            if (len(spec['segments'])==1 and row.get('input_schema')=='terminal-chemistry-screen-v1'
+                    and row['global_offset']>0):
+                planned=load(row['producer_plan']['path']);summary=load(row['summary']['path'])
+                resume=planned['arms'][summary['arm']]['resume']
+                require(resume['offset']==row['global_offset'],'Checkpoint parent offset differs')
+                parent_summary=load(Path(resume['predecessor_study']).parent/'summary.json')
+                require(parent_summary['configuration']==summary['configuration'] and
+                        parent_summary['frozen_before']==summary['frozen_before'],
+                        'Continuation changed chemistry policy or frozen model/context')
+                parent_item={'id':'prefix-'+resume['parent_job_id'],
+                             'run':str(Path(resume['predecessor_study']).parent),
+                             'screen_partial':True,'through_global_update':row['global_offset']}
+                preceding=selected_segment(parent_item,chain+(key,))
+            from report_prefix import capture as capture_prefix
+            return preceding+[(capture_prefix(row,item),config,kind)]
+        found = [piece for s in spec['segments'] for piece in selected_segment(s)]
         segments = [r[0] for r in found]
         config, kind = found[0][1:]
-        rate = config['learning_rate' if kind == 'noisy' else 'initial_step_size']
-        require(all(k == kind and c['learning_rate' if k == 'noisy' else 'initial_step_size'] == rate for _, c, k in found),
+        rate = config['learning_rate' if kind in ('noisy', 'defog') else 'initial_step_size']
+        require(all(k == kind and c['learning_rate' if k in ('noisy', 'defog') else 'initial_step_size'] == rate for _, c, k in found),
                 'Grouped segments changed trajectory schema or learning rate')
         start = segments[0]['global_offset']
         target = spec.get('global_target', config.get('extension', {}).get('target_global_update', config['steps']))
@@ -353,13 +387,13 @@ def capture(selection, profile, additional_seeds=()):
             require(s['global_offset'] == end, 'Segment group has a gap, overlap or incorrect order')
             end += s['expected_counts']['committed_updates']
         require(end <= target, 'Saved prefix exceeds the declared target')
-        identity = spec.get('id', 'run-' + hashlib.sha256(str(study_path(spec['segments'][0]['run'])).encode()).hexdigest()[:12])
+        identity = spec['id'] if 'id' in spec else 'run-' + hashlib.sha256(str(study_path(spec['segments'][0]['run'])).encode()).hexdigest()[:12]
         require(re.fullmatch('[a-z][a-z0-9_-]*', identity) is not None, 'Unsafe report run ID')
         metric = spec.get('primary_metric', 'dbmol_total_loss' if 'dbmol' in str(config.get('version', '')).lower()
                           or 'dbmol' in str(config.get('arm', '')).lower() else
                           'affinity_loss' if str(config.get('arm', '')).startswith('boltz') else 'contact_loss')
         require(metric in METRICS, 'Unsupported primary loss; use contact_loss, affinity_loss or dbmol_total_loss')
-        status = 'failed' if any(s['scientific_status'] == 'failed' for s in segments) else 'unqualified' if any(s['scientific_status'] == 'unqualified' for s in segments) else 'passed' if end == target else 'partial'
+        status = 'failed' if any(s['scientific_status'] == 'failed' for s in segments) else 'unqualified' if any(s['scientific_status']=='unqualified' for s in segments) else 'passed' if end == target else 'partial'
         frames = sum(s['expected_counts']['retained_frames'] for s in segments) - len(segments) + 1
         arm = {'id': identity, 'label': spec.get('label', config.get('label', identity)), 'kind': kind, 'rate': rate,
                'global_start': start, 'global_target': target, 'target_updates': target, 'segments': segments,
@@ -369,15 +403,28 @@ def capture(selection, profile, additional_seeds=()):
                'expected_counts': {'committed_updates': applied, 'scalar_states': applied + 1,
                                    'retained_frames': frames, 'latest_global_step': end},
                'expected_committed_updates': applied, 'expected_retained_frames': frames}
+        if kind == 'defog':
+            pin = profile.get('defog_renderer_sha256', '')
+            require(re.fullmatch('[a-f0-9]{64}', pin) is not None, 'DeFoG adapter identity missing')
+            arm['schema_renderer_sha256'] = pin
+        if any(s.get('input_schema')=='terminal-exploratory-fixed-v1' for s in segments):
+            pin=profile.get('exploratory_renderer_sha256','')
+            require(re.fullmatch('[a-f0-9]{64}',pin) is not None,'Exploratory adapter identity missing')
+            arm['schema_renderer_sha256']=pin
         if any(s.get('input_schema') == 'terminal-chemistry-screen-v1' for s in segments):
             pin = profile.get('chemistry_screen_renderer_sha256', '')
             require(re.fullmatch('[a-f0-9]{64}', pin) is not None, 'Chemistry screen adapter identity missing')
             arm['schema_renderer_sha256'] = pin
+        if any(s.get('input_schema') in ('dense-fixed-history-v1','terminal-partial-history-v1') for s in segments):
+            pin=profile.get('history_renderer_sha256','')
+            require(re.fullmatch('[a-f0-9]{64}',pin) is not None,'History adapter identity missing')
+            arm['schema_renderer_sha256']=digest({'history':pin,'exploratory':profile['exploratory_renderer_sha256']})
         arms.append(arm)
     require(len({a['id'] for a in arms}) == len(arms), 'Duplicate report run IDs')
     result = {'version': 'jq1-live-saved-report-v1', 'edition': selection['edition'],
             'captured_at': datetime.now(timezone.utc).isoformat(), 'arms': arms,
             'monitor_remains_paused': True, 'automatic_optimizer_submission': False}
+    result['resolved_selection']={'version':VERSION,'edition':selection['edition'],'runs':deepcopy(items)}
     if 'completed_candidates' in selection:
         result['deferred_candidates'] = deferred
     return result

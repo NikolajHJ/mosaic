@@ -2,7 +2,7 @@
 
 Copied from original saved production summaries at 2026-11-01T20:36:03.958365+00:00. All13 rows reached20,000 applied updates and report zero strict-valid connected argmax states. Original fields are retained in completed-summary.json; this summary performs no new chemistry, scoring, sampling or array analysis.
 
-The interactive report remains edition0014 while the queued update29870705 waits: all DTU queues report Open:Inact_Adm. The requested edition0015 will contain20 panels after allocated rendering and publication complete.
+Update2 November: edition0015 is published with23 panels and all324 served files verified. The earlier20-panel request failed when completion membership changed while queued; its evidence is preserved. See the [new completion update](../20261102-new-completions-01/README.md) for the six later completions and the29-panel edition.
 
 | Run | Contact loss, lower is better | Valid argmax states | Valid endpoint samples | Recorded loop seconds |
 | --- | ---: | ---: | ---: | ---: |

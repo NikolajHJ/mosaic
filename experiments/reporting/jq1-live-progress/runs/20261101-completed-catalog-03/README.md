@@ -1,5 +1,7 @@
 # Completion-aware report update
 
+Published as edition0015 on 2 November07:31:56UTC:23 panels, all324 HTTP files verified. Render29871060 was recovered using authenticated persisted success evidence after the live scheduler record expired. The newer29-panel update is recorded [here](../20261102-new-completions-01/README.md). Earlier queue descriptions below are dated history.
+
 User requested a report for new results and an easy path for future additions.
 At 1 November20:23UTC,13 chemistry strategy arms have complete20k results.
 Neighbor17, adaptive17/23 and temperature2-17 are new relative to edition0014.

@@ -1,5 +1,7 @@
 # Report attempts
 
+- [2 November: six new completions and checkpoint histories from zero](20261102-new-completions-01/README.md).
+
 Each dated run records an immutable source, declared saved-input plan, allocated
 fixtures/rendering jobs, evidence/transfer verification, publication and browser
 QA. Historical report and scientific failures remain unchanged.
@@ -21,3 +23,5 @@ QA. Historical report and scientific failures remain unchanged.
   header found before publication, all source/output preserved.
 - [Current08](20261028-jq1-current-report-08/README.md): cohort-agnostic heading,
   full149-case allocated recheck; same scientific renderer and saved plan.
+
+- [Balanced DeFoG replacement](20261029-balanced-defog-report-01/README.md): current DeFoG selector replaced with constant-gradient-calibrated30k; actual publication evidence in the record.

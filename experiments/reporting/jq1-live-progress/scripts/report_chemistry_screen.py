@@ -16,15 +16,22 @@ PROOFS = ('producer_plan', 'producer_submission', 'producer_driver',
           'producer_checksums', 'science_manifest', 'sampled_validity')
 
 
-def header(summary):
+def header(summary, partial=False):
     inputs.require(summary.get('version') == VERSION, 'Wrong chemistry screen version')
     config = summary['configuration']
     steps = config['updates']
+    offset=summary.get('global_start',0)
+    inputs.require(type(offset) is int and 0<=offset<steps,'Invalid screen global offset')
+    if partial:
+        inputs.require(summary.get('status')=='failed' and summary.get('error')=='KeyboardInterrupt()',
+                       'Only an explicit interrupted screen prefix is supported')
+    else:
+        inputs.require(summary.get('applied_updates')==summary.get('actual_steps')==steps-offset,
+                       'Incomplete screen continuation budget')
     inputs.require(type(steps) is int and steps > 0 and
-                   summary.get('status') == 'completed_exploratory_updates' and
-                   summary.get('applied_updates') == summary.get('actual_steps') == steps and
+                   (partial or (summary.get('status') == 'completed_exploratory_updates' and
                    summary.get('full_budget_complete') is True and
-                   summary.get('probe_not_adopted') is False,
+                   summary.get('probe_not_adopted') is False)),
                    'Only complete production chemistry screens are reportable')
     inputs.require(summary.get('derivative_qualified') is False and
                    summary.get('original_results_changed') is False,
@@ -44,13 +51,19 @@ def snapshot_path(study, state):
 
 
 def capture_segment(spec, profile, parent, summary):
-    config = header(summary)
+    partial=spec.get('screen_partial',False)
+    inputs.require(type(partial) is bool and (not partial or 'through_global_update' in spec),
+                   'Interrupted screen needs an explicit retained branch boundary')
+    config = header(summary,partial)
+    offset=summary.get('global_start',0)
     roots = profile['allowed_roots']
     parent = Path(parent)
     study = parent / 'study'
     root = parent.parent.parent
     arm = summary['arm']
-    inputs.require(parent.parent.name == arm and Path(summary['report_path']) == study / 'report.json',
+    report_path=summary.get('report_path')
+    inputs.require(parent.parent.name == arm and
+                   ((partial and report_path is None) or Path(report_path or '') == study / 'report.json'),
                    'Screen output identity differs')
     submission = inputs.binding(root / 'production' / arm / 'submission.json', roots)
     submitted = inputs.load(submission['path'])
@@ -63,6 +76,11 @@ def capture_segment(spec, profile, parent, summary):
     row = planned['arms'][arm]
     inputs.require(Path(planned['root']) == root and row['screen'] == config and
                    row['frozen_identity'] == summary['frozen_before'], 'Screen planned inputs differ')
+    if offset:
+        inputs.require(row.get('resume')==summary.get('resume') and row['resume']['offset']==offset
+                       and summary['global_target']==summary['global_end']==config['updates'],
+                       'Screen continuation checkpoint provenance differs')
+        for name in ('snapshot','reference'):inputs.verify_binding(row['resume'][name])
     source = Path(planned['source_root'])
     scientific = inputs.binding(Path(row['science_source']['path']) / 'source_manifest.json', roots)
     inputs.require(scientific['sha256'] == row['science_source']['manifest_sha256'], 'Native source changed')
@@ -74,7 +92,7 @@ def capture_segment(spec, profile, parent, summary):
     inputs.require(declared.get('protenix_chemistry_screen.py') == driver['sha256'] and
                    declared.get('plan.json') == plan['sha256'], 'Screen source manifest differs')
     result = {'id': spec.get('id', arm), 'input_schema': SCHEMA, 'case_directory': str(study),
-              'anchor_directory': str(study), 'global_offset': 0, 'requested_updates': config['updates'],
+              'anchor_directory': str(study), 'global_offset': offset, 'requested_updates': config['updates']-offset,
               'source_manifest_sha256': checksums['sha256'], 'job_id': job, 'scientific_status': 'unqualified',
               'config': original_config, 'summary': inputs.binding(parent / 'summary.json', roots),
               'producer_plan': plan, 'producer_submission': submission, 'producer_driver': driver,
@@ -84,9 +102,14 @@ def capture_segment(spec, profile, parent, summary):
         result[key] = inputs.binding(study / name, roots)
     for key in ('stdout', 'stderr'):
         result[key] = inputs.binding(root / 'production' / arm / (key + '.' + job + '.log'), roots)
-    inputs.check_lsf(result['stdout']['path'], job, 'passed')
-    result['expected_counts'] = inputs.counts(result['states']['path'], result['updates']['path'], 0)
-    inputs.require(result['expected_counts']['committed_updates'] == config['updates'], 'Incomplete screen prefix')
+    if partial:
+        from report_history import check_partial_lsf
+        check_partial_lsf(result['stdout']['path'],job)
+        result['screen_partial']=True
+    else:inputs.check_lsf(result['stdout']['path'], job, 'passed')
+    result['expected_counts'] = inputs.counts(result['states']['path'], result['updates']['path'], offset)
+    actual=result['expected_counts']['committed_updates']
+    inputs.require(0<actual<=config['updates']-offset and (partial or actual==config['updates']-offset), 'Incomplete screen prefix')
     with Path(result['states']['path']).open() as stream:
         for line in stream:
             state = json.loads(line)
@@ -94,7 +117,7 @@ def capture_segment(spec, profile, parent, summary):
                 inputs.regular(snapshot_path(study, state), roots)
     # A metadata view for the common selection builder, never a replacement
     # configuration on disk. The bound submitted plan contains every variant.
-    return result, {'initial_step_size': row['rate'], 'steps': config['updates'],
+    return result, {'initial_step_size': row['rate'], 'steps': config['updates']-offset,
                     'arm': 'protenix', 'version': VERSION}, 'fixed'
 
 
@@ -103,7 +126,9 @@ def collect_segment(segment, arm):
     for key in (*PROOFS, 'config', 'summary', 'case_report'):
         data.bound_file(segment[key])
     summary = data.load(segment['summary']['path'])
-    config = header(summary)
+    partial=segment.get('screen_partial',False)
+    config = header(summary,partial)
+    offset=segment['global_offset']
     plan = data.load(segment['producer_plan']['path'])
     row = plan['arms'][summary['arm']]
     submitted = data.load(segment['producer_submission']['path'])
@@ -113,19 +138,23 @@ def collect_segment(segment, arm):
                  submitted['job_id'] == summary['job_id'] == segment['job_id'], 'Screen provenance differs')
     states, states_proof = data.committed_jsonl(segment['states'])
     updates, updates_proof = data.committed_jsonl(segment['updates'])
-    steps = config['updates']
-    data.require(len(states) == steps + 1 and len(updates) == steps and
+    steps = len(updates)
+    data.require(len(states) == steps + 1 and 0<steps<=config['updates']-offset and
+                 (partial or steps==config['updates']-offset) and
                  states_proof['uncommitted_suffix_bytes'] == updates_proof['uncommitted_suffix_bytes'] == 0,
                  'Screen committed budget is incomplete')
     report = data.load(segment['case_report']['path'])
-    data.require(report['status'] == summary['status'] and report['configuration'] == config and
-                 report['applied_updates'] == steps and report['initial_state'] == states[0] and
-                 report['last_state'] == states[-1], 'Screen case report differs from committed records')
+    reported=report['applied_updates']
+    data.require(report['configuration'] == config and type(reported) is int and 0<=reported<=steps
+                 and report['initial_state'] == states[0] and report['last_state']==states[reported]
+                 and (partial or (report['status']==summary['status'] and reported==steps)),
+                 'Screen case report differs from committed records')
     retained = []
     first_arrays = last_arrays = None
     for index, state in enumerate(states):
-        data.require(state['step'] == state['global_step'] == index, 'Screen states are not contiguous')
-        expected = index % 20 == 0 or index == steps
+        absolute=offset+index
+        data.require(state['step'] == index and state['global_step'] == absolute, 'Screen states are not contiguous')
+        expected = absolute % 20 == 0 or index == 0 or (not partial and index == steps)
         data.require(type(state['snapshot_retained']) is bool and state['snapshot_retained'] == expected,
                      'Screen retained cadence differs')
         if not expected:
@@ -137,8 +166,8 @@ def collect_segment(segment, arm):
         # them in NPZ, so do not claim NPZ correspondence for those fields.
         for field in ('refreshed_surrogate', 'autodiff_surrogate', 'repair_weight'):
             view.pop(field, None)
-        frame, arrays, proof = data.validate_frame(path, view, index)
-        data.require(arrays['step'].shape == () and int(arrays['step']) == index and
+        frame, arrays, proof = data.validate_frame(path, view, absolute)
+        data.require(arrays['step'].shape == () and int(arrays['step']) == absolute and
                      arrays['temperature'].shape == () and float(arrays['temperature']) == state['temperature'] == config['temperature'],
                      'Screen saved step/temperature differs')
         data.require(arrays['key_data'].tolist() == [0, row['model_key']], 'Screen saved model key differs')
@@ -149,7 +178,7 @@ def collect_segment(segment, arm):
         if index == steps: last_arrays = arrays
     for index, update in enumerate(updates):
         before, after = states[index:index + 2]
-        data.require(update['step'] == update['global_step'] == index and update['candidate_count'] == 1
+        data.require(update['step'] == index and update['global_step']==offset+index and update['candidate_count'] == 1
                      and update['rate'] == arm['rate'], 'Screen update identity/rate/candidate count differs')
         data.require(update['fixed_before'] == before['refreshed_surrogate'] and
                      update['contact_before'] == before['contact_loss'] and
@@ -160,8 +189,8 @@ def collect_segment(segment, arm):
                      update['fixed_increased'] == (update['fixed_after'] > update['fixed_before']) and
                      type(update['no_op']) is bool, 'Screen update bookkeeping differs')
     samples, sample_proof = data.committed_jsonl(segment['sampled_validity'])
-    sample_steps = list(range(0, steps + 1, config['sampling_interval']))
-    if sample_steps[-1] != steps: sample_steps.append(steps)
+    sample_steps=[n for n in range(offset,offset+steps+1) if n%config['sampling_interval']==0]
+    if not partial and (not sample_steps or sample_steps[-1]!=offset+steps):sample_steps.append(offset+steps)
     data.require([r['step'] for r in samples] == sample_steps and not sample_proof['uncommitted_suffix_bytes'],
                  'Saved sample cadence differs')
     for record in samples:
@@ -170,9 +199,9 @@ def collect_segment(segment, arm):
                      record['draws'] == config['sampling_draws'] and
                      record['binding_scores_evaluated_for_samples'] is False and
                      record['native_model_key_changed'] is False, 'Saved sampling scope differs')
-    return {'states': states, 'updates': updates, 'retained': retained,
+    result={'states': states, 'updates': updates, 'retained': retained,
             'first_arrays': first_arrays, 'last_arrays': last_arrays,
-            'proof': {'id': segment['id'], 'global_offset': 0, 'requested_updates': steps,
+            'proof': {'id': segment['id'], 'global_offset': offset, 'requested_updates': segment['requested_updates'],
                       'committed_updates': steps, 'states': states_proof, 'updates': updates_proof,
                       'summary': segment['summary'], 'config': segment['config'],
                       'source_manifest_sha256': segment['source_manifest_sha256'],
@@ -182,6 +211,8 @@ def collect_segment(segment, arm):
                       'sampled_validity': samples, 'sampled_validity_proof': sample_proof,
                       'sampling_scope': 'Original saved classifications and raw-draw hashes; no new chemistry evaluation',
                       'producer_proofs': {key: segment[key] for key in PROOFS}}}
+    from report_prefix import collect as collect_prefix
+    return collect_prefix(result,segment)
 
 
 def collect_arm(arm, output):

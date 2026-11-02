@@ -337,3 +337,31 @@ def test_registered_cache_rejects_later_provenance_mutation(tmp_path):
         (parent/'viewer/input-plan.json').write_bytes(b'changed')
         with pytest.raises(ValueError, match='plan/manifest changed'):
             runtime.registered_seeds(profile)
+
+
+def test_home_report_capacity_preserves_readonly_work3_scope_and_own_reserves():
+    prior={'status':'passed','available_bytes':60*1024**3,'required_bytes':54*1024**3,'file_reserve':100000}
+    result=runtime.home_capacity(prior,'You are using 20.90G of 30.00G quota',0,100*1024**3,1024**3,64*1024**2)
+    assert result['status']=='passed' and result['reserve_bytes']==4*1024**3
+    assert result['work3_observation']==prior and result['forecasts_removed'] is False
+    assert result['work3_output_bytes_requested']==0 and result['scientific_campaign_admission_granted'] is False
+    assert result['required_bytes']==5*1024**3+128*1024**2
+
+
+@pytest.mark.parametrize('condition',['home-full','filesystem-full','unbounded','stale-owned'])
+def test_home_report_capacity_fails_closed_per_pool(condition):
+    prior={'status':'passed','available_bytes':60*1024**3,'required_bytes':54*1024**3,'file_reserve':100000}
+    quota='You are using 20.90G of 30.00G quota';owned=0;free=100*1024**3
+    if condition=='home-full':quota='You are using 29.00G of 30.00G quota'
+    if condition=='filesystem-full':free=1024
+    if condition=='stale-owned':owned=5*1024**3
+    if condition=='unbounded':
+        with pytest.raises(ValueError,match='quota'):runtime.home_capacity(prior,'unlimited',owned,free,1024**3,64*1024**2)
+    else:assert runtime.home_capacity(prior,quota,owned,free,1024**3,64*1024**2)['status']=='failed'
+
+
+def test_home_report_never_promotes_an_unrelated_failed_work3_campaign_admission():
+    failed={'status':'failed','available_bytes':1,'required_bytes':54*1024**3,'file_reserve':100000}
+    result=runtime.home_capacity(failed,'You are using 20.90G of 30.00G quota',0,100*1024**3,1024**3,64*1024**2)
+    assert result['status']=='passed' and result['work3_observation']==failed
+    assert result['scientific_campaign_admission_granted'] is False and result['work3_output_bytes_requested']==0

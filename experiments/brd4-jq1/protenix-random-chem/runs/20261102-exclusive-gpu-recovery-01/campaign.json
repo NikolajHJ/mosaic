@@ -1,6 +1,6 @@
 {
-  "status": "all_ten_unfinished_Mosaic_runs_resubmitted_exclusive_compute",
-  "observed_utc": "2026-11-02T00:29:10.321544+00:00",
+  "status": "six_completed_four_remaining",
+  "observed_utc": "2026-11-02T07:21:30.364154+00:00",
   "reason": "DTU support ticket43078; admin stopped account jobs using shared compute",
   "cpu_job": "29871025",
   "cpu_cases": 70,
@@ -25,7 +25,10 @@
       "prefix": {
         "states": 0,
         "updates": 0,
-        "global_end": 980
+        "coherent_applied_child_updates": 0,
+        "global_end": 980,
+        "contiguous_states": true,
+        "contiguous_updates": true
       },
       "argv": [
         "bsub",
@@ -83,7 +86,10 @@
       "prefix": {
         "states": 0,
         "updates": 0,
-        "global_end": 0
+        "coherent_applied_child_updates": 0,
+        "global_end": 0,
+        "contiguous_states": true,
+        "contiguous_updates": true
       },
       "argv": [
         "bsub",
@@ -124,7 +130,7 @@
     {
       "arm": "severity-s23",
       "job_id": "29871031",
-      "scheduler": "PEND",
+      "scheduler": "SUCCESS_PERSISTED",
       "queue": "gpua40",
       "gpu_request": "num=1:mode=exclusive_process:j_exclusive=yes:mps=no:gmem=44G",
       "source_manifest": {
@@ -139,9 +145,12 @@
       },
       "study": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/run/severity-s23/payload/study",
       "prefix": {
-        "states": 0,
-        "updates": 0,
-        "global_end": 0
+        "states": 20001,
+        "updates": 20000,
+        "coherent_applied_child_updates": 20000,
+        "global_end": 20000,
+        "contiguous_states": true,
+        "contiguous_updates": true
       },
       "argv": [
         "bsub",
@@ -177,12 +186,56 @@
       ],
       "predecessor": "29866318",
       "global_start": 0,
-      "target": 20000
+      "target": 20000,
+      "completion": {
+        "arm": "severity-s23",
+        "job_id": "29871031",
+        "status": "completed_exploratory_updates",
+        "child_start": 0,
+        "global_end": 20000,
+        "target": 20000,
+        "applied_child_updates": 20000,
+        "summary_binding": {
+          "path": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/run/severity-s23/payload/summary.json",
+          "bytes": 3174,
+          "sha256": "8ab798233e5c53068427ae8abf1150c2c516f638878d91c9ab64cd1e57446a78"
+        },
+        "same_job_LSF_success": true,
+        "LSF_sha256": "abbdc50a5bee52b1af47e53b8eb6d4c14889cde9489acea2655e946095f9d21c",
+        "frozen_before": {
+          "model_digest": "8d6926d5390fe682e193089f790ce53aa4011a6d5509ddb452a55db3d89b0ab2",
+          "context_digest": "b28dfad8e5ede565071c70a61695f6a38f5cb6bd591705e32979e59050ff5ce4"
+        },
+        "frozen_after": {
+          "model_digest": "8d6926d5390fe682e193089f790ce53aa4011a6d5509ddb452a55db3d89b0ab2",
+          "context_digest": "b28dfad8e5ede565071c70a61695f6a38f5cb6bd591705e32979e59050ff5ce4"
+        },
+        "strict_valid_states": 0,
+        "best_valid_contact": null,
+        "reported_final_sampled_validity": {
+          "step": 20000,
+          "draws": 128,
+          "sanitized": 0,
+          "strict_valid_connected": 0,
+          "unique_valid_smiles": [],
+          "failure_categories": {
+            "AtomValenceException": 128
+          },
+          "raw_samples": {
+            "path": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/run/severity-s23/payload/study/samples/samples-20000.npz",
+            "bytes": 6518,
+            "sha256": "e455cc2e6ddf271b27cbb7e865ff1ff6ff4aee2a3564838238951b580d46ca13"
+          },
+          "native_model_key_changed": false,
+          "sampling": "Independent PCG64; FP64 inverseCDF scaled by represented row sum; no rejection/repair",
+          "binding_scores_evaluated_for_samples": false
+        }
+      }
     },
     {
       "arm": "earlyseverity-s23",
       "job_id": "29871032",
-      "scheduler": "RUN",
+      "scheduler": "SUCCESS_PERSISTED",
       "queue": "gpuv100",
       "gpu_request": "num=1:mode=exclusive_process:j_exclusive=yes:mps=no:gmem=30G",
       "source_manifest": {
@@ -197,9 +250,12 @@
       },
       "study": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/run/earlyseverity-s23/payload/study",
       "prefix": {
-        "states": 119,
-        "updates": 118,
-        "global_end": 1758
+        "states": 18361,
+        "updates": 18360,
+        "coherent_applied_child_updates": 18360,
+        "global_end": 20000,
+        "contiguous_states": true,
+        "contiguous_updates": true
       },
       "argv": [
         "bsub",
@@ -235,12 +291,56 @@
       ],
       "predecessor": "29862996",
       "global_start": 1640,
-      "target": 20000
+      "target": 20000,
+      "completion": {
+        "arm": "earlyseverity-s23",
+        "job_id": "29871032",
+        "status": "completed_exploratory_updates",
+        "child_start": 1640,
+        "global_end": 20000,
+        "target": 20000,
+        "applied_child_updates": 18360,
+        "summary_binding": {
+          "path": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/run/earlyseverity-s23/payload/summary.json",
+          "bytes": 6545,
+          "sha256": "903ab0983c5e3f98e50fab06f7dad7fce3bbda597f2d9640512e38b40e467dab"
+        },
+        "same_job_LSF_success": true,
+        "LSF_sha256": "188ef70b021b685fa2771a75c31057ee7e4f4dd3f2fefc8312a4d614553b47d7",
+        "frozen_before": {
+          "model_digest": "8d6926d5390fe682e193089f790ce53aa4011a6d5509ddb452a55db3d89b0ab2",
+          "context_digest": "b28dfad8e5ede565071c70a61695f6a38f5cb6bd591705e32979e59050ff5ce4"
+        },
+        "frozen_after": {
+          "model_digest": "8d6926d5390fe682e193089f790ce53aa4011a6d5509ddb452a55db3d89b0ab2",
+          "context_digest": "b28dfad8e5ede565071c70a61695f6a38f5cb6bd591705e32979e59050ff5ce4"
+        },
+        "strict_valid_states": 0,
+        "best_valid_contact": null,
+        "reported_final_sampled_validity": {
+          "step": 20000,
+          "draws": 128,
+          "sanitized": 0,
+          "strict_valid_connected": 0,
+          "unique_valid_smiles": [],
+          "failure_categories": {
+            "AtomValenceException": 128
+          },
+          "raw_samples": {
+            "path": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/run/earlyseverity-s23/payload/study/samples/samples-20000.npz",
+            "bytes": 6204,
+            "sha256": "c588b8c58514512acc11b63d198c056f83e364c71832d55a1460bed0d4c5e85a"
+          },
+          "native_model_key_changed": false,
+          "sampling": "Independent PCG64; FP64 inverseCDF scaled by represented row sum; no rejection/repair",
+          "binding_scores_evaluated_for_samples": false
+        }
+      }
     },
     {
       "arm": "delayed-dense-s17",
       "job_id": "29871033",
-      "scheduler": "RUN",
+      "scheduler": "SUCCESS_PERSISTED",
       "queue": "gpuv100",
       "gpu_request": "num=1:mode=exclusive_process:j_exclusive=yes:mps=no:gmem=30G",
       "source_manifest": {
@@ -255,9 +355,12 @@
       },
       "study": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/run/delayed-dense-s17/payload/study",
       "prefix": {
-        "states": 72,
-        "updates": 71,
-        "global_end": 1211
+        "states": 18861,
+        "updates": 18860,
+        "coherent_applied_child_updates": 18860,
+        "global_end": 20000,
+        "contiguous_states": true,
+        "contiguous_updates": true
       },
       "argv": [
         "bsub",
@@ -293,12 +396,56 @@
       ],
       "predecessor": "29862999",
       "global_start": 1140,
-      "target": 20000
+      "target": 20000,
+      "completion": {
+        "arm": "delayed-dense-s17",
+        "job_id": "29871033",
+        "status": "completed_exploratory_updates",
+        "child_start": 1140,
+        "global_end": 20000,
+        "target": 20000,
+        "applied_child_updates": 18860,
+        "summary_binding": {
+          "path": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/run/delayed-dense-s17/payload/summary.json",
+          "bytes": 6363,
+          "sha256": "37a2f435b37fa82ce079119bd5db3bd4e2fa984c9da16aa74f9daf203054ce1a"
+        },
+        "same_job_LSF_success": true,
+        "LSF_sha256": "2939a723bf766a8235bfccd21075b30f40a8359933b05d82c05abbdec23bc00a",
+        "frozen_before": {
+          "model_digest": "8d6926d5390fe682e193089f790ce53aa4011a6d5509ddb452a55db3d89b0ab2",
+          "context_digest": "b28dfad8e5ede565071c70a61695f6a38f5cb6bd591705e32979e59050ff5ce4"
+        },
+        "frozen_after": {
+          "model_digest": "8d6926d5390fe682e193089f790ce53aa4011a6d5509ddb452a55db3d89b0ab2",
+          "context_digest": "b28dfad8e5ede565071c70a61695f6a38f5cb6bd591705e32979e59050ff5ce4"
+        },
+        "strict_valid_states": 0,
+        "best_valid_contact": null,
+        "reported_final_sampled_validity": {
+          "step": 20000,
+          "draws": 128,
+          "sanitized": 0,
+          "strict_valid_connected": 0,
+          "unique_valid_smiles": [],
+          "failure_categories": {
+            "AtomValenceException": 128
+          },
+          "raw_samples": {
+            "path": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/run/delayed-dense-s17/payload/study/samples/samples-20000.npz",
+            "bytes": 16763,
+            "sha256": "3f034d86dd8b591674e1c584d1974e27eca9e90fe052972057d8af43c785a28a"
+          },
+          "native_model_key_changed": false,
+          "sampling": "Independent PCG64; FP64 inverseCDF scaled by represented row sum; no rejection/repair",
+          "binding_scores_evaluated_for_samples": false
+        }
+      }
     },
     {
       "arm": "combined-dense-s17",
       "job_id": "29871034",
-      "scheduler": "RUN",
+      "scheduler": "SUCCESS_PERSISTED",
       "queue": "gpuv100",
       "gpu_request": "num=1:mode=exclusive_process:j_exclusive=yes:mps=no:gmem=30G",
       "source_manifest": {
@@ -313,9 +460,12 @@
       },
       "study": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/run/combined-dense-s17/payload/study",
       "prefix": {
-        "states": 42,
-        "updates": 41,
-        "global_end": 1221
+        "states": 18821,
+        "updates": 18820,
+        "coherent_applied_child_updates": 18820,
+        "global_end": 20000,
+        "contiguous_states": true,
+        "contiguous_updates": true
       },
       "argv": [
         "bsub",
@@ -351,12 +501,56 @@
       ],
       "predecessor": "29863011",
       "global_start": 1180,
-      "target": 20000
+      "target": 20000,
+      "completion": {
+        "arm": "combined-dense-s17",
+        "job_id": "29871034",
+        "status": "completed_exploratory_updates",
+        "child_start": 1180,
+        "global_end": 20000,
+        "target": 20000,
+        "applied_child_updates": 18820,
+        "summary_binding": {
+          "path": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/run/combined-dense-s17/payload/summary.json",
+          "bytes": 6675,
+          "sha256": "75f5534cc21d59fe13617a3e09422cb3f965c6113132acaf05b57fa91a3d9b3e"
+        },
+        "same_job_LSF_success": true,
+        "LSF_sha256": "a181f962195d75914c128dd945caf463adbcff05d08d09b90f6f77231b2125b1",
+        "frozen_before": {
+          "model_digest": "8d6926d5390fe682e193089f790ce53aa4011a6d5509ddb452a55db3d89b0ab2",
+          "context_digest": "b28dfad8e5ede565071c70a61695f6a38f5cb6bd591705e32979e59050ff5ce4"
+        },
+        "frozen_after": {
+          "model_digest": "8d6926d5390fe682e193089f790ce53aa4011a6d5509ddb452a55db3d89b0ab2",
+          "context_digest": "b28dfad8e5ede565071c70a61695f6a38f5cb6bd591705e32979e59050ff5ce4"
+        },
+        "strict_valid_states": 0,
+        "best_valid_contact": null,
+        "reported_final_sampled_validity": {
+          "step": 20000,
+          "draws": 128,
+          "sanitized": 0,
+          "strict_valid_connected": 0,
+          "unique_valid_smiles": [],
+          "failure_categories": {
+            "AtomValenceException": 128
+          },
+          "raw_samples": {
+            "path": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/run/combined-dense-s17/payload/study/samples/samples-20000.npz",
+            "bytes": 6872,
+            "sha256": "83e8167265e49ac12c863a7dbee2cc4aed706725279b29b2352c7615c10df70b"
+          },
+          "native_model_key_changed": false,
+          "sampling": "Independent PCG64; FP64 inverseCDF scaled by represented row sum; no rejection/repair",
+          "binding_scores_evaluated_for_samples": false
+        }
+      }
     },
     {
       "arm": "structural-s17",
       "job_id": "29871035",
-      "scheduler": "PEND",
+      "scheduler": "SUCCESS_PERSISTED",
       "queue": "gpua100",
       "gpu_request": "num=1:mode=exclusive_process:j_exclusive=yes:mps=no:gmem=38G",
       "source_manifest": {
@@ -371,9 +565,12 @@
       },
       "study": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/run/structural-s17/payload/study",
       "prefix": {
-        "states": 0,
-        "updates": 0,
-        "global_end": 0
+        "states": 30001,
+        "updates": 30000,
+        "coherent_applied_child_updates": 30000,
+        "global_end": 30000,
+        "contiguous_states": true,
+        "contiguous_updates": true
       },
       "argv": [
         "bsub",
@@ -409,7 +606,51 @@
       ],
       "predecessor": "29870660",
       "global_start": 0,
-      "target": 30000
+      "target": 30000,
+      "completion": {
+        "arm": "structural-s17",
+        "job_id": "29871035",
+        "status": "completed_exploratory_updates",
+        "child_start": 0,
+        "global_end": 30000,
+        "target": 30000,
+        "applied_child_updates": 30000,
+        "summary_binding": {
+          "path": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/run/structural-s17/payload/summary.json",
+          "bytes": 3136,
+          "sha256": "12f182df916ac4e46c955504c86e3185939760ee0bb23151e774d32511e06a63"
+        },
+        "same_job_LSF_success": true,
+        "LSF_sha256": "3e4de5d5899d93f13345e980b926093b3a2c6153940dd1d2f8591986a0ff8c49",
+        "frozen_before": {
+          "model_digest": "8d6926d5390fe682e193089f790ce53aa4011a6d5509ddb452a55db3d89b0ab2",
+          "context_digest": "b28dfad8e5ede565071c70a61695f6a38f5cb6bd591705e32979e59050ff5ce4"
+        },
+        "frozen_after": {
+          "model_digest": "8d6926d5390fe682e193089f790ce53aa4011a6d5509ddb452a55db3d89b0ab2",
+          "context_digest": "b28dfad8e5ede565071c70a61695f6a38f5cb6bd591705e32979e59050ff5ce4"
+        },
+        "strict_valid_states": 0,
+        "best_valid_contact": null,
+        "reported_final_sampled_validity": {
+          "step": 30000,
+          "draws": 128,
+          "sanitized": 0,
+          "strict_valid_connected": 0,
+          "unique_valid_smiles": [],
+          "failure_categories": {
+            "AtomValenceException": 128
+          },
+          "raw_samples": {
+            "path": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/run/structural-s17/payload/study/samples/samples-30000.npz",
+            "bytes": 5471,
+            "sha256": "659bd349a7e04100d3b22e6548f86fcbe55b65339fd8b39e6fb52cf83401d201"
+          },
+          "native_model_key_changed": false,
+          "sampling": "Independent PCG64; FP64 inverseCDF scaled by represented row sum; no rejection/repair",
+          "binding_scores_evaluated_for_samples": false
+        }
+      }
     },
     {
       "arm": "structural-s23",
@@ -431,7 +672,10 @@
       "prefix": {
         "states": 0,
         "updates": 0,
-        "global_end": 0
+        "coherent_applied_child_updates": 0,
+        "global_end": 0,
+        "contiguous_states": true,
+        "contiguous_updates": true
       },
       "argv": [
         "bsub",
@@ -472,7 +716,7 @@
     {
       "arm": "noise",
       "job_id": "29871026",
-      "scheduler": "RUN",
+      "scheduler": "SUCCESS_PERSISTED",
       "queue": "gpuv100",
       "gpu_request": "num=1:mode=exclusive_process:j_exclusive=yes:mps=no:gmem=30G",
       "source_manifest": {
@@ -487,9 +731,12 @@
       },
       "study": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/native-noise01/run/protenix_chemistry/payload/study",
       "prefix": {
-        "states": 189,
-        "updates": 188,
-        "global_end": 36508
+        "states": 13681,
+        "updates": 13680,
+        "coherent_applied_child_updates": 13680,
+        "global_end": 50000,
+        "contiguous_states": true,
+        "contiguous_updates": true
       },
       "argv": [
         "bsub",
@@ -547,6 +794,31 @@
         "source_files": 24,
         "driver_unchanged_sha256": "8df9d6b8eddb75f7bf1a203ac6c10668fbe8276dc8eca0f90436161a927b596d",
         "walltime": "09:15"
+      },
+      "global_start": 36320,
+      "completion": {
+        "arm": "noise",
+        "job_id": "29871026",
+        "status": "completed_exploratory_updates",
+        "child_start": 36320,
+        "global_end": 50000,
+        "target": 50000,
+        "applied_child_updates": 13680,
+        "summary_binding": {
+          "path": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/native-noise01/run/protenix_chemistry/payload/study/summary.json",
+          "bytes": 335611,
+          "sha256": "1a1d459045a9446b436ee33a4cfef9116b48741b2f0715536840dc35d9a25af3"
+        },
+        "same_job_LSF_success": true,
+        "LSF_sha256": "03f7979c9dd1602296851e5ca7bfdd97919464ce9b347bec79af11224abc64bf",
+        "frozen_before": {
+          "model_digest": "8d6926d5390fe682e193089f790ce53aa4011a6d5509ddb452a55db3d89b0ab2",
+          "context_digest": "b28dfad8e5ede565071c70a61695f6a38f5cb6bd591705e32979e59050ff5ce4"
+        },
+        "frozen_after": {
+          "model_digest": "8d6926d5390fe682e193089f790ce53aa4011a6d5509ddb452a55db3d89b0ab2",
+          "context_digest": "b28dfad8e5ede565071c70a61695f6a38f5cb6bd591705e32979e59050ff5ce4"
+        }
       }
     },
     {
@@ -567,9 +839,12 @@
       },
       "study": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/native-dbmol01/run/dbmol/payload/study",
       "prefix": {
-        "states": 46,
-        "updates": 45,
-        "global_end": 30305
+        "states": 8679,
+        "updates": 8679,
+        "coherent_applied_child_updates": 8678,
+        "global_end": 38938,
+        "contiguous_states": true,
+        "contiguous_updates": true
       },
       "argv": [
         "bsub",
@@ -627,7 +902,8 @@
         "source_files": 8,
         "driver_unchanged_sha256": "cf1ac6d31652f23fc9aa7cb3bad4cf4057dcab90067f06ddbddc474fc7a8f92c",
         "walltime": "32:00"
-      }
+      },
+      "global_start": 30260
     }
   ],
   "completed_runs_restarted": false,
@@ -690,5 +966,17 @@
         "wall": 525
       }
     }
+  },
+  "prior_observation_utc": "2026-11-02T00:29:10.321544+00:00",
+  "report_update": "experiments/reporting/jq1-live-progress/runs/20261102-new-completions-01/campaign.json",
+  "remaining_jobs": [
+    "29871029",
+    "29871030",
+    "29871036",
+    "29871027"
+  ],
+  "completion_byte_LSF_proof": {
+    "path": "experiments/reporting/jq1-live-progress/runs/20261102-new-completions-01/completed-results.json",
+    "sha256": "cfed585cec243f31f34ef64c134b2db123b54da1cc1327f85db8712bd913ab1e"
   }
 }

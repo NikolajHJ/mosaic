@@ -1,5 +1,11 @@
 # Updating saved JQ1 progress report
 
+Current2November: the [six new completions](runs/20261102-new-completions-01/README.md)
+bring the selected report to29 panels, all starting at global update0. The
+canonical command below retains these panels and automatically adds registered
+completed comparisons. The authorized experiment monitor continues; the older
+pause description below is historical report-workflow context.
+
 User-authorized on25October2026, refreshed on28October: create updating, saved-only reports for the
 Protenix native-only continuation, plain Boltz30k, DBMol binding10k and noisy
 Protenix1k pilot, now including random Protenix and Boltz with delayed chemistry.
@@ -74,7 +80,7 @@ python scripts/reporting/report.py --run /absolute/HPC/run-a --run /absolute/HPC
 python scripts/reporting/report.py --runs my-runs.json
 ```
 
-The default is the current six trajectories. Choose one to24 named runs or saved
+The default is the current seven trajectories. Choose one to24 named runs or saved
 run paths; the command discovers the original summary, config, driver, source,
 job and retained-frame bindings. Ordered continuation segments can be grouped in
 a small JSON file. See [the command guide](scripts/README.md#one-command-reports)
@@ -111,6 +117,32 @@ Neither report availability nor supplementary diagnostic agreement converts an
 original failed gate to a pass or authorizes a continuation.
 
 ## Current delivery
+
+The current report is **edition-0007**, published29October2026 at23:06CET at
+[the same interactive viewer](http://127.0.0.1:8780/report.html). The DeFoG
+selector now uses **Protenix + DeFoG, balanced constant weight30k**, replacing
+the earlier scheduled-weight run. Constantlambda0.5364198835347113, time0.2->0.95,
+all30000updates and30001saved matrices verified;1501display frames. Original
+0/30001validity,20/25endpoint sulfur and terminal combined atom failure remain
+visible. The six other trajectories and40scientific assets are byte-identical.
+Unchanged208-case engine reused; allocated saved-only renderer29851246 passed,
+65served HTTPfiles verified, endpoint/navigation/heatmaps/browser checks passed.
+[Replacement delivery record](runs/20261029-balanced-defog-report-01/README.md).
+
+### Previous edition0006
+
+The previous report is **edition-0006**, published28October2026 20:06UTC at
+[the same interactive viewer](http://127.0.0.1:8780/report.html). Select
+**Protenix + DeFoG, scheduled time30k** for the new seventh trajectory: all30k
+updates, all30,001 scalar states,1501 display-selected matrices from every30,001
+verified original saved NPZ, native/prior/time/weight/drift curves and raw
+validity. Original0/30001 validity and failed terminal combined atom gate remain
+visible. All40 prior scientific data assets/six outcomes are unchanged. Changed
+engine passed208 allocated fixtures, saved-only renderer29845015 passed,65HTTP
+files verified and actual browser navigation/slider/playback/heatmaps passed.
+[Delivery record](runs/20261028-defog-report-01/README.md).
+
+### Previous edition0005
 
 The reusable command published **edition-0005** at
 [the same viewer](http://127.0.0.1:8780/report.html) on28October2026 at12:20UTC.
@@ -155,3 +187,41 @@ All old editions and scientific values remain unchanged. Edition0003's historica
 141-case render and exact display-only equality audit remain preserved. The new dated run record
 binds source, checks, equality audit, HTTP/browser QA and preparation-only future
 refresh instructions. Historical failures remain preserved; the monitor stays paused.
+
+
+### Scheduled-time Protenix–DeFoG support (28 October2026)
+
+The canonical engine now includes the terminal30k scheduled-time DeFoG schema.
+Its allocated-only report_defog.py adapter validates every original saved NPZ,
+including non-displayed frames, exact FP32 probabilities/argmax/time/query/teacher
+bindings and saved transitions. All scalar records/readouts are retained. The
+viewer selects every20th plus endpoint matrix for display and states this
+selection explicitly; it does not claim those other matrices were unsaved.
+Teacher KL, flow time, prior weight, drift and saved validity remain separate
+from the Protenix contact proxy. The original combined terminal atom failure and
+zero valid identities remain failed, even when presentation validation passes.
+The old six-arm scientific renderer bytes are unchanged and their verified cache
+remains reusable. Model/optimizer/chemistry evaluation is absent.
+
+The default dtu-report-home.json profile stages bounded report outputs under the
+authorized HPC HOME mosaic-runs root. New exploratory report jobs use the shared
+[storage policy](../../../docs/HPC_STORAGE_POLICY.md): live quota already includes
+existing files, so charge only this phase's remaining byte/file allowance plus
+the common bounded reserve. Real quota, disk or file shortfalls still fail;
+unavailable observations stay visible as warnings. The explicit legacy profile
+retains its historical accounting. WORK3 originals are read-only; this report
+requests zero WORK3 output bytes and grants no scientific campaign admission.
+The old WORK3 profile/blocked receipt and every historical edition are preserved.
+No cleanup or scientific relocation occurs. See the [adapter run record](runs/20261028-defog-report-01/README.md) for actual qualification/render/publication status.
+
+Completed exploratory continuations (`mosaic-exploratory-continuation-v1/v2`)
+are supported by the versioned input adapter `scripts/report_exploratory.py`.
+Point a selected arm at its original `payload/study`; the canonical command
+binds its actual plan, submission and completed summary, then reuses the existing
+saved-frame validator and cache on allocated report CPU. A completed update budget
+remains **unqualified** when the producer did not request derivative certification.
+Disposable device smokes are rejected. Historical source summaries and reports stay
+unchanged. The workstation profiles use the unattended HPC helper; its local path
+is excluded from the remote engine identity.
+Cached exploratory summaries retain their real version/configuration so repeat
+refreshes use the same adapter as the first publication.

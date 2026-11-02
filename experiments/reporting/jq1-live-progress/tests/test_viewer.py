@@ -311,3 +311,13 @@ def test_bond_aware_geometry_preserves_aspect_and_readout_without_repair(javascr
 def test_header_describes_saved_trajectories_without_a_stale_fixed_arm_count(source):
     assert 'Independent saved trajectories. Original results, including failed terminal checks.' in source
     assert 'Four independent runs.' not in source
+
+
+def test_defog_schedule_drift_validity_and_display_stride_are_explicit(document, javascript):
+    assert document.ids['teacher-plot'][0] == 'svg'
+    assert document.ids['teacher-block'][0] == 'div'
+    for key in ('teacher_time', 'weight', 'teacher_drift_max_tv', 'prior_kl', 'weighted_prior_kl'):
+        assert 'key:"' + key + '"' in javascript
+    assert 'arm.validity.sanitized' in javascript and 'arm.saved_frames_count' in javascript
+    assert "every20-update display selection" in javascript
+    assert 'arm.kind==="defog"' in javascript

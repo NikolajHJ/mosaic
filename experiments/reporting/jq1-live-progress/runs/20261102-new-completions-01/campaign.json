@@ -1,0 +1,35 @@
+{
+  "status": "render_running_not_yet_published",
+  "request": "results/hpc/20261028-reusable-report-01/requests/request-20261102T081404Z-e35e3990",
+  "render_job": "29871932",
+  "engine_pin": "96d93cee869ea38ca14ddd2e7cd5f32c6a40a5c0510e2b24fd5a346b9eac868f",
+  "engine_CPU_job": "29871919",
+  "CPU_cases": 280,
+  "panels": 29,
+  "previous_panels_preserved": 23,
+  "added_panels": 6,
+  "all_selected_global_starts": 0,
+  "intended_edition": "edition-0016",
+  "saved_results_changed": false,
+  "scientific_settings_changed": false,
+  "scientific_renderer_changed": false,
+  "viewer_changed": false,
+  "computer_use_for_this_update": false,
+  "report_URL": "http://127.0.0.1:8780/report.html",
+  "normal_update_command": ".venv/Scripts/python.exe scripts/reporting/report.py --profile experiments/reporting/jq1-live-progress/configs/dtu-report-work3-exploratory.json",
+  "resume_command": ".venv/Scripts/python.exe scripts/reporting/report.py --resume results/hpc/20261028-reusable-report-01/requests/request-20261102T081404Z-e35e3990 --profile experiments/reporting/jq1-live-progress/runs/20261102-new-completions-01/profile.json",
+  "superseded_metadata_requests": [
+    {
+      "request": "request-20261102T075548Z-5b051846",
+      "CPU_job": "29871834",
+      "CPU_cases": 275,
+      "outcome": "capture failed missing optional interrupted report_path; no render submitted"
+    },
+    {
+      "request": "request-20261102T080806Z-7ad23d4e",
+      "CPU_job": "29871873",
+      "CPU_cases": 279,
+      "outcome": "metadata-only client stopped before render after discovering stale history adapter profile hash; no render submitted"
+    }
+  ]
+}

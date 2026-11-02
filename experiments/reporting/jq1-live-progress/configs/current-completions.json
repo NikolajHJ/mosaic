@@ -155,9 +155,7 @@
           "stderr": "/work3/s234818/mosaic/runs/20261029-protenix-defog-balanced-30000-01/gpu.err"
         }
       ]
-    }
-  ],
-  "completed_candidates": [
+    },
     {
       "id": "strategy_delayed_s17",
       "label": "Sparse seed17 - delayed chemistry",
@@ -213,24 +211,6 @@
       "status_detail": "Completed20,000 exploratory updates with original frozen model/context preserved. Recorded strict-valid argmax states: 0. Saved contact and chemistry losses; changing targets/weights do not define one fixed objective. No derivative or binding certification."
     },
     {
-      "id": "strategy_chemfirst_s17",
-      "label": "chemfirst s17 (gpua10)",
-      "run": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/run/chemfirst-s17/payload",
-      "global_target": 20000,
-      "primary_metric": "contact_loss",
-      "continuation_status": "completed",
-      "status_detail": "Completed exploratory chemistry comparison. All saved results and scientific warnings preserved; changing teachers/weights do not define one fixed objective. No derivative or binding certification."
-    },
-    {
-      "id": "strategy_chemfirst_s23",
-      "label": "chemfirst s23 (gpua10)",
-      "run": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/run/chemfirst-s23/payload",
-      "global_target": 20000,
-      "primary_metric": "contact_loss",
-      "continuation_status": "completed",
-      "status_detail": "Completed exploratory chemistry comparison. All saved results and scientific warnings preserved; changing teachers/weights do not define one fixed objective. No derivative or binding certification."
-    },
-    {
       "id": "strategy_severity_s17",
       "label": "Sparse seed17 - severity guidance",
       "run": "/work3/s234818/mosaic/runs/20261031-protenix-chemistry-strategies-01/ampere-expansion-20261101-01/a40/run/severity-s17/payload",
@@ -238,15 +218,6 @@
       "primary_metric": "contact_loss",
       "continuation_status": "completed",
       "status_detail": "Completed20,000 exploratory updates with original frozen model/context preserved. Recorded strict-valid argmax states: 0. Saved contact and chemistry losses; changing targets/weights do not define one fixed objective. No derivative or binding certification."
-    },
-    {
-      "id": "strategy_severity_s23",
-      "label": "severity s23 (gpua40)",
-      "run": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/run/severity-s23/payload",
-      "global_target": 20000,
-      "primary_metric": "contact_loss",
-      "continuation_status": "completed",
-      "status_detail": "Completed exploratory chemistry comparison. All saved results and scientific warnings preserved; changing teachers/weights do not define one fixed objective. No derivative or binding certification."
     },
     {
       "id": "strategy_adaptive_s17",
@@ -312,15 +283,6 @@
       "status_detail": "Completed exploratory chemistry comparison. All saved results and scientific warnings preserved; changing teachers/weights do not define one fixed objective. No derivative or binding certification."
     },
     {
-      "id": "strategy_earlyseverity_s23",
-      "label": "earlyseverity s23 (gpuv100)",
-      "run": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/run/earlyseverity-s23/payload",
-      "global_target": 20000,
-      "primary_metric": "contact_loss",
-      "continuation_status": "completed",
-      "status_detail": "Completed exploratory chemistry comparison. All saved results and scientific warnings preserved; changing teachers/weights do not define one fixed objective. No derivative or binding certification."
-    },
-    {
       "id": "strategy_combined_s17",
       "label": "Sparse seed17 - combined strategies (A100)",
       "run": "/work3/s234818/mosaic/runs/20261031-protenix-chemistry-strategies-01/ampere-expansion-20261101-01/a100/run/combined-s17/payload",
@@ -337,6 +299,24 @@
       "primary_metric": "contact_loss",
       "continuation_status": "completed",
       "status_detail": "Completed20,000 exploratory updates with original frozen model/context preserved. Recorded strict-valid argmax states: 0. Saved contact and chemistry losses; changing targets/weights do not define one fixed objective. No derivative or binding certification."
+    },
+    {
+      "id": "strategy_severity_s23",
+      "label": "severity s23 (gpua40)",
+      "run": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/run/severity-s23/payload",
+      "global_target": 20000,
+      "primary_metric": "contact_loss",
+      "continuation_status": "completed",
+      "status_detail": "Completed exploratory chemistry comparison. All saved results and scientific warnings preserved; changing teachers/weights do not define one fixed objective. No derivative or binding certification."
+    },
+    {
+      "id": "strategy_earlyseverity_s23",
+      "label": "earlyseverity s23 (gpuv100)",
+      "run": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/run/earlyseverity-s23/payload",
+      "global_target": 20000,
+      "primary_metric": "contact_loss",
+      "continuation_status": "completed",
+      "status_detail": "Completed exploratory chemistry comparison. All saved results and scientific warnings preserved; changing teachers/weights do not define one fixed objective. No derivative or binding certification."
     },
     {
       "id": "strategy_delayed_dense_s17",
@@ -366,6 +346,68 @@
       "status_detail": "Compare at update20,000 against the existing constant1 seed17 V100 run. Remaining20k-30k updates are additional unmatched exploration. Loss/fallbacks unchanged; GPU differs, so elapsed times are not a clean speedup measurement. No derivative or binding certification.",
       "comparison_baseline_id": "strategy_constant1_s17",
       "comparison_update": 20000
+    },
+    {
+      "id": "protenix_chemistry_noise50k",
+      "label": "Protenix + chemistry + gradient-scaled noise \u00b7 full0\u201350k",
+      "global_target": 50000,
+      "continuation_status": "completed",
+      "primary_metric": "contact_loss",
+      "segments": [
+        {
+          "id": "noise-history-29857358",
+          "run": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-chemistry-noise-20261030-01/retry01/protenix_chemistry/payload/study",
+          "saved_partial": true,
+          "job_id": "29857358",
+          "global_offset": 0,
+          "requested_updates": 50000,
+          "config": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source/examples/configs/extended_random.json",
+          "science_manifest": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source/source_manifest.json",
+          "source_manifest_sha256": "da9db6821d26b884ca1749303fc8e0b0095bd9ee7cbd1b427cdcf1b22eec6562",
+          "submission": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-chemistry-noise-20261030-01/retry01/protenix_chemistry/submission.json",
+          "stdout": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-chemistry-noise-20261030-01/retry01/protenix_chemistry/stdout.29857358.log",
+          "stderr": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-chemistry-noise-20261030-01/retry01/protenix_chemistry/stderr.29857358.log"
+        },
+        {
+          "id": "noise-history-29864788",
+          "run": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-chemistry-noise-20261030-01/continuation-35300-01/protenix_chemistry/payload/study",
+          "saved_partial": true,
+          "job_id": "29864788",
+          "global_offset": 35300,
+          "requested_updates": 14700,
+          "config": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source/examples/configs/extended_random.json",
+          "science_manifest": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source/source_manifest.json",
+          "source_manifest_sha256": "da9db6821d26b884ca1749303fc8e0b0095bd9ee7cbd1b427cdcf1b22eec6562",
+          "submission": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-chemistry-noise-20261030-01/continuation-35300-01/protenix_chemistry/submission.json",
+          "stdout": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-chemistry-noise-20261030-01/continuation-35300-01/protenix_chemistry/stdout.29864788.log",
+          "stderr": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-chemistry-noise-20261030-01/continuation-35300-01/protenix_chemistry/stderr.29864788.log",
+          "through_global_update": 36320
+        },
+        {
+          "run": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/native-noise01/run/protenix_chemistry/payload/study"
+        }
+      ],
+      "status_detail": "Completed50,000 exploratory updates; noise ratio0.4 of the binding-only logit update norm, independent PCG64 stream. Original wall-limit/admin-interrupted prefixes and checkpoint branches preserved; no derivative or binding certification."
+    }
+  ],
+  "completed_candidates": [
+    {
+      "id": "strategy_chemfirst_s17",
+      "label": "chemfirst s17 (gpua10)",
+      "run": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/run/chemfirst-s17/payload",
+      "global_target": 20000,
+      "primary_metric": "contact_loss",
+      "continuation_status": "completed",
+      "status_detail": "Completed exploratory chemistry comparison. All saved results and scientific warnings preserved; changing teachers/weights do not define one fixed objective. No derivative or binding certification."
+    },
+    {
+      "id": "strategy_chemfirst_s23",
+      "label": "chemfirst s23 (gpua10)",
+      "run": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/run/chemfirst-s23/payload",
+      "global_target": 20000,
+      "primary_metric": "contact_loss",
+      "continuation_status": "completed",
+      "status_detail": "Completed exploratory chemistry comparison. All saved results and scientific warnings preserved; changing teachers/weights do not define one fixed objective. No derivative or binding certification."
     },
     {
       "id": "structural_structural_s23",

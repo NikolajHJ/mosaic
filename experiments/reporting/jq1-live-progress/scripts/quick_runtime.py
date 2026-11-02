@@ -4,6 +4,7 @@ import argparse
 import hashlib
 import importlib.util
 import json
+import math
 import os
 from pathlib import Path, PurePosixPath
 import re
@@ -62,6 +63,45 @@ def tree_bytes(root):
 
 def capacity(profile, parent, phase):
     """Adopt the exact full current guard, then add this tool's own allowance."""
+    if profile.get('research_profile') == 'exploratory' and profile.get('output_filesystem') == 'work3':
+        from storage_accounting import assess_output
+        root, owned = Path(profile['remote_root']), Path(parent)
+        inputs.require(all(p.is_absolute() and '..' not in p.parts and
+                           all(not q.is_symlink() for q in (p, *p.parents)) for p in (root, owned))
+                       and any(root.is_relative_to(Path(p)) for p in profile['allowed_roots'])
+                       and owned.is_relative_to(root), 'WORK3 report output escaped its declared scope')
+        allowance = profile['request_cap_bytes'] if phase == 'render' else profile['validation_cap_bytes']
+        gate = assess_output(owned, allowance, profile.get('report_file_cap', 4096))
+        gate.update(output_filesystem='work3', phase=phase, scientific_campaign_admission_granted=False,
+                    scope='This report phase remaining output only; source inputs and external caches are read-only')
+        write(owned / ('capacity-' + phase + '.json'), gate)
+        inputs.require(gate['status'] == 'passed', 'Bounded WORK3 report output does not fit its declared storage policy')
+        return gate
+    if profile.get('output_filesystem') == 'home':
+        home = Path(profile['home_quota_root'])
+        inputs.require(Path(profile['remote_root']).is_relative_to(home) and str(home) in profile['allowed_roots'],
+                       'HOME report root must remain inside its declared authorized scope')
+        try:
+            raw = subprocess.check_output(['getquota_zhome.sh'], text=True, timeout=30)
+        except (OSError, subprocess.CalledProcessError, subprocess.TimeoutExpired):
+            if profile.get('research_profile') != 'exploratory':
+                raise
+            raw = ''
+        (Path(parent) / ('home-quota-' + phase + '.txt')).write_text(raw)
+        fs = os.statvfs(home)
+        observation = {'status': 'read_only_inputs', 'output_bytes_requested': 0, 'scientific_campaign_admission_granted': False}
+        if profile.get('research_profile') == 'exploratory':
+            allowance = profile['request_cap_bytes'] if phase == 'render' else profile['validation_cap_bytes']
+            current_files = sum(p.is_file() for p in Path(parent).rglob('*'))
+            gate = home_exploratory_capacity(raw, fs.f_bavail * fs.f_frsize,
+                {key: getattr(fs, key) for key in ('f_files', 'f_ffree', 'f_favail')},
+                allowance, tree_bytes(parent), profile.get('report_file_cap', 4096), current_files)
+        else:
+            gate = home_capacity(observation, raw, tree_bytes(profile['remote_root']), fs.f_bavail * fs.f_frsize,
+                                 profile['request_cap_bytes'], profile['validation_cap_bytes'])
+        write(Path(parent) / ('capacity-' + phase + '.json'), gate)
+        inputs.require(gate['status'] == 'passed', 'Bounded HOME report output does not fit its declared storage policy')
+        return gate
     guard = profile['capacity_guard']
     root = Path(guard['source'])
     source_manifest = root / 'source_manifest.json'
@@ -95,6 +135,49 @@ def capacity(profile, parent, phase):
     finally:
         write(Path(parent) / ('capacity-' + phase + '.json'), gate)
     return gate
+
+
+def home_exploratory_capacity(raw_quota, filesystem_free, inodes, cap, current, file_cap, current_files):
+    """Existing bytes are already in live quota; charge only this phase's remainder."""
+    from storage_accounting import assess, remaining_writes
+    match = re.search(r'You are using\s+([\d.]+)([KMGT]) of\s+([\d.]+)([KMGT]) quota', raw_quota)
+    quota = None
+    if match is not None:
+        units = {'K': 1024, 'M': 1024**2, 'G': GIB, 'T': 1024**4}
+        used = math.ceil(float(match[1]) * units[match[2]] + .01 * GIB)
+        limit = math.floor(float(match[3]) * units[match[4]])
+        quota = {'available_bytes': limit - used, 'available_files': None}
+    result = assess(quota, filesystem_free, inodes, [{
+        'id': 'this-report-phase', 'remaining_bytes': remaining_writes(cap, current),
+        'remaining_files': remaining_writes(file_cap, current_files)}], research_profile='exploratory')
+    result.update(output_filesystem='home', own_cap_bytes=cap, own_current_bytes=current,
+                  own_file_cap=file_cap, own_current_files=current_files,
+                  work3_output_bytes_requested=0, scientific_campaign_admission_granted=False)
+    return result
+
+
+def home_capacity(prior, raw_quota, owned_bytes, filesystem_free, request_cap, validation_cap):
+    """HOME staging funds its own full caps; no extra report outputs go to WORK3.
+
+    WORK3 dependencies are read-only; its model/optimizer admissions are unchanged.
+    No scientific campaign capacity is granted by this HOME-only report gate.
+    """
+    match = re.search(r'You are using\s+([\d.]+)([KMGT]) of\s+([\d.]+)([KMGT]) quota', raw_quota)
+    inputs.require(match is not None, 'Finite HOME user quota is required')
+    units = {'K': 1024, 'M': 1024**2, 'G': GIB, 'T': 1024**4}
+    used = math.ceil(float(match[1]) * units[match[2]] + .01 * GIB)
+    limit = math.floor(float(match[3]) * units[match[4]])
+    available = min(limit - used, filesystem_free) - owned_bytes
+    required = 4*GIB + request_cap + validation_cap + 64*1024**2
+    passed = available >= required
+    return {'status': 'passed' if passed else 'failed', 'output_filesystem': 'home',
+            'work3_observation': prior, 'work3_output_bytes_requested': 0,
+            'scientific_campaign_admission_granted': False, 'available_bytes': available,
+            'required_bytes': required, 'owned_home_bytes_charged': owned_bytes,
+            'independent_request_cap_bytes': request_cap, 'validation_cap_bytes': validation_cap,
+            'reserve_bytes': 4*GIB, 'work3_file_reserve_changed': False,
+            'forecasts_removed': False, 'original_gate_changed': False,
+            'scope': 'HOME-only report quota/caps/reserve; all original WORK3 artifacts read-only, no new WORK3 outputs or model/optimizer admission'}
 
 
 def bsub_argv(profile, source, pin, phase, parent, request):
@@ -210,7 +293,21 @@ def assets(arm):
 
 def registered_seeds(profile):
     """Only actual terminal, certificate-bound earlier requests become caches."""
-    index = Path(profile['remote_root']) / 'cache-index.jsonl'
+    roots = [Path(profile['remote_root']), *(Path(p) for p in profile.get('external_cache_roots', []))]
+    inputs.require(len(roots) == len(set(roots)), 'Duplicate report cache roots')
+    seeds = []
+    for index, root in enumerate(roots):
+        inputs.require(root.is_absolute() and '..' not in root.parts and
+                       (index == 0 or any(root.is_relative_to(Path(p)) for p in profile.get('allowed_roots', []))) and
+                       all(not p.is_symlink() for p in (root, *root.parents)), 'Unauthorized report cache root')
+        seeds.extend(_registered_seeds_at(root))
+    return seeds
+
+
+def _registered_seeds_at(cache_root):
+    """Read one authorized registry; retain every existing source/terminal proof."""
+    cache_root = Path(cache_root)
+    index = cache_root / 'cache-index.jsonl'
     if not index.exists():
         return []
     rows = [json.loads(line) for line in index.read_text().splitlines() if line]
@@ -218,8 +315,8 @@ def registered_seeds(profile):
     for row in reversed(rows[-128:]):
         parent = Path(row['parent'])
         source = Path(row['source'])
-        inputs.require(parent.parent == Path(profile['remote_root']) / 'requests'
-                       and source.parent.parent == Path(profile['remote_root']) / 'engines', 'Cache namespace escaped report root')
+        inputs.require(parent.parent == cache_root / 'requests'
+                       and source.parent.parent == cache_root / 'engines', 'Cache namespace escaped report root')
         verify_source(source, row['engine_pin'])
         cert = certificate(source, row['engine_pin'])
         for proof in row['terminal_proofs']:
@@ -305,14 +402,17 @@ def verify_originals(plan, manifest, output):
             for name in ('states', 'updates', 'config', 'summary', 'case_report', 'retained_index', 'stdout', 'stderr'):
                 if name in segment:
                     data.bound_file(segment[name])
-            for name in ('producer_plan', 'producer_submission', 'producer_driver', 'producer_checksums', 'science_manifest', 'sampled_validity'):
-                if name in segment:
-                    data.bound_file(segment[name])
+            for name in ('producer_plan','producer_submission','producer_driver','producer_checksums','science_manifest','latest_metadata','latest_snapshot','producer_manifest','sampled_validity'):
+                if name in segment:data.bound_file(segment[name])
         if any(s.get('input_schema') == 'terminal-chemistry-screen-v1' for s in arm['segments']):
             for proof in next(value for value in manifest['arms'] if value['id'] == arm['id'])['segment_proofs']:
                 for record in proof['sampled_validity']:
                     data.bound_file(record['raw_samples'])
     for arm in manifest['arms']:
+        if arm['kind'] == 'defog':
+            for proof in arm['segment_proofs']:
+                for row in proof['all_saved_snapshots']:
+                    data.bound_file(row)
         for chunk in arm['frames']['chunks']:
             for frame in data.load(Path(output) / chunk['path'])['frames']:
                 data.bound_file(frame['source_snapshot'])
@@ -331,6 +431,18 @@ def render_plan(plan, output, renderer_sha, seeds):
                 import report_chemistry_screen
                 inputs.require(inputs.sha(Path(__file__).with_name('report_chemistry_screen.py')) == arm['schema_renderer_sha256'], 'Chemistry screen adapter identity changed')
                 value = report_chemistry_screen.collect_arm(arm, output)
+            elif any(s.get('input_schema') in ('dense-fixed-history-v1','terminal-partial-history-v1') for s in arm['segments']):
+                import report_history
+                inputs.require(arm['schema_renderer_sha256']==inputs.digest({'history':inputs.sha(Path(__file__).with_name('report_history.py')),'exploratory':inputs.sha(Path(__file__).with_name('report_exploratory.py'))}),'History adapter identity changed')
+                value=report_history.collect_arm(arm,output)
+            elif any(s.get('input_schema')=='terminal-exploratory-fixed-v1' for s in arm['segments']):
+                import report_exploratory
+                inputs.require(inputs.sha(Path(__file__).with_name('report_exploratory.py'))==arm['schema_renderer_sha256'],'Exploratory adapter identity changed')
+                value=report_exploratory.collect_arm(arm,output)
+            elif arm['kind'] == 'defog':
+                import report_defog
+                inputs.require(inputs.sha(Path(__file__).with_name('report_defog.py')) == arm['schema_renderer_sha256'], 'DeFoG schema renderer identity changed')
+                value = report_defog.collect_arm(arm, output)
             else:
                 value = data.collect_arm(arm, output)
             fresh.append(arm['id'])
@@ -391,6 +503,8 @@ def render(source, pin, profile, request, phase):
             else:
                 bundle.add(path, arcname=path.name, recursive=False)
     inputs.require(tree_bytes(phase) <= profile['request_cap_bytes'], 'Report output exceeded its declared cap')
+    inputs.require(sum(p.is_file() for p in phase.rglob('*')) <= profile.get('report_file_cap', 4096),
+                   'Report output exceeded its declared file cap')
     write(phase / 'delivery.json', {'status': 'passed_saved_only_presentation', 'engine_pin': pin,
           'job_id': os.environ['LSB_JOBID'], 'edition': plan['edition'], 'archive': inputs.binding(archive),
           'receipt_sha256': inputs.sha(output / 'report-receipt.json'), 'omitted_verified_local_assets': omitted,
