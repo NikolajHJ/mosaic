@@ -11222,3 +11222,23 @@ The local canonical controller remains active; its exact resume command is
 persisted for recovery after its bounded wait, without duplicating the job.
 No render or new publication has occurred; verified edition0016 remains live.
 No scientific source/results/settings, live jobs or renderer were changed.
+
+
+## 2 November 2026: local report access restored; current remaining runs
+
+The port8780 report listener was absent. Reused canonical ensure_http to start
+one hidden localhost server, then verified416 exact served files in existing
+edition0016. A separate process confirmed persistent listener32272, HTTP200
+for the shell/latest pointer/direct edition. No renderer or report data changed.
+Evidence: reusable-report run local-access-restored-20261102.json.
+
+At19:52:13UTC DBMol29871027 RUN with53,416/60,000 committed updates and sparse
+annealed29873389 RUN with37,630/50,000. Chemistry-first seed23 and the three
+remaining structural10 controls are PEND/zero new updates. At19:53:22UTC all48
+observed queues remained Open:Inact_Adm. Report CPU29874871 remains PEND;
+the local canonical controller ended at its original bounded two-hour wait.
+Its recorded request/accepted job/lock remain available for exact resume when
+DTU reopens scheduling, with no duplicate. No new report edition is claimed.
+Read-only VAE context:29871778 has original same-job LSF successful completion;
+its follow-up CPU and separate VAE-Protenix pilot remain queued. No foreign
+job/source/checkpoint was modified, and no scientific quality pass is inferred.

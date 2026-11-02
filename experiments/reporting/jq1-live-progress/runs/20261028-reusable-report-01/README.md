@@ -1,5 +1,14 @@
 # Reusable saved-report command, 28 October2026
 
+Local access restored at19:54UTC2November: the stopped localhost listener was
+restarted through canonical `ensure_http`; all416 published files passed exact
+HTTP byte checks. Persistent listener32272 serves edition0016 at
+http://127.0.0.1:8780/report.html. [Access repair and current runs](local-access-restored-20261102.json).
+The new report is still pending: CPU29874871 remains queued, all observed DTU
+queues are administratively inactive, and the original local controller has
+ended at its bounded two-hour wait. Resume its recorded request after scheduling
+reopens; preserve the accepted job/lock and do not submit another refresh.
+
 Latest delivery status, 2 November2026 at18:15UTC: the default selection now
 contains32 completed trajectories, including chemistry-first seed17 (20k),
 structural repair seed23 (30k), and sparse structural10 plus annealed noise (30k).
