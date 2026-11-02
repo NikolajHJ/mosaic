@@ -1,5 +1,21 @@
 # Reusable saved-report command, 28 October2026
 
+Latest delivery status, 2 November2026 at18:15UTC: the default selection now
+contains32 completed trajectories, including chemistry-first seed17 (20k),
+structural repair seed23 (30k), and sparse structural10 plus annealed noise (30k).
+The existing request `request-20261102T170052Z-9d264ce8` is waiting on its accepted
+engine CPU job29874871. All48 observed DTU queues were `Open:Inact_Adm`; there
+was no active alternative. No render job or new publication is claimed.
+Edition0016 remains live at http://127.0.0.1:8780/report.html.
+
+[Pending delivery and exact resume command](pending-chemistry-completions-20261102.json).
+Read its existing request/controller/job before recovery. The current local
+controller will continue while alive; if its bounded wait expires, resume that
+same request after scheduling reopens. Preserve its accepted job and viewer lock;
+do not submit a duplicate refresh. The three promoted selection rows retain
+their original content, and the pending request already contains them as
+completion candidates. No scientific source, run or renderer was changed.
+
 User requested a faster report workflow accepting a list of runs. Prepare one
 reusable immutable engine, retaining the existing refined layout and scientific
 saved-data validation. A data-only refresh must not rebuild report code or rerun

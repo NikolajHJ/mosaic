@@ -11202,3 +11202,23 @@ Started canonical cached report refresh request20261102T170052Z-9d264ce8;
 engine CPU29874871 submitted. Report publication is pending, not claimed.
 No optimizer submissions/restarts, tests of scientific models, cleanup or
 new renderer were performed by this completion check.
+
+
+## 2 November 2026: completed chemistry report selection ready; DTU queues inactive
+
+Promoted the three authenticated completed trajectories (chemfirst-s17,
+structural-s23, structural10-noise-sparse-s17) from conditional candidates into
+the canonical default selection, preserving each complete row. Selection now
+contains32 completed trajectories and6 unfinished conditional candidates.
+The already accepted refresh request20261102T170052Z-9d264ce8 contains these
+same inputs; no second request, CPU job or optimizer was submitted.
+
+At18:15:50UTC, report engine CPU29874871 was PEND with the explicit scheduler
+reason 'The queue is inactivated by the administrator'. All48 account-visible
+queues were Open:Inact_Adm, so no allocated alternative was available. Raw queue
+and exact submission/request receipts are bound by the pending delivery note
+in experiments/reporting/jq1-live-progress/runs/20261028-reusable-report-01/.
+The local canonical controller remains active; its exact resume command is
+persisted for recovery after its bounded wait, without duplicating the job.
+No render or new publication has occurred; verified edition0016 remains live.
+No scientific source/results/settings, live jobs or renderer were changed.

@@ -388,22 +388,11 @@
         }
       ],
       "status_detail": "Completed50,000 exploratory updates; noise ratio0.4 of the binding-only logit update norm, independent PCG64 stream. Original wall-limit/admin-interrupted prefixes and checkpoint branches preserved; no derivative or binding certification."
-    }
-  ],
-  "completed_candidates": [
+    },
     {
       "id": "strategy_chemfirst_s17",
       "label": "chemfirst s17 (gpua10)",
       "run": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/run/chemfirst-s17/payload",
-      "global_target": 20000,
-      "primary_metric": "contact_loss",
-      "continuation_status": "completed",
-      "status_detail": "Completed exploratory chemistry comparison. All saved results and scientific warnings preserved; changing teachers/weights do not define one fixed objective. No derivative or binding certification."
-    },
-    {
-      "id": "strategy_chemfirst_s23",
-      "label": "chemfirst s23 (gpua10)",
-      "run": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/run/chemfirst-s23/payload",
       "global_target": 20000,
       "primary_metric": "contact_loss",
       "continuation_status": "completed",
@@ -421,15 +410,6 @@
       "comparison_update": 20000
     },
     {
-      "id": "structural10_sparse_s17",
-      "label": "structural10-sparse - seed17 (gpua100)",
-      "run": "/work3/s234818/mosaic/runs/20261102-structural-strong-noise-01/source02/run/structural10-sparse-s17/payload",
-      "global_target": 30000,
-      "primary_metric": "contact_loss",
-      "continuation_status": "completed",
-      "status_detail": "Structural repair; constant chemistry10; No per-step noise. Existing sparse seeded tree initialization. Composition/margin off. Different GPU families confound runtime comparisons. Exploratory results; no derivative or binding certification."
-    },
-    {
       "id": "structural10_noise_sparse_s17",
       "label": "structural10-noise-sparse - seed17 (gpuv100)",
       "run": "/work3/s234818/mosaic/runs/20261102-structural-strong-noise-01/source02/run/structural10-noise-sparse-s17/payload",
@@ -437,6 +417,26 @@
       "primary_metric": "contact_loss",
       "continuation_status": "completed",
       "status_detail": "Structural repair; constant chemistry10; binding-only logit noise0.4 linearly zero by20k, then10k settling. Existing sparse seeded tree initialization. Composition/margin off. Different GPU families confound runtime comparisons. Exploratory results; no derivative or binding certification."
+    }
+  ],
+  "completed_candidates": [
+    {
+      "id": "strategy_chemfirst_s23",
+      "label": "chemfirst s23 (gpua10)",
+      "run": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/run/chemfirst-s23/payload",
+      "global_target": 20000,
+      "primary_metric": "contact_loss",
+      "continuation_status": "completed",
+      "status_detail": "Completed exploratory chemistry comparison. All saved results and scientific warnings preserved; changing teachers/weights do not define one fixed objective. No derivative or binding certification."
+    },
+    {
+      "id": "structural10_sparse_s17",
+      "label": "structural10-sparse - seed17 (gpua100)",
+      "run": "/work3/s234818/mosaic/runs/20261102-structural-strong-noise-01/source02/run/structural10-sparse-s17/payload",
+      "global_target": 30000,
+      "primary_metric": "contact_loss",
+      "continuation_status": "completed",
+      "status_detail": "Structural repair; constant chemistry10; No per-step noise. Existing sparse seeded tree initialization. Composition/margin off. Different GPU families confound runtime comparisons. Exploratory results; no derivative or binding certification."
     },
     {
       "id": "structural10_chain_s17",

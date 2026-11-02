@@ -1,0 +1,38 @@
+{
+  "version": "saved-report-pending-delivery-v1",
+  "observed_utc": "2026-11-02T18:15:50.050316+00:00",
+  "status": "waiting_for_administrator_to_reactivate_DTU_queues",
+  "report_request_id": "request-20261102T170052Z-9d264ce8",
+  "report_work": "results/hpc/20261028-reusable-report-01/requests/request-20261102T170052Z-9d264ce8",
+  "engine_cpu_job": "29874871",
+  "engine_pin": "e2777dbbc9b6b6eeff868b16a7564625fc81a03ac16cc7974ab3566909ce6d0f",
+  "added_completed_run_ids": [
+    "strategy_chemfirst_s17",
+    "structural_structural_s23",
+    "structural10_noise_sparse_s17"
+  ],
+  "default_selection_runs": 32,
+  "remaining_conditional_candidates": 6,
+  "selection_sha256": "655abb30a85dc6cc846a3e89cbce8e464773aeef7d1a5f7276d441de275b23c2",
+  "queue_packet": {
+    "path": "results/hpc/20261102-current-overview/report-queue-181549Z.json",
+    "bytes": 41633,
+    "sha256": "e871043ba82878a170f77ffbdf3bb46a38f4577065aacd62d103da3d49942c9e"
+  },
+  "observed_queue_count": 48,
+  "active_alternative_queues": 0,
+  "render_job_submitted": false,
+  "published_edition": "edition-0016",
+  "new_edition_published": false,
+  "resume_argv": [
+    ".venv/Scripts/python.exe",
+    "-B",
+    "scripts/reporting/report.py",
+    "--profile",
+    "experiments/reporting/jq1-live-progress/configs/dtu-report-work3-exploratory.json",
+    "--resume",
+    "results/hpc/20261028-reusable-report-01/requests/request-20261102T170052Z-9d264ce8"
+  ],
+  "recovery_rule": "Inspect the exact existing controller/request/job first. Resume this request only if its local controller has exited; do not create another request or replace the accepted CPU job. It has not started.",
+  "scientific_results_or_settings_changed": false
+}
