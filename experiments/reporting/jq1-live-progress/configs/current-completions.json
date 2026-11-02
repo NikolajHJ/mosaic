@@ -455,6 +455,32 @@
       "primary_metric": "contact_loss",
       "continuation_status": "completed",
       "status_detail": "Structural repair; constant chemistry10; binding-only logit noise0.4 linearly zero by20k, then10k settling. 50% chain +50% uniform, initialization logit noise std0.05. Composition/margin off. Different GPU families confound runtime comparisons. Exploratory results; no derivative or binding certification."
+    },
+    {
+      "id": "annealed_sparse_50k_s17",
+      "label": "Sparse structural repair - cooling and chemistry ramp (0-50k)",
+      "run": "/work3/s234818/mosaic/runs/20261102-sparse-annealed-50k-01/source01/run/annealed-sparse-s17/payload",
+      "global_target": 50000,
+      "primary_metric": "contact_loss",
+      "continuation_status": "completed",
+      "status_detail": "Chemistry1 through20k, geometric1 to30 by30k then hold; T linearly0.7 to0.4 over50k; binding-relative noise0.4 to0 by30k. Composition/margin off. Changing temperature changes relaxed scorer input: cross-state scores/totals are not one fixed objective. Unqualified exploratory results."
+    },
+    {
+      "id": "annealed_sparse_repair70k_s17",
+      "label": "Sparse cooling run plus conditional chemistry100 (full0-70k)",
+      "run": "/work3/s234818/mosaic/runs/20261102-sparse-annealed-50k-01/source01/run/annealed-sparse-s17-repair20k/payload",
+      "segments": [
+        {
+          "run": "/work3/s234818/mosaic/runs/20261102-sparse-annealed-50k-01/source01/run/annealed-sparse-s17/payload"
+        },
+        {
+          "run": "/work3/s234818/mosaic/runs/20261102-sparse-annealed-50k-01/source01/run/annealed-sparse-s17-repair20k/payload"
+        }
+      ],
+      "global_target": 70000,
+      "primary_metric": "contact_loss",
+      "continuation_status": "completed",
+      "status_detail": "Appears only if invalid50k endpoint triggered and completed20k continuation. Exact saved50k checkpoint continued at chemistry100,T0.4,noise0; full parent history and boundary observations retained. No derivative or binding certification."
     }
   ]
 }

@@ -286,3 +286,143 @@ def test_new_completions_do_not_change_a_queued_resolved_selection(tmp_path):
         captured=inputs.capture(selection,profile)
     assert 'completed_candidates' not in captured['resolved_selection']
     assert [r['id'] for r in captured['resolved_selection']['runs']]==['fixed']
+
+
+def recapture_screen(arm, segment, summary, states, updates):
+    """Rebind a synthetic fixture after a deliberate saved-record change."""
+    study = Path(segment['anchor_directory'])
+    saved.save_rows(study/'states.jsonl', states)
+    saved.save_rows(study/'updates.jsonl', updates)
+    saved.save(study/'report.json', {**summary, 'initial_state': states[0], 'last_state': states[-1]})
+    saved.save(study.parent/'summary.json', summary)
+    plan = inputs.load(segment['producer_plan']['path'])
+    plan['arms'][summary['arm']]['screen'] = summary['configuration']
+    plan_binding = saved.save(Path(segment['producer_plan']['path']), plan)
+    submitted = inputs.load(segment['producer_submission']['path'])
+    submitted['plan'] = plan_binding
+    saved.save(Path(segment['producer_submission']['path']), submitted)
+    checksums = inputs.load(segment['producer_checksums']['path'])
+    checksums['plan.json'] = plan_binding['sha256']
+    saved.save(Path(segment['producer_checksums']['path']), checksums)
+    replacement, _, _ = adapter.capture_segment({'id': segment['id']},
+        {'allowed_roots': [str(study.parents[3])]}, study.parent, summary)
+    arm['segments'] = [replacement]
+    return replacement
+
+
+def scheduled_fixture(root):
+    arm, segment, summary, states, updates = fixture(root)
+    config = summary['configuration']
+    config.update(temperature=.7, temperature_schedule={'version': 'linear-temperature-v1',
+                  'initial': .7, 'final': .4, 'total_updates': 10})
+    for state in states:
+        state['temperature'] = float(np.float32(.7 + min(1., state['global_step']/10) * (.4-.7)))
+        if state['snapshot_retained']:
+            path = Path(state['snapshot'])
+            saved.rewrite_npz(path, lambda arrays, t=state['temperature']:
+                              arrays.update(temperature=np.asarray(t, np.float32)))
+            state['snapshot_sha256'] = data.sha(path)
+    for index, update in enumerate(updates):
+        before, after = states[index:index+2]
+        changed = before['temperature'] != after['temperature']
+        update.update(source_temperature=before['temperature'], trial_temperature=before['temperature'],
+                      next_temperature=after['temperature'], temperature_changed=changed,
+                      fixed_comparison_scope='same source teacher, coefficient and temperature')
+        if changed:
+            # A same-T candidate score and a cooled next-state score may differ.
+            # These are synthetic saved observations, not a model evaluation.
+            update['contact_after'] += .25
+            update['fixed_after'] = update['contact_after']
+            update['fixed_increased'] = update['fixed_after'] > update['fixed_before']
+    segment = recapture_screen(arm, segment, summary, states, updates)
+    return arm, segment, summary, states, updates
+
+
+@pytest.mark.parametrize('step,expected', [(0, .7), (20000, .58), (30000, .52),
+                                          (50000, .4), (70000, .4)])
+def test_screen_expected_temperature_is_global_and_exact_fp32(step, expected):
+    config = {'temperature': .7, 'temperature_schedule': {'version': 'linear-temperature-v1',
+              'initial': .7, 'final': .4, 'total_updates': 50000}}
+    adapter.validate_temperature_schedule(config)
+    assert adapter.temperature_at(config, step) == float(np.float32(expected))
+
+
+def test_scheduled_screen_preserves_trial_and_cooled_state_scores_without_rescoring(tmp_path):
+    arm, segment, _, states, updates = scheduled_fixture(tmp_path)
+    assert updates[0]['contact_after'] != states[1]['contact_loss']
+    output = tmp_path/'out'; output.mkdir()
+    result = adapter.collect_arm(arm, output)
+    scalar_rows = data.load(output/result['scalars']['path'])['rows']
+    assert [r['state'] for r in scalar_rows] == states
+    assert [r['update'] for r in scalar_rows[1:]] == updates
+    assert result['optimization_complete'] and result['scientific_status'] == 'unqualified'
+    assert result['segment_proofs'][0]['temperature_scope']['schedule']['total_updates'] == 10
+    assert 'temperatures also change' in result['chemistry_scope']
+
+
+def test_changed_temperature_can_legitimately_have_an_equal_saved_contact(tmp_path):
+    arm, segment, summary, states, updates = scheduled_fixture(tmp_path)
+    updates[0]['contact_after'] = states[1]['contact_loss']
+    updates[0]['fixed_after'] = updates[0]['contact_after']
+    updates[0]['fixed_increased'] = updates[0]['fixed_after'] > updates[0]['fixed_before']
+    segment = recapture_screen(arm, segment, summary, states, updates)
+    assert adapter.collect_segment(segment, arm)['updates'][0] == updates[0]
+
+
+def test_scheduled_screen_checks_nonretained_state_temperature(tmp_path):
+    arm, segment, summary, states, updates = scheduled_fixture(tmp_path)
+    assert not states[1]['snapshot_retained']
+    states[1]['temperature'] += .01
+    segment = recapture_screen(arm, segment, summary, states, updates)
+    with pytest.raises(ValueError, match='temperature differs from declared schedule'):
+        adapter.collect_segment(segment, arm)
+
+
+@pytest.mark.parametrize('bad_temperature', [np.asarray(.5, np.float32),
+                                            np.asarray(float(np.float32(.4)), np.float64)])
+def test_scheduled_npz_temperature_requires_exact_state_value_and_fp32(tmp_path, bad_temperature):
+    arm, segment, summary, states, updates = scheduled_fixture(tmp_path)
+    path = Path(states[-1]['snapshot'])
+    saved.rewrite_npz(path, lambda arrays: arrays.update(temperature=bad_temperature))
+    states[-1]['snapshot_sha256'] = data.sha(path)
+    segment = recapture_screen(arm, segment, summary, states, updates)
+    with pytest.raises(ValueError, match='temperature'):
+        adapter.collect_segment(segment, arm)
+
+
+@pytest.mark.parametrize('field', ['source_temperature', 'trial_temperature', 'next_temperature',
+                                  'temperature_changed', 'fixed_comparison_scope'])
+def test_scheduled_screen_requires_complete_temperature_transition_metadata(tmp_path, field):
+    arm, segment, summary, states, updates = scheduled_fixture(tmp_path)
+    updates[0].pop(field)
+    segment = recapture_screen(arm, segment, summary, states, updates)
+    with pytest.raises(ValueError, match='temperature transition differs'):
+        adapter.collect_segment(segment, arm)
+
+
+def test_cooling_cannot_be_relabelled_an_unchanged_temperature_transition(tmp_path):
+    arm, segment, summary, states, updates = scheduled_fixture(tmp_path)
+    updates[0]['temperature_changed'] = False
+    segment = recapture_screen(arm, segment, summary, states, updates)
+    with pytest.raises(ValueError, match='temperature transition differs'):
+        adapter.collect_segment(segment, arm)
+
+
+@pytest.mark.parametrize('field,index', [('fixed_before', 0), ('contact_before', 0),
+                                        ('contact_after', 15)])
+def test_cooling_keeps_source_scalar_checks_and_clamped_contact_equality(tmp_path, field, index):
+    arm, segment, summary, states, updates = scheduled_fixture(tmp_path)
+    updates[index][field] += .25
+    segment = recapture_screen(arm, segment, summary, states, updates)
+    with pytest.raises(ValueError, match='scalar transition differs'):
+        adapter.collect_segment(segment, arm)
+
+
+@pytest.mark.parametrize('change', [{'version': 'undeclared'}, {'final': 0.}, {'initial': float('nan')},
+                                   {'total_updates': True}, {'extra': 1}])
+def test_scheduled_screen_rejects_undeclared_temperature_rules(change):
+    summary = completion_summary(configuration={'updates': 20000, 'temperature': .7,
+        'temperature_schedule': {'version': 'linear-temperature-v1', 'initial': .7,
+                                 'final': .4, 'total_updates': 50000, **change}})
+    with pytest.raises(ValueError, match='temperature schedule'):
+        adapter.header(summary)

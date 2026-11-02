@@ -64,10 +64,16 @@ def submit(plan_path, kind, arm=None, wall_minutes=None, dependency=None, depend
     parent = root / ('jobs' if kind != 'run' else 'production') / label
     parent.mkdir(parents=True, exist_ok=True)
     require(not list(parent.glob('submission*.json')), 'Existing/unknown submission requires reconciliation')
-    require(kind in ('controls', 'probe', 'dispatch', 'run', 'migrate'), 'Unknown phase')
+    require(kind in ('controls', 'probe', 'dispatch', 'run', 'migrate', 'conditional'), 'Unknown phase')
     require(kind != 'run' or arm in plan['arms'], 'Unknown strategy arm')
     require(kind != 'run' or arm in plan.get('production_arms', plan['arms']), 'Probe-only arm cannot launch production')
     require(kind != 'run' or wall_minutes is not None, 'Production needs an explicit measured wall budget')
+    if kind == 'conditional':
+        policy = plan.get('conditional_tail', {})
+        require(arm is None and policy.get('parent_arm') in plan['arms'], 'Conditional parent arm is not declared')
+        require(dependency_type == 'done' and str(dependency).isdigit()
+                and read(root/'jobs.json').get(policy['parent_arm']) == str(dependency),
+                'Conditional callback must depend on its accepted parent success')
     if kind == 'run':
         require(not (root / arm / 'payload').exists(), 'Existing scientific output requires a fresh continuation')
     gate = capacity(plan, 'submit-' + label)
@@ -145,7 +151,7 @@ def submit(plan_path, kind, arm=None, wall_minutes=None, dependency=None, depend
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--plan', type=Path, required=True)
-    parser.add_argument('--kind', choices=('controls', 'probe', 'dispatch', 'run', 'migrate'), required=True)
+    parser.add_argument('--kind', choices=('controls', 'probe', 'dispatch', 'run', 'migrate', 'conditional'), required=True)
     parser.add_argument('--arm'); parser.add_argument('--wall-minutes', type=int)
     parser.add_argument('--dependency')
     parser.add_argument('--dependency-type', choices=('done', 'ended'), default='done')

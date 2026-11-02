@@ -69,13 +69,22 @@ def module(path, name):
 def validate_screen(value):
     require(type(value) is dict and set(value) <= {
         "version", "updates", "init_seed", "initialization", "temperature", "chemistry",
-        "binding", "severity_progress", "neighbor_environment", "structural_repair", "sampling_interval", "sampling_draws", "logit_noise"},
+        "binding", "severity_progress", "neighbor_environment", "structural_repair", "sampling_interval", "sampling_draws", "logit_noise", "temperature_schedule"},
         "Unknown screen option")
     require(value["version"] == VERSION, "Unknown screen version")
-    require(type(value["updates"]) is int and 1 <= value["updates"] <= 50000,
+    require(type(value["updates"]) is int and 1 <= value["updates"] <= 70000,
             "Bounded update count required")
     require(type(value["init_seed"]) is int and 0 <= value["init_seed"] < 2**32, "Invalid initialization seed")
-    require(type(value["temperature"]) in (int, float) and value["temperature"] in (1., 2.), "Declare temperature1 or2")
+    require(type(value["temperature"]) in (int, float) and math.isfinite(value["temperature"])
+            and 0 < value["temperature"] <= 2, "Declare a finite positive temperature")
+    if "temperature_schedule" in value:
+        schedule = value["temperature_schedule"]
+        require(type(schedule) is dict and set(schedule) == {"version", "initial", "final", "total_updates"}
+                and schedule["version"] == "linear-temperature-v1", "Unknown temperature schedule")
+        require(all(type(schedule[k]) in (int, float) and math.isfinite(schedule[k])
+                    for k in ("initial", "final")) and 0 < schedule["final"] <= schedule["initial"] <= 2
+                and type(schedule["total_updates"]) is int and 1 <= schedule["total_updates"] <= 70000
+                and value["temperature"] == schedule["initial"], "Invalid cooling schedule")
     init = value["initialization"]
     if init.get("mode") == "carbon_chain_uniform":
         require(set(init) == set(CHAIN_MIX)
@@ -94,8 +103,16 @@ def validate_screen(value):
                               "hold_updates": 5000, "total_updates": 50000}, "Changed baseline global50k ramp")
     elif mode == "constant":
         require(set(chemistry) == {"mode", "coefficient"} and type(chemistry["coefficient"]) in (int, float)
-                and chemistry["coefficient"] in (1., 10.),
-                "Declare constant coefficient1 or10")
+                and math.isfinite(chemistry["coefficient"]) and 0 < chemistry["coefficient"] <= 100,
+                "Declare a finite bounded constant chemistry coefficient")
+    elif mode == "ramp_hold":
+        require(set(chemistry) == {"mode", "initial", "final", "hold_updates", "ramp_end"},
+                "Explicit hold/ramp chemistry policy required")
+        require(all(type(chemistry[k]) in (int, float) and math.isfinite(chemistry[k])
+                    for k in ("initial", "final")) and 0 < chemistry["initial"] <= chemistry["final"] <= 100
+                and type(chemistry["hold_updates"]) is int and type(chemistry["ramp_end"]) is int
+                and 0 <= chemistry["hold_updates"] < chemistry["ramp_end"] <= 70000,
+                "Invalid bounded chemistry hold/ramp")
     elif mode == "adaptive":
         require(set(chemistry) == {"mode", "ratio_target", "minimum", "maximum", "ema", "initial"},
                 "Explicit bounded adaptive policy required")
@@ -113,6 +130,16 @@ def validate_screen(value):
     if value.get("logit_noise") is not None:
         validate_noise(value["logit_noise"])
     return value
+
+
+def temperature_at(config, state):
+    """Declared global-state temperature, clamped after the cooling horizon."""
+    require(type(state) is int and state >= 0, "Invalid temperature schedule state")
+    schedule = config.get("temperature_schedule")
+    if schedule is None:
+        return config["temperature"]
+    fraction = min(1., state / schedule["total_updates"])
+    return schedule["initial"] + fraction * (schedule["final"]-schedule["initial"])
 
 
 def validate_noise(policy):
@@ -201,7 +228,8 @@ class Policy:
 
     def restore(self, state):
         """Restore the decision already made at this accepted source state."""
-        require(type(state['step']) is int and 0 < state['step'] < self.config['updates'], 'Invalid resume state')
+        offset = state.get('global_step', state['step'])
+        require(type(offset) is int and 0 < offset < self.config['updates'], 'Invalid resume state')
         keys=('repair_weight','binding_weight','phase_exit_state','phase_exit_reason',
               'unit_binding_gradient_norm','unit_repair_gradient_norm')
         active={k:state[k] for k in keys}
@@ -209,7 +237,7 @@ class Policy:
                     ('repair_weight','binding_weight','unit_binding_gradient_norm','unit_repair_gradient_norm')),
                 'Nonfinite/negative saved policy')
         require(active['binding_weight']<=1, 'Invalid saved binding weight')
-        self.last_state=state['step'];self.coefficient=active['repair_weight']
+        self.last_state=offset;self.coefficient=active['repair_weight']
         self.phase_exit=active['phase_exit_state'];self.phase_exit_reason=active['phase_exit_reason']
         return active
 
@@ -224,6 +252,10 @@ class Policy:
                 (math.log(c["final"])-math.log(c["initial"])))
         elif c["mode"] == "constant":
             coefficient = c["coefficient"]
+        elif c["mode"] == "ramp_hold":
+            fraction = min(1., max(0., (state-c["hold_updates"]) / (c["ramp_end"]-c["hold_updates"])))
+            coefficient = (c["initial"] if fraction == 0 else c["final"] if fraction == 1 else
+                           math.exp(math.log(c["initial"])+fraction*(math.log(c["final"])-math.log(c["initial"]))))
         else:
             # A genuinely flat unit chemistry component leaves the previous
             # finite bounded coefficient in place; no divide-by-zero/fake force.
@@ -290,10 +322,30 @@ def initialize(config, snapshot, logit_type):
     return logit_type(jnp.log(jnp.asarray(atoms)), jnp.log(jnp.asarray(np.asarray(bonds))), config["temperature"])
 
 
-def logits_class():
+def logits_class(scheduled=False):
     import equinox as eqx
     from protenix_initialization import ProtenixReplayLogits
     from mosaic.small_molecule.chemistry.state import GraphLogits
+    if scheduled:
+        import jax
+        import jax.numpy as jnp
+        class ScheduledScreenLogits(ProtenixReplayLogits):
+            # A dynamic array avoids a distinct JIT cache key per cooling step.
+            # Temperature is prescribed metadata, never an optimized parameter.
+            temperature: jax.Array
+
+            def __init__(self, atoms, bonds, temperature):
+                self.atoms, self.bonds = atoms, bonds
+                self.temperature = jnp.asarray(temperature, dtype=jnp.float32)
+
+            def graph(self):
+                temperature = jax.lax.stop_gradient(self.temperature)
+                return ProtenixReplayLogits(self.atoms/temperature, self.bonds/temperature).graph()
+
+            def decoded(self):
+                temperature = jax.lax.stop_gradient(self.temperature)
+                return GraphLogits(self.atoms/temperature, self.bonds/temperature).decoded()
+        return ScheduledScreenLogits
     class ScreenLogits(ProtenixReplayLogits):
         temperature: float = eqx.field(static=True)
 
@@ -440,6 +492,9 @@ def run_loop(loss, initial, prepare, spec, loss_config, key, config, output, *, 
     (output/"references").mkdir()
     policy = Policy(config)
     start=0 if resume is None else resume['offset']
+    if config.get("temperature_schedule") is not None:
+        # Raw logit values are unchanged; only the represented source graph cools.
+        initial = type(initial)(initial.atoms, initial.bonds, temperature_at(config, start))
     noise = (None if config.get("logit_noise") is None else BindingNoise(config["logit_noise"], start=start,
              saved=None if resume is None else resume["state"]["noise_state"]))
     steps = config["updates"]-start if steps is None else steps
@@ -452,6 +507,9 @@ def run_loop(loss, initial, prepare, spec, loss_config, key, config, output, *, 
                "invalid_states": 0, "valid_unique_smiles": [], "atom_identity_changes": 0, "bond_identity_changes": 0}
     if resume is not None:
         summary.update(global_start=start,global_target=config['updates'],resume=resume,parent_prefix_unchanged=True)
+    if config.get("temperature_schedule") is not None:
+        summary["temperature_schedule"] = config["temperature_schedule"]
+        summary["changing_temperature_scores_are_not_one_fixed_objective"] = True
     unique = set()
     previous_readout = None
     started = time.monotonic()
@@ -509,6 +567,8 @@ def run_loop(loss, initial, prepare, spec, loss_config, key, config, output, *, 
             if flag:
                 summary[field] = {"step": state, "loss": native, "snapshot": snapshot(output/filename),
                                   "readout": readout, "scope": "same saved relaxed graph native score; hard argmax not rescored"}
+                if config.get("temperature_schedule") is not None:
+                    summary[field]["temperature"] = float(np.asarray(logits.temperature))
         rows = prepared.receipt["rows"]
         state_record = {"step": state-start, "global_step": state, "contact_loss": native,
                         "chemistry_loss": units["repair"], "neighbor_environment_weighted_loss": units["neighbor"],
@@ -529,7 +589,7 @@ def run_loop(loss, initial, prepare, spec, loss_config, key, config, output, *, 
                         "readout": readout, "strict_valid_connected": is_valid,
                         "snapshot_retained": retained, "snapshot": None if selected is None else selected["path"],
                         "snapshot_sha256": None if selected is None else selected["sha256"], "latest_snapshot": latest,
-                        "temperature": logits.temperature}
+                        "temperature": float(np.asarray(logits.temperature))}
         if noise is not None:
             state_record["noise_state"] = noise.checkpoint()
         append(output/"states.jsonl", state_record)
@@ -556,8 +616,19 @@ def run_loop(loss, initial, prepare, spec, loss_config, key, config, output, *, 
                     'Saved neighbor context differs')
         units = evaluate_units(loss, initial, prepared, environment, spec, loss_config, key)
         readout = hard_readout(initial.graph())
-        active = (policy.source(0, valid_connected(readout), gradient_norm(units["binding_gradient"]), gradient_norm(units["chemistry_gradient"]))
-                  if resume is None else policy.restore(resume['state']))
+        if resume is None:
+            active = policy.source(0, valid_connected(readout), gradient_norm(units["binding_gradient"]), gradient_norm(units["chemistry_gradient"]))
+        else:
+            active = policy.restore(resume['state'])
+            if resume.get("policy_change") is not None:
+                require(resume["policy_change"] is True and config["chemistry"]["mode"] == "constant"
+                        and config["binding"] == {"mode": "always"}, "Undeclared continuation policy change")
+                summary["initial_parent_policy"] = deepcopy(active)
+                policy.last_state = start-1
+                active = policy.source(start, valid_connected(readout), gradient_norm(units["binding_gradient"]),
+                                       gradient_norm(units["chemistry_gradient"]))
+                summary["continuation_policy_change"] = {"parent_repair_weight": resume["state"]["repair_weight"],
+                                                          "child_repair_weight": active["repair_weight"]}
         save_point(start, units, prepared, environment, active)
         summary["initial_state"] = summary["last_state"]
         for step in range(start,start+steps):
@@ -573,7 +644,8 @@ def run_loop(loss, initial, prepare, spec, loss_config, key, config, output, *, 
                 proposal, noise_record = noise.propose(logits, gradient, units["binding_gradient"], .3, step)
             # Retain the exact proposed input even if native execution fails.
             with (output/"current-trial.npz").open("wb") as stream:
-                np.savez_compressed(stream, atom_logits=np.asarray(proposal.atoms), bond_logits=np.asarray(proposal.bonds), step=step)
+                np.savez_compressed(stream, atom_logits=np.asarray(proposal.atoms), bond_logits=np.asarray(proposal.bonds),
+                                    temperature=np.asarray(proposal.temperature, dtype=np.float32), step=step)
             candidate = evaluate_units(loss, proposal, prepared, environment, spec, loss_config, key)
             after, _ = weighted(candidate, active)
             record = {"step": step-start, "global_step": step, "preparation_identity": prepared.identity,
@@ -583,9 +655,23 @@ def run_loop(loss, initial, prepare, spec, loss_config, key, config, output, *, 
                       "no_op": bool(all(np.array_equal(np.asarray(getattr(logits, n)), np.asarray(getattr(proposal, n))) for n in ("atoms", "bonds")))}
             if noise_record is not None:
                 record["noise"] = noise_record
-            prepared, environment = prepare_step(proposal, step+1)
-            units = evaluate_units(loss, proposal, prepared, environment, spec, loss_config, key, native=candidate["native"])
-            readout = hard_readout(proposal.graph())
+            next_logits = proposal
+            if config.get("temperature_schedule") is not None:
+                next_logits = type(proposal)(proposal.atoms, proposal.bonds, temperature_at(config, step+1))
+                source_temperature = float(np.asarray(logits.temperature))
+                next_temperature = float(np.asarray(next_logits.temperature))
+                temperature_changed = source_temperature != next_temperature
+                record.update(source_temperature=source_temperature, trial_temperature=source_temperature,
+                              next_temperature=next_temperature, temperature_changed=temperature_changed,
+                              fixed_comparison_scope="same source teacher, coefficient and temperature")
+            else:
+                temperature_changed = False
+            prepared, environment = prepare_step(next_logits, step+1)
+            # A cooled source graph is a new native input. Never reuse a native
+            # value/gradient evaluated at the previous trial's temperature.
+            units = evaluate_units(loss, next_logits, prepared, environment, spec, loss_config, key,
+                                   native=None if temperature_changed else candidate["native"])
+            readout = hard_readout(next_logits.graph())
             active = policy.source(step+1, valid_connected(readout), gradient_norm(units["binding_gradient"]), gradient_norm(units["chemistry_gradient"]))
             save_point(step+1, units, prepared, environment, active)
             summary["applied_updates"] = step+1-start
@@ -640,7 +726,7 @@ def main(argv=None):
         bound(row[name])
     if row.get('resume') is not None:
         for name in ('snapshot','reference'):bound(row['resume'][name])
-        require(row['resume']['state']['step']==row['resume']['offset'],'Resume step differs')
+        require(row['resume']['state'].get('global_step', row['resume']['state']['step'])==row['resume']['offset'],'Resume step differs')
         Policy(config).restore(row['resume']['state'])
     code_source, original = Path(plan["code_source_root"]), Path(row["science_source"]["path"])
     require(binding(original/"source_manifest.json")["sha256"] == row["science_source"]["manifest_sha256"], "Original science provenance differs")
@@ -697,7 +783,7 @@ def main(argv=None):
     require(frozen == row["frozen_identity"], "Frozen model/context differs")
     summary["frozen_before"] = frozen
     loss = model.build_loss(context=context, loss=NativeContactLoss(8., map_protenix_pocket(context, read(row["pocket"]["path"]))))
-    logits_type = logits_class()
+    logits_type = logits_class(scheduled=config.get("temperature_schedule") is not None)
     initial = initialize(config, row["snapshot"]["path"], logits_type)
     key = jax.random.key(17)
     with np.load(row["snapshot"]["path"], allow_pickle=False) as original_point:
@@ -707,13 +793,15 @@ def main(argv=None):
                         (("atom_logits", "atoms"), ("bond_logits", "bonds"))), "Original dense logits changed")
     resume=row.get('resume')
     if resume is not None:
-        require(resume['state']['step']==resume['offset'] and 0<resume['offset']<config['updates'],'Resume offset differs')
-        require(resume['state']['temperature']==config['temperature'],'Resume temperature differs')
+        require(resume['state'].get('global_step', resume['state']['step'])==resume['offset'] and 0<resume['offset']<config['updates'],'Resume offset differs')
+        effective_temperature = np.asarray(temperature_at(config, resume['offset']), dtype=np.float32)
+        require(np.asarray(resume['state']['temperature'], dtype=np.float32)==effective_temperature,'Resume temperature differs')
         with np.load(bound(resume['snapshot']),allow_pickle=False) as point:
             require(int(point['step'])==resume['offset'],'Resume matrix step differs')
+            require(np.asarray(point['temperature'], dtype=np.float32)==effective_temperature, 'Resume matrix temperature differs')
             require(np.array_equal(point['key_data'],np.asarray(jax.random.key_data(key))),'Resume key differs')
             import jax.numpy as jnp
-            initial=logits_type(jnp.asarray(point['atom_logits']),jnp.asarray(point['bond_logits']),config['temperature'])
+            initial=logits_type(jnp.asarray(point['atom_logits']),jnp.asarray(point['bond_logits']),temperature_at(config, resume['offset']))
     spec = mosaic_spec(25)
     search = ProbabilityRepairConfig(**source_config["search"])
     progress = ProgressSearchConfig(**source_config["progress_search"])

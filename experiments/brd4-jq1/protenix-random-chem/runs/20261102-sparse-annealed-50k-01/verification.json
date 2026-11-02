@@ -1,0 +1,27 @@
+{
+  "status": "passed_CPU_and_actual_dispatch_audit",
+  "observed_utc": "2026-11-02T11:09:06.682374+00:00",
+  "packet_sha256": "1b8be4496847ea6f9eff927bf2b8e6be923148d1fac413148a58e4f770cc039c",
+  "source_manifest_sha256": "57ee35dd1c8ffd062db2a885b76fe8ca220eb7e7548d518522689fac58ecf7a8",
+  "plan_sha256": "2d74dc9da705d48ac34af6c74d7c72fa83f53f8c5f46807c03d7c7af8cd4ffca",
+  "source_files": 157,
+  "cpu_job": "29873381",
+  "cpu_cases": 79,
+  "cpu_module_cases": {
+    "tests.test_protenix_chemistry_screen": 24,
+    "tests.test_structural_noise_screen": 15,
+    "tests.test_annealed_chemistry_screen": 23,
+    "tests.test_conditional_chemistry_tail": 17
+  },
+  "actual_startups": 1,
+  "parent_gpu_job": "29873389",
+  "parent_status": "RUN",
+  "coherent_applied_updates": 442,
+  "conditional_cpu_job": "29873393",
+  "conditional_status": "PEND",
+  "conditional_dependency": "done(29873389)",
+  "tail_gpu_job": null,
+  "report_adapter_cpu_job": "29873411",
+  "report_adapter_cases": 44,
+  "scientific_scope": "Exploratory finite updates; no derivative or binding certification; no local array/model evaluations"
+}

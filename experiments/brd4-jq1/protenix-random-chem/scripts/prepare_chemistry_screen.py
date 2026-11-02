@@ -57,13 +57,22 @@ def build(repo, tag, version, comparison=None):
                 if noisy:
                     variants[label]['logit_noise'] = dict(version='binding-logit-noise-linear-v1', initial_ratio=.4,
                                                         zero_at_update=20000, seed=230017)
+    if comparison == 'annealed50k':
+        variants = {'annealed-sparse': dict(
+            chemistry=dict(mode='ramp_hold', initial=1., final=30., hold_updates=20000, ramp_end=30000),
+            temperature=.7,
+            temperature_schedule=dict(version='linear-temperature-v1', initial=.7, final=.4, total_updates=50000),
+            structural_repair=dict(version='connected-backbone-repair-v1', max_candidates=6, max_bond_operations=1024),
+            logit_noise=dict(version='binding-logit-noise-linear-v1', initial_ratio=.4, zero_at_update=30000, seed=230017))}
     arms = {}
     requested = [(label, seed, False) for label in variants for seed in (17, 23)]
-    if comparison == 'structural-strong-noise':
+    if comparison in ('structural-strong-noise', 'annealed50k'):
         requested = [(label, 17, False) for label in variants]
     if comparison is None:
         requested += [('delayed', 17, True), ('combined', 17, True)]
     updates = 30000 if comparison in ('structural', 'structural-strong-noise') else 20000
+    if comparison == 'annealed50k':
+        updates = 50000
     for label, seed, dense in requested:
         name = label + ('-dense' if dense else '') + '-s' + str(seed)
         config = dict(version='protenix-chemistry-screen-v1', updates=updates, init_seed=seed,
@@ -99,6 +108,10 @@ def build(repo, tag, version, comparison=None):
             row.update(gpu_profile=profile, queue=queue, output_cap_bytes=1024**3, file_cap=4500,
                        internal_seconds=minutes*60-600, requested_wall_minutes=minutes,
                        budget_basis='Prior compatible scorer/structural timings plus25% and setup/cleanup; device differs between treatments')
+        if comparison == 'annealed50k':
+            row.update(gpu_profile='v100-32gb-v1', queue='gpuv100', output_cap_bytes=2*1024**3,
+                       file_cap=7000, internal_seconds=1095*60-600, requested_wall_minutes=1095,
+                       budget_basis='Actual same-scorer V1000.508s/update upper warm sample;2x for fresh native on cooling;50k*2*0.508*1.25+1800s setup/cleanup; rounded18h15')
         arms[name] = row
     plan = dict(version='protenix-chemistry-strategies-plan-v1', research_profile='exploratory',
                 root=remote_root, source_root=remote_source, code_source_root=remote_source,
@@ -137,17 +150,35 @@ def build(repo, tag, version, comparison=None):
                         'Different GPU families reduce queue concentration; cross-device runtime differences are not treatment speedups.',
                         'Prior device evidence reused; no extra native/FD qualification chain or disposable production pilot.',
                     ])
+    if comparison == 'annealed50k':
+        parent = next(iter(arms))
+        plan.update(job_name_prefix='mosaic-annealed50k-'+tag.split('-')[0]+'-'+version,
+                    output_cap_bytes=3*1024**3+256*1024**2, file_cap=11500,
+                    control_tests=['test_protenix_chemistry_screen.py', 'test_structural_noise_screen.py',
+                                   'test_annealed_chemistry_screen.py', 'test_conditional_chemistry_tail.py'],
+                    probe_arms=[parent],
+                    conditional_tail=dict(parent_arm=parent, arm_name=parent+'-repair20k', target_updates=70000,
+                                          coefficient=100., wall_minutes=255, output_cap_bytes=1024**3, file_cap=3500),
+                    interpretation=[
+                        'One fresh50k sparse seed17 structural-repair trajectory, original LR0.3/model/context/key17/composition0/no margin.',
+                        'Chemistry1 through global20k, geometric1->30 at30k, then30; temperature linear0.7->0.4 over0..50k.',
+                        'Binding-only per-block noise0.4->0 by30k, then20k settling; independent PCG64 seed230017, checkpointed.',
+                        'Temperature is dynamic; source/trial teacher, coefficient andT fixed within each update; newT recomputes native values and gradients.',
+                        'Allocated CPU callback checks completed actual50k endpoint argmax sanitization/connectivity; valid skips, invalid submits unique20k child atT0.4/noise0/chemistry100.',
+                        'Child resumes exact saved50k logits/key/teacher/noise stream in fresh output; no source/result overwrite.',
+                        'Changing temperature changes relaxed scorer inputs; cross-state contact and surrogate totals are not one fixed objective.',
+                    ])
     scripts = repo / 'experiments/brd4-jq1/protenix-random-chem/scripts'
     for name in ('protenix_chemistry_screen.py', 'chemistry_screen_ops.py', 'chemistry_screen_control.py', 'chemistry_screen_stage.sh'):
         (source / name).write_bytes((scripts / name).read_bytes().replace(b'\r\n', b'\n'))
-    if comparison == 'structural-strong-noise':
+    if comparison in ('structural-strong-noise', 'annealed50k'):
         (source/'gradient_scaled_noise.py').write_bytes((scripts/'gradient_scaled_noise.py').read_bytes().replace(b'\r\n', b'\n'))
     library = repo / 'src/mosaic'
     if comparison == 'structural':
         library = repo / 'results/hpc/20261031-protenix-chemistry-strategies-01/source02/source/src/mosaic'
         if not library.is_dir():
             raise FileNotFoundError('Matched baseline source snapshot is required')
-    if comparison == 'structural-strong-noise':
+    if comparison in ('structural-strong-noise', 'annealed50k'):
         library = repo/'results/hpc/20261102-exclusive-gpu-recovery-01/screen01/source/src/mosaic'
         if not library.is_dir():
             raise FileNotFoundError('Completed structural comparison library snapshot is required')
@@ -165,9 +196,12 @@ def build(repo, tag, version, comparison=None):
                  repo / ('tests/small_molecule/test_chemistry_structural.py' if comparison == 'structural'
                          else 'tests/small_molecule/test_chemistry_severity.py')):
         shutil.copyfile(path, source / 'tests' / path.name)
-    if comparison == 'structural-strong-noise':
+    if comparison in ('structural-strong-noise', 'annealed50k'):
         shutil.copyfile(repo/'experiments/brd4-jq1/protenix-random-chem/tests/test_structural_noise_screen.py',
                         source/'tests/test_structural_noise_screen.py')
+    if comparison == 'annealed50k':
+        for name in ('test_annealed_chemistry_screen.py', 'test_conditional_chemistry_tail.py'):
+            shutil.copyfile(repo/'experiments/brd4-jq1/protenix-random-chem/tests'/name, source/'tests'/name)
     (source / 'plan.json').write_text(json.dumps(plan, indent=2) + '\n', encoding='utf-8', newline='\n')
     checksums = {p.relative_to(source).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest()
                  for p in sorted(source.rglob('*')) if p.is_file()}
@@ -189,5 +223,5 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(); parser.add_argument('--repo', type=Path, required=True)
     parser.add_argument('--tag', default='20261031-protenix-chemistry-strategies-01')
     parser.add_argument('--version', default='source01')
-    parser.add_argument('--comparison', choices=('structural', 'structural-strong-noise'))
+    parser.add_argument('--comparison', choices=('structural', 'structural-strong-noise', 'annealed50k'))
     args = parser.parse_args(); build(args.repo, args.tag, args.version, args.comparison)

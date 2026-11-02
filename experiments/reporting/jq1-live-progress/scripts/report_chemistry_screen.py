@@ -6,6 +6,8 @@ on allocated report CPU. No model, chemistry, repair or sampling is evaluated.
 from copy import deepcopy
 from pathlib import Path
 import json
+import math
+import struct
 import types
 
 import quick_inputs as inputs
@@ -16,9 +18,36 @@ PROOFS = ('producer_plan', 'producer_submission', 'producer_driver',
           'producer_checksums', 'science_manifest', 'sampled_validity')
 
 
+def temperature_at(config, global_step):
+    """Expected saved FP32 temperature; no model or array evaluation."""
+    schedule = config.get('temperature_schedule')
+    if schedule is None:
+        return config['temperature']
+    fraction = min(1., global_step / schedule['total_updates'])
+    declared = schedule['initial'] + fraction * (schedule['final'] - schedule['initial'])
+    return struct.unpack('!f', struct.pack('!f', declared))[0]
+
+
+def validate_temperature_schedule(config):
+    if 'temperature_schedule' not in config:
+        return
+    schedule = config['temperature_schedule']
+    inputs.require(type(schedule) is dict and
+                   set(schedule) == {'version', 'initial', 'final', 'total_updates'} and
+                   schedule['version'] == 'linear-temperature-v1',
+                   'Unknown screen temperature schedule')
+    inputs.require(all(type(schedule[key]) in (int, float) and math.isfinite(schedule[key])
+                       for key in ('initial', 'final')) and
+                   0 < schedule['final'] <= schedule['initial'] <= 2 and
+                   type(schedule['total_updates']) is int and 1 <= schedule['total_updates'] <= 70000 and
+                   config.get('temperature') == schedule['initial'],
+                   'Invalid screen temperature schedule')
+
+
 def header(summary, partial=False):
     inputs.require(summary.get('version') == VERSION, 'Wrong chemistry screen version')
     config = summary['configuration']
+    validate_temperature_schedule(config)
     steps = config['updates']
     offset=summary.get('global_start',0)
     inputs.require(type(offset) is int and 0<=offset<steps,'Invalid screen global offset')
@@ -151,9 +180,14 @@ def collect_segment(segment, arm):
                  'Screen case report differs from committed records')
     retained = []
     first_arrays = last_arrays = None
+    scheduled_temperature = 'temperature_schedule' in config
     for index, state in enumerate(states):
         absolute=offset+index
         data.require(state['step'] == index and state['global_step'] == absolute, 'Screen states are not contiguous')
+        if scheduled_temperature:
+            data.require(type(state.get('temperature')) in (int, float) and
+                         state['temperature'] == temperature_at(config, absolute),
+                         'Screen state temperature differs from declared schedule')
         expected = absolute % 20 == 0 or index == 0 or (not partial and index == steps)
         data.require(type(state['snapshot_retained']) is bool and state['snapshot_retained'] == expected,
                      'Screen retained cadence differs')
@@ -168,8 +202,10 @@ def collect_segment(segment, arm):
             view.pop(field, None)
         frame, arrays, proof = data.validate_frame(path, view, absolute)
         data.require(arrays['step'].shape == () and int(arrays['step']) == absolute and
-                     arrays['temperature'].shape == () and float(arrays['temperature']) == state['temperature'] == config['temperature'],
+                     arrays['temperature'].shape == () and float(arrays['temperature']) == state['temperature'] == temperature_at(config, absolute),
                      'Screen saved step/temperature differs')
+        if scheduled_temperature:
+            data.require(arrays['temperature'].dtype.name == 'float32', 'Screen scheduled temperature is not FP32')
         data.require(arrays['key_data'].tolist() == [0, row['model_key']], 'Screen saved model key differs')
         frame['losses'] = data._losses(state)
         proof['scalar_scope'] = 'Exact contact primal/temperature NPZ; other losses are original JSON observations'
@@ -180,9 +216,22 @@ def collect_segment(segment, arm):
         before, after = states[index:index + 2]
         data.require(update['step'] == index and update['global_step']==offset+index and update['candidate_count'] == 1
                      and update['rate'] == arm['rate'], 'Screen update identity/rate/candidate count differs')
+        temperature_changed = False
+        if scheduled_temperature:
+            temperature_changed = before['temperature'] != after['temperature']
+            data.require(update.get('source_temperature') == update.get('trial_temperature') == before['temperature'] and
+                         update.get('next_temperature') == after['temperature'] and
+                         type(update.get('temperature_changed')) is bool and
+                         update['temperature_changed'] == temperature_changed and
+                         update.get('fixed_comparison_scope') == 'same source teacher, coefficient and temperature',
+                         'Screen trial/next-state temperature transition differs')
+            data.require(all(type(update.get(field)) in (int, float) and math.isfinite(update[field])
+                             for field in ('contact_after', 'fixed_after')),
+                         'Screen trial scalar is nonfinite or missing')
         data.require(update['fixed_before'] == before['refreshed_surrogate'] and
                      update['contact_before'] == before['contact_loss'] and
-                     update['contact_after'] == after['contact_loss'], 'Screen scalar transition differs')
+                     (temperature_changed or update['contact_after'] == after['contact_loss']),
+                     'Screen scalar transition differs')
         for field in ('preparation_identity', 'repair_weight', 'binding_weight'):
             data.require(update[field] == before[field], 'Within-step screen target/weight changed: ' + field)
         data.require(type(update['fixed_increased']) is bool and
@@ -211,6 +260,12 @@ def collect_segment(segment, arm):
                       'sampled_validity': samples, 'sampled_validity_proof': sample_proof,
                       'sampling_scope': 'Original saved classifications and raw-draw hashes; no new chemistry evaluation',
                       'producer_proofs': {key: segment[key] for key in PROOFS}}}
+    if scheduled_temperature:
+        result['proof']['temperature_scope'] = {
+            'schedule': deepcopy(config['temperature_schedule']),
+            'saved_precision': 'FP32 temperatures checked at every state and retained NPZ',
+            'fixed_trial': 'Original source teacher, coefficient and temperature retained for the candidate comparison',
+            'between_states': 'Next-state contact is a separate saved observation when temperature changes; no scalar interpolation or rescoring'}
     from report_prefix import collect as collect_prefix
     return collect_prefix(result,segment)
 
@@ -226,4 +281,6 @@ def collect_arm(arm, output):
     result['optimization_complete'] = result['latest_global_step'] == result['global_target']
     result['qualification_scope'] = 'Exploratory finite screen; no derivative or binding certification'
     result['chemistry_scope'] = 'Targets/weights may change between updates; refreshed total is not one fixed objective'
+    if any('temperature_scope' in proof for proof in result['segment_proofs']):
+        result['chemistry_scope'] += '; temperatures also change between saved states, while trial comparisons retain source temperature'
     return result

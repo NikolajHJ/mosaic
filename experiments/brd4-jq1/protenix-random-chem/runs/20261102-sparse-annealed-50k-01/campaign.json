@@ -1,0 +1,45 @@
+{
+  "status": "parent_running_conditional_callback_queued",
+  "observed_utc": "2026-11-02T11:09:06.682374+00:00",
+  "source": {
+    "path": "/work3/s234818/mosaic/runs/20261102-sparse-annealed-50k-01/source01/source",
+    "files": 157,
+    "manifest_sha256": "57ee35dd1c8ffd062db2a885b76fe8ca220eb7e7548d518522689fac58ecf7a8",
+    "plan_sha256": "2d74dc9da705d48ac34af6c74d7c72fa83f53f8c5f46807c03d7c7af8cd4ffca",
+    "archive_bytes": 457618,
+    "archive_sha256": "745117f83c48fbbc016929116438fa2517eb048d68b1e1c52d8ece13bf6fcd99"
+  },
+  "cpu_job": "29873381",
+  "cpu_cases": 79,
+  "report_adapter_cpu_job": "29873411",
+  "report_adapter_cases": 44,
+  "parent": {
+    "arm": "annealed-sparse-s17",
+    "job_id": "29873389",
+    "status": "RUN",
+    "queue": "gpuv100",
+    "global_target": 50000,
+    "coherent_applied_updates": 442,
+    "study": "/work3/s234818/mosaic/runs/20261102-sparse-annealed-50k-01/source01/run/annealed-sparse-s17/payload/study",
+    "wall_minutes": 1095,
+    "gpu_request": "num=1:mode=exclusive_process:j_exclusive=yes:mps=no:gmem=30G"
+  },
+  "conditional": {
+    "callback_job_id": "29873393",
+    "callback_status": "PEND",
+    "dependency": "done(29873389)",
+    "predicate": "saved endpoint argmax sanitized and connected",
+    "valid_endpoint": "skip; no GPU submitted",
+    "invalid_endpoint": {
+      "arm": "annealed-sparse-s17-repair20k",
+      "global_start": 50000,
+      "global_target": 70000,
+      "chemistry_coefficient": 100.0,
+      "temperature": 0.4,
+      "noise_ratio": 0.0,
+      "wall_minutes": 255
+    },
+    "tail_gpu_job_id": null
+  },
+  "original_saved_results_changed": false
+}
