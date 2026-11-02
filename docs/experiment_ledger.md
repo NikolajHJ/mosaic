@@ -11182,3 +11182,23 @@ Submitted four fresh30k Protenix chemistry producers after actual CPU29873064 DO
 ## 2 November 2026: sparse 50k cooling schedule and conditional chemistry tail
 
 New V100 GPU29873389 RUN,442 coherent applied updates at11:09:06UTC, target50k. Sparse seed17/structural repair/LR0.3/composition0/no margin; chemistry1 through20k, geometric1 to30 by30k thenhold; T linear0.7 to0.4 over50k; binding-gradient-relative noise0.4 to0 by30k. Dynamic stopped-gradientT avoids recompilation and next-source values/gradients are refreshed after cooling. CPU29873381 DONE/79 cases plus actualstartup, allpassed. Conditional CPU29873393 PEND done(parent): saved50k argmax sanitization/connectivity decides skip or fresh20k continuation to70k, chemistry100/T0.4/noise0, exact savedlogits/key/teacher/RNG retained. No tailGPU yet. Main18h15 and tail4h15 budgets use measured compatibleV100 timings; exclusive_process/j_exclusive/noMPS. Own3.25GiB group/reserves passed; no cleanup or oldjob/result edits. Canonical input-adapter CPU29873411 DONE/44 cases; explicitly represents changingT and fixedtrial versus cooledsource scores without a new renderer. Future50k/conditional70k report candidates registered; no live report rebuild. [Protocol and exact jobs](../experiments/brd4-jq1/protenix-random-chem/runs/20261102-sparse-annealed-50k-01/README.md).
+
+
+## 2 November 2026: three further chemistry trajectories completed
+
+At17:00:07UTC, authenticated same-job persisted LSF success, summary/source/plan
+bindings, contiguous committed JSONL and unchanged frozen identities for
+chemistry-first seed17 job29871029 (global980->20,000;19,020 child updates),
+structural repair seed23 job29871036 (30,000), and sparse structural10 with
+annealed noise job29873081 (30,000). Each summary records zero strict valid
+connected argmax states; exploratory budget completion is not chemistry/binding
+or derivative certification. Saved results/settings remain unchanged. Two
+small completion metadata proofs are linked from their existing run records.
+DBMol29871027 RUN at50,174/60,000; annealed sparse29873389 RUN with coherent
+committed prefix25,169/50,000. Four Mosaic producers remain queued. Other-project
+VAE and newly queued VAE-Protenix pilot remain read-only account context.
+
+Started canonical cached report refresh request20261102T170052Z-9d264ce8;
+engine CPU29874871 submitted. Report publication is pending, not claimed.
+No optimizer submissions/restarts, tests of scientific models, cleanup or
+new renderer were performed by this completion check.

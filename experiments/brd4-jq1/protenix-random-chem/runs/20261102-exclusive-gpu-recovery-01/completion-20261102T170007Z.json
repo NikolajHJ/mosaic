@@ -1,0 +1,79 @@
+{
+  "version": "saved-completion-metadata-audit-v1",
+  "observed_utc": "2026-11-02T17:00:07.208879+00:00",
+  "status": "passed",
+  "packet_sha256": "071f467a65d70a7cc58f5d40804141cc58c35c403ff5be074de9be130ee2aa59",
+  "packet_path": "results/hpc/20261102-current-overview/20261102T170005Z/stdout.json",
+  "source": {
+    "path": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/source/checksums.json",
+    "bytes": 17509,
+    "sha256": "fb65bc1d0a0a94b169ce796f2b1c6d0be21ab07d5692235fbb257fc7ecbe8f14"
+  },
+  "plan": {
+    "path": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/source/plan.json",
+    "bytes": 70780,
+    "sha256": "5decb0d0948b92c820b315cf25d86b9bf38f255638643572d4cf54b62069bc38"
+  },
+  "runs": [
+    {
+      "arm": "chemfirst-s17",
+      "job_id": "29871029",
+      "status": "completed_exploratory_updates",
+      "child_start": 980,
+      "global_end": 20000,
+      "target": 20000,
+      "applied_child_updates": 19020,
+      "summary_binding": {
+        "path": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/run/chemfirst-s17/payload/summary.json",
+        "bytes": 6544,
+        "sha256": "5706f61ac802da652121bd58c5578cb0820e9bf4cde3541ee97ee17f53c7c89f"
+      },
+      "same_job_LSF_success": true,
+      "LSF_tail_sha256": "43d671731eaa1953e61cb8abd3813dc1b338ae58ad9793532c020c9469ae7567",
+      "LSF_path": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/run/production/chemfirst-s17/stdout.29871029.log",
+      "frozen_before": {
+        "model_digest": "8d6926d5390fe682e193089f790ce53aa4011a6d5509ddb452a55db3d89b0ab2",
+        "context_digest": "b28dfad8e5ede565071c70a61695f6a38f5cb6bd591705e32979e59050ff5ce4"
+      },
+      "frozen_after": {
+        "model_digest": "8d6926d5390fe682e193089f790ce53aa4011a6d5509ddb452a55db3d89b0ab2",
+        "context_digest": "b28dfad8e5ede565071c70a61695f6a38f5cb6bd591705e32979e59050ff5ce4"
+      },
+      "strict_valid_states": 0,
+      "final_strict_valid_connected": false,
+      "final_contact_loss": -0.32296085357666016,
+      "derivative_qualified": false
+    },
+    {
+      "arm": "structural-s23",
+      "job_id": "29871036",
+      "status": "completed_exploratory_updates",
+      "child_start": 0,
+      "global_end": 30000,
+      "target": 30000,
+      "applied_child_updates": 30000,
+      "summary_binding": {
+        "path": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/run/structural-s23/payload/summary.json",
+        "bytes": 3125,
+        "sha256": "f490803a0afd3cc23044e60b5bef74b8b50cc9534e39cc029971592e1e83fcfd"
+      },
+      "same_job_LSF_success": true,
+      "LSF_tail_sha256": "e3c81460d22a4d75a0810b64583b0c0cc604a2acecefaa89f12a34cc297b7915",
+      "LSF_path": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/run/production/structural-s23/stdout.29871036.log",
+      "frozen_before": {
+        "model_digest": "8d6926d5390fe682e193089f790ce53aa4011a6d5509ddb452a55db3d89b0ab2",
+        "context_digest": "b28dfad8e5ede565071c70a61695f6a38f5cb6bd591705e32979e59050ff5ce4"
+      },
+      "frozen_after": {
+        "model_digest": "8d6926d5390fe682e193089f790ce53aa4011a6d5509ddb452a55db3d89b0ab2",
+        "context_digest": "b28dfad8e5ede565071c70a61695f6a38f5cb6bd591705e32979e59050ff5ce4"
+      },
+      "strict_valid_states": 0,
+      "final_strict_valid_connected": false,
+      "final_contact_loss": -0.7886889576911926,
+      "derivative_qualified": false
+    }
+  ],
+  "scientific_frame_validation": "delegated_to_canonical_allocated_report",
+  "optimizer_or_scientific_settings_changed": false
+}

@@ -1,5 +1,13 @@
 # Structural repair with stronger guidance and annealed noise
 
+Latest completion check, 2 November at17:00UTC: sparse structural10 plus noise
+(29873081) completed all30,000 updates. Same-job LSF success, all30,001 committed
+states/30,000 updates and unchanged frozen identities passed the
+[metadata audit](completion-20261102T170007Z.json). It recorded zero valid connected
+argmax states and final relaxed contact loss-0.23515722155570984. The other three
+arms remain PEND. Canonical report refresh request20261102T170052Z-9d264ce8 is
+in progress; publication is not yet established. The initial table below is dated history.
+
 Question: can structural repair plus constant chemistry weight10 produce a valid,
 optimized molecule from either a sparse random start or a diffuse carbon chain?
 Does binding-gradient-relative noise help exploration before a noiseless settling phase?

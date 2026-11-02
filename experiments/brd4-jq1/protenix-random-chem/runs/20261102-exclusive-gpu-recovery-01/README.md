@@ -1,5 +1,14 @@
 # Exclusive GPU recovery after DTU ticket43078
 
+Latest completion check, 2 November at17:00UTC: chemistry-first seed17
+(29871029) completed global20,000 and structural repair seed23 (29871036)
+completed30,000. Their same-job LSF success, contiguous committed counts and
+unchanged frozen identities passed the [metadata audit](completion-20261102T170007Z.json).
+Both recorded zero valid connected argmax states. Eight of these ten recovery
+arms are now complete; DBMol remains RUN and chemistry-first seed23 PEND.
+Canonical report refresh request20261102T170052Z-9d264ce8 is in progress;
+its publication is not yet established. Initial queue observations below are history.
+
 DTU support stopped account jobs on1–2November2026 and requested exclusive GPU compute mode. The old `j_exclusive=yes` allocations still requested `mode=shared`; that was the launch error. All NEW profiles/overrides now require `mode=exclusive_process:j_exclusive=yes`; these single-CUDA-client jobs use `mps=no`. Four hybrid chemistry workers are explicitly CPU-only. Historical sources and results remain unchanged.
 
 Ten unfinished Mosaic producers were reconciled with actual `bhist`/LSF, checkpoint JSONL and no active predecessor, then resubmitted to their same GPU families. Sixteen completed strategy arms, completed original arms and the two intentionally retired duplicate beam controls were not restarted. Other-project jobs were not changed.
