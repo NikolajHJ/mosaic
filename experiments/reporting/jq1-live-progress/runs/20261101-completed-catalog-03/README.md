@@ -55,3 +55,7 @@ Read [campaign.json](campaign.json) before recovery; never duplicate an accepted
 or unknown submission. Historical editions, running experiments and saved
 results stay intact. After this publication finishes, use the normal update
 command above to pick up later completions automatically.
+
+### 2November recovery of the queued report
+
+Old render29870705 actually EXIT1: its dynamic completed-candidate selection grew while queued. The old request/failed LSF and stale viewer lock were preserved and reconciled. One local fresh attempt stopped before SSH/submission at that lock; after proving no active report CLI and actual old EXIT, its exact new request was resumed. Replacement29871060 is RUN with a fixed23-panel selection (7 existing histories +16 completed comparisons), using engine8456066/CPU262 cache. No publication is claimed yet. See campaign.json and exact request `request-20261102T003338Z-190b45a9`; do not duplicate it.

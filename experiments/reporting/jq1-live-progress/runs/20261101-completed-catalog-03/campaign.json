@@ -1,15 +1,15 @@
 {
-  "status": "render_EXIT1_completion_selection_changed_while_queued",
-  "request": "results\\hpc\\20261028-reusable-report-01\\requests\\request-20261101T202542Z-8f626be6",
+  "status": "replacement_render_RUNNING_fixed23_saved_input_selection",
+  "request": "results\\hpc\\20261028-reusable-report-01\\requests\\request-20261102T003338Z-190b45a9",
   "intended_edition": "edition-0015",
   "published_edition_unchanged": "edition-0014",
-  "render_job": "29870705",
+  "render_job": "29871060",
   "engine_pin": "8456066f6f5bee1e5187a40fea1926bc955f2859543417f28a53365a222c30f2",
   "engine_CPU_job": "29870703",
   "actual_CPU_cases": 262,
-  "selected_panels": 20,
-  "completed_comparison_panels": 13,
-  "registered_future_comparisons": 26,
+  "selected_panels": 23,
+  "completed_comparison_panels": 16,
+  "registered_future_comparisons": 24,
   "deferred_candidates": [
     {
       "id": "strategy_chemfirst_s17",
@@ -104,11 +104,19 @@
   "normal_future_update_command": ".venv\\Scripts\\python.exe scripts/reporting/report.py --profile experiments/reporting/jq1-live-progress/configs/dtu-report-work3-exploratory.json",
   "public_news_checked": "https://www.hpc.dtu.dk/?page_id=68",
   "public_reopening_time_found": false,
-  "observed_utc": "2026-11-02T00:29:10.321544+00:00",
-  "terminal_error": "Saved inputs changed after request capture; make a fresh report request",
-  "terminal_evidence": {
-    "path": "results\\hpc\\20261102-exclusive-gpu-recovery-01\\report-status01.json",
-    "sha256": "27dceb2709799bcbc1bf3266c48b9a9f83d6e79f29db490b79be7a0881f97e34"
+  "observed_utc": "2026-11-02T00:45:25.339832+00:00",
+  "next_action": "Inspect the existing local report CLI/process and exact accepted request before recovery. It is currently rendering and should transfer/publish automatically. Never duplicate a healthy client/render or unknown transfer. Verify publication/HTTP/browser before announcing an update.",
+  "prior_failed_request": {
+    "status": "render_EXIT1_completion_selection_changed_while_queued",
+    "request": "results\\hpc\\20261028-reusable-report-01\\requests\\request-20261101T202542Z-8f626be6",
+    "render_job": "29870705",
+    "terminal_error": "Saved inputs changed after request capture; make a fresh report request",
+    "terminal_evidence": {
+      "path": "results\\hpc\\20261102-exclusive-gpu-recovery-01\\report-status01.json",
+      "sha256": "27dceb2709799bcbc1bf3266c48b9a9f83d6e79f29db490b79be7a0881f97e34"
+    }
   },
-  "next_action": "Fresh canonical request with resolved completed inputs; preserve failed request/job29870705, no scientific rerun."
+  "fixed_selection": "experiments\\reporting\\jq1-live-progress\\runs\\20261101-completed-catalog-03\\selection-after-admin.json",
+  "render_status_evidence": "results/hpc/20261102-exclusive-gpu-recovery-01/status04.json",
+  "active_resume_command": ".venv/Scripts/python.exe scripts/reporting/report.py --resume results/hpc/20261028-reusable-report-01/requests/request-20261102T003338Z-190b45a9 --profile experiments/reporting/jq1-live-progress/runs/20261101-completed-catalog-03/profile.json"
 }
