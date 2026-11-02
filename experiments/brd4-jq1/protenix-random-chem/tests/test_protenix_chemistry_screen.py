@@ -238,3 +238,45 @@ def test_tiny_loop_keeps_source_teacher_fixed_during_trial_and_reuses_native(tmp
     assert all(u["candidate_count"] == 1 and u["rate"] == .3 for u in updates)
     assert (tmp_path/"study"/"latest-state.npz").is_file()
     assert (tmp_path/"study"/"snapshots"/"step-00002.npz").is_file()
+
+
+@pytest.mark.parametrize('combined', [False, True])
+def test_interrupted_checkpoint_matches_uninterrupted_policy_targets_and_updates(tmp_path, logits_type, combined):
+    import jax
+    import numpy as np
+    from mosaic.small_molecule.chemistry.loss import FailureGuidanceConfig
+    from mosaic.small_molecule.chemistry.preparation import prepare_failure_guidance
+    from mosaic.small_molecule.chemistry.state import mosaic_spec
+    from mosaic.small_molecule.chemistry._reference.probability_repair import ProbabilityRepairConfig
+    from mosaic.small_molecule.chemistry._reference.repair_progress import ProgressSearchConfig
+    config=configuration(updates=22)
+    if combined:
+        config.update(temperature=2.,neighbor_environment={'version':'common-organic-neighbor-v1','weight':.1},
+            chemistry={'mode':'adaptive','initial':1.,'ratio_target':1.,'minimum':1.,'maximum':100.,'ema':.9},
+            binding={'mode':'validity_first','max_chemistry_steps':5000,'ramp_steps':2000})
+    spec=mosaic_spec(3)
+    def prepare(point,state):
+        return prepare_failure_guidance(point.decoded(),spec,update=state,
+            search=ProbabilityRepairConfig(),progress_search=ProgressSearchConfig())
+    args=(tiny_native,point3(logits_type,config['temperature']),prepare,spec,FailureGuidanceConfig(),jax.random.key(17),config)
+    screen.run_loop(*args,tmp_path/'full')
+    screen.run_loop(*args,tmp_path/'partial',steps=20)
+    parent=tmp_path/'partial'
+    state=json.loads((parent/'states.jsonl').read_text().splitlines()[-1])
+    resume={'offset':20,'state':state,'snapshot':screen.binding(parent/'snapshots/step-00020.npz'),
+            'reference':screen.binding(parent/'references/step-00020.json.gz')}
+    with np.load(resume['snapshot']['path'],allow_pickle=False) as arrays:
+        import jax.numpy as jnp
+        point=logits_type(jnp.asarray(arrays['atom_logits']),jnp.asarray(arrays['bond_logits']),config['temperature'])
+    report=screen.run_loop(tiny_native,point,prepare,spec,FailureGuidanceConfig(),jax.random.key(17),config,
+                           tmp_path/'resumed',resume=resume)
+    assert report['applied_updates']==2 and report['global_start']==20
+    rows=[json.loads(s) for s in (tmp_path/'resumed/states.jsonl').read_text().splitlines()]
+    full=[json.loads(s) for s in (tmp_path/'full/states.jsonl').read_text().splitlines()]
+    assert [r['step'] for r in rows]==[0,1,2] and [r['global_step'] for r in rows]==[20,21,22]
+    for a,b in zip(rows,full[20:]):
+        for key in ('repair_weight','binding_weight','phase_exit_state','preparation_identity','neighbor_preparation_identity','contact_loss'):
+            assert a[key]==b[key]
+    with np.load(tmp_path/'full/latest-state.npz') as a,np.load(tmp_path/'resumed/latest-state.npz') as b:
+        np.testing.assert_array_equal(a['atom_logits'],b['atom_logits'])
+        np.testing.assert_array_equal(a['bond_logits'],b['bond_logits'])

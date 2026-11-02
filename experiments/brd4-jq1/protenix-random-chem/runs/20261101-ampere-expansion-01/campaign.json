@@ -423,5 +423,20 @@
       "target": 20000
     }
   },
-  "current_proof": "status-20261101T180515Z.json"
+  "current_proof": "status-20261101T180515Z.json",
+  "exclusive_gpu_recovery": {
+    "observed_utc": "2026-11-02T00:29:10.321544+00:00",
+    "campaign": "experiments\\brd4-jq1\\protenix-random-chem\\runs\\20261102-exclusive-gpu-recovery-01\\campaign.json",
+    "successors": {
+      "chemfirst-s17": "29871029",
+      "chemfirst-s23": "29871030",
+      "severity-s23": "29871031",
+      "earlyseverity-s23": "29871032",
+      "delayed-dense-s17": "29871033",
+      "combined-dense-s17": "29871034",
+      "structural-s17": "29871035",
+      "structural-s23": "29871036"
+    },
+    "historical_submissions_preserved": true
+  }
 }

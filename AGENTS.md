@@ -144,6 +144,9 @@ completion time across the batch using current queue/account limits, available
 capacity, memory/software compatibility and measured whole-run budgets. Do not
 funnel everything into V100 or impose an assumed global five-job limit. Declare
 each arm's GPU profile explicitly before submission.
+All new GPU jobs must request `mode=exclusive_process:j_exclusive=yes` per DTU
+ticket43078; never copy `mode=shared` from historical submissions. See the GPU
+policy for single-client/noMPS versus explicit site-managed MPS workloads.
 
 During authorized run management, reassess safe redistribution of queued,
 never-started arms when other compatible queues offer a clear benefit. Preserve

@@ -215,7 +215,7 @@
     {
       "id": "strategy_chemfirst_s17",
       "label": "chemfirst s17 (gpua10)",
-      "run": "/work3/s234818/mosaic/runs/20261031-protenix-chemistry-strategies-01/ampere-expansion-20261101-01/a10/run/chemfirst-s17/payload",
+      "run": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/run/chemfirst-s17/payload",
       "global_target": 20000,
       "primary_metric": "contact_loss",
       "continuation_status": "completed",
@@ -224,7 +224,7 @@
     {
       "id": "strategy_chemfirst_s23",
       "label": "chemfirst s23 (gpua10)",
-      "run": "/work3/s234818/mosaic/runs/20261031-protenix-chemistry-strategies-01/ampere-expansion-20261101-01/a10/run/chemfirst-s23/payload",
+      "run": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/run/chemfirst-s23/payload",
       "global_target": 20000,
       "primary_metric": "contact_loss",
       "continuation_status": "completed",
@@ -242,7 +242,7 @@
     {
       "id": "strategy_severity_s23",
       "label": "severity s23 (gpua40)",
-      "run": "/work3/s234818/mosaic/runs/20261031-protenix-chemistry-strategies-01/ampere-expansion-20261101-01/a40/run/severity-s23/payload",
+      "run": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/run/severity-s23/payload",
       "global_target": 20000,
       "primary_metric": "contact_loss",
       "continuation_status": "completed",
@@ -314,7 +314,7 @@
     {
       "id": "strategy_earlyseverity_s23",
       "label": "earlyseverity s23 (gpuv100)",
-      "run": "/work3/s234818/mosaic/runs/20261031-protenix-chemistry-strategies-01/source02/run/earlyseverity-s23/payload",
+      "run": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/run/earlyseverity-s23/payload",
       "global_target": 20000,
       "primary_metric": "contact_loss",
       "continuation_status": "completed",
@@ -341,7 +341,7 @@
     {
       "id": "strategy_delayed_dense_s17",
       "label": "delayed dense s17 (gpuv100)",
-      "run": "/work3/s234818/mosaic/runs/20261031-protenix-chemistry-strategies-01/source02/run/delayed-dense-s17/payload",
+      "run": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/run/delayed-dense-s17/payload",
       "global_target": 20000,
       "primary_metric": "contact_loss",
       "continuation_status": "completed",
@@ -350,7 +350,7 @@
     {
       "id": "strategy_combined_dense_s17",
       "label": "combined dense s17 (gpuv100)",
-      "run": "/work3/s234818/mosaic/runs/20261031-protenix-chemistry-strategies-01/source02/run/combined-dense-s17/payload",
+      "run": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/run/combined-dense-s17/payload",
       "global_target": 20000,
       "primary_metric": "contact_loss",
       "continuation_status": "completed",
@@ -359,7 +359,7 @@
     {
       "id": "structural_structural_s17",
       "label": "Structural repair - seed17 (A100)",
-      "run": "/work3/s234818/mosaic/runs/20261101-structural-repair-01/source01/run/structural-s17/payload",
+      "run": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/run/structural-s17/payload",
       "global_target": 30000,
       "primary_metric": "contact_loss",
       "continuation_status": "completed",
@@ -370,7 +370,7 @@
     {
       "id": "structural_structural_s23",
       "label": "Structural repair - seed23 (A40)",
-      "run": "/work3/s234818/mosaic/runs/20261101-structural-repair-01/source01/run/structural-s23/payload",
+      "run": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/run/structural-s23/payload",
       "global_target": 30000,
       "primary_metric": "contact_loss",
       "continuation_status": "completed",

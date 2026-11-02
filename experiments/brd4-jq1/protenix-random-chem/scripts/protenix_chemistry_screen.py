@@ -112,6 +112,20 @@ class Policy:
         self.phase_exit = None
         self.phase_exit_reason = None
 
+    def restore(self, state):
+        """Restore the decision already made at this accepted source state."""
+        require(type(state['step']) is int and 0 < state['step'] < self.config['updates'], 'Invalid resume state')
+        keys=('repair_weight','binding_weight','phase_exit_state','phase_exit_reason',
+              'unit_binding_gradient_norm','unit_repair_gradient_norm')
+        active={k:state[k] for k in keys}
+        require(all(math.isfinite(active[k]) and active[k]>=0 for k in
+                    ('repair_weight','binding_weight','unit_binding_gradient_norm','unit_repair_gradient_norm')),
+                'Nonfinite/negative saved policy')
+        require(active['binding_weight']<=1, 'Invalid saved binding weight')
+        self.last_state=state['step'];self.coefficient=active['repair_weight']
+        self.phase_exit=active['phase_exit_state'];self.phase_exit_reason=active['phase_exit_reason']
+        return active
+
     def source(self, state, raw_valid_connected, binding_norm, chemistry_norm):
         require(state == self.last_state + 1, "Policy advances exactly once per accepted state")
         require(all(math.isfinite(v) and v >= 0 for v in (binding_norm, chemistry_norm)), "Invalid gradient norm")
@@ -297,7 +311,23 @@ def sample_validity(logits, seed, state, output):
             "binding_scores_evaluated_for_samples": False}
 
 
-def run_loop(loss, initial, prepare, spec, loss_config, key, config, output, *, steps=None, tick=None):
+def restore_teacher(record, spec):
+    import jax.numpy as jnp
+    from mosaic.small_molecule.chemistry.preparation import PreparedFailureGuidance
+    repair=record['repair'];extras={'arrays','identity','preparation_seconds','search_seconds'}
+    prepared=PreparedFailureGuidance({k:jnp.asarray(v) for k,v in repair['arrays'].items()},
+        {k:v for k,v in repair.items() if k not in extras},repair['identity'],repair['preparation_seconds'],
+        tuple((v['original'],v['additional']) for v in repair.get('search_seconds',[])))
+    prepared.verify(spec)
+    environment=None
+    if record['neighbor'] is not None:
+        from mosaic.small_molecule.chemistry.environment import PreparedNeighborEnvironment
+        n=record['neighbor'];environment=PreparedNeighborEnvironment(n['context'],n['receipt'],n['identity'])
+        environment.verify(spec)
+    return prepared,environment
+
+
+def run_loop(loss, initial, prepare, spec, loss_config, key, config, output, *, steps=None, tick=None, resume=None):
     """One finite fixed proposal; source teacher and coefficients fixed per step."""
     import jax
     import numpy as np
@@ -308,14 +338,17 @@ def run_loop(loss, initial, prepare, spec, loss_config, key, config, output, *, 
     (output/"samples").mkdir()
     (output/"references").mkdir()
     policy = Policy(config)
-    steps = config["updates"] if steps is None else steps
-    require(type(steps) is int and 1 <= steps <= config["updates"], "Invalid actual loop budget")
+    start=0 if resume is None else resume['offset']
+    steps = config["updates"]-start if steps is None else steps
+    require(type(steps) is int and 1 <= steps and start+steps <= config["updates"], "Invalid actual loop budget")
     summary = {"version": VERSION, "status": "running", "requested_updates": steps,
                "applied_updates": 0, "configuration": config, "derivative_qualified": False,
                "state_file": "states.jsonl", "updates_file": "updates.jsonl", "matrix_stride": 20,
                "all_scalar_losses_retained": True, "saved_results_changed": False,
                "best_contact": None, "best_valid_contact": None, "strict_valid_states": 0,
                "invalid_states": 0, "valid_unique_smiles": [], "atom_identity_changes": 0, "bond_identity_changes": 0}
+    if resume is not None:
+        summary.update(global_start=start,global_target=config['updates'],resume=resume,parent_prefix_unchanged=True)
     unique = set()
     previous_readout = None
     started = time.monotonic()
@@ -362,7 +395,7 @@ def run_loop(loss, initial, prepare, spec, loss_config, key, config, output, *, 
             temporary.replace(path)
             return binding(path)
         latest = snapshot(output/"latest-state.npz")
-        retained = state % 20 == 0 or state == steps
+        retained = state % 20 == 0 or state == start+steps or state == start
         selected = snapshot(output/"snapshots"/f"step-{state:05d}.npz") if retained else None
         if retained:
             import gzip
@@ -374,7 +407,7 @@ def run_loop(loss, initial, prepare, spec, loss_config, key, config, output, *, 
                 summary[field] = {"step": state, "loss": native, "snapshot": snapshot(output/filename),
                                   "readout": readout, "scope": "same saved relaxed graph native score; hard argmax not rescored"}
         rows = prepared.receipt["rows"]
-        state_record = {"step": state, "global_step": state, "contact_loss": native,
+        state_record = {"step": state-start, "global_step": state, "contact_loss": native,
                         "chemistry_loss": units["repair"], "neighbor_environment_weighted_loss": units["neighbor"],
                         "refreshed_surrogate": total, "components": units["terms"], **active,
                         "gradient_block_norms": {name: {"native": gradient_norm_block(units["binding_gradient"], name),
@@ -398,7 +431,7 @@ def run_loop(loss, initial, prepare, spec, loss_config, key, config, output, *, 
         summary["last_state"] = state_record
         summary["valid_unique_smiles"] = sorted(unique)
         write(output/"latest-state.json", {"step": state, "snapshot": latest, "configuration": config})
-        if state % 1000 == 0 or state == steps:
+        if state % 1000 == 0 or state == start+steps:
             sampling_started = time.monotonic()
             sample_record = sample_validity(logits, config["init_seed"], state, output/"samples")
             append(output/"sampled-validity.jsonl", sample_record)
@@ -407,13 +440,22 @@ def run_loop(loss, initial, prepare, spec, loss_config, key, config, output, *, 
         return readout
 
     try:
-        prepared, environment = prepare_step(initial, 0)
+        if resume is None:
+            prepared, environment = prepare_step(initial, 0)
+        else:
+            import gzip
+            with gzip.open(bound(resume['reference']),'rt',encoding='utf8') as stream:
+                prepared,environment=restore_teacher(json.load(stream),spec)
+            require(prepared.identity==resume['state']['preparation_identity'],'Saved teacher differs')
+            require((None if environment is None else environment.identity)==resume['state']['neighbor_preparation_identity'],
+                    'Saved neighbor context differs')
         units = evaluate_units(loss, initial, prepared, environment, spec, loss_config, key)
         readout = hard_readout(initial.graph())
-        active = policy.source(0, valid_connected(readout), gradient_norm(units["binding_gradient"]), gradient_norm(units["chemistry_gradient"]))
-        save_point(0, units, prepared, environment, active)
+        active = (policy.source(0, valid_connected(readout), gradient_norm(units["binding_gradient"]), gradient_norm(units["chemistry_gradient"]))
+                  if resume is None else policy.restore(resume['state']))
+        save_point(start, units, prepared, environment, active)
         summary["initial_state"] = summary["last_state"]
-        for step in range(steps):
+        for step in range(start,start+steps):
             update_started = time.monotonic()
             if tick:
                 tick(step)
@@ -425,7 +467,7 @@ def run_loop(loss, initial, prepare, spec, loss_config, key, config, output, *, 
                 np.savez_compressed(stream, atom_logits=np.asarray(proposal.atoms), bond_logits=np.asarray(proposal.bonds), step=step)
             candidate = evaluate_units(loss, proposal, prepared, environment, spec, loss_config, key)
             after, _ = weighted(candidate, active)
-            record = {"step": step, "global_step": step, "preparation_identity": prepared.identity,
+            record = {"step": step-start, "global_step": step, "preparation_identity": prepared.identity,
                       "fixed_before": before, "fixed_after": after, "fixed_increased": after > before,
                       "contact_before": float(units["native"].value), "contact_after": float(candidate["native"].value),
                       "rate": .3, "candidate_count": 1, **active,
@@ -435,12 +477,12 @@ def run_loop(loss, initial, prepare, spec, loss_config, key, config, output, *, 
             readout = hard_readout(proposal.graph())
             active = policy.source(step+1, valid_connected(readout), gradient_norm(units["binding_gradient"]), gradient_norm(units["chemistry_gradient"]))
             save_point(step+1, units, prepared, environment, active)
-            summary["applied_updates"] = step+1
+            summary["applied_updates"] = step+1-start
             record["elapsed_seconds"] = time.monotonic()-update_started
             record["sampling_seconds"] = last_sampling_seconds
             record["optimization_seconds"] = max(0., record["elapsed_seconds"]-last_sampling_seconds)
             append(output/"updates.jsonl", record)
-            if (step+1) % 20 == 0 or step+1 == steps:
+            if (step+1) % 20 == 0 or step+1 == start+steps:
                 print(json.dumps({"update": step+1, "of": steps, "contact": float(units["native"].value),
                     "repair": units["repair"], "lambda": active["repair_weight"], "binding_weight": active["binding_weight"],
                     "valid": valid_connected(readout)}, separators=(",", ":")), flush=True)
@@ -485,6 +527,10 @@ def main(argv=None):
     require(not row.get("logit_noise"), "Noise not requested in this comparison")
     for name in ("config", "snapshot", "reference", "pocket", "context_ready"):
         bound(row[name])
+    if row.get('resume') is not None:
+        for name in ('snapshot','reference'):bound(row['resume'][name])
+        require(row['resume']['state']['step']==row['resume']['offset'],'Resume step differs')
+        Policy(config).restore(row['resume']['state'])
     code_source, original = Path(plan["code_source_root"]), Path(row["science_source"]["path"])
     require(binding(original/"source_manifest.json")["sha256"] == row["science_source"]["manifest_sha256"], "Original science provenance differs")
     sys.path[:0] = [str(code_source/"src"), str(original/"scripts")]
@@ -548,6 +594,15 @@ def main(argv=None):
         if config["initialization"]["mode"] == "dense_original":
             require(all(np.array_equal(original_point[f], np.asarray(getattr(initial, n))) for f, n in
                         (("atom_logits", "atoms"), ("bond_logits", "bonds"))), "Original dense logits changed")
+    resume=row.get('resume')
+    if resume is not None:
+        require(resume['state']['step']==resume['offset'] and 0<resume['offset']<config['updates'],'Resume offset differs')
+        require(resume['state']['temperature']==config['temperature'],'Resume temperature differs')
+        with np.load(bound(resume['snapshot']),allow_pickle=False) as point:
+            require(int(point['step'])==resume['offset'],'Resume matrix step differs')
+            require(np.array_equal(point['key_data'],np.asarray(jax.random.key_data(key))),'Resume key differs')
+            import jax.numpy as jnp
+            initial=logits_type(jnp.asarray(point['atom_logits']),jnp.asarray(point['bond_logits']),config['temperature'])
     spec = mosaic_spec(25)
     search = ProbabilityRepairConfig(**source_config["search"])
     progress = ProgressSearchConfig(**source_config["progress_search"])
@@ -577,15 +632,18 @@ def main(argv=None):
         acceleration = output.parent/"acceleration"
         acceleration.mkdir(exist_ok=False)
         with pilot.combined_adapters("protenix-random50k", acceleration):
-            actual_steps = args.smoke_updates if args.smoke_updates is not None else config["updates"]
+            start=0 if resume is None else resume['offset']
+            actual_steps = args.smoke_updates if args.smoke_updates is not None else config["updates"]-start
             require(1 <= actual_steps <= config["updates"], "Invalid pilot budget")
             result = run_loop(loss, initial, prepare, spec, FailureGuidanceConfig(**source_config["loss"]), key, config, output,
-                              steps=actual_steps, tick=tick)
+                              steps=actual_steps, tick=tick,resume=resume)
         summary.update(status=result["status"], applied_updates=result["applied_updates"],
-                       actual_steps=actual_steps, full_budget_complete=result["applied_updates"] == config["updates"],
+                       actual_steps=actual_steps, full_budget_complete=start+result["applied_updates"] == config["updates"],
                        probe_not_adopted=args.smoke_updates is not None, report_path=str(output/"report.json"),
                        elapsed_seconds=time.monotonic()-begun, best_contact=result["best_contact"],
                        best_valid_contact=result["best_valid_contact"], strict_valid_states=result["strict_valid_states"])
+        if resume is not None:
+            summary.update(global_start=start,global_target=config['updates'],global_end=start+result['applied_updates'],resume=resume)
     except BaseException as error:
         summary.update(status="failed", error=repr(error))
         raise

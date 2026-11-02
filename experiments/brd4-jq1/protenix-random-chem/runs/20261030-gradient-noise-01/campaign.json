@@ -1,19 +1,16 @@
 {
-  "status": "continuation_submitted_from35300_after_wall_limit",
-  "observed_utc": "2026-11-01T08:04:00.481485+00:00",
-  "job_id": "29864788",
-  "scheduler": "PEND",
+  "status": "exclusive_compute_recovery_running",
+  "observed_utc": "2026-11-02T00:29:10.321544+00:00",
+  "job_id": "29871026",
+  "scheduler": "RUN",
   "queue": "gpuv100",
   "GPU": "one32GiBV100",
-  "walltime": "10:00",
-  "root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-chemistry-noise-20261030-01/continuation-35300-01",
-  "source_root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-chemistry-noise-20261030-01/source04",
-  "source_archive_bytes": 80338,
-  "source_archive_sha256": "631cbdaae60ba9c25e7db12aff19c2f2be54b39fc651920fa3692bebe31d0796",
-  "source_checksums_sha256": "39d33c63568be73e10094e745300a0ab7b6da9b25270508e5208b894956cc2cc",
+  "walltime": "09:15",
+  "root": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/native-noise01/run",
+  "source_root": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/native-noise01/source",
   "source_files": 24,
-  "plan_sha256": "edb987d4253caf297aeed82850d891067d4eee0683bd72f59f80f700d1e5afcd",
-  "output": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-chemistry-noise-20261030-01/continuation-35300-01/protenix_chemistry/payload/study",
+  "plan_sha256": "74edad74d9252e98ef91238c9b6d42908c0eadac2d9861e60e4bec94e151a785",
+  "output": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/native-noise01/run/protenix_chemistry/payload/study",
   "settings": {
     "updates": 50000,
     "LR": 0.3,
@@ -51,26 +48,64 @@
     "errors": 0,
     "skipped": 0
   },
-  "new_updates": 0,
+  "new_updates": 188,
   "derivative_qualified": false,
   "scientific_settings_other_than_noise_unchanged": true,
   "original_saved_results_changed": false,
   "old_own_unstarted_job_retired": "29857341",
   "other_jobs_modified": false,
   "monitor": "mosaic1 updated to six experiments, schedule unchanged",
-  "raw_evidence": "results\\hpc\\20261101-noise-continuation-01\\cpu-080359\\stdout.jsonl",
-  "optimization_progress": "35300 original committed updates preserved;14700-update continuation submitted; no successor progress yet",
+  "raw_evidence": "results\\hpc\\20261102-exclusive-gpu-recovery-01\\observe03.json",
+  "optimization_progress": "Restored PCG64 stream; exclusive-compute successor has committed updates.",
   "latest_monitor_evidence": "experiments/validation/endpoint-qualification/runs/20261030-v100-default-01/recovery-20261031.json",
-  "predecessor_job_id": "29857358",
+  "predecessor_job_id": "29864788",
   "predecessor_status": "EXIT_TERM_RUNLIMIT140",
-  "global_start": 35300,
-  "remaining_updates": 14700,
-  "verified_global_progress": 35300,
+  "global_start": 36320,
+  "remaining_updates": 13680,
+  "verified_global_progress": 36508,
   "continuation_proof": "experiments\\brd4-jq1\\protenix-random-chem\\runs\\20261030-gradient-noise-01\\continuation-20261101.json",
   "actual_accepted_observation": {
     "JOBID": "29864788",
     "STAT": "PEND",
     "QUEUE": "gpuv100",
     "JOB_NAME": "mosaic-chemnoise-resume35300-protenix_chemistry"
-  }
+  },
+  "study": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/native-noise01/run/protenix_chemistry/payload/study",
+  "exclusive_recovery": "experiments\\brd4-jq1\\protenix-random-chem\\runs\\20261102-exclusive-gpu-recovery-01\\campaign.json",
+  "recovery_checkpoint": {
+    "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-chemistry-noise-20261030-01/continuation-35300-01/protenix_chemistry/payload/study/case-0/snapshots/step-1020.npz",
+    "bytes": 23040,
+    "sha256": "debe720c96474d7ed60a29366a24efae5bb25c4c81c6face49835a92917f804f"
+  },
+  "predecessor_committed_global_end": 36329,
+  "latest_status_evidence": {
+    "path": "results\\hpc\\20261102-exclusive-gpu-recovery-01\\observe03.json",
+    "bytes": 104212,
+    "sha256": "c5699eebd4e035ddc15b9fb5ece3fa3a30630d42a4537f9d822c7a293e81a5a0"
+  },
+  "previous_source_evidence": {
+    "source_root": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-chemistry-noise-20261030-01/source04",
+    "source_archive_bytes": 80338,
+    "source_archive_sha256": "631cbdaae60ba9c25e7db12aff19c2f2be54b39fc651920fa3692bebe31d0796",
+    "source_checksums_sha256": "39d33c63568be73e10094e745300a0ab7b6da9b25270508e5208b894956cc2cc",
+    "plan_sha256": "edb987d4253caf297aeed82850d891067d4eee0683bd72f59f80f700d1e5afcd"
+  },
+  "source_manifest": {
+    "path": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/native-noise01/source/checksums.sha256",
+    "bytes": 2476,
+    "sha256": "a27106585159b98c66f4ed82fb2c045443c36a5817d4a20aee7552b1dc67036a"
+  },
+  "plan": {
+    "path": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/native-noise01/source/plan.json",
+    "bytes": 5717,
+    "sha256": "74edad74d9252e98ef91238c9b6d42908c0eadac2d9861e60e4bec94e151a785"
+  },
+  "timing_basis": {
+    "seconds_per_update": 1.8380169971671387,
+    "remaining_updates": 13680,
+    "margin": 1.25,
+    "setup_cleanup_seconds": 1800,
+    "rounded_minutes": 15
+  },
+  "source_checksums_sha256": "a27106585159b98c66f4ed82fb2c045443c36a5817d4a20aee7552b1dc67036a"
 }

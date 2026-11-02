@@ -1,0 +1,304 @@
+{
+  "version": "mosaic-report-selection-v1",
+  "runs": [
+    {
+      "id": "protenix_chemistry50k",
+      "label": "Protenix + chemistry \u00b7 full0-50k",
+      "primary_metric": "contact_loss",
+      "global_target": 50000,
+      "continuation_status": "completed",
+      "status_detail": "Full saved trajectory from actual update0 through50,000. All scalar losses retained; original segment boundaries and scientific warnings preserved. Changing chemistry coefficients mean totals are not one fixed objective.",
+      "segments": [
+        {
+          "run": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-03/protenix/random-segment-0000/payload/study"
+        },
+        {
+          "run": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-continuations-20261030-01/protenix_chemistry/payload/study"
+        }
+      ]
+    },
+    {
+      "id": "boltz_chemistry30k",
+      "label": "Boltz-2 + chemistry \u00b7 full0-30k",
+      "global_target": 30000,
+      "continuation_status": "completed",
+      "primary_metric": "affinity_loss",
+      "segments": [
+        {
+          "run": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/chemistry-production-04/boltz/boltz2_chemistry-segment-0000/payload/study"
+        },
+        {
+          "run": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/production/boltz_chemistry/payload/study",
+          "saved_partial": true,
+          "job_id": "29855330",
+          "global_offset": 10000,
+          "requested_updates": 20000,
+          "config": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-release-03/source/examples/configs/boltz_serial_boltz2_chemistry.json",
+          "science_manifest": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-release-03/source/source_manifest.json",
+          "source_manifest_sha256": "c214bccf2c94ac6829996bc0ca7d6415d3c19549be4fe7f874cba2b433901cc6",
+          "submission": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/production/boltz_chemistry/submission.json",
+          "stdout": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/production/boltz_chemistry/stdout.29855330.log",
+          "stderr": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/production/boltz_chemistry/stderr.29855330.log"
+        },
+        {
+          "run": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-recovery-20261031-01/boltz_chemistry-output/boltz_chemistry/payload/study"
+        }
+      ],
+      "status_detail": "Full saved0-30,000 history, including the original wall-limited10,000-28,986 prefix and final1,014-update recovery. Actual latest checkpoints cover the interrupted boundary; no interpolation or new model evaluation. Original derivative failures remain preserved."
+    },
+    {
+      "id": "boltz30k",
+      "label": "Boltz-2 \u00b7 full0-30k",
+      "primary_metric": "affinity_loss",
+      "global_target": 30000,
+      "continuation_status": "completed",
+      "status_detail": "Full saved0-30,000 history. Earlier failed derivative checks remain failed and visible; completion means the exploratory update budget was reached.",
+      "segments": [
+        {
+          "run": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-lr0025-03/boltz2-segment-0000/payload/study"
+        },
+        {
+          "run": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-09/boltz-segment-10000/payload/study"
+        },
+        {
+          "run": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/production/boltz/payload/study"
+        }
+      ]
+    },
+    {
+      "id": "protenix50k",
+      "label": "Protenix \u00b7 full0-50k",
+      "primary_metric": "contact_loss",
+      "global_target": 50000,
+      "continuation_status": "completed",
+      "status_detail": "Full saved0-50,000 history, including the restored byte-identical original0-10k data and interrupted20,000-27,175 prefix. Source histories, checkpoints and failed checks are preserved. Display uses actual every20th and endpoint matrices; all original dense matrices are verified on allocated CPU.",
+      "segments": [
+        {
+          "run": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/report-inputs-from-zero-20261031-01/protenix-zero/study",
+          "dense_saved": true,
+          "job_id": "29792670",
+          "global_offset": 0,
+          "requested_updates": 10000,
+          "config": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-release-04/source/examples/configs/brd4_jq1_25_fixed_lrreset_protenix_10000.json",
+          "science_manifest": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-release-04/source/source_manifest.json",
+          "source_manifest_sha256": "c2628d08f7224f3b572ab456f4113d8a66b587a5d69f85a072877052fc09a057",
+          "submission": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-protenix/submission.json",
+          "stdout": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-protenix/stdout.29792670.log",
+          "stderr": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/restart-lrreset-04/run-protenix/stderr.29792670.log"
+        },
+        {
+          "run": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/continuation-segment-0000/payload/study"
+        },
+        {
+          "run": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/runtime-production-05/gpu-plain/payload/replay/plain/payload/study",
+          "saved_partial": true,
+          "job_id": "29853431",
+          "global_offset": 20000,
+          "requested_updates": 30000,
+          "config": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source/examples/configs/extended_continuation.json",
+          "science_manifest": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-release-03/source/source_manifest.json",
+          "source_manifest_sha256": "da9db6821d26b884ca1749303fc8e0b0095bd9ee7cbd1b427cdcf1b22eec6562",
+          "producer_manifest": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/runtime-production-release-05/source/source_manifest.json",
+          "submission": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/runtime-production-05/gpu-plain/submission.json",
+          "stdout": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/runtime-production-05/gpu-plain/stdout.29853431.log",
+          "stderr": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-continuation-26/runtime-production-05/gpu-plain/stderr.29853431.log"
+        },
+        {
+          "run": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-v100-20261030-01/production/protenix/payload/study"
+        }
+      ]
+    },
+    {
+      "id": "dbmol",
+      "label": "Boltz-2 DBMol binding objective - target60k",
+      "status_detail": "Completed saved history0 to30,000. Additional30,000-update child29866396 is queued onL40S toward60,000; it has no committed new states yet. Original TOTAL-bond derivative contradictions209/195/264 remain unresolved. Frozen inputs and saved results preserved; the composite objective is not affinity or proof of binding.",
+      "continuation_status": "queued",
+      "segments": [
+        {
+          "run": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-segment-0000/payload/study"
+        },
+        {
+          "run": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-segment-0001/payload/study"
+        },
+        {
+          "run": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-endpoint-continuation-08/dbmol-segment-05000/payload/study"
+        },
+        {
+          "run": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-recovery-20261031-01/dbmol-output/dbmol/payload/study"
+        }
+      ],
+      "global_target": 60000,
+      "primary_metric": "dbmol_total_loss"
+    },
+    {
+      "id": "protenix_noisy",
+      "label": "Protenix noisy-logit1k pilot",
+      "status_detail": "Completed1,000 updates; original initial/terminal raw and logit checks passed. Independent pilot, not the50k random chemistry run.",
+      "continuation_status": "completed",
+      "segments": [
+        {
+          "run": "/work3/s234818/mosaic/runs/20261025-protenix-noisy-05/gpu"
+        }
+      ]
+    },
+    {
+      "id": "protenix_defog",
+      "label": "Protenix + DeFoG, balanced constant weight30k",
+      "primary_metric": "contact_loss",
+      "status_detail": "All 30,000 updates finished on 29 October 2026 at 14:38 Paris. Zero of 30,001 saved raw graphs passed sanitization. Terminal native gradients passed; fixed-teacher combined atom gradients failed. Constant DeFoG weight 0.5364198835347113 calibrated to initial total gradient norms; teacher time 0.2 to 0.95. Endpoint has 20 sulfur atoms out of 25 and invalid fluorine valence 7. All original matrices verified; viewer displays every 20th plus endpoint without interpolation.",
+      "continuation_status": "not_planned",
+      "segments": [
+        {
+          "run": "/work3/s234818/mosaic/runs/20261029-protenix-defog-balanced-30000-01/pilot",
+          "config": "/work3/s234818/mosaic/releases/20261029-protenix-defog-balanced-30000-01/experiments/learned-prior/protenix-defog-balanced-30000/configs/pilot.json",
+          "stdout": "/work3/s234818/mosaic/runs/20261029-protenix-defog-balanced-30000-01/gpu.out",
+          "stderr": "/work3/s234818/mosaic/runs/20261029-protenix-defog-balanced-30000-01/gpu.err"
+        }
+      ]
+    },
+    {
+      "id": "strategy_delayed_s17",
+      "label": "Sparse seed17 - delayed chemistry",
+      "run": "/work3/s234818/mosaic/runs/20261031-protenix-chemistry-strategies-01/source02/run/delayed-s17/payload",
+      "global_target": 20000,
+      "primary_metric": "contact_loss",
+      "continuation_status": "completed",
+      "status_detail": "Completed 20,000 exploratory updates. No strict-valid argmax states observed. Saved contact and chemistry losses; no derivative or binding certification. Targets/weights may change between steps."
+    },
+    {
+      "id": "strategy_delayed_s23",
+      "label": "Sparse seed23 - delayed chemistry",
+      "run": "/work3/s234818/mosaic/runs/20261031-protenix-chemistry-strategies-01/source02/run/delayed-s23/payload",
+      "global_target": 20000,
+      "primary_metric": "contact_loss",
+      "continuation_status": "completed",
+      "status_detail": "Completed 20,000 exploratory updates. No strict-valid argmax states observed. Saved contact and chemistry losses; no derivative or binding certification. Targets/weights may change between steps."
+    },
+    {
+      "id": "strategy_constant1_s17",
+      "label": "Sparse seed17 - constant chemistry 1",
+      "run": "/work3/s234818/mosaic/runs/20261031-protenix-chemistry-strategies-01/source02/run/constant1-s17/payload",
+      "global_target": 20000,
+      "primary_metric": "contact_loss",
+      "continuation_status": "completed",
+      "status_detail": "Completed 20,000 exploratory updates. No strict-valid argmax states observed. Saved contact and chemistry losses; no derivative or binding certification. Targets/weights may change between steps."
+    },
+    {
+      "id": "strategy_constant1_s23",
+      "label": "Sparse seed23 - constant chemistry1",
+      "run": "/work3/s234818/mosaic/runs/20261031-protenix-chemistry-strategies-01/source02/run/constant1-s23/payload",
+      "global_target": 20000,
+      "primary_metric": "contact_loss",
+      "continuation_status": "completed",
+      "status_detail": "Completed20,000 exploratory updates with original frozen model/context preserved. Recorded strict-valid argmax states: 0. Saved contact and chemistry losses; changing targets/weights do not define one fixed objective. No derivative or binding certification."
+    },
+    {
+      "id": "strategy_constant10_s17",
+      "label": "Sparse seed17 - constant chemistry10",
+      "run": "/work3/s234818/mosaic/runs/20261031-protenix-chemistry-strategies-01/source02/run/constant10-s17/payload",
+      "global_target": 20000,
+      "primary_metric": "contact_loss",
+      "continuation_status": "completed",
+      "status_detail": "Completed20,000 exploratory updates with original frozen model/context preserved. Recorded strict-valid argmax states: 0. Saved contact and chemistry losses; changing targets/weights do not define one fixed objective. No derivative or binding certification."
+    },
+    {
+      "id": "strategy_constant10_s23",
+      "label": "Sparse seed23 - constant chemistry10",
+      "run": "/work3/s234818/mosaic/runs/20261031-protenix-chemistry-strategies-01/source02/run/constant10-s23/payload",
+      "global_target": 20000,
+      "primary_metric": "contact_loss",
+      "continuation_status": "completed",
+      "status_detail": "Completed20,000 exploratory updates with original frozen model/context preserved. Recorded strict-valid argmax states: 0. Saved contact and chemistry losses; changing targets/weights do not define one fixed objective. No derivative or binding certification."
+    },
+    {
+      "id": "strategy_severity_s17",
+      "label": "Sparse seed17 - severity guidance",
+      "run": "/work3/s234818/mosaic/runs/20261031-protenix-chemistry-strategies-01/ampere-expansion-20261101-01/a40/run/severity-s17/payload",
+      "global_target": 20000,
+      "primary_metric": "contact_loss",
+      "continuation_status": "completed",
+      "status_detail": "Completed20,000 exploratory updates with original frozen model/context preserved. Recorded strict-valid argmax states: 0. Saved contact and chemistry losses; changing targets/weights do not define one fixed objective. No derivative or binding certification."
+    },
+    {
+      "id": "strategy_adaptive_s17",
+      "label": "adaptive s17 (gpul40s)",
+      "run": "/work3/s234818/mosaic/runs/20261031-protenix-chemistry-strategies-01/ampere-expansion-20261101-01/l40s/run/adaptive-s17/payload",
+      "global_target": 20000,
+      "primary_metric": "contact_loss",
+      "continuation_status": "completed",
+      "status_detail": "Completed exploratory chemistry comparison. All saved results and scientific warnings preserved; changing teachers/weights do not define one fixed objective. No derivative or binding certification."
+    },
+    {
+      "id": "strategy_adaptive_s23",
+      "label": "adaptive s23 (gpul40s)",
+      "run": "/work3/s234818/mosaic/runs/20261031-protenix-chemistry-strategies-01/ampere-expansion-20261101-01/l40s/run/adaptive-s23/payload",
+      "global_target": 20000,
+      "primary_metric": "contact_loss",
+      "continuation_status": "completed",
+      "status_detail": "Completed exploratory chemistry comparison. All saved results and scientific warnings preserved; changing teachers/weights do not define one fixed objective. No derivative or binding certification."
+    },
+    {
+      "id": "strategy_neighbor_s17",
+      "label": "neighbor s17 (gpuv100)",
+      "run": "/work3/s234818/mosaic/runs/20261031-protenix-chemistry-strategies-01/source02/run/neighbor-s17/payload",
+      "global_target": 20000,
+      "primary_metric": "contact_loss",
+      "continuation_status": "completed",
+      "status_detail": "Completed exploratory chemistry comparison. All saved results and scientific warnings preserved; changing teachers/weights do not define one fixed objective. No derivative or binding certification."
+    },
+    {
+      "id": "strategy_neighbor_s23",
+      "label": "neighbor s23 (gpuv100)",
+      "run": "/work3/s234818/mosaic/runs/20261031-protenix-chemistry-strategies-01/source02/run/neighbor-s23/payload",
+      "global_target": 20000,
+      "primary_metric": "contact_loss",
+      "continuation_status": "completed",
+      "status_detail": "Completed exploratory chemistry comparison. All saved results and scientific warnings preserved; changing teachers/weights do not define one fixed objective. No derivative or binding certification."
+    },
+    {
+      "id": "strategy_temperature2_s17",
+      "label": "temperature2 s17 (gpul40s)",
+      "run": "/work3/s234818/mosaic/runs/20261031-protenix-chemistry-strategies-01/ampere-expansion-20261101-01/l40s/run/temperature2-s17/payload",
+      "global_target": 20000,
+      "primary_metric": "contact_loss",
+      "continuation_status": "completed",
+      "status_detail": "Completed exploratory chemistry comparison. All saved results and scientific warnings preserved; changing teachers/weights do not define one fixed objective. No derivative or binding certification."
+    },
+    {
+      "id": "strategy_temperature2_s23",
+      "label": "temperature2 s23 (gpuv100)",
+      "run": "/work3/s234818/mosaic/runs/20261031-protenix-chemistry-strategies-01/source02/run/temperature2-s23/payload",
+      "global_target": 20000,
+      "primary_metric": "contact_loss",
+      "continuation_status": "completed",
+      "status_detail": "Completed exploratory chemistry comparison. All saved results and scientific warnings preserved; changing teachers/weights do not define one fixed objective. No derivative or binding certification."
+    },
+    {
+      "id": "strategy_earlyseverity_s17",
+      "label": "earlyseverity s17 (gpuv100)",
+      "run": "/work3/s234818/mosaic/runs/20261031-protenix-chemistry-strategies-01/source02/run/earlyseverity-s17/payload",
+      "global_target": 20000,
+      "primary_metric": "contact_loss",
+      "continuation_status": "completed",
+      "status_detail": "Completed exploratory chemistry comparison. All saved results and scientific warnings preserved; changing teachers/weights do not define one fixed objective. No derivative or binding certification."
+    },
+    {
+      "id": "strategy_combined_s17",
+      "label": "Sparse seed17 - combined strategies (A100)",
+      "run": "/work3/s234818/mosaic/runs/20261031-protenix-chemistry-strategies-01/ampere-expansion-20261101-01/a100/run/combined-s17/payload",
+      "global_target": 20000,
+      "primary_metric": "contact_loss",
+      "continuation_status": "completed",
+      "status_detail": "Completed20,000 exploratory updates with original frozen model/context preserved. Recorded strict-valid argmax states: 0. Saved contact and chemistry losses; changing targets/weights do not define one fixed objective. No derivative or binding certification."
+    },
+    {
+      "id": "strategy_combined_s23",
+      "label": "Sparse seed23 - combined strategies (A100)",
+      "run": "/work3/s234818/mosaic/runs/20261031-protenix-chemistry-strategies-01/ampere-expansion-20261101-01/a100/run/combined-s23/payload",
+      "global_target": 20000,
+      "primary_metric": "contact_loss",
+      "continuation_status": "completed",
+      "status_detail": "Completed20,000 exploratory updates with original frozen model/context preserved. Recorded strict-valid argmax states: 0. Saved contact and chemistry losses; changing targets/weights do not define one fixed objective. No derivative or binding certification."
+    }
+  ]
+}

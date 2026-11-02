@@ -1,0 +1,694 @@
+{
+  "status": "all_ten_unfinished_Mosaic_runs_resubmitted_exclusive_compute",
+  "observed_utc": "2026-11-02T00:29:10.321544+00:00",
+  "reason": "DTU support ticket43078; admin stopped account jobs using shared compute",
+  "cpu_job": "29871025",
+  "cpu_cases": 70,
+  "runs": [
+    {
+      "arm": "chemfirst-s17",
+      "job_id": "29871029",
+      "scheduler": "PEND",
+      "queue": "gpua10",
+      "gpu_request": "num=1:mode=exclusive_process:j_exclusive=yes:mps=no:gmem=22G",
+      "source_manifest": {
+        "path": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/source/checksums.json",
+        "bytes": 17509,
+        "sha256": "fb65bc1d0a0a94b169ce796f2b1c6d0be21ab07d5692235fbb257fc7ecbe8f14"
+      },
+      "plan": {
+        "path": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/source/plan.json",
+        "bytes": 70780,
+        "sha256": "5decb0d0948b92c820b315cf25d86b9bf38f255638643572d4cf54b62069bc38"
+      },
+      "study": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/run/chemfirst-s17/payload/study",
+      "prefix": {
+        "states": 0,
+        "updates": 0,
+        "global_end": 980
+      },
+      "argv": [
+        "bsub",
+        "-H",
+        "-q",
+        "gpua10",
+        "-J",
+        "mosaic-exclusive-recovery01-chemfirst-s17",
+        "-n",
+        "8",
+        "-R",
+        "span[hosts=1]",
+        "-R",
+        "rusage[mem=4096]",
+        "-W",
+        "08:05",
+        "-env",
+        "all,~CUDA_VISIBLE_DEVICES,~CUDA_MPS_PIPE_DIRECTORY,~CUDA_MPS_LOG_DIRECTORY,~CUDA_MPS_ACTIVE_THREAD_PERCENTAGE",
+        "-o",
+        "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/run/production/chemfirst-s17/stdout.%J.log",
+        "-e",
+        "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/run/production/chemfirst-s17/stderr.%J.log",
+        "-gpu",
+        "num=1:mode=exclusive_process:j_exclusive=yes:mps=no:gmem=22G",
+        "bash",
+        "-l",
+        "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/source/chemistry_screen_stage.sh",
+        "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/source",
+        "run",
+        "chemfirst-s17",
+        "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/source/plan.json",
+        "28500"
+      ],
+      "predecessor": "29866311",
+      "global_start": 980,
+      "target": 20000
+    },
+    {
+      "arm": "chemfirst-s23",
+      "job_id": "29871030",
+      "scheduler": "PEND",
+      "queue": "gpua10",
+      "gpu_request": "num=1:mode=exclusive_process:j_exclusive=yes:mps=no:gmem=22G",
+      "source_manifest": {
+        "path": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/source/checksums.json",
+        "bytes": 17509,
+        "sha256": "fb65bc1d0a0a94b169ce796f2b1c6d0be21ab07d5692235fbb257fc7ecbe8f14"
+      },
+      "plan": {
+        "path": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/source/plan.json",
+        "bytes": 70780,
+        "sha256": "5decb0d0948b92c820b315cf25d86b9bf38f255638643572d4cf54b62069bc38"
+      },
+      "study": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/run/chemfirst-s23/payload/study",
+      "prefix": {
+        "states": 0,
+        "updates": 0,
+        "global_end": 0
+      },
+      "argv": [
+        "bsub",
+        "-H",
+        "-q",
+        "gpua10",
+        "-J",
+        "mosaic-exclusive-recovery01-chemfirst-s23",
+        "-n",
+        "8",
+        "-R",
+        "span[hosts=1]",
+        "-R",
+        "rusage[mem=4096]",
+        "-W",
+        "08:05",
+        "-env",
+        "all,~CUDA_VISIBLE_DEVICES,~CUDA_MPS_PIPE_DIRECTORY,~CUDA_MPS_LOG_DIRECTORY,~CUDA_MPS_ACTIVE_THREAD_PERCENTAGE",
+        "-o",
+        "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/run/production/chemfirst-s23/stdout.%J.log",
+        "-e",
+        "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/run/production/chemfirst-s23/stderr.%J.log",
+        "-gpu",
+        "num=1:mode=exclusive_process:j_exclusive=yes:mps=no:gmem=22G",
+        "bash",
+        "-l",
+        "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/source/chemistry_screen_stage.sh",
+        "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/source",
+        "run",
+        "chemfirst-s23",
+        "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/source/plan.json",
+        "28500"
+      ],
+      "predecessor": "29866312",
+      "global_start": 0,
+      "target": 20000
+    },
+    {
+      "arm": "severity-s23",
+      "job_id": "29871031",
+      "scheduler": "PEND",
+      "queue": "gpua40",
+      "gpu_request": "num=1:mode=exclusive_process:j_exclusive=yes:mps=no:gmem=44G",
+      "source_manifest": {
+        "path": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/source/checksums.json",
+        "bytes": 17509,
+        "sha256": "fb65bc1d0a0a94b169ce796f2b1c6d0be21ab07d5692235fbb257fc7ecbe8f14"
+      },
+      "plan": {
+        "path": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/source/plan.json",
+        "bytes": 70780,
+        "sha256": "5decb0d0948b92c820b315cf25d86b9bf38f255638643572d4cf54b62069bc38"
+      },
+      "study": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/run/severity-s23/payload/study",
+      "prefix": {
+        "states": 0,
+        "updates": 0,
+        "global_end": 0
+      },
+      "argv": [
+        "bsub",
+        "-H",
+        "-q",
+        "gpua40",
+        "-J",
+        "mosaic-exclusive-recovery01-severity-s23",
+        "-n",
+        "8",
+        "-R",
+        "span[hosts=1]",
+        "-R",
+        "rusage[mem=4096]",
+        "-W",
+        "08:00",
+        "-env",
+        "all,~CUDA_VISIBLE_DEVICES,~CUDA_MPS_PIPE_DIRECTORY,~CUDA_MPS_LOG_DIRECTORY,~CUDA_MPS_ACTIVE_THREAD_PERCENTAGE",
+        "-o",
+        "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/run/production/severity-s23/stdout.%J.log",
+        "-e",
+        "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/run/production/severity-s23/stderr.%J.log",
+        "-gpu",
+        "num=1:mode=exclusive_process:j_exclusive=yes:mps=no:gmem=44G",
+        "bash",
+        "-l",
+        "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/source/chemistry_screen_stage.sh",
+        "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/source",
+        "run",
+        "severity-s23",
+        "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/source/plan.json",
+        "28200"
+      ],
+      "predecessor": "29866318",
+      "global_start": 0,
+      "target": 20000
+    },
+    {
+      "arm": "earlyseverity-s23",
+      "job_id": "29871032",
+      "scheduler": "RUN",
+      "queue": "gpuv100",
+      "gpu_request": "num=1:mode=exclusive_process:j_exclusive=yes:mps=no:gmem=30G",
+      "source_manifest": {
+        "path": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/source/checksums.json",
+        "bytes": 17509,
+        "sha256": "fb65bc1d0a0a94b169ce796f2b1c6d0be21ab07d5692235fbb257fc7ecbe8f14"
+      },
+      "plan": {
+        "path": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/source/plan.json",
+        "bytes": 70780,
+        "sha256": "5decb0d0948b92c820b315cf25d86b9bf38f255638643572d4cf54b62069bc38"
+      },
+      "study": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/run/earlyseverity-s23/payload/study",
+      "prefix": {
+        "states": 119,
+        "updates": 118,
+        "global_end": 1758
+      },
+      "argv": [
+        "bsub",
+        "-H",
+        "-q",
+        "gpuv100",
+        "-J",
+        "mosaic-exclusive-recovery01-earlyseverity-s23",
+        "-n",
+        "8",
+        "-R",
+        "span[hosts=1]",
+        "-R",
+        "rusage[mem=4096]",
+        "-W",
+        "08:00",
+        "-env",
+        "all,~CUDA_VISIBLE_DEVICES,~CUDA_MPS_PIPE_DIRECTORY,~CUDA_MPS_LOG_DIRECTORY,~CUDA_MPS_ACTIVE_THREAD_PERCENTAGE",
+        "-o",
+        "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/run/production/earlyseverity-s23/stdout.%J.log",
+        "-e",
+        "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/run/production/earlyseverity-s23/stderr.%J.log",
+        "-gpu",
+        "num=1:mode=exclusive_process:j_exclusive=yes:mps=no:gmem=30G",
+        "bash",
+        "-l",
+        "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/source/chemistry_screen_stage.sh",
+        "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/source",
+        "run",
+        "earlyseverity-s23",
+        "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/source/plan.json",
+        "28200"
+      ],
+      "predecessor": "29862996",
+      "global_start": 1640,
+      "target": 20000
+    },
+    {
+      "arm": "delayed-dense-s17",
+      "job_id": "29871033",
+      "scheduler": "RUN",
+      "queue": "gpuv100",
+      "gpu_request": "num=1:mode=exclusive_process:j_exclusive=yes:mps=no:gmem=30G",
+      "source_manifest": {
+        "path": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/source/checksums.json",
+        "bytes": 17509,
+        "sha256": "fb65bc1d0a0a94b169ce796f2b1c6d0be21ab07d5692235fbb257fc7ecbe8f14"
+      },
+      "plan": {
+        "path": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/source/plan.json",
+        "bytes": 70780,
+        "sha256": "5decb0d0948b92c820b315cf25d86b9bf38f255638643572d4cf54b62069bc38"
+      },
+      "study": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/run/delayed-dense-s17/payload/study",
+      "prefix": {
+        "states": 72,
+        "updates": 71,
+        "global_end": 1211
+      },
+      "argv": [
+        "bsub",
+        "-H",
+        "-q",
+        "gpuv100",
+        "-J",
+        "mosaic-exclusive-recovery01-delayed-dense-s17",
+        "-n",
+        "8",
+        "-R",
+        "span[hosts=1]",
+        "-R",
+        "rusage[mem=4096]",
+        "-W",
+        "06:20",
+        "-env",
+        "all,~CUDA_VISIBLE_DEVICES,~CUDA_MPS_PIPE_DIRECTORY,~CUDA_MPS_LOG_DIRECTORY,~CUDA_MPS_ACTIVE_THREAD_PERCENTAGE",
+        "-o",
+        "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/run/production/delayed-dense-s17/stdout.%J.log",
+        "-e",
+        "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/run/production/delayed-dense-s17/stderr.%J.log",
+        "-gpu",
+        "num=1:mode=exclusive_process:j_exclusive=yes:mps=no:gmem=30G",
+        "bash",
+        "-l",
+        "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/source/chemistry_screen_stage.sh",
+        "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/source",
+        "run",
+        "delayed-dense-s17",
+        "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/source/plan.json",
+        "22200"
+      ],
+      "predecessor": "29862999",
+      "global_start": 1140,
+      "target": 20000
+    },
+    {
+      "arm": "combined-dense-s17",
+      "job_id": "29871034",
+      "scheduler": "RUN",
+      "queue": "gpuv100",
+      "gpu_request": "num=1:mode=exclusive_process:j_exclusive=yes:mps=no:gmem=30G",
+      "source_manifest": {
+        "path": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/source/checksums.json",
+        "bytes": 17509,
+        "sha256": "fb65bc1d0a0a94b169ce796f2b1c6d0be21ab07d5692235fbb257fc7ecbe8f14"
+      },
+      "plan": {
+        "path": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/source/plan.json",
+        "bytes": 70780,
+        "sha256": "5decb0d0948b92c820b315cf25d86b9bf38f255638643572d4cf54b62069bc38"
+      },
+      "study": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/run/combined-dense-s17/payload/study",
+      "prefix": {
+        "states": 42,
+        "updates": 41,
+        "global_end": 1221
+      },
+      "argv": [
+        "bsub",
+        "-H",
+        "-q",
+        "gpuv100",
+        "-J",
+        "mosaic-exclusive-recovery01-combined-dense-s17",
+        "-n",
+        "8",
+        "-R",
+        "span[hosts=1]",
+        "-R",
+        "rusage[mem=4096]",
+        "-W",
+        "17:05",
+        "-env",
+        "all,~CUDA_VISIBLE_DEVICES,~CUDA_MPS_PIPE_DIRECTORY,~CUDA_MPS_LOG_DIRECTORY,~CUDA_MPS_ACTIVE_THREAD_PERCENTAGE",
+        "-o",
+        "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/run/production/combined-dense-s17/stdout.%J.log",
+        "-e",
+        "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/run/production/combined-dense-s17/stderr.%J.log",
+        "-gpu",
+        "num=1:mode=exclusive_process:j_exclusive=yes:mps=no:gmem=30G",
+        "bash",
+        "-l",
+        "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/source/chemistry_screen_stage.sh",
+        "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/source",
+        "run",
+        "combined-dense-s17",
+        "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/source/plan.json",
+        "60900"
+      ],
+      "predecessor": "29863011",
+      "global_start": 1180,
+      "target": 20000
+    },
+    {
+      "arm": "structural-s17",
+      "job_id": "29871035",
+      "scheduler": "PEND",
+      "queue": "gpua100",
+      "gpu_request": "num=1:mode=exclusive_process:j_exclusive=yes:mps=no:gmem=38G",
+      "source_manifest": {
+        "path": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/source/checksums.json",
+        "bytes": 17509,
+        "sha256": "fb65bc1d0a0a94b169ce796f2b1c6d0be21ab07d5692235fbb257fc7ecbe8f14"
+      },
+      "plan": {
+        "path": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/source/plan.json",
+        "bytes": 70780,
+        "sha256": "5decb0d0948b92c820b315cf25d86b9bf38f255638643572d4cf54b62069bc38"
+      },
+      "study": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/run/structural-s17/payload/study",
+      "prefix": {
+        "states": 0,
+        "updates": 0,
+        "global_end": 0
+      },
+      "argv": [
+        "bsub",
+        "-H",
+        "-q",
+        "gpua100",
+        "-J",
+        "mosaic-exclusive-recovery01-structural-s17",
+        "-n",
+        "8",
+        "-R",
+        "span[hosts=1]",
+        "-R",
+        "rusage[mem=4096]",
+        "-W",
+        "10:00",
+        "-env",
+        "all,~CUDA_VISIBLE_DEVICES,~CUDA_MPS_PIPE_DIRECTORY,~CUDA_MPS_LOG_DIRECTORY,~CUDA_MPS_ACTIVE_THREAD_PERCENTAGE",
+        "-o",
+        "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/run/production/structural-s17/stdout.%J.log",
+        "-e",
+        "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/run/production/structural-s17/stderr.%J.log",
+        "-gpu",
+        "num=1:mode=exclusive_process:j_exclusive=yes:mps=no:gmem=38G",
+        "bash",
+        "-l",
+        "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/source/chemistry_screen_stage.sh",
+        "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/source",
+        "run",
+        "structural-s17",
+        "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/source/plan.json",
+        "35400"
+      ],
+      "predecessor": "29870660",
+      "global_start": 0,
+      "target": 30000
+    },
+    {
+      "arm": "structural-s23",
+      "job_id": "29871036",
+      "scheduler": "PEND",
+      "queue": "gpua40",
+      "gpu_request": "num=1:mode=exclusive_process:j_exclusive=yes:mps=no:gmem=44G",
+      "source_manifest": {
+        "path": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/source/checksums.json",
+        "bytes": 17509,
+        "sha256": "fb65bc1d0a0a94b169ce796f2b1c6d0be21ab07d5692235fbb257fc7ecbe8f14"
+      },
+      "plan": {
+        "path": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/source/plan.json",
+        "bytes": 70780,
+        "sha256": "5decb0d0948b92c820b315cf25d86b9bf38f255638643572d4cf54b62069bc38"
+      },
+      "study": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/run/structural-s23/payload/study",
+      "prefix": {
+        "states": 0,
+        "updates": 0,
+        "global_end": 0
+      },
+      "argv": [
+        "bsub",
+        "-H",
+        "-q",
+        "gpua40",
+        "-J",
+        "mosaic-exclusive-recovery01-structural-s23",
+        "-n",
+        "8",
+        "-R",
+        "span[hosts=1]",
+        "-R",
+        "rusage[mem=4096]",
+        "-W",
+        "08:45",
+        "-env",
+        "all,~CUDA_VISIBLE_DEVICES,~CUDA_MPS_PIPE_DIRECTORY,~CUDA_MPS_LOG_DIRECTORY,~CUDA_MPS_ACTIVE_THREAD_PERCENTAGE",
+        "-o",
+        "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/run/production/structural-s23/stdout.%J.log",
+        "-e",
+        "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/run/production/structural-s23/stderr.%J.log",
+        "-gpu",
+        "num=1:mode=exclusive_process:j_exclusive=yes:mps=no:gmem=44G",
+        "bash",
+        "-l",
+        "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/source/chemistry_screen_stage.sh",
+        "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/source",
+        "run",
+        "structural-s23",
+        "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/source/plan.json",
+        "30900"
+      ],
+      "predecessor": "29870664",
+      "global_start": 0,
+      "target": 30000
+    },
+    {
+      "arm": "noise",
+      "job_id": "29871026",
+      "scheduler": "RUN",
+      "queue": "gpuv100",
+      "gpu_request": "num=1:mode=exclusive_process:j_exclusive=yes:mps=no:gmem=30G",
+      "source_manifest": {
+        "path": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/native-noise01/source/checksums.sha256",
+        "bytes": 2476,
+        "sha256": "a27106585159b98c66f4ed82fb2c045443c36a5817d4a20aee7552b1dc67036a"
+      },
+      "plan": {
+        "path": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/native-noise01/source/plan.json",
+        "bytes": 5717,
+        "sha256": "74edad74d9252e98ef91238c9b6d42908c0eadac2d9861e60e4bec94e151a785"
+      },
+      "study": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/native-noise01/run/protenix_chemistry/payload/study",
+      "prefix": {
+        "states": 189,
+        "updates": 188,
+        "global_end": 36508
+      },
+      "argv": [
+        "bsub",
+        "-H",
+        "-q",
+        "gpuv100",
+        "-J",
+        "mosaic-exclusive-noise01-protenix_chemistry",
+        "-n",
+        "8",
+        "-R",
+        "span[hosts=1]",
+        "-R",
+        "rusage[mem=4096]",
+        "-W",
+        "09:15",
+        "-gpu",
+        "num=1:mode=exclusive_process:j_exclusive=yes:mps=no:gmem=30G",
+        "-env",
+        "all,~CUDA_VISIBLE_DEVICES,~CUDA_MPS_PIPE_DIRECTORY,~CUDA_MPS_LOG_DIRECTORY,~CUDA_MPS_ACTIVE_THREAD_PERCENTAGE",
+        "-o",
+        "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/native-noise01/run/protenix_chemistry/stdout.%J.log",
+        "-e",
+        "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/native-noise01/run/protenix_chemistry/stderr.%J.log",
+        "bash",
+        "-l",
+        "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/native-noise01/source/exploratory_continuation_stage.sh",
+        "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/native-noise01/source",
+        "protenix_chemistry",
+        "run",
+        "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/native-noise01/source/plan.json"
+      ],
+      "recovery": {
+        "status": "prepared_no_submission",
+        "parent_job": "29864788",
+        "global_resume": 36320,
+        "global_parent_end": 36329,
+        "parent_tail_preserved": 9,
+        "target": 50000,
+        "snapshot": {
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-chemistry-noise-20261030-01/continuation-35300-01/protenix_chemistry/payload/study/case-0/snapshots/step-1020.npz",
+          "bytes": 23040,
+          "sha256": "debe720c96474d7ed60a29366a24efae5bb25c4c81c6face49835a92917f804f"
+        },
+        "states": {
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-chemistry-noise-20261030-01/continuation-35300-01/protenix_chemistry/payload/study/case-0/states.jsonl",
+          "bytes": 1484763,
+          "sha256": "8b6e4bea9efeeddc7b6eb5795779840673321efe3ccdeda46ce5bfc6dd822684"
+        },
+        "updates": {
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-chemistry-noise-20261030-01/continuation-35300-01/protenix_chemistry/payload/study/case-0/updates.jsonl",
+          "bytes": 2489415,
+          "sha256": "ac5f441df894ad436186eac01573d369817f4b4fe353edb783593fd1a75c2ca3"
+        },
+        "source_files": 24,
+        "driver_unchanged_sha256": "8df9d6b8eddb75f7bf1a203ac6c10668fbe8276dc8eca0f90436161a927b596d",
+        "walltime": "09:15"
+      }
+    },
+    {
+      "arm": "dbmol",
+      "job_id": "29871027",
+      "scheduler": "RUN",
+      "queue": "gpul40s",
+      "gpu_request": "num=1:mode=exclusive_process:j_exclusive=yes:mps=no",
+      "source_manifest": {
+        "path": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/native-dbmol01/source/checksums.sha256",
+        "bytes": 703,
+        "sha256": "9db5bc97ee55cd50af66c2bb5f4f4869fbc261e9abe2a76fa26b68edbe7a6deb"
+      },
+      "plan": {
+        "path": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/native-dbmol01/source/plan.json",
+        "bytes": 4902,
+        "sha256": "56f6233d92f7873be92ea82546507f361636130e550e830756eda48bea447eaa"
+      },
+      "study": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/native-dbmol01/run/dbmol/payload/study",
+      "prefix": {
+        "states": 46,
+        "updates": 45,
+        "global_end": 30305
+      },
+      "argv": [
+        "bsub",
+        "-H",
+        "-q",
+        "gpul40s",
+        "-J",
+        "mosaic-exclusive-dbmol01-dbmol",
+        "-n",
+        "4",
+        "-R",
+        "span[hosts=1]",
+        "-R",
+        "rusage[mem=8192]",
+        "-W",
+        "32:00",
+        "-gpu",
+        "num=1:mode=exclusive_process:j_exclusive=yes:mps=no",
+        "-env",
+        "all,~CUDA_VISIBLE_DEVICES,~CUDA_MPS_PIPE_DIRECTORY,~CUDA_MPS_LOG_DIRECTORY,~CUDA_MPS_ACTIVE_THREAD_PERCENTAGE",
+        "-o",
+        "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/native-dbmol01/run/dbmol/stdout.%J.log",
+        "-e",
+        "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/native-dbmol01/run/dbmol/stderr.%J.log",
+        "bash",
+        "-l",
+        "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/native-dbmol01/source/exploratory_continuation_stage.sh",
+        "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/native-dbmol01/source",
+        "dbmol",
+        "run",
+        "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/native-dbmol01/source/plan.json"
+      ],
+      "recovery": {
+        "status": "prepared_no_submission",
+        "parent_job": "29866396",
+        "global_resume": 30260,
+        "global_parent_end": 30264,
+        "parent_tail_preserved": 4,
+        "target": 60000,
+        "snapshot": {
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-30000-to60000-20261101-01/run/dbmol/payload/study/case-0/snapshots/step-0260.npz",
+          "bytes": 27220,
+          "sha256": "87fb44a8f7c37e9057a01dc89a5519557aa62782eac71c9468e5ecfc1f946121"
+        },
+        "states": {
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-30000-to60000-20261101-01/run/dbmol/payload/study/case-0/states.jsonl",
+          "bytes": 484742,
+          "sha256": "146fd8566c962be90f19e632f71bc099b56c93636a7e572288e5ba9ae396db47"
+        },
+        "updates": {
+          "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-30000-to60000-20261101-01/run/dbmol/payload/study/case-0/updates.jsonl",
+          "bytes": 431270,
+          "sha256": "a9b500ad8a87a252b880c65e9a1416f8fccb4ff237334f2f915578f325473df1"
+        },
+        "source_files": 8,
+        "driver_unchanged_sha256": "cf1ac6d31652f23fc9aa7cb3bad4cf4057dcab90067f06ddbddc474fc7a8f92c",
+        "walltime": "32:00"
+      }
+    }
+  ],
+  "completed_runs_restarted": false,
+  "original_saved_results_changed": false,
+  "scientific_settings_changed": false,
+  "other_project_jobs_modified": false,
+  "verification": "verification.json",
+  "screen_source": {
+    "remote": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01",
+    "archive_bytes": 446556,
+    "archive_sha256": "5d167aab58ac5f0364fb2bdbca83cdb680f2a7a53cb2943f033c579ea5ed2a41",
+    "files": 154,
+    "arms": {
+      "chemfirst-s17": {
+        "offset": 980,
+        "target": 20000,
+        "queue": "gpua10",
+        "wall": 485
+      },
+      "chemfirst-s23": {
+        "offset": 0,
+        "target": 20000,
+        "queue": "gpua10",
+        "wall": 485
+      },
+      "severity-s23": {
+        "offset": 0,
+        "target": 20000,
+        "queue": "gpua40",
+        "wall": 480
+      },
+      "earlyseverity-s23": {
+        "offset": 1640,
+        "target": 20000,
+        "queue": "gpuv100",
+        "wall": 480
+      },
+      "delayed-dense-s17": {
+        "offset": 1140,
+        "target": 20000,
+        "queue": "gpuv100",
+        "wall": 380
+      },
+      "combined-dense-s17": {
+        "offset": 1180,
+        "target": 20000,
+        "queue": "gpuv100",
+        "wall": 1025
+      },
+      "structural-s17": {
+        "offset": 0,
+        "target": 30000,
+        "queue": "gpua100",
+        "wall": 600
+      },
+      "structural-s23": {
+        "offset": 0,
+        "target": 30000,
+        "queue": "gpua40",
+        "wall": 525
+      }
+    }
+  }
+}

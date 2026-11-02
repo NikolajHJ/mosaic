@@ -63,3 +63,7 @@ source631/CPU776 pass remain historical. No10000-update optimization was submitt
 1November2026: [new chemistry strategy comparison](runs/20261031-chemistry-strategies-01/README.md) implements22 paired/random-start20k experiments under the current exploratory policy. This new comparison does not inherit the old strict validation prerequisites described above. Existing jobs/results are unchanged.
 
 1November2026: [structural repair comparison](runs/20261101-structural-repair-01/README.md) adds an opt-in connected-backbone target builder ahead of the existing beam search. Following the user's reuse request, two fresh30k structural trajectories use archived constant1 seed17/23 controls for the common first20k; the two duplicate, never-started controls were retired. A100/A40 versus archivedV100 timings are hardware-confounded. Earlier runs, saved results, loss and fallbacks remain unchanged.
+
+## Current recovery after exclusive GPU request
+
+See [2November exclusive-mode recovery](runs/20261102-exclusive-gpu-recovery-01/README.md): ten unfinished Mosaic producers resubmitted, five already committing updates at00:29UTC; completed runs and all saved inputs/results preserved. Actual successors and source/plan bindings override historical RUN/PEND records.

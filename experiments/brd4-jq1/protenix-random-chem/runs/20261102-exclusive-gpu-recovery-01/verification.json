@@ -1,0 +1,18 @@
+{
+  "status": "passed_metadata_source_CPU_XML_submission_release_and_actual_mode_audit",
+  "observed_utc": "2026-11-02T00:29:10.321544+00:00",
+  "packet": {
+    "path": "results\\hpc\\20261102-exclusive-gpu-recovery-01\\observe03.json",
+    "bytes": 104212,
+    "sha256": "c5699eebd4e035ddc15b9fb5ece3fa3a30630d42a4537f9d822c7a293e81a5a0"
+  },
+  "cpu_job": "29871025",
+  "cases": 70,
+  "actual_startups": 8,
+  "source_files": 154,
+  "local_portable_policy_controls": 25,
+  "running": 5,
+  "pending": 5,
+  "no_model_or_array_evaluations_locally": true,
+  "saved_results_modified": false
+}

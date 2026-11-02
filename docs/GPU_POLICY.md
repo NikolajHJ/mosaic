@@ -5,6 +5,23 @@ independent runs across compatible GPU queues to get useful results sooner**.
 V100 is one option among V100, L40S, A10, A100 and A40. Avoid making a busy queue
 the bottleneck for the entire batch.
 
+## Required GPU compute mode
+
+DTU support ticket43078 (2 November2026) requires **exclusive compute mode**.
+Every new GPU request must explicitly include
+`num=1:mode=exclusive_process:j_exclusive=yes`. `j_exclusive=yes` alone only
+prevents another job from sharing the allocation; it does not replace compute
+mode. The shared helper now rejects shared-mode or duplicate/conflicting
+overrides. Default single-client jobs use `mps=no`; a multi-client workload may
+explicitly use per-job `mps=yes` while retaining exclusive_process, after checking
+its actual startup path. Never change NVIDIA compute mode/daemons manually.
+
+The device/memory profile IDs remain the same; the current execution default
+is corrected. Old sealed sources, submitted vectors and results retain their
+original bytes and historical meaning. Stopped jobs need fresh corrected
+snapshots and reconciled checkpoint continuations, not edits to sealed/live
+files or duplicate submissions. Do not restart completed runs.
+
 ## Placement
 
 - Check current scheduler limits, eligible hosts, per-account usage and available

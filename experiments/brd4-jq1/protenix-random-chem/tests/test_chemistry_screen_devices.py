@@ -28,7 +28,7 @@ def test_explicit_device_profile_keeps_default_and_ownership(name, queue, hardwa
     row = {'gpu_profile': name, 'queue': queue}
     assert gpu.selected(row)['queue'] == queue
     assert gpu.validate_hardware(hardware, memory, gpu.selected(row))['profile'] == name
-    assert all(x in gpu.resource(row) for x in ['num=1', 'mode=shared', 'j_exclusive=yes', 'mps=no'])
+    assert all(x in gpu.resource(row) for x in ['num=1', 'mode=exclusive_process', 'j_exclusive=yes', 'mps=no'])
     assert gpu.profile()['id'] == 'v100-32gb-v1'
     with pytest.raises(ValueError): gpu.selected({**row,'queue':'foreign'})
     with pytest.raises(ValueError): gpu.validate_hardware(hardware, 1000, gpu.selected(row))
@@ -36,6 +36,25 @@ def test_explicit_device_profile_keeps_default_and_ownership(name, queue, hardwa
 
 def test_a10_does_not_accept_a100_by_substring():
     with pytest.raises(ValueError): gpu.validate_hardware('NVIDIA A100-PCIE-40GB', 40960, gpu.profile('a10-24gb-v1'))
+
+
+@pytest.mark.parametrize('gpu_request', [
+    'num=1:mode=shared:j_exclusive=yes:mps=no',
+    'num=1:mode=exclusive_process:j_exclusive=no:mps=no',
+    'num=2:mode=exclusive_process:j_exclusive=yes:mps=no',
+    'num=1:mode=exclusive_process:mode=shared:j_exclusive=yes:mps=no',
+    'num=1:mode=exclusive_process:j_exclusive=yes:mps=no:mps=yes',
+    'num=1:mode=exclusive_process:j_exclusive=yes',
+    'num=1:mode=exclusive_process:j_exclusive=yes:mps=no:broken',
+])
+def test_site_compute_mode_cannot_be_overridden(gpu_request):
+    with pytest.raises(ValueError):
+        gpu.resource({'gpu_profile':'l40s-48gb-v1','gpu_request':gpu_request})
+
+
+def test_explicit_site_managed_mps_keeps_exclusive_compute_mode():
+    request='num=1:mode=exclusive_process:j_exclusive=yes:mps=yes'
+    assert gpu.resource({'gpu_profile':'l40s-48gb-v1','gpu_request':request}) == request
 
 
 @pytest.mark.parametrize('seconds', [float('nan'), float('inf'), -1])

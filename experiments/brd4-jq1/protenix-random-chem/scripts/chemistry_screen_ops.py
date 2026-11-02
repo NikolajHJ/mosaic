@@ -78,6 +78,9 @@ def submit(plan_path, kind, arm=None, wall_minutes=None, dependency=None, depend
     live = [r for r in json.loads(account['stdout'])['RECORDS'] if r['STAT'] not in ('EXIT', 'DONE')]
     require(not any(r['JOB_NAME'] == name for r in live), 'Duplicate named writer')
     if kind == 'run':
+        require(not any(r['JOBID'] in plan['arms'][arm].get('predecessor_job_ids',[]) for r in live),
+                'Predecessor still active; reconcile before continuation')
+    if kind == 'run':
         target = str(root / arm).rstrip('/')
         require(not any(any(v == target or v.startswith(target + '/')
                             for v in shlex.split(r['COMMAND'])) for r in live), 'Duplicate output writer')

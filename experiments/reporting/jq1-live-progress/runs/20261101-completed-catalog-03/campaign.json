@@ -1,5 +1,5 @@
 {
-  "status": "render_queued_all_DTU_queues_administratively_inactive",
+  "status": "render_EXIT1_completion_selection_changed_while_queued",
   "request": "results\\hpc\\20261028-reusable-report-01\\requests\\request-20261101T202542Z-8f626be6",
   "intended_edition": "edition-0015",
   "published_edition_unchanged": "edition-0014",
@@ -103,5 +103,12 @@
   "request_has_live_owner_lock": true,
   "normal_future_update_command": ".venv\\Scripts\\python.exe scripts/reporting/report.py --profile experiments/reporting/jq1-live-progress/configs/dtu-report-work3-exploratory.json",
   "public_news_checked": "https://www.hpc.dtu.dk/?page_id=68",
-  "public_reopening_time_found": false
+  "public_reopening_time_found": false,
+  "observed_utc": "2026-11-02T00:29:10.321544+00:00",
+  "terminal_error": "Saved inputs changed after request capture; make a fresh report request",
+  "terminal_evidence": {
+    "path": "results\\hpc\\20261102-exclusive-gpu-recovery-01\\report-status01.json",
+    "sha256": "27dceb2709799bcbc1bf3266c48b9a9f83d6e79f29db490b79be7a0881f97e34"
+  },
+  "next_action": "Fresh canonical request with resolved completed inputs; preserve failed request/job29870705, no scientific rerun."
 }

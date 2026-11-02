@@ -2,6 +2,7 @@
 
 New batch planners assign compatible profiles under docs/GPU_POLICY.md. This
 module does not discover queues, balance jobs or alter existing allocations.
+DTU requires exclusive compute mode for all new GPU jobs (2 November 2026).
 """
 import os
 import re
@@ -10,15 +11,15 @@ import re
 DEFAULT_PROFILE='v100-32gb-v1'
 PROFILES={
     'v100-32gb-v1':{'queue':'gpuv100','family':'V100','minimum_memory_MiB':30000,
-        'resource':'num=1:mode=shared:j_exclusive=yes:mps=no:gmem=30G'},
+        'resource':'num=1:mode=exclusive_process:j_exclusive=yes:mps=no:gmem=30G'},
     'l40s-48gb-v1':{'queue':'gpul40s','family':'L40S','minimum_memory_MiB':45000,
-        'resource':'num=1:mode=shared:j_exclusive=yes:mps=no'},
+        'resource':'num=1:mode=exclusive_process:j_exclusive=yes:mps=no'},
     'a10-24gb-v1':{'queue':'gpua10','family':'A10','minimum_memory_MiB':22000,
-        'resource':'num=1:mode=shared:j_exclusive=yes:mps=no:gmem=22G'},
+        'resource':'num=1:mode=exclusive_process:j_exclusive=yes:mps=no:gmem=22G'},
     'a100-40gb-v1':{'queue':'gpua100','family':'A100','minimum_memory_MiB':39000,
-        'resource':'num=1:mode=shared:j_exclusive=yes:mps=no:gmem=38G'},
+        'resource':'num=1:mode=exclusive_process:j_exclusive=yes:mps=no:gmem=38G'},
     'a40-48gb-v1':{'queue':'gpua40','family':'A40','minimum_memory_MiB':45000,
-        'resource':'num=1:mode=shared:j_exclusive=yes:mps=no:gmem=44G'},
+        'resource':'num=1:mode=exclusive_process:j_exclusive=yes:mps=no:gmem=44G'},
 }
 
 
@@ -41,6 +42,14 @@ def selected(row):
 
 def resource(row):
     expected=selected(row);value=row.get('gpu_request',expected['resource'])
+    parts=value.split(':')
+    if any('=' not in part for part in parts):raise ValueError('Invalid GPU resource field')
+    pairs=[part.split('=',1) for part in parts]
+    if len({k for k,v in pairs})!=len(pairs):raise ValueError('Duplicate GPU resource field')
+    fields=dict(pairs)
+    if fields.get('num')!='1' or fields.get('mode')!='exclusive_process' or fields.get('j_exclusive')!='yes':
+        raise ValueError('DTU GPU jobs require num=1:mode=exclusive_process:j_exclusive=yes')
+    if fields.get('mps') not in ('yes','no'):raise ValueError('Declare per-job MPS yes or no')
     if expected['family']=='V100':
         fields=[x.split('=',1)[1] for x in value.split(':') if x.startswith('gmem=')]
         if not fields:value+=':gmem=30G'

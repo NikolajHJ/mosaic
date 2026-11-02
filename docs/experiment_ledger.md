@@ -1,5 +1,30 @@
 # Experiment ledger
 
+## 2026-11-02: exclusive GPU compute-mode recovery after DTU ticket43078
+
+DTU support stopped account jobs; old requests had job exclusivity but shared
+compute mode. Canonical GPU profiles now request exclusive_process and reject
+shared/conflicting overrides. New GPU policy/AGENTS guidance preserves old
+sealed sources and other-project jobs. CPU29871025 passed70 affected controls
+and8 actual startup commands, including exact synthetic uninterrupted/resumed
+policy, teacher, neighbor and update comparisons. Local25 portable policy
+assertions passed; no local scientific/model evaluation.
+
+Ten unfinished Mosaic producers were reconciled and resubmitted from fresh
+sources: noise29871026, DBMol29871027; chemistry-first17/23 29871029/30,
+severity23 29871031, earlyseverity23 29871032, dense delayed17 29871033,
+dense combined17 29871034, structural17/23 29871035/36. At00:29:10UTC five
+RUN/fivePEND; actual RUN records confirm exclusive_process/j_exclusive=yes.
+Committed noise36508/50000 and DBMol30305/60000; three screen successors also
+committed new updates. Recovery uses complete retained checkpoint/teacher or
+PCG64 handoffs, preserving all later interrupted tails and16 completed strategy
+arms. No original loss/LR/schedule/key/precision/context or saved result changed;
+no derivative/binding certification is claimed. See
+[recovery](../experiments/brd4-jq1/protenix-random-chem/runs/20261102-exclusive-gpu-recovery-01/README.md)
+for actual IDs, source/plan pins, XML/LSF/progress proof and continuation format.
+No cleanup or unrelated VAE/embedding/DeFoG job changes.
+
+
 Retain submitted, completed, failed, and incomplete attempts with their source/config/input identities and artifact paths. A submission or successful dependency installation is not a completed model experiment. Never turn a skipped check into acceptance evidence.
 
 ## Required agent logbook workflow

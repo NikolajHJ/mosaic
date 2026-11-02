@@ -11,7 +11,7 @@
   "updates_per_arm": 20000,
   "total_updates": 440000,
   "checksums_sha256": "9f60ca5e3db7a24785d9d308b8610f37b48d39b06d5825158b8aa73ef8ff8797",
-  "status": "ten_20k_complete_six_running_six_queued",
+  "status": "sixteen_complete_six_unfinished_recovered_exclusive_compute",
   "jobs": {
     "controls": "29862456",
     "probe": "29862457",
@@ -76,7 +76,7 @@
   },
   "existing_jobs_changed": false,
   "saved_results_changed": false,
-  "observed_utc": "2026-11-01T18:05:15.991421+00:00",
+  "observed_utc": "2026-11-02T00:29:10.321544+00:00",
   "completed": {
     "delayed-s17": {
       "job_id": "29862955",
@@ -352,22 +352,34 @@
       "scientific_settings_unchanged": true
     },
     "chemfirst-s17": {
-      "job_id": "29866311",
-      "root": "/work3/s234818/mosaic/runs/20261031-protenix-chemistry-strategies-01/ampere-expansion-20261101-01/a10/run",
-      "source": "/work3/s234818/mosaic/runs/20261031-protenix-chemistry-strategies-01/ampere-expansion-20261101-01/a10/source",
-      "plan": "/work3/s234818/mosaic/runs/20261031-protenix-chemistry-strategies-01/ampere-expansion-20261101-01/a10/source/plan.json",
-      "study": "/work3/s234818/mosaic/runs/20261031-protenix-chemistry-strategies-01/ampere-expansion-20261101-01/a10/run/chemfirst-s17/payload/study",
-      "queue": "gpua10",
-      "scientific_settings_unchanged": true
+      "job_id": "29871029",
+      "study": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/run/chemfirst-s17/payload/study",
+      "plan": {
+        "path": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/source/plan.json",
+        "bytes": 70780,
+        "sha256": "5decb0d0948b92c820b315cf25d86b9bf38f255638643572d4cf54b62069bc38"
+      },
+      "source_manifest": {
+        "path": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/source/checksums.json",
+        "bytes": 17509,
+        "sha256": "fb65bc1d0a0a94b169ce796f2b1c6d0be21ab07d5692235fbb257fc7ecbe8f14"
+      },
+      "campaign": "experiments\\brd4-jq1\\protenix-random-chem\\runs\\20261102-exclusive-gpu-recovery-01\\campaign.json"
     },
     "chemfirst-s23": {
-      "job_id": "29866312",
-      "root": "/work3/s234818/mosaic/runs/20261031-protenix-chemistry-strategies-01/ampere-expansion-20261101-01/a10/run",
-      "source": "/work3/s234818/mosaic/runs/20261031-protenix-chemistry-strategies-01/ampere-expansion-20261101-01/a10/source",
-      "plan": "/work3/s234818/mosaic/runs/20261031-protenix-chemistry-strategies-01/ampere-expansion-20261101-01/a10/source/plan.json",
-      "study": "/work3/s234818/mosaic/runs/20261031-protenix-chemistry-strategies-01/ampere-expansion-20261101-01/a10/run/chemfirst-s23/payload/study",
-      "queue": "gpua10",
-      "scientific_settings_unchanged": true
+      "job_id": "29871030",
+      "study": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/run/chemfirst-s23/payload/study",
+      "plan": {
+        "path": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/source/plan.json",
+        "bytes": 70780,
+        "sha256": "5decb0d0948b92c820b315cf25d86b9bf38f255638643572d4cf54b62069bc38"
+      },
+      "source_manifest": {
+        "path": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/source/checksums.json",
+        "bytes": 17509,
+        "sha256": "fb65bc1d0a0a94b169ce796f2b1c6d0be21ab07d5692235fbb257fc7ecbe8f14"
+      },
+      "campaign": "experiments\\brd4-jq1\\protenix-random-chem\\runs\\20261102-exclusive-gpu-recovery-01\\campaign.json"
     },
     "severity-s17": {
       "job_id": "29866315",
@@ -379,13 +391,19 @@
       "scientific_settings_unchanged": true
     },
     "severity-s23": {
-      "job_id": "29866318",
-      "root": "/work3/s234818/mosaic/runs/20261031-protenix-chemistry-strategies-01/ampere-expansion-20261101-01/a40/run",
-      "source": "/work3/s234818/mosaic/runs/20261031-protenix-chemistry-strategies-01/ampere-expansion-20261101-01/a40/source",
-      "plan": "/work3/s234818/mosaic/runs/20261031-protenix-chemistry-strategies-01/ampere-expansion-20261101-01/a40/source/plan.json",
-      "study": "/work3/s234818/mosaic/runs/20261031-protenix-chemistry-strategies-01/ampere-expansion-20261101-01/a40/run/severity-s23/payload/study",
-      "queue": "gpua40",
-      "scientific_settings_unchanged": true
+      "job_id": "29871031",
+      "study": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/run/severity-s23/payload/study",
+      "plan": {
+        "path": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/source/plan.json",
+        "bytes": 70780,
+        "sha256": "5decb0d0948b92c820b315cf25d86b9bf38f255638643572d4cf54b62069bc38"
+      },
+      "source_manifest": {
+        "path": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/source/checksums.json",
+        "bytes": 17509,
+        "sha256": "fb65bc1d0a0a94b169ce796f2b1c6d0be21ab07d5692235fbb257fc7ecbe8f14"
+      },
+      "campaign": "experiments\\brd4-jq1\\protenix-random-chem\\runs\\20261102-exclusive-gpu-recovery-01\\campaign.json"
     },
     "adaptive-s17": {
       "job_id": "29866329",
@@ -413,6 +431,51 @@
       "study": "/work3/s234818/mosaic/runs/20261031-protenix-chemistry-strategies-01/ampere-expansion-20261101-01/l40s/run/temperature2-s17/payload/study",
       "queue": "gpul40s",
       "scientific_settings_unchanged": true
+    },
+    "earlyseverity-s23": {
+      "job_id": "29871032",
+      "study": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/run/earlyseverity-s23/payload/study",
+      "plan": {
+        "path": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/source/plan.json",
+        "bytes": 70780,
+        "sha256": "5decb0d0948b92c820b315cf25d86b9bf38f255638643572d4cf54b62069bc38"
+      },
+      "source_manifest": {
+        "path": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/source/checksums.json",
+        "bytes": 17509,
+        "sha256": "fb65bc1d0a0a94b169ce796f2b1c6d0be21ab07d5692235fbb257fc7ecbe8f14"
+      },
+      "campaign": "experiments\\brd4-jq1\\protenix-random-chem\\runs\\20261102-exclusive-gpu-recovery-01\\campaign.json"
+    },
+    "delayed-dense-s17": {
+      "job_id": "29871033",
+      "study": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/run/delayed-dense-s17/payload/study",
+      "plan": {
+        "path": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/source/plan.json",
+        "bytes": 70780,
+        "sha256": "5decb0d0948b92c820b315cf25d86b9bf38f255638643572d4cf54b62069bc38"
+      },
+      "source_manifest": {
+        "path": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/source/checksums.json",
+        "bytes": 17509,
+        "sha256": "fb65bc1d0a0a94b169ce796f2b1c6d0be21ab07d5692235fbb257fc7ecbe8f14"
+      },
+      "campaign": "experiments\\brd4-jq1\\protenix-random-chem\\runs\\20261102-exclusive-gpu-recovery-01\\campaign.json"
+    },
+    "combined-dense-s17": {
+      "job_id": "29871034",
+      "study": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/run/combined-dense-s17/payload/study",
+      "plan": {
+        "path": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/source/plan.json",
+        "bytes": 70780,
+        "sha256": "5decb0d0948b92c820b315cf25d86b9bf38f255638643572d4cf54b62069bc38"
+      },
+      "source_manifest": {
+        "path": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01/source/checksums.json",
+        "bytes": 17509,
+        "sha256": "fb65bc1d0a0a94b169ce796f2b1c6d0be21ab07d5692235fbb257fc7ecbe8f14"
+      },
+      "campaign": "experiments\\brd4-jq1\\protenix-random-chem\\runs\\20261102-exclusive-gpu-recovery-01\\campaign.json"
     }
   },
   "retired_unstarted_production": {
@@ -512,20 +575,18 @@
       "target": 20000
     },
     "chemfirst-s17": {
-      "job_id": "29866311",
-      "scheduler_or_persisted_terminal": "PEND",
-      "queue": "gpua10",
-      "committed_updates_at_least": 0,
-      "global_step_at_least": 0,
-      "target": 20000
+      "job_id": "29871029",
+      "state": "PEND",
+      "states": 0,
+      "updates": 0,
+      "global_end": 980
     },
     "chemfirst-s23": {
-      "job_id": "29866312",
-      "scheduler_or_persisted_terminal": "PEND",
-      "queue": "gpua10",
-      "committed_updates_at_least": 0,
-      "global_step_at_least": 0,
-      "target": 20000
+      "job_id": "29871030",
+      "state": "PEND",
+      "states": 0,
+      "updates": 0,
+      "global_end": 0
     },
     "severity-s17": {
       "job_id": "29866315",
@@ -536,12 +597,11 @@
       "target": 20000
     },
     "severity-s23": {
-      "job_id": "29866318",
-      "scheduler_or_persisted_terminal": "PEND",
-      "queue": "gpua40",
-      "committed_updates_at_least": 0,
-      "global_step_at_least": 0,
-      "target": 20000
+      "job_id": "29871031",
+      "state": "PEND",
+      "states": 0,
+      "updates": 0,
+      "global_end": 0
     },
     "adaptive-s17": {
       "job_id": "29866329",
@@ -600,12 +660,11 @@
       "target": 20000
     },
     "earlyseverity-s23": {
-      "job_id": "29862996",
-      "scheduler_or_persisted_terminal": "PEND",
-      "queue": "gpuv100",
-      "committed_updates_at_least": 0,
-      "global_step_at_least": 0,
-      "target": 20000
+      "job_id": "29871032",
+      "state": "RUN",
+      "states": 119,
+      "updates": 118,
+      "global_end": 1758
     },
     "combined-s17": {
       "job_id": "29865938",
@@ -624,23 +683,36 @@
       "target": 20000
     },
     "delayed-dense-s17": {
-      "job_id": "29862999",
-      "scheduler_or_persisted_terminal": "PEND",
-      "queue": "gpuv100",
-      "committed_updates_at_least": 0,
-      "global_step_at_least": 0,
-      "target": 20000
+      "job_id": "29871033",
+      "state": "RUN",
+      "states": 72,
+      "updates": 71,
+      "global_end": 1211
     },
     "combined-dense-s17": {
-      "job_id": "29863011",
-      "scheduler_or_persisted_terminal": "PEND",
-      "queue": "gpuv100",
-      "committed_updates_at_least": 0,
-      "global_step_at_least": 0,
-      "target": 20000
+      "job_id": "29871034",
+      "state": "RUN",
+      "states": 42,
+      "updates": 41,
+      "global_end": 1221
     }
   },
   "latest_results_observed_utc": "2026-11-01T19:50:36.597488+00:00",
   "latest_results_record": "experiments/brd4-jq1/protenix-random-chem/runs/20261031-chemistry-strategies-01/results-20261101.json",
-  "current_results_scope": "Outcome metadata refreshed19:48-19:50UTC; older detailed progress records retain their own capture times."
+  "current_results_scope": "16 completed original20k strategy arms preserved;6 unfinished arms use exclusive-mode successors. See exclusive_gpu_recovery; original jobs/source remain historical.",
+  "exclusive_gpu_recovery": {
+    "observed_utc": "2026-11-02T00:29:10.321544+00:00",
+    "campaign": "experiments\\brd4-jq1\\protenix-random-chem\\runs\\20261102-exclusive-gpu-recovery-01\\campaign.json",
+    "successors": {
+      "chemfirst-s17": "29871029",
+      "chemfirst-s23": "29871030",
+      "severity-s23": "29871031",
+      "earlyseverity-s23": "29871032",
+      "delayed-dense-s17": "29871033",
+      "combined-dense-s17": "29871034",
+      "structural-s17": "29871035",
+      "structural-s23": "29871036"
+    },
+    "historical_submissions_preserved": true
+  }
 }
