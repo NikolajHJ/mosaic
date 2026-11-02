@@ -978,5 +978,23 @@
   "completion_byte_LSF_proof": {
     "path": "experiments/reporting/jq1-live-progress/runs/20261102-new-completions-01/completed-results.json",
     "sha256": "cfed585cec243f31f34ef64c134b2db123b54da1cc1327f85db8712bd913ab1e"
-  }
+  },
+  "report_publication": {
+    "automatic_optimizer_submission": false,
+    "edition": "edition-0016",
+    "engine_pin": "96d93cee869ea38ca14ddd2e7cd5f32c6a40a5c0510e2b24fd5a346b9eac868f",
+    "manifest_sha256": "135437b0c4e31df70dcf13ddbdeed01323d7abed9bb5dca72e6099ed362c1aa3",
+    "published_utc": "2026-11-02T09:01:58.158349+00:00",
+    "report_url": "editions/edition-0016/report.html",
+    "version": "jq1-live-publication-v1"
+  },
+  "report_completed_runs_delivered": [
+    "29871031",
+    "29871032",
+    "29871033",
+    "29871034",
+    "29871035",
+    "29871026"
+  ],
+  "report_URL": "http://127.0.0.1:8780/report.html"
 }

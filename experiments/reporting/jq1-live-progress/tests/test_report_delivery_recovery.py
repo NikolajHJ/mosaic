@@ -56,4 +56,58 @@ class TerminalEvidenceTests(unittest.TestCase):
             with self.assertRaises(ValueError):recovery.verify_terminal(self.value,text,'123')
 
 
+class ReconstructionBudgetTests(unittest.TestCase):
+    def test_large_valid_delta_and_cached_copies_fit_declared_budget(self):
+        import report
+        self.assertEqual(report.reconstruction_budget(2*1024**3,3*1024**3,8*1024**3,6*1024**3),5*1024**3)
+
+    def test_size_bomb_and_insufficient_local_space_rejected(self):
+        import report
+        for delta,omitted,cap,free in ((9*1024**3,0,8*1024**3,20*1024**3),
+                                      (1,0,8*1024**3,1),
+                                      (2*1024**3,3*1024**3,4*1024**3,10*1024**3)):
+            with self.subTest(delta=delta,cap=cap),self.assertRaises(ValueError):
+                report.reconstruction_budget(delta,omitted,cap,free)
+
+    def test_negative_boolean_or_unbounded_budgets_rejected(self):
+        import report
+        for values in ((-1,0,1024**3,10*1024**3),(False,0,1024**3,10*1024**3),
+                       (1,0,0,10*1024**3),(1,0,9*1024**3,10*1024**3)):
+            with self.subTest(values=values),self.assertRaises(ValueError):report.reconstruction_budget(*values)
+
+
+class CapFailureEvidenceTests(unittest.TestCase):
+    def setUp(self):
+        self.value={'state':'EXIT_REPORT_CAP_ONLY','job_id':'123',
+                    'live':{'stdout':'Job <123>, Status <EXIT>','stderr':''},
+                    'history':{'returncode':0,'stdout':'Job <123> Exited with exit code 1.'}}
+        self.lsf='Subject: Job 123: original\nin queue <hpc>, as user <s234818>\nExited with exit code 1.'
+        self.error='Traceback (most recent call last):\n  original cap guard\nValueError: Report output exceeded its declared cap\n'
+
+    def test_original_EXIT_is_preserved_not_relabelled_DONE(self):
+        recovery.verify_cap_terminal(self.value,self.lsf,self.error,'123')
+        self.assertEqual(self.value['state'],'EXIT_REPORT_CAP_ONLY')
+        self.assertIn('EXIT',self.value['live']['stdout'])
+
+    def test_other_errors_or_multiple_tracebacks_are_rejected(self):
+        for error in (self.error.replace('Report output exceeded its declared cap','Nonfinite calculation'),
+                      self.error+'ValueError: a later failure\n',self.error+self.error):
+            with self.subTest(error=error),self.assertRaises(ValueError):
+                recovery.verify_cap_terminal(self.value,self.lsf,error,'123')
+
+    def test_active_successful_wrong_job_or_wrong_failure_is_rejected(self):
+        for state in ('RUN','PEND','DONE','PSUSP'):
+            value=deepcopy(self.value);value['live']['stdout']='Job <123>, Status <'+state+'>'
+            with self.subTest(state=state),self.assertRaises(ValueError):
+                recovery.verify_cap_terminal(value,self.lsf,self.error,'123')
+        with self.assertRaises(ValueError):recovery.verify_cap_terminal(self.value,self.lsf.replace('123','124'),self.error,'123')
+        with self.assertRaises(ValueError):recovery.verify_cap_terminal(self.value,self.lsf.replace('exit code 1','exit code 2'),self.error,'123')
+
+    def test_missing_live_job_still_requires_actual_failed_history(self):
+        value=deepcopy(self.value);value['live']={'stdout':'','stderr':'Job <123> is not found'}
+        recovery.verify_cap_terminal(value,self.lsf,self.error,'123')
+        value['history']['stdout']='Job <123> Done successfully.'
+        with self.assertRaises(ValueError):recovery.verify_cap_terminal(value,self.lsf,self.error,'123')
+
+
 if __name__=='__main__':unittest.main()

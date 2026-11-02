@@ -1,7 +1,8 @@
 # Updating saved JQ1 progress report
 
-Current2November: the [six new completions](runs/20261102-new-completions-01/README.md)
-bring the selected report to29 panels, all starting at global update0. The
+Current2November: [edition0016](runs/20261102-new-completions-01/README.md)
+contains the six new completions and29 panels, all starting at global update0;
+all416 served files were verified. The
 canonical command below retains these panels and automatically adds registered
 completed comparisons. The authorized experiment monitor continues; the older
 pause description below is historical report-workflow context.

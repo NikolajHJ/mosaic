@@ -140,5 +140,14 @@
   "original_results_changed": false,
   "delivery_recovery_submitted_new_jobs": false,
   "next_update": "experiments/reporting/jq1-live-progress/runs/20261102-new-completions-01/campaign.json",
-  "next_action": "Follow the new29-panel request; this23-panel publication is complete. Do not rerender or download this completed archive again."
+  "next_action": "Publication0015 is complete and preserved; newer0016 adds six completions. Follow the new run record and remaining experiments, not these finished delivery requests.",
+  "newer_published_report": {
+    "automatic_optimizer_submission": false,
+    "edition": "edition-0016",
+    "engine_pin": "96d93cee869ea38ca14ddd2e7cd5f32c6a40a5c0510e2b24fd5a346b9eac868f",
+    "manifest_sha256": "135437b0c4e31df70dcf13ddbdeed01323d7abed9bb5dca72e6099ed362c1aa3",
+    "published_utc": "2026-11-02T09:01:58.158349+00:00",
+    "report_url": "editions/edition-0016/report.html",
+    "version": "jq1-live-publication-v1"
+  }
 }

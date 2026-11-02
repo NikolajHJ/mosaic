@@ -11110,3 +11110,39 @@ receipts/registry and added explicit retirement/pairing records. Default report
 catalog now reuses existing controls and excludes retired candidates; pending
 report request snapshots remain untouched.
 [Pairing and retirement proof](../experiments/brd4-jq1/protenix-random-chem/runs/20261101-structural-repair-01/baseline-reuse.json).
+
+
+### 2026-11-02 09:01 UTC: six new completed results published from update zero
+
+Edition0016 at http://127.0.0.1:8780/report.html contains29 panels: the prior23
+plus severity23, early-severity23, dense delayed17 and dense combined17 (20k),
+structural17 (30k), and the full random Protenix/chemistry/noise50k history.
+Producer IDs29871031/32/33/34/35 and29871026 have authenticated same-job terminal
+success, complete budgets and unchanged frozen identities. The five comparison
+summaries report zero strict-valid argmax states and0/128 strict-valid connected
+endpoint samples each. No derivative or binding certification is claimed.
+
+Allocated report CPU29871919 passed280 cases. Render29871932 finished all29
+artifact panels then EXIT1 on its original4GiB report cap:5,085,831,715 complete
+attempt bytes. That failure remains EXIT. Explicit metadata-only delivery
+recovery rehashed64,420 input bindings and all output files under an8GiB report
+budget, preserving the original source/CPU/LSF evidence. No render, model or
+optimizer was repeated. Archive204,550,727 bytes, SHA256
+870519c09ef4735cb6c82c8ac657eec6a234aca6e92a77bff77ed16b8bf19e7b, downloaded once.
+A legacy1GiB local extraction limit was corrected to the bounded full
+reconstruction budget with actual free-space/file/path/hash checks; its empty
+failed staging directory was preserved. Fifteen portable metadata controls passed.
+
+Publication09:01:58UTC passed416 served-byte checks (414 edition files plus the
+stable shell/latest pointer). Independent local byte/schema/metadata/HTTP audit
+confirmed all29 starts at0, all six final budgets, all original scientific
+statuses and unchanged HTML. No desktop interaction or local scientific
+calculation was needed. Original experiments/results and other-project jobs
+were unchanged. The prior23-panel edition0015 was separately recovered from
+its already-completed render29871060 using genuine persisted success proof.
+
+The canonical default retains these29 panels and registers chemistry-first17/23
+and structural23 for later completion. Default reports use the8GiB WORK3 profile;
+DBMol60k still needs its verified continuation history appended on completion.
+See experiments/reporting/jq1-live-progress/runs/20261102-new-completions-01/
+for exact selections, outcome/source/CPU/publication evidence and commands.

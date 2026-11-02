@@ -85,11 +85,12 @@ def parser():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--runs', type=Path, help='Small JSON selection, including ordered continuation segments')
     p.add_argument('--run', action='append', default=[], help='Saved study/job path or a name from the default selection; repeat as needed')
-    p.add_argument('--profile', type=Path, default=OWNER / 'configs/dtu-report-home.json')
+    p.add_argument('--profile', type=Path, default=OWNER / 'configs/dtu-report-work3-exploratory.json')
     p.add_argument('--output', type=Path, help='Existing stable viewer or a new report directory')
     p.add_argument('--port', type=int)
     p.add_argument('--resume', type=Path, help='Resume this exact recorded local request; never resubmit an unknown outcome')
     p.add_argument('--recover-delivery', action='store_true', help='Deliver an existing completed render using authenticated persisted LSF/history after live scheduler expiry; no submission')
+    p.add_argument('--recover-cap-exceeded', action='store_true', help='With --recover-delivery, verify finished artifacts after the original report-only cap failed; preserve its EXIT and use an explicit 8GiB delivery budget')
     p.add_argument('--setup-only', action='store_true', help='Install/validate the engine once without rendering data')
     p.add_argument('--force', action='store_true', help='Create a fresh edition even when the saved inputs are unchanged')
     p.add_argument('--no-serve', action='store_true', help='Publish files without starting/checking localhost HTTP')
@@ -316,20 +317,38 @@ def verify_delivery(value, source, pin):
     return raw
 
 
-def publish_delta(archive, delivery, viewer, inventory, engine_pin, cpu_certificate_sha256):
+def reconstruction_budget(delta_bytes, omitted_bytes, cap, available):
+    inputs.require(type(cap) is int and 0<cap<=8*1024**3, 'Invalid report extraction budget')
+    inputs.require(all(type(n) is int and n>=0 for n in (delta_bytes,omitted_bytes,available)),
+                   'Invalid report reconstruction byte counts')
+    required=delta_bytes+omitted_bytes
+    inputs.require(0<=required<=cap,'Report delta/reconstruction exceeds cap')
+    inputs.require(available>=required+16*1024**2,'Insufficient local space for report reconstruction')
+    return required
+
+
+def publish_delta(archive, delivery, viewer, inventory, engine_pin, cpu_certificate_sha256, unpacked_cap_bytes=8*1024**3):
     """Reconstruct verified report files before an atomic immutable publication."""
     destination = Path(viewer) / 'editions' / delivery['edition']
     inputs.require(not destination.exists(), 'Immutable edition already exists')
     staging = destination.with_name('.staging-' + delivery['edition'])
-    staging.mkdir(parents=True, exist_ok=False)
     with tarfile.open(archive) as bundle:
         names = set()
-        inputs.require(sum(m.size for m in bundle.getmembers()) <= 1024**3, 'Report delta exceeds cap')
-        for member in bundle.getmembers():
+        members=bundle.getmembers()
+        inputs.require(len(members)<=4096,'Report delta exceeds its file cap')
+        for member in members:
             part = PurePosixPath(member.name)
             inputs.require(member.isfile() and len(part.parts) == 1 and '..' not in part.parts
+                           and not part.is_absolute() and ':' not in member.name
                            and '\\' not in member.name and member.name.casefold() not in names, 'Unsafe report delta member')
             names.add(member.name.casefold())
+        inputs.require(not names.intersection(n.casefold() for n in delivery['omitted_verified_local_assets']),
+                       'Archive and omitted assets overlap')
+        reconstruction_budget(sum(m.size for m in members),
+                              sum(r['bytes'] for r in delivery['omitted_verified_local_assets'].values()),
+                              unpacked_cap_bytes,shutil.disk_usage(viewer).free)
+        staging.mkdir(parents=True, exist_ok=False)
+        for member in members:
             with (staging / member.name).open('xb') as stream:
                 shutil.copyfileobj(bundle.extractfile(member), stream)
     receipt_path = staging / 'report-receipt.json'
@@ -407,6 +426,8 @@ def ensure_http(viewer, port, work):
 def main(argv=None):
     started = time.monotonic()
     args = parser().parse_args(argv)
+    inputs.require(not args.recover_cap_exceeded or (args.recover_delivery and args.resume),
+                   'Cap recovery requires --recover-delivery and the original --resume request')
     profile = inputs.load(args.profile)
     if not args.dry_run:
         validate_profile(profile)
@@ -515,7 +536,8 @@ def main(argv=None):
         record(work / 'delivery-evidence.json', value)
         delta = work / 'report-delta.tar.gz'
         download(connection, value['delivery']['archive'], delta)
-        pointer = publish_delta(delta, value['delivery'], viewer, local_assets(viewer), pin, inputs.sha(work / 'engine-validation.json'))
+        pointer = publish_delta(delta, value['delivery'], viewer, local_assets(viewer), pin,
+                                inputs.sha(work / 'engine-validation.json'),profile['request_cap_bytes'])
         http = None if args.no_serve else ensure_http(viewer, args.port or profile['port'], work)
         result = {'status': 'published_verified_saved_report', 'publication': pointer, 'HTTP': http,
                   'runs': value['delivery']['arms'], 'delta_download_bytes': delta.stat().st_size,

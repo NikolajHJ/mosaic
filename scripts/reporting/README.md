@@ -42,6 +42,14 @@ If a completed render's live scheduler record has expired, use
 This authenticates persisted same-job LSF/history, source and delivery bytes;
 it delivers the existing result without submitting another job.
 
+For the specific case where all artifacts finished but the original report's
+byte cap failed, also pass `--recover-cap-exceeded`. This preserves the original
+EXIT, requires its exact cap-only error and complete allocated-render/source/CPU
+proofs, and verifies an explicit8GiB delivery budget. It does not admit other
+failed renders. Finished local downloads/proofs are reused. Extraction checks
+the full reconstructed size and local free space before writing. The default
+WORK3 profile now budgets8GiB for larger reports; scientific runs are unchanged.
+
 For the current workstation and stable report at port8780, repeat:
 
 ```powershell

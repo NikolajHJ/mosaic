@@ -1,5 +1,5 @@
 {
-  "status": "render_running_not_yet_published",
+  "status": "published_verified_saved_report",
   "request": "results/hpc/20261028-reusable-report-01/requests/request-20261102T081404Z-e35e3990",
   "render_job": "29871932",
   "engine_pin": "96d93cee869ea38ca14ddd2e7cd5f32c6a40a5c0510e2b24fd5a346b9eac868f",
@@ -17,7 +17,7 @@
   "computer_use_for_this_update": false,
   "report_URL": "http://127.0.0.1:8780/report.html",
   "normal_update_command": ".venv/Scripts/python.exe scripts/reporting/report.py --profile experiments/reporting/jq1-live-progress/configs/dtu-report-work3-exploratory.json",
-  "resume_command": ".venv/Scripts/python.exe scripts/reporting/report.py --resume results/hpc/20261028-reusable-report-01/requests/request-20261102T081404Z-e35e3990 --profile experiments/reporting/jq1-live-progress/runs/20261102-new-completions-01/profile.json",
+  "resume_command": ".venv/Scripts/python.exe scripts/reporting/report.py --recover-delivery --recover-cap-exceeded --resume results/hpc/20261028-reusable-report-01/requests/request-20261102T081404Z-e35e3990 --profile experiments/reporting/jq1-live-progress/runs/20261102-new-completions-01/profile.json",
   "superseded_metadata_requests": [
     {
       "request": "request-20261102T075548Z-5b051846",
@@ -31,5 +31,44 @@
       "CPU_cases": 279,
       "outcome": "metadata-only client stopped before render after discovering stale history adapter profile hash; no render submitted"
     }
-  ]
+  ],
+  "publication": {
+    "automatic_optimizer_submission": false,
+    "edition": "edition-0016",
+    "engine_pin": "96d93cee869ea38ca14ddd2e7cd5f32c6a40a5c0510e2b24fd5a346b9eac868f",
+    "manifest_sha256": "135437b0c4e31df70dcf13ddbdeed01323d7abed9bb5dca72e6099ed362c1aa3",
+    "published_utc": "2026-11-02T09:01:58.158349+00:00",
+    "report_url": "editions/edition-0016/report.html",
+    "version": "jq1-live-publication-v1"
+  },
+  "HTTP": {
+    "files": 416,
+    "status": "passed_all_new_edition_HTTP_bytes",
+    "url": "http://127.0.0.1:8780/report.html"
+  },
+  "render_job_terminal_state": "EXIT_REPORT_CAP_ONLY",
+  "allocated_render_artifact_assessment": "passed_saved_only_render",
+  "original_failed_cap_preserved": true,
+  "original_report_cap_bytes": 4294967296,
+  "complete_remote_attempt_bytes": 5085831715,
+  "delivery_report_cap_bytes": 8589934592,
+  "legacy_local_unpack_cap_bytes": 1073741824,
+  "delivery_recovery_portable_cases": 15,
+  "remote_input_bindings_rehashed": 64420,
+  "archive": {
+    "bytes": 204550727,
+    "path": "/work3/s234818/mosaic/runs/reusable-saved-report-v3/requests/request-20261102T081404Z-e35e3990/report-delta.tar.gz",
+    "sha256": "870519c09ef4735cb6c82c8ac657eec6a234aca6e92a77bff77ed16b8bf19e7b"
+  },
+  "archive_downloaded_once": true,
+  "original_render_or_optimizer_repeated": false,
+  "new_recovery_jobs_submitted": false,
+  "scientific_success_claim": false,
+  "publication_verification": "publication-verification.json",
+  "publication_verification_sha256": "de7494070ff1904e335a0f91267a9ad9a94176bbc01dc5056c9dfddaee80b67a",
+  "original_render_source_commit": "8673b10",
+  "delivery_recovery_source_sha256": {
+    "report.py": "5da8652f9ad0e4329a6b0bafdc90d8ea7d5d90d4e9b96719a1c2e003772fc3b5",
+    "report_delivery_recovery.py": "c690035c778661693eff2201cee79de147d20b185248dba46eeb1552fe0bce31"
+  }
 }
