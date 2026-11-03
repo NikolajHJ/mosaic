@@ -11478,3 +11478,21 @@ submission vectors passed; native model checks await allocation. Own capacity
 Both50k candidates registered for the canonical report; no report rebuilt yet.
 Existing runs/results unchanged. Question/config/jobs/proof: experiments/brd4-jq1/
 protenix-random-chem/runs/20261103-sparse-annealed-seeds-01.
+
+
+### 2026-11-03 — Queue capacity review and VAE startup recovery
+
+Observed four idle eligible32GB V100 GPUs while A10/A40 each had one busy eligible
+host. Only the two never-started VAE allocations and their callbacks were held,
+authenticated and retired; accepted successors were recorded before owned release.
+Both sparse jobs29880094/A100 and29880095/L40S nowRUN;1,410/656 committed updates
+at19:25:44UTC. Seed41 started during review and was kept, with no V100 successor.
+VAE first V100 attempts29881354/29881364 failed before applied updates on scope
+and JSON-path interfaces. A fresh sibling-repo capsule fixes only those interfaces;
+4 portable controls passed, the old snapshot reproduces3 errors. Current VAE
+Protenix29881613/callback29881615 and DBMol29881681/callback29881683 RUN/PEND on
+V100; Protenix has250 evaluated updates, DBMol native startup pending. Scientific
+settings and all earlier results are preserved.
+No cleanup/report rebuild. Current VAE records live in DBMol_exploratory's
+experiments/latent-design/protenix-vae. Raw reconciliation and exact held/release
+proofs: results/hpc/20261103-queue-review/20261103T191204Z/final03.

@@ -6,10 +6,11 @@ The user authorized two new seed replicas on 3 November 2026. Each runs all
 
 | Initialization seed | Noise seed | Frozen model key | GPU | Actual job | Latest state |
 | --- | --- | --- | --- | --- | --- |
-| 23 | 230023 | 17 | A100 | 29880094 | PEND |
-| 41 | 230041 | 17 | L40S | 29880095 | PEND |
+| 23 | 230023 | 17 | A100 | 29880094 | RUN |
+| 41 | 230041 | 17 | L40S | 29880095 | RUN |
 
-Scheduler and receipts verified at 17:04:21 UTC; zero committed updates then.
+Both RUN at 19:25:44 UTC: seed23 has1,410 applied updates; seed41 has656.
+Original submission receipts were verified at17:04:21 UTC with zero updates then.
 Existing VAE jobs and the completed seed17 trajectory are unchanged.
 
 The [completed seed17 protocol](../20261102-sparse-annealed-50k-01/README.md)
@@ -64,3 +65,8 @@ Read-only follow-up: send the existing generated `observe.py` through the DTU
 helper and save a fresh local label. Inspect actual `run/jobs.json`, each
 `production/ARM/submission.json` and `release.json`, logs and committed prefixes.
 Do not rerun `prepare.py`, `stage-and-submit.py` or the accepted submission calls.
+
+3 November queue review found available compatible V100s. Seed41 started on
+L40S before migration and was kept; no replacement was submitted and neither
+sparse producer was stopped. The two VAE arms from the sibling experiment were
+redistributed separately; see its current run records for their successors.
