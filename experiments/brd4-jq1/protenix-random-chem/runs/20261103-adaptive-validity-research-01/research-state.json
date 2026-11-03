@@ -1,7 +1,7 @@
 {
   "version": "adaptive-validity-research-v1",
   "branch": "codex/valid-molecule-research",
-  "status": "paired_projection_pilot_running",
+  "status": "binding_forward_pilot_pending",
   "jobs": [
     {
       "id": "29884143",
@@ -12,17 +12,31 @@
     {
       "id": "29884187",
       "kind": "paired_projection_pilot",
-      "status": "RUN",
+      "status": "DONE",
       "remote_root": "/work3/s234818/mosaic/runs/20261103-projection-paired-pilot-01",
       "updates_per_arm": 2000,
       "arms": [
         "original_logits",
         "saved_repair"
       ],
-      "do_not_replay_launch": true
+      "do_not_replay_launch": true,
+      "terminal_verification": "pilot-terminal-verification.json"
+    },
+    {
+      "id": "29885132",
+      "kind": "paired_binding_forward_pilot",
+      "status": "PEND",
+      "remote_root": "/work3/s234818/mosaic/runs/20261103-binding-forward-pilot-01",
+      "updates_per_arm": 2000,
+      "arms": [
+        "relaxed_forward",
+        "hard_forward"
+      ],
+      "do_not_replay_launch": true,
+      "explicit_biased_estimator": true
     }
   ],
-  "next_action": "observe_29884187_terminal_receipts_then_compare_validity_hard_archive_and_runtime_before_next_test",
+  "next_action": "observe_29885132_terminal; verify_source_inputs_frozen_surrogate_controls_equal_grid_hard_scores_validity_samples_diversity; choose_next_test_or_confirmation_from_results",
   "existing_runs_unchanged": true,
   "max_concurrent_research_model_jobs": 2,
   "pilot_updates_per_arm_default_max": 2500,
@@ -32,6 +46,8 @@
   ],
   "main_promotion": "concise_document_after_matched_larger_confirmation_only",
   "audit_verification": "audit-verification.json",
-  "active_tag": "20261103-projection-paired-pilot-01",
-  "pilot_dispatch_verification": "pilot-dispatch-verification.json"
+  "active_tag": "20261103-binding-forward-pilot-01",
+  "pilot_dispatch_verification": "pilot-dispatch-verification.json",
+  "last_completed_result": "Projection2k:1793/2001validstates_vs0;onevalididentity/hardscore0.390705585 unchanged;sampledvalidity5/128vs21/128. Validityretentionpositive,hardoptimizationunconfirmed.",
+  "binding_forward_dispatch_verification": "binding-forward-dispatch-verification.json"
 }

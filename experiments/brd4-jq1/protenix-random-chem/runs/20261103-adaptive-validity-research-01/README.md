@@ -93,3 +93,43 @@ The first launch tag20261103-score-transfer-audit-01 is completed: never replay 
 The active scheduled task is `mosaic1` / Adaptive molecular validity research,
 every two hours, operating on this branch and research-state record. Update its
 actual next action/receipts before leaving any submitted or unknown outcome.
+
+
+3 November23:02CET terminal audit: pilot29884187 actual same-job LSF/bhistDONE.
+Both2k arms and2,001-state contiguous prefixes complete; source5files,57remote
+file bindings, input bytes and frozen identities independently verified. Valid
+repair initialization retained1,793valid states versus0 from original logits,
+but found only its initial valid identity. Every retained valid hard score was
+0.390705585; relaxed contact rose from0.383700 to0.611472 at best, without a
+corresponding hard gain. Endpoint unfiltered valid draws were5/128 for the
+repair arm versus21/128 for original logits. Thus validity retention improved,
+while distribution robustness and useful discrete optimization remain unresolved.
+See pilot-terminal-verification.json. No larger confirmation is justified yet.
+
+Next causal test:2k updates perarm from the SAME saved valid-repair mixture,
+T0.4/chem30/LR0.3/no noise/key17. Compare relaxed binding forward with raw-argmax
+binding forward plus an explicitly BIASED identity probability-gradient estimator
+(straight-through), followed by the unchanged softmax/logit pullback. This is NOT
+the derivative of discrete argmax and is not derivative certification. Chemistry
+still uses relaxed probabilities and detached step-fixed original targets.
+Only the binding input/estimator changes. Both arms use the same inherited
+update budget and the same21 retained hard evaluations at0/100/.../2000;
+no extra best-soft candidate forward can bias the model-call budget. Both start
+valid; invalid later hard graphs remain labeled and never become binding claims.
+The inherited report's historical soft-score label is inapplicable to the hard
+arm; its owned score-scope.json explicitly corrects it. Do not publish through
+the canonical report adapter until this input schema is supported. Record actual
+terminal native hard scores and new valid identities before selecting a larger
+confirmation. One serial pairedGPUjob,90min/512MiB; earlier pair took34.1min.
+Twenty portable metadata/ownership controls passed;3actual analytic forward/
+surrogate controls run only inside the new allocation before native execution.
+
+
+Actual successor29885132 accepted/held receipt persisted before ownedrelease;
+PEND/V100 at23:07:27CET. Source5files/manifest97ea75244d0ad5ca603a2553ee3dc2f027e37e1d72c91b887f48e2ea8e465157,
+plane9c2c81878cfe4bbb2b63aa2fc1b1f2562ff815bce47a01af404831003d6b278.
+Actual startup metadata/command/resources/heldrelease/owncapacity independently
+verified in binding-forward-dispatch-verification.json. No native/gradient result
+yet. Do not replay the launch. Current account sparse/VAE producers remainRUN;
+their previous startup IDs are historical, actual VAE DBMol successor29883315
+with callback29883316 is read-only context. No other-owner job was modified.

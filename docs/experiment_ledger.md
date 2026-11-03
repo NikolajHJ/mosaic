@@ -11501,3 +11501,25 @@ proofs: results/hpc/20261103-queue-review/20261103T191204Z/final03.
 ## 3 November 2026 — Adaptive validity research, isolated branch
 
 User authorized iterative background experiments and a larger confirmation before a concise finding is promoted to main. Research stays on codex/valid-molecule-research. Native saved-point audit29884143 DONE/V100:16points/63forwards,29.94s, actual same-job LSF, source/input bytes and frozen model/context preserved. Sparse30k saved valid repair hardcontact0.390706 versus valid50k raw hardcontact0.367041; relaxed advantages often shrink sharply on hard graphs. No affinity or binding claim. Paired pilot29884187 RUN/V100 with131 committed updates in its first arm at20:16UTC:2k original-logit versus2k saved-repair refinement, same T.4/chem30/LR.3/noise0/key17. Projection initialization explicitly includes2%uniform mixing; original parents/results unchanged. Seventeen portable controls passed. Actual90min/8CPUx4GiB/exclusiveV100 and own512MiB capacity/held receipt-release proofs verified. Scheduled adaptive task mosaic1 ACTIVE every2hours. Current question, decisions, jobs and exact evidence are in experiments/brd4-jq1/protenix-random-chem/runs/20261103-adaptive-validity-research-01/. No research finding has been promoted to main.
+
+
+3 November 2026, 23:02 CET — Adaptive validity pilot 29884187 completed.
+Both arms applied 2,000 updates; saved source/input/frozen identities, contiguous
+prefixes, same-job LSF and 57 remote file bindings passed the independent audit.
+Repair initialization retained 1,793/2,001 valid states versus zero for the
+original logits. It retained one valid identity with hard contact 0.390705585,
+without hard-score improvement; endpoint valid samples were 5/128 versus 21/128.
+Relaxed gains therefore did not establish better discrete molecules.
+Evidence: research run's pilot-terminal-verification.json.
+
+3 November 2026, 23:07 CET — Follow-up 29885132 accepted and PEND on V100.
+Paired 2k runs start from the same valid repair, with T0.4, chemistry30, LR0.3,
+noise0 and key17. Only binding forward changes: relaxed versus raw argmax with
+an explicitly biased identity probability-gradient estimator. Chemistry retains
+detached step-fixed targets. Twenty portable controls, actual metadata startup,
+capacity and accepted held receipt/owned release passed; three allocated analytic
+forward/surrogate controls and all native outcomes remain pending. Resources:
+90min, eight CPU slots x4GiB, one exclusive32GB V100. Earlier sources/results and
+other owners' running jobs remain untouched. Actual VAE DBMol successor29883315
+is read-only context. No confirmation, main promotion or report rebuild.
+Evidence: research run's binding-forward-dispatch-verification.json.

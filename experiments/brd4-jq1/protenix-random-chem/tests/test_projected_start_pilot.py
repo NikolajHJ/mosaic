@@ -32,6 +32,28 @@ def parent_configuration():
 
 
 class PairedPilotControls(unittest.TestCase):
+    def test_binding_contrast_keeps_initialization_identical_and_changes_only_forward(self):
+        declared = plan()
+        declared["comparison"] = "binding_forward"
+        arms = pilot.arm_protocol(declared)
+        self.assertEqual(arms, (("relaxed_forward", "repair", "relaxed"),
+                                ("hard_forward", "repair", "hard_forward_soft_backward")))
+        self.assertEqual(pilot.fixed_configuration(parent_configuration(), declared),
+                         pilot.fixed_configuration(parent_configuration(), plan()))
+
+    def test_historical_projection_contrast_is_retained(self):
+        self.assertEqual(pilot.arm_protocol(plan()),
+                         (("original_logits", "original", "relaxed"),
+                          ("saved_repair", "repair", "relaxed")))
+
+    def test_unknown_comparison_or_forward_mode_rejected_before_scientific_imports(self):
+        declared = plan()
+        declared["comparison"] = "unknown"
+        with self.assertRaisesRegex(ValueError, "causal comparison"):
+            pilot.validate_plan(declared)
+        with self.assertRaisesRegex(ValueError, "forward mode"):
+            pilot.binding_graph(object(), "unknown")
+
     def test_declared_fixed_protocol_preserves_other_settings(self):
         original = parent_configuration()
         saved = deepcopy(original)

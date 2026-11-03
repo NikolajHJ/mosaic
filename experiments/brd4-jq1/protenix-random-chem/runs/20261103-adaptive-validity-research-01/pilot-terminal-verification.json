@@ -1,0 +1,48 @@
+{
+  "status": "independently_verified_completed_paired_pilot",
+  "observed_utc": "2026-11-03T22:02:13.411688+00:00",
+  "job_id": "29884187",
+  "source_manifest_sha256": "6a8cdc3a51a2e1efacad2da7e0d6ab82afe636110084a98faa510414d668c992",
+  "plan_sha256": "938c06d11d7ae0962390dd9c4114a98908377ad23652618f9805d7887c389a6e",
+  "source_files": 5,
+  "remote_file_bindings": 57,
+  "frozen_inputs_unchanged": true,
+  "actual_same_job_lsf_success": true,
+  "packet_sha256": "6275b26dbda96d7849e6db3921dc9c1f675d94dc56f03f01f653d65e718443cb",
+  "local_packet": "results\\hpc\\20261103-projection-paired-pilot-01\\terminal-20261103T220210Z\\stdout.json",
+  "arms": [
+    {
+      "arm": "original_logits",
+      "applied_updates": 2000,
+      "strict_valid_states": 0,
+      "state_denominator": 2001,
+      "valid_unique_smiles": [],
+      "endpoint_valid": false,
+      "endpoint_samples_valid": 21,
+      "endpoint_sample_draws": 128,
+      "best_retained_valid_hard_score": null,
+      "retained_hard_score_scope": "Hard graph at retained100-step grid plus best-soft-valid snapshot; not every-state hard optimum",
+      "elapsed_seconds": 1045.590425492992,
+      "initial_hard_score": 0.4865626394748688,
+      "last_hard_score": 0.3500731289386749
+    },
+    {
+      "arm": "saved_repair",
+      "applied_updates": 2000,
+      "strict_valid_states": 1793,
+      "state_denominator": 2001,
+      "valid_unique_smiles": [
+        "CC1(F)NC(N)(C(F)F)OC2(CC(Cl)(CC(F)Cl)CC2(N)S)C1(C)F"
+      ],
+      "endpoint_valid": true,
+      "endpoint_samples_valid": 5,
+      "endpoint_sample_draws": 128,
+      "best_retained_valid_hard_score": 0.39070558547973633,
+      "retained_hard_score_scope": "Hard graph at retained100-step grid plus best-soft-valid snapshot; not every-state hard optimum",
+      "elapsed_seconds": 982.2028155229928,
+      "initial_hard_score": 0.39070558547973633,
+      "last_hard_score": 0.39070558547973633
+    }
+  ],
+  "interpretation": "Projection plus smoothing improves retention of one preexisting valid identity; no retained hard-score improvement from further refinement. Relaxed score improves independently. This does not establish binding or generality."
+}

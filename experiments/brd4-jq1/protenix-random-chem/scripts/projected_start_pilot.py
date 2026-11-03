@@ -21,6 +21,61 @@ import score_transfer_audit as audit
 
 
 VERSION = "protenix-projection-paired-pilot-v1"
+FORWARD_MODES = ("relaxed", "hard_forward_soft_backward")
+
+
+def arm_protocol(plan):
+    comparison = plan.get("comparison", "projection_start")
+    if comparison == "projection_start":
+        return (("original_logits", "original", "relaxed"),
+                ("saved_repair", "repair", "relaxed"))
+    if comparison == "binding_forward":
+        return (("relaxed_forward", "repair", "relaxed"),
+                ("hard_forward", "repair", "hard_forward_soft_backward"))
+    raise ValueError("Unknown causal comparison")
+
+
+def binding_graph(graph, mode):
+    """Hard primal with a deliberately biased identity probability pullback.
+
+    This is not the derivative of argmax. The inherited softmax/logit pullback
+    follows the identity estimator. Chemistry still uses relaxed probabilities.
+    """
+    audit.require(mode in FORWARD_MODES, "Unknown binding forward mode")
+    if mode == "relaxed":
+        return graph
+    import jax
+    import jax.numpy as jnp
+    from mosaic.small_molecule.state import RelaxedGraph
+    def leaf(p):
+        hard = jax.nn.one_hot(jnp.argmax(p, axis=-1), p.shape[-1], dtype=p.dtype)
+        return hard + (p - jax.lax.stop_gradient(p))
+    return RelaxedGraph(leaf(graph.X), leaf(graph.E_upper))
+
+
+def forward_controls():
+    """Allocated-only analytic controls; no model evaluations or updates."""
+    audit.require(os.environ.get("LSB_JOBID", "").isdigit(), "Forward controls require allocation")
+    import jax
+    import jax.numpy as jnp
+    import numpy as np
+    from mosaic.small_molecule.state import RelaxedGraph
+    x = jnp.asarray([[.2, .8], [.7, .3]], dtype=jnp.float32)
+    edge = jnp.asarray([[.1, .9]], dtype=jnp.float32)
+    graph = RelaxedGraph(x, edge)
+    hard = binding_graph(graph, "hard_forward_soft_backward")
+    audit.require(np.array_equal(np.asarray(hard.X), [[0., 1.], [1., 0.]]) and
+                  np.array_equal(np.asarray(hard.E_upper), [[0., 1.]]), "Hard forward differs")
+    value, gradient = jax.value_and_grad(lambda g: jnp.sum(binding_graph(g, "hard_forward_soft_backward").X**2)
+                                       + jnp.sum(binding_graph(g, "hard_forward_soft_backward").E_upper**2))(graph)
+    audit.require(float(value) == 3. and np.array_equal(np.asarray(gradient.X), 2*np.asarray(hard.X))
+                  and np.array_equal(np.asarray(gradient.E_upper), 2*np.asarray(hard.E_upper)),
+                  "Declared identity surrogate is detached or scaled")
+    _, grad = jax.value_and_grad(lambda g: jnp.sum(binding_graph(g, "relaxed").X**2))(graph)
+    audit.require(np.allclose(np.asarray(grad.X), 2*np.asarray(x)) and
+                  binding_graph(graph, "relaxed") is graph, "Relaxed control changed")
+    return {"status": "passed_declared_forward_and_surrogate_controls", "checks": 3,
+            "discrete_argmax_derivative_certified": False, "optimizer_updates": 0}
 
 
 def module(path, name):
@@ -46,6 +101,7 @@ def validate_plan(plan):
                   0 < plan.get("output_cap_bytes", 536870912) <= 2147483648, "Invalid own output cap")
     audit.require(type(plan.get("file_cap", 10000)) is int and
                   0 < plan.get("file_cap", 10000) <= 30000, "Invalid own file cap")
+    arm_protocol(plan)
     return plan
 
 
@@ -141,6 +197,9 @@ def run(plan, plan_path):
               "warnings": ["Native geometry-off contact is a surrogate, not affinity or binding certification",
                            "Projection plus finite smoothing is the declared initial-state intervention",
                            "Second arm may reuse warmed native compilation; runtime comparison includes this ordering limitation"]}
+    result["comparison"] = plan.get("comparison", "projection_start")
+    if result["comparison"] == "binding_forward":
+        result["warnings"].append("Hard forward uses a biased identity probability gradient, not the derivative of argmax")
     before_inputs = [audit.binding(record["path"]) for record in inputs(plan, row)]
     result["inputs_before"] = before_inputs
     begun, next_capacity = time.monotonic(), 0.
@@ -164,6 +223,8 @@ def run(plan, plan_path):
 
     try:
         tick()
+        if result["comparison"] == "binding_forward":
+            result["allocated_forward_controls"] = forward_controls()
         ready = audit.read(row["context_ready"]["path"])
         context = load_context(Path(row["context_ready"]["path"]).parent / "context", ready["context_files"])
         model = FrozenProtenixTiny.load(cache_dir=Path(plan["model_cache"]))
@@ -218,12 +279,12 @@ def run(plan, plan_path):
                     finite &= jnp.all(jnp.isfinite(leaf))
             return scalar, finite
 
-        def hard_archive(study):
+        def hard_archive(study, forward_mode):
             selected = [(step, study / "snapshots" / f"step-{step:05d}.npz")
                         for step in range(0, plan["updates"] + 1, 100)]
             if plan["updates"] % 100:
                 selected.append((plan["updates"], study / "snapshots" / f"step-{plan['updates']:05d}.npz"))
-            if (study / "best-valid-state.npz").is_file():
+            if plan.get("comparison", "projection_start") != "binding_forward" and (study / "best-valid-state.npz").is_file():
                 with np.load(study / "best-valid-state.npz", allow_pickle=False) as point:
                     selected.append((int(point["step"]), study / "best-valid-state.npz"))
             records, seen = [], set()
@@ -244,32 +305,54 @@ def run(plan, plan_path):
                 readout.pop("pairs", None)
                 records.append({"local_step": local_step, "source_parent_step": plan["parent_step"],
                                 "hard_contact_score": -value, "hard_contact_loss": value,
-                                "saved_soft_contact_score": -saved_soft,
+                                "saved_binding_contact_score": -saved_soft,
+                                "binding_forward_mode": forward_mode,
                                 "strict_valid_connected": screen.valid_connected(readout),
                                 "readout": readout, "snapshot": audit.binding(path)})
             valid = [p for p in records if p["strict_valid_connected"]]
-            return {"scope": "Hard graph at retained100-step grid plus best-soft-valid snapshot; not every-state hard optimum",
+            return {"scope": ("Hard graph at identical100-step grid; equal21 forwards per2k arm; not every-state hard optimum"
+                              if plan.get("comparison") == "binding_forward" else
+                              "Hard graph at retained100-step grid plus best-soft-valid snapshot; not every-state hard optimum"),
                     "records": records, "best_valid_hard": max(valid, key=lambda p: p["hard_contact_score"]) if valid else None}
 
         accelerator = module(adapter / "scripts/full_model_pilot.py", "_paired_pilot_acceleration")
-        for name, initial in (("original_logits", original_initial), ("saved_repair", projected_initial)):
+        class ForwardLoss(eqx.Module):
+            original: object
+            mode: str = eqx.field(static=True)
+
+            def __call__(self, graph, *, key):
+                return self.original(binding_graph(graph, self.mode), key=key)
+
+        for name, initial_kind, forward_mode in arm_protocol(plan):
             tick()
+            initial = original_initial if initial_kind == "original" else projected_initial
+            active_loss = loss if forward_mode == "relaxed" else ForwardLoss(loss, forward_mode)
             arm_output = output / name
             arm_output.mkdir(exist_ok=False)
             acceleration = arm_output / "acceleration"
             acceleration.mkdir()
             started = time.monotonic()
             with accelerator.combined_adapters("protenix-random50k", acceleration) as adapters:
-                summary = screen.run_loop(loss, initial, prepare, spec, FailureGuidanceConfig(**source_config["loss"]),
+                summary = screen.run_loop(active_loss, initial, prepare, spec, FailureGuidanceConfig(**source_config["loss"]),
                                           key, config, arm_output / "study", steps=plan["updates"], tick=tick)
             audit.require(summary["status"] == "completed_exploratory_updates" and summary["applied_updates"] == plan["updates"],
                           "Original paired runner did not complete its declared updates")
             arm = {"arm": name, "status": summary["status"], "applied_updates": summary["applied_updates"],
+                   "initialization": initial_kind, "binding_forward_mode": forward_mode,
+                   "saved_probability_scope": "Relaxed probabilities for chemistry; binding mode explicitly recorded",
                    "source_parent_step": plan["parent_step"], "local_start": 0, "local_end": plan["updates"],
                    "elapsed_seconds": time.monotonic() - started, "strict_valid_states": summary["strict_valid_states"],
                    "valid_unique_smiles": summary["valid_unique_smiles"], "report": audit.binding(arm_output / "study/report.json"),
-                   "acceleration": adapters, "best_soft_valid": summary["best_valid_contact"],
-                   "hard_archive": hard_archive(arm_output / "study")}
+                   "acceleration": adapters, "best_binding_valid": summary["best_valid_contact"],
+                   "hard_archive": hard_archive(arm_output / "study", forward_mode)}
+            if forward_mode != "relaxed":
+                audit.write(arm_output / "score-scope.json", {
+                    "binding_forward_mode": forward_mode,
+                    "contact_values": "Actual raw-argmax native contact; hard graphs can still be invalid",
+                    "probability_gradient": "Biased identity estimator followed by original softmax pullback",
+                    "chemistry": "Original relaxed loss with detached step-fixed targets",
+                    "inherited_best_valid_scope_label_applicable": False,
+                    "canonical_report_adapter_supported": False})
             result["arms"].append(arm)
             persist()
         result["status"] = "completed_paired_exploratory_refinement"
@@ -303,7 +386,7 @@ def main():
     _, _, config = parent_metadata(plan)
     if args.startup_only:
         print(json.dumps({"status": "metadata_startup_passed_no_models", "configuration": config,
-                          "paired_arms": ["original_logits", "saved_repair"], "parent_step": plan["parent_step"]}))
+                          "paired_arms": arm_protocol(plan), "parent_step": plan["parent_step"]}))
         return
     result = run(plan, args.plan)
     print(json.dumps({"status": result["status"], "applied_updates_per_arm": [a["applied_updates"] for a in result["arms"]]}))

@@ -105,7 +105,7 @@ def main():
  parser=argparse.ArgumentParser(description=__doc__)
  parser.add_argument('--inputs',type=Path,required=True)
  parser.add_argument('--tag',required=True)
- parser.add_argument('--kind',choices=['score-transfer','projection-pilot'],default='score-transfer')
+ parser.add_argument('--kind',choices=['score-transfer','projection-pilot','binding-forward-pilot'],default='score-transfer')
  args=parser.parse_args()
  assert all(c.isalnum() or c=='-' for c in args.tag),'Unsafe tag'
  local=REPO/'results/hpc'/args.tag;local.mkdir(parents=True,exist_ok=False)
@@ -122,17 +122,18 @@ def main():
  for a in data['arms']:
   source_files.extend([a['plan'],a['row']['config'],a['row']['snapshot'],a['row']['reference']])
  plan=dict(version='protenix-score-transfer-audit-v1',source_root=base['code_source_root'],routing_source=base['routing_source'],science_source=base['row']['science_source']['path'],model_cache='/work3/s234818/mosaic/cache/mosaic/protenix',context_ready=base['row']['context_ready'],pocket=base['row']['pocket'],frozen_identity=base['row']['frozen_identity'],points=points,source_files=source_files,output=remote+'/payload',optimizer_updates=0,queue='gpuv100',internal_seconds=2700,output_cap_bytes=128*1024**2,complete_output_cap_mib=256,entrypoint='score_transfer_audit.py',wall_minutes=60,cpu_slots=4,memory_mib_per_slot=8192)
- if args.kind=='projection-pilot':
+ if args.kind in ('projection-pilot','binding-forward-pilot'):
   parent=next(p for p in base['files'] if p['step']==30000)
   plan.update(version='protenix-projection-paired-pilot-v1',parent_plan=base['plan'],parent_arm=base['arm'],parent_snapshot=parent['snapshot'],parent_reference=parent['reference'],parent_step=30000,updates=2000,temperature=.4,chemistry_coefficient=30.,learning_rate=.3,smoothing=.02,internal_seconds=4800,output_cap_bytes=512*1024**2,complete_output_cap_mib=512,entrypoint='projected_start_pilot.py',wall_minutes=90,cpu_slots=8,memory_mib_per_slot=4096)
   plan.pop('points');plan.pop('optimizer_updates')
   storage_bytes=(REPO/'scripts/hpc/storage_accounting.py').read_bytes()
   plan['storage_module']=dict(path=remote+'/source/storage_accounting.py',bytes=len(storage_bytes),sha256=sha(storage_bytes))
   plan['file_cap']=5000
+  if args.kind=='binding-forward-pilot':plan['comparison']='binding_forward'
  dump(source/'plan.json',plan)
  for src,dst in [(HERE.parent/'score_transfer_audit.py','score_transfer_audit.py'),(REPO/'scripts/hpc/storage_accounting.py','storage_accounting.py')]:
   (source/dst).write_bytes(src.read_bytes())
- if args.kind=='projection-pilot':(source/'projected_start_pilot.py').write_bytes((HERE.parent/'projected_start_pilot.py').read_bytes())
+ if args.kind in ('projection-pilot','binding-forward-pilot'):(source/'projected_start_pilot.py').write_bytes((HERE.parent/'projected_start_pilot.py').read_bytes())
  (source/'stage.sh').write_text(STAGE,encoding='utf-8',newline='\n')
  manifest={'files':{p.name:{'bytes':p.stat().st_size,'sha256':sha(p.read_bytes())} for p in source.iterdir()}}
  dump(source/'checksums.json',manifest)

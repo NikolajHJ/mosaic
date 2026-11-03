@@ -31,7 +31,7 @@ if receipt.is_file():
   p=subprocess.run(command,capture_output=True,text=True,timeout=25)
   data[command[0]]=dict(argv=command,returncode=p.returncode,stdout=p.stdout,stderr=p.stderr)
  data['committed_prefixes']={}
- for arm in ['original_logits','saved_repair']:
+ for arm in ['original_logits','saved_repair','relaxed_forward','hard_forward']:
   prefix={}
   for filename in ['states.jsonl','updates.jsonl']:
    path=root/'payload'/arm/'study'/filename;count=0;last=None;contiguous=True

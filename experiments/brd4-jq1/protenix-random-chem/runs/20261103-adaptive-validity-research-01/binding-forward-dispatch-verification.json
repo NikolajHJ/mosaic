@@ -1,0 +1,39 @@
+{
+  "status": "verified_accepted_released_PENDING_not_native_pass",
+  "observed_utc": "2026-11-03T22:07:27.825447+00:00",
+  "job_id": "29885132",
+  "queue": "gpuv100",
+  "source_manifest_sha256": "97ea75244d0ad5ca603a2553ee3dc2f027e37e1d72c91b887f48e2ea8e465157",
+  "plan_sha256": "e9c2c81878cfe4bbb2b63aa2fc1b1f2562ff815bce47a01af404831003d6b278",
+  "source_files": 5,
+  "portable_controls": 20,
+  "allocated_surrogate_controls": "pending_3_tests_inside_actual_GPU_before_models",
+  "requested_updates_per_arm": 2000,
+  "arms": [
+    "relaxed_forward",
+    "hard_forward"
+  ],
+  "both_initialization": "same_saved_valid_repair_98percent_plus_uniform2percent",
+  "fixed_conditions": {
+    "T": 0.4,
+    "chemistry": 30,
+    "LR": 0.3,
+    "noise": 0,
+    "model_key": 17
+  },
+  "wall_minutes": 90,
+  "cpu_slots": 8,
+  "memory_mib_per_slot": 4096,
+  "gpu_request": "num=1:mode=exclusive_process:j_exclusive=yes:mps=no:gmem=30G",
+  "capacity": {
+    "required_bytes": 590467739,
+    "available_bytes": 11390537728,
+    "reserve_bytes": 53678886
+  },
+  "held_receipt_before_release": true,
+  "no_validation_or_callback_dependency": true,
+  "existing_runs_changed": false,
+  "packet_sha256": "02374159d7ecd7e8ffec7bcb137c1380abceafc2c2029059594b61729ddc570c",
+  "local_packet": "results\\hpc\\20261103-binding-forward-pilot-01\\status-20261103T220725Z\\stdout.json",
+  "claim": "Only submission/metadata/ownership/capacity verified; surrogate is explicitly biased, no discrete derivative certification."
+}
