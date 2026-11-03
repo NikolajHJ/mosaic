@@ -1,0 +1,83 @@
+{
+  "status": "published_HTTP_and_browser_verified",
+  "request": "results\\hpc\\20261028-reusable-report-01\\requests\\request-20261103T093249Z-4cd047db",
+  "engine_pin": "3935d500cb3f745ead64be7cb794865a089afe415423182c2289d05c76b87fb2",
+  "cpu_job_id": "29876500",
+  "cpu_cases": 311,
+  "render_job_id": "29876703",
+  "edition": "edition-0018",
+  "prior_collection_browser_failure": "browser-failure-01.json",
+  "vae_job_id": "29875634",
+  "vae_callback_id": "29875635",
+  "vae_applied_updates": 50000,
+  "local_portable_tests": {
+    "collection": 4,
+    "viewer_metadata": 42
+  },
+  "original_results_changed": false,
+  "source_reports_reused": true,
+  "timestamp": "2026-11-03T10:00:53.367871+00:00",
+  "collection": "20261103-focused-02",
+  "url": "http://127.0.0.1:8780/collections/20261103-focused-02/report.html",
+  "full_history_url": "http://127.0.0.1:8780/report.html",
+  "included_runs": 13,
+  "Mosaic_runs": 12,
+  "VAE_runs": 1,
+  "omitted_Mosaic_runs": 25,
+  "omitted_runs_deleted": false,
+  "all_histories_start_at_zero": true,
+  "all_selected_update_targets_reached": true,
+  "canonical_publication": {
+    "automatic_optimizer_submission": false,
+    "edition": "edition-0018",
+    "engine_pin": "3935d500cb3f745ead64be7cb794865a089afe415423182c2289d05c76b87fb2",
+    "manifest_sha256": "db65c4816255498de1946f5fcc69ebc33eda33fce9fd3013979e67cd95260eac",
+    "published_utc": "2026-11-03T09:54:56.593373+00:00",
+    "report_url": "editions/edition-0018/report.html",
+    "version": "jq1-live-publication-v1"
+  },
+  "canonical_HTTP_files": 567,
+  "collection_HTTP_files": 6,
+  "delta_download_bytes": 1606476,
+  "reused_local_assets": 559,
+  "cached_scientific_arms": 37,
+  "new_scientific_arms": 0,
+  "scientific_success_claim": false,
+  "proofs": {
+    "publication-0018.json": {
+      "path": "experiments/reporting/jq1-live-progress/runs/20261103-focused-with-vae/publication-0018.json",
+      "bytes": 3026,
+      "sha256": "43d39fa3f71c99dfd74b9fd48ee23d3a88782ea37ef9581841fea7b9c21cf32d"
+    },
+    "collection-receipt.json": {
+      "path": "experiments/reporting/jq1-live-progress/runs/20261103-focused-with-vae/collection-receipt.json",
+      "bytes": 2574,
+      "sha256": "0d14fd31ff06264e855d62cb98068ca59fc44bcae9b4a52fbb3dcdd52ba13571"
+    },
+    "http-verification.json": {
+      "path": "experiments/reporting/jq1-live-progress/runs/20261103-focused-with-vae/http-verification.json",
+      "bytes": 1314,
+      "sha256": "62c7e9d6a2969bdf2a581608c2d2dda8fd4733fd2b840bb0bcbd9c8ade0c0688"
+    },
+    "browser-verification.json": {
+      "path": "experiments/reporting/jq1-live-progress/runs/20261103-focused-with-vae/browser-verification.json",
+      "bytes": 1835,
+      "sha256": "63826e35d6e657a50840024df403b11e098c414ae97f00b1567d18e1d65032dd"
+    },
+    "vae-terminal-evidence.json": {
+      "path": "experiments/reporting/jq1-live-progress/runs/20261103-focused-with-vae/vae-terminal-evidence.json",
+      "bytes": 89845,
+      "sha256": "07e54c8ec0f5be260d5abe06df44500ce6d6ab90f8eced767b472c2b41209f7f"
+    },
+    "vae-browser-check.json": {
+      "path": "experiments/reporting/jq1-live-progress/runs/20261103-focused-with-vae/vae-browser-check.json",
+      "bytes": 617,
+      "sha256": "c69e5447b1d09debb1aac9d64d5c2a00b93a4582fa403540bc1934727a388a0d"
+    },
+    "engine-validation.json": {
+      "path": "experiments/reporting/jq1-live-progress/runs/20261103-focused-with-vae/engine-validation.json",
+      "bytes": 2659,
+      "sha256": "b36430afc4af5fc659c7763d2b369986d1a81150dc8e571798babf06e1c4f6cf"
+    }
+  }
+}

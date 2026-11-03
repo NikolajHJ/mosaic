@@ -1,0 +1,75 @@
+{
+  "version": "mosaic-report-collection-v1",
+  "execution": "metadata navigation and byte-preserving report packaging only",
+  "config_sha256": "216cf5dc9313a867a757abab971e07ebda951705a82f79c897bf4e43140298fb",
+  "canonical_edition": "edition-0018",
+  "canonical_manifest_sha256": "db65c4816255498de1946f5fcc69ebc33eda33fce9fd3013979e67cd95260eac",
+  "canonical_receipt_sha256": "6c3cd6c191e4bd0f88756c5c42c77f8c0dc1ba53e3a57f802132dab20c775506",
+  "canonical_render_job": "29876703",
+  "included_runs": [
+    "annealed_sparse_50k_s17",
+    "vae_protenix50k",
+    "structural10_noise_chain_s17",
+    "structural10_chain_s17",
+    "structural10_noise_sparse_s17",
+    "structural10_sparse_s17",
+    "structural_structural_s17",
+    "strategy_constant1_s17",
+    "strategy_constant10_s17",
+    "protenix50k",
+    "protenix_chemistry50k",
+    "protenix_chemistry_noise50k",
+    "dbmol"
+  ],
+  "omitted_mosaic_runs": [
+    "boltz_chemistry30k",
+    "boltz30k",
+    "protenix_noisy",
+    "protenix_defog",
+    "strategy_delayed_s17",
+    "strategy_delayed_s23",
+    "strategy_constant1_s23",
+    "strategy_constant10_s23",
+    "strategy_severity_s17",
+    "strategy_adaptive_s17",
+    "strategy_adaptive_s23",
+    "strategy_neighbor_s17",
+    "strategy_neighbor_s23",
+    "strategy_temperature2_s17",
+    "strategy_temperature2_s23",
+    "strategy_earlyseverity_s17",
+    "strategy_combined_s17",
+    "strategy_combined_s23",
+    "strategy_severity_s23",
+    "strategy_earlyseverity_s23",
+    "strategy_delayed_dense_s17",
+    "strategy_combined_dense_s17",
+    "strategy_chemfirst_s17",
+    "structural_structural_s23",
+    "strategy_chemfirst_s23"
+  ],
+  "files": {
+    "attachments/vae_protenix50k.html": {
+      "bytes": 154978978,
+      "sha256": "c3e259e49feb9543e0da8dbf46ee9e198faf1d47aea849618ffbe8eb48d20f71"
+    },
+    "attachments/vae_protenix50k-manifest.json": {
+      "bytes": 150361,
+      "sha256": "c0d429341261d006c479e8b7a77f0cd04038fcdebb69704638b1479147d27d20"
+    },
+    "attachments/vae_protenix50k-evidence.json": {
+      "bytes": 89845,
+      "sha256": "07e54c8ec0f5be260d5abe06df44500ce6d6ab90f8eced767b472c2b41209f7f"
+    },
+    "report.html": {
+      "bytes": 15332,
+      "sha256": "92f2ea9c9b88674b3fcefafe4a7fd63821867de657eab7e4da76bf5b1454fa7f"
+    },
+    "selection.json": {
+      "bytes": 8189,
+      "sha256": "54be99d02460825d05d4d6fba7eb2f058e13eaf32fb7dd4a640a4b137456db80"
+    }
+  },
+  "saved_results_modified": false,
+  "scientific_certification_claim": false
+}

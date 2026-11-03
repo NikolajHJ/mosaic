@@ -13,6 +13,31 @@ owner with the required validation. Do not clone historical campaign pipelines.
 duplicated here. This entry point serves saved Protenix, Boltz, DBMol and delayed
 chemistry trajectories supported by that experiment's saved-data schema.
 
+### Focused collections and a report from another repository
+
+Use `collection.py` for a smaller navigation view over an **already published**
+canonical report. It selects existing run IDs and can attach a self-contained
+saved report from another repository without converting its graph schema or
+forking its renderer. External HTML, its manifest and terminal evidence are
+SHA-bound; the HTML is copied byte-for-byte. It does no scientific rendering.
+
+The current selection is
+`experiments/reporting/jq1-live-progress/configs/focused-with-vae.json`: 12 Mosaic
+trajectories plus the completed VAE–Protenix 50k experiment. Less relevant seed
+repeats and old screening arms remain in the full history. VAE representation,
+vocabulary, chemistry schedule and validity denominators are explicitly separate.
+
+To refresh: run the canonical command below for new Mosaic results, edit this
+small selection/config, choose a fresh `collection` name, then run:
+
+```powershell
+py -3 scripts/reporting/collection.py --config experiments/reporting/jq1-live-progress/configs/focused-with-vae.json
+```
+
+Collections are immutable and share the existing viewer server and scientific
+assets. Keep the previous collection and full report. Verify the new page in a
+browser before delivery; successful file delivery alone is not browser QA.
+
 From the repository root:
 
 ```powershell

@@ -128,7 +128,13 @@ def test_four_arm_manifest_keeps_presentation_and_scientific_outcomes_separate(j
 
 
 def test_six_arm_refresh_uses_affinity_for_both_boltz_arms(javascript):
-    assert 'value.arms.length<=32' in javascript
+    # Keep the browser cohort limit aligned with the actual capture contract.
+    import ast
+    source = TEMPLATE.parents[1] / 'scripts' / 'quick_inputs.py'
+    tree = ast.parse(source.read_text(encoding='utf8'))
+    limit = next(ast.literal_eval(node.value) for node in tree.body
+                 if isinstance(node, ast.Assign) and any(isinstance(t, ast.Name) and t.id == 'MAX_RUNS' for t in node.targets))
+    assert f'value.arms.length<={limit}' in javascript
     assert 'arm.id==="boltz"||arm.id==="boltz_chemistry"' in javascript
     assert 'protenix_chemistry:"Random Protenix + chemistry"' in javascript
     assert 'boltz_chemistry:"Boltz-2 + chemistry"' in javascript

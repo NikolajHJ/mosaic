@@ -1,0 +1,80 @@
+[
+  {
+    "id": "structural_structural_s17",
+    "source_edition": "edition-0017",
+    "chunk": "structural_structural_s17-frames-0015.json",
+    "sha256": "8c1826e0a48b9903ec560df3be122fce24c5e916d77d509a8265aaa965fb3562",
+    "global_step": 30000,
+    "saved_readout": {
+      "sanitized": false,
+      "fragment_count": 1,
+      "canonical_smiles": null,
+      "conversion_error": "AtomValenceException: Explicit valence for atom # 6 F, 2, is greater than permitted"
+    }
+  },
+  {
+    "id": "strategy_constant1_s17",
+    "source_edition": "edition-0017",
+    "chunk": "strategy_constant1_s17-frames-0010.json",
+    "sha256": "504361c6ea8eb970df6e4cb8e5f8ee91debbeddbbda5160611ee209aa3a45bf6",
+    "global_step": 20000,
+    "saved_readout": {
+      "sanitized": false,
+      "fragment_count": 2,
+      "canonical_smiles": null,
+      "conversion_error": "AtomValenceException: Explicit valence for atom # 3 Cl, 2, is greater than permitted"
+    }
+  },
+  {
+    "id": "strategy_constant10_s17",
+    "source_edition": "edition-0017",
+    "chunk": "strategy_constant10_s17-frames-0010.json",
+    "sha256": "53848d38782d84eb0a4c345555696cdb6be5b666f7c506606f15d8466533f7a7",
+    "global_step": 20000,
+    "saved_readout": {
+      "sanitized": false,
+      "fragment_count": 1,
+      "canonical_smiles": null,
+      "conversion_error": "AtomValenceException: Explicit valence for atom # 9 Cl, 6, is greater than permitted"
+    }
+  },
+  {
+    "id": "protenix50k",
+    "source_edition": "edition-0017",
+    "chunk": "protenix50k-frames-0025.json",
+    "sha256": "93bb43e57a365f17b3ec81bfd4bcb2f395e0b9f3070c9202c141580711eb0ffc",
+    "global_step": 50000,
+    "saved_readout": {
+      "sanitized": false,
+      "fragment_count": 6,
+      "canonical_smiles": null,
+      "conversion_error": "AtomValenceException: Explicit valence for atom # 17 F, 2, is greater than permitted"
+    }
+  },
+  {
+    "id": "protenix_chemistry50k",
+    "source_edition": "edition-0017",
+    "chunk": "protenix_chemistry50k-frames-0025.json",
+    "sha256": "65b044ebd8b7288caee408085bffe92465ff7f72a0b5ea87064777ef0b297989",
+    "global_step": 50000,
+    "saved_readout": {
+      "sanitized": false,
+      "fragment_count": 1,
+      "canonical_smiles": null,
+      "conversion_error": "AtomValenceException: Explicit valence for atom # 0 S, 13, is greater than permitted"
+    }
+  },
+  {
+    "id": "protenix_chemistry_noise50k",
+    "source_edition": "edition-0017",
+    "chunk": "protenix_chemistry_noise50k-frames-0025.json",
+    "sha256": "6a1a74b108463b6c482c6da182abace5bb36495bf28f9b13bc09073cd77ca082",
+    "global_step": 50000,
+    "saved_readout": {
+      "sanitized": false,
+      "fragment_count": 1,
+      "canonical_smiles": null,
+      "conversion_error": "AtomValenceException: Explicit valence for atom # 3 Cl, 8, is greater than permitted"
+    }
+  }
+]

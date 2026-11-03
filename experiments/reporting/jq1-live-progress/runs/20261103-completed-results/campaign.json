@@ -1,5 +1,5 @@
 {
-  "status": "render_running_publication_pending",
+  "status": "published_bytes_verified_browser_cohort_limit_failure",
   "request_id": "request-20261103T083805Z-082e0399",
   "local_request": "results\\hpc\\20261028-reusable-report-01\\requests\\request-20261103T083805Z-082e0399",
   "remote_request": "/work3/s234818/mosaic/runs/reusable-saved-report-v3/requests/request-20261103T083805Z-082e0399",
@@ -86,12 +86,28 @@
   "publication_verified": false,
   "scientific_success_claim": false,
   "saved_results_changed": false,
-  "recovery_instruction": "Current local canonical controller is running with exec session83714 and owns the viewer lock. Inspect its process/state/result and actual render29876146 before recovery. Never duplicate the accepted render. Resume this exact request only after the prior controller has ended; use canonical completed-delivery recovery if live LSF history later expires.",
+  "recovery_instruction": "No recovery needed. Edition0017 is preserved with its browser cohort-limit failure. Corrected edition0018 is published; see sibling 20261103-focused-with-vae campaign.",
   "local_controller": {
     "launcher_pid": 34092,
     "python_pid": 60328,
     "exec_session_id": 83714,
     "command": "scripts/reporting/report.py --profile experiments/reporting/jq1-live-progress/configs/dtu-report-work3-exploratory.json",
-    "state": "running; inspect actual PID/command before any resume"
+    "state": "finished; historical controller identity only"
+  },
+  "publication": {
+    "automatic_optimizer_submission": false,
+    "edition": "edition-0017",
+    "engine_pin": "e06f8ac1896125d75d934a32dd69f5455dc75b29a43e612dfca9b0535113c863",
+    "manifest_sha256": "2c6c94a6e6b118ecd75e13c891967a70b3c19863e03783b56d26dfb9da8eba64",
+    "published_utc": "2026-11-03T09:27:27.656706+00:00",
+    "report_url": "editions/edition-0017/report.html",
+    "version": "jq1-live-publication-v1"
+  },
+  "http_files_verified": 567,
+  "browser_failure": "Viewer accepts32 arms; captured report has37. Preserved immutable edition0017; canonical template fix and new request in focused-with-vae record.",
+  "superseded_by": {
+    "edition": "edition-0018",
+    "run": "20261103-focused-with-vae",
+    "render_job_id": "29876703"
   }
 }

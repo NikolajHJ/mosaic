@@ -1,0 +1,57 @@
+{
+  "status": "passed_browser_presentation_QA",
+  "utc": "2026-11-03T10:00:53.367871+00:00",
+  "url": "http://127.0.0.1:8780/collections/20261103-focused-02/report.html",
+  "browser": "in-app browser tab3",
+  "overview_runs": 13,
+  "selected_Mosaic_arms_checked": [
+    "annealed_sparse_50k_s17",
+    "structural10_noise_chain_s17",
+    "structural10_chain_s17",
+    "structural10_noise_sparse_s17",
+    "structural10_sparse_s17",
+    "structural_structural_s17",
+    "strategy_constant1_s17",
+    "strategy_constant10_s17",
+    "protenix50k",
+    "protenix_chemistry50k",
+    "protenix_chemistry_noise50k",
+    "dbmol"
+  ],
+  "all_Mosaic_selections_loaded_expected_titles_and_target_steps": true,
+  "Mosaic_report_errors": [],
+  "annealed_navigation": {
+    "keyboard_numeric": [
+      0,
+      25000,
+      12340
+    ],
+    "next_previous": [
+      25020,
+      25000
+    ],
+    "playback_observed_global_step": 260,
+    "manual_numeric_pauses": true,
+    "manual_step_remained": 12340,
+    "range_keyboard_home_then_right": 20,
+    "latest": 50000,
+    "latest_saved_readout": "sanitized",
+    "atom_heatmap_cells": 150,
+    "bond_heatmap_cells": 1500
+  },
+  "DBMol_latest": 60000,
+  "VAE_endpoint": {
+    "step_label": "Step 50000 · saved state 50001 / 50001",
+    "validity": "Chemical validity passed",
+    "SMILES": "CC1C(Cl)N2CC23OC2(CC12)C3CCCCCCCCCCC(N)O",
+    "earlier_full_navigation_proof": "vae-browser-check.json",
+    "initial_load_control_timeout": "155MB original HTML was still loading; later actual endpoint action and readout succeeded"
+  },
+  "screenshot": {
+    "path": "results/hpc/20261103-focused-report/report-preview.png",
+    "bytes": 99474,
+    "sha256": "c8cb3f851b2e51109b7ccb8ba766cdba2d78d3ac195fb4fda06ed1d58a0d5f8b"
+  },
+  "tab_marked_deliverable": true,
+  "scientific_calculations_local": false
+}

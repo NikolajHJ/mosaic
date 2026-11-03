@@ -1,0 +1,151 @@
+{
+  "version": "mosaic-report-collection-v1",
+  "collection": "20261103-focused-02",
+  "viewer": "results/hpc/20261025-jq1-live-report-01/viewer",
+  "base_url": "http://127.0.0.1:8780",
+  "title": "Valid molecules, optimized trajectories",
+  "subtitle": "Recent structural repair, noise and cooling experiments — alongside VAE latent optimization.",
+  "date": "3 November 2026",
+  "highlights": [
+    {
+      "title": "Sparse annealing reaches validity",
+      "body": "The 50k cooling/ramp run ends valid and connected. 19/128 sampled endpoints are valid; the conditional 20k rescue was correctly skipped."
+    },
+    {
+      "title": "Chain + noise retains a valid endpoint",
+      "body": "The structural weight 10 chain/noise arm ends valid and connected, but 0/128 samples are valid. Its start was already valid."
+    },
+    {
+      "title": "VAE finishes 50k latent updates",
+      "body": "The frozen-decoder run starts and ends valid, with 50 distinct valid SMILES observed. Different settings and vocabulary prevent a causal head-to-head claim."
+    }
+  ],
+  "comparison_note": "These are exploratory saved results. Contact, Boltz affinity and DBMol composite loss are different quantities. Validity means the recorded argmax sanitation result unless connectivity is explicitly stated; sampled validity is a separate endpoint test. Changing chemistry targets, coefficients and temperature means totals are not one fixed objective. VAE sample validity was not measured with the Mosaic protocol. One seed and different GPUs limit causal and runtime conclusions. None of these proxy scores establishes binding or activity.",
+  "runs": [
+    {
+      "id": "annealed_sparse_50k_s17",
+      "label": "Sparse + cooling + noise",
+      "target": 50000,
+      "group": "New comparison",
+      "endpoint": "Valid, connected",
+      "samples": "19 / 128",
+      "context": "Structural repair; chemistry 1→30 at 20k–30k, temperature 0.7→0.4, noise 0.4→0 by30k. Started sparse/random; 1,636 valid saved states."
+    },
+    {
+      "id": "vae_protenix50k",
+      "label": "VAE latent + Protenix + structural repair",
+      "target": 50000,
+      "group": "New representation",
+      "endpoint": "Valid",
+      "samples": "Not measured",
+      "context": "Frozen epoch45 VAE; optimize 256D latent. Random latent decoded to a valid starting graph. Chemistry1→10, temperature0.7→0.4, noise 0.4→0; different element/charge vocabulary and latent step bound. 16,289/50,000 source states valid, 50 distinct valid SMILES. Not a matched direct-logit control.",
+      "attachment": {
+        "path": "C:/Users/nikol/DBMol_Local/reports/vae-protenix-50000-20261103/index.html",
+        "sha256": "c3e259e49feb9543e0da8dbf46ee9e198faf1d47aea849618ffbe8eb48d20f71",
+        "manifest": "C:/Users/nikol/DBMol_Local/reports/vae-protenix-50000-20261103/manifest.json",
+        "manifest_sha256": "c0d429341261d006c479e8b7a77f0cd04038fcdebb69704638b1479147d27d20",
+        "evidence": "experiments/reporting/jq1-live-progress/runs/20261103-focused-with-vae/vae-terminal-evidence.json",
+        "evidence_sha256": "07e54c8ec0f5be260d5abe06df44500ce6d6ab90f8eced767b472c2b41209f7f"
+      }
+    },
+    {
+      "id": "structural10_noise_chain_s17",
+      "label": "Chain + structural repair + noise",
+      "target": 30000,
+      "group": "New comparison",
+      "endpoint": "Valid, connected",
+      "samples": "0 / 128",
+      "context": "Chemistry 10; noise 0.4→0 by20k. Chain/uniform initialization starts valid. 25,410 valid saved states; valid argmax does not imply robust samples."
+    },
+    {
+      "id": "structural10_chain_s17",
+      "label": "Chain + structural repair",
+      "target": 30000,
+      "group": "New comparison",
+      "endpoint": "Sanitized, 2 fragments",
+      "samples": "0 / 128",
+      "context": "Chemistry 10, no step noise. Same chain/uniform initialization. 20,145 sanitized states; final graph is disconnected."
+    },
+    {
+      "id": "structural10_noise_sparse_s17",
+      "label": "Sparse + structural repair + noise",
+      "target": 30000,
+      "group": "New comparison",
+      "endpoint": "Invalid",
+      "samples": "0 / 128",
+      "context": "Chemistry 10; noise 0.4→0 by20k. Sparse initialization; no valid saved argmax states."
+    },
+    {
+      "id": "structural10_sparse_s17",
+      "label": "Sparse + structural repair",
+      "target": 30000,
+      "group": "New comparison",
+      "endpoint": "Invalid",
+      "samples": "0 / 128",
+      "context": "Chemistry 10, no step noise. Sparse initialization; no valid saved argmax states."
+    },
+    {
+      "id": "structural_structural_s17",
+      "label": "Structural repair · weight1",
+      "target": 30000,
+      "group": "Repair baseline",
+      "endpoint": "Invalid",
+      "samples": null,
+      "context": "Seed17 structural target builder. Compare first 20k with old repair weight1; extra 10k has no matched old-repair counterpart. GPU differs."
+    },
+    {
+      "id": "strategy_constant1_s17",
+      "label": "Old repair · weight1",
+      "target": 20000,
+      "group": "Repair baseline",
+      "endpoint": "Invalid",
+      "samples": null,
+      "context": "Seed17 sparse baseline; original beam target search and chemistry weight1."
+    },
+    {
+      "id": "strategy_constant10_s17",
+      "label": "Old repair · weight 10",
+      "target": 20000,
+      "group": "Repair baseline",
+      "endpoint": "Invalid",
+      "samples": null,
+      "context": "Seed17 sparse baseline; original repair search with constant chemistry10."
+    },
+    {
+      "id": "protenix50k",
+      "label": "Protenix only",
+      "target": 50000,
+      "group": "Original reference",
+      "endpoint": "Invalid",
+      "samples": null,
+      "context": "No chemistry guidance. Entire saved continuation history starts at0; failed historical checks remain recorded."
+    },
+    {
+      "id": "protenix_chemistry50k",
+      "label": "Protenix + delayed chemistry",
+      "target": 50000,
+      "group": "Original reference",
+      "endpoint": "Invalid",
+      "samples": null,
+      "context": "Original random initialization; delayed chemistry0.001→100. Compare with original constant-ratio noise arm, not as a matched annealing control."
+    },
+    {
+      "id": "protenix_chemistry_noise50k",
+      "label": "Protenix + delayed chemistry + noise",
+      "target": 50000,
+      "group": "Original reference",
+      "endpoint": "Invalid",
+      "samples": null,
+      "context": "Original random initialization and chemistry schedule; noise 0.4 relative to binding-only updates throughout. All resumed history included."
+    },
+    {
+      "id": "dbmol",
+      "label": "DBMol composite objective",
+      "target": 60000,
+      "group": "Completed continuation",
+      "endpoint": "Invalid",
+      "samples": null,
+      "context": "Mosaic direct optimization using the Boltz composite loss, not the VAE. Completed 60k. Composite loss is not comparable to Protenix contact loss."
+    }
+  ]
+}

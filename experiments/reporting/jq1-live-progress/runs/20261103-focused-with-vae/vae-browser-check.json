@@ -1,0 +1,20 @@
+{
+  "status": "passed_observed_UI",
+  "checked_utc": "2026-11-03T09:49:51.755525+00:00",
+  "artifact_sha256": "c3e259e49feb9543e0da8dbf46ee9e198faf1d47aea849618ffbe8eb48d20f71",
+  "states": [
+    0,
+    25000,
+    25001,
+    50000
+  ],
+  "observed_total_states": 50001,
+  "observed_final_validity": "Chemical validity passed",
+  "observed_final_smiles": "CC1C(Cl)N2CC23OC2(CC12)C3CCCCCCCCCCC(N)O",
+  "probability_table_rows": {
+    "atoms": 50,
+    "charges": 50,
+    "bonds": 50
+  },
+  "scope": "Actual browser controls/DOM; no scientific recomputation; no full cross-run causal qualification"
+}
