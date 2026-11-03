@@ -15,7 +15,7 @@ chemistry trajectories supported by that experiment's saved-data schema.
 
 ### Focused collections and a report from another repository
 
-Use `collection.py` for a smaller navigation view over an **already published**
+Use `collection.py` for a selected trajectory view over an **already published**
 canonical report. It selects existing run IDs and can attach a self-contained
 saved report from another repository without converting its graph schema or
 forking its renderer. External HTML, its manifest and terminal evidence are
@@ -33,6 +33,11 @@ small selection/config, choose a fresh `collection` name, then run:
 ```powershell
 py -3 scripts/reporting/collection.py --config experiments/reporting/jq1-live-progress/configs/focused-with-vae.json
 ```
+
+The default presentation is the previous interactive report style: clickable run
+cards, an immediately open trajectory, final-result shortcut, frame slider/playback,
+loss plots and expanded probability matrices. Do not replace it with a summary-only
+landing page. The VAE keeps its atom/charge/bond controls and original vocabulary.
 
 Collections are immutable and share the existing viewer server and scientific
 assets. Keep the previous collection and full report. Verify the new page in a

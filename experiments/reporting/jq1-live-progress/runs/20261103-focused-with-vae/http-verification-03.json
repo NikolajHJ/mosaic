@@ -1,0 +1,35 @@
+{
+  "status": "all_collection_HTTP_bytes_passed",
+  "utc": "2026-11-03T10:10:39.720638+00:00",
+  "url": "http://127.0.0.1:8780/collections/20261103-trajectories-03/report.html",
+  "files": {
+    "attachments/vae_protenix50k.html": {
+      "bytes": 154978978,
+      "sha256": "c3e259e49feb9543e0da8dbf46ee9e198faf1d47aea849618ffbe8eb48d20f71"
+    },
+    "attachments/vae_protenix50k-manifest.json": {
+      "bytes": 150361,
+      "sha256": "c0d429341261d006c479e8b7a77f0cd04038fcdebb69704638b1479147d27d20"
+    },
+    "attachments/vae_protenix50k-evidence.json": {
+      "bytes": 89845,
+      "sha256": "07e54c8ec0f5be260d5abe06df44500ce6d6ab90f8eced767b472c2b41209f7f"
+    },
+    "report.html": {
+      "bytes": 16644,
+      "sha256": "5f29d0b974b3fa18db93464cb700e515437bb76f21d1d1c3a1b308e0772ee0f5"
+    },
+    "selection.json": {
+      "bytes": 8189,
+      "sha256": "54be99d02460825d05d4d6fba7eb2f058e13eaf32fb7dd4a640a4b137456db80"
+    },
+    "collection-receipt.json": {
+      "bytes": 2574,
+      "sha256": "96e4e0a407ab42814e4ad0f0bf2115ad20cacb4a3e43cf75558cbcbfbbce82d2"
+    }
+  },
+  "canonical_edition_unchanged": "edition-0018",
+  "source_VAE_HTML_unchanged": true,
+  "new_scientific_rendering": false,
+  "new_HPC_submissions": false
+}

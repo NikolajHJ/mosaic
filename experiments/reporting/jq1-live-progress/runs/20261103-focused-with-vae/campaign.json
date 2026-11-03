@@ -1,5 +1,5 @@
 {
-  "status": "published_HTTP_and_browser_verified",
+  "status": "published_interactive_layout_verified",
   "request": "results\\hpc\\20261028-reusable-report-01\\requests\\request-20261103T093249Z-4cd047db",
   "engine_pin": "3935d500cb3f745ead64be7cb794865a089afe415423182c2289d05c76b87fb2",
   "cpu_job_id": "29876500",
@@ -16,9 +16,9 @@
   },
   "original_results_changed": false,
   "source_reports_reused": true,
-  "timestamp": "2026-11-03T10:00:53.367871+00:00",
-  "collection": "20261103-focused-02",
-  "url": "http://127.0.0.1:8780/collections/20261103-focused-02/report.html",
+  "timestamp": "2026-11-03T10:17:35.613295+00:00",
+  "collection": "20261103-trajectories-04",
+  "url": "http://127.0.0.1:8780/collections/20261103-trajectories-04/report.html",
   "full_history_url": "http://127.0.0.1:8780/report.html",
   "included_runs": 13,
   "Mosaic_runs": 12,
@@ -79,5 +79,25 @@
       "bytes": 2659,
       "sha256": "b36430afc4af5fc659c7763d2b369986d1a81150dc8e571798babf06e1c4f6cf"
     }
+  },
+  "previous_collection": {
+    "name": "20261103-focused-02",
+    "url": "http://127.0.0.1:8780/collections/20261103-focused-02/report.html",
+    "note": "Preserved; user requested the familiar interactive layout instead of its summary landing page."
+  },
+  "layout_verification": {
+    "path": "experiments/reporting/jq1-live-progress/runs/20261103-focused-with-vae/layout-04.json",
+    "bytes": 2755,
+    "sha256": "873e70e85e87a6675a60221fde3a080250e08853f815f55da7498a1a8b51d888"
+  },
+  "collection_HTTP_verification": {
+    "path": "experiments/reporting/jq1-live-progress/runs/20261103-focused-with-vae/http-verification-04.json",
+    "bytes": 1248,
+    "sha256": "fb85cf008ef07471f03ba3afb2f4532a366944636c276761ae8c5d647da5d08c"
+  },
+  "current_collection_receipt": {
+    "path": "experiments/reporting/jq1-live-progress/runs/20261103-focused-with-vae/collection-receipt-04.json",
+    "bytes": 2574,
+    "sha256": "50ff89ebb74b6f5a64fd838c6a6fe29c2fb90c1181afa70bde6ada67e6d3d133"
   }
 }

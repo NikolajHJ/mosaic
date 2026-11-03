@@ -1,0 +1,71 @@
+{
+  "status": "published_interactive_layout_verified",
+  "utc": "2026-11-03T10:17:35.613295+00:00",
+  "url": "http://127.0.0.1:8780/collections/20261103-trajectories-04/report.html",
+  "request": "Restore the previous interactive report layout, clickable runs, molecules, final results and matrices.",
+  "presentation": [
+    "13 run cards; first trajectory immediately open",
+    "Default final saved state",
+    "Existing molecule/plots/numeric/slider/arrow/playback controls",
+    "Expanded atom and bond matrices; VAE atom/charge/bond matrices",
+    "Full-height viewer instead of nested scrolling panel"
+  ],
+  "source_edition": "edition-0018",
+  "new_HPC_jobs": 0,
+  "new_scientific_rendering": false,
+  "saved_results_changed": false,
+  "portable_packaging_cases": 4,
+  "browser": {
+    "final_collection_cards": 13,
+    "Mosaic_04_steps_observed": [
+      50000,
+      0,
+      20,
+      360,
+      25000,
+      50000
+    ],
+    "Mosaic_04_playback": true,
+    "Mosaic_04_manual_numeric_pauses": true,
+    "Mosaic_04_heatmap_cells": {
+      "atom": 150,
+      "bond": 1500
+    },
+    "VAE_04_default_step": 50000,
+    "VAE_04_validity": "Chemical validity passed",
+    "VAE_03_same_source_slider_zero_and_final_verified": true,
+    "VAE_matrix_rows_observed": {
+      "atom": 50,
+      "charge": 50,
+      "bond": 50
+    },
+    "representative_run_card_endpoints_in_03": {
+      "structural10_noise_chain_s17": 30000,
+      "dbmol": 60000
+    },
+    "prior_all_run_selector_proof": "browser-verification.json",
+    "automation_note": "Large original VAE document caused some 3-second browser-action timeouts. Subsequent visible state confirmed slider step0 and final50000; no repeat experiment or input change.",
+    "no_browser_error_displayed": true
+  },
+  "HTTP": {
+    "path": "experiments/reporting/jq1-live-progress/runs/20261103-focused-with-vae/http-verification-04.json",
+    "bytes": 1248,
+    "sha256": "fb85cf008ef07471f03ba3afb2f4532a366944636c276761ae8c5d647da5d08c"
+  },
+  "receipt": {
+    "path": "experiments/reporting/jq1-live-progress/runs/20261103-focused-with-vae/collection-receipt-04.json",
+    "bytes": 2574,
+    "sha256": "50ff89ebb74b6f5a64fd838c6a6fe29c2fb90c1181afa70bde6ada67e6d3d133"
+  },
+  "preview": {
+    "path": "results/hpc/20261103-focused-report/trajectory-report-04.png",
+    "bytes": 77837,
+    "sha256": "abdd4cf26ccbe2439060e332de33c18ccf6f3816585257135cd72bfdc277a110"
+  },
+  "VAE_preview": {
+    "path": "results/hpc/20261103-focused-report/vae-trajectory-04.png",
+    "bytes": 106784,
+    "sha256": "1d7db8c5ea68af54ce33d08757de6cdd8ade0397f8a5e876a2799f7cbc33b0f8"
+  },
+  "preserved_preview03": "20261103-trajectories-03;04 also preserves layout height and disables scroll anchoring during switches"
+}

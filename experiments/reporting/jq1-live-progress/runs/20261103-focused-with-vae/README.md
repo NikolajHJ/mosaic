@@ -57,3 +57,19 @@ pre-existing non-UTF8 document; no whole-layout pass is claimed or unrelated
 files changed. Initial collection test UTF8 decoding and a missing local venv
 pytest package were corrected with the portable Python runner; no scientific
 criteria changed.
+
+### Interactive layout correction
+
+The user rejected the summary landing page. Collection04 restores the familiar
+run cards and opens a selected trajectory immediately at its final result. The
+original loss plots, molecule diagrams, numeric selector, frame slider, playback
+and all retained matrices remain in the canonical viewer. Probability matrices
+are expanded; the page grows to its content without a nested iframe scrollbar.
+VAE keeps its own broader atom/charge/bond matrices and saved-state controls.
+Only navigation/presentation changed; edition0018 and the VAE HTML are unchanged.
+Four portable packaging controls passed. No new HPC job or scientific rendering
+was required. Final verification is in `layout-04.json`.
+
+Current link: [interactive trajectory report](http://127.0.0.1:8780/collections/20261103-trajectories-04/report.html).
+Collection03 is a preserved layout preview;04 additionally prevents the page
+from collapsing/reanchoring while a different report is loading.
