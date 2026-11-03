@@ -1,6 +1,6 @@
 {
-  "status": "parent_completed_valid_endpoint_conditional_callback_queued",
-  "observed_utc": "2026-11-02T23:06:14.329860+00:00",
+  "status": "parent_completed_valid_endpoint_conditional_tail_skipped",
+  "observed_utc": "2026-11-03T08:29:04.688972+00:00",
   "source": {
     "path": "/work3/s234818/mosaic/runs/20261102-sparse-annealed-50k-01/source01/source",
     "files": 157,
@@ -30,7 +30,7 @@
   },
   "conditional": {
     "callback_job_id": "29873393",
-    "callback_status": "PEND",
+    "callback_status": "SUCCESS_PERSISTED",
     "dependency": "done(29873389)",
     "predicate": "saved endpoint argmax sanitized and connected",
     "valid_endpoint": "skip; no GPU submitted",
@@ -44,8 +44,14 @@
       "wall_minutes": 255
     },
     "tail_gpu_job_id": null,
-    "pending_reason": "The queue is inactivated by the administrator",
-    "expected_outcome_from_saved_metadata": "skip; original callback not yet executed"
+    "actual_outcome": {
+      "status": "skipped_endpoint_already_valid",
+      "parent_job_id": "29873389",
+      "global_step": 50000,
+      "optimizer_submitted": false,
+      "saved_results_changed": false
+    },
+    "completion_proof": "conditional-completion-20261103.json"
   },
   "original_saved_results_changed": false,
   "completion_verification": "completion-20261103T000614CET.json"

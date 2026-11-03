@@ -344,6 +344,7 @@ def publish_delta(archive, delivery, viewer, inventory, engine_pin, cpu_certific
             names.add(member.name.casefold())
         inputs.require(not names.intersection(n.casefold() for n in delivery['omitted_verified_local_assets']),
                        'Archive and omitted assets overlap')
+        Path(viewer).mkdir(parents=True, exist_ok=True)
         reconstruction_budget(sum(m.size for m in members),
                               sum(r['bytes'] for r in delivery['omitted_verified_local_assets'].values()),
                               unpacked_cap_bytes,shutil.disk_usage(viewer).free)

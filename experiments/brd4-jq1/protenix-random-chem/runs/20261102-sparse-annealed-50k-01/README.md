@@ -122,3 +122,12 @@ No20k-tail GPU has been submitted. Existing report request
 request-20261102T170052Z-9d264ce8 already includes this completion candidate;
 CPU29874871 remains PEND, so no new edition is published and no duplicate request
 was created. See [completion evidence](completion-20261103T000614CET.json).
+
+
+## Conditional decision verified: 3 November 2026
+
+Callback29873393 completed successfully on allocated CPU and recorded
+`skipped_endpoint_already_valid` at global50,000. Its original endpoint audit,
+LSF and scheduler history agree: no20k-tail optimizer was submitted. The prior
+queued description above is historical. All DTU queues are now Open:Active.
+See [callback evidence](conditional-completion-20261103.json).

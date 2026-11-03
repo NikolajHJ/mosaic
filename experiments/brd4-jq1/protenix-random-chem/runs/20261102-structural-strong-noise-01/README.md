@@ -88,3 +88,20 @@ Stage once through the documented connector, run the capsule's focused
 `chemistry_screen_ops.submit(plan,'controls',wall_minutes=10)`, then submit
 its four `run` arms using their explicit budgets after actual controls pass.
 Use current queue observations for future placements. Do not change live plans.
+
+
+## Completed comparison: 3 November 2026, 09:29 CET
+
+All four arms finished30,000 updates. The two sparse arms recorded zero valid
+argmax states. The chain/uniform arm without noise recorded20,145 valid states
+but ended as two disconnected fragments. The chain/uniform arm with annealed
+noise recorded25,410 valid states and ended sanitized and connected. Its final
+relaxed contact was-0.8053371, versus-0.7412145 without noise. Both chain arms
+still produced0/128 valid unfiltered endpoint samples: a valid argmax does not
+yet imply a robust valid distribution. This is one seed across different GPUs;
+no general causal improvement or hard-molecule binding score is established.
+
+The actual summaries, same-job LSF, source/plan bindings, contiguous30,001-state
+records and unchanged frozen identities are recorded in
+[completion evidence](completion-20261103T082904Z.json). All original sources
+and states are untouched; the canonical report selection includes all four.

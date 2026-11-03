@@ -1,0 +1,22 @@
+{
+  "status": "passed_conditional_skip_metadata_audit",
+  "job_id": "29873393",
+  "assessment": {
+    "status": "skipped_endpoint_already_valid",
+    "parent_job_id": "29873389",
+    "global_step": 50000,
+    "optimizer_submitted": false,
+    "saved_results_changed": false
+  },
+  "assessment_binding": {
+    "path": "/work3/s234818/mosaic/runs/20261102-sparse-annealed-50k-01/source01/run/conditional/assessment.json",
+    "bytes": 170,
+    "sha256": "085cadaeb9593472fe735312402498f93e8ae5344f2f3f01dd2e118fcb6a28a1"
+  },
+  "same_job_LSF_success": true,
+  "same_job_bhist_success": true,
+  "packet": {
+    "path": "results\\hpc\\20261103-status\\details-20261103T083336Z\\stdout.json",
+    "sha256": "c6af839fd4d3efd7cd8e9725f392947774637237df9dc240b1a3ba9d97a8e9f2"
+  }
+}

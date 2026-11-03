@@ -35,3 +35,16 @@ Recovery uses the latest retained checkpoint that has its complete fixed-teacher
 The screen continuation records local `step` from0 and absolute `global_step`; NPZ step and schedule/phase/sampling positions remain global. Its summary declares `global_start`, `global_target` and `resume.predecessor_study`; its config still declares the ORIGINAL total target, while requested/applied updates describe this child. To report it from update0, merge the parent through that checkpoint and the child after its duplicated boundary, retaining the parent’s later interrupted branch as history. If the canonical report adapter needs that input extension, add it there with focused tests when these children complete; never rerun a producer for reporting. All future result publication uses scripts/reporting/report.py and the existing cache.
 
 No cleanup, saved-source edits, loss/gate changes, old dispatch replay or duplicate writer. New screen capsule/source and actual accepted/held/released receipts are under `/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/screen01`; native siblings are `native-noise01` and `native-dbmol01`. Read actual registries before recovery; do not replay this launch.
+
+
+## Completion update: 3 November 2026, 09:29 CET
+
+All ten recovery arms have now finished their requested totals. The last two
+were chemistry-first seed23 (29871030,20,000 updates) and DBMol (29871027,60,000
+total,29,740 in this final child). Contiguous saved counts, original same-job
+LSF success, submitted plan pins and frozen identities passed the metadata audit.
+Chemistry-first23 recorded zero valid states and0/128 valid endpoint samples;
+DBMol's final raw argmax remains invalid. These are completed exploratory
+budgets, not derivative or binding certification. Failed predecessors and
+excluded post-checkpoint tails are preserved. See
+[completion evidence](completion-20261103T082904Z.json).

@@ -1,0 +1,269 @@
+{
+  "status": "passed_completion_metadata_audit",
+  "observed_utc": "2026-11-03T08:29:04.688972+00:00",
+  "packet": {
+    "path": "results\\hpc\\20261103-status\\20261103T082901Z\\stdout.json",
+    "sha256": "630b11ffb0421308cd6c30d890f32e71c5f7d812b0b571d833faa2d6845c263e"
+  },
+  "details": {
+    "path": "results\\hpc\\20261103-status\\details-20261103T083336Z\\stdout.json",
+    "sha256": "c6af839fd4d3efd7cd8e9725f392947774637237df9dc240b1a3ba9d97a8e9f2"
+  },
+  "scope": "Original producer summaries, accepted submission/plan pins, contiguous committed JSONL counts, frozen identities and same-job LSF. Local byte/metadata only; no numerical arrays or new model evaluations. Scientific warnings preserved. Complete frame validation is allocated report work.",
+  "runs": [
+    {
+      "arm": "structural10-sparse-s17",
+      "job_id": "29873078",
+      "status": "completed_exploratory_updates",
+      "scheduler_evidence": "SUCCESS_PERSISTED",
+      "child_start": 0,
+      "global_end": 30000,
+      "target": 30000,
+      "applied_child_updates": 30000,
+      "states": 30001,
+      "contiguous_states": true,
+      "contiguous_updates": true,
+      "summary_binding": {
+        "path": "/work3/s234818/mosaic/runs/20261102-structural-strong-noise-01/source02/run/structural10-sparse-s17/payload/summary.json",
+        "bytes": 3164,
+        "sha256": "6b5deafddf44c21f1e7729278f3cfefdf608bc8bbd9c25c23cbd0ae871d67811"
+      },
+      "plan": {
+        "path": "/work3/s234818/mosaic/runs/20261102-structural-strong-noise-01/source02/source/plan.json",
+        "bytes": 17046,
+        "sha256": "92e00ee228fd8efc65c449cc47a4e365015e1e870138d0fafef3a8884df61e36"
+      },
+      "source_manifest": {
+        "path": "/work3/s234818/mosaic/runs/20261102-structural-strong-noise-01/source02/source/checksums.json",
+        "bytes": 17448,
+        "sha256": "a6093180a42012c2e591443c7074f7721287fdcd8dfc96ddd87fd03c3fc85097"
+      },
+      "same_job_LSF_success": true,
+      "LSF_path": "/work3/s234818/mosaic/runs/20261102-structural-strong-noise-01/source02/run/production/structural10-sparse-s17/stdout.29873078.log",
+      "LSF_tail_sha256": "d5eab2e19c136f8f685d53c360ec8d1c8c6aa0c00c32c72f984c4800fb168b40",
+      "frozen_before": {
+        "model_digest": "8d6926d5390fe682e193089f790ce53aa4011a6d5509ddb452a55db3d89b0ab2",
+        "context_digest": "b28dfad8e5ede565071c70a61695f6a38f5cb6bd591705e32979e59050ff5ce4"
+      },
+      "frozen_after": {
+        "model_digest": "8d6926d5390fe682e193089f790ce53aa4011a6d5509ddb452a55db3d89b0ab2",
+        "context_digest": "b28dfad8e5ede565071c70a61695f6a38f5cb6bd591705e32979e59050ff5ce4"
+      },
+      "derivative_qualified": false,
+      "final_readout": {
+        "sanitized": false,
+        "disconnected": true,
+        "fragment_count": 2,
+        "canonical_smiles": null,
+        "conversion_error": "AtomValenceException: Explicit valence for atom # 6 F, 2, is greater than permitted"
+      },
+      "report_binding": {
+        "path": "/work3/s234818/mosaic/runs/20261102-structural-strong-noise-01/source02/run/structural10-sparse-s17/payload/study/report.json",
+        "bytes": 8677,
+        "sha256": "75255393942d70e775217fbfc6eb1f39161614a17fd77b9c4871281a1c9e82c1"
+      },
+      "strict_valid_states": 0,
+      "valid_unique_smiles": [],
+      "last_sampled_validity": {
+        "step": 30000,
+        "draws": 128,
+        "sanitized": 0,
+        "strict_valid_connected": 0,
+        "unique_valid_smiles": [],
+        "failure_categories": {
+          "AtomValenceException": 128
+        },
+        "raw_samples": {
+          "path": "/work3/s234818/mosaic/runs/20261102-structural-strong-noise-01/source02/run/structural10-sparse-s17/payload/study/samples/samples-30000.npz",
+          "bytes": 2854,
+          "sha256": "5e00ea7766d3c7c13773f47c9e12d1fdc8fd41dc4b6ac26b7b0fb4444c604d40"
+        },
+        "native_model_key_changed": false,
+        "sampling": "Independent PCG64; FP64 inverseCDF scaled by represented row sum; no rejection/repair",
+        "binding_scores_evaluated_for_samples": false
+      },
+      "elapsed_seconds": 12438.513703110999,
+      "atom_identity_changes": 1,
+      "bond_identity_changes": 18,
+      "final_contact_loss": -0.2350882887840271
+    },
+    {
+      "arm": "structural10-chain-s17",
+      "job_id": "29873082",
+      "status": "completed_exploratory_updates",
+      "scheduler_evidence": "SUCCESS_PERSISTED",
+      "child_start": 0,
+      "global_end": 30000,
+      "target": 30000,
+      "applied_child_updates": 30000,
+      "states": 30001,
+      "contiguous_states": true,
+      "contiguous_updates": true,
+      "summary_binding": {
+        "path": "/work3/s234818/mosaic/runs/20261102-structural-strong-noise-01/source02/run/structural10-chain-s17/payload/summary.json",
+        "bytes": 4427,
+        "sha256": "029bf4bed53430c898f69da668d348bc6d2c3acf0b49b3d303ca05e0c0080d3a"
+      },
+      "plan": {
+        "path": "/work3/s234818/mosaic/runs/20261102-structural-strong-noise-01/source02/source/plan.json",
+        "bytes": 17046,
+        "sha256": "92e00ee228fd8efc65c449cc47a4e365015e1e870138d0fafef3a8884df61e36"
+      },
+      "source_manifest": {
+        "path": "/work3/s234818/mosaic/runs/20261102-structural-strong-noise-01/source02/source/checksums.json",
+        "bytes": 17448,
+        "sha256": "a6093180a42012c2e591443c7074f7721287fdcd8dfc96ddd87fd03c3fc85097"
+      },
+      "same_job_LSF_success": true,
+      "LSF_path": "/work3/s234818/mosaic/runs/20261102-structural-strong-noise-01/source02/run/production/structural10-chain-s17/stdout.29873082.log",
+      "LSF_tail_sha256": "e36b31aa55b75a58db6c1f86c82d45ce4ee07c0d00ecbf34f1047394483be6fe",
+      "frozen_before": {
+        "model_digest": "8d6926d5390fe682e193089f790ce53aa4011a6d5509ddb452a55db3d89b0ab2",
+        "context_digest": "b28dfad8e5ede565071c70a61695f6a38f5cb6bd591705e32979e59050ff5ce4"
+      },
+      "frozen_after": {
+        "model_digest": "8d6926d5390fe682e193089f790ce53aa4011a6d5509ddb452a55db3d89b0ab2",
+        "context_digest": "b28dfad8e5ede565071c70a61695f6a38f5cb6bd591705e32979e59050ff5ce4"
+      },
+      "derivative_qualified": false,
+      "final_readout": {
+        "sanitized": true,
+        "disconnected": true,
+        "fragment_count": 2,
+        "canonical_smiles": "CCCCCCCCCC1=C(C)C(C)CCCCCNOCCC1.S",
+        "conversion_error": null
+      },
+      "report_binding": {
+        "path": "/work3/s234818/mosaic/runs/20261102-structural-strong-noise-01/source02/run/structural10-chain-s17/payload/study/report.json",
+        "bytes": 9933,
+        "sha256": "5489b4e71d457e48e77769fdc291ae8d5ee7a664fc452ea82c9ab9f0fc8774cd"
+      },
+      "strict_valid_states": 20145,
+      "valid_unique_smiles": [
+        "CC1=C(CCCCCCCCCCl)CCCONCCCCCC1C",
+        "CC1=C(CCCCCCCCCS)CCCONCCCCCC1C",
+        "CCC(C)CCCCCNOCCCCCCCCCCCCCCl",
+        "CCCCCCCCCCCCCCCCCCCCCCCCC",
+        "CCCCCCCCCCCCCCCCNCCCCCCCC",
+        "CCCCCCCCCCCCCCCONCCCCCCCC"
+      ],
+      "last_sampled_validity": {
+        "step": 30000,
+        "draws": 128,
+        "sanitized": 0,
+        "strict_valid_connected": 0,
+        "unique_valid_smiles": [],
+        "failure_categories": {
+          "AtomValenceException": 128
+        },
+        "raw_samples": {
+          "path": "/work3/s234818/mosaic/runs/20261102-structural-strong-noise-01/source02/run/structural10-chain-s17/payload/study/samples/samples-30000.npz",
+          "bytes": 5246,
+          "sha256": "92412f170fc82c7e8f7d01893849a0f03286f8aac5d712fc373be36283feb03e"
+        },
+        "native_model_key_changed": false,
+        "sampling": "Independent PCG64; FP64 inverseCDF scaled by represented row sum; no rejection/repair",
+        "binding_scores_evaluated_for_samples": false
+      },
+      "elapsed_seconds": 19194.963117283,
+      "atom_identity_changes": 4,
+      "bond_identity_changes": 5836,
+      "final_contact_loss": -0.7412144541740417,
+      "best_valid_contact": {
+        "step": 22554,
+        "loss": -0.7946479916572571,
+        "scope": "same saved relaxed graph native score; hard argmax not rescored"
+      }
+    },
+    {
+      "arm": "structural10-noise-chain-s17",
+      "job_id": "29873084",
+      "status": "completed_exploratory_updates",
+      "scheduler_evidence": "SUCCESS_PERSISTED",
+      "child_start": 0,
+      "global_end": 30000,
+      "target": 30000,
+      "applied_child_updates": 30000,
+      "states": 30001,
+      "contiguous_states": true,
+      "contiguous_updates": true,
+      "summary_binding": {
+        "path": "/work3/s234818/mosaic/runs/20261102-structural-strong-noise-01/source02/run/structural10-noise-chain-s17/payload/summary.json",
+        "bytes": 4549,
+        "sha256": "a095e3a395ca6cab8755262e6448285ebe7956d4d8560c47e4ad76001f1701fa"
+      },
+      "plan": {
+        "path": "/work3/s234818/mosaic/runs/20261102-structural-strong-noise-01/source02/source/plan.json",
+        "bytes": 17046,
+        "sha256": "92e00ee228fd8efc65c449cc47a4e365015e1e870138d0fafef3a8884df61e36"
+      },
+      "source_manifest": {
+        "path": "/work3/s234818/mosaic/runs/20261102-structural-strong-noise-01/source02/source/checksums.json",
+        "bytes": 17448,
+        "sha256": "a6093180a42012c2e591443c7074f7721287fdcd8dfc96ddd87fd03c3fc85097"
+      },
+      "same_job_LSF_success": true,
+      "LSF_path": "/work3/s234818/mosaic/runs/20261102-structural-strong-noise-01/source02/run/production/structural10-noise-chain-s17/stdout.29873084.log",
+      "LSF_tail_sha256": "f44aac9a4706dcf7588552588826ce06fb7eb6ef0bd64427316ca7178105b61b",
+      "frozen_before": {
+        "model_digest": "8d6926d5390fe682e193089f790ce53aa4011a6d5509ddb452a55db3d89b0ab2",
+        "context_digest": "b28dfad8e5ede565071c70a61695f6a38f5cb6bd591705e32979e59050ff5ce4"
+      },
+      "frozen_after": {
+        "model_digest": "8d6926d5390fe682e193089f790ce53aa4011a6d5509ddb452a55db3d89b0ab2",
+        "context_digest": "b28dfad8e5ede565071c70a61695f6a38f5cb6bd591705e32979e59050ff5ce4"
+      },
+      "derivative_qualified": false,
+      "final_readout": {
+        "sanitized": true,
+        "disconnected": false,
+        "fragment_count": 1,
+        "canonical_smiles": "CCC1=C(CC(CC)CS)CCCNCCCCCCCCCCC1",
+        "conversion_error": null
+      },
+      "report_binding": {
+        "path": "/work3/s234818/mosaic/runs/20261102-structural-strong-noise-01/source02/run/structural10-noise-chain-s17/payload/study/report.json",
+        "bytes": 10678,
+        "sha256": "58ee32dd0a405c74a8e4feba754b47ba96195b14a08803ca7e7249420a89ece6"
+      },
+      "strict_valid_states": 25410,
+      "valid_unique_smiles": [
+        "CCC(C)CCCCCNOCCCCCCCCCCCCCCl",
+        "CCC1=C(CC(CC)CS)CCCNCCCCCCCCCCC1",
+        "CCC1=C(CC(CC)CS)CCCNOCCCCCCCCCC1",
+        "CCC1CCCCCNOCCCCCCCCCCCCCSC1",
+        "CCCCCCCCCCCCCCCCCCCCCCCCC",
+        "CCCCCCCCCCCCCCCCNCCCCCCCC",
+        "CCCCCCCCCCCCCCCONCCCCCCCC",
+        "CCCCCCCCCCCCCONCCCCCC(CC)CS"
+      ],
+      "last_sampled_validity": {
+        "step": 30000,
+        "draws": 128,
+        "sanitized": 0,
+        "strict_valid_connected": 0,
+        "unique_valid_smiles": [],
+        "failure_categories": {
+          "AtomValenceException": 128
+        },
+        "raw_samples": {
+          "path": "/work3/s234818/mosaic/runs/20261102-structural-strong-noise-01/source02/run/structural10-noise-chain-s17/payload/study/samples/samples-30000.npz",
+          "bytes": 6553,
+          "sha256": "c18dcd6f27e3e66abc4ace00424fabb9020bdaa6e1d93b2a41f67e837fb97742"
+        },
+        "native_model_key_changed": false,
+        "sampling": "Independent PCG64; FP64 inverseCDF scaled by represented row sum; no rejection/repair",
+        "binding_scores_evaluated_for_samples": false
+      },
+      "elapsed_seconds": 11330.538328434002,
+      "atom_identity_changes": 5,
+      "bond_identity_changes": 2711,
+      "final_contact_loss": -0.8053370714187622,
+      "best_valid_contact": {
+        "step": 29998,
+        "loss": -0.8054213523864746,
+        "scope": "same saved relaxed graph native score; hard argmax not rescored"
+      }
+    }
+  ]
+}

@@ -110,9 +110,9 @@
     },
     {
       "id": "dbmol",
-      "label": "Boltz-2 DBMol binding objective - target60k",
-      "status_detail": "Completed saved history0 to30,000. Additional30,000-update child29866396 is queued onL40S toward60,000; it has no committed new states yet. Original TOTAL-bond derivative contradictions209/195/264 remain unresolved. Frozen inputs and saved results preserved; the composite objective is not affinity or proof of binding.",
-      "continuation_status": "queued",
+      "label": "Boltz-2 DBMol binding objective - completed60k",
+      "status_detail": "Completed saved history0 to60,000. Final child29871027 applied29,740 updates from the authenticated30,260 checkpoint; the interrupted predecessor tail after30,260 remains preserved and is not counted twice. Original TOTAL-bond derivative contradictions209/195/264 remain unresolved. Frozen inputs and saved results preserved; the composite objective is not affinity or proof of binding. Endpoint raw argmax remains invalid.",
+      "continuation_status": "completed",
       "segments": [
         {
           "run": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-02/pilot-segment-0000/payload/study"
@@ -125,6 +125,23 @@
         },
         {
           "run": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/exploratory-recovery-20261031-01/dbmol-output/dbmol/payload/study"
+        },
+        {
+          "run": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-30000-to60000-20261101-01/run/dbmol/payload/study",
+          "through_global_update": 30260,
+          "saved_partial": true,
+          "job_id": "29866396",
+          "global_offset": 30000,
+          "requested_updates": 30000,
+          "config": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-release-02/source/examples/configs/dbmol_pilot.json",
+          "science_manifest": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/boltz-dbmol-pilot-release-02/source/source_manifest.json",
+          "source_manifest_sha256": "600ecc3b33135141a57c029a28a2c72f29e788e3ecf5cb2dac1761146d1d6eed",
+          "submission": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-30000-to60000-20261101-01/run/dbmol/submission.json",
+          "stdout": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-30000-to60000-20261101-01/run/dbmol/stdout.29866396.log",
+          "stderr": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/dbmol-30000-to60000-20261101-01/run/dbmol/stderr.29866396.log"
+        },
+        {
+          "run": "/work3/s234818/mosaic/runs/20261102-exclusive-gpu-recovery-01/native-dbmol01/run/dbmol/payload/study"
         }
       ],
       "global_target": 60000,
@@ -417,9 +434,7 @@
       "primary_metric": "contact_loss",
       "continuation_status": "completed",
       "status_detail": "Structural repair; constant chemistry10; binding-only logit noise0.4 linearly zero by20k, then10k settling. Existing sparse seeded tree initialization. Composition/margin off. Different GPU families confound runtime comparisons. Exploratory results; no derivative or binding certification."
-    }
-  ],
-  "completed_candidates": [
+    },
     {
       "id": "strategy_chemfirst_s23",
       "label": "chemfirst s23 (gpua10)",
@@ -464,7 +479,9 @@
       "primary_metric": "contact_loss",
       "continuation_status": "completed",
       "status_detail": "Chemistry1 through20k, geometric1 to30 by30k then hold; T linearly0.7 to0.4 over50k; binding-relative noise0.4 to0 by30k. Composition/margin off. Changing temperature changes relaxed scorer input: cross-state scores/totals are not one fixed objective. Unqualified exploratory results."
-    },
+    }
+  ],
+  "completed_candidates": [
     {
       "id": "annealed_sparse_repair70k_s17",
       "label": "Sparse cooling run plus conditional chemistry100 (full0-70k)",
@@ -479,8 +496,8 @@
       ],
       "global_target": 70000,
       "primary_metric": "contact_loss",
-      "continuation_status": "completed",
-      "status_detail": "Appears only if invalid50k endpoint triggered and completed20k continuation. Exact saved50k checkpoint continued at chemistry100,T0.4,noise0; full parent history and boundary observations retained. No derivative or binding certification."
+      "continuation_status": "skipped_valid_endpoint",
+      "status_detail": "Conditional callback29873393 completed and skipped this20k tail because the50k parent endpoint was already valid and connected. No GPU was submitted and no tail states exist."
     }
   ]
 }

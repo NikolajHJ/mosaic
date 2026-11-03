@@ -11257,3 +11257,115 @@ request9d264ce8/CPU29874871 and original conditional callback29873393 remain PEN
 No tail GPU/new request submitted; callback expected to skip on valid endpoint.
 DBMol29871027 still RUN, coherent56,982/60,000. Evidence: experiments/brd4-jq1/
 protenix-random-chem/runs/20261102-sparse-annealed-50k-01/completion-20261103T000614CET.json.
+
+### 2026-11-03T08:30:22.290428+00:00 â€” Reusable saved report: engine_CPU_submitted
+
+Request `request-20261102T170052Z-9d264ce8`; {"engine_pin": "e2777dbbc9b6b6eeff868b16a7564625fc81a03ac16cc7974ab3566909ce6d0f", "job_id": "29874871"}.
+Evidence `C:\Users\nikol\OneDrive\Dokumenter\GitHub\mosaic\results\hpc\20261028-reusable-report-01\requests\request-20261102T170052Z-9d264ce8`. Report-only metadata/allocated CPU work; scientific settings/results unchanged.
+
+### 2026-11-03T08:30:23.351209+00:00 â€” Reusable saved report: observed_UNKNOWN
+
+Request `request-20261102T170052Z-9d264ce8`; {"job_id": "29874871", "scheduler_only": true}.
+Evidence `C:\Users\nikol\OneDrive\Dokumenter\GitHub\mosaic\results\hpc\20261028-reusable-report-01\requests\request-20261102T170052Z-9d264ce8`. Report-only metadata/allocated CPU work; scientific settings/results unchanged.
+
+### 2026-11-03T08:35:00.765835+00:00 â€” Reusable saved report: engine_CPU_submitted
+
+Request `request-20261102T170052Z-9d264ce8`; {"engine_pin": "e06f8ac1896125d75d934a32dd69f5455dc75b29a43e612dfca9b0535113c863", "job_id": "29876081"}.
+Evidence `C:\Users\nikol\OneDrive\Dokumenter\GitHub\mosaic\results\hpc\20261028-reusable-report-01\requests\request-20261102T170052Z-9d264ce8`. Report-only metadata/allocated CPU work; scientific settings/results unchanged.
+
+### 2026-11-03T08:35:01.908880+00:00 â€” Reusable saved report: observed_PEND
+
+Request `request-20261102T170052Z-9d264ce8`; {"job_id": "29876081", "scheduler_only": true}.
+Evidence `C:\Users\nikol\OneDrive\Dokumenter\GitHub\mosaic\results\hpc\20261028-reusable-report-01\requests\request-20261102T170052Z-9d264ce8`. Report-only metadata/allocated CPU work; scientific settings/results unchanged.
+
+### 2026-11-03T08:35:18.943804+00:00 â€” Reusable saved report: observed_RUN
+
+Request `request-20261102T170052Z-9d264ce8`; {"job_id": "29876081", "scheduler_only": true}.
+Evidence `C:\Users\nikol\OneDrive\Dokumenter\GitHub\mosaic\results\hpc\20261028-reusable-report-01\requests\request-20261102T170052Z-9d264ce8`. Report-only metadata/allocated CPU work; scientific settings/results unchanged.
+
+### 2026-11-03T08:35:52.641640+00:00 â€” Reusable saved report: observed_DONE
+
+Request `request-20261102T170052Z-9d264ce8`; {"job_id": "29876081", "scheduler_only": true}.
+Evidence `C:\Users\nikol\OneDrive\Dokumenter\GitHub\mosaic\results\hpc\20261028-reusable-report-01\requests\request-20261102T170052Z-9d264ce8`. Report-only metadata/allocated CPU work; scientific settings/results unchanged.
+
+### 2026-11-03T08:35:53.946284+00:00 â€” Reusable saved report: engine_validated
+
+Request `request-20261102T170052Z-9d264ce8`; {"cases": 311, "cpu_job_id": "29876081", "engine_pin": "e06f8ac1896125d75d934a32dd69f5455dc75b29a43e612dfca9b0535113c863", "reused": false}.
+Evidence `C:\Users\nikol\OneDrive\Dokumenter\GitHub\mosaic\results\hpc\20261028-reusable-report-01\requests\request-20261102T170052Z-9d264ce8`. Report-only metadata/allocated CPU work; scientific settings/results unchanged.
+
+### 2026-11-03T08:35:53.953868+00:00 â€” Reusable saved report: engine_ready
+
+Request `request-20261102T170052Z-9d264ce8`; {"edition": null, "elapsed_seconds": 56.78099999995902, "engine_pin": "e06f8ac1896125d75d934a32dd69f5455dc75b29a43e612dfca9b0535113c863", "job_id": null}.
+Evidence `C:\Users\nikol\OneDrive\Dokumenter\GitHub\mosaic\results\hpc\20261028-reusable-report-01\requests\request-20261102T170052Z-9d264ce8`. Report-only metadata/allocated CPU work; scientific settings/results unchanged.
+
+### 2026-11-03T08:36:23.828171+00:00 â€” Reusable saved report: prepared
+
+Request `request-20261103T083623Z-5af63264`; {"output": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261025-jq1-live-report-01\\viewer", "runs": 37}.
+Evidence `C:\Users\nikol\OneDrive\Dokumenter\GitHub\mosaic\results\hpc\20261028-reusable-report-01\requests\request-20261103T083623Z-5af63264`. Report-only metadata/allocated CPU work; scientific settings/results unchanged.
+
+### 2026-11-03T08:36:28.199663+00:00 â€” Reusable saved report: engine_validated
+
+Request `request-20261103T083623Z-5af63264`; {"cases": 311, "cpu_job_id": "29876081", "engine_pin": "e06f8ac1896125d75d934a32dd69f5455dc75b29a43e612dfca9b0535113c863", "reused": true}.
+Evidence `C:\Users\nikol\OneDrive\Dokumenter\GitHub\mosaic\results\hpc\20261028-reusable-report-01\requests\request-20261103T083623Z-5af63264`. Report-only metadata/allocated CPU work; scientific settings/results unchanged.
+
+### 2026-11-03T08:38:00.214721+00:00 â€” Reusable saved report: engine_validated
+
+Request `request-20261103T083623Z-5af63264`; {"cases": 311, "cpu_job_id": "29876081", "engine_pin": "e06f8ac1896125d75d934a32dd69f5455dc75b29a43e612dfca9b0535113c863", "reused": true}.
+Evidence `C:\Users\nikol\OneDrive\Dokumenter\GitHub\mosaic\results\hpc\20261028-reusable-report-01\requests\request-20261103T083623Z-5af63264`. Report-only metadata/allocated CPU work; scientific settings/results unchanged.
+
+### 2026-11-03T08:38:00.222000+00:00 â€” Reusable saved report: engine_ready
+
+Request `request-20261103T083623Z-5af63264`; {"edition": null, "elapsed_seconds": 4.1100000001024455, "engine_pin": "e06f8ac1896125d75d934a32dd69f5455dc75b29a43e612dfca9b0535113c863", "job_id": null}.
+Evidence `C:\Users\nikol\OneDrive\Dokumenter\GitHub\mosaic\results\hpc\20261028-reusable-report-01\requests\request-20261103T083623Z-5af63264`. Report-only metadata/allocated CPU work; scientific settings/results unchanged.
+
+### 2026-11-03T08:38:05.379627+00:00 â€” Reusable saved report: prepared
+
+Request `request-20261103T083805Z-082e0399`; {"output": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\results\\hpc\\20261025-jq1-live-report-01\\viewer", "runs": 37}.
+Evidence `C:\Users\nikol\OneDrive\Dokumenter\GitHub\mosaic\results\hpc\20261028-reusable-report-01\requests\request-20261103T083805Z-082e0399`. Report-only metadata/allocated CPU work; scientific settings/results unchanged.
+
+### 2026-11-03T08:38:08.770346+00:00 â€” Reusable saved report: engine_validated
+
+Request `request-20261103T083805Z-082e0399`; {"cases": 311, "cpu_job_id": "29876081", "engine_pin": "e06f8ac1896125d75d934a32dd69f5455dc75b29a43e612dfca9b0535113c863", "reused": true}.
+Evidence `C:\Users\nikol\OneDrive\Dokumenter\GitHub\mosaic\results\hpc\20261028-reusable-report-01\requests\request-20261103T083805Z-082e0399`. Report-only metadata/allocated CPU work; scientific settings/results unchanged.
+
+### 2026-11-03T08:44:14.821225+00:00 â€” Reusable saved report: render_submitted
+
+Request `request-20261103T083805Z-082e0399`; {"edition": "edition-0017", "engine_pin": "e06f8ac1896125d75d934a32dd69f5455dc75b29a43e612dfca9b0535113c863", "job_id": "29876146"}.
+Evidence `C:\Users\nikol\OneDrive\Dokumenter\GitHub\mosaic\results\hpc\20261028-reusable-report-01\requests\request-20261103T083805Z-082e0399`. Report-only metadata/allocated CPU work; scientific settings/results unchanged.
+
+### 2026-11-03T08:44:15.926916+00:00 â€” Reusable saved report: observed_PEND
+
+Request `request-20261103T083805Z-082e0399`; {"job_id": "29876146", "scheduler_only": true}.
+Evidence `C:\Users\nikol\OneDrive\Dokumenter\GitHub\mosaic\results\hpc\20261028-reusable-report-01\requests\request-20261103T083805Z-082e0399`. Report-only metadata/allocated CPU work; scientific settings/results unchanged.
+
+### 2026-11-03T08:44:33.024004+00:00 â€” Reusable saved report: observed_RUN
+
+Request `request-20261103T083805Z-082e0399`; {"job_id": "29876146", "scheduler_only": true}.
+Evidence `C:\Users\nikol\OneDrive\Dokumenter\GitHub\mosaic\results\hpc\20261028-reusable-report-01\requests\request-20261103T083805Z-082e0399`. Report-only metadata/allocated CPU work; scientific settings/results unchanged.
+
+### 3 November2026: queues reopen; remaining Mosaic update budgets completed
+
+At08:29UTC all48 DTU queues were Open:Active. The five remaining Mosaic
+producers have authenticated same-job LSF completion, contiguous committed
+counts, original plan/source pins and unchanged frozen identities: DBMol29871027
+reached60,000 (29,740 child updates from30,260); chemistry-first23/29871030
+reached20k; structural10 sparse/chain/noisy-chain29873078/82/84 each reached30k.
+The chain/noisy-chain arms recorded20,145/25,410 valid states; only noisy-chain
+ended connected and valid. Both still had0/128 valid endpoint samples. Sparse
+constant10 and chemistry-first23 remained invalid. DBMol endpoint also invalid.
+These are exploratory completions, not derivative or binding certification.
+The annealed sparse50k callback29873393 actually skipped its conditional20k
+tail after confirming a valid endpoint; no tail GPU submitted. Exact metadata
+proofs are in each current campaign's completion-20261103T082904Z.json and the
+annealed campaign's conditional-completion-20261103.json. No sources, settings,
+checkpoints or other-project jobs were changed.
+
+Old report CPU29874871 failed4/311 existing cases on Linux statvfs before its
+viewer directory existed. One-line destination-directory creation fixed this;
+new allocated CPU29876081 passed311/311. Original failed XML/LSF retained.
+The canonical selection now covers37 full histories from0 through their targets,
+including the DBMol predecessor only through actual retained30,260 and its final
+child. Its first capture safely rejected the incomplete predecessor as a complete
+run; explicit existing saved-partial metadata resolves that selection without
+changing the adapter or criterion. Report job29876146 is the one accepted render
+for request-20261103T083805Z-082e0399, edition0017. Publication pending.
