@@ -1,0 +1,53 @@
+{
+  "status": "passed",
+  "collection": "20261103-trajectories-08",
+  "timestamp": "2026-11-03T10:59:16.714557+00:00",
+  "url": "http://127.0.0.1:8780/collections/20261103-trajectories-08/report.html",
+  "presentation_only": true,
+  "unchanged_embedded_data": true,
+  "all_12_mosaic_selectors_checked": true,
+  "mosaic_scalar_points": 50001,
+  "mosaic_slider_steps": [
+    0,
+    20
+  ],
+  "mosaic_numeric_step": 25000,
+  "vae_scalar_points_per_plot": 50001,
+  "vae_plot_dom_elements": 42,
+  "vae_retained_molecule_frames": 501,
+  "vae_slider_steps": [
+    0,
+    100
+  ],
+  "vae_midpoint_and_next": [
+    25000,
+    25100
+  ],
+  "vae_exact_unsaved_step": 12345,
+  "vae_next_retained_step": 12400,
+  "manual_input_pauses": true,
+  "unsaved_graph_honestly_absent": true,
+  "vae_atom_charge_bond_matrix_rows": [
+    50,
+    50,
+    50
+  ],
+  "vae_final_step": 50000,
+  "vae_final_validity": "Chemical validity passed",
+  "return_to_loaded_vae_ms": 124,
+  "timing_scope": "One local browser automation selection; not an end-to-end cold-load benchmark",
+  "return_preserved_step": 12400,
+  "layout_job": "29877248",
+  "layout_graphs": 14,
+  "layout_source": "canonical report_data.layout_raw_graph",
+  "layout_scope": "display coordinates only",
+  "local_packaging_controls_passed": 4,
+  "syntax_checks": "all three generated viewer scripts passed node --check",
+  "screenshot": "results\\hpc\\20261103-focused-report\\fast-molecule-report-08.png",
+  "screenshot_sha256": "9f7fc05db1ed9c54ea02ad79c425a4901dca0531d1eee7635d9378c7f9d114c5",
+  "notes": [
+    "First VAE load still parses the full original saved dataset.",
+    "Browser injection logged an unrelated MutationObserver diagnostic; report controls and data displayed successfully.",
+    "Preview collections05-07 are preserved;08 includes final scrubber note placement."
+  ]
+}

@@ -1,5 +1,5 @@
 {
-  "status": "published_interactive_layout_verified",
+  "status": "published_fast_trajectory_viewer_verified",
   "request": "results\\hpc\\20261028-reusable-report-01\\requests\\request-20261103T093249Z-4cd047db",
   "engine_pin": "3935d500cb3f745ead64be7cb794865a089afe415423182c2289d05c76b87fb2",
   "cpu_job_id": "29876500",
@@ -16,9 +16,9 @@
   },
   "original_results_changed": false,
   "source_reports_reused": true,
-  "timestamp": "2026-11-03T10:17:35.613295+00:00",
-  "collection": "20261103-trajectories-04",
-  "url": "http://127.0.0.1:8780/collections/20261103-trajectories-04/report.html",
+  "timestamp": "2026-11-03T10:59:16.714557+00:00",
+  "collection": "20261103-trajectories-08",
+  "url": "http://127.0.0.1:8780/collections/20261103-trajectories-08/report.html",
   "full_history_url": "http://127.0.0.1:8780/report.html",
   "included_runs": 13,
   "Mosaic_runs": 12,
@@ -37,7 +37,7 @@
     "version": "jq1-live-publication-v1"
   },
   "canonical_HTTP_files": 567,
-  "collection_HTTP_files": 6,
+  "collection_HTTP_files": 7,
   "delta_download_bytes": 1606476,
   "reused_local_assets": 559,
   "cached_scientific_arms": 37,
@@ -99,5 +99,9 @@
     "path": "experiments/reporting/jq1-live-progress/runs/20261103-focused-with-vae/collection-receipt-04.json",
     "bytes": 2574,
     "sha256": "50ff89ebb74b6f5a64fd838c6a6fe29c2fb90c1181afa70bde6ada67e6d3d133"
-  }
+  },
+  "display_layout_job": "29877248",
+  "display_layout_graphs": 14,
+  "presentation_proof": "fast-viewer-08.json",
+  "original_scientific_data_byte_preserved": true
 }

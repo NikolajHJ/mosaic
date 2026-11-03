@@ -18,8 +18,9 @@ chemistry trajectories supported by that experiment's saved-data schema.
 Use `collection.py` for a selected trajectory view over an **already published**
 canonical report. It selects existing run IDs and can attach a self-contained
 saved report from another repository without converting its graph schema or
-forking its renderer. External HTML, its manifest and terminal evidence are
-SHA-bound; the HTML is copied byte-for-byte. It does no scientific rendering.
+forking its scientific renderer. External HTML, its manifest and terminal evidence
+are SHA-bound. The optional presentation adapter preserves the embedded saved-data
+bytes exactly while caching plots and using precomputed display coordinates.
 
 The current selection is
 `experiments/reporting/jq1-live-progress/configs/focused-with-vae.json`: 12 Mosaic
@@ -38,6 +39,15 @@ The default presentation is the previous interactive report style: clickable run
 cards, an immediately open trajectory, final-result shortcut, frame slider/playback,
 loss plots and expanded probability matrices. Do not replace it with a summary-only
 landing page. The VAE keeps its atom/charge/bond controls and original vocabulary.
+
+Keep viewers loaded when switching runs, cache static loss plots, and only move
+their selection markers while scrubbing. The external viewer plots every scalar
+on a cached canvas; slider/arrows/playback browse retained molecule frames, while
+Exact update and plot clicks expose intervening scalar records. Never interpolate
+missing matrices. Use `layout_external_graphs.py` on allocated CPU to apply the
+existing `report_data.layout_raw_graph` to external raw graphs once; bind its
+output to the original HTML SHA in the attachment's `display_layout` fields.
+No model, repair or scoring is involved. Unknown viewer formats fail explicitly.
 
 Collections are immutable and share the existing viewer server and scientific
 assets. Keep the previous collection and full report. Verify the new page in a

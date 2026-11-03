@@ -11447,3 +11447,18 @@ Published13 selected histories (12Mosaic plus frozen-VAE Protenix50k) at http://
 ### 2026-11-03T10:17:35.613295+00:00 — Restore the interactive molecule report layout
 
 User requested the previous trajectory interface. Published collection20261103-trajectories-04 with13 clickable run cards, an immediately open final result, original molecule/plot/slider/playback controls and expanded matrices; VAE retains its broader atom, charge and bond views. Canonical edition0018 and original VAE HTML bytes are unchanged. No HPC submission, scientific rendering, optimizer or saved-result change. Four portable packaging controls passed; all6 collection HTTP files matched; browser verified Mosaic scrubbing/playback/manual pause/matrices and VAE endpoint, with the unchanged VAE slider also exercised in preview03. The common report guide now requires the interactive layout rather than a summary landing page. Evidence: experiments/reporting/jq1-live-progress/runs/20261103-focused-with-vae/layout-04.json.
+
+
+### 2026-11-03 — Faster saved report and bond-aware VAE molecule diagrams
+
+Published collection20261103-trajectories-08 over unchanged canonical edition0018
+and the original VAE50k data. Cached viewer switching/static plots remove repeated
+50k-point rebuilds; all scalar values and retained matrices remain available.
+VAE slider/playback traverses501 actual molecule frames; exact scalar selection
+remains. CPU29877248 DONE/hpc/LSFsuccess computed14 display-only layouts using the
+existing Mosaic graph layout, without repair/scoring or altering atom/bond labels.
+Embedded scientific JSON remains byte-identical. Seven HTTP files,4 portable
+packaging controls, JavaScript syntax and browser interaction checks passed.
+One cached VAE return measured124ms; first-load timing is not claimed. Proof:
+experiments/reporting/jq1-live-progress/runs/20261103-focused-with-vae/fast-viewer-08.json.
+http://127.0.0.1:8780/collections/20261103-trajectories-08/report.html

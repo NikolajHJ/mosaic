@@ -1,6 +1,6 @@
 {
   "version": "mosaic-report-collection-v1",
-  "collection": "20261103-trajectories-04",
+  "collection": "20261103-trajectories-08",
   "viewer": "results/hpc/20261025-jq1-live-report-01/viewer",
   "base_url": "http://127.0.0.1:8780",
   "title": "Valid molecules, optimized trajectories",
@@ -45,7 +45,9 @@
         "manifest": "C:/Users/nikol/DBMol_Local/reports/vae-protenix-50000-20261103/manifest.json",
         "manifest_sha256": "c0d429341261d006c479e8b7a77f0cd04038fcdebb69704638b1479147d27d20",
         "evidence": "experiments/reporting/jq1-live-progress/runs/20261103-focused-with-vae/vae-terminal-evidence.json",
-        "evidence_sha256": "07e54c8ec0f5be260d5abe06df44500ce6d6ab90f8eced767b472c2b41209f7f"
+        "evidence_sha256": "07e54c8ec0f5be260d5abe06df44500ce6d6ab90f8eced767b472c2b41209f7f",
+        "display_layout": "results/hpc/20261103-focused-report/layout01/layouts.json",
+        "display_layout_sha256": "9e8aa87b4161d90d3144dc88a8e9f40ded8de48109fe375490ef8e094ac906ff"
       }
     },
     {
@@ -147,5 +149,6 @@
       "samples": null,
       "context": "Mosaic direct optimization using the Boltz composite loss, not the VAE. Completed 60k. Composite loss is not comparable to Protenix contact loss."
     }
-  ]
+  ],
+  "fast_presentation": true
 }

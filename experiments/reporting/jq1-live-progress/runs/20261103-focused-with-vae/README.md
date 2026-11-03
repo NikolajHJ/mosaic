@@ -73,3 +73,29 @@ was required. Final verification is in `layout-04.json`.
 Current link: [interactive trajectory report](http://127.0.0.1:8780/collections/20261103-trajectories-04/report.html).
 Collection03 is a preserved layout preview;04 additionally prevents the page
 from collapsing/reanchoring while a different report is loading.
+
+
+### Faster viewer and bond-aware external molecules
+
+Collection08 caches loaded viewers, Mosaic scalar data and static plots. VAE plots
+retain all50,001 scalar points using two canvases instead of100,002 point nodes;
+only the selection marker changes during scrubbing. Its501 retained molecule
+frames drive the slider/arrows/playback; Exact update retains access to every
+scalar and explicitly shows when matrices were not saved. Manual input pauses
+playback. Returning to the loaded VAE measured124ms in one browser selection.
+The first load still reads its large original embedded dataset.
+
+Allocated CPU29877248 completed in7seconds with successful same-job LSF. The
+existing Mosaic bond-layout function computed14 distinct VAE raw graph layouts,
+retaining every atom slot and edge. No model, repair, chemistry validation or
+rescoring was run. Original HTML/source results remain unchanged; the derived
+viewer preserves its154,933,747 embedded data bytes exactly. Browser checks covered
+both viewers, selectors, numeric/slider/arrows/playback/manual pause, all three
+VAE matrix views and valid final50k readout. Seven served files matched bytes;
+4 portable packaging controls and generated JavaScript syntax checks passed.
+
+Current link: [faster trajectory report](http://127.0.0.1:8780/collections/20261103-trajectories-08/report.html).
+See `fast-viewer-08.json`, `display-layout-delivery.json` and
+`fast-viewer-byte-verification.json`. Earlier collections and canonical edition0018
+remain preserved. The canonical template receives the same plot-cache change for
+future report publications; this collection reuses existing scientific assets.

@@ -1,7 +1,7 @@
 """Assemble a focused navigation page over already-rendered saved reports.
 
-No scientific rendering or data conversion: Mosaic assets stay in their canonical
-immutable edition; external self-contained reports are copied byte-for-byte.
+Mosaic assets stay in their canonical immutable edition. Optional presentation
+adapters preserve embedded scientific data, using allocated display geometry.
 """
 from __future__ import annotations
 
@@ -11,6 +11,10 @@ import json
 from pathlib import Path
 import re
 import shutil
+import sys
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from presentation_adapter import adapt_external, adapt_mosaic
 
 
 OWNER = Path(__file__).resolve().parents[1]
@@ -67,7 +71,7 @@ def assemble(config_path):
     ids = [row['id'] for row in config['runs']]
     if len(ids) != len(set(ids)):
         raise ValueError('Duplicate selected run')
-    rows, attachments = [], []
+    rows, attachments, generated, adaptations = [], [], {}, {}
     for row in config['runs']:
         if not re.fullmatch(r'[a-zA-Z0-9_-]+', row['id']):
             raise ValueError('Unsafe run ID')
@@ -81,7 +85,13 @@ def assemble(config_path):
             evidence = checked(local(item['evidence']), item['evidence_sha256'])
             value['url'] = 'attachments/' + row['id'] + '.html'
             value['renderer'] = 'external'
-            attachments.append((artifact, value['url'], item['sha256']))
+            if 'display_layout' in item:
+                layout = checked(local(item['display_layout']), item['display_layout_sha256'])
+                generated[value['url']], adaptations[row['id']] = adapt_external(artifact.read_bytes(), load(layout))
+                attachments.append((layout, 'attachments/' + row['id'] + '-layout.json', item['display_layout_sha256']))
+                adaptations[row['id']].update(original_html_sha256=item['sha256'], layout_sha256=item['display_layout_sha256'])
+            else:
+                attachments.append((artifact, value['url'], item['sha256']))
             attachments.append((proof, 'attachments/' + row['id'] + '-manifest.json', item['manifest_sha256']))
             attachments.append((evidence, 'attachments/' + row['id'] + '-evidence.json', item['evidence_sha256']))
             del value['attachment']
@@ -89,10 +99,12 @@ def assemble(config_path):
             arm = arms[row['id']]
             if arm['global_start'] != 0 or arm['latest_global_step'] != row['target']:
                 raise ValueError('Selected run is not the requested complete history: ' + row['id'])
-            value['url'] = '../../editions/' + pointer['edition'] + '/report.html?arm=' + row['id']
+            value['url'] = ('mosaic-viewer.html' if config.get('fast_presentation') else '../../editions/' + pointer['edition'] + '/report.html') + '?arm=' + row['id']
             value['renderer'] = 'mosaic'
             value['scientific_status'] = arm['scientific_status']
         rows.append(value)
+    if config.get('fast_presentation'):
+        generated['mosaic-viewer.html'] = adapt_mosaic((edition / 'report.html').read_bytes(), pointer['edition'])
     data = {k: config[k] for k in ('title', 'subtitle', 'date', 'highlights', 'comparison_note')}
     data.update(runs=rows, edition=pointer['edition'], full_report='../../report.html')
     template = (OWNER / 'templates/collection.html').read_text(encoding='utf-8')
@@ -101,6 +113,12 @@ def assemble(config_path):
     # Validate everything before creating a new immutable output directory.
     destination.mkdir(parents=True, exist_ok=False)
     output_files = {}
+    for relative, content in generated.items():
+        target = destination / relative
+        target.parent.mkdir(parents=True, exist_ok=True)
+        with target.open('xb') as stream:
+            stream.write(content)
+        output_files[relative] = {'bytes': target.stat().st_size, 'sha256': sha(target)}
     for source, relative, digest in attachments:
         target = destination / relative
         target.parent.mkdir(parents=True, exist_ok=True)
@@ -115,7 +133,8 @@ def assemble(config_path):
         output_files[filename] = {'bytes': target.stat().st_size, 'sha256': sha(target)}
     proof = {
         'version': 'mosaic-report-collection-v1',
-        'execution': 'metadata navigation and byte-preserving report packaging only',
+        'execution': 'presentation packaging; scientific data unchanged',
+        'presentation_adapters': adaptations,
         'config_sha256': sha(config_path),
         'canonical_edition': pointer['edition'],
         'canonical_manifest_sha256': sha(manifest_path),
