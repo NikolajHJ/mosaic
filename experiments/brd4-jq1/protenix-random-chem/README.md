@@ -71,3 +71,10 @@ See [2November exclusive-mode recovery](runs/20261102-exclusive-gpu-recovery-01/
 2November2026: [stronger structural guidance and annealed noise](runs/20261102-structural-strong-noise-01/README.md) adds four fresh30k runs: constant10 structural repair with/without binding-gradient noise annealed0.4 to0 by20k, each from sparse seed17 or50% carbon-chain/uniform plus small initial noise. Actual jobs29873078/81/82/84 are queued on A100/V100/A40/L40S; CPU39 and four startups passed. Existing runs/results are unchanged.
 
 2 November 2026: [sparse 50k cooling/chemistry schedule](runs/20261102-sparse-annealed-50k-01/README.md) is running on V100 as29873389 (442 verified updates at11:09UTC). Chemistry1 through20k then geometric30 by30k; temperature0.7 to0.4 over50k; noise0.4 to0 by30k. Conditional CPU29873393 waits for completion and submits one additional20k at chemistry100/T0.4/noise0 only if the saved endpoint is invalid. CPU79 and canonical report-adapter44 tests passed; existing runs/results unchanged.
+
+3 November 2026: [two sparse cooling/noise replicas](runs/20261103-sparse-annealed-seeds-01/README.md)
+test whether the completed seed17 valid endpoint repeats. Fresh initialization
+seeds23/41 with independent noise streams retain the same50k schedules, LR0.3
+and model key17. Actual jobs29880094/A100 and29880095/L40S are queued; no new
+updates yet. Both are registered as future canonical report candidates. Existing
+sources, jobs and saved results remain unchanged.

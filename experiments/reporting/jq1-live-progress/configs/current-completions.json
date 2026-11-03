@@ -498,6 +498,24 @@
       "primary_metric": "contact_loss",
       "continuation_status": "skipped_valid_endpoint",
       "status_detail": "Conditional callback29873393 completed and skipped this20k tail because the50k parent endpoint was already valid and connected. No GPU was submitted and no tail states exist."
+    },
+    {
+      "id": "annealed_sparse_50k_s23",
+      "label": "Sparse structural repair - cooling and chemistry ramp, seed23 (0-50k)",
+      "run": "/work3/s234818/mosaic/runs/20261103-sparse-annealed-seeds-01/source01/run/annealed-sparse-s23/payload",
+      "global_target": 50000,
+      "primary_metric": "contact_loss",
+      "continuation_status": "submitted",
+      "status_detail": "Independent initializer23 and noise230023; model key17/LR0.3 unchanged. Chemistry1 through20k, geometric30 by30k; T0.7->0.4; noise0.4->0 by30k. Structural repair with original loss/fallbacks, composition/margin off. Raw argmax and sampled validity are separate. Different GPU families and dynamicT limit score/runtime comparisons; exploratory, no derivative/binding certification."
+    },
+    {
+      "id": "annealed_sparse_50k_s41",
+      "label": "Sparse structural repair - cooling and chemistry ramp, seed41 (0-50k)",
+      "run": "/work3/s234818/mosaic/runs/20261103-sparse-annealed-seeds-01/source01/run/annealed-sparse-s41/payload",
+      "global_target": 50000,
+      "primary_metric": "contact_loss",
+      "continuation_status": "submitted",
+      "status_detail": "Independent initializer41 and noise230041; model key17/LR0.3 unchanged. Chemistry1 through20k, geometric30 by30k; T0.7->0.4; noise0.4->0 by30k. Structural repair with original loss/fallbacks, composition/margin off. Raw argmax and sampled validity are separate. Different GPU families and dynamicT limit score/runtime comparisons; exploratory, no derivative/binding certification."
     }
   ]
 }

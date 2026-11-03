@@ -11462,3 +11462,19 @@ packaging controls, JavaScript syntax and browser interaction checks passed.
 One cached VAE return measured124ms; first-load timing is not claimed. Proof:
 experiments/reporting/jq1-live-progress/runs/20261103-focused-with-vae/fast-viewer-08.json.
 http://127.0.0.1:8780/collections/20261103-trajectories-08/report.html
+
+
+### 2026-11-03 — Two sparse cooling/noise validity replicas submitted
+
+User requested two independent seeds to test whether the valid50k sparse endpoint
+was a one-off. Submitted seed23/noise230023 as29880094 onA100 and seed41/noise230041
+as29880095 onL40S; both actualPEND at17:04:21UTC, zero saved updates. Each requests
+all50k updates/15h15, using completed seed17 timing plus25% and setup/cleanup.
+All156 non-plan source files match the completed seed17 capsule byte-for-byte;
+LR0.3/model key17/structural repair/chemistry1->30/T0.7->0.4/noise0.4->0 are unchanged.
+Two actual metadata startups, source/input hashes, held receipts/releases and
+submission vectors passed; native model checks await allocation. Own capacity
+4,831,838,208required/13,894,004,736available bytes passed; no cleanup.
+Both50k candidates registered for the canonical report; no report rebuilt yet.
+Existing runs/results unchanged. Question/config/jobs/proof: experiments/brd4-jq1/
+protenix-random-chem/runs/20261103-sparse-annealed-seeds-01.
