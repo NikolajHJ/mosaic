@@ -1,0 +1,354 @@
+[
+  {
+    "id": "annealed-sparse-s17-0",
+    "arm": "annealed-sparse-s17",
+    "step": 0,
+    "saved_temperature": 0.699999988079071,
+    "saved_contact_loss": -0.14040230214595795,
+    "soft": {
+      "contact_score": 0.14040224254131317,
+      "strict_valid_connected": false
+    },
+    "hard": {
+      "contact_score": 0.09464698284864426,
+      "strict_valid_connected": false
+    },
+    "repair": {
+      "status": "saved_complete_repair",
+      "route": 1,
+      "identity": "bb9d8d9e47a32a2e605c4c5ef276544b61d2899dfc9b805f0363272c80f50528",
+      "contact_score": 0.12612468004226685,
+      "strict_valid_connected": true
+    }
+  },
+  {
+    "id": "annealed-sparse-s17-20000",
+    "arm": "annealed-sparse-s17",
+    "step": 20000,
+    "saved_temperature": 0.5799999833106995,
+    "saved_contact_loss": -0.8782122731208801,
+    "soft": {
+      "contact_score": 0.8782119750976562,
+      "strict_valid_connected": false
+    },
+    "hard": {
+      "contact_score": 0.32406795024871826,
+      "strict_valid_connected": false
+    },
+    "repair": {
+      "status": "saved_complete_repair",
+      "route": 1,
+      "identity": "7ff5bb333d3aefd116a5e9ca05ae83f0fd4bf64ee0fef92ef434b8b4799261b1",
+      "contact_score": 0.23591315746307373,
+      "strict_valid_connected": true
+    }
+  },
+  {
+    "id": "annealed-sparse-s17-30000",
+    "arm": "annealed-sparse-s17",
+    "step": 30000,
+    "saved_temperature": 0.5199999809265137,
+    "saved_contact_loss": -0.6650084257125854,
+    "soft": {
+      "contact_score": 0.6650084257125854,
+      "strict_valid_connected": false
+    },
+    "hard": {
+      "contact_score": 0.4865626394748688,
+      "strict_valid_connected": false
+    },
+    "repair": {
+      "status": "saved_complete_repair",
+      "route": 1,
+      "identity": "e7b38effd98f313ec7df46ea07e6dee6b22106d76ef6f3d8fd61d15a342e0b6a",
+      "contact_score": 0.39070558547973633,
+      "strict_valid_connected": true
+    }
+  },
+  {
+    "id": "annealed-sparse-s17-50000",
+    "arm": "annealed-sparse-s17",
+    "step": 50000,
+    "saved_temperature": 0.4000000059604645,
+    "saved_contact_loss": -0.6625105142593384,
+    "soft": {
+      "contact_score": 0.6625102162361145,
+      "strict_valid_connected": true
+    },
+    "hard": {
+      "contact_score": 0.36704084277153015,
+      "strict_valid_connected": true
+    },
+    "repair": {
+      "status": "saved_raw_already_valid",
+      "route": 0,
+      "identity": "2124b6ee9adff9032765a4267e835643cdaae0fc7d57cf2af4539883a765f887",
+      "contact_score": 0.36704084277153015,
+      "strict_valid_connected": true
+    }
+  },
+  {
+    "id": "structural-s17-0",
+    "arm": "structural-s17",
+    "step": 0,
+    "saved_temperature": 1.0,
+    "saved_contact_loss": -0.14811179041862488,
+    "soft": {
+      "contact_score": 0.1481117159128189,
+      "strict_valid_connected": false
+    },
+    "hard": {
+      "contact_score": 0.09464698284864426,
+      "strict_valid_connected": false
+    },
+    "repair": {
+      "status": "saved_complete_repair",
+      "route": 1,
+      "identity": "6c43e4abb48b35b2036cd2ead0b6700388643ace7f28f670c034a31b60102acd",
+      "contact_score": 0.12612468004226685,
+      "strict_valid_connected": true
+    }
+  },
+  {
+    "id": "structural-s17-10000",
+    "arm": "structural-s17",
+    "step": 10000,
+    "saved_temperature": 1.0,
+    "saved_contact_loss": -0.7140588164329529,
+    "soft": {
+      "contact_score": 0.7140591144561768,
+      "strict_valid_connected": false
+    },
+    "hard": {
+      "contact_score": 0.24713057279586792,
+      "strict_valid_connected": false
+    },
+    "repair": {
+      "status": "saved_complete_repair",
+      "route": 1,
+      "identity": "11c36122b0c199f8624cae0a1785af2532a4ac72308028d5c6540603ff1e7994",
+      "contact_score": 0.16204892098903656,
+      "strict_valid_connected": true
+    }
+  },
+  {
+    "id": "structural-s17-20000",
+    "arm": "structural-s17",
+    "step": 20000,
+    "saved_temperature": 1.0,
+    "saved_contact_loss": -0.8441933393478394,
+    "soft": {
+      "contact_score": 0.8441937565803528,
+      "strict_valid_connected": false
+    },
+    "hard": {
+      "contact_score": 0.22944693267345428,
+      "strict_valid_connected": false
+    },
+    "repair": {
+      "status": "saved_complete_repair",
+      "route": 1,
+      "identity": "649d9999950f983b1dffe0fbc5616ea9524ecad268b632e2f2a47261a7a67f17",
+      "contact_score": 0.21625466644763947,
+      "strict_valid_connected": true
+    }
+  },
+  {
+    "id": "structural-s17-30000",
+    "arm": "structural-s17",
+    "step": 30000,
+    "saved_temperature": 1.0,
+    "saved_contact_loss": -0.8545953035354614,
+    "soft": {
+      "contact_score": 0.8545957803726196,
+      "strict_valid_connected": false
+    },
+    "hard": {
+      "contact_score": 0.20821650326251984,
+      "strict_valid_connected": false
+    },
+    "repair": {
+      "status": "saved_complete_repair",
+      "route": 1,
+      "identity": "392c8dcb37bad2c1bdf1bb3ac32c472e1391b1d0359b1cfc5ad8e563d4f76c72",
+      "contact_score": 0.21625466644763947,
+      "strict_valid_connected": true
+    }
+  },
+  {
+    "id": "structural10-chain-s17-0",
+    "arm": "structural10-chain-s17",
+    "step": 0,
+    "saved_temperature": 1.0,
+    "saved_contact_loss": -0.07781674712896347,
+    "soft": {
+      "contact_score": 0.07781681418418884,
+      "strict_valid_connected": true
+    },
+    "hard": {
+      "contact_score": 0.18998326361179352,
+      "strict_valid_connected": true
+    },
+    "repair": {
+      "status": "saved_raw_already_valid",
+      "route": 0,
+      "identity": "3c9979dc211c79bbe9a38918ad01af7e26a11d0b3cb74b8b6e54a6545621e9aa",
+      "contact_score": 0.18998326361179352,
+      "strict_valid_connected": true
+    }
+  },
+  {
+    "id": "structural10-chain-s17-10000",
+    "arm": "structural10-chain-s17",
+    "step": 10000,
+    "saved_temperature": 1.0,
+    "saved_contact_loss": -0.16620098054409027,
+    "soft": {
+      "contact_score": 0.16620084643363953,
+      "strict_valid_connected": true
+    },
+    "hard": {
+      "contact_score": 0.18998326361179352,
+      "strict_valid_connected": true
+    },
+    "repair": {
+      "status": "saved_raw_already_valid",
+      "route": 0,
+      "identity": "6883fbd6b6faa0139f037c2b4d9d22a6f198f59028a397fc62b52fd0864ffd25",
+      "contact_score": 0.18998326361179352,
+      "strict_valid_connected": true
+    }
+  },
+  {
+    "id": "structural10-chain-s17-20000",
+    "arm": "structural10-chain-s17",
+    "step": 20000,
+    "saved_temperature": 1.0,
+    "saved_contact_loss": -0.6831287741661072,
+    "soft": {
+      "contact_score": 0.6831291317939758,
+      "strict_valid_connected": true
+    },
+    "hard": {
+      "contact_score": 0.1977265328168869,
+      "strict_valid_connected": true
+    },
+    "repair": {
+      "status": "saved_raw_already_valid",
+      "route": 0,
+      "identity": "d4f84a57527a70f8b6b93376c5771bc43750e5fe7917a49aada65b1dc231a118",
+      "contact_score": 0.1977265328168869,
+      "strict_valid_connected": true
+    }
+  },
+  {
+    "id": "structural10-chain-s17-30000",
+    "arm": "structural10-chain-s17",
+    "step": 30000,
+    "saved_temperature": 1.0,
+    "saved_contact_loss": -0.7412144541740417,
+    "soft": {
+      "contact_score": 0.7412142753601074,
+      "strict_valid_connected": false
+    },
+    "hard": {
+      "contact_score": 0.21898823976516724,
+      "strict_valid_connected": false
+    },
+    "repair": {
+      "status": "saved_complete_repair",
+      "route": 1,
+      "identity": "5df731a02e335332390b9106597e96b53f945f621d06a36771fffb4c7beb5f2e",
+      "contact_score": 0.19312413036823273,
+      "strict_valid_connected": true
+    }
+  },
+  {
+    "id": "structural10-noise-chain-s17-0",
+    "arm": "structural10-noise-chain-s17",
+    "step": 0,
+    "saved_temperature": 1.0,
+    "saved_contact_loss": -0.07781680673360825,
+    "soft": {
+      "contact_score": 0.07781681418418884,
+      "strict_valid_connected": true
+    },
+    "hard": {
+      "contact_score": 0.18998326361179352,
+      "strict_valid_connected": true
+    },
+    "repair": {
+      "status": "saved_raw_already_valid",
+      "route": 0,
+      "identity": "3c9979dc211c79bbe9a38918ad01af7e26a11d0b3cb74b8b6e54a6545621e9aa",
+      "contact_score": 0.18998326361179352,
+      "strict_valid_connected": true
+    }
+  },
+  {
+    "id": "structural10-noise-chain-s17-10000",
+    "arm": "structural10-noise-chain-s17",
+    "step": 10000,
+    "saved_temperature": 1.0,
+    "saved_contact_loss": -0.1662970930337906,
+    "soft": {
+      "contact_score": 0.16629692912101746,
+      "strict_valid_connected": true
+    },
+    "hard": {
+      "contact_score": 0.18998326361179352,
+      "strict_valid_connected": true
+    },
+    "repair": {
+      "status": "saved_raw_already_valid",
+      "route": 0,
+      "identity": "b8a820e18b1060c223281d9309c94c063e3923f02dc1539804a16a477312521d",
+      "contact_score": 0.18998326361179352,
+      "strict_valid_connected": true
+    }
+  },
+  {
+    "id": "structural10-noise-chain-s17-20000",
+    "arm": "structural10-noise-chain-s17",
+    "step": 20000,
+    "saved_temperature": 1.0,
+    "saved_contact_loss": -0.6132163405418396,
+    "soft": {
+      "contact_score": 0.6132166385650635,
+      "strict_valid_connected": false
+    },
+    "hard": {
+      "contact_score": 0.19286327064037323,
+      "strict_valid_connected": false
+    },
+    "repair": {
+      "status": "saved_complete_repair",
+      "route": 1,
+      "identity": "93336fc08fc1a89ebfecad4d5f2ae0cbf3b15b1e3cf4bf7146aa47962c966a7d",
+      "contact_score": 0.17257732152938843,
+      "strict_valid_connected": true
+    }
+  },
+  {
+    "id": "structural10-noise-chain-s17-30000",
+    "arm": "structural10-noise-chain-s17",
+    "step": 30000,
+    "saved_temperature": 1.0,
+    "saved_contact_loss": -0.8053370714187622,
+    "soft": {
+      "contact_score": 0.8053371906280518,
+      "strict_valid_connected": true
+    },
+    "hard": {
+      "contact_score": 0.26389750838279724,
+      "strict_valid_connected": true
+    },
+    "repair": {
+      "status": "saved_raw_already_valid",
+      "route": 0,
+      "identity": "e399c162b4e949fed5cd5784add0192a7c92c70fff13b22e9d24496cb2edce14",
+      "contact_score": 0.26389750838279724,
+      "strict_valid_connected": true
+    }
+  }
+]

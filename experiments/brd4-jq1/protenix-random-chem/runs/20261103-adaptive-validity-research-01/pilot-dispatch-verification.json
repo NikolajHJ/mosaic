@@ -1,0 +1,54 @@
+{
+  "status": "verified_dispatch_and_first_committed_prefix_not_terminal_success",
+  "observed_utc": "2026-11-03T20:16:16.131890+00:00",
+  "job_id": "29884187",
+  "queue": "gpuv100",
+  "source_manifest_sha256": "6a8cdc3a51a2e1efacad2da7e0d6ab82afe636110084a98faa510414d668c992",
+  "plan_sha256": "938c06d11d7ae0962390dd9c4114a98908377ad23652618f9805d7887c389a6e",
+  "original_parent_step": 30000,
+  "requested_updates_per_arm": 2000,
+  "local_steps": true,
+  "arm_order": [
+    "original_logits",
+    "saved_repair"
+  ],
+  "temperature": 0.4,
+  "chemistry_coefficient": 30,
+  "learning_rate": 0.3,
+  "noise": 0,
+  "projection_uniform_mixing": 0.02,
+  "portable_controls_passed": 17,
+  "actual_metadata_startup": true,
+  "capacity_entry_passed": true,
+  "accepted_held_receipt_before_release": true,
+  "prefixes": {
+    "original_logits": {
+      "states.jsonl": {
+        "count": 132,
+        "last_step": 131,
+        "contiguous": true
+      },
+      "updates.jsonl": {
+        "count": 131,
+        "last_step": 130,
+        "contiguous": true
+      }
+    },
+    "saved_repair": {
+      "states.jsonl": {
+        "count": 0,
+        "last_step": null,
+        "contiguous": true
+      },
+      "updates.jsonl": {
+        "count": 0,
+        "last_step": null,
+        "contiguous": true
+      }
+    }
+  },
+  "packet_sha256": "1ace6ccdbd6df85ab7a848a361e9d6f7da27a5363d6e01ee3101bad687529955",
+  "local_packet": "results\\hpc\\20261103-projection-paired-pilot-01\\status-20261103T201613Z\\stdout.json",
+  "next_action": "wait_for_terminal_then_verify_frozen_inputs_samples_and_hard_archive; choose_followup_from_results",
+  "interpretation": "projection plus finite-support confidence reset is the combined intervention; attribution to projection alone needs an additional confidence-matched control"
+}

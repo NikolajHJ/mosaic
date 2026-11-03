@@ -1,0 +1,37 @@
+{
+  "version": "adaptive-validity-research-v1",
+  "branch": "codex/valid-molecule-research",
+  "status": "paired_projection_pilot_running",
+  "jobs": [
+    {
+      "id": "29884143",
+      "kind": "native_score_transfer_audit",
+      "status": "DONE",
+      "remote_root": "/work3/s234818/mosaic/runs/20261103-score-transfer-audit-01"
+    },
+    {
+      "id": "29884187",
+      "kind": "paired_projection_pilot",
+      "status": "RUN",
+      "remote_root": "/work3/s234818/mosaic/runs/20261103-projection-paired-pilot-01",
+      "updates_per_arm": 2000,
+      "arms": [
+        "original_logits",
+        "saved_repair"
+      ],
+      "do_not_replay_launch": true
+    }
+  ],
+  "next_action": "observe_29884187_terminal_receipts_then_compare_validity_hard_archive_and_runtime_before_next_test",
+  "existing_runs_unchanged": true,
+  "max_concurrent_research_model_jobs": 2,
+  "pilot_updates_per_arm_default_max": 2500,
+  "confirmation_updates": [
+    20000,
+    50000
+  ],
+  "main_promotion": "concise_document_after_matched_larger_confirmation_only",
+  "audit_verification": "audit-verification.json",
+  "active_tag": "20261103-projection-paired-pilot-01",
+  "pilot_dispatch_verification": "pilot-dispatch-verification.json"
+}

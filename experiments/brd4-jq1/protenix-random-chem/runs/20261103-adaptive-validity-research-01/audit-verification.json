@@ -1,0 +1,22 @@
+{
+  "status": "verified_saved_point_native_audit",
+  "job_id": "29884143",
+  "queue": "gpuv100",
+  "points": 16,
+  "native_forwards": 63,
+  "elapsed_seconds": 29.94224507699255,
+  "same_job_LSF_success": true,
+  "frozen_unchanged": true,
+  "inputs_unchanged": true,
+  "optimizer_updates": 0,
+  "source_manifest_sha256": "403d859576d8449eaec678416798df976a2a965b92c327b35754374936d1befa",
+  "plan_sha256": "0b13a377e5c3f8654f575e13b9981869e4f5e095eeb0890dbb5d232f7971124e",
+  "result": {
+    "path": "/work3/s234818/mosaic/runs/20261103-score-transfer-audit-01/payload/result.json",
+    "bytes": 426594,
+    "sha256": "1e18749a0c714ecc4a29023718627cd79e8941af77b04db3514f21cf57288383"
+  },
+  "packet_sha256": "f6592a9446055f82c35ead912cef45d38abb5e2984ab1252036c7ce0e09a6eb8",
+  "local_packet": "results\\hpc\\20261103-score-transfer-audit-01\\status-20261103T201012Z\\stdout.json",
+  "scope": "Frozen geometry-off Protenix Tiny contact at saved graph/context/key; no affinity, pose or binding certification"
+}

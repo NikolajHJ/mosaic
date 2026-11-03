@@ -11496,3 +11496,8 @@ settings and all earlier results are preserved.
 No cleanup/report rebuild. Current VAE records live in DBMol_exploratory's
 experiments/latent-design/protenix-vae. Raw reconciliation and exact held/release
 proofs: results/hpc/20261103-queue-review/20261103T191204Z/final03.
+
+
+## 3 November 2026 — Adaptive validity research, isolated branch
+
+User authorized iterative background experiments and a larger confirmation before a concise finding is promoted to main. Research stays on codex/valid-molecule-research. Native saved-point audit29884143 DONE/V100:16points/63forwards,29.94s, actual same-job LSF, source/input bytes and frozen model/context preserved. Sparse30k saved valid repair hardcontact0.390706 versus valid50k raw hardcontact0.367041; relaxed advantages often shrink sharply on hard graphs. No affinity or binding claim. Paired pilot29884187 RUN/V100 with131 committed updates in its first arm at20:16UTC:2k original-logit versus2k saved-repair refinement, same T.4/chem30/LR.3/noise0/key17. Projection initialization explicitly includes2%uniform mixing; original parents/results unchanged. Seventeen portable controls passed. Actual90min/8CPUx4GiB/exclusiveV100 and own512MiB capacity/held receipt-release proofs verified. Scheduled adaptive task mosaic1 ACTIVE every2hours. Current question, decisions, jobs and exact evidence are in experiments/brd4-jq1/protenix-random-chem/runs/20261103-adaptive-validity-research-01/. No research finding has been promoted to main.
