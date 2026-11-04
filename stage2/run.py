@@ -26,6 +26,7 @@ Experiment order, following protocol 5.6:
 """
 
 import argparse
+from functools import partial
 import json
 import os
 import time
@@ -150,7 +151,7 @@ def check_settings(args):
             "  --boltz-context DIR --boltz-checkpoint CKPT\n"
             "Prepare a context with\n"
             "  python -m mosaic.small_molecule.boltz2.prepare --fixture F "
-            "--cache C --output DIR --n-atoms 25 --allow-local-gpu"
+            "--cache C --output DIR --n-atoms 25"
         )
     return Stage2Config(
         mode=args.mode,
@@ -186,7 +187,7 @@ def require_callback_platform():
     return platforms
 
 
-def run(args):
+def run(args, *, prepare_loss=None, prior_identity=None):
     config = check_settings(args)
     if args.backend == "boltz2":
         require_callback_platform()
@@ -195,6 +196,7 @@ def run(args):
 
     from mosaic.small_molecule.io import (
         TrajectoryConfig,
+        file_sha256,
         run_trajectory,
         save_graph,
         write_json,
@@ -203,18 +205,20 @@ def run(args):
     from mosaic.small_molecule.provenance import environment_identity, source_identity
 
     environment = environment_identity()
-    if not args.allow_cpu and not any(
+    if args.backend != "boltz2" and not args.allow_cpu and not any(
         device["platform"] == "gpu" for device in environment["devices"]
     ):
         raise SystemExit(
             "no GPU visible. Stage 2 runs on an allocated GPU; use --allow-cpu "
             "only for a deliberate smoke test."
         )
+    if args.hardening and prepare_loss is not None:
+        raise ValueError("Compare the prior on the unhardened Stage 2 path")
     out = Path(args.out)
     out.mkdir(parents=True, exist_ok=args.resume)
 
     native, graph, provenance, finish = build(args)
-    device_report = {}
+    cleanup_started = False
     try:
         # Same derivation as the Stage 1 runner: its first split half seeds the
         # initialization and its second is the evaluation key. A parent
@@ -251,12 +255,18 @@ def run(args):
             "hardening_gradient": args.hardening_gradient if args.hardening else None,
             "experiment_file": None if args.config is None else str(args.config),
             "stage2": config.record(),
+            "stage2_source_sha256": {
+                name: file_sha256(Path(__file__).with_name(name))
+                for name in ("run.py", "backends.py", "operators.py", "settings.py")
+            },
             "boundary": (
                 "frozen structure model; chemistry is an explicit post-step "
                 "operator, never a loss; hard molecules are readouts only"
             ),
             **provenance,
         }
+        if prepare_loss is not None:
+            settings["prior"] = prior_identity
         identities = {
             "requested_identity": {
                 "source": source_identity(ROOT),
@@ -274,6 +284,11 @@ def run(args):
             f"improvements={config.improvements or 'none'} steps={args.steps}",
             flush=True,
         )
+        loss_factory = None
+        if args.hardening:
+            loss_factory = hardening_factory(native, args.steps, args.hardening_gradient)
+        elif prepare_loss is not None:
+            loss_factory = partial(prepare_loss, native)
         result = run_trajectory(
             native,
             graph,
@@ -289,11 +304,7 @@ def run(args):
             resolved_config=settings,
             resume=args.resume,
             max_updates=args.max_updates,
-            loss_factory=(
-                hardening_factory(native, args.steps, args.hardening_gradient)
-                if args.hardening
-                else None
-            ),
+            loss_factory=loss_factory,
             post_step=None if config.mode == "none" else post_step(config),
         )
 
@@ -314,16 +325,17 @@ def run(args):
             summary["soft_hard_gap"] = write_soft_hard_gap(
                 out, native, key, provenance["score_metric"], hardened=args.hardening
             )
-        # Closing the backend is what reports its device cost, so the summary is
-        # written after teardown rather than before it.
-        device_report = finish()
-        summary.update(device_report)
+        cleanup_started = True
+        summary.update(finish())
         write_json(out / "run_summary.json", summary)
         print(f"DONE {out.name} {json.dumps(summary)}", flush=True)
         return summary
     finally:
-        if not device_report:
-            finish()
+        if not cleanup_started:
+            try:
+                finish()
+            except Exception as cleanup_error:
+                print(f"Backend cleanup failed: {cleanup_error}", flush=True)
 
 
 def write_soft_hard_gap(out, native, key, score_metric, *, hardened=False):
@@ -354,7 +366,7 @@ def write_soft_hard_gap(out, native, key, score_metric, *, hardened=False):
             readout["element_indices"], readout["bond_upper_indices"]
         )
         hard_value, hard_aux = native(hard, key=key)
-        soft_loss = row["loss"]
+        soft_loss = row["aux_metrics"].get("native_loss", row["loss"])
         if hardened:
             # The forward graph was partly one-hot, so the arm's own loss is not
             # the relaxed state's loss. Re-evaluate the underlying probabilities.

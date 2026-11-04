@@ -460,6 +460,8 @@ def _run_trajectory(
     resume: bool = False,
     max_updates: int | None = None,
     readout: Callable[[RelaxedGraph], dict] = hard_readout,
+    loss_factory=None,
+    post_step=None,
     _receipt_state: dict | None = None,
 ) -> TrajectoryResult:
     """Run minimization, preserving evaluated pre-states and a final evaluation.
@@ -576,7 +578,10 @@ def _run_trajectory(
         if config.rng_policy == "split":
             future_key, used_key = jax.random.split(next_key)
         try:
-            evaluation = evaluate_graph(loss, graph, used_key, atol=config.simplex_atol)
+            active_loss = loss if loss_factory is None else loss_factory(graph, step)
+            evaluation = evaluate_graph(
+                active_loss, graph, used_key, atol=config.simplex_atol
+            )
             update = (
                 None
                 if step == config.steps
@@ -676,6 +681,16 @@ def _run_trajectory(
             "evaluated_arrays": f"evaluations/{label}.npz",
             "readout": readout_path,
         }
+        if update is not None:
+            next_graph = update.next_graph
+            if post_step is not None:
+                next_graph, receipt = post_step(next_graph, step)
+                validate_graph(next_graph, atol=config.simplex_atol)
+                if (next_graph.X.shape, next_graph.E_upper.shape) != (
+                    graph.X.shape, graph.E_upper.shape
+                ):
+                    raise ValueError("Post-step operator changed the graph shape")
+                metrics["post_step_operators"] = receipt
         trace.append(metrics)
         trace_path = directory / "trace.jsonl"
         with trace_path.with_suffix(".jsonl.tmp").open(
@@ -691,7 +706,7 @@ def _run_trajectory(
         count += 1
         next_key = future_key
         if update is not None:
-            graph = update.next_graph
+            graph = next_graph
             step += 1
         else:
             complete = True
@@ -736,12 +751,17 @@ def run_trajectory(
     resume: bool = False,
     max_updates: int | None = None,
     readout: Callable[[RelaxedGraph], dict] = hard_readout,
+    loss_factory=None,
+    post_step=None,
 ) -> TrajectoryResult:
     """Run with failure receipts covering both evaluation and artifact writes.
 
     Loss aux must be a nested dict/list/tuple of arrays and JSON scalars. Raw
     arrays remain NPZ values, including nonfinite failure quantities. Readout
     never supplies a replacement graph; every checkpoint owns a trace prefix.
+    ``loss_factory(graph, step)`` prepares an optional state-specific objective.
+    ``post_step(projected_graph, step)`` returns the next graph and its receipt.
+    Include settings for either hook in ``resolved_config``.
     """
     receipt_state = {"active": False, "update_step": 0}
     try:
@@ -756,6 +776,8 @@ def run_trajectory(
             resume=resume,
             max_updates=max_updates,
             readout=readout,
+            loss_factory=loss_factory,
+            post_step=post_step,
             _receipt_state=receipt_state,
         )
     except Exception as error:

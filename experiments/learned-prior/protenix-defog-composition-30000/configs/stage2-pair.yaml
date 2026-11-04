@@ -1,0 +1,23 @@
+backend: boltz2
+boltz2:
+  seed_mixing: 0.5
+  allow_local_gpu: false
+trajectory:
+  steps: 500
+  eta_X: 0.3
+  eta_E: 0.3
+  readout_every: 1
+  seed: 17
+operators:
+  mode: connected
+  aromatic_order: 1.5
+  bridge_probability: 0.6
+improvements:
+  readout_caps: true
+  valence_damping: 1.0
+  fluidity_threshold: 0.95
+  fluidity_strength: 0.05
+hardening:
+  enabled: false
+checks:
+  gradient_check: false

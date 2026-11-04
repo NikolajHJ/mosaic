@@ -17,7 +17,7 @@ boltz2:
   # preparation.json. Make one with
   #   python -m mosaic.small_molecule.boltz2.prepare \
   #     --fixture F.json --cache BOLTZ_CACHE --output contexts/brd4-25 \
-  #     --n-atoms 25 --allow-local-gpu
+  #     --n-atoms 25
   context: null
   checkpoint: null # pinned affinity .ckpt; its SHA is verified on load
   # The worker needs torch and the pinned Boltz; this side needs JAX. When they
@@ -27,7 +27,7 @@ boltz2:
   # Leave null when one environment has both.
   python: null
   seed_mixing: 0.5 # uniform mixing applied to the prepared carbon-chain seed
-  allow_local_gpu: true # false requires an allocated LSF job
+  allow_local_gpu: false # this branch uses the allocated LSF worker
 
 protenix: # only read when backend is protenix
   target: brd4 # brd4 | t4l | fkbp12

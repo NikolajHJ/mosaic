@@ -160,7 +160,6 @@ def boltz2(args):
     Both that and the worker refuse to run without an allocated LSF job, so
     this backend needs DTU HPC rather than a local GPU.
     """
-    import os
     import sys
 
     from mosaic.small_molecule.boltz2.bridge import AffinityWorker, affinity_loss
@@ -185,22 +184,11 @@ def boltz2(args):
         "--device",
         "cpu" if args.allow_cpu else "cuda",
     ]
-    if args.allow_local_gpu:
-        command.append("--allow-local-gpu")
-    environment = None
-    if args.boltz_python:
-        # A separate interpreter still has to find this checkout's mosaic, so
-        # pass our own source root through rather than installing into its venv.
-        source = str(ROOT / "src")
-        existing = os.environ.get("PYTHONPATH")
-        environment = {
-            **os.environ,
-            "PYTHONPATH": f"{source}{os.pathsep}{existing}" if existing else source,
-        }
+    if args.allow_local_gpu or args.allow_cpu:
+        raise ValueError("This branch's Boltz worker requires allocated DTU CUDA")
     worker = AffinityWorker(
         command,
         stderr=Path(args.out) / "boltz_worker.stderr",
-        environment=environment,
     )
     try:
         loss = affinity_loss(worker)
@@ -227,18 +215,10 @@ def boltz2(args):
         raise
 
     def finish():
-        """Close the worker and report what the device actually cost."""
-        peak = worker.peak_vram_bytes
-        worker.close()
-        return {
-            "peak_vram_bytes": peak,
-            "peak_vram_gib": round(peak / 1024**3, 2) if peak else None,
-            "device_total_vram_gib": round(
-                worker.identity["device_total_vram_bytes"] / 1024**3, 2
-            )
-            if "device_total_vram_bytes" in worker.identity
-            else None,
-        }
+        try:
+            return {"native_frozen": worker.request("verify_identity")}
+        finally:
+            worker.close()
 
     return loss, graph, provenance, finish
 
