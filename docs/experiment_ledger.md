@@ -11523,3 +11523,22 @@ forward/surrogate controls and all native outcomes remain pending. Resources:
 other owners' running jobs remain untouched. Actual VAE DBMol successor29883315
 is read-only context. No confirmation, main promotion or report rebuild.
 Evidence: research run's binding-forward-dispatch-verification.json.
+
+
+4 November2026 01:05CET — Adaptive binding-forward pilot29885132 DONE;
+2x2k updates/21-point hard grids/input/frozen/source/58 file bindings passed.
+Hard-forward1,108/2,001 valid states versus1,793 relaxed, one valid identity each,
+no best hard-contact improvement0.390705585. Endpoint samples16/128 versus5/128.
+Preserve mixed/negative result; no larger confirmation of this estimator.
+Preparing read-only native scoring of existing128-draw endpoint proposal groups,
+max64 unique sample forwards plus3 saved reference forwards, zero optimizer updates.
+Twenty-two portable controls passed. New work stays on research branch.
+
+
+4 November2026 01:09CET — Candidate audit29886311 accepted, owned release returned0;
+immediate schedulerPSUSP remains an observation, not allocation proof. Reconcile
+next check; do not repeat bresume or submission. Source4 files53c71b95/plan758cce42,
+20min/4CPUx8GiB/exclusiveV100;3 saved128-draw groups/max64unique sample forwards
+plus3 reference forwards/zero optimizer updates. Metadata startup,22 portable
+controls, input closure, capacity and held receipt/release verified. Native result
+pending. No changes to other owners' jobs, sealed sources or saved experiments.

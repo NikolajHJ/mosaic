@@ -1,0 +1,48 @@
+{
+  "status": "independently_verified_completed_binding_forward_comparison",
+  "observed_utc": "2026-11-04T00:05:22.279085+00:00",
+  "job_id": "29885132",
+  "source_manifest_sha256": "97ea75244d0ad5ca603a2553ee3dc2f027e37e1d72c91b887f48e2ea8e465157",
+  "plan_sha256": "e9c2c81878cfe4bbb2b63aa2fc1b1f2562ff815bce47a01af404831003d6b278",
+  "same_job_lsf_success": true,
+  "source_files": 5,
+  "remote_file_bindings": 58,
+  "frozen_inputs_unchanged": true,
+  "allocated_surrogate_controls": {
+    "status": "passed_declared_forward_and_surrogate_controls",
+    "checks": 3,
+    "discrete_argmax_derivative_certified": false,
+    "optimizer_updates": 0
+  },
+  "packet_sha256": "46e53bd855507bd5b8e5fbf965e7e348ded3cf13feef03d4424e190b3febc3ee",
+  "local_packet": "results\\hpc\\20261103-binding-forward-pilot-01\\terminal-20261104T000519Z\\stdout.json",
+  "arms": [
+    {
+      "arm": "relaxed_forward",
+      "forward_mode": "relaxed",
+      "updates": 2000,
+      "valid_states": 1793,
+      "states": 2001,
+      "unique_valid_identities": 1,
+      "best_retained_valid_hard_contact": 0.39070558547973633,
+      "retained_hard_evaluations": 21,
+      "endpoint_valid_samples": 5,
+      "sample_draws": 128,
+      "elapsed_seconds": 996.736616795999
+    },
+    {
+      "arm": "hard_forward",
+      "forward_mode": "hard_forward_soft_backward",
+      "updates": 2000,
+      "valid_states": 1108,
+      "states": 2001,
+      "unique_valid_identities": 1,
+      "best_retained_valid_hard_contact": 0.39070558547973633,
+      "retained_hard_evaluations": 21,
+      "endpoint_valid_samples": 16,
+      "sample_draws": 128,
+      "elapsed_seconds": 975.651675325993
+    }
+  ],
+  "interpretation": "Hard-forward estimator did not improve retained valid hard score or discover a second valid identity, and reduced argmax-valid states. Endpoint sampled validity16/128 versus5/128 is a different metric; no general improvement established. Stop expanding this estimator for now."
+}

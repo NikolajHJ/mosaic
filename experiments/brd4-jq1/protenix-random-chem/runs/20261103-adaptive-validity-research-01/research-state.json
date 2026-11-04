@@ -1,7 +1,7 @@
 {
   "version": "adaptive-validity-research-v1",
   "branch": "codex/valid-molecule-research",
-  "status": "binding_forward_pilot_pending",
+  "status": "saved_candidate_audit_submitted",
   "jobs": [
     {
       "id": "29884143",
@@ -25,7 +25,7 @@
     {
       "id": "29885132",
       "kind": "paired_binding_forward_pilot",
-      "status": "PEND",
+      "status": "DONE",
       "remote_root": "/work3/s234818/mosaic/runs/20261103-binding-forward-pilot-01",
       "updates_per_arm": 2000,
       "arms": [
@@ -33,10 +33,22 @@
         "hard_forward"
       ],
       "do_not_replay_launch": true,
-      "explicit_biased_estimator": true
+      "explicit_biased_estimator": true,
+      "terminal_verification": "binding-forward-terminal-verification.json"
+    },
+    {
+      "id": "29886311",
+      "kind": "saved_valid_sample_candidate_audit",
+      "status": "PSUSP_after_accepted_owned_release",
+      "remote_root": "/work3/s234818/mosaic/runs/20261104-valid-candidate-audit-01",
+      "optimizer_updates": 0,
+      "max_native_forwards": 67,
+      "do_not_replay_launch": true,
+      "release_returncode": 0,
+      "do_not_repeat_bresume": true
     }
   ],
-  "next_action": "observe_29885132_terminal; verify_source_inputs_frozen_surrogate_controls_equal_grid_hard_scores_validity_samples_diversity; choose_next_test_or_confirmation_from_results",
+  "next_action": "observe_actual29886311_scheduler_bhist_result; reconcile_owned_release_ifstillPSUSP_without_extra_resume; verify_source_inputs_frozen_samplecounts_candidate_scores_before_next_test_or_confirmation",
   "existing_runs_unchanged": true,
   "max_concurrent_research_model_jobs": 2,
   "pilot_updates_per_arm_default_max": 2500,
@@ -46,8 +58,9 @@
   ],
   "main_promotion": "concise_document_after_matched_larger_confirmation_only",
   "audit_verification": "audit-verification.json",
-  "active_tag": "20261103-binding-forward-pilot-01",
+  "active_tag": "20261104-valid-candidate-audit-01",
   "pilot_dispatch_verification": "pilot-dispatch-verification.json",
-  "last_completed_result": "Projection2k:1793/2001validstates_vs0;onevalididentity/hardscore0.390705585 unchanged;sampledvalidity5/128vs21/128. Validityretentionpositive,hardoptimizationunconfirmed.",
-  "binding_forward_dispatch_verification": "binding-forward-dispatch-verification.json"
+  "last_completed_result": "Hard-forward2k:1108/2001validstates_vs1793relaxed;bothonevalididentity/bestretainedhard0.390705585. Samples16/128vs5/128. No hard-scoregain; stop this estimator for now.",
+  "binding_forward_dispatch_verification": "binding-forward-dispatch-verification.json",
+  "candidate_audit_dispatch_verification": "candidate-audit-dispatch-verification.json"
 }

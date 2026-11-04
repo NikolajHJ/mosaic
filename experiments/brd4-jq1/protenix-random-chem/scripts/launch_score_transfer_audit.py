@@ -105,7 +105,8 @@ def main():
  parser=argparse.ArgumentParser(description=__doc__)
  parser.add_argument('--inputs',type=Path,required=True)
  parser.add_argument('--tag',required=True)
- parser.add_argument('--kind',choices=['score-transfer','projection-pilot','binding-forward-pilot'],default='score-transfer')
+ parser.add_argument('--kind',choices=['score-transfer','projection-pilot','binding-forward-pilot','sample-candidate-audit'],default='score-transfer')
+ parser.add_argument('--candidate-inputs',type=Path)
  args=parser.parse_args()
  assert all(c.isalnum() or c=='-' for c in args.tag),'Unsafe tag'
  local=REPO/'results/hpc'/args.tag;local.mkdir(parents=True,exist_ok=False)
@@ -122,6 +123,12 @@ def main():
  for a in data['arms']:
   source_files.extend([a['plan'],a['row']['config'],a['row']['snapshot'],a['row']['reference']])
  plan=dict(version='protenix-score-transfer-audit-v1',source_root=base['code_source_root'],routing_source=base['routing_source'],science_source=base['row']['science_source']['path'],model_cache='/work3/s234818/mosaic/cache/mosaic/protenix',context_ready=base['row']['context_ready'],pocket=base['row']['pocket'],frozen_identity=base['row']['frozen_identity'],points=points,source_files=source_files,output=remote+'/payload',optimizer_updates=0,queue='gpuv100',internal_seconds=2700,output_cap_bytes=128*1024**2,complete_output_cap_mib=256,entrypoint='score_transfer_audit.py',wall_minutes=60,cpu_slots=4,memory_mib_per_slot=8192)
+ if args.kind=='sample-candidate-audit':
+  assert args.candidate_inputs is not None,'Declare saved sample bindings'
+  candidates=json.loads(args.candidate_inputs.read_text(encoding='utf-8'))
+  baseline=next(p for p in points if p['step']==30000 and p['arm']==base['arm'])
+  plan.update(points=[baseline],candidate_samples=candidates['groups'],
+              maximum_unique_samples=candidates['maximum_unique_samples'],wall_minutes=20,internal_seconds=900)
  if args.kind in ('projection-pilot','binding-forward-pilot'):
   parent=next(p for p in base['files'] if p['step']==30000)
   plan.update(version='protenix-projection-paired-pilot-v1',parent_plan=base['plan'],parent_arm=base['arm'],parent_snapshot=parent['snapshot'],parent_reference=parent['reference'],parent_step=30000,updates=2000,temperature=.4,chemistry_coefficient=30.,learning_rate=.3,smoothing=.02,internal_seconds=4800,output_cap_bytes=512*1024**2,complete_output_cap_mib=512,entrypoint='projected_start_pilot.py',wall_minutes=90,cpu_slots=8,memory_mib_per_slot=4096)

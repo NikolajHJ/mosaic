@@ -74,6 +74,17 @@ def validate_plan(plan):
             1 <= plan.get("internal_seconds", 3000) <= 6600, "Invalid internal time budget")
     require(type(plan.get("output_cap_bytes", 67108864)) is int and
             0 < plan.get("output_cap_bytes", 67108864) <= 268435456, "Invalid audit output cap")
+    groups = plan.get("candidate_samples", [])
+    require(isinstance(groups, list) and len(groups) <= 4, "At most four saved candidate groups")
+    require(len({group["id"] for group in groups}) == len(groups), "Duplicate candidate group")
+    for group in groups:
+        require(type(group["expected_draws"]) is int and group["expected_draws"] == 128,
+                "Preserve all128 unfiltered saved draws")
+        require(type(group["source_job_id"]) is str and group["source_job_id"].isdigit(),
+                "Require actual candidate producer job")
+    if groups:
+        require(type(plan.get("maximum_unique_samples")) is int and
+                1 <= plan["maximum_unique_samples"] <= 128, "Declare bounded candidate forwards")
     return plan
 
 
@@ -83,7 +94,27 @@ def input_bindings(plan):
         records.append(point["snapshot"])
         if point.get("reference") is not None:
             records.append(point["reference"])
+    for group in plan.get("candidate_samples", []):
+        records.extend(group[key] for key in ("source_result", "source_report", "raw_samples"))
     return records
+
+
+def candidate_source(group, frozen_identity):
+    """Metadata-only ownership closure; numerical validity is checked allocated."""
+    source = read(bound(group["source_result"]))
+    require(source["job_id"] == group["source_job_id"] and
+            source["status"] == "completed_paired_exploratory_refinement" and
+            source["frozen_unchanged"] and source["inputs_unchanged"] and
+            source["frozen_before"] == source["frozen_after"] == frozen_identity,
+            "Candidate producer is incomplete or uses another scorer")
+    require(group["source_report"] in [arm["report"] for arm in source["arms"]],
+            "Candidate report is not owned by producer")
+    report = read(bound(group["source_report"]))
+    sample = report["last_sampled_validity"]
+    require(sample["raw_samples"] == group["raw_samples"] and sample["draws"] == group["expected_draws"],
+            "Raw sample bytes/draw count differ from owned report")
+    bound(group["raw_samples"])
+    return sample
 
 
 def teacher_labels(reference, *, step, n_atoms=25):
@@ -266,6 +297,55 @@ def run(plan, plan_path):
                     entry["repair"].update(repair_score)
             result["points"].append(entry)
             persist()
+        if plan.get("candidate_samples"):
+            result["candidate_scope"] = ("Existing unfiltered saved samples; no new sampling, repair or optimization. "
+                                         "Only valid connected graphs receive native scores. All invalid denominators retained. "
+                                         "Deduplicate identical slot-labelled graphs, not merely canonical SMILES.")
+            result["candidate_groups"], result["valid_candidates"] = [], []
+            cache = {}
+            for group in plan["candidate_samples"]:
+                tick()
+                sample = candidate_source(group, plan["frozen_identity"])
+                with np.load(group["raw_samples"]["path"], allow_pickle=False) as saved:
+                    require(set(saved.files) == {"atom_indices", "bond_indices"}, "Unknown saved sample schema")
+                    atoms, bonds = saved["atom_indices"], saved["bond_indices"]
+                    require(atoms.shape == (128, 25) and bonds.shape == (128, 300) and
+                            atoms.dtype.kind in "iu" and bonds.dtype.kind in "iu" and
+                            bool(((atoms >= 0) & (atoms < 6)).all()) and
+                            bool(((bonds >= 0) & (bonds < 5)).all()), "Candidate shapes/categories differ")
+                    atoms, bonds = atoms.copy(), bonds.copy()
+                summary = {"id": group["id"], "source_job_id": group["source_job_id"],
+                           "raw_samples": group["raw_samples"], "draws": 128, "valid_draws": 0,
+                           "invalid_draws": 0, "cached_valid_draws": 0, "new_native_forwards": 0,
+                           "valid_unscored_budget": 0, "candidate_references": []}
+                for index, (a, b) in enumerate(zip(atoms, bonds)):
+                    tick()
+                    graph = graph_from_hard(a, b)
+                    readout = hard_readout(graph)
+                    if not (readout["sanitized"] and not readout["disconnected"]):
+                        summary["invalid_draws"] += 1
+                        continue
+                    summary["valid_draws"] += 1
+                    identity = (tuple(int(v) for v in a), tuple(int(v) for v in b))
+                    if identity in cache:
+                        summary["cached_valid_draws"] += 1
+                    elif len(cache) < plan["maximum_unique_samples"]:
+                        record = score(graph)
+                        require(record["strict_valid_connected"], "Candidate validity changed")
+                        cache[identity] = len(result["valid_candidates"])
+                        result["valid_candidates"].append(dict(candidate_id=cache[identity],
+                            first_group=group["id"], first_draw=index, **record))
+                        summary["new_native_forwards"] += 1
+                    else:
+                        summary["valid_unscored_budget"] += 1
+                        continue
+                    summary["candidate_references"].append({"draw": index, "candidate_id": cache[identity]})
+                require(summary["valid_draws"] == sample["strict_valid_connected"] and
+                        summary["valid_draws"] + summary["invalid_draws"] == 128,
+                        "Saved candidate validity count differs")
+                result["candidate_groups"].append(summary)
+                persist()
+            result["best_valid_sample"] = max(result["valid_candidates"], key=lambda p: p["contact_score"], default=None)
         result["status"] = "completed_read_only_score_transfer_audit"
     except BaseException as error:
         result.update(status="failed", error=repr(error))
@@ -297,6 +377,8 @@ def main():
     if args.startup_only:
         for record in input_bindings(plan):
             bound(record)
+        for group in plan.get("candidate_samples", []):
+            candidate_source(group, plan["frozen_identity"])
         print(json.dumps({"status": "metadata_startup_passed_no_models", "points": len(plan["points"]), "optimizer_updates": 0}))
         return
     result = run(plan, args.plan)

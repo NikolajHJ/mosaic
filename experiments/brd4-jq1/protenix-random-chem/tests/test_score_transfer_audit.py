@@ -38,6 +38,53 @@ def plan():
 
 
 class SavedTeacherTests(unittest.TestCase):
+    def test_candidate_producer_report_and_raw_bytes_are_bound(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            samples = root / "samples.npz"
+            samples.write_bytes(b"opaque-existing-array-bytes-not-loaded-locally")
+            raw = audit.binding(samples)
+            report = root / "report.json"
+            report.write_text(json.dumps({"last_sampled_validity": {"raw_samples": raw, "draws": 128,
+                                                                     "strict_valid_connected": 5}}))
+            report_binding = audit.binding(report)
+            frozen = {"model_digest": "model", "context_digest": "context"}
+            result = root / "result.json"
+            result.write_text(json.dumps({"job_id": "123", "status": "completed_paired_exploratory_refinement",
+                "frozen_unchanged": True, "inputs_unchanged": True, "frozen_before": frozen,
+                "frozen_after": frozen, "arms": [{"report": report_binding}]}))
+            group = {"id": "saved", "source_job_id": "123", "expected_draws": 128,
+                     "raw_samples": raw, "source_report": report_binding, "source_result": audit.binding(result)}
+            self.assertEqual(audit.candidate_source(group, frozen)["strict_valid_connected"], 5)
+            wrong = copy.deepcopy(group)
+            wrong["source_job_id"] = "124"
+            with self.assertRaisesRegex(ValueError, "producer"):
+                audit.candidate_source(wrong, frozen)
+            with self.assertRaisesRegex(ValueError, "scorer"):
+                audit.candidate_source(group, {"model_digest": "other", "context_digest": "context"})
+            wrong = copy.deepcopy(group)
+            wrong["raw_samples"]["sha256"] = "wrong"
+            with self.assertRaisesRegex(ValueError, "sample bytes"):
+                audit.candidate_source(wrong, frozen)
+            samples.write_bytes(b"changed")
+            with self.assertRaisesRegex(ValueError, "Input bytes"):
+                audit.candidate_source(group, frozen)
+
+    def test_candidate_budget_and_all_draw_denominators_must_be_declared(self):
+        value = plan()
+        group = {"id": "one", "expected_draws": 128, "source_job_id": "123"}
+        value.update(candidate_samples=[group], maximum_unique_samples=64)
+        self.assertIs(audit.validate_plan(value), value)
+        for field, bad in (("maximum_unique_samples", 0), ("maximum_unique_samples", 129),
+                           ("candidate_samples", [group, group])):
+            changed = copy.deepcopy(value)
+            changed[field] = bad
+            with self.subTest(field=field), self.assertRaises(ValueError):
+                audit.validate_plan(changed)
+        value["candidate_samples"][0]["expected_draws"] = 100
+        with self.assertRaisesRegex(ValueError, "unfiltered"):
+            audit.validate_plan(value)
+
     def test_complete_target_maps_absent_offset_and_unordered_pairs(self):
         result = audit.teacher_labels(reference(), step=120, n_atoms=3)
         self.assertEqual(result["candidate"], {"element_indices": [0, 1, 5], "bond_upper_indices": [1, 0, 2]})

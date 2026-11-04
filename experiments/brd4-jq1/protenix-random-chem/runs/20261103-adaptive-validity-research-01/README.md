@@ -133,3 +133,45 @@ verified in binding-forward-dispatch-verification.json. No native/gradient resul
 yet. Do not replay the launch. Current account sparse/VAE producers remainRUN;
 their previous startup IDs are historical, actual VAE DBMol successor29883315
 with callback29883316 is read-only context. No other-owner job was modified.
+
+
+4 November 2026, 01:05 CET — Binding-forward comparison verified complete.
+Job29885132 actual DONE, same-job LSF/bhist success, both 2,000 updates and
+2,001 contiguous states. Five source files and58 remote file bindings verified;
+input/frozen identities preserved. All three allocated surrogate controls passed.
+Hard-forward retained1,108 valid states versus1,793 relaxed, and both retained
+one valid identity with the same best native hard contact0.390705585. The identical
+21-point hard evaluation grids do not show discrete improvement. Hard-forward
+endpoint samples were16/128 valid versus5/128, a separate distributional metric.
+This mixed/negative result does not justify a larger confirmation. Stop expanding
+the biased estimator for now. See binding-forward-terminal-verification.json.
+
+Next question: do the already-saved categorical proposals contain better valid
+hard candidates than the single argmax identity? A read-only allocated native
+audit will score existing endpoint samples from original-logit refinement,
+repair+relaxed refinement and repair+hard-forward refinement. Each group retains
+all128 unfiltered draws and its invalid denominator; no new sampling or repair,
+no optimizer updates. Bind each raw NPZ to its actual completed producer/report,
+then verify validity and score at the original model/context/key17. Cache only
+identical slot-labelled graphs; canonical SMILES alone does not imply identical
+native input. Bound unique sample scoring to64, deterministic input order, with
+any cap-censored valid draws explicit. Include the saved30k soft/raw/repair point
+as a common reference, at most67 native forwards total. This is candidate selection,
+not an equal-update efficacy comparison; unequal valid proposal counts remain
+visible. Contact is still geometry-off, fixed-context surrogate, not affinity.
+Request20min/V100,4CPUx8GiB, own128MiB results/256MiB complete group. The preceding
+63-forward audit took29.94s worker time. Twenty-two portable metadata controls
+passed, including producer/report/raw-byte closure and capacity/denominator bounds.
+Actual native result is pending; only a demonstrated useful candidate direction
+will receive a matched larger confirmation. Existing live experiments unchanged.
+
+
+Actual new audit29886311 accepted and owned-release acknowledged at01:09CET.
+Immediate01:09:42 scheduler still reportsPSUSP, so allocation/start is not claimed;
+retain the successful bresume receipt and do not blindly resume again. Next check
+reconciles actual scheduler/history. Four source files, metadata startup, held
+receipt-before-release, original report/raw sample input closure and capacity
+passed independent dispatch verification. Source53c71b95070e60eb045effa92258a649a0e0f4682d86827ac4df671eb184cac4,
+plan758cce4263370f9fc4a197c93a2baaf8d04d4ae51fdf8d4885abe70c7a695c1a.
+See candidate-audit-dispatch-verification.json; no native findings yet. All live
+sparse/VAE jobs remain read-only context and RUN at the initial account capture.
