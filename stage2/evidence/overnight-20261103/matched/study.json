@@ -1,0 +1,54 @@
+{
+  "study": "matched",
+  "experiment_file": "stage2/experiment.yaml",
+  "backend": "boltz2",
+  "target": null,
+  "parent": null,
+  "steps": 500,
+  "forwarded_flags": [
+    "--boltz-context",
+    "/opt/mosaic-stage0/contexts/brd4-25-20261103",
+    "--boltz-checkpoint",
+    "/opt/bachelor-research-20261022/assets/boltz-cache/boltz2_aff.ckpt",
+    "--boltz-python",
+    "/opt/bachelor-research-20261022/venv-boltz/bin/python",
+    "--allow-local-gpu"
+  ],
+  "arms": [
+    {
+      "name": "control",
+      "command": "python stage2/run.py --config stage2/experiment.yaml --backend boltz2 --mode none --out /opt/mosaic-stage0/runs/stage2-overnight-20261103/matched/control --steps 500 --boltz-context /opt/mosaic-stage0/contexts/brd4-25-20261103 --boltz-checkpoint /opt/bachelor-research-20261022/assets/boltz-cache/boltz2_aff.ckpt --allow-local-gpu",
+      "rationale": null
+    },
+    {
+      "name": "A-valence",
+      "command": "python stage2/run.py --config stage2/experiment.yaml --backend boltz2 --mode valence --out /opt/mosaic-stage0/runs/stage2-overnight-20261103/matched/A-valence --steps 500 --boltz-context /opt/mosaic-stage0/contexts/brd4-25-20261103 --boltz-checkpoint /opt/bachelor-research-20261022/assets/boltz-cache/boltz2_aff.ckpt --allow-local-gpu",
+      "rationale": null
+    },
+    {
+      "name": "B-connected",
+      "command": "python stage2/run.py --config stage2/experiment.yaml --backend boltz2 --mode connected --out /opt/mosaic-stage0/runs/stage2-overnight-20261103/matched/B-connected --steps 500 --boltz-context /opt/mosaic-stage0/contexts/brd4-25-20261103 --boltz-checkpoint /opt/bachelor-research-20261022/assets/boltz-cache/boltz2_aff.ckpt --allow-local-gpu",
+      "rationale": null
+    },
+    {
+      "name": "C-sparse-only",
+      "command": "python stage2/run.py --config stage2/experiment.yaml --backend boltz2 --mode sparse_only --out /opt/mosaic-stage0/runs/stage2-overnight-20261103/matched/C-sparse-only --steps 500 --boltz-context /opt/mosaic-stage0/contexts/brd4-25-20261103 --boltz-checkpoint /opt/bachelor-research-20261022/assets/boltz-cache/boltz2_aff.ckpt --allow-local-gpu",
+      "rationale": null
+    },
+    {
+      "name": "C-sparse",
+      "command": "python stage2/run.py --config stage2/experiment.yaml --backend boltz2 --mode sparse --out /opt/mosaic-stage0/runs/stage2-overnight-20261103/matched/C-sparse --steps 500 --boltz-context /opt/mosaic-stage0/contexts/brd4-25-20261103 --boltz-checkpoint /opt/bachelor-research-20261022/assets/boltz-cache/boltz2_aff.ckpt --allow-local-gpu",
+      "rationale": null
+    },
+    {
+      "name": "D-relaxed",
+      "command": "python stage2/run.py --config stage2/experiment.yaml --backend boltz2 --mode connected --out /opt/mosaic-stage0/runs/stage2-overnight-20261103/matched/D-relaxed --steps 500 --boltz-context /opt/mosaic-stage0/contexts/brd4-25-20261103 --boltz-checkpoint /opt/bachelor-research-20261022/assets/boltz-cache/boltz2_aff.ckpt --allow-local-gpu",
+      "rationale": null
+    },
+    {
+      "name": "D-hardening",
+      "command": "python stage2/run.py --config stage2/experiment.yaml --backend boltz2 --mode connected --out /opt/mosaic-stage0/runs/stage2-overnight-20261103/matched/D-hardening --steps 500 --boltz-context /opt/mosaic-stage0/contexts/brd4-25-20261103 --boltz-checkpoint /opt/bachelor-research-20261022/assets/boltz-cache/boltz2_aff.ckpt --allow-local-gpu --hardening --hardening-gradient inherited",
+      "rationale": null
+    }
+  ]
+}

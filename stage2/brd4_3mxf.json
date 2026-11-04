@@ -1,0 +1,12 @@
+{
+  "pdb_id": "3MXF",
+  "n_heavy_atoms": 25,
+  "smiles": "CCCCCCCCCCCCCCCCCCCCCCCCC",
+  "protein_sequence": "SMNPPPPETSNPNKPKRQTNQLQYLLRVVLKTLWKHQFAWPFQQPVDAVKLNLPDYYKIIKTPMDMGTIKKRLENNYYWNAQECIQDFNTMFTNCYIYNKPGDDIVLMAEALEKLFLQKINELPTEE",
+  "target": "BRD4-BD1, first bromodomain of human BRD4",
+  "protein_source": "examples/data/stage1_targets/panel.json, the same sealed 127-residue construct Stage 1 optimized against",
+  "reference_ligand": "JQ1, 31 heavy atoms, formal charge +1; not used here",
+  "ligand_role": "N-carbon chain that allocates the 25 relaxed atom slots and fixes the pose. Its atom and bond assignments are replaced by the relaxed X/E; only the slot count and the predicted pose are kept.",
+  "pocket": "none by design. Protocol 4.1.2 uses the complete BRD4-BD1 target with every residue an eligible contact partner, and Stage 2 inherits the Stage 1 objective unchanged. The 14-residue JQ1 pocket belongs to the 21 October pocket-directed line, not to this one.",
+  "scope": "input to mosaic.small_molecule.boltz2.prepare, which runs native Boltz-2 once to establish a fixed pose. Not a claim about binding."
+}

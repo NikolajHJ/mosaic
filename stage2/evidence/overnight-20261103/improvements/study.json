@@ -1,0 +1,49 @@
+{
+  "study": "improvements",
+  "experiment_file": "stage2/experiment.yaml",
+  "backend": "boltz2",
+  "target": null,
+  "parent": null,
+  "steps": 500,
+  "forwarded_flags": [
+    "--boltz-context",
+    "/opt/mosaic-stage0/contexts/brd4-25-20261103",
+    "--boltz-checkpoint",
+    "/opt/bachelor-research-20261022/assets/boltz-cache/boltz2_aff.ckpt",
+    "--boltz-python",
+    "/opt/bachelor-research-20261022/venv-boltz/bin/python",
+    "--allow-local-gpu"
+  ],
+  "arms": [
+    {
+      "name": "baseline",
+      "command": "python stage2/run.py --config stage2/experiment.yaml --backend boltz2 --mode connected --out /opt/mosaic-stage0/runs/stage2-overnight-20261103/improvements/baseline --steps 500 --boltz-context /opt/mosaic-stage0/contexts/brd4-25-20261103 --boltz-checkpoint /opt/bachelor-research-20261022/assets/boltz-cache/boltz2_aff.ckpt --allow-local-gpu",
+      "rationale": null
+    },
+    {
+      "name": "readout-caps",
+      "command": "python stage2/run.py --config stage2/experiment.yaml --backend boltz2 --mode connected --out /opt/mosaic-stage0/runs/stage2-overnight-20261103/improvements/readout-caps --steps 500 --boltz-context /opt/mosaic-stage0/contexts/brd4-25-20261103 --boltz-checkpoint /opt/bachelor-research-20261022/assets/boltz-cache/boltz2_aff.ckpt --allow-local-gpu --readout-caps",
+      "rationale": "soft valence can hold while the argmax molecule is over-valent"
+    },
+    {
+      "name": "valence-damping",
+      "command": "python stage2/run.py --config stage2/experiment.yaml --backend boltz2 --mode connected --out /opt/mosaic-stage0/runs/stage2-overnight-20261103/improvements/valence-damping --steps 500 --boltz-context /opt/mosaic-stage0/contexts/brd4-25-20261103 --boltz-checkpoint /opt/bachelor-research-20261022/assets/boltz-cache/boltz2_aff.ckpt --allow-local-gpu --valence-damping 0.5",
+      "rationale": "an exact projection every step may freeze topology changes"
+    },
+    {
+      "name": "fluidity-floor",
+      "command": "python stage2/run.py --config stage2/experiment.yaml --backend boltz2 --mode connected --out /opt/mosaic-stage0/runs/stage2-overnight-20261103/improvements/fluidity-floor --steps 500 --boltz-context /opt/mosaic-stage0/contexts/brd4-25-20261103 --boltz-checkpoint /opt/bachelor-research-20261022/assets/boltz-cache/boltz2_aff.ckpt --allow-local-gpu --fluidity-threshold 0.95 --fluidity-strength 0.05",
+      "rationale": "protocol 4.3 C.10, premature collapse to near one-hot rows"
+    },
+    {
+      "name": "bridge-retry",
+      "command": "python stage2/run.py --config stage2/experiment.yaml --backend boltz2 --mode connected --out /opt/mosaic-stage0/runs/stage2-overnight-20261103/improvements/bridge-retry --steps 500 --boltz-context /opt/mosaic-stage0/contexts/brd4-25-20261103 --boltz-checkpoint /opt/bachelor-research-20261022/assets/boltz-cache/boltz2_aff.ckpt --allow-local-gpu --bridge-retry",
+      "rationale": "valence reprojection can remove a bridge straight after adding it"
+    },
+    {
+      "name": "aromatic-1.0",
+      "command": "python stage2/run.py --config stage2/experiment.yaml --backend boltz2 --mode connected --out /opt/mosaic-stage0/runs/stage2-overnight-20261103/improvements/aromatic-1.0 --steps 500 --boltz-context /opt/mosaic-stage0/contexts/brd4-25-20261103 --boltz-checkpoint /opt/bachelor-research-20261022/assets/boltz-cache/boltz2_aff.ckpt --allow-local-gpu --aromatic-order 1.0",
+      "rationale": "aromatic weight 1.5 is a surrogate; 1.0 is a looser bound"
+    }
+  ]
+}

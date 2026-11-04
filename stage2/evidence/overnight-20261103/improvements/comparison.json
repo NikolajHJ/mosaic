@@ -1,0 +1,98 @@
+[
+  {
+    "arm": "aromatic-1.0",
+    "states": 501,
+    "final_score": -1.5778672695159912,
+    "final_components": 1,
+    "final_violations": 6,
+    "final_sanitized": false,
+    "valid_connected_states": 53,
+    "unique_valid_smiles": 3,
+    "topology_reversals": 17,
+    "flagged": [
+      "valence",
+      "predictor_exploitation"
+    ]
+  },
+  {
+    "arm": "baseline",
+    "states": 501,
+    "final_score": -1.5476956367492676,
+    "final_components": 1,
+    "final_violations": 4,
+    "final_sanitized": false,
+    "valid_connected_states": 54,
+    "unique_valid_smiles": 7,
+    "topology_reversals": 25,
+    "flagged": [
+      "valence",
+      "connectivity",
+      "predictor_exploitation"
+    ]
+  },
+  {
+    "arm": "bridge-retry",
+    "states": 501,
+    "final_score": -1.5476956367492676,
+    "final_components": 1,
+    "final_violations": 4,
+    "final_sanitized": false,
+    "valid_connected_states": 54,
+    "unique_valid_smiles": 7,
+    "topology_reversals": 25,
+    "flagged": [
+      "valence",
+      "connectivity",
+      "predictor_exploitation"
+    ]
+  },
+  {
+    "arm": "fluidity-floor",
+    "states": 501,
+    "final_score": -1.2036510705947876,
+    "final_components": 1,
+    "final_violations": 2,
+    "final_sanitized": false,
+    "valid_connected_states": 97,
+    "unique_valid_smiles": 22,
+    "topology_reversals": 16,
+    "flagged": [
+      "valence",
+      "connectivity",
+      "predictor_exploitation"
+    ]
+  },
+  {
+    "arm": "readout-caps",
+    "states": 501,
+    "final_score": -1.230452537536621,
+    "final_components": 2,
+    "final_violations": 2,
+    "final_sanitized": false,
+    "valid_connected_states": 282,
+    "unique_valid_smiles": 70,
+    "topology_reversals": 35,
+    "flagged": [
+      "valence",
+      "connectivity",
+      "bridge_survival",
+      "predictor_exploitation"
+    ]
+  },
+  {
+    "arm": "valence-damping",
+    "states": 501,
+    "final_score": -1.1360602378845215,
+    "final_components": 2,
+    "final_violations": 1,
+    "final_sanitized": false,
+    "valid_connected_states": 48,
+    "unique_valid_smiles": 1,
+    "topology_reversals": 38,
+    "flagged": [
+      "valence",
+      "connectivity",
+      "predictor_exploitation"
+    ]
+  }
+]
