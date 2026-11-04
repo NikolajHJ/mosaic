@@ -1,0 +1,167 @@
+{
+  "remote": "/work3/s234818/mosaic/runs/20261104-masked-denoising-01",
+  "archive_sha256": "1d1d9f0bc90b6b67b3238e714ff578941fb4984dd0be8d105fa0f7744e439a22",
+  "archive_bytes": 29312,
+  "source_manifest_sha256": "0f7c3309cd277ae54347b06ad3f02cb177964fc94c6796d5dcbf7eacb7dd1458",
+  "plan_sha256": "0c0b8619887d5427af83f9ad6cf11482a059ffb8ca4a082e1454d3f5baf51d5b",
+  "tag": "20261104-masked-denoising-01",
+  "status": "queued",
+  "job_id": "29890650",
+  "queue": "gpuv100",
+  "observed_utc": "2026-11-04T12:33:24.274301+00:00",
+  "scheduler": {
+    "returncode": 0,
+    "stdout": "29890650 PEND gpuv100 - mosaic-20261104-masked-denoising-01\n",
+    "stderr": ""
+  },
+  "pending_reason": {
+    "returncode": 0,
+    "stdout": "JOBID      USER    STAT  QUEUE      FROM_HOST   EXEC_HOST   JOB_NAME   SUBMIT_TIME\n29890650   s234818 PEND  gpuv100    hpclogin1               *oising-01 Nov  4 13:32\n Waiting for scheduling after resumed by administrator or user;\n",
+    "stderr": ""
+  },
+  "submission": {
+    "job_id": "29890650",
+    "argv": [
+      "bsub",
+      "-H",
+      "-q",
+      "gpuv100",
+      "-J",
+      "mosaic-20261104-masked-denoising-01",
+      "-n",
+      "4",
+      "-R",
+      "span[hosts=1]",
+      "-R",
+      "rusage[mem=8192]",
+      "-W",
+      "01:00",
+      "-env",
+      "all,~CUDA_VISIBLE_DEVICES,~CUDA_MPS_PIPE_DIRECTORY,~CUDA_MPS_LOG_DIRECTORY,~CUDA_MPS_ACTIVE_THREAD_PERCENTAGE",
+      "-o",
+      "/work3/s234818/mosaic/runs/20261104-masked-denoising-01/stdout.%J.log",
+      "-e",
+      "/work3/s234818/mosaic/runs/20261104-masked-denoising-01/stderr.%J.log",
+      "-gpu",
+      "num=1:mode=exclusive_process:j_exclusive=yes:mps=no:gmem=30G",
+      "bash",
+      "-l",
+      "/work3/s234818/mosaic/runs/20261104-masked-denoising-01/source/stage.sh",
+      "/work3/s234818/mosaic/runs/20261104-masked-denoising-01/source"
+    ],
+    "name": "mosaic-20261104-masked-denoising-01",
+    "queue": "gpuv100",
+    "status": "accepted_held",
+    "source_sha256": "0f7c3309cd277ae54347b06ad3f02cb177964fc94c6796d5dcbf7eacb7dd1458",
+    "plan_sha256": "0c0b8619887d5427af83f9ad6cf11482a059ffb8ca4a082e1454d3f5baf51d5b",
+    "response": {
+      "returncode": 0,
+      "stdout": "Job <29890650> is submitted to queue <gpuv100>.\n",
+      "stderr": ""
+    }
+  },
+  "held_proof": {
+    "job_id": "29890650",
+    "observations": [
+      {
+        "returncode": 0,
+        "stdout": "29890650 PEND s234818 mosaic-20261104-masked-denoising-01                                                                 \n",
+        "stderr": ""
+      },
+      {
+        "returncode": 0,
+        "stdout": "29890650 PSUSP s234818 mosaic-20261104-masked-denoising-01                                                                 \n",
+        "stderr": ""
+      }
+    ]
+  },
+  "release": {
+    "job_id": "29890650",
+    "returncode": 0,
+    "stdout": "Job <29890650> is being resumed\n",
+    "stderr": ""
+  },
+  "startup": {
+    "returncode": 0,
+    "stdout": "{\"status\": \"metadata_startup_passed_no_models\", \"cells\": 9}\n",
+    "stderr": ""
+  },
+  "capacity_dispatch": {
+    "version": "mosaic-exploratory-storage-v1",
+    "research_profile": "exploratory",
+    "status": "passed",
+    "available_bytes": 7986479104,
+    "required_bytes": 83756719,
+    "byte_margin": 7902722385,
+    "available_files": 19406214,
+    "required_files": 126,
+    "file_margin": 19406088,
+    "reserve_bytes": 16777216,
+    "file_reserve": 16,
+    "single_quota_burst_allowance_bytes": 0,
+    "unprofiled_writer_ids": [],
+    "unprofiled_writer_allowance_bytes": 0,
+    "external_remaining_budgets": [],
+    "future_bytes": 66979503,
+    "future_files": 110,
+    "existing_bytes_recharged": 0,
+    "existing_files_recharged": 0,
+    "warnings": [],
+    "filesystem_inode_reporting": "unreported_all_zero",
+    "quota_observation": "reported",
+    "not_a_whole_account_reservation": true,
+    "entry_and_periodic_checks_required": false,
+    "scientific_settings_changed": false,
+    "output_root": "/work3/s234818/mosaic/runs/20261104-masked-denoising-01",
+    "output_cap_bytes": 67108864,
+    "file_cap": 120,
+    "own_output": {
+      "actual_bytes": 129361,
+      "actual_files": 10,
+      "nofollow": true
+    }
+  },
+  "verified_source_files": {
+    "defog_probe.py": {
+      "bytes": 23804,
+      "sha256": "f37e8e089c8fcf9fcc901cdbe881f322a12c873c85d65f36d9bfddba6bdb8e20"
+    },
+    "masked_denoiser.py": {
+      "bytes": 12830,
+      "sha256": "1311f002ee453ff89c50d258f79cd17ac9dd4b2874123014eb83ab1c1cf359f4"
+    },
+    "masked_denoising_benchmark.py": {
+      "bytes": 15055,
+      "sha256": "6059783499b513be443702c5be9a847a7b596c8d81e473dfab065a41a41a0227"
+    },
+    "masked_denoising_controls.py": {
+      "bytes": 3839,
+      "sha256": "6ecc79d40042779e067ac00792b60e98fd927a2bcac4522b607699fba081f407"
+    },
+    "plan.json": {
+      "bytes": 4516,
+      "sha256": "0c0b8619887d5427af83f9ad6cf11482a059ffb8ca4a082e1454d3f5baf51d5b"
+    },
+    "score_transfer_audit.py": {
+      "bytes": 22360,
+      "sha256": "e233e696457e84c3364348fc8271ef00034f633b8b5c5210f169883a94a78825"
+    },
+    "stage.sh": {
+      "bytes": 1413,
+      "sha256": "52c957f9302a4c25ac4ec4dbd30c1da0071afe956f29f74bc6d16acb34fbf5fb"
+    },
+    "storage_accounting.py": {
+      "bytes": 15089,
+      "sha256": "e498da6dce164ae182043629994848dc9c0d0d89a01260fa48c91b94b3e288f3"
+    }
+  },
+  "optimizer_updates": 0,
+  "checkpoints": 3,
+  "methods": [
+    "independent",
+    "structural",
+    "masked_defog"
+  ],
+  "proposals_per_checkpoint_method": 64,
+  "hard_score_cap_per_checkpoint_method": 16
+}
