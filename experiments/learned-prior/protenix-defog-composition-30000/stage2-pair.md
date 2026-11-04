@@ -21,3 +21,21 @@ finite-difference gate is disabled for this exploratory pair.
 `pair/comparison.json` compares sanitized connected readouts, sulfur counts,
 hard graph edits, native soft and valid hard affinity, and the native score
 change on discretization. Both arms record all readouts.
+
+## Imported baseline
+
+In the [500-update matched study](../../../stage2/evidence/overnight-20261103/matched/comparison.json),
+the unprojected control had 45 of 501 valid connected readouts. Valence-only
+had 3, connected projection had 54, and connected projection with sparsity had
+60. All four final readouts failed sanitization. The unprojected control had
+the lowest final relaxed loss of these arms, so the new comparison reports
+the best affinity among valid connected hard readouts separately.
+
+The [1,200-update connected arm](../../../stage2/evidence/round3-20261104/long-1200/run_summary.json)
+reported best loss −1.562 and mean hard-minus-soft loss +0.232 on its pose.
+
+## Submission
+
+DTU job 29891369, gpua100, A100 40 GB or 80 GB, two-hour limit, submitted
+4 November 2026 at 15:25 CET. Source revision 880d5d9. Output root
+`/work3/s234818/mosaic/runs/stage2-defog-pair-20261104a/output`.
