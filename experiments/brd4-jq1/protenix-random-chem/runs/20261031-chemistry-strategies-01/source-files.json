@@ -1,9 +1,0 @@
-{
-  "protenix_chemistry_screen.py": "845884e49028f553d6e777dac371b4ef05c0590de4025b82287eab5014ddbb48",
-  "chemistry_screen_ops.py": "c6b0606ef82f8b9cb58623f14de43bb0c3db20aca3d3c97270a13792db34af64",
-  "chemistry_screen_control.py": "f45d0a9be8361c6f9cdba71265858e2b876b590ae7a279fbbf18eaae082fd8b5",
-  "chemistry_screen_stage.sh": "25702f50715acd5546f1d1d998ca3b4ec8f0fcd9ba5aa0bd4eae1efc6eae3674",
-  "tests/test_protenix_chemistry_screen.py": "df7228f0f05a9c7882242b3b5edf782bcdabc10dcf023fcffe46c2ca28b34f32",
-  "src/mosaic/small_molecule/chemistry/severity.py": "a5ee997c88bbbc86ef963b54b1c7e2277747d2be982ab13964804a1e38ef8032",
-  "src/mosaic/small_molecule/chemistry/preparation.py": "d32f2531630d0fe50b7784978e23abdb3fa17ad0e2835fe00a47670a9c66c419"
-}

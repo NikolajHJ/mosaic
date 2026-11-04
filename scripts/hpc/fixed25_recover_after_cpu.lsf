@@ -1,8 +1,0 @@
-#!/bin/bash
-# Compatibility entry point; implementation: experiments/brd4-jq1/fixed-steps/hpc/fixed25_recover_after_cpu.lsf
-_mosaic_compat_root=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/../.." && pwd)
-if [[ "${BASH_SOURCE[0]}" != "$0" ]]; then
-  source "$_mosaic_compat_root/experiments/brd4-jq1/fixed-steps/hpc/fixed25_recover_after_cpu.lsf"
-else
-  exec bash -l "$_mosaic_compat_root/experiments/brd4-jq1/fixed-steps/hpc/fixed25_recover_after_cpu.lsf" "$@"
-fi

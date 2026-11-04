@@ -1,8 +1,0 @@
-#!/bin/bash
-# Compatibility entry point; implementation: experiments/graph-controls/known-ligand-1000/hpc/known_ligand_1000.lsf
-_mosaic_compat_root=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/../.." && pwd)
-if [[ "${BASH_SOURCE[0]}" != "$0" ]]; then
-  source "$_mosaic_compat_root/experiments/graph-controls/known-ligand-1000/hpc/known_ligand_1000.lsf"
-else
-  exec bash -l "$_mosaic_compat_root/experiments/graph-controls/known-ligand-1000/hpc/known_ligand_1000.lsf" "$@"
-fi

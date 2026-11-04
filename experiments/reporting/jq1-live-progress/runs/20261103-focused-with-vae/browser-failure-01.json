@@ -1,9 +1,0 @@
-{
-  "collection": "20261103-focused-01",
-  "canonical_edition": "edition-0017",
-  "observed_error": "Expected between one and24 saved experiments",
-  "actual_limit": 32,
-  "captured_arms": 37,
-  "saved_data_unchanged": true,
-  "solution": "Align canonical viewer with capture MAX_RUNS=64; new qualified engine and immutable edition"
-}

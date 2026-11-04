@@ -1,26 +1,14 @@
 ## Functional, multi-objective protein design using continuous relaxation.
 
-> **Working on experiments or scripts? Start here:**
-> [Experiment folder policy and inventory](experiments/README.md) ·
-> [Agent instructions](AGENTS.md) ·
-> [Experiment ledger / agent logbook](docs/experiment_ledger.md).
-> Keep each experiment's scripts and supporting files in its own documented
-> folder under `experiments/<family>/<experiment-id>/`, and log every attempt
-> and its actual outcome. Browse the [24 experiment homes](experiments/INDEX.md)
-> and [migration map](experiments/MIGRATION.md). The `scripts/` and `tests/`
-> roots contain only navigation and collection infrastructure; use their documented subfolders. Legacy adapters
-> live under [scripts/compat/](scripts/compat/README.md); old flat names are added
-> only to new authenticated archives. Historical submission receipts keep their paths.
+### This fork
 
-For cluster setup, use [DTU HPC for your own account](docs/HPC_GUIDE.md).
-The [documentation index and audit](docs/README.md) distinguish reusable guides
-from dated protocols, private operator paths and imported reference material.
+`main` tracks the upstream Mosaic library, examples, and tests. Use the
+installation instructions below for the standard library.
 
-For saved optimization reports, the default is the
-[one-command reporting workflow](scripts/reporting/README.md):
-`python scripts/reporting/report.py --runs my-runs.json`.
-It reuses the qualified engine and verified assets; no arguments updates the six
-current trajectories. Check the guide for supported saved formats and profiles.
+The small-molecule extension, BRD4/JQ1 experiments, HPC workflows, and
+research records live on [`codex/mosaic-experiments`](https://github.com/NikolajHJ/mosaic/tree/codex/mosaic-experiments).
+Use that branch for the research workflow. Bring reusable library changes to
+`main` through focused pull requests.
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23193038.svg)](https://doi.org/10.5281/zenodo.23193038)
 
@@ -45,7 +33,6 @@ There has been a recent explosion in the application of machine learning to prot
 
 | Included models | Reference(s) |
 | :--- | :--- |
-| Boltz-1 | [Boltz-1: Democratizing Biomolecular Interaction Modeling](https://www.biorxiv.org/content/10.1101/2024.11.19.624167) |
 | Boltz-2 | [Boltz-2: Towards Accurate and Efficient Binding Affinity Prediction](https://www.biorxiv.org/content/10.1101/2025.06.14.659707) |
 | BoltzGen (design) | [BoltzGen: Toward Universal Binder Design](https://www.biorxiv.org/content/10.1101/2025.11.20.689494) |
 | AlphaFold2 | [Highly accurate protein structure prediction with AlphaFold](https://www.nature.com/articles/s41586-021-03819-2); [Protein complex prediction with AlphaFold-Multimer](https://www.biorxiv.org/content/10.1101/2021.10.04.463034) |
@@ -61,6 +48,8 @@ There has been a recent explosion in the application of machine learning to prot
 | [trigram](#trigram) | [A high-level programming language for generative protein design](https://www.biorxiv.org/content/10.1101/2022.12.21.521526) |
 | [Proteina-Complexa](examples/proteina.py) | [Scaling Atomistic Protein Binder Design with Generative Pretraining and Test-Time Compute](https://arxiv.org/abs/2603.27950) |
 | [Promera](examples/promera_design.py) | [Promera](https://github.com/bjing2016/promera/tree/master) |
+| [BioEmu2](src/mosaic/models/bioemu2.py) | [BioEmu2](https://github.com/microsoft/bioemu2) |
+| [RFD4-Proteina](examples/rfd4_proteina.py) | [Biomolecular design through latent reasoning with RFD4-Proteina](https://rfd4-proteina.org/assets/paper/RFD4-Proteina.pdf) |
 
 
 ### Applications & case studies
@@ -101,7 +90,7 @@ The key observation is that it's possible to use this continuous relaxation simu
 This allows us to easily construct objective functions that are combinations of multiple learned potentials and optimize them efficiently, like so:
 
 ```python
-from mosaic.models.boltz1 import Boltz1
+from mosaic.models.boltz2 import Boltz2
 from mosaic.structure_prediction import TargetChain
 import mosaic.losses.structure_prediction as sp
 from mosaic.losses.protein_mpnn import InverseFoldingSequenceRecovery
@@ -110,26 +99,26 @@ from mosaic.optimizers import simplex_APGM
 import jax
 import numpy as np
 
-boltz1 = Boltz1()
+boltz2 = Boltz2()
 mpnn = ProteinMPNN.from_pretrained()
 
 target_sequence = "DYSFSCYSQLEVNGSQHSLTCAFE..."
 binder_length = 80
 
 # Generate features for binder-target complex
-boltz_features, _ = boltz1.binder_features(
+boltz_features, _ = boltz2.binder_features(
     binder_length=binder_length,
     chains=[TargetChain(sequence=target_sequence)],
 )
 
 # Generate features for binder alone (monomer)
-mono_features, _ = boltz1.binder_features(
+mono_features, _ = boltz2.binder_features(
     binder_length=binder_length,
     chains=[]
 )
 
 combined_loss = (
-    boltz1.build_loss(
+    boltz2.build_loss(
         loss=4 * sp.BinderTargetContact()
         + sp.DistogramRadiusOfGyration(target_radius=15.0)
         + sp.WithinBinderContact()
@@ -142,7 +131,7 @@ combined_loss = (
     + trigram_ll
     + 0.1 * stability_loss
     + 0.5
-    * boltz1.build_loss(
+    * boltz2.build_loss(
         loss=0.2 * sp.PLDDTLoss()
         + sp.DistogramRadiusOfGyration(target_radius=15.0)
         + 0.3 * sp.HelixLoss(),
@@ -166,7 +155,7 @@ _, PSSM = simplex_APGM(
 
 ```
 
-Here we're using ~5 different models to construct a loss function: the [Boltz-1](https://github.com/jwohlwend/boltz) structure prediction model (which is used _twice_: once to predict the binder-target complex and once to predict the binder as a monomer), ESM2, ProteinMPNN, an n-gram model, and a stability model trained on the [mega-scale](https://www.nature.com/articles/s41586-023-06328-6) dataset. 
+Here we're using ~5 different models to construct a loss function: the [Boltz-2](https://github.com/jwohlwend/boltz) structure prediction model (which is used _twice_: once to predict the binder-target complex and once to predict the binder as a monomer), ESM2, ProteinMPNN, an n-gram model, and a stability model trained on the [mega-scale](https://www.nature.com/articles/s41586-023-06328-6) dataset. 
 
 It's super easy to define additional loss terms, which are JIT-compatible callable pytrees, e.g.
 
@@ -226,7 +215,7 @@ Take a look at [optimizers.py](src/mosaic/optimizers.py) for examples.
 #### Structure Prediction
 ---
 
-We provide a simple interface in `mosaic.structure_prediction` and `mosaic.models.*` to ten structure prediction models: `OpenFold3`, `Boltz1`, `Boltz2`, `AF2`, `ProtenixMini`, `ProtenixTiny`, `ProtenixBase`, `Protenix2025`, `ESMFold2`, and `OpenDDE` (`OpenDDEModelV1` / `OpenDDEModelAbag`).
+We provide a simple interface in `mosaic.structure_prediction` and `mosaic.models.*` to nine structure prediction models: `OpenFold3`, `Boltz2`, `AF2`, `ProtenixMini`, `ProtenixTiny`, `ProtenixBase`, `Protenix2025`, `ESMFold2`, and `OpenDDE` (`OpenDDEModelV1` / `OpenDDEModelAbag`).
 
 
 To make a prediction or design a binder, you'll need to make a list of `mosaic.structure_prediction.TargetChain` objects. This is a simple dataclass that contains a protein (or DNA or RNA) sequence, a flag to tell the model if it should use MSAs (`use_msa`), and potentially a template structure (as a `gemmi.Chain`).
@@ -317,7 +306,7 @@ features, writer = boltz2.target_only_features([TargetChain(SEQUENCE, use_msa=Tr
 pred = boltz2.predict(
     PSSM=jax.nn.one_hot([TOKENS.index(c) for c in SEQUENCE], 20),
     features=features, writer=writer,
-    recycling_steps=3, sampling_steps=25, key=jax.random.key(0),
+    recycling_steps=3, sampler=boltz2.inference_sampler(25), key=jax.random.key(0),
 )
 
 mpnn = load_mpnn_sol(0.05)

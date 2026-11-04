@@ -1,8 +1,0 @@
-#!/bin/bash
-# Compatibility entry point; implementation: experiments/brd4/chemistry-ramp-10000/hpc/brd4_chemistry_ramp_report.lsf
-_mosaic_compat_root=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/../.." && pwd)
-if [[ "${BASH_SOURCE[0]}" != "$0" ]]; then
-  source "$_mosaic_compat_root/experiments/brd4/chemistry-ramp-10000/hpc/brd4_chemistry_ramp_report.lsf"
-else
-  exec bash -l "$_mosaic_compat_root/experiments/brd4/chemistry-ramp-10000/hpc/brd4_chemistry_ramp_report.lsf" "$@"
-fi

@@ -1,8 +1,0 @@
-#!/bin/bash
-# Compatibility entry point; implementation: scripts/graph/augment_protenix_controls.lsf
-_mosaic_compat_root=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/../.." && pwd)
-if [[ "${BASH_SOURCE[0]}" != "$0" ]]; then
-  source "$_mosaic_compat_root/scripts/graph/augment_protenix_controls.lsf"
-else
-  exec bash -l "$_mosaic_compat_root/scripts/graph/augment_protenix_controls.lsf" "$@"
-fi

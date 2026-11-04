@@ -1,8 +1,0 @@
-#!/bin/bash
-# Compatibility entry point; implementation: experiments/graph-validation/relaxed-gradients/hpc/protenix_relaxed_gradients.lsf
-_mosaic_compat_root=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/../.." && pwd)
-if [[ "${BASH_SOURCE[0]}" != "$0" ]]; then
-  source "$_mosaic_compat_root/experiments/graph-validation/relaxed-gradients/hpc/protenix_relaxed_gradients.lsf"
-else
-  exec bash -l "$_mosaic_compat_root/experiments/graph-validation/relaxed-gradients/hpc/protenix_relaxed_gradients.lsf" "$@"
-fi

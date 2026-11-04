@@ -1,8 +1,0 @@
-#!/bin/bash
-# Compatibility entry point; implementation: experiments/brd4/boltz-affinity-10000/hpc/brd4_boltz_submit_queue.lsf
-_mosaic_compat_root=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/../.." && pwd)
-if [[ "${BASH_SOURCE[0]}" != "$0" ]]; then
-  source "$_mosaic_compat_root/experiments/brd4/boltz-affinity-10000/hpc/brd4_boltz_submit_queue.lsf"
-else
-  exec bash -l "$_mosaic_compat_root/experiments/brd4/boltz-affinity-10000/hpc/brd4_boltz_submit_queue.lsf" "$@"
-fi
