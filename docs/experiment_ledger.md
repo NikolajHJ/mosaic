@@ -11576,6 +11576,15 @@ metadata startup and capacity. Initial committed prefix was empty.
 Same control inputs and schedules, with one fixed-reference search over LR0.3 plus
 eight halvings. Six portable tests passed. See experiments/brd4-jq1/protenix-line-search.
 
+4 November 2026, 10:53:53 CET. Matched projection feedback confirmation
+29888169 completed both 20,000-update arms on V100 with 5,161 hard forwards
+each. Feedback improved final contact from 0.376663 to 0.524529 and increased
+valid update sources from 16,306 to 19,070. Archive only found the higher
+best valid contact, 0.546988 versus 0.524529, and more distinct valid SMILES,
+128 versus 20. Valid endpoint draws were 31/128 versus 0/128. The terminal
+audit verified the same-job LSF record, frozen inputs, and all 40 blocks per
+arm. See experiments/brd4-jq1/protenix-random-chem/projection-feedback-confirmation.md.
+
 4 November 2026 — Matched 50k seed 23 line search submitted as 29890096 on A100.
 67-hour bound; held release, actual metadata startup, six input and 157 source
 bindings and own capacity passed. Observed PEND with 0 committed updates.

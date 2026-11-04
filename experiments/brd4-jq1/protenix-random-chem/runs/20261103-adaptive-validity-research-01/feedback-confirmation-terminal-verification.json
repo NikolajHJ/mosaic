@@ -1,0 +1,63 @@
+{
+  "status": "independently_verified_completed_feedback_confirmation",
+  "observed_utc": "2026-11-04T10:32:15.050006+00:00",
+  "job_id": "29888169",
+  "queue": "gpuv100",
+  "same_job_lsf_success": true,
+  "source_manifest_sha256": "85fdeab9c54dfef60902faf14e55f8150115a439e4fe199a467bcfbb44bd6b26",
+  "plan_sha256": "373ee2ed2c72787e217e3b9f98a50da20f461cfc25d14c96d3596c30b3b753e7",
+  "source_files": 5,
+  "remote_file_bindings": 253,
+  "frozen_inputs_unchanged": true,
+  "elapsed_seconds": 20049.425115271006,
+  "result_binding": {
+    "path": "/work3/s234818/mosaic/runs/20261104-feedback-confirmation-01/payload/result.json",
+    "bytes": 1471066,
+    "sha256": "3359b5a86f79a62f5bb80686a253f1bdab9df48c429e0229f9a2207ef413e38c"
+  },
+  "packet_sha256": "cee568bcfa38d60f70917f2eb250b5446ed9e3da5bf8eef0f29a77f3f001a754",
+  "local_packet": "results\\hpc\\20261104-feedback-confirmation-01\\terminal-20261104T103214Z\\stdout.json",
+  "arms": [
+    {
+      "arm": "archive_only",
+      "updates": 20000,
+      "valid_update_sources": 16306,
+      "update_source_denominator": 20000,
+      "hard_diagnostic_calls": 5161,
+      "unique_valid_smiles": 128,
+      "best_valid_hard_contact": 0.5469875335693359,
+      "final_raw_hard_contact": 0.37666255235671997,
+      "final_raw_valid": true,
+      "endpoint_sample_valid_draws": 31,
+      "endpoint_sample_draws": 128,
+      "all_boundary_valid_draws": 629,
+      "all_boundary_draws": 5120,
+      "resets_at": [],
+      "elapsed_seconds": 9906.761277118
+    },
+    {
+      "arm": "project_feedback",
+      "updates": 20000,
+      "valid_update_sources": 19070,
+      "update_source_denominator": 20000,
+      "hard_diagnostic_calls": 5161,
+      "unique_valid_smiles": 20,
+      "best_valid_hard_contact": 0.5245292782783508,
+      "final_raw_hard_contact": 0.5245292782783508,
+      "final_raw_valid": true,
+      "endpoint_sample_valid_draws": 0,
+      "endpoint_sample_draws": 128,
+      "all_boundary_valid_draws": 29,
+      "all_boundary_draws": 5120,
+      "resets_at": [
+        1000,
+        1500,
+        3000,
+        6000,
+        11000,
+        16000
+      ],
+      "elapsed_seconds": 10131.173878139001
+    }
+  ]
+}

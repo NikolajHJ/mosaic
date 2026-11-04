@@ -266,3 +266,13 @@ and projected 277,159,752 bytes across 6,678 files. The dispatch and entry
 capacity checks passed. The initial observation recorded zero committed
 updates. See [dispatch verification](feedback-confirmation-dispatch-verification.json)
 for the source, plan and receipts.
+
+The 20k confirmation completed at 10:53:53 CET on 4 November 2026. The
+terminal audit verified 40 blocks and 5,161 hard forwards in each arm,
+253 bound files, and preserved inputs and frozen scorer. Feedback improved
+the final contact score (0.524529 versus 0.376663) and the valid update-source
+count (19,070 versus 16,306). The archive-only arm found the best candidate
+(0.546988 versus 0.524529), more distinct valid SMILES (128 versus 20), and
+more valid endpoint draws (31/128 versus 0/128). See the
+[result note](../../projection-feedback-confirmation.md) and
+[terminal verification](feedback-confirmation-terminal-verification.json).
