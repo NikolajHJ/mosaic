@@ -78,3 +78,6 @@ seeds23/41 with independent noise streams retain the same50k schedules, LR0.3
 and model key17. Actual jobs29880094/A100 and29880095/L40S are queued; no new
 updates yet. Both are registered as future canonical report candidates. Existing
 sources, jobs and saved results remain unchanged.
+
+[Seed 23 best-decrease line search](../protenix-line-search/README.md)
+repeats the sparse cooling/noise schedule on A100 with eight LR halvings.

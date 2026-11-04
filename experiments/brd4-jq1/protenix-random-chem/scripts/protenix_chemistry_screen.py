@@ -178,7 +178,7 @@ class BindingNoise:
         return {"policy": deepcopy(self.policy), "next_update": self.next_update,
                 "rng_state": deepcopy(self.generator.bit_generator.state)}
 
-    def propose(self, logits, gradient, binding_gradient, rate, update):
+    def propose(self, logits, gradient, binding_gradient, rate, update, *, noise_blocks=None):
         import jax
         import numpy as np
         from gradient_scaled_noise import direction_noise
@@ -197,7 +197,10 @@ class BindingNoise:
                     "Nonfinite noise proposal input")
             if ratio > 0:
                 noise, metric = direction_noise(native, rate, ratio, self.generator)
-                value = deterministic + jax.device_put(noise, deterministic.sharding)
+                perturbation = jax.device_put(noise, deterministic.sharding)
+                value = deterministic + perturbation
+                if noise_blocks is not None:
+                    noise_blocks[name] = perturbation
             else:
                 # Exact noiseless settling; no addition and no unused RNG draws.
                 value = deterministic
@@ -480,11 +483,44 @@ def restore_teacher(record, spec):
     return prepared,environment
 
 
-def run_loop(loss, initial, prepare, spec, loss_config, key, config, output, *, steps=None, tick=None, resume=None):
-    """One finite fixed proposal; source teacher and coefficients fixed per step."""
+def best_decreasing_trial(before, totals):
+    """Check every trial; ties retain the earlier, larger decreasing rate."""
+    best = None
+    for index, total in enumerate(totals):
+        require(math.isfinite(total), "Nonfinite line-search total")
+        if total < (before if best is None else totals[best]):
+            best = index
+    return best
+
+
+def score_trial(loss, logits, prepared, spec, loss_config, key, active):
+    """Score the unchanged relaxed objective without a trial backward pass."""
+    from mosaic.small_molecule.chemistry.loss import failure_aware_repair_loss
+    from mosaic.small_molecule.optimizers import _nonfinite_paths, _validate_value, validate_graph
+
+    graph = logits.graph()
+    validate_graph(graph)
+    contact, aux = loss(graph, key=key)
+    _validate_value(contact)
+    repair, terms = failure_aware_repair_loss(logits.decoded(), prepared, spec, loss_config)
+    require(not _nonfinite_paths((contact, aux, repair, terms)), "Nonfinite line-search objective")
+    contact = float(contact)
+    total = active["binding_weight"]*contact + active["repair_weight"]*float(repair)
+    require(math.isfinite(total), "Nonfinite line-search total")
+    return contact, total
+
+
+def run_loop(loss, initial, prepare, spec, loss_config, key, config, output, *, steps=None, tick=None,
+             resume=None, line_search_halvings=0):
+    """Fixed proposals by default; opt-in best decrease with a fixed step target."""
     import jax
     import numpy as np
     from mosaic.small_molecule.io import hard_readout
+    require(type(line_search_halvings) is int and line_search_halvings in (0, 8),
+            "Unknown line-search budget")
+    if line_search_halvings:
+        require(config.get("temperature_schedule") is not None and config.get("neighbor_environment") is None,
+                "Line search is scoped to the cooling run without neighbor loss")
     output = Path(output)
     output.mkdir(parents=True, exist_ok=False)
     (output/"snapshots").mkdir()
@@ -510,6 +546,9 @@ def run_loop(loss, initial, prepare, spec, loss_config, key, config, output, *, 
     if config.get("temperature_schedule") is not None:
         summary["temperature_schedule"] = config["temperature_schedule"]
         summary["changing_temperature_scores_are_not_one_fixed_objective"] = True
+    if line_search_halvings:
+        summary["selection_policy"] = "best_strict_decrease_fixed_reference"
+        summary["line_search_halvings"] = line_search_halvings
     unique = set()
     previous_readout = None
     started = time.monotonic()
@@ -604,6 +643,11 @@ def run_loop(loss, initial, prepare, spec, loss_config, key, config, output, *, 
             last_sampling_seconds = time.monotonic()-sampling_started
         return readout
 
+    def save_trial(point, step):
+        with (output/"current-trial.npz").open("wb") as stream:
+            np.savez_compressed(stream, atom_logits=np.asarray(point.atoms), bond_logits=np.asarray(point.bonds),
+                                temperature=np.asarray(point.temperature, dtype=np.float32), step=step)
+
     try:
         if resume is None:
             prepared, environment = prepare_step(initial, 0)
@@ -637,22 +681,63 @@ def run_loop(loss, initial, prepare, spec, loss_config, key, config, output, *, 
                 tick(step)
             before, gradient = weighted(units, active)
             logits = units["logits"]
+            noise_blocks = {} if line_search_halvings else None
+            rate = .3
             if noise is None:
-                proposal = type(logits)(logits.atoms-.3*gradient.atoms, logits.bonds-.3*gradient.bonds, logits.temperature)
+                proposal = type(logits)(logits.atoms-rate*gradient.atoms, logits.bonds-rate*gradient.bonds, logits.temperature)
                 noise_record = None
             else:
-                proposal, noise_record = noise.propose(logits, gradient, units["binding_gradient"], .3, step)
-            # Retain the exact proposed input even if native execution fails.
-            with (output/"current-trial.npz").open("wb") as stream:
-                np.savez_compressed(stream, atom_logits=np.asarray(proposal.atoms), bond_logits=np.asarray(proposal.bonds),
-                                    temperature=np.asarray(proposal.temperature, dtype=np.float32), step=step)
-            candidate = evaluate_units(loss, proposal, prepared, environment, spec, loss_config, key)
-            after, _ = weighted(candidate, active)
+                proposal, noise_record = noise.propose(logits, gradient, units["binding_gradient"], rate, step,
+                                                       noise_blocks=noise_blocks)
+            contact_before = float(units["native"].value)
+            native_candidate = None
+            attempts = []
+            if line_search_halvings:
+                prepared.verify(spec)
+                contact_before, before = score_trial(loss, logits, prepared, spec, loss_config, key, active)
+                trial_points = []
+                for index in range(1+line_search_halvings):
+                    fraction = 0.5**index
+                    trial_rate = rate*fraction
+                    point = proposal
+                    if index:
+                        leaves = []
+                        for name in ("atoms", "bonds"):
+                            leaf = getattr(logits, name) - trial_rate*getattr(gradient, name)
+                            if name in noise_blocks:
+                                leaf = leaf + fraction*noise_blocks[name]
+                            leaves.append(leaf)
+                        point = type(logits)(*leaves, logits.temperature)
+                    try:
+                        contact, total = score_trial(loss, point, prepared, spec, loss_config, key, active)
+                    except Exception:
+                        save_trial(point, step)
+                        raise
+                    attempts.append({"rate": trial_rate, "contact": contact, "total": total})
+                    trial_points.append(point)
+                prepared.verify(spec)
+                selected = best_decreasing_trial(before, [trial["total"] for trial in attempts])
+                if selected is None:
+                    proposal, rate, contact_after, after = logits, 0., contact_before, before
+                else:
+                    proposal = trial_points[selected]
+                    rate, contact_after, after = (attempts[selected][name] for name in ("rate", "contact", "total"))
+                save_trial(proposal, step)
+            else:
+                # Retain the exact proposed input even if native execution fails.
+                save_trial(proposal, step)
+                candidate = evaluate_units(loss, proposal, prepared, environment, spec, loss_config, key)
+                after, _ = weighted(candidate, active)
+                native_candidate = candidate["native"]
+                contact_after = float(native_candidate.value)
             record = {"step": step-start, "global_step": step, "preparation_identity": prepared.identity,
                       "fixed_before": before, "fixed_after": after, "fixed_increased": after > before,
-                      "contact_before": float(units["native"].value), "contact_after": float(candidate["native"].value),
-                      "rate": .3, "candidate_count": 1, **active,
+                      "contact_before": contact_before, "contact_after": contact_after,
+                      "rate": rate, "candidate_count": len(attempts) if line_search_halvings else 1, **active,
                       "no_op": bool(all(np.array_equal(np.asarray(getattr(logits, n)), np.asarray(getattr(proposal, n))) for n in ("atoms", "bonds")))}
+            if line_search_halvings:
+                record["line_search"] = {"attempts": attempts, "selected_trial": selected,
+                                         "noise_reference_rate": .3, "applied_noise_fraction": rate/.3}
             if noise_record is not None:
                 record["noise"] = noise_record
             next_logits = proposal
@@ -670,7 +755,7 @@ def run_loop(loss, initial, prepare, spec, loss_config, key, config, output, *, 
             # A cooled source graph is a new native input. Never reuse a native
             # value/gradient evaluated at the previous trial's temperature.
             units = evaluate_units(loss, next_logits, prepared, environment, spec, loss_config, key,
-                                   native=None if temperature_changed else candidate["native"])
+                                   native=None if temperature_changed else native_candidate)
             readout = hard_readout(next_logits.graph())
             active = policy.source(step+1, valid_connected(readout), gradient_norm(units["binding_gradient"]), gradient_norm(units["chemistry_gradient"]))
             save_point(step+1, units, prepared, environment, active)
@@ -718,12 +803,19 @@ def main(argv=None):
     plan = read(args.plan)
     row = plan["arms"][args.arm]
     config = validate_screen(row["screen"])
+    halvings = row.get("line_search_halvings", 0)
+    require(type(halvings) is int and halvings in (0, 8), "Unknown line-search budget")
+    if halvings:
+        require(config.get("temperature_schedule") is not None and config.get("neighbor_environment") is None,
+                "Line search is scoped to the cooling run without neighbor loss")
     require(row["rate"] == .3 and row["model_key"] == 17 and row["matrix_stride"] == 20 and row["loss_stride"] == 1,
             "Changed shared LR/model key/retention")
     require(row.get("composition_weight", 0) == 0 and not row.get("margin", False), "Composition/margin must remain off")
     require(not row.get("logit_noise"), "Declare noise inside screen configuration, not arm metadata")
     for name in ("config", "snapshot", "reference", "pocket", "context_ready"):
         bound(row[name])
+    if halvings:
+        bound(row["matched_initial_state"])
     if row.get('resume') is not None:
         for name in ('snapshot','reference'):bound(row['resume'][name])
         require(row['resume']['state'].get('global_step', row['resume']['state']['step'])==row['resume']['offset'],'Resume step differs')
@@ -733,7 +825,8 @@ def main(argv=None):
     sys.path[:0] = [str(code_source/"src"), str(original/"scripts")]
     if args.startup_only:
         print(json.dumps({"status": "metadata_startup_passed_no_models", "arm": args.arm,
-                          "configuration": config, "new_library_first": str(code_source/"src")}))
+                          "configuration": config, "line_search_halvings": halvings,
+                          "new_library_first": str(code_source/"src")}))
         return
     from gpu_policy import selected, validate_hardware
     gpu = selected(row)
@@ -786,6 +879,15 @@ def main(argv=None):
     logits_type = logits_class(scheduled=config.get("temperature_schedule") is not None)
     initial = initialize(config, row["snapshot"]["path"], logits_type)
     key = jax.random.key(17)
+    if halvings:
+        with np.load(bound(row["matched_initial_state"]), allow_pickle=False) as point:
+            require(int(point["step"]) == 0 and np.array_equal(point["key_data"], np.asarray(jax.random.key_data(key))),
+                    "Matched initial snapshot step/key differs")
+            for field, leaf in (("atom_logits", initial.atoms), ("bond_logits", initial.bonds)):
+                values = np.asarray(leaf)
+                require(point[field].dtype == values.dtype and point[field].tobytes() == values.tobytes(),
+                        "Matched initial logit bytes differ: " + field)
+        summary["matched_initial_state"] = row["matched_initial_state"]
     with np.load(row["snapshot"]["path"], allow_pickle=False) as original_point:
         require(np.array_equal(original_point["key_data"], np.asarray(jax.random.key_data(key))), "Original snapshot model key differs")
         if config["initialization"]["mode"] == "dense_original":
@@ -835,7 +937,9 @@ def main(argv=None):
             actual_steps = args.smoke_updates if args.smoke_updates is not None else config["updates"]-start
             require(1 <= actual_steps <= config["updates"], "Invalid pilot budget")
             result = run_loop(loss, initial, prepare, spec, FailureGuidanceConfig(**source_config["loss"]), key, config, output,
-                              steps=actual_steps, tick=tick,resume=resume)
+                              steps=actual_steps, tick=tick,resume=resume,line_search_halvings=halvings)
+        if halvings:
+            summary.update(line_search_halvings=halvings, selection_policy=result["selection_policy"])
         summary.update(status=result["status"], applied_updates=result["applied_updates"],
                        actual_steps=actual_steps, full_budget_complete=start+result["applied_updates"] == config["updates"],
                        probe_not_adopted=args.smoke_updates is not None, report_path=str(output/"report.json"),
@@ -851,6 +955,8 @@ def main(argv=None):
         summary["frozen_after"] = after
         for name in ("config", "snapshot", "reference", "pocket", "context_ready"):
             bound(row[name])
+        if halvings:
+            bound(row["matched_initial_state"])
         require(after == frozen, "Frozen model/context changed")
         write(output.parent/"summary.json", summary)
 

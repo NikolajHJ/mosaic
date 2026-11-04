@@ -11571,3 +11571,12 @@ parent, settings and diagnostics to measure persistence and these tradeoffs.
 Both 20,000-update arms reuse the pilot's same starting parent, settings,
 500-update boundaries and equal 5,161 hard forwards. Verified held release,
 metadata startup and capacity. Initial committed prefix was empty.
+
+4 November 2026 — Prepared one seed 23 A100 50k line-search repeat.
+Same control inputs and schedules, with one fixed-reference search over LR0.3 plus
+eight halvings. Six portable tests passed. See experiments/brd4-jq1/protenix-line-search.
+
+4 November 2026 — Matched 50k seed 23 line search submitted as 29890096 on A100.
+67-hour bound; held release, actual metadata startup, six input and 157 source
+bindings and own capacity passed. Observed PEND with 0 committed updates.
+Native result and timing are pending. Control 29880094 is preserved.

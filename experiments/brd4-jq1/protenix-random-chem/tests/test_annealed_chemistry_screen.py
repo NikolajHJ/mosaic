@@ -230,3 +230,17 @@ def test_explicit_tail_policy_change_applies100_immediately_and_keeps_endpoint_s
     with np.load(resume["snapshot"]["path"]) as a, np.load(child/"snapshots/step-00020.npz") as b:
         for name in ("atom_logits", "bond_logits", "X", "E_upper", "key_data"):
             np.testing.assert_array_equal(a[name], b[name])
+
+@pytest.mark.parametrize("totals,selected", [
+    ([0.9, 0.8, 0.7, 0.71, 0.8, 0.85, 0.9, 0.92, 0.95], 2),
+    ([1.1, 1.0, 1.01], None),
+    ([0.95, 0.95, 0.96], 0),
+    ([1.1, 1.08, 0.9], 2),
+])
+def test_halvings_choose_best_strict_decrease(totals, selected):
+    assert screen.best_decreasing_trial(1.0, totals) == selected
+
+
+def test_halvings_reject_a_nonfinite_later_trial_even_after_decrease():
+    with pytest.raises(ValueError, match="Nonfinite"):
+        screen.best_decreasing_trial(1.0, [0.5, float("nan")])

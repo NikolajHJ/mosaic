@@ -95,7 +95,9 @@ def submit(plan_path, kind, arm=None, wall_minutes=None, dependency=None, depend
     gpu_row = plan['arms'][arm or plan['probe_arms'][0]] if gpu else None
     queue = selected(gpu_row)['queue'] if gpu else 'hpc'
     wall_minutes = wall_minutes or (90 if kind == 'probe' else 30)
-    require(type(wall_minutes) is int and 1 <= wall_minutes <= 1440, 'Unsupported wall budget')
+    wall_limit = 4320 if (kind == 'run' and queue == 'gpua100'
+                          and gpu_row.get('line_search_halvings') == 8) else 1440
+    require(type(wall_minutes) is int and 1 <= wall_minutes <= wall_limit, 'Unsupported wall budget')
     require(not gpu or wall_minutes > 10, 'GPU budget must include cleanup reserve')
     argv = ['bsub', '-H', '-q', queue, '-J', name, '-n', '8' if gpu else '4',
             '-R', 'span[hosts=1]', '-R', 'rusage[mem=4096]',
