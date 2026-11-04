@@ -175,3 +175,53 @@ passed independent dispatch verification. Source53c71b95070e60eb045effa92258a649
 plan758cce4263370f9fc4a197c93a2baaf8d04d4ae51fdf8d4885abe70c7a695c1a.
 See candidate-audit-dispatch-verification.json; no native findings yet. All live
 sparse/VAE jobs remain read-only context and RUN at the initial account capture.
+
+
+4 November 2026, 03:09 CET — Saved candidate audit29886311 verified DONE.
+Actual same-job LSF/history, four source files,19 remote file bindings and frozen/
+input preservation passed. All384 saved draws were accounted for (valid21/5/16
+across the three128-draw groups). Thirteen distinct slot-labelled valid graphs
+needed13 native sample evaluations plus3 reference forwards; elapsed19.26s, no
+censoring, no optimizer updates. Best valid sample hard contact0.446152449 versus
+saved-repair argmax0.390705585. This is one saved-parent candidate-selection signal,
+not improved affinity or evidence that a new optimizer works. See
+candidate-audit-terminal-verification.json. Original PSUSP was transient; actual
+job started01:09:37 and finished01:10:00CET, with no extra bresume needed.
+
+Next causal pilot:2,000 updates perarm, starting from the SAME saved30k valid
+repair with2% uniform support, T0.4/chem30/LR0.3/no noise/key17. Both use four
+500-step blocks through the original sealed optimizer, preserving every scalar
+and snapshot. Block-local counters and explicit global offsets are recorded;
+fixed policies have no cooling/noise schedule to reset. At each boundary, both
+sample128 unfiltered categorical proposals using the same global-step seed rule
+and score ALL128, including invalid/duplicate draws, plus the current hard graph.
+Both keep the best valid archive. Only treatment feeds that best valid candidate
+back into the next block if current is invalid or a different candidate has a
+higher hard score. Same valid identity never triggers confidence-only resetting.
+Projection uses the tested2% uniform mixture; atom choices remain trainable,
+chemistry targets are detached and fixed within each optimizer trial. Projection
+is an explicit outside-trial intervention, with before/selected records.
+
+Equal budgets:2,000 gradient updates and517 hard diagnostic forwards perarm
+(one initial plus4x129). No early quality stop or invalid-graph abort. Compare
+best-valid hard score, distinct valid identities, valid update-source fraction
+(2,000 sources perarm, excluding duplicated block endpoints),128-draw validity,
+reset count and runtime. Both methods deliver their best archive; treatment does
+not receive privileged candidate selection. This isolates feedback within the
+block protocol, not all differences from an old unsegmented trajectory. Baseline
+runs first, so compilation warming limits runtime comparisons. No final reset is
+applied after update2,000. Request one90min V100 job/8CPUx4GiB,512MiB complete cap;
+prior2x2k took33–34min and additional forward cost fits the measured allowance.
+Twenty-four portable metadata/selection/ownership controls passed; native outcomes
+remain pending. This extends the existing runner/launcher, not a new controller.
+After a useful pilot, run the authorized matched20k–50k confirmation; if feedback
+fails, preserve it and select a different direction rather than tuning a grid.
+
+
+Actual feedback pilot29887463 RUN/V100 at03:16:03CET, accepted held receipt
+persisted before owned release. Source5files ce03e7e051a40d6999d8d260301c5c57e52a610ca87ed1884fb9852f8770fcef,
+planb3ea03ab731cdae46364ace215a013f39150be4cb71b4be8fa924223cbc942a2.
+Metadata startup, source bytes, exact90min/8CPUx4GiB/exclusive32GBV100 vectors,
+held/release and full own512MiB entry capacity independently verified. Native
+terminal outcome and completed gradients/updates are not yet claimed. See
+projection-feedback-dispatch-verification.json. Never replay launch or release.

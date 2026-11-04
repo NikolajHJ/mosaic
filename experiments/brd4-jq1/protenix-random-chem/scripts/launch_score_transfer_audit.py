@@ -105,7 +105,7 @@ def main():
  parser=argparse.ArgumentParser(description=__doc__)
  parser.add_argument('--inputs',type=Path,required=True)
  parser.add_argument('--tag',required=True)
- parser.add_argument('--kind',choices=['score-transfer','projection-pilot','binding-forward-pilot','sample-candidate-audit'],default='score-transfer')
+ parser.add_argument('--kind',choices=['score-transfer','projection-pilot','binding-forward-pilot','projection-feedback-pilot','sample-candidate-audit'],default='score-transfer')
  parser.add_argument('--candidate-inputs',type=Path)
  args=parser.parse_args()
  assert all(c.isalnum() or c=='-' for c in args.tag),'Unsafe tag'
@@ -129,7 +129,7 @@ def main():
   baseline=next(p for p in points if p['step']==30000 and p['arm']==base['arm'])
   plan.update(points=[baseline],candidate_samples=candidates['groups'],
               maximum_unique_samples=candidates['maximum_unique_samples'],wall_minutes=20,internal_seconds=900)
- if args.kind in ('projection-pilot','binding-forward-pilot'):
+ if args.kind in ('projection-pilot','binding-forward-pilot','projection-feedback-pilot'):
   parent=next(p for p in base['files'] if p['step']==30000)
   plan.update(version='protenix-projection-paired-pilot-v1',parent_plan=base['plan'],parent_arm=base['arm'],parent_snapshot=parent['snapshot'],parent_reference=parent['reference'],parent_step=30000,updates=2000,temperature=.4,chemistry_coefficient=30.,learning_rate=.3,smoothing=.02,internal_seconds=4800,output_cap_bytes=512*1024**2,complete_output_cap_mib=512,entrypoint='projected_start_pilot.py',wall_minutes=90,cpu_slots=8,memory_mib_per_slot=4096)
   plan.pop('points');plan.pop('optimizer_updates')
@@ -137,10 +137,11 @@ def main():
   plan['storage_module']=dict(path=remote+'/source/storage_accounting.py',bytes=len(storage_bytes),sha256=sha(storage_bytes))
   plan['file_cap']=5000
   if args.kind=='binding-forward-pilot':plan['comparison']='binding_forward'
+  if args.kind=='projection-feedback-pilot':plan.update(comparison='projection_feedback',block_updates=500)
  dump(source/'plan.json',plan)
  for src,dst in [(HERE.parent/'score_transfer_audit.py','score_transfer_audit.py'),(REPO/'scripts/hpc/storage_accounting.py','storage_accounting.py')]:
   (source/dst).write_bytes(src.read_bytes())
- if args.kind in ('projection-pilot','binding-forward-pilot'):(source/'projected_start_pilot.py').write_bytes((HERE.parent/'projected_start_pilot.py').read_bytes())
+ if args.kind in ('projection-pilot','binding-forward-pilot','projection-feedback-pilot'):(source/'projected_start_pilot.py').write_bytes((HERE.parent/'projected_start_pilot.py').read_bytes())
  (source/'stage.sh').write_text(STAGE,encoding='utf-8',newline='\n')
  manifest={'files':{p.name:{'bytes':p.stat().st_size,'sha256':sha(p.read_bytes())} for p in source.iterdir()}}
  dump(source/'checksums.json',manifest)

@@ -1,0 +1,37 @@
+{
+  "status": "verified_dispatch_allocated_RUN_entry_passed_not_terminal_success",
+  "observed_utc": "2026-11-04T02:16:02.277793+00:00",
+  "job_id": "29887463",
+  "queue": "gpuv100",
+  "source_manifest_sha256": "ce03e7e051a40d6999d8d260301c5c57e52a610ca87ed1884fb9852f8770fcef",
+  "plan_sha256": "b3ea03ab731cdae46364ace215a013f39150be4cb71b4be8fa924223cbc942a2",
+  "source_files": 5,
+  "portable_controls_passed": 24,
+  "actual_metadata_startup": true,
+  "actual_entry_capacity_passed": true,
+  "held_receipt_before_release": true,
+  "actual_resources": {
+    "wall_minutes": 90,
+    "cpu_slots": 8,
+    "memory_mib_per_slot": 4096,
+    "gpu_request": "num=1:mode=exclusive_process:j_exclusive=yes:mps=no:gmem=30G"
+  },
+  "arms": [
+    "archive_only",
+    "project_feedback"
+  ],
+  "updates_per_arm": 2000,
+  "block_updates": 500,
+  "hard_diagnostic_forwards_per_arm": 517,
+  "same_initialization": "saved30k valid repair plus2percent uniform",
+  "only_intervention": "best-valid candidate feedback into next block; both archive and score all128 raw proposals perboundary",
+  "claims_pending": "finite gradient updates, valid-source counts, hard candidate gains, runtime and terminal frozen/input preservation",
+  "capacity": {
+    "required_bytes": 590448631,
+    "available_bytes": 10854768640,
+    "reserve_bytes": 53677149
+  },
+  "packet_sha256": "d511b74570a678f0c8d7beba1196fc4872762633737663f89a431822afda3a0b",
+  "local_packet": "results\\hpc\\20261104-projection-feedback-pilot-01\\status-20261104T021600Z\\stdout.json",
+  "existing_runs_changed": false
+}

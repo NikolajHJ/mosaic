@@ -31,18 +31,22 @@ if receipt.is_file():
   p=subprocess.run(command,capture_output=True,text=True,timeout=25)
   data[command[0]]=dict(argv=command,returncode=p.returncode,stdout=p.stdout,stderr=p.stderr)
  data['committed_prefixes']={}
- for arm in ['original_logits','saved_repair','relaxed_forward','hard_forward']:
+ for arm in ['original_logits','saved_repair','relaxed_forward','hard_forward','archive_only','project_feedback']:
   prefix={}
-  for filename in ['states.jsonl','updates.jsonl']:
-   path=root/'payload'/arm/'study'/filename;count=0;last=None;contiguous=True
-   if path.is_file():
-    with path.open('rb') as f:
-     for line in f:
-      if not line.endswith(b'\n'):break
-      value=json.loads(line);step=value.get('step',value.get('global_step'))
-      if step!=count:contiguous=False
-      count+=1;last=step
-   prefix[filename]=dict(count=count,last_step=last,contiguous=contiguous)
+  owner=root/'payload'/arm
+  studies=sorted(owner.glob('block-*/study')) or [owner/'study']
+  for study in studies:
+   for filename in ['states.jsonl','updates.jsonl']:
+    path=study/filename;count=0;last=None;contiguous=True
+    if path.is_file():
+     with path.open('rb') as f:
+      for line in f:
+       if not line.endswith(b'\n'):break
+       value=json.loads(line);step=value.get('step',value.get('global_step'))
+       if step!=count:contiguous=False
+       count+=1;last=step
+    label=filename if study==owner/'study' else str(path.relative_to(owner))
+    prefix[label]=dict(count=count,last_step=last,contiguous=contiguous)
   data['committed_prefixes'][arm]=prefix
 print(json.dumps(data,allow_nan=False))
 '''

@@ -1,7 +1,7 @@
 {
   "version": "adaptive-validity-research-v1",
   "branch": "codex/valid-molecule-research",
-  "status": "saved_candidate_audit_submitted",
+  "status": "projection_feedback_pilot_running",
   "jobs": [
     {
       "id": "29884143",
@@ -39,16 +39,31 @@
     {
       "id": "29886311",
       "kind": "saved_valid_sample_candidate_audit",
-      "status": "PSUSP_after_accepted_owned_release",
+      "status": "DONE",
       "remote_root": "/work3/s234818/mosaic/runs/20261104-valid-candidate-audit-01",
       "optimizer_updates": 0,
       "max_native_forwards": 67,
       "do_not_replay_launch": true,
       "release_returncode": 0,
-      "do_not_repeat_bresume": true
+      "do_not_repeat_bresume": true,
+      "terminal_verification": "candidate-audit-terminal-verification.json"
+    },
+    {
+      "id": "29887463",
+      "kind": "matched_projection_feedback_pilot",
+      "status": "RUN",
+      "remote_root": "/work3/s234818/mosaic/runs/20261104-projection-feedback-pilot-01",
+      "updates_per_arm": 2000,
+      "arms": [
+        "archive_only",
+        "project_feedback"
+      ],
+      "block_updates": 500,
+      "hard_diagnostic_forwards_per_arm": 517,
+      "do_not_replay_launch": true
     }
   ],
-  "next_action": "observe_actual29886311_scheduler_bhist_result; reconcile_owned_release_ifstillPSUSP_without_extra_resume; verify_source_inputs_frozen_samplecounts_candidate_scores_before_next_test_or_confirmation",
+  "next_action": "observe_actual29887463; verify_each_arm_four500step_blocks/2000updates/517hardforwards, candidatearchives_samples/resetbindings and frozen/input/source/LSF; compare feedback effect. If useful, prepare matched20k-50k confirmation; if negative, stop expanding feedback and choose next evidence-based direction.",
   "existing_runs_unchanged": true,
   "max_concurrent_research_model_jobs": 2,
   "pilot_updates_per_arm_default_max": 2500,
@@ -58,9 +73,10 @@
   ],
   "main_promotion": "concise_document_after_matched_larger_confirmation_only",
   "audit_verification": "audit-verification.json",
-  "active_tag": "20261104-valid-candidate-audit-01",
+  "active_tag": "20261104-projection-feedback-pilot-01",
   "pilot_dispatch_verification": "pilot-dispatch-verification.json",
-  "last_completed_result": "Hard-forward2k:1108/2001validstates_vs1793relaxed;bothonevalididentity/bestretainedhard0.390705585. Samples16/128vs5/128. No hard-scoregain; stop this estimator for now.",
+  "last_completed_result": "Candidateaudit:13validslotgraphs/16nativeforwards/19.26s;bestvalidsamplehard0.4461524487vsargmaxrepair0.3907055855. No censoring, frozen/inputs preserved. Sampling plus hard selection promising; feedback not yet tested.",
   "binding_forward_dispatch_verification": "binding-forward-dispatch-verification.json",
-  "candidate_audit_dispatch_verification": "candidate-audit-dispatch-verification.json"
+  "candidate_audit_dispatch_verification": "candidate-audit-dispatch-verification.json",
+  "projection_feedback_dispatch_verification": "projection-feedback-dispatch-verification.json"
 }

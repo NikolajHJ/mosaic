@@ -32,6 +32,26 @@ def parent_configuration():
 
 
 class PairedPilotControls(unittest.TestCase):
+    def test_feedback_contrast_shares_start_forward_and_fixed_update_configuration(self):
+        declared = plan()
+        declared.update(comparison="projection_feedback", block_updates=500)
+        self.assertEqual(pilot.arm_protocol(declared),
+                         (("archive_only", "repair", "relaxed"), ("project_feedback", "repair", "relaxed")))
+        self.assertEqual(pilot.fixed_configuration(parent_configuration(), declared),
+                         pilot.fixed_configuration(parent_configuration(), plan()))
+        declared["updates"] = 2001
+        with self.assertRaisesRegex(ValueError, "blocks"):
+            pilot.validate_plan(declared)
+
+    def test_projection_preserves_same_identity_confidence_and_requires_useful_candidate(self):
+        self.assertFalse(pilot.should_project(True, .39, "same", .39000001, "same"))
+        self.assertFalse(pilot.should_project(True, .44, "current", .39, "candidate"))
+        self.assertTrue(pilot.should_project(True, .39, "current", .44, "candidate"))
+        self.assertTrue(pilot.should_project(False, .8, "invalid", .39, "valid"))
+        for current_valid, score in ((1, .3), (False, float("nan"))):
+            with self.assertRaisesRegex(ValueError, "selection"):
+                pilot.should_project(current_valid, score, "one", .4, "two")
+
     def test_binding_contrast_keeps_initialization_identical_and_changes_only_forward(self):
         declared = plan()
         declared["comparison"] = "binding_forward"

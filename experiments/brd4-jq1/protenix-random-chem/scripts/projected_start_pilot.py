@@ -32,6 +32,9 @@ def arm_protocol(plan):
     if comparison == "binding_forward":
         return (("relaxed_forward", "repair", "relaxed"),
                 ("hard_forward", "repair", "hard_forward_soft_backward"))
+    if comparison == "projection_feedback":
+        return (("archive_only", "repair", "relaxed"),
+                ("project_feedback", "repair", "relaxed"))
     raise ValueError("Unknown causal comparison")
 
 
@@ -102,6 +105,9 @@ def validate_plan(plan):
     audit.require(type(plan.get("file_cap", 10000)) is int and
                   0 < plan.get("file_cap", 10000) <= 30000, "Invalid own file cap")
     arm_protocol(plan)
+    if plan.get("comparison") == "projection_feedback":
+        audit.require(plan.get("block_updates") == 500 and plan["updates"] % 500 == 0,
+                      "Require matched500-update blocks")
     return plan
 
 
@@ -146,6 +152,105 @@ def parent_metadata(plan):
     for record in inputs(plan, row):
         audit.bound(record)
     return parent, row, config
+
+
+def should_project(current_valid, current_score, current_identity, best_score, best_identity):
+    """Feedback is a declared candidate-selection operation, not a descent gate."""
+    audit.require(type(current_valid) is bool and math.isfinite(current_score) and math.isfinite(best_score),
+                  "Invalid hard-candidate selection inputs")
+    return best_identity != current_identity and (not current_valid or best_score > current_score)
+
+
+def feedback_blocks(screen, loss, initial, prepare, spec, loss_config, key, config,
+                    output, plan, tick, score_hard, *, feedback):
+    """Equal update/proposal budgets; only feedback into the next block differs."""
+    import jax.numpy as jnp
+    import numpy as np
+    from mosaic.small_molecule.state import graph_from_hard
+    started = time.monotonic()
+    logits = initial
+    first = score_hard(graph_from_hard(np.asarray(initial.graph().X).argmax(-1),
+                                       np.asarray(initial.graph().E_upper).argmax(-1)))
+    audit.require(first["strict_valid_connected"], "Both feedback arms must start valid")
+    best, valid_sources, resets, diagnostic_calls = first, 0, [], 1
+    unique, blocks = {first["readout"]["canonical_smiles"]}, []
+    signature = lambda p: (tuple(p["readout"]["element_indices"]), tuple(p["readout"]["bond_upper_indices"]))
+    for offset in range(0, plan["updates"], plan["block_updates"]):
+        tick()
+        block = output / ("block-%04d" % (offset // plan["block_updates"]))
+        block.mkdir(exist_ok=False)
+        summary = screen.run_loop(loss, logits, prepare, spec, loss_config, key, config,
+                                  block / "study", steps=plan["block_updates"], tick=tick)
+        audit.require(summary["status"] == "completed_exploratory_updates" and
+                      summary["applied_updates"] == plan["block_updates"], "Incomplete feedback block")
+        # Source-state denominator excludes each block's extra evaluated endpoint.
+        valid_sources += summary["strict_valid_states"] - int(summary["last_state"]["strict_valid_connected"])
+        unique.update(summary["valid_unique_smiles"])
+        with np.load(block / "study/latest-state.npz", allow_pickle=False) as point:
+            logits = type(initial)(jnp.asarray(point["atom_logits"]), jnp.asarray(point["bond_logits"]), plan["temperature"])
+        current = score_hard(graph_from_hard(np.asarray(logits.graph().X).argmax(-1),
+                                             np.asarray(logits.graph().E_upper).argmax(-1)))
+        diagnostic_calls += 1
+        if current["strict_valid_connected"] and current["hard_contact_score"] > best["hard_contact_score"]:
+            best = current
+        sample_dir = block / "candidate-samples"
+        sample_dir.mkdir()
+        global_step = offset + plan["block_updates"]
+        sampling = screen.sample_validity(logits, config["init_seed"], global_step, sample_dir)
+        with np.load(sampling["raw_samples"]["path"], allow_pickle=False) as draws:
+            atoms, bonds = draws["atom_indices"], draws["bond_indices"]
+            audit.require(atoms.shape == (128, 25) and bonds.shape == (128, 300), "Candidate batch differs")
+            atoms, bonds = atoms.copy(), bonds.copy()
+        scores, valid_draws = [], 0
+        # Score all128 draws, including invalid/duplicate ones, in BOTH arms.
+        # This fixes the native-call budget independently of validity outcomes.
+        for index, (a, b) in enumerate(zip(atoms, bonds)):
+            tick()
+            candidate = score_hard(graph_from_hard(a, b))
+            diagnostic_calls += 1
+            if candidate["strict_valid_connected"]:
+                valid_draws += 1
+                unique.add(candidate["readout"]["canonical_smiles"])
+                if candidate["hard_contact_score"] > best["hard_contact_score"]:
+                    best = candidate
+            scores.append({"draw": index, "hard_contact_score": candidate["hard_contact_score"],
+                           "valid": candidate["strict_valid_connected"],
+                           "smiles": candidate["readout"].get("canonical_smiles")})
+        audit.require(valid_draws == sampling["strict_valid_connected"], "Proposal validity count differs")
+        audit.write(block / "candidate-scores.json", {"sampling": sampling, "scores": scores,
+                    "scope": "All128 raw draws scored; invalid graphs excluded from candidate archive"})
+        selected = feedback and global_step < plan["updates"] and should_project(
+            current["strict_valid_connected"], current["hard_contact_score"], signature(current),
+            best["hard_contact_score"], signature(best))
+        if selected:
+            labels = best["readout"]
+            arrays = [np.asarray([smoothed_row(int(v), k, smoothing=plan["smoothing"]) for v in values], dtype=np.float32)
+                      for values, k in ((labels["element_indices"], 6), (labels["bond_upper_indices"], 5))]
+            logits = type(initial)(*(plan["temperature"] * jnp.log(jnp.asarray(a)) for a in arrays), plan["temperature"])
+            from mosaic.small_molecule.io import hard_readout
+            projected = hard_readout(logits.graph())
+            audit.require(screen.valid_connected(projected) and
+                          tuple(projected["element_indices"]) == signature(best)[0] and
+                          tuple(projected["bond_upper_indices"]) == signature(best)[1],
+                          "Projection changed the selected valid hard graph")
+            resets.append({"after_update": global_step, "before": current, "selected": best,
+                           "scope": "Explicit best-valid candidate projection plus2percent uniform; outside optimizer trial"})
+        row = {"global_start": offset, "global_end": global_step,
+               "report": audit.binding(block / "study/report.json"), "sampling": sampling,
+               "candidate_scores": audit.binding(block / "candidate-scores.json"),
+               "current_hard": current, "best_valid_archive": best, "feedback_applied": selected}
+        blocks.append(row)
+        audit.write(output / "progress.json", {"completed_updates": global_step,
+                    "valid_update_sources": valid_sources, "best_valid_archive": best,
+                    "projection_resets": resets, "blocks": blocks})
+    audit.require(diagnostic_calls == 1 + (plan["updates"] // 500) * 129, "Hard-forward budgets differ")
+    return {"status": "completed_block_refinement", "applied_updates": plan["updates"],
+            "valid_update_sources": valid_sources, "update_source_denominator": plan["updates"],
+            "valid_unique_smiles": sorted(unique), "hard_diagnostic_calls": diagnostic_calls,
+            "best_valid_hard": best, "final_raw_hard": current, "blocks": blocks,
+            "projection_resets": resets, "elapsed_seconds": time.monotonic() - started,
+            "selection_scope": "Both arms deliver best valid archive; feedback only changes next-block logits",
+            "scope": "Fixed-policy500-step blocks; local block steps plus explicit global offsets; all scalar records retained"}
 
 
 def run(plan, plan_path):
@@ -279,6 +384,17 @@ def run(plan, plan_path):
                     finite &= jnp.all(jnp.isfinite(leaf))
             return scalar, finite
 
+        def score_hard(graph):
+            tick()
+            validate_graph(graph)
+            scalar, finite = hard_forward(graph)
+            value = float(jax.block_until_ready(scalar))
+            audit.require(bool(finite) and math.isfinite(value), "Nonfinite native hard-graph evaluation")
+            readout = hard_readout(graph)
+            readout.pop("pairs", None)
+            return {"hard_contact_score": -value, "strict_valid_connected": screen.valid_connected(readout),
+                    "readout": readout}
+
         def hard_archive(study, forward_mode):
             selected = [(step, study / "snapshots" / f"step-{step:05d}.npz")
                         for step in range(0, plan["updates"] + 1, 100)]
@@ -333,6 +449,14 @@ def run(plan, plan_path):
             acceleration.mkdir()
             started = time.monotonic()
             with accelerator.combined_adapters("protenix-random50k", acceleration) as adapters:
+                if plan.get("comparison") == "projection_feedback":
+                    arm = feedback_blocks(screen, loss, initial, prepare, spec, FailureGuidanceConfig(**source_config["loss"]),
+                                          key, config, arm_output, plan, tick, score_hard,
+                                          feedback=(name == "project_feedback"))
+                    arm.update(arm=name, acceleration=adapters)
+                    result["arms"].append(arm)
+                    persist()
+                    continue
                 summary = screen.run_loop(active_loss, initial, prepare, spec, FailureGuidanceConfig(**source_config["loss"]),
                                           key, config, arm_output / "study", steps=plan["updates"], tick=tick)
             audit.require(summary["status"] == "completed_exploratory_updates" and summary["applied_updates"] == plan["updates"],

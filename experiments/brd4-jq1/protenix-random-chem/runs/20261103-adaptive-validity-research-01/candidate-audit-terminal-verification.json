@@ -1,0 +1,52 @@
+{
+  "status": "independently_verified_completed_saved_candidate_audit",
+  "observed_utc": "2026-11-04T02:09:21.732060+00:00",
+  "job_id": "29886311",
+  "actual_same_job_lsf_success": true,
+  "source_manifest_sha256": "53c71b95070e60eb045effa92258a649a0e0f4682d86827ac4df671eb184cac4",
+  "plan_sha256": "758cce4263370f9fc4a197c93a2baaf8d04d4ae51fdf8d4885abe70c7a695c1a",
+  "source_files": 4,
+  "remote_file_bindings": 19,
+  "frozen_inputs_unchanged": true,
+  "optimizer_updates": 0,
+  "native_forwards": 16,
+  "elapsed_seconds": 19.259741543006385,
+  "valid_unique_slot_labelled_candidates": 13,
+  "groups": [
+    {
+      "id": "original_logits_2k",
+      "draws": 128,
+      "valid_draws": 21,
+      "invalid_draws": 107,
+      "new_native_forwards": 6,
+      "valid_unscored_budget": 0
+    },
+    {
+      "id": "repair_relaxed_2k",
+      "draws": 128,
+      "valid_draws": 5,
+      "invalid_draws": 123,
+      "new_native_forwards": 4,
+      "valid_unscored_budget": 0
+    },
+    {
+      "id": "repair_hard_2k",
+      "draws": 128,
+      "valid_draws": 16,
+      "invalid_draws": 112,
+      "new_native_forwards": 3,
+      "valid_unscored_budget": 0
+    }
+  ],
+  "best_valid_sample": {
+    "candidate_id": 3,
+    "first_group": "original_logits_2k",
+    "first_draw": 60,
+    "contact_score": 0.4461524486541748
+  },
+  "best_valid_sample_smiles": "CC(F)C(C)(F)NC(N)(OC(CC(C)(Cl)CC(F)Cl)C(N)S)C(F)F",
+  "saved_repair_hard_contact": 0.39070558547973633,
+  "packet_sha256": "d275045e6f4fde0c4179faa022069a96e07c286f7caf8f9fbba2f48926f6cfe0",
+  "local_packet": "results\\hpc\\20261104-valid-candidate-audit-01\\terminal-20261104T020920Z\\stdout.json",
+  "interpretation": "Saved categorical samples contain valid discrete candidates with higher fixed-context native contact than the retained argmax. This is candidate-selection evidence from one saved parent, not optimization-method efficacy, affinity, synthesizability or binding."
+}

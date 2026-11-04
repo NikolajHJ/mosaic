@@ -11542,3 +11542,20 @@ next check; do not repeat bresume or submission. Source4 files53c71b95/plan758cc
 plus3 reference forwards/zero optimizer updates. Metadata startup,22 portable
 controls, input closure, capacity and held receipt/release verified. Native result
 pending. No changes to other owners' jobs, sealed sources or saved experiments.
+
+
+4 November2026 03:09CET — Candidate audit29886311 actualDONE,16forwards/19.26s,
+source/input/frozen/LSF/19bindings verified. Valid sampled candidate contact0.44615
+versus repaired argmax0.39071;384 unfiltered draws/13unique valid slot graphs,
+no censored candidates. Contact only, no affinity or method-efficacy claim.
+Preparing paired2k feedback experiment: same valid initial repair/fixed T.4,
+chem30/LR.3/noise0; both archive and score128raw proposals every500updates, only
+one feeds improved valid candidates into next block. Equal2k updates+517hard
+forwards perarm;24 portable controls passed. Existing runs/results unchanged.
+
+
+4 November2026 03:16CET — Feedback pilot29887463 actualRUN/V100; source5files
+ce03e7e0/planb3ea03ab,90min/8CPUx4GiB/exclusive32GBV100. Accepted held receipt,
+owned release, metadata startup and entry capacity passed. Two2k arms share four
+500-step blocks and517 hard forwards each; only valid-candidate feedback differs.
+Native terminal/frozen/quality outcomes pending; existing jobs/results untouched.
