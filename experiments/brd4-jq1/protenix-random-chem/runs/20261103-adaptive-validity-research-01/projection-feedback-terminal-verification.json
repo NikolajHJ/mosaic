@@ -1,0 +1,52 @@
+{
+  "status": "independently_verified_completed_feedback_pilot",
+  "job_id": "29887463",
+  "observed_utc": "2026-11-04T04:14:26.241509+00:00",
+  "same_job_lsf_success": true,
+  "source_manifest_sha256": "ce03e7e051a40d6999d8d260301c5c57e52a610ca87ed1884fb9852f8770fcef",
+  "plan_sha256": "b3ea03ab731cdae46364ace215a013f39150be4cb71b4be8fa924223cbc942a2",
+  "frozen_inputs_unchanged": true,
+  "remote_file_bindings": 36,
+  "elapsed_seconds": 2018.8285840809986,
+  "arms": [
+    {
+      "arm": "archive_only",
+      "updates": 2000,
+      "hard_diagnostic_calls": 517,
+      "valid_update_sources": 1792,
+      "unique_valid_smiles": 11,
+      "best_valid_hard_contact": 0.414022296667099,
+      "final_raw_hard_contact": 0.39070558547973633,
+      "final_raw_valid": true,
+      "endpoint_sample_valid_draws": 5,
+      "endpoint_sample_draws": 128,
+      "resets_at": [],
+      "elapsed_seconds": 1015.785770485003
+    },
+    {
+      "arm": "project_feedback",
+      "updates": 2000,
+      "hard_diagnostic_calls": 517,
+      "valid_update_sources": 1706,
+      "unique_valid_smiles": 5,
+      "best_valid_hard_contact": 0.4348651170730591,
+      "final_raw_hard_contact": 0.4348651170730591,
+      "final_raw_valid": true,
+      "endpoint_sample_valid_draws": 0,
+      "endpoint_sample_draws": 128,
+      "resets_at": [
+        1000,
+        1500
+      ],
+      "elapsed_seconds": 991.3019103289989
+    }
+  ],
+  "result_binding": {
+    "path": "/work3/s234818/mosaic/runs/20261104-projection-feedback-pilot-01/payload/result.json",
+    "bytes": 205357,
+    "sha256": "5e76adb048463a77fe2d3410ad7a8076aa3028c511ca496f1f8b57a5cb7cb799"
+  },
+  "packet_sha256": "b1118a72f25acdbb30c8066708619fd8d949d800963359162acf6a0c6d2c61d5",
+  "local_packet": "results\\hpc\\20261104-projection-feedback-pilot-01\\terminal-20261104T041424Z\\stdout.json",
+  "interpretation": "Feedback improved best valid fixed-context contact in this matched single-parent pilot. Diversity, valid-source fraction and terminal sampled validity were lower. The 20k comparison tests persistence and the tradeoff."
+}

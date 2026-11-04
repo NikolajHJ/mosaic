@@ -11559,3 +11559,15 @@ ce03e7e0/planb3ea03ab,90min/8CPUx4GiB/exclusive32GBV100. Accepted held receipt,
 owned release, metadata startup and entry capacity passed. Two2k arms share four
 500-step blocks and517 hard forwards each; only valid-candidate feedback differs.
 Native terminal/frozen/quality outcomes pending; existing jobs/results untouched.
+
+4 November 2026, 04:14 UTC. Projection feedback pilot 29887463 verified DONE.
+Both arms applied 2,000 updates and ran 517 hard diagnostic forwards.
+Feedback improved best valid hard contact from 0.414022 to 0.434865.
+Valid identities fell from 11 to 5 and valid endpoint draws from 5/128 to
+0/128. The matched 20,000-update-per-arm confirmation will retain the same
+parent, settings and diagnostics to measure persistence and these tradeoffs.
+
+4 November 2026, 04:19 UTC. Matched confirmation 29888169 started on V100.
+Both 20,000-update arms reuse the pilot's same starting parent, settings,
+500-update boundaries and equal 5,161 hard forwards. Verified held release,
+metadata startup and capacity. Initial committed prefix was empty.

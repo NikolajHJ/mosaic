@@ -98,8 +98,13 @@ def validate_plan(plan):
                             ("learning_rate", .3), ("smoothing", .02)):
         audit.require(type(plan[field]) in (int, float) and plan[field] == expected,
                       "Changed declared paired protocol: " + field)
+    internal_ceiling = 6600
+    if "confirmation_pilot" in plan:
+        audit.require(plan.get("comparison") == "projection_feedback" and plan["updates"] == 20000 and
+                      plan.get("wall_minutes") == 480, "Invalid matched confirmation allocation")
+        internal_ceiling = 28200
     audit.require(type(plan.get("internal_seconds", 3300)) is int and
-                  1 <= plan.get("internal_seconds", 3300) <= 6600, "Invalid complete pilot budget")
+                  1 <= plan.get("internal_seconds", 3300) <= internal_ceiling, "Invalid complete run budget")
     audit.require(type(plan.get("output_cap_bytes", 536870912)) is int and
                   0 < plan.get("output_cap_bytes", 536870912) <= 2147483648, "Invalid own output cap")
     audit.require(type(plan.get("file_cap", 10000)) is int and
@@ -136,8 +141,33 @@ def smoothed_row(label, categories, *, smoothing=.02):
 
 
 def inputs(plan, row):
-    return [plan["parent_plan"], plan["parent_snapshot"], plan["parent_reference"], plan["storage_module"],
-            row["config"], row["context_ready"], row["pocket"], *plan.get("source_files", [])]
+    records = [plan["parent_plan"], plan["parent_snapshot"], plan["parent_reference"], plan["storage_module"],
+               row["config"], row["context_ready"], row["pocket"], *plan.get("source_files", [])]
+    if "confirmation_pilot" in plan:
+        records.append(plan["confirmation_pilot"])
+    return records
+
+
+def confirmation_budget(plan, config):
+    """Authenticate the matched pilot and budget the full paired allocation."""
+    reference = plan["confirmation_pilot"]
+    pilot = audit.read(audit.bound(reference))
+    audit.require(pilot["job_id"] == reference["job_id"] and
+                  pilot["status"] == "completed_paired_exploratory_refinement" and
+                  pilot["comparison"] == "projection_feedback" and pilot["frozen_unchanged"] and
+                  pilot["inputs_unchanged"] and pilot["frozen_before"] == plan["frozen_identity"] and
+                  pilot["configuration"] == dict(config, updates=2000) and
+                  plan["parent_snapshot"] in pilot["inputs_before"], "Confirmation pilot differs")
+    audit.require([arm["arm"] for arm in pilot["arms"]] == ["archive_only", "project_feedback"] and
+                  all(arm["applied_updates"] == 2000 and arm["hard_diagnostic_calls"] == 517
+                      for arm in pilot["arms"]), "Incomplete matched pilot budget")
+    elapsed = pilot["elapsed_seconds"]
+    audit.require(type(elapsed) in (int, float) and math.isfinite(elapsed) and elapsed > 0,
+                  "Invalid measured pilot runtime")
+    required = math.ceil(elapsed * (plan["updates"] / 2000) * 1.25 + 600)
+    audit.require(required <= plan["internal_seconds"], "Measured confirmation does not fit allocation")
+    return {"pilot_job_id": reference["job_id"], "pilot_pair_seconds": elapsed,
+            "minimum_internal_seconds": required, "internal_seconds": plan["internal_seconds"]}
 
 
 def parent_metadata(plan):
@@ -151,6 +181,8 @@ def parent_metadata(plan):
     config = fixed_configuration(row["screen"], plan)
     for record in inputs(plan, row):
         audit.bound(record)
+    if "confirmation_pilot" in plan:
+        confirmation_budget(plan, config)
     return parent, row, config
 
 
@@ -509,8 +541,20 @@ def main():
     plan = validate_plan(audit.read(args.plan))
     _, _, config = parent_metadata(plan)
     if args.startup_only:
-        print(json.dumps({"status": "metadata_startup_passed_no_models", "configuration": config,
-                          "paired_arms": arm_protocol(plan), "parent_step": plan["parent_step"]}))
+        receipt = {"status": "metadata_startup_passed_no_models", "configuration": config,
+                   "paired_arms": arm_protocol(plan), "parent_step": plan["parent_step"]}
+        if "confirmation_pilot" in plan:
+            budget = confirmation_budget(plan, config)
+            storage = module(audit.bound(plan["storage_module"]), "_confirmation_storage")
+            inventory = storage.own_output(Path(plan["confirmation_pilot"]["path"]).parent)
+            scale = plan["updates"] / 2000 * 1.25
+            budget.update(pilot_inventory=inventory,
+                          forecast_bytes=math.ceil(inventory["actual_bytes"] * scale) + 64*1024**2,
+                          forecast_files=math.ceil(inventory["actual_files"] * scale) + 128)
+            audit.require(budget["forecast_bytes"] <= plan["output_cap_bytes"] and
+                          budget["forecast_files"] <= plan["file_cap"], "Measured confirmation output does not fit cap")
+            receipt["confirmation_budget"] = budget
+        print(json.dumps(receipt))
         return
     result = run(plan, args.plan)
     print(json.dumps({"status": result["status"], "applied_updates_per_arm": [a["applied_updates"] for a in result["arms"]]}))

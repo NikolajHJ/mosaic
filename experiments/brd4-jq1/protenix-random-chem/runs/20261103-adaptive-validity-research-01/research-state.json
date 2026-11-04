@@ -1,7 +1,7 @@
 {
   "version": "adaptive-validity-research-v1",
   "branch": "codex/valid-molecule-research",
-  "status": "projection_feedback_pilot_running",
+  "status": "feedback_confirmation_running",
   "jobs": [
     {
       "id": "29884143",
@@ -51,7 +51,7 @@
     {
       "id": "29887463",
       "kind": "matched_projection_feedback_pilot",
-      "status": "RUN",
+      "status": "DONE",
       "remote_root": "/work3/s234818/mosaic/runs/20261104-projection-feedback-pilot-01",
       "updates_per_arm": 2000,
       "arms": [
@@ -60,10 +60,28 @@
       ],
       "block_updates": 500,
       "hard_diagnostic_forwards_per_arm": 517,
-      "do_not_replay_launch": true
+      "do_not_replay_launch": true,
+      "terminal_verification": "projection-feedback-terminal-verification.json"
+    },
+    {
+      "id": "29888169",
+      "kind": "matched_projection_feedback_confirmation",
+      "status": "RUN",
+      "remote_root": "/work3/s234818/mosaic/runs/20261104-feedback-confirmation-01",
+      "updates_per_arm": 20000,
+      "arms": [
+        "archive_only",
+        "project_feedback"
+      ],
+      "block_updates": 500,
+      "hard_diagnostic_forwards_per_arm": 5161,
+      "pilot_job_id": "29887463",
+      "dispatch_verification": "feedback-confirmation-dispatch-verification.json",
+      "do_not_replay_launch": true,
+      "do_not_repeat_bresume": true
     }
   ],
-  "next_action": "observe_actual29887463; verify_each_arm_four500step_blocks/2000updates/517hardforwards, candidatearchives_samples/resetbindings and frozen/input/source/LSF; compare feedback effect. If useful, prepare matched20k-50k confirmation; if negative, stop expanding feedback and choose next evidence-based direction.",
+  "next_action": "Observe job 29888169 once per heartbeat. On completion verify actual LSF, all 40 blocks and 20,000 committed updates per arm, 5,161 hard forwards, archives, sample and reset records, runtime and source/input/frozen bindings. Evaluate hard contact alongside raw validity, diversity and sampled validity before deciding whether a finding warrants promotion.",
   "existing_runs_unchanged": true,
   "max_concurrent_research_model_jobs": 2,
   "pilot_updates_per_arm_default_max": 2500,
@@ -73,9 +91,9 @@
   ],
   "main_promotion": "concise_document_after_matched_larger_confirmation_only",
   "audit_verification": "audit-verification.json",
-  "active_tag": "20261104-projection-feedback-pilot-01",
+  "active_tag": "20261104-feedback-confirmation-01",
   "pilot_dispatch_verification": "pilot-dispatch-verification.json",
-  "last_completed_result": "Candidateaudit:13validslotgraphs/16nativeforwards/19.26s;bestvalidsamplehard0.4461524487vsargmaxrepair0.3907055855. No censoring, frozen/inputs preserved. Sampling plus hard selection promising; feedback not yet tested.",
+  "last_completed_result": "Pilot 29887463 completed both 2,000-update arms. Feedback raised best valid hard contact from 0.414022297 to 0.434865117, with 11 versus 5 distinct valid identities and 5/128 versus 0/128 valid endpoint draws (control versus feedback).",
   "binding_forward_dispatch_verification": "binding-forward-dispatch-verification.json",
   "candidate_audit_dispatch_verification": "candidate-audit-dispatch-verification.json",
   "projection_feedback_dispatch_verification": "projection-feedback-dispatch-verification.json"

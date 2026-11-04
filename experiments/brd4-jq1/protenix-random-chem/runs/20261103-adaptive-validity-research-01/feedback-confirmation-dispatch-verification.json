@@ -1,0 +1,117 @@
+{
+  "status": "verified_released_and_running_from_lsf_history",
+  "job_id": "29888169",
+  "observed_utc": "2026-11-04T04:19:40.675058+00:00",
+  "source_manifest_sha256": "85fdeab9c54dfef60902faf14e55f8150115a439e4fe199a467bcfbb44bd6b26",
+  "plan_sha256": "373ee2ed2c72787e217e3b9f98a50da20f461cfc25d14c96d3596c30b3b753e7",
+  "archive_sha256": "42f3f8367d360c3473f387602b90ee5fe12db625d54f419d8297d3214861c151",
+  "source_files_in_manifest": 5,
+  "local_source_files_matched_manifest": true,
+  "remote_manifest_and_plan_matched_local_bytes": true,
+  "receipt_before_owned_release_verified": true,
+  "bjobs_snapshot_status": "PSUSP",
+  "latest_lsf_history_status": "RUN",
+  "started_cet": "2026-11-04T05:19:38+01:00",
+  "argv": [
+    "bsub",
+    "-H",
+    "-q",
+    "gpuv100",
+    "-J",
+    "mosaic-20261104-feedback-confirmation-01",
+    "-n",
+    "8",
+    "-R",
+    "span[hosts=1]",
+    "-R",
+    "rusage[mem=4096]",
+    "-W",
+    "08:00",
+    "-env",
+    "all,~CUDA_VISIBLE_DEVICES,~CUDA_MPS_PIPE_DIRECTORY,~CUDA_MPS_LOG_DIRECTORY,~CUDA_MPS_ACTIVE_THREAD_PERCENTAGE",
+    "-o",
+    "/work3/s234818/mosaic/runs/20261104-feedback-confirmation-01/stdout.%J.log",
+    "-e",
+    "/work3/s234818/mosaic/runs/20261104-feedback-confirmation-01/stderr.%J.log",
+    "-gpu",
+    "num=1:mode=exclusive_process:j_exclusive=yes:mps=no:gmem=30G",
+    "bash",
+    "-l",
+    "/work3/s234818/mosaic/runs/20261104-feedback-confirmation-01/source/stage.sh",
+    "/work3/s234818/mosaic/runs/20261104-feedback-confirmation-01/source"
+  ],
+  "metadata_startup": {
+    "status": "metadata_startup_passed_no_models",
+    "configuration": {
+      "version": "protenix-chemistry-screen-v1",
+      "updates": 20000,
+      "init_seed": 17,
+      "initialization": {
+        "mode": "sparse_random",
+        "extra_edge_probability": 0.02,
+        "present_probability": 0.8,
+        "absent_probability": 0.98,
+        "single_bond_probability": 0.8
+      },
+      "temperature": 0.4,
+      "chemistry": {
+        "mode": "constant",
+        "coefficient": 30.0
+      },
+      "binding": {
+        "mode": "always"
+      },
+      "sampling_interval": 1000,
+      "sampling_draws": 128,
+      "structural_repair": {
+        "version": "connected-backbone-repair-v1",
+        "max_candidates": 6,
+        "max_bond_operations": 1024
+      }
+    },
+    "paired_arms": [
+      [
+        "archive_only",
+        "repair",
+        "relaxed"
+      ],
+      [
+        "project_feedback",
+        "repair",
+        "relaxed"
+      ]
+    ],
+    "parent_step": 30000,
+    "confirmation_budget": {
+      "pilot_job_id": "29887463",
+      "pilot_pair_seconds": 2018.8285840809986,
+      "minimum_internal_seconds": 25836,
+      "internal_seconds": 28200,
+      "pilot_inventory": {
+        "actual_bytes": 16804071,
+        "actual_files": 524,
+        "nofollow": true
+      },
+      "forecast_bytes": 277159752,
+      "forecast_files": 6678
+    }
+  },
+  "dispatch_capacity": {
+    "available_bytes": 11167625216,
+    "required_bytes": 1181002093,
+    "byte_margin": 9986623123,
+    "file_cap": 8000
+  },
+  "entry_capacity": {
+    "available_bytes": 11033346048,
+    "required_bytes": 1180995857,
+    "byte_margin": 9852350191,
+    "file_cap": 8000
+  },
+  "updates_per_arm": 20000,
+  "hard_diagnostic_forwards_per_arm": 5161,
+  "committed_updates_at_observation": 0,
+  "native_terminal_result_established": false,
+  "packet_path": "results/hpc/20261104-feedback-confirmation-01/status-20261104T041939Z/stdout.json",
+  "packet_sha256": "d1e5f9ed2b4ec00c64da1861c17931dc6f36f824c7aca417730c76e0611e5743"
+}

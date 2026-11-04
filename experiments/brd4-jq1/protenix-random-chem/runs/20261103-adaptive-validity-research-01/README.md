@@ -225,3 +225,44 @@ Metadata startup, source bytes, exact90min/8CPUx4GiB/exclusive32GBV100 vectors,
 held/release and full own512MiB entry capacity independently verified. Native
 terminal outcome and completed gradients/updates are not yet claimed. See
 projection-feedback-dispatch-verification.json. Never replay launch or release.
+
+### Projection feedback result and matched confirmation
+
+Job 29887463 finished both 2,000-update arms on V100. The terminal audit
+verified 517 hard diagnostic forwards per arm, unchanged frozen scorer and
+inputs, and successful LSF completion. See
+[the terminal verification](projection-feedback-terminal-verification.json).
+
+| Outcome | Archive only | Projection feedback |
+| --- | ---: | ---: |
+| Best valid hard contact | 0.414022 | 0.434865 |
+| Final raw hard contact, both valid | 0.390706 | 0.434865 |
+| Valid update sources | 1,792 / 2,000 | 1,706 / 2,000 |
+| Distinct valid SMILES | 11 | 5 |
+| Valid endpoint samples | 5 / 128 | 0 / 128 |
+| Feedback resets | 0 | 2 |
+
+The score gain justifies a 20,000-update-per-arm confirmation. The lower
+diversity and endpoint sample validity make both measures essential to
+judging the result. Hard contact measures the frozen scorer's contact
+output. The comparison uses one starting parent and key, so it tests
+persistence over a longer run at that start.
+
+Keep the same 500-update blocks, 128 unfiltered draws at each boundary, and
+5,161 hard diagnostic forwards per arm. Both arms start from the same saved
+30k repair with 2% uniform support, temperature 0.4, chemistry weight 30,
+LR 0.3, zero noise and key 17. The only intervention is feeding an eligible
+archived candidate back into the treatment. Run both arms serially on one
+32 GB V100. The pilot took 2,019 seconds overall. Scaling by ten, adding a
+25% margin and 600 seconds for setup gives a minimum internal allowance of
+25,836 seconds. Request eight hours with a 28,200-second internal limit and
+eight CPU slots at 4 GiB each. Admission checks projected writes against
+the 1 GiB complete cap and 8,000 files. All 24 focused local controls passed.
+
+Confirmation job 29888169 started on V100 at 05:19:38 CET. The accepted
+receipt and held proof precede release. LSF history records actual dispatch
+and RUN after release. Metadata startup authenticated the measured pilot
+and projected 277,159,752 bytes across 6,678 files. The dispatch and entry
+capacity checks passed. The initial observation recorded zero committed
+updates. See [dispatch verification](feedback-confirmation-dispatch-verification.json)
+for the source, plan and receipts.
