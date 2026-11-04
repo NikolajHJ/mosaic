@@ -1,0 +1,1894 @@
+[
+ {
+  "run": "aromatic-1.0",
+  "directory": "results/local/stage2-overnight-20261103/improvements/aromatic-1.0",
+  "config": {
+   "backend": "boltz2",
+   "boundary": "frozen structure model; chemistry is an explicit post-step operator, never a loss; hard molecules are readouts only",
+   "context_sha256": "8faa99d4a69bf9347418c69735aed62700f877bc4ca7b0eb740320dd01ed7477",
+   "eta_E": 0.1,
+   "eta_X": 0.1,
+   "experiment_file": "stage2/experiment.yaml",
+   "gradient_check": {
+    "baseline": 0.8808903694152832,
+    "rows": [
+     {
+      "field": "X",
+      "probes": [
+       {
+        "agrees": true,
+        "analytic": 0.1600552499294281,
+        "epsilon": 0.01,
+        "finite_difference": 0.1599431037902832,
+        "primal_endpoints": [
+         0.8792721629142761,
+         0.8824710249900818
+        ]
+       },
+       {
+        "agrees": true,
+        "analytic": 0.1600552499294281,
+        "epsilon": 0.003,
+        "finite_difference": 0.1598497231801351,
+        "primal_endpoints": [
+         0.8804098963737488,
+         0.8813689947128296
+        ]
+       },
+       {
+        "agrees": true,
+        "analytic": 0.1600552499294281,
+        "epsilon": 0.001,
+        "finite_difference": 0.15997886657714844,
+        "primal_endpoints": [
+         0.8807300925254822,
+         0.8810500502586365
+        ]
+       }
+      ],
+      "row": 1,
+      "source": 4,
+      "target": 1
+     },
+     {
+      "field": "E_upper",
+      "probes": [
+       {
+        "agrees": true,
+        "analytic": 0.07231244444847107,
+        "epsilon": 0.01,
+        "finite_difference": 0.07236599922180176,
+        "primal_endpoints": [
+         0.8801424503326416,
+         0.8815897703170776
+        ]
+       },
+       {
+        "agrees": true,
+        "analytic": 0.07231244444847107,
+        "epsilon": 0.003,
+        "finite_difference": 0.0723103682200114,
+        "primal_endpoints": [
+         0.8806716799736023,
+         0.8811055421829224
+        ]
+       },
+       {
+        "agrees": true,
+        "analytic": 0.07231244444847107,
+        "epsilon": 0.001,
+        "finite_difference": 0.07233023643493652,
+        "primal_endpoints": [
+         0.8808183073997498,
+         0.8809629678726196
+        ]
+       }
+      ],
+      "row": 0,
+      "source": 0,
+      "target": 1
+     }
+    ],
+    "scope": "quantitative affinity; fixed pose/masks; first-order raw graph derivatives",
+    "status": "passed",
+    "typed_bond_contrast_nonzero": true
+   },
+   "hardening": false,
+   "hardening_gradient": null,
+   "initialization": {
+    "kind": "prepared carbon-chain seed mixed with uniform",
+    "mixing": 0.5
+   },
+   "interpretation": "predicted binding affinity; lower is a stronger predicted binder, so the optimizer minimizes it directly. Not an experimental affinity and not calibrated.",
+   "n_atoms": 25,
+   "preparation": {
+    "atom_indices": [
+     1061,
+     1062,
+     1063,
+     1064,
+     1065,
+     1066,
+     1067,
+     1068,
+     1069,
+     1070,
+     1071,
+     1072,
+     1073,
+     1074,
+     1075,
+     1076,
+     1077,
+     1078,
+     1079,
+     1080,
+     1081,
+     1082,
+     1083,
+     1084,
+     1085
+    ],
+    "boltz_commit": "b1ebfc46ecf57f5414e0d1a6f9027bbb122c53bc",
+    "context_sha256": "8faa99d4a69bf9347418c69735aed62700f877bc4ca7b0eb740320dd01ed7477",
+    "fixture_sha256": "e9f4bfed03f7cdeb497b718d4b33da98338790e9ed016ed913487045256e0c6b",
+    "frozen_fields": "coordinates, ref_pos, charge=0, atom names, crop, MSA, masks and all auxiliary fields",
+    "input_sha256": "23bf6159df5d76bb68eafabce4c0c82ac5ca811e9c1e8f14874db96b6bb88e44",
+    "job_id": "local",
+    "msa_policy": "native single-sequence empty MSA, same deposited 3MXF sequence as prior Mosaic; no external server",
+    "n_atoms": 25,
+    "native_manifest_sha256": "646bd4f90ec80c59a9133e66dbc54d155dbd16b66f4f5486006a747d4868c640",
+    "pose_policy": "new native predicted 25-slot carbon-chain pose; fixed during optimization; no crystal pose or ligand transplant",
+    "prediction": "/opt/mosaic-stage0/contexts/brd4-25-20261103/native/boltz_results_input",
+    "preparation_seed": 42,
+    "protein_sequence": "SMNPPPPETSNPNKPKRQTNQLQYLLRVVLKTLWKHQFAWPFQQPVDAVKLNLPDYYKIIKTPMDMGTIKKRLENNYYWNAQECIQDFNTMFTNCYIYNKPGDDIVLMAEALEKLFLQKINELPTEE",
+    "seed_smiles": "CCCCCCCCCCCCCCCCCCCCCCCCC",
+    "status": "prepared",
+    "token_indices": [
+     127,
+     128,
+     129,
+     130,
+     131,
+     132,
+     133,
+     134,
+     135,
+     136,
+     137,
+     138,
+     139,
+     140,
+     141,
+     142,
+     143,
+     144,
+     145,
+     146,
+     147,
+     148,
+     149,
+     150,
+     151
+    ]
+   },
+   "score_metric": "affinity_pred_value",
+   "seed": 17,
+   "stage2": {
+    "active_improvements": [],
+    "aromatic_order": 1.0,
+    "bridge_probability": 0.6,
+    "bridge_retry": false,
+    "fluidity_strength": 0.0,
+    "fluidity_threshold": 1.0,
+    "mode": "connected",
+    "readout_caps": false,
+    "sparsity_amount": 0.01,
+    "sparsity_threshold": 0.5,
+    "valence_damping": 1.0
+   },
+   "steps": 500,
+   "units": "Boltz-2 affinity prediction",
+   "worker_identity": {
+    "allocation": "local",
+    "checkpoint_sha256": "dcc5cd3722b1c9eaa34267e4ae32f55cbbf1963f4c19319381ccfa30fdd2ca9e",
+    "context_digest": "f7c2ab7f284fe10eb69c15676bc51a6160e4105a63c0b707021a628dc8cd8dea",
+    "context_file_sha256": "8faa99d4a69bf9347418c69735aed62700f877bc4ca7b0eb740320dd01ed7477",
+    "device": "cuda",
+    "device_name": "NVIDIA GeForce RTX 4080",
+    "device_total_vram_bytes": 17170956288,
+    "loaded_vram_bytes": 2085460992,
+    "model_digest": "395876da13ab6d5d175e6603db2118a82954c7c06484842fe2314dbd77a31a16",
+    "n_atoms": 25,
+    "optimized_output": "affinity_pred_value",
+    "pose_policy": "fixed native predicted pose; no diffusion gradients",
+    "protocol": "mosaic-boltz-affinity-v1",
+    "recycling_steps": 0,
+    "source": "b1ebfc46ecf57f5414e0d1a6f9027bbb122c53bc",
+    "status": "ready"
+   }
+  },
+  "states": 501,
+  "reversals": {
+   "states": 501,
+   "edges": 300,
+   "rose_then_fell": 7,
+   "fell_then_rose": 10,
+   "reversals": 17
+  },
+  "pitfalls": [
+   {
+    "id": "fluidity",
+    "source": "protocol 4.3 C.10",
+    "question": "Do probabilities stay movable?",
+    "verdict": "ok",
+    "detail": "mean max atom probability peaked at 0.680",
+    "peak_atom_probability": 0.6802801489830017
+   },
+   {
+    "id": "topology",
+    "source": "protocol 4.3 C.11",
+    "question": "Can the optimizer change its mind?",
+    "verdict": "ok",
+    "detail": "7 edges rose then fell, 10 fell then rose, over 300 pairs",
+    "reversals": 17,
+    "rose_then_fell": 7,
+    "fell_then_rose": 10
+   },
+   {
+    "id": "valence",
+    "source": "protocol 4.3 C.12 / 5.2",
+    "question": "Is the readout over-valent?",
+    "verdict": "flag",
+    "detail": "448 of 501 readouts over-valent; final state has 6",
+    "states_over_valent": 448,
+    "final_violations": 6
+   },
+   {
+    "id": "connectivity",
+    "source": "protocol 4.3 C.13 / 5.3",
+    "question": "Is the graph fragmented?",
+    "verdict": "ok",
+    "detail": "501 of 501 readouts single-component; final has 1 components",
+    "single_component_states": 501,
+    "final_components": 1
+   },
+   {
+    "id": "sparsity",
+    "source": "protocol 4.3 C.14 / 5.4",
+    "question": "Is edge mass diffuse?",
+    "verdict": "ok",
+    "detail": "expected degree moved 10.56 -> 2.01, threshold 4.0",
+    "initial_expected_degree": 10.56,
+    "final_expected_degree": 2.0113758850097656
+   },
+   {
+    "id": "soft_hard_gap",
+    "source": "protocol 4.3 C.15 / plan",
+    "question": "Does the objective survive discretization?",
+    "verdict": "ok",
+    "detail": "mean hard-minus-soft loss +0.6353 over 501 checkpoints",
+    "mean_hard_minus_soft_loss": 0.6353269859687416,
+    "final_hard_minus_soft_loss": 0.14571261405944824
+   },
+   {
+    "id": "projection_aggressiveness",
+    "source": "protocol 5.2",
+    "question": "Does valence projection freeze topology?",
+    "verdict": "ok",
+    "detail": "projection active on 500 of 501 steps, mean displacement 0.0533",
+    "active_steps": 500,
+    "mean_displacement": 0.05332995775326857
+   },
+   {
+    "id": "bridge_survival",
+    "source": "protocol 5.3",
+    "question": "Do bridges survive reprojection?",
+    "verdict": "ok",
+    "detail": "141 of 141 bridges survived valence reprojection",
+    "bridges_attempted": 141,
+    "bridges_lost": 0
+   },
+   {
+    "id": "soft_versus_hard_feasibility",
+    "source": "project plan",
+    "question": "Is relaxed satisfaction mistaken for molecular validity?",
+    "verdict": "ok",
+    "detail": "0 of 501 relaxed states satisfy valence; 53 of 501 readouts sanitize",
+    "relaxed_feasible": 0,
+    "relaxed_states": 501,
+    "sanitized_states": 53
+   },
+   {
+    "id": "predictor_exploitation",
+    "source": "project plan",
+    "question": "Does the objective improve while chemistry does not?",
+    "verdict": "flag",
+    "detail": "loss 0.88089 -> -1.57787 (affinity_pred_value 0.88089 -> -1.57787); final readout not valid and connected",
+    "initial_loss": 0.8808903694152832,
+    "final_loss": -1.5778672695159912,
+    "final_score": -1.5778672695159912,
+    "final_valid": false
+   }
+  ],
+  "per_step_rows": 501
+ },
+ {
+  "run": "baseline",
+  "directory": "results/local/stage2-overnight-20261103/improvements/baseline",
+  "config": {
+   "backend": "boltz2",
+   "boundary": "frozen structure model; chemistry is an explicit post-step operator, never a loss; hard molecules are readouts only",
+   "context_sha256": "8faa99d4a69bf9347418c69735aed62700f877bc4ca7b0eb740320dd01ed7477",
+   "eta_E": 0.1,
+   "eta_X": 0.1,
+   "experiment_file": "stage2/experiment.yaml",
+   "gradient_check": {
+    "baseline": 0.8808903694152832,
+    "rows": [
+     {
+      "field": "X",
+      "probes": [
+       {
+        "agrees": true,
+        "analytic": 0.1600552499294281,
+        "epsilon": 0.01,
+        "finite_difference": 0.1599431037902832,
+        "primal_endpoints": [
+         0.8792721629142761,
+         0.8824710249900818
+        ]
+       },
+       {
+        "agrees": true,
+        "analytic": 0.1600552499294281,
+        "epsilon": 0.003,
+        "finite_difference": 0.1598497231801351,
+        "primal_endpoints": [
+         0.8804098963737488,
+         0.8813689947128296
+        ]
+       },
+       {
+        "agrees": true,
+        "analytic": 0.1600552499294281,
+        "epsilon": 0.001,
+        "finite_difference": 0.15997886657714844,
+        "primal_endpoints": [
+         0.8807300925254822,
+         0.8810500502586365
+        ]
+       }
+      ],
+      "row": 1,
+      "source": 4,
+      "target": 1
+     },
+     {
+      "field": "E_upper",
+      "probes": [
+       {
+        "agrees": true,
+        "analytic": 0.07231244444847107,
+        "epsilon": 0.01,
+        "finite_difference": 0.07236599922180176,
+        "primal_endpoints": [
+         0.8801424503326416,
+         0.8815897703170776
+        ]
+       },
+       {
+        "agrees": true,
+        "analytic": 0.07231244444847107,
+        "epsilon": 0.003,
+        "finite_difference": 0.0723103682200114,
+        "primal_endpoints": [
+         0.8806716799736023,
+         0.8811055421829224
+        ]
+       },
+       {
+        "agrees": true,
+        "analytic": 0.07231244444847107,
+        "epsilon": 0.001,
+        "finite_difference": 0.07233023643493652,
+        "primal_endpoints": [
+         0.8808183073997498,
+         0.8809629678726196
+        ]
+       }
+      ],
+      "row": 0,
+      "source": 0,
+      "target": 1
+     }
+    ],
+    "scope": "quantitative affinity; fixed pose/masks; first-order raw graph derivatives",
+    "status": "passed",
+    "typed_bond_contrast_nonzero": true
+   },
+   "hardening": false,
+   "hardening_gradient": null,
+   "initialization": {
+    "kind": "prepared carbon-chain seed mixed with uniform",
+    "mixing": 0.5
+   },
+   "interpretation": "predicted binding affinity; lower is a stronger predicted binder, so the optimizer minimizes it directly. Not an experimental affinity and not calibrated.",
+   "n_atoms": 25,
+   "preparation": {
+    "atom_indices": [
+     1061,
+     1062,
+     1063,
+     1064,
+     1065,
+     1066,
+     1067,
+     1068,
+     1069,
+     1070,
+     1071,
+     1072,
+     1073,
+     1074,
+     1075,
+     1076,
+     1077,
+     1078,
+     1079,
+     1080,
+     1081,
+     1082,
+     1083,
+     1084,
+     1085
+    ],
+    "boltz_commit": "b1ebfc46ecf57f5414e0d1a6f9027bbb122c53bc",
+    "context_sha256": "8faa99d4a69bf9347418c69735aed62700f877bc4ca7b0eb740320dd01ed7477",
+    "fixture_sha256": "e9f4bfed03f7cdeb497b718d4b33da98338790e9ed016ed913487045256e0c6b",
+    "frozen_fields": "coordinates, ref_pos, charge=0, atom names, crop, MSA, masks and all auxiliary fields",
+    "input_sha256": "23bf6159df5d76bb68eafabce4c0c82ac5ca811e9c1e8f14874db96b6bb88e44",
+    "job_id": "local",
+    "msa_policy": "native single-sequence empty MSA, same deposited 3MXF sequence as prior Mosaic; no external server",
+    "n_atoms": 25,
+    "native_manifest_sha256": "646bd4f90ec80c59a9133e66dbc54d155dbd16b66f4f5486006a747d4868c640",
+    "pose_policy": "new native predicted 25-slot carbon-chain pose; fixed during optimization; no crystal pose or ligand transplant",
+    "prediction": "/opt/mosaic-stage0/contexts/brd4-25-20261103/native/boltz_results_input",
+    "preparation_seed": 42,
+    "protein_sequence": "SMNPPPPETSNPNKPKRQTNQLQYLLRVVLKTLWKHQFAWPFQQPVDAVKLNLPDYYKIIKTPMDMGTIKKRLENNYYWNAQECIQDFNTMFTNCYIYNKPGDDIVLMAEALEKLFLQKINELPTEE",
+    "seed_smiles": "CCCCCCCCCCCCCCCCCCCCCCCCC",
+    "status": "prepared",
+    "token_indices": [
+     127,
+     128,
+     129,
+     130,
+     131,
+     132,
+     133,
+     134,
+     135,
+     136,
+     137,
+     138,
+     139,
+     140,
+     141,
+     142,
+     143,
+     144,
+     145,
+     146,
+     147,
+     148,
+     149,
+     150,
+     151
+    ]
+   },
+   "score_metric": "affinity_pred_value",
+   "seed": 17,
+   "stage2": {
+    "active_improvements": [],
+    "aromatic_order": 1.5,
+    "bridge_probability": 0.6,
+    "bridge_retry": false,
+    "fluidity_strength": 0.0,
+    "fluidity_threshold": 1.0,
+    "mode": "connected",
+    "readout_caps": false,
+    "sparsity_amount": 0.01,
+    "sparsity_threshold": 0.5,
+    "valence_damping": 1.0
+   },
+   "steps": 500,
+   "units": "Boltz-2 affinity prediction",
+   "worker_identity": {
+    "allocation": "local",
+    "checkpoint_sha256": "dcc5cd3722b1c9eaa34267e4ae32f55cbbf1963f4c19319381ccfa30fdd2ca9e",
+    "context_digest": "f7c2ab7f284fe10eb69c15676bc51a6160e4105a63c0b707021a628dc8cd8dea",
+    "context_file_sha256": "8faa99d4a69bf9347418c69735aed62700f877bc4ca7b0eb740320dd01ed7477",
+    "device": "cuda",
+    "device_name": "NVIDIA GeForce RTX 4080",
+    "device_total_vram_bytes": 17170956288,
+    "loaded_vram_bytes": 2085460992,
+    "model_digest": "395876da13ab6d5d175e6603db2118a82954c7c06484842fe2314dbd77a31a16",
+    "n_atoms": 25,
+    "optimized_output": "affinity_pred_value",
+    "pose_policy": "fixed native predicted pose; no diffusion gradients",
+    "protocol": "mosaic-boltz-affinity-v1",
+    "recycling_steps": 0,
+    "source": "b1ebfc46ecf57f5414e0d1a6f9027bbb122c53bc",
+    "status": "ready"
+   }
+  },
+  "states": 501,
+  "reversals": {
+   "states": 501,
+   "edges": 300,
+   "rose_then_fell": 14,
+   "fell_then_rose": 11,
+   "reversals": 25
+  },
+  "pitfalls": [
+   {
+    "id": "fluidity",
+    "source": "protocol 4.3 C.10",
+    "question": "Do probabilities stay movable?",
+    "verdict": "ok",
+    "detail": "mean max atom probability peaked at 0.710",
+    "peak_atom_probability": 0.7102925777435303
+   },
+   {
+    "id": "topology",
+    "source": "protocol 4.3 C.11",
+    "question": "Can the optimizer change its mind?",
+    "verdict": "ok",
+    "detail": "14 edges rose then fell, 11 fell then rose, over 300 pairs",
+    "reversals": 25,
+    "rose_then_fell": 14,
+    "fell_then_rose": 11
+   },
+   {
+    "id": "valence",
+    "source": "protocol 4.3 C.12 / 5.2",
+    "question": "Is the readout over-valent?",
+    "verdict": "flag",
+    "detail": "447 of 501 readouts over-valent; final state has 4",
+    "states_over_valent": 447,
+    "final_violations": 4
+   },
+   {
+    "id": "connectivity",
+    "source": "protocol 4.3 C.13 / 5.3",
+    "question": "Is the graph fragmented?",
+    "verdict": "flag",
+    "detail": "489 of 501 readouts single-component; final has 1 components",
+    "single_component_states": 489,
+    "final_components": 1
+   },
+   {
+    "id": "sparsity",
+    "source": "protocol 4.3 C.14 / 5.4",
+    "question": "Is edge mass diffuse?",
+    "verdict": "ok",
+    "detail": "expected degree moved 10.56 -> 1.74, threshold 4.0",
+    "initial_expected_degree": 10.56,
+    "final_expected_degree": 1.7362820434570312
+   },
+   {
+    "id": "soft_hard_gap",
+    "source": "protocol 4.3 C.15 / plan",
+    "question": "Does the objective survive discretization?",
+    "verdict": "ok",
+    "detail": "mean hard-minus-soft loss +0.4331 over 501 checkpoints",
+    "mean_hard_minus_soft_loss": 0.43314591038622663,
+    "final_hard_minus_soft_loss": 0.7954657077789307
+   },
+   {
+    "id": "projection_aggressiveness",
+    "source": "protocol 5.2",
+    "question": "Does valence projection freeze topology?",
+    "verdict": "ok",
+    "detail": "projection active on 500 of 501 steps, mean displacement 0.0663",
+    "active_steps": 500,
+    "mean_displacement": 0.06626161279210416
+   },
+   {
+    "id": "bridge_survival",
+    "source": "protocol 5.3",
+    "question": "Do bridges survive reprojection?",
+    "verdict": "ok",
+    "detail": "148 of 148 bridges survived valence reprojection",
+    "bridges_attempted": 148,
+    "bridges_lost": 0
+   },
+   {
+    "id": "soft_versus_hard_feasibility",
+    "source": "project plan",
+    "question": "Is relaxed satisfaction mistaken for molecular validity?",
+    "verdict": "ok",
+    "detail": "500 of 501 relaxed states satisfy valence; 54 of 501 readouts sanitize",
+    "relaxed_feasible": 500,
+    "relaxed_states": 501,
+    "sanitized_states": 54
+   },
+   {
+    "id": "predictor_exploitation",
+    "source": "project plan",
+    "question": "Does the objective improve while chemistry does not?",
+    "verdict": "flag",
+    "detail": "loss 0.88089 -> -1.54770 (affinity_pred_value 0.88089 -> -1.54770); final readout not valid and connected",
+    "initial_loss": 0.8808903694152832,
+    "final_loss": -1.5476956367492676,
+    "final_score": -1.5476956367492676,
+    "final_valid": false
+   }
+  ],
+  "per_step_rows": 501
+ },
+ {
+  "run": "bridge-retry",
+  "directory": "results/local/stage2-overnight-20261103/improvements/bridge-retry",
+  "config": {
+   "backend": "boltz2",
+   "boundary": "frozen structure model; chemistry is an explicit post-step operator, never a loss; hard molecules are readouts only",
+   "context_sha256": "8faa99d4a69bf9347418c69735aed62700f877bc4ca7b0eb740320dd01ed7477",
+   "eta_E": 0.1,
+   "eta_X": 0.1,
+   "experiment_file": "stage2/experiment.yaml",
+   "gradient_check": {
+    "baseline": 0.8808903694152832,
+    "rows": [
+     {
+      "field": "X",
+      "probes": [
+       {
+        "agrees": true,
+        "analytic": 0.1600552499294281,
+        "epsilon": 0.01,
+        "finite_difference": 0.1599431037902832,
+        "primal_endpoints": [
+         0.8792721629142761,
+         0.8824710249900818
+        ]
+       },
+       {
+        "agrees": true,
+        "analytic": 0.1600552499294281,
+        "epsilon": 0.003,
+        "finite_difference": 0.1598497231801351,
+        "primal_endpoints": [
+         0.8804098963737488,
+         0.8813689947128296
+        ]
+       },
+       {
+        "agrees": true,
+        "analytic": 0.1600552499294281,
+        "epsilon": 0.001,
+        "finite_difference": 0.15997886657714844,
+        "primal_endpoints": [
+         0.8807300925254822,
+         0.8810500502586365
+        ]
+       }
+      ],
+      "row": 1,
+      "source": 4,
+      "target": 1
+     },
+     {
+      "field": "E_upper",
+      "probes": [
+       {
+        "agrees": true,
+        "analytic": 0.07231244444847107,
+        "epsilon": 0.01,
+        "finite_difference": 0.07236599922180176,
+        "primal_endpoints": [
+         0.8801424503326416,
+         0.8815897703170776
+        ]
+       },
+       {
+        "agrees": true,
+        "analytic": 0.07231244444847107,
+        "epsilon": 0.003,
+        "finite_difference": 0.0723103682200114,
+        "primal_endpoints": [
+         0.8806716799736023,
+         0.8811055421829224
+        ]
+       },
+       {
+        "agrees": true,
+        "analytic": 0.07231244444847107,
+        "epsilon": 0.001,
+        "finite_difference": 0.07233023643493652,
+        "primal_endpoints": [
+         0.8808183073997498,
+         0.8809629678726196
+        ]
+       }
+      ],
+      "row": 0,
+      "source": 0,
+      "target": 1
+     }
+    ],
+    "scope": "quantitative affinity; fixed pose/masks; first-order raw graph derivatives",
+    "status": "passed",
+    "typed_bond_contrast_nonzero": true
+   },
+   "hardening": false,
+   "hardening_gradient": null,
+   "initialization": {
+    "kind": "prepared carbon-chain seed mixed with uniform",
+    "mixing": 0.5
+   },
+   "interpretation": "predicted binding affinity; lower is a stronger predicted binder, so the optimizer minimizes it directly. Not an experimental affinity and not calibrated.",
+   "n_atoms": 25,
+   "preparation": {
+    "atom_indices": [
+     1061,
+     1062,
+     1063,
+     1064,
+     1065,
+     1066,
+     1067,
+     1068,
+     1069,
+     1070,
+     1071,
+     1072,
+     1073,
+     1074,
+     1075,
+     1076,
+     1077,
+     1078,
+     1079,
+     1080,
+     1081,
+     1082,
+     1083,
+     1084,
+     1085
+    ],
+    "boltz_commit": "b1ebfc46ecf57f5414e0d1a6f9027bbb122c53bc",
+    "context_sha256": "8faa99d4a69bf9347418c69735aed62700f877bc4ca7b0eb740320dd01ed7477",
+    "fixture_sha256": "e9f4bfed03f7cdeb497b718d4b33da98338790e9ed016ed913487045256e0c6b",
+    "frozen_fields": "coordinates, ref_pos, charge=0, atom names, crop, MSA, masks and all auxiliary fields",
+    "input_sha256": "23bf6159df5d76bb68eafabce4c0c82ac5ca811e9c1e8f14874db96b6bb88e44",
+    "job_id": "local",
+    "msa_policy": "native single-sequence empty MSA, same deposited 3MXF sequence as prior Mosaic; no external server",
+    "n_atoms": 25,
+    "native_manifest_sha256": "646bd4f90ec80c59a9133e66dbc54d155dbd16b66f4f5486006a747d4868c640",
+    "pose_policy": "new native predicted 25-slot carbon-chain pose; fixed during optimization; no crystal pose or ligand transplant",
+    "prediction": "/opt/mosaic-stage0/contexts/brd4-25-20261103/native/boltz_results_input",
+    "preparation_seed": 42,
+    "protein_sequence": "SMNPPPPETSNPNKPKRQTNQLQYLLRVVLKTLWKHQFAWPFQQPVDAVKLNLPDYYKIIKTPMDMGTIKKRLENNYYWNAQECIQDFNTMFTNCYIYNKPGDDIVLMAEALEKLFLQKINELPTEE",
+    "seed_smiles": "CCCCCCCCCCCCCCCCCCCCCCCCC",
+    "status": "prepared",
+    "token_indices": [
+     127,
+     128,
+     129,
+     130,
+     131,
+     132,
+     133,
+     134,
+     135,
+     136,
+     137,
+     138,
+     139,
+     140,
+     141,
+     142,
+     143,
+     144,
+     145,
+     146,
+     147,
+     148,
+     149,
+     150,
+     151
+    ]
+   },
+   "score_metric": "affinity_pred_value",
+   "seed": 17,
+   "stage2": {
+    "active_improvements": [
+     "bridge_retry"
+    ],
+    "aromatic_order": 1.5,
+    "bridge_probability": 0.6,
+    "bridge_retry": true,
+    "fluidity_strength": 0.0,
+    "fluidity_threshold": 1.0,
+    "mode": "connected",
+    "readout_caps": false,
+    "sparsity_amount": 0.01,
+    "sparsity_threshold": 0.5,
+    "valence_damping": 1.0
+   },
+   "steps": 500,
+   "units": "Boltz-2 affinity prediction",
+   "worker_identity": {
+    "allocation": "local",
+    "checkpoint_sha256": "dcc5cd3722b1c9eaa34267e4ae32f55cbbf1963f4c19319381ccfa30fdd2ca9e",
+    "context_digest": "f7c2ab7f284fe10eb69c15676bc51a6160e4105a63c0b707021a628dc8cd8dea",
+    "context_file_sha256": "8faa99d4a69bf9347418c69735aed62700f877bc4ca7b0eb740320dd01ed7477",
+    "device": "cuda",
+    "device_name": "NVIDIA GeForce RTX 4080",
+    "device_total_vram_bytes": 17170956288,
+    "loaded_vram_bytes": 2085460992,
+    "model_digest": "395876da13ab6d5d175e6603db2118a82954c7c06484842fe2314dbd77a31a16",
+    "n_atoms": 25,
+    "optimized_output": "affinity_pred_value",
+    "pose_policy": "fixed native predicted pose; no diffusion gradients",
+    "protocol": "mosaic-boltz-affinity-v1",
+    "recycling_steps": 0,
+    "source": "b1ebfc46ecf57f5414e0d1a6f9027bbb122c53bc",
+    "status": "ready"
+   }
+  },
+  "states": 501,
+  "reversals": {
+   "states": 501,
+   "edges": 300,
+   "rose_then_fell": 14,
+   "fell_then_rose": 11,
+   "reversals": 25
+  },
+  "pitfalls": [
+   {
+    "id": "fluidity",
+    "source": "protocol 4.3 C.10",
+    "question": "Do probabilities stay movable?",
+    "verdict": "ok",
+    "detail": "mean max atom probability peaked at 0.710",
+    "peak_atom_probability": 0.7102925777435303
+   },
+   {
+    "id": "topology",
+    "source": "protocol 4.3 C.11",
+    "question": "Can the optimizer change its mind?",
+    "verdict": "ok",
+    "detail": "14 edges rose then fell, 11 fell then rose, over 300 pairs",
+    "reversals": 25,
+    "rose_then_fell": 14,
+    "fell_then_rose": 11
+   },
+   {
+    "id": "valence",
+    "source": "protocol 4.3 C.12 / 5.2",
+    "question": "Is the readout over-valent?",
+    "verdict": "flag",
+    "detail": "447 of 501 readouts over-valent; final state has 4",
+    "states_over_valent": 447,
+    "final_violations": 4
+   },
+   {
+    "id": "connectivity",
+    "source": "protocol 4.3 C.13 / 5.3",
+    "question": "Is the graph fragmented?",
+    "verdict": "flag",
+    "detail": "489 of 501 readouts single-component; final has 1 components",
+    "single_component_states": 489,
+    "final_components": 1
+   },
+   {
+    "id": "sparsity",
+    "source": "protocol 4.3 C.14 / 5.4",
+    "question": "Is edge mass diffuse?",
+    "verdict": "ok",
+    "detail": "expected degree moved 10.56 -> 1.74, threshold 4.0",
+    "initial_expected_degree": 10.56,
+    "final_expected_degree": 1.7362820434570312
+   },
+   {
+    "id": "soft_hard_gap",
+    "source": "protocol 4.3 C.15 / plan",
+    "question": "Does the objective survive discretization?",
+    "verdict": "ok",
+    "detail": "mean hard-minus-soft loss +0.4331 over 501 checkpoints",
+    "mean_hard_minus_soft_loss": 0.43314591038622663,
+    "final_hard_minus_soft_loss": 0.7954657077789307
+   },
+   {
+    "id": "projection_aggressiveness",
+    "source": "protocol 5.2",
+    "question": "Does valence projection freeze topology?",
+    "verdict": "ok",
+    "detail": "projection active on 500 of 501 steps, mean displacement 0.0663",
+    "active_steps": 500,
+    "mean_displacement": 0.06626161279210416
+   },
+   {
+    "id": "bridge_survival",
+    "source": "protocol 5.3",
+    "question": "Do bridges survive reprojection?",
+    "verdict": "ok",
+    "detail": "148 of 148 bridges survived valence reprojection",
+    "bridges_attempted": 148,
+    "bridges_lost": 0
+   },
+   {
+    "id": "soft_versus_hard_feasibility",
+    "source": "project plan",
+    "question": "Is relaxed satisfaction mistaken for molecular validity?",
+    "verdict": "ok",
+    "detail": "500 of 501 relaxed states satisfy valence; 54 of 501 readouts sanitize",
+    "relaxed_feasible": 500,
+    "relaxed_states": 501,
+    "sanitized_states": 54
+   },
+   {
+    "id": "predictor_exploitation",
+    "source": "project plan",
+    "question": "Does the objective improve while chemistry does not?",
+    "verdict": "flag",
+    "detail": "loss 0.88089 -> -1.54770 (affinity_pred_value 0.88089 -> -1.54770); final readout not valid and connected",
+    "initial_loss": 0.8808903694152832,
+    "final_loss": -1.5476956367492676,
+    "final_score": -1.5476956367492676,
+    "final_valid": false
+   }
+  ],
+  "per_step_rows": 501
+ },
+ {
+  "run": "fluidity-floor",
+  "directory": "results/local/stage2-overnight-20261103/improvements/fluidity-floor",
+  "config": {
+   "backend": "boltz2",
+   "boundary": "frozen structure model; chemistry is an explicit post-step operator, never a loss; hard molecules are readouts only",
+   "context_sha256": "8faa99d4a69bf9347418c69735aed62700f877bc4ca7b0eb740320dd01ed7477",
+   "eta_E": 0.1,
+   "eta_X": 0.1,
+   "experiment_file": "stage2/experiment.yaml",
+   "gradient_check": {
+    "baseline": 0.8808903694152832,
+    "rows": [
+     {
+      "field": "X",
+      "probes": [
+       {
+        "agrees": true,
+        "analytic": 0.1600552499294281,
+        "epsilon": 0.01,
+        "finite_difference": 0.1599431037902832,
+        "primal_endpoints": [
+         0.8792721629142761,
+         0.8824710249900818
+        ]
+       },
+       {
+        "agrees": true,
+        "analytic": 0.1600552499294281,
+        "epsilon": 0.003,
+        "finite_difference": 0.1598497231801351,
+        "primal_endpoints": [
+         0.8804098963737488,
+         0.8813689947128296
+        ]
+       },
+       {
+        "agrees": true,
+        "analytic": 0.1600552499294281,
+        "epsilon": 0.001,
+        "finite_difference": 0.15997886657714844,
+        "primal_endpoints": [
+         0.8807300925254822,
+         0.8810500502586365
+        ]
+       }
+      ],
+      "row": 1,
+      "source": 4,
+      "target": 1
+     },
+     {
+      "field": "E_upper",
+      "probes": [
+       {
+        "agrees": true,
+        "analytic": 0.07231244444847107,
+        "epsilon": 0.01,
+        "finite_difference": 0.07236599922180176,
+        "primal_endpoints": [
+         0.8801424503326416,
+         0.8815897703170776
+        ]
+       },
+       {
+        "agrees": true,
+        "analytic": 0.07231244444847107,
+        "epsilon": 0.003,
+        "finite_difference": 0.0723103682200114,
+        "primal_endpoints": [
+         0.8806716799736023,
+         0.8811055421829224
+        ]
+       },
+       {
+        "agrees": true,
+        "analytic": 0.07231244444847107,
+        "epsilon": 0.001,
+        "finite_difference": 0.07233023643493652,
+        "primal_endpoints": [
+         0.8808183073997498,
+         0.8809629678726196
+        ]
+       }
+      ],
+      "row": 0,
+      "source": 0,
+      "target": 1
+     }
+    ],
+    "scope": "quantitative affinity; fixed pose/masks; first-order raw graph derivatives",
+    "status": "passed",
+    "typed_bond_contrast_nonzero": true
+   },
+   "hardening": false,
+   "hardening_gradient": null,
+   "initialization": {
+    "kind": "prepared carbon-chain seed mixed with uniform",
+    "mixing": 0.5
+   },
+   "interpretation": "predicted binding affinity; lower is a stronger predicted binder, so the optimizer minimizes it directly. Not an experimental affinity and not calibrated.",
+   "n_atoms": 25,
+   "preparation": {
+    "atom_indices": [
+     1061,
+     1062,
+     1063,
+     1064,
+     1065,
+     1066,
+     1067,
+     1068,
+     1069,
+     1070,
+     1071,
+     1072,
+     1073,
+     1074,
+     1075,
+     1076,
+     1077,
+     1078,
+     1079,
+     1080,
+     1081,
+     1082,
+     1083,
+     1084,
+     1085
+    ],
+    "boltz_commit": "b1ebfc46ecf57f5414e0d1a6f9027bbb122c53bc",
+    "context_sha256": "8faa99d4a69bf9347418c69735aed62700f877bc4ca7b0eb740320dd01ed7477",
+    "fixture_sha256": "e9f4bfed03f7cdeb497b718d4b33da98338790e9ed016ed913487045256e0c6b",
+    "frozen_fields": "coordinates, ref_pos, charge=0, atom names, crop, MSA, masks and all auxiliary fields",
+    "input_sha256": "23bf6159df5d76bb68eafabce4c0c82ac5ca811e9c1e8f14874db96b6bb88e44",
+    "job_id": "local",
+    "msa_policy": "native single-sequence empty MSA, same deposited 3MXF sequence as prior Mosaic; no external server",
+    "n_atoms": 25,
+    "native_manifest_sha256": "646bd4f90ec80c59a9133e66dbc54d155dbd16b66f4f5486006a747d4868c640",
+    "pose_policy": "new native predicted 25-slot carbon-chain pose; fixed during optimization; no crystal pose or ligand transplant",
+    "prediction": "/opt/mosaic-stage0/contexts/brd4-25-20261103/native/boltz_results_input",
+    "preparation_seed": 42,
+    "protein_sequence": "SMNPPPPETSNPNKPKRQTNQLQYLLRVVLKTLWKHQFAWPFQQPVDAVKLNLPDYYKIIKTPMDMGTIKKRLENNYYWNAQECIQDFNTMFTNCYIYNKPGDDIVLMAEALEKLFLQKINELPTEE",
+    "seed_smiles": "CCCCCCCCCCCCCCCCCCCCCCCCC",
+    "status": "prepared",
+    "token_indices": [
+     127,
+     128,
+     129,
+     130,
+     131,
+     132,
+     133,
+     134,
+     135,
+     136,
+     137,
+     138,
+     139,
+     140,
+     141,
+     142,
+     143,
+     144,
+     145,
+     146,
+     147,
+     148,
+     149,
+     150,
+     151
+    ]
+   },
+   "score_metric": "affinity_pred_value",
+   "seed": 17,
+   "stage2": {
+    "active_improvements": [
+     "fluidity_floor"
+    ],
+    "aromatic_order": 1.5,
+    "bridge_probability": 0.6,
+    "bridge_retry": false,
+    "fluidity_strength": 0.05,
+    "fluidity_threshold": 0.95,
+    "mode": "connected",
+    "readout_caps": false,
+    "sparsity_amount": 0.01,
+    "sparsity_threshold": 0.5,
+    "valence_damping": 1.0
+   },
+   "steps": 500,
+   "units": "Boltz-2 affinity prediction",
+   "worker_identity": {
+    "allocation": "local",
+    "checkpoint_sha256": "dcc5cd3722b1c9eaa34267e4ae32f55cbbf1963f4c19319381ccfa30fdd2ca9e",
+    "context_digest": "f7c2ab7f284fe10eb69c15676bc51a6160e4105a63c0b707021a628dc8cd8dea",
+    "context_file_sha256": "8faa99d4a69bf9347418c69735aed62700f877bc4ca7b0eb740320dd01ed7477",
+    "device": "cuda",
+    "device_name": "NVIDIA GeForce RTX 4080",
+    "device_total_vram_bytes": 17170956288,
+    "loaded_vram_bytes": 2085460992,
+    "model_digest": "395876da13ab6d5d175e6603db2118a82954c7c06484842fe2314dbd77a31a16",
+    "n_atoms": 25,
+    "optimized_output": "affinity_pred_value",
+    "pose_policy": "fixed native predicted pose; no diffusion gradients",
+    "protocol": "mosaic-boltz-affinity-v1",
+    "recycling_steps": 0,
+    "source": "b1ebfc46ecf57f5414e0d1a6f9027bbb122c53bc",
+    "status": "ready"
+   }
+  },
+  "states": 501,
+  "reversals": {
+   "states": 501,
+   "edges": 300,
+   "rose_then_fell": 9,
+   "fell_then_rose": 7,
+   "reversals": 16
+  },
+  "pitfalls": [
+   {
+    "id": "fluidity",
+    "source": "protocol 4.3 C.10",
+    "question": "Do probabilities stay movable?",
+    "verdict": "ok",
+    "detail": "mean max atom probability peaked at 0.735",
+    "peak_atom_probability": 0.7349600791931152
+   },
+   {
+    "id": "topology",
+    "source": "protocol 4.3 C.11",
+    "question": "Can the optimizer change its mind?",
+    "verdict": "ok",
+    "detail": "9 edges rose then fell, 7 fell then rose, over 300 pairs",
+    "reversals": 16,
+    "rose_then_fell": 9,
+    "fell_then_rose": 7
+   },
+   {
+    "id": "valence",
+    "source": "protocol 4.3 C.12 / 5.2",
+    "question": "Is the readout over-valent?",
+    "verdict": "flag",
+    "detail": "401 of 501 readouts over-valent; final state has 2",
+    "states_over_valent": 401,
+    "final_violations": 2
+   },
+   {
+    "id": "connectivity",
+    "source": "protocol 4.3 C.13 / 5.3",
+    "question": "Is the graph fragmented?",
+    "verdict": "flag",
+    "detail": "497 of 501 readouts single-component; final has 1 components",
+    "single_component_states": 497,
+    "final_components": 1
+   },
+   {
+    "id": "sparsity",
+    "source": "protocol 4.3 C.14 / 5.4",
+    "question": "Is edge mass diffuse?",
+    "verdict": "ok",
+    "detail": "expected degree moved 10.56 -> 2.25, threshold 4.0",
+    "initial_expected_degree": 10.56,
+    "final_expected_degree": 2.2528504943847656
+   },
+   {
+    "id": "soft_hard_gap",
+    "source": "protocol 4.3 C.15 / plan",
+    "question": "Does the objective survive discretization?",
+    "verdict": "ok",
+    "detail": "mean hard-minus-soft loss +0.5291 over 501 checkpoints",
+    "mean_hard_minus_soft_loss": 0.5291362200118229,
+    "final_hard_minus_soft_loss": 0.3039989471435547
+   },
+   {
+    "id": "projection_aggressiveness",
+    "source": "protocol 5.2",
+    "question": "Does valence projection freeze topology?",
+    "verdict": "ok",
+    "detail": "projection active on 500 of 501 steps, mean displacement 0.4736",
+    "active_steps": 500,
+    "mean_displacement": 0.4735643584238464
+   },
+   {
+    "id": "bridge_survival",
+    "source": "protocol 5.3",
+    "question": "Do bridges survive reprojection?",
+    "verdict": "ok",
+    "detail": "283 of 283 bridges survived valence reprojection",
+    "bridges_attempted": 283,
+    "bridges_lost": 0
+   },
+   {
+    "id": "soft_versus_hard_feasibility",
+    "source": "project plan",
+    "question": "Is relaxed satisfaction mistaken for molecular validity?",
+    "verdict": "ok",
+    "detail": "500 of 501 relaxed states satisfy valence; 100 of 501 readouts sanitize",
+    "relaxed_feasible": 500,
+    "relaxed_states": 501,
+    "sanitized_states": 100
+   },
+   {
+    "id": "predictor_exploitation",
+    "source": "project plan",
+    "question": "Does the objective improve while chemistry does not?",
+    "verdict": "flag",
+    "detail": "loss 0.88089 -> -1.20365 (affinity_pred_value 0.88089 -> -1.20365); final readout not valid and connected",
+    "initial_loss": 0.8808903694152832,
+    "final_loss": -1.2036510705947876,
+    "final_score": -1.2036510705947876,
+    "final_valid": false
+   }
+  ],
+  "per_step_rows": 501
+ },
+ {
+  "run": "readout-caps",
+  "directory": "results/local/stage2-overnight-20261103/improvements/readout-caps",
+  "config": {
+   "backend": "boltz2",
+   "boundary": "frozen structure model; chemistry is an explicit post-step operator, never a loss; hard molecules are readouts only",
+   "context_sha256": "8faa99d4a69bf9347418c69735aed62700f877bc4ca7b0eb740320dd01ed7477",
+   "eta_E": 0.1,
+   "eta_X": 0.1,
+   "experiment_file": "stage2/experiment.yaml",
+   "gradient_check": {
+    "baseline": 0.8808903694152832,
+    "rows": [
+     {
+      "field": "X",
+      "probes": [
+       {
+        "agrees": true,
+        "analytic": 0.1600552499294281,
+        "epsilon": 0.01,
+        "finite_difference": 0.1599431037902832,
+        "primal_endpoints": [
+         0.8792721629142761,
+         0.8824710249900818
+        ]
+       },
+       {
+        "agrees": true,
+        "analytic": 0.1600552499294281,
+        "epsilon": 0.003,
+        "finite_difference": 0.1598497231801351,
+        "primal_endpoints": [
+         0.8804098963737488,
+         0.8813689947128296
+        ]
+       },
+       {
+        "agrees": true,
+        "analytic": 0.1600552499294281,
+        "epsilon": 0.001,
+        "finite_difference": 0.15997886657714844,
+        "primal_endpoints": [
+         0.8807300925254822,
+         0.8810500502586365
+        ]
+       }
+      ],
+      "row": 1,
+      "source": 4,
+      "target": 1
+     },
+     {
+      "field": "E_upper",
+      "probes": [
+       {
+        "agrees": true,
+        "analytic": 0.07231244444847107,
+        "epsilon": 0.01,
+        "finite_difference": 0.07236599922180176,
+        "primal_endpoints": [
+         0.8801424503326416,
+         0.8815897703170776
+        ]
+       },
+       {
+        "agrees": true,
+        "analytic": 0.07231244444847107,
+        "epsilon": 0.003,
+        "finite_difference": 0.0723103682200114,
+        "primal_endpoints": [
+         0.8806716799736023,
+         0.8811055421829224
+        ]
+       },
+       {
+        "agrees": true,
+        "analytic": 0.07231244444847107,
+        "epsilon": 0.001,
+        "finite_difference": 0.07233023643493652,
+        "primal_endpoints": [
+         0.8808183073997498,
+         0.8809629678726196
+        ]
+       }
+      ],
+      "row": 0,
+      "source": 0,
+      "target": 1
+     }
+    ],
+    "scope": "quantitative affinity; fixed pose/masks; first-order raw graph derivatives",
+    "status": "passed",
+    "typed_bond_contrast_nonzero": true
+   },
+   "hardening": false,
+   "hardening_gradient": null,
+   "initialization": {
+    "kind": "prepared carbon-chain seed mixed with uniform",
+    "mixing": 0.5
+   },
+   "interpretation": "predicted binding affinity; lower is a stronger predicted binder, so the optimizer minimizes it directly. Not an experimental affinity and not calibrated.",
+   "n_atoms": 25,
+   "preparation": {
+    "atom_indices": [
+     1061,
+     1062,
+     1063,
+     1064,
+     1065,
+     1066,
+     1067,
+     1068,
+     1069,
+     1070,
+     1071,
+     1072,
+     1073,
+     1074,
+     1075,
+     1076,
+     1077,
+     1078,
+     1079,
+     1080,
+     1081,
+     1082,
+     1083,
+     1084,
+     1085
+    ],
+    "boltz_commit": "b1ebfc46ecf57f5414e0d1a6f9027bbb122c53bc",
+    "context_sha256": "8faa99d4a69bf9347418c69735aed62700f877bc4ca7b0eb740320dd01ed7477",
+    "fixture_sha256": "e9f4bfed03f7cdeb497b718d4b33da98338790e9ed016ed913487045256e0c6b",
+    "frozen_fields": "coordinates, ref_pos, charge=0, atom names, crop, MSA, masks and all auxiliary fields",
+    "input_sha256": "23bf6159df5d76bb68eafabce4c0c82ac5ca811e9c1e8f14874db96b6bb88e44",
+    "job_id": "local",
+    "msa_policy": "native single-sequence empty MSA, same deposited 3MXF sequence as prior Mosaic; no external server",
+    "n_atoms": 25,
+    "native_manifest_sha256": "646bd4f90ec80c59a9133e66dbc54d155dbd16b66f4f5486006a747d4868c640",
+    "pose_policy": "new native predicted 25-slot carbon-chain pose; fixed during optimization; no crystal pose or ligand transplant",
+    "prediction": "/opt/mosaic-stage0/contexts/brd4-25-20261103/native/boltz_results_input",
+    "preparation_seed": 42,
+    "protein_sequence": "SMNPPPPETSNPNKPKRQTNQLQYLLRVVLKTLWKHQFAWPFQQPVDAVKLNLPDYYKIIKTPMDMGTIKKRLENNYYWNAQECIQDFNTMFTNCYIYNKPGDDIVLMAEALEKLFLQKINELPTEE",
+    "seed_smiles": "CCCCCCCCCCCCCCCCCCCCCCCCC",
+    "status": "prepared",
+    "token_indices": [
+     127,
+     128,
+     129,
+     130,
+     131,
+     132,
+     133,
+     134,
+     135,
+     136,
+     137,
+     138,
+     139,
+     140,
+     141,
+     142,
+     143,
+     144,
+     145,
+     146,
+     147,
+     148,
+     149,
+     150,
+     151
+    ]
+   },
+   "score_metric": "affinity_pred_value",
+   "seed": 17,
+   "stage2": {
+    "active_improvements": [
+     "readout_caps"
+    ],
+    "aromatic_order": 1.5,
+    "bridge_probability": 0.6,
+    "bridge_retry": false,
+    "fluidity_strength": 0.0,
+    "fluidity_threshold": 1.0,
+    "mode": "connected",
+    "readout_caps": true,
+    "sparsity_amount": 0.01,
+    "sparsity_threshold": 0.5,
+    "valence_damping": 1.0
+   },
+   "steps": 500,
+   "units": "Boltz-2 affinity prediction",
+   "worker_identity": {
+    "allocation": "local",
+    "checkpoint_sha256": "dcc5cd3722b1c9eaa34267e4ae32f55cbbf1963f4c19319381ccfa30fdd2ca9e",
+    "context_digest": "f7c2ab7f284fe10eb69c15676bc51a6160e4105a63c0b707021a628dc8cd8dea",
+    "context_file_sha256": "8faa99d4a69bf9347418c69735aed62700f877bc4ca7b0eb740320dd01ed7477",
+    "device": "cuda",
+    "device_name": "NVIDIA GeForce RTX 4080",
+    "device_total_vram_bytes": 17170956288,
+    "loaded_vram_bytes": 2085460992,
+    "model_digest": "395876da13ab6d5d175e6603db2118a82954c7c06484842fe2314dbd77a31a16",
+    "n_atoms": 25,
+    "optimized_output": "affinity_pred_value",
+    "pose_policy": "fixed native predicted pose; no diffusion gradients",
+    "protocol": "mosaic-boltz-affinity-v1",
+    "recycling_steps": 0,
+    "source": "b1ebfc46ecf57f5414e0d1a6f9027bbb122c53bc",
+    "status": "ready"
+   }
+  },
+  "states": 501,
+  "reversals": {
+   "states": 501,
+   "edges": 300,
+   "rose_then_fell": 22,
+   "fell_then_rose": 13,
+   "reversals": 35
+  },
+  "pitfalls": [
+   {
+    "id": "fluidity",
+    "source": "protocol 4.3 C.10",
+    "question": "Do probabilities stay movable?",
+    "verdict": "ok",
+    "detail": "mean max atom probability peaked at 0.724",
+    "peak_atom_probability": 0.723900556564331
+   },
+   {
+    "id": "topology",
+    "source": "protocol 4.3 C.11",
+    "question": "Can the optimizer change its mind?",
+    "verdict": "ok",
+    "detail": "22 edges rose then fell, 13 fell then rose, over 300 pairs",
+    "reversals": 35,
+    "rose_then_fell": 22,
+    "fell_then_rose": 13
+   },
+   {
+    "id": "valence",
+    "source": "protocol 4.3 C.12 / 5.2",
+    "question": "Is the readout over-valent?",
+    "verdict": "flag",
+    "detail": "131 of 501 readouts over-valent; final state has 2",
+    "states_over_valent": 131,
+    "final_violations": 2
+   },
+   {
+    "id": "connectivity",
+    "source": "protocol 4.3 C.13 / 5.3",
+    "question": "Is the graph fragmented?",
+    "verdict": "flag",
+    "detail": "283 of 501 readouts single-component; final has 2 components",
+    "single_component_states": 283,
+    "final_components": 2
+   },
+   {
+    "id": "sparsity",
+    "source": "protocol 4.3 C.14 / 5.4",
+    "question": "Is edge mass diffuse?",
+    "verdict": "ok",
+    "detail": "expected degree moved 10.56 -> 1.69, threshold 4.0",
+    "initial_expected_degree": 10.56,
+    "final_expected_degree": 1.6932135009765625
+   },
+   {
+    "id": "soft_hard_gap",
+    "source": "protocol 4.3 C.15 / plan",
+    "question": "Does the objective survive discretization?",
+    "verdict": "ok",
+    "detail": "mean hard-minus-soft loss +0.5357 over 501 checkpoints",
+    "mean_hard_minus_soft_loss": 0.535747013209079,
+    "final_hard_minus_soft_loss": 0.6586758494377136
+   },
+   {
+    "id": "projection_aggressiveness",
+    "source": "protocol 5.2",
+    "question": "Does valence projection freeze topology?",
+    "verdict": "ok",
+    "detail": "projection active on 500 of 501 steps, mean displacement 0.0780",
+    "active_steps": 500,
+    "mean_displacement": 0.07798714968560924
+   },
+   {
+    "id": "bridge_survival",
+    "source": "protocol 5.3",
+    "question": "Do bridges survive reprojection?",
+    "verdict": "flag",
+    "detail": "272 of 273 bridges survived valence reprojection",
+    "bridges_attempted": 273,
+    "bridges_lost": 1
+   },
+   {
+    "id": "soft_versus_hard_feasibility",
+    "source": "project plan",
+    "question": "Is relaxed satisfaction mistaken for molecular validity?",
+    "verdict": "ok",
+    "detail": "500 of 501 relaxed states satisfy valence; 370 of 501 readouts sanitize",
+    "relaxed_feasible": 500,
+    "relaxed_states": 501,
+    "sanitized_states": 370
+   },
+   {
+    "id": "predictor_exploitation",
+    "source": "project plan",
+    "question": "Does the objective improve while chemistry does not?",
+    "verdict": "flag",
+    "detail": "loss 0.88089 -> -1.23045 (affinity_pred_value 0.88089 -> -1.23045); final readout not valid and connected",
+    "initial_loss": 0.8808903694152832,
+    "final_loss": -1.230452537536621,
+    "final_score": -1.230452537536621,
+    "final_valid": false
+   }
+  ],
+  "per_step_rows": 501
+ },
+ {
+  "run": "valence-damping",
+  "directory": "results/local/stage2-overnight-20261103/improvements/valence-damping",
+  "config": {
+   "backend": "boltz2",
+   "boundary": "frozen structure model; chemistry is an explicit post-step operator, never a loss; hard molecules are readouts only",
+   "context_sha256": "8faa99d4a69bf9347418c69735aed62700f877bc4ca7b0eb740320dd01ed7477",
+   "eta_E": 0.1,
+   "eta_X": 0.1,
+   "experiment_file": "stage2/experiment.yaml",
+   "gradient_check": {
+    "baseline": 0.8808903694152832,
+    "rows": [
+     {
+      "field": "X",
+      "probes": [
+       {
+        "agrees": true,
+        "analytic": 0.1600552499294281,
+        "epsilon": 0.01,
+        "finite_difference": 0.1599431037902832,
+        "primal_endpoints": [
+         0.8792721629142761,
+         0.8824710249900818
+        ]
+       },
+       {
+        "agrees": true,
+        "analytic": 0.1600552499294281,
+        "epsilon": 0.003,
+        "finite_difference": 0.1598497231801351,
+        "primal_endpoints": [
+         0.8804098963737488,
+         0.8813689947128296
+        ]
+       },
+       {
+        "agrees": true,
+        "analytic": 0.1600552499294281,
+        "epsilon": 0.001,
+        "finite_difference": 0.15997886657714844,
+        "primal_endpoints": [
+         0.8807300925254822,
+         0.8810500502586365
+        ]
+       }
+      ],
+      "row": 1,
+      "source": 4,
+      "target": 1
+     },
+     {
+      "field": "E_upper",
+      "probes": [
+       {
+        "agrees": true,
+        "analytic": 0.07231244444847107,
+        "epsilon": 0.01,
+        "finite_difference": 0.07236599922180176,
+        "primal_endpoints": [
+         0.8801424503326416,
+         0.8815897703170776
+        ]
+       },
+       {
+        "agrees": true,
+        "analytic": 0.07231244444847107,
+        "epsilon": 0.003,
+        "finite_difference": 0.0723103682200114,
+        "primal_endpoints": [
+         0.8806716799736023,
+         0.8811055421829224
+        ]
+       },
+       {
+        "agrees": true,
+        "analytic": 0.07231244444847107,
+        "epsilon": 0.001,
+        "finite_difference": 0.07233023643493652,
+        "primal_endpoints": [
+         0.8808183073997498,
+         0.8809629678726196
+        ]
+       }
+      ],
+      "row": 0,
+      "source": 0,
+      "target": 1
+     }
+    ],
+    "scope": "quantitative affinity; fixed pose/masks; first-order raw graph derivatives",
+    "status": "passed",
+    "typed_bond_contrast_nonzero": true
+   },
+   "hardening": false,
+   "hardening_gradient": null,
+   "initialization": {
+    "kind": "prepared carbon-chain seed mixed with uniform",
+    "mixing": 0.5
+   },
+   "interpretation": "predicted binding affinity; lower is a stronger predicted binder, so the optimizer minimizes it directly. Not an experimental affinity and not calibrated.",
+   "n_atoms": 25,
+   "preparation": {
+    "atom_indices": [
+     1061,
+     1062,
+     1063,
+     1064,
+     1065,
+     1066,
+     1067,
+     1068,
+     1069,
+     1070,
+     1071,
+     1072,
+     1073,
+     1074,
+     1075,
+     1076,
+     1077,
+     1078,
+     1079,
+     1080,
+     1081,
+     1082,
+     1083,
+     1084,
+     1085
+    ],
+    "boltz_commit": "b1ebfc46ecf57f5414e0d1a6f9027bbb122c53bc",
+    "context_sha256": "8faa99d4a69bf9347418c69735aed62700f877bc4ca7b0eb740320dd01ed7477",
+    "fixture_sha256": "e9f4bfed03f7cdeb497b718d4b33da98338790e9ed016ed913487045256e0c6b",
+    "frozen_fields": "coordinates, ref_pos, charge=0, atom names, crop, MSA, masks and all auxiliary fields",
+    "input_sha256": "23bf6159df5d76bb68eafabce4c0c82ac5ca811e9c1e8f14874db96b6bb88e44",
+    "job_id": "local",
+    "msa_policy": "native single-sequence empty MSA, same deposited 3MXF sequence as prior Mosaic; no external server",
+    "n_atoms": 25,
+    "native_manifest_sha256": "646bd4f90ec80c59a9133e66dbc54d155dbd16b66f4f5486006a747d4868c640",
+    "pose_policy": "new native predicted 25-slot carbon-chain pose; fixed during optimization; no crystal pose or ligand transplant",
+    "prediction": "/opt/mosaic-stage0/contexts/brd4-25-20261103/native/boltz_results_input",
+    "preparation_seed": 42,
+    "protein_sequence": "SMNPPPPETSNPNKPKRQTNQLQYLLRVVLKTLWKHQFAWPFQQPVDAVKLNLPDYYKIIKTPMDMGTIKKRLENNYYWNAQECIQDFNTMFTNCYIYNKPGDDIVLMAEALEKLFLQKINELPTEE",
+    "seed_smiles": "CCCCCCCCCCCCCCCCCCCCCCCCC",
+    "status": "prepared",
+    "token_indices": [
+     127,
+     128,
+     129,
+     130,
+     131,
+     132,
+     133,
+     134,
+     135,
+     136,
+     137,
+     138,
+     139,
+     140,
+     141,
+     142,
+     143,
+     144,
+     145,
+     146,
+     147,
+     148,
+     149,
+     150,
+     151
+    ]
+   },
+   "score_metric": "affinity_pred_value",
+   "seed": 17,
+   "stage2": {
+    "active_improvements": [
+     "valence_damping"
+    ],
+    "aromatic_order": 1.5,
+    "bridge_probability": 0.6,
+    "bridge_retry": false,
+    "fluidity_strength": 0.0,
+    "fluidity_threshold": 1.0,
+    "mode": "connected",
+    "readout_caps": false,
+    "sparsity_amount": 0.01,
+    "sparsity_threshold": 0.5,
+    "valence_damping": 0.5
+   },
+   "steps": 500,
+   "units": "Boltz-2 affinity prediction",
+   "worker_identity": {
+    "allocation": "local",
+    "checkpoint_sha256": "dcc5cd3722b1c9eaa34267e4ae32f55cbbf1963f4c19319381ccfa30fdd2ca9e",
+    "context_digest": "f7c2ab7f284fe10eb69c15676bc51a6160e4105a63c0b707021a628dc8cd8dea",
+    "context_file_sha256": "8faa99d4a69bf9347418c69735aed62700f877bc4ca7b0eb740320dd01ed7477",
+    "device": "cuda",
+    "device_name": "NVIDIA GeForce RTX 4080",
+    "device_total_vram_bytes": 17170956288,
+    "loaded_vram_bytes": 2085460992,
+    "model_digest": "395876da13ab6d5d175e6603db2118a82954c7c06484842fe2314dbd77a31a16",
+    "n_atoms": 25,
+    "optimized_output": "affinity_pred_value",
+    "pose_policy": "fixed native predicted pose; no diffusion gradients",
+    "protocol": "mosaic-boltz-affinity-v1",
+    "recycling_steps": 0,
+    "source": "b1ebfc46ecf57f5414e0d1a6f9027bbb122c53bc",
+    "status": "ready"
+   }
+  },
+  "states": 501,
+  "reversals": {
+   "states": 501,
+   "edges": 300,
+   "rose_then_fell": 17,
+   "fell_then_rose": 21,
+   "reversals": 38
+  },
+  "pitfalls": [
+   {
+    "id": "fluidity",
+    "source": "protocol 4.3 C.10",
+    "question": "Do probabilities stay movable?",
+    "verdict": "ok",
+    "detail": "mean max atom probability peaked at 0.749",
+    "peak_atom_probability": 0.7486575841903687
+   },
+   {
+    "id": "topology",
+    "source": "protocol 4.3 C.11",
+    "question": "Can the optimizer change its mind?",
+    "verdict": "ok",
+    "detail": "17 edges rose then fell, 21 fell then rose, over 300 pairs",
+    "reversals": 38,
+    "rose_then_fell": 17,
+    "fell_then_rose": 21
+   },
+   {
+    "id": "valence",
+    "source": "protocol 4.3 C.12 / 5.2",
+    "question": "Is the readout over-valent?",
+    "verdict": "flag",
+    "detail": "452 of 501 readouts over-valent; final state has 1",
+    "states_over_valent": 452,
+    "final_violations": 1
+   },
+   {
+    "id": "connectivity",
+    "source": "protocol 4.3 C.13 / 5.3",
+    "question": "Is the graph fragmented?",
+    "verdict": "flag",
+    "detail": "435 of 501 readouts single-component; final has 2 components",
+    "single_component_states": 435,
+    "final_components": 2
+   },
+   {
+    "id": "sparsity",
+    "source": "protocol 4.3 C.14 / 5.4",
+    "question": "Is edge mass diffuse?",
+    "verdict": "ok",
+    "detail": "expected degree moved 10.56 -> 2.04, threshold 4.0",
+    "initial_expected_degree": 10.56,
+    "final_expected_degree": 2.041827392578125
+   },
+   {
+    "id": "soft_hard_gap",
+    "source": "protocol 4.3 C.15 / plan",
+    "question": "Does the objective survive discretization?",
+    "verdict": "ok",
+    "detail": "mean hard-minus-soft loss +0.4891 over 501 checkpoints",
+    "mean_hard_minus_soft_loss": 0.4890641969351652,
+    "final_hard_minus_soft_loss": 0.5279496908187866
+   },
+   {
+    "id": "projection_aggressiveness",
+    "source": "protocol 5.2",
+    "question": "Does valence projection freeze topology?",
+    "verdict": "ok",
+    "detail": "projection active on 500 of 501 steps, mean displacement 0.0306",
+    "active_steps": 500,
+    "mean_displacement": 0.03057908445164984
+   },
+   {
+    "id": "bridge_survival",
+    "source": "protocol 5.3",
+    "question": "Do bridges survive reprojection?",
+    "verdict": "ok",
+    "detail": "216 of 216 bridges survived valence reprojection",
+    "bridges_attempted": 216,
+    "bridges_lost": 0
+   },
+   {
+    "id": "soft_versus_hard_feasibility",
+    "source": "project plan",
+    "question": "Is relaxed satisfaction mistaken for molecular validity?",
+    "verdict": "ok",
+    "detail": "0 of 501 relaxed states satisfy valence; 48 of 501 readouts sanitize",
+    "relaxed_feasible": 0,
+    "relaxed_states": 501,
+    "sanitized_states": 48
+   },
+   {
+    "id": "predictor_exploitation",
+    "source": "project plan",
+    "question": "Does the objective improve while chemistry does not?",
+    "verdict": "flag",
+    "detail": "loss 0.88089 -> -1.13606 (affinity_pred_value 0.88089 -> -1.13606); final readout not valid and connected",
+    "initial_loss": 0.8808903694152832,
+    "final_loss": -1.1360602378845215,
+    "final_score": -1.1360602378845215,
+    "final_valid": false
+   }
+  ],
+  "per_step_rows": 501
+ }
+]

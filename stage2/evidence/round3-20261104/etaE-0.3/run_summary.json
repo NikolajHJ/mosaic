@@ -1,0 +1,22 @@
+{
+  "backend": "boltz2",
+  "best_loss": -1.671095371246338,
+  "complete": true,
+  "device_total_vram_gib": 15.99,
+  "elapsed_seconds": 781.2688412150019,
+  "hardening": false,
+  "hardening_gradient": null,
+  "improvements": [
+    "readout_caps"
+  ],
+  "mode": "connected",
+  "peak_vram_bytes": 4490631168,
+  "peak_vram_gib": 4.18,
+  "run": "etaE-0.3",
+  "score_metric": "affinity_pred_value",
+  "soft_hard_gap": {
+    "checkpoints": 501,
+    "mean_hard_minus_soft_loss": 0.2387450187766326
+  },
+  "updates": 500
+}

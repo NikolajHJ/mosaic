@@ -1,0 +1,206 @@
+{
+  "backend": "boltz2",
+  "boundary": "frozen structure model; chemistry is an explicit post-step operator, never a loss; hard molecules are readouts only",
+  "context_sha256": "8faa99d4a69bf9347418c69735aed62700f877bc4ca7b0eb740320dd01ed7477",
+  "eta_E": 0.1,
+  "eta_X": 0.1,
+  "experiment_file": "stage2/experiment.yaml",
+  "gradient_check": {
+    "baseline": 0.8808903694152832,
+    "rows": [
+      {
+        "field": "X",
+        "probes": [
+          {
+            "agrees": true,
+            "analytic": 0.1600552499294281,
+            "epsilon": 0.01,
+            "finite_difference": 0.1599431037902832,
+            "primal_endpoints": [
+              0.8792721629142761,
+              0.8824710249900818
+            ]
+          },
+          {
+            "agrees": true,
+            "analytic": 0.1600552499294281,
+            "epsilon": 0.003,
+            "finite_difference": 0.1598497231801351,
+            "primal_endpoints": [
+              0.8804098963737488,
+              0.8813689947128296
+            ]
+          },
+          {
+            "agrees": true,
+            "analytic": 0.1600552499294281,
+            "epsilon": 0.001,
+            "finite_difference": 0.15997886657714844,
+            "primal_endpoints": [
+              0.8807300925254822,
+              0.8810500502586365
+            ]
+          }
+        ],
+        "row": 1,
+        "source": 4,
+        "target": 1
+      },
+      {
+        "field": "E_upper",
+        "probes": [
+          {
+            "agrees": true,
+            "analytic": 0.07231244444847107,
+            "epsilon": 0.01,
+            "finite_difference": 0.07236599922180176,
+            "primal_endpoints": [
+              0.8801424503326416,
+              0.8815897703170776
+            ]
+          },
+          {
+            "agrees": true,
+            "analytic": 0.07231244444847107,
+            "epsilon": 0.003,
+            "finite_difference": 0.0723103682200114,
+            "primal_endpoints": [
+              0.8806716799736023,
+              0.8811055421829224
+            ]
+          },
+          {
+            "agrees": true,
+            "analytic": 0.07231244444847107,
+            "epsilon": 0.001,
+            "finite_difference": 0.07233023643493652,
+            "primal_endpoints": [
+              0.8808183073997498,
+              0.8809629678726196
+            ]
+          }
+        ],
+        "row": 0,
+        "source": 0,
+        "target": 1
+      }
+    ],
+    "scope": "quantitative affinity; fixed pose/masks; first-order raw graph derivatives",
+    "status": "passed",
+    "typed_bond_contrast_nonzero": true
+  },
+  "hardening": false,
+  "hardening_gradient": null,
+  "initialization": {
+    "kind": "prepared carbon-chain seed mixed with uniform",
+    "mixing": 0.5
+  },
+  "interpretation": "predicted binding affinity; lower is a stronger predicted binder, so the optimizer minimizes it directly. Not an experimental affinity and not calibrated.",
+  "n_atoms": 25,
+  "preparation": {
+    "atom_indices": [
+      1061,
+      1062,
+      1063,
+      1064,
+      1065,
+      1066,
+      1067,
+      1068,
+      1069,
+      1070,
+      1071,
+      1072,
+      1073,
+      1074,
+      1075,
+      1076,
+      1077,
+      1078,
+      1079,
+      1080,
+      1081,
+      1082,
+      1083,
+      1084,
+      1085
+    ],
+    "boltz_commit": "b1ebfc46ecf57f5414e0d1a6f9027bbb122c53bc",
+    "context_sha256": "8faa99d4a69bf9347418c69735aed62700f877bc4ca7b0eb740320dd01ed7477",
+    "fixture_sha256": "e9f4bfed03f7cdeb497b718d4b33da98338790e9ed016ed913487045256e0c6b",
+    "frozen_fields": "coordinates, ref_pos, charge=0, atom names, crop, MSA, masks and all auxiliary fields",
+    "input_sha256": "23bf6159df5d76bb68eafabce4c0c82ac5ca811e9c1e8f14874db96b6bb88e44",
+    "job_id": "local",
+    "msa_policy": "native single-sequence empty MSA, same deposited 3MXF sequence as prior Mosaic; no external server",
+    "n_atoms": 25,
+    "native_manifest_sha256": "646bd4f90ec80c59a9133e66dbc54d155dbd16b66f4f5486006a747d4868c640",
+    "pose_policy": "new native predicted 25-slot carbon-chain pose; fixed during optimization; no crystal pose or ligand transplant",
+    "prediction": "/opt/mosaic-stage0/contexts/brd4-25-20261103/native/boltz_results_input",
+    "preparation_seed": 42,
+    "protein_sequence": "SMNPPPPETSNPNKPKRQTNQLQYLLRVVLKTLWKHQFAWPFQQPVDAVKLNLPDYYKIIKTPMDMGTIKKRLENNYYWNAQECIQDFNTMFTNCYIYNKPGDDIVLMAEALEKLFLQKINELPTEE",
+    "seed_smiles": "CCCCCCCCCCCCCCCCCCCCCCCCC",
+    "status": "prepared",
+    "token_indices": [
+      127,
+      128,
+      129,
+      130,
+      131,
+      132,
+      133,
+      134,
+      135,
+      136,
+      137,
+      138,
+      139,
+      140,
+      141,
+      142,
+      143,
+      144,
+      145,
+      146,
+      147,
+      148,
+      149,
+      150,
+      151
+    ]
+  },
+  "score_metric": "affinity_pred_value",
+  "seed": 17,
+  "stage2": {
+    "active_improvements": [],
+    "aromatic_order": 1.5,
+    "bridge_probability": 0.6,
+    "bridge_retry": false,
+    "fluidity_strength": 0.0,
+    "fluidity_threshold": 1.0,
+    "mode": "none",
+    "readout_caps": false,
+    "sparsity_amount": 0.01,
+    "sparsity_threshold": 0.5,
+    "valence_damping": 1.0
+  },
+  "steps": 500,
+  "units": "Boltz-2 affinity prediction",
+  "worker_identity": {
+    "allocation": "local",
+    "checkpoint_sha256": "dcc5cd3722b1c9eaa34267e4ae32f55cbbf1963f4c19319381ccfa30fdd2ca9e",
+    "context_digest": "f7c2ab7f284fe10eb69c15676bc51a6160e4105a63c0b707021a628dc8cd8dea",
+    "context_file_sha256": "8faa99d4a69bf9347418c69735aed62700f877bc4ca7b0eb740320dd01ed7477",
+    "device": "cuda",
+    "device_name": "NVIDIA GeForce RTX 4080",
+    "device_total_vram_bytes": 17170956288,
+    "loaded_vram_bytes": 2085460992,
+    "model_digest": "395876da13ab6d5d175e6603db2118a82954c7c06484842fe2314dbd77a31a16",
+    "n_atoms": 25,
+    "optimized_output": "affinity_pred_value",
+    "pose_policy": "fixed native predicted pose; no diffusion gradients",
+    "protocol": "mosaic-boltz-affinity-v1",
+    "recycling_steps": 0,
+    "source": "b1ebfc46ecf57f5414e0d1a6f9027bbb122c53bc",
+    "status": "ready"
+  }
+}

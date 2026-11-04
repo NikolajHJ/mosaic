@@ -1,0 +1,95 @@
+# Stage 2 experiment definition.
+#
+#   python stage2/run.py --config stage2/experiment.yaml --out runs/my-arm
+#
+# Any command-line flag overrides the value here, so a sweep is this file plus
+# one flag. Every setting is recorded into the run's stage2_config.json, so a
+# finished run always carries the experiment that produced it.
+#
+# Defaults below are the protocol baseline: valence projection only, no
+# improvements, no hardening. Sections are named after the protocol sections
+# they come from.
+
+backend: boltz2 # boltz2 | protenix
+
+boltz2:
+  # Prepared fixed-pose context directory, holding context.pt and
+  # preparation.json. Make one with
+  #   python -m mosaic.small_molecule.boltz2.prepare \
+  #     --fixture F.json --cache BOLTZ_CACHE --output contexts/brd4-25 \
+  #     --n-atoms 25 --allow-local-gpu
+  context: null
+  checkpoint: null # pinned affinity .ckpt; its SHA is verified on load
+  # The worker needs torch and the pinned Boltz; this side needs JAX. When they
+  # live in separate venvs, point this at the Boltz one and the worker is
+  # launched under it, with this checkout on its PYTHONPATH. On mypc that is
+  #   /opt/bachelor-research-20261022/venv-boltz/bin/python
+  # Leave null when one environment has both.
+  python: null
+  seed_mixing: 0.5 # uniform mixing applied to the prepared carbon-chain seed
+  allow_local_gpu: true # false requires an allocated LSF job
+
+protenix: # only read when backend is protenix
+  target: brd4 # brd4 | t4l | fkbp12
+  cache_dir: /opt/mosaic-stage0/cache/protenix
+
+trajectory:
+  steps: 500
+  eta_X: 0.1 # atom-probability step size
+  # 0.1 from a 40-step probe on Boltz-2 at eta_E in {1.0, 0.3, 0.1, 0.03}:
+  # loss 0.881 -> -0.327 at 0.1, versus +0.114 at 1.0 with 9 fragments. The old
+  # 1.0 default came from Protenix, where E reached the model only as bond
+  # existence, so an oversized bond step was invisible. It is not here.
+  eta_E: 0.1
+  readout_every: 1
+  seed: 17
+  parent: null # sealed parent run to continue, or null to start fresh
+
+# Protocol 5.1-5.4. The operator set applied after each update.
+operators:
+  # none      frozen Stage 1 control, no chemistry
+  # valence   5.2, unconditional
+  # connected 5.3, adds component bridging; its gate is met
+  # sparse    5.4, adds weak-edge shrinkage; its gate is NOT met, so a result
+  #           from this arm is exploratory until fragmentation evidence exists
+  mode: valence
+  aromatic_order: 1.5 # 1.5 is the protocol surrogate; 1.0 is a looser bound
+  bridge_probability: 0.6
+  sparsity_amount: 0.01
+  sparsity_threshold: 0.5
+
+# Suggested improvements. Every value here is neutral, so the defaults are
+# exactly the protocol with nothing added. Turn on one at a time.
+improvements:
+  readout_caps: false # also require the argmax element's own valence ceiling
+  valence_damping: 1.0 # <1 steps partway to the projection; leaves a residual
+  fluidity_threshold: 1.0 # <1 relaxes rows whose max probability exceeds it
+  fluidity_strength: 0.0 # >0 mixes those rows back toward uniform
+  bridge_retry: false # one stronger re-bridge if valence removed bridges
+
+# Protocol 5.5. A separate experiment, never part of the baseline loop: run it
+# against a matched relaxed arm from the same parent checkpoint.
+hardening:
+  enabled: false
+  # How the gradient crosses the hardening step.
+  #
+  # inherited   Mosaic's existing one-hot transition, which protocol 5.5 says
+  #             to reuse. It was written for logits and we feed it
+  #             probabilities, so the Jacobian is h*J_softmax(p) + (1-h)*I and
+  #             the gradient reaching p is attenuated by roughly (1-h) + h/K.
+  #             Faithful to the earlier runs, but it decays the effective step
+  #             size along the ramp, which confounds "did topology lock?".
+  # passthrough The textbook straight-through estimator: identity Jacobian, no
+  #             attenuation. Removes the confound at its source.
+  # rescaled    Keeps the inherited transform and scales the gradient by
+  #             1/((1-h) + h/K) to restore its magnitude. The value is
+  #             untouched, so the recorded loss stays the true objective. A
+  #             scalar correction to a non-scalar Jacobian, so it restores
+  #             magnitude, not direction.
+  gradient: inherited
+
+checks:
+  # Finite-difference preflight requiring nonzero atom AND typed-bond
+  # derivatives. On Boltz-2 that bond-order contrast is the premise of Stage 2,
+  # so leave this on unless you are deliberately saving the forward passes.
+  gradient_check: true

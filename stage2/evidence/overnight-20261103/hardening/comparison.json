@@ -1,0 +1,68 @@
+[
+  {
+    "arm": "inherited",
+    "states": 501,
+    "final_score": -0.04212247580289841,
+    "final_components": 2,
+    "final_violations": 0,
+    "final_sanitized": false,
+    "valid_connected_states": 52,
+    "unique_valid_smiles": 4,
+    "topology_reversals": 13,
+    "flagged": [
+      "valence",
+      "connectivity",
+      "predictor_exploitation"
+    ]
+  },
+  {
+    "arm": "passthrough",
+    "states": 501,
+    "final_score": -0.9859423637390137,
+    "final_components": 1,
+    "final_violations": 2,
+    "final_sanitized": false,
+    "valid_connected_states": 62,
+    "unique_valid_smiles": 8,
+    "topology_reversals": 21,
+    "flagged": [
+      "valence",
+      "connectivity",
+      "bridge_survival",
+      "predictor_exploitation"
+    ]
+  },
+  {
+    "arm": "relaxed-control",
+    "states": 501,
+    "final_score": -1.5476956367492676,
+    "final_components": 1,
+    "final_violations": 4,
+    "final_sanitized": false,
+    "valid_connected_states": 54,
+    "unique_valid_smiles": 7,
+    "topology_reversals": 25,
+    "flagged": [
+      "valence",
+      "connectivity",
+      "predictor_exploitation"
+    ]
+  },
+  {
+    "arm": "rescaled",
+    "states": 501,
+    "final_score": -0.26928699016571045,
+    "final_components": 2,
+    "final_violations": 2,
+    "final_sanitized": false,
+    "valid_connected_states": 165,
+    "unique_valid_smiles": 28,
+    "topology_reversals": 28,
+    "flagged": [
+      "valence",
+      "connectivity",
+      "bridge_survival",
+      "predictor_exploitation"
+    ]
+  }
+]

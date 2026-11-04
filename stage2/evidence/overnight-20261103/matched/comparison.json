@@ -1,0 +1,114 @@
+[
+  {
+    "arm": "A-valence",
+    "states": 501,
+    "final_score": -0.6121120452880859,
+    "final_components": 6,
+    "final_violations": 4,
+    "final_sanitized": false,
+    "valid_connected_states": 3,
+    "unique_valid_smiles": 13,
+    "topology_reversals": 30,
+    "flagged": [
+      "valence",
+      "connectivity",
+      "predictor_exploitation"
+    ]
+  },
+  {
+    "arm": "B-connected",
+    "states": 501,
+    "final_score": -1.5476956367492676,
+    "final_components": 1,
+    "final_violations": 4,
+    "final_sanitized": false,
+    "valid_connected_states": 54,
+    "unique_valid_smiles": 7,
+    "topology_reversals": 25,
+    "flagged": [
+      "valence",
+      "connectivity",
+      "predictor_exploitation"
+    ]
+  },
+  {
+    "arm": "C-sparse",
+    "states": 501,
+    "final_score": -0.7891234755516052,
+    "final_components": 1,
+    "final_violations": 6,
+    "final_sanitized": false,
+    "valid_connected_states": 60,
+    "unique_valid_smiles": 4,
+    "topology_reversals": 16,
+    "flagged": [
+      "valence",
+      "predictor_exploitation"
+    ]
+  },
+  {
+    "arm": "C-sparse-only",
+    "states": 501,
+    "final_score": -0.5516537427902222,
+    "final_components": 11,
+    "final_violations": 3,
+    "final_sanitized": false,
+    "valid_connected_states": 3,
+    "unique_valid_smiles": 8,
+    "topology_reversals": 14,
+    "flagged": [
+      "valence",
+      "connectivity",
+      "predictor_exploitation"
+    ]
+  },
+  {
+    "arm": "D-hardening",
+    "states": 501,
+    "final_score": -0.04212247580289841,
+    "final_components": 2,
+    "final_violations": 0,
+    "final_sanitized": false,
+    "valid_connected_states": 52,
+    "unique_valid_smiles": 4,
+    "topology_reversals": 13,
+    "flagged": [
+      "valence",
+      "connectivity",
+      "predictor_exploitation"
+    ]
+  },
+  {
+    "arm": "D-relaxed",
+    "states": 501,
+    "final_score": -1.5476956367492676,
+    "final_components": 1,
+    "final_violations": 4,
+    "final_sanitized": false,
+    "valid_connected_states": 54,
+    "unique_valid_smiles": 7,
+    "topology_reversals": 25,
+    "flagged": [
+      "valence",
+      "connectivity",
+      "predictor_exploitation"
+    ]
+  },
+  {
+    "arm": "control",
+    "states": 501,
+    "final_score": -2.352104663848877,
+    "final_components": 1,
+    "final_violations": 15,
+    "final_sanitized": false,
+    "valid_connected_states": 45,
+    "unique_valid_smiles": 12,
+    "topology_reversals": 169,
+    "flagged": [
+      "valence",
+      "connectivity",
+      "sparsity",
+      "predictor_exploitation"
+    ]
+  }
+]

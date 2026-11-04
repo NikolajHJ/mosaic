@@ -1,0 +1,20 @@
+{
+  "source_revision": "365bda9affadd5c2307014a0532ddaa244399441",
+  "source_url": "https://github.com/manuelmlmadeira/DeFoG",
+  "checkpoint_public_share": "https://drive.switch.ch/index.php/s/MG7y2EZoithAywE",
+  "checkpoint_sha256": "49e0ffa4ebb899fca4a3bdf38f7e18b61cece0288f017a7acf34f961518c56e8",
+  "source_file_sha256": {
+    "utils.py": "6e3a06bd1d0820bff4145d4c3540f2c4d5a2988249c3f2c19818ba6c523a66e6",
+    "flow_matching/flow_matching_utils.py": "96d5c057f16fc280d68ae46877fac2d0de866e99dccc2877d0b59030e7717fab",
+    "flow_matching/utils.py": "23f1d0d0c1197bca3d6eca463276609af616c8888a8dfe441064a0243915f952",
+    "flow_matching/rate_matrix.py": "e6af90536a82c6b1fea36f34b407c9639d4bc98ac4f1b91f429c599d26faa6b6",
+    "flow_matching/time_distorter.py": "4254e74f39d96a006a26a2552f81f2d0ae60bd93664ab52880397bd5b8b0490c",
+    "models/layers.py": "2715eb6a61f20417961c87dffdb90021ab5092c12f2f13570dba62fd1e894d6d",
+    "models/transformer_model.py": "e54450c63393c3175f93e99825ace4c52fa93916cbdd08668916a81d240727a6",
+    "models/extra_features.py": "fd5efca8816e656574d799840b41e464ae4e7305edfdd891a0f648e010fb8655",
+    "models/extra_features_molecular.py": "69f5c5eb9f7e83cd4e3c98a98f96c02f79215eb009f77835589506d036271acb",
+    "flow_matching/noise_distribution.py": "63ab337f7ebb8bfedb17403eae68cf279b230fc0c1dd0f1435b17a86d4500a7f",
+    "graph_discrete_flow_model.py": "a69003f59ce4c382c5827a3403ca161c6e68478719bd6e250e643b6a9a4c7a56"
+  },
+  "checkpoint_relative_path": "moses/moses.ckpt"
+}

@@ -1,0 +1,39 @@
+{
+  "study": "hardening",
+  "experiment_file": "stage2/experiment.yaml",
+  "backend": "boltz2",
+  "target": null,
+  "parent": null,
+  "steps": 500,
+  "forwarded_flags": [
+    "--boltz-context",
+    "/opt/mosaic-stage0/contexts/brd4-25-20261103",
+    "--boltz-checkpoint",
+    "/opt/bachelor-research-20261022/assets/boltz-cache/boltz2_aff.ckpt",
+    "--boltz-python",
+    "/opt/bachelor-research-20261022/venv-boltz/bin/python",
+    "--allow-local-gpu"
+  ],
+  "arms": [
+    {
+      "name": "relaxed-control",
+      "command": "python stage2/run.py --config stage2/experiment.yaml --backend boltz2 --mode connected --out /opt/mosaic-stage0/runs/stage2-overnight-20261103/hardening/relaxed-control --steps 500 --boltz-context /opt/mosaic-stage0/contexts/brd4-25-20261103 --boltz-checkpoint /opt/bachelor-research-20261022/assets/boltz-cache/boltz2_aff.ckpt --allow-local-gpu",
+      "rationale": null
+    },
+    {
+      "name": "inherited",
+      "command": "python stage2/run.py --config stage2/experiment.yaml --backend boltz2 --mode connected --out /opt/mosaic-stage0/runs/stage2-overnight-20261103/hardening/inherited --steps 500 --boltz-context /opt/mosaic-stage0/contexts/brd4-25-20261103 --boltz-checkpoint /opt/bachelor-research-20261022/assets/boltz-cache/boltz2_aff.ckpt --allow-local-gpu --hardening --hardening-gradient inherited",
+      "rationale": "Mosaic's existing transition; its Jacobian attenuates the gradient by about (1-h) + h/K along the ramp"
+    },
+    {
+      "name": "passthrough",
+      "command": "python stage2/run.py --config stage2/experiment.yaml --backend boltz2 --mode connected --out /opt/mosaic-stage0/runs/stage2-overnight-20261103/hardening/passthrough --steps 500 --boltz-context /opt/mosaic-stage0/contexts/brd4-25-20261103 --boltz-checkpoint /opt/bachelor-research-20261022/assets/boltz-cache/boltz2_aff.ckpt --allow-local-gpu --hardening --hardening-gradient passthrough",
+      "rationale": "textbook identity-Jacobian STE; removes that attenuation at its source"
+    },
+    {
+      "name": "rescaled",
+      "command": "python stage2/run.py --config stage2/experiment.yaml --backend boltz2 --mode connected --out /opt/mosaic-stage0/runs/stage2-overnight-20261103/hardening/rescaled --steps 500 --boltz-context /opt/mosaic-stage0/contexts/brd4-25-20261103 --boltz-checkpoint /opt/bachelor-research-20261022/assets/boltz-cache/boltz2_aff.ckpt --allow-local-gpu --hardening --hardening-gradient rescaled",
+      "rationale": "keeps the inherited transform and compensates the magnitude, separating representation hardening from the step-size effect"
+    }
+  ]
+}
