@@ -643,6 +643,8 @@ def run_loop(loss, initial, prepare, spec, loss_config, key, config, output, *, 
                         "snapshot_retained": retained, "snapshot": None if selected is None else selected["path"],
                         "snapshot_sha256": None if selected is None else selected["sha256"], "latest_snapshot": latest,
                         "temperature": float(np.asarray(logits.temperature))}
+        if "repair_proposal" in rows[0]:
+            state_record["repair_proposal"] = rows[0]["repair_proposal"]
         if record_repair_distance:
             state_record["observed_repair_cost"] = rows[0]["base"].get("best_observed_weighted_cost")
         if margin_kwargs:
@@ -822,6 +824,10 @@ def main(argv=None):
     row = plan["arms"][args.arm]
     config = validate_screen(row["screen"])
     halvings = row.get("line_search_halvings", 0)
+    repair_proposal = row.get("repair_proposal")
+    require(repair_proposal is None or (repair_proposal == "stage2-valence-proposal-v1"
+            and halvings == 8 and config.get("structural_repair") is not None),
+            "Unknown detached repair proposal policy")
     require(type(halvings) is int and halvings in (0, 8), "Unknown line-search budget")
     if halvings:
         require(config.get("temperature_schedule") is not None and config.get("neighbor_environment") is None,
@@ -844,7 +850,8 @@ def main(argv=None):
     if args.startup_only:
         print(json.dumps({"status": "metadata_startup_passed_no_models", "arm": args.arm,
                           "configuration": config, "line_search_halvings": halvings,
-                          "new_library_first": str(code_source/"src")}))
+                          "new_library_first": str(code_source/"src"),
+                          **({"repair_proposal": repair_proposal} if repair_proposal else {})}))
         return
     from gpu_policy import selected, validate_hardware
     gpu = selected(row)
@@ -925,10 +932,18 @@ def main(argv=None):
     spec = mosaic_spec(25)
     search = ProbabilityRepairConfig(**source_config["search"])
     progress = ProgressSearchConfig(**source_config["progress_search"])
+    proposal_options = {}
+    if repair_proposal:
+        from projected_repair import choose_projected_repair, smoke_projection
+        proposal_options["repair_proposal"] = choose_projected_repair
+        summary["repair_proposal"] = repair_proposal
+        summary["projection_smoke"] = smoke_projection()
+        write(output.parent/"projection-smoke.json", summary["projection_smoke"])
+
     def prepare(logits, state):
         return prepare_failure_guidance(logits.decoded(), spec, update=state, search=search, progress_search=progress,
                                         severity_progress=config.get("severity_progress"),
-                                        structural_repair=config.get("structural_repair"))
+                                        structural_repair=config.get("structural_repair"), **proposal_options)
     begun, next_check = time.monotonic(), time.monotonic()
     internal_seconds = row["internal_seconds"] if args.internal_seconds is None else args.internal_seconds
     require(type(internal_seconds) is int and 1 <= internal_seconds <= row["internal_seconds"], "Invalid internal deadline override")
@@ -955,7 +970,8 @@ def main(argv=None):
             actual_steps = args.smoke_updates if args.smoke_updates is not None else config["updates"]-start
             require(1 <= actual_steps <= config["updates"], "Invalid pilot budget")
             result = run_loop(loss, initial, prepare, spec, FailureGuidanceConfig(**source_config["loss"]), key, config, output,
-                              steps=actual_steps, tick=tick,resume=resume,line_search_halvings=halvings)
+                              steps=actual_steps, tick=tick,resume=resume,line_search_halvings=halvings,
+                              record_repair_distance=bool(repair_proposal))
         if halvings:
             summary.update(line_search_halvings=halvings, selection_policy=result["selection_policy"])
         summary.update(status=result["status"], applied_updates=result["applied_updates"],

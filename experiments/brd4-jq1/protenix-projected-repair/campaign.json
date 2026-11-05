@@ -1,0 +1,44 @@
+{
+  "remote": "/work3/s234818/mosaic/runs/20261105-seed23-valence-proposal-01",
+  "archive_bytes": 468321,
+  "archive_sha256": "7eb41fca1dd995c816abb67553dd92934c4f1464effd5e841db1cf04422610da",
+  "files": 159,
+  "plan_sha256": "0040e087edb1f3bb332be8e6beba54ba6d853e3b20a82bfbfb97c9ec46f3064a",
+  "baseline_job": "29890096",
+  "baseline_source": "/work3/s234818/mosaic/runs/20261104-protenix-line-search-01/source01/source",
+  "baseline_plan_sha256": "370bdeff538d26d0a41e38d51bfe8612c1cd23922d980295d05f70bf6b63c4fd",
+  "checksums_sha256": "e75b026b9218f850df84ef183fe32a52f21c71d0577bf51e12c251732c807b06",
+  "stage2_revision": "041c89ea5bdab024bf5671d32749a151f9558e48",
+  "stage2_operator_sha256": "fdd4aab7349bf967fe21f843d17bc8ee051d8d8e16d5e39e3d4d943f721156f6",
+  "wall_minutes": 2160,
+  "status": "submitted",
+  "job_id": "29896980",
+  "queue": "gpua100",
+  "scheduler_state": "PEND",
+  "dependency": "ended(29890096)",
+  "observed_utc": "2026-11-05T09:37:59.925203+00:00",
+  "requested_updates": 50000,
+  "committed_updates": 0,
+  "metadata_startup_passed": true,
+  "held_release_verified": true,
+  "portable_stage2_tests_passed": 74,
+  "capacity": {
+    "status": "passed",
+    "required_bytes": 2657511015,
+    "available_bytes": 6706917376,
+    "required_files": 8250,
+    "available_files": 19399244
+  },
+  "allocated_smoke": {
+    "job_id": "29896985",
+    "status": "passed",
+    "checks": [
+      "validated_bond_only_witness",
+      "original_cost_tie_retains_target"
+    ]
+  },
+  "do_not_replay_launch": true,
+  "local_evidence": "results/hpc/20261105-seed23-valence-proposal-01",
+  "dispatch_proof_sha256": "771e7f74d9b1212d00f6b20087d962fdfd3050a0b91b0726b248bf53db33cde6",
+  "smoke_observation_sha256": "71ed800b01bfd566316bf88cee8c1e82d1e2c7f4c206657bee12de6b9b2e5087"
+}

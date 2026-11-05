@@ -11611,3 +11611,14 @@ claimed.
 With the same synthetic scorer and one update, the control crossed into an
 invalid bond state and the margin retained validity. A40 pair 29896035 still
 PEND on a job-slot limit.
+
+5 November 2026. Prepared a matched 50k seed 23 A100 line-search repeat with
+a detached Stage 2 valence repair proposal. Existing scorer and optimizer
+settings and saved results are preserved. All 74 portable Stage 2 tests
+passed. No model ran during preparation. See protenix-projected-repair.
+
+5 November 2026, 10:37 CET. Submitted and released matched seed 23
+valence-proposal repeat 29896980 on A100 for 50,000 updates, 36-hour limit.
+PEND behind the existing seed 23 job 29890096. Allocated CPU 29896985
+passed both detached repair selection controls. Metadata startup and live
+dispatch capacity passed. See protenix-projected-repair/campaign.json.

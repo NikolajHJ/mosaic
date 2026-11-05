@@ -77,7 +77,7 @@ class PreparedFailureGuidance:
 
 def prepare_failure_guidance(
     decoded, spec, *, candidate_ids=None, update=0, search=None, progress_search=None,
-    severity_progress=None, structural_repair=None,
+    severity_progress=None, structural_repair=None, repair_proposal=None,
 ):
     """Prepare one complete scheduled batch from its exact original snapshot.
 
@@ -111,6 +111,8 @@ def prepare_failure_guidance(
         from .structural import structural_config, search_structural_repair
 
         structural_repair = structural_config(structural_repair)
+    if repair_proposal is not None and (structural_repair is None or not callable(repair_proposal)):
+        raise ValueError("An additional proposal requires the original structural repair")
     values = [
         np.asarray(v)
         for v in (decoded.atoms, decoded.charges, decoded.symmetric_bond_logits)
@@ -171,6 +173,10 @@ def prepare_failure_guidance(
             base = structural
         else:
             base = search_atom_preserving_repair(raw, p, spec, search)
+        beam_search_performed = base is not structural
+        projection = None
+        if repair_proposal is not None and base["status"] in ("witness_found", "censored"):
+            base, projection = repair_proposal(raw, p, spec, search, structural_repair, base)
         original_seconds = time.perf_counter() - search_started
         additional_seconds = 0.0
         status, target, extra = base["status"], None, None
@@ -288,8 +294,14 @@ def prepare_failure_guidance(
         )
         if structural is not None:
             records[-1]["structural"] = structural
-            records[-1]["beam_search_performed"] = base is not structural
-        timings.append((original_seconds, additional_seconds))
+            records[-1]["beam_search_performed"] = beam_search_performed
+        if projection is not None:
+            # Solver timing is diagnostic and must stay outside target identity.
+            projection_time = projection.pop("seconds", 0.)
+            records[-1]["repair_proposal"] = projection
+        else:
+            projection_time = 0.
+        timings.append((original_seconds - projection_time, additional_seconds + projection_time))
     receipt = {
         "version": "mosaic-prepared-failure-guidance-v1",
         "schema_sha256": spec.fingerprint(),
