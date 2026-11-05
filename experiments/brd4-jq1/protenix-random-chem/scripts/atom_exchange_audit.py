@@ -68,12 +68,13 @@ def check_inputs(plan, plan_path):
 class SealedChemistry(MetaPathFinder):
     """Load the three sealed modules before the package's eager structural import."""
 
-    def __init__(self, source):
+    def __init__(self, source, modules=OVERLAY):
         self.source = source
+        self.modules = modules
 
     def find_spec(self, fullname, path=None, target=None):
         package, _, name = fullname.rpartition(".")
-        if package == PACKAGE and name in OVERLAY:
+        if package == PACKAGE and name in self.modules:
             return spec_from_file_location(fullname, self.source / f"{name}.py")
         return None
 

@@ -78,6 +78,7 @@ class PreparedFailureGuidance:
 def prepare_failure_guidance(
     decoded, spec, *, candidate_ids=None, update=0, search=None, progress_search=None,
     severity_progress=None, structural_repair=None, repair_proposal=None,
+    common_organic_scope=False, atom_exchange=None,
 ):
     """Prepare one complete scheduled batch from its exact original snapshot.
 
@@ -108,11 +109,26 @@ def prepare_failure_guidance(
 
         severity_progress = severity_config(severity_progress)
     if structural_repair is not None:
-        from .structural import structural_config, search_structural_repair
+        from .structural import StructuralRepairConfig, structural_config, search_structural_repair
 
         structural_repair = structural_config(structural_repair)
     if repair_proposal is not None and (structural_repair is None or not callable(repair_proposal)):
         raise ValueError("An additional proposal requires the original structural repair")
+    if type(common_organic_scope) is not bool:
+        raise ValueError("Require an explicit boolean common-organic scope")
+    if common_organic_scope:
+        from .atom_exchange import search_atom_exchange, within_common_organic_scope
+        from .environment_policy import BOND_ORDERS, VERSION as SCOPE_VERSION
+
+        if (structural_repair is None or repair_proposal is not None
+                or (progress_search is not None and progress_search.allow_atom_edits)):
+            raise ValueError("Scoped repair requires structural repair and atom-preserving fallbacks")
+    if atom_exchange is not None and (
+        not common_organic_scope or structural_repair != StructuralRepairConfig()
+        or type(atom_exchange) is not dict
+        or set(atom_exchange) != {"atom_edit_penalty", "max_substitutions"}
+    ):
+        raise ValueError("Atom exchange requires scoped default structural repair and explicit search bounds")
     values = [
         np.asarray(v)
         for v in (decoded.atoms, decoded.charges, decoded.symmetric_bond_logits)
@@ -167,14 +183,22 @@ def prepare_failure_guidance(
         p = tuple(v[row] for v in probabilities)
         search_started = time.perf_counter()
         structural = None
-        if structural_repair is not None:
-            structural = search_structural_repair(raw, p, spec, search, structural_repair)
+        exchange_result = None
+        if atom_exchange is not None:
+            exchange_result = search_atom_exchange(raw, p, spec, search, **atom_exchange)
+            structural = exchange_result["selected"]
+        elif structural_repair is not None:
+            structural = search_structural_repair(
+                raw, p, spec, search, structural_repair,
+                accept=within_common_organic_scope if common_organic_scope else None,
+            )
         if structural is not None and structural["status"] in ("already_valid", "witness_found"):
             base = structural
         else:
             base = search_atom_preserving_repair(raw, p, spec, search)
         beam_search_performed = base is not structural
         projection = None
+        scope_rejections = []
         if repair_proposal is not None and base["status"] in ("witness_found", "censored"):
             base, projection = repair_proposal(raw, p, spec, search, structural_repair, base)
         original_seconds = time.perf_counter() - search_started
@@ -188,6 +212,12 @@ def prepare_failure_guidance(
             arrays["route"][row] = 1
         elif status not in ("already_valid", "censored", "unsupported"):
             raise RuntimeError("Unknown original repair outcome")
+        if common_organic_scope and beam_search_performed and status in ("already_valid", "witness_found"):
+            if not within_common_organic_scope(raw if target is None else target, spec):
+                scope_rejections.append({"search": "beam", "status": status})
+                status, target = "censored", None
+                base = {**base, "status": status, "raw_valid": False, "weighted_witness": None,
+                        "best_observed_weighted_cost": None, "reason": "Outside common-organic scope"}
         if status in ("censored", "unsupported"):
             arrays["route"][row] = 4
             if (progress_search is not None or severity_progress is not None) and active[row].any():
@@ -220,17 +250,38 @@ def prepare_failure_guidance(
                     target = tuple(
                         np.asarray(v, dtype=np.int64) for v in witness.labels
                     )
-                    arrays["route"][row] = 2 if witness.kind == "valid" else 3
+                    if common_organic_scope and not within_common_organic_scope(target, spec):
+                        scope_rejections.append({"search": "progress", "status": extra["status"]})
+                        target = None
+                    else:
+                        arrays["route"][row] = 2 if witness.kind == "valid" else 3
         if target is not None:
             if not np.array_equal(raw[1], target[1]) or not np.array_equal(
                 raw[0] != 0, target[0] != 0
             ):
                 raise ValueError("Target changed charge or occupied slots")
-            if (
-                arrays["route"][row] != 2 or severity_progress is not None
-                or progress_search is None or not progress_search.allow_atom_edits
-            ) and not np.array_equal(raw[0], target[0]):
-                raise ValueError("Target changed atom identities")
+            if not np.array_equal(raw[0], target[0]):
+                if atom_exchange is not None and arrays["route"][row] == 1 and base is structural:
+                    swapped = np.flatnonzero(raw[0] != target[0])
+                    selected = base.get("exchange", {})
+                    if (len(swapped) != 1 or swapped[0] != selected.get("slot")
+                            or raw[0][swapped[0]] != selected.get("old_label")
+                            or target[0][swapped[0]] != selected.get("new_label")):
+                        raise ValueError("Target differs from the selected single-atom exchange")
+                    slot = swapped[0]
+                    if spec.atomic_numbers[target[0][slot]] == 16:
+                        old_allowed = ALLOWED_VALENCES.get(spec.atomic_numbers[raw[0][slot]], {}).get(
+                            spec.formal_charges[raw[1][slot]]
+                        )
+                        orders = (spec.bond_names[bond] for bond in target[2][slot])
+                        if not old_allowed or sum(1.5 if b == "AROMATIC" else BOND_ORDERS[b]
+                                                  for b in orders) > max(old_allowed):
+                            raise ValueError("New sulfur exceeds the source atom's bond-order cap")
+                elif (arrays["route"][row] != 2 or severity_progress is not None
+                      or progress_search is None or not progress_search.allow_atom_edits):
+                    raise ValueError("Target changed atom identities")
+            if common_organic_scope and not within_common_organic_scope(target, spec):
+                raise ValueError("Selected target outside common-organic scope")
             if arrays["route"][row] in (1, 2):
                 checked = inspect_graph(*target, spec)
                 if (
@@ -295,6 +346,14 @@ def prepare_failure_guidance(
         if structural is not None:
             records[-1]["structural"] = structural
             records[-1]["beam_search_performed"] = beam_search_performed
+        if common_organic_scope:
+            records[-1]["scope_rejections"] = scope_rejections
+        if exchange_result is not None:
+            records[-1]["atom_exchange"] = {
+                "baseline_status": exchange_result["baseline"]["status"],
+                "substitutions_tested": exchange_result["substitutions_tested"],
+                "selected": structural.get("exchange"),
+            }
         if projection is not None:
             # Solver timing is diagnostic and must stay outside target identity.
             projection_time = projection.pop("seconds", 0.)
@@ -349,6 +408,8 @@ def prepare_failure_guidance(
         receipt["structural_repair"] = structural_repair.record()
         receipt["structural_checks"] = sum(row["structural"]["checks"] for row in records)
         receipt["beam_checks"] = sum(row["base"]["checks"] for row in records if row["beam_search_performed"])
+    if common_organic_scope:
+        receipt["common_organic_scope"] = {"version": SCOPE_VERSION, "atom_exchange": atom_exchange}
     payload = {k: v.tolist() for k, v in arrays.items()}
     identity = digest({"arrays": payload, "receipt": receipt})
     materialized = {k: jax.numpy.asarray(v) for k, v in arrays.items()}
