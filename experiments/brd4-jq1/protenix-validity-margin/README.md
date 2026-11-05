@@ -55,3 +55,8 @@ Allocated CPU job 29896051 passed all five focused controls. CPU attempt
 29896037 failed before Python startup because LSF reinterpreted an inline shell
 argument. The successful retry used a separate script and the same sealed
 control bytes. The GPU pair does not depend on either CPU job.
+
+Allocated screen integration job 29896066 ran both arms for one update on the
+same synthetic four-carbon boundary example. The control became invalid and
+the margin arm remained valid. This exercise used the sealed screen and a
+synthetic scorer. The full Protenix comparison remains queued.

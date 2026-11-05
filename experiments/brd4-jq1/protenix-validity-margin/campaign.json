@@ -10,7 +10,7 @@
   "status": "submitted",
   "job_id": "29896035",
   "scheduler_state": "PEND",
-  "observed_utc": "2026-11-05T07:39:27.953859+00:00",
+  "observed_utc": "2026-11-05T07:42:41.905933+00:00",
   "queue": "gpua40",
   "wall_minutes": 60,
   "parent_arm": "structural10-chain-s17",
@@ -43,5 +43,19 @@
   "evidence": "results/hpc/20261105-local-validity-margin-01/status-20261105T073640Z/stdout.json",
   "evidence_sha256": "68c49b2f52cb6ceefa1fc88156fe43a6d8588503f572a13ec2312c9435b4f31e",
   "do_not_replay_launch": true,
-  "scheduler_reason": "Job slot limit reached"
+  "scheduler_reason": "Job slot limit reached",
+  "allocated_screen_integration": {
+    "job_id": "29896066",
+    "status": "passed",
+    "checks": [
+      "matched_screen_one_step_boundary_crossing",
+      "margin_retains_validity_on_synthetic_scorer"
+    ],
+    "model_evaluations": 0,
+    "control_endpoint_valid": false,
+    "margin_endpoint_valid": true,
+    "observed_utc": "2026-11-05T07:42:41.905933+00:00",
+    "evidence": "results/hpc/20261105-local-validity-margin-01/cpu-integration/observation.json",
+    "evidence_sha256": "bc8b498e71d1fa3cc87fba2e2937fa7b137c40cd0497ec3b8185e3d00a83c10c"
+  }
 }

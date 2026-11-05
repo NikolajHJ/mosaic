@@ -11606,3 +11606,8 @@ bond-margin controls. Initial standalone CPU launch 29896037 failed shell
 quoting before Python and was corrected with a separate script. The matched
 A40 pair 29896035 remains PEND on a job-slot limit. No optimization result
 claimed.
+
+5 November 2026, 08:42 CET. Allocated CPU screen integration 29896066 passed.
+With the same synthetic scorer and one update, the control crossed into an
+invalid bond state and the margin retained validity. A40 pair 29896035 still
+PEND on a job-slot limit.
