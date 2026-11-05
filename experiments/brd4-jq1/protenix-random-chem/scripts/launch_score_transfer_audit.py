@@ -80,6 +80,9 @@ assert not (root/'submission.json').exists() and not (root/'submission-intent.js
 name='mosaic-'+TAG
 wall=plan['wall_minutes'];wall_text='%02d:%02d'%(wall//60,wall%60)
 argv=['bsub','-H','-q',plan['queue'],'-J',name,'-n',str(plan['cpu_slots']),'-R','span[hosts=1]','-R','rusage[mem=%d]'%plan['memory_mib_per_slot'],'-W',wall_text,'-env','all,~CUDA_VISIBLE_DEVICES,~CUDA_MPS_PIPE_DIRECTORY,~CUDA_MPS_LOG_DIRECTORY,~CUDA_MPS_ACTIVE_THREAD_PERCENTAGE','-o',str(root/'stdout.%J.log'),'-e',str(root/'stderr.%J.log'),'-gpu',plan.get('gpu_request','num=1:mode=exclusive_process:j_exclusive=yes:mps=no:gmem=30G'),'bash','-l',str(source/'stage.sh'),str(source)]
+if plan.get('cpu_only') is True:
+ gpu_index=argv.index('-gpu')
+ del argv[gpu_index:gpu_index+2]
 with (root/'submission-intent.json').open('x') as f:json.dump(dict(argv=argv,created_utc=datetime.datetime.now(datetime.timezone.utc).isoformat()),f)
 try:r=subprocess.run(argv,capture_output=True,text=True,timeout=90)
 except subprocess.TimeoutExpired as e:

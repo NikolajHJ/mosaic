@@ -1,0 +1,131 @@
+{
+  "status": "verified_complete",
+  "job_id": "29897994",
+  "queue": "hpc",
+  "completed_paris": "2026-11-05T11:30:14+01:00",
+  "lsf_run_seconds": 76,
+  "observation_sha256": "bc4ec4dbbeee931deb23e8d26403c535449351652ac5369c98b95f67099ab504",
+  "paired_attempts": 192,
+  "optimizer_updates": 0,
+  "scorer_forwards": 0,
+  "atom_swaps": 70,
+  "probability_perturbations": 140,
+  "valid_after_perturbation": 140,
+  "same_swap_after_perturbation": 140,
+  "same_witness_after_perturbation": 136,
+  "result": {
+    "path": "/work3/s234818/mosaic/runs/20261105-structural-atom-exchange-01/payload/result.json",
+    "bytes": 254815,
+    "sha256": "f398f6bc1f9c16fe4a1ba7d9c4a928fffe169d517093a66b24cc461b8b05cf95"
+  },
+  "tests": {
+    "tests": 32,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "tests_xml": {
+    "path": "/work3/s234818/mosaic/runs/20261105-structural-atom-exchange-01/payload/tests.xml",
+    "bytes": 4548,
+    "sha256": "3303adb33035bf1b660a2ade216ec281e53256ecfaa0be630340b18ec1254287"
+  },
+  "lsf": {
+    "path": "/work3/s234818/mosaic/runs/20261105-structural-atom-exchange-01/stdout.29897994.log",
+    "bytes": 2491,
+    "sha256": "ef03511ff00498223dcc281de393b3441ae27afab48113a530e5e1ad288af1b2"
+  },
+  "cases": [
+    {
+      "checkpoint": "sparse23-invalid",
+      "attempts": 64,
+      "baseline": {
+        "valid": 64,
+        "distinct_valid": 4,
+        "atom_swaps": 0,
+        "bond_edits_total": 197,
+        "sulfur_introductions": 0,
+        "sulfur_removals": 0,
+        "swap_directions": {}
+      },
+      "exchange": {
+        "valid": 64,
+        "distinct_valid": 4,
+        "atom_swaps": 4,
+        "bond_edits_total": 185,
+        "sulfur_introductions": 0,
+        "sulfur_removals": 0,
+        "swap_directions": {
+          "7->6": 2,
+          "17->6": 1,
+          "9->7": 1
+        }
+      },
+      "combined_search_seconds": 2.6903396770067047
+    },
+    {
+      "checkpoint": "sparse41-valid",
+      "attempts": 64,
+      "baseline": {
+        "valid": 6,
+        "distinct_valid": 4,
+        "atom_swaps": 0,
+        "bond_edits_total": 34,
+        "sulfur_introductions": 0,
+        "sulfur_removals": 0,
+        "swap_directions": {}
+      },
+      "exchange": {
+        "valid": 56,
+        "distinct_valid": 17,
+        "atom_swaps": 55,
+        "bond_edits_total": 286,
+        "sulfur_introductions": 0,
+        "sulfur_removals": 30,
+        "swap_directions": {
+          "17->6": 8,
+          "8->9": 12,
+          "16->7": 30,
+          "7->6": 5
+        }
+      },
+      "combined_search_seconds": 8.766289814113406
+    },
+    {
+      "checkpoint": "shared-repaired",
+      "attempts": 64,
+      "baseline": {
+        "valid": 64,
+        "distinct_valid": 46,
+        "atom_swaps": 0,
+        "bond_edits_total": 308,
+        "sulfur_introductions": 0,
+        "sulfur_removals": 0,
+        "swap_directions": {}
+      },
+      "exchange": {
+        "valid": 64,
+        "distinct_valid": 44,
+        "atom_swaps": 11,
+        "bond_edits_total": 281,
+        "sulfur_introductions": 0,
+        "sulfur_removals": 0,
+        "swap_directions": {
+          "9->6": 8,
+          "7->6": 2,
+          "17->6": 1
+        }
+      },
+      "combined_search_seconds": 8.055790084938053
+    }
+  ],
+  "elapsed_seconds": 74.19909989999724,
+  "fixture_checks": [
+    "validated_fluorine_to_oxygen_exchange",
+    "deterministic_replay",
+    "higher_penalty_keeps_bonds",
+    "sf6_stays_in_scope",
+    "six_nonfluorine_sulfur_is_excluded"
+  ],
+  "new_valid_repairs": 50,
+  "swaps_beating_valid_bond_only": 20
+}

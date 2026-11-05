@@ -1,0 +1,156 @@
+{
+  "remote": "/work3/s234818/mosaic/runs/20261105-structural-atom-exchange-01",
+  "archive_sha256": "6208c386808e616d3ded075321719d64ff7b76e13edae7e9e998937e9b0e3c83",
+  "archive_bytes": 28779,
+  "source_manifest_sha256": "3b1993eca45c5e433d4ede8b979c2824e491888da6bd8336d9f992883a6a6e2e",
+  "plan_sha256": "9bf036af48c4f268c01586d6d052cb19d149468ce05e3bd3efd5503bc6f77c1d",
+  "status": "completed",
+  "tag": "20261105-structural-atom-exchange-01",
+  "job_id": "29897994",
+  "observed_utc": "2026-11-05T10:30:36.510123+00:00",
+  "scheduler": {
+    "returncode": 0,
+    "stdout": "29897994 DONE hpc mosaic-20261105-structural-atom-exchange-01\n",
+    "stderr": ""
+  },
+  "submission": {
+    "job_id": "29897994",
+    "argv": [
+      "bsub",
+      "-H",
+      "-q",
+      "hpc",
+      "-J",
+      "mosaic-20261105-structural-atom-exchange-01",
+      "-n",
+      "2",
+      "-R",
+      "span[hosts=1]",
+      "-R",
+      "rusage[mem=4096]",
+      "-W",
+      "00:15",
+      "-env",
+      "all,~CUDA_VISIBLE_DEVICES,~CUDA_MPS_PIPE_DIRECTORY,~CUDA_MPS_LOG_DIRECTORY,~CUDA_MPS_ACTIVE_THREAD_PERCENTAGE",
+      "-o",
+      "/work3/s234818/mosaic/runs/20261105-structural-atom-exchange-01/stdout.%J.log",
+      "-e",
+      "/work3/s234818/mosaic/runs/20261105-structural-atom-exchange-01/stderr.%J.log",
+      "bash",
+      "-l",
+      "/work3/s234818/mosaic/runs/20261105-structural-atom-exchange-01/source/stage.sh",
+      "/work3/s234818/mosaic/runs/20261105-structural-atom-exchange-01/source"
+    ],
+    "name": "mosaic-20261105-structural-atom-exchange-01",
+    "queue": "hpc",
+    "status": "accepted_held",
+    "source_sha256": "3b1993eca45c5e433d4ede8b979c2824e491888da6bd8336d9f992883a6a6e2e",
+    "plan_sha256": "9bf036af48c4f268c01586d6d052cb19d149468ce05e3bd3efd5503bc6f77c1d",
+    "response": {
+      "returncode": 0,
+      "stdout": "Job <29897994> is submitted to queue <hpc>.\n",
+      "stderr": ""
+    }
+  },
+  "held_proof": {
+    "job_id": "29897994",
+    "observations": [
+      {
+        "returncode": 0,
+        "stdout": "29897994 PEND s234818 mosaic-20261105-structural-atom-exchange-01                                                         \n",
+        "stderr": ""
+      },
+      {
+        "returncode": 0,
+        "stdout": "29897994 PSUSP s234818 mosaic-20261105-structural-atom-exchange-01                                                         \n",
+        "stderr": ""
+      }
+    ]
+  },
+  "release": {
+    "job_id": "29897994",
+    "returncode": 0,
+    "stdout": "Job <29897994> is being resumed\n",
+    "stderr": ""
+  },
+  "startup": {
+    "returncode": 0,
+    "stdout": "{\"status\": \"metadata_startup_passed_no_models\", \"checkpoints\": 3, \"paired_draws\": 192}\n",
+    "stderr": ""
+  },
+  "capacity_dispatch": {
+    "version": "mosaic-exploratory-storage-v1",
+    "research_profile": "exploratory",
+    "status": "passed",
+    "available_bytes": 6694006784,
+    "required_bytes": 50205430,
+    "byte_margin": 6643801354,
+    "available_files": 19398817,
+    "required_files": 124,
+    "file_margin": 19398693,
+    "reserve_bytes": 16777216,
+    "file_reserve": 16,
+    "single_quota_burst_allowance_bytes": 0,
+    "unprofiled_writer_ids": [],
+    "unprofiled_writer_allowance_bytes": 0,
+    "external_remaining_budgets": [],
+    "future_bytes": 33428214,
+    "future_files": 108,
+    "existing_bytes_recharged": 0,
+    "existing_files_recharged": 0,
+    "warnings": [],
+    "filesystem_inode_reporting": "unreported_all_zero",
+    "quota_observation": "reported",
+    "not_a_whole_account_reservation": true,
+    "entry_and_periodic_checks_required": false,
+    "scientific_settings_changed": false,
+    "output_root": "/work3/s234818/mosaic/runs/20261105-structural-atom-exchange-01",
+    "output_cap_bytes": 33554432,
+    "file_cap": 120,
+    "own_output": {
+      "actual_bytes": 126218,
+      "actual_files": 12,
+      "nofollow": true
+    }
+  },
+  "capacity_entry": {
+    "version": "mosaic-exploratory-storage-v1",
+    "research_profile": "exploratory",
+    "status": "passed",
+    "available_bytes": 6686449664,
+    "required_bytes": 50200918,
+    "byte_margin": 6636248746,
+    "available_files": 19398808,
+    "required_files": 113,
+    "file_margin": 19398695,
+    "reserve_bytes": 16777216,
+    "file_reserve": 16,
+    "single_quota_burst_allowance_bytes": 0,
+    "unprofiled_writer_ids": [],
+    "unprofiled_writer_allowance_bytes": 0,
+    "external_remaining_budgets": [],
+    "future_bytes": 33423702,
+    "future_files": 97,
+    "existing_bytes_recharged": 0,
+    "existing_files_recharged": 0,
+    "warnings": [],
+    "filesystem_inode_reporting": "unreported_all_zero",
+    "quota_observation": "reported",
+    "not_a_whole_account_reservation": true,
+    "entry_and_periodic_checks_required": false,
+    "scientific_settings_changed": false,
+    "output_root": "/work3/s234818/mosaic/runs/20261105-structural-atom-exchange-01",
+    "output_cap_bytes": 33554432,
+    "file_cap": 120,
+    "own_output": {
+      "actual_bytes": 130730,
+      "actual_files": 23,
+      "nofollow": true
+    }
+  },
+  "verified_source_files": 10,
+  "terminal": {
+    "path": "terminal-verification.json",
+    "sha256": "df338ec640cad5cf4459e75b21dcc65270d896bea0148570755bcab837d51025"
+  }
+}

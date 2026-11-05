@@ -128,7 +128,7 @@ def _trim(original, tree, caps, orders, costs, single, none, budget, strip_aroma
     return (bonds, operations) if operations <= budget else None
 
 
-def search_structural_repair(raw, probabilities, spec, search, config=None):
+def search_structural_repair(raw, probabilities, spec, search, config=None, *, accept=None):
     """Return a fully verified witness or an honest miss for the old fallback."""
     config = StructuralRepairConfig() if config is None else structural_config(config)
     original = tuple(np.array(v, copy=True) for v in raw)
@@ -142,6 +142,8 @@ def search_structural_repair(raw, probabilities, spec, search, config=None):
 
     def validate(graph):
         result["checks"] += 1
+        if accept is not None and not accept(graph, spec):
+            return None
         inspected = inspect_graph(*graph, spec)
         if inspected.smiles is None:
             return None
