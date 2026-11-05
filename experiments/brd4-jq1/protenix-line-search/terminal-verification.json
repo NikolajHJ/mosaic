@@ -1,0 +1,168 @@
+{
+  "status": "verified_completed_exploratory_updates",
+  "job_id": "29890096",
+  "scheduler_state": "DONE",
+  "finished_cet": "2026-11-05T12:15:16+01:00",
+  "observed_utc": "2026-11-05T11:30:03.352482+00:00",
+  "contiguous_states": 50001,
+  "contiguous_updates": 50000,
+  "verified_trial_count_per_update": 9,
+  "fixed_objective_increases": 0,
+  "selected_rates": {
+    "0.3": 17033,
+    "0.15": 3081,
+    "0.075": 3224,
+    "0.01875": 2505,
+    "0.0375": 2116,
+    "0.009375": 3046,
+    "0.001171875": 5904,
+    "0.00234375": 5599,
+    "0.0046875": 4319,
+    "0.0": 3173
+  },
+  "line_search": {
+    "status": "completed_exploratory_updates",
+    "applied_updates": 50000,
+    "strict_valid_states": 0,
+    "elapsed_seconds": 88630.156590532,
+    "best_soft": {
+      "step": 20202,
+      "loss": -0.4638853967189789
+    },
+    "endpoint": {
+      "global_step": 50000,
+      "strict_valid_connected": false,
+      "contact_loss": -0.2014191746711731,
+      "target_bond_edits": 1,
+      "temperature": 0.4000000059604645
+    },
+    "readout": {
+      "sanitized": false,
+      "disconnected": false,
+      "fragment_count": 1,
+      "conversion_error": "AtomValenceException: Explicit valence for atom # 8 F, 2, is greater than permitted",
+      "canonical_smiles": null
+    },
+    "samples": {
+      "step": 50000,
+      "draws": 128,
+      "strict_valid_connected": 20,
+      "sanitized": 27
+    },
+    "producer": {
+      "job_id": "29890096",
+      "status": "completed_exploratory_updates",
+      "applied_updates": 50000,
+      "full_budget_complete": true,
+      "frozen_before": {
+        "model_digest": "8d6926d5390fe682e193089f790ce53aa4011a6d5509ddb452a55db3d89b0ab2",
+        "context_digest": "b28dfad8e5ede565071c70a61695f6a38f5cb6bd591705e32979e59050ff5ce4"
+      },
+      "frozen_after": {
+        "model_digest": "8d6926d5390fe682e193089f790ce53aa4011a6d5509ddb452a55db3d89b0ab2",
+        "context_digest": "b28dfad8e5ede565071c70a61695f6a38f5cb6bd591705e32979e59050ff5ce4"
+      },
+      "elapsed_seconds": 88630.46213790399
+    },
+    "repair": {
+      "edit_count": 1,
+      "weighted_cost": 1.3404446834116053,
+      "changes": [
+        {
+          "field": "bond",
+          "slots": [
+            8,
+            15
+          ],
+          "old_label": 1,
+          "new_label": 0,
+          "old_probability": 0.5639951825141907,
+          "new_probability": 0.4012565612792969,
+          "probability_regret_nats": 0.3404446834116054,
+          "weighted_cost": 1.3404446834116053,
+          "probability_clipped": false,
+          "replacement_has_zero_support": false
+        }
+      ],
+      "smiles": "NNC(Cl)(CC(F)(CCF)C(SF)C(N)SCl)S(F)(F)(Cl)(CCl)SF"
+    },
+    "endpoint_snapshot_sha256": "48faee111dc0657120c6fd958295fde13f9dd8ad06bb7a2f9b12e57b1f4b90ab"
+  },
+  "fixed_step": {
+    "status": "completed_exploratory_updates",
+    "applied_updates": 50000,
+    "strict_valid_states": 0,
+    "elapsed_seconds": 34528.584035041,
+    "best_soft": {
+      "step": 21733,
+      "loss": -0.7185966968536377
+    },
+    "endpoint": {
+      "global_step": 50000,
+      "strict_valid_connected": false,
+      "contact_loss": -0.41701796650886536,
+      "target_bond_edits": 1,
+      "temperature": 0.4000000059604645
+    },
+    "readout": {
+      "sanitized": false,
+      "disconnected": false,
+      "fragment_count": 1,
+      "conversion_error": "AtomValenceException: Explicit valence for atom # 8 Cl, 2, is greater than permitted",
+      "canonical_smiles": null
+    },
+    "samples": {
+      "step": 50000,
+      "draws": 128,
+      "strict_valid_connected": 3,
+      "sanitized": 18
+    },
+    "producer": {
+      "job_id": "29880094",
+      "status": "completed_exploratory_updates",
+      "applied_updates": 50000,
+      "full_budget_complete": true,
+      "frozen_before": {
+        "model_digest": "8d6926d5390fe682e193089f790ce53aa4011a6d5509ddb452a55db3d89b0ab2",
+        "context_digest": "b28dfad8e5ede565071c70a61695f6a38f5cb6bd591705e32979e59050ff5ce4"
+      },
+      "frozen_after": {
+        "model_digest": "8d6926d5390fe682e193089f790ce53aa4011a6d5509ddb452a55db3d89b0ab2",
+        "context_digest": "b28dfad8e5ede565071c70a61695f6a38f5cb6bd591705e32979e59050ff5ce4"
+      },
+      "elapsed_seconds": 34528.85931569501
+    },
+    "repair": {
+      "edit_count": 1,
+      "weighted_cost": 1.0972370331082322,
+      "changes": [
+        {
+          "field": "bond",
+          "slots": [
+            8,
+            15
+          ],
+          "old_label": 1,
+          "new_label": 0,
+          "old_probability": 0.5040343999862671,
+          "new_probability": 0.4573310315608978,
+          "probability_regret_nats": 0.09723703310823217,
+          "weighted_cost": 1.0972370331082322,
+          "probability_clipped": false,
+          "replacement_has_zero_support": false
+        }
+      ],
+      "smiles": "CC(CF)C(CF)C(C)(CCCl)N(F)CN(N(N)S)C(F)(CF)CCl"
+    },
+    "endpoint_snapshot_sha256": "522c32ec136f7ecef5a76a702a480018c3a0688df255d3562c51cb947a11a9ca"
+  },
+  "hard_contact_rescoring": "not measured",
+  "projection_repeat": {
+    "job_id": "29896980",
+    "scheduler_state": "PEND",
+    "reason": "Job slot limit reached",
+    "committed_updates": 0
+  },
+  "packet": "results/hpc/20261104-protenix-line-search-01/status-20261105T113000Z/stdout.json",
+  "packet_sha256": "cf39aba777bb24df51d0fe91bb0bb6cf31ab9960838784aee117a9137b32e49d"
+}

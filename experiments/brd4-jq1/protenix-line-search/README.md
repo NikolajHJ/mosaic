@@ -33,3 +33,14 @@ especially when chemistry competes or the graph cools. Contact is a proxy,
 and the line-search arm uses more scorer calls per update.
 
 Job 29890096 was accepted and released on A100. Observed PEND with 0 committed updates at 2026-11-04T10:32:09.235442+00:00. See [dispatch verification](dispatch-verification.json).
+
+Job 29890096 completed all 50,000 updates at 12:15 CET on 5 November 2026.
+Both seed 23 runs produced zero valid connected raw states. Both endpoints
+had a valid one-bond repair. Weighted repair cost was 1.3404 with line
+search and 1.0972 with the fixed step at the same temperature. Final
+relaxed contact losses were -0.2014 and -0.4170, respectively. The
+independent endpoint draws were 20/128 and 3/128 valid and connected.
+All 50,000 updates tested nine candidates. The fixed trial objective
+never increased, with the old logits retained on 3,173 updates. See
+[terminal verification](terminal-verification.json). The separate
+projection repeat 29896980 remained queued for an A100 slot at 12:30 CET.

@@ -11622,3 +11622,11 @@ valence-proposal repeat 29896980 on A100 for 50,000 updates, 36-hour limit.
 PEND behind the existing seed 23 job 29890096. Allocated CPU 29896985
 passed both detached repair selection controls. Metadata startup and live
 dispatch capacity passed. See protenix-projected-repair/campaign.json.
+
+5 November 2026, 12:15 CET. Seed 23 A100 line-search job 29890096
+completed 50,000 updates. Zero valid connected raw states in both matched
+runs. Endpoint repairs were one bond each. Weighted costs 1.3404 versus
+1.0972 and final relaxed contact losses -0.2014 versus -0.4170 favored
+the original fixed step. Valid endpoint draws improved from 3/128 to
+20/128. See protenix-line-search/terminal-verification.json. The separate
+projection repeat was eligible and waiting on an A100 slot at 12:30 CET.

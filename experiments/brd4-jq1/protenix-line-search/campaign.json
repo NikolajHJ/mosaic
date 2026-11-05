@@ -1,5 +1,5 @@
 {
-  "status": "submitted",
+  "status": "completed_exploratory_updates",
   "version": "protenix-line-search-v1",
   "root": "/work3/s234818/mosaic/runs/20261104-protenix-line-search-01/source01/run",
   "source": "/work3/s234818/mosaic/runs/20261104-protenix-line-search-01/source01/source",
@@ -16,11 +16,12 @@
   "arm": "annealed-sparse-s23-halving8",
   "metadata_tests": 6,
   "job_id": "29890096",
-  "scheduler_state": "PEND",
+  "scheduler_state": "DONE",
   "queue": "gpua100",
-  "observed_utc": "2026-11-04T10:32:09.235442+00:00",
-  "committed_updates": 0,
+  "observed_utc": "2026-11-05T11:30:03.352482+00:00",
+  "committed_updates": 50000,
   "dispatch_verification": "dispatch-verification.json",
   "do_not_repeat_launch": true,
-  "next_action": "Observe this exact job and committed records. Verify all nine trials and the selected rate, runtime, validity and preserved source/input/frozen state. If the wall cap stops the run, preserve evidence and continue only from the latest fully verified retained checkpoint."
+  "next_action": "Compare the separate projected-repair experiment when it finishes.",
+  "terminal_verification": "terminal-verification.json"
 }
