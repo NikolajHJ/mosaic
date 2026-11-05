@@ -12,7 +12,7 @@ REPO = HERE.parents[4]
 HELPER = r'C:\Users\nikol\DTU-HPC\helper-v1\dtu-hpc.exe'
 PAIRED_KINDS = (
     'projection-pilot', 'binding-forward-pilot', 'projection-feedback-pilot',
-    'projection-feedback-confirmation',
+    'projection-feedback-confirmation', 'local-validity-margin',
 )
 
 def sha(data): return hashlib.sha256(data).hexdigest()
@@ -37,6 +37,8 @@ cd "$source_dir"
 cap_mib=$($python -c 'import json,sys;print(json.load(open(sys.argv[1]))["complete_output_cap_mib"])' "$source_dir/plan.json")
 file_cap=$($python -c 'import json,sys;print(json.load(open(sys.argv[1])).get("file_cap",5000))' "$source_dir/plan.json")
 entrypoint=$($python -c 'import json,sys;print(json.load(open(sys.argv[1]))["entrypoint"])' "$source_dir/plan.json")
+gpu_profile=$($python -c 'import json,sys;print(json.load(open(sys.argv[1])).get("gpu_profile", ""))' "$source_dir/plan.json")
+if [[ -n "$gpu_profile" ]]; then export MOSAIC_GPU_PROFILE="$gpu_profile"; fi
 $python -B storage_accounting.py --output-root "$(dirname "$source_dir")" --cap-mib "$cap_mib" --file-cap "$file_cap" > "$(dirname "$source_dir")/capacity-entry.json"
 exec "$python" -B -u "$entrypoint" --plan "$source_dir/plan.json"
 '''
@@ -77,7 +79,7 @@ assert startup.returncode==0,'Actual metadata startup failed'
 assert not (root/'submission.json').exists() and not (root/'submission-intent.json').exists(),'Existing/unknown submission'
 name='mosaic-'+TAG
 wall=plan['wall_minutes'];wall_text='%02d:%02d'%(wall//60,wall%60)
-argv=['bsub','-H','-q',plan['queue'],'-J',name,'-n',str(plan['cpu_slots']),'-R','span[hosts=1]','-R','rusage[mem=%d]'%plan['memory_mib_per_slot'],'-W',wall_text,'-env','all,~CUDA_VISIBLE_DEVICES,~CUDA_MPS_PIPE_DIRECTORY,~CUDA_MPS_LOG_DIRECTORY,~CUDA_MPS_ACTIVE_THREAD_PERCENTAGE','-o',str(root/'stdout.%J.log'),'-e',str(root/'stderr.%J.log'),'-gpu','num=1:mode=exclusive_process:j_exclusive=yes:mps=no:gmem=30G','bash','-l',str(source/'stage.sh'),str(source)]
+argv=['bsub','-H','-q',plan['queue'],'-J',name,'-n',str(plan['cpu_slots']),'-R','span[hosts=1]','-R','rusage[mem=%d]'%plan['memory_mib_per_slot'],'-W',wall_text,'-env','all,~CUDA_VISIBLE_DEVICES,~CUDA_MPS_PIPE_DIRECTORY,~CUDA_MPS_LOG_DIRECTORY,~CUDA_MPS_ACTIVE_THREAD_PERCENTAGE','-o',str(root/'stdout.%J.log'),'-e',str(root/'stderr.%J.log'),'-gpu',plan.get('gpu_request','num=1:mode=exclusive_process:j_exclusive=yes:mps=no:gmem=30G'),'bash','-l',str(source/'stage.sh'),str(source)]
 with (root/'submission-intent.json').open('x') as f:json.dump(dict(argv=argv,created_utc=datetime.datetime.now(datetime.timezone.utc).isoformat()),f)
 try:r=subprocess.run(argv,capture_output=True,text=True,timeout=90)
 except subprocess.TimeoutExpired as e:
@@ -136,12 +138,29 @@ def main():
   plan.update(points=[baseline],candidate_samples=candidates['groups'],
               maximum_unique_samples=candidates['maximum_unique_samples'],wall_minutes=20,internal_seconds=900)
  if args.kind in PAIRED_KINDS:
-  parent=next(p for p in base['files'] if p['step']==30000)
-  plan.update(version='protenix-projection-paired-pilot-v1',parent_plan=base['plan'],parent_arm=base['arm'],parent_snapshot=parent['snapshot'],parent_reference=parent['reference'],parent_step=30000,updates=2000,temperature=.4,chemistry_coefficient=30.,learning_rate=.3,smoothing=.02,internal_seconds=4800,output_cap_bytes=512*1024**2,complete_output_cap_mib=512,entrypoint='projected_start_pilot.py',wall_minutes=90,cpu_slots=8,memory_mib_per_slot=4096)
+  parent_step = 6800 if args.kind == 'local-validity-margin' else 30000
+  parent=next(p for p in base['files'] if p['step']==parent_step)
+  plan.update(version='protenix-projection-paired-pilot-v1',parent_plan=base['plan'],parent_arm=base['arm'],parent_snapshot=parent['snapshot'],parent_reference=parent['reference'],parent_step=parent_step,updates=2000,temperature=.4,chemistry_coefficient=30.,learning_rate=.3,smoothing=.02,internal_seconds=4800,output_cap_bytes=512*1024**2,complete_output_cap_mib=512,entrypoint='projected_start_pilot.py',wall_minutes=90,cpu_slots=8,memory_mib_per_slot=4096)
   plan.pop('points');plan.pop('optimizer_updates')
   storage_bytes=(REPO/'scripts/hpc/storage_accounting.py').read_bytes()
   plan['storage_module']=dict(path=remote+'/source/storage_accounting.py',bytes=len(storage_bytes),sha256=sha(storage_bytes))
   plan['file_cap']=5000
+  if args.kind=='local-validity-margin':
+   assert base['arm']=='structural10-chain-s17' and parent['route']==0,'Require the valid chain checkpoint'
+   import sys
+   sys.path.insert(0,str(REPO/'scripts/hpc'))
+   from gpu_policy import profile
+   placement=profile('a40-48gb-v1')
+   plan.update(comparison='local_validity_margin',updates=1000,temperature=1.,chemistry_coefficient=10.,
+               smoothing=0.,wall_minutes=60,internal_seconds=3300,complete_output_cap_mib=256,
+               output_cap_bytes=252*1024**2,file_cap=4000,
+               queue=placement['queue'],gpu_profile=placement['id'],gpu_request=placement['resource'])
+   for key,name in [('screen_source','protenix_chemistry_screen.py'),
+                    ('margin_source','local_validity_margin.py'),
+                    ('margin_controls','local_validity_margin_controls.py')]:
+    data=(HERE.parent/name).read_bytes()
+    (source/name).write_bytes(data)
+    plan[key]=dict(path=remote+'/source/'+name,bytes=len(data),sha256=sha(data))
   if args.kind=='binding-forward-pilot':plan['comparison']='binding_forward'
   if args.kind=='projection-feedback-pilot':plan.update(comparison='projection_feedback',block_updates=500)
   if args.kind=='projection-feedback-confirmation':

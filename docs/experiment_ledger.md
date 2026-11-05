@@ -11589,3 +11589,20 @@ arm. See experiments/brd4-jq1/protenix-random-chem/projection-feedback-confirmat
 67-hour bound; held release, actual metadata startup, six input and 157 source
 bindings and own capacity passed. Observed PEND with 0 committed updates.
 Native result and timing are pending. Control 29880094 is preserved.
+
+5 November 2026. Prepared a paired 1,000-update local bond-validity margin
+pilot from the saved seed 17 chain step 6,800. Both arms keep LR 0.3, T 1,
+chemistry 10 and the original frozen scorer and structural repair. See
+experiments/brd4-jq1/protenix-validity-margin. Preparation ran no experiment.
+
+5 November 2026. DTU accepted and released the bond-local validity margin
+pair as 29896035 on A40. Both 1,000-update arms are in one 60-minute allocation.
+Eight portable controls, held receipt, metadata startup and dispatch capacity
+passed. Native and numerical outcomes are pending. Existing saved runs remain
+untouched. See experiments/brd4-jq1/protenix-validity-margin/campaign.json.
+
+5 November 2026, 08:39 CET. Allocated CPU job 29896051 passed all five
+bond-margin controls. Initial standalone CPU launch 29896037 failed shell
+quoting before Python and was corrected with a separate script. The matched
+A40 pair 29896035 remains PEND on a job-slot limit. No optimization result
+claimed.

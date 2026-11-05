@@ -1,7 +1,7 @@
 {
   "version": "adaptive-validity-research-v1",
   "branch": "codex/valid-molecule-research",
-  "status": "feedback_confirmation_complete",
+  "status": "local_validity_margin_pilot_submitted",
   "jobs": [
     {
       "id": "29884143",
@@ -80,9 +80,23 @@
       "do_not_replay_launch": true,
       "do_not_repeat_bresume": true,
       "terminal_verification": "feedback-confirmation-terminal-verification.json"
+    },
+    {
+      "id": "29896035",
+      "kind": "local_validity_margin_pilot",
+      "status": "PEND",
+      "updates_per_arm": 1000,
+      "remote_root": "/work3/s234818/mosaic/runs/20261105-local-validity-margin-01",
+      "campaign": "experiments/brd4-jq1/protenix-validity-margin/campaign.json",
+      "do_not_replay_launch": true,
+      "allocated_controls": {
+        "id": "29896051",
+        "status": "DONE",
+        "passed": 5
+      }
     }
   ],
-  "next_action": "Use the completed archive-only arm as the reference for candidate discovery. This completed comparison needs no further polling or replay.",
+  "next_action": "Observe the matched bond-local margin pair 29896035. Compare validity exits, bounded repair costs and matched-grid hard contact. Preserve the finished projection comparison and existing live runs.",
   "existing_runs_unchanged": true,
   "max_concurrent_research_model_jobs": 2,
   "pilot_updates_per_arm_default_max": 2500,

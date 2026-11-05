@@ -35,6 +35,9 @@ def arm_protocol(plan):
     if comparison == "projection_feedback":
         return (("archive_only", "repair", "relaxed"),
                 ("project_feedback", "repair", "relaxed"))
+    if comparison == "local_validity_margin":
+        return (("original_repair", "original", "relaxed"),
+                ("local_validity_margin", "original", "relaxed"))
     raise ValueError("Unknown causal comparison")
 
 
@@ -91,11 +94,17 @@ def module(path, name):
 
 def validate_plan(plan):
     audit.require(plan["version"] == VERSION, "Unknown paired pilot plan")
-    audit.require(plan["parent_step"] == 30000, "This contrast uses the declared saved30k parent")
+    margin_comparison = plan.get("comparison") == "local_validity_margin"
+    audit.require(plan["parent_step"] == (6800 if margin_comparison else 30000),
+                  "Saved parent step differs from the declared comparison")
     audit.require(type(plan["updates"]) is int and 1 <= plan["updates"] <= 20000,
                   "Require a bounded informative paired budget")
-    for field, expected in (("temperature", .4), ("chemistry_coefficient", 30.),
-                            ("learning_rate", .3), ("smoothing", .02)):
+    temperature, coefficient, smoothing = (1., 10., 0.) if margin_comparison else (.4, 30., .02)
+    if margin_comparison:
+        audit.require(plan["updates"] == 1000 and plan["parent_arm"] == "structural10-chain-s17"
+                      and "screen_source" in plan, "Changed matched margin pilot")
+    for field, expected in (("temperature", temperature), ("chemistry_coefficient", coefficient),
+                            ("learning_rate", .3), ("smoothing", smoothing)):
         audit.require(type(plan[field]) in (int, float) and plan[field] == expected,
                       "Changed declared paired protocol: " + field)
     internal_ceiling = 6600
@@ -145,6 +154,8 @@ def inputs(plan, row):
                row["config"], row["context_ready"], row["pocket"], *plan.get("source_files", [])]
     if "confirmation_pilot" in plan:
         records.append(plan["confirmation_pilot"])
+    if plan.get("comparison") == "local_validity_margin":
+        records.extend(plan[k] for k in ("screen_source", "margin_source", "margin_controls"))
     return records
 
 
@@ -285,6 +296,41 @@ def feedback_blocks(screen, loss, initial, prepare, spec, loss_config, key, conf
             "scope": "Fixed-policy500-step blocks; local block steps plus explicit global offsets; all scalar records retained"}
 
 
+def repair_retention(path, expected_states):
+    from collections import Counter
+    from statistics import median
+
+    transitions = Counter()
+    costs = []
+    unresolved = 0
+    first_exit = None
+    previous = None
+    with path.open() as stream:
+        for step, line in enumerate(stream):
+            row = json.loads(line)
+            audit.require(row["global_step"] == step, "Saved retention prefix differs")
+            valid = row["strict_valid_connected"]
+            if previous is not None:
+                transitions["valid_to_invalid" if previous and not valid else
+                            "invalid_to_valid" if valid and not previous else "unchanged"] += 1
+                if previous and not valid and first_exit is None:
+                    first_exit = step
+            previous = valid
+            cost = row["observed_repair_cost"]
+            if not valid:
+                if cost is None:
+                    unresolved += 1
+                else:
+                    costs.append(cost)
+    audit.require(sum(transitions.values()) + (previous is not None) == expected_states,
+                  "Incomplete retention prefix")
+    return {"first_validity_exit": first_exit, "valid_to_invalid": transitions["valid_to_invalid"],
+            "invalid_to_valid": transitions["invalid_to_valid"], "endpoint_valid": previous,
+            "invalid_states_with_observed_repair": len(costs), "invalid_states_without_observed_repair": unresolved,
+            "median_invalid_repair_cost": median(costs) if costs else None,
+            "repair_cost_scope": "Lowest weighted repair found by the original bounded atom-preserving search at T=1"}
+
+
 def run(plan, plan_path):
     parent, row, config = parent_metadata(plan)
     audit.require(os.environ.get("LSB_JOBID", "").isdigit(), "Paired native refinement requires allocated GPU")
@@ -300,7 +346,9 @@ def run(plan, plan_path):
     sys.path[:0] = [str(source), str(source / "src"), str(original / "scripts"), str(adapter / "scripts")]
     os.environ["PYTHONPATH"] = os.pathsep.join([str(source), str(source / "src"), str(original / "scripts"),
                                               str(adapter / "scripts"), os.environ.get("PYTHONPATH", "")])
-    screen = module(source / "protenix_chemistry_screen.py", "_paired_pilot_original_screen")
+    margin_comparison = plan.get("comparison") == "local_validity_margin"
+    driver = audit.bound(plan["screen_source"]) if margin_comparison else source / "protenix_chemistry_screen.py"
+    screen = module(driver, "_paired_pilot_screen")
     screen.validate_screen(config)
     storage = module(audit.bound(plan["storage_module"]), "_paired_pilot_storage")
     import equinox as eqx
@@ -335,6 +383,9 @@ def run(plan, plan_path):
                            "Projection plus finite smoothing is the declared initial-state intervention",
                            "Second arm may reuse warmed native compilation; runtime comparison includes this ordering limitation"]}
     result["comparison"] = plan.get("comparison", "projection_start")
+    if margin_comparison:
+        result["projected_initialization"] = None
+        result["warnings"][1] = "Both arms use the original saved logits. The margin checks single-bond alternatives only."
     if result["comparison"] == "binding_forward":
         result["warnings"].append("Hard forward uses a biased identity probability gradient, not the derivative of argmax")
     before_inputs = [audit.binding(record["path"]) for record in inputs(plan, row)]
@@ -362,6 +413,15 @@ def run(plan, plan_path):
         tick()
         if result["comparison"] == "binding_forward":
             result["allocated_forward_controls"] = forward_controls()
+        if margin_comparison:
+            import local_validity_margin as margin
+
+            controls = module(audit.bound(plan["margin_controls"]), "_allocated_margin_controls")
+            result["allocated_margin_controls"] = controls.run()
+            result["margin_policy"] = {"gap": margin.MARGIN, "slope_cap": margin.SLOPE_CAP,
+                                       "max_rows": margin.MAX_ROWS,
+                                       "weight_per_repair_unit": margin.WEIGHT_PER_REPAIR_UNIT}
+            persist()
         ready = audit.read(row["context_ready"]["path"])
         context = load_context(Path(row["context_ready"]["path"]).parent / "context", ready["context_files"])
         model = FrozenProtenixTiny.load(cache_dir=Path(plan["model_cache"]))
@@ -382,7 +442,9 @@ def run(plan, plan_path):
             raw_bonds = np.asarray(saved["E_upper"]).argmax(-1)
         with gzip.open(plan["parent_reference"]["path"], "rt", encoding="utf-8") as stream:
             teacher = audit.teacher_labels(json.load(stream), step=plan["parent_step"])
-        audit.require(teacher["candidate"] is not None and teacher["route"] in (1, 2), "A saved complete repair is required")
+        allowed_routes = (0,) if margin_comparison else (1, 2)
+        audit.require(teacher["candidate"] is not None and teacher["route"] in allowed_routes,
+                      "Saved source or repair target is ineligible")
         audit.require(teacher["receipt"]["schema_sha256"] == spec.fingerprint(), "Saved teacher schema differs")
         matrix = np.zeros((25, 25), dtype=np.int64)
         i, j = np.triu_indices(25, 1)
@@ -392,13 +454,17 @@ def run(plan, plan_path):
                       teacher["receipt"]["rows"][0]["raw_sha256"], "Teacher belongs to another parent graph")
         kind = screen.logits_class(scheduled=False)
         original_initial = kind(jnp.asarray(atoms), jnp.asarray(bonds), plan["temperature"])
-        target = teacher["candidate"]
-        projected_probabilities = [np.asarray([smoothed_row(int(label), categories, smoothing=plan["smoothing"])
-                                              for label in labels], dtype=np.float32)
-                                   for labels, categories in ((target["element_indices"], 6), (target["bond_upper_indices"], 5))]
-        projected_initial = kind(*(plan["temperature"] * jnp.log(jnp.asarray(p)) for p in projected_probabilities),
-                                 plan["temperature"])
-        audit.require(screen.valid_connected(hard_readout(projected_initial.graph())), "Projected finite-support initialization lost validity")
+        projected_initial = None
+        if margin_comparison:
+            audit.require(screen.valid_connected(hard_readout(original_initial.graph())), "Saved source lost validity")
+        else:
+            target = teacher["candidate"]
+            projected_probabilities = [np.asarray([smoothed_row(int(label), categories, smoothing=plan["smoothing"])
+                                                  for label in labels], dtype=np.float32)
+                                       for labels, categories in ((target["element_indices"], 6), (target["bond_upper_indices"], 5))]
+            projected_initial = kind(*(plan["temperature"] * jnp.log(jnp.asarray(p)) for p in projected_probabilities),
+                                     plan["temperature"])
+            audit.require(screen.valid_connected(hard_readout(projected_initial.graph())), "Projected finite-support initialization lost validity")
         source_config = audit.read(row["config"]["path"])
         search = ProbabilityRepairConfig(**source_config["search"])
         progress = ProgressSearchConfig(**source_config["progress_search"])
@@ -432,7 +498,8 @@ def run(plan, plan_path):
                         for step in range(0, plan["updates"] + 1, 100)]
             if plan["updates"] % 100:
                 selected.append((plan["updates"], study / "snapshots" / f"step-{plan['updates']:05d}.npz"))
-            if plan.get("comparison", "projection_start") != "binding_forward" and (study / "best-valid-state.npz").is_file():
+            equal_grid = result["comparison"] in ("binding_forward", "local_validity_margin")
+            if not equal_grid and (study / "best-valid-state.npz").is_file():
                 with np.load(study / "best-valid-state.npz", allow_pickle=False) as point:
                     selected.append((int(point["step"]), study / "best-valid-state.npz"))
             records, seen = [], set()
@@ -458,8 +525,8 @@ def run(plan, plan_path):
                                 "strict_valid_connected": screen.valid_connected(readout),
                                 "readout": readout, "snapshot": audit.binding(path)})
             valid = [p for p in records if p["strict_valid_connected"]]
-            return {"scope": ("Hard graph at identical100-step grid; equal21 forwards per2k arm; not every-state hard optimum"
-                              if plan.get("comparison") == "binding_forward" else
+            return {"scope": ("Hard graph at an identical 100-step grid, with equal scorer calls"
+                              if equal_grid else
                               "Hard graph at retained100-step grid plus best-soft-valid snapshot; not every-state hard optimum"),
                     "records": records, "best_valid_hard": max(valid, key=lambda p: p["hard_contact_score"]) if valid else None}
 
@@ -489,8 +556,13 @@ def run(plan, plan_path):
                     result["arms"].append(arm)
                     persist()
                     continue
+                options = {}
+                if margin_comparison:
+                    options["record_repair_distance"] = True
+                    if name == "local_validity_margin":
+                        options["validity_margin"] = margin.prepare_margin
                 summary = screen.run_loop(active_loss, initial, prepare, spec, FailureGuidanceConfig(**source_config["loss"]),
-                                          key, config, arm_output / "study", steps=plan["updates"], tick=tick)
+                                          key, config, arm_output / "study", steps=plan["updates"], tick=tick, **options)
             audit.require(summary["status"] == "completed_exploratory_updates" and summary["applied_updates"] == plan["updates"],
                           "Original paired runner did not complete its declared updates")
             arm = {"arm": name, "status": summary["status"], "applied_updates": summary["applied_updates"],
@@ -501,6 +573,8 @@ def run(plan, plan_path):
                    "valid_unique_smiles": summary["valid_unique_smiles"], "report": audit.binding(arm_output / "study/report.json"),
                    "acceleration": adapters, "best_binding_valid": summary["best_valid_contact"],
                    "hard_archive": hard_archive(arm_output / "study", forward_mode)}
+            if margin_comparison:
+                arm["retention"] = repair_retention(arm_output / "study/states.jsonl", plan["updates"] + 1)
             if forward_mode != "relaxed":
                 audit.write(arm_output / "score-scope.json", {
                     "binding_forward_mode": forward_mode,

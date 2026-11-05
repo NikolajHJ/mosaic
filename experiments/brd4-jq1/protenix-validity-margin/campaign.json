@@ -1,0 +1,47 @@
+{
+  "remote": "/work3/s234818/mosaic/runs/20261105-local-validity-margin-01",
+  "kind": "local-validity-margin",
+  "archive_bytes": 40833,
+  "archive_sha256": "3358add9a936bfe04768bd76fb2f3d753e51a1642285df7d4630fbd8456db747",
+  "source_manifest_sha256": "6abc84ec84f97c62e9030d796b6ebed03b9a5237375e640aa1fd1cde28b776fb",
+  "plan_sha256": "ea2cc7da188704f0239f2559ba7e720d556cf361a414fc1ba65066232ac970a4",
+  "points": null,
+  "updates_per_arm": 1000,
+  "status": "submitted",
+  "job_id": "29896035",
+  "scheduler_state": "PEND",
+  "observed_utc": "2026-11-05T07:39:27.953859+00:00",
+  "queue": "gpua40",
+  "wall_minutes": 60,
+  "parent_arm": "structural10-chain-s17",
+  "parent_step": 6800,
+  "parent_snapshot_sha256": "7245bc820a7019bc82c7fc6a41e5bb351211a234fd54a2eb64ba83b6bcc3df53",
+  "parent_reference_sha256": "019648e4e8916542de38a0ed68d79efd0b2028e5a36ec1eda4d113fca0eb1a22",
+  "allocated_numerical_result": {
+    "job_id": "29896051",
+    "status": "passed",
+    "checks": [
+      "single_and_double_legal_triple_unsafe",
+      "attached_bond_only_bounded_gradient",
+      "unsafe_argmax_fixed_in_trial",
+      "both_safe_winners_zero_loss_and_gradient",
+      "active_directional_derivative"
+    ],
+    "predecessor": {
+      "job_id": "29896037",
+      "status": "EXIT",
+      "reason": "Shell quoting before Python startup"
+    },
+    "observed_utc": "2026-11-05T07:39:27.953859+00:00",
+    "evidence": "results/hpc/20261105-local-validity-margin-01/controls-status-20261105T073925Z/stdout.json",
+    "evidence_sha256": "16978fb60efeed9510257f7125d413444d6d50cfffd00a44895775f0110ad8e9"
+  },
+  "local_portable_protocol_checks": 8,
+  "held_release_verified": true,
+  "metadata_startup_passed": true,
+  "bounded_dispatch_capacity_passed": true,
+  "evidence": "results/hpc/20261105-local-validity-margin-01/status-20261105T073640Z/stdout.json",
+  "evidence_sha256": "68c49b2f52cb6ceefa1fc88156fe43a6d8588503f572a13ec2312c9435b4f31e",
+  "do_not_replay_launch": true,
+  "scheduler_reason": "Job slot limit reached"
+}
