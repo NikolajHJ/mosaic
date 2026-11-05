@@ -31,7 +31,7 @@ if receipt.is_file():
   p=subprocess.run(command,capture_output=True,text=True,timeout=25)
   data[command[0]]=dict(argv=command,returncode=p.returncode,stdout=p.stdout,stderr=p.stderr)
  data['committed_prefixes']={}
- for arm in ['original_logits','saved_repair','relaxed_forward','hard_forward','archive_only','project_feedback','original_repair','local_validity_margin']:
+ for arm in ['original_logits','saved_repair','relaxed_forward','hard_forward','archive_only','project_feedback','original_repair','local_validity_margin','edited_bond_weight']:
   prefix={}
   owner=root/'payload'/arm
   studies=sorted(owner.glob('block-*/study')) or [owner/'study']

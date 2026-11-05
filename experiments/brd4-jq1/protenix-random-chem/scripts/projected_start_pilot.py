@@ -38,6 +38,9 @@ def arm_protocol(plan):
     if comparison == "local_validity_margin":
         return (("original_repair", "original", "relaxed"),
                 ("local_validity_margin", "original", "relaxed"))
+    if comparison == "edited_bond_weight":
+        return (("original_repair", "original", "relaxed"),
+                ("edited_bond_weight", "original", "relaxed"))
     raise ValueError("Unknown causal comparison")
 
 
@@ -95,11 +98,21 @@ def module(path, name):
 def validate_plan(plan):
     audit.require(plan["version"] == VERSION, "Unknown paired pilot plan")
     margin_comparison = plan.get("comparison") == "local_validity_margin"
-    audit.require(plan["parent_step"] == (6800 if margin_comparison else 30000),
-                  "Saved parent step differs from the declared comparison")
+    edited_comparison = plan.get("comparison") == "edited_bond_weight"
+    parent_step = 49000 if edited_comparison else 6800 if margin_comparison else 30000
+    audit.require(plan["parent_step"] == parent_step, "Saved parent step differs from the declared comparison")
     audit.require(type(plan["updates"]) is int and 1 <= plan["updates"] <= 20000,
                   "Require a bounded informative paired budget")
     temperature, coefficient, smoothing = (1., 10., 0.) if margin_comparison else (.4, 30., .02)
+    if edited_comparison:
+        temperature, coefficient, smoothing = .406, 30., 0.
+        audit.require(plan["updates"] == 1000 and plan["parent_arm"] == "annealed-sparse-s23-halving8"
+                      and plan["edited_bond_weight"] == 7 and "screen_source" in plan,
+                      "Changed matched edited-bond pilot")
+        state = plan["resume_state"]
+        audit.require(state["global_step"] == parent_step and state["noise_state"]["next_update"] == parent_step
+                      and state["repair_weight"] == 30 and state["binding_weight"] == 1,
+                      "Saved edited-bond source policy differs")
     if margin_comparison:
         audit.require(plan["updates"] == 1000 and plan["parent_arm"] == "structural10-chain-s17"
                       and "screen_source" in plan, "Changed matched margin pilot")
@@ -129,6 +142,10 @@ def fixed_configuration(parent_config, plan):
     """The two arms share this entire policy; only their initial logits differ."""
     validate_plan(plan)
     config = deepcopy(parent_config)
+    if plan.get("comparison") == "edited_bond_weight":
+        audit.require(config["updates"] == plan["parent_step"] + plan["updates"],
+                      "The matched comparison must reach the original schedule endpoint")
+        return config
     config.update(updates=plan["updates"], temperature=plan["temperature"],
                   chemistry={"mode": "constant", "coefficient": plan["chemistry_coefficient"]},
                   binding={"mode": "always"})
@@ -156,6 +173,8 @@ def inputs(plan, row):
         records.append(plan["confirmation_pilot"])
     if plan.get("comparison") == "local_validity_margin":
         records.extend(plan[k] for k in ("screen_source", "margin_source", "margin_controls"))
+    if plan.get("comparison") == "edited_bond_weight":
+        records.append(plan["screen_source"])
     return records
 
 
@@ -188,7 +207,11 @@ def parent_metadata(plan):
     row = parent["arms"][plan["parent_arm"]]
     audit.require(row["rate"] == .3 and row["model_key"] == 17 and row.get("composition_weight", 0) == 0
                   and not row.get("margin", False), "Parent scientific settings differ")
-    audit.require(row["screen"]["init_seed"] == 17, "This comparison uses saved seed17")
+    if plan.get("comparison") == "edited_bond_weight":
+        audit.require(row["screen"]["init_seed"] == 23 and row["line_search_halvings"] == 8
+                      and row.get("repair_proposal") is None, "Require the original seed 23 line search")
+    else:
+        audit.require(row["screen"]["init_seed"] == 17, "This comparison uses saved seed17")
     config = fixed_configuration(row["screen"], plan)
     for record in inputs(plan, row):
         audit.bound(record)
@@ -296,20 +319,24 @@ def feedback_blocks(screen, loss, initial, prepare, spec, loss_config, key, conf
             "scope": "Fixed-policy500-step blocks; local block steps plus explicit global offsets; all scalar records retained"}
 
 
-def repair_retention(path, expected_states):
+def repair_retention(path, expected_states, *, global_start=0):
     from collections import Counter
     from statistics import median
 
     transitions = Counter()
     costs = []
     unresolved = 0
-    first_exit = None
+    first_exit = first_valid = None
     previous = None
+    endpoint_cost = None
     with path.open() as stream:
         for step, line in enumerate(stream):
             row = json.loads(line)
+            step += global_start
             audit.require(row["global_step"] == step, "Saved retention prefix differs")
             valid = row["strict_valid_connected"]
+            if valid and first_valid is None:
+                first_valid = step
             if previous is not None:
                 transitions["valid_to_invalid" if previous and not valid else
                             "invalid_to_valid" if valid and not previous else "unchanged"] += 1
@@ -317,6 +344,7 @@ def repair_retention(path, expected_states):
                     first_exit = step
             previous = valid
             cost = row["observed_repair_cost"]
+            endpoint_cost = cost
             if not valid:
                 if cost is None:
                     unresolved += 1
@@ -328,7 +356,8 @@ def repair_retention(path, expected_states):
             "invalid_to_valid": transitions["invalid_to_valid"], "endpoint_valid": previous,
             "invalid_states_with_observed_repair": len(costs), "invalid_states_without_observed_repair": unresolved,
             "median_invalid_repair_cost": median(costs) if costs else None,
-            "repair_cost_scope": "Lowest weighted repair found by the original bounded atom-preserving search at T=1"}
+            "first_valid_state": first_valid, "endpoint_observed_repair_cost": endpoint_cost,
+            "repair_cost_scope": "Observed cost from the original bounded atom-preserving search at each saved temperature"}
 
 
 def run(plan, plan_path):
@@ -347,7 +376,8 @@ def run(plan, plan_path):
     os.environ["PYTHONPATH"] = os.pathsep.join([str(source), str(source / "src"), str(original / "scripts"),
                                               str(adapter / "scripts"), os.environ.get("PYTHONPATH", "")])
     margin_comparison = plan.get("comparison") == "local_validity_margin"
-    driver = audit.bound(plan["screen_source"]) if margin_comparison else source / "protenix_chemistry_screen.py"
+    edited_comparison = plan.get("comparison") == "edited_bond_weight"
+    driver = audit.bound(plan["screen_source"]) if margin_comparison or edited_comparison else source / "protenix_chemistry_screen.py"
     screen = module(driver, "_paired_pilot_screen")
     screen.validate_screen(config)
     storage = module(audit.bound(plan["storage_module"]), "_paired_pilot_storage")
@@ -386,6 +416,11 @@ def run(plan, plan_path):
     if margin_comparison:
         result["projected_initialization"] = None
         result["warnings"][1] = "Both arms use the original saved logits. The margin checks single-bond alternatives only."
+    if edited_comparison:
+        result["projected_initialization"] = None
+        result["scope"] = "Both arms resume the same saved logits, teacher, and schedules in new output trees"
+        result["warnings"][1] = "Extra bond weight applies only to labels changed by complete verified repairs"
+        result["edited_bond_multiplier"] = 1 + plan["edited_bond_weight"]
     if result["comparison"] == "binding_forward":
         result["warnings"].append("Hard forward uses a biased identity probability gradient, not the derivative of argmax")
     before_inputs = [audit.binding(record["path"]) for record in inputs(plan, row)]
@@ -452,10 +487,16 @@ def run(plan, plan_path):
         matrix[j, i] = raw_bonds
         audit.require(graph_identity(raw_atoms + 1, np.zeros(25, dtype=np.int64), matrix, spec) ==
                       teacher["receipt"]["rows"][0]["raw_sha256"], "Teacher belongs to another parent graph")
-        kind = screen.logits_class(scheduled=False)
+        kind = screen.logits_class(scheduled=edited_comparison)
         original_initial = kind(jnp.asarray(atoms), jnp.asarray(bonds), plan["temperature"])
         projected_initial = None
-        if margin_comparison:
+        if edited_comparison:
+            point = plan["resume_state"]
+            audit.require(point["preparation_identity"] == teacher["identity"] and
+                          np.float32(screen.temperature_at(config, plan["parent_step"])) ==
+                          np.float32(point["temperature"]), "Saved teacher or temperature differs")
+            resume = {"offset": plan["parent_step"], "state": point, "reference": plan["parent_reference"]}
+        elif margin_comparison:
             audit.require(screen.valid_connected(hard_readout(original_initial.graph())), "Saved source lost validity")
         else:
             target = teacher["candidate"]
@@ -468,6 +509,27 @@ def run(plan, plan_path):
         source_config = audit.read(row["config"]["path"])
         search = ProbabilityRepairConfig(**source_config["search"])
         progress = ProgressSearchConfig(**source_config["progress_search"])
+        loss_config = FailureGuidanceConfig(**source_config["loss"])
+        if edited_comparison:
+            with gzip.open(plan["parent_reference"]["path"], "rt", encoding="utf-8") as stream:
+                fixed, _ = screen.restore_teacher(json.load(stream), spec)
+            i, j = np.triu_indices(spec.max_nodes, 1)
+            changed = np.asarray(fixed.arrays["changed"])[0, i, j]
+            audit.require(list(zip(i[changed], j[changed])) == [(8, 15)], "Expected the saved one-bond repair")
+            def chemistry_gradient(weight):
+                return eqx.filter_value_and_grad(lambda point: screen.repair_objective(
+                    point, fixed, spec, loss_config, edited_bond_weight=weight)[0])(original_initial)
+            old_loss, old_grad = chemistry_gradient(0)
+            new_loss, new_grad = chemistry_gradient(plan["edited_bond_weight"])
+            audit.require(float(new_loss) > float(old_loss) and
+                          np.allclose(new_grad.atoms, old_grad.atoms, rtol=1e-6, atol=1e-8) and
+                          np.allclose(new_grad.bonds[~changed], old_grad.bonds[~changed], rtol=1e-6, atol=1e-8) and
+                          float(np.linalg.norm(old_grad.bonds[changed])) > 0 and
+                          np.allclose(new_grad.bonds[changed], 8 * old_grad.bonds[changed], rtol=1e-6, atol=1e-8),
+                          "Edited-bond gradient scaling or mask differs")
+            result["allocated_edited_bond_controls"] = {"status": "passed", "tested_slots": [8, 15],
+                                                       "multiplier": 8, "other_rows_unchanged": True}
+            persist()
 
         def prepare(logits, state):
             return prepare_failure_guidance(logits.decoded(), spec, update=state, search=search,
@@ -494,16 +556,19 @@ def run(plan, plan_path):
                     "readout": readout}
 
         def hard_archive(study, forward_mode):
+            start = plan["parent_step"] if edited_comparison else 0
+            end = start + plan["updates"]
             selected = [(step, study / "snapshots" / f"step-{step:05d}.npz")
-                        for step in range(0, plan["updates"] + 1, 100)]
+                        for step in range(start, end + 1, 100)]
             if plan["updates"] % 100:
-                selected.append((plan["updates"], study / "snapshots" / f"step-{plan['updates']:05d}.npz"))
-            equal_grid = result["comparison"] in ("binding_forward", "local_validity_margin")
+                selected.append((end, study / "snapshots" / f"step-{end:05d}.npz"))
+            equal_grid = result["comparison"] in ("binding_forward", "local_validity_margin", "edited_bond_weight")
             if not equal_grid and (study / "best-valid-state.npz").is_file():
                 with np.load(study / "best-valid-state.npz", allow_pickle=False) as point:
                     selected.append((int(point["step"]), study / "best-valid-state.npz"))
             records, seen = [], set()
-            for local_step, path in selected:
+            for global_step, path in selected:
+                local_step = global_step - start
                 tick()
                 with np.load(path, allow_pickle=False) as point:
                     hard = graph_from_hard(np.asarray(point["X"]).argmax(-1), np.asarray(point["E_upper"]).argmax(-1))
@@ -518,17 +583,34 @@ def run(plan, plan_path):
                 value = float(jax.block_until_ready(scalar))
                 audit.require(bool(finite) and math.isfinite(value), "Nonfinite native hard-graph evaluation")
                 readout.pop("pairs", None)
-                records.append({"local_step": local_step, "source_parent_step": plan["parent_step"],
+                record = {"local_step": local_step, "source_parent_step": plan["parent_step"],
                                 "hard_contact_score": -value, "hard_contact_loss": value,
                                 "saved_binding_contact_score": -saved_soft,
                                 "binding_forward_mode": forward_mode,
                                 "strict_valid_connected": screen.valid_connected(readout),
-                                "readout": readout, "snapshot": audit.binding(path)})
+                                "readout": readout, "snapshot": audit.binding(path)}
+                if edited_comparison:
+                    record["global_step"] = global_step
+                    reference = study / "references" / f"step-{global_step:05d}.json.gz"
+                    with gzip.open(reference, "rt", encoding="utf-8") as stream:
+                        candidate = audit.teacher_labels(json.load(stream), step=global_step)
+                    record["repair_route"] = candidate["route"]
+                    if candidate["route"] in (1, 2):
+                        labels = candidate["candidate"]
+                        repaired = score_hard(graph_from_hard(labels["element_indices"], labels["bond_upper_indices"]))
+                        audit.require(repaired["strict_valid_connected"], "Saved complete repair is invalid")
+                        record["repaired_hard"] = repaired
+                records.append(record)
             valid = [p for p in records if p["strict_valid_connected"]]
-            return {"scope": ("Hard graph at an identical 100-step grid, with equal scorer calls"
+            archive = {"scope": ("Hard graph at an identical 100-step grid, with equal scorer calls"
                               if equal_grid else
                               "Hard graph at retained100-step grid plus best-soft-valid snapshot; not every-state hard optimum"),
                     "records": records, "best_valid_hard": max(valid, key=lambda p: p["hard_contact_score"]) if valid else None}
+            if edited_comparison:
+                repairs = [p for p in records if "repaired_hard" in p]
+                archive["best_repaired_hard"] = max(repairs, key=lambda p: p["repaired_hard"]["hard_contact_score"]) if repairs else None
+                archive["raw_hard_calls"], archive["repair_hard_calls"] = len(records), len(repairs)
+            return archive
 
         accelerator = module(adapter / "scripts/full_model_pilot.py", "_paired_pilot_acceleration")
         class ForwardLoss(eqx.Module):
@@ -561,7 +643,10 @@ def run(plan, plan_path):
                     options["record_repair_distance"] = True
                     if name == "local_validity_margin":
                         options["validity_margin"] = margin.prepare_margin
-                summary = screen.run_loop(active_loss, initial, prepare, spec, FailureGuidanceConfig(**source_config["loss"]),
+                if edited_comparison:
+                    options.update(resume=resume, line_search_halvings=8, record_repair_distance=True,
+                                   edited_bond_weight=plan["edited_bond_weight"] if name == "edited_bond_weight" else 0.)
+                summary = screen.run_loop(active_loss, initial, prepare, spec, loss_config,
                                           key, config, arm_output / "study", steps=plan["updates"], tick=tick, **options)
             audit.require(summary["status"] == "completed_exploratory_updates" and summary["applied_updates"] == plan["updates"],
                           "Original paired runner did not complete its declared updates")
@@ -573,8 +658,9 @@ def run(plan, plan_path):
                    "valid_unique_smiles": summary["valid_unique_smiles"], "report": audit.binding(arm_output / "study/report.json"),
                    "acceleration": adapters, "best_binding_valid": summary["best_valid_contact"],
                    "hard_archive": hard_archive(arm_output / "study", forward_mode)}
-            if margin_comparison:
-                arm["retention"] = repair_retention(arm_output / "study/states.jsonl", plan["updates"] + 1)
+            if margin_comparison or edited_comparison:
+                arm["retention"] = repair_retention(arm_output / "study/states.jsonl", plan["updates"] + 1,
+                                                    global_start=plan["parent_step"] if edited_comparison else 0)
             if forward_mode != "relaxed":
                 audit.write(arm_output / "score-scope.json", {
                     "binding_forward_mode": forward_mode,

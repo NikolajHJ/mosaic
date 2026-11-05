@@ -11630,3 +11630,14 @@ runs. Endpoint repairs were one bond each. Weighted costs 1.3404 versus
 the original fixed step. Valid endpoint draws improved from 3/128 to
 20/128. See protenix-line-search/terminal-verification.json. The separate
 projection repeat was eligible and waiting on an A100 slot at 12:30 CET.
+
+5 November 2026. Prepared a paired 1,000-update seed 23 continuation from
+the verified global 49,000 snapshot with an 8x edited-bond treatment. Both
+arms keep the original schedule and nine-trial optimizer. Portable setup
+checks passed. No model ran in preparation. See protenix-edited-bond.
+
+5 November 2026, 14:21 CET. Released matched seed 23 edited-bond pilot
+29899114 on A100. Two arms with 1,000 updates from global 49,000. Queued
+until either 29896035 or 29896980 ends. Allocated CPU 29899118 verified
+8x on the edited row with all other gradients unchanged. Metadata startup
+and dispatch capacity passed. See protenix-edited-bond/campaign.json.

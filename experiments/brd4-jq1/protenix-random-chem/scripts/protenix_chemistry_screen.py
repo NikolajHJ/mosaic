@@ -370,18 +370,38 @@ def gradient_norm(value):
                          for name in ("atoms", "bonds")))
 
 
-def repair_objective(logits, prepared, spec, loss_config, margin_step):
+def repair_objective(logits, prepared, spec, loss_config, margin_step=None, *, edited_bond_weight=0.):
     from mosaic.small_molecule.chemistry.loss import failure_aware_repair_loss
 
     decoded = logits.decoded()
     repair, terms = failure_aware_repair_loss(decoded, prepared, spec, loss_config)
+    if edited_bond_weight:
+        import jax
+        import jax.numpy as jnp
+
+        arrays = prepared.arrays
+        n = spec.max_nodes
+        i, j = jnp.triu_indices(n, 1)
+        edited = jax.lax.stop_gradient(jnp.asarray(arrays["changed"])[:, i, j])
+        labels = jax.lax.stop_gradient(jnp.asarray(arrays["target_bonds"])[:, i, j])
+        route = jax.lax.stop_gradient(arrays["route"])
+        occupied = jnp.sum(arrays["active"], -1)
+        denominator = n + occupied + occupied * (occupied - 1) // 2
+        log_probs = jax.nn.log_softmax(decoded.symmetric_bond_logits[:, i, j], -1)
+        picked = jnp.take_along_axis(log_probs, labels[..., None], -1)[..., 0]
+        complete = (route == 1) | (route == 2)
+        source_weight = jnp.where(route == 2, loss_config.extra_valid_weight, 1.)
+        extra = -edited_bond_weight * jnp.mean(
+            source_weight * jnp.sum(jnp.where(edited & complete[:, None], picked, 0.), -1) / denominator
+        )
+        return repair + extra, {**terms, "original_repair_loss": repair, "edited_bond_extra": extra}
     if margin_step is None:
         return repair, terms
     margin = margin_step.value(decoded)
     return repair + margin, {**terms, "original_repair_loss": repair, "bond_validity_margin": margin}
 
 
-def evaluate_units(loss, logits, prepared, environment, spec, loss_config, key, native=None, *, margin_step=None):
+def evaluate_units(loss, logits, prepared, environment, spec, loss_config, key, native=None, *, margin_step=None, edited_bond_weight=0.):
     import equinox as eqx
     import jax
     import jax.numpy as jnp
@@ -396,7 +416,8 @@ def evaluate_units(loss, logits, prepared, environment, spec, loss_config, key, 
                     ((native.graph.X, graph.X), (native.graph.E_upper, graph.E_upper))), "Native reuse changed graph/key")
     prepared.verify(spec)
     (repair, terms), chemistry_gradient = eqx.filter_value_and_grad(
-        lambda value: repair_objective(value, prepared, spec, loss_config, margin_step), has_aux=True)(logits)
+        lambda value: repair_objective(value, prepared, spec, loss_config, margin_step,
+                                       edited_bond_weight=edited_bond_weight), has_aux=True)(logits)
     neighbor, neighbor_gradient = 0., type(logits)(jnp.zeros_like(logits.atoms), jnp.zeros_like(logits.bonds), logits.temperature)
     if environment is not None:
         from mosaic.small_molecule.chemistry.environment import neighbor_environment_loss
@@ -504,7 +525,7 @@ def best_decreasing_trial(before, totals):
     return best
 
 
-def score_trial(loss, logits, prepared, spec, loss_config, key, active, *, margin_step=None):
+def score_trial(loss, logits, prepared, spec, loss_config, key, active, *, margin_step=None, edited_bond_weight=0.):
     """Score the fixed source objective without a trial backward pass."""
     from mosaic.small_molecule.optimizers import _nonfinite_paths, _validate_value, validate_graph
 
@@ -512,7 +533,8 @@ def score_trial(loss, logits, prepared, spec, loss_config, key, active, *, margi
     validate_graph(graph)
     contact, aux = loss(graph, key=key)
     _validate_value(contact)
-    repair, terms = repair_objective(logits, prepared, spec, loss_config, margin_step)
+    repair, terms = repair_objective(logits, prepared, spec, loss_config, margin_step,
+                                     edited_bond_weight=edited_bond_weight)
     require(not _nonfinite_paths((contact, aux, repair, terms)), "Nonfinite line-search objective")
     contact = float(contact)
     total = active["binding_weight"]*contact + active["repair_weight"]*float(repair)
@@ -521,7 +543,8 @@ def score_trial(loss, logits, prepared, spec, loss_config, key, active, *, margi
 
 
 def run_loop(loss, initial, prepare, spec, loss_config, key, config, output, *, steps=None, tick=None,
-             resume=None, line_search_halvings=0, validity_margin=None, record_repair_distance=False):
+             resume=None, line_search_halvings=0, validity_margin=None, record_repair_distance=False,
+             edited_bond_weight=0.):
     """Fixed proposals by default; opt-in best decrease with a fixed step target."""
     import jax
     import numpy as np
@@ -532,7 +555,10 @@ def run_loop(loss, initial, prepare, spec, loss_config, key, config, output, *, 
         require(config.get("temperature_schedule") is not None and config.get("neighbor_environment") is None,
                 "Line search is scoped to the cooling run without neighbor loss")
     require(validity_margin is None or resume is None, "Margin pilot requires a fresh start")
-    margin_kwargs = {}
+    require(type(edited_bond_weight) in (int, float) and math.isfinite(edited_bond_weight)
+            and edited_bond_weight >= 0 and (not edited_bond_weight or validity_margin is None),
+            "Invalid or combined edited-bond guidance")
+    objective_kwargs = {"edited_bond_weight": edited_bond_weight} if edited_bond_weight else {}
     output = Path(output)
     output.mkdir(parents=True, exist_ok=False)
     (output/"snapshots").mkdir()
@@ -569,7 +595,7 @@ def run_loop(loss, initial, prepare, spec, loss_config, key, config, output, *, 
     def prepare_step(logits, state):
         result = prepare(logits, state)
         if validity_margin is not None:
-            margin_kwargs["margin_step"] = validity_margin(logits.decoded(), result, spec)
+            objective_kwargs["margin_step"] = validity_margin(logits.decoded(), result, spec)
         environment = None
         if config.get("neighbor_environment") is not None:
             from mosaic.small_molecule.chemistry.environment import prepare_neighbor_environment
@@ -647,8 +673,8 @@ def run_loop(loss, initial, prepare, spec, loss_config, key, config, output, *, 
             state_record["repair_proposal"] = rows[0]["repair_proposal"]
         if record_repair_distance:
             state_record["observed_repair_cost"] = rows[0]["base"].get("best_observed_weighted_cost")
-        if margin_kwargs:
-            state_record["validity_margin"] = margin_kwargs["margin_step"].record()
+        if "margin_step" in objective_kwargs:
+            state_record["validity_margin"] = objective_kwargs["margin_step"].record()
         if noise is not None:
             state_record["noise_state"] = noise.checkpoint()
         append(output/"states.jsonl", state_record)
@@ -678,12 +704,14 @@ def run_loop(loss, initial, prepare, spec, loss_config, key, config, output, *, 
             require(prepared.identity==resume['state']['preparation_identity'],'Saved teacher differs')
             require((None if environment is None else environment.identity)==resume['state']['neighbor_preparation_identity'],
                     'Saved neighbor context differs')
-        units = evaluate_units(loss, initial, prepared, environment, spec, loss_config, key, **margin_kwargs)
+        units = evaluate_units(loss, initial, prepared, environment, spec, loss_config, key, **objective_kwargs)
         readout = hard_readout(initial.graph())
         if resume is None:
             active = policy.source(0, valid_connected(readout), gradient_norm(units["binding_gradient"]), gradient_norm(units["chemistry_gradient"]))
         else:
             active = policy.restore(resume['state'])
+            if edited_bond_weight:
+                active["unit_repair_gradient_norm"] = gradient_norm(units["chemistry_gradient"])
             if resume.get("policy_change") is not None:
                 require(resume["policy_change"] is True and config["chemistry"]["mode"] == "constant"
                         and config["binding"] == {"mode": "always"}, "Undeclared continuation policy change")
@@ -714,7 +742,7 @@ def run_loop(loss, initial, prepare, spec, loss_config, key, config, output, *, 
             attempts = []
             if line_search_halvings:
                 prepared.verify(spec)
-                contact_before, before = score_trial(loss, logits, prepared, spec, loss_config, key, active, **margin_kwargs)
+                contact_before, before = score_trial(loss, logits, prepared, spec, loss_config, key, active, **objective_kwargs)
                 trial_points = []
                 for index in range(1+line_search_halvings):
                     fraction = 0.5**index
@@ -729,7 +757,7 @@ def run_loop(loss, initial, prepare, spec, loss_config, key, config, output, *, 
                             leaves.append(leaf)
                         point = type(logits)(*leaves, logits.temperature)
                     try:
-                        contact, total = score_trial(loss, point, prepared, spec, loss_config, key, active, **margin_kwargs)
+                        contact, total = score_trial(loss, point, prepared, spec, loss_config, key, active, **objective_kwargs)
                     except Exception:
                         save_trial(point, step)
                         raise
@@ -746,7 +774,7 @@ def run_loop(loss, initial, prepare, spec, loss_config, key, config, output, *, 
             else:
                 # Retain the exact proposed input even if native execution fails.
                 save_trial(proposal, step)
-                candidate = evaluate_units(loss, proposal, prepared, environment, spec, loss_config, key, **margin_kwargs)
+                candidate = evaluate_units(loss, proposal, prepared, environment, spec, loss_config, key, **objective_kwargs)
                 after, _ = weighted(candidate, active)
                 native_candidate = candidate["native"]
                 contact_after = float(native_candidate.value)
@@ -775,7 +803,7 @@ def run_loop(loss, initial, prepare, spec, loss_config, key, config, output, *, 
             # A cooled source graph is a new native input. Never reuse a native
             # value/gradient evaluated at the previous trial's temperature.
             units = evaluate_units(loss, next_logits, prepared, environment, spec, loss_config, key,
-                                   native=None if temperature_changed else native_candidate, **margin_kwargs)
+                                   native=None if temperature_changed else native_candidate, **objective_kwargs)
             readout = hard_readout(next_logits.graph())
             active = policy.source(step+1, valid_connected(readout), gradient_norm(units["binding_gradient"]), gradient_norm(units["chemistry_gradient"]))
             save_point(step+1, units, prepared, environment, active)

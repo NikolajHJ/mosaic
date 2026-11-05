@@ -12,7 +12,7 @@ REPO = HERE.parents[4]
 HELPER = r'C:\Users\nikol\DTU-HPC\helper-v1\dtu-hpc.exe'
 PAIRED_KINDS = (
     'projection-pilot', 'binding-forward-pilot', 'projection-feedback-pilot',
-    'projection-feedback-confirmation', 'local-validity-margin',
+    'projection-feedback-confirmation', 'local-validity-margin', 'edited-bond-weight',
 )
 
 def sha(data): return hashlib.sha256(data).hexdigest()
@@ -83,6 +83,8 @@ argv=['bsub','-H','-q',plan['queue'],'-J',name,'-n',str(plan['cpu_slots']),'-R',
 if plan.get('cpu_only') is True:
  gpu_index=argv.index('-gpu')
  del argv[gpu_index:gpu_index+2]
+if plan.get('dependency'):
+ argv[-4:-4]=['-w',plan['dependency']]
 with (root/'submission-intent.json').open('x') as f:json.dump(dict(argv=argv,created_utc=datetime.datetime.now(datetime.timezone.utc).isoformat()),f)
 try:r=subprocess.run(argv,capture_output=True,text=True,timeout=90)
 except subprocess.TimeoutExpired as e:
@@ -141,7 +143,7 @@ def main():
   plan.update(points=[baseline],candidate_samples=candidates['groups'],
               maximum_unique_samples=candidates['maximum_unique_samples'],wall_minutes=20,internal_seconds=900)
  if args.kind in PAIRED_KINDS:
-  parent_step = 6800 if args.kind == 'local-validity-margin' else 30000
+  parent_step = {'local-validity-margin':6800,'edited-bond-weight':49000}.get(args.kind,30000)
   parent=next(p for p in base['files'] if p['step']==parent_step)
   plan.update(version='protenix-projection-paired-pilot-v1',parent_plan=base['plan'],parent_arm=base['arm'],parent_snapshot=parent['snapshot'],parent_reference=parent['reference'],parent_step=parent_step,updates=2000,temperature=.4,chemistry_coefficient=30.,learning_rate=.3,smoothing=.02,internal_seconds=4800,output_cap_bytes=512*1024**2,complete_output_cap_mib=512,entrypoint='projected_start_pilot.py',wall_minutes=90,cpu_slots=8,memory_mib_per_slot=4096)
   plan.pop('points');plan.pop('optimizer_updates')
@@ -164,6 +166,27 @@ def main():
     data=(HERE.parent/name).read_bytes()
     (source/name).write_bytes(data)
     plan[key]=dict(path=remote+'/source/'+name,bytes=len(data),sha256=sha(data))
+  if args.kind=='edited-bond-weight':
+   assert base['arm']=='annealed-sparse-s23-halving8' and parent['route']==1,'Require saved seed 23 structural repair'
+   assert len(parent['changes'])==1 and parent['changes'][0]['slots']==[8,15] and parent['changes'][0]['new_label']==0
+   assert base['plan']['sha256']=='370bdeff538d26d0a41e38d51bfe8612c1cd23922d980295d05f70bf6b63c4fd'
+   assert parent['snapshot']['sha256']=='419ca3a11d3ab3ce2ffe53dcde90872bfa5c392b1ab4aa2b2ac9d4f44f070001'
+   import sys
+   sys.path.insert(0,str(REPO/'scripts/hpc'))
+   from gpu_policy import profile
+   placement=profile('a100-40gb-v1')
+   plan.update(comparison='edited_bond_weight',updates=1000,temperature=.406,smoothing=0.,
+               edited_bond_weight=7,resume_state=parent['state'],complete_output_cap_mib=256,
+               output_cap_bytes=252*1024**2,file_cap=4000,
+               queue=placement['queue'],gpu_profile=placement['id'],gpu_request=placement['resource'])
+   active={'29896035','29896980'}
+   rows={parts[0]:parts[2] for line in data['account']['stdout'].splitlines()
+         if len(parts:=line.split())>2 and parts[0] in active}
+   if all(rows.get(job) in ('RUN','PEND','PSUSP','SSUSP','USUSP') for job in active):
+    plan['dependency']=' || '.join('ended('+job+')' for job in sorted(active))
+   screen=(HERE.parent/'protenix_chemistry_screen.py').read_bytes()
+   (source/'protenix_chemistry_screen.py').write_bytes(screen)
+   plan['screen_source']=dict(path=remote+'/source/protenix_chemistry_screen.py',bytes=len(screen),sha256=sha(screen))
   if args.kind=='binding-forward-pilot':plan['comparison']='binding_forward'
   if args.kind=='projection-feedback-pilot':plan.update(comparison='projection_feedback',block_updates=500)
   if args.kind=='projection-feedback-confirmation':

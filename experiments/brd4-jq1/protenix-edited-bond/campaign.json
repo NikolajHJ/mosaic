@@ -1,0 +1,50 @@
+{
+  "remote": "/work3/s234818/mosaic/runs/20261105-seed23-edited-bond-01",
+  "kind": "edited-bond-weight",
+  "archive_bytes": 41320,
+  "archive_sha256": "353e6265d49bd8f94af7421e7c5f0c5de2afba67022787f72036b8792162683f",
+  "source_manifest_sha256": "74c8b721780a7f06004820277d61014fca351e4903267bd9421984e847e21f1f",
+  "plan_sha256": "1cb4602203281dbc02765866e5dcfaa2879f064ea5c3479f0d92cab39c9f9cf8",
+  "points": null,
+  "updates_per_arm": 1000,
+  "status": "submitted",
+  "job_id": "29899114",
+  "queue": "gpua100",
+  "scheduler_state": "PEND",
+  "observed_utc": "2026-11-05T13:21:18.245391+00:00",
+  "wall_minutes": 90,
+  "dependency": "ended(29896035) || ended(29896980)",
+  "parent_job_id": "29890096",
+  "parent_step": 49000,
+  "target_step": 50000,
+  "parent_snapshot": {
+    "path": "/work3/s234818/mosaic/runs/20261104-protenix-line-search-01/source01/run/annealed-sparse-s23-halving8/payload/study/snapshots/step-49000.npz",
+    "bytes": 20852,
+    "sha256": "419ca3a11d3ab3ce2ffe53dcde90872bfa5c392b1ab4aa2b2ac9d4f44f070001"
+  },
+  "parent_reference": {
+    "path": "/work3/s234818/mosaic/runs/20261104-protenix-line-search-01/source01/run/annealed-sparse-s23-halving8/payload/study/references/step-49000.json.gz",
+    "bytes": 2887,
+    "sha256": "03fb9cc2ec7f6d18e7c27877a59e1f76b50e30e21b9f925a412d28f7293ed478"
+  },
+  "edited_bond_multiplier": 8,
+  "held_release_verified": true,
+  "metadata_startup_passed": true,
+  "bounded_dispatch_capacity_passed": true,
+  "allocated_gradient_smoke": {
+    "job_id": "29899118",
+    "status": "passed",
+    "edited_pair": [
+      8,
+      15
+    ],
+    "bond_multiplier": 8,
+    "unchanged_atom_and_other_bond_gradients": true,
+    "model_evaluations": 0
+  },
+  "committed_updates_per_arm": 0,
+  "do_not_replay_launch": true,
+  "local_evidence": "results/hpc/20261105-seed23-edited-bond-01",
+  "dispatch_proof_sha256": "8ad36864714785628e0b057965bb13a8bd24be9a2b5358c392ced919fcb0ae54",
+  "cpu_terminal_sha256": "72885f943dfb3371dd78a09852ad4c5c4bc997e11b701622e7784c0998935877"
+}

@@ -1,7 +1,7 @@
 {
   "version": "adaptive-validity-research-v1",
   "branch": "codex/valid-molecule-research",
-  "status": "validity_margin_and_projection_experiments_submitted",
+  "status": "validity_margin_projection_and_edited_bond_experiments_submitted",
   "jobs": [
     {
       "id": "29884143",
@@ -104,9 +104,19 @@
       "dependency": "ended(29890096)",
       "campaign": "experiments/brd4-jq1/protenix-projected-repair/campaign.json",
       "do_not_replay_launch": true
+    },
+    {
+      "id": "29899114",
+      "kind": "seed23_edited_bond_pair",
+      "status": "PEND",
+      "updates_per_arm": 1000,
+      "remote_root": "/work3/s234818/mosaic/runs/20261105-seed23-edited-bond-01",
+      "dependency": "ended(29896035) || ended(29896980)",
+      "campaign": "experiments/brd4-jq1/protenix-edited-bond/campaign.json",
+      "do_not_replay_launch": true
     }
   ],
-  "next_action": "Observe the bond-local margin pair 29896035 and seed 23 projection repeat 29896980. Compare raw validity, observed repair costs and matched-grid hard contact with the corresponding controls.",
+  "next_action": "Observe 29896035 (bond margin), 29896980 (projection proposal), and 29899114 (edited-bond pair, gated to two concurrent research GPU jobs). Compare raw validity, bounded repair costs and matched-grid hard contact.",
   "existing_runs_unchanged": true,
   "max_concurrent_research_model_jobs": 2,
   "pilot_updates_per_arm_default_max": 2500,
