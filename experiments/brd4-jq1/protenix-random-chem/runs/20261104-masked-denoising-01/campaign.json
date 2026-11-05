@@ -5,7 +5,7 @@
   "source_manifest_sha256": "0f7c3309cd277ae54347b06ad3f02cb177964fc94c6796d5dcbf7eacb7dd1458",
   "plan_sha256": "0c0b8619887d5427af83f9ad6cf11482a059ffb8ca4a082e1454d3f5baf51d5b",
   "tag": "20261104-masked-denoising-01",
-  "status": "queued",
+  "status": "completed",
   "job_id": "29890650",
   "queue": "gpuv100",
   "observed_utc": "2026-11-04T12:33:24.274301+00:00",
@@ -163,5 +163,23 @@
     "masked_defog"
   ],
   "proposals_per_checkpoint_method": 64,
-  "hard_score_cap_per_checkpoint_method": 16
+  "hard_score_cap_per_checkpoint_method": 16,
+  "terminal": {
+    "terminal_lsf_time_paris": "2026-11-04T18:54:28+01:00",
+    "verified_utc": "2026-11-05T09:44:24.704205+00:00",
+    "result": {
+      "path": "/work3/s234818/mosaic/runs/20261104-masked-denoising-01/payload/result.json",
+      "bytes": 3148982,
+      "sha256": "46b9e032bbb44b5c966730db7fc1c74cd4b1c40c024fb414f55ec17604db29b3"
+    },
+    "lsf": {
+      "path": "/work3/s234818/mosaic/runs/20261104-masked-denoising-01/stdout.29890650.log",
+      "bytes": 1854,
+      "sha256": "dddd80c912d45d93412f934283127d8a77b320561f81ed5e11be59bbbf57bb3a"
+    },
+    "verification": {
+      "path": "terminal-verification.json",
+      "sha256": "f456ef2f8427abb48aaaa4d8dca57cab482ed1444b117b6a641d1af72416575d"
+    }
+  }
 }

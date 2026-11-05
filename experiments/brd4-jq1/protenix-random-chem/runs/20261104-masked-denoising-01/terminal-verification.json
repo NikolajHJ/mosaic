@@ -1,0 +1,278 @@
+{
+  "status": "verified_complete",
+  "job_id": "29890650",
+  "queue": "gpuv100",
+  "result": {
+    "path": "/work3/s234818/mosaic/runs/20261104-masked-denoising-01/payload/result.json",
+    "bytes": 3148982,
+    "sha256": "46b9e032bbb44b5c966730db7fc1c74cd4b1c40c024fb414f55ec17604db29b3"
+  },
+  "lsf": {
+    "path": "/work3/s234818/mosaic/runs/20261104-masked-denoising-01/stdout.29890650.log",
+    "bytes": 1854,
+    "sha256": "dddd80c912d45d93412f934283127d8a77b320561f81ed5e11be59bbbf57bb3a"
+  },
+  "manifest": {
+    "path": "/work3/s234818/mosaic/runs/20261104-masked-denoising-01/source/checksums.json",
+    "bytes": 1143,
+    "sha256": "0f7c3309cd277ae54347b06ad3f02cb177964fc94c6796d5dcbf7eacb7dd1458"
+  },
+  "verified_inputs": 9,
+  "verified_source_files": 8,
+  "proposals": 576,
+  "elapsed_seconds": 129.24498940299964,
+  "optimizer_updates": 0,
+  "checkpoints": [
+    {
+      "id": "sparse23-invalid",
+      "producer_job_id": "29880094",
+      "step": 50000,
+      "expected_argmax_valid": false,
+      "snapshot": {
+        "path": "/work3/s234818/mosaic/runs/20261103-sparse-annealed-seeds-01/source01/run/annealed-sparse-s23/payload/study/snapshots/step-50000.npz",
+        "bytes": 21961,
+        "sha256": "522c32ec136f7ecef5a76a702a480018c3a0688df255d3562c51cb947a11a9ca"
+      },
+      "valid_connected": false,
+      "canonical_smiles": null,
+      "fragments": 1,
+      "error": "AtomValenceException: Explicit valence for atom # 8 Cl, 2, is greater than permitted",
+      "argmax_contact_score": 0.2505105137825012
+    },
+    {
+      "id": "sparse41-valid",
+      "producer_job_id": "29880095",
+      "step": 50000,
+      "expected_argmax_valid": true,
+      "snapshot": {
+        "path": "/work3/s234818/mosaic/runs/20261103-sparse-annealed-seeds-01/source01/run/annealed-sparse-s41/payload/study/snapshots/step-50000.npz",
+        "bytes": 21847,
+        "sha256": "d41792ccd46b7c4fe839d1eee24de0d9ce6c8e10b7a7a4f5b1812c93ff45b09d"
+      },
+      "valid_connected": true,
+      "canonical_smiles": "C[SH]=S(CCl)(C(F)F)(C(Cl)C(NF)C(C)(F)N(F)Cl)C(C)C(C)(F)Cl",
+      "fragments": 1,
+      "error": null,
+      "argmax_contact_score": 0.20309588313102722
+    },
+    {
+      "id": "shared-repaired",
+      "producer_job_id": "29888169",
+      "step": 0,
+      "expected_argmax_valid": true,
+      "snapshot": {
+        "path": "/work3/s234818/mosaic/runs/20261104-feedback-confirmation-01/payload/archive_only/block-0000/study/snapshots/step-00000.npz",
+        "bytes": 8091,
+        "sha256": "6cb6d0598e02881f98521d559ac3a25e49aff7dbde2b9f1aab041c8fe085089a"
+      },
+      "valid_connected": true,
+      "canonical_smiles": "CC1(F)NC(N)(C(F)F)OC2(CC(Cl)(CC(F)Cl)CC2(N)S)C1(C)F",
+      "fragments": 1,
+      "error": null,
+      "argmax_contact_score": 0.39070558547973633
+    }
+  ],
+  "scorer_frozen": {
+    "model_digest": "8d6926d5390fe682e193089f790ce53aa4011a6d5509ddb452a55db3d89b0ab2",
+    "context_digest": "b28dfad8e5ede565071c70a61695f6a38f5cb6bd591705e32979e59050ff5ce4"
+  },
+  "denoiser_completion": {
+    "status": "passed",
+    "state_digest": "40e478b9784e37189c6ea6ee945edf8bfe004addfec75d3b153fd04f8eee5838",
+    "proposals": 192,
+    "forwards": 1536
+  },
+  "totals": {
+    "independent": {
+      "valid": 10,
+      "scored": 5,
+      "proposal_seconds": 0.046556239889469,
+      "scoring_seconds": 0.39826894202269614
+    },
+    "structural": {
+      "valid": 192,
+      "scored": 36,
+      "proposal_seconds": 4.295657446986297,
+      "scoring_seconds": 2.8068460810172837
+    },
+    "masked_defog": {
+      "valid": 2,
+      "scored": 2,
+      "proposal_seconds": 81.42846529194503,
+      "scoring_seconds": 0.16491080401465297
+    }
+  },
+  "cells": [
+    {
+      "checkpoint": "sparse23-invalid",
+      "method": "independent",
+      "attempts": 64,
+      "valid": 1,
+      "unique_valid": 1,
+      "hard_calls": 1,
+      "unused_hard_calls": 15,
+      "median_contact": 0.24366863071918488,
+      "best_contact": 0.24366863071918488,
+      "proposal_seconds": 0.016265949001535773,
+      "scoring_seconds": 0.0781335250067059,
+      "failures_by_first_reported_error": {
+        "AtomValenceException": 56,
+        "AtomKekulizeException": 3,
+        "disconnected_only": 4
+      },
+      "disconnected_rows": 57
+    },
+    {
+      "checkpoint": "sparse23-invalid",
+      "method": "structural",
+      "attempts": 64,
+      "valid": 64,
+      "unique_valid": 4,
+      "hard_calls": 4,
+      "unused_hard_calls": 12,
+      "median_contact": 0.21819225698709488,
+      "best_contact": 0.2688902020454407,
+      "proposal_seconds": 1.2911524450173602,
+      "scoring_seconds": 0.3116717420052737,
+      "failures_by_first_reported_error": {},
+      "disconnected_rows": 0
+    },
+    {
+      "checkpoint": "sparse23-invalid",
+      "method": "masked_defog",
+      "attempts": 64,
+      "valid": 0,
+      "unique_valid": 0,
+      "hard_calls": 0,
+      "unused_hard_calls": 16,
+      "median_contact": null,
+      "best_contact": null,
+      "proposal_seconds": 27.203237920912215,
+      "scoring_seconds": 1.9364000763744116e-05,
+      "failures_by_first_reported_error": {
+        "disconnected_only": 31,
+        "AtomKekulizeException": 7,
+        "AtomValenceException": 25,
+        "KekulizeException": 1
+      },
+      "disconnected_rows": 63,
+      "both_labels_unchanged_rows": 5,
+      "atom_edit_median": 1.0,
+      "bond_edit_median": 4.0
+    },
+    {
+      "checkpoint": "sparse41-valid",
+      "method": "independent",
+      "attempts": 64,
+      "valid": 5,
+      "unique_valid": 2,
+      "hard_calls": 2,
+      "unused_hard_calls": 14,
+      "median_contact": 0.20906566083431244,
+      "best_contact": 0.21503543853759766,
+      "proposal_seconds": 0.015327053930377588,
+      "scoring_seconds": 0.16432185700978152,
+      "failures_by_first_reported_error": {
+        "AtomValenceException": 28,
+        "AtomKekulizeException": 3,
+        "disconnected_only": 28
+      },
+      "disconnected_rows": 56
+    },
+    {
+      "checkpoint": "sparse41-valid",
+      "method": "structural",
+      "attempts": 64,
+      "valid": 64,
+      "unique_valid": 16,
+      "hard_calls": 16,
+      "unused_hard_calls": 0,
+      "median_contact": 0.20349259674549103,
+      "best_contact": 0.21931017935276031,
+      "proposal_seconds": 1.2403533129545394,
+      "scoring_seconds": 1.248258297011489,
+      "failures_by_first_reported_error": {},
+      "disconnected_rows": 0
+    },
+    {
+      "checkpoint": "sparse41-valid",
+      "method": "masked_defog",
+      "attempts": 64,
+      "valid": 2,
+      "unique_valid": 2,
+      "hard_calls": 2,
+      "unused_hard_calls": 14,
+      "median_contact": 0.2054116204380989,
+      "best_contact": 0.2077273577451706,
+      "proposal_seconds": 27.127581353968708,
+      "scoring_seconds": 0.16487170901382342,
+      "failures_by_first_reported_error": {
+        "disconnected_only": 54,
+        "AtomKekulizeException": 3,
+        "AtomValenceException": 5
+      },
+      "disconnected_rows": 62,
+      "both_labels_unchanged_rows": 23,
+      "atom_edit_median": 1.0,
+      "bond_edit_median": 1.0
+    },
+    {
+      "checkpoint": "shared-repaired",
+      "method": "independent",
+      "attempts": 64,
+      "valid": 4,
+      "unique_valid": 2,
+      "hard_calls": 2,
+      "unused_hard_calls": 14,
+      "median_contact": 0.34581781923770905,
+      "best_contact": 0.39070558547973633,
+      "proposal_seconds": 0.014963236957555637,
+      "scoring_seconds": 0.15581356000620872,
+      "failures_by_first_reported_error": {
+        "AtomValenceException": 60
+      },
+      "disconnected_rows": 3
+    },
+    {
+      "checkpoint": "shared-repaired",
+      "method": "structural",
+      "attempts": 64,
+      "valid": 64,
+      "unique_valid": 46,
+      "hard_calls": 16,
+      "unused_hard_calls": 0,
+      "median_contact": 0.3194948732852936,
+      "best_contact": 0.4392136335372925,
+      "proposal_seconds": 1.7641516890143976,
+      "scoring_seconds": 1.246916042000521,
+      "failures_by_first_reported_error": {},
+      "disconnected_rows": 0
+    },
+    {
+      "checkpoint": "shared-repaired",
+      "method": "masked_defog",
+      "attempts": 64,
+      "valid": 0,
+      "unique_valid": 0,
+      "hard_calls": 0,
+      "unused_hard_calls": 16,
+      "median_contact": null,
+      "best_contact": null,
+      "proposal_seconds": 27.097646017064108,
+      "scoring_seconds": 1.9731000065803528e-05,
+      "failures_by_first_reported_error": {
+        "AtomValenceException": 49,
+        "disconnected_only": 9,
+        "AtomKekulizeException": 3,
+        "KekulizeException": 3
+      },
+      "disconnected_rows": 56,
+      "both_labels_unchanged_rows": 0,
+      "atom_edit_median": 1.0,
+      "bond_edit_median": 6.0
+    }
+  ],
+  "verified_utc": "2026-11-05T09:44:24.704205+00:00",
+  "terminal_lsf_time_paris": "2026-11-04T18:54:28+01:00",
+  "source_observation_sha256": "5223deb1584794007a0879d791248e919e7b5c2eaa1294530153ff1649f91028"
+}

@@ -1,6 +1,6 @@
 # Masked denoising from saved Mosaic checkpoints
 
-This read-only benchmark compares how many valid, distinct, high-contact molecules three proposal methods find near saved states. It runs on DTU V100 job **29890650**. Source, input, startup, storage and held release proofs are in [campaign.json](campaign.json). The first post-release scheduler observation was pending on 4 November 2026 at 13:33 CET.
+DTU V100 job **29890650** finished successfully on 4 November 2026 at 18:54 CET. The [terminal audit](terminal-verification.json) checked all nine cells, 576 attempts, the hard-scoring shortlists, the same-job LSF receipt, and preservation of the frozen models and saved inputs. [Dispatch evidence](campaign.json)
 
 ## Matched protocol
 
@@ -10,4 +10,22 @@ This read-only benchmark compares how many valid, distinct, high-contact molecul
 - Score at most 16 distinct valid connected molecules per method per checkpoint. Take the first canonical representative in the fixed attempt order before consulting scores. Keep empty scoring slots unused and report actual calls, alongside the three separate checkpoint reference forwards. Maximum total is 147 Protenix forwards, plus 1,536 DeFoG forwards.
 - Retain each proposal's hard graph, validity, canonical identity, edit counts, sulfur count, mask where applicable and runtime. Report valid and distinct yields, hard-call counts, median and best hard contact, and elapsed time. The scorer measures frozen model contact on discrete graphs. The design compares proposal methods on these checkpoints and performs zero optimization updates.
 
-The remote output is `/work3/s234818/mosaic/runs/20261104-masked-denoising-01/payload/result.json`. Verify terminal LSF status, all nine cells, per-cell budgets, frozen model receipts and input preservation before interpreting the results.
+## Results
+
+Each cell had 64 attempts. Contact scores are from the subset of distinct valid molecules selected within the scoring cap.
+
+| Checkpoint | Method | Valid | Distinct valid | Scored | Median contact | Best contact |
+| --- | --- | ---: | ---: | ---: | ---: | ---: |
+| Sparse seed 23 | Independent | 1 | 1 | 1 | 0.243669 | 0.243669 |
+| Sparse seed 23 | Structural | 64 | 4 | 4 | 0.218192 | 0.268890 |
+| Sparse seed 23 | Masked DeFoG | 0 | 0 | 0 | — | — |
+| Sparse seed 41 | Independent | 5 | 2 | 2 | 0.209066 | 0.215035 |
+| Sparse seed 41 | Structural | 64 | 16 | 16 | 0.203493 | 0.219310 |
+| Sparse seed 41 | Masked DeFoG | 2 | 2 | 2 | 0.205412 | 0.207727 |
+| Shared repaired | Independent | 4 | 2 | 2 | 0.345818 | 0.390706 |
+| Shared repaired | Structural | 64 | 46 | 16 | 0.319495 | 0.439214 |
+| Shared repaired | Masked DeFoG | 0 | 0 | 0 | — | — |
+
+Proposal generation took 0.047 s for independent sampling, 4.296 s for structural repair and 81.428 s for masked DeFoG across 192 attempts each. Hard scoring added 0.398 s, 2.807 s and 0.165 s respectively. LSF measured 138 s for the whole allocation, including setup and checkpoint reference forwards. The frozen DeFoG CPU worker recorded all 1,536 forwards.
+
+Structural repair found the highest observed contact score at each checkpoint and a wider set of valid candidates, with more usable scoring calls under the shared cap. Its scored medians were lower than those of independent sampling, which yielded few valid graphs. Of the 192 masked DeFoG outputs, 181 were disconnected, including outputs that also failed sanitization. The paired input to DeFoG was the sampled graph, so even a valid checkpoint could supply a disconnected starting draw. Editing a patch of a known-valid hard molecule would test a different use of the generator.
