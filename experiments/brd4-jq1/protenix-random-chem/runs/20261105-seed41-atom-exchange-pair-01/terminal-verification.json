@@ -1,0 +1,217 @@
+{
+  "status": "verified_complete",
+  "job_id": "29898292",
+  "queue": "gpul40s",
+  "result": {
+    "path": "/work3/s234818/mosaic/runs/20261105-seed41-atom-exchange-pair-01/payload/result.json",
+    "bytes": 2407907,
+    "sha256": "1f0eadf54c38eabe7fc2d5f23646d2d890feb90ca9f79668f90b7c10a40488ae"
+  },
+  "lsf": {
+    "path": "/work3/s234818/mosaic/runs/20261105-seed41-atom-exchange-pair-01/stdout.29898292.log",
+    "bytes": 27898,
+    "sha256": "23fd1ed5a7063713824e8859fe07b2d229ce58f06359a5920b3cea8152a9ae7c"
+  },
+  "source": {
+    "path": "/work3/s234818/mosaic/runs/20261105-seed41-atom-exchange-pair-01/source/checksums.json",
+    "bytes": 2021,
+    "sha256": "886ec6f169643c31158b375dfd323ec314b4e23c39e52d15142184bb537ac444"
+  },
+  "plan": {
+    "path": "/work3/s234818/mosaic/runs/20261105-seed41-atom-exchange-pair-01/source/plan.json",
+    "bytes": 2336,
+    "sha256": "1f5c60f81b3713b34c65bd6760f7434cbcd59868f0c3b98bfdbaa43c3b3b91c5"
+  },
+  "verified_source_files": 14,
+  "verified_inputs": 8,
+  "tests": {
+    "tests": 34,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "tests_xml": {
+    "path": "/work3/s234818/mosaic/runs/20261105-seed41-atom-exchange-pair-01/payload/tests.xml",
+    "bytes": 4858,
+    "sha256": "5a404cece1ff48a995839494d714b10dfe2b3fed58fa80f0161775375800ccb1"
+  },
+  "elapsed_seconds": 1654.94413552701,
+  "frozen_identity": {
+    "model_digest": "8d6926d5390fe682e193089f790ce53aa4011a6d5509ddb452a55db3d89b0ab2",
+    "context_digest": "b28dfad8e5ede565071c70a61695f6a38f5cb6bd591705e32979e59050ff5ce4"
+  },
+  "endpoint_replay": {
+    "snapshot": {
+      "path": "/work3/s234818/mosaic/runs/20261103-sparse-annealed-seeds-01/source01/run/annealed-sparse-s41/payload/study/snapshots/step-50000.npz",
+      "bytes": 21847,
+      "sha256": "d41792ccd46b7c4fe839d1eee24de0d9ce6c8e10b7a7a4f5b1812c93ff45b09d"
+    },
+    "source_contact_loss": -0.3144911527633667,
+    "exact_fp32_logits": true,
+    "same_argmax": true
+  },
+  "arms": [
+    {
+      "arm": "bond_only",
+      "applied_updates": 2000,
+      "optimization_seconds": 845.1855356169981,
+      "states": {
+        "path": "/work3/s234818/mosaic/runs/20261105-seed41-atom-exchange-pair-01/payload/bond_only/study/states.jsonl",
+        "bytes": 5097776,
+        "sha256": "35f5ba849a1786324d33265e2278e32379ea14614b9a721b51b3020a83bd1857"
+      },
+      "updates": {
+        "path": "/work3/s234818/mosaic/runs/20261105-seed41-atom-exchange-pair-01/payload/bond_only/study/updates.jsonl",
+        "bytes": 1256447,
+        "sha256": "33f034359418552bc241d9ae8eb8c8f3cfa005d7af1a1abf2b87e5dbc4a3285d"
+      },
+      "targets": {
+        "path": "/work3/s234818/mosaic/runs/20261105-seed41-atom-exchange-pair-01/payload/bond_only/targets.json",
+        "bytes": 255021,
+        "sha256": "99798026191cf1dbdbf4b422919dda5c33a55c8af8744c3b349d53ca713f3ddb"
+      },
+      "report": {
+        "path": "/work3/s234818/mosaic/runs/20261105-seed41-atom-exchange-pair-01/payload/bond_only/study/report.json",
+        "bytes": 10096,
+        "sha256": "ce472485337e49a54da84923ef9363118fe07ed96e587687b7aa8fa7ff1dea89"
+      },
+      "validity": {
+        "count": 2001,
+        "native_valid_connected": 1997,
+        "scoped_valid_connected": 0,
+        "sulfur_scope_excluded": 2001,
+        "distinct_native_valid": 2,
+        "distinct_scoped_valid": 0
+      },
+      "update_source_validity": {
+        "count": 2000,
+        "native_valid_connected": 1996,
+        "scoped_valid_connected": 0,
+        "sulfur_scope_excluded": 2000,
+        "distinct_native_valid": 2,
+        "distinct_scoped_valid": 0
+      },
+      "repair_target_churn": {
+        "update_sources": 2000,
+        "adjacent_source_pairs": 1999,
+        "complete_targets": 0,
+        "active_complete_targets": 0,
+        "active_atom_swap_targets": 0,
+        "active_atom_swap_slots": 0,
+        "consecutive_active_pairs": 0,
+        "target_flips": 0,
+        "atom_only_flips": 0,
+        "bond_only_flips": 0,
+        "atom_and_bond_flips": 0,
+        "target_activations": 0,
+        "target_deactivations": 0,
+        "flip_fraction": null
+      },
+      "atom_swap_directions": {},
+      "first_scoped_step": null,
+      "scoped_valid_at_endpoint": false,
+      "scoped_valid_final_streak": 0,
+      "relaxed_contact": {
+        "first": 0.3144911527633667,
+        "last": 0.263161838054657,
+        "best": 0.3183317482471466,
+        "best_native_valid": 0.3183317482471466,
+        "best_scoped_valid": null
+      },
+      "hard_contact": {
+        "first": 0.20309558510780334,
+        "last": 0.21503520011901855,
+        "best": 0.21503520011901855,
+        "best_native_valid": 0.21503520011901855,
+        "best_scoped_valid": null,
+        "forwards": 21
+      },
+      "best_scoped_hard_step": null
+    },
+    {
+      "arm": "atom_exchange",
+      "applied_updates": 2000,
+      "optimization_seconds": 761.1740638809861,
+      "states": {
+        "path": "/work3/s234818/mosaic/runs/20261105-seed41-atom-exchange-pair-01/payload/atom_exchange/study/states.jsonl",
+        "bytes": 4988929,
+        "sha256": "c8c22d6488a0cfdcb7c9bd243760943f8f51d1a3c41ea9d2307b7fe003730f9e"
+      },
+      "updates": {
+        "path": "/work3/s234818/mosaic/runs/20261105-seed41-atom-exchange-pair-01/payload/atom_exchange/study/updates.jsonl",
+        "bytes": 1221672,
+        "sha256": "d34a85b0504d60619bd9ce413d9c752394f3296515c9dae40a4896dc1f4bef8c"
+      },
+      "targets": {
+        "path": "/work3/s234818/mosaic/runs/20261105-seed41-atom-exchange-pair-01/payload/atom_exchange/targets.json",
+        "bytes": 308461,
+        "sha256": "ff42b7780c54499fefa64100d31bf205a512d0a59f8880469cfdb36ecdb7f700"
+      },
+      "report": {
+        "path": "/work3/s234818/mosaic/runs/20261105-seed41-atom-exchange-pair-01/payload/atom_exchange/study/report.json",
+        "bytes": 10012,
+        "sha256": "b2d083173e5d84dae7ead2ccdff26eedce1c72c63169545e3b4f410e036c42b3"
+      },
+      "validity": {
+        "count": 2001,
+        "native_valid_connected": 1861,
+        "scoped_valid_connected": 1841,
+        "sulfur_scope_excluded": 20,
+        "distinct_native_valid": 2,
+        "distinct_scoped_valid": 1
+      },
+      "update_source_validity": {
+        "count": 2000,
+        "native_valid_connected": 1860,
+        "scoped_valid_connected": 1840,
+        "sulfur_scope_excluded": 20,
+        "distinct_native_valid": 2,
+        "distinct_scoped_valid": 1
+      },
+      "repair_target_churn": {
+        "update_sources": 2000,
+        "adjacent_source_pairs": 1999,
+        "complete_targets": 160,
+        "active_complete_targets": 160,
+        "active_atom_swap_targets": 22,
+        "active_atom_swap_slots": 22,
+        "consecutive_active_pairs": 62,
+        "target_flips": 1,
+        "atom_only_flips": 0,
+        "bond_only_flips": 0,
+        "atom_and_bond_flips": 1,
+        "target_activations": 97,
+        "target_deactivations": 98,
+        "flip_fraction": 0.016129032258064516
+      },
+      "atom_swap_directions": {
+        "S->N": 9,
+        "N->C": 2,
+        "S->C": 11
+      },
+      "first_scoped_step": 63,
+      "scoped_valid_at_endpoint": true,
+      "scoped_valid_final_streak": 8,
+      "relaxed_contact": {
+        "first": 0.3144911527633667,
+        "last": 0.3165622353553772,
+        "best": 0.31744620203971863,
+        "best_native_valid": 0.31738078594207764,
+        "best_scoped_valid": 0.31738078594207764
+      },
+      "hard_contact": {
+        "first": 0.20309558510780334,
+        "last": 0.18664762377738953,
+        "best": 0.2169487178325653,
+        "best_native_valid": 0.20309558510780334,
+        "best_scoped_valid": 0.18664762377738953,
+        "forwards": 21
+      },
+      "best_scoped_hard_step": 100
+    }
+  ],
+  "completed_paris": "2026-11-05T12:34:07+01:00",
+  "lsf_run_seconds": 1663,
+  "observed_utc": "2026-11-05T11:34:45.640872+00:00",
+  "terminal_observation_sha256": "0787ebae30d0386a67ee288eff883da9c599534f08fba20d3c4979974e471d38"
+}

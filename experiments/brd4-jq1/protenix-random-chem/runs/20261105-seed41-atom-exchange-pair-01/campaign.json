@@ -6,7 +6,7 @@
   "plan_sha256": "1f5c60f81b3713b34c65bd6760f7434cbcd59868f0c3b98bfdbaa43c3b3b91c5",
   "parent_proof_sha256": "7574c8c2a49ff28aec634e6ad342053a6df821aa7f0beeb63506eb8a028d2276",
   "tag": "20261105-seed41-atom-exchange-pair-01",
-  "status": "queued",
+  "status": "completed",
   "job_id": "29898292",
   "observed_utc": "2026-11-05T11:03:42.345867+00:00",
   "scheduler": {
@@ -147,5 +147,27 @@
   "atom_exchange": {
     "atom_edit_penalty": 1.0,
     "max_substitutions": 4
+  },
+  "terminal": {
+    "completed_paris": "2026-11-05T12:34:07+01:00",
+    "scheduler": {
+      "returncode": 0,
+      "stdout": "29898292 DONE gpul40s mosaic-20261105-seed41-atom-exchange-pair-01\n",
+      "stderr": ""
+    },
+    "result": {
+      "path": "/work3/s234818/mosaic/runs/20261105-seed41-atom-exchange-pair-01/payload/result.json",
+      "bytes": 2407907,
+      "sha256": "1f0eadf54c38eabe7fc2d5f23646d2d890feb90ca9f79668f90b7c10a40488ae"
+    },
+    "lsf": {
+      "path": "/work3/s234818/mosaic/runs/20261105-seed41-atom-exchange-pair-01/stdout.29898292.log",
+      "bytes": 27898,
+      "sha256": "23fd1ed5a7063713824e8859fe07b2d229ce58f06359a5920b3cea8152a9ae7c"
+    },
+    "verification": {
+      "path": "terminal-verification.json",
+      "sha256": "36388521092cf48a1792aff39b1f2fce59075536958c7cefd8c4b5243f23aca2"
+    }
   }
 }
