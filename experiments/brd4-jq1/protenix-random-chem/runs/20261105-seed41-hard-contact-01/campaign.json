@@ -6,7 +6,7 @@
   "plan_sha256": "eb3de6c46f6d9981c2d224c8b411efc14a4dea63c4d2b1b5c32996d14e72e716",
   "parent_proof_sha256": "948c063157855f7a301e559bbe4031710da926ac20aad366b9804e3f1f270920",
   "tag": "20261105-seed41-hard-contact-01",
-  "status": "queued",
+  "status": "completed",
   "job_id": "29898493",
   "observed_utc": "2026-11-05T11:49:06.895314+00:00",
   "scheduler": {
@@ -168,5 +168,27 @@
   ],
   "rounds": 24,
   "candidate_cap": 768,
-  "accept_margin": 1e-06
+  "accept_margin": 1e-06,
+  "terminal": {
+    "completed_paris": "2026-11-05T13:42:42+01:00",
+    "scheduler": {
+      "returncode": 0,
+      "stdout": "29898493 DONE gpul40s 4*n-62-13-14 mosaic-20261105-seed41-hard-contact-01\n",
+      "stderr": ""
+    },
+    "result": {
+      "path": "/work3/s234818/mosaic/runs/20261105-seed41-hard-contact-01/payload/result.json",
+      "bytes": 411110,
+      "sha256": "d279a1ec92d2dc917e149df72888e47f1c3b9deef909a977926ea88f823dddfb"
+    },
+    "lsf": {
+      "path": "/work3/s234818/mosaic/runs/20261105-seed41-hard-contact-01/stdout.29898493.log",
+      "bytes": 1910,
+      "sha256": "341e165c910862aa36a751d00d77a400aacf03cb3e544ac5296825fcf6edd9ad"
+    },
+    "verification": {
+      "path": "terminal-verification.json",
+      "sha256": "4fc3bbf1b5d4131c2bf713a7d4306211e93f78ebc7a9f12f88351ce3c1aa640a"
+    }
+  }
 }
