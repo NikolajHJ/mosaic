@@ -1,1 +1,20 @@
-#This should be general config. What protein + pocket. Learning rate + 
+# Shared settings for any stage. Paths are relative to this YAML file.
+model: protenix-tiny
+
+protein:
+  structure: ../IL7RA.cif  # Path to a protein PDB or mmCIF file.
+  chain: A
+  use_msa: false  # Enable once the chosen workflow supports protein MSAs.
+
+pocket:
+  # Fill in the target chain's residue numbers as recorded in the structure.
+  # Each entry has the form {number: 42, insertion: ""}.
+  residues: []
+
+initialization:
+  input: null  # Replace with the path to a prepared starting molecule.
+
+epochs: 1000
+learning_rate: 0.01
+seed: 17
+output_dir: ../results/il7ra-run-01  # Choose a new folder for each run.

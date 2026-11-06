@@ -23,3 +23,10 @@ syntax was checked by AST parsing only; runtime behavior remains untested.
 The shared checkout switched branches during editing. The draft was moved
 into the separate mosaic-NewPipeline_draft worktree, on NewPipeline_draft;
 only this task's additions were removed from the other working tree.
+
+### 2026-11-06 — General YAML for the draft molecule runner
+
+Filled `configs/general_config.yaml` on `NewPipeline_draft` in the original
+Mosaic checkout. It points to the existing `IL7RA.cif` protein file (chain A).
+Pocket residues and starting molecule remain explicit placeholders. This is
+configuration only; no experiment was run or submitted.
