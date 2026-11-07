@@ -64,3 +64,13 @@ native run and fresh scores are pending.
 The [submission receipt](../../../outputs/protenix-restart-lr70-20261107a/submission.json)
 records the exact command. The source archive SHA-256 is
 `f5dcdcff5438f8b611f9fb20dc4b9b7df25558f6dfa675d0c9fae624f35ae23e`.
+
+## V100 replacement on 7 November 2026
+
+DTU job **29920256** replaces the original L40S submission **29915688**.
+It requests an exclusive V100 with at least 30 GiB of GPU memory and uses
+the same source snapshot, scientific settings, output path, and six-hour
+wall limit. The scheduler confirmed that the original exited before
+launch. After release, the replacement was pending for a physical GPU
+reservation at 23:42 CET.
+[Requeue receipt](../../../outputs/protenix-restart-lr70-20261107a/v100-requeue-receipt.json).
