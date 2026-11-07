@@ -82,6 +82,24 @@ def test_rejects_changed_fixed_slots_before_native_call(tmp_path):
             native(graph)
 
 
+def test_resident_worker_can_score_an_explicit_same_count_branch(tmp_path):
+    spec, active, leaves, graph = graph_input()
+    other = ~active
+    other_graph = graph_from_decoder(DecoderOutput(*leaves), spec, fixed_active=other)
+    expected = other_graph.atoms[0, other, 1:].mul(2 * torch.arange(1, 10)).sum()
+    expected = expected + other_graph.charges[0, other].mul(3 * torch.arange(1, 6)).sum()
+    expected = expected + other_graph.bonds[0, other][:, other].mul(5 * torch.arange(1, 6)).sum()
+    with scorer(tmp_path, spec, active) as native:
+        with pytest.raises(ValueError, match="prepared ligand count"):
+            native.score_at(other_graph, torch.ones_like(other))
+        with pytest.raises(ValueError, match="slot identity"):
+            native(other_graph)
+        loss, _ = native.score_at(other_graph, other)
+        torch.testing.assert_close(loss, expected)
+        assert all(gradient.isfinite().all() for gradient in torch.autograd.grad(loss, leaves))
+        assert native(graph)[0].isfinite()
+
+
 def test_timeout_terminates_owned_native_process(tmp_path):
     spec,active,_,graph=graph_input()
     native=scorer(tmp_path,spec,active,hang=True)

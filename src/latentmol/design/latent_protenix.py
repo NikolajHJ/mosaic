@@ -157,7 +157,8 @@ def _finite_scalar(value, name):
     return value.reshape(())
 
 
-def evaluate_point(decoder, scorer, point, active, config, step, *, target_bundle=None):
+def evaluate_point(decoder, scorer, point, active, config, step, *, target_bundle=None,
+                   logit_offset=None):
     """Both branches consume one graph; target/weight/T stay fixed in this call."""
     point = point.detach().clone().requires_grad_(True)
     schedule = schedules(config, step)
@@ -166,6 +167,10 @@ def evaluate_point(decoder, scorer, point, active, config, step, *, target_bundl
         decoded, features = decoder.decode_with_features(point)
     else:
         decoded = decoder.decode(point)
+    if logit_offset is not None:
+        if hidden_path:
+            raise ValueError("A logit offset requires the shared graph scorer")
+        decoded = logit_offset(decoded, step)
     for name in ("atoms", "charges", "bonds"):
         if not bool(torch.isfinite(getattr(decoded, name)).all()):
             raise ValueError("Nonfinite decoder logits: " + name)

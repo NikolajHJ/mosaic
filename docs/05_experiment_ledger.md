@@ -22494,3 +22494,11 @@ Source070 29622699 remained RUN; source071 29623874 PEND waits for its end;
 source069 29621180 remained PEND. The search pilot has an eight-hour allocation;
 4-8 hours after it starts is a rough estimate, with queue/dependency uncertainty.
 
+
+7 November 2026 at 13:58 CET. Protenix restart follow-up **29914683** and
+**29914686** completed their first 12-parent panels at LR 150. In the
+first-branch comparison, the latent kick beat all-row 50/50 on 9/12 parents
+with two ties and beat the untouched latent on 7/12. Cap 0.5 beat 0.1 on 11/12
+with mean fresh-loss reductions of 0.261 and 0.122 respectively. Six follow-up
+jobs remain pending. The original constant-1 and constant-10 jobs are running,
+with the ramp pending. [Readout](../experiments/latent-design/protenix-vae/restart-followup.md#first-results-at-1358-cet).

@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Protenix restart experiments · DBMol</title>
+<style>
+:root{color-scheme:light;--bg:#f4f5ef;--card:#fffefa;--ink:#182c27;--muted:#4a625a;--line:#d6dfd7;--grid:#e4eae4;--accent:#126b60;--accent-light:#dfeee7;--warn:#8f5026;--warn-bg:#fae9d7;--shadow:0 5px 20px #23372b08}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,Segoe UI,sans-serif}
+main{width:min(1220px,100%);margin:auto;padding:24px clamp(14px,4vw,46px) 46px}
+header{padding:16px 0 19px;border-bottom:1px solid var(--line)}
+.eyebrow{font-size:12px;letter-spacing:.13em;text-transform:uppercase;font-weight:700;color:var(--accent)}
+h1,h2,h3,p{margin:0}
+h1{font-family:Georgia,serif;font-size:clamp(30px,5vw,50px);line-height:1.1;font-weight:500;margin:5px 0 10px}
+h2{font-size:24px;line-height:1.2}
+h3{font-size:16px}
+.sub,.quiet{color:var(--muted)}
+.small{font-size:13px}
+.header-info,.chips,.controls,.legend{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center}
+.header-info{margin-top:12px}
+.pill{display:inline-flex;align-items:center;gap:5px;padding:3px 8px;border-radius:5px;font-size:12px;font-weight:650;white-space:nowrap;background:#e9eee9;color:#3e584e}
+.status-done{color:#115547;background:#dcefe5}.status-run{color:#244e81;background:#e2ebf9}.status-pend{color:var(--warn);background:var(--warn-bg)}.status-exit{color:#8a2829;background:#f8e0dd}
+nav{display:flex;flex-wrap:wrap;gap:6px;margin:15px 0}
+button,select,input{font:inherit}
+button{color:var(--ink);cursor:pointer}
+nav button,.run-button{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:7px 12px}
+nav button[aria-selected=true]{background:#1d5046;color:white;border-color:#1d5046}
+button:focus-visible,select:focus-visible,input:focus-visible,svg [tabindex]:focus{outline:3px solid #c67835;outline-offset:2px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:clamp(13px,2.4vw,24px);box-shadow:var(--shadow)}
+.sectionhead{display:grid;gap:5px;margin-bottom:16px}
+.controls{gap:10px 14px;margin:0 0 14px;align-items:end}
+.controls label,.slider-label{display:grid;gap:4px;color:var(--muted);font-size:12px;font-weight:650}
+select{min-height:34px;max-width:min(100%,390px);border:1px solid #a9bdb1;border-radius:5px;background:white;color:var(--ink);padding:4px 28px 4px 8px;font-weight:500;font-size:14px}
+.table-wrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{text-align:left;padding:8px 8px;border-bottom:1px solid var(--grid);vertical-align:middle}
+th{color:var(--muted);font-weight:650;font-size:12px}
+tbody tr:last-child td{border-bottom:0}
+.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.run-button{padding:3px 6px;background:transparent;border-color:transparent;text-align:left;color:#126053;font-weight:650}
+.run-button:hover{background:var(--accent-light)}
+.meter{height:6px;min-width:82px;max-width:142px;border-radius:4px;background:#e1e8e1;overflow:hidden;margin-top:3px}
+.meter span{display:block;height:100%;background:var(--accent);border-radius:4px}
+.group-name{padding-top:15px;color:var(--muted);font-size:12px;letter-spacing:.06em;text-transform:uppercase;font-weight:700}
+.plot-wrap{overflow-x:auto;background:#fcfdfa;border:1px solid var(--grid);border-radius:7px;padding:7px;margin:9px 0 13px}
+.plot{display:block;width:100%;min-width:450px}
+.plot text{font:12px system-ui,sans-serif;fill:#435d55}
+.plot .value{fill:#142e25;font-weight:650}
+.plot .axis{stroke:#84998e;stroke-width:1}
+.plot .grid{stroke:#dce6dd;stroke-width:1}
+.plot circle[tabindex]{cursor:pointer}
+.plot .hit-area{cursor:crosshair;fill:transparent}
+.legend{font-size:13px;margin:8px 0 10px}
+.swatch{display:inline-block;width:10px;height:10px;margin-right:5px;border-radius:3px}
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(116px,1fr));gap:7px;margin:10px 0}
+.metric{padding:7px 9px;background:#edf3ed;border-radius:6px;min-height:58px}
+.metric strong{display:block;font-size:18px;font-variant-numeric:tabular-nums}
+.metric span{display:block;color:var(--muted);font-size:12px}
+.empty{border:1px dashed #b6c7bb;background:#f4f8f1;padding:16px;border-radius:7px;color:var(--muted);margin:12px 0}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:10px;margin-top:8px}
+.molecule{border:1px solid var(--line);border-radius:7px;background:#f8faf5;padding:10px;overflow:hidden}
+.molecule img{width:100%;height:114px;object-fit:contain;display:block;border-radius:4px;margin:5px 0}
+code{font:12px/1.45 ui-monospace,Consolas,monospace;overflow-wrap:anywhere}
+.mono-block{display:block;padding:5px 0;min-height:28px}
+.slider-label{margin:5px 0}
+input[type=range]{width:100%;accent-color:var(--accent)}
+.playback{display:grid;gap:8px;margin:14px 0 7px}
+.playback-controls{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.playback-controls button{min-height:32px;padding:4px 10px;border:1px solid #a9bdb1;border-radius:5px;background:white}
+.playback-controls #play{background:#1d5046;color:white;border-color:#1d5046;min-width:70px}
+.playback-controls button:disabled{opacity:.5;cursor:default}
+.speed-control{display:flex;align-items:center;gap:5px;margin-left:5px;color:var(--muted);font-size:12px}
+.speed-control select{min-height:30px;padding:2px 6px}
+.structure-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.17fr);gap:10px;margin:11px 0}
+.structure-panel{border:1px solid var(--line);border-radius:7px;padding:10px;background:#fbfcf7;min-width:0}
+.structure-panel.current{background:#f1f7ee;border-color:#a9c6b8}
+.structure-panel header{border:0;padding:0;min-height:50px}
+.structure-panel header p{margin-top:2px}
+.structure-svg{display:block;width:100%;height:clamp(150px,26vw,240px);background:#fffefa;border:1px solid var(--grid);border-radius:5px}
+.structure-svg line{stroke:#45574c;stroke-linecap:round}
+.structure-svg text{font-family:system-ui,Segoe UI,sans-serif;font-weight:700;paint-order:stroke;stroke:#fffefa;stroke-width:4px;stroke-linejoin:round}
+.structure-svg .atom-charge{stroke-width:2px;font-size:10px}
+.structure-panel code{display:block;margin-top:7px}
+.structure-panel .empty{min-height:154px;display:grid;align-content:center;margin:0}
+.molecule .structure-svg{height:125px;margin:5px 0}
+.frame-index{color:var(--muted);font-variant-numeric:tabular-nums}
+.molecule-controls{margin-top:5px}
+.status-invalid{color:#8a2829;background:#f8e0dd}
+.tree-grid{display:grid;grid-template-columns:minmax(0,2fr) minmax(280px,1fr);gap:12px;align-items:start}
+.tree-panel{border:1px solid var(--line);border-radius:8px;background:#fbfcf8;min-width:0;overflow:hidden}
+.tree-tools{display:flex;flex-wrap:wrap;gap:6px;padding:8px;border-bottom:1px solid var(--grid)}
+.tree-tools button{background:white;border:1px solid #a9bdb1;border-radius:5px;padding:3px 8px}
+.tree-tools button:disabled{opacity:.45;cursor:default}
+.tree-stage{position:relative;height:clamp(420px,61vh,620px);background:#f9fbf5}
+.tree-stage canvas{display:block;width:100%;height:100%;cursor:grab;touch-action:none}
+.tree-stage canvas[data-dragging=true]{cursor:grabbing}
+.tree-stage canvas:focus-visible{outline:3px solid #c67835;outline-offset:-3px}
+.tree-direction{position:absolute;left:10px;bottom:7px;color:var(--muted);font-size:11px;pointer-events:none;background:#f9fbf5dd;padding:2px 5px;border-radius:3px}
+.tree-note{padding:8px 10px;color:var(--muted);font-size:12px}
+.tree-side{display:grid;gap:9px;min-width:0}
+.tree-inspector{padding:11px;border:1px solid var(--line);border-radius:8px;background:#f8faf4;min-width:0}
+.tree-inspector .structure-svg{height:190px;margin:6px 0}
+.tree-inspector .pill{vertical-align:middle;margin-left:4px}
+.tree-node-meta{margin:4px 0}
+.tree-path .playback-controls{margin:5px 0}
+.tree-legend{margin:8px 0;color:var(--muted)}
+.tree-legend .swatch{border-radius:50%;border:1px solid #314d3d33}
+.tree-valid{background:#178553}.tree-invalid{background:#eac73b}.tree-selected{background:#22738d}
+.tree-invalid-label{color:#695000;background:#fbefb6}
+@media(max-width:900px){.tree-grid{grid-template-columns:minmax(0,1.3fr) minmax(225px,1fr)}.tree-stage{height:470px}}
+@media(max-width:620px){.tree-grid{grid-template-columns:1fr}.tree-side{grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr))}.tree-stage{height:410px}}
+details{margin-top:14px}
+summary{cursor:pointer;font-weight:650;color:var(--accent)}
+footer{padding-top:15px;color:var(--muted);font-size:12px}
+hr{border:0;border-top:1px solid var(--line);margin:16px 0}
+@media(max-width:580px){main{padding-top:10px}.hide-small{display:none}.panel{padding:12px}th,td{padding:7px 5px}.controls label{flex:1 1 135px}select{width:100%}.header-info{gap:8px}.structure-grid{grid-template-columns:1fr}.structure-panel.current{order:-1}.speed-control select{width:auto}}
+</style>
+</head>
+<body>
+<main>
+<header>
+  <div class="eyebrow">DBMol · BRD4 / Protenix</div>
+  <h1>Protenix restart experiments</h1>
+  <p class="sub">Fresh scores, valid molecules, and the paths that produced them.</p>
+  <div class="header-info" id="header-info"></div>
+</header>
+<nav role="tablist" aria-label="Report views">
+  <button type="button" role="tab" id="tab-overview" aria-controls="overview" aria-selected="true">Overview</button>
+  <button type="button" role="tab" id="tab-comparisons" aria-controls="comparisons" aria-selected="false">Matched comparisons</button>
+  <button type="button" role="tab" id="tab-trees" aria-controls="trees" aria-selected="false">Run trees</button>
+  <button type="button" role="tab" id="tab-trajectories" aria-controls="trajectories" aria-selected="false">Trajectories</button>
+  <button type="button" role="tab" id="tab-archives" aria-controls="archives" aria-selected="false">Elite archives</button>
+</nav>
+<section class="panel" id="overview" role="tabpanel" aria-labelledby="tab-overview">
+  <div class="sectionhead"><h2>Run status</h2><p class="quiet">Open a run to inspect its saved trajectories. Update counts reflect the captured logs.</p></div>
+  <div id="overview-content"></div>
+</section>
+<section class="panel" id="comparisons" role="tabpanel" aria-labelledby="tab-comparisons" hidden>
+  <div class="sectionhead"><h2>Matched comparisons</h2><p class="quiet">Fresh Protenix FILE contact loss on valid hard molecules. A positive reduction is an improvement over the same parent.</p></div>
+  <div class="controls" id="comparison-controls"></div>
+  <div id="comparison-content"></div>
+</section>
+<section class="panel" id="trees" role="tabpanel" aria-labelledby="tab-trees" hidden>
+  <div class="sectionhead"><h2>Run trees</h2><p class="quiet">Initial states sit at the bottom. Each branch grows upward through distinct hard states. Select a leaf to trace its ancestry.</p></div>
+  <div class="controls" id="tree-controls"></div>
+  <div id="tree-content"></div>
+</section>
+<section class="panel" id="trajectories" role="tabpanel" aria-labelledby="tab-trajectories" hidden>
+  <div class="sectionhead"><h2>Molecule trajectory player</h2><p class="quiet">Choose an experiment and branch, then play or scrub the saved frames. The molecule, validity, and score track the selected update.</p></div>
+  <div class="controls" id="trajectory-controls"></div>
+  <div id="trajectory-content"></div>
+</section>
+<section class="panel" id="archives" role="tabpanel" aria-labelledby="tab-archives" hidden>
+  <div class="sectionhead"><h2>Elite archives</h2><p class="quiet">Only cycles with a saved archive contribute fresh scores. Lower is better.</p></div>
+  <div class="controls" id="archive-controls"></div>
+  <div id="archive-content"></div>
+</section>
+<footer id="footer"></footer>
+</main>
+<script type="application/json" id="snapshot">__SNAPSHOT_JSON__</script>
+<script type="application/octet-stream" id="tree-payload">__TREE_PAYLOAD__</script>
+<script>__REPORT_JAVASCRIPT__</script>
+</body>
+</html>

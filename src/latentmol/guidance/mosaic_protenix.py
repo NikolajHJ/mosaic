@@ -148,14 +148,22 @@ class MosaicProtenixScorer:
         return response
 
     def __call__(self, graph: RelaxedGraph):
+        return self.score_at(graph, self.active)
+
+    def score_at(self, graph: RelaxedGraph, active):
+        """Score a branch's explicit slot map in the same fixed-count native context."""
+        active = torch.as_tensor(active)
+        if (active.dtype != torch.bool or active.shape != self.active.shape
+                or int(active.sum()) != int(self.active.sum())):
+            raise ValueError("Protenix branch slot mask must preserve the prepared ligand count")
         n, a, q, e = self.spec.max_nodes, len(self.spec.atomic_numbers), len(self.spec.formal_charges), len(self.spec.bond_names)
         if tuple(graph.atoms.shape)!=(1,n,a) or tuple(graph.charges.shape)!=(1,n,q) or tuple(graph.bonds.shape)!=(1,n,n,e):
             raise ValueError("Protenix requires exactly one shared-schema graph")
-        mask = self.active.to(graph.atoms.device)
+        mask = active.to(graph.atoms.device)
         arrays = (graph.atoms[0,mask,1:], graph.charges[0,mask], graph.bonds[0,mask][:,mask])
         if any(value.dtype != torch.float32 or value.device != arrays[0].device for value in arrays):
             raise ValueError("Native bridge requires common-device FP32 probabilities")
-        if not torch.equal(self.active, (graph.occupancy[0].detach().cpu() > .5)):
+        if not torch.equal(mask, (graph.occupancy[0].detach() > .5)):
             raise ValueError("Protenix active slot identity changed")
         for values in arrays:
             if not values.is_floating_point() or not bool(torch.isfinite(values).all()) or bool((values < 0).any()):

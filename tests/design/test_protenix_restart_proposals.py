@@ -1,0 +1,79 @@
+import pytest
+import torch
+from torch.nn import functional as F
+
+from latentmol.chemistry import inspect_graph
+from latentmol.design.latent_protenix import hard_from_graph
+from latentmol.design.protenix_restart_proposals import propose_start
+from latentmol.design.protenix_restarts import Candidate
+from latentmol.graph_policy import graph_from_decoder
+from latentmol.representation import DecoderOutput, GraphSpec
+
+
+class Decoder:
+    spec = GraphSpec(max_nodes=5)
+
+    def decode(self, latent):
+        atoms = F.one_hot(torch.tensor([[1, 1, 1, 1, 0]]), len(self.spec.atomic_numbers)).float() * 3
+        atoms[0, 0, 3] = 2.98 + latent[0, 0]
+        charges = F.one_hot(torch.full((1, 5), 2), len(self.spec.formal_charges)).float() * 6
+        bond_labels = torch.zeros((1, 5, 5), dtype=torch.long)
+        for i in range(3):
+            bond_labels[0, i, i + 1] = bond_labels[0, i + 1, i] = 1
+        bonds = F.one_hot(bond_labels, len(self.spec.bond_names)).float() * 6
+        return DecoderOutput(atoms, charges, bonds)
+
+
+@pytest.fixture
+def inputs():
+    decoder = Decoder()
+    latent = torch.zeros(1, 4)
+    active = torch.tensor([True, True, True, True, False])
+    graph = graph_from_decoder(decoder.decode(latent), decoder.spec, fixed_active=active)
+    hard = hard_from_graph(graph)
+    smiles = inspect_graph(hard.atoms[0], hard.charges[0], hard.bonds[0], decoder.spec).smiles
+    return decoder, Candidate(smiles, latent, hard, 0.0, "fixture", 0), active
+
+
+def test_sparse_leaves_none_rows_unchanged_and_fades(inputs):
+    decoder, parent, active = inputs
+    point, offset, receipt = propose_start(*inputs, policy="sparse", seed=2)
+    base = decoder.decode(point)
+    graph = graph_from_decoder(offset(base, 0), decoder.spec, fixed_active=active)
+    original = graph_from_decoder(base, decoder.spec, fixed_active=active)
+    torch.testing.assert_close(graph.bonds[parent.hard.bonds == 0], original.bonds[parent.hard.bonds == 0],
+                               rtol=0, atol=0)
+    assert torch.equal(graph.bonds, graph.bonds.transpose(1, 2))
+    assert receipt["proposal"]["edit_count"] == 0
+    assert len(receipt["perturbed_atom_slots"]) == 3
+    assert len(receipt["perturbed_bonds"]) == 2
+    assert offset(base, 25) is base
+
+
+def test_latent_policy_is_seeded_and_prefers_a_valid_edit(inputs):
+    point, offset, receipt = propose_start(*inputs, policy="latent", seed=3)
+    other, _, repeat = propose_start(*inputs, policy="latent", seed=3)
+    assert offset is None
+    assert receipt["attempted"] == 12
+    assert receipt["proposal"]["edit_count"] == 1
+    assert receipt["proposal"]["valid"] and receipt["proposal"]["different"]
+    assert receipt == repeat
+    torch.testing.assert_close(point, other, rtol=0, atol=0)
+    assert receipt["latent_displacement"] == pytest.approx(receipt["proposal"]["radius"])
+
+
+def test_all_row_preserves_parent_but_inflates_soft_nonbonds(inputs):
+    _, offset, receipt = propose_start(*inputs, policy="all-row", seed=2)
+    assert offset is not None
+    assert receipt["proposal"]["edit_count"] == 0
+    assert receipt["proposal"]["soft_bonds"] > 3
+    _, no_offset, control = propose_start(*inputs, policy="none", seed=2)
+    assert no_offset is None
+    assert control["proposal"] == control["parent"]
+
+
+def test_pre_fade_parent_cannot_silently_change_identity(inputs):
+    decoder, parent, active = inputs
+    parent.latent[0, 0] = 1
+    with pytest.raises(ValueError, match="does not reproduce saved graph"):
+        propose_start(decoder, parent, active, policy="latent", seed=2)

@@ -46,7 +46,13 @@ def score_topology(native, mol, retained_atoms, protein_sequence, pocket_residue
     params.numThreads = 1
     if geometry_max_iterations is not None:
         params.maxIterations = geometry_max_iterations
-    if AllChem.EmbedMolecule(embedded, params) != 0:
+    try:
+        embed_status = AllChem.EmbedMolecule(embedded, params)
+    except RuntimeError as exc:
+        if "Invariant Violation" not in str(exc) or "upper bound not greater than lower bound" not in str(exc):
+            raise
+        raise ReferenceGeometryError(f"ETKDG failed for topology {mol_path}: inconsistent distance bounds") from exc
+    if embed_status != 0:
         raise ReferenceGeometryError(f"ETKDG failed for topology {mol_path}")
     embedded = Chem.RemoveHs(embedded)
     if embedded.GetNumAtoms() != size or not embedded.GetConformer().Is3D():

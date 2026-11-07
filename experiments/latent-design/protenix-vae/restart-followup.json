@@ -1,0 +1,71 @@
+{
+  "design": {
+    "updates": 500,
+    "schedule_horizon": 500,
+    "seed": 17,
+    "noise_seed": 230017,
+    "occupied_atoms": 25,
+    "learning_rate": 150.0,
+    "max_step_norm": 0.5,
+    "chemistry_initial": 1.0,
+    "chemistry_final": 1.0,
+    "chemistry_hold": 375,
+    "chemistry_ramp_end": 500,
+    "temperature_initial": 1.0,
+    "temperature_final": 1.0,
+    "noise_initial": 0.0,
+    "noise_zero_at": 500
+  },
+  "parent_cohorts": [
+    "/work3/s234818/latentmol/runs/flow-followup-20261106a-520000",
+    "/work3/s234818/latentmol/runs/flow-followup-20261106a-530000",
+    "/work3/s234818/latentmol/runs/flow-followup-20261106a-540000"
+  ],
+  "panel_size": 24,
+  "panel_seed": 982701,
+  "prior_seed": 985000,
+  "perturbation_seed": 983001,
+  "comparisons": {
+    "mutation": {
+      "parents": 12,
+      "compare_shortlists": true,
+      "variants": {
+        "untouched": {"policy": "none", "updates": [96], "shortlist": 6},
+        "all-row": {"policy": "all-row", "updates": [96, 96], "shortlist": 6},
+        "latent": {"policy": "latent", "updates": [96, 96], "shortlist": 6},
+        "sparse": {"policy": "sparse", "updates": [96, 96], "shortlist": 6}
+      }
+    },
+    "cap": {
+      "parents": 12,
+      "variants": {
+        "cap-01": {"policy": "latent", "updates": [128, 128], "shortlist": 6, "cap": 0.1},
+        "cap-05": {"policy": "latent", "updates": [128, 128], "shortlist": 6, "cap": 0.5}
+      }
+    },
+    "duration": {
+      "parents": 8,
+      "variants": {
+        "four-short": {"policy": "latent", "updates": [124, 124, 124, 124], "shortlist": 4},
+        "one-long": {"policy": "latent", "updates": [499], "shortlist": 16}
+      }
+    },
+    "lineage": {
+      "parents": 3,
+      "cycles": 5,
+      "branches_per_parent": 3,
+      "updates": 96,
+      "shortlist": 4
+    }
+  },
+  "tasks": {
+    "mutation-a": {"comparison": "mutation", "panel_offset": 0},
+    "mutation-b": {"comparison": "mutation", "panel_offset": 12},
+    "cap-a": {"comparison": "cap", "panel_offset": 0},
+    "cap-b": {"comparison": "cap", "panel_offset": 12},
+    "duration-a": {"comparison": "duration", "panel_offset": 0},
+    "duration-b": {"comparison": "duration", "panel_offset": 12},
+    "lineage-a": {"comparison": "lineage", "panel_offset": 0},
+    "lineage-b": {"comparison": "lineage", "panel_offset": 12}
+  }
+}
