@@ -11,6 +11,7 @@ from pathlib import Path
 from latentmol.design.latent_protenix import LatentDesignConfig, _model_identity
 from latentmol.design.protenix_restart_parents import RestartParent, load_parent_panel, make_prior_parent
 from latentmol.design.protenix_restart_proposals import propose_start
+from latentmol.design.protenix_restart_selection import select_candidates
 from latentmol.design.protenix_restarts import (
     fresh_score_records, native_factory, restart_args, run_branch, write_json,
 )
@@ -53,19 +54,6 @@ def paired_branches(parents, comparison, design, seed):
             for repeat, updates in enumerate(variant["updates"]):
                 yield Branch(arm, parent, index, repeat, seed + 100 * index + repeat,
                     updates, variant.get("cap", design.max_step_norm), variant["policy"], variant["shortlist"])
-
-
-def select_candidates(ranked, limit, compare):
-    relaxed = ranked[:limit]
-    count = (limit + 1) // 2
-    top = ranked[:count]
-    remaining = sorted(ranked[count:], key=lambda row: (row.step, row.smiles))
-    slots = min(limit - len(top), len(remaining))
-    timed = [remaining[(2 * i + 1) * len(remaining) // (2 * slots)] for i in range(slots)]
-    selected = {"mixed": top + timed}
-    if compare:
-        selected["relaxed"] = relaxed
-    return selected
 
 
 def parent_record(parent):

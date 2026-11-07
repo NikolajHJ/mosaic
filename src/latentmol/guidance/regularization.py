@@ -32,7 +32,7 @@ import torch
 from torch import Tensor
 from torch.nn import functional as F
 
-from latentmol.representation import DecoderOutput, GraphSpec
+from latentmol.representation import DecoderOutput, GraphSpec, RelaxedGraph
 
 
 RULE_VERSION = "rdkit_book_2024_09_1_explicit_charge_v1"
@@ -212,6 +212,55 @@ def capped_bond_order_distribution(edge_orders: Tensor, cap: int) -> tuple[Tenso
     return low, overflow_mass, overflow_moment
 
 
+def _bond_order_rows(bonds: Tensor, spec: GraphSpec) -> Tensor:
+    indices = {name: index for index, name in enumerate(spec.bond_names)}
+    none = bonds[..., indices["NONE"]]
+    zero = torch.zeros_like(none)
+    single = bonds[..., indices["SINGLE"]] if "SINGLE" in indices else zero
+    aromatic = bonds[..., indices["AROMATIC"]] if "AROMATIC" in indices else zero
+    double = bonds[..., indices["DOUBLE"]] if "DOUBLE" in indices else zero
+    triple = bonds[..., indices["TRIPLE"]] if "TRIPLE" in indices else zero
+    return torch.stack((none, single + aromatic, double, triple), dim=-1)
+
+
+def _local_valence_defects(atoms: Tensor, charges: Tensor, edge_orders: Tensor,
+                           spec: GraphSpec) -> tuple[Tensor, Tensor, Tensor, Tensor, Tensor]:
+    max_cap = max(max(values) for element in spec.atomic_numbers[1:]
+                  for charge in spec.formal_charges
+                  if (values := ALLOWED_VALENCES[element][charge]) is not None)
+    low, overflow_mass, overflow_moment = capped_bond_order_distribution(edge_orders, max_cap)
+    states = torch.arange(max_cap + 1, device=atoms.device, dtype=atoms.dtype)
+    excess_by_cap = {
+        cap: (low * (states - cap).clamp_min(0)).sum(-1) + overflow_moment - cap * overflow_mass
+        for cap in range(max_cap + 1)
+    }
+    local_excess = torch.zeros_like(atoms[..., 0])
+    unsupported = torch.zeros_like(local_excess)
+    for atom_index, element in enumerate(spec.atomic_numbers[1:], start=1):
+        for charge_index, charge in enumerate(spec.formal_charges):
+            joint = atoms[..., atom_index] * charges[..., charge_index]
+            allowed = ALLOWED_VALENCES[element][charge]
+            if allowed is None:
+                unsupported = unsupported + joint
+            else:
+                local_excess = local_excess + joint * excess_by_cap[max(allowed)]
+    return local_excess, unsupported, low, overflow_mass, overflow_moment
+
+
+def fixed_occupancy_valence_excess(graph: RelaxedGraph, spec: GraphSpec, active: Tensor) -> Tensor:
+    """Use the shared fixed-slot graph's categorical bond law on active pairs."""
+    _validate_spec(spec)
+    if active.dtype != torch.bool or active.shape != (spec.max_nodes,) or not bool(active.any()):
+        raise ValueError("Valence excess requires a nonempty fixed slot mask")
+    atoms = graph.atoms[:, active]
+    charges = graph.charges[:, active]
+    bonds = graph.bonds[:, active][:, :, active]
+    # On fixed active pairs the graph already represents the conditional law.
+    # Inactive neighbors and diagonal pairs have exactly zero bond order.
+    local_excess, *_ = _local_valence_defects(atoms, charges, _bond_order_rows(bonds, spec), spec)
+    return local_excess.mean() / 3
+
+
 def chemistry_regularization_losses(output: DecoderOutput, spec: GraphSpec,
                                     config: ChemistryRegularizationConfig | None = None, *,
                                     temperature: float = 1.0, reference_size: Tensor | None = None) -> dict:
@@ -241,36 +290,16 @@ def chemistry_regularization_losses(output: DecoderOutput, spec: GraphSpec,
     diagonal = torch.eye(n, device=atoms.device, dtype=torch.bool)
     neighbor_occupancy = occupancy[:, None, :].expand(batch, n, n).masked_fill(diagonal, 0)
     order = {name: index for index, name in enumerate(spec.bond_names)}
-    none_probability = bonds[..., order["NONE"]]
     real_edge_probability = bonds[..., 1:].sum(-1)
-    zero = torch.zeros_like(none_probability)
+    zero = torch.zeros_like(real_edge_probability)
     aromatic = bonds[..., order["AROMATIC"]] if "AROMATIC" in order else zero
-    single = bonds[..., order["SINGLE"]] if "SINGLE" in order else zero
-    double = bonds[..., order["DOUBLE"]] if "DOUBLE" in order else zero
-    triple = bonds[..., order["TRIPLE"]] if "TRIPLE" in order else zero
-    edge_orders = torch.stack(((1 - neighbor_occupancy) + neighbor_occupancy * none_probability,
-                               neighbor_occupancy * (single + aromatic),
+    none, single, double, triple = _bond_order_rows(bonds, spec).unbind(-1)
+    edge_orders = torch.stack(((1 - neighbor_occupancy) + neighbor_occupancy * none,
+                               neighbor_occupancy * single,
                                neighbor_occupancy * double,
                                neighbor_occupancy * triple), dim=-1)
-    max_cap = max(max(values) for element in spec.atomic_numbers[1:]
-                  for charge in spec.formal_charges
-                  if (values := ALLOWED_VALENCES[element][charge]) is not None)
-    low, overflow_mass, overflow_moment = capped_bond_order_distribution(edge_orders, max_cap)
-    states = torch.arange(max_cap + 1, device=atoms.device, dtype=atoms.dtype)
-    excess_by_cap = {
-        cap: (low * (states - cap).clamp_min(0)).sum(-1) + overflow_moment - cap * overflow_mass
-        for cap in range(max_cap + 1)
-    }
-    local_excess = torch.zeros_like(occupancy)
-    unsupported = torch.zeros_like(occupancy)
-    for atom_index, element in enumerate(spec.atomic_numbers[1:], start=1):
-        for charge_index, charge in enumerate(spec.formal_charges):
-            joint = atoms[..., atom_index] * charges[..., charge_index]
-            allowed = ALLOWED_VALENCES[element][charge]
-            if allowed is None:
-                unsupported = unsupported + joint
-            else:
-                local_excess = local_excess + joint * excess_by_cap[max(allowed)]
+    local_excess, unsupported, low, overflow_mass, overflow_moment = _local_valence_defects(
+        atoms, charges, edge_orders, spec)
     # Under independent occupied-slot draws these are exact probabilities;
     # no divisions by tiny spectral gaps or soft connectivity determinants.
     absent = atoms[..., 0]

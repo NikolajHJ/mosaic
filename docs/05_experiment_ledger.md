@@ -22509,3 +22509,10 @@ hard bonds immediately after a valid 27-bond parent. In completed panel
 25-update fade. The sparse and screened latent branches never exceeded 40.
 The sampled very dense states had zero chemistry loss when repair returned
 no witness. [Audit and LR 70 pilot](../experiments/latent-design/protenix-vae/restart-lr70.md).
+
+7 November 2026. Protenix duration panel **29914688** finished 7,960 updates
+over eight matched parents. Four shorter branches averaged a best fresh-loss
+reduction of 0.28638 versus 0.27082 for one longer branch. Each arm won on
+four parents. The follow-up fixes the user-requested 1,000 updates per branch
+and varies the restart, step cap, chemistry, and selection policies.
+[Six-cycle comparison](../experiments/latent-design/protenix-vae/restart-lr70-six-cycle.md).

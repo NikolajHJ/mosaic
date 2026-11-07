@@ -3,8 +3,8 @@
 Only ``z`` changes. The native scorer is injected, keeping this loop independent
 of Protenix process ownership. Repair search is detached; its accepted witness
 supplies the existing fixed-occupancy categorical NLL. A failed search or an
-already-valid graph has no repair target, and this is recorded rather than
-inventing a distance or silently enabling another chemistry objective.
+already-valid graph has no repair target. An explicit optional valence term
+acts on the same probability graph independently of the repair target.
 
 Each invocation writes a NEW segment directory. ``state.pt`` can resume the
 same global trajectory in another directory, retaining the latent/noise stream
@@ -28,6 +28,7 @@ from latentmol.chemistry import inspect_graph
 from latentmol.evaluation.evaluate import load_model
 from latentmol.experiments import file_sha256
 from latentmol.graph_policy import graph_from_decoder
+from latentmol.guidance.regularization import fixed_occupancy_valence_excess
 from latentmol.guidance.repair_proposals import RepairProposalConfig, search_with_proposals
 from latentmol.probability_repair import ProbabilityRepairConfig
 from latentmol.repair_guidance.loss import FrozenRepairTarget, fixed_target_nll
@@ -63,6 +64,7 @@ class LatentDesignConfig:
     repair_search: dict = field(default_factory=lambda: dict(max_edits=3, checks_per_depth=32,
         beam_width=4, probability_weight=1., probability_floor=1e-12))
     structural_proposals: dict = field(default_factory=lambda: asdict(RepairProposalConfig()))
+    valence_excess_weight: float = 0.
 
     def __post_init__(self):
         if self.version != VERSION:
@@ -78,6 +80,9 @@ class LatentDesignConfig:
             v = getattr(self, name)
             if isinstance(v, bool) or not math.isfinite(v) or v <= 0:
                 raise ValueError("Require finite positive " + name)
+        v = self.valence_excess_weight
+        if isinstance(v, bool) or not math.isfinite(v) or v < 0:
+            raise ValueError("Require finite nonnegative valence_excess_weight")
         if not (0 <= self.noise_initial <= 1 and 0 <= self.chemistry_hold < self.chemistry_ramp_end
                 <= self.schedule_horizon and 0 < self.noise_zero_at <= self.schedule_horizon
                 and self.updates <= self.schedule_horizon):
@@ -90,7 +95,11 @@ class LatentDesignConfig:
         return cls(**raw.get("design", raw))
 
     def identity(self):
-        return hashlib.sha256(json.dumps(asdict(self), sort_keys=True).encode()).hexdigest()
+        payload = asdict(self)
+        if not self.valence_excess_weight:
+            # Old checkpoints authenticated the config before this opt-in field.
+            del payload["valence_excess_weight"]
+        return hashlib.sha256(json.dumps(payload, sort_keys=True).encode()).hexdigest()
 
     @property
     def temperature_end_step(self):
@@ -193,11 +202,24 @@ def evaluate_point(decoder, scorer, point, active, config, step, *, target_bundl
         chemistry, detail = fixed_target_nll(decoded, graph, target, decoder.spec,
             temperature=schedule["temperature"], normalization="mean_per_decision")
         detail["target_available"] = True
+    valence_details = {}
+    valence_norms = {}
+    if config.valence_excess_weight:
+        valence = _finite_scalar(fixed_occupancy_valence_excess(graph, decoder.spec, active), "Valence excess")
+        valence_gradient, = torch.autograd.grad(valence, point, retain_graph=True, allow_unused=True)
+        if valence_gradient is None or not bool(valence_gradient.isfinite().all()):
+            raise ValueError("Missing/nonfinite valence excess latent path")
+        valence_norm = float(valence_gradient.norm())
+        valence_details = dict(valence_excess=valence.detach(), valence_excess_gradient=valence_gradient.detach())
+        valence_norms = dict(valence_excess=valence_norm,
+                             weighted_valence_excess=config.valence_excess_weight*valence_norm)
     chemistry = _finite_scalar(chemistry, "Chemistry objective")
     chemistry_gradient, = torch.autograd.grad(chemistry, point, allow_unused=True)
     if chemistry_gradient is None or not bool(chemistry_gradient.isfinite().all()):
         raise ValueError("Missing/nonfinite chemistry latent path")
     gradient = binding_gradient + schedule["chemistry_weight"]*chemistry_gradient
+    if config.valence_excess_weight:
+        gradient = gradient + config.valence_excess_weight*valence_gradient
     if not bool(gradient.isfinite().all()):
         raise ValueError("Nonfinite combined latent gradient")
     binding_norm = float(binding_gradient.norm())
@@ -210,7 +232,7 @@ def evaluate_point(decoder, scorer, point, active, config, step, *, target_bundl
         repair_detail=detail, schedule=schedule, target_bundle=(target, repair),
         gradient_norms=dict(binding=binding_norm, chemistry=chemistry_norm,
             weighted_chemistry=schedule["chemistry_weight"]*chemistry_norm,
-            combined=float(gradient.norm()), cosine=cosine))
+            combined=float(gradient.norm()), cosine=cosine, **valence_norms), **valence_details)
 
 
 def latent_step(point, binding_gradient, gradient, config, step, generator):
@@ -381,6 +403,10 @@ def run_design(decoder, scorer_factory, config, output, *, checkpoint_sha256,
             latent_displacement=float((point-initial).norm()),latent_norm=float(point.norm()),
             temperature=evaluation["schedule"]["temperature"],noise_ratio=evaluation["schedule"]["noise_ratio"],
             raw_valid=inspected.smiles is not None,endpoint=endpoint,native_aux=evaluation["native_aux"])
+        if config.valence_excess_weight:
+            value = float(evaluation["valence_excess"])
+            metric["score"]["valence_excess"] = dict(loss=value, applied_weight=config.valence_excess_weight)
+            metric["score"]["loss"] += config.valence_excess_weight*value
         metrics.write(json.dumps(metric,allow_nan=False)+"\n");metrics.flush()
         candidate=dict(step=step,kind="argmax",draw=0,valid=inspected.smiles is not None,
             smiles=inspected.smiles,failure=inspected.failure_reason)
@@ -411,6 +437,8 @@ def run_design(decoder, scorer_factory, config, output, *, checkpoint_sha256,
                     # prediction or training of an unrecorded side trajectory.
                     for weight in (1.,10.):
                         g=evaluation["binding_gradient"]+weight*evaluation["chemistry_gradient"]
+                        if config.valence_excess_weight:
+                            g = g + config.valence_excess_weight*evaluation["valence_excess_gradient"]
                         diagnostics[str(weight)]=dict(finite=bool(g.isfinite().all()),
                             binding_gradient_norm=evaluation["gradient_norms"]["binding"],
                             chemistry_gradient_norm=evaluation["gradient_norms"]["chemistry"],

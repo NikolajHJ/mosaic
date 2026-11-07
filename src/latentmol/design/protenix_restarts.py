@@ -119,6 +119,7 @@ def run_branch(decoder, scorer, config, output, latent, active, *, parent=None,
     else:
         latent, offset, diagnostics = proposal
     write_json(output / "start.json", dict(parent=None if parent is None else parent.smiles,
+               parent_source=None if parent is None else dict(branch=parent.branch, step=parent.step),
                perturbation_seed=perturbation_seed, fade_updates=fade_updates if offset else 0,
                proposal=diagnostics))
     raw = RawBlocks(output / "raw-blocks", decoder.spec.max_nodes, 100)
@@ -148,10 +149,14 @@ def run_branch(decoder, scorer, config, output, latent, active, *, parent=None,
                     latent, update = latent_step(latent, evaluation["binding_gradient"],
                                                  evaluation["gradient"], config, step, noise)
                     bounded_steps += update["bound_factor"] < 1
-                metrics.write(json.dumps(dict(step=step, smiles=smiles, raw_valid=valid,
+                record = dict(step=step, smiles=smiles, raw_valid=valid,
                     failure=checked.failure_reason, relaxed_loss=binding, chemistry_loss=float(evaluation["chemistry"]),
                     repair_status=evaluation["repair"]["status"], chemistry_weight=evaluation["schedule"]["chemistry_weight"],
-                    gradient_norms=evaluation["gradient_norms"], update=update), allow_nan=False) + "\n")
+                    gradient_norms=evaluation["gradient_norms"], update=update)
+                if "valence_excess" in evaluation:
+                    record["valence_excess"] = float(evaluation["valence_excess"])
+                    record["valence_excess_weight"] = config.valence_excess_weight
+                metrics.write(json.dumps(record, allow_nan=False) + "\n")
     finally:
         raw.flush()
     ranked = sorted(candidates.values(), key=lambda row: (row.relaxed_loss, row.smiles))
@@ -166,14 +171,30 @@ def run_branch(decoder, scorer, config, output, latent, active, *, parent=None,
 
 def run_campaign(decoder, scorer_factory, fresh_score, design, output, *, cycles, elite_count,
                  branches_per_elite, fade_updates, shortlist_limit, perturbation_seed,
-                 restart_policy="all-row"):
+                 restart_policy="all-row", shortlist_policy="relaxed",
+                 parent_policy="top", audit_chemistry=False):
     from latentmol.design.protenix_restart_proposals import POLICIES, propose_start
+    from latentmol.design.protenix_restart_selection import (
+        audit_molecule, select_candidates, select_restart_parents,
+    )
 
     if not (cycles > 0 and elite_count > 0 and branches_per_elite > 0
             and 0 < fade_updates < design.updates and shortlist_limit >= elite_count):
         raise ValueError("Invalid restart campaign budget")
     if restart_policy not in POLICIES:
         raise ValueError(f"Unknown restart policy: {restart_policy}")
+    if shortlist_policy not in {"relaxed", "mixed"} or parent_policy not in {"top", "diverse"}:
+        raise ValueError("Unknown shortlist or restart parent policy")
+
+    def shortlist_candidates(rows, limit):
+        return select_candidates(rows, limit, compare=False)["mixed"]
+
+    def archive_entry(row, loss):
+        entry = row.record(loss)
+        if audit_chemistry:
+            entry["chemistry_audit"] = audit_molecule(row.smiles)
+        return entry
+
     output.mkdir(parents=True)
     decoder.eval().requires_grad_(False)
     if any(p.grad is not None for p in decoder.parameters()):
@@ -186,13 +207,15 @@ def run_campaign(decoder, scorer_factory, fresh_score, design, output, *, cycles
     write_json(output / "run.json", dict(design=asdict(design), cycles=cycles, elite_count=elite_count,
         branches_per_elite=branches_per_elite, fade_updates=fade_updates, shortlist_limit=shortlist_limit,
         perturbation_seed=perturbation_seed, restart_policy=restart_policy,
+        shortlist_policy=shortlist_policy, parent_policy=parent_policy, audit_chemistry=audit_chemistry,
         decoder_sha256=identity, graph_spec=decoder.spec.to_dict(),
         active_slots=active.nonzero().flatten().tolist(), job_id=os.environ.get("LSB_JOBID")))
     scored = set()
-    archive = {}
+    scored_candidates = {}
+    restart_parents = {}
     summaries = []
     for cycle in range(1, cycles + 1):
-        parents = [None] if cycle == 1 else [row for row, _ in archive.values()
+        parents = [None] if cycle == 1 else [row for row, _ in restart_parents.values()
                                              for _ in range(branches_per_elite)]
         if not parents:
             break
@@ -214,6 +237,7 @@ def run_campaign(decoder, scorer_factory, fresh_score, design, output, *, cycles
                     latent if parent is None else parent.latent, active, parent=parent,
                     perturbation_seed=None if parent is None else seed, fade_updates=fade_updates,
                     shortlist_limit=shortlist_limit, scored=scored | pending.keys(), proposal=proposal,
+                    select_shortlist=shortlist_candidates if shortlist_policy == "mixed" else None,
                     ready=os.environ.get("DBMOL_LAUNCH_READY") if cycle == 1 else None)
                 pending.update((row.smiles, row) for row in shortlist)
                 print(f"cycle={cycle} branch={index + 1} updates={design.updates} shortlist={len(shortlist)}", flush=True)
@@ -228,15 +252,19 @@ def run_campaign(decoder, scorer_factory, fresh_score, design, output, *, cycles
                 if loss is not None:
                     if not math.isfinite(loss):
                         raise ValueError("Nonfinite fresh contact loss")
-                    archive[row["smiles"]] = (pending[row["smiles"]], loss)
+                    scored_candidates[row["smiles"]] = (pending[row["smiles"]], loss)
             scored.update(pending)
-        archive = dict(sorted(archive.items(), key=lambda item: (item[1][1], item[0]))[:elite_count])
-        entries = [row.record(loss) for row, loss in archive.values()]
+        archive = dict(sorted(scored_candidates.items(), key=lambda item: (item[1][1], item[0]))[:elite_count])
+        restart_parents = (select_restart_parents(scored_candidates, elite_count)
+                           if parent_policy == "diverse" else archive)
+        entries = [archive_entry(row, loss) for row, loss in archive.values()]
+        parent_entries = [archive_entry(row, loss) for row, loss in restart_parents.values()]
         write_json(root / "archive.json", dict(cycle=cycle, branches=len(parents),
             fresh_attempts=len(pending), active_slots=active.nonzero().flatten().tolist(),
-            native_identity=getattr(scorer, "identity", None), elites=entries))
+            native_identity=getattr(scorer, "identity", None), elites=entries, restart_parents=parent_entries))
         summaries.append(dict(cycle=cycle, branches=len(parents), fresh_attempts=len(pending),
-            elites=[dict(smiles=row["smiles"], fresh_loss=row["fresh_loss"]) for row in entries]))
+            elites=[dict(smiles=row["smiles"], fresh_loss=row["fresh_loss"]) for row in entries],
+            restart_parents=[dict(smiles=row["smiles"], fresh_loss=row["fresh_loss"]) for row in parent_entries]))
     if _model_identity(decoder) != identity or any(p.grad is not None for p in decoder.parameters()):
         raise ValueError("Frozen decoder parameters or gradients changed")
     result = dict(status="completed" if len(summaries) == cycles else "no_scored_parent",
@@ -284,17 +312,24 @@ def fresh_score_records(args, root, records):
 
 
 def main(argv=None):
+    from latentmol.design.protenix_restart_selection import audit_molecule
+
     args = restart_args(__doc__, argv)
     config = json.loads(args.config.read_text())
     design = LatentDesignConfig(**(config["design"] | config["arms"][args.arm]))
+    campaign = config["campaign"] | config.get("campaign_arms", {}).get(args.arm, {})
     decoder, _ = load_model(args.checkpoint, "cpu")
 
     def fresh_score(root, candidates):
-        return fresh_score_records(args, root, [
+        records = [
             dict(smiles=row.smiles, start=root.name, arm=row.branch, role="edit", step=row.step)
-            for row in candidates])
+            for row in candidates]
+        if campaign.get("audit_chemistry"):
+            for record in records:
+                record["chemistry_audit"] = audit_molecule(record["smiles"])
+        return fresh_score_records(args, root, records)
 
-    return run_campaign(decoder, native_factory(args), fresh_score, design, args.output, **config["campaign"])
+    return run_campaign(decoder, native_factory(args), fresh_score, design, args.output, **campaign)
 
 
 if __name__ == "__main__":
