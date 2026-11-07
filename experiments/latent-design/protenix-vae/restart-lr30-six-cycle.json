@@ -1,0 +1,45 @@
+{
+  "design": {
+    "updates": 1000,
+    "schedule_horizon": 1000,
+    "seed": 17,
+    "noise_seed": 230017,
+    "occupied_atoms": 25,
+    "learning_rate": 30.0,
+    "max_step_norm": 0.25,
+    "chemistry_initial": 1.0,
+    "chemistry_final": 1.0,
+    "chemistry_hold": 750,
+    "chemistry_ramp_end": 1000,
+    "valence_excess_weight": 1.0,
+    "temperature_initial": 1.0,
+    "temperature_final": 1.0,
+    "noise_initial": 0.05,
+    "noise_zero_at": 100
+  },
+  "campaign": {
+    "cycles": 6,
+    "elite_count": 3,
+    "branches_per_elite": 3,
+    "fade_updates": 25,
+    "shortlist_limit": 16,
+    "perturbation_seed": 951700,
+    "restart_policy": "latent",
+    "shortlist_policy": "mixed",
+    "parent_policy": "diverse",
+    "audit_chemistry": true
+  },
+  "arms": {
+    "combined": {},
+    "cap050": {"max_step_norm": 0.5},
+    "repair-only": {"valence_excess_weight": 0.0},
+    "unchanged-parent": {},
+    "relaxed-shortlist": {},
+    "top-parents": {}
+  },
+  "campaign_arms": {
+    "unchanged-parent": {"restart_policy": "none"},
+    "relaxed-shortlist": {"shortlist_policy": "relaxed"},
+    "top-parents": {"parent_policy": "top"}
+  }
+}

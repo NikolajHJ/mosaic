@@ -1,6 +1,7 @@
 """Stage or submit one config-driven DTU restart campaign from the repository root."""
 
 import argparse
+import hashlib
 import json
 from pathlib import Path
 import re
@@ -32,6 +33,36 @@ def save(path, data):
         stream.write("\n")
 
 
+def matched_source(receipt_path, config):
+    """Verify a learning-rate-only change against the original sealed inputs."""
+    receipt = read(receipt_path)
+    argv = receipt["argv"]
+    if receipt["returncode"] or argv[0] != "bsub":
+        raise ValueError("Matched source requires a successful submission receipt")
+    path = receipt_path.with_name("source.tar.gz")
+    digest = sha(path)
+    if digest != argv[argv.index("--archive-sha256") + 1]:
+        raise ValueError("Matched source archive checksum differs from the receipt")
+    old_config = argv[argv.index("--config") + 1]
+    old_plan = argv[argv.index("--plan") + 1]
+    with tarfile.open(path) as source:
+        original = json.load(source.extractfile(old_config))
+        learning_rate = config["design"]["learning_rate"]
+        if (original["design"]["learning_rate"] == learning_rate
+                or any("learning_rate" in arm for arm in config["arms"].values())):
+            raise ValueError("Expected one changed learning rate for all matched arms")
+        original["design"]["learning_rate"] = learning_rate
+        if original != config:
+            raise ValueError("Matched configuration differs beyond the learning rate")
+        raw_plan = source.extractfile(old_plan).read()
+        if hashlib.sha256(raw_plan).hexdigest() != argv[argv.index("--plan-sha256") + 1]:
+            raise ValueError("Matched GPU plan checksum differs from the receipt")
+        for asset in (FRESH, NATIVE, ASSETS, WRAPPER):
+            if source.extractfile(asset.as_posix()).read() != asset.read_bytes():
+                raise ValueError(f"Matched launch input changed: {asset}")
+    return path, digest, {old_config, old_plan}, json.loads(raw_plan)
+
+
 def stage(args, local, control, release):
     config = EXPERIMENT / args.config
     cfg = read(config)
@@ -48,10 +79,16 @@ def stage(args, local, control, release):
     if not budgets or any(not 0 < updates <= args.max_updates for updates in budgets.values()):
         raise ValueError(f"Arm exceeds the declared update budget: {budgets}")
 
-    prior = read(Path("outputs/protenix-restarts-20261107a/gpu-plan.json"))
+    source_path = None
+    if args.source_receipt:
+        source_path, source_digest, replaced, prior = matched_source(args.source_receipt, cfg)
+    else:
+        prior = read(Path("outputs/protenix-restarts-20261107a/gpu-plan.json"))
     plan = {key: prior[key] for key in ("cuda_ownership_helper", "cuda_ownership_sha256", "mosaic_python")}
     plan.update(arms=outputs, queue=args.queue, planned_updates=budgets,
                 output_cap_mib=OUTPUT_MIB, config_sha256=sha(config))
+    if source_path:
+        plan["matched_source_sha256"] = source_digest
     local.mkdir()
     save(local / "gpu-plan.json", plan)
     if b"\r\n" in WRAPPER.read_bytes():
@@ -60,8 +97,19 @@ def stage(args, local, control, release):
     remote_archive = release + ".tar.gz"
     plan_name = EXPERIMENT / "restart-campaign-gpu-plan.json"
     with tarfile.open(package, "x:gz") as bundle:
-        for path in [*sorted(Path("src/latentmol").rglob("*.py")), config, FRESH, NATIVE, ASSETS, WRAPPER]:
-            bundle.add(path, arcname=path.as_posix())
+        if source_path:
+            with tarfile.open(source_path) as source:
+                for member in source:
+                    if member.name in replaced:
+                        continue
+                    if not member.isfile():
+                        raise ValueError(f"Unexpected matched archive member: {member.name}")
+                    with source.extractfile(member) as stream:
+                        bundle.addfile(member, stream)
+        else:
+            for path in [*sorted(Path("src/latentmol").rglob("*.py")), FRESH, NATIVE, ASSETS, WRAPPER]:
+                bundle.add(path, arcname=path.as_posix())
+        bundle.add(config, arcname=config.as_posix())
         bundle.add(local / "gpu-plan.json", arcname=plan_name.as_posix())
 
     assets, native, fresh = map(read, (ASSETS, NATIVE, FRESH))
@@ -192,6 +240,7 @@ def main():
     parser.add_argument("phase", choices=("stage", "submit"))
     parser.add_argument("--name", required=True)
     parser.add_argument("--config")
+    parser.add_argument("--source-receipt", type=Path, help="Reuse sealed source from a matched submission")
     parser.add_argument("--queue", choices=tuple(TRANSPORT["GPU_RESOURCE"]), default="gpul40s")
     parser.add_argument("--hours", type=int, default=12)
     parser.add_argument("--max-updates", type=int, required=False)
