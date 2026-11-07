@@ -21,6 +21,45 @@ def select_candidates(ranked, limit, compare):
     return selected
 
 
+def _morgan_fingerprints(smiles_list):
+    generator = rdFingerprintGenerator.GetMorganGenerator(radius=2, fpSize=2048, includeChirality=True)
+    for smiles in smiles_list:
+        molecule = Chem.MolFromSmiles(smiles)
+        if molecule is None or len(Chem.GetMolFrags(molecule)) != 1:
+            raise ValueError(f"Diversity selection requires a connected, sanitized molecule: {smiles}")
+        yield smiles, generator.GetFingerprint(molecule)
+
+
+def select_diverse_output(archive, limit, *, max_similarity):
+    """Greedily keep the best fresh scores within a strict pairwise similarity cap."""
+    if type(limit) is not int or limit < 1 or isinstance(max_similarity, bool) or not 0 <= max_similarity <= 1:
+        raise ValueError("Invalid output diversity selection parameters")
+    ranked = sorted(archive, key=lambda smiles: (archive[smiles][1], smiles))
+    selected = {}
+    fingerprints = []
+    for smiles, fingerprint in _morgan_fingerprints(ranked):
+        similarities = DataStructs.BulkTanimotoSimilarity(fingerprint, fingerprints)
+        if any(similarity > max_similarity for similarity in similarities):
+            continue
+        selected[smiles] = archive[smiles]
+        fingerprints.append(fingerprint)
+        if len(selected) == limit:
+            break
+    return selected
+
+
+def max_pairwise_similarity(smiles_list):
+    """Return the maximum Morgan Tanimoto similarity, or None without a pair."""
+    fingerprints = []
+    maximum = None
+    for _, fingerprint in _morgan_fingerprints(smiles_list):
+        if fingerprints:
+            similarity = max(DataStructs.BulkTanimotoSimilarity(fingerprint, fingerprints))
+            maximum = similarity if maximum is None else max(maximum, similarity)
+        fingerprints.append(fingerprint)
+    return maximum
+
+
 def select_restart_parents(archive, limit, *, score_margin=0.1, max_similarity=0.85):
     """Keep the fresh winner and spread the remaining slots over strong, distinct graphs."""
     if limit < 1 or not math.isfinite(score_margin) or score_margin < 0 or not 0 <= max_similarity <= 1:
@@ -30,13 +69,7 @@ def select_restart_parents(archive, limit, *, score_margin=0.1, max_similarity=0
         return {}
     best_loss = archive[ranked[0]][1]
     eligible = [smiles for smiles in ranked if archive[smiles][1] <= best_loss + score_margin]
-    generator = rdFingerprintGenerator.GetMorganGenerator(radius=2, fpSize=2048, includeChirality=True)
-    fingerprints = {}
-    for smiles in eligible:
-        mol = Chem.MolFromSmiles(smiles)
-        if mol is None or len(Chem.GetMolFrags(mol)) != 1:
-            raise ValueError(f"Restart diversity selection requires a connected, sanitized molecule: {smiles}")
-        fingerprints[smiles] = generator.GetFingerprint(mol)
+    fingerprints = dict(_morgan_fingerprints(eligible))
 
     chosen = eligible[:1]
     remaining = eligible[1:]

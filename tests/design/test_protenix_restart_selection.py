@@ -1,7 +1,7 @@
 from types import SimpleNamespace
 
 from latentmol.design.protenix_restart_selection import (
-    audit_molecule, select_candidates, select_restart_parents,
+    audit_molecule, max_pairwise_similarity, select_candidates, select_diverse_output, select_restart_parents,
 )
 
 
@@ -29,6 +29,27 @@ def test_diverse_parents_keep_winner_and_respect_margin_and_source_branch():
     assert set(selected) == {"c1ccccc1", "CCO", "C1CCCCC1"}
     assert select_restart_parents(dict(reversed(archive.items())), 3) == selected
     assert list(select_restart_parents(archive, 3, score_margin=0)) == ["c1ccccc1", "Cc1ccccc1", "CCO"]
+
+
+def test_diverse_output_checks_every_pair_and_keeps_shortfall():
+    archive = {
+        smiles: (SimpleNamespace(), score)
+        for smiles, score in (
+            ("CCO", 2.03),
+            ("C1CCCCC1", 2.03),
+            ("CCCCCCC", 2.02),
+            ("CCCCCC", 2.01),
+            ("c1ccccc1", 2.00),
+        )
+    }
+    selected = select_diverse_output(archive, 5, max_similarity=0.65)
+    assert list(selected) == ["c1ccccc1", "CCCCCC", "C1CCCCC1", "CCO"]
+    assert list(select_diverse_output(dict(reversed(archive.items())), 5, max_similarity=0.65)) == list(selected)
+    assert all(selected[smiles] is archive[smiles] for smiles in selected)
+    assert max_pairwise_similarity(selected) == 0.3
+    assert max_pairwise_similarity(archive) == 0.875
+    assert "CCCCCCC" in select_diverse_output(archive, 5, max_similarity=0.875)
+    assert max_pairwise_similarity(["CCCCCC"]) is None
 
 
 def test_molecule_audit_flags_ring_rich_graph_without_removing_validity():

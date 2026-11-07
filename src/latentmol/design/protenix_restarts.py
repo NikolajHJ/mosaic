@@ -172,10 +172,12 @@ def run_branch(decoder, scorer, config, output, latent, active, *, parent=None,
 def run_campaign(decoder, scorer_factory, fresh_score, design, output, *, cycles, elite_count,
                  branches_per_elite, fade_updates, shortlist_limit, perturbation_seed,
                  restart_policy="all-row", shortlist_policy="relaxed",
-                 parent_policy="top", audit_chemistry=False):
+                 parent_policy="top", audit_chemistry=False,
+                 final_diversity_limit=0, final_diversity_max_similarity=0.60):
     from latentmol.design.protenix_restart_proposals import POLICIES, propose_start
     from latentmol.design.protenix_restart_selection import (
-        audit_molecule, select_candidates, select_restart_parents,
+        audit_molecule, max_pairwise_similarity, select_candidates,
+        select_diverse_output, select_restart_parents,
     )
 
     if not (cycles > 0 and elite_count > 0 and branches_per_elite > 0
@@ -185,6 +187,12 @@ def run_campaign(decoder, scorer_factory, fresh_score, design, output, *, cycles
         raise ValueError(f"Unknown restart policy: {restart_policy}")
     if shortlist_policy not in {"relaxed", "mixed"} or parent_policy not in {"top", "diverse"}:
         raise ValueError("Unknown shortlist or restart parent policy")
+    if (type(final_diversity_limit) is not int or final_diversity_limit < 0
+            or type(final_diversity_max_similarity) not in (float, int)
+            or not 0 <= final_diversity_max_similarity <= 1):
+        raise ValueError("Invalid final diversity budget or Tanimoto cutoff")
+    diversity_config = {} if not final_diversity_limit else dict(final_diversity=dict(
+        target_count=final_diversity_limit, max_similarity=final_diversity_max_similarity))
 
     def shortlist_candidates(rows, limit):
         return select_candidates(rows, limit, compare=False)["mixed"]
@@ -209,7 +217,8 @@ def run_campaign(decoder, scorer_factory, fresh_score, design, output, *, cycles
         perturbation_seed=perturbation_seed, restart_policy=restart_policy,
         shortlist_policy=shortlist_policy, parent_policy=parent_policy, audit_chemistry=audit_chemistry,
         decoder_sha256=identity, graph_spec=decoder.spec.to_dict(),
-        active_slots=active.nonzero().flatten().tolist(), job_id=os.environ.get("LSB_JOBID")))
+        active_slots=active.nonzero().flatten().tolist(), job_id=os.environ.get("LSB_JOBID"),
+        **diversity_config))
     scored = set()
     scored_candidates = {}
     restart_parents = {}
@@ -269,6 +278,23 @@ def run_campaign(decoder, scorer_factory, fresh_score, design, output, *, cycles
         raise ValueError("Frozen decoder parameters or gradients changed")
     result = dict(status="completed" if len(summaries) == cycles else "no_scored_parent",
                   cycles=summaries, unique_fresh_attempts=len(scored), frozen_decoder_unchanged=True)
+    if final_diversity_limit:
+        ranked = sorted(scored_candidates.items(), key=lambda item: (item[1][1], item[0]))
+        panels = {
+            "diverse": select_diverse_output(scored_candidates, final_diversity_limit,
+                                             max_similarity=final_diversity_max_similarity),
+            "score_only": dict(ranked[:final_diversity_limit]),
+        }
+        diversity = dict(diversity_config["final_diversity"], fresh_scored_candidates=len(ranked),
+                         fingerprint=dict(method="Morgan", radius=2, bits=2048, include_chirality=True))
+        panel_entries = {}
+        for name, panel in panels.items():
+            losses = [loss for _, loss in panel.values()]
+            diversity[name] = dict(count=len(panel), max_pairwise_similarity=max_pairwise_similarity(panel),
+                mean_fresh_loss=sum(losses) / len(losses) if losses else None)
+            panel_entries[name] = [archive_entry(row, loss) for row, loss in panel.values()]
+        write_json(output / "diversity.json", dict(summary=diversity, panels=panel_entries))
+        result["final_diversity"] = dict(diversity, artifact="diversity.json")
     write_json(output / "result.json", result)
     return result
 

@@ -22516,3 +22516,10 @@ reduction of 0.28638 versus 0.27082 for one longer branch. Each arm won on
 four parents. The follow-up fixes the user-requested 1,000 updates per branch
 and varies the restart, step cap, chemistry, and selection policies.
 [Six-cycle comparison](../experiments/latent-design/protenix-vae/restart-lr70-six-cycle.md).
+
+7 November 2026. Replaying final selection on three earlier cumulative
+Protenix pools filled all six slots with a strict pairwise Morgan Tanimoto
+cutoff of 0.60. The mean fresh contact loss increased by at most 0.002
+against the same-pool score-only leaders. The LR 100 pilot **29918056**
+will export both panels after five cycles.
+[Diversity pilot](../experiments/latent-design/protenix-vae/restart-diversity-lr100.md).
