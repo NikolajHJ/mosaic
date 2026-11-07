@@ -62,6 +62,25 @@ def test_latent_policy_is_seeded_and_prefers_a_valid_edit(inputs):
     assert receipt["latent_displacement"] == pytest.approx(receipt["proposal"]["radius"])
 
 
+def test_latent_policy_keeps_parent_when_all_kicks_are_invalid(inputs, monkeypatch):
+    decoder, parent, active = inputs
+    decode = decoder.decode
+
+    def decode_invalid_kick(point):
+        decoded = decode(point)
+        if not torch.equal(point, parent.latent):
+            # A fluorine with two bonds fails sanitization.
+            decoded.atoms[0, 1, decoder.spec.atomic_numbers.index(9)] = 10
+        return decoded
+
+    monkeypatch.setattr(decoder, "decode", decode_invalid_kick)
+    point, offset, receipt = propose_start(decoder, parent, active, policy="latent", seed=3)
+    assert offset is None
+    assert receipt["attempted"] == 12 and receipt["valid_trials"] == 0
+    assert receipt["fallback_to_parent"] and receipt["proposal"]["valid"]
+    assert torch.equal(point, parent.latent)
+
+
 def test_all_row_preserves_parent_but_inflates_soft_nonbonds(inputs):
     _, offset, receipt = propose_start(*inputs, policy="all-row", seed=2)
     assert offset is not None

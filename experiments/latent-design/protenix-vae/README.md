@@ -2,6 +2,7 @@
 
 - [Chemistry pilot](restarts.md) records the three five-cycle runs and the matched fresh scoring setup.
 - [Matched follow-up](restart-followup.md) records the perturbation, step cap, duration, and lineage comparisons.
+- [Dense restart audit and LR 70 pilot](restart-lr70.md) traces the dense graphs and records the screened follow-up.
 - [Interactive report](../../../outputs/protenix-restart-report-20261107/protenix-restart-report.html) shows saved molecules, trajectories, and verified restart trees.
 - [Historical submission scripts](restart-operations/) preserve the two operators as used from their recorded output directories.
 

@@ -165,10 +165,15 @@ def run_branch(decoder, scorer, config, output, latent, active, *, parent=None,
 
 
 def run_campaign(decoder, scorer_factory, fresh_score, design, output, *, cycles, elite_count,
-                 branches_per_elite, fade_updates, shortlist_limit, perturbation_seed):
+                 branches_per_elite, fade_updates, shortlist_limit, perturbation_seed,
+                 restart_policy="all-row"):
+    from latentmol.design.protenix_restart_proposals import POLICIES, propose_start
+
     if not (cycles > 0 and elite_count > 0 and branches_per_elite > 0
             and 0 < fade_updates < design.updates and shortlist_limit >= elite_count):
         raise ValueError("Invalid restart campaign budget")
+    if restart_policy not in POLICIES:
+        raise ValueError(f"Unknown restart policy: {restart_policy}")
     output.mkdir(parents=True)
     decoder.eval().requires_grad_(False)
     if any(p.grad is not None for p in decoder.parameters()):
@@ -180,7 +185,8 @@ def run_campaign(decoder, scorer_factory, fresh_score, design, output, *, cycles
         active = choose_active(decoder.decode(latent), decoder.spec, design.occupied_atoms)
     write_json(output / "run.json", dict(design=asdict(design), cycles=cycles, elite_count=elite_count,
         branches_per_elite=branches_per_elite, fade_updates=fade_updates, shortlist_limit=shortlist_limit,
-        perturbation_seed=perturbation_seed, decoder_sha256=identity, graph_spec=decoder.spec.to_dict(),
+        perturbation_seed=perturbation_seed, restart_policy=restart_policy,
+        decoder_sha256=identity, graph_spec=decoder.spec.to_dict(),
         active_slots=active.nonzero().flatten().tolist(), job_id=os.environ.get("LSB_JOBID")))
     scored = set()
     archive = {}
@@ -199,10 +205,15 @@ def run_campaign(decoder, scorer_factory, fresh_score, design, output, *, cycles
                 seed = perturbation_seed + cycle * 10000 + index
                 branch_design = replace(design, noise_seed=design.noise_seed + cycle * 10000 + index)
                 branch = root / f"branch-{index + 1:02d}"
+                proposal = None
+                if parent is not None and restart_policy != "all-row":
+                    proposal = propose_start(decoder, parent, active, policy=restart_policy, seed=seed,
+                                             temperature=schedules(branch_design, 0)["temperature"],
+                                             fade_updates=fade_updates)
                 shortlist = run_branch(decoder, scorer, branch_design, branch,
                     latent if parent is None else parent.latent, active, parent=parent,
                     perturbation_seed=None if parent is None else seed, fade_updates=fade_updates,
-                    shortlist_limit=shortlist_limit, scored=scored | pending.keys(),
+                    shortlist_limit=shortlist_limit, scored=scored | pending.keys(), proposal=proposal,
                     ready=os.environ.get("DBMOL_LAUNCH_READY") if cycle == 1 else None)
                 pending.update((row.smiles, row) for row in shortlist)
                 print(f"cycle={cycle} branch={index + 1} updates={design.updates} shortlist={len(shortlist)}", flush=True)

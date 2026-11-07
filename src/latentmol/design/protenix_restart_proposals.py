@@ -36,7 +36,7 @@ def _measure(graph, parent, pairs, spec):
                 hard_bonds=int((hard.bonds[0] != 0)[pairs].sum()))
 
 
-def _latent_kick(decoder, parent, active, temperature, pairs, generator):
+def _latent_kick(decoder, parent, active, temperature, pairs, generator, reference):
     trials = []
     directions = torch.randn((DIRECTIONS_PER_RADIUS, parent.latent.shape[-1]), generator=generator,
                              dtype=parent.latent.dtype)
@@ -62,7 +62,12 @@ def _latent_kick(decoder, parent, active, temperature, pairs, generator):
                           valid=valid, different=different)
             trials.append(((rank, radius, edits, direction_index), point, record))
     _, point, selected = min(trials, key=lambda trial: trial[0])
+    fallback = not selected["valid"]
+    if fallback:
+        point = parent.latent
+        selected = dict(reference, radius=0.0, direction=None, valid=True, different=False)
     return point, dict(selected=selected, attempted=len(trials),
+        fallback_to_parent=fallback,
         valid_trials=sum(row["valid"] for _, _, row in trials),
         changed_valid_trials=sum(row["valid"] and row["different"] for _, _, row in trials),
         radius_panel=[dict(radius=radius, valid=sum(row["valid"] for _, _, row in trials if row["radius"] == radius),
@@ -143,7 +148,7 @@ def propose_start(decoder, parent, active, *, policy, seed, temperature=1.0, fad
         offset = RestartOffset.from_parent(decoder, latent, parent.hard, active, seed=seed,
                                             temperature=temperature, fade_updates=fade_updates)
     elif policy == "latent":
-        latent, details = _latent_kick(decoder, parent, active, temperature, pairs, generator)
+        latent, details = _latent_kick(decoder, parent, active, temperature, pairs, generator, reference)
     elif policy == "sparse":
         offset, details = _sparse_offset(base, parent.hard, active, pairs, temperature, fade_updates, generator)
     if offset is not None:

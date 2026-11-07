@@ -22502,3 +22502,10 @@ with two ties and beat the untouched latent on 7/12. Cap 0.5 beat 0.1 on 11/12
 with mean fresh-loss reductions of 0.261 and 0.122 respectively. Six follow-up
 jobs remain pending. The original constant-1 and constant-10 jobs are running,
 with the ramp pending. [Readout](../experiments/latent-design/protenix-vae/restart-followup.md#first-results-at-1358-cet).
+
+7 November 2026. The dense restart audit traced a constant-1 state to 235
+hard bonds immediately after a valid 27-bond parent. In completed panel
+29914683, 21 of 24 all-row starts reached at least 100 hard bonds during the
+25-update fade. The sparse and screened latent branches never exceeded 40.
+The sampled very dense states had zero chemistry loss when repair returned
+no witness. [Audit and LR 70 pilot](../experiments/latent-design/protenix-vae/restart-lr70.md).
