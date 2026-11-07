@@ -22523,3 +22523,18 @@ cutoff of 0.60. The mean fresh contact loss increased by at most 0.002
 against the same-pool score-only leaders. The LR 100 pilot **29918056**
 will export both panels after five cycles.
 [Diversity pilot](../experiments/latent-design/protenix-vae/restart-diversity-lr100.md).
+
+7 November 2026 at 23:29 CET. LR 100 diversity job **29918056** completed all
+6,500 updates and selected six molecules from 188 fresh-scored candidates.
+Maximum pairwise Morgan similarity was 0.392 versus 0.712 for the six
+score-only leaders. Mean fresh loss increased by 0.00343 and both panels
+kept the best molecule at 2.29645. All updates hit the 0.25 step cap.
+[Completed pilot](../experiments/latent-design/protenix-vae/restart-diversity-lr100.md#completed-on-7-november-2026).
+
+At the same check, the three original chemistry jobs and six of eight
+matched follow-ups had successful terminal receipts. Final fresh losses
+were 2.0636 for constant 1, 2.1589 for constant 10, and 2.1001 for the late
+ramp. Cap 0.5 won on 23 of 24 matched parents against 0.1, and elite
+restarts beat independent starts at the endpoint in both lineage cohorts.
+Mutation B was running and duration B was queued for an A40 reservation.
+All seven LR 70 jobs were queued on L40S.

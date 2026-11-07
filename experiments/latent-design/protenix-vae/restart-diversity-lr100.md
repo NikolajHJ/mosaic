@@ -33,4 +33,22 @@ The [submission receipt](../../../outputs/protenix-restart-diversity-lr100-20261
 records the exact command and source hash. Input and storage checks passed.
 Twenty-one focused tests passed. A mock five-cycle smoke exercised all
 13 branches and exported both panels from the cumulative archive.
-Native Protenix results are pending.
+
+## Completed on 7 November 2026
+
+Job 29918056 exited successfully after 1 hour 26 minutes. It completed all
+five cycles, 13 branches, and 6,500 updates. Of 194 fresh scoring attempts,
+188 scored and six failed conformer embedding. The raw graph was valid
+and connected in 5,194 of 6,513 observations. All 6,500 updates hit the
+0.25 displacement cap.
+
+Both final panels filled all six slots and kept the same best molecule.
+Best fresh loss was 2.36881 through cycle four and reached 2.29645 in
+cycle five. The largest pairwise similarity was 0.39241 in the diverse
+panel and 0.71212 in the score-only panel. Mean fresh losses were 2.35671
+and 2.35328 respectively, an increase of 0.00343 for the diverse panel.
+None of its six molecules triggered the flag for four or more
+three-membered rings.
+
+[Final molecule panels](../../../outputs/protenix-restart-diversity-lr100-20261107a/diversity.json)
+and [run result](../../../outputs/protenix-restart-diversity-lr100-20261107a/result.json).
