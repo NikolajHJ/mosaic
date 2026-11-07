@@ -22,7 +22,8 @@ import torch
 from torch.utils.data import DataLoader, Subset
 import yaml
 
-from latentmol.data import GraphDataset, collate_graphs
+from latentmol.datasets.data import GraphDataset, collate_graphs
+from latentmol.datasets.ordering import verify_canonical_training_cache
 from latentmol.evaluate import reconstruction_metrics
 from latentmol.experiments import ExperimentRun, file_sha256, write_json
 from latentmol.losses import LossConfig, latent_kl, reconstruction_losses
@@ -315,6 +316,12 @@ def train(config: TrainConfig, data_path: Path, run_root: Path,
         train_indices, val_indices = cohorts["train"], cohorts["val"]
         if not train_indices or not val_indices:
             raise ValueError("Training and validation splits must be nonempty")
+        forward_options = {}
+        if config.model.encoder_pooling == "canonical":
+            checked = {"train": verify_canonical_training_cache(train_data, train_indices),
+                       "val": verify_canonical_training_cache(valid_data, val_indices)}
+            run.annotate(canonical_cache_check=checked)
+            forward_options["from_canonical_cache"] = True
         train_probe_indices, val_probe_indices = cohorts["train_probe"], cohorts["val_probe"]
         probe_count = len(train_probe_indices)
         indices = cohorts
@@ -401,7 +408,8 @@ def train(config: TrainConfig, data_path: Path, run_root: Path,
                     observer.before_batch(batches)
                 batch = batch.to(config.device)
                 optimizer.zero_grad(set_to_none=True)
-                output = model(batch.to_relaxed(model.spec), sample_latent=config.mode == "vae")
+                graph = batch if forward_options else batch.to_relaxed(model.spec)
+                output = model(graph, sample_latent=config.mode == "vae", **forward_options)
                 losses = reconstruction_losses(output.decoded, batch, config.loss)
                 losses["kl"] = latent_kl(output.mu, output.logvar)
                 total = losses["reconstruction"] + beta * losses["kl"]
@@ -429,11 +437,13 @@ def train(config: TrainConfig, data_path: Path, run_root: Path,
             full_chemistry = bool(config.full_chemistry_every and epoch % config.full_chemistry_every == 0)
             validation_metrics, _ = reconstruction_metrics(
                 model, loaders["val"], config.loss, config.device,
-                len(subsets["val"]) if full_chemistry else config.chemistry_limit, training_mode=config.mode)
+                len(subsets["val"]) if full_chemistry else config.chemistry_limit,
+                training_mode=config.mode, **forward_options)
             probe_metrics = {}
             for name in ("train_probe", "val_probe"):
                 probe_metrics[name], _ = reconstruction_metrics(model, loaders[name], config.loss, config.device,
-                                                               config.chemistry_limit, training_mode=config.mode)
+                                                               config.chemistry_limit, training_mode=config.mode,
+                                                               **forward_options)
             evaluation_seconds = time.monotonic() - evaluation_started
             cumulative_evaluation_seconds += evaluation_seconds
             reconstruction = validation_metrics["reconstruction"]

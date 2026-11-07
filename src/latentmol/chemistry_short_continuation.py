@@ -124,6 +124,10 @@ def validate_short_continuation(plan):
     from .chemistry_valid_reference_training_policy import validate_valid_reference_continuation
     training = validate_valid_reference_continuation(plan)
     if training is not None:
+        from .chemistry_epoch45_extension import validate_extension
+        extension = validate_extension(plan)
+        if extension is not None:
+            return extension
         return training
     from .chemistry_valid_reference_policy import validate_valid_reference_test
     reference = validate_valid_reference_test(plan)

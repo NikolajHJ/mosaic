@@ -154,21 +154,23 @@ def protocol_config_path(plan):
     return value
 
 
-def composition_prior_weight(protocol):
+def composition_prior_weight(protocol, *, allow_equal_prior_ratio=False):
     """Keep the expected composition population at real:prior = 1:3.
 
     The prior branch categorical NLL and occupancy anchor still use their own
     all-attempt means. Only additive expected composition counts and their VJP
     receive this factor. Reducing the number of fresh Monte Carlo points to
     two per real point therefore requires an explicit 1.5 importance factor.
+    The combined-corpus runner opts in to equal sampling with a factor of 3.
     """
     ratio = protocol.get("prior_ratio")
     value = protocol.get("composition_prior_weight", 1.0)
-    if (type(ratio) is not int or ratio not in (2, 3)
+    ratios = (1, 2, 3) if allow_equal_prior_ratio else (2, 3)
+    if (type(ratio) is not int or ratio not in ratios
             or type(value) not in (int, float) or not math.isfinite(value)
             or value != 3.0 / ratio
-            or (ratio == 2 and "composition_prior_weight" not in protocol)):
-        raise ValueError("Require prior_ratio 2/3 and explicit composition_prior_weight=3/prior_ratio")
+            or (ratio < 3 and "composition_prior_weight" not in protocol)):
+        raise ValueError(f"Require prior_ratio in {ratios} and explicit composition_prior_weight=3/prior_ratio")
     return float(value)
 
 

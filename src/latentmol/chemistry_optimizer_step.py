@@ -16,6 +16,7 @@ from pathlib import Path
 
 
 VERSION = "adamw-displacement-scale-v1"
+HALF_CONTINUATION_VERSION = "adamw-displacement-scale-v2-half-continuation"
 
 
 def validate_optimizer_step_control(value):
@@ -23,10 +24,11 @@ def validate_optimizer_step_control(value):
     if value is None:
         return None
     if (type(value) is not dict or set(value) != {"version", "factor"}
-            or value["version"] != VERSION or type(value["factor"]) is not float
-            or value["factor"] != .25):
-        raise ValueError("Optimizer step control requires the explicit quarter-displacement policy")
-    return dict(version=VERSION, factor=.25)
+            or type(value["factor"]) is not float
+            or (value["version"], value["factor"]) not in (
+                (VERSION, .25), (HALF_CONTINUATION_VERSION, .125))):
+        raise ValueError("Require the explicit legacy quarter or versioned half-continuation policy")
+    return dict(value)
 
 
 def validate_optimizer_step_receipt(value, control):
@@ -38,7 +40,7 @@ def validate_optimizer_step_receipt(value, control):
         return None
     if (type(value) is not dict or set(value) != {"version", "factor", "optimizer_steps",
             "raw_displacement_norm", "applied_displacement_norm", "parameter_arithmetic", "moment_state"}
-            or value.get("version") != VERSION or type(value.get("factor")) is not float
+            or value.get("version") != policy["version"] or type(value.get("factor")) is not float
             or value["factor"] != policy["factor"]
             or type(value.get("optimizer_steps")) is not int or value["optimizer_steps"] != 1
             or value.get("parameter_arithmetic") != "float64_delta_then_native_dtype"
@@ -173,7 +175,7 @@ def apply_optimizer_step(optimizer, parameters, control=None):
                     original.copy_(saved)
         optimizer.load_state_dict(optimizer_state)
         raise
-    return dict(version=VERSION, factor=policy["factor"], optimizer_steps=1,
+    return dict(version=policy["version"], factor=policy["factor"], optimizer_steps=1,
                 raw_displacement_norm=raw_norm, applied_displacement_norm=applied_norm,
                 parameter_arithmetic="float64_delta_then_native_dtype",
                 moment_state="one_native_adamw_step_retained")

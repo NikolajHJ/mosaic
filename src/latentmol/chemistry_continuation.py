@@ -620,25 +620,30 @@ def setup(plan, *, resume=None, parent_authentication=None):
         reject_diagnostic_snapshot(resumed)
         phase = resumed.get("chemistry_phase", {})
         cont = resumed.get("continuation", {})
-        if (phase.get("plan_sha256") != plan["_plan_sha256"] or phase.get("version") != VERSION
-                or phase.get("parent_sha256") != plan["parent_checkpoint_sha256"]
-                or phase.get("benchmark_gate_sha256") != plan["_benchmark_gate_sha256"]
-                or cont.get("algorithm") != algorithm or cont.get("runtime") != runtime
-                or phase.get("protocol") != plan["protocol"]
-                or phase.get("runtime_policy_amendment") != plan.get("runtime_policy_amendment")
-                or phase.get("early_health_baseline_sha256") != plan.get("_early_health_baseline_sha256")
-                or phase.get("execution") != plan.get("execution")
-                or phase.get("classification_execution") != plan.get("classification_execution")
-                or phase.get("worker_startup") != plan.get("worker_startup")
-                or phase.get("short_continuation") != plan.get("short_continuation")
-                or phase.get("valid_reference_continuation") != plan.get("valid_reference_continuation")
-                or phase.get("valid_reference_adoption") != plan.get("valid_reference_adoption")
-                or phase.get("optimizer_step_control") != plan.get("optimizer_step_control")
+        identity_plan, identity_algorithm = plan, algorithm
+        if "epoch45_extension" in plan:
+            from .chemistry_epoch45_extension import resume_identity
+            identity_plan, identity_algorithm = resume_identity(plan, path, sha, algorithm)
+        if (phase.get("plan_sha256") != identity_plan["_plan_sha256"] or phase.get("version") != VERSION
+                or phase.get("parent_sha256") != identity_plan["parent_checkpoint_sha256"]
+                or phase.get("benchmark_gate_sha256") != identity_plan["_benchmark_gate_sha256"]
+                or cont.get("algorithm") != identity_algorithm or cont.get("runtime") != runtime
+                or phase.get("protocol") != identity_plan["protocol"]
+                or phase.get("runtime_policy_amendment") != identity_plan.get("runtime_policy_amendment")
+                or phase.get("early_health_baseline_sha256") != identity_plan.get("_early_health_baseline_sha256")
+                or phase.get("execution") != identity_plan.get("execution")
+                or phase.get("classification_execution") != identity_plan.get("classification_execution")
+                or phase.get("worker_startup") != identity_plan.get("worker_startup")
+                or phase.get("short_continuation") != identity_plan.get("short_continuation")
+                or phase.get("valid_reference_continuation") != identity_plan.get("valid_reference_continuation")
+                or phase.get("valid_reference_adoption") != identity_plan.get("valid_reference_adoption")
+                or phase.get("epoch45_extension") != identity_plan.get("epoch45_extension")
+                or phase.get("optimizer_step_control") != identity_plan.get("optimizer_step_control")
                 or ((plan["protocol"].get("failure_guidance") is not None or plan.get("short_continuation") is not None
                      or plan.get("valid_reference_continuation") is not None)
-                    and phase.get("failure_readiness_sha256") != plan.get("_failure_readiness_sha256"))
-                or resumed.get("source_archive_sha256") != plan["archive_sha256"]
-                or resumed.get("source_sha256") != plan["manifest_sha256"]
+                    and phase.get("failure_readiness_sha256") != identity_plan.get("_failure_readiness_sha256"))
+                or resumed.get("source_archive_sha256") != identity_plan["archive_sha256"]
+                or resumed.get("source_sha256") != identity_plan["manifest_sha256"]
                 or not cont.get("epoch_complete") or cont.get("indices") != identity
                 or cont.get("scheduler_state") is not None
                 or type(resumed.get("epoch")) is not int or not plan["parent_epoch"] < resumed["epoch"] <= _continuation_endpoint(plan)
@@ -669,12 +674,16 @@ def setup(plan, *, resume=None, parent_authentication=None):
 
 def chemistry_update(model, reference, optimizer, hard, config, protocol, composition, teacher,
                      generators, update, epoch, phase_start_epoch, *, do_step=True, microbatch_size=None,
-                     deadline=None, overlap=False, step_control=None, capture_context=None, component_observer=None):
+                     deadline=None, overlap=False, step_control=None, capture_context=None, component_observer=None,
+                     additive_guidance=None, prior_sampler=None, from_canonical_cache=False,
+                     allow_equal_prior_ratio=False):
     """Drain every detached task on failure; no partial optimizer step survives.
 
     The synchronous legacy path retains its ordering. Async CPU work can run
     while the frozen-weight GPU prepass and ready-chunk VJPs execute. Neither
     task completion order nor unavailable targets can change point membership.
+    ``additive_guidance`` is a separate explicit pilot object, absent from old
+    plans; it cannot replace existing repair, reference or optimizer semantics.
     """
     if type(overlap) is not bool:
         raise ValueError("Chemistry overlap must be an explicit boolean")
@@ -682,7 +691,9 @@ def chemistry_update(model, reference, optimizer, hard, config, protocol, compos
         return _chemistry_update_impl(model, reference, optimizer, hard, config, protocol,
             composition, teacher, generators, update, epoch, phase_start_epoch,
             do_step=do_step, microbatch_size=microbatch_size, deadline=deadline, overlap=overlap,
-            step_control=step_control, capture_context=capture_context, component_observer=component_observer)
+            step_control=step_control, capture_context=capture_context, component_observer=component_observer,
+            additive_guidance=additive_guidance, prior_sampler=prior_sampler,
+            from_canonical_cache=from_canonical_cache, allow_equal_prior_ratio=allow_equal_prior_ratio)
     except BaseException:
         if overlap:
             # Preserve the original computation/search exception. All tasks own
@@ -696,20 +707,36 @@ def chemistry_update(model, reference, optimizer, hard, config, protocol, compos
 
 def _chemistry_update_impl(model, reference, optimizer, hard, config, protocol, composition, teacher,
                      generators, update, epoch, phase_start_epoch, *, do_step=True, microbatch_size=None,
-                     deadline=None, overlap=False, step_control=None, capture_context=None, component_observer=None):
+                     deadline=None, overlap=False, step_control=None, capture_context=None, component_observer=None,
+                     additive_guidance=None, prior_sampler=None, from_canonical_cache=False,
+                     allow_equal_prior_ratio=False):
     """A logical real/prior update with fixed-target and population VJPs.
 
     Store posterior epsilon and fresh prior z once. Recomputing the deterministic
     decoder at unchanged weights yields the same teacher and global histogram.
     A global JS cotangent and globally weighted reconstruction denominators give
     the full-batch objective without retaining every graph's autograd tape.
+    Optional additive guidance owns its preparation and complete-branch
+    normalization; the historical path does not construct or evaluate it.
     """
     count = len(hard.atoms)
+    if type(from_canonical_cache) is not bool:
+        raise ValueError("Canonical cache use must be explicitly selected")
+
+    def encode_real(target):
+        if from_canonical_cache:
+            return model.encoder(target, from_canonical_cache=True)
+        return model.encode(target.to_relaxed(model.spec))
+
+    if additive_guidance is not None:
+        if capture_context is not None:
+            raise ValueError("Historical mechanism capture does not include additive guidance")
+        additive_guidance.begin_update(update=update)
     if step_control is not None:
         from .chemistry_optimizer_step import validate_optimizer_step_control
         step_control = validate_optimizer_step_control(step_control)
     prior_count = protocol["prior_ratio"] * count
-    prior_composition_weight = composition_prior_weight(protocol)
+    prior_composition_weight = composition_prior_weight(protocol, allow_equal_prior_ratio=allow_equal_prior_ratio)
     from .chemistry_short_continuation import validate_valid_prior_self_guidance
     self_policy = validate_valid_prior_self_guidance(protocol.get("valid_prior_self_guidance"))
     from .chemistry_target_weighting import validate_chemistry_target_weighting
@@ -748,6 +775,13 @@ def _chemistry_update_impl(model, reference, optimizer, hard, config, protocol, 
     hard = hard.to(device)
     epsilon = torch.randn(count, model.config.latent, device=device)
     prior = torch.randn(prior_count, model.config.latent, generator=generators["fresh_prior"]).to(device)
+    if prior_sampler is not None:
+        # An explicit new study can replace a declared subset of the existing
+        # prior budget. Draw once, detach sampling, and reuse exactly these z
+        # values in both teacher preparation and the live decoder backward.
+        prior = prior_sampler.sample(model, hard, prior, update=update, microbatch_size=size)
+        if prior.shape != (prior_count, model.config.latent) or prior.requires_grad or not bool(torch.isfinite(prior).all()):
+            raise ValueError("Prior sampler returned incompatible, attached or nonfinite coordinates")
     denominator = reconstruction_denominators(hard, config.loss, dtype=next(model.parameters()).dtype)
     targets, totals = {}, {"elements": torch.zeros(len(model.spec.atomic_numbers) - 1, dtype=torch.float64, device=device),
                           "charges": torch.zeros(len(model.spec.formal_charges), dtype=torch.float64, device=device)}
@@ -831,6 +865,9 @@ def _chemistry_update_impl(model, reference, optimizer, hard, config, protocol, 
             semantic["valid_prior_reference_guidance"] = prepared_reference.receipt
             reference_chain = digest(dict(previous=reference_chain,receipt=prepared_reference.receipt))
         receipt_chain = digest({"previous": receipt_chain, "receipt": semantic})
+        if prior_sampler is not None and branch == "prior":
+            prior_sampler.observe_targets(receipt, start=start, stop=stop,
+                reference_eligible=prepared_reference.eligible_rows if reference_policy is not None else ())
         if receipt["status_counts"].get("rejected_or_error", 0):
             raise RuntimeError("Repair provenance/representation check failed; do not train on silently rejected targets")
         accepted[branch] += receipt["accepted_targets"]
@@ -848,11 +885,14 @@ def _chemistry_update_impl(model, reference, optimizer, hard, config, protocol, 
                 if deadline is not None and time.monotonic() > deadline:
                     raise TimeoutError("Bounded teacher prepass budget exhausted")
                 if branch == "real":
-                    mu, logvar = model.encode(hard_slice(hard, start, stop).to_relaxed(model.spec))
+                    mu, logvar = encode_real(hard_slice(hard, start, stop))
                     z = mu + epsilon[start:stop] * (.5 * logvar).exp()
                 else:
                     z = prior[start:stop]
                 decoded = model.decode(z)
+                if additive_guidance is not None:
+                    # Freeze this original raw graph, never a repair witness.
+                    additive_guidance.prepare(decoded, branch=branch, start=start, stop=stop)
                 if self_policy is not None and branch == "prior":
                     # One frozen prepass snapshot binds strict validity and
                     # pseudo-labels; live logits are recomputed for backward.
@@ -877,6 +917,8 @@ def _chemistry_update_impl(model, reference, optimizer, hard, config, protocol, 
                     pending[branch, start] = teacher.build_targets_async(decoded, candidate_ids=ids, update=update)
                 else:
                     receive(branch, start, stop, teacher.build_targets(decoded, candidate_ids=ids, update=update))
+    if additive_guidance is not None:
+        additive_guidance.finalize_preparation()
     prepass_seconds = time.monotonic() - search_start
     js = {key: population_js_cotangent(value, composition[key + "_distribution"])
           for key, value in totals.items()}
@@ -904,7 +946,7 @@ def _chemistry_update_impl(model, reference, optimizer, hard, config, protocol, 
             rec = kl = torch.zeros((), device=device)
             if branch == "real":
                 target = hard_slice(hard, start, stop)
-                mu, logvar = model.encode(target.to_relaxed(model.spec))
+                mu, logvar = encode_real(target)
                 z = mu + epsilon[start:stop] * (.5 * logvar).exp()
             else:
                 z = prior[start:stop]
@@ -969,6 +1011,11 @@ def _chemistry_update_impl(model, reference, optimizer, hard, config, protocol, 
                 loss = loss + self_term
             if reference_policy is not None and branch == "prior":
                 loss = loss + reference_term
+            if additive_guidance is not None:
+                # The adapter owns exact branch-global center normalization;
+                # no extra molecule-fraction weighting belongs at this call.
+                additive_term = additive_guidance.loss(decoded, branch=branch, start=start, stop=stop)
+                loss = loss + additive_term
             if component_observer is not None:
                 observed_terms = dict(reconstruction=rec, kl=beta*kl,
                     repair=coefficient*branch_weight*chemical, composition=composition_surrogate,
@@ -977,6 +1024,8 @@ def _chemistry_update_impl(model, reference, optimizer, hard, config, protocol, 
                     observed_terms["valid_self"] = self_term
                 if reference_policy is not None:
                     observed_terms["valid_reference"] = reference_term
+                if additive_guidance is not None:
+                    observed_terms["additive_guidance"] = additive_term
                 component_observer(branch, observed_terms)
             if not bool(torch.isfinite(loss)):
                 raise FloatingPointError("Nonfinite streamed phase loss")
@@ -987,6 +1036,9 @@ def _chemistry_update_impl(model, reference, optimizer, hard, config, protocol, 
         if pending:
             raise RuntimeError("Unconsumed scheduled chemistry targets remain before optimizer step")
         teacher.drain()
+    if additive_guidance is not None:
+        # Verify complete context consumption before an optimizer can step.
+        metrics["additive_guidance"] = additive_guidance.summary()
     groups = {"encoder": gradient_norm(model.encoder.parameters()), "decoder": gradient_norm(model.decoder.parameters())}
     norm = float(torch.nn.utils.clip_grad_norm_(model.parameters(), config.clip_grad, error_if_nonfinite=True)) if do_step else gradient_norm(model.parameters())
     if do_step:
@@ -1043,8 +1095,12 @@ def _chemistry_update_impl(model, reference, optimizer, hard, config, protocol, 
         metrics["total"] += metrics["valid_prior_reference_weighted"]
     if self_policy is not None:
         metrics["total"] += metrics["valid_prior_self_weighted"]
+    if additive_guidance is not None:
+        metrics["total"] += metrics["additive_guidance"]["weighted_loss"]
     if do_step and step_control is not None:
         metrics["optimizer_step_control"] = step_receipt
+    if prior_sampler is not None:
+        metrics["latent_neighborhood"] = prior_sampler.summary()
     if capture_context is not None:
         # Diagnostic ownership only: no tensor here becomes a training
         # checkpoint. Reuse the exact draws and complete frozen teacher batches
@@ -1445,6 +1501,8 @@ def phase_checkpoint(path, model, optimizer, config, data, epoch, run, state, pl
     if plan.get("valid_reference_continuation") is not None:
         payload["chemistry_phase"]["valid_reference_continuation"] = deepcopy(plan["valid_reference_continuation"])
         payload["chemistry_phase"]["valid_reference_adoption"] = deepcopy(plan["valid_reference_adoption"])
+    if "epoch45_extension" in plan:
+        payload["chemistry_phase"]["epoch45_extension"] = deepcopy(plan["epoch45_extension"])
     if plan.get("optimizer_step_control") is not None:
         payload["chemistry_phase"]["optimizer_step_control"] = dict(plan["optimizer_step_control"])
     if "runtime_policy_amendment" in plan:
@@ -1671,6 +1729,8 @@ def train_phase(plan, *, resume=None, segment=1):
                 estimate = max(estimate, time.monotonic() - tick)
             # Retain milestones plus two most recent OWN snapshots; ancestry and baseline untouched.
             snapshots = sorted(run.path.glob("epoch_*.pt"))
+            if "epoch45_extension" in plan:
+                snapshots = []  # Explicit extension keeps every completed epoch.
             for old in snapshots[:-2]:
                 if int(old.stem.split("_")[1]) % 10 and old != checkpoint:
                     old.unlink()
@@ -1728,7 +1788,9 @@ def main():
         if args.benchmark_gate_sha256 is None:
             parser.error("Train/final require the passed immutable benchmark gate SHA")
         plan["_benchmark_gate_sha256"] = args.benchmark_gate_sha256
-        if plan["protocol"].get("failure_guidance") is not None:
+        if (plan["protocol"].get("failure_guidance") is not None
+                or plan.get("short_continuation") is not None
+                or plan.get("valid_reference_continuation") is not None):
             if args.failure_readiness_sha256 is None:
                 parser.error("New chemistry train/final require the passed failure-readiness SHA")
             plan["_failure_readiness_sha256"] = args.failure_readiness_sha256

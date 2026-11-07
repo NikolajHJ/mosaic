@@ -1,11 +1,12 @@
 """AE and VAE share every architectural parameter and differ only in latent use."""
 
 from dataclasses import dataclass
+import math
 
 import torch
 from torch import Tensor, nn
 
-from latentmol.representation import DecoderOutput, GraphSpec, RelaxedGraph
+from latentmol.representation import DecoderOutput, GraphSpec, HardGraphBatch, RelaxedGraph
 from .decoder import GraphDecoder
 from .encoder import GraphEncoder
 from .refined_decoder import RefinedGraphDecoder
@@ -24,10 +25,22 @@ class ModelConfig:
     trunk_hidden: int | None = None
     encoder_residual_layers: int = 0
     triangle_hidden: int = 24
+    encoder_pooling: str = "ordered"
+    encoder_aggregation: str = "mean"
+    encoder_degree_features: bool = False
+    encoder_sum_scale: float = 3.
 
     def __post_init__(self):
         if self.hidden < 1 or self.latent < 1 or self.layers < 1:
             raise ValueError("Model widths and encoder layer count must be positive")
+        if self.encoder_pooling not in ("ordered", "invariant", "canonical"):
+            raise ValueError("Encoder pooling must be ordered, invariant or canonical")
+        if self.encoder_aggregation not in ("mean", "sum"):
+            raise ValueError("Encoder aggregation must be mean or sum")
+        if type(self.encoder_degree_features) is not bool:
+            raise ValueError("Encoder degree_features must be boolean")
+        if not math.isfinite(self.encoder_sum_scale) or self.encoder_sum_scale <= 0:
+            raise ValueError("Encoder sum scale must be finite and positive")
         if self.decoder_variant not in ("legacy", "residual", "pair_refine",
                                         "deep_pair_refine", "global_bond",
                                         "wide_global_bond", "stable_deep_pair_refine", "triangle_refine"):
@@ -76,7 +89,11 @@ class GraphAutoencoder(nn.Module):
         self.spec, self.config = spec, config
         self.encoder = GraphEncoder(spec, config.hidden, config.latent, config.layers,
                                     pool_hidden=config.global_hidden,
-                                    residual_layers=config.encoder_residual_layers)
+                                    residual_layers=config.encoder_residual_layers,
+                                    pooling=config.encoder_pooling,
+                                    aggregation=config.encoder_aggregation,
+                                    degree_features=config.encoder_degree_features,
+                                    sum_scale=config.encoder_sum_scale)
         if config.decoder_variant == "legacy":
             self.decoder = GraphDecoder(spec, config.hidden, config.latent)
         else:
@@ -100,7 +117,18 @@ class GraphAutoencoder(nn.Module):
     def decode(self, z) -> DecoderOutput:
         return self.decoder(z)
 
-    def forward(self, graph: RelaxedGraph, sample_latent: bool = False) -> AEOutput:
-        mu, logvar = self.encode(graph)
+    def decode_with_features(self, z):
+        """Expose refined decoder states without changing its molecular heads."""
+        if not isinstance(self.decoder, RefinedGraphDecoder):
+            raise ValueError("Hidden-state bridges require a refined decoder")
+        return self.decoder.decode_with_features(z)
+
+    def forward(self, graph: RelaxedGraph | HardGraphBatch, sample_latent: bool = False, *,
+                from_canonical_cache: bool = False) -> AEOutput:
+        """Use hard labels directly only after the trainer verifies the cache."""
+        if from_canonical_cache:
+            mu, logvar = self.encoder(graph, from_canonical_cache=True)
+        else:
+            mu, logvar = self.encode(graph)
         z = mu + torch.randn_like(mu) * (0.5 * logvar).exp() if sample_latent else mu
         return AEOutput(self.decode(z), mu, logvar, z)

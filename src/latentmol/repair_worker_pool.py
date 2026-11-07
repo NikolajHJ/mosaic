@@ -78,6 +78,30 @@ def _run_task(index, task):
     return {"task_index": index, "result": result}
 
 
+def _validate_proposal_task(task):
+    from .guidance.repair_proposals import RepairProposalConfig
+    if type(task) is not tuple or len(task) != 5 or not isinstance(task[4], RepairProposalConfig):
+        raise TypeError("Proposal repair requires its explicit five-field task")
+    _validate_task(task[:4])
+
+
+def _run_proposal_task(index, task):
+    from .guidance.repair_proposals import search_with_proposals
+    return {"task_index": index, "result": search_with_proposals(*task)}
+
+
+def _validate_astar_task(task):
+    from .guidance.repair_astar import AStarRepairConfig
+    if type(task) is not tuple or len(task) != 5 or not isinstance(task[4], AStarRepairConfig):
+        raise TypeError("A* repair requires its explicit five-field task")
+    _validate_task(task[:4])
+
+
+def _run_astar_task(index, task):
+    from .guidance.repair_astar import search_astar
+    return {"task_index": index, "result": search_astar(*task)}
+
+
 def _validate_progress_task(task):
     """A separate opt-in schema; ordinary bond-only tasks are unchanged."""
     from .repair_progress import ProgressSearchConfig
@@ -179,6 +203,14 @@ class RepairWorkerPool:
         repair search; it only selects the explicit progress-task function.
         """
         return self._map(tasks, _validate_progress_task, _run_progress_task)
+
+    def map_proposals(self, tasks):
+        """Opt-in candidate discovery on the same ordered, bounded worker pool."""
+        return self._map(tasks, _validate_proposal_task, _run_proposal_task)
+
+    def map_astar(self, tasks):
+        """Reuse this pool for explicit probability-aware A* discovery tasks."""
+        return self._map(tasks, _validate_astar_task, _run_astar_task)
 
     def map_classification(self, tasks):
         """Classify all current hard points on the existing bounded CPU pool.

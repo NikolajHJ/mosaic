@@ -8,7 +8,7 @@ import json
 from pathlib import Path
 
 
-def capture_shared_graph(directory, step, graph, spec, *, active_slots=None, temperature=None):
+def capture_shared_graph(directory, step, graph, spec, *, active_slots=None, temperature=None, scope=None):
     """Persist all three channels for later offline heatmaps and graph playback.
 
     The caller supplies its current canonical RelaxedGraph. These are the same
@@ -19,7 +19,7 @@ def capture_shared_graph(directory, step, graph, spec, *, active_slots=None, tem
     value = {"snapshot_version": "shared-relaxed-graph-v1", "step": step,
         "graph_spec": spec.to_dict(), "row_slots": list(range(spec.max_nodes)),
         "active_slots": active_slots, "temperature": temperature,
-        "scope": "Saved canonical shared graph passed to scorers; occupancy policy is recorded in run configuration. Not a repaired target or raw-logit softmax."}
+        "scope": scope or "Saved canonical shared graph passed to scorers; occupancy policy is recorded in run configuration. Not a repaired target or raw-logit softmax."}
     for name in ("atoms", "charges", "bonds"):
         tensor = getattr(graph, name)
         if tensor.shape[0] != 1:
