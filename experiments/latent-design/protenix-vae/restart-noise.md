@@ -83,3 +83,31 @@ decoder, one real archived parent, and mock scorers exercised nine
 branches and the path readout. The two untouched smoke paths matched
 exactly in latent and raw labels, even where valid-molecule agreement
 had no denominator. Native comparisons are pending.
+
+## First completed panels on 8 November 2026
+
+At 15:46 CET, Latent A and Graph A had completed successfully on A100.
+Latent A finished 156 branches and 9,984 updates. Graph A finished 138
+branches and 9,936 updates. In each panel, all six pairs of untouched
+continuations agreed on every saved hard graph.
+
+In Latent A, radius 0.03 preserved the exact starting SMILES in all 18
+branches. All 18 sibling pairs ended at different valid molecules after
+64 updates. Mean endpoint-to-parent Morgan similarity was 0.177 at
+radius 0.03 and 0.124 for independent starts. The radius 1.0 arm had
+the largest mean best fresh-loss gain, 0.209, across the six parents.
+
+In Graph A, all four sparse and protected dense arms preserved the
+starting hard graph. No sibling pair ended at the same molecule among
+the 14–18 jointly valid endpoint pairs per arm. The sparse low arm
+had 95.5% valid observations. The protected arms reached at most 31
+hard bonds in the first 25 updates, versus 54 for the all-row control.
+The all-row control still had the largest mean best fresh-loss gain
+in this panel, 0.228, versus 0.220 for screened and 0.219 for dense high.
+
+Latent B was running with 82 of 156 branches complete. Graph B and
+all three persistence panels were pending while DTU had their queues
+inactive. These two short panels show early divergence. Persistence
+at 500 updates is still unmeasured.
+
+[Saved results and path readouts](../../../outputs/protenix-restart-noise-20261108a/readout-20261108-1546/).

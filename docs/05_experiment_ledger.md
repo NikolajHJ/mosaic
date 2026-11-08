@@ -22545,3 +22545,13 @@ Median unique non-parent source-path revisit fractions were 36.7% and 3.5%.
 The runs selected different parents. Two completed LR 70 six-cycle arms
 had higher sibling overlap than different-parent overlap in the same cycle.
 [Trajectory audit and matched noise tests](../experiments/latent-design/protenix-vae/restart-noise.md).
+
+8 November 2026 at 15:46 CET. Initialization noise panels **29924369**
+and **29924374** completed 9,984 and 9,936 updates. Untouched sibling
+pairs exactly replayed their saved hard graphs. In Latent A, radius
+0.03 retained the parent SMILES in all 18 starts and all 18 sibling
+pairs ended at different valid molecules. In Graph A, the protected
+arms reached at most 31 hard bonds during the first 25 updates versus
+54 for the all-row control. Latent B was running. Graph B and the
+three 500-update persistence panels were queued.
+[First noise results](../experiments/latent-design/protenix-vae/restart-noise.md#first-completed-panels-on-8-november-2026).
