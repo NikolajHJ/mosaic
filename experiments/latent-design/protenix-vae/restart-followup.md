@@ -103,3 +103,12 @@ The Run trees view uses the later 15:25 CET snapshot. It links 40 verified
 restarts to their exact saved source states across 178 branches. Both
 completed jobs have full coverage. Raw topology was still unavailable for
 20 observations in one running branch.
+
+## Completed repeats on 8 November 2026
+
+Mutation B and duration B were complete at the 22:05 CET check. All eight
+matched follow-ups had finished their update budgets. On mutation B, the first
+latent-kick branch averaged a best fresh-loss reduction of 0.212 across 12
+parents versus 0.076 for all-row 50/50 using the mixed shortlist. On duration
+B, four shorter branches averaged 0.226 versus 0.222 for one longer branch
+across eight parents. [Saved comparison](../../../outputs/protenix-restart-status-20261108-2205/playback-snapshot.json).

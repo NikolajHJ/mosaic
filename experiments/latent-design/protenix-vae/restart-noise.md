@@ -111,3 +111,25 @@ inactive. These two short panels show early divergence. Persistence
 at 500 updates is still unmeasured.
 
 [Saved results and path readouts](../../../outputs/protenix-restart-noise-20261108a/readout-20261108-1546/).
+
+## Replicate and persistence results on 8 November 2026
+
+At 22:05 CET, Latent B and Persistence A and C had finished. Graph B had
+saved all 9,936 optimization updates and was fresh-scoring its shortlist.
+Persistence B remained queued on V100.
+
+Across both latent panels, radius 0.03 kept the exact parent SMILES in 35 of
+36 starts. None of 30 jointly valid sibling endpoint pairs matched at update
+64, though eight pairs temporarily rejoined. Late sibling Morgan nearest
+similarity was 0.255 and 0.223, versus 0.135 and 0.142 for independent starts.
+Untouched controls replayed all saved hard labels in both panels. The best
+fresh-loss gain among latent radii was at radius 1 in panel A and 0.25 in
+panel B. Independent starts led the fresh-loss gain in panel B.
+
+At 500 updates, none of 23 jointly valid parent-seeded sibling endpoint
+pairs matched across the two completed persistence parents. Late structural
+similarity was often close to independent starts. Sparse-high kept the parent
+at all six starts and had 98.5% and 77.8% valid observations, versus 79.8% and
+62.2% for dense-high. Dense-high had no jointly valid endpoint pair in panel C.
+
+[Snapshot and path readouts](../../../outputs/protenix-restart-status-20261108-2205/).

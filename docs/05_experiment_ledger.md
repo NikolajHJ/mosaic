@@ -22555,3 +22555,19 @@ arms reached at most 31 hard bonds during the first 25 updates versus
 54 for the all-row control. Latent B was running. Graph B and the
 three 500-update persistence panels were queued.
 [First noise results](../experiments/latent-design/protenix-vae/restart-noise.md#first-completed-panels-on-8-november-2026).
+
+8 November 2026 at 22:05 CET. Latent B **29924373** and persistence panels
+A **29924376** and C **29924379** finished. Across both latent panels,
+radius 0.03 retained the exact parent in 35 of 36 starts. None of 30 jointly
+valid sibling endpoint pairs matched after 64 updates. Late paths remained
+more similar among siblings than among independent starts in both panels.
+At 500 updates, none of 23 jointly valid parent-seeded sibling endpoints
+matched across the two completed parents. Graph B was fresh-scoring and
+persistence B remained queued.
+[Noise readout](../experiments/latent-design/protenix-vae/restart-noise.md#replicate-and-persistence-results-on-8-november-2026).
+
+At the same check, mutation B **29914684** and duration B **29914689**
+had completed. Mutation B favored latent kicks over all-row 50/50 on mean
+fresh-loss gain. Duration B gave four shorter branches a 0.005 mean gain
+advantage over one longer branch across eight parents.
+[Matched repeats](../experiments/latent-design/protenix-vae/restart-followup.md#completed-repeats-on-8-november-2026).
