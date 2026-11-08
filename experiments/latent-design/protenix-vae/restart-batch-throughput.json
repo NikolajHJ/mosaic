@@ -1,0 +1,45 @@
+{
+  "study": "batch_throughput",
+  "design": {
+    "updates": 40,
+    "schedule_horizon": 500,
+    "seed": 17,
+    "noise_seed": 230017,
+    "occupied_atoms": 25,
+    "learning_rate": 60.0,
+    "max_step_norm": 0.25,
+    "chemistry_initial": 1.0,
+    "chemistry_final": 1.0,
+    "chemistry_hold": 375,
+    "chemistry_ramp_end": 500,
+    "valence_excess_weight": 1.0,
+    "temperature_initial": 1.0,
+    "temperature_final": 1.0,
+    "noise_initial": 0.05,
+    "noise_zero_at": 100
+  },
+  "parent_cohorts": [
+    "/work3/s234818/latentmol/runs/flow-followup-20261106a-520000",
+    "/work3/s234818/latentmol/runs/flow-followup-20261106a-530000",
+    "/work3/s234818/latentmol/runs/flow-followup-20261106a-540000"
+  ],
+  "panel_seed": 982701,
+  "perturbation_seed": 1812901,
+  "parents": 2,
+  "children_per_parent": 4,
+  "warmup_steps": 2,
+  "repeats": 2,
+  "fresh_attempts": 12,
+  "cases": [
+    {"name": "scalar-standard", "batch_size": 1, "torch_threads": 4, "cpu_workers": 1, "overlap": false},
+    {"name": "scalar-one-thread", "batch_size": 1, "torch_threads": 1, "cpu_workers": 1, "overlap": false},
+    {"name": "batch2-serial", "batch_size": 2, "torch_threads": 1, "cpu_workers": 1, "overlap": false},
+    {"name": "batch2-overlap2", "batch_size": 2, "torch_threads": 1, "cpu_workers": 2, "overlap": true},
+    {"name": "batch4-serial", "batch_size": 4, "torch_threads": 1, "cpu_workers": 1, "overlap": false},
+    {"name": "batch4-overlap1", "batch_size": 4, "torch_threads": 1, "cpu_workers": 1, "overlap": true},
+    {"name": "batch4-overlap2", "batch_size": 4, "torch_threads": 1, "cpu_workers": 2, "overlap": true},
+    {"name": "batch4-overlap4", "batch_size": 4, "torch_threads": 1, "cpu_workers": 4, "overlap": true},
+    {"name": "batch8-overlap4", "batch_size": 8, "torch_threads": 1, "cpu_workers": 4, "overlap": true}
+  ],
+  "tasks": {"bench": {"queue": "gpua100"}}
+}

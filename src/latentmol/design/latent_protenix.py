@@ -33,7 +33,7 @@ from latentmol.guidance.repair_proposals import RepairProposalConfig, search_wit
 from latentmol.probability_repair import ProbabilityRepairConfig
 from latentmol.repair_guidance.loss import FrozenRepairTarget, fixed_target_nll
 from latentmol.reporting.capture import capture_shared_graph
-from latentmol.representation import HardGraphBatch
+from latentmol.representation import DecoderOutput, HardGraphBatch, RelaxedGraph
 
 
 VERSION = "latent-protenix-structural-v1"
@@ -166,26 +166,46 @@ def _finite_scalar(value, name):
     return value.reshape(())
 
 
-def evaluate_point(decoder, scorer, point, active, config, step, *, target_bundle=None,
-                   logit_offset=None):
-    """Both branches consume one graph; target/weight/T stay fixed in this call."""
+@dataclass(frozen=True)
+class PreparedPoint:
+    """One differentiable decoder evaluation and its fixed branch settings."""
+
+    point: torch.Tensor
+    active: torch.Tensor
+    config: LatentDesignConfig
+    step: int
+    schedule: dict
+    decoded: DecoderOutput
+    graph: RelaxedGraph
+    features: object | None = None
+
+
+def prepare_point(decoder, point, active, config, step, *, logit_offset=None,
+                  uses_decoder_hidden=False):
+    """Build the single live graph shared by the scorer and chemistry losses."""
     point = point.detach().clone().requires_grad_(True)
     schedule = schedules(config, step)
-    hidden_path = bool(getattr(scorer, "uses_decoder_hidden", False))
-    if hidden_path:
+    features = None
+    if uses_decoder_hidden:
         decoded, features = decoder.decode_with_features(point)
     else:
         decoded = decoder.decode(point)
     if logit_offset is not None:
-        if hidden_path:
+        if uses_decoder_hidden:
             raise ValueError("A logit offset requires the shared graph scorer")
         decoded = logit_offset(decoded, step)
     for name in ("atoms", "charges", "bonds"):
         if not bool(torch.isfinite(getattr(decoded, name)).all()):
             raise ValueError("Nonfinite decoder logits: " + name)
     graph = graph_from_decoder(decoded, decoder.spec, temperature=schedule["temperature"], fixed_active=active)
-    binding, aux = (scorer.score_hidden(features, graph, active, step=step)
-                    if hidden_path else scorer(graph))
+    return PreparedPoint(point, active, config, step, schedule, decoded, graph, features)
+
+
+def finish_point(decoder, prepared, scored, *, target_bundle=None):
+    """Finish one branch using a score attached to its prepared graph."""
+    point, active, config, step = prepared.point, prepared.active, prepared.config, prepared.step
+    schedule, decoded, graph = prepared.schedule, prepared.decoded, prepared.graph
+    binding, aux = scored
     binding = _finite_scalar(binding, "Binding objective")
     if not binding.requires_grad:
         raise ValueError("Required binding path is detached")
@@ -233,6 +253,17 @@ def evaluate_point(decoder, scorer, point, active, config, step, *, target_bundl
         gradient_norms=dict(binding=binding_norm, chemistry=chemistry_norm,
             weighted_chemistry=schedule["chemistry_weight"]*chemistry_norm,
             combined=float(gradient.norm()), cosine=cosine, **valence_norms), **valence_details)
+
+
+def evaluate_point(decoder, scorer, point, active, config, step, *, target_bundle=None,
+                   logit_offset=None):
+    """Both branches consume one graph; target/weight/T stay fixed in this call."""
+    hidden_path = bool(getattr(scorer, "uses_decoder_hidden", False))
+    prepared = prepare_point(decoder, point, active, config, step, logit_offset=logit_offset,
+                             uses_decoder_hidden=hidden_path)
+    scored = (scorer.score_hidden(prepared.features, prepared.graph, active, step=step)
+              if hidden_path else scorer(prepared.graph))
+    return finish_point(decoder, prepared, scored, target_bundle=target_bundle)
 
 
 def latent_step(point, binding_gradient, gradient, config, step, generator):

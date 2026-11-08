@@ -24,26 +24,19 @@ from latentmol.representation import GraphSpec, RelaxedGraph
 
 PROTOCOL = "mosaic-protenix-probability-vjp-v1"
 _SHUTDOWN_GRACE_SECONDS = 15
+_ARRAY_NAMES = ("atoms", "charges", "bonds")
 
 
 class _NativeVJP(torch.autograd.Function):
     @staticmethod
-    def forward(ctx, atoms, charges, bonds, owner):
-        response = owner._evaluate_arrays(atoms, charges, bonds)
-        values = tuple(torch.as_tensor(response["gradients"][name], device=value.device,
-                                       dtype=value.dtype) for name, value in
-                       zip(("atoms", "charges", "bonds"), (atoms, charges, bonds)))
-        if any(g.shape != v.shape or not bool(torch.isfinite(g).all())
-               for g, v in zip(values, (atoms, charges, bonds))):
-            raise ValueError("Native VJP has incompatible/nonfinite input derivatives")
-        ctx.save_for_backward(*values)
-        owner.last_aux = response["aux"]
-        return atoms.new_tensor(response["loss"])
+    def forward(ctx, atoms, charges, bonds, loss, gradients):
+        ctx.save_for_backward(*gradients)
+        return atoms.new_tensor(loss)
 
     @staticmethod
     @torch.autograd.function.once_differentiable
     def backward(ctx, upstream):
-        return (*(upstream * value for value in ctx.saved_tensors), None)
+        return (*(upstream * value for value in ctx.saved_tensors), None, None)
 
 
 class MosaicProtenixScorer:
@@ -72,6 +65,8 @@ class MosaicProtenixScorer:
             raise ValueError("Worker deadlines must be finite and positive")
         self.timeout = float(timeout)
         self.last_aux = {}
+        self.last_native_seconds = None
+        self.last_batch_size = None
         self._request_id = 0
         self._lock = threading.Lock()
         self._closed = False
@@ -140,18 +135,57 @@ class MosaicProtenixScorer:
                 raise RuntimeError("Native Protenix failed: " + response.get("error", "unknown error"))
             return response
 
-    def _evaluate_arrays(self, atoms, charges, bonds):
-        response = self._rpc(dict(op="evaluate", arrays={name:value.detach().cpu().tolist()
-            for name,value in zip(("atoms","charges","bonds"),(atoms,charges,bonds))}))
+    @staticmethod
+    def _attach_vjp(arrays, response):
         if not isinstance(response.get("loss"), (float, int)) or not math.isfinite(response["loss"]):
             raise ValueError("Native contact objective is nonfinite")
-        return response
+        gradients = tuple(torch.as_tensor(response["gradients"][name], device=value.device,
+                                          dtype=value.dtype)
+                          for name, value in zip(_ARRAY_NAMES, arrays))
+        if any(gradient.shape != value.shape or not bool(torch.isfinite(gradient).all())
+               for gradient, value in zip(gradients, arrays)):
+            raise ValueError("Native VJP has incompatible/nonfinite input derivatives")
+        return _NativeVJP.apply(*arrays, response["loss"], gradients), dict(response["aux"])
 
     def __call__(self, graph: RelaxedGraph):
         return self.score_at(graph, self.active)
 
+    @property
+    def worker_pid(self):
+        return self._process.pid
+
     def score_at(self, graph: RelaxedGraph, active):
         """Score a branch's explicit slot map in the same fixed-count native context."""
+        arrays = self._graph_arrays(graph, active)
+        response = self._rpc(dict(op="evaluate", arrays={
+            name: value.detach().cpu().tolist() for name, value in zip(_ARRAY_NAMES, arrays)
+        }))
+        result = self._attach_vjp(arrays, response)
+        self.last_aux = dict(result[1])
+        self.last_native_seconds = response.get("native_seconds")
+        self.last_batch_size = 1
+        return result
+
+    def score_batch(self, graphs, active_masks):
+        """Score singleton graphs in one RPC, with a separate Torch VJP per graph."""
+        packed = [self._graph_arrays(graph, active)
+                  for graph, active in zip(graphs, active_masks, strict=True)]
+        if not packed:
+            raise ValueError("Require at least one native graph")
+        response = self._rpc(dict(op="evaluate_batch", arrays={
+            name: [value.detach().cpu().tolist() for value in batch]
+            for name, batch in zip(_ARRAY_NAMES, zip(*packed))
+        }))
+        rows = response.get("results")
+        if not isinstance(rows, list) or len(rows) != len(packed):
+            raise ValueError("Native worker returned the wrong number of graph results")
+        results = [self._attach_vjp(arrays, row) for arrays, row in zip(packed, rows)]
+        self.last_aux = dict(results[-1][1])
+        self.last_native_seconds = response.get("native_seconds")
+        self.last_batch_size = len(packed)
+        return results
+
+    def _graph_arrays(self, graph, active):
         active = torch.as_tensor(active)
         if (active.dtype != torch.bool or active.shape != self.active.shape
                 or int(active.sum()) != int(self.active.sum())):
@@ -177,8 +211,7 @@ class MosaicProtenixScorer:
         excluded = ~(mask[:,None]&mask[None,:]) | torch.eye(n,dtype=torch.bool,device=mask.device)
         if not torch.allclose(graph.bonds[0,...,0][excluded],torch.ones_like(graph.bonds[0,...,0][excluded]),atol=1e-6,rtol=0):
             raise ValueError("Excluded and diagonal parent bonds must be NONE")
-        loss = _NativeVJP.apply(*arrays, self)
-        return loss, dict(self.last_aux)
+        return arrays
 
     evaluate = __call__
 

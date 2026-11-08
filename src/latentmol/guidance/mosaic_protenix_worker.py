@@ -8,15 +8,18 @@ reusing the geometry-off native trunk and exact Mosaic NativeContactLoss.
 from __future__ import annotations
 
 import contextlib
+from functools import partial
 import hashlib
 import json
 import math
 from pathlib import Path
 import sys
+import time
 import traceback
 
 
 PROTOCOL = "mosaic-protenix-probability-vjp-v1"
+_ARRAY_NAMES = ("atoms", "charges", "bonds")
 
 
 def _read_authenticated(path, expected=None):
@@ -96,54 +99,96 @@ class NativeServer:
         loss = NativeContactLoss(8.,map_protenix_pocket(self.context,pocket))
         self.key = jax.random.key(int(config.get("model_key",17)))
         context,model,key = self.context,self.model,self.key
-        elements,charges = self.atomic_numbers,self.formal_charges
+        elements, formal_charges = self.atomic_numbers, self.formal_charges
+
+        def objective(model, context, key, atoms, charges, bonds):
+            features = inject_full_schema(context, atoms, charges, bonds, elements, formal_charges)
+            _, trunk = _native_trunk(model.model, features, key)
+            logits = model.model.distogram_head(trunk.z)
+            output = MolecularTrunkOutput(distogram_logits=logits, distogram_bins=native_distogram_bins(),
+                ligand_token_indices=context.ligand_token_indices, protein_token_indices=context.protein_token_indices,
+                trunk_state=trunk)
+            value, aux = loss(None, output, key=key)  # NativeContactLoss never reads the graph argument.
+            finite = jnp.isfinite(logits).all() & jnp.isfinite(trunk.s).all() & jnp.isfinite(trunk.z).all()
+            return value, (aux, finite)
 
         @eqx.filter_jit
-        def evaluate(model,context,key,a,c,b):
-            def objective(aa,cc,bb):
-                features = inject_full_schema(context,aa,cc,bb,elements,charges)
-                _,trunk = _native_trunk(model.model,features,key)
-                logits = model.model.distogram_head(trunk.z)
-                output = MolecularTrunkOutput(distogram_logits=logits,distogram_bins=native_distogram_bins(),
-                    ligand_token_indices=context.ligand_token_indices,protein_token_indices=context.protein_token_indices,
-                    trunk_state=trunk)
-                value,aux = loss(None,output,key=key)  # NativeContactLoss never reads the graph argument.
-                finite = jnp.isfinite(logits).all() & jnp.isfinite(trunk.s).all() & jnp.isfinite(trunk.z).all()
-                return value,(aux,finite)
-            return jax.value_and_grad(objective,argnums=(0,1,2),has_aux=True)(a,c,b)
+        def evaluate(model, context, key, a, c, b):
+            objective_with_context = partial(objective, model, context, key)
+            return jax.value_and_grad(objective_with_context, argnums=(0, 1, 2), has_aux=True)(a, c, b)
+
+        @eqx.filter_jit
+        def evaluate_batch(model, context, key, a, c, b):
+            objective_with_context = partial(objective, model, context, key)
+            value_and_grad = jax.value_and_grad(objective_with_context, argnums=(0, 1, 2), has_aux=True)
+            return jax.vmap(value_and_grad)(a, c, b)
+
         self._evaluate = evaluate
+        self._evaluate_batch = evaluate_batch
         self._digest = array_digest
         self.identity = dict(protocol=PROTOCOL,**self.before,model=self.model.identities,
             source=source,context_ready_sha256=ready_sha,pocket_sha256=pocket_sha,
-            n_atoms=context.n_atoms,atomic_numbers=list(elements),formal_charges=list(charges),
+            n_atoms=context.n_atoms,atomic_numbers=list(elements),formal_charges=list(formal_charges),
             model_key=int(config.get("model_key",17)),geometry_mode="off",diffusion=False,
             objective="negative_mean_ligand_max_pocket_probability_distance_below8A",
             feature_map="native128_elements_expected_formal_charge_bond_presence",
             limitations=["bond order/aromaticity collapse to presence","fixed occupied slots, names and protein context",
                          "contact surrogate is not affinity","new full-vocabulary feature map requires native pilot evidence"])
 
-    def evaluate(self, request):
+    def _graph_arrays(self, request, *, batched):
         import numpy as np
-        import jax.numpy as jnp
         arrays=request["arrays"];n=self.context.n_atoms
-        values=[np.asarray(arrays[k],dtype=np.float32) for k in ["atoms","charges","bonds"]]
+        values=[np.asarray(arrays[k],dtype=np.float32) for k in _ARRAY_NAMES]
         shapes=[(n,len(self.atomic_numbers)),(n,len(self.formal_charges)),(n,n,5)]
+        if batched:
+            if values[0].ndim != 3 or not values[0].shape[0]:
+                raise ValueError("Require a nonempty native graph batch")
+            shapes = [(values[0].shape[0], *shape) for shape in shapes]
         for v,shape in zip(values,shapes):
             if v.shape!=shape or not np.isfinite(v).all() or (v<0).any() or not np.allclose(v.sum(-1),1,atol=2e-5,rtol=2e-5):
                 raise ValueError("Incompatible/nonfinite native graph probabilities")
-        if not np.allclose(values[2],values[2].transpose(1,0,2),atol=1e-6,rtol=0):
+        if not np.allclose(values[2], values[2].swapaxes(-3, -2), atol=1e-6, rtol=0):
             raise ValueError("Native bond probabilities must be symmetric")
-        diagonal=values[2][np.arange(n),np.arange(n)]
-        if not np.allclose(diagonal[:,0],1,atol=1e-6,rtol=0) or not np.allclose(diagonal[:,1:],0,atol=1e-6,rtol=0):
+        diagonal=values[2][..., np.arange(n), np.arange(n), :]
+        if not np.allclose(diagonal[...,0],1,atol=1e-6,rtol=0) or not np.allclose(diagonal[...,1:],0,atol=1e-6,rtol=0):
             raise ValueError("Native diagonal bonds must be NONE")
-        (value,(aux,finite)),gradients=self._evaluate(self.model,self.context,self.key,*(jnp.asarray(v) for v in values))
+        return values
+
+    def _timed_evaluation(self, function, arrays):
+        import jax
+        import jax.numpy as jnp
+        values = jax.block_until_ready(tuple(jnp.asarray(value) for value in arrays))
+        start = time.perf_counter()
+        evaluated = jax.block_until_ready(function(self.model, self.context, self.key, *values))
+        return evaluated, time.perf_counter() - start
+
+    @staticmethod
+    def _result(value, aux, finite, gradients):
+        import numpy as np
         result=float(value)
         gradients=[np.asarray(v) for v in gradients]
         if not bool(finite) or not math.isfinite(result) or any(not np.isfinite(v).all() for v in gradients):
             raise FloatingPointError("Nonfinite native trunk, objective or probability derivative")
-        return dict(loss=result,gradients={k:v.tolist() for k,v in zip(["atoms","charges","bonds"],gradients)},
+        return dict(loss=result,gradients={k:v.tolist() for k,v in zip(_ARRAY_NAMES,gradients)},
             aux={k:np.asarray(v).item() for k,v in aux.items()},
-            gradient_norms={k:float(np.linalg.norm(v.astype(np.float64))) for k,v in zip(["atoms","charges","bonds"],gradients)})
+            gradient_norms={k:float(np.linalg.norm(v.astype(np.float64))) for k,v in zip(_ARRAY_NAMES,gradients)})
+
+    def evaluate(self, request):
+        arrays = self._graph_arrays(request, batched=False)
+        ((value, (aux, finite)), gradients), seconds = self._timed_evaluation(self._evaluate, arrays)
+        return dict(self._result(value, aux, finite, gradients), native_seconds=seconds)
+
+    def evaluate_batch(self, request):
+        import numpy as np
+        arrays = self._graph_arrays(request, batched=True)
+        ((values, (aux, finite)), gradients), seconds = self._timed_evaluation(self._evaluate_batch, arrays)
+        values, finite = np.asarray(values), np.asarray(finite)
+        aux = {key: np.asarray(value) for key, value in aux.items()}
+        gradients = tuple(np.asarray(value) for value in gradients)
+        results = [self._result(value, {key: column[index] for key, column in aux.items()},
+                                finite[index], tuple(gradient[index] for gradient in gradients))
+                   for index, value in enumerate(values)]
+        return dict(results=results, native_seconds=seconds)
 
     def close(self):
         after={"model_digest":self._digest(self.model),"context_digest":self._digest(self.context)}
@@ -167,9 +212,10 @@ def main():
                 if operation=="init":
                     if server is not None:raise ValueError("Native worker already initialized")
                     server=NativeServer(request);result=dict(identity=server.identity,n_atoms=server.context.n_atoms,devices=server.devices)
-                elif operation=="evaluate":
+                elif operation in ("evaluate", "evaluate_batch"):
                     if server is None:raise ValueError("Initialize native worker first")
-                    result=server.evaluate(request)
+                    evaluator = server.evaluate if operation == "evaluate" else server.evaluate_batch
+                    result = evaluator(request)
                 elif operation=="close":
                     if server is None:raise ValueError("Initialize native worker first")
                     result=server.close()

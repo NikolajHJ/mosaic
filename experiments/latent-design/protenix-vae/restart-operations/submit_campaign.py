@@ -70,17 +70,34 @@ def stage(args, local, control, release):
     config = EXPERIMENT / args.config
     cfg = read(config)
     study = cfg.get("study")
-    matched_study = study in ("initialization_noise", "lineage_feedback")
-    fresh_path = EXPERIMENT / "restart-followup-fresh-dtu.json" if matched_study else FRESH
-    module = "latentmol.design.protenix_restart_study" if matched_study else "latentmol.design.protenix_restarts"
-    startup_seconds = {"initialization_noise": 1800, "lineage_feedback": 2700}.get(study, 900)
+    benchmark = study == "batch_throughput"
+    uses_tasks = study in ("initialization_noise", "lineage_feedback", "batch_throughput")
+    fresh_path = EXPERIMENT / "restart-followup-fresh-dtu.json" if uses_tasks else FRESH
+    if benchmark:
+        module = "latentmol.design.protenix_restart_benchmark"
+    else:
+        module = "latentmol.design.protenix_restart_study" if uses_tasks else "latentmol.design.protenix_restarts"
+    startup_seconds = {"initialization_noise": 1800, "lineage_feedback": 2700,
+                       "batch_throughput": 2700}.get(study, 900)
+    cpu_slots = 8 if benchmark else 4
+    host_requirements = ["-R", "select[gpu80gb]"] if benchmark else []
+    worker_env = "all,~CUDA_VISIBLE_DEVICES,~CUDA_MPS_PIPE_DIRECTORY,~CUDA_MPS_LOG_DIRECTORY,~CUDA_MPS_ACTIVE_THREAD_PERCENTAGE"
+    # Override the wrapper's thread defaults after it resolves GPU ownership.
+    thread_env = (["/usr/bin/env", "DBMOL_CPU_THREADS=1", "OMP_NUM_THREADS=1",
+                   "MKL_NUM_THREADS=1", "OPENBLAS_NUM_THREADS=1"] if benchmark else [])
     outputs = {}
     budgets = {}
     queues = {}
-    for arm, override in cfg["tasks" if matched_study else "arms"].items():
+    for arm, override in cfg["tasks" if uses_tasks else "arms"].items():
         if not re.fullmatch(r"[a-z][a-z0-9-]*", arm):
             raise ValueError(f"Invalid arm name: {arm}")
-        if matched_study:
+        if benchmark:
+            cases = cfg["cases"]
+            batches = {case["batch_size"] for case in cases}
+            measured = (cfg["design"]["updates"] * cfg["parents"] * cfg["children_per_parent"]
+                        * len(cases) * cfg["repeats"])
+            budgets[arm] = measured + cfg["warmup_steps"] * sum(batches)
+        elif uses_tasks:
             comparison = cfg["comparisons"][override["comparison"]]
             if study == "lineage_feedback":
                 budgets[arm] = (3 * comparison["parents"] * comparison["cycles"]
@@ -88,22 +105,23 @@ def stage(args, local, control, release):
             else:
                 budgets[arm] = comparison["parents"] * sum(
                     sum(variant["updates"]) for variant in comparison["variants"].values())
-            queues[arm] = override.get("queue", args.queue)
         else:
             campaign = cfg["campaign"] | cfg.get("campaign_arms", {}).get(arm, {})
             design = cfg["design"] | override
             branches = 1 + (campaign["cycles"] - 1) * campaign["elite_count"] * campaign["branches_per_elite"]
             budgets[arm] = branches * design["updates"]
-            queues[arm] = args.queue
+        queues[arm] = override.get("queue", args.queue) if uses_tasks else args.queue
         outputs[arm] = f"{BASE}/runs/{args.name}-{arm}"
     if not budgets or any(not 0 < updates <= args.max_updates for updates in budgets.values()):
         raise ValueError(f"Arm exceeds the declared update budget: {budgets}")
     if set(queues.values()) - GPU_RESOURCE.keys():
         raise ValueError(f"Unsupported GPU queues: {queues}")
+    if benchmark and queues != {"bench": "gpua100"}:
+        raise ValueError("The throughput benchmark requires one bench task on gpua100")
 
     source_path = None
     if args.source_receipt:
-        if matched_study:
+        if uses_tasks:
             raise ValueError("Matched archive staging is for learning-rate repeats")
         source_path, source_digest, replaced, prior = matched_source(args.source_receipt, cfg)
     else:
@@ -111,7 +129,7 @@ def stage(args, local, control, release):
     plan = {key: prior[key] for key in ("cuda_ownership_helper", "cuda_ownership_sha256", "mosaic_python")}
     plan.update(arms=outputs, queue=args.queue, planned_updates=budgets,
                 output_cap_mib=OUTPUT_MIB, config_sha256=sha(config))
-    if matched_study:
+    if uses_tasks:
         plan["queues"] = queues
         del plan["queue"]
     if source_path:
@@ -152,7 +170,7 @@ def stage(args, local, control, release):
         "TORCH_PYTHON", "FRESH_DEPS", "FRESH_DATA"))
     required = [native["mosaic_source"], plan["mosaic_python"], assets["native"]["source_root"],
                 torch_python, fresh_deps, fresh_data, fresh["ccd_root"]]
-    cohorts = cfg.get("parent_cohorts", []) if matched_study else []
+    cohorts = cfg.get("parent_cohorts", []) if uses_tasks else []
     probe = f"{BASE}/runs/{args.name}-capacity-probe"
     targets = [remote_archive, release, control, probe, *outputs.values()]
     save(local / "preflight.json", remote(f"""
@@ -218,14 +236,15 @@ finally:
         receipts = f"{control}/{arm}"
         queue = queues[arm]
         commands[arm] = [
-            "bsub", "-J", f"dbmol-{args.name}-{arm}", "-q", queue, "-n", "4",
-            "-R", "span[hosts=1]", "-R", "rusage[mem=4096]", "-gpu", GPU_RESOURCE[queue],
-            "-env", "all,~CUDA_VISIBLE_DEVICES,~CUDA_MPS_PIPE_DIRECTORY,~CUDA_MPS_LOG_DIRECTORY,~CUDA_MPS_ACTIVE_THREAD_PERCENTAGE",
+            "bsub", "-J", f"dbmol-{args.name}-{arm}", "-q", queue, "-n", str(cpu_slots),
+            "-R", "span[hosts=1]", "-R", "rusage[mem=4096]", *host_requirements,
+            "-gpu", GPU_RESOURCE[queue],
+            "-env", worker_env,
             "-W", f"{args.hours:02d}:00", "-oo", f"{receipts}/run.%J.out", "-eo", f"{receipts}/run.%J.err",
             "/usr/bin/python3", f"{control}/hpc_launch.py", "--archive", remote_archive,
             "--archive-sha256", archive_sha, "--release", release, "--receipt", f"{receipts}/launch.json",
             "--startup-seconds", str(startup_seconds), "--run-seconds", str(args.hours * 3600 - 900),
-            "--", "bash", WRAPPER.as_posix(), torch_python, "-m", module,
+            "--", "bash", WRAPPER.as_posix(), *thread_env, torch_python, "-m", module,
             "--config", config.as_posix(), "--arm", arm, "--output", output,
             "--checkpoint", assets["checkpoint"], "--checkpoint-sha256", assets["checkpoint_sha256"],
             "--mosaic-python", plan["mosaic_python"], "--native-config", NATIVE.as_posix(),
