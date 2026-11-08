@@ -6,6 +6,7 @@
 - [Six-cycle LR 70 comparison](restart-lr70-six-cycle.md) tests step cap, screened starts, valence guidance, shortlisting, and parent selection.
 - [Matched LR 30 repeats](restart-lr30.md) repeat the standalone and six-arm LR 70 experiments with the same settings and archived source.
 - [Restart noise and trajectory replay](restart-noise.md) compares perturbation strength, molecule retention, and path divergence.
+- [Adaptive, fixed, and independent restarts](restart-lineage-feedback.md) tests whether updating the elite archive improves search at matched cost.
 - [LR 100 diversity pilot](restart-diversity-lr100.md) compares a strict final molecule panel with the score-only panel.
 - [Interactive report](../../../outputs/protenix-restart-report-20261108/protenix-restart-report.html) shows saved molecules, trajectories, and verified restart trees for nine selected runs. The [7 November report](../../../outputs/protenix-restart-report-20261107/protenix-restart-report.html) covers the earlier chemistry and matched follow-ups.
 - [Historical submission scripts](restart-operations/) preserve the two operators as used from their recorded output directories.

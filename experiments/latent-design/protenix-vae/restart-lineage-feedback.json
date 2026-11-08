@@ -1,0 +1,44 @@
+{
+  "study": "lineage_feedback",
+  "design": {
+    "updates": 96,
+    "schedule_horizon": 96,
+    "seed": 17,
+    "occupied_atoms": 25,
+    "learning_rate": 70.0,
+    "max_step_norm": 0.25,
+    "chemistry_initial": 1.0,
+    "chemistry_final": 1.0,
+    "chemistry_hold": 0,
+    "chemistry_ramp_end": 96,
+    "valence_excess_weight": 1.0,
+    "temperature_initial": 1.0,
+    "temperature_final": 1.0,
+    "noise_initial": 0.0,
+    "noise_zero_at": 96
+  },
+  "parent_cohorts": [
+    "/work3/s234818/latentmol/runs/flow-followup-20261106a-520000",
+    "/work3/s234818/latentmol/runs/flow-followup-20261106a-530000",
+    "/work3/s234818/latentmol/runs/flow-followup-20261106a-540000"
+  ],
+  "panel_size": 9,
+  "panel_seed": 982701,
+  "perturbation_seed": 1811901,
+  "prior_seed": 1816901,
+  "comparisons": {
+    "feedback": {
+      "parents": 3,
+      "cycles": 5,
+      "branches_per_parent": 2,
+      "updates": 96,
+      "shortlist": 3,
+      "high_score_ceiling": 2.30
+    }
+  },
+  "tasks": {
+    "seed-a": {"comparison": "feedback", "panel_offset": 0, "queue": "gpua100"},
+    "seed-b": {"comparison": "feedback", "panel_offset": 3, "queue": "gpua100"},
+    "seed-c": {"comparison": "feedback", "panel_offset": 6, "queue": "gpuv100"}
+  }
+}

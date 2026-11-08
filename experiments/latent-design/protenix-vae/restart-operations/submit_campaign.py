@@ -69,20 +69,25 @@ def matched_source(receipt_path, config):
 def stage(args, local, control, release):
     config = EXPERIMENT / args.config
     cfg = read(config)
-    noise_study = cfg.get("study") == "initialization_noise"
-    fresh_path = EXPERIMENT / "restart-followup-fresh-dtu.json" if noise_study else FRESH
-    module = "latentmol.design.protenix_restart_study" if noise_study else "latentmol.design.protenix_restarts"
-    startup_seconds = 1800 if noise_study else 900
+    study = cfg.get("study")
+    matched_study = study in ("initialization_noise", "lineage_feedback")
+    fresh_path = EXPERIMENT / "restart-followup-fresh-dtu.json" if matched_study else FRESH
+    module = "latentmol.design.protenix_restart_study" if matched_study else "latentmol.design.protenix_restarts"
+    startup_seconds = {"initialization_noise": 1800, "lineage_feedback": 2700}.get(study, 900)
     outputs = {}
     budgets = {}
     queues = {}
-    for arm, override in cfg["tasks" if noise_study else "arms"].items():
+    for arm, override in cfg["tasks" if matched_study else "arms"].items():
         if not re.fullmatch(r"[a-z][a-z0-9-]*", arm):
             raise ValueError(f"Invalid arm name: {arm}")
-        if noise_study:
+        if matched_study:
             comparison = cfg["comparisons"][override["comparison"]]
-            budgets[arm] = comparison["parents"] * sum(
-                sum(variant["updates"]) for variant in comparison["variants"].values())
+            if study == "lineage_feedback":
+                budgets[arm] = (3 * comparison["parents"] * comparison["cycles"]
+                                * comparison["branches_per_parent"] * comparison["updates"])
+            else:
+                budgets[arm] = comparison["parents"] * sum(
+                    sum(variant["updates"]) for variant in comparison["variants"].values())
             queues[arm] = override.get("queue", args.queue)
         else:
             campaign = cfg["campaign"] | cfg.get("campaign_arms", {}).get(arm, {})
@@ -98,7 +103,7 @@ def stage(args, local, control, release):
 
     source_path = None
     if args.source_receipt:
-        if noise_study:
+        if matched_study:
             raise ValueError("Matched archive staging is for learning-rate repeats")
         source_path, source_digest, replaced, prior = matched_source(args.source_receipt, cfg)
     else:
@@ -106,7 +111,7 @@ def stage(args, local, control, release):
     plan = {key: prior[key] for key in ("cuda_ownership_helper", "cuda_ownership_sha256", "mosaic_python")}
     plan.update(arms=outputs, queue=args.queue, planned_updates=budgets,
                 output_cap_mib=OUTPUT_MIB, config_sha256=sha(config))
-    if noise_study:
+    if matched_study:
         plan["queues"] = queues
         del plan["queue"]
     if source_path:
@@ -147,7 +152,7 @@ def stage(args, local, control, release):
         "TORCH_PYTHON", "FRESH_DEPS", "FRESH_DATA"))
     required = [native["mosaic_source"], plan["mosaic_python"], assets["native"]["source_root"],
                 torch_python, fresh_deps, fresh_data, fresh["ccd_root"]]
-    cohorts = cfg.get("parent_cohorts", []) if noise_study else []
+    cohorts = cfg.get("parent_cohorts", []) if matched_study else []
     probe = f"{BASE}/runs/{args.name}-capacity-probe"
     targets = [remote_archive, release, control, probe, *outputs.values()]
     save(local / "preflight.json", remote(f"""

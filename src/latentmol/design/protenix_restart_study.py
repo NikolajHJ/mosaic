@@ -3,6 +3,7 @@ from __future__ import annotations
 
 from dataclasses import asdict, dataclass, replace
 from functools import partial
+from itertools import zip_longest
 import json
 import math
 import os
@@ -11,7 +12,7 @@ from pathlib import Path
 from latentmol.design.latent_protenix import LatentDesignConfig, _model_identity
 from latentmol.design.protenix_restart_parents import RestartParent, load_parent_panel, make_prior_parent
 from latentmol.design.protenix_restart_proposals import propose_start
-from latentmol.design.protenix_restart_selection import select_candidates
+from latentmol.design.protenix_restart_selection import select_candidates, select_diverse_output
 from latentmol.design.protenix_restarts import (
     fresh_score_records, native_factory, restart_args, run_branch, write_json,
 )
@@ -37,13 +38,21 @@ class Branch:
         return f"parent-{self.parent_index:02d}-{self.arm}-{self.repeat:02d}"
 
 
-def budgets(comparison):
+FEEDBACK_ARMS = ("adaptive", "fixed", "independent")
+
+
+def budgets(comparison, *, feedback=False):
+    if feedback and ("variants" in comparison or any(type(comparison[key]) is not int or comparison[key] < 1
+                     for key in ("parents", "cycles", "branches_per_parent", "updates", "shortlist"))
+                     or not math.isfinite(comparison["high_score_ceiling"])):
+        raise ValueError("Invalid lineage feedback budget or high-score ceiling")
     if "variants" in comparison:
         runs = [updates for variant in comparison["variants"].values() for updates in variant["updates"]]
         branches = comparison["parents"] * len(runs)
         updates = comparison["parents"] * sum(runs)
     else:
-        branches = 2 * comparison["parents"] * comparison["cycles"] * comparison["branches_per_parent"]
+        arms = len(FEEDBACK_ARMS) if feedback else 2
+        branches = arms * comparison["parents"] * comparison["cycles"] * comparison["branches_per_parent"]
         updates = branches * comparison["updates"]
     if branches < 1 or not 1 <= updates <= 10_000:
         raise ValueError(f"Exploratory comparison exceeds its 10,000-update cap: {updates}")
@@ -64,8 +73,52 @@ def parent_record(parent):
                 active_slots=parent.active.nonzero().flatten().tolist(), provenance=parent.provenance)
 
 
+def matched_shortlists(branches, reserves, arm_caches, limit):
+    """Give every arm the same number of new SMILES, spreading calls over branches."""
+    pools = {}
+    for arm, cache in arm_caches.items():
+        names = [branch.name for branch in branches if branch.arm == arm]
+        pool = {}
+        for round_rows in zip_longest(*(reserves[name]["mixed"] for name in names)):
+            for name, row in zip(names, round_rows):
+                if row is not None and row.smiles not in cache:
+                    pool.setdefault(row.smiles, (name, row))
+                if len(pool) == limit:
+                    break
+            if len(pool) == limit:
+                break
+        pools[arm] = list(pool.values())
+    count = min(map(len, pools.values()))
+    selections = {branch.name: {"mixed": []} for branch in branches}
+    for pool in pools.values():
+        for name, row in pool[:count]:
+            selections[name]["mixed"].append(row)
+    return selections
+
+
+def score_shortlists(fresh_score, root, selections, cache):
+    pending = {}
+    for name, lists in selections.items():
+        for rows in lists.values():
+            for row in rows:
+                if row["smiles"] not in cache:
+                    pending.setdefault(row["smiles"], dict(smiles=row["smiles"], start=root.name,
+                        arm=name, role="edit", step=row["step"]))
+    if pending:
+        fresh = fresh_score(root, list(pending.values()))
+        if len(fresh) != len(pending) or {row["smiles"] for row in fresh} != pending.keys():
+            raise ValueError("Hard scoring returned a different candidate set")
+        for row in fresh:
+            loss = row["loss"]
+            if loss is not None and not math.isfinite(loss):
+                raise ValueError("Nonfinite fresh contact loss")
+            cache[row["smiles"]] = dict(loss=loss, status=row["status"])
+    return len(pending)
+
+
 def run_batch(decoder, make_scorer, fresh_score, design, root, branches, cache, *,
-              compare_shortlists=False, first_batch=True, noise_study=False):
+              compare_shortlists=False, first_batch=True, noise_study=False,
+              arm_caches=None, fresh_limit=None):
     if noise_study:
         from latentmol.design.protenix_restart_noise import propose_noise_start
 
@@ -87,6 +140,13 @@ def run_batch(decoder, make_scorer, fresh_score, design, root, branches, cache, 
                                  noise_seed=design.noise_seed + branch.seed)
 
             def select(ranked, limit):
+                if arm_caches is not None:
+                    eligible = [row for row in ranked if row.smiles not in arm_caches[branch.arm]]
+                    preferred = select_candidates(eligible, limit, False)["mixed"]
+                    preferred_ids = {row.smiles for row in preferred}
+                    reserve = preferred + [row for row in eligible if row.smiles not in preferred_ids]
+                    selections[branch.name] = {"mixed": reserve[:fresh_limit]}
+                    return reserve[:fresh_limit]
                 # Include an independent start in its own fresh budget. Elite
                 # starts already have a matched archived score.
                 initial = [row for row in ranked if row.smiles == parent.candidate.smiles
@@ -106,28 +166,27 @@ def run_batch(decoder, make_scorer, fresh_score, design, root, branches, cache, 
             print(f"{root.name} {branch.name} updates={branch.updates}", flush=True)
     finally:
         scorer.close()
+    if arm_caches is not None:
+        selections = matched_shortlists(branches, selections, arm_caches, fresh_limit)
     planned = {name: {policy: [dict(smiles=r.smiles, step=r.step, relaxed_loss=r.relaxed_loss)
                                 for r in rows] for policy, rows in lists.items()}
                for name, lists in selections.items()}
     write_json(root / "shortlists.json", planned)
-    pending = {}
-    for branch in branches:
-        for rows in selections[branch.name].values():
-            for row in rows:
-                if row.smiles not in cache:
-                    pending.setdefault(row.smiles,
-                        dict(smiles=row.smiles, start=root.name, arm=branch.name, role="edit", step=row.step))
-    if pending:
-        fresh = fresh_score(root, list(pending.values()))
-        if len(fresh) != len(pending) or {row["smiles"] for row in fresh} != pending.keys():
-            raise ValueError("Hard scoring returned a different candidate set")
-        for row in fresh:
-            loss = row["loss"]
-            if loss is not None and not math.isfinite(loss):
-                raise ValueError("Nonfinite fresh contact loss")
-            cache[row["smiles"]] = dict(loss=loss, status=row["status"])
+    if arm_caches is None:
+        attempts = score_shortlists(fresh_score, root, planned, cache)
+    else:
+        by_arm = {}
+        for arm, arm_cache in arm_caches.items():
+            arm_root = root / f"fresh-{arm}"
+            arm_root.mkdir()
+            by_arm[arm] = score_shortlists(fresh_score, arm_root,
+                {branch.name: planned[branch.name] for branch in branches if branch.arm == arm}, arm_cache)
+        if len(set(by_arm.values())) != 1:
+            raise ValueError(f"Mismatched fresh scoring attempts: {by_arm}")
+        attempts = sum(by_arm.values())
     readouts = []
     for branch in branches:
+        branch_cache = cache if arm_caches is None else arm_caches[branch.arm]
         data = json.loads((root / branch.name / "summary.json").read_text())
         noise_metadata = (dict(strength=branch.strength, update_noise=branch.update_noise,
                                proposal=json.loads((root / branch.name / "start.json").read_text())["proposal"])
@@ -137,9 +196,9 @@ def run_batch(decoder, make_scorer, fresh_score, design, root, branches, cache, 
             parent_smiles=branch.parent.candidate.smiles, parent_fresh_loss=branch.parent.fresh_loss,
             parent_provenance=branch.parent.provenance, active_slots=branch.parent.active.nonzero().flatten().tolist(),
             policy=branch.policy, seed=branch.seed, max_step_norm=branch.cap, summary=data,
-            candidates={policy: [row | cache[row["smiles"]] for row in rows]
+            candidates={policy: [row | branch_cache[row["smiles"]] for row in rows]
                         for policy, rows in planned[branch.name].items()}, **noise_metadata))
-    write_json(root / "batch.json", dict(new_fresh_attempts=len(pending), native_identity=scorer.identity,
+    write_json(root / "batch.json", dict(new_fresh_attempts=attempts, native_identity=scorer.identity,
                optimization_updates=sum(branch.updates for branch in branches), branches=readouts))
     return selections, readouts
 
@@ -172,6 +231,16 @@ def analyze_noise_paths(root, branches, sources):
     return summarize_paths(traces)
 
 
+def draw_prior(decoder, design, used, seed):
+    for next_seed in range(seed, seed + 256):
+        prior = make_prior_parent(decoder, next_seed, temperature=design.temperature_initial,
+                                  occupied_atoms=design.occupied_atoms)
+        if prior is not None and prior.candidate.smiles not in used:
+            used.add(prior.candidate.smiles)
+            return prior, next_seed + 1
+    raise ValueError("Could not find a distinct valid independent prior within 256 draws")
+
+
 def lineage_study(decoder, make_scorer, fresh_score, design, output, parents, comparison, cache, seed, prior_seed):
     archives = {arm: {p.candidate.smiles: p for p in parents} for arm in ("elite", "independent")}
     used_priors = {p.candidate.smiles for p in parents}
@@ -181,15 +250,7 @@ def lineage_study(decoder, make_scorer, fresh_score, design, output, parents, co
         ordered = sorted(archives["elite"].values(), key=lambda p: (p.fresh_loss, p.candidate.smiles))
         for index, parent in enumerate(ordered):
             for repeat in range(comparison["branches_per_parent"]):
-                for _ in range(256):
-                    prior = make_prior_parent(decoder, prior_seed, temperature=design.temperature_initial,
-                                              occupied_atoms=design.occupied_atoms)
-                    prior_seed += 1
-                    if prior is not None and prior.candidate.smiles not in used_priors:
-                        used_priors.add(prior.candidate.smiles)
-                        break
-                else:
-                    raise ValueError("Could not find a distinct valid independent prior within 256 draws")
+                prior, prior_seed = draw_prior(decoder, design, used_priors, prior_seed)
                 for arm, start, policy in (("elite", parent, "latent"), ("independent", prior, "none")):
                     branches.append(Branch(arm, start, index, repeat, seed + 10000 * cycle + 100 * index + repeat,
                         comparison["updates"], design.max_step_norm, policy, comparison["shortlist"]))
@@ -214,13 +275,74 @@ def lineage_study(decoder, make_scorer, fresh_score, design, output, parents, co
     return cycles
 
 
+def lineage_feedback(decoder, make_scorer, fresh_score, design, output, parents, comparison, cache, seed, prior_seed):
+    def ranked(archive):
+        return sorted(archive.values(), key=lambda parent: (parent.fresh_loss, parent.candidate.smiles))
+
+    initial = {parent.candidate.smiles: parent for parent in parents}
+    fixed = ranked(initial)
+    archives = {arm: dict(initial) for arm in FEEDBACK_ARMS}
+    caches = {arm: dict(cache) for arm in FEEDBACK_ARMS}
+    used_priors = set(initial)
+    repeats, updates, shortlist = (comparison[key] for key in ("branches_per_parent", "updates", "shortlist"))
+    updates_per_arm = len(fixed) * repeats * updates
+    limit = len(fixed) * repeats * shortlist
+    cycles = []
+    for cycle in range(1, comparison["cycles"] + 1):
+        adaptive = ranked(archives["adaptive"])[:len(fixed)]
+        branches = []
+        first_prior_seed = prior_seed
+        for index, (elite, initial_parent) in enumerate(zip(adaptive, fixed)):
+            for repeat in range(repeats):
+                prior, prior_seed = draw_prior(decoder, design, used_priors, prior_seed)
+                slot_seed = seed + 10000 * (cycle - 1) + 100 * index + repeat
+                for arm, parent, policy in (("adaptive", elite, "latent"), ("fixed", initial_parent, "latent"),
+                                            ("independent", prior, "none")):
+                    branches.append(Branch(arm, parent, index, repeat, slot_seed, updates,
+                                           design.max_step_norm, policy, shortlist))
+        root = output / f"cycle-{cycle:02d}"
+        selections, readouts = run_batch(decoder, make_scorer, fresh_score, design, root, branches, None,
+            first_batch=cycle == 1, arm_caches=caches, fresh_limit=limit)
+        fresh_attempts = dict.fromkeys(FEEDBACK_ARMS, 0)
+        fresh_scored = dict.fromkeys(FEEDBACK_ARMS, 0)
+        actual_updates = dict.fromkeys(FEEDBACK_ARMS, 0)
+        for branch, readout in zip(branches, readouts, strict=True):
+            arm = branch.arm
+            actual_updates[arm] += readout["summary"]["updates"]
+            for row in selections[branch.name]["mixed"]:
+                fresh_attempts[arm] += 1
+                loss = caches[arm][row.smiles]["loss"]
+                if loss is not None:
+                    fresh_scored[arm] += 1
+                    archives[arm][row.smiles] = RestartParent(row, branch.parent.active, loss,
+                        dict(cycle=cycle, branch=branch.name, parent=branch.parent.candidate.smiles))
+        if any(count != updates_per_arm for count in actual_updates.values()):
+            raise ValueError(f"Mismatched lineage update counts: {actual_updates}")
+        leaders = {arm: ranked(archive)[:len(fixed)] for arm, archive in archives.items()}
+        write_json(root / "archives.json", {arm: [parent_record(parent) for parent in rows]
+                                            for arm, rows in leaders.items()})
+        high = {}
+        for arm, archive in archives.items():
+            eligible = {smiles: (parent.candidate, parent.fresh_loss) for smiles, parent in archive.items()
+                        if smiles not in initial and parent.fresh_loss <= comparison["high_score_ceiling"]}
+            high[arm] = list(select_diverse_output(eligible, len(eligible), max_similarity=0.60)) if eligible else []
+        cycles.append(dict(cycle=cycle, updates=sum(actual_updates.values()), updates_by_arm=actual_updates,
+            fresh_attempt_limit=limit, fresh_attempt_shortfall=limit - min(fresh_attempts.values()),
+            fresh_attempts=fresh_attempts, fresh_scored=fresh_scored, prior_draws=prior_seed - first_prior_seed,
+            best={arm: rows[0].fresh_loss for arm, rows in leaders.items()},
+            top_three_mean={arm: sum(parent.fresh_loss for parent in rows) / len(rows) for arm, rows in leaders.items()},
+            diverse_high_scorers={arm: len(smiles) for arm, smiles in high.items()}, diverse_high_smiles=high))
+    return cycles
+
+
 def run_study(decoder, make_scorer, fresh_score, config, task_name, output, checkpoint_sha256):
     task = config["tasks"][task_name]
     comparison = config["comparisons"][task["comparison"]]
-    budget = budgets(comparison)
-    design = LatentDesignConfig(**config["design"])
     noise_study = config.get("study") == "initialization_noise"
-    expected_lr = 70 if noise_study else 150
+    feedback = config.get("study") == "lineage_feedback"
+    budget = budgets(comparison, feedback=feedback)
+    design = LatentDesignConfig(**config["design"])
+    expected_lr = 70 if noise_study or feedback else 150
     if design.learning_rate != expected_lr or design.chemistry_initial != design.chemistry_final:
         raise ValueError(f"Require LR {expected_lr} and a common constant chemistry weight")
     decoder.eval().requires_grad_(False)
@@ -236,12 +358,14 @@ def run_study(decoder, make_scorer, fresh_score, config, task_name, output, chec
     parents = panel[offset:offset + size]
     if len(parents) != size or any(p.fresh_loss is None or not math.isfinite(p.fresh_loss) for p in parents):
         raise ValueError("Missing scored parents for declared panel slice")
+    seed = config["perturbation_seed"] + (100 if noise_study else 100000) * offset
+    prior_seed = config["prior_seed"] + 100000 * offset if "prior_seed" in config else None
     write_json(output / "run.json", dict(task=task_name, budget=budget, settings=asdict(design),
         comparison=comparison, panel_offset=offset, decoder_sha256=identity,
+        perturbation_seed=seed, prior_seed=prior_seed,
         checkpoint_sha256=checkpoint_sha256, job_id=os.environ.get("LSB_JOBID"),
         graph_spec=decoder.spec.to_dict(), parents=[parent_record(p) for p in parents]))
     cache = {p.candidate.smiles: dict(loss=p.fresh_loss, status="archived_parent") for p in parents}
-    seed = config["perturbation_seed"] + (100 if noise_study else 100000) * offset
     if "variants" in comparison:
         branches = list(paired_branches(parents, comparison, design, seed))
         paired = output / "paired"
@@ -263,12 +387,15 @@ def run_study(decoder, make_scorer, fresh_score, config, task_name, output, chec
         if comparison.get("compare_shortlists", False):
             result["matched_first_branch"] = paired_summary([row for row in readouts if row["repeat"] == 0])
     else:
-        cycles = lineage_study(decoder, make_scorer, fresh_score, design, output, parents, comparison,
-                               cache, seed, config["prior_seed"] + 100000 * offset)
+        run_lineage = lineage_feedback if feedback else lineage_study
+        cycles = run_lineage(decoder, make_scorer, fresh_score, design, output, parents, comparison,
+                             cache, seed, prior_seed)
         result = dict(cycles=cycles)
     if _model_identity(decoder) != identity or any(p.grad is not None for p in decoder.parameters()):
         raise ValueError("Frozen decoder parameters or gradients changed")
-    result.update(status="completed", budget=budget, new_fresh_attempts=len(cache) - len(parents))
+    attempts = (sum(sum(cycle["fresh_attempts"].values()) for cycle in cycles)
+                if feedback else len(cache) - len(parents))
+    result.update(status="completed", budget=budget, new_fresh_attempts=attempts)
     write_json(output / "result.json", result)
     return result
 
