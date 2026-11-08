@@ -3,12 +3,83 @@ from __future__ import annotations
 
 import argparse
 import json
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 import shlex
 import subprocess
 
 
 CONNECTOR = r"C:\Users\nikol\DTU-HPC\helper-v1\dtu-hpc.exe"
+DEFAULT_MANIFEST = Path(__file__).with_name("runs.json")
+
+
+def add_selection_args(parser):
+    parser.add_argument("--manifest", type=Path, default=DEFAULT_MANIFEST,
+                        help="JSON run registry with optional default_jobs selection")
+    selection = parser.add_mutually_exclusive_group()
+    selection.add_argument("--job", type=int, action="append", help="Job ID to include, repeatable")
+    selection.add_argument("--all-runs", action="store_true", help="Collect every run in the manifest")
+    parser.add_argument("--timeout", type=int, help="Override the DTU connector timeout in seconds")
+
+
+def select_runs(manifest, *, job_ids=None, all_runs=False):
+    data = json.loads(manifest.read_text(encoding="utf-8"))
+    runs = data["runs"]
+    by_id = {}
+    for run in runs:
+        job_id = run["id"]
+        if type(job_id) is not int or job_id < 1 or job_id in by_id:
+            raise ValueError(f"Invalid or duplicate job ID {job_id!r}")
+        for field in ("task", "campaign", "queue"):
+            if not isinstance(run[field], str) or not run[field]:
+                raise ValueError(f"Job {job_id} needs a nonempty {field}")
+        for field in ("run_path", "launch_path"):
+            path = PurePosixPath(run[field])
+            if not path.is_absolute() or ".." in path.parts:
+                raise ValueError(f"Job {job_id} requires an absolute, normalized {field}")
+        if run["layout"] not in ("cycles", "panel"):
+            raise ValueError(f"Job {job_id} needs a cycles or panel layout")
+        counts = [run["planned_branches"], run["budget_updates"]]
+        if "cycles" in run:
+            counts.append(run["cycles"])
+        if run["layout"] == "cycles":
+            counts.append(run["branches_per_parent"])
+        updates = run["updates_per_branch"]
+        if isinstance(updates, dict):
+            if not updates or run["layout"] != "panel":
+                raise ValueError(f"Job {job_id} has an invalid arm update map")
+            for update in updates.values():
+                if isinstance(update, list):
+                    if not update:
+                        raise ValueError(f"Job {job_id} has an empty arm repeat schedule")
+                    counts.extend(update)
+                else:
+                    counts.append(update)
+        else:
+            counts.append(updates)
+        if any(type(count) is not int or count < 1 for count in counts):
+            raise ValueError(f"Job {job_id} requires positive integer budgets and counts")
+        by_id[job_id] = run
+    if all_runs:
+        selected = list(by_id)
+    elif job_ids is not None:
+        selected = job_ids
+    else:
+        selected = data.get("default_jobs", list(by_id))
+    if not selected or len(set(selected)) != len(selected):
+        raise ValueError("Choose at least one run and list each job ID once")
+    if unknown := set(selected) - by_id.keys():
+        raise ValueError(f"Jobs absent from the manifest: {sorted(unknown)}")
+    jobs = [by_id[job_id] for job_id in selected]
+    if len({run["run_path"] for run in jobs}) != len(jobs):
+        raise ValueError("Selected jobs must have distinct output paths")
+    return jobs
+
+
+def verify_snapshot_jobs(snapshot, jobs):
+    expected = [run["id"] for run in jobs]
+    collected = [job["id"] for job in snapshot["jobs"]]
+    if collected != expected:
+        raise ValueError(f"Snapshot jobs differ from manifest selection: {collected!r} != {expected!r}")
 
 REMOTE = r"""
 from datetime import datetime
@@ -19,22 +90,8 @@ import subprocess
 from pathlib import Path
 import zipfile
 
-ROOT = Path('/work3/s234818/latentmol/runs')
-CONTROL = Path('/zhome/95/e/206121/dbmol-control')
 RAW_GRAPHS = {}
-JOBS = (
-    (29914616, 'constant1', 'chemistry', 'gpuv100', 37, 18500),
-    (29914617, 'constant10', 'chemistry', 'gpuv100', 37, 18500),
-    (29914618, 'late-ramp', 'chemistry', 'gpuv100', 37, 18500),
-    (29914683, 'mutation-a', 'followup', 'gpul40s', 84, 8064),
-    (29914684, 'mutation-b', 'followup', 'gpua40', 84, 8064),
-    (29914686, 'cap-a', 'followup', 'gpul40s', 48, 6144),
-    (29914687, 'cap-b', 'followup', 'gpuv100', 48, 6144),
-    (29914688, 'duration-a', 'followup', 'gpul40s', 40, 7960),
-    (29914689, 'duration-b', 'followup', 'gpua40', 40, 7960),
-    (29914690, 'lineage-a', 'followup', 'gpul40s', 90, 8640),
-    (29914691, 'lineage-b', 'followup', 'gpuv100', 90, 8640),
-)
+JOBS = json.loads(JOBS_JSON)
 
 
 def read_json(path):
@@ -51,6 +108,22 @@ def observations(path):
             return [json.loads(line) for line in handle if line.endswith('\n')]
     except FileNotFoundError:
         return []
+
+
+def branch_plan(path, cycle, spec):
+    planned = spec['updates_per_branch']
+    if spec['layout'] == 'cycles':
+        ordinal = int(path.name.rsplit('-', 1)[-1]) - 1
+        count = spec['branches_per_parent']
+        return (spec['task'], ordinal // count if cycle > 1 else None,
+                ordinal % count if cycle > 1 else None, planned)
+    match = re.fullmatch(r'parent-(\d+)-(.+)-(\d+)', path.name)
+    if not match:
+        raise ValueError(f'Unexpected panel branch path: {path}')
+    parent_index, arm, repeat = int(match[1]), match[2], int(match[3])
+    if isinstance(planned, dict):
+        planned = planned[arm]
+    return arm, parent_index, repeat, planned[repeat] if isinstance(planned, list) else planned
 
 
 def sample(rows, retained_steps):
@@ -132,25 +205,14 @@ def attach_raw_graphs(path, points, spec):
                 raw_unavailable=len(needed) - len(recovered))
 
 
-def branch_record(path, cycle, task, campaign, detail, parents, fresh_candidates, elite_steps, spec):
+def branch_record(path, cycle, job, detail, parents, fresh_candidates, elite_steps, graph_spec):
     summary = read_json(path / 'summary.json')
     start = read_json(path / 'start.json') or {}
     rows = observations(path / 'metrics.jsonl')
     complete = summary is not None
     summary = summary or {}
     proposal = start.get('proposal') or {}
-    if campaign == 'chemistry':
-        ordinal = int(path.name.rsplit('-', 1)[-1]) - 1
-        parent_index = ordinal // 3 if cycle > 1 else None
-        repeat = ordinal % 3 if cycle > 1 else None
-        arm = task
-        planned = 500
-    else:
-        match = re.fullmatch(r'parent-(\d+)-(.+)-(\d+)', path.name)
-        parent_index, arm, repeat = int(match[1]), match[2], int(match[3])
-        planned = {'mutation': 96, 'cap': 128, 'lineage': 96}.get(task.rsplit('-', 1)[0])
-        if planned is None:
-            planned = 499 if arm == 'one-long' else 124
+    arm, parent_index, repeat, planned = branch_plan(path, cycle, job)
     parent_smiles = detail.get('parent_smiles') or start.get('parent')
     parent_loss = detail.get('parent_fresh_loss')
     if parent_loss is None and parent_smiles in parents:
@@ -180,7 +242,7 @@ def branch_record(path, cycle, task, campaign, detail, parents, fresh_candidates
         proposal=proposal, max_step_norm=detail.get('max_step_norm'),
     )
     if INCLUDE_RAW:
-        branch['playback_coverage'] = attach_raw_graphs(path, points, spec)
+        branch['playback_coverage'] = attach_raw_graphs(path, points, graph_spec)
     return branch
 
 
@@ -189,13 +251,11 @@ def elite_entries(rows):
 
 
 def job_record(spec, scheduler):
-    job_id, task, campaign, queue, planned_branches, budget_updates = spec
-    run_name = 'protenix-restarts-20261107a' if campaign == 'chemistry' else 'protenix-restart-followup-20261107a'
-    root = ROOT / f'{run_name}-{task}'
-    control = CONTROL / run_name / task
+    job_id, task, campaign, queue = (spec[field] for field in ('id', 'task', 'campaign', 'queue'))
+    root = Path(spec['run_path'])
     run = read_json(root / 'run.json') or {}
     result = read_json(root / 'result.json')
-    launch = read_json(control / 'launch.json') or {}
+    launch = read_json(Path(spec['launch_path'])) or {}
     parents = {row['smiles']: row['fresh_loss'] for row in run.get('parents', [])}
     branches, archives = [], []
     phases = sorted(root.glob('cycle-*')) or sorted(root.glob('paired'))
@@ -205,7 +265,8 @@ def job_record(spec, scheduler):
         archive = read_json(phase / 'archive.json')
         lineage = read_json(phase / 'archives.json')
         archive_files[phase] = (archive, lineage)
-        groups = [archive['elites']] if archive is not None else (lineage or {}).values()
+        groups = ([archive['elites'], archive.get('restart_parents', [])]
+                  if archive is not None else (lineage or {}).values())
         for rows in groups:
             for row in rows:
                 branch = row.get('branch') or ''
@@ -216,7 +277,7 @@ def job_record(spec, scheduler):
         cycle = int(phase.name.split('-')[-1]) if phase.name.startswith('cycle-') else None
         batch = read_json(phase / 'batch.json') or {}
         detail = {row['name']: row for row in batch.get('branches', [])}
-        fresh = read_json(phase / 'fresh' / 'summary.json') if campaign == 'chemistry' else None
+        fresh = read_json(phase / 'fresh' / 'summary.json') if spec['layout'] == 'cycles' else None
         fresh_by_branch = {}
         for row in (fresh or {}).get('candidates', []):
             branch = row.get('arm', '').rsplit('/', 1)[-1]
@@ -224,7 +285,7 @@ def job_record(spec, scheduler):
                 {k: row.get(k) for k in ('smiles', 'step', 'loss', 'status')})
         for path in sorted(phase.iterdir()):
             if path.is_dir() and (path.name.startswith('branch-') or path.name.startswith('parent-')):
-                branches.append(branch_record(path, cycle, task, campaign, detail.get(path.name, {}),
+                branches.append(branch_record(path, cycle, spec, detail.get(path.name, {}),
                                               parents, fresh_by_branch.get(path.name),
                                               elite_steps.get(f'{phase.name}/{path.name}', set()),
                                               run.get('graph_spec')))
@@ -232,6 +293,7 @@ def job_record(spec, scheduler):
         if archive is not None:
             archives.append(dict(cycle=cycle, elites={task: elite_entries(archive['elites'])}))
             parents.update({row['smiles']: row['fresh_loss'] for row in archive['elites']})
+            parents.update({row['smiles']: row['fresh_loss'] for row in archive.get('restart_parents', [])})
         elif lineage is not None:
             archives.append(dict(cycle=cycle, elites={arm: elite_entries(rows) for arm, rows in lineage.items()}))
             parents.update({row['smiles']: row['fresh_loss'] for rows in lineage.values() for row in rows})
@@ -243,18 +305,19 @@ def job_record(spec, scheduler):
         elif launch.get('status') == 'launch_failed':
             status, source = 'EXIT', 'worker receipt'
     return dict(
-        id=job_id, task=task, campaign=campaign, queue=queue, status=status,
+        id=job_id, task=task, campaign=campaign, label=spec.get('label'), queue=queue, status=status,
         reason=reason or launch.get('error'), status_source=source,
         worker_status=launch.get('status'), artifact_status=result.get('status') if result else None,
-        budget_updates=budget_updates, completed_updates=sum(b['completed_updates'] for b in branches),
-        planned_branches=planned_branches, completed_branches=sum(b['complete'] for b in branches),
+        budget_updates=spec['budget_updates'], completed_updates=sum(b['completed_updates'] for b in branches),
+        planned_cycles=spec.get('cycles'), planned_branches=spec['planned_branches'],
+        completed_branches=sum(b['complete'] for b in branches),
         result=result, archives=archives, branches=branches,
     )
 
 
 def scheduler_snapshot():
     result = subprocess.run(
-        ['bjobs', '-a', '-noheader', '-o', 'jobid stat queue pend_reason', *[str(j[0]) for j in JOBS]],
+        ['bjobs', '-a', '-noheader', '-o', 'jobid stat queue pend_reason', *[str(j['id']) for j in JOBS]],
         capture_output=True, text=True, timeout=20,
     )
     rows = {}
@@ -265,7 +328,7 @@ def scheduler_snapshot():
         identifier, status, queue = fields[:3]
         reason = fields[3] if len(fields) == 4 and fields[3] != '-' else None
         rows[int(identifier)] = (status, queue, reason, 'bjobs')
-    missing = {job_id: queue for job_id, _, _, queue, _, _ in JOBS if job_id not in rows}
+    missing = {job['id']: job['queue'] for job in JOBS if job['id'] not in rows}
     if missing:
         try:
             history = subprocess.run(['bhist', '-l', *map(str, missing)],
@@ -299,18 +362,24 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, default=Path(__file__).with_name("snapshot.json"))
     parser.add_argument("--include-raw", action="store_true")
+    add_selection_args(parser)
     args = parser.parse_args()
+    if args.output.exists():
+        raise FileExistsError(args.output)
+    jobs = select_runs(args.manifest, job_ids=args.job, all_runs=args.all_runs)
+    timeout = args.timeout if args.timeout is not None else 110
+    if timeout < 1:
+        parser.error("--timeout must be positive")
     command = "bash -lc " + shlex.quote("/usr/bin/python3 -I -")
     result = subprocess.run(
-        [CONNECTOR, "exec", "--timeout", "110", command],
-        input=f"INCLUDE_RAW = {args.include_raw!r}\n" + REMOTE,
-        capture_output=True, text=True, encoding="utf-8", timeout=120,
+        [CONNECTOR, "exec", "--timeout", str(timeout), command],
+        input=f"INCLUDE_RAW = {args.include_raw!r}\nJOBS_JSON = {json.dumps(jobs)!r}\n" + REMOTE,
+        capture_output=True, text=True, encoding="utf-8", timeout=timeout + 10,
     )
     if result.returncode:
         raise SystemExit(result.stderr or f"DTU connector returned {result.returncode}")
     snapshot = json.loads(result.stdout)
-    if len(snapshot["jobs"]) != 11:
-        raise ValueError("Snapshot must account for all 11 declared jobs")
+    verify_snapshot_jobs(snapshot, jobs)
     with args.output.open("x", encoding="utf-8") as stream:
         json.dump(snapshot, stream, separators=(",", ":"), allow_nan=False)
     print(snapshot["captured_at"])

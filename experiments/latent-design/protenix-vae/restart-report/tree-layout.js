@@ -146,7 +146,7 @@ globalThis.ProtenixTree = (() => {
         const {row, steps} = group, step = steps[0];
         const depth = lane.baseDepth + step;
         const node = {index: nodes.length, id: `${lane.id}:${step}`, branch: lane.name,
-          branchKey: lane.key, cycle: lane.cycle, arm: lane.branch.arm, step, depth,
+          laneId: lane.id, branchKey: lane.key, cycle: lane.cycle, arm: lane.branch.arm, step, depth,
           valid: row[1], smiles: row[2] ?? null, rawKey: row[3] ?? null, relaxedLoss: row[4] ?? null,
           x: lane.x, y: -depth * stepY, parentIndex: previous?.index ?? null, incoming: null};
         if (steps.length > 1) node.endStep = steps.at(-1);
@@ -183,6 +183,40 @@ globalThis.ProtenixTree = (() => {
         node = node.parentIndex === null ? null : nodes[node.parentIndex];
       }
       return {nodes: path.reverse(), edges: links.reverse()};
+    }
+
+    const laneById = new Map(lanes.map(lane => [lane.id, lane]));
+
+    function timeline(route) {
+      const points = [];
+      let distinctOnly = false;
+      for (let start = 0; start < route.nodes.length;) {
+        const first = route.nodes[start];
+        const lane = laneById.get(first.laneId);
+        let next = start + 1;
+        while (next < route.nodes.length && route.nodes[next].laneId === first.laneId) next++;
+        const last = route.nodes[next - 1];
+        const fork = route.edges[next - 1];
+        const full = Array.isArray(lane.branch.loss_series) && lane.branch.loss_series.length > 0;
+        distinctOnly ||= !full;
+        const saved = full ? lane.branch.loss_series : lane.branch.states.map(row => [row[0], row[4]]);
+        const lastSavedStep = saved.at(-1)?.[0] ?? last.step;
+        const cutoff = fork?.kind === "restart" ? fork.sourceStep
+          : last === lane.nodes.at(-1) ? Math.max(last.step, lastSavedStep) : last.step;
+        let state = start;
+        let previousStep = null;
+        for (const row of saved) {
+          const [step, relaxed, chemistry, weight, valence] = row;
+          if (step < first.step || step > cutoff) continue;
+          while (state + 1 < next && route.nodes[state + 1].step <= step) state++;
+          points.push({node: route.nodes[state], step, depth: lane.baseDepth + step,
+            relaxed, chemistry, weight, valence, restart: previousStep === null && start > 0,
+            gap: previousStep !== null && step !== previousStep + 1});
+          previousStep = step;
+        }
+        start = next;
+      }
+      return {points, distinctOnly};
     }
 
     const byX = [...lanes].sort((a, b) => a.x - b.x || a.minY - b.minY);
@@ -235,7 +269,7 @@ globalThis.ProtenixTree = (() => {
       return closest;
     }
 
-    return {nodes, edges, roots, lanes, bounds, nodeAt, ancestry, visible, nearest};
+    return {nodes, edges, roots, lanes, bounds, nodeAt, ancestry, timeline, visible, nearest};
   }
 
   return {build, branchKey};

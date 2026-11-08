@@ -15,6 +15,7 @@ const captureFormatter = new Intl.DateTimeFormat("en-GB", {
 });
 const label = name => ({
   mutation:"Restart perturbation",cap:"Step cap",duration:"Branch length",lineage:"Elite versus independent",
+  "noise-latent":"Latent noise dose","noise-graph":"Graph noise dose","noise-long":"500-update persistence",
   constant1:"Constant chemistry 1",constant10:"Constant chemistry 10","late-ramp":"Late chemistry ramp",
   untouched:"Untouched latent","all-row":"All-row 50/50",latent:"Latent kick",sparse:"Sparse perturbation",
   "cap-01":"Cap 0.1","cap-05":"Cap 0.5","four-short":"Four short branches","one-long":"One long branch",
@@ -31,8 +32,15 @@ let stopPlayback = () => {};
 const statusNames = {DONE:"Completed",RUN:"Running",PEND:"Queued",EXIT:"Exited",UNKNOWN:"Unknown"};
 const status = job => String(job.status || "UNKNOWN").toUpperCase();
 const isDone = job => ["DONE","COMPLETED"].includes(status(job));
-const title = job => job.campaign === "chemistry" ? label(job.task) :
-  `${label(job.task.split("-")[0])} · panel ${job.task.split("-").at(-1).toUpperCase()}`;
+const campaignLabel = name => ({
+  followup:"Matched follow-ups",chemistry:"Original chemistry schedules",
+  "lr70-pilot":"LR 70 standalone","lr70-six":"LR 70 six-cycle comparison",
+  "lr30-pilot":"LR 30 standalone","lr30-six":"LR 30 six-cycle comparison",
+  diversity:"LR 100 diversity pilot",noise:"Initialization noise and persistence",
+})[name] || String(name || "Other runs").replaceAll("-"," ");
+const studyKey = job => (job.campaign==="noise"?"noise-":"")+job.task.replace(/-[a-z]$/,"");
+const title = job => job.label || (["followup","noise"].includes(job.campaign)
+  ? `${label(studyKey(job))} · panel ${job.task.split("-").at(-1).toUpperCase()}` : label(job.task));
 const badge = job => `<span class="pill status-${escape(status(job).toLowerCase())}">${escape(statusNames[status(job)] || status(job))}</span>`;
 const empty = message => `<div class="empty">${escape(message)}</div>`;
 const metric = (value, name) => `<div class="metric"><strong>${escape(value)}</strong><span>${escape(name)}</span></div>`;
@@ -86,13 +94,13 @@ function renderHeader(currentJobs,capturedAt) {
     [key,currentJobs.filter(job => key === "DONE" ? isDone(job) : status(job) === key).length]).filter(([,n]) => n);
   byId("header-info").innerHTML = statuses.map(([key,n]) =>
     `<span class="pill status-${key.toLowerCase()}">${n} ${escape(statusNames[key].toLowerCase())}</span>`).join("") +
-    `<span class="quiet small">Snapshot ${escape(captureLabel)}</span><span class="quiet small">LR 150 · epoch-45 VAE · 25 occupied slots</span>`;
+    `<span class="quiet small">Snapshot ${escape(captureLabel)}</span><span class="quiet small">BRD4 · epoch-45 VAE</span>`;
 }
 
 function renderOverview() {
   renderHeader(jobs,snapshot.captured_at);
-  byId("overview-content").innerHTML = [["followup","Matched follow-ups"],["chemistry","Original chemistry schedules"]]
-    .map(([campaign,heading]) => `<h3 class="group-name">${heading}</h3>` + table(
+  byId("overview-content").innerHTML = [...new Set(jobs.map(job=>job.campaign))]
+    .map(campaign => `<h3 class="group-name">${escape(campaignLabel(campaign))}</h3>` + table(
       ["Run","Job","Queue","Status","Saved updates","Scheduler note"],
       jobs.filter(job => job.campaign === campaign).map(job => {
         const total = num(job.budget_updates), done = num(job.completed_updates);
@@ -134,11 +142,13 @@ function gainPlot(groups) {
 }
 
 function renderComparisons() {
-  const studies = ["mutation","cap","duration","lineage"].map(value => [value,label(value)]);
-  const panels = jobs.filter(job => job.campaign === "followup" && job.task.startsWith(state.study+"-"));
-  const panelOptions = panels.map(job => [job.task,`${job.task.at(-1).toUpperCase()} · ${job.id} · ${statusNames[status(job)] || status(job)}`]);
-  state.panel = pick(state.panel,panelOptions,panels.find(job => job.result)?.task);
-  const job = panels.find(row => row.task === state.panel);
+  const comparisons=jobs.filter(job=>["followup","noise"].includes(job.campaign)||job.result?.paired?.length);
+  const studies = [...new Set(comparisons.map(studyKey))].map(value => [value,label(value)]);
+  state.study=pick(state.study,studies);
+  const panels = comparisons.filter(job=>studyKey(job)===state.study);
+  const panelOptions = panels.map(job => [job.id,`${title(job)} · ${job.id} · ${statusNames[status(job)] || status(job)}`]);
+  state.panel = pick(state.panel,panelOptions,panels.find(job => job.result)?.id);
+  const job = panels.find(row => String(row.id) === state.panel);
   const paired = job?.result?.paired || [];
   const match = job?.result?.matched_first_branch;
   const source = state.repeat === "matched" && match?.length ? match : paired;
@@ -166,7 +176,7 @@ function renderComparisons() {
       ? `<div class="empty">Saved lineage scores are available in Elite archives. <button type="button" id="view-lineage" class="run-button">Open archive</button></div>`
       : empty(job?.reason || "No completed paired scores in this snapshot.");
     byId("view-lineage")?.addEventListener("click", () => {
-      state.archive = job.task;
+      state.archive = String(job.id);
       switchTab("archives");
     });
     return;
@@ -437,8 +447,11 @@ function archivePlot(rows) {
 }
 
 function renderArchives(){
-  const options=[["chemistry","Original chemistry schedules"],...jobs.filter(job=>job.task.startsWith("lineage-")).map(job=>[job.task,title(job)])];
-  const relevant=jobs.filter(job=>state.archive==="chemistry"?job.campaign==="chemistry":job.task===state.archive);
+  const archived=jobs.filter(job=>job.archives?.length);
+  const options=archived.some(job=>job.campaign==="chemistry")?[["chemistry",campaignLabel("chemistry")]]:[];
+  options.push(...archived.filter(job=>job.campaign!=="chemistry").map(job=>[job.id,`${title(job)} · ${job.id}`]));
+  state.archive=pick(state.archive,options);
+  const relevant=archived.filter(job=>state.archive==="chemistry"?job.campaign==="chemistry":String(job.id)===state.archive);
   const rows=[];
   for(const job of relevant)for(const archive of job.archives||[])for(const [arm,elites] of Object.entries(archive.elites||{})){
     const available=elites.filter(row=>Number.isFinite(row.fresh_loss)).sort((a,b)=>a.fresh_loss-b.fresh_loss);

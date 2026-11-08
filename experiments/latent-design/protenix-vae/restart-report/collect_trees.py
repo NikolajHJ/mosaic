@@ -9,7 +9,7 @@ from pathlib import Path
 import shlex
 import subprocess
 
-from collect import CONNECTOR, REMOTE
+from collect import CONNECTOR, REMOTE, add_selection_args, select_runs, verify_snapshot_jobs
 
 
 TREE_REMOTE = r"""
@@ -21,12 +21,12 @@ def cycle_number(name):
     return int(name.split('-')[-1]) if name.startswith('cycle-') else None
 
 
-def archive_record(phase, task):
+def archive_records(phase, task):
     archive = read_json(phase / 'archive.json')
     lineage = read_json(phase / 'archives.json')
     if archive is not None:
-        return {task: archive['elites']}
-    return lineage or {}
+        return {task: archive['elites']}, {task: archive.get('restart_parents', archive['elites'])}
+    return lineage or {}, lineage or {}
 
 
 def archive_source(row, cycle):
@@ -86,7 +86,7 @@ def exact_states(branch_path, rows, spec, retained):
     return states, repeat_anchors, sorted(missing), coverage, changes
 
 
-def collect_branch(path, cycle, task, campaign, detail, run_parents, preceding_archive, retained, spec):
+def collect_branch(path, cycle, job, detail, run_parents, preceding_archive, retained, graph_spec):
     start = read_json(path / 'start.json') or {}
     summary = read_json(path / 'summary.json')
     complete = summary is not None
@@ -95,24 +95,18 @@ def collect_branch(path, cycle, task, campaign, detail, run_parents, preceding_a
     parent_fresh_loss = detail.get('parent_fresh_loss')
     parent_provenance = detail.get('parent_provenance')
     source, parent_row = None, None
-    if campaign == 'chemistry':
-        ordinal = int(path.name.rsplit('-', 1)[-1]) - 1
-        parent_index = ordinal // 3 if cycle > 1 else None
-        repeat = ordinal % 3 if cycle > 1 else None
-        arm = task
-        planned = 500
+    arm, parent_index, repeat, planned = branch_plan(path, cycle, job)
+    if job['layout'] == 'cycles':
         if cycle == 1:
             root_type = 'bootstrap'
         else:
-            parent_row = match_parent(preceding_archive.get(task, []), parent_smiles)
+            parent_row = match_parent(preceding_archive.get(job['task'], []), parent_smiles)
             source = archive_source(parent_row, cycle)
+            saved_source = start.get('parent_source')
+            if source is None and saved_source and parent_smiles:
+                source = archive_source(dict(saved_source, smiles=parent_smiles), cycle)
             root_type = 'archive-fork' if source else 'unresolved'
     else:
-        match = re.fullmatch(r'parent-(\d+)-(.+)-(\d+)', path.name)
-        parent_index, arm, repeat = int(match[1]), match[2], int(match[3])
-        planned = {'mutation': 96, 'cap': 128, 'lineage': 96}.get(task.rsplit('-', 1)[0])
-        if planned is None:
-            planned = 499 if arm == 'one-long' else 124
         if arm == 'independent':
             root_type = 'independent'
         elif cycle is None or cycle == 1:
@@ -129,7 +123,14 @@ def collect_branch(path, cycle, task, campaign, detail, run_parents, preceding_a
             parent_provenance = parent_row.get('provenance')
         if parent_provenance is None:
             parent_provenance = {k: parent_row.get(k) for k in ('branch', 'step', 'smiles')}
-    states, repeat_anchors, missing, coverage, changes = exact_states(path, rows, spec, retained)
+    states, repeat_anchors, missing, coverage, changes = exact_states(path, rows, graph_spec, retained)
+    loss_series = []
+    for row in rows:
+        values = [row['step'], round(row['relaxed_loss'], 7), round(row['chemistry_loss'], 7),
+                  round(row['chemistry_weight'], 7)]
+        if row.get('valence_excess') is not None:
+            values.append(round(row['valence_excess'], 7))
+        loss_series.append(values)
     if complete:
         updates = summary['updates']
     elif rows:
@@ -144,37 +145,43 @@ def collect_branch(path, cycle, task, campaign, detail, run_parents, preceding_a
                 observations=len(rows), state_count=len(states), change_state_count=changes,
                 repeat_anchor_steps=repeat_anchors, missing_steps=missing,
                 raw_recovered=coverage['raw_recovered'], raw_requested=coverage['raw_requested'],
-                states=states)
+                states=states, loss_series=loss_series)
 
 
 def tree_job(spec, scheduler):
-    job_id, task, campaign, queue, planned_branches, budget_updates = spec
-    run_name = 'protenix-restarts-20261107a' if campaign == 'chemistry' else 'protenix-restart-followup-20261107a'
-    root = ROOT / f'{run_name}-{task}'
-    control = CONTROL / run_name / task
+    job_id, task, campaign, queue = (spec[field] for field in ('id', 'task', 'campaign', 'queue'))
+    root = Path(spec['run_path'])
     run = read_json(root / 'run.json') or {}
     result = read_json(root / 'result.json')
-    launch = read_json(control / 'launch.json') or {}
+    launch = read_json(Path(spec['launch_path'])) or {}
     phases = sorted(root.glob('cycle-*')) or sorted(root.glob('paired'))
-    phase_archives = {cycle_number(phase.name): archive_record(phase, task) for phase in phases}
+    archive_pairs = {cycle_number(phase.name): archive_records(phase, task) for phase in phases}
     retained = {}
-    for groups in phase_archives.values():
-        for rows in groups.values():
-            for row in rows:
-                if row.get('branch') and isinstance(row.get('step'), int):
-                    retained.setdefault(row['branch'], set()).add(row['step'])
+    for archive, restart in archive_pairs.values():
+        for groups in (archive, restart):
+            for rows in groups.values():
+                for row in rows:
+                    if row.get('branch') and isinstance(row.get('step'), int):
+                        retained.setdefault(row['branch'], set()).add(row['step'])
+    branch_entries = {}
+    for phase in phases:
+        branch_entries[phase] = [path for path in sorted(phase.iterdir())
+                                 if path.is_dir() and path.name.startswith(('branch-', 'parent-'))]
+        for path in branch_entries[phase]:
+            source = (read_json(path / 'start.json') or {}).get('parent_source')
+            if source and source.get('branch') and isinstance(source.get('step'), int):
+                retained.setdefault(source['branch'], set()).add(source['step'])
     branches = []
     for phase in phases:
         cycle = cycle_number(phase.name)
         batch = read_json(phase / 'batch.json') or {}
         detail = {row['name']: row for row in batch.get('branches', [])}
-        preceding = phase_archives.get(cycle - 1, {}) if cycle else {}
-        for path in sorted(phase.iterdir()):
-            if path.is_dir() and path.name.startswith(('branch-', 'parent-')):
-                branches.append(collect_branch(path, cycle, task, campaign, detail.get(path.name, {}),
-                                               run.get('parents', []), preceding,
-                                               retained.get(f'{phase.name}/{path.name}', set()),
-                                               run.get('graph_spec')))
+        preceding = archive_pairs.get(cycle - 1, ({}, {}))[1] if cycle else {}
+        for path in branch_entries[phase]:
+            branches.append(collect_branch(path, cycle, spec, detail.get(path.name, {}),
+                                           run.get('parents', []), preceding,
+                                           retained.get(f'{phase.name}/{path.name}', set()),
+                                           run.get('graph_spec')))
     referenced = {}
     for branch in branches:
         if source := branch['source']:
@@ -200,11 +207,12 @@ def tree_job(spec, scheduler):
         elif launch.get('status') == 'launch_failed':
             status, status_source = 'EXIT', 'worker receipt'
     archives = [dict(cycle=cycle, elites={arm: elite_entries(rows) for arm, rows in groups.items()})
-                for cycle, groups in phase_archives.items() if groups]
-    return dict(id=job_id, task=task, campaign=campaign, queue=queue, status=status,
+                for cycle, (groups, _) in archive_pairs.items() if groups]
+    return dict(id=job_id, task=task, campaign=campaign, label=spec.get('label'), queue=queue, status=status,
                 reason=reason or launch.get('error'), status_source=status_source,
                 worker_status=launch.get('status'), artifact_status=result.get('status') if result else None,
-                budget_updates=budget_updates, planned_branches=planned_branches,
+                budget_updates=spec['budget_updates'], planned_cycles=spec.get('cycles'),
+                planned_branches=spec['planned_branches'],
                 completed_branches=sum(branch['complete'] for branch in branches),
                 completed_updates=sum(branch['completed_updates'] for branch in branches),
                 result=result, archives=archives, branches=branches)
@@ -237,25 +245,29 @@ print(base64.b64encode(gzip.compress(payload, compresslevel=4)).decode())
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, default=Path(__file__).with_name("tree-snapshot.json"))
+    add_selection_args(parser)
     args = parser.parse_args()
     if args.output.exists():
         raise FileExistsError(args.output)
+    jobs = select_runs(args.manifest, job_ids=args.job, all_runs=args.all_runs)
+    timeout = args.timeout if args.timeout is not None else 120
+    if timeout < 1:
+        parser.error("--timeout must be positive")
     marker = "\ncaptured = datetime."
     definitions, separator, _ = REMOTE.rpartition(marker)
     if not separator:
         raise ValueError("Snapshot collector definitions changed")
     command = "bash -lc " + shlex.quote("/usr/bin/python3 -I -")
     result = subprocess.run(
-        [CONNECTOR, "exec", "--timeout", "120", command],
-        input=definitions + "\n" + TREE_REMOTE, capture_output=True,
-        text=True, encoding="utf-8", timeout=130,
+        [CONNECTOR, "exec", "--timeout", str(timeout), command],
+        input=f"JOBS_JSON = {json.dumps(jobs)!r}\n" + definitions + "\n" + TREE_REMOTE,
+        capture_output=True, text=True, encoding="utf-8", timeout=timeout + 10,
     )
     if result.returncode:
         raise SystemExit(result.stderr or f"DTU connector returned {result.returncode}")
     payload = gzip.decompress(base64.b64decode(result.stdout.strip(), validate=True))
     snapshot = json.loads(payload)
-    if len(snapshot["jobs"]) != 11:
-        raise ValueError("Tree snapshot must account for all 11 declared jobs")
+    verify_snapshot_jobs(snapshot, jobs)
     with args.output.open("xb") as stream:
         stream.write(payload)
     print(snapshot["captured_at"], snapshot["coverage"], len(payload), "bytes")

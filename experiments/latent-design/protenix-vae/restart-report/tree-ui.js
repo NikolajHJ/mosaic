@@ -7,7 +7,7 @@ const RestartTreeView = (() => {
   let request = 0;
   const green = "#178553";
   const yellow = "#eac73b";
-  const pathInk = "#22738d";
+  const pathInk = "#294d92";
 
   function load() {
     pendingData ??= (async () => {
@@ -122,7 +122,7 @@ const RestartTreeView = (() => {
     ].join(" · ");
     const disclaimer = !isDone(job) ? " · partial tree" : "";
     content.innerHTML=`<div class="legend tree-legend">${badge(job)}<span>${escape(summary+disclaimer)}</span><span><i class="swatch tree-valid"></i>Valid</span><span><i class="swatch tree-invalid"></i>Invalid</span><span><i class="swatch tree-selected"></i>Selected path</span></div>
-      <div class="tree-grid">
+      <div class="tree-stack">
         <div class="tree-panel">
           <div class="tree-tools">
             <button type="button" id="tree-fit">Fit tree</button>
@@ -130,6 +130,7 @@ const RestartTreeView = (() => {
             <button type="button" id="tree-minus" aria-label="Zoom out">−</button>
             <button type="button" id="tree-fit-path">Fit selected path</button>
             <button type="button" id="tree-latest">Latest leaf</button>
+            <a href="#tree-inspection" class="tree-jump">Inspect selected path ↓</a>
           </div>
           <div class="tree-stage" id="tree-stage">
             <canvas id="tree-canvas" tabindex="0" aria-label="Molecular state tree. Drag to pan or scroll to zoom. Select a leaf from the leaf menu to browse the path with the keyboard."></canvas>
@@ -137,20 +138,32 @@ const RestartTreeView = (() => {
           </div>
           <p class="tree-note">Drag to pan and scroll to zoom. Click a node to see its molecule. A dashed edge marks a recorded restart.</p>
         </div>
-        <div class="tree-side">
-          <div class="tree-inspector tree-path">
-            ${select("tree-leaf","Leaf", [["","Select a leaf"], ...leaves.map(node=>[node.index,nodeLabel(node)])],"")}
-            <p class="quiet small" id="tree-path-info"></p>
+        <section class="tree-inspector tree-chart-panel" id="tree-inspection" aria-labelledby="tree-loss-title">
+          <div class="tree-section-header">
+            <div><h3 id="tree-loss-title">Selected path loss</h3><p class="quiet small" id="tree-loss-coverage"></p></div>
+            <div class="tree-chart-controls">
+              ${select("tree-leaf","Leaf", [["","Select a leaf"], ...leaves.map(node=>[node.index,nodeLabel(node)])],"")}
+              ${select("tree-loss-metric","Metric",[["relaxed","Relaxed contact loss"],["chemistry","Repair loss"],["valence","Valence excess"]],"relaxed")}
+            </div>
+          </div>
+          <div id="tree-loss-chart" class="tree-loss-chart"></div>
+          <div class="tree-chart-foot quiet small"><span>Click the chart to select an update · dashed lines mark restarts</span><span id="tree-loss-value"></span></div>
+        </section>
+        <section class="tree-inspector tree-molecule-panel" aria-label="Molecule on selected path">
+          <div class="tree-path">
+            <p class="quiet small" id="tree-path-info" aria-live="polite"></p>
+            <label class="slider-label" for="tree-path">Browse updates on the selected path<input id="tree-path" type="range" min="0" max="0" value="0"></label>
             <div class="playback-controls">
+              <button type="button" id="tree-root">Root</button>
               <button type="button" id="tree-prev">Previous</button>
               <button type="button" id="tree-next">Next</button>
-              <button type="button" id="tree-root">Root</button>
               <button type="button" id="tree-end">Path end</button>
+              <button type="button" id="tree-best">Lowest on chart</button>
+              <button type="button" id="tree-export">Download path CSV</button>
             </div>
-            <label class="slider-label" for="tree-path">Scroll through selected path<input id="tree-path" type="range" min="0" max="0" value="0"></label>
           </div>
-          <div class="tree-inspector" id="tree-node" aria-live="polite"></div>
-        </div>
+          <div id="tree-node"></div>
+        </section>
       </div>
       <p class="tree-note">An unchanged hard state occupies one node within a branch. An independent start has its own root.${missing ? ` Raw topology is unavailable for ${escape(count(missing))} saved observations.` : ""}</p>`;
 
@@ -159,9 +172,12 @@ const RestartTreeView = (() => {
     const stage=byId("tree-stage");
     const slider=byId("tree-path");
     const leafSelect=byId("tree-leaf");
+    const metricSelect=byId("tree-loss-metric");
+    const chart=ProtenixPathChart.mount(byId("tree-loss-chart"),metricSelect,byId("tree-loss-value"),
+      index=>showNode(index,true));
     let width=0,height=0,dpr=1;
     let view={sx:1,sy:1,ox:0,oy:0,zoom:1};
-    let path=[],pathLinks=[],pathSet=new Set(),pathIndex=0;
+    let path=[],pathLinks=[],pathSet=new Set(),points=[],pathIndex=0;
     let pointer=null,scheduled=0;
     const rootIndices=new Set(roots.map(indexOf)), leafIndices=new Set(leaves.map(indexOf));
     const screenX=node=>view.ox+node.x*view.sx;
@@ -237,26 +253,32 @@ const RestartTreeView = (() => {
       if(!width||!height)return;
       ctx.setTransform(dpr,0,0,dpr,0,0);
       ctx.clearRect(0,0,width,height);
-      const active=path[pathIndex];
+      const active=points[pathIndex]?.node;
       const visible=model.visible((-10-view.ox)/view.sx,(-10-view.oy)/view.sy,
         (width+10-view.ox)/view.sx,(height+10-view.oy)/view.sy);
-      ctx.globalAlpha=path.length>1?.52:.9;
-      ctx.strokeStyle="#8da99b";ctx.lineWidth=.85;ctx.setLineDash([]);
+      ctx.globalAlpha=path.length>1?.35:.9;
+      ctx.strokeStyle="#91a3a8";ctx.lineWidth=.95;ctx.setLineDash([]);
       trace(visible.edges,"step");
       ctx.strokeStyle="#718b80";ctx.setLineDash([4,3]);
       trace(visible.edges,"restart");
       const radius=Math.min(4,Math.max(1.35,view.sy*.72));
-      ctx.globalAlpha=path.length>1?.37:1;
+      ctx.globalAlpha=path.length>1?.30:1;
       dots(visible.nodes,true,radius);dots(visible.nodes,false,radius);
-      ctx.globalAlpha=1;ctx.setLineDash([]);
-      ctx.strokeStyle="#263f35";ctx.lineWidth=.85;
+      ctx.setLineDash([]);
+      ctx.strokeStyle="#314550";ctx.lineWidth=1;
       for(const node of visible.nodes) {
         if(!rootIndices.has(node.index)&&!leafIndices.has(node.index))continue;
-        ctx.beginPath();ctx.arc(screenX(node),screenY(node),Math.max(3,radius+1),0,Math.PI*2);
+        ctx.globalAlpha=path.length>1&&!pathSet.has(node.index)?.46:1;
+        const x=screenX(node),y=screenY(node),r=Math.max(3.3,radius+1);
+        ctx.beginPath();
+        if(leafIndices.has(node.index)&&!rootIndices.has(node.index)){
+          ctx.moveTo(x,y-r);ctx.lineTo(x+r,y);ctx.lineTo(x,y+r);ctx.lineTo(x-r,y);ctx.closePath();
+        }else ctx.arc(x,y,r,0,Math.PI*2);
         ctx.fillStyle=node.valid?green:yellow;ctx.fill();ctx.stroke();
       }
+      ctx.globalAlpha=1;
       if(path.length>1) {
-        ctx.strokeStyle=pathInk;ctx.lineWidth=2.5;
+        ctx.strokeStyle=pathInk;ctx.lineWidth=3;
         trace(pathLinks,"step");ctx.setLineDash([5,3]);trace(pathLinks,"restart");ctx.setLineDash([]);
         const activeNodes=visible.nodes.filter(node=>pathSet.has(node.index));
         dots(activeNodes,true,radius+.35);dots(activeNodes,false,radius+.35);
@@ -271,25 +293,26 @@ const RestartTreeView = (() => {
     }
 
     function showNode(index,follow) {
-      if(!path.length)return;
-      pathIndex=Math.max(0,Math.min(index,path.length-1));
-      const node=path[pathIndex];
+      if(!points.length)return;
+      pathIndex=Math.max(0,Math.min(index,points.length-1));
+      const point=points[pathIndex],node=point.node;
       slider.value=String(pathIndex);
-      slider.setAttribute("aria-valuetext",`Node ${pathIndex+1} of ${path.length}, update ${node.step}`);
+      slider.setAttribute("aria-valuetext",`Observation ${pathIndex+1} of ${points.length}, branch update ${point.step}`);
       byId("tree-prev").disabled=pathIndex===0;byId("tree-root").disabled=pathIndex===0;
-      byId("tree-next").disabled=pathIndex===path.length-1;byId("tree-end").disabled=pathIndex===path.length-1;
+      byId("tree-next").disabled=pathIndex===points.length-1;byId("tree-end").disabled=pathIndex===points.length-1;
       const restarts=pathLinks.filter(edge=>edge.kind==="restart").length;
-      byId("tree-path-info").textContent=`Node ${count(pathIndex+1)} of ${count(path.length)} on selected path${restarts?` · ${restarts} ${restarts===1?"restart":"restarts"}`:""}`;
+      byId("tree-path-info").textContent=`Observation ${count(pathIndex+1)} of ${count(points.length)} · Path step ${count(point.depth)}${restarts?` · ${restarts} ${restarts===1?"restart":"restarts"}`:""}`;
+      chart.show(pathIndex);
       const graph=molecule(node,data);
-      const span=Number.isFinite(node.endStep)&&node.endStep>node.step ? ` · unchanged through update ${node.endStep}` : "";
-      const stageLabel=rootIndices.has(node.index)?"Initialization":leafIndices.has(node.index)?"Leaf":"State";
+      const stageLabel=point.step===node.step&&rootIndices.has(node.index)?"Initialization":
+        pathIndex===points.length-1&&leafIndices.has(node.index)?"Leaf":"State";
       const validLabel=node.valid?"Valid":"Invalid";
-      const restart=node.incoming?.kind==="restart" ? `Restarted from ${node.incoming.source.branch}, update ${node.incoming.sourceStep}.` : "";
-      byId("tree-node").innerHTML=`<h3>${stageLabel} <span class="pill ${node.valid?"status-done":"tree-invalid-label"}">${validLabel}</span></h3><p class="quiet small tree-node-meta">${escape(nodeLabel(node)+span)}</p>`+
+      const restart=point.restart&&node.incoming?.kind==="restart" ? `Restarted from ${node.incoming.source.branch}, update ${node.incoming.sourceStep}.` : "";
+      byId("tree-node").innerHTML=`<h3>${stageLabel} <span class="pill ${node.valid?"status-done":"tree-invalid-label"}">${validLabel}</span></h3><p class="quiet small tree-node-meta">${escape(nodeLabel({...node,step:point.step}))}</p>`+
         (restart?`<p class="quiet small">${escape(restart)}</p>`:"")+
-        (drawStructure(graph,`${validLabel} graph at update ${node.step}`)||empty("This state has no saved molecular graph."))+
+        (drawStructure(graph,`${validLabel} graph at update ${point.step}`)||empty("This state has no saved molecular graph."))+
         (node.smiles?`<code class="mono-block">${escape(node.smiles)}</code>`:"")+
-        `<p class="quiet small">${Number.isFinite(node.relaxedLoss)?`Relaxed contact loss ${fmt(node.relaxedLoss,4)}`:""}${graph?.raw?` · Raw topology with ${graph.atoms.length} atoms and ${graph.bonds.length} bonds`:""}</p>`;
+        `<p class="quiet small">${Number.isFinite(point.relaxed)?`Relaxed contact loss ${fmt(point.relaxed,5)}`:""}${graph?.raw?` · Raw topology with ${graph.atoms.length} atoms and ${graph.bonds.length} bonds`:""}</p>`;
       if(follow&&!visibleNode(node)){
         view.ox=width/2-node.x*view.sx;
         view.oy=height/2-node.y*view.sy;
@@ -302,9 +325,15 @@ const RestartTreeView = (() => {
       path=ancestry.nodes;
       pathLinks=ancestry.edges;
       pathSet=new Set(path.map(indexOf));
-      slider.max=String(Math.max(0,path.length-1));
+      const timeline=model.timeline(ancestry);
+      points=timeline.points;
+      chart.set(points);
+      slider.max=String(Math.max(0,points.length-1));
       leafSelect.value=leafIndices.has(node.index)?String(node.index):"";
-      showNode(path.length-1,follow);
+      byId("tree-loss-coverage").textContent=timeline.distinctOnly
+        ? "Older snapshot coverage includes saved state nodes. Repeated updates may be absent."
+        : `${count(points.length)} recorded updates, including repeated molecular states.`;
+      showNode(points.length-1,follow);
     }
 
     const local=event=>{
@@ -346,7 +375,6 @@ const RestartTreeView = (() => {
       const picked=endpoint||best;
       if(picked){
         selectNode(picked,false);
-        if(stage.getBoundingClientRect().width<520)byId("tree-node").scrollIntoView({block:"nearest"});
       }
     });
     canvas.addEventListener("pointercancel",()=>{pointer=null;canvas.dataset.dragging="false";});
@@ -359,19 +387,37 @@ const RestartTreeView = (() => {
     byId("tree-prev").addEventListener("click",()=>showNode(pathIndex-1,true));
     byId("tree-next").addEventListener("click",()=>showNode(pathIndex+1,true));
     byId("tree-root").addEventListener("click",()=>showNode(0,true));
-    byId("tree-end").addEventListener("click",()=>showNode(path.length-1,true));
+    byId("tree-end").addEventListener("click",()=>showNode(points.length-1,true));
+    byId("tree-best").addEventListener("click",()=>{
+      const metric=metricSelect.value;
+      let best=-1;
+      points.forEach((point,index)=>{
+        if(Number.isFinite(point[metric])&&(best<0||point[metric]<points[best][metric]))best=index;
+      });
+      if(best>=0)showNode(best,true);
+    });
+    byId("tree-export").addEventListener("click",()=>{
+      const quote=value=>'"'+String(value??"").replaceAll('"','""')+'"';
+      const rows=points.map(({node,step,depth,relaxed,chemistry,weight,valence,restart})=>
+        [depth,node.cycle,node.branch,step,relaxed,chemistry,weight,valence,node.valid,node.smiles,restart].map(quote).join(","));
+      const csv=["path_step,cycle,branch,update,relaxed_loss,repair_loss,repair_weight,valence_excess,valid,smiles,restart",...rows].join("\n");
+      const url=URL.createObjectURL(new Blob([csv],{type:"text/csv;charset=utf-8"}));
+      const link=document.createElement("a");
+      link.href=url;link.download="protenix-"+job.id+"-path.csv";link.click();
+      setTimeout(()=>URL.revokeObjectURL(url),0);
+    });
     slider.addEventListener("input",()=>showNode(Number(slider.value),true));
     canvas.addEventListener("keydown",event=>{
       if(!["ArrowUp","ArrowDown","Home","End","+","-"].includes(event.key))return;
       event.preventDefault();
       if(event.key==="+")zoom(1.55);
       else if(event.key==="-")zoom(1/1.55);
-      else showNode(event.key==="Home"?0:event.key==="End"?path.length-1:pathIndex+(event.key==="ArrowUp"?1:-1),true);
+      else showNode(event.key==="Home"?0:event.key==="End"?points.length-1:pathIndex+(event.key==="ArrowUp"?1:-1),true);
     });
     const observer=new ResizeObserver(resize);observer.observe(stage);
-    cleanup=()=>{observer.disconnect();if(scheduled)cancelAnimationFrame(scheduled);};
+    cleanup=()=>{observer.disconnect();chart.destroy();if(scheduled)cancelAnimationFrame(scheduled);};
     resize();
-    selectNode(roots[0]||model.nodes[0],false);
+    selectNode(leaves[0]||roots[0]||model.nodes[0],false);
   }
 
   return {render,destroy};
