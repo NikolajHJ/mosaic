@@ -86,7 +86,7 @@ def exact_states(branch_path, rows, spec, retained):
     return states, repeat_anchors, sorted(missing), coverage, changes
 
 
-def collect_branch(path, cycle, job, detail, run_parents, preceding_archive, retained, graph_spec):
+def collect_branch(path, cycle, job, detail, run_parents, preceding_archive, retained, graph_spec, central):
     start = read_json(path / 'start.json') or {}
     summary = read_json(path / 'summary.json')
     complete = summary is not None
@@ -96,7 +96,27 @@ def collect_branch(path, cycle, job, detail, run_parents, preceding_archive, ret
     parent_provenance = detail.get('parent_provenance')
     source, parent_row = None, None
     arm, parent_index, repeat, planned = branch_plan(path, cycle, job)
-    if job['layout'] == 'cycles':
+    if central:
+        saved_source = start.get('parent_source')
+        policy = (start.get('proposal') or {}).get('policy') or start.get('source_kind')
+        raw_invalid = policy in ('raw-invalid', 'invalid')
+        if saved_source:
+            source = archive_source(dict(saved_source, smiles=parent_smiles,
+                                         fresh_loss=parent_fresh_loss), cycle)
+            if source and raw_invalid:
+                source['raw_invalid'] = True
+            if source:
+                root_type = 'archive-fork'
+            elif (saved_source.get('branch') or '').startswith('founder-'):
+                parent_row = match_parent(run_parents, parent_smiles)
+                root_type = 'archived-parent' if parent_row else 'unresolved'
+            elif (saved_source.get('branch') or '').startswith('prior-'):
+                root_type = 'independent'
+            else:
+                root_type = 'unresolved'
+        else:
+            root_type = 'bootstrap' if policy == 'bootstrap' else 'unresolved'
+    elif job['layout'] == 'cycles':
         if cycle == 1:
             root_type = 'bootstrap'
         else:
@@ -152,6 +172,7 @@ def tree_job(spec, scheduler):
     job_id, task, campaign, queue = (spec[field] for field in ('id', 'task', 'campaign', 'queue'))
     root = Path(spec['run_path'])
     run = read_json(root / 'run.json') or {}
+    central = run.get('runner') == 'restart_search'
     result = read_json(root / 'result.json')
     launch = read_json(Path(spec['launch_path'])) or {}
     phases = sorted(root.glob('cycle-*')) or sorted(root.glob('paired'))
@@ -174,28 +195,44 @@ def tree_job(spec, scheduler):
     branches = []
     for phase in phases:
         cycle = cycle_number(phase.name)
-        batch = read_json(phase / 'batch.json') or {}
-        detail = {row['name']: row for row in batch.get('branches', [])}
+        if central:
+            plan = read_json(phase / 'wave-plan.json') or {}
+            detail = {row['name']: dict(parent_fresh_loss=row['source'].get('fresh_loss'))
+                      for row in plan.get('branches', [])}
+        else:
+            batch = read_json(phase / 'batch.json') or {}
+            detail = {row['name']: row for row in batch.get('branches', [])}
         preceding = archive_pairs.get(cycle - 1, ({}, {}))[1] if cycle else {}
         for path in branch_entries[phase]:
             branches.append(collect_branch(path, cycle, spec, detail.get(path.name, {}),
                                            run.get('parents', []), preceding,
                                            retained.get(f'{phase.name}/{path.name}', set()),
-                                           run.get('graph_spec')))
+                                           run.get('graph_spec'), central))
     referenced = {}
     for branch in branches:
         if source := branch['source']:
-            referenced.setdefault((source['cycle'], source['branch']), {})[source['step']] = source['smiles']
-    confirmed = set()
+            referenced.setdefault((source['cycle'], source['branch']), set()).add(source['step'])
+    source_states = {}
     for branch in branches:
         key = (branch['cycle'], branch['name'])
-        expected = referenced.get(key, {})
-        for step, valid, smiles, _, _ in branch['states']:
-            if valid and step in expected and smiles == expected[step]:
-                confirmed.add((*key, step))
+        expected = referenced.get(key, set())
+        for step, valid, smiles, raw_key, _ in branch['states']:
+            if step in expected:
+                source_states[(*key, step)] = (valid, smiles, raw_key)
     for branch in branches:
         source = branch['source']
-        if source and (source['cycle'], source['branch'], source['step']) not in confirmed:
+        if not source:
+            continue
+        valid, smiles, raw_key = source_states.get((source['cycle'], source['branch'], source['step']),
+                                                   (False, None, None))
+        if source.get('raw_invalid'):
+            confirmed = not valid and raw_key is not None
+            if branch['states'] and branch['states'][0][0] == 0:
+                _, child_valid, _, child_raw_key, _ = branch['states'][0]
+                confirmed = confirmed and not child_valid and (child_raw_key is None or child_raw_key == raw_key)
+        else:
+            confirmed = valid and smiles == source['smiles']
+        if not confirmed:
             branch['source_unavailable'] = source
             branch['source'] = None
             branch['root_type'] = 'unresolved'

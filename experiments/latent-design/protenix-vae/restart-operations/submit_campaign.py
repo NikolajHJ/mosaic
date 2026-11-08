@@ -71,32 +71,57 @@ def stage(args, local, control, release):
     cfg = read(config)
     study = cfg.get("study")
     benchmark = study == "batch_throughput"
+    restart_search = study == "restart_search"
     uses_tasks = study in ("initialization_noise", "lineage_feedback", "batch_throughput")
-    fresh_path = EXPERIMENT / "restart-followup-fresh-dtu.json" if uses_tasks else FRESH
-    if benchmark:
+    uses_cohorts = uses_tasks or restart_search
+    fresh_path = EXPERIMENT / "restart-followup-fresh-dtu.json" if uses_cohorts else FRESH
+    if restart_search:
+        module = "latentmol.design.protenix_search"
+    elif benchmark:
         module = "latentmol.design.protenix_restart_benchmark"
     else:
         module = "latentmol.design.protenix_restart_study" if uses_tasks else "latentmol.design.protenix_restarts"
     startup_seconds = {"initialization_noise": 1800, "lineage_feedback": 2700,
-                       "batch_throughput": 2700}.get(study, 900)
-    cpu_slots = 8 if benchmark else 4
-    host_requirements = ["-R", "select[gpu80gb]"] if benchmark else []
+                       "batch_throughput": 2700, "restart_search": 2700}.get(study, 900)
+    a100_80gb = benchmark or args.a100_80gb
+    if args.a100_80gb and not restart_search:
+        raise ValueError("Explicit 80 GB GPU selection requires a restart_search config")
+    host_requirements = ["-R", "select[gpu80gb]"] if a100_80gb else []
     worker_env = "all,~CUDA_VISIBLE_DEVICES,~CUDA_MPS_PIPE_DIRECTORY,~CUDA_MPS_LOG_DIRECTORY,~CUDA_MPS_ACTIVE_THREAD_PERCENTAGE"
-    # Override the wrapper's thread defaults after it resolves GPU ownership.
-    thread_env = (["/usr/bin/env", "DBMOL_CPU_THREADS=1", "OMP_NUM_THREADS=1",
-                   "MKL_NUM_THREADS=1", "OPENBLAS_NUM_THREADS=1"] if benchmark else [])
     outputs = {}
     budgets = {}
     queues = {}
-    for arm, override in cfg["tasks" if uses_tasks else "arms"].items():
+    cpu_workers = {}
+    configured = cfg["tasks" if uses_tasks else "arms"]
+    selected = args.arm or list(configured)
+    if len(set(selected)) != len(selected) or set(selected) - configured.keys():
+        raise ValueError(f"Unknown or duplicate requested arms: {selected}")
+    for arm in selected:
+        override = configured[arm]
         if not re.fullmatch(r"[a-z][a-z0-9-]*", arm):
             raise ValueError(f"Invalid arm name: {arm}")
+        cpu_workers[arm] = 4 if benchmark else 1
         if benchmark:
             cases = cfg["cases"]
             batches = {case["batch_size"] for case in cases}
             measured = (cfg["design"]["updates"] * cfg["parents"] * cfg["children_per_parent"]
                         * len(cases) * cfg["repeats"])
             budgets[arm] = measured + cfg["warmup_steps"] * sum(batches)
+        elif restart_search:
+            options = cfg["search"] | override.get("search", {})
+            design = cfg["design"] | override.get("design", {})
+            counts = [options[key] for key in ("waves", "parents", "children", "cpu_workers")]
+            if any(type(count) is not int or count < 1 for count in [*counts, design["updates"]]):
+                raise ValueError(f"Restart search requires positive integer budget counts for {arm}")
+            branches_per_wave = options["parents"] * options["children"]
+            if options["initialization"] == "archived":
+                branches = options["waves"] * branches_per_wave
+            elif options["initialization"] == "bootstrap":
+                branches = 1 + (options["waves"] - 1) * branches_per_wave
+            else:
+                raise ValueError(f"Unknown restart initialization for {arm}")
+            budgets[arm] = branches * design["updates"]
+            cpu_workers[arm] = options["cpu_workers"]
         elif uses_tasks:
             comparison = cfg["comparisons"][override["comparison"]]
             if study == "lineage_feedback":
@@ -110,7 +135,7 @@ def stage(args, local, control, release):
             design = cfg["design"] | override
             branches = 1 + (campaign["cycles"] - 1) * campaign["elite_count"] * campaign["branches_per_elite"]
             budgets[arm] = branches * design["updates"]
-        queues[arm] = override.get("queue", args.queue) if uses_tasks else args.queue
+        queues[arm] = override.get("queue", args.queue) if uses_cohorts else args.queue
         outputs[arm] = f"{BASE}/runs/{args.name}-{arm}"
     if not budgets or any(not 0 < updates <= args.max_updates for updates in budgets.values()):
         raise ValueError(f"Arm exceeds the declared update budget: {budgets}")
@@ -118,10 +143,12 @@ def stage(args, local, control, release):
         raise ValueError(f"Unsupported GPU queues: {queues}")
     if benchmark and queues != {"bench": "gpua100"}:
         raise ValueError("The throughput benchmark requires one bench task on gpua100")
+    if a100_80gb and set(queues.values()) != {"gpua100"}:
+        raise ValueError("The 80 GB host requirement needs gpua100 for every selected arm")
 
     source_path = None
     if args.source_receipt:
-        if uses_tasks:
+        if uses_cohorts:
             raise ValueError("Matched archive staging is for learning-rate repeats")
         source_path, source_digest, replaced, prior = matched_source(args.source_receipt, cfg)
     else:
@@ -129,9 +156,11 @@ def stage(args, local, control, release):
     plan = {key: prior[key] for key in ("cuda_ownership_helper", "cuda_ownership_sha256", "mosaic_python")}
     plan.update(arms=outputs, queue=args.queue, planned_updates=budgets,
                 output_cap_mib=OUTPUT_MIB, config_sha256=sha(config))
-    if uses_tasks:
+    if uses_cohorts:
         plan["queues"] = queues
         del plan["queue"]
+    if restart_search:
+        plan["a100_80gb"] = a100_80gb
     if source_path:
         plan["matched_source_sha256"] = source_digest
     local.mkdir()
@@ -170,7 +199,7 @@ def stage(args, local, control, release):
         "TORCH_PYTHON", "FRESH_DEPS", "FRESH_DATA"))
     required = [native["mosaic_source"], plan["mosaic_python"], assets["native"]["source_root"],
                 torch_python, fresh_deps, fresh_data, fresh["ccd_root"]]
-    cohorts = cfg.get("parent_cohorts", []) if uses_tasks else []
+    cohorts = cfg.get("parent_cohorts", []) if uses_cohorts else []
     probe = f"{BASE}/runs/{args.name}-capacity-probe"
     targets = [remote_archive, release, control, probe, *outputs.values()]
     save(local / "preflight.json", remote(f"""
@@ -235,6 +264,11 @@ finally:
     for arm, output in outputs.items():
         receipts = f"{control}/{arm}"
         queue = queues[arm]
+        parallel_cpu = cpu_workers[arm] > 1
+        cpu_slots = cpu_workers[arm] + 4 if parallel_cpu else 4
+        # Override the wrapper's thread defaults after it resolves GPU ownership.
+        thread_env = (["/usr/bin/env", "DBMOL_CPU_THREADS=1", "OMP_NUM_THREADS=1",
+                       "MKL_NUM_THREADS=1", "OPENBLAS_NUM_THREADS=1"] if parallel_cpu else [])
         commands[arm] = [
             "bsub", "-J", f"dbmol-{args.name}-{arm}", "-q", queue, "-n", str(cpu_slots),
             "-R", "span[hosts=1]", "-R", "rusage[mem=4096]", *host_requirements,
@@ -297,8 +331,10 @@ def main():
     parser.add_argument("phase", choices=("stage", "submit"))
     parser.add_argument("--name", required=True)
     parser.add_argument("--config")
+    parser.add_argument("--arm", action="append", help="Stage only the named arm; repeat to select several")
     parser.add_argument("--source-receipt", type=Path, help="Reuse sealed source from a matched submission")
     parser.add_argument("--queue", choices=tuple(GPU_RESOURCE), default="gpul40s")
+    parser.add_argument("--a100-80gb", action="store_true", help="Require an 80 GB A100 for a restart_search config")
     parser.add_argument("--hours", type=int, default=12)
     parser.add_argument("--max-updates", type=int, required=False)
     args = parser.parse_args()
@@ -312,6 +348,8 @@ def main():
             parser.error("Staging requires a restart config, update limit, and 1–24 hour walltime")
         stage(args, local, control, f"{BASE}/releases/{args.name}")
     else:
+        if args.arm or args.a100_80gb:
+            parser.error("Arm and 80 GB GPU selection belong to staging; submit uses sealed commands")
         submit(local, control)
 
 

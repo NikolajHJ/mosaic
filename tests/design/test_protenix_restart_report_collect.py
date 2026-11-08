@@ -16,6 +16,17 @@ def report_module(name):
     return module
 
 
+def tree_worker(monkeypatch):
+    collector = report_module("collect")
+    monkeypatch.setitem(sys.modules, "collect", collector)
+    trees = report_module("collect_trees")
+    helpers = collector.REMOTE.rpartition("\ncaptured = datetime.")[0]
+    tree_helpers = trees.TREE_REMOTE.rpartition("\ncaptured = datetime.")[0]
+    worker = {"JOBS_JSON": "[]", "INCLUDE_RAW": False}
+    exec(helpers + "\n" + tree_helpers, worker)
+    return worker
+
+
 def test_manifest_defaults_and_explicit_job_selection(tmp_path):
     collector = report_module("collect")
     default = collector.select_runs(collector.DEFAULT_MANIFEST)
@@ -41,13 +52,7 @@ def test_manifest_defaults_and_explicit_job_selection(tmp_path):
 
 
 def test_tree_collector_keeps_exact_restart_anchor_and_every_loss_observation(tmp_path, monkeypatch):
-    collector = report_module("collect")
-    monkeypatch.setitem(sys.modules, "collect", collector)
-    trees = report_module("collect_trees")
-    helpers = collector.REMOTE.rpartition("\ncaptured = datetime.")[0]
-    tree_helpers = trees.TREE_REMOTE.rpartition("\ncaptured = datetime.")[0]
-    worker = {"JOBS_JSON": "[]", "INCLUDE_RAW": False}
-    exec(helpers + "\n" + tree_helpers, worker)
+    worker = tree_worker(monkeypatch)
     root = tmp_path / "run"
     first = root / "cycle-01" / "branch-01"
     second = root / "cycle-02" / "branch-01"
@@ -90,3 +95,53 @@ def test_tree_collector_keeps_exact_restart_anchor_and_every_loss_observation(tm
     assert child["source"] == {"branch": "branch-01", "cycle": 1, "step": 1, "smiles": "CCO", "fresh_loss": 2.1}
     assert child["root_type"] == "archive-fork"
     assert job["archives"][0]["elites"]["replicate"][0]["smiles"] == "CCN"
+
+
+def test_central_tree_prefers_saved_forks_and_requires_raw_invalid_source(tmp_path, monkeypatch):
+    import numpy as np
+
+    worker = tree_worker(monkeypatch)
+    root = tmp_path / "search"
+    root.mkdir()
+    (root / "run.json").write_text(json.dumps({
+        "runner": "restart_search",
+        "graph_spec": {"atomic_numbers": [0, 6], "formal_charges": [0], "bond_names": ["NONE", "SINGLE"]},
+    }), encoding="utf-8")
+
+    def branch(cycle, index, smiles, *, policy, parent=None, source_step=None, raw_steps=()):
+        path = root / f"cycle-{cycle:02d}" / f"branch-{index:02d}"
+        path.mkdir(parents=True)
+        source = None if source_step is None else dict(branch="cycle-01/branch-01", step=source_step)
+        (path / "start.json").write_text(json.dumps(dict(parent=parent, parent_source=source,
+                                                        proposal={"policy": policy})), encoding="utf-8")
+        rows = [dict(step=step, smiles=molecule, raw_valid=molecule is not None, relaxed_loss=2.0,
+                     chemistry_loss=0.0, chemistry_weight=1.0) for step, molecule in enumerate(smiles)]
+        (path / "metrics.jsonl").write_text("".join(json.dumps(row) + "\n" for row in rows), encoding="utf-8")
+        if raw_steps:
+            raw = path / "raw-blocks"
+            raw.mkdir()
+            count = len(raw_steps)
+            np.savez(raw / f"states-{raw_steps[0]:06d}-{raw_steps[-1]:06d}.npz",
+                     steps=raw_steps, atoms=np.ones((count, 2), dtype=int), charges=np.zeros((count, 2), dtype=int),
+                     bonds_upper=np.zeros((count, 1), dtype=int), upper_left=[0], upper_right=[1])
+        return path
+
+    bootstrap = branch(1, 1, [None, None, "CCO", "CCN", None], policy="bootstrap", raw_steps=(0, 1))
+    (bootstrap.parent / "archive.json").write_text(json.dumps({
+        "elites": [],
+        "restart_parents": [dict(smiles="CCO", fresh_loss=1.9, step=3, branch="cycle-01/branch-01")],
+    }), encoding="utf-8")
+    branch(2, 1, ["CCO"], policy="latent", parent="CCO", source_step=2)
+    branch(2, 2, [None, "CCN"], policy="raw-invalid", source_step=1, raw_steps=(0,))
+    branch(2, 3, [None], policy="raw-invalid", source_step=4, raw_steps=(0,))
+    spec = dict(id=9, task="search", campaign="custom", layout="cycles", queue="gpua100",
+                run_path=str(root), launch_path=str(tmp_path / "launch.json"), updates_per_branch=4,
+                branches_per_parent=1, planned_branches=4, budget_updates=16)
+    bootstrap, valid, invalid, missing = worker["tree_job"](spec, {})["branches"]
+    assert bootstrap["repeat_anchor_steps"] == [1]
+    assert valid["source"]["step"] == 2
+    assert invalid["root_type"] == "archive-fork"
+    assert invalid["source"] == dict(branch="branch-01", cycle=1, step=1, smiles=None,
+                                     fresh_loss=None, raw_invalid=True)
+    assert missing["source"] is None and missing["root_type"] == "unresolved"
+    assert missing["source_unavailable"]["step"] == 4

@@ -1,5 +1,6 @@
 # Protenix restart search
 
+- [Configurable restart runner](restart-search.md) runs long and short cyclic searches from a shared entry point with presets, overrides, and per-wave logs.
 - [Chemistry pilot](restarts.md) records the three five-cycle runs and the matched fresh scoring setup.
 - [Matched follow-up](restart-followup.md) records the perturbation, step cap, duration, and lineage comparisons.
 - [Dense restart audit and LR 70 pilot](restart-lr70.md) traces the dense graphs and records the screened follow-up.

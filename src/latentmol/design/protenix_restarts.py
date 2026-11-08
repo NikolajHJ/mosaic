@@ -87,7 +87,7 @@ class RestartOffset:
 
 @dataclass
 class Candidate:
-    smiles: str
+    smiles: str | None
     latent: torch.Tensor
     hard: HardGraphBatch
     relaxed_loss: float
@@ -318,13 +318,13 @@ def restart_args(description, argv):
     return args
 
 
-def native_factory(args):
+def native_factory(args, *, timeout=900):
     native_config = json.loads(args.native_config.read_text())
 
     def factory(spec, active, root):
         return MosaicProtenixScorer(spec, active,
             command=[args.mosaic_python, "-m", "latentmol.guidance.mosaic_protenix_worker"],
-            config=native_config, stderr_path=root / "native.stderr.log")
+            config=native_config, stderr_path=root / "native.stderr.log", timeout=timeout)
 
     return factory
 
