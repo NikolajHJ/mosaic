@@ -78,3 +78,16 @@ were verified before submission. A two-cycle CPU smoke with the frozen
 decoder and mock scorers exercised the combined policies. The unchanged-parent
 control shared the exact archived starting latent across branches and
 diverged on the first update. Scientific results are pending.
+
+## Startup retries and queue move on 8 November 2026
+
+Combined, cap 0.5, and repair only exited during startup before saving a trajectory. Two first-compilation logs exceeded the 15-minute startup limit. The retries use the original archived source and settings, separate output roots, and a 45-minute startup allowance. The pending top-parents job was replaced on A100 with the same scientific settings and output root.
+
+| Arm | Original job | Active job | Queue |
+| --- | ---: | ---: | --- |
+| Combined | 29916515 | 29926073 | `gpua100` |
+| Cap 0.5 | 29916522 | 29926074 | `gpua100` |
+| Repair only | 29916530 | 29926075 | `gpuv100` |
+| Top parents | 29916552 | 29926090 | `gpua100` |
+
+DTU showed all four pending at 16:10 CET with dispatch paused on both queues. See the [startup retry receipts](../../../outputs/protenix-restart-lr70-six-20261107a/startup-retry-20261108a/) and [queue move receipts](../../../outputs/protenix-restart-l40s-move-20261108a/release.json).

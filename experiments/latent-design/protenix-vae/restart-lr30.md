@@ -36,3 +36,16 @@ at the 23:47 scheduler check.
 | Unchanged parent | 29920272 | 29916537 |
 | Relaxed shortlist | 29920273 | 29916544 |
 | Top-scoring parents | 29920274 | 29916552 |
+
+## Queue move on 8 November 2026
+
+The six pending comparison jobs moved from L40S to 32 GB V100 with their original scientific settings and output roots. The replacements have a 45-minute startup allowance. DTU confirmed the originals exited and all six replacements were pending at 16:10 CET while dispatch was paused. See the [queue move receipts](../../../outputs/protenix-restart-l40s-move-20261108a/release.json).
+
+| Arm | Active LR 30 job |
+| --- | ---: |
+| Combined | 29926092 |
+| Cap 0.5 | 29926093 |
+| Repair only | 29926094 |
+| Unchanged parent | 29926095 |
+| Relaxed shortlist | 29926096 |
+| Top-scoring parents | 29926097 |
