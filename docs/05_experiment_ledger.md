@@ -22538,3 +22538,10 @@ ramp. Cap 0.5 won on 23 of 24 matched parents against 0.1, and elite
 restarts beat independent starts at the endpoint in both lineage cohorts.
 Mutation B was running and duration B was queued for an A40 reservation.
 All seven LR 70 jobs were queued on L40S.
+
+8 November 2026. The completed standalone LR 30 and LR 70 pilots gave
+median sibling Jaccard overlap of 0.181 and 0.017 over novel valid SMILES.
+Median unique non-parent source-path revisit fractions were 36.7% and 3.5%.
+The runs selected different parents. Two completed LR 70 six-cycle arms
+had higher sibling overlap than different-parent overlap in the same cycle.
+[Trajectory audit and matched noise tests](../experiments/latent-design/protenix-vae/restart-noise.md).

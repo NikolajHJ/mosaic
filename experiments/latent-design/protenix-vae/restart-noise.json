@@ -1,0 +1,79 @@
+{
+  "study": "initialization_noise",
+  "design": {
+    "updates": 500,
+    "schedule_horizon": 500,
+    "seed": 17,
+    "noise_seed": 230017,
+    "occupied_atoms": 25,
+    "learning_rate": 70.0,
+    "max_step_norm": 0.25,
+    "chemistry_initial": 1.0,
+    "chemistry_final": 1.0,
+    "chemistry_hold": 375,
+    "chemistry_ramp_end": 500,
+    "valence_excess_weight": 1.0,
+    "temperature_initial": 1.0,
+    "temperature_final": 1.0,
+    "noise_initial": 0.0,
+    "noise_zero_at": 100
+  },
+  "parent_cohorts": [
+    "/work3/s234818/latentmol/runs/flow-followup-20261106a-520000",
+    "/work3/s234818/latentmol/runs/flow-followup-20261106a-530000",
+    "/work3/s234818/latentmol/runs/flow-followup-20261106a-540000"
+  ],
+  "panel_size": 12,
+  "panel_seed": 982701,
+  "perturbation_seed": 1810801,
+  "comparisons": {
+    "latent-dose": {
+      "parents": 6,
+      "variants": {
+        "untouched": {"policy": "none", "updates": [64, 64], "shortlist": 3},
+        "latent-003": {"policy": "raw-latent", "strength": 0.03, "updates": [64, 64, 64], "shortlist": 3},
+        "latent-010": {"policy": "raw-latent", "strength": 0.10, "updates": [64, 64, 64], "shortlist": 3},
+        "latent-025": {"policy": "raw-latent", "strength": 0.25, "updates": [64, 64, 64], "shortlist": 3},
+        "latent-100": {"policy": "raw-latent", "strength": 1.00, "updates": [64, 64, 64], "shortlist": 3},
+        "latent-300": {"policy": "raw-latent", "strength": 3.00, "updates": [64, 64, 64], "shortlist": 3},
+        "screened": {"policy": "latent", "updates": [64, 64, 64], "shortlist": 3},
+        "independent": {"policy": "prior", "updates": [64, 64, 64], "shortlist": 3},
+        "update-noise": {"policy": "none", "update_noise": 0.05, "updates": [64, 64, 64], "shortlist": 3}
+      }
+    },
+    "graph-dose": {
+      "parents": 6,
+      "variants": {
+        "untouched": {"policy": "none", "updates": [72, 72], "shortlist": 3},
+        "sparse-low": {"policy": "sparse-mix", "strength": 0.25, "updates": [72, 72, 72], "shortlist": 3},
+        "sparse-high": {"policy": "sparse-mix", "strength": 1.00, "updates": [72, 72, 72], "shortlist": 3},
+        "dense-low": {"policy": "dense-protected", "strength": 0.25, "updates": [72, 72, 72], "shortlist": 3},
+        "dense-high": {"policy": "dense-protected", "strength": 1.00, "updates": [72, 72, 72], "shortlist": 3},
+        "all-row": {"policy": "all-row", "updates": [72, 72, 72], "shortlist": 3},
+        "screened": {"policy": "latent", "updates": [72, 72, 72], "shortlist": 3},
+        "independent": {"policy": "prior", "updates": [72, 72, 72], "shortlist": 3}
+      }
+    },
+    "persistence": {
+      "parents": 1,
+      "variants": {
+        "untouched": {"policy": "none", "updates": [500], "shortlist": 6},
+        "latent-025": {"policy": "raw-latent", "strength": 0.25, "updates": [500, 500, 500], "shortlist": 6},
+        "latent-100": {"policy": "raw-latent", "strength": 1.00, "updates": [500, 500, 500], "shortlist": 6},
+        "sparse-high": {"policy": "sparse-mix", "strength": 1.00, "updates": [500, 500, 500], "shortlist": 6},
+        "dense-high": {"policy": "dense-protected", "strength": 1.00, "updates": [500, 500, 500], "shortlist": 6},
+        "screened": {"policy": "latent", "updates": [500, 500, 500], "shortlist": 6},
+        "independent": {"policy": "prior", "updates": [500, 500, 500], "shortlist": 6}
+      }
+    }
+  },
+  "tasks": {
+    "latent-a": {"comparison": "latent-dose", "panel_offset": 0, "queue": "gpua100"},
+    "latent-b": {"comparison": "latent-dose", "panel_offset": 6, "queue": "gpuv100"},
+    "graph-a": {"comparison": "graph-dose", "panel_offset": 0, "queue": "gpua100"},
+    "graph-b": {"comparison": "graph-dose", "panel_offset": 6, "queue": "gpuv100"},
+    "long-a": {"comparison": "persistence", "panel_offset": 0, "queue": "gpua100"},
+    "long-b": {"comparison": "persistence", "panel_offset": 4, "queue": "gpuv100"},
+    "long-c": {"comparison": "persistence", "panel_offset": 8, "queue": "gpua40"}
+  }
+}

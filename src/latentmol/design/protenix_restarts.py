@@ -109,7 +109,7 @@ def write_json(path, value):
 
 def run_branch(decoder, scorer, config, output, latent, active, *, parent=None,
                perturbation_seed=None, fade_updates=25, shortlist_limit=16, scored=(), ready=None,
-               proposal=None, select_shortlist=None):
+               proposal=None, select_shortlist=None, track_bonds=False):
     output.mkdir()
     if proposal is None:
         offset = None if parent is None else RestartOffset.from_parent(
@@ -156,6 +156,9 @@ def run_branch(decoder, scorer, config, output, latent, active, *, parent=None,
                 if "valence_excess" in evaluation:
                     record["valence_excess"] = float(evaluation["valence_excess"])
                     record["valence_excess_weight"] = config.valence_excess_weight
+                if track_bonds:
+                    record["hard_bond_count"] = int(hard.bonds[0].triu(diagonal=1).count_nonzero())
+                    record["soft_bond_mass"] = float((1 - evaluation["graph"].bonds[0, :, :, 0]).triu(diagonal=1).sum())
                 metrics.write(json.dumps(record, allow_nan=False) + "\n")
     finally:
         raw.flush()

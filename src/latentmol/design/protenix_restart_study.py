@@ -29,6 +29,8 @@ class Branch:
     cap: float
     policy: str
     shortlist: int
+    strength: float | None = None
+    update_noise: float | None = None
 
     @property
     def name(self):
@@ -53,7 +55,8 @@ def paired_branches(parents, comparison, design, seed):
         for arm, variant in comparison["variants"].items():
             for repeat, updates in enumerate(variant["updates"]):
                 yield Branch(arm, parent, index, repeat, seed + 100 * index + repeat,
-                    updates, variant.get("cap", design.max_step_norm), variant["policy"], variant["shortlist"])
+                    updates, variant.get("cap", design.max_step_norm), variant["policy"], variant["shortlist"],
+                    variant.get("strength"), variant.get("update_noise"))
 
 
 def parent_record(parent):
@@ -62,16 +65,26 @@ def parent_record(parent):
 
 
 def run_batch(decoder, make_scorer, fresh_score, design, root, branches, cache, *,
-              compare_shortlists=False, first_batch=True):
+              compare_shortlists=False, first_batch=True, noise_study=False):
+    if noise_study:
+        from latentmol.design.protenix_restart_noise import propose_noise_start
+
     root.mkdir()
     selections = {}
     scorer = make_scorer(decoder.spec, branches[0].parent.active, root)
     try:
         for index, branch in enumerate(branches):
             parent = branch.parent
-            proposal = propose_start(decoder, parent.candidate, parent.active,
-                policy=branch.policy, seed=branch.seed, temperature=design.temperature_initial)
+            proposal_kwargs = dict(policy=branch.policy, seed=branch.seed,
+                                   temperature=design.temperature_initial)
+            proposal = (propose_noise_start(decoder, parent.candidate, parent.active,
+                                            strength=branch.strength, **proposal_kwargs)
+                        if noise_study else
+                        propose_start(decoder, parent.candidate, parent.active, **proposal_kwargs))
             config = replace(design, updates=branch.updates, max_step_norm=branch.cap)
+            if branch.update_noise is not None:
+                config = replace(config, noise_initial=branch.update_noise,
+                                 noise_seed=design.noise_seed + branch.seed)
 
             def select(ranked, limit):
                 # Include an independent start in its own fresh budget. Elite
@@ -88,6 +101,7 @@ def run_batch(decoder, make_scorer, fresh_score, design, root, branches, cache, 
                 root / branch.name, parent.candidate.latent, parent.active, parent=parent.candidate,
                 proposal=proposal, perturbation_seed=branch.seed,
                 shortlist_limit=branch.shortlist, select_shortlist=select,
+                track_bonds=noise_study,
                 ready=os.environ.get("DBMOL_LAUNCH_READY") if first_batch and index == 0 else None)
             print(f"{root.name} {branch.name} updates={branch.updates}", flush=True)
     finally:
@@ -115,13 +129,16 @@ def run_batch(decoder, make_scorer, fresh_score, design, root, branches, cache, 
     readouts = []
     for branch in branches:
         data = json.loads((root / branch.name / "summary.json").read_text())
+        noise_metadata = (dict(strength=branch.strength, update_noise=branch.update_noise,
+                               proposal=json.loads((root / branch.name / "start.json").read_text())["proposal"])
+                          if noise_study else {})
         readouts.append(dict(name=branch.name, arm=branch.arm, parent_index=branch.parent_index,
             repeat=branch.repeat,
             parent_smiles=branch.parent.candidate.smiles, parent_fresh_loss=branch.parent.fresh_loss,
             parent_provenance=branch.parent.provenance, active_slots=branch.parent.active.nonzero().flatten().tolist(),
             policy=branch.policy, seed=branch.seed, max_step_norm=branch.cap, summary=data,
             candidates={policy: [row | cache[row["smiles"]] for row in rows]
-                        for policy, rows in planned[branch.name].items()}))
+                        for policy, rows in planned[branch.name].items()}, **noise_metadata))
     write_json(root / "batch.json", dict(new_fresh_attempts=len(pending), native_identity=scorer.identity,
                optimization_updates=sum(branch.updates for branch in branches), branches=readouts))
     return selections, readouts
@@ -141,6 +158,18 @@ def paired_summary(readouts):
                     group["distinct_scores"][candidate["smiles"]] = candidate["loss"]
                     group["best"] = min(group["best"], candidate["loss"])
     return [row | {"gain": row["parent_fresh_loss"] - row["best"]} for row in groups.values()]
+
+
+def analyze_noise_paths(root, branches, sources):
+    from latentmol.design.protenix_restart_path_metrics import PathTrace, read_hard_path, read_path, summarize_paths
+
+    traces = [PathTrace(name=branch.name, arm=branch.arm, parent_id=branch.parent_index,
+        parent_smiles=branch.parent.candidate.smiles,
+        observations=read_path(root / branch.name / "metrics.jsonl"),
+        source_observations=sources[branch.parent_index], source_step=branch.parent.candidate.step,
+        expected_updates=branch.updates, hard_observations=read_hard_path(root / branch.name / "raw-blocks"))
+        for branch in branches]
+    return summarize_paths(traces)
 
 
 def lineage_study(decoder, make_scorer, fresh_score, design, output, parents, comparison, cache, seed, prior_seed):
@@ -190,8 +219,10 @@ def run_study(decoder, make_scorer, fresh_score, config, task_name, output, chec
     comparison = config["comparisons"][task["comparison"]]
     budget = budgets(comparison)
     design = LatentDesignConfig(**config["design"])
-    if design.learning_rate != 150 or design.chemistry_initial != design.chemistry_final:
-        raise ValueError("Require LR 150 and a common constant chemistry weight")
+    noise_study = config.get("study") == "initialization_noise"
+    expected_lr = 70 if noise_study else 150
+    if design.learning_rate != expected_lr or design.chemistry_initial != design.chemistry_final:
+        raise ValueError(f"Require LR {expected_lr} and a common constant chemistry weight")
     decoder.eval().requires_grad_(False)
     if any(p.grad is not None for p in decoder.parameters()):
         raise ValueError("Frozen decoder carries preexisting gradients")
@@ -210,12 +241,25 @@ def run_study(decoder, make_scorer, fresh_score, config, task_name, output, chec
         checkpoint_sha256=checkpoint_sha256, job_id=os.environ.get("LSB_JOBID"),
         graph_spec=decoder.spec.to_dict(), parents=[parent_record(p) for p in parents]))
     cache = {p.candidate.smiles: dict(loss=p.fresh_loss, status="archived_parent") for p in parents}
-    seed = config["perturbation_seed"] + 100000 * offset
+    seed = config["perturbation_seed"] + (100 if noise_study else 100000) * offset
     if "variants" in comparison:
         branches = list(paired_branches(parents, comparison, design, seed))
-        _, readouts = run_batch(decoder, make_scorer, fresh_score, design, output / "paired", branches,
-                                cache, compare_shortlists=comparison.get("compare_shortlists", False))
+        paired = output / "paired"
+        if noise_study:
+            from latentmol.design.protenix_restart_path_metrics import read_path
+
+            sources = [read_path(Path(p.provenance["trajectory"]) / "arms" / "latent" / "candidates.jsonl")
+                       for p in parents]
+            if any(source.get(p.candidate.step) != p.candidate.smiles
+                   for p, source in zip(parents, sources)):
+                raise ValueError("Archived source trajectory does not contain its recorded parent identity")
+        _, readouts = run_batch(decoder, make_scorer, fresh_score, design, paired, branches,
+                                cache, compare_shortlists=comparison.get("compare_shortlists", False),
+                                noise_study=noise_study)
         result = dict(paired=paired_summary(readouts))
+        if noise_study:
+            write_json(output / "path-analysis.json", analyze_noise_paths(paired, branches, sources))
+            result["path_analysis"] = "path-analysis.json"
         if comparison.get("compare_shortlists", False):
             result["matched_first_branch"] = paired_summary([row for row in readouts if row["repeat"] == 0])
     else:

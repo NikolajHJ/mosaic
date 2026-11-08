@@ -19,6 +19,9 @@ STORAGE = Path(r"C:\Users\nikol\OneDrive\Dokumenter\GitHub\mosaic\scripts\hpc\st
 TRANSPORT = runpy.run_path(str(Path(__file__).with_name("protenix-restart-followup-20261107a") / "submit.py"))
 remote, upload, sha = (TRANSPORT[key] for key in ("remote", "upload", "sha"))
 BASE = TRANSPORT["BASE"]
+GPU_RESOURCE = TRANSPORT["GPU_RESOURCE"] | {
+    "gpua100": "num=1:mode=exclusive_process:j_exclusive=yes:mps=no:gmem=36G",
+}
 OUTPUT_MIB = 768
 OUTPUT_FILES = 6000
 
@@ -66,27 +69,46 @@ def matched_source(receipt_path, config):
 def stage(args, local, control, release):
     config = EXPERIMENT / args.config
     cfg = read(config)
+    noise_study = cfg.get("study") == "initialization_noise"
+    fresh_path = EXPERIMENT / "restart-followup-fresh-dtu.json" if noise_study else FRESH
+    module = "latentmol.design.protenix_restart_study" if noise_study else "latentmol.design.protenix_restarts"
+    startup_seconds = 1800 if noise_study else 900
     outputs = {}
     budgets = {}
-    for arm, override in cfg["arms"].items():
+    queues = {}
+    for arm, override in cfg["tasks" if noise_study else "arms"].items():
         if not re.fullmatch(r"[a-z][a-z0-9-]*", arm):
             raise ValueError(f"Invalid arm name: {arm}")
-        campaign = cfg["campaign"] | cfg.get("campaign_arms", {}).get(arm, {})
-        design = cfg["design"] | override
-        branches = 1 + (campaign["cycles"] - 1) * campaign["elite_count"] * campaign["branches_per_elite"]
-        budgets[arm] = branches * design["updates"]
+        if noise_study:
+            comparison = cfg["comparisons"][override["comparison"]]
+            budgets[arm] = comparison["parents"] * sum(
+                sum(variant["updates"]) for variant in comparison["variants"].values())
+            queues[arm] = override.get("queue", args.queue)
+        else:
+            campaign = cfg["campaign"] | cfg.get("campaign_arms", {}).get(arm, {})
+            design = cfg["design"] | override
+            branches = 1 + (campaign["cycles"] - 1) * campaign["elite_count"] * campaign["branches_per_elite"]
+            budgets[arm] = branches * design["updates"]
+            queues[arm] = args.queue
         outputs[arm] = f"{BASE}/runs/{args.name}-{arm}"
     if not budgets or any(not 0 < updates <= args.max_updates for updates in budgets.values()):
         raise ValueError(f"Arm exceeds the declared update budget: {budgets}")
+    if set(queues.values()) - GPU_RESOURCE.keys():
+        raise ValueError(f"Unsupported GPU queues: {queues}")
 
     source_path = None
     if args.source_receipt:
+        if noise_study:
+            raise ValueError("Matched archive staging is for learning-rate repeats")
         source_path, source_digest, replaced, prior = matched_source(args.source_receipt, cfg)
     else:
         prior = read(Path("outputs/protenix-restarts-20261107a/gpu-plan.json"))
     plan = {key: prior[key] for key in ("cuda_ownership_helper", "cuda_ownership_sha256", "mosaic_python")}
     plan.update(arms=outputs, queue=args.queue, planned_updates=budgets,
                 output_cap_mib=OUTPUT_MIB, config_sha256=sha(config))
+    if noise_study:
+        plan["queues"] = queues
+        del plan["queue"]
     if source_path:
         plan["matched_source_sha256"] = source_digest
     local.mkdir()
@@ -107,12 +129,12 @@ def stage(args, local, control, release):
                     with source.extractfile(member) as stream:
                         bundle.addfile(member, stream)
         else:
-            for path in [*sorted(Path("src/latentmol").rglob("*.py")), FRESH, NATIVE, ASSETS, WRAPPER]:
+            for path in [*sorted(Path("src/latentmol").rglob("*.py")), fresh_path, NATIVE, ASSETS, WRAPPER]:
                 bundle.add(path, arcname=path.as_posix())
         bundle.add(config, arcname=config.as_posix())
         bundle.add(local / "gpu-plan.json", arcname=plan_name.as_posix())
 
-    assets, native, fresh = map(read, (ASSETS, NATIVE, FRESH))
+    assets, native, fresh = map(read, (ASSETS, NATIVE, fresh_path))
     expected = {
         assets["checkpoint"]: assets["checkpoint_sha256"],
         assets["native"]["weights_path"]: assets["native"]["weights_sha256"],
@@ -125,6 +147,7 @@ def stage(args, local, control, release):
         "TORCH_PYTHON", "FRESH_DEPS", "FRESH_DATA"))
     required = [native["mosaic_source"], plan["mosaic_python"], assets["native"]["source_root"],
                 torch_python, fresh_deps, fresh_data, fresh["ccd_root"]]
+    cohorts = cfg.get("parent_cohorts", []) if noise_study else []
     probe = f"{BASE}/runs/{args.name}-capacity-probe"
     targets = [remote_archive, release, control, probe, *outputs.values()]
     save(local / "preflight.json", remote(f"""
@@ -143,8 +166,17 @@ for path, expected in {expected!r}.items():
 for path in {required!r}:
     if not Path(path).exists():
         raise FileNotFoundError(path)
-scheduler = subprocess.run(['bqueues', {args.queue!r}], capture_output=True, text=True, check=True, timeout=15)
-if 'Open:Active' not in scheduler.stdout:
+for root in map(Path, {cohorts!r}):
+    if not (root / 'panel.json').is_file():
+        raise FileNotFoundError(root / 'panel.json')
+    fresh = json.loads((root / 'fresh' / 'summary.json').read_text())
+    if fresh['status'] != 'completed' or fresh['geometry_seed'] != {fresh["geometry_seed"]!r}:
+        raise ValueError('Source cohort fresh score protocol differs: ' + str(root))
+queues = {sorted(set(queues.values()))!r}
+scheduler = subprocess.run(['bqueues', *queues], capture_output=True, text=True, check=True, timeout=15)
+active = {{fields[0] for line in scheduler.stdout.splitlines() if len(fields := line.split()) > 2
+           and fields[2] == 'Open:Active'}}
+if active != set(queues):
     raise ValueError('Queue is not active: ' + scheduler.stdout)
 control = Path({control!r})
 control.mkdir()
@@ -179,19 +211,20 @@ finally:
     commands = {}
     for arm, output in outputs.items():
         receipts = f"{control}/{arm}"
+        queue = queues[arm]
         commands[arm] = [
-            "bsub", "-J", f"dbmol-{args.name}-{arm}", "-q", args.queue, "-n", "4",
-            "-R", "span[hosts=1]", "-R", "rusage[mem=4096]", "-gpu", TRANSPORT["GPU_RESOURCE"][args.queue],
+            "bsub", "-J", f"dbmol-{args.name}-{arm}", "-q", queue, "-n", "4",
+            "-R", "span[hosts=1]", "-R", "rusage[mem=4096]", "-gpu", GPU_RESOURCE[queue],
             "-env", "all,~CUDA_VISIBLE_DEVICES,~CUDA_MPS_PIPE_DIRECTORY,~CUDA_MPS_LOG_DIRECTORY,~CUDA_MPS_ACTIVE_THREAD_PERCENTAGE",
             "-W", f"{args.hours:02d}:00", "-oo", f"{receipts}/run.%J.out", "-eo", f"{receipts}/run.%J.err",
             "/usr/bin/python3", f"{control}/hpc_launch.py", "--archive", remote_archive,
             "--archive-sha256", archive_sha, "--release", release, "--receipt", f"{receipts}/launch.json",
-            "--startup-seconds", "900", "--run-seconds", str(args.hours * 3600 - 900),
-            "--", "bash", WRAPPER.as_posix(), torch_python, "-m", "latentmol.design.protenix_restarts",
+            "--startup-seconds", str(startup_seconds), "--run-seconds", str(args.hours * 3600 - 900),
+            "--", "bash", WRAPPER.as_posix(), torch_python, "-m", module,
             "--config", config.as_posix(), "--arm", arm, "--output", output,
             "--checkpoint", assets["checkpoint"], "--checkpoint-sha256", assets["checkpoint_sha256"],
             "--mosaic-python", plan["mosaic_python"], "--native-config", NATIVE.as_posix(),
-            "--fresh-config", FRESH.as_posix(), "--fresh-deps", fresh_deps, "--fresh-data", fresh_data,
+            "--fresh-config", fresh_path.as_posix(), "--fresh-deps", fresh_deps, "--fresh-data", fresh_data,
             "--plan", plan_name.as_posix(), "--plan-sha256", plan_sha,
         ]
     save(local / "commands.json", commands)
@@ -241,7 +274,7 @@ def main():
     parser.add_argument("--name", required=True)
     parser.add_argument("--config")
     parser.add_argument("--source-receipt", type=Path, help="Reuse sealed source from a matched submission")
-    parser.add_argument("--queue", choices=tuple(TRANSPORT["GPU_RESOURCE"]), default="gpul40s")
+    parser.add_argument("--queue", choices=tuple(GPU_RESOURCE), default="gpul40s")
     parser.add_argument("--hours", type=int, default=12)
     parser.add_argument("--max-updates", type=int, required=False)
     args = parser.parse_args()

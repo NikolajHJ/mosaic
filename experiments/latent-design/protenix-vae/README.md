@@ -5,6 +5,7 @@
 - [Dense restart audit and LR 70 pilot](restart-lr70.md) traces the dense graphs and records the screened follow-up.
 - [Six-cycle LR 70 comparison](restart-lr70-six-cycle.md) tests step cap, screened starts, valence guidance, shortlisting, and parent selection.
 - [Matched LR 30 repeats](restart-lr30.md) repeat the standalone and six-arm LR 70 experiments with the same settings and archived source.
+- [Restart noise and trajectory replay](restart-noise.md) compares perturbation strength, molecule retention, and path divergence.
 - [LR 100 diversity pilot](restart-diversity-lr100.md) compares a strict final molecule panel with the score-only panel.
 - [Interactive report](../../../outputs/protenix-restart-report-20261107/protenix-restart-report.html) shows saved molecules, trajectories, and verified restart trees.
 - [Historical submission scripts](restart-operations/) preserve the two operators as used from their recorded output directories.

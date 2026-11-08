@@ -4,6 +4,7 @@ from torch.nn import functional as F
 
 from latentmol.chemistry import inspect_graph
 from latentmol.design.latent_protenix import hard_from_graph
+from latentmol.design.protenix_restart_noise import propose_noise_start
 from latentmol.design.protenix_restart_proposals import propose_start
 from latentmol.design.protenix_restarts import Candidate
 from latentmol.graph_policy import graph_from_decoder
@@ -96,3 +97,52 @@ def test_pre_fade_parent_cannot_silently_change_identity(inputs):
     parent.latent[0, 0] = 1
     with pytest.raises(ValueError, match="does not reproduce saved graph"):
         propose_start(decoder, parent, active, policy="latent", seed=2)
+
+
+def test_raw_latent_doses_share_direction_without_screening(inputs, monkeypatch):
+    decoder, parent, active = inputs
+    decode = decoder.decode
+
+    def decode_invalid_move(point):
+        decoded = decode(point)
+        if not torch.equal(point, parent.latent):
+            decoded.atoms[0, 1, decoder.spec.atomic_numbers.index(9)] = 10
+        return decoded
+
+    monkeypatch.setattr(decoder, "decode", decode_invalid_move)
+    low, offset, receipt = propose_noise_start(*inputs, policy="raw-latent", seed=12, strength=0.1)
+    high, _, _ = propose_noise_start(*inputs, policy="raw-latent", seed=12, strength=0.5)
+    torch.testing.assert_close(high - parent.latent, 5 * (low - parent.latent))
+    assert receipt["latent_displacement"] == pytest.approx(0.1)
+    assert receipt["proposal"]["valid"] is False
+    assert receipt["proposal"]["parent_similarity"] is None
+    assert offset is None
+    prior, _, diagnostics = propose_noise_start(*inputs, policy="prior", seed=12)
+    torch.testing.assert_close(prior, torch.randn(parent.latent.shape, generator=torch.Generator().manual_seed(12)))
+    assert not diagnostics["proposal"]["valid"]
+
+
+def test_graph_doses_preserve_argmax_and_protect_nonbonds(inputs):
+    decoder, parent, active = inputs
+    base = decoder.decode(parent.latent)
+    original = graph_from_decoder(base, decoder.spec, fixed_active=active)
+    for policy in ("sparse-mix", "dense-protected"):
+        _, low, low_receipt = propose_noise_start(*inputs, policy=policy, seed=12, strength=0.25)
+        _, high, high_receipt = propose_noise_start(*inputs, policy=policy, seed=12, strength=1)
+        graph = graph_from_decoder(high(base, 0), decoder.spec, fixed_active=active)
+        assert torch.equal(graph.bonds, graph.bonds.transpose(1, 2))
+        assert torch.equal(graph.atoms[..., 0], original.atoms[..., 0])
+        assert high_receipt["proposal"]["edit_count"] == 0
+        assert high_receipt["proposal"]["parent_similarity"] == 1
+        assert high_receipt["mixing"]["atoms"]["mean_fraction"] == pytest.approx(
+            4 * low_receipt["mixing"]["atoms"]["mean_fraction"])
+        assert high(base, 25) is base and low(base, 25) is base
+        before = high_receipt["mixing"]["no_bond_soft_mass_before"]
+        after = high_receipt["mixing"]["no_bond_soft_mass_after"]
+        if policy == "sparse-mix":
+            torch.testing.assert_close(graph.bonds[parent.hard.bonds == 0],
+                                       original.bonds[parent.hard.bonds == 0], rtol=0, atol=0)
+            assert high_receipt["mixing"]["no_bonds"]["rows"] == 0
+        else:
+            assert len(high_receipt["mixing"]["atom_slots"]) == int(active.sum())
+            assert before < after <= 1.2 * before + 1e-6
