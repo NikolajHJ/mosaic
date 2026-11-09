@@ -1,4 +1,4 @@
-# How many children can share one A100 80 GB?
+# How many children can share one V100 32 GB?
 
 The [pilot config](restart-batch-throughput.json) uses the frozen epoch-45
 decoder, BRD4 Protenix setup, LR 60, a 0.25 step cap, and chemistry and
@@ -23,14 +23,16 @@ probe fresh-scores up to 12 distinct valid molecules after the JAX worker
 closes. The throughput trials use compact summary writes.
 
 The allocated entry point is `python -m latentmol.design.protenix_restart_benchmark`.
-The [submission directory](../../../outputs/protenix-restart-batch-throughput-20261108a/)
+The [submission directory](../../../outputs/protenix-restart-batch-throughput-v100-20261109a/)
 holds the source archive, GPU plan, checks, and submission receipt. The
 runner writes `timings.jsonl` as trials finish and `result.json` after
-the fresh probe.
+the fresh probe. If a batch width exhausts GPU memory, the runner records
+the failed width and keeps the timings it collected for smaller batches.
 
-DTU accepted job **29931253** on `gpua100` at 23:04 CET on 8 November 2026.
-It requests one A100 80 GB, eight CPU slots, a four-hour wall limit, and a
-45-minute startup allowance. It was pending at the first check. Twenty
-focused tests passed. A CPU smoke with the verified decoder and mock
-scorer matched serial and overlapping two-child trajectories. Native
-batch compilation, numerical agreement, and throughput are pending.
+DTU accepted replacement job **29936883** on `gpuv100` on 9 November 2026.
+It requests one 32 GB V100, eight CPU slots, a four-hour wall limit, and a
+45-minute startup allowance. The original A100 job **29931253** was
+canceled while pending; the replacement was released after confirming
+the original never started. A CPU smoke with the verified decoder and
+mock scorer matched serial and overlapping two-child trajectories.
+Native batch compilation, numerical agreement, and throughput are pending.

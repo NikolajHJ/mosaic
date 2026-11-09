@@ -22,6 +22,7 @@ BASE = TRANSPORT["BASE"]
 GPU_RESOURCE = TRANSPORT["GPU_RESOURCE"] | {
     "gpua100": "num=1:mode=exclusive_process:j_exclusive=yes:mps=no:gmem=36G",
 }
+BENCHMARK_DEVICE = {"a100-80gb": ("gpua100", "gpu80gb"), "v100-32gb": ("gpuv100", "gpu32gb")}
 OUTPUT_MIB = 768
 OUTPUT_FILES = 6000
 
@@ -83,10 +84,16 @@ def stage(args, local, control, release):
         module = "latentmol.design.protenix_restart_study" if uses_tasks else "latentmol.design.protenix_restarts"
     startup_seconds = {"initialization_noise": 1800, "lineage_feedback": 2700,
                        "batch_throughput": 2700, "restart_search": 2700}.get(study, 900)
-    a100_80gb = benchmark or args.a100_80gb
     if args.a100_80gb and not restart_search:
         raise ValueError("Explicit 80 GB GPU selection requires a restart_search config")
-    host_requirements = ["-R", "select[gpu80gb]"] if a100_80gb else []
+    host_resource = "gpu80gb" if args.a100_80gb else None
+    if benchmark:
+        device = cfg.get("device", "a100-80gb")
+        if not isinstance(device, str) or device not in BENCHMARK_DEVICE:
+            raise ValueError(f"Unsupported throughput benchmark device: {device}")
+        benchmark_queue, host_resource = BENCHMARK_DEVICE[device]
+    host_requirements = ["-R", f"select[{host_resource}]"] if host_resource else []
+    hold = getattr(args, "hold", False)
     worker_env = "all,~CUDA_VISIBLE_DEVICES,~CUDA_MPS_PIPE_DIRECTORY,~CUDA_MPS_LOG_DIRECTORY,~CUDA_MPS_ACTIVE_THREAD_PERCENTAGE"
     outputs = {}
     budgets = {}
@@ -141,9 +148,9 @@ def stage(args, local, control, release):
         raise ValueError(f"Arm exceeds the declared update budget: {budgets}")
     if set(queues.values()) - GPU_RESOURCE.keys():
         raise ValueError(f"Unsupported GPU queues: {queues}")
-    if benchmark and queues != {"bench": "gpua100"}:
-        raise ValueError("The throughput benchmark requires one bench task on gpua100")
-    if a100_80gb and set(queues.values()) != {"gpua100"}:
+    if benchmark and queues != {"bench": benchmark_queue}:
+        raise ValueError(f"The throughput benchmark requires one bench task on {benchmark_queue}")
+    if args.a100_80gb and set(queues.values()) != {"gpua100"}:
         raise ValueError("The 80 GB host requirement needs gpua100 for every selected arm")
 
     source_path = None
@@ -160,7 +167,11 @@ def stage(args, local, control, release):
         plan["queues"] = queues
         del plan["queue"]
     if restart_search:
-        plan["a100_80gb"] = a100_80gb
+        plan["a100_80gb"] = args.a100_80gb
+    if benchmark and "device" in cfg:
+        plan["device"] = device
+    if hold:
+        plan["held_on_submission"] = True
     if source_path:
         plan["matched_source_sha256"] = source_digest
     local.mkdir()
@@ -270,7 +281,8 @@ finally:
         thread_env = (["/usr/bin/env", "DBMOL_CPU_THREADS=1", "OMP_NUM_THREADS=1",
                        "MKL_NUM_THREADS=1", "OPENBLAS_NUM_THREADS=1"] if parallel_cpu else [])
         commands[arm] = [
-            "bsub", "-J", f"dbmol-{args.name}-{arm}", "-q", queue, "-n", str(cpu_slots),
+            "bsub", *(["-H"] if hold else []), "-J", f"dbmol-{args.name}-{arm}",
+            "-q", queue, "-n", str(cpu_slots),
             "-R", "span[hosts=1]", "-R", "rusage[mem=4096]", *host_requirements,
             "-gpu", GPU_RESOURCE[queue],
             "-env", worker_env,
@@ -335,6 +347,7 @@ def main():
     parser.add_argument("--source-receipt", type=Path, help="Reuse sealed source from a matched submission")
     parser.add_argument("--queue", choices=tuple(GPU_RESOURCE), default="gpul40s")
     parser.add_argument("--a100-80gb", action="store_true", help="Require an 80 GB A100 for a restart_search config")
+    parser.add_argument("--hold", action="store_true", help="Seal commands that submit jobs in held state")
     parser.add_argument("--hours", type=int, default=12)
     parser.add_argument("--max-updates", type=int, required=False)
     args = parser.parse_args()
@@ -348,8 +361,8 @@ def main():
             parser.error("Staging requires a restart config, update limit, and 1–24 hour walltime")
         stage(args, local, control, f"{BASE}/releases/{args.name}")
     else:
-        if args.arm or args.a100_80gb:
-            parser.error("Arm and 80 GB GPU selection belong to staging; submit uses sealed commands")
+        if args.arm or args.a100_80gb or args.hold:
+            parser.error("Arm, GPU and hold options belong to staging; submit uses sealed commands")
         submit(local, control)
 
 

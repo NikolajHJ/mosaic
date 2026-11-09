@@ -22,8 +22,9 @@ Repeat `--set SECTION.FIELD=VALUE` for individual overrides. Values accept
 JSON numbers, booleans, and `null`, or a bare policy name. For example,
 `--set search.batch_size=4 --set search.cpu_workers=2 --set search.overlap=true`
 selects up to four children per batch and overlaps CPU repair with scoring.
-The presets use scalar execution while native batch throughput is being
-measured. Keep the chosen execution settings consistent across matched arms.
+The long presets target 32 GB V100s and use scalar execution until the
+[V100 benchmark](restart-batch-throughput.md) identifies a faster
+configuration that fits. Keep execution settings consistent across the three arms.
 
 | Section | Main inputs |
 | --- | --- |
@@ -54,12 +55,12 @@ The default frontier and branch executor are separate modules.
 
 The existing DTU launcher stages a sealed config. Copy a preset to a new
 `restart-*.json` config and edit it for HPC runs. The launcher accepts repeated
-`--arm` flags to select presets. This example stages only `deep` with an A100
-80 GB requirement.
+`--arm` flags to select presets. This example stages only `deep` on the
+32 GB V100 queue configured in the preset.
 
 ```powershell
 $launcher = 'experiments/latent-design/protenix-vae/restart-operations/submit_campaign.py'
-python $launcher stage --name protenix-restart-my-search --config restart-search-lr60-long.json --arm deep --a100-80gb --hours 24 --max-updates 120000
+python $launcher stage --name protenix-restart-my-search --config restart-search-lr60-long.json --arm deep --hours 24 --max-updates 120000
 python $launcher submit --name protenix-restart-my-search
 ```
 

@@ -1,5 +1,6 @@
 {
   "study": "batch_throughput",
+  "device": "v100-32gb",
   "design": {
     "updates": 40,
     "schedule_horizon": 500,
@@ -41,5 +42,5 @@
     {"name": "batch4-overlap4", "batch_size": 4, "torch_threads": 1, "cpu_workers": 4, "overlap": true},
     {"name": "batch8-overlap4", "batch_size": 8, "torch_threads": 1, "cpu_workers": 4, "overlap": true}
   ],
-  "tasks": {"bench": {"queue": "gpua100"}}
+  "tasks": {"bench": {"queue": "gpuv100"}}
 }

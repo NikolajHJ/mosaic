@@ -1,4 +1,4 @@
-"""Measure sibling Protenix throughput on one allocated A100 80GB."""
+"""Measure sibling Protenix throughput on one allocated GPU."""
 from __future__ import annotations
 
 from concurrent.futures import ThreadPoolExecutor
@@ -26,6 +26,14 @@ from latentmol.design.protenix_restarts import fresh_score_records, native_facto
 from latentmol.evaluation.evaluate import load_model
 
 
+DEVICES = {
+    "a100-80gb": ("A100", 78_000),
+    "v100-32gb": ("V100", 31_000),
+}
+_ALLOCATION_FAILURES = ("out of memory", "out_of_memory", "resource exhausted", "resource_exhausted",
+                        "cudaerrormemoryallocation", "cublas_status_alloc_failed")
+
+
 def smi(query, *, gpu=None, section="gpu"):
     command = ["nvidia-smi", f"--query-{section}={query}", "--format=csv,noheader,nounits"]
     if gpu is not None:
@@ -34,15 +42,36 @@ def smi(query, *, gpu=None, section="gpu"):
             subprocess.check_output(command, text=True, timeout=10).splitlines() if line.strip()]
 
 
-def allocated_gpu(pid):
+def allocated_gpu(pid, device="a100-80gb"):
+    model, minimum_mib = DEVICES[device]
     uuids = {uuid for uuid, process in smi("gpu_uuid,pid", section="compute-apps") if process == str(pid)}
     if len(uuids) != 1:
         raise ValueError(f"Cannot bind benchmark memory samples to native worker {pid}: {uuids}")
     uuid, = uuids
     (name, total), = smi("name,memory.total", gpu=uuid)
-    if "A100" not in name or int(total) < 78_000:
-        raise ValueError(f"Pilot requires an A100 80GB, got {name} with {total} MiB")
+    if model not in name.upper() or int(total) < minimum_mib:
+        raise ValueError(f"Pilot requires {device}, got {name} with {total} MiB")
     return dict(uuid=uuid, name=name, memory_total_mib=int(total))
+
+
+def allocation_failure(error, stderr):
+    """Identify device allocation errors, including worker EOF with an OOM log."""
+    message = str(error)
+    if any(marker in message.lower() for marker in _ALLOCATION_FAILURES):
+        return message
+    if not isinstance(error, (EOFError, BrokenPipeError)):
+        return None
+    try:
+        with stderr.open("rb") as stream:
+            end = stream.seek(0, os.SEEK_END)
+            stream.seek(max(end - 65_536, 0))
+            tail = stream.read().decode(errors="replace")
+    except OSError:
+        return None
+    for line in reversed(tail.splitlines()):
+        if any(marker in line.lower() for marker in _ALLOCATION_FAILURES):
+            return f"{message}: {line.strip()}"
+    return None
 
 
 class DeviceSamples:
@@ -188,6 +217,9 @@ def run_case(decoder, scorer, starts, design, case, *, updates):
 def run_benchmark(args, config):
     design = LatentDesignConfig(**config["design"])
     cases = config["cases"]
+    device = config.get("device", "a100-80gb")
+    if not isinstance(device, str) or device not in DEVICES:
+        raise ValueError(f"Unknown benchmark device: {device!r}")
     count = config["parents"] * config["children_per_parent"]
     if (config["study"] != "batch_throughput" or args.arm != "bench" or design.learning_rate != 60
             or not 1 <= design.updates <= 100 or not 1 <= config["repeats"] <= 3
@@ -221,6 +253,7 @@ def run_benchmark(args, config):
     scorer = native_factory(args)(decoder.spec, starts[0][1], args.output)
     scorer.timeout = 2400.0
     trials, warmups, unavailable = [], [], []
+    native_stderr = args.output / "native.stderr.log"
     reference = reference_endpoints = fresh_pool = None
     widths = sorted({case["batch_size"] for case in cases})
     warm_case = dict(name="warmup", batch_size=1, torch_threads=1, cpu_workers=1, overlap=False)
@@ -228,44 +261,54 @@ def run_benchmark(args, config):
         scalar_warmup, _, _, _, _ = run_case(decoder, scorer, starts[:1], design, warm_case,
                                               updates=config["warmup_steps"])
         warmups.append(scalar_warmup)
-        gpu = allocated_gpu(scorer.worker_pid)
+        gpu = allocated_gpu(scorer.worker_pid, device)
         if ready := os.environ.get("DBMOL_LAUNCH_READY"):
             _json(ready, dict(status="models_and_inputs_ready", nonce=os.environ.get("DBMOL_LAUNCH_NONCE"),
                               job_id=os.environ["LSB_JOBID"]))
         write_json(args.output / "device.json", gpu)
         with DeviceSamples(gpu["uuid"]) as samples, (args.output / "timings.jsonl").open("x", buffering=1) as trace:
             for width in widths:
-                if width > 1:
-                    try:
+                phase = "warmup"
+                try:
+                    if width > 1:
                         warm, first, _, _, window = run_case(decoder, scorer, starts[:width], design,
                             dict(warm_case, batch_size=width), updates=config["warmup_steps"])
-                    except (RuntimeError, EOFError) as error:
-                        if not any(marker in str(error).lower() for marker in ("out of memory", "resource_exhausted")):
-                            raise
-                        unavailable.append(dict(batch_size=width, reason=str(error)))
-                        break
-                    warmups.append(warm | samples.between(*window) | agreement(reference[:width], first))
-                print(json.dumps(dict(event="warmup", **warmups[-1]), allow_nan=False), file=trace, flush=True)
-                matching = [case for case in cases if case["batch_size"] == width]
-                for repeat in range(config["repeats"]):
-                    for case in matching if repeat % 2 == 0 else reversed(matching):
-                        row, first, endpoints, candidates, window = run_case(
-                            decoder, scorer, starts, design, case, updates=design.updates)
-                        if reference is None:
-                            reference, reference_endpoints, fresh_pool = first, endpoints, candidates
-                        row.update(samples.between(*window), repeat=repeat + 1, **agreement(reference, first),
-                            max_endpoint_latent_l2_delta=max(float((a - b).norm()) for a, b in
-                                                             zip(reference_endpoints, endpoints, strict=True)))
-                        trials.append(row)
-                        print(json.dumps(dict(event="trial", **row), allow_nan=False), file=trace, flush=True)
-                        print(f"{row['name']} repeat {row['repeat']} {row['updates_per_second']:.3f} updates/s", flush=True)
+                        warmups.append(warm | samples.between(*window) | agreement(reference[:width], first))
+                    print(json.dumps(dict(event="warmup", **warmups[-1]), allow_nan=False), file=trace, flush=True)
+                    phase = "trial"
+                    matching = [case for case in cases if case["batch_size"] == width]
+                    for repeat in range(config["repeats"]):
+                        for case in matching if repeat % 2 == 0 else reversed(matching):
+                            row, first, endpoints, candidates, window = run_case(
+                                decoder, scorer, starts, design, case, updates=design.updates)
+                            if reference is None:
+                                reference, reference_endpoints, fresh_pool = first, endpoints, candidates
+                            row.update(samples.between(*window), repeat=repeat + 1, **agreement(reference, first),
+                                max_endpoint_latent_l2_delta=max(float((a - b).norm()) for a, b in
+                                                                 zip(reference_endpoints, endpoints, strict=True)))
+                            trials.append(row)
+                            print(json.dumps(dict(event="trial", **row), allow_nan=False), file=trace, flush=True)
+                            print(f"{row['name']} repeat {row['repeat']} {row['updates_per_second']:.3f} updates/s", flush=True)
+                except (RuntimeError, EOFError, BrokenPipeError) as error:
+                    reason = allocation_failure(error, native_stderr)
+                    if width == 1 or reason is None:
+                        raise
+                    failure = dict(batch_size=width, phase=phase, reason=reason)
+                    unavailable.append(failure)
+                    print(json.dumps(dict(event="unavailable", **failure), allow_nan=False), file=trace, flush=True)
+                    break
     finally:
-        scorer.close()
+        try:
+            scorer.close()
+        except (EOFError, BrokenPipeError) as error:
+            if not unavailable or allocation_failure(error, native_stderr) is None:
+                raise
     if _model_identity(decoder) != identity or any(parameter.grad is not None for parameter in decoder.parameters()):
         raise ValueError("Frozen decoder parameters or gradients changed")
     ordered = sorted(fresh_pool, key=lambda smiles: (fresh_pool[smiles], smiles))[:config["fresh_attempts"]]
     result = dict(status="optimization_complete", gpu=gpu, warmups=warmups, trials=trials,
-                  unavailable=unavailable, fresh_attempts=len(ordered), native_shutdown=scorer.shutdown_status)
+                  unavailable=unavailable, fresh_attempts=len(ordered),
+                  native_shutdown=scorer.shutdown_status or ("allocation_failure" if unavailable else None))
     write_json(args.output / "optimization-result.json", result)
     if ordered:
         root = args.output / "fresh-probe"
