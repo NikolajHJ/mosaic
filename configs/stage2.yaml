@@ -1,0 +1,34 @@
+# Same start as Stage 1. Choose protenix-tiny or boltz2 in the general YAML.
+stage: stage2
+n_atoms: 25
+initialization:
+  carbon_probability: 0.75
+  expected_degree: 2.25
+  atom_noise: 0.005
+  bond_noise: 0.005
+readout_every: 5
+# eta_X and eta_E can override the general learning rate.
+# Optional path to a Stage 1 checkpoint, relative to this file.
+start_checkpoint: null
+
+operators:
+  # none: relaxed control; valence: default; connected: also bridge fragments.
+  # sparse adds bridging and shrinkage; sparse_only adds just shrinkage.
+  mode: valence
+  aromatic_order: 1.5
+  bridge_probability: 0.6
+  sparsity_amount: 0.01
+  sparsity_threshold: 0.5
+
+# Leave these at their defaults for the main valence comparison.
+improvements:
+  readout_caps: false
+  valence_damping: 1.0
+  fluidity_threshold: 1.0
+  fluidity_strength: 0.0
+  bridge_retry: false
+
+# Separate comparison: use the same start_checkpoint for both arms.
+hardening:
+  enabled: false
+  gradient: inherited  # inherited, passthrough, or rescaled

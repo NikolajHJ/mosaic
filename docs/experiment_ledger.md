@@ -84,3 +84,14 @@ The affinity path uses CPU JAX and a pinned native CUDA worker. It is separate
 from protocol v12's Protenix contact baseline. Added a BRD4 config template
 and preparation guide; no model assets were downloaded and no experiment
 was run or submitted.
+
+### 2026-11-09 - Integrated the existing Stage 2 operators
+
+Ported operators and optional hardening from stage2/ at
+codex/mosaic-experiments (2eeeba20261633cd297ff79b15b527465ead890e) to src/mosaic/small_molecule/Stage2 on
+NewPipeline_draft. The YAML chooses the chemistry rules; the general YAML
+still selects Protenix-Tiny contacts or Boltz2 affinity. Stage 2 reuses the
+Stage 1 loop and logs the operator results after each update. Valence only
+is the default. A matching saved checkpoint can start paired hardening
+and relaxed runs. Historical launchers, sweeps and evidence remain on the
+source branch. No numerical experiment ran or was submitted.

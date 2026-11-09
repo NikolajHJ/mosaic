@@ -28,13 +28,17 @@ def run(general, stage, general_path, stage_path, output):
         optimize(general, stage, general_path, stage_path, output, resources)
 
 
-def optimize(general, stage, general_path, stage_path, output, resources):
+def optimize(
+    general, stage, general_path, stage_path, output, resources, *,
+    after_update=None, prepare_loss=None, stage_details=None,
+):
+    """Run the same model and optimizer for Stage 1 and its Stage 2 comparisons."""
     import jax
     import numpy as np
 
-    from mosaic.small_molecule.experiment import resolve_target
+    from mosaic.small_molecule.experiment import file_sha256, resolve_target
     from mosaic.small_molecule.optimizers import evaluate_graph, projected_step
-    from mosaic.small_molecule.state import initialize_graph
+    from mosaic.small_molecule.state import RelaxedGraph, initialize_graph, validate_graph
 
     from .diagnostics import graph_metrics, raw_readout
 
@@ -95,10 +99,38 @@ def optimize(general, stage, general_path, stage_path, output, resources):
         }
         rng_policy = "same model key at every state and for its hard readout"
 
-    graph = initialize_graph(n_atoms, init_key, **stage["initialization"])
+    parent = None
+    if stage.get("start_checkpoint"):
+        path = (stage_path.parent / Path(stage["start_checkpoint"]).expanduser()).resolve()
+        parent_manifest = json.loads((path.parent / "manifest.json").read_text())
+        parent_target = json.loads((path.parent / "target.json").read_text())
+        if (
+            parent_manifest["objective"] != objective
+            or parent_manifest["model"] != model_record["model"]
+            or parent_manifest["prepared_input"] != model_record["prepared_input"]
+            or parent_target["structure_sha256"] != target["structure_sha256"]
+            or parent_target["chain"] != target["chain"]
+        ):
+            raise ValueError("The starting checkpoint must use the same target, model and objective.")
+        import jax.numpy as jnp
+
+        with np.load(path, allow_pickle=False) as saved:
+            graph = RelaxedGraph(jnp.asarray(saved["X"]), jnp.asarray(saved["E_upper"]))
+            model_key_data = saved["model_key"]
+            parent = {"path": str(path), "sha256": file_sha256(path), "state": int(saved["state"])}
+        validate_graph(graph)
+        if graph.n_atoms != n_atoms:
+            raise ValueError("The checkpoint and the stage settings must have the same atom count.")
+        model_key = jax.random.wrap_key_data(jnp.asarray(model_key_data))
+    else:
+        graph = initialize_graph(n_atoms, init_key, **stage["initialization"])
+
+    loss_for_state = prepare_loss(loss, epochs) if prepare_loss is not None else None
     manifest = {
         "status": "running",
-        "stage": "stage1",
+        "stage": stage["stage"].lower(),
+        **(stage_details or {}),
+        **({"starting_checkpoint": parent} if parent else {}),
         "objective": objective,
         "model_name": model_name,
         **model_record,
@@ -118,12 +150,14 @@ def optimize(general, stage, general_path, stage_path, output, resources):
     initial_mask = np.zeros_like(initial_bond_mass, dtype=bool)
     initial_mask[initial_strong] = True
     completed = 0
+    operator_report = None
     try:
         with (output / "trace.jsonl").open("w", encoding="utf-8") as trace, (
             output / "hard_readouts.jsonl"
         ).open("w", encoding="utf-8") as readouts:
             for state in range(epochs + 1):
-                evaluation = evaluate_graph(loss, graph, model_key)
+                current_loss = loss_for_state(graph, state) if loss_for_state else loss
+                evaluation = evaluate_graph(current_loss, graph, model_key)
                 soft_score = score_sign * float(evaluation.value)
                 atoms.append(np.asarray(graph.X))
                 bonds.append(np.asarray(graph.E_upper))
@@ -144,7 +178,12 @@ def optimize(general, stage, general_path, stage_path, output, resources):
                     **graph_metrics(graph),
                 }
                 if model_name == "boltz2":
-                    row.update({name: float(value) for name, value in evaluation.aux.items()})
+                    row.update({name: float(value) for name, value in evaluation.aux.items()
+                                if name.startswith("affinity_")})
+                if operator_report is not None:
+                    row["chemistry_update"] = operator_report
+                if loss_for_state:
+                    row["forward_hardness"] = float(evaluation.aux["forward_hardness"])
                 log_row(trace, row)
 
                 if state in (0, epochs) or state % stage["readout_every"] == 0:
@@ -153,11 +192,15 @@ def optimize(general, stage, general_path, stage_path, output, resources):
                     hard_graph, report = raw_readout(graph)
                     hard_loss, hard_metrics = loss(hard_graph, key=model_key)
                     hard_score = score_sign * float(hard_loss)
+                    # For a hardening comparison, measure the gap against the
+                    # underlying soft graph, not the hardened model input.
+                    soft_loss = loss(graph, key=model_key)[0] if loss_for_state else evaluation.value
+                    soft_score = score_sign * float(soft_loss)
                     log_row(readouts, {
                         "state": state,
                         f"soft_{score_name}": soft_score,
                         f"hard_{score_name}": hard_score,
-                        "hard_minus_soft_loss": float(hard_loss) - float(evaluation.value),
+                        "hard_minus_soft_loss": float(hard_loss) - float(soft_loss),
                         **(
                             {"soft_minus_hard_score": soft_score - hard_score}
                             if model_name == "protenix-tiny"
@@ -174,6 +217,8 @@ def optimize(general, stage, general_path, stage_path, output, resources):
 
                 if state < epochs:
                     graph = projected_step(evaluation, eta_X=eta_X, eta_E=eta_E).next_graph
+                    if after_update is not None:
+                        graph, operator_report = after_update(graph, state + 1)
                     completed += 1
 
         np.savez_compressed(output / "trajectory.npz", X=atoms, E_upper=bonds)

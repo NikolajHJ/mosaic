@@ -45,7 +45,7 @@ trace, and atom and bond probabilities for the initial state and every update.
 The stage uses the target sequence without a searched MSA or a coordinate
 template. Contact scores do not measure binding affinity.
 
-For the unconstrained **Stage 1** baseline, see the [BRD4 run guide](../../../experiments/brd4/stage1-baseline/README.md). Stage 1 scores contacts over the whole protein domain and measures the raw discrete molecule without changing it. Stage 2, Stage 3, and VAE remain extension points.
+For the unconstrained **Stage 1** baseline, see the [BRD4 run guide](../../../experiments/brd4/stage1-baseline/README.md). Stage 1 scores contacts over the whole protein domain and measures the raw discrete molecule without changing it. See the [Stage 2 guide](Stage2/README.md) to add chemistry after each update. Stage 3 and VAE remain extension points.
 
 To use **Boltz2**, set `model: boltz2` in the general YAML and supply a prepared
 context, affinity checkpoint, and GPU worker interpreter. Both Stage 0 and
