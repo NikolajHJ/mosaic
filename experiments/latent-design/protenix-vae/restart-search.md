@@ -22,9 +22,9 @@ Repeat `--set SECTION.FIELD=VALUE` for individual overrides. Values accept
 JSON numbers, booleans, and `null`, or a bare policy name. For example,
 `--set search.batch_size=4 --set search.cpu_workers=2 --set search.overlap=true`
 selects up to four children per batch and overlaps CPU repair with scoring.
-The long presets target 32 GB V100s and use scalar execution until the
-[V100 benchmark](restart-batch-throughput.md) identifies a faster
-configuration that fits. Keep execution settings consistent across the three arms.
+The long presets use scalar execution. The
+[V100 benchmark](restart-batch-throughput.md) is a separate job and the
+long searches can start before it finishes.
 
 | Section | Main inputs |
 | --- | --- |
@@ -77,3 +77,10 @@ recent full wave durations, including startup and fresh scoring. It closes
 the run at the last complete wave if the next one is unlikely to fit. The
 update cap is the planned maximum. Compare actual results at shared update
 or fresh-score checkpoints if an arm stops early.
+
+DTU accepted the three scalar searches on 9 November 2026 at 15:47 CET:
+`wide` **29940513** on A100, `deep` **29940516** on V100, and
+`near-valid` **29940520** on L40S. All were pending at verification.
+Keep the different GPU models in mind when comparing wall times.
+The [submission records](../../../outputs/protenix-restart-lr60-long-20261109a/)
+include the sealed config, budgets, and receipts.

@@ -52,9 +52,9 @@
     "time_budget_seconds": 82800
   },
   "arms": {
-    "wide": {"queue": "gpuv100"},
+    "wide": {"queue": "gpua100"},
     "deep": {"queue": "gpuv100", "search": {"waves": 20, "children": 3, "exact_children": 2}},
-    "near-valid": {"queue": "gpuv100", "search": {
+    "near-valid": {"queue": "gpul40s", "search": {
       "waves": 20, "children": 3, "exact_children": 2, "invalid_children": 1
     }}
   }
