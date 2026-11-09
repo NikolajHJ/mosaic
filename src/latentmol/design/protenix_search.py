@@ -54,6 +54,7 @@ class SearchOptions:
     high_score_ceiling: float | None = None
     audit_chemistry: bool = False
     invalid_pool_per_branch: int = 8
+    time_budget_seconds: int | None = None
 
     def __post_init__(self):
         for name in ("parents", "children", "waves", "batch_size", "cpu_workers", "fade_updates",
@@ -85,6 +86,8 @@ class SearchOptions:
         if (self.high_score_ceiling is not None and (type(self.high_score_ceiling) not in (int, float)
                                                     or not math.isfinite(self.high_score_ceiling))):
             raise ValueError("High-score ceiling must be finite")
+        if self.time_budget_seconds is not None and (type(self.time_budget_seconds) is not int or self.time_budget_seconds < 1):
+            raise ValueError("Time budget must be a positive integer in seconds")
         if (self.parent_policy == "frontier" and self.max_ancestor_fraction is not None
                 and math.floor(self.parents * self.children * self.max_ancestor_fraction) < self.children):
             raise ValueError("Ancestry cap leaves no room for one parent; adjust max_ancestor_fraction")
@@ -258,7 +261,10 @@ def final_diversity(output, archive, options):
     return {name: {key: value for key, value in panel.items() if key != "molecules"} for name, panel in panels.items()}
 
 
-def run_search(decoder, scorer_factory, fresh_score, design, options, settings, output, checkpoint_sha256):
+def run_search(decoder, scorer_factory, fresh_score, design, options, settings, output, checkpoint_sha256, *,
+               run_started=None):
+    if run_started is None:
+        run_started = perf_counter()
     decoder.eval().requires_grad_(False)
     if any(parameter.grad is not None for parameter in decoder.parameters()):
         raise ValueError("Frozen decoder carries preexisting gradients")
@@ -287,8 +293,17 @@ def run_search(decoder, scorer_factory, fresh_score, design, options, settings, 
     completed_updates = fresh_attempts = 0
     prior_seed = settings["prior_seed"]
     status = "completed"
+    time_stop = None
     for wave in range(1, options.waves + 1):
         started = perf_counter()
+        if options.time_budget_seconds is not None and summaries:
+            recent_wave_seconds = max(row["elapsed_seconds"] for row in summaries[-3:])
+            remaining = options.time_budget_seconds - (started - run_started)
+            reserve = 1.20 * recent_wave_seconds
+            if reserve >= remaining:
+                status = "time_budget"
+                time_stop = dict(next_wave=wave, remaining_seconds=remaining, estimated_wave_seconds=reserve)
+                break
         phase = f"cycle-{wave:02d}"
         if wave == 1 and options.initialization == "bootstrap":
             selected = [bootstrap(decoder, design)]
@@ -392,12 +407,16 @@ def run_search(decoder, scorer_factory, fresh_score, design, options, settings, 
         raise ValueError("Frozen decoder parameters or gradients changed")
     result = dict(status=status, planned=settings["budget"], cycles=summaries,
         completed_updates=completed_updates, unique_fresh_attempts=fresh_attempts,
+        elapsed_seconds=perf_counter() - run_started,
         final_diversity=final_diversity(output, archive, options), frozen_decoder_unchanged=True)
+    if time_stop is not None:
+        result["time_budget_stop"] = time_stop
     write_json(output / "result.json", result)
     return result
 
 
 def main(argv=None):
+    started = perf_counter()
     parser = argparse.ArgumentParser(description=__doc__, allow_abbrev=False,
         epilog="Native runs also take the standard allocated Protenix arguments such as --output and --checkpoint.")
     parser.add_argument("--config", type=Path, required=True)
@@ -429,7 +448,7 @@ def main(argv=None):
     decoder, _ = load_model(runtime.checkpoint, "cpu")
     run_search(decoder, native_factory(runtime, timeout=2400 if options.batch_size > 1 else 900),
                partial(fresh_score_records, runtime),
-               design, options, settings, runtime.output, runtime.checkpoint_sha256)
+               design, options, settings, runtime.output, runtime.checkpoint_sha256, run_started=started)
 
 
 if __name__ == "__main__":

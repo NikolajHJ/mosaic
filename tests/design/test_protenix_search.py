@@ -20,10 +20,11 @@ def read(path):
 
 def test_long_presets_have_equal_budgets_and_legacy_config_can_be_overridden():
     config = read(CONFIGS / "restart-search-lr60-long.json")
-    for name, waves, children, invalid in (("wide", 18, 4, 0), ("deep", 36, 2, 0), ("near-valid", 36, 2, 1)):
+    for name, waves, children, invalid in (("wide", 20, 6, 0), ("deep", 40, 3, 0), ("near-valid", 40, 3, 1)):
         design, options, settings = search.resolve_config(config, name)
         assert (design.learning_rate, options.waves, options.children, options.invalid_children) == (60, waves, children, invalid)
-        assert settings["budget"] == dict(branches=216, updates=108_000, fresh_attempts=1296)
+        assert options.parents == 4 and design.updates == 500
+        assert settings["budget"] == dict(branches=480, updates=240_000, fresh_attempts=2880)
     _, options, settings = search.resolve_config(read(CONFIGS / "restart-lr70.json"), "screened",
         ["search.batch_size=2", "search.cpu_workers=2", "search.overlap=true"])
     assert (options.batch_size, options.cpu_workers, options.overlap) == (2, 2, True)
@@ -67,12 +68,17 @@ def test_near_valid_wave_uses_explicit_source_and_never_fresh_scores_it(tmp_path
         return [dict(row, loss=2.1 + 0.05 * i) for i, row in enumerate(records)]
 
     monkeypatch.setattr(search, "execute_branches", execute)
+    clock = iter((0., 0., 10., 10., 30., 30., 30.))
+    monkeypatch.setattr(search, "perf_counter", lambda: next(clock))
     design, options, settings = search.resolve_config(read(CONFIGS / "restart-search-lr60-long.json"),
-        "near-valid", ["search.waves=2", "search.batch_size=2"])
+        "near-valid", ["search.waves=3", "search.parents=3", "search.children=2",
+                       "search.exact_children=1", "search.batch_size=2", "search.time_budget_seconds=35"])
     output = tmp_path / "run"
     result = search.run_search(decoder, lambda *_: SimpleNamespace(close=lambda: None), fresh_score,
                                design, options, settings, output, "fixture-checkpoint")
     assert result["completed_updates"] == 6000
+    assert result["status"] == "time_budget" and result["time_budget_stop"]["next_wave"] == 3
+    assert not (output / "cycle-03").exists()
     assert result["unique_fresh_attempts"] == 3
     assert seen == ["CCCC", "CCCN", "CCCO"]
     assert result["cycles"][0]["invalid_fallback"]

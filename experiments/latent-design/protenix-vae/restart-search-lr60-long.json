@@ -26,11 +26,12 @@
   "panel_seed": 982701,
   "perturbation_seed": 1811901,
   "prior_seed": 1816901,
+  "storage": {"output_cap_mib": 1024, "output_file_cap": 10000},
   "search": {
     "initialization": "archived",
-    "parents": 3,
-    "children": 4,
-    "waves": 18,
+    "parents": 4,
+    "children": 6,
+    "waves": 20,
     "batch_size": 1,
     "cpu_workers": 1,
     "overlap": false,
@@ -39,7 +40,7 @@
     "shortlist": "mixed",
     "fresh_per_branch": 6,
     "invalid_children": 0,
-    "exact_children": 2,
+    "exact_children": 4,
     "repair_edit_limit": 2,
     "min_step_gap": 100,
     "max_similarity": 0.85,
@@ -48,13 +49,14 @@
     "fade_updates": 25,
     "diversity_limit": 6,
     "diversity_max_similarity": 0.60,
-    "high_score_ceiling": 2.30
+    "high_score_ceiling": 2.30,
+    "time_budget_seconds": 82800
   },
   "arms": {
     "wide": {"queue": "gpua100"},
-    "deep": {"queue": "gpua100", "search": {"waves": 36, "children": 2, "exact_children": 1}},
+    "deep": {"queue": "gpua100", "search": {"waves": 40, "children": 3, "exact_children": 2}},
     "near-valid": {"queue": "gpua100", "search": {
-      "waves": 36, "children": 2, "exact_children": 1, "invalid_children": 1
+      "waves": 40, "children": 3, "exact_children": 2, "invalid_children": 1
     }}
   }
 }
