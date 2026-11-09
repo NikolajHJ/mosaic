@@ -145,11 +145,6 @@ def stage(args, local, control, release):
         raise ValueError("The throughput benchmark requires one bench task on gpua100")
     if a100_80gb and set(queues.values()) != {"gpua100"}:
         raise ValueError("The 80 GB host requirement needs gpua100 for every selected arm")
-    storage = cfg.get("storage", {}) if restart_search else {}
-    output_mib = storage.get("output_cap_mib", OUTPUT_MIB)
-    output_files = storage.get("output_file_cap", OUTPUT_FILES)
-    if any(type(limit) is not int or limit < 1 for limit in (output_mib, output_files)):
-        raise ValueError("Output capacity limits must be positive integers per arm")
 
     source_path = None
     if args.source_receipt:
@@ -160,13 +155,12 @@ def stage(args, local, control, release):
         prior = read(Path("outputs/protenix-restarts-20261107a/gpu-plan.json"))
     plan = {key: prior[key] for key in ("cuda_ownership_helper", "cuda_ownership_sha256", "mosaic_python")}
     plan.update(arms=outputs, queue=args.queue, planned_updates=budgets,
-                output_cap_mib=output_mib, config_sha256=sha(config))
+                output_cap_mib=OUTPUT_MIB, config_sha256=sha(config))
     if uses_cohorts:
         plan["queues"] = queues
         del plan["queue"]
     if restart_search:
         plan["a100_80gb"] = a100_80gb
-        plan["output_file_cap"] = output_files
     if source_path:
         plan["matched_source_sha256"] = source_digest
     local.mkdir()
@@ -258,7 +252,7 @@ probe = Path({probe!r})
 probe.mkdir()
 try:
     result = subprocess.run(['/usr/bin/python3', {uploads[-1][1]!r}, '--output-root', str(probe),
-        '--cap-mib', {str(output_mib * len(outputs))!r}, '--file-cap', {str(output_files * len(outputs))!r}],
+        '--cap-mib', {str(OUTPUT_MIB * len(outputs))!r}, '--file-cap', {str(OUTPUT_FILES * len(outputs))!r}],
         check=True, text=True, capture_output=True)
     print(result.stdout)
 finally:

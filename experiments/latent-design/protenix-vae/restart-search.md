@@ -3,9 +3,9 @@
 Use `python -m latentmol.design.protenix_search` for cyclic search runs.
 The [long presets](restart-search-lr60-long.json) contain `wide`, `deep`,
 and `near-valid`. Each uses four parents and 500 updates per child. Wide
-uses six children per parent over 20 waves. Deep and near-valid use three
-children per parent over 40 waves. Each has a cap of 240,000 updates and
-2,880 fresh-score attempts. The [short presets](restart-search-lr60-short.json) cover screened
+uses six children per parent over 10 waves. Deep and near-valid use three
+children per parent over 20 waves. Each has a cap of 120,000 updates and
+1,440 fresh-score attempts. The [short presets](restart-search-lr60-short.json) cover screened
 restarts, diversity, and adaptive, fixed, and independent parent policies.
 The entry point also reads the historical `restarts.json`, `restart-lr70.json`,
 six-cycle, and diversity configs directly. The dedicated noise and throughput
@@ -59,7 +59,7 @@ The existing DTU launcher stages a sealed config. Copy a preset to a new
 
 ```powershell
 $launcher = 'experiments/latent-design/protenix-vae/restart-operations/submit_campaign.py'
-python $launcher stage --name protenix-restart-my-search --config restart-search-lr60-long.json --arm deep --a100-80gb --hours 24 --max-updates 240000
+python $launcher stage --name protenix-restart-my-search --config restart-search-lr60-long.json --arm deep --a100-80gb --hours 24 --max-updates 120000
 python $launcher submit --name protenix-restart-my-search
 ```
 
