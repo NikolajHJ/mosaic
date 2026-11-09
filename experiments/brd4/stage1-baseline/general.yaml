@@ -1,0 +1,11 @@
+# Shared settings for the short BRD4 Stage 1 run. Paths are relative to this file.
+model: protenix-tiny
+model_cache: ../../../cache/protenix
+protein:
+  structure: ../../../tests/data/brd4_3mxf/3MXF.pdb
+  chain: A
+  use_msa: false
+epochs: 10
+learning_rate: 0.03
+seed: 17
+output_dir: ../../../results/brd4-stage1-short-01

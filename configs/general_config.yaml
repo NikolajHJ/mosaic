@@ -1,5 +1,6 @@
 # Shared settings for any stage. Paths are relative to this YAML file.
-model: protenix-tiny
+model: protenix-tiny  # Or boltz2; see the Boltz2 guide for required paths.
+model_cache: ../cache/protenix
 
 protein:
   structure: ../IL7RA.cif  # Path to a protein PDB or mmCIF file.

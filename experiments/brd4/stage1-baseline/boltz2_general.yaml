@@ -1,0 +1,15 @@
+# Example for Stage 0 or Stage 1. Paths are relative to this YAML file.
+model: boltz2
+protein:
+  structure: ../../../tests/data/brd4_3mxf/3MXF.pdb
+  chain: A
+  use_msa: false
+boltz2:
+  # Replace these paths with your own pinned worker environment and assets.
+  worker_python: ../../../envs/boltz2/bin/python
+  prepared_context: ../../../results/boltz2-brd4-25-context
+  checkpoint: ../../../cache/boltz/boltz2_aff.ckpt
+epochs: 10
+learning_rate: 0.03
+seed: 17
+output_dir: ../../../results/brd4-stage1-boltz2-short-01
