@@ -95,3 +95,20 @@ Stage 1 loop and logs the operator results after each update. Valence only
 is the default. A matching saved checkpoint can start paired hardening
 and relaxed runs. Historical launchers, sweeps and evidence remain on the
 source branch. No numerical experiment ran or was submitted.
+
+### 2026-11-11 - Organized the shared small-molecule code
+
+Moved the reusable graph, pocket, loss, optimization and model code into
+`src/mosaic/small_molecule/core/` on NewPipeline_draft. Updated the stage
+imports, Boltz2 worker launch and package guides. Checked Python syntax,
+the YAML entry points for Stages 0–2, and Boltz2's worker module resolution
+with a stand-in for the model. No experiment ran or was submitted.
+
+### 2026-11-11 - Moved ligand initialization into the general YAML
+
+Stages 0–2 now read the atom count and starting molecule settings from
+the general YAML on NewPipeline_draft. Moved the existing Stage 1 and 2
+random-start values and optional checkpoint path without changing their
+values or the update rules. The launcher still accepts legacy YAML pairs.
+Checked the config pairs, stage dispatch, and starting settings using
+model stubs. No experiment ran or was submitted.

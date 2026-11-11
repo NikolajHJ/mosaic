@@ -1,7 +1,8 @@
 """Run the Stage 1 baseline and record how the ligand changes.
 
-Start from a carbon-heavy graph. Protenix-Tiny scores whole-domain contacts;
-Boltz2 scores affinity with a prepared pose. Both update atom and bond probabilities.
+Start from a random graph or a saved checkpoint selected in the general YAML.
+Protenix-Tiny scores whole-domain contacts. Boltz2 scores affinity with a
+prepared pose. Both update atom and bond probabilities.
 This baseline measures chemical problems in the resulting graphs without
 using them to guide the updates.
 """
@@ -36,9 +37,9 @@ def optimize(
     import jax
     import numpy as np
 
-    from mosaic.small_molecule.experiment import file_sha256, resolve_target
-    from mosaic.small_molecule.optimizers import evaluate_graph, projected_step
-    from mosaic.small_molecule.state import RelaxedGraph, initialize_graph, validate_graph
+    from mosaic.small_molecule.core.experiment import file_sha256, resolve_target
+    from mosaic.small_molecule.core.optimizers import evaluate_graph, projected_step
+    from mosaic.small_molecule.core.state import RelaxedGraph, initialize_graph, validate_graph
 
     from .diagnostics import graph_metrics, raw_readout
 
@@ -47,7 +48,8 @@ def optimize(
 
     protein = general["protein"]
     target = resolve_target(input_path(protein["structure"]), protein["chain"])
-    n_atoms = stage["n_atoms"]
+    n_atoms = general["n_atoms"]
+    initialization = general["initialization"]
     epochs = general["epochs"]
     eta_X = stage.get("eta_X", general["learning_rate"])
     eta_E = stage.get("eta_E", general["learning_rate"])
@@ -62,7 +64,7 @@ def optimize(
 
     model_name = general["model"]
     if model_name == "boltz2":
-        from mosaic.small_molecule.boltz2.setup import open_affinity
+        from mosaic.small_molecule.core.boltz2.setup import open_affinity
 
         loss, identity, prepared = resources.enter_context(
             open_affinity(general, general_path, target, output, n_atoms)
@@ -72,9 +74,9 @@ def optimize(
         model_record = {"model": identity, "prepared_input": prepared}
         rng_policy = "seeded graph initialization; affinity uses a fixed prepared pose"
     else:
-        from mosaic.small_molecule.features import prepare_context
-        from mosaic.small_molecule.losses import NativeContactLoss
-        from mosaic.small_molecule.protenix import FrozenProtenixTiny, ligand_pae_gate_prerequisites
+        from mosaic.small_molecule.core.features import prepare_context
+        from mosaic.small_molecule.core.losses import NativeContactLoss
+        from mosaic.small_molecule.core.protenix import FrozenProtenixTiny, ligand_pae_gate_prerequisites
 
         if not any(device.platform == "gpu" for device in jax.devices()):
             raise RuntimeError("JAX cannot see an allocated GPU.")
@@ -100,8 +102,8 @@ def optimize(
         rng_policy = "same model key at every state and for its hard readout"
 
     parent = None
-    if stage.get("start_checkpoint"):
-        path = (stage_path.parent / Path(stage["start_checkpoint"]).expanduser()).resolve()
+    if checkpoint := initialization.get("checkpoint"):
+        path = input_path(checkpoint)
         parent_manifest = json.loads((path.parent / "manifest.json").read_text())
         parent_target = json.loads((path.parent / "target.json").read_text())
         if (
@@ -120,10 +122,10 @@ def optimize(
             parent = {"path": str(path), "sha256": file_sha256(path), "state": int(saved["state"])}
         validate_graph(graph)
         if graph.n_atoms != n_atoms:
-            raise ValueError("The checkpoint and the stage settings must have the same atom count.")
+            raise ValueError("The checkpoint must match n_atoms in the general YAML.")
         model_key = jax.random.wrap_key_data(jnp.asarray(model_key_data))
     else:
-        graph = initialize_graph(n_atoms, init_key, **stage["initialization"])
+        graph = initialize_graph(n_atoms, init_key, **initialization["random"])
 
     loss_for_state = prepare_loss(loss, epochs) if prepare_loss is not None else None
     manifest = {

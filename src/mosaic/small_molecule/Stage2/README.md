@@ -27,11 +27,11 @@ PYTHONPATH=src python -m mosaic.small_molecule.generate_molecule \
 
 For Boltz2, use the Boltz2 general YAML and prepared context described in
 the [Boltz2 guide](../../../../experiments/brd4/stage1-baseline/boltz2.md).
-The Stage 2 YAML contains only stage settings, including the chemistry
-mode. Leave `start_checkpoint` empty for a fresh start with the same
-initialization as Stage 1. To continue, point it at a `checkpoint.npz` from
-this runner, relative to the stage YAML, with its manifest and target
-record alongside it. Keep the target and model context matched.
+Choose the chemistry mode in the Stage 2 YAML. For a fresh start, set
+`n_atoms` and `initialization.random` in the general YAML. To continue, set
+`initialization.checkpoint` to a `checkpoint.npz` from this runner, relative
+to the general YAML. Keep its manifest and target record alongside it and
+use the same atom count, target, and model context.
 
 Stage 2 saves the same trace, raw molecule checks and probability
 trajectory as Stage 1. Each updated state's trace also records what the

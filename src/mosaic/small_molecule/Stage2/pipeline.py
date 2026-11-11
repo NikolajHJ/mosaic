@@ -23,7 +23,7 @@ def run(general, stage, general_path, stage_path, output):
     if hardening.get("enabled", False):
         from .hardening import hardening_factory
 
-        if not stage.get("start_checkpoint"):
+        if not general["initialization"].get("checkpoint"):
             raise ValueError("Hardening needs a starting checkpoint shared with its relaxed control.")
 
         def prepare_loss(loss, epochs):

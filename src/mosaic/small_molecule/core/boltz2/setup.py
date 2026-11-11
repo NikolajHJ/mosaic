@@ -41,12 +41,12 @@ def open_affinity(general, general_path, target, output, n_atoms=None):
             raise ValueError("A selected pocket requires a Boltz2 pose audited for those residues.")
 
     command = [
-        str(path(settings["worker_python"])), "-u", "-m", "mosaic.small_molecule.boltz2.worker",
+        str(path(settings["worker_python"])), "-u", "-m", "mosaic.small_molecule.core.boltz2.worker",
         "--context", str(context / "context.pt"),
         "--context-sha256", receipt["context_sha256"],
         "--checkpoint", str(path(settings["checkpoint"])),
     ]
-    src = str(Path(__file__).resolve().parents[3])
+    src = str(Path(__file__).resolve().parents[4])
     env = os.environ | {"PYTHONPATH": os.pathsep.join(filter(None, (src, os.environ.get("PYTHONPATH"))))}
     worker = AffinityWorker(command, stderr=output / "boltz_worker.log", env=env)
     try:

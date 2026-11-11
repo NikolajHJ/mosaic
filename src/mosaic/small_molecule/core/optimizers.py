@@ -19,8 +19,8 @@ import jax
 import jax.numpy as jnp
 import numpy as np
 
-from mosaic.small_molecule.contracts import ProjectedStep, RawEvaluation
-from mosaic.small_molecule.state import RelaxedGraph, validate_graph
+from mosaic.small_molecule.core.contracts import ProjectedStep, RawEvaluation
+from mosaic.small_molecule.core.state import RelaxedGraph, validate_graph
 
 GraphLoss = Callable[..., tuple[jax.Array, Any]]
 

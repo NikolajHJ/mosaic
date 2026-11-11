@@ -542,7 +542,7 @@ def post_step(config):
     Returns ``(graph, receipt)``. JAX is imported lazily so this module, the
     operators and their tests stay importable with NumPy and SciPy alone.
     """
-    from mosaic.small_molecule.state import RelaxedGraph
+    from mosaic.small_molecule.core.state import RelaxedGraph
 
     def operate(graph, step):
         import jax.numpy as jnp

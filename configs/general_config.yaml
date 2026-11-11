@@ -12,8 +12,18 @@ pocket:
   # Each entry has the form {number: 42, insertion: ""}.
   residues: []
 
+n_atoms: 25
 initialization:
-  input: null  # Replace with the path to a prepared starting molecule.
+  # Stage 0 with Protenix-Tiny uses a prepared starting molecule or a SMILES string.
+  input: null
+  # smiles: "CCCC"  # If used, set n_atoms to the molecule's heavy-atom count.
+  # Stage 1 and 2 use these random-start settings, or a saved checkpoint.
+  # checkpoint: ../results/previous-run/checkpoint.npz
+  random:
+    carbon_probability: 0.75
+    expected_degree: 2.25
+    atom_noise: 0.005
+    bond_noise: 0.005
 
 epochs: 1000
 learning_rate: 0.01

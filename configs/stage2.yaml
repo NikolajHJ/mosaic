@@ -1,15 +1,7 @@
-# Same start as Stage 1. Choose protenix-tiny or boltz2 in the general YAML.
+# Adds chemistry rules to the Stage 1 updates.
 stage: stage2
-n_atoms: 25
-initialization:
-  carbon_probability: 0.75
-  expected_degree: 2.25
-  atom_noise: 0.005
-  bond_noise: 0.005
 readout_every: 5
 # eta_X and eta_E can override the general learning rate.
-# Optional path to a Stage 1 checkpoint, relative to this file.
-start_checkpoint: null
 
 operators:
   # none: relaxed control; valence: default; connected: also bridge fragments.
@@ -28,7 +20,7 @@ improvements:
   fluidity_strength: 0.0
   bridge_retry: false
 
-# Separate comparison: use the same start_checkpoint for both arms.
+# Use the same initialization.checkpoint in the general YAML for both arms.
 hardening:
   enabled: false
   gradient: inherited  # inherited, passthrough, or rescaled

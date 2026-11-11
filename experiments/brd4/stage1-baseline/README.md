@@ -14,9 +14,10 @@ no valid ligand reference frames, so the PAE prerequisite fails by design.
 This implementation records that prerequisite; it does not run the native
 hard-ligand PAE trial or claim a PAE result.
 
-- `general.yaml`: protein file and short run settings.
-- [Stage settings](../../../configs/stage1.yaml): initialization, optional
-  separate step sizes, and how often to score the discrete graph.
+- [General settings](general.yaml) include the protein file, atom count,
+  random initialization, and short run settings.
+- [Stage settings](../../../configs/stage1.yaml) include the optional separate
+  step sizes and how often to score the discrete graph.
 - [Pipeline](../../../src/mosaic/small_molecule/Stage1/pipeline.py): design loop
   and saved outputs; `diagnostics.py` checks the soft and discrete graphs.
 

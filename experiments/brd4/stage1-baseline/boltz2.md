@@ -2,7 +2,7 @@
 
 Choose `model: boltz2` in the general YAML. See
 [boltz2_general.yaml](boltz2_general.yaml) for the three Boltz2 paths. The
-same runner can select Stage 0 or Stage 1. Choose a new `output_dir` for
+same runner can select Stage 0, 1, or 2. Choose a new `output_dir` for
 each run.
 
 The existing Boltz2 adapter minimizes the model's quantitative affinity
@@ -13,7 +13,8 @@ from the Protenix-Tiny contact baseline in protocol v12. Binder probability
 is logged for inspection and does not contribute to the loss.
 
 - **Stage 0** starts from the prepared carbon chain unless you provide an
-  `initialization.input` folder with a saved graph of the same size. Rows
+  `initialization.input` folder with a saved graph of the same size. Set
+  `n_atoms` in the general YAML to match the prepared context. Rows
   in that graph are assigned to the prepared atom slots in order. If you
   request a specific pocket, the preparation record must include a passed
   pose audit for those residues. Leaving out `pocket` uses the context as
@@ -21,8 +22,8 @@ is logged for inspection and does not contribute to the loss.
   use only `affinity` for Boltz2.
 - **Stage 1** uses the same unconstrained graph updates and diagnostics as
   Protenix-Tiny, but scores affinity instead of contacts. The slot count in
-  `configs/stage1.yaml` must match the context. The worker supports 6 or 25
-  slots; the included BRD4 example uses 25. A positive
+  the general YAML (`n_atoms`) must match the context. The worker supports
+  6 or 25 slots. The included BRD4 example uses 25. A positive
   `hard_minus_soft_loss` means the raw argmax molecule scored worse.
 
 The Boltz2 worker needs a separate Python environment with the native
@@ -38,7 +39,7 @@ Boltz cache, then run this inside an allocated DTU HPC GPU job from the
 repository root (adjust the worker interpreter and cache paths):
 
 ```bash
-PYTHONPATH=src envs/boltz2/bin/python -m mosaic.small_molecule.boltz2.prepare \
+PYTHONPATH=src envs/boltz2/bin/python -m mosaic.small_molecule.core.boltz2.prepare \
   --fixture tests/data/brd4_3mxf/fixture_25.json --n-atoms 25 \
   --cache cache/boltz --output results/boltz2-brd4-25-context
 ```

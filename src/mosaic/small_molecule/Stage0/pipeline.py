@@ -27,9 +27,9 @@ def optimize(general, stage, general_path, stage_path, output, resources):
     import jax.numpy as jnp
     import numpy as np
 
-    from mosaic.small_molecule.experiment import LossSchedule, file_sha256, resolve_target
-    from mosaic.small_molecule.optimizers import evaluate_graph, projected_step
-    from mosaic.small_molecule.state import RelaxedGraph, graph_from_hard, validate_graph
+    from mosaic.small_molecule.core.experiment import LossSchedule, file_sha256, resolve_target
+    from mosaic.small_molecule.core.optimizers import evaluate_graph, projected_step
+    from mosaic.small_molecule.core.state import RelaxedGraph, graph_from_hard, validate_graph
 
     def input_path(value):
         return (general_path.parent / Path(value).expanduser()).resolve()
@@ -47,6 +47,7 @@ def optimize(general, stage, general_path, stage_path, output, resources):
         selection = {"kind": "residues", "residues": pocket["residues"]}
     target = resolve_target(input_path(protein["structure"]), protein["chain"], selection)
 
+    n_atoms = general.get("n_atoms")
     init = general.get("initialization", {})
     metadata, graph = None, None
     smiles = init.get("smiles")
@@ -59,6 +60,9 @@ def optimize(general, stage, general_path, stage_path, output, resources):
         with np.load(graph_path, allow_pickle=False) as arrays:
             graph = RelaxedGraph(jnp.asarray(arrays["X"]), jnp.asarray(arrays["E_upper"]))
         validate_graph(graph)
+        if n_atoms is not None and graph.n_atoms != n_atoms:
+            raise ValueError("The saved graph must match n_atoms in the general YAML.")
+        n_atoms = graph.n_atoms
         smiles = metadata["smiles"]
 
     model_name = general["model"]
@@ -77,14 +81,14 @@ def optimize(general, stage, general_path, stage_path, output, resources):
     write_json(output / "target.json", target)
 
     if model_name == "boltz2":
-        from mosaic.small_molecule.boltz2.setup import open_affinity
+        from mosaic.small_molecule.core.boltz2.setup import open_affinity
 
         if list(weights) != ["affinity"]:
             raise ValueError("Boltz2 Stage 0 uses affinity. Remove other losses from the stage YAML.")
         if graph is None and smiles:
-            raise ValueError("For Boltz2, omit initialization to use the prepared chain, or use initialization.input.")
+            raise ValueError("For Boltz2, use initialization.input or leave input and smiles empty to use the prepared chain.")
         affinity, identity, prepared = resources.enter_context(
-            open_affinity(general, general_path, target, output, graph.n_atoms if graph is not None else None)
+            open_affinity(general, general_path, target, output, n_atoms)
         )
         if graph is None:
             # The prepared context has one slot per carbon in a linear chain.
@@ -97,10 +101,10 @@ def optimize(general, stage, general_path, stage_path, output, resources):
             value, aux = affinity(graph, key=key)
             return {"affinity": value}, aux
     else:
-        from mosaic.small_molecule.features import NATIVE_ELEMENT_INDICES, prepare_context
-        from mosaic.small_molecule.losses import DBMolContactLoss, NativeContactLoss
-        from mosaic.small_molecule.protenix import FrozenProtenixTiny
-        from mosaic.small_molecule.state import ELEMENTS
+        from mosaic.small_molecule.core.features import NATIVE_ELEMENT_INDICES, prepare_context
+        from mosaic.small_molecule.core.losses import DBMolContactLoss, NativeContactLoss
+        from mosaic.small_molecule.core.protenix import FrozenProtenixTiny
+        from mosaic.small_molecule.core.state import ELEMENTS
 
         if protein.get("use_msa", False):
             raise ValueError("The Protenix graph path does not use a protein MSA.")
@@ -112,6 +116,8 @@ def optimize(general, stage, general_path, stage_path, output, resources):
         context, hard = prepare_context(
             smiles, protein_chains=(target["protein_sequence"],), cache_dir=cache, input_name="stage0"
         )
+        if n_atoms is not None and hard.n_atoms != n_atoms:
+            raise ValueError("The starting molecule must match n_atoms in the general YAML.")
         if graph is None:
             graph = hard
         else:

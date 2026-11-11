@@ -45,7 +45,7 @@ def hardening_factory(native, total_steps, gradient="inherited"):
     import jax.numpy as jnp
 
     from mosaic.optimizers import _colabdesign_transform
-    from mosaic.small_molecule.state import RelaxedGraph
+    from mosaic.small_molecule.core.state import RelaxedGraph
 
     if gradient not in HARDENING_GRADIENTS:
         raise ValueError(f"hardening gradient must be one of {HARDENING_GRADIENTS}")

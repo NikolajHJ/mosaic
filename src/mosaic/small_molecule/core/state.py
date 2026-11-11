@@ -171,7 +171,7 @@ def initialize_graph(
     )
     # The optimizer imports state, so preparation imports its host projection
     # lazily. Neither model imports nor a model forward happen during setup.
-    from mosaic.small_molecule.optimizers import project_graph
+    from mosaic.small_molecule.core.optimizers import project_graph
 
     return project_graph(graph)
 

@@ -1,6 +1,6 @@
 """Start here to run a small-molecule design from two YAML files.
 
-The general YAML describes the run: protein, pocket, starting molecule,
+The general YAML describes the protein, pocket, starting molecule, atom count,
 model, number of updates, learning rate, and results folder. The stage
 YAML names the workflow and provides its own settings, such as the losses
 and their weights. The command-line arguments are paths to those files.
@@ -42,6 +42,14 @@ def main():
     general = read_config(general_path)
     stage_config = read_config(stage_path)
     stage = stage_config["stage"].lower()
+    # Earlier Stage 1 and 2 YAML pairs kept these settings in the stage file.
+    if stage in ("stage1", "stage2") and "n_atoms" not in general and "n_atoms" in stage_config:
+        general["n_atoms"] = stage_config["n_atoms"]
+        initialization = general.setdefault("initialization", {})
+        initialization.setdefault("random", stage_config.get("initialization", {}))
+        if checkpoint := stage_config.get("start_checkpoint"):
+            initialization.setdefault("checkpoint", stage_path.parent / Path(checkpoint).expanduser())
+
     model = general["model"]
     if model not in ("protenix-tiny", "boltz2"):
         raise ValueError("Choose protenix-tiny or boltz2 in the general YAML.")

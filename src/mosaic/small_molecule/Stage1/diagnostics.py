@@ -8,7 +8,7 @@ a usable molecule. Failed checks are recorded; the graph is never repaired.
 
 import numpy as np
 
-from mosaic.small_molecule.state import ELEMENTS, graph_diagnostics, graph_from_hard
+from mosaic.small_molecule.core.state import ELEMENTS, graph_diagnostics, graph_from_hard
 
 
 # Aligned with ELEMENTS and the stored bond categories, respectively.
