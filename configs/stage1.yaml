@@ -1,0 +1,5 @@
+# Uses whole-domain contact for Protenix-Tiny or affinity for Boltz2.
+stage: stage1
+readout_every: 5
+# eta_X: 0.03  # Optional atom step size; otherwise use general learning_rate.
+# eta_E: 0.03  # Optional bond step size; otherwise use general learning_rate.

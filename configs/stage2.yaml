@@ -1,0 +1,26 @@
+# Adds chemistry rules to the Stage 1 updates.
+stage: stage2
+readout_every: 5
+# eta_X and eta_E can override the general learning rate.
+
+operators:
+  # none: relaxed control; valence: default; connected: also bridge fragments.
+  # sparse adds bridging and shrinkage; sparse_only adds just shrinkage.
+  mode: valence
+  aromatic_order: 1.5
+  bridge_probability: 0.6
+  sparsity_amount: 0.01
+  sparsity_threshold: 0.5
+
+# Leave these at their defaults for the main valence comparison.
+improvements:
+  readout_caps: false
+  valence_damping: 1.0
+  fluidity_threshold: 1.0
+  fluidity_strength: 0.0
+  bridge_retry: false
+
+# Use the same initialization.checkpoint in the general YAML for both arms.
+hardening:
+  enabled: false
+  gradient: inherited  # inherited, passthrough, or rescaled

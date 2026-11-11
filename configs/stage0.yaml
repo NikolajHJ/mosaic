@@ -1,0 +1,5 @@
+# Uses contact for Protenix-Tiny or affinity for Boltz2 by default.
+stage: stage0
+# Optional for Protenix-Tiny:
+# losses:
+#   - {name: contact, weight: 1.0, cutoff_angstrom: 8.0}

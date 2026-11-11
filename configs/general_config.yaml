@@ -1,0 +1,31 @@
+# Shared settings for any stage. Paths are relative to this YAML file.
+model: protenix-tiny  # Or boltz2; see the Boltz2 guide for required paths.
+model_cache: ../cache/protenix
+
+protein:
+  structure: ../IL7RA.cif  # Path to a protein PDB or mmCIF file.
+  chain: A
+  use_msa: false  # Enable once the chosen workflow supports protein MSAs.
+
+pocket:
+  # Fill in the target chain's residue numbers as recorded in the structure.
+  # Each entry has the form {number: 42, insertion: ""}.
+  residues: []
+
+n_atoms: 25
+initialization:
+  # Stage 0 with Protenix-Tiny uses a prepared starting molecule or a SMILES string.
+  input: null
+  # smiles: "CCCC"  # If used, set n_atoms to the molecule's heavy-atom count.
+  # Stage 1 and 2 use these random-start settings, or a saved checkpoint.
+  # checkpoint: ../results/previous-run/checkpoint.npz
+  random:
+    carbon_probability: 0.75
+    expected_degree: 2.25
+    atom_noise: 0.005
+    bond_noise: 0.005
+
+epochs: 1000
+learning_rate: 0.01
+seed: 17
+output_dir: ../results/il7ra-run-01  # Choose a new folder for each run.
