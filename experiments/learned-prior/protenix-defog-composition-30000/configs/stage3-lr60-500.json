@@ -1,0 +1,51 @@
+{
+  "schema_version": "stage3-campaign-v1",
+  "campaign_id": "stage3-protenix-lr60-500-v1",
+  "recipe": "stage3-lr60-v1",
+  "model": "protenix-tiny",
+  "native_weight": 1.0,
+  "learning_rate": 60.0,
+  "updates": 500,
+  "n_atoms": 25,
+  "seeds": [17, 23, 42, 71, 101],
+  "initializations": ["sparse", "dense", "fragmented"],
+  "initialization_parameters": {
+    "atom_distribution": [0.70, 0.14, 0.08, 0.04, 0.02, 0.02],
+    "element_order": ["C", "N", "O", "S", "F", "Cl"],
+    "atom_uniform_mixing": 0.02,
+    "sparse_bond_uniform_mixing": 0.002,
+    "dense_dirichlet_concentration": [1, 1, 1, 1, 1],
+    "fragmented_deleted_tree_bonds": 4,
+    "tree": "neutral_capacity_single_bonds",
+    "capacity_fallback": "replace_terminal_category_with_carbon_when_needed"
+  },
+  "initialization_notes": {
+    "sparse": "Random valid connected sparse tree, with neutral occupied atoms.",
+    "dense": "Same atom probabilities as the seed's sparse start; independently dense random bond probabilities.",
+    "fragmented": "Same sparse start with four tree bonds deleted."
+  },
+  "evaluation": {
+    "primary": "best_valid_connected_hard_contact_score",
+    "rank_direction": "maximize",
+    "candidate": "raw_argmax",
+    "validity": "rdkit_sanitized_and_one_fragment",
+    "include_initial": true,
+    "save_best_new_candidate_separately": true,
+    "final_state": "secondary_diagnostic",
+    "model_key": "fixed_within_seed_across_conditions_and_states",
+    "readout_every": 1
+  },
+  "bundling": {
+    "max_arms": 4,
+    "unit": "one_seed_one_initialization",
+    "shared_control": "run_once_reference_by_id",
+    "first_wave": ["control", "reference"]
+  },
+  "notes": [
+    "Every condition runs the full 500-update budget; chemical failure is an outcome.",
+    "A shared control is one seed replicate even if referenced by several comparisons.",
+    "Cooling uses the same intended graph for native and teacher inputs.",
+    "The simple_soft_valence comparison is an explicit new baseline, not a claim of reproducing a historical custom chemistry objective.",
+    "This is a staged ablation design, not the full Cartesian product of every setting."
+  ]
+}

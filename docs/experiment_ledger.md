@@ -112,3 +112,29 @@ random-start values and optional checkpoint path without changing their
 values or the update rules. The launcher still accepts legacy YAML pairs.
 Checked the config pairs, stage dispatch, and starting settings using
 model stubs. No experiment ran or was submitted.
+
+### 2026-11-12 - Implemented the LR60 DeFoG Stage 3 ablation campaign
+
+Question: which frozen one-query teacher settings improve the best valid hard
+Protenix molecule, and how do time, strength, projection and cooling affect it?
+Implemented on `codex/defog-stage3-campaign` in the
+[existing learned-prior home](../experiments/learned-prior/protenix-defog-composition-30000/README.md).
+The resolved design contains 155 settings, 3 matched start types and 5 seeds:
+2,325 planned runs of 500 updates at atom/bond LR60, native coefficient1.
+A separate reference wave has 30 runs in 15 seed/start bundles. This preparation
+does not modify earlier experiments or submit GPU jobs.
+
+Primary selection is the highest frozen native hard contact score among raw
+sanitized connected argmax molecules, with initial-only successes explicit.
+Saved outputs include the top20 distinct valid molecules, all ordered candidate
+graphs, complete probability trajectories, selected discovery gradients/targets,
+chemical descriptors, bounded endpoint repair witnesses, and streaming tidy CSV
+tables. Optional descriptor failures retain candidates with missing metadata.
+
+Validation: `python -m pytest experiments/learned-prior/protenix-defog-composition-30000/tests -q`
+passed 134 CPU tests. An independently retained three-update mock pair completed
+and produced its plotting tables and molecule archives; runtime versions and
+code identity are in
+[the local checks](../results/implementation-checks/stage3-20261112a/checks.json).
+No native Protenix/DeFoG optimization, GPU performance or numerical qualification
+is claimed from these software fixtures. Native outcomes remain unmeasured.

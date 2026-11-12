@@ -1,0 +1,13 @@
+{
+  "context_dir": "/path/to/archived/pilot/context",
+  "context_files": {
+    "prepared_context.json": "694234feda0b6abaa7e7ed8a7f4b8367165e4326392041457236e994689df9e3",
+    "prepared_context.npz": "a0a52d66ba86619474ceed50f2fc380238ed7b4227599d71a4b50a75c50513dc"
+  },
+  "model_cache": "/path/to/prepared/protenix/cache",
+  "model_digest": "8d6926d5390fe682e193089f790ce53aa4011a6d5509ddb452a55db3d89b0ab2",
+  "context_digest": "b28dfad8e5ede565071c70a61695f6a38f5cb6bd591705e32979e59050ff5ce4",
+  "teacher_source": "/path/to/DeFoG",
+  "teacher_checkpoint": "/path/to/guacamol.ckpt",
+  "teacher_python": "/path/to/defog311/bin/python"
+}
