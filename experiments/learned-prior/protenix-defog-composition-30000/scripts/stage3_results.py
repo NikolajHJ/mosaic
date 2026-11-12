@@ -11,6 +11,7 @@ from __future__ import annotations
 
 from array import array
 import csv
+import gzip
 import json
 import math
 import os
@@ -218,10 +219,31 @@ def _read_json(path, default=None):
 
 
 def _iter_jsonl(path):
+    path = Path(path)
+    plain = Path(str(path)[:-3]) if path.suffix == ".gz" else path
+    compressed = Path(str(plain) + ".gz")
+    if plain.exists() and compressed.exists():
+        raise ValueError(f"Ambiguous plain and compressed JSONL streams: {plain}")
+    path = compressed if compressed.exists() else plain
     if not path.exists():
         return
-    with path.open(encoding="utf-8") as stream:
-        for index, line in enumerate(stream):
+    is_gzip = path == compressed
+    opener = gzip.open if is_gzip else open
+    with opener(path, "rt", encoding="utf-8") as stream:
+        index = 0
+        while True:
+            try:
+                line = stream.readline()
+            except EOFError:
+                # An active gzip writer may have flushed complete JSON rows
+                # without yet writing the final CRC/footer. Preserve rows read
+                # so far. Invalid headers and CRC mismatches still raise.
+                if is_gzip:
+                    break
+                raise
+            if not line:
+                break
+            index += 1
             if not line.strip():
                 continue
             try:
@@ -232,7 +254,7 @@ def _iter_jsonl(path):
                     break
                 raise
             if not isinstance(value, dict):
-                raise ValueError(f"Expected a JSON object in {path}:{index + 1}")
+                raise ValueError(f"Expected a JSON object in {path}:{index}")
             yield value
 
 

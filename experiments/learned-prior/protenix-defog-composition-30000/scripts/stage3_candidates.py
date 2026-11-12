@@ -7,6 +7,7 @@ ordered graph and its exact stored-probability state at discovery.
 """
 
 import csv
+import gzip
 import json
 import math
 import os
@@ -63,7 +64,11 @@ def _temporary(path):
 def _write_json(path, value):
     temporary = _temporary(path)
     try:
-        temporary.write_text(json.dumps(_json_safe(value), indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        content = json.dumps(_json_safe(value), indent=2, allow_nan=False) + "\n"
+        if path.suffix == ".gz":
+            temporary.write_bytes(gzip.compress(content.encode("utf-8"), mtime=0))
+        else:
+            temporary.write_text(content, encoding="utf-8")
         os.replace(temporary, path)
     finally:
         temporary.unlink(missing_ok=True)
@@ -132,7 +137,7 @@ def _descriptors(elements, bonds, expected_smiles):
 
 
 def write_candidate_archive(output, config, states, candidates, arrays_x, arrays_e, limit=20,
-                            *, details_by_hard_id=None):
+                            *, details_by_hard_id=None, compress=False):
     """Write top_valid.{json,csv,npz} and all_candidates.json for one run.
 
     ``states`` and probability arrays align in contiguous update order beginning
@@ -148,9 +153,14 @@ def write_candidate_archive(output, config, states, candidates, arrays_x, arrays
     replaced; the run owner's writer lease provides interprocess ownership.
     Optional discovery-time gradients and teacher targets use separate boolean
     availability masks and zero-filled missing entries in top_valid.npz.
+    ``compress=True`` losslessly writes all_candidates.json.gz instead of the
+    uncompressed all-candidate JSON. Top-molecule tensors and ranking do not
+    change; metadata identifies the chosen all-candidate archive filename.
     """
     if isinstance(limit, bool) or not isinstance(limit, int) or limit < 1:
         raise ValueError("limit must be a positive integer")
+    if not isinstance(compress, bool):
+        raise TypeError("compress must be boolean")
     output = Path(output)
     output.mkdir(parents=True, exist_ok=True)
     states = list(states)
@@ -299,7 +309,9 @@ def write_candidate_archive(output, config, states, candidates, arrays_x, arrays
                        "missing": "Each evidence key has a boolean <key>_available mask; missing entries are zero-filled, never measured zero gradients.",
                        "endpoint": "A final-state discovery may have no optimization gradient or teacher target; availability remains false.",
                    }}
-    _write_json(output / "all_candidates.json", all_payload)
+    all_name = "all_candidates.json.gz" if compress else "all_candidates.json"
+    top_payload["all_candidates_artifact"] = all_name
+    _write_json(output / all_name, all_payload)
     _write_json(output / "top_valid.json", top_payload)
     columns = ["rank", "smiles", "hard_score", "hard_id", "update", "source_update", "first_seen", "last_seen", "visits",
                "chemical_first_seen", "chemical_last_seen", "chemical_visits", "chemical_mapping_count",
@@ -335,5 +347,5 @@ def write_candidate_archive(output, config, states, candidates, arrays_x, arrays
         os.replace(temporary, npz_path)
     finally:
         temporary.unlink(missing_ok=True)
-    return {"top_valid": str(output / "top_valid.json"), "all_candidates": str(output / "all_candidates.json"),
+    return {"top_valid": str(output / "top_valid.json"), "all_candidates": str(output / all_name),
             "unique_scored_valid_molecules": len(ranked), "saved_top_valid": len(top)}

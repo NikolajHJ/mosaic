@@ -1,6 +1,7 @@
 """Retained candidate rankings, identity pooling and exact discovery tensors."""
 
 import csv
+import gzip
 import importlib.util
 import json
 from pathlib import Path
@@ -198,3 +199,26 @@ def test_nonfinite_optional_descriptor_is_unavailable_and_graph_integrity_still_
     candidates["a"]["smiles"] = "CCC"
     with pytest.raises(ValueError, match="canonical SMILES"):
         archive.write_candidate_archive(tmp_path, config, states, candidates, xs, es)
+
+
+def test_lossless_gzip_all_candidate_archive_keeps_top_molecules_unchanged(tmp_path):
+    config, states, candidates, xs, es = fixture()
+    plain, compressed = tmp_path / "plain", tmp_path / "compressed"
+    archive.write_candidate_archive(plain, config, states, candidates, xs, es)
+    result = archive.write_candidate_archive(compressed, config, states, candidates, xs, es, compress=True)
+    with gzip.open(compressed / "all_candidates.json.gz", "rt", encoding="utf-8") as stream:
+        compressed_all = json.load(stream)
+    assert compressed_all == json.loads((plain / "all_candidates.json").read_text())
+    assert len(compressed_all["candidates"]) == 6
+    assert any(not row["valid"] for row in compressed_all["candidates"])
+    assert not (compressed / "all_candidates.json").exists()
+    assert result["all_candidates"] == str(compressed / "all_candidates.json.gz")
+    plain_top = json.loads((plain / "top_valid.json").read_text())
+    compressed_top = json.loads((compressed / "top_valid.json").read_text())
+    assert compressed_top["all_candidates_artifact"] == "all_candidates.json.gz"
+    assert compressed_top["molecules"] == plain_top["molecules"]
+    assert (compressed / "top_valid.csv").read_bytes() == (plain / "top_valid.csv").read_bytes()
+    with np.load(compressed / "top_valid.npz", allow_pickle=False) as left, np.load(plain / "top_valid.npz", allow_pickle=False) as right:
+        assert left.files == right.files
+        for key in left.files:
+            np.testing.assert_array_equal(left[key], right[key])

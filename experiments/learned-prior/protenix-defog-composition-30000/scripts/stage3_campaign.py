@@ -4,6 +4,7 @@ import argparse
 from contextlib import ExitStack, contextmanager
 from datetime import datetime, timezone
 import hashlib
+import gzip
 import json
 import os
 from pathlib import Path
@@ -251,7 +252,11 @@ def run_arm(config, output, native, teacher, hard_cache, *, mock=False, evaluato
     try:
         with ExitStack() as stack:
             for name in ("states", "candidates", "gradients", "operators", "teacher"):
-                streams[name] = stack.enter_context((output / f"{name}.jsonl").open("x", encoding="utf-8"))
+                if config.get("compress_jsonl", False):
+                    streams[name] = stack.enter_context(gzip.open(output / f"{name}.jsonl.gz", "xt",
+                                                                 encoding="utf-8", compresslevel=6))
+                else:
+                    streams[name] = stack.enter_context((output / f"{name}.jsonl").open("x", encoding="utf-8"))
             for update in range(updates + 1):
                 temp = schedule_value(cooling["schedule"], min(update, updates - 1), updates)
                 time_value = schedule_value(prior["time"], min(update, updates - 1), updates)
@@ -454,7 +459,8 @@ def run_arm(config, output, native, teacher, hard_cache, *, mock=False, evaluato
                 write_json(output / "status.json", status)
             from stage3_candidates import write_candidate_archive
             write_candidate_archive(output, config, states, list(candidates.values()), arrays_x, arrays_e,
-                                    details_by_hard_id=candidate_details)
+                                    details_by_hard_id=candidate_details,
+                                    compress=config.get("compress_jsonl", False))
         summary = summarize_run(config, states, list(candidates.values()))
         summary.update(status=status["status"], mock=mock, elapsed_seconds=status["elapsed_seconds"],
                        calibration_multiplier=calibration, teacher_queries=status["teacher_queries"])
@@ -564,6 +570,7 @@ def run_bundle(plan_path, bundle_id, assets_path=None, *, mock=False, mock_updat
                     config["planned_updates"] = config["updates"]
                     config["updates"] = mock_updates
                     config["mock"] = True
+                config["compress_jsonl"] = not mock
                 config["hardware"] = {"host": record["host"], "devices": record["devices"],
                                       "job_id": record["job_id"], "gpu_profile": record["gpu_profile"]}
                 config["scorer_identity"] = identity

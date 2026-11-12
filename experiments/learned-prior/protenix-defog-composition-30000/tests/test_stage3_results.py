@@ -1,10 +1,12 @@
 """Endpoint and missing-data semantics for plot-ready Stage 3 outputs."""
 
 import csv
+import gzip
 import importlib.util
 import json
 from pathlib import Path
 import tracemalloc
+import zlib
 
 import pytest
 
@@ -370,3 +372,39 @@ def test_collection_streams_many_runs_and_retains_top_molecules(tmp_path):
     assert top[0]["artifacts.probabilities"] == "top_valid/01.npz"
     assert not list((tmp_path / "tables").glob(".collect-*"))
     assert not (tmp_path / "tables" / ".collector.lock").exists()
+
+
+def test_jsonl_gzip_fallback_matches_plain_stream(tmp_path):
+    plain = tmp_path / "states.jsonl"
+    rows = [state(0, 0.1), state(1, 0.2)]
+    payload = "".join(json.dumps(row) + "\n" for row in rows)
+    plain.write_text(payload, encoding="utf-8")
+    assert results._read_jsonl(plain) == rows
+    plain.unlink()
+    with gzip.open(str(plain) + ".gz", "wt", encoding="utf-8") as stream:
+        stream.write(payload)
+    assert results._read_jsonl(plain) == rows
+    assert results._read_jsonl(Path(str(plain) + ".gz")) == rows
+
+
+def test_active_gzip_flush_without_footer_retains_complete_rows(tmp_path):
+    plain = tmp_path / "states.jsonl"
+    compressed = Path(str(plain) + ".gz")
+    rows = [state(0, 0.1), state(1, 0.2)]
+    with compressed.open("wb") as raw:
+        writer = gzip.GzipFile(fileobj=raw, mode="wb")
+        writer.write("".join(json.dumps(row) + "\n" for row in rows).encode())
+        writer.flush(zlib.Z_SYNC_FLUSH)
+        raw.flush()
+        assert results._read_jsonl(plain) == rows
+        writer.close()
+    assert results._read_jsonl(plain) == rows
+
+
+def test_ambiguous_plain_and_gzip_stream_is_rejected(tmp_path):
+    plain = tmp_path / "states.jsonl"
+    plain.write_text("{}\n", encoding="utf-8")
+    with gzip.open(str(plain) + ".gz", "wt", encoding="utf-8") as stream:
+        stream.write("{}\n")
+    with pytest.raises(ValueError, match="Ambiguous plain and compressed"):
+        results._read_jsonl(plain)

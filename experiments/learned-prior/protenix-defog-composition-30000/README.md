@@ -219,6 +219,12 @@ itself has submitted no experiments.
 
 ## Outputs and plotting
 
+Native jobs losslessly gzip the JSONL streams and `all_candidates.json` to
+reduce storage. Their filenames end in `.jsonl.gz` and `.json.gz`; the collector
+reads either plain or compressed records, including flushed running-job records.
+Top-20 JSON/CSV metadata stay plain and probability/gradient arrays use compressed
+NPZ. Compression changes no fields, scores, sampling or optimization settings.
+
 ```text
 results/stage3/CHOSEN_CAMPAIGN/
   plan.json                   explicit settings, requirements, seeds, run IDs, bundles

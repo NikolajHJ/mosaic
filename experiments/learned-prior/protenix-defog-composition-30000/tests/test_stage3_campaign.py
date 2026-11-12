@@ -1,6 +1,7 @@
 """End-to-end CPU execution, failure ownership and scheduler materialization."""
 
 import csv
+import gzip
 import importlib
 import json
 from pathlib import Path
@@ -68,6 +69,28 @@ def test_mock_bundle_outputs_best_valid_and_tidy_tables(tmp_path):
     assert sum(r["status"] == "missing" for r in rows) == 16
     with pytest.raises(FileExistsError):
         campaign.run_bundle(path / "plan.json", bid, mock=True)
+
+
+def test_compressed_native_record_format_retains_all_mock_observations(tmp_path):
+    config = next(r for r in design.expand_runs(design.load_design()) if r["condition_id"] == "reference")
+    config = config | {"updates": 3, "mock": True, "compress_jsonl": True}
+    native, _, _ = mock_native()
+    teacher = campaign.MockTeacher()
+    folder = tmp_path / "compressed"
+    summary = campaign.run_arm(config, folder, native, teacher, {}, mock=True)
+    assert summary["status"] == "complete" and teacher.queries == 3
+    for name, count in (("states", 4), ("gradients", 3), ("teacher", 3), ("operators", 3)):
+        assert not (folder / f"{name}.jsonl").exists()
+        with gzip.open(folder / f"{name}.jsonl.gz", "rt", encoding="utf-8") as stream:
+            direct = [json.loads(row) for row in stream]
+        assert len(direct) == count
+        assert results._read_jsonl(folder / f"{name}.jsonl") == direct
+    assert (folder / "all_candidates.json.gz").exists()
+    assert not (folder / "all_candidates.json").exists()
+    with gzip.open(folder / "all_candidates.json.gz", "rt", encoding="utf-8") as stream:
+        archive = json.load(stream)
+    assert archive["candidates"]
+    assert (folder / "top_valid.npz").exists()
 
 
 def test_mock_native_separation_and_unallocated_preflight_dont_consume_claim(tmp_path, monkeypatch):
