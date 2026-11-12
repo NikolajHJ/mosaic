@@ -1,7 +1,7 @@
 """A runnable model-free loop, or replace its teacher with the real checkpoint.
 
-python models/defog/examples/manual_jax.py --mock
-python models/defog/examples/manual_jax.py --source SOURCE --checkpoint CKPT --teacher-python PYTHON
+python stage3/examples/manual_jax.py --mock
+python stage3/examples/manual_jax.py --source SOURCE --checkpoint CKPT --teacher-python PYTHON
 """
 
 import argparse

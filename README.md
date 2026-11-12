@@ -6,7 +6,7 @@
 installation instructions below for the standard library.
 
 The reusable [small-molecule pipeline](src/mosaic/small_molecule/README.md) and
-optional [DeFoG guidance package](models/defog/README.md) are also available here.
+optional [Stage 3 DeFoG guidance package](stage3/README.md) are also available here.
 BRD4/JQ1 experiments, HPC workflows, and historical research records live on
 [`codex/mosaic-experiments`](https://github.com/NikolajHJ/mosaic/tree/codex/mosaic-experiments).
 Use that branch for the research workflow.

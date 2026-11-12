@@ -36,7 +36,7 @@ def run(general, stage, general_path, stage_path, output):
                 from mosaic_defog.integration import mosaic_prepare_loss
             except ImportError as error:
                 raise ImportError(
-                    "DeFoG is optional. Install it with: pip install -e models/defog"
+                    "DeFoG is optional. Install it with: pip install -e './stage3[jax]'"
                 ) from error
             from pathlib import Path
 

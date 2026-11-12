@@ -208,3 +208,13 @@ copied outside the checkout, completed ten updates and ten teacher queries.
 Both module and console-script CLI help commands passed. The wheel includes
 the worker entry point, upstream notice, and MIT license. These distribution
 checks exercise installation and the toy path, not a native checkpoint query.
+
+The package was subsequently moved to the repository-root `stage3/` folder.
+The current equivalent build command is `uv build --offline --wheel stage3`;
+the recorded model evidence above retains its original identities and scope.
+After relocation, `python -m pytest stage3/tests` passed 57 checks with one
+optional Torch module skipped. A wheel built from `stage3/` imported from an
+isolated installation outside the checkout and completed the ten-update mock
+example with ten teacher queries. All 45 local documentation links checked
+across the package and updated guides resolved. This was a layout and
+installation check; no new native model or hallucination run was performed.
