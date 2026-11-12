@@ -30,9 +30,23 @@ def run(general, stage, general_path, stage_path, output):
             return hardening_factory(loss, epochs, hardening.get("gradient", "inherited"))
 
     with ExitStack() as resources:
+        details = {"operators": operators.record(), "hardening": hardening}
+        if stage.get("defog") is not None:
+            try:
+                from mosaic_defog.integration import mosaic_prepare_loss
+            except ImportError as error:
+                raise ImportError(
+                    "DeFoG is optional. Install it with: pip install -e models/defog"
+                ) from error
+            from pathlib import Path
+
+            prepare_loss, details["defog"] = mosaic_prepare_loss(
+                stage["defog"], resources, directory=Path(stage_path).resolve().parent,
+                prepare_loss=prepare_loss,
+            )
         optimize(
             general, stage, general_path, stage_path, output, resources,
             after_update=post_step(operators) if operators.mode != "none" else None,
             prepare_loss=prepare_loss,
-            stage_details={"operators": operators.record(), "hardening": hardening},
+            stage_details=details,
         )

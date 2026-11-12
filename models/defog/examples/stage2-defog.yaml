@@ -1,0 +1,31 @@
+# Use your existing general YAML: model, target, initialization and output folder.
+stage: stage2
+readout_every: 1
+eta_X: 0.3
+eta_E: 0.3
+
+# These remain ordinary Stage 2 options. DeFoG does not implement projection.
+operators:
+  mode: connected
+  aromatic_order: 1.5
+  bridge_probability: 0.6
+improvements:
+  readout_caps: true
+  valence_damping: 1.0
+  fluidity_threshold: 0.95
+  fluidity_strength: 0.05
+  bridge_retry: false
+hardening:
+  enabled: false
+
+# Replace these three asset paths. Relative paths start at this YAML's folder.
+defog:
+  source: /path/to/DeFoG
+  checkpoint: /path/to/guacamol.ckpt
+  python: /path/to/defog-env/bin/python
+  weight: 0.0625
+  time: 0.8
+  # Alternatives, with zero-based state indices:
+  # weight: {kind: linear, start: 0.0, end: 0.0625}
+  # weight: {kind: cosine, low: 0.0, high: 0.1, period: 1500}
+  # time: {kind: linear, start: 0.2, end: 0.95}

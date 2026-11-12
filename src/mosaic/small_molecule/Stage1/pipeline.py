@@ -160,7 +160,10 @@ def optimize(
             for state in range(epochs + 1):
                 current_loss = loss_for_state(graph, state) if loss_for_state else loss
                 evaluation = evaluate_graph(current_loss, graph, model_key)
-                soft_score = score_sign * float(evaluation.value)
+                # A prepared loss may add a prior. Keep the model score separate
+                # from that combined objective, including between readouts.
+                native_value = evaluation.aux.get("defog_native_loss", evaluation.value)
+                soft_score = score_sign * float(native_value)
                 atoms.append(np.asarray(graph.X))
                 bonds.append(np.asarray(graph.E_upper))
                 current_mass = 1 - bonds[-1][:, 0]
@@ -184,8 +187,10 @@ def optimize(
                                 if name.startswith("affinity_")})
                 if operator_report is not None:
                     row["chemistry_update"] = operator_report
-                if loss_for_state:
+                if loss_for_state and "forward_hardness" in evaluation.aux:
                     row["forward_hardness"] = float(evaluation.aux["forward_hardness"])
+                row.update({name: float(value) for name, value in evaluation.aux.items()
+                            if name.startswith("defog_")})
                 log_row(trace, row)
 
                 if state in (0, epochs) or state % stage["readout_every"] == 0:
@@ -196,7 +201,10 @@ def optimize(
                     hard_score = score_sign * float(hard_loss)
                     # For a hardening comparison, measure the gap against the
                     # underlying soft graph, not the hardened model input.
-                    soft_loss = loss(graph, key=model_key)[0] if loss_for_state else evaluation.value
+                    soft_loss = (
+                        loss(graph, key=model_key)[0]
+                        if "forward_hardness" in evaluation.aux else native_value
+                    )
                     soft_score = score_sign * float(soft_loss)
                     log_row(readouts, {
                         "state": state,

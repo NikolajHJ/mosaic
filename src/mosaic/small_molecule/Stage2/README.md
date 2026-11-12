@@ -15,6 +15,29 @@ discrete atom and bond choices as the run progresses; the optimizer still
 updates probabilities. Compare hardening against a relaxed run starting
 from the same checkpoint.
 
+Optional [DeFoG guidance](../../../../models/defog/README.md) adds a frozen,
+one-query teacher loss before the update. Install it with
+`python -m pip install -e 'models/defog[jax]'` in the runner's environment and add
+the following block to a Stage 2 YAML:
+
+```yaml
+defog:
+  source: /path/to/DeFoG
+  checkpoint: /path/to/guacamol.ckpt
+  python: /path/to/defog-env/bin/python
+  weight: 0.0625
+  time: 0.8
+```
+
+The source and checkpoint are external assets; the separate interpreter hosts
+the CPU teacher. Paths are relative to the Stage 2 YAML. Weight and teacher time
+can also use linear/cosine schedule dictionaries; the
+[complete YAML](../../../../models/defog/examples/stage2-defog.yaml) shows examples.
+DeFoG composes with the hardening hook and leaves the selected chemistry
+operators in place. `none`, `valence`, `connected`, `sparse_only`, and `sparse`
+remain separate projection choices. None guarantees a connected, sanitized
+argmax molecule; see the [benchmark evidence](../../../../models/defog/BENCHMARKS.md).
+
 Use a general YAML from the [BRD4 baseline](../../../../experiments/brd4/stage1-baseline/README.md)
 and choose a new output folder. On an allocated DTU HPC GPU, run from the
 repository root:

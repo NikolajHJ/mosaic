@@ -1,0 +1,615 @@
+{
+  "schema_version": 1,
+  "collected_date": "2026-11-12",
+  "scope": "Historical exploratory pipelines; not optimization benchmarks of the extracted package",
+  "source_record_root": "results/hpc paths in the Mosaic research checkout and HPC archives; not bundled",
+  "target": "BRD4",
+  "occupied_atoms": 25,
+  "caveats": [
+    "Trajectory readouts are correlated, not independent samples",
+    "Raw argmax validity means RDKit sanitized and one fragment; no repair or fragment removal",
+    "Protenix contact is a model proxy with higher better; native loss is its negation",
+    "Boltz-2 native affinity loss is lower better and has different units",
+    "Most fixed/cyclic arms use seed 17 and a shared carbon-chain start; the nine-start panel has explicit seed/initializer variation",
+    "Historical formulation and settings are preserved in source records; extraction parity does not reproduce optimization trajectories"
+  ],
+  "teacher": {
+    "source_revision": "365bda9affadd5c2307014a0532ddaa244399441",
+    "checkpoint_sha256": "bc97d52ccf33a20d991f98349a1d37662273ab1c3e3f9777b938f9f144bc61f5",
+    "feature_policy": "hard_aux_soft_core"
+  },
+  "probability_mse_campaigns": [
+    {
+      "id": "protenix_fixed_500",
+      "formulation": "detached moving-target probability MSE",
+      "model": "Protenix-Tiny",
+      "updates": 500,
+      "learning_rate": 0.3,
+      "schedule": "constant weights; reference weights 0 and 0.5 reused from completed pair",
+      "source_records": [
+        "results/hpc/stage2-protenix-defog-weights-20261105a/comparison.json"
+      ],
+      "comparison": {
+        "reference_pair": "/work3/s234818/mosaic/runs/stage2-protenix-defog-pair-20261105a/output/pair",
+        "weights": {
+          "0": {
+            "best_soft_native_loss": -0.35563787817955017,
+            "best_valid_hard_native_loss": -0.3108471930027008,
+            "distinct_valid_smiles": 17,
+            "final_sanitized_connected": false,
+            "final_soft_native_loss": -0.3430963158607483,
+            "hard_atom_changes": 16,
+            "hard_bond_changes": 25,
+            "mean_hard_minus_soft_native_loss": 0.01736764586019421,
+            "readouts": 501,
+            "sanitized_connected_readouts": 475,
+            "sulfur_final": 1,
+            "sulfur_max": 2,
+            "sulfur_mean": 1.0379241516966067,
+            "weight": 0
+          },
+          "0.0625": {
+            "best_soft_native_loss": -0.4225088357925415,
+            "best_valid_hard_native_loss": -0.32907310128211975,
+            "distinct_valid_smiles": 10,
+            "final_sanitized_connected": true,
+            "final_soft_native_loss": -0.42100319266319275,
+            "hard_atom_changes": 2,
+            "hard_bond_changes": 11,
+            "mean_hard_minus_soft_native_loss": 0.03431064086759875,
+            "readouts": 501,
+            "sanitized_connected_readouts": 501,
+            "sulfur_final": 1,
+            "sulfur_max": 1,
+            "sulfur_mean": 0.09780439121756487,
+            "weight": 0.0625
+          },
+          "0.125": {
+            "best_soft_native_loss": -0.3868546187877655,
+            "best_valid_hard_native_loss": -0.2903048098087311,
+            "distinct_valid_smiles": 10,
+            "final_sanitized_connected": true,
+            "final_soft_native_loss": -0.3867604434490204,
+            "hard_atom_changes": 1,
+            "hard_bond_changes": 21,
+            "mean_hard_minus_soft_native_loss": 0.04831479373806251,
+            "readouts": 501,
+            "sanitized_connected_readouts": 501,
+            "sulfur_final": 0,
+            "sulfur_max": 0,
+            "sulfur_mean": 0.0,
+            "weight": 0.125
+          },
+          "0.25": {
+            "best_soft_native_loss": -0.3666746914386749,
+            "best_valid_hard_native_loss": -0.2781760096549988,
+            "distinct_valid_smiles": 8,
+            "final_sanitized_connected": true,
+            "final_soft_native_loss": -0.3666746914386749,
+            "hard_atom_changes": 1,
+            "hard_bond_changes": 14,
+            "mean_hard_minus_soft_native_loss": 0.05411080581818274,
+            "readouts": 501,
+            "sanitized_connected_readouts": 501,
+            "sulfur_final": 0,
+            "sulfur_max": 0,
+            "sulfur_mean": 0.0,
+            "weight": 0.25
+          },
+          "0.5": {
+            "best_soft_native_loss": -0.3758677840232849,
+            "best_valid_hard_native_loss": -0.22931073606014252,
+            "distinct_valid_smiles": 8,
+            "final_sanitized_connected": true,
+            "final_soft_native_loss": -0.37436798214912415,
+            "hard_atom_changes": 0,
+            "hard_bond_changes": 34,
+            "mean_hard_minus_soft_native_loss": 0.0748323775872499,
+            "readouts": 501,
+            "sanitized_connected_readouts": 501,
+            "sulfur_final": 0,
+            "sulfur_max": 0,
+            "sulfur_mean": 0.0,
+            "weight": 0.5
+          }
+        }
+      }
+    },
+    {
+      "id": "protenix_fixed_2000",
+      "formulation": "detached moving-target probability MSE",
+      "model": "Protenix-Tiny",
+      "updates": 2000,
+      "learning_rate": 0.3,
+      "schedule": "constant weights",
+      "source_records": [
+        "results/hpc/stage2-protenix-defog-2000-20261106a/comparison.json"
+      ],
+      "comparison": {
+        "weights": {
+          "0": {
+            "best_soft_native_loss": -0.35562992095947266,
+            "best_valid_hard_native_loss": -0.3108470141887665,
+            "distinct_valid_smiles": 23,
+            "final_sanitized_connected": false,
+            "final_soft_native_loss": -0.24550555646419525,
+            "hard_atom_changes": 102,
+            "hard_bond_changes": 467,
+            "mean_hard_minus_soft_native_loss": 0.035030475360104465,
+            "readouts": 2001,
+            "sanitized_connected_readouts": 512,
+            "sulfur_final": 1,
+            "sulfur_max": 2,
+            "sulfur_mean": 1.1359320339830086,
+            "weight": 0
+          },
+          "0.0625": {
+            "best_soft_native_loss": -0.6352692246437073,
+            "best_valid_hard_native_loss": -0.38459739089012146,
+            "distinct_valid_smiles": 68,
+            "final_sanitized_connected": true,
+            "final_soft_native_loss": -0.6033424139022827,
+            "hard_atom_changes": 14,
+            "hard_bond_changes": 704,
+            "mean_hard_minus_soft_native_loss": 0.13492686357693576,
+            "readouts": 2001,
+            "sanitized_connected_readouts": 1998,
+            "sulfur_final": 1,
+            "sulfur_max": 1,
+            "sulfur_mean": 0.7736131934032984,
+            "weight": 0.0625
+          },
+          "0.125": {
+            "best_soft_native_loss": -0.578533411026001,
+            "best_valid_hard_native_loss": -0.3580743670463562,
+            "distinct_valid_smiles": 71,
+            "final_sanitized_connected": true,
+            "final_soft_native_loss": -0.5338966846466064,
+            "hard_atom_changes": 4,
+            "hard_bond_changes": 431,
+            "mean_hard_minus_soft_native_loss": 0.17068083930587483,
+            "readouts": 2001,
+            "sanitized_connected_readouts": 2000,
+            "sulfur_final": 1,
+            "sulfur_max": 1,
+            "sulfur_mean": 0.6196901549225388,
+            "weight": 0.125
+          }
+        }
+      }
+    },
+    {
+      "id": "protenix_cosine_10000_lr03",
+      "formulation": "detached moving-target probability MSE",
+      "model": "Protenix-Tiny",
+      "updates": 10000,
+      "learning_rate": 0.3,
+      "schedule": "raised cosine low 0 high 0.5 period 1000",
+      "source_records": [
+        "results/hpc/stage2-protenix-defog-cyclic-10000-20261106a/comparison.json"
+      ],
+      "comparison": {
+        "stage2-defog": {
+          "best_soft_native_loss": -0.6492959260940552,
+          "best_valid_hard_native_loss": -0.37866631150245667,
+          "distinct_valid_smiles": 278,
+          "final_sanitized_connected": true,
+          "final_soft_native_loss": -0.5818166732788086,
+          "hard_atom_changes": 109,
+          "hard_bond_changes": 1989,
+          "mean_hard_minus_soft_native_loss": 0.17692461779398652,
+          "readouts": 10001,
+          "sanitized_connected_readouts": 9958,
+          "sulfur_final": 1,
+          "sulfur_max": 3,
+          "sulfur_mean": 1.305969403059694
+        }
+      }
+    },
+    {
+      "id": "protenix_cosine_10000_lr150",
+      "formulation": "detached moving-target probability MSE",
+      "model": "Protenix-Tiny",
+      "updates": 10000,
+      "learning_rate": 150,
+      "schedule": "raised cosine low 0 high 0.5 period 1000",
+      "source_records": [
+        "results/hpc/stage2-protenix-defog-cyclic-lr150-10000-20261106a/comparison.json"
+      ],
+      "comparison": {
+        "stage2-defog": {
+          "best_soft_native_loss": -0.339531272649765,
+          "best_valid_hard_native_loss": -0.2606585621833801,
+          "distinct_valid_smiles": 39,
+          "final_sanitized_connected": false,
+          "final_soft_native_loss": -0.16473807394504547,
+          "hard_atom_changes": 20434,
+          "hard_bond_changes": 80574,
+          "mean_hard_minus_soft_native_loss": 0.007221367847483202,
+          "readouts": 10001,
+          "sanitized_connected_readouts": 39,
+          "sulfur_final": 0,
+          "sulfur_max": 6,
+          "sulfur_mean": 0.15128487151284872
+        }
+      }
+    },
+    {
+      "id": "boltz2_fixed_500",
+      "formulation": "detached moving-target probability MSE",
+      "model": "Boltz-2",
+      "updates": 500,
+      "learning_rate": 0.3,
+      "schedule": "constant weight 0.5 versus projection control",
+      "source_records": [
+        "results/hpc/stage2-defog-pair-20261104a/comparison.json"
+      ],
+      "comparison": {
+        "stage2": {
+          "best_soft_native_loss": -1.631969928741455,
+          "best_valid_hard_native_loss": -1.391950011253357,
+          "final_sanitized_connected": true,
+          "final_soft_native_loss": -0.48323899507522583,
+          "hard_atom_changes": 320,
+          "hard_bond_changes": 368,
+          "mean_hard_minus_soft_native_loss": 0.015275163408703434,
+          "readouts": 501,
+          "sanitized_connected_readouts": 400,
+          "sulfur_final": 0,
+          "sulfur_max": 4,
+          "sulfur_mean": 0.27345309381237526
+        },
+        "stage2-defog": {
+          "best_soft_native_loss": -1.4382903575897217,
+          "best_valid_hard_native_loss": -0.8235892057418823,
+          "final_sanitized_connected": false,
+          "final_soft_native_loss": -0.5201073288917542,
+          "hard_atom_changes": 173,
+          "hard_bond_changes": 190,
+          "mean_hard_minus_soft_native_loss": 0.18336629134950463,
+          "readouts": 501,
+          "sanitized_connected_readouts": 188,
+          "sulfur_final": 0,
+          "sulfur_max": 2,
+          "sulfur_mean": 0.33532934131736525
+        }
+      }
+    },
+    {
+      "id": "protenix_nine_matched_starts_lr70",
+      "formulation": "detached moving-target probability MSE",
+      "model": "Protenix-Tiny",
+      "updates": 500,
+      "learning_rate": 70,
+      "schedule": "constant teacher weight 0.0625; teacher time approximately 0.8",
+      "seeds": [
+        17,
+        23,
+        42
+      ],
+      "source_records": [
+        "results/hpc/stage2-protenix-defog-lr70-starts-500-20261111a/aggregate-20261112a.json",
+        "results/hpc/stage2-protenix-defog-lr70-starts-500-20261111a/recap-20261112a.json",
+        "results/hpc/stage2-protenix-defog-lr70-starts-500-20261111a/terminal-evidence-20261112a.json"
+      ],
+      "aggregate": {
+        "status": "completed",
+        "arms": 18,
+        "updates_per_arm": 500,
+        "validity_policy": "raw argmax, RDKit sanitized and one fragment",
+        "groups": {
+          "stage2": {
+            "valid_connected_readouts": 31,
+            "saved_readouts": 4509,
+            "valid_connected_endpoints": 0,
+            "endpoint_fragment_range": [
+              8,
+              10
+            ],
+            "mean_best_valid_hard_contact": 0.22290698687235513,
+            "best_valid_hard_contact": 0.3274023234844208
+          },
+          "stage2-defog": {
+            "valid_connected_readouts": 64,
+            "saved_readouts": 4509,
+            "valid_connected_endpoints": 0,
+            "endpoint_fragment_range": [
+              9,
+              13
+            ],
+            "mean_best_valid_hard_contact": 0.2676983078320821,
+            "best_valid_hard_contact": 0.347640722990036
+          }
+        },
+        "by_initialization": {
+          "sparse-random": {
+            "stage2": 15,
+            "stage2-defog": 19
+          },
+          "dense-random": {
+            "stage2": 3,
+            "stage2-defog": 11
+          },
+          "sparse-disconnected": {
+            "stage2": 13,
+            "stage2-defog": 34
+          }
+        },
+        "best_hard_score_guided_wins": 7,
+        "scope": "within-pair matched hardware; seeds17/23 A10, seed42 A100; trajectory counts are correlated observations",
+        "last_valid_guided_step": 20,
+        "guided_final_sanitized": 9,
+        "guided_best_after_step": 7,
+        "all_native_frozen_checks_returned": true,
+        "all_teacher_query_forward_checks_passed": true,
+        "all_scheduler_jobs_done": true
+      },
+      "arms": [
+        {
+          "seed": 17,
+          "initialization": "sparse-random",
+          "arm": "stage2",
+          "readouts": 501,
+          "sanitized_connected_readouts": 5,
+          "distinct_valid_smiles": 5,
+          "final_sanitized_connected": false,
+          "final_fragments": 10,
+          "best_valid_hard_native_loss": -0.3044291138648987
+        },
+        {
+          "seed": 17,
+          "initialization": "sparse-random",
+          "arm": "stage2-defog",
+          "readouts": 501,
+          "sanitized_connected_readouts": 12,
+          "distinct_valid_smiles": 12,
+          "final_sanitized_connected": false,
+          "final_fragments": 10,
+          "best_valid_hard_native_loss": -0.31281813979148865
+        },
+        {
+          "seed": 17,
+          "initialization": "dense-random",
+          "arm": "stage2",
+          "readouts": 501,
+          "sanitized_connected_readouts": 1,
+          "distinct_valid_smiles": 1,
+          "final_sanitized_connected": false,
+          "final_fragments": 10,
+          "best_valid_hard_native_loss": -0.13490894436836243
+        },
+        {
+          "seed": 17,
+          "initialization": "dense-random",
+          "arm": "stage2-defog",
+          "readouts": 501,
+          "sanitized_connected_readouts": 7,
+          "distinct_valid_smiles": 7,
+          "final_sanitized_connected": false,
+          "final_fragments": 10,
+          "best_valid_hard_native_loss": -0.23566611111164093
+        },
+        {
+          "seed": 17,
+          "initialization": "sparse-disconnected",
+          "arm": "stage2",
+          "readouts": 501,
+          "sanitized_connected_readouts": 4,
+          "distinct_valid_smiles": 4,
+          "final_sanitized_connected": false,
+          "final_fragments": 8,
+          "best_valid_hard_native_loss": -0.24011452496051788
+        },
+        {
+          "seed": 17,
+          "initialization": "sparse-disconnected",
+          "arm": "stage2-defog",
+          "readouts": 501,
+          "sanitized_connected_readouts": 14,
+          "distinct_valid_smiles": 14,
+          "final_sanitized_connected": false,
+          "final_fragments": 9,
+          "best_valid_hard_native_loss": -0.3129887878894806
+        },
+        {
+          "seed": 23,
+          "initialization": "sparse-random",
+          "arm": "stage2",
+          "readouts": 501,
+          "sanitized_connected_readouts": 7,
+          "distinct_valid_smiles": 7,
+          "final_sanitized_connected": false,
+          "final_fragments": 10,
+          "best_valid_hard_native_loss": -0.27897554636001587
+        },
+        {
+          "seed": 23,
+          "initialization": "sparse-random",
+          "arm": "stage2-defog",
+          "readouts": 501,
+          "sanitized_connected_readouts": 4,
+          "distinct_valid_smiles": 4,
+          "final_sanitized_connected": false,
+          "final_fragments": 9,
+          "best_valid_hard_native_loss": -0.2287052720785141
+        },
+        {
+          "seed": 23,
+          "initialization": "dense-random",
+          "arm": "stage2",
+          "readouts": 501,
+          "sanitized_connected_readouts": 1,
+          "distinct_valid_smiles": 1,
+          "final_sanitized_connected": false,
+          "final_fragments": 10,
+          "best_valid_hard_native_loss": -0.14285077154636383
+        },
+        {
+          "seed": 23,
+          "initialization": "dense-random",
+          "arm": "stage2-defog",
+          "readouts": 501,
+          "sanitized_connected_readouts": 2,
+          "distinct_valid_smiles": 2,
+          "final_sanitized_connected": false,
+          "final_fragments": 9,
+          "best_valid_hard_native_loss": -0.18596559762954712
+        },
+        {
+          "seed": 23,
+          "initialization": "sparse-disconnected",
+          "arm": "stage2",
+          "readouts": 501,
+          "sanitized_connected_readouts": 7,
+          "distinct_valid_smiles": 7,
+          "final_sanitized_connected": false,
+          "final_fragments": 8,
+          "best_valid_hard_native_loss": -0.27815935015678406
+        },
+        {
+          "seed": 23,
+          "initialization": "sparse-disconnected",
+          "arm": "stage2-defog",
+          "readouts": 501,
+          "sanitized_connected_readouts": 16,
+          "distinct_valid_smiles": 16,
+          "final_sanitized_connected": false,
+          "final_fragments": 9,
+          "best_valid_hard_native_loss": -0.2966356873512268
+        },
+        {
+          "seed": 42,
+          "initialization": "sparse-random",
+          "arm": "stage2",
+          "readouts": 501,
+          "sanitized_connected_readouts": 3,
+          "distinct_valid_smiles": 3,
+          "final_sanitized_connected": false,
+          "final_fragments": 10,
+          "best_valid_hard_native_loss": -0.3274023234844208
+        },
+        {
+          "seed": 42,
+          "initialization": "sparse-random",
+          "arm": "stage2-defog",
+          "readouts": 501,
+          "sanitized_connected_readouts": 3,
+          "distinct_valid_smiles": 3,
+          "final_sanitized_connected": false,
+          "final_fragments": 10,
+          "best_valid_hard_native_loss": -0.2219519317150116
+        },
+        {
+          "seed": 42,
+          "initialization": "dense-random",
+          "arm": "stage2",
+          "readouts": 501,
+          "sanitized_connected_readouts": 1,
+          "distinct_valid_smiles": 1,
+          "final_sanitized_connected": false,
+          "final_fragments": 10,
+          "best_valid_hard_native_loss": -0.09779892861843109
+        },
+        {
+          "seed": 42,
+          "initialization": "dense-random",
+          "arm": "stage2-defog",
+          "readouts": 501,
+          "sanitized_connected_readouts": 2,
+          "distinct_valid_smiles": 2,
+          "final_sanitized_connected": false,
+          "final_fragments": 9,
+          "best_valid_hard_native_loss": -0.2669125199317932
+        },
+        {
+          "seed": 42,
+          "initialization": "sparse-disconnected",
+          "arm": "stage2",
+          "readouts": 501,
+          "sanitized_connected_readouts": 2,
+          "distinct_valid_smiles": 2,
+          "final_sanitized_connected": false,
+          "final_fragments": 10,
+          "best_valid_hard_native_loss": -0.20152337849140167
+        },
+        {
+          "seed": 42,
+          "initialization": "sparse-disconnected",
+          "arm": "stage2-defog",
+          "readouts": 501,
+          "sanitized_connected_readouts": 4,
+          "distinct_valid_smiles": 4,
+          "final_sanitized_connected": false,
+          "final_fragments": 13,
+          "best_valid_hard_native_loss": -0.347640722990036
+        }
+      ]
+    }
+  ],
+  "separate_kl_js_campaigns": [
+    {
+      "id": "sparse_js_30000",
+      "formulation": "bounded logit updates; KL prior plus composition JS; different from package MSE",
+      "model": "Protenix-Tiny",
+      "updates": 30000,
+      "saved_states": 30001,
+      "sanitized_raw_states": 10611,
+      "sanitized_connected_states": 10155,
+      "distinct_valid_connected_smiles": 3,
+      "projection": "none",
+      "time_ramp": "0.2 to0.95 over this arm budget, not a30k prefix",
+      "final_sanitized": false,
+      "final_fragments": 1,
+      "endpoint_error": "AtomValenceException: Explicit valence for atom # 19 N, 4, is greater than permitted",
+      "late_connected_valid_fraction": 0.0,
+      "elapsed_seconds": 7382.238284221996,
+      "frozen_state_unchanged": true,
+      "teacher_frozen_final": {
+        "id": 30002,
+        "status": "passed",
+        "state_digest": "40e478b9784e37189c6ea6ee945edf8bfe004addfec75d3b153fd04f8eee5838",
+        "queries": 30001,
+        "forwards": 30001
+      },
+      "source_records": [
+        "results/hpc/20261104-defog-sparse-js-30000-01/completed-sparse-js-summary.json"
+      ]
+    },
+    {
+      "id": "sparse_js_valence_30000",
+      "formulation": "bounded logit updates; KL prior plus composition JS; different from package MSE",
+      "model": "Protenix-Tiny",
+      "updates": 30000,
+      "saved_states": 30001,
+      "sanitized_raw_states": 22656,
+      "sanitized_connected_states": 10036,
+      "distinct_valid_connected_smiles": 3,
+      "projection": "valence only; no bridging",
+      "time_ramp": "0.2 to0.95 over this arm budget, not a30k prefix",
+      "final_sanitized": true,
+      "final_fragments": 3,
+      "endpoint_error": null,
+      "late_connected_valid_fraction": 0.0,
+      "elapsed_seconds": 7600.614583062998,
+      "frozen_state_unchanged": true,
+      "teacher_frozen_final": {
+        "id": 30002,
+        "status": "passed",
+        "state_digest": "40e478b9784e37189c6ea6ee945edf8bfe004addfec75d3b153fd04f8eee5838",
+        "queries": 30001,
+        "forwards": 30001
+      },
+      "source_records": [
+        "results/hpc/20261106-defog-sparse-js-valence-30000-01/completed-summary-20261112.json"
+      ]
+    }
+  ],
+  "package_validation": {
+    "native_result": "native-validation.json",
+    "scheduler_job": 30017019,
+    "scope": "Six native target parity comparisons plus repeatability, frozen state, analytic JAX student gradients and Torch/JAX student loss-gradient parity; no native structure scorer optimization",
+    "worker_device": "cpu",
+    "worker_threads": 2,
+    "query_time_scope": "Individual prediction calls, excluding startup and optimizer/scorer costs"
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "scope": "native teacher extraction parity and attached student loss; no Protenix forward or new optimization",
+  "cases": [
+    {
+      "initialization": "sparse-random",
+      "time": 0.2,
+      "max_target_error": 0.0,
+      "package_query_seconds": 0.07050645991694182,
+      "student_loss": 0.23780038952827454,
+      "student_atom_gradient_norm": 0.1674257069826126,
+      "student_bond_gradient_norm": 0.02889159880578518
+    },
+    {
+      "initialization": "sparse-random",
+      "time": 0.7999949998333278,
+      "max_target_error": 0.0,
+      "package_query_seconds": 0.07616728497669101,
+      "student_loss": 0.09569716453552246,
+      "student_atom_gradient_norm": 0.12164720892906189,
+      "student_bond_gradient_norm": 0.0065415226854383945
+    },
+    {
+      "initialization": "dense-random",
+      "time": 0.2,
+      "max_target_error": 0.0,
+      "package_query_seconds": 0.07479936501476914,
+      "student_loss": 1.3240221738815308,
+      "student_atom_gradient_norm": 0.25467923283576965,
+      "student_bond_gradient_norm": 0.1106729656457901
+    },
+    {
+      "initialization": "dense-random",
+      "time": 0.7999949998333278,
+      "max_target_error": 0.0,
+      "package_query_seconds": 0.07132738595828414,
+      "student_loss": 1.4980266094207764,
+      "student_atom_gradient_norm": 0.30211615562438965,
+      "student_bond_gradient_norm": 0.11120929569005966
+    },
+    {
+      "initialization": "sparse-disconnected",
+      "time": 0.2,
+      "max_target_error": 0.0,
+      "package_query_seconds": 0.06845033098943532,
+      "student_loss": 0.2276526689529419,
+      "student_atom_gradient_norm": 0.16750004887580872,
+      "student_bond_gradient_norm": 0.02640732377767563
+    },
+    {
+      "initialization": "sparse-disconnected",
+      "time": 0.7999949998333278,
+      "max_target_error": 0.0,
+      "package_query_seconds": 0.07535527506843209,
+      "student_loss": 0.07647018879652023,
+      "student_atom_gradient_norm": 0.10859596729278564,
+      "student_bond_gradient_norm": 0.006070049945265055
+    }
+  ],
+  "identity": {
+    "status": "ready",
+    "protocol": "mosaic-defog-teacher-v1",
+    "source_revision": "365bda9affadd5c2307014a0532ddaa244399441",
+    "checkpoint_sha256": "bc97d52ccf33a20d991f98349a1d37662273ab1c3e3f9777b938f9f144bc61f5",
+    "state_digest": "40e478b9784e37189c6ea6ee945edf8bfe004addfec75d3b153fd04f8eee5838",
+    "torch_version": "2.5.1+cu121",
+    "input_dims": {
+      "X": 34,
+      "E": 25,
+      "y": 7
+    },
+    "output_dims": {
+      "X": 12,
+      "E": 5,
+      "y": 0
+    },
+    "omitted_evaluation_buffers": [
+      "sampling_metrics.edge_target_dist",
+      "sampling_metrics.n_target_dist",
+      "sampling_metrics.node_target_dist",
+      "sampling_metrics.valency_target_dist"
+    ],
+    "device": "cpu",
+    "elements": [
+      "C",
+      "N",
+      "O",
+      "S",
+      "F",
+      "Cl"
+    ],
+    "feature_policy": "hard_aux_soft_core"
+  },
+  "repeatability": "passed",
+  "package_frozen": {
+    "id": 8,
+    "status": "passed",
+    "state_digest": "40e478b9784e37189c6ea6ee945edf8bfe004addfec75d3b153fd04f8eee5838",
+    "queries": 7,
+    "forwards": 7
+  },
+  "torch_jax_student_parity": {
+    "status": "passed",
+    "torch_version": "2.5.1+cu121"
+  },
+  "legacy_frozen": {
+    "id": 7,
+    "status": "passed",
+    "state_digest": "40e478b9784e37189c6ea6ee945edf8bfe004addfec75d3b153fd04f8eee5838",
+    "queries": 6,
+    "forwards": 6
+  },
+  "status": "passed"
+}

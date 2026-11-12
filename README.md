@@ -5,10 +5,11 @@
 `main` tracks the upstream Mosaic library, examples, and tests. Use the
 installation instructions below for the standard library.
 
-The small-molecule extension, BRD4/JQ1 experiments, HPC workflows, and
-research records live on [`codex/mosaic-experiments`](https://github.com/NikolajHJ/mosaic/tree/codex/mosaic-experiments).
-Use that branch for the research workflow. Bring reusable library changes to
-`main` through focused pull requests.
+The reusable [small-molecule pipeline](src/mosaic/small_molecule/README.md) and
+optional [DeFoG guidance package](models/defog/README.md) are also available here.
+BRD4/JQ1 experiments, HPC workflows, and historical research records live on
+[`codex/mosaic-experiments`](https://github.com/NikolajHJ/mosaic/tree/codex/mosaic-experiments).
+Use that branch for the research workflow.
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23193038.svg)](https://doi.org/10.5281/zenodo.23193038)
 
