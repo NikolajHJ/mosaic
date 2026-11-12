@@ -190,6 +190,14 @@ attached student loss; they do not qualify derivatives of a native structure
 scorer or reproduce an optimization trajectory. No fresh GPU optimization
 trajectory has been run with the extracted package as part of packaging.
 
+An additional [installed-wheel check](wheel-validation.json), job 30017889,
+passed on 12 November. The coordinator used Python 3.12.11 and NumPy 2.5.3;
+the teacher used its own NumPy 1.26.4. A deliberately failing NumPy module in
+the coordinator's installation was not imported by the teacher. One native
+prediction and the frozen-state check passed. This checks the dependency
+boundary used by non-editable installs, independently of the source-tree
+validation above; it is not an additional chemical-quality benchmark.
+
 Distribution checks on 12 November also passed: `uv build --offline --wheel
 models/defog` produced a wheel that installed into a fresh Windows Python 3.12
 environment outside the checkout. With `PYTHONPATH` removed and Python isolated

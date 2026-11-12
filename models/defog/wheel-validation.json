@@ -1,0 +1,17 @@
+{
+  "status": "passed",
+  "scope": "installed wheel, isolated teacher dependencies, one native prediction and frozen check",
+  "wheel_sha256": "d6e6f3da158b87a8a9c530b17dedfd7d0a2fc599eac7b85fb9cf383919028142",
+  "coordinator_python": "3.12.11",
+  "coordinator_numpy": "2.5.3",
+  "teacher_numpy": "1.26.4",
+  "teacher_torch": "2.5.1+cu121",
+  "poisoned_coordinator_dependency_ignored": true,
+  "frozen": {
+    "id": 2,
+    "status": "passed",
+    "state_digest": "40e478b9784e37189c6ea6ee945edf8bfe004addfec75d3b153fd04f8eee5838",
+    "queries": 1,
+    "forwards": 1
+  }
+}

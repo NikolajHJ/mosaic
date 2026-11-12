@@ -170,6 +170,9 @@ Relative asset paths start at the Stage 2 YAML's directory. Linear schedules
 default to the optimizer's update count, include both endpoints, and hold their
 final value for the terminal readout. Cosine schedules start at their minimum.
 The adapter composes with an existing preparation hook such as hardening.
+In that combination, DeFoG still queries the optimizer's soft graph; the native
+scorer may see the explicitly chosen hardened view. This changes the objective
+and has not been benchmarked as a hallucination improvement here.
 
 Keep `operators.mode` as its own experimental choice: `none`, `valence`,
 `connected`, `sparse_only`, or `sparse`. DeFoG supplies a loss; those Stage 2
