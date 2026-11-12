@@ -3,8 +3,10 @@
 This study asks when a frozen, refreshed DeFoG graph prediction improves the
 **best valid molecule found during Protenix optimization**. It implements the
 Stage 3 plan on branch `codex/defog-stage3-campaign`; it changes no running or
-historical experiment. The campaign has not produced native optimization results
-yet. CPU fixtures check software behavior and are labelled mock data.
+historical experiment. All 396 GPU bundles were accepted on 13 November 2026;
+see the [submission note](run-20261113.md) for queue placement, source identity
+and receipts. Native optimization results are pending. CPU fixtures check
+software behavior and are labelled mock data.
 
 The initial design has **155 distinct settings × 3 initializations × 3 seeds =
 1,395 runs**, each with **500 updates**, for 697,500 updates. Related settings
@@ -214,8 +216,8 @@ current site availability and measured run times.
 Accepted, failed or uncertain submission evidence is retained. If submission
 transport fails, reconcile its receipt and scheduler job before retrying; a
 connection failure is not evidence that no job was accepted. Never edit the
-source snapshot, plan or assets beneath submitted jobs. The implementation
-itself has submitted no experiments.
+source snapshot, plan or assets beneath submitted jobs. The current campaign's
+accepted submissions are recorded in the [submission note](run-20261113.md).
 
 ## Outputs and plotting
 

@@ -120,13 +120,13 @@ Protenix molecule, and how do time, strength, projection and cooling affect it?
 Implemented on `codex/defog-stage3-campaign` in the
 [existing learned-prior home](../experiments/learned-prior/protenix-defog-composition-30000/README.md).
 The resolved design contains 155 settings, 3 matched start types and 5 seeds:
-2,325 planned runs of 500 updates at atom/bond LR60, native coefficient1.
+2,325 planned runs of 500 updates at atom/bond LR60, native coefficient 1.
 A separate reference wave has 30 runs in 15 seed/start bundles. This preparation
 does not modify earlier experiments or submit GPU jobs.
 
 Primary selection is the highest frozen native hard contact score among raw
 sanitized connected argmax molecules, with initial-only successes explicit.
-Saved outputs include the top20 distinct valid molecules, all ordered candidate
+Saved outputs include the top 20 distinct valid molecules, all ordered candidate
 graphs, complete probability trajectories, selected discovery gradients/targets,
 chemical descriptors, bounded endpoint repair witnesses, and streaming tidy CSV
 tables. Optional descriptor failures retain candidates with missing metadata.
@@ -149,3 +149,18 @@ seeds 71 and 101 can be added later with identical settings and existing run IDs
 The relevant design, reference execution/collection and dispatch checks passed
 38 CPU tests. [New plan checks](../results/implementation-checks/stage3-three-seeds-20261112a/plan-checks.json)
 record model-free expansion. No native optimization or GPU submission occurred.
+
+### 2026-11-13 - Submitted the three-seed DeFoG Stage 3 campaign
+
+All 396 GPU bundles were accepted, covering 1,395 unique 500-update runs at LR60
+with native coefficient 1. Placement: 132 V100 and 132 A100 bundles, plus 44 each
+on L40S, A10 and A40. Shared-control seed/start blocks remain on one GPU family.
+The source is read-only commit 779bc35; scientific settings are unchanged.
+Lossless record compression was added after the initial quota check, and 46
+focused CPU checks passed. Following the user's storage cleanup, the fresh 20 GiB
+own-campaign capacity check passed. Active outputs are on work3; the unused home
+preparation has no submitted jobs.
+
+At 00:48 CET, receipts reconciled every job and LSF reported 396 pending, with no
+native optimization result yet. See the [submission note](../experiments/learned-prior/protenix-defog-composition-30000/run-20261113.md)
+and [retained receipts](../results/hpc/stage3-protenix-defog-lr60-3seeds-20261112a/submissions.json).
