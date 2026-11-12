@@ -31,13 +31,25 @@ def assignment(seed, initialization, profiles):
     return profiles[int.from_bytes(digest[:4], "big") % len(profiles)]
 
 
-def prepare(plan_path, output, source, python, assets, profiles, hours=2, modules=()):
+def prepare(plan_path, output, source, python, assets, profiles, hours=2, modules=(), placement=None):
     plan_path = Path(plan_path).resolve()
     plan = json.loads(plan_path.read_text(encoding="utf-8"))
     if plan.get("mock"):
         raise ValueError("Mock software fixtures are not GPU experiments")
     if not profiles or len(set(profiles)) != len(profiles) or set(profiles) - PROFILES.keys():
         raise ValueError(f"Choose distinct compatible profiles from {list(PROFILES)}")
+    blocks = {f"{b['seed']}:{b['initialization']}" for b in plan["bundles"]}
+    if placement is not None:
+        if not isinstance(placement, dict) or set(placement) != blocks:
+            raise ValueError("Placement must cover exactly the plan's seed:initialization blocks")
+        if any(not isinstance(value, str) or value not in profiles for value in placement.values()):
+            raise ValueError("Placement values must be compatible selected GPU profiles")
+        resolved_placement = dict(placement)
+    else:
+        resolved_placement = {
+            f"{b['seed']}:{b['initialization']}": assignment(b["seed"], b["initialization"], profiles)
+            for b in plan["bundles"]
+        }
     if not 1 <= hours <= 24:
         raise ValueError("Requested walltime must lie between1and24hours")
     for value in (source, python, assets):
@@ -57,7 +69,7 @@ def prepare(plan_path, output, source, python, assets, profiles, hours=2, module
         bid = bundle["bundle_id"]
         if not re.fullmatch(r"[A-Za-z0-9_.-]+", bid):
             raise ValueError("Unsafe bundle ID")
-        profile = assignment(bundle["seed"], bundle["initialization"], profiles)
+        profile = resolved_placement[f"{bundle['seed']}:{bundle['initialization']}"]
         queue, memory = PROFILES[profile]
         payload = [
             "#!/bin/bash", "set -euo pipefail", ': "${LSB_JOBID:?Allocated GPU required}"',
@@ -88,7 +100,9 @@ def prepare(plan_path, output, source, python, assets, profiles, hours=2, module
     result = {"created_utc": utc(), "plan": str(plan_path),
               "plan_sha256": hashlib.sha256(plan_path.read_bytes()).hexdigest(),
               "source": str(source), "source_policy": "explicit stable snapshot; never edit submitted source",
-              "profiles": profiles, "jobs": rows}
+              "profiles": profiles, "placement": resolved_placement,
+              "placement_policy": "explicit" if placement is not None else "deterministic_block_hash",
+              "jobs": rows}
     (output / "dispatch.json").write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
     return result
 
@@ -140,14 +154,17 @@ def main():
     p.add_argument("--profiles", nargs="+", choices=PROFILES, required=True)
     p.add_argument("--hours", type=int, default=2)
     p.add_argument("--modules", nargs="*", default=[])
+    p.add_argument("--placement", type=Path,
+                   help="JSON object mapping every seed:initialization block to a selected GPU profile")
     s = sub.add_parser("submit")
     s.add_argument("--dispatch", required=True)
     s.add_argument("--bundle-id", action="append", default=[])
     s.add_argument("--execute", action="store_true")
     args = parser.parse_args()
     if args.command == "prepare":
+        placement = json.loads(args.placement.read_text(encoding="utf-8")) if args.placement else None
         result = prepare(args.plan, args.output, args.source, args.python, args.assets,
-                         args.profiles, args.hours, args.modules)
+                         args.profiles, args.hours, args.modules, placement)
         print(json.dumps({"jobs_prepared": len(result["jobs"]), "submitted": False}))
     else:
         print(json.dumps(submit(args.dispatch, args.bundle_id, args.execute), indent=2))
