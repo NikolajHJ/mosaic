@@ -138,3 +138,14 @@ code identity are in
 [the local checks](../results/implementation-checks/stage3-20261112a/checks.json).
 No native Protenix/DeFoG optimization, GPU performance or numerical qualification
 is claimed from these software fixtures. Native outcomes remain unmeasured.
+
+### 2026-11-12 - Reduced the initial DeFoG panel to three seeds
+
+At the user's request, the default LR60/500-update campaign now uses seeds
+17, 23 and 42. All 155 settings and three start types remain: 1,395 planned
+runs, 396 GPU bundles and 697,500 updates. The reference wave is 18 runs in
+nine bundles. The original five-seed config and generated plans are preserved;
+seeds 71 and 101 can be added later with identical settings and existing run IDs.
+The relevant design, reference execution/collection and dispatch checks passed
+38 CPU tests. [New plan checks](../results/implementation-checks/stage3-three-seeds-20261112a/plan-checks.json)
+record model-free expansion. No native optimization or GPU submission occurred.

@@ -48,14 +48,15 @@ def test_every_teacher_treatment_has_an_exact_other_knob_control(conditions):
             assert c["paired_with"] is None
 
 
-def test_five_seed_blocks_repeat_exactly_across_conditions(config, conditions):
+def test_three_seed_blocks_repeat_exactly_across_conditions(config, conditions):
     runs = design.expand_runs(config)
-    assert len(runs) == 155 * 3 * 5
+    assert config["seeds"] == [17, 23, 42]
+    assert len(runs) == 155 * 3 * 3
     assert len({r["run_id"] for r in runs}) == len(runs)
     for c in conditions:
         selected = [r for r in runs if r["condition_id"] == c["id"]]
         assert {(r["seed"], r["initialization"]) for r in selected} == {
-            (s, i) for s in (17, 23, 42, 71, 101) for i in ("sparse", "dense", "fragmented")}
+            (s, i) for s in config["seeds"] for i in ("sparse", "dense", "fragmented")}
         assert all(r["learning_rate"] == 60 and r["updates"] == 500 and r["native_weight"] == 1
                    for r in selected)
         assert all(r["initialization_parameters"] == design.INITIALIZATION_PARAMETERS for r in selected)
@@ -88,7 +89,7 @@ def test_bundles_have_one_writer_and_independent_seed_placement(config, max_arms
     assert set(counts.values()) == {1}
     assert len({b["bundle_id"] for b in bundles}) == len(bundles)
     first_wave = [b for b in bundles if b["wave"] == 0]
-    assert len(first_wave) == 15
+    assert len(first_wave) == len(config["seeds"]) * 3
     assert all(b["condition_ids"] == ["control", "reference"] for b in first_wave)
     for b in bundles:
         assert 1 <= len(b["run_ids"]) <= max_arms
@@ -96,6 +97,26 @@ def test_bundles_have_one_writer_and_independent_seed_placement(config, max_arms
         assert {r["initialization"] for r in b["runs"]} == {b["initialization"]}
         assert set(b["reference_run_ids"]) <= expected
         assert not set(b["reference_run_ids"]) & set(b["run_ids"])
+
+
+def test_five_seed_extension_keeps_identical_settings_and_existing_run_ids(config):
+    original = design.load_design(design.DEFAULT_CONFIG.with_name("stage3-lr60-500-five-seeds.json"))
+    assert original["seeds"] == [17, 23, 42, 71, 101]
+    assert design.expand_conditions(original) == design.expand_conditions(config)
+    current = {r["run_id"]: r for r in design.expand_runs(config)}
+    expanded = {r["run_id"]: r for r in design.expand_runs(original)}
+    assert len(current) == 1395 and len(expanded) == 2325
+    assert all(expanded[rid] == run for rid, run in current.items())
+    assert len(design.make_bundles(config)) == 396
+    assert len(design.make_bundles(original)) == 660
+
+
+@pytest.mark.parametrize("seeds", [[], [17, 17], [True, 23], [-1, 17], [17.0, 23], "17,23,42"])
+def test_invalid_seed_blocks_are_rejected_without_fixing_the_seed_count(config, seeds):
+    changed = deepcopy(config)
+    changed["seeds"] = seeds
+    with pytest.raises(ValueError, match="Seeds must"):
+        design.expand_runs(changed)
 
 
 def test_expanded_records_are_independent_copies(config):

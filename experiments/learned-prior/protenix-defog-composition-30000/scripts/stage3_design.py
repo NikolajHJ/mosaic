@@ -323,8 +323,10 @@ def validate_design(config, conditions=None):
         if config.get(name) != expected:
             raise ValueError(f"This campaign fixes {name}={expected!r}")
     seeds = config.get("seeds", [])
-    if len(seeds) != 5 or len(set(seeds)) != 5 or any(isinstance(s, bool) or not isinstance(s, int) or s < 0 for s in seeds):
-        raise ValueError("Exactly five distinct nonnegative integer seeds are required")
+    if (not isinstance(seeds, list) or not seeds
+            or any(isinstance(s, bool) or not isinstance(s, int) or s < 0 for s in seeds)
+            or len(set(seeds)) != len(seeds)):
+        raise ValueError("Seeds must be a nonempty list of distinct nonnegative integers")
     if config.get("initializations") != ["sparse", "dense", "fragmented"]:
         raise ValueError("Initialization blocks must be sparse, dense, fragmented")
     if config.get("initialization_parameters") != INITIALIZATION_PARAMETERS:

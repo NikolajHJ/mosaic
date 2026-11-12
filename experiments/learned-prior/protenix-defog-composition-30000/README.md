@@ -6,17 +6,24 @@ Stage 3 plan on branch `codex/defog-stage3-campaign`; it changes no running or
 historical experiment. The campaign has not produced native optimization results
 yet. CPU fixtures check software behavior and are labelled mock data.
 
-The full design has **155 distinct settings × 3 initializations × 5 seeds =
-2,325 runs**, each with **500 updates**, for 1,162,500 updates. Related settings
+The initial design has **155 distinct settings × 3 initializations × 3 seeds =
+1,395 runs**, each with **500 updates**, for 697,500 updates. Related settings
 share this experiment home. The older `30000` folder name identifies the study's
 home, not this campaign's update budget.
+
+The three-seed start was selected on 12 November 2026. The
+[five-seed configuration](configs/stage3-lr60-500-five-seeds.json) and its earlier
+prepared plans are retained for later expansion: 2,325 runs in 660 bundles.
+Seeds 71 and 101 are reserved for a later extension or confirmation; the initial
+campaign keeps every setting and initialization while reducing the seed budget
+by 40%.
 
 ## Fixed setup and selection
 
 Every native run uses the frozen Protenix-Tiny BRD4 pocket contact objective,
 native coefficient 1, atom and bond learning rates 60, 25 occupied neutral atom
 slots, six element categories, and five bond categories. Contact score is a
-model proxy, not a binding-affinity measurement. Seeds are **17, 23, 42, 71, 101**.
+model proxy, not a binding-affinity measurement. Initial seeds are **17, 23, 42**.
 The same seed fixes initialization and the native model key across settings;
 the key stays fixed within a run.
 
@@ -130,8 +137,8 @@ python experiments/learned-prior/protenix-defog-composition-30000/scripts/stage3
 ```
 
 Use a **separate output root** for each plan. The reference wave contains only
-the teacher-off control and moderate reference: 30 runs in 15 bundles. The full
-plan contains all 2,325 runs in 660 bundles at the default maximum of four arms.
+the teacher-off control and moderate reference: 18 runs in 9 bundles. The full
+initial plan contains all 1,395 runs in 396 bundles at the default maximum of four arms.
 Creating a plan starts no jobs. The JSON plan lists bundle IDs and their run
 IDs; select a listed ID for execution:
 
@@ -247,12 +254,11 @@ python experiments/learned-prior/protenix-defog-composition-30000/scripts/stage3
 | --- | --- |
 | `runs.csv` | One planned run; primary best-valid score, best-new score, yield, final/late diagnostics, and flattened settings. Start most comparisons here. |
 | `conditions.csv` | One planned setting; flattened teacher/projection/cooling choices, requirements and comparison memberships for joining plot annotations. |
-| `condition_summary.csv` | One setting × initialization; five-seed denominators, successful-run yields, conditional score mean and spread. |
+| `condition_summary.csv` | One setting × initialization; planned-seed denominators (three initially), successful-run yields, conditional score mean and spread. |
 | `paired.csv` | One treatment seed paired with its explicit teacher-off reference; score/validity/diversity deltas, all-state score-gap means, and same-update common-valid gap means with counts. Missing reference evidence gives missing deltas. |
 | `states.csv` | One run × update; best-so-far curves, score-gap trajectories, entropy, sulfur and fragmentation. |
 | `candidates.csv` | One run × ordered hard graph; raw labels, canonical identity, score and first occurrence. |
 | `top_valid.csv` | One run × selected distinct valid molecule, rank 1 best; native hard score, descriptors, visits and archive index. |
-| `top_valid.csv` | One run × ranked distinct valid connected molecular identity, up to 20; score, canonical identity, ordered graph and saved artifact paths. |
 | `gradients.csv` | One run × gradient update; weighted component size, native/teacher balance and calibration. |
 | `operators.csv` | One run × updated state; component changes, bridge survival and operator movements. The raw sequence is preserved in the step details. |
 | `operator_steps.csv` | One run × update × zero-based step index; operator name and numeric movement/component/projection fields, for plotting which operation creates or removes bridges. |
@@ -282,7 +288,7 @@ no additional native model evaluations.
 Collection keeps one run's records in memory, compact gap traces for pairing,
 and the small run-summary table. Observation rows pass through temporary disk
 snapshots before CSV writing; these snapshots are removed after collection.
-This avoids retaining the full million-state campaign as Python dictionaries.
+This avoids retaining the full campaign as Python dictionaries.
 
 An explicit `scientific_usable: false` records a frozen-model/context failure.
 Its raw scores and artifacts remain available, but it contributes no valid
@@ -299,22 +305,33 @@ Useful first plots are paired best-valid score and best-new score with the
 valid-run yield, fraction of seeds finding any new valid molecule, best-so-far
 hard score by update, final fragment distributions, teacher/native gradient
 ratios, and valid-state score gaps. Keep initial-only successes visibly marked.
-The five-seed spread is informative; uncertainty should be computed across seeds,
+The seed-to-seed spread is informative; uncertainty should be computed across seeds,
 not by treating successive optimization states as independent samples.
 
 ## Implementation checks
 
 The [design tests](tests/test_stage3_design.py) check unique physical settings,
-complete five-seed blocks, exact non-teacher control matching, schedule means,
+complete planned seed blocks, exact non-teacher control matching, schedule means,
 and one bundle owner per run. The math and result tests cover the changed
 transformations and selection/collection behavior. These checks do not replace
 native GPU evidence, which will be recorded separately after actual execution.
 
-On 12 November 2026, the scoped CPU suite passed **134 tests**. A separate
-three-update mock pair exercised execution, selection, candidate archives and
-collection. [Local software checks](../../../results/implementation-checks/stage3-20261112a/checks.json)
-retain the command scope, code identity, counts and runtime versions. The
-prepared [full design](../../../results/implementation-checks/stage3-20261112a/full-design/plan.json)
-and [reference design](../../../results/implementation-checks/stage3-20261112a/reference-design/plan.json)
-load no model and submit no job. These records establish software behavior,
-not native derivative accuracy or molecular improvement.
+The three-seed revision passed 38 focused CPU checks for design expansion,
+reference execution/collection and dispatch preparation. Its
+[plan checks](../../../results/implementation-checks/stage3-three-seeds-20261112a/plan-checks.json)
+record the current counts; no native runs were started by this revision.
+
+On 12 November 2026, the original five-seed implementation's scoped CPU suite
+passed **134 tests**. A separate three-update mock pair exercised execution,
+selection, candidate archives and collection.
+[The original local software checks](../../../results/implementation-checks/stage3-20261112a/checks.json)
+retain that command scope, code identity, counts and runtime versions. Its
+prepared [five-seed full design](../../../results/implementation-checks/stage3-20261112a/full-design/plan.json)
+and [five-seed reference design](../../../results/implementation-checks/stage3-20261112a/reference-design/plan.json)
+remain unchanged.
+
+The current three-seed preparations are the
+[initial full design](../../../results/implementation-checks/stage3-three-seeds-20261112a/full-design/plan.json)
+and [initial reference design](../../../results/implementation-checks/stage3-three-seeds-20261112a/reference-design/plan.json).
+Planning loads no model and submits no job. Software checks and prepared plans
+do not establish native derivative accuracy or molecular improvement.

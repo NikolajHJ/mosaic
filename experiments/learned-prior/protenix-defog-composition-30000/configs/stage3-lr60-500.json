@@ -1,13 +1,13 @@
 {
   "schema_version": "stage3-campaign-v1",
-  "campaign_id": "stage3-protenix-lr60-500-v1",
+  "campaign_id": "stage3-protenix-lr60-500-three-seeds-v1",
   "recipe": "stage3-lr60-v1",
   "model": "protenix-tiny",
   "native_weight": 1.0,
   "learning_rate": 60.0,
   "updates": 500,
   "n_atoms": 25,
-  "seeds": [17, 23, 42, 71, 101],
+  "seeds": [17, 23, 42],
   "initializations": ["sparse", "dense", "fragmented"],
   "initialization_parameters": {
     "atom_distribution": [0.70, 0.14, 0.08, 0.04, 0.02, 0.02],
@@ -46,6 +46,7 @@
     "A shared control is one seed replicate even if referenced by several comparisons.",
     "Cooling uses the same intended graph for native and teacher inputs.",
     "The simple_soft_valence comparison is an explicit new baseline, not a claim of reproducing a historical custom chemistry objective.",
-    "This is a staged ablation design, not the full Cartesian product of every setting."
+    "This is a staged ablation design, not the full Cartesian product of every setting.",
+    "Initial three-seed screen; seeds 71 and 101 remain available in the preserved five-seed config for later expansion."
   ]
 }

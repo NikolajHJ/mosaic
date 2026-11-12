@@ -29,8 +29,8 @@ def make_plan(tmp_path, mock=True):
 
 def test_reference_plan_has_full_paired_seed_blocks(tmp_path):
     path, plan = make_plan(tmp_path)
-    assert len(plan["runs"]) == 30
-    assert len(plan["bundles"]) == 15
+    assert len(plan["runs"]) == 18
+    assert len(plan["bundles"]) == 9
     assert len(plan["conditions"]) == 2
     assert plan["mock"]
     assert {r["updates"] for r in plan["runs"]} == {500}
@@ -59,13 +59,13 @@ def test_mock_bundle_outputs_best_valid_and_tidy_tables(tmp_path):
         with np.load(folder / "trajectory.npz") as trajectory:
             assert trajectory["X"].shape == (4, 25, 6)
     result = results.write_campaign_tables(path)
-    assert result["rows"]["runs"] == 30
+    assert result["rows"]["runs"] == 18
     assert result["rows"]["states"] == 8
     assert result["rows"]["teacher"] == 3
     with (path / "tables/runs.csv").open(newline="") as stream:
         rows = list(csv.DictReader(stream))
     assert sum(r["status"] == "complete" for r in rows) == 2
-    assert sum(r["status"] == "missing" for r in rows) == 28
+    assert sum(r["status"] == "missing" for r in rows) == 16
     with pytest.raises(FileExistsError):
         campaign.run_bundle(path / "plan.json", bid, mock=True)
 
@@ -195,7 +195,7 @@ def test_dispatch_is_dry_by_default_and_keeps_block_on_same_profile(tmp_path, mo
     folder = tmp_path / "dispatch"
     result = dispatch.prepare(path / "plan.json", folder, "/remote/snapshot", "/env/bin/python",
                               "/remote/assets.json", ["a10", "a100", "l40s"])
-    assert len(result["jobs"]) == 15
+    assert len(result["jobs"]) == 9
     def forbidden(*args, **kwargs):
         raise AssertionError("Dry run must never call bsub")
     monkeypatch.setattr(dispatch.subprocess, "run", forbidden)
