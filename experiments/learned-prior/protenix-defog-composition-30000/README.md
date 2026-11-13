@@ -2,11 +2,13 @@
 
 This study asks when a frozen, refreshed DeFoG graph prediction improves the
 **best valid molecule found during Protenix optimization**. It implements the
-Stage 3 plan on branch `codex/defog-stage3-campaign`; it changes no running or
-historical experiment. All 396 GPU bundles were accepted on 13 November 2026;
-see the [submission note](run-20261113.md) for queue placement, source identity
-and receipts. Native optimization results are pending. CPU fixtures check
-software behavior and are labelled mock data.
+Stage 3 plan on branch `codex/defog-stage3-campaign`. The first submission failed before optimization because
+Git for Windows changed the archived PDB's line endings. A verified LF retry
+has nine reference bundles accepted; the remaining 387 are to follow after a
+teacher-on reference records normal update progress. See the
+[submission and recovery note](run-20261113.md) for exact scope and evidence.
+No completed native optimization result is established by these submissions.
+CPU fixtures check software behavior and are labelled mock data.
 
 The initial design has **155 distinct settings × 3 initializations × 3 seeds =
 1,395 runs**, each with **500 updates**, for 697,500 updates. Related settings
@@ -183,6 +185,16 @@ and the reduced effective mock budget separately; never mix mock records into
 the native campaign.
 
 ## Prepare GPU submissions
+
+On Windows, create source archives with `git -c core.autocrlf=false archive`.
+The override applies to that command.
+The initial default archive changed the pinned PDB from LF to CRLF even though
+the Git blob had the correct bytes. Before uploading, inspect the archive's
+`tests/data/brd4_3mxf/3MXF.pdb` member and require SHA256
+`534dcb8ea9fa29956249b5133b22187c3867363b16a6b98dd8219c18c5d3250f`.
+After extraction, check that hash again and call `derive_definition` with the
+archived PDB and fixture. Keep the pinned hash check; repair the archive rather
+than accepting different bytes. These are small input checks and load no model.
 
 The [dispatch command](scripts/stage3_dispatch.py) runs on the HPC login host
 after the plan and a stable source snapshot have been transferred. It creates

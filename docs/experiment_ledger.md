@@ -164,3 +164,24 @@ preparation has no submitted jobs.
 At 00:48 CET, receipts reconciled every job and LSF reported 396 pending, with no
 native optimization result yet. See the [submission note](../experiments/learned-prior/protenix-defog-composition-30000/run-20261113.md)
 and [retained receipts](../results/hpc/stage3-protenix-defog-lr60-3seeds-20261112a/submissions.json).
+
+### 2026-11-13 - Diagnosed archive line endings and submitted LF retry
+
+At 14:49 CET, no Stage 3 optimization run had begun: 222 bundles had failed
+bootstrap with `Experimental 3MXF bytes differ`, while 174 remained pending.
+Git for Windows converted the archived PDB from LF to CRLF under
+`core.autocrlf=true`; the Git blob itself matched the pinned LF hash. The
+corrected `git -c core.autocrlf=false archive` reproduces the pinned PDB exactly,
+without coordinate, objective, source-logic or authentication changes. Its
+archived and extracted PDB hashes and actual pocket parsing passed before queueing.
+
+The 174 authenticated pending/no-progress jobs were retired with the scheduler's
+pending-only filter. No old jobs remained live and all old optimization counts
+were zero; source and failure evidence remain intact. The fresh `lf-retry1`
+attempt retains all 1,395 settings/seed/start runs and the same five-family GPU
+placement. Nine reference bundles were accepted; an active controller will
+release the remaining 387 after a teacher-on reference records at least 25 normal
+updates. At 15:10 CET, all nine were pending and the controller was alive. Three
+isolated controller checks passed without model or scheduler calls. No
+native completion or chemistry result is claimed. The fresh 10 GiB own-output
+allowance passed the capacity check. See the [recovery note](../experiments/learned-prior/protenix-defog-composition-30000/run-20261113.md).
