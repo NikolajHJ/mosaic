@@ -2,13 +2,14 @@
 
 This study asks when a frozen, refreshed DeFoG graph prediction improves the
 **best valid molecule found during Protenix optimization**. It implements the
-Stage 3 plan on branch `codex/defog-stage3-campaign`. The first submission failed before optimization because
-Git for Windows changed the archived PDB's line endings. A verified LF retry
-has nine reference bundles accepted; the remaining 387 are to follow after a
-teacher-on reference records normal update progress. See the
-[submission and recovery note](run-20261113.md) for exact scope and evidence.
-No completed native optimization result is established by these submissions.
-CPU fixtures check software behavior and are labelled mock data.
+Stage 3 plan on branch `codex/defog-stage3-campaign`. The verified LF retry
+released all 396 bundles automatically and, at 21:21 CET on 15 November, had
+completed 1,294 of 1,395 runs. Constant weight 0.5 is promising for best valid
+hard contact; late fragmentation remains common. See the
+[dated progress and comparison note](run-20261113.md#15-november-progress-and-preliminary-results)
+for matched-pair results and partial-run exclusions. The original archive's
+line-ending failure is retained separately. CPU fixtures check software behavior
+and are labelled mock data.
 
 The initial design has **155 distinct settings × 3 initializations × 3 seeds =
 1,395 runs**, each with **500 updates**, for 697,500 updates. Related settings

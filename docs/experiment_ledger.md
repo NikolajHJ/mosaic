@@ -185,3 +185,21 @@ updates. At 15:10 CET, all nine were pending and the controller was alive. Three
 isolated controller checks passed without model or scheduler calls. No
 native completion or chemistry result is claimed. The fresh 10 GiB own-output
 allowance passed the capacity check. See the [recovery note](../experiments/learned-prior/protenix-defog-composition-30000/run-20261113.md).
+
+### 2026-11-15 - Most LR60 DeFoG arms complete; stronger guidance is promising
+
+The LF retry released all 396 bundles automatically on 13 November. At 21:21 CET
+on 15 November, 1,294/1,395 arms had completed 500 updates, 96 were unstarted and
+five were partial after valence-projection KKT tolerance failures. Old packaging
+failures remain separate, with zero optimization updates. Frozen checks passed
+for the retained completed/partial outputs.
+
+Constant weight 0.5, time 0.8, connected projection and no cooling found new valid
+connected molecules in all nine seed/start arms, with four valid endpoints.
+On eight full-budget matched pairs (the fragmented seed 17 control stopped at 226),
+mean best-valid hard contact was 0.4061 versus 0.2848 for projection alone, winning
+8/8, with 3/8 valid endpoints versus 0/8. Weight 0.0625 gave 0.3226 and 6/8 wins with
+zero valid endpoints on the same pairs. This is exploratory selection among 155
+settings and three seeds, not an independent confirmation. Most configurations
+still fragment late; only 11 of 1,294 completed endpoints were valid/connected.
+See the [dated note and evidence](../experiments/learned-prior/protenix-defog-composition-30000/run-20261113.md#15-november-progress-and-preliminary-results).
