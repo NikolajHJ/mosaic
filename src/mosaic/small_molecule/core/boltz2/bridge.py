@@ -67,15 +67,15 @@ class AffinityWorker:
 
     def evaluate(self, x, edges, *, gradient):
         x, edges = np.asarray(x), np.asarray(edges)
-        n = self.identity.get("n_atoms", 6)
+        n = self.identity["n_atoms"]
         if (
-            n not in (6, 25)
+            n < 1
             or x.dtype != np.float32
             or edges.dtype != np.float32
             or x.shape != (n, 6)
             or edges.shape != (n * (n - 1) // 2, 5)
         ):
-            raise ValueError("Worker bridge requires exact FP32 declared 6/25-slot graphs")
+            raise ValueError(f"The Boltz2 worker needs an FP32 graph with {n} atom slots")
         graph_sha = hashlib.sha256(x.tobytes() + edges.tobytes()).hexdigest()
         reply = self.request(
             "evaluate",
@@ -97,6 +97,9 @@ class AffinityWorker:
             if gradient
             else np.zeros_like(edges)
         )
+        # JSON encodes a (0, 5) bond array as an empty list.
+        if n == 1 and ge.shape == (0,):
+            ge = ge.reshape(edges.shape)
         if (
             values.shape != (3,)
             or gx.shape != x.shape

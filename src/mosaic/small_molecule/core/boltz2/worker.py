@@ -44,6 +44,7 @@ def main():
         raise ValueError("Prepared context file identity differs")
     context = torch.load(args.context, map_location=args.device, weights_only=True)
     validate_context(context)
+    n_atoms = int(context["atom_indices"].numel())
     context_before = tensor_digest(
         context["features"] | {"coordinates": context["coordinates"]}
     )
@@ -63,7 +64,7 @@ def main():
                 "pose_policy": "fixed native predicted pose; no diffusion gradients",
                 "optimized_output": "affinity_pred_value",
                 "recycling_steps": 0,
-                "n_atoms": int(context["atom_indices"].numel()),
+                "n_atoms": n_atoms,
                 **({"pocket_definition_sha256": context["pocket"]["pocket_definition_sha256"],
                     "diffusion_gradient": False} if "pocket" in context else {}),
             }
@@ -88,6 +89,8 @@ def main():
                         device=args.device,
                         requires_grad=request["gradient"],
                     )
+                    if n_atoms == 1 and edges.shape == (0,):
+                        edges = edges.reshape(0, 5)
                     if not torch.isfinite(x).all() or not torch.isfinite(edges).all():
                         raise FloatingPointError("Nonfinite input graph")
                     with torch.set_grad_enabled(request["gradient"]):

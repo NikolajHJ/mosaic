@@ -22,9 +22,10 @@ is logged for inspection and does not contribute to the loss.
   use only `affinity` for Boltz2.
 - **Stage 1** uses the same unconstrained graph updates and diagnostics as
   Protenix-Tiny, but scores affinity instead of contacts. The slot count in
-  the general YAML (`n_atoms`) must match the context. The worker supports
-  6 or 25 slots. The included BRD4 example uses 25. A positive
-  `hard_minus_soft_loss` means the raw argmax molecule scored worse.
+  the general YAML (`n_atoms`) must match the context. Choose any positive
+  atom count that Boltz2 can prepare and fit on the GPU. The count stays
+  fixed during each run. A positive `hard_minus_soft_loss` means the raw
+  argmax molecule scored worse.
 
 The Boltz2 worker needs a separate Python environment with the native
 Boltz source at commit `b1ebfc46ecf57f5414e0d1a6f9027bbb122c553bc`, CUDA
@@ -44,7 +45,11 @@ PYTHONPATH=src envs/boltz2/bin/python -m mosaic.small_molecule.core.boltz2.prepa
   --cache cache/boltz --output results/boltz2-brd4-25-context
 ```
 
-After preparation, run the optimization on an allocated DTU HPC GPU:
+To use a different ligand size, change `--n-atoms` and choose a fresh
+preparation output directory. You can use the same BRD4 fixture. Preparation
+uses its protein sequence and generates a carbon chain of the requested size.
+Set `n_atoms` and `boltz2.prepared_context` in your general YAML to match
+the new pose, then run the optimization on an allocated DTU HPC GPU:
 
 ```bash
 PYTHONPATH=src python -m mosaic.small_molecule.generate_molecule \

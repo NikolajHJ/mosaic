@@ -30,7 +30,7 @@ def snapshot(prediction, cache, fixture, output, n_atoms=6, pocket_path=None):
     manifest_path = processed / "manifest.json"
     manifest = Manifest.load(manifest_path)
     if len(manifest.records) != 1 or manifest.records[0].affinity is None:
-        raise ValueError("Require exactly one native BRD4/hexane affinity record")
+        raise ValueError("Require exactly one native affinity record")
     record = manifest.records[0]
 
     def optional(name):
@@ -160,7 +160,9 @@ def main():
     parser.add_argument("--fixture", type=Path, required=True)
     parser.add_argument("--cache", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
-    parser.add_argument("--n-atoms", type=int, choices=(6, 25), default=6)
+    parser.add_argument(
+        "--n-atoms", type=int, help="Heavy atoms in the starting carbon chain (default: fixture size)"
+    )
     parser.add_argument("--pocket", type=Path)
     args = parser.parse_args()
     if not os.environ.get("LSB_JOBID"):
@@ -169,12 +171,12 @@ def main():
 
     verify_installation()
     fixture = json.loads(args.fixture.read_text())
-    if (
-        fixture["pdb_id"] != "3MXF"
-        or fixture["n_heavy_atoms"] != args.n_atoms
-        or fixture["smiles"] != "C" * args.n_atoms
-    ):
-        raise ValueError("Wrong Mosaic BRD4 carbon-chain fixture")
+    if fixture["pdb_id"] != "3MXF":
+        raise ValueError("Expected a Mosaic BRD4 fixture")
+    n_atoms = args.n_atoms if args.n_atoms is not None else fixture["n_heavy_atoms"]
+    if n_atoms < 1:
+        parser.error("--n-atoms must be positive")
+    seed_smiles = "C" * n_atoms
     args.output.mkdir(parents=True, exist_ok=False)
     specification = {
         "version": 1,
@@ -186,14 +188,12 @@ def main():
                     "msa": "empty",
                 }
             },
-            {"ligand": {"id": "L", "smiles": fixture["smiles"]}},
+            {"ligand": {"id": "L", "smiles": seed_smiles}},
         ],
         "properties": [{"affinity": {"binder": "L"}}],
     }
     if args.pocket is not None:
         from ..pocket import boltz_constraints, validate_definition
-        if args.n_atoms != 25:
-            raise ValueError("New JQ1 pocket protocol is scoped to fresh 25-slot runs")
         pocket = validate_definition(json.loads(args.pocket.read_text()), fixture)
         specification["constraints"] = boltz_constraints(pocket)
     source = args.output / "input.yaml"
@@ -234,7 +234,9 @@ def main():
     with (args.output / "prediction.log").open("w") as log:
         subprocess.run(command, check=True, stdout=log, stderr=subprocess.STDOUT)
     prediction = args.output / "native/boltz_results_input"
-    report = snapshot(prediction, args.cache, args.fixture, args.output / "context.pt", args.n_atoms, args.pocket)
+    report = snapshot(
+        prediction, args.cache, args.fixture, args.output / "context.pt", n_atoms, args.pocket
+    )
     (args.output / "preparation.json").write_text(json.dumps(report, indent=2) + "\n")
 
 

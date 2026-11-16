@@ -131,7 +131,7 @@ def load_model(path):
 
 
 def validate_context(context):
-    """Check complete native correspondence for the declared 6/25-slot scope."""
+    """Check that every graph slot maps to one occupied atom in the prepared pose."""
     if context.get("version") != "mosaic-boltz-fixed-pose-v1":
         raise ValueError("Unknown prepared Boltz context")
     f, ai, ti = context["features"], context["atom_indices"], context["token_indices"]
@@ -143,14 +143,14 @@ def validate_context(context):
         raise ValueError("Context lacks passed pocket/detached-pose identity")
     n = ai.numel()
     if (
-        n not in (6, 25)
+        n < 1
         or ai.shape != (n,)
         or ti.shape != (n,)
         or ai.unique().numel() != n
         or ti.unique().numel() != n
         or context.get("n_atoms", n) != n
     ):
-        raise ValueError("Require declared 6/25 injective occupied ligand slots")
+        raise ValueError("Each occupied ligand slot must map to a distinct atom and token")
     if (
         context["coordinates"].requires_grad
         or not torch.isfinite(context["coordinates"]).all()
@@ -189,8 +189,8 @@ def inject(x, edges, context):
     charge remains fixed at zero, exactly as in Mosaic's current graph schema.
     """
     n = context["atom_indices"].numel()
-    if n not in (6, 25) or x.shape != (n, 6) or edges.shape != (n * (n - 1) // 2, 5):
-        raise ValueError("Boltz backend requires declared 6/25-slot graph shapes")
+    if n < 1 or x.shape != (n, 6) or edges.shape != (n * (n - 1) // 2, 5):
+        raise ValueError(f"The Boltz2 graph must match the prepared pose with {n} atom slots")
     f = dict(context["features"])
     ai, ti = context["atom_indices"], context["token_indices"]
     element_map = nn.functional.one_hot(
