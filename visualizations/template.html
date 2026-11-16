@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Mosaic · experiment viewer</title>
+  <link rel="stylesheet" href="style.css"><script src="viewer.js" defer></script>
+</head>
+<body>
+  <header><div><span class="eyebrow">MOSAIC / RESEARCH</span><h1>Experiment viewer</h1></div><div class="toolbar"><button id="open-comparison">Boltz / GNINA comparison</button><span id="library-count" class="muted"></span></div></header>
+  <div id="error" role="alert" hidden></div>
+  <div class="workspace">
+    <aside aria-label="Run library">
+      <label for="search">Find a run</label><input id="search" type="search" placeholder="Name or description">
+      <div class="toolbar"><label for="filter" class="sr-only">Run filter</label><select id="filter"><option value="all">All runs</option><option value="starred">Starred</option><option value="trash">Trash</option></select><button id="refresh">Refresh</button></div>
+      <div class="toolbar"><label><input type="checkbox" id="select-all"> Select visible</label><span id="selection-count"></span></div>
+      <div class="toolbar"><button id="delete-selected" disabled>Delete selected</button><button id="restore-selected" hidden disabled>Restore selected</button><button id="purge-selected" hidden disabled>Delete permanently</button></div>
+      <p class="small muted">Stars protect runs from deletion. Deleted exports go to library trash; original experiment files are kept.</p>
+      <div id="runs" class="run-list"></div>
+    </aside>
+    <main>
+      <section id="comparison" hidden>
+        <div class="heading"><div><span class="eyebrow">FIXED MOLECULAR IDENTITIES / REBUILT POSES</span><h2>Boltz / GNINA comparison</h2></div><button id="refresh-comparison">Refresh scores</button></div>
+        <div class="toolbar"><label>Native Boltz protocol <select id="comparison-native"><option value="native">Standard native · 25 steps</option><option value="native_guided">Native physical guidance · 200 steps</option></select></label></div><p id="comparison-variant-note" class="small muted"></p><p id="comparison-status" role="status"></p><details><summary>Experiment goal and settings</summary><p id="comparison-description" class="comparison-description"></p></details><p id="comparison-scope" class="small muted"></p>
+        <p>Baseline: <strong>C25, the starting 25-carbon chain</strong>. Each Δ is molecule minus C25 in the same scorer; GNINA pairs the same available sampling seeds. Negative Vina and native affinity changes, and positive CNN changes, are favorable predictions. JQ1 is a separate reference. These are selected molecules, not a full optimization trajectory.</p>
+        <p class="small muted">Boltz quantitative affinity is log10(IC50 in μM) and is intended for comparisons among active compounds. C25 and the generated molecules are unvalidated, so its Δ is a diagnostic model-output change. The binder output is a separate head. <a href="https://github.com/jwohlwend/boltz/blob/main/docs/prediction.md#output" target="_blank" rel="noopener">Boltz output definitions</a>.</p>
+        <p id="comparison-focus" class="comparison-description"></p>
+        <div id="comparison-charts" class="comparison-charts"></div>
+        <div id="comparison-table" class="table-scroll"></div>
+        <p class="small muted">Filled plot markers preserve coordinate stereo; hollow orange markers have a mismatch or an incomplete repeat set. Dashed lines mark C25. GNINA: mean [range] of the first written pose across three seeds. Native Boltz: one seed. A stereo mismatch means the actual coordinates represent a different isomer; its raw score remains visible but is excluded from a matched-compound claim. Pocket placement and basic geometry are separate checks.</p>
+        <h3>Inspect the actual scored pose</h3>
+        <div class="toolbar"><label>Molecule <select id="pose-molecule"></select></label><label>Scorer / sampling seed <select id="pose-scorer"></select></label><button id="pose-reset">Reset view</button><label><input id="pose-reference" type="checkbox" checked> Reference JQ1 outline</label></div>
+        <p id="pose-audit" class="small"></p><canvas id="pose-canvas" width="1100" height="600" aria-label="Rotatable scored molecular pose inside the JQ1-defined cavity"></canvas>
+        <p class="small muted">Drag to rotate; scroll to zoom. Colored sticks: scored ligand. Purple outline: deposited JQ1 reference. Gray dots: pocket atoms; gray line: protein backbone. Native complexes are rigidly aligned by protein Cα atoms to the reference for display; this does not alter scores or distances. The native pose is the exact sample passed to both affinity heads.</p>
+        <details><summary>Scores and checks for the selected pose</summary><pre id="pose-details"></pre></details>
+        <details><summary>Experiment definition and source receipts</summary><pre id="comparison-provenance"></pre></details>
+      </section>
+      <div id="empty"><h2>Select a run</h2><p>Pick an experiment from the library to inspect its saved steps.</p></div>
+      <div id="experiment" hidden>
+        <div class="heading"><div><span id="run-mode" class="eyebrow"></span><h2 id="run-name"></h2></div><button id="star-current" aria-pressed="false">Star run</button><button id="delete-current">Delete run</button></div>
+        <details open class="description"><summary>What this experiment tests</summary><label for="description" class="sr-only">Experiment description</label><textarea id="description" rows="4" placeholder="Goal: What are we trying to find out?&#10;Changes: What changed from the control?&#10;Notes: What else should we know?"></textarea><div class="toolbar"><button id="save-description">Save description</button><span id="description-status" role="status"></span></div></details>
+        <details class="provenance"><summary>Settings and source</summary><p id="source" class="small"></p><pre id="config"></pre></details>
+        <section id="native-evaluation" class="native-summary" hidden><h3>Native evaluation of selected molecules</h3><p id="native-scope" class="small muted"></p><div id="native-bars"></div><p class="small muted">Binder-head predictions: blue = mean, orange = member 1, green = member 2. The axis is 0–1. These are model outputs, not measured binding probabilities.</p><div id="native-table" class="table-scroll"></div><p class="small muted">Native quantitative affinity uses its own rebuilt features and pose. It is separate from the proposal loss below. A proposal-step button shows the original graph at selection; it does not show the later native pose.</p></section>
+        <section class="scrubber" aria-label="Trajectory controls">
+          <div class="toolbar"><button id="previous" aria-label="Previous saved step">←</button><button id="play">Play</button><button id="next" aria-label="Next saved step">→</button><button id="previous-change">Previous graph change</button><button id="next-change">Next graph change</button><label>Speed <select id="speed"><option value="600">Slow</option><option value="200" selected>Normal</option><option value="70">Fast</option></select></label></div>
+          <div class="toolbar"><label for="step">Saved step</label><strong id="step-label"></strong><span id="frame-count" class="muted"></span></div><input id="step" type="range" min="0" max="0" value="0">
+          <div id="step-metrics" class="metrics" aria-live="polite"></div>
+        </section>
+        <div class="two-col">
+          <section><h3>Argmax molecule</h3><div class="toolbar"><label><input id="slot-layout" type="checkbox"> Fixed atom slots</label><label><input id="atom-numbers" type="checkbox" checked> Atom numbers</label></div><svg id="molecule" role="img" aria-label="Argmax molecular graph"></svg><p id="molecule-status" class="small"></p><p id="smiles" class="mono small"></p></section>
+          <section><h3>Loss and recorded terms</h3><div id="loss-legend" class="legend"></div><div id="loss-chart" class="chart"></div><p class="small muted">Each term keeps its recorded name. Chemistry corrections are applied after the update; they are not added to the loss.</p></section>
+        </div>
+        <div class="two-col">
+          <section><h3>Uncertainty</h3><div id="entropy-chart" class="chart"></div><p id="charge-note" class="small muted"></p></section>
+          <section><h3>Validity and connectivity</h3><div id="validity-chart" class="chart"></div><p class="small muted">Sanitized means RDKit accepted the discrete graph. Connected is checked separately. Missing readouts stay unknown.</p></section>
+        </div>
+        <section><h3>Frozen-coordinate bond check</h3><div class="two-col"><div id="geometry-count-chart" class="chart"></div><div id="geometry-span-chart" class="chart"></div><div id="geometry-stretch-count-chart" class="chart"></div><div id="geometry-stretch-chart" class="chart"></div></div><p class="small muted">Distances use the native coordinates held fixed by the scored model. The broad 0.8–2.5 Å study check is unchanged. The additional stretching diagnostic divides distance by the sum of RDKit covalent radii and marks ratios above 1.35 for review. It uses a generous single-bond reference for all bond types. Neither check establishes realistic geometry, strain, absence of clashes, cavity fit, or binding.</p></section>
+        <section><h3>Probability matrices</h3><div class="two-col"><div><h4>Atom type</h4><div id="atom-matrix"></div><div id="charge-matrix"></div></div><div><h4>Bond type</h4><label for="bond-channel">Matrix values</label><select id="bond-channel"><option value="existence">Bond existence</option><option value="0">No bond</option><option value="1">Single</option><option value="2">Double</option><option value="3">Triple</option><option value="4">Aromatic</option></select><canvas id="bond-matrix" role="img" aria-label="Bond probability matrix"></canvas><p id="bond-detail" class="small"></p><div id="bond-values"></div></div></div><p class="small muted">Probability scale: 0 is pale, 1 is dark. Click an atom or a bond pair to inspect its probabilities over time.</p><div id="probability-chart" class="chart"></div></section>
+        <section><h3>Valence at each atom</h3><div id="valence-chart" class="chart tall"></div><p id="valence-note" class="small muted"></p><div id="valence-table" class="table-scroll"></div></section>
+        <section><h3>How much the chemistry corrections changed</h3><p id="operator-note" class="small muted"></p><div class="two-col"><div><h4>Valence projection (5.2)</h4><div id="projection-chart" class="chart"></div><div id="projection-count-chart" class="chart"></div><h4>Connected pieces</h4><div id="components-chart" class="chart"></div></div><div><h4>Connectivity (5.3)</h4><div id="connectivity-chart" class="chart"></div><h4>Sparsity (5.4)</h4><div id="sparsity-chart" class="chart"></div><div id="sparsity-count-chart" class="chart"></div></div></div><div class="two-col"><div><div id="experimental-pruning-chart" class="chart"></div><div id="atom-support-chart" class="chart"></div></div><div><div id="aromatic-merge-chart" class="chart"></div><div id="atom-support-movement-chart" class="chart"></div></div></div><details><summary>Recorded correction details for this update</summary><pre id="operator-receipt"></pre></details></section>
+        <section><h3>Hardening (5.5) and update size</h3><div class="two-col"><div><h4>Forward hardening</h4><div id="hardening-chart" class="chart"></div></div><div><h4>Raw gradients</h4><div id="gradient-chart" class="chart"></div></div><div><h4>Atom update size</h4><div id="atom-step-chart" class="chart"></div></div><div><h4>Bond update size</h4><div id="bond-step-chart" class="chart"></div></div></div><p class="small muted">Raw = learning rate × gradient norm. Simplex = after probability projection. Observed = change to the next saved state, including chemistry corrections. The last saved state has no observed next step. These are different from the configured learning rates.</p></section>
+        <section><h3>Gradient and movement agreement</h3><div id="alignment-chart" class="chart"></div><p class="small muted">1 means movement along the model descent direction, 0 means perpendicular movement, and -1 means the opposite direction. Uses the probability-simplex tangent gradient and observed next state, including all corrections. With hardening (5.5), this is a surrogate gradient.</p></section>
+        <div id="chart-tooltip" role="tooltip" hidden></div>
+      </div>
+    </main>
+  </div>
+  <dialog id="confirm-dialog" aria-labelledby="confirm-title"><h2 id="confirm-title">Confirm deletion</h2><p id="confirm-message"></p><div class="toolbar"><button id="confirm-no">Cancel</button><button id="confirm-yes">Confirm</button></div></dialog>
+</body></html>
