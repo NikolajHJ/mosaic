@@ -5,7 +5,7 @@ objective. It is an independently installable package: the core does not import
 Mosaic, experiment runners, or upstream DeFoG modules. Choose the optimizer and
 post-update projection separately.
 
-This root folder contains the Stage 3 package, examples, tests, and benchmark
+This folder contains the Stage 3 package, examples, tests, and benchmark
 evidence. Its public Python import is `mosaic_defog`.
 
 | Path | Contents |
@@ -38,8 +38,8 @@ See [benchmark results and limits](BENCHMARKS.md).
 From the Mosaic repository root:
 
 ```bash
-python -m pip install -e './stage3[jax]'
-python stage3/examples/manual_jax.py --mock
+python -m pip install -e './src/mosaic/small_molecule/Stage3[jax]'
+python src/mosaic/small_molecule/Stage3/examples/manual_jax.py --mock
 ```
 
 The example runs ten CPU-compatible JAX updates with a synthetic objective and
@@ -47,7 +47,7 @@ deterministic mock teacher. Its `projection` function and update expression are
 ordinary user code. Replace either without changing the package. The mock tests
 the integration pattern; it provides no evidence about pretrained DeFoG.
 
-For a Torch student, install `./stage3[torch]` instead. Importing
+For a Torch student, install `./src/mosaic/small_molecule/Stage3[torch]`. Importing
 `mosaic_defog` loads neither framework nor weights; NumPy is the only required
 runtime dependency.
 
@@ -62,7 +62,7 @@ git clone https://github.com/manuelmlmadeira/DeFoG.git /path/to/DeFoG
 git -C /path/to/DeFoG checkout 365bda9affadd5c2307014a0532ddaa244399441
 python3.11 -m venv /path/to/defog-env
 /path/to/defog-env/bin/python -m pip install torch==2.5.1 --index-url https://download.pytorch.org/whl/cpu
-/path/to/defog-env/bin/python -m pip install -r stage3/requirements-teacher.txt
+/path/to/defog-env/bin/python -m pip install -r src/mosaic/small_molecule/Stage3/requirements-teacher.txt
 ```
 
 On Windows the environment's interpreter is `Scripts/python.exe`. The pinned
@@ -88,7 +88,7 @@ checkpoint loader uses Python deserialization. Check the real assets with one
 ```bash
 python -m mosaic_defog --source /path/to/DeFoG \
   --checkpoint /path/to/guacamol.ckpt --python /path/to/defog-env/bin/python
-python stage3/examples/manual_jax.py --source /path/to/DeFoG \
+python src/mosaic/small_molecule/Stage3/examples/manual_jax.py --source /path/to/DeFoG \
   --checkpoint /path/to/guacamol.ckpt --teacher-python /path/to/defog-env/bin/python
 ```
 
@@ -167,7 +167,7 @@ predictions or upstream feature computation.
 Install this package in the Mosaic runner's environment and add a `defog` block
 to the normal Stage 2 YAML. See the
 [complete example](examples/stage2-defog.yaml) and
-[Stage 2 guide](../src/mosaic/small_molecule/Stage2/README.md).
+[Stage 2 guide](../Stage2/README.md).
 
 The YAML uses `stage: stage2` to reuse that pipeline and its selectable
 projection operators; the `defog` block adds Stage 3 guidance. Run it from the
@@ -176,7 +176,7 @@ repository root with your general configuration:
 ```bash
 PYTHONPATH=src python -m mosaic.small_molecule.generate_molecule \
   --general-config /path/to/general.yaml \
-  --stage-config stage3/examples/stage2-defog.yaml
+  --stage-config src/mosaic/small_molecule/Stage3/examples/stage2-defog.yaml
 ```
 
 ```yaml
@@ -206,7 +206,7 @@ guarantee a sanitized, connected hard readout.
 ## Validation and provenance
 
 Run the model-free package checks with
-`python -m pytest stage3/tests`. The real-teacher CLI above requires the
+`python -m pytest src/mosaic/small_molecule/Stage3/tests`. The real-teacher CLI above requires the
 official assets and a teacher interpreter and reports its model identity.
 
 [BENCHMARKS.md](BENCHMARKS.md) records historical pipeline outcomes separately

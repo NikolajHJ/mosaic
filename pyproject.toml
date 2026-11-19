@@ -79,6 +79,10 @@ artifacts = [
     "src/mosaic/data/*",
 ]
 
+[tool.hatch.build.targets.wheel]
+# Stage 3 ships its own mosaic-defog distribution.
+exclude = ["/src/mosaic/small_molecule/Stage3"]
+
 [[tool.uv.index]]
 name = "pytorch"
 url = "https://download.pytorch.org/whl/cpu"
