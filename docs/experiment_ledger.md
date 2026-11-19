@@ -1,4 +1,8 @@
 
+### 2026-11-19 — DeFoG guidance with and without graph projection
+
+The [two-page group brief](defog_status_2026-11-19/group_brief.pdf) explains how the frozen DeFoG teacher guides Protenix optimization and what projection contributes. The [agent reference](defog_status_2026-11-19/agent_reference.md) records the loss, experiments, run locations and follow-up questions. At the 11:14 CET cutoff, structural repair alone and DeFoG with connected projection had each earned the higher best valid contact on one of two completed seeds. Seed 42 was queued.
+
 ### 2026-11-05 — Protenix notebook reading companion
 
 On NewPipeline_draft, added examples/protenij_script.py as a commented,
