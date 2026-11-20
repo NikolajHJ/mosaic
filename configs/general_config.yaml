@@ -13,6 +13,9 @@ pocket:
   residues: []
 
 n_atoms: 25
+# use_vae: true  # Optimize the bundled epoch-45 latent; omit for direct graph updates.
+# vae:
+#   checkpoint: ../models/dbmol-vae/epoch45-runtime.pt  # Optional replacement runtime.
 initialization:
   # Stage 0 with Protenix-Tiny uses a prepared starting molecule or a SMILES string.
   input: null

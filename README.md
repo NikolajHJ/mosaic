@@ -5,8 +5,9 @@
 `main` tracks the upstream Mosaic library, examples, and tests. Use the
 installation instructions below for the standard library.
 
-The reusable [small-molecule pipeline](src/mosaic/small_molecule/README.md) and
-optional [Stage 3 DeFoG guidance package](src/mosaic/small_molecule/Stage3/README.md) are also available here.
+The reusable [small-molecule pipeline](src/mosaic/small_molecule/README.md) supports
+[VAE latent optimization](src/mosaic/small_molecule/README.md#optimize-a-vae-latent)
+and optional [Stage 3 DeFoG guidance](src/mosaic/small_molecule/Stage3/README.md).
 BRD4/JQ1 experiments, HPC workflows, and historical research records live on
 [`codex/mosaic-experiments`](https://github.com/NikolajHJ/mosaic/tree/codex/mosaic-experiments).
 Use that branch for the research workflow.

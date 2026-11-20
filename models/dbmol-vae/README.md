@@ -47,6 +47,25 @@ synthesizability left to separate evaluations.
 
 ## Download and load
 
+Mosaic's [small-molecule runner](../../src/mosaic/small_molecule/README.md#optimize-a-vae-latent)
+loads the bundled [portable runtime](epoch45-runtime.pt) when `use_vae: true`.
+It includes the trained encoder and decoder. The DBMol training package is
+needed only to create an export. From an environment with that package installed:
+
+```bash
+python models/dbmol-vae/export.py path/to/checkpoint.pt path/to/new-runtime.pt
+```
+
+Set `vae.checkpoint` in the general YAML to select that runtime. A different
+architecture can expose the same TorchScript contract: `encode(atoms, charges,
+bonds)` takes batched padded integer graph labels and returns a posterior mean;
+`decode(z)` returns batched atom logits and symmetric, conditional bond logits.
+The archive's `vae.json` records its format, latent width, slot capacity and
+ordered vocabularies. The scorer receives the supported elements in Mosaic's
+order and the upper-triangle probabilities for each pair. Its fixed neutral
+graph representation has no charge or occupancy gradient. See the
+[export code](export.py) for shapes and metadata.
+
 [Download `epoch_0045.pt`](epoch_0045.pt). This PyTorch inference export
 contains the exact epoch-45 encoder and decoder tensors, model configuration,
 and graph schema. Load it with the DBMol Exploratory `latentmol` package.

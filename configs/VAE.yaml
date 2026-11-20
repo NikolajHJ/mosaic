@@ -1,0 +1,4 @@
+# Stage 1 scores and raw readouts, using the bundled frozen molecular VAE.
+stage: stage1
+use_vae: true
+readout_every: 5

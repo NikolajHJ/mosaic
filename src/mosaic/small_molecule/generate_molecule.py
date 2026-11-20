@@ -21,7 +21,7 @@ STAGES = {
     "stage1": "Stage1",
     "stage2": "Stage2",
     "stage3": "Stage3",
-    "vae": "VAE",
+    "vae": "Stage1",  # The VAE preset shares the ordinary Stage 1 scoring and readouts.
 }
 
 
@@ -42,8 +42,24 @@ def main():
     general = read_config(general_path)
     stage_config = read_config(stage_path)
     stage = stage_config["stage"].lower()
+    switches = [cfg["use_vae"] for cfg in (general, stage_config) if "use_vae" in cfg]
+    if stage == "vae":
+        switches.append(True)
+    if any(type(value) is not bool for value in switches):
+        raise ValueError("use_vae must be a YAML boolean (true or false).")
+    if switches:
+        if any(value != switches[0] for value in switches):
+            raise ValueError("Conflicting use_vae settings in the general and stage YAMLs.")
+        general["use_vae"] = switches[0]
+    if "vae" in stage_config:
+        if "vae" in general or not isinstance(stage_config["vae"], dict):
+            raise ValueError("Put the vae settings in a single YAML mapping.")
+        options = stage_config["vae"].copy()
+        if options.get("checkpoint") is not None:
+            options["checkpoint"] = stage_path.parent / Path(options["checkpoint"]).expanduser()
+        general["vae"] = options
     # Earlier Stage 1 and 2 YAML pairs kept these settings in the stage file.
-    if stage in ("stage1", "stage2") and "n_atoms" not in general and "n_atoms" in stage_config:
+    if stage in ("stage1", "stage2", "vae") and "n_atoms" not in general and "n_atoms" in stage_config:
         general["n_atoms"] = stage_config["n_atoms"]
         initialization = general.setdefault("initialization", {})
         initialization.setdefault("random", stage_config.get("initialization", {}))

@@ -49,6 +49,9 @@ def optimize(general, stage, general_path, stage_path, output, resources):
 
     n_atoms = general.get("n_atoms")
     init = general.get("initialization", {})
+    use_vae = general.get("use_vae", False)
+    if use_vae and init.get("checkpoint"):
+        raise ValueError("Stage 0 VAE takes fresh starts. Stage 1 and 2 can resume their own VAE checkpoints.")
     metadata, graph = None, None
     smiles = init.get("smiles")
     if init.get("input"):
@@ -64,6 +67,18 @@ def optimize(general, stage, general_path, stage_path, output, resources):
             raise ValueError("The saved graph must match n_atoms in the general YAML.")
         n_atoms = graph.n_atoms
         smiles = metadata["smiles"]
+        if use_vae:
+            from rdkit import Chem
+            from mosaic.small_molecule.core.features import _paired_hard_graph
+
+            # The VAE encodes a molecule; a prepared soft graph cannot be recovered from its SMILES.
+            molecule = Chem.MolFromSmiles(smiles)
+            if molecule is None:
+                raise ValueError("Invalid SMILES in prepared VAE start.")
+            paired = _paired_hard_graph(molecule)
+            if not (np.array_equal(graph.X, paired.X) and np.array_equal(graph.E_upper, paired.E_upper)):
+                raise ValueError("A prepared VAE start must match its hard molecule and atom order.")
+    encoded_start = smiles
 
     model_name = general["model"]
     default_loss = "affinity" if model_name == "boltz2" else "contact"
@@ -85,7 +100,7 @@ def optimize(general, stage, general_path, stage_path, output, resources):
 
         if list(weights) != ["affinity"]:
             raise ValueError("Boltz2 Stage 0 uses affinity. Remove other losses from the stage YAML.")
-        if graph is None and smiles:
+        if graph is None and smiles and not use_vae:
             raise ValueError("For Boltz2, use initialization.input or leave input and smiles empty to use the prepared chain.")
         affinity, identity, prepared = resources.enter_context(
             open_affinity(general, general_path, target, output, n_atoms)
@@ -113,8 +128,12 @@ def optimize(general, stage, general_path, stage_path, output, resources):
         jax.config.update("jax_default_matmul_precision", "highest")
         cache = input_path(general["model_cache"]) if general.get("model_cache") else None
         model = FrozenProtenixTiny.load(cache_dir=cache)
+        # A random latent still needs fixed scorer slots. Their reference geometry is disabled.
+        context_smiles = "C" * n_atoms if use_vae and not smiles and n_atoms else smiles
+        if use_vae and not context_smiles:
+            raise ValueError("A random Stage 0 VAE start requires n_atoms.")
         context, hard = prepare_context(
-            smiles, protein_chains=(target["protein_sequence"],), cache_dir=cache, input_name="stage0"
+            context_smiles, protein_chains=(target["protein_sequence"],), cache_dir=cache, input_name="stage0"
         )
         if n_atoms is not None and hard.n_atoms != n_atoms:
             raise ValueError("The starting molecule must match n_atoms in the general YAML.")
@@ -156,6 +175,12 @@ def optimize(general, stage, general_path, stage_path, output, resources):
             return total, metrics | {f"loss_{name}": value for name, value in values.items()}
         return loss
 
+    latent = None
+    if use_vae:
+        from mosaic.small_molecule.VAE.optimization import LatentOptimization
+
+        latent = LatentOptimization.create(general, general_path, graph.n_atoms, smiles=encoded_start)
+        graph = latent.graph()
     trace, atoms, bonds = [], [], []
     key = jax.random.key(general.get("seed", 17))
     rate = general["learning_rate"]
@@ -172,15 +197,23 @@ def optimize(general, stage, general_path, stage_path, output, resources):
         atoms.append(np.asarray(graph.X))
         bonds.append(np.asarray(graph.E_upper))
         if state < epochs:
-            graph = projected_step(evaluation, eta_X=rate, eta_E=rate).next_graph
+            if latent is None:
+                graph = projected_step(evaluation, eta_X=rate, eta_E=rate).next_graph
+            else:
+                graph = latent.step(evaluation)
+                trace[-1]["latent_gradient_norm"] = latent.last_gradient_norm
 
     write_json(output / "trace.json", trace)
     np.savez_compressed(output / "trajectory.npz", X=atoms, E_upper=bonds)
+    if latent is not None:
+        np.savez_compressed(output / "checkpoint.npz", X=graph.X, E_upper=graph.E_upper,
+                            state=epochs, **latent.arrays())
     write_json(output / "manifest.json", {
         "status": "complete",
         "updates_performed": epochs,
         "states_written": len(trace),
         "model": identity,
-        "initial_smiles": smiles,
+        "initial_smiles": encoded_start if use_vae else smiles,
         "initialization": metadata,
+        **({"vae": latent.identity, "optimizer": latent.optimizer_record} if latent is not None else {}),
     })

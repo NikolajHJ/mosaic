@@ -1,6 +1,7 @@
 """Run the Stage 1 baseline and record how the ligand changes.
 
-Start from a random graph or a saved checkpoint selected in the general YAML.
+Start from a random state or a saved checkpoint selected in the general YAML.
+The optional frozen VAE also accepts a SMILES start and updates its latent.
 Protenix-Tiny scores whole-domain contacts. Boltz2 scores affinity with a
 prepared pose. Both update atom and bond probabilities.
 This baseline measures chemical problems in the resulting graphs without
@@ -46,10 +47,19 @@ def optimize(
     def input_path(value):
         return (general_path.parent / Path(value).expanduser()).resolve()
 
+    use_vae = general.get("use_vae", False)
+    if type(use_vae) is not bool:
+        raise ValueError("use_vae must be a YAML boolean.")
+    if use_vae:
+        from mosaic.small_molecule.VAE.optimization import LatentOptimization
+
+        if after_update is not None:
+            raise ValueError("VAE updates require operators.mode: none; a post-step graph edit has no latent state.")
+
     protein = general["protein"]
     target = resolve_target(input_path(protein["structure"]), protein["chain"])
     n_atoms = general["n_atoms"]
-    initialization = general["initialization"]
+    initialization = general.get("initialization", {})
     epochs = general["epochs"]
     eta_X = stage.get("eta_X", general["learning_rate"])
     eta_E = stage.get("eta_E", general["learning_rate"])
@@ -102,6 +112,7 @@ def optimize(
         rng_policy = "same model key at every state and for its hard readout"
 
     parent = None
+    latent = None
     if checkpoint := initialization.get("checkpoint"):
         path = input_path(checkpoint)
         parent_manifest = json.loads((path.parent / "manifest.json").read_text())
@@ -117,13 +128,22 @@ def optimize(
         import jax.numpy as jnp
 
         with np.load(path, allow_pickle=False) as saved:
-            graph = RelaxedGraph(jnp.asarray(saved["X"]), jnp.asarray(saved["E_upper"]))
+            if use_vae:
+                latent = LatentOptimization.create(general, general_path, n_atoms, saved=saved)
+                graph = latent.graph()
+            else:
+                if "vae_z" in saved:
+                    raise ValueError("Enable use_vae to resume this latent checkpoint.")
+                graph = RelaxedGraph(jnp.asarray(saved["X"]), jnp.asarray(saved["E_upper"]))
             model_key_data = saved["model_key"]
             parent = {"path": str(path), "sha256": file_sha256(path), "state": int(saved["state"])}
         validate_graph(graph)
         if graph.n_atoms != n_atoms:
             raise ValueError("The checkpoint must match n_atoms in the general YAML.")
         model_key = jax.random.wrap_key_data(jnp.asarray(model_key_data))
+    elif use_vae:
+        latent = LatentOptimization.create(general, general_path, n_atoms)
+        graph = latent.graph()
     else:
         graph = initialize_graph(n_atoms, init_key, **initialization["random"])
 
@@ -139,7 +159,9 @@ def optimize(
         "seed": seed,
         "model_key": model_key_data.tolist(),
         "rng_policy": rng_policy,
-        "optimizer": {"name": "projected_gradient", "eta_X": eta_X, "eta_E": eta_E},
+        "optimizer": latent.optimizer_record if use_vae else {
+            "name": "projected_gradient", "eta_X": eta_X, "eta_E": eta_E,
+        },
         "updates_requested": epochs,
     }
     write_json(output / "manifest.json", manifest)
@@ -182,6 +204,8 @@ def optimize(
                     "new_edges_among_strongest": int(np.sum(~initial_mask[current_strong])),
                     **graph_metrics(graph),
                 }
+                if use_vae and latent.last_gradient_norm is not None:
+                    row["previous_latent_gradient_norm"] = latent.last_gradient_norm
                 if model_name == "boltz2":
                     row.update({name: float(value) for name, value in evaluation.aux.items()
                                 if name.startswith("affinity_")})
@@ -221,12 +245,16 @@ def optimize(
                     checkpoint = output / "checkpoint.partial.npz"
                     np.savez_compressed(
                         checkpoint, X=atoms[-1], E_upper=bonds[-1], state=state,
-                        model_key=model_key_data, eta_X=eta_X, eta_E=eta_E,
+                        model_key=model_key_data,
+                        **(latent.arrays() if use_vae else {"eta_X": eta_X, "eta_E": eta_E}),
                     )
                     checkpoint.replace(output / "checkpoint.npz")
 
                 if state < epochs:
-                    graph = projected_step(evaluation, eta_X=eta_X, eta_E=eta_E).next_graph
+                    if use_vae:
+                        graph = latent.step(evaluation)
+                    else:
+                        graph = projected_step(evaluation, eta_X=eta_X, eta_E=eta_E).next_graph
                     if after_update is not None:
                         graph, operator_report = after_update(graph, state + 1)
                     completed += 1

@@ -34,7 +34,7 @@ def graph_metrics(graph):
     count, excess = valence_excess(x, edges)
     return graph_diagnostics(graph) | {
         "atom_saturated_fraction": float(np.mean(x.max(axis=-1) >= 0.99)),
-        "bond_saturated_fraction": float(np.mean(edges.max(axis=-1) >= 0.99)),
+        "bond_saturated_fraction": float(np.mean(edges.max(axis=-1) >= 0.99)) if len(edges) else 0.0,
         "expected_valence_violation_count": count,
         "expected_valence_excess": excess,
     }

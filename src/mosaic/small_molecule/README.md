@@ -60,7 +60,42 @@ trace, and atom and bond probabilities for the initial state and every update.
 The stage uses the target sequence without a searched MSA or a coordinate
 template. Contact scores do not measure binding affinity.
 
-For the unconstrained **Stage 1** baseline, see the [BRD4 run guide](../../../experiments/brd4/stage1-baseline/README.md). Stage 1 scores contacts over the whole protein domain and measures the raw discrete molecule without changing it. See the [Stage 2 guide](Stage2/README.md) to add chemistry after each update. The [Stage 3 package](Stage3/README.md) adds optional DeFoG guidance through that same pipeline's `defog` block. VAE remains an extension point.
+For the unconstrained **Stage 1** baseline, see the [BRD4 run guide](../../../experiments/brd4/stage1-baseline/README.md). Stage 1 scores contacts over the whole protein domain and measures the raw discrete molecule without changing it. See the [Stage 2 guide](Stage2/README.md) to add chemistry after each update. The [Stage 3 package](Stage3/README.md) adds optional DeFoG guidance through that same pipeline's `defog` block.
+
+### Optimize a VAE latent
+
+Add `use_vae: true` to your general or stage YAML and run the usual command
+with Stage 0 or Stage 1. Stage 2 can use the same latent updates with `operators.mode: none`
+and differentiable losses. Its post-update graph edits require direct graph
+optimization. You can also select the [VAE preset](../../../configs/VAE.yaml)
+for Stage 1 scoring:
+
+```bash
+PYTHONPATH=src python -m mosaic.small_molecule.generate_molecule \
+  --general-config configs/general_config.yaml --stage-config configs/VAE.yaml
+```
+
+The bundled epoch-45 encoder and decoder run frozen on CPU. The scorer and
+objective still come from the general and stage YAMLs. `learning_rate` updates
+the latent using the scorer's derivatives of atom and bond probabilities.
+The Stage 1 `eta_X` and `eta_E` overrides apply only to direct graph updates.
+With `initialization.smiles`, the start is the encoder's posterior mean.
+With no starting molecule, the runner draws one standard-normal latent using
+`seed`. In both cases `n_atoms` stays fixed for the trajectory. For SMILES
+it must match the heavy-atom count. Mosaic scores its six neutral element
+categories and five bond states. Raw hard readouts use this same graph.
+Stage 1 can resume a saved VAE `checkpoint.npz` with the same model and slots.
+
+To replace the bundled model, put the `vae` settings in either YAML. Relative
+paths resolve beside the file containing the setting:
+
+```yaml
+use_vae: true
+vae:
+  checkpoint: ../models/my-vae/runtime.pt
+```
+
+See the [model guide](../../../models/dbmol-vae/README.md) for the export format.
 
 To use **Boltz2**, set `model: boltz2` in the general YAML and supply a prepared
 context, affinity checkpoint, and GPU worker interpreter. Both Stage 0 and
