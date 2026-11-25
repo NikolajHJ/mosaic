@@ -11,6 +11,25 @@ for matched-pair results and partial-run exclusions. The original archive's
 line-ending failure is retained separately. CPU fixtures check software behavior
 and are labelled mock data.
 
+On 16 November, the last nine pending A100 bundles (33 runs) were resubmitted
+across V100, L40S, A10 and A40 at the user's request. All replacements were
+accepted; the already running A100 bundle finished without interruption.
+At 09:26 CET, three replacement V100 bundles had started and no campaign job
+remained active on A100. Scientific settings and sealed source are unchanged;
+these final fragmented seed-23 arms now differ in GPU family from some matched
+controls. See the [queue migration record](run-20261113.md#16-november-remaining-bundles-moved-off-a100).
+At 16:54 CET, the final four pending bundles (13 runs) were moved to V100 as
+requested; all four replacements were accepted and pending with settings unchanged.
+By 20:15 CET on 17 November, all 13 had completed: the campaign finished with
+1,390 full-budget runs and five earlier partial projection failures. Every one of
+the last 13 found a new valid connected molecule, but none ended valid. See the
+[completion note](run-20261113.md#17-november-campaign-completion).
+The five partial runs and matched weight-0.5 arm were submitted again with
+projection solver recovery; see the [retry note](run-20261113.md#17-november-projection-recovery-reruns).
+On 18 November all six reruns completed. The matched DeFoG arm's best valid
+score exceeded its control, but both endpoints were invalid and the DeFoG
+trajectory differed from its prior attempt; see the [rerun results](run-20261113.md#18-november-projection-recovery-results).
+
 The initial design has **155 distinct settings × 3 initializations × 3 seeds =
 1,395 runs**, each with **500 updates**, for 697,500 updates. Related settings
 share this experiment home. The older `30000` folder name identifies the study's
@@ -24,6 +43,10 @@ campaign keeps every setting and initialization while reducing the seed budget
 by 40%.
 
 ## Fixed setup and selection
+
+The [three-seed comparison with structural chemistry guidance](repair-pair-20261118.md)
+uses fragmented starts to compare the selected DeFoG arm with Mosaic's historical
+atom-preserving repair loss under the same connected projection.
 
 Every native run uses the frozen Protenix-Tiny BRD4 pocket contact objective,
 native coefficient 1, atom and bond learning rates 60, 25 occupied neutral atom
@@ -233,6 +256,18 @@ source snapshot, plan or assets beneath submitted jobs. The current campaign's
 accepted submissions are recorded in the [submission note](run-20261113.md).
 
 ## Outputs and plotting
+
+The [comprehensive interactive DeFoG report](../../../results/reports/DeFoG-comprehensive-2026-11-18.html)
+combines the original 1,395 Stage 3 attempts, six projection reruns and earlier
+DBMol and Mosaic studies through 18 November. The standalone HTML includes
+matched comparisons, individual trajectories, ranked molecular structures and
+CSV exports. Generated reports and compact inputs live under `results/`.
+
+To rebuild it, run `scripts/export_report_data.py PARENT OUTPUT.json.gz` against
+the saved original and recovery campaign directories. Then run
+`scripts/build_comprehensive_report.py --data OUTPUT.json.gz --mosaic RESEARCH_CHECKOUT --dbmol DBMOL_CHECKOUT --out REPORT.html`
+with RDKit. The Mosaic research checkout supplies the earlier comparison records
+and four historical HTML reports.
 
 Native jobs losslessly gzip the JSONL streams and `all_candidates.json` to
 reduce storage. Their filenames end in `.jsonl.gz` and `.json.gz`; the collector

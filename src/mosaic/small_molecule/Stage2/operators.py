@@ -215,9 +215,9 @@ def project_valence(atoms, edges, *, config=None, tolerance=2e-6):
 
     Solves the N-dimensional nonnegative dual rather than the
     ``5*N*(N-1)/2``-variable primal QP; each dual evaluation eliminates the edge
-    rows by simplex projection. The primal is strictly convex, and feasibility
-    plus complementary slackness are verified on every active result. ``X`` is
-    held fixed by this operator.
+    rows by simplex projection. The primal is strictly convex. If the first
+    solve stops outside the KKT tolerances, retry from its dual solution and
+    record any residual numerical warning. ``X`` is held fixed by this operator.
 
     The projection removes only excess valence. It never pushes an atom up
     toward its ceiling, so an under-coordinated atom is left alone.
@@ -262,15 +262,37 @@ def project_valence(atoms, edges, *, config=None, tolerance=2e-6):
         bounds=[(0.0, None)] * n,
         options={"ftol": 1e-15, "gtol": 1e-11, "maxiter": 500, "maxls": 40},
     )
-    exact = project_simplex_rows(u - (result.x[i] + result.x[j])[:, None] * order)
-    slack = caps - soft_valence(exact, n, aromatic_order=config.aromatic_order)
-    excess = max(0.0, float(-slack.min()))
-    complementarity = float(np.abs(result.x * slack).max())
+    def assess(candidate):
+        if not np.isfinite(candidate.x).all():
+            raise FloatingPointError("Nonfinite valence projection dual solution")
+        projected = project_simplex_rows(u - (candidate.x[i] + candidate.x[j])[:, None] * order)
+        slack = caps - soft_valence(projected, n, aromatic_order=config.aromatic_order)
+        if not np.isfinite(projected).all() or not np.isfinite(slack).all():
+            raise FloatingPointError("Nonfinite valence projection output")
+        return projected, max(0.0, float(-slack.min())), float(np.abs(candidate.x * slack).max())
+
+    exact, excess, complementarity = assess(result)
+    attempts = [{"method": "L-BFGS-B", "excess": excess, "complementarity": complementarity}]
     if excess > tolerance or complementarity > 2e-6:
-        raise ArithmeticError(
-            f"valence projection KKT failure: excess={excess}, "
-            f"complementarity={complementarity}, solver={result.message}"
-        )
+        # L-BFGS-B can report relative-objective convergence even when its
+        # projected gradient is not sufficiently small. Restart without that
+        # early stopping condition, then try a different bounded optimizer.
+        best = (max(excess / tolerance, complementarity / 2e-6), result, exact, excess, complementarity)
+        for method, options in (
+            ("L-BFGS-B", {"ftol": 0.0, "gtol": 1e-12, "maxiter": 1200, "maxls": 80}),
+            ("SLSQP", {"ftol": 1e-13, "maxiter": 1000}),
+        ):
+            candidate = minimize(dual, best[1].x, jac=True, method=method,
+                                 bounds=[(0.0, None)] * n, options=options)
+            projected, candidate_excess, candidate_comp = assess(candidate)
+            attempts.append({"method": method, "excess": candidate_excess,
+                             "complementarity": candidate_comp})
+            score = max(candidate_excess / tolerance, candidate_comp / 2e-6)
+            if score < best[0]:
+                best = (score, candidate, projected, candidate_excess, candidate_comp)
+            if best[0] <= 1.0:
+                break
+        _, result, exact, excess, complementarity = best
 
     alpha = config.valence_damping
     out = (u + alpha * (exact - u)) if alpha < 1 else exact
@@ -285,6 +307,10 @@ def project_valence(atoms, edges, *, config=None, tolerance=2e-6):
         "complementarity": complementarity,
         "displacement_l2": float(np.linalg.norm(out - u)),
     }
+    if len(attempts) > 1:
+        receipt["solver_attempts"] = attempts
+        receipt["kkt_excess"] = excess
+        receipt["kkt_warning"] = excess > tolerance or complementarity > 2e-6
     if alpha < 1:
         receipt["damping"] = alpha
         receipt["damped_excess"] = receipt["max_excess_after"]

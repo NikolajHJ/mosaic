@@ -160,6 +160,38 @@ def _gradient_metrics(gradient, prefix):
     return result
 
 
+def shuffle_teacher_targets(view, target, seed, update):
+    """Permute targets among rows with the same current winning category."""
+    import numpy as np
+    import jax.numpy as jnp
+    from mosaic.small_molecule.core.state import RelaxedGraph
+
+    rng = np.random.default_rng(np.random.SeedSequence([seed, update, 260325]))
+    output, scales, diagnostics = [], [], {}
+    for name in ("X", "E_upper"):
+        current, clean = (np.asarray(getattr(g, name)) for g in (view, target))
+        categories = current.argmax(-1)
+        permutation = np.arange(len(current))
+        for category in np.unique(categories):
+            rows = np.flatnonzero(categories == category)
+            permutation[rows] = rng.permutation(rows)
+        shuffled = clean[permutation]
+
+        def tangent_norm(rows):
+            delta = rows - current
+            return float(np.linalg.norm(delta - delta.mean(-1, keepdims=True)))
+
+        live_norm, shuffled_norm = tangent_norm(clean), tangent_norm(shuffled)
+        scale = live_norm / shuffled_norm if shuffled_norm > 0 else 1.0
+        diagnostics[name] = {"permuted_rows": int(np.count_nonzero(permutation != np.arange(len(current)))),
+                             "teacher_tangent_displacement": live_norm,
+                             "shuffled_tangent_displacement": shuffled_norm, "scale": scale,
+                             "flat_shuffled_nonflat_live": shuffled_norm == 0 and live_norm > 0}
+        output.append(jnp.asarray(shuffled))
+        scales.append(scale)
+    return RelaxedGraph(*output), scales, diagnostics
+
+
 def _components(graph):
     import numpy as np
     n = len(graph.X)
@@ -220,6 +252,15 @@ def run_arm(config, output, native, teacher, hard_cache, *, mock=False, evaluato
     placement = cooling["placement"]
     graph = make_initial_graph(config["seed"], config["initialization"], config.get("n_atoms", 25))
     source_graph = graph
+    interior_mass = float(condition.get("interior_uniform_mass", 0))
+    if not 0 <= interior_mass < 1:
+        raise ValueError("Interior uniform mass must be in [0, 1)")
+
+    def mix_interior(current):
+        return jax.tree.map(lambda rows: (1 - interior_mass) * rows + interior_mass / rows.shape[-1], current)
+
+    if interior_mass:
+        graph = mix_interior(graph)
     temperature = schedule_value(cooling["schedule"], 0, updates)
     if placement == "state":
         graph = cool_state_graph(graph, 1.0, temperature)
@@ -236,6 +277,15 @@ def run_arm(config, output, native, teacher, hard_cache, *, mock=False, evaluato
 
     active = any(schedule_value(prior["weight"], u, updates) > 0 for u in range(updates))
     chemistry_weight = float(condition.get("chemistry_weight", 0))
+    chemistry_kind = condition.get("chemistry_loss", "simple_soft_valence")
+    repair_step = None
+    if chemistry_kind == "failure_aware_repair":
+        if not chemistry_weight or not interior_mass:
+            raise ValueError("Repair guidance requires a positive coefficient and an interior graph")
+        from stage3_repair_comparison import make_repair_evaluator
+        repair_step = make_repair_evaluator()
+    elif chemistry_kind != "simple_soft_valence":
+        raise ValueError(f"Unknown chemistry loss {chemistry_kind}")
     stale_target, calibration = None, 1.0
     warnings = []
     started = time.monotonic()
@@ -345,6 +395,7 @@ def run_arm(config, output, native, teacher, hard_cache, *, mock=False, evaluato
                 gc = jax.tree.map(jnp.zeros_like, graph)
                 prior_value, chem_value = jnp.asarray(0.), jnp.asarray(0.)
                 query_seconds = 0.0
+                shuffle_diagnostics = None
                 target = None
                 if active:
                     query_start_time = time.monotonic()
@@ -374,9 +425,19 @@ def run_arm(config, output, native, teacher, hard_cache, *, mock=False, evaluato
                             "metrics": reply.metadata,
                         })
                     query_seconds = time.monotonic() - query_start_time
+                    atom_scale, bond_scale = prior["atom_scale"], prior["bond_scale"]
+                    if prior.get("shuffle_within_argmax"):
+                        if (temp != 1 or prior["loss"] != "mse" or prior["refresh"] != "current"
+                                or prior["target"] != "teacher" or prior["calibration"] != "none"):
+                            raise ValueError("Shuffled control requires an uncooled live MSE teacher")
+                        target, scales, shuffle_diagnostics = shuffle_teacher_targets(
+                            view, target, config["seed"], update,
+                        )
+                        atom_scale *= scales[0]
+                        bond_scale *= scales[1]
                     prior_value, gp = prior_grad(
                         graph, target, jnp.asarray(temp, jnp.float32), placement, cooling["gradient"], prior["loss"],
-                        prior["atom_scale"], prior["bond_scale"], prior["normalization"],
+                        atom_scale, bond_scale, prior["normalization"],
                     )
                     if update == 0 and prior.get("calibration") == "initial_gradient":
                         reference = prior["calibration_reference"]
@@ -387,7 +448,9 @@ def run_arm(config, output, native, teacher, hard_cache, *, mock=False, evaluato
                             calibration = reference["weight"] * _norm(gr) / denominator
                         else:
                             warnings.append("Flat initial calibration gradient; multiplier left at1")
-                if chemistry_weight:
+                if repair_step is not None:
+                    chem_value, gc = repair_step(graph, jnp.asarray(temp, jnp.float32), placement, cooling["gradient"])
+                elif chemistry_weight:
                     chem_value, gc = chem_grad(graph, jnp.asarray(temp, jnp.float32), placement, cooling["gradient"])
                 applied_weight = weight * calibration
                 combined = jax.tree.map(lambda n, p, c: n + applied_weight * p + chemistry_weight * c, gn, gp, gc)
@@ -401,6 +464,10 @@ def run_arm(config, output, native, teacher, hard_cache, *, mock=False, evaluato
                     **_gradient_metrics(gn, "native"), **_gradient_metrics(gp, "teacher"),
                     **_gradient_metrics(gc, "chemistry"), **_gradient_metrics(combined, "combined"),
                 }
+                if repair_step is not None:
+                    gradient_row["repair"] = repair_step.history[-1]
+                if shuffle_diagnostics is not None:
+                    gradient_row["shuffled_teacher"] = shuffle_diagnostics
                 for leaf in ("X", "E_upper"):
                     n = gradient_row[f"native_{leaf}_tangent_norm"]
                     p = applied_weight * gradient_row[f"teacher_{leaf}_tangent_norm"]
@@ -426,6 +493,9 @@ def run_arm(config, output, native, teacher, hard_cache, *, mock=False, evaluato
                     next_temp = schedule_value(cooling["schedule"], min(update + 1, updates - 1), updates)
                     next_graph = cool_state_graph(next_graph, temp, next_temp)
                 next_graph, operator_row = apply_projection(next_graph, condition["projection"], update + 1)
+                if interior_mass:
+                    next_graph = mix_interior(next_graph)
+                    operator_row["post_projection_uniform_mass"] = interior_mass
                 emit(streams["operators"], {"update": update + 1,
                     "simplex_X_l2": result.projection_residuals["X"],
                     "simplex_E_upper_l2": result.projection_residuals["E_upper"], **operator_row})

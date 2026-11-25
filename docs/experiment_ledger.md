@@ -203,3 +203,70 @@ zero valid endpoints on the same pairs. This is exploratory selection among 155
 settings and three seeds, not an independent confirmation. Most configurations
 still fragment late; only 11 of 1,294 completed endpoints were valid/connected.
 See the [dated note and evidence](../experiments/learned-prior/protenix-defog-composition-30000/run-20261113.md#15-november-progress-and-preliminary-results).
+
+### 2026-11-16 - Remaining Stage 3 bundles moved off A100
+
+The user's requested queue change retired nine authenticated pending/no-output
+A100 submissions and replaced the same 33 runs on V100 (three bundles), L40S
+(three), A10 (two) and A40 (one). All were accepted; at 09:26 CET the three V100
+jobs had started. The existing A100 bundle finished normally, leaving no active
+campaign A100 jobs. Scientific source/settings and budgets are unchanged.
+Original and replacement receipts are retained. Migrated fragmented seed-23
+arms now differ in GPU family from some matched controls; record this in final
+comparisons. The campaign had 1,357 complete and five previous partial runs;
+this scheduling change adds no molecular-quality conclusion. See the
+[migration note](../experiments/learned-prior/protenix-defog-composition-30000/run-20261113.md#16-november-remaining-bundles-moved-off-a100).
+
+At 16:54 CET the final four still-pending bundles (13 runs) were moved to V100
+at the user's request. History confirmed zero RUN seconds after pending-only
+retirement; replacements 30082261–30082264 were accepted and pending.
+Scientific settings and budgets are unchanged, with prior receipts retained.
+See the [V100 migration evidence](../experiments/learned-prior/protenix-defog-composition-30000/run-20261113.md#16-november-final-13-runs-moved-to-v100).
+
+### 2026-11-17 - Stage 3 campaign finished
+
+The last 13 runs completed 500 updates on V100. Of 1,395 planned runs, 1,390
+completed and five previously reported runs stopped early on projection
+tolerances. All 13 final runs found a new valid connected molecule, though none
+ended valid. Among all 1,390 heterogeneous completed runs, 1,143 found a valid
+connected molecule, 1,027 found a new valid identity, and 11 ended valid and
+connected. Pooled counts include controls and are not a DeFoG effect estimate.
+See the [completion note](../experiments/learned-prior/protenix-defog-composition-30000/run-20261113.md#17-november-campaign-completion).
+
+The five partial runs and matched weight-0.5 treatment were submitted as six
+separate V100 jobs with a projection solver recovery and retained KKT warnings.
+All were pending at submission; numerical and chemistry outcomes remain open.
+See the [retry note](../experiments/learned-prior/protenix-defog-composition-30000/run-20261113.md#17-november-projection-recovery-reruns).
+
+### 2026-11-18 - Projection recovery reruns completed
+
+All six reruns completed 500 updates with frozen checks passing. Five found new
+valid connected molecules; none ended valid/connected. For fragmented seed 17,
+weight 0.5 scored 0.33080 against the projection-only control's 0.28018. The
+earlier weight-0.5 attempt scored 0.46203 and ended valid; trajectories diverged
+despite the same initialization, software versions and GPU model, for reasons
+not yet established. No solver retries or KKT warnings were observed in the six
+new operator logs, so the real original failure inputs have not been reproduced.
+See the [rerun results](../experiments/learned-prior/protenix-defog-composition-30000/run-20261113.md#18-november-projection-recovery-results).
+
+### 2026-11-21 - DeFoG and structural repair on five fragmented starts
+
+All five matched 500-update BRD4 pairs completed. Both methods found valid connected molecules on every seed. DeFoG at weight 0.5 with connected projection had higher best valid hard contact on 3/5 seeds (mean 0.400 versus 0.366 for repair at weight 1 without projection). Repair ended valid on two seeds and DeFoG on one. The first 20 distinct valid candidates per trajectory gave means of 0.345 and 0.359 respectively. [Per-seed results and extraction method](../experiments/learned-prior/protenix-defog-composition-30000/repair-pair-20261118.md#21-november--completed-five-seed-comparison).
+
+### 2026-11-21 - Strong repair and held-out Protenix scoring
+
+Three 500-update runs using repair weight 10, no Stage 2 projection and LR 60 finished valid and connected (seeds 17, 23, 42). Mean best valid contact was 0.288, versus 0.352 for repair 1 and 0.376 for projected DeFoG on the same starts. Rescoring all 80 preselected molecules on five fresh common keys gave exact agreement with the same-device original-key replays. [Run results, raw scores and updated report](../experiments/learned-prior/protenix-defog-composition-30000/repair-pair-20261118.md#21-november--stronger-unprojected-repair-and-fresh-protenix-keys).
+
+### 2026-11-21 - Stage 3 standalone DeFoG closeout
+
+With DeFoG weight 0.5, teacher time 0.8, LR 60 and 500 updates on fragmented seeds 17, 23 and 42, disabling Stage 2 projection yielded 0/1,503 valid connected observations and endpoints of six, two and seven components. The matched connected-projection runs found valid molecules on 3/3 starts and recorded 525/1,503 qualifying observations. The new A100 runs passed frozen checks and all objective budgets. [Closeout results and PDF](../experiments/learned-prior/protenix-defog-composition-30000/repair-pair-20261118.md#21-november--defog-05-without-projection).
+
+### 2026-11-25 - Sampled DeFoG endpoints versus the one-query target
+
+In the saved 500-update Boltz/DBMol trajectory, all 99 successive refreshes changed the slot-aligned target, including 81 with unchanged input argmax. CPU job 30363657 held five input graphs and model time fixed and repeated both methods eight times per graph. All 140 within-input pairs of full sampled endpoints differed (median 11 labels). One-query probabilities repeated exactly. Of 40 unfiltered samples, 39 were valid and connected, compared with three of five one-query argmax readouts. This measures repeatability and output chemistry on a small control panel. [Protocol, measurements and scripts](../experiments/learned-prior/protenix-defog-composition-30000/target-repeatability-20261125.md) · [Updated report](stage3_defog_report_draft.pdf)
+
+A saved-output calculation also compared categorical draws on both sides. On each of the five fixed inputs, the measured mean label disagreement between full continuations exceeded that expected between two draws from the one-query probabilities. For hexane the means were 10.89 and 1.43 labels per pair. [Calculation and results by control](../experiments/learned-prior/protenix-defog-composition-30000/target-repeatability-20261125.md#does-drawing-a-categorical-answer-explain-all-of-the-variation)
+
+### 2026-11-25 - One-query repair direction and teacher controls
+
+CPU job 30364221 completed 36 queries on 12 archived valid BRD4 graphs and their two single-bond corruptions. The best valid one-edit repair ranked in the top ten for 12/12 valence defects and 1/12 deleted bridges. A quarter-step toward the target repaired zero hard graphs. A three-quarter-step repaired 2/12 valence defects and 0/12 deleted bridges, and kept 8/12 clean controls valid. The checkpoint remained frozen. Three GPU jobs carry the six 500-update frozen-initial and norm-matched shuffled controls. [Experiment note and results](../experiments/learned-prior/protenix-defog-composition-30000/teacher-mechanism-20261125.md)
