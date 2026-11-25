@@ -34,12 +34,12 @@ The October perturbation test asked a different question. The adapted teacher co
 
 ## Reproduction
 
-The historical graph summaries are in the verified export `DBMol_exploratory/outputs/hpc-results/source120a004-boltz-defog.html` (SHA-256 `d155a1082be35aad8c1e53f5af159d2ae39b97c1138044633e2b36adb24c6080`). The original DBMol protocol is documented in `docs/37_defog_repair_guidance.md` and `docs/60_long_boltz_defog_comparison.md`. The detailed October locality and 1,000-update reports are in the Mosaic research checkout under `experiments/learned-prior/{defog-soft-teacher,protenix-defog-1000}/RESULTS.md`.
+The [compact refresh input](historical-dbmol/source120-guided-refreshes.json.gz) was extracted from the verified `source120a004-boltz-defog.html` export (SHA-256 `d155a1082be35aad8c1e53f5af159d2ae39b97c1138044633e2b36adb24c6080`). The [DBMol archive](historical-dbmol/README.md) records the original run protocol and the location of the complete HTML copies. The detailed October locality and 1,000-update reports are in the Mosaic research checkout under `experiments/learned-prior/{defog-soft-teacher,protenix-defog-1000}/RESULTS.md`.
 
 From the experiment's scripts directory the two analysis commands are as follows. Use the native DeFoG environment on an allocated CPU for the second command and a fresh output directory. The historical helper and control definitions are read from the existing archive.
 
 ```sh
-python summarize_defog_refreshes.py /path/to/source120a004-boltz-defog.html boltz-refreshes.json
+python summarize_defog_refreshes.py ../historical-dbmol/source120-guided-refreshes.json.gz boltz-refreshes.json
 /work3/s234818/latentmol/env/defog311/bin/python compare_defog_target_repeats.py \
   --probe-release /work3/s234818/mosaic/releases/20261023-defog-soft-teacher-01 \
   --assets /work3/s234818/latentmol/cache/defog-official-guacamol --output data

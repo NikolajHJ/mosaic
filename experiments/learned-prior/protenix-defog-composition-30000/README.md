@@ -265,9 +265,10 @@ CSV exports. Generated reports and compact inputs live under `results/`.
 
 To rebuild it, run `scripts/export_report_data.py PARENT OUTPUT.json.gz` against
 the saved original and recovery campaign directories. Then run
-`scripts/build_comprehensive_report.py --data OUTPUT.json.gz --mosaic RESEARCH_CHECKOUT --dbmol DBMOL_CHECKOUT --out REPORT.html`
+`scripts/build_comprehensive_report.py --data OUTPUT.json.gz --mosaic RESEARCH_CHECKOUT --out REPORT.html`
 with RDKit. The Mosaic research checkout supplies the earlier comparison records
-and four historical HTML reports.
+and four historical HTML reports. The earlier DBMol source notes and the
+inputs to the Boltz target-refresh analysis are archived [here](historical-dbmol/README.md).
 
 Native jobs losslessly gzip the JSONL streams and `all_candidates.json` to
 reduce storage. Their filenames end in `.jsonl.gz` and `.json.gz`; the collector

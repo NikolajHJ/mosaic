@@ -69,14 +69,16 @@ def structure_library(runs):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    for name in ("data", "mosaic", "dbmol", "out"):
+    for name in ("data", "mosaic", "out"):
         parser.add_argument("--"+name, type=Path, required=True)
+    parser.add_argument("--dbmol", type=Path,
+                        help="Optional historical source override. The archived notes are used by default.")
     parser.add_argument("--structure-cache", type=Path)
     args = parser.parse_args()
     exp = Path(__file__).resolve().parents[1]
     data = json.loads(gzip.decompress(args.data.read_bytes()))
     data["history"] = history(args.mosaic)
-    data["sources"] = source_notes(args.mosaic, args.dbmol, exp)
+    data["sources"] = source_notes(args.mosaic, args.dbmol or exp / "historical-dbmol", exp)
     data["benchmark"] = json.loads((exp.parents[2]/"models/defog/benchmarks.json").read_text())
     previous = ("DeFoG-results-Mosaic-2026-11-05", "DeFoG-cyclic-10k-Mosaic-2026-11-06",
                 "DeFoG-high-lr-Mosaic-2026-11-07", "DeFoG-cyclic-10k-LR150-Mosaic-2026-11-07")

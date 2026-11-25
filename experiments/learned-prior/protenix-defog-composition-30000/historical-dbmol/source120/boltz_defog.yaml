@@ -1,0 +1,209 @@
+name: long-500-boltz_defog
+mode: vae
+decoder:
+  path: /work3/s234818/latentmol/runs/20261001T001617Z_vae-train_c008c090/best_validity.pt
+  sha256: 1893ddc183473fd4f27c6cd921d8b302f67ab388b660ada44bf3a2d6d5e28088
+affinity_checkpoint:
+  path: /work3/s234818/latentmol/cache/boltz2/boltz2_aff.ckpt
+  sha256: dcc5cd3722b1c9eaa34267e4ae32f55cbbf1963f4c19319381ccfa30fdd2ca9e
+context_manifest:
+  path: /work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/contexts.json
+  sha256: a0ebed8bd67358b4027999901a8cb9e5be12731b4d77d68c6b9154513b2261eb
+anchor_count: 13
+output_root: /work3/s234818/latentmol/runs/source120a004-boltz-defog-staged-24h-attempt004/boltz_defog/optimization
+device: cuda
+temperature: 1.0
+threshold: 0.5
+recycling_steps: 0
+objective:
+  output: dbmol_total_loss
+  direction: minimize
+  weight: 1.0
+  scale: 1.0
+  offset: 0.0
+optimizer:
+  steps: 500
+  learning_rate: 400.0
+  trust_radius: 3.0
+  max_gradient_norm: 0.000125
+diagnostics:
+  seed: 1729
+  hard_samples: 8
+  fd_epsilons:
+  - 0.001
+  - 0.003
+  - 0.01
+  - 0.03
+  - 0.1
+  fd_rtol: 0.05
+  fd_atol: 1.0e-06
+  parity_rtol: 0.0001
+  parity_atol: 1.0e-05
+  minimum_fd_passes: 2
+allow_lossy_charge: true
+start:
+  kind: standard_normal
+  seed: 0
+arms:
+- fixed_initial_mask
+element_diagnostics: true
+fd_policy: pointwise_native_ad_v4
+step_control:
+  version: armijo_v1
+  max_trials: 16
+  armijo: 0.0001
+  minimum_improvement_ulps: 2.0
+initial_latent:
+  path: /work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/seeds/seed-0000/pilot/20261006T002545Z_vae-random-0000_09d4513e/start.pt
+  sha256: 9c8a0ceb3c863236012e5764d5ff779997bbf7597972f9aff103273a73175c42
+gradient_audit_interval: 5
+dbmol:
+  confidence_checkpoint:
+    path: /work3/s234818/latentmol/cache/boltz2/boltz2_conf.ckpt
+    sha256: 090e82ac8c92f5e943fa1b39e7410a44027bea7243c0bbb3caa67a77fc1428e1
+  pocket_residues:
+  - asym_id: 0
+    residue_index: 122
+  - asym_id: 0
+    residue_index: 125
+  - asym_id: 0
+    residue_index: 126
+  - asym_id: 0
+    residue_index: 129
+  - asym_id: 0
+    residue_index: 130
+  - asym_id: 0
+    residue_index: 131
+  - asym_id: 0
+    residue_index: 134
+  - asym_id: 0
+    residue_index: 155
+  - asym_id: 0
+    residue_index: 157
+  - asym_id: 0
+    residue_index: 162
+  - asym_id: 0
+    residue_index: 163
+  - asym_id: 0
+    residue_index: 165
+  - asym_id: 0
+    residue_index: 166
+  - asym_id: 0
+    residue_index: 167
+  - asym_id: 0
+    residue_index: 169
+  - asym_id: 0
+    residue_index: 172
+  - asym_id: 0
+    residue_index: 200
+  - asym_id: 0
+    residue_index: 201
+  - asym_id: 0
+    residue_index: 202
+  - asym_id: 0
+    residue_index: 203
+  - asym_id: 0
+    residue_index: 204
+  - asym_id: 0
+    residue_index: 205
+  - asym_id: 0
+    residue_index: 207
+  - asym_id: 0
+    residue_index: 223
+  - asym_id: 0
+    residue_index: 224
+  - asym_id: 0
+    residue_index: 225
+  - asym_id: 0
+    residue_index: 228
+  - asym_id: 0
+    residue_index: 252
+  - asym_id: 0
+    residue_index: 267
+  - asym_id: 0
+    residue_index: 268
+  - asym_id: 0
+    residue_index: 269
+  - asym_id: 0
+    residue_index: 270
+  - asym_id: 0
+    residue_index: 271
+  - asym_id: 0
+    residue_index: 272
+  - asym_id: 0
+    residue_index: 273
+  - asym_id: 0
+    residue_index: 299
+  - asym_id: 0
+    residue_index: 300
+  - asym_id: 0
+    residue_index: 319
+  - asym_id: 0
+    residue_index: 321
+  - asym_id: 0
+    residue_index: 322
+  - asym_id: 0
+    residue_index: 323
+  - asym_id: 0
+    residue_index: 325
+  - asym_id: 0
+    residue_index: 326
+  - asym_id: 0
+    residue_index: 357
+  profile: dbmol_fixed_pose_v1
+  pocket_origin: initial_pose_heavy_atom_8A
+  pocket_reference:
+    prepared_sha256: 8b6e47fdf5a53a8bd92c5ebf0baf7471ca6a329bbc524e9957a3e94a9938f611
+    context_sha256: d9a863dc5e0fd978e35d2b8ff0f7eab31b8efe6d2fc211b710a7ba73690e5030
+  affinity_regression_weight: 1.0
+  affinity_logit_weight: 1.0
+  contact_weight: 2.5
+  confidence_weight: 2.5
+  confidence_weights:
+    iptm: 1.0
+    complex_iplddt: 0.3
+    complex_ipde: 0.3
+    complex_pde: 0.1
+    confidence_score: 0.3
+    ptm: 0.1
+  distance_cutoff: 8.0
+  epsilon: 1.0e-08
+  binder_logit_policy: mean_native_head_logits
+  bin_policy: native_64_midpoint_lt_cutoff
+  objective_arithmetic: contact_head_and_assembly_float64_v1
+repair_guidance:
+  provider:
+    model: defog_guacamol
+    python: /work3/s234818/latentmol/env/defog311/bin/python
+    source:
+      path: /work3/s234818/latentmol/cache/defog-official-guacamol/DeFoG
+      commit: 365bda9affadd5c2307014a0532ddaa244399441
+    checkpoint:
+      path: /work3/s234818/latentmol/cache/defog-official-guacamol/guacamol.ckpt
+      sha256: bc97d52ccf33a20d991f98349a1d37662273ab1c3e3f9777b938f9f144bc61f5
+    t0: 0.8
+    steps: 1000
+    initialization: direct_candidate_no_corruption
+    device: cuda
+    sampling: {}
+    timeout_seconds: 600
+  version: 1
+  weight: 0.001
+  refresh_interval: 5
+  attempts_per_refresh: 4
+  seed: 61000
+  normalization: sum
+  fallback: boltz_only_clear_target
+  selection: first_valid_prescribed_order
+  probability_policy: stable_log_softmax_no_floor
+  weight_schedule:
+    version: linear_updates_v1
+    start_weight: 0.001
+    end_weight: 0.1
+    start_update: 12
+    end_update: 24
+execution_budget:
+  version: tracked_native_v1
+  wall_seconds: 82800
+  max_boltz_calls: 20000
+version: 1
