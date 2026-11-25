@@ -1,0 +1,79 @@
+{
+  "status": "startup_queued_native_checks_pending",
+  "observed_utc": "2026-11-03T12:03:59.843172+00:00",
+  "target_updates": 50000,
+  "startup_job": "29877824",
+  "callback_job": "29877825",
+  "queue": "gpua100",
+  "startup_updates_count_toward_total": 20,
+  "full_continuation": "automatically scheduled after successful startup using measured warm runtime",
+  "campaign_root": "/work3/s234818/latentmol/runs/vae-dbmol-20261103-a01",
+  "control": "/zhome/95/e/206121/dbmol-control/vae-dbmol-20261103-a01",
+  "release": "/work3/s234818/latentmol/releases/vae-dbmol-20261103-a01",
+  "archive_sha256": "b0cb08e6c769324e4b5bf99cce3fe296b984310c266c54d25449d38df8c30481",
+  "plan_sha256": "f9e0e54a10f89e5013939b5744856b60d31a17ab20ce90ef38de8ea93c491709",
+  "parent_archive_sha256": "2c3082c8d8b32ac162c6f29c13e00e6bc9d0f710de0a7ef35433607e61656216",
+  "checkpoint": {
+    "path": "/work3/s234818/latentmol/runs/source156-vae-epoch45-structural-attempt002/epoch0045/epoch_0045.pt",
+    "sha256": "5c4946c15515e70bd01281eea7b74693c18598c4b47f6724fcc9898deb1302be"
+  },
+  "native_inputs": {
+    "source_sha256": "b0cb08e6c769324e4b5bf99cce3fe296b984310c266c54d25449d38df8c30481",
+    "prepared": {
+      "path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-25/prepared.pt",
+      "sha256": "84a0d35dbb565a535a18a7ef04bda5fbd7ab589c4e1ea2ac30d3e3437130e9cb"
+    },
+    "affinity": {
+      "path": "/work3/s234818/latentmol/cache/boltz2/boltz2_aff.ckpt",
+      "sha256": "dcc5cd3722b1c9eaa34267e4ae32f55cbbf1963f4c19319381ccfa30fdd2ca9e"
+    },
+    "confidence": {
+      "path": "/work3/s234818/latentmol/cache/boltz2/boltz2_conf.ckpt",
+      "sha256": "090e82ac8c92f5e943fa1b39e7410a44027bea7243c0bbb3caa67a77fc1428e1"
+    }
+  },
+  "local_checks": {
+    "adapter_latent": 20,
+    "submission_lifecycle": 17,
+    "native_models_tested": false
+  },
+  "storage": {
+    "version": "mosaic-exploratory-storage-v1",
+    "research_profile": "exploratory",
+    "status": "passed",
+    "available_bytes": 13871370240,
+    "required_bytes": 2362232013,
+    "byte_margin": 11509138227,
+    "available_files": 19429994,
+    "required_files": 11000,
+    "file_margin": 19418994,
+    "reserve_bytes": 214748365,
+    "file_reserve": 1000,
+    "single_quota_burst_allowance_bytes": 0,
+    "unprofiled_writer_ids": [],
+    "unprofiled_writer_allowance_bytes": 0,
+    "external_remaining_budgets": [],
+    "future_bytes": 2147483648,
+    "future_files": 10000,
+    "existing_bytes_recharged": 0,
+    "existing_files_recharged": 0,
+    "warnings": [],
+    "filesystem_inode_reporting": "unreported_all_zero",
+    "quota_observation": "reported",
+    "not_a_whole_account_reservation": true,
+    "entry_and_periodic_checks_required": false,
+    "scientific_settings_changed": false,
+    "output_root": "/work3/s234818/latentmol/runs/vae-dbmol-20261103-a01",
+    "output_cap_bytes": 2147483648,
+    "file_cap": 10000,
+    "own_output": {
+      "actual_bytes": 0,
+      "actual_files": 0,
+      "nofollow": true
+    }
+  },
+  "scientific_certification": false,
+  "existing_results_changed": false,
+  "evidence": "outputs\\hpc-submissions\\vae-dbmol-20261103-a01\\status02.json",
+  "latest_scheduler": "29877824 PEND gpua100 vae-dbmol-a01-startup\n29877825 PEND hpc vae-dbmol-a01-after-startup\n"
+}

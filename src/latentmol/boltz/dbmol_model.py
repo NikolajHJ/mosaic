@@ -14,7 +14,7 @@ from torch import nn
 from latentmol.experiments import file_sha256
 from latentmol.multimodel.config import digest
 from .contracts import AFFINITY_SHA256
-from .dbmol_objective import CONFIDENCE_WEIGHTS, CONTACT_HEAD64_ARITHMETIC, reduce_profile
+from .dbmol_objective import CONFIDENCE_WEIGHTS, CONTACT_HEAD64_ARITHMETIC, pocket_token_mask, reduce_profile
 from .contact_projection import contact_distogram_float64
 from .model import (FrozenBoltzAffinity, affinity_runtime_overrides, attached_trunk,
                     install_eval_checkpoints)
@@ -140,7 +140,31 @@ def attached_confidence(module, inputs, s, z, features, coordinates, distogram, 
                                    pred_distogram_logits=one_distogram(distogram))
 
 
-def strict_confidence_scores(raw, features, coordinates):
+def ligand_ipsae_from_logits(logits, protein_frames, ligand_tokens):
+    """Protein-frame ligand ipSAE on expected PAE, with the fixed 2 A scale.
+
+    Boltz PAE logits use frame first, scored token second. Unlike native ipTM,
+    the published ipSAE kernel is applied after taking the expected PAE.
+    """
+    if (logits.ndim != 4 or logits.shape[0] != 1 or logits.shape[1] != logits.shape[2]
+            or logits.shape[-1] < 2):
+        raise ValueError("Require batch-one square native PAE logits")
+    n = logits.shape[1]
+    if (protein_frames.shape != (n,) or ligand_tokens.shape != (n,)
+            or protein_frames.dtype != torch.bool or ligand_tokens.dtype != torch.bool
+            or not bool(protein_frames.any()) or not bool(ligand_tokens.any())
+            or bool((protein_frames & ligand_tokens).any())):
+        raise ValueError("Require disjoint nonempty protein-frame and ligand-token masks")
+    if not bool(torch.isfinite(logits).all()):
+        raise ValueError("Nonfinite native PAE logits")
+    num_bins = logits.shape[-1]
+    bins = (torch.arange(num_bins, dtype=logits.dtype, device=logits.device) + 0.5) * (32.0 / num_bins)
+    selected = logits[0][protein_frames][:, ligand_tokens]
+    pae = (selected.softmax(-1) * bins).sum(-1)
+    return (1 / (1 + (pae / 2.0).square())).mean(-1).max()
+
+
+def strict_confidence_scores(raw, features, coordinates, *, ipsae_config=None):
     """Recompute native PTM aggregation outside its silent exception fallback.
 
     A malformed frame/context must fail in no_grad parity passes as well as in
@@ -161,6 +185,20 @@ def strict_confidence_scores(raw, features, coordinates):
     tm = iptm if not torch.allclose(iptm, torch.zeros_like(iptm)) else ptm
     scores = {k: raw[k] for k in ("complex_plddt", "complex_iplddt", "complex_pde", "complex_ipde")}
     scores.update(ptm=ptm, iptm=iptm, confidence_score=(4 * raw["complex_plddt"] + tm) / 5)
+    if ipsae_config is not None and ipsae_config.ipsae_weight:
+        pocket, ligand = pocket_token_mask(features, ipsae_config)
+        asym = features["asym_id"][0]
+        protein_ids = torch.unique(asym[pocket])
+        ligand_ids = torch.unique(asym[ligand])
+        if protein_ids.numel() != 1 or ligand_ids.numel() != 1:
+            raise ValueError("ipSAE requires exactly one pocket protein chain and one ligand chain")
+        types = features["mol_type"][0]
+        protein = (asym == protein_ids[0]) & (types == 0) & pad[0]
+        ligand_chain = (asym == ligand_ids[0]) & pad[0]
+        if not torch.equal(ligand, ligand_chain) or not bool((types[ligand] == 3).all()):
+            raise ValueError("ipSAE ligand mask must cover one complete nonpolymer chain")
+        valid_protein = protein & frame_mask.reshape_as(pad)[0].bool()
+        scores["ligand_ipsae"] = ligand_ipsae_from_logits(raw["pae_logits"], valid_protein, ligand)
     for key, value in scores.items():
         if not isinstance(value, torch.Tensor) or value.numel() != 1:
             raise ValueError(f"Invalid native confidence aggregate: {key}")
@@ -216,7 +254,7 @@ class FrozenBoltzDBMol(nn.Module):
         distogram = self.structure.distogram_module(z)
         confidence = attached_confidence(self.structure.confidence_module, inputs, s, z,
                                          features, coordinates, distogram, bonds)
-        scores = strict_confidence_scores(confidence, features, coordinates)
+        scores = strict_confidence_scores(confidence, features, coordinates, ipsae_config=self.dbmol_config)
         result = self._reduce(affinity, scores, distogram, features, pair=z)
         from .embedding_injection import any_injected_requires_grad
         if torch.is_grad_enabled() and (features["ref_element"].requires_grad or bonds.requires_grad
@@ -224,6 +262,8 @@ class FrozenBoltzDBMol(nn.Module):
             for key in ("affinity_pred_value", "affinity_logits_binary", "dbmol_contact_loss", *CONFIDENCE_WEIGHTS):
                 if not result[key].requires_grad:
                     raise ValueError(f"Detached DBMol term: {key}")
+            if self.dbmol_config.ipsae_weight and not result["ligand_ipsae"].requires_grad:
+                raise ValueError("Detached DBMol ligand ipSAE")
         return result
 
     @torch.no_grad()
@@ -244,5 +284,5 @@ class FrozenBoltzDBMol(nn.Module):
                                  x_pred=coordinates.reshape(1, -1, 3), feats=features,
                                  pred_distogram_logits=one_distogram(native["pdistogram"]),
                                  multiplicity=1, run_sequentially=False, use_kernels=False)
-        return self._reduce(affinity, strict_confidence_scores(raw, features, coordinates),
+        return self._reduce(affinity, strict_confidence_scores(raw, features, coordinates, ipsae_config=self.dbmol_config),
                             native["pdistogram"], features, pair=native["z"])

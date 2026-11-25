@@ -21,6 +21,7 @@ import traceback
 import uuid
 
 from latentmol.config_identity import CONFIG_HASH_VERSION, config_sha256, normalize_json
+from latentmol.research_profile import RESEARCH_PROFILES, research_profile as checked_profile
 
 
 def utc_now() -> str:
@@ -50,6 +51,37 @@ def source_manifest(root: Path) -> dict:
     return {"root": str(root), "sha256": digest, "files": files}
 
 
+def source_snapshot(root: Path, *, selected_files=()) -> dict:
+    """Cheap exploratory provenance, without scanning tests, artifacts or packages.
+
+    The entrypoint and explicitly selected files bind their actual dirty bytes.
+    Git revision and dirty state describe the remaining checkout. This is not a
+    sealed release manifest and must never stand in for one during exact replay.
+    """
+    root = Path(root).resolve()
+    files = {}
+    for candidate in selected_files:
+        path = Path(candidate).resolve()
+        if path.is_file():
+            try:
+                name = path.relative_to(root).as_posix()
+            except ValueError:
+                name = str(path)
+            files[name] = file_sha256(path)
+    def git(*arguments):
+        try:
+            result = subprocess.run(["git", "-C", str(root), *arguments], capture_output=True,
+                                    text=True, timeout=5, check=False)
+            return result.stdout.strip() if result.returncode == 0 else None
+        except (OSError, subprocess.TimeoutExpired):
+            return None
+    commit = git("rev-parse", "HEAD")
+    dirty = git("status", "--porcelain", "--untracked-files=no")
+    content = {"scope": "exploratory_selected_files_and_git", "git_commit": commit,
+               "git_dirty": bool(dirty) if dirty is not None else None, "files": files}
+    return {"root": str(root), "sha256": config_sha256(content), **content}
+
+
 def write_json(path: Path, value):
     """Replace a small metadata file atomically on its own filesystem."""
     temporary = path.with_name(path.name + ".tmp")
@@ -60,10 +92,12 @@ def write_json(path: Path, value):
 class ExperimentRun:
     """Context manager that records both successful runs and ordinary exceptions."""
 
-    def __init__(self, root: Path, name: str, config: dict, source_root: Path, *, report_kind: str | None = None):
+    def __init__(self, root: Path, name: str, config: dict, source_root: Path, *, report_kind: str | None = None,
+                 research_profile: str = "qualified", selected_source_files=()):
         if report_kind not in (None, "molecule_optimization"):
             raise ValueError("Unsupported experiment presentation kind")
         self.report_kind = report_kind
+        profile = checked_profile(research_profile)
         if not re.fullmatch(r"[a-zA-Z0-9_-]+", name):
             raise ValueError("Run names may contain letters, digits, underscores and hyphens")
         # Normalize before hashing and saving. Integer count keys must survive
@@ -75,14 +109,17 @@ class ExperimentRun:
         self.path.mkdir(parents=True, exist_ok=False)
         self.record = {
             "run_id": self.run_id, "name": name, "status": "created", "created_at": utc_now(),
-            "config": config, "source": source_manifest(source_root),
+            "config": config, "source": (source_manifest(source_root) if profile == "qualified" else
+                source_snapshot(source_root, selected_files=selected_source_files or (sys.argv[0],))),
+            "research_profile": profile,
             "source_archive_sha256": os.environ.get("LATENTMOL_SOURCE_SHA256"),
             "git_commit": os.environ.get("LATENTMOL_GIT_COMMIT"),
             "config_sha256": config_sha256(config),
             "config_hash_version": CONFIG_HASH_VERSION,
             "environment": {"host": socket.gethostname(), "python": sys.version,
                             "platform": platform.platform(), "job_id": os.environ.get("LSB_JOBID"),
-                            "packages": {d.metadata["Name"]: d.version for d in metadata.distributions() if d.metadata["Name"]}},
+                            "packages": ({d.metadata["Name"]: d.version for d in metadata.distributions() if d.metadata["Name"]}
+                                         if profile == "qualified" else {})},
         }
         self._save()
 
@@ -130,12 +167,14 @@ def main():
     parser.add_argument("--run-root", type=Path, required=True)
     parser.add_argument("--name", required=True)
     parser.add_argument("--source-root", type=Path, default=Path.cwd())
+    parser.add_argument("--research-profile", choices=RESEARCH_PROFILES, default="exploratory")
     parser.add_argument("command", nargs=argparse.REMAINDER)
     args = parser.parse_args()
     command = args.command[1:] if args.command[:1] == ["--"] else args.command
     if not command:
         parser.error("A command after -- is required")
-    with ExperimentRun(args.run_root, args.name, {"command": command}, args.source_root) as run:
+    with ExperimentRun(args.run_root, args.name, {"command": command}, args.source_root,
+                       research_profile=args.research_profile) as run:
         with (run.path / "command.log").open("w") as logfile:
             process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
             for line in process.stdout:

@@ -1,0 +1,9 @@
+{
+  "search": {"max_edits": 3, "checks_per_depth": 32, "beam_width": 4},
+  "arms": {
+    "legacy": null,
+    "connected": {"backend": "proposals", "sample_draws": 0},
+    "astar": {"backend": "astar", "candidate_checks": 96},
+    "astar_wide": {"backend": "astar", "max_edits": 128, "candidate_checks": 96}
+  }
+}

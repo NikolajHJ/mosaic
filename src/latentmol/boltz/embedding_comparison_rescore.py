@@ -18,6 +18,8 @@ from pathlib import Path
 import re
 import time
 
+from latentmol.cuda_process import require_cuda_free_coordinator
+
 
 VERSION = "epoch36-embedding-comparison-native-v1"
 CLI_MAIN_SHA256 = "b5ded4dac1552af2e079c335d56e64ea580b4d5ca0202a9542385ce3e318c3b3"
@@ -199,7 +201,8 @@ def paired_report(selection, results):
 
 
 def run_followup(selection, target, cache, output, *, deadline,
-                 native_timeout_seconds=1800, audit_timeout_seconds=600):
+                 native_timeout_seconds=1800, audit_timeout_seconds=600,
+                 require_first_native_success=False):
     """Run serial fresh requests after freezing selection, preserving failures.
 
     ``deadline`` is the allocation's monotonic shared internal deadline. No
@@ -208,6 +211,9 @@ def run_followup(selection, target, cache, output, *, deadline,
     """
     if not os.environ.get("LSB_JOBID") or not os.environ.get("LATENTMOL_SOURCE_SHA256"):
         raise RuntimeError("Native comparison follow-up requires a sealed LSF allocation")
+    require_cuda_free_coordinator()
+    if type(require_first_native_success) is not bool:
+        raise ValueError("The first-request native smoke policy must be boolean")
     if isinstance(deadline, bool) or not isinstance(deadline, (int, float)) or not math.isfinite(deadline):
         raise ValueError("Native follow-up requires a finite shared monotonic deadline")
     if any(type(value) is not int or value <= 0 for value in (native_timeout_seconds, audit_timeout_seconds)):
@@ -242,7 +248,11 @@ def run_followup(selection, target, cache, output, *, deadline,
         _write(root / "progress.json", {"status": "running_not_passed", "current_request": request,
                                       "completed_requests": len(results)})
         try:
+            # Cached allocator memory can be empty while the parent's CUDA
+            # context still blocks all children under exclusive_process.
+            require_cuda_free_coordinator()
             result = execute_request(deepcopy(request), deepcopy(target), Path(cache), attempt, protocol)
+            require_cuda_free_coordinator()
         except Exception as error:
             _write(root / "stopped.json", {"status": "failed_not_passed", "request": request,
                    "error_type": type(error).__name__, "error": str(error),
@@ -259,6 +269,16 @@ def run_followup(selection, target, cache, output, *, deadline,
         _write(attempt / "result.json", result)
         _write(root / "native-results.json", results)
         _write(root / "summary.json", {**paired_report(selection, results), "status": "running_not_passed"})
+        if len(results) == 1 and require_first_native_success:
+            passed = result.get("status") == "completed" and result.get("retention_eligible") is True
+            _write(root / "first-native-gate.json", {"status": "passed" if passed else "failed_not_passed",
+                   "request_id": request["id"], "request_counted_once": True,
+                   "native_status": result.get("status"), "retention_eligible": result.get("retention_eligible"),
+                   "scope": "First frozen request is the actual native GPU smoke; no duplicate inference or new candidate."})
+            if not passed:
+                _write(root / "stopped.json", {"status": "failed_not_passed", "request": request,
+                       "completed_requests": len(results), "reason": "first_native_gpu_smoke_failed"})
+                raise RuntimeError("First frozen native prediction failed; stop before the remaining requests")
     report = {**paired_report(selection, results), "status": "partial_runtime_not_passed" if partial else "completed",
               "selection_sha256": selection["selection_sha256"], "target_sha256": target_digest,
               "existing_vae_continuation": "untouched"}

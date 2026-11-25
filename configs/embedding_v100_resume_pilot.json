@@ -1,0 +1,98 @@
+{
+  "audit": {
+    "path": "/work3/s234818/latentmol/runs/source147-embedding-v100-cache-audit-attempt001/gpu/result.json",
+    "sha256": "443d3e71ba742da3e2bad64959c8f09f66b446c567cf96aadb35aefdf4c4332a"
+  },
+  "cpu_test": {
+    "path": "/work3/s234818/latentmol/runs/source148-v100-rebase-test-attempt001/cpu/result.json",
+    "sha256": "6ad2615b29adc3b55e2d2b6e7c4573bf3bdbcba61b87440b9d4e73eceb0db6c1"
+  },
+  "fixed_learning_rate": 0.0025,
+  "gpu_profile": "v10032",
+  "internal_seconds": 13800,
+  "line_search": false,
+  "memory_headroom_gib": 4,
+  "parent": {
+    "artifacts": {
+      "case001_binding": {
+        "path": "/work3/s234818/latentmol/runs/source142-epoch36-guarded-embedding-long-attempt001/pilot/gates/case-001/binding.json",
+        "sha256": "d875139bc406bdde19a541c1d5359bae6602a8fb234b4f839c976e03098c9a17"
+      },
+      "case001_cache": {
+        "path": "/work3/s234818/latentmol/runs/source142-epoch36-guarded-embedding-long-attempt001/trajectories/case-001/hard-cache/255950360553b60c82f2d952523ee6a151ea2a8a132ab31c7ea5b916da1a35cb.json",
+        "sha256": "1263b1cb1a9a3f02384f9ff75716a71cc0127ae000fc2cf114b0d0a1a5b56b7f"
+      },
+      "case001_manifest": {
+        "path": "/work3/s234818/latentmol/runs/source142-epoch36-guarded-embedding-long-attempt001/trajectories/case-001/manifest.json",
+        "sha256": "59944938e055f245e6d0e3f68c8581007c434972cfb8d29e74308247ed4e1055"
+      },
+      "case001_state": {
+        "path": "/work3/s234818/latentmol/runs/source142-epoch36-guarded-embedding-long-attempt001/trajectories/case-001/states/state-001899.pt",
+        "sha256": "3c2fe29fcaa894395c590a828715aaa47faff493b7460502a06ea0e60024e7c1"
+      },
+      "case002_binding": {
+        "path": "/work3/s234818/latentmol/runs/source142-epoch36-guarded-embedding-long-attempt001/pilot/gates/case-002/binding.json",
+        "sha256": "44aa2f829bf0c529bd5266900dffbfe25bf62746a045bea42892da2c9b90cd48"
+      },
+      "case002_cache": {
+        "path": "/work3/s234818/latentmol/runs/source142-epoch36-guarded-embedding-long-attempt001/trajectories/case-002/hard-cache/8d703cf2381b6fd07478456a15332e99c5e5c06963e6bd122279a8c3ea132d8d.json",
+        "sha256": "de9a1a18529e2e28793df649971c06e62ab307183e1871f85698e62848bffb79"
+      },
+      "case002_manifest": {
+        "path": "/work3/s234818/latentmol/runs/source142-epoch36-guarded-embedding-long-attempt001/trajectories/case-002/manifest.json",
+        "sha256": "cdd6e78b2c479f6e002a4899733fb5a6eb9f02f286742a6dc8dd18378204c67a"
+      },
+      "case002_state": {
+        "path": "/work3/s234818/latentmol/runs/source142-epoch36-guarded-embedding-long-attempt001/trajectories/case-002/states/state-000020.pt",
+        "sha256": "de07e84e018aa1f1fcefcd5fc8b7013bbbec49e2e0f937cf7306e39e73e4d91e"
+      },
+      "case003_binding": {
+        "path": "/work3/s234818/latentmol/runs/source142-epoch36-guarded-embedding-long-attempt001/pilot/gates/case-003/binding.json",
+        "sha256": "1a045c853bfa3bb71f6fb2e7b1da867e6c4b6c441ecf6fb552eb2cbe12c60f2a"
+      },
+      "case003_cache": {
+        "path": "/work3/s234818/latentmol/runs/source142-epoch36-guarded-embedding-long-attempt001/trajectories/case-003/hard-cache/d3d8d19f2035db5aad2fc9c71fbb6bf5b49af29d477ec9ea6ffaf18a61b53ae4.json",
+        "sha256": "ad4ad1c8c9301f0bc90c87414c3b2b3338d4f6811cb5113421e112fb32a16adb"
+      },
+      "case003_manifest": {
+        "path": "/work3/s234818/latentmol/runs/source142-epoch36-guarded-embedding-long-attempt001/trajectories/case-003/manifest.json",
+        "sha256": "7359fe8466fe6a1589fa104c94601c117a897d091e1c370cdff59cc1cba4d77c"
+      },
+      "case003_state": {
+        "path": "/work3/s234818/latentmol/runs/source142-epoch36-guarded-embedding-long-attempt001/trajectories/case-003/states/state-000020.pt",
+        "sha256": "373cf9667bcfe171b7e3bad26cc1b7b52f7e9de203b6f1d0fd8c93602593ea54"
+      },
+      "fit_result": {
+        "path": "/work3/s234818/latentmol/runs/source142-epoch36-guarded-embedding-long-attempt001/fit/result.json",
+        "sha256": "d14ef4d6adc31939e13bd92ae06d3af83db64cc91fbc57aeb5c7729414492327"
+      },
+      "starts": {
+        "path": "/work3/s234818/latentmol/runs/source142-epoch36-guarded-embedding-long-attempt001/cpu/starts.pt",
+        "sha256": "832592de7183b51ac22542ead558bc453006d3d349d942e2933dd1a52fb40ebd"
+      }
+    },
+    "campaign": "/work3/s234818/latentmol/runs/source142-epoch36-guarded-embedding-long-attempt001",
+    "manifest_sha256": "89dd0f43752a417cb4a4ab0658a4fba294eba72eb65fd5899036a42d8207c4f2",
+    "plan_sha256": "35adaf248e9011ce81a5bcd165d1897e97901864695a10d56fad70eebe63f70e",
+    "release": "/work3/s234818/latentmol/releases/source-142-epoch36-guarded-embedding-long-attempt001",
+    "source_sha256": "d2ac85ad644a94f3b5967537f1c777bb7318faf2a8507038888bc32728a0d805"
+  },
+  "qualification": {
+    "path": "/work3/s234818/latentmol/runs/source146-embedding-v100-qualification-attempt001/gpu/result.json",
+    "sha256": "be1228c49c05378c8d81333dd7b7109823330555abe33e3b23b861a2e0c72589"
+  },
+  "real_clones": {
+    "path": "/work3/s234818/latentmol/runs/source149-v100-real-rebase-attempt001/cpu/result.json",
+    "sha256": "a853164c8da83372679cb133772fc8d9ce3e764426b785dfe30119a095578ab3"
+  },
+  "repeats": 5,
+  "state_updates": {
+    "case-001": 1899,
+    "case-002": 20,
+    "case-003": 20
+  },
+  "step_candidates": 1,
+  "tested_core_sha256": "736fd21383221f6997f9260b41ab14015561d1d97af602a2a54aadfdb4026deb",
+  "version": "embedding-v100-resume-pilot-v1",
+  "warmups": 2
+}

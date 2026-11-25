@@ -27,6 +27,7 @@ from latentmol.large_data import validate_large_cache
 from latentmol.large_vae_evaluation import evaluate_panel
 from latentmol.losses import latent_kl, reconstruction_losses
 from latentmol.models import GraphAutoencoder
+from latentmol.models.autoencoder import comparable_train_config
 from latentmol.train import (TrainConfig, algorithm_identity, compact_cohort_identity, runtime_identity,
                              seed_everything, state_digest, train, training_cohorts, validate_continuation)
 
@@ -428,7 +429,8 @@ def _recover(config_path, protocol_path, data, campaign, output, *, segment_id, 
     validate_continuation(payload, config, training, algorithm_identity(), gate["runtime"],
                           compact_cohort_identity(training_cohorts(config, len(training), len(validation))))
     state = payload.get("continuation", {})
-    if (not state.get("epoch_complete") or json.dumps(payload["train_config"], sort_keys=True) != json.dumps(asdict(config), sort_keys=True)
+    if (not state.get("epoch_complete")
+            or json.dumps(comparable_train_config(payload["train_config"]), sort_keys=True) != json.dumps(asdict(config), sort_keys=True)
             or payload["dataset_sha256"] != identity["dataset_sha256"]
             or state["split_sha256"] != identity["split_sha256"]
             or state["runtime"] != gate["runtime"]
@@ -508,7 +510,8 @@ def final(config_path, protocol_path, data, campaign, output, references, gate_p
             model, payload = load_model(path, config.device, dataset.spec)
             if label in protocol["final_candidate_roles"]:
                 assert_counts(model, protocol)
-                if payload["train_config"] != final_payload["train_config"] or payload["dataset_sha256"] != identity["dataset_sha256"]:
+                if (comparable_train_config(payload["train_config"]) != comparable_train_config(final_payload["train_config"])
+                        or payload["dataset_sha256"] != identity["dataset_sha256"]):
                     raise ValueError("Selected candidate belongs to different training settings/data")
                 if label != "epoch100":
                     entry = final_payload["continuation"]["selections"][label.removeprefix("validation_")]

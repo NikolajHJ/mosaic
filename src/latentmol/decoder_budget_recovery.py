@@ -43,7 +43,9 @@ def read_recovery(path, expected_sha):
 
 def verify_shared_source(parent, current_root):
     """Continuation may change the trainer, never frozen architecture/objectives."""
-    prefixes = ("src/latentmol/models/",)
+    prefixes = ("src/latentmol/models/", "src/latentmol/training/",
+                "src/latentmol/datasets/", "src/latentmol/evaluation/",
+                "src/latentmol/guidance/", "src/latentmol/design/")
     names = {"src/latentmol/losses.py", "src/latentmol/data.py", "src/latentmol/representation.py",
              "src/latentmol/decoder_regularization.py", "src/latentmol/chemistry_regularization.py",
              "src/latentmol/connectivity_regularization.py", "src/latentmol/sampling.py",

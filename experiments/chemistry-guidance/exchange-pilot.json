@@ -1,0 +1,22 @@
+{
+  "seed": 111126,
+  "count": 16,
+  "updates": 16,
+  "max_reference_draws": 512,
+  "perturbation_norm": 3.0,
+  "learning_rate": 3.0,
+  "max_step_norm": 0.5,
+  "temperature": 1.0,
+  "seconds": 1800,
+  "search": {"max_edits": 2, "checks_per_depth": 48, "beam_width": 4},
+  "arms": {
+    "bond_only": null,
+    "exchange_0": {"atom_extra_cost": 0, "substructure_extra_cost": 0},
+    "exchange_2": {"atom_extra_cost": 2, "substructure_extra_cost": 0},
+    "exchange_5": {"atom_extra_cost": 5, "substructure_extra_cost": 0},
+    "exchange_0_structure": {"atom_extra_cost": 0, "substructure_extra_cost": 2},
+    "exchange_2_structure": {"atom_extra_cost": 2, "substructure_extra_cost": 2},
+    "exchange_5_structure": {"atom_extra_cost": 5, "substructure_extra_cost": 2},
+    "exchange_5_structure_search_only": {"atom_extra_cost": 5, "substructure_extra_cost": 2, "anchor_scale": 0}
+  }
+}

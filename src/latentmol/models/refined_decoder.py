@@ -13,6 +13,7 @@ import torch
 from torch import nn
 
 from latentmol.representation import DecoderOutput, GraphSpec
+from .bond_attention import IncidentBondAttention
 from .triangle import TrianglePairUpdate
 
 
@@ -72,19 +73,49 @@ class WideResidualSlotProjection(nn.Module):
         return self.output(hidden)
 
 
-class PairRefinementLayer(nn.Module):
-    """Update undirected pair states, then pass edge-aware messages to atoms.
+class BondMessageAggregation(nn.Module):
+    """Pass one learned neighbor value per real bond type, using conditional bond logits."""
 
-    Attention normalizes over source atoms; the separate final bond head
-    normalizes over bond categories. Attention weights are not bond probabilities.
+    def __init__(self, width: int, bond_types: int):
+        super().__init__()
+        if bond_types < 2:
+            raise ValueError("Bond messaging needs a NO_BOND class and at least one real bond type")
+        self.real_types = bond_types - 1
+        self.values = nn.Linear(width, self.real_types * width, bias=False)
+
+    def forward(self, node_context, conditional_bonds, occupancy):
+        batch, nodes, width = node_context.shape
+        # The bond head is shared with the final output. NO_BOND carries zero
+        # message. A finite weak bond remains available throughout refinement.
+        weights = conditional_bonds.softmax(-1)[..., 1:]
+        pair_occupancy = occupancy[:, :, None] * occupancy[:, None, :]
+        diagonal = torch.eye(nodes, device=node_context.device, dtype=torch.bool)
+        weights = weights * pair_occupancy.masked_fill(diagonal, 0.)[..., None]
+        values = self.values(node_context).reshape(batch, nodes, self.real_types, width)
+        messages = torch.einsum("bijt,bjth->bih", weights, values)
+        # Smooth degree scaling controls the initial dense proposal. Keeping the
+        # 1 also preserves edge-strength information for a lone weak neighbor.
+        degree = weights.sum(dim=(-1, -2))
+        return messages * (1. + degree).rsqrt()[..., None]
+
+
+class PairRefinementLayer(nn.Module):
+    """Update undirected pairs, then aggregate attention or predicted typed bonds.
+
+    The attention variant normalizes over neighbors and scores chemical bonds at
+    the decoder output. The bond-message variant reuses that final bond classifier
+    inside every round so messages use the same single/double/etc. vocabulary.
+    An optional triangle branch refines the pair state before either aggregation.
     """
 
     def __init__(self, slot_hidden: int, pair_hidden: int, heads: int,
                  *, stabilize: bool = False, deep_mlp: bool = False,
-                 triangle_hidden: int | None = None):
+                 triangle_hidden: int | None = None, atom_refinement_dropout: float = 0.,
+                 message_bond_types: int | None = None, attention_head_width: int | None = None):
         super().__init__()
         self.heads = heads
-        self.head_width = slot_hidden // heads
+        self.head_width = slot_hidden // heads if attention_head_width is None else attention_head_width
+        self.attention_width = self.head_width * heads
         self.edge_norm = nn.LayerNorm(pair_hidden)
         self.edge_postnorm = (nn.LayerNorm(pair_hidden, elementwise_affine=False)
                               if stabilize else nn.Identity())
@@ -97,21 +128,26 @@ class PairRefinementLayer(nn.Module):
         self.node_norm = nn.LayerNorm(slot_hidden)
         self.node_postnorm = (nn.LayerNorm(slot_hidden, elementwise_affine=False)
                               if stabilize else nn.Identity())
-        self.query = nn.Linear(slot_hidden, slot_hidden)
-        self.key = nn.Linear(slot_hidden, slot_hidden)
-        self.value = nn.Linear(slot_hidden, slot_hidden)
-        self.edge_bias = nn.Linear(pair_hidden, heads)
-        self.edge_value = nn.Linear(pair_hidden, slot_hidden)
+        self.bond_messages = (None if message_bond_types is None else
+                              BondMessageAggregation(slot_hidden, message_bond_types))
+        if self.bond_messages is None:
+            self.query = nn.Linear(slot_hidden, self.attention_width)
+            self.key = nn.Linear(slot_hidden, self.attention_width)
+            self.value = nn.Linear(slot_hidden, self.attention_width)
+            self.edge_bias = nn.Linear(pair_hidden, heads)
+            self.edge_value = nn.Linear(pair_hidden, self.attention_width)
+        message_width = self.attention_width if self.bond_messages is None else slot_hidden
         self.node_update = nn.Sequential(
-            nn.Linear(slot_hidden, slot_hidden), nn.SiLU(),
+            nn.Linear(message_width, slot_hidden), nn.SiLU(),
             *([nn.Linear(slot_hidden, slot_hidden), nn.SiLU()] if deep_mlp else []),
             nn.Linear(slot_hidden, slot_hidden))
+        self.atom_update_dropout = nn.Dropout(atom_refinement_dropout)
 
     def forward(self, h: torch.Tensor, edge: torch.Tensor,
-                node_context: torch.Tensor, occupancy: torch.Tensor):
-        batch, nodes, width = h.shape
-        delta = self.edge_update(torch.cat(
-            (self.edge_norm(edge), symmetric_pair_features(node_context)), dim=-1))
+                node_context: torch.Tensor, occupancy: torch.Tensor, *, bond_head=None):
+        nodes = h.shape[1]
+        pair_features = symmetric_pair_features(node_context)
+        delta = self.edge_update(torch.cat((self.edge_norm(edge), pair_features), dim=-1))
         if self.triangle is not None:
             # Both updates live inside one residual/norm. Zero-initialized
             # triangle output therefore starts as an identity extra branch.
@@ -123,7 +159,16 @@ class PairRefinementLayer(nn.Module):
         diagonal = torch.eye(nodes, device=h.device, dtype=torch.bool)[None, :, :, None]
         edge = edge.masked_fill(diagonal, 0.0)
 
-        x = self.node_norm(h)
+        if self.bond_messages is None:
+            messages = self._attention_messages(self.node_norm(h), edge, occupancy)
+        else:
+            conditional_bonds = bond_head(torch.cat((edge, pair_features), dim=-1))
+            messages = self.bond_messages(self.node_norm(node_context), conditional_bonds, occupancy)
+        h = self.node_postnorm(h + self.atom_update_dropout(self.node_update(messages)))
+        return h, edge
+
+    def _attention_messages(self, x, edge, occupancy):
+        batch, nodes, width = x.shape
         q = self.query(x).reshape(batch, nodes, self.heads, self.head_width)
         k = self.key(x).reshape(batch, nodes, self.heads, self.head_width)
         v = self.value(x).reshape(batch, nodes, self.heads, self.head_width)
@@ -133,13 +178,21 @@ class PairRefinementLayer(nn.Module):
         # gradient that allows a currently absent slot to become occupied.
         scores = scores + occupancy.clamp_min(1e-6).log()[:, None, None, :]
         weights = scores.softmax(dim=-1)
+        if self.attention_width != width:
+            # Pool the narrow pair states before applying each head's linear value
+            # projection. This avoids a [B,N,N,240] activation in every wide round.
+            pooled = weights.transpose(1, 2) @ edge  # [B,N,heads,pair_hidden]
+            projection = self.edge_value.weight.reshape(self.heads, self.head_width, -1)
+            pair_message = torch.einsum("bihp,hdp->bihd", pooled, projection)
+            bias = self.edge_value.bias.reshape(self.heads, self.head_width).to(pair_message.dtype)
+            pair_message = pair_message + bias
+            atom_message = (weights @ v.transpose(1, 2)).transpose(1, 2)
+            return (atom_message + pair_message).reshape(batch, nodes, self.attention_width)
         pair_values = self.edge_value(edge).reshape(
             batch, nodes, nodes, self.heads, self.head_width).permute(0, 3, 1, 2, 4)
         atom_values = v.permute(0, 2, 1, 3)[:, :, None, :, :]
         messages = (weights[..., None] * (atom_values + pair_values)).sum(dim=3)
-        messages = messages.permute(0, 2, 1, 3).reshape(batch, nodes, width)
-        h = self.node_postnorm(h + self.node_update(messages))
-        return h, edge
+        return messages.permute(0, 2, 1, 3).reshape(batch, nodes, width)
 
 
 class RefinedGraphDecoder(nn.Module):
@@ -155,11 +208,17 @@ class RefinedGraphDecoder(nn.Module):
                  *, trunk_hidden: int | None = None, global_bond_context: bool = False,
                  wide_trunk: bool = False, stable_refinement: bool = False,
                  direct_slots: bool = False, deep_refinement: bool = False,
-                 triangle_hidden: int | None = None):
+                 triangle_hidden: int | None = None, atom_refinement_dropout: float = 0.,
+                 attention_head_width: int | None = None,
+                 bond_messages: bool = False, extra_bond_rounds: int = 0,
+                 bond_attention_layers: int = 0, bond_attention_heads: int = 10,
+                 bond_attention_head_dim: int = 24):
         super().__init__()
         if min(slot_hidden, latent, global_hidden, pair_hidden, heads) < 1 or rounds < 0:
             raise ValueError("Refined decoder widths/heads must be positive and rounds nonnegative")
-        if global_hidden < latent or slot_hidden % heads:
+        if attention_head_width is not None and (type(attention_head_width) is not int or attention_head_width < 1):
+            raise ValueError("Explicit attention head width must be a positive integer")
+        if global_hidden < latent or (not bond_messages and attention_head_width is None and slot_hidden % heads):
             raise ValueError("Global width must cover latent and heads must divide slot width")
         if trunk_hidden is not None and trunk_hidden < global_hidden:
             raise ValueError("Shared trunk expansion must cover global width")
@@ -171,10 +230,13 @@ class RefinedGraphDecoder(nn.Module):
             raise ValueError("Stabilized refinement requires the narrow deep trunk")
         if direct_slots and (trunk_hidden is not None or global_bond_context or wide_trunk):
             raise ValueError("Direct slots do not use a molecule trunk or separate context slot")
+        if bond_messages and not direct_slots:
+            raise ValueError("Bond-message decoder requires direct slots")
         self.spec = spec
         self.global_bond_context = global_bond_context
         self.wide_trunk = wide_trunk
         self.stable_refinement = stable_refinement
+        self.bond_messages = bond_messages
         output_slots = spec.max_nodes + int(global_bond_context)
         if direct_slots:
             # Every slot has a direct affine path to z; all additional nonlinear
@@ -214,6 +276,9 @@ class RefinedGraphDecoder(nn.Module):
         self.rounds = nn.ModuleList(
             PairRefinementLayer(slot_hidden, pair_hidden, heads,
                                 stabilize=stable_refinement, deep_mlp=deep_refinement,
+                                attention_head_width=attention_head_width,
+                                atom_refinement_dropout=atom_refinement_dropout,
+                                message_bond_types=len(spec.bond_names) if bond_messages else None,
                                 triangle_hidden=triangle_hidden) for _ in range(rounds))
         self.bond_head = nn.Sequential(
             nn.LayerNorm(pair_hidden + 3 * slot_hidden
@@ -221,6 +286,17 @@ class RefinedGraphDecoder(nn.Module):
             nn.Linear(pair_hidden + 3 * slot_hidden
                       + (slot_hidden if global_bond_context else 0), slot_hidden), nn.SiLU(),
             nn.Linear(slot_hidden, len(spec.bond_names)))
+        self.extra_rounds = nn.ModuleList()
+        for _ in range(extra_bond_rounds):
+            block = PairRefinementLayer(slot_hidden, pair_hidden, heads, stabilize=True, deep_mlp=True,
+                                        triangle_hidden=triangle_hidden, message_bond_types=len(spec.bond_names))
+            # Each new block starts as an identity on the trained decoder.
+            block.atom_gate = nn.Parameter(torch.zeros(()))
+            block.pair_gate = nn.Parameter(torch.zeros(()))
+            self.extra_rounds.append(block)
+        self.bond_attention = nn.ModuleList(
+            IncidentBondAttention(pair_hidden, bond_attention_heads, bond_attention_head_dim)
+            for _ in range(bond_attention_layers))
 
     def _node_predictions(self, h: torch.Tensor):
         atoms = self.atom_head(h)
@@ -250,8 +326,19 @@ class RefinedGraphDecoder(nn.Module):
         diagonal = torch.eye(self.spec.max_nodes, device=z.device, dtype=torch.bool)[None, :, :, None]
         edge = edge.masked_fill(diagonal, 0.0)
         for layer in self.rounds:
-            h, edge = layer(h, edge, node_context, 1.0 - atoms.softmax(dim=-1)[..., 0])
+            h, edge = layer(h, edge, node_context, 1.0 - atoms.softmax(dim=-1)[..., 0],
+                            bond_head=self.bond_head if self.bond_messages else None)
             atoms, charges, node_context = self._node_predictions(h)
+        for layer in self.extra_rounds:
+            next_h, next_edge = layer(h, edge, node_context, 1.0 - atoms.softmax(-1)[..., 0],
+                                      bond_head=self.bond_head)
+            h = h + layer.atom_gate * (next_h - h)
+            edge = edge + layer.pair_gate * (next_edge - edge)
+            atoms, charges, node_context = self._node_predictions(h)
+        if self.bond_attention:
+            occupancy = 1.0 - atoms.softmax(-1)[..., 0]
+            for block in self.bond_attention:
+                edge = block(edge, occupancy)
         bond_inputs = [edge, symmetric_pair_features(node_context)]
         if bond_context is not None:
             # One molecule-wide vector reaches every pair directly from z.

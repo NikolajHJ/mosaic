@@ -1,0 +1,13 @@
+{
+  "checkpoint_sha256": "be683894d49976ee7570b25bda9fefac6b8c53b9d9b55e767ea570b7d147690a",
+  "base_design": "pilot.json",
+  "step_search": {"iterations": 6, "radii": [0.1, 0.3, 1.0, 2.0], "minimum_improvement": 1e-7},
+  "normalized_search_temperatures": {"constant_1p0": 1.0, "constant_1p5": 1.5},
+  "fresh_edit_limit": 4,
+  "starts": [
+    {"name": "encoded-moses-val-5503", "kind": "encoded", "smiles": "CCOC(=O)c1ccc(NC(=O)N2CCCC(CCC(N)=O)C2)cc1"},
+    {"name": "encoded-chembl-val-63", "kind": "encoded", "smiles": "COC(=O)c1ccccc1OCCCOc1cc2c(cc1O)CCO2"},
+    {"name": "prior-2026112326", "kind": "prior", "seed": 2026112326},
+    {"name": "prior-2026112332", "kind": "prior", "seed": 2026112332}
+  ]
+}

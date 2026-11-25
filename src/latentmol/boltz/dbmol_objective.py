@@ -48,6 +48,7 @@ class DBMolObjectiveConfig:
     affinity_logit_weight: float = 1.0
     contact_weight: float = 2.5
     confidence_weight: float = 2.5
+    ipsae_weight: float = 0.0
     confidence_weights: dict = field(default_factory=lambda: dict(CONFIDENCE_WEIGHTS))
     distance_cutoff: float = 8.0
     epsilon: float = 1e-8
@@ -97,7 +98,7 @@ class DBMolObjectiveConfig:
                 raise ValueError("Initial-pose pocket requires authenticated prepared/context hashes")
         elif obj.pocket_reference is not None:
             raise ValueError("Explicit pocket does not use inferred-pose provenance")
-        for name in ("affinity_regression_weight", "affinity_logit_weight", "contact_weight", "confidence_weight"):
+        for name in ("affinity_regression_weight", "affinity_logit_weight", "contact_weight", "confidence_weight", "ipsae_weight"):
             number(getattr(obj, name), name)
         number(obj.distance_cutoff, "distance_cutoff", positive=True)
         number(obj.epsilon, "epsilon", positive=True)
@@ -114,6 +115,8 @@ class DBMolObjectiveConfig:
     def record(self):
         result = asdict(self)
         result["pocket_residues"] = list(self.pocket_residues)
+        if self.ipsae_weight == 0:
+            result.pop("ipsae_weight")
         if self.objective_arithmetic == NATIVE_ARITHMETIC:
             # Old absent-key resolved configs and identity hashes stay exact.
             result.pop("objective_arithmetic")
@@ -246,6 +249,9 @@ def reduce_objective(outputs, config):
     Repair weighting is outside this module and is deliberately unchanged.
     """
     required = {"affinity_pred_value", "affinity_logits_binary", "dbmol_contact_loss", *CONFIDENCE_WEIGHTS}
+    ipsae_weight = getattr(config, "ipsae_weight", 0.0)
+    if ipsae_weight:
+        required.add("ligand_ipsae")
     for key in required:
         value = outputs.get(key)
         if not isinstance(value, torch.Tensor) or value.numel() != 1:
@@ -261,6 +267,8 @@ def reduce_objective(outputs, config):
                 - config.affinity_logit_weight * values["affinity_logits_binary"])
     confidence = sum(config.confidence_weights[k] * CONFIDENCE_SIGNS[k] * values[k]
                      for k in CONFIDENCE_WEIGHTS)
+    if ipsae_weight:
+        confidence = confidence - ipsae_weight * values["ligand_ipsae"]
     result = dict(outputs)
     result.update(dbmol_affinity_loss=affinity, dbmol_confidence_loss=confidence,
                   dbmol_weighted_affinity_loss=affinity,

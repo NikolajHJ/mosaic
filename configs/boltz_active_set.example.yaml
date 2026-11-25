@@ -1,3 +1,5 @@
+# New run/pipeline entry points default to exploratory finite-gradient smoke.
+# Select --research-profile qualified when native/derivative qualification is the question.
 # UNTESTED HPC template. Replace every path and SHA256 with staged immutable assets.
 # Generate count contexts with scripts/hpc/boltz_active_set_prepare.sh first.
 version: 1

@@ -1,0 +1,19 @@
+{
+  "version": "compact-vae-training-v1",
+  "training_config": "../../configs/vae_compact_triangle.yaml",
+  "data": "/work3/s234818/latentmol/data/pubchem-hac60m-view-20261106a",
+  "data_sha256": "64247d04ec1f94d00320bb1e5a0d9c5540419eb37830050d3100775bf4385e18",
+  "expected_training_rows": 60000000,
+  "expected_parameters": 435400,
+  "weight_decay": 0.0001,
+  "shuffle_seed": 111801,
+  "checkpoint_every_updates": 1000,
+  "keep_checkpoint_updates": [1000, 10000, 50000, 100000],
+  "panel_early_updates": [10, 100, 1000],
+  "panel_every_updates": 5000,
+  "panel": {"seed": 2026111917, "validation_count": 256, "prior_count": 256, "batch_size": 16},
+  "execution": {"torch_threads": 2, "gpu_cpus": 4},
+  "cuda_requirement": {"name_contains": "V100", "minimum_gib": 30, "maximum_gib": 34},
+  "hpc_cuda_ownership_helper": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-release-26/source/scripts/cuda_ownership.py",
+  "hpc_cuda_ownership_sha256": "578d2b6c9453ad14ce6778d306aa6c1d926acb442dcf8ae9f9a75bccc6b2e3cb"
+}

@@ -170,6 +170,24 @@ def test_refresh_is_between_steps_only_failure_clears_target_and_endpoint_keeps_
     assert all(json.loads((folder / f"gate-{i:04d}.json").read_text())["passed"] for i in range(3))
 
 
+def test_exploratory_guidance_runs_fixed_steps_without_fd_or_line_search(tmp_path, monkeypatch):
+    cfg = replace(_guided_cfg(tmp_path), research_profile="exploratory", fd_policy=None, step_control=None)
+    class ProviderFixture:
+        def refresh(self, decoder, point, active, *, temperature, step, directory, counters):
+            return _target(SPEC, active, step=step), {"attempts": [{"status": "accepted"}], "step": step}
+    monkeypatch.setattr("latentmol.repair_guidance.provider.make_provider", lambda *args: ProviderFixture())
+    decoder, start = _Decoder(), torch.zeros(1, 1, dtype=torch.float64)
+    initial = select_slots(decoder.decode(start), temperature=1., threshold=.5)
+    scorer = _Scorer()
+    scorer.discrete_reference = lambda *_: pytest.fail("Qualified native parity requested")
+    summary = run_arm("fixed_initial_mask", decoder, start, initial, ContextBank(cfg, SPEC),
+                      scorer, cfg, "c" * 64, _Run(tmp_path), Counters())
+    assert summary["steps"] == 2 and summary["repair_guidance"]["guided_applied_updates"] == 2
+    assert summary["fresh_native_pose_confirmation"] == "optional_not_run"
+    report = json.loads((tmp_path / "fixed_initial_mask" / "gate-0000.json").read_text())
+    assert report["passed"] and report["derivative_qualification"] == "not_run"
+
+
 def test_guidance_rejects_changing_occupancy_arm_and_absent_config_is_legacy_identity(tmp_path):
     cfg = _config(tmp_path)
     assert "repair_guidance" not in cfg.record()

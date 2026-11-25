@@ -1,0 +1,8 @@
+{
+  "base_config": "flow-followup.json",
+  "learning_rates": [0.3, 1, 3, 10, 150],
+  "tuning_seeds": [701000, 702000],
+  "tuning_starts_per_cohort": 16,
+  "cohort_seeds": [711000, 712000, 713000, 714000],
+  "student_arms": ["residual"]
+}

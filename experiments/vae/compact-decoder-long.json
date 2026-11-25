@@ -1,0 +1,15 @@
+{
+  "version": "compact-decoder-comparison-v1",
+  "base_training_run": "compact435k-count-v100.json",
+  "variants": ["triangle_refine", "bond_message", "triangle_bond_message"],
+  "updates": 8192,
+  "microbatch": 128,
+  "observe_updates": [0, 512, 2048, 4096, 8192],
+  "save_updates": [2048, 4096],
+  "training_seed": 41,
+  "row_seed": 2026112041,
+  "prior_seed": 2026112042,
+  "panel": {"seed": 2026112043, "validation_count": 1024, "prior_count": 1024, "batch_size": 16},
+  "hpc_cuda_ownership_helper": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-release-26/source/scripts/cuda_ownership.py",
+  "hpc_cuda_ownership_sha256": "578d2b6c9453ad14ce6778d306aa6c1d926acb442dcf8ae9f9a75bccc6b2e3cb"
+}

@@ -262,8 +262,13 @@ def _trajectory(root, arm, metadata, summary, artifacts):
             seen.add(key)
             by_step[item["step"]].append(_candidate(item))
     frames, steps = [], set()
-    for path in sorted(arm.glob("metrics-*.json")):
-        row = artifacts.read(path, root)
+    # Long trajectories can append one journal instead of creating tens of
+    # thousands of tiny files. Both forms retain the same uniqueness checks.
+    rows = [artifacts.read(path, root) for path in sorted(arm.glob("metrics-*.json"))]
+    journal = arm / "metrics.jsonl"
+    if journal.is_file():
+        rows.extend(artifacts.read(journal, root, lines=True))
+    for row in rows:
         step = row.get("step")
         if type(step) is not int or step < 0 or step in steps:
             raise ValueError("Saved trajectory steps must be unique nonnegative integers")
@@ -360,7 +365,8 @@ def _load_run(path, label, artifacts):
     summary = artifacts.read(root / "summary.json", root) if (root / "summary.json").is_file() else {}
     folders = [p for p in root.iterdir() if p.is_dir() and
                (any(p.glob("metrics-*.json")) or any(p.glob("gate-*.json"))
-                or any(p.glob("probabilities-*.json")) or (p / "candidates.jsonl").is_file())]
+                or any(p.glob("probabilities-*.json")) or (p / "candidates.jsonl").is_file()
+                or (p / "metrics.jsonl").is_file())]
     if (root / "arms").is_dir():
         folders.extend(p for p in (root / "arms").iterdir() if p.is_dir())
     if not folders:

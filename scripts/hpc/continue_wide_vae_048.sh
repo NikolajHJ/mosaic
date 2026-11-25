@@ -9,7 +9,7 @@ python -m latentmol.experiments \
     --run-root "$LATENTMOL_WORK_ROOT/runs" \
     --name "gpu-rng-before-wide-vae-continuation" -- \
     python -m pytest -q \
-    tests/test_training.py::test_cuda_rng_state_is_restored_from_weights_only_checkpoint
+    tests/training/test_training.py::test_cuda_rng_state_is_restored_from_weights_only_checkpoint
 
 python scripts/hpc/continue_graph_training.py \
     --config configs/arch_wide_global_bond_vae_continue180.yaml \

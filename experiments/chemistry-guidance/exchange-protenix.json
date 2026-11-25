@@ -1,0 +1,41 @@
+{
+  "checkpoint_sha256": "5c4946c15515e70bd01281eea7b74693c18598c4b47f6724fcc9898deb1302be",
+  "seeds": [111210, 111310, 111410],
+  "screen_limit": 96,
+  "design": {
+    "updates": 500,
+    "learning_rate": 70.0,
+    "max_step_norm": 0.5,
+    "occupied_atoms": 25,
+    "temperature_initial": 1.0,
+    "temperature_final": 1.0,
+    "chemistry_initial": 1.0,
+    "chemistry_final": 1.0,
+    "noise_initial": 0.0,
+    "snapshot_interval": 50,
+    "checkpoint_interval": 100
+  },
+  "arms": {
+    "current": null,
+    "atom_half_structure": {
+      "edit_cost": "one_minus_probability",
+      "atom_extra_cost": 0.5,
+      "charge_extra_cost": 0.5,
+      "substructure_extra_cost": 0.5,
+      "anchor_scale": 0.05,
+      "max_edits": 2,
+      "checks_per_depth": 48,
+      "beam_width": 4
+    },
+    "atom_2_structure": {
+      "edit_cost": "one_minus_probability",
+      "atom_extra_cost": 2.0,
+      "charge_extra_cost": 0.5,
+      "substructure_extra_cost": 0.5,
+      "anchor_scale": 0.05,
+      "max_edits": 2,
+      "checks_per_depth": 48,
+      "beam_width": 4
+    }
+  }
+}

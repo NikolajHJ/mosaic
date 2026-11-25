@@ -49,9 +49,10 @@ class TinyDecoder(torch.nn.Module):
 
 class TinyScorer(torch.nn.Module):
     """Actual mixed-precision native operation tree; no learned parameters."""
-    def __init__(self, dbmol):
+    def __init__(self, dbmol, flat=None):
         super().__init__()
         self.config = dbmol
+        self.flat = flat
 
     def forward(self, features, typed, coordinates):
         x = (features["ref_element"] * torch.arange(128., device=typed.device) / 100).sum()
@@ -61,6 +62,10 @@ class TinyScorer(torch.nn.Module):
                  "dbmol_contact_anchor_loss", *CONFIDENCE_WEIGHTS)
         outputs = {name: (index + 1.) * (x.double() if "contact" in name else x)
                    for index, name in enumerate(names)}
+        if self.flat:
+            selected = names if self.flat == "total" else ("affinity_pred_value", "affinity_logits_binary")
+            for name in selected:
+                outputs[name] = outputs[name] * 0
         outputs["dbmol_contact_loss"] = (outputs["dbmol_contact_pocket_loss"] + outputs["dbmol_contact_anchor_loss"]) / 2
         return reduce_objective(outputs, self.config)
 
@@ -82,7 +87,7 @@ class TinyBranch(torch.nn.Module):
         return self.scorer(features, typed, self.prepared.coordinates)
 
 
-def fixture(repair=False):
+def fixture(repair=False, *, flat=None):
     prepared = prepared_fixture()
     dbmol = DBMolObjectiveConfig(confidence_checkpoint={"path": "fixture", "sha256": "c" * 64},
         pocket_residues=({"asym_id": 0, "residue_index": 0},),
@@ -95,7 +100,7 @@ def fixture(repair=False):
                                        normalization="sum"),
         element_diagnostics=False, step_control=None)
     decoder = TinyDecoder(prepared.spec).eval().requires_grad_(False)
-    scorer = TinyScorer(dbmol).eval().requires_grad_(False)
+    scorer = TinyScorer(dbmol, flat=flat).eval().requires_grad_(False)
     branch = TinyBranch(prepared, scorer).eval().requires_grad_(False)
     point = torch.tensor([[.2, -.1, .3, -.2, .1, .15, -.05, .25]])
     target = (FrozenRepairTarget.create(prepared.seed, prepared.active,
@@ -154,6 +159,38 @@ def test_supplied_gradient_corruption_rejected_before_native_ad_approval():
         run(case)
     assert case.report["native_grouped_baseline_parity"]["supplied_gradient_exact"]["combined"] is False
     assert case.report["derivative_contract"]["passed"] is False
+
+
+@pytest.mark.parametrize("flat", ["component", "total"])
+def test_flat_attached_derivatives_are_checked_and_reader_accepts_the_new_contract(flat):
+    case = fixture(flat=flat)
+    report = run(case)
+    profile = profile_record(case.config.dbmol, case.config.objective)
+    assert verify_gate(report, require_repair=False, expected_profile=profile)
+    item = report["component_gradients"]["dbmol_affinity_loss"]
+    assert item["gradient_norm"] == 0 and item["status"] == "validated_low_signal"
+    assert item["direction_selection"]["gradient_label_is_random_probe"]
+    assert all(row["reverse_projection"] == 0 and row["passed"]
+               for row in item["independent_forward_ad"]["rows"])
+    if flat == "total":
+        assert report["local_fd_validation"]["status"] == "validated_low_signal"
+    # Receipt authentication still binds every zero derivative to its own AD
+    # rows and original probes; a fabricated flat-gradient claim cannot pass.
+    item["independent_forward_ad"]["rows"][0]["reverse_projection"] = .1
+    assert not verify_gate(report, require_repair=False, expected_profile=profile)
+
+
+def test_explicit_legacy_pointwise_policy_keeps_nonzero_qualification():
+    case = fixture()
+    case.config.fd_policy = validation.LEGACY_POLICY
+    report = run(case)
+    assert report["derivative_contract"]["version"] == validation.LEGACY_POLICY
+    assert verify_gate(report, require_repair=False,
+                       expected_profile=profile_record(case.config.dbmol, case.config.objective))
+    case = fixture(flat="component")
+    case.config.fd_policy = validation.LEGACY_POLICY
+    with pytest.raises(ValueError, match="Pointwise native AD gate failed"):
+        run(case)
 
 
 def test_missing_independent_tangent_is_not_a_finite_difference_waiver(monkeypatch):

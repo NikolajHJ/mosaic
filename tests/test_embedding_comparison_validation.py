@@ -27,6 +27,7 @@ class DBMolFixture(ScorerFixture):
 
     def forward(self, features, bonds, coordinates):
         signal = super().forward(features, bonds, coordinates)["dbmol_total_loss"].double()
+        signal = self.signal_transform(signal)
         values = dict(affinity_pred_value=signal, affinity_logits_binary=.3 * signal,
             dbmol_contact_pocket_loss=signal.square() + .2,
             dbmol_contact_anchor_loss=.2 * signal + .3)
@@ -38,6 +39,10 @@ class DBMolFixture(ScorerFixture):
                 {name: values[name] for name in weights}, self.dbmol_config, key)
             values["dbmol_total_loss" if key == "combined" else key] = result
         return values
+
+    @staticmethod
+    def signal_transform(value):
+        return value
 
 
 def comparison_fixture():
@@ -107,14 +112,16 @@ def test_forward_ad_corruption_cannot_be_hidden_by_good_finite_chords(tmp_path, 
     assert report["frozen_modules_unchanged"] and report["context_unchanged"]
 
 
-def test_component_zero_gradient_fails_without_substitute_start(tmp_path, monkeypatch):
+@pytest.mark.parametrize("derivative_policy", [validation.LEGACY_VERSION, validation.VERSION])
+def test_connected_flat_component_is_correct_but_legacy_qualification_is_retained(tmp_path, monkeypatch,
+                                                                               derivative_policy):
     prepared, scorer, bridge, vae, z = comparison_fixture()
     original = scorer.forward
 
     def zero_affinity(*args, **kwargs):
         values = original(*args, **kwargs)
-        # Keep native recomposition algebra exact but remove this component's
-        # signal: the common start must fail rather than be outcome-replaced.
+        # Multiplication by zero leaves a real attached derivative path. The
+        # derivative is zero, which is different from a detached required path.
         values["affinity_pred_value"] = values["affinity_pred_value"] * 0
         values["affinity_logits_binary"] = values["affinity_logits_binary"] * 0
         for key in (COMPONENT_OUTPUTS[0], "combined"):
@@ -125,12 +132,85 @@ def test_component_zero_gradient_fails_without_substitute_start(tmp_path, monkey
 
     monkeypatch.setattr(scorer, "forward", zero_affinity)
     path = tmp_path / "zero-component.json"
-    with pytest.raises(ValueError, match="Zero/uninformative.*component"):
+    if derivative_policy == validation.LEGACY_VERSION:
+        with pytest.raises(ValueError, match="Zero/uninformative.*component"):
+            validation.learned_start_gate(scorer, prepared, bridge, vae, z, path,
+                                          derivative_policy=derivative_policy)
+    else:
+        validation.learned_start_gate(scorer, prepared, bridge, vae, z, path,
+                                      derivative_policy=derivative_policy)
+    report = json.loads(path.read_text())
+    assert report["component_gradient_norms"][COMPONENT_OUTPUTS[0]] == 0
+    if derivative_policy == validation.LEGACY_VERSION:
+        assert not report["passed"] and "independent_forward_ad" not in report
+    else:
+        assert report["passed"]
+        assert report["component_signal"][COMPONENT_OUTPUTS[0]] == "low_or_zero_signal"
+        assert all(row["passed"] for item in report["independent_forward_ad"] for row in item["rows"])
+
+
+@pytest.mark.parametrize("detached", [False, True])
+def test_flat_component_does_not_waive_a_missing_or_detached_required_path(tmp_path, monkeypatch, detached):
+    prepared, scorer, bridge, vae, z = comparison_fixture()
+    original = scorer.forward
+
+    def missing_affinity(*args, **kwargs):
+        values = original(*args, **kwargs)
+        for name in ("affinity_pred_value", "affinity_logits_binary"):
+            values[name] = (values[name].detach() if detached
+                            else torch.zeros_like(values[name], requires_grad=True))
+        for key in (COMPONENT_OUTPUTS[0], "combined"):
+            weights = additive_fd.primitive_weights(scorer.dbmol_config, key)
+            values["dbmol_total_loss" if key == "combined" else key] = additive_fd.grouped_native_expression(
+                {name: values[name] for name in weights}, scorer.dbmol_config, key)
+        return values
+
+    monkeypatch.setattr(scorer, "forward", missing_affinity)
+    path = tmp_path / "missing-component.json"
+    with pytest.raises(ValueError, match="Detached required|Missing required"):
+        validation.learned_start_gate(scorer, prepared, bridge, vae, z, path)
+    assert not json.loads(path.read_text())["passed"]
+
+
+def test_stationary_total_is_correct_without_claiming_an_informative_update(tmp_path, monkeypatch):
+    prepared, scorer, bridge, vae, z = comparison_fixture()
+    original = scorer.forward
+    monkeypatch.setattr(scorer, "forward", lambda *args, **kwargs:
+                        {key: value * 0 for key, value in original(*args, **kwargs).items()})
+    report = validation.learned_start_gate(scorer, prepared, bridge, vae, z, tmp_path / "stationary.json")
+    assert report["passed"] and report["gradient_norm"] == 0
+    assert report["gradient_label_is_seeded_probe"]
+    assert report["optimization_qualification"]["informative_total"] is False
+    assert all(row["passed"] for item in report["independent_forward_ad"] for row in item["rows"])
+
+
+@pytest.mark.parametrize("stationary", [False, True])
+def test_tiny_wrong_forward_derivative_cannot_hide_below_the_absolute_ad_tolerance(tmp_path, stationary):
+    class WrongFlatDerivative(torch.autograd.Function):
+        @staticmethod
+        def forward(ctx, value):
+            return value * (0. if stationary else 1e-8)
+
+        @staticmethod
+        def backward(ctx, cotangent):
+            return cotangent * (0. if stationary else 1e-8)
+
+        @staticmethod
+        def jvp(ctx, tangent):
+            return torch.full_like(tangent, 1e-7) if stationary else -tangent * 1e-8
+
+    prepared, scorer, bridge, vae, z = comparison_fixture()
+    scorer.signal_transform = WrongFlatDerivative.apply
+    path = tmp_path / "tiny-wrong-derivative.json"
+    with pytest.raises(ValueError, match="forward/reverse AD"):
         validation.learned_start_gate(scorer, prepared, bridge, vae, z, path)
     report = json.loads(path.read_text())
+    if not stationary:
+        assert report["gradient_norm"] > validation.MIN_GRADIENT_NORM
+    rows = [row for item in report["independent_forward_ad"] for row in item["rows"]]
+    assert any(row["absolute_error"] <= row["allowed_error"]
+               and not row["relative_ad_consistency"]["passed"] for row in rows)
     assert not report["passed"]
-    assert report["component_gradient_norms"][COMPONENT_OUTPUTS[0]] == 0
-    assert "independent_forward_ad" not in report
 
 
 def test_relaxed_score_has_shared_hard_identity_and_attached_gradient():

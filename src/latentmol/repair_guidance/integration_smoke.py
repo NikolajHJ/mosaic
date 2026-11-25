@@ -66,14 +66,14 @@ def _full_gate_passed(gate, *, require_repair=True, expected_profile=None):
     """Read each explicitly versioned native derivative validation contract.
 
     A Boltz-only control has no repair derivative to certify. Stationary DBMol
-    components remain explicitly uninformative rather than claimed as passes.
-    Historical FD contracts retain their outcomes; pointwise-v4 certifies its
-    separately declared local AD/bridge checks and finite-step diagnostics.
+    components retain their measured signal status. Historical FD/v4 contracts
+    retain their qualification rules; v5 can certify attached low-signal local
+    derivatives without claiming an informative optimization or guidance step.
     """
     components = gate.get("component_gradients", {})
     repair = gate.get("repair_only_validation", {})
     contract = gate.get("derivative_contract")
-    if contract is not None and contract.get("version") == "pointwise_native_ad_v4":
+    if contract is not None and contract.get("version") in ("pointwise_native_ad_v4", "pointwise_native_ad_v5"):
         from latentmol.boltz.pointwise_contract import verify_gate
         return verify_gate(gate, require_repair=require_repair, expected_profile=expected_profile)
     if contract is not None and contract.get("version") == "additive_branch_v3":

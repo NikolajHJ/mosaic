@@ -1,5 +1,226 @@
 # Matched latent optimization: learned embeddings versus relaxed chemistry
 
+For new exploratory work use the [shared exploratory policy](EXPLORATORY_RESEARCH_POLICY.md)
+and [gradient policy](GRADIENT_VALIDATION_POLICY.md). Detailed native/independent
+AD/FD gates below describe qualified tools and specific historical campaigns;
+they are not blanket admission requirements for a new short pilot. Existing
+sealed runs and historical outcomes keep their original contracts.
+
+## Native recovery completed successfully, 28 October 2026 20:22 CET
+
+The single [read-only collection006](../outputs/hpc-submissions/source141-embedding-native-recovery-attempt002/collect-006.json)
+succeeded at **20:22:58.040 CET**. Its saved LSF terminal log establishes
+**GPU 29838737 DONE**, running **15:33:57–15:47:33 CET** on **n-62-18-10**;
+the live scheduler entry has since aged out. The saved GPU result is
+**`passed_native_recovery`**, with **six of six ordinary native predictions
+successful**, all identity audits eligible, zero failed or unattempted requests,
+and every request terminal. The stage took **791.890 seconds**; the scheduler
+reports 816 seconds including its launch/teardown overhead.
+
+The actual exclusive-GPU ownership probe passed. Its CUDA child allocated on
+an **NVIDIA A100 80GB PCIe** and exited; the coordinator still reported
+`cuda_initialized: false`. All six sequential Boltz children subsequently
+returned zero, as did their processed-identity audit children. This validates
+the process-ownership correction for the previous CUDA busy/unavailable
+failure. The 300 completed optimization updates were **not rerun**, and the
+saved parent artifacts, frozen models and independent VAE continuation remain
+unchanged.
+
+This infrastructure success does **not** establish molecular improvement.
+Relaxed cases001 and003 retain their starting discrete identities at both the
+terminal and selected-best states. Their paired fresh-pose affinity deltas at
+seeds17/23 are therefore exactly zero. Relaxed case002 and all three learned
+bridge cases fail sanitization at both selected states and have no eligible
+candidate affinity comparison. Thus terminal validity remains **2/3 relaxed
+versus 0/3 learned**; no binding gain or learned-bridge superiority is confirmed.
+The six successful native requests cover the three deduplicated starting
+identities at two seeds, including the unchanged valid candidates.
+
+The completed result records a regenerated report at
+`/work3/s234818/latentmol/runs/source141-embedding-native-recovery-attempt002/gpu/comparison-report.html`;
+this collection did not download that HTML. The intermediate `progress.json`
+still says five requests completed/running, but the later terminal
+`fresh-native/summary.json`, GPU result and successful LSF log establish all
+six completed; that stale progress marker must not be interpreted as an
+active job. This status collection changed no runtime source, scientific
+settings, jobs, VPN or SSH configuration and submitted no work.
+
+## Native recovery still awaiting affinity resources, 28 October 2026 13:57 CET
+
+The single [read-only collection005](../outputs/hpc-submissions/source141-embedding-native-recovery-attempt002/collect-005.json)
+succeeded at **13:57:48.241 CET**. GPU **29838737 remains PEND**, waiting for
+enough processor units to meet the affinity requirement on one host. LSF now
+reserves all four requested CPU slots on **n-62-18-8** (reservation recorded
+at11:44:15), superseding the earlier n-62-18-11 reservation. This is not a
+training/prediction start or a passed GPU-access probe.
+
+Eligible pending time is **15,220 seconds**, with zero ineligible seconds.
+There are still no recovery GPU artifacts, GPU logs, ownership probe or native
+prediction results. The saved 59-fixture CPU pass and actual parent-validation
+evidence remain valid; no reliable start ETA or binding result is established.
+This collection changed no runtime source, scientific settings, jobs, VPN or
+SSH configuration and submitted no work. No further polling was performed.
+
+## Native recovery remains queued, 28 October 2026 10:39 CET
+
+The single [read-only collection004](../outputs/hpc-submissions/source141-embedding-native-recovery-attempt002/collect-004.json)
+at **10:39:55.815 CET** succeeded and confirms **GPU 29838737 PEND**.
+LSF has reserved all four requested CPU slots on **n-62-18-11**, but reports
+insufficient processor units to satisfy the affinity requirement on one host.
+The reservation is not execution or a GPU-access pass. Pending time is
+**3,348 eligible seconds / zero ineligible seconds**; no reliable start ETA
+is established.
+
+No GPU artifacts, GPU log, ownership probe or ordinary native prediction
+result exists for recovery attempt002. Its saved CPU pass remains valid:
+**59 fixtures**, zero failures/errors/skips, plus actual saved-parent validation.
+This collection changed no source, settings, jobs, VPN or SSH configuration
+and submitted no work. The original six failed native predictions remain
+preserved, and the recovery still awaits actual exclusive-GPU validation.
+
+## Native-only recovery CPU passed and GPU resubmitted, 28 October 2026
+
+The new immutable **`source141-embedding-native-recovery-attempt002`** reuses
+attempt006's exact saved selection, target, three completed comparisons,
+selected checkpoint hashes and gates. **No optimization is rerun.** The six
+requests, pose seeds 17/23, native settings, per-request/audit budgets and
+identity requirements remain identical. All original failed predictions and
+the completed300-update comparison remain preserved in their original root.
+
+The [exact CPU result and transport integrity](../outputs/hpc-results/source141-embedding-native-recovery-attempt002/terminal-cpu-20261028/integrity.json)
+record **CPU 29838721 DONE**, **59 fixtures passed**, zero errors/failures/skips
+in 12.25s. The complete CPU stage and actual parent-validation CLI finished in
+58.638s at **09:42:35.590 CET**. CPU result SHA256 is
+`e559a5cc0ec1a8269a3182ca1f613bf3ab6570861725763cd92a6246ea466268`.
+The [actual validation result](../outputs/hpc-results/source141-embedding-native-recovery-attempt002/terminal-cpu-20261028/validation/result.json)
+authenticates all 20 parent artifacts and selected checkpoint/source/plan
+identities. Its status is `passed_authentication_not_prediction`: this is
+CPU evidence, not usable GPU access or a successful ordinary prediction.
+
+The [actual GPU submission](../outputs/hpc-submissions/source141-embedding-native-recovery-attempt002/submit-gpu-001.json)
+returned zero, submitting **29838737 at 09:44:08 CET**. The
+[latest collection003](../outputs/hpc-submissions/source141-embedding-native-recovery-attempt002/collect-003.json)
+still reports **PEND**, waiting for CPU processor units/affinity on one host.
+The request is one exclusive 80GB A100, four CPU slots,16GB host memory,
+**six hours scheduler walltime /five hours internal**. No GPU artifact,
+ownership probe or native prediction result exists yet; no reliable start
+ETA or binding improvement is established. The
+[combined submission summary](../outputs/hpc-results/fix-resubmit-20261028-summary.json)
+keeps this separate from the VAE continuation's pending GPU state.
+
+| Recovery attempt002 identity | SHA256 |
+| --- | --- |
+| Source archive | `531c4113ba55148ac6e4549bc73cdfc4231f84663727e720f382f61892da9800` |
+| Release manifest | `5adfc8cb56897b001308b910c06f416c739d1c7a9c938355e8e93d3ef95b14ec` |
+| Recovery plan | `faca1ab5af193bd3a4cfc8f035c3e82a072b64528d0adbc24d04308a7c080523` |
+
+The [616-member seal](../outputs/hpc-submissions/source141-embedding-native-recovery-attempt002/seal.json)
+is followed by actual CPU/GPU receipts; its initial `sealed_not_submitted`
+label is retained as historical preparation evidence.
+
+### Process correction and required native proof
+
+The failed comparison had initialized CUDA in its optimizer process, then
+deleted tensors/emptied cache and launched native Boltz in child processes.
+The parent still owned its exclusive-process context. The
+[mechanism and primary documentation](80_epoch40_to45_continuation.md#path-interface-and-exclusive-process-ownership-mechanism)
+explain why cache cleanup cannot replace process exit. This is a process
+ownership correction; ordinary prediction success remains to be demonstrated
+by the queued recovery.
+
+The recovery CLI in
+[`embedding_native_recovery.py`](../src/latentmol/boltz/embedding_native_recovery.py)
+keeps its coordinator CUDA-free. It authenticates the saved parent before
+work, runs a tiny isolated CUDA child to completion, then runs the unchanged
+native requests. The first original request is the real native smoke and is
+counted once within the six-request budget. It must succeed before the other
+requests are attempted. A terminal request is not silently treated as a
+successful prediction: recovery passes only when all requests are terminal
+and all six native predictions succeed. Parent artifact/checkpoint hashes and
+CUDA-free coordinator state are checked again before the result is written.
+New outputs and the HTML report belong to the recovery root; failed originals
+are not overwritten or omitted.
+
+[`embedding_native_recovery_experiment.py`](../src/latentmol/boltz/embedding_native_recovery_experiment.py)
+also binds the exact completed CPU result, JUnit and actual validation-receipt
+hash, validation status, source and plan before GPU recovery may run.
+[`cuda_process.py`](../src/latentmol/cuda_process.py) supplies the shared
+CUDA-free coordinator guard; native request execution retains the bounded,
+logged child-process handling in
+[`workflow_process.py`](../src/latentmol/boltz/workflow_process.py).
+The general comparison path now runs its
+optimization owner in
+[`embedding_optimization_worker.py`](../src/latentmol/boltz/embedding_optimization_worker.py)
+before its CPU-only coordinator starts native follow-up. That future full
+comparison path is corrected in source, but is **not rerun this round**.
+
+The first recovery attempt's CPU **29838699** passed 52 fixtures, but was
+[explicitly not promoted](../outputs/hpc-submissions/source141-embedding-native-recovery-attempt001/not-promoted.json).
+Peer review found that its GPU adapter did not rebind the actual CPU validation
+receipt. Attempt002 adds seven receipt/status/source/plan tamper regressions
+and enforces that binding. Attempt001 and its completed CPU evidence are
+preserved; no GPU job was submitted for it. Neither its 52-case pass nor the
+corrected 59-case CPU pass is a native GPU result.
+
+## Fresh-prediction correction and resubmission authorized, 28 October 2026
+
+The user requested **“please fix and resubmit”** after the VAE startup error
+and all six fresh-native prediction failures. The embedding work now targets
+the native prediction process/GPU interface. A parent process can retain its
+CUDA context after model deletion and `empty_cache`; its effect under the
+allocation's exclusive-process mode must be addressed and tested at the actual
+native child-process boundary. This is the mechanism under investigation,
+not a confirmed hardware failure or evidence that the gradients are unusable.
+
+The intended follow-up reuses the saved attempt006 selection and completed
+trajectories. No new candidate selection, optimization, pose seeds, prediction
+settings, budgets, identity checks or scientific tolerances are introduced.
+The six failed requests and their logs remain preserved in the original
+immutable campaign. Any corrected follow-up needs separate output/provenance
+and passing allocated checks before resubmission. No successful correction,
+native prediction or binding advantage follows from this authorization alone.
+
+## Attempt006 completed; chemistry and fresh prediction limits, collected 28 October2026
+
+The [read-only terminal snapshot](../outputs/hpc-results/source138-epoch36-embedding-comparison-attempt006/status-1793174972681581400.json)
+and [exact artifact transport receipt](../outputs/hpc-results/source138-epoch36-embedding-comparison-attempt006/terminal-gpu-20261028/integrity.json)
+supersede the queued status below. GPU **29829828** completed successfully on
+n-62-18-12, **27 October17:44:25--21:48:58 CET** (14,673s scheduler walltime).
+Its result is `completed_matched_pilot`, not binding validation.
+
+All three native-oracle gates and all six pointwise start derivative gates
+passed with the original settings/tolerances. The precision correction was
+applied only to the comparison's final graph policy; frozen VAE/bridge/scorer
+weights and contexts remained unchanged. Each of three starts completed both
+50-update arms: **six trajectories /300 updates**, with zero recorded forward
+or backward errors. The gates validate these tested starting points, not every
+subsequent point or a general guarantee of useful gradients.
+
+Terminal hard-graph observations:
+
+| Arm | Chemically valid terminal graphs | Interpretation |
+| --- | ---: | --- |
+| Original relaxed-graph boundary | 2/3 | Cases001/003 retained the starting chemical identities; case002 failed sanitization. |
+| Learned input-embedding bridge | 0/3 | All three terminal graphs failed sanitization. |
+
+The bridge does not show a useful chemistry advantage in this small pilot.
+These are latent optimization results with the frozen original epoch36 VAE,
+not a change in epoch40's reconstruction or generation metrics.
+
+All **six attempted ordinary native predictions** at fresh poses failed with
+`RuntimeError: CUDA error: CUDA-capable device(s) is/are busy or unavailable`.
+There are zero successful native predictions or eligible paired affinity
+comparisons. `fresh-native/summary.json` says `completed` because every request
+is terminal; this does not mean prediction succeeded. No binding improvement
+or superiority is established. Per-request log tails preserve the error.
+
+The saved [HTML comparison report](../outputs/hpc-results/source138-epoch36-embedding-comparison-attempt006/terminal-gpu-20261028/comparison-report.html)
+was downloaded without rerunning models. Full, untruncated native/start gate
+JSON files and result summaries were copied with exact remote SHA/size checks;
+the earlier collector's 100,000-character artifact tails are not substituted
+for these complete files. No code, scientific settings or jobs were changed,
+and the independent VAE continuation was untouched by this status collection.
+
 ## Attempt006 full CPU readiness passed; GPU queued, 27 October 2026 12:13 CET
 
 The [actual CPU terminal snapshot](../outputs/hpc-results/source138-epoch36-embedding-comparison-attempt006/status-1793099462736059700.json)

@@ -99,11 +99,14 @@ def test_first_training_worker_keeps_cuda_gate_before_train_and_later_segments_a
     module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
     c=object.__new__(module.ValidReferenceCampaign)
     c.work=Path("/work3/s234818/latentmol");c.release=Path("/release");c.path=Path("/plan.json");c.sha="a"*64
+    checked=[]
+    monkeypatch.setattr(c,"check_launch",lambda command:checked.append(list(command)))
     monkeypatch.setattr(module.GuardedRestart,"worker",lambda self,command,label:command)
     train=["python","-m","latentmol.chemistry_continuation","train","--segment","1"]
     first=c.worker(train,"train")
     assert first[:2] == ["bash","-c"] and "--mode cuda-check" in first[2] and " && " in first[2]
     later=train[:-1]+["2"]
     assert c.worker(later,"train") == later
+    assert checked == [train, later]
     assert "tests/test_chemistry_resume_cuda.py" in module.CUDA_FIXTURES
     assert "tests/test_chemistry_valid_reference_training_policy.py" in module.CUDA_FIXTURES

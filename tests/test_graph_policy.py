@@ -4,9 +4,31 @@ import torch
 import pytest
 
 from latentmol.boltz.adapter import fixed_occupancy_graph as legacy_fixed_graph
-from latentmol.graph_policy import fixed_occupancy_graph, graph_from_decoder
+from latentmol.graph_policy import fixed_occupancy_graph, graph_from_decoder, graph_from_mosaic
 from latentmol.representation import DecoderOutput, GraphSpec
 
+
+def test_mosaic_graph_remaps_sulfur_fluorine_slots_bonds_and_derivatives():
+    spec = GraphSpec(max_nodes=5, atomic_numbers=(0, 17, 16, 9, 8, 7, 6),
+                     formal_charges=(1, 0, -1), bond_names=("NONE", "AROMATIC", "TRIPLE", "DOUBLE", "SINGLE"))
+    x = torch.softmax(torch.arange(36, dtype=torch.float64).reshape(2, 3, 6) / 7, -1).requires_grad_()
+    e = torch.softmax(torch.arange(30, dtype=torch.float64).reshape(2, 3, 5) / 4, -1).requires_grad_()
+    slots = [4, 1, 2]
+    g = graph_from_mosaic(x, e, spec, active_slots=slots)
+    assert torch.equal(g.atoms[:, slots, spec.atomic_numbers.index(16)], x[:, :, 3])
+    assert torch.equal(g.atoms[:, slots, spec.atomic_numbers.index(9)], x[:, :, 4])
+    assert torch.equal(g.occupancy[0], torch.tensor([0., 1., 1., 0., 1.], dtype=x.dtype))
+    assert torch.all(g.charges[..., spec.formal_charges.index(0)] == 1)
+    assert torch.equal(g.bonds, g.bonds.transpose(1, 2))
+    assert torch.all(g.bonds[:, range(5), range(5), 0] == 1)
+    assert torch.equal(g.bonds[:, 1, 2, spec.bond_names.index("DOUBLE")], e[:, 2, 2])
+    assert torch.all(g.bonds[:, 0, :, 0] == 1)
+    value = g.atoms[:, 4, spec.atomic_numbers.index(16)].sum() + g.bonds[:, 2, 1, spec.bond_names.index("DOUBLE")].sum()
+    dx, de = torch.autograd.grad(value, (x, e))
+    assert torch.all(dx[:, 0, 3] == 1) and dx.count_nonzero() == 2
+    assert torch.all(de[:, 2, 2] == 1) and de.count_nonzero() == 2
+    with pytest.raises(ValueError, match="distinct"):
+        graph_from_mosaic(x, e, spec, active_slots=[1, 1, 2])
 
 def test_legacy_import_is_same_function_and_shared_policy_chooses_explicitly():
     assert legacy_fixed_graph is fixed_occupancy_graph

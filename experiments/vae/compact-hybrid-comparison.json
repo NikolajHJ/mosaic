@@ -1,0 +1,15 @@
+{
+  "version": "compact-decoder-comparison-v1",
+  "base_training_run": "compact435k-count-v100.json",
+  "variants": ["triangle_bond_message"],
+  "controls": {
+    "path": "/work3/s234818/latentmol/runs/vae-bond-message-20261119a/training/comparison.json",
+    "sha256": "8ed70efa40659a3303da81b910a1a9c1438683111014b647f7123a7a5b29cc84"
+  },
+  "updates": 512,
+  "microbatch": 128,
+  "observe_updates": [0, 16, 128, 512],
+  "row_seed": 2026111931,
+  "hpc_cuda_ownership_helper": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-release-26/source/scripts/cuda_ownership.py",
+  "hpc_cuda_ownership_sha256": "578d2b6c9453ad14ce6778d306aa6c1d926acb442dcf8ae9f9a75bccc6b2e3cb"
+}

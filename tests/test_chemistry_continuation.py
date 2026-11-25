@@ -559,6 +559,22 @@ def test_parent_metadata_authenticates_latest_completed_boundary_with_stopped_ru
     assert authenticate_parent_metadata(checkpoint, config, plan, runtime, parent_run)["passed"]
 
 
+def test_archived_parent_uses_original_order_and_warmup_defaults(tmp_path):
+    checkpoint, config, plan, runtime, parent_run = _parent_metadata_fixture()
+    old = asdict(config)
+    del old["loss"]["atom_order"], old["kl_warmup_molecules"], old["model"]["atom_refinement_dropout"]
+    path = tmp_path / "pre-matching.json"
+    path.write_text(json.dumps(old), encoding="utf-8")
+    restored = load_parent_config(path)
+    assert restored.loss.atom_order == "ordered" and restored.kl_warmup_molecules is None
+    assert restored.model.atom_refinement_dropout == 0
+    checkpoint["train_config"] = old
+    checkpoint["loss_config"] = dict(old["loss"])
+    checkpoint["model_config"].pop("atom_refinement_dropout")
+    parent_run["config"] = old
+    assert authenticate_parent_metadata(checkpoint, restored, plan, runtime, parent_run)["passed"]
+
+
 @pytest.mark.parametrize("path,value", [
     (("format_version",), True), (("epoch",), 36),
     (("continuation", "epoch_complete"), False), (("continuation", "updates"), 230861),

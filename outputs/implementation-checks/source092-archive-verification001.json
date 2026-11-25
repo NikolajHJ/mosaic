@@ -1,0 +1,9 @@
+{
+  "status": "verified_packaging_only_not_submitted",
+  "archive_sha256": "b77b760400636e23c89ae94844e18505158efa89da37784843638aeb07c0f8f9",
+  "source_manifest_sha256": "92656571864dee81b46e6e15b5687f0201d17bdaa36d8276e358eefba5d04f46",
+  "authenticated_source_files": 417,
+  "archive_bytes": 1473199,
+  "numerical_execution": false,
+  "hpc_access": false
+}

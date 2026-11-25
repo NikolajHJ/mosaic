@@ -2,7 +2,7 @@
 # Submit through run_job.sh in an LSF CPU allocation. Existing caches are immutable.
 set -euo pipefail
 python -m latentmol.experiments --run-root "$LATENTMOL_WORK_ROOT/runs" --name tests-full-data -- \
-    python -m pytest -q tests/test_chemistry.py tests/test_full_data.py \
+    python -m pytest -q tests/datasets/test_chemistry.py tests/test_full_data.py \
     --junitxml="$LATENTMOL_WORK_ROOT/logs/tests-full-data-${LSB_JOBID}.xml"
 python -m latentmol.experiments --run-root "$LATENTMOL_WORK_ROOT/runs" --name prepare-zinc215k -- \
     python -m latentmol.data --input "$LATENTMOL_WORK_ROOT/raw/zinc250k.csv" \

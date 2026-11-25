@@ -16,12 +16,14 @@ from torch.nn import functional as F
 from latentmol.multimodel.external import tensor_tree_sha256
 from latentmol.protenix_occupancy import native as native_loader
 from latentmol.protenix_occupancy.study import (
+    calibrate_loss_noise,
     compare_native_repeat,
     compare_outputs,
     compare_parity_outputs,
     derivative_agreement,
     floating_element_features,
     inject_occupancy,
+    loss_difference_agreement,
     reduce_distogram,
 )
 
@@ -637,4 +639,160 @@ def test_derivative_comparison_checks_signed_scaled_finite_difference(autograd, 
     assert comparison["passed"] is passed
     if not math.isfinite(autograd) or not math.isfinite(fd):
         assert comparison["absolute_error"] is None
+
+
+@pytest.mark.parametrize("epsilon, plus, minus, strict_passed", [
+    (0.01, 0.5436993876184724, 0.5436993876184724, True),
+    (0.003, 0.543699371294167, 0.5436993803789195, False),
+    (0.001, 0.543699405834003, 0.543699371294167, False),
+])
+def test_loss_difference_keeps_saved_control_strict_failures_diagnostic(
+    epsilon, plus, minus, strict_passed,
+):
+    # Recorded attempt007 endpoints, tested with a synthetic NEW repeat cohort
+    # at their observed scalar scale. This is not a historical calibration or
+    # a retroactive change to the sealed attempt007 failure.
+    baseline = [0.543699371294167, 0.543699405834003] * 4
+    calibration = calibrate_loss_noise([baseline, [plus] * 3, [minus] * 3])
+    comparison = loss_difference_agreement(
+        0.0, [plus] * 3, [minus] * 3, epsilon, calibration,
+    )
+    assert calibration["passed"]
+    assert comparison["passed"]
+    assert comparison["strict_passed"] is strict_passed
+    assert comparison["autograd"] == 0.0
+    assert not comparison["resolved_above_repeat_noise"]
+    assert comparison["plus_samples"] == [plus] * 3
+    assert comparison["minus_samples"] == [minus] * 3
+    assert comparison["finite_difference"] == pytest.approx(
+        (plus - minus) / (2 * epsilon), abs=1e-12,
+    )
+
+
+def test_repeat_calibration_does_not_pool_distinct_occupancy_means():
+    calibration = calibrate_loss_noise([
+        [0.5, 0.50000001, 0.5],
+        [0.9, 0.90000001, 0.9],
+        [0.1, 0.10000001, 0.1],
+    ])
+    # Occupancy can change the mean loss substantially without increasing the
+    # within-input repeat allowance or making a wrong signed derivative pass.
+    assert calibration["passed"]
+    assert calibration["loss_difference_uncertainty"] < 1e-7
+    comparison = loss_difference_agreement(
+        -0.25, [0.5025] * 3, [0.4975] * 3, 0.01, calibration,
+    )
+    assert not comparison["passed"]
+    assert not comparison["resolved_above_repeat_noise"]
+
+
+@pytest.mark.parametrize("groups", [[], [[]], [[1.0]], [[1.0, 1.0], [2.0]]])
+def test_repeat_calibration_requires_actual_repeat_groups(groups):
+    with pytest.raises(ValueError, match="repeated identical-input groups"):
+        calibrate_loss_noise(groups)
+
+
+@pytest.mark.parametrize("bad", [float("nan"), float("inf"), -float("inf")])
+def test_repeat_calibration_rejects_nonfinite_samples(bad):
+    with pytest.raises(ValueError, match="Nonfinite"):
+        calibrate_loss_noise([[0.5, 0.5], [0.9, bad]])
+
+
+def test_repeat_calibration_finite_excess_noise_is_a_failure():
+    calibration = calibrate_loss_noise([[0.5, 0.50001]])
+    assert not calibration["passed"]
+    assert calibration["loss_difference_uncertainty"] > 1e-6
+    comparison = loss_difference_agreement(
+        0.0, [0.5] * 3, [0.5] * 3, 0.01, calibration,
+    )
+    assert not comparison["passed"]
+    assert not comparison["resolved_above_repeat_noise"]
+
+
+@pytest.mark.parametrize("autograd", [0.3, -0.25, 0.0])
+def test_noiseless_loss_difference_rejects_wrong_gradient_magnitude_or_sign(autograd):
+    calibration = calibrate_loss_noise([[0.5] * 8])
+    comparison = loss_difference_agreement(
+        autograd, [0.5025] * 3, [0.4975] * 3, 0.01, calibration,
+    )
+    assert not comparison["passed"]
+    assert not comparison["strict_passed"]
+    assert not comparison["resolved_above_repeat_noise"]
+
+
+@pytest.mark.parametrize("autograd", [0.25, -0.25])
+def test_noiseless_loss_difference_resolves_correct_signed_gradient(autograd):
+    calibration = calibrate_loss_noise([[0.5] * 8])
+    comparison = loss_difference_agreement(
+        autograd,
+        [0.5 + 0.01 * autograd] * 3,
+        [0.5 - 0.01 * autograd] * 3,
+        0.01, calibration,
+    )
+    assert comparison["passed"]
+    assert comparison["strict_passed"]
+    assert comparison["resolved_above_repeat_noise"]
+    assert comparison["finite_difference"] == pytest.approx(autograd)
+
+
+@pytest.mark.parametrize("autograd", [0.0, 1e-11, -1e-11])
+def test_loss_difference_zero_or_tiny_signal_never_establishes_z_sensitivity(autograd):
+    calibration = calibrate_loss_noise([[0.5] * 8])
+    comparison = loss_difference_agreement(
+        autograd,
+        [0.5 + 0.01 * autograd] * 3,
+        [0.5 - 0.01 * autograd] * 3,
+        0.01, calibration,
+    )
+    assert comparison["passed"]
+    assert comparison["strict_passed"]
+    assert not comparison["resolved_above_repeat_noise"]
+
+
+@pytest.mark.parametrize("overrides", [
+    {"version": "unrecognized-fd-policy"},
+    {"passed": False},
+    {"passed": True, "loss_difference_uncertainty": 1e-5},
+    {"passed": True, "loss_difference_uncertainty": 0.0},
+    {"passed": True, "loss_difference_uncertainty": float("nan")},
+    {"passed": True, "loss_difference_uncertainty": float("inf")},
+    {"passed": True, "loss_difference_uncertainty": None},
+])
+def test_loss_difference_rejects_invalid_or_forged_calibration(overrides):
+    calibration = calibrate_loss_noise([[0.5] * 8])
+    calibration.update(overrides)
+    comparison = loss_difference_agreement(
+        0.25, [0.5025] * 3, [0.4975] * 3, 0.01, calibration,
+    )
+    assert comparison["strict_passed"]
+    assert not comparison["passed"]
+    assert not comparison["resolved_above_repeat_noise"]
+
+
+@pytest.mark.parametrize("autograd, plus, minus", [
+    (float("nan"), [0.5] * 3, [0.5] * 3),
+    (float("inf"), [0.5] * 3, [0.5] * 3),
+    (0.0, [0.5, float("nan"), 0.5], [0.5] * 3),
+    (0.0, [0.5] * 3, [0.5, float("inf"), 0.5]),
+])
+def test_loss_difference_rejects_nonfinite_endpoint_or_gradient(autograd, plus, minus):
+    calibration = calibrate_loss_noise([[0.5] * 8])
+    comparison = loss_difference_agreement(autograd, plus, minus, 0.01, calibration)
+    assert not comparison["passed"]
+    assert not comparison["strict_passed"]
+    assert not comparison["resolved_above_repeat_noise"]
+
+
+@pytest.mark.parametrize("epsilon, plus, minus", [
+    (0.0, [0.5], [0.5]),
+    (-0.01, [0.5], [0.5]),
+    (float("nan"), [0.5], [0.5]),
+    (float("inf"), [0.5], [0.5]),
+    (0.01, [], [0.5]),
+    (0.01, [0.5], []),
+])
+def test_loss_difference_requires_valid_step_and_endpoint_samples(epsilon, plus, minus):
+    calibration = calibrate_loss_noise([[0.5] * 8])
+    with pytest.raises(ValueError, match="positive finite epsilon and endpoint samples"):
+        loss_difference_agreement(0.0, plus, minus, epsilon, calibration)
 

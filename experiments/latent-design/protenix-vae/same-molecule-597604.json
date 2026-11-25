@@ -1,0 +1,15 @@
+{
+  "checkpoint_sha256": "abfec8c32ab7d6e00240ee7d68492c7e271f4aa95f14be874674e1fe0cd742f4",
+  "base_design": "pilot.json",
+  "same_molecule_panel": {
+    "path": "same-molecule-597604-panel.json",
+    "sha256": "a6ec1fb331c4b7f0ab19ce3fff89838151ae63dfa4c7aa43bceb7c2f9c6f78bb",
+    "parents": 12
+  },
+  "step_search": {
+    "iterations": 6,
+    "radii": [0.1, 0.3, 1.0, 2.0],
+    "minimum_improvement": 1e-7
+  },
+  "fresh_edit_limit": 4
+}

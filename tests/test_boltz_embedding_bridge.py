@@ -13,6 +13,13 @@ from latentmol.boltz.embedding_bridge import (
 from latentmol.representation import GraphSpec, HardGraphBatch
 
 
+def assert_permutation_equivariant(actual, expected):
+    # Reordering GEMM rows can choose a different summation kernel. Eight dtype
+    # epsilons allow its rounding, while meaningful feature changes still fail.
+    epsilon = torch.finfo(actual.dtype).eps
+    torch.testing.assert_close(actual, expected, rtol=8 * epsilon, atol=8 * epsilon)
+
+
 def native_fixture(*, confidence=False, typed=True, no_chars=True, width=8):
     """Only projection-bearing native attributes, never a mock score model."""
     model = nn.Module()
@@ -261,7 +268,15 @@ def test_hidden_bridge_masks_symmetry_and_slot_permutation_equivariance():
         expected = output[descriptor.key][:, permutation]
         if not descriptor.kind.startswith("atom_"):
             expected = expected[:, :, permutation]
-        torch.testing.assert_close(permuted[descriptor.key], expected, rtol=0, atol=0)
+        assert_permutation_equivariant(permuted[descriptor.key], expected)
+
+
+def test_permutation_comparison_accepts_rounding_and_rejects_material_error():
+    expected = torch.tensor([1., 0.], dtype=torch.float32)
+    rounded = torch.nextafter(expected, torch.full_like(expected, float("inf")))
+    assert_permutation_equivariant(rounded, expected)
+    with pytest.raises(AssertionError):
+        assert_permutation_equivariant(expected + 1e-3, expected)
 
 
 def test_frozen_bridge_still_supplies_input_gradients_without_training_native_bank():

@@ -1,0 +1,33 @@
+{
+  "internal_seconds": 18000,
+  "parent": {
+    "artifacts": {
+      "case-001/learned-start-gate.json": "76d29f8de2c6c20850a186605a6f09c31df415f49c8c216be1e2b9929938c947",
+      "case-001/native-oracle.json": "ff219d745b741da98b70155914eb8c79a7433739f540e2c7d0f530120996bdb1",
+      "case-001/optimization/comparison.json": "90ef5d242b37f6a54e31fc2d431b851a99ee35f965e8023756304b58e184124f",
+      "case-001/production-binding.json": "b34ca18ad5cb66fad75418a2d9789de48d07c43e7ad2cf72ab7635e92ce740de",
+      "case-001/relaxed-start-gate.json": "7f6157338d83c75d402b5b5830cf42fac8419f10499db033d19db20da2d1e952",
+      "case-002/learned-start-gate.json": "f68155f62b14a959101f85313f5eb2455ceafc20b8ff3399e44ca56d2cb58851",
+      "case-002/native-oracle.json": "5e68e70ba5832e4daf2464ea8b960372bf92219468fdc55d9f7d4aad808404fb",
+      "case-002/optimization/comparison.json": "68c92598a424a277b3858f5d4644b5d3878c84047bde98271d98c38ce76ed4c4",
+      "case-002/production-binding.json": "8425ef2920916a5ac5fddb2458cbab9311691aca684086ef84ed616dc46b450d",
+      "case-002/relaxed-start-gate.json": "18ecf3fc50a5a3c066e5d6487c96361daf22f201d22af43f6446f77727868ae2",
+      "case-003/learned-start-gate.json": "3d053e4205d4ba30837c7326a48b66370a3418404e20cac05d926d90394da840",
+      "case-003/native-oracle.json": "5e68e70ba5832e4daf2464ea8b960372bf92219468fdc55d9f7d4aad808404fb",
+      "case-003/optimization/comparison.json": "a9e7bd73d505c52e54cb18f7625dded6091ad5c51496eeb5687f795ad586e558",
+      "case-003/production-binding.json": "ecf5a62d7e2750b1a4808e95fb39b46e2829cada6aa8b5d1d8bc9c090d28e040",
+      "case-003/relaxed-start-gate.json": "99c20172cae0d7089dad15326642d78d216762ffc03af8083399e346f6501091",
+      "case-summary.json": "abf9a10752b28b189a8a6afdc83d30306396a0d7c1d0c2f9aa63a281c6c33972",
+      "fresh-native/selection.json": "55b39de1bc0eece58f6b5a2865684cb5a8d314225aba1105f7c4819a855c0bf3",
+      "fresh-native/target.json": "6aec64081d487b91d0b903848abb2ab0f0af81bb07906a6cde6bf3aac8903d8d",
+      "result.json": "f38a60864bba22e657917a4d71e3d276cae2958f244e1c3c88049556f939ef4a",
+      "start-gates.json": "41964f483070251d562b369ce1bcb4e0754769c7cb0e1fb0f89db89028fe2ee3"
+    },
+    "plan": {
+      "path": "/work3/s234818/latentmol/releases/source-138-epoch36-embedding-comparison-attempt006/configs/epoch36_embedding_comparison.json",
+      "sha256": "58b47026f175622992c8ea1e257e02d1836387c752aa024bb2fcc0201e886802"
+    },
+    "root": "/work3/s234818/latentmol/runs/source138-epoch36-embedding-comparison-attempt006/gpu"
+  },
+  "version": "embedding-native-recovery-v1"
+}

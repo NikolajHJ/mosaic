@@ -1,5 +1,47 @@
 # Guarded original epoch36 mapping optimization
 
+## First case at saved update1705, read-only29 October2026 22:14 CET
+
+The installed unattended SSH connector retrieved [fresh controller evidence](../outputs/hpc-results/source142-epoch36-guarded-embedding-long-attempt001/status-1793308373657371100.json)
+and [live saved-state/observation receipts](../outputs/hpc-results/source142-epoch36-guarded-embedding-long-attempt001/live-progress-helper-1793308437642697200.json).
+**29846090 RUN** since07:44:15CET on n-62-18-12; callback29846091 PEND
+normally. Latest persisted case001 state is **1705/10,000**, saved22:13:34CET;
+this is a timestamped saved update, not an exact live counter. Cases002/003
+remain at their20-update pilot endpoints until later serial allocations.
+No long-segment completion or failure receipt exists. Mixed controller scheduler
+return255 comes from aged-out historical jobs; its live RUN/PEND evidence and
+independent per-job queries remain valid.
+
+Observation1700 (22:10:34CET) is eligible, naturally/conditioned strictly valid
+and has no rejection reasons. Learned-input DBMol loss8.34882049->7.80659526,
+but the hard molecular identity is unchanged and common hard fixed-context
+loss remains8.34434405; ordinary relaxed loss8.34435082->8.34373665. The only
+best-valid snapshot is still update0. Thus this is surrogate improvement,
+not an established discrete-molecule or fresh-native binding gain. Counts at
+saved1705:1705 applied,1124 improving,581 forced fallbacks,zero noops;
+forced fallbacks are retained policy outcomes, not monotonic improvement.
+All pilot/native/derivative gates remain the previously passed exact gates.
+No model/numerical run, submission, scientific change or SSH/VPN configuration
+change was performed by this status check. [Combined summary](../outputs/hpc-results/hpc-run-status-20261029-2214.json).
+
+## Pilot passed; serial long optimization running, 29 October 2026 09:47 CET
+
+[Fresh parent status](../outputs/hpc-results/source142-epoch36-guarded-embedding-long-attempt001/status-1793263617831468300.json)
+records pilot29845020 **passed**, completing06:52:22–07:40:42 CET. Each of
+the three cases completed20 iterations with20 accepted nonzero steps,
+passed gates and a strict-valid retained best state. The authenticated
+source143 recovery successfully advanced the original scientific campaign.
+
+**GPU29846090 RUN since07:44:15 CET** on `n-62-18-12` is case001's first
+long allocation, resuming update20 with a maximum1,879 additional iterations
+this allocation and the unchanged absolute10,000 target. Callback29846091
+waits on its expected dependency. The collection contains no segment completion
+or exact current live update count; the confirmed case002/003 endpoints
+remain20. Final native binding confirmation is still separate. See the
+[handoff evidence](82_embedding_handoff_recovery.md#original-pilot-passed-long-segment-running-29-october-2026-0947-cet).
+No runtime, scientific setting, job or SSH/VPN configuration changed during
+this read-only status task.
+
 ## GPU fit passed; pilot handoff failed scheduler guard, collected 28 October 2026 20:22 CET
 
 The [new read-only collection](../outputs/hpc-results/source142-epoch36-guarded-embedding-long-attempt001/status-1793215369272490300.json)
@@ -298,3 +340,73 @@ Failed143001's75 fixture passes remain unpromoted because its actual preflight
 incorrectly forbade eager CPU Torch imports; immutable logs/XML and the later
 CPU-only/CUDA-free v2 correction are preserved.
 [Exact repair, limits and receipts](82_embedding_handoff_recovery.md).
+
+## Pilot passed; first long segment running,29 October2026 09:45CET
+
+Pilot29845020 completed its allocated execution06:52:22–07:40:42CET and
+reported `passed`. Allthree cases passed the native/start/production gates
+and completed20 accepted nonzero iterations each, zero no-ops. Each retained
+an eligible strict-valid best checkpoint. Full frozen-state/context checks
+passed for every case. The repaired callback29845021 successfully submitted
+the first longer allocation; the recovered automatic handoff is exercised.
+
+Long GPU job **29846090 RUN** since07:44:15CET on `n-62-18-12`, with serial
+callback29846091 PEND on its normal ended dependency. At09:45, case001's latest
+persisted state was **update262/10000**, saved09:45:02; its latest scheduled
+relaxed/hard observation was260 at09:44:16. Bothother cases remain at their
+completed20-update pilots while the serial campaign works on case001. These
+are saved counts, not an exact live counter. Observations continue every10.
+
+Case001's observed conditioned graph remains strict-valid and its starting
+identity/hard fixed-context score remain unchanged; best-valid selection is
+still at0. This is actual latent optimization progress, not demonstrated
+binding improvement or a completed10000 target. The existing objective,
+consistency/validity/runtime/quota/stall checks remain in force.
+
+[Exact snapshot and progress references](../outputs/hpc-results/source143-embedding-handoff-recovery-attempt002/pilot-running-status001.json)
+retain source/plan identities and completed pilot proof. Live pilot/old CPU
+scheduler records have aged out; saved successful allocated execution/result
+and repaired callback receipts remain, and the newlong job is explicitlyRUN.
+This was a read-only collection: no code, scientific settings, jobs, VPN or
+SSH configuration changed. The VAE continuation remains untouched.
+
+## First long segment complete; case002 queued,30 October2026 09:15 CET
+
+The unchanged campaign completed case001's first long segment. Exact LSF
+history and saved execution/result proofs establish **29846090 DONE** at
+29 October23:58:42 CET, return0, `completed_segment` with
+`segment_complete_target_pending`. Case001 is at **1,899/10,000** cumulative
+updates:20 from the pilot plus exactly1,879 requested for this allocation.
+It completed its requested segment bound; `stopped_for_deadline=false` and
+`scientific_stall=false`. This is segment completion, not a10,000-update
+completion. Full model/context state remained unchanged and scientific guards
+passed. Cumulative counts distinguish1,239 improving proposals and660 forced
+fallbacks: all1,899 were applied, with zero no-ops. Best-valid retention is
+still update0.
+
+The existing callback **29846091 DONE** at23:59:35 CET submitted the next
+scheduled case002 allocation **29851407** at23:59:25. At the fresh09:15--09:16
+check, **29851407 PEND** for `Job slot limit reached:5 hosts`; callback
+**29851408 PEND** waits normally. The case002 request starts at20 and allows
+at most2,628 further updates (cumulative2,648), while retaining endpoint10,000.
+This is the original guarded round-robin order, case001→case002→case003→case001,
+with further segments conditional on the unchanged scientific, runtime/profile
+and quota checks. Cases002/003 currently remain at their20-update pilots.
+The status check made no submission or scheduling change.
+
+Case001's latest scheduled observation is **1890**, eligible with natural and
+conditioned graphs both strict-valid. Its decoded identity and **all hard
+fixed-context scores exactly equal the initial observation**; hard total loss
+remains8.3443440523. The learned surrogate fell from8.3488204923 to7.8036640841,
+but this has not established a changed decoded molecule, hard-score improvement
+or binding gain. The authenticated completed counter1899 is distinct from
+this every10 observation; no extra terminal molecule decode is inferred.
+
+All downloaded terminal result, execution, callback, next-intent and LSF log
+bytes were checked against remote SHA256 and sizes. Segment-result SHA
+`d9623cbee6bdd8d4599aa0c3b40d1d50206eda3a5f876c873d393efba41329b4`
+matches both execution and predecessor-transition proofs. The dated
+[summary and evidence hashes](../outputs/hpc-results/source142-epoch36-guarded-embedding-long-attempt001/status-20261030-1793348203235586400/summary.json)
+retain the exact scheduler history, original segment request and fresh saved
+observations. No numerical work, scientific setting, runtime code, job, SSH/VPN
+configuration or VAE continuation was changed by this collection.

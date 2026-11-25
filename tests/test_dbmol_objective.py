@@ -169,3 +169,25 @@ def test_fresh_affinity_does_not_masquerade_as_full_composite_loss():
         assert row["endpoint_minus_start_binary"] == pytest.approx(.2)
         assert row["endpoint_minus_start_signed_objective"] is None
         assert row["configured_objective_available"] is False
+
+
+def test_new_dbmol_configuration_defaults_to_exploration_and_qualification_is_explicit(tmp_path):
+    from test_boltz_active_set_runtime import _yaml_configuration
+    raw = _yaml_configuration()
+    raw.update(arms=["fixed_initial_mask"], step_control={"version": "best_trial_v2"},
+               objective={"output": "dbmol_total_loss", "direction": "minimize"},
+               dbmol=profile(tmp_path,
+                   objective_arithmetic="contact_head_and_assembly_float64_v1").record())
+    path = tmp_path / "default-dbmol.yaml"
+    path.write_text(yaml.safe_dump(raw))
+    parsed = ActiveSetConfig.load(path)
+    assert parsed.research_profile == "exploratory" and parsed.fd_policy is None
+    raw["research_profile"] = "qualified"
+    path.write_text(yaml.safe_dump(raw))
+    assert ActiveSetConfig.load(path).fd_policy == "pointwise_native_ad_v5"
+    raw.pop("research_profile")
+    raw["fd_policy"] = "pointwise_native_ad_v4"
+    path.write_text(yaml.safe_dump(raw))
+    assert ActiveSetConfig.load(path).fd_policy == "pointwise_native_ad_v4"
+    legacy = ActiveSetConfig.load(path)
+    assert legacy.research_profile is None and "research_profile" not in legacy.record()

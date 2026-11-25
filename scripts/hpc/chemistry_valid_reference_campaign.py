@@ -24,7 +24,8 @@ from latentmol.experiments import file_sha256, write_json
 
 
 ADOPTION_FIXTURES = ["tests/test_chemistry_optimizer_step.py",
-    "tests/test_chemistry_valid_reference_training_policy.py", "tests/test_chemistry_valid_reference_adoption.py"]
+    "tests/test_chemistry_valid_reference_training_policy.py", "tests/test_chemistry_valid_reference_adoption.py",
+    "tests/test_chemistry_launch.py"]
 CUDA_FIXTURES = list(dict.fromkeys([
     "tests/test_chemistry_resume_cuda.py", "tests/test_failure_loss_validation_reuse.py",
     "tests/test_repair_guidance_v2.py", "tests/test_chemistry_valid_self_guidance.py",
@@ -71,10 +72,31 @@ class ValidReferenceCampaign(GuardedRestart):
         return Campaign.advance(self, after_stage)
 
     def worker(self, command, label):
+        if "latentmol.chemistry_continuation" in command and "train" in command:
+            self.check_launch(command)
         if ("latentmol.chemistry_continuation" in command and "train" in command
                 and command[command.index("--segment") + 1] == "1"):
             command = ["bash", "-c", shlex.join(self.controller("cuda-check")) + " && " + shlex.join(command)]
         return super().worker(command, label)
+
+    def check_launch(self, command):
+        """Run generated argv through the real CLI before any GPU submission."""
+        if not os.environ.get("LSB_JOBID", "").isdigit():
+            raise ValueError("Launch-command preflight requires the allocated callback")
+        number = int(command[command.index("--segment") + 1])
+        output = self.root / f"launch-command-{number:03d}.json"
+        check = [str(self.work / "env/boltz311/bin/python"), "scripts/hpc/check_chemistry_launch.py",
+                 "--output", str(output), "--", *command]
+        subprocess.run(check, cwd=self.release, env=dict(os.environ, PYTHONPATH=str(self.release / "src")),
+                       check=True, timeout=180)
+        receipt = read(output)
+        from latentmol.chemistry_short_continuation import continuation_end_epoch
+        if (receipt.get("status") != "passed_dispatch_not_training" or receipt.get("command") != command
+                or receipt.get("plan_sha256") != self.sha or receipt.get("job_id") != os.environ["LSB_JOBID"]
+                or receipt.get("segment") != number or receipt.get("start_epoch") != 36
+                or receipt.get("end_epoch") != continuation_end_epoch(self.plan) or receipt.get("model_setup_started") is not False
+                or receipt.get("updates") != 0):
+            raise ValueError("Actual launch-command preflight receipt differs")
 
     def cuda_check(self):
         if not os.environ.get("LSB_JOBID", "").isdigit():

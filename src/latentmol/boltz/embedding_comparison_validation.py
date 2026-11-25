@@ -30,9 +30,11 @@ from .embedding_training import conditioned_hard
 from .embedding_validation import (_comparison, _deadline, _frozen_versions,
                                    _scalars, score_learned_bridge)
 from .provenance import context_digest
+from .gradient_precision import relative_ad_consistency
 
 
-VERSION = "embedding-comparison-start-pointwise-ad-v1"
+LEGACY_VERSION = "embedding-comparison-start-pointwise-ad-v1"
+VERSION = "embedding-comparison-start-pointwise-ad-v2"
 JVP_RTOL, JVP_ATOL = 1e-3, 1e-6
 SCALAR_RTOL, SCALAR_ATOL = 1e-4, 1e-5
 FD_EPSILONS = (1e-4, 1e-3, 1e-2)
@@ -107,10 +109,17 @@ def score_relaxed_path(scorer, prepared, vae, z, *, require_gradient=False, dead
         scope="same-hard-identity-fixed-context-relaxed-path")
 
 
-def _directions(point, gradient):
+def _directions(point, gradient, *, allow_flat=False):
     # Selection is fixed before any tangent or chord is observed; no retry pool.
     generator = torch.Generator(device="cpu").manual_seed(DIRECTION_SEED)
-    result = {"gradient": gradient.detach().clone()}
+    norm = float(gradient.double().norm())
+    if not math.isfinite(norm):
+        raise ValueError("Nonfinite predeclared learned gradient direction")
+    # A stationary objective still has a derivative to check. The inherited
+    # label is disclosed as a seeded probe rather than a gradient direction.
+    first = (torch.randn(point.shape, generator=generator, dtype=torch.float64).to(point)
+             if allow_flat and norm <= MIN_GRADIENT_NORM else gradient.detach().clone())
+    result = {"gradient": first}
     for index in range(1, 4):
         random = torch.randn(point.shape, generator=generator, dtype=torch.float64)
         result["random_" + str(index)] = random.to(device=point.device, dtype=point.dtype)
@@ -123,7 +132,7 @@ def _directions(point, gradient):
 
 
 def learned_start_gate(scorer, prepared, bridge, vae, z, output, deadline=None, *, scoring_path="learned",
-                        comparison_graph_policy=DEFAULT_POLICY):
+                        comparison_graph_policy=DEFAULT_POLICY, derivative_policy=VERSION):
     """Write a fresh start certificate; return it only after all mandatory checks.
 
     Exact scalar/reverse/JVP recomposition applies to the inherited contact-head
@@ -136,23 +145,29 @@ def learned_start_gate(scorer, prepared, bridge, vae, z, output, deadline=None, 
     """
     if scoring_path not in ("learned", "relaxed"):
         raise ValueError("Comparison gate scoring_path must be learned or relaxed")
+    if derivative_policy not in (LEGACY_VERSION, VERSION):
+        raise ValueError("Unknown comparison derivative policy")
+    allow_flat = derivative_policy == VERSION
     comparison_graph_policy = validate_policy(comparison_graph_policy)
     path = Path(output)
     path.parent.mkdir(parents=True, exist_ok=True)
     if path.exists():
         raise FileExistsError("Learned start gate requires a fresh result path")
-    report = dict(version=VERSION, scoring_path=scoring_path, passed=False, status="running_not_passed", stage="initializing",
+    report = dict(version=derivative_policy, scoring_path=scoring_path, passed=False, status="running_not_passed", stage="initializing",
         comparison_graph_policy=policy_record(comparison_graph_policy),
         comparison_graph_policy_sha256=policy_binding(comparison_graph_policy),
         graph_policy_binding_required=True,
         point_sha256=tensor_digest({"z": z}), direction_seed=DIRECTION_SEED,
-        contract="pointwise_native_ad_v4_extension_for_frozen_learned_embedding",
+        contract=("pointwise_native_ad_v5_extension_for_frozen_learned_embedding" if allow_flat
+                  else "pointwise_native_ad_v4_extension_for_frozen_learned_embedding"),
         scope="pointwise implementation consistency at this start only",
         requires_fresh_native_oracle_gate=True, useful_gradient_validated=False,
         molecular_improvement_validated=False, thresholds_tuned_from_audit=False,
         jvp_tolerance=dict(rtol=JVP_RTOL, atol=JVP_ATOL),
         scalar_tolerance=dict(rtol=SCALAR_RTOL, atol=SCALAR_ATOL),
         minimum_gradient_norm=MIN_GRADIENT_NORM,
+        component_signal_required=not allow_flat,
+        zero_gradient_is_not_detachment=allow_flat,
         finite_difference_policy=dict(epsilons=list(FD_EPSILONS),
             finite_measurements_required=True, secant_agreement_required=False,
             reason="native nonsmooth pointwise AD contract; finite chords are separate diagnostics"),
@@ -218,8 +233,15 @@ def learned_start_gate(scorer, prepared, bridge, vae, z, output, deadline=None, 
         report["production_gradient_sha256"] = tensor_digest({"gradient": supplied_gradient})
         norm = float(supplied_gradient.double().norm())
         report["gradient_norm"] = norm
-        if not math.isfinite(norm) or norm <= MIN_GRADIENT_NORM:
-            raise ValueError("Learned-start total gradient is zero or nonfinite")
+        if not math.isfinite(norm):
+            raise ValueError("Learned-start total gradient is nonfinite")
+        report["optimization_qualification"] = dict(
+            informative_total=norm > MIN_GRADIENT_NORM,
+            minimum_informative_norm=MIN_GRADIENT_NORM,
+            correctness_requires_nonzero_total=not allow_flat,
+            reason="signal for proposing an update is separate from derivative correctness")
+        if not allow_flat and norm <= MIN_GRADIENT_NORM:
+            raise ValueError("Legacy learned-start qualification requires a nonzero total gradient")
         report["production_injection_receipt"] = production["injection_receipt"]
         report["hard_classification"] = production["hard_classification"]
         report["canonical_smiles"] = production["canonical_smiles"]
@@ -234,19 +256,27 @@ def learned_start_gate(scorer, prepared, bridge, vae, z, output, deadline=None, 
                     raise ValueError("Production learned score differs from independent fixed-placeholder baseline")
                 native_gradients, grouped_gradients, grouped_scalars = {}, {}, {}
                 report["component_gradient_norms"] = {}
+                report["component_signal"] = {}
                 for key in _COMPONENT_NAMES:
                     value = scores[key].reshape(())
                     expression = _grouped(scores, config, key)
+                    if not value.requires_grad or not expression.requires_grad:
+                        raise ValueError("Detached required comparison component: " + key)
                     grouped_scalars[key] = torch.equal(value, expression)
                     for destination, scalar in ((native_gradients, value), (grouped_gradients, expression)):
                         _deadline(deadline)
                         report["calls"]["reverse_attempted"] += 1
-                        destination[key] = torch.autograd.grad(scalar, probe, retain_graph=True)[0].detach()
+                        derivative = torch.autograd.grad(scalar, probe, retain_graph=True, allow_unused=True)[0]
+                        if derivative is None:
+                            raise ValueError("Missing required comparison derivative path: " + key)
+                        destination[key] = derivative.detach()
                     if not bool(native_gradients[key].isfinite().all()):
                         raise ValueError("Nonfinite learned component derivative: " + key)
                     component_norm = float(native_gradients[key].double().norm())
                     report["component_gradient_norms"][key] = component_norm
-                    if component_norm <= MIN_GRADIENT_NORM:
+                    report["component_signal"][key] = ("informative" if component_norm > MIN_GRADIENT_NORM
+                                                        else "low_or_zero_signal")
+                    if not allow_flat and component_norm <= MIN_GRADIENT_NORM:
                         raise ValueError("Zero/uninformative comparison component derivative: " + key)
                 supplied_exact = torch.equal(supplied_gradient, native_gradients["dbmol_total_loss"])
                 grouped_exact = {key: torch.equal(native_gradients[key], grouped_gradients[key])
@@ -270,7 +300,8 @@ def learned_start_gate(scorer, prepared, bridge, vae, z, output, deadline=None, 
         if not (report["grad_no_grad_primal_exact"] and report["production_repeated_primal_exact"]):
             raise ValueError("Learned grad/no-grad or repeated production primal differs")
 
-        directions = _directions(point, supplied_gradient)
+        directions = _directions(point, supplied_gradient, allow_flat=allow_flat)
+        report["gradient_label_is_seeded_probe"] = allow_flat and norm <= MIN_GRADIENT_NORM
         report["direction_bindings"] = {name: tensor_digest({"direction": value})
                                         for name, value in directions.items()}
         report["stage"] = "independent_native_forward_ad"
@@ -291,12 +322,16 @@ def learned_start_gate(scorer, prepared, bridge, vae, z, output, deadline=None, 
                         analytic = float((native_gradients[key].double() * direction.double()).sum())
                         actual = float(tangent)
                         tolerance = JVP_ATOL + JVP_RTOL * max(abs(actual), abs(analytic))
+                        relative = (relative_ad_consistency(actual, analytic, report["component_gradient_norms"][key])
+                                    if allow_flat else None)
                         exact = (float(primal) == baseline[key] and torch.equal(primal, grouped_primal)
                                  and torch.equal(tangent, grouped_tangent))
                         rows.append(dict(component=key, primal=float(primal), tangent=actual,
                             reverse_projection=analytic, absolute_error=abs(actual - analytic),
                             allowed_error=tolerance, native_grouped_primal_jvp_exact=exact,
-                            passed=exact and abs(actual - analytic) <= tolerance))
+                            **({"relative_ad_consistency": relative} if relative is not None else {}),
+                            passed=(exact and abs(actual - analytic) <= tolerance
+                                    and (relative is None or relative["passed"]))))
             report["independent_forward_ad"].append(dict(direction=name, rows=rows,
                 injection_receipt=_receipt(receipt), passed=all(row["passed"] for row in rows)))
             save()

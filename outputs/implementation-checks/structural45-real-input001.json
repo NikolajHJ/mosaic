@@ -1,0 +1,12 @@
+{
+  "status": "passed_real_epoch44_metadata_and_actual_cli",
+  "checkpoint_sha256": "637745ad896b02fa9016d23f97a8826597373dc1f81953dc3ebaafb9c94d0683",
+  "epoch": 44,
+  "updates": 290224,
+  "sampler_start_update": 283628,
+  "optimizer_restoration": "native GPU worker retains exact moment checks",
+  "cli_checks": {
+    "-m latentmol.vae_neighborhood_continuation --help": 0,
+    "scripts/hpc/vae_neighborhood_campaign.py --help": 0
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "source": {
+    "name": "pubchem",
+    "url": "https://ftp.ncbi.nlm.nih.gov/pubchem/Compound/Extras/CID-SMILES.gz",
+    "format": "pubchem",
+    "bytes": 1488756615,
+    "last_modified": "Wed, 04 Nov 2026 10:13:53 GMT",
+    "md5": "0b8d1d41aa195f186f8d468ae2c2527d"
+  },
+  "baseline": {
+    "path": "/work3/s234818/latentmol/data/moses-chembl37-epoch45-v1",
+    "manifest_sha256": "a50cd362f310aaeb555ad4794c25487236c5f3d6d33722c80834bf2de0eb542d",
+    "dataset_sha256": "ce3e77166091241441678b567bb758b040e5863bbaba7880a3ade1261edc7357"
+  },
+  "minimum_train_count": 50000000,
+  "chunk_rows": 5000000,
+  "min_atoms": 1,
+  "hash_buckets": 256,
+  "max_ingest_bytes": 2147483648,
+  "max_output_bytes": 1717986918
+}

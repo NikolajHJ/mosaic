@@ -1,0 +1,20 @@
+{
+  "files.exclude": {
+    "**/__pycache__": true,
+    "**/.pytest_cache": true,
+    "**/.ruff_cache": true,
+    "outputs": true
+  },
+  "search.exclude": {
+    "**/__pycache__/**": true,
+    "**/.pytest_cache/**": true,
+    "**/docs/history/**": true,
+    "**/results/**": true,
+    "**/outputs/**": true
+  },
+  "files.watcherExclude": {
+    "**/outputs/**": true,
+    "**/results/**": true,
+    "**/__pycache__/**": true
+  }
+}

@@ -41,7 +41,8 @@ def policy_record(*, seed: int, rtol: float, atol: float, minimum_passes: int) -
             "occupancy_scope": "No derivative through the selector or through removed NO_ATOM logits"}
 
 
-def direction_plan(point: torch.Tensor, gradient: torch.Tensor, *, seed: int):
+def direction_plan(point: torch.Tensor, gradient: torch.Tensor, *, seed: int,
+                   allow_low_signal: bool = False):
     """Select exactly three sensitive Gaussian directions from a bounded pool.
 
     Proposal zero reproduces the legacy seeded projection (CPU Gaussian draw,
@@ -55,6 +56,24 @@ def direction_plan(point: torch.Tensor, gradient: torch.Tensor, *, seed: int):
     if not bool(point.isfinite().all()) or not bool(gradient.isfinite().all()):
         raise ValueError("Nonfinite local FD point or gradient")
     norm = float(gradient.double().norm())
+    if math.isfinite(norm) and norm <= 1e-12 and allow_low_signal:
+        # Only pointwise-v5 uses this path. No nonzero derivative is required
+        # for correctness: probe flat/low-signal functions in four seeded,
+        # unconditioned directions chosen before observing forward AD or chords.
+        generator = torch.Generator(device="cpu").manual_seed(seed)
+        directions, proposals = {}, []
+        for index, label in enumerate(("gradient", "random_1", "random_2", "random_3")):
+            raw = torch.randn(point.shape, generator=generator).to(point)
+            direction = raw / raw.norm()
+            directions[label] = direction
+            proposals.append(dict(proposal_index=index, generator_seed=seed, selected_label=label,
+                direction_sha256=tensor_digest({"direction": direction}),
+                analytic_projection_float64=float((gradient.double() * direction.double()).sum())))
+        return directions, directions["gradient"], dict(
+            selection_completed_before_endpoint_scores=True, latent_numel=point.numel(),
+            gradient_norm=norm, selected_labels=list(directions), pool_exhausted=False,
+            selection_rule="unconditioned_seeded_low_signal_v1",
+            gradient_label_is_random_probe=True, proposals=proposals)
     if not math.isfinite(norm) or norm <= 1e-12:
         raise ValueError("Local FD requires a nonzero analytic gradient")
     threshold = PROJECTION_FRACTION * norm / math.sqrt(point.numel())

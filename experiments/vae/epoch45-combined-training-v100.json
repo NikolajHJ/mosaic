@@ -1,0 +1,115 @@
+{
+  "version": "combined-vae-continuation-v1",
+  "data": "/work3/s234818/latentmol/data/moses-chembl37-epoch45-v1",
+  "checkpoint": {
+    "path": "/work3/s234818/latentmol/runs/source156-vae-epoch45-structural-attempt002/epoch0045/epoch_0045.pt",
+    "sha256": "5c4946c15515e70bd01281eea7b74693c18598c4b47f6724fcc9898deb1302be"
+  },
+  "occupancy_reference": {
+    "path": "/work3/s234818/latentmol/submissions/source104-chemistry-continuation-attempt005/parent.pt",
+    "sha256": "19f438222e454ef53169f6d81082335ee7e24902b1b7cf5e0f18eced4b8e92ed"
+  },
+  "valid_reference": {
+    "path": "/work3/s234818/latentmol/runs/source121a002-chemistry-16core-24h-attempt002/variants/r2_async_w12_m128_h24/segments/001/20261018T175254Z_chemistry-train_89b58520/epoch_0036.pt",
+    "sha256": "3179ef01f84a2c714ee031bc3e6a6a4dc2cedc767d30e700c887aab1abbd706f"
+  },
+  "composition": {
+    "path": "/work3/s234818/latentmol/runs/source140-epoch40-to45-continuation-attempt002/training_composition.json",
+    "sha256": "5ddc4dc0eda9dc93589c8f0904433135f899cfdcab8657fc127f304d4a136ee9"
+  },
+  "protocol": {
+    "baseline_continuation": {
+      "version": "epoch36-original-repair-v1"
+    },
+    "benchmark_panel_count": 256,
+    "benchmark_updates": 8,
+    "benchmark_wall_seconds": 6300,
+    "charge_js_weight": 0.05,
+    "composition_prior_weight": 1.5,
+    "early_health": {
+      "first_check_updates": 32,
+      "interval_updates": 100,
+      "max_examples_per_failure": 4,
+      "max_strict_validity_drop": 0.02,
+      "version": "chemistry-early-health-v1"
+    },
+    "element_js_weight": 0.1,
+    "evaluation_seed": 904017,
+    "maximum_segments": 80,
+    "microbatch_size": 128,
+    "minimum_prior_target_fraction": 0.01,
+    "monitor_every": 5,
+    "monitor_prior_count": 1024,
+    "occupancy_anchor_weight": 1.0,
+    "parameter_scope": "joint_encoder_decoder",
+    "precision": "fp32",
+    "prior_ratio": 2,
+    "prior_repair_weight": 0.75,
+    "prior_seed": 104017,
+    "real_batch_size": 256,
+    "real_repair_weight": 0.25,
+    "repair_ramp_epochs": 3,
+    "repair_weight": 0.5,
+    "search": {
+      "beam_width": 4,
+      "checks_per_depth": 32,
+      "max_edits": 3,
+      "probability_floor": 1e-12,
+      "probability_weight": 1.0
+    },
+    "segment_wall_seconds": 82800,
+    "total_epochs": 100,
+    "valid_prior_reference_guidance": {
+      "version": "frozen-valid-prior-reference-v1",
+      "weight": 0.1
+    },
+    "validation_count": 256,
+    "version": "joint-atom-preserving-chemistry-v2",
+    "vram_fraction_limit": 0.85
+  },
+  "execution": {
+    "backend": "optimized",
+    "gpu_cpus": 8,
+    "overlap": true,
+    "torch_threads": 2,
+    "workers": 6
+  },
+  "classification_execution": {
+    "version": "repair-classification-pool-v1"
+  },
+  "proposal_config": {
+    "candidate_checks": 96,
+    "connect_components": true,
+    "max_bond_changes": 1225,
+    "max_macro_steps": 2048,
+    "max_sample_edits": 8,
+    "prune_dense": true,
+    "sample_draws": 0,
+    "sample_seed": 170101,
+    "version": "fixed-atom-proposals-v1"
+  },
+  "step_control": {
+    "factor": 0.125,
+    "version": "adamw-displacement-scale-v2-half-continuation"
+  },
+  "shuffle_seed": 11040081,
+  "epochs": 1,
+  "batch_sizes": [
+    128,
+    256
+  ],
+  "benchmark_updates": 32,
+  "benchmark_warmup": 8,
+  "checkpoint_every_updates": 500,
+  "hpc_cuda_ownership_helper": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-release-26/source/scripts/cuda_ownership.py",
+  "hpc_cuda_ownership_sha256": "578d2b6c9453ad14ce6778d306aa6c1d926acb442dcf8ae9f9a75bccc6b2e3cb",
+  "microbatch_sizes": [
+    128,
+    64
+  ],
+  "cuda_requirement": {
+    "name_contains": "V100",
+    "minimum_gib": 30,
+    "maximum_gib": 34
+  }
+}

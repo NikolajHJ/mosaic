@@ -38,6 +38,8 @@ NEW_EXECUTABLES = {
     "scripts/hpc/chemistry_valid_reference_campaign.py",
     "tests/test_chemistry_valid_reference_training_policy.py",
     "tests/test_chemistry_valid_reference_adoption.py",
+    "scripts/hpc/check_chemistry_launch.py",
+    "tests/test_chemistry_launch.py",
 }
 
 
@@ -97,6 +99,22 @@ def compare_source(old_release, new_release, old_files, new_files):
         after, new_constants = parts(new)
         _check(old_constants == new_constants, "Adoption changed module constants: " + name)
         for function, body in before.items():
+            if (name == "src/latentmol/chemistry_continuation.py" and function == "main"
+                    and after.get(function) != body):
+                # Permit exactly the CLI applicability correction, not arbitrary
+                # changes to main or the numerical training implementation.
+                original = next(n for n in old.body if isinstance(n, ast.FunctionDef) and n.name == "main")
+                expected = deepcopy(original)
+                predicate = ast.parse('plan["protocol"].get("failure_guidance") is not None', mode="eval").body
+                matches = [n for n in ast.walk(expected) if isinstance(n, ast.If)
+                           and ast.dump(n.test) == ast.dump(predicate)]
+                _check(len(matches) == 1, "CLI readiness correction has no unique original boundary")
+                matches[0].test = ast.parse('plan["protocol"].get("failure_guidance") is not None '
+                    'or plan.get("short_continuation") is not None '
+                    'or plan.get("valid_reference_continuation") is not None', mode="eval").body
+                _check(after.get(function) == ast.dump(expected, include_attributes=False),
+                       "CLI correction changed more than readiness applicability")
+                continue
             _check(function in allowed or after.get(function) == body,
                    "Adoption changed a nonmetadata function: " + name + ":" + function)
         _check(set(after) - set(before) <= allowed, "Adoption introduced an undeclared function: " + name)
@@ -130,6 +148,9 @@ def _terminal(source_root, job, archive_sha, manifest_sha):
 
 def _build(plan):
     """Derive additive receipts only after full authentication of the old proof."""
+    if "epoch45_extension" in plan:
+        from .chemistry_epoch45_extension import build_adoption
+        return build_adoption(plan)
     from .chemistry_valid_reference_training_policy import validate_valid_reference_continuation
     marker = validate_valid_reference_continuation(plan)
     _check(marker is not None, "Only explicit validated-reference training can adopt this proof")

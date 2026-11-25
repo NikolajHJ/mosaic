@@ -1,0 +1,68 @@
+{
+  "status": "passed_scoped_cpu_regression_not_native_adoption",
+  "policy": "gradient-validation-policy-v1",
+  "date_utc": "2026-10-30T11:40:10.086921+00:00",
+  "job_id": "29853643",
+  "archive_sha256": "ed5a840152df2bf80486c3cc36a95497e315f806c028f5fbf57399a4d08b02b7",
+  "manifest_sha256": "d9a5a972bdd281c59899e0da9f1f77f38ded73002b644d3b2b34daaf1d5e728a",
+  "tests": {
+    "dbmol": {
+      "tests": 292,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "mosaic": {
+      "tests": 251,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "environment": {
+    "dbmol": {
+      "python": "3.11.9 (main, May 16 2024, 07:14:35) [GCC 12.3.0]",
+      "modules": {
+        "torch": "2.5.1+cu121",
+        "numpy": "1.26.4",
+        "rdkit": "2024.09.6",
+        "pytest": "8.3.5"
+      }
+    },
+    "mosaic": {
+      "python": "3.12.11 (main, Jun 12 2025, 18:52:34) [GCC 14.3.0]",
+      "modules": {
+        "jax": "0.11.1",
+        "equinox": "0.13.8",
+        "numpy": "2.5.3",
+        "pytest": "9.0.3"
+      }
+    }
+  },
+  "source_unchanged": true,
+  "storage_checks_passed": true,
+  "raw_assets_verified": 17,
+  "result": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\gradient-policy-validation\\20261030-attempt006\\snapshot-1793360450384490165\\result\\result.json",
+  "verification": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\gradient-policy-validation\\20261030-attempt006\\snapshot-1793360450384490165\\verification.json",
+  "new_native_model_qualification": false,
+  "existing_jobs_modified_by_this_task": false,
+  "production_restarts": 0,
+  "scientific_settings_changed": false,
+  "legacy_replay_retained": true,
+  "policy_files": [
+    "docs/GRADIENT_VALIDATION_POLICY.md"
+  ],
+  "result_sha256": "ea56404e24bf49ca82375576f1e15f5f8f6fa577975fbe6a3c831e6ab2510cbf",
+  "outer_scheduler_status": "DONE",
+  "outer_scheduler_evidence": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\gradient-policy-validation\\20261030-attempt006\\snapshot-1793360450384490165\\metadata.json",
+  "post_validation_formatting": [
+    {
+      "file": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\mosaic\\tests\\small_molecule\\test_small_molecule_gradient_checks.py",
+      "change": "CRLF to LF only",
+      "AST_identical": true,
+      "tested_sha256": "fa0a137e85139c8bce03391b1c42aa930e321f15b8e2e22e0fd13747a06856b8",
+      "formatted_sha256": "be6f9b2e48e75978ae0865ba6ba96bb494fa6f2d438743a9c4ad2a6e79e3b771",
+      "numerical_rerun_required": false
+    }
+  ]
+}

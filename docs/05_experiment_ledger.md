@@ -1,5 +1,914 @@
 # Experiment ledger
 
+## Direct-graph learned jump launch recovery, 25 November 2026
+
+Three BRD4 cohort jobs exited during shell setup before producing a training trajectory. The fourth remained queued. After reproducing the startup error, both repaired launchers passed shell and Python-module initialization on DTU. The recovery uses the original 112 founders and equal-budget protocols. DTU accepted Protenix jobs 30363468–69, Boltz2 jobs 30363470–71, and dependent report 30363472. [Recovery note and receipts](../experiments/latent-design/direct-jump/experiment.md#startup-recovery-on-25-november)
+
+## 19 November 2026 — aromatic and functional-group proposals in direct graph space
+
+Mosaic's local bond-matching rule produced 65 strictly screened aromatic outcomes across six initially nonaromatic MOSES validation founders in 768 attempts, versus zero after shuffling the same atom and bond rows independently. A separate donor-neighborhood rule on four eligible withheld founders yielded newly formed amides and nitriles. Scorer comparisons and the interactive CPU/GPU evidence are in the [experiment note](../../mosaic/experiments/brd4-jq1/protenix-random-chem/aromatic-formation/README.md).
+
+## Direct-graph jump comparison submitted, 19 November 2026
+
+The founder screen produced 112 distinct connected 25-atom BRD4 starting graphs.
+A six-founder CPU smoke exercised model fitting, all three held-out arms, the
+Stage 2 projection and score aggregation with mock native scores. DTU accepted
+Protenix LR 60 jobs 30113049–50, Boltz2 LR 1 jobs 30113051–52 and dependent
+report 30113053. Each scorer has 48 training and 64 held-out starts in two
+cohorts. All four GPU jobs were pending at the submission check.
+[Protocol, budget and receipts](../experiments/latent-design/direct-jump/experiment.md)
+
+## Large VAE occupancy collapse and recovery tests, 19 November 2026
+
+The third decoder refinement round moved mean hard prior count from 27.68
+to 49.83 on 256 shared vectors. A matched 24-update occupancy correction
+from the late checkpoint reduced cap hits from 125/128 to zero but left
+5/128 valid, compared with 7/128 before. Adding verified parent chemistry
+also removed the caps and gave 9/128 valid, versus 91/128 at epoch 46.
+A separate older-model founder handoff gave 144 distinct valid outputs per
+256 original attempts. [Mechanism, controls, recovery arms and next test](../experiments/vae/occupancy-collapse.md)
+
+## Large VAE at 79.47% of epoch 47, 19 November 2026
+
+Compared with epoch 46, the 47.68M checkpoint reconstructed more held-out
+PubChem molecules exactly (480/512 versus 395/512) and more held-out ChEMBL
+molecules (173/256 versus 79/256). On matched random vectors, raw argmax
+validity fell from 190/256 to 6/256, with 249/256 draws now filling all 50
+slots. The next segment was queued after a normal allocation boundary.
+[Validation panels, method and run record](../experiments/vae/large-corpus.md#epoch-47-after-47682960-real-molecules-19-november)
+
+## Aromatic rings in saved VAE and BRD4 searches, 18 November 2026
+
+RDKit audit of saved hard molecules. The epoch-45 Gaussian prior produced rings
+with perceived aromaticity in 236/7,541 valid argmax molecules on 10,000 draws,
+versus 9,808/10,000 aromatic held-out targets. In the three-seed adaptive study,
+31/259 valid nonaromatic branch starts later yielded an aromatic molecule.
+Of 1,550 distinct freshly scored molecules, 53 were aromatic and none ranked
+in the top 50 of a seed. Direct Mosaic Stage 3 produced zero five- or six-membered
+aromatic rings among 13,010 distinct valid molecules. All 187 distinct measured
+BRD4 compounds in the selected ChEMBL Kd panel contained an aromatic ring.
+[Inputs, methods, representative structures and scores](../experiments/latent-design/aromatic-rings.md).
+
+Direct-only follow-up on the selected nine-run Mosaic setting found no explicit
+double or aromatic bond in any of 4,500 post-update argmax states. A model-free
+paired scaffold retained a supplied phenyl ring through one connected projection.
+Independent categorical draws from the final and best-valid saved probabilities
+of eight paired control/teacher starts produced 0/8,192 connected, sanitized
+molecules. [Direct graph checks and receipts](../experiments/latent-design/aromatic-rings.md#direct-hallucination-without-a-vae).
+
+## Compact graph VAE batch benchmark, 17 November 2026
+
+The 435,400-parameter model completed a local optimizer step. Renumbered outputs
+received full exact graph credit, while a constitutional isomer with the same
+formula failed exact matching. [Protocol, command and V100 submission](../experiments/vae/compact-benchmark.md)
+cover the 256 and 512 comparisons on the 60M sparse view. Single DTU job
+**30099959** finished on 19 November. Both batches fit natively (13.31 and
+26.56 GiB peak allocated). At 256 and 512 respectively, real-only throughput
+was 242.84 and 258.24 real molecules/s. With 15:1 prior guidance it was 90.96
+and 74.41 real molecules/s on the same 4,096-example timing panel.
+
+## Frozen VAE checkpoint review, 17 November 2026
+
+A small local CPU evaluation compared epochs 45, 46 and the epoch-47 checkpoint at 27,811,440 real examples. The same 256 new Gaussian vectors gave 191, 190 and 7 valid raw argmax molecules, with 166, 157 and 1 valid categorical draws. All three reconstructed the same 64 historical MOSES validation molecules exactly. At the partial checkpoint 229/256 argmax molecules filled all 50 slots, compared with zero in each parent panel and 0.40% of the training membership. Of the 249 invalid decodes, 195 failed sanitization and 54 more failed connectivity. No training was performed. The retrieved final receipt from the independent raw-occupancy search also confirms 20,000 accepted updates, 3,327 count increases and 2,018 decreases. [Full review and reproducible checks](../experiments/vae/representation-search-review.md)
+
+## Tuned VAE learned-jump comparison verified, 17 November 2026
+
+The full 96-start comparison at LR 150 finished. With 16 relaxed scorer
+calls each, SGD plus a learned jump improved 86/96 starts, compared with
+84/96 for two SGD runs. The paired gain was +2.1 percentage points
+(95% interval −3.1 to +8.3), within the prespecified ±15-point margin.
+The learned and same-size random jumps each improved 81/96 starts. The
+downloaded combined report matched local recomputation across all four
+cohorts. [Results and evidence](../experiments/latent-design/protenix-vae/flow-tuned.md#full-results-verified-17-november-2026).
+
+## VAE learning-rate selection completed, 12 November 2026
+
+Recovered scoring and the full 32-start tuning panel selected LR 150 under the
+prespecified mean best fresh Protenix contact-loss reduction. Mean gains at
+rates 0.3/1/3/10/150 were 0.05595/0.12690/0.15701/0.16603/0.16786.
+Three tuned comparison cohorts completed. The remaining never-started A40
+cohort was relocated to V100 job 30017428 and report 30017430 was reconnected.
+The user requested monitoring through the final comparison. [Current record](../experiments/latent-design/protenix-vae/flow-tuned.md#monitoring-through-completion-12-november-2026).
+
+## VAE rate sweep partial result and recovery, 11 November 2026
+
+The completed 16-start tuning cohort's mean best fresh Protenix loss reduction
+was 0.05135 at LR0.3, 0.12365 at LR1, 0.16337 at LR3, 0.16407 at LR10, and
+0.16154 at LR150 under the 0.5 latent step cap. The second cohort completed
+optimization but failed during conformer generation. The scoped geometry
+exception fix passed 11 CPU checks. Fresh-score recovery29994084 and the
+replacement downstream chain are queued. The 32-start selection and tuned
+comparison remain pending. [Evidence and recovery](../experiments/latent-design/protenix-vae/flow-tuned.md#partial-sweep-and-scoring-recovery-11-november-2026).
+
+## Flow follow-up, three cohorts scored, 6 November 2026
+
+Jobs 29905200, 29905201, and 29905202 completed. The learned-jump portfolio
+found an improved hard graph on 51/72 starts versus 47/72 for two SGD runs
+at the same scorer-call budget. The matched random jump scored 46/72 and
+the learned jump scored 45/72. The A10 cohort remained pending and the
+primary analysis is incomplete. See the [interim readout](../experiments/latent-design/protenix-vae/flow-followup.md#interim-readout-6-november-2026-at-2041-cet).
+
+## Five-molecule Boltz-2 geometry gallery, 6 November 2026
+
+Allocated job29905474 completed four new 40-step seed17 soft-input diffusion
+samples on A100 and joined the existing V100 sample in one gallery. Counts are
+19, 21, 22, 22 and 25. Three graphs use saved probabilities and two use epoch45
+redecodes with their occupied slots fixed. Each new run retained its intended
+soft probabilities and passed the finite, frozen-state and input identity
+checks. Prediction5.67–6.29s after load, peak2.49–2.54GiB. The report shows
+aligned geometry, element and charge probabilities, and any-bond or typed-bond
+matrices linked to pair distances. [Results and report](../experiments/latent-design/soft-diffusion.md#five-molecule-gallery-6-november-2026).
+
+## Flow-inspired hallucination pilots completed, 6 November 2026
+
+Jobs 29903888 and 29903887 completed. Six training pairs were eligible for the
+latent students. Among three held-out starts with fresh baselines, seven-update
+SGD found five distinct improving hard graphs. The residual and four-step flow
+students found the same three each, including one improved start missed by SGD.
+The fourth held-out start failed baseline conformer embedding. Both repair
+methods repaired all three invalid inputs, but DeFoG made 48–54 bond label
+changes per case and worsened fresh loss on all three valid inputs. Six repair
+inputs came from one trajectory. See the [results and saved evidence](../experiments/latent-design/protenix-vae/flow-pilot.md#completed-results-6-november-2026).
+
+## Flow-inspired hallucination replay, 5 November 2026
+
+The saved BRD4 temperature panel had three improving arms among ten with a
+fresh-scored valid start. Two improved by update 7 and both found stronger
+edits later. The other first improved at update 14. These three arms represent
+two starts and a capped candidate panel. Matched learned-proposal job 29903888
+and repair job 29903887 were submitted. CPU replay verified the six eligible
+repair inputs from one trajectory. Structural search found connected witnesses
+for all three invalid inputs. See the [pilot note](../experiments/latent-design/protenix-vae/flow-pilot.md).
+
+## Invariant pilot completed with reconstruction failure, 3 November 2026 14:48 CET
+
+Native **29878344 DONE14:47:51**, start14:23:10; scientific elapsed1473.94s.
+Both1,000-update phases and comparison finished without finite/attached-path or
+frozen-parent errors. Epoch45 remains unchanged; no branch promotion, production
+resume or interpolation objective. Original/invariant-warmup/invariant-joint
+exact reconstruction:99.80%/0%/0% on2,048 validation molecules. All2,048 new
+reconstructions fail chemical sanitization. Initial128-molecule panel already
+had0% exact immediately after swapping the readout; short training did not
+recover it. Initialization/capacity/matching causes are not resolved.
+
+Shared10k prior argmax validity75.55%/75.55%/75.42%; categorical63.05%/63.05%/
+60.45%. Pilot-parent paired changes:argmax-0.13pp approximate95%CI[-0.94,+0.68]pp,
+categorical-2.60pp CI[-3.50,-1.70]pp, unadjusted. Warm-up prior identical by
+frozen-decoder construction. Final unique valid yield75.42%.
+
+256 molecules ×4 all-slot permutations: decoded-label consistency0%→100%; mean
+mu L2 shift29.3333→3.155e-6. New outputs remain invalid, so consistency is not
+reconstruction success. Strict posterior tolerance1020/1024 (99.61%), max mu/
+logvar differences2.027e-6/4.292e-6; do not relabel every check passed. Warm-up
+had878/1024 within tolerance, mean shift2.818e-6.
+
+Training update means0.383s warm-up,0.687s joint; matching0.244s/0.237s, SciPy
+backend. Final logged matching CE1.678 versus identity6.476 while validity stays
+zero. Both new checkpoints retained. Saved summaries downloaded with native/local
+hash verification; no reruns or numerical tests added by this status check.
+[Results and receipts](../experiments/vae/invariant-pilot.md).
+
+## Invariant encoder/matched-reconstruction pilot submitted, 3 November 2026 14:03 CET
+
+User authorized a short separate branch before interpolation training. Added
+opt-in invariant encoder pooling (no positions; sum/mean/count readout) while
+preserving ordered defaults and old checkpoint loading. Same 256 latent, GNN,
+four-round triangle decoder and graph schema. Copy compatible45 weights and
+initialize only the changed projection by averaging old per-slot weights.
+
+New bounded detached target matcher uses one bijection across atoms/charges/
+both bond axes. Identity incumbent, node/degree and bond-context assignments,
+bounded hard-label isomorphism witness; score proposals with exact global
+batch-normalized CE contributions, retain only improvements. Ordinary selected
+CE remains live; no graph repair or interpolation objective. Optional SciPy
+assignment with NumPy fallback, no environment installation needed.
+
+Pilot: 65,536 real training molecules, batch64; 1,000 encoder-only mean/logvar
+distillation/reconstruction warm-up updates with frozen decoder, then 1,000
+joint stochastic reconstruction/KL updates (beta0.001). Encoder LR1e-4,
+decoder1e-5; frozen decoder KL anchor weight0.25 on64 prior points/update.
+This architecture pilot omits the production chemistry-search/composition
+objective and real/random chemistry ratio; it is not a production continuation.
+Save/health every250updates. Compare original45, warm-up and joint checkpoints
+on2,048 validation reconstructions,10k shared prior points (argmax/categorical),
+256 molecules ×4 full-slot permutations and a small neighborhood panel.
+
+All29 focused CPU cases pass on the exact staged source, including the full
+tiny four-round triangle pilot/evaluation, invariance/legacy compatibility,
+matching optimality fixtures, live gradients, frozen reference and regression
+checks. CLI/shell/config checks pass. Native quality has not been measured yet.
+Archive SHA `a7f644e7d6568a77877623bae599249e34d85e2ea5eb45ab98b155c7d0065101`.
+Native **29878344 accepted/PEND**, gpuv100, one exclusive32GB V100,4CPU slots,
+4GB/slot reservation,4h. No callback, production restart or parent overwrite;
+checkpoint45/source/data hashes verified. [Protocol and receipts](../experiments/vae/invariant-pilot.md).
+
+## Epoch-45 interpolation completed; ordering confound, 3 November 2026 12:40 CET
+
+Native **29877725 DONE at 12:40:24**, scientific elapsed 124.62 s. Fixed
+selection found 128 disjoint pairs from 20k validation molecules (146 candidate
+edges, 140 examined, one MCS timeout); no threshold relaxation or output-based
+selection. Model/checkpoint unchanged, finite evaluation complete. Training
+stays paused; no loss, optimizer or automatic continuation introduced.
+
+Canonical argmax validity at 25/50/75% B: 127/66/127 of 128
+(99.22%/51.56%/99.22%); categorical 98.63%/44.53%/98.24%. Both canonical
+endpoints reconstruct exactly in all pairs. Matched argmax 128/126/124 of 128
+(100%/98.44%/96.88%), but only 38 pairs retain both correct endpoint identities
+after re-encoding B, 37 exact labels. High matched validity is not a clean
+interpolation improvement. The exact-label-endpoint subset has 37/37 valid
+interior argmax outputs, explicitly a conditioned diagnostic subset.
+
+Saved-only analysis: 30 identity-map pairs have 30 valid canonical midpoints;
+98 reordered pairs have 36. All 62 invalid canonical midpoints occur in the
+latter group: 58 sanitization, four disconnected. Ordering is a plausible
+contributor, not isolated causality between different molecular cohorts.
+Median canonical endpoint latent distance 4.884, matched 2.876; reordering B
+shifts its latent by median 4.725. No global smoothness/novelty/binding claim.
+
+Full summary, raw graphs, pair maps and standalone 21.3 MiB HTML downloaded
+with native/local hash checks. Report SHA
+`5a1182aa6e3cd4b84d6862e6c1a2a9c6be124a03604f2f07c1c85ea0976d4daa`.
+[Results, report and receipts](../experiments/vae/interpolation.md).
+
+## Frozen epoch-45 matched interpolation submitted, 3 November 2026 12:38 CET
+
+User authorized similar-molecule paths at 25%/50%/75% while keeping training
+paused. New reusable matching/evaluation/report modules select up to 200
+disjoint same-size/scaffold validation pairs, Tanimoto>=0.65, MCS>=80%, at
+most 2 element / 2 charge / 4 bond changes. Bounded MCS plus small residual assignment;
+same input identity after permutation. Two arms encode canonical B and
+atom-matched B separately, with endpoint graph/label reconstruction controls.
+Primary denominator includes all pairs; conditioned views are separate.
+Argmax plus 8 categorical draws per point/endpoints, conditional-category JS to
+known and decoded endpoint mixtures, chemistry/representation failures,
+composition/diversity and raw invalid labels retained. Saved-only HTML report.
+
+All 11 local CPU fixtures pass again on the staged source; CLI/shell checks
+pass. No native quality claim yet. Archive SHA
+`11641ab008c2e996ccdd4cb3b098e5388ae934687f1c8149e83456822b565724`.
+Native LSF accepted **29877725**, subsequently **RUN since 12:38:08 CET** on
+gpuv100: one exclusive GPU, 4 CPU slots, 4 GB per-slot reservation, 2 h.
+Python module and GPU routing passed startup; model/input readiness and native
+quality results are pending. Exact checkpoint 45/data manifest/GPU helper
+verified. No existing job/release/checkpoint changed, no training callback.
+[Protocol, config, code and receipts](../experiments/vae/interpolation.md).
+
+The earlier **29877255 completed DONE at 11:44:41**, scientific summary
+863.58 s. Fresh argmax validity 43/44/45: 75.49%/74.88%/75.41%; categorical
+64.35%/64.26%/63.30%; exact held-out reconstruction 99.84%/99.88%/99.87%
+(10,000 attempts per respective panel). Point estimates do not show a clear
+epoch-45 prior-validity gain. Full paired/neighborhood summary downloaded,
+SHA `f3c9829d5a3e6453248a4ddf4b430a0c7967d0456579a19ab828974bff23ba62`.
+[Complete comparison evidence](../experiments/vae/checkpoint-comparison.md).
+
+## Soft-diffusion bond-distance audit, 3 November 2026
+
+Read-only follow-up on the user's geometry concern:41 displayedP≥10% links,
+30 above50%,25 above90%. Link18–19 is5.163Å but only27.8% probable (modalNONE);
+10–18 is3.987Å at50.7% aromatic, while1–6 is0.983Å at97.9% presence. Thus weak
+links explain some apparent stretching, but the native output also contains
+compressed high-probability connectivity. No model rerun or causal attribution.
+[Audit and interpretation](../experiments/latent-design/soft-diffusion.md#follow-up-stretched-and-compressed-displayed-links).
+
+## Checkpoint comparison launch-only retry, 3 November 2026 11:30 CET
+
+Initial evaluation job 29877241 started 11:27:27 and EXIT 127 at11:27:30,
+before loading any models: nested `bash -lc` could not find the relative
+runner. The archive contains it; extraction/metadata-only shell replay finds
+it, so the precise batch-shell context loss is not reproduced. Replacement
+**29877255 accepted/PEND** removes the nested login shell and passes direct
+argv to the existing node-local launcher, matching existing VAE launches.
+Same archive SHA, config, three frozen checkpoints, budgets and checks; new
+output/control directory preserves failed evidence. VAE training remains paused.
+Native status subsequently confirms RUN since11:30:06; the Python module and
+allocated GPU routing pass startup, with no quality result/ready marker yet at
+11:30:56. This is a running evaluation, not evidence of completed GPU checks.
+[Current protocol and both attempts](../experiments/vae/checkpoint-comparison.md).
+
+## Paired VAE epochs 43–45 evaluation submitted, 3 November 2026 11:27 CET
+
+User requested a fresh comparison before any further training. Implemented
+`latentmol.evaluation.checkpoint_comparison`: sequential frozen checkpoints on
+the same 10,000 standard-normal vectors (five fresh seed blocks), argmax plus
+one categorical draw each, 10,000 validation reconstruction molecules and
+perturbations around 1,000 encoded molecules plus 1,000 prior vectors. Four
+directions × four scales (0.01/0.05/0.1/0.2); posterior perturbations scale by
+each checkpoint's std, prior perturbations use standard-normal units. Raw hard
+graphs retained without repair/filtering. Chemical/representation failures,
+connectivity, sulfur, diversity, exact reconstruction and paired differences
+reported separately; neighborhood uncertainty clusters by anchor. The final
+test split is untouched; validation data may inform subsequent research.
+
+Five local CPU fixture tests pass, repeated against the exact packaged source;
+CLI help and shell syntax pass. Read-only HPC checks authenticate all three
+checkpoints, dataset manifest and pinned GPU-routing utility. Source archive
+SHA `3daab857d33c997b6d1a1556a27e6c1d0562054bceb11dad92c1e8d6b80b31b3`.
+Native LSF accepted **29877241**, initially PEND on `gpuv100`: one exclusive
+GPU, four CPU slots, 4 GB per slot reservation, four hours, no training callback.
+Native quality results are pending. Existing jobs/releases/checkpoints remain
+unchanged, and VAE training is paused at 45.
+[Protocol, commands and receipts](../experiments/vae/checkpoint-comparison.md).
+
+## Native Boltz-2 diffusion from soft chemistry, 3 November 2026
+
+Separate job29876935 DONE: one structural-checkpoint sample,40 diffusion steps,
+seed17, zero recycles, no hard-chemistry steering. Used the same saved22-slot
+source120a004 graph at225 via continuous element/charge and expected typed-bond
+mapping, without argmax or chemistry conversion. Native diffusion generated
+new coordinates: soft7–21 link88.4% now1.546Å versus reference13.771Å; ligand
+RMSD5.31Å after receptor fit. Closest pair0.983Å and a greater-than50% link3.987Å
+remain; this does not certify chemical validity or binding. Inference5.48s,
+total67.23s, peak2.49GiB V100. Finite/shape, consumed-soft-feature, frozen-version,
+input-identity and download-hash checks passed.40 native denoised estimates saved;
+rotatable final/reference/intermediate view and browser QA passed. No changes to
+other jobs, callbacks, caches, checkpoints or sealed sources.
+[Question, exact plan, native results and visualization](../experiments/latent-design/soft-diffusion.md).
+
+## Soft-molecule 3D inspection, 3 November 2026
+
+Extracted saved Boltz-only VAE soft graphs at0/100/225 from the historical
+source120a004 trajectory onto its exact SHA-matched22-slot fixed reference
+pose. No decoder/scorer calls, HPC operations or changes to source artifacts.
+Coordinates stay fixed as chemistry changes; slot9 at225 is53.9%N/45.9%C,
+and the7–21 link has88.4% bond probability across13.77Å of the carbon-chain
+scaffold. This is an input diagnostic, not a new geometry prediction.
+Original run stalled at225/500; endpoint argmax invalid, fresh pose confirmation
+not run. Rotatable view/browser checks passed at desktop and320/360px with no
+runtime errors. [Question, command and artifacts](../experiments/latent-design/geometry-inspection.md).
+
+## First VAE/Protenix 50k completed, 3 November 2026 09:30 CET
+
+Queues reopened. The 200-update pilot and independent 20-update pilot at
+chemistry weight 10 both passed. The callback submitted main 29875634:
+native DONE at 08:38:04 CET (start 02:43:12). Callback 29875635 also finished
+and saved `completed_50000`. All 50k updates finished in one allocation,
+21,234.39 s (5.90 h), 0.42455 s/update. All finite/shared-graph/frozen checks
+pass. Exact completed epoch-45 input SHA: `5c4946c1...1302be`. No new model
+calls were made for this saved-result analysis.
+
+Initial relaxed contact score 0.151316, final 0.245647; maximum 0.345866 at
+update 27 with valid argmax. Temperature changes 0.7→0.4 confound a fixed-condition
+comparison; these are relaxed surrogates, not hard affinity predictions.
+Final raw graph valid, 25 atoms, differing from initial by 4 element labels,
+0 charges and 12 unordered bond labels. There were 50 distinct valid SMILES
+along the trajectory; novelty/synthesis/binding are not established. Valid raw
+source states: 16,289/50,000 (32.58%); remaining 33,711 accepted repair targets,
+zero censored; only 4 bounded steps. Phase validity: 3.73% before 20k, 13.95%
+during 20–30k, 70.74% after 30k. Coefficient/cooling/noise change together;
+no isolated causal claim. Main HTML generated and 154,978,978 bytes downloaded
+outside OneDrive with matching SHA; inputs and raw invalid states retained.
+[Outcome, terminal proof and report](../experiments/latent-design/protenix-vae/README.md).
+
+## All listed queues administratively inactive, 2 November 2026 20:56 CET
+
+User asked whether the Protenix pilot could move to another active GPU queue.
+Read-only `bqueues` inventory shows every listed queue Open:Inact, including
+V100/A100/L40S/A40/A10/H100 and CPUhpc; detailed standard GPU/CPU queue status
+isOpen:Inact_Adm. There is no active alternative; no migration, cancellation,
+source change or duplicate submission performed. Pilot29873719/callback29873720
+remain queued. Open submission does not mean jobs can start; no reopening ETA
+in scheduler output. [Native audit](../outputs/hpc-results/source157-vae-protenix-latent-attempt001/queue-audit-1793649397288293500.json).
+
+## Epoch45 completed; Protenix queue inactive, 2 November 2026 20:53 CET
+
+Native29871778 DONE18:48:17CET, launcherreturn0; completed6,596 updates at296820.
+Final18 health checks and both terminal repair checks pass, anchors unchanged.
+CheckpointSHA5c4946c15515e70bd01281eea7b74693c18598c4b47f6724fcc9898deb1302be.
+Fixed raw/strict/unique769/1024 (75.10%) versus44's759/1024 (74.12%),+0.98pp;
+exact/valid reconstruction256/256, expected sulfur1.525%. Training35,898.02s
+(9.97h) versus44's9.94h: no material end-to-end speedup despite preliminary
+sparse timing improvement. This is one continued epoch, not a matched causal
+comparison of target builders.
+
+VAE callback29871779 PEND:administrator-inactiveCPUqueue. Protenixpilot29873719
+PEND:administrator-inactiveGPUqueue; prerequisite itself succeeded. No native
+Protenix results or main50k yet; jobs left unchanged rather than bypassing queue
+administration. [Metrics](../outputs/hpc-results/source157-vae-protenix-latent-attempt001/status-1793649179553656800.json),
+[terminal proof and reasons](../outputs/hpc-results/source157-vae-protenix-latent-attempt001/terminal-check-1793649216712916700.json).
+
+## Epoch45 near completion; Protenix waiting, 2 November 2026 17:59 CET
+
+Read-only scheduler/artifact check: VAE29871778 RUN, latest6,000/6,596 updates,
+all18 health checks pass. Fixed raw/strict/unique738/1024 (72.07%) versus44's
+759/1024 (74.12%); exact/valid reconstruction256/256, expected sulfur1.370%.
+No final checkpoint/result yet. Approximately1h remains if pace holds.
+Protenix pilot29873719 PEND explicitly because done(29871778) is unsatisfied;
+callback29873720 waits normally. No native Protenix result or main job yet,
+and no job/settings changes. [Native receipt](../outputs/hpc-results/source157-vae-protenix-latent-attempt001/status-1793638793077848500.json).
+
+## VAE/Protenix latent pilot implemented and queued, 2 November 2026 13:12 CET
+
+User approved the random-latent frozen-VAE/Protenix experiment, structural repair,
+chemistry1 through20k then geometric10 at30k, temperature0.7→0.4 over50k,
+binding-only latent-step-relative noise0.4→0 at30k. New reusable Torch/JAX VJP
+bridge preserves full occupied element/charge vocabulary, native128 expectations
+and bond presence, with original Mosaic geometry-off contact loss/key17. Fixed
+top25 slots are explicit count conditioning. No model training, diffusion,
+composition/occupancy/reference training anchors or second decoder introduced.
+
+Pilot200 plus independent20 updates atweight10 in one2h exclusive32GB V100
+allocation,8cores×4GB. Both discard their states; technical pass conditionally
+starts fresh50k, measured chunks≤24h, exact latent/RNG/global schedule resume.
+Raw invalid graphs/latents, losses, gradient norms/cosine, repair coverage,
+temperature/noise and sparse probabilities/targets retained; existing offline
+interactive HTML renderer extended for metadataJSONL. GPU routing is resolved
+from pinned existing Mosaic helper before model imports; inherited masks/MPS
+routes excluded. No running job, checkpoint or Mosaic source modified.
+
+85 local focused cases pass against exact frozen source; CLI/shell checks pass.
+Real44 CPU decoder with analytic scorer passed2 updates and generated HTML;
+this is engineering evidence only, not native Protenix or a45 result. Archive
+SHA2c3082c8d8b32ac162c6f29c13e00e6bc9d0f710de0a7ef35433607e61656216;
+planSHA6ee042ae34ac227b3b2251a86a4578116a548413060b6c89f55aad1459f2879f.
+Native submission **29873719 PEND** ondone(VAE45 job29871778), callback
+**29873720 PEND** onended(pilot). Native LSF GPU request confirms exclusive
+process/job exclusivity,mps=no,gmem30G. Full50k not yet submitted/native-tested.
+Local command-length and pre-submission extraction-name collisions are retained
+in receipts; safe staging then one actual pilot submission, old files untouched.
+[Pipeline, exact plan and receipts](../experiments/latent-design/protenix-vae/README.md).
+
+## Epoch45 recovery progress, 2 November 2026 12:34 CET
+
+Read-only status:29871778 RUN,2,500/6,596 updates (37.9%), all18 health checks
+pass. Fixed raw/strict/unique765/1024 (74.71%) versus44 final759/1024 (74.12%);
+exact/valid reconstruction256/256, expected sulfur1.352%. Last three panels
+766/756/765 show fluctuation rather than a sustained gain. Mean25 logged update
+samples5.248s; approximate finish18:30--19:00CET if pace holds. Native ring-finding
+warnings retained, no failure record, endpoint callback waits normally. No
+job/settings changes. [Native progress receipt](../outputs/hpc-results/source156-vae-epoch45-structural-attempt002/status-1793619267942003000.json).
+
+## Exclusive recovery running, 2 November 2026 09:22 CET
+
+Attempt002 probe29871688 DONE:32 updates, all18 health checks and both repair
+checks pass. Callback29871689 DONE automatically submitted epoch45 job29871778,
+RUN since08:48:20CET on n-62-18-9 with effective exclusive_process and job
+exclusivity. Earlier reservation estimate changed; endpoint callback29871779
+waits normally. Original44 restored, identical source/policy, probe discarded.
+Latest400/6,596 updates:768/1024 raw/strict/unique validity (75.00%) versus44's
+759/1024 (74.12%),256/256 exact/valid reconstruction, sulfur1.484%; all18 health
+checks pass. Early outcome only; no sustained improvement or completed45 yet.
+No job/settings changes in this read-only check.
+[Native receipt](../outputs/hpc-results/source156-vae-epoch45-structural-attempt002/status-1793607758442790100.json).
+
+## Administrator kill and exclusive VAE restart queued, 2 November 2026 08:24 CET
+
+User supplied HPC-support email about terminating jobs for GPU exclusivity and
+asked to ensure VAE continues. Native history confirms29866013 TERM_ADMIN:
+KILL requested1Nov23:52:27, EXIT13023:52:36. VAE's actual GPU request already was
+exclusive_process with j_exclusive=yes. Last panel at2,900 updates passed all18
+checks:754/1024 raw/unique validity,256/256 reconstruction. Incomplete45 and its
+diagnostic remain preserved; no partial checkpoint is promoted.
+
+Rehashed authentic44 SHA637745ad...0683, source archive and controller; native44
+terminal proof still passes. No live VAE writer found. Reused exact source156
+archive and controller with attempt002 output/control paths and job prefix only;
+all loss/sampling/optimizer/structural settings and checks unchanged. Native
+submission08:23CET:32-update probe29871688PEND, callback29871689PEND, automatically
+queues full45 after pass. Both GPU stages use exclusive_process:j_exclusive=yes;
+probe4h/full24h,16cores×4GB,80GB A100. No other jobs changed.
+Study SHAce78967853aa5b14e7db4c19f4e967156a777287501d1e30da7ad1929c27f1e5.
+[Actual config, native evidence and receipts](../experiments/vae/README.md).
+08:25 native scheduler check: recovery probe still PEND for insufficient CPU
+affinity units,12/16 slots reserved; estimated no earlier than3Nov07:49:43CET.
+Estimate may change. Callback dependency is correct; no attempt002 GPU checks
+have run yet.
+
+## Epoch44/45 interim validity and speed, 1 November 2026 21:28 CET
+
+Read-only comparison of saved panels/logs; epoch45 RUN with latest panel at
+1,200/6,596 updates. Raw/strict733/1024 (71.58%) versus epoch44 final759/1024
+(74.12%), a 2.54pp decline. Epoch45 has fluctuated up to782/1024 (76.37%);
+no sustained gain established. Exact/valid reconstruction256/256, all18 checks
+pass, no representation failures; sulfur1.455% versus1.400%. Original health
+baselines are retained, so passing does not imply beating epoch44.
+
+Twelve matching logged indices100--1200: update mean5.472s→4.815s (12.0% lower),
+search/teacher mean3.546s→2.822s (20.4% lower), prepass1.138s→1.182s. Overlapped
+components are not additive; separate A100 nodes/epoch batches and sparse logs
+prevent isolated causal or full-epoch speed claims. No settings/jobs changed.
+[Comparison and panel receipts](../experiments/vae/README.md).
+
+## Structural epoch45 running, 1 November 2026 21:26 CET
+
+Read-only confirmation: job 29866013 RUN on `n-62-18-12`. Actual epoch-45
+handoff restores the authenticated epoch-44 checkpoint and selected structural
+proposal policy. Latest panel at 291424 absolute updates (1,200/6,596 this
+epoch) passes all 18 health checks; endpoint callback waits normally. No final
+epoch result or changes to jobs/settings.
+[Native receipt](../outputs/hpc-results/source156-vae-epoch45-structural-attempt001/confirmation-1793564791141773800.json).
+
+## Structural probe passed; epoch45 queued, 1 November 2026 19:18 CET
+
+Probe29865924 completed all32 updates with all18 final health checks, both
+repair checks and unchanged frozen anchors. Strict/raw prior validity765/1024
+(74.71%), exact/valid reconstruction256/256; mean5.153s/update, conservative
+12.15h epoch projection with existing margin. Probe updates are discarded.
+Corrected callback29865925 succeeded and submitted epoch45 job29866013 at12:13
+CET, plus endpoint callback29866014. Training is stillPEND: CPU slots reserved,
+physical GPU unavailable; gpua100 Open:Active. No training-level outcome yet,
+and no jobs/settings changed in this read-only check.
+[Compact probe/queue receipt](../outputs/hpc-results/source156-vae-epoch45-structural-attempt001/probe-passed-epoch45-pending-1793557117710871800.json).
+
+## Structural GPU probe started, 1 November 2026 12:12 CET
+
+Read-only native status: 29865924 RUN on `n-62-18-8`; launcher reports ready
+after 72.89s. Actual handoff restores saved epoch 44 at 290224 updates, AdamW
+moments/RNG, 0.125 displacement and the configured structural proposal policy.
+All 18 early-health checks pass after the first 10 updates. No terminal
+32-update result yet; callback 29865925 waits normally and full epoch 45 is
+not started. No job changes. [Native receipt](../outputs/hpc-results/source156-vae-epoch45-structural-attempt001/progress-1793531519891019000.json).
+
+## Epoch45 structural adoption and callback fix queued, 1 November 2026 12:06 CET
+
+User authorized fixing the scheduler guard and resuming from saved epoch 44 with the
+selected structural proposals. Source156 uses the same controller/worker with
+explicit completed-44 adoption. Status checks accept
+exact-job terminal history when live status lags/ages out, reject EXIT and DONE
+followed by restart, and retain proof/retry evidence. Native epoch-44 history and SHA
+were checked again; the 47,687,540-byte checkpoint is also backed up locally.
+
+New target builder only: sample_draws=0, connectivity/dense proposals and beam
+fallback. Loss formula/normalization/weights, real reconstruction/KL, anchors,
+composition, 1:2 counts, local 25% mixture/ramp/RNG, AdamW moments and 0.125 step,
+health/runtime checks and endpoint 45 remain. Full epoch 45 discards probe updates
+and starts from epoch 44 at 290224; the checkpoint and old control sources are preserved.
+All 44 focused local cases passed, then 44 against the exact snapshot; actual
+checkpoint lineage and CLI help calls passed. 659 prior archive members are unchanged;
+the imported grouped regularization body is byte-equivalent modulo newlines.
+
+Archive `fafb64d34a206bfce7b55d61f9e8f00fb6d96111034e0cc6e87e216df4a9461e`,
+study `80e9024ae1b5ddb90eace0c697e5152fffc832f078d2e97b6c5168d9fb446108`.
+32-update GPU 29865924 PEND with A100 slot reservation; callback 29865925 PEND on
+ended(probe). After a passing probe the fixed callback queues full epoch 45 (24h/23h)
+and its endpoint callback. No native probe pass or epoch-45 job yet; no unrelated jobs
+were changed. [Current study and raw receipts](../experiments/vae/README.md).
+
+## Epoch44 completed; epoch45 callback failed status check, 1 November 2026 11:53 CET
+
+Read-only helper status confirms saved44 at290224 updates, SHA
+`637745ad896b02fa9016d23f97a8826597373dc1f81953dc3ebaafb9c94d0683`,
+measured35,781.36s (9.94h). All18 final health and both terminal checks pass,
+anchors unchanged; fixed raw/unique759/1024 (74.12%) versus43's765,
+exact/valid reconstruction256/256, expected sulfur1.3995%. Native GPU29861136
+DONE04:41:35CET; callback29861137 EXIT1 at04:41:39 after `require_done` rejected
+that predecessor. Scheduler propagation is a plausible explanation, not proven
+because the transient status response was not saved. No45 receipt/output/job.
+No model or job changes/retries were performed by this status request. [Current
+note and raw receipts](../experiments/vae/README.md).
+
+## Structural discovery selected for new experiments, 1 November 2026
+
+User selected structural proposals after the frozen A*/beam comparison. Saved
+`experiments/chemistry-guidance/repair_structural.json` and made it the existing
+benchmark CLI's default; comparison configs remain explicit/reproducible. No
+loss, legacy factory default, live job/callback or checkpoint changed. Default
+CLI smoke (`--output outputs/runs/repair-proposals/selected-default-smoke001
+--seconds 30`, no checkpoint) repaired3/3 artificial fixtures in0.55s measured
+benchmark time; the dense-input ring warning remains recorded. [Selection and
+receipt](../experiments/chemistry-guidance/README.md). No training started.
+
+## Probability-aware A* implemented and benchmarked, 1 November 2026 10:43 CET
+
+User authorized an opt-in A* repair backend and frozen speed/coverage/cost
+comparison while retaining loss and running VAE training. Added grouped
+`guidance.repair_astar`, existing-factory `astar_config` and explicit tasks on
+the existing pool. Fixed atoms/charges/occupancy, once-per-bond edits and frozen
+probabilities; `g` uses the existing probability-regret cost. `h` sums the
+cheapest distinct remaining bond costs for `max(K-1,ceil(excess/6))` edits.
+Aromatic order1 is deliberately optimistic. Memory/check caps interrupt,
+never silently beam-prune; exact/global closest-repair claims remain false.
+
+Two frozen43 CPU panels,256 latents each at904017/140041, four threads,600s cap,
+actual19.59s/16.44s. Of123 invalid prior outputs: beam repairs122 at10.293s,
+structural123 at2.822s, A*radius3 repairs119 at4.056s (2.54x beam speed), A*radius128
+repairs114 at4.351s. On119 shared A*/beam successes, weighted cost2.7013→2.5457
+(-5.76%):four lower,115 tied,none higher. A* misses three cases at the20,000
+frontier cap and one by its3-edit lower bound; wider A* has nine memory cuts.
+Dense stress cases still favor coordinated structural pruning. These are
+serial CPU target-discovery results, not HPC epoch speed or VAE quality gains.
+
+Initial15 A* tests,100 overlapping repair/worker/factory regressions and final16
+A* tests passed. Tiny-space exhaustive admissibility/minimum-cost tests and
+Dijkstra controls included. Real decoder-to-z smoke is finite/nonzero with
+unchanged NLL and frozen model. No loss, running/pending job, callback, sealed
+release or checkpoint was changed; no HPC commands/submission were issued.
+[Assumptions, reproduction and raw results](../experiments/chemistry-guidance/README.md#probability-aware-astar).
+
+## Fixed-atom structural proposals implemented/benchmarked, 1 November 2026 09:06 CET
+
+User requested implementing the relatively easy chemistry/search improvements.
+Added opt-in grouped `guidance.repair_proposals`: degree-bounded component
+backbone, connectivity-preserving pruning/downgrades, optional fixed-atom bond
+sampling and shared-budget legacy beam fallback. Existing teacher/cache/async/
+pool/NLL reused through small opt-in hooks and factory keyword; historical
+protocol validators/defaults and live HPC campaigns are unchanged. No new
+partial loss, A* optimality claim, atom substitutions, training or submission.
+
+Frozen43 CPU benchmark,256 prior latents at each of904017/140041, four Torch
+threads,600s cap each, actual18.41s/15.47s:123 invalid prior cases. Old beam
+repairs122 at9.889s discovery; structural proposals123 at2.677s (3.69x faster),
+native candidate checks11808→1532. Of122 common repairs,119 target label sets
+match; mean weighted cost2.841→2.881. Sampling-only/combined are implemented
+but not preferred: greater target edits and runtime. Their four draws are
+explicit in the benchmark config; the shipped builder defaults to zero draws.
+Three artificial stress cases are separate/repeated: structural proposals
+repair complete C8/C16 in12/96 edits where the three-edit beam is censored.
+Dense-input approximate-ring warnings retained; final targets verified natively.
+
+Real frozen-decoder backward smoke: NLL0.01269474, finite nonzero latent norm
+0.14420043 on one common target; no parameter writes.138 repair/worker/async
+cases passed, then83 overlapping factory/classification cases passed; two
+JUnit formatting warnings. These are local engineering results, not training
+quality, closest-distance or HPC throughput claims. [Question, usage and raw
+results](../experiments/chemistry-guidance/README.md#fixed-atom-repair-proposals).
+
+## Frozen43 posterior/prior support investigation, 31 October 2026 23:45 CET
+
+User asked whether~75% validity is a VAE ceiling or out-of-distribution sampling.
+Ran `experiments/vae/diagnose_prior_support.py` locally on frozen43, four CPU
+threads,512 prior points each at seeds904017/140041,1024 training posterior
+components and256 disjoint validation molecules;600s cap each, actual54.64s and
+57.27s. No training, repair, checkpoint changes or new HPC jobs. Mean recon256/256
+exact/valid;512 tiny local perturbations all valid and identical to input;
+posterior samples499/512 valid,486 identical; prior763/1024 valid. Repeated
+posterior/local draws share256 source molecules. Raw output graphs retained.
+
+Prior failures:138 disconnected,123 sanitization, no representation/input
+failure. Valid/invalid radii15.988/15.981; radius AUC0.501. Finite1024-component
+posterior/prior density-ratio AUC0.475 is uninformative, not a certified OOD test.
+Same directions scaled0.75 yield747/1024 valid;1.25 yield791/1024, but benefit
+varies by seed; no new scale adopted. Four categorical draws rescue177/261
+invalid argmax cases at the same latent;2613/4096 individual draws valid.
+This costs sampling and does not guarantee arbitrary latent validity/novelty.
+Reconstruction ceiling on a small panel is distinct from prior generation;
+no intrinsic~75% VAE limit established. Density/permutation/ranking fixtures,
+schema/split checks passed; both evaluations confirm unchanged frozen weights.
+[Detailed note, command and results](../experiments/vae/README.md#are-invalid-prior-samples-outside-the-learned-molecule-distribution).
+
+## Queues active; launcher/GPU probe pass and epoch44 running, 31 October 2026 21:50 CET
+
+Read-only helper status and saved source155attempt002 results confirm launcher
+29860450 DONE,100-update GPU29860453 DONE, handoff29860454 DONE. Probe completed
+from the authentic43 SHA in677.56s, with frozen anchors unchanged and terminal
+search/coverage checks passed; fixed-panel validity765→754/1024, reconstruction
+256/256. This is a bounded engineering pass, not evidence of improved chemistry.
+Callback queued44 and retired the old held callback. Job29861136 RUN on80GB A100
+since18:43CET; latest saved panel at2,000/6,596 updates has all18 early checks
+passing,769/1024 raw Gaussian validity (75.10%, versus43's74.71%),256/256
+exact/valid reconstruction and1.4243% expected sulfur. Small panel fluctuations
+do not establish an improvement. No44 checkpoint/end-of-epoch result yet;
+29861137 waits normally and advances to45 only after successful44 checks.
+No scientific settings or jobs changed by this check. [Current experiment note](../experiments/vae/README.md)
+links the native result/history and queue/progress receipts.
+
+## VAE launcher recovered/resubmitted; all queues admin-inactive,31 October2026 13:41CET
+
+User authorized investigating file access, fixing the launcher/callback and
+resubmitting the probe before resuming from43. `/work3` is BeeGFS, whereas home
+is a separate NFS filesystem. Current correct-client target status isOnline/Good;
+the previously unreadable launcher and metrics now read in~2ms. Epoch43 SHA
+`0f5d4acc2520769de53fe788ef966a35b0b052490adb78dee90097436da53e08` matches
+remotely and in a local47,676,766-byte backup. Recovered43 fixed validity765/1024
+(74.71%), exact/valid recon256/256,sulfur1.4734%,all19 endchecks passed. The
+server/client cause of the earlier communication fault remains unconfirmed.
+
+Same runner/fresh source155attempt002: controls/receipts/logs on home, system
+Python, bounded scratch-reader children, archive-verified node-local scientific
+source and600s startup deadline. The model worker retains its source/input/anchor
+checks and adds only startup/result metadata. Aged-out source43 requires exact
+job-specific `bhist` DONE proof rather than a new dependency on a nonexistent
+LSF record. Probe and continuation bind the same43 checkpoint; failed probes
+preserve43 and leave continuation held. Existing loss/sampling/0.125 step,
+anchors and endpoint45 unchanged. The original held callback is not retired
+until a passing probe has queued its replacement; no old sealed bytes changed.
+
+Local23 focused cases passed,22 repeated against the packaged snapshot. The
+initial archive-path fixture and a preparation command missing LSF login-shell
+PATH are retained as failed attempts; both were corrected before submission.
+Archive`604bba349d7878ca8e9d472ff8a0c36780f22df40dc76a6b9a6465954d9b0324`,
+study`b3ad4bb5e7282d14ecf801b1f313d9e720133cbaf988e8158bb7b2dc7cf4db89`.
+CPU launcher smoke29860450PEND,100-updateGPU29860453PEND conditionalonCPU DONE,
+callback29860454PEND; original29849761PSUSP. **Every queue reports
+Open:Inact_Adm**, includinghpc/gpua100; administrative scheduling pause is the
+current external blocker, not invalid submission arguments. No native probe
+pass or new44 training yet. See [current note](../experiments/vae/README.md) and
+[raw recovery summary](../outputs/hpc-results/source155-vae-local-neighborhood-attempt002/recovery-summary-20261031.json).
+
+## Epoch43 completed; neighborhood probe failed before training, 31 October2026
+
+Read-only helper checks confirm original GPU29849760 DONE30 October20:11:48CET
+and passed saved epoch43 completion at283628, checkpoint
+`0f5d4acc2520769de53fe788ef966a35b0b052490adb78dee90097436da53e08`.
+The source155 probe29853841 ran31 October08:33--09:13CET but exited126 with
+`scripts/hpc/boltz_run.sh: scripts/hpc/boltz_run.sh: Communication error on send`.
+Only21MB maximum memory and no probe directory/result indicate no training
+result; this does not test the new loss/sampler. Callback29853842 ran09:14--10:49,
+then TERM_RUNLIMIT, leaving the old callback29849761 PSUSP. No new44 training.
+Hostname and scheduler work; larger Python/result reads and direct checkpoint
+metrics download timed out. A filesystem/launch issue is the working inference,
+not an established root cause. No new epoch43 validity figures could be fetched.
+No jobs, callbacks, assets or scientific settings changed by this status check.
+[Current note](../experiments/vae/README.md),
+[raw evidence](../outputs/hpc-results/vae-focused-status/status-summary-20261031.json).
+
+## Smaller-step/local-latent next-epoch handoff armed, 30 October2026 13:13 CET
+
+The user authorized introducing both changes at the next epoch. New source155
+keeps256 real/512 synthetic points, replacing up to128 synthetic points with
+detached local encoder neighborhoods (posterior-standardized RMS0.05,100-update
+ramp), and applies0.125 of each native AdamW displacement instead of0.25.
+The existing repair, original35 occupancy/original36 valid-reference anchors,
+composition objective and original health baselines remain. The failed neighbor
+valence term is absent. Gaussian evaluation panels remain Gaussian; simultaneous
+changes cannot identify which intervention caused an outcome.
+
+All177 focused local regressions passed against the packaged source, plus one
+separate driver-health regression. Initial test-run errors from the Windows
+pytest temporary directory and an inappropriate timing-equality assertion are
+preserved; the later health fixture required the complete historical protocol.
+These checks do not establish GPU/native derivative correctness or efficacy.
+Archive`e012ec856c4f29b132f7ad57346ee7b9b5156c20563e97b595cbbc63f104a4ef`,
+study`8f7e23b5e03cfdd084300372cb63d48512864eb2488f44d8ba68520fea288e77`.
+
+GPU probe **29853841 PEND**, A10080GB/16slots/4h; **29853842 PEND** waits normally.
+It will run100 disposable full-batch updates from authentic42. Source140's
+**29849760 RUN** continues epoch43 unchanged. Its next callback **29849761 PSUSP**
+is intentionally held for exclusive adoption; a recorded scheduler propagation
+delay was recovered idempotently from the hold intent without another stop.
+Passing probe+outerDONE queues44 from completed43, then45 serially in24h
+allocations; a failed probe restores the old callback. No new44 training or GPU
+probe result exists yet. Full source/checkpoint/callback bytes remain unchanged.
+[Snapshot](../outputs/hpc-results/source155-vae-local-neighborhood-attempt001/snapshot-1793362424215721000/status.json),
+[packaged tests](../outputs/implementation-checks/latent-neighborhood-sealed-001.xml),
+[protocol/code references](89_latent_neighborhood_continuation.md).
+
+## VAE epoch43 running and healthy, read-only30 October2026 12:33 CET
+
+Fresh helper collection confirms29849760 RUN; callback29849761 PEND normally.
+Latest saved panel12:26:15 isabsolute279256=2,224/6,596 (33.72%) into43.
+Raw/strict772/1024 (75.39%), versus completed42's782 (76.37%); exact/valid
+recon256/256, sulfur1.41499%, zero representation failures in that panel.
+All157 saved early-health panels/2,826 checks pass.42 remains latest completed;
+existing loss/1:2/guards/endpoint45 unchanged, local neighbor term not enabled.
+No numerical work, new submission or runtime/settings change in this check.
+[Exact snapshot](../outputs/hpc-results/source140-epoch40-to45-continuation-attempt002/snapshot-1793359995796733500/status.json),
+[VAE detail](80_epoch40_to45_continuation.md).
+
+## Local neighbor-loss pilot safety-stopped; do not adopt, 30 October 2026
+
+The user explicitly authorized a dedicated local environment, loss checks and
+small matched VAE training pilot, overriding HPC-only execution for this scope.
+Environment/source/input provenance is in
+[setup.json](../outputs/local-neighbor-loss/20261030-attempt001/setup.json) and
+[docs88](88_local_neighbor_loss_pilot.md). 147 final-source tests and a matched
+two-update GPU benchmark passed. Existing HPC jobs/settings/releases were not
+changed. Frozen source001 has 448 files, manifest SHA
+`61af99abee308a9f2cc169d28c9a1e668a2d21473b006ff6713ad5d9b4ed8d74`;
+both arms start exact epoch42 with inherited AdamW moments/quarter displacement,
+frozen35/36 anchors and existing chemistry/reference/JS/occupancy losses. The
+added arm alone uses neighbor weight 0.1 with 0.25/0.75 real/prior center means;
+16 real/32 prior points per update, microbatch 8, planned 100 updates per arm.
+
+The control completed 100; neighbor stopped at its declared safety check at10.
+The [reviewed saved-result report](../outputs/local-neighbor-loss/20261030-attempt001/pilot-report-reviewed/report.md)
+and [analysis](../outputs/local-neighbor-loss/20261030-attempt001/pilot-report-reviewed/analysis.json)
+independently verify common first ten row/prior/posterior RNG identities and
+identical initial classifications. Start/control10/neighbor10 raw validity is
+823/734/611 of 1,024; strict 822/733/611; exact and valid reconstruction 255/254/255
+of 256. Sanitization failures 119/118/61 and local-cap violations 75/89/36 decreased
+in neighbor, but native disconnected-category counts 82/172/352 increased.
+Independent graph traversal instead counts 91/188/366: sanitization-first native
+classification omits unsanitizable graphs from its disconnected category.
+All losses finite;
+scope exclusions 1 in each panel, zero unassessed graphs. Expected sulfur
+1.40337/1.50253/1.47951% is below population 1.68799%; sulfur inflation is not the
+main observed failure. The evidence supports bond-removal/connectivity objective
+imbalance at this coefficient/regime, not a general numerical-gradient bug.
+
+Control rescued 57/made 146 newly invalid graphs; neighbor rescued 52/made 264 newly
+invalid. Among unchanged atom/charge graphs, control deleted 186/added 152 edges
+(543 graphs); neighbor deleted 448/added 113 (491). Full bounded fingerprint/
+scaffold details remain in the analysis, without full-population diversity claims.
+An [independent saved-array topology audit](../outputs/local-neighbor-loss/20261030-attempt001/reviewer-audit.json)
+finds net edge losses 335/control versus 1,255/neighbor across 1,024 graphs;
+unchanged-occupancy losses 277/950 graphs versus 1,004/926. Directly comparing
+endpoints, 183 connected control graphs are disconnected under neighbor, versus
+five reverse transitions. This confirms real connectivity loss rather than
+only classification unmasking. Audit SHA
+`57fbf938c5d75ba0b06728448f9809a70c54b8c1abb8116a582bee6430e8a0d5`.
+The initial unreviewed report remains preserved; reviewed links are current.
+Control100's separate fixed 769/held-out 767 validity and 255 reconstruction are
+not compared against neighbor10 as matched endpoints. The interrupted arm has
+no terminal fresh/categorical panel, final full anchor digest or diagnostic
+checkpoint; missing checks are not declared passes. Preserve all attempted raw
+outputs and earlier dtype/CuBLAS/inventory failures.
+
+An explicit local CPU SO3 regression retained `O=S(=O)=O`, loss 1.0416001394528235e-10
+with fully assessed local caps/scope (`C:/Users/nikol/DBMol_Local/neighbor-loss-v1/so3-regression.json`).
+Reports only read saved graphs; no models reran for the analysis. Final status
+`safety_stopped_do_not_adopt`; no current training activation, further pilot,
+restart, new test or HPC change follows. Documentation-only finalization.
+
+## V100 continuation handoff preparation,30 October2026 11:30 CET
+
+The user authorized moving the epoch36 mapping campaign to V100. The completed
+source146 qualification showed that same-device checks pass but the A100 and
+V100 scores/gradient digests are not bitwise identical. A fresh snapshot found
+saved updates1,899/20/20, with one authenticated hard-score cache and one best
+graph in each trajectory. The existing A100 case002 job29851407 remained PEND;
+VAE job29849760 remained RUN.
+
+Independent source147 cache audit GPU29853377 was submitted to a32GB V100 and
+was PEND at11:30. It authenticates all saved inputs, checks each cached graph
+against its saved state, and measures V100 hard scores against the inherited
+scalar tolerances. It is not a production continuation, and no audit pass or
+migration is established yet. The safe controller/rebase, bounded resume and
+exclusive cutover must still be implemented and verified. No existing job,
+release, model, scientific setting, VAE state or production cache changed.
+[Handoff details](87_v100_continuation_handoff.md).
+
+## 32 GB V100 device qualification passed,30 October2026 11:24 CET
+
+The independent source146 attempt001 completed GPU29852732 successfully at
+10:31:25 after2,987.10s. All three native oracle gates, six original-start
+and three resume-point derivative gates plus fresh V100 production bindings
+passed; frozen models/context remained unchanged. Peak reserved memory was
+26.36 GiB, leaving5.37 GiB headroom against the declared4 GiB minimum.
+Fixed single-candidate means were12.87/13.38/13.38s for the three cases; these
+are point measurements, not a multi-trial trajectory or convergence result.
+
+The original A100 scores and gradient digests were not bitwise equal on V100;
+no A100 bindings or hard-score caches were migrated. Device qualification
+alone does not safely adopt an existing continuation. Original case002 A100
+job29851407 remained PEND and VAE29849760 RUN at11:24. Thirty-three downloaded
+assets were checked against remote SHA256 and size. [Qualification and terminal
+proof](86_v100_qualification.md). No user-facing production run or model was
+changed by this independent test.
+
+## 32 GB V100 qualification started,30 October2026 09:42 CET
+
+The user requested V100 checks. Independent source146 attempt001 uses the original
+source142 science, frozen epoch36 VAE, trained map/calibration, all three starts
+and immutable resume states at1,899/20/20 updates. CPU29852731 DONE with38
+fixtures passed and zero failures/errors/skips. GPU29852732 RUN in gpuv100 with
+an explicit32 GB selection. Hardware evidence records a Tesla V100-SXM2-32GB,
+CUDA12.1, PyTorch2.5.1 and compiled sm70. This establishes hardware startup,
+not a native/derivative/memory/runtime pass or migration readiness.
+
+The GPU plan retains original native and derivative tolerances, performs fresh
+same-device production bindings at the starts and saved resume points, and
+measures peak memory plus a single fixed0.0025 candidate. It does not adopt
+A100 score caches, change the original campaign or grant production migration.
+Original A100 job29851407 remained PEND and VAE job29849760 RUN at09:42 CET.
+See [V100 qualification](86_v100_qualification.md) and [verified CPU/hardware
+assets](../outputs/hpc-results/source146-embedding-v100-qualification-attempt001/early-20261030/integrity.json).
+
+## Unchanged mapping run completed first planned segment; next molecule queued,30 October2026 09:15 CET
+
+Exact allocated result, execution SHA, terminal logs and independent bhist
+confirm case001 GPU29846090 DONE29 October23:58:42 and callback29846091 DONE
+23:59:35. Case001 finished its requested1,879 additional updates from20,
+reaching1,899/10,000. This is the exact scheduled segment endpoint; no deadline
+stop or scientific stall occurred. Counts total1,899 applied updates,1,239
+improving and660 forced fallbacks, zero no-ops. Guards and full frozen/context
+checks passed; best-valid selection remains update0.
+
+Latest saved observation1,890 remains eligible and strict-valid. Learned loss
+8.34882049 fell to7.80366408 (about6.53%), while its hard graph identity and all
+hard fixed-context scores exactly match the initial molecule; hard total is
+8.3443440523. These are surrogate improvements without demonstrated decoded
+chemical/binding improvement. No fresh-native result or10,000-update completion
+is claimed.
+
+The existing round-robin controller submitted case002 GPU29851407 at23:59:25;
+it is PEND, with normal callback29851408. Case002 remains at20 pilot updates
+and requests2,628 additional updates; case003 also remains at20. After their
+segments the controller resumes case001, retaining the original10,000/case
+target and all checks. No job, scientific setting or VAE continuation changed
+in this read-only collection. [Verified terminal receipts](../outputs/hpc-results/source142-epoch36-guarded-embedding-long-attempt001/status-20261030-1793348203235586400/integrity.json)
+and [fresh scheduler/progress evidence](../outputs/hpc-results/embedding-long-status-1793348116554671200.json)
+bind the observations. [Campaign details](81_guarded_embedding_long_run.md).
+
+## Read-only SSH status: epoch42 complete, long Boltz case001 at1705,29 October2026 22:14 CET
+
+New unattended connector successfully retrieved scheduler and hash-verified
+saved VAE artifacts. Completed42 measured10.88h; fixed raw/strict782/1024
+(76.37%) versus41's741 (72.36%), exact/valid recon256/256, sulfur1.41675%.
+All19 end checks and134 saved early panels/2412 checks passed. Additional
+generation seeds improved to argmax792/811 of1024; raw categorical2732/2762
+of4096 (one representation failure in the first categorical panel). Existing
+callback queued43 as29849760, PEND job-slot limits5hosts; callback29849761
+waits normally. Latest authentic completed checkpoint42, endpoint45 unchanged.
+
+Long29846090 RUN with saved case0011705/10000;002/003 remain20 pilot updates.
+Observation1700 eligible/natural+conditioned strict-valid, learned loss
+8.34882049->7.80659526, hard identity/loss unchanged, best remainsupdate0.
+No demonstrated binding gain.1705 applied includes581 forced fallbacks and
+1124 improving steps, zero noops. Separate defog-combined-diagnostic29846730
+is PSUSP. No new submission, runtime/scientific change or VPN/SSH change.
+[Exact combined summary and evidence paths](../outputs/hpc-results/hpc-run-status-20261029-2214.json),
+[VAE detail](80_epoch40_to45_continuation.md), [long-run detail](81_guarded_embedding_long_run.md).
+
 Created 2026-09-26. Owner: documentation and experiment-history agent; HPC
 execution is coordinated by the root agent.
 
@@ -7,6 +916,214 @@ This file is the human-readable history for the active
 [`latent pipeline`](04_latent_pipeline.md). It records what was configured,
 executed, observed, failed, and decided. It must not turn a planned experiment
 into a completed result or omit unsuccessful attempts.
+
+## Boltz runtime probe completed: VAE/mapping cost is small,29 October2026 22:12 CET
+
+GPU29846982 completed16:07:28--16:27:09 CET on L40S, n-62-13-19; its saved
+result and independent bhist/terminal log establish DONE despite the aged-out
+live scheduler record. The isolated VAE/mapping forward took about20.6ms;
+forward plus VJP with actual native cotangents took about49ms. Both sampled
+points reproduced the original same-device scores and latent derivatives
+exactly, including zero split-VJP error, with frozen models/context unchanged.
+
+At fixed LR0.0025 and one candidate, mean direct DBMol updates took7.75s,
+raw latent updates8.02s and guarded latent updates9.06s. Guard/integrity work
+added roughly1s per fixed update; journal/state I/O was small. The existing
+run's previously audited8.92 candidate Boltz evaluations per update identify
+substantial extra work. These are timings at two points of one molecule with
+five repeats, not a fixed-step optimization trajectory or convergence proof.
+The few-percent direct/raw difference is near timing variation and cannot be
+called a precise net VAE overhead. Historical direct DBMol3.52s used a different
+context/software; bhist also records a16:11:04 GPU power/clocks event, so no
+clean-hardware or causal explanation of that remaining absolute gap is claimed.
+A100 certificate differences across devices remain reported only; no production
+scientific validation was adopted or waived.
+
+At22:12 CET, current long29846090 remains RUN with case001 saved1703/10000
+at22:12:26 and observations through1700; othercases remain20. Observation1700
+is eligible/strict-valid with exactly the initial hard identity and hard loss
+8.344344052296833. Learned loss7.806595263063064 is not a demonstrated molecular
+improvement. The next VAE segment29849760 and callback29849761 are PEND;
+continuation settings are unchanged. No job, runtime or scientific setting
+changed. All41 raw probe assets were downloaded with SHA256/size verification
+through the new connector. See [full probe results](83_embedding_runtime_probe.md)
+and [verified collection](../outputs/hpc-results/source144-embedding-runtime-probe-attempt002/verified-collection-1793308361109116200.json).
+
+## Neighbor-environment full allocated CPU qualification passed, 29 October 2026
+
+Source145 attempt004 **CPU29851083 DONE**: [terminal result](../outputs/hpc-results/source145-neighbor-environment-validation-attempt004/snapshot-1793306498640264200/result.json)
+records 138 PyTorch and 26 JAX passes, zero failures/errors/skips, all four stages
+return 0, elapsed 175.529s and `passed_validation_not_training_adoption`.
+[Six-case FP64 parity](../outputs/hpc-results/source145-neighbor-environment-validation-attempt004/snapshot-1793306498640264200/cross-framework-parity.json)
+passed unchanged absolute 1e-9 tolerance: maximum scalar error 4.440892098500626e-16,
+maximum raw-bond VJP error 8.326672684688674e-17; all assessments equal.
+[Corpus audit](../outputs/hpc-results/source145-neighbor-environment-validation-attempt004/snapshot-1793306498640264200/corpus-audit.json)
+retained 10,000/10,000 fully assessed local-cap/scope-accepted validation graphs,
+including 3,337 sulfur-containing molecules, zero exclusions. The
+[actual frozen40 VJP](../outputs/hpc-results/source145-neighbor-environment-validation-attempt004/snapshot-1793306498640264200/frozen-vae-vjp.json)
+was finite/nonzero (loss 0.007848198394372286, gradient norm 0.06656162440776825),
+with unchanged model state and no parameter gradients.
+
+The [byte audit](../outputs/implementation-checks/source145-attempt003-to004-static.json)
+confirms only fixture/docs/agent instructions/manifest changed, with no production
+or driver change. Earlier launch/fixture failures and retrieval gaps remain
+preserved. This qualifies the declared CPU implementation/coverage/gradient path;
+it establishes no optimization efficacy, sulfur reduction or training adoption.
+Existing VAE/native-model jobs, losses, defaults and safeguards are unchanged.
+[Full protocol and attempt history](85_neighbor_aware_chemistry.md). This ledger
+update ran no numerical test or HPC command.
+
+## Neighbor-environment JAX fixture plateau identified; attempt004 submitted, 29 October 2026 21:38 CET
+
+The working unattended connector retrieved source145 attempt003's
+[terminal result](../outputs/hpc-results/source145-neighbor-environment-validation-attempt003/snapshot-1793305764351307000/result.json):
+138 PyTorch passes/zero failures/errors/skips, all 10,000 validation graphs
+locally assessed and accepted (3,337 sulfur-containing), and actual frozen40
+latent VJP passed with unchanged model state. JAX ran 26 tests: 24 passed,
+two failed, zero errors/skips. The two FP32/FP64 failures required a nonzero
+derivative in an actually flat C-S SINGLE-versus-DOUBLE direction; analytic
+derivative was about 2.48e-17. Independent enumerated scalar/per-center equality
+had passed before that assertion. The six-case cross-framework probe did not
+run. Earlier interpreter and missing-layout failures remain preserved.
+
+Only the Mosaic fixture changed: the old direction is now required to be flat
+within 2e-12; the informative S-O DOUBLE-versus-TRIPLE direction retains the
+nonzero 1e-8 requirement and all finite-difference tolerances. Loss/policy/updater
+code, defaults, active jobs and scientific safeguards are unchanged. New
+source145 attempt004 has 662 members, archive
+`9b1e408a4bcb9794980c6685ee7c1e5511794a7d6765c44c279b754f50370068`,
+manifest `c00079b4c0c45dcc5c1e49ff405deeb547f0525db7b9692871f4f00f41161fda`.
+[Actual submission](../outputs/hpc-submissions/source145-neighbor-environment-validation-attempt004/stage-submit-1793306306292703900.json)
+created **CPU29851083**, four slots/16GiB total/60min wall/55min internal, no GPU.
+The full qualification repeats; no attempt004 pass or training adoption is
+claimed. [Detailed protocol and all attempts](85_neighbor_aware_chemistry.md).
+This documentation update executed no numerical test or HPC command.
+
+## Default unattended HPC transport documented in both repositories, 29 October 2026
+
+The user requested clear instructions for other agents. Root AGENTS and README
+now make `C:/Users/nikol/DTU-HPC/helper-v1/dtu-hpc.exe` the default for new local
+operator commands/transfers on Nikolajs_laptop (`nikol`, DTU `s234818`). Added
+[the current connection guide](HPC_CONNECTION.md), a pointer from the historical
+execution guide, and matching Mosaic agent/HPC navigation. Plain SSH/SCP calls
+still require an explicit local transport adapter; sealed releases, remote
+commands, scientific checks and historical receipts remain unchanged.
+
+Earlier helper tests and the user's ordinary-PowerShell confirmation are bound
+by `C:/Users/nikol/DTU-HPC/helper-v1/checks/summary002-path-repair.json`; the
+superseded AppData path is explicitly excluded because of MSIX redirection.
+This update was documentation-only: no connection, numerical test, model run,
+job submission/retry, runtime/configuration change or monitor resumption.
+
+## Neighbor-environment partial passes; JAX qualification retrieval blocked,29 October2026 evening CET
+
+Attempt001 **CPU29848286 EXIT1** after138 Torch fixtures passed (61 curated
+legitimate motif cases),10,000 validation molecules all passed local caps and
+the new common-organic scope (3,337 sulfur-containing), and the actual frozen
+epoch40 VAE produced finite nonzero latent gradients. Loss0.007848198394372286,
+latent gradient norm0.06656162440776825; decoder state unchanged and parameter
+gradients absent. JAX failed before numerical tests because its Python3.12
+interpreter inherited the module's Python3.11 PYTHONHOME.
+[Exact partial result](../outputs/hpc-results/source145-neighbor-environment-validation-attempt001/snapshot-1793277963521928700/result.json).
+
+Attempt002 **CPU29848305 EXIT** again passed138 Torch fixtures, corpus and
+frozen VJP, then JAX pytest collection failed on an omitted Mosaic layout
+helper. [Exact failure](../outputs/hpc-results/source145-neighbor-environment-validation-attempt002/snapshot-1793278140762905800/jax-tests.log).
+Both failures and all source releases are retained. No assertion or numerical
+tolerance was weakened.
+
+New attempt003 includes the layout router/migration metadata and unsets
+PYTHONHOME per child. Archive `ab86bb6346b283428b4d7df904a70014653cc2326f69e7fef010f3fea4b747fe`,
+manifest `043a0583faa6276e200a0e8088942a7a487d2eaae30209f03b7c75bfd2eca9ce`,
+662members; [submission](../outputs/hpc-submissions/source145-neighbor-environment-validation-attempt003/stage-submit-1793278218960542000.json)
+created **CPU29848323**. Its
+[later collection](../outputs/hpc-submissions/source145-neighbor-environment-validation-attempt003/collect-1793299042880108400.json)
+was rejected before remote output with SSH255/Permission denied(password),
+so execution and JAX/parity outcome remain unverified. A fresh SSH check was
+requested from the user; no further connection retries or VPN/SSH changes.
+
+[Byte audit](../outputs/implementation-checks/source145-attempt-history-static.json)
+confirms all new scientific modules/tests and Mosaic updater are identical
+across attempts; only launcher, packaging and docs changed. Current training,
+optimization, loss defaults and all scientific safeguards remain untouched.
+The feature is opt-in, with no overall cross-framework qualification or new
+training adoption claimed. [Detailed protocol](85_neighbor_aware_chemistry.md).
+
+## Neighbor-aware common-organic loss implemented; allocated qualification running,29 October2026 13:44 CET
+
+The user authorized context-aware sulfur/edge-case guidance and testing, then
+clarified that very rare sulfur environments may be excluded and the policy
+should remain simple. New opt-in `common-organic-neighbor-v1` adds a sulfur
+limit of four NON-fluorine heavy neighbors and fixed-neighbor residual valence
+capacity. Fluorine still consumes ordinary valence. Rare persulfuranes are
+explicit scope exclusions, not claims of chemical impossibility. Original
+charge-aware caps, phosphorus/carbon chemistry, aromatic limitations and
+native chemistry checks remain explicit. Atom/charge/occupancy/context choices
+are detached; the log-domain event loss differentiates bond probabilities and
+remains available for uncertain already-valid argmax graphs.
+
+PyTorch modules `chemical_environment_policy.py`/`chemical_environment.py` and
+Mosaic's corresponding JAX modules share exact portable policy bytes. Mosaic's
+trajectory opt-in preserves the absent-option path; existing VAE and molecular
+runs/defaults are unchanged. New [documentation](85_neighbor_aware_chemistry.md)
+records sources, excluded scope and normalization. Independent modularity/code
+review completed; local work was AST/bytes/metadata only.
+
+Immutable source145 attempt001 has656 members, archive
+`be299bcb78aa47de4cdc4f1b296d4f2d639788df292ee21118f37fee3565c609`, manifest
+`e83f527a3eb598a268f8c46f698ac8714bba3aed3fb760d427def781d5e2e6be`.
+[Submission](../outputs/hpc-submissions/source145-neighbor-environment-validation-attempt001/stage-submit-1793277772348699500.json)
+created CPU **29848286**, four slots/16GiB total/60min wall/55min internal, noGPU.
+It RUN since13:42:56 CET on `n-62-30-23`.
+[First snapshot](../outputs/hpc-results/source145-neighbor-environment-validation-attempt001/snapshot-1793277836246401500/status.json)
+confirms **138 Torch tests passed**, zero errors/failures/skips,22.797s stage.
+These include61 curated legitimate motifs, independent enumeration/VJP/FD,
+rule-table compatibility and sulfur/neighbor-gradient checks. The10,000 VAL
+row audit, actual frozen40 decoder VJP, JAX suite and six-case cross-framework
+parity remain pending; no overall qualification or scientific adoption follows.
+All failed/partial outcomes will be retained. No running training or optimizer
+settings were changed.
+
+## VAE epoch42 about49% complete,29 October2026 12:35 CET
+
+[Snapshot014](../outputs/hpc-results/source140-epoch40-to45-continuation-attempt002/snapshot-014/status.json)
+records GPU29845931 RUN and expected callback29845932 PEND. Latest saved panel
+12:26:01 CET, absolute273656, is3,220/6,596 (~49%) into42. Raw/strict739/1,024
+(72.17%) versus prior panel764 (74.61%); reconstruction exact/valid256/256,
+sulfur1.48285%. All100 early panels/1,800 checks passed. Epoch41 remains latest
+completed; the monitoring change is not a completed checkpoint comparison.
+No numerical tests, submissions, loss/runtime/settings or SSH/VPN edits occurred.
+
+## Pending queue inventory,29 October2026 12:23 CET
+
+[Read-only queue receipt](../outputs/hpc-results/pending-queue-1793273027467721400.json)
+records four waiting L40S GPU experiments: runtimeprobe29846982, Mosaic
+precision25 Protenix validation29847826, precision25 DBMol validation29847828,
+and chemistryqualification08 Protenix29847869. All await physical GPUs.
+Four CPU callbacks29845932/29846091/29847827/29847829 are PEND on their
+expected dependencies. DeFoG combineddiagnostic29846730 is PSUSP explicitly
+because it was suspended by the user while pending; it is not an eligible
+waiting experiment. Three independent GPU jobs remain RUN as recorded in the
+preceding live status. No submission, resume, cancellation, runtime setting
+or scientific change occurred in this read-only inventory.
+
+## Three GPU jobs currently running across DBMol/Mosaic,29 October2026 12:21 CET
+
+[Live account queue and persisted embedding progress](../outputs/hpc-results/live-queue-1793272868751196200.json)
+records **29845931 VAE RUN** (A100), **29846090 embedding long RUN** (A100),
+and separate Mosaic **29846882 protenix-defog-balanced-30000 RUN** (L40S).
+Runtime probe29846982 is PEND; continuation callbacks wait normally. The
+Mosaic statement is scheduler status only, not scientific outcome validation.
+Embedding case001 latest saved state567 at12:20:54 CET; latest observation560
+eligible/valid with unchanged hard identity. Cases002/003 remain20. These are
+persisted counters, not exact live progress; no new binding gain is established.
+
+[VAE snapshot013](../outputs/hpc-results/source140-epoch40-to45-continuation-attempt002/snapshot-013/status.json)
+at12:20:33 CET has latest panel12:16:12, absolute273556,3,120/6,596 (~47%)
+into42, raw/strict764/1,024 (74.61%), exact/valid reconstruction256/256,
+sulfur1.65681%. All99 saved early panels/1,782 checks passed. Epoch41 remains
+latest completed; endpoint45/scientific settings/safeguards unchanged.
+No numerical tests, new submissions, runtime changes or SSH/VPN edits occurred.
 
 ## Fixed-step runtime probe CPU passed; L40S GPU queued,29 October2026 10:41 CET
 
@@ -34,6 +1151,908 @@ preflight (incorrect local CPU status spelling) mutated nothing and is retained.
 Current long optimization29846090 and VAE29845931 remain RUN and unchanged.
 See [probe protocol and source seals](83_embedding_runtime_probe.md) and
 [authenticated dispatch summary](../outputs/hpc-results/source144-embedding-runtime-probe-attempt002/status-summary001.json).
+
+## VAE epoch41 completed and epoch42 automatically running,29 October2026 09:46 CET
+
+[Snapshot012](../outputs/hpc-results/source140-epoch40-to45-continuation-attempt002/snapshot-012/status.json)
+confirms first allocation completed04:04:40 CET. Actual epoch41 took41,545.531s
+(11.54h); completion's59,011.392s remains the conservative scheduling estimate.
+Checkpoint41 SHA `690193d3c0d3cd1059dc4cfec7a9ad4d3d50172a577f25dec0851e91ef50e966`,
+absolute270436. Fixed raw/strict validity741/1,024 (72.36%) versus40's753
+(73.54%), a1.17-point decline; exact/valid reconstruction256/256, sulfur1.52873%.
+All19 end checks and saved-observation integrity passed.
+
+Paired generation panels also declined: argmax774->766 and773->757 outof1,024
+perseed; categorical2,676->2,566 and2,599->2,590 outof4,096 perseed. These are
+separate from monitoring and do not establish monotonic improvement.
+[Full generation/diversity comparison](80_epoch40_to45_continuation.md).
+
+Automatic **GPU29845931 RUN** since07:02:21 on `n-62-18-8` restores exact41.
+Latest saved panel09:37:50 CET is absolute271956,1,520/6,596 (~23%) into42,
+raw/strict750/1,024 (73.24%), reconstruction256/256, sulfur1.45131%. All83
+early panels/1,494 checks passed; callback29845932 waits normally. Endpoint45
+and all scientific settings/safeguards remain unchanged.
+
+The independent [09:47 embedding collection](../outputs/hpc-results/source142-epoch36-guarded-embedding-long-attempt001/status-1793263617831468300.json)
+confirms pilot29845020 passed allthree cases at20 accepted updates and long
+allocation29846090 RUN. The separately saved
+[09:45 progress](../outputs/hpc-results/source143-embedding-handoff-recovery-attempt002/pilot-running-status001.json)
+records262 persisted updates for case001,20 for each othercase; this is not
+an exact live counter. Latest observed molecule remained valid but unchanged,
+without binding gain. The next ledger entry records the recovered pilot details.
+No runtime code, scientific settings, jobs or SSH/VPN configuration changed in
+these read-only collections.
+
+
+
+
+## Pilot passed; first long segment running,29 October2026 09:45CET
+
+Pilot29845020 completed its allocated execution06:52:22–07:40:42CET and
+reported `passed`. Allthree cases passed the native/start/production gates
+and completed20 accepted nonzero iterations each, zero no-ops. Each retained
+an eligible strict-valid best checkpoint. Full frozen-state/context checks
+passed for every case. The repaired callback29845021 successfully submitted
+the first longer allocation; the recovered automatic handoff is exercised.
+
+Long GPU job **29846090 RUN** since07:44:15CET on `n-62-18-12`, with serial
+callback29846091 PEND on its normal ended dependency. At09:45, case001's latest
+persisted state was **update262/10000**, saved09:45:02; its latest scheduled
+relaxed/hard observation was260 at09:44:16. Bothother cases remain at their
+completed20-update pilots while the serial campaign works on case001. These
+are saved counts, not an exact live counter. Observations continue every10.
+
+Case001's observed conditioned graph remains strict-valid and its starting
+identity/hard fixed-context score remain unchanged; best-valid selection is
+still at0. This is actual latent optimization progress, not demonstrated
+binding improvement or a completed10000 target. The existing objective,
+consistency/validity/runtime/quota/stall checks remain in force.
+
+[Exact snapshot and progress references](../outputs/hpc-results/source143-embedding-handoff-recovery-attempt002/pilot-running-status001.json)
+retain source/plan identities and completed pilot proof. Live pilot/old CPU
+scheduler records have aged out; saved successful allocated execution/result
+and repaired callback receipts remain, and the newlong job is explicitlyRUN.
+This was a read-only collection: no code, scientific settings, jobs, VPN or
+SSH configuration changed. The VAE continuation remains untouched.
+
+## Handoff repaired; pilot resubmitted,28 October2026 20:58CET
+
+The user authorized the saved-fit handoff repair and conditional10,000/case
+continuation. Source143 control-only attempt002 passed85 allocated fixtures
+(zero failures/errors/skips) and genuine original-package pilot CLI dispatch
+preflight. It handles the observed zero-returncode aged-out LSF JSON using
+independent exact-job successful terminal and execution/result proofs, while
+preserving original source142 numerical bytes, trained mapping, calibration
+and scientific checks. The good mapping fit was not repeated. CPU29845008
+DONE; readiness v2 SHA2470071046d191334a8e89bc1de63c203ae8614609c399d83d9f68736de07674.
+Pilot29845020/callback29845021 were submitted and are PEND in the20:58 snapshot;
+pilot awaits affinity units, no native/pilot/optimization result yet. Future
+callbacks use the authenticated repaired controller; full serial runs remain
+conditional on every original check. Source140 VAE/source141 recovery unchanged.
+Failed143001's75 fixture passes remain unpromoted because its actual preflight
+incorrectly forbade eager CPU Torch imports; immutable logs/XML and the later
+CPU-only/CUDA-free v2 correction are preserved.
+[Exact repair, limits and receipts](82_embedding_handoff_recovery.md).
+
+## Mapping fit completed; pilot handoff stopped, 28 October2026 evening CET
+
+Source142's saved GPU fit execution29839755 reports completed/return0 at
+16:39:52CET. All5000 updates completed; best4800, same-new-dev feature loss
+0.05108844->0.01481416 (-71.0%), audit0.01519852,1605/1653 audit rows meet
+all10 fixed dev caps. Original VAE/native bank/old bridge unchanged. This is
+feature fitting, not useful-gradient or binding confirmation. The callback
+29839756 EXIT1 at16:39:57 failed exact-name DONE scheduler validation before
+creating a transition or pilot intent; raw scheduler response was not retained.
+A no-waiver original-controller handoff retry also stopped before submission on
+scheduler-status-unavailable. Following SSH timeout/reset prevented terminal
+LSF/raw bjobs retrieval; the precise interface cause and outer job terminal
+state remain unverified. No pilot/10000-iteration trajectory started, no new
+jobs/settings/source/gate changes and no independent VAE/recovery change.
+[Exact limits and receipts](81_guarded_embedding_long_run.md#fit-worker-passed-pilot-handoff-stopped-collected28-october2026-evening-cet).
+
+## VAE epoch41 running; native recovery passed; long-fit handoff stopped, 28 October 2026 20:22 CET
+
+[VAE snapshot011](../outputs/hpc-results/source140-epoch40-to45-continuation-attempt002/snapshot-011/status.json)
+confirms **GPU29838765 RUN since16:20:45 CET**, `n-62-18-9`, all649 CUDA
+fixtures passed in105.06s with zero failures/errors/skips. Exact40 model,
+optimizer, RNG and frozen36 handoff passed. Actual trainer created16:27:12;
+latest saved panel20:14:23 atabsolute265956 is2,116/6,596 (~32%) into epoch41.
+Raw/strict validity754/1,024 (73.63%) versus epoch40's753 (73.54%); exact/valid
+reconstruction256/256; sulfur1.42309%. Earlier panels fluctuate, including one
+representation failure in the preceding panel. This is monitoring, not a
+completed epoch41 checkpoint or independent full-test result. Callback29838766
+waits normally; endpoint45 and all scientific settings/safeguards unchanged.
+All22 saved early-health panels passed, with all396 individual checks true.
+
+[Native recovery collection006](../outputs/hpc-submissions/source141-embedding-native-recovery-attempt002/collect-006.json)
+establishes **29838737 DONE15:33:57--15:47:33 CET**, `n-62-18-10`; terminal
+`passed_native_recovery`, all6 ordinary predictions and identity audits passed,
+zero failed/ineligible/unattempted. The ownership probe passed and coordinator
+remained CUDA-free. A stale progress file says five completed; terminal
+summary/result and saved LSF establish six. No optimization was rerun.
+Relaxed001/003 are valid but unchanged from their starts with exact zero fresh
+affinity delta; relaxed002 and all three learned terminal/best graphs are
+invalid. The engineering correction works; binding gain/superiority is absent
+in these saved candidates. [Interpretation](78_embedding_latent_comparison.md).
+
+[Long-fit collection](../outputs/hpc-results/source142-epoch36-guarded-embedding-long-attempt001/status-1793215369272490300.json)
+establishes **fit29839755 DONE16:23:53--16:39:52 CET**, `n-62-18-12`, all5,000
+updates, development loss0.0510884->0.0148142, beststep4,800, calibration passed,
+audit1,605/1,653 within every fixed cap, VAE/bank frozen. Existing exact
+[callback logs](../outputs/hpc-results/source142-epoch36-guarded-embedding-long-attempt001/callback-inspection-1793215376515856900.json)
+prove callback29839756 EXIT1 at16:39:57 on the exact-name/DONE predecessor
+guard, before pilot dispatch. Its actual scheduler fields were not logged;
+specific race/parser/name/state cause is not established. No pilot, derivative
+gate or long optimization result follows. Fit remains preserved. [Details](81_guarded_embedding_long_run.md).
+
+This status check changed no runtime code, scientific settings, jobs or
+SSH/VPN configuration; numerical models were not rerun.
+
+## Three corrected/guarded GPU studies still queued, 28 October 2026 13:58 CET
+
+Read-only [VAE snapshot010](../outputs/hpc-results/source140-epoch40-to45-continuation-attempt002/snapshot-010/status.json)
+at13:57:59 CET records **29838765 PEND**,12 of16 CPU slots reserved on
+`n-62-18-8`, insufficient processor-affinity units on one host,14,944 eligible
+pending seconds/zero ineligible. Its current **no sooner than21:19:19 CET**
+timestamp is provisional, not a guaranteed start. Callback29838766 waits
+normally. No CUDA/ownership result, actual segment or epoch41 exists.
+
+Read-only [native collection005](../outputs/hpc-submissions/source141-embedding-native-recovery-attempt002/collect-005.json)
+at13:57:48 CET records **29838737 PEND**,four slots reserved on the same host,
+affinity shortage on one host,15,220 eligible/zero ineligible seconds. No GPU
+artifact, ownership probe or native prediction exists.
+
+Read-only [guarded long-run status](../outputs/hpc-results/source142-epoch36-guarded-embedding-long-attempt001/status-1793192294889844300.json)
+at13:58 CET records **fit29839755 PEND**,four slots reserved on `n-62-18-11`,
+affinity shortage on one host,8,982 eligible/zero ineligible seconds.
+Callback29839756 waits on its expected dependency. Only the450-fixture CPU
+result exists; no new fit, calibration, pilot or latent-optimization result.
+
+Saved VAE2,041-pass and recovery59-pass CPU evidence and their exact checks
+remain valid despite aged-out live CPU scheduler records. No scientific job,
+runtime setting, SSH or VPN configuration was changed in this status check.
+
+
+## Guarded mapping long run CPU passed; GPU fit queued, 28 October 2026 11:29 CET
+
+The user authorized the larger guarded bridge experiment and clarified10,000
+iterations **for each** of the same three original36 starts (30,000 total).
+New immutable source142 attempt001 preserves target/context/pose/occupancy,
+DBMol coefficients/arithmetic, LR400/clip1/radius3/best_trial_v2/16trials, and
+adds independent mapping warm training, dev-only q99 consistency caps, strict
+hard-valid eligibility, common-hard-score best-valid retention, observations
+every10 and authenticated serial resumes. Original VAE/Boltz stay frozen;
+source140 continuation and source141 native-only recovery remain untouched.
+
+Archive `d2ac85ad644a94f3b5967537f1c777bb7318faf2a8507038888bc32728a0d805`,
+manifest `89dd0f43752a417cb4a4ab0658a4fba294eba72eb65fd5899036a42d8207c4f2`,
+plan `35adaf248e9011ce81a5bcd165d1897e97901864695a10d56fad70eebe63f70e`.
+CPU29839742/callback29839743 DONE:450 passed, zero failures/errors/skips,
+full stage71.155s, exact original VAE parity and three parent starts passed.
+GPU fit29839755/callback29839756 submitted and PEND at11:29CET, exclusive80GB
+A100/four slots/4h wall/3h50 internal; reservation on n-62-18-12 is not a start.
+No fit/calibration/pilot/native pass/latent updates or reliable ETA yet. The
+callback conditionally advances only after exact authenticated gates; stalls
+retain partial evidence and stop successors. Local work was AST/JSON/bytes
+only; all numerical work was allocated HPC.
+
+[Protocol and exact receipts](81_guarded_embedding_long_run.md#cpu-passed-gpu-fit-queued-28-october-2026-1129-cet).
+
+## Corrected VAE and native recovery remain queued, 28 October 2026 10:39 CET
+
+Read-only [VAE snapshot008](../outputs/hpc-results/source140-epoch40-to45-continuation-attempt002/snapshot-008/status.json)
+at10:39:51 CET records **29838765 PEND**,16 CPU slots reserved on `n-62-18-11`,
+job-slot limits on four hosts,3,056 eligible/zero ineligible seconds. Callback
+**29838766 PEND** waits on its expected dependency. No GPU artifacts, training
+segment, new CUDA/ownership result or epoch41 exists.
+
+Read-only [native collection004](../outputs/hpc-submissions/source141-embedding-native-recovery-attempt002/collect-004.json)
+at10:39:55 CET records **29838737 PEND**,four slots reserved on the same host,
+insufficient processor units/affinity on one host,3,348 eligible/zero ineligible
+seconds. No GPU artifacts, ownership probe or native prediction exists. The
+VAE's2,041 CPU passes/120 CUDA-only skips and recovery's59 passes/zero skips,
+with actual source/plan/launch/authentication checks, remain valid historical
+readiness evidence. Neither job has a reliable start ETA. This collection
+changed no runtime code, settings or jobs and did not rerun optimization.
+
+## Corrected VAE and native-only recovery CPU validated and resubmitted, 28 October 2026
+
+The user-authorized fixes are implemented in new immutable releases. The VAE
+observer/callback normalize string paths, and both workflows use a CUDA-free
+coordinator with serial CUDA owners. Deleting models or emptying allocator
+cache did not end the old parent's context under exclusive-process allocation.
+The corrected process boundaries include bounded child-group cleanup and
+mandatory real GPU ownership/native smoke checks. Scientific settings and
+thresholds remain unchanged; failed releases/results are preserved.
+
+**VAE source140 attempt002:** 657 members / 585 scientific, source archive
+`375272634d1836625e3d9a2bb8548e93f4cf4ac982ad1853fd0c621af8a344ef`,
+manifest `ac6b06edeff9ce6d35413d84890ee3738a68f517230ac06bd6345f6f86ca4d65`,
+plan `a794d3f7a9b3bcbcdc357aadb6feade06806a4692b08a65e7c3a0e8e0a9420f6`.
+CPU 29838695/after-CPU 29838696 DONE. Full CPU **2,041 passed, 120 CUDA-only
+skips,zero failures/errors**,302.19s; repair profile, source135/source138 adoption
+and actual generated CLI dispatch passed. The profile's inherited1:3 prose is
+not the training ratio: actual training remains 256 real/512 prior, 1:2.
+GPU 29838765/callback 29838766 were submitted at 09:48:55 CET and are **PEND**
+in [snapshot007 at 09:50:38](../outputs/hpc-results/source140-epoch40-to45-continuation-attempt002/snapshot-007/status.json),
+with job-slot limits on five hosts/expected callback dependency. Requests remain
+one exclusive 80GB A100 / 16 slots/24h scheduler/23h shared internal. Current CUDA,
+sequential ownership probes, exact40 handoff and generation baseline remain
+mandatory before epoch41; none has run in this new allocation yet. Exact epoch40
+resume through45, loss, anchors, optimizer/RNG and all guards remain unchanged.
+[Fixes, exact receipts and code paths](80_epoch40_to45_continuation.md#correction-cpu-validated-and-resubmitted-gpu-pending-28-october-2026-0950-cet).
+
+**Native source141 attempt002:** 616 members, archive
+`531c4113ba55148ac6e4549bc73cdfc4231f84663727e720f382f61892da9800`,
+manifest `5adfc8cb56897b001308b910c06f416c739d1c7a9c938355e8e93d3ef95b14ec`,
+plan `faca1ab5af193bd3a4cfc8f035c3e82a072b64528d0adbc24d04308a7c080523`.
+CPU 29838721 DONE: **59 passed, zero skips/failures/errors**,12.25s; full CPU and
+actual CLI parent authentication58.638s, finished09:42:35.590 CET. GPU 29838737
+submitted09:44:08, **PEND** in [collection003](../outputs/hpc-submissions/source141-embedding-native-recovery-attempt002/collect-003.json),
+waiting for CPU units/affinity on one host. One exclusive 80GB A100/four slots/
+16GB host memory/six-hour walltime / five-hour internal. No GPU probe or ordinary
+native prediction has passed yet. The exact saved attempt006 selection and six
+requests are reused, with zero optimization rerun; the first original request
+must succeed before the rest. No binding improvement follows from CPU readiness.
+
+Native attempt001 CPU 29838699 passed 52 cases but was not promoted: peer review
+found missing validation-receipt rebinding in the GPU adapter. New attempt002
+adds seven tamper checks and binds validation SHA/status/source/plan/JUnit.
+Attempt001's seal, CPU evidence and no-GPU outcome remain preserved.
+[Recovery mechanism, receipts and limits](78_embedding_latent_comparison.md#native-only-recovery-cpu-passed-and-gpu-resubmitted-28-october-2026).
+The [combined summary](../outputs/hpc-results/fix-resubmit-20261028-summary.json)
+records both corrected GPU submissions as **submitted, not GPU passed**.
+
+## VAE observer and fresh-native fixes authorized, 28 October 2026
+
+The user requested **“please fix and resubmit”** after the terminal status
+reported below. The VAE work is limited to the observer's str/Path interface
+and regression coverage of the real production observation boundary, followed
+by a new immutable release and allocated launch checks. The exact epoch40
+resume, endpoint45, loss, 1:2 sampling, frozen references, optimizer/RNG state,
+observations and every scientific, health and runtime safeguard remain intact.
+[VAE correction scope](80_epoch40_to45_continuation.md#observer-correction-and-resubmission-authorized-28-october-2026).
+
+The independent embedding work investigates exclusive-GPU ownership across
+the native prediction subprocess boundary and aims to reuse attempt006's
+saved selection and completed 300 updates. It does not rerun optimization or
+change candidates, native prediction settings, seeds, budgets or identity
+requirements. Separate correction/follow-up outputs must retain all original
+failed evidence. [Fresh-prediction correction scope](78_embedding_latent_comparison.md#fresh-prediction-correction-and-resubmission-authorized-28-october-2026).
+
+Implementation, check results and submissions are pending at this entry.
+Authorization alone is not a passed gate, a queued job or resumed training.
+
+## Overnight terminal results collected read-only, 28 October2026
+
+Source140 GPU29829875 ran02:44:35--02:49:37 CET on n-62-18-11. All631 mandatory
+CUDA fixtures passed, zero errors/failures/skips in96.51s. Startup then reached
+the additive epoch40 generation observer, which passed a checkpoint string
+to file_sha256 requiring Path: AttributeError ('str' has no attribute 'open').
+No trainer subprocess, training segment or epoch41 update exists. Epoch40
+remains latest. Callback29829876 failed02:49:41 on absent completion and
+submitted no successor. [Snapshot009 and failure details](80_epoch40_to45_continuation.md#terminal-startup-failure-after-cuda-passed-collected-28-october2026-0908-cet).
+
+Embedding attempt006 GPU29829828 completed27Oct17:44:25--21:48:58 CET on
+n-62-18-12. Three native-oracle/six pointwise start derivative gates passed,
+then all6x50 updates completed with frozen VAE/bridge/context state unchanged
+and zero recorded forward/backward errors. Relaxed final graphs valid2/3,
+both unchanged starting identities; learned-bridge final graphs valid0/3.
+All six fresh native requests failed CUDA busy/unavailable; zero successful
+predictions or eligible paired affinity comparisons. Terminal request completion
+is not a successful native validation. Full gate artifacts and saved HTML
+were copied with remote SHA/size checks; collector-truncated gate tails remain
+preserved. [Exact results and limitations](78_embedding_latent_comparison.md#attempt006-completed-chemistry-and-fresh-prediction-limits-collected-28-october2026).
+This status check ran no numerical work and changed no runtime/scientific
+settings/jobs; neither study was fixed or resubmitted during collection.
+
+## Historical payload and retired HOME offloads independently verified, 27 October2026
+
+The user authorized local offload of old models and removal of repositories
+other than DBMol/Mosaic. Full local proof passed15:27:40CET; guarded WORK3
+removal completed15:35:35 and independent verification passed15:36:54:
+131 unique inactive payloads/323 aliases,6,392,482,304allocated bytes
+(5.953463GiB),6,392,448,608logical bytes preserved locally. All selected paths
+are absent and durable unlink journal hash matches. Completion SHA256
+`dc8cc95c2458e99a23dd2c8a9a26c87e42b8611358ad1cb31e6410604e4f42f4`.
+Combined conservative allocation removed across WORK3/HOME is7,341,853,184bytes,
+6.83763361GiB; the separate [verified summary](../outputs/hpc-cleanup/20261027-history-offload/summary.json)
+binds exact receipts and is also byte-checked outsideOneDrive as
+`C:\Users\nikol\HPC_Archives\DBMol_exploratory\2026-10-27\cleanup-summary.json`.
+All138 protected hashes, authentic35/36/40, trained bridge/50 contexts,
+source140/independent embedding and all Mosaic are retained. The separate
+retired HOME `projects/relative-weight-models` archive is completely verified
+locally:481,607,680bytes,SHA256
+`b8f57d5573dfe077b100e24445f206b86cde94879bbe58ee72996445f63ea5ba`,
+6,950files/577directories/eight links. HOME removal completed14:42:54CET,
+reclaiming949,370,880allocated bytes/0.884170532GiB from HOME, not WORK3.
+Independent verification passed original-root/remote-transfer-archive absence
+and all138 protected hashes unchanged. Completion SHA256
+`131cbc5adeb3cb0bbb7ff1e168deb8387aa76a605476a9ebf2ec000eca06269a`.
+Backup location is
+`C:\Users\nikol\HPC_Archives\DBMol_exploratory\2026-10-27`, outsideOneDrive.
+All131 cold payloads are in `cold-models-history006/payloads`; its
+`restore-map.json` binds every original alias/hash/size and explains hard-link
+restoration. Both cold payloads and complete HOME tar remain recoverable.
+Immediate WORK3 quota is39.84/100GiB used,60.16free, versus45.80 before
+cold removal; exact removal bytes are independent of concurrent quota changes.
+The latest verified quota observation is15:39:36CET; do not call it current
+usage. The completed removals/independent verifications need no cleanup rerun.
+The guarded workflow stopped15:37:29CET on final read-only report001:
+duplicate `utc` in scheduler-report metadata raisedTypeError after all138
+protected hashes passed. No quota/category commands ran in that final audit;
+fresh category breakdown remains unavailable, completed removal/verification
+evidence remains valid. `completion-workflow001.jsonl` preserves each phase;
+no guard was waived or deletion retried.
+Corrected read-only audit002 retained15:39:36CET protected138pass and
+WORK339.84/100GiB, then SSH reset before `du` category records; its partial
+returncode1 is preserved. Project-root observation shows onlyDBMol/Mosaic
+onWORK3 and two guidanceMDs/no retiredHOMErepo. HOME21.19G/30 is cached as
+of14:04:42, before removal, so it is not a post-cleanup usage measure.
+Category retry003 failed authentication255 and is preserved. The summary's
+directory estimate uses earlier13:59CET snapshot minus only verifiedRUN
+removals, not a fresh `du`: caches7.81/runs7.72/environment5.74/data4.27/
+Protenix1.99/releases1.11/other1.02GiB,DBMoltotal29.66GiB. Concurrent changes
+are outside that arithmetic; no fresh exactMosaic total is claimed.
+Broad `inventory001/002` recorded audit timeout/invalid LSF width20000;
+`inventory003` completed the selected-project audit with partial `du` timeouts.
+Separately, `stage-inventory001` hit16MiB metadata bound,002 timed out inSSH,
+003/004 were denied login,005/006 hit256MiB Mosaic metadata, and007 passed
+with v6 streaming. `home-pack001` stopped on256MiB metadata;002 passed.
+Earlier receipts remain preserved. No scientific model/job/setting was changed
+by this maintenance documentation. [Evidence and restoration details](50_hpc_space_cleanup.md#historical-models-and-retired-home-repository-offloaded-and-verified-27-october-2026).
+
+## Source140 full CPU passed; epoch40->45 GPU submitted, 27 October2026 12:18 CET
+
+Immutable attempt001 staged/authenticated655 members/583 scientific; stage/
+queue returned zero. CPU29829798/callback29829799 DONE,2028 fixture passes,
+115 CUDA-only skips,zero failures/errors;298.257s JUnit/470s full CPU stage.
+Reference/optimized repair profile and source135/source138 adoption passed.
+Allocated exact generated CLI dispatch at12:18:07 passed before model setup,
+actual resume epoch40 SHA31af05597dbd176b02a8108651db0d6b33bb3a8883f69ecf354a4465ed18787e,
+endpoint45. Callback submitted GPU29829875/after-segment29829876; at12:18:50
+PEND due to job-slot limits on five hosts,expected callback dependency.
+Current-release CUDA/exact native handoff/fresh observations/epoch41 remain
+pending; no reliable start ETA. Unchanged loss/1:2/anchors/AdamW/RNG/all guards,
+save each epoch and fresh raw validity/diversity tracking,serial24h/23h through45.
+Source138/independent studies untouched. [Seals and receipts](80_epoch40_to45_continuation.md#latest-cpu-passed-gpu-queued-27-october2026-1218-cet).
+
+## Source140 epoch40->45 extension authorized and prepared, 27 October2026
+
+The user authorized five further epochs if checks pass, unchanged loss and
+safeguards, every epoch saved and validity/diversity tracked. Separate source140
+preserves completed source138 and restores exact epoch40 model/AdamW/native+
+fresh RNG while keeping original35/original36 frozen reference roles. A closed
+extension marker and metadata-only integrations distinguish the new endpoint45.
+Fresh two-seed1024-prior/four-draw raw generation reports track validity,
+uniqueness, fingerprint and scaffold diversity without altering health gates.
+Read-only preflight001 at12:03:39 CET matched protected original35/36/40/proof
+hashes and completed predecessor jobs; quota46.07/100GiB used. No numerical
+pass or actual submission/start follows from preparation. [Detailed protocol](80_epoch40_to45_continuation.md).
+
+## Source138 epoch40 completed; authorized branch finished, 27 October2026 11:44 CET
+
+Read-only snapshot018 confirms GPU29822674 DONE11:34:10/callback29822675
+DONE11:34:39. Passed segment completion at absolute263840 and
+`completed_bounded_branch` bind checkpoint40 SHA
+`31af05597dbd176b02a8108651db0d6b33bb3a8883f69ecf354a4465ed18787e`.
+Final raw/strict fixed-prior validity753/1,024 (73.54%) versus epoch39's724
+(70.70%): +29/+2.83points. Exact/valid reconstruction256/256, sulfur1.4394%.
+Measured epoch41,316.285s (~11.48h), not completion's59,011.392s estimate;
+1,688,539 real/3,377,078 prior points,6,596 updates. All268 saved early
+panels/checks and19 end-epoch checks passed. Zero representation failures
+at endpoint does not erase prior occasional failures. Fixed monitoring is
+not fresh-seed/categorical/full-test evidence. Branch stopped at40 with no
+successor; no runtime/settings/jobs changed or extra evaluation submitted.
+CUDA599/science/guards unchanged. [Terminal evidence and comparison](75_frozen_reference_epoch40_continuation.md#epoch40-completed-bounded-branch-finished-27-october-2026-1144-cet).
+
+## Source138 epoch40 started; early fixed-panel improvement, 27 October2026 00:17 CET
+
+Read-only snapshot017 confirms GPU29822674 RUN since00:01:55 CET on n-62-18-8;
+actual run created00:02:30, restoring exact checkpoint39 SHA
+`e5d7f99b9eb0fe04cd8b6b800e4bd90b6f1c24a65368216ce384a95061a7f3b0`.
+Latest saved panel00:16:41 is absolute257356,112/6,596 (~1.70%) intoepoch40.
+Raw validity744/1,024 (72.66%) versus epoch39's724 (70.70%), +1.95points;
+strict743 (72.56%) with one representation failure. Exact/valid recon256/256,
+sulfur1.5048%; all203 saved early panels/checks passed. Early fixed monitoring
+is not a final checkpoint or fresh/full-test result. Callback29822675 PEND
+normally; epoch39 latest completed. CUDA599, science/guards and endpoint40
+unchanged; no runtime/settings/jobs changed or new experiment submitted.
+[Raw evidence and comparison](75_frozen_reference_epoch40_continuation.md#epoch40-started-early-validity-above-epoch39-endpoint-27-october-2026-0017-cet).
+
+## Source138 epoch39 completed; epoch40 resource-queued, 26 October2026 22:39 CET
+
+Read-only snapshot016 confirms successful segment003 end16:50:10, checkpoint39
+SHA `e5d7f99b9eb0fe04cd8b6b800e4bd90b6f1c24a65368216ce384a95061a7f3b0`,
+absolute257244. Measured42,354.638s (~11.77h), normal guarded budget stop.
+End fixed raw/strict validity724/1,024 (70.70%), exact/valid recon256/256,
+sulfur1.4237%; all201 early panels and end-epoch guards passed. Earlier74.51%
+was an intermediate reading, not final checkpoint performance; epoch38/39
+have equal aggregate raw-valid counts. Automatic callback queued exact39 resume
+GPU29822674 and callback29822675, now PEND: insufficient processor units for
+affinity, four of16 slots reserved on n-62-18-8. No epoch40 setup/run or reliable
+ETA. Original settings/guards/CUDA599/endpoint40 retained; no runtime/settings/
+jobs changed by status collection. Fixed monitoring panels fluctuate and need
+fresh/full-test confirmation. [Raw evidence and interpretation](75_frozen_reference_epoch40_continuation.md#epoch39-complete-final-epoch40-queued-26-october-2026-2239-cet).
+
+## Source138 epoch38 completed; epoch39 automatically running, 26 October2026 12:33 CET
+
+Read-only snapshot015 confirms successful segment002 termination25 October
+21:37:32 CET and passed checkpoint38
+`1736ad792f244fda59d0b74dc87867880fe632db0417ddfb0c70d07269fd319d`.
+Epoch38 measured42,905.556s (~11.92h), distinct from59,011.392s scheduling
+estimate; normal budget-boundary stop passed. Automatic callback submitted
+GPU29817247/callback29817248; GPU RUN since26 October05:02:28 CET on n-62-18-9,
+restoring exactly epoch38. Latest saved panel12:23:50 is absolute254756,
++17,300 sinceoriginal36/4,108 of6,596 (~62%) intoepoch39. Raw/strict validity
+763/1,024 (74.51%) versus baseline641 (62.60%), exact/valid recon256/256,
+sulfur1.5057%. All176 saved early panels/checks passed; preceding254656 had
+one representation failure (737 raw/736 strict), not a health-gate failure.
+Latest completed checkpoint38; no completed39 yet. Fixed panels fluctuate,
+not independent/full-test results. CUDA599, all science/guards and endpoint40
+unchanged; no runtime/settings/jobs changed by this check.
+[Raw receipts and interpretation](75_frozen_reference_epoch40_continuation.md#epoch38-complete-epoch39-running-with-latest-validity745-26-october-2026-1233-cet).
+
+## Source138 epoch38 past halfway; latest validity71%, 25 October2026 16:29 CET
+
+Read-only snapshot014 confirms GPU29809056 RUN/callback29809057 PEND normally.
+Latest saved panel at16:20:42 CET is absolute247556, +10,100 since original36
+and3,504/6,596 (~53%) into epoch38. Raw/strict fixed-prior validity727/1,024
+(71.00%) versus original641 (62.60%), exact/valid reconstruction256/256,
+sulfur1.4730% versus1.5070%. All103 saved early panels/checks passed; no
+epoch38 completion yet, and epoch37 remains latest completed checkpoint.
+Counters are last-persisted, fixed panels fluctuate and are not independent/
+full-test results. Existing science, guards, CUDA599 pass and endpoint40
+unchanged. No runtime/settings/jobs changed by the check. [Raw evidence](75_frozen_reference_epoch40_continuation.md#epoch38-past-halfway-latest-fixed-panel-validity71-25-october-2026-1629-cet).
+
+## Source138 epoch37 completed; automatic epoch38 resume, 25 October2026 11:39 CET
+
+Read-only snapshot013 records segment001 completed successfully24 October
+23:43:24 CEST, latest checkpoint epoch37 SHA
+`eb6ecd25c36cff6fb158e2d24aa1888fdc17e8c8654bb100894d834510839446`.
+Actual epoch processed1,688,539 real/3,377,078 fresh-prior points in6,596 updates,
+48,502.236s (~13.47h). Completion receipt's59,011.392s `epoch_seconds` is the
+conservative scheduling estimate, not measured epoch time. Normal budget-boundary
+stop passed; automatic callback authenticated completion/health/source/resume/
+quota and submitted GPU29809056/callback29809057. GPU RUN since25 October
+09:40:30 CET on n-62-18-8, restoring exactly epoch37; endpoint40 unchanged.
+Latest saved panel is absolute244956 (+7,500 sinceoriginal36/904 intoepoch38),
+saved11:32:03 CET; all18 checks pass and all77 saved early panels/checks passed.
+Epoch37-end/latest raw and strict fixed-prior validity705/1,024 (68.85%), versus
+original641 (62.60%); exact/valid reconstruction256/256. Latest sulfur1.4696%
+versus baseline1.5070%. Metrics fluctuate, not monotonic or full-test guarantees.
+599 CUDA passes remain valid. No runtime-code/settings/jobs changed by the
+status check; collector transfers compact old-panel metadata and latest raw
+receipts without altering them. [Full evidence and limits](75_frozen_reference_epoch40_continuation.md#epoch37-completed-automatic-epoch38-continuation-running-25-october-2026-1139-cet).
+
+## Source138 CUDA passed; actual epoch37 training running, 24 October 2026 10:55 DTU-local
+
+Read-only snapshot012 confirms GPU 29802716 RUN since 10:11:51 on n-62-18-10.
+All 599 current-release CUDA fixtures passed (zero errors/failures/skips,
+76.303s). Actual run record created10:13:49 restored authenticated original36,
+with endpoint40 and unchanged loss/1:2/AdamW/RNG/checks. Last persisted health
+panel is +300 updates (absolute237756), saved10:51:32, not the exact live count.
+All 18 checks passed at +32/100/200/300. Fixed raw/strict validity is
+641 -> 642 -> 648 -> 659 -> 666/1,024; exact/valid reconstruction stays256/256,
+zero representation failures in these panels, sulfur1.5070% ->1.4665%.
+Epoch37 is not complete; original36 remains latest completed checkpoint and
+callback29802717 PEND normally. Early actual training is not a completed
+quality result or independent-seed replication of the earlier proof. No
+runtime code/settings/jobs changed. [Raw CUDA/run/panel receipts and limits](75_frozen_reference_epoch40_continuation.md#actual-continuation-started-and-cuda-passed-24-october-2026-1055-dtu-local).
+
+## Separate Protenix deletion/count diagnostic completed with negative transfer, 24 October 2026
+
+The [fourth collection](../outputs/hpc-submissions/source139-protenix-deletion-selection-attempt001-collect-004.json)
+and [root native result](../outputs/hpc-results/source139-protenix-deletion-selection-attempt001/snapshot-002/native/deletion-selection-result.json)
+record **GPU 29803898 DONE**, **02:29:32–02:36:52 DTU-local**, terminal
+`completed_diagnostic_not_G_validated`. All **18 trajectories/eight updates**
+completed; **1,816 forwards/427.920s study/436.376s controller**. CPU 287-pass
+readiness and all-case unchanged model/context are preserved. Fresh C/Z output
+and 36 derivative rows/108 calibrated FD comparisons passed; original strict
+FD diagnostics passed 79/108, and one Z row remained unresolved as declared.
+
+Z q=1 matched full native output, but **Z q=0 failed physical compact deletion
+in all three cases** (max pair TV **0.2861103/0.2789418/0.1383469**). Conditional-
+element ghosts passed; charge/name/position/bond interventions each failed
+3/3. All compact and fresh native endpoint rankings resolved in favor of the
+full molecule. Gradient soft loss improved 6/6 runs, yet all hardened deleted;
+q=0.8 changed **8→7/10→9/11→10**, worsening compact native loss
+**+0.000101578/+0.006902224/+0.008939274** and fresh loss
+**+0.000510643/+0.005472401/+0.008129331**. Low starts already selected deletion
+and had no hard gain. Random-sign controls had the same hard outcome;
+unchanged controls retained counts. No useful gradient advantage, full G,
+absence or binding claim follows.
+
+The [saved-only summary](../outputs/hpc-results/source139-protenix-deletion-selection-attempt001/terminal-summary-001.json)
+has SHA256 `a5941e81f3ae602e313f644d0dfe4afd4907378d1fdbc73a7b99cb486a6991b2`;
+the [57-file export](../outputs/hpc-results/source139-protenix-deletion-selection-attempt001/snapshot-002/collection-receipt.json)
+has SHA256 `9b64c8a68e0e57c67c2eda89f79488a1b326b603d32c7f23987d703fccef14ec`.
+No code/policy/job change or model rerun occurred in this result check;
+all failed history and unrelated campaigns remain preserved.
+[Exact outcome and limits](79_protenix_deletion_and_count_selection.md#12-completed-diagnostic-zero-element-mass-did-not-reproduce-deletion).
+
+## Separate Protenix deletion CPU passed; native GPU queued, 24 October 2026 about 01:54 DTU-local
+
+The [third collection](../outputs/hpc-submissions/source139-protenix-deletion-selection-attempt001-collect-003.json)
+records **CPU 29803884 full readiness passed, 133.086s**, **287 fixtures**,
+zero failures/errors/skips (6.62s), parent and new compact/fresh preparation,
+strict actual-checkpoint load and six-forward CPU feature probe (32.381s).
+All original strict CPU output comparisons were exact; element-leaf gradient
+finite/nonzero, model/context unchanged. Full reconstruction/retained compact
+positions and fresh molecule graph/mapping checks passed; readout counts stay
+903/1,161/1,290. These are readiness outcomes, not GPU absence/selection results.
+
+The [actual native submission](../outputs/hpc-results/source139-protenix-deletion-selection-attempt001/snapshot-001/native-submission.json)
+returned zero: **GPU 29803898 submitted at 01:53:41 DTU-local**, `gpua10`,
+exclusive A10/four slots/one hour/55-minute internal cap/3,000 shared forwards.
+The [01:54:24 queue snapshot](../outputs/hpc-submissions/source139-protenix-deletion-selection-attempt001-gpu-queue-001.json)
+records PEND, **45s eligible/zero ineligible**, four slots reserved while the
+physical GPU is unavailable. No GPU claim/result exists; no reliable start
+ETA. The [31-file export receipt](../outputs/hpc-results/source139-protenix-deletion-selection-attempt001/snapshot-001/collection-receipt.json)
+has SHA256 `5a1bf60949776c5ff823d5f3da9bc48319c3e78ccadd63b3098c1ff58ad81da0`.
+Initial authentication failure, immutable seal and all earlier/unrelated work
+remain preserved. [Detailed bindings](79_protenix_deletion_and_count_selection.md#11-full-cpu-readiness-passed-native-gpu-queued).
+
+## Separate Protenix deletion staged; CPU submitted after restored SSH, 24 October 2026
+
+After the user restored SSH, the
+[second stage-and-queue operation](../outputs/hpc-submissions/source139-protenix-deletion-selection-attempt001-stage-and-queue-002.json)
+returned zero, authenticated **216 members** of the same immutable
+`source139-protenix-deletion-selection-attempt001`, and submitted **CPU
+29803884**, `hpc`, four slots/45 minutes, `submitted_not_passed`. Source,
+manifest, plan and scientific settings remain unchanged. Preserve the first
+pre-upload SSH-255 failure receipt; actual authenticated submission supersedes
+its blocked state without rewriting it. The **287 expected fixtures**,
+preparation and native readiness are pending; no GPU/deletion/selection result
+yet. [Current evidence](79_protenix_deletion_and_count_selection.md#10-authenticated-staging-succeeded-cpu-submitted).
+
+## Separate Protenix deletion release sealed; SSH blocked submission, 24 October 2026 01:49 DTU-local
+
+The [sealed preparation](../outputs/hpc-submissions/source139-protenix-deletion-selection-attempt001-preparation.json)
+records **216 members** for independent
+`source139-protenix-deletion-selection-attempt001`. Archive/manifest/plan SHA256:
+`cdca94bcf05f5b3c2fca2cc6587970a561a293ad4afd314fd50e6b4db49bb573` /
+`a2c7018423f86ee916388e2ae9bf9eacf9d10363e8e02789ab55ceb882b7eb11` /
+`6aabc5854c8c3b6dbb753ff3818d6bc542f0e22b19abe9bf277777645168b9e1`.
+The [static audit](../outputs/hpc-submissions/source139-protenix-deletion-selection-attempt001-static-audit.json)
+passed source/byte checks, 206 unchanged nonmanifest/two changed/seven added
+members, 208 Python AST parses. This is not numerical validation.
+
+The [actual stage-and-queue receipt](../outputs/hpc-submissions/source139-protenix-deletion-selection-attempt001-stage-and-queue-001.json)
+returned **255**, SSH `Permission denied (password)`, before remote execution,
+upload or scheduler submission. Read-only diagnostics found key acceptance
+followed by a password requirement; VPN/SSH restoration was requested.
+**No new CPU/GPU job was created**, and the **287 expected fixtures**, native
+preparation, deletion/ghost tests and selection remain unrun. Preserve the
+failed access receipt and immutable bytes; attempt008 success, historical
+failures and unrelated work remain unchanged.
+[Current evidence and limits](79_protenix_deletion_and_count_selection.md#9-immutable-release-sealed-submission-blocked-before-remote-execution).
+
+## Separate Protenix deletion/count-selection phase designed, 24 October 2026
+
+The user authorized implementing and running physical-deletion/ghost tests
+and bounded atom-count selection on DTU HPC. The prospective
+`source139-protenix-deletion-selection-attempt001` keeps the same three frozen-
+Tiny contexts and fixed retained-core readout, preparing compact deletion and
+paired fresh FILE/MOL full/deleted endpoints. Fresh C/Z native/FD gates share
+one resident model and the same total call/time budget as later stages.
+Diagnostic Z selection is allowed after those gates even if deletion/ghost
+equivalence fails; failures remain negative evidence, not promotions or waivers.
+Two q starts, eight requested updates and matched unchanged/random-sign
+controls are prespecified, with separate soft/hard/compact/fresh outcomes.
+
+This is design only, with no sealed release, job or numerical pass. All
+numerical work stays allocated HPC; conditional resources are CPU four slots/
+45 minutes then one exclusive A10/four slots/one hour, 55-minute internal cap
+and 3,000 shared GPU forwards. Attempt008 success/one unresolved point, all
+failed records and unrelated campaigns remain unchanged.
+[Full protocol and limits](79_protenix_deletion_and_count_selection.md).
+
+## Separate Protenix attempt008 C/Z parity and gradients passed, collected 24 October 2026 01:30 DTU-local
+
+The [fifth collection](../outputs/hpc-submissions/source135-protenix-occupancy-native-attempt008-collect-005.json)
+and [native gate](../outputs/hpc-results/source135-protenix-occupancy-native-attempt008/snapshot-002/native/native-gate-result.json)
+record **GPU 29802638 DONE**, **23 October 21:38:03–21:41:59 DTU-local** on
+`n-62-18-5/gpua10`, one exclusive A10/four slots. Terminal status is
+`native_parity_and_gradient_passed`, stage `complete_C_Z_only`; **1,048 model
+calls/225.749s**, controller **233.808s**, peak allocated CUDA
+**6,061,890,560 bytes**. CPU 165-pass readiness is preserved.
+
+All three cases passed declared loss/TV output gates; original strict-logit
+failures remain diagnostic. **36 derivative rows/108 calibrated FD-scale
+comparisons passed**: 18 C rows exact zero/input invariant, 18 Z rows finite/
+nonzero, 17 resolved at two or more scales. First-case q=0.9 NO_ATOM-logit
+sensitivity remained unresolved (one resolved scale) despite agreement; other
+q values passed its per-parameterization resolution gate. At q=0.1/NO_ATOM
+probability0.9, actual absence-logit gradients were resolved in all three cases:
+**0.0011750486446544528 / -0.001694127218797803 / 0.0005621041636914015**.
+This supports the fixed-context element-mass gradient mechanism; it does not
+validate real absence, variable atom count, chemical validity or useful
+optimization/binding. All 54 sweep rows were saved. No G/absence/ghost/
+discrete-transfer validation, optimization or training ran.
+
+The [37-file export receipt](../outputs/hpc-results/source135-protenix-occupancy-native-attempt008/snapshot-002/collection-receipt.json)
+has SHA256 `ef5f0f6bda3ba470d6ede8ca6ac6dc66cf5315b78cc3f4ba37f098b5752f07d2`;
+native gate SHA256 `026cd2e2f2676d9b729c28221070174a87e0446b33a2bf0763611283a937438f`.
+Every earlier failed immutable decision and unrelated work remains preserved.
+[Full measurements and interpretation](73_protenix_soft_occupancy_study.md#36-attempt008-completed-cz-native-parity-and-calibrated-gradients).
+
+## Source138 remains resource-queued, 24 October 2026 01:30 DTU-local
+
+Read-only [snapshot010](../outputs/hpc-results/source138-vae-cli-startup-fix-attempt001/snapshot-010/status.json)
+shows GPU 29802716 PEND, job-slot limits on five hosts, 14,365 seconds eligible
+and zero ineligible. Callback 29802717 waits on its expected predecessor
+condition. No CUDA gate/JUnit, GPU execution log, segment or training setup/
+progress exists; original epoch36 remains latest. Completed CPU/callback/
+targeted LSF entries have aged out, preserving saved DONE and passed evidence.
+No reliable start ETA or new scientific result. No code/settings/jobs changed.
+
+## Source138 full gates passed; GPU continuation resubmitted, 23 October21:31
+
+CPU29802660 and callback29802661 DONE. The full CPU suite has1,998 passes,
+113 CUDA-only skips, zero failures/errors; allocated repair parity/profile and
+unchanged source135 proof adoption passed. Callback repeated real CLI/actual
+argv authentication, matching the earlier targeted command exactly, with no
+setup or updates. It submitted GPU29802716 at21:31:04 and serial callback
+29802717 at21:31:05. GPU PEND at21:31:21, one exclusive80GB A100/16slots/24h,
+23h internal; no current CUDA gate or training yet. All existing checks and
+science unchanged, original36 through absolute40 only. Source136 failure and
+independent work are preserved. [Raw receipts, hashes and derived audit](75_frozen_reference_epoch40_continuation.md#source138-full-cpu-passed-and-gpu-continuation-resubmitted-23-october-2131).
+
+## Source138 actual launch argv passed; full CPU running, 23 October 21:26
+
+New648-member/577-scientific source138 staged and submitted CPU29802660 plus
+callback29802661. CPU began21:23:27 on n-62-21-90/16slots; still RUN at21:26.
+Separate two-slot startup29802690 DONE21:25:50:81 fixture passes, zero skips/
+errors/failures, and exact segment1 argv extracted from the sealed launcher
+passed real CLI/plan/source/checkpoint/readiness/stability/health authentication.
+The harness stopped before train_phase's body, setup and updates. Its additive
+source135 proof adoption is not a new native pass and cannot satisfy full CPU
+readiness. All old checks, unchanged science and original36->40 are preserved;
+callback repeats actual dispatch check before any GPU submission. No GPU job
+or epoch37 established yet. [Seals, commands, raw receipts and limits](75_frozen_reference_epoch40_continuation.md#source138-staged-actual-startup-command-passed-23-october-2026-2126-dtu-local).
+
+## VAE actual-launch CLI correction authorized, 23 October 2026
+
+New source138 preparation addresses source136's concrete readiness-argument
+rejection before setup. Only main's applicability predicate changes; the
+adoption audit permits that exact AST correction. Added CLI regressions and
+allocated actual-plan module-entrypoint dispatch checks stop before training
+and authenticate the original readiness/stability/health evidence. All science,
+source135 proof, original36/native AdamW/RNG, 1:2 ratio, checks and endpoint40
+remain unchanged. Source136 failure and CUDA pass remain historical evidence.
+Read-only 21:20:01 DTU-local preflight verified checkpoints/proof hashes,
+inactive failed jobs and 37.46 GiB quota headroom. No new gate/submission or
+training is established by this preparation entry. [Detailed scope](75_frozen_reference_epoch40_continuation.md#authorized-startup-correction-source138-23-october-2026).
+
+## Separate Protenix attempt008 CPU passed; native GPU queued, 23 October 2026
+
+The [second collection](../outputs/hpc-submissions/source135-protenix-occupancy-native-attempt008-collect-002.json)
+and [CPU readiness](../outputs/hpc-results/source135-protenix-occupancy-native-attempt008/snapshot-001/cpu-ready.json)
+record **CPU 29802633 full gate passed, 102.799s**, **165 fixtures passed**,
+zero failures/errors/skips (6.00s), actual strict load and all three native
+preparations. The actual-input CPU probe made six forwards in **32.623s**:
+all original strict parity comparisons were exact, element-leaf gradient was
+finite/nonzero (norm **0.057674998699864734**), frozen model/context unchanged.
+This remains CPU smoke evidence, not a NO_ATOM or calibrated GPU derivative pass.
+
+The [native submission receipt](../outputs/hpc-results/source135-protenix-occupancy-native-attempt008/snapshot-001/native-submission.json)
+returned zero: **GPU 29802638 submitted at 21:13:20 DTU-local**, `gpua10`, one
+exclusive A10/four slots/one hour, 55-minute internal cap. The
+[21:13:48 queue snapshot](../outputs/hpc-submissions/source135-protenix-occupancy-native-attempt008-gpu-queue-001.json)
+records PEND, waiting for scheduling (28s eligible/zero ineligible), not an
+execution or result. The [later detailed queue snapshot](../outputs/hpc-submissions/source135-protenix-occupancy-native-attempt008-gpu-queue-002.json)
+about 21:15 confirms PEND due to a job-slot limit on one host, **111s eligible/
+zero ineligible**, with no GPU controller claim/result or reliable start time.
+The authenticated twenty-file export SHA256 is
+`a6997e2f1e6e158f822197fb6df84456f3c5dd52cf0c6185e0213cff67507007`.
+No calibrated GPU/NO_ATOM outcome yet; all earlier failures and unrelated work
+remain preserved. [Detailed evidence](73_protenix_soft_occupancy_study.md#35-attempt008-cpu-passed-native-gpu-submitted).
+
+## Separate Protenix attempt008 sealed and CPU submitted, 23 October 2026
+
+The [actual stage-and-queue receipt](../outputs/hpc-submissions/source135-protenix-occupancy-native-attempt008-stage-and-queue-001.json)
+records **209 authenticated members**, return zero and **CPU 29802633 submitted**,
+`hpc`, four slots/45 minutes, for immutable
+`source135-protenix-occupancy-native-attempt008`. Archive/manifest/plan SHA256:
+`fbaf390b9da4fb1085f2c738a61b09dda9959618f4750c98a3d7d3177808662f` /
+`abe0646d3b022b0dac5a4e1d94338579da0fda9d970736f7e2e03f134ab657cc` /
+`c3986ce3b030cb440a786942a474a1df578a297493b94ce98dba6c5b23be4ae9`.
+The [static seal audit](../outputs/hpc-submissions/source135-protenix-occupancy-native-attempt008-static-audit.json)
+passed byte/source checks: 204 unchanged nonmanifest members/four changed,
+202 Python AST parses, only FD policy/attempt metadata changes in the plan.
+
+The expected **165 fixtures**, strict load, three native preparations and
+actual-input CPU probe are not passed by submission. Full readiness and fresh
+quota remain required before conditional native A10 execution under unchanged
+one-hour/55-minute/3,000-call bounds. No numerical/calibration/NO_ATOM outcome
+yet; earlier failed immutable attempts and unrelated work remain unchanged.
+[Exact sealed policy and submission](73_protenix_soft_occupancy_study.md#34-attempt008-sealed-and-cpu-submitted).
+
+## Separate Protenix attempt008 calibrated derivative retry authorized, 23 October 2026
+
+The user explicitly authorized fixing the noise-sensitive FD check and
+rerunning native parity/NO_ATOM gradients on allocated DTU HPC. Prospective
+`source135-protenix-occupancy-native-attempt008` declares
+`attached-repeat-loss-difference-fd-v1`: one gradient baseline plus eight
+attached repeats, three interleaved samples per FD endpoint, fixed epsilons
+0.01/0.003/0.001, identical-input range calibration `U=max(1e-12,4*max_range)`
+with hard cap **1e-6 normalized loss**, and comparison before division by `2h`.
+The empirical allowance is not a statistical noise bound. Raw strict FD
+metrics remain saved; every row still needs two agreeing scales. C requires
+full input-hash invariance and exact-zero autograd. Useful Z sensitivity needs
+two agreeing, same-sign scales with measured/predicted signals both above 10U,
+at least one q separately for direct-q and NO_ATOM-logit per case.
+
+This is a new versioned diagnostic correction, not a retrospective pass or
+waiver. Native source/weights/method, shared boundary, cases/readout/geometry,
+precision, output policies, frozen context/RNG and resource checks remain
+unchanged. The prospective suite is **165 cases**, not an executed result;
+numerical validation, sealing and submission remain pending. All failed
+attempts and unrelated work remain preserved.
+[Exact prospective policy](73_protenix_soft_occupancy_study.md#33-attempt008-attached-repeat-calibration-and-loss-difference-validation).
+
+## VAE CUDA passed then actual CLI failed, 23 October 2026 21:02 DTU-local
+
+Two read-only SSH collections returned zero and saved
+[status017](../outputs/hpc-results/source136-valid-reference-epoch40-continuation-attempt001/status-017.json)
+and [additional details](../outputs/hpc-results/source136-valid-reference-epoch40-continuation-attempt001/status-017-details.json).
+Source136 GPU **29792164** ran **14:02:45–14:04:39 DTU-local**, n-62-18-8.
+All **586 CUDA contracts passed**, zero failures/errors/skips (82.95s), and
+the saved CUDA gate passed, SHA256
+`912f41264f0f6a1ae8ee12b6976fbfeb1552eb030db9f12166f25a3b038931b6`.
+The subsequent real CLI exited 2:
+`Historical chemistry protocols have no failure-readiness override`;
+the wrapper exited 1. The launcher supplies the readiness SHA for the
+`valid_reference_continuation` marker, but the CLI recognizes that argument
+only for `protocol.failure_guidance`, which this plan intentionally lacks.
+Downstream readiness already handles the marker; the earlier CLI rejects it.
+No actual training setup/update, segment or epoch 37 exists. Epoch 36 remains
+latest. Callback **29792165** ran **14:04:40–14:04:52**, exited 1 on predecessor
+EXIT, and submitted no successor. Persisted LSF/allocation logs establish the
+terminal outcomes despite aged-out live scheduler records. No chemistry-health
+panel was reached; prior scientific/CUDA passes remain preserved.
+[Docs75](75_frozen_reference_epoch40_continuation.md) records the mechanism.
+No runtime fix, release, waiver or replacement job is created by this status turn.
+
+The same collection independently confirms the completed source137 native
+oracle/1,000-update mapping pilot reported in
+[docs76](76_epoch36_boltz_embedding_bridge.md). Its
+[four byte-verified local JSON artifacts](../outputs/hpc-results/source137-epoch36-boltz-embedding-bridge-attempt002/collected-status017/result.json)
+retain result/native gate/learned diagnostic/paired manifest hashes. Fit status
+remains `trained_unvalidated`; no learned-gradient certificate or optimization
+follows from the fit. The failed VAE continuation and its frozen assets were
+not changed by the separate bridge experiment.
+
+[Derived status summary](../outputs/hpc-results/source136-valid-reference-epoch40-continuation-attempt001/status-017-summary.json)
+SHA256: `7dbc5d003582ccb9588b8e99100cffae416140789610d3288b55abe919093864`.
+Source137 result/native/diagnostic SHA256:
+`40666a2b49fd75981d66ad6901ea26c1251f0d0ff1cd0fba7d1e5ddc34758230` /
+`39be43d7fbc30f3c86f9e6375c6519aad7d7f6f5cdf77cf54077cb8a9b988d41` /
+`506247522e1e506807546a352e68d0df28af128301e7b2a8bc238572e7578fcc`.
+
+## Protenix occupancy result unchanged; separate Mosaic job queued, 23 October 2026 about 21:02 DTU-local
+
+The [read-only fifth collection](../outputs/hpc-submissions/source135-protenix-occupancy-native-attempt007-collect-005.json)
+returned zero. Attempt007 remains failed at the first C direct-q derivative,
+17 model calls; native-result SHA256 is unchanged:
+`07db7b65d385a1a3cbb42fdc4cdcf065892560ae02007fa6040df0bbd9165d0c`.
+Its saved CPU 128-pass and first-case loss/TV parity results remain valid;
+no replacement occupancy job or Z/NO_ATOM derivative result exists.
+
+The fresh account listing includes **29798480 PEND / gpul40s**, named
+`protenix-defog-1000`. A detailed read-only query identifies its separate
+Mosaic release/run and job-slot limits on five hosts; it is not a retry of
+this occupancy study. The [derived status receipt](../outputs/hpc-results/source135-protenix-occupancy-native-attempt007/status-005-summary.json)
+preserves this distinction. An initial non-login-shell query could not find
+bjobs; the login-shell retry returned zero. No model execution, submission,
+code, setting or job change was performed in this status check.
+
+## Retired repository removed and verified, 23 October 2026 12:51 DTU-local
+
+The user explicitly authorized deleting pretty much all old-repository
+contents. The [new exact-root maintenance operation](50_hpc_space_cleanup.md#retired-relative-weight-models-directory-removed-23-october-2026)
+removed `/work3/s234818/relative-weight-models`, intentionally deleting its
+remaining **32,955 regular files / 73 symlinks / 3,418 descendant directories**
+and the root, **14.463106 GiB** selected descendant allocation (plus 512 root
+bytes). This includes 7.390863 GiB old environments, 3.997335 GiB caches,
+3.073013 GiB remaining data/model assets and 0.001894 GiB run artifacts.
+It is deletion, not offload. Both current `latentmol` and active `mosaic`
+were excluded. No current checkpoint, release, loss, setting or job changed.
+
+[Audit002](../outputs/hpc-results/storage-cleanup-20261023-001/audit002.json)
+passed active source/plan checks for 1,309 files, an incoming-link scan over
+508,138 entries/806 symlinks, exact owned-root/tree metadata and **51 protected
+hashes**. [Removal001](../outputs/hpc-results/storage-cleanup-20261023-001/remove001.json)
+returned zero at **12:49:53 DTU-local**, after fresh audits, a durable intent,
+checked exact-root rename and fd-based symlink-safe recursive removal. No
+selected link target outside the retired tree was followed. The independent
+[verification001](../outputs/hpc-results/storage-cleanup-20261023-001/verify001.json)
+passed at **12:51:41**: root/quarantine absence, four ordered journal events,
+receipt byte hashes and unchanged 51 protected hashes. This includes original
+epochs 35/36/89, source135 proof, source136 source/plan and source137 bridge
+archive/manifest/plan. Current VAE and bridge jobs remain untouched.
+
+Fresh official work3 quota is **61.04/100 GiB used, 38.96 GiB free**. Remaining
+filesystem usage: latentmol **47.46 GiB**, chiefly **25.96 runs / 8.18 cache /
+5.74 environment / 4.27 data**; Mosaic approximately **12.50 GiB**. Mosaic's
+live `du` saw a disappearing temporary output and returned one; retain that
+raw observation as approximate, without calling it a failed cleanup or
+claiming its writer's changes as reclaimed bytes. Source/account quota and
+filesystem totals need not match exactly during concurrent work.
+
+[Summary and all artifact hashes](../outputs/hpc-results/storage-cleanup-20261023-001/cleanup-summary.json):
+`f6efcb0e13ab0d5744933bb2d489252e744c62b848ab7e4a306df031c1126d49`.
+[Durable completion](../outputs/hpc-results/storage-cleanup-20261023-001/completed-remote001/completion.json):
+`f7b9a96496ede7c5a172791988115d7d618e6c57217af2ff5ea2931ecedca3c0`.
+The initial read-only `du` timeout and audit001's generated-bash parser failure
+are preserved; neither changed files. Audit002 used the corrected local
+maintenance parser and passed before any removal. All maintenance used only
+filesystem/byte/scheduler inspection, without numerical/model work or new jobs.
+
+## VAE and embedding GPUs remain queued, 23 October 2026 12:32 DTU-local
+
+One read-only SSH session returned zero and saved
+[status-016](../outputs/hpc-results/source136-valid-reference-epoch40-continuation-attempt001/status-016.json)
+at **10:32:24 UTC / 12:32:24 DTU-local**. Source136 GPU **29792164 PEND**
+has 16 slots reserved on n-62-18-10 (latest timestamp 12:17:12), job-slot
+limits on four hosts and zero ineligible pending time. Callback **29792165
+PEND**. There is no training-launch CUDA gate/JUnit, segment directory, actual
+training run/progress or epoch-37 result. The saved CPU gate remains 1,985
+passes/113 CUDA-only skips, zero failures/errors; missing aged-out CPU job
+records do not undo those results. Original epoch 36 remains latest.
+
+Independent bridge GPU **29796624 PEND** has all four slots reserved on
+n-62-18-11 since 12:17:16, with insufficient processor units for its affinity
+request and zero ineligible pending time. No GPU artifact or log file exists;
+139 allocated CPU passes remain the prerequisite result, with no native GPU
+or fitted-bridge outcome yet. No reliable start timestamp is displayed for
+either GPU. The fresh account listing contains **one RUN / 14 PEND** across
+projects; RUN 29792672 is a separate Mosaic L40S Boltz/chemistry job whose
+scientific output was not inspected in this check. This status read changed
+no code, settings, resources, release, checkpoint or job and submitted nothing.
+
+## Protenix attempt007 unchanged; no active run, 23 October 2026 about 12:22 DTU-local
+
+The [read-only fourth collection](../outputs/hpc-submissions/source135-protenix-occupancy-native-attempt007-collect-004.json)
+returned zero. CPU remains passed (128 fixtures); the first case's output
+comparisons passed under loss/TV policy, then the first C derivative failed
+with one of three agreeing FD scales. The native result is unchanged, SHA256
+`07db7b65d385a1a3cbb42fdc4cdcf065892560ae02007fa6040df0bbd9165d0c`,
+17 calls at `brd4_7za9_hhq:derivatives`. No Protenix job is active or queued,
+no replacement was submitted, and no new Z/NO_ATOM result or further progress
+exists. No code, settings or jobs changed; prior receipts, failures and
+unrelated work remain preserved.
+
+## Consolidated DBMol loss implementation reference, 23 October 2026
+
+At the user's request, [docs77](77_dbmol_boltz_loss_implementation.md) now
+provides one reference for exact affinity/contact/confidence formulas and
+signs, two-checkpoint native execution, relaxed chemistry mapping and lost
+information, fixed geometry/occupancy, strict confidence frames, contact-head
+FP64 arithmetic, native gradient validation and historical failure mechanisms,
+step policies, optional detached DeFoG targets, configuration, tests and saved
+scientific evidence. Symbol names and reviewed code-line links support reuse.
+README, docs04 and the original docs36 point to it.
+
+This is documentation assembled from current source and already saved HPC
+evidence. It does not assert universal whole-network finite-difference agreement
+or a useful molecule: source109/source120 passed their named pointwise native
+AD contract, while old finite-secant failures and invalid hard outputs remain
+preserved. No model/fixture execution, HPC connection, upload, submission,
+checkpoint, loss, gate or job change is part of this documentation work.
+Local verification is limited to standard-library Markdown path/line/symbol
+and source-provenance checks; it is not new numerical validation. Existing VAE,
+embedding-prototype and Protenix work is unaffected.
+
+The [completed local documentation audit](../outputs/diagnostics/dbmol-implementation-documentation-audit-20261023.json)
+passed: **94 local links**, **55 code-section/symbol anchors**, **18 unique
+Python sources parsed**, zero issues. It also reads the saved source109
+readiness/pilot JSON directly and preserves their hashes, including
+`validation_passed: true`, `engineering_passed: true` and
+`chemical_advantage_established: false`. Audit SHA256:
+`8fac6c7a4319d0d64a5fc352d93c1266eb9765de53592719e737a8d1e2cbc354`.
+This is static documentation/evidence inspection, not a new native model check.
 
 ## Protenix attempt007 status unchanged, 23 October 2026 10:48 DTU-local
 
@@ -22630,3 +24649,1703 @@ cannot yet obtain enough processor units on one host. Its provisional
 guaranteed start, allocation or CUDA pass. No GPU result/native checks/paired
 data/bridge fitting is present. Passed attempt002 CPU evidence remains unchanged.
 No source136 continuation or Protenix jobs/settings were changed.
+
+## Embedding GPU fully CPU-reserved but still pending, 23 October 2026 12:22 DTU-local
+
+The [read-only saved status](../outputs/hpc-results/source137-epoch36-boltz-embedding-bridge-attempt002/status-1792750976337669100.json)
+records **GPU 29796624 PEND**, with **four of four CPU slots reserved on
+n-62-18-11 from 12:17:16**, superseding the earlier two-slot reservation on
+n-62-18-8. Affinity/core availability on one host still prevents execution;
+eligible pending time is **5,697s**, ineligible time **0s**. The previous
+24 October 02:32:54 provisional forecast is absent, so no reliable latest ETA
+is established. No GPU artifact paths, launch-quota receipt, native checks or
+bridge fitting exist in this snapshot. CPU 29796619 has aged out of scheduler
+history; the saved **139-pass/zero-failure/error/skip** gate and original-36
+bitwise parity remain valid historical evidence. No code, configuration or jobs
+changed; existing continuation and Protenix work remain untouched.
+
+## Independent direct relaxed-molecule Protenix noise pilot, 23 October 2026
+
+The user authorized a small 1,000-update Protenix experiment with Gaussian
+noise added to direct atom/bond logits at each update. Its canonical owner is
+[Mosaic brd4-jq1/protenix-noisy-1000](../../mosaic/experiments/brd4-jq1/protenix-noisy-1000/README.md),
+with dated attempt records and actual events in the
+[Mosaic ledger](../../mosaic/docs/experiment_ledger.md). Frozen native-only
+JQ1-pocket contact, fixed 25 occupied neutral slots, LR0.3/T1/modelkey17;
+independent PCG64seed230017, sigma0.05->0.001 inclusive1..1000. No VAE latent,
+model-weight training or learned denoiser. All numerical work stays allocated
+DTU HPC and requires fresh native/parity/rawFD/null/nonzero/primal/frozen,
+disposable10updatepilot/restoration, terminalgradient/runtime/quota gates.
+
+Attempt01 sealed642files/all145parent scientificsrc unchanged, then failed
+wholeprospectivework3quota beforebsub: conservativeavailable19433914990bytes
+versusrequired20353916553bytes. OriginallocalCRLFtransportpreflight and
+correctedbytepreservingoperator/remotequota failure remain preserved. NoCPU/
+GPUjob, numericalpass or productionupdate. Independentattempt02 is prepared
+for source+archive+outputs on home under its ownquota gate; homeinventory's
+firstreadonly90scollector timedout, longercollectionpending. Same reserves and
+peerprojections retained; no cleanup/gatewaiver. Noattempt02seal/upload/job/pass
+established yet. Sharedallocationclock guard is execution-only, same2h/110min.
+
+This independent Mosaic pilot changes no source136 VAE continuation,
+source137 epoch36 embedding bridge, old Protenix occupancy attempt, checkpoint,
+immutable release or saved failed decision in DBMol. A noisy trajectory alone
+will not establish a chemical, binding or comparative advantage. Exactsource/
+archive/plan/configuration and savedreceipts are linked from the Mosaic records.
+## Independent noisy Protenix pilot could not launch, 23 October 2026 12:47 Paris
+
+[Mosaic's final pilot record](../../mosaic/experiments/brd4-jq1/protenix-noisy-1000/runs/20261023-protenix-noisy-03/README.md#final-read-only-and-static-evidence)
+confirms no own CPU fixtures, GPU evaluation or 1,000-update optimization ran.
+Attempt01 failed its actual work3 admission before bsub. Attempt02 remains
+locally sealed and never uploaded: full recent-home inventory timed out after
+600 seconds, native home quota failed with RPC/permission errors, and cached
+quota alone could not establish admissible capacity. No zero-free-space claim
+or fresh fixed work3 shortfall is inferred from those failed observations.
+
+Actual Boltz/DBMol peers are now staged/admitted, with fresh peer native jobs
+pending; their budgets cannot be excluded as absent drafts. Attempt03 stays
+prepared/unsealed/unsubmitted, with no accounting-policy adoption/pass. The
+[final read-only snapshot](../../mosaic/experiments/brd4-jq1/protenix-noisy-1000/runs/20261023-protenix-noisy-03/status-20261023T104707Z.json)
+shows no own jobs/records. The
+[static audit](../../mosaic/experiments/brd4-jq1/protenix-noisy-1000/runs/20261023-protenix-noisy-03/final-static-audit.json)
+authenticates both 642-member archives, member hashes and 18 Python ASTs,
+with all145 parent scientificsrc unchanged. Prepared protocol/config/code and
+preserved packages are reviewable deliverables, not a completed experiment.
+Dependent launch stopped pending additional verifiable capacity; no cleanup,
+deletion, new job, scientific waiver or guaranteed ETA. Source136/source137,
+old Protenix occupancy attempts and all immutable scientific/failure evidence
+remain unchanged. No Protenix optimization updates were performed.
+The final unsealed Mosaic controller review additionally blocks newly admitted
+peer identities missing from its pinned accounting reader (actual Boltz02)
+and charges complete noisy capsules outside its inherited stale inventory.
+Refreshing that reader is required before future admission; no archive, remote
+release or job changed, and this static correction is no policy/numerical pass.
+The archive count above denotes642sourcefiles per preserved archive, plus its
+manifest, rather than642total tarentries. Launch remains blocked.
+
+## Frozen epoch-36 Boltz mapping pilot completed, 23 October 2026
+
+Read-only [terminal collection](../outputs/hpc-results/source137-epoch36-boltz-embedding-bridge-attempt002/status-1792782131360276800.json)
+at approximately 21:02 DTU-local found saved LSF successful completion for
+**GPU 29796624**, **19:41:35–19:46:30**, n-62-18-10. Its live scheduler record
+has aged out; the durable log and structured result establish completion.
+Attempt002 source/plan remain
+`8209d548ec0420fce5a850bae4d1a900cfda6fee7d7c4672cec35e460dd08923` /
+`34db99c4714bf0ccd5e0a83d5a3b54fa5f85f59dc8416b422d25e8a20f5b5ad5`;
+original VAE checkpoint remains
+`3179ef01f84a2c714ee031bc3e6a6a4dc2cedc767d30e700c887aab1abbd706f`.
+
+Native exact-oracle scalar and constrained-gradient parity passed, gradient
+relative error **1.749677e-6**, with frozen modules/context unchanged. FD remained
+diagnostic. Data accepted **2,031/2,176 attempts** (train 1,629/dev 209/audit 193);
+92 sanitization, 42 disconnected and 11 alignment attempts were rejected and
+retained. The bridge completed **1,000/1,000 updates in 41.549s**, best step
+1,000, 246,624 trainable parameters, unchanged VAE and projection-bank state.
+Full runner elapsed 283.505s.
+
+Audit contains 193 correlated examples/71 distinct decoded identities.
+Count-weighted nearest-prototype accuracy: element **99.9045%**, bond type
+**99.9500%**, trunk connectivity **99.9457%**. Denominators are 4,188 occupied
+atoms and 92,090 directed occupied pairs including NONE diagonals; these do not
+measure independent molecules or whole-molecule accuracy. All audited atoms
+were neutral; charged categories, phosphorus and iodine are uncovered.
+The strict-valid tridecane fixed-context diagnostic had finite latent gradient
+norm 0.145906 and learned/hard loss 11.072826/11.018015 (difference 0.0548104),
+without fresh native rebuilding or optimization. Fit status remains
+`trained_unvalidated`, outer status
+`prototype_fit_completed_not_optimization_validated`; no acceptance thresholds
+or useful learned-gradient result are inferred.
+
+[Independent byte authentication](../outputs/hpc-results/source137-epoch36-boltz-embedding-bridge-attempt002/terminal-authentication-1792782183894979900.json)
+passed checkpoint/data/attempt-log/manifest/training-plan hashes and receipt
+agreement; history records updates 1/100/.../1,000. Bridge checkpoint
+`gpu/fit/best-bridge.pt` SHA256:
+`013834958d52f7aee999ca4c39496e14fc5333d69eb697d47433821f48290343`.
+No code, scientific settings or jobs changed in this status check; source136
+continuation and other projects were untouched. [Detailed outcome](76_epoch36_boltz_embedding_bridge.md#attempt002-completed-the-mapping-pilot-23-october-2026).
+
+## Independent matched embedding comparison CPU submitted, 23 October 2026
+
+The user authorized testing trained hidden-state mappings against the original
+relaxed-molecule path with the same frozen original epoch36 and starting
+latents, leaving the VAE continuation unchanged. New independent
+`source138-epoch36-embedding-comparison-attempt001`
+[seal](../outputs/hpc-submissions/source138-epoch36-embedding-comparison-attempt001/seal.json)
+contains **582 members**; upload/stage returned zero and staging authenticated
+all members. Exact archive/manifest/plan SHA256:
+
+- `e4764c6c6fb3444fd5032285078f5d96f4daa8c8547a5aae84dd5fedf7b69da7`
+- `c239d5fecc97133ea5c78aa8a7e81ac7ebab63acf238adfb7c4dc8625f440303`
+- `60f555eb6193b804d8446dc864a57c52662e4c146be424b8f7cc118f6d6ecd6c`
+
+The [actual CPU submission receipt](../outputs/hpc-submissions/source138-epoch36-embedding-comparison-attempt001/submit-cpu-1792783254961755100.json)
+returned zero and submitted **29802658** to `hpc`, four slots,
+`rusage[mem=8GB]`, one host, 45-minute walltime; status `submitted_not_passed`.
+Fresh quota was **62.55/100 GiB used, 37.45 GiB free**. No CPU result, GPU job,
+derivative pass or optimization update exists in this submission receipt.
+
+The prospective comparison selects three audit posterior means from distinct
+source groups/decoded identities in authenticated source137 data before any
+score. Both paths use exact saved starts, fixed case-specific count/pose/masks,
+frozen original36/bridge/Boltz, full DBMol loss, 50 updates, LR400/maxgrad1/
+trust3/T1 and `best_trial_v2` with 16 trials. Gates precede trajectories.
+All original/terminal/best-own-objective memberships are retained and their
+unique strict-valid molecules receive native seeds17/23, at most30requests,
+with regenerated native inputs and processed-identity audits. Fresh-pose native
+affinities remain distinct from fixed-pose full DBMol scores. Native failures,
+invalid states, no-ops/fallbacks and partial budgets remain explicit outcomes;
+no statistical, binding or chemical superiority follows from this pilot plan.
+
+Release/campaign names end in `source-138-epoch36-embedding-comparison-attempt001`
+and `source138-epoch36-embedding-comparison-attempt001`, independent of any
+separately authorized VAE startup-correction work with a similar source number.
+No source136 continuation setting, checkpoint, job or immutable release changed.
+[Detailed scope and evidence](78_embedding_latent_comparison.md).
+
+## Matched embedding comparison: passed fixtures, missing historical contexts, 23 October 2026
+
+The [actual attempt001 terminal snapshot](../outputs/hpc-results/source138-epoch36-embedding-comparison-attempt001/status-1792783307992603600.json)
+records **CPU 29802658 EXIT1**, 21:20:59–21:21:33 DTU-local, n-62-30-24:
+**210/212 cases passed, two fixture failures, zero errors/skips**. The two
+saved-checkpoint hash fixtures passed strings to `file_sha256(Path)`; CPU
+readiness stopped and no GPU was submitted. Preserve this failure and seal.
+
+New attempt002 corrects those fixture paths. Its 582-member
+[seal](../outputs/hpc-submissions/source138-epoch36-embedding-comparison-attempt002/seal.json)
+has archive SHA `b3041c26afa15f10983c9746813885e72b0e1bbc35326c7f85d5002b3ca07d06`,
+manifest `4a598d1143f6afc180d18dea618cdc09a859f019a7fc042b9025fcb8fb8487dd`,
+unchanged plan `60f555eb6193b804d8446dc864a57c52662e4c146be424b8f7cc118f6d6ecd6c`.
+Upload/stage/CPU submission returned zero; fresh quota was63.07/100GiB,
+36.93GiB free. The
+[static manifest comparison](../outputs/implementation-checks/source138-embedding-attempt001-002-manifest-delta.json)
+finds all production `src/`/comparison-plan bytes unchanged. Besides the fixture,
+an independently edited, unused-in-comparison VAE startup helper changed in the
+snapshot; do not claim all archive bytes except one were identical.
+
+The [attempt002 terminal snapshot](../outputs/hpc-results/source138-epoch36-embedding-comparison-attempt002/status-1792783426704147500.json)
+records **CPU 29802683 EXIT1**, 21:22:38–21:23:17 DTU-local, n-62-31-16.
+Its fixture gate passed **212/212**, zero failures/errors/skips, pytest25.64s /
+JUnit25.552s, then strict original36 loading and bitwise ordinary/capture decoder
+parity with unchanged frozen state passed. JUnit SHA:
+`3216abfe7fe65bbe69a2171afd4f88376da054941f2c930a6e7b1c9531fa3991`.
+The whole CPU stage failed later in actual start preparation because historical
+source056 `contexts/count-19/prepared.pt` was absent. This is not a fixture,
+gradient or chemistry failure. No GPU was submitted and no optimization ran.
+
+The verified 21October cold-offload map locates all44 removed source056 native
+contexts in preserved local `cold2-payloads.tar.gz`, SHA
+`ec6797d064f5219b1279ea12b92a737a314bbfd02ebd8c3be25c690968ce866e`.
+Exact byte-restoration preparation is independent of native regeneration,
+prescribed-start selection or scientific changes. Restore/authentication and a
+new allocated readiness result remain to be recorded; neither failed attempt
+is rewritten or restarted. VAE continuation and mapping-pilot artifacts remain
+untouched. [Detailed evidence](78_embedding_latent_comparison.md).
+
+### Exact source056 context restoration package prepared
+
+Standard-library extraction/authentication recovered all44 cold-offloaded
+source056 `prepared.pt` files from the preserved cold2 archive without model
+imports, tensor loading, native regeneration, remote writes or job changes.
+The [local proof](../outputs/hpc-submissions/source138-context-restore-20261023/local-extraction-proof.json)
+confirms all original map sizes/hashes, **1,451,429,736 raw bytes**, and unchanged
+source archive SHA before/after extraction. The new capsule has exactly45regular
+members: those44original-work3-relative files plus the restore manifest.
+Capsule size18,476,907bytes/SHA
+`ef82e950d0f1bb426d098592ba7d4b7a0584ef75fb8029babe93a57690c50d8b`;
+[manifest](../outputs/hpc-submissions/source138-context-restore-20261023/restore-manifest.json)
+SHA `60765caddc95f881ed2207b12ac8ed69398f9b47c3635d7c71eae08cd32938e1`.
+No checkpoint/othercoldpayload is included. This local package does not establish
+remote restoration or a new allocated pass; those require separate receipts.
+
+## Exact context restoration completed; unchanged embedding attempt003 submitted
+
+At **23 October 2026 21:30:43 DTU-local**, the
+[guarded restoration completion](../outputs/hpc-submissions/source138-context-restore-20261023/completion.json)
+recorded all **44 source056 contexts restored to their original paths**,
+**1,451,429,736 raw bytes**, exact sizes/hashes. The
+[transport receipt](../outputs/hpc-submissions/source138-context-restore-20261023/remote-restoration.json)
+and [independent 21:31:52 read](../outputs/hpc-submissions/source138-context-restore-20261023/independent-verification.json)
+authenticate all **50 catalogued contexts** and unchanged original36, trained
+bridge and source136 archive hashes. No numerical regeneration, job/setting
+change, checkpoint write or original cold-archive mutation occurred. Immediate
+post-restoration quota was64.41/100GiB,35.59free; later submission quota reflects
+concurrent activity separately.
+
+New independent attempt003 has the same **582-member manifest** as attempt002:
+**no source or comparison-plan change**. The
+[seal](../outputs/hpc-submissions/source138-epoch36-embedding-comparison-attempt003/seal.json)
+binds archive `bccba5d6a762349b450baf03b24251e12994be598926ce8960f6e5869d55ce9b`,
+manifest `4a598d1143f6afc180d18dea618cdc09a859f019a7fc042b9025fcb8fb8487dd`,
+plan `60f555eb6193b804d8446dc864a57c52662e4c146be424b8f7cc118f6d6ecd6c`.
+Upload/stage and the
+[actual CPU submission](../outputs/hpc-submissions/source138-epoch36-embedding-comparison-attempt003/submit-cpu-1792783925232386600.json)
+returned zero and submitted **29802735**: four slots, `rusage[mem=8GB]`,
+one host, 45 minutes, `submitted_not_passed`. Fresh quota was64.17/100GiB,
+35.83free. No attempt003 readiness pass, GPU job or optimization result follows
+from submission. Preserve both earlier failed attempts; frozen VAE/bridge/Boltz
+and independent continuation remain unchanged.
+[Detailed evidence](78_embedding_latent_comparison.md#exact-context-bank-restored-unchanged-attempt003-cpu-submitted).
+
+## Embedding comparison attempt003 CPU passed; GPU queued, 23 October 2026 21:37
+
+The [actual CPU terminal snapshot](../outputs/hpc-results/source138-epoch36-embedding-comparison-attempt003/status-1792784006917505500.json)
+records **29802735 DONE**, 21:32:09–21:32:49 DTU-local, n-62-31-20.
+All **212 fixtures passed**, no failures/errors/skips, JUnit25.020s; full stage
+32.1028s. Authenticated original36 strict loading/bitwise ordinary-capture parity
+and frozen-state preservation passed, followed by actual prepared shared starts
+at prescribed sample indices **0/3/6**, occupied counts **25/19/19**. No score
+or gradient filtered/replaced a start. `starts.pt` SHA
+`832592de7183b51ac22542ead558bc453006d3d349d942e2933dd1a52fb40ebd`;
+JUnit SHA `613c8e0b193e1e6ef7907615cd93f198a15417497f2fec3e30818f82606ec3b1`.
+Attempt003 source/manifest/plan identities remain those recorded above.
+
+The [guarded GPU submission](../outputs/hpc-submissions/source138-epoch36-embedding-comparison-attempt003/submit-gpu-1792784164515503800.json)
+returned zero and submitted **29802743 at21:36:07 DTU-local**, gpua100,
+one exclusive80GB A100/four CPU slots, `rusage[mem=16GB]`, 24h walltime/23h
+shared internal budget; `submitted_not_passed`. Fresh quota64.80/100GiB,
+35.20free. The [21:36:20 saved scheduler observation](../outputs/hpc-results/source138-epoch36-embedding-comparison-attempt003/status-1792784180809306300.json)
+records the initial new-job wait. The later
+[21:37:42 scheduler observation](../outputs/hpc-results/source138-epoch36-embedding-comparison-attempt003/status-1792784262997389600.json)
+confirms **PEND**, job-slot limits on five hosts, eligible96s/ineligible0s and
+no GPU artifacts/results. No native derivative pass, optimization start, complete
+paired budget or fresh native molecule outcome is established yet. No reliable
+ETA. Existing VAE continuation and all earlier failed comparison seals remain
+unchanged. [Current comparison evidence](78_embedding_latent_comparison.md#attempt003-cpu-readiness-passed-native-comparison-gpu-queued).
+
+
+## Embedding comparison still queued, 24 October 2026 01:30 CEST
+
+The [fresh read-only snapshot](../outputs/hpc-results/source138-epoch36-embedding-comparison-attempt003/status-1792798218154998400.json)
+confirms GPU **29802743 PEND** due to job-slot limits on five hosts, with
+14,051 eligible pending seconds and zero ineligible seconds. No GPU artifact,
+native derivative result or optimization progress exists; no reliable ETA.
+The CPU scheduler record aged out, while its saved full-stage pass, all 212
+fixture passes without failures/errors/skips and authenticated shared starts
+remain available. No runtime code, settings, jobs or independent VAE
+continuation changed. [Comparison status](78_embedding_latent_comparison.md#read-only-status-24-october-2026-0130-cest).
+
+
+## Embedding comparison still queued, 24 October 2026 10:54 CEST
+
+The [fresh read-only snapshot](../outputs/hpc-results/source138-epoch36-embedding-comparison-attempt003/status-1792832067824362000.json)
+confirms GPU **29802743 PEND**, job-slot limits on **four hosts**, 47,901
+eligible pending seconds (about 13 hours 18 minutes), zero ineligible time.
+No GPU artifact, derivative gate or optimization update exists; no reliable
+ETA. Saved full CPU readiness, 212 fixture passes and all three exact shared
+starts remain valid. No runtime code, settings, jobs or independent VAE
+continuation changed. [Current status](78_embedding_latent_comparison.md#read-only-status-24-october-2026-1054-cest).
+
+## Embedding comparison terminal failure before optimization, collected 26 October 2026
+
+The [12:52 CET read-only snapshot](../outputs/hpc-results/source138-epoch36-embedding-comparison-attempt003/status-1793015544565816000.json)
+establishes **GPU 29802743 ran 25 October 06:33:02–06:48:42 CET**, n-62-18-12,
+then **EXIT1**. The live scheduler record aged out; saved LSF output records
+the actual failure, with 940s allocation/919.304s runner elapsed. All three
+native-oracle checks passed. Cases001/002 passed relaxed and learned start
+gates and exact production-gradient bindings. Case003's **relaxed** path failed
+gradient-direction independent forward/reverse AD: affinity absolute error
+`2.5204821007445213e-6` versus allowed `2.0817236646993208e-6`; total
+`3.4778529073341627e-6` versus `2.583432959841326e-6`. Its three random
+directions and frozen-module/context checks passed. The generic “Learned-start”
+exception does not change the actual `scoring_path=relaxed`; case003 learned
+was not executed.
+
+No optimization directories or fresh-native stage exist: **zero updates** and
+no molecular-performance comparison. No root cause or validated fix follows.
+The [complete 12-file gate summary](../outputs/hpc-results/source138-epoch36-embedding-comparison-attempt003/terminal-gates-1793015579941148800/summary.json)
+and [final exact-byte receipt](../outputs/hpc-results/source138-epoch36-embedding-comparison-attempt003/terminal-gates-1793015579941148800/lf-normalization-integrity.json)
+authenticate 890,446 bytes against original remote hashes; earlier collector
+truncation/local newline-state evidence is retained. Source/plan/frozen inputs
+and every failed attempt remain unchanged. This status collection changed no
+runtime code, settings, jobs or independent VAE continuation.
+[Current interpretation](78_embedding_latent_comparison.md#terminal-result-collected-26-october-2026-derivative-gate-stopped-optimization).
+
+## Embedding gradient diagnosis and guarded resubmission authorized, 26 October 2026
+
+The user requested **“fix it and resubmit”** after attempt003 stopped on the
+third start's relaxed derivative gate. New immutable
+`source139-epoch36-embedding-gradient-diagnostic-attempt001` is being prepared
+for allocated CPU readiness followed by a one-hour GPU/55-minute internal
+diagnostic. It splits the derivative at decoder logits, relaxed graph and native
+chemistry to localize the mismatch and performs no optimization updates.
+Original epoch36, trained bridge, exact saved starts, full objective,
+budgets/tolerances and all failed records remain fixed; no automatic gate
+weakening or start removal is authorized. No diagnostic pass, selected correction
+or submitted job is established yet. Corrected comparison attempt004 is not
+yet selected/submitted. This prospective documentation changes no runtime code,
+jobs or independent VAE continuation.
+[Scope and limits](78_embedding_latent_comparison.md#targeted-correction-and-resubmission-authorized-26-october-2026).
+
+## Embedding gradient diagnostic attempt001 CPU submitted and running, 26 October 2026
+
+Independent `source139-epoch36-embedding-gradient-diagnostic-attempt001`
+[seal](../outputs/hpc-submissions/source139-epoch36-embedding-gradient-diagnostic-attempt001/seal.json)
+contains **592 authenticated members**; upload/stage returned zero. Archive SHA
+`bd677171c8890c888191e1280ed62c8b84bb622d6b8e8b0f13cdbe5656ac8740`, manifest
+`90f744e73a71dc79a9165c2db33353c096d0484bde5398ba7c95386eda547ff9`, plan
+`517d1086d9eb69c9ea101cb1125f8d87e31ee2341fc6e053b5e989467ac3df7a`.
+The [actual CPU submission](../outputs/hpc-submissions/source139-epoch36-embedding-gradient-diagnostic-attempt001/submit-cpu-1793018868370240500.json)
+returned zero, **29821224 submitted 13:47:51 CET**, four slots,
+`rusage[mem=8GB]`, one host, 45-minute walltime. The
+[saved snapshot](../outputs/hpc-results/source139-epoch36-embedding-gradient-diagnostic-attempt001/status-1793018900321656700.json)
+confirms **RUN since 13:47:52 on n-62-30-23**, with CPU readiness pending and
+no GPU submission or numerical pass yet. Submission quota had52.31GiB free.
+
+The [static source delta](../outputs/implementation-checks/source139-embedding-diagnostic-vs-comparison003-manifest.json)
+preserves protected VAE/native/bridge/production-optimizer modules. The archive
+also snapshots unused concurrent Protenix changes; it is not solely diagnostic
+changes. No root cause, selected correction, optimization or comparison004
+submission is established. All failed evidence and independent VAE continuation
+remain unchanged. [Diagnostic status](78_embedding_latent_comparison.md#diagnostic-attempt001-authenticated-cpu-running-26-october-2026).
+
+## Embedding diagnostic CPU passed; GPU queued, 26 October 2026 13:50 CET
+
+The [actual CPU terminal snapshot](../outputs/hpc-results/source139-epoch36-embedding-gradient-diagnostic-attempt001/status-1793018959232362600.json)
+records **29821224 DONE**, 13:47:52–13:48:43 CET on n-62-30-23, **223 fixtures
+passed**, zero failures/errors/skips; JUnit32.285s/full stage41.000s.
+Authenticated original36 parity and unchanged frozen state passed, and all
+three exact parent starts reproduced. The real CPU decoder-only probe had
+absolute duality error `1.5692636872219985e-8`, inherited bound
+`1.1245987208140518e-6`, with exact AD-mode primals and unchanged VAE. Its
+cotangents were deterministic engineering coefficients, **not native Boltz**;
+this is diagnostic evidence, not a native gradient pass or historical promotion.
+
+The [guarded GPU submission](../outputs/hpc-submissions/source139-epoch36-embedding-gradient-diagnostic-attempt001/submit-gpu-1793018964838402000.json)
+returned zero, **29821249 submitted13:49:29 CET**, one exclusive80GB A100/four
+slots, one-hour walltime/55-minute internal cap, `submitted_not_passed`.
+Fresh quota was48.20/100GiB used/51.80free. The
+[13:50:06 snapshot](../outputs/hpc-results/source139-epoch36-embedding-gradient-diagnostic-attempt001/status-1793019006060069300.json)
+confirms **PEND**, waiting for `ngpus_physical` on one host, no reliable ETA or
+GPU artifact/result. No numerical fix or comparison004 has been selected or
+submitted, no optimization ran, and independent VAE continuation is unchanged.
+[Current diagnostic evidence](78_embedding_latent_comparison.md#diagnostic-cpu-passed-gpu-queued-26-october-2026-1350-cet).
+
+## Embedding diagnostic later status collection blocked by access timeouts, 26 October 2026
+
+The [last successful read, 13:52:49 CET](../outputs/hpc-results/source139-epoch36-embedding-gradient-diagnostic-attempt001/status-1793019169106562100.json)
+records **29821249 PEND**, waiting for `ngpus_physical` on one host, no GPU
+artifacts/result. Later normal collections failed SSH255/timeouts to login1
+([receipt1](../outputs/hpc-submissions/source139-epoch36-embedding-gradient-diagnostic-attempt001/collect-gpu-1793019372650144900.json),
+[receipt2](../outputs/hpc-submissions/source139-epoch36-embedding-gradient-diagnostic-attempt001/collect-gpu-1793019410280427500.json)).
+A [strict authenticated alternate-login2 attempt](../outputs/hpc-submissions/source139-epoch36-embedding-gradient-diagnostic-attempt001/alternate-login-verification.json)
+also timed out after official host-fingerprint verification using a task-local
+known_hosts file. No global SSH configuration changed or authentication bypass
+occurred. Collection failure is not GPU failure and establishes no new job state.
+
+Correction/resubmission authorization remains active. Reading native diagnostic
+evidence must precede selection of the smallest demonstrated correction and a
+full-gate rerun. No numerical fix/comparison004 is selected; no runtime code,
+job, scientific setting or independent VAE continuation changed in these reads.
+[Access boundary and next step](78_embedding_latent_comparison.md#later-collection-blocked-by-ssh-timeouts-last-known-gpu-status-remains-pending).
+
+
+## Embedding diagnostic access recovered, still queued, 26 October 2026 22:39 CET
+
+The [fresh successful snapshot](../outputs/hpc-results/source139-epoch36-embedding-gradient-diagnostic-attempt001/status-1793050788490890700.json)
+confirms SSH access recovered. GPU **29821249 remains PEND**, with four CPU
+slots reserved on **n-62-18-8** and physical GPU availability blocking
+execution. No GPU launch/log/native result exists; no reliable ETA. The saved
+full CPU pass, 223 fixture passes and original36 parity remain valid despite
+aged-out CPU scheduler history. Numerical correction and full comparison retry
+still await native evidence; correction authorization remains active. No
+runtime code, settings, jobs or VAE continuation changed in this check.
+[Current evidence](78_embedding_latent_comparison.md#access-recovered-diagnostic-still-queued-26-october-2026-2239-cet).
+
+## Native embedding derivative diagnostic completed; narrow candidate selected, 27 October 2026
+
+The [terminal read](../outputs/hpc-results/source139-epoch36-embedding-gradient-diagnostic-attempt001/status-1793097916707003400.json)
+records **GPU 29821249 DONE**, 26 October 23:31:48–23:34:47 CET, n-62-18-12,
+179s allocated/159.643s runner elapsed. Exact original parent scores,
+gradient/direction, full/cut primals and complete captured-input VJP tensors
+were reproduced. Native oracle/frozen identities passed. Local total-loss
+duality errors were final graph policy `3.4772080571556993e-6`, decoder
+`4.641983438261055e-10` and adapter `5.792675367155553e-15`. Final-policy-only
+FP64/cast-back control reduced error to `5.071365666818595e-10` with the
+original native graph cotangent fixed; no native score at its changed primal
+was evaluated. This is attribution/control evidence, not a passed native fix.
+
+The authorized selected candidate applies that smallest precision change only
+in the comparison's final graph policy, preserving shared VAE/default training,
+bridge/native models, the three exact starts, objective, settings, budgets and
+tolerances. Complete fresh native/derivative/production-binding gates remain
+required before optimization. No comparison004 seal/submission or molecular
+comparison result is established yet; all failures remain preserved and VAE
+continuation is unchanged by this work.
+
+[Verified diagnostic](../outputs/hpc-results/source139-epoch36-embedding-gradient-diagnostic-attempt001/terminal-20261027/gpu-diagnostic.json)
+SHA `be2403a9616a3345791e748747b9e2ca99fb55a0bab5641e506a473b2e48d9f9`;
+[GPU result](../outputs/hpc-results/source139-epoch36-embedding-gradient-diagnostic-attempt001/terminal-20261027/gpu-result.json)
+SHA `e3cbd22abe80329424c8484592c734881d9d2df3c135701acc2ad4d8cd537f36`.
+The [integrity receipt](../outputs/hpc-results/source139-epoch36-embedding-gradient-diagnostic-attempt001/terminal-20261027/integrity.json)
+binds their exact original remote sizes/hashes.
+[Interpretation and next gates](78_embedding_latent_comparison.md#diagnostic-completed-final-policy-precision-candidate-selected-27-october-2026).
+
+## Corrected embedding comparison attempt006 CPU passed; GPU queued, 27 October 2026
+
+Attempt005's two inherited CPU exactness failures remain preserved. Unchanged
+268-fixture kernel controls reproduced both baseline failures and passed all
+268 with MKL-compatible four-thread execution; no strict assertion was weakened.
+New immutable attempt006 declares the CPU-only `mkl_compatible_four_threads_v1`
+profile for fixtures and actual parity/shared-start readiness. Archive SHA
+`456c8cc8ae0fbc2d84dcdadddd7734f879cefc9db4204275b8bcd0525ec62acb`, manifest
+`aedc247e662a9faa974f90f55173f383c3b93128dbab9c5a7d15681b739919b8`, plan
+`58b47026f175622992c8ea1e257e02d1836387c752aa024bb2fcc0201e886802`.
+
+The [full CPU terminal snapshot](../outputs/hpc-results/source138-epoch36-embedding-comparison-attempt006/status-1793099462736059700.json)
+records **29829824 DONE**, 12:10:00–12:10:50 CET on n-62-11-63, all **283
+fixtures passed**, zero failures/errors/skips, full runner 41.6918s. Original36
+default decoder bitwise parity and frozen state passed. All three parent
+latents/masks/dtypes/records/hard identities matched exactly, retaining starts
+SHA `832592de7183b51ac22542ead558bc453006d3d349d942e2933dd1a52fb40ebd`.
+Maximum corrected-policy probability change was 1.7881393432617188e-7.
+Native GPU arithmetic/settings are unchanged; this CPU candidate readiness
+does not promote a native correction pass.
+
+The [actual GPU submission](../outputs/hpc-submissions/source138-epoch36-embedding-comparison-attempt006/submit-gpu-1793099470162269900.json)
+returned zero: **29829828 submitted 12:11:13 CET**, one exclusive 80GB A100/four
+slots, 24h walltime/23h internal. Fresh quota 47.01/100 GiB used, 52.99 free.
+The [12:11:25 saved status](../outputs/hpc-results/source138-epoch36-embedding-comparison-attempt006/status-1793099485493670200.json)
+confirms **PEND**, new scheduling, no GPU artifacts, fresh native gates or
+optimization updates; no reliable ETA. All failed seals/controls remain
+preserved, and independent VAE/epoch45 work is unchanged by this comparison.
+[Current evidence and limits](78_embedding_latent_comparison.md#attempt006-full-cpu-readiness-passed-gpu-queued-27-october-2026-1211-cet).
+
+
+## 2026-10-29T12:09:04.529635+00:00 — Cross-experiment sulfur mechanism audit and documentation
+
+User requested documenting/investigating recurring sulfur enrichment. Added docs84_sulfur_bias_in_validity_guidance.md and navigation in README/docs04/docs45/docs53; companion Mosaic docs/sulfur_bias_in_chemical_guidance.md links source/evidence/mechanisms. Historical live local-overvalence mixes actual atom/charge probabilities with max allowed cap: C4->S6 lowers fixed-bond component; all five fixed charge classes retain two-unit cap gap. Existing all4096prior states show meanC/S16.4789/.39095->3.6838/17.5771 at epoch100, size approximatelyunchanged; causal fraction of complete training drift remains unisolated. Atom-preserving/frozen-cap paths remove that immediate atom derivative, while accepted identity NLL/shared weights/selection/refresh remain distinct possible routes. Current Mosaic CPU29848106 measured early native push then conditional teacher reinforcement; not the same max-cap component. Source138 fixed panel sulfur1.5070%->1.4394% is a non-universality counterexample, not a matched fix ablation.
+
+New allocated component CPU29848155 submitted/started13:02:39CET and DONE13:02:47CET29October2026 n-62-31-4;8passed/zero failures/errors/skips,5.781s FP64CPU/Torch2.5.1+cu121/RDKit2024.09.6/CUDAuninitialized. Exact five canonical source snapshots and selected original function AST nodes authenticated. Legacy nearhard5-neighbor fixedbond C loss.0554624652 vsS~0; dL/dSlogit-.01386561630 matchedFD-.01386561629. Frozen-risk component suppliedsynthetic hard identity/caprows has no immediate atom gradient; it is not a fullprepare/search pass. ActualfixedSgraphNLLreinforcesidentity, populationJSopposesenrichment; sharedparameterexample explicitlytoy/nottrainedattribution. Legitimate thioether/sulfoxide/sulfone/SF6 sanitize whileCF6fails; no falseSvalence cap orban. Sourcearchive04ba03ef5a50d5ab17a8b7ea0535c3f46d5af54192a36d0d62f7a4f2e486b5b6/manifest a1d8c4353f5743cb02344194f7648a1f98c93b6d96a04d9e513b5facef1a5f86; summary60e1cf2a428dc8ba6db91cf949ead819f0e076009336315a71e23f30d2d752d3,3result/logfiles sizeSHAverified. Exact commands/source/provenance/receipts in sibling Mosaic experiments/validation/sulfur-guidance-audit and results/hpc/20261029-sulfur-guidance-audit-01. No models, optimization, training, GPU use or WORK3writes; new boundedHOMEdiagnostic only. LocalworkstdlibAST/hash/JSON/link/transfer only.
+
+Separate reviewer verified source reuse and corrected softanchor wording (discourage deletion, not guarantee), while documentation owner qualified frozen syntheticrows/causal scope. All26newDBMol document/navigation links and18newMosaicdoclinks passed staticchecks. No productionloss/model/checkpoint/currentoptimization/scientificgate or preexistingjob changed; fulltrainingcausal contributions and internaltime/topology/hardaux cause of learnedteacherflip remain open.
+
+
+## 2026-10-30T09:55:45.495045+00:00 — Cross-repository DeFoG sulfur correction investigated and resubmitted
+
+User requested fewer sulfur atoms using existing chemistry guidance, testing then a corrected fresh run. New Mosaic learned-prior/protenix-defog-composition-30000 reuses shared population_js on fixedN live atomcounts and frozen officialGuacaMol conditional element reference; bond-only neighborloss cannotdirectlycounter atomdrift. CPU29852742 passed31predeclared saved-state JS/AD/FD controls, fixedmu.7276566386277723=1.25*minimum.5821253109022179; referenceS.01471232162. ExactrawcalibrationSHA0e1c4d3cbc2e19c95eb8426d326cc738d5b4f624d4c9221985150d771d1da93c. This is a per-graph compositionpreference, including a tradeoff against some legitimateScompositions, not a ban/validity oracle.
+
+GPU29852743 isolatedoldterminal issue to nativeatomAD, withprior/bondsagreeing; FP64GPU29852804 andautotune0GPU29852812 retaincoarsefailure. FineCPU29853002 exactfrozenFP64reference resolves localnativeAD.00509808668019 againstcentralFD.00509808667504 andbothonesidesat1e-6,3e-7,1e-7; coarseprobes crossnearbysharpbend, operationnotisolated. RawSHA19af0b0cabc58a19fb62c284a8f01c9f0a6fd6f2f7f344488dc7cdc5b3f32513. No nativeparameter/formulachange orruntimefixadopted; oldfailurepreserved. FineGPU29852908retiredonlyafterexactPEND/nooutput/replacementproof; CPU29852966failedlosslesscastguard preserved, CPUhostpromotionrepair keptzero-tolerancecastback andpassed.
+
+ProductionCPU29852854failedCRLFbeforetests;02CPU29852864passed98 butnoGPUdispatch.03explicitlymovesoldforeigncoarseprerequisitetodiagnostic afterfineproof, retainsactualfreshnative/componentgates, addsstrictfinite nonzero measuredfixedteacherdescent withsameLR.3/TV.02/12halvings, rejectsnoops/uphill andstopsincompleteonexhaustion.03CPU29853099passed100; finalresource-only04CPU29853132passed100actualcases26own+74shared/zeroerrorsfailuresskips, alltenrawproof/XML/LSF/source/config/cert/dispatchfilesverified. FinalGPU29853158submitted30Oct10:52:38CET, PENDat10:53physicalGPUavailability; noGPUqualification/pilot/productionresult yet. Targetsame30000updates/N25/seed17/Dirichlet1/LR.3/time.2->.95/constantDeFoG.5364198835347113, fixedJS andcheckeddescent. Fresh31nativeSdirectionpanel,matched64+64pilot andfullruntime/output checks precedefullproduction. HOME3.25GiBowncap+4GiBreserve+192MiBsourceallowancepassed, zeroWORK3newoutputs. Manifest4d79ff21029d206ef4b385e1ed2b9a046c2c87662705b2418501e8e7577e0c93; evidence ../mosaic/results/hpc/20261030-protenix-defog-composition-30000-04/collection-001/verification.json and experimentrun04. Separate reviewer/documentationownerfollowedAGENTS; DBMoldefault/VAE/Boltz/embedding runs and allcheckpoints unchanged, oldpauseddiagnostic29846730/report/monitorsuntouched. Docs84 and Mosaic sulfurmechanismdocupdatedwithmethod, limits andprovenance.
+
+
+## 2026-10-30T10:39:49.214321+00:00 — Read-only composition DeFoG startup failure confirmed; no production results
+
+GPU29853158 EXIT1 executed30Oct11:17:11--11:23:05CET n-62-13-17. Summaryfailed/completed_updates0; Separate prior derivative gate failed for atoms atcombined_low, before paired64+64pilot/30kloop. No productionstates or new hard/soft sulfur/validity trajectory. Initialnative/parity/teacherrepeat andfresh31saved-state sulfur-direction checks passed; these localcontrols are not actual molecular improvement. Combined/native/JSselectedatomFDall3pass; priorAD-7.62317504e-5 vsFD-8.34465027e-5/-5.96046448e-5/0at.01/.003/.001 failsadjacentpair. Pattern suggests FP32small-componentFDprecision, not proven/remedied in statuscheck. ActualXID31 GPUmemorywarning retained, not establishedcauseofPythonassertion. SummarySHAcfc830d3b653aa9344c51effa7e349ffa2bd3750d1410150fadeb550e7be49d0. Evidence ../mosaic/results/hpc/20261030-protenix-defog-composition-30000-04/status-20261030T103744.815413Z.json; owningrun04 updated. Read-only helper/stdlib savedmetadata, no new numerical/model test, submission/restart, code/runtime/scientific settings change or monitor resume.
+
+
+30October2026 DeFoG composition attempt05 preparation: user authorized validation precision fix and30kresubmission. Independent FP64KL/JS scalar oracle on actual FP32stencil, native/optimizer unchanged; unchanged config/maths/worker/context/reference bytes audited against04. Exact cancellation/wrong-gradient regressions and shared storage entry integration added; fresh allocatedCPU/GPU checks still pending. Preserves failed04zero-update evidence/XID31warning. No model/numerical execution or submission in preparation. Owning Mosaic runs/20261030-composition-05.
+
+
+30October2026 at11:54CET: attempt05CPU29853441 submitted11:54:14/started11:54:15 on n-62-28-31 (4slots/16GiB/45min). Source manifest bf68f2463f65ccab19c223bf0cc43c7cb2fdde7c406f9f62bbef711e4a89948c, archive 12cf7d74cf5450481eaca49acf60c4e5768a352a6d0de4e139815d1c332e609a. Startup authenticated sealed source; allocated shared-HOME storage entry test passed so far. Full31own+74inherited+28shared qualification stillRUN; no GPU submission or production update yet. Original04failed receipts preserved; reviewer independently found no critical issue and confirmed production math/config/worker bytes unchanged.
+
+
+## 2026-10-30 DeFoG composition precision repair qualified; full30k resubmitted
+
+User-authorized attempt05 fixes validation arithmetic only. Exact initial atom contrast row18 F->N reproduces04FP32finite differences -8.34465027e-5/-5.96046448e-5/0 at.01/.003/.001; independentFP64KL on actualFP32stencil agrees all3 with unchangedFP32AD(-7.62319542e-5). Wrong-sign rejection passes. This CPU reproduction is independent of04's retainedXID31warning; no hardware causal claim. NativeFD remainsFP32, same component/useful-gradient/sign/15%/tiny/adjacent policies. Productionmaths/config/teacherworker/reference frozen; evaluate/objective_step/native/save AST unchanged. ConstantKLlambda.5364198835347113 andJSmu.7276566386277723, N25/randomseed17/LR.3/t.2->.95/strictmeasured descent remain unchanged.
+
+CPU29853441 actualDONE11:54:15--11:56:13CET n-62-28-31,31own+74inherited+28shared=133passed,zero errors/failures/skips. Actual source/storage entry validated. Sourcebf68f2463f65ccab19c223bf0cc43c7cb2fdde7c406f9f62bbef711e4a89948c, archive12cf7d74cf5450481eaca49acf60c4e5768a352a6d0de4e139815d1c332e609a, config316d89cf2c68e0bd9e9f791c0711e04c55c1898a15fcdc3678ea88eaddfd89ac, CPUcert1eed77e03e177f251e77759a5cba9a1d12aa417187b086fb21b6802264dafdc4. Full8hL40S GPU29853447 submitted11:56:49; confirmedPEND11:57:24 waiting scheduling,4CPUslotsreservedn-62-13-14 is not execution. No production updates or new validity/sulfur result; freshGPUchecks and matchedpilot remain pending.
+
+Mandatory new shared storage policy uses remaining measured writes/one25%margin/fixed64MiBcontrol/4GiB+100kfile reserve/single1GiBburst. HOMEcache limitation/age andpost-cache ownfamilywrites retained, knownWORK3writeroutputs separate, unknownHOMEwriterblocks; no WORK3output or foreignjob control/cleanup. Old2xsample+512MiBprojection explicitly replaced bysharedforecast/currentbytes againstsame3.25GiBhardcap. Initialbroadmetadata scan timedout60s,preserved; optimized no-follow ownfamily scan passed3.86s. This resource correction changes no scientific objective or completedresult. Allsource01--04failures preserved, no monitorresume/reportrefresh. Mosaic owning runs/20261030-composition-05; results/hpc/20261030-protenix-defog-composition-30000-05/resubmission-summary.json andcollection-001/verification.json verify11rawfilesinclactualXML/LSF/cert/regression.
+
+
+## 2026-10-30T11:00:00.599846+00:00 — Common gradient validation policy prepared; isolated CPU regressions pending
+
+User authorized correcting overly strict/badly specified gradient checks in both
+repositories, retaining real-error checks and leaving running jobs unchanged.
+README and AGENTS now require gradient-validation-policy-v1. Prospective DBMol
+pointwise v5/embedding v2 permit attached flat derivatives with independently
+checked relative AD consistency; explicit old contracts remain. Mosaic defaults
+to geometry/represented-input/resolution-aware probes with independent local AD
+corroboration for inconclusive FD, preserves real measured descent, and requires
+explicitly declared flat fields. Endpoint hook-v2 records bounded element-local
+numerical replay with independent reader verification; frozen/input/source
+identities stay exact. Negative regressions cover missing, reversed/scaled,
+nonfinite, mutated and forged evidence. No scientific objective/settings changed.
+
+Preparation used local Python3.13 stdlib AST/hash/layout/archive operations only.
+All26selected Python files and generated submission AST passed; common policy
+documents are byte-identical. Full Mosaic layout audit also found preexisting
+missing README directories under historical output/cache trees; new-test discovery
+was registered in the canonical layout map. No local numerical/model test ran.
+Scoped test execution will use a fresh isolated four-CPU16GiB DTU allocation
+with CUDA hidden, no pretrained weights/production updates or successor dispatch.
+No running/pending job, callback, sealed release, saved state/cache/checkpoint
+was edited, canceled, restarted or adopted. Submission/results remain pending.
+See the [Mosaic run record](../../mosaic/experiments/validation/endpoint-qualification/runs/20261030-gradient-policy-01/README.md)
+and common [policy](GRADIENT_VALIDATION_POLICY.md).
+
+
+## 2026-10-30T11:07:41.884572+00:00 — Common gradient policy CPU regressions submitted
+
+Isolated job29853482 submitted to hpc at11:07UTC: four CPU slots/16GiB/50min,
+CUDA hidden, synthetic two-repository checker tests only. Fresh archive
+6e9caddc375f6a635201e334e35216c291e3f8fb57b10bdd7d48783f37eb6e9a, manifest46c4a591840a38ee2cd94b177e6c4e8147b3eb13142b969b551e912685515971,
+1944members/17,136,853sourcebytes. Common storage preflight passed with
+24,623,190,759byte margin, exact six-pool quota and authenticated remaining
+writer budgets; entry/terminal use the same common assessor and fresh checks.
+No native model qualification, optimization, successor or live adoption.
+
+Earlier local001/002packages were superseded before submission.003's submission
+failed before invoking bsub because the helper command omitted login-shell PATH;
+FileNotFoundError and intent preserved, no remote submission receipt and a valid
+exact-name bjobs JSON query returned JOBS0.004 restores bash-lc transport setup,
+uses a fresh source/intent, and has actual scheduler acknowledgement. No original
+job, callback, state, cache or sealed release changed. Numerical outcomes pending.
+Exact local receipts: outputs/gradient-policy-validation/20261030-attempt004.
+
+
+## 2026-10-30T11:14:10.888848+00:00 — Gradient regression attempt005 submitted after metadata-only004 stop
+
+CPU004 job29853482 EXIT after5seconds at storage entry; a concurrent source148
+CPU29853481 was unknown to the sealed writer inventory. No numerical test ran.
+Nine raw assets including outer EXIT and original traceback were collected with
+remote/local SHA and size verification in attempt004/snapshot-1793358526298264681.
+Subsequent read-only reconciliation authenticated source148 DONE9fixturepasses,
+then new manual source150 isolated one-update pilot source/config/manifest.
+Neither external job was controlled. Exact authenticated family commands now
+share funded bounded output scopes; unrelated/unknown sources remain blocked.
+A bounded own-PEND scheduler propagation recheck requires actual RUN rather than
+conflating queue reservation with execution.
+
+Fresh005 preflight passed23,468,348,168bytes headroom with all current writer
+budgets. Isolated CPU29853492 submitted at11:13UTC, same4slots/16GiB/50min.
+Archive08312af311369d5485e2f75a8e066c846c04f2091dfed93ec24b3cf4c8c2d0ce, manifestcc8ab8715204a22de7e5c2e589a943cfb342cca59f0704da3bef1db089710696;
+all checker/regression sources are authenticated, CUDA hidden, no native models
+or production updates/adoption. Local records outputs/gradient-policy-validation/
+20261030-attempt005. Numerical outcomes pending. Oldfailed003/004 evidence kept.
+
+
+30October2026 attached DeFoG KL comparison preparation authorized: new separate pilot then30k; keep stopped29853447 untouched. Full teacher entropy/inputVJP plus directstudentKL, frozenweights/detachedhardaux, candidate-specific refresh. Exact baseN25/seed17/LR.3/lambda/mu/t/TV retained, nonessential legacydiagnostics advisory under commongradientpolicy. WORK3output/measuredsharedstorage to allowHOMEarm. Newhome experiments/learned-prior/protenix-defog-attached-30000. Preparationonly,no numericalexecution/submission.
+
+30 October 2026 12:27 CET: V100 source151 production job29853560 RUN on n-62-11-16, case002 resumed from20 and saved21/22. Source152 callback29853587 waits for segment end; source153 CPU29853600 passed two simulated controller success/failure cases. A100 worker29851407 intentionally PSUSP with callback29851408 PEND as fallback; independent VAE29849760 RUN unchanged. No full segment, real serial handoff, 10000-update result or final native scoring yet. See docs87 and outputs/hpc-results/v100-live-status-1793359640506897400.json.
+
+30 October 2026 12:30 CET: User selected case001 only. Case002 V10029853560, A10029851407 and callbacks29853587/29851408 stopped; all EXIT. Source154 initial coordinator29853616 DONE, submitted V10029853617 and callback29853618 for case001 from saved1899/10000. Both PEND at last check; no new update or real successor proven. VAE29849760 RUN unchanged. Docs87 and outputs/hpc-results/single-case-check-1793359837772375800.json.
+
+
+## 30October2026 attached DeFoG KL actual CPU qualification and separate GPU submission
+
+User authorized new differentiable DeFoG pilot then30k, unchanged scientific settings/current stopped29853447leftalone, relaxed nonessential checks and realistic storage. New home protenix-defog-attached-30000; fullKL teacher entropyVJP +directstudentgradient, exactJAXlogp, differentiable mirroredpairs, frozenweights andcurrentdetachedhardaux. Baseline/candidates useidenticalautograd-enabled teacherforward; eachcandidate refreshesq atsame t. SameN25/Dirichletseed17/LR.3/TV.02/12halvings/lambda.5364198835347113/mu.7276566386277723/reference/nativeFP32context/t.2->.95/30kacceptedupdates. Querybudget450kaccountsbackward+candidatequeries. No sampling/weighttraining.
+
+CPU29853632 DONE,7actualcheckpoint+74sharedscience+28sharedstorage=109passed/zeroerrorsfailuresskips. Forward/reverseAD all6directions atindices0/15000/29999 agree; cross-framework relativeerrorsmax5.270059091e-7, teacherpathnorms.0125334/.00570327/.00846727 finite/nonzero. Baseline/primalquerytargets bit-identicalandmatcholdcheckpointteacher; tamper/nonfinite/wrong-signcontrols rejected. LegacycoarseFD/nonzeroeverycomponent/sulfur-improvement/rankrequirements advisory; probe-specificexceptionsrecordinconclusive. Requirednewgradient/mapping/frozen/finite/realattacheddescent remainhard. GPU8acceptedpiloteachlow/mid/high, thenconditionalfull30k ifactual1.15*timing*30k+1200fits7h50internal/8hL40S. NativeGPUresults pending, no newproductionyet.
+
+Source02 cdeb9797a43eefe483ae4bb5275451530b30fcd222bdbbbdb9af624a203bb52e, archive d7e84b97950de569793aad87fa05146446f46d0f12ec9f29c059aa490757e333, config 1e74124d1c443f7b23f1762fd187e12bf5923a5be516de2350a969f98ee8059d, CPUcertificateac505925b56ef55cf2433e7fcd25317c8601b6e6bb559a38b7f838504f6f7341. GPU29853638 submitted12:35:55CET, confirmedPEND waiting scheduling; no reliable startETA. Original29853447observedRUNunchanged, nootherjobcontrolled. NewWORK3output supportsconcurrentHOMEarm. Common exactsixpoolquotameasuredremainingforecastone25%margin+64MiBcontrol/reservesonce; passed~23GBmargin. Authenticatedsource151/152/154relocation globaltargets budgetedonce withhardlinkedhistory, ownMosaicsuccessors requiremanifest+boundedoutputscope. Rawterminalproofretiredcompleteddiagnosticfutures, failedcheckerremainsfailed. No cleanup ormonitorresume.
+
+Attempt01sealedlocallyneveruploaded/submitted: concurrentwriterpreflightchanges retained,02resourceprovenanceupdatedwithoutsciencechanges. Failedmetadata receipts retained. VerifiedCPUrawXML/proof/gradient/cert/LSFevidence inresults/hpc/20261030-protenix-defog-attached-30000-02/collection-001, submission-summary.json.
+
+
+## 2026-10-30T11:37:49.301603+00:00 — Final common-gradient candidate CPU006 submitted
+
+Prior005 numerical results: DBMol235passed/0failures/errors/skips; Mosaic247passed,
+one obsolete test assertion required every diagnosticFD scale to pass. Corrected
+that assertion to enforce actual precommittedpair or independentlyrecomputedlocalAD
+scope; retaineddescent/null/artifactchecks andadded explicitoldthree-scale replay.
+005terminalstorageaudit also rejected legitimatepytestinternalsymlinks; ownscope
+nowcountsthemwithoutfollowing, rejectsescaped/danglingtargets, withtwonegative/
+positivemetadatafixtures. Failed005andall17rawassets remainSHA/sizeverified under
+outputs/gradient-policy-validation/20261030-attempt005/snapshot-1793358932662593025.
+
+Finalaudit identified advertisedgenericmultimodel API withblanketnonzero/fullFD
+requirements; nowversionedpointwise-v2defaultplusCLIexplicitoldFDoption, independent
+AD, finiteFDdiagnostics, dtype-awareprimalreplay andreaderrecomputation. Added real
+ReLUbranchcrossing, FP32producer/reader, roundingvsmeaningfulshift, wrongzero/sign/
+scale, detach/missing/nonfinite andforgedreader tests. Commonpolicycopies/README/
+AGENTSlinks bytechecked; staticreviewfound/fixed newADabsolute-floor, mixeddtype,
+scalar-exactness anddiagnosticcontractionblindspots beforefinalsubmission.
+
+Otherchatscontinued changingtheir ownjobs duringreadonlypreflights. Final006
+authenticated currentboundedfamilies andexclusiveV100migration, verified original
+A100GPU/callbackouterEXIT ratherthaninferringfromabsence, andfundedexistingmapping
+futurewritesonce. No externaljobwas controlled bythis work. Commonstoragepassed
+18,187,651,288byte headroom (source evidenceunderpreflight006-1793360199798041400).
+
+ActualCPU29853643 submitted11:37UTC,4slots/16GiB/50min, CUDAhidden, no pretrained
+weights/productionupdates/successor. Archiveed5a840152df2bf80486c3cc36a95497e315f806c028f5fbf57399a4d08b02b7, manifest
+d9a5a972bdd281c59899e0da9f1f77f38ded73002b644d3b2b34daaf1d5e728a,2074members/17,669,603sourcebytes. Exact26testfiles
+andruntimecommands areinmanifest-boundplan. Numericalresults pending; no live
+release, settings, checkpoint or cache adopted.
+
+
+## 2026-10-30T11:40:10.088512+00:00 — Common gradient policy: all543 scoped CPU regressions passed
+
+CPU29853643's authenticated final candidate passed all292 DBMol and251 Mosaic
+fixtures, zero failures/errors/skips. The worker recorded
+passed_scoped_cpu_regression_not_native_adoption, unchanged source before/after,
+zero production optimizer updates, and passing fresh entry/terminal storage
+checks. Seventeen raw metadata/log/XML/source/plan assets were downloaded and
+verified against remote SHA/size under outputs/gradient-policy-validation/
+20261030-attempt006/snapshot-1793360361325530821. Archive and manifest are
+ed5a840152df2bf80486c3cc36a95497e315f806c028f5fbf57399a4d08b02b7 and
+d9a5a972bdd281c59899e0da9f1f77f38ded73002b644d3b2b34daaf1d5e728a. Exact commands, selectors and actual runtime
+versions are in result/result.json; local summary
+outputs/implementation-checks/gradient-policy-20261030.json binds its SHA.
+
+Torch stage: Python3.11.9/Torch2.5.1+cu121/NumPy1.26.4/RDKit2024.09.6/pytest8.3.5.
+JAX stage: Python3.12.11/JAX0.11.1/Equinox0.13.8/NumPy2.5.3/pytest9.0.3. Both
+stages ran on allocated CPU with CUDA hidden; all31 selected changed source/test
+files still match the tested immutable snapshot in the working checkouts.
+Independent reviewers checked both implementations; prior failed/preparation
+attempts remain preserved. The broad layout audit still reports preexisting
+unregistered tests/output/cache directories; changed-source AST and whitespace
+checks passed, and own new shared test is in canonical discovery metadata.
+
+The identical commonpolicy documents, both README files and both AGENTS files
+make this prospective default durable. Code now separates local derivative
+correctness, finite-step diagnostics, optimization usability and numerical
+reproducibility; real nonfinite, required-path, mapping/context/frozen identity,
+wrongsign/scale/material AD and forged-evidence checks remain. Historical fixed
+contracts and old campaign-specific protocols retain their outcomes.
+No existing job, callback, sealed release, checkpoint, live state or cache was
+modified/restarted by this task. Other chats advanced their own jobs during
+read-only accounting; their transitions are not actions of this task. No native
+GPU/model adoption is claimed; new scientific releases still need their own
+model/context qualification.
+
+
+### 2026-10-30T11:42:02.912985+00:00 — Outer scheduler completion verified
+
+Fresh exact-job LSF JSON confirms CPU29853643 DONE. Final collection
+`20261030-attempt006/snapshot-1793360450384490165` binds outer DONE, all 543
+passing CPU regressions, both storage passes and 17 SHA/size-verified raw assets.
+The final summary is `outputs/implementation-checks/gradient-policy-20261030.json`.
+No additional numerical work or production adoption followed this pass.
+
+Post-validation formatting: normalized only the Mosaic gradient-check test file
+from CRLF to LF. Standard-library AST comparison proved identical Python syntax;
+no implementation changed and no numerical rerun was needed. Both repositories
+pass the scoped whitespace check. Old/new test hashes are recorded in the final
+validation summary.
+
+
+## 2026-10-30T11:44:14UTC — Read-only both-DeFoG status; existing production running, attached GPU pilots waiting
+
+Existing stoppedteacher GPU29853447 RUN since12:21:19CET on n-62-13-18; actualproductionstart12:28:20. Latest persistedstate2342of30000/2343savedgraphs (notexactlivecounter); zero sanitized/connected-valid/uniquevalid. ExpectedS4.2850437->3.7718151; hardS4->4, range2..5 across savedstates. Contactscore.1883893->.2566675 is contactproxygain, not binding/validity. Latestinvalidreason carbonvalence32 (initial42), graphremainsoverbonded. Native/combinedlow+high/time-repeat/initialbalance/runtimechecks passed; paired64step sulfurpilotpassed:corrected4.2664809 vsinitial4.2850442 anduncorrected4.3685951. Last100recordedupdate timing~.3934s; no terminal result.
+
+New attachedteacherGPU29853638 remainsPEND, schedulerphysicalGPUreservationavailability4hosts; noGPUstart/artifacts/nativepilots/production. ItsCPU29853632 all109qualificationcases passed, but three8-stepnativeGPUpilots have notrun, neitherpassednorfailed. Existing29853447leftuntouched. Evidence results/hpc/defog-both-status-20261030T114413.117061Z/status.json plus transport.json bindsrawscheduler/history/savedmetadata digests. Streamed states use savedRDKitreadouts only, no local or loginhost chemical/model evaluation. No jobs/submissions/restarts/settings/sources/cache/runtime changes or reportrefresh.
+
+
+## 30 October 2026 — exploratory defaults and gridlock sweep
+
+User requested early-signal workflows with proportionate checks in both repos.
+Implemented `exploratory-research-v1` and the v2 exploratory gradient policy;
+short active AGENTS files preserve their exact predecessors under docs/history.
+See [the scoped audit](EXPLORATION_GRIDLOCK_AUDIT.md) for findings/changes and
+[the shared policy](EXPLORATORY_RESEARCH_POLICY.md) for future work.
+
+New shared exploratory entry points use finite/attached-path smoke where observable,
+lightweight provenance and bounded output; rigorous native/AD/FD/replay contracts
+remain explicit. Quality deterioration is recorded instead of stopping a new
+bounded local pilot. Own-capacity admission no longer audits unrelated campaigns.
+New tests and generated output folders do not require migration aliases/READMEs.
+Windows pipe fixtures and one-atom smoke summary failures were also fixed.
+
+Local engineering validation only (overlapping suites, not a distinct-case total):
+DBMol145 passed/2warnings; Mosaic131 passed/2optional archived-replay skips;
+Mosaic historical routing+N1 suite179 passed; storage59 passed; root pilot/layout8
+passed. No scientific experiment, native/GPU qualification, HPC operation, job
+submission/cancellation/restart or active/sealed-state adoption was performed.
+Initial root checks encountered an inaccessible default pytest temporary directory
+and a Mosaic venv without pytest; fresh explicit temp roots and existing/isolated
+CPU test environments resolved those setup errors. No error was relabelled pass.
+
+Commands (from the relevant repository; all bounded local CPU fixtures):
+
+```powershell
+# DBMol; existing local diagnostic environment, CUDA hidden and PYTHONPATH=src
+& C:/Users/nikol/DBMol_Local/neighbor-loss-v1/env/Scripts/python.exe -m pytest tests/test_multimodel.py tests/test_experiments.py tests/test_boltz_active_set.py tests/test_boltz_active_set_runtime.py tests/test_pointwise_ad.py tests/test_dbmol_objective.py tests/test_repair_guidance.py tests/test_repair_application_reporting.py -q --disable-warnings --maxfail=2 --basetemp C:/Users/nikol/DBMol_Local/policy-tests-20261030-004
+# Mosaic; isolated CPU environment, JAX_PLATFORMS=cpu, JAX_ENABLE_X64=true, PYTHONPATH=src
+& C:/Users/nikol/DBMol_Local/mosaic-exploratory-checks-v1/Scripts/python.exe -m pytest -q tests/small_molecule/test_small_molecule_exploratory.py tests/small_molecule/test_small_molecule_fixed_step.py tests/small_molecule/test_small_molecule_gradient_policy.py tests/small_molecule/test_small_molecule_gradient_checks.py tests/small_molecule/test_small_molecule_continuation.py tests/small_molecule/test_small_molecule_compact_artifacts.py tests/small_molecule/test_small_molecule_campaign25.py tests/small_molecule/test_small_molecule_boltz_bridge.py tests/small_molecule/test_chemistry_confidence.py tests/small_molecule/test_chemistry_environment.py tests/small_molecule/test_small_molecule_chemistry_ramp.py --basetemp=C:/Users/nikol/DBMol_Local/mosaic-exploratory-checks-v1/tests003 --tb=short --junitxml=C:/Users/nikol/DBMol_Local/mosaic-exploratory-checks-v1/tests003.xml
+& C:/Users/nikol/DBMol_Local/mosaic-exploratory-checks-v1/Scripts/python.exe -m pytest -q tests/small_molecule/test_small_molecule_exploratory.py experiments/brd4-jq1/fixed-lrreset/tests/test_fixed25_lrreset_contract.py experiments/brd4-jq1/fixed-lrboost/tests/test_fixed25_lrboost_contract.py --basetemp=C:/Users/nikol/DBMol_Local/mosaic-exploratory-checks-v1/tests005 --tb=short --junitxml=C:/Users/nikol/DBMol_Local/mosaic-exploratory-checks-v1/tests005.xml
+py -3.13 -m pytest tests/core/test_storage_accounting.py experiments/validation/endpoint-qualification/tests/test_storage_policy_adapter.py experiments/validation/endpoint-qualification/tests/test_current_capacity.py -q --basetemp C:/Users/nikol/DBMol_Local/storage-policy-tests-20261030f --tb=short
+# From DBMol; root-owned pilot/layout regressions
+& C:/Users/nikol/DBMol_Local/neighbor-loss-v1/env/Scripts/python.exe -m pytest tests/test_local_neighbor_pilot_policy.py ../mosaic/tests/core/test_layout_exploratory.py -q -p no:cacheprovider --basetemp outputs/implementation-checks/exploratory-root-fixtures-20261030-03 --tb=short
+# From Mosaic; stdlib-only full layout check
+py -3.13 scripts/layout/verify_layout.py --root . --output results/static/exploratory-layout-20261030.json
+```
+
+The Mosaic environment is separate from existing venvs (Python3.12.12,
+JAX0.8.1/Equinox0.13.2); local numerical fixtures establish that scope, not parity
+with a production HPC environment. Legacy fixed-tag controllers and explicit
+Armijo/16-trial optimizer settings remain available and unchanged. The failed
+neighbor-weight0.1 outcome remains failed/not adopted. Existing543-case gradient
+regression evidence is preserved separately, not a prerequisite per pilot.
+
+
+30 October 2026 — latest completed DeFoG report published at 13:19 CET.
+Current corrected run 29853447 RUN / attached run 29853638 PEND as of 13:13 CET,
+so the latest full 30,000-update trajectory remains balanced run 29846882
+(29 October; terminal scientific failure preserved). Canonical request
+request-20261030T121535Z-b90110fb reused the exact 208-case report engine and
+cache; saved-only CPU renderer 29853861 DONE. No model, optimizer, chemistry,
+or scoring work. New standalone report http://127.0.0.1:8781/report.html,
+edition-0001; main port 8780 / edition-0007 unchanged. All 30,001 scalar states
+retained, 1,501 display frames; 17 scientific files identical to validated cache,
+25 HTTP assets verified. Browser endpoint/previous/timeline/matrices/failure
+checks passed, no console errors. Original 0/30,001 valid, 20 sulfur atoms,
+fluorine valence 7, and failed combined atom-gradient check are explicit.
+Evidence in Mosaic experiments/reporting/jq1-live-progress/runs/
+20261030-latest-complete-defog-report-01/delivery-verification.json.
+No scientific jobs, settings, sources, checkpoints, or original results changed.
+
+
+## 30 October 2026 — simple repository organization
+
+Implemented the user's requested organization cleanup without operating HPC or
+changing active jobs, sealed releases, callbacks, checkpoints or saved outcomes.
+Current navigation is [README](../README.md), [workflows](workflows.md),
+[package map](../src/latentmol/README.md) and [experiment questions](../experiments/README.md).
+The previous README is retained in docs/history; long numbered records keep
+original paths and are labeled dated context.
+
+Grouped fifteen reusable implementations under training/datasets/evaluation/
+guidance/design and retained lightweight old import/CLI aliases. Dataset data.py
+stays at its original implementation path for cache-source provenance, with a
+grouped API alias. Grouped ten core tests, retained helper imports, and updated
+current shell selections. New recovery checks protect the grouped scientific
+source bytes too. Source-aware comparison/vendor/policy tools use the actual
+implementations; no old receipt/source snapshot was rewritten. Shared chemistry
+policy bytes still match Mosaic exactly. Agent rules, output ignores and editor
+exclusions keep future code/config/results in their intended homes.
+
+Local CPU validation: 260 passed/1 deselected in the grouped/core/CLI/multimodel
+selection; 56 passed in source-provenance/cache/step-control/neighbor selection;
+3 local-pilot policy tests passed. Suites overlap. All package ASTs and current
+navigation links passed; no missing test paths in current shell launchers.
+The first oversized CPU fixture attempt was stopped only for this task's own
+processes. A subsequent broader selection reached11passes then failed3 CUDA
+cases at device lookup (Invalid device id); it is not a GPU pass. The final
+CPU selections explicitly excluded CUDA cases. No production training ran.
+
+Commands: existing diagnostic Python at
+`C:/Users/nikol/DBMol_Local/neighbor-loss-v1/env/Scripts/python.exe`, PYTHONPATH=src,
+OMP/MKL threads2; `python -m pytest tests/datasets tests/evaluation tests/guidance
+tests/design tests/test_package_organization.py tests/test_multimodel.py
+tests/test_large_vae_pipeline.py -q -k 'not cuda' -p no:cacheprovider --basetemp
+C:/Users/nikol/DBMol_Local/organization-dbm-20261030-03 --tb=short --maxfail=3`;
+second selection `tests/test_package_organization.py tests/test_large_data.py
+tests/test_step_control_comparison.py tests/test_neighbor_training.py` with
+basetemp `organization-dbm-20261030-04`. Retained diagnostics are local fixtures,
+not qualification of a new native/GPU release or adoption into a live campaign.
+
+31 October 2026 23:35 CET: Single-case V10029853617 reached journaled update2902 then terminated at run limit; stderr also records filesystem communication error during journal flush. Callback29853618 EXIT, no successor. Observation2900 valid and eligible, hard fixed-context loss8.3726 vs initial8.3443; no demonstrated binding improvement. Inspect checkpoint and storage before any resume. See docs87 and outputs/hpc-results/single-case-news-1793486131816232300.json.
+
+31 October 2026: Single-molecule V100 recovery from committed update2902: checkpoint and cache hashes/chain, finite latents, observation and best references verified; work3 quota51.03/100GiB and new write/flush/read passed. Original communication-error root cause remains unknown. New isolated input and restartable 500-update segment controller preserve old evidence and original VAE/mapping/optimization. CPU setup29862388 DONE; V100 worker29862389 and callback29862390 PEND, no resumed update or real callback proof yet. Two local CPU tests passed. VAE continuation untouched. See experiments/latent-design/embedding-single-molecule/notes.md.
+
+1 November 2026 08:56 CET: Single-molecule recovery segment29862389 DONE at3402 and actual callback29862390 DONE/submitted next. V10029864452 RUN, saved3432/10000; observation3430 eligible/strict valid, hard loss8.3726 vs retained initial best8.3443, no demonstrated binding gain. First recovery segment took7.94h, no completion ETA established. See experiments/latent-design/embedding-single-molecule/notes.md.
+
+3 November 2026 11:02 CET: New frozen epoch45 hidden-to-Protenix chemical embedding prototype submitted as GPU29877051 (gpuv100/32GB/4h). Exact45 SHA5c4946c15515e70bd01281eea7b74693c18598c4b47f6724fcc9898deb1302be; snapshot7d84e85f8ce76819d49a7f2ae87074d8fedd35964293d70647a2c867bc11d84a. Mapping fit2048prior/256dev/2000AdamW steps,100-update pilot, conditional10k single trajectory, actual decoded observations every10. Uses recent Protenix contact objective and structural guidance with original50k schedules; learned binding path bypasses softmax. Native injection/fit/optimization results pending;23 focused local tests passed. No existing jobs changed. See experiments/latent-design/protenix-vae/embedding-notes.md.
+
+3 November 2026 11:17 CET: Protenix mapping29877051 started11:03:28 but EXIT11:03:44 before native/model/mapping load: checkpoint str passed to Path-only SHA helper. Normalize in load_frozen_decoder; string-path regression and four mapping tests passed. Failed attempt preserved. Corrected snapshotd0165a81c79ef633dffc3025e77a92257fec0bf3941455b18d27e9a4b4033fec submitted as29877165 (same frozen45/config/V1004h), PEND at11:17, no fit updates. See embedding-notes.md.
+
+3 November 2026 11:51 CET: Corrected job29877165 RUN. Mapping completed all2000updates in507.5s (~8.5min); mean development MSE across three heads fell~96.8%. Single hard-projection/native smoke differed1.49e-7; this is pointwise injection evidence only. The100-update pilot completed with finite paths/frozenweights unchanged; main automatically started and last logged1930/10000. Among1931saved source states583 raw-valid (~30.2%); latest1930invalid. Mapped contact score0.8695 versus same-point relaxed-graph contact0.2142 is a large representation gap, not demonstrated decoded-molecule improvement. No new gate/restart/setting changes. Native integer scatter futurewarning retained. Evidence outputs/hpc-results/protenix-embedding45-20261103b/status-1793703061336066100.json and progress receipts.
+
+3 November 2026: Investigating hidden-map vs relaxed Protenix gradient flow. Existing matched45/seed17 prefix through2450: rawvalid36.39% mapped vs4.61% direct; mapped selfcontact0.8631, its decoded relaxedcontact0.2122 vs directtrajectory0.2886. Initial gnorm.1006vs.06637; later z differ. No inferred affinity gain. Matched7point gradient/softmax/off-span/equalnorm0.1step diagnostic29877460 submitted V1001h; PEND12:01, native results pending. Six targeted diagnostic/transport tests passed. Originalrun unchanged. See experiments/latent-design/protenix-vae/embedding-comparison.md.
+
+3 November 2026 12:28 CET: Main Protenix mapping29877165 RUN, lastlogged5214/10000,2555/5215rawvalid; mappedcontact.8769 vs decodedrelaxed.2081 at5210. Diagnostic29877460 DONE7points: exactprojectionAD matches directprobability maxrelativegdiff7.64e-6; learnedgcos-0.354..0.763, twoopposed. Radius.1steps improvecommonrelaxed5/7mapped vs7/7relaxed; mappedlargerfinitegain3/7. Offspanlatentgnorm~1--3.2% so not demonstrateddominantcause. Warmmedian.591smappedvs.382srelaxed (~55%slower incurrentIPC). No settings/jobs changed. See embedding-comparison.md/native news-1793705310088590700.json.
+
+
+## 3 November 2026 — Fresh VAE/DBMol composite with cooling and noise
+
+User requested50k random-initialized latent updates with the full DBMol loss.
+Submitted A100 startup29877824 and own-ended callback29877825; actual scheduler
+PEND for GPU slots, not native success. First20 real updates count toward50k;
+callback measures warm runtime and submits the largest remaining allocation,
+retaining latent/noise state and global schedules. Frozen epoch45 decoder,
+LR0.3/max-step0.5,25 slots, chemistry1→10 during20k–30k, temperature0.7→0.4,
+noise0.4→0 by30k. Existing DBMol affinity/contact/confidence formula/nativeFP32,
+fixed count25 context with lossless categorical slot reindexing.20 local toy
+adapter/latent and17 lifecycle controls passed; no local native model work.
+Storage admission passed13.87GB available/2.36GB required under current common
+exploratory policy. No existing job/result/checkpoint changed. See
+experiments/latent-design/protenix-vae/dbmol-notes.md and dbmol-run-20261103.json.
+
+3 November 2026 13:56CET collection: Mapping Protenix29877165 DONE13:22:37, completed10000 main updates. Main6767.92s/1h53m/.676supdate; totalpipeline7491.73s/2h05m. Finite/frozenchecks passed,5576/10000source rawvalid55.76%, endpointinvalid with structuralrepairtarget. Final mappedcontact.885266 vs decodedrelaxed.258247; no affinity/nativehardgain claim. HTMLrender failed missing statictemplate inpackage, savedscientificoutputs intact. Exact terminalreceipt outputs/hpc-results/protenix-embedding45-20261103b/news-1793710563822115500.json; notesupdated.
+
+3 November2026 finalmatched10k savedcomparison: mapped55.76% rawvalid vs directrelaxed2.02%. Endpointdirectvalid/contact.325734 vs mappedinvalid/decodedrelaxed.258247/self.885266. Bestvalidobserveddecodedrelaxedcontact mapping.390198 at180 vs direct.345866 at27 (mapnativeevery10/directevery1; matched10grid directbest.325734at10k). Promising onepaircandidate/validitysignal; no freshhardgraphrescore/affinityclaim. saved-final-comparison-1793710627282510800.json/embedding-comparison.md.
+
+3 November2026 progressaudit: mapping common valid-score record0.1513@0→.3127@80→.3445@140→.3902@180, no later records among every10 nativeobservations. Bestvalidafter180 .3613@400; bestfrom1000 .2590@9900. Best vsinitial+.2389/+157.9%; vsdirectbest+.0443/+12.8% on softgraphcontact only. Mappedselfscore rises while decodedscore declines, indicating proxydrift ratherthan sustained candidate improvement. Correct earlier 'bestmolecule' shorthand: no discretehardgraph/affinity rescore. progress-audit-1793713771450162400.json/comparisonnote.
+
+
+## 3 November 2026 — Fresh VAE/Protenix50k on A10; DBMol capsule repaired
+
+User requested the DBMol-arm settings with Protenix Tiny instead. Submitted
+29879114/gpua10 for all50k updates, callback29879116; actual PEND, no native result.
+Same full config/decoder/random seed17/chemistry1→10/cooling0.7→0.4/noise0.4→0.
+A10 was the shortest accessible observed queue; H100's smaller queue explicitly
+rejected the account before acceptance. No duplicate H100 job exists. Four CPU,
+16GiB host memory, one exclusive GPU/12GiB request;8h15 measured V100-based budget.
+19 portable dispatch tests passed. Source and old saved results unchanged.
+During submission discovered prior DBMol29877824/25 EXIT premodel on omitted
+fixture test_boltz_adapter.py. Added that existing fixture to a new capsule;
+3 exact-snapshot tests passed. Resubmitted DBMol as29879133/gpua40 +29879134,
+20 real startup updates then automatic measured continuations to50k; all settings
+retained. Both own capacity gates passed2.36GB required/14.01GB available.
+See experiments/latent-design/protenix-vae/repeat-20261103.md and its run records.
+
+
+## 3 November 2026 — Invariant encoder reconstruction recovery
+
+Investigated failed pilot29878344 using saved128-molecule posterior anchors and
+training logs, not another broad diagnostic campaign. Warm-up effective rank
+collapsed34.55→1.64, between-molecule variance0.17497→0.00105, teacher MSE0.922
+versus constant-mean baseline0.175. Joint rank1.83; all2048 reconstructions invalid.
+A small CPU counterexample proves the architecture loses topology: without
+positions, degree-mean messages map neutral single-bond C4 chain/branch/ring
+to the same code (maxdistance4.17e-8). Fixed-scale sum messages and typed degrees
+remove this collision; no claim to distinguish every nonisomorphic graph.
+
+Implemented opt-in configv2, preserving legacy defaults/tensor loading.4,000
+teacher-only encoder updates (LR3e-4), normalized teacher-mean MSE calibrated
+on1024 training molecules, logvar weight0.1, no reconstruction gradient in
+warm-up.1,000 joint updates retain teacher mean/logvar alignment alongside
+matching-aware VAE loss and existing frozen prior-decoder KL. Same65536-real
+subset/batch64;320k views versus128k before, not equal compute. Added code bias,
+variance, rank and teacher error to health every250.33 CPU cases passed and33
+against exact snapshot, including both full tiny four-round protocols. Smoke
+evidence establishes finite connected execution/frozen-state protection only.
+
+Submitted29879619 at16:29:29CET to gpuv100, PEND scheduling; one32GBV100,4CPU,
+16GiBhost,4h cap, no callback. Source4d2cccfbe9e182e3dfde602f9d236b273e776e480e915b2f540fab00f94668d3.
+Epoch45/data manifest/GPUhelper hashes matched; work3 quota86.95/100GiB. Final
+shared panels2048recon/10kprior/256x4permutations pending. Epoch45 unchanged,
+production training paused, no interpolation loss. See experiments/vae/invariant-pilot.md
+and outputs/hpc-submissions/vae-invariant-matched-recovery-20261103-a01/.
+
+Job29879619 follow-up: native RUN since16:29:30CET on n-62-20-14. Source staged/GPU routing resolved; latest launch receipt still starting, model-ready/training result not observed. Existing jobs unchanged.
+
+Job29879619 startup verified: worker_ready after99.38s; GPU warm-up observed through20 finite updates, teacher-only objective19.45 to3.03, training coordinate scale0.17286183. No matching/reconstruction in warm-up as intended. This is execution evidence, not recovered reconstruction; end panels pending.
+
+
+3 November2026 recovery-pilot collection20:14CET: job29879619 confirmed DONE
+at16:52:55CET, scientific1396.57s/23.28min;4000teacher-only+1000joint updates
+and shared evaluation completed, finite/frozen-parent checks passed. Exact
+reconstruction0/2048 in both phases versus2044/2048 parent45. Warm-up chemically
+valid1272/2048 (62.11%,1270strict); final2/2048 (0.10%),2046sanitization failures.
+Prior argmax75.55%parent/warm→69.33%joint, categorical63.05→47.63%,10kcommonlatents.
+Labels stable across all1024permutations, strict posterior tolerance1022warm/1013joint.
+Warm latent variance only6.53% ofteacher, rank6.27; teacherMSE0.16382 vs constant
+0.17416. Joint rank6.30/MSE0.16474. Topology collision fixed but transfer remains
+underfit/compressed; declining surrogate does not yield actual reconstruction.
+No promotion/restart/new job; epoch45 unchanged and training paused, interpolation
+absent. Three result files downloaded with native size/SHA verification. Evidence
+outputs/hpc-results/vae-invariant-matched-recovery-20261103-a01/result-digest.json
+and outcome-1793733225249734200.json; experiment note records full results.
+
+3November2026 LR/stepaudit: LR.3 earlymedianlatentsteps.241(0--99),.229(100--179),.164(180--249); step180 displacement.2815/noise.1031.80/10k steps hit.5cap; later2000--9999 median.076 and3/8000capped. Overshoot/noise couldcontribute early, but wrongdirection measuredatstep1000(cos−.354; radius.1 improvesmaploss.02434 whileworsensdecodedloss.00202) rulesout LR-only account. Proposedfixed.03pairedcheck notsubmitted; no settings changed. step-audit-1793733342734567900.json under comparison outputs.
+
+3November2026 20:23CET: UserrequestedLR.1/no noise branch submitted29881664; LSF RUN20:23:16 n-62-11-14(V10032GB/4CPUslots/4h). Newarm starts saved180latent (rawSHAe164312e9a66a27ed75c0300f04faa34d915be9663bef42bc88ca81c4a97269f), originalslots/schedules,10000newupdates to10180; samefrozen45/trainedmap, no refit/extraqualification. At20:23:28 modelsloading, no updates yet.20local focused cases passed for warmstart/noise/latentloop. Output protenix-embedding-no-noise-lr01-20261103a; source62ba53a06f6946fc8f0a90cb7fcdb96a8d8335e1b2b3022929e2d68bd6d37848. Priorjobs unchanged. See newbranch note.
+
+3November2026 20:24:27CET newbranch29881664 RUN actualupdatesstarted: source180 contactreproducedexactly(decoded.3901983798/map.6516512632), latest182/two appliedupdates, recordednoiseall0. Firstlatentstep.08641vsold.28149. Latestrawinvalid, no technicalfailure; bounded10000newupdates continue. Nootherjobs altered.
+
+
+## 2026-11-03 — VAE queue redistribution and zero-update interface repair
+
+Moved only authenticated never-started A10/A40 GPU jobs and their callbacks to
+observed available compatible32GB V100 capacity. First V100 attempts29881354/29881364
+failed before applied updates on graph-export scope and JSON-path interfaces;
+failures preserved. New immutable capsule6331974180063aae3c3d2aa252c32aec76498e43a1555adb8852fd5fdc545bec
+fixes those interfaces only;4 exact portable controls passed, predecessor3 errors
+reproduced. New Protenix GPU29881613/callback29881615 and DBMol startup29881681/
+callback29881683 RUN/PEND at19:23:55UTC. DBMol3 allocated adapter controls passed;
+native startup/updates not yet established. Both targets50k/config95dcce2b unchanged.
+No scientific result overwritten or cleanup. Details: experiments/latent-design/
+protenix-vae/queue-recovery-20261103.md and current run JSONs.
+
+
+## 3 November2026 — Preserve molecular information through canonical hard input
+
+Saved v2 training teacher MSE stayed~0.16–0.17 after100 through4000 updates,
+close to validation0.16382/constant0.17416; logged gradients were not clipped
+after100. Another architectural counterexample: two distinct sanitized six-carbon
+degree-three cages (triangle counts2vs0) map to exactly the same updated neural
+invariant code. Local messages/pooling erase global connectivity; no claim that
+these cages explain all MOSES failures. Code retention requires more than a
+richer MLP on the same pooled features.
+
+Implemented an explicitly different route: encoder_pooling=canonical performs
+lossless discrete canonical-order preprocessing, then retains every epoch45
+encoder/decoder tensor/full50x96 readout. Hard one-hot input only, input-gradients
+rejected, no chemistry normalization/repair. Full atom/charge/bond bijection
+verified; encoder-parameter and latent-decoder gradients remain live. Not a new
+learned neural invariant encoder, not evidence of latent smoothness.69 CPU cases
+passed, then69 on exact snapshot. Old defaults/strict states preserved.
+
+Submitted/started29883264 at20:29:23CET on gpuv100/n-62-11-13;4CPU/16GiB host,
+1exclusive32GBV100,4h.250 deterministic encoder-only plus750 stochastic joint
+updates, same65536-real subset/batch64, mean/logvar teacher alignment retained,
+encoderLR1e-5/decoder1e-6; frozen prior decoder KL0.25, beta0.001. Same2048
+recon/10kprior/256x4permutations evaluation. Startup verifies canonical mapping
+and parent codes on64 actual training molecules; native result pending.
+Epoch45 unchanged/paused; no interpolation or chemistry search, no callback.
+Source428ec15125674f2f7298dd5bc71f3d4bb1bbfa05f50717cca3c1707d2c86a684.
+Parent/manifest/helper hashes matched; quota89.33/100GiB/own budget1GiB.
+One-off submit operator failed to parse the accepted job ID; native intent/receipt
+and RUN reconciled without duplicate bsub. See experiments/vae/invariant-pilot.md,
+outputs/hpc-submissions/vae-canonical-invariant-pilot-20261103-a01/ and the
+regular-cage-counterexample.json in its hpc-results folder.
+
+29883264 native startup follow-up: worker_ready97.63s. All64 training graphs
+restored identical full atom/charge/bond labels after full-slot shuffling; parent
+mean/logvar maximum errors0. Initial128-validation exact/valid128/128, teacher
+MSE0 and between-molecule variance ratio1. First20 warm updates finite/attached,
+preclipnorm0.00147 at20, no clipping, reconstruction1.85e-6. This demonstrates
+hard-input parent-function preservation on these panels, not a learned neural
+invariant or final training result. Full250+750/end comparison pending. Evidence
+outputs/hpc-results/vae-canonical-invariant-pilot-20261103-a01/startup-1793734307440783000.json.
+
+3Nov20:43CET pilot29883264 remains RUN; warm250 finished, last loggedjoint420/750.
+Latest completed healthjoint250 exact/valid128/128, priorargmax388/512 (75.78%)
+versus same epoch45-start390/512 (76.17%), codevarianceratio0.99903, teacherMSE
+4.00e-6. Finite unclipped gradients; no failure receipt. Endpoint2048recon/10kprior
+comparison absent; do not present the small monitoring panel as final results.
+LSF GPU power/clocks event20:31:52 says workload can continue; observed joint
+updates~1.19s, no demonstrated numerical/quality effect. No job/settings/checkpoint
+changes. Native evidence outputs/hpc-results/vae-canonical-invariant-pilot-20261103-a01/status-1793735013738774600.json.
+
+3November2026 20:43:55CET: no-noiseLR.1 job29881664 RUN global1705/1525newupdates. Decodedcontact .3902@180→.2121@190→.2042@1700 vsoldnoisyLR.3 .2273@1700. Shared180--1705 meannew.2121vsold.2563; rawvalid12/1526(.79%)vs421/1526(27.59%). Newlatestinvalid, mappedself.8345@1700 stilldiverges. Qualitynotimprovedsofar; boundedrununchanged. progress-1793735032702672900.json/newbranchnote.
+
+3Nov20:46CET read-only follow-up29883264 RUN/joint540of750. Healthjoint500 exact/valid128/128, prior389/512 (75.98%) vs45-start390/512 (76.17%), variance ratio1.00090. Final2048/10k comparison still absent, no failure. Evidence status-1793735159923211800.json in canonical pilot results. No job/model settings changed.
+
+3 November2026 20:59:46CET: VAE+DBMol startup29881681 and callback29881683 actualDONE/same-jobLSFsuccess. All20realupdates saved; finite binding/chemistry, frozen decoder/native and sharedgraph/temperature checks passed. Existing callback submitted main29883315/callback29883316, actualRUN onV100 fromsaved20 toward7047 in24h,188global committed evaluated updates atcapture. Total50k target/settings unchanged; later measured segments remain automatic. No FD/derivative or final chemistry claim. Prorepeat29881613 RUN5115/50k; sparse23/41 RUN3980/3955. No fullrun completion/reportrefresh. Evidence Mosaic results/hpc/20261103-run-news/20261103T195943Z.
+
+4 November 2026 result collection for canonical-input pilot 29883264. LSF
+recorded DONE on 3 November at 20:55:53 CET after 26m30s. All 250 encoder-only
+and 750 joint updates and final evaluation completed. Exact reconstruction
+matched epoch 45 on the same 2,044/2,048 inputs and chemical validity was
+2,047/2,048 in both. On 10,000 shared latents, final argmax was 75.48% vs.
+75.55% and categorical was 63.04% vs. 63.05%. All 1,024 atom permutations
+preserved output labels and posterior parameters, with 1,020 exact
+reconstructions vs. 0 for epoch 45. The frozen checkpoint hash was verified.
+Both summaries were downloaded and checked against native byte counts and
+SHA-256. See experiments/vae/invariant-pilot.md and the completed-comparison.json
+in outputs/hpc-results/vae-canonical-invariant-pilot-20261103-a01/.
+
+4 November 2026, 09:16 CET. The user requested A100 for the next VAE + DBMol
+segment. Job 29889322 is pending on gpua100 with a 72-hour limit and depends on
+successful completion of running V100 job 29883315. The existing segment
+controller computes the actual update count from the validated predecessor
+endpoint and measured warm timing, using a 10.6 s/update floor, its 30% margin
+and 20-minute reserve. At the floor the allocation budgets 18,722 updates.
+The successor starts from the saved latent, occupied slots and noise RNG.
+Original source, objective, model and precision are preserved. The old unstarted
+callback 29883316 was held and verified before retirement. The two new held
+receipts were saved before release. Callback 29889323 is pending behind the
+A100 job and retains the original automatic routing for later segments.
+Verification: outputs/hpc-submissions/vae-dbmol-a100-next-20261104-01/verification.json.
+
+4 November 2026. Submitted atom-mapped interpolation pilot 29890181 to gpuv100
+at 11:41:53 CET. One sequential job, four CPU slots and four-hour limit. Both
+arms initialize from the verified epoch 45 weights and use 400 joint updates,
+batch 32, matched base rows and RNG seeds. The treatment adds 0.1-weight
+mapped cross-entropy for two training pairs per update at 10%, 20%, through 90%.
+Targets use the lower-loss endpoint frame with canonical input encodings.
+Held-out pair selection, endpoint identity and path validity are assessed
+separately from reconstruction and prior generation. The 23 local cases
+passed on both working and staged code. Initial scheduler state PEND.
+Source SHA-256 1498bd65ce5c0766322d2f318f11f45c569288f61bb61907519f07e374d0f029.
+See experiments/vae/interpolation.md and the submission record for settings.
+
+4 November 2026. Verified the no-noise LR0.1 Protenix mapping branch
+29881664 completed all 10,000 additional updates on 3 November at
+22:32:42 CET. Decoded relaxed contact fell from 0.3902 to 0.1988 while
+mapped contact rose from 0.6517 to 0.8464. The starting state remained
+the highest-scoring valid observation. Over the shared steps 180–10,000,
+mean decoded contact was 0.2022 versus 0.2208 for the original noisy
+LR0.3 run. Raw validity was 112/9,821 versus 5,512/9,821 over that window.
+See [experiment note](../experiments/latent-design/protenix-vae/embedding-no-noise-lr01.md).
+
+4 November 2026. Submitted Protenix bridge contact calibration as 29890568
+on gpuv100 at 13:09:04 CET, initially PEND. Four fit passes on 36 centers
+combine embedding, contact and radius-0.1 secant losses. The short comparison
+uses the same frozen epoch-45 VAE, both saved starts at steps 0 and 180, and
+200 updates per arm per start for calibrated, original and direct relaxed.
+All 30 focused local cases passed. See [experiment note](../experiments/latent-design/protenix-vae/embedding-gradient-match.md).
+
+4 November 2026. Submitted Protenix one-atom occupancy pilot **29890674**
+on `gpua10`, initially PEND. Three BRD4 pairs test the exact expectation
+over native present and deleted graphs with the frozen epoch-45 VAE.
+Five local CPU checks passed. Native endpoint and latent-gradient results
+are pending. See the [one-atom experiment note](../experiments/latent-design/protenix-vae/one-atom.md).
+
+4 November 2026. One-atom Protenix job **29890674** completed at 21:25 CET.
+All three native endpoint and latent-gradient checks passed. One controlled
+decode recovered the preferred endpoint, while the corresponding raw decode
+already matched it before the updates. The other raw decodes matched neither
+endpoint. Submitted count-budget comparison **29893904** to `gpua10` after
+verifying that gate. Both arms start at the same exactly reconstructed 25-atom
+ligand and use a matched 24–28-atom native panel. 59 focused CPU tests passed.
+See the [atom budget comparison](../experiments/latent-design/protenix-vae/atom-budget.md).
+
+5 November 2026. Retrieved the completed Protenix count-budget result for
+**29893904**. Both arms followed the same trajectory and the penalty never
+activated. Raw hard count stayed at 25 throughout, and both final raw
+decodes failed sanitization. The shared 24-atom panel endpoint's fresh
+contact loss was 2.32107 versus 2.36163 at the shared start. See the
+[native result](../experiments/latent-design/protenix-vae/atom-budget.md#native-result).
+
+5 November 2026. CPU feasibility check for unshifted decoder occupancy.
+The previous 25-atom start stayed saturated under the tested perturbations.
+A 64-latent prior panel yielded 115 valid one-slot present/absent pairs
+among 137 tested nonsaturated slots. See the
+[decoder preflight](../experiments/latent-design/protenix-vae/one-atom.md#unshifted-decoder-preflight).
+
+5 November 2026. Submitted raw-decoder occupancy-gradient pilot **29896354**
+to `gpua10`. Both directions use the exact hard decoder output for each
+baseline and trial and rebuild Protenix inputs from its chemical identity.
+The matched comparison runs the score gradient and its reversal. Ten CPU
+tests passed, and a synthetic score caused count changes in four real VAE
+starts. See the [raw-occupancy experiment](../experiments/latent-design/protenix-vae/raw-occupancy.md).
+
+5 November 2026. Raw-occupancy pilot **29896354** completed all four
+matched starts. Forward-gradient hard counts changed in three, including
+one accepted deletion after a two-atom addition. Forward fresh contact
+loss beat the reversal in three starts, with means 2.64895 versus 2.65916.
+Native fresh inputs matched the raw endpoint chemistry and counts. No
+count-changing accepted output exactly matched an individual probe.
+See the [native result](../experiments/latent-design/protenix-vae/raw-occupancy.md#native-result).
+
+5 November 2026. Submitted expanded raw-occupancy comparison **29897059**
+to `gpua10` with 24 new matched starts, up to 12 updates per arm, and
+three shared fresh geometry seeds. The exact raw decoder score path is
+retained. Eleven focused CPU tests passed. See the
+[expanded comparison](../experiments/latent-design/protenix-vae/raw-occupancy.md#expanded-comparison).
+
+5 November 2026. Expanded raw-occupancy job **29897059** finished all 24
+paired starts with complete fresh coverage at three seeds. Guided loss
+averaged 2.61254 versus 2.65220 reversed and won 14 starts, with six losses
+and four ties at each seed. Raw count changed in 15 guided and ten reversed
+starts. See the [expanded result](../experiments/latent-design/protenix-vae/raw-occupancy.md#expanded-native-result).
+
+4 November 2026. Completed a local epoch-45 latent landscape probe on six
+encoded examples and six prior draws. At T = 0.7 and radius 0.1, probability
+gradient cosines were 0.9992 and 0.9872 respectively. Encoded hard graphs
+were unchanged by all tested random radii through 1.0. Cooling to T = 0.4
+reduced their median probability gradient norm by about 1,000-fold.
+Submitted the native relaxed Protenix contact panel as **29890699** on
+`gpuv100`; results pending. See [experiment note](../experiments/latent-design/protenix-vae/landscape.md).
+
+4 November 2026. Local RTX 4060 feasibility check for the atom-mapped
+interpolation pilot completed four fixture updates per arm with the frozen
+epoch-45 parent. Interpolation peaked at 10,279 MiB allocated and took about
+11 s per warm update. The scientific comparison remains queued as 29890181.
+See [interpolation experiment](../experiments/vae/interpolation.md).
+
+4 November 2026. ChEMBL 37 audit **29891386 DONE** on `milan` in 482 s.
+Of 2,897,819 source rows, 2,174,584 distinct graphs pass the exact MOSES
+schema round-trip. The audit finds **2,082,159** identities and **612,327**
+Bemis–Murcko scaffolds absent from all MOSES splits. The equal-budget
+epoch-45 mixture comparison is staged, with 1,920 ChEMBL replacements in
+12,800 slots. No matched training job was submitted.
+[Audit and comparison](../experiments/vae/chembl-comparison.md).
+
+4 November 2026. Local exact top-one Tanimoto probe on 500 MOSES/ChEMBL
+queries and a sampled 100,000-reference pool. 66/500 nearest neighbors had
+equal atom counts and 24/500 also passed the current atom matcher. No
+fallback neighbors were attempted.
+[Coverage probe](../experiments/vae/chembl-comparison.md#closest-neighbor-coverage-probe).
+
+4 November 2026. Exact top-one replay admitted 9/136 candidates differing
+by one terminal atom with an unchanged mapped core. Coverage rose from
+24/500 to 33/500 before separate edit and similarity limits. Twenty-one
+local tests passed, and both frozen epoch-45 gradient smokes lowered the
+optional-atom loss with a bounded latent step. The loss remains an isolated
+prototype. [Experiment note](../experiments/vae/chembl-comparison.md#one-terminal-atom).
+
+4 November 2026. Matched interpolation pilot **29890181 DONE** in about
+14 minutes. Midpoint validity 64/128 with interpolation versus 68/128
+control, all nine interior points valid for 44/128 versus 47/128, and prior
+categorical validity 61.06% versus 63.27%. All endpoint graphs remained
+exact. The full interpolation continuation condition was not met.
+[Results](../experiments/vae/interpolation.md#matched-pilot-results--4-november-2026).
+
+4 November 2026. Native Protenix landscape **29890699 DONE** in 98 s.
+At radius 0.1 and temperature 0.4, median neighboring cosine 0.969,
+4/5 relaxed-loss improvements, 2/5 raw hard graph changes. At 0.7,
+0.985 cosine, 5/5 improvements, 4/5 raw changes. One-atom occupancy job
+29890674 remains pending.
+[Results](../experiments/latent-design/protenix-vae/landscape.md#native-protenix-results).
+
+4 November 2026. Saved-target diagnostic on 128 mapped midpoints found
+42/128 valid exact-target argmax graphs and 2,861/4,096 valid independent
+categorical draws. Five of seven lost midpoints had improved target JS.
+Submitted three-arm interpolation chemistry pilot **29892811** on
+`gpuv100` with 400 updates per arm and chemistry weight 0.25.
+Twenty-six focused local tests passed.
+[Protocol](../experiments/vae/interpolation.md#midpoint-mechanism-and-chemistry-follow-up).
+
+The frozen checkpoint replay found valid repair targets for all seven
+midpoints lost in the original interpolation treatment. One chemistry-only
+latent step made four of seven argmax graphs valid. These were held-out
+pointwise checks, with no training updates.
+
+4 November 2026. Matched interpolation chemistry follow-up **29892811 DONE**.
+Chemistry restored two valid midpoints (64 to 66/128) versus interpolation
+alone. Reconstruction control had 68/128 and higher categorical prior
+validity (63.27% versus 61.41%). All endpoints stayed exact.
+[Follow-up outcome](../experiments/vae/interpolation.md#midpoint-mechanism-and-chemistry-follow-up).
+
+4 November 2026. Combined MOSES–ChEMBL 37 preparation **29893160 DONE**
+in 280 s. The final split has 3,670,698 train, 70,000 validation and
+70,000 test molecules. ChEMBL contributes 50,000 molecules to each
+holdout, reserved by unseen scaffold. Submitted the A100 batch 128/256
+benchmark **29893176** and dependent epoch-46 training **29893177**.
+The continuation uses canonical ordering, 1:1 real-to-fresh-prior sampling
+and the validated epoch-45 chemistry loss. Interpolation is evaluation-only.
+Local CPU checks passed. GPU benchmark and training results are pending.
+[Protocol and launch](../experiments/vae/combined-training.md).
+
+5 November 2026. Boundary job **29896185** executed all 304 Protenix
+evaluations on `gpuv100`, then exited while waiting for the native worker
+after its frozen-state acknowledgement. Recovered and verified all eight
+center files. Descent reached valid fixed-slot edits for four of four
+held-out encoded molecules at each temperature versus zero of eight random
+rays. Temperature launch **29896199** exited before model loading due to
+LSF interpolation of an inline shell command. [Experiment and recovery](../experiments/latent-design/protenix-vae/editability.md).
+
+5 November 2026. Temperature retry **29896250** dispatched on `gpuv100`
+with four CPU slots and a 45-minute cap. The two-stage launcher passed
+local argument-routing and failure-propagation checks. The retry includes
+the bounded post-acknowledgement worker teardown fix and fresh native FILE
+scoring for selected valid hard graphs. [Experiment](../experiments/latent-design/protenix-vae/editability.md).
+
+5 November 2026. Temperature retry **29896250 DONE**, 428 s. All three
+arms retained the encoded start. The single prior start produced 2/0/4
+distinct valid edits for cooling/constant 0.7/constant 1.0. Cooling and
+constant 1.0 shared the first and final valid molecules. Fresh contact loss
+was 2.606645 initially, 2.599261 at the first edit and 2.664897 at the
+shared final molecule, with lower preferred. [Result and evidence](../experiments/latent-design/protenix-vae/editability.md#temperature-result).
+
+5 November 2026. Warm-start comparison **29897058** submitted to
+`gpuv100`, one GPU and four CPU slots for 45 min. Six matched starts and
+32 updates per arm compare 1.5 → 1.0 by update 16 against constant 1.0.
+Fresh discrete rescoring includes valid starts and up to four distinct
+edits per arm, selected by trajectory position. Focused CPU checks passed.
+Initially pending. [Protocol](../experiments/latent-design/protenix-vae/editability.md#warm-start-versus-constant-10).
+
+5 November 2026. Warm-start job **29897058 DONE**, 996 s. Warm starts
+increased initial encoded gradient norms 6.6–39× and reached zero new hard
+molecules on those three starts, as did constant 1.0. The three prior starts
+yielded 19/15 distinct valid fixed-slot edits and 18/19 unconditioned edits
+for warm/constant. Among selected scored edits with a valid baseline, 3/5
+warm versus 7/8 constant improved fresh contact loss. Two warm conformer
+embeddings failed. [Results](../experiments/latent-design/protenix-vae/editability.md#warm-start-result).
+
+5 November 2026. Submitted frozen epoch-45 bounded step search **29898952**
+and verified graph interpolation **29899015** on `gpuv100`. Step search
+has four matched starts and a 31-call per-arm scorer budget. The graph
+training pilot has 400 updates per arm with known valid midpoint targets.
+The local MOSES metadata check found 128 observed train triplets and 64
+validation-centered triplets with verified derived endpoints excluded
+from train and test. Focused tests passed. Both allocations were pending.
+[Step search](../experiments/latent-design/protenix-vae/editability.md#bounded-search-along-the-latent-gradient)
+and [graph interpolation](../experiments/vae/interpolation.md#verified-graph-intermediates).
+
+5 November 2026. Replaced the never-started epoch-46 A100 jobs 29893176
+and 29893177 with 32 GB V100 benchmark **29899164** and dependent training
+**29899165**, eight cores each. Verified both originals terminal before
+releasing the held replacements. The recipe and 1:1 sampling are preserved.
+The benchmark checks logical batches 128 and 256 with a 64-point microbatch
+fallback. Both replacements were pending at 14:31 CET.
+[Handoff record](../experiments/vae/combined-training.md#5-november-2026-v100-handoff).
+
+5 November 2026. Bounded step search **29898952 DONE**. At 31 scorer calls
+per arm, search committed valid edits on two of three encoded starts versus
+zero with the current rule. The committed MOSES edit improved fresh contact
+loss by 0.02959. The current rule committed more edits on the invalid prior
+start. Graph interpolation **29899015** finished both training arms and
+scored 40/64 valid midpoints versus 48/64 in its control. The reconstruction
+and prior evaluation remained in progress. [Step results](../experiments/latent-design/protenix-vae/editability.md#bounded-search-result)
+and [path results](../experiments/vae/interpolation.md#verified-graph-intermediates).
+
+5 November 2026. Verified graph interpolation **29899015 DONE**, 687 s.
+The interpolation arm reconstructed 2,040/2,048 exactly versus 2,044/2,048
+for control. On 10,000 matched prior vectors, argmax chemical validity
+was 68.99% versus 75.62% and categorical validity 52.51% versus 63.27%.
+The pilot did not improve midpoint validity or random generation.
+[Final results](../experiments/vae/interpolation.md#final-reconstruction-and-random-sample-results).
+
+5 November 2026. Audited the saved **29899015** graphs and training logs.
+The weighted midpoint loss exceeded reconstruction on 376/400 updates.
+857 of 1,368 argmax prior graphs that lost validity changed only bonds.
+[Failure analysis](../experiments/vae/interpolation.md#failure-analysis).
+
+5 November 2026. Submitted the raw Protenix/VAE 20k campaign, first GPU
+job **29899019** and continuation **29899020**. The budget is 20,000 accepted
+guided latent updates across logged restarts using exact raw molecules.
+Eleven focused CPU tests and local mocked resume/dispatch checks passed.
+See the [campaign note](../experiments/latent-design/protenix-vae/raw-occupancy.md#20000-update-campaign).
+
+5 November 2026. Raw Protenix/VAE 20k stage **29899019** reached its
+time boundary at 663 accepted updates and 284 raw molecule changes.
+The best guided candidate averaged 2.17328 fresh contact loss over three
+geometries. Continuation **29900354** started at 19:11 CET. See the
+[stage result](../experiments/latent-design/protenix-vae/raw-occupancy.md#first-20k-segment).
+
+5 November 2026. Submitted slot-aligned interpolation pilot **29899706**.
+Two matched 200-update arms start from epoch 45. The auxiliary gradient is
+capped at 25% of the base gradient, with paired prior checks starting at
+update zero. Fifteen local tests passed. GPU results are pending.
+[Pilot note](../experiments/vae/interpolation.md#slot-aligned-gradient-capped-pilot).
+
+5 November 2026. Slot-aligned interpolation **29899706** completed in
+about 10 minutes. Both arms reconstructed the same 2,044/2,048 molecules
+exactly and had 59/64 valid midpoints. Treatment minus control prior validity
+was −0.13 percentage points for argmax and −0.02 for categorical draws.
+[Paired results](../experiments/vae/interpolation.md#slot-aligned-pilot-results).
+
+5 November 2026. V100 benchmark **29899164** passed and selected batch and
+microbatch 128 at 17.95 real molecules/s. Epoch-46 job **29899165** started
+at 15:06 CET. At 20:24 it had processed 221,568/3,670,698 real molecules
+and saved a resumable checkpoint at 192,000.
+[Benchmark and live training](../experiments/vae/combined-training.md#v100-benchmark-and-live-training).
+
+5 November 2026. Submitted CPU dataset build **29903880** for a target of
+at least 50 million unique training graphs. It uses the pinned PubChem
+CID–SMILES dump plus existing MOSES–ChEMBL membership, retaining the
+validation and test splits. Four focused local tests passed. Full-corpus
+yield is pending. [Build note](../experiments/vae/large-corpus.md).
+
+5 November 2026. Moved the PubChem build to CPU job **29903886** on `hpc`
+with 16 cores because both Milan hosts were closed to dispatch. Verified
+the original **29903880** had never started and was terminal before
+releasing the held replacement. [Build note](../experiments/vae/large-corpus.md).
+
+5 November 2026. Submitted packed sparse cache **29903998** with
+`done(29903886)`. Runtime quota sets the training membership budget with a
+4 GiB reserve and both 70,000-molecule holdouts kept in full. Five focused
+CPU tests and a launch fixture passed. The active training job uses its
+existing dataset. [Cache note](../experiments/vae/large-corpus.md#sparse-training-cache).
+
+6 November 2026. PubChem corpus **29903886** completed with 81,409,264
+unique training graphs, including 77,738,566 new PubChem graphs, and
+retained the 70,000 validation and 70,000 test graphs. Sparse cache
+**29903998** started at 03:25 CET and exited 625 seconds later on a
+representation round-trip exception. No cache was published.
+[Corpus and cache evidence](../experiments/vae/large-corpus.md#corpus-result).
+
+6 November 2026. Reproduced sparse-cache job **29903998** failure at PubChem
+training row 4,125,035. Direct encoding of the verified stored SMILES
+preserves exact identity on the failing row and 64 neighbors. The focused
+cache and ordering suite passed 21 cases. Retry **29904885** started at
+06:36 CET. [Cache note](../experiments/vae/large-corpus.md#sparse-training-cache).
+
+6 November 2026. Queued heavy-atom-balanced view **29904892** behind sparse
+cache **29904885**. The target is 60,000,000 unique training graphs and
+170,000 molecules in each holdout. The index uses exact available size
+counts, retains prior holdouts, and adds only distinct PubChem identities.
+Ten focused local tests and a launch fixture passed. [View note](../experiments/vae/large-corpus.md#heavy-atom-balanced-60-million-split).
+
+6 November 2026. Collected completed Protenix calibration comparison
+**29890568**. The direct 25-slot VAE arm from the initial latent improved
+relaxed contact from 0.1513 to 0.4022 over 200 updates, with a valid endpoint
+and a one-hot fixed-context score of 0.3834 versus 0.1902 at the start.
+Calibration reduced held-out secant slope MSE from 0.0787 to 0.0453. It
+raised mean decoded contact from 0.2253 to 0.2639 at the step-180 start,
+but lowered it from 0.2320 to 0.2168 at the initial start. Direct relaxed
+optimization gave the highest mean decoded contact from both starts.
+[Comparison note](../experiments/latent-design/protenix-vae/embedding-gradient-match.md#completed-comparison).
+The running VAE/Boltz DBMol trajectory had 17,326 saved updates. Composite
+loss reached 0.6319 from 10.1702, but the best valid state was update 129
+and the last raw-valid state was update 574.
+[Boltz snapshot](../outputs/hpc-results/vae-dbmol-20261103-a04/trajectory-summary-20261106T085347429871Z.json).
+
+6 November 2026. Sparse cache retry **29904885** completed with all
+81,409,264 training graphs. Balanced view **29904892** completed with
+60,000,000 training graphs and 170,000 each for validation and test.
+Counts 15–31 are level at about 2.286 million each. The cache uses
+13.56 GiB and the view adds about 230 MiB of indices.
+[Dataset result](../experiments/vae/large-corpus.md#published-cache-and-balanced-split).
+
+6 November 2026. Queued CPU handoff **29906086** after **29899165**.
+It continues the combined-data epoch from its saved cursor if a partial
+segment finishes. Full epoch completion releases the 60M sparse-view
+A100 benchmark and then the separate 15:1 run from epoch 45 if it passes.
+Six local checks passed. [Handoff and recipe](../experiments/vae/large-corpus.md#prior-only-chemistry-training-from-epoch-45).
+
+6 November 2026. Queued matched epoch-46 repair-worker benchmark
+**29912430** on V100 and dependent 60M 15:1 phase timing **29912431**
+on A100. Both run 64 timed updates per arm after eight warmup updates.
+Six focused CPU checks passed. [Benchmark plan and receipts](../experiments/vae/combined-training.md#worker-scaling-and-151-timing).
+
+7 November 2026. V100 worker benchmark **29912430** completed. Six versus
+twelve workers processed 15.94 versus 16.74 real molecules/s (+4.99%).
+The ordered repair traces and final weight hashes matched. A100 timing
+job **29912431** was pending GPU queue capacity at 01:42 CET.
+[Results](../experiments/vae/combined-training.md#worker-scaling-and-151-timing).
+
+9 November 2026. Verified completed epoch 46 checkpoint at 3,670,698
+real molecules. The separate A100 timing job **29912431** and production
+benchmark **29921947** both exited before their first update when the
+prior-only recipe failed the legacy repair teacher validation. The
+60M training handoff is blocked. [Status and logs](../experiments/vae/combined-training.md#worker-scaling-and-151-timing).
+
+9 November 2026. Fixed the prior-only teacher setup and pinned the 60M
+recipe to the completed epoch-46 checkpoint. Queued A100 timing **29938680**
+and training benchmark **29938681**. CPU handoff **29938682** requires both
+to succeed before submitting epoch 47. Eight focused CPU checks passed.
+[Recipe and submission](../experiments/vae/large-corpus.md#retry-from-the-completed-epoch-46).
+
+6 November 2026. Random latent control **29906282** finished all 24 archived
+epoch-45 VAE starts. It used 176 of 182 matched Protenix optimization call
+attempts. Fresh BRD4 contact loss was 2.58340 random and 2.61254 guided
+across three seeds, with 14 random wins, 6 guided wins and 4 ties. Guided
+changed raw heavy-atom count on 15 starts versus 9 for random search.
+Random search tried more decoder directions under the native call ceilings.
+[Comparison](../experiments/latent-design/protenix-vae/raw-occupancy.md#call-matched-random-latent-search).
+
+11 November 2026. Moved the two pending epoch-46/60M 15:1 benchmarks to
+32 GB V100 jobs **29992871** (phase timing) and **29992872** (throughput),
+each with 16 cores and a two-hour limit. Originals **29938680**, **29938681**
+and callback **29938682** were canceled and verified never started before
+the held replacements were released. Callback **29992873** requires both
+replacement benchmarks to succeed before submitting A100 training. Seven
+focused CPU checks passed. At 09:05 UTC both GPU jobs were pending; GPU
+results are not yet available. The loss and sampling recipe are unchanged.
+[Transfer details and receipts](../experiments/vae/large-corpus.md#v100-benchmark-transfer-11-november-2026).
+
+11 November 2026. V100 benchmarks **29992871** and **29992872** both started
+and exited before their first update: the continuation runner attempted an
+ordered-only warm-start conversion on the already-canonical epoch-46 parent.
+Fixed `_fresh` to clone canonical parents and retain the existing conversion
+for ordered parents. Nine focused CPU tests passed. Queued fresh V100 timing
+**30004285**, throughput **30004286** and dependent handoff **30004287**;
+both GPU jobs are pending. Prior exits and absence of active duplicate GPU
+jobs were verified. Loss, sampling and the saved epoch-46 checkpoint are
+unchanged; A100 training still awaits successful GPU reports.
+[Mechanism, tests and receipts](../experiments/vae/large-corpus.md#canonical-parent-resume-correction-11-november-2026).
+
+14 November 2026, collected 16 November. V100 timing **30004285** and
+throughput **30004286** completed successfully after falling back from
+microbatch 240 (OOM) to 120. Throughput was 217.09 real molecules/s on the
+60M 15:1 recipe; timing arms preserved repair traces and final weight hashes.
+The successful callback automatically queued A100 epoch-47 segment **30053692**
+with continuation callback **30053693**. Training was still pending on host
+job-slot capacity at 09:16 CET on 16 November; no new trained checkpoint or
+quality result yet. [Results and queue evidence](../experiments/vae/large-corpus.md#benchmarks-completed-epoch-47-queued).
+
+11 November 2026. Implemented opt-in atom/charge exchange costs and fixed valid
+ring/functional-group preservation, leaving existing runs/defaults unchanged.
+Corrected CPU comparison **30000111 DONE**: frozen epoch-45 VAE, 16 matched
+perturbed valid-prior starts, 16 chemistry-only updates, eight arms, 262 seconds.
+All 16 endpoints were valid except atom cost 5 + motif cost 2 (15/16). Atom
+cost 2 + motif cost 2 reduced mean protected decisions changed from 3.50 to
+1.125, retained 16 unique valid endpoints, and had Morgan diversity 0.9021
+versus 0.9033 baseline. Trajectory validity was lower (92.58% vs 95.70%). Mean
+hard sulfur drift was zero in all arms, with offsetting individual changes;
+motif-only expected sulfur increased 0.01296. The artificial sulfur stress
+selected C→S at zero extra atom cost and bond repair at costs 2/5. Initial
+bond-first diagnostic **30000094 DONE** is retained separately. Twenty-nine
+focused tests passed; frozen weights unchanged. No native binding claims or
+default adoption. [Protocol, results and limitations](../experiments/chemistry-guidance/atom-exchange.md).
+
+11 November 2026. Completed the clarified **1-p + constant exchange surcharge**
+comparison: CPU jobs **30000226/30000227/30000228 DONE**, three seeds, 48 distinct
+references, 32 updates × nine arms = 13,824 frozen-VAE chemistry-only updates.
+Sixty-five focused checks passed. Atom/motif costs 0.5/0.5 retained 48/48 final
+validity, reduced protected changes 4.646→2.500 and had Morgan diversity
+0.9003 vs 0.9053 baseline. Costs 2/0.5 also retained 48/48 validity with 2.250
+protected changes and diversity 0.8965. Sulfur means decreased, but individual
+gains remained; one invalid intermediate 2/0.5 state gained two sulfur atoms
+absent from its start/reference. In the separate 16-case cost probe, atom
+surcharge 0.5 still selected sulfur, whereas 2 selected bond repair throughout.
+Actual references covered rings/amides; acid/ester/sulfonyl branches are fixture-
+tested only. Weights remained frozen, downloads verified, current runs/defaults
+unchanged. No native binding claim. [Full results and limitations](../experiments/chemistry-guidance/atom-exchange-linear.md).
+
+11 November 2026. Submitted the native Protenix contact comparison at **LR 70,
+500 updates**: three matched valid starts, current structural guidance versus
+atom costs 0.5 and 2 with substructure cost 0.5. GPU jobs **30000901/30000913/
+30000930** were pending capacity at 14:37 CET; dependent report **30001069**
+collects first-50/full-500 sulfur, raw validity, diversity and same-context native
+readouts. Seventy-one focused CPU checks passed. This is submission evidence,
+not a native result; the objective is contact, not affinity, and the existing
+step-norm cap 0.5 remains active. Source/checkpoint are pinned and existing runs,
+callbacks and defaults are unchanged. [Protocol and receipts](../experiments/chemistry-guidance/atom-exchange-protenix.md).
+
+12 November 2026. Collected completed A40 native comparison **30000913** (three
+arms × 500 updates, one matched start, LR 70); V100 **30000901** and L40S
+**30000930** remain pending at 10:27 CET. Current / atom 0.5 / atom 2 (new arms
+with structure 0.5) had final sulfur drift **+2 / +1 / 0**, recorded source
+validity **83.0% / 10.0% / 37.6%**, and only cost 2 had a valid endpoint.
+Unique parseable valid molecules were **282 / 37 / 116**, Morgan distances
+**0.8474 / 0.8255 / 0.8395**. Final relaxed contact losses were
+**−0.3943 / −0.3454 / −0.1749**, from −0.1496; selected best relaxed-valid
+hard losses were **−0.6007 / −0.4621 / −0.2372**, from −0.1412. All arms
+temporarily added two sulfur atoms; protected final changes were 8 / 15 / 9.
+Finite/frozen checks passed; almost every step was capped. One baseline saved
+SMILES fails reparsing, reducing parseable source validity to 82.8%; local
+reporting now exposes this and partial cohorts (five tests passed). Download
+hash verified. Results are preliminary contact-surrogate evidence, not affinity;
+no jobs, callbacks or defaults changed.
+[Full partial comparison and limitations](../experiments/chemistry-guidance/atom-exchange-protenix.md#preliminary-native-result-one-completed-matched-start).
+
+12 November 2026. Diagnosed the mixed-search validity drop with allocated CPU
+replay **30016556 DONE**: 99 stratified saved latents, 105.61 seconds, all saved
+hard labels reproduced and decoder frozen. Current search rescued 2/12 sampled
+cost-0.5 failures and 7/12 cost-2 failures; seven rescues required three edits
+outside the mixed radius. Successful targets matched only 4/12 and 8/12 in the
+sampled success strata. Recorded baseline sulfur additions at updates 1 and 16
+followed zero chemistry gradients and were binding-driven latent changes.
+Implemented independent continuous preservation with unchanged current search;
+80 local checks passed, including exact zero-penalty gradient/target equivalence.
+Submitted three seven-arm native cohorts **30016566/30016572/30016586**, LR 70,
+500 updates each, atom 0.5/2 and structure sweep 0/0.1/0.5/2. Report **30016589**
+depends on all three ending. GPU outcomes pending; existing jobs/defaults are
+unchanged. [Diagnosis, semantics and controlled protocol](../experiments/chemistry-guidance/preservation-protenix.md).
+
+12 November 2026, 12:30 CET. At the user's request started one matched
+preservation cohort on the shared interactive V100, **30018947 RUN**, seven
+500-update arms at LR 70, four CPU slots and one selected GPU. Native startup
+and first finite gradient updates succeeded (~0.6 s/update after startup).
+This repeats screening seed 111310 and is not an extra independent start.
+Prior routing-only attempt **30018940 EXIT** is retained; the successful retry
+explicitly normalizes the documented shared interactive GPU selection without
+changing source/config or claiming exclusive ownership. The three queued GPU
+cohorts and their report remain unchanged. No scientific comparison outcome yet.
+[Interactive execution details](../experiments/chemistry-guidance/preservation-protenix.md#interactive-execution-requested-12-november).
+
+12 November 2026, 12:38 CET. User requested all preservation starts on interactive
+nodes. Added A100 **30018978 RUN** (seed 111210) and V100-SXM2 **30018977 RUN**
+(seed 111410), alongside V100 **30018947 RUN** (seed 111310). All three showed
+finite native gradients; the V100 current control completed 500 updates and
+started its next arm. All seven arms per seed retain the exact frozen source,
+LR 70 and 500-update settings. CPU report **30018980** depends on these three
+interactive jobs ending. Original queued jobs/report are unchanged; repeated
+seed executions must not be counted as new independent starts. No full cohort
+comparison result yet. [Progress and receipts](../experiments/chemistry-guidance/preservation-protenix.md#all-three-starts-on-interactive-nodes).
+
+12 November 2026. Completed Boltz-2 ipSAE comparison **29996335**: one matched
+seed, fixed pose, 500 updates per arm, LR 3 and 0.5 max step. Original fixed-pose
+soft DBMol loss at best valid decoded state was 5.477675 (baseline) versus
+3.534630 (ipSAE), after removing the ipSAE term from the latter. Raw-valid update
+sources were 132/500 versus 19/500; distinct valid SMILES 12 versus 14; both
+endpoints invalid. Step caps 338/500 versus 489/500. On five distinct matched
+states ipSAE-only versus original-confidence gradients had cosines 0.8821–1.0000;
+ipSAE unweighted norm was 2.28%–10.71% of confidence, and its 0.3-weighted
+norm 0.685%–3.214%. Eleven downloaded files matched remote SHA256. This is a
+single-start soft/fixed-pose result, not a hard-molecule or binding claim.
+[Protocol, score correction and detailed results](../experiments/latent-design/protenix-vae/ipsae.md#completed-comparison-12-november-2026).
+
+
+## 13 November 2026 — old report assets offloaded and concurrent cleanup reconciled
+
+Verified 608 inactive report asset aliases against 305 complete laptop payloads,
+then removed 2,039,047,680 allocated bytes (1.90 GiB) from WORK3. Independent
+postflight confirmed absence of the selected assets and unchanged pilot summaries
+and terminal logs. The final WORK3 quota showed 20.50 GiB free of 100 GiB.
+
+A concurrent authorized cleanup archived both old 28–29 October DeFoG frame
+sets during this operation's read-only transfer. The source-change guard stopped
+that transfer before any pilot deletion. Both completed laptop archives were
+independently checked by whole-archive SHA256 and all 60,002 member hashes.
+Their removals are excluded from this operation's 1.90 GiB total. Two redundant
+partial transfers were removed locally after confirming complete frame coverage.
+
+The backup and restore index is
+`C:/Users/nikol/HPC_Archives/maintenance-20261113-01/README.md`.
+The pilot archives are under
+`C:/Users/nikol/HPC_Archives/hpc-cleanup-20261113a/archives/`.
+Historical report views and DeFoG trajectory rendering may require restoration.
+
+17 November 2026. Epoch-47/60M A100 continuation is running in job **30092509**
+after first segment **30053692** saved and exited at its allocation budget.
+Automatic resumption succeeded; progress at 20:15 CET was about 28.05M/60M.
+Recent throughput was 296.07 real molecules/s. Raw fresh-prior already-valid
+fraction dropped from 20.44% in the first 1,000 updates to 0.325% at the end
+of segment 1, then recovered to 3.14% in the latest 1,000 updates of segment 2.
+Each window contains 16,000 priors. Mean training reconstruction loss declined
+from 0.18275 to 0.03579; these are unmatched training windows, with no fixed-panel
+quality evaluation yet. Running jobs and the recipe were left unchanged.
+[Progress, generation warning and evidence](../experiments/vae/large-corpus.md#epoch-47-running-random-prior-validity-warning-17-november).
+
+19 November 2026. Reviewed the completed BRD4 Protenix chemistry-loss sweep,
+51 executions of 500 updates at LR 70 on three starting molecules. The three
+original mixed-search controls exactly repeated the batch fixed-search controls.
+With current repair discovery held fixed, atom 2 / structure 2 improved raw
+trajectory validity from 78.9% to 86.4% in batch and 67.0% to 88.2% in the
+interactive repeat. All six endpoints were valid, with weaker mean selected
+hard contact than the matched controls. Atom 2 / structure 0 ended sulfur-free
+on all six trajectories. At 2 / 0.5, validity was 50.5% in batch and 78.9%
+interactively. Initial latents matched, but one baseline binding gradient already
+differed on its first update. None of the 15 reference rings were aromatic.
+At 2 / 2, zero batch and three interactive reference rings survived exactly.
+The two mixed-search arms reduced sulfur exposure while losing validity and
+distinct valid molecules. This was an analysis of saved runs.
+[Full comparison and per-start measurements](../experiments/chemistry-guidance/preservation-protenix.md#completed-comparison-19-november-2026)
+· [Mixed-search results](../experiments/chemistry-guidance/atom-exchange-protenix.md#completed-three-start-comparison-collected-19-november).
+
+19 November 2026. The large-VAE PubChem run switched prior guidance at
+update 524177, with 47,682,960 of 60M real molecules processed in epoch 47.
+A full logical CPU update (240 real, 16 prior) passed. The frozen epoch-46
+decoder supplied 16 occupancy targets and 11 valid chemistry targets.
+On the fixed panel the late-47 starting model had 125/128 full graphs and
+7/128 valid, compared with zero full and 91/128 valid for epoch 46. A100
+job **30112466** and its checkpoint continuation callback **30112467** were
+submitted for the remaining 51,321 updates. Training recovery is unmeasured
+at submission. [Recipe, evidence and run details](../experiments/vae/epoch47-occupancy-continuation.md)
+
+19 November 2026. On a shared deliberately saturated 435,400-parameter VAE,
+the original prior loss still gave 64/64 full argmax graphs after 64 CPU
+updates. A log-domain count KL alone gave 0 full but 60 empty. Adding a
+second term supervising the actual element-vs-NO_ATOM argmax margins gave
+0 full, 1 empty, and a mean of 21.25 atoms (38.42 when sampling).
+At 1.5× latent radius the combined arm gave 0 full and 2 empty. The local
+pilot used 24 real and six fresh prior examples per update. Only 1/64
+random argmax graphs was valid and 0/64 held-out structures reconstructed
+exactly in the combined stress arm. No full tiny-VAE training job was
+submitted. [Experiment, configuration and measurements](../experiments/vae/compact-benchmark.md#matched-local-occupancy-pilot-19-november-2026)
+
+19 November 2026. Submitted the compact 435,400-parameter VAE from scratch
+for one shuffled pass over 60M real molecules on a 32 GB V100. Native batch
+256, graph-matched reconstruction and KL, AdamW weight decay 0.0001, no
+dropout. A local interrupted/resumed optimizer test reproduced the uninterrupted
+weights and moments. The fixed panels cover 256 validation molecules and
+256 Gaussian codes. Worker **30113803** and callback **30113804** were pending
+at the first scheduler check. [Recipe and submission evidence](../experiments/vae/compact-benchmark.md#first-complete-60m-training-pass)
+
+19 November 2026. Superseded the unstarted compact real-only V100 job at the user's request. Worker **30113896** and callback **30113899** now use both atom-count terms at weight 1 on one fresh Gaussian draw per 15 real molecules, from update one. Both original scheduler records ended with zero running seconds. The replacement was eligible pending GPU capacity. A matched CPU update on the full model verified both terms reach the atom head, and a split-allocation regression reproduced the uninterrupted training state and prior draws. [Run and evidence](../experiments/vae/compact-benchmark.md#first-complete-60m-training-pass)
+
+19 November 2026. The large VAE's next epoch-47 allocation uses 5% training dropout on the output of each of the four atom-refinement MLPs. A CPU update from production checkpoint 524177 used all 240 real / 16 prior examples and preserved the frozen reference. With the same weights, the sealed release reproduced the original evaluation logits exactly on four fixed vectors. A100 worker **30114866** was eligible and pending cluster slots; callback **30114867** handles subsequent allocations. The previous pair ended with zero running seconds. The endpoint remains epoch 47. [Experiment, measurements and scheduler receipt](../experiments/vae/epoch47-occupancy-continuation.md#5-dropout-in-the-next-a100-allocation)
+
+19 November 2026. Tested an opt-in soft bond-message VAE (429,096 parameters) against the 435,400-parameter triangle control. In a controlled weak-edge fixture with a 2% occupied endpoint, the bond gradient matched central finite differences and had the sign needed to strengthen the message. Tests also traced gradients through the four provisional bond predictions into the latent vector. DTU job **30116009** was pending on one 32 GB V100 at the first check. It trains both architectures for 512 updates from scratch and compares fixed-slot relaxed contact gradients with matched random directions and fresh discrete Protenix scores. [Experiment and outputs](../experiments/vae/bond-message-comparison.md)
+
+The local 16-update comparison on 480 distinct training molecules reached held-out reconstruction losses of 3.850 (triangle) and 3.864 (bond messages). Both gave 0/64 connected reconstructions, zero recovered bonds of 1,586, and 0/64 valid prior argmax draws. Silencing learned bond messages changed the hard labels of 64/64 held-out graphs and restoring the messages restored the logits exactly. [Local results and ablation](../experiments/vae/bond-message-comparison.md#first-local-results)
+
+20 November 2026. The companion Mosaic direct relaxed-graph study compared closure proposals on 32 PubChem replication founders. Learning where to close the graph and assigning bond orders jointly produced 186 reference-supported aromatic closure outcomes in 4,096 proposals, spanning 17 products from four founders. A separate ChEMBL assay query identified 12 exact BRD4 aromatic/reduced analog pairs for a target-specific ranking check. [Study and results](../../mosaic/experiments/brd4-jq1/protenix-random-chem/aromatic-formation/continuation.md)
+
+
+20 November 2026. A 7,921-parameter graph score trained without motif labels raised eight-step reference-supported aromatic yield on 32 independently generated acyclic trees from 1/32 (random selection) to 7/32. On 32 steps the learned policy gave 11 amide-bearing and 15 nitrile-bearing endpoints. Direct dense ascent on that score left zero chemically valid endpoints. Separate fresh ZINC tests found little selection value in a single native Boltz founder gradient for finite categorical edits. [Multistep chemistry](../../mosaic/experiments/brd4-jq1/protenix-random-chem/aromatic-formation/local-prior/multistep.md) · [Prospective ZINC ranking](../../mosaic/experiments/brd4-jq1/protenix-random-chem/aromatic-formation/target-selection/README.md)
+
+
+20 November 2026. Retrospective review of job 30082565 found 63 distinct sanitized molecules among 12,832 raw frozen-decoder states and zero sanitized aromatics. A separate direct relaxed-graph method recovered 60/64 hidden aromatic constitutions in measured human BRD4-BD1 ligands at 16 proposals per case, and produced ten electronically qualified new rings from synthetic acyclic founders. The synthetic ring histories used two to five accepted updates per product. [Research evidence and conditions](../../mosaic/experiments/brd4-jq1/protenix-random-chem/aromatic-formation/continuation.md#measured-ligands-archived-states-and-generated-scaffolds)
+
+20 November 2026. On 64 independent random 31-atom trees, learned closure placement gave nine first-draw molecules with multiple 5/6-member aromatic rings and a whole-molecule force-field pass, including five with a heteroaromatic ring. Uniform placement gave zero. In a separate 64-founder direct probability optimization, a soft consensus gave ten such multiple-ring molecules initially and 17 after 32 full-gradient updates. [De novo controls and physical checks](../../mosaic/experiments/brd4-jq1/protenix-random-chem/aromatic-formation/local-prior/de-novo-connectivity.md#independent-random-trees-and-continuous-optimization)
+
+20 November 2026. On 64 unseen 31-heavy-atom ChEMBL compounds, a frozen 25-atom neighborhood model produced 39 geometry-qualified new single-acyl amides, 22 nitriles and seven esters in 3,072 relaxed draws using sites selected by masked-label uncertainty. Sites matched by degree and aromaticity gave 22, eight and eight. All 22 nitriles required element and ordinary bond-order changes at the same site. On 119 measured BRD4 scaffolds with their elements and connectivity supplied and every bond initialized as single, 32 generic neighborhood updates restored the selected aromatic ring in 111/128 walks. Of these, 106 passed whole-molecule geometry. The method also aromatized the corresponding saturated control ring in 28/110 walks, all geometrically plausible. Interactive CPU runs took 29–128 seconds per chemistry or geometry comparison. [Functional-group transfer and controls](../../mosaic/experiments/brd4-jq1/protenix-random-chem/aromatic-formation/generalization/functional-stars.md#transfer-to-31-heavy-atom-molecules) · [Aromatic reconstruction and physical controls](../../mosaic/experiments/brd4-jq1/protenix-random-chem/aromatic-formation/generalization/README.md#aromatization-without-selecting-a-ring)
+
+### 2026-11-20 — Direct continuous molecular graphs and a measured projection control
+
+A single 15,853-parameter VAE-free model jointly transports atoms, edge presence and ordinary orders from Gaussian noise around all-single trees. At 6,144 small-model updates (403 CPU seconds), 48 degree-distribution trees at 31 atoms yielded 79 aromatic and 20 multiring products in 384 raw draws. Among first draws, six aromatics and one multiring product met whole MMFF. A prior-frozen electronic panel gave 3/6 multiring MMFF+GFN2 passes from random trees and 3/6 from degree trees. When starting measured ligands were reconstructed unchanged, the sulfur-2 Stage 2 projection invalidated all 72 higher-valence sulfur compounds among 210 size-31 inputs. Changing solely that ceiling to six retained 210/210 identities. [Model, comparisons and measurements](../../mosaic/experiments/brd4-jq1/protenix-random-chem/aromatic-formation/local-prior/continuous-generation.md)
+### 2026-11-20 — Training examples needed for ordinary ring and functional-group formation
+
+At 3,072 uniform closure opportunities on 48 held-out 25-atom sources, the frozen VAE-free molecular assignment network trained on 256 acyclic molecules yielded 27 distinct new-edge aromatic products. Ten passed whole geometry. Three came from three genuinely acyclic founders, all carbonyl-bearing five-membered heterocycles. Two had increased endocyclic Wiberg orders against genuine hydrogenated twins. A matched 256-compound mixed bank yielded 126 new-edge aromatics, including 47 geometry-qualified products from acyclic sources. On 64 disjoint size-31 ChEMBL founders, choosing sites by expected increase in ordinary atom/bond label rarity raised unfiltered nitrile prevalence by 1.63 percentage points over 3,072 updates, with a paired-founder 95% interval of 0.81–2.60 points. Matched site controls gave 1.24 fewer percentage points (0.39–2.34). [Training controls and electronic checks](../../mosaic/experiments/brd4-jq1/protenix-random-chem/aromatic-formation/generalization/README.md#can-a-model-trained-only-on-trees-generate-a-ring) · [Population estimates and geometry](../../mosaic/experiments/brd4-jq1/protenix-random-chem/aromatic-formation/generalization/functional-stars.md#prefer-sites-likely-to-gain-rare-atom-or-bond-labels)
+
+20 November 2026. An optional table of local atom and ordinary-bond counts learned on 16,384 untargeted molecules increased validity on independent synthetic degree trees from 40/96 to 82/96, and readable aromatics from 14 to 37. All new aromatic readouts in that comparison rescued previously invalid graphs. A differentiable Mosaic-to-DBMol bridge preserved 48/48 hard identities across three representations of 16 molecules and noncontiguous parent slots. On 24 additional preselected founders, small native gradient steps through the generator produced 9–10 distinct, whole-MMFF hard-score improvers, versus 6–8 for directly updating graph probabilities at the same displacement and 6–7 for matched random generator directions. No arm gained a first aromatic ring at either tested dose. [Direct graph API](workflows.md#import-a-direct-relaxed-graph-from-mosaic) · [Projection controls](../../mosaic/experiments/brd4-jq1/protenix-random-chem/aromatic-formation/local-prior/learned-chemistry.md) · [Native replication](../../mosaic/experiments/brd4-jq1/protenix-random-chem/aromatic-formation/trajectory/native-through-flow.md)
+
+
+### 2026-11-20 — Session close, VAE-free ring formation and independent scaling
+
+The 15,853-parameter direct model trained with ordinary atom and bond labels. Increasing its small-model training set from 512 to 16,384 molecules at equal training steps increased aromatic graphs from 256 to 480 per 1,152 draws, and aromatic whole-MMFF first draws from 22 to 43 per 144. A separately initialized repeat with randomized nested subsets gave 393 versus 475 aromatic graphs per 960 draws. On 48 fresh, truly acyclic PubChem starts with ten atoms protected, the larger model gave 14 aromatic first draws and 36 aromatic products selected by generic chemistry from 12 candidates each. These 48 selected products have graph readouts. [Training and controls](../../mosaic/experiments/brd4-jq1/protenix-random-chem/aromatic-formation/local-prior/continuous-generation.md) · [Prospective test](../../mosaic/experiments/brd4-jq1/protenix-random-chem/aromatic-formation/local-prior/fragment-generation.md)
+
+### 2026-11-20 — V100 decoder comparison and compact training progress
+
+Job **30116009** completed both 512-update arms. Triangle recovered 67.8% of reference bonds at 14.0% precision and produced 241/256 connected graphs. Bond messages recovered 66.7% at 14.3% precision and produced 231/256 connected graphs. Every held-out reconstruction in each arm failed valence. Messages ran at 246 real molecules/s versus 198 for triangle. Native Protenix descent improved the relaxed contact score at radius 0.25 on all four starts per arm, with zero valid discrete edits. [V100 outcomes and source results](../experiments/vae/bond-message-comparison.md#completed-v100-comparison)
+
+The separate full-pass tiny VAE at update 35,000 reached 69.9% bond recall and 15.6% precision, with 0/256 valid reconstructions and 0/256 valid argmax prior draws. Its argmax prior panel contained zero empty graphs and zero graphs filling all 50 slots. [Training snapshot](../experiments/vae/compact-benchmark.md)
+
+### 2026-11-20 — Raw VAE ring-bond encoding
+
+Compared original decoder edge labels with RDKit-perceived rings in saved epoch-45 prior and reconstruction records. Both benzene input spellings produced six AROMATIC target edges. The two prior readouts gave 252 and 189 aromatic ring occurrences, with zero raw DOUBLE bonds on those rings. All 19,263 reconstructed aromatic rings contained exclusively raw AROMATIC edges. A manually supplied alternating benzene graph decoded successfully. [Method and full counts](../experiments/latent-design/aromatic-rings.md#how-often-do-they-appear)
+
+20 November 2026. Submitted **30128096** to compare a 435,288-parameter triangle and typed-bond-message VAE against the completed 512-update controls from job 30116009. The hybrid initially reproduces the message-only decoder, and backward tests detected gradients on all four new triangle output projections. The archived worker passed nine local regression tests. DTU first reported the hybrid waiting for a V100 allocation. [Hybrid experiment and receipt](../experiments/vae/bond-message-comparison.md#hybrid-with-triangles-and-typed-bond-messages)
+
+The local 16-update hybrid pilot used the same 480 training molecules as both saved controls. All three produced zero connected reconstructions out of 64. Ranking soft bond probabilities at 66.71% recall gave 6.85% precision for the hybrid, 6.55% for typed messages and 7.44% for triangle attention. All four triangle projections learned nonzero weights, but removing them changed zero of 16 hard graphs. [Local measurements](../experiments/vae/bond-message-comparison.md#hybrid-with-triangles-and-typed-bond-messages)
+
+20 November 2026. Submitted **30128180** for a 16-fold longer matched triangle, bond-message and hybrid comparison. Each arm trains for 8,192 steps on the same 2,097,152 real molecules and 139,810 Gaussian draws. The fixed panel measures 1,024 held-out molecules and 1,024 random codes. Twelve local tests passed against the submitted archive, including all three optimizer paths. At 09:27 CET LSF reported PEND. [Configuration, output and receipt](../experiments/vae/bond-message-comparison.md#longer-three-decoder-comparison)
+
+20 November 2026. Submitted **30129063** for a frozen pretrained ZINC PIG-VAE
+with BRD4 Protenix contact descent at LR 60. Four neutral, 25-atom validation
+starts each receive 32 updates and a step-length-matched random control. Initial
+CPU hard decodes had 50–53 bonds versus 27–28 in the source and failed
+sanitization in 4/4 cases. Decoder probability gradients were finite. LSF
+reported PEND at submission. [Protocol, local measurements and receipt](../experiments/latent-design/protenix-vae/graph-lda-contact.md)
+
+20 November 2026. Submitted **30129115** to compare a 481,668-parameter hybrid VAE against the original 435,288-parameter hybrid over 8,192 matched updates. In the 16-update CPU check, widening the pair and triangle channels improved bond precision from 6.85% to 7.67% at 66.71% recall. Both produced zero valid reconstructions and zero valid random argmax draws on the 64-example panels. The 32 GB V100 job was pending at 10:26 CET. [Experiment and receipt](../experiments/vae/bond-message-comparison.md#wider-hybrid)
+
+20 November 2026. Direct BRD4 chemistry-loss pilot completed on interactive V100 job **30129301**. Three random sparse founders × repair weights 0 / 0.1 / 1 × 48 direct probability updates at LR 60. Across arms, eight distinct new valid molecules beat their own founder on hard fixed-context Protenix contact. Each weight improved all three founders. Valid source counts were 105 / 109 / 109 of 144, with 2/3 valid endpoints each. All three weights reached the same best molecule per founder. [Settings, results and candidate SMILES](../experiments/latent-design/direct-jump/experiment.md#direct-chemistry-loss-pilot-20-november-2026)
+
+20 November 2026. Local four-round large VAE timing on a 1:1 microbatch found 109.24 ms for joint forward/backward and 106.46 ms with the encoder frozen. The four-frozen/one-joint schedule estimates 2.0% less network time. A100 end-to-end timing and quality remain unmeasured. [Method and results](../experiments/vae/epoch47-occupancy-continuation.md#timing-an-encoder-update-every-fifth-step)
+
+20 November 2026. Epoch-48 paired first-leg jobs **30131204** (four rounds, V100) and **30131205** (seven rounds, A100) each request 25,000 graph-matched reconstruction updates with 1:1 real and projected random draws. LSF confirmed both held for the common completed epoch-47 checkpoint via gate **30131206**. Nineteen focused CPU checks passed. At cached update 524177, both arms had identical initial logits and first-step loss, and projection edited zero of 128 known-valid graphs. [Paired protocol, local evidence and submission](../experiments/vae/epoch47-occupancy-continuation.md#epoch-48-paired-first-leg)
+
+20 November 2026. A census of the 60M real VAE training graphs found rings in 57,497,175 (95.83%). In a uniform 50,000-row panel, 93.74% contain both a ring and a listed functional group. Capturing 90% of variance took 9 of 18 standardized descriptor PCs, 662 of 1,024 Morgan fingerprint PCs and 55 of 256 frozen partial epoch-47 posterior-mean PCs. Four deflation ICA directions reproduced across the two fits (absolute r above 0.998). CPU jobs 30131132 and 30131210 completed. [Data, plots and methods](../experiments/vae/training_data_eda/experiment.md)
+
+20 November 2026. Both epoch-48 first-leg arms now request 32 GB V100s. Four-round control **30131204** retained its reservation. Seven-round worker **30131363** replaces A100 worker **30131205**, which exited with zero runtime. CPU gate **30131364** releases both from the verified epoch-47 checkpoint. [Verified queue transfer](../experiments/vae/epoch47-occupancy-continuation.md#epoch-48-paired-first-leg)
+
+20–21 November 2026. Frozen large VAE chemistry audit on 2,048 matched random draws per checkpoint and 512 held-out PubChem molecules. Epoch 46 produced 35 valid aromatic outputs. Partial epoch 47 produced two after 27.81M real rows and zero after 47.68M. All 55 valid late random outputs contained only C and F, while the same checkpoint recovered aromatic rings for 440/460 aromatic held-out inputs. A paired inference-only aromatic-logit shift improved the epoch-46 aromatic yield at a validity cost and yielded zero valid aromatic molecules at late 47. [Methods, molecular examples and quantitative results](../experiments/vae/training_data_eda/generation-motifs.md)
+
+21 November 2026. Local analysis of saved late-47 posterior samples found that 22/30 valid aromatic edits changed their source's RDKit Murcko scaffold. The denominator excludes exact source copies. [Panel and method](../experiments/vae/training_data_eda/generation-motifs.md)
+
+21 November 2026. After epoch 47 resumed, CPU argmax evaluation at update 541677 on 512 matched prior vectors found 269 distinct valid molecules, eight aromatic and 19 with an amide. The same vectors at the handoff produced 14 valid, zero aromatic and zero amides. C/F-only raw outputs fell from 506 to zero. [Matched results](../outputs/runs/vae-generation-motifs-20261121a/matched-motifs.json)
+
+21 November 2026. The weak aromatic-ring and amide batch loss produced a nonzero gradient on 25/32 batches of 48 fresh priors at update 541677. On a local RTX 4060, coefficient 0.3 contributed a median 0.47% of the base gradient norm on four scheduled steps. Applying it once every fourth step projected about 0.34% overhead from those paired measurements. Submitted V100 job **30147253**, 256 updates per arm from completed epoch 47, after withdrawing **30147239** with zero runtime to fix launch order. LSF confirmed exactly one pending motif pilot at 09:40 CET. [Method, checks and scheduler receipt](../experiments/vae/weak-functional-groups.md)
+
+21 November 2026. Local matched replay of 8% aromatic and 12% amide floors at weight 0.30 raised the median auxiliary gradient from 0.47% to 0.78% of the base norm on four scheduled steps at update 541677. Both floor settings supplied gradients in 25/32 sampled batches. [Comparison and stored outputs](../experiments/vae/weak-functional-groups.md#higher-floors-at-the-same-weight)
+
+21 November 2026. Seven-round production worker **30151761** now carries the 8% aromatic and 12% amide loss, weight 0.3, on 48 random decodes every fourth update. At full batch shape the local seven-round CUDA smoke measured a 0.59% added gradient relative to baseline and updates to all six residual gates. DTU confirmed the replacement worker held with four-round control **30131204** for the completed epoch-47 parent. New gate **30151762** tracks that checkpoint. Superseded worker and gate both exited with zero runtime. [Settings, evidence and scheduler state](../experiments/vae/epoch47-occupancy-continuation.md#functional-group-loss-in-the-seven-round-arm)
+
+21 November 2026. Epoch 47 finished at update 575498 after 60M real graphs. The final 128-prior panel gave 84 distinct valid outputs and no 50-atom graphs. Both epoch-48 V100 arms started from that checkpoint. At update 581000, the shared 512-prior panel gave 423 valid for four rounds and 469 for seven rounds with the motif loss. Each arm reconstructed 245/256 exactly. The separate 256-update four-round pilot at 5%/8% gave the same argmax motif counts in both arms on 2,048 matched priors (49 aromatic, 133 amide). [Pilot results](../outputs/runs/vae-e48-weak-motifs-20261121b/comparison.json)
+
+21 November 2026. Frozen seven-round update 580498 yielded 254 cyclic structures and seven valid aromatics in 256 Gaussian draws. Relabeling existing ring bonds alone produced valid aromatics on 69 additional structures. On 160 held-out posterior draws, independently shuffling each latent coordinate preserved its marginal distribution and reduced valid aromatics from 130 to one. On eight matched batches of 16 Gaussian vectors, retaining teacher edge existence and omitting its conditional bond-type targets removed 99.6% of its measured gradient against the aromatic class bias. A sampler centered on real encodings at 1.5× posterior noise produced 100 distinct valid aromatic molecules outside the 50k reference panel in 512 attempts, versus 12 from an independent standard-normal prior; total validity fell from 449 to 239. [Methods, interventions and limitations](../experiments/vae/training_data_eda/epoch48-aromatic-mechanism.md)
+
+22 November 2026. Two matched local 128-update arms from update 580498 tested dropping only the teacher's conditional bond-type loss. Control vs existence-only on 1,024 fresh priors gave 866 vs 887 valid, 24 vs 30 aromatic and 50 vs 40 amide. Both reconstructed 116/128 held-out graphs exactly. Rates of rings with eight or more atoms remained above 70% among valid outputs in both arms. The common start gave 885 valid, 28 aromatic and 70 amide. Separately, exact membership job 30167356 found 97 vs 12 distinct valid aromatic products outside the 60M training set from 512 seeded 1.5× vs Gaussian attempts. [Matched training pilot](../outputs/runs/vae-aromatic-mechanism-20261121a/teacher-train-pilot-a/summary.json) · [Full-view membership](../outputs/runs/vae-aromatic-mechanism-20261121a/membership/result.json)
+
+22 November 2026. A local CPU probe on the saved seven-round update-580498 Gaussian panel found 209 strictly valid graphs with triangles or ≥8-membered rings. A bounded, connectivity-preserving single-bond rewire gave an improving target in all 209 and retained existing aromatic rings and amides. In a 32-graph replay, ranking allowable proposals by decoder probability reduced median two-edge cross-entropy from 12.52 to 5.50, with finite nonzero latent and bond-head gradients on all 32 graphs. These are edited targets. VAE weights were frozen. [Ring-topology probe](../experiments/vae/training_data_eda/ring-topology-probe.md)
+
+22 November 2026. Frozen CPU replay at update 588498 on 96 Gaussians found element-matched contrast controls for 28/28 eligible aromatic and 16/16 amide sites. Pair ranking canceled direct class-bias gradients. A unit final-layer ranking descent still raised aromatic-vs-single at 99.9% of other matched bonds. For amides it raised double-vs-single at 17.8% of other C–O bonds, compared with 100% for positive-only CE. The optional module has no production call site. [Site selection, gradients, directional readout and limits](../experiments/vae/training_data_eda/motif-contrast-probe.md)
+
+22 November 2026. At frozen update 588498, the batch pattern loss selected 7 of 28 verified six-ring completions and 8 of 16 verified amides across 96 priors. Off-site expected aromatic count opposed a global class increase in both batches. The full final-layer gradient direction still increased AROMATIC vs SINGLE on all examined off-site single bonds in this local readout. Four focused chemistry and gradient tests passed. [Pattern loss and frozen replay](../experiments/vae/training_data_eda/motif-pattern-probe.md)
+
+22 November 2026. A frozen CPU replay near 44 strictly valid Gaussian seeds from update 580498 evaluated 528 unique correlated neighbors. For 24 seeds per motif, four directions each, correlation .995 retained the original aromatic site in 63/96 decodes and the original amide in 64/96. Exact slot graphs survived in 5/96 and 7/96, with median three label edits in both groups. At correlation .95 the corresponding site-retention counts fell to 25/96 and 35/96. [Neighbor audit and per-draw results](../experiments/vae/training_data_eda/motif-prior-neighbors.md)
+
+22 November 2026. A CPU replay selectively removed the epoch-46 teacher's conditional SINGLE labels on verified student six-C/N ring edges at update 580498. Across 128 matched priors, 160 masked edges on 29 graphs reduced the mean uniform aromatic-logit derivative from +0.004190 to +0.001811. The independently decomposed loss and all gradient checks agreed in float64. CPU selection cost 46 ms per 16 priors at the median. The experiment-only helper has no trainer call site. [Ablation and per-batch measurements](../experiments/vae/training_data_eda/ring-teacher-ablation.md)
+
+22 November 2026. The seven-round VAE learned more valid aromatic rings and amides on fresh prior draws when a correlated latent neighbor was supervised on an already valid, observed motif. At 128 matched updates, 8,192 categorical draws gave control → treatment counts of 135 → 156 valid aromatics, 311 → 487 valid amides, and 5,254 → 5,285 valid molecules, with 116/128 exact held-out reconstructions in both arms. Large-ring prevalence among valid draws increased from 69.9% to 71.3%. The production-shape auxiliary took approximately 0.126 s per optimizer update amortized on a local RTX 4060. The DTU scheduler accepted 24-hour V100 worker **30211418** after active first-leg worker **30151761**, with callback **30211420**. On the authenticated handoff a 512-update-per-arm, 4,096-draw comparison chooses the motif policy for the remainder of epoch 48. The production winner is pending. [Matched experiments](../experiments/vae/training_data_eda/epoch48-motif-completion.md) · [Recipe, recovery and scheduler evidence](../experiments/vae/epoch47-occupancy-continuation.md#epoch-48-continuation-and-functional-group-comparison)
+
+22 November 2026. DTU first-leg seven-round job **30151761** finished at 15:53 CET on its soft allocation limit. It saved update **597604** after 22,106 updates and 5,305,440 of the epoch's 60,000,000 training rows. The same 512 Gaussian argmax draws improved from 332 to 475 valid, and exact held-out reconstructions rose from 244 to 247 of 256. The last 1,000 updates had 187 valid aromatic and 522 valid amide hits in 12,000 raw categorical training draws. At 16:05 CET, worker **30211418** was eligible and waiting for V100 capacity; the production matched motif comparison had not begun. [Run and continuation](../experiments/vae/epoch47-occupancy-continuation.md#epoch-48-continuation-and-functional-group-comparison)
+
+22 November 2026. Replaying the completed seven-round first leg, 2,832/5,526 scheduled 48-draw batches contained zero valid aromatic molecules, versus 55/1,105 groups of 240 pooled from five adjacent batches. A uniform 50,000-molecule audit recovered 87.056% aromatic and 47.988% amide prevalence. Individual RDKit five/six-membered rings were fully aromatic in 59.67%/77.61% of instances. At fixed 240-draw grouping the corpus floors increased mean absolute aromatic/amide score coefficients by 13.84x/5.83x. [Audit, interpretation and reproduction](../experiments/vae/training_data_eda/epoch48-motif-completion.md#corpus-frequency-and-motif-batch-replay-at-the-first-leg-endpoint)
+
+22 November 2026. On 8,160 frozen seven-round control categorical draws, 76/170 batches of 48 had zero aromatic hits and 27/170 had zero amide hits. The same draws formed 34 groups of 240, all with both signals. A 480-vector CPU replay reproduced every stored argmax graph and measured finite pooled score gradients. In 20 shared output-category directions, raising the floors from 8%/12% to the training reference of 87.056%/47.988% increased pooled mean gradient norms 12.7-fold for aromatics and 4.9-fold for amides. These are frozen-checkpoint observations. [Batch size and floor comparison](../experiments/vae/training_data_eda/pooled-motif-gradient.md)
+
+22 November 2026. A local RTX 4060 matched smoke forked seven-round checkpoint 597604 for two production-shaped updates per arm, with one scheduled motif comparison. Original 48 draws / 8% and 12% floors versus 240 draws / empirical 87.056% and 47.988% floors gave 1/1 versus 4/8 aromatic/amide hits during that update, and total pre-clip gradient norms of 1.295 and 1.312. On 1,024 fresh, paired samples both arms had 15 valid aromatics and 36 valid amides; total validity was 679 and 677, and reconstruction was 118/128 in both. No production job used the experimental recipe in this test. [Configuration, paired results and runtime](../experiments/vae/training_data_eda/epoch48-motif-completion.md#testing-the-corpus-percentages-in-the-trainer)
+
+22 November 2026. The seven-round epoch-48 continuation now compares the 240-draw corpus-target recipe with the same recipe plus heavy-atom-count-matched excess penalties for three-membered and ≥8-membered rings. In seven frozen batches from checkpoint **597604**, 74.32% of 1,063 valid draws contained a triangle and 71.50% contained a large ring; the matched training references were 5.25% and 0.51%. In the matched two-update RTX 4060 training smoke, 134 of 240 draws supplied a ring signal on the scheduled step. On 1,024 paired fresh draws both arms gave 677 valid, 517 triangle-containing and 494 large-ring-containing molecules, plus 118/128 exact reconstructions. DTU accepted 24-hour V100 worker **30249335** and callback **30249336**. At 16:53 CET the worker was pending and both superseded reservations had exited with zero runtime. Each production arm gets 512 updates before evaluation on 4,096 prior draws and 256 held-out reconstructions. The production comparison is pending. [Local evidence](../experiments/vae/training_data_eda/ring-topology-probe.md) · [Recipe and scheduler evidence](../experiments/vae/epoch47-occupancy-continuation.md#ring-sizes-in-the-second-seven-round-allocation)
+
+22 November 2026. Frozen seven-round checkpoint **597604** reproduced 12/12 held-out PubChem molecules. At temperature 1.0 and latent L2 radius 0.1 the normalized decoder-projection gradient moved 0/12 encoded starts and 10/12 Gaussian starts to a different hard graph (9 valid prior edits), while median neighboring gradient cosines were 0.9992 and 0.9978. At radius 2.0, 5/12 encoded starts changed and four edits were valid. Cooling to 0.4 reduced the median encoded projection-gradient norm from 0.000303 to 6.14 × 10⁻¹⁰. This local RTX 4060 replay used one random direction per center. It did not evaluate protein scores or training-set novelty. [Method, output and replay](../experiments/latent-design/protenix-vae/landscape.md#seven-round-epoch-48-checkpoint-at-update-597604)
+
+22 November 2026. At frozen checkpoint **597604**, 45 of 48 independent Gaussian vectors decoded to valid molecules. Three directions per valid center at latent L2 distance 0.1 yielded 112 unchanged, 22 differently valid and one invalid hard graph. At distance 1.0 the same directions yielded 29 unchanged, 98 differently valid and eight invalid. This CPU probe measures which existing edits whole-parent neighborhood supervision would penalize. [Reproduction and raw neighbors](../experiments/latent-design/protenix-vae/editability.md#what-would-copying-a-valid-random-molecule-to-its-neighbors-teach)
+
+22 November 2026. Screening 11,862 Gaussian proposals from checkpoint **597604** identified 670 eligible 25-atom parents, of which 49 reproduced the molecule at the posterior mean and 12 also did so for the single posterior draw. On those 12 parents, three shared isotropic directions at L2 distance 1.0 produced 26/36, 2/36 and 3/36 different valid molecules from the original vector, re-encoded mean and posterior sample respectively. A local analytic-scorer smoke exercised the three-arm runner, and all 12 parent reference conformers passed local checks. The GPU Protenix search and fresh scores are pending. [Matched panel, experiment and neighbor results](../experiments/latent-design/protenix-vae/editability.md#same-molecule-from-three-latent-starts-at-update-597604)
+
+23 November 2026. Local frozen-checkpoint 597604 replay of 670 originally valid 25-atom generated molecules and 512 separate PubChem validation molecules. Raw posterior means gave 49/670 exact generated and 474/512 exact real reconstructions (29/30 on size-matched real molecules). Of 507 invalid generated round trips, removing reference-absent predicted edges restored 488 to validity. The existing eight-edit valence projection raised generated validity from 163 to 633, with 69 exact. Quadrupling NO_BOND odds raised exact generated mean reconstruction to 100, but at the original Gaussian vectors preserved only 85/670 starting identities and left 600 valid. No training or protein scoring was run. [Methods, comparison and raw results](../experiments/latent-design/protenix-vae/editability.md#why-a-valid-generated-graph-can-fail-after-re-encoding)
+
+23 November 2026. The segment-2 ring comparison chose control (247/256 exact in both arms, paired ring topology change −30 under the candidate). A two-step matched RTX 4060 smoke from its selected update 598116 exercised the encoder-only generated graph round-trip branch, retaining motif-neighbor supervision. Eight parents supplied 0.01775 weighted loss on the scheduled step. Endpoint control and treatment both gave 20/111 exact fixed generated parents and 58/64 exact real reconstructions. DTU queued epoch-48 segment 3 as **30263213** after running worker **30249335** and callback **30263214**. Superseded callback **30249336** exited with zero runtime. [Recipe, monitoring and verified queue status](../experiments/vae/epoch47-occupancy-continuation.md#epoch-48-segment-3--generated-graph-reconstruction)
+
+23 November 2026. Stopped epoch-48 worker **30249335** at the operator's request after verifying its update **600116** checkpoint, with 5,908,320 real molecules consumed in the epoch. Its final log reached 600137, leaving 21 updates to repeat. DTU released worker **30264092** and callback **30264093** for the previously tested generated-graph reconstruction recipe. Both superseded segment-3 reservations exited before starting. [Early handoff and checkpoint verification](../experiments/vae/epoch47-occupancy-continuation.md#switching-at-the-next-checkpoint-on-23-november)
+
+23 November 2026. At checkpoint 600116, a frozen decoder CPU probe on 12 prior starts compared learned and bypassed extra residual rounds. At temperature 1 the median paired latent gradient norm ratios were 0.994 for an atom probability contrast and 0.874 for a bond contrast. Median direction cosines were 0.953 and 0.573. [Method, observations and scope](../experiments/latent-design/protenix-vae/landscape.md#effect-of-the-three-appended-residual-rounds-at-update-600116)
+
+23 November 2026. Frozen checkpoint **600116**. At temperature 1.0, a short step improved the relaxed composition score at 23/23 valid encoded starts, with zero valid hard edits. Testing three wider steps at equal evaluation budget achieved the specified discrete edit on 4/23 encoded and 12/23 Gaussian starts. Global warming from 1.0 to 1.5 cut valid categorical samples from 700 to 647 of 768 for encoded starts and from 521 to 354 of 768 for Gaussian starts. A matched softmax diagnostic found much stronger attenuation on encoded means. DTU accepted native Protenix temperature comparison **30276244** for fresh rescoring. [Methods and results](../experiments/latent-design/protenix-vae/output-sharpness.md)
+
+23 November 2026. Two matched 16-update joint pilots from checkpoint 600116 compared the original encoder with explicit bond counts, three graph-attention blocks and an exact-parent excess-confidence loss. Endpoints gave 117 vs 120 exact held-out reconstructions out of 128, 119 vs 119 valid random argmaxes out of 128, and 7 vs 4 initially recoverable parents yielding a distinct valid neighboring edit out of 32 (control vs candidate). All three blocks learned. The confidence term was active on five of 32 selected parents. LSF accepted one full next-leg candidate **30302772** to compare against the existing segment-4 control. [Methods, budgets and results](../experiments/vae/epoch48-encoder-upgrade.md)
+
+23 November 2026. At frozen checkpoint 600116, a paired CPU forward probe decoded 64 held-out posterior means and 64 fresh Gaussian points with 5% dropout in the four original decoder atom-update branches. Eval-mode repeats matched. Among baseline-valid molecules, one training-mode mask preserved 58/59 encoded identities and 20/60 Gaussian identities. Of the 60 valid Gaussian parents, 39 switched to another valid molecule and one became invalid. Aggregate Gaussian validity was 60/64 either way. This measures identity noise at fixed weights, not the effect of training with dropout. [Probe](../outputs/runs/vae-600116-dropout-identity-20261123a/probe.py) · [Results and seeds](../outputs/runs/vae-600116-dropout-identity-20261123a/summary.json)
+
+23 November 2026. At the operator's request, stopped epoch-48 worker 30264092 after saving and independently copying update 611116 (8,548,320 real rows of the epoch). Six subsequent logged updates will be repeated. Superseded reservations 30302772 and 30264093 exited before dispatch. DTU confirmed upgraded candidate 30330582 (24h) and original encoder control 30330583 (8h) eligible and pending on gpuv100. CPU reports 30330584 and 30330585 follow the control and both endpoints respectively. [Early encoder fork, resources and receipts](../experiments/vae/epoch48-encoder-upgrade.md#early-fork-with-an-eight-hour-control)
+
+24 November 2026. At frozen three-block checkpoint 623116, refining the posterior means of 114 distinct generated parents for 50 local GPU Adam steps increased exact recovery from 27 to 94 and valid reconstructions from 58 to 103. Extra bonds fell from 317 to 42 and missing bonds from 50 to zero. Original latents reproduced all parents. All 20 remaining misses reached the displacement cap of 4. The refinement used the known graph as the target. [Methods and per-parent results](../experiments/vae/epoch48-encoder-upgrade.md#recovering-generated-parents-with-a-frozen-decoder)
+
+24 November 2026. Two matched 128-update encoder-only pilots from 623116 used 256 generated training parents and 2,048 real training anchors. Exact one-pass recovery on 454 fresh generated parents was 110 at baseline, 142 with graph loss plus refined-latent regression and 152 with graph loss alone. Exact held-out reconstruction was 480, 478 and 476 of 512 respectively. Both decoders were verified frozen. [Methods and results](../experiments/vae/epoch48-encoder-upgrade.md#one-pass-encoder-distillation-at-623116)
+
+24 November 2026. A reduced-batch GPU spot check from checkpoint 623116 exercised dropout-off generated parents and focused supervision on 26 of 37 spurious bonds across eight parents. The generated branch delivered a finite encoder gradient with zero decoder parameter gradients. LSF accepted one successor **30359417** after running candidate **30330582**. [Loss, monitoring and receipts](../experiments/vae/epoch48-encoder-upgrade.md#single-next-leg-with-focused-feedback-on-invented-bonds)
+
+24 November 2026. Stopped candidate 30330582 on request and pinned its last durable checkpoint at update 623116. Last logged update 623651 means 535 updates will be replayed. Retired dependent reservation 30359417 and submitted single immediate successor **30359446** with the focused bond objective. [Operator cutover](../experiments/vae/epoch48-encoder-upgrade.md#operator-requested-early-start)
+
+25 November 2026. At checkpoint 623116 a separately fitted shared ring decision increased valid aromatics from 35 to 104 on 1,024 fresh argmax draws, matching blanket conversion. All 932 valid outputs remained valid. Exact held-out reconstruction fell from 480 to 469 of 512. Matched V100 job 30363149 completed both 128-update training forks. On 4,096 categorical draws, control gave 101 distinct valid aromatics and 2,718 valid draws. The teacher mask gave 106 and 2,842, versus 138 and 2,895 at the start. Held-out exact counts were 239, 237 and 242 of 256 respectively. [Pilot methods and outcomes](../experiments/vae/training_data_eda/shared-ring-pilots.md)
+
+25 November 2026. At checkpoint 623116, preserving off-site bond distributions at weight 8 reduced mean off-site probability drift by 30% in a 16-step readout test while retaining 98% of the target-ring log-probability gain. A separate amide readout pilot increased categorical amides from 36 to 43 out of 512 while overall categorical validity fell from 363 to 344. DTU job 30363301 compares four ordinary-decoder training forks on matched draws. [Bond-only pilot results](../experiments/vae/training_data_eda/shared-ring-pilots.md#bond-only-training-on-aromatic-rings-and-amides)
+
+25 November 2026. V100 job 30363301 completed all four 128-update forks. A site-specific amide bond loss yielded 426 amides and 2,834 valid products versus 283 and 2,718 for control on 4,096 matched categorical draws. Ring rewards lowered raw aromatic yield. Five- or six-membered cyclic ureas rose from eight in control to 19 under amide supervision, versus 38 expected at the generated sizes. In a separate frozen-model screen, six of 18 high-scoring cyclic urea precursors and zero of 17 low-scoring sites completed at least once under four local latent perturbations. [Methods, full family counts and caveats](../experiments/vae/training_data_eda/shared-ring-pilots.md#which-functional-groups-improved)
+
+25 November 2026. At the operator’s request, stopped VAE worker 30359446 and pinned checkpoint 631116. A scratch migration to 5,058,652 parameters retained all 16 tested hard graphs, preserved both tested latent gradient directions, and trained both new bond-attention blocks. V100 job 30363630 was submitted and released to resume epoch 48, replaying 79 updates under the wider attention architecture. [Recipe, comparison scope and receipts](../experiments/vae/epoch48-encoder-upgrade.md#wider-atom-attention-and-direct-bond-attention)

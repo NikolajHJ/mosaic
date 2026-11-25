@@ -61,3 +61,19 @@ def test_pointwise_target_checks_are_not_reported_as_numerical_fd(tmp_path):
     result = guidance_evidence(tmp_path, summary, weight=.01)
     assert result["repair_validation_passed"] is False
     assert result["target_only_fd_passes"] == result["target_only_pointwise_ad_passes"] == result["target_only_derivative_passes"] == 0
+
+
+def test_low_signal_v5_derivative_evidence_is_separate_from_nonzero_guidance_updates(tmp_path):
+    folder = tmp_path / "fixed_initial_mask"
+    folder.mkdir()
+    write_json(folder / "gate-0000.json", {
+        "derivative_contract": {"version": "pointwise_native_ad_v5"},
+        "repair_only_validation": {"status": "validated_low_signal", "passed": True}})
+    write_json(folder / "metrics-0000.json", {"update_status": "accepted", "score": {"repair_guidance": {
+        "gradient_diagnostics": {"weighted_repair_norm": 0.}}}})
+    summary = {"arms": {"fixed_initial_mask": {"repair_guidance": {
+        "refreshes": 1, "accepted_targets": 0, "guided_accepted_updates": 0}}}}
+    result = guidance_evidence(tmp_path, summary, weight=.01)
+    assert result["target_only_pointwise_ad_passes"] == result["target_only_derivative_passes"] == 1
+    assert result["target_only_fd_passes"] == result["nonzero_guided_updates"] == 0
+    assert not result["repair_validation_passed"]

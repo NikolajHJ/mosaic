@@ -127,7 +127,7 @@ def main():
     if args.stage == "cpu":
         subprocess.run([sys.executable, "-m", "pytest", "-q", "tests/test_large_data.py",
                         "tests/test_triangle_vae.py", "tests/test_large_vae_pipeline.py",
-                        "tests/test_training.py", "tests/test_refined_decoder.py",
+                        "tests/training/test_training.py", "tests/test_refined_decoder.py",
                         "tests/test_large_triangle_evidence.py", "tests/test_large_vae_evaluation.py"], check=True)
         completed(args, value)
         return
@@ -178,7 +178,7 @@ def main():
     if args.stage == "benchmark":
         # A GPU gate additionally exercises deterministic native CUDA gradients.
         subprocess.run([sys.executable, "-m", "pytest", "-q", "tests/test_triangle_vae.py",
-                        "tests/test_large_vae_pipeline.py", "tests/test_training.py"], check=True)
+                        "tests/test_large_vae_pipeline.py", "tests/training/test_training.py"], check=True)
     command = [sys.executable, "-m", "latentmol.large_vae", args.stage, "--config", str(config),
                "--protocol", str(protocol), "--data", value["data"], "--campaign", str(campaign),
                "--gate", str(campaign / "benchmark" / "passed.json")]

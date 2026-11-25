@@ -1,0 +1,36 @@
+{
+  "status": "passed_metadata_only",
+  "scientific_files_identical_across_attempts": [
+    "src/latentmol/chemical_environment.py",
+    "src/latentmol/chemical_environment_policy.py",
+    "tests/test_chemical_environment.py",
+    "tests/test_chemical_environment_reference.py",
+    "mosaic/src/mosaic/small_molecule/chemistry/environment.py",
+    "mosaic/src/mosaic/small_molecule/chemistry/environment_policy.py",
+    "mosaic/src/mosaic/small_molecule/chemistry/trajectory.py",
+    "mosaic/tests/small_molecule/test_chemistry_environment.py"
+  ],
+  "changes": [
+    {
+      "from": "source145-neighbor-environment-validation-attempt001",
+      "to": "source145-neighbor-environment-validation-attempt002",
+      "changed_or_added": [
+        "docs/85_neighbor_aware_chemistry.md",
+        "scripts/hpc/run_neighbor_environment_validation.py"
+      ]
+    },
+    {
+      "from": "source145-neighbor-environment-validation-attempt002",
+      "to": "source145-neighbor-environment-validation-attempt003",
+      "changed_or_added": [
+        "docs/85_neighbor_aware_chemistry.md",
+        "mosaic/experiments/folder-layout.json",
+        "mosaic/experiments/migration-map.json",
+        "mosaic/scripts/layout/audit_documentation.py",
+        "mosaic/scripts/layout/experiment_layout.py",
+        "mosaic/scripts/layout/verify_layout.py",
+        "mosaic/scripts/layout/verify_pytest_routing.py"
+      ]
+    }
+  ]
+}

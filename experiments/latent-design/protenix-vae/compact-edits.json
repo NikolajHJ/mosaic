@@ -1,0 +1,18 @@
+{
+  "data": "/work3/s234818/latentmol/data/pubchem-hac60m-view-20261106a",
+  "dataset_sha256": "64247d04ec1f94d00320bb1e5a0d9c5540419eb37830050d3100775bf4385e18",
+  "seed": 2026111938,
+  "centers": 4,
+  "active_count": 25,
+  "temperature": 1.0,
+  "radii": [0.25, 1.0, 2.0, 4.0],
+  "max_edit_candidates_per_arm": 2,
+  "candidate_limit": 148,
+  "assets_config": "one-atom-dtu.json",
+  "geometry_seed": 1201,
+  "ccd_root": "/work3/s234818/latentmol/protenix_occupancy/data/common",
+  "pocket": {
+    "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/cpu/payload/pocket_definition.json",
+    "sha256": "9376c715eaf5b48689fb3e995b00d7820601a7776970df66bd7e7cff3b13ee43"
+  }
+}

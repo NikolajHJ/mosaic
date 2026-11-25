@@ -13,6 +13,7 @@ from pathlib import Path
 import torch
 
 from latentmol.experiments import file_sha256
+from latentmol.models.autoencoder import comparable_model_config
 from latentmol.train import state_digest
 
 
@@ -75,7 +76,8 @@ def restore_training(model, optimizer, generators, original, config, identity, r
         raise ValueError("Need completed epoch before the final endpoint")
     if epoch_extension is not None and epoch > epoch_extension["from_epochs"]:
         raise ValueError("Checkpoint exceeds the declared parent epoch horizon")
-    if checkpoint.get("graph_spec") != model.spec.to_dict() or checkpoint.get("model_config") != asdict(model.config):
+    if (checkpoint.get("graph_spec") != model.spec.to_dict()
+            or comparable_model_config(checkpoint.get("model_config")) != asdict(model.config)):
         raise ValueError("Resume graph/model schema differs")
     if checkpoint.get("dataset_sha256") != identity["dataset_sha256"] or checkpoint.get("loss_config") != original["loss_config"]:
         raise ValueError("Resume data/reconstruction loss differs")

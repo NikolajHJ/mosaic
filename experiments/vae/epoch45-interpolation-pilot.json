@@ -1,0 +1,118 @@
+{
+  "version": "atom-mapped-interpolation-pilot-v1",
+  "epoch": 45,
+  "checkpoint": "/work3/s234818/latentmol/runs/source156-vae-epoch45-structural-attempt002/epoch0045/epoch_0045.pt",
+  "checkpoint_sha256": "5c4946c15515e70bd01281eea7b74693c18598c4b47f6724fcc9898deb1302be",
+  "data": "/work3/s234818/latentmol/data/source095-moses-triangle-v2",
+  "data_manifest_sha256": "f246cc93805b73a557cd0c09a78891ac8410c465192db615ce0b6709218c8c0e",
+  "dataset_sha256": "54f37815d5901f7d76b855f69e237d97172c72b027e98616f949c08178f9cae3",
+  "hpc_cuda_ownership_helper": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-release-26/source/scripts/cuda_ownership.py",
+  "hpc_cuda_ownership_sha256": "578d2b6c9453ad14ce6778d306aa6c1d926acb442dcf8ae9f9a75bccc6b2e3cb",
+  "seed": 11034701,
+  "row_seed": 11034702,
+  "pair_batch_seed": 11034703,
+  "updates": 400,
+  "batch_size": 32,
+  "pairs_per_update": 2,
+  "interpolation_weight": 0.1,
+  "fractions": [
+    0.1,
+    0.2,
+    0.3,
+    0.4,
+    0.5,
+    0.6,
+    0.7,
+    0.8,
+    0.9
+  ],
+  "encoder_learning_rate": 1e-05,
+  "decoder_learning_rate": 1e-05,
+  "weight_decay": 1e-05,
+  "clip_grad": 5.0,
+  "beta": 0.001,
+  "prior_anchor_count": 32,
+  "prior_anchor_weight": 0.25,
+  "train_pairs": {
+    "pool_count": 30000,
+    "pair_count": 192,
+    "pair_seed": 11034704,
+    "min_atoms": 8,
+    "max_atoms": 50,
+    "min_similarity": 0.65,
+    "min_core_fraction": 0.8,
+    "neighbors_per_molecule": 8,
+    "max_candidate_pairs": 1000,
+    "max_pairs_per_scaffold": 10,
+    "mcs_timeout_seconds": 1,
+    "match_limit": 16,
+    "alignment_limit": 32,
+    "max_atom_changes": 2,
+    "max_charge_changes": 2,
+    "max_bond_changes": 4
+  },
+  "validation_pairs": {
+    "pool_count": 20000,
+    "pair_count": 128,
+    "pair_seed": 11034501,
+    "min_atoms": 8,
+    "max_atoms": 50,
+    "min_similarity": 0.65,
+    "min_core_fraction": 0.8,
+    "neighbors_per_molecule": 8,
+    "max_candidate_pairs": 1000,
+    "max_pairs_per_scaffold": 10,
+    "mcs_timeout_seconds": 1,
+    "match_limit": 16,
+    "alignment_limit": 32,
+    "max_atom_changes": 2,
+    "max_charge_changes": 2,
+    "max_bond_changes": 4
+  },
+  "path_evaluation": {
+    "batch_size": 64,
+    "categorical_draws": 4,
+    "categorical_seed": 11034705,
+    "probability_snapshot_pairs": 8
+  },
+  "comparison": {
+    "prior_count": 10000,
+    "prior_seeds": [
+      11034611,
+      11034612,
+      11034613,
+      11034614,
+      11034615
+    ],
+    "categorical_seed": 11034616,
+    "temperature": 1.0,
+    "reconstruction_count": 2048,
+    "row_seed": 11034620,
+    "exclude_reconstruction_panels": [
+      {
+        "seed": 904017,
+        "count": 256
+      },
+      {
+        "seed": 904017,
+        "count": 4096
+      },
+      {
+        "seed": 17,
+        "count": 4096
+      }
+    ],
+    "anchor_count": 128,
+    "directions": 2,
+    "direction_seed": 11034621,
+    "scales": [
+      0.05
+    ],
+    "batch_size": 64,
+    "atom_order": {
+      "count": 256,
+      "permutations": 4,
+      "seed": 11034630
+    }
+  }
+}

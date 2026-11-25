@@ -107,9 +107,10 @@ def guidance_evidence(child, summary, *, weight):
     for path in sorted(folder.glob("gate-*.json")):
         gate = json.loads(path.read_text())
         target = gate.get("repair_only_validation", {})
-        passed = target.get("status") == "validated_nonzero" and target.get("passed") is True
         contract = gate.get("derivative_contract", {}).get("version")
-        if passed and contract == "pointwise_native_ad_v4":
+        statuses = ("validated_nonzero", "validated_low_signal") if contract == "pointwise_native_ad_v5" else ("validated_nonzero",)
+        passed = target.get("status") in statuses and target.get("passed") is True
+        if passed and contract in ("pointwise_native_ad_v4", "pointwise_native_ad_v5"):
             result["target_only_pointwise_ad_passes"] += 1
             result["target_only_derivative_passes"] += 1
         elif passed and contract in (None, "branch_local_v2", "additive_branch_v3"):

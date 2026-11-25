@@ -21,3 +21,5 @@ where = ["src"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+# Keep existing unique test-helper imports available after grouping core tests.
+pythonpath = ["tests", "tests/training", "tests/datasets", "tests/evaluation", "tests/guidance", "tests/design"]

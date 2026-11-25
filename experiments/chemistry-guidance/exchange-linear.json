@@ -1,0 +1,24 @@
+{
+  "seed": 111127,
+  "count": 16,
+  "updates": 32,
+  "max_reference_draws": 1024,
+  "perturbation_norm": 3.0,
+  "perturbation_norms": [3.0, 5.0],
+  "learning_rate": 3.0,
+  "max_step_norm": 0.5,
+  "temperature": 1.0,
+  "seconds": 2700,
+  "search": {"max_edits": 2, "checks_per_depth": 48, "beam_width": 4},
+  "arms": {
+    "bond_only": null,
+    "log_half_structure": {"edit_cost": "log_regret", "atom_extra_cost": 0.5, "charge_extra_cost": 0.5, "substructure_extra_cost": 0.5},
+    "linear_0": {"edit_cost": "one_minus_probability", "atom_extra_cost": 0, "charge_extra_cost": 0.5, "substructure_extra_cost": 0},
+    "linear_half": {"edit_cost": "one_minus_probability", "atom_extra_cost": 0.5, "charge_extra_cost": 0.5, "substructure_extra_cost": 0},
+    "linear_2": {"edit_cost": "one_minus_probability", "atom_extra_cost": 2, "charge_extra_cost": 0.5, "substructure_extra_cost": 0},
+    "linear_0_structure": {"edit_cost": "one_minus_probability", "atom_extra_cost": 0, "charge_extra_cost": 0.5, "substructure_extra_cost": 0.5},
+    "linear_half_structure": {"edit_cost": "one_minus_probability", "atom_extra_cost": 0.5, "charge_extra_cost": 0.5, "substructure_extra_cost": 0.5},
+    "linear_2_structure": {"edit_cost": "one_minus_probability", "atom_extra_cost": 2, "charge_extra_cost": 0.5, "substructure_extra_cost": 0.5},
+    "linear_half_structure_search_only": {"edit_cost": "one_minus_probability", "atom_extra_cost": 0.5, "charge_extra_cost": 0.5, "substructure_extra_cost": 0.5, "anchor_scale": 0}
+  }
+}

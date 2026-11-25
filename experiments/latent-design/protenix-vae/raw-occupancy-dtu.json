@@ -1,0 +1,13 @@
+{
+  "assets": "atom-budget-dtu.json",
+  "seed": 1730,
+  "geometry_seed": 294,
+  "fresh_geometry_seed": 1201,
+  "start_draws": 32,
+  "starts": 4,
+  "updates": 4,
+  "probe_limit": 4,
+  "trial_steps": [0.25, 0.125, 0.0625],
+  "latent_radius": 1.0,
+  "max_native_calls": 320
+}

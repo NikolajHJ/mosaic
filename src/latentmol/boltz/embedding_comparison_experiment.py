@@ -143,7 +143,7 @@ def native_members(case_id, comparison):
     return members
 
 
-def gpu_stage(config, output, deadline):
+def gpu_optimization_stage(config, output, deadline):
     import torch
     from latentmol.experiments import file_sha256
     from latentmol.optimization import StepControl
@@ -153,7 +153,6 @@ def gpu_stage(config, output, deadline):
     from .embedding_validation import native_gate
     from .embedding_comparison import FrozenComparisonObjective, run_matched_optimization
     from .embedding_comparison_validation import learned_start_gate
-    from .embedding_comparison_rescore import freeze_selection, load_target, run_followup
     cpu_root = output.parent / "cpu"
     cpu = json.loads((cpu_root / "result.json").read_text())
     if (cpu["status"] != "passed" or cpu["source_sha256"] != os.environ["LATENTMOL_SOURCE_SHA256"]
@@ -241,9 +240,50 @@ def gpu_stage(config, output, deadline):
     del scorer, bridge, bank, base, cases, prepared, z, payload, vae
     gc.collect()
     torch.cuda.empty_cache()
+    return dict(status="passed_optimization_phase", members=members, cases=summary,
+        start_gates=gate_reports, precision_correction=correction,
+        frozen_vae_unchanged=True, cpu_result_sha256=file_sha256(cpu_root / "result.json"))
+
+
+def gpu_stage(config, output, deadline):
+    """A CUDA-free coordinator waits for optimization process exit, then rescores."""
+    import sys
+    from latentmol.cuda_process import require_cuda_free_coordinator, run_cuda_child, require_cuda_child
+    from latentmol.experiments import file_sha256
+    from .embedding_comparison_rescore import freeze_selection, load_target, run_followup
+    # Preserve the existing early CPU prerequisite even in fixture/error paths.
+    cpu_root = output.parent / "cpu"
+    cpu = json.loads((cpu_root / "result.json").read_text())
+    if (cpu["status"] != "passed" or cpu["source_sha256"] != os.environ["LATENTMOL_SOURCE_SHA256"]
+            or cpu["plan_sha256"] != config["_plan_sha256"]
+            or cpu["junit"]["tests"] < 1 or any(cpu["junit"][key] for key in ("failures", "errors", "skipped"))
+            or file_sha256(cpu_root / "cpu-tests.xml") != cpu["junit_sha256"]
+            or file_sha256(cpu_root / "starts.pt") != cpu["starts"]["starts_sha256"]):
+        raise ValueError("Matched GPU requires exact-release CPU pass and authenticated shared starts")
+    ownership = require_cuda_free_coordinator()
+    plan_path = Path(config["_plan_path"])
+    if file_sha256(plan_path) != config["_plan_sha256"]:
+        raise ValueError("Optimization child received a changed sealed plan")
+    intent = output / "optimization-child-intent.json"
+    write(intent, dict(version="embedding-gpu-child-v1", plan=dict(path=str(plan_path), sha256=config["_plan_sha256"]),
+        output=str(output.resolve()), deadline=deadline, parent_pid=os.getpid(),
+        job_id=os.environ["LSB_JOBID"], source_sha256=os.environ["LATENTMOL_SOURCE_SHA256"],
+        coordinator=ownership))
+    intent_sha = file_sha256(intent)
+    process = run_cuda_child([sys.executable, "-m", "latentmol.boltz.embedding_optimization_worker",
+        "--intent", str(intent), "--intent-sha256", intent_sha], output / "optimization-child.log",
+        timeout_seconds=max(1, int(deadline - time.monotonic())))
+    require_cuda_child(process)
+    if file_sha256(intent) != intent_sha:
+        raise ValueError("Optimization child handoff identity changed")
+    phase = json.loads((output / "optimization-phase.json").read_text())
+    if (phase.get("status") != "passed_optimization_phase" or phase.get("intent_sha256") != intent_sha
+            or phase.get("frozen_vae_unchanged") is not True):
+        raise ValueError("Optimization child lacks completed frozen-state evidence")
+    require_cuda_free_coordinator()
     from scripts.hpc.embedding_operator import quota
     write(output / "native-followup-quota.json", quota())
-    selection = freeze_selection(members, pose_seeds=tuple(config["fresh_native"]["pose_seeds"]),
+    selection = freeze_selection(phase["members"], pose_seeds=tuple(config["fresh_native"]["pose_seeds"]),
                                  native_settings=config["fresh_native"]["native_settings"])
     target = load_target(verified(config["native_template"]),
         config["fresh_native"]["target_sequence_sha256"], config["fresh_native"]["msa_sha256"],
@@ -252,16 +292,15 @@ def gpu_stage(config, output, deadline):
         deadline=deadline, native_timeout_seconds=config["fresh_native"]["native_timeout_seconds"],
         audit_timeout_seconds=config["fresh_native"]["audit_timeout_seconds"])
     from .embedding_comparison_report import generate_report
-    html_report = generate_report(output, summary, followup)
+    html_report = generate_report(output, phase["cases"], followup)
     partial = followup.get("status") == "partial_runtime_not_passed"
     return dict(status="optimization_completed_native_partial" if partial else "completed_matched_pilot",
-        native_followup_status=followup.get("status"), frozen_vae_unchanged=True, cases=summary,
-        html_report=str(html_report),
-        native_followup=followup, start_gates=gate_reports,
+        native_followup_status=followup.get("status"), frozen_vae_unchanged=True, cases=phase["cases"],
+        html_report=str(html_report), native_followup=followup, start_gates=phase["start_gates"],
         comparison_scope="three paired starts; fixed-pose DBMol optimization; fresh-pose ordinary native affinity confirmation",
         learned_mapping=config["bridge"], existing_vae_continuation="untouched",
-        precision_correction=correction,
-        cpu_result_sha256=file_sha256(cpu_root / "result.json"))
+        precision_correction=phase["precision_correction"], cpu_result_sha256=phase["cpu_result_sha256"],
+        optimization_child=process, coordinator=require_cuda_free_coordinator())
 
 
 def main():
@@ -282,6 +321,7 @@ def main():
     from latentmol.experiments import file_sha256
     torch.set_num_threads(min(4, int(os.environ.get("LSB_DJOB_NUMPROC", "4"))))
     config["_plan_sha256"] = file_sha256(args.plan)
+    config["_plan_path"] = str(args.plan.resolve())
     args.output.mkdir(parents=True, exist_ok=False)
     started = time.monotonic()
     deadline = started + config["internal_seconds"][args.stage]

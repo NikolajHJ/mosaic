@@ -340,6 +340,16 @@ class AtomPreservingRepairTeacher:
         # poisoned queue still rejects subsequent scientific work.
         self._async.synchronous(self._cache.clear, allow_failed=True)
 
+    def _policy(self):
+        """Discovery policy also binds cache keys and returned search receipts."""
+        return repair_policy(self.config)
+
+    def _search_task(self, raw, probabilities):
+        return (raw, probabilities, self.spec, self.config)
+
+    def _map_search(self, tasks):
+        return self._pool.map(tasks)
+
     def _search(self, raw, probabilities):
         if self.backend == "reference":
             return search_atom_preserving_repair(raw, probabilities, self.spec, self.config)
@@ -366,13 +376,13 @@ class AtomPreservingRepairTeacher:
             if len(simulated) > self.cache_capacity:
                 simulated.popitem(last=False)
             indices.append(row)
-            tasks.append((tuple(value.numpy().copy() for value in raw),
-                          tuple(value.numpy().copy() for value in probabilities), self.spec, self.config))
+            tasks.append(self._search_task(tuple(value.numpy().copy() for value in raw),
+                                           tuple(value.numpy().copy() for value in probabilities)))
         if not tasks:
             return {}
         if self._pool is None:
             self._pool = RepairWorkerPool(self.workers)
-        results = self._pool.map(tasks)
+        results = self._map_search(tasks)
         if len(results) != len(indices):
             raise RuntimeError("Parallel repair lost an ordered scheduled point")
         return dict(zip(indices, results))
@@ -534,7 +544,7 @@ class AtomPreservingRepairTeacher:
         targets, attempts, hits, checks = [], [], 0, 0
         statuses = Counter()
         classification_records, classification_examples = [], Counter()
-        policy = repair_policy(self.config)
+        policy = self._policy()
         policy_sha = _hash_json(policy)
         records = []
         for row, candidate_id in enumerate(ids):

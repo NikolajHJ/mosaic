@@ -25,7 +25,8 @@ import yaml
 
 from latentmol.chemistry import inspect_graph
 from latentmol.evaluate import load_model
-from latentmol.experiments import ExperimentRun, file_sha256, source_manifest, write_json
+from latentmol.experiments import ExperimentRun, file_sha256, source_manifest, source_snapshot, write_json
+from latentmol.research_profile import RESEARCH_PROFILES, research_profile as checked_profile
 from latentmol.graph_policy import graph_from_decoder
 from latentmol.initialization import LatentStart, sample_prior
 from latentmol.optimization import NonfiniteObjective, StepControl, backtracking_step
@@ -65,8 +66,8 @@ class ActiveSetConfig:
     start: LatentStart = field(default_factory=LatentStart)
     arms: tuple[str, ...] = ("active_set", "fixed_initial_mask")
     element_diagnostics: bool = False
-    # Absent by default and omitted from legacy records, preserving historical
-    # configuration hashes. New runs must explicitly opt into this policy.
+    # Absent from legacy non-DBMol records. Newly loaded DBMol configurations
+    # default to pointwise-v5; explicit historical policies are preserved.
     fd_policy: str | None = None
     step_control: StepControl | None = None
     # Campaign controls are explicit opt-ins; old records retain their identity.
@@ -78,6 +79,8 @@ class ActiveSetConfig:
     repair_guidance: object | None = None
     # Operational ceilings are opt-in and absent from historical identities.
     execution_budget: object | None = None
+    # None preserves direct historical constructors. New configs select a profile.
+    research_profile: str | None = None
 
     @classmethod
     def load(cls, path: Path) -> "ActiveSetConfig":
@@ -87,11 +90,24 @@ class ActiveSetConfig:
                    "device", "temperature", "threshold", "recycling_steps",
                    "objective", "optimizer", "diagnostics", "allow_lossy_charge", "start",
                    "arms", "element_diagnostics", "fd_policy", "step_control",
-                   "initial_latent", "gradient_audit_interval", "dbmol", "repair_guidance", "execution_budget"}
+                   "initial_latent", "gradient_audit_interval", "dbmol", "repair_guidance", "execution_budget",
+                   "research_profile"}
         if not isinstance(raw, dict) or set(raw) - allowed:
             raise ValueError("Active-set config must be a mapping with only supported keys")
         if type(raw.get("version")) is not int or raw["version"] != 1:
             raise ValueError("Unknown active-set config version")
+        # Explicit old derivative contracts preserve replay intent; ordinary new
+        # configs need only an executable path smoke before a bounded pilot.
+        explicit_fd = "fd_policy" in raw
+        profile = checked_profile(raw.get("research_profile",
+            "qualified" if explicit_fd else "exploratory"))
+        # An old explicit FD config must retain its serialized identity. None
+        # means the historical qualified behavior, not an exploratory override.
+        recorded_profile = profile if "research_profile" in raw or not explicit_fd else None
+        # New DBMol configurations use local AD consistency by default. Explicit
+        # historical fd_policy values retain their original scientific contract.
+        if profile == "qualified" and raw.get("dbmol") is not None and "fd_policy" not in raw:
+            raw["fd_policy"] = "pointwise_native_ad_v5"
         identifier(raw["name"])
         arms = raw.get("arms", ["active_set", "fixed_initial_mask"])
         if (not isinstance(arms, list) or not arms or len(set(arms)) != len(arms)
@@ -99,7 +115,7 @@ class ActiveSetConfig:
             raise ValueError("arms must list distinct supported optimization arms")
         if type(raw.get("element_diagnostics", False)) is not bool:
             raise ValueError("element_diagnostics must be boolean")
-        if raw.get("fd_policy") not in (None, "local_v1", "branch_local_v2", "additive_branch_v3", "pointwise_native_ad_v4"):
+        if raw.get("fd_policy") not in (None, "local_v1", "branch_local_v2", "additive_branch_v3", "pointwise_native_ad_v4", "pointwise_native_ad_v5"):
             raise ValueError("fd_policy must be absent or an explicit supported derivative contract")
         step_control = (StepControl.from_mapping(raw["step_control"])
                         if raw.get("step_control") is not None else None)
@@ -138,8 +154,12 @@ class ActiveSetConfig:
         if raw.get("repair_guidance") is not None:
             from latentmol.repair_guidance.config import RepairGuidanceConfig
             repair_guidance = RepairGuidanceConfig.from_mapping(raw["repair_guidance"], base)
-            if arms != ["fixed_initial_mask"] or raw.get("fd_policy") not in ("local_v1", "branch_local_v2", "additive_branch_v3", "pointwise_native_ad_v4") or step_control is None:
-                raise ValueError("Repair guidance requires only fixed_initial_mask, local_v1 and bounded step_control")
+            if arms != ["fixed_initial_mask"]:
+                raise ValueError("Repair guidance requires fixed_initial_mask")
+            if profile == "qualified" and (raw.get("fd_policy") not in (
+                    "local_v1", "branch_local_v2", "additive_branch_v3", "pointwise_native_ad_v4", "pointwise_native_ad_v5")
+                    or step_control is None):
+                raise ValueError("Qualified repair guidance requires a declared derivative contract and bounded step_control")
         dbmol = None
         if raw.get("dbmol") is not None:
             from .dbmol_objective import DBMolObjectiveConfig
@@ -201,9 +221,9 @@ class ActiveSetConfig:
             raise ValueError("dbmol_total_loss and explicit DBMol head profile must be selected together")
         if dbmol is not None and (objective.direction != "minimize" or objective.scale != 1 or objective.offset != 0):
             raise ValueError("DBMol total uses explicit internal weights, minimize, scale one and offset zero")
-        if dbmol is not None and raw.get("fd_policy") not in ("local_v1", "branch_local_v2", "additive_branch_v3", "pointwise_native_ad_v4"):
+        if profile == "qualified" and dbmol is not None and raw.get("fd_policy") not in ("local_v1", "branch_local_v2", "additive_branch_v3", "pointwise_native_ad_v4", "pointwise_native_ad_v5"):
             raise ValueError("DBMol requires the local_v1 per-component/total derivative gate")
-        if raw.get("fd_policy") in ("branch_local_v2", "additive_branch_v3", "pointwise_native_ad_v4"):
+        if raw.get("fd_policy") in ("branch_local_v2", "additive_branch_v3", "pointwise_native_ad_v4", "pointwise_native_ad_v5"):
             from .dbmol_objective import CONTACT_HEAD64_ARITHMETIC
             if (dbmol is None or dbmol.objective_arithmetic != CONTACT_HEAD64_ARITHMETIC
                     or raw.get("recycling_steps", 0) != 0 or arms != ["fixed_initial_mask"]
@@ -229,12 +249,15 @@ class ActiveSetConfig:
                    element_diagnostics=raw.get("element_diagnostics", False),
                    fd_policy=raw.get("fd_policy"), step_control=step_control,
                    initial_latent=initial_latent, gradient_audit_interval=audit_interval, dbmol=dbmol,
-                   repair_guidance=repair_guidance, execution_budget=execution_budget)
+                   repair_guidance=repair_guidance, execution_budget=execution_budget,
+                   research_profile=recorded_profile)
 
     def record(self) -> dict:
         from dataclasses import asdict
         result = asdict(self)
         result["output_root"] = str(self.output_root)
+        if self.research_profile is None:
+            result.pop("research_profile")
         if self.fd_policy is None:
             result.pop("fd_policy")
         if self.step_control is None:
@@ -602,6 +625,28 @@ def _validate_branch(decoder, point, branch, config, counters, report, persist, 
         report["repair_application"] = repair_application(weight, repair_target)
         persist()
     prepared = branch.prepared
+    if getattr(config, "research_profile", None) == "exploratory":
+        # Use the same real native objective as the update, including required
+        # component paths. No parity/AD/FD qualification chain is needed to learn
+        # whether a short pilot is promising. Flat derivatives stay observations.
+        measured, gradient = score_at(decoder, point, branch, config, counters,
+            "exploratory_smoke", gradients=True, component_gradients={} if config.dbmol is not None else None,
+            repair_target=repair_target, repair_weight=weight)
+        if gradient.shape != point.shape:
+            raise ValueError("Latent gradient shape differs from starting point")
+        norm = float(gradient.double().norm())
+        observations = []
+        if norm <= 1e-12:
+            observations.append({"status": "flat_at_current_point" if norm == 0 else "low_signal",
+                                 "gradient_norm": norm, "threshold": 1e-12,
+                                 "threshold_scope": "observation only; not a correctness or stop criterion"})
+        report.update(research_profile="exploratory", measured=measured, gradient_norm=norm,
+            finite_attached_latent_path=True, derivative_qualification="not_run",
+            native_seed_parity="not_run", observations=observations,
+            scope="finite attached path smoke; fixed selected mask and native pose; no derivative qualification")
+        branch.verify_context_unchanged()
+        persist()
+        return
     with torch.no_grad():
         native = counters.call("boltz", "seed_parity", "native_forward", lambda:
             branch.scorer.discrete_reference(prepared.features, prepared.coordinates), point.device)
@@ -628,14 +673,17 @@ def _validate_branch(decoder, point, branch, config, counters, report, persist, 
                                   "derivative_analytic", gradients=True, component_gradients=components,
                                   repair_target=repair_target, repair_weight=weight)
     norm = float(gradient.double().norm())
-    if not math.isfinite(norm) or norm <= 1e-12:
-        raise ValueError("No nonzero Boltz derivative at the selected context")
+    if not math.isfinite(norm) or (config.fd_policy != "pointwise_native_ad_v5" and norm <= 1e-12):
+        raise ValueError("Nonfinite derivative or legacy nonzero-gradient qualification failed")
     report.update(gradient_norm=norm, measured=measured)
+    if config.fd_policy == "pointwise_native_ad_v5":
+        report["optimization_qualification"] = dict(informative_total=norm > 1e-12,
+            minimum_informative_norm=1e-12, correctness_requires_nonzero_total=False)
     if getattr(config, "repair_guidance", None) is not None:
         report["repair_application"] = repair_application(weight, repair_target,
             gradient_measured=measured["repair_guidance"]["gradient_measured"])
     persist()
-    if config.fd_policy in ("branch_local_v2", "additive_branch_v3", "pointwise_native_ad_v4"):
+    if config.fd_policy in ("branch_local_v2", "additive_branch_v3", "pointwise_native_ad_v4", "pointwise_native_ad_v5"):
         if config.fd_policy == "branch_local_v2":
             from .branch_local_fd import validate_branch_derivatives
         elif config.fd_policy == "additive_branch_v3":
@@ -823,6 +871,7 @@ def run_arm(name, decoder, start, initial: Selection, bank, scorer, config,
     improving_updates = forced_fallback_updates = no_op_updates = 0
     best_binding_states = {}
     guidance = getattr(config, "repair_guidance", None)
+    exploratory = getattr(config, "research_profile", None) == "exploratory"
     scheduled = guidance is not None and guidance.weight_schedule is not None
     state_repair_weight = guidance.weight if guidance is not None else None
     previous_repair_weight = None
@@ -833,8 +882,12 @@ def run_arm(name, decoder, start, initial: Selection, bank, scorer, config,
     repair_summary = {"refreshes": 0, "attempts": 0, "accepted_targets": 0,
                       "guided_accepted_updates": 0}
     if guidance is not None:
-        if name != "fixed_initial_mask" or config.fd_policy not in ("local_v1", "branch_local_v2", "additive_branch_v3", "pointwise_native_ad_v4") or config.step_control is None:
+        if name != "fixed_initial_mask" or (not exploratory and (config.fd_policy not in (
+                "local_v1", "branch_local_v2", "additive_branch_v3", "pointwise_native_ad_v4", "pointwise_native_ad_v5")
+                or config.step_control is None)):
             raise ValueError("Repair guidance currently supports fixed-mask, gated, bounded optimization only")
+        if exploratory:
+            repair_summary["guided_applied_updates"] = 0
         from latentmol.repair_guidance.provider import make_provider
         # The provider's old constant-weight enable gate must not disable a
         # ramp with an initially zero weight. All zero-state refreshes are
@@ -1142,6 +1195,8 @@ def run_arm(name, decoder, start, initial: Selection, bank, scorer, config,
                     "proposal_displacement_norm": float((proposal - previous_point).double().norm()),
                 }
                 write_json(arm_path / f"metrics-{step:04d}.json", row)
+        if guidance is not None and exploratory and repair_target is not None:
+            repair_summary["guided_applied_updates"] += 1
         if name == "active_set":
             with torch.no_grad():
                 selection = select_slots(decoder.decode(point), temperature=config.temperature,
@@ -1164,7 +1219,7 @@ def run_arm(name, decoder, start, initial: Selection, bank, scorer, config,
     summary = {"arm": name, "steps": config.optimizer.steps,
                "context_switches": transition_count,
                "gated_contexts": len(gates), "endpoint": row,
-               "fresh_native_pose_confirmation": "required_not_run"}
+               "fresh_native_pose_confirmation": "optional_not_run" if exploratory else "required_not_run"}
     if config.step_control is not None:
         summary.update(steps=accepted_updates, requested_steps=config.optimizer.steps,
                        accepted_updates=accepted_updates, attempted_updates=attempted_updates,
@@ -1174,7 +1229,8 @@ def run_arm(name, decoder, start, initial: Selection, bank, scorer, config,
                        monotonicity_scope="Accepted trial losses decrease only within each fixed context; separately gated context switches may jump")
     if guidance is not None:
         summary["repair_guidance"] = {**repair_summary, "config": guidance.record(),
-            "native_guidance_validation": "requires accepted native targets, nonzero target FD and guided accepted updates",
+            "native_guidance_validation": ("not_qualified; finite attached execution smoke only" if exploratory else
+                "requires accepted native targets, nonzero target FD and guided accepted updates"),
             "final_target_sha256": repair_target.identity if repair_target is not None else None}
         summary["monotonicity_scope"] = "Accepted trial loss decreases at fixed mask/context and fixed repair target; refresh jumps are separate"
         if scheduled:
@@ -1200,20 +1256,28 @@ def run_arm(name, decoder, start, initial: Selection, bank, scorer, config,
     return summary
 
 
-def run(config_path: Path) -> Path:
-    """Execute only inside an explicit DTU GPU job from an immutable release."""
+def run(config_path: Path, *, research_profile=None) -> Path:
+    """Execute native work in a GPU allocation; qualification is an explicit profile."""
     import os
-    if not os.environ.get("LSB_JOBID") or not os.environ.get("LATENTMOL_SOURCE_SHA256"):
-        raise ValueError("Require an HPC allocation and immutable source archive identity")
     config = ActiveSetConfig.load(config_path)
-    source_sha256 = source_manifest(Path.cwd())["sha256"]
+    if research_profile is not None:
+        config = replace(config, research_profile=checked_profile(research_profile))
+    profile = config.research_profile or "qualified"
+    if not os.environ.get("LSB_JOBID"):
+        raise ValueError("Require an HPC allocation for native model runs")
+    if profile == "qualified" and not os.environ.get("LATENTMOL_SOURCE_SHA256"):
+        raise ValueError("Qualified runs require an immutable source archive identity")
+    source = (source_manifest(Path.cwd()) if profile == "qualified" else
+              source_snapshot(Path.cwd(), selected_files=(Path(__file__), config_path)))
+    source_sha256 = source["sha256"]
     record = {**config.record(), "config_path": str(config_path.resolve()),
               "config_file_sha256": file_sha256(config_path),
               "source_sha256": source_sha256,
-              "source_archive_sha256": os.environ["LATENTMOL_SOURCE_SHA256"],
+              "source_archive_sha256": os.environ.get("LATENTMOL_SOURCE_SHA256"),
               "scope": "Fixed-context proxy only; random-start extension pending HPC validation"}
     with ExperimentRun(config.output_root, config.name, record, Path.cwd(),
-                       report_kind="molecule_optimization") as experiment:
+                       report_kind="molecule_optimization", research_profile=profile,
+                       selected_source_files=(Path(__file__), config_path)) as experiment:
         decoder_path = verified_file(config.decoder["path"], config.decoder["sha256"])
         affinity_path = verified_file(config.affinity_checkpoint["path"],
                                       config.affinity_checkpoint["sha256"])
@@ -1270,7 +1334,13 @@ def run(config_path: Path) -> Path:
                                    z_sha256=start_record["z_sha256"])
             write_json(experiment.path / "start-audit.json", start_audit)
             torch.save({**start_record, "selection": initial.record()}, experiment.path / "start.pt")
-            if not start_audit["passed"]:
+            if (not start_audit["passed"] and config.start.kind == "encoded_seed"
+                    and profile == "exploratory" and initial.count > 0
+                    and initial.count in bank.templates):
+                start_audit.update(status="projection_mismatch_observed", qualified_start=False,
+                    exploratory_execution_allowed=True)
+                write_json(experiment.path / "start-audit.json", start_audit)
+            elif not start_audit["passed"]:
                 if config.start.kind == "encoded_seed":
                     raise ValueError("Encoded start must select and hard-decode to the exact native carbon-chain seed")
                 raise ValueError(f"Random start selected count {initial.count} without an available native context")
@@ -1310,8 +1380,10 @@ def run(config_path: Path) -> Path:
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--config", type=Path, required=True)
+    parser.add_argument("--research-profile", choices=RESEARCH_PROFILES,
+                        help="Override new-run profile; explicit old fd_policy configs otherwise retain qualification")
     args = parser.parse_args()
-    print(run(args.config), flush=True)
+    print(run(args.config, research_profile=args.research_profile), flush=True)
 
 
 if __name__ == "__main__":

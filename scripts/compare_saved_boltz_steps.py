@@ -52,7 +52,7 @@ def main():
         from diagnose_saved_boltz_gate import bootstrap
         bootstrap(args.production_release, args.parent_run)
         load_new("latentmol.config_identity", "config_identity.py")
-        load_new("latentmol.optimization", "optimization.py")
+        load_new("latentmol.optimization", "design/step_control.py")
         comparison = load_new("latentmol.boltz._step_control_comparison", "boltz/step_control_comparison.py")
         print(comparison.run_saved(args.parent_run, args.run_root,
             production_root=args.production_release, arm=args.arm, step=args.step,

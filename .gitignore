@@ -12,3 +12,14 @@ logs/
 *.npz
 .DS_Store
 
+# Generated checker-validation bundles; retain the small JSON/XML/log receipts.
+outputs/gradient-policy-validation/**/source.tar.gz
+outputs/gradient-policy-validation/**/evidence.tar.gz
+
+
+# Generated runs/artifacts; tracked historical evidence is retained.
+/outputs/*
+!/outputs/README.md
+!/outputs/implementation-checks/
+/outputs/implementation-checks/*
+!/outputs/implementation-checks/*.json

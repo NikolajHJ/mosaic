@@ -1,3 +1,5 @@
+# New run/pipeline entry points default to exploratory finite-gradient smoke.
+# Select --research-profile qualified when native/derivative qualification is the question.
 # EXPERIMENTAL / UNTESTED on native checkpoints or HPC. No automatic downloads.
 # All three prepared bundles must map to the SAME hard seed and biological target.
 # These objective scales/weights are illustrative, not validated calibration.

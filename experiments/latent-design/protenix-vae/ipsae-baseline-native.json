@@ -1,0 +1,16 @@
+{
+  "source_sha256": "5d0e89ef0eca64688be46146623498dd4abfb6589d36927df0383ce40175cc2a",
+  "prepared": {
+    "path": "/work3/s234818/latentmol/runs/source056-random-start-study/20261005T225808Z_vae-random-starts-056_37735924/contexts/count-25/prepared.pt",
+    "sha256": "84a0d35dbb565a535a18a7ef04bda5fbd7ab589c4e1ea2ac30d3e3437130e9cb"
+  },
+  "affinity": {
+    "path": "/work3/s234818/latentmol/cache/boltz2/boltz2_aff.ckpt",
+    "sha256": "dcc5cd3722b1c9eaa34267e4ae32f55cbbf1963f4c19319381ccfa30fdd2ca9e"
+  },
+  "confidence": {
+    "path": "/work3/s234818/latentmol/cache/boltz2/boltz2_conf.ckpt",
+    "sha256": "090e82ac8c92f5e943fa1b39e7410a44027bea7243c0bbb3caa67a77fc1428e1"
+  },
+  "ipsae_weight": 0.0
+}

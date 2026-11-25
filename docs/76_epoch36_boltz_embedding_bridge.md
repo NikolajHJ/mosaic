@@ -1,15 +1,71 @@
 # Frozen epoch-36 VAE to Boltz early-embedding bridge
 
-Status, **23 October 2026**: prototype implemented on
+## Attempt002 completed the mapping pilot, 23 October 2026
+
+The [terminal snapshot](../outputs/hpc-results/source137-epoch36-boltz-embedding-bridge-attempt002/status-1792782131360276800.json)
+collected at approximately **21:02 DTU-local** supersedes the pending observations.
+Saved LSF output confirms **GPU 29796624 completed successfully**, executing on
+**n-62-18-10 from 19:41:35 to 19:46:30 DTU-local**. Its live scheduler record
+has aged out; that is not a failure. The full runner took **283.505s**.
+
+The exact native-oracle injection forward and constrained-gradient comparisons
+passed (`passed_native_oracle_only`); gradient relative error was
+**1.749677e-6**, with frozen modules and context unchanged. FD observations
+remain diagnostic. The supervised fit completed **1,000/1,000 updates** in
+**41.549s**, selecting update 1,000 by development loss. It contains **246,624
+trainable bridge parameters**, with VAE and projection-bank state unchanged.
+
+Paired preparation accepted **2,031/2,176 attempts**: train **1,629**, development
+**209**, audit **193**. Rejections were 92 sanitization, 42 disconnected and
+11 alignment failures. The audit contains **71 distinct decoded identities**;
+posterior/local descendants are correlated. Count-weighted nearest-prototype
+identity accuracy was **99.9045% for element**, **99.9500% for bond type**, and
+**99.9457% for trunk connectivity**. Atom denominators are 4,188 and directed
+occupied-pair denominators 92,090, including native NONE diagonals. These are
+feature identities, not whole-molecule success rates. Charge accuracy was 100%
+on neutral atoms only; charged categories, phosphorus and iodine have no audit
+coverage and are not validated by this result.
+
+The learned fixed-context diagnostic decoded strict-valid tridecane
+(`CCCCCCCCCCCCC`), with identical natural/conditioned hard labels and finite
+latent gradient norm **0.145906**. Learned total loss was **11.072826**, versus
+**11.018015** through the hard chemical path, a difference of **0.0548104** on
+this single example. This is neither fresh native re-featurization nor a
+learned-gradient usefulness test. No latent optimization ran. The fit retains
+`trained_unvalidated` because this diagnostic pilot selected no acceptance
+thresholds; the outer status is
+`prototype_fit_completed_not_optimization_validated`.
+
+The [independent byte-authentication receipt](../outputs/hpc-results/source137-epoch36-boltz-embedding-bridge-attempt002/terminal-authentication-1792782183894979900.json)
+confirms checkpoint, data payload, attempt log, dataset manifest and training-plan
+hashes against their receipts, plus history entries at updates 1/100/.../1,000.
+The saved bridge is `gpu/fit/best-bridge.pt` under the attempt002 campaign;
+SHA256 **`013834958d52f7aee999ca4c39496e14fc5333d69eb697d47433821f48290343`**.
+The source/plan identities remain those of the sealed attempt002 below. This
+read-only collection changed no code, scientific settings or jobs; the existing
+VAE continuation remains untouched.
+
+**Earlier read-only observation, 23 October 2026 12:32 DTU-local:** the
+[combined saved snapshot](../outputs/hpc-results/source136-valid-reference-epoch40-continuation-attempt001/status-016.json)
+confirms **GPU 29796624 PEND** with all four CPU slots reserved on n-62-18-11
+since 12:17:16. The pending reason remains insufficient processor units for
+the host affinity request; ineligible pending time is zero. There are no GPU
+artifact paths or log files, native checks or fitting results, and no reliable
+start estimate is displayed. The 139-pass allocated CPU result remains valid;
+the original VAE and source136 continuation are unchanged. This was one
+read-only SSH session, with no settings or job changes.
+
+Status, **23 October 2026 12:22 DTU-local**: prototype implemented on
 `codex/epoch36-boltz-embedding-bridge`, branched from `e2f5a2c`. Independent
 corrected attempt002 staged **569 authenticated members**; **CPU 29796619 DONE**
 at **10:47:38 DTU-local**, with **139 passing tests**, zero failures/errors/skips
 and original epoch-36 decoder bitwise parity. **GPU 29796624 PEND**, submitted
 at **10:47:59 DTU-local**, one
 exclusive 80GB A100/four CPU slots/four-hour allocation, 3h50 internal cap.
-Two of four CPU slots are reserved; the scheduler's provisional no-sooner-than
-**24 October 02:32:54 DTU-local** forecast can change and is not a guaranteed
-start. No CUDA/native check or bridge-fitting result exists yet.
+All four CPU slots are now reserved on **n-62-18-11** from **12:17:16**,
+superseding the earlier two-slot reservation on n-62-18-8. The previous
+provisional forecast is absent; no reliable current ETA is established.
+No CUDA/native check or bridge-fitting result exists yet.
 Attempt001's **128-test CPU pass** is preserved; its operator-authentication
 gap prevented GPU promotion and was corrected only in the new sealed attempt.
 All existing VAE-continuation and Protenix records remain unchanged.
@@ -40,6 +96,16 @@ precede fitting. No feature-promotion thresholds are selected for this first
 diagnostic fit; all audit metrics are reported and optimization remains disabled.
 
 ## Attempt002 CPU passed; native GPU submitted
+
+The [23 October 12:22 DTU-local read-only snapshot](../outputs/hpc-results/source137-epoch36-boltz-embedding-bridge-attempt002/status-1792750976337669100.json)
+confirms **GPU 29796624 PEND**, all **four CPU slots reserved on n-62-18-11**
+since **12:17:16**, with insufficient processor units for the affinity request
+on one host. Eligible pending time is 5,697s; ineligible time is zero. The prior
+24 October 02:32:54 forecast is no longer displayed, so there is **no reliable
+latest ETA**. No GPU artifact paths, launch-quota receipt, native checks or
+fitting are present. CPU 29796619 has aged out of scheduler history; its saved
+139-test/zero-failure/error/skip pass and original-36 parity remain valid.
+This status collection changed no code, configuration or jobs.
 
 The corrected immutable
 `source137-epoch36-boltz-embedding-bridge-attempt002`
@@ -73,7 +139,7 @@ release/campaign paths ending in `attempt002`. No actual GPU start, native
 gate, prepared paired data, fitted weights or learned diagnostic is established
 by that submission receipt.
 
-The [latest scheduler snapshot](../outputs/hpc-results/source137-epoch36-boltz-embedding-bridge-attempt002/status-1792745360088722400.json)
+The [earlier scheduler snapshot](../outputs/hpc-results/source137-epoch36-boltz-embedding-bridge-attempt002/status-1792745360088722400.json)
 confirms **29796624 PEND**, with **two of four CPU slots reserved on
 n-62-18-8** from 10:48:01 DTU-local. The pending reason is insufficient
 processor units for the affinity request on one host. Its provisional
@@ -389,9 +455,10 @@ Authenticate completed prerequisite artifacts before dispatching a dependent
 stage. Failures and partial work stay preserved under their own attempt
 identities; a corrective retry requires a new immutable attempt.
 
-**Current outcome:** corrected attempt002 has **139 CPU fixture passes**,
-actual original-36 bitwise decoder parity and **native GPU 29796624 PEND**.
-No native gate, fitted bridge, learned-gradient validation or molecular
-optimization is established. Attempt001's 128-pass CPU evidence and operator
-limitation stay preserved; existing VAE continuation is unchanged. Later
-outcomes must be appended without relabeling incomplete attempts as passes.
+**Current outcome:** corrected attempt002 completed **139 CPU fixture passes**,
+native exact-oracle injection/gradient parity and **1,000 supervised mapping
+updates**. The authenticated bridge is saved; feature audits and one learned
+fixed-context diagnostic are reported above. Useful learned-gradient and
+molecular-optimization validation remain outstanding. Attempt001's 128-pass
+CPU evidence and operator limitation stay preserved; existing VAE continuation
+is unchanged. Historical pending observations remain dated evidence.

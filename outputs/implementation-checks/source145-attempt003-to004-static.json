@@ -1,0 +1,14 @@
+{
+  "comparison": "source145 attempts003 to004",
+  "changed_members": [
+    "AGENTS.md",
+    "docs/85_neighbor_aware_chemistry.md",
+    "mosaic/AGENTS.md",
+    "mosaic/tests/small_molecule/test_chemistry_environment.py",
+    "validation-manifest.json"
+  ],
+  "added": [],
+  "removed": [],
+  "local_validation": "stdlib byte hashes/AST only; no numerical imports",
+  "production_changed": []
+}

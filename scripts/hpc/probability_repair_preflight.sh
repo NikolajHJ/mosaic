@@ -5,7 +5,7 @@ set -euo pipefail
 TASK_PROTOCOL="$1"; TASK_PROTOCOL_SHA="$2"; TASK_GATE_EVIDENCE="$3"
 printf '%s  %s\n' "$TASK_PROTOCOL_SHA" "$TASK_PROTOCOL" | sha256sum --check
 python -m pytest -q tests/test_config_identity.py tests/test_probability_repair.py \
-  tests/test_quality.py tests/test_fresh_trajectory.py tests/test_processed_identity.py \
+  tests/evaluation/test_quality.py tests/test_fresh_trajectory.py tests/test_processed_identity.py \
   tests/test_boltz_active_set_rescore.py tests/test_boltz_active_set_diagnostic.py \
   tests/test_gate_replay_study.py
 python - "$TASK_GATE_EVIDENCE" <<'PY'

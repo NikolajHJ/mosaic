@@ -19,8 +19,9 @@ from latentmol.scoring import BranchCapabilities, BranchManifest, InputSupport, 
 from latentmol.multimodel.config import Objective, Study, digest
 from latentmol.multimodel.engine import Counters, scalar_loss, score_graph
 from latentmol.multimodel.runtime import BranchRuntime
-from latentmol.multimodel.study import (Problem, hard_digest, harden, module_digest, plan,
-                                       require_gate, run_arm, tensor_digest, validate)
+from latentmol.multimodel.study import (GRADIENT_POLICY, LEGACY_GRADIENT_POLICY,
+                                       Problem, hard_digest, harden, module_digest, plan,
+                                       exploratory_validate, require_gate, run_arm, tensor_digest, validate)
 from latentmol.multimodel.confirmation import (candidates, diagnose, endpoint_candidates,
                                                generation_provenance, validate_response)
 
@@ -92,6 +93,118 @@ def problem_fixture():
     identity = {"decoder_state_sha256": module_digest(decoder), "seed_sha256": hard_digest(seed),
                 "branches": {name: {"state_sha256": module_digest(runtime.branch)} for name, runtime in runtimes.items()}}
     return Problem(decoder, runtimes, seed, active, start, identity)
+
+
+def test_exploratory_smoke_runs_without_native_or_fd_qualification(tmp_path):
+    problem, study = problem_fixture(), configuration()
+    for runtime in problem.runtimes.values():
+        runtime.native_reference = lambda: pytest.fail("Exploratory smoke called native parity oracle")
+    # A decoder that does not exactly reconstruct its seed still supplies valid
+    # model-shaped relaxed inputs; this is an experiment, not a parity claim.
+    problem.start = torch.ones_like(problem.start) * 10
+    report = exploratory_validate(problem, study, ["both"], Counters(), tmp_path / "smoke.json")
+    assert report["passed"] and report["derivative_qualification"] == "not_run"
+    assert set(report["models"]) == {"a", "b"}
+    with pytest.raises(ValueError):
+        require_gate(problem, study, tmp_path / "smoke.json")
+
+
+def test_exploratory_smoke_records_flat_attached_path(tmp_path):
+    problem, study = problem_fixture(), configuration()
+    branch = problem.runtimes["a"].branch
+    branch.forward = lambda graph: {"score": graph.atoms.sum() * 0}
+    report = exploratory_validate(problem, study, ["a"], Counters(), tmp_path / "smoke.json")
+    assert report["passed"] and report["models"]["a"]["gradient_norm"] == 0
+    assert report["observations"][0]["status"] == "flat_at_start"
+
+
+def test_exploratory_smoke_distinguishes_small_nonzero_signal_from_flat(tmp_path):
+    problem, study = problem_fixture(), configuration()
+    branch = problem.runtimes["a"].branch
+    branch.forward = lambda graph: {"score": graph.atoms[..., 2].sum() * 1e-13}
+    report = exploratory_validate(problem, study, ["a"], Counters(), tmp_path / "smoke.json")
+    assert report["passed"] and 0 < report["models"]["a"]["gradient_norm"] <= 1e-12
+    assert report["observations"][0]["status"] == "low_signal"
+    assert "small nonzero" in report["observations"][0]["message"]
+
+
+@pytest.mark.parametrize("invalid", ["detached", "nonfinite", "mutated_weights"])
+def test_exploratory_smoke_keeps_real_execution_failures(tmp_path, invalid):
+    problem, study = problem_fixture(), configuration()
+    branch = problem.runtimes["a"].branch
+    if invalid == "detached":
+        branch.detached = True
+    elif invalid == "nonfinite":
+        branch.forward = lambda graph: {"score": graph.atoms.sum() * float("nan")}
+    else:
+        branch.factor.add_(1)
+    with pytest.raises(ValueError):
+        exploratory_validate(problem, study, ["a"], Counters(), tmp_path / "smoke.json")
+    assert json.loads((tmp_path / "smoke.json").read_text())["status"] == "failed"
+
+
+def test_cli_run_defaults_to_exploratory_smoke_without_preexisting_gate(tmp_path, monkeypatch):
+    from latentmol.multimodel import __main__ as cli
+    problem, study = problem_fixture(), configuration()
+    config_path = tmp_path / "config.yaml"
+    config_path.write_text("fixture")
+    monkeypatch.setattr(cli.Study, "load", lambda _: study)
+    monkeypatch.setattr(cli, "load_problem", lambda *_: problem)
+    monkeypatch.setattr(cli, "validate", lambda *_args, **_kwargs: pytest.fail("Detailed qualification requested"))
+    monkeypatch.setattr(cli, "run_arm", lambda *_args, **_kwargs: {"status": "fixture_completed"})
+    monkeypatch.setattr("sys.argv", ["multimodel", "run", "--config", str(config_path),
+                                    "--run-root", str(tmp_path / "runs"), "--arms", "a"])
+    cli.main()
+    record_path, = (tmp_path / "runs").glob("*/run.json")
+    record = json.loads(record_path.read_text())
+    gate = json.loads((record_path.parent / "engineering_gate.json").read_text())
+    assert record["status"] == "completed" and record["research_profile"] == "exploratory"
+    assert gate["passed"] and gate["derivative_qualification"] == "not_run"
+
+
+def test_atom_budget_moves_against_an_expansion_reward(tmp_path):
+    problem = problem_fixture()
+    problem.active = None
+    problem.runtimes["a"].branch.forward = lambda graph: {"score": -.01 * graph.expected_size.sum()}
+    config = configuration().to_dict()
+    assert "atom_budget" not in config["arms"]["a"]
+    config["arms"]["budget"] = {"models": ["a"], "atom_budget": {
+        "target": 1, "tolerance": .1, "weight": 1., "outside_weight": .02}}
+    with pytest.raises(ValueError, match="requires variable occupancy"):
+        Study.from_dict(config)
+    config["occupancy"] = "variable"
+    study = Study.from_dict(config)
+    assert Study.from_dict(study.to_dict()).fingerprint() == study.fingerprint()
+    plain, guarded = [], []
+    run_arm(problem, study, "a", Counters(), tmp_path / "plain", plain.append)
+    result = run_arm(problem, study, "budget", Counters(), tmp_path / "guarded", guarded.append)
+    assert result["atom_budget"]["original_slots"] == [0]
+    initial = guarded[0]["atom_budget"]
+    count = initial["expected_atoms"]
+    assert count == plain[0]["expected_atoms"]
+    assert initial["outside_occupancy"] == pytest.approx(count / 2)
+    assert initial["weighted_count_loss"] == pytest.approx((count - 1.1) ** 2)
+    assert initial["weighted_outside_loss"] == pytest.approx(.02 * count / 2)
+    assert guarded[0]["weighted_loss"] == pytest.approx(
+        plain[0]["weighted_loss"] + initial["weighted_count_loss"] + initial["weighted_outside_loss"])
+    assert guarded[-1]["expected_atoms"] < count < plain[-1]["expected_atoms"]
+
+
+def test_sparse_observations_preserve_updates_and_both_endpoints(tmp_path):
+    problem, study = problem_fixture(), configuration()
+    study = replace(study, optimizer=replace(study.optimizer, steps=12))
+    events = []
+    sparse = run_arm(problem, study, "a", Counters(), tmp_path / "sparse", events.append,
+                     observation_interval=10)
+    full = run_arm(problem, study, "a", Counters(), tmp_path / "full", lambda _: None)
+    assert len(events) == 13 and sum(row["sampled_observation"] for row in events) == 3
+    assert sorted(p.name for p in (tmp_path / "sparse").glob("state-*.pt")) == [
+        "state-0000.pt", "state-0010.pt", "state-0012.pt"]
+    for field in ("z",):
+        a = torch.load(tmp_path / "sparse" / "state-0012.pt", weights_only=True)[field]
+        b = torch.load(tmp_path / "full" / "state-0012.pt", weights_only=True)[field]
+        assert torch.equal(a, b)
+    assert sparse["steps"] == full["steps"] == 12
 
 
 @pytest.mark.parametrize("value", [float("nan"), float("inf"), -1, True])
@@ -197,14 +310,38 @@ def test_gate_records_exact_identity_and_rejects_config_change(tmp_path):
         require_gate(problem, replace(study, temperature=.9), path)
 
 
-def test_gate_rejects_zero_latent_gradient(tmp_path):
+def test_float32_producer_and_reader_share_the_same_diagnostic_contraction(tmp_path):
+    problem, study = problem_fixture(), configuration()
+    problem.decoder.float()
+    problem.start = problem.start.float()
+    problem.identity["decoder_state_sha256"] = module_digest(problem.decoder)
+    for name, runtime in problem.runtimes.items():
+        runtime.branch.float()
+        problem.identity["branches"][name]["state_sha256"] = module_digest(runtime.branch)
+    path = tmp_path / "float32-gate.json"
+    report = validate(problem, study, ["both"], Counters(), path)
+    require_gate(problem, study, path)
+    for model in report["models"].values():
+        projections = {row["direction"]: row["reverse_projection"] for row in model["pointwise_ad"]["rows"]}
+        assert all(row["analytic"] == projections[row["direction"]] for row in model["finite_differences"])
+
+
+@pytest.mark.parametrize("policy", [GRADIENT_POLICY, LEGACY_GRADIENT_POLICY])
+def test_stationary_attached_paths_are_valid_under_new_policy_but_preserve_legacy_qualification(tmp_path, policy):
     problem, study = problem_fixture(), configuration()
     problem.runtimes["a"].branch.factor.zero_()
     problem.identity["branches"]["a"]["state_sha256"] = module_digest(problem.runtimes["a"].branch)
     path = tmp_path / "gate.json"
-    with pytest.raises(ValueError, match="no finite nonzero|zero latent"):
-        validate(problem, study, ["both"], Counters(), path)
-    assert json.loads(path.read_text())["passed"] is False
+    if policy == LEGACY_GRADIENT_POLICY:
+        with pytest.raises(ValueError, match="legacy nonzero|zero latent"):
+            validate(problem, study, ["both"], Counters(), path, gradient_policy=policy)
+        assert json.loads(path.read_text())["passed"] is False
+    else:
+        report = validate(problem, study, ["both"], Counters(), path)
+        assert report["passed"] and report["models"]["a"]["latent_gradient_norm"] == 0
+        assert report["models"]["a"]["optimization_qualification"]["informative_total"] is False
+        assert not report["full_network_fd_required"] and not report["useful_gradient_validated"]
+        require_gate(problem, study, path)
 
 
 def test_state_mutation_caught():
@@ -312,8 +449,123 @@ def test_incorrect_derivative_fails_fd_gate(tmp_path):
     branch.forward = lambda graph: {"score": WrongGradient.apply(original(graph)["score"])}
     path = tmp_path / "gate.json"
     with pytest.raises(ValueError, match="finite differences"):
-        validate(problem, study, ["both"], Counters(), path)
+        validate(problem, study, ["both"], Counters(), path, gradient_policy=LEGACY_GRADIENT_POLICY)
     assert json.loads(path.read_text())["models"]["a"]["passed"] is False
+
+
+@pytest.mark.parametrize("backward_factor", [0., -1., 2.])
+def test_pointwise_gate_rejects_wrong_zero_sign_or_scale_below_absolute_fd_tolerance(tmp_path, backward_factor):
+    class WrongDerivative(torch.autograd.Function):
+        @staticmethod
+        def forward(ctx, value):
+            return value * 1e-8
+
+        @staticmethod
+        def backward(ctx, cotangent):
+            return cotangent * (backward_factor * 1e-8)
+
+        @staticmethod
+        def jvp(ctx, tangent):
+            return tangent * 1e-8
+
+    problem, study = problem_fixture(), configuration()
+    branch = problem.runtimes["a"].branch
+    original = branch.forward
+    branch.forward = lambda graph: {"score": WrongDerivative.apply(original(graph)["score"])}
+    path = tmp_path / "wrong-pointwise.json"
+    with pytest.raises(ValueError, match="pointwise AD failed"):
+        validate(problem, study, ["both"], Counters(), path)
+    report = json.loads(path.read_text())
+    assert not report["passed"] and not report["models"]["a"]["pointwise_ad"]["passed"]
+
+
+@pytest.mark.parametrize("failure", ["detached", "missing_channel", "nonfinite"])
+def test_pointwise_flat_support_never_waives_required_gradient_paths_or_finiteness(tmp_path, failure):
+    problem, study = problem_fixture(), configuration()
+    branch = problem.runtimes["a"].branch
+    original = branch.forward
+    if failure == "detached":
+        branch.detached = True
+    elif failure == "missing_channel":
+        branch.forward = lambda graph: {"score": graph.atoms[..., 2].sum()}
+    else:
+        branch.forward = lambda graph: {"score": original(graph)["score"] * float("nan")}
+    path = tmp_path / "missing-pointwise.json"
+    with pytest.raises(ValueError):
+        validate(problem, study, ["both"], Counters(), path)
+    assert not json.loads(path.read_text())["passed"]
+
+
+def test_pointwise_reader_recomputes_ad_and_retains_diagnostic_fd_disagreement(tmp_path):
+    problem, study = problem_fixture(), configuration()
+    branch = problem.runtimes["a"].branch
+    original = branch.forward
+    threshold = problem.graph(problem.start, study.temperature).atoms[..., 2].sum().detach() + 1e-6
+    # Local derivative is valid below this threshold. Coarse FD steps cross a
+    # ReLU boundary, so their secants are not that pointwise derivative.
+    branch.forward = lambda graph: {"score": original(graph)["score"]
+        + 1000 * torch.relu(graph.atoms[..., 2].sum() - threshold)}
+    path = tmp_path / "pointwise.json"
+    report = validate(problem, study, ["both"], Counters(), path)
+    assert any(not row["passed"] for row in report["models"]["a"]["finite_differences"])
+    require_gate(problem, study, path)
+    report["models"]["a"]["pointwise_ad"]["rows"][0]["forward_jvp"] *= -1
+    path.write_text(json.dumps(report))
+    with pytest.raises(ValueError, match="AD witness"):
+        require_gate(problem, study, path)
+
+
+@pytest.mark.parametrize("material", [False, True])
+def test_forward_ad_scalar_rounding_is_numerical_replay_not_byte_identity(tmp_path, material):
+    problem, study = problem_fixture(), configuration()
+    branch = problem.runtimes["a"].branch
+    original = branch.forward
+
+    def shifted(graph):
+        value = original(graph)["score"]
+        primal, tangent = torch.autograd.forward_ad.unpack_dual(value)
+        if tangent is not None:
+            if material:
+                primal = primal + .01
+            else:
+                upper = torch.full_like(primal, float("inf"))
+                primal = torch.nextafter(torch.nextafter(primal, upper), upper)
+            value = torch.autograd.forward_ad.make_dual(primal, tangent)
+        return {"score": value}
+
+    branch.forward = shifted
+    path = tmp_path / "replay.json"
+    if material:
+        with pytest.raises(ValueError, match="pointwise AD failed"):
+            validate(problem, study, ["both"], Counters(), path)
+    else:
+        report = validate(problem, study, ["both"], Counters(), path)
+        assert all(not row["primal_exact"] and row["scalar_replay_consistency"]["passed"]
+                   for row in report["models"]["a"]["pointwise_ad"]["rows"])
+        require_gate(problem, study, path)
+
+
+@pytest.mark.parametrize("mutation", ["channel", "channel_nan", "seeded", "missing_fd", "epsilon", "endpoint"])
+def test_pointwise_reader_checks_channel_evidence_and_complete_finite_diagnostics(tmp_path, mutation):
+    problem, study = problem_fixture(), configuration()
+    path = tmp_path / "reader.json"
+    report = validate(problem, study, ["both"], Counters(), path)
+    model = report["models"]["a"]
+    if mutation == "channel":
+        model["channel_gradient_norms"].pop("charges")
+    elif mutation == "channel_nan":
+        model["channel_gradient_norms"]["charges"] = float("nan")
+    elif mutation == "seeded":
+        model["gradient_label_is_seeded_probe"] = True
+    elif mutation == "missing_fd":
+        model["finite_differences"].pop()
+    elif mutation == "epsilon":
+        model["finite_differences"][0]["epsilon"] = float("nan")
+    else:
+        model["finite_differences"][0]["f_plus"] = float("inf")
+    path.write_text(json.dumps(report))
+    with pytest.raises(ValueError):
+        require_gate(problem, study, path)
 
 
 def test_native_command_protocol_records_real_subprocess_and_identity(tmp_path):

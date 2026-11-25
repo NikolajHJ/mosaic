@@ -21,7 +21,7 @@ test "$(sha256sum "$TASK_CHECKPOINT" | cut -d ' ' -f 1)" = "$TASK_SHA"
 python -m latentmol.experiments --run-root "$LATENTMOL_WORK_ROOT/runs" \
     --name "tests-boltz-stage2-${TASK_MODE}" -- \
     python -m pytest -q tests/test_boltz_adapter.py tests/test_boltz_latent_pilot.py \
-    tests/test_latent_priors.py \
+    tests/design/test_latent_priors.py \
     --junitxml="$LATENTMOL_WORK_ROOT/logs/tests-boltz-stage2-${TASK_MODE}-${LSB_JOBID}.xml"
 python -m latentmol.boltz.latent_pilot \
     --prepared "$LATENTMOL_WORK_ROOT/boltz-preparation/source006-attempt001/prepared.pt" \

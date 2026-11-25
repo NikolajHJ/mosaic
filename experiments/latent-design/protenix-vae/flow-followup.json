@@ -1,0 +1,21 @@
+{
+  "base_config": "flow-pilot.json",
+  "portfolio_test": true,
+  "cohort_seeds": [520000, 530000, 540000, 550000],
+  "screen_limit": 512,
+  "train_starts": 24,
+  "test_starts": 24,
+  "edit_limit": 6,
+  "min_pairs": 8,
+  "teacher_noise_offset": 1200000,
+  "restart_noise_offset": 1300000,
+  "random_offset": 1400000,
+  "practical_rate_margin": 0.15,
+  "one_repair_case_per_start": true,
+  "repair_source": {"arm": "teacher"},
+  "repair_valid": 16,
+  "repair_invalid": 24,
+  "repair_edit_budget": 5,
+  "repair_score_margin": 0.02,
+  "repair_schedules": {"defog_080": 0.8, "defog_096": 0.96, "defog_099": 0.99}
+}

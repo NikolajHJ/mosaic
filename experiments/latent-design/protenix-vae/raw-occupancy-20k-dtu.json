@@ -1,0 +1,17 @@
+{
+  "assets": "atom-budget-dtu.json",
+  "seed": 1732,
+  "geometry_seed": 294,
+  "fresh_geometry_seeds": [1201, 1202, 1203],
+  "updates": 20000,
+  "probe_limit": 4,
+  "trial_steps": [0.25, 0.125, 0.0625, 0.03125, 0.015625],
+  "latent_radius": 1.0,
+  "max_stage_native_calls": 20000,
+  "max_total_native_calls": 100000,
+  "max_trajectory_updates": 64,
+  "max_same_chemistry_updates": 8,
+  "max_start_draws": 256,
+  "max_draws": 100000,
+  "max_unproductive_trajectories": 32
+}

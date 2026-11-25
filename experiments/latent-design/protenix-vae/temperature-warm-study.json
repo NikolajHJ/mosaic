@@ -1,0 +1,58 @@
+{
+  "checkpoint_sha256": "5c4946c15515e70bd01281eea7b74693c18598c4b47f6724fcc9898deb1302be",
+  "base_design": "pilot.json",
+  "updates": 32,
+  "temperature_arms": {
+    "warm_1p5_to_1p0": {
+      "temperature_initial": 1.5,
+      "temperature_final": 1.0,
+      "cooling_updates": 16
+    },
+    "constant_1p0": {
+      "temperature_initial": 1.0,
+      "temperature_final": 1.0,
+      "cooling_updates": 16
+    }
+  },
+  "fresh_edit_limit": 4,
+  "starts": [
+    {
+      "name": "encoded-jq1-analogue",
+      "kind": "encoded",
+      "smiles": "OCC3N=C(c1c(sc(c1C)C)n2c3nnc2C)c4ccc(Cl)cc4"
+    },
+    {
+      "name": "encoded-moses-val-5503",
+      "kind": "encoded",
+      "smiles": "CCOC(=O)c1ccc(NC(=O)N2CCCC(CCC(N)=O)C2)cc1",
+      "source": "moses",
+      "split": "val",
+      "split_row": 5503,
+      "boundary_job": 29896185
+    },
+    {
+      "name": "encoded-chembl-val-63",
+      "kind": "encoded",
+      "smiles": "COC(=O)c1ccccc1OCCCOc1cc2c(cc1O)CCO2",
+      "source": "chembl",
+      "split": "val",
+      "split_row": 63,
+      "boundary_job": 29896185
+    },
+    {
+      "name": "prior-191411",
+      "kind": "prior",
+      "seed": 191411
+    },
+    {
+      "name": "prior-191521",
+      "kind": "prior",
+      "seed": 191521
+    },
+    {
+      "name": "prior-191522",
+      "kind": "prior",
+      "seed": 191522
+    }
+  ]
+}

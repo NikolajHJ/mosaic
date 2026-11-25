@@ -190,6 +190,33 @@ def test_real_count_bank_switches_and_fixed_control_retains_start_mask(tmp_path)
     assert torch.equal(starts[0]["active"], starts[1]["active"])
 
 
+def test_exploratory_active_set_smokes_real_update_path_without_parity_chain(tmp_path):
+    cfg = replace(_config(tmp_path), research_profile="exploratory")
+    scorer = _Scorer(bad_parity=True)
+    scorer.discrete_reference = lambda *_: pytest.fail("Optional native parity oracle requested")
+    summary = _invoke("fixed_initial_mask", _Decoder(), scorer, cfg, tmp_path)
+    report = json.loads((tmp_path / "fixed_initial_mask" / "gate-0000.json").read_text())
+    assert summary["steps"] == 2
+    assert report["passed"] and report["finite_attached_latent_path"]
+    assert report["derivative_qualification"] == "not_run" and not report["finite_differences"]
+
+
+@pytest.mark.parametrize("invalid", ["detached", "nonfinite"])
+def test_exploratory_active_set_keeps_invalid_objectives_fatal(tmp_path, invalid):
+    cfg = replace(_config(tmp_path), research_profile="exploratory")
+    scorer = _Scorer()
+    original = scorer.forward
+    def invalid_output(*arguments):
+        output = original(*arguments)
+        return {key: value.detach() if invalid == "detached" else value * float("nan")
+                for key, value in output.items()}
+    scorer.forward = invalid_output
+    with pytest.raises(ValueError):
+        _invoke("fixed_initial_mask", _Decoder(), scorer, cfg, tmp_path)
+    report = json.loads((tmp_path / "fixed_initial_mask" / "gate-0000.json").read_text())
+    assert not report["passed"] and report["status"] == "failed"
+
+
 @pytest.mark.parametrize("failure", ["parity", "derivative"])
 def test_failed_gate_retains_partial_report_transition_and_latent(tmp_path, failure):
     cfg = _config(tmp_path)

@@ -1,0 +1,9 @@
+{
+  "search": {"max_edits": 3, "checks_per_depth": 32, "beam_width": 4},
+  "arms": {
+    "legacy": null,
+    "samples": {"sample_draws": 4, "connect_components": false, "prune_dense": false},
+    "connected": {"sample_draws": 0},
+    "combined": {"sample_draws": 4}
+  }
+}

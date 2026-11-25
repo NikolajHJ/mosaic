@@ -1,0 +1,15 @@
+{
+  "checkpoint_sha256": "5c4946c15515e70bd01281eea7b74693c18598c4b47f6724fcc9898deb1302be",
+  "data": "/work3/s234818/latentmol/data/moses-chembl37-epoch45-v1",
+  "dataset_sha256": "ce3e77166091241441678b567bb758b040e5863bbaba7880a3ade1261edc7357",
+  "seed": 191501,
+  "heldout_per_source": 2,
+  "radii": [0.03, 0.1, 0.3, 1.0, 2.0, 4.0],
+  "temperatures": [0.7, 0.4],
+  "active_slots": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+  "native_centers": {
+    "raw_blocks": "/work3/s234818/latentmol/runs/protenix-embedding45-20261103b/main/design/arms/latent/raw-blocks",
+    "steps": [180, 1000],
+    "fresh_seeds": [191511, 191512]
+  }
+}

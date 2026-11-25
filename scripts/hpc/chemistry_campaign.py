@@ -408,6 +408,11 @@ class Campaign:
                 raise ValueError("Another active/failed chemistry allocation blocks automatic continuation")
             resume, number = [], 1
             initial = self.plan.get("starting_checkpoint")
+            if "epoch45_extension" in self.plan:
+                from latentmol.chemistry_epoch45_extension import initial_checkpoint
+                initial = initial_checkpoint(self.plan)
+                if after_stage == "benchmark":
+                    resume = ["--resume", initial["path"], "--resume-sha256", initial["sha256"]]
             epoch = initial["epoch"] if initial else self.plan["parent_epoch"]
             if after_stage != "benchmark":
                 match = re.fullmatch("segment-([0-9]{3})", after_stage)

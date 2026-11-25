@@ -1,0 +1,45 @@
+{
+  "version": "paired-vae-checkpoints-v1",
+  "data": "/work3/s234818/latentmol/data/source095-moses-triangle-v2",
+  "data_manifest_sha256": "f246cc93805b73a557cd0c09a78891ac8410c465192db615ce0b6709218c8c0e",
+  "dataset_sha256": "54f37815d5901f7d76b855f69e237d97172c72b027e98616f949c08178f9cae3",
+  "split": "val",
+  "checkpoints": [
+    {
+      "id": "epoch43",
+      "epoch": 43,
+      "path": "/work3/s234818/latentmol/runs/source140-epoch40-to45-continuation-attempt002/segments/003/20261030T073518Z_chemistry-train_e06a0263/epoch_0043.pt",
+      "sha256": "0f5d4acc2520769de53fe788ef966a35b0b052490adb78dee90097436da53e08"
+    },
+    {
+      "id": "epoch44",
+      "epoch": 44,
+      "path": "/work3/s234818/latentmol/runs/source155-vae-local-neighborhood-attempt002/epoch0044/epoch_0044.pt",
+      "sha256": "637745ad896b02fa9016d23f97a8826597373dc1f81953dc3ebaafb9c94d0683"
+    },
+    {
+      "id": "epoch45",
+      "epoch": 45,
+      "path": "/work3/s234818/latentmol/runs/source156-vae-epoch45-structural-attempt002/epoch0045/epoch_0045.pt",
+      "sha256": "5c4946c15515e70bd01281eea7b74693c18598c4b47f6724fcc9898deb1302be"
+    }
+  ],
+  "prior_count": 10000,
+  "prior_seeds": [11034301, 11034302, 11034303, 11034304, 11034305],
+  "categorical_seed": 11034310,
+  "temperature": 1.0,
+  "reconstruction_count": 10000,
+  "row_seed": 11034320,
+  "exclude_reconstruction_panels": [
+    {"seed": 904017, "count": 256},
+    {"seed": 904017, "count": 4096},
+    {"seed": 17, "count": 4096}
+  ],
+  "anchor_count": 1000,
+  "directions": 4,
+  "direction_seed": 11034330,
+  "scales": [0.01, 0.05, 0.1, 0.2],
+  "batch_size": 64,
+  "hpc_cuda_ownership_helper": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-release-26/source/scripts/cuda_ownership.py",
+  "hpc_cuda_ownership_sha256": "578d2b6c9453ad14ce6778d306aa6c1d926acb442dcf8ae9f9a75bccc6b2e3cb"
+}

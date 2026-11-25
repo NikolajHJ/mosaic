@@ -1,0 +1,32 @@
+# Fresh 435,400-parameter VAE. Four independent pair/triangle attention rounds.
+mode: vae
+seed: 17
+epochs: 1
+batch_size: 256
+learning_rate: 0.001
+weight_decay: 0.00001
+clip_grad: 5.0
+beta: 0.001
+kl_warmup_molecules: 2000000
+device: cuda
+validation_limit: 4096
+checkpoint_epochs: [1]
+model:
+  hidden: 24
+  latent: 128
+  layers: 4
+  decoder_variant: triangle_refine
+  global_hidden: 128
+  encoder_pooling: canonical
+  encoder_residual_layers: 2
+  pair_hidden: 18
+  refinement_rounds: 4
+  attention_heads: 4
+  triangle_hidden: 12
+loss:
+  atom_order: graph
+  padding_weight: 0.2
+  no_bond_weight: 0.1
+  charge_weight: 1.0
+  bond_weight: 2.0
+  size_weight: 0.0

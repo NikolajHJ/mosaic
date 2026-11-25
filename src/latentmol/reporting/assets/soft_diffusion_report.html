@@ -1,0 +1,821 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Relaxed molecules in 3D · DBMol</title>
+<style>
+  :root {
+    color-scheme: light;
+    --paper: #f6f5f0; --ink: #182b2a; --muted: #52635f; --rule: #d7ddd5;
+    --white: #fffefa; --green: #176452; --pale: #e7efe7; --orange: #a34e33;
+    --night: #102525; --glow: #d4f2b8;
+    font: 15px/1.5 system-ui, sans-serif; color: var(--ink); background: var(--paper);
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; }
+  button, input, select { font: inherit; }
+  button { cursor: pointer; }
+  button, select {
+    color: inherit; background: var(--white); border: 1px solid var(--rule); border-radius: 7px;
+    padding: .43rem .65rem; min-height: 2.5rem;
+  }
+  button:hover { border-color: var(--green); }
+  button[aria-pressed="true"] { background: var(--pale); border-color: var(--green); color: #104838; }
+  :focus-visible { outline: 2px solid #38876f; outline-offset: 3px; }
+  input[type="range"] { width: 100%; accent-color: var(--green); min-width: 0; }
+  a { color: var(--green); }
+  h1, h2, h3, p { margin: 0; }
+  .wrap { width: min(1380px, calc(100% - 72px)); margin-inline: auto; }
+  .masthead { border-bottom: 1px solid var(--rule); }
+  .masthead .wrap { display: flex; justify-content: space-between; align-items: center; min-height: 62px; gap: 14px; }
+  .brand { display: flex; gap: 10px; align-items: center; font-weight: 700; }
+  .brand svg { width: 26px; height: 26px; color: var(--green); }
+  .brand small { font-weight: 500; color: var(--muted); padding-left: 10px; border-left: 1px solid var(--rule); }
+  .mono, .eyebrow { font-family: ui-monospace, Consolas, monospace; font-variant-numeric: tabular-nums; }
+  .eyebrow { color: var(--green); font-size: .76rem; letter-spacing: .12em; text-transform: uppercase; font-weight: 650; }
+  .intro { padding: 34px 0 27px; display: flex; justify-content: space-between; gap: 24px; align-items: end; }
+  h1 { font: 400 clamp(2.3rem, 5vw, 4.45rem)/1.02 Georgia, serif; letter-spacing: -.048em; margin: 8px 0 12px; }
+  .intro p { max-width: 640px; color: var(--muted); }
+  .run-label { padding: .35rem .65rem; font-size: .76rem; background: var(--pale); border-radius: 5px; white-space: nowrap; }
+  .run-stats { display: flex; gap: 18px; padding: 0 0 3px; margin: 0; }
+  .run-stats div { border-left: 1px solid var(--rule); padding-left: 15px; }
+  .run-stats dt { color: var(--muted); white-space: nowrap; font-size: .8rem; }
+  .run-stats dd { font: 400 1.9rem/1.2 Georgia, serif; margin: 0; }
+  .gallery { margin: 0 0 17px; padding: 12px 14px; background: var(--white); border: 1px solid var(--rule); border-radius: 10px; }
+  .gallery[hidden] { display: none; }
+  .gallery-tabs { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; margin-top: 6px; }
+  .gallery-tabs button { text-align: left; padding: .5rem .65rem; line-height: 1.25; }
+  .gallery-tabs small { display: block; color: var(--muted); font-size: .73rem; margin-bottom: 4px; }
+  .gallery-tabs strong { font-size: .82rem; font-weight: 650; }
+  .gallery-source { margin-top: 8px; color: var(--muted); font-size: .8rem; }
+  .workspace { display: grid; grid-template-columns: minmax(0, 1fr) minmax(295px, 345px); gap: 18px; align-items: start; }
+  .panel { background: var(--white); border: 1px solid var(--rule); border-radius: 12px; min-width: 0; overflow: hidden; }
+  .panel-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 14px 17px; }
+  h2 { font: 400 1.5rem/1.12 Georgia, serif; letter-spacing: -.018em; }
+  .viewer-buttons { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+  .viewer-buttons button { font-size: .84rem; }
+  .stages { display: grid; grid-template-columns: minmax(0, 1fr); background: var(--night); }
+  .stages.compare { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: #42635b; }
+  .stage { position: relative; min-width: 0; background: radial-gradient(ellipse at 54% 35%, #244540, var(--night) 75%); }
+  .stage[hidden] { display: none; }
+  canvas { display: block; width: 100%; height: clamp(330px, 34vw, 490px); cursor: grab; touch-action: none; }
+  canvas:active { cursor: grabbing; }
+  canvas:focus-visible { outline: 2px solid var(--glow); outline-offset: -4px; }
+  .stage-label, .stage-hint { position: absolute; pointer-events: none; left: 14px; }
+  .stage-label { top: 13px; color: #e5f2eb; background: #102525; padding: .25rem .48rem; border-radius: 4px; font-size: .79rem; }
+  .stage-hint { bottom: 12px; color: #d3e6dd; font-size: .76rem; }
+  .tip { position: absolute; pointer-events: none; padding: .35rem .5rem; font-size: .76rem; color: white; background: #081a18; border: 1px solid #6b9281; border-radius: 5px; max-width: calc(100% - 10px); }
+  .timeline { padding: 12px 17px 13px; border-bottom: 1px solid var(--rule); }
+  .timeline-controls, .viewer-foot, .filter { display: flex; align-items: center; gap: 12px; }
+  #play { flex: 0 0 4.3rem; }
+  #timeline { flex: 1; }
+  #frame-count { min-width: 4.9rem; text-align: right; font-size: .77rem; color: var(--muted); }
+  .timeline-shortcuts { display: flex; justify-content: space-between; margin: 3px 5rem 0 4.9rem; }
+  .timeline-shortcuts button { min-height: 30px; border: 0; padding: .12rem .25rem; color: var(--green); background: transparent; font-size: .78rem; }
+  .timeline-shortcuts button:hover { text-decoration: underline; }
+  .viewer-foot { flex-wrap: wrap; justify-content: space-between; padding: 10px 17px; }
+  .filter { flex: 1 1 235px; max-width: 310px; font-size: .8rem; white-space: nowrap; }
+  .filter input { min-width: 60px; }
+  .legend { display: flex; flex-wrap: wrap; gap: 10px; color: var(--muted); font-size: .78rem; }
+  .legend span { display: inline-flex; align-items: center; gap: 4px; }
+  .legend i { width: .64rem; height: .64rem; display: inline-block; border-radius: 50%; border: 1px solid #516660; }
+  .inspect { padding: 17px; }
+  .inspect h2 { margin: 5px 0 14px; }
+  .slots { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
+  .slots label { color: var(--muted); font-size: .8rem; }
+  .slots select { display: block; width: 100%; margin-top: 3px; font-size: .86rem; }
+  .measurement { padding: 13px 0 12px; border-bottom: 1px solid var(--rule); }
+  #distance { font: 400 3.2rem/1 Georgia, serif; letter-spacing: -.06em; }
+  #distance small { font-size: 1.25rem; letter-spacing: 0; color: var(--muted); }
+  #current-label, #reference-value { color: var(--muted); font-size: .84rem; }
+  #reference-value { margin-top: 5px; }
+  .bond-readout { display: flex; justify-content: space-between; gap: 8px; margin: 11px 0 5px; font-size: .86rem; }
+  .prob-track { display: flex; height: 7px; overflow: hidden; border-radius: 6px; background: var(--rule); }
+  .prob-track span { height: 100%; }
+  #bond-mix { color: var(--muted); font-size: .76rem; margin: 6px 0 11px; }
+  .element-mix { display: grid; gap: 4px; font-size: .8rem; color: var(--muted); }
+  .element-mix strong { color: var(--ink); }
+  .featured { border-top: 1px solid var(--rule); padding-top: 12px; margin-top: 13px; }
+  .featured h3 { font-size: .83rem; margin-bottom: 6px; }
+  .featured button { display: flex; align-items: center; justify-content: space-between; text-align: left; width: 100%; margin-top: 5px; font-size: .79rem; gap: 8px; }
+  .featured button span:last-child { flex: 0 0 auto; }
+  .below { display: grid; grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr); gap: 18px; margin: 18px 0 30px; align-items: stretch; }
+  .matrix-panel { margin-top: 18px; }
+  .matrix-panel > header { padding: 17px 17px 12px; }
+  .matrix-panel > header p { color: var(--muted); font-size: .88rem; margin-top: 6px; }
+  .matrix-controls { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; padding: 0 17px 12px; }
+  .matrix-kinds { display: flex; gap: 5px; }
+  .matrix-kinds button, #bond-type { font-size: .86rem; }
+  .matrix-body { display: grid; grid-template-columns: minmax(0, 1fr) 270px; border-top: 1px solid var(--rule); }
+  .matrix-scroll { overflow: auto; max-height: 380px; padding: 7px 10px; min-width: 0; background: #f9faf5; }
+  #matrix { border-spacing: 2px; color: var(--muted); table-layout: fixed; margin: auto; }
+  #matrix th, #matrix td { padding: 0; width: 27px; min-width: 27px; height: 25px; text-align: center; font-size: 11px; }
+  #matrix th { background: #f9faf5; font-weight: 600; }
+  #matrix thead th { position: sticky; top: -7px; z-index: 1; }
+  #matrix tbody th, #matrix thead th:first-child { position: sticky; left: -10px; }
+  #matrix thead th:first-child { z-index: 2; }
+  #matrix td { border-radius: 2px; cursor: pointer; }
+  #matrix td[aria-selected="true"] { outline: 2px solid #a34e33; outline-offset: -1px; }
+  #matrix td:focus-visible { outline: 2px solid #a34e33; outline-offset: 1px; }
+  .matrix-detail { padding: 14px 17px; border-left: 1px solid var(--rule); }
+  .matrix-detail strong { display: block; margin: 8px 0 3px; font: 400 2.4rem/1 Georgia, serif; }
+  .matrix-detail p { font-size: .82rem; color: var(--muted); }
+  .matrix-scale { height: 7px; border-radius: 5px; margin: 15px 0 3px; background: linear-gradient(90deg, #f1f4e9, #0e6455); }
+  .scale-label { display: flex; justify-content: space-between; font-size: .75rem; color: var(--muted); }
+  .matrix-tip { margin-top: 11px; }
+  .plot, .method { padding: 17px; }
+  .plot p, .method p { color: var(--muted); font-size: .88rem; margin-top: 7px; }
+  #scatter { width: 100%; height: 236px; display: block; margin-top: 5px; }
+  #scatter text { font: 11px system-ui, sans-serif; fill: var(--muted); }
+  #scatter circle { cursor: pointer; }
+  .method h2 { margin: 5px 0 11px; }
+  .method dl { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 7px 13px; font-size: .83rem; }
+  .method dt { color: var(--muted); }
+  .method dd { margin: 0; overflow-wrap: anywhere; }
+  .method .quality { padding: 10px 11px; margin-top: 13px; border-left: 3px solid #b96a4f; background: #f7ece3; color: #693d2e; }
+  footer { border-top: 1px solid var(--rule); padding: 14px 0 23px; color: var(--muted); font-size: .8rem; }
+  noscript { display: block; padding: 16px; }
+  @media (max-width: 1020px) {
+    .wrap { width: calc(100% - 36px); }
+    .workspace { grid-template-columns: minmax(0, 1fr) 292px; }
+    .run-stats { gap: 11px; }
+  }
+  @media (max-width: 775px) {
+    .intro { align-items: start; flex-direction: column; gap: 15px; padding-top: 23px; }
+    .workspace, .below { grid-template-columns: minmax(0, 1fr); }
+    .stages.compare canvas { height: 300px; }
+    .gallery-tabs { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .matrix-body { grid-template-columns: minmax(0, 1fr); }
+    .matrix-detail { border-left: 0; border-top: 1px solid var(--rule); }
+    .matrix-scroll { max-height: 310px; }
+  }
+  @media (max-width: 490px) {
+    .wrap { width: calc(100% - 24px); }
+    .brand small { display: none; }
+    .panel-head { flex-wrap: wrap; }
+    .viewer-buttons { justify-content: flex-start; }
+    .stages.compare { grid-template-columns: minmax(0, 1fr); }
+    .stages.compare canvas { height: 285px; }
+    .timeline-shortcuts { margin-right: 0; margin-left: 0; }
+    .timeline-controls { gap: 8px; }
+    .stage-hint { font-size: .69rem; }
+    .gallery-tabs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (pointer: coarse) {
+    button, select, .timeline-shortcuts button { min-height: 44px; }
+  }
+</style>
+</head>
+<body>
+<header class="masthead">
+  <div class="wrap">
+    <div class="brand">
+      <svg viewBox="0 0 28 28" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6">
+        <path d="m7 7 13 4-5 11-8-15m13 4 4-6"/><circle cx="7" cy="7" r="3" fill="#f6f5f0"/>
+        <circle cx="20" cy="11" r="3.2" fill="#f6f5f0"/><circle cx="15" cy="22" r="2.5" fill="#f6f5f0"/>
+      </svg>
+      DBMol <small>Geometry notebook</small>
+    </div>
+    <span class="run-label mono" id="run-label"></span>
+  </div>
+</header>
+<main class="wrap">
+  <header class="intro">
+    <div>
+      <div class="eyebrow">Soft graph · Structural diffusion</div>
+      <h1>Relaxed molecules in 3D</h1>
+      <p>Explore probabilistic ligands from archived experiments. Rotate their Boltz-2 predictions, compare the fixed references, and inspect the probabilities used to condition diffusion.</p>
+    </div>
+    <dl class="run-stats">
+      <div><dt>Atom slots</dt><dd id="slot-count"></dd></div>
+      <div><dt>Denoising steps</dt><dd id="step-count"></dd></div>
+      <div><dt>Molecules</dt><dd id="molecule-count"></dd></div>
+    </dl>
+  </header>
+  <nav class="gallery" id="gallery" aria-label="Molecule gallery" hidden>
+    <div class="eyebrow">Molecule gallery</div>
+    <div class="gallery-tabs" id="molecule-tabs"></div>
+    <p class="gallery-source" id="gallery-source" aria-live="polite"></p>
+  </nav>
+  <div class="workspace">
+    <section class="panel" aria-labelledby="view-title">
+      <header class="panel-head">
+        <h2 id="view-title">3D structure</h2>
+        <div class="viewer-buttons">
+          <button id="compare" type="button" aria-pressed="false">Compare reference</button>
+          <button id="zoom-out" type="button" aria-label="Zoom out">−</button>
+          <button id="zoom-in" type="button" aria-label="Zoom in">+</button>
+          <button id="reset" type="button">Reset view</button>
+        </div>
+      </header>
+      <div class="stages" id="stages">
+        <div class="stage" id="ref-stage" hidden>
+          <canvas id="reference" tabindex="0" aria-label="Fixed reference 3D structure. Arrow keys rotate. Plus and minus zoom."></canvas>
+          <span class="stage-label">Fixed reference</span><span class="tip" hidden></span>
+        </div>
+        <div class="stage">
+          <canvas id="molecule" tabindex="0" aria-label="Interactive ligand structure. Arrow keys rotate. Plus and minus zoom."></canvas>
+          <span class="stage-label" id="frame-label"></span>
+          <span class="stage-hint">Drag to rotate · Click a link or two atoms</span><span class="tip" hidden></span>
+        </div>
+      </div>
+      <div class="timeline">
+        <div class="timeline-controls">
+          <button id="play" type="button" aria-label="Play denoising estimates">Play</button>
+          <input id="timeline" type="range" min="0" step="1" aria-label="Denoising frame">
+          <span id="frame-count" class="mono"></span>
+        </div>
+        <div class="timeline-shortcuts">
+          <button id="jump-ref" type="button">Reference</button>
+          <button id="jump-final" type="button">Final prediction</button>
+        </div>
+      </div>
+      <div class="viewer-foot">
+        <label class="filter" for="cutoff"><span>Min. bond probability <strong id="cutoff-value">10%</strong></span>
+          <input id="cutoff" type="range" min="10" max="100" step="1" value="10">
+        </label>
+        <div class="legend" id="legend" aria-label="Most probable elements"></div>
+      </div>
+    </section>
+    <aside class="panel inspect" aria-labelledby="inspect-title">
+      <div class="eyebrow">Pair inspector</div>
+      <h2 id="inspect-title">Measure a link</h2>
+      <div class="slots">
+        <label>Atom slot A<select id="atom-a"></select></label>
+        <label>Atom slot B<select id="atom-b"></select></label>
+      </div>
+      <div class="measurement" id="measurement" aria-live="polite">
+        <div id="distance"></div>
+        <p id="current-label"></p>
+        <p id="reference-value" class="mono"></p>
+      </div>
+      <div class="bond-readout"><span>Input bond probability</span><strong id="presence" class="mono"></strong></div>
+      <div class="prob-track" id="bond-track" aria-hidden="true"></div>
+      <p id="bond-mix"></p>
+      <div class="element-mix" id="element-mix"></div>
+      <div class="featured" id="featured"><h3>Pairs to inspect</h3></div>
+    </aside>
+  </div>
+  <section class="panel matrix-panel" aria-labelledby="matrix-title">
+    <header>
+      <h2 id="matrix-title">Probability matrices</h2>
+      <p>These are the input distributions over occupied slots. Cell labels are rounded percentages. Select a bond cell to measure that pair in 3D.</p>
+    </header>
+    <div class="matrix-controls">
+      <div class="matrix-kinds" id="matrix-kinds" aria-label="Probability matrix type">
+        <button type="button" data-matrix="bond" aria-pressed="true">Bond</button>
+        <button type="button" data-matrix="element" aria-pressed="false">Element</button>
+        <button type="button" data-matrix="charge" aria-pressed="false">Charge</button>
+      </div>
+      <select id="bond-type" aria-label="Bond probability channel"></select>
+    </div>
+    <div class="matrix-body">
+      <div class="matrix-scroll"><table id="matrix" role="grid" aria-label="Probability matrix"></table></div>
+      <div class="matrix-detail" aria-live="polite">
+        <div class="eyebrow">Selected cell</div>
+        <strong id="cell-value"></strong>
+        <p id="cell-label"></p>
+        <p id="cell-raw" class="mono"></p>
+        <div class="matrix-scale" aria-hidden="true"></div>
+        <div class="scale-label"><span>0%</span><span>100%</span></div>
+        <p class="matrix-tip">Use the arrow keys from a focused cell to move through the matrix.</p>
+      </div>
+    </div>
+  </section>
+  <div class="below">
+    <section class="panel plot" aria-labelledby="plot-title">
+      <h2 id="plot-title">Bond probability vs. distance</h2>
+      <p>The plot shows input links at 10% probability or higher, plus the selected pair. Select a dot to measure it.</p>
+      <svg id="scatter" role="img" aria-label="Scatter plot of distance against input bond probability. All pairs are also accessible via the atom slot selectors."></svg>
+    </section>
+    <section class="panel method" aria-labelledby="method-title">
+      <div class="eyebrow">Run context</div>
+      <h2 id="method-title">How to read this geometry</h2>
+      <p id="input-policy"></p>
+      <p>Sphere colors show each slot’s most probable element. Rings mark element mixtures. Line weight shows the input bond probability, and dashed lines have less than 50% support. Lime highlights the measured pair.</p>
+      <p>Receptor alignment sets the common orientation. Each ligand view is centered for inspection, and the comparison uses a common scale. Distances are measured in Å.</p>
+      <dl id="run-details"></dl>
+      <p class="quality" id="distance-summary"></p>
+    </section>
+  </div>
+  <noscript>Enable JavaScript in your browser to inspect the saved coordinates.</noscript>
+</main>
+<footer><div class="wrap">DBMol exploratory research · Native Boltz-2 coordinates and saved VAE graph probabilities</div></footer>
+<script id="report-data" type="application/json">__SOFT_DIFFUSION_DATA__</script>
+<script>
+"use strict";
+const byId = id => document.getElementById(id);
+const gallery = JSON.parse(byId("report-data").textContent);
+const elements = {
+  0: ["∅", "#526661"], 6: ["C", "#bdceca"], 7: ["N", "#5b98f2"], 8: ["O", "#ef786e"],
+  9: ["F", "#83c77e"], 15: ["P", "#e6aa69"], 16: ["S", "#e4c66e"], 17: ["Cl", "#85c374"],
+  35: ["Br", "#b988de"], 53: ["I", "#9c8de2"]
+};
+const bondColors = {NONE: "#d7ddd5", SINGLE: "#4b8c73", DOUBLE: "#618ac2", TRIPLE: "#9876b5", AROMATIC: "#c68361"};
+const percent = probability => `${(100 * probability).toFixed(1)}%`;
+function distance(frame, i, j) {
+  const a = frame.points[i], b = frame.points[j];
+  return Math.hypot(a[0] - b[0], a[1] - b[1], a[2] - b[2]);
+}
+const pairLabel = link => `${data.slots[link.i]}–${data.slots[link.j]}`;
+let data, frameLast, atoms, links, centered, radii, predictionRadius;
+let selected, current, anchor = null, cutoff = .1;
+let yaw = -.42, pitch = .44, zoom = 1, comparing = false, timer = null;
+const featured = new Map();
+const timeline = byId("timeline");
+function choose(i, j) {
+  if (i === j) {
+    renderInspector();
+    return;
+  }
+  selected = links.find(link => link.i === Math.min(i, j) && link.j === Math.max(i, j));
+  anchor = null;
+  if (matrixKind === "bond") setMatrixCell(i, j);
+  update();
+}
+function renderInspector() {
+  const {i, j, p} = selected;
+  const frame = data.frames[current], value = distance(frame, i, j), delta = value - selected.reference;
+  byId("atom-a").value = i;
+  byId("atom-b").value = j;
+  const unit = document.createElement("small");
+  unit.textContent = " Å";
+  byId("distance").replaceChildren(document.createTextNode(value.toFixed(2)), unit);
+  byId("current-label").textContent = anchor === null ? `${frame.label} · Slots ${pairLabel(selected)}` : `Slot ${data.slots[anchor]} selected. Choose a second atom.`;
+  byId("reference-value").textContent = `Reference ${selected.reference.toFixed(2)} Å · ${delta < 0 ? "−" : "+"}${Math.abs(delta).toFixed(2)} Å`;
+  byId("presence").textContent = percent(p);
+  const bondTypes = data.bonds[i][j].map((probability, k) => ({probability, name: data.graph_spec.bond_names[k]}));
+  byId("bond-track").replaceChildren(...bondTypes.map(({probability, name}) => {
+    const segment = document.createElement("span");
+    segment.style.width = `${100 * probability}%`;
+    segment.style.background = bondColors[name];
+    return segment;
+  }));
+  byId("bond-mix").textContent = bondTypes.filter(x => x.probability >= .01)
+    .sort((a, b) => b.probability - a.probability)
+    .map(x => `${x.name === "NONE" ? "No bond" : x.name.toLowerCase()} ${percent(x.probability)}`).join(" · ");
+  byId("element-mix").replaceChildren(...[i, j].map(k => {
+    const row = document.createElement("div"), label = document.createElement("strong");
+    label.textContent = `Slot ${data.slots[k]} `;
+    row.append(label, document.createTextNode(atoms[k].filter(a => a.p >= .01)
+      .map(a => `${a.element[0]} ${percent(a.p)}`).join(" · ")));
+    return row;
+  }));
+  for (const [link, button] of featured) button.setAttribute("aria-pressed", link === selected);
+}
+function centerFrame(frame) {
+  const center = [0, 1, 2].map(k => frame.points.reduce((sum, p) => sum + p[k], 0) / frame.points.length);
+  return frame.points.map(p => p.map((x, k) => x - center[k]));
+}
+const stages = [byId("molecule"), byId("reference")];
+const hits = new Map();
+function rotate([x, y, z]) {
+  const h = x * Math.cos(yaw) + z * Math.sin(yaw);
+  const d = -x * Math.sin(yaw) + z * Math.cos(yaw);
+  return [h, y * Math.cos(pitch) - d * Math.sin(pitch), y * Math.sin(pitch) + d * Math.cos(pitch)];
+}
+function renderStage(canvas, index, fit) {
+  const {width, height} = canvas.getBoundingClientRect();
+  if (!width || !height) return;
+  const ratio = Math.min(window.devicePixelRatio || 1, 2);
+  const pixelWidth = Math.round(width * ratio), pixelHeight = Math.round(height * ratio);
+  if (canvas.width !== pixelWidth || canvas.height !== pixelHeight) {
+    canvas.width = pixelWidth;
+    canvas.height = pixelHeight;
+  }
+  const ctx = canvas.getContext("2d");
+  ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+  ctx.clearRect(0, 0, width, height);
+  ctx.fillStyle = "rgba(184,219,201,.14)";
+  for (let x = 12; x < width; x += 24) {
+    for (let y = 12; y < height; y += 24) ctx.fillRect(x, y, 1, 1);
+  }
+  const scale = fit * zoom;
+  const points = centered[index].map((p, i) => {
+    const [x, y, z] = rotate(p);
+    return {i, x: width / 2 + scale * x, y: height / 2 + scale * y, z,
+      r: Math.max(5, Math.min(15, .32 * scale + .35 * z))};
+  });
+  const shown = links.filter(link => link.p + 1e-12 >= cutoff);
+  const items = points.map(point => ({z: point.z, point}));
+  for (const link of shown) {
+    const a = points[link.i], b = points[link.j];
+    items.push({z: (a.z + b.z) / 2, link});
+  }
+  items.sort((a, b) => a.z - b.z);
+  ctx.lineCap = "round";
+  for (const item of items) {
+    if (item.link) {
+      const {i, j, p} = item.link;
+      const a = points[i], b = points[j];
+      ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y);
+      ctx.setLineDash(p < .5 ? [4, 5] : []);
+      ctx.strokeStyle = item.link === selected ? "#d4f2b8" : `rgba(191,218,207,${.12 + p * .73})`;
+      ctx.lineWidth = (item.link === selected ? 2 : 0) + 1.2 + 4.4 * p;
+      ctx.stroke(); ctx.setLineDash([]);
+    } else {
+      const {x, y, r, i} = item.point;
+      const grad = ctx.createRadialGradient(x - r * .38, y - r * .45, 0, x, y, r);
+      grad.addColorStop(0, "#fcfff7");
+      grad.addColorStop(.4, atoms[i][0].element[1]);
+      grad.addColorStop(1, "#48645c");
+      ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2);
+      ctx.fillStyle = grad; ctx.fill();
+      if (atoms[i][0].p < .95) {
+        let angle = -Math.PI / 2;
+        for (const atom of atoms[i]) {
+          const end = angle + atom.p * Math.PI * 2;
+          if (atom.p >= .03) {
+            ctx.beginPath(); ctx.arc(x, y, r + 2, angle, end);
+            ctx.strokeStyle = atom.element[1]; ctx.lineWidth = 2; ctx.stroke();
+          }
+          angle = end;
+        }
+      }
+      if ([selected.i, selected.j, anchor].includes(i)) {
+        ctx.beginPath(); ctx.arc(x, y, r + 5, 0, Math.PI * 2);
+        ctx.strokeStyle = "#d4f2b8"; ctx.lineWidth = 1.6; ctx.stroke();
+        ctx.font = "600 11px system-ui"; ctx.fillStyle = "#e1f4d5";
+        ctx.fillText(data.slots[i], x + r + 5, y - r);
+      }
+    }
+  }
+  const bar = scale * (scale * 2 < width / 3 ? 2 : 1);
+  ctx.beginPath(); ctx.moveTo(width - 15 - bar, height - 19); ctx.lineTo(width - 15, height - 19);
+  ctx.strokeStyle = "#d7ebe0"; ctx.lineWidth = 1.4; ctx.stroke();
+  ctx.textAlign = "right"; ctx.font = "11px system-ui"; ctx.fillStyle = "#d7ebe0";
+  ctx.fillText(`${Math.round(bar / scale)} Å`, width - 15, height - 25);
+  ctx.textAlign = "left";
+  hits.set(canvas, {points, links: shown, frame: data.frames[index]});
+}
+function drawStages() {
+  const active = comparing ? stages : stages.slice(0, 1);
+  const minSide = Math.min(...active.map(canvas => Math.min(canvas.clientWidth, canvas.clientHeight)));
+  const radius = comparing ? Math.max(radii[0], predictionRadius) : current === 0 ? radii[0] : predictionRadius;
+  const fit = .42 * minSide / radius;
+  renderStage(stages[0], current, fit);
+  if (comparing) renderStage(stages[1], 0, fit);
+}
+function hitTest(canvas, x, y) {
+  const scene = hits.get(canvas);
+  if (!scene) return null;
+  const sphere = scene.points.filter(p => Math.hypot(x - p.x, y - p.y) <= p.r + 5)
+    .sort((a, b) => b.z - a.z)[0];
+  if (sphere) return {atom: sphere.i};
+  let best = 7, candidate;
+  for (const link of scene.links) {
+    const a = scene.points[link.i], b = scene.points[link.j];
+    const dx = b.x - a.x, dy = b.y - a.y;
+    const t = Math.max(0, Math.min(1, ((x - a.x) * dx + (y - a.y) * dy) / (dx * dx + dy * dy || 1)));
+    const gap = Math.hypot(x - a.x - t * dx, y - a.y - t * dy);
+    if (gap < best) { best = gap; candidate = link; }
+  }
+  return candidate ? {link: candidate, frame: scene.frame} : null;
+}
+for (const canvas of stages) {
+  let drag;
+  const tip = canvas.parentElement.querySelector(".tip");
+  canvas.addEventListener("pointerdown", event => {
+    if (event.button !== 0) return;
+    drag = {x: event.clientX, y: event.clientY, yaw, pitch};
+    canvas.setPointerCapture(event.pointerId);
+    tip.hidden = true;
+  });
+  canvas.addEventListener("pointermove", event => {
+    if (drag) {
+      yaw = drag.yaw + .012 * (event.clientX - drag.x);
+      pitch = drag.pitch + .012 * (event.clientY - drag.y);
+      drawStages();
+      return;
+    }
+    const rect = canvas.getBoundingClientRect();
+    const x = event.clientX - rect.left, y = event.clientY - rect.top;
+    const hit = hitTest(canvas, x, y);
+    tip.hidden = !hit;
+    if (!hit) return;
+    tip.textContent = hit.link ? `${pairLabel(hit.link)} · ${percent(hit.link.p)} · ${distance(hit.frame, hit.link.i, hit.link.j).toFixed(2)} Å`
+      : `Slot ${data.slots[hit.atom]} · ${atoms[hit.atom][0].element[0]} ${percent(atoms[hit.atom][0].p)}`;
+    tip.style.left = `${Math.max(4, Math.min(x + 10, rect.width - tip.offsetWidth - 4))}px`;
+    tip.style.top = `${Math.max(4, y - 34)}px`;
+  });
+  canvas.addEventListener("pointerup", event => {
+    if (!drag) return;
+    const moved = Math.hypot(event.clientX - drag.x, event.clientY - drag.y);
+    drag = null;
+    if (moved > 5) return;
+    const rect = canvas.getBoundingClientRect();
+    const hit = hitTest(canvas, event.clientX - rect.left, event.clientY - rect.top);
+    if (hit?.link) choose(hit.link.i, hit.link.j);
+    else if (hit && anchor !== null && anchor !== hit.atom) choose(anchor, hit.atom);
+    else { anchor = hit ? hit.atom : null; update(); }
+  });
+  canvas.addEventListener("pointercancel", () => { drag = null; });
+  canvas.addEventListener("pointerleave", () => { tip.hidden = true; });
+  canvas.addEventListener("keydown", event => {
+    switch (event.key) {
+      case "ArrowLeft": yaw -= .14; break;
+      case "ArrowRight": yaw += .14; break;
+      case "ArrowUp": pitch -= .14; break;
+      case "ArrowDown": pitch += .14; break;
+      case "+": case "=": changeZoom(1.2); break;
+      case "-": changeZoom(1 / 1.2); break;
+      default: return;
+    }
+    event.preventDefault();
+    drawStages();
+  });
+}
+const svg = byId("scatter");
+function svgNode(tag, attrs, value) {
+  const node = document.createElementNS("http://www.w3.org/2000/svg", tag);
+  for (const [name, attr] of Object.entries(attrs)) node.setAttribute(name, attr);
+  if (value !== undefined) node.textContent = value;
+  return node;
+}
+function renderScatter() {
+  const width = svg.clientWidth, height = svg.clientHeight;
+  if (width < 100) return;
+  svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
+  svg.replaceChildren();
+  const frame = data.frames[current];
+  const dots = links.filter(link => link.p >= .1 || link === selected)
+    .map(link => ({link, d: distance(frame, link.i, link.j)}));
+  const step = Math.max(1, Math.ceil(Math.max(...dots.map(dot => dot.d)) / 4));
+  const max = step * 4;
+  const left = 43, right = width - 18, top = 15, bottom = height - 42;
+  const x = d => left + d / max * (right - left), y = p => bottom - p * (bottom - top);
+  for (const p of [0, .25, .5, .75, 1]) {
+    svg.append(svgNode("line", {x1: left, x2: right, y1: y(p), y2: y(p), stroke: "#dce4dc"}),
+      svgNode("text", {x: left - 6, y: y(p) + 4, "text-anchor": "end"}, `${100 * p}%`));
+  }
+  for (let d = 0; d <= max; d += step) {
+    svg.append(svgNode("text", {x: x(d), y: bottom + 17, "text-anchor": "middle"}, d));
+  }
+  svg.append(svgNode("text", {x: (left + right) / 2, y: height - 4, "text-anchor": "middle"}, "Distance in selected frame (Å)"));
+  dots.sort((a, b) => Number(a.link === selected) - Number(b.link === selected));
+  for (const {link, d} of dots) {
+    const active = link === selected;
+    const circle = svgNode("circle", {cx: x(d), cy: y(link.p), r: active ? 6 : 3.7,
+      fill: active ? "#a34e33" : "#176452", opacity: active || link.p + 1e-12 >= cutoff ? .95 : .26,
+      "data-pair": pairLabel(link)});
+    circle.append(svgNode("title", {}, `Slots ${pairLabel(link)} · ${percent(link.p)} · ${d.toFixed(2)} Å`));
+    circle.addEventListener("click", () => choose(link.i, link.j));
+    svg.append(circle);
+  }
+}
+const matrix = byId("matrix"), bondType = byId("bond-type");
+let matrixKind = "bond", matrixCells = [], activeCell = null;
+const bondName = name => name === "NONE" ? "No bond" : name[0] + name.slice(1).toLowerCase();
+const signed = charge => charge > 0 ? `+${charge}` : String(charge);
+function matrixColumnLabels() {
+  if (matrixKind === "bond") return data.slots;
+  if (matrixKind === "element") return data.graph_spec.atomic_numbers.map(z => elements[z][0]);
+  return data.graph_spec.formal_charges.map(signed);
+}
+function matrixProbability(row, col) {
+  if (matrixKind === "element") return data.atoms[row][col];
+  if (matrixKind === "charge") return data.charges[row][col];
+  const probabilities = data.bonds[row][col];
+  return bondType.value === "any" ? 1 - probabilities[0] : probabilities[Number(bondType.value)];
+}
+function matrixLabel(row, col, column) {
+  const slot = data.slots[row];
+  if (matrixKind === "element") return `Slot ${slot} · ${column === "∅" ? "No atom" : column}`;
+  if (matrixKind === "charge") return `Slot ${slot} · formal charge ${column}`;
+  const kind = bondType.value === "any" ? "Any bond" : bondName(data.graph_spec.bond_names[Number(bondType.value)]);
+  return `Slots ${slot}–${data.slots[col]} · ${kind}`;
+}
+function setMatrixCell(row, col) {
+  if (activeCell) {
+    activeCell.tabIndex = -1;
+    activeCell.setAttribute("aria-selected", "false");
+  }
+  activeCell = matrixCells[row][col];
+  activeCell.tabIndex = 0;
+  activeCell.setAttribute("aria-selected", "true");
+  const probability = matrixProbability(row, col);
+  byId("cell-value").textContent = `${(100 * probability).toFixed(2)}%`;
+  byId("cell-label").textContent = matrixLabel(row, col, matrixColumnLabels()[col]);
+  byId("cell-raw").textContent = `P = ${probability.toPrecision(8)}`;
+}
+function activateMatrixCell(row, col) {
+  if (matrixKind === "bond" && row !== col) choose(row, col);
+  else setMatrixCell(row, col);
+  activeCell.focus({preventScroll: true});
+}
+function renderMatrix() {
+  const labels = matrixColumnLabels();
+  activeCell = null;
+  matrixCells = [];
+  matrix.setAttribute("aria-label", `${matrixKind} probability matrix`);
+  bondType.hidden = matrixKind !== "bond";
+  for (const button of byId("matrix-kinds").children) {
+    button.setAttribute("aria-pressed", button.dataset.matrix === matrixKind);
+  }
+  const head = document.createElement("thead"), header = head.insertRow();
+  for (const label of ["Slot", ...labels]) {
+    const cell = document.createElement("th");
+    cell.scope = "col";
+    cell.textContent = label;
+    header.append(cell);
+  }
+  const body = document.createElement("tbody");
+  data.slots.forEach((slot, row) => {
+    const tr = body.insertRow(), label = document.createElement("th");
+    label.scope = "row";
+    label.textContent = slot;
+    tr.append(label);
+    matrixCells.push(labels.map((column, col) => {
+      const probability = matrixProbability(row, col), cell = tr.insertCell();
+      const color = [241, 244, 233].map((v, i) => Math.round(v + probability * ([14, 100, 85][i] - v)));
+      cell.style.backgroundColor = `rgb(${color.join(",")})`;
+      cell.style.color = probability >= .67 ? "#fffefa" : "#25443c";
+      cell.textContent = probability >= .01 ? Math.round(100 * probability) : "";
+      cell.title = `${matrixLabel(row, col, column)} · ${percent(probability)}`;
+      cell.setAttribute("aria-label", cell.title);
+      cell.setAttribute("role", "gridcell");
+      cell.setAttribute("aria-selected", "false");
+      cell.tabIndex = -1;
+      cell.dataset.row = row;
+      cell.dataset.col = col;
+      cell.addEventListener("click", () => activateMatrixCell(row, col));
+      return cell;
+    }));
+  });
+  matrix.replaceChildren(head, body);
+  setMatrixCell(selected.i, matrixKind === "bond" ? selected.j : 0);
+}
+matrix.addEventListener("keydown", event => {
+  const moves = {ArrowUp: [-1, 0], ArrowDown: [1, 0], ArrowLeft: [0, -1], ArrowRight: [0, 1]};
+  const move = moves[event.key];
+  if (!move || !activeCell) return;
+  event.preventDefault();
+  const row = Math.min(matrixCells.length - 1, Math.max(0, Number(activeCell.dataset.row) + move[0]));
+  const col = Math.min(matrixCells[row].length - 1, Math.max(0, Number(activeCell.dataset.col) + move[1]));
+  activateMatrixCell(row, col);
+  activeCell.scrollIntoView({block: "nearest", inline: "nearest"});
+});
+byId("matrix-kinds").addEventListener("click", event => {
+  if (!event.target.dataset.matrix) return;
+  matrixKind = event.target.dataset.matrix;
+  renderMatrix();
+});
+bondType.addEventListener("change", renderMatrix);
+
+const moleculeTabs = gallery.molecules.map((molecule, index) => {
+  const button = document.createElement("button"), size = document.createElement("small"), name = document.createElement("strong");
+  button.type = "button";
+  size.textContent = `${molecule.slots.length} atom slots`;
+  name.textContent = molecule.label;
+  button.append(size, name);
+  button.addEventListener("click", () => loadMolecule(index));
+  byId("molecule-tabs").append(button);
+  return button;
+});
+byId("molecule-count").textContent = gallery.molecules.length;
+byId("gallery").hidden = gallery.molecules.length < 2;
+
+function loadMolecule(index) {
+  stop();
+  data = gallery.molecules[index];
+  frameLast = data.frames.length - 1;
+  current = frameLast;
+  yaw = -.42;
+  pitch = .44;
+  zoom = 1;
+  anchor = null;
+  for (const tip of document.querySelectorAll(".tip")) tip.hidden = true;
+  centered = data.frames.map(centerFrame);
+  radii = centered.map(points => Math.max(1, ...points.map(point => Math.hypot(...point))));
+  predictionRadius = Math.max(...radii.slice(1));
+  atoms = data.atoms.map(row => row.map((p, i) => ({p, element: elements[data.graph_spec.atomic_numbers[i]]}))
+    .sort((a, b) => b.p - a.p));
+  links = [];
+  for (let i = 0; i < data.slots.length; i++) {
+    for (let j = i + 1; j < data.slots.length; j++) {
+      links.push({i, j, p: 1 - data.bonds[i][j][0], reference: distance(data.frames[0], i, j),
+        final: distance(data.frames[frameLast], i, j)});
+    }
+  }
+  const probable = links.filter(link => link.p >= .5), featuredLinks = probable.length ? probable : links;
+  const closest = featuredLinks.reduce((a, b) => a.final <= b.final ? a : b);
+  const longest = featuredLinks.reduce((a, b) => a.final >= b.final ? a : b);
+  const contracted = featuredLinks.reduce((a, b) => a.reference - a.final >= b.reference - b.final ? a : b);
+  selected = contracted;
+  featured.clear();
+  for (const button of byId("featured").querySelectorAll("button")) button.remove();
+  for (const [label, link] of [["Largest contraction", contracted], ["Shortest probable link", closest], ["Longest probable link", longest]]) {
+    if (featured.has(link)) continue;
+    const button = document.createElement("button"), caption = document.createElement("span"), pair = document.createElement("span");
+    caption.textContent = label;
+    pair.textContent = pairLabel(link);
+    pair.className = "mono";
+    button.type = "button";
+    button.append(caption, pair);
+    button.addEventListener("click", () => choose(link.i, link.j));
+    byId("featured").append(button);
+    featured.set(link, button);
+  }
+  moleculeTabs.forEach((button, i) => button.setAttribute("aria-pressed", i === index));
+  byId("gallery-source").textContent = data.source;
+  byId("run-label").textContent = `Boltz-2 · Run ${data.run.job_id}`;
+  byId("slot-count").textContent = data.slots.length;
+  byId("step-count").textContent = frameLast - 1;
+  byId("distance-summary").textContent = `In the final exploratory sample, ${probable.length ? "links with at least 50% input probability" : "atom pairs"} span ${closest.final.toFixed(2)}–${longest.final.toFixed(2)} Å.`;
+  byId("input-policy").textContent = `${data.input_policy} Boltz-2 uses a size-matched carbon reference and its prepared receptor context.`;
+  timeline.max = frameLast;
+  for (const id of ["atom-a", "atom-b"]) {
+    byId(id).replaceChildren(...data.slots.map((slot, i) => new Option(`${slot} · ${atoms[i][0].element[0]}`, i)));
+  }
+  const details = byId("run-details");
+  details.replaceChildren();
+  for (const [label, value] of [["Graph source", data.source], ["Sampler", `Seed ${data.run.seed} · ${data.run.sampling_steps} steps`],
+    ["Device", data.run.device],
+    ["Pose change", `${data.ligand_rmsd.toFixed(2)} Å ligand RMSD after receptor alignment`]]) {
+    const dt = document.createElement("dt"), dd = document.createElement("dd");
+    dt.textContent = label;
+    dd.textContent = value;
+    details.append(dt, dd);
+  }
+  const legend = byId("legend");
+  legend.replaceChildren();
+  const visible = new Set(atoms.flatMap(row => row.filter(a => a.p >= .03).map(a => a.element)));
+  for (const [symbol, color] of visible) {
+    const entry = document.createElement("span"), swatch = document.createElement("i");
+    swatch.style.background = color;
+    entry.append(swatch, document.createTextNode(symbol));
+    legend.append(entry);
+  }
+  const previousType = bondType.value;
+  bondType.replaceChildren(new Option("Any bond", "any"),
+    ...data.graph_spec.bond_names.map((name, i) => new Option(bondName(name), i)));
+  bondType.value = [...bondType.options].some(option => option.value === previousType) ? previousType : "any";
+  renderMatrix();
+  update();
+}
+function update() {
+  const frame = data.frames[current];
+  byId("frame-label").textContent = frame.label;
+  byId("frame-count").textContent = current === 0 ? "Reference" : `${Math.min(current, frameLast - 1)} / ${frameLast - 1}`;
+  timeline.value = current;
+  timeline.setAttribute("aria-valuetext", frame.label);
+  renderInspector();
+  drawStages();
+  renderScatter();
+}
+function stop() {
+  clearInterval(timer);
+  timer = null;
+  byId("play").textContent = "Play";
+  byId("play").setAttribute("aria-label", "Play denoising estimates");
+  byId("measurement").setAttribute("aria-live", "polite");
+}
+function setFrame(index) {
+  stop();
+  current = index;
+  update();
+}
+function changeZoom(factor) {
+  zoom = Math.max(.5, Math.min(3, zoom * factor));
+  drawStages();
+}
+timeline.addEventListener("input", () => setFrame(Number(timeline.value)));
+byId("jump-ref").addEventListener("click", () => setFrame(0));
+byId("jump-final").addEventListener("click", () => setFrame(frameLast));
+byId("cutoff").addEventListener("input", event => {
+  cutoff = Number(event.target.value) / 100;
+  byId("cutoff-value").textContent = `${event.target.value}%`;
+  update();
+});
+for (const id of ["atom-a", "atom-b"]) byId(id).addEventListener("change", () => choose(Number(byId("atom-a").value), Number(byId("atom-b").value)));
+byId("compare").addEventListener("click", event => {
+  comparing = !comparing;
+  event.target.setAttribute("aria-pressed", comparing);
+  byId("ref-stage").hidden = !comparing;
+  byId("stages").classList.toggle("compare", comparing);
+  if (comparing && current === 0) setFrame(frameLast);
+  else drawStages();
+});
+byId("zoom-in").addEventListener("click", () => changeZoom(1.2));
+byId("zoom-out").addEventListener("click", () => changeZoom(1 / 1.2));
+byId("reset").addEventListener("click", () => { yaw = -.42; pitch = .44; zoom = 1; drawStages(); });
+byId("play").addEventListener("click", event => {
+  if (timer !== null) { stop(); return; }
+  if (current === 0 || current === frameLast) current = 1;
+  event.target.textContent = "Pause";
+  event.target.setAttribute("aria-label", "Pause denoising estimates");
+  byId("measurement").setAttribute("aria-live", "off");
+  update();
+  timer = setInterval(() => {
+    current++;
+    if (current >= frameLast) stop();
+    update();
+  }, 140);
+});
+loadMolecule(gallery.default);
+new ResizeObserver(drawStages).observe(byId("stages"));
+new ResizeObserver(renderScatter).observe(svg);
+</script>
+</body>
+</html>

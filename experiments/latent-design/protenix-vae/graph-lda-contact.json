@@ -1,0 +1,26 @@
+{
+  "learning_rate": 60.0,
+  "temperature": 1.0,
+  "occupied_atoms": 25,
+  "updates": 32,
+  "edit_limit": 3,
+  "seed": 20261120,
+  "starts": [
+    {
+      "name": "val-127024",
+      "smiles": "O=C(c1ccc(F)cc1O)N1CCc2oc(C3CCOCC3)nc2C1"
+    },
+    {
+      "name": "val-156335",
+      "smiles": "Cc1ccc(C)c(NCc2c(O)c(Br)cc3oc4c(c23)CCCC4)c1"
+    },
+    {
+      "name": "val-169683",
+      "smiles": "CC(c1ccncc1)N(C)Cc1ccc(OCCn2ccnc2)cc1"
+    },
+    {
+      "name": "val-61577",
+      "smiles": "CCCCOC(O)=C1C(C)=Nc2ncnn2C1c1cccc(OC)c1"
+    }
+  ]
+}

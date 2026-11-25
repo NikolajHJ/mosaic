@@ -10,6 +10,7 @@ import pytest
 from latentmol.boltz.pointwise_contract import (BRIDGE_POLICY, COMPONENTS, NATIVE_CHANNELS,
     POLICY, profile_record, verify_bridge, verify_gate)
 from latentmol.boltz.additive_fd import DIRECTIONS, PARITY_VERSION
+from latentmol.boltz.gradient_precision import relative_ad_consistency
 
 
 def digest(name):
@@ -53,6 +54,7 @@ def item(baseline, gradient, *, repair=False):
         "independent_forward_ad": {"rtol": .001, "atol": 1e-6, "passed": True,
             "rows": [{"direction": label, "direction_sha256": bindings[label], "primal": baseline, "tangent": projection,
                 "reverse_projection": projection, "absolute_error": 0.,
+                "relative_ad_consistency": relative_ad_consistency(projection, projection, gradient),
                 "tolerance": 1e-6 + .001 * abs(projection), "primal_exact": True, "passed": True}
                 for label, projection in zip(DIRECTIONS, projections)]},
         "recomposition_proofs": {label: proof(baseline, projection, gradient, repair=repair)

@@ -1,0 +1,13 @@
+{
+  "corpus": "/work3/s234818/latentmol/data/pubchem-large-corpus-20261105a/corpus",
+  "corpus_manifest_sha256": "0689ebe8c02515e1df9544fddd81fc9cfca7613e7850b1aa3d30f23af4519b3e",
+  "sparse_cache": "/work3/s234818/latentmol/data/pubchem-large-sparse-cache-20261105a",
+  "cache_job_id": 29904885,
+  "cache_launch_receipt": "/zhome/95/e/206121/dbmol-control/pubchem-large-sparse-cache-20261105a-retry-1106a/launch.json",
+  "cache_source_archive_sha256": "99bdf3d5b7ef787769a6cc55bc4bcd8f7ced316142673b202e7dafd21f99777c",
+  "train_count": 60000000,
+  "add_per_holdout": 100000,
+  "seed": 550019,
+  "work3_account": "s234818",
+  "reserve_bytes": 4294967296
+}

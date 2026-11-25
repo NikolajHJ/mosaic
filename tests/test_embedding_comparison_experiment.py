@@ -162,6 +162,57 @@ def test_cpu_failure_or_skip_never_releases_gpu_models(tmp_path, monkeypatch, cp
     assert not calls
 
 
+def test_cuda_free_outer_stage_waits_for_optimization_child_before_native(tmp_path, monkeypatch):
+    """Mock model phases, retain the real coordinator order and handoff hashing."""
+    from latentmol import cuda_process
+    from latentmol.boltz import embedding_comparison_rescore as rescore
+    from latentmol.boltz import embedding_comparison_report as report_module
+    from scripts.hpc import embedding_operator
+    import time
+    output = tmp_path / "gpu"; output.mkdir()
+    cpu = tmp_path / "cpu"; cpu.mkdir()
+    (cpu / "cpu-tests.xml").write_text("fixture junit")
+    (cpu / "starts.pt").write_bytes(b"fixture authenticated starts")
+    source = "d" * 64
+    plan = tmp_path / "plan.json"; plan.write_text("{}")
+    config = dict(_plan_path=str(plan), _plan_sha256=file_sha256(plan),
+        fresh_native=dict(pose_seeds=[17, 23], native_settings={}, target_sequence_sha256="a" * 64,
+                          msa_sha256="b" * 64, native_timeout_seconds=10, audit_timeout_seconds=10),
+        native_template={"path": str(plan), "sha256": file_sha256(plan)}, bridge={}, boltz_cache=str(tmp_path))
+    (cpu / "result.json").write_text(json.dumps(dict(status="passed", source_sha256=source,
+        plan_sha256=config["_plan_sha256"], junit=dict(tests=1, failures=0, errors=0, skipped=0),
+        junit_sha256=file_sha256(cpu / "cpu-tests.xml"), starts={"starts_sha256": file_sha256(cpu / "starts.pt")})))
+    monkeypatch.setenv("LATENTMOL_SOURCE_SHA256", source)
+    monkeypatch.setenv("LSB_JOBID", "12345")
+    order = []
+    def ownership():
+        order.append("coordinator-check")
+        return dict(cuda_initialized=False)
+    monkeypatch.setattr(cuda_process, "require_cuda_free_coordinator", ownership)
+    def child(command, log_path, **kwargs):
+        assert "embedding_optimization_worker" in " ".join(command)
+        order.append("child-exited")
+        intent = output / "optimization-child-intent.json"
+        (output / "optimization-phase.json").write_text(json.dumps(dict(status="passed_optimization_phase",
+            intent_sha256=file_sha256(intent), frozen_vae_unchanged=True, members=[], cases=[],
+            start_gates=[], precision_correction={}, cpu_result_sha256=file_sha256(cpu / "result.json"))))
+        return dict(returncode=0, timed_out=False, log=str(log_path))
+    monkeypatch.setattr(cuda_process, "run_cuda_child", child)
+    monkeypatch.setattr(embedding_operator, "quota", lambda: {"fixture": True})
+    monkeypatch.setattr(rescore, "freeze_selection", lambda *a, **k: {"fixture": True})
+    monkeypatch.setattr(rescore, "load_target", lambda *a, **k: {"fixture": True})
+    def native(*args, **kwargs):
+        assert "child-exited" in order
+        order.append("native-started")
+        return {"status": "completed"}
+    monkeypatch.setattr(rescore, "run_followup", native)
+    monkeypatch.setattr(report_module, "generate_report", lambda *a: output / "report.html")
+    actual = experiment.gpu_stage(config, output, time.monotonic() + 1000)
+    assert order.index("child-exited") < order.index("native-started")
+    assert actual["optimization_child"]["returncode"] == 0
+    assert actual["frozen_vae_unchanged"] is True
+
+
 @pytest.mark.parametrize("tamper", [None, "vae_identity", "bank_tensor"])
 def test_loaded_mapping_strictly_binds_original_vae_and_native_bank(tmp_path, monkeypatch, tamper):
     _, _, bank, vae = frozen_models()

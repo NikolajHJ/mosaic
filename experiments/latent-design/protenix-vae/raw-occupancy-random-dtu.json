@@ -1,0 +1,6 @@
+{
+  "reference": "/work3/s234818/latentmol/protenix_occupancy/runs/protenix-raw-expanded-20261105-a01/result.json",
+  "reference_sha256": "a2b3b8050b4844226e773fc975491be1466fd36ec9a3b862e20eded641784a08",
+  "seed": 1910,
+  "max_directions": 256
+}

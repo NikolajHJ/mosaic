@@ -6,8 +6,8 @@ set -euo pipefail
 
 python -m latentmol.experiments --run-root "$LATENTMOL_WORK_ROOT/runs" \
     --name graded-quality-tests-051 -- python -m pytest -q \
-    tests/test_quality.py tests/test_evaluation.py tests/test_architecture_study.py \
-    tests/test_sampling.py tests/test_chemistry.py tests/test_candidate_panel.py
+    tests/evaluation/test_quality.py tests/evaluation/test_evaluation.py tests/test_architecture_study.py \
+    tests/datasets/test_sampling.py tests/datasets/test_chemistry.py tests/test_candidate_panel.py
 
 python -m latentmol.quality_panel \
     --panel "$LATENTMOL_WORK_ROOT/runs/20261001T094301Z_decoder-candidate-panel_adc34cfe/panel.json" \

@@ -167,6 +167,9 @@ def test_load_target_authenticates_template_sequence_and_msa(tmp_path):
 def allow_hpc(monkeypatch):
     monkeypatch.setenv("LSB_JOBID", "fixture-123")
     monkeypatch.setenv("LATENTMOL_SOURCE_SHA256", "a" * 64)
+    # These fixtures mock the native process boundary. Separate coordinator
+    # fixtures exercise its real cached-state rejection and clean GPU children.
+    monkeypatch.setattr(subject, "require_cuda_free_coordinator", lambda: {"cuda_initialized": False})
     monkeypatch.setattr(subject, "_verify_cli_defaults", lambda: {
         "path": __file__, "sha256": subject.hashlib.sha256(Path(__file__).read_bytes()).hexdigest()})
 
@@ -219,3 +222,22 @@ def test_frozen_selection_and_allocation_binding_are_mandatory(tmp_path, monkeyp
     changed["members"][0]["smiles"] = "CCCC"
     with pytest.raises(ValueError, match="selection identity"):
         subject.run_followup(changed, target(tmp_path), tmp_path, tmp_path / "out", deadline=time.monotonic() + 10000)
+
+
+def test_first_native_smoke_failure_stops_without_spending_remaining_requests(tmp_path, monkeypatch):
+    allow_hpc(monkeypatch)
+    from latentmol.boltz import fresh_trajectory
+    calls = []
+    def failed(request, target, cache, attempt, protocol):
+        attempt.mkdir(parents=True)
+        calls.append(request["id"])
+        return {"id": request["id"], "smiles": request["smiles"], "seed": request["seed"],
+                "retention_eligible": False, "affinity": None, "status": "native_failed"}
+    monkeypatch.setattr(fresh_trajectory, "execute_request", failed)
+    with pytest.raises(RuntimeError, match="First frozen native"):
+        subject.run_followup(selection(), target(tmp_path), tmp_path, tmp_path / "out",
+            deadline=time.monotonic() + 10000, require_first_native_success=True)
+    assert calls == [selection()["requests"][0]["id"]]
+    gate = json.loads((tmp_path / "out/first-native-gate.json").read_text())
+    assert gate["status"] == "failed_not_passed" and gate["request_counted_once"]
+    assert len(json.loads((tmp_path / "out/native-results.json").read_text())) == 1

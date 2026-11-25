@@ -1,0 +1,28 @@
+{
+  "VAE_continuation_changes": false,
+  "fixed_step": {
+    "candidates": 1,
+    "learning_rate": 0.0025,
+    "line_search": false
+  },
+  "members": {
+    "configs/embedding_runtime_probe.json": "f96e8e1ae42dfd52eda691a2694b6c8529ac5f6937d914ed4f00f15a19946dc5",
+    "scripts/embedding_runtime_campaign.py": "c8cba0c1b3519f3e77587c1964dccaaded3601d2e557d427c51278f8d9ab11ac",
+    "scripts/hpc/embedding_runtime_probe.py": "61b0f77755f00e22273d9e152cc90bec4226a3645e1196faca5695ce9f084f8b",
+    "tests/test_embedding_runtime_probe.py": "6e88e6d824cfd5451380a323d11506a918f13e07cc857f96da1701da9174729b"
+  },
+  "production_campaign_changes": false,
+  "seal": {
+    "archive": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source144-embedding-runtime-probe-attempt001\\source144-embedding-runtime-probe-attempt001.tar.gz",
+    "archive_sha256": "009233fce84e8f4b06079334bbe53aed3e51a3cbbb42d5022f1d023abaac55b9",
+    "campaign": "/work3/s234818/latentmol/runs/source144-embedding-runtime-probe-attempt001",
+    "label": "source144-embedding-runtime-probe-attempt001",
+    "manifest_sha256": "e12f9737844fe7b7c81f2b8d78bd5858ce8048e39e54b585b1f059a261b5af85",
+    "members": 629,
+    "operator_relative": "scripts/hpc/embedding_runtime_probe.py",
+    "plan_sha256": "f96e8e1ae42dfd52eda691a2694b6c8529ac5f6937d914ed4f00f15a19946dc5",
+    "release": "/work3/s234818/latentmol/releases/source-144-embedding-runtime-probe-attempt001",
+    "status": "sealed_not_submitted"
+  },
+  "status": "AST_JSON_bytes_only_not_numerical_validation"
+}

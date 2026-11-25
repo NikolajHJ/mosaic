@@ -71,8 +71,15 @@ class FailureAwareRepairTeacher(AtomPreservingRepairTeacher):
         return FailureTeacherBatch(base, prepared, time.perf_counter() - started, phases)
 
 
-def build_repair_teacher(spec, protocol, execution=None, *, classification_execution=None, cache_capacity=None):
-    """One factory for training, native resume and backend-parity diagnostics."""
+def build_repair_teacher(spec, protocol, execution=None, *, classification_execution=None, cache_capacity=None,
+                         proposal_config=None, astar_config=None):
+    """One factory; new experiments can explicitly replace target discovery.
+
+    ``proposal_config`` and ``astar_config`` are mutually exclusive experiment
+    metadata, never inferred alterations of a legacy continuation protocol.
+    Existing callers/defaults and strict campaign readers stay unchanged.
+    Record the selected discovery policy in the new study config.
+    """
     failure = validate_failure_guidance(protocol.get("failure_guidance"))
     from .chemistry_short_continuation import validate_baseline_continuation
     baseline = validate_baseline_continuation(protocol)
@@ -85,6 +92,22 @@ def build_repair_teacher(spec, protocol, execution=None, *, classification_execu
         options["cache_capacity"] = cache_capacity
     if failure is not None:
         options["failure_guidance"] = failure
+    if proposal_config is not None:
+        from .guidance.repair_proposals import ProposalRepairTeacher, RepairProposalConfig
+        if failure is not None:
+            raise ValueError("Do not combine proposal discovery with an untested failure-guidance objective")
+        if type(proposal_config) is not dict:
+            raise TypeError("Proposal experiment config must be an explicit dictionary")
+        options["proposals"] = RepairProposalConfig(**proposal_config)
+        teacher_type = ProposalRepairTeacher
+    if astar_config is not None:
+        from .guidance.repair_astar import AStarRepairTeacher, AStarRepairConfig
+        if proposal_config is not None or failure is not None:
+            raise ValueError("A* discovery must be an explicit separate arm")
+        if type(astar_config) is not dict:
+            raise TypeError("A* experiment config must be an explicit dictionary")
+        options["astar"] = AStarRepairConfig(**astar_config)
+        teacher_type = AStarRepairTeacher
     if baseline is not None:
         # Classification observes the same original search, including cache
         # hits. It adds diagnostics, never fallback targets or a changed loss.

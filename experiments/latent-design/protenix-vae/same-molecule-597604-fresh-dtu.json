@@ -1,0 +1,12 @@
+{
+  "assets_config": "one-atom-dtu.json",
+  "same_molecule_comparison": true,
+  "candidate_limit": 180,
+  "max_edit_candidates_per_arm": 4,
+  "geometry_seed": 1201,
+  "ccd_root": "/work3/s234818/latentmol/protenix_occupancy/data/common",
+  "pocket": {
+    "path": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/protenix-extended-03/cpu/payload/pocket_definition.json",
+    "sha256": "9376c715eaf5b48689fb3e995b00d7820601a7776970df66bd7e7cff3b13ee43"
+  }
+}

@@ -11,6 +11,52 @@ from torch.nn import functional as F
 from .representation import DecoderOutput, GraphSpec, RelaxedGraph
 
 
+def graph_from_mosaic(x: torch.Tensor, e: torch.Tensor, spec: GraphSpec, *, active_slots=None) -> RelaxedGraph:
+    """Embed fixed-size neutral Mosaic probabilities into an explicitly ordered DBMol GraphSpec.
+
+    x has C/N/O/S/F/Cl rows. e has NONE/SINGLE/DOUBLE/TRIPLE/AROMATIC rows in
+    lexicographic upper-triangle order. active_slots maps each input atom into
+    its parent slot, in order. Both input gradients survive the remapping.
+    """
+    elements = (6, 7, 8, 16, 9, 17)
+    bond_types = ("NONE", "SINGLE", "DOUBLE", "TRIPLE", "AROMATIC")
+    if not isinstance(x, torch.Tensor) or x.ndim != 3 or x.shape[2] != len(elements):
+        raise ValueError("Mosaic atoms must have shape [batch, atoms, 6]")
+    batch, n, _ = x.shape
+    if batch < 1 or not 1 <= n <= spec.max_nodes:
+        raise ValueError("The input graph needs a nonempty batch and must fit the parent slots")
+    if not isinstance(e, torch.Tensor) or e.shape != (batch, n * (n - 1) // 2, len(bond_types)):
+        raise ValueError("Mosaic bonds must have one five-channel row per upper-triangle pair")
+    if not x.is_floating_point() or e.dtype != x.dtype or e.device != x.device:
+        raise ValueError("Atom and bond probabilities must share a floating dtype and device")
+    for rows in (x, e):
+        if (not rows.isfinite().all() or (rows < 0).any()
+                or not torch.allclose(rows.sum(-1), torch.ones_like(rows[..., 0]), rtol=0, atol=2e-5)):
+            raise ValueError("Expected finite, nonnegative, normalized molecular probabilities")
+    if not set(elements).issubset(spec.atomic_numbers) or not set(bond_types).issubset(spec.bond_names):
+        raise ValueError("Parent graph vocabulary does not contain all Mosaic input categories")
+    slots = torch.arange(n, device=x.device) if active_slots is None else torch.as_tensor(active_slots, device=x.device)
+    if (slots.shape != (n,) or slots.dtype not in (torch.int32, torch.int64)
+            or slots.min() < 0 or slots.max() >= spec.max_nodes or slots.unique().numel() != n):
+        raise ValueError("active_slots must map every input atom to a distinct existing parent slot")
+    slots = slots.long()
+    atom_map = torch.tensor([spec.atomic_numbers.index(v) for v in elements], device=x.device)
+    bond_map = torch.tensor([spec.bond_names.index(v) for v in bond_types], device=x.device)
+    atoms = x.new_zeros(batch, spec.max_nodes, len(spec.atomic_numbers))
+    atoms[..., 0] = 1
+    atoms[:, slots, 0] = 0
+    atoms[:, slots[:, None], atom_map[None, :]] = x
+    charges = x.new_zeros(batch, spec.max_nodes, len(spec.formal_charges))
+    charges[..., spec.formal_charges.index(0)] = 1
+    bonds = e.new_zeros(batch, spec.max_nodes, spec.max_nodes, len(spec.bond_names))
+    bonds[..., 0] = 1
+    i, j = torch.triu_indices(n, n, 1, device=x.device)
+    left, right = slots[i, None], slots[j, None]
+    bonds[:, left, right, bond_map[None, :]] = e
+    bonds[:, right, left, bond_map[None, :]] = e
+    return RelaxedGraph(atoms, charges, bonds)
+
+
 def fixed_occupancy_graph(decoded: DecoderOutput, active: torch.Tensor,
                           spec: GraphSpec, temperature: float = 1.0) -> RelaxedGraph:
     """Condition raw decoder logits on a fixed set of existing heavy-atom slots.

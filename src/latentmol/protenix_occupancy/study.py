@@ -26,7 +26,20 @@ PHASE = "protenix-occupancy-native-parity-gradient-v1"
 NATIVE_REPEAT_POLICY = "native-repeat-loss-tv-v1"
 OUTPUT_PARITY_POLICY = "native-output-loss-tv-v1"
 Q_GRID = (0., .01, .1, .25, .5, .75, .9, .99, 1.)
-FD_STEPS = (.01, .003, .001)
+FD_POLICY = {
+    "version": "attached-repeat-loss-difference-fd-v1",
+    "baseline_repeats": 8,
+    "endpoint_repeats": 3,
+    "range_multiplier": 4.0,
+    "loss_difference_floor": 1e-12,
+    "maximum_loss_difference_uncertainty": 1e-6,
+    "signal_to_uncertainty": 10.0,
+    "derivative_atol": 1e-6,
+    "derivative_rtol": 0.05,
+    "minimum_agreeing_scales": 2,
+    "steps": [0.01, 0.003, 0.001],
+}
+FD_STEPS = tuple(FD_POLICY["steps"])
 
 
 def write_json(path: Path, value: dict) -> None:
@@ -137,6 +150,69 @@ def derivative_agreement(autograd: float, fd: float, *, atol=1e-6, rtol=.05) -> 
     return dict(autograd=autograd if math.isfinite(autograd) else None,
         finite_difference=fd if math.isfinite(fd) else None, absolute_error=error,
         passed=finite and error <= atol+rtol*max(abs(autograd), abs(fd)))
+
+
+def calibrate_loss_noise(groups: list[list[float]]) -> dict:
+    """Bound the declared empirical allowance using identical-input repeats.
+
+    Each group contains repeated evaluations at ONE input, never values pooled
+    across distinct q values. The fixed multiplier is a conservative empirical
+    allowance, not a statistical confidence bound or a backend diagnosis.
+    """
+    if not groups or any(len(values) < 2 for values in groups):
+        raise ValueError("Noise calibration requires repeated identical-input groups")
+    if any(not math.isfinite(value) for values in groups for value in values):
+        raise ValueError("Nonfinite repeat-noise calibration")
+    ranges = [max(values)-min(values) for values in groups]
+    uncertainty = max(FD_POLICY["loss_difference_floor"],
+                      FD_POLICY["range_multiplier"]*max(ranges))
+    return dict(version=FD_POLICY["version"], groups=groups, group_ranges=ranges,
+        loss_difference_uncertainty=uncertainty,
+        maximum_uncertainty=FD_POLICY["maximum_loss_difference_uncertainty"],
+        passed=uncertainty <= FD_POLICY["maximum_loss_difference_uncertainty"],
+        interpretation="Fixed empirical allowance; not a rigorous noise bound")
+
+
+def loss_difference_agreement(autograd: float, plus: list[float],
+                              minus: list[float], epsilon: float,
+                              calibration: dict) -> dict:
+    """Compare before dividing by 2h; preserve strict FD as a diagnostic.
+
+    A resolved signal must exceed the allowance in both the measured and
+    autograd-predicted loss differences, with the same sign. Unresolved values
+    may establish consistency with zero, never useful Z sensitivity.
+    """
+    if not math.isfinite(epsilon) or epsilon <= 0 or not plus or not minus:
+        raise ValueError("Require positive finite epsilon and endpoint samples")
+    finite = math.isfinite(autograd) and all(math.isfinite(v) for v in plus+minus)
+    uncertainty = calibration.get("loss_difference_uncertainty")
+    calibrated = (calibration.get("version") == FD_POLICY["version"]
+        and calibration.get("passed") is True
+        and isinstance(uncertainty, (int, float)) and math.isfinite(uncertainty)
+        and FD_POLICY["loss_difference_floor"] <= uncertainty
+        <= FD_POLICY["maximum_loss_difference_uncertainty"])
+    p = math.fsum(plus)/len(plus) if finite else float("nan")
+    m = math.fsum(minus)/len(minus) if finite else float("nan")
+    delta = p-m
+    fd = delta/(2*epsilon)
+    strict = derivative_agreement(autograd, fd)
+    predicted = 2*epsilon*autograd
+    residual = abs(delta-predicted)
+    base = 2*epsilon*(FD_POLICY["derivative_atol"]
+        + FD_POLICY["derivative_rtol"]*max(abs(autograd), abs(fd)))
+    passed = finite and calibrated and residual <= base+uncertainty
+    resolved = (passed and delta*predicted > 0
+        and min(abs(delta),abs(predicted)) > FD_POLICY["signal_to_uncertainty"]*uncertainty)
+    return dict(strict, strict_passed=strict["passed"],
+        passed=bool(passed), epsilon=epsilon, plus=p if finite else None,
+        minus=m if finite else None, plus_samples=plus, minus_samples=minus,
+        loss_difference=delta if finite else None,
+        predicted_loss_difference=predicted if finite else None,
+        loss_difference_residual=residual if finite else None,
+        strict_loss_difference_tolerance=base if finite else None,
+        loss_difference_uncertainty=uncertainty,
+        resolved_above_repeat_noise=bool(resolved),
+        policy_version=FD_POLICY["version"])
 
 
 def compare_parity_outputs(actual: dict, reference: dict) -> dict:
@@ -256,7 +332,7 @@ def trace_path_diagnostics(native, features, pairs, targets, forward):
     return result
 
 
-def native_gates(config: dict, output: Path) -> dict:
+def native_gates(config: dict, output: Path, *, native=None, forward=None) -> dict:
     """Authenticate inputs, run independent native parity, then interior FD.
 
     A failure is persisted and stops this phase. No occupancy optimization is
@@ -270,6 +346,8 @@ def native_gates(config: dict, output: Path) -> dict:
         raise ValueError("Require declared native-repeat acceptance policy")
     if config.get("output_parity_policy") != OUTPUT_PARITY_POLICY:
         raise ValueError("Require declared native-output acceptance policy")
+    if config.get("finite_difference_policy") != FD_POLICY:
+        raise ValueError("Require exact declared attached-repeat finite-difference policy")
     if not output.is_dir() or any(output.iterdir()):
         raise ValueError("Use a fresh empty output directory")
     if not torch.cuda.is_available():
@@ -287,15 +365,27 @@ def native_gates(config: dict, output: Path) -> dict:
         model_calls=0, G="not_implemented_not_validated", optimization="not_run",
         scope="C/Z fixed native-geometry mechanism gates; no variable-count pass",
         model_precision="float32_no_TF32",scalar_reduction_precision="float64")
-    native = load_frozen_tiny(source_root=config["source_root"],
-        source_sha256=config["source_sha256"], weights_path=config["weights_path"],
-        weights_sha256=config["weights_sha256"], device="cuda", seed=17)
+    if (native is None) != (forward is None):
+        raise ValueError("Supply both resident model and shared forward authority, or neither")
+    if native is None:
+        native = load_frozen_tiny(source_root=config["source_root"],
+            source_sha256=config["source_sha256"], weights_path=config["weights_path"],
+            weights_sha256=config["weights_sha256"], device="cuda", seed=17)
+        forward = CountedForward(native, int(config.get("max_model_calls", 3000)),
+            started+float(config.get("internal_seconds", 19800)))
+    elif (forward.native is not native or forward.calls != 0
+            or forward.budget != int(config["max_model_calls"])
+            or forward.deadline > started+float(config["internal_seconds"])
+            or native.source_root != Path(config["source_root"]).resolve()
+            or native.weights_path != Path(config["weights_path"]).resolve()
+            or native.provenance["source_sha256"] != config["source_sha256"]
+            or native.provenance["weights_sha256"] != config["weights_sha256"]):
+        raise ValueError("Shared native readiness authority differs from authenticated configuration")
     result["native_provenance"] = native.provenance
     result["native_repeat_policy"] = NATIVE_REPEAT_POLICY
     result["output_parity_policy"] = OUTPUT_PARITY_POLICY
+    result["finite_difference_policy"] = FD_POLICY
     state = native.snapshot_state()
-    forward = CountedForward(native, int(config.get("max_model_calls", 3000)),
-        started+float(config.get("internal_seconds", 19800)))
     try:
         for item in config["cases"]:
             path = Path(item["bundle_path"])
@@ -337,7 +427,6 @@ def native_gates(config: dict, output: Path) -> dict:
             record["repeat"] = compare_native_repeat(repeated, reference)
             if not record["repeat"]["passed"]:
                 raise RuntimeError("Native repeat variation exceeds prospective tolerance")
-            noise = abs(float(reference["loss"])-float(repeated["loss"]))
             float_features = floating_element_features(features)
             with torch.no_grad():
                 float_native = selected_outputs(forward(float_features, attached=False), pairs, targets)
@@ -384,9 +473,14 @@ def native_gates(config: dict, output: Path) -> dict:
             del raw, reference, repeated, actual, saved
             result["stage"] = item["case_id"]+":derivatives"
             for condition in ("C", "Z"):
+                control_hashes = set()
                 def scalar(variable, parameterization):
                     occupancy = (-variable).sigmoid() if parameterization == "no_atom_logit" else variable
                     adapted = inject_occupancy(features, optional, occupancy, condition)
+                    if condition == "C":
+                        control_hashes.add(tensor_tree_sha256(adapted))
+                        if len(control_hashes) != 1:
+                            raise RuntimeError("Clamped C input changed across occupancy/FD trials")
                     value = reduce_distogram(forward(adapted, attached=True), pairs, targets)
                     # Explicit analytical zero for the q-independent C control.
                     return value + variable*0 if condition == "C" else value
@@ -402,18 +496,37 @@ def native_gates(config: dict, output: Path) -> dict:
                         row = dict(condition=condition, q=q_value, parameterization=parameterization,
                             loss=loss_value, autograd=gradient, finite_differences=[])
                         del value
+                        # Calibrate the actual attached dispatch at this exact
+                        # baseline, not an earlier native q=1 proxy. Include the
+                        # grad-enabled baseline to expose dispatch differences.
+                        with torch.no_grad():
+                            repeats = [float(scalar(variable.detach(), parameterization).cpu())
+                                for _ in range(FD_POLICY["baseline_repeats"])]
+                        groups = [[loss_value]+repeats]
+                        observations = []
                         for epsilon in FD_STEPS:
                             with torch.no_grad():
-                                plus = float(scalar(variable.detach()+epsilon, parameterization).cpu())
-                                minus = float(scalar(variable.detach()-epsilon, parameterization).cpu())
-                            if not math.isfinite(plus) or not math.isfinite(minus):
-                                raise RuntimeError("Nonfinite finite-difference candidate")
-                            comparison = derivative_agreement(gradient,(plus-minus)/(2*epsilon))
-                            comparison.update(epsilon=epsilon, plus=plus, minus=minus,
-                                resolved_above_repeat_noise=abs(plus-minus)>10*noise)
+                                plus, minus = [], []
+                                # Interleave signs to expose order-dependent
+                                # jitter without changing fixed RNG or inputs.
+                                for _ in range(FD_POLICY["endpoint_repeats"]):
+                                    plus.append(float(scalar(variable.detach()+epsilon, parameterization).cpu()))
+                                    minus.append(float(scalar(variable.detach()-epsilon, parameterization).cpu()))
+                            groups.extend([plus, minus])
+                            observations.append((epsilon, plus, minus))
+                        row["noise_calibration"] = calibrate_loss_noise(groups)
+                        for epsilon, plus, minus in observations:
+                            comparison = loss_difference_agreement(gradient, plus, minus,
+                                epsilon, row["noise_calibration"])
                             row["finite_differences"].append(comparison)
-                        row["passed"] = math.isfinite(gradient) and sum(x["passed"] for x in row["finite_differences"]) >= 2
-                        row["sensitivity"] = "resolved_nonzero" if gradient != 0 and sum(x["passed"] and x["resolved_above_repeat_noise"] for x in row["finite_differences"]) >= 2 else "zero_or_unresolved"
+                        row["control_input_invariance"] = (
+                            dict(passed=len(control_hashes)==1, sha256=next(iter(control_hashes)))
+                            if condition == "C" else None)
+                        minimum = FD_POLICY["minimum_agreeing_scales"]
+                        row["passed"] = (row["noise_calibration"]["passed"]
+                            and sum(x["passed"] for x in row["finite_differences"]) >= minimum
+                            and (condition != "C" or gradient == 0.))
+                        row["sensitivity"] = "resolved_nonzero" if gradient != 0 and sum(x["resolved_above_repeat_noise"] for x in row["finite_differences"]) >= minimum else "zero_or_unresolved"
                         record["derivatives"].append(row)
                         with (output/"derivatives.jsonl").open("a", encoding="utf-8") as stream:
                             stream.write(json.dumps(dict(case_id=item["case_id"], **row),allow_nan=False)+"\n")

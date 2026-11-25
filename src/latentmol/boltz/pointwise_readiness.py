@@ -41,6 +41,7 @@ OLD_CASES = {
 SOURCE_PATHS = (
     "src/latentmol/boltz/pointwise_readiness.py", "src/latentmol/boltz/pointwise_ad.py",
     "src/latentmol/boltz/pointwise_cuts.py", "src/latentmol/boltz/pointwise_contract.py",
+    "src/latentmol/boltz/gradient_precision.py",
     "src/latentmol/boltz/additive_readiness.py", "src/latentmol/boltz/additive_fd.py",
     "src/latentmol/boltz/additive_contract.py", "src/latentmol/boltz/additive_branch_fd.py",
     "src/latentmol/boltz/failed_gate_attribution.py", "src/latentmol/repair_guidance/integration_smoke.py",

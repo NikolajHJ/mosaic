@@ -1,0 +1,9 @@
+{
+  "scope": "Static AST and byte hashes only; no local imports, numerical tests or scheduler mutations",
+  "path": "C:\\Users\\nikol\\OneDrive\\Dokumenter\\GitHub\\DBMol_exploratory\\outputs\\hpc-submissions\\source098-gated-training-launch.py",
+  "sha256": "2bddfc45e6a9169046cb2a740f9e485ce2660fabb5ab4f483ecad808a1d69751",
+  "launcher_sha256": "94d6f32ad725d625a139fd703ab988435da925ce41229ceb3a0604495388776c",
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "executable": "C:\\Users\\nikol\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+  "platform": "Windows-11-10.0.26200-SP0"
+}

@@ -171,3 +171,93 @@ Entry points are `scripts/hpc/embedding_runtime_probe.py`,
 `tests/test_embedding_runtime_probe.py`, and
 `configs/embedding_runtime_probe.json`. Preserve failed/partial attempts and
 raw results. No performance change is automatically adopted into production.
+
+### Read-only status,29 October2026 13:05 CET
+
+GPU **29846982 remains PEND**, waiting for physical GPUs on three hosts.
+Four CPU slots are reserved on `n-62-13-16`; this is not GPU execution. There
+are still no GPU setup, result or log artifacts, so no component timings or
+causal VAE overhead estimate exist yet. The fixed LR0.0025/single-candidate
+protocol is unchanged. Saved **21/21 CPU passes** remain valid: the mixed
+collection's return255 accompanies the aged-out CPU lookup, while the fresh
+probe-only scheduler lookup returns0 and confirms PEND.
+
+The existing optimization **29846090 RUN** has a latest saved case001 state
+**652/10000**, persisted13:04:37 CET, and observations through650. Cases002/003
+remain at their20-update pilot states. Observation650 is eligible and both
+natural/conditioned graphs are strict-valid; this establishes no binding gain
+or changed identity. These are saved file observations,
+not exact live counters or a new molecular-improvement result. VAE continuation
+**29845931 RUN** is unchanged. This check ran no numerical work and changed
+no runtime, scientific setting, submission or job.
+
+Exact collection and live scheduler/progress receipts are SHA256-bound in
+`outputs/hpc-results/source144-embedding-runtime-probe-attempt002/status-summary002.json`.
+
+### Completed GPU probe,29 October2026; collected22:12 CET
+
+Probe **29846982 DONE** on `n-62-13-19`/L40S,16:07:28--16:27:09 CET.
+Internal profiling took1,175.302s. Both original start and saved update277
+passed exact same-device raw learned scores, latent derivatives and detached
+native-input primals. The split native-cotangent VJP recovered the complete
+latent gradient with maximum error0. All frozen model/context state checks
+passed. Forty-one raw CPU/GPU JSON, parity, timing and LSF assets were downloaded
+and checked against remote SHA256/size; the raw bytes are preserved in
+`terminal-20261029/`.
+
+The following are **mean seconds per fixed single-candidate update**, with
+five repeats after two warm-ups. Medians are included because the protocol
+uses uninstrumented full-call medians as its primary comparison.
+
+| Full call | Original start mean / median | Saved277 mean / median |
+| --- | ---: | ---: |
+| Direct DBMol logits, no VAE |7.754 /7.689 |7.756 /7.692 |
+| Raw latent VAE+mapping |8.012 /8.079 |8.025 /8.080 |
+| Guarded latent |9.060 /9.044 |9.054 /9.049 |
+| Guarded latent with journal |9.078 /9.058 |9.100 /9.099 |
+
+All calls use LR0.0025 and exactly one candidate, without search, clipping or
+normalization. The guarded candidates remained eligible at both points.
+The full direct-versus-latent difference includes preparation and different
+optimization variables; it is not a pure VAE compute estimate. The isolated
+VAE+mapping forward took about0.0205s, and its forward plus backward using the
+actual native chemical cotangents about0.049s. This measured compute is small
+relative to the multi-second Boltz calls. Guarded fixed updates add about1.04s
+mean over raw latent updates; journal I/O adds about0.018--0.046s. One frozen
+assert costs about0.109--0.110s and context hashing about0.0325s; repeated checks
+accumulate. Nested instrumented spans overlap and must not be summed.
+
+The ongoing source142 optimizer still has its original16-trial policy. Its
+earlier saved audit observed15.52 trial checks and8.92 native candidate calls
+per update, in addition to the gradient baseline and periodic observations.
+Those repeated evaluations and checks are substantial extra work relative to
+the latest direct experiment's single candidate. No production optimizer,
+scientific guard or VAE continuation was changed by the diagnostic.
+
+The historical no-VAE DBMol mean3.515s still differs from this probe's no-VAE
+7.75s. That remaining gap exists without the VAE and cannot be assigned to it;
+target/context, software and execution conditions differ. LSF history also
+retains a16:11:04 clocks event due to a power violation, explicitly allowing
+the workload to continue. No clock traces were captured, so these absolute
+times are not guaranteed clean-clock hardware benchmarks. The same-allocation
+controls are useful observations; they do not prove a hardware cause for the
+historical gap. Across A100 and L40S the saved start score/gradient certificates
+are not bitwise equal; this is explicitly reported and is neither a new
+production gate pass nor an adopted numerical change.
+
+At22:12 CET the unchanged long run **29846090 RUN** had a latest saved case001
+state**1703/10000** at22:12:26, with eligible/strict-valid observation1700.
+Its decoded hard identity and complete hard scores exactly match the initial
+observation: hard total loss8.3443440523, while learned loss is7.8065952631.
+The learned surrogate reduction therefore has not produced a changed decoded
+molecule or hard-score improvement at that observation. Cases002/003 remain
+at20 pilot updates, eligible/valid with their respective initial hard identities
+and hard scores unchanged. Saved states are not exact live counters, and these
+fixed-context scores are not new fresh-native binding evidence.
+
+The VAE's previous allocation is no longer live; its next allocation
+**29849760 PEND** and callback**29849761 PEND** are the current scheduler
+records. This collection does not claim VAE training is currently RUN and
+changed no continuation settings. Exact evidence, measurements and raw-asset
+hashes are bound in
+`outputs/hpc-results/source144-embedding-runtime-probe-attempt002/status-summary003.json`.

@@ -61,6 +61,27 @@ class _FixedModel:
                                logvar=torch.full_like(mu, self.logvar_value))
 
 
+def test_graph_reconstruction_accepts_renumbered_charged_molecule_with_padding():
+    spec = GraphSpec(max_nodes=7)
+    target = _graph("[NH3+]CCO", spec)
+    order = torch.tensor([5, 2, 4, 3, 1, 6, 0])
+    output = HardGraphBatch(target.atoms[:, order], target.charges[:, order],
+                            target.bonds[:, order][:, :, order])
+    metrics, _ = reconstruction_metrics(_FixedModel(spec, output), [target],
+                                        LossConfig(atom_order="graph"), "cpu")
+    assert metrics["exact_labeled_graph_fraction"] == metrics["exact_reconstruction"] == 1
+    assert metrics["bonded_pair_type_recall"] == metrics["active_atom_charge_accuracy"] == 1
+    assert metrics["reconstruction"] < 1e-6
+
+
+def test_graph_reconstruction_rejects_different_connectivity_with_same_atom_counts():
+    spec = GraphSpec(max_nodes=5)
+    metrics, _ = reconstruction_metrics(_FixedModel(spec, _graph("COC", spec)),
+                                        [_graph("CCO", spec)], LossConfig(atom_order="graph"), "cpu")
+    assert metrics["validity"] == 1
+    assert metrics["exact_labeled_graph_fraction"] == metrics["exact_reconstruction"] == 0
+
+
 def test_constant_wrong_decode_is_not_a_perturbation_change():
     """An existing valid reconstruction error must not count as a latent change."""
     metrics = summarize_neighborhood(["C", "O"], ["CC", "CC"], ["CC", "CC"])

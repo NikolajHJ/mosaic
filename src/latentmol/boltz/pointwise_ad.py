@@ -21,9 +21,11 @@ from .additive_branch_fd import _native_scalars, _scalar, _reverse
 from .additive_contract import profile_record
 from .dbmol_objective import COMPONENT_OUTPUTS, CONTACT_HEAD64_ARITHMETIC
 from .local_fd import direction_plan
+from .gradient_precision import relative_ad_consistency
 from .pointwise_cuts import validate_bridge
 
-POLICY = "pointwise_native_ad_v4"
+LEGACY_POLICY = "pointwise_native_ad_v4"
+POLICY = "pointwise_native_ad_v5"
 JVP_RTOL, JVP_ATOL = 1e-3, 1e-6
 DIAGNOSTIC_EPSILONS = (1e-4, .001)
 MAXIMUM_FULL_FORWARDS = 32
@@ -51,17 +53,18 @@ def _frozen_versions(decoder, scorer):
 def validate_branch_derivatives(decoder, point, branch, config, counters, report, persist,
                                 measured, gradient, components, *, target=None, weight=0.):
     """Same production signature as earlier policies, with a new explicit claim."""
-    if (config.fd_policy != POLICY or config.dbmol is None
+    if (config.fd_policy not in (LEGACY_POLICY, POLICY) or config.dbmol is None
             or config.dbmol.objective_arithmetic != CONTACT_HEAD64_ARITHMETIC
             or config.recycling_steps != 0 or set(components) != set(COMPONENT_OUTPUTS)
             or (target is None and weight != 0)):
         raise ValueError("Unsupported pointwise native AD contract or missing components/target")
+    allow_low_signal = config.fd_policy == POLICY
     versions_before = _frozen_versions(decoder, branch.scorer)
     context_before = branch.verify_context_unchanged()
     target_identity = target.identity if target is not None else None
     if target is not None: target.verify(branch.prepared.active)
     profile = profile_record(config.dbmol, config.objective, repair_weight=weight if target is not None else None)
-    contract = {"version": POLICY, "passed": False, "profile": profile, "latent_shape": list(point.shape),
+    contract = {"version": config.fd_policy, "passed": False, "profile": profile, "latent_shape": list(point.shape),
         "point_sha256": tensor_digest({"z": point}), "context_sha256": context_before,
         "target_sha256": target_identity, "graph_sha256": None,
         "scope": "pointwise_native_AD_consistency", "full_network_fd_required": False,
@@ -149,18 +152,20 @@ def validate_branch_derivatives(decoder, point, branch, config, counters, report
     for key in keys:
         derivative = native_gradients[key]
         norm = float(derivative.double().norm())
-        item = {"validation_contract": POLICY, "passed": False, "status": "validating", "attached": True,
+        item = {"validation_contract": config.fd_policy, "passed": False, "status": "validating", "attached": True,
             "fixed_pose_and_mask": True, "gradient_norm": norm, "baseline_loss": baseline[names[key]],
             "independent_forward_ad": {"rtol": JVP_RTOL, "atol": JVP_ATOL, "passed": False, "rows": []},
             "recomposition_proofs": {}}
         if key == "combined": report["local_fd_validation"] = item
         elif key == "repair_only": report["repair_only_validation"] = item
         else: report["component_gradients"][key] = item
-        if not math.isfinite(norm) or norm <= 1e-12:
-            item.update(status="failed", error="Zero/nonfinite component derivative is uninformative")
+        if not math.isfinite(norm) or (not allow_low_signal and norm <= 1e-12):
+            item.update(status="failed", error=("Nonfinite component derivative" if not math.isfinite(norm)
+                        else "Legacy qualification requires an informative component derivative"))
             errors.append(key)
             continue
-        directions, _, selection = direction_plan(point, derivative, seed=config.diagnostics.seed)
+        directions, _, selection = direction_plan(point, derivative, seed=config.diagnostics.seed,
+                                                  allow_low_signal=allow_low_signal)
         item.update(direction_selection=selection, direction_bindings={label: tensor_digest({"direction": direction})
                                                                       for label, direction in directions.items()})
         plans[key] = (directions, item)
@@ -209,16 +214,21 @@ def validate_branch_derivatives(decoder, point, branch, config, counters, report
                 analytic = float((native_gradients[key].double() * direction.double()).sum())
                 error = abs(observation["tangent"] - analytic)
                 tolerance = JVP_ATOL + JVP_RTOL * max(abs(analytic), abs(observation["tangent"]))
+                relative = (relative_ad_consistency(observation["tangent"], analytic, item["gradient_norm"])
+                            if allow_low_signal else None)
                 item["independent_forward_ad"]["rows"].append({"direction": label, "direction_sha256": item["direction_bindings"][label],
                     **observation, "reverse_projection": analytic, "absolute_error": error, "tolerance": tolerance,
+                    **({"relative_ad_consistency": relative} if relative is not None else {}),
                     "primal_exact": observation["primal"] == item["baseline_loss"],
-                    "passed": observation["primal"] == item["baseline_loss"] and error <= tolerance})
+                    "passed": (observation["primal"] == item["baseline_loss"] and error <= tolerance
+                               and (relative is None or relative["passed"]))})
                 item["recomposition_proofs"][label] = deepcopy(dual["proofs"][key])
                 persist()
             item["independent_forward_ad"]["passed"] = len(item["independent_forward_ad"]["rows"]) == 4 and all(
                 row["passed"] for row in item["independent_forward_ad"]["rows"])
             item["passed"] = item["independent_forward_ad"]["passed"] and len(item["recomposition_proofs"]) == 4
-            item["status"] = "validated_nonzero" if item["passed"] else "failed"
+            item["status"] = (("validated_nonzero" if item["gradient_norm"] > 1e-12 else "validated_low_signal")
+                              if item["passed"] else "failed")
             if not item["passed"]: errors.append(key)
         except Exception as error:
             item.update(passed=False, status="failed", error=str(error), error_type=type(error).__name__)

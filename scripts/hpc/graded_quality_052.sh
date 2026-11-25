@@ -7,8 +7,8 @@ set -euo pipefail
 
 python -m latentmol.experiments --run-root "$LATENTMOL_WORK_ROOT/runs" \
     --name graded-quality-tests-052 -- python -m pytest -q \
-    tests/test_quality.py tests/test_evaluation.py tests/test_architecture_study.py \
-    tests/test_sampling.py tests/test_chemistry.py tests/test_candidate_panel.py
+    tests/evaluation/test_quality.py tests/evaluation/test_evaluation.py tests/test_architecture_study.py \
+    tests/datasets/test_sampling.py tests/datasets/test_chemistry.py tests/test_candidate_panel.py
 
 python -m latentmol.architecture_study \
     --checkpoint "$LATENTMOL_WORK_ROOT/runs/20261001T001617Z_vae-train_c008c090/best_validity.pt" \

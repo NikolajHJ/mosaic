@@ -1,0 +1,14 @@
+{
+  "search": {"max_edits": 3, "checks_per_depth": 32, "beam_width": 4},
+  "arms": {
+    "structural": {
+      "backend": "proposals",
+      "sample_draws": 0,
+      "connect_components": true,
+      "prune_dense": true,
+      "candidate_checks": 96,
+      "max_bond_changes": 1225,
+      "max_macro_steps": 2048
+    }
+  }
+}

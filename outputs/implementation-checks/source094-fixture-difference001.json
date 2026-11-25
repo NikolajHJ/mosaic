@@ -1,0 +1,9 @@
+{
+  "status": "verified_bytes_only",
+  "source093_archive_sha256": "78405ec51fb571c8e9f0ad3fc41a98a0cc1b1fbba16e67b1724239117499c0e2",
+  "source094_archive_sha256": "5eb5d348c37bc23ab820226fdd08679d5fcee1e70b308881d3f9b334347c0c20",
+  "changed_scientific_files": [
+    "tests/test_large_vae_pipeline.py"
+  ],
+  "scope": "Archived source manifest comparison; no numerical imports or tests"
+}

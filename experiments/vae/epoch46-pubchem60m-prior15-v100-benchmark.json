@@ -1,0 +1,74 @@
+{
+  "version": "combined-vae-continuation-v1",
+  "checkpoint": {
+    "path": "/work3/s234818/latentmol/runs/vae-pubchem60m-prior15-20261106a/combined-02/checkpoint-000325498.pt",
+    "sha256": "b239143056b561d5b08249c5b28e0366722c06d34f3bf94e1faf7acdfead4109"
+  },
+  "classification_execution": {
+    "version": "repair-classification-pool-v1"
+  },
+  "proposal_config": {
+    "candidate_checks": 96,
+    "connect_components": true,
+    "max_bond_changes": 1225,
+    "max_macro_steps": 2048,
+    "max_sample_edits": 8,
+    "prune_dense": true,
+    "sample_draws": 0,
+    "sample_seed": 170101,
+    "version": "fixed-atom-proposals-v1"
+  },
+  "step_control": {
+    "factor": 0.125,
+    "version": "adamw-displacement-scale-v2-half-continuation"
+  },
+  "hpc_cuda_ownership_helper": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-release-26/source/scripts/cuda_ownership.py",
+  "hpc_cuda_ownership_sha256": "578d2b6c9453ad14ce6778d306aa6c1d926acb442dcf8ae9f9a75bccc6b2e3cb",
+  "data": "/work3/s234818/latentmol/data/pubchem-hac60m-view-20261106a",
+  "data_sha256": "64247d04ec1f94d00320bb1e5a0d9c5540419eb37830050d3100775bf4385e18",
+  "epochs": 1,
+  "shuffle_seed": 11060151,
+  "batch_sizes": [
+    240
+  ],
+  "microbatch_sizes": [
+    240,
+    120
+  ],
+  "benchmark_updates": 64,
+  "benchmark_warmup": 8,
+  "checkpoint_every_updates": 2500,
+  "cuda_requirement": {
+    "name_contains": "A100",
+    "minimum_gib": 75,
+    "maximum_gib": 82
+  },
+  "execution": {
+    "backend": "optimized",
+    "workers": 12,
+    "overlap": true,
+    "torch_threads": 4,
+    "gpu_cpus": 16
+  },
+  "protocol": {
+    "search": {
+      "beam_width": 4,
+      "checks_per_depth": 32,
+      "max_edits": 3,
+      "probability_floor": 1e-12,
+      "probability_weight": 1.0
+    },
+    "vram_fraction_limit": 0.85,
+    "microbatch_size": 240
+  },
+  "prior_only": {
+    "real_per_prior": 15,
+    "weight": 0.375
+  },
+  "parent_epoch": 46,
+  "benchmark_cuda_requirement": {
+    "name_contains": "V100",
+    "minimum_gib": 30,
+    "maximum_gib": 34
+  }
+}

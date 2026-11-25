@@ -1,0 +1,38 @@
+{
+  "checkpoint_interval": 100,
+  "chemistry_final": 10.0,
+  "chemistry_hold": 20000,
+  "chemistry_initial": 10.0,
+  "chemistry_ramp_end": 30000,
+  "learning_rate": 0.3,
+  "max_step_norm": 0.5,
+  "noise_initial": 0.4,
+  "noise_seed": 230017,
+  "noise_zero_at": 30000,
+  "occupied_atoms": 25,
+  "repair_search": {
+    "beam_width": 4,
+    "checks_per_depth": 32,
+    "max_edits": 3,
+    "probability_floor": 1e-12,
+    "probability_weight": 1.0
+  },
+  "schedule_horizon": 50000,
+  "seed": 17,
+  "snapshot_interval": 100,
+  "structural_proposals": {
+    "candidate_checks": 96,
+    "connect_components": true,
+    "max_bond_changes": 1225,
+    "max_macro_steps": 2048,
+    "max_sample_edits": 8,
+    "prune_dense": true,
+    "sample_draws": 0,
+    "sample_seed": 170101,
+    "version": "fixed-atom-proposals-v1"
+  },
+  "temperature_final": 0.4,
+  "temperature_initial": 0.7,
+  "updates": 20,
+  "version": "latent-protenix-structural-v1"
+}

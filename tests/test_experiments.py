@@ -6,7 +6,7 @@ import pytest
 import torch
 
 from latentmol.evaluate import load_model
-from latentmol.experiments import ExperimentRun
+from latentmol.experiments import ExperimentRun, source_snapshot
 from latentmol.models import GraphAutoencoder, ModelConfig
 from latentmol.representation import GraphSpec
 from latentmol.sampling import subset_indices
@@ -22,6 +22,24 @@ def test_failed_experiment_keeps_error_and_config(tmp_path):
     assert record["config"]["seed"] == 17
     assert len(record["config_sha256"]) == 64
     assert "intentional test exception" in (run.path / "traceback.txt").read_text()
+
+
+def test_exploratory_records_only_selected_source_and_skips_package_inventory(tmp_path, monkeypatch):
+    import latentmol.experiments as experiments
+    selected = tmp_path / "entrypoint.py"
+    selected.write_text("print('fixture')")
+    (tmp_path / "tests").mkdir()
+    (tmp_path / "tests" / "unrelated.py").write_text("unrelated")
+    monkeypatch.setattr(experiments.metadata, "distributions", lambda: pytest.fail("Full inventory requested"))
+    with ExperimentRun(tmp_path / "runs", "quick", {}, tmp_path, research_profile="exploratory",
+                       selected_source_files=(selected,)) as run:
+        pass
+    assert run.record["source"]["scope"] == "exploratory_selected_files_and_git"
+    assert set(run.record["source"]["files"]) == {"entrypoint.py"}
+    assert run.record["environment"]["packages"] == {}
+    old = run.record["source"]["sha256"]
+    selected.write_text("print('changed')")
+    assert source_snapshot(tmp_path, selected_files=(selected,))["sha256"] != old
 
 
 def test_sampling_is_reproducible_and_not_canonical_prefix():

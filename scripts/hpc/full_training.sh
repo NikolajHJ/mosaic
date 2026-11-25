@@ -10,7 +10,7 @@ esac
 python -m latentmol.experiments --run-root "$LATENTMOL_WORK_ROOT/runs" \
     --name "gpu-rng-before-full-${TASK_MODE}" -- \
     python -m pytest -q \
-    tests/test_training.py::test_cuda_rng_state_is_restored_from_weights_only_checkpoint
+    tests/training/test_training.py::test_cuda_rng_state_is_restored_from_weights_only_checkpoint
 python -m latentmol.full_training --config "configs/${TASK_MODE}_full.yaml" \
     --data "$LATENTMOL_WORK_ROOT/data/zinc215k-seed17-v1" \
     --run-root "$LATENTMOL_WORK_ROOT/runs" \

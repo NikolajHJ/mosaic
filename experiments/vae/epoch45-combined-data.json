@@ -1,0 +1,9 @@
+{
+  "version": "moses-chembl-combined-v1",
+  "moses_cache": "/work3/s234818/latentmol/data/source095-moses-triangle-v2",
+  "moses_manifest_sha256": "f246cc93805b73a557cd0c09a78891ac8410c465192db615ce0b6709218c8c0e",
+  "audit_summary": "/work3/s234818/latentmol/runs/chembl37-moses-audit-20261104a/summary.json",
+  "audit_summary_sha256": "ba70ac2018135ce6719694c60cec9434c8b9f7189652d295c3163632e3ab0759",
+  "chembl_holdout_counts": {"val": 50000, "test": 50000},
+  "split_seed": 453704
+}

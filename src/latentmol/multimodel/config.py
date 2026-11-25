@@ -63,11 +63,33 @@ class Model:
 
 
 @dataclass(frozen=True)
+class AtomBudget:
+    """Soft expected heavy-atom count and optional initial-slot cost."""
+
+    target: int = 25
+    tolerance: float = 2.0
+    weight: float = 0.01
+    outside_weight: float = 0.0
+
+    def __post_init__(self):
+        if type(self.target) is not int or self.target < 1:
+            raise ValueError("Atom budget target must be a positive integer")
+        number(self.tolerance, "atom budget tolerance")
+        if self.tolerance >= self.target:
+            raise ValueError("Atom budget tolerance must be below the target")
+        number(self.weight, "atom budget weight")
+        number(self.outside_weight, "atom budget outside_weight")
+        if not (self.weight or self.outside_weight):
+            raise ValueError("Atom budget requires a positive weight")
+
+
+@dataclass(frozen=True)
 class Arm:
     models: tuple[str, ...]
     control: str = "optimize"
     weights: dict[str, float] = field(default_factory=dict)
     steps: int | None = None
+    atom_budget: AtomBudget | None = None
 
     def __post_init__(self):
         if not self.models or len(set(self.models)) != len(self.models):
@@ -80,6 +102,8 @@ class Arm:
             number(weight, "arm weight")
         if self.steps is not None and (type(self.steps) is not int or self.steps < 1):
             raise ValueError("steps must be a positive integer")
+        if self.atom_budget is not None and not isinstance(self.atom_budget, AtomBudget):
+            raise ValueError("Expected an atom budget configuration")
 
 
 @dataclass(frozen=True)
@@ -154,6 +178,8 @@ class Study:
             identifier(name)
         for name, arm in self.arms.items():
             identifier(name)
+            if arm.atom_budget is not None and self.occupancy != "variable":
+                raise ValueError(f"{name}: atom budget requires variable occupancy")
             if set(arm.models) - set(self.models):
                 raise ValueError(f"{name}: unknown model alias")
             if not any(self.weight(arm, m) > 0 for m in arm.models):
@@ -181,7 +207,11 @@ class Study:
         return arm.weights.get(model, self.models[model].objective.weight)
 
     def to_dict(self):
-        return asdict(self)
+        data = asdict(self)
+        for arm in data["arms"].values():
+            if arm["atom_budget"] is None:
+                del arm["atom_budget"]
+        return data
 
     def fingerprint(self):
         return digest(self.to_dict())
@@ -192,7 +222,9 @@ class Study:
         data["models"] = {name: Model(**{**value, "plugin": value.get("plugin", name),
                          "objective": Objective(**value["objective"])})
                           for name, value in data["models"].items()}
-        data["arms"] = {name: Arm(**{**value, "models": tuple(value["models"])})
+        data["arms"] = {name: Arm(**{**value, "models": tuple(value["models"]),
+                        "atom_budget": AtomBudget(**value["atom_budget"])
+                        if value.get("atom_budget") is not None else None})
                         for name, value in data["arms"].items()}
         data["optimizer"] = Optimizer(**data.get("optimizer", {}))
         d = dict(data.get("diagnostics", {}))

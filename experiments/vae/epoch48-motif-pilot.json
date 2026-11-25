@@ -1,0 +1,12 @@
+{
+  "base_config_sha256": "352fe045b949793fa2a4c2796514833ad60c5e440e8caf9ea48607b9f00f47ca",
+  "updates_per_arm": 256,
+  "arm_wall_seconds": 9600,
+  "evaluation_draws": 2048,
+  "evaluation_batch": 24,
+  "evaluation_seed": 2026112117,
+  "functional_groups": {
+    "weight": 0.3, "every_updates": 4, "draws": 48, "seed": 2026112148,
+    "aromatic_floor": 0.05, "amide_floor": 0.08
+  }
+}

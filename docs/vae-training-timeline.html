@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The molecular VAE training timeline · September–November 2026</title>
+<style>
+:root{color-scheme:light;--ink:#182b32;--muted:#405b64;--line:#c9d5d4;--teal:#00675b;--paper:#fcfbf7}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:1rem/1.55 "Source Sans 3","Segoe UI",sans-serif}
+main{width:min(68rem,100%);margin:auto;padding:2.8rem clamp(1rem,4vw,3.4rem) 4rem}
+h1,h2,h3,p{margin:0}
+h1,h2{font-family:"Source Serif 4",Georgia,serif;line-height:1.1}
+h1{font-size:clamp(2.25rem,6vw,4.25rem);margin:.45rem 0 1rem;letter-spacing:-.035em}
+h2{font-size:clamp(1.55rem,4vw,2.25rem);margin:.3rem 0}
+h3{font-size:1.18rem;line-height:1.3}
+a{color:var(--teal);text-underline-offset:.17em}
+a:focus-visible,select:focus-visible{outline:3px solid #a24a11;outline-offset:3px}
+.hero{border-top:4px solid var(--teal);padding:1.4rem 0}
+.hero p{max-width:78ch;margin:.55rem 0}
+.dates,.era-header span,.topics,.refs,.filters,.guide,.role{font-size:.87rem}
+.dates,.era-header span,.topics{font-weight:650;color:var(--teal)}
+.guide{padding:.9rem 1rem;border-left:3px solid var(--line);margin:.1rem 0 1.2rem;color:var(--muted);max-width:85ch}
+nav{display:flex;gap:.4rem 1.05rem;flex-wrap:wrap;margin:.35rem 0 1.15rem}
+.filters{display:flex;align-items:center;gap:.65rem 1.1rem;flex-wrap:wrap;border-block:1px solid var(--line);padding:.9rem 0}
+.filters label{font-weight:600}
+select{font:inherit;background:white;color:inherit;border:1px solid #83949a;border-radius:4px;padding:.3rem .45rem;margin-left:.28rem}
+#count{color:var(--muted)}
+.era{margin-top:2.65rem}.era-header{padding-bottom:.75rem;border-bottom:2px solid var(--ink)}
+article{display:grid;grid-template-columns:11rem 1fr;gap:1.1rem;padding:1.2rem 0;border-bottom:1px solid var(--line)}
+.stamp{display:flex;align-items:flex-start;flex-direction:column;gap:.38rem}
+.role{color:var(--muted);border-left:3px solid #77838c;padding-left:.45rem}
+[data-role="Main lineage"] .role{border-color:#007c61}[data-role="Pilot / control"] .role{border-color:#a65921}[data-role="Submitted"] .role{border-color:#6c55aa}
+.record p{margin:.5rem 0;max-width:80ch}.topics{margin-bottom:.2rem}
+footer{margin:2rem 0;border-top:1px solid var(--line);padding-top:1rem;color:var(--muted)}
+[hidden]{display:none!important}
+@media(max-width:650px){main{padding-top:1.2rem}article{grid-template-columns:1fr;gap:.45rem}.stamp{flex-direction:row;flex-wrap:wrap;align-items:center}.era{margin-top:1.8rem}}
+@media print{body{background:white;font-size:10pt}main{padding:0;width:100%}nav,.filters{display:none}article{break-inside:avoid;grid-template-columns:8.2rem 1fr}h2{break-after:avoid}.era{margin-top:1.5rem}}
+</style>
+</head>
+<body>
+<main>
+<header class="hero">
+<div class="dates">September 26 – November 25, 2026</div>
+<h1>The molecular VAE training timeline</h1>
+<p>The first model learned from 4,000 ZINC molecules. The current lineage began with fresh weights on MOSES on October 11, continued on MOSES–ChEMBL, then moved to a 60-million-molecule training view. The durable idea was the interface. Each version decodes one molecular latent into probabilities for atoms, charges and bonds.</p>
+<p>The most revealing divergence came in epoch 47. Exact reconstruction improved while 249 of 256 fixed random draws filled every atom slot. Since then we have tracked what the model generates and whether it can recognize its own generated molecules alongside reconstruction.</p>
+</header>
+<div class="guide"><b>Reading the numbers.</b> Exact reconstruction asks whether an encoded input comes back as the same molecule. Prior validity starts from random Gaussian vectors. Argmax takes the largest probability for every decision. Categorical sampling draws the decisions. Compare percentages only when the panel, decoding rule and denominator match. Boltz, DeFoG and Protenix latent-design experiments use a frozen VAE and have their own <a href="../experiments/latent-design/">records</a>.</div>
+<nav aria-label="Jump to training era"><a href="#zinc">September 26 – October 10</a><a href="#moses">October 11–30</a><a href="#combined">October 31 – November 8</a><a href="#pubchem">November 16 – 21</a><a href="#current">November 21 – 25</a></nav>
+<div class="filters" id="filters" hidden>
+<label>Show <select id="role"><option value="">All branches</option><option value="Precursor">Precursor</option><option value="Main lineage">Main lineage</option><option value="Pilot / control">Pilot / control</option><option value="Submitted">Submitted</option></select></label>
+<label>Topic <select id="topic"><option value="">All topics</option><option value="Data">Data</option><option value="Evaluation">Evaluation</option><option value="Loss">Loss</option><option value="Model">Model</option><option value="Optimizer">Optimizer</option><option value="Sampling">Sampling</option></select></label>
+<span id="count" aria-live="polite"></span>
+</div>
+<section class="era" id="zinc" aria-labelledby="zinc-title">
+  <header class="era-header"><span>September 26 – October 10, 2026</span><h2 id="zinc-title">ZINC prototypes</h2></header>
+  <article data-role="Precursor" data-topics="Data · Model · Loss">
+    <div class="stamp"><strong>Sep 26–27</strong><span class="role">Precursor</span></div>
+    <div class="record"><div class="topics">Data · Model · Loss</div><h3>First AE and VAE on 5,000 ZINC molecules</h3><p>A seeded subset of ZINC250K gave 4,000 training, 500 validation and 500 test structures. Both models encoded a graph into 128 numbers and decoded it in one pass with 128 features per atom. Atom type, formal charge and symmetric bond type were supervised separately. Empty atom slots let the decoded size vary. The VAE added Gaussian posterior sampling and KL to graph reconstruction and the size penalty.</p><p>At the end of the small 60-epoch runs, exact validation reconstruction on the 256-molecule panel was 1 for the AE and 0 for the VAE.</p><div class="refs"><a href="05_experiment_ledger.md#prepared-dataset-zinc5k-seed17-v1">Initial training ledger</a> · <a href="24_atom_pair_decoder_comparison.md">Original decoder</a></div></div>
+  </article>
+  <article data-role="Precursor" data-topics="Data · Evaluation">
+    <div class="stamp"><strong>Sep 27–28</strong><span class="role">Precursor</span></div>
+    <div class="record"><div class="topics">Data · Evaluation</div><h3>Scale the same comparison to 215,000 training molecules</h3><p>Filtering and deduplication left 229,694 usable ZINC structures. The split was 215,000 training and 7,347 each for validation and test. The AE initially had the advantage on exact reconstruction. A separate paired path study gave the VAE a reason to stay in contention.</p><p>The selected AE reconstructed 7,032/7,347 test molecules exactly and the VAE 6,511/7,347. Only 13/1,024 Gaussian draws from the VAE were valid. On 223 paths with valid endpoints for both models, the VAE had an 11.51 percentage-point advantage in intermediate validity.</p><div class="refs"><a href="10_full_training_audit.md">Full ZINC audit</a> · <a href="11_stage1_latent_study.md">Paired paths and density-prior test</a></div></div>
+  </article>
+  <article data-role="Precursor" data-topics="Model">
+    <div class="stamp"><strong>Sep 28–Oct 1</strong><span class="role">Precursor</span></div>
+    <div class="record"><div class="topics">Model</div><h3>From one-shot predictions to persistent bond states</h3><p>The architecture sweep increased the molecular latent to 256, narrowed atom states to 96 and gave each possible bond a 48-feature hidden state. Two rounds let atoms and pairs exchange information. Other arms tried a deeper trunk and a molecule-wide bond context with a direct path from the latent. An unstable deep VAE failed at epoch 7. A stabilized version used normalization in the residual path.</p><p>The pair-refinement VAE reached 7,103/7,347 exact but only 18/1,024 valid prior draws. The stabilized VAE reached 7,159 exact. Continuing the wide VAE from 120 to 180 epochs still gave just 8/1,024 valid prior draws at its selected checkpoint.</p><div class="refs"><a href="29_architecture_comparison_20261001.md">Six decoder families</a> · <a href="24_atom_pair_decoder_comparison.md">Design of the pair state</a></div></div>
+  </article>
+  <article data-role="Precursor" data-topics="Loss · Sampling">
+    <div class="stamp"><strong>Oct 7–10</strong><span class="role">Precursor</span></div>
+    <div class="record"><div class="topics">Loss · Sampling</div><h3>The chemistry loss discovers a sulfur shortcut</h3><p>A separate experiment froze the encoder of the stabilized ZINC VAE at its epoch-89 checkpoint. After testing probability-aware repair targets, a dense chemistry experiment trained its decoder on batches of 64 encoded molecules and 64 fresh Gaussian points. Real examples also received reconstruction supervision.</p><p>After 100 decoder-only epochs, valid prior argmax graphs rose from 64 to 840 of 4,096. But expected sulfur atoms per prior graph rose from 0.39 to 17.58. This informed later atom-preserving repair and composition checks. The MOSES model inherited no weights from this run.</p><div class="refs"><a href="42_full_search_decoder_comparison.md">Repair-search experiments</a> · <a href="45_dense_chemistry_100_epoch_continuation.md">100-epoch decoder results</a></div></div>
+  </article>
+</section>
+
+<section class="era" id="moses" aria-labelledby="moses-title">
+  <header class="era-header"><span>October 11–30, 2026</span><h2 id="moses-title">Rebuild on MOSES</h2></header>
+  <article data-role="Main lineage" data-topics="Data · Model · Loss">
+    <div class="stamp"><strong>Oct 11–13</strong><span class="role">Main lineage</span></div>
+    <div class="record"><div class="topics">Data · Model · Loss</div><h3>Fresh initialization starts the current weight lineage</h3><p>The supported MOSES split contained 1,688,539 training molecules and 20,000 each for validation and test. A new 3,941,860-parameter VAE trained encoder and decoder jointly from scratch. Four bond-aware encoder layers fed a 320-wide residual trunk and a 256D latent. The decoder projected directly into 50 × 96 atom states, then used four residual atom–pair rounds with triangle updates and four-head atom attention. Real graphs received reconstruction and KL. The old explicit size penalty was set to zero.</p><p>At epoch 25, 4,088/4,096 reconstructions were valid, while only 47/4,096 Gaussian argmax decodes were valid. Real-only training stopped at epoch 35, update 230,860.</p><div class="refs"><a href="52_large_corpus_triangle_vae.md">Training run, architecture and checkpoints</a></div></div>
+  </article>
+  <article data-role="Main lineage" data-topics="Loss · Sampling">
+    <div class="stamp"><strong>Oct 18–19 · E36</strong><span class="role">Main lineage</span></div>
+    <div class="record"><div class="topics">Loss · Sampling</div><h3>Train the decoder explicitly on random latent points</h3><p>From epoch 35, train on 256 real molecules and 512 Gaussian points per update. A detached, probability-aware search repaired bonds while holding atom identity, occupancy and charge fixed. The live decoder learned the returned targets. Batch composition regularization discouraged another sulfur shortcut, and the frozen epoch-35 decoder anchored slot occupancy. Search workers ran alongside GPU training. The planned 1:3 ratio missed the runtime target, so production used 1:2.</p><p>Epoch 36 took 9.68 hours. On the fixed monitors, 641/1,024 prior argmax decodes were valid and 256/256 real molecules reconstructed exactly.</p><div class="refs"><a href="53_atom_preserving_triangle_continuation.md">Chemistry terms and runtime comparisons</a> · <a href="61_chemistry_execution_selection.md">Selected production settings</a></div></div>
+  </article>
+  <article data-role="Pilot / control" data-topics="Loss · Evaluation">
+    <div class="stamp"><strong>Oct 19–23</strong><span class="role">Pilot / control</span></div>
+    <div class="record"><div class="topics">Loss · Evaluation</div><h3>A decreasing loss can hide a collapsing prior</h3><p>An attempted epoch 37 was stopped before promotion. Experiments tested deeper repair, a fallback for failed searches, weaker self-supervision on already-valid graphs, smaller updates and changes to the no-bond weight. Fixed latent panels exposed a failure that individual gradient checks had missed.</p><p>One 100-update replay went from 641 to 674 to 357 valid draws out of 1,024. At one damaging update, the real reconstruction gradient on the decoder was about 28 times the prior-repair gradient. A live self-target also disappeared as soon as its own graph became invalid.</p><div class="refs"><a href="70_epoch36_collapse_mechanism.md">Loss and gradient replay</a> · <a href="74_frozen_valid_reference_guidance.md">Frozen-reference comparison</a></div></div>
+  </article>
+  <article data-role="Main lineage" data-topics="Loss · Optimizer">
+    <div class="stamp"><strong>Oct 24–30 · E37–43</strong><span class="role">Main lineage</span></div>
+    <div class="record"><div class="topics">Loss · Optimizer</div><h3>Freeze a good target at the same latent</h3><p>The accepted continuation kept the epoch-35 occupancy anchor and added a frozen epoch-36 teacher. When the teacher produced a valid, representable graph at a random point, that graph remained a training target even if the student had drifted. The frozen-target NLL coefficient was 0.1. AdamW continued updating its moments, but only a quarter of each proposed parameter displacement was applied.</p><p>A 2,500-update replay reached 665/1,024 valid prior graphs with 256/256 exact reconstructions. Production reached 753/1,024 prior-valid at epoch 40 and continued through epoch 43. Different rows in this report use different panels.</p><div class="refs"><a href="74_frozen_valid_reference_guidance.md">Why two frozen references</a> · <a href="75_frozen_reference_epoch40_continuation.md">Epochs 37–40</a> · <a href="80_epoch40_to45_continuation.md">Epochs 41–45</a></div></div>
+  </article>
+</section>
+
+<section class="era" id="combined" aria-labelledby="combined-title">
+  <header class="era-header"><span>October 31 – November 8, 2026</span><h2 id="combined-title">A stable prior and a broader training corpus</h2></header>
+  <article data-role="Main lineage" data-topics="Sampling · Optimizer">
+    <div class="stamp"><strong>Oct 31–Nov 1 · E44</strong><span class="role">Main lineage</span></div>
+    <div class="record"><div class="topics">Sampling · Optimizer</div><h3>Train around known codes as well as in the prior</h3><p>The logical batch kept 256 real molecules. After a ramp, its chemistry examples comprised 384 independent Gaussian draws and 128 perturbations around encoded real molecules. The perturbations received the existing chemistry objective. AdamW displacement was halved again, from 0.25 to 0.125 of the native step.</p><p>The two changes entered together. This run cannot isolate their individual effects.</p><div class="refs"><a href="89_latent_neighborhood_continuation.md">Local sampling and optimizer recipe</a></div></div>
+  </article>
+  <article data-role="Main lineage" data-topics="Loss · Evaluation">
+    <div class="stamp"><strong>Nov 1–2 · E45</strong><span class="role">Main lineage</span></div>
+    <div class="record"><div class="topics">Loss · Evaluation</div><h3>Structural proposals speed up the search for a repair</h3><p>The search tried edits suggested by disconnected components and valence violations before falling back to beam search. On the recorded diagnostic it repaired 123/123 cases in 2.82 s, versus 122/123 in 10.29 s for beam search. The full epoch still took about ten hours.</p><p>Epoch 45 ended at update 296820. On 10,000 fresh prior draws it had 75.41% argmax validity and 63.30% categorical validity, with 99.87% exact reconstruction on 10,000 test molecules. Epochs 43–45 were already close on all three measures.</p><div class="refs"><a href="../experiments/chemistry-guidance/README.md">Repair search comparison</a> · <a href="../experiments/vae/checkpoint-comparison.md">Matched evaluation of epochs 43–45</a></div></div>
+  </article>
+  <article data-role="Pilot / control" data-topics="Model · Evaluation">
+    <div class="stamp"><strong>Nov 3 · ordering pilots</strong><span class="role">Pilot / control</span></div>
+    <div class="record"><div class="topics">Model · Evaluation</div><h3>Canonical input ordering rescues shuffled reconstruction</h3><p>An encoder with invariant pooling erased most molecule-specific information and reconstructed 0/2,048 molecules exactly. Canonically ordering the input before the established encoder gave 1,020/1,024 exact shuffled reconstructions in a short pilot. On unshuffled molecules both it and epoch 45 got 2,044/2,048 exactly right.</p><p>The production continuation took the preprocessing change and resumed the original epoch-45 weights. Output-side graph matching came later.</p><div class="refs"><a href="../experiments/vae/invariant-pilot.md">Ordering and reconstruction experiments</a> · <a href="../experiments/vae/combined-training.md">Production continuation recipe</a></div></div>
+  </article>
+  <article data-role="Pilot / control" data-topics="Loss · Evaluation">
+    <div class="stamp"><strong>Early Nov · interpolation pilots</strong><span class="role">Pilot / control</span></div>
+    <div class="record"><div class="topics">Loss · Evaluation</div><h3>A better interpolation target fit did not buy better molecules</h3><p>Mixing graph labels improved target agreement, but gave 64/128 valid midpoints versus 68/128 for its control. Using actual valid intermediate molecules still cut fresh prior argmax validity to 68.99% versus 75.62% for the matched control. A later pilot aligned atom slots and capped the interpolation gradient; both arms produced 59/64 valid midpoints.</p><p>Interpolation stayed an evaluation of latent geometry. It did not become a production loss.</p><div class="refs"><a href="../experiments/vae/interpolation.md">Matched pilots, target construction and evaluations</a></div></div>
+  </article>
+  <article data-role="Main lineage" data-topics="Data · Sampling · Loss">
+    <div class="stamp"><strong>Nov 4–8 · E46</strong><span class="role">Main lineage</span></div>
+    <div class="record"><div class="topics">Data · Sampling · Loss</div><h3>Add ChEMBL, keep canonical ordering and use one prior per real graph</h3><p>The ChEMBL 37 audit found 2,082,159 additional representable identities, including 612,327 new ring scaffolds. Scaffold-aware holdouts and the MOSES split gave 3,670,698 training molecules and 70,000 each for validation and test. Epoch 46 trained on all of that split with one fresh Gaussian point per real molecule.</p><p>Checkpoint 325498 completed epoch 46. This became the frozen teacher that later helped the VAE recover from predicting 50 occupied slots almost everywhere.</p><div class="refs"><a href="../experiments/vae/chembl-comparison.md">ChEMBL audit</a> · <a href="../experiments/vae/combined-training.md">Combined-corpus training</a></div></div>
+  </article>
+  <article data-role="Main lineage" data-topics="Data">
+    <div class="stamp"><strong>Nov 5–6 · prepared for E47</strong><span class="role">Main lineage</span></div>
+    <div class="record"><div class="topics">Data</div><h3>Build a 60-million-molecule training view</h3><p>Streaming 124,860,638 PubChem rows added 77,738,566 new identities to the inventory. A sparse cache and a capped, size-balanced selection produced 60 million training examples. Validation and test grew to 170,000 molecules each.</p><p>Sampling was approximately uniform in the well-supplied 15–31-heavy-atom range. Rare small and large sizes limited balancing across all 50 possible sizes. Epoch 47 was the first pass over this new view.</p><div class="refs"><a href="../experiments/vae/large-corpus.md">PubChem deduplication, cache and splits</a></div></div>
+  </article>
+</section>
+
+<section class="era" id="pubchem" aria-labelledby="pubchem-title">
+  <header class="era-header"><span>November 16 – 21, 2026</span><h2 id="pubchem-title">The 60M pass and the 50-atom failure</h2></header>
+  <article data-role="Main lineage" data-topics="Data · Sampling · Loss">
+    <div class="stamp"><strong>Nov 16–19 · E47</strong><span class="role">Main lineage</span></div>
+    <div class="record"><div class="topics">Data · Sampling · Loss</div><h3>Real reconstruction improved as random generation collapsed</h3><p>To make a 60M pass affordable, each update used 240 real molecules for reconstruction and KL, and 16 fresh priors for chemistry. By update 524177, the model had seen 47,682,960 rows. On a fixed PubChem panel, exact reconstruction rose from 395 to 480 out of 512.</p><p>On the same 256 prior vectors, raw validity fell from 190 to 6 and full 50-slot graphs rose from 0 to 249. The repair objective could reinforce the model’s own occupied-slot decisions. The exact update that initiated the collapse is unknown.</p><div class="refs"><a href="../experiments/vae/occupancy-collapse.md">Occupancy collapse and gradient diagnosis</a> · <a href="../experiments/vae/large-corpus.md">60M run</a></div></div>
+  </article>
+  <article data-role="Main lineage" data-topics="Loss · Model">
+    <div class="stamp"><strong>Nov 19–21 · E47</strong><span class="role">Main lineage</span></div>
+    <div class="record"><div class="topics">Loss · Model</div><h3>Restore occupancy and chemistry with a frozen epoch-46 teacher</h3><p>On each prior, the teacher supplied soft occupied/absent targets for all slots and atom, charge and bond targets on its valid graphs. Repair then supervised edited bonds. The 15:1 ratio stayed. Decoder atom-update residuals gained 5% training-only dropout.</p><p>On a separate fixed panel of 128 draws, raw validity rose from 7 to 84 and 50-atom decodes fell from 125 to 0. Epoch 47 finished at update 575498. This run did not isolate the effect of dropout.</p><div class="refs"><a href="../experiments/vae/epoch47-occupancy-continuation.md">Teacher, dropout and recovery panels</a></div></div>
+  </article>
+  <article data-role="Pilot / control" data-topics="Model · Evaluation">
+    <div class="stamp"><strong>Nov 17–21 · compact and hybrid models</strong><span class="role">Pilot / control</span></div>
+    <div class="record"><div class="topics">Model · Evaluation</div><h3>A smaller VAE and a bond-message decoder explore other designs</h3><p>A 435,400-parameter VAE with a 128-dimensional latent was trained separately on V100 and then paused. Decoder pilots also tested learned bond messages alongside triangle refinement. The large model kept its own parameters and training state.</p><p>The typed-bond message idea reached the large decoder in epoch 48. The compact model’s weights did not.</p><div class="refs"><a href="../experiments/vae/compact-benchmark.md">Compact VAE</a> · <a href="../experiments/vae/bond-message-comparison.md">Decoder comparisons</a></div></div>
+  </article>
+</section>
+
+<section class="era" id="current" aria-labelledby="current-title">
+  <header class="era-header"><span>November 21 – 25, 2026</span><h2 id="current-title">Seven rounds, ring chemistry and learning to encode the model’s own molecules</h2></header>
+  <article data-role="Main lineage" data-topics="Model · Loss · Sampling">
+    <div class="stamp"><strong>Nov 21–22 · E48</strong><span class="role">Main lineage</span></div>
+    <div class="record"><div class="topics">Model · Loss · Sampling</div><h3>Seven refinement rounds, output graph matching and cheap chemistry on every prior</h3><p>The seven-round arm added three independently weighted triangle and typed-bond-message rounds to the original four. The model grew from 3,941,860 to 4,301,290 parameters. Reconstruction aligned predicted and target graphs, allowing correct renumberings. On 240 priors per 240 real examples, a detached valence projection trained changed bonds; 16 priors also received frozen-teacher supervision.</p><p>The seven-round arm also introduced a weak batch loss for valid aromatic rings (8%) and amides (12%). Its first leg went from 332 to 475 valid argmax priors out of 512 and from 244 to 247 exact held-out reconstructions out of 256. Depth and motif supervision changed together.</p><div class="refs"><a href="../experiments/vae/epoch47-occupancy-continuation.md#epoch-48-paired-first-leg">Matched production arms and graph matching</a> · <a href="../experiments/vae/weak-functional-groups.md">Motif loss and estimator</a></div></div>
+  </article>
+  <article data-role="Main lineage" data-topics="Loss · Sampling">
+    <div class="stamp"><strong>Nov 22–23 · from 597604</strong><span class="role">Main lineage</span></div>
+    <div class="record"><div class="topics">Loss · Sampling</div><h3>Measure aromatic rings and amides against the training corpus</h3><p>The 50,000-molecule reference panel contained 87.056% aromatic-ring molecules and 47.988% amides. The next leg adopted those targets and measured all 240 priors every fourth update. Nearby latent draws also received guidance to preserve the selected motif and its immediate connections.</p><p>A matched extra penalty on three-membered and large rings missed both topology criteria (net −30 on 2,527 matched valid cyclic graphs). Both arms kept 247/256 exact reconstructions. The continuation inherited the control recipe with the corpus targets and motif-neighbor guidance.</p><div class="refs"><a href="../experiments/vae/epoch47-occupancy-continuation.md#epoch-48-segment-3--generated-graph-reconstruction">Ring experiment and selection</a> · <a href="../experiments/vae/training_data_eda/epoch48-motif-completion.md">Corpus targets and local motif guidance</a></div></div>
+  </article>
+  <article data-role="Main lineage" data-topics="Loss · Sampling · Evaluation">
+    <div class="stamp"><strong>Nov 23 · from 600116</strong><span class="role">Main lineage</span></div>
+    <div class="record"><div class="topics">Loss · Sampling · Evaluation</div><h3>Teach the encoder to recognize its own generated molecules</h3><p>Every fourth update the trainer selected up to eight valid, canonically representable generated parents from 16 priors. It encoded each graph, decoded its posterior mean and supervised recovery of the original graph with weight 0.10. This branch froze the decoder so its gradients trained the encoder. The other branches continued joint training.</p><p>Fixed-parent and fresh-parent panels began measuring exact identity as well as invented and missing bonds. A valid random molecule and the same molecule after re-encoding had proved to be quite different tests.</p><div class="refs"><a href="../experiments/vae/epoch47-occupancy-continuation.md#epoch-48-segment-3--generated-graph-reconstruction">Generated-parent loss and monitor</a> · <a href="../experiments/latent-design/protenix-vae/editability.md">Latent editability studies</a></div></div>
+  </article>
+  <article data-role="Main lineage" data-topics="Model · Loss">
+    <div class="stamp"><strong>Nov 23–24 · from 611116</strong><span class="role">Main lineage</span></div>
+    <div class="record"><div class="topics">Model · Loss</div><h3>Give the encoder direct bond counts and three graph-attention blocks</h3><p>Each new residual block used four heads, with attention biases for bond type and shortest-path distance. The candidate also penalized excessive sharpening on exact generated round trips. Existing signals were preserved at initialization. The model grew to 4,526,158 parameters.</p><p>An eight-hour original-encoder control shared the same fork. The candidate became the continuing branch. The experiment bundled the encoder and confidence changes.</p><div class="refs"><a href="../experiments/vae/epoch48-encoder-upgrade.md">Architecture, fork and control</a></div></div>
+  </article>
+  <article data-role="Main lineage" data-topics="Loss · Sampling · Evaluation">
+    <div class="stamp"><strong>Nov 24 · from 623116</strong><span class="role">Main lineage</span></div>
+    <div class="record"><div class="topics">Loss · Sampling · Evaluation</div><h3>Focus encoder feedback on bonds it invents</h3><p>Optimizing the latent itself for 50 steps with the decoder frozen recovered 94/114 generated parents, up from 27/114; extra bonds fell from 317 to 42. This showed the decoder could represent many graphs that a single encoder pass missed. A separate distillation pilot found ordinary graph supervision ahead on fresh exact recovery.</p><p>Production generated parents with dropout disabled and penalized up to four high-confidence invented bonds per parent. By update 630000 on the fixed cohort, exact recovery reached 40/114 and extra bonds fell to 178; missing bonds rose from 50 to 64. Held-out exact remained 247/256.</p><div class="refs"><a href="../experiments/vae/epoch48-encoder-upgrade.md">Recovery, distillation and production loss</a> · <a href="../outputs/runs/vae-protected-ring-20261125a/production-status-20261125-am.json">Saved production counts</a></div></div>
+  </article>
+  <article data-role="Pilot / control" data-topics="Loss · Evaluation">
+    <div class="stamp"><strong>Nov 24–25 · functional-group pilots</strong><span class="role">Pilot / control</span></div>
+    <div class="record"><div class="topics">Loss · Evaluation</div><h3>Local bond targets worked better for amides than for a whole aromatic ring</h3><p>A local amide loss targeted the C–O bond at eligible sites. On 4,096 matched categorical draws, the amide arm produced 426 amides versus 283 for control and 19 five- or six-membered cyclic ureas versus 8. It also produced 181 more molecules containing a three-membered ring.</p><p>Whole-ring targets increased the probability of the desired bond assignment, but completed 0/50 hard aromatic rings on the independent site panel. These site-specific losses remained pilots.</p><div class="refs"><a href="../experiments/vae/training_data_eda/shared-ring-pilots.md">Site-level supervision and functional-group counts</a></div></div>
+  </article>
+  <article data-role="Submitted" data-topics="Model · Evaluation">
+    <div class="stamp"><strong>Nov 25 · submitted from 631116</strong><span class="role">Submitted</span></div>
+    <div class="record"><div class="topics">Model · Evaluation</div><h3>Expand atom attention and add direct bond-to-bond attention</h3><p>The next leg expands seven existing atom-attention blocks (three encoder and four decoder) from 4 × 24 to 10 × 24, and adds two 10-head bond-attention blocks. Possible bonds can attend to others sharing an endpoint. Atom and pair states stay at 96 and 48 features. The model grows by 532,494 parameters to 5,058,652.</p><p>The graft preserved 16/16 hard graphs on a CPU check. V100 job 30363630 was pending at 12:11 CET on November 25. The submitted architecture has no production-quality result at this cutoff.</p><div class="refs"><a href="../experiments/vae/epoch48-encoder-upgrade.md#wider-atom-attention-and-direct-bond-attention">Architecture, migration and job receipt</a></div></div>
+  </article>
+</section>
+<footer>Evidence cutoff: November 25, 2026, 12:11 CET. The <a href="05_experiment_ledger.md">experiment ledger</a> records individual jobs. The <a href="vae-research-handoff.md">November 19 research handoff</a> explains the earlier experiments and checkpoints. Evidence links open files in this checkout.</footer>
+</main>
+<script>
+const role = document.getElementById('role');
+const topic = document.getElementById('topic');
+const records = Array.from(document.querySelectorAll('article'));
+function filterTimeline() {
+  let visible = 0;
+  for (const row of records) {
+    const matchesRole = !role.value || row.dataset.role === role.value;
+    const matchesTopic = !topic.value || row.dataset.topics.split(' · ').includes(topic.value);
+    row.hidden = !(matchesRole && matchesTopic);
+    if (!row.hidden) visible += 1;
+  }
+  for (const era of document.querySelectorAll('.era')) {
+    era.hidden = !era.querySelector('article:not([hidden])');
+    document.querySelector('nav a[href="#' + era.id + '"]').hidden = era.hidden;
+  }
+  document.getElementById('count').textContent = visible + ' of ' + records.length + ' milestones';
+}
+role.addEventListener('change', filterTimeline);
+topic.addEventListener('change', filterTimeline);
+document.getElementById('filters').hidden = false;
+filterTimeline();
+</script>
+</body></html>

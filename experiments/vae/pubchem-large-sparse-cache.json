@@ -1,0 +1,9 @@
+{
+  "parent_job_id": 29903886,
+  "parent_build": "/work3/s234818/latentmol/data/pubchem-large-corpus-20261105a",
+  "baseline_dataset_sha256": "ce3e77166091241441678b567bb758b040e5863bbaba7880a3ade1261edc7357",
+  "holdout_counts": {"val": 70000, "test": 70000},
+  "work3_account": "s234818",
+  "reserve_bytes": 4294967296,
+  "selection_seed": 550017
+}

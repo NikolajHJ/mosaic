@@ -1,0 +1,33 @@
+{
+  "version": "verified-graph-interpolation-pilot-v1",
+  "base_config": "epoch45-interpolation-pilot.json",
+  "hpc_cuda_ownership_helper": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-release-26/source/scripts/cuda_ownership.py",
+  "hpc_cuda_ownership_sha256": "578d2b6c9453ad14ce6778d306aa6c1d926acb442dcf8ae9f9a75bccc6b2e3cb",
+  "fractions": [0.25, 0.5, 0.75],
+  "updates": 200,
+  "interpolation_max_gradient_ratio": 0.25,
+  "early_prior": {
+    "steps": [0, 25, 100, 200],
+    "count": 1024,
+    "batch_size": 64,
+    "latent_seed": 11056501,
+    "categorical_seed": 11056502
+  },
+  "train_triplets": {
+    "count": 128,
+    "center_limit": 12000,
+    "seed": 11055711,
+    "min_atoms": 8,
+    "max_atoms": 32,
+    "require_matching_slots": true
+  },
+  "validation_triplets": {
+    "count": 64,
+    "center_limit": 1000,
+    "seed": 11055712,
+    "min_atoms": 8,
+    "max_atoms": 32,
+    "allow_derived_endpoints": true,
+    "require_matching_slots": true
+  }
+}

@@ -1,3 +1,5 @@
+# New run/pipeline entry points default to exploratory finite-gradient smoke.
+# Select --research-profile qualified when native/derivative qualification is the question.
 # UNTESTED native/HPC workflow. Replace assets/hashes before validate/pipeline.
 # This baseline uses the already implemented fixed-pose Boltz adapter.
 version: 1
@@ -9,7 +11,7 @@ decoder:
   checkpoint: ../assets/selected_vae.pt
   sha256: REPLACE_WITH_DECODER_SHA256
 # Empty start uses the encoded mean of the prepared canonical seed. If its
-# argmax differs from that seed, the gate refuses to optimize. A separately
+# argmax differs from that seed, qualified parity can refuse to optimize. A separately
 # selected decoder-only raw-z bundle may be supplied as {path, sha256}.
 start: {}
 models:

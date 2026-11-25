@@ -5,6 +5,7 @@ select a new objective, train a model or run occupancy optimization.
 """
 
 import argparse
+import ast
 import hashlib
 import json
 import os
@@ -70,6 +71,14 @@ def main():
         raise ValueError('Require declared native-repeat loss/TV policy')
     if plan.get('output_parity_policy')!='native-output-loss-tv-v1':
         raise ValueError('Require declared output loss/TV policy')
+    if plan.get('finite_difference_policy',{}).get('version')!='attached-repeat-loss-difference-fd-v1':
+        raise ValueError('Require declared attached-repeat finite-difference policy')
+    expected_fd_policy=ast.literal_eval(next(node.value for node in
+        ast.parse((release/'src/latentmol/protenix_occupancy/study.py').read_bytes()).body
+        if isinstance(node,ast.Assign) and any(isinstance(target,ast.Name)
+            and target.id=='FD_POLICY' for target in node.targets)))
+    if plan['finite_difference_policy']!=expected_fd_policy:
+        raise ValueError('Plan and authenticated source finite-difference policies differ')
     campaign.mkdir(parents=True,exist_ok=True)
     write(campaign/(args.mode+'-claim.json'),dict(jobid=os.environ['LSB_JOBID'],
         plan_sha256=args.plan_sha256,mode=args.mode,claimed=time.time()))
@@ -129,6 +138,7 @@ def main():
                 element_boundary=plan['element_boundary'],
                 native_repeat_policy=plan['native_repeat_policy'],
                 output_parity_policy=plan['output_parity_policy'],
+                finite_difference_policy=plan['finite_difference_policy'],
                 cpu_threads=4,internal_seconds=3300,max_model_calls=3000,
                 cases=prepared['cases'])
             for item in config['cases']:

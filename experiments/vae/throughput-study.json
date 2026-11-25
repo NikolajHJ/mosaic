@@ -1,0 +1,20 @@
+{
+  "combined": {
+    "gpu_cpus": 16,
+    "worker_counts": [6, 12],
+    "batch_size": 128,
+    "microbatch_size": 128,
+    "warmup": 8,
+    "updates": 64,
+    "checkpoint": {
+      "path": "/work3/s234818/latentmol/runs/combined-vae-epoch46-v100-20261105a-training/checkpoint-000305509.pt",
+      "sha256": "eb87430d3b636bd1eb20e652bfe93888c6f29fa0ffb2fef3a40282bbb9072268"
+    }
+  },
+  "prior_only": {
+    "gpu_cpus": 16,
+    "batch_size": 240,
+    "warmup": 8,
+    "updates": 64
+  }
+}

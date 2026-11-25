@@ -1,6 +1,394 @@
 # Molecular graph AE/VAE and frozen-Boltz2 latent optimization
 
+This is a dated protocol/implementation narrative. For current commands and
+package ownership use [workflows](workflows.md) and the [package map](../src/latentmol/README.md).
+Historical outcomes and source-specific rules below retain their original scope.
+
+
+**Sulfur mechanism review,29October2026:** the
+[cross-experiment audit](84_sulfur_bias_in_validity_guidance.md) distinguishes the
+old live maximum-valence shortcut from frozen-target/shared-decoder effects and
+the separate measured Protenix–DeFoG teacher feedback. Sulfur inflation is not
+an inevitable property of every validity-guidance loss. This is documentation,
+not a change to active training or optimization settings.
+
+**28 October2026 20:58CET mapping handoff recovered:** source143a002 control-only
+repair passed85 allocated tests plus actual original pilot CLI preflight.
+Saved mapping/calibration and source142 numerical settings remain exact; no refit.
+Pilot29845020/callback29845021 submitted, PEND on affinity units. All existing
+checks precede conditional serial10000/case with observations every10. VAE
+continuation/native recovery unchanged. [Repair and receipts](82_embedding_handoff_recovery.md).
+
+**28 October2026 guarded embedding long run:** user clarified10,000 iterations
+per each of three original36 starts. Independent source142 CPU29839742 passed
+all450 tests (zero failures/errors/skips), original VAE parity and exact starts;
+GPU fit29839755/callback29839756 PEND at11:29CET. New bridge fit/dev calibration,
+all fresh native/derivative gates and20-update pilots precede resumable serial
+30,000-iteration execution, with relaxed observations every10, mapping/validity
+eligibility and best-valid retention. No current mapping training/latent update
+or native pass follows from CPU readiness. Existing VAE continuation and native
+recovery unchanged. [Protocol/status](81_guarded_embedding_long_run.md).
+
 Status: active implementation plan; first draft 2026-09-26.
+
+**29 October2026 09:47 CET:** VAE epoch41 completed (11.54h), with fixed raw/
+strict validity72.36% versus73.54% at40 and unchanged256/256 exact/valid
+reconstruction. Paired fresh generation panels also dipped slightly. Exact41
+resume automatically started42, about23% through at its latest saved panel;
+all83 early panels/1,494 checks pass. [Training receipts and comparisons](80_epoch40_to45_continuation.md).
+The repaired embedding pilot passed20 accepted nonzero updates for each of
+three starts, with all native/start/production gates and valid retained bests.
+First long allocation29846090 is running toward10,000/case; a separate09:45
+receipt records case001 at262 saved updates, without hard-identity/binding gain.
+[Recovered handoff and pilot evidence](82_embedding_handoff_recovery.md).
+Scientific settings and safeguards are unchanged by this read-only check.
+
+**28 October2026 20:22 CET:** corrected VAE training has started epoch41 after
+all649 current CUDA fixtures and exact40 handoff passed. Latest fixed panel is
+about32% through41:73.63% raw/strict validity,256/256 exact/valid reconstruction;
+epoch40 remains latest completed. [Current training evidence](80_epoch40_to45_continuation.md).
+Native-only recovery completed all6 predictions and identity audits, validating
+the CUDA process correction, but valid candidates were unchanged from their
+starts and show zero fresh affinity gain. [Native results](78_embedding_latent_comparison.md).
+The newer5,000-update bridge fit/calibration passed; its scheduler callback
+failed an exact-name/DONE check before pilot dispatch, so long optimization has
+not started. [Fit and handoff evidence](81_guarded_embedding_long_run.md).
+No runtime settings or scientific jobs changed in this read-only check.
+
+**28 October2026 10:39 CET:** the corrected VAE attempt002 and native-only
+recovery have passed their allocated CPU readiness checks and are both queued.
+GPU29838765 has16 CPU slots reserved; recovery29838737 has4 reserved. Both
+wait for resources, with no new CUDA/ownership/native result or epoch41.
+Exact40->45 resume, scientific settings and safeguards are unchanged; the
+six native requests reuse the completed optimization. [VAE status](80_epoch40_to45_continuation.md#read-only-status-28-october-2026-1039-cet)
+and [native recovery status](78_embedding_latent_comparison.md) supersede the
+older failed attempts below. A queue reservation is not execution.
+
+**28 October2026 read-only update:** the epoch40->45 GPU allocation passed all
+631 CUDA fixtures, then the new generation observer failed on a str/Path
+interface mismatch before any training update. Epoch40 remains latest; no
+epoch41 or successor is established. [Exact startup failure](80_epoch40_to45_continuation.md#terminal-startup-failure-after-cuda-passed-collected-28-october2026-0908-cet).
+The independent original36 embedding comparison passed its three native and
+six pointwise start gradient gates and completed six50-update trajectories.
+Relaxed terminal validity2/3 (unchanged identities), learned bridge0/3; all six
+fresh native predictions failed CUDA busy/unavailable, so no binding gain is
+confirmed. [Results, limits and saved HTML report](78_embedding_latent_comparison.md#attempt006-completed-chemistry-and-fresh-prediction-limits-collected-28-october2026).
+No runtime/job/scientific change was made by this status collection.
+
+**Epoch40->45 extension submitted, 27 October2026 12:18 CET:** source140
+CPU29829798/callback29829799 DONE:2028 fixtures passed,115 CUDA-only skips,
+no failures/errors; repair profile, historical evidence adoption and actual
+epoch40-resume CLI dispatch passed. GPU29829875/callback29829876 now PEND,
+job-slot limits on five hosts. Current CUDA/exact native handoff remain
+mandatory before epoch41; no training start or fresh generation result yet.
+All loss/1:2/anchors/optimizer/RNG/guards retained;each epoch saved,fresh
+validity/uniqueness/fingerprint/scaffold tracking,serial endpoint45.
+[Submission and receipts](80_epoch40_to45_continuation.md#latest-cpu-passed-gpu-queued-27-october2026-1218-cet).
+
+**Five-epoch extension authorized, 27 October2026:** prepare separate source140
+from exact source138 epoch40 through45, preserving every loss/anchor/ratio/
+optimizer/RNG/guard and saving each epoch. Fresh raw/strict validity and
+uniqueness/fingerprint/scaffold reports are additive observations, not new
+training losses or replacement health gates. Preflight protected hashes and
+quota passed; allocated CPU/CUDA/native handoff checks remain required before
+training. [Scope, execution and diagnostics](80_epoch40_to45_continuation.md).
+
+**VAE epoch40 complete, 27 October2026 11:44 CET:** read-only snapshot018
+confirms GPU29822674 DONE11:34:10/callback29822675 DONE11:34:39, branch
+`completed_bounded_branch`, checkpoint40 SHA
+`31af05597dbd176b02a8108651db0d6b33bb3a8883f69ecf354a4465ed18787e`.
+Final fixed raw/strict validity753/1,024 (73.54%) versus epoch39's724
+(70.70%), +2.83points; exact/valid recon256/256, sulfur1.4394%. Measured
+epoch11.48h; all268 saved early panels and19 end-epoch checks passed.
+Original36->40 authorization is complete; no successor/further evaluation
+submitted. Fixed monitoring is not fresh/full-test confirmation. CUDA599,
+science/guards unchanged. [Final comparison and receipts](75_frozen_reference_epoch40_continuation.md#epoch40-completed-bounded-branch-finished-27-october-2026-1144-cet).
+
+**VAE epoch40 running, 27 October2026 00:17 CET:** read-only snapshot017
+confirms GPU29822674 RUN since00:01:55 on n-62-18-8, exact checkpoint39
+restored. Latest saved panel112/6,596 updates (~1.70%) intoepoch40 has raw
+validity744/1,024 (72.66%) versus epoch39's724 (70.70%); strict743 (72.56%)
+with one representation failure. Exact/valid reconstruction256/256; all203
+saved health panels/checks passed. Early fixed-panel improvement is not a
+completed epoch/full-test result. Callback29822675 PEND normally; latest
+completed39, endpoint40/science/guards/CUDA599 unchanged. No runtime/job
+change. [Actual start and comparison](75_frozen_reference_epoch40_continuation.md#epoch40-started-early-validity-above-epoch39-endpoint-27-october-2026-0017-cet).
+
+**VAE epoch39 complete; epoch40 queued, 26 October2026 22:39 CET:** segment003
+successfully finished at16:50:10, checkpoint39 SHA
+`e5d7f99b9eb0fe04cd8b6b800e4bd90b6f1c24a65368216ce384a95061a7f3b0`.
+Final fixed raw/strict validity724/1,024 (70.70%), below the earlier74.51%
+intermediate reading but above62.60% baseline; exact/valid recon256/256.
+All201 early panels/end-epoch guards passed. Final GPU29822674/callback29822675
+PEND; processor-affinity wait, four of16 slots reserved, no actual40 start or
+reliable ETA. All science/guards/endpoint40 unchanged. [Actual completion,
+endpoint metrics and queue evidence](75_frozen_reference_epoch40_continuation.md#epoch39-complete-final-epoch40-queued-26-october-2026-2239-cet).
+
+**VAE epoch38 complete; epoch39 running, 26 October2026 12:33 CET:** epoch38
+completed successfully, measured11.92h; checkpoint SHA
+`1736ad792f244fda59d0b74dc87867880fe632db0417ddfb0c70d07269fd319d`.
+Automatic exact-resume GPU29817247 RUN since05:02:28 CET on n-62-18-9,
+callback29817248 PEND. Latest saved panel4,108/6,596 (~62%) intoepoch39 has
+763/1,024 raw/strict validity (74.51%), baseline62.60%, exact/valid recon256/256.
+All176 saved early health panels/checks passed. Metrics fluctuate and include
+occasional representation failures; no blanket zero-failure/full-test claim.
+Epoch38 is latest completed; CUDA599, all science/guards and endpoint40
+unchanged. [Completion, resume and metrics](75_frozen_reference_epoch40_continuation.md#epoch38-complete-epoch39-running-with-latest-validity745-26-october-2026-1233-cet).
+
+**VAE epoch38 past halfway, 25 October2026 16:29 CET:** GPU29809056 RUN;
+last saved panel3,504/6,596 updates into epoch38 (~53%), not an exact live
+counter. Fixed raw/strict prior validity727/1,024 (71.00%) versus baseline641
+(62.60%); exact/valid reconstruction256/256. All103 saved early panels/checks
+passed, latest sulfur1.4730%. Epoch37 remains latest completed checkpoint;
+endpoint40, CUDA599 pass and all settings/guards unchanged. No runtime/job
+change. [Saved progress and limits](75_frozen_reference_epoch40_continuation.md#epoch38-past-halfway-latest-fixed-panel-validity71-25-october-2026-1629-cet).
+
+**VAE epoch37 complete; epoch38 automatically running, 25 October2026 11:39 CET:**
+source138 segment001 completed successfully, checkpoint37 SHA
+`eb6ecd25c36cff6fb158e2d24aa1888fdc17e8c8654bb100894d834510839446`.
+Measured training epoch was13.47h. Serial callback automatically queued the
+exact-resume successor: GPU29809056 RUN since09:40:30 CET, callback29809057
+PEND. Latest saved epoch38 panel is904 updates into that epoch, all18 checks
+passed; all77 saved early panels pass. Fixed-prior validity705/1,024 (68.85%)
+versus baseline641 (62.60%); exact/valid reconstruction256/256. CUDA599 passes,
+unchanged science/guards and endpoint40 remain in effect. Fixed panels fluctuate
+and are not full-test/independent-seed guarantees. [Actual completion, automatic
+resume and metrics](75_frozen_reference_epoch40_continuation.md#epoch37-completed-automatic-epoch38-continuation-running-25-october-2026-1139-cet).
+
+**VAE actual training running; CUDA passed, 24 October 2026 10:55 DTU-local:**
+source138 GPU 29802716 started 10:11:51 on n-62-18-10; all 599 mandatory CUDA
+fixtures passed, no errors/failures/skips. Actual training started from original
+epoch36; epoch37 is in progress. Last persisted +300-update panel passed all
+18 checks, raw/strict fixed-prior validity 641 -> 666/1,024, exact/valid
+reconstruction 256/256, sulfur 1.5070% -> 1.4665%. These are early training
+panels, not a finished epoch or independent-seed replication. Endpoint40 and
+all science/guards unchanged; callback 29802717 waits normally. Original36 is
+still latest completed checkpoint. [Actual run, CUDA and panel evidence](75_frozen_reference_epoch40_continuation.md#actual-continuation-started-and-cuda-passed-24-october-2026-1055-dtu-local).
+
+**Separate Protenix deletion/count diagnostic completed, 24 October 2026:**
+GPU **29803898 DONE**, **02:29:32–02:36:52 DTU-local**, fresh C/Z native/
+calibrated FD gates passed, all **18 trajectories/eight updates** completed.
+**Z q=0 failed physical deletion in 3/3 cases**; charge/name/position/bond
+ghost routes stayed active. All six gradient runs lowered soft loss but
+finished deleted; q=0.8 counts **8→7/10→9/11→10** selected worse compact and
+fresh native endpoints in every case. Random-sign controls had the same hard
+outcome. This is a completed negative absence/selection result, not G or
+binding validation; attempt008 success and unrelated work remain preserved.
+[Actual results and interpretation](79_protenix_deletion_and_count_selection.md#12-completed-diagnostic-zero-element-mass-did-not-reproduce-deletion).
+
+**Separate Protenix deletion CPU passed; GPU queued, 24 October 2026 about
+01:54 DTU-local:** **CPU 29803884** passed full readiness in **133.086s**,
+**287 fixtures**, zero failures/errors/skips, compact/paired fresh preparation,
+strict actual-model loading and exact real-input CPU parity/backward probe.
+**GPU 29803898 submitted at 01:53:41**, PEND at 01:54:24, four CPU slots reserved
+while the physical A10 is unavailable. No GPU claim or deletion/ghost/count-
+selection outcome yet; reservation is not execution. Sealed source139 bytes,
+initial SSH failure and all earlier results remain preserved.
+[Actual CPU and GPU evidence](79_protenix_deletion_and_count_selection.md#11-full-cpu-readiness-passed-native-gpu-queued).
+
+**Separate Protenix deletion CPU submitted after restored SSH, 24 October
+2026:** the same sealed `source139-protenix-deletion-selection-attempt001`
+staged/authenticated **216 members**, return zero, **CPU 29803884 submitted**,
+four slots/45 minutes. The **287 fixtures** and native readiness remain pending;
+submission is not a pass. Initial pre-upload SSH failure remains preserved;
+source/plan bytes and scientific policy are unchanged. No deletion/selection
+or GPU result yet.
+[Actual successful submission](79_protenix_deletion_and_count_selection.md#10-authenticated-staging-succeeded-cpu-submitted).
+
+**Separate Protenix deletion release sealed; submission blocked, 24 October
+2026 01:49 DTU-local:** immutable
+`source139-protenix-deletion-selection-attempt001` has **216 sealed members**
+and a passed static source/AST audit. Stage-and-queue returned **255 / SSH
+password authentication denied**, before remote execution, upload or scheduler
+submission. No new CPU/GPU job exists; **287 fixtures are expected, not run**.
+Native deletion/ghost/selection work remains pending authenticated access;
+sealed bytes, the failed receipt and all earlier evidence remain preserved.
+[Exact seal and access failure](79_protenix_deletion_and_count_selection.md#9-immutable-release-sealed-submission-blocked-before-remote-execution).
+
+**Separate Protenix deletion/count-selection phase authorized, 24 October 2026:**
+the user requested physical-deletion equivalence/ghost tests and prespecified
+bounded q optimization on the same three cases. Prospective
+`source139-protenix-deletion-selection-attempt001` uses compact and paired
+fresh native endpoints; diagnostic Z selection may proceed after fresh native/
+FD passes even if absence equivalence fails, preserving that negative result.
+This is not G propagation or a binding/chemical-utility claim. No sealed job or
+numerical result yet; attempt008 and unrelated work remain preserved.
+[Prospective protocol](79_protenix_deletion_and_count_selection.md).
+
+**Separate Protenix C/Z parity and gradient phase passed, collected 24 October
+2026 01:30 DTU-local:** **GPU 29802638 DONE**, ran **23 October
+21:38:03–21:41:59**. All three cases passed required loss/TV parity and
+calibrated FD agreement: **36 rows/108 scale comparisons**. C's 18 gradients
+were exact zero with input invariance; Z's 18 were finite/nonzero, 17 resolved
+under the two-scale rule. All three cases had resolved actual NO_ATOM-logit
+gradients at 90% NO_ATOM probability. One first-case q=0.9 logit row remained
+unresolved but passed agreement; other q values passed its resolution gate.
+This supports fixed-context element-mass gradient flow, not actual atom removal,
+variable-count chemistry, optimization or binding improvement. Original strict
+logit failures remain diagnostics; CPU 165-pass and all failed attempts remain
+preserved. [Completed evidence and limits](73_protenix_soft_occupancy_study.md#36-attempt008-completed-cz-native-parity-and-calibrated-gradients).
+
+**VAE still waiting for resources, 24 October 2026 01:30 DTU-local:** source138
+GPU 29802716 is PEND due to host job-slot limits, with zero ineligible time;
+callback 29802717 waits normally. No current-release CUDA check or actual
+training setup has run. Earlier CPU/profile/adoption and startup dispatch
+passes remain valid despite aged-out completed scheduler records. Original36
+is still latest; no reliable start ETA, and no code/settings/jobs changed.
+[Live snapshot and interpretation](75_frozen_reference_epoch40_continuation.md).
+
+**Embedding comparison attempt006 CPU passed; GPU queued, 27 October
+2026 12:11 CET:** CPU **29829824 DONE**, all **283 fixtures** and full
+original36/default-decoder parity, frozen-state and exact parent-start readiness
+passed. The CPU-only MKL-compatible profile preserves all strict assertions;
+native GPU settings are unchanged. **GPU 29829828 submitted 12:11:13**, one
+exclusive 80GB A100/four slots/24h/23h internal, **PEND at 12:11:25** with no GPU
+artifacts/gates or optimization yet, no reliable ETA. The comparison-specific
+final-policy precision candidate still requires fresh full native gates.
+All failures and independent VAE/epoch45 work remain unchanged by this study.
+[Exact readiness, shared starts and GPU receipt](78_embedding_latent_comparison.md#attempt006-full-cpu-readiness-passed-gpu-queued-27-october-2026-1211-cet).
+
+**Embedding diagnostic completed; precision candidate selected, 27 October
+2026:** GPU **29821249 DONE**, ran 26 Oct 23:31–23:34 CET. Exact parent/primal
+and complete captured-VJP replay evidence localizes the reproduced mismatch
+to the final graph policy: total error 3.477208e-6 versus decoder 4.64e-10 and
+adapter 5.79e-15. A final-policy FP64/cast-back fixed-cotangent control reduced
+error to 5.07e-10, without native evaluation at the changed primal. That narrow
+comparison-only candidate is selected; full fresh retry gates remain pending,
+with the same frozen original36/bridge, three starts, objective/settings and
+tolerances. No native fix pass or optimization comparison yet. VAE continuation
+is unchanged by this work. [Verified terminal evidence and limits](78_embedding_latent_comparison.md#diagnostic-completed-final-policy-precision-candidate-selected-27-october-2026).
+
+**Matched embedding comparison stopped before optimization, collected
+26 October 2026 12:52 CET:** GPU **29802743 ran 25 October 06:33–06:48 CET**,
+then EXIT1. All three native-oracle checks and both paths for starts001/002
+passed. Start003's **relaxed** gradient-direction forward/reverse AD comparison
+failed the fixed affinity/total tolerances; its learned gate never ran.
+Frozen/context checks passed. **Zero optimization updates**, no fresh native
+stage or molecular-performance comparison; no proven root cause/fix. Saved
+terminal evidence supersedes the aged-out live scheduler record. This read-only
+status changes no runtime code/settings/jobs or independent VAE continuation.
+[Exact measurements and complete gate receipts](78_embedding_latent_comparison.md#terminal-result-collected-26-october-2026-derivative-gate-stopped-optimization).
+
+**Matched embedding comparison, 24 October 2026 01:30 CEST:** fresh read-only
+check confirms GPU **29802743 PEND**, job-slot limits on five hosts, no GPU
+artifacts or optimization start. CPU readiness and all 212 fixture passes
+remain valid despite the aged-out CPU scheduler record. No job, runtime code
+or independent VAE continuation setting changed.
+[Current evidence](78_embedding_latent_comparison.md#read-only-status-24-october-2026-0130-cest).
+
+**VAE CLI corrected; GPU continuation resubmitted, 23 October21:31:** source138
+CPU29802660/callback29802661 DONE, full CPU/profile/adoption passed (1,998
+passes/113 CUDA-only skips/no failures/errors). Actual first-segment command
+passed the real CLI twice, including the production callback, before setup.
+GPU29802716 PEND, serial callback29802717; exclusive80GB A100/16slots/24h,
+23h internal. All CUDA/health/identity/runtime/resume/quota guards retained;
+original36->40, unchanged loss/1:2/AdamW/RNG. No actual setup/epoch37 yet.
+[Verified submission evidence](75_frozen_reference_epoch40_continuation.md#source138-full-cpu-passed-and-gpu-continuation-resubmitted-23-october-2131).
+
+**VAE startup corrected and actual argv passed, 23 October 21:26:** source138
+is staged; allocated29802690 DONE with81 target fixture passes and a real-plan
+module-entrypoint dispatch pass for exact generated segment1 arguments.
+No model setup/updates occurred in that harness. Full CPU29802660 is RUN;
+callback29802661 retains all gates before conditional GPU training submission.
+Loss/ratio/optimizer/RNG/checks and original36->absolute40 are unchanged.
+[Actual identities and evidence](75_frozen_reference_epoch40_continuation.md#source138-staged-actual-startup-command-passed-23-october-2026-2126-dtu-local).
+
+**Independent matched embedding comparison CPU passed; GPU queued,
+23 October 2026 21:37:42 DTU-local:** attempt003 **CPU 29802735 DONE**, all **212
+fixtures** and full original36/model/shared-start preparation passed, no
+failures/errors/skips. Starting indices 0/3/6 have occupied counts 25/19/19.
+**GPU 29802743 submitted 21:36:07**, one exclusive 80GB A100/four slots/24h,
+23h internal; **PEND at 21:37:42**, job-slot limits on five hosts, no GPU result
+or optimization start. All 44 cold-offloaded source056 contexts were restored
+exactly and all 50 catalogued contexts independently rehashed; earlier failed
+attempts remain preserved. The prospective pilot uses the same
+frozen original epoch36 and completed source137 mapping, three authenticated
+audit posterior-mean starts and two paired 50-update paths, with equal
+`best_trial_v2` settings. All valid start/terminal/best identities receive a
+separate predeclared two-seed fresh native follow-up after required gates.
+This experiment changes no existing VAE continuation settings, jobs or immutable
+release. [CPU/shared-start evidence, queued GPU and limits](78_embedding_latent_comparison.md#attempt003-cpu-readiness-passed-native-comparison-gpu-queued).
+
+**VAE startup correction authorized, 23 October 2026:** prepare source138 from
+sealed source136 with the readiness-argument predicate fixed, real CLI argv
+regressions and an allocated actual-plan dispatch preflight. Preserve every
+scientific/health/CUDA/runtime/resume/quota check and original36->absolute40
+scope. Source136 failed after CUDA passed but before model setup; original36
+remains latest. No gate or new training pass follows from preparation.
+[Correction and limits](75_frozen_reference_epoch40_continuation.md#authorized-startup-correction-source138-23-october-2026).
+
+**Separate Protenix attempt008 CPU passed; GPU queued, 23 October 2026:** CPU
+**29802633** full gate passed **102.799s**, **165 fixture passes**, zero
+failures/errors/skips, strict actual-checkpoint loading and three preparations.
+The six-forward real-input CPU probe matched strict output comparisons exactly
+and had finite/nonzero element-leaf gradient with unchanged frozen state.
+**GPU 29802638 submitted at 21:13:20 DTU-local**, still PEND about 21:15
+because of a host job-slot limit, with no reliable start time; one
+exclusive A10/four slots/one hour/55-minute internal cap. CPU evidence does not
+pass the calibrated GPU/NO_ATOM derivative checks; no native result yet.
+[Actual readiness and GPU receipt](73_protenix_soft_occupancy_study.md#35-attempt008-cpu-passed-native-gpu-submitted).
+
+**Separate Protenix attempt008 sealed and CPU submitted, 23 October 2026:**
+`source135-protenix-occupancy-native-attempt008` staged/authenticated **209
+members**, return zero, **CPU 29802633 submitted**, four slots/45 minutes.
+The new calibrated FD policy is sealed; **165 fixtures are expected**, not
+passed. Strict loading, preparations, actual-input CPU readiness and quota
+still precede conditional native A10 parity/NO_ATOM execution. Static audit
+passed only source/byte checks; no numerical or gradient outcome yet.
+[Actual submission and immutable identities](73_protenix_soft_occupancy_study.md#34-attempt008-sealed-and-cpu-submitted).
+
+**Separate Protenix calibrated derivative retry authorized, 23 October 2026:**
+the user requested fixing the noise-sensitive FD check and rerunning native
+parity/NO_ATOM gradients. Prospective attempt008 declares repeated identical-
+input attached calibration and a capped loss-difference agreement rule,
+`attached-repeat-loss-difference-fd-v1`. C must remain input-invariant with
+exact-zero autograd; Z needs independently resolved q and NO_ATOM-logit signals,
+not noise compatibility alone. Native model/cases/readout/precision/output
+policies/resources stay unchanged. No numerical pass or submission yet; all
+prior failures and unrelated work remain preserved.
+[Exact prospective correction and gates](73_protenix_soft_occupancy_study.md#33-attempt008-attached-repeat-calibration-and-loss-difference-validation).
+
+**VAE launch outcome, 23 October 2026 21:02 DTU-local:** GPU 29792164 passed
+all **586 CUDA fixtures**, then the real training CLI rejected the frozen-
+reference plan's readiness argument before actual setup or any update. The
+launcher includes `valid_reference_continuation` when supplying that argument,
+but the CLI recognizes only `failure_guidance`. Callback 29792165 stopped on
+predecessor EXIT and submitted no successor; epoch 36 remains latest.
+[Docs75](75_frozen_reference_epoch40_continuation.md) and
+[status017](../outputs/hpc-results/source136-valid-reference-epoch40-continuation-attempt001/status-017.json)
+retain the terminal logs and concrete startup mechanism. The independent
+[bridge pilot completed](76_epoch36_boltz_embedding_bridge.md), while learned-
+gradient validation/optimization remain outstanding. This read-only status
+turn changes no runtime code, settings or jobs and submits no replacement.
+
+**Embedding mapping pilot completed, 23 October 2026:** GPU 29796624 executed
+19:41:35–19:46:30 DTU-local and completed successfully. Fresh native-oracle
+injection/gradient parity passed, followed by **1,000/1,000 supervised mapping
+updates** with frozen epoch-36 VAE/Boltz weights. Audit feature identity accuracy
+was **99.90% element / 99.95% bond type** over 193 correlated examples/71 distinct
+identities. Charged categories have no audit coverage. The learned path has a
+finite latent gradient on one fixed-context example; useful optimization and
+fresh native candidate agreement remain unvalidated. No optimization or VAE
+continuation change occurred. [Terminal evidence and limits](76_epoch36_boltz_embedding_bridge.md#attempt002-completed-the-mapping-pilot-23-october-2026).
+
+**Live run status, 23 October 2026 12:32 DTU-local:** VAE GPU 29792164 and
+callback 29792165 remain PEND, as does independent bridge GPU 29796624.
+Their CPU prerequisites remain passed, but neither GPU job has started;
+there is no current CUDA launch outcome, VAE training progress or bridge fit.
+The scheduler has reserved their requested 16/four CPU slots on separate
+hosts, with resource/core waits and no reliable ETA. Original epoch 36 remains
+the latest completed VAE checkpoint. The account-wide running Mosaic L40S job
+is separate; no code, settings or jobs changed in this read-only check.
+[Saved status-016](../outputs/hpc-results/source136-valid-reference-epoch40-continuation-attempt001/status-016.json),
+[VAE details](75_frozen_reference_epoch40_continuation.md) and
+[bridge details](76_epoch36_boltz_embedding_bridge.md).
+
+**DBMol loss implementation reference, 23 October 2026:**
+[docs77](77_dbmol_boltz_loss_implementation.md) consolidates exact affinity,
+contact and confidence reductions, the relaxed-graph/fixed-pose gradient path,
+code-section links, precision changes, the successful pointwise AD contract
+and historical failures. It separates working optimization plumbing from
+chemical validity and fresh binding predictions; no run or setting changes.
 
 **Separate frozen epoch-36 embedding prototype, 23 October 2026:** the user
 authorized a supervised decoder-hidden-to-native-Boltz bridge on
@@ -9,9 +397,11 @@ VAE continuation unchanged. Corrected attempt002 staged **569 authenticated
 members**; **CPU 29796619 DONE at 10:47:38 DTU-local**, **139 test passes**,
 zero failures/errors/skips, actual original-36 loading/bitwise decoder parity.
 **Native GPU 29796624 PEND**, submitted 10:47:59, one exclusive 80GB
-A100/four slots/four-hour allocation with 3h50 internal cap. Two CPU slots are
-reserved on n-62-18-8; its provisional no-sooner-than **24 October 02:32:54
-DTU-local** forecast is not guaranteed. No CUDA/native pass, paired-data outcome,
+A100/four slots/four-hour allocation with 3h50 internal cap. The earlier two-slot
+reservation is superseded by **all four slots on n-62-18-11 from 12:17:16** in
+the **12:22 DTU-local read-only snapshot**. The earlier forecast is absent;
+no reliable current ETA exists. CPU history has aged out while its saved pass
+remains valid. No GPU artifact/native check, paired-data outcome,
 trained bridge or optimization exists yet. Attempt001's **128-test CPU pass**
 is preserved; its launch-time manifest/archive authentication gap prevented
 GPU promotion and was corrected under the new seal. VAE/source136 and

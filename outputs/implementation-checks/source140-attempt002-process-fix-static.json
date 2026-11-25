@@ -1,0 +1,22 @@
+{
+  "status": "passed_byte_ast_scope_only_not_numerical",
+  "changed_members": [
+    "AGENTS.md",
+    "docs/04_latent_pipeline.md",
+    "docs/05_experiment_ledger.md",
+    "docs/80_epoch40_to45_continuation.md",
+    "release_manifest.json",
+    "scripts/hpc/chemistry_epoch45_campaign.py",
+    "scripts/hpc/chemistry_epoch45_worker.py",
+    "src/latentmol/chemistry_epoch45_extension.py",
+    "src/latentmol/chemistry_epoch45_generation.py",
+    "src/latentmol/cuda_process.py",
+    "tests/test_chemistry_epoch45_extension.py",
+    "tests/test_chemistry_epoch45_generation.py",
+    "tests/test_cuda_process.py"
+  ],
+  "scientific_plan_identical": true,
+  "loss_trainer_runtime_bytes_identical": true,
+  "failed_source140_preserved": true,
+  "new_source": "375272634d1836625e3d9a2bb8548e93f4cf4ac982ad1853fd0c621af8a344ef"
+}

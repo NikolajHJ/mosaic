@@ -1,0 +1,29 @@
+{
+  "version": "compact-vae-benchmark-v1",
+  "training_config": "../../configs/vae_compact_triangle.yaml",
+  "data": "/work3/s234818/latentmol/data/pubchem-hac60m-view-20261106a",
+  "data_sha256": "64247d04ec1f94d00320bb1e5a0d9c5540419eb37830050d3100775bf4385e18",
+  "expected_training_rows": 60000000,
+  "expected_parameters": 435400,
+  "batch_sizes": [256, 512],
+  "shared_warmup_rows": 2048,
+  "shape_warmup_rows": 512,
+  "timed_rows": 4096,
+  "minimum_microbatch": 64,
+  "data_seed": 111801,
+  "prior_ratio": 15,
+  "include_prior_count_control": true,
+  "prior_guidance": {
+    "workers": 2,
+    "bond_weight": 0.375,
+    "count_weight": 1.0,
+    "count_window": 4,
+    "count_kl_weight": 1.0,
+    "argmax_count_weight": 1.0
+  },
+  "prior_panel": {"seed": 2026111917, "count": 128, "batch_size": 8, "stress_radius_multiplier": 1.5},
+  "execution": {"torch_threads": 2, "gpu_cpus": 4},
+  "benchmark_cuda_requirement": {"name_contains": "V100", "minimum_gib": 30, "maximum_gib": 34},
+  "hpc_cuda_ownership_helper": "/work3/s234818/mosaic/runs/20261022-brd4-jq1-lrboost-analysis-01/nonchem-precision-release-26/source/scripts/cuda_ownership.py",
+  "hpc_cuda_ownership_sha256": "578d2b6c9453ad14ce6778d306aa6c1d926acb442dcf8ae9f9a75bccc6b2e3cb"
+}
