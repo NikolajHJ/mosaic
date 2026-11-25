@@ -9,6 +9,7 @@ The [paired BRD4 PharmacoNet pilot](restart-boltz-pharmaconet.md) tests direct g
 - [Eighteen-wave ERK2 search](restart-boltz-erk2-18.md) tests 75-update children in the CQ8 kinase pocket with four parents and two children per parent.
 - The epoch-48 VAE searches optimize BRD4 [with Protenix](restart-brd4-e48.md) and ERK2 [with the Boltz2 DBMol loss](restart-boltz-erk2-18.md). Both use checkpoint update 623116.
 - The [epoch-48 interactive report](../../../outputs/epoch48-interactive-report/index.html) compares the two M02 searches, the two broad BRD4 searches and the ERK2 snapshot. Select a molecule to open its exact step in the [search trees](../../../outputs/epoch48-interactive-report/trees.html).
+- The [Mosaic research backup](https://github.com/NikolajHJ/mosaic/releases/tag/dbmol-research-backup-20261125) provides downloadable interactive reports, experiment receipts and VAE checkpoints. Extract the report bundle and open `epoch48-interactive-report/index.html` in a browser.
 - [Three-generation BRD4 comparison](restart-boltz-generations.md) advances the two policies selected by the allocation pilots onto three new paired seeds.
 - The audited synthesis experiments cover [fresh archive screening](restart-synthesis-archive-screen.md), [three starting panels](restart-synthesis-founders.md), and [binding-matched route planning and RetroGNN](restart-synthesis-route.md).
 - [BRD4 search-method pilots](restart-boltz-search-methods.md) compare child allocation, prior screening and local reuse of Boltz gradients across three matched seed panels.
